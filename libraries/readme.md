@@ -1,7 +1,3 @@
-why? 
+some simple utility libraries.
 
-coz actually 
-
-everything is optionated. 
-
-(except two same pure fn where only performance differs)
+may be separated into individual folders as they expand
