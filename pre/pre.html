@@ -13,6 +13,11 @@ created: 2025.08.18
 
   <body></body>
 
+  <script src="lib/f1.1.min.js"></script>
+  <script src="lib/flair1.1.min.js"></script>
+  <script src="lib/voyage1.4.umd.min.js"></script>
+  <script src="lib/keyboard.js"></script>
+
   <script>
     const data = {
       slides: [
@@ -386,7 +391,8 @@ created: 2025.08.18
           }
         }`,
           },
-          default: "dark",
+          // todo: test flair theme
+          default: "flair",
         },
         codeTheme: {
           options: {
@@ -521,7 +527,5 @@ created: 2025.08.18
       extensions: {},
     };
   </script>
-  <script src="lib/voyage1.4.umd.min.js"></script>
-  <script src="lib/keyboard.js"></script>
   <script src="pre.js"></script>
 </html>
