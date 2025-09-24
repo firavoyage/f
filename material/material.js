@@ -1,3 +1,5 @@
+// todo: history. vector
+
 // how to create segment, polygon, curve, eclipse(circle) in svg
 
 // fit eclipse
@@ -13,6 +15,8 @@ const stylesheet = {
   bg-gray-900`,
   "*": "fill-none stroke-5px stroke-gray-50",
   ".point": "fill-gray-50 stroke-none",
+  // todo: use a color in palette instead of lightblue
+  ".point.selected": "fill-lightblue stroke-none",
 };
 
 const theme = {
@@ -267,13 +271,94 @@ const zoom = (scale) => {
   };
 };
 
+/**
+ * Opens a file selection dialog and returns the text content of the selected file.
+ *
+ * @example
+ * // Using async/await
+ * const fileContent = await open();
+ * if (fileContent) {
+ *   console.log('File content:', fileContent);
+ * } else {
+ *   console.log('No file selected');
+ * }
+ *
+ * @example
+ * // Using promises
+ * open().then(content => {
+ *   if (content) {
+ *     console.log('File content:', content);
+ *   } else {
+ *     console.log('No file selected');
+ *   }
+ * });
+ *
+ * @returns {Promise<string|false>} A promise that resolves to the file content as a string if a file is selected, or false if no file is selected
+ */
+const open = () => {
+  return new Promise((resolve) => {
+    const input = document.createElement("input");
+    input.type = "file";
+    input.accept = "*/*";
+
+    input.onchange = (event) => {
+      const file = event.target.files[0];
+      if (!file) {
+        resolve(false);
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        resolve(e.target.result.toString());
+      };
+      reader.onerror = () => {
+        resolve(false);
+      };
+      reader.readAsText(file);
+    };
+
+    input.click();
+  });
+};
+
+/**
+ * Creates and downloads a file with the specified text content.
+ *
+ * @example
+ * // Download a text file with simple content
+ * save('example.txt', 'Hello, World!');
+ *
+ * @example
+ * // Download a JSON file
+ * const data = { name: 'John', age: 30 };
+ * save('data.json', JSON.stringify(data, null, 2));
+ *
+ * @param {string} filename - The name of the file to download
+ * @param {string} content - The text content to save in the file
+ * @returns {void}
+ */
+const save = (filename, content) => {
+  const blob = new Blob([content], { type: "text/plain" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+};
+
 const app = () => {
   const materials = p({
     materials: {
       0: { type: "point", props: { point: { x: 0, y: 0 } } },
     },
     next: 1,
+    history: { history: {}, current: 0 },
   });
+  const change = ()=>{}
   const add = (item, select = false) => {
     materials.produce((m) => {
       const index = m.next++;
@@ -284,14 +369,16 @@ const app = () => {
           s.push(index);
         });
       }
+      // todo: make ctrl z ctrl shift z work properly
+      m.history.history[m.history.current++] = m.materials;
     });
   };
 
-  const maxdefault = 10;
+  const constants = { max: 10, pointradius: 5, smaller: 0.8, larger: 1.25 };
   const viewport = p({
     width: window.innerWidth,
     height: window.innerHeight,
-    max: maxdefault,
+    max: constants.max,
   });
   const selection = p([]);
   const loaded = p(false);
@@ -330,7 +417,7 @@ const app = () => {
             cx: p.x,
             cy: p.y,
             // unrelated to scale
-            r: 3,
+            r: constants.pointradius,
           },
         ];
       },
@@ -364,10 +451,16 @@ const app = () => {
       },
     };
 
-    return map(values(materials), (material) => {
+    return map(materials, ([key, material]) => {
       const { type, props } = material;
       // material must be in dict
       const element = dict[type](props);
+      if (selection().includes(+key)) {
+        if (!has(element[1], "class")) {
+          element[1].class = "";
+        }
+        element[1].class += " selected";
+      }
 
       return h(...element);
     });
@@ -398,13 +491,14 @@ const app = () => {
   };
 
   const scale = (direction) => {
-    const larger = 1,
-      smaller = 0;
+    // larger and smaller are for the coordinate width on screen
+    const larger = 0,
+      smaller = 1;
     viewport.produce((v) => {
       if (direction == larger) {
-        v.max *= 0.9;
+        v.max *= constants.larger;
       } else if (direction == smaller) {
-        v.max *= 1.1;
+        v.max *= constants.smaller;
       }
     });
   };
@@ -426,7 +520,7 @@ const app = () => {
       listen({
         "ctrl 0"() {
           viewport.produce((v) => {
-            v.max = maxdefault;
+            v.max = constants.max;
           });
         },
         l() {
@@ -480,6 +574,29 @@ const app = () => {
             });
           });
           selection([]);
+        },
+        esc() {
+          selection([]);
+        },
+        "ctrl o"() {
+          const m = open();
+          m.then((content) => {
+            if (content) {
+              materials.produce((materials) => {
+                materials.materials = JSON.parse(content);
+              });
+            }
+          });
+        },
+        "ctrl s"() {
+          save("materials.json", JSON.stringify(materials().materials));
+        },
+        "ctrl z"() {
+          materials.produce((m) => {
+            if (has(m.history.history, m.history.current - 1)) {
+              m.materials = m.history.history[--m.history.current];
+            }
+          });
         },
       })
     );
