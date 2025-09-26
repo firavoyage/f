@@ -1,0 +1,11 @@
+{
+	"precious": {
+		"prefix": "precious",
+		"body": [
+			"```precious",
+			"$0",
+			"```"
+		],
+		"description": "precious"
+	}
+}

@@ -10,6 +10,14 @@
 >
 > gakusei: fira
 
+> 自序
+>
+> 选题不是自由的.
+> 
+> 抛砖引玉.
+>
+> 2025.09.26
+
 ## 1
 
 ```precious
@@ -166,7 +174,7 @@ f(x), g(x) 关于 l 对称
 
 ```precious
 f(x)=log(4, 4^x+m) - 1/2 x. D = R
-forall a in R f(a)>=f(-a) 
+forall a in R, f(a)>=f(-a) 
 求 m.
 ```
 
@@ -218,4 +226,128 @@ forall x in [0, +inf), f(x) = f(1/(x+1))
 
 ## 7
 
+```precious
+f(x) = x, g(x) =x^2-x+2
+exists x, x_1 ... x_n in [0, 9/2], 
+f(x_1) + ... + f(x_(n-1)) + g(x_n) = g(x_1) + ... + g(x_(n-1)) + f(x_n)
+solve for n_max. 
+(options: 11, 13, 14, 18)
+```
+
+换元 (同构, 对于函数而言)
+
+```precious
+g(x) - f(x) = x^2-2x+2
+g(x_n)-f(x_n) = sigma(i=1, n-1, g(x_i) - f(x_i))
+x_n^2 - 2x_n +2 = sigma(i=1, n-1, x_i^2-2x_i) + 2(n-1)
+h(x) = x^2-2x in [-1, 45/4]
+h(x_n)+2 = sigma(i-1, n-1, h(x_i)) + 2n-2
+2n = h(x_n) - sigma(i=1, n-1, h(x_i)) + 4 
+<= 45/4 - (n-1)(-1) + 4
+<= 61/4 + n-1
+n <= 57/4 = 14.25
+n_max = 14
+```
+
+## 8
+
+```precious
+f(x), D=R
+forall a<c<b, c is "m point" on [a,b] <=>
+exists open range I
+{
+  c in I cap [a,b]
+  forall x in I cap [a,b] cap {x|x!=c}, f(x)<f(c)
+}
+decide:
+1. f(c) = max(x in [a,b] ,f(x)) => c is "m point" on [a,b]
+2. forall a<b, b is "m point" on [a,b] => f(x) uparrow
+```
+
+```precious
+each is false.
+
+1. it must be the only max point. missing "only". edge case: f(x) = 0.
+2. edge case: 任意分段函数, 满足每段严增, 整体不严增, 每段起点不取.
+性质: 数轴无限密, 任意两点间, 都有右侧点小的数.
+```
+
+## 9
+
+```precious
+f(x) = {
+  x^3/e^x, x>=0
+  ax^2, x<0
+}
+恰有两组点, 关于原点对称
+求 a 范围
+```
+
+```precious
+<=> f(x) = -f(-x) 在 x>0 有两解
+a = -x/e^x (分离参变)
+求导, 作图. (化归为模板题)
+a in (-1/e, 0)
+```
+
+## 10
+
+```precious
+f(a), min(x in [a, 2a], sinx), 
+g(a) = min(x in [2a, 3a], sinx)
+
+(sgn(f(a)), sgn(g(a))) 不可能为?
+```
+
+难度低.
+
+## 11
+
+```precious
+v(a_1), v(a_2), v(b_1) ... v(b_k) 互不相等. 
+abs(v(a_1) - v(a_2)) = 1
+forall i in {1,2}, j in [1,k] cap N^+, 
+abs(v(a_i) - v(b_j)) in {1,2}
+solve for k_max
+```
+
+```precious
+所有性质仅与距离有关, 与坐标无关.
+不妨设 v(a_1) = (0,0), v(a_2) = (1,0)
+(material)
+k_max = 6
+```
+
+## 12
+
+<!-- \perp \parallel -->
+
+```precious
+C_1: 2x^2 - y^2 = 1
+C_2: 4x^2 + y^2 = 1
+M in C_1, N in C_2.
+OM perp ON
+prove: d(O, l_MN) = constant
+```
+
+```precious
+M(a,b)
+N(c,d)
+l_MN: (a-c)(y-b)-(b-d)(x-a)=0
+{
+  2a^2-b^2 = 1, b^2 = 2a^2 -1
+  4c^2+d^2 = 1, d^2 = 1-4c^2
+  ac+bd = 0
+}
+d = abs(-a(b-d)+b(a-c))/sqrt((a-c)^2+(b-d)^2)
+= abs(ad-bc)/sqrt(a^2+b^2+c^2+d^2-2ac-2bd)
+= abs(ad-bc)/sqrt(a^2+b^2+c^2+d^2)
+d^2 = (a^2d^2-2ab-d+b^2c^2)/(3(a^2-c^2))
+= (a^2(1-4c^2)+(2c^2-1)c^2+2a^2c^2)/(3(a^2c^2))
+d = sqrt(1/3) = sqrt(3)/3
+```
+
+## fin
+
+fira, 2025 年秋
 

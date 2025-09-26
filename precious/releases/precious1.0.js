@@ -1,4 +1,30 @@
 const precious = (math) => {
+  /**
+   * Core function to convert LaTeX string to HTML using KaTeX
+   * @param {string} latex - LaTeX expression to convert
+   * @param {boolean} isDisplayMode - Whether to render in display mode (double dollars)
+   * @returns {string} Rendered HTML string
+   *
+   * <!-- KaTeX CDN Links -->
+   * <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+   * <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+   */
+  const renderLatex = (latex, isDisplayMode = false) => {
+    try {
+      return katex.renderToString(latex, {
+        displayMode: isDisplayMode,
+        throwOnError: false,
+        errorColor: "#cc0000",
+        strict: "warn",
+        trust: false,
+        output: "mathml",
+        macros: {},
+      });
+    } catch (error) {
+      return `<span style="color: #cc0000;">LaTeX Error: ${error.message}</span>`;
+    }
+  };
+
   const dict = {
     // done: process these operators manually
     // // Basic operators
@@ -128,7 +154,7 @@ const precious = (math) => {
     cdots: "\\cdots",
     vdots: "\\vdots",
     ddots: "\\ddots",
-    // sqrt: "\\sqrt",
+    sqrt: "\\sqrt",
     perp: "\\perp",
     parallel: "\\parallel",
     angle: "\\angle",
@@ -171,21 +197,6 @@ const precious = (math) => {
   };
 
   const functions = {
-    // special fn for {}
-    brace(...args) {
-      let a = args.join("");
-      if (a.startsWith("\\\\")) {
-        a = a.slice(2);
-      }
-      if (a.endsWith("\\\\")) {
-        a = a.slice(0, -2);
-      }
-      if (a.includes("&")) {
-        return `\\begin{cases}${a}\\end{cases}`;
-      } else {
-        return `\\left\\{\\begin{array}{l}${a}\\end{array}\\right.`;
-      }
-    },
     sqrt(a) {
       return `\\sqrt{${a}}`;
     },
@@ -392,10 +403,6 @@ const precious = (math) => {
   const translate = (words, dict) =>
     words.map((word) => dict[word.replaceAll(" ", "")] ?? word);
 
-  // todo: refactor it with abstraction
-
-  // todo: fix closing parenthesis matching error (for [a,b) range)
-
   /**
    * Compiles an array of math tokens into a string representation using given operator precedence, operator functions, and function handlers.
    *
@@ -529,11 +536,6 @@ const precious = (math) => {
     return math.join("");
   };
 
-  // convert braces to paratheses
-  // since the compiler only recognizes paratheses
-
-  math = math.replaceAll("{", "brace(").replaceAll("}", ")");
-
   // /\s+/ means whitespace
   math = math
     .split("\n")
@@ -549,5 +551,5 @@ const precious = (math) => {
 
   math = compile(math, precedence, operators, functions);
 
-  return math;
+  return renderLatex(math);
 };

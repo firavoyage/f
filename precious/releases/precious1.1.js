@@ -128,7 +128,7 @@ const precious = (math) => {
     cdots: "\\cdots",
     vdots: "\\vdots",
     ddots: "\\ddots",
-    // sqrt: "\\sqrt",
+    sqrt: "\\sqrt",
     perp: "\\perp",
     parallel: "\\parallel",
     angle: "\\angle",
@@ -171,21 +171,6 @@ const precious = (math) => {
   };
 
   const functions = {
-    // special fn for {}
-    brace(...args) {
-      let a = args.join("");
-      if (a.startsWith("\\\\")) {
-        a = a.slice(2);
-      }
-      if (a.endsWith("\\\\")) {
-        a = a.slice(0, -2);
-      }
-      if (a.includes("&")) {
-        return `\\begin{cases}${a}\\end{cases}`;
-      } else {
-        return `\\left\\{\\begin{array}{l}${a}\\end{array}\\right.`;
-      }
-    },
     sqrt(a) {
       return `\\sqrt{${a}}`;
     },
@@ -392,10 +377,6 @@ const precious = (math) => {
   const translate = (words, dict) =>
     words.map((word) => dict[word.replaceAll(" ", "")] ?? word);
 
-  // todo: refactor it with abstraction
-
-  // todo: fix closing parenthesis matching error (for [a,b) range)
-
   /**
    * Compiles an array of math tokens into a string representation using given operator precedence, operator functions, and function handlers.
    *
@@ -528,11 +509,6 @@ const precious = (math) => {
     // Join remaining tokens into final string
     return math.join("");
   };
-
-  // convert braces to paratheses
-  // since the compiler only recognizes paratheses
-
-  math = math.replaceAll("{", "brace(").replaceAll("}", ")");
 
   // /\s+/ means whitespace
   math = math

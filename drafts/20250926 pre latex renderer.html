@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LaTeX Markdown Renderer</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/markdown-it@14.0.0/dist/markdown-it.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+        }
+        
+        .panels {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .panel {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .panel-header {
+            background: #3498db;
+            color: white;
+            padding: 15px 20px;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .panel-body {
+            padding: 20px;
+            flex: 1;
+            overflow: auto;
+        }
+        
+        #editor {
+            width: 100%;
+            height: 400px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            resize: vertical;
+            background: #fafafa;
+        }
+        
+        #preview {
+            min-height: 400px;
+            line-height: 1.6;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        button:hover {
+            background: #2980b9;
+        }
+        
+        .math-inline {
+            display: inline-block;
+            margin: 0 2px;
+        }
+        
+        .math-display {
+            text-align: center;
+            margin: 20px 0;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        
+        .latex-block {
+            background: #f1f8ff;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 4px solid #3498db;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .latex-command {
+            color: #d73a49;
+        }
+        
+        .latex-bracket {
+            color: #6f42c1;
+        }
+        
+        .latex-symbol {
+            color: #005cc5;
+        }
+        
+        .latex-number {
+            color: #e36209;
+        }
+        
+        .math-error {
+            background-color: #ffe6e6;
+            color: #d73a49;
+            padding: 2px 4px;
+            border-radius: 3px;
+            border: 1px solid #ffcccc;
+        }
+        
+        pre {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        code {
+            background: #f1f3f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.9em;
+        }
+        
+        pre code {
+            background: none;
+            padding: 0;
+        }
+        
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin: 15px 0;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            text-align: left;
+        }
+        
+        th {
+            background: #f2f2f2;
+        }
+        
+        hr {
+            border: none;
+            border-top: 2px solid #eee;
+            margin: 20px 0;
+        }
+        
+        .examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .example-btn {
+            background: #ecf0f1;
+            color: #2c3e50;
+            border: 1px solid #bdc3c7;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            text-align: center;
+            transition: all 0.2s;
+        }
+        
+        .example-btn:hover {
+            background: #3498db;
+            color: white;
+            border-color: #3498db;
+        }
+        
+        @media (max-width: 768px) {
+            .panels {
+                flex-direction: column;
+            }
+            
+            .panel {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>LaTeX Markdown Renderer</h1>
+            <p class="subtitle">Type Markdown with LaTeX math expressions and see them rendered in real-time</p>
+        </header>
+        
+        <div class="panels">
+            <div class="panel">
+                <div class="panel-header">
+                    <span>Editor</span>
+                    <span>Markdown + LaTeX</span>
+                </div>
+                <div class="panel-body">
+                    <textarea id="editor" placeholder="Type your Markdown with LaTeX here..."># LaTeX Markdown Example
+
+## Inline Math
+The quadratic formula is $x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$.
+
+Einstein's famous equation: $E = mc^2$
+
+## Block Math
+$$
+\int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}
+$$
+
+## Matrix Example
+$$
+\begin{pmatrix}
+1 & 2 \\
+3 & 4
+\end{pmatrix}
+$$
+
+## Chemical Equations
+$$\ce{2H2 + O2 -> 2H2O}$$
+
+## Code Block with Math
+```python
+import numpy as np
+
+# Calculate the determinant of a 2x2 matrix
+def determinant(a, b, c, d):
+    return a*d - b*c  # $det = ad - bc$
+```
+
+## Lists with Math
+1. First item with $\alpha$
+2. Second item with $\beta$
+3. Third item with $\gamma$
+
+## Table Example
+| Function | Integral |
+|----------|----------|
+| $x^n$    | $\frac{x^{n+1}}{n+1} + C$ |
+| $e^x$    | $e^x + C$ |
+| $\sin(x)$| $-\cos(x) + C$ |</textarea>
+                    
+                    <div class="examples">
+                        <div class="example-btn" onclick="loadExample('simple')">Simple Example</div>
+                        <div class="example-btn" onclick="loadExample('advanced')">Advanced Math</div>
+                        <div class="example-btn" onclick="loadExample('physics')">Physics Equations</div>
+                        <div class="example-btn" onclick="clearEditor()">Clear Editor</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="panel">
+                <div class="panel-header">
+                    <span>Preview</span>
+                    <span>Rendered Output</span>
+                </div>
+                <div class="panel-body">
+                    <div id="preview"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button onclick="renderContent()">Render Content</button>
+            <button onclick="toggleAutoRender()">Auto-render: <span id="auto-render-status">ON</span></button>
+        </div>
+    </div>
+
+    <script>
+        // Initialize the LaTeX renderer
+        class LaTeXRenderer {
+            constructor() {
+                this.md = window.markdownit({
+                    html: true,
+                    linkify: true,
+                    typographer: true,
+                    highlight: function (str, lang) {
+                        if (lang && lang.toLowerCase() === 'python') {
+                            return '<pre class="python-code"><code>' + this.md.utils.escapeHtml(str) + '</code></pre>';
+                        }
+                        return '<pre><code>' + this.md.utils.escapeHtml(str) + '</code></pre>';
+                    }
+                });
+                
+                this.setupMathRules();
+            }
+            
+            setupMathRules() {
+                // Inline math rule: $...$
+                const inlineRule = /^\$([^$]+)\$/;
+                
+                // Block math rule: $$...$$
+                const blockRule = /^\$\$([^$]+)\$\$/;
+                
+                // Add inline math rule
+                this.md.inline.ruler.before('emphasis', 'math_inline', (state, silent) => {
+                    const match = inlineRule.exec(state.src.slice(state.pos));
+                    if (!match) return false;
+                    
+                    if (!silent) {
+                        const token = state.push('math_inline', 'math', 0);
+                        token.content = match[1];
+                        token.markup = '$';
+                    }
+                    
+                    state.pos += match[0].length;
+                    return true;
+                });
+                
+                // Add block math rule
+                this.md.block.ruler.before('fence', 'math_block', (state, startLine, endLine, silent) => {
+                    const pos = state.bMarks[startLine] + state.tShift[startLine];
+                    const max = state.eMarks[startLine];
+                    
+                    if (state.src.slice(pos, max).trim() !== '$$') return false;
+                    
+                    let nextLine = startLine + 1;
+                    let haveEndMarker = false;
+                    
+                    while (nextLine <= endLine) {
+                        const nextPos = state.bMarks[nextLine] + state.tShift[nextLine];
+                        const nextMax = state.eMarks[nextLine];
+                        
+                        if (state.src.slice(nextPos, nextMax).trim() === '$$') {
+                            haveEndMarker = true;
+                            break;
+                        }
+                        nextLine++;
+                    }
+                    
+                    if (!haveEndMarker) return false;
+                    
+                    if (!silent) {
+                        const token = state.push('math_block', 'math', 0);
+                        token.content = state.getLines(startLine + 1, nextLine, state.tShift[startLine], true);
+                        token.block = true;
+                        token.map = [startLine, nextLine + 1];
+                        token.markup = '$$';
+                    }
+                    
+                    state.line = nextLine + 1;
+                    return true;
+                });
+                
+                // Renderers for math tokens
+                this.md.renderer.rules.math_inline = (tokens, idx) => {
+                    try {
+                        return katex.renderToString(tokens[idx].content, {
+                            throwOnError: false,
+                            displayMode: false
+                        });
+                    } catch (error) {
+                        return `<span class="math-error">$${tokens[idx].content}$</span>`;
+                    }
+                };
+                
+                this.md.renderer.rules.math_block = (tokens, idx) => {
+                    try {
+                        return `<div class="math-display">${katex.renderToString(tokens[idx].content, {
+                            throwOnError: false,
+                            displayMode: true
+                        })}</div>`;
+                    } catch (error) {
+                        return `<div class="math-error">$$${tokens[idx].content}$$</div>`;
+                    }
+                };
+            }
+            
+            render(markdownText) {
+                return this.md.render(markdownText);
+            }
+            
+            // Handle LaTeX environments
+            renderWithEnvironments(text) {
+                // Pre-process LaTeX environments
+                let processedText = text
+                    .replace(/\\begin{equation}([\s\S]*?)\\end{equation}/g, '$$$1$$')
+                    .replace(/\\begin{align}([\s\S]*?)\\end{align}/g, '$$$1$$')
+                    .replace(/\\begin{pmatrix}([\s\S]*?)\\end{pmatrix}/g, '$$$1$$')
+                    .replace(/\\ce{([^}]*)}/g, '$$\\ce{$1}$$');
+                
+                return this.render(processedText);
+            }
+        }
+
+        // Initialize the renderer
+        const latexRenderer = new LaTeXRenderer();
+        let autoRender = true;
+        let renderTimeout;
+
+        // Initial render
+        document.addEventListener('DOMContentLoaded', function() {
+            renderContent();
+            
+            // Set up auto-render on input
+            document.getElementById('editor').addEventListener('input', function() {
+                if (autoRender) {
+                    clearTimeout(renderTimeout);
+                    renderTimeout = setTimeout(renderContent, 300);
+                }
+            });
+        });
+
+        // Render the content
+        function renderContent() {
+            const editor = document.getElementById('editor');
+            const preview = document.getElementById('preview');
+            
+            const content = editor.value;
+            preview.innerHTML = latexRenderer.renderWithEnvironments(content);
+        }
+
+        // Toggle auto-render
+        function toggleAutoRender() {
+            autoRender = !autoRender;
+            document.getElementById('auto-render-status').textContent = autoRender ? 'ON' : 'OFF';
+        }
+
+        // Load examples
+        function loadExample(type) {
+            const editor = document.getElementById('editor');
+            
+            const examples = {
+                simple: `# Simple Example
+
+This is a simple Markdown document with LaTeX.
+
+Inline math: $E = mc^2$ and $a^2 + b^2 = c^2$.
+
+Block math:
+
+$$
+\\frac{1}{\\sqrt{2\\pi}} e^{-\\frac{x^2}{2}}
+$$
+
+## List with Math
+- Item 1: $\\alpha$
+- Item 2: $\\beta$
+- Item 3: $\\gamma$`,
+
+                advanced: `# Advanced Mathematics
+
+## Matrix Operations
+$$
+A = \\begin{pmatrix}
+1 & 2 & 3 \\\\
+4 & 5 & 6 \\\\
+7 & 8 & 9
+\\end{pmatrix}
+$$
+
+## Integral Equations
+$$
+\\oint_C \\vec{F} \\cdot d\\vec{r} = \\iint_S (\\nabla \\times \\vec{F}) \\cdot d\\vec{S}
+$$
+
+## Limit Definition
+$$
+\\lim_{x \\to 0} \\frac{\\sin x}{x} = 1
+$$
+
+## Summation Notation
+$$
+\\sum_{n=1}^{\\infty} \\frac{1}{n^2} = \\frac{\\pi^2}{6}
+$$`,
+
+                physics: `# Physics Equations
+
+## Schrödinger Equation
+$$
+i\\hbar\\frac{\\partial}{\\partial t} \\Psi(\\mathbf{r},t) = \\left[ -\\frac{\\hbar^2}{2m}\\nabla^2 + V(\\mathbf{r},t) \\right] \\Psi(\\mathbf{r},t)
+$$
+
+## Maxwell's Equations
+$$
+\\begin{aligned}
+\\nabla \\cdot \\mathbf{E} &= \\frac{\\rho}{\\varepsilon_0} \\\\
+\\nabla \\cdot \\mathbf{B} &= 0 \\\\
+\\nabla \\times \\mathbf{E} &= -\\frac{\\partial \\mathbf{B}}{\\partial t} \\\\
+\\nabla \\times \\mathbf{B} &= \\mu_0\\mathbf{J} + \\mu_0\\varepsilon_0\\frac{\\partial \\mathbf{E}}{\\partial t}
+\\end{aligned}
+$$
+
+## General Relativity
+$$
+R_{\\mu\\nu} - \\frac{1}{2}Rg_{\\mu\\nu} + \\Lambda g_{\\mu\\nu} = \\frac{8\\pi G}{c^4} T_{\\mu\\nu}
+$$`
+            };
+            
+            editor.value = examples[type] || examples.simple;
+            if (autoRender) renderContent();
+        }
+
+        // Clear the editor
+        function clearEditor() {
+            document.getElementById('editor').value = '';
+            if (autoRender) renderContent();
+        }
+    </script>
+</body>
+</html>

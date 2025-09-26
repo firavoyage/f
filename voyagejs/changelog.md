@@ -586,6 +586,7 @@
 - chore: remove meaningless dev period comment
   - "developed during (prev release date) to (release date)"
 
-## 1.5
+## 1.5 20250926
 
-- todo: voyagejs usage prompt for llm
+- refactor: put the global variable on globalthis instead of "const foo"
+- docs: voyagejs prompt for llm

@@ -1055,6 +1055,72 @@ Use <kbd>Ctrl</kbd> + <kbd>C</kbd> to copy text.
 _This sample demonstrates most GitHub Flavored Markdown features. Note that some features like Mermaid diagrams and math rendering may require specific repository settings or GitHub Pages configuration._
 `;
 
+// todo: handle this edge case (ne does not render properly)
+const sample5 = `
+When $a \\ne 0$, there are two solutions to $(ax^2 + bx + c = 0)$:
+
+$$
+x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}
+$$
+
+$$
+z^2-mz+2 = 0 z_1 = 1+bi,z_2 = 1-bi
+$$
+
+$\{z}^{2}-mz+2 = 0 {z}_{1} = 1+bi,{z}_{2} = 1-bi$
+
+\`\`\`precious
+z^2 - mz + 2 = 0
+z_1 = 1+bi, z_2 = 1-bi (共轭虚根定理)
+  z_1 + z_2 = 2
+  z_1 + z_2 = - (-m)/(1) (verta)
+m = 2
+\`\`\`
+`
+
+const sample6 = `
+\`\`\`precious
+x,y in R
+10^x - 10^y = 10
+求 min (2x-y).
+\`\`\`
+
+<details>
+  <summary>1</summary>
+
+  换元, 求二次函数最值
+
+  \`\`\`precious
+  let r = 2x-y ("result")
+  10^x - 10^(2x-r) = 10
+  let t = 10^x in (0, +inf)
+  r = lg(t^2/(t-10)) = lg(1/(-10(1/t)^2 + (1/t)))
+  r_min = lg4 + 1
+  \`\`\`
+
+</details>
+
+<details>
+  <summary>2</summary>
+
+  消元, 求导
+
+  \`\`\`precious
+  y = lg(10^x - 10)
+  f(x) = 2x-y
+  f'(x) = 2 - 10^x/(10^x-10)
+  f'(x) = 0, x = lg20
+  f(x)_min = f(lg20) = lg4 + 1 (开区间极值点 in 驻点)
+  \`\`\`
+
+</details>
+`
+
+const sample7 = `$$
+M(a,b)\\\\N(c,d)\\\\{l}_{MN}:(a-c)(y-b)-(b-d)(x-a) = 0\\\\\\left\\{\\begin{array}{l}2{a}^{2}-{b}^{2} = 1{b}^{2} = 2{a}^{2}-1\\\\4{c}^{2}+{d}^{2} = 1{d}^{2} = 1-4{c}^{2}\\\\ac+bd = 0\\end{array}\\right.\\\\d = \\frac{|-a(b-d)+b(a-c)|}{\\sqrt{{(a-c)}^{2}+{(b-d)}^{2}}}\\\\=\\frac{|ad-bc|}{\\sqrt{{a}^{2}+{b}^{2}+{c}^{2}+{d}^{2}-2ac-2bd}}\\\\=\\frac{|ad-bc|}{\\sqrt{{a}^{2}+{b}^{2}+{c}^{2}+{d}^{2}}}\\\\{d}^{2} = \\frac{{a}^{2}{d}^{2}-2ab-d+{b}^{2}{c}^{2}}{3({a}^{2}-{c}^{2})}\\\\=\\frac{{a}^{2}(1-4{c}^{2})+(2{c}^{2}-1){c}^{2}+2{a}^{2}{c}^{2}}{3({a}^{2}{c}^{2})}\\\\d = \\sqrt{\\frac{1}{3}} = \\frac{\\sqrt{3}}{3}
+$$
+`
+
 const slides = convertMarkdownToSlides(sample4);
 
 document.getElementsByClassName("pre")[0].innerHTML = slides.join("");
