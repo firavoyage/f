@@ -578,7 +578,7 @@
 
 - fix: make useref safe for objects
   - ref will unexpectedly reapply initial values if ref.current doesnt change
-  - if an object is passed to useref, while the ref is the dep of an effect. the effect will rerun every render whether or not the ref changes. because components are js fn, the same object will have different ref between two calls. 
+  - if an object is passed to useref, while the ref is the dep of an effect. the effect will rerun every render whether or not the ref changes. because components are js fn, the same object will have different ref between two calls.
   - now useref only set initial value in the first render.
 - fix!: make prop deps in effect work properly
   - array.map() doesnt modify the original array
@@ -590,3 +590,14 @@
 
 - refactor: put the global variable on globalthis instead of "const foo"
 - docs: voyagejs prompt for llm
+
+## 1.6 20250929
+
+- refactor: use iife
+- typo: correct the release file name from umd to bundled
+- test: added nested components (parent and child)
+- fix!: use weakmap to cache memo(component), letting the same component have the same memoized one, making preact's vdom reusage work
+  - no need to lift all the states (including html element's states) up, e.g. input's focus position
+- fix!: use prototype to check voyage's special types (instead of some awkward tricks)
+  - onClick wont be triggered, as the value is not a prop
+- refactor: make show (one of h() utilities) simpler

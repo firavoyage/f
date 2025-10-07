@@ -15,7 +15,10 @@ let examples = {
   Show() {
     const show = p(true);
 
-    return h("p", { show }, "koko dayo!");
+    return h(
+      h("button", { onClick: () => show(!show()) }, "toggle"),
+      h("p", { show }, "koko dayo!")
+    );
   },
   Ref() {
     const content = p(`here's some <strong>HTML!!!</strong>`);
@@ -167,6 +170,19 @@ let examples = {
     // todo: fix display error (done)
 
     return JSON.stringify(store());
+  },
+  Parent() {
+    const count = p(0);
+
+    return h(
+      "div",
+      h("button", { "@click": () => count((c) => c + 1) }, "Re-render Parent"),
+      h(examples.Child)
+    );
+  },
+  Child() {
+    const localState = p(0); // Preserved
+    return h("input", { defaultValue: "focus preserved" });
   },
 };
 

@@ -2929,3 +2929,300 @@ Test with:
 ```javascript
 renderMath("a \\\\ b \\\\ c", true); // Should now be left-aligned
 ```
+
+# 12
+
+- change the params to `content, alignment = "l", displayMode = false`
+  - alignment can be l c r
+- modify the config, dont let it output mjx-assistive-mml
+
+```js
+const renderMath = (content, displayMode = false) => {
+  try {
+    if (content.includes("\\\\")) {
+      const lines = content.split("\\\\");
+      const hasColumns = lines[0].includes("&");
+
+      if (hasColumns) {
+        // For matrix-like content
+        content = `\\begin{matrix}${content}\\end{matrix}`;
+      } else {
+        // For simple line breaks, use array with @{}l@{} for left alignment
+        const arrayContent = lines.map((line) => line.trim()).join("\\\\");
+        content = `\\begin{array}{@{}l@{}}${arrayContent}\\end{array}`;
+      }
+    }
+
+    const html = MathJax.tex2svg(content, {
+      display: displayMode,
+      em: 16,
+      ex: 8,
+      lineWidth: 100000,
+      scale: 1,
+    });
+
+    const htmlString = MathJax.startup.adaptor.outerHTML(html);
+
+    // Force left alignment
+    return displayMode
+      ? `<div style="text-align: left; display: block;">${htmlString}</div>`
+      : `<span style="text-align: left; display: inline-block;">${htmlString}</span>`;
+  } catch (error) {
+    return `<span style="color: #cc0000;">LaTeX Error: ${error.message}</span>`;
+  }
+};
+```
+
+---
+
+Here's the modified function with the new parameters and configuration:
+
+```js
+const renderMath = (content, alignment = "l", displayMode = false) => {
+  try {
+    if (content.includes("\\\\")) {
+      const lines = content.split("\\\\");
+      const hasColumns = lines[0].includes("&");
+
+      if (hasColumns) {
+        // For matrix-like content
+        content = `\\begin{matrix}${content}\\end{matrix}`;
+      } else {
+        // For simple line breaks, use array with specified alignment
+        const arrayContent = lines.map((line) => line.trim()).join("\\\\");
+        const alignChar =
+          alignment === "c" ? "c" : alignment === "r" ? "r" : "l";
+        content = `\\begin{array}{@{}${alignChar}@{}}${arrayContent}\\end{array}`;
+      }
+    }
+
+    const html = MathJax.tex2svg(content, {
+      display: displayMode,
+      em: 16,
+      ex: 8,
+      lineWidth: 100000,
+      scale: 1,
+      assistiveMml: false, // Disable assistive MathML output
+    });
+
+    const htmlString = MathJax.startup.adaptor.outerHTML(html);
+
+    // Use the specified alignment
+    const alignStyle =
+      alignment === "c" ? "center" : alignment === "r" ? "right" : "left";
+
+    return displayMode
+      ? `<div style="text-align: ${alignStyle}; display: block;">${htmlString}</div>`
+      : `<span style="text-align: ${alignStyle}; display: inline-block;">${htmlString}</span>`;
+  } catch (error) {
+    return `<span style="color: #cc0000;">LaTeX Error: ${error.message}</span>`;
+  }
+};
+```
+
+Key changes made:
+
+1. **Parameter signature**: Changed to `(content, alignment = "l", displayMode = false)`
+2. **Alignment handling**:
+   - The array environment now uses the specified alignment (`l`, `c`, or `r`)
+   - The CSS `text-align` property uses the corresponding alignment value
+3. **Configuration**: Added `assistiveMml: false` to the MathJax configuration to prevent output of mjx-assistive-mml elements
+
+The function now supports:
+
+- `alignment = "l"` (left alignment, default)
+- `alignment = "c"` (center alignment)
+- `alignment = "r"` (right alignment)
+- `displayMode = true/false` for display vs inline math
+- No assistive MathML output in the rendered result
+
+# 13
+
+im using mathjax.tex2svg how to remove the mjx-assistive-mml tag in the output, just let it output the svg. i wanna do so by config. if not existing, give me the regex
+
+---
+
+You can remove the `mjx-assistive-mml` tag from MathJax's SVG output through configuration. Here are the approaches:
+
+## Configuration Method (Recommended)
+
+Add this configuration to your MathJax setup:
+
+```javascript
+window.MathJax = {
+  svg: {
+    displayAlign: "center",
+    displayIndent: "0",
+    // Disable assistive MathML
+    assistiveMml: false,
+  },
+  options: {
+    skipHtmlTags: ["script", "noscript", "style", "textarea", "pre", "code"],
+    renderActions: {
+      // Remove assistive MathML rendering
+      addMenu: [0, "", ""],
+    },
+  },
+};
+```
+
+## Alternative: CSS Method
+
+If the configuration doesn't work, you can hide it with CSS:
+
+```css
+mjx-assistive-mml {
+  display: none !important;
+}
+```
+
+## Regex Method (If configuration fails)
+
+If you need to process the output string, use this regex:
+
+```javascript
+const cleanSVG = svgString.replace(
+  /<mjx-assistive-mml[^>]*>[\s\S]*?<\/mjx-assistive-mml>/g,
+  ""
+);
+```
+
+Or more specifically:
+
+```javascript
+const cleanSVG = svgString.replace(
+  /<mjx-assistive-mml[^>]*>.*?<\/mjx-assistive-mml>/gs,
+  ""
+);
+```
+
+## Complete Example
+
+```javascript
+// MathJax configuration
+window.MathJax = {
+  loader: { load: ["[tex]/ams"] },
+  tex: {
+    inlineMath: [
+      ["$", "$"],
+      ["\\(", "\\)"],
+    ],
+    displayMath: [
+      ["$$", "$$"],
+      ["\\[", "\\]"],
+    ],
+  },
+  svg: {
+    fontCache: "global",
+    assistiveMml: false, // This should prevent assistive MathML
+  },
+};
+
+// If you still get the tag, use this function to clean it
+function cleanMathJaxSVG(svgString) {
+  return svgString.replace(
+    /<mjx-assistive-mml[^>]*>.*?<\/mjx-assistive-mml>/gs,
+    ""
+  );
+}
+```
+
+The `assistiveMml: false` configuration should be your first approach as it prevents the tag from being generated in the first place. The regex method is a fallback for post-processing.
+
+# 14
+
+neither works
+
+---
+
+You're right, those methods don't always work reliably with MathJax. Here are more direct approaches:
+
+## Method 1: DOM Manipulation (Most Reliable)
+
+```javascript
+function cleanMathJaxSVG(svgString) {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(svgString, "image/svg+xml");
+  const assistiveMml = doc.querySelector("mjx-assistive-mml");
+  if (assistiveMml) {
+    assistiveMml.remove();
+  }
+  return doc.documentElement.outerHTML;
+}
+
+// Usage
+const svgOutput = MathJax.tex2svg("E = mc^2").innerHTML;
+const cleanSVG = cleanMathJaxSVG(svgOutput);
+```
+
+## Method 2: More Specific Regex
+
+```javascript
+function removeAssistiveMML(svgString) {
+  // More precise regex that handles various formats
+  return svgString.replace(
+    /<mjx-assistive-mml[^>]*>[\s\S]*?<\/mjx-assistive-mml>\s*/g,
+    ""
+  );
+}
+```
+
+## Method 3: String Manipulation (Simple but Effective)
+
+```javascript
+function removeAssistiveMML(svgString) {
+  const startTag = "<mjx-assistive-mml";
+  const endTag = "</mjx-assistive-mml>";
+
+  const startIndex = svgString.indexOf(startTag);
+  if (startIndex === -1) return svgString;
+
+  const endIndex = svgString.indexOf(endTag, startIndex);
+  if (endIndex === -1) return svgString;
+
+  return (
+    svgString.slice(0, startIndex) + svgString.slice(endIndex + endTag.length)
+  );
+}
+```
+
+## Method 4: Post-processing Function
+
+```javascript
+function cleanMathJaxOutput(mathjaxOutput) {
+  if (typeof mathjaxOutput === "string") {
+    return mathjaxOutput.replace(
+      /<mjx-assistive-mml[^>]*>[\s\S]*?<\/mjx-assistive-mml>/g,
+      ""
+    );
+  } else if (mathjaxOutput.innerHTML) {
+    // If it's a DOM element
+    const element = mathjaxOutput.cloneNode(true);
+    const assistive = element.querySelector("mjx-assistive-mml");
+    if (assistive) assistive.remove();
+    return element.innerHTML;
+  }
+  return mathjaxOutput;
+}
+
+// Usage
+const output = MathJax.tex2svg("\\frac{1}{2}");
+const clean = cleanMathJaxOutput(output);
+```
+
+## Method 5: CSS Display None (Quick Fix)
+
+If you just want to hide it visually:
+
+```css
+mjx-assistive-mml {
+  display: none !important;
+  visibility: hidden !important;
+  position: absolute !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
+```
+
+**I recommend Method 1 (DOM Manipulation)** as it's the most reliable and handles edge cases better than regex. Which method works for your specific use case?

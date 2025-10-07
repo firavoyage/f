@@ -37,5 +37,20 @@ it's an object of four functions, `h`, `p`, `e`, `r`.
   - if app is fn (component), app = create element app
   - pass to preact.render
 
+btw, it has such code at the top
+
+```js
+const preact = {
+  ...window.preact,
+  ...window.preactHooks,
+  ...window.preactCompat,
+};
+```
+
+voyage can properly integrate with preact components. just pass the fn to `h`.
+
+upd 20251007
+
+prop.produce can not be nested.
 
 

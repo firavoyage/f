@@ -1,46 +1,13 @@
-const renderMath = (content, displayMode = false) => {
-  try {
-    if (content.includes("\\\\")) {
-      const lines = content.split("\\\\");
-      const hasColumns = lines[0].includes("&");
-
-      if (hasColumns) {
-        // For matrix-like content
-        content = `\\begin{matrix}${content}\\end{matrix}`;
-      } else {
-        // For simple line breaks, use array with @{}l@{} for left alignment
-        const arrayContent = lines.map((line) => line.trim()).join("\\\\");
-        content = `\\begin{array}{@{}l@{}}${arrayContent}\\end{array}`;
-      }
-    }
-
-    const html = MathJax.tex2svg(content, {
-      display: displayMode,
-      em: 16,
-      ex: 8,
-      lineWidth: 100000,
-      scale: 1,
-    });
-
-    const htmlString = MathJax.startup.adaptor.outerHTML(html);
-
-    // Force left alignment
-    return displayMode
-      ? `<div style="text-align: left; display: block;">${htmlString}</div>`
-      : `<span style="text-align: left; display: inline-block;">${htmlString}</span>`;
-  } catch (error) {
-    return `<span style="color: #cc0000;">LaTeX Error: ${error.message}</span>`;
-  }
-};
-
 const test = {
   a: "a^2*log(2,3)",
   b: `z = 1 + bi, b != 0. z + 2/z = m. m in R. 
 求 m.`,
   c: `z^2 - mz + 2 = 0
   z_1 = 1+bi, z_2 = 1-bi (共轭虚根定理)
+  {
     z_1 + z_2 = 2
     z_1 + z_2 = - (-m)/(1) (verta)
+  }
   m = 2
   `,
   // todo: support literal )
@@ -49,11 +16,11 @@ const test = {
 求 a 范围.
 `,
   e: `g(x) - f(x) = x^2-2x+2
-g(x_n)-f(x_n) = sigma(i=1, n-1, g(x_i) - f(x_i))
-x_n^2 - 2x_n +2 = sigma(i=1, n-1, x_i^2-2x_i) + 2(n-1)
+g(x_n)-f(x_n) = sum(i=1, n-1, g(x_i) - f(x_i))
+x_n^2 - 2x_n +2 = sum(i=1, n-1, x_i^2-2x_i) + 2(n-1)
 h(x) = x^2-2x in [-1, 45/4]
-h(x_n)+2 = sigma(i-1, n-1, h(x_i)) + 2n-2
-2n = h(x_n) - sigma(i=1, n-1, h(x_i)) + 4 
+h(x_n)+2 = sum(i-1, n-1, h(x_i)) + 2n-2
+2n = h(x_n) - sum(i=1, n-1, h(x_i)) + 4 
 <= 45/4 - (n-1)(-1) + 4
 <= 61/4 + n-1
 n <= 57/4 = 14.25
@@ -74,8 +41,6 @@ d^2 = (a^2d^2-2ab-d+b^2c^2)/(3(a^2-c^2))
 d = sqrt(1/3) = sqrt(3)/3`,
 };
 
-const current = test.f;
-
 const theme = {
   font: {
     // math: "XITS Math, math",
@@ -86,6 +51,7 @@ const theme = {
 };
 
 const stylesheet = {
+  "*": `overflow-y-auto`,
   body: `fixed inset-0 bg-black`,
   ".app": `p-4
   overflow-y-auto
@@ -94,18 +60,21 @@ const stylesheet = {
 
 const { h, p, e, r } = voyage;
 
-const app = () => {
-  const { has } = f;
+const { map, values } = f;
 
+const app = () => {
   const loaded = p(false);
 
+  // no need to wait for loading since the async prop on tex-svg.js is removed
   e(() => {
-    const a = setInterval(() => {
-      if (has(window, "MathJax", "tex2svg")) {
-        loaded(true);
-        clearInterval(a);
-      }
-    }, 10);
+    // const { has } = f;
+
+    // const a = setInterval(() => {
+    //   if (has(window, "MathJax", "tex2svg")) {
+    //     loaded(true);
+    //     clearInterval(a);
+    //   }
+    // }, 10);
 
     // // Wait for MathJax to load
     // window.MathJax = {
@@ -119,13 +88,27 @@ const app = () => {
     //     },
     //   },
     // };
+
+    loaded(true);
   });
 
   return (
     loaded() &&
     h(
       h("style", { html: flair({ stylesheet, theme }) }),
-      h("div", { class: "app", html: renderMath(precious(current)) })
+      h(
+        "div",
+        { class: "app" },
+        map(values(test), (a) =>
+          h(
+            h("div", {
+              class: "test",
+              html: renderMath(precious(a), "l", true),
+            }),
+            h("br")
+          )
+        )
+      )
     )
   );
 };
