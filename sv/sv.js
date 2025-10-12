@@ -364,7 +364,7 @@ const cards = (id) =>
       defence: 7,
       when: {
         in: { summon: [{ id: "greatpuppet", number: 3 }] },
-        e: "fn: give all puppet on field protect and out: hit 2",
+        e: "fn: give all puppet on field ward and out: hit 2",
       },
     },
     alouette: {
@@ -444,7 +444,7 @@ const cards = (id) =>
       cost: 2,
       attack: 2,
       defence: 2,
-      ability: "protect",
+      ability: "ward",
       when: {
         in: "fn if se unlocked, +0/+3",
       },
@@ -483,7 +483,7 @@ const cards = (id) =>
       cost: 3,
       attack: 2,
       defence: 3,
-      ability: "protect",
+      ability: "ward",
       when: {
         in: "fn Gain Crest: Grimnir, Heavenly Gale.",
       },
@@ -565,7 +565,7 @@ const cards = (id) =>
         e: {
           select: {
             from: "hand artifact",
-            do: 'fn give it Ward and "Can\'t be destroyed by abilities"',
+            do: 'fn give it ward and "Can\'t be destroyed by abilities"',
           },
         },
       },
@@ -584,7 +584,7 @@ const cards = (id) =>
       defence: 3,
       when: {
         in: { summon: [{ id: "victoria" }] },
-        with: "fn Whenever an allied Puppetry follower enters the field, give it Ward.",
+        with: "fn Whenever an allied Puppetry follower enters the field, give it ward.",
         e: { summon: [{ id: "greatpuppet" }] },
       },
     },
@@ -648,7 +648,12 @@ const main = ({ status }) => {
   return h(buttons, { actions });
 };
 
-const initialcardnumber = 4;
+const constants = {
+  initialcardnumber: 4,
+  handmax: 9,
+  fieldmax: 5,
+  playpointsmax: 10,
+};
 
 const player = ({ player, name }) => {
   return h(
@@ -658,6 +663,7 @@ const player = ({ player, name }) => {
     // field
     // (if there is any) badges
     h("p", name, player.leader.character, player.leader.health),
+    h("p", "playpoints:", player.playpoints),
     h("p", "hand:", player.hand.length),
     h("p", "field:", player.field.length),
     player.badges.length > 0 && h("p", "badges:", player.badges.length)
@@ -673,58 +679,97 @@ const board = ({ state }) => {
   return h(
     h(player, { player: state.a, name: "player a" }),
     h(player, { player: state.b, name: "player b" }),
-    h("p", `turn: ${state.turn}`)
+    h("p", `turn: ${state.turn}`),
+    state.result && h("p", state.result)
   );
 };
 
-const battle = ({ status }) => {
-  const init = ({ a, b }) => {
-    // a: deck, b: deck
-    // deck: {[id]: number}
-    const player = (deck) => {
-      let shuffled = [];
-      map(deck, ([id, number]) => {
-        for (const _ of repeat(number)) {
-          shuffled.push(cards(id));
-        }
-      });
-      shuffled = shuffle(shuffled);
-      const player = {
-        // todo: "portal"
-        leader: { character: "portal", health: 20 },
-        badges: [],
-        field: [],
-        hand: [],
-        deck: shuffled,
-      };
-      // draw cards
-      for (const _ of repeat(initialcardnumber)) {
-        player.hand.push(player.deck.pop());
+// (pure) -> params of effects
+const next = (state) => {
+  const paths = {};
+
+  // play, attack, evolve, card ability
+  return paths;
+};
+
+const init = ({ a, b }) => {
+  // a: deck, b: deck
+  // deck: {[id]: number}
+  const player = (deck) => {
+    let shuffled = [];
+    map(deck, ([id, number]) => {
+      for (const _ of repeat(number)) {
+        shuffled.push(cards(id));
       }
-      return player;
+    });
+    shuffled = shuffle(shuffled);
+    const player = {
+      // todo: "portal"
+      leader: { character: "portal", health: 20 },
+      badges: [],
+      field: [],
+      hand: [],
+      deck: shuffled,
+      playpoints: 0,
     };
-    const state = { a: player(a), b: player(b), turn: "a", round: 0 };
-    return state;
+    // draw cards
+    for (const _ of repeat(constants.initialcardnumber)) {
+      player.hand.push(player.deck.pop());
+    }
+    return player;
   };
+  const state = {
+    a: player(a),
+    b: player(b),
+    turn: "a",
+    // the next turn should begin
+    pending: true,
+    result: false,
+  };
+  return state;
+};
+
+const battle = ({ status }) => {
   const state = p(() => init({ a: exampledeck, b: exampledeck }));
-  // state.produce((state)=>draw(state,n))
+
+  // effects triggered by action
   const effects = (effect, ...props) =>
     state.produce((state) => {
+      const player = state[state.turn];
+      const opponent = state.turn == "a" ? "b" : "a";
       const e = {
         begin() {
-          state.round++;
+          if (player.playpoints < constants.playpointsmax) {
+            player.playpoints++;
+          }
           e.draw(1);
         },
+        end() {
+          state.turn = opponent;
+          state.pending = true;
+        },
         draw(n) {
-          let player = state[state.turn];
           for (const _ of repeat(n)) {
+            if (player.deck.length == 0) {
+              state.result = `${opponent} win`;
+              break;
+            }
             player.hand.push(player.deck.pop());
+            if (player.hand.length > constants.handmax) {
+              player.hand.pop();
+            }
           }
         },
       };
       e[effect](...props);
     });
+
+  // buttons of direct interaction
   const actions = {
+    ...next(state()),
+    end() {
+      effects("end");
+    },
     exit() {
       status("main");
     },
@@ -735,11 +780,15 @@ const battle = ({ status }) => {
     // debug
     console.log(s);
 
-    if (s.round == 0) {
+    if (s.pending) {
+      state("pending", false);
       effects("begin");
     }
   }, [state]);
-  return h(h(board, { state: state() }), h(buttons, { actions }));
+  return h(
+    h(board, { state: state() }),
+    !state().pending && h(buttons, { actions })
+  );
 };
 
 const app = () => {

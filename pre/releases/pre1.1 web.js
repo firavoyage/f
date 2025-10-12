@@ -3,6 +3,37 @@
 // done?: precious: support <=>, =>. literal space.
 // todo: pre web: json parse edge cases (try catch)
 
+/**
+ * Downloads a file with the given filename and content
+ * @param {string} filename - The name of the file to download
+ * @param {string} content - The content of the file
+ * @returns {void}
+ * @example
+ * // Downloads a file named "example.txt" with text content
+ * download('example.txt', 'This is the file content');
+ *
+ * @example
+ * // Downloads a JSON file
+ * download('data.json', JSON.stringify({ name: 'John', age: 30 }));
+ */
+const download = (filename, content) => {
+  // Create a Blob with the content
+  const blob = new Blob([content], { type: "text/plain" });
+
+  // Create a temporary anchor element
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = filename;
+
+  // Programmatically click the link to trigger download
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+
+  // Clean up the URL object
+  URL.revokeObjectURL(link.href);
+};
+
 const theme = {
   color: {
     black: "#12110C",
@@ -182,31 +213,19 @@ const Document = ({ value }) => {
   );
 };
 
-const checkbox = ({ value, children }) => {
-  return h(
-    h("input", {
-      type: "checkbox",
-      checked: value(),
-      "@change": () => value((x) => !x),
-    }),
-    children
-  );
-};
-
-const Config = ({ value, inlinecode }) => {
+const Config = ({ value }) => {
   // h2, file, textarea
   // h2, file, selector, textarea
   return h(
     h("h2", "Config"),
     h(File, { value }, "upload icon"),
-    h("textarea", { bind: value }),
-    h(checkbox, { value: inlinecode }, "inline code in precious")
+    h("textarea", { bind: value })
   );
 };
 
 // todo: toggle component
 
-const Slides = ({ document, style, download, inlinecode }) => {
+const Slides = ({ document, style, download }) => {
   const autodownload = p(false);
   // div toggle:autodownload button:download {html:placeholder}
   return h(
@@ -214,11 +233,11 @@ const Slides = ({ document, style, download, inlinecode }) => {
     h("button", { "@click": download }, "download"),
     h("toggle"),
     h("style", { html: style }),
-    h("div", { class: "pre", html: convert(document, { inlinecode }).join("") })
+    h("div", { class: "pre", html: convert(document).join("") })
   );
 };
 
-const downloadSlides = ({ document, config, inlinecode }) => {
+const downloadSlides = ({ document, config }) => {
   // process config
   config = JSON.parse(config);
   config = map(config, ([item, value]) => [
@@ -234,28 +253,20 @@ const downloadSlides = ({ document, config, inlinecode }) => {
 
   // data: {slides: html[], settings:item{}}
   // item: {options: {}, default:""}
-  const data = {
-    slides: convert(document, { inlinecode }),
-    settings: config,
-  };
+  const data = { slides: convert(document), settings: config };
   const pre = render(data);
-  save("pre.html", pre);
+  download("pre.html", pre);
 };
 
 const app = () => {
   const document = p("");
   const config = p(() => JSON.stringify(configdefault));
-  const inlinecode = p(true);
   e(() => {
     // download document
   }, [document]);
 
   const handleDownload = () => {
-    downloadSlides({
-      document: document(),
-      config: config(),
-      inlinecode: inlinecode(),
-    });
+    downloadSlides({ document: document(), config: config() });
   };
 
   const style = map(values(JSON.parse(config())), (item) => {
@@ -268,13 +279,8 @@ const app = () => {
     h("style", { html: flair({ stylesheet, theme }) }),
     h(preIcon),
     h(Document, { value: document }),
-    h(Config, { value: config, inlinecode }),
-    h(Slides, {
-      document: document(),
-      style,
-      download: handleDownload,
-      inlinecode: inlinecode(),
-    })
+    h(Config, { value: config }),
+    h(Slides, { document: document(), style, download: handleDownload })
   );
 };
 

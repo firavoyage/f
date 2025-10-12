@@ -65,7 +65,12 @@
   // };
 
   // Main renderer creation (function composition)
-  const render = (text) => {
+  const render = (text, config) => {
+    /*
+    config:
+    inlinecode: "code" | "precious"
+    */
+
     // Pure functions for math token handling
     const createMathToken = (type, content, markup, isBlock = false) => ({
       type,
@@ -195,6 +200,18 @@
       .use(window.markdownitEmoji)
       .use(window.markdownitTaskLists);
 
+    // support inline code as math
+    if (config.inlinecode == "precious") {
+      // Override the inline code rule
+      md.renderer.rules.code_inline = (tokens, idx, options, env, self) => {
+        const content = tokens[idx].content;
+
+        // Process with your custom compiler (assuming 'precious' is your compiler)
+        // Use 'i' for inline math context
+        return renderMath(precious(content), "l");
+      };
+    }
+
     const configuredMd = setupMathRules(md);
 
     return configuredMd.render(processLatexEnvironments(text));
@@ -216,10 +233,12 @@
     // todo: fix md process $_a_$ as italic before convert latex
 
     // Convert markdown to HTML and process LaTeX
-    let html = render(markdown);
-    // html = convertLatex(html); // Assumed to be available in scope
+    let html = render(markdown, {
+      inlinecode: config.inlinecode ? "precious" : "math",
+    });
 
     // todo: fix overkill
+    // the closing tag will be omitted
     html = html.replaceAll(`<code class="language-precious">`, "");
     html = html.replaceAll(`<pre><span class="katex">`, `<span class="katex">`);
 

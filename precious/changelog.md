@@ -37,9 +37,14 @@
 
 - fix: handle cjk characters properly
   - on `type()`
-- rejected: add common math set symbols like `R` `N` to dict 
+- rejected: add common math set symbols like `R` `N` to dict
   - coz mathbb (double-struck/hollow) is the standard but causing pain in eyes
   - mathbf is not the standard
 - feat: add fn `max(a)` `max(a, limitation)` and `min`
 - feat: add fn `case(a)` -> `a^\circ`
 - feat: support literal `"`
+
+## 1.5 20251010
+
+- fix: use `varnothing` instead of `emptyset`
+  - varnothing displays better

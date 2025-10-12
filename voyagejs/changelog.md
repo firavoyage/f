@@ -601,3 +601,10 @@
 - fix!: use prototype to check voyage's special types (instead of some awkward tricks)
   - onClick wont be triggered, as the value is not a prop
 - refactor: make show (one of h() utilities) simpler
+
+## 1.7
+
+- todo: fix ref prop
+  - ref will be ignored by preact
+  - change `h fn {ref}` to `{__voyage__ref:ref}`
+  - wrap all components to `({__voyage__ref})=>{component {ref:__voyage__ref}}`

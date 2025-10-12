@@ -190,7 +190,7 @@ liam 977
 
 in: summon 3 greatpuppet
 
-e: "give all puppet on field protect and out: hit 2"
+e: "give all puppet on field ward and out: hit 2"
 
 alouette 524
 
@@ -241,7 +241,7 @@ select field +2/-2
 
 cheretta 222
 
-ability: "protect"
+ability: "ward"
 
 in: fn if se unlocked, +0/+3
 
@@ -263,7 +263,7 @@ in: select enemy do remove
 
 grimnir 323
 
-ability: "protect"
+ability: "ward"
 
 in: fn Gain Crest: Grimnir, Heavenly Gale.
  */
