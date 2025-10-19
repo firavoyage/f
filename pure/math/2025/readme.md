@@ -1,10 +1,20 @@
 # high school, math.
 
+<!-- 
+苹果工具: 计算器. 
+
+苹果城市的人恰能用计算器.
+
+比如, 北京人, 这种安卓生物, 是享受不了现代科技的.
+ -->
+
 "高中, 数学."
 
 2007 作品.
 
-(fira, 2025 秋旬)
+(fira, 2025 秋)
+
+<!-- "2025 修订版" -->
 
 <!-- inspired by lucky star ova starting scene -->
 
@@ -15,6 +25,12 @@
 献给
 
 十年级的 fira.
+
+<!-- 
+versions (title, cover, contents...):
+- 献给十年级的 "我": 高中, 数学. (更多知识讲解)
+- 给苹果高中生看的苹果数学: 纪念户圣 (更多解题技巧)
+ -->
 
 ## preface
 
@@ -156,6 +172,12 @@ evangelion 的语言.
 
 <!-- 不要秒杀. 对题目的不敬... aha moment ("成就感") 是可以的. -->
 
+<!-- 
+朴素解法, 尤其是, 这道题就是为了特解而生的 (ref pure math g11 summer holidays) (射箭画靶), 即使如此坚持, 那几乎一定是 fira 的想法.
+
+不符合 (政府创立学校/私人创办的学习机构) 教学惯例, 不迎合 (政府下教育部的) 考试 (高考), 不贴近课本, 那可能是 llm 的想法.
+ -->
+
 ## memories
 
 <!--
@@ -194,52 +216,32 @@ i do not need to edit it now. if i happen to use it in problems, add it.
 
 ## <!-- contents -->
 
-<!-- todo: 学习氧化还原! -->
-
-<!--
-2025.10.13 14:40
-surfing...
-inspirations?
-
-(feeling good.)
- -->
-
 <!--
 ref
 
-https://www.bilibili.com/video/BV1Ek4y1w7ma song hao
+drafts/
 
-deprecated. (not completed?!)
+pure math contents
 
-basic textbook explanation. but being humble. (instead of boasting)
+pure math memories
 
-always reading the notes! (like a bad received teacher in my hs)
+pure math main
 
-teaching is just a job... (or not?)
-
-https://www.bilibili.com/video/BV1X14y1d7pu/ zhao li xian, 70 ep
-
-deprecated. most problems are from the textbook instead of mock test papers...
-
-"uee problems are from the textbook", but, maybe only for the easy ones.
+../resources/textbook/math
 
 https://www.bilibili.com/video/BV147411K7xu one math, 223 ep in all
 
 a successful work created by a math enthusiast from a wealthy background
 
-https://www.bilibili.com/video/BV1QyhBzRERn/ contents (maybe useful)
+one math 好像很喜欢把一些, 高一新生可以直接初见杀 (褒义) 的题目, 认真讲解. 似乎学生直接上手做, 做不出? 其实 "我" 不理解什么是基础不好的学生吧...
+
+https://www.bilibili.com/video/BV1QyhBzRERn/ tomath
+
+only included contents (may be useful)
 
 https://www.bilibili.com/video/BV1yT42167tJ a weird vid boomed on douyin
 
 only mentioned some clickbait nouns, without any explanation. used a lot of promotional methods incl. psychology.
-
-https://www.bilibili.com/video/BV1urnmzpEdQ/ ayumu
-
-deprecated. (not completed?!)
-
-idk why he wanna say "key" symbols, "blind" spots, "important" concl.
-
-the low stats (less than 10k views sometimes) proved his failure.
 
 https://www.bilibili.com/video/BV1BV4y1V71p/ ayumu math advanced
 
@@ -251,7 +253,7 @@ https://github.com/maki-math/maki-notes/blob/master/analysis-course-note/chapter
 
 (i know no one is using precious, 233333)
 
-maybe he is just listing everything... instead of emphasizing the hard and omitting the easy
+listing everything including some easy, obvious ones
 
 证明$\neg p \iff$ 证伪 $p$。
 
@@ -259,7 +261,7 @@ maybe he is just listing everything... instead of emphasizing the hard and omitt
 
 https://www.maki-math.com/#/
 
-maybe the website itself is not "geek", although.
+the website itself is not geek styled, although.
 
 https://www.bilibili.com/video/BV1LFMXzkEvG chenzi on conic curve
 
@@ -268,6 +270,30 @@ https://space.bilibili.com/443940499 angel neko chan
 https://space.bilibili.com/1099876025 yunling sapphire
 
 https://space.bilibili.com/3494380319017375 yunling sapphire's sub acc
+
+(deprecated) https://www.bilibili.com/video/BV1urnmzpEdQ/ ayumu
+
+not completed?!
+
+idk why he wanna say "key" symbols, "blind" spots, "important" concl.
+
+the low stats (less than 10k views sometimes) proved his failure.
+
+(deprecated) https://www.bilibili.com/video/BV1Ek4y1w7ma song hao
+
+not completed?!
+
+basic textbook explanation. but being humble. (instead of boasting)
+
+always reading the notes! (like a bad received teacher in my hs)
+
+teaching is just a job... (or not?)
+
+(deprecated) https://www.bilibili.com/video/BV1X14y1d7pu/ zhao li xian, 70 ep
+
+deprecated. most problems are from the textbook instead of mock test papers...
+
+"uee problems are from the textbook", but, maybe only for the easy ones.
 -->
 
 - set and logic
@@ -282,10 +308,25 @@ https://space.bilibili.com/3494380319017375 yunling sapphire's sub acc
 - probability
 - stats
 
+## .
+
+语言, 高中数学的语言.
+
+- 解方程
+  - `(x-1)(x-2) = 0. 解得 x = 1 或 x = 2.`
+  - `(x-1)(x-2) = 0. 解集为 {1, 2}.`
+- 一次函数
+  - `y = 2x+1. 当 x = 0 时, y = 1. 当 x = 2 时, y = 5.`
+  - `f(x) = 2x+1. f(0) = 1. f(2) = 5.`
+
+变简洁了呢!
+
 ## 集合
 
 <!--
 https://www.bilibili.com/video/BV12nyrY1EGS ayumu on set and logic: intro
+
+comments:
 
 之前看过一个教师培训的图说互异性和无序性现在要淡化讲解，互异性应该只是列举法写集合的村规而跟集合公理毫无关系，更好的说法是元素重复是immaterial的，比如{1,1}＝{1}。只不过现在教材习题还是和之前的培训不符，还是出了一些基于互异性的习题。
 
@@ -302,8 +343,6 @@ https://www.bilibili.com/video/BV12nyrY1EGS ayumu on set and logic: intro
  -->
 
 集合, 可以表示一些无序的事物 (数, 点, ...).
-
-<!-- 集合, 像一个木桶 (任意容器), 可以表示什么在里面, 什么不在里面. -->
 
 <!-- todo: e.g. -->
 
@@ -423,8 +462,6 @@ pitfall: 元素与集合的符号, 集合之间
   - `"a <=> b" <=> {x|x 满足 a} = {x|x 满足 b}`
   - a 为 b 的充要条件
 
-<!-- 计算! (先讲集合, 这样可以表示解集.) -->
-
 <!--
 条件不一定指因果 (无关).
 如物理中因果不能倒置.
@@ -435,19 +472,85 @@ pitfall: 元素与集合的符号, 集合之间
 不必特别提及了. 与集合相等证明一样.
  -->
 
-<!-- (直接推出). 反证法. 数学归纳法. (可以用来证明有 "无限" 中情况都成立的命题.)
+<!--
+证明有 "无限" 中情况都成立的命题.
 
-任取与存在.
+(直接推出).
 
-任取 等价于最不容易满足条件的要满足.
+反证法.
 
-存在 等价于最容易满足条件的满足就可以了.
+数学归纳法.
 
-(想象, 或者作模板速杀) -->
+任取与存在的等价关系.
 
-<!-- one math 好像很喜欢把一些, 高一新生可以直接初见杀 (褒义) 的题目, 认真讲解. 似乎学生直接上手做, 做不出? 其实 "我" 不理解什么是基础不好的学生吧... -->
+任取 <=> 最不容易满足条件的情况成立. (esp. 不等式)
+
+存在 <=> 最容易满足条件的情况成立. (esp. 不等式)
+-->
 
 ## (不) 等式
+
+<!-- ### 同余性质
+抄写小蓝本数论
+-->
+
+### 等式性质
+
+- 加 `forall a,b,c in R, a = b <=> a + c = b + c`
+  - 减 `x`, 即加 `(-x)`
+- 乘 `forall a,b,c in R, a = b <=> a * c = b * c`
+  - 除以 `x (x!=0)`, 即乘 `(1/x)`
+- 指数 `forall a,b,c in R, a = b => a ^ c = b ^ c`
+  - pitfall: 不一定等价 (取决于奇偶性)
+  - `forall a,b,c in R, a = b <=> a * c = b * c 且 ab>0`
+  <!--
+- 联立 ("传递性")
+  - `a = b 且 a = c => b = c`
+    too obvious. pupils know this.
+    -->
+
+同加, 同乘, 即解方程移项的原理.
+
+### 解方程
+
+<!-- 如果系数确定, 计算器! -->
+
+<!-- 方程: 含未知数的等式. 解集: 所有代入后左右相等的值 -->
+
+<!-- 在此, 而非 memories. 因为一些简单的前置知识, 集合的表示. -->
+
+- 二次
+- verta
+- 方程组
+  - 消元 (消低次的), 代入
+
+### 不等式性质
+
+- 加
+- 乘
+- 指数
+
+### 解不等式
+
+<!-- 如果系数确定, 计算器! -->
+
+- 二次
+  - (必要时转化) 保证二次项系数正, 右边为 0
+  - "大于取两边, 小于取中间"
+- 分式 (转化)
+  - pf: 0
+- 绝对值
+  - 分类
+  - 几何意义
+- 高次
+  - notice that: 每两个相邻零点间, 要么全部小于零, 要么全部大于零
+  - "穿根" (系数正, 升序, 最右侧大于, 其余正负区间交替. 偶数次重根消去, 因为永远正, 0 特判. )
+- 不等式组
+  - 求交集 (`x > 1 且 x > 2 => x > 2`)
+
+### misc
+
+"不等式公式收集"
 
 <!--
 关于 amgm 不等式, 三角不等式, 只是提到.
@@ -475,76 +578,115 @@ zhihu 高手们, 不可及啊!
 https://www.zhihu.com/search?type=content&q=%E5%9F%BA%E6%9C%AC%E4%B8%8D%E7%AD%89%E5%BC%8F
  -->
 
-<!-- ### 同余性质
-抄写小蓝本数论
+原理. 任意数平方大于等于 0.
+
+<!-- 使用 a.b 而不是 a::b -->
+
+- 基本不等式.加 `a + b >= 2 sqrt(ab)`
+- 基本不等式.乘 `ab <= ((a+b)/2)^2`
+  <!-- - 较少使用 -->
+- 基本不等式.多元
+  <!-- 参考小蓝本 -->
+  <!-- - 不使用 -->
+- 三角不等式 `|a| + |b| >= |a + b|`
+
+## 函数
+
+<!--
+contents
+
+- **函数概念与基本初等函数**
+  - **函数**：定义、三要素（定义域、值域、对应法则）、表示方法、单调性、奇偶性、周期性。
+  - **基本初等函数 I**：
+    - **指数函数**：指数运算、图像与性质。
+    - **对数函数**：对数运算、换底公式、图像与性质。
+    - **幂函数**：图像与性质。
+  - **基本初等函数 II（三角函数）**：
+    - 任意角的三角函数（正弦、余弦、正切等）。
+    - 同角三角函数关系、诱导公式。
+    - 三角函数的图像与性质（振幅、周期、相位）。
+    - 两角和与差的正弦、余弦、正切公式，二倍角公式。
+    - 正弦定理、余弦定理及其解三角形应用。
+- **函数与应用**
+  - **函数的应用**：函数与方程的关联（零点与二分法），函数模型及其应用（指数、对数、幂函数增长差异）。
+  - **导数及其应用**：
+    - 导数的概念与几何意义（切线斜率）。
+    - 基本初等函数的导数公式、导数的四则运算法则、复合函数求导法则（链式法则）。
+    - 利用导数研究函数的单调性、极值与最值。
+    - 生活中的优化问题（如面积、体积最大、成本最小等）。
+
 -->
 
-### 等式性质
+### 性质
 
-- 加 `forall a,b,c in R, a = b <=> a + c = b + c`
-  - 减 `x`, 即加 `(-x)`
-- 乘 `forall a,b,c in R, a = b <=> a * c = b * c`
-  - 除以 `x (x!=0)`, 即乘 `(1/x)`
-- 指数 `forall a,b,c in R, a = b => a * c = b * c`
-  - pitfall: 不一定等价 (取决于奇偶性)
-  - `forall a,b,c in R, a = b <=> a * c = b * c 且 ab>0`
-- 联立 ("传递性")
-  <!-- - 什么时候会用到呢? 好像不久前用过呢. -->
-  - `a = b 且 a = c => b = c`
+<!-- f(x) 而不是 y -->
 
-同加, 同乘, 即解方程移项的原理.
-
-### 解方程
-
-<!-- 方程: 含未知数的等式 -->
-
-<!-- 如果系数确定, 计算器! -->
-
-<!-- 不必放入 memories 了. math wiki 不分年级 (与三次元人类定义的年级无关). -->
-
-- 多元? 消元.
-- 二次
-
-### 不等式性质
-
-- 加
-- 乘!
-- 指数?
-
-### 解不等式
-
-<!-- 如果系数确定, 计算器! -->
-
-- 二次
-  - (必要时转化) 保证二次项系数正, 右边为 0
-  - "大于取两边, 小于取中间"
-- 高次
-  - notice that: 每两个相邻零点间, 要么全部小于零, 要么全部大于零
-  - "穿根" (一定间隔吗?)
-
-### (解不等式组)
-
-求交集
-
-(`x > 1 且 x > 2 => x > 2`)
-
-## fn
-
-函数.
+<!-- 一些名词 -->
 
 形: 奇偶, 周期.
 
-xa ax log
+### 变换
 
-log 运算. 换底.
+- translate
+  <!-- 不是翻译, 是平移的意思. 小时候写过一些 css. -->
+- scale
+<!-- - rotate -->
 
-值: 单调, 值域.
+### 幂函数, 指数函数, 对数函数
+
+- 对数的定义
+  - log `log(a,b) = x when a^x = b (a>0 且 a!=1, b>0)`
+  - 值 `x = "a 的多少次方等于 b? (得到这个多少)"`
+  - 底数 `a`
+  - 真数 `b`
+  - lg "常用对数" `lg(b) = log(10,b)`
+  - ln "自然对数" `ln(b) = log(e,b)`
+    <!-- - 为什么有这样的定义域? -->
+    <!-- e.g. -->
+- 幂函数 `f(x) = x^a`
+- 指数函数 `f(x) = a^x`
+- 对数函数 `f(x) = log(a,x)`
+<!-- - pitfall: 幂函数 => x 为 x, a 为常数, 没有系数, 其他项. `2x^3` `(x+1)^2` 都不是幂函数. -->
+
+- 指数运算
+  <!-- 证明: 展开 (定义法) -->
+  - `0^0 无意义`
+  - `a^0 = 1`
+  - `a^x = "x 个 a 相乘"`
+  - 负 `a^(-x) = 1/a^x`
+  - 分数 `a^(1/x) = sqrt(a, x)`
+  <!-- precious: support sqrt(a,b) -->
+  - `a^x * a^y = a^(x+y)`
+  - `a^x / a^y = a^(x-y)`
+  <!-- 还是写进去吧, 尽管换元 -y 即可 -->
+  - `(a^x)^y = a^(xy)`
+  - `(ab)^x = a^x*b^x`
+- 对数运算
+  <!-- proof: 定义 -->
+  - 内乘 (除) 外加 (减)
+    - `log(a, bc) = log(a,b) + log(a,c) when b,c > 0`
+    - `log(a, b/c) = log(a,b) - log(a,c) when b,c > 0`
+  - 内指外乘 `log(a, b^c) = c * log(a,b) when b > 0`
+  - 换底 `log(a,b) = log(c,b)/log(c,a) (forall valid a,b,c) = ln(b)/ln(a)`
+    - proof: `log(a,b) = log(a,b) * log(c,a) / log(c,a) = log(c,a^log(a,b)) / log(c,a) = log(c,b) / log(c,a)`
+    <!-- fuck baga llm. see drafts log change base -->
+    - "真除以底"
+    <!-- - 全换成 ln 就可以了 -->
+  - pitfall: 有意义. 内外区分.
+
+### 三角函数
+
+不只是锐角的角度
+
+弧度
+
+值域, 单调性
 
 derivative
 
 > cult
 
-<!-- 必修一没有三角函数?! -->
+<!-- ?! -->
 
 三角函数.
 
@@ -598,12 +740,189 @@ cos a b
 
 "大脑一片空白..." -->
 
-## 2d
+## 数列
+
+<!-- 
+数列
+
+数列的概念、表示方法。
+
+等差数列：通项公式、前n项和公式及性质。
+
+等比数列：通项公式、前n项和公式及性质。
+
+常见的求通项公式与方法（如累加法、累乘法等）。
+
+数列求和的其他方法（如裂项相消、错位相减）。
+ -->
+
+## 复数
+
+<!--
+放在这里, 承上启下. (代数, 几何)
+ -->
+
+<!-- 
+复数
+
+复数的概念（虚数单位 i），代数表示。
+
+复数的四则运算。
+
+复数的几何意义（复平面）。
+
+共轭复数。
+ -->
+
+<!-- 
+复数是很强的工具. 
+
+但, 高中下, 似乎它能做的, 向量都能做.
+ -->
+
+## (平面) 解析几何
+
+<!-- 
+平面解析几何
+
+直线与方程：直线的倾斜角与斜率、各种形式的直线方程、两直线的位置关系（平行、垂直、相交）。
+
+圆与方程：圆的标准方程与一般方程、直线与圆的位置关系、圆与圆的位置关系。
+
+圆锥曲线与方程：
+
+椭圆：定义、标准方程、几何性质（焦点、长短轴、离心率）。
+
+双曲线：定义、标准方程、几何性质（焦点、实虚轴、渐近线、离心率）。
+
+抛物线：定义、标准方程、几何性质（焦点、准线、离心率）。
+
+圆锥曲线的综合应用。
+ -->
 
 <!--
 圆锥曲线有许多漂亮的方法. 有机会 "我" 会与之结识的.
 (zhihu)
 -->
+
+## 立体几何
+
+<!-- 
+每一步, 一定是公理或者定理. a => b 或者 a <=> b 皆可.
+a 一定是 (联立) 题目或者之前推出的条件.
+判题时, 忽略第一步错误及以后的所有文本. (除了求解时答案 1 分)
+苹果小学的回忆...
+
+可以用 "又".
+
+但, 我不喜欢. 因为自虐好爽.
+
+像是, 小时候, 花一下午叠幸运星的感觉吧. (描绘心理)
+ -->
+
+<!-- 
+立体几何与 (平面) 解析几何拆分 (放在不同的 h2 下) 的原因:
+
+高中下, 解析几何, 仅包含平面, 不学习 "立体解析几何"
+
+e.g. 表示一条直线, 一个平面 (法向量), 最多使用向量, 而不是表示为 x y z 的 (联立) 等式与定义域. 
+
+(ask llm: "立体解析几何")
+
+尽管可以随意地提到一些.
+ -->
+
+<!-- 
+立体几何
+
+空间几何体：柱、锥、台、球的结构特征、三视图和直观图、表面积与体积计算。
+
+点、线、面的位置关系：
+
+公理体系。
+
+空间线、面之间的平行与垂直关系的判定与性质。这是核心和难点。
+
+空间向量与立体几何（现代方法）：
+
+空间直角坐标系、空间向量的概念与运算。
+
+用法向量求线面角、二面角。
+
+用向量证明平行、垂直关系，大大降低了思维难度。
+ -->
+
+## 概率
+
+<!-- 
+概率
+
+排列、组合与二项式定理
+
+计数原理：分类加法计数原理、分步乘法计数原理。
+
+排列与组合：概念与计算公式。
+
+二项式定理：公式、通项公式、系数性质。
+
+随机事件的概率：概率的意义、古典概型（等可能）、几何概型。
+
+概率的基本性质。
+
+条件概率。
+
+事件的相互独立性。
+
+离散型随机变量及其分布列：重点是二项分布 和超几何分布。
+
+正态分布：概念与曲线的特点（钟形曲线、对称性、3σ原则）。
+
+离散型随机变量的数字特征：期望（均值）、方差。
+ -->
+
+## 统计
+
+<!-- 
+统计
+
+随机抽样：简单随机抽样、系统抽样、分层抽样。
+
+用样本估计总体：频率分布表与直方图、茎叶图、样本的数字特征（众数、中位数、平均数、方差、标准差）。
+
+变量间的相关关系：散点图、线性回归方程（最小二乘法思想）。
+ -->
+
+## misc
+
+<!-- 
+四、其他与拓展
+算法初步
+
+算法概念、程序框图（三种基本逻辑结构：顺序、条件、循环）。
+
+基本算法语句（伪代码或某种编程语言）。
+
+算法案例（如辗转相除法、秦九韶算法）。
+
+坐标系与参数方程（部分教材作为选修）
+
+极坐标系：极坐标与直角坐标的互化。
+
+参数方程：常见曲线（直线、圆、圆锥曲线）的参数方程。
+ -->
+
+<!-- 
+知识网络的核心联系
+函数思想 是灵魂，贯穿代数、三角、数列、导数。
+
+数形结合 是桥梁，连接代数与几何，体现在解析几何和向量应用中。
+
+方程与不等式 是工具，在几乎所有板块中都有应用。
+
+概率与统计 提供了处理不确定性的数学方法，与排列组合紧密相关。
+
+向量 是解决几何问题的强大代数工具。
+ -->
 
 ## atogaki
 
@@ -629,6 +948,65 @@ fira 不会说 "平均分" "中位分". 可能会说 "最高分", 但最好也�
 
 (最终没有使用这句话. 因为活跃的, 鲜艳的世界也无伤.)
 
+"fira"
+
+守护世间的利刃.
+
+"..."
+
+不喜欢三次元.
+
+现实世界, 万物生息, 自然, 规律性的.
+
+但, "我" 来到世间, 从来不是自由的.
+
+守护. 闪耀.
+
+"我" 知道自己在做什么.
+
+幻想. 人的幻想, 或许就是因为这样的目的创造的.
+
+从来没有行尸走肉, 仅仅为了活着, 那样的人类, 不会有名字, 不会有特征.
+
+一切都是有意义的. 天气, 心的隐喻. 自然. 山. 云. 遥远, 开阔. (evangelion)
+
+<!-- 命运的隐喻, 时间的隐喻. -->
+
+"唯逝者圣" / "脆弱的, 欲望的使徒"
+
+说来奇怪. 
+
+hu chenfeng 在世时, 未曾留心.
+
+离去后, 才喊着 "户圣千古" 的, 是 "我" 啊.
+
+究其原因. 
+
+户先生的作品, 
+
+形式上, twitter, telegram (channel/chat), 有过之无不及.
+
+内容上, 不过 zhihu fav (id: firavoyage) 的子集.
+
+这个世界上, 
+
+有马督工了, 有蒋炎岩 (id: 绿导师原谅你了) 了, (对于看客而言) 不多一个不是吗?
+
+一说以为, 户先生, 是 berryberry 上仅存的右派了 (, 余下皆左).
+
+但, (尽管许多论客相当在意), 左右, 真的是重要的性质吗?
+
+相比于左右之异, 或许其共性更为重要.
+
+无论左右, 讨论的, 不外乎 "人" 与 "民" 的矛盾.
+
+
+
+
+键盘政治是脆弱的, 不在于传感器船 (?), 而在于, 政治家, 是没有记忆的.
+
+
+
 > btw, im playing svwb. i love yokidou. (i will let you know im a serious player.)
 >
 > ~~vtbsol~~
@@ -638,3 +1016,5 @@ fira 不会说 "平均分" "中位分". 可能会说 "最高分", 但最好也�
 > ~~projects.md~~
 >
 > ~~weekly.md~~
+
+

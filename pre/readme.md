@@ -4,6 +4,14 @@
 
 1.0 released!
 
+### roadmap
+
+- theming
+  - react.dev
+  - design.google
+  - one math bilibili (incl. other one-subject teachers)
+  - sameko saba
+
 ### usage
 
 - web (see /releases)
