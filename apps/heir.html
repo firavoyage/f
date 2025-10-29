@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Markdown Editor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/preact/dist/preact.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/preact/hooks/dist/hooks.umd.js"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              gray: {
+                50: "#faf9f7",
+                100: "#f5f4f2",
+                200: "#e6e4e0",
+                300: "#d6d3ce",
+                400: "#a8a29e",
+                500: "#78716c",
+                600: "#57534e",
+                700: "#44403c",
+                800: "#292524",
+                900: "#1c1917",
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        background-color: #1c1917;
+        color: #f5f4f2;
+      }
+      textarea:focus {
+        outline: none;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen p-4 font-sans">
+    <div id="app"></div>
+
+    <script type="module">
+      const { h, render } = preact;
+      const { useState, useRef, useEffect } = preactHooks;
+
+      function App() {
+        const [markdown, setMarkdown] = useState("");
+        const [buttonText, setButtonText] = useState("Increase");
+        const textareaRef = useRef(null);
+
+        // Keep textarea focused
+        useEffect(() => {
+          const handleFocus = () => {
+            if (textareaRef.current) {
+              textareaRef.current.focus();
+            }
+          };
+
+          // Initial focus
+          handleFocus();
+
+          // Focus on click anywhere
+          document.addEventListener("click", handleFocus);
+
+          return () => {
+            document.removeEventListener("click", handleFocus);
+          };
+        }, []);
+
+        const increaseHeaders = () => {
+          const lines = markdown.split("\n");
+          let inCodeBlock = false;
+          const updatedLines = lines.map((line) => {
+            // Toggle code block state
+            if (line.trim().startsWith("```")) {
+              inCodeBlock = !inCodeBlock;
+              return line;
+            }
+
+            // Skip if we're in a code block
+            if (inCodeBlock) return line;
+
+            // Check if line is a header (starts with 1-6 # characters followed by space)
+            const headerMatch = line.match(/^(#{1,6})\s(.*)/);
+            if (headerMatch) {
+              const hashes = headerMatch[1];
+              const content = headerMatch[2];
+
+              // Only increase if we're not already at the maximum (h6)
+              if (hashes.length < 6) {
+                return "#" + hashes + " " + content;
+              }
+            }
+
+            return line;
+          });
+
+          const newMarkdown = updatedLines.join("\n");
+          setMarkdown(newMarkdown);
+
+          // Copy to clipboard
+          navigator.clipboard
+            .writeText(newMarkdown)
+            .then(() => {
+              setButtonText("Copied!");
+              setTimeout(() => setButtonText("Increase"), 2000);
+            })
+            .catch((err) => {
+              setButtonText("Copy Failed");
+              setTimeout(() => setButtonText("Increase"), 2000);
+            });
+        };
+
+        return h(
+          "div",
+          { class: "max-w-4xl mx-auto" },
+          h(
+            "div",
+            { class: "flex justify-end mb-4" },
+            h(
+              "button",
+              {
+                onClick: increaseHeaders,
+                class:
+                  "px-4 py-2 bg-gray-700 hover:bg-gray-600 text-gray-100 rounded transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500",
+              },
+              buttonText
+            )
+          ),
+          h("textarea", {
+            ref: textareaRef,
+            value: markdown,
+            onInput: (e) => setMarkdown(e.target.value),
+            class:
+              "w-full h-96 p-4 bg-gray-800 text-gray-100 rounded border border-gray-700 resize-none",
+            placeholder: "Enter your markdown here...",
+          })
+        );
+      }
+
+      render(h(App), document.getElementById("app"));
+    </script>
+  </body>
+</html>

@@ -1,4 +1,4 @@
-# 1
+# 1 write
 
 write a js fn.
 
@@ -8,7 +8,7 @@ write a js fn.
 - ...
 - returns:
 
-# 2
+# 2 modify
 
 modify this js fn.
 
@@ -18,7 +18,7 @@ if any code does not comply with the jsdoc, keep the code and revise the jsdoc.
 
 add feature:
 
-# 3
+# 3 refactor
 
 Act as an expert software engineer specializing in JavaScript and code quality. Your task is to analyze the provided JavaScript code, generate a detailed refactoring plan, AND output the complete refactored code.
 
@@ -73,16 +73,64 @@ After presenting the plan, provide the COMPLETE REFACTORED CODE that:
 
 1.  **Refactoring Plan** - Bulleted list of specific changes with explanations
 2.  **Refactored Code** - Complete, runnable JavaScript code implementing all improvements
-3.  i will copy and paste your code and replace the original. if you reference any previous code ("remains the same" "keep as original"), tell me. ref at least code as possible to make it easier for me, so only reference the same code more than 200 lines.
 
-# 4
+**Important:** Provide the FULL refactored code. Only reference unchanged sections if they exceed 200 lines.
 
-write a js fn.
+# 4 fix
 
-- use const arrow fn. write jsdoc with examples.
-- name:
-- param:
-- all preact methods (h, use state, use ref...) are already available in the scope.
-- no need to export. i do not use a bundler.
-- ...
-- returns: vnode
+Act as an expert JavaScript engineer. Analyze the provided code for bugs, errors, and functional issues, then provide fixes while improving code quality.
+
+**Follow this process:**
+
+**1. Problem Analysis**
+
+- Identify runtime errors, syntax errors, and logical bugs
+- Check for incorrect logic, edge case failures, and unexpected behaviors
+- Analyze potential security issues and performance problems
+- Note any functional requirements that aren't being met
+
+**2. Fixing Plan**
+Provide a prioritized list of necessary fixes:
+
+**Critical Fixes** (bugs and errors)
+
+- **Bug:** [Specific issue causing malfunction]
+- **Root Cause:** [Why it's broken]
+- **Fix:** [How to resolve it]
+- **Test:** [How to verify the fix works]
+
+**Functional Improvements** (working but incorrect behavior)
+
+- **Issue:** [What's not working as expected]
+- **Cause:** [Why the behavior is wrong]
+- **Fix:** [Solution to correct functionality]
+
+**3. Fixed Code**
+Output the COMPLETE CORRECTED CODE that:
+
+- Fixes all identified bugs and errors
+- Maintains or restores intended functionality
+- Includes clear comments explaining critical fixes
+- Preserves working parts while fixing broken ones
+- Improves reliability and correctness
+
+**Key Focus Areas:**
+
+- Eliminating runtime errors and exceptions
+- Fixing logical bugs and incorrect outputs
+- Handling edge cases and error conditions
+- Ensuring proper data flow and state management
+- Maintaining API contracts and expected behaviors
+
+**Code to fix:**
+
+```javascript
+// [PASTE CODE HERE]
+```
+
+**Output Format:**
+
+1. **Fixing Plan** - Specific bugs and their solutions
+2. **Fixed Code** - Complete, working JavaScript code with all fixes applied
+
+**Important:** Provide the FULL fixed code. Only reference unchanged sections if they exceed 200 lines. Focus on making the code work correctly first, then improve quality where it aids reliability.

@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text Analysis Tool</title>
+    <script src="https://unpkg.com/preact@10.15.1/dist/preact.min.js"></script>
+    <script src="https://unpkg.com/preact@10.15.1/hooks/dist/hooks.umd.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              gray: {
+                50: "#faf9f7",
+                100: "#f5f4f2",
+                200: "#e6e4e0",
+                300: "#d6d4ce",
+                400: "#a8a59d",
+                500: "#79766d",
+                600: "#6d6a61",
+                700: "#5a574e",
+                800: "#48453c",
+                900: "#32302a",
+              },
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-gray-900 text-gray-200 min-h-screen">
+    <div id="app"></div>
+
+    <script type="module">
+      const { h, render } = window.preact;
+      const { useMemo, useState, useEffect, useRef } = window.preactHooks;
+
+      // Constants and Configuration
+      const CONFIG = {
+        CJK_RANGES: [
+          [0x4e00, 0x9fff],
+          [0x3400, 0x4dbf],
+          [0x20000, 0x2a6df],
+          [0x2a700, 0x2b73f],
+          [0x2b740, 0x2b81f],
+          [0x2b820, 0x2ceaf],
+          [0x2ceb0, 0x2ebef],
+          [0x3000, 0x303f],
+          [0x3040, 0x309f],
+          [0x30a0, 0x30ff],
+          [0x31f0, 0x31ff],
+          [0xff00, 0xffef],
+          [0x1100, 0x11ff],
+          [0x3130, 0x318f],
+          [0xac00, 0xd7af],
+        ],
+        READING_SPEED: 200,
+        SPEAKING_SPEED: 150,
+        EMPTY_TEXT_RESPONSE: {
+          wordCount: 0,
+          charCountWithSpaces: 0,
+          charCountWithoutSpaces: 0,
+          paragraphCount: 0,
+          sentenceCount: 0,
+          readingTime: { minutes: 0, interpretation: "No content" },
+          speakingTime: { minutes: 0, interpretation: "No content" },
+          readability: { score: 0, grade: "N/A", interpretation: "No content" },
+        },
+      };
+
+      // Text Analysis Utilities
+      const TextAnalyzer = {
+        isCJK: (char) => {
+          const code = char.codePointAt(0);
+          return CONFIG.CJK_RANGES.some(
+            ([start, end]) => code >= start && code <= end
+          );
+        },
+
+        countWords: (text) => {
+          const trimmedText = text.trim();
+          if (!trimmedText) return 0;
+
+          const hasCJK = [...text].some(TextAnalyzer.isCJK);
+
+          if (hasCJK) {
+            return [...text].filter(
+              (char) =>
+                (TextAnalyzer.isCJK(char) || /\w/.test(char)) &&
+                !/\s/.test(char)
+            ).length;
+          }
+
+          return trimmedText.split(/\s+/).filter((word) => word.length > 0)
+            .length;
+        },
+
+        countCharacters: (text, includeSpaces = true) =>
+          includeSpaces ? text.length : text.replace(/\s/g, "").length,
+
+        countParagraphs: (text) =>
+          text.split(/\n+/).filter((paragraph) => paragraph.trim().length > 0)
+            .length,
+
+        countSentences: (text) =>
+          text.split(/[.!?]+/).filter((sentence) => sentence.trim().length > 0)
+            .length,
+
+        countSyllables: (text) => {
+          const trimmedText = text.trim();
+          if (!trimmedText) return 0;
+
+          const words = trimmedText.toLowerCase().split(/\s+/);
+          return words.reduce((count, word) => {
+            if (word.length <= 3) return count + 1;
+
+            const vowelGroups = word.match(/[aeiouy]+/g);
+            const syllableCount = vowelGroups ? vowelGroups.length : 1;
+
+            return word.endsWith("e") && syllableCount > 1
+              ? count + syllableCount - 1
+              : count + syllableCount;
+          }, 0);
+        },
+
+        calculateTimeEstimate: (wordCount, wordsPerMinute, timeLabels) => {
+          const minutes = Math.max(1, Math.ceil(wordCount / wordsPerMinute));
+          const interpretation =
+            timeLabels.find(([threshold]) => minutes < threshold)?.[1] ||
+            timeLabels[timeLabels.length - 1][1];
+
+          return { minutes, interpretation };
+        },
+
+        calculateReadingTime: (wordCount) =>
+          TextAnalyzer.calculateTimeEstimate(wordCount, CONFIG.READING_SPEED, [
+            [1, "Quick read"],
+            [5, "Short read"],
+            [10, "Medium read"],
+            [Infinity, "Long read"],
+          ]),
+
+        calculateSpeakingTime: (wordCount) =>
+          TextAnalyzer.calculateTimeEstimate(wordCount, CONFIG.SPEAKING_SPEED, [
+            [1, "Brief speech"],
+            [3, "Short speech"],
+            [7, "Medium speech"],
+            [Infinity, "Extended speech"],
+          ]),
+
+        calculateReadability: (text) => {
+          const words = TextAnalyzer.countWords(text);
+          const sentences = TextAnalyzer.countSentences(text);
+          const syllables = TextAnalyzer.countSyllables(text);
+
+          if (words === 0 || sentences === 0 || syllables === 0) {
+            return {
+              score: 0,
+              grade: "N/A",
+              interpretation: "No readable content",
+            };
+          }
+
+          const score =
+            206.835 - 1.015 * (words / sentences) - 84.6 * (syllables / words);
+
+          const readabilityRanges = [
+            [90, "5th grade", "Very easy to read"],
+            [80, "6th grade", "Easy to read"],
+            [70, "7th grade", "Fairly easy to read"],
+            [60, "8th-9th grade", "Standard"],
+            [50, "10th-12th grade", "Fairly difficult"],
+            [30, "College", "Difficult"],
+            [0, "College Graduate", "Very difficult"],
+          ];
+
+          const [grade, interpretation] = readabilityRanges
+            .find(([threshold]) => score >= threshold)
+            ?.slice(1) || ["N/A", "N/A"];
+
+          return { score: Math.round(score), grade, interpretation };
+        },
+
+        countWhitespace: (text) => {
+          const whitespaceCount = (text.match(/\s/g) || []).length;
+          const percentage = text.length
+            ? Math.min(100, ((whitespaceCount / text.length) * 100).toFixed(1))
+            : 0;
+
+          return { count: whitespaceCount, percentage };
+        },
+
+        countPunctuation: (text) =>
+          (text.match(/[.,!?;:'"(){}[\]-–—]/g) || []).length,
+
+        countEmojis: (text) => {
+          const emojiRegex = /[\p{Emoji_Presentation}\p{Emoji}\uFE0F]/gu;
+          const emojis = text.match(emojiRegex) || [];
+          const uniqueEmojis = [...new Set(emojis)];
+
+          return {
+            count: emojis.length,
+            unique: uniqueEmojis.length,
+            list: uniqueEmojis.slice(0, 10),
+          };
+        },
+
+        countNumbersAndSymbols: (text) => {
+          const numbers = (text.match(/[0-9]/g) || []).length;
+          const symbols = (text.match(/[!@#$%^&*_+=\|~`<>/\\]/g) || []).length;
+          return numbers + symbols;
+        },
+
+        analyzeUnicodeScripts: (text) => {
+          if (!text) return { distribution: [], primaryScript: "N/A" };
+
+          const scripts = {
+            Latin: 0,
+            CJK: 0,
+            Cyrillic: 0,
+            Arabic: 0,
+            Devanagari: 0,
+            Other: 0,
+          };
+
+          for (const char of text) {
+            if (/[a-zA-Z]/.test(char)) scripts.Latin++;
+            else if (TextAnalyzer.isCJK(char)) scripts.CJK++;
+            else if (/[а-яА-Я]/.test(char)) scripts.Cyrillic++;
+            else if (/[؀-ۿ]/.test(char)) scripts.Arabic++;
+            else if (/[\u0900-\u097F]/.test(char)) scripts.Devanagari++;
+            else if (char.trim() && !/\s/.test(char)) scripts.Other++;
+          }
+
+          const total = Object.values(scripts).reduce(
+            (sum, count) => sum + count,
+            0
+          );
+          const distribution = Object.entries(scripts)
+            .filter(([_, count]) => count > 0)
+            .map(([script, count]) => ({
+              script,
+              count,
+              percentage: total ? ((count / total) * 100).toFixed(1) : 0,
+            }))
+            .sort((a, b) => b.count - a.count);
+
+          const primaryScript = distribution[0]?.script || "N/A";
+
+          return { distribution, primaryScript };
+        },
+
+        analyzeWordLength: (text) => {
+          const words = text.split(/\s+/).filter((word) => word.length > 0);
+          const totalWords = words.length;
+
+          if (totalWords === 0) {
+            return { average: 0, interpretation: "No words", distribution: [] };
+          }
+
+          const totalLength = words.reduce((sum, word) => sum + word.length, 0);
+          const average = totalLength / totalWords;
+
+          const interpretations = [
+            [4, "Short words"],
+            [6, "Average words"],
+            [8, "Long words"],
+            [Infinity, "Very long words"],
+          ];
+          const interpretation = interpretations.find(
+            ([threshold]) => average < threshold
+          )[1];
+
+          const distributionRanges = {
+            "1-3": (word) => word.length <= 3,
+            "4-6": (word) => word.length <= 6,
+            "7-9": (word) => word.length <= 9,
+            "10+": () => true,
+          };
+
+          const distribution = Object.entries(distributionRanges).map(
+            ([range, condition]) => {
+              const count = words.filter(condition).length;
+              return {
+                range,
+                count,
+                percentage: ((count / totalWords) * 100).toFixed(1),
+              };
+            }
+          );
+
+          return { average: average.toFixed(1), interpretation, distribution };
+        },
+
+        calculateVocabularyDiversity: (text) => {
+          const words = text
+            .toLowerCase()
+            .split(/\s+/)
+            .filter((word) => word.length > 0);
+          const uniqueWords = [...new Set(words)];
+          const diversity = words.length
+            ? (uniqueWords.length / words.length) * 100
+            : 0;
+
+          const diversityLevels = [
+            [80, "Highly diverse vocabulary"],
+            [60, "Good vocabulary diversity"],
+            [40, "Moderate vocabulary diversity"],
+            [0, "Limited vocabulary diversity"],
+          ];
+
+          const interpretation = diversityLevels.find(
+            ([threshold]) => diversity >= threshold
+          )[1];
+
+          return { percentage: diversity.toFixed(1), interpretation };
+        },
+
+        analyzeSentenceStructure: (text) => {
+          const sentences = text
+            .split(/[.!?]+/)
+            .filter((s) => s.trim().length > 0);
+          const totalSentences = sentences.length;
+
+          if (totalSentences === 0) {
+            return {
+              averageLength: 0,
+              interpretation: "No sentences",
+              distribution: [],
+              beginningVariety: { percentage: 0, assessment: "N/A" },
+            };
+          }
+
+          const totalWords = sentences.reduce(
+            (sum, sentence) => sum + TextAnalyzer.countWords(sentence),
+            0
+          );
+          const averageLength = totalWords / totalSentences;
+
+          const lengthInterpretations = [
+            [10, "Short sentences"],
+            [20, "Medium sentences"],
+            [Infinity, "Long sentences"],
+          ];
+          const interpretation = lengthInterpretations.find(
+            ([threshold]) => averageLength < threshold
+          )[1];
+
+          const distributionCategories = {
+            "Short (<10 words)": (count) => count < 10,
+            "Medium (10-20 words)": (count) => count <= 20,
+            "Long (>20 words)": () => true,
+          };
+
+          const distribution = Object.entries(distributionCategories).map(
+            ([category, condition]) => {
+              const count = sentences.filter((sentence) =>
+                condition(TextAnalyzer.countWords(sentence))
+              ).length;
+              return {
+                category,
+                count,
+                percentage: ((count / totalSentences) * 100).toFixed(1),
+              };
+            }
+          );
+
+          const beginnings = sentences.map((sentence) => {
+            const firstWord = sentence.trim().split(/\s+/)[0] || "";
+            return firstWord.toLowerCase();
+          });
+
+          const uniqueBeginnings = [...new Set(beginnings)].length;
+          const beginningVarietyPercentage =
+            (uniqueBeginnings / totalSentences) * 100;
+
+          const varietyAssessments = [
+            [80, "Excellent variety"],
+            [60, "Good variety"],
+            [40, "Moderate variety"],
+            [0, "Limited variety"],
+          ];
+          const beginningAssessment = varietyAssessments.find(
+            ([threshold]) => beginningVarietyPercentage >= threshold
+          )[1];
+
+          return {
+            averageLength: averageLength.toFixed(1),
+            interpretation,
+            distribution,
+            beginningVariety: {
+              percentage: beginningVarietyPercentage.toFixed(1),
+              assessment: beginningAssessment,
+            },
+          };
+        },
+
+        analyzeParagraphStructure: (text) => {
+          const paragraphs = text
+            .split(/\n+/)
+            .filter((p) => p.trim().length > 0);
+          const totalParagraphs = paragraphs.length;
+
+          if (totalParagraphs === 0) {
+            return {
+              avgSentences: 0,
+              avgWords: 0,
+              interpretation: "No paragraphs",
+              distribution: [],
+            };
+          }
+
+          const totalSentences = paragraphs.reduce(
+            (sum, paragraph) => sum + TextAnalyzer.countSentences(paragraph),
+            0
+          );
+          const totalWords = paragraphs.reduce(
+            (sum, paragraph) => sum + TextAnalyzer.countWords(paragraph),
+            0
+          );
+
+          const avgSentences = totalSentences / totalParagraphs;
+          const avgWords = totalWords / totalParagraphs;
+
+          const lengthInterpretations = [
+            [50, "Short paragraphs"],
+            [100, "Medium paragraphs"],
+            [Infinity, "Long paragraphs"],
+          ];
+          const interpretation = lengthInterpretations.find(
+            ([threshold]) => avgWords < threshold
+          )[1];
+
+          const distributionCategories = {
+            "Short (<50 words)": (count) => count < 50,
+            "Medium (50-100 words)": (count) => count <= 100,
+            "Long (>100 words)": () => true,
+          };
+
+          const distribution = Object.entries(distributionCategories).map(
+            ([category, condition]) => {
+              const count = paragraphs.filter((paragraph) =>
+                condition(TextAnalyzer.countWords(paragraph))
+              ).length;
+              return {
+                category,
+                count,
+                percentage: ((count / totalParagraphs) * 100).toFixed(1),
+              };
+            }
+          );
+
+          return {
+            avgSentences: avgSentences.toFixed(1),
+            avgWords: avgWords.toFixed(1),
+            interpretation,
+            distribution,
+          };
+        },
+
+        detectPrimaryLanguage: (text) => {
+          const { distribution } = TextAnalyzer.analyzeUnicodeScripts(text);
+          if (distribution.length === 0) return "Unknown";
+
+          const scriptToLanguage = {
+            Latin: "English",
+            CJK: "Chinese/Japanese/Korean",
+            Cyrillic: "Russian/Other Slavic",
+            Arabic: "Arabic",
+            Devanagari: "Hindi/Sanskrit",
+            Other: "Mixed/Other",
+          };
+
+          return scriptToLanguage[distribution[0].script] || "Mixed/Other";
+        },
+
+        analyzeMixedContent: (text) => {
+          const { distribution } = TextAnalyzer.analyzeUnicodeScripts(text);
+
+          if (distribution.length <= 1) {
+            return {
+              assessment: "Monolingual content",
+              details: "Text appears to be in a single language/script",
+            };
+          }
+
+          const mixedPercentage = distribution
+            .slice(1)
+            .reduce((sum, item) => sum + parseFloat(item.percentage), 0);
+
+          const mixedAssessments = [
+            [10, "Mostly monolingual"],
+            [30, "Slightly mixed"],
+            [50, "Moderately mixed"],
+            [Infinity, "Highly mixed content"],
+          ];
+
+          const assessment = mixedAssessments.find(
+            ([threshold]) => mixedPercentage < threshold
+          )[1];
+
+          return {
+            assessment,
+            details: `Content contains ${mixedPercentage.toFixed(
+              1
+            )}% non-primary script`,
+          };
+        },
+
+        analyzeWordFrequency: (text) => {
+          const words =
+            text.toLowerCase().match(/\b[\w']+\b|[\u4e00-\u9fff]+/g) || [];
+          const totalWords = words.length;
+
+          if (totalWords === 0) {
+            return { topWords: [], contentFocus: "No content" };
+          }
+
+          const frequency = {};
+          words.forEach((word) => {
+            if (word.length <= 2 && !TextAnalyzer.isCJK(word)) return;
+            frequency[word] = (frequency[word] || 0) + 1;
+          });
+
+          const topWords = Object.entries(frequency)
+            .sort((a, b) => b[1] - a[1])
+            .slice(0, 8)
+            .map(([word, count]) => ({
+              word,
+              count,
+              percentage: ((count / totalWords) * 100).toFixed(1),
+            }));
+
+          const meaningfulWords = topWords
+            .filter(
+              (item) => item.word.length > 3 || TextAnalyzer.isCJK(item.word)
+            )
+            .slice(0, 5);
+
+          const contentFocus =
+            meaningfulWords.length > 0
+              ? `Focus on: ${meaningfulWords
+                  .map((item) => item.word)
+                  .join(", ")}`
+              : "General content";
+
+          return { topWords, contentFocus };
+        },
+
+        analyzeTextQuality: (text) => {
+          const wordCount = TextAnalyzer.countWords(text);
+          const sentenceCount = TextAnalyzer.countSentences(text);
+          const paragraphCount = TextAnalyzer.countParagraphs(text);
+
+          if (wordCount === 0) {
+            return {
+              complexWordPercentage: 0,
+              complexInterpretation: "No content",
+              repetitionLevel: { assessment: "No content", details: "" },
+              overallAssessment: "No content to analyze",
+              structureQuality: "N/A",
+            };
+          }
+
+          const words = text
+            .toLowerCase()
+            .split(/\s+/)
+            .filter((word) => word.length > 0);
+          const complexWords = words.filter(
+            (word) => TextAnalyzer.countSyllables(word) >= 3
+          );
+          const complexPercentage = (complexWords.length / words.length) * 100;
+
+          const complexityLevels = [
+            [10, "Simple vocabulary"],
+            [20, "Moderate vocabulary"],
+            [30, "Complex vocabulary"],
+            [Infinity, "Very complex vocabulary"],
+          ];
+          const complexInterpretation = complexityLevels.find(
+            ([threshold]) => complexPercentage < threshold
+          )[1];
+
+          const { percentage: diversity } =
+            TextAnalyzer.calculateVocabularyDiversity(text);
+
+          const repetitionLevels = [
+            [70, "Low repetition"],
+            [50, "Moderate repetition"],
+            [0, "High repetition"],
+          ];
+          const repetitionAssessment = repetitionLevels.find(
+            ([threshold]) => diversity >= threshold
+          )[1];
+
+          const repetitionDetails =
+            diversity >= 70
+              ? "Good word variety"
+              : "Consider using more synonyms and varied expressions";
+
+          let overallAssessment = "";
+          let structureQuality = "";
+
+          if (wordCount < 50) {
+            overallAssessment = "Very short text - consider expanding";
+          } else if (sentenceCount < 3) {
+            overallAssessment = "Minimal sentence structure";
+          } else if (paragraphCount < 2) {
+            overallAssessment =
+              "Single paragraph - consider breaking into sections";
+          } else {
+            const sentenceStructure =
+              TextAnalyzer.analyzeSentenceStructure(text);
+            const paragraphStructure =
+              TextAnalyzer.analyzeParagraphStructure(text);
+            const avgSentenceLength = parseFloat(
+              sentenceStructure.averageLength
+            );
+            const avgParagraphWords = parseFloat(paragraphStructure.avgWords);
+
+            if (avgSentenceLength > 25) {
+              overallAssessment =
+                "Sentences may be too long - consider breaking them up";
+            } else if (avgParagraphWords > 150) {
+              overallAssessment =
+                "Paragraphs may be too long - consider breaking them up";
+            } else {
+              overallAssessment = "Well-structured text";
+            }
+
+            structureQuality =
+              avgSentenceLength > 15 && avgSentenceLength < 25
+                ? "Good sentence structure"
+                : "Sentence structure could be improved";
+          }
+
+          return {
+            complexWordPercentage: complexPercentage.toFixed(1),
+            complexInterpretation,
+            repetitionLevel: {
+              assessment: repetitionAssessment,
+              details: repetitionDetails,
+            },
+            overallAssessment,
+            structureQuality:
+              structureQuality || "Insufficient structure for assessment",
+          };
+        },
+      };
+
+      // Custom Hooks
+      const useAutoResize = () => {
+        const textareaRef = useRef(null);
+
+        useEffect(() => {
+          const textarea = textareaRef.current;
+          if (!textarea) return;
+
+          const resizeTextarea = () => {
+            textarea.style.height = "auto";
+            textarea.style.height = `${textarea.scrollHeight}px`;
+          };
+
+          resizeTextarea();
+
+          let timeoutId;
+          const handleInput = () => {
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(resizeTextarea, 100);
+          };
+
+          textarea.addEventListener("input", handleInput);
+          return () => {
+            clearTimeout(timeoutId);
+            textarea.removeEventListener("input", handleInput);
+          };
+        }, []);
+
+        return textareaRef;
+      };
+
+      // UI Components
+      const TextInput = ({ text, setText, textareaRef }) =>
+        h("div", { class: "bg-gray-800 rounded-lg p-4" }, [
+          h("textarea", {
+            ref: textareaRef,
+            class:
+              "w-full bg-gray-700 text-gray-200 rounded p-3 resize-none focus:outline-none focus:ring-2 focus:ring-gray-500",
+            placeholder: "Enter your text here...",
+            rows: 6,
+            value: text,
+            onInput: (e) => setText(e.target.value),
+            "aria-label": "Text input for analysis",
+          }),
+        ]);
+
+      const MetricCard = ({ title, value, subtitle = null, children = null }) =>
+        h("div", { class: "bg-gray-700 p-3 rounded" }, [
+          h("div", { class: "text-gray-400 text-sm" }, title),
+          h("div", { class: "text-lg font-medium" }, value),
+          subtitle && h("div", { class: "text-sm text-gray-400" }, subtitle),
+          children,
+        ]);
+
+      const DistributionList = ({ items }) =>
+        h(
+          "div",
+          { class: "bg-gray-700 p-3 rounded" },
+          items.map((item) =>
+            h("div", { class: "flex justify-between mb-1" }, [
+              h(
+                "span",
+                null,
+                item.label || item.script || item.range || item.category
+              ),
+              h("span", null, `${item.percentage}% (${item.count})`),
+            ])
+          )
+        );
+
+      const CoreMetrics = ({ analysis }) =>
+        h("div", null, [
+          h(
+            "h2",
+            {
+              class:
+                "text-xl font-semibold text-gray-200 mb-3 border-b border-gray-700 pb-2",
+            },
+            "Core Metrics"
+          ),
+          h("div", { class: "grid grid-cols-2 gap-3" }, [
+            MetricCard({ title: "Word Count", value: analysis.wordCount }),
+            MetricCard({
+              title: "Character Count",
+              value: `${analysis.charCountWithSpaces} (${analysis.charCountWithoutSpaces} no spaces)`,
+            }),
+            MetricCard({
+              title: "Paragraph Count",
+              value: analysis.paragraphCount,
+            }),
+            MetricCard({
+              title: "Sentence Count",
+              value: analysis.sentenceCount,
+            }),
+          ]),
+        ]);
+
+      const TimeEstimates = ({ analysis }) =>
+        h("div", null, [
+          h(
+            "h2",
+            {
+              class:
+                "text-xl font-semibold text-gray-200 mb-3 border-b border-gray-700 pb-2",
+            },
+            "Time Estimates"
+          ),
+          h("div", { class: "grid grid-cols-2 gap-3" }, [
+            MetricCard({
+              title: "Reading Time",
+              value: `${analysis.readingTime.minutes} min`,
+              subtitle: analysis.readingTime.interpretation,
+            }),
+            MetricCard({
+              title: "Speaking Time",
+              value: `${analysis.speakingTime.minutes} min`,
+              subtitle: analysis.speakingTime.interpretation,
+            }),
+          ]),
+        ]);
+
+      const ReadabilityAssessment = ({ analysis }) =>
+        analysis.readability.score > 0 &&
+        h("div", null, [
+          h(
+            "h2",
+            {
+              class:
+                "text-xl font-semibold text-gray-200 mb-3 border-b border-gray-700 pb-2",
+            },
+            "Readability Assessment"
+          ),
+          h("div", { class: "grid grid-cols-2 gap-3" }, [
+            MetricCard({
+              title: "Reading Ease Score",
+              value: analysis.readability.score,
+              subtitle: analysis.readability.interpretation,
+            }),
+            MetricCard({
+              title: "Grade Level",
+              value: analysis.readability.grade,
+            }),
+          ]),
+        ]);
+
+      const CharacterAnalysis = ({ analysis }) =>
+        h("div", null, [
+          h(
+            "h2",
+            {
+              class:
+                "text-xl font-semibold text-gray-200 mb-3 border-b border-gray-700 pb-2",
+            },
+            "Character Analysis"
+          ),
+          h(
+            "div",
+            { class: "grid grid-cols-2 gap-3" },
+            [
+              MetricCard({
+                title: "Whitespace",
+                value: `${analysis.whitespace.count} (${analysis.whitespace.percentage}%)`,
+              }),
+              MetricCard({ title: "Punctuation", value: analysis.punctuation }),
+              analysis.emojis.count > 0 &&
+                MetricCard({
+                  title: "Emojis",
+                  value: `${analysis.emojis.count} (${analysis.emojis.unique} unique)`,
+                  children:
+                    analysis.emojis.list.length > 0 &&
+                    h(
+                      "div",
+                      { class: "text-sm text-gray-400 mt-1" },
+                      analysis.emojis.list.join(" ")
+                    ),
+                }),
+              MetricCard({
+                title: "Numbers & Symbols",
+                value: analysis.numbersSymbols,
+              }),
+            ].filter(Boolean)
+          ),
+          analysis.unicodeScripts.distribution.length > 0 &&
+            h("div", { class: "mt-3" }, [
+              h(
+                "div",
+                { class: "text-gray-400 text-sm mb-2" },
+                "Unicode Script Distribution"
+              ),
+              DistributionList({ items: analysis.unicodeScripts.distribution }),
+            ]),
+        ]);
+
+      const WordAnalysis = ({ analysis }) =>
+        analysis.wordCount > 0 &&
+        h("div", null, [
+          h(
+            "h2",
+            {
+              class:
+                "text-xl font-semibold text-gray-200 mb-3 border-b border-gray-700 pb-2",
+            },
+            "Word Analysis"
+          ),
+          h("div", { class: "grid grid-cols-2 gap-3" }, [
+            MetricCard({
+              title: "Average Word Length",
+              value: `${analysis.wordLength.average} chars`,
+              subtitle: analysis.wordLength.interpretation,
+            }),
+            MetricCard({
+              title: "Vocabulary Diversity",
+              value: `${analysis.vocabularyDiversity.percentage}%`,
+              subtitle: analysis.vocabularyDiversity.interpretation,
+            }),
+          ]),
+          analysis.wordLength.distribution.length > 0 &&
+            h("div", { class: "mt-3" }, [
+              h(
+                "div",
+                { class: "text-gray-400 text-sm mb-2" },
+                "Word Length Distribution"
+              ),
+              DistributionList({
+                items: analysis.wordLength.distribution.map((item) => ({
+                  ...item,
+                  label: `${item.range} chars`,
+                })),
+              }),
+            ]),
+        ]);
+
+      const TextQualityIndicators = ({ analysis }) =>
+        analysis.wordCount > 0 &&
+        h("div", null, [
+          h(
+            "h2",
+            {
+              class:
+                "text-xl font-semibold text-gray-200 mb-3 border-b border-gray-700 pb-2",
+            },
+            "Text Quality Indicators"
+          ),
+          h("div", { class: "grid grid-cols-2 gap-3" }, [
+            MetricCard({
+              title: "Complex Words",
+              value: `${analysis.textQuality.complexWordPercentage}%`,
+              subtitle: analysis.textQuality.complexInterpretation,
+            }),
+            MetricCard({
+              title: "Repetition Level",
+              value: analysis.textQuality.repetitionLevel.assessment,
+              subtitle: analysis.textQuality.repetitionLevel.details,
+            }),
+          ]),
+          h("div", { class: "mt-3" }, [
+            MetricCard({
+              title: "Overall Assessment",
+              value: analysis.textQuality.overallAssessment,
+              subtitle: `Structure: ${analysis.textQuality.structureQuality}`,
+            }),
+          ]),
+        ]);
+
+      const AnalysisDisplay = ({ analysis }) => {
+        if (!analysis) {
+          return h(
+            "div",
+            { class: "text-gray-400 text-center py-8" },
+            h("p", null, "Analysis will appear here once you start typing")
+          );
+        }
+
+        return h("div", { class: "space-y-6" }, [
+          CoreMetrics({ analysis }),
+          TimeEstimates({ analysis }),
+          ReadabilityAssessment({ analysis }),
+          CharacterAnalysis({ analysis }),
+          WordAnalysis({ analysis }),
+          TextQualityIndicators({ analysis }),
+        ]);
+      };
+
+      // Main App Component
+      const App = () => {
+        const [text, setText] = useState("");
+        const textareaRef = useAutoResize();
+
+        const analysis = useMemo(() => {
+          if (!text.trim()) return null;
+
+          const wordCount = TextAnalyzer.countWords(text);
+
+          if (wordCount === 0) {
+            return {
+              ...CONFIG.EMPTY_TEXT_RESPONSE,
+              charCountWithSpaces: TextAnalyzer.countCharacters(text, true),
+              charCountWithoutSpaces: TextAnalyzer.countCharacters(text, false),
+              whitespace: TextAnalyzer.countWhitespace(text),
+              punctuation: TextAnalyzer.countPunctuation(text),
+              emojis: TextAnalyzer.countEmojis(text),
+              numbersSymbols: TextAnalyzer.countNumbersAndSymbols(text),
+              unicodeScripts: TextAnalyzer.analyzeUnicodeScripts(text),
+              wordLength: TextAnalyzer.analyzeWordLength(text),
+              vocabularyDiversity:
+                TextAnalyzer.calculateVocabularyDiversity(text),
+              sentenceStructure: TextAnalyzer.analyzeSentenceStructure(text),
+              paragraphStructure: TextAnalyzer.analyzeParagraphStructure(text),
+              primaryLanguage: TextAnalyzer.detectPrimaryLanguage(text),
+              mixedContent: TextAnalyzer.analyzeMixedContent(text),
+              wordFrequency: TextAnalyzer.analyzeWordFrequency(text),
+              textQuality: TextAnalyzer.analyzeTextQuality(text),
+            };
+          }
+
+          return {
+            wordCount,
+            charCountWithSpaces: TextAnalyzer.countCharacters(text, true),
+            charCountWithoutSpaces: TextAnalyzer.countCharacters(text, false),
+            paragraphCount: TextAnalyzer.countParagraphs(text),
+            sentenceCount: TextAnalyzer.countSentences(text),
+            readingTime: TextAnalyzer.calculateReadingTime(wordCount),
+            speakingTime: TextAnalyzer.calculateSpeakingTime(wordCount),
+            readability: TextAnalyzer.calculateReadability(text),
+            whitespace: TextAnalyzer.countWhitespace(text),
+            punctuation: TextAnalyzer.countPunctuation(text),
+            emojis: TextAnalyzer.countEmojis(text),
+            numbersSymbols: TextAnalyzer.countNumbersAndSymbols(text),
+            unicodeScripts: TextAnalyzer.analyzeUnicodeScripts(text),
+            wordLength: TextAnalyzer.analyzeWordLength(text),
+            vocabularyDiversity:
+              TextAnalyzer.calculateVocabularyDiversity(text),
+            sentenceStructure: TextAnalyzer.analyzeSentenceStructure(text),
+            paragraphStructure: TextAnalyzer.analyzeParagraphStructure(text),
+            primaryLanguage: TextAnalyzer.detectPrimaryLanguage(text),
+            mixedContent: TextAnalyzer.analyzeMixedContent(text),
+            wordFrequency: TextAnalyzer.analyzeWordFrequency(text),
+            textQuality: TextAnalyzer.analyzeTextQuality(text),
+          };
+        }, [text]);
+
+        return h(
+          "div",
+          { class: "max-w-7xl mx-auto p-4" },
+          h("div", { class: "grid grid-cols-1 lg:grid-cols-2 gap-6" }, [
+            h(TextInput, { text, setText, textareaRef }),
+            h(
+              "div",
+              {
+                class:
+                  "bg-gray-800 rounded-lg p-4 overflow-y-auto max-h-screen",
+              },
+              h(AnalysisDisplay, { analysis })
+            ),
+          ])
+        );
+      };
+
+      render(h(App), document.getElementById("app"));
+    </script>
+  </body>
+</html>

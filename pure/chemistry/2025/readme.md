@@ -22,3 +22,15 @@ o2 从 0 价到 -2 价, 降低.
 
 总结: 得到电子, 化合价降低, 氧化剂. (考虑 o2)
 
+## 电子
+
+n l m (o, orientation)
+
+n in 1 7
+
+l in 0 min(n, 3)
+
+m in -l l
+
+o in 0 1
+

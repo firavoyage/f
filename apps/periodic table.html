@@ -7,65 +7,127 @@
     <script src="https://unpkg.com/preact@10.19.2/dist/preact.umd.js"></script>
     <script src="https://unpkg.com/preact@10.19.2/hooks/dist/hooks.umd.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=STIX+Two+Math&display=swap"
+      rel="stylesheet"
+    />
     <script>
       tailwind.config = {
-        darkMode: "media",
+        darkMode: "class",
         theme: {
           extend: {
             colors: {
               gray: {
-                50: "#f9fafb",
-                900: "#111827",
+                50: "#E8E8E8",
+                900: "#1F1F1F",
               },
-              // Element category colors
-              alkali: "#ff6b6b",
-              alkaline: "#ffa726",
-              transition: "#42a5f5",
-              posttransition: "#66bb6a",
-              metalloid: "#26c6da",
-              nonmetal: "#ab47bc",
-              noblegas: "#ec407a",
-              lanthanide: "#7e57c2",
-              actinide: "#5c6bc0",
-              unknown: "#78909c",
+              category: {
+                alkali: "#244D57",
+                alkaline: "#622E39",
+                transition: "#433C65",
+                posttransition: "#2F4D47",
+                metalloid: "#523E1B",
+                nonmetal: "#2A4165",
+                noble: "#623842",
+                lanthanide: "#004A77",
+                actinide: "#613B28",
+                unknown: "#46474C",
+              },
+            },
+            fontFamily: {
+              sans: ["Ubuntu", "sans-serif"],
+              math: ["STIX Two Math", "serif"],
+            },
+            borderRadius: {
+              xl: "0.75rem",
             },
           },
         },
       };
     </script>
     <style>
-      .element-block {
-        width: 70px;
-        height: 70px;
-        transition: all 0.2s ease;
+      html,
+      body {
+        overflow: hidden;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        font-family: "Ubuntu", sans-serif;
+        background-color: #1f1f1f;
+        color: #e8e8e8;
       }
-      @media (min-width: 768px) and (min-aspect-ratio: 1/1) {
-        .element-block {
-          width: 80px;
-          height: 80px;
-        }
+      .element-block {
+        width: 64px;
+        height: 64px;
+        transition: all 0.2s ease;
+        font-family: "Ubuntu", sans-serif;
+        border-radius: 0.75rem;
+        color: rgba(255, 255, 255, 0.85);
       }
       .bohr-electron {
         animation: orbit 3s infinite linear;
-        transform-origin: 100px 100px; /* Center of the SVG */
       }
       @keyframes orbit {
         0% {
-          transform: rotate(0deg) translateX(0);
+          transform: rotate(0deg);
         }
         100% {
-          transform: rotate(360deg) translateX(0);
+          transform: rotate(360deg);
         }
+      }
+      .table-grid {
+        display: grid;
+        grid-template-columns: 40px repeat(18, 64px);
+        gap: 2px;
+        font-family: "Ubuntu", sans-serif;
+      }
+      .lanthanide-grid {
+        display: grid;
+        grid-template-columns: 40px repeat(15, 64px);
+        gap: 2px;
+        margin-top: 8px;
+        font-family: "Ubuntu", sans-serif;
+      }
+      .group-label {
+        width: 64px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Ubuntu", sans-serif;
+      }
+      .period-label {
+        width: 40px;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Ubuntu", sans-serif;
+      }
+      .element-number {
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        font-family: "Ubuntu", sans-serif;
+      }
+      .table-container {
+        transform-origin: top left;
+        transition: transform 0.2s ease;
+      }
+      .math-font {
+        font-family: "STIX Two Math", serif;
       }
     </style>
   </head>
-  <body
-    class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-50 min-h-screen"
-  >
+  <body class="bg-gray-900 text-gray-50 h-screen font-sans">
     <div id="app"></div>
 
     <script>
-      // Constants and configuration
+      // Constants
       const TEMPERATURE_UNITS = {
         CELSIUS: "c",
         FAHRENHEIT: "f",
@@ -78,29 +140,24 @@
         JAPANESE: "ja",
       };
 
-      const TEMPERATURE_UNIT_LABELS = {
-        [TEMPERATURE_UNITS.CELSIUS]: "°C",
-        [TEMPERATURE_UNITS.FAHRENHEIT]: "°F",
-        [TEMPERATURE_UNITS.KELVIN]: "K",
+      const GROUP_NOTATIONS = {
+        ROMAN: "roman",
+        NUMBER: "number",
       };
 
       // Utility functions
       const convertTemperature = (kelvin, unit) => {
-        const conversions = {
-          [TEMPERATURE_UNITS.CELSIUS]: (k) => k - 273.15,
-          [TEMPERATURE_UNITS.FAHRENHEIT]: (k) => ((k - 273.15) * 9) / 5 + 32,
-          [TEMPERATURE_UNITS.KELVIN]: (k) => k,
-        };
-
-        const result = conversions[unit]?.(kelvin) ?? kelvin;
-        return Math.round(result * 10) / 10;
+        if (unit === "c") return Math.round((kelvin - 273.15) * 10) / 10;
+        if (unit === "f")
+          return Math.round((((kelvin - 273.15) * 9) / 5 + 32) * 10) / 10;
+        return Math.round(kelvin * 10) / 10;
       };
 
       const getTemperatureUnitLabel = (unit) => {
-        return TEMPERATURE_UNIT_LABELS[unit] ?? "K";
+        return unit === "c" ? "°C" : unit === "f" ? "°F" : "K";
       };
 
-      // Data structures (extracted for better organization)
+      // Data
       const categoryTranslations = {
         "Alkali Metal": {
           en: "Alkali Metal",
@@ -134,7 +191,7 @@
       };
 
       const groupLabels = {
-        roman: {
+        [GROUP_NOTATIONS.ROMAN]: {
           1: "IA",
           2: "IIA",
           13: "IIIA",
@@ -154,7 +211,7 @@
           11: "IB",
           12: "IIB",
         },
-        number: {
+        [GROUP_NOTATIONS.NUMBER]: {
           1: "1",
           2: "2",
           13: "13",
@@ -177,30 +234,131 @@
       };
 
       const categoryColorClasses = {
-        "Alkali Metal":
-          "bg-red-100 dark:bg-red-900 border-red-300 dark:border-red-700",
-        "Alkaline Earth Metal":
-          "bg-orange-100 dark:bg-orange-900 border-orange-300 dark:border-orange-700",
-        "Transition Metal":
-          "bg-blue-100 dark:bg-blue-900 border-blue-300 dark:border-blue-700",
-        "Post-transition Metal":
-          "bg-green-100 dark:bg-green-900 border-green-300 dark:border-green-700",
-        Metalloid:
-          "bg-teal-100 dark:bg-teal-900 border-teal-300 dark:border-teal-700",
-        "Reactive Nonmetal":
-          "bg-purple-100 dark:bg-purple-900 border-purple-300 dark:border-purple-700",
-        "Noble Gas":
-          "bg-pink-100 dark:bg-pink-900 border-pink-300 dark:border-pink-700",
-        Lanthanide:
-          "bg-indigo-100 dark:bg-indigo-900 border-indigo-300 dark:border-indigo-700",
-        Actinide:
-          "bg-violet-100 dark:bg-violet-900 border-violet-300 dark:border-violet-700",
-        "Unknown Chemical Properties":
-          "bg-gray-100 dark:bg-gray-900 border-gray-300 dark:border-gray-700",
+        "Alkali Metal": "bg-category-alkali",
+        "Alkaline Earth Metal": "bg-category-alkaline",
+        "Transition Metal": "bg-category-transition",
+        "Post-transition Metal": "bg-category-posttransition",
+        Metalloid: "bg-category-metalloid",
+        "Reactive Nonmetal": "bg-category-nonmetal",
+        "Noble Gas": "bg-category-noble",
+        Lanthanide: "bg-category-lanthanide",
+        Actinide: "bg-category-actinide",
       };
 
-      // Element data would typically be imported from a separate file
-      // For this refactor, we'll keep it here but note it should be extracted
+      // Function to get valence electron configuration for table display
+      const getValenceElectronConfig = (element) => {
+        // For lanthanides and actinides, show full configuration
+        if (
+          element.category === "Lanthanide" ||
+          element.category === "Actinide"
+        ) {
+          return element.electron;
+        }
+
+        const parts = element.electron.split(" ");
+
+        // If there are 3 or more parts, take the last 2
+        if (parts.length >= 3) {
+          return parts.slice(-2).join(" ");
+        }
+
+        // Otherwise return the original
+        return element.electron;
+      };
+
+      // Noble gas core configurations
+      const nobleGasCores = {
+        2: "[He]",
+        10: "[Ne]",
+        18: "[Ar]",
+        36: "[Kr]",
+        54: "[Xe]",
+        86: "[Rn]",
+      };
+
+      // Energy level configurations following the Aufbau principle and Madelung's rule
+      const getEnergyLevels = (atomicNumber) => {
+        // Order of filling: 1s, 2s, 2p, 3s, 3p, 4s, 3d, 4p, 5s, 4d, 5p, 6s, 4f, 5d, 6p, 7s, 5f, 6d, 7p
+        const fillingOrder = [
+          { shell: 1, subshell: "s", capacity: 2 },
+          { shell: 2, subshell: "s", capacity: 2 },
+          { shell: 2, subshell: "p", capacity: 6 },
+          { shell: 3, subshell: "s", capacity: 2 },
+          { shell: 3, subshell: "p", capacity: 6 },
+          { shell: 4, subshell: "s", capacity: 2 },
+          { shell: 3, subshell: "d", capacity: 10 },
+          { shell: 4, subshell: "p", capacity: 6 },
+          { shell: 5, subshell: "s", capacity: 2 },
+          { shell: 4, subshell: "d", capacity: 10 },
+          { shell: 5, subshell: "p", capacity: 6 },
+          { shell: 6, subshell: "s", capacity: 2 },
+          { shell: 4, subshell: "f", capacity: 14 },
+          { shell: 5, subshell: "d", capacity: 10 },
+          { shell: 6, subshell: "p", capacity: 6 },
+          { shell: 7, subshell: "s", capacity: 2 },
+          { shell: 5, subshell: "f", capacity: 14 },
+          { shell: 6, subshell: "d", capacity: 10 },
+          { shell: 7, subshell: "p", capacity: 6 },
+        ];
+
+        // Initialize electron configuration
+        const electronConfig = {};
+        let remainingElectrons = atomicNumber;
+
+        // Fill orbitals in order
+        for (const orbital of fillingOrder) {
+          if (remainingElectrons <= 0) break;
+
+          const electronsInOrbital = Math.min(
+            orbital.capacity,
+            remainingElectrons
+          );
+
+          if (!electronConfig[orbital.shell]) {
+            electronConfig[orbital.shell] = 0;
+          }
+          electronConfig[orbital.shell] += electronsInOrbital;
+          remainingElectrons -= electronsInOrbital;
+        }
+
+        // Handle special cases (exceptions to Aufbau principle)
+        const exceptions = {
+          24: [2, 8, 13, 1], // Chromium: [Ar] 4s¹ 3d⁵
+          29: [2, 8, 18, 1], // Copper: [Ar] 4s¹ 3d¹⁰
+          41: [2, 8, 18, 12, 1], // Niobium: [Kr] 5s¹ 4d⁴
+          42: [2, 8, 18, 13, 1], // Molybdenum: [Kr] 5s¹ 4d⁵
+          44: [2, 8, 18, 15, 1], // Ruthenium: [Kr] 5s¹ 4d⁷
+          45: [2, 8, 18, 16, 1], // Rhodium: [Kr] 5s¹ 4d⁸
+          46: [2, 8, 18, 18, 0], // Palladium: [Kr] 4d¹⁰
+          47: [2, 8, 18, 18, 1], // Silver: [Kr] 5s¹ 4d¹⁰
+          57: [2, 8, 18, 18, 9, 2], // Lanthanum: [Xe] 6s² 5d¹
+          58: [2, 8, 18, 19, 9, 2], // Cerium: [Xe] 6s² 4f¹ 5d¹
+          64: [2, 8, 18, 25, 9, 2], // Gadolinium: [Xe] 6s² 4f⁷ 5d¹
+          78: [2, 8, 18, 32, 17, 1], // Platinum: [Xe] 6s¹ 4f¹⁴ 5d⁹
+          79: [2, 8, 18, 32, 18, 1], // Gold: [Xe] 6s¹ 4f¹⁴ 5d¹⁰
+          89: [2, 8, 18, 32, 18, 9, 2], // Actinium: [Rn] 7s² 6d¹
+          90: [2, 8, 18, 32, 18, 10, 2], // Thorium: [Rn] 7s² 6d²
+          91: [2, 8, 18, 32, 20, 9, 2], // Protactinium: [Rn] 7s² 5f² 6d¹
+          92: [2, 8, 18, 32, 21, 9, 2], // Uranium: [Rn] 7s² 5f³ 6d¹
+          93: [2, 8, 18, 32, 22, 9, 2], // Neptunium: [Rn] 7s² 5f⁴ 6d¹
+          96: [2, 8, 18, 32, 25, 9, 2], // Curium: [Rn] 7s² 5f⁷ 6d¹
+        };
+
+        // Return exception if it exists
+        if (exceptions[atomicNumber]) {
+          return exceptions[atomicNumber].join(", ");
+        }
+
+        // Convert electronConfig object to array
+        const result = [];
+        const maxShell = Math.max(...Object.keys(electronConfig).map(Number));
+
+        for (let shell = 1; shell <= maxShell; shell++) {
+          result.push(electronConfig[shell] || 0);
+        }
+
+        return result.join(", ");
+      };
 
       // Element data
       const elements = [
@@ -1756,13 +1914,15 @@
       ];
 
       const { h, render } = preact;
-      const { useState, useEffect } = preactHooks;
+      const { useState, useEffect, useRef } = preactHooks;
 
-      // Custom hooks for state management
+      // Custom hooks
       const useAppSettings = () => {
         const [language, setLanguage] = useState(LANGUAGES.CHINESE);
         const [colorizeEnabled, setColorizeEnabled] = useState(false);
-        const [groupNotation, setGroupNotation] = useState("roman");
+        const [groupNotation, setGroupNotation] = useState(
+          GROUP_NOTATIONS.ROMAN
+        );
         const [temperatureUnit, setTemperatureUnit] = useState(
           TEMPERATURE_UNITS.CELSIUS
         );
@@ -1782,184 +1942,199 @@
         };
       };
 
-      // Element Block Component
+      const useClickOutside = (ref, callback) => {
+        useEffect(() => {
+          const handleClick = (event) => {
+            if (ref.current && !ref.current.contains(event.target)) {
+              callback();
+            }
+          };
+          document.addEventListener("mousedown", handleClick);
+          return () => document.removeEventListener("mousedown", handleClick);
+        }, [ref, callback]);
+      };
+
+      const useTableScale = () => {
+        const [scale, setScale] = useState(1);
+        const tableRef = useRef();
+
+        useEffect(() => {
+          const updateScale = () => {
+            if (!tableRef.current) return;
+
+            const container = tableRef.current.parentElement;
+            const table = tableRef.current;
+
+            if (!container || !table) return;
+
+            const containerWidth = container.clientWidth;
+            const containerHeight = container.clientHeight;
+
+            const tableWidth = table.scrollWidth;
+            const tableHeight = table.scrollHeight;
+
+            // Calculate scale to fit both width and height, with some padding
+            const scaleX = (containerWidth - 40) / tableWidth;
+            const scaleY = (containerHeight - 40) / tableHeight;
+
+            const newScale = Math.min(scaleX, scaleY, 1); // Don't scale up beyond 1
+            setScale(newScale);
+          };
+
+          updateScale();
+          window.addEventListener("resize", updateScale);
+          return () => window.removeEventListener("resize", updateScale);
+        }, []);
+
+        return { scale, tableRef };
+      };
+
+      // Components
       const ElementBlock = ({
         element,
         isSelected,
         onClick,
         colorizeEnabled,
-        category,
         language,
       }) => {
-        const getColorClasses = () => {
-          if (!colorizeEnabled) return "bg-white dark:bg-gray-800";
-          return categoryColorClasses[category] || "bg-white dark:bg-gray-800";
+        const getBackgroundColor = () => {
+          if (!colorizeEnabled) return "bg-gray-900";
+          return categoryColorClasses[element.category] || "bg-gray-900";
         };
 
-        const baseClasses =
-          "element-block rounded-lg flex flex-col items-center justify-center p-1 cursor-pointer border-2";
-        const selectedClass = isSelected
-          ? "border-blue-500 dark:border-blue-400"
-          : "border-transparent";
-        const colorClass = getColorClasses();
+        const getBorderStyle = () => {
+          return isSelected
+            ? "border-2 border-blue-400 shadow-lg"
+            : "border border-[#444746]";
+        };
+
+        const valenceElectron = getValenceElectronConfig(element);
 
         return h(
           "div",
           {
-            className: `${baseClasses} ${selectedClass} ${colorClass}`,
+            className: `element-block rounded-xl flex flex-col items-center justify-center p-1 cursor-pointer transition-all relative ${getBorderStyle()} ${getBackgroundColor()}`,
             onClick: onClick,
           },
-          h("div", { className: "text-xs self-start" }, element.number),
-          h("div", { className: "text-lg font-bold" }, element.symbol),
+          h("div", { className: "element-number text-xs" }, element.number),
+          h("div", { className: "text-lg font-medium" }, element.symbol),
           h("div", { className: "text-xs" }, element.name[language]),
-          h("div", { className: "text-xs" }, element.electron)
+          h("div", { className: "text-xs math-font" }, valenceElectron)
         );
       };
 
-      // Bohr Model Component
       const BohrModel = ({ element, stopRotation }) => {
         if (!element) return null;
 
-        const getElectronShells = (atomicNumber) => {
+        const getElectronConfig = () => {
           const shells = [2, 8, 8, 18, 18, 32, 32];
-          const result = [];
-          let remaining = atomicNumber;
+          const config = [];
+          let remaining = element.number;
 
           for (let i = 0; i < shells.length && remaining > 0; i++) {
-            const electronsInShell = Math.min(shells[i], remaining);
-            if (electronsInShell > 0) {
-              result.push(electronsInShell);
-            }
-            remaining -= electronsInShell;
+            const electrons = Math.min(shells[i], remaining);
+            config.push(electrons);
+            remaining -= electrons;
           }
-          return result;
+          return config;
         };
 
-        const electronShells = getElectronShells(element.number);
+        const electronConfig = getElectronConfig();
 
-        const circularModel = h(
-          "svg",
-          {
-            width: "200",
-            height: "200",
-            viewBox: "0 0 200 200",
-            className: "mb-6",
-          },
-          electronShells.map((electrons, shellIndex) => {
-            const radius = 20 + shellIndex * 25;
-            return h(
-              "g",
-              { key: `shell-${shellIndex}` },
-              h("circle", {
-                cx: "100",
-                cy: "100",
-                r: radius,
-                fill: "none",
-                stroke: "#9ca3af",
-                className: "dark:stroke-gray-600",
-                strokeWidth: "1",
-                strokeDasharray: shellIndex === 0 ? "none" : "2,2",
-              }),
-              [...Array(electrons)].map((_, electronIndex) => {
-                const angle = (electronIndex / electrons) * 2 * Math.PI;
-                const cx = 100 + radius * Math.cos(angle);
-                const cy = 100 + radius * Math.sin(angle);
-                return h("circle", {
-                  key: `electron-${shellIndex}-${electronIndex}`,
-                  cx: cx,
-                  cy: cy,
-                  r: "4",
-                  fill: "#ef4444",
-                  className: `dark:fill-red-400 ${
-                    stopRotation ? "" : "bohr-electron"
-                  }`,
-                  style: stopRotation
-                    ? {}
-                    : {
-                        animationDelay: `${
-                          shellIndex * 0.3 + electronIndex * 0.1
-                        }s`,
-                      },
-                });
-              })
-            );
-          }),
-          h("circle", {
-            cx: "100",
-            cy: "100",
-            r: "15",
-            fill: "#3b82f6",
-            className: "dark:fill-blue-400",
-          }),
-          h(
-            "text",
-            {
-              x: "100",
-              y: "105",
-              textAnchor: "middle",
-              fill: "white",
-              className: "text-sm font-bold",
-            },
-            `+${element.number}`
-          )
-        );
+        // Calculate radii: largest ring 80 (smaller to avoid cropping), core 10, equal spacing for other rings
+        const numShells = electronConfig.length;
+        const maxRadius = 80; // Reduced from 100 to avoid cropping
+        const coreRadius = 10;
+        const availableRadius = maxRadius - coreRadius;
 
-        const parenthesesModel = h(
+        const radii = [];
+        for (let i = 0; i < numShells; i++) {
+          if (numShells === 1) {
+            radii.push(maxRadius);
+          } else {
+            // Equal spacing between core and max radius
+            const radius = coreRadius + (availableRadius * (i + 1)) / numShells;
+            radii.push(radius);
+          }
+        }
+
+        // Scale down for display (SVG viewBox is 0 0 200 200)
+        const displayRadii = radii.map((r) => r);
+
+        return h(
           "div",
-          { className: "flex items-center justify-center mt-4" },
+          { className: "flex flex-col items-center space-y-4" },
+          // Circular model
           h(
             "div",
-            { className: "relative flex items-center" },
+            { className: "relative" },
             h(
-              "div",
+              "svg",
               {
-                className:
-                  "w-12 h-12 rounded-full bg-blue-500 dark:bg-blue-600 flex items-center justify-center text-white font-bold text-sm mr-4",
+                width: "200",
+                height: "200",
+                viewBox: "0 0 200 200",
               },
-              `+${element.number}`
-            ),
-            h(
-              "div",
-              { className: "flex items-center text-2xl font-mono" },
-              electronShells.map((electrons, index) =>
-                h(
-                  "span",
-                  {
-                    key: index,
-                    className: "mx-1 relative",
-                  },
-                  "(",
-                  h(
-                    "span",
-                    {
-                      className:
-                        "absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-3 text-xs font-normal",
-                    },
-                    electrons
-                  ),
-                  ")"
-                )
+              // Electron shells
+              electronConfig.map((electrons, index) => {
+                const radius = displayRadii[index];
+                return h(
+                  "g",
+                  { key: `shell-${index}` },
+                  h("circle", {
+                    cx: "100",
+                    cy: "100",
+                    r: radius,
+                    fill: "none",
+                    stroke: "#A0A0A0",
+                    strokeWidth: "0.5",
+                    strokeDasharray: "2,2",
+                  }),
+                  [...Array(electrons)].map((_, electronIndex) => {
+                    const angle = (electronIndex / electrons) * 2 * Math.PI;
+                    const cx = 100 + radius * Math.cos(angle);
+                    const cy = 100 + radius * Math.sin(angle);
+                    return h("circle", {
+                      key: `electron-${index}-${electronIndex}`,
+                      cx: cx,
+                      cy: cy,
+                      r: "3",
+                      fill: "#288E2D",
+                      className: `${stopRotation ? "" : "bohr-electron"}`,
+                      style: {
+                        transformOrigin: `${cx}px ${cy}px`,
+                      },
+                    });
+                  })
+                );
+              }),
+              // Nucleus text - properly centered
+              h(
+                "text",
+                {
+                  x: "100",
+                  y: "100",
+                  textAnchor: "middle",
+                  dominantBaseline: "central",
+                  fill: "#E8E8E8",
+                  className: "text-sm font-bold math-font",
+                },
+                `+${element.number}`
               )
             )
           )
         );
-
-        return h(
-          "div",
-          { className: "flex flex-col items-center" },
-          h("h3", { className: "text-lg font-semibold mb-4" }, "Bohr Model"),
-          circularModel,
-          parenthesesModel
-        );
       };
 
-      // Options Modal Component
       const OptionsModal = ({
         isOpen,
         onClose,
         settings,
         onSettingsChange,
       }) => {
+        const modalRef = useRef();
+        useClickOutside(modalRef, onClose);
+
         if (!isOpen) return null;
 
         const {
@@ -1970,174 +2145,159 @@
           stopRotation,
         } = settings;
 
-        const languageLabels = {
-          [LANGUAGES.CHINESE]: "中文",
-          [LANGUAGES.ENGLISH]: "English",
-          [LANGUAGES.JAPANESE]: "日本語",
-        };
-
         return h(
           "div",
           {
+            ref: modalRef,
             className:
-              "absolute right-0 mt-2 w-64 bg-white dark:bg-gray-800 rounded-lg shadow-lg z-10 p-4",
+              "absolute top-12 right-0 w-64 bg-gray-900 rounded-lg shadow-xl border border-[#444746] z-50 p-4",
           },
           h(
             "div",
-            { className: "mb-4" },
-            h("h3", { className: "font-medium mb-2" }, "Language"),
+            { className: "space-y-4" },
+            // Language
             h(
-              "select",
-              {
-                className:
-                  "w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600",
-                value: language,
-                onChange: (e) => onSettingsChange("language", e.target.value),
-              },
-              Object.entries(languageLabels).map(([value, label]) =>
-                h("option", { key: value, value }, label)
+              "div",
+              null,
+              h(
+                "label",
+                { className: "block text-sm font-medium mb-1" },
+                "Language"
+              ),
+              h(
+                "select",
+                {
+                  className:
+                    "w-full p-2 border border-[#444746] rounded bg-[#303134] text-gray-50 font-sans",
+                  value: language,
+                  onChange: (e) => onSettingsChange("language", e.target.value),
+                },
+                h("option", { value: LANGUAGES.CHINESE }, "中文"),
+                h("option", { value: LANGUAGES.ENGLISH }, "English"),
+                h("option", { value: LANGUAGES.JAPANESE }, "日本語")
+              )
+            ),
+            // Group notation
+            h(
+              "div",
+              null,
+              h(
+                "label",
+                { className: "block text-sm font-medium mb-1" },
+                "Group Notation"
+              ),
+              h(
+                "select",
+                {
+                  className:
+                    "w-full p-2 border border-[#444746] rounded bg-[#303134] text-gray-50 font-sans",
+                  value: groupNotation,
+                  onChange: (e) =>
+                    onSettingsChange("groupNotation", e.target.value),
+                },
+                h("option", { value: GROUP_NOTATIONS.ROMAN }, "IA, IIA, ..."),
+                h("option", { value: GROUP_NOTATIONS.NUMBER }, "1, 2, 3, ...")
+              )
+            ),
+            // Temperature unit
+            h(
+              "div",
+              null,
+              h(
+                "label",
+                { className: "block text-sm font-medium mb-1" },
+                "Temperature Unit"
+              ),
+              h(
+                "select",
+                {
+                  className:
+                    "w-full p-2 border border-[#444746] rounded bg-[#303134] text-gray-50 font-sans",
+                  value: temperatureUnit,
+                  onChange: (e) =>
+                    onSettingsChange("temperatureUnit", e.target.value),
+                },
+                h("option", { value: TEMPERATURE_UNITS.CELSIUS }, "°C"),
+                h("option", { value: TEMPERATURE_UNITS.FAHRENHEIT }, "°F"),
+                h("option", { value: TEMPERATURE_UNITS.KELVIN }, "K")
+              )
+            ),
+            // Checkboxes
+            h(
+              "div",
+              { className: "space-y-2" },
+              h(
+                "label",
+                { className: "flex items-center space-x-2 font-sans" },
+                h("input", {
+                  type: "checkbox",
+                  checked: colorizeEnabled,
+                  onChange: (e) =>
+                    onSettingsChange("colorizeEnabled", e.target.checked),
+                  className: "bg-gray-700 border-[#444746]",
+                }),
+                h("span", { className: "text-sm" }, "Colorize Categories")
+              ),
+              h(
+                "label",
+                { className: "flex items-center space-x-2 font-sans" },
+                h("input", {
+                  type: "checkbox",
+                  checked: stopRotation,
+                  onChange: (e) =>
+                    onSettingsChange("stopRotation", e.target.checked),
+                  className: "bg-gray-700 border-[#444746]",
+                }),
+                h("span", { className: "text-sm" }, "Stop Electron Rotation")
               )
             )
-          ),
-          h(
-            "div",
-            { className: "mb-4" },
-            h("h3", { className: "font-medium mb-2" }, "Group Notation"),
-            h(
-              "select",
-              {
-                className:
-                  "w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600",
-                value: groupNotation,
-                onChange: (e) =>
-                  onSettingsChange("groupNotation", e.target.value),
-              },
-              h("option", { value: "roman" }, "IA, IIA, ..."),
-              h("option", { value: "number" }, "1, 2, 3, ...")
-            )
-          ),
-          h(
-            "div",
-            { className: "mb-4" },
-            h("h3", { className: "font-medium mb-2" }, "Temperature Unit"),
-            h(
-              "select",
-              {
-                className:
-                  "w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600",
-                value: temperatureUnit,
-                onChange: (e) =>
-                  onSettingsChange("temperatureUnit", e.target.value),
-              },
-              h("option", { value: TEMPERATURE_UNITS.CELSIUS }, "°C"),
-              h("option", { value: TEMPERATURE_UNITS.FAHRENHEIT }, "°F"),
-              h("option", { value: TEMPERATURE_UNITS.KELVIN }, "K")
-            )
-          ),
-          h(
-            "div",
-            { className: "flex items-center mb-2" },
-            h("input", {
-              type: "checkbox",
-              id: "colorize",
-              checked: colorizeEnabled,
-              onChange: () =>
-                onSettingsChange("colorizeEnabled", !colorizeEnabled),
-              className: "mr-2",
-            }),
-            h("label", { htmlFor: "colorize" }, "Colorize Categories")
-          ),
-          h(
-            "div",
-            { className: "flex items-center" },
-            h("input", {
-              type: "checkbox",
-              id: "stopRotation",
-              checked: stopRotation,
-              onChange: () => onSettingsChange("stopRotation", !stopRotation),
-              className: "mr-2",
-            }),
-            h("label", { htmlFor: "stopRotation" }, "Stop Electron Rotation")
           )
         );
       };
 
-      // Detail Panel Component
       const DetailPanel = ({
         element,
         language,
-        stopRotation,
         temperatureUnit,
+        stopRotation,
       }) => {
-        if (!element) return null;
+        if (!element)
+          return h("div", { className: "p-6" }, "Select an element");
 
         const getTranslatedCategory = () => {
           return (
-            categoryTranslations[element.category]?.[language] ??
+            categoryTranslations[element.category]?.[language] ||
             element.category
           );
         };
 
-        const propertyRows = [
-          {
-            label:
-              language === LANGUAGES.CHINESE
-                ? "原子质量"
-                : language === LANGUAGES.JAPANESE
-                ? "原子量"
-                : "Atomic Mass",
-            value: element.mass,
-          },
-          {
-            label:
-              language === LANGUAGES.CHINESE
-                ? "电负性"
-                : language === LANGUAGES.JAPANESE
-                ? "電気陰性度"
-                : "Electronegativity",
-            value: element.electronegativity || "—",
-          },
-          {
-            label:
-              language === LANGUAGES.CHINESE
-                ? "熔点"
-                : language === LANGUAGES.JAPANESE
-                ? "融点"
-                : "Melting",
-            value: `${convertTemperature(
-              element.melting,
-              temperatureUnit
-            )} ${getTemperatureUnitLabel(temperatureUnit)}`,
-          },
-          {
-            label:
-              language === LANGUAGES.CHINESE
-                ? "沸点"
-                : language === LANGUAGES.JAPANESE
-                ? "沸点"
-                : "Boiling",
-            value: `${convertTemperature(
-              element.boiling,
-              temperatureUnit
-            )} ${getTemperatureUnitLabel(temperatureUnit)}`,
-          },
-          {
-            label:
-              language === LANGUAGES.CHINESE
-                ? "类别"
-                : language === LANGUAGES.JAPANESE
-                ? "分類"
-                : "Category",
-            value: getTranslatedCategory(),
-          },
-        ];
+        const getElectronConfigurationWithCore = () => {
+          // Find the nearest noble gas core
+          let core = "";
+          const nobleGasNumbers = Object.keys(nobleGasCores)
+            .map(Number)
+            .sort((a, b) => a - b);
+
+          for (let i = nobleGasNumbers.length - 1; i >= 0; i--) {
+            if (element.number > nobleGasNumbers[i]) {
+              core = nobleGasCores[nobleGasNumbers[i]];
+              break;
+            }
+          }
+
+          // For elements after noble gases, show core notation
+          if (core) {
+            return `${core} ${element.electron}`;
+          }
+
+          // For noble gases themselves and elements before them, show full configuration
+          return element.electron;
+        };
 
         return h(
           "div",
-          {
-            className:
-              "p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg h-full",
-          },
+          { className: "p-6 h-full" },
+          // Header
           h(
             "div",
             { className: "flex justify-between items-start mb-6" },
@@ -2147,27 +2307,148 @@
               h("h2", { className: "text-3xl font-bold" }, element.symbol),
               h("p", { className: "text-xl" }, element.name[language])
             ),
-            h("span", { className: "text-2xl font-bold" }, element.number)
+            h(
+              "span",
+              { className: "text-2xl font-bold math-font" },
+              element.number
+            )
           ),
 
+          // Bohr model
           h(BohrModel, { element, stopRotation }),
 
+          // Properties
           h(
             "div",
             { className: "mt-6 space-y-3" },
-            propertyRows.map((row, index) =>
+            h(
+              "div",
+              { className: "flex justify-between" },
               h(
-                "div",
-                { key: index, className: "flex justify-between" },
-                h("span", { className: "font-medium" }, row.label),
-                h("span", null, row.value)
+                "span",
+                { className: "font-medium" },
+                language === LANGUAGES.CHINESE
+                  ? "原子质量"
+                  : language === LANGUAGES.JAPANESE
+                  ? "原子量"
+                  : "Atomic Mass"
+              ),
+              h("span", { className: "math-font" }, element.mass)
+            ),
+            h(
+              "div",
+              { className: "flex justify-between" },
+              h(
+                "span",
+                { className: "font-medium" },
+                language === LANGUAGES.CHINESE
+                  ? "电负性"
+                  : language === LANGUAGES.JAPANESE
+                  ? "電気陰性度"
+                  : "Electronegativity"
+              ),
+              h(
+                "span",
+                { className: "math-font" },
+                element.electronegativity || "—"
               )
+            ),
+            h(
+              "div",
+              { className: "flex justify-between" },
+              h(
+                "span",
+                { className: "font-medium" },
+                language === LANGUAGES.CHINESE
+                  ? "熔点"
+                  : language === LANGUAGES.JAPANESE
+                  ? "融点"
+                  : "Melting"
+              ),
+              h(
+                "span",
+                { className: "math-font" },
+                `${convertTemperature(
+                  element.melting,
+                  temperatureUnit
+                )} ${getTemperatureUnitLabel(temperatureUnit)}`
+              )
+            ),
+            h(
+              "div",
+              { className: "flex justify-between" },
+              h(
+                "span",
+                { className: "font-medium" },
+                language === LANGUAGES.CHINESE
+                  ? "沸点"
+                  : language === LANGUAGES.JAPANESE
+                  ? "沸点"
+                  : "Boiling"
+              ),
+              h(
+                "span",
+                { className: "math-font" },
+                `${convertTemperature(
+                  element.boiling,
+                  temperatureUnit
+                )} ${getTemperatureUnitLabel(temperatureUnit)}`
+              )
+            ),
+            h(
+              "div",
+              { className: "flex justify-between" },
+              h(
+                "span",
+                { className: "font-medium" },
+                language === LANGUAGES.CHINESE
+                  ? "电子排布"
+                  : language === LANGUAGES.JAPANESE
+                  ? "電子配置"
+                  : "Electron Configuration"
+              ),
+              h(
+                "span",
+                { className: "text-sm math-font" },
+                getElectronConfigurationWithCore()
+              )
+            ),
+            h(
+              "div",
+              { className: "flex justify-between" },
+              h(
+                "span",
+                { className: "font-medium" },
+                language === LANGUAGES.CHINESE
+                  ? "能级"
+                  : language === LANGUAGES.JAPANESE
+                  ? "エネルギー準位"
+                  : "Energy Level"
+              ),
+              h(
+                "span",
+                { className: "text-sm math-font" },
+                getEnergyLevels(element.number)
+              )
+            ),
+            h(
+              "div",
+              { className: "flex justify-between" },
+              h(
+                "span",
+                { className: "font-medium" },
+                language === LANGUAGES.CHINESE
+                  ? "类别"
+                  : language === LANGUAGES.JAPANESE
+                  ? "分類"
+                  : "Category"
+              ),
+              h("span", null, getTranslatedCategory())
             )
           )
         );
       };
 
-      // Periodic Table Component
       const PeriodicTable = ({
         elements,
         selectedElement,
@@ -2175,164 +2456,176 @@
         colorizeEnabled,
         language,
         groupNotation,
+        scale,
+        tableRef,
       }) => {
-        const mainTableElements = elements.filter(
-          (el) => el.category !== "Lanthanide" && el.category !== "Actinide"
+        const mainElements = elements.filter(
+          (el) => !["Lanthanide", "Actinide"].includes(el.category)
         );
-
         const lanthanides = elements.filter(
           (el) => el.category === "Lanthanide"
         );
         const actinides = elements.filter((el) => el.category === "Actinide");
 
-        const renderGroupHeaders = () => {
+        const getElementAtPosition = (period, group) => {
+          return mainElements.find(
+            (el) => el.period === period && el.group === group
+          );
+        };
+
+        const renderMainTable = () => {
           return h(
             "div",
-            { className: "flex mb-2" },
-            h("div", { className: "w-12" }),
+            { className: "table-grid" },
+            // Group labels
+            h("div", { className: "group-label" }), // Empty corner
             [...Array(18)].map((_, i) => {
               const group = i + 1;
               return h(
                 "div",
                 {
-                  key: group,
-                  className:
-                    "element-block flex items-center justify-center text-sm font-medium",
+                  key: `group-${group}`,
+                  className: "group-label text-sm font-medium",
                 },
                 groupLabels[groupNotation][group] || group
               );
-            })
+            }),
+            // Table rows
+            [...Array(7)]
+              .map((_, periodIndex) => {
+                const period = periodIndex + 1;
+                return [
+                  // Period label
+                  h(
+                    "div",
+                    {
+                      key: `period-${period}`,
+                      className: "period-label text-sm font-medium",
+                    },
+                    period
+                  ),
+                  // Elements in this period
+                  [...Array(18)].map((_, groupIndex) => {
+                    const group = groupIndex + 1;
+                    const element = getElementAtPosition(period, group);
+                    return element
+                      ? h(ElementBlock, {
+                          key: element.symbol,
+                          element: element,
+                          isSelected: selectedElement === element.symbol,
+                          onClick: () => onElementClick(element.symbol),
+                          colorizeEnabled: colorizeEnabled,
+                          language: language,
+                        })
+                      : h("div", {
+                          key: `empty-${period}-${group}`,
+                          className: "invisible",
+                        });
+                  }),
+                ];
+              })
+              .flat()
           );
         };
 
-        const renderTableRow = (period) => {
+        const renderLanthanides = () => {
           return h(
             "div",
-            { key: period, className: "flex mb-2" },
-            h(
-              "div",
-              {
-                className:
-                  "w-12 flex items-center justify-center text-sm font-medium",
-              },
-              period
-            ),
-            [...Array(18)].map((_, groupIndex) => {
-              const group = groupIndex + 1;
-              const element = mainTableElements.find(
-                (el) => el.period === period && el.group === group
-              );
-              return h(
-                "div",
-                { key: group, className: "flex" },
-                element
-                  ? h(ElementBlock, {
-                      element: element,
-                      isSelected: selectedElement === element.symbol,
-                      onClick: () => onElementClick(element.symbol),
-                      colorizeEnabled: colorizeEnabled,
-                      category: element.category,
-                      language,
-                    })
-                  : h("div", { className: "element-block" })
-              );
-            })
+            { className: "lanthanide-grid" },
+            h("div", { className: "period-label text-sm" }, "*"),
+            lanthanides.map((element) =>
+              h(ElementBlock, {
+                key: element.symbol,
+                element: element,
+                isSelected: selectedElement === element.symbol,
+                onClick: () => onElementClick(element.symbol),
+                colorizeEnabled: colorizeEnabled,
+                language: language,
+              })
+            )
           );
         };
 
-        const renderSpecialRow = (elements, label) => {
+        const renderActinides = () => {
           return h(
             "div",
-            { className: "flex mb-2" },
-            h(
-              "div",
-              {
-                className:
-                  "w-12 flex items-center justify-center text-sm font-medium",
-              },
-              label
-            ),
-            [...Array(15)].map((_, index) => {
-              const element = elements[index];
-              return h(
-                "div",
-                { key: index, className: "flex" },
-                element
-                  ? h(ElementBlock, {
-                      element: element,
-                      isSelected: selectedElement === element.symbol,
-                      onClick: () => onElementClick(element.symbol),
-                      colorizeEnabled: colorizeEnabled,
-                      category: element.category,
-                      language,
-                    })
-                  : h("div", { className: "element-block" })
-              );
-            })
+            { className: "lanthanide-grid" },
+            h("div", { className: "period-label text-sm" }, "**"),
+            actinides.map((element) =>
+              h(ElementBlock, {
+                key: element.symbol,
+                element: element,
+                isSelected: selectedElement === element.symbol,
+                onClick: () => onElementClick(element.symbol),
+                colorizeEnabled: colorizeEnabled,
+                language: language,
+              })
+            )
           );
         };
-
-        return h(
-          "div",
-          { className: "bg-white dark:bg-gray-800 rounded-lg p-4 shadow-lg" },
-          renderGroupHeaders(),
-          [...Array(7)].map((_, periodIndex) =>
-            renderTableRow(periodIndex + 1)
-          ),
-          renderSpecialRow(lanthanides, "*"),
-          renderSpecialRow(actinides, "**")
-        );
-      };
-
-      // Header Component
-      const Header = ({ language, onOptionsToggle }) => {
-        const title =
-          language === LANGUAGES.CHINESE
-            ? "元素周期表"
-            : language === LANGUAGES.JAPANESE
-            ? "周期表"
-            : "Periodic Table";
 
         return h(
           "div",
           {
-            className: "flex justify-between items-center mb-4 flex-wrap gap-2",
+            ref: tableRef,
+            className: "table-container",
+            style: { transform: `scale(${scale})` },
           },
-          h("h1", { className: "text-2xl font-bold" }, title),
           h(
             "div",
-            { className: "relative" },
-            h(
-              "button",
-              {
-                className:
-                  "p-2 rounded-lg bg-white dark:bg-gray-800 shadow hover:bg-gray-100 dark:hover:bg-gray-700",
-                onClick: onOptionsToggle,
-              },
-              "⋯"
-            )
+            { className: "p-4" },
+            renderMainTable(),
+            renderLanthanides(),
+            renderActinides()
           )
         );
       };
 
-      // Main App Component
       const App = () => {
         const [selectedElement, setSelectedElement] = useState("H");
         const [showOptions, setShowOptions] = useState(false);
+        const optionsButtonRef = useRef();
 
         const settings = useAppSettings();
         const {
           language,
-          colorizeEnabled,
-          groupNotation,
-          temperatureUnit,
-          stopRotation,
           setLanguage,
+          colorizeEnabled,
           setColorizeEnabled,
+          groupNotation,
           setGroupNotation,
+          temperatureUnit,
           setTemperatureUnit,
+          stopRotation,
           setStopRotation,
         } = settings;
+
+        const { scale, tableRef } = useTableScale();
+
+        // Prevent scrolling and keep scrollTop at 0
+        useEffect(() => {
+          const preventScroll = (e) => {
+            e.preventDefault();
+            window.scrollTo(0, 0);
+          };
+
+          document.addEventListener("scroll", preventScroll, {
+            passive: false,
+          });
+          document.addEventListener("wheel", preventScroll, { passive: false });
+          document.addEventListener("touchmove", preventScroll, {
+            passive: false,
+          });
+
+          // Ensure initial scroll position
+          window.scrollTo(0, 0);
+
+          return () => {
+            document.removeEventListener("scroll", preventScroll);
+            document.removeEventListener("wheel", preventScroll);
+            document.removeEventListener("touchmove", preventScroll);
+          };
+        }, []);
 
         useEffect(() => {
           setSelectedElement("H");
@@ -2350,7 +2643,6 @@
             temperatureUnit: setTemperatureUnit,
             stopRotation: setStopRotation,
           };
-
           setters[setting]?.(value);
         };
 
@@ -2360,56 +2652,80 @@
 
         return h(
           "div",
-          {
-            className:
-              "min-h-screen bg-gray-50 dark:bg-gray-900 p-4 overflow-auto",
-          },
+          { className: "h-screen flex" },
+          // Table section
           h(
             "div",
             {
-              className: "flex flex-col xl:flex-row gap-6 max-w-[95vw] mx-auto",
+              className: "flex-1 bg-gray-900 relative overflow-hidden",
+              style: { width: "75%" },
             },
-            // Table Section
+            // Header with options button
             h(
               "div",
-              { className: "flex-1 min-w-0" },
-              h(Header, {
-                language,
-                onOptionsToggle: () => setShowOptions(!showOptions),
-              }),
-              h(OptionsModal, {
-                isOpen: showOptions,
-                onClose: () => setShowOptions(false),
-                settings: {
-                  language,
-                  groupNotation,
-                  temperatureUnit,
-                  colorizeEnabled,
-                  stopRotation,
-                },
-                onSettingsChange: handleSettingsChange,
-              }),
-              h(PeriodicTable, {
-                elements,
-                selectedElement,
-                onElementClick: handleElementClick,
-                colorizeEnabled,
-                language,
-                groupNotation,
-              })
+              { className: "flex justify-between items-center p-4" },
+              h(
+                "h1",
+                { className: "text-2xl font-bold" },
+                language === LANGUAGES.CHINESE
+                  ? "元素周期表"
+                  : language === LANGUAGES.JAPANESE
+                  ? "周期表"
+                  : "Periodic Table"
+              ),
+              h(
+                "div",
+                { className: "relative" },
+                h(
+                  "button",
+                  {
+                    ref: optionsButtonRef,
+                    className:
+                      "text-2xl leading-none p-2 hover:bg-gray-700 rounded font-sans",
+                    onClick: () => setShowOptions(!showOptions),
+                  },
+                  "⋮" // Vertical three dots
+                ),
+                h(OptionsModal, {
+                  isOpen: showOptions,
+                  onClose: () => setShowOptions(false),
+                  settings: {
+                    language,
+                    groupNotation,
+                    temperatureUnit,
+                    colorizeEnabled,
+                    stopRotation,
+                  },
+                  onSettingsChange: handleSettingsChange,
+                })
+              )
             ),
-
-            // Detail Panel
-            h(
-              "div",
-              { className: "xl:w-[500px] flex-shrink-0" },
-              h(DetailPanel, {
-                element: currentElement,
-                language,
-                temperatureUnit,
-                stopRotation,
-              })
-            )
+            // Table with scaling
+            h(PeriodicTable, {
+              elements,
+              selectedElement,
+              onElementClick: handleElementClick,
+              colorizeEnabled,
+              language,
+              groupNotation,
+              scale,
+              tableRef,
+            })
+          ),
+          // Panel section
+          h(
+            "div",
+            {
+              className:
+                "bg-gray-900 border-l border-[#444746] overflow-y-auto",
+              style: { width: "25%" },
+            },
+            h(DetailPanel, {
+              element: currentElement,
+              language,
+              temperatureUnit,
+              stopRotation,
+            })
           )
         );
       };
