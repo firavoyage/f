@@ -4,15 +4,15 @@ most of them are messages with modern llms (esp. deepseek) and source files of w
 
 modern llm including
 
-- deepseek.com (most of the time)
-- deepseek on tencent yuanbao
+- deepseek.com (if not specified), incl. tencent yuanbao
+- gemini
 - grok
-- gemini 
-- other llm service mirror sites
+- other llm service, incl. mirror sites
+
+mirror sites (if needed) https://github.com/LiLittleCat/awesome-free-chatgpt
 
 d is for deprecated.
 
 the meaning of the header number may change across contexts.
 
 see ../apps
-
