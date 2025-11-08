@@ -1,3 +1,62 @@
+# .
+
+Act as an expert JavaScript engineer. Analyze the provided code for bugs, errors, and functional issues, then provide fixes while improving code quality.
+
+**Follow this process:**
+
+**1. Problem Analysis**
+
+- Identify runtime errors, syntax errors, and logical bugs
+- Check for incorrect logic, edge case failures, and unexpected behaviors
+- Analyze potential security issues and performance problems
+- Note any functional requirements that aren't being met
+
+**2. Fixing Plan**
+Provide a prioritized list of necessary fixes:
+
+**Critical Fixes** (bugs and errors)
+
+- **Bug:** [Specific issue causing malfunction]
+- **Root Cause:** [Why it's broken]
+- **Fix:** [How to resolve it]
+- **Test:** [How to verify the fix works]
+
+**Functional Improvements** (working but incorrect behavior)
+
+- **Issue:** [What's not working as expected]
+- **Cause:** [Why the behavior is wrong]
+- **Fix:** [Solution to correct functionality]
+
+**3. Fixed Code**
+Output the COMPLETE CORRECTED CODE that:
+
+- Fixes all identified bugs and errors
+- Maintains or restores intended functionality
+- Includes clear comments explaining critical fixes
+- Preserves working parts while fixing broken ones
+- Improves reliability and correctness
+
+**Key Focus Areas:**
+
+- Eliminating runtime errors and exceptions
+- Fixing logical bugs and incorrect outputs
+- Handling edge cases and error conditions
+- Ensuring proper data flow and state management
+- Maintaining API contracts and expected behaviors
+
+**Code to fix:**
+
+```javascript
+// [PASTE CODE HERE]
+```
+
+**Output Format:**
+
+1. **Fixing Plan** - Specific bugs and their solutions
+2. **Fixed Code** - Complete, working JavaScript code with all fixes applied
+
+**Important:** Provide the FULL fixed code. Only reference unchanged sections if they exceed 200 lines. Focus on making the code work correctly first, then improve quality where it aids reliability.
+
 # 1 (d)
 
 give me a llm prompt for fixing js code and output the fixed version

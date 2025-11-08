@@ -1,9 +1,3 @@
-2025.10.26 beginning
-
-physics textbook.
-
----
-
 pure math.
 
 leverage llm.
@@ -14,13 +8,21 @@ leverage llm.
 
 ---
 
-10.30 
+physics textbook
 
 chemistry textbook
 
 ---
 
-11.02
+egg 
+
+zhihu
+
+---
 
 prompts
 
+
+---
+
+deprecated. now using journal.

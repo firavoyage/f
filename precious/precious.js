@@ -713,14 +713,19 @@
 
     math = translate(math, dict);
 
-    // escape literal spaces (spaces are omitted in output by default)
-    // only when its left and right are not operator (symbol).
-    // invalid index will not produce the wrong result.
+    console.log(math);
+
+    // remove unnecessary spaces, 
+    // which has non operator (symbol) on both left and right.
+
+    // todo: as long as the last character and the first char are different type
+
+    // invalid index does not cause any problem.
     math = math.map((m, index) =>
       m == " " &&
       type(math[index - 1]) != "symbol" &&
       type(math[index + 1]) != "symbol"
-        ? " \\: "
+        ? ""
         : m
     );
 

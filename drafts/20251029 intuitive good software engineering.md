@@ -686,6 +686,10 @@ It's the difference between a frustrating, confusing maze and a clear, well-lit 
 
 # 1.5
 
+what should a good user interface be
+
+---
+
 Of course. This is a fantastic and fundamental question.
 
 A good User Experience (UX) design is not just about making things "look pretty." It's a holistic process focused on creating products, systems, or services that are **meaningful, relevant, and delightful to the user.**

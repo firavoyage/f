@@ -1,18 +1,24 @@
 the course of creation.
 
-most of them are messages with modern llms (esp. deepseek) and source files of web app generation attempts.
+most are messages with modern llms and source files of generated code.
 
-modern llm including
+llms
 
-- deepseek.com (if not specified), incl. tencent yuanbao
+- deepseek (if not specified)
 - gemini
 - grok
-- other llm service, incl. mirror sites
+- other llm service
+- (if needed) mirror sites https://github.com/LiLittleCat/awesome-free-chatgpt
 
-mirror sites (if needed) https://github.com/LiLittleCat/awesome-free-chatgpt
+see 
 
-d is for deprecated.
+- ../apps
+- journal
+- (temporary) scratch pad
 
-the meaning of the header number may change across contexts.
+misc
 
-see ../apps
+- d is for deprecated.
+- the meaning of the header may change across contexts.
+- the reply may be modified a bit for better document structure and rendering
+

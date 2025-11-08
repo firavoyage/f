@@ -49,6 +49,8 @@
       function App() {
         const [markdown, setMarkdown] = useState("");
         const [buttonText, setButtonText] = useState("Increase");
+        const [decreaseButtonText, setDecreaseButtonText] =
+          useState("Decrease");
         const textareaRef = useRef(null);
 
         // Keep textarea focused
@@ -114,12 +116,67 @@
             });
         };
 
+        const decreaseHeaders = () => {
+          const lines = markdown.split("\n");
+          let inCodeBlock = false;
+          const updatedLines = lines.map((line) => {
+            // Toggle code block state
+            if (line.trim().startsWith("```")) {
+              inCodeBlock = !inCodeBlock;
+              return line;
+            }
+
+            // Skip if we're in a code block
+            if (inCodeBlock) return line;
+
+            // Check if line is a header (starts with 1-6 # characters followed by space)
+            const headerMatch = line.match(/^(#{1,6})\s(.*)/);
+            if (headerMatch) {
+              const hashes = headerMatch[1];
+              const content = headerMatch[2];
+
+              // Remove one # or remove header entirely if it's only one #
+              if (hashes.length === 1) {
+                return content; // Remove header completely
+              } else {
+                return hashes.slice(1) + " " + content; // Remove one #
+              }
+            }
+
+            return line;
+          });
+
+          const newMarkdown = updatedLines.join("\n");
+          setMarkdown(newMarkdown);
+
+          // Copy to clipboard
+          navigator.clipboard
+            .writeText(newMarkdown)
+            .then(() => {
+              setDecreaseButtonText("Copied!");
+              setTimeout(() => setDecreaseButtonText("Decrease"), 2000);
+            })
+            .catch((err) => {
+              setDecreaseButtonText("Copy Failed");
+              setTimeout(() => setDecreaseButtonText("Decrease"), 2000);
+            });
+        };
+
         return h(
           "div",
           { class: "max-w-4xl mx-auto" },
           h(
             "div",
-            { class: "flex justify-end mb-4" },
+            { class: "flex justify-end gap-2 mb-4" },
+            h(
+              "button",
+              {
+                onClick: decreaseHeaders,
+                class:
+                  "px-4 py-2 bg-gray-700 hover:bg-gray-600 text-gray-100 rounded transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500",
+              },
+              decreaseButtonText
+            ),
             h(
               "button",
               {
