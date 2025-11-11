@@ -1,18 +1,19 @@
 (() => {
-  const dict = {
-    // literals
-    '"': '\\text{"}',
+  const isOperator = (s) => s.startsWith("\\");
+  const isBracket = (s) => ["(", ")", "[", "]", "{", "}"].includes(s);
 
-    // done: process these operators manually
-    // // Basic operators
-    // "+": "+",
-    // "-": "-",
-    // // done: use cdot instead of times
+  const dict = {
+    // Basic operators
+    "+": "+",
+    "-": "-",
+
+    // process manually, not just translating
+
     // "*": "\\cdot",
-    // // done: use frac
     // "/": "\\div",
-    // "**": "^",
-    // "^": "^",
+
+    "**": "^",
+    "^": "^",
 
     // Comparison operators
     "=": "=",
@@ -95,10 +96,11 @@
     // Calculus
     int: "\\int",
     oint: "\\oint",
-    // sum is a special fn
+    // supported
     // sum: "\\sum",
     prod: "\\prod",
-    lim: "\\lim",
+    // supported
+    // lim: "\\lim",
     nabla: "\\nabla",
 
     // done: process brackets manually
@@ -152,18 +154,14 @@
     propto: "\\propto",
   };
 
-  // done: process dict
-
-  // add a space before and after each dict entry
-  // coz additional spaces will be omitted by the renderer
-  // but no spaces may cause token splitting error
-
+  // add a space before and after all operators starting with `\` for safety
+  // the space before could be omitted safely, but is kept for elegance
   for (const key of Object.keys(dict)) {
-    dict[key] = ` ${dict[key]} `;
+    dict[key] = isOperator(dict[key]) ? [" ", dict[key], " "] : dict[key];
   }
 
   // + and - does not need to be processed.
-  // while - may cause error (as negative symbol)
+  // while - may cause missing operand error (as negative symbol)
 
   const precedence = [["_"], ["^"], ["//", "%%"], ["*", "/"]];
 
@@ -190,7 +188,8 @@
   };
 
   const functions = {
-    // special fn for {}
+    // brace(...) <=> {...}, but brace is only used internally, not an api.
+    // human will write {...}.
     brace(...args) {
       let a = args.join(",");
       if (a.includes("\\\\")) {
@@ -270,6 +269,16 @@
     },
     ceil(a) {
       return `\\lceil ${a} \\rceil`;
+    },
+    lim(...args) {
+      if (args.length == 1) {
+        const a = args[0];
+        return `\\lim{${wrap(a)}}`;
+      } else if (args.length == 2) {
+        const a = args[0];
+        const b = args[1];
+        return `\\lim_{${unwrap(a)}}{${wrap(b)}}`;
+      }
     },
   };
 
@@ -407,8 +416,13 @@
   const type = (str) => {
     // added: a type for not being equal to anything
     const different = Symbol();
+
     if (typeof str != "string") {
       // edge case
+      return different;
+    }
+
+    if (isBracket(str)) {
       return different;
     }
 
@@ -422,9 +436,6 @@
     }
     if (/^[a-zA-Z]+$/.test(str)) {
       return "variable";
-    }
-    if (["(", ")", "[", "]", "{", "}"].includes(str)) {
-      return different;
     }
     return "symbol";
   };
@@ -549,8 +560,7 @@
    * translate(['a', 'b'], { c: 'see', d: 'dee' });
    * // Returns: ['a', 'b']
    */
-  const translate = (words, dict) =>
-    words.map((word) => dict[word.replaceAll(" ", "")] ?? word);
+  const translate = (words, dict) => words.map((word) => dict[word] ?? word);
 
   // todo: refactor it with abstraction
 
@@ -713,20 +723,28 @@
 
     math = translate(math, dict);
 
-    console.log(math);
+    // normalize
+    // chaining after flat may cause error
+    math = math.flat();
 
-    // remove unnecessary spaces, 
-    // which has non operator (symbol) on both left and right.
-
-    // todo: as long as the last character and the first char are different type
-
-    // invalid index does not cause any problem.
-    math = math.map((m, index) =>
-      m == " " &&
-      type(math[index - 1]) != "symbol" &&
-      type(math[index + 1]) != "symbol"
-        ? ""
-        : m
+    // remove unnecessary spaces
+    // consecutive spaces
+    math = math.filter((m, i) => !(m == " " && math[i + 1] == " "));
+    // starting and ending space
+    math = math.filter((m, i) => !(m == " " && (!math[i - 1] || !math[i + 1])));
+    // no operator on either side
+    math = math.filter(
+      (m, i) =>
+        !(m == " " && !isOperator(math[i - 1]) && !isOperator(math[i + 1]))
+    );
+    // bracket space op || op space bracket
+    math = math.filter(
+      (m, i) =>
+        !(
+          m == " " &&
+          ((isBracket(math[i - 1]) && isOperator(math[i + 1])) ||
+            (isOperator(math[i - 1]) && isBracket(math[i + 1])))
+        )
     );
 
     math = compile(math, precedence, operators, functions);

@@ -14,14 +14,13 @@ chemistry textbook
 
 ---
 
-egg 
+egg
 
 zhihu
 
 ---
 
 prompts
-
 
 ---
 

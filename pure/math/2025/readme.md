@@ -1375,16 +1375,6 @@ foresight
 一切都是有意义的. 天气, 心的隐喻. 自然. 山. 云. 遥远, 开阔. (evangelion)
 -->
 
-<!-- > btw, im playing svwb. i love yokidou. (i will let you know im a serious player.)
->
-> ~~vtbsol~~
->
-> ~~fatefairy~~
->
-> ~~projects.md~~
->
-> ~~weekly.md~~ -->
-
 <!--
 theme:
 - sameko saba

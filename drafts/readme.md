@@ -7,6 +7,7 @@ llms
 - deepseek (if not specified)
 - gemini
 - grok
+- mistral
 - other llm service
 - (if needed) mirror sites https://github.com/LiLittleCat/awesome-free-chatgpt
 
@@ -14,7 +15,7 @@ see
 
 - ../apps
 - journal
-- (temporary) scratch pad
+- (deprecated) scratch pad
 
 misc
 

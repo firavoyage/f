@@ -134,7 +134,59 @@ what should a good writing style guide for a math textbook be
 
 03 00 df. lays italian red meat flavor potato chips. 05 20
 
-06 00 revise prompt: plan and implement
+06 00 revise prompt: plan and implement 06 20
+
+06 20 explore and try google gemini gems, surf youtube mindlessly, browse google my activity, and found "i taught an octopus piano (it took 6 months)" 07 20
+
+07 20 surf berryberry mindlessly, found "planet.mihoyo.com" 07 40
+
+08 00 ask gemini for llm api aggregators and gateways 08 20
+
+16 00 surf mindlessly, browse china irl (inspired by an analysis on hu chenfeng pointing out the large proportion of foreign personal sponsors of his live channel) 17 20
+
+17 40 search spotify playlist download (for bad network) 18 00
+
+18 00 lay flat on bed and dream, for lack of sleep by machine fixing noises 19 40
+
+19 40 found spotdl 20 00
+
+20 00 design project para, recall the term "mdbook", which i love, misrecognized as "mkdocs" 20 20
+
+20 20 watch simplelive 21 00
+
+21 20 have dinner, watch (not finished) mr. tree narrated by muyushuixin, accept an exam at school 22 00
+
+22 20 recollect things referencing chromium history 22 40
+
+10
+
+01 40 decide to remove gok, a tencent mobile game, with an undoubtful proof that it's not a decent way to spend time in any case. 02 00
+
+02 00 take a bath. watch go live on douyin "rumeng go". (100 viewers online. "f: how old are you, minasan? data say most viewers are 40 ~ 55."...)
+
+04 00 watch "a dark room" gameplay vids (recommended by llm "web based indie games") 05 00
+
+05 00 give precious a simple fix using test driven dev (wont used by llm) 06 40
+
+19 00 intuitive: llm based software creator 20 00
+
+22 00 lights: llm 22 20
+
+22 20 prompt: design project, ~~grammatically~~ 23 00 
+
+23 00 llm software creator
+
+23 40 surf nga bbs
+
+11
+
+00 00 duolingo. phigros. set douyin acc private to eliminate the philistine noise in the world. remove some subscriptions of boredom.
+
+03 00 archive chats about llm consistency (then, write a style guide by making choices with llm.)
+
+03 40 download and scan en math textbooks. take a look at the aops the basics and beyond. 
+
+05 00 surf twitter, sleep.
 
 
 
@@ -142,7 +194,9 @@ what should a good writing style guide for a math textbook be
 
 breadcrumb:
 
-project journal
+writing style consistency: maybe i should let llm to write some stuff in comparison and let me choose?
+
+project journal (i will use the new prompt! "design project")
 
 begin pure math generation
 
@@ -160,6 +214,18 @@ do right things.
 
 <!-- 
 
+refresh myself.
+
+ -->
+
+<!-- 
+
+exchange observation.
+
+ -->
+
+<!-- 
+
 my time is infinite.
 
 i could do anything i would like, now.
@@ -168,3 +234,12 @@ i will eventually achieve all i want.
 
  -->
 
+<!-- 
+
+weekly
+
+projects
+
+journal
+
+ -->
