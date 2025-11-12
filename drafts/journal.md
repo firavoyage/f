@@ -188,17 +188,59 @@ what should a good writing style guide for a math textbook be
 
 05 00 surf twitter, sleep.
 
+17 40 chat: project journal. kangshifu beef flavor instant noodles.
+
+18 40 ~~chat: learn pure chemistry~~ read the most popular posts on sinyalee blog (inspired by twitter)
+
+20 40 appreciate a few chapters on the art of problem solving the basics, which is really well written
+
+21 00 download reply 1988, narrated by muyushuixin (incl. all other works, with promotional and patriotic ones removed)
+
+23 00 ~~chat: learn pure chemistry~~ surf sinyalee
+
+23 40 ~~chat:~~ learn pure chemistry textbook 4.2
+
+12
+
+00 00 duolingo. ruanyf weekly. design journal. summarize federal plain language guidelines (simple english). 01 00
+
+01 20 ~~chat:~~ learn pure chemistry textbook 4.3
+
+02 20 learn pure chemistry textbook 5 03 20
+
+03 20 surf telegram and twitter
+
+04 00 revise twitter subscription. curating a list called f, incl. must reads like lcmenci, and chyk. 04 20
+
+04 20 try to download chemistry mock test papers but get stuck at paywall. search on sogou weixin and fail (no direct file link). use camera and ocr instead (which is stupid, give up after taking photos). try search on cloud drives and fail. 
+
+05 00 try to hack the image file on 51jiaoxi.com, assume that it does not have paywall key validation. succeed. 05 20
+
+13
+
+00 00 duolingo. phigros. filter simplelive subscription. surf douyin.
+
+~~01 00~~ 01 20 read physics textbook. (generate pure math, test writing style.)
+
+02 20 chat: play sm. surf pixiv. browse wikipedia: sm.
+
+03 00 read physics textbook 3. chat: textbook anti self learning. fix youtube new ui. 
+
+03 40 watch "How is Chinese high school like in 2025? Here's my answer."
+
+04 40 sleep.
+
 
 
 <!-- 
 
 breadcrumb:
 
-writing style consistency: maybe i should let llm to write some stuff in comparison and let me choose?
-
-project journal (i will use the new prompt! "design project")
-
 begin pure math generation
+
+writing style consistency: maybe i should let llm to write some stuff in comparison and let me choose? idea: let llm generate some stuff in a list, i choose or rewrite, then let llm put them in comparison, generate the style guide. (or: give example, generate following existing text with human curated limitation.)
+
+project journal (i will use the new prompt! "design project"), dayflow https://github.com/JerryZLiu/Dayflow (found on ruanyf weekly)
 
  -->
 
