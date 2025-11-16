@@ -77,6 +77,8 @@ upd 2025.09.20:
 
 <!-- pvp 游戏, 体验仅仅是取胜的瞬间. 兴致了然. -->
 
+> "希望未来出现更多 `中专生姜萍` 这种不是为了考学而读书的人。"
+
 > "你不能只在赢的时候, 说自己喜欢数学."
 
 <details>
@@ -166,7 +168,7 @@ motivation:
 
 十年级的少年, 在数学课本前亦然, 鲜亮的封面没有褶皱.
 
-为文, 意在追寻心中未竟的愿望. 
+为文, 意在追寻心中未竟的愿望.
 
 此外, 一个实用的目的, 即作为援引, 那是后话了.
 
@@ -560,6 +562,8 @@ deprecated. most problems are from the textbook instead of mock test papers...
 
 <!-- 书中没有习题, 因为不应于此练习. -->
 
+<!--
+
 - 集合
   - 形式
   - 关系
@@ -577,6 +581,8 @@ deprecated. most problems are from the textbook instead of mock test papers...
 - 立体几何
 - 概率
 - 统计
+
+-->
 
 <!--
 
@@ -621,6 +627,7 @@ deprecated. most problems are from the textbook instead of mock test papers...
   - 随机抽样（简单随机抽样、系统抽样、分层抽样）。
   - 用样本估计总体（频率分布表与直方图、茎叶图、数字特征）。
   - 变量间的相关关系（散点图、线性回归方程）。
+
  -->
 
 ## .

@@ -22,4 +22,4 @@ misc
 - d is for deprecated.
 - the meaning of the header may change across contexts.
 - the reply may be modified a bit for better document structure and rendering
-
+- without specified, use the default model on the web app at the time

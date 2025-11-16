@@ -34,7 +34,7 @@ Based on the specific table of contents entry I will provide below, please gener
 **Output Format:**
 The entire output should be a single, continuous chapter draft in markdown format.
 
-- Use `#` for the chapter title, `##` for major section headings, and `###` for subsections as appropriate.
+- Use `##` for the chapter title, `###` for major section headings, and `####` for subsections as appropriate.
 - Present all mathematical expressions using LaTeX formatting (e.g., `\( a^2 + b^2 = c^2 \)` for inline and `$$...$$` for display equations).
 - Present theorems, definitions, and key takeaways in distinct, indented blocks using markdown `>` for emphasis.
 - Number all examples and problems sequentially.

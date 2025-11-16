@@ -230,7 +230,57 @@ what should a good writing style guide for a math textbook be
 
 04 40 sleep.
 
+12 20 write the diary of schooling. (in japanese light novel style)
 
+13 00 play with llm. prepare for pure math generation.
+
+16 00 chat: journal. think random stuff reflecting life and memories on the bed, distracted by the noise and light, sleepless. 19 00
+
+19 20 write down some thoughts. 20 40
+
+23 00 chat: elegant code.
+
+14
+
+00 20 chat: journal.
+
+11 40 ~~refresh myself.~~ ~~write an editorial for a math exam.~~ appreciate "too young, too simple, sometimes naive" and deprecate pure math legacy works. go for a meal.
+
+<!-- take a bath -->
+
+14 20 think about modernization, money smelt ladies, spending, and lifestyle.
+
+16 00 have a sound sleep in the sunbaked bedclothes. 20 40
+
+23 20 watch "sameko saba debut".
+
+<!-- pre theme: seaside (sameko saba) -->
+
+15
+
+00 20 chat: journal. download tapxworld/chinatextbook. (saba)
+
+09 40 chat: zhengyou, left and right in chinese politics, the impact on social events.
+
+12 20 write diary of distant recollection. read sinyalee's love story. take a look on chinese high school japanese textbook (idk where they got all these textbooks, without the watermark of private schools, even without press watermark on my zlibrary version, or maybe reverse engineered official version. maybe batch modified with pdf libraries?).
+
+16 00 appreciate "good luck is of original sin.", "a poem on pincong" (grok is really open minded.), "a day in the life", "hotel california"
+
+16
+
+07 40 think about today's work on vibe coding prompt: decide, design and write. write something about social commentary, referencing the hierarchy of disagreement by paul graham and hushi's idea of zhengyou. 
+
+08 00 finish watching "啃老五年拒剪长发！20岁网友被户晨风骂寄生虫". watch "连环出轨幼女，被全网封杀？震惊画坛的"夸父追日事件”" (memories of gaou. recollection is never late.).
+
+
+
+<!-- 
+
+at night: (finish all stuff in the hand) summarize llm limitations. create prompt: vibe coding, incl. decide, design, and write. create journal app.
+
+sunday: create design system. write the theme "seaside". figure out the answers of the math exam. write pre. create vid.
+
+ -->
 
 <!-- 
 
@@ -240,7 +290,7 @@ begin pure math generation
 
 writing style consistency: maybe i should let llm to write some stuff in comparison and let me choose? idea: let llm generate some stuff in a list, i choose or rewrite, then let llm put them in comparison, generate the style guide. (or: give example, generate following existing text with human curated limitation.)
 
-project journal (i will use the new prompt! "design project"), dayflow https://github.com/JerryZLiu/Dayflow (found on ruanyf weekly)
+project journal (i will use the new prompt. "design project"), dayflow https://github.com/JerryZLiu/Dayflow (found on ruanyf weekly)
 
  -->
 
