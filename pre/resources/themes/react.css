@@ -1,0 +1,173 @@
+.pre::-webkit-scrollbar {
+	width: 0.5rem;
+}
+
+.pre::-webkit-scrollbar-thumb {
+	background-color: #99a1b31a;
+	border-radius: 9999px;
+}
+
+.pre::-webkit-scrollbar-thumb:hover {
+	background-color: #99a1b330;
+}
+
+.pre::-webkit-scrollbar-thumb:active {
+	background-color: #99a1b350;
+}
+
+.pre {
+	position: fixed;
+	inset: 0;
+	max-width: 100%;
+	box-sizing: border-box;
+	margin: 0;
+	padding-inline: 15%;
+	padding-top: 3rem;
+	background-color: #23272F;
+	color: #F6F7F9;
+	font-size: 1.25rem;
+	font-family: Ubuntu, sans-serif;
+	line-height: 1.625;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+@media (min-width: 768px).pre {
+	padding-inline: 10%;
+}
+
+@media (min-width: 640px).pre {
+	padding-inline: 5%;
+}
+
+.pre :is(h1, h2, h3, h4, h5, h6) {
+	margin-top: 1.5rem;
+	margin-bottom: 0.75rem;
+	line-height: 1.25;
+	color: #F6F7F9;
+	font-weight: 700;
+	font-family: Cormorant, Noto Serif CJK SC, serif;
+	font-style: italic;
+}
+
+.pre :is(h1) {
+	font-size: 2.25rem;
+}
+
+.pre :is(h2) {
+	font-size: 1.875rem;
+}
+
+.pre :is(h3) {
+	font-size: 1.5rem;
+}
+
+.pre :is(p) {
+	margin-block: 1rem;
+}
+
+.pre :is(strong) {
+	weight: bold;
+}
+
+.pre :is(em) {
+	style: italic;
+}
+
+.pre :is(a) {
+	color: #58c4dc;
+	text-decoration-color: none;
+}
+
+.pre :is(a):hover {
+	underline;
+}
+
+.pre :is(ul, ol) {
+	margin-block: 1rem;
+	padding-left: 2rem;
+}
+
+.pre :is(ul) {
+	list-style-type: disc;
+}
+
+.pre :is(ul.contains-task-list) {
+	list-style-type: none;
+}
+
+.pre :is(ol) {
+	list-style-type: decimal;
+}
+
+.pre :is(li) {
+	margin-block: 0.5rem;
+}
+
+.pre :is(pre code) {
+	display: block;
+	margin-inline: 0;
+	margin-block: 1.5rem;
+	padding: 1rem;
+	max-width: 100%;
+	background-color: #16181D;
+	border-radius: 0.25rem;
+	overflow: auto;
+}
+
+.pre :is(code) {
+	margin-inline: 0.25rem;
+	padding: 0.25rem;
+	border-radius: 0.25rem;
+	font-size: 1rem;
+	font-family: Fira Code, monospace;
+	background-color: #99a1b31a;
+}
+
+.pre :is(img) {
+	display: block;
+	margin-block: 1.5rem;
+	max-width: 100%;
+	height: auto;
+}
+
+.pre :is(blockquote) {
+	margin-block: 2rem;
+	padding-inline: 2.5rem;
+	padding-block: 1rem;
+	background-color: #343a46;
+	border-radius: 1rem;
+}
+
+.pre :is(table) {
+	margin-block: 1.5rem;
+	width: 100%;
+	border-color: collapse;
+}
+
+.pre :is(th, td) {
+	padding-inline: 0.25rem;
+	padding-block: 0.5rem;
+}
+
+.pre :is(details) {
+	margin-block: 1.5rem;
+	padding-inline: 0;
+	padding-block: 0.5rem;
+	border-radius: 1rem;
+}
+
+.pre :is(summary) {
+	display: inline;
+	padding-inline: 1rem;
+	padding-block: 0.5rem;
+	font-size: 1rem;
+	font-weight: 700;
+	list-style-type: none;
+	border-radius: 9999px;
+	background-color: #343a46;
+}
+
+.pre :is(.katex *) {
+	font-family: XITS Math, math;
+}

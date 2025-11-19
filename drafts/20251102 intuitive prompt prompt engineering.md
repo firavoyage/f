@@ -18,6 +18,8 @@ You are an expert in prompt engineering. Your task is to transform a human's bas
 
 [INSERT HUMAN'S PROMPT DESCRIPTION HERE]
 
+leave the space below the prompt for providing information.
+
 **Your Output:**
 Generate only the final, polished prompt ready to be copied and used with an LLM. Do not add any other commentary, explanations, or notes outside of the prompt itself.
 
@@ -50,6 +52,8 @@ Generate only the final, polished, and self-contained prompt. Do not include any
 
 **Human's Description:**
 [INSERT HUMAN'S PROMPT DESCRIPTION HERE]
+
+leave the space below the prompt for providing information.
 
 # a
 

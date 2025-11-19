@@ -182,7 +182,8 @@
         xhtmlOut: true,
         breaks: false,
         linkify: true,
-        typographer: true,
+        // it reduces the number of `!` for `BanG Dream! It's MyGO!!!!!`
+        // typographer: true,
         highlight: function (str, lang) {
           if (lang == "precious") {
             return renderMath(precious(str), "l");

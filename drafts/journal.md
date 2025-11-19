@@ -270,15 +270,88 @@ what should a good writing style guide for a math textbook be
 
 07 40 think about today's work on vibe coding prompt: decide, design and write. write something about social commentary, referencing the hierarchy of disagreement by paul graham and hushi's idea of zhengyou. 
 
-08 00 finish watching "啃老五年拒剪长发！20岁网友被户晨风骂寄生虫". watch "连环出轨幼女，被全网封杀？震惊画坛的"夸父追日事件”" (memories of gaou. recollection is never late.).
+08 00 finish watching "啃老五年拒剪长发！20岁网友被户晨风骂寄生虫". watch "连环出轨幼女，被全网封杀？震惊画坛的"夸父追日事件”" (memories of gaou. recollection is never late.). 
+
+11 20 watch retro vid ("fav vids on berryberry/student he 2018"). read sinyalee's love story, the ascended part.
+
+~~11 40~~ ~~summarize llm limitations.~~
+
+12 20 go outing. play a vr game "art masters: the garden of earthly delights" near jingan joy city. play kagura mea at a high volume in the ear.
+
+21 20 change habit: duolingo in the morning instead of at midnight (deprecated. never sleep early.)
+
+23 00 figure out the answers of the math exam.
+
+17
+
+00 40 watch "谷歌工程师上麦反驳户晨风fsd观点，年薪30万刀给户子羡慕坏了
+" (see shengxj, and liusports713, the guest himself, chatting till now in the comments). watch "I Trained an AI to Play Clash Royale... It Worked Too Well" by an indian.
+
+02 40 chat: llm limitations.
+
+03 00 install screen time from fdroid (2mb size, using material 3, like journal on the phone) and check. search the infomation about the developer atharok. change the placement of apps. remove some people in douyin blacklist, changing to "dont recommend the channel".
+
+03 20 write pre about a math exam of personal thoughts.
+
+06 00 create seaside theme for pre.
+
+17 40 try to find common relationships in conic curves by replacing numbers with alphabets, the aha moment, giving the confidence and a greater sight. walk in the cold wind and dream about unworldly things.
+
+18 20 ask gemini about staying up and the pain on eyes.
+
+19 00 have a rest on the bed with earplugs on and lights off. feel cured. ~~20 20~~ 21 00
+
+23 20 review gaou's fanbox doujin downloaded on ehviewer and cock. chat: how to understand bwh. feel energetic.
+
+18
+
+01 00 appreciate gaou's work. feel tired and satisfied ("no thoughts head empty").
+
+01 20 finish the math exam pre. prepare for recoding the vid. refine the seaside theme. 02 40
+
+03 00 design the script. ~~record the vid.~~
+
+03 40 record the vid.
+
+10 00 explore the special properties of a conic curve, k1+k2 = constant, with my math teacher, and figure out the limitations of variables to make the problem solvable.
+
+18 40 realize that fira prefers thinking over expressing. chat for suggestions. 
+
+19 00 learn the kanji of journal
+
+19 20 watch daozhu's mcdonald vid and some anime unixporn on douyin.
+
+23 40 archive chats. chat: vibe coding prompt, incl. decide, design, and write.
+
+19
+
+00 00 duolingo. want to sleep early since i feel so tired and sleepy to even finish watching an episode. try to learn chemistry from the school private handbook tomorrow. plan: write pure math, create games, and build elegant tools.
+
+00 20 chat: vibe coding prompt, and many other stuff, mainly about indie game dev. 
+
+01 40 surf twitter
+
+02 00 sleep.
+
+18 20 surf twitter. find georgehastings and the webgl shader library. get overwhelmed in the praises of google's new llm.  19 40
+
+22 20 feel overwhelmed by peer pressure and being ordinary. try to rewatch lucky star episode 1 (i considered yosuga no sora, the first anime ive ever watched, about a lonely journey and an unworldly pursuit, which is, kind of sad.), listen to the opening music, review a few scenes, feel bright.
+
+23 40 see a pack of unopened potato chips on my desk, which stayed for a few days. put it back to the box since i should not be so easy now. put no black tea in the cup of boiled water. pause the video, not willing to finish watching it without a good physical state, which could be a pity of the content and a waste of time.
+
+20
+
+00 20 duolingo. sleep early for gemini 3's advice.
 
 
+
+<!-- watch next ep. & haruka. & chat! ::heart::  -->
 
 <!-- 
 
-at night: (finish all stuff in the hand) summarize llm limitations. create prompt: vibe coding, incl. decide, design, and write. create journal app.
+make pre web better with llm. fix lib/save: show browser message.
 
-sunday: create design system. write the theme "seaside". figure out the answers of the math exam. write pre. create vid.
+fix seaside theme: math text scale 1.1
 
  -->
 

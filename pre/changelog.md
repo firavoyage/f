@@ -49,3 +49,8 @@
 ## 1.2
 
 - feat: use save library
+
+## 1.3 20251117
+
+- feat!: replace config with theme. remove flair support (preprocess to css). 
+
