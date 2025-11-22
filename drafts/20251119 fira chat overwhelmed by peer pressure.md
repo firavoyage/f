@@ -4,6 +4,8 @@
 
 <!-- "The "Gifted Child" Didn't Care About Prestige" i cried. -->
 
+<!-- gemini could read my location and time... -->
+
 # 1
 
 <!-- i miss gemini 2.5... -->

@@ -1,5 +1,7 @@
 <!-- for creating vibe coding prompts, deprecated for realizing that the only major limitation is the output limit, just division, which is enough, no need to figure out all of the limitations, since there's no perfect software engineering, unlike designing, creating, or writing, just pass the unit tests, or try again until it works. -->
 
+<!-- for literary stuff, i always feel right. -->
+
 # a
 
 explain the limit of llms
@@ -289,7 +291,7 @@ Of course. Here is a concise list of the key limitations of Large Language Model
 | Syntax and library lookup                 | Ensuring security & performance     |
 | Translating simple code between languages | Understanding unique business logic |
 
-# c 3 a (d)
+# c 3.a (d)
 
 how to avoid
 
@@ -426,7 +428,7 @@ Testing → Security Scan → Integration → Deployment
 
 The key is to treat LLMs as **powerful assistants, not replacements**. The human engineer remains the system architect, quality assurance, and ultimately responsible party for the software's correctness, security, and maintainability.
 
-# c 3 b
+# c 3.b
 
 list things like overfitting
 
@@ -487,7 +489,7 @@ Here is a list of limitations that affect software engineering, framed using con
   - **Missed Optimizations:** Isn't aware of newer, more performant language features or techniques developed after its training.
   - **Unpatched Vulnerabilities:** Generates code with known security flaws for which patches and safer alternatives already exist.
 
-# c 3 b 2
+# c 3.b 2
 
 explain in simple english
 
@@ -547,7 +549,7 @@ But it's a **terrible substitute** for a human engineer who:
 
 **Use it like a super-powered assistant, not like the boss.** You are still the one who needs to check its work and make the final decisions.
 
-# c 3 c (d)
+# c 3.c (d)
 
 <!-- it's itself overfitting. -->
 
@@ -616,7 +618,7 @@ Excellent question. Here's a list of common LLM limitations and issues that can 
 
 By mastering these prompt engineering techniques, a developer transforms from a passive user of an LLM into an active **director of AI resources**, effectively guiding the model to produce higher-quality, more reliable, and more relevant software engineering outputs.
 
-# c 3 d
+# c 3.d
 
 list limitations that could be avoided by using llms wisely
 
@@ -692,7 +694,7 @@ The common thread in avoiding these limitations is to shift your perspective:
 
 The responsibility for correct, secure, and maintainable code remains firmly with the human engineer. The LLM is a force multiplier for a skilled developer, not a replacement for one.
 
-# c 3 e
+# c 3.e
 
 list limitations that could be avoided by knowing the theory behind llms and using llms wisely
 
@@ -761,7 +763,7 @@ By knowing the theory, you stop treating the LLM as an **oracle** and start trea
 
 The ultimate limitation that can be avoided is **the surprise of failure**. By knowing how and why LLMs fail, you can build processes and habits that harness their speed while insulating your project from their fundamental weaknesses.
 
-# c 3 e 2
+# c 3.e 2
 
 deep dive
 
@@ -1036,7 +1038,7 @@ Understanding LLM theory transforms you from a passive consumer of AI output to 
 
 The most successful engineers won't be those who can code fastest, but those who can best orchestrate AI systems while understanding their fundamental limitations. This requires deep knowledge of both software engineering principles and the statistical nature of modern AI tools.
 
-# c 3 e 3 (star)
+# c 3.e 3 (star)
 
 explain in simple english
 

@@ -110,7 +110,7 @@ what should a good writing style guide for a math textbook be
 
 19 00 plan pre export pdf (deprecated)
 
-08 
+08
 
 03 20 journal
 
@@ -172,7 +172,7 @@ what should a good writing style guide for a math textbook be
 
 22 00 lights: llm 22 20
 
-22 20 prompt: design project, ~~grammatically~~ 23 00 
+22 20 prompt: design project, ~~grammatically~~ 23 00
 
 23 00 llm software creator
 
@@ -184,7 +184,7 @@ what should a good writing style guide for a math textbook be
 
 03 00 archive chats about llm consistency (then, write a style guide by making choices with llm.)
 
-03 40 download and scan en math textbooks. take a look at the aops the basics and beyond. 
+03 40 download and scan en math textbooks. take a look at the aops the basics and beyond.
 
 05 00 surf twitter, sleep.
 
@@ -212,7 +212,7 @@ what should a good writing style guide for a math textbook be
 
 04 00 revise twitter subscription. curating a list called f, incl. must reads like lcmenci, and chyk. 04 20
 
-04 20 try to download chemistry mock test papers but get stuck at paywall. search on sogou weixin and fail (no direct file link). use camera and ocr instead (which is stupid, give up after taking photos). try search on cloud drives and fail. 
+04 20 try to download chemistry mock test papers but get stuck at paywall. search on sogou weixin and fail (no direct file link). use camera and ocr instead (which is stupid, give up after taking photos). try search on cloud drives and fail.
 
 05 00 try to hack the image file on 51jiaoxi.com, assume that it does not have paywall key validation. succeed. 05 20
 
@@ -224,7 +224,7 @@ what should a good writing style guide for a math textbook be
 
 02 20 chat: play sm. surf pixiv. browse wikipedia: sm.
 
-03 00 read physics textbook 3. chat: textbook anti self learning. fix youtube new ui. 
+03 00 read physics textbook 3. chat: textbook anti self learning. fix youtube new ui.
 
 03 40 watch "How is Chinese high school like in 2025? Here's my answer."
 
@@ -268,9 +268,9 @@ what should a good writing style guide for a math textbook be
 
 16
 
-07 40 think about today's work on vibe coding prompt: decide, design and write. write something about social commentary, referencing the hierarchy of disagreement by paul graham and hushi's idea of zhengyou. 
+07 40 think about today's work on vibe coding prompt: decide, design and write. write something about social commentary, referencing the hierarchy of disagreement by paul graham and hushi's idea of zhengyou.
 
-08 00 finish watching "啃老五年拒剪长发！20岁网友被户晨风骂寄生虫". watch "连环出轨幼女，被全网封杀？震惊画坛的"夸父追日事件”" (memories of gaou. recollection is never late.). 
+08 00 finish watching "啃老五年拒剪长发！20 岁网友被户晨风骂寄生虫". watch "连环出轨幼女，被全网封杀？震惊画坛的"夸父追日事件”" (memories of gaou. recollection is never late.).
 
 11 20 watch retro vid ("fav vids on berryberry/student he 2018"). read sinyalee's love story, the ascended part.
 
@@ -284,7 +284,7 @@ what should a good writing style guide for a math textbook be
 
 17
 
-00 40 watch "谷歌工程师上麦反驳户晨风fsd观点，年薪30万刀给户子羡慕坏了
+00 40 watch "谷歌工程师上麦反驳户晨风 fsd 观点，年薪 30 万刀给户子羡慕坏了
 " (see shengxj, and liusports713, the guest himself, chatting till now in the comments). watch "I Trained an AI to Play Clash Royale... It Worked Too Well" by an indian.
 
 02 40 chat: llm limitations.
@@ -315,7 +315,7 @@ what should a good writing style guide for a math textbook be
 
 10 00 explore the special properties of a conic curve, k1+k2 = constant, with my math teacher, and figure out the limitations of variables to make the problem solvable.
 
-18 40 realize that fira prefers thinking over expressing. chat for suggestions. 
+18 40 realize that fira prefers thinking over expressing. chat for suggestions.
 
 19 00 learn the kanji of journal
 
@@ -327,13 +327,13 @@ what should a good writing style guide for a math textbook be
 
 00 00 duolingo. want to sleep early since i feel so tired and sleepy to even finish watching an episode. try to learn chemistry from the school private handbook tomorrow. plan: write pure math, create games, and build elegant tools.
 
-00 20 chat: vibe coding prompt, and many other stuff, mainly about indie game dev. 
+00 20 chat: vibe coding prompt, and many other stuff, mainly about indie game dev.
 
 01 40 surf twitter
 
 02 00 sleep.
 
-18 20 surf twitter. find georgehastings and the webgl shader library. get overwhelmed in the praises of google's new llm.  19 40
+18 20 surf twitter. find georgehastings and the webgl shader library. get overwhelmed in the praises of google's new llm. 19 40
 
 22 20 feel overwhelmed by peer pressure and being ordinary. try to rewatch lucky star episode 1 (i considered yosuga no sora, the first anime ive ever watched, about a lonely journey and an unworldly pursuit, which is, kind of sad.), listen to the opening music, review a few scenes, feel bright.
 
@@ -341,21 +341,65 @@ what should a good writing style guide for a math textbook be
 
 20
 
-00 20 duolingo. sleep early for gemini 3's advice.
+00 20 duolingo. sleep early following gemini 3's advice.
+
+18 20 return from school. buy takoyaki from family mart. recommend the "i taught an octopus piano" to the declining girl and search on bilibili.
+
+18 40 download animenz's music to replace the boring "peaceful piano", lots of lookup error. find yt-dlp. find bocchi the jazz ""JAZZSOBI🎺" | YOASOBI Jazz Arrangements III (2025) [playlist]".
+
+19 00 watch a few hu chenfeng clips while downloading animenz "中药学硕士上麦反驳户子，反驳不过竟反手炸了直播间" "Corner VS Behind King".
+
+20 00 take a look at the english mock test papers in 2025 seeing "the best music to boost productivity" on the first page from the fengxian district recommending drops of jupiter by train, dreams by fleetwood mac, and dont stop believin by journey. love and download dont stop believin, 356m views, "I hear this and I'm 18 years old again!! Just turned 62 and I'm still rocking out to this song!! It's a part of my soul and always will be forever ❤️😊". find "摩的司机徐师傅" and watch some of his vids.
+
+20 20 watch a few hu chenfeng clips "蜜雪员工怒怼户晨风！月薪 2000 骂到破防？英语没用？苹果危险？连麦全程高能！" "【26 岁小伙被 42 岁富姐包养？】连麦自曝月入 1 万还要转钱养自己女友！户晨风犀利拆穿：“你被包养了都不自知！”💔" while the download is still ongoing (today is really fun, good music, interesting humans, like a roma colosseum. ).
+
+21 
+
+11 40 go to wagas restaurant.
+
+17 40 buy turkey flavor kebab from family mart.
+
+18 20 have haircut. disconnect gemini to google workspace.
+
+20 00 think about starting watching haruhi, because reply 1988 is about boring ordinary life. reject because i think i would never finish watching 1988 if i give up now. choose to watch it eventually because i think i would like to try something exciting always. feel bright.
+
+20 40 learn about the journal app on the declining girl's iphone and feel disappointed (just another pretty app by apple). 
+
+21 00 surf zhihu (nothing special. society, school, unixporn, literary...) while single loop "one more time one more chance" by animenz.
+
+22
+
+00 20 remove the password of my phone. sleep early, yolo (time at its best is used when energetic over sleepy.).
+
+08 40 chat: meta prompt. try openrouter (so many free models) abandoned a few days before for not knowing how to config, but it works now on the web.
+
+09 00 chat: try openrouter with free api key (why gemini is always using canvas, locking me in) and it works. watch a hu chenfeng clip "非洲刚果人在广州长大？中文超溜！还上国际学校、读加拿大名校？户晨风连麦网友".
+
+09 40 have breakfast. lose myself on the web.
+
+10 20 archive chats (focus on one task a time.). compare llms and find my love.
+
+13 00 pay 5 usd to openrouter.
+
+13 40 watch a hu chenfeng clip "月租$5000美金！24岁纽约留学生连麦户晨风".
+
+14 00 take the first french lesson on duolingo inspired by the black guy.
+
+think im not on the right path, being too greedy, wanna use many llms at a time, instead of just using the right one, like asking the next question for starting generation early before reading the current a few days ago, since focusing too much on optimizing details could lead to forgetting the big picture. waste hours comparing llms today (but it's ok anyway).
+
+17 40 try to create an origami of sparkle's mask following chen xiao's vid tutorial, with a 30 square cm paper, a birthday present last year, black tea, classic flavor potato chips, animenz music, and a soft earplug. 22 20
+
+23
+
+00 20 compare meta prompts (takes a lot of time, but it's worth since i want to pursue the best prompts ever.).
+
+02 00 chat: prompt the girl of wisdom.
 
 
 
-<!-- watch next ep. & haruka. & chat! ::heart::  -->
+<!--
 
-<!-- 
-
-make pre web better with llm. fix lib/save: show browser message.
-
-fix seaside theme: math text scale 1.1
-
- -->
-
-<!-- 
+see scratch pad.
 
 breadcrumb:
 
@@ -363,33 +407,39 @@ begin pure math generation
 
 writing style consistency: maybe i should let llm to write some stuff in comparison and let me choose? idea: let llm generate some stuff in a list, i choose or rewrite, then let llm put them in comparison, generate the style guide. (or: give example, generate following existing text with human curated limitation.)
 
-project journal (i will use the new prompt. "design project"), dayflow https://github.com/JerryZLiu/Dayflow (found on ruanyf weekly)
+project journal
+
+make pre web better with llm. fix save: show browser message.
+
+fix seaside theme: math text too small
 
  -->
 
-<!-- 
+<!--
 
-slow down the pace. 
+slow down the pace.
 
-have a foresight. 
+have a foresight.
 
-do right things. 
+do right things.
 
 -->
 
-<!-- 
+<!--
 
 refresh myself.
 
+time at its best is used when energetic.
+
  -->
 
-<!-- 
+<!--
 
 exchange observation.
 
  -->
 
-<!-- 
+<!--
 
 my time is infinite.
 
@@ -399,7 +449,7 @@ i will eventually achieve all i want.
 
  -->
 
-<!-- 
+<!--
 
 weekly
 
