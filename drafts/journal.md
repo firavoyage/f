@@ -393,7 +393,7 @@ think im not on the right path, being too greedy, wanna use many llms at a time,
 
 00 20 compare meta prompts (takes a lot of time, but it's worth since i want to pursue the best prompts ever.).
 
-02 00 chat: prompt the girl of wisdom.
+02 00 chat: prompt the girl of wisdom. 04 00
 
 
 
