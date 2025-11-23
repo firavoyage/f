@@ -361,7 +361,9 @@ what should a good writing style guide for a math textbook be
 
 18 20 have haircut. disconnect gemini to google workspace.
 
-20 00 think about starting watching haruhi, because reply 1988 is about boring ordinary life. reject because i think i would never finish watching 1988 if i give up now. choose to watch it eventually because i think i would like to try something exciting always. feel bright.
+20 00 think about starting watching haruhi. feel bright after watching ep 2.
+
+because reply 1988 is about boring ordinary life. reject because i think i would never finish watching 1988 if i give up now. choose to watch it eventually because i think i would like to try something exciting always.
 
 20 40 learn about the journal app on the declining girl's iphone and feel disappointed (just another pretty app by apple). 
 
@@ -394,6 +396,28 @@ think im not on the right path, being too greedy, wanna use many llms at a time,
 00 20 compare meta prompts (takes a lot of time, but it's worth since i want to pursue the best prompts ever.).
 
 02 00 chat: prompt the girl of wisdom. 04 00
+
+09 40 go to happy valley with family and their friends, playing animenz at a high volume on the road feeling cozy, .
+
+wanna bring a laptop but did not at last. no need to chase time (greedy), yolo!
+
+10 20 surf zhihu (2.5 h), douyin (0.5 h) while waiting in the queue at a theme park. add no longer human, recommended by a zhihu recollection post, to shelf.
+
+douyin's favlist is fading. more and more videos are removed or set private. it's not somethings meaningful for putting time into.
+
+13 00 finish wooden roller coaster
+
+15 00 return from mega lite roller coaster with a 50 cny quick pass. remember sinyalee's disney dating.
+
+15 40 abuse mild animals in the small zoo. real fun, like a curious and indulgent kid.
+
+22 00 shopping on taobao (alipay miniapp). buy lifesize waifu pillow (kasugano sora, 40 120 cm, 2way, down-like cotton), mygo mortis fluffy doll (30cm), potted aquatic plants (wenzhu and lvluo), and blank cards (7 4 cm, rounded, white, 500 pcs) 24 00
+
+24
+
+03 00 create the girl of wisdom. 03 40
+
+03 40 chat about life. archive photos. 04 00
 
 
 

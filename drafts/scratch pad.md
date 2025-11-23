@@ -1,5 +1,43 @@
 plan:
 
+laptop:
+
+- prompt: meta prompt (already works?)
+- prompt: innocent girl as my deskmate (?) or just chat naturally? or no prompt?
+- penacony origami bird
+
+```
+what could i do when im free
+
+explain yolo
+
+how to be with time. not manage or be controlled not productive, but feel right.
+
+wisdom: i ll start the cvst
+
+revise. (fl bp to determine things, but be flexible)
+
+the extent really matters.
+
+perfect.
+
+add to readme. bee cheng hiang roasted pork.
+
+春物
+
+life: fira and the innocent girl of wisdom.
+
+learn: child, gifted classmate, chat naturally (same?)
+
+japanese: friend. socratic.
+
+"only i could know"
+
+zhihu following list export. favlist export enhanced.
+
+blank cards, plant, lifesize pillow, doll from menci.
+```
+
 compare the initial propmt.
 
 choose one.
