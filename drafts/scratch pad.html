@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Non-Euclidean Memory Map</title>
+    <style>
+        /*
+        * CSS STYLES
+        * - Defines the look of the map, nodes, and connections
+        */
+        body {
+            background-color: #1a1a2e; /* Dark, conceptual background */
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            overflow: hidden; /* Prevent scrollbars */
+        }
+
+        #map-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        /* --- Node Styling --- */
+        .node {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+            border: 2px solid #6c5ce7; /* Subtle purple border */
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+            box-shadow: 0 0 10px rgba(108, 92, 231, 0.5);
+            z-index: 10; /* Ensure nodes are above lines */
+            user-select: none;
+            font-size: 0.9em;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .node:hover {
+            background: rgba(108, 92, 231, 0.3);
+            border-color: #a29bfe;
+            transform: scale(1.1); /* Subtle lift on hover */
+        }
+        
+        /* --- Connection Styling (SVG) --- */
+        #connections-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Allows mouse events to pass through to the nodes */
+            z-index: 5; /* Lines are below nodes */
+        }
+
+        .connection {
+            stroke: #a29bfe; /* Soft purple color */
+            stroke-width: 1.5;
+            stroke-dasharray: 4, 3; /* Dashed/dotted line for "hand-drawn pencil" effect */
+            opacity: 0.7;
+            transition: stroke 0.3s, stroke-width 0.3s, opacity 0.3s;
+        }
+
+        /* --- Hover/Glow Effect --- */
+        .glowing {
+            stroke: #ff9ff3; /* Bright color for glow */
+            stroke-width: 3;
+            opacity: 1;
+            /* Simple flicker/glow animation */
+            animation: flicker 0.5s infinite alternate;
+        }
+
+        @keyframes flicker {
+            0% { stroke-opacity: 0.8; }
+            100% { stroke-opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="map-container">
+        <svg id="connections-svg"></svg>
+
+        <div class="node" id="node-quiet" data-id="quiet" style="top: 15vh; left: 30vw;">Quiet</div>
+        <div class="node" id="node-loss" data-id="loss" style="top: 45vh; left: 50vw;">Loss</div>
+        <div class="node" id="node-echo" data-id="echo" style="top: 48vh; left: 53vw;">Echo</div> <div class="node" id="node-purity" data-id="purity" style="top: 70vh; left: 10vw;">Purity</div> <div class="node" id="node-hope" data-id="hope" style="top: 10vh; left: 70vw;">Hope</div>
+        <div class="node" id="node-rage" data-id="rage" style="top: 80vh; left: 40vw;">Rage</div>
+        <div class="node" id="node-drift" data-id="drift" style="top: 35vh; left: 85vw;">Drift</div>
+    </div>
+
+    <script>
+        //
+        // JAVASCRIPT LOGIC
+        // - Defines the conceptual graph structure and handles interactivity
+        //
+
+        // 1. Define the conceptual graph structure and connections
+        const connections = [
+            { id: 'conn-ql', from: 'quiet', to: 'loss' },
+            { id: 'conn-qe', from: 'quiet', to: 'echo' },
+            { id: 'conn-qp', from: 'quiet', to: 'purity' }, // Quiet is connected to at least two others
+            
+            { id: 'conn-lr', from: 'loss', to: 'rage' },
+            { id: 'conn-le', from: 'loss', to: 'echo' }, // Loss is connected to at least two others (Echo is conceptually tied)
+            
+            { id: 'conn-ed', from: 'echo', to: 'drift' }, // Echo is connected to at least two others
+            
+            { id: 'conn-ph', from: 'purity', to: 'hope' },
+            { id: 'conn-pr', from: 'purity', to: 'rage' }, // Purity is connected to at least two others
+            
+            { id: 'conn-hd', from: 'hope', to: 'drift' }, // Hope is connected to at least two others
+            
+            { id: 'conn-rd', from: 'rage', to: 'drift' } // Rage is connected to at least two others
+        ];
+
+        const svg = document.getElementById('connections-svg');
+        const nodes = document.querySelectorAll('.node');
+
+        // Helper function to get the center coordinates of a node
+        function getNodeCenter(node) {
+            const rect = node.getBoundingClientRect();
+            // Get center relative to the viewport
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            return { x: centerX, y: centerY };
+        }
+
+        // 2. Draw the connections on initial load and resize
+        function drawConnections() {
+            // Clear existing lines to redraw
+            svg.innerHTML = ''; 
+
+            connections.forEach(conn => {
+                const nodeFrom = document.querySelector(`[data-id="${conn.from}"]`);
+                const nodeTo = document.querySelector(`[data-id="${conn.to}"]`);
+
+                if (nodeFrom && nodeTo) {
+                    const centerFrom = getNodeCenter(nodeFrom);
+                    const centerTo = getNodeCenter(nodeTo);
+
+                    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                    line.setAttribute('x1', centerFrom.x);
+                    line.setAttribute('y1', centerFrom.y);
+                    line.setAttribute('x2', centerTo.x);
+                    line.setAttribute('y2', centerTo.y);
+                    line.setAttribute('class', 'connection');
+                    line.setAttribute('data-from', conn.from);
+                    line.setAttribute('data-to', conn.to);
+                    line.setAttribute('id', conn.id);
+
+                    svg.appendChild(line);
+                }
+            });
+        }
+
+        // 3. Handle interactivity (mouseover/mouseout)
+        function handleNodeHover(event) {
+            const hoveredNodeId = event.target.getAttribute('data-id');
+            const lines = document.querySelectorAll('.connection');
+            
+            lines.forEach(line => {
+                const isConnected = line.getAttribute('data-from') === hoveredNodeId || 
+                                    line.getAttribute('data-to') === hoveredNodeId;
+                
+                if (event.type === 'mouseover') {
+                    if (isConnected) {
+                        line.classList.add('glowing');
+                    }
+                } else if (event.type === 'mouseout') {
+                    line.classList.remove('glowing');
+                }
+            });
+        }
+
+        // 4. Attach event listeners
+        nodes.forEach(node => {
+            node.addEventListener('mouseover', handleNodeHover);
+            node.addEventListener('mouseout', handleNodeHover);
+        });
+
+        // Initial draw and redraw on window resize
+        window.addEventListener('load', drawConnections);
+        window.addEventListener('resize', drawConnections);
+    </script>
+</body>
+</html>

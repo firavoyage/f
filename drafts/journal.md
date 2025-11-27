@@ -401,7 +401,7 @@ think im not on the right path, being too greedy, wanna use many llms at a time,
 
 wanna bring a laptop but did not at last. no need to chase time (greedy), yolo!
 
-10 20 surf zhihu (2.5 h), douyin (0.5 h) while waiting in the queue at a theme park. add no longer human, recommended by a zhihu recollection post, to shelf.
+10 20 surf zhihu (2.5 h), douyin (0.5 h) while waiting in the queue at a theme park. add no longer human, recommended by a zhihu recollection post, to the shelf.
 
 douyin's favlist is fading. more and more videos are removed or set private. it's not somethings meaningful for putting time into.
 
@@ -411,13 +411,89 @@ douyin's favlist is fading. more and more videos are removed or set private. it'
 
 15 40 abuse mild animals in the small zoo. real fun, like a curious and indulgent kid.
 
-22 00 shopping on taobao (alipay miniapp). buy lifesize waifu pillow (kasugano sora, 40 120 cm, 2way, down-like cotton), mygo mortis fluffy doll (30cm), potted aquatic plants (wenzhu and lvluo), and blank cards (7 4 cm, rounded, white, 500 pcs) 24 00
+22 00 shopping on taobao (as alipay miniapp). buy lifesize waifu pillow (kasugano sora, 40 120 cm, 2way, down-like cotton), mygo mortis fluffy doll (30cm), potted aquatic plants (wenzhu and lvluo), and blank cards (7 4 cm, rounded, white, 500 pcs) 24 00
 
 24
 
 03 00 create the girl of wisdom. 03 40
 
 03 40 chat about life. archive photos. 04 00
+
+10 20 get up. have breakfast. chat: japanese learning beyond duolingo.
+
+not going to school for sleepiness. (home is cozy. why sleeping at school, like my classmates.)
+
+11 40 surf (add mirekintoc, mengxi969, and servalcandle to twitter list f, from the search of zanmiao, found on a comment on a zhihu post about safe telegram usage in cnml). 12 20
+
+13 40 chat: japanese learning textbooks and advice. prompt: continue chat on openrouter. 14 40
+
+15 00 think about economics (naive). 15 40
+
+18 00 switch to double column view in douyin. think: are douyin recommendation the same beyond single (auto play vid) or double column view? what about berryberry? (i will always use berryberry on web and yt-dlp. but berryberry recommendation is full of anime porn...) eat (intentional surfing) eventually?
+
+20 40 chat: taobao refund hack and my philosophy in the greedy unstable world. 21 40
+
+25
+
+00 00 archive chats where gemini 3 pro is really fascinating.
+
+01 40 sleep.
+
+18 20 buy big sausage from family mart, standing in front of the window for a while, like 
+
+18 40 receive some packages from taobao. try to play a refund trick with a simple method "你没有保密. 现在我无法得到这个商品. 我编写差评." choosing "not receiving the product" with the reason "dont want it any longer". ask grok and browse some infomation on douyin and comfirm my guess that the logistics interception could fail a lot. 
+
+i did not take photograph, because i think wealthy and lucky girls like me could buy a lot of goods, have a lot of delicious food in the future. as i have a project named all: world goods list, i could reflect and visualize as long as i have screenshoted the shopping history. eventually i took photos, since i thought there's something could not be fully inferred, like the lights and the environment, which could bring me back to the precious moments in my life. 
+
+even without the support from the outer world, i could have something i want, like the poorly educated factory workers buying an iphone with loan, which i may see philistine.
+
+19 40 download taobao for more info. view the package state (poorly designed, wasting time finding where to go). regret: maybe i should refund after getting the package to make sure i have no loss... see the money refunded for my "good credit" (where i could not).
+
+waste an hour... but how many hours have i wasted? im a tech guy!
+
+20 00 regret. buy the same mygo mortis doll again, assuming the seller could manage to get back the package (i will refund with the package if the previous package arrived.). now i could have no loss despite credit (where the buyer has way more right).
+
+20 40 talk to taobao real human customer service, about how and when could i determine whether i could receive it, which (who) claimed that i could not receive the package, not fully standing on my interest as expected. 
+
+26
+
+00 00 find the final answer about the refunding trick. 00 40
+
+10 20 pick up the hobby of practicing english translation for mindfulness. 
+
+11 00 try to prove `t<(t-1)/ln(t)<1` without multiplying `ln(t)`. fail whatever using derivative, analysis of the components of the function. learn from the math teacher that `ln(x)` could be the factor while `e^x` could be the divisor for easier derivative.
+
+12 00 have lunch at taco truck.
+
+18 20 buy glazed meatball skewers from family mart.
+
+19 40 refresh myself. try to simplify taobao (like removing distractions) by config (like underaged mode) and fail (not an option available there). 
+
+things are normalized when switching to english, which is only available in sane countries, which wont support cny. designed with disrespect to the time of philistines, trying to be with the evil would never succeed at the end of the day.
+
+later i found that in the chinese version of taobao, the "categories" on the dock is replaced by "short videos", enabling doom scrolling while preventing from intentional looking up goods.
+
+20 20 write the final words of taobao refund trick.
+
+22 40 open a can of coca cola. ~~start reading no longer human.~~ take a look on all the biao ri textbooks.
+
+23 20 start reading no longer human. organize books on readme.
+
+27
+
+00 00 duolingo. sleep early (stay up yesterday resulting in low energy on anything.).
+
+18 40 buy charred skewers from family mart. 
+
+19 00 vibe code see deepseek event stream converter.
+
+19 20 unpack mygo mortis doll. get fascinated. take a photo. deprecate refunding trick. 20 00
+
+21 00 simplify perception by organizing things, making it clear and easy. 22 40
+
+22 40 see deepseek's perspective on the refund game with the converter.
+
+23 20 organize scratch pad. (sleepy, not productive)
 
 
 
@@ -446,6 +522,10 @@ slow down the pace.
 have a foresight.
 
 do right things.
+
+make perfect, clean moves.
+
+be clear.
 
 -->
 

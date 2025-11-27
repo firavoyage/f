@@ -1,3 +1,5 @@
+<!-- 2025.11.27: appreciate the default ui of goldendict. -->
+
 # a
 
 revise the css.

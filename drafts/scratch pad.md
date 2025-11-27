@@ -1,27 +1,91 @@
 plan:
 
-laptop:
+<!-- organize the random thoughts on scratch pad. -->
 
-- prompt: meta prompt (already works?)
-- prompt: innocent girl as my deskmate (?) or just chat naturally? or no prompt?
-- penacony origami bird
+<!-- remove unwanted first. -->
+
+first, prompt.
+
+ask the questions, one a time.
+
+---
+
+organized things:
+
+watch silence gamedev (find inspirations about promotion)
+
+read no longer human
+
+diy penacony origami bird
+
+switch context as i like.
+
+a. direct
+
+c sea ocean
+
+c org categ
+
+b. innocent
+
+how to live with time. schedule or not. manage time. want to master, become servant? use a schedule or not. how to be with time. not manage or be controlled not productive, but feel right. why/how schedule. scratch pad. projects/weekly/reading/watching/intentional surfing.
+
+explain yolo
+
+thoughts on nat.org
+
+dont think about that anymore. mindfulness, the precious thing of mine. way more important than. (thrill: problem solving, "ctf". mfn: transl) how did i? cn guys.
+
+---
+
+things:
+
+what would llms prefer. e.g. do over dont, desc over exempl.
+
+know llms' personality, 5 scenarios, 3 tasks for each.
+
+when would strong ones outperform weak ..
+
+what do you think about employing children with spare money in parenting
+
+all: sunrising and sunsetting in the real world ::heart::
+
+what could the gradients in the sky be anytime anythere
+
+how to describe food in english
+
+reflect things ive created in drafts "no time to read... archive. read them in reflection."
+
+read and watch: feel cursor (claude code) vs simple chat
+
+create: an (innocent girl of wisdom) for general purpose (without personal stuff)
+
+general: cursor (others are similar) built in prompts for automation. (add explanation.)
+
+chat (general purpose):
+
+innocent: organize sub for intentional surfing.
+
+general is everyday chat between two gifted girls.
+
+chats: draft notebook, scratch pad, (journal), (ff).
+
+eat, float: currently use simple alternatives
+
+how to read (no longer human)
+
+how to self learning jp with biao ri.
+
+what could i learn to create an indie game
+
+when to choose fast/thinking
+
+how to learn ui (ux) design
 
 ```
 what could i do when im free
 
-explain yolo
-
-how to be with time. not manage or be controlled not productive, but feel right.
-
-wisdom: i ll start the cvst
-
-revise. (fl bp to determine things, but be flexible)
-
-the extent really matters.
-
 perfect.
-
-add to readme. bee cheng hiang roasted pork.
 
 春物
 
@@ -37,16 +101,6 @@ zhihu following list export. favlist export enhanced.
 
 blank cards, plant, lifesize pillow, doll from menci.
 ```
-
-compare the initial propmt.
-
-choose one.
-
-create the girl of wisdom.
-
-things:
-
-origami.
 
 how to perceive the world. how to archive my perception.
 
@@ -84,8 +138,6 @@ what's the writing style of aops, tk td, how to learn from
 
 appreciate the lyrics of the wind of change
 
-what could the gradients in the sky be anytime anythere
-
 wanna be a design engineer, an indie gamedev, a teacher of the 10th grade learner.
 
 explain kuaihuo
@@ -117,8 +169,6 @@ translate "返老还童"
 human: wisdom strength boldness wealth freedom
 things: simplcity, elegance, beauty, purity, abstraction
 
-thoughts on nat.org
-
 revise the meta prompt (flexible or follow, reduce thinking burden)
 
 watch haruhi. sync with the phone.
@@ -129,6 +179,23 @@ prompt: self, what i love, what i desire, who talk to
 
 project: leisure zh "hima" (uee chinese).
 
-categ papers.
-
 for enthu, memories, ref.
+
+---
+
+week is the metaphor of working. en: 7, zh: 10. defined beyond nature by human.
+
+practice english calligraphy
+
+i would like to learn the high level method of thinking ("simplify")
+
+i would like to learn from smart self learners
+
+i would like to have some journaling prompts to help me think, decide, and do right things (a perfect move)
+
+prompt: fira and innocent girl, natural (simple!), direct (info or task)
+
+innocnet girl: have a big picture. (start fresh, review and polish myself. no need to strictly keep the original wording.)
+
+fira's company careers: hidden. (underaged sex service for fira, voice actor like bingtangio, politics freedom human rights, army with atomic bomb engineer, children labor)
+
