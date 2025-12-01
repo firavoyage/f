@@ -495,6 +495,96 @@ later i found that in the chinese version of taobao, the "categories" on the doc
 
 23 20 organize scratch pad. (sleepy, not productive)
 
+28
+
+<!-- no longer record duolingo -->
+
+00 20 refresh. finish organizing scratch pad. 01 00
+
+17 20 ~~create an origami of penacony origami bird following chen xiao.~~ compare synonyms and choose "plushie".
+
+18 00 create an origami of penacony origami bird following chen xiao with a 60 square cm paper, coca cola and earplugs, without extra music. finish the first phase, creating lines. 19 40
+
+21 00 have dinner. watch mygo. 22 20
+
+22 40 continue origami work.
+
+29
+
+01 40 get the imperfect origami work done, with some paper broken. give up before phase 3, refining.
+
+09 40 get up.
+
+11 00 try to create the penacony origami bird again with a piece of pink paper, black tea, earplug and animenz. finish phase 1. 12 40
+
+14 00 go for a meal, kemingbingshi. learn marketing skill from silence gamedev's vids but lose the navigation in douyin society memes, daozhu. 
+
+15 00 go to the gov to add my name to the housing ownership proof to avoid tax but do nothing besides sitting, having the signature written by others.
+
+17 00 continue the origami project. 
+
+18 20 expand everything, like the beginning of phase 2, to fix an unknown error (a mistake at the very beginning).
+
+20 20 learn about social events, the causes, the course, and the impact in china. 22 00
+
+30
+
+00 20 continue origami. finish it. feel really tired and relief. 05 00
+
+15 20 try to give it a simple fix and finish the yellow origami bird but give up. 15 40
+
+i thought i have 8 hours until midnight. but idk how to use.
+
+16 20 cock on berryberry.
+
+the frontpage of eat:berryberry could be myself, my perspective (top down, categories), and the overview (sub notifications? boom vids?). instead of a grid of arousing vids (recommendation), wasting my precious attention.
+
+16 40 watch "疑似神秘网红复活 神戳戳的苏神" on berryberry
+
+17 20 play geogebra. think things on math class on friday. write down the thoughts. 18 00
+
+18 00 surf berryberry, bfs from comments under menci's lastest singing vid.
+
+18 40 sit cozy on sofa. think what to do and how to think. return to the desk with head lifted on the mutsumi plushie.
+
+should i create an indie game today. what kind of indie game. i have 5 hours.
+
+what should i do first. what should i do now. 
+
+conclusion: a simple sequence. simplify, organize, make, refine, create.
+
+for example, simplify (view and archive chats) first, organize (categorize berryberry fav) next.
+
+21 40 lose myself in chats. explore new things whenever reading something. forget all about time.
+
+dec 2025
+
+1
+
+01 20 revise the innocent girl. manage to connect to gemini by iterating and testing proxy nodes (tor is unstable). (surf berryberry sometimes) 03 00
+
+12 40 go for a meal, tasty, but not my preference.
+
+14 20 surf berryberry "silence indie gamedev" "qunding mifengchu" "mygo mifengchu (unlisted)". 15 20
+
+16 00 put 10g fertilizer (fe, zn) into each aquatic potted plant and clean the soil on them. 16 20
+
+16 40 restart ubuntu after 33 days uptime (from neofetch). reopen apps.
+
+- code
+- chromium
+- goldendict
+- animenz
+- no longer human
+- phone
+- file: biaori, haruhi, g
+
+18 00 organize berryberry following. give up for the number (more than 500 uncategorized). 18 20 surf "60秒看懂Gemini 3有多恐怖 数字游牧人" "2025独游春晚·年度独立游戏大赏 独立游戏蜥蜴君". 18 40
+
+i have time. i love random surfing. yolo. why becoming a servant of time with a schedule.
+
+19 00 revise the innocent girl.
+
 
 
 <!--
@@ -502,6 +592,8 @@ later i found that in the chinese version of taobao, the "categories" on the doc
 see scratch pad.
 
 breadcrumb:
+
+(a web based localhost cloud gaming open world game?)
 
 begin pure math generation
 
@@ -550,6 +642,16 @@ my time is infinite.
 i could do anything i would like, now.
 
 i will eventually achieve all i want.
+
+ -->
+
+<!-- 
+
+life is a journey.
+
+doing right things could be way more important
+
+than doing things at the right time.
 
  -->
 
