@@ -8,6 +8,7 @@ llms
 - gemini
 - grok
 - mistral
+- chatgpt
 - other llm service
 - (if needed) mirror sites https://github.com/LiLittleCat/awesome-free-chatgpt
 
@@ -21,5 +22,5 @@ misc
 
 - d is for deprecated.
 - the meaning of the header may change across contexts.
-- the reply may be modified a bit for better document structure and rendering
-- without specified, use the default model on the web app at the time
+- the reply may be modified a bit for better structure and rendering
+- the default model on the web app at the time would be used, if not specified

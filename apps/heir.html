@@ -4,201 +4,226 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Markdown Editor</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/preact/dist/preact.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/preact/hooks/dist/hooks.umd.js"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              gray: {
-                50: "#faf9f7",
-                100: "#f5f4f2",
-                200: "#e6e4e0",
-                300: "#d6d3ce",
-                400: "#a8a29e",
-                500: "#78716c",
-                600: "#57534e",
-                700: "#44403c",
-                800: "#292524",
-                900: "#1c1917",
-              },
-            },
-          },
-        },
-      };
-    </script>
     <style>
-      body {
-        background-color: #1c1917;
-        color: #f5f4f2;
+      /* 1. Define the specific colors from the original tailwind.config 
+      */
+      :root {
+        --gray-100: #f5f4f2;
+        --gray-500: #78716c;
+        --gray-600: #57534e;
+        --gray-700: #44403c;
+        --gray-800: #292524;
+        --gray-900: #1c1917;
       }
+
+      /* 2. Global Resets and Body Styling 
+      */
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        padding: 1rem;
+        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background-color: var(--gray-900);
+        color: var(--gray-100);
+      }
+
+      /* 3. Layout Container (max-w-4xl mx-auto)
+      */
+      .container {
+        max-width: 56rem; /* 4xl */
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* 4. Button Toolbar (flex justify-end gap-2 mb-4)
+      */
+      .toolbar {
+        display: flex;
+        justify-content: flex-end;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+      }
+
+      /* 5. Button Styling 
+         (px-4 py-2 bg-gray-700 hover:bg-gray-600 text-gray-100 rounded transition... focus...)
+      */
+      .btn {
+        padding: 0.5rem 1rem;
+        background-color: var(--gray-700);
+        color: var(--gray-100);
+        border: none;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        transition: background-color 200ms;
+        font-size: 1rem;
+      }
+
+      .btn:hover {
+        background-color: var(--gray-600);
+      }
+
+      .btn:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px var(--gray-500);
+      }
+
+      /* 6. Textarea Styling
+         (w-full h-96 p-4 bg-gray-800 text-gray-100 rounded border border-gray-700 resize-none)
+      */
+      textarea {
+        width: 100%;
+        height: 24rem; /* h-96 */
+        padding: 1rem;
+        background-color: var(--gray-800);
+        color: var(--gray-100);
+        border: 1px solid var(--gray-700);
+        border-radius: 0.25rem;
+        resize: none;
+        font-family: inherit;
+        font-size: 1rem;
+      }
+
       textarea:focus {
         outline: none;
+        /* The original had outline-none on focus, keeping that behavior */
       }
     </style>
   </head>
-  <body class="min-h-screen p-4 font-sans">
-    <div id="app"></div>
+  <body>
+    <div class="container">
+      <div class="toolbar">
+        <button id="btn-decrease" class="btn">Decrease</button>
+        <button id="btn-increase" class="btn">Increase</button>
+      </div>
+      <textarea
+        id="editor"
+        placeholder="Enter your markdown here..."
+      ></textarea>
+    </div>
 
-    <script type="module">
-      const { h, render } = preact;
-      const { useState, useRef, useEffect } = preactHooks;
+    <script>
+      // 1. Select DOM elements
+      const textarea = document.getElementById("editor");
+      const btnIncrease = document.getElementById("btn-increase");
+      const btnDecrease = document.getElementById("btn-decrease");
 
-      function App() {
-        const [markdown, setMarkdown] = useState("");
-        const [buttonText, setButtonText] = useState("Increase");
-        const [decreaseButtonText, setDecreaseButtonText] =
-          useState("Decrease");
-        const textareaRef = useRef(null);
+      // 2. Logic Implementation
+      // Copied directly from the React version, but adapted to read/write DOM nodes
 
-        // Keep textarea focused
-        useEffect(() => {
-          const handleFocus = () => {
-            if (textareaRef.current) {
-              textareaRef.current.focus();
-            }
-          };
+      const increaseHeaders = () => {
+        const markdown = textarea.value;
+        const lines = markdown.split("\n");
+        let inCodeBlock = false;
 
-          // Initial focus
-          handleFocus();
-
-          // Focus on click anywhere
-          document.addEventListener("click", handleFocus);
-
-          return () => {
-            document.removeEventListener("click", handleFocus);
-          };
-        }, []);
-
-        const increaseHeaders = () => {
-          const lines = markdown.split("\n");
-          let inCodeBlock = false;
-          const updatedLines = lines.map((line) => {
-            // Toggle code block state
-            if (line.trim().startsWith("```")) {
-              inCodeBlock = !inCodeBlock;
-              return line;
-            }
-
-            // Skip if we're in a code block
-            if (inCodeBlock) return line;
-
-            // Check if line is a header (starts with 1-6 # characters followed by space)
-            const headerMatch = line.match(/^(#{1,6})\s(.*)/);
-            if (headerMatch) {
-              const hashes = headerMatch[1];
-              const content = headerMatch[2];
-
-              // Only increase if we're not already at the maximum (h6)
-              if (hashes.length < 6) {
-                return "#" + hashes + " " + content;
-              }
-            }
-
+        const updatedLines = lines.map((line) => {
+          // Toggle code block state
+          if (line.trim().startsWith("```")) {
+            inCodeBlock = !inCodeBlock;
             return line;
-          });
+          }
 
-          const newMarkdown = updatedLines.join("\n");
-          setMarkdown(newMarkdown);
+          // Skip if we're in a code block
+          if (inCodeBlock) return line;
 
-          // Copy to clipboard
-          navigator.clipboard
-            .writeText(newMarkdown)
-            .then(() => {
-              setButtonText("Copied!");
-              setTimeout(() => setButtonText("Increase"), 2000);
-            })
-            .catch((err) => {
-              setButtonText("Copy Failed");
-              setTimeout(() => setButtonText("Increase"), 2000);
-            });
-        };
+          // Check if line is a header
+          const headerMatch = line.match(/^(#{1,6})\s(.*)/);
+          if (headerMatch) {
+            const hashes = headerMatch[1];
+            const content = headerMatch[2];
 
-        const decreaseHeaders = () => {
-          const lines = markdown.split("\n");
-          let inCodeBlock = false;
-          const updatedLines = lines.map((line) => {
-            // Toggle code block state
-            if (line.trim().startsWith("```")) {
-              inCodeBlock = !inCodeBlock;
-              return line;
+            // Only increase if we're not already at the maximum (h6)
+            if (hashes.length < 6) {
+              return "#" + hashes + " " + content;
             }
+          }
 
-            // Skip if we're in a code block
-            if (inCodeBlock) return line;
+          return line;
+        });
 
-            // Check if line is a header (starts with 1-6 # characters followed by space)
-            const headerMatch = line.match(/^(#{1,6})\s(.*)/);
-            if (headerMatch) {
-              const hashes = headerMatch[1];
-              const content = headerMatch[2];
+        const newMarkdown = updatedLines.join("\n");
+        textarea.value = newMarkdown;
 
-              // Remove one # or remove header entirely if it's only one #
-              if (hashes.length === 1) {
-                return content; // Remove header completely
-              } else {
-                return hashes.slice(1) + " " + content; // Remove one #
-              }
-            }
+        handleClipboard(newMarkdown, btnIncrease, "Increase");
+      };
 
+      const decreaseHeaders = () => {
+        const markdown = textarea.value;
+        const lines = markdown.split("\n");
+        let inCodeBlock = false;
+
+        const updatedLines = lines.map((line) => {
+          // Toggle code block state
+          if (line.trim().startsWith("```")) {
+            inCodeBlock = !inCodeBlock;
             return line;
-          });
+          }
 
-          const newMarkdown = updatedLines.join("\n");
-          setMarkdown(newMarkdown);
+          // Skip if we're in a code block
+          if (inCodeBlock) return line;
 
-          // Copy to clipboard
-          navigator.clipboard
-            .writeText(newMarkdown)
-            .then(() => {
-              setDecreaseButtonText("Copied!");
-              setTimeout(() => setDecreaseButtonText("Decrease"), 2000);
-            })
-            .catch((err) => {
-              setDecreaseButtonText("Copy Failed");
-              setTimeout(() => setDecreaseButtonText("Decrease"), 2000);
-            });
-        };
+          // Check if line is a header
+          const headerMatch = line.match(/^(#{1,6})\s(.*)/);
+          if (headerMatch) {
+            const hashes = headerMatch[1];
+            const content = headerMatch[2];
 
-        return h(
-          "div",
-          { class: "max-w-4xl mx-auto" },
-          h(
-            "div",
-            { class: "flex justify-end gap-2 mb-4" },
-            h(
-              "button",
-              {
-                onClick: decreaseHeaders,
-                class:
-                  "px-4 py-2 bg-gray-700 hover:bg-gray-600 text-gray-100 rounded transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500",
-              },
-              decreaseButtonText
-            ),
-            h(
-              "button",
-              {
-                onClick: increaseHeaders,
-                class:
-                  "px-4 py-2 bg-gray-700 hover:bg-gray-600 text-gray-100 rounded transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500",
-              },
-              buttonText
-            )
-          ),
-          h("textarea", {
-            ref: textareaRef,
-            value: markdown,
-            onInput: (e) => setMarkdown(e.target.value),
-            class:
-              "w-full h-96 p-4 bg-gray-800 text-gray-100 rounded border border-gray-700 resize-none",
-            placeholder: "Enter your markdown here...",
+            // Remove one # or remove header entirely if it's only one #
+            if (hashes.length === 1) {
+              return content; // Remove header completely
+            } else {
+              return hashes.slice(1) + " " + content; // Remove one #
+            }
+          }
+
+          return line;
+        });
+
+        const newMarkdown = updatedLines.join("\n");
+        textarea.value = newMarkdown;
+
+        handleClipboard(newMarkdown, btnDecrease, "Decrease");
+      };
+
+      // Helper to handle clipboard and button text state
+      const handleClipboard = (text, buttonElement, originalText) => {
+        navigator.clipboard
+          .writeText(text)
+          .then(() => {
+            buttonElement.innerText = "Copied!";
+            setTimeout(() => (buttonElement.innerText = originalText), 2000);
           })
-        );
-      }
+          .catch((err) => {
+            buttonElement.innerText = "Copy Failed";
+            setTimeout(() => (buttonElement.innerText = originalText), 2000);
+          });
+      };
 
-      render(h(App), document.getElementById("app"));
+      // 3. Event Listeners
+      btnIncrease.addEventListener("click", increaseHeaders);
+      btnDecrease.addEventListener("click", decreaseHeaders);
+
+      // 4. Focus Management logic (Replicating the original useEffect)
+      const handleFocus = () => {
+        if (textarea) {
+          textarea.focus();
+        }
+      };
+
+      // Initial focus
+      handleFocus();
+
+      // Focus on click anywhere
+      // Note: This matches the aggressive focus behavior of the original
+      document.addEventListener("click", (e) => {
+        // We only explicitly focus if the click didn't originate from the textarea itself
+        // to prevent potential selection interference, though the original just called focus().
+        handleFocus();
+      });
     </script>
   </body>
 </html>

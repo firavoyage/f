@@ -4,9 +4,13 @@ You are continuing a previous conversation. I will provide you with the full mes
 
 Here is the message history, presented as a sequence of exchanges between the User and the Assistant. This history establishes the context, your role, and the nature of our interaction.
 
-```markdown
+````markdown
 
 ```
+
+```
+
+````
 
 Now, I will provide my next message to continue our conversation. Respond to it seamlessly, as if no interruption had occurred, picking up right where we left off.
 

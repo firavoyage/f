@@ -136,3 +136,43 @@ org berryberry fav (n archive, ofc)
 https://space.bilibili.com/1156993272/favlist?fid=3685161172&ftype=create
 
 https://space.bilibili.com/1156993272/fans/follow?tagid=345842753
+
+12 03
+
+iwlt have a big picture of human life. what are they doing.
+
+the way of life. decide what and how to do. "what could i do, i have a free weekend/ a few hours spare time" (do something meaningful instead of random surfing)
+
+time/schedule
+
+think
+
+create a software project in big companies / as an indie dev / of llms.
+
+learn: tell, recommend
+
+design journal (the first prior. see doubao/trae the vid), games
+
+upd: inspired by innei, i couldnt wait. i want it this week. 
+
+coding is easy. but idk what i want. philistine?
+
+maybe i should focus what's important. the journal app. the way of creation.
+
+iwlt learn the methodology to create a big sfw prj with llms (context len, detail level, how human think n do)
+
+i could read light novels (not hardcore ones), and watch bangumis.
+
+hug the mutsumi. 
+
+play go?
+
+archive web. (first priority now!)
+
+
+
+japanese biaori
+
+https://space.bilibili.com/1156993272/fans/follow?tagid=345842753
+
+https://space.bilibili.com/413703/video?tid=0&special_type=&pn=1&keyword=&order=click

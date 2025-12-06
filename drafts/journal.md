@@ -353,7 +353,7 @@ what should a good writing style guide for a math textbook be
 
 20 20 watch a few hu chenfeng clips "蜜雪员工怒怼户晨风！月薪 2000 骂到破防？英语没用？苹果危险？连麦全程高能！" "【26 岁小伙被 42 岁富姐包养？】连麦自曝月入 1 万还要转钱养自己女友！户晨风犀利拆穿：“你被包养了都不自知！”💔" while the download is still ongoing (today is really fun, good music, interesting humans, like a roma colosseum. ).
 
-21 
+21
 
 11 40 go to wagas restaurant.
 
@@ -365,7 +365,7 @@ what should a good writing style guide for a math textbook be
 
 because reply 1988 is about boring ordinary life. reject because i think i would never finish watching 1988 if i give up now. choose to watch it eventually because i think i would like to try something exciting always.
 
-20 40 learn about the journal app on the declining girl's iphone and feel disappointed (just another pretty app by apple). 
+20 40 learn about the journal app on the declining girl's iphone and feel disappointed (just another pretty app by apple).
 
 21 00 surf zhihu (nothing special. society, school, unixporn, literary...) while single loop "one more time one more chance" by animenz.
 
@@ -383,7 +383,7 @@ because reply 1988 is about boring ordinary life. reject because i think i would
 
 13 00 pay 5 usd to openrouter.
 
-13 40 watch a hu chenfeng clip "月租$5000美金！24岁纽约留学生连麦户晨风".
+13 40 watch a hu chenfeng clip "月租$5000 美金！24 岁纽约留学生连麦户晨风".
 
 14 00 take the first french lesson on duolingo inspired by the black guy.
 
@@ -439,11 +439,11 @@ not going to school for sleepiness. (home is cozy. why sleeping at school, like 
 
 01 40 sleep.
 
-18 20 buy big sausage from family mart, standing in front of the window for a while, like 
+18 20 buy big sausage from family mart, standing in front of the window for a while, like
 
-18 40 receive some packages from taobao. try to play a refund trick with a simple method "你没有保密. 现在我无法得到这个商品. 我编写差评." choosing "not receiving the product" with the reason "dont want it any longer". ask grok and browse some infomation on douyin and comfirm my guess that the logistics interception could fail a lot. 
+18 40 receive some packages from taobao. try to play a refund trick with a simple method "你没有保密. 现在我无法得到这个商品. 我编写差评." choosing "not receiving the product" with the reason "dont want it any longer". ask grok and browse some infomation on douyin and comfirm my guess that the logistics interception could fail a lot.
 
-i did not take photograph, because i think wealthy and lucky girls like me could buy a lot of goods, have a lot of delicious food in the future. as i have a project named all: world goods list, i could reflect and visualize as long as i have screenshoted the shopping history. eventually i took photos, since i thought there's something could not be fully inferred, like the lights and the environment, which could bring me back to the precious moments in my life. 
+i did not take photograph, because i think wealthy and lucky girls like me could buy a lot of goods, have a lot of delicious food in the future. as i have a project named all: world goods list, i could reflect and visualize as long as i have screenshoted the shopping history. eventually i took photos, since i thought there's something could not be fully inferred, like the lights and the environment, which could bring me back to the precious moments in my life.
 
 even without the support from the outer world, i could have something i want, like the poorly educated factory workers buying an iphone with loan, which i may see philistine.
 
@@ -453,13 +453,13 @@ waste an hour... but how many hours have i wasted? im a tech guy!
 
 20 00 regret. buy the same mygo mortis doll again, assuming the seller could manage to get back the package (i will refund with the package if the previous package arrived.). now i could have no loss despite credit (where the buyer has way more right).
 
-20 40 talk to taobao real human customer service, about how and when could i determine whether i could receive it, which (who) claimed that i could not receive the package, not fully standing on my interest as expected. 
+20 40 talk to taobao real human customer service, about how and when could i determine whether i could receive it, which (who) claimed that i could not receive the package, not fully standing on my interest as expected.
 
 26
 
 00 00 find the final answer about the refunding trick. 00 40
 
-10 20 pick up the hobby of practicing english translation for mindfulness. 
+10 20 pick up the hobby of practicing english translation for mindfulness.
 
 11 00 try to prove `t<(t-1)/ln(t)<1` without multiplying `ln(t)`. fail whatever using derivative, analysis of the components of the function. learn from the math teacher that `ln(x)` could be the factor while `e^x` could be the divisor for easier derivative.
 
@@ -467,7 +467,7 @@ waste an hour... but how many hours have i wasted? im a tech guy!
 
 18 20 buy glazed meatball skewers from family mart.
 
-19 40 refresh myself. try to simplify taobao (like removing distractions) by config (like underaged mode) and fail (not an option available there). 
+19 40 refresh myself. try to simplify taobao (like removing distractions) by config (like underaged mode) and fail (not an option available there).
 
 things are normalized when switching to english, which is only available in sane countries, which wont support cny. designed with disrespect to the time of philistines, trying to be with the evil would never succeed at the end of the day.
 
@@ -483,7 +483,7 @@ later i found that in the chinese version of taobao, the "categories" on the doc
 
 00 00 duolingo. sleep early (stay up yesterday resulting in low energy on anything.).
 
-18 40 buy charred skewers from family mart. 
+18 40 buy charred skewers from family mart.
 
 19 00 vibe code see deepseek event stream converter.
 
@@ -517,11 +517,11 @@ later i found that in the chinese version of taobao, the "categories" on the doc
 
 11 00 try to create the penacony origami bird again with a piece of pink paper, black tea, earplug and animenz. finish phase 1. 12 40
 
-14 00 go for a meal, kemingbingshi. learn marketing skill from silence gamedev's vids but lose the navigation in douyin society memes, daozhu. 
+14 00 go for a meal, kemingbingshi. learn marketing skill from silence gamedev's vids but lose the navigation in douyin society memes, daozhu.
 
 15 00 go to the gov to add my name to the housing ownership proof to avoid tax but do nothing besides sitting, having the signature written by others.
 
-17 00 continue the origami project. 
+17 00 continue the origami project.
 
 18 20 expand everything, like the beginning of phase 2, to fix an unknown error (a mistake at the very beginning).
 
@@ -549,7 +549,7 @@ the frontpage of eat:berryberry could be myself, my perspective (top down, categ
 
 should i create an indie game today. what kind of indie game. i have 5 hours.
 
-what should i do first. what should i do now. 
+what should i do first. what should i do now.
 
 conclusion: a simple sequence. simplify, organize, make, refine, create.
 
@@ -579,11 +579,109 @@ dec 2025
 - phone
 - file: biaori, haruhi, g
 
-18 00 organize berryberry following. give up for the number (more than 500 uncategorized). 18 20 surf "60秒看懂Gemini 3有多恐怖 数字游牧人" "2025独游春晚·年度独立游戏大赏 独立游戏蜥蜴君". 18 40
+18 00 organize berryberry following. give up for the number (more than 500 uncategorized). 18 20 surf "60 秒看懂 Gemini 3 有多恐怖 数字游牧人" "2025 独游春晚·年度独立游戏大赏 独立游戏蜥蜴君". 18 40
 
 i have time. i love random surfing. yolo. why becoming a servant of time with a schedule.
 
-19 00 revise the innocent girl.
+19 00 revise the innocent girl. 20 20
+
+i spent an hour. i really love this version. i may not change further!
+
+02
+
+~~01 20~~ 01 40 view a few gamedev vids. archive chats. sleep.
+
+11 20 practice english translation.
+
+13 00 nap after lunch. (view some weird gamedev vids.)
+
+16 00 clean the mildew off the wood cork of the aquatic potted plant. try to dry the wood cork (it got wet by mistake). get a lighter (since i dont have an alcohol burner) from grandpa, use the outer flame to heat, see bubbles within a minute, and stop when seeing some burnt leaves (from the steam?). try again with a hair dryer (as advised by grandpa, since the lighter has a too small area of effect) and succeed (although not dry enough. no fierce sunlight these days...). 16 40
+
+17 00 chat. try 一元机场 三分机场 since the free nodes could be slow sometimes.
+
+https://github.com/Vikutorika/Airports (ikuuu?! i remember i found that on share121 inter knot.)
+
+18 20 pay 12cny on 一元机场 for a year.
+
+be recognized as hk whatever node i choose. could not use gemini. sadness...
+
+18 40 download clash. see some additional nodes compared to v2raya, which support gemini, chatgpt, etc. deprecate v2ray on both ubuntu and android.
+
+first time on chatgpt. maybe i could be free for a year, without paying attention to the internet. 
+
+23 00 write a letter to myself about school life.
+
+03
+
+00 00 write the letter. 01 00
+
+01 20 read some good essays from (both spring and autumn) uee chinese papers. sleep. 01 40
+
+08 00 take the chinese exam. feel sleepy and biting cold. suffer from diarrhoea at home. play some aggressive words in the essay. 10 40
+
+12 00 have a takeout lunch "foodbowl".
+
+13 00 take a math exam. make many stupid mistakes but outperform most peers for sure. forget some common patterns. lack time. 15 00
+
+15 20 discuss.
+
+16 20 surf nekogram channels. surf douyin, mostly society memes.
+
+18 20 watch "Papers, Please [2013] | Full Game Playthrough (No Commentary)" "普通人用AI生成什么应用，能赚2000奖金，甚至$10万每月的营收？ 数字游牧人" (showcasing trae on doubao, a powerful software engineering bot)
+
+19 00 organize the legacy web repo. move it to blogging/lights.
+
+20 00 rename my qq group chat to the never ending now to warn everyone to be aware about time at dinner.
+
+21 00 chat: sleep around 23 and play duolingo in the day. 
+
+duolingo is inspiring and good for meditation. in the day i could go for the curiosity of learning instead of the push to finish an assignment. it could also help me find mindfulness and meaningfulness, when idk what to do and try to start random surfing in the never ending now.
+
+21 20 surf innei. chat about life. archive web.
+
+04
+
+07 20 bring my phone to school to leverage socratic (problem solution index) and llms and enrich my life.
+
+mobile network has been configured a few months before.
+
+17 00 finish archiving web. browse. chat.
+
+browse means bfs. surf means random recommendation. to me.
+
+19 20 turn off chatgpt memories (and voice).
+
+05
+
+18 00 chat: decision making.
+
+18 40 download all legendary books on "this light novel is amazing!" (give up. only download a few).
+
+being legendary does not mean everything.
+
+19 40 archive chats. read ruanyf weekly (the lastest 3 weeks).
+
+06 
+
+09 40 start working. chat: time management, schedule, methodology. 11 40
+
+11 40 have lunch, kfc takeout.
+
+12 40 write some random thoughts reflecting things a few months ago in my diary.
+
+13 20 continue work with animenz sometimes. chat: mindset.
+
+14 00 relax. watch some weird gamedev vids.
+
+15 00 archive chat: mindset.
+
+15 20 put off the earplug and play animenz at a decent volume. boil water.
+
+17 00 refresh (go for a walk). wander in a housing estate. walk in a trance on the tiny square and the playground of childhood memories: skipping ropes, football, the chess of go, scratch.mit.edu, curiosity, and admiration from classmates. kill some long snails on the wall. look people eating through the window. chat: the cricket in times square. ~~17 40~~ 18 00
+
+18 20 chat: top down design, roadmap.
+
+21 00 chat: looking through the windows of a gamedev studio, design carte.
 
 
 
@@ -592,6 +690,12 @@ i have time. i love random surfing. yolo. why becoming a servant of time with a 
 see scratch pad.
 
 breadcrumb:
+
+mygo pvz. (like gacha party)
+
+en translation. a math paper. chem (use more socratic and less llms.)
+
+see: chats archivist.
 
 (a web based localhost cloud gaming open world game?)
 
@@ -645,7 +749,7 @@ i will eventually achieve all i want.
 
  -->
 
-<!-- 
+<!--
 
 life is a journey.
 
