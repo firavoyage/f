@@ -683,6 +683,28 @@ being legendary does not mean everything.
 
 21 00 chat: looking through the windows of a gamedev studio, design carte.
 
+07
+
+00 20 watch vids showcasing how cursor/claude code/trae works. 01 00
+
+bilibili is too philistine.
+
+01 20 sleep.
+
+10 00 chat: methodology, rapid dev. 10 40
+
+11 00 turn off chatgpt canvas. chat: vision sheet. refine. 11 40
+
+12 00 chat: revise the ui, tech, and emotion.
+
+12 20 go for a meal, "xibei", a closing restaurant. watch indie game ranking by 独立游戏蜥蜴君.
+
+14 00 organize and archive zhihu favorites. 14 20.
+
+14 40 cock. have some black tea. finish watching indie game ranking.
+
+15 20 have some chocolate. chat: ai algorithms, design (ux intent and system sheet).
+
 
 
 <!--

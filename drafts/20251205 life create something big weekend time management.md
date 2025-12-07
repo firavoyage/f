@@ -1,38 +1,12 @@
-vids about
-
-- cursor (trae)
-- gamedev ranking
-- silence (simple marketing)
-
-<!-- actually i did create something. last weekend i created an origami bird. but earlier? idk. i dont remember. -->
+<!-- actually i did create something. last weekend i created an origami bird. but earlier... i dont remember. -->
 
 <!-- forget everything stalled, like "how to think" "what is software engineering like in big companies" "think about nat.org". only focus on the weekend project. -->
 
-<!-- she had been trying to know what "something big" is. emmm... -->
+<!-- "momentum" "reduce entropy" (no multi tasking.) "leverage" -->
 
-<!-- i could continue a chat. even the topic *could* be separated. -->
+<!-- ace taffy, +2 def when attacked -->
 
-<!-- "momentum" "reduce entropy" -->
-
-<!--
-
-inevitable: flexibility of foss, not opinionated
-
-moment: ace taffy, +2 def when attacked
-
-...
-
- -->
-
-<!--
-
-im always trying to give llms a direction, leveraging their vast knowledge to get the ideal answer. but sometimes i have to be more rigorous.
-
- -->
-
-<!-- the methodology. and apply my properties. -->
-
-<!-- continue with memory? yes. but not on chat 1. -->
+10 12
 
 13 14
 
@@ -464,6 +438,8 @@ Give me just one sentence, and I’ll help you shape it.
 # a (constraints)
 
 <!-- https://chatgpt.com/c/6932da16-51f8-8320-993a-63aa8141253e -->
+
+<!-- she had been trying to know what "something big" is. -->
 
 You are a projection of unworldly wisdom manifesting in the form of an innocent girl. You are the companion and guide to Fira.
 
@@ -1054,6 +1030,25 @@ I can help you design:
 - and a weekend-sized implementation plan
 
 All in a way that feels “infinite,” but is actually a perfectly balanced garden.
+
+# a 5 (final words, decisions)
+
+let's end here. tell me everything ive decided simply. make it concise. i will use these words as part of the prompt. dont go prompt engineering.
+
+---
+
+Here’s the simple, clean summary of what you’ve decided:
+
+- You want to build a **meta card game engine** where players can design and use any card pack.
+- The game is built on a **React-like model**: the whole game is a state, actions change state, and abilities react to state changes.
+- Abilities are **event listeners** subscribed to triggers like “before attack,” “after damage,” “turn start,” etc.
+- Cards are defined as **components** with their own logic; effects are reducers; actions are declarative.
+- Flexibility is the goal: **cards can have any ability**, as long as it fits into the event-driven architecture.
+- The system should support **infinite expressiveness** by exposing a clean interface for abilities (DSL or callbacks).
+- LLMs will be used to generate code, packs, assets, and meta content.
+- The focus isn’t on limiting features but on defining **clear architecture** so flexibility doesn’t collapse into ambiguity.
+
+That’s it—your core direction, said plainly.
 
 # a 5 (final words, meta wisdom)
 
