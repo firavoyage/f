@@ -705,6 +705,22 @@ bilibili is too philistine.
 
 15 20 have some chocolate. chat: ai algorithms, design (ux intent and system sheet).
 
+17 40 open a pack of potato chips. chat: architecture, begin implementation.
+
+19 40 find the network unusable. solve in a few minutes by switching to a us node and make chatgpt and gemini work.
+
+20 00 disable grok rich text editor in the query bar, personalization (using twitter, history), improve the model.
+
+08
+
+09 40 try to find something in past papers but failed. 10 20
+
+10 40 practice some english translation to improve mindfulness
+
+11 20 learn chemistry using a photo solver (a mediocre llm included) and complete up to page 1.
+
+16 00 set chatgpt custom instruction "avoid heading 1".
+
 
 
 <!--

@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Carte</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <!-- CDN: React 18, ReactDOM, Pixi v7, Babel -->
+
+    <!-- React -->
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+
+    <!-- Babel so we can use JSX directly -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- Pixi.js (version 7.x) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/7.2.4/pixi.min.js"></script>
+
+    <style>
+      html,
+      body,
+      #carte-root,
+      #pixi-canvas {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+      }
+      #carte-root {
+        position: absolute;
+        left: -9999px;
+        top: 0;
+      } /* hidden React mount */
+      canvas {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="carte-root" aria-hidden="true"></div>
+    <canvas id="pixi-canvas" aria-label="Carte canvas"></canvas>
+
+    <!-- Constants -->
+    <script type="text/babel"></script>
+
+    <!-- Utils -->
+    <script type="text/babel"></script>
+
+    <!-- Types (JSDoc only) -->
+    <script type="text/babel"></script>
+
+    <!-- Assets -->
+    <script type="text/babel"></script>
+
+    <!-- Pool -->
+    <script type="text/babel"></script>
+
+    <!-- State (React store) -->
+    <script type="text/babel"></script>
+
+    <!-- StoreBridge -->
+    <script type="text/babel"></script>
+
+    <!-- Events (Input routing) -->
+    <script type="text/babel"></script>
+
+    <!-- Renderer (Pixi) -->
+    <script type="text/babel">
+      // --- Init PIXI Application & global namespace (Renderer) ---
+      // This block creates the PIXI.Application, attaches to #pixi-canvas,
+      // installs resize handling and ticker, and exposes window.Carte.app.
+
+      (() => {
+        // create PIXI app using the existing canvas
+        const canvas = document.getElementById("pixi-canvas");
+        if (!canvas) {
+          console.error("pixi canvas not found: #pixi-canvas");
+          return;
+        }
+
+        // create app
+        const app = new PIXI.Application({
+          view: canvas,
+          backgroundColor: 0x0b1020, // dark bluish background for immediate polish
+          resizeTo: window, // let PIXI handle resizing based on window
+          antialias: true,
+          autoDensity: true,
+        });
+
+        // quick utility for center coordinates
+        const screenCenter = () => ({
+          x: app.renderer.width / 2,
+          y: app.renderer.height / 2,
+        });
+
+        // global namespace: other modules access app & sceneManager here
+        window.Carte = window.Carte || {};
+        window.Carte.app = app;
+        window.Carte.screenCenter = screenCenter;
+
+        // attach helpful debug ticker method (returns unsubscribe)
+        window.Carte.addTicker = (cb) => {
+          app.ticker.add(cb);
+          return () => app.ticker.remove(cb);
+        };
+
+        // basic resize callback: we keep stage scale = 1 and center scene containers when needed
+        function handleResize() {
+          // renderer.resize is managed by resizeTo, but we keep a hook to reposition items
+          // emit an event on window so scenes can respond (they can add listeners)
+          const ev = new CustomEvent("carte:resize", {
+            detail: { width: app.renderer.width, height: app.renderer.height },
+          });
+          window.dispatchEvent(ev);
+        }
+
+        // initial layout pass
+        handleResize();
+        // listen for native resize and call our handler
+        window.addEventListener("resize", handleResize);
+
+        // minimal debug console info
+        console.info("Carte PIXI app created", {
+          width: app.renderer.width,
+          height: app.renderer.height,
+          pixelRatio: app.renderer.resolution,
+        });
+      })();
+    </script>
+
+    <!-- Scenes -->
+    <script type="text/babel">
+      // --- SceneManager + SplashScene + MainMenuScene ---
+      // Implements: registerScene(name, factory), goTo(name, props)
+      // Scenes return { container, onEnter(props), onExit() }
+
+      (() => {
+        const app = window.Carte && window.Carte.app;
+        if (!app) {
+          console.error(
+            "Carte.app not available; ensure Renderer script runs first."
+          );
+          return;
+        }
+
+        // Simple SceneManager
+        class SceneManager {
+          constructor(app) {
+            this.app = app;
+            this.registry = new Map(); // name -> factory
+            this.current = null; // { name, instance }
+          }
+
+          registerScene(name, factory) {
+            if (this.registry.has(name)) {
+              console.warn(`Scene "${name}" is being overwritten.`);
+            }
+            this.registry.set(name, factory);
+          }
+
+          async goTo(name, props = {}) {
+            if (!this.registry.has(name)) {
+              throw new Error(`Scene "${name}" not registered`);
+            }
+
+            // exit current
+            if (
+              this.current &&
+              this.current.instance &&
+              typeof this.current.instance.onExit === "function"
+            ) {
+              try {
+                this.current.instance.onExit();
+              } catch (e) {
+                console.error("onExit error", e);
+              }
+            }
+            // remove previous container
+            if (
+              this.current &&
+              this.current.instance &&
+              this.current.instance.container
+            ) {
+              try {
+                this.app.stage.removeChild(this.current.instance.container);
+              } catch (e) {
+                /* ignore */
+              }
+            }
+
+            // instantiate new scene
+            const factory = this.registry.get(name);
+            const instance = factory({ app, sceneManager: this, props });
+
+            // add container to stage immediately
+            if (!instance || !instance.container) {
+              throw new Error(
+                `Scene "${name}" must return an object with .container`
+              );
+            }
+            this.app.stage.addChild(instance.container);
+            this.current = { name, instance };
+
+            // call onEnter after next tick to allow render
+            if (typeof instance.onEnter === "function") {
+              try {
+                instance.onEnter(props);
+              } catch (e) {
+                console.error("onEnter error", e);
+              }
+            }
+
+            return instance;
+          }
+        }
+
+        // Helper: simple centered rectangle with mesh-like gradient via Graphics + tint
+        function createMeshPlaceholder(width, height) {
+          const g = new PIXI.Graphics();
+          // gradient-ish by drawing a big rounded rect and applying a subtle tint;
+          // real mesh gradients would use Mesh and shaders, but this placeholder is performant.
+          g.beginFill(0x1b2b4a);
+          g.drawRoundedRect(-width / 2, -height / 2, width, height, 12);
+          g.endFill();
+          // overlay subtle lighter rectangle
+          const overlay = new PIXI.Graphics();
+          overlay.beginFill(0x223a6b, 0.12);
+          overlay.drawRoundedRect(-width / 2, -height / 2, width, height, 12);
+          overlay.endFill();
+          const container = new PIXI.Container();
+          container.addChild(g, overlay);
+          return container;
+        }
+
+        // ---- SplashScene factory ----
+        function SplashSceneFactory() {
+          const container = new PIXI.Container();
+          container.name = "SplashScene";
+
+          // background (full-screen rectangle)
+          const bg = new PIXI.Graphics();
+          function drawBg() {
+            bg.clear();
+            bg.beginFill(0x07101b); // very dark
+            bg.drawRect(0, 0, app.renderer.width, app.renderer.height);
+            bg.endFill();
+          }
+          drawBg();
+          container.addChild(bg);
+
+          // centered title
+          const style = new PIXI.TextStyle({
+            fontFamily: "System, Arial",
+            fontSize: Math.round(
+              Math.min(app.renderer.width, app.renderer.height) * 0.08
+            ),
+            fill: ["#ffd87d", "#b6e0ff"],
+            stroke: "#2a3b4f",
+            strokeThickness: 6,
+            dropShadow: true,
+            dropShadowColor: "#000000",
+            dropShadowBlur: 6,
+            dropShadowDistance: 6,
+            align: "center",
+          });
+          const title = new PIXI.Text("CARTE", style);
+          title.anchor.set(0.5);
+          const titleContainer = new PIXI.Container();
+          titleContainer.addChild(title);
+          container.addChild(titleContainer);
+
+          // loading crystal placeholder (a small circle under title)
+          const crystal = new PIXI.Graphics();
+          crystal.beginFill(0x6fd4ff);
+          crystal.drawCircle(0, 0, 20);
+          crystal.endFill();
+          crystal.alpha = 0.95;
+          const crystalContainer = new PIXI.Container();
+          crystalContainer.addChild(crystal);
+          container.addChild(crystalContainer);
+
+          // local state
+          let time = 0;
+          const pulseBaseScale = 1.0;
+
+          function layout() {
+            // background needs redraw on size change
+            drawBg();
+
+            const center = window.Carte.screenCenter();
+            titleContainer.position.set(center.x, center.y - 20);
+            crystalContainer.position.set(
+              center.x,
+              center.y + title.height * 0.6 + 10
+            );
+
+            // update title font size responsively
+            const newFontSize = Math.round(
+              Math.min(app.renderer.width, app.renderer.height) * 0.08
+            );
+            title.style.fontSize = newFontSize;
+          }
+
+          function onEnter() {
+            // listen to resize
+            window.addEventListener("carte:resize", layout);
+            layout();
+
+            // ticker pulse
+            app.ticker.add(tickerProc);
+
+            // fake loading: after 1400ms go to main menu (feel free to adjust)
+            setTimeout(() => {
+              if (window.Carte && window.Carte.sceneManager) {
+                window.Carte.sceneManager
+                  .goTo("mainMenu")
+                  .catch((e) => console.error(e));
+              }
+            }, 1400);
+          }
+
+          function onExit() {
+            app.ticker.remove(tickerProc);
+            window.removeEventListener("carte:resize", layout);
+          }
+
+          function tickerProc(delta) {
+            time += delta;
+            const s = pulseBaseScale + Math.sin(time * 0.08) * 0.03;
+            title.scale.set(s);
+            // subtle crystal pulse
+            const cscale = 1.0 + Math.sin(time * 0.12) * 0.15;
+            crystal.scale.set(cscale);
+          }
+
+          // expose container and lifecycle hooks
+          return { container, onEnter, onExit };
+        }
+
+        // ---- MainMenuScene factory ----
+        function MainMenuSceneFactory() {
+          const container = new PIXI.Container();
+          container.name = "MainMenuScene";
+
+          // background layer
+          const bg = new PIXI.Graphics();
+          function drawBg() {
+            bg.clear();
+            bg.beginFill(0x0b1422); // slightly different dark tone
+            bg.drawRect(0, 0, app.renderer.width, app.renderer.height);
+            bg.endFill();
+          }
+          drawBg();
+          container.addChild(bg);
+
+          // title small header
+          const headerStyle = new PIXI.TextStyle({
+            fontSize: Math.round(
+              Math.min(app.renderer.width, app.renderer.height) * 0.045
+            ),
+            fill: ["#ffd87d"],
+            stroke: "#10202f",
+            strokeThickness: 4,
+          });
+          const header = new PIXI.Text("CARTE", headerStyle);
+          header.anchor.set(0.5, 0);
+          container.addChild(header);
+
+          // simple button factory
+          function createButton(label, w = 340, h = 64) {
+            const btn = new PIXI.Container();
+            const g = new PIXI.Graphics();
+            g.beginFill(0x1f2940);
+            g.drawRoundedRect(-w / 2, -h / 2, w, h, 10);
+            g.endFill();
+
+            const outline = new PIXI.Graphics();
+            outline.lineStyle(2, 0xffd87d, 0.85);
+            outline.drawRoundedRect(-w / 2, -h / 2, w, h, 10);
+
+            const txt = new PIXI.Text(label, {
+              fontSize: Math.round(h * 0.36),
+              fill: "#ffffff",
+            });
+            txt.anchor.set(0.5);
+
+            btn.addChild(g, outline, txt);
+
+            btn.interactive = true;
+            btn.buttonMode = true;
+
+            // hover & press effects
+            btn.on("pointerover", () => {
+              btn.scale.set(1.06);
+            });
+            btn.on("pointerout", () => {
+              btn.scale.set(1.0);
+            });
+            btn.on("pointerdown", () => {
+              btn.scale.set(0.98);
+            });
+            btn.on("pointerup", () => {
+              btn.scale.set(1.0);
+            });
+
+            return btn;
+          }
+
+          // buttons
+          const startBtn = createButton("Start AI Battle");
+          const decksBtn = createButton("Decks");
+          const settingsBtn = createButton("Settings");
+
+          // layout
+          function layout() {
+            drawBg();
+            const center = window.Carte.screenCenter();
+            header.position.set(center.x, 36);
+            const spacing = 90;
+            startBtn.position.set(center.x, center.y - spacing);
+            decksBtn.position.set(center.x, center.y);
+            settingsBtn.position.set(center.x, center.y + spacing);
+          }
+
+          // hook actions
+          startBtn.on("pointertap", () => {
+            console.info("[MainMenu] Start AI Battle clicked");
+            // placeholder behavior: show a quick overlay text for now
+            showTemporaryToast("Starting AI Battle… (placeholder)", 1200);
+          });
+
+          decksBtn.on("pointertap", () => {
+            console.info("[MainMenu] Decks clicked");
+            showTemporaryToast("Decks not implemented yet", 1000);
+          });
+
+          settingsBtn.on("pointertap", () => {
+            console.info("[MainMenu] Settings clicked");
+            showTemporaryToast("Settings not implemented yet", 1000);
+          });
+
+          // small toast helper (self-contained, auto-remove)
+          function showTemporaryToast(message, ms = 1000) {
+            const toast = new PIXI.Container();
+            const bgG = new PIXI.Graphics();
+            bgG.beginFill(0x101826, 0.85);
+            bgG.drawRoundedRect(-220 / 2, -40 / 2, 220, 40, 8);
+            bgG.endFill();
+            const t = new PIXI.Text(message, { fontSize: 14, fill: "#ffffff" });
+            t.anchor.set(0.5);
+            toast.addChild(bgG, t);
+            const center = window.Carte.screenCenter();
+            toast.position.set(center.x, center.y + 200);
+            container.addChild(toast);
+            // fade out after ms
+            setTimeout(() => {
+              app.ticker.add(function fade(dt) {
+                toast.alpha -= 0.06 * dt;
+                if (toast.alpha <= 0) {
+                  app.ticker.remove(fade);
+                  try {
+                    container.removeChild(toast);
+                  } catch (e) {}
+                }
+              });
+            }, ms);
+          }
+
+          container.addChild(startBtn, decksBtn, settingsBtn);
+
+          function onEnter() {
+            window.addEventListener("carte:resize", layout);
+            layout();
+          }
+
+          function onExit() {
+            window.removeEventListener("carte:resize", layout);
+          }
+
+          return { container, onEnter, onExit };
+        }
+
+        // create and expose the scene manager
+        const sceneManager = new SceneManager(app);
+        window.Carte.sceneManager = sceneManager;
+
+        // register scenes
+        sceneManager.registerScene("splash", SplashSceneFactory);
+        sceneManager.registerScene("mainMenu", MainMenuSceneFactory);
+
+        // if you want to auto-start splash we could do it from Init script; leave control to Init.
+        console.info(
+          "SceneManager ready: registered scenes ->",
+          Array.from(sceneManager.registry.keys())
+        );
+      })();
+    </script>
+
+    <!-- Finite State Machine -->
+    <script type="text/babel"></script>
+
+    <!-- Init -->
+    <script type="text/babel">
+      // --- Boot orchestrator / Init ---
+      // This calls the SceneManager to show the splash scene on load.
+
+      (() => {
+        // wait until Carte.app and sceneManager are available
+        const checkReady = () => {
+          if (window.Carte && window.Carte.app && window.Carte.sceneManager) {
+            // start at splash
+            window.Carte.sceneManager
+              .goTo("splash")
+              .catch((e) => console.error(e));
+          } else {
+            setTimeout(checkReady, 50);
+          }
+        };
+
+        // warm console
+        console.info("Carte init starting...");
+        checkReady();
+      })();
+    </script>
+  </body>
+</html>

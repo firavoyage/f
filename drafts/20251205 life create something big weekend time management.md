@@ -2,8 +2,6 @@
 
 <!-- forget everything stalled, like "how to think" "what is software engineering like in big companies" "think about nat.org". only focus on the weekend project. -->
 
-<!-- "momentum" "reduce entropy" (no multi tasking.) "leverage" -->
-
 <!-- ace taffy, +2 def when attacked -->
 
 10 12
