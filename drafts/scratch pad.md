@@ -1,3 +1,5 @@
+# scratch pad
+
 plan:
 
 <!-- think harder. -->
@@ -176,3 +178,13 @@ japanese biaori
 https://space.bilibili.com/1156993272/fans/follow?tagid=345842753
 
 https://space.bilibili.com/413703/video?tid=0&special_type=&pn=1&keyword=&order=click
+
+
+
+## carte
+
+what about using grayscale colors everywhere and vivid colors only on anime characters. (what's the methodology in animation.)
+
+## journal
+
+after carte.

@@ -509,26 +509,6 @@
 
     <!-- Init -->
     <script type="text/babel">
-      // --- Boot orchestrator / Init ---
-      // This calls the SceneManager to show the splash scene on load.
-
-      (() => {
-        // wait until Carte.app and sceneManager are available
-        const checkReady = () => {
-          if (window.Carte && window.Carte.app && window.Carte.sceneManager) {
-            // start at splash
-            window.Carte.sceneManager
-              .goTo("splash")
-              .catch((e) => console.error(e));
-          } else {
-            setTimeout(checkReady, 50);
-          }
-        };
-
-        // warm console
-        console.info("Carte init starting...");
-        checkReady();
-      })();
     </script>
   </body>
 </html>

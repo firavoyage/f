@@ -607,7 +607,7 @@ be recognized as hk whatever node i choose. could not use gemini. sadness...
 
 18 40 download clash. see some additional nodes compared to v2raya, which support gemini, chatgpt, etc. deprecate v2ray on both ubuntu and android.
 
-first time on chatgpt. maybe i could be free for a year, without paying attention to the internet. 
+first time on chatgpt. maybe i could be free for a year, without paying attention to the internet.
 
 23 00 write a letter to myself about school life.
 
@@ -627,13 +627,13 @@ first time on chatgpt. maybe i could be free for a year, without paying attentio
 
 16 20 surf nekogram channels. surf douyin, mostly society memes.
 
-18 20 watch "Papers, Please [2013] | Full Game Playthrough (No Commentary)" "普通人用AI生成什么应用，能赚2000奖金，甚至$10万每月的营收？ 数字游牧人" (showcasing trae on doubao, a powerful software engineering bot)
+18 20 watch "Papers, Please [2013] | Full Game Playthrough (No Commentary)" "普通人用 AI 生成什么应用，能赚 2000 奖金，甚至$10 万每月的营收？ 数字游牧人" (showcasing trae on doubao, a powerful software engineering bot)
 
 19 00 organize the legacy web repo. move it to blogging/lights.
 
 20 00 rename my qq group chat to the never ending now to warn everyone to be aware about time at dinner.
 
-21 00 chat: sleep around 23 and play duolingo in the day. 
+21 00 chat: sleep around 23 and play duolingo in the day.
 
 duolingo is inspiring and good for meditation. in the day i could go for the curiosity of learning instead of the push to finish an assignment. it could also help me find mindfulness and meaningfulness, when idk what to do and try to start random surfing in the never ending now.
 
@@ -661,7 +661,7 @@ being legendary does not mean everything.
 
 19 40 archive chats. read ruanyf weekly (the lastest 3 weeks).
 
-06 
+06
 
 09 40 start working. chat: time management, schedule, methodology. 11 40
 
@@ -719,11 +719,227 @@ bilibili is too philistine.
 
 11 20 learn chemistry using a photo solver (a mediocre llm included) and complete up to page 1.
 
-16 00 set chatgpt custom instruction "avoid heading 1".
+16 00 set chatgpt custom instruction "avoid heading 1". surf youtube. archive chats. ask the stalled questions.
+
+16 40 watch "Forcing Scammers To Solve Impossible Captchas" (weird web dev demos). browse angel neko chan.
+
+17 20 watch "户晨风一败涂地！全程开车，户子被拿捏的死死的，观众爆笑！精彩不容错过，节目效果直接拉满！【户晨风直播 2023.06.02】"
+
+18 40 watch "必须看：直播揭示年轻人与社会的巨大断层｜大学新人的认知脱节现场｜ Live Call: Hu Chenfeng vs Young Graduate — Reality Check & Warnings" (used ai section summary, great).
+
+19 00 play phigros for the thrill of quick reaction (like hitting hotkeys in a row or extremely fast typing). 20 00
+
+09
+
+00 00 chat. try to archive everything.
+
+02 00 watch (part of, speedy, push to summarize subtitle the repetitive weird speaker) "2000 工资够花？深圳网友自信发言，震惊户晨风，表情逐渐抽象...."
+
+02 20 chat: subtitle export. add YouTube Subtitle Downloader. watch "2025 — Year in Search" (from google doodle).
+
+nearly 1m views with 4 hours. google, 13m subs. (too low)
+
+"Technically, you all wrote the script for this one. 💖"
+
+the story of humanity. freedom. courage.
+
+03 00 view the summary of "必须看：直播揭示年轻人与社会的巨大断层｜大学新人的认知脱节现场｜ Live Call: Hu Chenfeng vs Young Graduate — Reality Check & Warnings".
+
+~~03 40~~ 04 20 read menci's thoughts in late spring twenty twenty five and sleep.
+
+14 00 duolingo. take a look at douyin. organize prompts to reduce entropy. chat: compare english words. chat: basic philosophy.
+
+15 00 finish surfing zhihu (society memes about luoxiang, sanren). write down my thoughts.
+
+16 20 watch "Sintel - Open Movie by Blender Foundation".
+
+"Proof that a 15 minute video can invoke feelings that many two hour movies fail to convey."
+
+"I remember being in middle school watching this and deciding this is what I wanted to do. Now 12 years later and working at a filming studio as a VFX artist I still find myself coming back to this for inspiration. Gotta love the Blender community."
+
+17 00 chat while having potato chips and black tea. relax and meditate on sofa.
+
+18 40 revise the neutral girl of wisdom prompt. chat: nat. 19 20
+
+it took 2 hours? tell me, journal.
+
+dont waste time revising the girl of wisdom prompt any more. dont fomo. no perfect prompt exists. be sincere. either tell llms everything about myself. either talk directly without any infomation. i may ask for impersonalization specifically using the fira prompt.
+
+22 20 reduce entropy by removing deprecated (obvious meaningless) messages. close previous chats on carte.
+
+i went on the wrong way. if i think, i would evaluate. it is wrong to have only one html, to paste the document inside the message, and to put the prompt template and the specific request together.
+
+23 00 chat: understand and optimize the value of my time. create the simple and natural prompt.
+
+10
+
+10 20 wake up.
+
+11 00 duolingo. breakfast (whole wheat bread) with douyin (fantasy irl, society meme).
+
+11 40 read no longer human chapter 1. 12 20
+
+childhood wonders. pretending. loneliness.
+
+12 40 watch "一个问题把对面女主播问破防，简直匪夷所思！你绩点多少？你问的是正经绩点吗？绩点还有不正经的吗？观众爆笑【户晨风直播 20230603】". feel amused. save some playlists from 江户川晨风.
+
+save playlists could only be viewed though personal acc.
+
+~~13 20~~ 13 40 learn chemistry with photo solver from page 2. refresh face. boil water. wear earplug. complete 12 problems on page 2. 14 20
+
+14 20 decide to design the subscription structure of eat and archive berryberry (and youtube) subscription. start downloading deco 27 playlist using yt dlp. have onigiri as lunch.
+
+15 00 add cookie for ytdlp and retry. add get cookies locally extension. surf berryberry for a while. waste an hour for my obstinateness and perfectionism (wanna hack youtube, not willing to change myself, the ip. struggling between the form of saved files).
+
+whatever method (cookies) failed at anti bot. switching ip worked without cookies.
+
+~~15 20~~ ~~15 40~~ ~~16 00~~ 16 20 learn chemistry with photo solver. complete page 3. 17 00
+
+18 00 put douyin into the archive folder after surfing zhihu, filling the space of idv removed yesterday.
+
+douyin limits the form of contents, which may arouse philistines. sharing observations with geniuses could be way better than making fun of idiots. i may use it to publish stuff. i could surf it, but know that things wont change in the never ending now (the rts games, the tech otaku culture, and the society problems could be almost constant).
+
+idv is boring, full of werid guys, and sometimes not playable (could not make a match up). too much rubbish time in a game.
+
+use zhihu whenever i wanna surf douyin.
+
+19 20 try to complete two pages of chemistry problemset in 20 min while downloading rest vids. skip the obvious easy problems. manage to download after checking ytdlp help. 19 40
+
+timeboxing!
+
+i could choose not to download all the music videos. perfectionism...
+
+20 40 waste an hour for false assumption (there must be a decent music player on ubuntu that supported synced lyrics embeded in mp3). get extremely frustrated and wanna suicide but get much better watching the music vids. 22 00
+
+use mkv with en subs instead. i could have a simple script to get the zh subs. but i realize i love english, informal simple english used in lyrics.
+
+22 00 waste one more hour for trust weird scripts. 23 20
+
+i wont give up. i could pay anything. i dont care law or ethics for what i desire. at the end of the day i got jp zh-hans subs.
+
+ask for float.
+
+11
+
+00 20 chat: essense, mindset and methodology, top down and bottom up. 01 20
+
+linguistics make me feel mindful. maybe it reduces entropy.
+
+01 40 chat: life, humanity pursuit, essence of psychology, worries, direction. 04 00
+
+13 00 play deco 27. view pixiv. cock.
+
+13 40 have three sandwiches as lunch. boil water. duolingo. zhihu. renew rubbish bag. (14 00)
+
+time inside paratheses could be timebox.
+
+14 00 chemistry. complete up to page 7. (14 40)
+
+15 00 rest. boil water. have black tea. watch "《直接给我生成完整代码》" 英雄哪里出来, muted, skipping. watch some hu chenfeng clips. (15 20)
+
+15 40 watch "【全球见闻系列】呼和浩特，户晨风真假乞讨系列｜大哥摊牌不装了｜街边乞讨一天赚 400 ～ 500 ｜网友：比上班强！" and skim its series. watch "【全球见闻系列】投过氢弹，英国 87 岁退役老兵的故事，户晨风全球见闻随手拍，传播正能量！" and appreciate it. watch "【全球见闻系列】在新西兰奥克兰包工地、修花园，一年收入 200 万！".
+
+16 20 watch "最惊心动魄的一集！户晨风疑似遭网友做局，企图骗取退款！网友称信了户晨风的谗言买了苹果和特斯拉，觉得很垃圾，让户子负全责！户晨风正面硬刚：如果属实，你的苹果特斯拉我全款回收！一波三折，剧情反转再反转！", read some comments (lying all the time), and throw away.
+
+16 20 escape from poor network. chemistry. (complete up to 11.) ~~(17 00)~~ 17 20
+
+feel the speed.
+
+17 20 have mcdonald, some chips and a beef burger.
+
+17 40 continue watching "【全球见闻系列】在新西兰奥克兰包工地、修花园，一年收入 200 万！".
+
+18 00 chemistry. (to 19) (18 40)
+
+feel the speed.
+
+so much for today, have i nice day. (i designed 2 hours separated by 40 min)
+
+19 00 surf zhihu. 19 40 write some thoughts. organize zhihu fav aggressively. ~~(20 20) (20 40)~~ 21 00
+
+a day without earplug and music. it feels right. "reply 1988 aze"
+
+22 00 continue organizing zhihu fav in ~~kagura mea~~ ~~sameko saba~~ gawr gura (as netease cloud music podcast).
+
+inspire by the mea live today. wanna listen to something new. reverse the list then i have gawr gura.
+
+22 40 feel a bit uncomfortable and cough. switch to kagura mea, the kawaii and osft voice.
+
+sameko saba arouses too much attention.
+
+waste time for surfing low quality stuff (high assumption, increasing entropy) and low energy (not being mindful).
+
+so much content. everything i appreciate. it... could be rewarding, idk. but is it feasible in time?
+
+12
+
+01 20 continue organizing zhihu fav. browse some unixporn. feel both pleasure and pressure reading posts of peers. 03 40
+
+13 00 have some whole wheat bread. boil water about half of the cup to pour all in later. duolingo. view some indie games on berryberry recommendation. 13 20
+
+sometimes indie game demos of less views would feel better (e.g. in comments), without the hustle and bustle. but i stopped. maybe bfs a vid platform would not be the best way to find inspirations. i could be more intentional.
+
+~~13 20 chemistry. 14 00~~
+
+13 20 fix weird no sim issue by replacing sim 1 to sim 2. 13 40
+
+13 40 chemistry to 26. ~~14 20~~ 14 40
+
+14 40 organize zhihu fav and browse. (15 00)
+
+i feel flow. so why not continue.
+
+19 00 curate github feed (following).
+
+it seems that many creators wont appear on github feed.
+
+19 20 create an automation leverage to copy chatgpt chat. become extremely happy. (yeah! it works! hooray!) 20 00
+
+20 00 polish the userscript. 20 20
+
+20 20 surf berryberry. watch "MAA 豆包电脑？" and get excited.
+
+22 00 surf berryberry. download "败北女角太多了".
+
+use telegram for z library. leverage the free wealth in the world. an optimization. good.
+
+~~22 00~~ 23 00 organize zhihu. prepare for archive.
+
+summary: learn. organize. curate. create leverage.
+
+13
+
+02 20 revise automation leverage: zhihu archiver.
+
+spend 10h organizing zhihu fav. try to add author, date, etc.
 
 
+
+(read the book make. what are the questions it answers.)
+
+(revise the zhihu archiver. give the script and the page. add author, time, and stats. add folder name and description.)
+
+(game jam, weekend game jams)
 
 <!--
+
+project eat:research
+
+the recommendation. (views distribution)
+
+ -->
+
+<!--
+
+quick project today (tampermonkey):
+
+copy without h1,
+
+save tweet. (eat:fav?)
+
+think.
+
+how much time for chem?
 
 see scratch pad.
 

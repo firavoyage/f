@@ -8,7 +8,7 @@ llms
 - gemini
 - grok
 - mistral
-- chatgpt
+- chatgpt (may be the default since dec 2025)
 - other llm service
 - (if needed) mirror sites https://github.com/LiLittleCat/awesome-free-chatgpt
 

@@ -1,101 +1,60 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8" />
-  <title>React + Pixi Demo</title>
+  <body style="margin: 0; background: #222">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/7.2.4/pixi.min.js"></script>
+    <script>
+      // Create the Pixi app
+      const app = new PIXI.Application({
+        resizeTo: window,
+        background: "#000000",
+      });
+      document.body.appendChild(app.view);
 
-  <!-- React -->
-  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+      // Create the HTML video element
+      const video = document.createElement("video");
+      video.src =
+        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4";
+      video.autoplay = true;
+      video.loop = true;
+      video.muted = true;
+      video.playsInline = true;
+      video.crossOrigin = "anonymous";
+      video.addEventListener("canplay", () => {
+        video.play().catch(() => {});
+      });
 
-  <!-- Babel so we can use JSX directly -->
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+      // Convert video to texture
+      const texture = PIXI.Texture.from(video);
 
-  <!-- Pixi.js (version 7.x) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/7.2.4/pixi.min.js"></script>
+      // Create sprite
+      const sprite = new PIXI.Sprite(texture);
+      sprite.anchor.set(0.5);
+      sprite.x = app.renderer.width / 2;
+      sprite.y = app.renderer.height / 2;
+      app.stage.addChild(sprite);
 
-  <style>
-    body {
-      margin: 0;
-      overflow: hidden;
-      background: #111;
-      color: white;
-      font-family: sans-serif;
-    }
-  </style>
-</head>
+      // Scale when metadata arrives or window resizes
+      function resize() {
+        if (!video.videoWidth) return;
 
-<body>
-  <div id="root"></div>
+        const scale = Math.max(
+          app.renderer.width / video.videoWidth,
+          app.renderer.height / video.videoHeight
+        );
 
-  <script type="text/babel">
+        sprite.scale.set(scale);
+        sprite.x = app.renderer.width / 2;
+        sprite.y = app.renderer.height / 2;
+      }
+      app.ticker.add(() => {
+        texture.update(); // forces GL upload of the current video frame
+      });
+      video.preload = "auto";
+      video.setAttribute("playsinline", "");
+      video.setAttribute("webkit-playsinline", "");
 
-    function GameCanvas({ x }) {
-      const canvasRef = React.useRef(null);
-      const pixiApp = React.useRef(null);
-      const sprite = React.useRef(null);
-
-      // 1. Create Pixi App only once
-      React.useEffect(() => {
-        pixiApp.current = new PIXI.Application({
-          width: window.innerWidth,
-          height: window.innerHeight,
-          background: "#202020"
-        });
-
-        // append Pixi view (canvas) into the DOM div
-        canvasRef.current.appendChild(pixiApp.current.view);
-
-        // Create a simple graphic to animate
-        sprite.current = new PIXI.Graphics();
-        sprite.current.beginFill(0xff66aa);
-        sprite.current.drawCircle(0, 0, 50);
-        sprite.current.endFill();
-        pixiApp.current.stage.addChild(sprite.current);
-
-        return () => {
-          pixiApp.current.destroy(true);
-        };
-      }, []);
-
-      // 2. React passes new "x" prop → we update Pixi
-      React.useEffect(() => {
-        if (sprite.current) {
-          sprite.current.x = x;
-          sprite.current.y = window.innerHeight / 2;
-        }
-      }, [x]);
-
-      return <div ref={canvasRef}></div>;
-    }
-
-
-    // simple React UI that moves a circle left and right
-    function App() {
-      const [x, setX] = React.useState(200);
-
-      return (
-        <div>
-          <GameCanvas x={x} />
-
-          <div style={{
-            position: "absolute",
-            top: 20,
-            left: 20,
-            background: "#0007",
-            padding: "12px 18px",
-            borderRadius: "8px"
-          }}>
-            <button onClick={() => setX(x - 20)}>← left</button>
-            <button onClick={() => setX(x + 20)}>right →</button>
-          </div>
-        </div>
-      );
-    }
-
-    const root = ReactDOM.createRoot(document.getElementById("root"));
-    root.render(<App />);
-
-  </script>
-</body>
+      video.addEventListener("loadedmetadata", resize);
+      window.addEventListener("resize", resize);
+    </script>
+  </body>
 </html>
