@@ -16,7 +16,9 @@ see
 
 - ../apps
 - journal
-- (deprecated) scratch pad
+- all
+- (temp) scratch pad
+- (temp) paste
 
 misc
 

@@ -68,7 +68,7 @@ i d like to create games, gravitated by the great works.
 
 00 00 archive chats, duolingo, surf
 
-01 00 chat: make llm consist
+01 00 chat: make llm consistent
 
 <!--
 (unit test precious, refactor. write a programming style guide for me. polish precious prompt.)
@@ -474,6 +474,8 @@ things are normalized when switching to english, which is only available in sane
 later i found that in the chinese version of taobao, the "categories" on the dock is replaced by "short videos", enabling doom scrolling while preventing from intentional looking up goods.
 
 20 20 write the final words of taobao refund trick.
+
+mindfulness, the precious thing of mine. way more important. thrill could be found somewhere clean. how did i? cn guys. (here, the hard competition, fooling with censorship, the weird world, to be sane and get to the starting line cost much more. i should have known that.)
 
 22 40 open a can of coca cola. ~~start reading no longer human.~~ take a look on all the biao ri textbooks.
 
@@ -913,55 +915,272 @@ summary: learn. organize. curate. create leverage.
 
 spend 10h organizing zhihu fav. try to add author, date, etc.
 
+03 40 browse sinyalee's new weird question for a while. sleep.
+
+~~12 40~~ 13 00 receive new books "physics problemset compilation" "geography ~". go out for a meal, bibimbap. duolingo. listen to deco 27 on mid volume.
+
+deprecate the separated yearly papers.
+
+14 20 browse zhihu (recommended public favorites): art and design. 15 20
+
+15 20 browse zhihu: gamedev.
+
+16 00 boil water. try to close tabs. watch "【随机给陌生人钱】在成都，匆忙的女外卖骑手竟然只花了....户晨风随机给陌生人钱，听听他们的故事，传递正能量！".
+
+16 20 organize zhihu new favorites of today (art, dev, computer science, history). read some masterpieces. ~~16 40~~ 17 00
+
+17 00 chat: learn gamedev. 17 20
+
+17 20 watch 江户川晨风. play deco 27 at a low volume. skim the video titles. pick "【随机给陌生人钱】1000 元挑战连续失败后，做一件更有意义的事：户晨风给辛勤劳动的基层环卫工人送福利，爆赞！". 18 00
+
+18 00 play the pong game. search breakout game on google and find a lot of google doodles game. find some mud games on zhihu recommendation "nethack". surf zhihu: premium education, psycho, cheating.
+
+18 40 watch "【随机给陌生人钱】上海，32 岁二本土木外卖员，星巴克遭冷眼，躺平后消费欲望降低！" "【随机给陌生人钱】成都保安，养两个儿子，12 小时做四休二，豁达老哥，笑对人生！户晨风街头随机给陌生人发钱，传播正能量！！！" "【随机给陌生人钱】“我在广州，流浪这十年”！老哥：穷人很多，都在你看不到的地方，不要瞧不起穷人，他们也不想穷！" "【随机给陌生人钱】高考 N 次落榜，老哥选择躺平啃老，人呆久了就会丧失欲望吗？". finish watching 户晨风随机给陌生人钱实录. 19 00
+
+low material desire. no hope. no sorrow.
+
+19 20 watch 户晨风全球购买力对比实录. pick london, osaka (pick all, since only 5/8 vids available now). (19 40)
+
+21 00 browse zhihu: gamedev stories. retro unixporn. browse an old tech otaku on zhihu. listen to i:shinji by her recommendation. 22 00
+
+22 40 play kagura mea (reversed).
+
+23 00 organize telegram notes "journal".
+
+23 20 create an userscript to archive zhihu following.
+
+chatgpt replied quite slower today. the model changed from gpt 5.1 to gpt 5.2.
+
+14
+
+01 40 reread the mindset and sleep.
+
+11 00 go out to watch zootopia 2.
+
+16 20 try to revise the script for forcing google to english but give up and just disable it.
+
+17 00 feel tired. sleep. 19 00
+
+dont chase something. just do things when energetic.
+
+19 20 browse some wanderer irl vids recommended by a zhihu comment mentioning "杀哥" under a question evaluating anti gambling.
+
+20 00 reduce distraction (missed call notifications) on phone.
+
+20 40 chat: magnet, sites, tools for geeks, for "年少日记" on douban similar recommendation, inspired by the tech otaku found on zhihu yesterday "Youlink L".
+
+15
+
+lack of sleep. feel tired and a bit dizzy.
+
+17 40 english translation. 18 40
+
+19 00 conquer piracy of magnet.
+
+23 00 watch "年少日记".
+
+16
+
+~~01 00~~ 01 20 sleep.
+
+13 40 feel clear without construction noise.
+
+14 00 chat: time management. 14 20
+
+14 20 browse some useless infomation on zhihu. 15 00
+
+16 00 read innei's emotional post about the her company's interest and personal feeling.
+
+16 20 learn chemistry (to 31). ~~(17 00)~~ 17 20
+
+17 20 surf zhihu and appreciate a post about gamedev mindset. organize breadcrumbs. 18 00 organize weekly, scratch pad. ~~(18 20)~~ 18 40
+
+18 40 sort breadcrumbs (just figure out the next a few things to do). 19 00
+
+21 00 chat: life, the things stalled, ideal. 23 00
+
+23 20 chat: modern way of coding, cursor. 24 00
+
+17
+
+00 00 chat: feel 1m token. 00 20
+
+00 20 watch vids about modern vibe coding like pros. (01 00)
+
+project: define (overview/description, target, benefits/features, high level tech/archi) (concise)
+
+feature: plan. review. implement (phases). code review. decide fixes. test. comfirm.
+
+voice input.
+
+composer (ai workflow, self correction loop). checkpoint.
+
+context management.
+
+fundamentals (true value, ideal, mindsets, best practices).
+
+01 20 chat: ideal. 02 00
+
+14 00 have lunch "foodbowl". play deco 27. surf zhihu (unixporn).
+
+16 20 learn chemistry (to 39). wear earplugs. have lemon ice tea. try voice input. (17 00)
+
+17 00 relax and surf zhihu (society). write down some thoughts. ~~17 20~~ 17 40
+
+17 40 chat: whether openrouter is really free. leverage the free internet. ~~(18 00)~~ 18 20
+
+20 20 reply to antonino on telegram "long time no talk" "just hoping you are ok". prepare black tea. join zanmiao's telegram group.
+
+~~20 40~~ 21 00 chat: ~~how to think.~~ how to read the book make.
 
 
-(read the book make. what are the questions it answers.)
-
-(revise the zhihu archiver. give the script and the page. add author, time, and stats. add folder name and description.)
-
-(game jam, weekend game jams)
 
 <!--
+
+breadcrumbs:
+
+(added)
+
+is free models on openrouter really free
+
+if so, i could create my workflow. that's interesting. be simple (using strict prompts for example) so i wont waste too much time.
+
+> llms think it's not wise to write abstractions now. i evaluated the time (quantitative indicators) and decided.
+
+---
+
+what could i think. remove. organize. simplify. explore. evaluate. something like that.
+
+how to think (verbs, phases)
+
+"i would like to learn the high level method of thinking ("simplify")"
+
+---
+
+question the question. voice input with cheetsheet (english speaking).
+
+---
+
+no direction in gamedev.
+
+fooling and amusing (?)
+
+short term (abusing, political memes, pornography)
+
+value.
+
+psychology.
+
+---
+
+read the book make.
+
+what are the questions it answers.
+
+---
+
+carte.
+
+polish the idea. explore gamplay possibilities.
+
+the invariants.
+
+how could without animation.
+
+(make a pong game?)
+
+---
+
+gameplay. (recommended. maybe not useful...)
+
+https://www.google.com/search?q=gorogoa+gameplay
+
+https://www.google.com/search?q=fez+gameplay
+
+https://www.google.com/search?q=braid+gameplay
+
+---
+
+weekend gamejam.
+
+---
 
 project eat:research
 
 the recommendation. (views distribution)
 
- -->
-
-<!--
-
-quick project today (tampermonkey):
-
-copy without h1,
-
-save tweet. (eat:fav?)
-
-think.
-
-how much time for chem?
+---
 
 see scratch pad.
 
-breadcrumb:
+---
 
-mygo pvz. (like gacha party)
+bandolllll. "mygo pvz. (like gacha party)"
 
-en translation. a math paper. chem (use more socratic and less llms.)
-
-see: chats archivist.
-
-(a web based localhost cloud gaming open world game?)
+---
 
 begin pure math generation
 
+with advanced topics and tricks on the cheetsheet
+
+(why) gen and revise, compare and summarize the style. aops. apply the style.
+set the narration style when translating. "for enthu, memories, ref." (?)
+
 writing style consistency: maybe i should let llm to write some stuff in comparison and let me choose? idea: let llm generate some stuff in a list, i choose or rewrite, then let llm put them in comparison, generate the style guide. (or: give example, generate following existing text with human curated limitation.)
 
+---
+
 project journal
+
+---
 
 make pre web better with llm. fix save: show browser message.
 
 fix seaside theme: math text too small
+
+---
+
+(why, design)
+
+organize berryberry fav next weekend.
+
+organize sub before export. https://space.bilibili.com/1156993272/fans/follow
+
+ -->
+
+<!--
+
+momentum.
+
+reduce entropy.
+
+minimal viable step.
+
+invariants. inevitable.
+
+detail level.
+
+journal 00 20 40.
+
+think.
+
+simplify.
+
+predict.
+
+sense.
+
+_follow your heart_
+
+dont rush.
+
+i will have it then.
+
+allow. (luck, omniscience)
+
+what's next.
+
+(on the flyleaf of the paper journal)
 
  -->
 
@@ -1020,5 +1239,7 @@ weekly
 projects
 
 journal
+
+all
 
  -->

@@ -1491,16 +1491,16 @@ Just tell me what the next move on your board is, Fira.
 
 # m 4 (d, revise in my preference)
 
-# m 2 (the inevitable things)
+# . m 2 (the inevitable things)
 
 <!-- make every step count. never go back. -->
 
 
 
-# m 2 (the logic)
+# . m 2 (the logic)
 
 
 
-# m 2 (the design)
+# . m 2 (the design)
 
 just use a static image for the splash screen.

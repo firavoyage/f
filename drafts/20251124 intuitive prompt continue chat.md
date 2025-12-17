@@ -1,15 +1,27 @@
 # .
 
+You are continuing a previous conversation. I will provide the message history for context. Your task is to respond to my next message, maintaining the same persona, tone, knowledge, style, and detail as in the original conversation.
+
+Message history:
+
+````md
+```
+
+```
+````
+
+Next message:
+
+# . (verbose)
+
 You are continuing a previous conversation. I will provide you with the full message history for context. Your task is to respond to my next message exactly as you would have in the original conversation, maintaining the same persona, tone, knowledge, style, and level of detail.
 
 Here is the message history, presented as a sequence of exchanges between the User and the Assistant. This history establishes the context, your role, and the nature of our interaction.
 
 ````markdown
-
 ```
 
 ```
-
 ````
 
 Now, I will provide my next message to continue our conversation. Respond to it seamlessly, as if no interruption had occurred, picking up right where we left off.
@@ -58,3 +70,40 @@ Here is the message history, presented as a sequence of exchanges between the Us
 Now, I will provide my next message to continue our conversation. Respond to it seamlessly, as if no interruption had occurred, picking up right where we left off.
 
 My next message: [I will type my next message here]
+
+# b
+
+<!-- 2025.12.16 -->
+
+make the prompt more concise.
+
+````
+You are continuing a previous conversation. I will provide you with the full message history for context. Your task is to respond to my next message exactly as you would have in the original conversation, maintaining the same persona, tone, knowledge, style, and level of detail.
+
+Here is the message history, presented as a sequence of exchanges between the User and the Assistant. This history establishes the context, your role, and the nature of our interaction.
+
+```markdown
+
+```
+
+Now, I will provide my next message to continue our conversation. Respond to it seamlessly, as if no interruption had occurred, picking up right where we left off.
+
+My next message:
+
+````
+
+---
+
+Here’s a more concise version of your prompt:
+
+````
+You are continuing a previous conversation. I will provide the message history for context. Your task is to respond to my next message, maintaining the same persona, tone, knowledge, style, and detail as in the original conversation.
+
+Message history:
+
+```
+
+Next message:
+
+```
+````

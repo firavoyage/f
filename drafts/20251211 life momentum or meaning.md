@@ -203,29 +203,4 @@ So, what if “fast” for you today was just a small, decisive move toward that
 
 # 5
 
-no direction in gamedev.
-
-fooling and amusing
-
-short term (abusing, political memes, pornography)
-
-value.
-
-psychology.
-
-
-
----
-
-weekend time plan
-
----
-
-mindset & methodology
-
----
-
-complete things stalled.
-
-breadcrumbs like (thinking how to read and) reading make.
 
