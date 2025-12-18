@@ -2,14 +2,20 @@ project all: fira's drafts
 
 <!-- reduce entropy -->
 
+wisdom:
+
+- https://chatgpt.com/c/693d37ac-c960-8328-bfcc-d8024bb6a4ba
+
 create something:
 
 - how to think leverage
 - mindset methodology (?)
+- book make
 
 manage time:
 
 - manage time
+- manage time arrange todos
 
 life:
 

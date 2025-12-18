@@ -1031,7 +1031,65 @@ fundamentals (true value, ideal, mindsets, best practices).
 
 20 20 reply to antonino on telegram "long time no talk" "just hoping you are ok". prepare black tea. join zanmiao's telegram group.
 
-~~20 40~~ 21 00 chat: ~~how to think.~~ how to read the book make.
+most spare time are on zhihu. (or a bit douyin. sometimes i scroll the first five vids. view comments. no surprise. philistine. exit. spent 2 min maybe.)
+
+~~20 40~~ 21 00 chat: ~~how to think.~~ how to read the book make. read it. ~~22 00~~ 22 20
+
+waste a few minutes for the weird network.
+
+22 20 explore perplexity. (bfs, llms) create a pong game. ~~23 00~~ 23 20
+
+the rate limits are strict. feel a bit disappointed... not willing to create an userscript for exporting. 
+
+decision: put $10 into openrouter. not quite a lot. then leverage free models (1000 req a day).
+
+but do i need to think it now? maybe not. maybe i even dont need such power. 
+
+i could do things that dont scale first. others things... at least they could be feasible somehow.
+
+18
+
+00 20 buy number on 5sim for claude. spend $1 (6.99 cny on alipay). 
+
+idk why so cheap. 1 usd = 7.04 cny now on google. andj it worked.
+
+00 40 turn off on claude: location metadata, help improve, artifacts.
+
+claude is well designed. feel lovely. 
+
+good. 
+
+~~01 00~~ 01 20 sleep.
+
+after washing face, i thought i could make full use of the 7 cny on 5sim. register a lot of accounts on chatgpt. use a cookie manager maybe. 
+
+18 00 write diary on river. 18 20 
+
+19 20 play general io after seeing a vid of a top hs student on berryberry.
+
+20 00 think a math problem. ask: mean value theorem. 20 20
+
+21 40 watch "天使猫猫酱" new vids. ~~(22 00)~~ 22 20
+
+22 20 read generals io strategy.
+
+https://old.reddit.com/r/generalsio/comments/5fm1ts/beginnerintermediate_strategy_for_the_early_and/
+
+hard. tricky. many quirks. no art. a bit boring. no much infomation online. i dont really like it.
+
+22 40 cock to mutsumi on pixiv. refresh. 23 00
+
+23 20 create a general userscript to block ads, especially for tailwind sites without semantic classes.
+
+19
+
+00 00 surf zhihu. 00 40
+
+society. the poor has no choice. most money comes from the gray area. but sometimes the sane ones do not need to be that greedy. they could be free. recall words of the class master xiaojiong "your parents have made enough money. just go anywhere as you like.", similar as zhaohai said. menci, one of the geniuses (i mean luck, the original sin from birth), said "follow your heart". some ordinary guys on hu chenfeng's channel have an idea similar to daoism. great.
+
+dev (indie gamedev). just a hobby. many stupid people with heart are inside.
+
+01 00 read time management chat "arrange todos". prepare for schooling tomorrow (phone with llms, problemsets). 01 20
 
 
 
@@ -1039,15 +1097,18 @@ fundamentals (true value, ideal, mindsets, best practices).
 
 breadcrumbs:
 
-(added)
+(important! always reminding me.)
 
-is free models on openrouter really free
+project journal
 
-if so, i could create my workflow. that's interesting. be simple (using strict prompts for example) so i wont waste too much time.
+first, create an abstraction of ubuntu apis. 
 
-> llms think it's not wise to write abstractions now. i evaluated the time (quantitative indicators) and decided.
+- log the titles of opened apps, and which is currently working on. design the json.
+- take screenshots every 5 minutes.
 
 ---
+
+(? ... go ahead. it's meaningful without taking too much time. decide how to ask first.)
 
 what could i think. remove. organize. simplify. explore. evaluate. something like that.
 
@@ -1057,9 +1118,7 @@ how to think (verbs, phases)
 
 ---
 
-question the question. voice input with cheetsheet (english speaking).
-
----
+(!)
 
 no direction in gamedev.
 
@@ -1073,11 +1132,7 @@ psychology.
 
 ---
 
-read the book make.
-
-what are the questions it answers.
-
----
+(!)
 
 carte.
 
@@ -1127,10 +1182,6 @@ with advanced topics and tricks on the cheetsheet
 set the narration style when translating. "for enthu, memories, ref." (?)
 
 writing style consistency: maybe i should let llm to write some stuff in comparison and let me choose? idea: let llm generate some stuff in a list, i choose or rewrite, then let llm put them in comparison, generate the style guide. (or: give example, generate following existing text with human curated limitation.)
-
----
-
-project journal
 
 ---
 

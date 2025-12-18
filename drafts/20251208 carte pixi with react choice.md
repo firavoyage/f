@@ -1,4 +1,4 @@
-# . (pixijs with react example)
+# . (pixijs with react worked example)
 
 ```html
 <!DOCTYPE html>
