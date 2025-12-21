@@ -4,7 +4,8 @@ project all: fira's drafts
 
 wisdom:
 
-- https://chatgpt.com/c/693d37ac-c960-8328-bfcc-d8024bb6a4ba
+- wisdom
+- https://chatgpt.com/c/69460efd-9550-8329-89da-bf5498a7c921
 
 create something:
 
@@ -15,16 +16,27 @@ create something:
 manage time:
 
 - manage time
-- manage time arrange todos
+- arrange todos
 
 life:
 
-- ideal human ideal things
+- ideal human, ideal things
+- hobbies, pursuit
+- sources of knowledge
+- spare time, why
 
 vibe coding:
 
 - vibe coding mindset
 - vibe coding workflow
+
+literary:
+
+- daoism
+
+write code:
+
+- code best practices
 
 ---
 
@@ -33,3 +45,12 @@ separate thinking from doing.
 learn from your experience.
 
 one may not be perfect.
+
+---
+
+phases of software engineering. (thinking.)
+
+steps. (verbs)
+
+
+

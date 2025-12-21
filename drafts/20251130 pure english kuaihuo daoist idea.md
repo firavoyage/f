@@ -1,6 +1,6 @@
 <!-- i could relate to the daoism idea in the innocent girl -->
 
-# a 1
+# a (kuai huo)
 
 <!-- deprecated (in chinese issue): explain "快活", explain the word "快活" -->
 
@@ -70,7 +70,7 @@ While both mean "happy," there's a subtle difference:
 
 In short, **快活 is the feeling of being alive, cheerful, and free from care.** It's the kind of happiness that makes you want to smile, laugh, and enjoy the moment to its fullest.
 
-# a 2
+# a 2 (deep dive into kuai huo)
 
 deep dive
 
@@ -155,9 +155,9 @@ This is where the "deep dive" truly pays off.
 
 **快活 is not just happiness; it's aliveness.** It is the joyous, carefree, and often physical manifestation of being truly in the moment, unburdened and vibrantly alive. It's the quickening of the spirit that makes life feel not just good, but exhilarating. To feel 快活 is to feel the pure, animated pulse of joy itself.
 
-# a 3
+# a 3 (deep dive into literary chinese)
 
-<!-- "nine万里", classic! -->
+<!-- "nine 万里", classic! -->
 
 deep dive in literary chinese
 
@@ -230,7 +230,7 @@ In Literary Chinese, **快活** is not mere happiness. It is a **state of being*
 
 It is the joy of the fish in the water, the recluse in his mountains, and the drunkard in his cup—all manifestations of the Zhuangzian ideal of a spirit that wanders, carefree and utterly alive, through the world. To be 快活 was to taste, for a moment, the freedom of an immortal (神仙).
 
-# a 4
+# a 4 (explain the daoism, relate to kuai huo)
 
 explain the daoist
 
@@ -303,7 +303,7 @@ The tree's "uselessness" is its salvation. It is not striving to be "useful" acc
 
 In conclusion, from a Daoist perspective, **快活 is not something you get; it is something you uncover by shedding everything that is not you.** It is the original, pristine joy of existence that was there before society taught you what "happiness" should be. It is the delight of the "Uncarved Block" (朴, pǔ), the simple, authentic self, wandering carefree through the world.
 
-# b
+# b (daoism idea)
 
 explain the daoist idea
 
@@ -384,7 +384,7 @@ It's important to distinguish between the two:
 
 In summary, the Daoist idea is a call to let go of our ego-driven striving and intellectual arrogance, and to instead harmonize with the effortless, spontaneous, and perpetual flow of the natural universe—the Dao. It is a path of simplicity, naturalness, and profound peace.
 
-# b 2
+# b 2 (deep dive into daoism idea)
 
 deep dive
 
@@ -453,7 +453,7 @@ If the Dao can't be spoken, how can we know it? This is the central problem Daoi
 
 In essence, the deep Daoist idea is an invitation to a radical shift in consciousness. It's a move from a ego-centric, striving, and categorizing mode of being to a cosmos-centric, flowing, and perceptive one. It's not about finding answers, but about dissolving the questions that arise from a fragmented view of the world, ultimately revealing a reality that is profoundly interconnected, spontaneously creative, and beautifully paradoxical.
 
-# b 3
+# b 3 (xiao yao)
 
 deep dive into 逍遙
 
@@ -522,7 +522,7 @@ There is no 10-step plan to _Xiāoyáo_. It is a byproduct of realigning with th
 
 It is the final release from all shackles, internal and external, and the realization that you were never truly bound to begin with. You are, and always have been, a momentary expression of the ever-wandering Dao.
 
-# b 4
+# b 4 (deep dive into xiao yao)
 
 deep dive into the text
 
@@ -641,7 +641,7 @@ When Zhuangzi's wife dies, Huizi comes to offer condolences and finds Zhuangzi d
 
 To read these texts deeply is to realize they are not saying the same thing in different ways. The _Dao De Jing_ gives you the **theory and principles** of the Dao—it is the map. The _Zhuangzi_ gives you the **lived experience and psychological freedom** of embodying it—it is the travelogue from someone who has journeyed there. Together, they form a complete system: one articulates the cosmic rhythm, the other teaches the human heart to dance to it.
 
-# c
+# c (compare with lying flat)
 
 compare lying flat and the daoism idea
 
@@ -707,7 +707,7 @@ You can think of **Lying Flat as a modern, secular, and socio-political echo of 
 
 A Daoist might see the Lying Flat practitioner as someone who has correctly identified the problem (the futility of artificial striving) but has not yet found the true, joyful solution (living in the Dao). The Lying Flat practitioner, in turn, might see the Daoist as an idealized version of their goal—a person truly at peace, free from society's demands.
 
-# d
+# d (compare with the chinese dream)
 
 <!-- no banning, due to a good prompt (and order). -->
 
@@ -798,7 +798,7 @@ Evaluating Daoism against the Chinese Dream reveals two incompatible worldviews 
 
 In the modern Chinese context, Daoism has largely been marginalized as a guiding political principle. Its enduring value lies in the personal, spiritual, and ecological realms, offering a critical, quiet counterpoint to the dominant narrative of national struggle and achievement. It serves as a philosophical sanctuary from the demands of the collective, even as the state seeks to harness its cultural legacy for its own purposes.
 
-# d 2
+# d 2 (could daoism be against the chinese dream)
 
 could daoism be against the chinese dream, why or why not
 
@@ -854,7 +854,7 @@ Daoism, through the words of the _Daodejing_, would reply: **"Do you want to imp
 
 To a Daoist, the Chinese Dream isn't just a different political goal; it is the very embodiment of the misguided human effort that creates chaos and separates humanity from the eternal, peaceful Dao.
 
-# d 2.2
+# d 2.2 (where could daoism be against the chinese dream)
 
 where could daoism be against the chinese dream
 
@@ -911,7 +911,7 @@ A strict adherent to Daoist philosophy would be an inherent, albeit passive, dis
 
 In essence, the Chinese Dream is a manifesto for **Human-Doing**, while Daoism is a path of **Human-Being**. The former seeks to reshape the world through will and effort; the latter seeks to find one's harmonious place within the natural world by letting go of that same will. They are fundamentally incompatible at a philosophical level, which is why Daoism, in its pure form, exists on the margins of modern Chinese political life, tolerated as cultural heritage but antithetical to the state's core political project.
 
-# d 2.2 2
+# d 2.2 2 (evaluate)
 
 evaluate
 
@@ -983,7 +983,7 @@ It is a living tradition that offers a critical counter-narrative to the dominan
 
 While the state has been successful in harnessing Daoism's cultural trappings, its core philosophy remains a profound and silent critique. It is the "water" that, while soft and yielding, inevitably wears away the hard, ambitious "stone" of the Chinese Dream by presenting a fundamentally different, and for many, a more fulfilling, way to live.
 
-# d (d)
+# d (d, diplomatic language)
 
 could daoism be against the chinese dream, why or why not
 

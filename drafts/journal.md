@@ -1091,9 +1091,81 @@ dev (indie gamedev). just a hobby. many stupid people with heart are inside.
 
 01 00 read time management chat "arrange todos". prepare for schooling tomorrow (phone with llms, problemsets). 01 20
 
+19 40 chat: find out whether im foggy or empty now.
+
+20 20 remove chatgpt custom instruction "avoid heading 1", as implemented by the userscript.
+
+20 40 surf nsfw chinese community shireyishunjian. have some boiled water, about 500ml maybe.
+
+lowly and wild desire.
+
+21 20 sleep for a while. fall asleep. ~~(22 00)~~
+
+20
+
+05 00 wake up.
+
+10 40 get up.
+
+11 40 surf zhihu, douyin. 12 40
+
+12 40 chat: sources of knowledge. review and revise: ideal human, ideal things. ~~13 00~~ 13 20
+
+13 20 go out for a meal (weird and suspicious korean food, instant noodles with nian gao and sauces, tofu and seafood soup). waste a lot of time for missing the way and having the phone call broken (due to disabling notification with adb, maybe).
+
+15 20 surf zhihu: a chinese born in a double teachers family studied at a good university ("211") going to russian war for suicide. reread and revise (adding titles): daoism idea. write down some thoughts. 16 00 continue surfing: political memes, gamedev, unixporn. 16 20
+
+16 40 play go on foxwq. 17 40 analyze. 18 20
+
+18 20 chat: rts io games. play generals io and join discord. surf discord. create a script to stay active (anti away detection). find it boring, whether chats or "discord orbs".
+
+19 00 try github pages.
+
+23 20 play generals.io 23 40 play bonk.io
+
+21
+
+00 40 play generals.io 01 00 win an 1v1 match by assembling all troops.
+
+01 00 refresh. 
+
+01 40 install twitch alternative player to remove ads.
+
+02 00 chat: code style guide, best practices (ref google testing on the toilet).
+
+02 20 watch a generals io tutorial on berryberry. 02 40
+
+03 00 revise userscript: block chatgpt ads (safe component remover).
+
+04 00 play generals io. sleep. (04 40)
+
+11 20 wake up.
+
+13 00 get up. think a few questions to ask. watch twitch (neuro sama, creative).
+
+13 40 lunch (tang yuan). duolingo. zhihu (society, unixporn) "why anime jk are wealthy and free".
+
+15 00 read chats: life, hobbies, meanings.
+
+16 00 revise userscript: copy chatgpt. add branch support.
+
+16 40 check bitmagnet and download pink floyd and some porns sorted by seeders. cock.
+
+17 00 boil water. open a pack of potato chips. feel clear. read chats: management.
+
+17 20 play linksider, a puzzle platformer recommended by kuviman on twitch "kast-lang.org". 17 40
+
+18 20 verify twitch account using 5sim, indonesia.
+
+personal phone number is already binded to a legacy account with password forgotten. give up indonesia (0% success rate). use england instead.
+
+18 40 cock to newly downloaded vids. chat: management. waste a lot of time revising userscripts (stupid llms, ambiguous prompt, cloudflare turnstile, over engineering, premature optimization). 19 40
+
 
 
 <!--
+
+journal, before carte.
 
 breadcrumbs:
 
@@ -1153,6 +1225,8 @@ https://www.google.com/search?q=gorogoa+gameplay
 https://www.google.com/search?q=fez+gameplay
 
 https://www.google.com/search?q=braid+gameplay
+
+https://www.google.com/search?q=gamedev+story
 
 ---
 
