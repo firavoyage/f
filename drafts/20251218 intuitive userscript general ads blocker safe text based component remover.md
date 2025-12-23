@@ -4332,3 +4332,282 @@ If you want, next we can:
 - or make it safer against accidental over-removal.
 
 Just say the word, Fira.
+
+# . (2025.12.22, added ask chatgpt)
+
+<!-- use adguard instead. -->
+
+```js
+// ==UserScript==
+// @name         Safe Component Remover v2.2
+// @namespace    http://tampermonkey.net/
+// @version      2.2
+// @description  Remove UI components by text, selector, attribute, or parentSelector+text.
+// @match        *://chatgpt.com/*
+// @grant        none
+// ==/UserScript==
+
+(() => {
+  "use strict";
+
+  /*****************************************************************
+   * USER CONFIGURATION
+   *****************************************************************/
+  const GLOBAL_EXCLUDE_CLASSNAME_CONTAINS = [
+    "markdown",
+    "user-message",
+    "ProseMirror",
+  ];
+
+  const RULES = [
+    {
+      name: "ChatGPT disclaimer",
+      text: "ChatGPT can make mistakes",
+      depth: 4,
+    },
+    { name: "Free offer banner", text: "Free offer" },
+    { text: "Want to keep using GPT-5?" },
+    {
+      type: "attribute",
+      attr: "src",
+      contains:
+        "openaiassets.blob.core.windows.net/web/chatgpt/filled-plus-icon.png",
+      depth: 10,
+    },
+    {
+      name: "Upgrade aside",
+      parentSelector: "aside",
+      text: "upgrade",
+      depth: 2,
+    },
+    { text: "ask chatgpt", depth: 9 },
+  ];
+
+  const DEFAULTS = {
+    dryRun: false,
+    maxParentClimb: 6,
+    removeParentIfEmpty: true,
+  };
+
+  const LOG_PREFIX = "[remover]";
+
+  /*****************************************************************
+   * UTILITIES
+   *****************************************************************/
+  const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+  const log = (...args) => console.log(LOG_PREFIX, ...args);
+
+  const isVisible = (el) => {
+    if (!(el instanceof Element)) return false;
+    try {
+      const s = getComputedStyle(el);
+      return (
+        s.display !== "none" &&
+        s.visibility !== "hidden" &&
+        el.getClientRects().length > 0
+      );
+    } catch {
+      return false;
+    }
+  };
+
+  const visibleText = (el) => {
+    try {
+      return el?.innerText?.trim() || "";
+    } catch {
+      return "";
+    }
+  };
+
+  const isRemovable = (el) =>
+    el instanceof Element &&
+    el !== document.body &&
+    el !== document.documentElement;
+
+  const classContainsAny = (el, list) => {
+    const cls = el?.className;
+    if (!cls || typeof cls !== "string") return false;
+    const lower = cls.toLowerCase();
+    return list.some((s) => lower.includes(s.toLowerCase()));
+  };
+
+  function isInsideExcludedZone(el, rule) {
+    let cur = el;
+    while (cur && cur !== document.body) {
+      if (
+        classContainsAny(cur, GLOBAL_EXCLUDE_CLASSNAME_CONTAINS) ||
+        classContainsAny(cur, rule.exclude || [])
+      ) {
+        return true;
+      }
+      cur = cur.parentElement;
+    }
+    return false;
+  }
+
+  function removeElement(el, reason) {
+    if (!isRemovable(el)) return;
+    log("REMOVE", reason, el);
+    if (DEFAULTS.dryRun) {
+      try {
+        el.style.outline = "3px dashed red";
+      } catch {}
+      return;
+    }
+    try {
+      el.remove();
+    } catch {
+      el.style.display = "none";
+    }
+  }
+
+  /*****************************************************************
+   * RULE PREPROCESSING (quiet but important)
+   *****************************************************************/
+  const PREPARED_RULES = RULES.map((r) => {
+    const type = r.type || (r.parentSelector ? "parent" : "text");
+    const re =
+      r.re instanceof RegExp
+        ? r.re
+        : r.text
+        ? new RegExp(escapeRe(String(r.text)), "i")
+        : null;
+
+    return { ...r, type, re };
+  });
+
+  /*****************************************************************
+   * CORE REMOVAL LOGIC
+   *****************************************************************/
+  function climbAndRemove(el, rule, matchType) {
+    let current = el;
+    let depth = 0;
+    const maxDepth = Number.isInteger(rule.depth)
+      ? rule.depth
+      : DEFAULTS.maxParentClimb;
+
+    while (current && depth < maxDepth) {
+      if (!isRemovable(current) || isInsideExcludedZone(current, rule)) break;
+
+      const parent = current.parentElement;
+      if (
+        DEFAULTS.removeParentIfEmpty &&
+        parent &&
+        visibleText(parent) === visibleText(current)
+      ) {
+        removeElement(parent, `${rule.name || "rule"}: parent-empty`);
+        return;
+      }
+
+      current = parent;
+      depth++;
+    }
+
+    removeElement(el, `${rule.name || "rule"}: direct-match`);
+  }
+
+  /*****************************************************************
+   * PROCESSORS
+   *****************************************************************/
+  function processTextNode(node) {
+    const parent = node.parentElement;
+    if (!parent || !isVisible(parent)) return;
+
+    const txt = visibleText(parent);
+    if (!txt) return;
+
+    for (const rule of PREPARED_RULES) {
+      if (rule.type !== "text") continue;
+      if (!rule.re || !rule.re.test(txt)) continue;
+      if (isInsideExcludedZone(parent, rule)) continue;
+
+      log("MATCH text", rule.name || rule.text, parent);
+      climbAndRemove(parent, rule, "text");
+      break;
+    }
+  }
+
+  function processParentRules() {
+    for (const rule of PREPARED_RULES) {
+      if (rule.type !== "parent" || !rule.parentSelector || !rule.re) continue;
+
+      document.querySelectorAll(rule.parentSelector).forEach((el) => {
+        if (!isVisible(el)) return;
+        if (isInsideExcludedZone(el, rule)) return;
+
+        const txt = visibleText(el);
+        if (!txt || !rule.re.test(txt)) return;
+
+        log("MATCH parent", rule.name || rule.parentSelector, el);
+        climbAndRemove(el, rule, "parent");
+      });
+    }
+  }
+
+  function processSelectorRules() {
+    for (const rule of PREPARED_RULES) {
+      if (rule.type !== "selector" || !rule.selector) continue;
+
+      document.querySelectorAll(rule.selector).forEach((el) => {
+        if (!isVisible(el) || isInsideExcludedZone(el, rule)) return;
+        log("MATCH selector", rule.name || rule.selector, el);
+        climbAndRemove(el, rule, "selector");
+      });
+    }
+  }
+
+  function processAttributeRules() {
+    for (const rule of PREPARED_RULES) {
+      if (rule.type !== "attribute" || !rule.attr || !rule.contains) continue;
+
+      document
+        .querySelectorAll(`[${rule.attr}*="${rule.contains}"]`)
+        .forEach((el) => {
+          if (!isVisible(el) || isInsideExcludedZone(el, rule)) return;
+          log("MATCH attribute", rule.name || rule.attr, el);
+          climbAndRemove(el, rule, "attribute");
+        });
+    }
+  }
+
+  /*****************************************************************
+   * SCAN
+   *****************************************************************/
+  function scan(root) {
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null);
+    let node;
+    while ((node = walker.nextNode())) {
+      processTextNode(node);
+    }
+
+    processParentRules();
+    processSelectorRules();
+    processAttributeRules();
+  }
+
+  /*****************************************************************
+   * OBSERVER
+   *****************************************************************/
+  let scheduled = false;
+  const observer = new MutationObserver(() => {
+    if (scheduled) return;
+    scheduled = true;
+    requestAnimationFrame(() => {
+      scheduled = false;
+      log("mutation scan");
+      scan(document.body);
+    });
+  });
+
+  /*****************************************************************
+   * START
+   *****************************************************************/
+  log("Starting Safe Component Remover v2.2");
+  scan(document.body);
+  observer.observe(document.documentElement, {
+    childList: true,
+    subtree: true,
+  });
+})();
+```

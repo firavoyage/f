@@ -1,0 +1,5 @@
+{
+  "poll_interval": 1,
+  "data_directory": "data",
+  "log_level": "verbose"
+}

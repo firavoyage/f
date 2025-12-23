@@ -200,7 +200,3 @@ And the “following your heart” part—there’s a beauty in that, but what i
 **Going fast** might be about recognizing that small steps _are_ the fast ones. It’s about pushing through the friction of doubt, letting go of the idea that there’s only one _right_ way to get there. Whether it’s building a game or diving into something new, your speed can be in how quickly you learn, how quickly you pivot, how quickly you _act_, not just how quickly the results come.
 
 So, what if “fast” for you today was just a small, decisive move toward that game, or that new skill? One thing to act on. Just something to start, and let the rest unfold. Do you think you could start with that? What’s the smallest thing that could bring you closer to one of those images you have?
-
-# 5
-
-

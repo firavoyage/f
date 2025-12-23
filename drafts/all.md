@@ -12,6 +12,7 @@ create something:
 - how to think leverage
 - mindset methodology (?)
 - book make
+- manage project
 
 manage time:
 
@@ -20,6 +21,7 @@ manage time:
 
 life:
 
+- momentum or meaning
 - ideal human, ideal things
 - hobbies, pursuit
 - sources of knowledge
@@ -37,6 +39,10 @@ literary:
 write code:
 
 - code best practices
+
+game carte:
+
+- life create something big weekend time management
 
 ---
 

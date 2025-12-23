@@ -2,6 +2,92 @@ read the mindset.
 
 ---
 
+fix it. (be wise.)
+
+watch a film.
+
+---
+
+web games often lack.
+
+---
+
+make carte amazing.
+
+---
+
+sync with the phone
+
+read no longer human
+
+---
+
+im an indie gamedev. i find my games a bit philistine. i would like to create something amazing. im gonna consult llms. idk what i may need, so think or guess. without focusing on a specific game, what questions may i ask.
+
+tell me everything here. i would like to learn something practical and grounded. i could not memorize a lot of best practices.
+
+---
+
+i would like to create an app called journal on ubuntu.
+
+it autostarts, runs in the background, and watching the user.
+
+it knows all the opened apps, the title of the app on the top, and the screen.
+
+it tracks any change of the title of the app on the top, takes screenshot regularly (at an interval of certain several minutes, or when context switching), and keep them properly.
+
+it has an web ui on localhost, like a calendar, or a timeline.
+
+it could export the data to plain text and integrate with llms to analyze.
+
+what are the things i may do to create it.
+
+...
+
+---
+
+5sim.
+
+whether use 5sim and the cookie manager. do i need. or switch to a slighly weaker model.
+
+feasible? how feasible. read posts online.
+
+i mean, reg a lot of chatgpt acc.
+
+decent cookie manager? if no, write one. dont use browser profiles.
+
+---
+
+weekend indie game. think. ask. tell me.
+
+d. dont dream. dont rush. i have time.
+
+---
+
+explore game genres. (or broader than genres)
+
+---
+
+a
+
+i love creating. vids. games. leveraging thinking may save hours with a few minutes, e.g. feasibility check, planning, etc. but sometimes i feel wasting time. i would like to know how much thinking it's wise to have before doing things.
+
+b (a)
+
+invariant survive
+
+c (a)
+
+(use code best practices)
+
+begin. log, for example.
+
+---
+
+misc.
+
+---
+
 chat:
 
 how to describe food in english
@@ -54,4 +140,4 @@ what about using grayscale colors everywhere and vivid colors only on anime char
 
 journal:
 
-after carte.
+~~after~~ before carte.

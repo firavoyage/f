@@ -1161,6 +1161,72 @@ personal phone number is already binded to a legacy account with password forgot
 
 18 40 cock to newly downloaded vids. chat: management. waste a lot of time revising userscripts (stupid llms, ambiguous prompt, cloudflare turnstile, over engineering, premature optimization). 19 40
 
+20 20 have fish hotpot. watch bocchi the rock ep1.
+
+haruhi is repeating. watch that in weekdays maybe. today let's watch something new.
+
+21 00 surf twitter. browse menci and innei's github activities. ~~(21 20)~~ 21 40
+
+"in private repos". i could not see...
+
+21 40 begin: project journal. watch lciop live for a while. archive tabs into a new bookmark folder.
+
+22
+
+00 40 prepare for sleeping.
+
+01 20 stop fixing gnome extension quirks for journal app. sleep.
+
+18 40 fix the weird middle click on scrcpy by myself, not llms.
+
+21 20 watch simplelive for hours: funshiki, brown dust ii. watch taffy's gameplay clips on berryberry. cock. feel filled up and blissed out.
+
+what a wonderful day, outperforming chatgpt and receiving a good treat.
+
+"why not play hentai galgame?"
+
+23
+
+00 00 journal: create gnome extension to support wayland. fix it. 01 00
+
+waste time for not enabling thinking and searching.
+
+01 00 journal: write python to work with the gnome extension. 01 20
+
+~~01 40~~ 02 00 sleep.
+
+12 00 have lunch "taco truck".
+
+18 20 watch "當我說我一個皮卡挖到你家的時候，你不會以為我在開玩笑吧？【皇室戰爭中國服】".
+
+18 40 download "indie game: the movie" using ytdlp and berryberry source. find and download mygo ost. refresh.
+
+spend 20 min finding the tool "spotdl". failed: search "mygo ost" "mygo ost playlist". go to mygo youtube (some vids hidden, albums not well separated). run "spotidown". search "spotify" on vscode. search using chatgpt. search on apt, dpkg. search "spotify github". succeeded: search "spotify" on chromium history.
+
+19 40 organize things "迷跡波" "MyGO!!!!! Instrumental Collection 1" "跡暖空" "Pink Floyd - Wish You Were Here 50 (2025 Rock)" "indie.game.the.movie". watch "【游戏幕后】《独立游戏大电影》删减片段：E胖谈讽刺游戏《AVGM》 Indie Game: The Movie, AVGM (Deleted Scene)". play pink floyd.
+
+what do these kanjis mean.
+
+20 00 test llms censorship.
+
+feel excited. feel exhausted. feel free.
+
+22 00 surf random (zhihu: the one to the russian war, qq: innei's group newly joined) in the noise of pink floyd.
+
+waste time. pink floyd is so distracting... may be not good for passive listening.
+
+23 00 journal: fix watcher.
+
+really simple. ive pasted the content of config.py inside app.py. i pressed ctrl z. everything is fixed. no need to document everything. llms could surely handle the context.
+
+23 40 journal: run forever.
+
+24
+
+00 20 watch "Indie Game: The Movie" for 40 min. sleep. 01 20
+
+good. feel inspired. aesthetic pleasure.
+
 
 
 <!--
