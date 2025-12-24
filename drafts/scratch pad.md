@@ -2,9 +2,9 @@ read the mindset.
 
 ---
 
-fix it. (be wise.)
+journal: screenshots, basic web: app = f(state) = state.
 
-watch a film.
+movie.
 
 ---
 
@@ -13,6 +13,8 @@ web games often lack.
 ---
 
 make carte amazing.
+
+"anime characters on cards, once played, standing as paper."
 
 ---
 

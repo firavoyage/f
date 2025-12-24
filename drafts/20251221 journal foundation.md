@@ -10,6 +10,28 @@
 
 <!-- “I’m not trying to be clever.” impressive! -->
 
+# .
+
+Useful commands:
+
+```bash
+systemctl --user status journal.service
+```
+
+```bash
+systemctl --user stop journal.service
+```
+
+```bash
+systemctl --user restart journal.service
+```
+
+Logs (in addition to your own log file):
+
+```bash
+journalctl --user -u journal.service -f
+```
+
 # ...
 
 idk much about tech. but ive consulted pros and made my decisions.

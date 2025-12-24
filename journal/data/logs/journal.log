@@ -101,3 +101,707 @@
 2025-12-24T01:14:00.035902+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code
 2025-12-24T01:14:45.049538+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code
 2025-12-24T01:19:34.813014+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code
+2025-12-24T01:19:39.825499+08:00  focus_change  app=gnome-terminal-server  title=Terminal
+2025-12-24T01:22:32.882782+08:00  interval_capture  app=gnome-terminal-server  title=Terminal
+2025-12-24T01:27:32.980916+08:00  interval_capture  app=gnome-terminal-server  title=Terminal
+2025-12-24T01:32:33.066070+08:00  interval_capture  app=gnome-terminal-server  title=Terminal
+2025-12-24T01:32:51.073600+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code
+2025-12-24T18:31:50.820228+08:00  focus_change  app=Code  title=river.md - f (Workspace) - Visual Studio Code
+2025-12-24T18:32:45.847177+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code
+2025-12-24T18:33:00.862445+08:00  focus_change  app=Chromium  title=New Tab - Chromium
+2025-12-24T18:33:05.875902+08:00  focus_change  app=Chromium  title=glaze lang - Google Search - Chromium
+2025-12-24T18:34:20.904857+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code
+2025-12-24T18:34:30.909182+08:00  focus_change  app=Chromium  title=Branch · Calm conversation style - Chromium
+2025-12-24T18:34:35.912165+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code
+2025-12-24T18:34:50.926995+08:00  focus_change  app=scrcpy  title=unknown
+2025-12-24T18:36:05.947311+08:00  interval_capture  app=scrcpy  title=unknown
+2025-12-24T18:36:10.959406+08:00  focus_change  app=Chromium  title=New Tab - Chromium
+2025-12-24T18:36:15.971589+08:00  focus_change  app=scrcpy  title=unknown
+2025-12-24T18:36:20.977520+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code
+2025-12-24T18:36:25.990605+08:00  focus_change  app=Code  title=Untitled-1 - f (Workspace) - Visual Studio Code
+2025-12-24T18:36:31.004932+08:00  focus_change  app=Chromium  title=静かな森 - 致虚极，守静笃。 - Chromium
+2025-12-24T18:36:36.020793+08:00  focus_change  app=Chromium  title=ChatGPT - Chromium
+2025-12-24T18:36:41.024997+08:00  focus_change  app=Chromium  title=New Tab - Chromium
+2025-12-24T18:36:46.031261+08:00  focus_change  app=Chromium  title=Calm conversation guidance - Chromium
+2025-12-24T18:36:51.034312+08:00  focus_change  app=Chromium  title=New Tab - Chromium
+2025-12-24T18:37:01.048119+08:00  focus_change  app=Chromium  title=Bookmarks - Chromium
+2025-12-24T18:37:36.068309+08:00  focus_change  app=Chromium  title=chatgpt.com - Chromium
+2025-12-24T18:37:41.072445+08:00  focus_change  app=Chromium  title=ChatGPT - Chromium
+2025-12-24T18:37:46.085134+08:00  focus_change  app=Chromium  title=Calm conversation guidance - Chromium
+2025-12-24T18:37:51.097920+08:00  focus_change  app=Chromium  title=ChatGPT - Chromium
+2025-12-24T18:37:56.110631+08:00  focus_change  app=Chromium  title=静かな森 - 致虚极，守静笃。 - Chromium
+2025-12-24T18:38:06.124443+08:00  focus_change  app=Chromium  title=Sign in - Google Accounts - Chromium
+2025-12-24T18:38:11.137093+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T18:40:46.187961+08:00  focus_change  app=Chromium  title=either-or - Google Search - Chromium
+2025-12-24T18:40:51.191387+08:00  focus_change  app=Chromium  title=Sign in - Google Accounts - Chromium
+2025-12-24T18:40:56.195415+08:00  focus_change  app=Chromium  title=Calm and Thoughtful Guidance - Chromium
+2025-12-24T18:41:06.200529+08:00  focus_change  app=Chromium  title=静かな森 - 致虚极，守静笃。 - Chromium
+2025-12-24T18:41:06.202124+08:00  interval_capture  app=Chromium  title=静かな森 - 致虚极，守静笃。 - Chromium
+2025-12-24T18:41:41.214834+08:00  focus_change  app=Chromium  title=travel.moe/go - Chromium
+2025-12-24T18:41:46.218129+08:00  focus_change  app=Chromium  title=萌ICP备20242486号 - Chromium
+2025-12-24T18:41:56.229165+08:00  focus_change  app=Chromium  title=TASA-Ed官网 - TASA-Ed工作室 - Chromium
+2025-12-24T18:42:16.245393+08:00  focus_change  app=Chromium  title=与之海edlest的个人空间-与之海edlest个人主页-哔哩哔哩视频 - Chromium
+2025-12-24T18:43:11.270393+08:00  focus_change  app=Chromium  title=TASA-Ed官网 - TASA-Ed工作室 - Chromium
+2025-12-24T18:43:26.276925+08:00  focus_change  app=Chromium  title=留言板 | TASA-Ed官网 - Chromium
+2025-12-24T18:43:36.290750+08:00  focus_change  app=Chromium  title=关于我 | TASA-Ed官网 - Chromium
+2025-12-24T18:44:31.317046+08:00  focus_change  app=Chromium  title=TASA-Ed 工作室 | TASA-Ed Wiki - Chromium
+2025-12-24T18:44:46.332167+08:00  focus_change  app=Chromium  title=SCP：2.5D(或 SE) | TASA-Ed Wiki - Chromium
+2025-12-24T18:45:26.353810+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T18:45:31.357424+08:00  focus_change  app=Chromium  title=GLAZE Slang Meaning | Merriam-Webster - Chromium
+2025-12-24T18:45:36.371329+08:00  focus_change  app=Chromium  title=Calm and Thoughtful Guidance - Chromium
+2025-12-24T18:45:41.375642+08:00  focus_change  app=Chromium  title=ChatGPT - Chromium
+2025-12-24T18:45:46.389290+08:00  focus_change  app=Chromium  title=Untitled - Chromium
+2025-12-24T18:45:51.396692+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T18:46:06.402468+08:00  interval_capture  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T18:47:06.428270+08:00  focus_change  app=Chromium  title=either-ors - Google Search - Chromium
+2025-12-24T18:47:11.431553+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T18:48:46.465929+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T18:49:05.472928+08:00  focus_change  app=Chromium  title=either ors - Google Search - Chromium
+2025-12-24T18:49:10.476002+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T18:51:06.516827+08:00  interval_capture  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T18:51:45.530409+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T18:51:50.533900+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T18:52:25.544719+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T18:53:00.555187+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T18:53:10.559593+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T18:53:15.563041+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code
+2025-12-24T18:53:20.575557+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code
+2025-12-24T18:53:35.591011+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T18:54:15.612381+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T18:54:20.624832+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T18:55:35.655633+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T18:56:06.674279+08:00  interval_capture  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T18:57:50.711683+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T18:58:45.727840+08:00  focus_change  app=Code  title=20250916 firascript lisp.md - f (Workspace) - Visual Studio Code
+2025-12-24T18:58:50.731321+08:00  focus_change  app=Code  title=Preview 20250916 firascript lisp.md - f (Workspace) - Visual Studio Code
+2025-12-24T18:58:55.744799+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T18:59:20.754021+08:00  focus_change  app=Code  title=Preview fs0.6.md - f (Workspace) - Visual Studio Code
+2025-12-24T18:59:35.768791+08:00  focus_change  app=Code  title=fs0.6.md - f (Workspace) - Visual Studio Code
+2025-12-24T18:59:40.772329+08:00  focus_change  app=Code  title=firascript0.1.md - f (Workspace) - Visual Studio Code
+2025-12-24T18:59:45.785075+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T18:59:50.788346+08:00  focus_change  app=Code  title=fs0.6.md - f (Workspace) - Visual Studio Code
+2025-12-24T19:00:00.802020+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T19:00:15.807519+08:00  focus_change  app=Code  title=algorithms.fira - f (Workspace) - Visual Studio Code
+2025-12-24T19:00:25.811810+08:00  focus_change  app=Code  title=syntax.md - f (Workspace) - Visual Studio Code
+2025-12-24T19:00:30.815164+08:00  focus_change  app=Code  title=Preview syntax.md - f (Workspace) - Visual Studio Code
+2025-12-24T19:00:40.820536+08:00  focus_change  app=Code  title=syntax.md - f (Workspace) - Visual Studio Code
+2025-12-24T19:00:50.825294+08:00  focus_change  app=Code  title=Preview syntax.md - f (Workspace) - Visual Studio Code
+2025-12-24T19:01:06.841679+08:00  interval_capture  app=Code  title=Preview syntax.md - f (Workspace) - Visual Studio Code
+2025-12-24T19:02:35.883688+08:00  focus_change  app=Code  title=syntax.md - f (Workspace) - Visual Studio Code
+2025-12-24T19:02:40.887765+08:00  focus_change  app=Code  title=Preview syntax.md - f (Workspace) - Visual Studio Code
+2025-12-24T19:03:50.908731+08:00  focus_change  app=Code  title=syntax.md - f (Workspace) - Visual Studio Code
+2025-12-24T19:03:55.921428+08:00  focus_change  app=Code  title=Preview 20251109 glaze design.md - f (Workspace) - Visual Studio Code
+2025-12-24T19:04:25.931116+08:00  focus_change  app=Code  title=20251109 glaze design.md - f (Workspace) - Visual Studio Code
+2025-12-24T19:06:06.968833+08:00  interval_capture  app=Code  title=20251109 glaze design.md - f (Workspace) - Visual Studio Code
+2025-12-24T19:09:26.033929+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T19:09:36.038385+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T19:09:41.043730+08:00  focus_change  app=Code  title=syntax.md - f (Workspace) - Visual Studio Code
+2025-12-24T19:10:56.064688+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T19:11:07.078982+08:00  interval_capture  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T19:16:07.165631+08:00  interval_capture  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T19:16:51.188590+08:00  focus_change  app=Code  title=Preview syntax.md - f (Workspace) - Visual Studio Code
+2025-12-24T19:17:26.208357+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T19:18:01.228176+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T19:19:31.261327+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T19:20:01.270188+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T19:20:06.273390+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T19:21:07.299899+08:00  interval_capture  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T19:21:41.310507+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T19:21:46.323303+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T19:22:01.338295+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T19:26:07.403200+08:00  interval_capture  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T19:26:56.426714+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T19:27:36.438714+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T19:29:45.472356+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T19:30:40.487147+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T19:31:07.507647+08:00  interval_capture  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T19:34:05.553916+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T19:34:25.561048+08:00  focus_change  app=Chromium  title=DeepSeek - Into the Unknown - Chromium
+2025-12-24T19:34:40.566962+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T19:34:55.591520+08:00  focus_change  app=Chromium  title=DeepSeek - Into the Unknown - Chromium
+2025-12-24T19:35:10.607197+08:00  focus_change  app=Chromium  title=Comparing Rigid and Robust Concepts - DeepSeek - Chromium
+2025-12-24T19:35:40.617088+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T19:36:07.627039+08:00  interval_capture  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T19:37:50.666838+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T19:38:35.693135+08:00  focus_change  app=Chromium  title=New Tab - Chromium
+2025-12-24T19:38:40.697034+08:00  focus_change  app=Chromium  title=Calm conversation guidance - Chromium
+2025-12-24T19:38:45.710907+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T19:38:50.723928+08:00  focus_change  app=Chromium  title=founded - Google Search - Chromium
+2025-12-24T19:39:15.732741+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T19:41:07.762738+08:00  interval_capture  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T19:44:50.821084+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T19:44:55.833754+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T19:45:20.851256+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T19:46:07.865382+08:00  interval_capture  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T19:50:10.938450+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T19:51:07.954725+08:00  interval_capture  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T19:52:00.979484+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T19:55:46.047044+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T19:55:51.056996+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T19:56:01.070903+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T19:56:08.083604+08:00  interval_capture  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T19:58:36.132372+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T19:58:41.135948+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T19:59:31.159894+08:00  focus_change  app=gnome-terminal-server  title=Terminal
+2025-12-24T19:59:36.172456+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T20:01:08.206277+08:00  interval_capture  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T20:01:21.211179+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T20:01:36.216380+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T20:01:41.219587+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T20:01:56.235241+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T20:02:01.238218+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T20:02:06.241490+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T20:02:11.244625+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T20:02:41.258491+08:00  focus_change  app=Code  title=20251220 pure english compare constraint limitation.md - f (Workspace) - Visual Studio Code
+2025-12-24T20:02:46.270921+08:00  focus_change  app=Code  title=Preview 20251220 pure english compare constraint limitation.md - f (Workspace) - Visual Studio Code
+2025-12-24T20:02:51.283365+08:00  focus_change  app=Chromium  title=DeepSeek - Into the Unknown - Chromium
+2025-12-24T20:03:01.297037+08:00  focus_change  app=Code  title=Preview 20251220 pure english compare constraint limitation.md - f (Workspace) - Visual Studio Code
+2025-12-24T20:03:21.313025+08:00  focus_change  app=Chromium  title=DeepSeek - Into the Unknown - Chromium
+2025-12-24T20:03:26.317270+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T20:03:36.331322+08:00  focus_change  app=Chromium  title=DeepSeek - Into the Unknown - Chromium
+2025-12-24T20:03:51.346852+08:00  focus_change  app=Chromium  title=Comparing Boundary and Constraint Definitions - DeepSeek - Chromium
+2025-12-24T20:04:41.362024+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T20:04:51.376315+08:00  focus_change  app=Chromium  title=Comparing Boundary and Constraint Definitions - DeepSeek - Chromium
+2025-12-24T20:05:36.398612+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T20:06:01.416173+08:00  focus_change  app=Code  title=20251224 pure english compare boundary constraint.md - f (Workspace) - Visual Studio Code
+2025-12-24T20:06:08.429148+08:00  interval_capture  app=Code  title=20251224 pure english compare boundary constraint.md - f (Workspace) - Visual Studio Code
+2025-12-24T20:06:16.433067+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T20:06:21.436958+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T20:06:26.440527+08:00  focus_change  app=Chromium  title=Comparing Boundary and Constraint Definitions - DeepSeek - Chromium
+2025-12-24T20:06:31.444210+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T20:07:30.460769+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T20:07:45.466063+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T20:11:08.517908+08:00  interval_capture  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T20:12:00.533067+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T20:12:55.548229+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T20:16:08.598267+08:00  interval_capture  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T20:18:00.636919+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T20:19:15.657578+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T20:19:25.662014+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T20:19:45.677962+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T20:21:08.710316+08:00  interval_capture  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T20:23:05.741057+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T20:23:20.747222+08:00  focus_change  app=Code  title=20251224 glaze rust.md - f (Workspace) - Visual Studio Code
+2025-12-24T20:23:25.759905+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T20:23:35.773798+08:00  focus_change  app=Code  title=20251224 glaze rust.md - f (Workspace) - Visual Studio Code
+2025-12-24T20:23:50.789187+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T20:23:55.801849+08:00  focus_change  app=Code  title=20251224 glaze rust.md - f (Workspace) - Visual Studio Code
+2025-12-24T20:24:10.808202+08:00  focus_change  app=Code  title=20251224 glaze ideas rust.md - f (Workspace) - Visual Studio Code
+2025-12-24T20:24:25.822858+08:00  focus_change  app=Code  title=20251224 glaze decide rust.md - f (Workspace) - Visual Studio Code
+2025-12-24T20:24:55.841300+08:00  focus_change  app=Code  title=20251224 glaze decide either ors rust constraints.md - f (Workspace) - Visual Studio Code
+2025-12-24T20:25:00.844691+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T20:25:05.847847+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code
+2025-12-24T20:25:10.860626+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T20:26:08.878180+08:00  interval_capture  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T20:28:45.921437+08:00  focus_change  app=Chromium  title=New Tab - Chromium
+2025-12-24T20:28:50.933872+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T20:28:55.946265+08:00  focus_change  app=Chromium  title=Just a moment... - Chromium
+2025-12-24T20:29:00.958738+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T20:30:15.978938+08:00  focus_change  app=Chromium  title=New Tab - Chromium
+2025-12-24T20:30:20.981881+08:00  focus_change  app=Chromium  title=println! - Google Search - Chromium
+2025-12-24T20:30:25.994567+08:00  focus_change  app=Chromium  title=println! rust - Google Search - Chromium
+2025-12-24T20:30:30.997711+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T20:31:09.018858+08:00  interval_capture  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T20:31:41.028889+08:00  focus_change  app=Chromium  title=New Tab - Chromium
+2025-12-24T20:31:46.041584+08:00  focus_change  app=Chromium  title=www.google.com - Chromium
+2025-12-24T20:31:56.045853+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T20:32:06.050554+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code
+2025-12-24T20:32:16.055667+08:00  focus_change  app=Code  title=20251224 pure english either or.md - f (Workspace) - Visual Studio Code
+2025-12-24T20:32:21.068185+08:00  focus_change  app=Chromium  title=rust string template - Google Search - Chromium
+2025-12-24T20:32:31.072840+08:00  focus_change  app=Chromium  title=String interpolation / template literals like JS? - language design - Rust Internals - Chromium
+2025-12-24T20:32:46.088022+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T20:33:11.105617+08:00  focus_change  app=Chromium  title=new_string_template - Rust - Chromium
+2025-12-24T20:33:21.122167+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T20:36:09.167076+08:00  interval_capture  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T20:39:11.225150+08:00  focus_change  app=Chromium  title=New Tab - Chromium
+2025-12-24T20:39:21.229857+08:00  focus_change  app=Chromium  title=rust arrow function - Google Search - Chromium
+2025-12-24T20:39:26.242821+08:00  focus_change  app=Code  title=projects.md - f (Workspace) - Visual Studio Code
+2025-12-24T20:39:41.248372+08:00  focus_change  app=Chromium  title=Functions - The Rust Programming Language - Chromium
+2025-12-24T20:40:01.265086+08:00  focus_change  app=Chromium  title=rust lambda - Google Search - Chromium
+2025-12-24T20:40:06.268658+08:00  focus_change  app=Chromium  title=Closures - Rust By Example - Chromium
+2025-12-24T20:40:41.279648+08:00  focus_change  app=Chromium  title=Functions - The Rust Programming Language - Chromium
+2025-12-24T20:40:46.292220+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T20:41:09.309385+08:00  interval_capture  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T20:42:26.341660+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code
+2025-12-24T20:43:01.362116+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T20:43:46.374998+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code
+2025-12-24T20:43:51.377870+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code
+2025-12-24T20:44:21.396901+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T20:46:09.434711+08:00  interval_capture  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T20:48:05.466221+08:00  focus_change  app=Chromium  title=MoonBit (programming language) - Wikipedia - Chromium
+2025-12-24T20:48:25.472780+08:00  focus_change  app=Chromium  title=MoonBit - Chromium
+2025-12-24T20:48:50.481185+08:00  focus_change  app=Chromium  title=About us | MoonBit - Chromium
+2025-12-24T20:49:05.486627+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T20:49:25.493090+08:00  focus_change  app=Chromium  title=New Tab - Chromium
+2025-12-24T20:49:30.495994+08:00  focus_change  app=Chromium  title=moonbit wikipedia - Google Search - Chromium
+2025-12-24T20:49:35.498785+08:00  focus_change  app=Chromium  title=Mun Programming Language - Chromium
+2025-12-24T20:49:55.505446+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T20:51:09.525688+08:00  interval_capture  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T20:53:15.559084+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code
+2025-12-24T20:53:35.575239+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T20:55:00.607134+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code
+2025-12-24T20:55:15.622150+08:00  focus_change  app=Code  title=20251224 glaze rust robustness verbosity.md - f (Workspace) - Visual Studio Code
+2025-12-24T20:55:20.634746+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code
+2025-12-24T20:56:09.659663+08:00  interval_capture  app=Code  title=journal.md - f (Workspace) - Visual Studio Code
+2025-12-24T20:56:10.671388+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T20:56:20.676052+08:00  focus_change  app=Chromium  title=‍ - Chromium
+2025-12-24T20:56:25.679287+08:00  focus_change  app=Chromium  title=纸片人 - Google Search - Chromium
+2025-12-24T20:56:50.696672+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T20:57:40.711374+08:00  focus_change  app=Code  title=river.md - f (Workspace) - Visual Studio Code
+2025-12-24T20:58:35.726432+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code
+2025-12-24T20:59:00.743895+08:00  focus_change  app=Code  title=20251224 glaze decide either ors rust constraints.md - f (Workspace) - Visual Studio Code
+2025-12-24T20:59:10.748954+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code
+2025-12-24T21:00:15.776736+08:00  focus_change  app=Code  title=river.md - f (Workspace) - Visual Studio Code
+2025-12-24T21:01:09.793483+08:00  interval_capture  app=Code  title=river.md - f (Workspace) - Visual Studio Code
+2025-12-24T21:06:00.896447+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code
+2025-12-24T21:06:09.900298+08:00  interval_capture  app=Code  title=journal.md - f (Workspace) - Visual Studio Code
+2025-12-24T21:11:09.989445+08:00  interval_capture  app=Code  title=journal.md - f (Workspace) - Visual Studio Code
+2025-12-24T21:16:10.079369+08:00  interval_capture  app=Code  title=journal.md - f (Workspace) - Visual Studio Code
+2025-12-24T21:21:10.162370+08:00  interval_capture  app=Code  title=journal.md - f (Workspace) - Visual Studio Code
+2025-12-24T21:26:10.254444+08:00  interval_capture  app=Code  title=journal.md - f (Workspace) - Visual Studio Code
+2025-12-24T21:31:10.347437+08:00  interval_capture  app=Code  title=journal.md - f (Workspace) - Visual Studio Code
+2025-12-24T21:36:10.437894+08:00  interval_capture  app=Code  title=journal.md - f (Workspace) - Visual Studio Code
+2025-12-24T21:41:10.529954+08:00  interval_capture  app=Code  title=journal.md - f (Workspace) - Visual Studio Code
+2025-12-24T21:46:10.620855+08:00  interval_capture  app=Code  title=journal.md - f (Workspace) - Visual Studio Code
+2025-12-24T21:51:10.702638+08:00  interval_capture  app=Code  title=journal.md - f (Workspace) - Visual Studio Code
+2025-12-24T21:56:10.793966+08:00  interval_capture  app=Code  title=journal.md - f (Workspace) - Visual Studio Code
+2025-12-24T22:01:10.885653+08:00  interval_capture  app=Code  title=journal.md - f (Workspace) - Visual Studio Code
+2025-12-24T22:05:49.974066+08:00  focus_change  app=Code  title=river.md - f (Workspace) - Visual Studio Code
+2025-12-24T22:05:54.978412+08:00  focus_change  app=Chromium  title=‍ - Chromium
+2025-12-24T22:05:59.992421+08:00  focus_change  app=Chromium  title=莫奈 - Google Search - Chromium
+2025-12-24T22:06:10.006476+08:00  focus_change  app=Chromium  title=Claude Monet - Google Search - Chromium
+2025-12-24T22:06:11.018205+08:00  interval_capture  app=Chromium  title=Claude Monet - Google Search - Chromium
+2025-12-24T22:06:35.036317+08:00  focus_change  app=Chromium  title=claude monet artwork - Google Search - Chromium
+2025-12-24T22:07:00.053752+08:00  focus_change  app=Chromium  title=depression - Google Search - Chromium
+2025-12-24T22:07:05.056761+08:00  focus_change  app=Chromium  title=depression artworks - Google Search - Chromium
+2025-12-24T22:07:20.072355+08:00  focus_change  app=Chromium  title=japanese depression artworks - Google Search - Chromium
+2025-12-24T22:07:30.086232+08:00  focus_change  app=Chromium  title=japanese depressed artworks - Google Search - Chromium
+2025-12-24T22:07:35.099576+08:00  focus_change  app=Chromium  title=japanese depression artworks - Google Search - Chromium
+2025-12-24T22:07:40.112116+08:00  focus_change  app=Chromium  title=notrealname - Google Search - Chromium
+2025-12-24T22:07:50.116625+08:00  focus_change  app=Chromium  title=notrealname zhihu - Google Search - Chromium
+2025-12-24T22:07:55.120066+08:00  focus_change  app=Chromium  title=大一绩点炸了之后，应该想些什么？ - 知乎 - Chromium
+2025-12-24T22:08:10.135160+08:00  focus_change  app=Chromium  title=NotRealName - 知乎 - Chromium
+2025-12-24T22:08:25.150250+08:00  focus_change  app=Chromium  title=‍ - Chromium
+2025-12-24T22:11:11.203094+08:00  interval_capture  app=Chromium  title=‍ - Chromium
+2025-12-24T22:16:11.295651+08:00  interval_capture  app=Chromium  title=‍ - Chromium
+2025-12-24T22:21:11.378719+08:00  interval_capture  app=Chromium  title=‍ - Chromium
+2025-12-24T22:24:54.437902+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T22:25:09.443309+08:00  focus_change  app=Chromium  title=NotRealName - 知乎 - Chromium
+2025-12-24T22:25:14.446529+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T22:25:19.458886+08:00  focus_change  app=Chromium  title=(224) NotRealName NotAtAll - YouTube - Chromium
+2025-12-24T22:25:28.463730+08:00  focus_change  app=Chromium  title=NotRealName - 知乎 - Chromium
+2025-12-24T22:25:33.466955+08:00  focus_change  app=Chromium  title=v2-7f590b1964b33343b3d0b1683febca84_1440w.jpg (1440×720) - Chromium
+2025-12-24T22:25:38.470065+08:00  focus_change  app=Chromium  title=Google Search - Chromium
+2025-12-24T22:25:43.473132+08:00  focus_change  app=Chromium  title=v2-2cf16d567a0b890a0a2a441121427c38_xll.jpg (480×480) - Chromium
+2025-12-24T22:25:48.476870+08:00  focus_change  app=Chromium  title=Google Search - Chromium
+2025-12-24T22:25:58.481788+08:00  focus_change  app=Chromium  title=x.com/2qzx12/with_replies - Chromium
+2025-12-24T22:26:03.484757+08:00  focus_change  app=Chromium  title=Posts with replies by 1:1:1 (@2qzx12) / Twitter - Chromium
+2025-12-24T22:26:08.487670+08:00  focus_change  app=Chromium  title=Google Search - Chromium
+2025-12-24T22:26:11.490801+08:00  interval_capture  app=Chromium  title=Google Search - Chromium
+2025-12-24T22:26:18.494304+08:00  focus_change  app=Chromium  title=(4) Posts with replies by 1:1:1 (@2qzx12) / Twitter - Chromium
+2025-12-24T22:26:23.497225+08:00  focus_change  app=Chromium  title=(4) 1:1:1 (@2qzx12) / Twitter - Chromium
+2025-12-24T22:26:38.502645+08:00  focus_change  app=Chromium  title=Google Search - Chromium
+2025-12-24T22:26:43.506159+08:00  focus_change  app=Chromium  title=(4) 1:1:1 (@2qzx12) / Twitter - Chromium
+2025-12-24T22:26:53.510941+08:00  focus_change  app=Chromium  title=(4) People followed by 1:1:1 (@2qzx12) / Twitter - Chromium
+2025-12-24T22:27:08.516342+08:00  focus_change  app=Chromium  title=Google Search - Chromium
+2025-12-24T22:27:18.521214+08:00  focus_change  app=Chromium  title=Twitter - Chromium
+2025-12-24T22:27:23.524416+08:00  focus_change  app=Chromium  title=Google Search - Chromium
+2025-12-24T22:27:28.527578+08:00  focus_change  app=Chromium  title=Cho - Search / Twitter - Chromium
+2025-12-24T22:27:33.530588+08:00  focus_change  app=Chromium  title=Google Search - Chromium
+2025-12-24T22:27:43.534842+08:00  focus_change  app=Chromium  title=claude monet artwork - Google Search - Chromium
+2025-12-24T22:27:48.538011+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T22:27:53.541046+08:00  focus_change  app=Chromium  title=claude monet artwork - Google Search - Chromium
+2025-12-24T22:28:03.545449+08:00  focus_change  app=Chromium  title=Claude Monet - Google Search - Chromium
+2025-12-24T22:28:08.548408+08:00  focus_change  app=Chromium  title=Woman with a Parasol - Madame Monet and Her Son - Google Search - Chromium
+2025-12-24T22:28:28.574126+08:00  focus_change  app=Chromium  title=The Artist's Garden at Giverny - Google Search - Chromium
+2025-12-24T22:28:38.589322+08:00  focus_change  app=Chromium  title=Bridge over a Pond of Water Lilies - Google Search - Chromium
+2025-12-24T22:28:58.596123+08:00  focus_change  app=Chromium  title=Impressionism - Google Search - Chromium
+2025-12-24T22:29:33.615954+08:00  focus_change  app=Chromium  title=Claude Monet - Chromium
+2025-12-24T22:30:13.637015+08:00  focus_change  app=Chromium  title=List of paintings by Claude Monet - Wikipedia - Chromium
+2025-12-24T22:30:18.649562+08:00  focus_change  app=Chromium  title=Claude Monet - Chromium
+2025-12-24T22:30:23.662153+08:00  focus_change  app=Chromium  title=History - Chromium
+2025-12-24T22:30:28.674782+08:00  focus_change  app=Chromium  title=Impressionism - Google Search - Chromium
+2025-12-24T22:30:33.688370+08:00  focus_change  app=Chromium  title=History - Chromium
+2025-12-24T22:30:43.702647+08:00  focus_change  app=Chromium  title=Bridge over a Pond of Water Lilies - Google Search - Chromium
+2025-12-24T22:30:48.717086+08:00  focus_change  app=Chromium  title=ChatGPT - Chromium
+2025-12-24T22:30:53.729793+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T22:31:11.746437+08:00  interval_capture  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T22:32:08.764515+08:00  focus_change  app=Chromium  title=Prehistoric Art - Google Search - Chromium
+2025-12-24T22:32:13.777468+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T22:33:48.802814+08:00  focus_change  app=Chromium  title=v2-2cf16d567a0b890a0a2a441121427c38_xll.jpg (480×480) - Chromium
+2025-12-24T22:33:53.816069+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code
+2025-12-24T22:34:28.837496+08:00  focus_change  app=Chromium  title=(4) Cho - Search / Twitter - Chromium
+2025-12-24T22:34:33.849987+08:00  focus_change  app=Chromium  title=Google Search - Chromium
+2025-12-24T22:34:48.865189+08:00  focus_change  app=Chromium  title=(4) People followed by 1:1:1 (@2qzx12) / Twitter - Chromium
+2025-12-24T22:34:58.879185+08:00  focus_change  app=Chromium  title=Post-Impressionism - Google Search - Chromium
+2025-12-24T22:35:08.893574+08:00  focus_change  app=Chromium  title=Neo-Impressionism - Google Search - Chromium
+2025-12-24T22:35:23.898921+08:00  focus_change  app=Chromium  title=Expressionism - Google Search - Chromium
+2025-12-24T22:35:28.911439+08:00  focus_change  app=Chromium  title=(4) 1:1:1 (@2qzx12) / Twitter - Chromium
+2025-12-24T22:36:08.933119+08:00  focus_change  app=Chromium  title=繪圖委託/交流/繪友社 | #無償 #徵友 | Facebook - Chromium
+2025-12-24T22:36:11.946523+08:00  interval_capture  app=Chromium  title=繪圖委託/交流/繪友社 | #無償 #徵友 | Facebook - Chromium
+2025-12-24T22:36:28.962077+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T22:41:12.037166+08:00  interval_capture  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T22:41:59.051116+08:00  focus_change  app=Chromium  title=‍ - Chromium
+2025-12-24T22:42:04.055200+08:00  focus_change  app=Chromium  title=(4) 1:1:1 (@2qzx12) / Twitter - Chromium
+2025-12-24T22:42:09.068025+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T22:42:39.087411+08:00  focus_change  app=Chromium  title=New Tab - Chromium
+2025-12-24T22:42:44.091509+08:00  focus_change  app=Chromium  title=Impressionism - Google Search - Chromium
+2025-12-24T22:42:54.096446+08:00  focus_change  app=Chromium  title=‍ - Chromium
+2025-12-24T22:43:49.123614+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T22:46:12.171640+08:00  interval_capture  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T22:46:39.181040+08:00  focus_change  app=Chromium  title=New Tab - Chromium
+2025-12-24T22:46:59.187846+08:00  focus_change  app=org.gnome.Nautilus  title=g
+2025-12-24T22:47:04.190998+08:00  focus_change  app=org.gnome.Nautilus  title=Home
+2025-12-24T22:47:09.203492+08:00  focus_change  app=Chromium  title=New Tab - Chromium
+2025-12-24T22:47:14.207298+08:00  focus_change  app=org.gnome.Nautilus  title=favorites
+2025-12-24T22:47:19.220006+08:00  focus_change  app=Chromium  title=New Tab - Chromium
+2025-12-24T22:47:24.223032+08:00  focus_change  app=Chromium  title=wanderer above the sea of fog - Google Search - Chromium
+2025-12-24T22:47:29.235692+08:00  focus_change  app=Chromium  title=Romanticism - Google Search - Chromium
+2025-12-24T22:47:34.248467+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T22:47:44.252851+08:00  focus_change  app=Chromium  title=Realism - Google Search - Chromium
+2025-12-24T22:47:49.265702+08:00  focus_change  app=Chromium  title=Realism art - Google Search - Chromium
+2025-12-24T22:47:59.279640+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T22:48:04.292245+08:00  focus_change  app=Chromium  title=wanderer above the sea of fog - Google Search - Chromium
+2025-12-24T22:48:09.295341+08:00  focus_change  app=Chromium  title=New Tab - Chromium
+2025-12-24T22:48:14.298635+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T22:48:19.311330+08:00  focus_change  app=Chromium  title=NotRealName - 知乎 - Chromium
+2025-12-24T22:48:39.318105+08:00  focus_change  app=Chrome  title=Save File
+2025-12-24T22:48:59.334010+08:00  focus_change  app=Chrome  title=Open Files
+2025-12-24T22:49:14.340284+08:00  focus_change  app=Chromium  title=Grok - Chromium
+2025-12-24T22:49:24.354280+08:00  focus_change  app=Chromium  title=New conversation - Grok - Chromium
+2025-12-24T22:49:39.369648+08:00  focus_change  app=Chromium  title=Anime Art Styles: Cute to Ethereal - Grok - Chromium
+2025-12-24T22:49:49.373884+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T22:50:14.382034+08:00  focus_change  app=Chromium  title=Anime Art Styles: Cute to Ethereal - Grok - Chromium
+2025-12-24T22:50:19.385236+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T22:50:34.391688+08:00  focus_change  app=Chromium  title=Anime Art Styles: Cute to Ethereal - Grok - Chromium
+2025-12-24T22:51:12.412285+08:00  interval_capture  app=Chromium  title=Anime Art Styles: Cute to Ethereal - Grok - Chromium
+2025-12-24T22:51:39.430518+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T22:51:49.435085+08:00  focus_change  app=Chromium  title=Anime Art Styles: Cute to Ethereal - Grok - Chromium
+2025-12-24T22:51:54.438579+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T22:52:09.444402+08:00  focus_change  app=Chromium  title=Anime Art Styles: Cute to Ethereal - Grok - Chromium
+2025-12-24T22:52:39.454238+08:00  focus_change  app=Chromium  title=NotRealName - 知乎 - Chromium
+2025-12-24T22:53:58.477312+08:00  focus_change  app=Chromium  title=Anime Art Styles: Cute to Ethereal - Grok - Chromium
+2025-12-24T22:54:13.482820+08:00  focus_change  app=Chromium  title=New Tab - Chromium
+2025-12-24T22:54:18.486072+08:00  focus_change  app=Chromium  title=vent art - Google Search - Chromium
+2025-12-24T22:54:28.490342+08:00  focus_change  app=Chromium  title=Anime Art Styles: Cute to Ethereal - Grok - Chromium
+2025-12-24T22:54:38.494441+08:00  focus_change  app=Chromium  title=Sadgirl/sadboy aesthetic - Google Search - Chromium
+2025-12-24T22:54:48.498602+08:00  focus_change  app=Chromium  title=Pastel goth - Google Search - Chromium
+2025-12-24T22:54:53.501495+08:00  focus_change  app=Chromium  title=Anime Art Styles: Cute to Ethereal - Grok - Chromium
+2025-12-24T22:54:58.504790+08:00  focus_change  app=Chromium  title=Pastel goth - Google Search - Chromium
+2025-12-24T22:55:03.509002+08:00  focus_change  app=Chromium  title=atmospheric anime - Google Search - Chromium
+2025-12-24T22:55:13.513646+08:00  focus_change  app=Chromium  title=Melancholic - Google Search - Chromium
+2025-12-24T22:55:23.518065+08:00  focus_change  app=Chromium  title=Surreal - Google Search - Chromium
+2025-12-24T22:55:28.521373+08:00  focus_change  app=Chromium  title=Anime Art Styles: Cute to Ethereal - Grok - Chromium
+2025-12-24T22:55:33.524707+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T22:55:38.527926+08:00  focus_change  app=Chromium  title=Anime Art Styles: Cute to Ethereal - Grok - Chromium
+2025-12-24T22:55:43.530950+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T22:55:53.535400+08:00  focus_change  app=Chromium  title=Anime Art Styles: Cute to Ethereal - Grok - Chromium
+2025-12-24T22:56:12.542453+08:00  interval_capture  app=Chromium  title=Anime Art Styles: Cute to Ethereal - Grok - Chromium
+2025-12-24T22:56:28.548671+08:00  focus_change  app=Chromium  title=Yume Kawaii - Google Search - Chromium
+2025-12-24T22:56:43.563930+08:00  focus_change  app=Chromium  title=Menhera Kei - Google Search - Chromium
+2025-12-24T22:56:48.577704+08:00  focus_change  app=Chromium  title=NotRealName - 知乎 - Chromium
+2025-12-24T22:57:13.585908+08:00  focus_change  app=Chromium  title=为什么 Linus Torvalds 用 Fedora 而不用 Ubuntu 或 Windows? - 知乎 - Chromium
+2025-12-24T22:57:53.607473+08:00  focus_change  app=Chromium  title=NotRealName - 知乎 - Chromium
+2025-12-24T22:59:53.644352+08:00  focus_change  app=Chromium  title=同济计算机大一，毕业后如何在上海找到一份到手12000以上的码类工作？ - 知乎 - Chromium
+2025-12-24T23:01:12.677011+08:00  interval_capture  app=Chromium  title=同济计算机大一，毕业后如何在上海找到一份到手12000以上的码类工作？ - 知乎 - Chromium
+2025-12-24T23:02:13.703538+08:00  focus_change  app=Code  title=river.md - f (Workspace) - Visual Studio Code
+2025-12-24T23:02:28.709993+08:00  focus_change  app=Chromium  title=Luban - 知乎 - Chromium
+2025-12-24T23:04:18.750445+08:00  focus_change  app=Chromium  title=同济计算机大一，毕业后如何在上海找到一份到手12000以上的码类工作？ - 知乎 - Chromium
+2025-12-24T23:04:48.769034+08:00  focus_change  app=Chromium  title=Unix/Linux 环境下，有哪些不为人知但极其高效的命令行工具？ - 知乎 - Chromium
+2025-12-24T23:06:12.800845+08:00  interval_capture  app=Chromium  title=Unix/Linux 环境下，有哪些不为人知但极其高效的命令行工具？ - 知乎 - Chromium
+2025-12-24T23:06:23.814817+08:00  focus_change  app=Chromium  title=NotRealName - 知乎 - Chromium
+2025-12-24T23:06:43.831108+08:00  focus_change  app=Chromium  title=w 💊 / wo 🍥 - Google Search - Chromium
+2025-12-24T23:06:48.843438+08:00  focus_change  app=Chromium  title="w 💊 / wo 🍥" - Google Search - Chromium
+2025-12-24T23:07:03.850535+08:00  focus_change  app=Chromium  title=New Tab - Chromium
+2025-12-24T23:07:08.862813+08:00  focus_change  app=Chromium  title=w/wo - Google Search - Chromium
+2025-12-24T23:07:18.876573+08:00  focus_change  app=Chromium  title=w/wo meaning - Google Search - Chromium
+2025-12-24T23:07:23.879690+08:00  focus_change  app=Chromium  title=w wo meaning medical - Google Search - Chromium
+2025-12-24T23:07:28.892183+08:00  focus_change  app=Chromium  title="w 💊 / wo 🍥" - Google Search - Chromium
+2025-12-24T23:07:38.906829+08:00  focus_change  app=Chromium  title="w / wo" - Google Search - Chromium
+2025-12-24T23:07:43.910413+08:00  focus_change  app=Chromium  title=Just a moment... - Chromium
+2025-12-24T23:07:48.913398+08:00  focus_change  app=Chromium  title=小肥猫王 @xiaofeimaowang - Twitter Profile | TwStalker - Chromium
+2025-12-24T23:07:58.917929+08:00  focus_change  app=Chromium  title=同济计算机大一，毕业后如何在上海找到一份到手12000以上的码类工作？ - 知乎 - Chromium
+2025-12-24T23:08:03.930493+08:00  focus_change  app=Chromium  title=Anime Art Styles: Cute to Ethereal - Grok - Chromium
+2025-12-24T23:09:03.956576+08:00  focus_change  app=Chromium  title=Menhera Kei - Google Search - Chromium
+2025-12-24T23:09:28.974469+08:00  focus_change  app=Chromium  title=Anime Art Styles: Cute to Ethereal - Grok - Chromium
+2025-12-24T23:09:33.987099+08:00  focus_change  app=Chromium  title=Pastel Goth - Google Search - Chromium
+2025-12-24T23:09:38.990817+08:00  focus_change  app=Chromium  title=Bubble Goth - Google Search - Chromium
+2025-12-24T23:09:44.003326+08:00  focus_change  app=Chromium  title=Anime Art Styles: Cute to Ethereal - Grok - Chromium
+2025-12-24T23:09:49.015880+08:00  focus_change  app=Chromium  title=Kawaii Goth - Google Search - Chromium
+2025-12-24T23:09:59.030237+08:00  focus_change  app=Chromium  title=Traumacore - Google Search - Chromium
+2025-12-24T23:10:04.043833+08:00  focus_change  app=Chromium  title=Dreamcore - Google Search - Chromium
+2025-12-24T23:10:09.056625+08:00  focus_change  app=Chromium  title=Anime Art Styles: Cute to Ethereal - Grok - Chromium
+2025-12-24T23:11:13.110231+08:00  interval_capture  app=Chromium  title=Anime Art Styles: Cute to Ethereal - Grok - Chromium
+2025-12-24T23:11:14.121855+08:00  focus_change  app=Chromium  title=Romanticism - Google Search - Chromium
+2025-12-24T23:11:19.125022+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T23:11:29.129830+08:00  focus_change  app=Chromium  title=wanderer above the sea of fog - Google Search - Chromium
+2025-12-24T23:11:34.133097+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T23:12:39.160941+08:00  focus_change  app=Chromium  title=Impressionism - Google Search - Chromium
+2025-12-24T23:12:44.167098+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T23:15:49.217532+08:00  focus_change  app=Chromium  title=Melancholic Kawaii - Google Search - Chromium
+2025-12-24T23:16:13.225409+08:00  interval_capture  app=Chromium  title=Melancholic Kawaii - Google Search - Chromium
+2025-12-24T23:16:19.228659+08:00  focus_change  app=Chromium  title=Anime Art Styles: Cute to Ethereal - Grok - Chromium
+2025-12-24T23:16:44.246042+08:00  focus_change  app=Chromium  title=Romanticism - Google Search - Chromium
+2025-12-24T23:16:59.261029+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T23:17:14.276613+08:00  focus_change  app=Chromium  title=Romanticism - Google Search - Chromium
+2025-12-24T23:17:29.282254+08:00  focus_change  app=Chromium  title=同济计算机大一，毕业后如何在上海找到一份到手12000以上的码类工作？ - 知乎 - Chromium
+2025-12-24T23:17:34.294900+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T23:18:44.314689+08:00  focus_change  app=Chromium  title=Shadow of the Colossus - Google Search - Chromium
+2025-12-24T23:18:54.328453+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T23:19:19.336655+08:00  focus_change  app=Chromium  title=Gris - Google Search - Chromium
+2025-12-24T23:19:34.351265+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T23:19:44.365137+08:00  focus_change  app=Chromium  title=Untitled - Chromium
+2025-12-24T23:19:49.377854+08:00  focus_change  app=Chromium  title=Ori and the Blind Forest - Google Search - Chromium
+2025-12-24T23:20:29.399263+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T23:21:13.423324+08:00  interval_capture  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T23:21:19.442042+08:00  focus_change  app=Chromium  title=New Tab - Chromium
+2025-12-24T23:21:24.445371+08:00  focus_change  app=Chromium  title=turn based game - Google Search - Chromium
+2025-12-24T23:21:39.460206+08:00  focus_change  app=Chromium  title=turn based strategy game - Google Search - Chromium
+2025-12-24T23:21:43.463148+08:00  focus_change  app=Chromium  title=turn based strategy games - Google Search - Chromium
+2025-12-24T23:22:23.477018+08:00  focus_change  app=Chromium  title=ChatGPT - Chromium
+2025-12-24T23:22:28.480151+08:00  focus_change  app=Chromium  title=turn based games - Google Search - Chromium
+2025-12-24T23:22:53.488329+08:00  focus_change  app=Chromium  title=card games - Google Search - Chromium
+2025-12-24T23:23:03.492330+08:00  focus_change  app=Chromium  title=card turn based games - Google Search - Chromium
+2025-12-24T23:23:13.496343+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T23:23:53.508590+08:00  focus_change  app=Chromium  title=Art Nouveau - Google Search - Chromium
+2025-12-24T23:24:18.516240+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T23:24:28.520509+08:00  focus_change  app=Chromium  title=Untitled - Chromium
+2025-12-24T23:24:33.524164+08:00  focus_change  app=Chromium  title=Woodcut - Google Search - Chromium
+2025-12-24T23:24:48.529928+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T23:25:03.535714+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T23:25:23.542887+08:00  focus_change  app=Code  title=20251224 carte explore art style.md - f (Workspace) - Visual Studio Code
+2025-12-24T23:25:28.545756+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T23:25:43.551330+08:00  focus_change  app=Code  title=20251224 carte explore art style.md - f (Workspace) - Visual Studio Code
+2025-12-24T23:26:13.560840+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T23:26:13.563533+08:00  interval_capture  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T23:26:18.576019+08:00  focus_change  app=Chromium  title=card turn based games - Google Search - Chromium
+2025-12-24T23:26:33.590949+08:00  focus_change  app=Chromium  title=ChatGPT - Chromium
+2025-12-24T23:26:38.594161+08:00  focus_change  app=Chromium  title=Calm conversation guidance - Chromium
+2025-12-24T23:26:43.597176+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T23:27:03.615115+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T23:27:13.629847+08:00  focus_change  app=Chromium  title=Slay the Spire - Google Search - Chromium
+2025-12-24T23:27:23.644403+08:00  focus_change  app=Chromium  title=Untitled - Chromium
+2025-12-24T23:27:28.648012+08:00  focus_change  app=Chromium  title=Part of Slay the Spire's brilliance is that getting to the end isn't the hard part | PC Gamer - Chromium
+2025-12-24T23:27:53.665272+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T23:27:58.677798+08:00  focus_change  app=Chromium  title=www.google.com - Chromium
+2025-12-24T23:28:03.690214+08:00  focus_change  app=Chromium  title=ChatGPT - Chromium
+2025-12-24T23:28:08.693352+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T23:28:18.707337+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T23:28:38.724866+08:00  focus_change  app=Code  title=20251224 carte turn based card games.md - f (Workspace) - Visual Studio Code
+2025-12-24T23:28:48.739031+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T23:28:53.751576+08:00  focus_change  app=Chromium  title=Expedition 33 - Google Search - Chromium
+2025-12-24T23:28:58.764450+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T23:29:03.777216+08:00  focus_change  app=Chromium  title=Expedition 33 - Google Search - Chromium
+2025-12-24T23:29:13.782388+08:00  focus_change  app=Chromium  title=CLAIR OBSCUR EXPEDITION 33 Walkthrough Gameplay Part 1 - INTRO (FULL GAME) - YouTube - Chromium
+2025-12-24T23:29:18.794737+08:00  focus_change  app=Chromium  title=(224) CLAIR OBSCUR EXPEDITION 33 Walkthrough Gameplay Part 1 - INTRO (FULL GAME) - YouTube - Chromium
+2025-12-24T23:29:58.820104+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T23:30:08.833808+08:00  focus_change  app=Code  title=20251224 carte turn based card games.md - f (Workspace) - Visual Studio Code
+2025-12-24T23:30:13.840447+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T23:30:18.853134+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code
+2025-12-24T23:30:23.866069+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code
+2025-12-24T23:30:38.881427+08:00  focus_change  app=Code  title=20251224 journal implementation.md - f (Workspace) - Visual Studio Code
+2025-12-24T23:31:13.902230+08:00  interval_capture  app=Code  title=20251224 journal implementation.md - f (Workspace) - Visual Studio Code
+2025-12-24T23:31:33.918792+08:00  focus_change  app=Code  title=window.py - f (Workspace) - Visual Studio Code
+2025-12-24T23:31:38.922002+08:00  focus_change  app=Code  title=20251224 journal implementation.md - f (Workspace) - Visual Studio Code
+2025-12-24T23:32:33.947536+08:00  focus_change  app=Chromium  title=ChatGPT - Chromium
+2025-12-24T23:32:38.950619+08:00  focus_change  app=Code  title=20251224 journal implementation.md - f (Workspace) - Visual Studio Code
+2025-12-24T23:34:03.984544+08:00  focus_change  app=Chromium  title=Calm conversation guidance - Chromium
+2025-12-24T23:34:13.998394+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T23:35:04.022222+08:00  focus_change  app=Chromium  title=(224) CLAIR OBSCUR EXPEDITION 33 Walkthrough Gameplay Part 1 - INTRO (FULL GAME) - YouTube - Chromium
+2025-12-24T23:36:04.057725+08:00  focus_change  app=Chromium  title=Anime Art Styles: Cute to Ethereal - Grok - Chromium
+2025-12-24T23:36:14.071340+08:00  interval_capture  app=Chromium  title=Anime Art Styles: Cute to Ethereal - Grok - Chromium
+2025-12-24T23:36:29.082189+08:00  focus_change  app=Code  title=20251224 journal implementation.md - f (Workspace) - Visual Studio Code
+2025-12-24T23:36:44.096893+08:00  focus_change  app=Code  title=20251224 carte art styles depression.md - f (Workspace) - Visual Studio Code
+2025-12-24T23:36:59.111617+08:00  focus_change  app=Chromium  title=History - Chromium
+2025-12-24T23:37:04.114690+08:00  focus_change  app=Code  title=20251224 carte art styles depression.md - f (Workspace) - Visual Studio Code
+2025-12-24T23:37:09.117687+08:00  focus_change  app=Chromium  title=Anime Art Styles: Cute to Ethereal - Grok - Chromium
+2025-12-24T23:38:34.151400+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-24T23:39:14.172890+08:00  focus_change  app=Chromium  title=‍ - Chromium
+2025-12-24T23:41:14.219919+08:00  interval_capture  app=Chromium  title=‍ - Chromium
+2025-12-24T23:46:14.319270+08:00  interval_capture  app=Chromium  title=‍ - Chromium
+2025-12-24T23:51:14.414780+08:00  interval_capture  app=Chromium  title=‍ - Chromium
+2025-12-24T23:54:42.474134+08:00  focus_change  app=Chromium  title=Anime Art Styles: Cute to Ethereal - Grok - Chromium
+2025-12-24T23:55:22.489091+08:00  focus_change  app=Chromium  title=Expedition 33 gameplay - Google Search - Chromium
+2025-12-24T23:55:32.493780+08:00  focus_change  app=Code  title=20251224 carte art styles depression.md - f (Workspace) - Visual Studio Code
+2025-12-24T23:55:37.497156+08:00  focus_change  app=Chromium  title=Anime Art Styles: Cute to Ethereal - Grok - Chromium
+2025-12-24T23:55:42.500730+08:00  focus_change  app=Chromium  title=Clair Obscur: Expedition 33 - Official Combat Gameplay Clip - YouTube - Chromium
+2025-12-24T23:55:47.503575+08:00  focus_change  app=Chromium  title=(224) Clair Obscur: Expedition 33 - Official Combat Gameplay Clip - YouTube - Chromium
+2025-12-24T23:56:07.510722+08:00  focus_change  app=Code  title=20251224 carte art styles depression.md - f (Workspace) - Visual Studio Code
+2025-12-24T23:56:12.513687+08:00  focus_change  app=Code  title=Preview 20251224 carte turn based card games.md - f (Workspace) - Visual Studio Code
+2025-12-24T23:56:14.525888+08:00  interval_capture  app=Code  title=Preview 20251224 carte turn based card games.md - f (Workspace) - Visual Studio Code
+2025-12-24T23:56:57.538498+08:00  focus_change  app=Code  title=20251224 carte turn based card games.md - f (Workspace) - Visual Studio Code
+2025-12-24T23:57:02.541644+08:00  focus_change  app=Code  title=Preview 20251224 carte turn based card games.md - f (Workspace) - Visual Studio Code
+2025-12-24T23:57:17.547503+08:00  focus_change  app=Code  title=20251224 carte turn based card games.md - f (Workspace) - Visual Studio Code
+2025-12-24T23:57:27.552078+08:00  focus_change  app=Code  title=all.md - f (Workspace) - Visual Studio Code
+2025-12-24T23:57:47.559425+08:00  focus_change  app=Chromium  title=(224) Clair Obscur: Expedition 33 - Official Combat Gameplay Clip - YouTube - Chromium
+2025-12-24T23:59:37.589069+08:00  focus_change  app=Chromium  title=(224) 二次元毛邓江胡！Mygo动漫少女代指中国五代领导人的键政密码本丨毛泽东丨邓小平丨江泽民丨叶剑英丨王沪宁丨薄熙来丨刘少奇丨华国锋丨剥削有功论丨朴正熙吧丨键政百科丨木柜子 - YouTube - Chromium
+2025-12-25T00:01:14.650733+08:00  interval_capture  app=Chromium  title=(224) 二次元毛邓江胡！Mygo动漫少女代指中国五代领导人的键政密码本丨毛泽东丨邓小平丨江泽民丨叶剑英丨王沪宁丨薄熙来丨刘少奇丨华国锋丨剥削有功论丨朴正熙吧丨键政百科丨木柜子 - YouTube - Chromium
+2025-12-25T00:01:22.662241+08:00  focus_change  app=Code  title=20251224 carte art styles depression.md - f (Workspace) - Visual Studio Code
+2025-12-25T00:01:27.674594+08:00  focus_change  app=Chromium  title=(224) 二次元毛邓江胡！Mygo动漫少女代指中国五代领导人的键政密码本丨毛泽东丨邓小平丨江泽民丨叶剑英丨王沪宁丨薄熙来丨刘少奇丨华国锋丨剥削有功论丨朴正熙吧丨键政百科丨木柜子 - YouTube - Chromium
+2025-12-25T00:01:32.687502+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code
+2025-12-25T00:01:52.705889+08:00  focus_change  app=Chromium  title=(224) 二次元毛邓江胡！Mygo动漫少女代指中国五代领导人的键政密码本丨毛泽东丨邓小平丨江泽民丨叶剑英丨王沪宁丨薄熙来丨刘少奇丨华国锋丨剥削有功论丨朴正熙吧丨键政百科丨木柜子 - YouTube - Chromium
+2025-12-25T00:04:02.750320+08:00  focus_change  app=Chromium  title=(224) 解诂 - YouTube - Chromium
+2025-12-25T00:04:37.770632+08:00  focus_change  app=Chromium  title=(224) 二次元毛邓江胡！Mygo动漫少女代指中国五代领导人的键政密码本丨毛泽东丨邓小平丨江泽民丨叶剑英丨王沪宁丨薄熙来丨刘少奇丨华国锋丨剥削有功论丨朴正熙吧丨键政百科丨木柜子 - YouTube - Chromium
+2025-12-25T00:06:14.808447+08:00  interval_capture  app=Chromium  title=(224) 二次元毛邓江胡！Mygo动漫少女代指中国五代领导人的键政密码本丨毛泽东丨邓小平丨江泽民丨叶剑英丨王沪宁丨薄熙来丨刘少奇丨华国锋丨剥削有功论丨朴正熙吧丨键政百科丨木柜子 - YouTube - Chromium
+2025-12-25T00:11:14.908006+08:00  interval_capture  app=Chromium  title=(224) 二次元毛邓江胡！Mygo动漫少女代指中国五代领导人的键政密码本丨毛泽东丨邓小平丨江泽民丨叶剑英丨王沪宁丨薄熙来丨刘少奇丨华国锋丨剥削有功论丨朴正熙吧丨键政百科丨木柜子 - YouTube - Chromium
+2025-12-25T00:11:17.911367+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code
+2025-12-25T00:11:27.916318+08:00  focus_change  app=Code  title=river.md - f (Workspace) - Visual Studio Code
+2025-12-25T00:14:27.981873+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code
+2025-12-25T00:14:32.994391+08:00  focus_change  app=Chromium  title=(224) 二次元毛邓江胡！Mygo动漫少女代指中国五代领导人的键政密码本丨毛泽东丨邓小平丨江泽民丨叶剑英丨王沪宁丨薄熙来丨刘少奇丨华国锋丨剥削有功论丨朴正熙吧丨键政百科丨木柜子 - YouTube - Chromium
+2025-12-25T00:15:28.021215+08:00  focus_change  app=Chromium  title=Anime Art Styles: Cute to Ethereal - Grok - Chromium
+2025-12-25T00:16:15.046556+08:00  interval_capture  app=Chromium  title=Anime Art Styles: Cute to Ethereal - Grok - Chromium
+2025-12-25T00:16:28.063673+08:00  focus_change  app=Chromium  title=www.google.com - Chromium
+2025-12-25T00:16:33.076966+08:00  focus_change  app=scrcpy  title=unknown
+2025-12-25T00:16:38.089395+08:00  focus_change  app=Chromium  title=同济计算机大一，毕业后如何在上海找到一份到手12000以上的码类工作？ - 知乎 - Chromium
+2025-12-25T00:16:48.103044+08:00  focus_change  app=Chromium  title=Inscryption - Google Search - Chromium
+2025-12-25T00:17:13.111853+08:00  focus_change  app=Chromium  title=Balatro - Google Search - Chromium
+2025-12-25T00:17:28.127138+08:00  focus_change  app=Chromium  title=Inscryption - Google Search - Chromium
+2025-12-25T00:17:33.132309+08:00  focus_change  app=Chromium  title=(224) 二次元毛邓江胡！Mygo动漫少女代指中国五代领导人的键政密码本丨毛泽东丨邓小平丨江泽民丨叶剑英丨王沪宁丨薄熙来丨刘少奇丨华国锋丨剥削有功论丨朴正熙吧丨键政百科丨木柜子 - YouTube - Chromium
+2025-12-25T00:19:58.179537+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code
+2025-12-25T00:20:03.182516+08:00  focus_change  app=Code  title=river.md - f (Workspace) - Visual Studio Code
+2025-12-25T00:20:23.198951+08:00  focus_change  app=Chromium  title=(224) 二次元毛邓江胡！Mygo动漫少女代指中国五代领导人的键政密码本丨毛泽东丨邓小平丨江泽民丨叶剑英丨王沪宁丨薄熙来丨刘少奇丨华国锋丨剥削有功论丨朴正熙吧丨键政百科丨木柜子 - YouTube - Chromium
+2025-12-25T00:21:15.218221+08:00  interval_capture  app=Chromium  title=(224) 二次元毛邓江胡！Mygo动漫少女代指中国五代领导人的键政密码本丨毛泽东丨邓小平丨江泽民丨叶剑英丨王沪宁丨薄熙来丨刘少奇丨华国锋丨剥削有功论丨朴正熙吧丨键政百科丨木柜子 - YouTube - Chromium
+2025-12-25T00:21:53.239275+08:00  focus_change  app=Code  title=river.md - f (Workspace) - Visual Studio Code
+2025-12-25T00:22:03.253100+08:00  focus_change  app=Chromium  title=(224) 二次元毛邓江胡！Mygo动漫少女代指中国五代领导人的键政密码本丨毛泽东丨邓小平丨江泽民丨叶剑英丨王沪宁丨薄熙来丨刘少奇丨华国锋丨剥削有功论丨朴正熙吧丨键政百科丨木柜子 - YouTube - Chromium
+2025-12-25T00:24:13.289050+08:00  focus_change  app=Chromium  title=ethereal - Google Search - Chromium
+2025-12-25T00:24:18.301993+08:00  focus_change  app=Chromium  title=同济计算机大一，毕业后如何在上海找到一份到手12000以上的码类工作？ - 知乎 - Chromium
+2025-12-25T00:24:23.314995+08:00  focus_change  app=Chromium  title=Calm and Thoughtful Guidance - Chromium
+2025-12-25T00:24:43.322261+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code
+2025-12-25T00:25:03.338954+08:00  focus_change  app=Chromium  title=Calm and Thoughtful Guidance - Chromium
+2025-12-25T00:25:08.351689+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-25T00:26:13.380194+08:00  focus_change  app=Code  title=20251224 journal implementation.md - f (Workspace) - Visual Studio Code
+2025-12-25T00:26:15.392339+08:00  interval_capture  app=Code  title=20251224 journal implementation.md - f (Workspace) - Visual Studio Code
+2025-12-25T00:27:58.430524+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-25T00:31:15.492979+08:00  interval_capture  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-25T00:32:47.518578+08:00  focus_change  app=Code  title=20251224 journal implementation.md - f (Workspace) - Visual Studio Code
+2025-12-25T00:33:02.524113+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-25T00:33:07.527121+08:00  focus_change  app=Code  title=20251224 journal implementation.md - f (Workspace) - Visual Studio Code
+2025-12-25T00:34:12.545805+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-25T00:34:52.557965+08:00  focus_change  app=Chromium  title=同济计算机大一，毕业后如何在上海找到一份到手12000以上的码类工作？ - 知乎 - Chromium
+2025-12-25T00:36:15.599359+08:00  interval_capture  app=Chromium  title=同济计算机大一，毕业后如何在上海找到一份到手12000以上的码类工作？ - 知乎 - Chromium
+2025-12-25T00:39:47.663680+08:00  focus_change  app=Chromium  title=Codetop - Google Search - Chromium
+2025-12-25T00:39:57.677914+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-25T00:40:37.699008+08:00  focus_change  app=Code  title=20251224 journal implementation.md - f (Workspace) - Visual Studio Code
+2025-12-25T00:40:42.702196+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-25T00:40:47.705071+08:00  focus_change  app=Code  title=20251224 journal implementation.md - f (Workspace) - Visual Studio Code
+2025-12-25T00:41:15.724188+08:00  interval_capture  app=Code  title=20251224 journal implementation.md - f (Workspace) - Visual Studio Code
+2025-12-25T00:41:17.736239+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-25T00:41:22.748691+08:00  focus_change  app=Code  title=20251224 journal implementation.md - f (Workspace) - Visual Studio Code
+2025-12-25T00:41:42.755593+08:00  focus_change  app=Code  title=store.py - f (Workspace) - Visual Studio Code
+2025-12-25T00:41:47.768364+08:00  focus_change  app=Code  title=20251224 journal implementation.md - f (Workspace) - Visual Studio Code
+2025-12-25T00:41:52.780835+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code
+2025-12-25T00:41:57.793118+08:00  focus_change  app=Code  title=log.py - f (Workspace) - Visual Studio Code
+2025-12-25T00:42:02.805564+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code
+2025-12-25T00:42:12.819345+08:00  focus_change  app=Code  title=config.py - f (Workspace) - Visual Studio Code
+2025-12-25T00:42:17.822482+08:00  focus_change  app=Code  title=20251224 journal implementation.md - f (Workspace) - Visual Studio Code
+2025-12-25T00:42:32.837435+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-25T00:42:37.840386+08:00  focus_change  app=Code  title=20251224 journal implementation.md - f (Workspace) - Visual Studio Code
+2025-12-25T00:42:47.854224+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-25T00:43:12.872374+08:00  focus_change  app=Code  title=20251224 journal implementation.md - f (Workspace) - Visual Studio Code
+2025-12-25T00:43:17.885142+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-25T00:43:52.905428+08:00  focus_change  app=Chromium  title=同济计算机大一，毕业后如何在上海找到一份到手12000以上的码类工作？ - 知乎 - Chromium
+2025-12-25T00:46:15.953099+08:00  interval_capture  app=Chromium  title=同济计算机大一，毕业后如何在上海找到一份到手12000以上的码类工作？ - 知乎 - Chromium
+2025-12-25T00:46:17.955848+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-25T00:46:47.974328+08:00  focus_change  app=Code  title=20251224 journal implementation.md - f (Workspace) - Visual Studio Code
+2025-12-25T00:48:02.995710+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code
+2025-12-25T00:48:18.011091+08:00  focus_change  app=Code  title=20251224 journal implementation.md - f (Workspace) - Visual Studio Code
+2025-12-25T00:48:58.032219+08:00  focus_change  app=Code  title=20251221 journal foundation.md - f (Workspace) - Visual Studio Code
+2025-12-25T00:49:33.053313+08:00  focus_change  app=Code  title=20251224 journal implementation.md - f (Workspace) - Visual Studio Code
+2025-12-25T00:50:18.067916+08:00  focus_change  app=Code  title=store.py - f (Workspace) - Visual Studio Code
+2025-12-25T00:50:43.086037+08:00  focus_change  app=Code  title=models.py - f (Workspace) - Visual Studio Code
+2025-12-25T00:50:48.098740+08:00  focus_change  app=Code  title=store.py - f (Workspace) - Visual Studio Code
+2025-12-25T00:50:53.111437+08:00  focus_change  app=Code  title=20251224 journal implementation.md - f (Workspace) - Visual Studio Code
+2025-12-25T00:51:16.119376+08:00  interval_capture  app=Code  title=20251224 journal implementation.md - f (Workspace) - Visual Studio Code
+2025-12-25T00:51:28.133606+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-25T00:51:53.150942+08:00  focus_change  app=Code  title=20251224 journal implementation.md - f (Workspace) - Visual Studio Code
+2025-12-25T00:52:18.168979+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-25T00:53:38.200431+08:00  focus_change  app=Chromium  title=ChatGPT - Chromium
+2025-12-25T00:54:08.220001+08:00  focus_change  app=Chromium  title=ChatGPT Apps | Browse and chat with your favorite apps in ChatGPT - Chromium
+2025-12-25T00:54:38.228983+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-25T00:55:03.247118+08:00  focus_change  app=Code  title=20251224 journal implementation.md - f (Workspace) - Visual Studio Code
+2025-12-25T00:55:13.262420+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-25T00:55:58.285478+08:00  focus_change  app=gnome-terminal-server  title=Terminal
+2025-12-25T00:56:08.290035+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-25T00:56:13.293367+08:00  focus_change  app=gnome-terminal-server  title=Terminal
+2025-12-25T00:56:16.305525+08:00  interval_capture  app=gnome-terminal-server  title=Terminal
+2025-12-25T00:56:23.309532+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-25T00:56:53.320181+08:00  focus_change  app=gnome-terminal-server  title=Terminal
+2025-12-25T00:57:08.326741+08:00  focus_change  app=org.gnome.Nautilus  title=Screenshots
+2025-12-25T00:57:18.340559+08:00  focus_change  app=gnome-terminal-server  title=Terminal
+2025-12-25T00:57:58.353139+08:00  focus_change  app=org.gnome.Nautilus  title=Home
+2025-12-25T00:58:03.356514+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-25T00:58:18.362220+08:00  focus_change  app=Code  title=20251224 journal implementation.md - f (Workspace) - Visual Studio Code
+2025-12-25T00:58:23.365599+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code
+2025-12-25T00:58:28.368675+08:00  focus_change  app=Code  title=20251224 journal implementation.md - f (Workspace) - Visual Studio Code
+2025-12-25T00:58:38.382445+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code
+2025-12-25T00:58:43.386298+08:00  focus_change  app=Code  title=screenshot.py - f (Workspace) - Visual Studio Code
+2025-12-25T00:58:53.400566+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-25T00:58:58.413149+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code
+2025-12-25T00:59:03.425704+08:00  focus_change  app=Code  title=watcher.py - f (Workspace) - Visual Studio Code
+2025-12-25T00:59:18.441191+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code
+2025-12-25T00:59:23.453646+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-25T00:59:27.456405+08:00  focus_change  app=Code  title=20251224 journal implementation.md - f (Workspace) - Visual Studio Code
+2025-12-25T00:59:37.460642+08:00  focus_change  app=Code  title=config.json - f (Workspace) - Visual Studio Code
+2025-12-25T00:59:52.465664+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code
+2025-12-25T00:59:57.471689+08:00  focus_change  app=Code  title=20251224 journal implementation.md - f (Workspace) - Visual Studio Code
+2025-12-25T01:00:07.475775+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-25T01:00:12.478861+08:00  focus_change  app=org.gnome.Nautilus  title=Home
+2025-12-25T01:00:17.481816+08:00  focus_change  app=org.gnome.Nautilus  title=f
+2025-12-25T01:00:27.485934+08:00  focus_change  app=org.gnome.Nautilus  title=data
+2025-12-25T01:00:32.489009+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-25T01:00:37.491753+08:00  focus_change  app=Code  title=20251224 journal implementation.md - f (Workspace) - Visual Studio Code
+2025-12-25T01:00:42.494565+08:00  focus_change  app=Code  title=config.json - f (Workspace) - Visual Studio Code
+2025-12-25T01:00:52.498742+08:00  focus_change  app=org.gnome.Nautilus  title=Home
+2025-12-25T01:01:02.503214+08:00  focus_change  app=org.gnome.Nautilus  title=Documents
+2025-12-25T01:01:07.506301+08:00  focus_change  app=org.gnome.Nautilus  title=Pictures
+2025-12-25T01:01:16.519775+08:00  interval_capture  app=org.gnome.Nautilus  title=Pictures
+2025-12-25T01:01:17.522161+08:00  focus_change  app=Code  title=config.json - f (Workspace) - Visual Studio Code
+2025-12-25T01:01:42.530664+08:00  focus_change  app=org.gnome.Nautilus  title=Pictures
+2025-12-25T01:01:47.533851+08:00  focus_change  app=Code  title=20251224 journal implementation.md - f (Workspace) - Visual Studio Code
+2025-12-25T01:01:52.536777+08:00  focus_change  app=Code  title=config.json - f (Workspace) - Visual Studio Code
+2025-12-25T01:01:57.539841+08:00  focus_change  app=Code  title=20251224 journal implementation.md - f (Workspace) - Visual Studio Code
+2025-12-25T01:02:07.544221+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code
+2025-12-25T01:02:32.552367+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-25T01:02:37.555711+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code
+2025-12-25T01:02:42.558878+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium
+2025-12-25T01:02:52.572873+08:00  focus_change  app=vlc  title=indie.game.the.movie.mp4 - VLC media player
+2025-12-25T01:06:02.633542+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code
+2025-12-25T01:06:07.646401+08:00  focus_change  app=Code  title=20251221 journal foundation.md - f (Workspace) - Visual Studio Code
+2025-12-25T01:06:12.659120+08:00  focus_change  app=Code  title=Preview 20251221 journal foundation.md - f (Workspace) - Visual Studio Code
+2025-12-25T01:06:16.662409+08:00  interval_capture  app=Code  title=Preview 20251221 journal foundation.md - f (Workspace) - Visual Studio Code
+2025-12-25T01:06:27.676355+08:00  focus_change  app=gnome-terminal-server  title=Terminal
+2025-12-25T01:06:42.322428+08:00  portal handle /org/freedesktop/portal/desktop/request/1_7912/t
+2025-12-25T01:13:00.193815+08:00  portal handle /org/freedesktop/portal/desktop/request/1_7993/t
+2025-12-25T01:13:19.394120+08:00  portal handle /org/freedesktop/portal/desktop/request/1_7995/t
+2025-12-25T01:13:35.625666+08:00  portal handle /org/freedesktop/portal/desktop/request/1_8002/t
+2025-12-25T01:13:38.327039+08:00  portal handle /org/freedesktop/portal/desktop/request/1_8004/t
+2025-12-25T01:14:32.159681+08:00  portal handle /org/freedesktop/portal/desktop/request/1_8033/t
+2025-12-25T01:23:20.330007+08:00  portal handle /org/freedesktop/portal/desktop/request/1_8261/t
+2025-12-25T01:23:32.339256+08:00  no response uri for handle (timeout?) /org/freedesktop/portal/desktop/request/1_8261/t
+2025-12-25T01:23:32.339484+08:00  trying fallback CLI screenshot /home/fira/Pictures/journal/2025/12/25/01-23-20.png
+2025-12-25T01:23:33.187753+08:00  fallback screenshot saved /home/fira/Pictures/journal/2025/12/25/01-23-20.png
+2025-12-25T01:23:33.189726+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code  screenshot=/home/fira/Pictures/journal/2025/12/25/01-23-20.png
+2025-12-25T01:23:33.195196+08:00  portal handle /org/freedesktop/portal/desktop/request/1_8265/t
+2025-12-25T01:23:45.207086+08:00  no response uri for handle (timeout?) /org/freedesktop/portal/desktop/request/1_8265/t
+2025-12-25T01:23:45.207258+08:00  trying fallback CLI screenshot /home/fira/Pictures/journal/2025/12/25/01-23-33.png
+2025-12-25T01:23:46.058779+08:00  fallback screenshot saved /home/fira/Pictures/journal/2025/12/25/01-23-33.png
+2025-12-25T01:23:46.060922+08:00  focus_change  app=org.gnome.Nautilus  title=Pictures  screenshot=/home/fira/Pictures/journal/2025/12/25/01-23-33.png
+2025-12-25T01:23:48.067744+08:00  portal handle /org/freedesktop/portal/desktop/request/1_8273/t
+2025-12-25T01:42:47.410847+08:00  screenshots disabled (policy)
+2025-12-25T01:42:47.412556+08:00  focus_change  app=Code  title=20251224 journal implementation.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-25T01:42:48.414665+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-25T01:43:12.818651+08:00  screenshots disabled (policy)
+2025-12-25T01:43:12.820433+08:00  focus_change  app=gnome-terminal-server  title=Terminal  screenshot=None
+2025-12-25T01:43:17.833107+08:00  focus_change  app=Code  title=20251224 journal implementation.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-25T01:43:27.837524+08:00  focus_change  app=gnome-terminal-server  title=Terminal  screenshot=None
+2025-12-25T01:43:32.840507+08:00  focus_change  app=Code  title=20251224 journal implementation.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-25T01:43:37.843570+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium  screenshot=None
+2025-12-25T01:43:47.848062+08:00  focus_change  app=Code  title=20251224 journal implementation.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-25T01:43:57.862166+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium  screenshot=None
+2025-12-25T01:44:07.875824+08:00  focus_change  app=Code  title=20251224 journal implementation.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-25T01:44:32.884538+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-25T01:44:42.888909+08:00  focus_change  app=vlc  title=indie.game.the.movie.mp4 - VLC media player  screenshot=None
+2025-12-25T01:45:02.905241+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-25T01:45:07.917836+08:00  focus_change  app=Code  title=20251224 journal implementation.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-25T01:45:27.925343+08:00  focus_change  app=vlc  title=indie.game.the.movie.mp4 - VLC media player  screenshot=None
+2025-12-25T01:48:12.969054+08:00  interval_capture  app=vlc  title=indie.game.the.movie.mp4 - VLC media player  screenshot=None

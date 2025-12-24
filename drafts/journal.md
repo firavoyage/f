@@ -1039,31 +1039,31 @@ waste a few minutes for the weird network.
 
 22 20 explore perplexity. (bfs, llms) create a pong game. ~~23 00~~ 23 20
 
-the rate limits are strict. feel a bit disappointed... not willing to create an userscript for exporting. 
+the rate limits are strict. feel a bit disappointed... not willing to create an userscript for exporting.
 
 decision: put $10 into openrouter. not quite a lot. then leverage free models (1000 req a day).
 
-but do i need to think it now? maybe not. maybe i even dont need such power. 
+but do i need to think it now? maybe not. maybe i even dont need such power.
 
 i could do things that dont scale first. others things... at least they could be feasible somehow.
 
 18
 
-00 20 buy number on 5sim for claude. spend $1 (6.99 cny on alipay). 
+00 20 buy number on 5sim for claude. spend $1 (6.99 cny on alipay).
 
 idk why so cheap. 1 usd = 7.04 cny now on google. andj it worked.
 
 00 40 turn off on claude: location metadata, help improve, artifacts.
 
-claude is well designed. feel lovely. 
+claude is well designed. feel lovely.
 
-good. 
+good.
 
 ~~01 00~~ 01 20 sleep.
 
-after washing face, i thought i could make full use of the 7 cny on 5sim. register a lot of accounts on chatgpt. use a cookie manager maybe. 
+after washing face, i thought i could make full use of the 7 cny on 5sim. register a lot of accounts on chatgpt. use a cookie manager maybe.
 
-18 00 write diary on river. 18 20 
+18 00 write diary on river. 18 20
 
 19 20 play general io after seeing a vid of a top hs student on berryberry.
 
@@ -1127,7 +1127,7 @@ lowly and wild desire.
 
 00 40 play generals.io 01 00 win an 1v1 match by assembling all troops.
 
-01 00 refresh. 
+01 00 refresh.
 
 01 40 install twitch alternative player to remove ads.
 
@@ -1203,7 +1203,7 @@ waste time for not enabling thinking and searching.
 
 spend 20 min finding the tool "spotdl". failed: search "mygo ost" "mygo ost playlist". go to mygo youtube (some vids hidden, albums not well separated). run "spotidown". search "spotify" on vscode. search using chatgpt. search on apt, dpkg. search "spotify github". succeeded: search "spotify" on chromium history.
 
-19 40 organize things "迷跡波" "MyGO!!!!! Instrumental Collection 1" "跡暖空" "Pink Floyd - Wish You Were Here 50 (2025 Rock)" "indie.game.the.movie". watch "【游戏幕后】《独立游戏大电影》删减片段：E胖谈讽刺游戏《AVGM》 Indie Game: The Movie, AVGM (Deleted Scene)". play pink floyd.
+19 40 organize things "迷跡波" "MyGO!!!!! Instrumental Collection 1" "跡暖空" "Pink Floyd - Wish You Were Here 50 (2025 Rock)" "indie.game.the.movie". watch "【游戏幕后】《独立游戏大电影》删减片段：E 胖谈讽刺游戏《AVGM》 Indie Game: The Movie, AVGM (Deleted Scene)". play pink floyd.
 
 what do these kanjis mean.
 
@@ -1227,6 +1227,20 @@ really simple. ive pasted the content of config.py inside app.py. i pressed ctrl
 
 good. feel inspired. aesthetic pleasure.
 
+12 00 eat out "shaguo, wufangxiaoguan".
+
+18 40 glaze: either or decisions, rust's robustness. 21 00
+
+22 20 carte: art genres, claude monet, "depression".
+
+23 40 journal: screenshot.
+
+25
+
+00 00 watch "二次元毛邓江胡！Mygo 动漫少女代指中国五代领导人的键政密码本" for a while. write some weird thoughts.
+
+01 00 continue watching "Indie Game: The Movie" for 20min. journal: (deprecate) screenshot.
+
 
 
 <!--
@@ -1239,7 +1253,7 @@ breadcrumbs:
 
 project journal
 
-first, create an abstraction of ubuntu apis. 
+first, create an abstraction of ubuntu apis.
 
 - log the titles of opened apps, and which is currently working on. design the json.
 - take screenshots every 5 minutes.

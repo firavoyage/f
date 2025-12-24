@@ -40,9 +40,11 @@ write code:
 
 - code best practices
 
-game carte:
+carte:
 
 - life create something big weekend time management
+- card games
+- art style
 
 ---
 

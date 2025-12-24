@@ -32,6 +32,9 @@ class Config:
         self.web_port: int = int(raw.get("web_port", 5000))
         self.log_level: str = str(raw.get("log_level", "verbose"))
 
+        # new, explicit policy switch
+        self.screenshots_enabled: bool = bool(raw.get("screenshots_enabled", False))
+
         # optional fields
         self.snapshot_path: Optional[str] = raw.get("snapshot_path")
         self.debug: bool = bool(raw.get("debug", False))
@@ -41,6 +44,7 @@ class Config:
             "Config("
             f"poll_interval={self.poll_interval}, "
             f"screenshot_interval={self.screenshot_interval}, "
+            f"screenshots_enabled={self.screenshots_enabled}, "
             f"data_directory='{self.data_directory}', "
             f"screenshot_directory='{self.screenshot_directory}', "
             f"web_port={self.web_port}, "

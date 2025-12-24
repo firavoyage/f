@@ -1,5 +1,10 @@
 {
   "poll_interval": 1,
   "data_directory": "data",
-  "log_level": "verbose"
+  "log_level": "verbose",
+  "screenshot_interval": 300,
+  "screenshot_directory": "~/Pictures/journal",
+  "portal_timeout": 12,
+  "monitor_timeout": 12,
+  "screenshots_enabled": false
 }

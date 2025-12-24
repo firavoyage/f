@@ -1,9 +1,9 @@
-## glaze, the sweeter rust.
+## glaze, the sweeter rust, with macros.
 
 a language fira would love.
 
-use glaze
-
-- define: t, nil.
+- rust: robustness, verbosity.
+- macros: freedom, excessive freedom.
+- glaze, the default macros: shared understanding.
 
 ::heart::
