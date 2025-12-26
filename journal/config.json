@@ -6,5 +6,6 @@
   "screenshot_directory": "~/Pictures/journal",
   "portal_timeout": 12,
   "monitor_timeout": 12,
-  "screenshots_enabled": false
+  "screenshots_enabled": false,
+  "web_port": 5000
 }

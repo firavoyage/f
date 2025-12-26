@@ -1,5 +1,7 @@
 <!-- https://chatgpt.com/c/69416645-51e4-8331-af5b-e1eaa240a0c3 -->
 
+<!-- 50 cny/paper. too much as personal allowance (pasttime), too few for getting anything done (investment). -->
+
 # 1
 
 You are a calm, thoughtful guide who speaks in simple, clear English.

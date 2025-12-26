@@ -1241,6 +1241,84 @@ good. feel inspired. aesthetic pleasure.
 
 01 00 continue watching "Indie Game: The Movie" for 20min. journal: (deprecate) screenshot.
 
+02 00 sleep.
+
+18 00 receive christmas gift: black truffle chocolate. play google santatracker (search christmas for the holidays duration and see a doodle).
+
+delicious. find a bug on presentbounce for models stuck. feel delighted and relaxed, like in a childhood dream, or a fairy tale.
+
+18 40 have oden (from family mart). boil water. continue watching "Indie Game: The Movie". (19 20)
+
+vlc wears a christmas hat on its icon.
+
+19 40 write down some thoughts. 20 00 organize the journal prompts. journal: logo, favicon. (chat: linux cheetsheet, more comprehensive. compare handle with synonyms.) 21 20
+
+slowly, carefully, gently. life is a journey. creation takes time. just, no need to rush.
+
+21 20 see everyone on simplelive and take screenshots. love shizuku lulu.
+
+xu toso is drawing pictures, wearing santa hat, in a weird decorated room. vtubers are singing, in a fantasy world. funshiki is playing a split fiction with his gf (already married). shizuku lulu is creating a retro dream, and sharing real life moments, and expressing personal feelings in a lighted, pink and purple room, sincerely. ace taffy is singing weird songs in the form of a stupid doll. lotus is reading love stories and making satirical criticism.
+
+22 40 download the godfather. watch shizuku lulu in the background.
+
+https://thepiratebay.org/description.php?id=8217881
+
+lulu: what could i do at spare time... prepare for a contest. msc. ive heard foreigns could become civil servants. join a club. what if i meet an otaku... "i hate otaku!!!!!" (idk what some japanese words mean.)
+
+danmaku: go gambling. join a band. dance on a plaza. work for a job. take a class. go cycling or fishing. travel. play with the stock. learn to be a doctor.
+
+23 20 journal: web server. (install flask) 24 00
+
+an extension, idk which, points out i dont have flask (by a lightblue wavy line). isnt flask battery included by default... idk.
+
+26
+
+00 20 carte: game design questions. 01 00 sleep.
+
+18 00 scrcpy: fix adb connection issue for github official version.
+
+18 40 revise the userscript, chatgpt copy, to support long conversations. fail without any progress. 19 40
+
+waste time identifying the problem. i should leverage thinking.
+
+19 40 retry: the userscript fix. 21 00
+
+21 00 lose in thoughts. 22 00
+
+upset. disappointed. resigned. "humans are hopeless." nothing is ideal.
+
+maybe caused by the "chatgpt copy" frustration. pessimistic.
+
+the deeper root (essence) could be the mood or mindset. a bit dizzy. not clear minded (at least in some math problems). a good sleep could help.
+
+doing such things (restarting, copy pasting, retrying, refreshing, waiting and checking, failing) could get me into something bad (frustration, maybe), leading to unwise decisions (behavior).
+
+reflecting. believe science (everything is cause and effect.). i feel a bit calm.
+
+i wont choose to write down my thoughts. (conservative guys, unhelpful community, stupid people) "if i express myself, be sincere and honest, it may not work. i have to deal with the real world." it's not real. real is a positive word. idk.
+
+be a bit gentle. rest well (yeah, maybe i need that, my eyes tend to close now, writing these). idk.
+
+saying "idk" feels good. a girl ive met loves saying that.
+
+23 00 feel better after watching shizuku lulu live replay for a while.
+
+she knows human, really.
+
+23 20 switch to the microsoft account using cookie manager. activate the base style (wisdom) accidentally. 
+
+not have things turned off. may be something good?
+
+upd a minute later: the base style, is kind of... weak.
+
+27
+
+00 20 life: time, future, certainty. recall menci's sorrow. see my photos and reflect/remember/recollect. continue chat. download book kokoro. ~~01 00~~ ~~01 20~~ 01 40 sleep.
+
+idk why i happen to download it. right after downloading and comparing between versions.
+
+washing my face, i have some brilliant ideas. for the screenshot flash issue, i could play a magic move: remove animation before screenshot, enable after. (may be inspired by the scrcpy trick)
+
 
 
 <!--

@@ -26,6 +26,8 @@ life:
 - hobbies, pursuit
 - sources of knowledge
 - spare time, why
+- time, future, certainty
+- allowance (?)
 
 vibe coding:
 
@@ -45,6 +47,7 @@ carte:
 - life create something big weekend time management
 - card games
 - art style
+- game design
 
 ---
 

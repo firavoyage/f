@@ -2,9 +2,13 @@ read the mindset.
 
 ---
 
-journal: screenshots, basic web: app = f(state) = state.
+journal: (basic) web, app = f(state) = state.
 
 movie.
+
+---
+
+slay the spine. game design.
 
 ---
 

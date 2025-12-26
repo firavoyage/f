@@ -12,13 +12,15 @@ llms
 - other llm service
 - (if needed) mirror sites https://github.com/LiLittleCat/awesome-free-chatgpt
 
-see 
+see
 
 - ../apps
 - journal
 - all
-- (temp) scratch pad
-- (temp) paste
+- mistral (legacy, copied from repo firavoyage/blogging)
+- scratch pad (temp)
+- message (temp)
+- paste (temp)
 
 misc
 
