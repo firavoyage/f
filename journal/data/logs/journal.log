@@ -3577,3 +3577,559 @@
 2025-12-27T20:59:57.269037+08:00  interval_capture  app=Chromium  title=‍ - Chromium  screenshot=None
 2025-12-27T21:01:55.300579+08:00  focus_change  app=Code  title=river.md - f (Workspace) - Visual Studio Code  screenshot=None
 2025-12-27T21:03:25.325667+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T21:03:30.338088+08:00  focus_change  app=gnome-terminal-server  title=Terminal  screenshot=None
+2025-12-27T21:03:35.341102+08:00  focus_change  app=Code  title=river.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T21:03:40.354056+08:00  focus_change  app=gnome-terminal-server  title=Terminal  screenshot=None
+2025-12-27T21:04:30.369017+08:00  focus_change  app=org.gnome.Calculator  title=Calculator  screenshot=None
+2025-12-27T21:04:40.383400+08:00  focus_change  app=gnome-terminal-server  title=Terminal  screenshot=None
+2025-12-27T21:04:45.396322+08:00  focus_change  app=Code  title=river.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T21:04:57.411402+08:00  interval_capture  app=Code  title=river.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T21:09:57.507367+08:00  interval_capture  app=Code  title=river.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T21:14:57.595656+08:00  interval_capture  app=Code  title=river.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T21:19:57.684715+08:00  interval_capture  app=Code  title=river.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T21:24:57.764031+08:00  interval_capture  app=Code  title=river.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T21:29:57.858262+08:00  interval_capture  app=Code  title=river.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T21:34:57.946728+08:00  interval_capture  app=Code  title=river.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T21:39:58.038653+08:00  interval_capture  app=Code  title=river.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T21:44:58.125840+08:00  interval_capture  app=Code  title=river.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T21:49:58.214624+08:00  interval_capture  app=Code  title=river.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T21:53:09.277765+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T21:53:59.303294+08:00  focus_change  app=Chromium  title=New Tab - Chromium  screenshot=None
+2025-12-27T21:54:04.306346+08:00  focus_change  app=Chromium  title=MyGO!!!!! - YouTube - Chromium  screenshot=None
+2025-12-27T21:54:09.309546+08:00  focus_change  app=Chromium  title=(240) MyGO!!!!! - YouTube - Chromium  screenshot=None
+2025-12-27T21:54:19.323303+08:00  focus_change  app=Chromium  title=(240) ライブ映像 - YouTube - Chromium  screenshot=None
+2025-12-27T21:54:24.326486+08:00  focus_change  app=Chromium  title=(240) YouTube - Chromium  screenshot=None
+2025-12-27T21:54:29.329917+08:00  focus_change  app=Chromium  title=(240) MyGO!!!!! - YouTube - Chromium  screenshot=None
+2025-12-27T21:54:34.334901+08:00  focus_change  app=Chromium  title=(240) 【Official Live Video】MyGO!!!!!「迷路日々」（Melody／BanG Dream! 12th☆LIVE DAY2 : MyGO!!!!!「ちいさな一瞬」より） - YouTube - Chromium  screenshot=None
+2025-12-27T21:54:58.343847+08:00  interval_capture  app=Chromium  title=(240) 【Official Live Video】MyGO!!!!!「迷路日々」（Melody／BanG Dream! 12th☆LIVE DAY2 : MyGO!!!!!「ちいさな一瞬」より） - YouTube - Chromium  screenshot=None
+2025-12-27T21:55:34.364554+08:00  focus_change  app=Chromium  title=(240) MyGO!!!!! - YouTube - Chromium  screenshot=None
+2025-12-27T21:55:39.379710+08:00  focus_change  app=Chromium  title=MyGO!!!!!【All Songs Playlist】 - YouTube - Chromium  screenshot=None
+2025-12-27T21:55:44.392313+08:00  focus_change  app=Chromium  title=(240) MyGO!!!!!【All Songs Playlist】 - YouTube - Chromium  screenshot=None
+2025-12-27T21:55:49.405475+08:00  focus_change  app=Chromium  title=New Tab - Chromium  screenshot=None
+2025-12-27T21:56:04.420637+08:00  focus_change  app=Chromium  title=17 unavailable videos are hidden - Google Search - Chromium  screenshot=None
+2025-12-27T21:56:09.423837+08:00  focus_change  app=Chromium  title=(240) MyGO!!!!!【All Songs Playlist】 - YouTube - Chromium  screenshot=None
+2025-12-27T21:56:24.429651+08:00  focus_change  app=Chromium  title=(240) 栞 - YouTube - Chromium  screenshot=None
+2025-12-27T21:56:29.442688+08:00  focus_change  app=Chromium  title=(240) エガクミライ - YouTube - Chromium  screenshot=None
+2025-12-27T21:56:34.455734+08:00  focus_change  app=Chromium  title=17 unavailable videos are hidden - Google Search - Chromium  screenshot=None
+2025-12-27T21:56:39.464134+08:00  focus_change  app=Chromium  title=(240) MyGO!!!!!【All Songs Playlist】 - YouTube - Chromium  screenshot=None
+2025-12-27T21:56:44.467794+08:00  focus_change  app=Chromium  title=New Tab - Chromium  screenshot=None
+2025-12-27T21:56:49.480585+08:00  focus_change  app=Chromium  title=Calm conversation guidance - Chromium  screenshot=None
+2025-12-27T21:56:54.486065+08:00  focus_change  app=Chromium  title=youtube unavailable - Google Search - Chromium  screenshot=None
+2025-12-27T21:57:04.500658+08:00  focus_change  app=Chromium  title=youtube unavailable country - Google Search - Chromium  screenshot=None
+2025-12-27T21:57:09.503794+08:00  focus_change  app=Chromium  title=Untitled - Chromium  screenshot=None
+2025-12-27T21:57:14.507315+08:00  focus_change  app=Chromium  title=(240) MyGO!!!!!【All Songs Playlist】 - YouTube - Chromium  screenshot=None
+2025-12-27T21:57:19.510282+08:00  focus_change  app=Chromium  title=WatanNetwork YouTube region restriction checker | Check YouTube Video Region Restrictions Online - Chromium  screenshot=None
+2025-12-27T21:58:14.526518+08:00  focus_change  app=Chromium  title=‎‫(240) مسلسل حب في اسطنبول | الحلقة 1 الأولى - الموسم الأول - YouTube - Chromium‬‎  screenshot=None
+2025-12-27T21:58:34.543664+08:00  focus_change  app=Chromium  title=(240) 带着一百万...我们去了论文代写聚集地 - YouTube - Chromium  screenshot=None
+2025-12-27T21:59:58.576142+08:00  interval_capture  app=Chromium  title=(240) 带着一百万...我们去了论文代写聚集地 - YouTube - Chromium  screenshot=None
+2025-12-27T22:01:24.601269+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T22:01:29.614081+08:00  focus_change  app=Chromium  title=(240) 带着一百万...我们去了论文代写聚集地 - YouTube - Chromium  screenshot=None
+2025-12-27T22:01:34.617544+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T22:02:29.643897+08:00  focus_change  app=Chromium  title=(240) 带着一百万...我们去了论文代写聚集地 - YouTube - Chromium  screenshot=None
+2025-12-27T22:02:39.657945+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T22:02:44.671048+08:00  focus_change  app=Chromium  title=(240) MyGO!!!!!【All Songs Playlist】 - YouTube - Chromium  screenshot=None
+2025-12-27T22:03:14.689892+08:00  focus_change  app=Chromium  title=(240) MyGO!!!!! - YouTube - Chromium  screenshot=None
+2025-12-27T22:03:24.703662+08:00  focus_change  app=Chromium  title=(240) オリジナル楽曲 - YouTube - Chromium  screenshot=None
+2025-12-27T22:03:54.722302+08:00  focus_change  app=Chromium  title=(240) 歌ってみた・カバー - YouTube - Chromium  screenshot=None
+2025-12-27T22:04:09.728273+08:00  focus_change  app=Chromium  title=youtube.com/watch?v=Lr-bMZ2hNH0&list=PLUFFl4hYd1R3DbWVEUf1Nk6LUN8f-yjwX&index=21&pp=iAQB8AUB0gcJCU0KAYcqIYzv - Chromium  screenshot=None
+2025-12-27T22:04:14.741869+08:00  focus_change  app=Chromium  title=【歌ってみた】Henceforth covered by 燈 - YouTube - Chromium  screenshot=None
+2025-12-27T22:04:19.744906+08:00  focus_change  app=Chromium  title=(240) 【歌ってみた】Henceforth covered by 燈 - YouTube - Chromium  screenshot=None
+2025-12-27T22:04:58.756172+08:00  interval_capture  app=Chromium  title=(240) 【歌ってみた】Henceforth covered by 燈 - YouTube - Chromium  screenshot=None
+2025-12-27T22:05:24.773548+08:00  focus_change  app=Chromium  title=(240) 歌ってみた・カバー - YouTube - Chromium  screenshot=None
+2025-12-27T22:05:44.789516+08:00  focus_change  app=Chromium  title=(240) オリジナル楽曲 - YouTube - Chromium  screenshot=None
+2025-12-27T22:05:54.793891+08:00  focus_change  app=Chromium  title=(240) MyGO!!!!! - YouTube - Chromium  screenshot=None
+2025-12-27T22:06:29.813645+08:00  focus_change  app=Chromium  title=(240) オリジナル楽曲 - YouTube - Chromium  screenshot=None
+2025-12-27T22:06:59.832237+08:00  focus_change  app=gnome-terminal-server  title=Terminal  screenshot=None
+2025-12-27T22:07:24.840352+08:00  focus_change  app=Chromium  title=(240) 【歌ってみた】Henceforth covered by 燈 - YouTube - Chromium  screenshot=None
+2025-12-27T22:07:29.852976+08:00  focus_change  app=gnome-terminal-server  title=Terminal  screenshot=None
+2025-12-27T22:07:39.867662+08:00  focus_change  app=org.gnome.Nautilus  title=Home  screenshot=None
+2025-12-27T22:07:44.880637+08:00  focus_change  app=Chromium  title=(240) 【歌ってみた】Henceforth covered by 燈 - YouTube - Chromium  screenshot=None
+2025-12-27T22:08:14.891729+08:00  focus_change  app=Chromium  title=(240) 【歌ってみた】君の神様になりたい。covered by 燈 - YouTube - Chromium  screenshot=None
+2025-12-27T22:08:19.904877+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T22:08:49.914654+08:00  focus_change  app=Chromium  title=(240) オリジナル楽曲 - YouTube - Chromium  screenshot=None
+2025-12-27T22:08:54.918319+08:00  focus_change  app=Chromium  title=(240) 歌ってみた・カバー - YouTube - Chromium  screenshot=None
+2025-12-27T22:08:59.921758+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T22:09:29.939614+08:00  focus_change  app=Chromium  title=(240) MyGO!!!!!より - YouTube - Chromium  screenshot=None
+2025-12-27T22:09:39.944157+08:00  focus_change  app=Chromium  title=Can we disable "Unavailable videos are hidden" in playlists, or old videos are gone forever now? : r/youtube - Chromium  screenshot=None
+2025-12-27T22:09:43.947248+08:00  focus_change  app=Chromium  title=youtube unavailable country - Google Search - Chromium  screenshot=None
+2025-12-27T22:09:48.950855+08:00  focus_change  app=Chromium  title=(240) 带着一百万...我们去了论文代写聚集地 - YouTube - Chromium  screenshot=None
+2025-12-27T22:09:53.954079+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T22:09:58.957277+08:00  interval_capture  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T22:10:28.966483+08:00  focus_change  app=Chromium  title=(240) 带着一百万...我们去了论文代写聚集地 - YouTube - Chromium  screenshot=None
+2025-12-27T22:10:33.969465+08:00  focus_change  app=Chromium  title=(240) MyGO!!!!!【All Songs Playlist】 - YouTube - Chromium  screenshot=None
+2025-12-27T22:10:43.973637+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T22:11:13.983155+08:00  focus_change  app=Chromium  title=(240) MyGO!!!!!【All Songs Playlist】 - YouTube - Chromium  screenshot=None
+2025-12-27T22:11:18.987477+08:00  focus_change  app=Chromium  title=(240) 带着一百万...我们去了论文代写聚集地 - YouTube - Chromium  screenshot=None
+2025-12-27T22:12:34.011391+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T22:13:29.027187+08:00  focus_change  app=Chromium  title=(240) 带着一百万...我们去了论文代写聚集地 - YouTube - Chromium  screenshot=None
+2025-12-27T22:14:54.060442+08:00  focus_change  app=Chromium  title=(240) オリジナル楽曲 - YouTube - Chromium  screenshot=None
+2025-12-27T22:14:59.064225+08:00  focus_change  app=Chromium  title=(240) 【一問一答】愛音編 #shorts - YouTube - Chromium  screenshot=None
+2025-12-27T22:14:59.065827+08:00  interval_capture  app=Chromium  title=(240) 【一問一答】愛音編 #shorts - YouTube - Chromium  screenshot=None
+2025-12-27T22:15:14.081324+08:00  focus_change  app=Chromium  title=(240) 带着一百万...我们去了论文代写聚集地 - YouTube - Chromium  screenshot=None
+2025-12-27T22:15:59.098181+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T22:16:19.114519+08:00  focus_change  app=Chromium  title=(240) 带着一百万...我们去了论文代写聚集地 - YouTube - Chromium  screenshot=None
+2025-12-27T22:16:24.118653+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T22:16:34.132843+08:00  focus_change  app=Chromium  title=(240) 带着一百万...我们去了论文代写聚集地 - YouTube - Chromium  screenshot=None
+2025-12-27T22:18:19.161757+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium  screenshot=None
+2025-12-27T22:18:49.178459+08:00  focus_change  app=Chromium  title=带着一百万...我们去了论文代写聚集地 - YouTube - Chromium  screenshot=None
+2025-12-27T22:18:54.181636+08:00  focus_change  app=Chromium  title=Mediastorm影视飓风 - YouTube - Chromium  screenshot=None
+2025-12-27T22:18:59.184985+08:00  focus_change  app=Chromium  title=(240) Mediastorm影视飓风 - YouTube - Chromium  screenshot=None
+2025-12-27T22:19:09.199181+08:00  focus_change  app=Chromium  title=恶心所有人的视频，为什么期期爆款？ - YouTube - Chromium  screenshot=None
+2025-12-27T22:19:14.213312+08:00  focus_change  app=Chromium  title=(240) Mediastorm影视飓风 - YouTube - Chromium  screenshot=None
+2025-12-27T22:19:24.218587+08:00  focus_change  app=Chromium  title=(240) 恶心所有人的视频，为什么期期爆款？ - YouTube - Chromium  screenshot=None
+2025-12-27T22:19:59.238458+08:00  interval_capture  app=Chromium  title=(240) 恶心所有人的视频，为什么期期爆款？ - YouTube - Chromium  screenshot=None
+2025-12-27T22:20:09.252274+08:00  focus_change  app=Chromium  title=(240) Mediastorm影视飓风 - YouTube - Chromium  screenshot=None
+2025-12-27T22:20:34.270163+08:00  focus_change  app=Chromium  title=(240) Post from Mediastorm影视飓风 - YouTube - Chromium  screenshot=None
+2025-12-27T22:20:44.275047+08:00  focus_change  app=Chromium  title=(240) 恶心所有人的视频，为什么期期爆款？ - YouTube - Chromium  screenshot=None
+2025-12-27T22:20:49.288274+08:00  focus_change  app=Chromium  title=(240) Mediastorm影视飓风 - YouTube - Chromium  screenshot=None
+2025-12-27T22:21:04.293962+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T22:21:14.308022+08:00  focus_change  app=Chromium  title=(240) Mediastorm影视飓风 - YouTube - Chromium  screenshot=None
+2025-12-27T22:21:24.312402+08:00  focus_change  app=Chromium  title=(240) 恶心所有人的视频，为什么期期爆款？ - YouTube - Chromium  screenshot=None
+2025-12-27T22:21:29.327231+08:00  focus_change  app=Chromium  title=(240) Mediastorm影视飓风 - YouTube - Chromium  screenshot=None
+2025-12-27T22:21:34.330559+08:00  focus_change  app=Chromium  title=youtube.com/watch?v=AqQkyAZeP9s - Chromium  screenshot=None
+2025-12-27T22:21:39.333935+08:00  focus_change  app=Chromium  title=(240) Mediastorm影视飓风 - YouTube - Chromium  screenshot=None
+2025-12-27T22:21:44.346714+08:00  focus_change  app=Chromium  title=(240) 关于影视飓风近期舆情 - YouTube - Chromium  screenshot=None
+2025-12-27T22:21:49.350112+08:00  focus_change  app=Chromium  title=(240) Mediastorm影视飓风 - YouTube - Chromium  screenshot=None
+2025-12-27T22:23:09.380807+08:00  focus_change  app=Chromium  title=带着一百万...我们去了论文代写聚集地 - YouTube - Chromium  screenshot=None
+2025-12-27T22:23:14.384029+08:00  focus_change  app=Chromium  title=(240) 带着一百万...我们去了论文代写聚集地 - YouTube - Chromium  screenshot=None
+2025-12-27T22:23:19.396637+08:00  focus_change  app=Chromium  title=New Tab - Chromium  screenshot=None
+2025-12-27T22:23:24.400473+08:00  focus_change  app=Chromium  title=影视飓风 一百万 - Google Search - Chromium  screenshot=None
+2025-12-27T22:23:29.413198+08:00  focus_change  app=Chromium  title=(240) What Would You Do with 1 Million? First Destination of the Million Check Series! - YouTube - Chromium  screenshot=None
+2025-12-27T22:23:49.429314+08:00  focus_change  app=Chromium  title=(240) 关于影视飓风近期舆情 - YouTube - Chromium  screenshot=None
+2025-12-27T22:24:59.449151+08:00  interval_capture  app=Chromium  title=(240) 关于影视飓风近期舆情 - YouTube - Chromium  screenshot=None
+2025-12-27T22:25:49.472397+08:00  focus_change  app=Chromium  title=(240) What Would You Do with 1 Million? First Destination of the Million Check Series! - YouTube - Chromium  screenshot=None
+2025-12-27T22:25:54.484875+08:00  focus_change  app=Chromium  title=(240) Mediastorm影视飓风 - YouTube - Chromium  screenshot=None
+2025-12-27T22:25:59.497796+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T22:27:04.526051+08:00  focus_change  app=Chromium  title=(240) Post from Mediastorm影视飓风 - YouTube - Chromium  screenshot=None
+2025-12-27T22:27:14.539967+08:00  focus_change  app=Chromium  title=(240) 带着一百万...我们去了论文代写聚集地 - YouTube - Chromium  screenshot=None
+2025-12-27T22:27:24.544653+08:00  focus_change  app=gnome-terminal-server  title=Terminal  screenshot=None
+2025-12-27T22:27:29.558005+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium  screenshot=None
+2025-12-27T22:29:59.604829+08:00  interval_capture  app=Chromium  title=Branch · Calm conversation guidance - Chromium  screenshot=None
+2025-12-27T22:34:59.679614+08:00  interval_capture  app=Chromium  title=Branch · Calm conversation guidance - Chromium  screenshot=None
+2025-12-27T22:39:59.763609+08:00  interval_capture  app=Chromium  title=Branch · Calm conversation guidance - Chromium  screenshot=None
+2025-12-27T22:41:02.790236+08:00  focus_change  app=Chromium  title=(5) @firascript/fira / Twitter - Chromium  screenshot=None
+2025-12-27T22:41:07.793440+08:00  focus_change  app=Chromium  title=科技爱好者周刊（第 379 期）：《硅谷钢铁侠》摘录 - 阮一峰的网络日志 - Chromium  screenshot=None
+2025-12-27T22:42:02.820205+08:00  focus_change  app=gnome-terminal-server  title=Terminal  screenshot=None
+2025-12-27T22:42:07.824917+08:00  focus_change  app=org.gnome.Nautilus  title=Home  screenshot=None
+2025-12-27T22:42:17.838916+08:00  focus_change  app=Chromium  title=科技爱好者周刊（第 379 期）：《硅谷钢铁侠》摘录 - 阮一峰的网络日志 - Chromium  screenshot=None
+2025-12-27T22:44:12.880049+08:00  focus_change  app=Chromium  title=Markdown Converter - Chromium  screenshot=None
+2025-12-27T22:44:17.883268+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T22:44:22.896537+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T22:44:27.899834+08:00  focus_change  app=Code  title=elon.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T22:44:32.902974+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T22:44:42.916876+08:00  focus_change  app=Chromium  title=科技爱好者周刊（第 379 期）：《硅谷钢铁侠》摘录 - 阮一峰的网络日志 - Chromium  screenshot=None
+2025-12-27T22:44:59.933077+08:00  interval_capture  app=Chromium  title=科技爱好者周刊（第 379 期）：《硅谷钢铁侠》摘录 - 阮一峰的网络日志 - Chromium  screenshot=None
+2025-12-27T22:47:46.977757+08:00  focus_change  app=Chromium  title=Untitled - Chromium  screenshot=None
+2025-12-27T22:47:51.981377+08:00  focus_change  app=Chromium  title=Cloudflare Radar 2025 Year in Review - Chromium  screenshot=None
+2025-12-27T22:48:06.987196+08:00  focus_change  app=Chromium  title=Cloudflare Radar 2025 Year in Review for China - Chromium  screenshot=None
+2025-12-27T22:48:16.991813+08:00  focus_change  app=Chromium  title=Cloudflare Radar 2025 Year in Review - Chromium  screenshot=None
+2025-12-27T22:50:00.030539+08:00  interval_capture  app=Chromium  title=Cloudflare Radar 2025 Year in Review - Chromium  screenshot=None
+2025-12-27T22:50:12.036868+08:00  focus_change  app=Chromium  title=Nature's many attempts to evolve a Nostr - Chromium  screenshot=None
+2025-12-27T22:50:22.042220+08:00  focus_change  app=Chromium  title=科技爱好者周刊（第 379 期）：《硅谷钢铁侠》摘录 - 阮一峰的网络日志 - Chromium  screenshot=None
+2025-12-27T22:51:32.071921+08:00  focus_change  app=Chromium  title=AI4Engr/MADOLA: MADOLA integrates mathematical notation, computation, documentation, and code generation within a single file. - Chromium  screenshot=None
+2025-12-27T22:53:27.103506+08:00  focus_change  app=Chromium  title=科技爱好者周刊（第 379 期）：《硅谷钢铁侠》摘录 - 阮一峰的网络日志 - Chromium  screenshot=None
+2025-12-27T22:53:32.106982+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T22:53:37.110177+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T22:53:47.124169+08:00  focus_change  app=Chromium  title=AI4Engr/MADOLA: MADOLA integrates mathematical notation, computation, documentation, and code generation within a single file. - Chromium  screenshot=None
+2025-12-27T22:53:52.136720+08:00  focus_change  app=Chromium  title=科技爱好者周刊（第 379 期）：《硅谷钢铁侠》摘录 - 阮一峰的网络日志 - Chromium  screenshot=None
+2025-12-27T22:53:57.139836+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T22:54:02.142788+08:00  focus_change  app=Chromium  title=Markdown Converter - Chromium  screenshot=None
+2025-12-27T22:54:07.146187+08:00  focus_change  app=Chromium  title=TokenRollAI/minicc: mini claude code impl for learning agent - Chromium  screenshot=None
+2025-12-27T22:55:00.170255+08:00  interval_capture  app=Chromium  title=TokenRollAI/minicc: mini claude code impl for learning agent - Chromium  screenshot=None
+2025-12-27T22:55:57.195952+08:00  focus_change  app=Chromium  title=Token Roll - Chromium  screenshot=None
+2025-12-27T22:56:07.209582+08:00  focus_change  app=Chromium  title=Disdjj (DJJ) - Chromium  screenshot=None
+2025-12-27T22:56:47.231381+08:00  focus_change  app=Chromium  title=DJJ - Chromium  screenshot=None
+2025-12-27T22:57:02.237072+08:00  focus_change  app=Chromium  title=(5) DisDJJ (@DisDjj4797) / Twitter - Chromium  screenshot=None
+2025-12-27T22:57:27.255198+08:00  focus_change  app=Chromium  title=(5) @firascript/fira / Twitter - Chromium  screenshot=None
+2025-12-27T22:57:32.269524+08:00  focus_change  app=Chromium  title=最近在做啥 (2025.11 - 2025.12) - DJJ - Chromium  screenshot=None
+2025-12-27T22:57:57.287557+08:00  focus_change  app=Chromium  title=God's Children | 神的孩子们 - Chromium  screenshot=None
+2025-12-27T22:59:42.320072+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T23:00:00.326710+08:00  interval_capture  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T23:00:02.339208+08:00  focus_change  app=Chromium  title=God's Children | 神的孩子们 - Chromium  screenshot=None
+2025-12-27T23:01:37.377077+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T23:01:42.380528+08:00  focus_change  app=Chromium  title=God's Children | 神的孩子们 - Chromium  screenshot=None
+2025-12-27T23:05:00.444889+08:00  interval_capture  app=Chromium  title=God's Children | 神的孩子们 - Chromium  screenshot=None
+2025-12-27T23:05:52.469698+08:00  focus_change  app=Chromium  title=山上彻也 - Google Search - Chromium  screenshot=None
+2025-12-27T23:06:07.484618+08:00  focus_change  app=Chromium  title=Shinzo Abe - Google Search - Chromium  screenshot=None
+2025-12-27T23:06:17.499173+08:00  focus_change  app=Chromium  title=Shinzo Abe name - Google Search - Chromium  screenshot=None
+2025-12-27T23:06:27.512747+08:00  focus_change  app=Chromium  title=山上彻也 - Google Search - Chromium  screenshot=None
+2025-12-27T23:06:32.525194+08:00  focus_change  app=Chromium  title=God's Children | 神的孩子们 - Chromium  screenshot=None
+2025-12-27T23:08:02.562090+08:00  focus_change  app=Chromium  title=children-of-god.pdjjq.org/assets/index-BHGguhoh.js - Chromium  screenshot=None
+2025-12-27T23:08:07.574695+08:00  focus_change  app=Chromium  title=God's Children | 神的孩子们 - Chromium  screenshot=None
+2025-12-27T23:08:37.584791+08:00  focus_change  app=Code  title=Visual Studio Code  screenshot=None
+2025-12-27T23:08:42.595186+08:00  focus_change  app=Code  title=paste.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T23:08:52.600571+08:00  focus_change  app=Chromium  title=God's Children | 神的孩子们 - Chromium  screenshot=None
+2025-12-27T23:08:57.605486+08:00  focus_change  app=Code  title=paste.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T23:09:07.619502+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T23:09:32.637504+08:00  focus_change  app=Chromium  title=山上彻也 - Google Search - Chromium  screenshot=None
+2025-12-27T23:10:00.656049+08:00  interval_capture  app=Chromium  title=山上彻也 - Google Search - Chromium  screenshot=None
+2025-12-27T23:10:27.665311+08:00  focus_change  app=Chromium  title=itMrBoy/resumePolice: 简历警察 🕵️‍♂️ 疯狂逮捕 - Chromium  screenshot=None
+2025-12-27T23:10:32.669044+08:00  focus_change  app=Chromium  title=Disdjj (DJJ) - Chromium  screenshot=None
+2025-12-27T23:10:37.681878+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T23:11:02.690190+08:00  focus_change  app=Chromium  title=关于 DJJ - DJJ - Chromium  screenshot=None
+2025-12-27T23:11:47.713169+08:00  focus_change  app=Chromium  title=itMrBoy/resumePolice: 简历警察 🕵️‍♂️ 疯狂逮捕 - Chromium  screenshot=None
+2025-12-27T23:13:32.751273+08:00  focus_change  app=Chromium  title=GitHub · Where software is built - Chromium  screenshot=None
+2025-12-27T23:13:37.764150+08:00  focus_change  app=Chromium  title=Issues · itMrBoy/resumePolice - Chromium  screenshot=None
+2025-12-27T23:13:42.776854+08:00  focus_change  app=Chromium  title=我草这个世界 - DJJ - Chromium  screenshot=None
+2025-12-27T23:14:07.794488+08:00  focus_change  app=Chromium  title=t3day/scripts/test-gemini.ts at 992d2d4a4eb9833ccd5233020b262ba14205924b · TokenRollAI/t3day - Chromium  screenshot=None
+2025-12-27T23:14:27.810458+08:00  focus_change  app=Chromium  title=我草这个世界 - DJJ - Chromium  screenshot=None
+2025-12-27T23:14:32.813545+08:00  focus_change  app=Chromium  title=Disdjj (DJJ) - Chromium  screenshot=None
+2025-12-27T23:14:37.827300+08:00  focus_change  app=Chromium  title=Twitter - Chromium  screenshot=None
+2025-12-27T23:14:42.830604+08:00  focus_change  app=Chromium  title=(5) DisDJJ (@DisDjj4797) / Twitter - Chromium  screenshot=None
+2025-12-27T23:15:00.836998+08:00  interval_capture  app=Chromium  title=(5) DisDJJ (@DisDjj4797) / Twitter - Chromium  screenshot=None
+2025-12-27T23:15:22.853683+08:00  focus_change  app=Chromium  title=关于 DJJ - DJJ - Chromium  screenshot=None
+2025-12-27T23:15:27.865999+08:00  focus_change  app=Chromium  title=科技爱好者周刊（第 379 期）：《硅谷钢铁侠》摘录 - 阮一峰的网络日志 - Chromium  screenshot=None
+2025-12-27T23:16:02.885745+08:00  focus_change  app=Code  title=river.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T23:16:32.895412+08:00  focus_change  app=Chromium  title=科技爱好者周刊（第 379 期）：《硅谷钢铁侠》摘录 - 阮一峰的网络日志 - Chromium  screenshot=None
+2025-12-27T23:16:42.899833+08:00  focus_change  app=Code  title=river.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T23:17:07.917686+08:00  focus_change  app=Chromium  title=科技爱好者周刊（第 379 期）：《硅谷钢铁侠》摘录 - 阮一峰的网络日志 - Chromium  screenshot=None
+2025-12-27T23:17:27.926260+08:00  focus_change  app=Chromium  title=A better zip bomb - Chromium  screenshot=None
+2025-12-27T23:18:22.956842+08:00  focus_change  app=Chromium  title=A better zip bomb | 北岸冷若冰霜 - Chromium  screenshot=None
+2025-12-27T23:19:21.973139+08:00  focus_change  app=Chromium  title=A better zip bomb - Chromium  screenshot=None
+2025-12-27T23:19:26.976594+08:00  focus_change  app=org.gnome.Nautilus  title=Downloads  screenshot=None
+2025-12-27T23:19:41.982538+08:00  focus_change  app=org.gnome.Nautilus  title=zbsm  screenshot=None
+2025-12-27T23:19:46.985903+08:00  focus_change  app=org.gnome.Nautilus  title=Properties  screenshot=None
+2025-12-27T23:19:51.989276+08:00  focus_change  app=org.gnome.Nautilus  title=zbsm  screenshot=None
+2025-12-27T23:19:57.020886+08:00  focus_change  app=org.gnome.Nautilus  title=  screenshot=None
+2025-12-27T23:20:01.027473+08:00  interval_capture  app=org.gnome.Nautilus  title=  screenshot=None
+2025-12-27T23:20:02.029752+08:00  focus_change  app=org.gnome.Nautilus  title=zbsm  screenshot=None
+2025-12-27T23:20:12.034344+08:00  focus_change  app=Code  title=5X - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T23:20:17.037630+08:00  focus_change  app=org.gnome.Nautilus  title=Downloads  screenshot=None
+2025-12-27T23:20:22.040502+08:00  focus_change  app=Chromium  title=A better zip bomb | 北岸冷若冰霜 - Chromium  screenshot=None
+2025-12-27T23:20:27.043614+08:00  focus_change  app=Chromium  title=A better zip bomb - Chromium  screenshot=None
+2025-12-27T23:22:42.090788+08:00  focus_change  app=Chromium  title=f04d9b15bd1cba1433ad5453bc3ebff933d0e3bb - chromium/src - Git at Google - Chromium  screenshot=None
+2025-12-27T23:22:57.106106+08:00  focus_change  app=Chromium  title=A better zip bomb - Chromium  screenshot=None
+2025-12-27T23:24:22.140037+08:00  focus_change  app=Chromium  title=Speed Comparison - Programming Languages - Chromium  screenshot=None
+2025-12-27T23:24:27.153009+08:00  focus_change  app=Code  title=paste.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T23:24:32.165410+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T23:24:47.180614+08:00  focus_change  app=Code  title=zipbomb.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T23:24:52.193809+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T23:25:01.207564+08:00  interval_capture  app=Code  title=readme.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T23:25:17.213495+08:00  focus_change  app=Chromium  title=Speed Comparison - Programming Languages - Chromium  screenshot=None
+2025-12-27T23:26:17.239751+08:00  focus_change  app=Chromium  title=科技爱好者周刊（第 379 期）：《硅谷钢铁侠》摘录 - 阮一峰的网络日志 - Chromium  screenshot=None
+2025-12-27T23:26:22.252359+08:00  focus_change  app=Chromium  title=Untitled - Chromium  screenshot=None
+2025-12-27T23:26:27.265115+08:00  focus_change  app=Chromium  title=niklas-heer/speed-comparison: A repo which compares the speed of different programming languages. - Chromium  screenshot=None
+2025-12-27T23:26:47.289268+08:00  focus_change  app=Chromium  title=关于 DJJ - DJJ - Chromium  screenshot=None
+2025-12-27T23:27:02.304610+08:00  focus_change  app=Chromium  title=DJJ - Chromium  screenshot=None
+2025-12-27T23:27:12.308932+08:00  focus_change  app=Chromium  title=Prompt caching: 10x cheaper LLM tokens, but how? | ngrok blog - Chromium  screenshot=None
+2025-12-27T23:29:12.352245+08:00  focus_change  app=Chromium  title=ngrok | API Gateway, Kubernetes Ingress, Webhook Gateway - Chromium  screenshot=None
+2025-12-27T23:29:22.357001+08:00  focus_change  app=Chromium  title=Prompt caching: 10x cheaper LLM tokens, but how? | ngrok blog - Chromium  screenshot=None
+2025-12-27T23:29:27.360709+08:00  focus_change  app=Chromium  title=Sam Rose | ngrok blog - Chromium  screenshot=None
+2025-12-27T23:29:37.365108+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T23:29:52.370809+08:00  focus_change  app=Chromium  title=(5) @firascript/fira / Twitter - Chromium  screenshot=None
+2025-12-27T23:29:57.374030+08:00  focus_change  app=Chromium  title=(5) List / Twitter - Chromium  screenshot=None
+2025-12-27T23:30:01.386261+08:00  interval_capture  app=Chromium  title=(5) List / Twitter - Chromium  screenshot=None
+2025-12-27T23:30:02.388596+08:00  focus_change  app=Chromium  title=科技爱好者周刊（第 379 期）：《硅谷钢铁侠》摘录 - 阮一峰的网络日志 - Chromium  screenshot=None
+2025-12-27T23:31:02.414619+08:00  focus_change  app=Chromium  title=The Architecture of "Not Bad": Decoding the Chinese Source Code of the Void - Chromium  screenshot=None
+2025-12-27T23:31:07.427436+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T23:31:12.430775+08:00  focus_change  app=Chromium  title=科技爱好者周刊（第 379 期）：《硅谷钢铁侠》摘录 - 阮一峰的网络日志 - Chromium  screenshot=None
+2025-12-27T23:32:52.468896+08:00  focus_change  app=Chromium  title=(5) 拾一.ens18 (@__oQuery) / Twitter - Chromium  screenshot=None
+2025-12-27T23:32:57.476073+08:00  focus_change  app=Chromium  title=(5) Twitter - Chromium  screenshot=None
+2025-12-27T23:33:02.479374+08:00  focus_change  app=Chromium  title=(5) 拾一.ens18 (@__oQuery) / Twitter - Chromium  screenshot=None
+2025-12-27T23:33:42.500236+08:00  focus_change  app=Chromium  title=Mix Space - Chromium  screenshot=None
+2025-12-27T23:34:02.507386+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium  screenshot=None
+2025-12-27T23:34:07.519934+08:00  focus_change  app=Chromium  title=(5) 拾一.ens18 (@__oQuery) / Twitter - Chromium  screenshot=None
+2025-12-27T23:34:12.532599+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium  screenshot=None
+2025-12-27T23:34:42.552581+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T23:34:47.565077+08:00  focus_change  app=org.gnome.Nautilus  title=Home  screenshot=None
+2025-12-27T23:34:57.569810+08:00  focus_change  app=Code  title=package.json - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T23:35:01.582243+08:00  interval_capture  app=Code  title=package.json - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T23:35:17.597724+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T23:35:22.610446+08:00  focus_change  app=org.gnome.Nautilus  title=Home  screenshot=None
+2025-12-27T23:35:27.614384+08:00  focus_change  app=gnome-terminal-server  title=Terminal  screenshot=None
+2025-12-27T23:35:52.622485+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T23:35:57.635126+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium  screenshot=None
+2025-12-27T23:38:32.676130+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T23:38:47.681895+08:00  focus_change  app=Code  title=20251227 pure english translation meaning loss.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T23:39:12.690178+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium  screenshot=None
+2025-12-27T23:39:17.693320+08:00  focus_change  app=Code  title=20251227 pure english translation meaning loss.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T23:39:22.696345+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T23:39:27.699454+08:00  focus_change  app=Code  title=all.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T23:39:57.717980+08:00  focus_change  app=Chromium  title=(240) オリジナル楽曲 - YouTube - Chromium  screenshot=None
+2025-12-27T23:40:01.721406+08:00  interval_capture  app=Chromium  title=(240) オリジナル楽曲 - YouTube - Chromium  screenshot=None
+2025-12-27T23:40:02.732967+08:00  focus_change  app=Chromium  title=(5) 拾一.ens18 (@__oQuery) / Twitter - Chromium  screenshot=None
+2025-12-27T23:41:32.768885+08:00  focus_change  app=Chromium  title=(6) 拾一.ens18 (@__oQuery) / Twitter - Chromium  screenshot=None
+2025-12-27T23:42:47.801093+08:00  focus_change  app=Chromium  title=ChatGPT - Chromium  screenshot=None
+2025-12-27T23:43:32.823888+08:00  focus_change  app=Chromium  title=Greeting exchange - Chromium  screenshot=None
+2025-12-27T23:43:37.827202+08:00  focus_change  app=Chromium  title=ChatGPT - Chromium  screenshot=None
+2025-12-27T23:43:52.833720+08:00  focus_change  app=Chromium  title=Empty response - Chromium  screenshot=None
+2025-12-27T23:44:02.838314+08:00  focus_change  app=Chromium  title=Quiet Reflection on Learning - Chromium  screenshot=None
+2025-12-27T23:45:01.865723+08:00  interval_capture  app=Chromium  title=Quiet Reflection on Learning - Chromium  screenshot=None
+2025-12-27T23:46:32.901024+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T23:46:47.916493+08:00  focus_change  app=Code  title=20251227 fira chatgpt year summary.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T23:46:52.920473+08:00  focus_change  app=Chromium  title=Quiet Reflection on Learning - Chromium  screenshot=None
+2025-12-27T23:46:57.923712+08:00  focus_change  app=Code  title=20251227 fira chatgpt year summary.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T23:47:07.937456+08:00  focus_change  app=Chromium  title=Quiet Reflection on Learning - Chromium  screenshot=None
+2025-12-27T23:47:12.940618+08:00  focus_change  app=Code  title=20251227 fira chatgpt year summary.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T23:48:06.955546+08:00  focus_change  app=Chromium  title=(6) 拾一.ens18 (@__oQuery) / Twitter - Chromium  screenshot=None
+2025-12-27T23:48:16.959677+08:00  focus_change  app=Chromium  title=(6) 拾一.ens18 on X: "discord 的开启 devtool 的 key 是不是和 react 学的 DANGEROUS_ENABLE_DEVTOOLS_ONLY_ENABLE_IF_YOU_KNOW_WHAT_YOURE_DOING" / Twitter - Chromium  screenshot=None
+2025-12-27T23:48:41.968567+08:00  focus_change  app=Chromium  title=(6) 拾一.ens18 (@__oQuery) / Twitter - Chromium  screenshot=None
+2025-12-27T23:49:11.979690+08:00  focus_change  app=Chromium  title=(6) 拾一.ens18 on X: "🎉❤ 圣诞节前脱单攻略 ❤🎉 点击我头像👆🏻 编辑发送“咱俩试试？”💌 即有机会获得"我给你一拳”or宝宝我也喜欢你💕 ⭕兑奖日期:2025年12月25日之前" / Twitter - Chromium  screenshot=None
+2025-12-27T23:49:31.986478+08:00  focus_change  app=Chromium  title=(6) Shiro (@verymoes) / Twitter - Chromium  screenshot=None
+2025-12-27T23:50:01.995460+08:00  interval_capture  app=Chromium  title=(6) Shiro (@verymoes) / Twitter - Chromium  screenshot=None
+2025-12-27T23:50:12.000177+08:00  focus_change  app=Chromium  title=The Architecture of "Not Bad": Decoding the Chinese Source Code of the Void - Chromium  screenshot=None
+2025-12-27T23:50:27.005800+08:00  focus_change  app=Code  title=paste.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T23:51:27.024598+08:00  focus_change  app=Chromium  title=ChatGPT - Chromium  screenshot=None
+2025-12-27T23:51:37.029612+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium  screenshot=None
+2025-12-27T23:51:47.033793+08:00  focus_change  app=Chromium  title=New Tab - Chromium  screenshot=None
+2025-12-27T23:51:52.037579+08:00  focus_change  app=Chromium  title=ChatGPT - Chromium  screenshot=None
+2025-12-27T23:51:57.040930+08:00  focus_change  app=Chromium  title=New Tab - Chromium  screenshot=None
+2025-12-27T23:52:02.044306+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium  screenshot=None
+2025-12-27T23:52:07.047382+08:00  focus_change  app=Code  title=paste.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T23:52:17.061208+08:00  focus_change  app=gnome-terminal-server  title=Terminal  screenshot=None
+2025-12-27T23:52:27.065481+08:00  focus_change  app=org.gnome.Nautilus  title=Home  screenshot=None
+2025-12-27T23:53:17.089159+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T23:53:37.106001+08:00  focus_change  app=Code  title=paste.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T23:53:42.118943+08:00  focus_change  app=Code  title=20251227 fira game children of god.json - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T23:53:52.124326+08:00  focus_change  app=Code  title=20251227 fira game children of god.js - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T23:55:02.154252+08:00  interval_capture  app=Code  title=20251227 fira game children of god.js - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T23:55:07.167011+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T23:55:17.171616+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium  screenshot=None
+2025-12-27T23:55:22.174841+08:00  focus_change  app=Chrome  title=Open Files  screenshot=None
+2025-12-27T23:55:37.189641+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T23:55:42.192945+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium  screenshot=None
+2025-12-27T23:56:02.200332+08:00  focus_change  app=Chromium  title=New Tab - Chromium  screenshot=None
+2025-12-27T23:56:07.204789+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium  screenshot=None
+2025-12-27T23:56:12.218214+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T23:56:22.223246+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium  screenshot=None
+2025-12-27T23:57:07.245878+08:00  focus_change  app=Code  title=20251227 fira game children of god.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T23:57:12.258653+08:00  focus_change  app=Code  title=20251227 fira game children of god.js - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T23:57:27.264633+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium  screenshot=None
+2025-12-27T23:57:42.279773+08:00  focus_change  app=Code  title=20251227 fira game children of god.js - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T23:57:57.294970+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium  screenshot=None
+2025-12-27T23:58:52.311305+08:00  focus_change  app=Code  title=20251227 fira game children of god.js - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-27T23:59:52.329721+08:00  focus_change  app=Chromium  title=History - Chromium  screenshot=None
+2025-12-27T23:59:57.332806+08:00  focus_change  app=Chromium  title=山上彻也 - Google Search - Chromium  screenshot=None
+2025-12-28T00:00:02.345416+08:00  interval_capture  app=Chromium  title=山上彻也 - Google Search - Chromium  screenshot=None
+2025-12-28T00:00:07.358012+08:00  focus_change  app=Chromium  title=Calm conversation guidance - Chromium  screenshot=None
+2025-12-28T00:00:12.361082+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium  screenshot=None
+2025-12-28T00:04:12.425199+08:00  focus_change  app=Code  title=river.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-28T00:05:02.449301+08:00  interval_capture  app=Code  title=river.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-28T00:07:47.501176+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium  screenshot=None
+2025-12-28T00:10:02.537548+08:00  interval_capture  app=Chromium  title=Branch · Calm conversation guidance - Chromium  screenshot=None
+2025-12-28T00:12:52.593083+08:00  focus_change  app=Code  title=river.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-28T00:15:02.628347+08:00  interval_capture  app=Code  title=river.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-28T00:20:02.707205+08:00  interval_capture  app=Code  title=river.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-28T00:20:22.723626+08:00  focus_change  app=Code  title=20251227 fira game children of god.js - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-28T00:20:27.736274+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium  screenshot=None
+2025-12-28T00:21:12.758580+08:00  focus_change  app=Chromium  title=ChatGPT - Chromium  screenshot=None
+2025-12-28T00:21:17.771067+08:00  focus_change  app=Chromium  title=History - Chromium  screenshot=None
+2025-12-28T00:21:37.777931+08:00  focus_change  app=Chromium  title=上帝的孩子 - Google Search - Chromium  screenshot=None
+2025-12-28T00:22:02.795760+08:00  focus_change  app=Chromium  title=History - Chromium  screenshot=None
+2025-12-28T00:22:17.811341+08:00  focus_change  app=Chromium  title=神的孩子们 - Google Search - Chromium  screenshot=None
+2025-12-28T00:22:22.824253+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium  screenshot=None
+2025-12-28T00:22:37.839402+08:00  focus_change  app=Code  title=20251227 fira game children of god.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-28T00:22:52.854298+08:00  focus_change  app=Chromium  title=神的孩子们 - Google Search - Chromium  screenshot=None
+2025-12-28T00:22:57.866693+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium  screenshot=None
+2025-12-28T00:24:02.887653+08:00  focus_change  app=Chromium  title=神的孩子们 - Google Search - Chromium  screenshot=None
+2025-12-28T00:24:07.893713+08:00  focus_change  app=Chromium  title="神的孩子们" - Google Search - Chromium  screenshot=None
+2025-12-28T00:24:12.905909+08:00  focus_change  app=Chromium  title=7小神的孩子们_哔哩哔哩_bilibili - Chromium  screenshot=None
+2025-12-28T00:24:17.919358+08:00  focus_change  app=Chromium  title=神的孩子们-哔哩哔哩_bilibili - Chromium  screenshot=None
+2025-12-28T00:24:37.936342+08:00  focus_change  app=Chromium  title=djj-哔哩哔哩_bilibili - Chromium  screenshot=None
+2025-12-28T00:24:42.949032+08:00  focus_change  app=Chromium  title="神的孩子们" - Google Search - Chromium  screenshot=None
+2025-12-28T00:24:46.951752+08:00  focus_change  app=Chromium  title=Disdjj/children_of_god: 神的孩子们 - Chromium  screenshot=None
+2025-12-28T00:25:01.957823+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium  screenshot=None
+2025-12-28T00:25:02.960183+08:00  interval_capture  app=Chromium  title=Branch · Calm conversation guidance - Chromium  screenshot=None
+2025-12-28T00:30:03.047504+08:00  interval_capture  app=Chromium  title=Branch · Calm conversation guidance - Chromium  screenshot=None
+2025-12-28T00:30:52.071564+08:00  focus_change  app=Code  title=20251227 fira game children of god.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-28T00:30:57.084193+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium  screenshot=None
+2025-12-28T00:32:07.114135+08:00  focus_change  app=Code  title=20251227 fira game children of god.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-28T00:32:22.129163+08:00  focus_change  app=Code  title=20251227 fira game children of god copy.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-28T00:32:32.143202+08:00  focus_change  app=Code  title=20251227 fira game children of god history background.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-28T00:32:42.157438+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium  screenshot=None
+2025-12-28T00:32:47.170025+08:00  focus_change  app=Code  title=20251227 fira game children of god history background.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-28T00:32:57.183739+08:00  focus_change  app=Chromium  title=Assassination of Shinzo Abe - Wikipedia - Chromium  screenshot=None
+2025-12-28T00:33:22.192553+08:00  focus_change  app=Chromium  title=Tetsuya Yamagami - Wikipedia - Chromium  screenshot=None
+2025-12-28T00:33:32.206338+08:00  focus_change  app=Chromium  title=Assassination of Shinzo Abe - Wikipedia - Chromium  screenshot=None
+2025-12-28T00:33:42.220049+08:00  focus_change  app=Chromium  title=Tetsuya Yamagami - Google Search - Chromium  screenshot=None
+2025-12-28T00:34:02.237023+08:00  focus_change  app=Chromium  title=Tetsuya Yamagami - Wikipedia - Chromium  screenshot=None
+2025-12-28T00:34:17.252128+08:00  focus_change  app=Chromium  title=Disdjj/children_of_god: 神的孩子们 - Chromium  screenshot=None
+2025-12-28T00:35:03.265394+08:00  interval_capture  app=Chromium  title=Disdjj/children_of_god: 神的孩子们 - Chromium  screenshot=None
+2025-12-28T00:35:27.282921+08:00  focus_change  app=Chromium  title=New Issue - Chromium  screenshot=None
+2025-12-28T00:35:37.296967+08:00  focus_change  app=Chromium  title=google-gemini/aistudio-repository-template: This is a repository to be used when creating a repository template. - Chromium  screenshot=None
+2025-12-28T00:35:52.313206+08:00  focus_change  app=Chromium  title=Assassination of Shinzo Abe - Wikipedia - Chromium  screenshot=None
+2025-12-28T00:36:32.334820+08:00  focus_change  app=Chromium  title=Tetsuya Yamagami - Google Search - Chromium  screenshot=None
+2025-12-28T00:36:42.339455+08:00  focus_change  app=Code  title=paste.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-28T00:36:47.351982+08:00  focus_change  app=Code  title=river.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-28T00:38:32.389883+08:00  focus_change  app=Chromium  title=Tetsuya Yamagami - Google Search - Chromium  screenshot=None
+2025-12-28T00:38:42.395000+08:00  focus_change  app=Chromium  title=(240) What Would You Do with 1 Million? First Destination of the Million Check Series! - YouTube - Chromium  screenshot=None
+2025-12-28T00:38:47.398765+08:00  focus_change  app=Chromium  title=(240) 恶心所有人的视频，为什么期期爆款？ - YouTube - Chromium  screenshot=None
+2025-12-28T00:40:03.429277+08:00  interval_capture  app=Chromium  title=(240) 恶心所有人的视频，为什么期期爆款？ - YouTube - Chromium  screenshot=None
+2025-12-28T00:45:03.519835+08:00  interval_capture  app=Chromium  title=(240) 恶心所有人的视频，为什么期期爆款？ - YouTube - Chromium  screenshot=None
+2025-12-28T00:45:22.526604+08:00  focus_change  app=Chromium  title=(240) What Would You Do with 1 Million? First Destination of the Million Check Series! - YouTube - Chromium  screenshot=None
+2025-12-28T00:45:27.529782+08:00  focus_change  app=Chromium  title=(240) Post from Mediastorm影视飓风 - YouTube - Chromium  screenshot=None
+2025-12-28T00:45:32.542512+08:00  focus_change  app=Chromium  title=(240) What Would You Do with 1 Million? First Destination of the Million Check Series! - YouTube - Chromium  screenshot=None
+2025-12-28T00:45:57.560703+08:00  focus_change  app=Chromium  title=(240) Post from Mediastorm影视飓风 - YouTube - Chromium  screenshot=None
+2025-12-28T00:47:07.591229+08:00  focus_change  app=Chromium  title=Untitled - Chromium  screenshot=None
+2025-12-28T00:47:12.604286+08:00  focus_change  app=Chromium  title=(240) Post from Mediastorm影视飓风 - YouTube - Chromium  screenshot=None
+2025-12-28T00:47:17.617135+08:00  focus_change  app=Chromium  title=Useful patterns for building HTML tools - Chromium  screenshot=None
+2025-12-28T00:47:22.620337+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-28T00:47:27.633471+08:00  focus_change  app=Chromium  title=Useful patterns for building HTML tools - Chromium  screenshot=None
+2025-12-28T00:47:37.647205+08:00  focus_change  app=Chromium  title=SVG to JPEG/PNG - Chromium  screenshot=None
+2025-12-28T00:47:57.663301+08:00  focus_change  app=Chromium  title=Useful patterns for building HTML tools - Chromium  screenshot=None
+2025-12-28T00:48:02.676214+08:00  focus_change  app=Chromium  title=PyPI Package Changelog - Chromium  screenshot=None
+2025-12-28T00:48:07.688620+08:00  focus_change  app=Chromium  title=Useful patterns for building HTML tools - Chromium  screenshot=None
+2025-12-28T00:48:22.694477+08:00  focus_change  app=Chromium  title=The Architecture of "Not Bad": Decoding the Chinese Source Code of the Void - Chromium  screenshot=None
+2025-12-28T00:50:03.731180+08:00  interval_capture  app=Chromium  title=The Architecture of "Not Bad": Decoding the Chinese Source Code of the Void - Chromium  screenshot=None
+2025-12-28T00:51:47.761344+08:00  focus_change  app=Chromium  title=Tetsuya Yamagami sister - Google Search - Chromium  screenshot=None
+2025-12-28T00:52:12.778835+08:00  focus_change  app=Chromium  title=YouTube - Chromium  screenshot=None
+2025-12-28T00:52:17.791385+08:00  focus_change  app=Chromium  title=Abe shooter’s sister tells court that Unification Church destroyed family - YouTube - Chromium  screenshot=None
+2025-12-28T00:52:22.803993+08:00  focus_change  app=Chromium  title=The Architecture of "Not Bad": Decoding the Chinese Source Code of the Void - Chromium  screenshot=None
+2025-12-28T00:54:42.842489+08:00  focus_change  app=Chromium  title=New Tab - Chromium  screenshot=None
+2025-12-28T00:54:47.845758+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-28T00:55:02.862624+08:00  focus_change  app=Code  title=linguistics void.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-28T00:55:03.874731+08:00  interval_capture  app=Code  title=linguistics void.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-28T00:55:07.886921+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-28T00:55:47.908861+08:00  focus_change  app=Chromium  title=The Architecture of "Not Bad": Decoding the Chinese Source Code of the Void - Chromium  screenshot=None
+2025-12-28T00:55:52.921481+08:00  focus_change  app=Chromium  title=Useful patterns for building HTML tools - Chromium  screenshot=None
+2025-12-28T00:55:57.934891+08:00  focus_change  app=Chromium  title=(6) @firascript/fira / Twitter - Chromium  screenshot=None
+2025-12-28T00:56:02.947703+08:00  focus_change  app=Chromium  title=Abe shooter’s sister tells court that Unification Church destroyed family - YouTube - Chromium  screenshot=None
+2025-12-28T00:56:51.961974+08:00  focus_change  app=Chromium  title=Tetsuya Yamagami sister - Google Search - Chromium  screenshot=None
+2025-12-28T00:57:01.966441+08:00  focus_change  app=Chromium  title=Tetsuya Yamagami - Google Search - Chromium  screenshot=None
+2025-12-28T00:57:21.973075+08:00  focus_change  app=Chromium  title=Useful patterns for building HTML tools - Chromium  screenshot=None
+2025-12-28T01:00:04.025640+08:00  interval_capture  app=Chromium  title=Useful patterns for building HTML tools - Chromium  screenshot=None
+2025-12-28T01:05:04.105655+08:00  interval_capture  app=Chromium  title=Useful patterns for building HTML tools - Chromium  screenshot=None
+2025-12-28T01:05:42.117660+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-28T01:05:47.120837+08:00  focus_change  app=Code  title=things.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-28T01:07:17.155573+08:00  focus_change  app=Chromium  title=Useful patterns for building HTML tools - Chromium  screenshot=None
+2025-12-28T01:07:27.160506+08:00  focus_change  app=Code  title=things.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-28T01:07:47.176800+08:00  focus_change  app=Chromium  title=Useful patterns for building HTML tools - Chromium  screenshot=None
+2025-12-28T01:08:12.189336+08:00  focus_change  app=Chromium  title=Haiku - Chromium  screenshot=None
+2025-12-28T01:08:32.205740+08:00  focus_change  app=Chromium  title=Useful patterns for building HTML tools - Chromium  screenshot=None
+2025-12-28T01:09:37.240714+08:00  focus_change  app=Chromium  title=‍ - Chromium  screenshot=None
+2025-12-28T01:09:42.244520+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-28T01:09:47.257033+08:00  focus_change  app=Code  title=web vibe coding.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-28T01:09:52.269545+08:00  focus_change  app=Chromium  title=simonw/tools: Assorted useful tools, almost entirely generated using LLMs - Chromium  screenshot=None
+2025-12-28T01:09:57.282066+08:00  focus_change  app=Code  title=web vibe coding.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-28T01:10:02.285125+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-28T01:10:04.287448+08:00  interval_capture  app=Code  title=readme.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-28T01:10:22.303118+08:00  focus_change  app=Chromium  title=simonw/tools: Assorted useful tools, almost entirely generated using LLMs - Chromium  screenshot=None
+2025-12-28T01:11:22.329371+08:00  focus_change  app=Chromium  title=Fork simonw/tools - Chromium  screenshot=None
+2025-12-28T01:11:27.332450+08:00  focus_change  app=Chromium  title=claude (Claude) - Chromium  screenshot=None
+2025-12-28T01:11:57.351151+08:00  focus_change  app=Chromium  title=firavoyage/_tools - Chromium  screenshot=None
+2025-12-28T01:12:02.364091+08:00  focus_change  app=Chromium  title=山上 徹也 - Google Search - Chromium  screenshot=None
+2025-12-28T01:12:17.378988+08:00  focus_change  app=Chromium  title=安倍元首相銃撃事件裁判 検察は無期懲役求刑 来年1月に判決 | NHKニュース - Chromium  screenshot=None
+2025-12-28T01:12:32.394673+08:00  focus_change  app=Chromium  title=山上 徹也 - Google Search - Chromium  screenshot=None
+2025-12-28T01:12:47.400649+08:00  focus_change  app=Chromium  title=山上 徹也 sister - Google Search - Chromium  screenshot=None
+2025-12-28T01:12:57.406193+08:00  focus_change  app=Chromium  title=山上 徹也 妹 - Google Search - Chromium  screenshot=None
+2025-12-28T01:13:37.418079+08:00  focus_change  app=Chromium  title=山上徹也被告の同級生の親も入信…！山上被告の妹が証言した、母親による「旧統一教会への勧誘方法」（現代ビジネス編集部） | 現代ビジネス | 講談社 - Chromium  screenshot=None
+2025-12-28T01:13:42.430927+08:00  focus_change  app=Chromium  title=(240) 「わたしにとっては大好きなお兄ちゃんでした」山上被告の妹　事件の背景に”旧統一教会がある”と証言　時折涙声に…事件後唯一接見した親族が語る【安倍元総理銃撃事件　11月19日の裁判】 - YouTube - Chromium  screenshot=None
+2025-12-28T01:15:04.464225+08:00  interval_capture  app=Chromium  title=(240) 「わたしにとっては大好きなお兄ちゃんでした」山上被告の妹　事件の背景に”旧統一教会がある”と証言　時折涙声に…事件後唯一接見した親族が語る【安倍元総理銃撃事件　11月19日の裁判】 - YouTube - Chromium  screenshot=None
+2025-12-28T01:18:27.529341+08:00  focus_change  app=Chromium  title=山上 徹也 妹 - Google Search - Chromium  screenshot=None
+2025-12-28T01:18:37.542847+08:00  focus_change  app=Chromium  title=(240) 【安倍元総理銃撃】山上徹也被告の妹が初出廷「私には無関心でした」「母は統一教会と長男のことで頭がいっぱいでした」母親が宗教活動に没頭していた様子安倍元総理銃撃｜TBS NEWS DIG - YouTube - Chromium  screenshot=None
+2025-12-28T01:20:02.569444+08:00  focus_change  app=Chromium  title=山上 徹也 妹 - Google Search - Chromium  screenshot=None
+2025-12-28T01:20:04.581497+08:00  interval_capture  app=Chromium  title=山上 徹也 妹 - Google Search - Chromium  screenshot=None
+2025-12-28T01:20:27.589477+08:00  focus_change  app=Chromium  title=【安倍元首相銃撃】山上被告の妹「つらかった、死にたかった」 母親「私が加害者」 裁判に出廷 - YouTube - Chromium  screenshot=None
+2025-12-28T01:20:32.601949+08:00  focus_change  app=Chromium  title=わたしにとっては大好きなお兄ちゃんでした - Google Search - Chromium  screenshot=None
+2025-12-28T01:21:07.622536+08:00  focus_change  app=Chromium  title=(240) 【安倍元首相銃撃】山上被告の妹「つらかった、死にたかった」 母親「私が加害者」 裁判に出廷 - YouTube - Chromium  screenshot=None
+2025-12-28T01:22:57.666028+08:00  focus_change  app=  title=Picture in picture  screenshot=None
+2025-12-28T01:23:17.682321+08:00  focus_change  app=Chromium  title=(240) 【安倍元首相銃撃】山上被告の妹「つらかった、死にたかった」 母親「私が加害者」 裁判に出廷 - YouTube - Chromium  screenshot=None
+2025-12-28T01:23:42.690886+08:00  focus_change  app=Chromium  title=‍ - Chromium  screenshot=None
+2025-12-28T01:23:57.706275+08:00  focus_change  app=Chromium  title=About Simon Willison - Chromium  screenshot=None
+2025-12-28T01:24:07.720568+08:00  focus_change  app=Chromium  title=‍ - Chromium  screenshot=None
+2025-12-28T01:25:04.746452+08:00  interval_capture  app=Chromium  title=‍ - Chromium  screenshot=None
+2025-12-28T01:30:04.832939+08:00  interval_capture  app=Chromium  title=‍ - Chromium  screenshot=None
+2025-12-28T01:35:04.923752+08:00  interval_capture  app=Chromium  title=‍ - Chromium  screenshot=None
+2025-12-28T01:37:15.959484+08:00  focus_change  app=Chromium  title=(240) 【安倍元首相銃撃】山上被告の妹「つらかった、死にたかった」 母親「私が加害者」 裁判に出廷 - YouTube - Chromium  screenshot=None
+2025-12-28T01:38:00.974777+08:00  focus_change  app=Chromium  title=vCaptions – Video Caption List - Chromium  screenshot=None
+2025-12-28T01:38:15.980517+08:00  focus_change  app=Chromium  title=【安倍元首相銃撃】山上被告の妹「つらかった、死にたかった」 母親「私が加害者」 裁判に出廷 - YouTube - Chromium  screenshot=None
+2025-12-28T01:38:20.984112+08:00  focus_change  app=Chromium  title=(240) 【安倍元首相銃撃】山上被告の妹「つらかった、死にたかった」 母親「私が加害者」 裁判に出廷 - YouTube - Chromium  screenshot=None
+2025-12-28T01:38:30.988315+08:00  focus_change  app=Chromium  title=youtube.com/watch?v=yjbRcMiGTBA - Chromium  screenshot=None
+2025-12-28T01:38:35.991272+08:00  focus_change  app=Chromium  title=【安倍元首相銃撃】山上被告の妹「つらかった、死にたかった」 母親「私が加害者」 裁判に出廷 - YouTube - Chromium  screenshot=None
+2025-12-28T01:38:40.994284+08:00  focus_change  app=Chromium  title=(240) 【安倍元首相銃撃】山上被告の妹「つらかった、死にたかった」 母親「私が加害者」 裁判に出廷 - YouTube - Chromium  screenshot=None
+2025-12-28T01:39:06.004387+08:00  focus_change  app=Chromium  title=Notion - Chromium  screenshot=None
+2025-12-28T01:39:11.007808+08:00  focus_change  app=Chromium  title=I’m Sorry - Chromium  screenshot=None
+2025-12-28T01:39:16.010889+08:00  focus_change  app=Chromium  title=(240) 【安倍元首相銃撃】山上被告の妹「つらかった、死にたかった」 母親「私が加害者」 裁判に出廷 - YouTube - Chromium  screenshot=None
+2025-12-28T01:39:41.020105+08:00  focus_change  app=Chromium  title=(240) YouTube - Chromium  screenshot=None
+2025-12-28T01:40:01.027501+08:00  focus_change  app=Chromium  title=【安倍元首相銃撃】山上被告の妹「つらかった、死にたかった」 母親「私が加害者」 裁判に出廷 - YouTube - Chromium  screenshot=None
+2025-12-28T01:40:05.030679+08:00  interval_capture  app=Chromium  title=【安倍元首相銃撃】山上被告の妹「つらかった、死にたかった」 母親「私が加害者」 裁判に出廷 - YouTube - Chromium  screenshot=None
+2025-12-28T01:40:06.032694+08:00  focus_change  app=Chromium  title=(240) 【安倍元首相銃撃】山上被告の妹「つらかった、死にたかった」 母親「私が加害者」 裁判に出廷 - YouTube - Chromium  screenshot=None
+2025-12-28T01:40:16.037001+08:00  focus_change  app=Chromium  title=Extensions - vCaptions – Video Caption List - Chromium  screenshot=None
+2025-12-28T01:40:21.040249+08:00  focus_change  app=Chromium  title=(240) 【安倍元首相銃撃】山上被告の妹「つらかった、死にたかった」 母親「私が加害者」 裁判に出廷 - YouTube - Chromium  screenshot=None
+2025-12-28T01:41:21.057474+08:00  focus_change  app=Chromium  title=New Tab - Chromium  screenshot=None
+2025-12-28T01:41:31.061885+08:00  focus_change  app=Chromium  title=youtube caption disappear - Google Search - Chromium  screenshot=None
+2025-12-28T01:41:41.075619+08:00  focus_change  app=Chromium  title=(240) YouTube Subtitles Missing? Fix It in 30 Secs ✅ | Auto CC Not Working Problem Solved! - YouTube - Chromium  screenshot=None
+2025-12-28T01:41:51.083374+08:00  focus_change  app=Chromium  title=(240) 【安倍元首相銃撃】山上被告の妹「つらかった、死にたかった」 母親「私が加害者」 裁判に出廷 - YouTube - Chromium  screenshot=None
+2025-12-28T01:43:06.107017+08:00  focus_change  app=Chromium  title=youtube.com/watch?v=GiaNp0u_swU - Chromium  screenshot=None
+2025-12-28T01:43:11.110205+08:00  focus_change  app=Chromium  title=(240) I Surprised ChatGPT by Speaking Computer Language - YouTube - Chromium  screenshot=None
+2025-12-28T01:45:05.151919+08:00  interval_capture  app=Chromium  title=(240) I Surprised ChatGPT by Speaking Computer Language - YouTube - Chromium  screenshot=None
+2025-12-28T01:45:21.157639+08:00  focus_change  app=Chromium  title=Xiaomanyc 小马在纽约 - YouTube - Chromium  screenshot=None
+2025-12-28T01:45:26.170361+08:00  focus_change  app=Chromium  title=(240) Xiaomanyc 小马在纽约 - YouTube - Chromium  screenshot=None
+2025-12-28T01:46:06.191748+08:00  focus_change  app=Chromium  title=Professor Shocks High School by Speaking Gen Z Slang - YouTube - Chromium  screenshot=None
+2025-12-28T01:46:11.197937+08:00  focus_change  app=Chromium  title=(240) Professor Shocks High School by Speaking Gen Z Slang - YouTube - Chromium  screenshot=None
+2025-12-28T01:47:26.220472+08:00  focus_change  app=Code  title=things.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-28T01:47:31.224263+08:00  focus_change  app=Chromium  title=(240) Professor Shocks High School by Speaking Gen Z Slang - YouTube - Chromium  screenshot=None
+2025-12-28T01:47:36.227346+08:00  focus_change  app=Code  title=river.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-28T01:47:41.230541+08:00  focus_change  app=Code  title=things.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-28T01:47:46.243282+08:00  focus_change  app=Code  title=scratch pad.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-28T01:47:51.246380+08:00  focus_change  app=Code  title=things.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-28T01:48:06.252391+08:00  focus_change  app=Chromium  title=(240) Professor Shocks High School by Speaking Gen Z Slang - YouTube - Chromium  screenshot=None
+2025-12-28T01:49:06.270152+08:00  focus_change  app=Code  title=things.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-28T01:49:11.273240+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-28T01:49:16.285879+08:00  focus_change  app=Chromium  title=(240) Professor Shocks High School by Speaking Gen Z Slang - YouTube - Chromium  screenshot=None
+2025-12-28T01:50:05.300699+08:00  interval_capture  app=Chromium  title=(240) Professor Shocks High School by Speaking Gen Z Slang - YouTube - Chromium  screenshot=None
+2025-12-28T01:50:16.314834+08:00  focus_change  app=Chromium  title=‍ - Chromium  screenshot=None
+2025-12-28T01:50:21.318128+08:00  focus_change  app=Chromium  title=(240) Xiaomanyc 小马在纽约 - YouTube - Chromium  screenshot=None
+2025-12-28T01:50:41.325254+08:00  focus_change  app=Chromium  title=(240) Remote Chinese Mountain Town Shocked to See American - YouTube - Chromium  screenshot=None
+2025-12-28T01:51:21.337169+08:00  focus_change  app=Chromium  title=‍ - Chromium  screenshot=None
+2025-12-28T01:51:26.343436+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-28T01:52:01.354089+08:00  focus_change  app=Chromium  title=(240) Professor Shocks High School by Speaking Gen Z Slang - YouTube - Chromium  screenshot=None
+2025-12-28T01:52:06.357347+08:00  focus_change  app=Chromium  title=‍ - Chromium  screenshot=None
+2025-12-28T01:52:11.360661+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-28T01:52:16.363938+08:00  focus_change  app=Chromium  title=(240) Professor Shocks High School by Speaking Gen Z Slang - YouTube - Chromium  screenshot=None
+2025-12-28T01:52:26.378229+08:00  focus_change  app=Chromium  title=(240) 台大生挑戰大陸高考，能上北京大學嗎？【超難的廣東試卷】（上）‪@selling.brains‬ - YouTube - Chromium  screenshot=None
+2025-12-28T01:55:05.421363+08:00  interval_capture  app=Chromium  title=(240) 台大生挑戰大陸高考，能上北京大學嗎？【超難的廣東試卷】（上）‪@selling.brains‬ - YouTube - Chromium  screenshot=None
+2025-12-28T01:55:21.437194+08:00  focus_change  app=Chromium  title=(240) Professor Shocks High School by Speaking Gen Z Slang - YouTube - Chromium  screenshot=None
+2025-12-28T01:55:31.451818+08:00  focus_change  app=Chromium  title=(240) Who is Smarter? Engineer vs Chinese 5th Grader - YouTube - Chromium  screenshot=None
+2025-12-28T01:55:41.455920+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-28T01:56:11.474659+08:00  focus_change  app=Chromium  title=(240) Who is Smarter? Engineer vs Chinese 5th Grader - YouTube - Chromium  screenshot=None
+2025-12-28T01:56:31.491884+08:00  focus_change  app=Chromium  title=Cantomando - YouTube - Chromium  screenshot=None
+2025-12-28T01:56:36.504571+08:00  focus_change  app=Chromium  title=(240) Cantomando - YouTube - Chromium  screenshot=None
+2025-12-28T01:56:41.517585+08:00  focus_change  app=Chromium  title=(240) Who is Smarter? Engineer vs Chinese 5th Grader - YouTube - Chromium  screenshot=None
+2025-12-28T01:58:36.551275+08:00  focus_change  app=Chromium  title=(240) Cantomando - YouTube - Chromium  screenshot=None
+2025-12-28T01:59:06.570263+08:00  focus_change  app=Chromium  title=(240) I Surprised ChatGPT by Speaking Computer Language - YouTube - Chromium  screenshot=None
+2025-12-28T01:59:36.579971+08:00  focus_change  app=Chromium  title=(240) 【安倍元首相銃撃】山上被告の妹「つらかった、死にたかった」 母親「私が加害者」 裁判に出廷 - YouTube - Chromium  screenshot=None
+2025-12-28T01:59:41.583987+08:00  focus_change  app=Chromium  title=わたしにとっては大好きなお兄ちゃんでした - Google Search - Chromium  screenshot=None
+2025-12-28T01:59:51.598435+08:00  focus_change  app=Chromium  title=(240) What Would You Do with 1 Million? First Destination of the Million Check Series! - YouTube - Chromium  screenshot=None
+2025-12-28T02:00:05.604248+08:00  interval_capture  app=Chromium  title=(240) What Would You Do with 1 Million? First Destination of the Million Check Series! - YouTube - Chromium  screenshot=None
+2025-12-28T02:00:31.612855+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2025-12-28T02:05:01.692729+08:00  focus_change  app=Chromium  title=(240) What Would You Do with 1 Million? First Destination of the Million Check Series! - YouTube - Chromium  screenshot=None
+2025-12-28T02:05:05.695652+08:00  interval_capture  app=Chromium  title=(240) What Would You Do with 1 Million? First Destination of the Million Check Series! - YouTube - Chromium  screenshot=None
+2025-12-28T02:05:06.697727+08:00  focus_change  app=Chromium  title=About Simon Willison - Chromium  screenshot=None
+2025-12-28T02:05:11.700575+08:00  focus_change  app=Chromium  title=(6) @firascript/fira / Twitter - Chromium  screenshot=None
+2025-12-28T02:05:21.714333+08:00  focus_change  app=Chromium  title=(6) Steven Lynn on X: "update：目前确认她是在20号失联的 据她的家人描述她已经回家了，具体细节不得而知" / Twitter - Chromium  screenshot=None
+2025-12-28T02:05:26.717675+08:00  focus_change  app=Chromium  title=(6) List / Twitter - Chromium  screenshot=None
+2025-12-28T02:05:31.720851+08:00  focus_change  app=Chromium  title=(6) Steven Lynn (@Stv_Lynn) / Twitter - Chromium  screenshot=None
+2025-12-28T02:07:16.752112+08:00  focus_change  app=Chromium  title=yetone - Google Search - Chromium  screenshot=None
+2025-12-28T02:07:26.760613+08:00  focus_change  app=Chromium  title=x.com/yetone/status/1941549002996269495 - Chromium  screenshot=None
+2025-12-28T02:07:31.773244+08:00  focus_change  app=Chromium  title=Twitter - Chromium  screenshot=None
+2025-12-28T02:07:36.785838+08:00  focus_change  app=Chromium  title=yetone | 正在创作 avante.nvim | Patreon - Chromium  screenshot=None
+2025-12-28T02:07:41.789735+08:00  focus_change  app=Chromium  title=€357.8 - Google Search - Chromium  screenshot=None
+2025-12-28T02:07:46.802679+08:00  focus_change  app=Chromium  title=€357.8 usd - Google Search - Chromium  screenshot=None
+2025-12-28T02:07:51.820568+08:00  focus_change  app=Chromium  title=yetone | 正在创作 avante.nvim | Patreon - Chromium  screenshot=None
+2025-12-28T02:08:06.836819+08:00  focus_change  app=Chromium  title=(6) Citron🍢 (@vanillaCitron) / Twitter - Chromium  screenshot=None
+2025-12-28T02:08:21.842155+08:00  focus_change  app=Chromium  title=(6) Steven Lynn (@Stv_Lynn) / Twitter - Chromium  screenshot=None
+2025-12-28T02:09:11.865679+08:00  focus_change  app=Chromium  title=(6) Steven Lynn on X: "一个产品通常由三类用户构成 第一类（伸手党）：阿巴阿巴，我不会，你教我吧 第二类（硬茬）：你这个不就是xxx吗/我还不如用xxx 第三类：以上两者的结合，等你手扶完做好所有的用户教育后，发现xxx更好用，于是转头走了" / Twitter - Chromium  screenshot=None
+2025-12-28T02:09:16.878275+08:00  focus_change  app=Chromium  title=(6) yetone (@yetone) / Twitter - Chromium  screenshot=None
+2025-12-28T02:10:05.901240+08:00  interval_capture  app=Chromium  title=(6) yetone (@yetone) / Twitter - Chromium  screenshot=None
+2025-12-28T02:15:05.977255+08:00  interval_capture  app=Chromium  title=(6) yetone (@yetone) / Twitter - Chromium  screenshot=None
+2025-12-28T02:15:40.987746+08:00  focus_change  app=Chromium  title=(6) yetone on X: "我真的没在写一个 IDE（ https://t.co/FAXlwovr0J" / Twitter - Chromium  screenshot=None
+2025-12-28T02:16:41.004144+08:00  focus_change  app=Chromium  title=(6) yetone (@yetone) / Twitter - Chromium  screenshot=None
+2025-12-28T02:19:41.052707+08:00  focus_change  app=Chromium  title=(6) yetone on X: "看来前端青年骨干要嫁入我国计算机学阀家庭了，新一届 AI 领导班子即将成立" / Twitter - Chromium  screenshot=None
+2025-12-28T02:19:51.066773+08:00  focus_change  app=Chromium  title=(6) yetone (@yetone) / Twitter - Chromium  screenshot=None
+2025-12-28T02:19:56.071053+08:00  focus_change  app=Chromium  title=(6) Ding on X: "莫名其妙一个 iOS 开发者怎么也会被封？我现在就是内容在 Twitter 和 Threads 一起发，如果哪天我也被封了，我也不回来了。" / Twitter - Chromium  screenshot=None
+2025-12-28T02:20:06.085305+08:00  interval_capture  app=Chromium  title=(6) Ding on X: "莫名其妙一个 iOS 开发者怎么也会被封？我现在就是内容在 Twitter 和 Threads 一起发，如果哪天我也被封了，我也不回来了。" / Twitter - Chromium  screenshot=None
+2025-12-28T02:20:31.102832+08:00  focus_change  app=Chromium  title=(6) yetone (@yetone) / Twitter - Chromium  screenshot=None
+2025-12-28T02:21:36.130640+08:00  focus_change  app=Chromium  title=(6) Ryo Lu (@ryolu_) / Twitter - Chromium  screenshot=None
+2025-12-28T02:23:46.174923+08:00  focus_change  app=Chromium  title=yetone (yetone) - Chromium  screenshot=None
+2025-12-28T02:24:11.192535+08:00  focus_change  app=Chromium  title=yetone | 正在创作 avante.nvim | Patreon - Chromium  screenshot=None
+2025-12-28T02:24:16.205084+08:00  focus_change  app=Chromium  title=(6) Citron🍢 (@vanillaCitron) / Twitter - Chromium  screenshot=None
+2025-12-28T02:24:21.208449+08:00  focus_change  app=Chromium  title=(6) Steven Lynn (@Stv_Lynn) / Twitter - Chromium  screenshot=None
+2025-12-28T02:24:26.221118+08:00  focus_change  app=Chromium  title=(6) Citron🍢 (@vanillaCitron) / Twitter - Chromium  screenshot=None
+2025-12-28T02:25:06.236730+08:00  interval_capture  app=Chromium  title=(6) Citron🍢 (@vanillaCitron) / Twitter - Chromium  screenshot=None
+2025-12-28T02:25:11.249210+08:00  focus_change  app=Chromium  title=(6) Citron🍢 on X: "why T means 7 and E means 3?" / Twitter - Chromium  screenshot=None
+2025-12-28T02:25:21.263351+08:00  focus_change  app=Chromium  title=(240) Post from Mediastorm影视飓风 - YouTube - Chromium  screenshot=None
+2025-12-28T02:25:26.266732+08:00  focus_change  app=Chromium  title=(240) Mediastorm影视飓风 - YouTube - Chromium  screenshot=None
+2025-12-28T02:25:31.279232+08:00  focus_change  app=Chromium  title=(240) 带着一百万...我们去了论文代写聚集地 - YouTube - Chromium  screenshot=None
+2025-12-28T02:25:36.291999+08:00  focus_change  app=Chromium  title=‍ - Chromium  screenshot=None
+2025-12-28T02:25:41.296003+08:00  focus_change  app=gnome-terminal-server  title=Terminal  screenshot=None

@@ -1343,6 +1343,46 @@ regain mindfulness and grace.
 
 most will cease to exist in weeks.
 
+21 40 listen to mygo. find out that some are wrong, the same song by the different singer.
+
+22 00 watch (find) "带着一百万...我们去了论文代写聚集地". download mygo playlists on youtube.
+
+mediastorm uses google, youtube, chatgpt, etc. as norm. good. old money really adds to the world, creating wealth in a proven way. "dont be evil". employing good people, fluent english, calm and confident narration. making and selling goods themselves, neutral clothes, following mr beast. (although running a big company has some limitations itself, compared with lks channel, and chasing views on youtube may cause a bit philistine or entertainment oriented.)
+
+youtube applied its material colors on vid description when expanded.
+
+オリジナル楽曲 https://www.youtube.com/playlist?list=PLUFFl4hYd1R0hXxp-G6qU9IjaT0uAFSIN
+
+歌ってみた・カバー https://www.youtube.com/playlist?list=PLUFFl4hYd1R3DbWVEUf1Nk6LUN8f-yjwX
+
+(deprecated, some unavailable, not by region blocking) https://www.youtube.com/playlist?list=PLUFFl4hYd1R3ZP_lzxF48iIfjbT0ayxWw
+
+i could process them easily later. and fix the song source issue.
+
+23 00 play https://children-of-god.pdjjq.org/ bfs from ruanyf weekly, issues, a creator's blog. for 10 minutes. open the source and try to find the endings with ai.
+
+28
+
+01 40 watch "Professor Shocks High School by Speaking Gen Z Slang".
+
+youtube sometimes hide save in "...", sometimes not. one could not click the profile (lead to the vid instead of the profile). good for users, bad for geeks. 
+
+02 00 watch (find) "What Would You Do with 1 Million? First Destination of the Million Check Series!".
+
+digital nomad. essay helping writer. really creative and inspiring. well educated people... good...
+
+i will watch the god father and the two vids tomorrow!
+
+(download top imdb films from the pirate bay is fast. i could download them anytime, for example, after watching this.)
+
+plan: 
+
+carte, game design, possibilties. (decide the game, a clear imagination) 
+
+journal. the magic. how to describe the ui. choices about tech stuff. what about the data. the graceful ui (antfu style, maybe).
+
+no need to rush. great.
+
 
 
 <!--

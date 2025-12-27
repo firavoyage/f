@@ -49,6 +49,14 @@ carte:
 - art style
 - game design
 
+linguistics:
+
+- translation meaning loss
+
+legacy:
+
+- mistral
+
 ---
 
 separate thinking from doing.
