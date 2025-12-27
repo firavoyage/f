@@ -4,15 +4,9 @@ read the mindset.
 
 journal: (basic) web, app = f(state) = state.
 
-movie.
-
 ---
 
 slay the spine. game design.
-
----
-
-web games often lack.
 
 ---
 
@@ -34,33 +28,7 @@ tell me everything here. i would like to learn something practical and grounded.
 
 ---
 
-i would like to create an app called journal on ubuntu.
-
-it autostarts, runs in the background, and watching the user.
-
-it knows all the opened apps, the title of the app on the top, and the screen.
-
-it tracks any change of the title of the app on the top, takes screenshot regularly (at an interval of certain several minutes, or when context switching), and keep them properly.
-
-it has an web ui on localhost, like a calendar, or a timeline.
-
-it could export the data to plain text and integrate with llms to analyze.
-
-what are the things i may do to create it.
-
-...
-
----
-
-5sim.
-
-whether use 5sim and the cookie manager. do i need. or switch to a slighly weaker model.
-
-feasible? how feasible. read posts online.
-
-i mean, reg a lot of chatgpt acc.
-
-decent cookie manager? if no, write one. dont use browser profiles.
+journal app.
 
 ---
 

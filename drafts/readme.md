@@ -18,8 +18,9 @@ see
 - journal
 - all
 - mistral (legacy, copied from repo firavoyage/blogging)
-- scratch pad (temp)
-- message (temp)
+- scratch pad (temp, the topics stalled)
+- things (temp, the ideas appeared recently)
+- message (temp, the current thread)
 - paste (temp)
 
 misc

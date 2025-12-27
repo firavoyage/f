@@ -1319,6 +1319,30 @@ idk why i happen to download it. right after downloading and comparing between v
 
 washing my face, i have some brilliant ideas. for the screenshot flash issue, i could play a magic move: remove animation before screenshot, enable after. (may be inspired by the scrcpy trick)
 
+11 20 go for a meal. idk what. be pushed by the family. 12 00 duolingo with lulu in the background.
+
+i dont have time to even apply my questions to llms, which ive thought on bed. 
+
+upd: just some ordinary food. or i ate too fast, perhaps.
+
+the first ep of lulu live replay is not the beginning of live. false assumption of the right order.
+
+sometimes i try to wake up with a few questions and pursuits in mind.
+
+13 00 return. boil water. put on earplug. prepare chocolate. watch lulu for a while. 13 20 scrcpy: forward audio. 14 00
+
+14 20 compress pink floyd for phone. 14 40 read over personal twitter profile and fira's list. 15 00 read ruanyf weekly of the last month. create a new twitter list: fira, the curation over curation.
+
+15 40 get infomation overwhelmed. rest for a while. boil water. wash my face. leverage thinking.
+
+regain mindfulness and grace. 
+
+16 20 wake up. 
+
+19 20 skim the ruanyf weekly. 20 00 find and get fascinated in larr.net.
+
+most will cease to exist in weeks.
+
 
 
 <!--
