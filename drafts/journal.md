@@ -1383,6 +1383,82 @@ journal. the magic. how to describe the ui. choices about tech stuff. what about
 
 no need to rush. great.
 
+11 20 breakfast, soy milk and yellow steamed bun, with duolingo and zhihu.
+
+the first zhihu passage is about the mediastorm's essay helping writer vid, a cs student learnt a lot through the homework of top universities, getting paid a little (similar to a builder), in bjydu (student he). a feel of jiang yanyan.
+
+12 40 organize things. create todo. finish zhihu daily digest.
+
+a bit messed up. time to arrange, the next three things to do, for example.
+
+13 20 download some movies picked on imdb. download "Sgt. Pepper's Lonely Hearts Club Band". have lunch after that, jiaozi, sausages, and crab (weird but luxurious).
+
+Fight Club https://thepiratebay.org/description.php?id=7949962
+
+Inception https://thepiratebay.org/description.php?id=7349754
+
+the browser does not work. the down speed of inception got to 7mbps. filled the bandwidth, maybe?
+
+14 20 fix userscript: chatgpt copy, about heading.
+
+til: choose boring tech.
+
+15 00 continue fix mygo: wrong source. 16 00
+
+til: clarity first.
+
+16 00 open "italian red meat flavor". boil water. watch "What Would You Do with 1 Million? First Destination of the Million Check Series!". view some comments on berryberry, 50x views there.
+
+clickbait titles. impact of mr beast. the rise of huai gu. the story of media storm.
+
+17 00 watch "带着一百万...我们去了论文代写聚集地". get frustrated by the weird african language and youtube caption error. spend 20min to create a workaround of download caption and add my own but fail.
+
+choose youtube for the better ui. (google, wealth, high class society.) 30x views on berryberry. although "the value of a first class consumer worths 10x than the rest of the world, incl. chinese", a quote from vtubers. (sc sub is fixed inside the berryberry source... fuck. awkward compliance for the bad platform.)
+
+boil water. take a deep breath. still staying with youtube, the first world. "dont be evil.", a calm statement out of strong confidence of the wealth and wisdom.
+
+mediastorm and low paid workers in kenya both use telegram. good. the benevolence from russia, durov, the geek culture, the aesthetic, the essence of messaging. use samsung phones, another gift.
+
+check berryberry danmaku for a minute. full of nonsense. not a gleam of genius or insight. feelings, praises, jokes/memes, silly slangs, "til!", "that's me, so stupid" "so good man" "impressive". dont trust the low society, as expected.
+
+on the screen of a successful kenya writer (family background, educated, working outside a exploiting platform, reputation): deepseek (for its high free tier limits maybe), windows 11 of the libre world, opera browser (?, ai feature maybe, idk), bundled microsoft apps, whatsapp, vlc, tiktok (android on windows). on the browser (chrome): claude deepseek chatgpt capcut copilot whatsapp wise paypal facebook gmail grammarly sources (news, gov/org sites). core methodology: self learning.
+
+check berryberry subtitle: "broke". as expected. but i... sometimes dont trust myself enough.
+
+berryberry's ui is so stupid. fuck cn ml. a big button for "report the vid" "take a note". a danmaku list on the right (it's, stats for nerds! just putting all features requested by pm, right? no data driven dev like google, where you could see few viewers click it. no support, e.g. money, to make these good things happen. i think maybe the web ui is deprecated somehow, coz only 1/10 viewers here.).
+
+choose berryberry at the end of the day (the awkward english, cacuminal). neither remove nor notice the distractions on the awful ui. full screen. with philistine danmakus closed. essence/metaphor: the way of living in china, where fira would be.
+
+"passion? generally writing, not academic writing per se. yeah, ~. coz... i mean, i consider myself a land historian, like unemployed professor of history. ... better scripts, better history scripts, better political scripts, and better travel vlogs and blogs. i have to be a reader and a writer. ... assuming you re getting paid to learn a skill. that's like two birds with one stone again."
+
+"gov hopes everyone could get educated in universities. but there are no enough jobs." "unemployment." check danmaku for a sec: "what do you mean? nobody could say a word, ok then, i will also appear to be redacted."
+
+in a word, high gini coefficient.
+
+18 40 chat: geography, gini around the world.
+
+19 00 finish watching the kenya short film by mediastorm. view the comments on youtube "the best of both worlds".
+
+good direction. some strategies applied. like zooming into a face and fading into another, like revealing the real identity of someone at the end. 
+
+well, it's about to go into a new year. and im still getting gravitated to society irl, comparing the situations of humanity. would the world leaders, e.g. openai/cursor workers have these boring thoughts? definitely not. they dont even know. there are a lot of people who live a sane life. about the ones succeeded in competitions... they could know. maybe they will think and believe/agree with something similar. and they wont get angry. because, they are the happy few, right? fira... about fira, i think fira is one of them, at least materially. in the real life it's ok to feel a bit frustrated or upset on something. take a deep breath. be wise. be graceful. 
+
+22 00 prepare tea. write another letter to myself, cc to the family. choose to send an email. 23 40
+
+recall: a letter to myself, about schooling (cc to the class master, but she did not notice / have time to read, maybe).
+
+23 40 watch "Fight Club", for an hour.
+
+i think i could follow my plan. fira, you love that, right?
+
+late night. a sanctuary of self.
+
+29
+
+01 00 sleep.
+
+so much for today. have a nice day.
+
 
 
 <!--
@@ -1588,5 +1664,17 @@ projects
 journal
 
 all
+
+ -->
+
+<!-- "idk." wonder, curiosity. a bit loss. -->
+
+<!-- "i know." kind of sad. nothing's gonna happen. -->
+
+<!-- so much for today, have a nice day. -->
+
+<!-- 
+
+yeah, that's it.
 
  -->

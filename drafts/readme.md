@@ -20,6 +20,7 @@ see
 - mistral (legacy, copied from repo firavoyage/blogging)
 - scratch pad (temp, the topics stalled)
 - things (temp, the ideas appeared recently)
+- todo (temp, things, but more grounded and organized)
 - message (temp, the current thread)
 - paste (temp)
 
