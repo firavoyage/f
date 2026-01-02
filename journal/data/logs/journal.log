@@ -10375,3 +10375,142 @@
 2026-01-02T22:32:48.566523+08:00  focus_change  app=Chromium  title=History - Chromium  screenshot=None
 2026-01-02T22:34:08.597230+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
 2026-01-02T22:34:23.613044+08:00  focus_change  app=Chromium  title=‍ - Chromium  screenshot=None
+2026-01-02T22:34:33.627087+08:00  focus_change  app=Chromium  title=Calm Guidance for Fira - Chromium  screenshot=None
+2026-01-02T22:34:38.630868+08:00  focus_change  app=Chromium  title=(269) 【New Year】count down & 2026 plans! | VTuber Cyan - YouTube - Chromium  screenshot=None
+2026-01-02T22:35:03.651772+08:00  focus_change  app=Chromium  title=‍ - Chromium  screenshot=None
+2026-01-02T22:35:07.664583+08:00  interval_capture  app=Chromium  title=‍ - Chromium  screenshot=None
+2026-01-02T22:40:07.741703+08:00  interval_capture  app=Chromium  title=‍ - Chromium  screenshot=None
+2026-01-02T22:43:03.790241+08:00  focus_change  app=Chromium  title=Game Design Questions - Chromium  screenshot=None
+2026-01-02T22:43:08.803754+08:00  focus_change  app=Chromium  title=Branch · Calm conversation guidance - Chromium  screenshot=None
+2026-01-02T22:43:13.816540+08:00  focus_change  app=Chromium  title=Game Design Questions - Chromium  screenshot=None
+2026-01-02T22:43:18.820722+08:00  focus_change  app=Chromium  title=​ - Chromium  screenshot=None
+2026-01-02T22:43:48.831934+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-02T22:44:08.849349+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-02T22:44:18.853976+08:00  focus_change  app=Chromium  title=​ - Chromium  screenshot=None
+2026-01-02T22:44:23.866518+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-02T22:44:43.882476+08:00  focus_change  app=Code  title=20260102 fira categorize personas.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-02T22:44:48.894946+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-02T22:44:53.907566+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-02T22:45:07.913126+08:00  interval_capture  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-02T22:45:33.921346+08:00  focus_change  app=Chromium  title=New Tab - Chromium  screenshot=None
+2026-01-02T22:45:38.924510+08:00  focus_change  app=Chromium  title=ChatGPT - Chromium  screenshot=None
+2026-01-02T22:45:48.929101+08:00  focus_change  app=Chromium  title=List Comparison Request - Chromium  screenshot=None
+2026-01-02T22:45:58.933698+08:00  focus_change  app=Chromium  title=List Comparison Results - Chromium  screenshot=None
+2026-01-02T22:46:12.939671+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-02T22:46:27.945168+08:00  focus_change  app=Chromium  title=List Comparison Results - Chromium  screenshot=None
+2026-01-02T22:46:42.951178+08:00  focus_change  app=Chromium  title=bradwoods - Google Search - Chromium  screenshot=None
+2026-01-02T22:46:47.954376+08:00  focus_change  app=Chromium  title=Brad Woods - Chromium  screenshot=None
+2026-01-02T22:47:02.960370+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-02T22:47:07.963820+08:00  focus_change  app=Chromium  title=Brad Woods Digital Garden - Chromium  screenshot=None
+2026-01-02T22:47:13.025852+08:00  focus_change  app=Chromium  title=Brad Woods - Chromium  screenshot=None
+2026-01-02T22:47:18.029170+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-02T22:47:23.032199+08:00  focus_change  app=Chromium  title=List Comparison Results - Chromium  screenshot=None
+2026-01-02T22:48:08.047088+08:00  focus_change  app=Chromium  title=daimajia - Google Search - Chromium  screenshot=None
+2026-01-02T22:48:13.059521+08:00  focus_change  app=Chromium  title=List Comparison Results - Chromium  screenshot=None
+2026-01-02T22:48:18.063079+08:00  focus_change  app=Chromium  title=ChatGPT - Chromium  screenshot=None
+2026-01-02T22:48:23.066091+08:00  focus_change  app=Chromium  title=List Comparison Results - Chromium  screenshot=None
+2026-01-02T22:48:28.069252+08:00  focus_change  app=Chromium  title=daimajia (代码家) - Chromium  screenshot=None
+2026-01-02T22:48:53.078578+08:00  focus_change  app=Chromium  title=代码家 – 一个戴着大人面具的小孩 - Chromium  screenshot=None
+2026-01-02T22:49:13.095063+08:00  focus_change  app=Chromium  title=List Comparison Results - Chromium  screenshot=None
+2026-01-02T22:49:23.099847+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-02T22:49:38.105805+08:00  focus_change  app=Chromium  title=Uptime Status - Chromium  screenshot=None
+2026-01-02T22:49:43.119086+08:00  focus_change  app=Chromium  title=稀土掘金 - Chromium  screenshot=None
+2026-01-02T22:49:48.123325+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-02T22:49:53.127082+08:00  focus_change  app=Chromium  title=全面封禁 Cursor！又一家大厂出手了最近，有网友爆料称：快手的研发线发布通知，收紧了对第三方编程软件的使用权限。 不 - 掘金 - Chromium  screenshot=None
+2026-01-02T22:50:08.142524+08:00  interval_capture  app=Chromium  title=全面封禁 Cursor！又一家大厂出手了最近，有网友爆料称：快手的研发线发布通知，收紧了对第三方编程软件的使用权限。 不 - 掘金 - Chromium  screenshot=None
+2026-01-02T22:50:13.146441+08:00  focus_change  app=Chromium  title=稀土掘金 - Chromium  screenshot=None
+2026-01-02T22:50:18.150508+08:00  focus_change  app=Chromium  title=List Comparison Results - Chromium  screenshot=None
+2026-01-02T22:50:23.163086+08:00  focus_change  app=Chromium  title=New Tab - Chromium  screenshot=None
+2026-01-02T22:50:28.166671+08:00  focus_change  app=Chromium  title=GorvGoyl (Gourav Goyal) - Chromium  screenshot=None
+2026-01-02T22:50:33.170764+08:00  focus_change  app=Chromium  title=List Comparison Results - Chromium  screenshot=None
+2026-01-02T22:50:38.173870+08:00  focus_change  app=Chromium  title=Gourav Goyal - Personal site and blog - Chromium  screenshot=None
+2026-01-02T22:50:43.177505+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-02T22:50:48.180791+08:00  focus_change  app=Chromium  title=New Tab - Chromium  screenshot=None
+2026-01-02T22:50:53.184000+08:00  focus_change  app=Chromium  title=Untitled - Chromium  screenshot=None
+2026-01-02T22:50:58.187578+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-02T22:51:03.199908+08:00  focus_change  app=Chromium  title=代码家 – 一个戴着大人面具的小孩 - Chromium  screenshot=None
+2026-01-02T22:52:18.230257+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-02T22:52:23.242896+08:00  focus_change  app=Chromium  title=List Comparison Results - Chromium  screenshot=None
+2026-01-02T22:52:38.251390+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-02T22:52:43.257919+08:00  focus_change  app=Chromium  title=matrix67 - Google Search - Chromium  screenshot=None
+2026-01-02T22:52:48.261475+08:00  focus_change  app=Chromium  title=New Tab - Chromium  screenshot=None
+2026-01-02T22:52:53.264236+08:00  focus_change  app=Chromium  title=matrix67 localhost - Google Search - Chromium  screenshot=None
+2026-01-02T22:53:03.278113+08:00  focus_change  app=Chromium  title=localhost-8080.com - Chromium  screenshot=None
+2026-01-02T22:53:13.292066+08:00  focus_change  app=Chromium  title=fudaoyuan.icu - 又一个WordPress站点 - Chromium  screenshot=None
+2026-01-02T22:53:28.307054+08:00  focus_change  app=Chromium  title=项目 - fudaoyuan.icu - Chromium  screenshot=None
+2026-01-02T22:53:43.313446+08:00  focus_change  app=Chromium  title=New Tab - Chromium  screenshot=None
+2026-01-02T22:53:48.317602+08:00  focus_change  app=Chromium  title=List Comparison Results - Chromium  screenshot=None
+2026-01-02T22:53:53.321955+08:00  focus_change  app=Chromium  title=saiba momoi - Google Search - Chromium  screenshot=None
+2026-01-02T22:53:58.325170+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-02T22:54:03.328463+08:00  focus_change  app=Chromium  title=List Comparison Results - Chromium  screenshot=None
+2026-01-02T22:54:08.340939+08:00  focus_change  app=Chromium  title=xpzouying - Google Search - Chromium  screenshot=None
+2026-01-02T22:54:13.344759+08:00  focus_change  app=Chromium  title=aigc weekly - Google Search - Chromium  screenshot=None
+2026-01-02T22:54:23.349553+08:00  focus_change  app=Chromium  title=AIGC Weekly | AIGC Newsletter | pxiaoer | Substack - Chromium  screenshot=None
+2026-01-02T22:54:28.361914+08:00  focus_change  app=Chromium  title=AIGC Weekly | #92 - by pxiaoer - AIGC Newsletter - Chromium  screenshot=None
+2026-01-02T22:54:43.367405+08:00  focus_change  app=Chromium  title=AIGC Weekly | AIGC Newsletter | pxiaoer | Substack - Chromium  screenshot=None
+2026-01-02T22:54:48.370976+08:00  focus_change  app=Chromium  title=AIGC Weekly - Chromium  screenshot=None
+2026-01-02T22:54:53.383825+08:00  focus_change  app=Chromium  title=AIGC Weekly #153 元旦快乐，没啥内容 | AIGC Weekly - Chromium  screenshot=None
+2026-01-02T22:54:58.389418+08:00  focus_change  app=Chromium  title=mrcongliu - Chromium  screenshot=None
+2026-01-02T22:55:03.401931+08:00  focus_change  app=Chromium  title=List Comparison Results - Chromium  screenshot=None
+2026-01-02T22:55:08.405273+08:00  interval_capture  app=Chromium  title=List Comparison Results - Chromium  screenshot=None
+2026-01-02T22:55:18.409776+08:00  focus_change  app=Chromium  title=New Tab - Chromium  screenshot=None
+2026-01-02T22:55:23.422140+08:00  focus_change  app=Chromium  title=List Comparison Results - Chromium  screenshot=None
+2026-01-02T22:55:38.437366+08:00  focus_change  app=Chromium  title=jingsheng237248 - Google Search - Chromium  screenshot=None
+2026-01-02T22:55:43.446271+08:00  focus_change  app=Chromium  title=Untitled - Chromium  screenshot=None
+2026-01-02T22:55:48.458706+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-02T22:56:33.473264+08:00  focus_change  app=Chromium  title=List Comparison Results - Chromium  screenshot=None
+2026-01-02T22:56:38.478716+08:00  focus_change  app=Chromium  title=​ - Chromium  screenshot=None
+2026-01-02T23:00:08.534741+08:00  interval_capture  app=Chromium  title=​ - Chromium  screenshot=None
+2026-01-02T23:00:48.549094+08:00  focus_change  app=Chromium  title=New Tab - Chromium  screenshot=None
+2026-01-02T23:00:53.561739+08:00  focus_change  app=Chromium  title=​ - Chromium  screenshot=None
+2026-01-02T23:04:43.622024+08:00  focus_change  app=Chromium  title=List Comparison Results - Chromium  screenshot=None
+2026-01-02T23:04:48.625581+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-02T23:05:08.641981+08:00  interval_capture  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-02T23:05:43.653909+08:00  focus_change  app=Chromium  title=cyannyan6 - Google Search - Chromium  screenshot=None
+2026-01-02T23:05:53.658666+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-02T23:05:58.664058+08:00  focus_change  app=Chromium  title=CyanNyan (Cyan Nyan) - Chromium  screenshot=None
+2026-01-02T23:06:03.667366+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-02T23:06:08.672800+08:00  focus_change  app=Chromium  title=Cyan Nyan | The Hacker Neko VTuber - Chromium  screenshot=None
+2026-01-02T23:06:13.677952+08:00  focus_change  app=Chromium  title=hoshinolina - Google Search - Chromium  screenshot=None
+2026-01-02T23:06:23.683037+08:00  focus_change  app=Chromium  title=hoshinolina (Hoshino Lina) - Chromium  screenshot=None
+2026-01-02T23:06:33.696856+08:00  focus_change  app=Chromium  title=@lina.yt on Bluesky - Chromium  screenshot=None
+2026-01-02T23:06:38.701766+08:00  focus_change  app=Chromium  title=hoshinolina (Hoshino Lina) - Chromium  screenshot=None
+2026-01-02T23:06:43.704973+08:00  focus_change  app=Chromium  title=Cyan Nyan | The Hacker Neko VTuber - Chromium  screenshot=None
+2026-01-02T23:06:48.708094+08:00  focus_change  app=Chromium  title=Cyan Nyan | Virtual YouTuber Wiki | Fandom - Chromium  screenshot=None
+2026-01-02T23:07:08.715169+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-02T23:07:18.729124+08:00  focus_change  app=Chromium  title=Cyan Nyan | The Hacker Neko VTuber - Chromium  screenshot=None
+2026-01-02T23:07:48.739979+08:00  focus_change  app=Chromium  title=【Coding】Coding Cyan's page! | VTuber Cyan - YouTube - Chromium  screenshot=None
+2026-01-02T23:07:53.753299+08:00  focus_change  app=Chromium  title=(270) 【Coding】Coding Cyan's page! | VTuber Cyan - YouTube - Chromium  screenshot=None
+2026-01-02T23:08:03.767091+08:00  focus_change  app=Chromium  title=hoshinolina (Hoshino Lina) - Chromium  screenshot=None
+2026-01-02T23:08:08.781556+08:00  focus_change  app=Chromium  title=Hoshino Lina (星乃リナ) 🩵 3D Yuri Wedding 2026!!! (@lina.yt) — Bluesky - Chromium  screenshot=None
+2026-01-02T23:08:13.794215+08:00  focus_change  app=Chromium  title=hoshinolina (Hoshino Lina) - Chromium  screenshot=None
+2026-01-02T23:08:18.797680+08:00  focus_change  app=Chromium  title=Hoshino Lina (星乃リナ) 🩵 3D Yuri Wedding 2026!!! (@lina@vt.social) - VT Social - Chromium  screenshot=None
+2026-01-02T23:08:23.801370+08:00  focus_change  app=Chromium  title=(270) Hoshino Lina / 星乃リナ - YouTube - Chromium  screenshot=None
+2026-01-02T23:08:28.805432+08:00  focus_change  app=Chromium  title=Untitled - Chromium  screenshot=None
+2026-01-02T23:08:33.808519+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-02T23:08:43.813705+08:00  focus_change  app=Chromium  title=AsahiLina - Chromium  screenshot=None
+2026-01-02T23:08:48.817044+08:00  focus_change  app=Chromium  title=Hoshino Lina (星乃リナ) 🩵 3D Yuri Wedding 2026!!! (@lina.yt) — Bluesky - Chromium  screenshot=None
+2026-01-02T23:08:53.820475+08:00  focus_change  app=Chromium  title=Hoshino Lina / 星乃リナ - YouTube - Chromium  screenshot=None
+2026-01-02T23:08:58.833129+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-02T23:09:03.836405+08:00  focus_change  app=Chromium  title=Trending - VT Social - Chromium  screenshot=None
+2026-01-02T23:09:23.852844+08:00  focus_change  app=Chromium  title=(270) Hoshino Lina / 星乃リナ - YouTube - Chromium  screenshot=None
+2026-01-02T23:09:48.865130+08:00  focus_change  app=Chromium  title=Hoshino Lina (星乃リナ) 🩵 3D Yuri Wedding 2026!!! (@lina@vt.social) - VT Social - Chromium  screenshot=None
+2026-01-02T23:10:03.879884+08:00  focus_change  app=Chromium  title=hoshinolina (Hoshino Lina) - Chromium  screenshot=None
+2026-01-02T23:10:08.884095+08:00  focus_change  app=Chromium  title=(270) 【Coding】Coding Cyan's page! | VTuber Cyan - YouTube - Chromium  screenshot=None
+2026-01-02T23:10:08.887117+08:00  interval_capture  app=Chromium  title=(270) 【Coding】Coding Cyan's page! | VTuber Cyan - YouTube - Chromium  screenshot=None
+2026-01-02T23:10:13.890845+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-02T23:10:18.903450+08:00  focus_change  app=Chromium  title=(270) 【Coding】Coding Cyan's page! | VTuber Cyan - YouTube - Chromium  screenshot=None
+2026-01-02T23:10:28.917368+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-02T23:10:33.920352+08:00  focus_change  app=Chromium  title=(270) 【Coding】Coding Cyan's page! | VTuber Cyan - YouTube - Chromium  screenshot=None
+2026-01-02T23:10:38.932954+08:00  focus_change  app=Chromium  title=CyanNyan (Cyan Nyan) - Chromium  screenshot=None
+2026-01-02T23:10:47.937605+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-02T23:10:57.941690+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-02T23:11:07.946763+08:00  focus_change  app=Code  title=20260102 fira categorize personas.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-02T23:11:17.951092+08:00  focus_change  app=Chromium  title=List Comparison Results - Chromium  screenshot=None
+2026-01-02T23:11:27.955507+08:00  focus_change  app=Code  title=20260102 fira categorize personas.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-02T23:11:37.960002+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-02T23:12:07.969422+08:00  focus_change  app=Chromium  title=CyanNyan (Cyan Nyan) - Chromium  screenshot=None
+2026-01-02T23:12:12.972986+08:00  focus_change  app=Chromium  title=social.cyannyan.com - Chromium  screenshot=None
+2026-01-02T23:12:17.976155+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-02T23:13:27.997333+08:00  focus_change  app=Chromium  title=(270) 【Coding】Coding Cyan's page! | VTuber Cyan - YouTube - Chromium  screenshot=None
+2026-01-02T23:13:33.001441+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
