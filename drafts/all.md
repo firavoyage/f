@@ -29,6 +29,7 @@ life:
 - spare time, why
 - time, future, certainty
 - fight club
+- university fields content creator subject niche
 
 software engineering:
 
@@ -65,9 +66,8 @@ music:
 
 - float appreciate
 
-misc:
+philosophy:
 
-- allowance
 - ethics, existentialism
 
 legacy:

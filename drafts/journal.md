@@ -1611,6 +1611,10 @@ for the wealthy guy, that money does not even matter. for hu chenfeng, whether b
 
 200g, without small pack. idk.
 
+14 40 organize readme/personas and browse the works of some. 18 20
+
+20 20 finish organizing readme/personas playing crazy world at the max volume. 22 20 
+
 
 
 <!--
