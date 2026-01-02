@@ -4,9 +4,9 @@
 
 write good code, which is clear, cohesive, SOLID, minimal, intention-revealing, invariant-safe, DRY, YAGNI, low-coupling, boring.
 
-make the change gentle.
+make the change gentle if possible.
 
-i would like to have the full code.
+show me the full code.
 
 # 0
 

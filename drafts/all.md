@@ -13,6 +13,7 @@ create something:
 - mindset methodology (?)
 - book make
 - manage project
+- a day working on github
 
 manage time:
 
@@ -27,49 +28,50 @@ life:
 - sources of knowledge
 - spare time, why
 - time, future, certainty
-- allowance (?)
+- fight club
 
-vibe coding:
+software engineering:
 
 - vibe coding mindset
 - vibe coding workflow
+- ask questions
+- code best practices
+- ui design document
+
+gamedev (carte):
+
+- life create something big weekend time management
+- card games
+- art style
+- game design amazing either ors
 
 literary:
 
 - daoism
 
-write code:
-
-- code best practices
-
-carte:
-
-- life create something big weekend time management
-- card games
-- art style
-- game design
-
 linguistics:
 
 - translation meaning loss
+
+psychology:
+
+- psychology
+
+leisure:
+
+- jp books levels
+
+music:
+
+- float appreciate
+
+misc:
+
+- allowance
+- ethics, existentialism
 
 legacy:
 
 - mistral
 
----
-
-separate thinking from doing.
-
-learn from your experience.
-
-one may not be perfect.
-
----
-
-phases of software engineering. (thinking.)
-
-steps. (verbs)
-
-
-
+<!-- names, not links. (assume using ctrl p to search, on code.) -->

@@ -1,0 +1,196 @@
+i would like to choose by subject/niche.
+
+give me some categories. fill in later, not now. but it's ok to fill some for example.
+
+```
+- personas
+  - acetaffy812
+  - adamwathan tailwindcss
+  - angelnekochan math
+  - animenz
+  - anlin zhihu
+  - antfu slidev
+  - antoninoscordino ntonino
+  - anyway.fm/now
+  - ark.studio design
+  - atharok grind
+  - ayumu maki's lab
+  - bingtangio
+  - bradwoods
+  - cdtchinese
+  - chai jing chinese
+  - chen xiao origami
+  - chiyuki0325
+  - chriscoyier
+  - chtholly nota seniorious
+  - cmfbynothing
+  - codingstartup
+  - cosmicac 2o181o28
+  - cyannyan6 hoshinolina
+  - daimajia juejin
+  - darkf1ames
+  - dbinary matrixcascade
+  - dingyi dex weekly
+  - disdjj blog.pdjjq.org
+  - disksing
+  - diygod
+  - egoist chatwise anime-sedai
+  - elleflorio
+  - end3r js13kgames
+  - endgame battlebots
+  - falstaff duolingo
+  - fenggewangmintianya chinese
+  - fenxer design scenes fenx.work
+  - ftium4 ux weekly
+  - funshiki
+  - gaearon dan abramov
+  - gaou
+  - georgehastings unicode.studio
+  - google doodles
+  - gorvgoyl clone-wars
+  - grant sanderson 3blue1brown
+  - growth.design
+  - gus brawl stars
+  - hakadao
+  - haoel coolshell
+  - helena adams identity v
+  - henrilechatnoir
+  - himself65
+  - hitori gotoh
+  - hitw93
+  - hsn8086 hsn8086k
+  - hu chenfeng chinese
+  - hullqin
+  - huxpro
+  - hzwer
+  - ichi hime
+  - innei innei.in
+  - insraq
+  - jh3yy
+  - jiang yanyan
+  - jiangly
+  - jiangzijun zhihu
+  - jinghanqing chinese
+  - jingsheng237248
+  - jiongks
+  - jjying
+  - johann sebastian bach
+  - joshwcomeau
+  - juemingmofei
+  - juliangarnier animejs
+  - kagura mea
+  - kasugano sora
+  - ke jie go
+  - keven1024 fudaoyuan.icu
+  - kitbogashow scammers killer
+  - kk_shinkai sumink
+  - kkksc03
+  - konata izumi
+  - krahets helloalgo
+  - kuviman kart-lang linksider
+  - larrasket larr.net lr0.org
+  - leanrada kalabasa
+  - leaverou
+  - leongao
+  - li jiaqing go
+  - lightvector
+  - lingdong- lingdong huang wenyan-lang
+  - lingyuanyuanyuanyuanyuan notrealname zhihu
+  - lionleaf
+  - liu yiyi go
+  - liujiayi1111 tauri
+  - liuran_jyz
+  - livid v2ex
+  - longbow flintlock gi doujin
+  - luan xiao meng zhihu
+  - luoling8192
+  - mao niang shen zhihu
+  - matrix67
+  - megabits_mzq
+  - menci lcmenci
+  - minami iwasaki
+  - minato aqua
+  - miyuki takara
+  - modisijixushifu chinese
+  - mrcongliu
+  - mugumogu maru
+  - mutsumi mygo
+  - muyushuixin
+  - nahida
+  - nat friedman github
+  - nayuki
+  - newlearnerchannel
+  - nickel_angel
+  - nina iseri
+  - ninalex12 asakawauniversityofscience
+  - oooooohmygosh
+  - op7418 aigc weekly
+  - ornicar
+  - overidea
+  - pidanzhoujiala
+  - potetomj
+  - probiusofficial
+  - ramsayleung
+  - randy lutaonan.com
+  - rosepineus chess gamedev
+  - ruanyf ruanyf weekly
+  - ryokun6 ryo lu work.ryo.lu os.ryo.lu 
+  - saiba momoi
+  - sama sam altman openai
+  - samekosaba
+  - samuelqzq qzq.at gamedev
+  - shadcn
+  - shaonianshanzhijun chinese
+  - share121
+  - shengxj1
+  - shiffman
+  - shin jin-seo go
+  - shizuku lulu
+  - shylily
+  - simonwillison simonwillison.net
+  - sinyalee alphastar
+  - snack life
+  - spade echo
+  - sparkle
+  - steve jobs apple
+  - student he studio
+  - suzumiyasuzume
+  - takanashi hoshino
+  - tendou alice
+  - tim mediastorm
+  - timochan
+  - timqian
+  - tinyfool
+  - tourist gennady korotkevich
+  - tualatrix
+  - turingou
+  - txstc55
+  - uzawa reisa
+  - vedal987 neuro sama
+  - verymoes
+  - vochant mirekintoc
+  - vtbs_irl
+  - wanderer above the sea of fog
+  - wang zhian chinese
+  - wesbos
+  - whyyoutouzhele 611study.icu zyo.run
+  - wu songlei paperclip
+  - xiaoazaishangwang chinese
+  - xiaoyaocz simplelive
+  - xiaoyaosanren
+  - xkcd
+  - xpzouying
+  - xuegao cheese
+  - xzqzmyzxh loli.my
+  - yearprogress
+  - yeyouchuan
+  - yifenggui apple
+  - yifusuyi
+  - yiwanye design
+  - yokidou sv
+  - yuanchuan
+  - yunyoujun
+  - yuuki sakuna
+  - yxc acwing
+  - zhao-stanley web.lab
+```

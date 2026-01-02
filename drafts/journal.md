@@ -1305,7 +1305,7 @@ saying "idk" feels good. a girl ive met loves saying that.
 
 she knows human, really.
 
-23 20 switch to the microsoft account using cookie manager. activate the base style (wisdom) accidentally. 
+23 20 switch to the microsoft account using cookie manager. activate the base style (wisdom) accidentally.
 
 not have things turned off. may be something good?
 
@@ -1321,7 +1321,7 @@ washing my face, i have some brilliant ideas. for the screenshot flash issue, i 
 
 11 20 go for a meal. idk what. be pushed by the family. 12 00 duolingo with lulu in the background.
 
-i dont have time to even apply my questions to llms, which ive thought on bed. 
+i dont have time to even apply my questions to llms, which ive thought on bed.
 
 upd: just some ordinary food. or i ate too fast, perhaps.
 
@@ -1335,9 +1335,9 @@ sometimes i try to wake up with a few questions and pursuits in mind.
 
 15 40 get infomation overwhelmed. rest for a while. boil water. wash my face. leverage thinking.
 
-regain mindfulness and grace. 
+regain mindfulness and grace.
 
-16 20 wake up. 
+16 20 wake up.
 
 19 20 skim the ruanyf weekly. 20 00 find and get fascinated in larr.net.
 
@@ -1365,7 +1365,7 @@ i could process them easily later. and fix the song source issue.
 
 01 40 watch "Professor Shocks High School by Speaking Gen Z Slang".
 
-youtube sometimes hide save in "...", sometimes not. one could not click the profile (lead to the vid instead of the profile). good for users, bad for geeks. 
+youtube sometimes hide save in "...", sometimes not. one could not click the profile (lead to the vid instead of the profile). good for users, bad for geeks.
 
 02 00 watch (find) "What Would You Do with 1 Million? First Destination of the Million Check Series!".
 
@@ -1375,9 +1375,9 @@ i will watch the god father and the two vids tomorrow!
 
 (download top imdb films from the pirate bay is fast. i could download them anytime, for example, after watching this.)
 
-plan: 
+plan:
 
-carte, game design, possibilties. (decide the game, a clear imagination) 
+carte, game design, possibilties. (decide the game, a clear imagination)
 
 journal. the magic. how to describe the ui. choices about tech stuff. what about the data. the graceful ui (antfu style, maybe).
 
@@ -1439,9 +1439,9 @@ in a word, high gini coefficient.
 
 19 00 finish watching the kenya short film by mediastorm. view the comments on youtube "the best of both worlds".
 
-good direction. some strategies applied. like zooming into a face and fading into another, like revealing the real identity of someone at the end. 
+good direction. some strategies applied. like zooming into a face and fading into another, like revealing the real identity of someone at the end.
 
-well, it's about to go into a new year. and im still getting gravitated to society irl, comparing the situations of humanity. would the world leaders, e.g. openai/cursor workers have these boring thoughts? definitely not. they dont even know. there are a lot of people who live a sane life. about the ones succeeded in competitions... they could know. maybe they will think and believe/agree with something similar. and they wont get angry. because, they are the happy few, right? fira... about fira, i think fira is one of them, at least materially. in the real life it's ok to feel a bit frustrated or upset on something. take a deep breath. be wise. be graceful. 
+well, it's about to go into a new year. and im still getting gravitated to society irl, comparing the situations of humanity. would the world leaders, e.g. openai/cursor workers have these boring thoughts? definitely not. they dont even know. there are a lot of people who live a sane life. about the ones succeeded in competitions... they could know. maybe they will think and believe/agree with something similar. and they wont get angry. because, they are the happy few, right? fira... about fira, i think fira is one of them, at least materially. in the real life it's ok to feel a bit frustrated or upset on something. take a deep breath. be wise. be graceful.
 
 22 00 prepare tea. write another letter to myself, cc to the family. choose to send an email. 23 40
 
@@ -1458,6 +1458,158 @@ late night. a sanctuary of self.
 01 00 sleep.
 
 so much for today. have a nice day.
+
+18 20 write some thoughts on mygo characters. boil water. watch "Fight Club" from 1 hour. open a pack of classic flavor. 20 00.
+
+20 20 organize things on the phone. create app preview. add support to html for vscode code runner. (20 40)
+
+"Gemini one shotted this."
+
+22 20 surf zhihu: society, economics (america irl, r/homeless). 23 00
+
+23 00 play pink floyd at max volume. hit hard my right knee with my fist. get extremely high. (may be caused by the zhihu, but i like that. jesus christ.) browse before closing some twitter tabs. 24 00
+
+turn the emperor xi down! fuck off yellow guys, let white/black on! let barrack obama be the next president!
+
+recall the political memes in the toilet in my school. that's youth. that's the infinite momentum of tomorrow.
+
+some mtfs. idk why i added to the fira "curation over curation" list. because they are weak? make me feel good? anyway, if i like i could remove them later.
+
+30
+
+00 40 read: describe ui to an llm. sleep.
+
+18 20 refresh.
+
+19 00 chat: llms censorship ethics.
+
+the world is what it is.
+
+20 20 switch from pink floyd to shizuku lulu.
+
+20 40 surf youtube. download "The Stranger". appreciate the spirit of "撕毁中國護照，偷渡到美國，大罵中國人都是蛆的「潤人」王偉恆，現在過得怎麼樣了？". 21 40
+
+bfs... too random. get gravitated by random things, like a danmaku "Kill the One from Shijiazhuang". a recommended vid. a comment. something like these. a bit stupid maybe. or just, this time, it's a bit boring. generally i think that curiosity helps overall.
+
+22 40 watch shizuku ruru chatting for a while. feel connected. feel real. feel alive.
+
+i could stay within that fantasy dream for a little longer, without dying for freedom in usa, meeting and exchanging observations with black lives.
+
+black lives doesnt matter. no one matters in the world. we are god's unwanted children. so be it!
+
+31
+
+00 40 twitter daily digest.
+
+14 00 talk with youth after school, a japanese learner abroad with n1 cert, some grade 1 students on pe class (some boys playing badminton, a fat girl, curious, and easygoing)
+
+wont see the japanese learner "zhiyuan" again, maybe. no sns handle given "if we have the fate, we would find each other someday!". although she's active on douyin.
+
+"could you access 91" "what's 91, i mean the url" "show pornhub.com" (no https?! proceed. but idk why.)
+
+(they are surprised about that. while political memes, unixporn/mtf/suicide culture are not as arousing, at least for them.)
+
+"usually i prefer premium contents on bitmagnet more."
+
+the girl knows a lot about life abroad. (relatives, friends, or maybe herself...)
+
+youth... so good man. yokatta...
+
+14 40 go home. see some low paid workers, incl. a deliver and a painter, being peaceful and unhurried. feel at a loss, a bit (why could they feel easy. they should be injured by working and hungry all the time.) express the desire of dying in developed countries.
+
+just go inside. dont care anything.
+
+16 20 organize things on phone. move tabs to laptop. find memories on the legacy folder of the removed smartisan notes app. fall asleep.
+
+17 40 wake up. listen to i shinji.
+
+18 40 surf zhihu.
+
+20 20 receive a gift, bello vitahouse truffles dark chocolate coated.
+
+21 00 watch haruhi ep 27 and suffer wrong subtitles. design something exciting/weird on project white: societyirl/the chinese homeless/qinfeng minyue/unixporn.
+
+23 00 surf twitter politics. 23 40 download "NEON GENESIS EVANGELION SOUNDTRACK 25th ANNIVERSARY BOX" "涼宮ハルヒの憂鬱 -Super Remix- Full-Mix". 
+
+https://open.spotify.com/album/0lpgkuH72w3f8UKVELKeFX
+
+https://open.spotify.com/album/5rPD1O5bZ3gi1WtsNUObhg
+
+24 00 listen to "God knows..." going into a new year.
+
+time is consecutive. nothing special. 
+
+check twitter, no one celebrating it, as expected, no surprise. 
+
+jan 2026
+
+01
+
+00 40 archive zhihu collections.
+
+01 40 download "infinite synthesis" "Today Is A Beautiful Day".
+
+https://open.spotify.com/album/5s0wY4KuXPLlUdUMIe8Hrs
+
+https://open.spotify.com/album/48KseHW22uKEJjgTKZCtk7
+
+11 40 chat: a day of software engineer. play pink floyd in the ear. leisure: japanese books. 12 00 play shizuku ruru (live replay 2025.12.21 22 48).
+
+14 00 download "The Good, the Bad and the Ugly". watch "Kenya's Capital: The City of a Thousand Realities", inspired by the "historian for the lion" in a film by mediastorm. open a pack of classic flavor and have it gently.
+
+https://thepiratebay.org/description.php?id=8022524
+
+fail to find that kenyan, a expert on philosophy/history/sociology/geography/... and self learning, a shadow scholar. so many "kenyan historians". one does not matter.
+
+14 20 read over the memories on smartisan notes. 15 00
+
+genshin chat. clash royale, gaozixiang, haishangyizhimao, pengguo, mengyan. douyin on web. ruanyf weekly. brawl stars. mini games.
+
+15 00 watch "【New Year】count down & 2026 plans! | VTuber Cyan".
+
+i think i dont need to write down what im playing. too trival. just pick one from a few. nothing special.
+
+16 00 follow more based on ryo lu, jj ying, ruanyf, etc. make my twitter profile more graceful.
+
+17 40 download "Parsley, Sage, Rosemary And Thyme".
+
+https://open.spotify.com/album/1sh32o99zA04PJIUJUpEj7
+
+18 00 go out. 18 40 have dinner "tasty" (metro city). 
+
+20 40 archive chats. watch lciop awhile.
+
+21 20 watch "【New Year】count down & 2026 plans! | VTuber Cyan" replay from the beginning, in the background. 
+
+22 40 trim zhihu fav: ref.
+
+23 00 download "Hotel California" "Crazy World".
+
+https://open.spotify.com/album/2widuo17g5CEC66IbzveRu
+
+https://open.spotify.com/album/3dLKM8bD8R3H3XnSOXGjTF
+
+23 20 float: appreciate songs. 
+
+02
+
+00 20 life: psychology.
+
+considered 01 (at least on file names), since it's when the idea on telegram inner monologue chat is.
+
+01 40 sleep.
+
+12 40 organize todo, things, scratch pad, and journal breadcrumbs. finish quick ones (e.g. organize `all`). 
+
+13 00 surf youtube. watch "逆天！户晨风大半夜指挥“半个亿”跑马拉松，最后在直播间立正鞠躬道歉：对不起，我错了！每晚高强度直播，户子胸口痛准备去体检，自称买了很多保险，弹幕：有康复风险吗....".
+
+for the wealthy guy, that money does not even matter. for hu chenfeng, whether buying an insurance is just a personal choice about rish control, and either is reasonable. about the revenue of the insurance company or the negative expectation, that's not a concern. nothing special. a gambler would lose all, not because the expectation is negative, but even if it's positive, he wont manage to win with something thoughtful (practical wisdom).
+
+13 40 categorize readme/personas.
+
+14 00 open a pack of truffles.
+
+200g, without small pack. idk.
 
 
 
@@ -1673,8 +1825,16 @@ all
 
 <!-- so much for today, have a nice day. -->
 
-<!-- 
+<!--
 
 yeah, that's it.
+
+ -->
+
+<!--
+
+readme.
+
+ryo.lu
 
  -->

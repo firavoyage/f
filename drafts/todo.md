@@ -1,19 +1,41 @@
 todo
 
----
-
-pick, download imdb. (maybe, learn, and recommend from what i love. providing the list, or maybe not.)
+<!-- leverage thinking. -->
 
 ---
 
-the movie.
+think: journal breadcrumbs, todo, things, or scratch pad?
+
+would they plan/predict.
+
+favicon. to ico? methods (theme) ? write.
 
 ---
 
-(mindset / leverage thinking.)
+journal: ~~the magic move.~~ 
 
-~~the magic move.~~ ui.
+ui. clarity.
 
-carte. game design.
+api.
 
 ---
+
+carte: 
+
+game design. 
+
+gameplay.
+
+ideas.
+
+clarity.
+
+---
+
+carte: a build step or not
+
+---
+
+organize personas. great inspirations.
+
+readme. Google doodles (the sketchy design). Add sublist to personas.
