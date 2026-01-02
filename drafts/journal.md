@@ -1613,7 +1613,7 @@ for the wealthy guy, that money does not even matter. for hu chenfeng, whether b
 
 14 40 organize readme/personas and browse the works of some. 18 20
 
-20 20 finish organizing readme/personas playing crazy world at the max volume. 22 20 
+20 20 finish organizing readme/personas playing crazy world at the max volume. 22 20 relax. check the list and end this. 23 00
 
 
 
