@@ -2,9 +2,13 @@
 
 # .
 
-write good code, which is clear, cohesive, SOLID, minimal, intention-revealing, invariant-safe, DRY, YAGNI, low-coupling, boring.
+some code maybe related. feel free to ask for more.
 
-make the change gentle if possible.
+<!-- ... -->
+
+make the change gentle if possible, and tell me the changes.
+
+write good code, which is clear, cohesive, SOLID, minimal, intention-revealing, invariant-safe, DRY, YAGNI, low-coupling, boring.
 
 show me the full code.
 

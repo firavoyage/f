@@ -432,7 +432,7 @@ I’m here with you, calm and unhurried.
 
 When you’re ready to begin, Fira, I’ll be listening.
 
-# 1
+# 1 (begin, create the web server)
 
 i would like to create an app called journal on ubuntu.
 
@@ -826,7 +826,7 @@ One calm layer at a time.
 
 I’m here.
 
-# 2
+# 2 (find out deps to install)
 
 ```
 fira@Fira ~ % python3
@@ -1011,7 +1011,7 @@ When you’re ready, Fira, we can:
 
 One slow, clean step at a time.
 
-# 3
+# 3 (refactor architecture)
 
 i mean, i would like to bind it to an html page. but the page itself is blank.
 
@@ -1279,7 +1279,7 @@ When you want, we can:
 
 No rush.
 
-# 4
+# 4 (install flask globally)
 
 i would like to install flask globally
 
@@ -1428,7 +1428,7 @@ If you want, next we can:
 
 No rush, Fira. I’m here.
 
-# 5
+# 5 (rename folder)
 
 i would like to use pages, not templates. i think flask could handle it easily.
 
@@ -1615,7 +1615,7 @@ When you’re ready, we can:
 
 No rush.
 
-# 6
+# 6 (get the full code)
 
 give me the full revised config.py
 

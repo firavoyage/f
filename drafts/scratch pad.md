@@ -112,6 +112,89 @@ what about using grayscale colors everywhere and vivid colors only on anime char
 
 ---
 
-journal:
+(? ... go ahead. it's meaningful without taking too much time. decide how to ask first.)
 
-~~after~~ before carte.
+what could i think. remove. organize. simplify. explore. evaluate. something like that.
+
+how to think (verbs, phases)
+
+"i would like to learn the high level method of thinking ("simplify")"
+
+---
+
+(!)
+
+no direction in gamedev.
+
+fooling and amusing (?)
+
+short term (abusing, political memes, pornography)
+
+value.
+
+psychology.
+
+---
+
+(!)
+
+carte.
+
+polish the idea. explore gamplay possibilities.
+
+the invariants.
+
+how could without animation.
+
+(make a pong game?)
+
+---
+
+gameplay. (recommended. maybe not useful...)
+
+https://www.google.com/search?q=gorogoa+gameplay
+
+https://www.google.com/search?q=fez+gameplay
+
+https://www.google.com/search?q=braid+gameplay
+
+https://www.google.com/search?q=gamedev+story
+
+---
+
+weekend gamejam.
+
+---
+
+project eat:research
+
+the recommendation. (views distribution)
+
+---
+
+bandolllll. "mygo pvz. (like gacha party)"
+
+---
+
+begin pure math generation
+
+with advanced topics and tricks on the cheetsheet
+
+(why) gen and revise, compare and summarize the style. aops. apply the style.
+set the narration style when translating. "for enthu, memories, ref." (?)
+
+writing style consistency: maybe i should let llm to write some stuff in comparison and let me choose? idea: let llm generate some stuff in a list, i choose or rewrite, then let llm put them in comparison, generate the style guide. (or: give example, generate following existing text with human curated limitation.)
+
+---
+
+make pre web better with llm. fix save: show browser message.
+
+fix seaside theme: math text too small
+
+---
+
+(why, design)
+
+organize berryberry fav next weekend.
+
+organize sub before export. https://space.bilibili.com/1156993272/fans/follow

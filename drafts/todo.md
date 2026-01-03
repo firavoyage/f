@@ -4,19 +4,13 @@ todo
 
 ---
 
-think: journal breadcrumbs, todo, things, or scratch pad?
+journal: 
 
-would they plan/predict.
+~~the magic move.~~ 
 
-favicon. to ico? methods (theme) ? write.
+design api: proceed as long as safe (what's safe... like not irreversible), let frontend take the responsibility.
 
----
-
-journal: ~~the magic move.~~ 
-
-ui. clarity.
-
-api.
+ui. clarity (simple). write. (how to be elegant. "web games often lack. vibe coded apps often lack.")
 
 ---
 
@@ -33,9 +27,3 @@ clarity.
 ---
 
 carte: a build step or not
-
----
-
-organize personas. great inspirations.
-
-readme. Google doodles (the sketchy design). Add sublist to personas.

@@ -14,6 +14,7 @@ create something:
 - book make
 - manage project
 - a day working on github
+- wise graceful
 
 manage time:
 

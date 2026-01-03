@@ -17,6 +17,11 @@ def create_app():
     def index():
         return send_from_directory(app.static_folder, "journal.html")
 
+    # Serve static resources (favicons, assets, etc.)
+    @app.route("/resources/<path:filename>")
+    def resources(filename):
+        return send_from_directory(base_dir / "resources", filename)
+
     return app
 
 

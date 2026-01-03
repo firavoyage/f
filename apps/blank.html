@@ -3,18 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- a unicode hidden character -->
+
+    <!-- This prevents the filename from showing as the title -->
     <title>‍</title>
-    <!-- 
-    placed a zero width joiner u+200d, 
-    or the title will be blank.html when omitted
-    -->
+
+    <!-- Explicitly tell the browser where the favicon is -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
     <style>
       body {
         margin: 0;
         padding: 0;
-        background-color: #121212; /* Dark background color */
-        height: 100vh; /* Full viewport height */
+        background-color: #121212;
+        height: 100vh;
         color: #eee;
         line-break: anywhere;
         font-size: 1.5rem;
@@ -22,6 +23,6 @@
     </style>
   </head>
   <body>
-    <!-- Empty page with just a dark background -->
+    <!-- Empty page with just dark background -->
   </body>
 </html>

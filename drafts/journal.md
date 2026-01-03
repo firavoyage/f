@@ -1615,6 +1615,14 @@ for the wealthy guy, that money does not even matter. for hu chenfeng, whether b
 
 20 20 finish organizing readme/personas playing crazy world at the max volume. 22 20 relax. check the list and end this. 23 00
 
+23 20 journal: ui favicon. 24 00
+
+03
+
+00 20 remove the default favicon on app/blank. 00 40
+
+01 00 sleep.
+
 
 
 <!--
@@ -1623,107 +1631,11 @@ journal, before carte.
 
 breadcrumbs:
 
-(important! always reminding me.)
+see todo, things, scratch pad.
 
-project journal
+see firavoyage/blogging readme personas.
 
-first, create an abstraction of ubuntu apis.
-
-- log the titles of opened apps, and which is currently working on. design the json.
-- take screenshots every 5 minutes.
-
----
-
-(? ... go ahead. it's meaningful without taking too much time. decide how to ask first.)
-
-what could i think. remove. organize. simplify. explore. evaluate. something like that.
-
-how to think (verbs, phases)
-
-"i would like to learn the high level method of thinking ("simplify")"
-
----
-
-(!)
-
-no direction in gamedev.
-
-fooling and amusing (?)
-
-short term (abusing, political memes, pornography)
-
-value.
-
-psychology.
-
----
-
-(!)
-
-carte.
-
-polish the idea. explore gamplay possibilities.
-
-the invariants.
-
-how could without animation.
-
-(make a pong game?)
-
----
-
-gameplay. (recommended. maybe not useful...)
-
-https://www.google.com/search?q=gorogoa+gameplay
-
-https://www.google.com/search?q=fez+gameplay
-
-https://www.google.com/search?q=braid+gameplay
-
-https://www.google.com/search?q=gamedev+story
-
----
-
-weekend gamejam.
-
----
-
-project eat:research
-
-the recommendation. (views distribution)
-
----
-
-see scratch pad.
-
----
-
-bandolllll. "mygo pvz. (like gacha party)"
-
----
-
-begin pure math generation
-
-with advanced topics and tricks on the cheetsheet
-
-(why) gen and revise, compare and summarize the style. aops. apply the style.
-set the narration style when translating. "for enthu, memories, ref." (?)
-
-writing style consistency: maybe i should let llm to write some stuff in comparison and let me choose? idea: let llm generate some stuff in a list, i choose or rewrite, then let llm put them in comparison, generate the style guide. (or: give example, generate following existing text with human curated limitation.)
-
----
-
-make pre web better with llm. fix save: show browser message.
-
-fix seaside theme: math text too small
-
----
-
-(why, design)
-
-organize berryberry fav next weekend.
-
-organize sub before export. https://space.bilibili.com/1156993272/fans/follow
+see weekly, projects, journal, all
 
  -->
 
@@ -1811,23 +1723,13 @@ than doing things at the right time.
 
  -->
 
-<!--
+<!-- 
 
-weekly
+"idk." wonder, curiosity. a bit loss.
 
-projects
-
-journal
-
-all
+"i know." kind of sad. nothing's gonna happen.
 
  -->
-
-<!-- "idk." wonder, curiosity. a bit loss. -->
-
-<!-- "i know." kind of sad. nothing's gonna happen. -->
-
-<!-- so much for today, have a nice day. -->
 
 <!--
 
@@ -1835,10 +1737,4 @@ yeah, that's it.
 
  -->
 
-<!--
-
-readme.
-
-ryo.lu
-
- -->
+<!-- so much for today, have a nice day. -->
