@@ -15,6 +15,7 @@ create something:
 - manage project
 - a day working on github
 - wise graceful
+- ideal apps qualities
 
 manage time:
 
@@ -42,6 +43,7 @@ software engineering:
 - safe
 - rad
 - ask questions
+- design ui agent
 
 gamedev (carte):
 
@@ -82,3 +84,5 @@ legacy:
 - mistral
 
 <!-- names, not links. (assume using ctrl p to search, on code.) -->
+
+<!-- work with vscode fold extension (collapse/expand based on headings, code blocks, etc.) -->

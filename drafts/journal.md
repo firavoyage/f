@@ -1655,6 +1655,12 @@ from bitmagnet. nihon bunka daisuki.
 
 18 40 read `(同人誌) [泥野みずき] 軽い気持ちで裏垢女脅したら乳で絞め殺された (オリジナル)`
 
+05
+
+19 40 surf twitter. feel cool.
+
+in simplified chinese many are thinking about wealth, about classes, etc. some may even show off going abroad and getting free. they dont. resources are infinite. just buy anything, have anything, and take anything. tokens are free. dont care how many thousands of dollar spent, just keep llms running, and working for me. that's it.
+
 
 
 <!--
