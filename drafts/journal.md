@@ -1623,6 +1623,38 @@ for the wealthy guy, that money does not even matter. for hu chenfeng, whether b
 
 01 00 sleep.
 
+17 20 test: vibe coding on codeforces.
+
+https://codeforces.com/contest/2177/problem/A
+
+20 20 play phigros. reach phi for the first time on easy. 21 00
+
+21 00 surf zhihu and see discussion on the spring uee math paper on recommendation. 21 20 think a problem. write my first answer on zhihu. 22 00
+
+clever recommendation... (also seen on twitter. is spring uee that famous?)
+
+04
+
+11 20 play the last twenty minutes of "【New Year】count down & 2026 plans! | VTuber Cyan" and surf twitter list fira.
+
+13 00 go to a japanese restaurant. 14 40
+
+a bit meaningless.
+
+16 40 watch "Python编程课对孩子有用吗".
+
+https://ipaperclip.icu/黑水报告/Python编程课对孩子有用吗.mp4
+
+17 00 rewatch "Sp.003 解谜 PaperClip100：球赛、机票、 脚本和 DDoS 攻击".
+
+https://ipaperclip.icu/回形针PaperClip/Sp/Sp.003%20解谜%20PaperClip100：球赛、机票、%20脚本和%20DDoS%20攻击.mp4
+
+17 40 read a mygo (rana) pixiv novel. watch 無人駅 for a while.
+
+from bitmagnet. nihon bunka daisuki.
+
+18 40 read `(同人誌) [泥野みずき] 軽い気持ちで裏垢女脅したら乳で絞め殺された (オリジナル)`
+
 
 
 <!--

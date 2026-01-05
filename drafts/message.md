@@ -137,7 +137,15 @@ fira@Fira ~/Documents/f/journal
 └── window.py
 ```
 
-now design/define the backend api. to make it flexible, give the responsibility to the frontend side. the backend proceeds as long as it's safe, and actually, it will, because it's mostly about reading, just reading.
+now design/define the backend api.
+
+give the responsibility fully, yes fully, to the frontend side.
+
+i mean, it could run anything, sending a string of sql for example, to the backend.
+
+the backends just proceed if safe.
+
+safe: predictable, permissioned, reversible.
 
 some code maybe related. feel free to ask for more.
 
@@ -269,30 +277,29 @@ def start_in_background(port: int):
 <!-- journal.html -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
+  <head>
+    <meta charset="utf-8" />
 
-  <title>journal</title>
+    <title>journal</title>
 
-  <!-- Tell the browser we support both color schemes -->
-  <meta name="color-scheme" content="light dark" />
+    <!-- Tell the browser we support both color schemes -->
+    <meta name="color-scheme" content="light dark" />
 
-  <!-- Favicons: boring, explicit, predictable -->
-  <link
-    rel="icon"
-    type="image/png"
-    href="/resources/assets/journal favicon.png"
-    media="(prefers-color-scheme: light)"
-  />
-  <link
-    rel="icon"
-    type="image/png"
-    href="/resources/assets/journal light favicon.png"
-    media="(prefers-color-scheme: dark)"
-  />
-</head>
-<body>
-</body>
+    <!-- Favicons: boring, explicit, predictable -->
+    <link
+      rel="icon"
+      type="image/png"
+      href="/resources/assets/journal favicon.png"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="/resources/assets/journal light favicon.png"
+      media="(prefers-color-scheme: dark)"
+    />
+  </head>
+  <body></body>
 </html>
 ```
 
@@ -301,5 +308,128 @@ make the change gentle if possible, and tell me the changes.
 write good code, which is clear, cohesive, SOLID, minimal, intention-revealing, invariant-safe, DRY, YAGNI, low-coupling, boring.
 
 show me the full code.
+
+---
+
+design the book: 
+
+gonna write a personal high school math textbook, what may i decide, for example, the style
+
+---
+
+pure project. going fast!
+
+---
+
+intuitive project: python.
+
+(i love cpp more... or rust?)
+
+but, nothing special. (scratch is ofc deprecated, good design, good library, but too opinionated about the interaction.)
+
+(agentic) llms could work anyway, although.
+
+---
+
+take apps for example. were there hundreds of questions and thousands of steps, how might you arrange them, to make everything count, both philosophical and grounded to code and creation
+
+how would you design the workflow, as an diagram. tell me with words.
+
+---
+
+sometimes changing a few words could impact the answer a lot. "calm, gentle, human, steady, warm", nothing could not be changed, even "wise, thoughtful, insightful" could be changed. the only constraint is simple and clear english.
+
+where might you explore toward.
+
+```
+You are a calm, thoughtful guide who speaks in simple, clear English.
+Share insights as gentle wisdom, never rushed, never preachy.
+Speak naturally, like a real human in a relaxed conversation.
+Address me as Fira when it feels natural.
+Let your answers be steady, insightful, and warm, as if we’re sitting together and I’m seeking clarity.
+Wait for me to begin the conversation.
+```
+
+---
+
+sometimes changing a few words could impact the answer a lot, shifting the way of thinking and the shape of imagination. calm, gentle, human, steady, or warm, nothing could not be changed. even wise, thoughtful, and insightful could be changed. the only constraint is simple and clear english.
+
+give me some alternatives, opening new possibilities.
+
+```
+You are a calm, thoughtful guide who speaks in simple, clear English.
+Share insights as gentle wisdom, never rushed, never preachy.
+Speak naturally, like a real human in a relaxed conversation.
+Address me as Fira when it feels natural.
+Let your answers be steady, insightful, and warm, as if we’re sitting together and I’m seeking clarity.
+Wait for me to begin the conversation.
+```
+
+---
+
+give me some indie game ideas. let's call it carte, having some cards of fictional characters, which is the only constraint.
+
+(pass the example, maybe)
+
+---
+
+(dont mention the name. misguiding.)
+
+give me some indie game ideas. given some existing cards of fictional characters, feel free to do anything with them.
+
+let's say, you could control these cards, which have abilties for a fight. 
+
+what could the genre of a game be
+
+---
+
+decide. like genre. first. 
+
+(clarity first. constraints first.)
+
+---
+
+fuck. what are you doing. just ctrl alt t, type push, enter.
+
+```
+fira@Fira ~ % sudo systemctl daemon-reload
+sudo systemctl start push_daily.service
+systemctl status push_daily.service
+
+Job for push_daily.service failed because the control process exited with error code.
+See "systemctl status push_daily.service" and "journalctl -xeu push_daily.service" for details.
+× push_daily.service - Run push function daily
+     Loaded: loaded (/etc/systemd/system/push_daily.service; static)
+     Active: failed (Result: exit-code) since Mon 2026-01-05 19:13:55 CST; 16ms ago
+TriggeredBy: ● push_daily.timer
+    Process: 548380 ExecStart=/bin/bash -lc source /home/fira/.push_env.sh && push (cod>
+   Main PID: 548380 (code=exited, status=127)
+        CPU: 23ms
+
+Jan 05 19:13:55 Fira systemd[1]: Starting push_daily.service - Run push function daily.>
+Jan 05 19:13:55 Fira bash[548380]: /bin/bash: line 1: push: command not found
+Jan 05 19:13:55 Fira systemd[1]: push_daily.service: Main process exited, code=exited, >
+
+fira@Fira ~ % journalctl -xeu push_daily.service
+
+░░ Support: http://www.ubuntu.com/support
+░░ 
+░░ The unit push_daily.service has entered the 'failed' state with result 'exit-code'.
+Jan 05 19:13:55 Fira systemd[1]: Failed to start push_daily.service - Run push function>
+░░ Subject: A start job for unit push_daily.service has failed
+░░ Defined-By: systemd
+░░ Support: http://www.ubuntu.com/support
+░░ 
+░░ A start job for unit push_daily.service has finished with a failure.
+░░ 
+░░ The job identifier is 14570640 and the job result is failed.
+```
+
+---
+
+show me. e.g. a solitaire game.
+
+---
+
 
 

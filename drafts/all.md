@@ -5,7 +5,7 @@ project all: fira's drafts
 wisdom:
 
 - wisdom
-- https://chatgpt.com/c/69460efd-9550-8329-89da-bf5498a7c921
+- https://chatgpt.com/c/695b2ed5-00e4-8322-b2d7-b75272beaa52
 
 create something:
 
@@ -36,9 +36,12 @@ software engineering:
 
 - vibe coding mindset
 - vibe coding workflow
-- ask questions
+- before asking questions
 - code best practices
 - ui design document
+- safe
+- rad
+- ask questions
 
 gamedev (carte):
 
@@ -47,13 +50,12 @@ gamedev (carte):
 - art style
 - game design amazing either ors
 
-literary:
+linguistics/literature:
 
 - daoism
-
-linguistics:
-
 - translation meaning loss
+- describe
+- image above or below text
 
 psychology:
 
@@ -62,6 +64,10 @@ psychology:
 leisure:
 
 - jp books levels
+
+movies:
+
+- movies
 
 music:
 

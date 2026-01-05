@@ -189,7 +189,7 @@ I’m here with you, calm and unhurried.
 
 When you’re ready to begin, Fira, I’ll be listening.
 
-# 1
+# 1 (d, not fully on frontend)
 
 creating an app called journal on ubuntu.
 
