@@ -311,29 +311,7 @@ show me the full code.
 
 ---
 
-design the book: 
-
-gonna write a personal high school math textbook, what may i decide, for example, the style
-
----
-
 pure project. going fast!
-
----
-
-intuitive project: python.
-
-(i love cpp more... or rust?)
-
-but, nothing special. (scratch is ofc deprecated, good design, good library, but too opinionated about the interaction.)
-
-(agentic) llms could work anyway, although.
-
----
-
-take apps for example. were there hundreds of questions and thousands of steps, how might you arrange them, to make everything count, both philosophical and grounded to code and creation
-
-how would you design the workflow, as an diagram. tell me with words.
 
 ---
 
@@ -367,31 +345,59 @@ Wait for me to begin the conversation.
 
 ---
 
-give me some indie game ideas. let's call it carte, having some cards of fictional characters, which is the only constraint.
+read the vibe coding mindset.
 
-(pass the example, maybe)
+journal: review backend. ui design (following ...).
 
----
+(create the skill set. clarify one by one, e.g. Review & Reflection)
 
-(dont mention the name. misguiding.)
+method: categorize (sometimes), measure (qualities & standard), decide (data driven).
 
-give me some indie game ideas. given some existing cards of fictional characters, feel free to do anything with them.
-
-let's say, you could control these cards, which have abilties for a fight. 
-
-what could the genre of a game be
+(i think it's not needed for journal...)
 
 ---
 
-decide. like genre. first. 
-
-(clarity first. constraints first.)
-
-i mean, what could i decide, what could i do
-
-what would you think the decision of aops
+carte: clarify the game. think how to ask. (how to ask how to ask)
 
 ---
 
-what would you like to tell me about claude code skills
+phone
+
+---
+
+zhihu. existentialism
+
+---
+
+cursor claude code alternatives
+
+---
+
+llms
+
+agentic.
+
+what does it do.
+
+user journey.
+
+---
+
+journal, mindmap like markdown nested list.
+
+---
+
+learn from manus. (how, what do i want, and what may i ask)
+
+i dont need automation. i dont need create my own manus. i need a set of prompts. yeah, it definitely helps, i think.
+
+---
+
+self. journal. (carte.) 
+
+pure.
+
+pure project may last.
+
+
 

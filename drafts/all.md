@@ -44,6 +44,8 @@ software engineering:
 - rad
 - ask questions
 - design ui agent
+- claude code skills
+- vibe coding with human
 
 gamedev (carte):
 
@@ -51,6 +53,7 @@ gamedev (carte):
 - card games
 - art style
 - game design amazing either ors
+- game design framework
 
 linguistics/literature:
 

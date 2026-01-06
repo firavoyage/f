@@ -1657,15 +1657,37 @@ from bitmagnet. nihon bunka daisuki.
 
 05
 
+14 00 have lunch "空山". 
+
+> 不要给我看了。这个世界的东西，不需要努力就能得到。
+
+15 00 try to convert pdfs to something readable but give up after feasibility check.
+
 19 40 surf twitter. feel cool.
 
 in simplified chinese many are thinking about wealth, about classes, etc. some may even show off going abroad and getting free. they dont. resources are infinite. just buy anything, have anything, and take anything. tokens are free. dont care how many thousands of dollar spent, just keep llms running, and working for me. that's it.
+
+22 40 play douyin for a while. 23 00
+
+I could almost guess what I will recommend. Lives, tech otaku, anime gadgets, light novels, cr, society memes, and popular or promoted ones. Stupid. Nothing special, nothing new.
+
+> Buy a 3d printer. Print some biscuits. English words. Symbols. Metaphors. Math problems.
+
+06
+
+18 00 refresh.
+
+18 40 write some thought on zhihu (from river) 20 00 surf for a while. 20 20
+
+choose a quiet but general question about it. write for the future self/readers, not the engagement.
 
 
 
 <!--
 
 journal, before carte.
+
+---
 
 breadcrumbs:
 
@@ -1772,6 +1794,14 @@ than doing things at the right time.
 <!--
 
 yeah, that's it.
+
+ -->
+
+<!-- 
+
+be wise.
+
+be graceful.
 
  -->
 

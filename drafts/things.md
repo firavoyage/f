@@ -10,7 +10,7 @@ not just something that works. (vibe coding blue to purple gradients)
 
 ---
 
-data driven. Fuck that dream. 
+data driven. Fuck that dream.
 
 how.
 
@@ -26,7 +26,7 @@ ctf. (i mean, ...)
 
 userscript (browser extension) for exporting.
 
-dom, and network. 
+dom, and network.
 
 how to get and pass the network infomation.
 
@@ -40,8 +40,10 @@ find and organize them.
 
 ---
 
-read the claude code repo.
+intuitive project: python.
 
-find, organize, and tell me the insights inside.
+(i love cpp more... or rust?)
 
----
+but, nothing special. (scratch is ofc deprecated, good design, good library, but too opinionated about the interaction.)
+
+(agentic) llms could work anyway, although.
