@@ -2,6 +2,12 @@ project all: fira's drafts
 
 <!-- reduce entropy -->
 
+ref:
+
+- wisdom
+- arrange todos
+- vibe coding with human
+
 wisdom:
 
 - wisdom
@@ -52,8 +58,10 @@ gamedev (carte):
 - life create something big weekend time management
 - card games
 - art style
-- game design amazing either ors
+<!-- - (game design questions) -->
+<!-- - (game design questions amazing either ors) -->
 - game design framework
+- indie game ideas
 
 linguistics/literature:
 

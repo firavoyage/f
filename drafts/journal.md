@@ -1691,7 +1691,7 @@ choose a quiet but general question about it. write for the future self/readers,
 
 19 20 read genki i lesson 1. 19 40
 
-19 40 chat: word nuances, feat chatgpt copy userscript, evaluate opencode.
+19 40 chat: word nuances, feat chatgpt copy userscript, evaluate opencode. try opencode.
 
 
 
@@ -1713,6 +1713,8 @@ see weekly, projects, journal, all
 
 <!--
 
+intuition.
+
 momentum.
 
 reduce entropy.
@@ -1729,7 +1731,7 @@ think.
 
 simplify.
 
-predict.
+plan.
 
 sense.
 
@@ -1739,7 +1741,7 @@ dont rush.
 
 i will have it then.
 
-allow. (luck, omniscience)
+allow something.
 
 what's next.
 
@@ -1789,27 +1791,19 @@ i will eventually achieve all i want.
 
 life is a journey.
 
-doing right things could be way more important
-
-than doing things at the right time.
-
- -->
-
-<!-- 
-
-"idk." wonder, curiosity. a bit loss.
-
-"i know." kind of sad. nothing's gonna happen.
+doing right things, the important ones, not the urgent ones.
 
  -->
 
 <!--
 
-yeah, that's it.
+"!."
+
+yeah! that's it.
 
  -->
 
-<!-- 
+<!--
 
 be wise.
 
