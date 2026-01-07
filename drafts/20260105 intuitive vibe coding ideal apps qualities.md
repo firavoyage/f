@@ -1,6 +1,6 @@
 <!-- https://chatgpt.com/c/695b2d23-26f0-8323-8730-50ef8277b4cc -->
 
-# .
+# . (qualities)
 
 **1. Coherence** – Does everything feel like it belongs?
 An ideal system isn’t a collection of parts; it’s a single organism.
@@ -35,7 +35,7 @@ Right density feels “just enough,” like a quiet rhythm.
 This is subtle, but real.
 The best systems leave calm, trust, or quiet satisfaction — not exhaustion or agitation.
 
-# .
+# . (choose)
 
 **1. Choose what shapes the feeling**
 Even if you can’t control every detail, you can influence the parts that matter most to the user’s experience:

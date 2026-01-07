@@ -10,7 +10,7 @@ some code maybe related. feel free to ask for more.
 
 <!-- ... -->
 
-make the change gentle if possible, and tell me the changes.
+make the change as gentle as possible, and tell me the changes.
 
 write code that is clear, simple, and intention-revealing; modular and cohesive; reliable and maintainable, following SOLID principles.
 

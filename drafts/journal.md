@@ -1681,6 +1681,18 @@ I could almost guess what I will recommend. Lives, tech otaku, anime gadgets, li
 
 choose a quiet but general question about it. write for the future self/readers, not the engagement.
 
+07
+
+15 00 run out of battery for surfing/organizing too much telegram (nekogram), more than 1h. ~~learn geography~~ think, plan, and design today's work on notebook instead.
+
+取出一支烟. 点不燃的. 吹出彩色气泡.
+
+18 00 have a haircut, 1mm. refresh. 19 20
+
+19 20 read genki i lesson 1. 19 40
+
+19 40 chat: word nuances, feat chatgpt copy userscript, evaluate opencode.
+
 
 
 <!--

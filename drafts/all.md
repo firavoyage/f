@@ -19,7 +19,7 @@ create something:
 
 manage time:
 
-- manage time
+<!-- - manage time -->
 - arrange todos
 
 life:

@@ -21,7 +21,7 @@ Calm and unhurried.
 Take your time.
 When you’re ready, begin.
 
-# 1
+# 1 (explore)
 
 Give me some indie game ideas
 
@@ -89,7 +89,7 @@ If you’d like, we can:
 No pressure.
 Tell me which one lingered with you, or what kind of feeling you want the player to carry when the game ends.
 
-# 2
+# 2 (clarify/ground, prose, description)
 
 let these ideas ground, showing me the clear imagination
 
@@ -164,7 +164,7 @@ If you want, next we can take **one single image** — just one —
 and gently ask:
 _What does the player do here?_
 
-# 3
+# 3 (clarify, list)
 
 seems mirage. add clarity.
 
@@ -274,7 +274,7 @@ If you want, tell me:
 
 We’ll keep it solid this time.
 
-# 4
+# 4 (see, user journey)
 
 describe the user journey
 
@@ -359,7 +359,7 @@ If you like, Fira, I can sketch **a visual map of the village and key zones** wi
 
 Do you want me to do that?
 
-# 5
+# 5 (see, user journey, for each)
 
 for every game
 

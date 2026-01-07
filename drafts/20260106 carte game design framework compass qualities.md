@@ -2,7 +2,7 @@
 
 <!-- tried more the 10 times with different prompts somewhere. feel the peace of mind after using rigid prompt (the exact style, detailed to italic, position, etc.). -->
 
-# .
+# . (framework)
 
 ## **1. Core Shape**
 
@@ -122,7 +122,7 @@ You need **clear answers in the few places that matter most**.
 Good design is not filling the map.
 It’s knowing where to draw the lines — and where to leave space.
 
-# .
+# . (compass)
 
 **NORTH — Core Shape**
 
@@ -226,7 +226,7 @@ You **choose a heading**, and let the others support it.
 A good game is not balanced in all ways.
 It is **aligned in the right ones**.
 
-# .
+# . (dimensions, guided)
 
 ## The Core Takeaway
 
@@ -428,7 +428,7 @@ You design it by deciding **which questions matter most**.
 
 If you want, Fira, next we can take a single game idea and **map its dimensions cleanly**, so you can see how a focused design forms.
 
-# .
+# . (ideal qualities)
 
 ### 1. Intentionality
 

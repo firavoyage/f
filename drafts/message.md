@@ -361,17 +361,7 @@ carte: clarify the game. think how to ask. (how to ask how to ask)
 
 ---
 
-phone
-
----
-
-zhihu. existentialism
-
----
-
-cursor claude code alternatives
-
----
+(cursor claude code alternatives)
 
 llms
 
@@ -381,15 +371,25 @@ what does it do.
 
 user journey.
 
----
-
-journal, mindmap like markdown nested list.
-
----
+...
 
 learn from manus. (how, what do i want, and what may i ask)
 
 i dont need automation. i dont need create my own manus. i need a set of prompts. yeah, it definitely helps, i think.
+
+i would like to have some prompts. not manus. but claude code. (confirm)
+
+https://manus.im/docs/features/wide-research?utm_source=chatgpt.com#what-is-wide-research
+
+https://manus.im/share/IXdMjxObbFKbIjUUkBk4EH?replay=1
+
+---
+
+journal, mindmap like markdown nested list.
+
+clarify. (summarize/normalize/standardize/...)
+
+before design ui.
 
 ---
 
@@ -399,5 +399,24 @@ pure.
 
 pure project may last.
 
+---
 
+archive chats.
 
+---
+
+grow. eat.
+
+---
+
+dont create the browser automation workaround for free tokens.
+
+use opencode when things are clear. follow my instruction like claude skills.
+
+opencode real examples. 
+
+test it myself.
+
+is it faster
+
+---
