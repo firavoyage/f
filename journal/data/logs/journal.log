@@ -15396,3 +15396,79 @@
 2026-01-08T01:06:41.561151+08:00  focus_change  app=Chromium  title=Page Not Found - Gitea: Git with a cup of tea - Chromium  screenshot=None
 2026-01-08T01:06:51.565226+08:00  focus_change  app=Code  title=terminal zshrc.sh - f (Workspace) - Visual Studio Code  screenshot=None
 2026-01-08T01:07:06.570820+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:07:16.574708+08:00  focus_change  app=Code  title=terminal zshrc.sh - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:07:46.583809+08:00  focus_change  app=Chromium  title=firavoyage/f - Chromium  screenshot=None
+2026-01-08T01:07:51.587413+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T01:07:58.600596+08:00  interval_capture  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T01:10:01.642723+08:00  focus_change  app=kitty  title=~  screenshot=None
+2026-01-08T01:10:06.655279+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T01:10:36.673979+08:00  focus_change  app=kitty  title=~  screenshot=None
+2026-01-08T01:11:01.683050+08:00  focus_change  app=org.gnome.Nautilus  title=Search for “git”  screenshot=None
+2026-01-08T01:11:06.686419+08:00  focus_change  app=Code  title=.git-credentials - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:11:11.690311+08:00  focus_change  app=org.gnome.Nautilus  title=Search for “git”  screenshot=None
+2026-01-08T01:11:16.703350+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T01:11:41.721189+08:00  focus_change  app=Code  title=terminal zshrc.sh - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:12:01.737926+08:00  focus_change  app=Chromium  title=New Tab - Chromium  screenshot=None
+2026-01-08T01:12:06.750713+08:00  focus_change  app=Code  title=terminal zshrc.sh - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:12:11.763890+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:12:46.783580+08:00  focus_change  app=Chromium  title=History - Chromium  screenshot=None
+2026-01-08T01:12:51.786595+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:12:58.790206+08:00  interval_capture  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:13:36.810736+08:00  focus_change  app=Chromium  title=ff: this git remote does not support f as repo path for its length. wtf. - Chromium  screenshot=None
+2026-01-08T01:13:41.814106+08:00  focus_change  app=Chromium  title=gitee.com/login?from=project-guide - Chromium  screenshot=None
+2026-01-08T01:13:51.819040+08:00  focus_change  app=Chromium  title=登录 - Gitee.com - Chromium  screenshot=None
+2026-01-08T01:13:56.831826+08:00  focus_change  app=Chromium  title=firavoyage (Fira) - Chromium  screenshot=None
+2026-01-08T01:14:11.847031+08:00  focus_change  app=Chromium  title=工作台 - Gitee.com - Chromium  screenshot=None
+2026-01-08T01:14:21.860740+08:00  focus_change  app=Chromium  title=Fira/blogging - Chromium  screenshot=None
+2026-01-08T01:14:26.864057+08:00  focus_change  app=Chromium  title=工作台 - Gitee.com - Chromium  screenshot=None
+2026-01-08T01:14:31.876434+08:00  focus_change  app=Chromium  title=仓库设置 · Fira/blogging - Gitee.com - Chromium  screenshot=None
+2026-01-08T01:14:36.879394+08:00  focus_change  app=Chromium  title=ff: this git remote does not support f as repo path for its length. wtf. - Chromium  screenshot=None
+2026-01-08T01:14:41.883421+08:00  focus_change  app=Chromium  title=仓库设置 · Fira/blogging - Gitee.com - Chromium  screenshot=None
+2026-01-08T01:15:11.897063+08:00  focus_change  app=Chromium  title=Fira/blogging - Chromium  screenshot=None
+2026-01-08T01:15:26.912211+08:00  focus_change  app=Chromium  title=仓库设置 · Fira/blogging - Gitee.com - Chromium  screenshot=None
+2026-01-08T01:15:31.915370+08:00  focus_change  app=Chromium  title=仓库镜像管理 · Fira/blogging - Gitee.com - Chromium  screenshot=None
+2026-01-08T01:15:41.929429+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:15:46.941998+08:00  focus_change  app=Code  title=terminal zshrc.sh - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:16:21.961356+08:00  focus_change  app=Chromium  title=firavoyage (Fira) - Chromium  screenshot=None
+2026-01-08T01:16:26.973652+08:00  focus_change  app=Code  title=terminal zshrc.sh - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:17:58.997662+08:00  interval_capture  app=Code  title=terminal zshrc.sh - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:18:47.020254+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:18:57.033618+08:00  focus_change  app=Chromium  title=仓库镜像管理 · Fira/blogging - Gitee.com - Chromium  screenshot=None
+2026-01-08T01:19:02.045930+08:00  focus_change  app=Chromium  title=ff: this git remote does not support f as repo path for its length. wtf. - Chromium  screenshot=None
+2026-01-08T01:19:12.059488+08:00  focus_change  app=Chromium  title=工作台 - Gitee.com - Chromium  screenshot=None
+2026-01-08T01:19:17.071964+08:00  focus_change  app=Chromium  title=Fira (firavoyage) - Gitee.com - Chromium  screenshot=None
+2026-01-08T01:19:22.084455+08:00  focus_change  app=Chromium  title=仓库 - Fira (firavoyage) - Gitee.com - Chromium  screenshot=None
+2026-01-08T01:19:37.089886+08:00  focus_change  app=Chromium  title=Untitled - Chromium  screenshot=None
+2026-01-08T01:19:42.102436+08:00  focus_change  app=Chromium  title=仓库设置 · Fira/f_js30 - Gitee.com - Chromium  screenshot=None
+2026-01-08T01:19:47.114657+08:00  focus_change  app=Chromium  title=仓库 - Fira (firavoyage) - Gitee.com - Chromium  screenshot=None
+2026-01-08T01:19:52.127026+08:00  focus_change  app=Chromium  title=freefq: 翻墙、免费翻墙、免费科学上网、免费节点、免费梯子、免费ss/v2ray/trojan节点、蓝灯、谷歌商店、翻墙梯子 - Chromium  screenshot=None
+2026-01-08T01:19:57.130414+08:00  focus_change  app=Chromium  title=仓库设置 · Fira/freefq - Gitee.com - Chromium  screenshot=None
+2026-01-08T01:20:02.133755+08:00  focus_change  app=Chromium  title=仓库设置 · 仓库信息内容可能含有违规信息 - Gitee.com - Chromium  screenshot=None
+2026-01-08T01:20:17.148303+08:00  focus_change  app=Chromium  title=仓库设置 · Fira/v2rayfree - Gitee.com - Chromium  screenshot=None
+2026-01-08T01:20:22.160724+08:00  focus_change  app=Chromium  title=仓库设置 · 仓库信息内容可能含有违规信息 - Gitee.com - Chromium  screenshot=None
+2026-01-08T01:20:27.168719+08:00  focus_change  app=Chromium  title=仓库信息内容可能含有违规信息 - Chromium  screenshot=None
+2026-01-08T01:20:32.174763+08:00  focus_change  app=Chromium  title=仓库 - Fira (firavoyage) - Gitee.com - Chromium  screenshot=None
+2026-01-08T01:20:37.212647+08:00  focus_change  app=Chromium  title=Fira/blogging - Chromium  screenshot=None
+2026-01-08T01:20:42.222629+08:00  focus_change  app=Chromium  title=仓库 - Fira (firavoyage) - Gitee.com - Chromium  screenshot=None
+2026-01-08T01:20:57.228218+08:00  focus_change  app=Chromium  title=Fira/blogging - Chromium  screenshot=None
+2026-01-08T01:21:02.240766+08:00  focus_change  app=Chromium  title=仓库 - Fira (firavoyage) - Gitee.com - Chromium  screenshot=None
+2026-01-08T01:21:07.254121+08:00  focus_change  app=Chromium  title=Fira/blogging - Chromium  screenshot=None
+2026-01-08T01:21:12.266802+08:00  focus_change  app=Chromium  title=Fira/resources - Chromium  screenshot=None
+2026-01-08T01:21:17.270175+08:00  focus_change  app=Chromium  title=Fira/blogging - Chromium  screenshot=None
+2026-01-08T01:21:22.283023+08:00  focus_change  app=Chromium  title=仓库设置 · Fira/blogging - Gitee.com - Chromium  screenshot=None
+2026-01-08T01:21:37.297887+08:00  focus_change  app=Chromium  title=你所访问的页面不存在 (404) - Chromium  screenshot=None
+2026-01-08T01:21:42.310886+08:00  focus_change  app=Chromium  title=工作台 - Gitee.com - Chromium  screenshot=None
+2026-01-08T01:21:47.323762+08:00  focus_change  app=Chromium  title=新建仓库 - Gitee.com - Chromium  screenshot=None
+2026-01-08T01:21:57.337399+08:00  focus_change  app=Chromium  title=ff: this git remote does not support f as repo path for its length. wtf. - Chromium  screenshot=None
+2026-01-08T01:22:02.349821+08:00  focus_change  app=Chromium  title=Fira/fonts - Chromium  screenshot=None
+2026-01-08T01:22:07.362274+08:00  focus_change  app=Chromium  title=仓库设置 · Fira/ff - Gitee.com - Chromium  screenshot=None
+2026-01-08T01:22:12.374579+08:00  focus_change  app=Chromium  title=仓库镜像管理 · Fira/ff - Gitee.com - Chromium  screenshot=None
+2026-01-08T01:22:17.386925+08:00  focus_change  app=Chromium  title=仓库设置 · Fira/memories - Gitee.com - Chromium  screenshot=None
+2026-01-08T01:22:22.390111+08:00  focus_change  app=Chromium  title=仓库设置 · Fira/resources - Gitee.com - Chromium  screenshot=None
+2026-01-08T01:22:27.402751+08:00  focus_change  app=Chromium  title=仓库镜像管理 · Fira/school - Gitee.com - Chromium  screenshot=None
+2026-01-08T01:22:32.415368+08:00  focus_change  app=Chromium  title=仓库镜像管理 · Fira/memories - Gitee.com - Chromium  screenshot=None
+2026-01-08T01:22:42.429098+08:00  focus_change  app=Chromium  title=仓库镜像管理 · Fira/resources - Gitee.com - Chromium  screenshot=None
+2026-01-08T01:22:47.442275+08:00  focus_change  app=Chromium  title=仓库镜像管理 · Fira/school - Gitee.com - Chromium  screenshot=None
+2026-01-08T01:22:52.454987+08:00  focus_change  app=Chromium  title=仓库镜像管理 · Fira/fonts - Gitee.com - Chromium  screenshot=None
+2026-01-08T01:22:57.458984+08:00  focus_change  app=Chromium  title=仓库镜像管理 · Fira/memories - Gitee.com - Chromium  screenshot=None
+2026-01-08T01:22:59.461608+08:00  interval_capture  app=Chromium  title=仓库镜像管理 · Fira/memories - Gitee.com - Chromium  screenshot=None

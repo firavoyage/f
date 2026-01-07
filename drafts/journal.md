@@ -1693,6 +1693,12 @@ choose a quiet but general question about it. write for the future self/readers,
 
 19 40 chat: word nuances, feat chatgpt copy userscript, evaluate opencode. try opencode.
 
+08
+
+00 40 evaluate fish. choose not to migrate (it's not boring or pragmatic.).
+
+01 00 push to github directly. deprecate the gitee mirror workaround.
+
 
 
 <!--
