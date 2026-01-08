@@ -2,6 +2,8 @@
 
 <!-- fish is a playful and novel way. not a boring way. -->
 
+<!-- i feel auto complete is a must. but... the ui sucks. too geek styled. not intuitive. -->
+
 <!--
 
 chat answered with

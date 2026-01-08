@@ -1699,6 +1699,14 @@ choose a quiet but general question about it. write for the future self/readers,
 
 01 00 push to github directly. deprecate the gitee mirror workaround.
 
+...
+
+18 40 export chromium passwords and bookmarks to import on laptop firefox and sync with phone firefox. 
+
+19 20 assess vertical tab bar. change "Vertical Tabs in Side Panel" shortcut from alt v to ctrl b. disable safe component remover userscript (delete dom elements, may cause render issues) 19 40 forget horizontal or vertical. prefer boring tech. use fullscreen when needed.
+
+it's for wide screen. and it does not remove the complexity of a lot of tabs.
+
 
 
 <!--

@@ -52,6 +52,7 @@ software engineering:
 - design ui agent
 - claude code skills
 - vibe coding with human
+- with opencode
 
 gamedev (carte):
 

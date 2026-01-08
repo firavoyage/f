@@ -15472,3 +15472,609 @@
 2026-01-08T01:22:52.454987+08:00  focus_change  app=Chromium  title=仓库镜像管理 · Fira/fonts - Gitee.com - Chromium  screenshot=None
 2026-01-08T01:22:57.458984+08:00  focus_change  app=Chromium  title=仓库镜像管理 · Fira/memories - Gitee.com - Chromium  screenshot=None
 2026-01-08T01:22:59.461608+08:00  interval_capture  app=Chromium  title=仓库镜像管理 · Fira/memories - Gitee.com - Chromium  screenshot=None
+2026-01-08T01:23:02.473904+08:00  focus_change  app=kitty  title=push  screenshot=None
+2026-01-08T01:23:17.484029+08:00  focus_change  app=Chromium  title=仓库镜像管理 · Fira/resources - Gitee.com - Chromium  screenshot=None
+2026-01-08T01:23:22.497064+08:00  focus_change  app=Chromium  title=firavoyage (Fira) - Chromium  screenshot=None
+2026-01-08T01:23:27.502986+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T01:23:32.506670+08:00  focus_change  app=vlc  title=【Singing】sweetly familiar songs ｜ VTuber Cyan [BTHI9rF23KI].webm - VLC media player  screenshot=None
+2026-01-08T01:23:37.519184+08:00  focus_change  app=org.gnome.Nautilus  title=Home  screenshot=None
+2026-01-08T01:23:41.522097+08:00  focus_change  app=org.gnome.Nautilus  title=Videos  screenshot=None
+2026-01-08T01:23:46.525185+08:00  focus_change  app=vlc  title=【Singing】sweetly familiar songs ｜ VTuber Cyan [BTHI9rF23KI].webm - VLC media player  screenshot=None
+2026-01-08T01:24:01.530782+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T01:24:36.540750+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:25:01.548692+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T01:25:06.551698+08:00  focus_change  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T01:25:31.560001+08:00  focus_change  app=kitty  title=push  screenshot=None
+2026-01-08T01:25:46.565462+08:00  focus_change  app=org.gnome.Nautilus  title=Home  screenshot=None
+2026-01-08T01:25:51.568339+08:00  focus_change  app=org.gnome.Nautilus  title=blogging  screenshot=None
+2026-01-08T01:25:56.571400+08:00  focus_change  app=kitty  title=push  screenshot=None
+2026-01-08T01:26:01.574493+08:00  focus_change  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T01:26:06.577640+08:00  focus_change  app=Code  title=terminal zshrc.sh - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:26:11.580989+08:00  focus_change  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T01:27:31.603578+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:27:59.625804+08:00  interval_capture  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:28:01.628072+08:00  focus_change  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T01:28:06.640991+08:00  focus_change  app=kitty  title=~  screenshot=None
+2026-01-08T01:28:16.645603+08:00  focus_change  app=Chromium  title=New Tab - Chromium  screenshot=None
+2026-01-08T01:28:21.658262+08:00  focus_change  app=Chromium  title=Fira/blogging - Chromium  screenshot=None
+2026-01-08T01:29:16.683004+08:00  focus_change  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T01:29:41.700527+08:00  focus_change  app=kitty  title=~  screenshot=None
+2026-01-08T01:29:46.713062+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:30:11.730665+08:00  focus_change  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T01:30:41.739969+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:30:51.744233+08:00  focus_change  app=Chromium  title=Intro | OpenCode - Chromium  screenshot=None
+2026-01-08T01:31:06.758778+08:00  focus_change  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T01:31:21.774249+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:31:31.788268+08:00  focus_change  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T01:32:01.798555+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:32:31.817272+08:00  focus_change  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T01:32:59.835397+08:00  interval_capture  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T01:33:06.849192+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:33:36.858586+08:00  focus_change  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T01:34:21.871637+08:00  focus_change  app=Chromium  title=Intro | OpenCode - Chromium  screenshot=None
+2026-01-08T01:34:26.883868+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:34:36.888194+08:00  focus_change  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T01:37:59.950111+08:00  interval_capture  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T01:39:41.986498+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:39:46.989685+08:00  focus_change  app=Code  title=20260108 fira zsh decide not to migrate to fish.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:40:02.004824+08:00  focus_change  app=Chromium  title=Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T01:40:07.008148+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T01:40:17.022013+08:00  focus_change  app=Code  title=20260108 fira zsh decide not to migrate to fish.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:40:37.028475+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:40:57.044378+08:00  focus_change  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T01:41:12.059309+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:43:00.086708+08:00  interval_capture  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:44:12.115485+08:00  focus_change  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T01:44:22.129478+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T01:45:37.159636+08:00  focus_change  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T01:45:47.173616+08:00  focus_change  app=kitty  title=~  screenshot=None
+2026-01-08T01:45:57.178265+08:00  focus_change  app=gnome-terminal-server  title=Terminal  screenshot=None
+2026-01-08T01:46:02.190695+08:00  focus_change  app=kitty  title=~  screenshot=None
+2026-01-08T01:46:07.195859+08:00  focus_change  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T01:46:12.208683+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:46:17.221147+08:00  focus_change  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T01:46:22.233901+08:00  focus_change  app=kitty  title=~  screenshot=None
+2026-01-08T01:46:47.251273+08:00  focus_change  app=kitty  title=curl -fsSL https://opencode.ai/install | bash\n  screenshot=None
+2026-01-08T01:46:57.255516+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T01:47:12.260581+08:00  focus_change  app=kitty  title=~  screenshot=None
+2026-01-08T01:47:17.272908+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T01:47:32.287723+08:00  focus_change  app=Code  title=terminal zshrc.sh - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:47:37.300261+08:00  focus_change  app=Code  title=.zshrc - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:47:42.303427+08:00  focus_change  app=kitty  title=~  screenshot=None
+2026-01-08T01:47:52.316952+08:00  focus_change  app=kitty  title=~/Documents/f  screenshot=None
+2026-01-08T01:48:00.330295+08:00  interval_capture  app=kitty  title=~/Documents/f  screenshot=None
+2026-01-08T01:48:07.343076+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T01:48:12.346469+08:00  focus_change  app=Code  title=.zshrc - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:48:17.349741+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T01:48:22.352894+08:00  focus_change  app=Code  title=.zshrc - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:48:32.357244+08:00  focus_change  app=kitty  title=~  screenshot=None
+2026-01-08T01:48:37.369731+08:00  focus_change  app=Code  title=.zshrc - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:48:57.386019+08:00  focus_change  app=kitty  title=~  screenshot=None
+2026-01-08T01:49:02.398763+08:00  focus_change  app=kitty  title=OpenCode  screenshot=None
+2026-01-08T01:49:27.416245+08:00  focus_change  app=kitty  title=OC | Evaluating project ideas with assistant  screenshot=None
+2026-01-08T01:49:42.425989+08:00  focus_change  app=org.gnome.Nautilus  title=Home  screenshot=None
+2026-01-08T01:49:47.438642+08:00  focus_change  app=Code  title=session-ses_4677.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:50:07.454898+08:00  focus_change  app=Code  title=Preview session-ses_4677.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:50:12.458086+08:00  focus_change  app=Code  title=session-ses_4677.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:50:22.463090+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:50:27.476451+08:00  focus_change  app=kitty  title=OC | Evaluating project ideas with assistant  screenshot=None
+2026-01-08T01:50:37.490170+08:00  focus_change  app=org.gnome.Nautilus  title=Home  screenshot=None
+2026-01-08T01:50:42.503275+08:00  focus_change  app=org.gnome.Nautilus  title=Documents  screenshot=None
+2026-01-08T01:50:47.516005+08:00  focus_change  app=org.gnome.Nautilus  title=drafts  screenshot=None
+2026-01-08T01:50:52.528646+08:00  focus_change  app=org.gnome.Nautilus  title=Search for “opencode”  screenshot=None
+2026-01-08T01:51:01.532457+08:00  focus_change  app=org.gnome.Nautilus  title=drafts  screenshot=None
+2026-01-08T01:51:21.539048+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T01:51:31.543301+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:51:46.548772+08:00  focus_change  app=Code  title=20260107 fira zsh give zsh the fish power.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:51:56.552991+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T01:52:01.555926+08:00  focus_change  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T01:52:31.565008+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:53:00.574049+08:00  interval_capture  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:54:31.597344+08:00  focus_change  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T01:54:36.601087+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:55:41.621354+08:00  focus_change  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T01:55:46.624562+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:57:31.661446+08:00  focus_change  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T01:58:00.670560+08:00  interval_capture  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T01:58:01.672956+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:58:31.691353+08:00  focus_change  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T01:59:01.710590+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:59:11.724284+08:00  focus_change  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T01:59:31.731591+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T01:59:36.738726+08:00  focus_change  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T02:00:11.758917+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T02:00:31.765774+08:00  focus_change  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T02:02:41.806697+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T02:03:00.813019+08:00  interval_capture  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T02:03:11.817440+08:00  focus_change  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T02:03:16.830000+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T02:03:21.842396+08:00  focus_change  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T02:04:01.853958+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T02:04:26.871470+08:00  focus_change  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T02:04:51.889325+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T02:05:51.915528+08:00  focus_change  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T02:06:06.920910+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T02:06:26.937060+08:00  focus_change  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T02:06:31.949371+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T02:06:51.966002+08:00  focus_change  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T02:08:00.994010+08:00  interval_capture  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T02:08:12.000152+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T02:09:27.037579+08:00  focus_change  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T02:09:32.040489+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T02:09:37.053209+08:00  focus_change  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T02:10:17.074972+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T02:10:37.091259+08:00  focus_change  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T02:10:42.104131+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T02:10:52.118242+08:00  focus_change  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T02:11:12.135399+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T02:12:57.171565+08:00  focus_change  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T02:13:01.183974+08:00  interval_capture  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T02:13:57.200544+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T02:16:12.235292+08:00  focus_change  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T02:16:37.253013+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T02:16:47.267570+08:00  focus_change  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T02:16:52.279861+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T02:17:17.296968+08:00  focus_change  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T02:18:01.319271+08:00  interval_capture  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T02:18:22.336064+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T02:19:57.370116+08:00  focus_change  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T02:21:17.401596+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T02:21:37.418169+08:00  focus_change  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T02:21:47.422818+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T02:22:02.428568+08:00  focus_change  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T02:22:27.446746+08:00  focus_change  app=vlc  title=【Singing】sweetly familiar songs ｜ VTuber Cyan [BTHI9rF23KI].webm - VLC media player  screenshot=None
+2026-01-08T02:22:52.455642+08:00  focus_change  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T02:23:01.469098+08:00  interval_capture  app=Chromium  title=Branch · Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T02:23:32.478926+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T02:23:47.484341+08:00  focus_change  app=Code  title=all.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T02:24:27.505116+08:00  focus_change  app=Code  title=20260108 intuitive vibe coding with opencode mindset takeaways cheetsheets.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T02:24:52.512963+08:00  focus_change  app=Code  title=20260108 intuitive vibe coding with opencode mindset takeaways cheetsheets power user.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T02:24:56.515709+08:00  focus_change  app=Code  title=Preview 20260108 intuitive vibe coding with opencode mindset takeaways cheetsheets power user.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T02:25:02.528572+08:00  focus_change  app=Code  title=20260108 intuitive vibe coding with opencode mindset takeaways cheetsheets power user.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T02:28:01.574071+08:00  interval_capture  app=Code  title=20260108 intuitive vibe coding with opencode mindset takeaways cheetsheets power user.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T02:29:06.593075+08:00  focus_change  app=vlc  title=【Singing】sweetly familiar songs ｜ VTuber Cyan [BTHI9rF23KI].webm - VLC media player  screenshot=None
+2026-01-08T02:29:21.598967+08:00  focus_change  app=Code  title=20260108 intuitive vibe coding with opencode mindset takeaways cheetsheets power user.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T02:29:46.606992+08:00  focus_change  app=Code  title=Preview 20260108 intuitive vibe coding with opencode mindset takeaways cheetsheets power user.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T02:29:56.611417+08:00  focus_change  app=Code  title=20260108 intuitive vibe coding with opencode mindset takeaways cheetsheets power user.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T02:31:21.644052+08:00  focus_change  app=Code  title=Preview 20260108 intuitive vibe coding with opencode mindset takeaways cheetsheets power user.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T02:31:36.659031+08:00  focus_change  app=Code  title=20260108 intuitive vibe coding with opencode mindset takeaways cheetsheets power user.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T02:33:01.691068+08:00  interval_capture  app=Code  title=20260108 intuitive vibe coding with opencode mindset takeaways cheetsheets power user.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T02:33:56.706370+08:00  focus_change  app=Code  title=Preview 20260108 intuitive vibe coding with opencode mindset takeaways cheetsheets power user.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T02:34:06.719992+08:00  focus_change  app=Code  title=20260108 intuitive vibe coding with opencode mindset takeaways cheetsheets power user.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T02:34:11.732526+08:00  focus_change  app=Code  title=Preview 20260108 intuitive vibe coding with opencode mindset takeaways cheetsheets power user.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T02:34:21.736956+08:00  focus_change  app=Code  title=20260108 intuitive vibe coding with opencode mindset takeaways cheetsheets power user.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T02:34:36.743149+08:00  focus_change  app=Code  title=Preview 20251219 life manage time arrange todos.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T02:38:01.804232+08:00  interval_capture  app=Code  title=Preview 20251219 life manage time arrange todos.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T02:40:36.854734+08:00  focus_change  app=Code  title=20260108 intuitive vibe coding with opencode mindset takeaways cheetsheets power user.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T02:40:41.867596+08:00  focus_change  app=Code  title=all.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T02:41:11.876716+08:00  focus_change  app=Code  title=Preview 20251217 intuitive vibe coding workflow video summary.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T02:41:36.894507+08:00  focus_change  app=Code  title=20260108 intuitive vibe coding with opencode mindset takeaways cheetsheets power user.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T02:41:41.907507+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T02:43:01.938914+08:00  interval_capture  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T02:46:32.001047+08:00  focus_change  app=Chromium  title=‍ - Chromium  screenshot=None
+2026-01-08T02:46:37.024492+08:00  focus_change  app=Chromium  title=​ - Chromium  screenshot=None
+2026-01-08T02:48:02.064044+08:00  focus_change  app=Chromium  title=‍ - Chromium  screenshot=None
+2026-01-08T02:48:02.065622+08:00  interval_capture  app=Chromium  title=‍ - Chromium  screenshot=None
+2026-01-08T02:48:07.077914+08:00  focus_change  app=Chromium  title=Creative Block Breakthrough - Chromium  screenshot=None
+2026-01-08T02:48:17.091643+08:00  focus_change  app=Chromium  title=‍ - Chromium  screenshot=None
+2026-01-08T02:48:42.805875+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T02:52:17.860808+08:00  focus_change  app=Code  title=Preview 20251219 life manage time arrange todos.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T02:53:15.887097+08:00  interval_capture  app=Code  title=Preview 20251219 life manage time arrange todos.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T18:47:57.815526+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T18:48:02.828279+08:00  focus_change  app=Chromium  title=‍ - Chromium  screenshot=None
+2026-01-08T18:48:07.838804+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T18:48:22.854025+08:00  focus_change  app=Chromium  title=Cyan Ch. 朝日小盐 - YouTube - Chromium  screenshot=None
+2026-01-08T18:48:42.871163+08:00  focus_change  app=Chromium  title=【Chat & Sing】..until YouTube kun breaks - YouTube - Chromium  screenshot=None
+2026-01-08T18:48:47.874677+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T18:50:22.910342+08:00  focus_change  app=scrcpy  title=unknown  screenshot=None
+2026-01-08T18:50:32.924043+08:00  focus_change  app=Chromium  title=Branch · Calm Guidance for Fira - Chromium  screenshot=None
+2026-01-08T18:50:37.936440+08:00  focus_change  app=scrcpy  title=unknown  screenshot=None
+2026-01-08T18:50:52.951535+08:00  focus_change  app=Chromium  title=Branch · Calm Guidance for Fira - Chromium  screenshot=None
+2026-01-08T18:50:57.964018+08:00  focus_change  app=scrcpy  title=unknown  screenshot=None
+2026-01-08T18:51:22.971875+08:00  focus_change  app=org.mozilla.firefox  title=Mozilla Firefox  screenshot=None
+2026-01-08T18:51:27.976713+08:00  focus_change  app=org.mozilla.firefox  title=Settings — Mozilla Firefox  screenshot=None
+2026-01-08T18:51:32.984720+08:00  focus_change  app=xdg-desktop-portal-gnome  title=Import bookmarks file  screenshot=None
+2026-01-08T18:51:37.997145+08:00  focus_change  app=Chromium  title=Bookmarks - Chromium  screenshot=None
+2026-01-08T18:52:03.010773+08:00  focus_change  app=Chromium  title=journal - Chromium  screenshot=None
+2026-01-08T18:52:13.024319+08:00  focus_change  app=Chromium  title=Bookmarks - Chromium  screenshot=None
+2026-01-08T18:52:18.036865+08:00  focus_change  app=Chromium  title=Branch · Calm Guidance for Fira - Chromium  screenshot=None
+2026-01-08T18:52:20.048807+08:00  interval_capture  app=Chromium  title=Branch · Calm Guidance for Fira - Chromium  screenshot=None
+2026-01-08T18:52:23.060847+08:00  focus_change  app=Chromium  title=Bookmarks - Chromium  screenshot=None
+2026-01-08T18:52:28.064097+08:00  focus_change  app=xdg-desktop-portal-gnome  title=All Files  screenshot=None
+2026-01-08T18:52:38.078304+08:00  focus_change  app=Chromium  title=Branch · Calm Guidance for Fira - Chromium  screenshot=None
+2026-01-08T18:52:43.082548+08:00  focus_change  app=Chromium  title=Bookmarks - Chromium  screenshot=None
+2026-01-08T18:52:48.086270+08:00  focus_change  app=Chromium  title=Password Manager - Chromium  screenshot=None
+2026-01-08T18:52:58.090899+08:00  focus_change  app=xdg-desktop-portal-gnome  title=Export Passwords From Chrome  screenshot=None
+2026-01-08T18:53:03.103197+08:00  focus_change  app=xdg-desktop-portal-gnome  title=Import Passwords File  screenshot=None
+2026-01-08T18:53:08.109362+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T18:54:02.126871+08:00  focus_change  app=org.mozilla.firefox  title=Settings — Mozilla Firefox  screenshot=None
+2026-01-08T18:54:07.130010+08:00  focus_change  app=xdg-desktop-portal-gnome  title=Import bookmarks file  screenshot=None
+2026-01-08T18:54:17.134241+08:00  focus_change  app=org.gnome.Nautilus  title=Home  screenshot=None
+2026-01-08T18:54:27.138878+08:00  focus_change  app=org.gnome.Nautilus  title=Downloads  screenshot=None
+2026-01-08T18:54:32.141700+08:00  focus_change  app=org.mozilla.firefox  title=Settings — Mozilla Firefox  screenshot=None
+2026-01-08T18:55:02.150646+08:00  focus_change  app=Chromium  title=Password Manager - Chromium  screenshot=None
+2026-01-08T18:55:07.153689+08:00  focus_change  app=Chromium  title=New Tab - Chromium  screenshot=None
+2026-01-08T18:55:12.156520+08:00  focus_change  app=Chromium  title=Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T18:55:17.159314+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T18:56:27.178528+08:00  focus_change  app=org.mozilla.firefox  title=Settings — Mozilla Firefox  screenshot=None
+2026-01-08T18:56:52.187373+08:00  focus_change  app=org.mozilla.firefox  title=⁨Set up Firefox sync⁩ | ⁨Mozilla accounts⁩ — Mozilla Firefox  screenshot=None
+2026-01-08T18:57:12.194147+08:00  focus_change  app=org.mozilla.firefox  title=Mozilla accounts — Mozilla Firefox  screenshot=None
+2026-01-08T18:57:17.197229+08:00  focus_change  app=org.gnome.Nautilus  title=config  screenshot=None
+2026-01-08T18:57:20.209269+08:00  interval_capture  app=org.gnome.Nautilus  title=config  screenshot=None
+2026-01-08T18:57:22.211449+08:00  focus_change  app=org.gnome.Nautilus  title=Documents  screenshot=None
+2026-01-08T18:57:32.216413+08:00  focus_change  app=org.mozilla.firefox  title=Connect another device: Sync your Firefox experience — Mozilla Firefox  screenshot=None
+2026-01-08T18:58:47.246684+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T18:58:52.259547+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T18:58:57.262964+08:00  focus_change  app=org.mozilla.firefox  title=Connect another device: Sync your Firefox experience — Mozilla Firefox  screenshot=None
+2026-01-08T18:59:02.275608+08:00  focus_change  app=org.mozilla.firefox  title=Settings — Mozilla Firefox  screenshot=None
+2026-01-08T18:59:07.288199+08:00  focus_change  app=scrcpy  title=unknown  screenshot=None
+2026-01-08T18:59:32.296440+08:00  focus_change  app=org.mozilla.firefox  title=Settings — Mozilla Firefox  screenshot=None
+2026-01-08T18:59:37.309131+08:00  focus_change  app=org.mozilla.firefox  title=Mozilla Firefox  screenshot=None
+2026-01-08T18:59:42.321922+08:00  focus_change  app=scrcpy  title=unknown  screenshot=None
+2026-01-08T19:02:20.365570+08:00  interval_capture  app=scrcpy  title=unknown  screenshot=None
+2026-01-08T19:03:07.389532+08:00  focus_change  app=Code  title=ubuntu.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T19:03:17.403257+08:00  focus_change  app=scrcpy  title=unknown  screenshot=None
+2026-01-08T19:05:32.438439+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T19:05:37.441666+08:00  focus_change  app=scrcpy  title=unknown  screenshot=None
+2026-01-08T19:07:20.477799+08:00  interval_capture  app=scrcpy  title=unknown  screenshot=None
+2026-01-08T19:08:57.504056+08:00  focus_change  app=org.mozilla.firefox  title=Solo - Free AI Website Creator — Mozilla Firefox  screenshot=None
+2026-01-08T19:09:02.516953+08:00  focus_change  app=Chromium  title=New Tab - Chromium  screenshot=None
+2026-01-08T19:09:07.529667+08:00  focus_change  app=Chromium  title=uBlock₀ — Dashboard - Chromium  screenshot=None
+2026-01-08T19:09:12.542415+08:00  focus_change  app=scrcpy  title=unknown  screenshot=None
+2026-01-08T19:10:02.566055+08:00  focus_change  app=org.mozilla.firefox  title=Solo - Free AI Website Creator — Mozilla Firefox  screenshot=None
+2026-01-08T19:10:07.578833+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T19:10:22.593482+08:00  focus_change  app=scrcpy  title=unknown  screenshot=None
+2026-01-08T19:12:20.634368+08:00  interval_capture  app=scrcpy  title=unknown  screenshot=None
+2026-01-08T19:12:22.637126+08:00  focus_change  app=Chromium  title=ChatGPT - Chromium  screenshot=None
+2026-01-08T19:12:32.641850+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T19:15:27.687929+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T19:17:17.717328+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T19:17:20.720290+08:00  interval_capture  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T19:17:32.726015+08:00  focus_change  app=Code  title=20260108 fira firefox assess vertical tab bar commun.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T19:17:37.730006+08:00  focus_change  app=Code  title=20260108 fira firefox assess vertical tab bar voices.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T19:17:42.736028+08:00  focus_change  app=Chromium  title=Vertical or horizontal tabs, what do you prefer? : r/browsers - Chromium  screenshot=None
+2026-01-08T19:17:57.742098+08:00  focus_change  app=Chromium  title=Extensions - Chromium  screenshot=None
+2026-01-08T19:18:02.745108+08:00  focus_change  app=Chromium  title=Extensions - Vertical Tabs in Side Panel - Chromium  screenshot=None
+2026-01-08T19:18:07.748646+08:00  focus_change  app=Chromium  title=Settings - All sites - Chromium  screenshot=None
+2026-01-08T19:18:12.751758+08:00  focus_change  app=Chromium  title=Extensions - Vertical Tabs in Side Panel - Chromium  screenshot=None
+2026-01-08T19:18:47.772058+08:00  focus_change  app=Chromium  title=Vertical Tabs in Side Panel - Chrome Web Store - Chromium  screenshot=None
+2026-01-08T19:19:02.787383+08:00  focus_change  app=Chromium  title=Guokai Studio, software developed by Jackie(Guokai) Han - guokai.dev - Chromium  screenshot=None
+2026-01-08T19:19:27.795616+08:00  focus_change  app=Chromium  title=Jackie(Guokai) Han - Chromium  screenshot=None
+2026-01-08T19:19:52.813265+08:00  focus_change  app=Chromium  title=Vertical Tabs in Side Panel - Chrome Web Store - Chromium  screenshot=None
+2026-01-08T19:20:12.822597+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T19:20:17.835379+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T19:20:27.839955+08:00  focus_change  app=Chromium  title=Vertical Tabs in Side Panel - Chrome Web Store - Chromium  screenshot=None
+2026-01-08T19:20:32.844247+08:00  focus_change  app=Chromium  title=Extensions - Chromium  screenshot=None
+2026-01-08T19:20:42.858193+08:00  focus_change  app=Chromium  title=Extensions - Vertical Tabs in Side Panel - Chromium  screenshot=None
+2026-01-08T19:20:47.861680+08:00  focus_change  app=Chromium  title=【Chat & Sing】..until YouTube kun breaks - YouTube - Chromium  screenshot=None
+2026-01-08T19:20:52.865076+08:00  focus_change  app=Chromium  title=​ - Chromium  screenshot=None
+2026-01-08T19:20:57.869491+08:00  focus_change  app=Chromium  title=Extensions - Chromium  screenshot=None
+2026-01-08T19:21:07.874118+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T19:21:22.889585+08:00  focus_change  app=Chromium  title=Extensions - Chromium  screenshot=None
+2026-01-08T19:21:27.892956+08:00  focus_change  app=Chromium  title=Vertical Tabs in Side Panel - Chrome Web Store - Chromium  screenshot=None
+2026-01-08T19:21:32.896160+08:00  focus_change  app=Chromium  title=Cyan Ch. 朝日小盐 - YouTube - Chromium  screenshot=None
+2026-01-08T19:21:37.908839+08:00  focus_change  app=Chromium  title=【Chat & Sing】..until YouTube kun breaks - YouTube - Chromium  screenshot=None
+2026-01-08T19:21:47.913956+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T19:21:52.917360+08:00  focus_change  app=Chromium  title=ChatGPT - Chromium  screenshot=None
+2026-01-08T19:22:20.931232+08:00  interval_capture  app=Chromium  title=ChatGPT - Chromium  screenshot=None
+2026-01-08T19:22:22.933616+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T19:23:12.948818+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T19:23:52.961321+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T19:24:02.975066+08:00  focus_change  app=Chromium  title=Vertical Tabs in Side Panel - Chrome Web Store - Chromium  screenshot=None
+2026-01-08T19:24:07.987362+08:00  focus_change  app=Chromium  title=Guokai Studio, software developed by Jackie(Guokai) Han - guokai.dev - Chromium  screenshot=None
+2026-01-08T19:24:33.004618+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T19:24:38.017002+08:00  focus_change  app=Chromium  title=Guokai Studio, software developed by Jackie(Guokai) Han - guokai.dev - Chromium  screenshot=None
+2026-01-08T19:24:43.020031+08:00  focus_change  app=Chromium  title=Jackie(Guokai) Han - Chromium  screenshot=None
+2026-01-08T19:24:48.032580+08:00  focus_change  app=Chromium  title=Donate - Chromium  screenshot=None
+2026-01-08T19:24:53.035530+08:00  focus_change  app=Chromium  title=Jackie(Guokai) Han - Chromium  screenshot=None
+2026-01-08T19:24:58.038293+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T19:25:03.050770+08:00  focus_change  app=Chromium  title=Jackie(Guokai) Han - Chromium  screenshot=None
+2026-01-08T19:25:18.065651+08:00  focus_change  app=Chromium  title=Guokai Studio, software developed by Jackie(Guokai) Han - guokai.dev - Chromium  screenshot=None
+2026-01-08T19:25:28.079351+08:00  focus_change  app=Chromium  title=Extensions - Vertical Tabs in Side Panel - Chromium  screenshot=None
+2026-01-08T19:25:33.082306+08:00  focus_change  app=Chromium  title=Vertical or horizontal tabs, what do you prefer? : r/browsers - Chromium  screenshot=None
+2026-01-08T19:26:08.092577+08:00  focus_change  app=org.mozilla.firefox  title=Solo - Free AI Website Creator — Mozilla Firefox  screenshot=None
+2026-01-08T19:26:13.095771+08:00  focus_change  app=org.mozilla.firefox  title=Mozilla Firefox  screenshot=None
+2026-01-08T19:26:38.113072+08:00  focus_change  app=org.mozilla.firefox  title=ChatGPT — Mozilla Firefox  screenshot=None
+2026-01-08T19:26:47.117467+08:00  focus_change  app=org.mozilla.firefox  title=Sign in - Google Accounts — Mozilla Firefox  screenshot=None
+2026-01-08T19:26:52.120225+08:00  focus_change  app=org.mozilla.firefox  title=Welcome — Mozilla Firefox  screenshot=None
+2026-01-08T19:26:57.123241+08:00  focus_change  app=org.mozilla.firefox  title=Solo - Free AI Website Creator — Mozilla Firefox  screenshot=None
+2026-01-08T19:27:21.130847+08:00  interval_capture  app=org.mozilla.firefox  title=Solo - Free AI Website Creator — Mozilla Firefox  screenshot=None
+2026-01-08T19:27:57.141716+08:00  focus_change  app=org.mozilla.firefox  title=ChatGPT — Mozilla Firefox  screenshot=None
+2026-01-08T19:28:32.151623+08:00  focus_change  app=Chromium  title=Vertical or horizontal tabs, what do you prefer? : r/browsers - Chromium  screenshot=None
+2026-01-08T19:28:37.154826+08:00  focus_change  app=org.mozilla.firefox  title=ChatGPT — Mozilla Firefox  screenshot=None
+2026-01-08T19:28:42.157721+08:00  focus_change  app=Chromium  title=Vertical or horizontal tabs, what do you prefer? : r/browsers - Chromium  screenshot=None
+2026-01-08T19:28:52.162405+08:00  focus_change  app=org.mozilla.firefox  title=ChatGPT — Mozilla Firefox  screenshot=None
+2026-01-08T19:28:57.165587+08:00  focus_change  app=Chromium  title=Vertical or horizontal tabs, what do you prefer? : r/browsers - Chromium  screenshot=None
+2026-01-08T19:29:07.170000+08:00  focus_change  app=org.mozilla.firefox  title=ChatGPT — Mozilla Firefox  screenshot=None
+2026-01-08T19:29:12.173042+08:00  focus_change  app=Chromium  title=Vertical or horizontal tabs, what do you prefer? : r/browsers - Chromium  screenshot=None
+2026-01-08T19:29:27.178244+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T19:30:42.199678+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T19:31:17.211269+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T19:31:32.217046+08:00  focus_change  app=Code  title=readme.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T19:31:37.220905+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T19:31:57.227712+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T19:32:02.231817+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T19:32:07.236814+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T19:32:21.251615+08:00  interval_capture  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T19:32:37.259729+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T19:32:42.262635+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T19:33:02.279139+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T19:33:12.304576+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T19:33:27.320232+08:00  focus_change  app=Chromium  title=New Tab - Chromium  screenshot=None
+2026-01-08T19:33:32.332752+08:00  focus_change  app=Chromium  title=ChatGPT - Chromium  screenshot=None
+2026-01-08T19:33:37.336545+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T19:33:42.339533+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T19:34:02.355674+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T19:35:37.390117+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T19:36:17.411413+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T19:37:21.438309+08:00  interval_capture  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T19:39:12.476249+08:00  focus_change  app=Chromium  title=uBlock₀ — Dashboard - Chromium  screenshot=None
+2026-01-08T19:39:17.488839+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T19:39:32.504191+08:00  focus_change  app=Chromium  title=ChatGPT - Chromium  screenshot=None
+2026-01-08T19:39:37.516958+08:00  focus_change  app=Chromium  title=uBlock₀ — Dashboard - Chromium  screenshot=None
+2026-01-08T19:39:52.522465+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T19:42:02.557044+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T19:42:07.569601+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T19:42:21.575062+08:00  interval_capture  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T19:42:37.590057+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T19:42:47.603743+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T19:42:52.616626+08:00  focus_change  app=Chromium  title=uBlock₀ — Dashboard - Chromium  screenshot=None
+2026-01-08T19:42:57.620693+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T19:43:17.636684+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T19:43:42.654101+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T19:45:32.691968+08:00  focus_change  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T19:47:21.729627+08:00  interval_capture  app=Code  title=journal.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T19:47:37.744392+08:00  focus_change  app=Code  title=20260108 intuitive user rule chatgpt promotional rules.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T19:48:12.764186+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T19:48:17.768250+08:00  focus_change  app=Chromium  title=uBlock₀ — Dashboard - Chromium  screenshot=None
+2026-01-08T19:48:22.771275+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T19:48:37.777369+08:00  focus_change  app=Chromium  title=New Tab - Chromium  screenshot=None
+2026-01-08T19:48:42.780677+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T19:48:52.794428+08:00  focus_change  app=Chromium  title=telegram foss - Google Search - Chromium  screenshot=None
+2026-01-08T19:48:57.797914+08:00  focus_change  app=telegram-desktop_telegram-desktop  title=Telegram (139130)  screenshot=None
+2026-01-08T19:49:02.810482+08:00  focus_change  app=scrcpy  title=unknown  screenshot=None
+2026-01-08T19:50:12.848270+08:00  focus_change  app=telegram-desktop_telegram-desktop  title=precious – (139127)  screenshot=None
+2026-01-08T19:50:17.851775+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T19:50:32.857169+08:00  focus_change  app=Chromium  title=Untitled - Chromium  screenshot=None
+2026-01-08T19:50:37.861182+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T19:51:02.871759+08:00  focus_change  app=Chromium  title=Telegram-FOSS-Team/Telegram-FOSS: Unofficial, FOSS-friendly fork of the original Telegram client for Android - Chromium  screenshot=None
+2026-01-08T19:51:07.884394+08:00  focus_change  app=Chromium  title=Release v10.14.3 · Telegram-FOSS-Team/Telegram-FOSS - Chromium  screenshot=None
+2026-01-08T19:51:12.897593+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T19:52:02.921095+08:00  focus_change  app=scrcpy  title=unknown  screenshot=None
+2026-01-08T19:52:21.937078+08:00  interval_capture  app=scrcpy  title=unknown  screenshot=None
+2026-01-08T19:52:27.949861+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T19:52:47.957206+08:00  focus_change  app=Chromium  title=New Tab - Chromium  screenshot=None
+2026-01-08T19:52:52.969609+08:00  focus_change  app=Chromium  title=Telegram-FOSS-Team/Telegram-FOSS: Unofficial, FOSS-friendly fork of the original Telegram client for Android - Chromium  screenshot=None
+2026-01-08T19:52:57.972886+08:00  focus_change  app=Chromium  title=Mercurygram | F-Droid - Free and Open Source Android App Repository - Chromium  screenshot=None
+2026-01-08T19:53:12.979734+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T19:53:27.985337+08:00  focus_change  app=Chromium  title=Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T19:53:32.997549+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T19:54:03.017318+08:00  focus_change  app=kitty  title=~  screenshot=None
+2026-01-08T19:54:08.029846+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T19:54:13.033034+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T19:54:18.037348+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T19:54:38.044605+08:00  focus_change  app=scrcpy  title=unknown  screenshot=None
+2026-01-08T19:55:18.056604+08:00  focus_change  app=telegram-desktop_telegram-desktop  title=precious – (139146)  screenshot=None
+2026-01-08T19:55:23.068941+08:00  focus_change  app=scrcpy  title=unknown  screenshot=None
+2026-01-08T19:55:28.081353+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T19:56:28.107603+08:00  focus_change  app=scrcpy  title=unknown  screenshot=None
+2026-01-08T19:56:38.121350+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T19:57:22.133962+08:00  interval_capture  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T19:57:52.143217+08:00  focus_change  app=scrcpy  title=unknown  screenshot=None
+2026-01-08T19:58:17.151794+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T19:58:32.157825+08:00  focus_change  app=kitty  title=adb reboot\n  screenshot=None
+2026-01-08T19:58:37.160782+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T19:58:52.166270+08:00  focus_change  app=telegram-desktop_telegram-desktop  title=precious – (139158)  screenshot=None
+2026-01-08T19:59:02.170586+08:00  focus_change  app=telegram-desktop_telegram-desktop  title=precious – (139159)  screenshot=None
+2026-01-08T19:59:07.173797+08:00  focus_change  app=telegram-desktop_telegram-desktop  title=precious – (139160)  screenshot=None
+2026-01-08T19:59:12.177360+08:00  focus_change  app=telegram-desktop_telegram-desktop  title=precious – (139161)  screenshot=None
+2026-01-08T19:59:27.184196+08:00  focus_change  app=telegram-desktop_telegram-desktop  title=(75) Hacker News – (139158)  screenshot=None
+2026-01-08T19:59:32.187440+08:00  focus_change  app=telegram-desktop_telegram-desktop  title=Hacker News – (139083)  screenshot=None
+2026-01-08T20:00:07.198359+08:00  focus_change  app=telegram-desktop_telegram-desktop  title=Hacker News – (139084)  screenshot=None
+2026-01-08T20:00:32.207283+08:00  focus_change  app=telegram-desktop_telegram-desktop  title=Hacker News – (139085)  screenshot=None
+2026-01-08T20:01:22.223501+08:00  focus_change  app=telegram-desktop_telegram-desktop  title=precious – (139085)  screenshot=None
+2026-01-08T20:01:32.228008+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T20:01:42.242365+08:00  focus_change  app=Chromium  title=2025 · 仍在路上，半径之外 - 静かな森 - Chromium  screenshot=None
+2026-01-08T20:02:02.249408+08:00  focus_change  app=scrcpy  title=unknown  screenshot=None
+2026-01-08T20:02:22.265307+08:00  interval_capture  app=scrcpy  title=unknown  screenshot=None
+2026-01-08T20:02:42.281416+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T20:03:17.294988+08:00  focus_change  app=Chromium  title=Mercurygram | F-Droid - Free and Open Source Android App Repository - Chromium  screenshot=None
+2026-01-08T20:03:22.298170+08:00  focus_change  app=org.gnome.Nautilus  title=Home  screenshot=None
+2026-01-08T20:03:27.310548+08:00  focus_change  app=org.gnome.Nautilus  title=Downloads  screenshot=None
+2026-01-08T20:03:37.324018+08:00  focus_change  app=org.gnome.Nautilus  title=Download  screenshot=None
+2026-01-08T20:03:42.336430+08:00  focus_change  app=scrcpy  title=unknown  screenshot=None
+2026-01-08T20:04:12.355030+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T20:04:22.368979+08:00  focus_change  app=kitty  title=~  screenshot=None
+2026-01-08T20:04:27.381505+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T20:04:32.394566+08:00  focus_change  app=kitty  title=~  screenshot=None
+2026-01-08T20:04:37.397795+08:00  focus_change  app=scrcpy  title=unknown  screenshot=None
+2026-01-08T20:06:17.424214+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T20:06:22.428310+08:00  focus_change  app=telegram-desktop_telegram-desktop  title=Telegram (139110)  screenshot=None
+2026-01-08T20:06:27.432053+08:00  focus_change  app=telegram-desktop_telegram-desktop  title=Telegram – (139109)  screenshot=None
+2026-01-08T20:06:32.444687+08:00  focus_change  app=scrcpy  title=unknown  screenshot=None
+2026-01-08T20:07:02.463191+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T20:07:17.477942+08:00  focus_change  app=scrcpy  title=unknown  screenshot=None
+2026-01-08T20:07:22.490613+08:00  interval_capture  app=scrcpy  title=unknown  screenshot=None
+2026-01-08T20:07:27.503011+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T20:08:12.525426+08:00  focus_change  app=scrcpy  title=unknown  screenshot=None
+2026-01-08T20:08:17.528773+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T20:08:27.543603+08:00  focus_change  app=scrcpy  title=unknown  screenshot=None
+2026-01-08T20:09:02.563822+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T20:09:27.571296+08:00  focus_change  app=scrcpy  title=unknown  screenshot=None
+2026-01-08T20:09:47.587509+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T20:10:17.607535+08:00  focus_change  app=Chromium  title=Nicegram: Your All-round Messaging App for Secure Communication - Chromium  screenshot=None
+2026-01-08T20:10:52.627390+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T20:12:22.662370+08:00  interval_capture  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T20:12:32.667576+08:00  focus_change  app=Chromium  title=We need telegram revanced!!! : r/revancedapp - Chromium  screenshot=None
+2026-01-08T20:12:42.681267+08:00  focus_change  app=Chromium  title=Untitled - Chromium  screenshot=None
+2026-01-08T20:12:47.693692+08:00  focus_change  app=Chromium  title=We need telegram revanced!!! : r/revancedapp - Chromium  screenshot=None
+2026-01-08T20:13:02.699996+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T20:13:12.714649+08:00  focus_change  app=Chromium  title=Nagram - Google Search - Chromium  screenshot=None
+2026-01-08T20:13:22.729183+08:00  focus_change  app=Chromium  title=NextAlone/Nagram: The third-party Telegram android app. - Chromium  screenshot=None
+2026-01-08T20:13:47.737351+08:00  focus_change  app=Chromium  title=Release 12.2.3.1225 · NextAlone/Nagram - Chromium  screenshot=None
+2026-01-08T20:13:52.750639+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T20:14:02.764194+08:00  focus_change  app=scrcpy  title=unknown  screenshot=None
+2026-01-08T20:14:07.772152+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T20:14:17.776636+08:00  focus_change  app=Code  title=20260108 fira phone disable phone app.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T20:14:27.790597+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T20:14:42.798130+08:00  focus_change  app=Chromium  title=2025 · 仍在路上，半径之外 - 静かな森 - Chromium  screenshot=None
+2026-01-08T20:15:27.823540+08:00  focus_change  app=scrcpy  title=unknown  screenshot=None
+2026-01-08T20:15:47.830980+08:00  focus_change  app=Chromium  title=2025 · 仍在路上，半径之外 - 静かな森 - Chromium  screenshot=None
+2026-01-08T20:15:52.835804+08:00  focus_change  app=Chromium  title=2024 · 前路未尽，初心犹在 - 静かな森 - Chromium  screenshot=None
+2026-01-08T20:16:12.854013+08:00  focus_change  app=Chromium  title=2023 · 光影交织之年 - 静かな森 - Chromium  screenshot=None
+2026-01-08T20:16:17.867528+08:00  focus_change  app=Chromium  title=2025 · 仍在路上，半径之外 - 静かな森 - Chromium  screenshot=None
+2026-01-08T20:16:27.881568+08:00  focus_change  app=Chromium  title=uBlock₀ — Dashboard - Chromium  screenshot=None
+2026-01-08T20:16:32.894728+08:00  focus_change  app=scrcpy  title=unknown  screenshot=None
+2026-01-08T20:16:42.908748+08:00  focus_change  app=Chromium  title=New Tab - Chromium  screenshot=None
+2026-01-08T20:16:47.921697+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T20:17:02.938644+08:00  focus_change  app=scrcpy  title=unknown  screenshot=None
+2026-01-08T20:17:22.956015+08:00  interval_capture  app=scrcpy  title=unknown  screenshot=None
+2026-01-08T20:18:22.972299+08:00  focus_change  app=Chromium  title=uBlock₀ — Dashboard - Chromium  screenshot=None
+2026-01-08T20:18:27.985238+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T20:18:37.999170+08:00  focus_change  app=Chromium  title=New Tab - Chromium  screenshot=None
+2026-01-08T20:18:43.012352+08:00  focus_change  app=Chromium  title=LobeHub: Your personal AI productivity tool for a smarter brain. - Chromium  screenshot=None
+2026-01-08T20:18:53.018402+08:00  focus_change  app=Chromium  title=ChatGPT - Chromium  screenshot=None
+2026-01-08T20:18:58.021519+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T20:19:13.036947+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T20:19:48.058173+08:00  focus_change  app=Chromium  title=‍ - Chromium  screenshot=None
+2026-01-08T20:22:23.108673+08:00  interval_capture  app=Chromium  title=‍ - Chromium  screenshot=None
+2026-01-08T20:23:03.130644+08:00  focus_change  app=Chromium  title=We need telegram revanced!!! : r/revancedapp - Chromium  screenshot=None
+2026-01-08T20:23:07.134315+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T20:23:32.142257+08:00  focus_change  app=Chromium  title=exteraSquad/exteraGram: Telegram client based on Android sources with new features - Chromium  screenshot=None
+2026-01-08T20:23:37.145473+08:00  focus_change  app=Chromium  title=‍ - Chromium  screenshot=None
+2026-01-08T20:24:17.157795+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T20:24:32.163509+08:00  focus_change  app=Code  title=20260108 fira phone disable phone app.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T20:24:52.170385+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T20:24:57.174104+08:00  focus_change  app=Chromium  title=2025 · 仍在路上，半径之外 - 静かな森 - Chromium  screenshot=None
+2026-01-08T20:25:07.178524+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T20:25:12.182077+08:00  focus_change  app=Chromium  title=Discord | Friends - Chromium  screenshot=None
+2026-01-08T20:25:17.185990+08:00  focus_change  app=Chromium  title=(82) Discord | #🫠｜闲聊 | LobeHub - Chromium  screenshot=None
+2026-01-08T20:25:22.189400+08:00  focus_change  app=Chromium  title=(81) Discord | #🫠｜闲聊 | LobeHub - Chromium  screenshot=None
+2026-01-08T20:25:37.195472+08:00  focus_change  app=Chromium  title=(81) Discord | #🤯｜lobe-chat | LobeHub - Chromium  screenshot=None
+2026-01-08T20:25:47.200584+08:00  focus_change  app=Chromium  title=(81) Discord | #📜｜rules-and-tos | LobeHub - Chromium  screenshot=None
+2026-01-08T20:25:52.204191+08:00  focus_change  app=Chromium  title=(81) Discord | #📣｜announcements | LobeHub - Chromium  screenshot=None
+2026-01-08T20:25:57.207272+08:00  focus_change  app=Chromium  title=2020 · 春华秋实 - 静かな森 - Chromium  screenshot=None
+2026-01-08T20:26:02.211542+08:00  focus_change  app=Chromium  title=New Tab - Chromium  screenshot=None
+2026-01-08T20:26:07.215319+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T20:26:12.218895+08:00  focus_change  app=Chromium  title=linear - Google Search - Chromium  screenshot=None
+2026-01-08T20:26:17.222057+08:00  focus_change  app=Chromium  title=Release 12.2.3.1225 · NextAlone/Nagram - Chromium  screenshot=None
+2026-01-08T20:26:22.225250+08:00  focus_change  app=org.gnome.Nautilus  title=Downloads  screenshot=None
+2026-01-08T20:26:27.238042+08:00  focus_change  app=Chromium  title=2025 · 仍在路上，半径之外 - 静かな森 - Chromium  screenshot=None
+2026-01-08T20:26:32.250438+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T20:26:47.265356+08:00  focus_change  app=Chromium  title=NextAlone/Nagram: The third-party Telegram android app. - Chromium  screenshot=None
+2026-01-08T20:26:52.268525+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T20:27:23.287160+08:00  interval_capture  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T20:32:23.371520+08:00  interval_capture  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T20:37:23.459167+08:00  interval_capture  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T20:42:23.544222+08:00  interval_capture  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T20:47:23.631856+08:00  interval_capture  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T20:52:23.721289+08:00  interval_capture  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T20:57:23.800380+08:00  interval_capture  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T21:02:23.890825+08:00  interval_capture  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T21:07:23.968082+08:00  interval_capture  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T21:07:41.984530+08:00  focus_change  app=Chromium  title=wus - Google Search - Chromium  screenshot=None
+2026-01-08T21:07:46.988230+08:00  focus_change  app=Chromium  title=Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T21:07:51.992264+08:00  focus_change  app=Chromium  title=(81) Discord | #📣｜announcements | LobeHub - Chromium  screenshot=None
+2026-01-08T21:07:57.004581+08:00  focus_change  app=Chromium  title=linear - Google Search - Chromium  screenshot=None
+2026-01-08T21:08:02.007698+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T21:08:17.014020+08:00  focus_change  app=Code  title=river.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T21:08:22.017421+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T21:09:17.042698+08:00  focus_change  app=Chromium  title=Linear – Plan and build products - Chromium  screenshot=None
+2026-01-08T21:09:52.063597+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T21:11:22.098339+08:00  focus_change  app=Chromium  title=Untitled - Chromium  screenshot=None
+2026-01-08T21:11:27.121471+08:00  focus_change  app=Chromium  title=(81) Discord | #📣｜announcements | LobeHub - Chromium  screenshot=None
+2026-01-08T21:11:46.127801+08:00  focus_change  app=Chromium  title=502 Bad Gateway - Chromium  screenshot=None
+2026-01-08T21:11:51.131158+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T21:12:21.140571+08:00  focus_change  app=Chromium  title=New Tab - Chromium  screenshot=None
+2026-01-08T21:12:24.152643+08:00  interval_capture  app=Chromium  title=New Tab - Chromium  screenshot=None
+2026-01-08T21:12:26.154847+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T21:14:16.184847+08:00  focus_change  app=kitty  title=sudo apt install git-filter-repo\n  screenshot=None
+2026-01-08T21:14:21.188146+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T21:14:41.195165+08:00  focus_change  app=kitty  title=~  screenshot=None
+2026-01-08T21:14:46.198370+08:00  focus_change  app=kitty  title=~/Documents/blogging  screenshot=None
+2026-01-08T21:15:11.206972+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T21:15:16.209827+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T21:16:06.224341+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T21:16:11.228534+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T21:16:51.250553+08:00  focus_change  app=Chromium  title=2020 · 春华秋实 - Chromium  screenshot=None
+2026-01-08T21:17:24.271531+08:00  interval_capture  app=Chromium  title=2020 · 春华秋实 - Chromium  screenshot=None
+2026-01-08T21:17:56.294280+08:00  focus_change  app=Chromium  title=2020 · 春华秋实 - 静かな森 - Chromium  screenshot=None
+2026-01-08T21:18:01.306758+08:00  focus_change  app=Chromium  title=2020 · 春华秋实 - Chromium  screenshot=None
+2026-01-08T21:19:06.334906+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T21:21:21.371270+08:00  focus_change  app=kitty  title=~/Documents/blogging  screenshot=None
+2026-01-08T21:21:26.384919+08:00  focus_change  app=org.gnome.Nautilus  title=Properties  screenshot=None
+2026-01-08T21:21:31.397416+08:00  focus_change  app=kitty  title=~/Documents/blogging  screenshot=None
+2026-01-08T21:21:36.401255+08:00  focus_change  app=org.gnome.Nautilus  title=blogging  screenshot=None
+2026-01-08T21:21:41.405193+08:00  focus_change  app=org.gnome.Nautilus  title=Properties  screenshot=None
+2026-01-08T21:21:46.418054+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T21:21:51.421333+08:00  focus_change  app=Code  title=.zshrc - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T21:22:06.436240+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T21:22:16.440824+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T21:22:24.444791+08:00  interval_capture  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T21:22:36.449532+08:00  focus_change  app=Code  title=.zshrc - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T21:22:41.452960+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T21:23:01.468938+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T21:23:26.480162+08:00  focus_change  app=Chromium  title=New Tab - Chromium  screenshot=None
+2026-01-08T21:23:31.483892+08:00  focus_change  app=Chromium  title=(81) Discord | #📣｜announcements | LobeHub - Chromium  screenshot=None
+2026-01-08T21:23:36.490655+08:00  focus_change  app=Chromium  title=Intro to Linear - YouTube - Chromium  screenshot=None
+2026-01-08T21:25:21.529462+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T21:27:24.571257+08:00  interval_capture  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T21:28:01.588595+08:00  focus_change  app=Chromium  title=Intro to Linear - YouTube - Chromium  screenshot=None
+2026-01-08T21:28:16.604201+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T21:29:01.627070+08:00  focus_change  app=Chromium  title=Intro to Linear - YouTube - Chromium  screenshot=None
+2026-01-08T21:30:01.653838+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T21:30:56.668684+08:00  focus_change  app=Chromium  title=Intro to Linear - YouTube - Chromium  screenshot=None
+2026-01-08T21:31:01.680998+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T21:31:56.698274+08:00  focus_change  app=Chromium  title=Intro to Linear - YouTube - Chromium  screenshot=None
+2026-01-08T21:32:01.711320+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T21:32:24.719769+08:00  interval_capture  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T21:33:46.752767+08:00  focus_change  app=Chromium  title=Intro to Linear - YouTube - Chromium  screenshot=None
+2026-01-08T21:34:11.771142+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T21:34:26.786241+08:00  focus_change  app=Chromium  title=Intro to Linear - YouTube - Chromium  screenshot=None
+2026-01-08T21:34:31.789532+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T21:37:24.870555+08:00  interval_capture  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T21:37:36.875537+08:00  focus_change  app=Chromium  title=Intro to Linear - YouTube - Chromium  screenshot=None
+2026-01-08T21:37:41.889708+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T21:37:46.902295+08:00  focus_change  app=Chromium  title=Intro to Linear - YouTube - Chromium  screenshot=None
+2026-01-08T21:37:51.905552+08:00  focus_change  app=scrcpy  title=unknown  screenshot=None
+2026-01-08T21:37:56.908790+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T21:38:01.921267+08:00  focus_change  app=Chromium  title=Intro to Linear - YouTube - Chromium  screenshot=None
+2026-01-08T21:38:11.927205+08:00  focus_change  app=Chromium  title=ChatGPT - Chromium  screenshot=None
+2026-01-08T21:38:16.939790+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T21:38:51.960697+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T21:38:56.963700+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T21:39:11.969313+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T21:39:16.972416+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T21:39:21.985059+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T21:39:26.988588+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T21:39:36.993160+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T21:39:42.010285+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T21:39:47.013417+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T21:39:57.024711+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T21:40:22.042331+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T21:40:32.047093+08:00  focus_change  app=Chromium  title=Intro to Linear - YouTube - Chromium  screenshot=None
+2026-01-08T21:40:42.061904+08:00  focus_change  app=Chromium  title=【Drawing】Guess whose new outift... | VTuber Cyan - YouTube - Chromium  screenshot=None
+2026-01-08T21:41:17.081921+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T21:41:27.095466+08:00  focus_change  app=Chromium  title=【Drawing】Guess whose new outift... | VTuber Cyan - YouTube - Chromium  screenshot=None
+2026-01-08T21:42:12.121813+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T21:42:16.124570+08:00  focus_change  app=Chromium  title=content (1536×1024) - Chromium  screenshot=None
+2026-01-08T21:42:21.127433+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T21:42:25.139719+08:00  interval_capture  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T21:42:26.141811+08:00  focus_change  app=Chromium  title=content (1536×1024) - Chromium  screenshot=None
+2026-01-08T21:42:31.144804+08:00  focus_change  app=org.gnome.Nautilus  title=Downloads  screenshot=None
+2026-01-08T21:42:36.147694+08:00  focus_change  app=Chromium  title=content (1536×1024) - Chromium  screenshot=None
+2026-01-08T21:42:41.150574+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T21:43:06.159215+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T21:43:36.168195+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T21:44:36.184190+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T21:45:11.194242+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T21:45:16.197263+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T21:45:21.200910+08:00  focus_change  app=Chromium  title=【Drawing】Guess whose new outift... | VTuber Cyan - YouTube - Chromium  screenshot=None
+2026-01-08T21:45:26.205232+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T21:46:11.218697+08:00  focus_change  app=Code  title=message.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-08T21:46:26.223939+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T21:46:41.230538+08:00  focus_change  app=Chromium  title=【Drawing】Guess whose new outift... | VTuber Cyan - YouTube - Chromium  screenshot=None
+2026-01-08T21:46:46.243069+08:00  focus_change  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T21:47:25.255022+08:00  interval_capture  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T21:52:25.342025+08:00  interval_capture  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None
+2026-01-08T21:57:25.419332+08:00  interval_capture  app=Chromium  title=Branch · Calm Guided Conversation - Chromium  screenshot=None

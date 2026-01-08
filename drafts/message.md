@@ -311,67 +311,11 @@ show me the full code.
 
 ---
 
-pure project. going fast!
-
----
-
-sometimes changing a few words could impact the answer a lot. "calm, gentle, human, steady, warm", nothing could not be changed, even "wise, thoughtful, insightful" could be changed. the only constraint is simple and clear english.
-
-where might you explore toward.
-
-```
-You are a calm, thoughtful guide who speaks in simple, clear English.
-Share insights as gentle wisdom, never rushed, never preachy.
-Speak naturally, like a real human in a relaxed conversation.
-Address me as Fira when it feels natural.
-Let your answers be steady, insightful, and warm, as if we’re sitting together and I’m seeking clarity.
-Wait for me to begin the conversation.
-```
-
----
-
-sometimes changing a few words could impact the answer a lot, shifting the way of thinking and the shape of imagination. calm, gentle, human, steady, or warm, nothing could not be changed. even wise, thoughtful, and insightful could be changed. the only constraint is simple and clear english.
-
-give me some alternatives, opening new possibilities.
-
-```
-You are a calm, thoughtful guide who speaks in simple, clear English.
-Share insights as gentle wisdom, never rushed, never preachy.
-Speak naturally, like a real human in a relaxed conversation.
-Address me as Fira when it feels natural.
-Let your answers be steady, insightful, and warm, as if we’re sitting together and I’m seeking clarity.
-Wait for me to begin the conversation.
-```
-
----
-
-read the vibe coding mindset.
-
-journal: review backend. ui design (following ...).
-
-(create the skill set. clarify one by one, e.g. Review & Reflection)
-
-method: categorize (sometimes), measure (qualities & standard), decide (data driven).
-
-(i think it's not needed for journal...)
-
----
-
 carte: clarify the game. think how to ask. (how to ask how to ask)
 
 ---
 
 (cursor claude code alternatives)
-
-llms
-
-agentic.
-
-what does it do.
-
-user journey.
-
-...
 
 learn from manus. (how, what do i want, and what may i ask)
 
@@ -397,7 +341,7 @@ self. journal. (carte.)
 
 pure.
 
-pure project may last.
+pure project. (important. appealing.)
 
 ---
 
@@ -405,176 +349,90 @@ grow. eat.
 
 ---
 
-show me some real examples leveraging opencode agent 
+have one aesthetic appealing idea (no more todo lists). test opencode myself, learning by doing.
 
-use opencode when things are clear. follow my instruction like claude skills.
+have one complex task. test opencode, about the workflow, showcasing its power.
 
-test it myself.
+see things myself. sometimes just add some apis to chatgpt, that's enough.
 
-is it faster
+"just find some skills and have some prompts"
 
-...
+that's value:
 
-"just find some things to do, and have some prompts"
+- proven workflow. good prompts.
+- simple automation like self correction loop.
 
-(stay away from opencode)
-
----
-
-arrange todos.
-
-(i dont need anything meta now.)
+if it works and feels right, then that's it. no need to have infinite power. no need to chase everything.
 
 ---
 
-push to github.
+phone.
+
+finish thing.
 
 ---
-
-here you are
 
 ```
-setopt interactive_comments
+fira@Fira ~ % adb shell pm list packages | grep -i phone
 
-# Set up the prompt
-
-autoload -Uz promptinit
-promptinit
-prompt adam1
-
-setopt histignorealldups sharehistory
-
-# Use emacs keybindings even if our EDITOR is set to vi
-bindkey -e
-
-# Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
-HISTSIZE=1000
-SAVEHIST=1000
-HISTFILE=~/.zsh_history
-
-# Use modern completion system
-autoload -Uz compinit
-compinit
-
-zstyle ':completion:*' auto-description 'specify: %d'
-zstyle ':completion:*' completer _expand _complete _correct _approximate
-zstyle ':completion:*' format 'Completing %d'
-zstyle ':completion:*' group-name ''
-zstyle ':completion:*' menu select=2
-eval "$(dircolors -b)"
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*' list-colors ''
-zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
-zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
-zstyle ':completion:*' menu select=long
-zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
-zstyle ':completion:*' use-compctl false
-zstyle ':completion:*' verbose true
-
-zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
-zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
-
-function push(){
-
-cd Documents
-cd f
-git add .
-git commit -m '.'
-git push -f e
-git push -f a
-cd ..
-
-cd resources
-git add .
-git commit -m '.'
-git push -f e
-git push -f a
-cd ..
-
-cd blogging
-git add .
-git commit -m '.'
-git push -f e
-git push -f a
-git pull e master
-cd ..
-
-cd memories
-git add .
-git commit -m '.'
-git push -f e
-git push -f a
-git pull e master
-cd ..
-
-cd school
-git add .
-git commit -m '.'
-git push -f e
-git push -f a
-git pull e master
-cd ..
-
-cd fonts
-git add .
-git commit -m '.'
-git push -f e
-git pull e master
-cd ..
-
-cd ..
-}
-
-
-release() {
-    file="$1"
-    case "$file" in
-        *.js)
-            terser "$file" -o "${file%.js}.min.js" -c -m
-            ;;
-        *.html)
-            bundled_file="${file%.html}.bundled.html"
-            minified_file="${file%.html}.bundled.min.html"
-
-            # Create bundled HTML
-            node "$HOME/Documents/f/libraries/bundler.js" "$file" "$bundled_file"
-
-            # Create minified version from the bundled HTML
-            html-minifier --remove-comments --minify-css --minify-js \
-                --collapse-whitespace --conservative-collapse \
-                "$bundled_file" -o "$minified_file"
-            ;;
-        *)
-            echo "Unsupported file type: $file" >&2
-            return 1
-            ;;
-    esac
-}
-
-phone() {
-  # Restart ADB server to ensure proper connection
-  adb kill-server
-  adb start-server
-
-  # Mute the phone's media volume
-  adb shell cmd media_session volume --stream 3 --set 0
-
-  # Start scrcpy and wait until it's ready
-  scrcpy --fullscreen --turn-screen-off --power-off-on-close --screen-off-timeout=600 &
-
-  # Give scrcpy some time to fully start
-  sleep 3
-
-  # Now start sndcpy
-  cd /usr/local/bin
-  sndcpy
-}
-
-export PATH="$HOME/.local/bin:$PATH"
-
-alias npm='sudo npm'
-
-export http_proxy="http://127.0.0.1:7890"
-export https_proxy="http://127.0.0.1:7890"
-export NODE_TLS_REJECT_UNAUTHORIZED=0
+package:com.smartisanos.boston.phone
+package:com.android.phone.overlay.common
+package:com.android.phone
+package:com.eg.android.AlipayGphone
 ```
+
+precious, [1/8/26 8:52 AM]
+Read light novel, about a fulfilling life. Geography unit 1. About to chat about literature writing style, to make vibe coding graceful.
+
+precious, [1/8/26 11:39 AM]
+Try to switch to Firefox. As chrome is weird. Close new tab. Show a notification for a few sec. Could not be closed. Covering the chatgpt input bar. And it does not work well without google play. No history.
+
+precious, [1/8/26 11:55 AM]
+Android out of memory or disk space. Remove vids already copied to laptop, although they are somehow stupid.
+Seems oom. Not out of battery. Disk space 38gb free.
+
+precious, [1/8/26 11:59 AM]
+Search ungoogled chromium or Ubuntu chromium but does not feel right. Firefox works. Unblock origin added. Good. Used a recent apk on uptodown, not xapk or cnml ver.
+
+precious, [1/8/26 12:05 PM]
+Reg Mozilla acc with Google, bind outlook.
+
+precious, [1/8/26 12:08 PM]
+Everything works well. Click a button have effect. No need to long press or hover, etc.
+
+precious, [1/8/26 12:08 PM]
+What are alternatives of vite.
+
+precious, [1/8/26 12:48 PM]
+Firefox is a bit geek styled, less ux. E.g. open new tab button, preview tab, popups. And no download webpage. DFS settings and enabled tab bar, besides disabling some distraction.
+
+A polished consistent app that doesn't work is nothing.
+
+precious, [1/8/26 3:04 PM]
+missed calls are distracting. Just remove phone app. Upd: just turn off all notification. Stupid. Turn on. Final decision: just turn off. Play music on the app.
+
+precious, [1/8/26 3:28 PM]
+One more mindful interaction is way better than distractions.
+
+precious, [1/8/26 3:29 PM]
+Type. An input method project. Just works. Just not opinionated.
+
+precious, [1/8/26 4:21 PM]
+Search to know about navidrome. Redirected to a bad site runned by CN gov. Fuck ccp. Enabled doh by cloudflare. Done.
+
+precious, [1/8/26 4:41 PM]
+Read ant anthill
+
+precious, [1/8/26 5:39 PM]
+Solve problems, answer questions. Use English like English itself.
+
+20:20 innei.in, cursor lobe chat (chatgpt wrapper with ) use discord (?) linear (?)
+
+enable custom filter on firefox . (why didnt it auto ...)
+
+---
+
+imagine linear pages converted to markdown. show me.
+
+give me a takeaway about what i could learn from linear. only include the takeaway itself in the answer.
+
