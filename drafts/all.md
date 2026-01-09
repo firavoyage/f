@@ -27,6 +27,7 @@ manage time:
 
 <!-- - manage time -->
 - arrange todos
+- project management
 
 life:
 

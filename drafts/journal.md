@@ -1699,13 +1699,55 @@ choose a quiet but general question about it. write for the future self/readers,
 
 01 00 push to github directly. deprecate the gitee mirror workaround.
 
-...
+09 00 Read light novel, about a fulfilling life. Geography unit 1. About to chat about literature writing style, to make vibe coding graceful.
+
+11 40 Try to switch to Firefox. 
+
+As chrome is weird: Close new tab. Show a notification for a few sec. Could not be closed. Covering the chatgpt input bar. And it does not work well without google play. No history.
+
+Android oom after installation. fixed automatically without a complete reboot.
+
+ublock origin added. Good. (using a recent apk on uptodown, not xapk or cnml ver.)
+
+Reg Mozilla acc for sync.
+
+Everything works well. Clicking a button has effect. No need to long press or hover, etc.
+
+12 40 DFS settings (simplify) and enable tab bar.
+
+Firefox is a bit geek styled, less ux, e.g. open new tab button, preview tab, popups. And no download webpage.
+
+A polished consistent app that doesn't work is nothing.
+
+15 00 try to completely turn off notification to remove distracting missed calls.
+
+just play music on the app.
+
+One more mindful interaction is way better than distractions.
+
+16 20 Search to know about navidrome and get redirected to a blocking page runned by CN gov. Fuck ccp. Enable doh by cloudflare. Done.
+
+16 40 Read ant's anthill telegram channel.
 
 18 40 export chromium passwords and bookmarks to import on laptop firefox and sync with phone firefox. 
 
 19 20 assess vertical tab bar. change "Vertical Tabs in Side Panel" shortcut from alt v to ctrl b. disable safe component remover userscript (delete dom elements, may cause render issues) 19 40 forget horizontal or vertical. prefer boring tech. use fullscreen when needed.
 
 it's for wide screen. and it does not remove the complexity of a lot of tabs.
+
+20 20 check innei.in state. see cursor on lobe chat (another chatgpt wrapper project), discord, and linear.
+
+get driven by curiosity. evaluate lobe chat. check discord. learn from linear.
+
+09
+
+01 40 happen to read wave crest "浪潮之巅" and quickly abandon.
+
+i dont need to be that big. be easy.
+
+18 20 refresh. 18 40 browse about.google. write some thoughts, calm, pessimistic, yet hopeful.
+
+20 00 read steve jobs. 20 40
 
 
 
@@ -1753,11 +1795,9 @@ _follow your heart_
 
 dont rush.
 
-i will have it then.
+sleep. i will have it then.
 
-allow something.
-
-what's next.
+allow some waste.
 
 (on the flyleaf of the paper journal)
 
@@ -1814,6 +1854,14 @@ doing right things, the important ones, not the urgent ones.
 "!."
 
 yeah! that's it.
+
+ -->
+
+<!--
+
+make tools elegant.
+
+make knowledge pure.
 
  -->
 
