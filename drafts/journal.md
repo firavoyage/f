@@ -1749,6 +1749,62 @@ i dont need to be that big. be easy.
 
 20 00 read steve jobs. 20 40
 
+10
+
+00 00 try to close some tabs, mostly innei and himself65. move to lights.
+
+imagine grow, auto save. that's it.
+
+currently, select, copy, copy to markdown, create file in lights, paste, file. mindful, intentional, but a bit verbose.
+
+00 40 sleep.
+
+im empty now.
+
+10 40 organize lights. rearrange. categorize. add.
+
+11 00 finish downloading and play `【Chat & Sing】..until YouTube kun breaks [ZiTDtrxroZA]`. read `白非立上进记`.
+
+11 40 search the book `github bbruceyuan`. find it too long and put it away at chapter 18.
+
+12 20 appreciate `白非立上进记（后记）`.
+
+spend time on it. a few hours. idk what im doing. not following the plan. browse more, not close the stalled. but maybe it's worth. ok then go fast and there's no time for bullshit.
+
+12 40 fix network. fix clash verge. 13 00
+
+everything happened to be "too long to respond". idk. try switching wifi not worked (suspicious, few wifi networks, noticable more time to connect than usual).
+
+suspend the laptop. it could not wake up... (isnt it sleep?) restart by long press the power button.
+
+no proxy node. connection failed. idk.
+
+not able to disable system proxy `connection failed`. exit.
+
+not willing to switch back to v2raya. (although it works)
+
+github and flathub could directly connect?!
+
+try clash for windows. fail. try reinstall.
+
+(could not find it in softwares, whether ubuntu or flatpak. apt help. thanks, the deb is kept somewhere decent. give the deb. apt recommends me to use the word. `clash-verge` as expected. remove. install. done.)
+
+worked, without extra config. (maybe things are kept)
+
+notice: from service mode to user mode.
+
+13 40 download `POCKET PARK`. spill some cola on the lifesize pillow (false assumption: the liquid are inside the botton... no wonder why two plastic bags are covering...). 
+
+19 00 move `ChinaTextbook` and `galgames` to 2t hard disk.
+
+these galgames are not likely to be played.
+
+dont remove too much.
+
+21 00 finish reading everything.
+
+idk. a bit boring and empty. a bit inspiring. maybe i could make better use of the time. but i dont need to rush or chase something. so, be ok with it.
+
 
 
 <!--

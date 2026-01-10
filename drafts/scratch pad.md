@@ -1,3 +1,9 @@
+scratch pad
+
+message/paste · todo · things · scratch pad · weekly/projects
+
+---
+
 read the mindset.
 
 ---
