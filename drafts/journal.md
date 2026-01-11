@@ -1745,6 +1745,22 @@ get driven by curiosity. evaluate lobe chat. check discord. learn from linear.
 
 i dont need to be that big. be easy.
 
+10 00 chat. lack clarity/specificity. think.
+
+I must be clearer and more rigorous in case mediocrity of llms happens. To humility: maybe one more layer could work. For now, just go fast, learn by doing, test, and retry.
+
+Use specific method as long as it works, get general with abstraction when needed.
+
+14 40 find missed calls notification existing.
+
+Missed calls is not affect by notification settings (fully turned off). Maybe uninstallation would help.
+
+17 20 think about desiderata/mission of fira. clarify. ground.
+
+Make tools elegant: make every existing useful tools elegant in my way.
+
+Make knowledge pure: organize the world of information and make it universally accessible.
+
 18 20 refresh. 18 40 browse about.google. write some thoughts, calm, pessimistic, yet hopeful.
 
 20 00 read steve jobs. 20 40
@@ -1804,6 +1820,38 @@ dont remove too much.
 21 00 finish reading everything.
 
 idk. a bit boring and empty. a bit inspiring. maybe i could make better use of the time. but i dont need to rush or chase something. so, be ok with it.
+
+22 00 read on wenku 8 "Chitose Is in the Ramune Bottle", book 1, about chapter 2 and 3 in pink floyd. 23 00
+
+feel bright and satisfied. that's what japanese youth would be. although having momentum filled up, a bit tired now... have a sound sleep! (the sleep metaphor appears in many anime ed...)
+
+11
+
+09 40 have breakfast. surf zhihu. browse "邱占萱 学而思". 10 20
+
+10 40 think about browser tabs.
+
+firefox have vertical one. but firefox itself sucks on ux somewhat. firefox on android is just a pragmatic compromise. chromium have ctrl shift a. but it sucks.
+
+move tabs to a vscode file. named properly. well organized. open one at a time. 
+
+a few more intentional steps could be better than unconscious distractions.
+
+11 40 create new tab override extension.
+
+12 00 prompt: remove phatic language.
+
+16 20 have all apks, screenshots, dcim exported. factory reset the phone. 
+
+“It’s only after we’ve lost everything that we’re free to do anything.”
+
+18 40 finish almost everything about the phone.
+
+spend time on removing future distractions. (notifications, missed calls, stubborn apps)
+
+20 40 login to apps. organize phone screen.
+
+feel peaceful.
 
 
 

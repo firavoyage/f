@@ -1,6 +1,6 @@
 scratch pad
 
-message/paste · todo · things · scratch pad · weekly/projects
+message/paste · todo · tabs/things · scratch pad · weekly/projects
 
 ---
 
@@ -204,3 +204,7 @@ fix seaside theme: math text too small
 organize berryberry fav next weekend.
 
 organize sub before export. https://space.bilibili.com/1156993272/fans/follow
+
+---
+
+

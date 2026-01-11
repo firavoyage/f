@@ -2,10 +2,16 @@
 
 <!-- worked. -->
 
-# .
+# . (2026.01.11)
 
 ```
-fira@Fira ~ % adb shell dumpsys notification | grep -E "pkg=|tickerText=" 
+adb shell cmd package install-existing com.android.server.telecom
+```
+
+# . (2026.01.10)
+
+```
+fira@Fira ~ % adb shell dumpsys notification | grep -E "pkg=|tickerText="
 
     NotificationRecord(0x07eef771: pkg=com.android.server.telecom user=UserHandle{0} id=3 tag=MissedCallNotifierImpl importance=3 key=0|com.android.server.telecom|3|MissedCallNotifierImpl|1001: Notification(channel=TelecomMissedCalls shortcut=null contentView=null vibrate=null sound= tick defaults=0x4 flags=0x11 color=0x00000000 vis=PRIVATE publicVersion=Notification(channel=null shortcut=null contentView=null vibrate=null sound=null defaults=0x0 flags=0x10 color=0x00000000 vis=PRIVATE)))
       icon=Icon(typ=RESOURCE pkg=com.android.server.telecom id=0x0108007f)

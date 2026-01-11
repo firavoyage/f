@@ -54,6 +54,9 @@ software engineering:
 - claude code skills
 - vibe coding with human
 - with opencode
+- prompt critical objective
+- mcp when why
+- prompt clean phatic
 
 gamedev (carte):
 

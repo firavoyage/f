@@ -1,6 +1,6 @@
 things
 
-message/paste · todo · things · scratch pad · weekly/projects
+message/paste · todo · tabs/things · scratch pad · weekly/projects
 
 ---
 
@@ -491,3 +491,25 @@ revise projects... more pragmatic?
 summary style...
 
 ---
+
+Humility ai.
+
+E.g. self correction. Remove responding and guiding. Check the question. Category: correctness, simplicity and clarity, ...
+
+Let opencode don't write code. Bark. Argue me. Do weird things.
+
+---
+
+Vite...
+
+---
+
+Perspective like archi
+
+---
+
+Design UI in text?
+
+---
+
+categorize verbs.

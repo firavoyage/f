@@ -15,14 +15,10 @@ llms
 see
 
 - ../apps
-- journal
-- all
-- mistral (legacy, copied from repo firavoyage/blogging)
-- scratch pad (temp, the topics stalled)
-- things (temp, the ideas appeared recently)
-- todo (temp, things, but more grounded and organized)
-- message (temp, the current thread)
-- paste (temp)
+- journal - _the journey_
+- all - _the index_
+- message/paste · todo · tabs/things · scratch pad · weekly/projects
+- mistral - _the legacy (copied from repo firavoyage/blogging)_
 
 misc
 
