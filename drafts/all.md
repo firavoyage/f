@@ -22,10 +22,13 @@ create something:
 - a day working on github
 - wise graceful
 - ideal apps qualities
+- mindset feel right - _vite showmanship_
+- exploit curiosity naivety
 
 manage time:
 
 <!-- - manage time -->
+
 - arrange todos
 - project management
 
@@ -39,6 +42,7 @@ life:
 - time, future, certainty
 - fight club
 - university fields content creator subject niche
+- slow or fast
 
 software engineering:
 
@@ -63,8 +67,8 @@ gamedev (carte):
 - life create something big weekend time management
 - card games
 - art style
-<!-- - (game design questions) -->
-<!-- - (game design questions amazing either ors) -->
+  <!-- - (game design questions) -->
+  <!-- - (game design questions amazing either ors) -->
 - game design framework
 - indie game ideas
 
@@ -75,13 +79,17 @@ linguistics/literature:
 - describe
 - image above or below text
 
+(classical) chinese:
+
+- shui zhong wan shi
+
 psychology:
 
 - psychology
 
 leisure:
 
-- jp books levels
+- jp books jlpt levels
 
 movies:
 

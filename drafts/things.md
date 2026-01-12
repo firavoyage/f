@@ -500,10 +500,6 @@ Let opencode don't write code. Bark. Argue me. Do weird things.
 
 ---
 
-Vite...
-
----
-
 Perspective like archi
 
 ---
@@ -512,4 +508,13 @@ Design UI in text?
 
 ---
 
+search some blogposts of well known software engineers using claude code.
+
+---
+
 categorize verbs.
+another general question:
+
+vibe coding suggestions. mindmap.
+
+(llms are stupid/mediocity. most people are wrong. that's the problem, and maybe the only problem.)

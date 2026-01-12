@@ -2,6 +2,15 @@ the course of creation.
 
 most are messages with modern llms and source files of generated code.
 
+see
+
+- ../apps
+- journal - _the journey_
+- all - _the index_
+- message/paste · todo · tabs/things · scratch pad · weekly/projects
+- mistral - _the legacy (copied from repo firavoyage/blogging)_
+- readme under blogging - _self on reflection_
+
 llms
 
 - deepseek (if not specified)
@@ -11,14 +20,6 @@ llms
 - chatgpt (may be the default since dec 2025)
 - other llm service
 - (if needed) mirror sites https://github.com/LiLittleCat/awesome-free-chatgpt
-
-see
-
-- ../apps
-- journal - _the journey_
-- all - _the index_
-- message/paste · todo · tabs/things · scratch pad · weekly/projects
-- mistral - _the legacy (copied from repo firavoyage/blogging)_
 
 misc
 

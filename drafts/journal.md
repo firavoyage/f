@@ -1529,7 +1529,7 @@ just go inside. dont care anything.
 
 21 00 watch haruhi ep 27 and suffer wrong subtitles. design something exciting/weird on project white: societyirl/the chinese homeless/qinfeng minyue/unixporn.
 
-23 00 surf twitter politics. 23 40 download "NEON GENESIS EVANGELION SOUNDTRACK 25th ANNIVERSARY BOX" "涼宮ハルヒの憂鬱 -Super Remix- Full-Mix". 
+23 00 surf twitter politics. 23 40 download "NEON GENESIS EVANGELION SOUNDTRACK 25th ANNIVERSARY BOX" "涼宮ハルヒの憂鬱 -Super Remix- Full-Mix".
 
 https://open.spotify.com/album/0lpgkuH72w3f8UKVELKeFX
 
@@ -1537,9 +1537,9 @@ https://open.spotify.com/album/5rPD1O5bZ3gi1WtsNUObhg
 
 24 00 listen to "God knows..." going into a new year.
 
-time is consecutive. nothing special. 
+time is consecutive. nothing special.
 
-check twitter, no one celebrating it, as expected, no surprise. 
+check twitter, no one celebrating it, as expected, no surprise.
 
 jan 2026
 
@@ -1575,11 +1575,11 @@ i think i dont need to write down what im playing. too trival. just pick one fro
 
 https://open.spotify.com/album/1sh32o99zA04PJIUJUpEj7
 
-18 00 go out. 18 40 have dinner "tasty" (metro city). 
+18 00 go out. 18 40 have dinner "tasty" (metro city).
 
 20 40 archive chats. watch lciop awhile.
 
-21 20 watch "【New Year】count down & 2026 plans! | VTuber Cyan" replay from the beginning, in the background. 
+21 20 watch "【New Year】count down & 2026 plans! | VTuber Cyan" replay from the beginning, in the background.
 
 22 40 trim zhihu fav: ref.
 
@@ -1589,7 +1589,7 @@ https://open.spotify.com/album/2widuo17g5CEC66IbzveRu
 
 https://open.spotify.com/album/3dLKM8bD8R3H3XnSOXGjTF
 
-23 20 float: appreciate songs. 
+23 20 float: appreciate songs.
 
 02
 
@@ -1599,7 +1599,7 @@ considered 01 (at least on file names), since it's when the idea on telegram inn
 
 01 40 sleep.
 
-12 40 organize todo, things, scratch pad, and journal breadcrumbs. finish quick ones (e.g. organize `all`). 
+12 40 organize todo, things, scratch pad, and journal breadcrumbs. finish quick ones (e.g. organize `all`).
 
 13 00 surf youtube. watch "逆天！户晨风大半夜指挥“半个亿”跑马拉松，最后在直播间立正鞠躬道歉：对不起，我错了！每晚高强度直播，户子胸口痛准备去体检，自称买了很多保险，弹幕：有康复风险吗....".
 
@@ -1641,7 +1641,7 @@ clever recommendation... (also seen on twitter. is spring uee that famous?)
 
 a bit meaningless.
 
-16 40 watch "Python编程课对孩子有用吗".
+16 40 watch "Python 编程课对孩子有用吗".
 
 https://ipaperclip.icu/黑水报告/Python编程课对孩子有用吗.mp4
 
@@ -1657,7 +1657,7 @@ from bitmagnet. nihon bunka daisuki.
 
 05
 
-14 00 have lunch "空山". 
+14 00 have lunch "空山".
 
 > 不要给我看了。这个世界的东西，不需要努力就能得到。
 
@@ -1701,7 +1701,7 @@ choose a quiet but general question about it. write for the future self/readers,
 
 09 00 Read light novel, about a fulfilling life. Geography unit 1. About to chat about literature writing style, to make vibe coding graceful.
 
-11 40 Try to switch to Firefox. 
+11 40 Try to switch to Firefox.
 
 As chrome is weird: Close new tab. Show a notification for a few sec. Could not be closed. Covering the chatgpt input bar. And it does not work well without google play. No history.
 
@@ -1729,7 +1729,7 @@ One more mindful interaction is way better than distractions.
 
 16 40 Read ant's anthill telegram channel.
 
-18 40 export chromium passwords and bookmarks to import on laptop firefox and sync with phone firefox. 
+18 40 export chromium passwords and bookmarks to import on laptop firefox and sync with phone firefox.
 
 19 20 assess vertical tab bar. change "Vertical Tabs in Side Panel" shortcut from alt v to ctrl b. disable safe component remover userscript (delete dom elements, may cause render issues) 19 40 forget horizontal or vertical. prefer boring tech. use fullscreen when needed.
 
@@ -1809,7 +1809,7 @@ worked, without extra config. (maybe things are kept)
 
 notice: from service mode to user mode.
 
-13 40 download `POCKET PARK`. spill some cola on the lifesize pillow (false assumption: the liquid are inside the botton... no wonder why two plastic bags are covering...). 
+13 40 download `POCKET PARK`. spill some cola on the lifesize pillow (false assumption: the liquid are inside the botton... no wonder why two plastic bags are covering...).
 
 19 00 move `ChinaTextbook` and `galgames` to 2t hard disk.
 
@@ -1833,7 +1833,7 @@ feel bright and satisfied. that's what japanese youth would be. although having 
 
 firefox have vertical one. but firefox itself sucks on ux somewhat. firefox on android is just a pragmatic compromise. chromium have ctrl shift a. but it sucks.
 
-move tabs to a vscode file. named properly. well organized. open one at a time. 
+move tabs to a vscode file. named properly. well organized. open one at a time.
 
 a few more intentional steps could be better than unconscious distractions.
 
@@ -1841,7 +1841,7 @@ a few more intentional steps could be better than unconscious distractions.
 
 12 00 prompt: remove phatic language.
 
-16 20 have all apks, screenshots, dcim exported. factory reset the phone. 
+16 20 have all apks, screenshots, dcim exported. factory reset the phone.
 
 “It’s only after we’ve lost everything that we’re free to do anything.”
 
@@ -1852,6 +1852,42 @@ spend time on removing future distractions. (notifications, missed calls, stubbo
 20 40 login to apps. organize phone screen.
 
 feel peaceful.
+
+21 00 organize telegram (ayugram). 22 20
+
+Maybe telegram is not somewhere information rich.
+
+Telegram is not Twitter. That's the point. I couldn't surf telegram. High friction. So I wasted 1h20min organizing.
+
+Keep less than 20 chats? Read once a month?
+
+My purpose is... See everyone. And get inspired.
+
+at last i just put more into archive. it's clear that i should not use telegram directly if i see it as twitter.
+
+takeaway:
+
+~~check it weekly.~~ ~~check it for wasting time.~~
+
+_dont iterate unread messages. always jump to bottom._
+
+_surf it as you like, but dont spend too much time on it, less than 10min a session._
+
+feel peaceful but a bit regretful. feel better after writing the takeaway/til.
+
+12
+
+00 00 life: vite, the trendy mindset.
+
+til: sometimes i could only feel something wrong after entering the question. just clarify it. dont care too much. go ahead.
+
+20 40 driven by curiosity, download and try hellotalk. try soul app and discord.
+
+have fun. connect with people. share ideas.
+
+chat to real humans on telegram and discord with common groups and love of dev.
+
+chat for a few minutes with a guy recommended by discord `c0de_sw0rd`. (mutual servers: project trans, midjourney)
 
 
 

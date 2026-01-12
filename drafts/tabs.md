@@ -40,6 +40,14 @@ thinking tools like mindmap https://chatgpt.com/c/696314fb-1ed8-8321-8fb4-0fa883
 
 ---
 
+categorize verbs https://chatgpt.com/c/6964c25f-78ac-8326-8fc5-450698b674cd
+
+create app mindmap https://chatgpt.com/c/69649e40-ae0c-832d-981b-b2d243192416
+
+question strategies prompt https://chatgpt.com/c/69644b33-d1cc-8320-a382-308f8c267b2a
+
+---
+
 hoshino lina https://www.youtube.com/@HoshinoLina/streams
 
 cyan nyan https://www.youtube.com/@cyannyan6/streams
@@ -56,11 +64,11 @@ https://www.youtube.com/watch?v=OhZjUK8OFsk
 
 ---
 
-search some blogposts of well known software engineers using claude code.
-
----
-
 https://innei.in/
+
+https://innei.in/friends
+
+https://blog.men.ci/friends/
 
 ---
 

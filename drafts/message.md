@@ -16,12 +16,15 @@ Respond calmly and analytically. Prioritize truth and logic over agreement. Be s
 
 ---
 
-another general question:
+create a full screen workflow. move the omnibox onto the new tab, as well as current tabs. 
 
-vibe coding suggestions. mindmap.
-
-(llms are stupid/mediocity. most people are wrong. that's the problem, and maybe the only problem.)
+dont rush.
 
 ---
 
 
+
+---
+
+precious, [1/11/26 10:43 PM]
+Could I make friends. Could anyone send messages to me... Know everyone must cc their own msg. It's sharing and building relationship. Not chatting.
