@@ -1865,7 +1865,7 @@ My purpose is... See everyone. And get inspired.
 
 at last i just put more into archive. it's clear that i should not use telegram directly if i see it as twitter.
 
-takeaway:
+takeaway/til:
 
 ~~check it weekly.~~ ~~check it for wasting time.~~
 
@@ -1873,7 +1873,7 @@ _dont iterate unread messages. always jump to bottom._
 
 _surf it as you like, but dont spend too much time on it, less than 10min a session._
 
-feel peaceful but a bit regretful. feel better after writing the takeaway/til.
+feel peaceful but a bit regretful. feel better after writing the takeaway.
 
 12
 
@@ -1888,6 +1888,20 @@ have fun. connect with people. share ideas.
 chat to real humans on telegram and discord with common groups and love of dev.
 
 chat for a few minutes with a guy recommended by discord `c0de_sw0rd`. (mutual servers: project trans, midjourney)
+
+til: too curious. drifting. dont waste an hour of high energy.
+
+13
+
+19 00 do market research: manus. share my ~~stupid~~ ideas.
+
+19 40 sync tabs from mobile playing `【Singing】林俊傑歌回 JJ Lin with guitar`.
+
+til: dont open too much tabs. if something is useless, close it. accept some waste.
+
+20 20 fix firefox duplicate devices (factory reset) by changing password to force sign out.
+
+refer to official help... weird.
 
 
 

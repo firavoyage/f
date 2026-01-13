@@ -40,21 +40,17 @@ thinking tools like mindmap https://chatgpt.com/c/696314fb-1ed8-8321-8fb4-0fa883
 
 ---
 
-categorize verbs https://chatgpt.com/c/6964c25f-78ac-8326-8fc5-450698b674cd
-
-create app mindmap https://chatgpt.com/c/69649e40-ae0c-832d-981b-b2d243192416
-
-question strategies prompt https://chatgpt.com/c/69644b33-d1cc-8320-a382-308f8c267b2a
-
----
-
 hoshino lina https://www.youtube.com/@HoshinoLina/streams
 
 cyan nyan https://www.youtube.com/@cyannyan6/streams
 
+vibe coding stream https://www.youtube.com/@bridgemindai
+
 ---
 
 twitter https://x.com/i/lists/2004814679450009818
+
+twitter human https://x.com/i/lists/2010701752983756962
 
 ---
 

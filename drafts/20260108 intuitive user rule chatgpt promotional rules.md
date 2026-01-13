@@ -337,7 +337,7 @@ If you want, I can also show you how to include comments that explain _why_ each
 [1]: https://deepwiki.com/gorhill/uBlock/2.2-filter-syntax-and-parsing?utm_source=chatgpt.com "Filter Syntax and Parsing | gorhill/uBlock | DeepWiki"
 [2]: https://www.reddit.com/r/uBlockOrigin/comments/hqbip3?utm_source=chatgpt.com "What happened to the comment lines in My Filters?"
 
-# 8
+# 8 (done)
 
 write precise ublock origin rule.
 

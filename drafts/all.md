@@ -23,12 +23,10 @@ create something:
 - wise graceful
 - ideal apps qualities
 - mindset feel right - _vite showmanship_
-- exploit curiosity naivety
 
 manage time:
 
-<!-- - manage time -->
-
+- <!-- manage time -->
 - arrange todos
 - project management
 
@@ -44,6 +42,13 @@ life:
 - university fields content creator subject niche
 - slow or fast
 
+project management:
+
+- <!-- rad -->
+- plan app creation mindmap
+- initial feasibility report
+- product management
+
 software engineering:
 
 - vibe coding mindset
@@ -51,24 +56,33 @@ software engineering:
 - before asking questions
 - code best practices
 - ui design document
-- safe
-- rad
 - ask questions
 - design ui agent
 - claude code skills
 - vibe coding with human
 - with opencode
-- prompt critical objective
+
+software engineering backend:
+
+- safe command
+
+software engineering ai/ml:
+
+- <!-- prompt critical objective -->
+- <!-- prompt clean phatic -->
+
 - mcp when why
-- prompt clean phatic
+
+resources:
+
+- categorize images
+- categorize shaders
 
 gamedev (carte):
 
 - life create something big weekend time management
 - card games
 - art style
-  <!-- - (game design questions) -->
-  <!-- - (game design questions amazing either ors) -->
 - game design framework
 - indie game ideas
 
@@ -102,6 +116,11 @@ music:
 philosophy:
 
 - ethics, existentialism
+
+entertainment:
+
+- exploit curiosity naivety
+- share ideas online
 
 legacy:
 

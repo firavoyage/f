@@ -518,3 +518,24 @@ another general question:
 vibe coding suggestions. mindmap.
 
 (llms are stupid/mediocity. most people are wrong. that's the problem, and maybe the only problem.)
+
+---
+
+give zsh fish power ex: zsh-autosuggestions feels stupid.
+
+---
+
+find in indian/kenyan within 10 minutes online. ordinary people. contact them.
+
+---
+
+organize physical scratch pad.
+
+---
+
+revise chatgpt copy userscript. first time scroll throught without copy. second copy do the real work.
+
+(fix "you said...")
+
+---
+
