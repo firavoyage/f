@@ -3,55 +3,72 @@
   <head>
     <meta charset="UTF-8" />
     <title>Intention Settings</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      body {
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+        padding: 18px;
+        color: #111;
+      }
+      label {
+        display: block;
+        margin: 12px 0 6px;
+        font-weight: 600;
+      }
+      input[type="text"] {
+        width: 100%;
+        padding: 8px 10px;
+        font-size: 1rem;
+        box-sizing: border-box;
+      }
+      .hint {
+        color: #666;
+        font-size: 0.9rem;
+        margin-top: 6px;
+      }
+      .row {
+        margin-bottom: 18px;
+      }
+      #status {
+        margin-top: 8px;
+        color: green;
+        font-size: 0.95rem;
+      }
+    </style>
   </head>
   <body>
-    <h2>Settings</h2>
-    <textarea id="settingsArea" rows="20" cols="50"></textarea>
-    <br />
-    <input type="file" id="uploadImage" />
+    <h2>Intention — Settings</h2>
 
-    <script>
-      const textarea = document.getElementById("settingsArea");
-      const upload = document.getElementById("uploadImage");
+    <div class="row">
+      <label for="enterUrl">URL to open when Enter is empty</label>
+      <input
+        id="enterUrl"
+        type="text"
+        placeholder="e.g. inbox.example.com"
+        autocomplete="off"
+      />
+      <div class="hint">
+        Leave empty to do nothing when Enter is pressed on an empty box.
+      </div>
+    </div>
 
-      function loadSettings() {
-        chrome.storage.local.get({ settings: {} }, (res) => {
-          const settingsCopy = { ...res.settings };
-          if (settingsCopy.wallpaper) settingsCopy.wallpaper = "...";
-          textarea.value = JSON.stringify(settingsCopy, null, 2);
-        });
-      }
+    <div class="row">
+      <label for="searchUrl">
+        Search URL (use <code>%s</code> for the query)
+      </label>
+      <input
+        id="searchUrl"
+        type="text"
+        placeholder="https://www.google.com/search?q=%s"
+        autocomplete="off"
+      />
+      <div class="hint">
+        Domains like <code>chatgpt.com</code> work without a protocol.
+      </div>
+    </div>
 
-      function saveSettings(settings) {
-        chrome.storage.local.set({ settings }, () => {
-          console.log("[Intention] Settings saved");
-        });
-      }
+    <div id="status"></div>
 
-      textarea.addEventListener("input", () => {
-        try {
-          const parsed = JSON.parse(textarea.value);
-          saveSettings(parsed);
-        } catch {}
-      });
-
-      upload.addEventListener("change", async (e) => {
-        const file = e.target.files[0];
-        if (!file) return;
-
-        const reader = new FileReader();
-        reader.onload = function (evt) {
-          const dataUrl = evt.target.result;
-          chrome.storage.local.get({ settings: {} }, (res) => {
-            const updated = { ...res.settings, wallpaper: dataUrl };
-            saveSettings(updated);
-            loadSettings(); // show '...' again
-          });
-        };
-        reader.readAsDataURL(file);
-      });
-
-      loadSettings();
-    </script>
+    <script src="settings.js"></script>
   </body>
 </html>

@@ -8,6 +8,7 @@ fira:
 - arrange todos
 - no markdown headings mindset
 - top down bottom up mindset
+- code is liability not asset evaluate value
 
 wisdom:
 
@@ -24,6 +25,8 @@ create something:
 - wise graceful
 - ideal apps qualities
 - mindset feel right - _vite showmanship_
+- no markdown headings mindset
+- top down bottom up mindset
 
 manage time:
 
@@ -52,7 +55,6 @@ project management:
 
 software engineering:
 
-- vibe coding mindset
 - vibe coding workflow
 - before asking questions
 - code best practices
@@ -61,7 +63,8 @@ software engineering:
 - design ui agent
 - claude code skills
 - vibe coding with human
-- with opencode
+- vibe coding with opencode
+- code is liability not asset evaluate value
 
 software engineering backend:
 

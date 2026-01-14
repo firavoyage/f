@@ -3,8 +3,10 @@
   "name": "Intention",
   "version": "1.0",
   "description": "A focused, full-screen workflow with minimal distractions.",
-  "permissions": ["tabs", "storage", "history", "bookmarks", "activeTab"],
-  "omnibox": { "keyword": "i" },
+  "permissions": [
+    "tabs",
+    "storage"
+  ],
   "background": {
     "service_worker": "background.js"
   },

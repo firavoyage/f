@@ -1907,11 +1907,29 @@ refer to official help... weird.
 
 14
 
+09 40 Finish reading `Chitose Is in the Ramune Bottle` book 1 chapter 2. 
+
+count from chapter 0, the preface from now on.
+
+10 40 Surf zhihu and Twitter. 
+
+Mindful. Good.
+
+17 20 Finish surfing Twitter (List Fira). 
+
+Not surfing for 4 or 5 days. Maybe fomo. But get inspired. Result: screenshots, retweets.
+
 18 00 refresh.
 
 18 40 chat: life, mindset, feeling. intention: feasibility check of auto focusing.
 
 20 00 change the push daily time from `22:00` to `23:40`.
+
+21 40 surf zhihu. read a hard working chinese achieving his american dream.
+
+22 20 cock. gain more momentum. 
+
+23 20 feel empty. wanna close my eyes. sleep?
 
 
 

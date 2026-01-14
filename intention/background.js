@@ -1,24 +1,23 @@
-console.log("[Intention] Background service worker started");
+console.log("[Intention] Background started");
 
-// Observe all current tabs once at startup
-async function logAllTabs() {
+// When a new tab is created, if it's the default new tab,
+// close it and open your custom newtab page normally.
+chrome.tabs.onCreated.addListener(async (tab) => {
   try {
-    const tabs = await chrome.tabs.query({});
-    console.log("[Intention] Current tabs:", tabs);
+    // 'chrome://newtab/' is how Chrome names a freshly created new tab
+    if (tab.pendingUrl === "chrome://newtab/") {
+      console.log("[Intention] Detected new tab, replacing…");
+
+      // Close the default new tab
+      await chrome.tabs.remove(tab.id);
+
+      // Open your custom new tab page as a normal tab
+      const newTab = await chrome.tabs.create({
+        url: chrome.runtime.getURL("newtab.html"),
+      });
+      console.log("[Intention] Opened custom tab:", newTab);
+    }
   } catch (err) {
-    console.error("[Intention] Error fetching tabs:", err);
+    console.error("[Intention] Error handling new tab:", err);
   }
-}
-
-// Listen for omnibox input
-chrome.omnibox.onInputChanged.addListener((text, suggest) => {
-  console.log("[Intention] Omnibox input:", text);
-  suggest([]);
 });
-
-chrome.omnibox.onInputEntered.addListener((text) => {
-  console.log("[Intention] Omnibox entered:", text);
-  // Optional: could open tab or search here
-});
-
-logAllTabs();
