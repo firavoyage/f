@@ -1,6 +1,6 @@
 scratch pad
 
-message/paste · todo · tabs/things · scratch pad · weekly/projects
+message/paste · todo · tabs/things · scratch pad · weekly/projects · notes
 
 ---
 
@@ -206,5 +206,3 @@ organize berryberry fav next weekend.
 organize sub before export. https://space.bilibili.com/1156993272/fans/follow
 
 ---
-
-

@@ -1,8 +1,4 @@
-// background.js
-// Calm, simple, intention-revealing structure
-
-// Called when extension starts
-console.log("[Intention] Background worker started");
+console.log("[Intention] Background service worker started");
 
 // Observe all current tabs once at startup
 async function logAllTabs() {
@@ -17,13 +13,12 @@ async function logAllTabs() {
 // Listen for omnibox input
 chrome.omnibox.onInputChanged.addListener((text, suggest) => {
   console.log("[Intention] Omnibox input:", text);
-  // We don’t suggest anything yet
   suggest([]);
 });
 
-// Clear default suggestion — quiet
 chrome.omnibox.onInputEntered.addListener((text) => {
   console.log("[Intention] Omnibox entered:", text);
+  // Optional: could open tab or search here
 });
 
 logAllTabs();

@@ -10,11 +10,11 @@ some code maybe related. feel free to ask for more.
 
 <!-- ... -->
 
-make the change as gentle as possible, and tell me the changes.
+make the change as gentle as possible.
 
 write code that is clear, simple, and intention-revealing; modular and cohesive; reliable and maintainable, following SOLID principles.
 
-show me the full code.
+show me the full code of changed files.
 
 # .
 

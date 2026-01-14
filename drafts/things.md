@@ -1,6 +1,6 @@
 things
 
-message/paste · todo · tabs/things · scratch pad · weekly/projects
+message/paste · todo · tabs/things · scratch pad · weekly/projects · notes
 
 ---
 
@@ -538,4 +538,11 @@ revise chatgpt copy userscript. first time scroll throught without copy. second 
 (fix "you said...")
 
 ---
+
+downloads/g
+
+phone
+
+---
+
 

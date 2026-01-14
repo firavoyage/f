@@ -1,6 +1,6 @@
 tabs
 
-message/paste · todo · tabs/things · scratch pad · weekly/projects
+message/paste · todo · tabs/things · scratch pad · weekly/projects · notes
 
 ---
 
@@ -37,6 +37,24 @@ lsp https://chatgpt.com/c/69625015-2aa0-8326-bbf1-101638ae8bec
 projects like dify and manus https://chatgpt.com/c/696316b9-12fc-8320-bdbf-0ff71965208c
 
 thinking tools like mindmap https://chatgpt.com/c/696314fb-1ed8-8321-8fb4-0fa883de9a8d
+
+---
+
+humility inspirations:
+
+https://prompt.16x.engineer/
+
+humility market research:
+
+https://www.google.com/search?q=claude+code+real+youtube&gl=us
+
+https://www.google.com/search?q=cursor+real+youtube&gl=us
+
+---
+
+intention:
+
+chrome://new-tab-page
 
 ---
 

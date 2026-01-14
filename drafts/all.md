@@ -2,11 +2,12 @@ project all: fira's drafts
 
 <!-- reduce entropy -->
 
-ref:
+fira:
 
 - wisdom
 - arrange todos
-- vibe coding with human
+- no markdown headings mindset
+- top down bottom up mindset
 
 wisdom:
 

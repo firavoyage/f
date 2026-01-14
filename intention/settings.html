@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Intention Settings</title>
+  </head>
+  <body>
+    <h2>Settings</h2>
+    <textarea id="settingsArea" rows="20" cols="50"></textarea>
+    <br />
+    <input type="file" id="uploadImage" />
+
+    <script>
+      const textarea = document.getElementById("settingsArea");
+      const upload = document.getElementById("uploadImage");
+
+      function loadSettings() {
+        chrome.storage.local.get({ settings: {} }, (res) => {
+          const settingsCopy = { ...res.settings };
+          if (settingsCopy.wallpaper) settingsCopy.wallpaper = "...";
+          textarea.value = JSON.stringify(settingsCopy, null, 2);
+        });
+      }
+
+      function saveSettings(settings) {
+        chrome.storage.local.set({ settings }, () => {
+          console.log("[Intention] Settings saved");
+        });
+      }
+
+      textarea.addEventListener("input", () => {
+        try {
+          const parsed = JSON.parse(textarea.value);
+          saveSettings(parsed);
+        } catch {}
+      });
+
+      upload.addEventListener("change", async (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function (evt) {
+          const dataUrl = evt.target.result;
+          chrome.storage.local.get({ settings: {} }, (res) => {
+            const updated = { ...res.settings, wallpaper: dataUrl };
+            saveSettings(updated);
+            loadSettings(); // show '...' again
+          });
+        };
+        reader.readAsDataURL(file);
+      });
+
+      loadSettings();
+    </script>
+  </body>
+</html>
