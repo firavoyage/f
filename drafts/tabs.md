@@ -58,6 +58,14 @@ chrome://new-tab-page
 
 ---
 
+journal
+
+ui.
+
+(.db)
+
+---
+
 hoshino lina https://www.youtube.com/@HoshinoLina/streams
 
 cyan nyan https://www.youtube.com/@cyannyan6/streams

@@ -38,3 +38,15 @@ today:
 - humility: clarify, make some real progress: write some code (trust intuition).
 - humility: market research (leverage meta thinking!)
 - anything else (e.g. twitter)
+
+---
+
+make intention safe.
+
+
+
+---
+
+the family.
+
+

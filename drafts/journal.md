@@ -1931,6 +1931,40 @@ Not surfing for 4 or 5 days. Maybe fomo. But get inspired. Result: screenshots, 
 
 23 20 feel empty. wanna close my eyes. sleep?
 
+15
+
+01 00 sleep.
+
+18 20 refresh.
+
+19 00 chat: fate, luck. open a pack of italian red meat flavor.
+
+19 40 intention: fix closing last tab. feat support incognito. chatgpt: Error in message stream.
+
+20 20 play manifold.markets. 
+
+21 00 write about the family.
+
+22 40 browse wengtianxin and extraordinary (from innei).
+
+23 00 watch `High School Dropout to OpenAI Researcher - Gabriel Petersson Interview (Extraordinary)` for a few secs.
+
+abandoned. 
+
+i want to be wise and graceful, which implies quiet and peaceful, without showmanship, without hustle and bustle. the film is noisy. i would like to sleep soundly before dying.
+
+btw, ive found this before: i dont need a lot of meta thinking methodologies.
+
+make me more energetic. so good.
+
+23 00 appreciate `An old mans advice.`.
+
+feel cozy.
+
+23 00 play `【Art Study】More Yuri Art... | VTuber Cyan` (20 watching now). surf twitter.
+
+today: cursor created a new browser by running gpt 5.2 for a week.
+
 
 
 <!--

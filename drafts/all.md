@@ -9,6 +9,7 @@ fira:
 - no markdown headings mindset
 - top down bottom up mindset
 - code is liability not asset evaluate value
+- determinism free will
 
 wisdom:
 
@@ -25,7 +26,6 @@ create something:
 - wise graceful
 - ideal apps qualities
 - mindset feel right - _vite showmanship_
-- no markdown headings mindset
 - top down bottom up mindset
 
 manage time:
@@ -74,15 +74,14 @@ software engineering ai/ml:
 
 - <!-- prompt critical objective -->
 - <!-- prompt clean phatic -->
-
 - mcp when why
 
-resources:
+software engineering resources:
 
 - categorize images
 - categorize shaders
 
-gamedev (carte):
+gamedev:
 
 - life create something big weekend time management
 - card games
@@ -90,41 +89,46 @@ gamedev (carte):
 - game design framework
 - indie game ideas
 
-linguistics/literature:
+leisure:
 
-- daoism
+- jp books jlpt levels
+
+linguistics:
+
 - translation meaning loss
 - describe
-- image above or below text
 
-(classical) chinese:
+literature:
 
+- tian jing
+- daoism kuai huo
 - shui zhong wan shi
+
+typography:
+
+- image above or below text
+- no markdown headings mindset
 
 psychology:
 
 - psychology
 
-leisure:
-
-- jp books jlpt levels
-
-movies:
+art:
 
 - movies
-
-music:
-
 - float appreciate
 
 philosophy:
 
 - ethics, existentialism
+- determinism free will
+- first principle
 
 entertainment:
 
 - exploit curiosity naivety
 - share ideas online
+- manifold
 
 legacy:
 

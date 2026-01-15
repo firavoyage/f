@@ -16,5 +16,6 @@
   "action": {
     "default_popup": "settings.html",
     "default_title": "Intention Settings"
-  }
+  },
+  "incognito": "split"
 }
