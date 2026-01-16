@@ -1935,6 +1935,14 @@ Not surfing for 4 or 5 days. Maybe fomo. But get inspired. Result: screenshots, 
 
 01 00 sleep.
 
+08 20 Finish reading `my youth romantic comedy is wrong, as i expected` book 1 chapter 2.
+
+11 40 find something accidentally.
+
+long press url in firefox to copy, unlike chrome.
+
+12 00 have lunch alone.
+
 18 20 refresh.
 
 19 00 chat: fate, luck. open a pack of italian red meat flavor.
@@ -1963,7 +1971,15 @@ feel cozy.
 
 23 00 play `【Art Study】More Yuri Art... | VTuber Cyan` (20 watching now). surf twitter.
 
-today: cursor created a new browser by running gpt 5.2 for a week.
+best of today: cursor created a new browser by running gpt 5.2 for a week.
+
+16
+
+17 20 refresh.
+
+18 00 organize things. telegram. innocent wisdom legacy. humility.
+
+19 40 surf zhihu. write some calm and simple thoughts against "america killing line" on zhihu.
 
 
 

@@ -16,7 +16,7 @@ Calm, present, and listening.
 
 Whenever you’re ready, we can begin.
 
-# 1
+# 1 (d?, break down)
 
 How is a Product Management in big software companies. Show me a mindmap about deciding the order of things as a nested list.
 
@@ -124,7 +124,7 @@ If you want, Fira, we can:
 
 Just tell me where you’d like clarity next.
 
-# 2
+# 2 (what first)
 
 How to decide what to do first
 

@@ -4,38 +4,16 @@ project all: fira's drafts
 
 fira:
 
-- wisdom
+- innocent wisdom
 - arrange todos
 - no markdown headings mindset
 - top down bottom up mindset
 - code is liability not asset evaluate value
 - determinism free will
 
-wisdom:
-
-- wisdom
-- https://chatgpt.com/c/695b2ed5-00e4-8322-b2d7-b75272beaa52
-
-create something:
-
-- how to think leverage
-- mindset methodology (?)
-- book make
-- manage project
-- a day working on github
-- wise graceful
-- ideal apps qualities
-- mindset feel right - _vite showmanship_
-- top down bottom up mindset
-
-manage time:
-
-- <!-- manage time -->
-- arrange todos
-- project management
-
 life:
 
+- innocent wisdom
 - momentum or meaning
 - ideal human, ideal things
 - hobbies, pursuit
@@ -46,12 +24,17 @@ life:
 - university fields content creator subject niche
 - slow or fast
 
-project management:
+create something:
 
-- <!-- rad -->
-- plan app creation mindmap
-- initial feasibility report
-- product management
+- how to think leverage
+- mindset methodology
+- book make
+- manage project
+- a day working on github
+- wise graceful
+- ideal apps qualities
+- mindset quiet peaceful
+- top down bottom up feeling
 
 software engineering:
 
@@ -66,14 +49,40 @@ software engineering:
 - vibe coding with opencode
 - code is liability not asset evaluate value
 
+software engineering project management:
+
+<!--
+- manage project
+- rad
+- product management what first
+ -->
+
+- arrange todos
+- app creation mindmap
+- initial feasibility report
+  - technical feasibility
+- project roadmap order of work
+
+software engineering architecture:
+
+<!-- 
+- understand architecture
+ -->
+
+- architecture deliverables
+- security architecture api key place
+
 software engineering backend:
 
-- safe command
+- safety definition safe command
 
 software engineering ai/ml:
 
-- <!-- prompt critical objective -->
-- <!-- prompt clean phatic -->
+<!-- 
+- prompt critical objective
+- prompt clean phatic
+ -->
+
 - mcp when why
 
 software engineering resources:
@@ -81,7 +90,7 @@ software engineering resources:
 - categorize images
 - categorize shaders
 
-gamedev:
+software engineering gamedev:
 
 - life create something big weekend time management
 - card games
@@ -89,14 +98,14 @@ gamedev:
 - game design framework
 - indie game ideas
 
-leisure:
-
-- jp books jlpt levels
-
 linguistics:
 
 - translation meaning loss
 - describe
+
+leisure:
+
+- jp books jlpt levels
 
 literature:
 

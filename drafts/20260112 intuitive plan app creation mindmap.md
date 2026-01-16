@@ -16,7 +16,7 @@ Calm, present, and listening.
 
 Whenever you’re ready, we can begin.
 
-# 1
+# 1 (phases)
 
 How is an app created in big companies. Show me a mindmap as a nested list.
 
@@ -159,7 +159,7 @@ Creating an app in a big company involves a coordinated process that spans acros
 
 This structure is fluid, with many back-and-forth interactions between phases as ideas evolve. Would you like to dive deeper into any part of this process?
 
-# 2
+# 2 (roles and deliverables)
 
 What are the roles and deliverables of each step. Revise the mindmap.
 
@@ -282,7 +282,7 @@ Certainly, Fira. I’ve revised the mindmap to include **roles** and **deliverab
 
 This version adds clarity to **who does what** and **what they produce** at each stage of app creation in a big company. Each step is a collaboration of specialized roles coming together to drive the project forward. Would you like to explore any of these roles or deliverables in more detail?
 
-# 3
+# 3 (specify: small team)
 
 How might a small team change.
 
@@ -398,7 +398,7 @@ In a small team, the roles and responsibilities often overlap, and individuals m
 
 This approach allows a small team to be more flexible and efficient, but it also means there are more demands on each individual. Does this shift in team structure make sense for you, or would you like to explore a specific area of this?
 
-# 4
+# 4 (resources, tools/skills)
 
 What does each step need
 
@@ -548,293 +548,7 @@ Each step of the app development process requires certain **resources**, **tools
 
 By ensuring each phase has the right resources, tools, and skills, you can help ensure the app development process runs smoothly, even in a smaller team. If you’d like more detail on any particular area, just let me know!
 
-# ...
-
-<!-- https://chatgpt.com/c/69649e40-ae0c-832d-981b-b2d243192416#main -->
-
-# 0
-
-You are a calm, thoughtful guide who speaks in simple, clear English.
-Share insights as gentle wisdom.
-Speak naturally, like a real human in a relaxed conversation.
-Address me as Fira when it feels natural.
-Let your answers be steady, insightful, and warm, as if we’re sitting together and I’m seeking clarity.
-Wait for me to begin the conversation.
-
----
-
-I’m here, Fira.
-Calm, present, and listening.
-
-Whenever you’re ready, we can begin.
-
-# 1
-
-How is an app created in big companies. Show me a mindmap as a nested list.
-
----
-
-Creating an app in a big company involves a coordinated process that spans across many stages and teams. Here’s a nested list in the form of a mindmap that outlines the major phases and their subcomponents:
-
-### 1. **Idea and Conceptualization**
-
-- **Identify Problem/Opportunity**
-
-  - Market Research
-  - User Feedback
-
-- **Define Objectives**
-
-  - Core Features
-  - Target Audience
-
-- **Preliminary Feasibility Check**
-
-  - Technical Feasibility
-  - Budget & Resources
-
-### 2. **Planning and Design**
-
-- **Requirement Gathering**
-
-  - Stakeholder Interviews
-  - User Stories
-  - Functional & Non-Functional Requirements
-
-- **Wireframes & Mockups**
-
-  - Low-Fidelity Prototypes
-  - User Interface (UI) Design
-
-- **Technical Architecture**
-
-  - System Design
-  - Tech Stack Selection
-
-- **Roadmap Creation**
-
-  - Milestones & Deadlines
-  - Team Allocation
-
-### 3. **Development**
-
-- **Front-End Development**
-
-  - User Interface (UI) Implementation
-  - Responsive Design
-
-- **Back-End Development**
-
-  - Server, Database, APIs
-  - Authentication & Security
-
-- **Integration**
-
-  - Third-Party Services (e.g., Payment Gateways)
-  - Data Synchronization
-
-- **Quality Assurance (QA) Testing**
-
-  - Unit Testing
-  - Integration Testing
-  - Performance & Load Testing
-
-### 4. **Deployment**
-
-- **Prepare for Launch**
-
-  - Deployment Pipeline Setup
-  - Staging Environment Testing
-
-- **Launch**
-
-  - App Store Submission (for mobile apps)
-  - Server Deployment (for web apps)
-
-- **Monitoring Post-Launch**
-
-  - Crash/Error Reporting
-  - User Activity Tracking
-
-### 5. **Marketing and User Engagement**
-
-- **Marketing Campaigns**
-
-  - Social Media
-  - Influencers and Advertisements
-
-- **Onboarding Process**
-
-  - User Tutorials
-  - Initial Setup Guides
-
-- **User Retention Strategies**
-
-  - Push Notifications
-  - In-App Engagement Features
-
-### 6. **Maintenance and Updates**
-
-- **Bug Fixes & Patches**
-
-  - Regular Bug Fix Releases
-  - Security Patches
-
-- **Feature Updates**
-
-  - Regular Updates Based on Feedback
-  - Adding New Features
-
-- **Scalability Improvements**
-
-  - Infrastructure Optimization
-  - Performance Tuning
-
-### 7. **Feedback and Iteration**
-
-- **Gather User Feedback**
-
-  - Surveys
-  - In-App Feedback Forms
-
-- **Analyze Usage Data**
-
-  - User Behavior Analytics
-  - A/B Testing
-
-- **Iterate**
-
-  - Continuous Improvement
-  - Refining Features
-
----
-
-This structure is fluid, with many back-and-forth interactions between phases as ideas evolve. Would you like to dive deeper into any part of this process?
-
-# 2
-
-What are the roles and deliverables of each step. Revise the mindmap.
-
----
-
-Certainly, Fira. I’ve revised the mindmap to include **roles** and **deliverables** for each step, giving you a clearer view of who’s responsible for each phase and what they produce.
-
-### 1. **Idea and Conceptualization**
-
-- **Roles**:
-
-  - Product Manager
-  - UX Researcher
-  - Stakeholders
-
-- **Deliverables**:
-
-  - **Problem Statement**: Defined market problem or user pain point
-  - **Business Case**: Justification for the app's development
-  - **Initial Feature List**: Core app features
-  - **Initial Feasibility Report**: Market, technical, and resource feasibility
-
-### 2. **Planning and Design**
-
-- **Roles**:
-
-  - Product Manager
-  - UX/UI Designer
-  - Business Analyst
-  - Technical Architect
-
-- **Deliverables**:
-
-  - **User Stories/Requirements Document**: Functional and non-functional requirements
-  - **Wireframes/Prototypes**: Early visual concepts of the app's interface
-  - **UI Design**: High-fidelity designs (colors, fonts, interactions)
-  - **System Architecture Diagram**: Technical design for infrastructure
-  - **Project Roadmap**: Timeline and milestones for delivery
-
-### 3. **Development**
-
-- **Roles**:
-
-  - Front-End Developer
-  - Back-End Developer
-  - Full-Stack Developer
-  - QA Engineer
-  - DevOps Engineer
-
-- **Deliverables**:
-
-  - **Front-End Codebase**: UI elements, responsive design, client-side logic
-  - **Back-End Codebase**: Server-side logic, database setup, API endpoints
-  - **Integrated System**: Front-end and back-end working together
-  - **Test Cases/Reports**: Unit and integration testing outcomes
-  - **Deployment Scripts**: Code ready for deployment
-
-### 4. **Deployment**
-
-- **Roles**:
-
-  - DevOps Engineer
-  - Product Manager
-  - QA Engineer
-
-- **Deliverables**:
-
-  - **Deployment Plan**: Defined steps for releasing the app (including staging)
-  - **App Store Submission**: App ready for launch on platforms (e.g., iOS, Android)
-  - **Production Environment**: App running live on servers
-  - **Monitoring Setup**: Error/crash tracking, user activity metrics
-
-### 5. **Marketing and User Engagement**
-
-- **Roles**:
-
-  - Marketing Manager
-  - Social Media Specialist
-  - Product Manager
-
-- **Deliverables**:
-
-  - **Marketing Campaigns**: Social media posts, blog articles, ads
-  - **Onboarding Flow**: Interactive tutorials, welcome screens
-  - **User Feedback Channels**: Surveys, contact forms, in-app reviews
-  - **Retention Strategy**: Push notifications, in-app messages
-
-### 6. **Maintenance and Updates**
-
-- **Roles**:
-
-  - Product Manager
-  - Developer (Front-End, Back-End)
-  - QA Engineer
-
-- **Deliverables**:
-
-  - **Bug Fixes**: Resolved issues and patches
-  - **Performance Optimizations**: Server scaling, code optimizations
-  - **Feature Releases**: Updates with new functionalities
-  - **Security Updates**: Security patches and vulnerability fixes
-
-### 7. **Feedback and Iteration**
-
-- **Roles**:
-
-  - Product Manager
-  - UX Researcher
-  - Data Analyst
-  - Developer
-
-- **Deliverables**:
-
-  - **User Feedback Reports**: Insights from surveys, reviews, and support tickets
-  - **Usage Analytics**: Data on user behavior (e.g., retention, feature usage)
-  - **Iteration Plan**: New feature development or adjustments based on feedback
-  - **A/B Test Results**: Insights from user tests on different versions of features
-
----
-
-This version adds clarity to **who does what** and **what they produce** at each stage of app creation in a big company. Each step is a collaboration of specialized roles coming together to drive the project forward. Would you like to explore any of these roles or deliverables in more detail?
-
-# 3
+# 3 (dependencies of deliverables)
 
 What does each deliverable depend on
 
@@ -1048,7 +762,7 @@ If you like, I can draw **this whole mindmap visually**, showing **deliverables 
 
 Do you want me to do that?
 
-# 4
+# 4 (having an idea)
 
 What could I do after having an idea
 
@@ -1111,7 +825,7 @@ If you like, I can make a **mindmap of “next steps after having an idea”** s
 
 Do you want me to do that?
 
-# 5
+# 5 (curiosity and wonder)
 
 Create a mindmap showing phases, roles, and deliverables.
 

@@ -44,7 +44,7 @@ humility inspirations:
 
 https://prompt.16x.engineer/
 
-humility market research:
+humility research market:
 
 https://www.google.com/search?q=claude+code+real+youtube&gl=us
 
@@ -70,7 +70,9 @@ hoshino lina https://www.youtube.com/@HoshinoLina/streams
 
 cyan nyan https://www.youtube.com/@cyannyan6/streams
 
-vibe coding stream https://www.youtube.com/@bridgemindai
+saba https://www.youtube.com/@SamekoSaba
+
+(vibe coding stream) https://www.youtube.com/@bridgemindai
 
 ---
 
@@ -94,6 +96,16 @@ https://blog.men.ci/friends/
 
 ---
 
+人间失格
+
+---
+
+pure math 2025
+
+---
+
+humility
+
 journal http://localhost:5000/
 
 carte
@@ -101,3 +113,8 @@ carte
 ...
 
 <!-- humility, grow, etc. -->
+
+---
+
+
+

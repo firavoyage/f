@@ -4,12 +4,23 @@ most are messages with modern llms and source files of generated code.
 
 see
 
-- ../apps
-- journal - _the journey_
-- all - _the index_
-- message/paste · todo · tabs/things · scratch pad · weekly/projects
-- mistral - _the legacy (copied from repo firavoyage/blogging)_
-- readme under blogging - _self on reflection_
+- message/paste · todo · tabs/things · scratch pad · weekly/projects · notes
+- `../apps`
+- `journal`
+
+  _the journey_
+
+- `all`
+
+  _the index_
+
+- `mistral`
+
+  _the legacy (copied from firavoyage/blogging)_
+
+- `readme`
+
+  _self (on firavoyage/blogging)_
 
 llms
 
@@ -17,9 +28,8 @@ llms
 - gemini
 - grok
 - mistral
-- chatgpt (may be the default since dec 2025)
+- chatgpt (the default after dec 2025)
 - other llm service
-- (if needed) mirror sites https://github.com/LiLittleCat/awesome-free-chatgpt
 
 misc
 

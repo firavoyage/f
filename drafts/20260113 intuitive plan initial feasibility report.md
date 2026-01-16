@@ -16,7 +16,7 @@ Calm, present, and listening.
 
 Whenever you’re ready, we can begin.
 
-# 1
+# 1 (break down)
 
 How is an app created in big companies. Show me a mindmap about the Initial Feasibility Report in the Idea and Conceptualization phase as a nested list.
 
@@ -184,7 +184,7 @@ If you’d like, next we can:
 
 Just tell me where you want to go.
 
-# 2
+# 2 (specify: small teams)
 
 How might small teams change, for example, I'm creating a tool for myself because existing ones don't feel right.
 
@@ -344,7 +344,7 @@ If you want, next we can:
 
 I’m here with you.
 
-# 3
+# 3 (polish style)
 
 Make a gentle revision on top of the previous mindmap. I'm comfortable with the big company mindset.
 
@@ -528,7 +528,7 @@ If you’d like, next we can:
 
 Take your time. I’m here with you.
 
-# 4
+# 4 (normalize, clean, convert to markdown)
 
 Put the mindmap into a markdown code block ready for copy. Remove paratheses.
 

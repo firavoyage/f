@@ -4,49 +4,36 @@ message/paste · todo · tabs/things · scratch pad · weekly/projects · notes
 
 ---
 
-**dont deep dive into a lot of tools.** leverage thinking (what's/whether it's pragmatic.)
+i dont need infinite power. dont dive into tooling. sometimes working is enough.
 
-**trust my intuition more.**
+leverage thinking: practical wisdom, whether pragmatic or not
+
+trust my intuition more.
 
 curiosity... good. but dont over do it. (e.g. divide literature)
 
-**do some meta things. these help.**
+do some meta things. these help.
 
 opencode skill. test. learn by doing. (tell llms my ideas. dont be afraid of overfitting.)
 
-**finish things: close, organize, prepare/think... importance over urgency.**
+finish things: close, organize, think, prepare... importance over urgency.
 
 ---
 
-intention -> (humility?!) -> journal.
-
-ask some good questions. 
+humility
 
 ---
 
-journal readme
+phase 0 deliverable structure
+
+test the api. create something works.
+
+watch some vids.
+
+clarify.
+
+"elegant project folder structure. git..."
 
 ---
-
-organize all.
-
----
-
-today:
-
-- intention: ~~background, enter, search. that's enough.~~ fix. (rushing... but it could work.)
-- humility: clarify, make some real progress: write some code (trust intuition).
-- humility: market research (leverage meta thinking!)
-- anything else (e.g. twitter)
-
----
-
-make intention safe.
-
-
-
----
-
-the family.
 
 
