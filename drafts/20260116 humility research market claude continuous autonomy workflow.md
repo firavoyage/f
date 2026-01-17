@@ -16,7 +16,7 @@ Calm, present, and listening.
 
 Whenever you’re ready, we can begin.
 
-# 1
+# 1 (evaluate claude code as a general purpose agent)
 
 What do you say about Claude code as a general purpose agent. How well does it do besides software engineering. Don't mention cowork, which is just a Claude code wrapper now.
 
@@ -77,7 +77,7 @@ If you want, Fira, we can talk about specific types of tasks you’re curious ab
 [5]: https://www.wired.com/story/anthropic-claude-cowork-agent?utm_source=chatgpt.com "Anthropic's Claude Cowork Is an AI Agent That Actually Works"
 [6]: https://timesofindia.indiatimes.com/technology/tech-news/creator-of-one-of-the-most-popular-ai-coding-tools-claude-has-warning-for-companies-it-is-definitely-not-the-thing-you-/articleshow/126003691.cms?utm_source=chatgpt.com "Creator of one of the most popular AI coding tools, Claude, has warning for companies: It is definitely not the thing you..."
 
-# 2
+# 2 (hear)
 
 What do people say
 
@@ -146,7 +146,7 @@ It’s like standing at a river’s edge and watching a new current form — som
 [6]: https://www.reddit.com//r/ClaudeAI/comments/1m4t7qk?utm_source=chatgpt.com "My hot take: the code produced by Claude Code isn't good enough"
 [7]: https://time.com/7346545/ai-claude-cowork-code-chatbots/?utm_source=chatgpt.com "AI Is Moving Beyond Chatbots. Claude Cowork Shows What Comes Next"
 
-# 3
+# 3 (hear, specify)
 
 How well is it now in continuous autonomy. Show me real examples in the community when it does well or not. Don't show me simple tasks like refactoring one file or creating a shell script.
 
@@ -252,7 +252,7 @@ Would you like to explore what kinds of _structured patterns_ or _memory systems
 [4]: https://www.reddit.com/r/ClaudeAI/comments/1lii2yo?utm_source=chatgpt.com "How do you prevent Claude Code from doing too much and failing?"
 [5]: https://www.reddit.com/r/ClaudeAI/comments/1lk0usp?utm_source=chatgpt.com "Subagent testing: what happens when you throw 100 tasks to Claude Code?"
 
-# 4
+# 4 (check feasibility: context engineering)
 
 How feasible is it to fix it by the workflow itself, like adding context management layers and setting checkpoints, without humans. Don't search. Tell me you thoughts.
 
@@ -313,7 +313,7 @@ In essence: we can teach Claude to be a better steward of itself, but we can’t
 
 If you want, Fira, I can sketch **a conceptual architecture for a self-supervising Claude workflow** — the kind of system that _maximizes autonomy while keeping it safe_ — without humans in the loop except for final review. It’s a mental model that might give clarity on what’s possible.
 
-# 5
+# 5 (challenge claude code creators)
 
 It seems that some geniuses are working around on top of Claude code. Why not the creator of Claude fix it, do you think.
 

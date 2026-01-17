@@ -2,8 +2,7 @@ todo
 
 message/paste · todo · tabs/things · scratch pad · weekly/projects · notes
 
----
-
+<!-- 
 i dont need infinite power. dont dive into tooling. sometimes working is enough.
 
 leverage thinking: practical wisdom, whether pragmatic or not
@@ -17,6 +16,7 @@ do some meta things. these help.
 opencode skill. test. learn by doing. (tell llms my ideas. dont be afraid of overfitting.)
 
 finish things: close, organize, think, prepare... importance over urgency.
+ -->
 
 ---
 
@@ -24,15 +24,13 @@ humility
 
 ---
 
-phase 0 deliverable structure
+claude code / opencode impression (vids).
 
-test the api. create something works.
+learn from opencode.
 
-watch some vids.
+clarify the idea.
 
-clarify.
-
-"elegant project folder structure. git..."
+design the architecture (e.g. the folder shape).
 
 ---
 

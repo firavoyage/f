@@ -246,3 +246,9 @@ organize things.
 
 ---
 
+elegant project folder structure.
+
+elegant git...
+
+---
+

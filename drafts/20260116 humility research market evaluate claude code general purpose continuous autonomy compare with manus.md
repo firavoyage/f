@@ -233,7 +233,7 @@ How does that fit with what you were hoping it could do?
 [7]: https://www.reddit.com/r/ClaudeAI/comments/1kk4sfp?utm_source=chatgpt.com "Claude Code: Simple expensive performer or real intelligent assistant?"
 [8]: https://equinoxgroup.eu/how-claude-3-5-is-trying-to-revolutionise-automation-through-autonomous-ai-agents/?utm_source=chatgpt.com "How Claude 3.5 Is Trying to Revolutionise Automation through Autonomous AI agents - equinoxgroup.eu"
 
-# 5
+# 5 (compare with manus)
 
 How is it compared with manus.im agent
 
@@ -320,7 +320,7 @@ How do you imagine _your own inviting, calm AI helper_, Fira — the kind that f
 [8]: https://innoai.cc/manus-im-a-comprehensive-overview-of-the-worlds-first-fully-autonomous-ai-agent/?utm_source=chatgpt.com "Manus.im: A Comprehensive Overview of the World’s First Fully Autonomous AI Agent - InnoAI – Where Innovation Meets Artificial Intelligence"
 [9]: https://www.reddit.com//r/AI_Agents/comments/1l2yipe/what_happened_with_manus/?utm_source=chatgpt.com "What happened with Manus?"
 
-# 6
+# 6 (compare, normalize)
 
 Claude code is underestimated for its developer target. Manus is overhyped for its acquirement news. What do people say about the real power of each now.
 

@@ -390,7 +390,7 @@ If you want, we can talk about how to set it up step by step — or how to confi
 [4]: https://www.reddit.com//r/vscode/comments/1q4x8wf/vscode_ask_mode_agent_help/?utm_source=chatgpt.com "VSCode Ask Mode Agent HELP"
 [5]: https://www.reddit.com//r/opencodeCLI/comments/1q2481f/is_opencode_still_maintained/?utm_source=chatgpt.com "Is OpenCode still maintained?"
 
-# 6
+# 6 (install opencode)
 
 it opens a terminal and try to connect to opencode. i have not installed it. how to install.
 

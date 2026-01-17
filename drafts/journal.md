@@ -1907,15 +1907,15 @@ refer to official help... weird.
 
 14
 
-09 40 Finish reading `Chitose Is in the Ramune Bottle` book 1 chapter 2. 
+09 40 Finish reading `Chitose Is in the Ramune Bottle` book 1 chapter 2.
 
 count from chapter 0, the preface from now on.
 
-10 40 Surf zhihu and Twitter. 
+10 40 Surf zhihu and Twitter.
 
 Mindful. Good.
 
-17 20 Finish surfing Twitter (List Fira). 
+17 20 Finish surfing Twitter (List Fira).
 
 Not surfing for 4 or 5 days. Maybe fomo. But get inspired. Result: screenshots, retweets.
 
@@ -1927,7 +1927,7 @@ Not surfing for 4 or 5 days. Maybe fomo. But get inspired. Result: screenshots, 
 
 21 40 surf zhihu. read a hard working chinese achieving his american dream.
 
-22 20 cock. gain more momentum. 
+22 20 cock. gain more momentum.
 
 23 20 feel empty. wanna close my eyes. sleep?
 
@@ -1949,7 +1949,7 @@ long press url in firefox to copy, unlike chrome.
 
 19 40 intention: fix closing last tab. feat support incognito. chatgpt: Error in message stream.
 
-20 20 play manifold.markets. 
+20 20 play manifold.markets.
 
 21 00 write about the family.
 
@@ -1957,7 +1957,7 @@ long press url in firefox to copy, unlike chrome.
 
 23 00 watch `High School Dropout to OpenAI Researcher - Gabriel Petersson Interview (Extraordinary)` for a few secs.
 
-abandoned. 
+abandoned.
 
 i want to be wise and graceful, which implies quiet and peaceful, without showmanship, without hustle and bustle. the film is noisy. i would like to sleep soundly before dying.
 
@@ -1980,6 +1980,44 @@ best of today: cursor created a new browser by running gpt 5.2 for a week.
 18 00 organize things. telegram. innocent wisdom legacy. humility.
 
 19 40 surf zhihu. write some calm and simple thoughts against "america killing line" on zhihu.
+
+17
+
+09 20 fix sndcpy.
+
+10 00 watch some lifestyle vids "变形记现实版，富二代请老哥吃人均过千的晚餐是什么体验" "NeuroSama 是如何实现的？AI Vtuber 的技术原理分析" "原本事业有成，月入数万，迷上赌博后人生剧变成为大神" "三和大神寄居网吧多年，得了重病被救后幡然醒悟，决心改头换面重新做人" "老刘疯狂羞辱峰哥，峰哥一气之下曝光老刘遗言！！" "大神星探，靠给峰哥和徐师傅介绍大神走红网络，成名后却遭大神集体排挤流离失所" "女朋友把我绿了之后，还叫我陪她买避孕药，想分手还被打，甚至连我爸妈一起骂" "迷上赌博后骗光父母一辈子积蓄，输光后成为大神在广州混吃等死" "流浪老哥身怀大量现金，骑着没有刹车的二八大杠环游中国，甚至还能背诵三体" "老刘被女技师骗光存款，骑电瓶车带峰哥亡命天涯" "探访恒大拆迁烂尾项目，几十栋楼空无一人" "保安中奖 30 万，打赏女主播半年返贫" "富二代被亲爹送进监狱，出狱后有家不回，彻底决裂成为网吧大神" "40岁精神病老哥，追求过六七十个姑娘没成功，最终领着3000的低保，游离在社会边缘" "超一线城市的隐秘住处，上层睡觉下层尿尿，300一月，水电全包" "制衣工每天工作15小时持续10年，两次创业不幸亏光，但仍一直努力为回报家人". appreciate "住天桥，捡剩饭，开宝箱，广州流浪汉快乐的一天！" "探访老哥基地，欢声笑语，游戏人生" "曾经睡废弃房的大神，受到贵人相助，靠打游戏过上了梦想中的生活" "大神之家网吧，30 元包天，可洗澡洗衣服，网管每天都要检查人凉没凉" .
+
+search bai ling xiao hao at first, when i wake up i happen to think that... maybe i want to see the wealth. what would the happy few be doing in the real world... he does not do anything besides creating stupid vids. poor boy...
+
+btw, later i realize that sometimes i have a dream of giving these wanderers some money. i always dream that recently. i will gift them a second hand laptop with arch linux installed, maimaidx coins, etc. digital space is free, as in freedom. (chi bi fu: qin feng min yue)
+
+i will tell them "i have a small device in my pocket that provides access to nearly the sum total of human knowledge. i use it to get into pointless arguments with people i don't know and look at pictures of cats".
+
+i will guide them into z library, bitmagnet, ytdlp, chatgpt, telegram, twitter, google, wikipedia, the internet archive, github, etc. all movies, music, books, knowledge, and inspirations, are given free to the humanity. you could use them.
+
+hours later i realize the dream, is a dream originated from hu chenfeng, incl. parody accs. i want to ~~show off the wealthy class to~~ express self. or maybe just to broadcast the (otaku/geek/nerd/etc.) culture i love, instead of helping the poor. the world is the world itself, dont help other people. dont try to change someone.
+
+and about hu chenfeng... twitter mention? or youtube/berryberry recommendation. the world is connected. so eventually i will find you someday, as long as i surf/browse(bfs).
+
+til: maybe i could use less than 40 min browsing anything (in grade 10 summer holidays, i spent tens maybe hundreds of hours browsing almost the complete ruanyf archive. weeks before i organize things across phone, laptop, and git remote. days before i browse innei and himself65 archive. everyday i surf telegram and twitter.). spending hours on peaceful lifestyle? maybe not worth it. although i could not really chase anything (try do some work, which turn out useless).
+
+11 40 play matrix67 itch. browse for a while.
+
+i will let them play games: ALMOST INFINITE by matrix67 (IMO2010P5). "8 numbers, 4 on each line, each two lines have no more than 2 duplicates, how many lines" by fira.
+
+13 40 bet on manifold @Fira.
+
+inspired by one previous ruanyf weekly.
+
+14 00 have lunch. ~~clarify the idea of humility.~~
+
+idk how could i compete with claude code, the giant, the infinite wealth gathered. but i pass the feasibility check. sometimes, proving something does not mean i could construct one, maybe that's the point. but i will try.
+
+15 40 write about education, referencing in pure project readme.
+
+23 20 sit on the sofa in the living room.
+
+feel cozy, somewhat more focused. but no desk... i use it as laptop, and.. the screen is shaking... warau.
 
 
 

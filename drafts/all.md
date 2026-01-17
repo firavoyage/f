@@ -2,6 +2,13 @@ project all: fira's drafts
 
 <!-- reduce entropy -->
 
+<!--
+
+- use ctrl p on code to search (names, not links)
+- use vscode fold extension (or para) to read
+
+-->
+
 fira:
 
 - innocent wisdom
@@ -23,6 +30,7 @@ life:
 - fight club
 - university fields content creator subject niche
 - slow or fast
+- prove existing non constructable things
 
 create something:
 
@@ -59,13 +67,14 @@ software engineering project management:
 
 - arrange todos
 - app creation mindmap
+  - app creation mindmap phase 0 the spark
 - initial feasibility report
   - technical feasibility
 - project roadmap order of work
 
 software engineering architecture:
 
-<!-- 
+<!--
 - understand architecture
  -->
 
@@ -78,34 +87,29 @@ software engineering backend:
 
 software engineering ai/ml:
 
-<!-- 
+<!--
 - prompt critical objective
 - prompt clean phatic
  -->
 
 - mcp when why
+- llms randomness
+- llms improve
+- llms benchmarks
 
 software engineering resources:
 
 - categorize images
 - categorize shaders
 
-software engineering gamedev:
+software engineering journey:
 
-- life create something big weekend time management
-- card games
-- art style
-- game design framework
-- indie game ideas
+- fix sndcpy
 
 linguistics:
 
 - translation meaning loss
 - describe
-
-leisure:
-
-- jp books jlpt levels
 
 literature:
 
@@ -122,9 +126,14 @@ psychology:
 
 - psychology
 
-art:
+film:
 
 - movies
+
+music:
+
+- ytdlp workflow
+- spotdl workflow
 - float appreciate
 
 philosophy:
@@ -143,6 +152,57 @@ legacy:
 
 - mistral
 
-<!-- names, not links. (assume using ctrl p to search, on code.) -->
+---
 
-<!-- work with vscode fold extension (collapse/expand based on headings, code blocks, etc.) -->
+pure:
+
+- chinese
+- math
+- english
+- physics
+- chemistry
+- history
+- geography
+- politics
+
+gamedev:
+
+- life create something big weekend time management
+- card games
+- art style
+- game design framework
+- indie game ideas
+
+leisure:
+
+- jp books jlpt levels
+
+humility:
+
+- check feasibility
+  - giants in the field
+- research market
+  - manus overhyped in coding
+  - compare claude code deprecate codex
+  - compare claude code deprecate cursor
+  - cursor autonomous workflow browser
+  - budget
+    - github models
+    - llms with cookies workarounds
+    - openrouter more generous alternatives
+    - chatgpt fallback mini alternatives
+    - openrouter pricing
+  - claude code magic features
+  - claude continuous autonomy workflow
+    - compare with manus
+  - compare claude code and opencode
+  - compare vscode and neovim
+  - evaluate autogpt
+  - manus alternatives
+- design architecture
+  - claude code
+  - opencode
+  - integration structured output
+  - security api key place
+- design interaction
+  - keyboard shortcuts

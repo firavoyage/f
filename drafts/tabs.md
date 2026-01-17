@@ -48,7 +48,7 @@ humility research market:
 
 https://www.google.com/search?q=claude+code+real+youtube&gl=us
 
-https://www.google.com/search?q=cursor+real+youtube&gl=us
+https://www.google.com/search?q=opencode+youtube&gl=us&sclient=gws-wiz-serp
 
 ---
 
@@ -113,6 +113,8 @@ carte
 ...
 
 <!-- humility, grow, etc. -->
+
+<!-- para! (vscode markdown preview is not that good than chatgpt) -->
 
 ---
 

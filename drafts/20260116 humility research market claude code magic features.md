@@ -344,7 +344,7 @@ If you’d like, we can talk next about how you _can_ build your own context man
 [3]: https://docs.claude.com/en/docs/build-with-claude/context-windows?utm_source=chatgpt.com "Context windows - Claude Docs"
 [4]: https://claude.com/blog/context-management?utm_source=chatgpt.com "Managing context on the Claude Developer Platform | Claude"
 
-# 5
+# 5 (summarize, figure out what's relevant and important)
 
 I'm confused. Be simple.
 
@@ -447,7 +447,7 @@ If you want, we can explore **how to simulate something like this yourself** —
 
 [1]: https://claude.com/blog/context-management?utm_source=chatgpt.com "Managing context on the Claude Developer Platform | Claude"
 
-# 7
+# 7 (summarize, besides a better prompt)
 
 Be simple
 
