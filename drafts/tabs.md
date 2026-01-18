@@ -44,15 +44,9 @@ humility inspirations:
 
 https://prompt.16x.engineer/
 
-humility research market:
-
-https://www.google.com/search?q=claude+code+real+youtube&gl=us
-
-https://www.google.com/search?q=opencode+youtube&gl=us&sclient=gws-wiz-serp
-
 ---
 
-intention:
+intention (omnibox):
 
 chrome://new-tab-page
 

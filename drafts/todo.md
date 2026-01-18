@@ -26,12 +26,10 @@ humility
 
 claude code / opencode impression (vids).
 
-learn from opencode.
+learn from opencode. read over the docs. 
 
-clarify the idea.
+clarify the idea. simplify.
 
 design the architecture (e.g. the folder shape).
 
 ---
-
-

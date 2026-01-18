@@ -56,6 +56,7 @@ software engineering:
 - vibe coding with human
 - vibe coding with opencode
 - code is liability not asset evaluate value
+- robust code
 
 software engineering project management:
 
@@ -183,8 +184,10 @@ humility:
   - giants in the field
 - research market
   - manus overhyped in coding
-  - compare claude code deprecate codex
-  - compare claude code deprecate cursor
+  - compare claude code
+    - compare claude code deprecate codex
+    - compare claude code deprecate cursor
+    - compare claude code deprecate antigravity
   - cursor autonomous workflow browser
   - budget
     - github models
@@ -192,6 +195,7 @@ humility:
     - openrouter more generous alternatives
     - chatgpt fallback mini alternatives
     - openrouter pricing
+    - claude free limit others
   - claude code magic features
   - claude continuous autonomy workflow
     - compare with manus
@@ -199,10 +203,30 @@ humility:
   - compare vscode and neovim
   - evaluate autogpt
   - manus alternatives
+  - use cases
+    - manus use cases
+    - claude code use cases vids
+    - opencode use cases vids
+  - ai generated code style
 - design architecture
   - claude code
   - opencode
-  - integration structured output
-  - security api key place
-- design interaction
+- design technical architecture
+  - programming language
+  - tech stack frontend
+  - tech stack backend
+  - folder shape
+- design integration architecture
+  - structured output
+  - browser automation
+- design interaction architecture
   - keyboard shortcuts
+- design security architecture
+  - api key place
+- decide
+  - creating design system for any project
+- write integration
+  - browser automation fetcher dog
+  - browser automation create fetch dog
+
+

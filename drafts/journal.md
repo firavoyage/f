@@ -2019,6 +2019,46 @@ idk how could i compete with claude code, the giant, the infinite wealth gathere
 
 feel cozy, somewhat more focused. but no desk... i use it as laptop, and.. the screen is shaking... warau.
 
+23 40 return to bedroom (study) due to the noise and awful family.
+
+18
+
+01 00 reflect. sleep.
+
+too much random surfing. pointless market research with a fomo mindset. working around unrelated tools. working when empty, even in heavy noise.
+
+til: leverage thinking. rest well. in solitude humans create.
+
+08 40 organize zshrc.
+
+now i add the time (only hour) to the filename. hope it could add, providing more for reflection without adding much complexity/verbosity.
+
+upd: weird. add 20 min based minutes so it feels better.
+
+09 20 watch youtube vids about claude code. play with "make me a million dollar saas. dont make mistakes." on opencode.
+
+09 40 watch "网友被大幅降薪，表情让户晨风笑出声，得知真相后当场致歉！加拿大网友反向拷打户子，查户晨风的户口；担心女友变强被甩，小伙子够实诚的，实在是忍俊不禁了！".
+
+10 00 generate and read opencode architecture document.
+
+~~todo: get something (e.g. the api) out of opencode.~~ 
+
+api keys for free models are not public. and free ones are almost useless.
+
+18 00 humility: pet a dog.
+
+waste hours. lack clarity. trust llms too much. escape from leveraging thinking myself.
+
+21 40 create github organization: whathumilityis. 
+
+god bless you. god bless humility.
+
+22 40 try claude code router. create api key on openrouter with 1 dollar credit limit.
+
+23 00 ask claude code "create a telegram copy.". work. try with opencode.
+
+similar. 
+
 
 
 <!--

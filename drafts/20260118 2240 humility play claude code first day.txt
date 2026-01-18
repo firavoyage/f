@@ -1,0 +1,36 @@
+
+╭─── Claude Code v2.1.12 ──────────────────────────────────────────────────────╮
+│                                            │ Tips for getting started        │
+│                Welcome back!               │ Run /init to create a CLAUDE.m… │
+│                                            │ Note: You have launched claude… │
+│                   ▐▛███▜▌                  │ ─────────────────────────────── │
+│                  ▝▜█████▛▘                 │ Recent activity                 │
+│                    ▘▘ ▝▝                   │ No recent activity              │
+│                                            │                                 │
+│   moonshotai/kimi-k2 · API Usage Billing   │                                 │
+│                 /home/fira                 │                                 │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+  /model to try Opus 4.5
+
+❯ hello 
+
+● Hello! I'm Claude Code, available to help with your software engineering tasks. I can assist with coding, debugging, refactoring, testing, and more.
+
+  What would you like to work on today?
+
+❯ what's your model 
+
+● I'm currently running the Kimi K2 model, which is a large language model designed for code assistance. This is different from the frontier Claude models like Claude Opus 4.5 - Claude Code uses specialized models optimized for codebase operations and developer workflows.
+
+❯ /help 
+  ⎿  Help dialog dismissed
+
+❯ /help 
+  ⎿  Help dialog dismissed
+
+❯ /help 
+  ⎿  Help dialog dismissed
+
+
+
