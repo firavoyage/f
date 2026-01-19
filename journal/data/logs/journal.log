@@ -28131,3 +28131,13 @@
 2026-01-20T00:59:01.108086+08:00  focus_change  app=Chromium  title=fira @firascript - Twitter Profile | TwStalker - Chromium  screenshot=None
 2026-01-20T01:02:24.170120+08:00  interval_capture  app=Chromium  title=fira @firascript - Twitter Profile | TwStalker - Chromium  screenshot=None
 2026-01-20T01:02:36.185992+08:00  focus_change  app=Code  title=todo.md - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-20T01:02:51.201602+08:00  focus_change  app=kitty  title=push  screenshot=None
+2026-01-20T01:02:56.214338+08:00  focus_change  app=Code  title=.zshrc - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-20T01:03:01.227378+08:00  focus_change  app=kitty  title=~  screenshot=None
+2026-01-20T01:03:06.240115+08:00  focus_change  app=Code  title=.zshrc - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-20T01:03:11.253011+08:00  focus_change  app=kitty  title=~  screenshot=None
+2026-01-20T01:03:16.266176+08:00  focus_change  app=Code  title=.zshrc - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-20T01:03:21.279277+08:00  focus_change  app=kitty  title=push  screenshot=None
+2026-01-20T01:03:26.283155+08:00  focus_change  app=Code  title=.zshrc - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-20T01:03:36.297641+08:00  focus_change  app=Code  title=terminal zshrc.sh - f (Workspace) - Visual Studio Code  screenshot=None
+2026-01-20T01:03:41.310509+08:00  focus_change  app=Code  title=todo.md - f (Workspace) - Visual Studio Code  screenshot=None
