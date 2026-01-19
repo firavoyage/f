@@ -17,6 +17,7 @@ fira:
 - top down bottom up mindset
 - code is liability not asset evaluate value
 - determinism free will
+- claude skills
 
 life:
 
@@ -97,6 +98,7 @@ software engineering ai/ml:
 - llms randomness
 - llms improve
 - llms benchmarks
+- claude skills
 
 software engineering resources:
 
@@ -182,6 +184,7 @@ humility:
 
 - check feasibility
   - giants in the field
+  - tauri
 - research market
   - manus overhyped in coding
   - compare claude code
@@ -220,7 +223,8 @@ humility:
   - structured output
   - browser automation
 - design interaction architecture
-  - keyboard shortcuts
+  - keybindings
+  - leader keys
 - design security architecture
   - api key place
 - decide

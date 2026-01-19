@@ -1981,6 +1981,10 @@ best of today: cursor created a new browser by running gpt 5.2 for a week.
 
 19 40 surf zhihu. write some calm and simple thoughts against "america killing line" on zhihu.
 
+20 40 look up firefox mobile uncontrollable upward scrolling about ten secs after switching foreground app issue.
+
+https://github.com/mozilla-mobile/firefox-ios/issues/22607#js-repo-pjax-container
+
 17
 
 09 20 fix sndcpy.
@@ -2058,6 +2062,12 @@ god bless you. god bless humility.
 23 00 ask claude code "create a telegram copy.". work. try with opencode.
 
 similar. 
+
+19
+
+18 40 read opencode docs fast.
+
+19 00 browse hn with opencode.
 
 
 

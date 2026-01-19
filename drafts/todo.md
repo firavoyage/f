@@ -32,4 +32,8 @@ clarify the idea. simplify.
 
 design the architecture (e.g. the folder shape).
 
+... next.
+
 ---
+
+

@@ -40,4 +40,12 @@ opencode
 
 export sucks. wrong markdown code blocks. (3 or 4 backticks, some are not in pairs)
 
+---
 
+pros love
+
+- verbose english
+- scalable tools for simple things
+- showmanship: shiny landing pages, build in public (meaningless updates on twitter)
+
+---
