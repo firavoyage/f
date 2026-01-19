@@ -2065,6 +2065,26 @@ similar.
 
 19
 
+08 40 Surf zhihu (see favorites). Play cr. Play chess.
+
+09 20 surf zhihu and get lost. feel excited (and confused, maybe).
+
+政治派系，睡眠。先睡觉。遇到困难睡觉。明天继续，或许。
+
+09 40 (try to) read opencode docs. 
+
+"Easy. Inevitable."
+
+upd: spend about 2 hours in the evening instead. escaping, but maybe it's a good choice to avoid reading on the phone. (boring. chatting is more interactive and so, playful)
+
+10 20 surf on telegram.
+
+https://honkai-star-rail.fandom.com/wiki/Sparxie
+
+15 40 Learn chemistry
+
+16 20 Finish reading `Too Many Losing Heroines!` book 1 chapter 0 and 1.
+
 18 40 read opencode docs fast.
 
 19 00 browse hn with opencode.

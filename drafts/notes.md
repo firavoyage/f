@@ -49,3 +49,8 @@ pros love
 - showmanship: shiny landing pages, build in public (meaningless updates on twitter)
 
 ---
+
+Gboard voice input
+
+---
+

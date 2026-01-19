@@ -10,7 +10,7 @@
   - pack: vite
   - show: react
   - style: tailwind
-  - manage: zustand
+  - store: zustand
   - talk: tanstack query
   - guide: react router
 

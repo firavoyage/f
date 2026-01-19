@@ -81,11 +81,10 @@ software engineering architecture:
  -->
 
 - architecture deliverables
-- security architecture api key place
 
 software engineering backend:
 
-- safety definition safe command
+- categorize backend tech stack
 
 software engineering ai/ml:
 
@@ -168,6 +167,10 @@ pure:
 - geography
 - politics
 
+glaze:
+
+- design grounded
+
 gamedev:
 
 - life create something big weekend time management
@@ -182,9 +185,18 @@ leisure:
 
 humility:
 
+<!-- 
+
+- design architecture
+  - claude code
+  - opencode
+
+ -->
+
 - check feasibility
   - giants in the field
   - tauri
+  - hardest challenges
 - research market
   - manus overhyped in coding
   - compare claude code
@@ -212,12 +224,13 @@ humility:
     - opencode use cases vids
   - ai generated code style
 - design architecture
-  - claude code
-  - opencode
+  - manage context evaluate embedding
 - design technical architecture
   - programming language
   - tech stack frontend
+    - pnpm
   - tech stack backend
+    - let ts rs py talk
   - folder shape
 - design integration architecture
   - structured output
@@ -227,6 +240,7 @@ humility:
   - leader keys
 - design security architecture
   - api key place
+  - safety definition safe command
 - decide
   - creating design system for any project
 - write integration
