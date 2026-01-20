@@ -58,7 +58,7 @@ You could almost turn this into a story: a request comes in → the system **con
 
 If you like, Fira, I can sketch a version of this as a **small visual map**, so each verb lights up the tech that fulfills it. It makes the pattern feel more alive. Do you want me to do that?
 
-# 2
+# 2 (detailed)
 
 More comprehensive
 

@@ -2089,6 +2089,28 @@ https://honkai-star-rail.fandom.com/wiki/Sparxie
 
 19 00 browse hn with opencode.
 
+20
+
+00 40 dive into (maybe drift across) the backend tech stack for realities. fix git push script: go to home folder.
+
+maybe the dog and the fetcher will be deprecated a day later: reinventing wheels.
+
+01 20 check feasibility: chatgpt browser automation. succeed.
+
+`message.innertext` `button.click`
+
+all llms are using contenteditable. idk. maybe more flexible.
+
+10 40 Play cr.
+
+13 20 surf twitter.
+
+liuran argues against chinese birth rate with aggressive words. why so serious.
+
+20 00 play phigros. 21 00 
+
+maimai dx collection. feel soft, sweet, kawaii, stylish.
+
 
 
 <!--

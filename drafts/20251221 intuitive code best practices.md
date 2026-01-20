@@ -6,6 +6,12 @@
 
 # .
 
+write solid/simple/stupid code.
+
+give me the full code.
+
+# .
+
 some code maybe related. feel free to ask for more.
 
 <!-- ... -->

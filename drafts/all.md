@@ -103,10 +103,15 @@ software engineering resources:
 
 - categorize images
 - categorize shaders
+- gitignore
 
 software engineering journey:
 
 - fix sndcpy
+
+ui/ux design:
+
+- design ui principles categories mindmap
 
 linguistics:
 
@@ -190,6 +195,9 @@ humility:
 - design architecture
   - claude code
   - opencode
+- write integration
+  - browser automation fetcher dog
+  - browser automation create fetch dog
 
  -->
 
@@ -197,6 +205,9 @@ humility:
   - giants in the field
   - tauri
   - hardest challenges
+  - chatgpt browser automation
+  - userscript to web extension
+  - reliable background choose web extension
 - research market
   - manus overhyped in coding
   - compare claude code
@@ -244,7 +255,5 @@ humility:
 - decide
   - creating design system for any project
 - write integration
-  - browser automation fetcher dog
-  - browser automation create fetch dog
-
+  - web extension any
 
