@@ -6,21 +6,10 @@ see
 
 - message/paste · todo · tabs/things · scratch pad · weekly/projects · notes
 - `../apps`
-- `journal`
-
-  _the journey_
-
-- `all`
-
-  _the index_
-
-- `mistral`
-
-  _the legacy (copied from firavoyage/blogging)_
-
-- `readme`
-
-  _self (on firavoyage/blogging)_
+- `journal` _the journey_
+- `all` _the index_
+- `mistral` _the legacy (copied from firavoyage/blogging)_
+- `readme` _self (on firavoyage/blogging)_
 
 llms
 
@@ -37,3 +26,6 @@ misc
 - the meaning of the header may change across contexts.
 - the reply may be modified a bit for better structure and rendering
 - the default model on the web app at the time would be used, if not specified
+- since 2026.01.17, hourly time is added. so things might not appear on journal.
+
+

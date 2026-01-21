@@ -47,7 +47,12 @@ create something:
 
 software engineering:
 
+<!--
+
 - vibe coding workflow
+
+ -->
+
 - before asking questions
 - code best practices
 - ui design document
@@ -58,6 +63,9 @@ software engineering:
 - vibe coding with opencode
 - code is liability not asset evaluate value
 - robust code
+- software engineering qualities simplicity or future proof
+- ux design qualities
+- solid principles
 
 software engineering project management:
 
@@ -77,10 +85,13 @@ software engineering project management:
 software engineering architecture:
 
 <!--
+
 - understand architecture
+- architecture deliverables mindmap
+
  -->
 
-- architecture deliverables
+- architecture deliverables diagrams artifacts
 
 software engineering backend:
 
@@ -190,7 +201,7 @@ leisure:
 
 humility:
 
-<!-- 
+<!--
 
 - design architecture
   - claude code
@@ -256,4 +267,5 @@ humility:
   - creating design system for any project
 - write integration
   - web extension any
+
 

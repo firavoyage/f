@@ -1,34 +1,89 @@
 import { log } from "./logger.js";
 
-const SERVER = "http://localhost:8000";
+const SERVER_HTTP = "http://localhost:8000";
+const SERVER_WS = "ws://localhost:8000/events";
+
 let ws = null;
+let serverAlive = false;
 
-function connectWS() {
-  ws = new WebSocket("ws://localhost:8000/events");
+log("info", "Background service worker loaded");
 
-  ws.onopen = () => log("info", "WS connected");
-  ws.onclose = () => {
-    log("error", "WS disconnected, retrying");
-    setTimeout(connectWS, 2000);
+/**
+ * Poll server until it is alive
+ */
+async function checkServer() {
+  try {
+    const res = await fetch(`${SERVER_HTTP}/health`);
+    if (res.ok) {
+      if (!serverAlive) {
+        log("info", "Server is alive");
+      }
+      serverAlive = true;
+      ensureWS();
+      return;
+    }
+  } catch (e) {
+    // ignore
+  }
+
+  if (serverAlive) {
+    log("error", "Server went away");
+  }
+
+  serverAlive = false;
+}
+
+/**
+ * Ensure WebSocket connection exists
+ */
+function ensureWS() {
+  if (ws && ws.readyState === WebSocket.OPEN) {
+    return;
+  }
+
+  if (ws) {
+    try {
+      ws.close();
+    } catch {}
+    ws = null;
+  }
+
+  log("info", "Opening WebSocket");
+
+  try {
+    ws = new WebSocket(SERVER_WS);
+  } catch (e) {
+    log("error", "WS constructor failed", e);
+    return;
+  }
+
+  ws.onopen = () => {
+    log("info", "WS connected");
   };
-  ws.onerror = (e) => log("error", "WS error", e);
 
   ws.onmessage = async (msg) => {
-    const task = JSON.parse(msg.data);
-    await executeTask(task);
+    log("info", "WS message received", msg.data);
+    try {
+      const task = JSON.parse(msg.data);
+      await executeTask(task);
+    } catch (e) {
+      log("error", "WS message handling failed", e);
+    }
+  };
+
+  ws.onerror = (e) => {
+    log("error", "WS error", e);
+  };
+
+  ws.onclose = () => {
+    log("error", "WS closed");
+    ws = null;
   };
 }
 
-connectWS();
-
-async function ensureRunner(tabId) {
-  await chrome.scripting.executeScript({
-    target: { tabId },
-    files: ["runner.js"],
-    world: "MAIN"
-  });
-}
-
+/**
+ * Execute injected script
+ */
 async function executeTask(task) {
   log("info", "Task received", task);
 
@@ -45,60 +100,61 @@ async function executeTask(task) {
       lastFocusedWindow: true
     });
 
-    if (!tab?.id) throw new Error("No active tab");
-    if (tab.url.startsWith("chrome://")) {
-      throw new Error("Cannot inject into chrome:// URLs");
+    if (!tab?.id) {
+      throw new Error("No active tab");
     }
 
-    await ensureRunner(tab.id);
+    if (tab.url.startsWith("chrome://")) {
+      throw new Error("Invalid tab URL");
+    }
 
-    const response = await chrome.scripting.executeScript({
+    const injection = await chrome.scripting.executeScript({
       target: { tabId: tab.id },
       world: "MAIN",
-      func: (taskId, expr) => {
-        return new Promise((resolve) => {
-          function handler(event) {
-            if (event.source !== window) return;
-            if (event.data?.type !== "ANY_RESULT") return;
-            if (event.data.taskId !== taskId) return;
-
-            window.removeEventListener("message", handler);
-            resolve(event.data);
-          }
-
-          window.addEventListener("message", handler);
-
-          window.postMessage({
-            type: "ANY_EXEC",
-            taskId,
-            expr
-          });
-        });
+      func: (script) => {
+        try {
+          return new Function(
+            "return (async () => { " + script + " })();"
+          )();
+        } catch (e) {
+          return { __error__: e };
+        }
       },
-      args: [task.id, task.script]
+      args: [task.script]
     });
 
-    const payload = response?.[0]?.result;
+    const res = injection?.[0]?.result;
 
-    if (payload.status === "failed") {
-      throw payload.error;
+    if (res?.__error__) {
+      throw res.__error__;
     }
 
     result.status = "completed";
-    result.output = payload.output;
+    result.output = res;
   } catch (e) {
     result.error = {
-      name: e.name || "Error",
-      message: e.message || String(e),
+      name: e.name,
+      message: e.message,
       stack: e.stack || null
     };
   }
 
   log("info", "Task finished", result);
 
-  await fetch(`${SERVER}/task/${task.id}`, {
+  await fetch(`${SERVER_HTTP}/task/${task.id}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(result)
   });
 }
+
+/**
+ * Keep worker alive and polling
+ */
+setInterval(() => {
+  log("info", "Heartbeat");
+  checkServer();
+}, 2000);
+
+// Initial probe
+checkServer();

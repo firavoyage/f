@@ -104,7 +104,7 @@ carte
 
 <!-- humility, ... -->
 
-<!-- intention. para. grow. -->
+<!-- intention (omnibox). para. grow. -->
 
 <!-- para: (vscode markdown preview is not that good than chatgpt) (!) -->
 

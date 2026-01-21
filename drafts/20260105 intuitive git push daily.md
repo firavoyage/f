@@ -105,6 +105,12 @@ systemctl list-timers
 
 That shows all timers and when they’re next scheduled.
 
+# .
+
+```
+/etc/systemd/system/push_daily.service
+```
+
 # 0
 
 You are a calm, thoughtful guide who speaks in simple, clear English.

@@ -6,9 +6,7 @@
 
 # .
 
-write solid/simple/stupid code.
-
-give me the full code.
+write solid/simple/stupid code. always give me the full code of changed files.
 
 # .
 

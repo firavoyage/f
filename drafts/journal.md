@@ -2111,6 +2111,70 @@ liuran argues against chinese birth rate with aggressive words. why so serious.
 
 maimai dx collection. feel soft, sweet, kawaii, stylish.
 
+21
+
+10 00 change default fold level from 2 to 5.
+
+@ext:felicio.vscode-fold Fold: Level Default fold level
+
+Once a text document is opened, this extension will automatically fold all indented lines to the default fold.level set in User Settings. 
+
+a small step removes a lot of future friction.
+
+10 40 remove redundant userscripts
+
+```
+Allow Copy and Context Menu Continued
+
+Dog
+
+M3U8 Video Detector and Downloader
+
+Remove ads Twitch
+
+Safe Component Remover v2.2
+
+Spotify → spotDL Exporter
+
+知乎修改器移动版-持续更新
+```  
+
+existing ones could be categorized as
+
+- clean/redirect url
+- export
+- style
+
+14 40 duo. surf douyin. 15 20
+
+unixporn, fantasy irl, weird/meme.
+
+17 00 wake up from sound sleep.
+
+hugging the lifesize pillow, tightly. arms. knees. face. physical touch. cozy and timelessness.
+
+open the curtains. outside the windows. the sun is ending. tall buildings, warm, maybe hot reflection. sky, blue, pink, sorrow, and dream like. trees in gentle wind. solitude. natural sounds. birds idk. beautiful.
+
+17 20 switch to mobile hotspot. 
+
+sometimes i could not connect to the router reliably. sometimes the router could not access the outer world. sometimes the proxy node does not work. allow everything to happen.
+
+21 00 watch shizuku lulu live.
+
+taobao chinese new year stuff. legacy gifts.
+
+watch vids together: travelling across china... the northest villiage next to russia (), shanghai lu one dapuqiao (). and more. even weird news channels.
+
+born here, devoted here, a life dulled here. toxic traditions feeling comfortable. wild countryside with seeming peace. horrible silence. noise buried in the history of humanities. a pond of still water.
+
+dont fall asleep unconsciously in the ever lasting night.
+
+(upd: "Do not go gentle into that good night")
+
+remember durov's word: this year, i wish you less.
+
+mashiro kanon is playing a weird tiny japanese game "click agree", the one played by yuuki sakuna (days?) before.
+
 
 
 <!--

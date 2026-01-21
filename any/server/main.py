@@ -1,17 +1,26 @@
-import asyncio
+import sys
+import os
+
+# Ensure project root is in sys.path for imports
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
 from fastapi import FastAPI, WebSocket, HTTPException
-from models import Task, TaskResult, TaskStatus
-from typing import Dict
+
+# server/main.py
+from .models import Task, TaskResult, TaskStatus
+
+from typing import Dict, Set
 
 app = FastAPI()
+
+# Store tasks and connected clients
 tasks: Dict[str, dict] = {}
-clients = set()
+clients: Set[WebSocket] = set()
 
 @app.post("/task")
 async def submit_task(task: Task):
-    print("TASK RECEIVED:", task.id)
     if task.id in tasks:
-        raise HTTPException(400, "Task exists")
+        raise HTTPException(400, "Task already exists")
 
     tasks[task.id] = {
         "task": task,
@@ -19,6 +28,7 @@ async def submit_task(task: Task):
         "result": None
     }
 
+    # Send task to connected browser clients
     for ws in clients:
         await ws.send_json(task.dict())
         tasks[task.id]["status"] = TaskStatus.dispatched
@@ -29,7 +39,6 @@ async def submit_task(task: Task):
 async def finish_task(task_id: str, result: TaskResult):
     if task_id not in tasks:
         raise HTTPException(404)
-
     tasks[task_id]["status"] = result.status
     tasks[task_id]["result"] = result
     return {"ok": True}
@@ -43,10 +52,9 @@ async def get_task(task_id: str):
 @app.websocket("/events")
 async def events(ws: WebSocket):
     await ws.accept()
-    print("EXTENSION CONNECTED")
     clients.add(ws)
     try:
         while True:
-            await ws.receive_text()
+            await ws.receive_text()  # keep connection alive
     finally:
         clients.remove(ws)

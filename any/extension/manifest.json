@@ -14,5 +14,11 @@
   "background": {
     "service_worker": "background.js",
     "type": "module"
-  }
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["user_scripts/*.js"],
+      "matches": ["<all_urls>"]
+    }
+  ]
 }
