@@ -1,24 +1,16 @@
 {
-  "name": "any",
-  "version": "0.1.0",
   "manifest_version": 3,
-  "description": "Anything automation extension (dev mode)",
-  "permissions": [
-    "scripting",
-    "tabs",
-    "storage"
-  ],
-  "host_permissions": [
-    "<all_urls>"
-  ],
+  "name": "any",
+  "version": "0.1",
   "background": {
-    "service_worker": "background.js",
-    "type": "module"
+    "service_worker": "background.js"
   },
-  "web_accessible_resources": [
+  "content_scripts": [
     {
-      "resources": ["user_scripts/*.js"],
-      "matches": ["<all_urls>"]
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_start"
     }
-  ]
+  ],
+  "permissions": ["tabs", "scripting", "alarms"]
 }

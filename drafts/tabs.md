@@ -16,8 +16,6 @@ opencode voices https://chatgpt.com/c/695fd8f0-ef8c-8326-a811-279b45f62a5d
 
 opencode forever running https://chatgpt.com/c/69624982-2564-832c-af3a-b18f0baec428
 
-dify https://chatgpt.com/c/6962062a-30e8-8328-9dc7-f1d3f20cf321
-
 manus https://chatgpt.com/c/696206d6-5f18-8330-bd4b-47c48869b37b
 
 frontend engineering https://chatgpt.com/c/6962122c-f8f4-8330-a5cf-b3c8c115a967
@@ -109,7 +107,5 @@ carte
 <!-- para: (vscode markdown preview is not that good than chatgpt) (!) -->
 
 ---
-
-
 
 

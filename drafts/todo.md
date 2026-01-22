@@ -26,14 +26,27 @@ humility
 
 see `app creation roadmap` `deliverables`
 
-clarify the idea. simplify.
+---
 
-pick the tech stack. imagine.
+- leerob
+- cursor docs
+- (claude code docs)
+- ~~opencode docs~~
+- twitter
+- clarify?
+- design the ui? (check app creation roadmap. leverage thinking. invariants first.) (incl. projects like grow)
 
-design ui prototype.
+---
 
-surf twitter. (less tg. dont surf on archived chat. timebox.)
+openai compatible ...
 
-... next.
+---
+
+play cyan nyan / mygo / kessoku, 
+
+- integrate patchright chatgpt
+- ~~create the first ui~~
+- ~~design the ui~~
+- design the apis
 
 ---

@@ -1,160 +1,134 @@
-import { log } from "./logger.js";
+// extension/background.js
 
-const SERVER_HTTP = "http://localhost:8000";
-const SERVER_WS = "ws://localhost:8000/events";
+// Top‑level registration of alarm and listener
+chrome.runtime.onInstalled.addListener(() => {
+  chrome.alarms.create("periodicTask", {
+    periodInMinutes: 0.5,
+  });
+});
 
-let ws = null;
-let serverAlive = false;
+chrome.alarms.onAlarm.addListener(async (alarm) => {
+  if (alarm.name === "periodicTask") {
+    console.log("⏰ Woke up for periodic work…");
 
-log("info", "Background service worker loaded");
+    await safeDoInternalWork();
+  }
+});
 
-/**
- * Poll server until it is alive
- */
-async function checkServer() {
+async function safeDoInternalWork() {
+  // Wait a tiny moment before touching storage to avoid 'undefined'
+  function sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
+  // Pause a bit so storage has time to initialize
+  await sleep(50);
+
+  // Now safely use storage
   try {
-    const res = await fetch(`${SERVER_HTTP}/health`);
-    if (res.ok) {
-      if (!serverAlive) {
-        log("info", "Server is alive");
-      }
-      serverAlive = true;
-      ensureWS();
-      return;
-    }
-  } catch (e) {
-    // ignore
+    const result = await chrome.storage.local.get({ counter: 0 });
+    const newCount = (result.counter ?? 0) + 1;
+
+    await chrome.storage.local.set({ counter: newCount });
+    console.log("Updated counter:", newCount);
+  } catch (err) {
+    console.warn("Storage still not ready, retry next alarm", err);
   }
 
-  if (serverAlive) {
-    log("error", "Server went away");
-  }
-
-  serverAlive = false;
+  // Other internal cleanup or bookkeeping …
 }
 
-/**
- * Ensure WebSocket connection exists
- */
-function ensureWS() {
-  if (ws && ws.readyState === WebSocket.OPEN) {
-    return;
-  }
+let ws = null;
+let watchdog = null;
 
-  if (ws) {
-    try {
+function connect() {
+  console.log("any: attempting connect");
+
+  ws = new WebSocket("ws://localhost:8765/ws");
+
+  watchdog = setTimeout(() => {
+    if (ws && ws.readyState !== WebSocket.OPEN) {
       ws.close();
-    } catch {}
-    ws = null;
-  }
-
-  log("info", "Opening WebSocket");
-
-  try {
-    ws = new WebSocket(SERVER_WS);
-  } catch (e) {
-    log("error", "WS constructor failed", e);
-    return;
-  }
+    }
+  }, 1000);
 
   ws.onopen = () => {
-    log("info", "WS connected");
-  };
-
-  ws.onmessage = async (msg) => {
-    log("info", "WS message received", msg.data);
-    try {
-      const task = JSON.parse(msg.data);
-      await executeTask(task);
-    } catch (e) {
-      log("error", "WS message handling failed", e);
-    }
-  };
-
-  ws.onerror = (e) => {
-    log("error", "WS error", e);
+    clearTimeout(watchdog);
+    console.log("any: connected");
   };
 
   ws.onclose = () => {
-    log("error", "WS closed");
-    ws = null;
+    clearTimeout(watchdog);
+    console.log("any: disconnected");
+    setTimeout(connect, 1000);
+  };
+
+  ws.onerror = () => {
+    ws.close();
+  };
+
+  ws.onmessage = async (event) => {
+    const msg = JSON.parse(event.data);
+
+    try {
+      const tab = await openAndWait(msg.page);
+      const result = await sendWithRetry(tab.id, msg);
+      ws.send(JSON.stringify(result));
+    } catch (err) {
+      ws.send(
+        JSON.stringify({
+          v: msg.v,
+          id: msg.id,
+          error: {
+            name: err.name,
+            message: err.message,
+            stack: err.stack,
+          },
+        })
+      );
+    }
   };
 }
 
-/**
- * Execute injected script
- */
-async function executeTask(task) {
-  log("info", "Task received", task);
+async function openAndWait(url) {
+  const tab = await chrome.tabs.create({ url });
 
-  const result = {
-    task_id: task.id,
-    status: "failed",
-    output: null,
-    error: null
-  };
-
-  try {
-    const [tab] = await chrome.tabs.query({
-      active: true,
-      lastFocusedWindow: true
-    });
-
-    if (!tab?.id) {
-      throw new Error("No active tab");
-    }
-
-    if (tab.url.startsWith("chrome://")) {
-      throw new Error("Invalid tab URL");
-    }
-
-    const injection = await chrome.scripting.executeScript({
-      target: { tabId: tab.id },
-      world: "MAIN",
-      func: (script) => {
-        try {
-          return new Function(
-            "return (async () => { " + script + " })();"
-          )();
-        } catch (e) {
-          return { __error__: e };
-        }
-      },
-      args: [task.script]
-    });
-
-    const res = injection?.[0]?.result;
-
-    if (res?.__error__) {
-      throw res.__error__;
-    }
-
-    result.status = "completed";
-    result.output = res;
-  } catch (e) {
-    result.error = {
-      name: e.name,
-      message: e.message,
-      stack: e.stack || null
+  await new Promise((resolve) => {
+    const listener = (tabId, info) => {
+      if (tabId === tab.id && info.status === "complete") {
+        chrome.tabs.onUpdated.removeListener(listener);
+        resolve();
+      }
     };
+    chrome.tabs.onUpdated.addListener(listener);
+  });
+
+  return tab;
+}
+
+async function sendWithRetry(tabId, msg, retries = 10) {
+  for (let i = 0; i < retries; i++) {
+    try {
+      const result = await sendToTab(tabId, msg);
+      if (result) return result;
+    } catch (_) {}
+    await sleep(100);
   }
+  throw new Error("content script not responding");
+}
 
-  log("info", "Task finished", result);
-
-  await fetch(`${SERVER_HTTP}/task/${task.id}`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(result)
+function sendToTab(tabId, msg) {
+  return new Promise((resolve, reject) => {
+    chrome.tabs.sendMessage(tabId, msg, (resp) => {
+      if (chrome.runtime.lastError) {
+        reject(chrome.runtime.lastError);
+      } else {
+        resolve(resp);
+      }
+    });
   });
 }
 
-/**
- * Keep worker alive and polling
- */
-setInterval(() => {
-  log("info", "Heartbeat");
-  checkServer();
-}, 2000);
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-// Initial probe
-checkServer();
+connect();

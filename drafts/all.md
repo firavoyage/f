@@ -87,7 +87,7 @@ software engineering architecture:
 <!--
 
 - understand architecture
-- architecture deliverables mindmap
+- architecture mindmap
 
  -->
 

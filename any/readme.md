@@ -2,4 +2,6 @@ any.
 
 do anything at anytime.
 
-for browser automation.
+just another browser automation library.
+
+simple and working.

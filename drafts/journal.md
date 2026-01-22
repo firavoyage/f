@@ -1989,7 +1989,7 @@ https://github.com/mozilla-mobile/firefox-ios/issues/22607#js-repo-pjax-containe
 
 09 20 fix sndcpy.
 
-10 00 watch some lifestyle vids "变形记现实版，富二代请老哥吃人均过千的晚餐是什么体验" "NeuroSama 是如何实现的？AI Vtuber 的技术原理分析" "原本事业有成，月入数万，迷上赌博后人生剧变成为大神" "三和大神寄居网吧多年，得了重病被救后幡然醒悟，决心改头换面重新做人" "老刘疯狂羞辱峰哥，峰哥一气之下曝光老刘遗言！！" "大神星探，靠给峰哥和徐师傅介绍大神走红网络，成名后却遭大神集体排挤流离失所" "女朋友把我绿了之后，还叫我陪她买避孕药，想分手还被打，甚至连我爸妈一起骂" "迷上赌博后骗光父母一辈子积蓄，输光后成为大神在广州混吃等死" "流浪老哥身怀大量现金，骑着没有刹车的二八大杠环游中国，甚至还能背诵三体" "老刘被女技师骗光存款，骑电瓶车带峰哥亡命天涯" "探访恒大拆迁烂尾项目，几十栋楼空无一人" "保安中奖 30 万，打赏女主播半年返贫" "富二代被亲爹送进监狱，出狱后有家不回，彻底决裂成为网吧大神" "40岁精神病老哥，追求过六七十个姑娘没成功，最终领着3000的低保，游离在社会边缘" "超一线城市的隐秘住处，上层睡觉下层尿尿，300一月，水电全包" "制衣工每天工作15小时持续10年，两次创业不幸亏光，但仍一直努力为回报家人". appreciate "住天桥，捡剩饭，开宝箱，广州流浪汉快乐的一天！" "探访老哥基地，欢声笑语，游戏人生" "曾经睡废弃房的大神，受到贵人相助，靠打游戏过上了梦想中的生活" "大神之家网吧，30 元包天，可洗澡洗衣服，网管每天都要检查人凉没凉" .
+10 00 watch some lifestyle vids "变形记现实版，富二代请老哥吃人均过千的晚餐是什么体验" "NeuroSama 是如何实现的？AI Vtuber 的技术原理分析" "原本事业有成，月入数万，迷上赌博后人生剧变成为大神" "三和大神寄居网吧多年，得了重病被救后幡然醒悟，决心改头换面重新做人" "老刘疯狂羞辱峰哥，峰哥一气之下曝光老刘遗言！！" "大神星探，靠给峰哥和徐师傅介绍大神走红网络，成名后却遭大神集体排挤流离失所" "女朋友把我绿了之后，还叫我陪她买避孕药，想分手还被打，甚至连我爸妈一起骂" "迷上赌博后骗光父母一辈子积蓄，输光后成为大神在广州混吃等死" "流浪老哥身怀大量现金，骑着没有刹车的二八大杠环游中国，甚至还能背诵三体" "老刘被女技师骗光存款，骑电瓶车带峰哥亡命天涯" "探访恒大拆迁烂尾项目，几十栋楼空无一人" "保安中奖 30 万，打赏女主播半年返贫" "富二代被亲爹送进监狱，出狱后有家不回，彻底决裂成为网吧大神" "40 岁精神病老哥，追求过六七十个姑娘没成功，最终领着 3000 的低保，游离在社会边缘" "超一线城市的隐秘住处，上层睡觉下层尿尿，300 一月，水电全包" "制衣工每天工作 15 小时持续 10 年，两次创业不幸亏光，但仍一直努力为回报家人". appreciate "住天桥，捡剩饭，开宝箱，广州流浪汉快乐的一天！" "探访老哥基地，欢声笑语，游戏人生" "曾经睡废弃房的大神，受到贵人相助，靠打游戏过上了梦想中的生活" "大神之家网吧，30 元包天，可洗澡洗衣服，网管每天都要检查人凉没凉" .
 
 search bai ling xiao hao at first, when i wake up i happen to think that... maybe i want to see the wealth. what would the happy few be doing in the real world... he does not do anything besides creating stupid vids. poor boy...
 
@@ -2045,7 +2045,7 @@ upd: weird. add 20 min based minutes so it feels better.
 
 10 00 generate and read opencode architecture document.
 
-~~todo: get something (e.g. the api) out of opencode.~~ 
+~~todo: get something (e.g. the api) out of opencode.~~
 
 api keys for free models are not public. and free ones are almost useless.
 
@@ -2053,7 +2053,7 @@ api keys for free models are not public. and free ones are almost useless.
 
 waste hours. lack clarity. trust llms too much. escape from leveraging thinking myself.
 
-21 40 create github organization: whathumilityis. 
+21 40 create github organization: whathumilityis.
 
 god bless you. god bless humility.
 
@@ -2061,7 +2061,7 @@ god bless you. god bless humility.
 
 23 00 ask claude code "create a telegram copy.". work. try with opencode.
 
-similar. 
+similar.
 
 19
 
@@ -2071,7 +2071,7 @@ similar.
 
 政治派系，睡眠。先睡觉。遇到困难睡觉。明天继续，或许。
 
-09 40 (try to) read opencode docs. 
+09 40 (try to) read opencode docs.
 
 "Easy. Inevitable."
 
@@ -2107,7 +2107,7 @@ all llms are using contenteditable. idk. maybe more flexible.
 
 liuran argues against chinese birth rate with aggressive words. why so serious.
 
-20 00 play phigros. 21 00 
+20 00 play phigros. 21 00
 
 maimai dx collection. feel soft, sweet, kawaii, stylish.
 
@@ -2117,7 +2117,7 @@ maimai dx collection. feel soft, sweet, kawaii, stylish.
 
 @ext:felicio.vscode-fold Fold: Level Default fold level
 
-Once a text document is opened, this extension will automatically fold all indented lines to the default fold.level set in User Settings. 
+Once a text document is opened, this extension will automatically fold all indented lines to the default fold.level set in User Settings.
 
 a small step removes a lot of future friction.
 
@@ -2137,7 +2137,7 @@ Safe Component Remover v2.2
 Spotify → spotDL Exporter
 
 知乎修改器移动版-持续更新
-```  
+```
 
 existing ones could be categorized as
 
@@ -2155,7 +2155,7 @@ hugging the lifesize pillow, tightly. arms. knees. face. physical touch. cozy an
 
 open the curtains. outside the windows. the sun is ending. tall buildings, warm, maybe hot reflection. sky, blue, pink, sorrow, and dream like. trees in gentle wind. solitude. natural sounds. birds idk. beautiful.
 
-17 20 switch to mobile hotspot. 
+17 20 switch to mobile hotspot.
 
 sometimes i could not connect to the router reliably. sometimes the router could not access the outer world. sometimes the proxy node does not work. allow everything to happen.
 
@@ -2174,6 +2174,72 @@ dont fall asleep unconsciously in the ever lasting night.
 remember durov's word: this year, i wish you less.
 
 mashiro kanon is playing a weird tiny japanese game "click agree", the one played by yuuki sakuna (days?) before.
+
+23 40 watch shizuku lulu live.
+
+japanese luxious highway. wealthy and peaceful life "lifestyle". seven stars.
+
+22
+
+00 00 sleep.
+
+14 20 remove ZaynHao from twitter list fira.
+
+promotional noise. "build in public".
+
+16 40 browse some sota ai researchers of chinese origin. reflect on myself.
+
+at the beginning, fira is not about to add. but to reduce.
+
+- make tools elegant: reduce friction
+- make knowledge pure: reduce entropy
+
+btw, many projects of fira has dmca and tos breaking features in mind.
+
+fira wanna be in the form of low energy and sleep quietly in the nature.
+
+17 20 see podwise summary of `翁家翌：OpenAI，GPT，强化学习，Infra，后训练，天授，tuixue，开源，CMU，清华｜WhynotTV Podcast #4`.
+
+independent thinking. determinism.
+
+- 搭建强化学习基础设施比改进强化学习算法本身，更能推动人工智能研究的进展，因为前者能提高实验迭代速度和 infra 的正确性。
+- 在大模型研发中，快速修复基础设施中的 bug 是提升模型训练效果的关键因素。
+- 计算机领域，代码项目的一致性比参与人数更重要，多人协作可能因假设和沟通不畅导致代码腐化和膨胀。
+- 个人对社会产生的影响力，比传统评价体系（如 GPA）更能带来长久的满足感。
+- 即使身处现有评价体系的顶端，也应该警惕并挣脱其束缚，为自己建立独特的价值标准。
+- 预测未来的能力如果被人工智能掌握，对个人而言可能是一场灾难，因为这会导致所有价值体系的崩塌。
+- OpenAI 内部认为，实现通用人工智能（AGI）的关键在于执行力，而非技术本身。
+- OpenAI 成功的关键在于极高人才密度的小团队，以及对平庸表现的零容忍。
+- 即使在 OpenAI 内部，对技术细节的过度保密和组织架构的臃肿，也会降低迭代速度，从而影响其在 AI 模型领域的领先地位。
+- OpenAI 的 "开放" 更多体现在以尽可能低的价格，让普通用户更容易接触到 AI 技术，而非开源核心技术。
+
+podwise is a bit philistine. stupid icons. too much elements on one screen. low info/noise rate (explaining trivial keywords like company and university names).
+
+18 00 hear beautiful piano from neighbours. play `【Singing】Maroon 5 ONLY Karaoke! [q4qFm26Ub3s]`. receive a pack of truffles "truffettes de france", 400g this time.
+
+wanna watch a film in the evening.
+
+18 20 close dify from tabs.
+
+more structure, less intelligence. 
+
+does not feel right... no elegance. e.g. in the ui design. native chinese style: complex, working, low leverage, not polished (consistency), hard to breathe.
+
+it's about being user friendly (e.g. scratch.mit.edu). and with ai? who are the users...
+
+the same for "no code platforms".
+
+18 40 refresh.
+
+21 40 watch `Cursor Agent: 10 Pro Tips!`.
+
+seems there's no real autonomy workflows now. pasting error messages... why not auto run and test by default?
+
+what the hell youtube puts recommended vids before comments.
+
+22 40 watch `The Good, the Bad and the Ugly` to 38:16. sleep. 23 20
+
+come back when clear tomorrow.
 
 
 
