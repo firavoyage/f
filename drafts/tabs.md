@@ -108,4 +108,17 @@ carte
 
 ---
 
+read them when i need.
+
+at least, after know how to use patchright (network or dom). try it.
+
+https://cursor.com/docs
+
+https://code.claude.com/docs/en/sub-agents
+
+
+---
+
+https://jarango.com/2026/01/06/the-moylan-arrow-ia-lessons-for-ai-powered-systems/
+
 

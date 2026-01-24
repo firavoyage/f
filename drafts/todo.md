@@ -42,7 +42,7 @@ openai compatible ...
 
 ---
 
-play cyan nyan / mygo / kessoku, 
+play cyan nyan / mygo / kessoku,
 
 - integrate patchright chatgpt
 - ~~create the first ui~~
@@ -50,3 +50,20 @@ play cyan nyan / mygo / kessoku,
 - design the apis
 
 ---
+
+non trivial.
+
+---
+
+_revise projects._
+
+make ctrl c -> copy markdown
+
+---
+
+patchright (inevitable.)
+
+chatgpt.
+
+
+

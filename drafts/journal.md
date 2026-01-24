@@ -2241,6 +2241,63 @@ what the hell youtube puts recommended vids before comments.
 
 come back when clear tomorrow.
 
+23
+
+09 40 go school at 10.
+
+Skip two Chinese classes in the morning. Sleepy.
+
+Take the left 2 English classes in the morning and 3 math classes in the afternoon.
+
+12 00 wonder about humility's autonomy possibilities.
+
+Censored. Workaround: hobbies of humans within internet. tech savvy/otaku/geek/nerd hobbies. Easy to do. Example: software engineering, incl. Yc hn, docs. But what else.
+
+Upd: map to r slash
+
+Idk. What I want: leverage free resources, make sense: checkpoints, a certain set of values. White list is enough.
+
+Specify: software engineering. Create existing apps. Notes, tracking, learning, lifestyle, etc. Not infra like browsers and libraries.
+
+12 20 have lunch: Wagas. Beef. Mashed potato. Sukiyaki.
+
+13 00 hear something about sp uee math.
+
+Xiaojiong: objective problems too hard. Big problems might be fake. Gifting pts for free. Less diversity.
+
+16 00 continue watching `The Good, the Bad and the Ugly`. 18 40
+
+19 20 change the naming style of files in drafts.
+
+time: hourly precision. minute will always be 00.
+
+19 20 read leerob in cyan nyan karaoke.
+
+22 00 pick spring uee major favorites: 2 majors from usst.
+
+known that:
+
+- you could only pick 2 majors. 
+- it's not a must for me to pass sp uee to skip classes in the next term. i can quit school at any time. but whether i go school or not, things wont change.
+- given free time, i could not manage to get anything done. too stupid strategy. 
+- schooling or not does not matter. nothing matters.
+- i have inherited wealth. i dont want to do any work. so there are no jobs in the world. i only want to sleep. 
+
+im not sure i could get into usst. but other majors are too easy to have in uee.
+
+about the decision:
+
+- i will regret if i get to a bad university wasting my pts, given that three months of free time wont matter. i would better just quit (see himself65). there are many wealthy guys sleeping at home, claiming something like depression.
+- simpler, usst feels like something. bad universities (e.g. less than standard 1) are nothing, regardless.
+
+that's it.
+
+btw, i want to try some simple and low paid jobs, in a low energy lifestyle.
+
+23 20 feel empty and even sick (headache).
+
+i will get better tomorrow.
+
 
 
 <!--
@@ -2271,7 +2328,9 @@ minimal viable step.
 
 invariants. inevitable.
 
-detail level.
+non trivial.
+
+deep dive. step back.
 
 journal 00 20 40.
 

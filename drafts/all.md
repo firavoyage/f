@@ -123,6 +123,7 @@ software engineering journey:
 ui/ux design:
 
 - design ui principles categories mindmap
+- information architecture
 
 linguistics:
 
@@ -267,5 +268,8 @@ humility:
   - creating design system for any project
 - write integration
   - web extension any
+- research
+  - words journey of thinking and creation
+  - design otaku hobbies humility directions
 
 

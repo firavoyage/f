@@ -53,3 +53,17 @@ pros love
 Gboard voice input
 
 ---
+
+grow (all):
+
+non trival otaku/geek/nerd porn.
+
+ordinary girls dance and impress sex with nothing deep. philistine.
+
+- a girl looking outside the window (the low opacity image): sorrow, melachony, loss.
+- an energetic girl wearing political green uniform: weird, sarcastic
+- ...
+
+---
+
+Ctrl r and para. Instead of Ctrl shift v.

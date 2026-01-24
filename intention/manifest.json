@@ -3,10 +3,7 @@
   "name": "Intention",
   "version": "1.0",
   "description": "A focused, full-screen workflow with minimal distractions.",
-  "permissions": [
-    "tabs",
-    "storage"
-  ],
+  "permissions": ["tabs", "storage"],
   "background": {
     "service_worker": "background.js"
   },
@@ -16,6 +13,14 @@
   "action": {
     "default_popup": "settings.html",
     "default_title": "Intention Settings"
+  },
+  "commands": {
+    "open_custom_new_window": {
+      "suggested_key": {
+        "default": "Ctrl+N"
+      },
+      "description": "Open a new window with Intention's custom new tab"
+    }
   },
   "incognito": "split"
 }

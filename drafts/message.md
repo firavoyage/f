@@ -1,1 +1,0 @@
-what are the methods in the openai compatible api
