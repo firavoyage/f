@@ -1,10 +1,14 @@
-$humility$
+_humility_
 
 be wise.
 
 be graceful.
 
 be an agent.
+
+---
+
+wip.
 
 ---
 

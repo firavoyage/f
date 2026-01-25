@@ -117,8 +117,3 @@ https://cursor.com/docs
 https://code.claude.com/docs/en/sub-agents
 
 
----
-
-https://jarango.com/2026/01/06/the-moylan-arrow-ia-lessons-for-ai-powered-systems/
-
-

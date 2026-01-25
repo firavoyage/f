@@ -2121,6 +2121,8 @@ Once a text document is opened, this extension will automatically fold all inden
 
 a small step removes a lot of future friction.
 
+upd 2026.01.24: to 7. (100 works like 2, idk.)
+
 10 40 remove redundant userscripts
 
 ```
@@ -2297,6 +2299,28 @@ btw, i want to try some simple and low paid jobs, in a low energy lifestyle.
 23 20 feel empty and even sick (headache).
 
 i will get better tomorrow.
+
+24
+
+12 00 organize zhihu fav: ref. 
+
+see, reflect, and browse a bit. some old insights touch me again.
+
+17 00 feel foggy (body). feel stuck (complexity). cr, zhihu, douyin. twitter.
+
+idk how to create an agent. flexible or constraint? abstraction first. (inevitable). read docs could relieve stress. sit cozy on the sofa in the living room. wide. free. relaxed.
+
+reflect:
+
+too excited with something works. too depressed and frustrated when not. foggy when unsciously escaping at first.
+
+18 00 finish twitter digest. review all personal retweets and remove some. 19 00
+
+reflection within the real world.
+
+23 20 sleep.
+
+feel empty (healthy headache).
 
 
 
