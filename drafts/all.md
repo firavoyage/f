@@ -18,6 +18,7 @@ fira:
 - code is liability not asset evaluate value
 - determinism free will
 - claude skills
+- camel case snake case feeling
 
 life:
 
@@ -92,6 +93,8 @@ software engineering architecture:
  -->
 
 - architecture deliverables diagrams artifacts
+- camel case snake case feeling
+- big opensource projects
 
 software engineering backend:
 

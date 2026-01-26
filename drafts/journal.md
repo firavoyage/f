@@ -2322,6 +2322,20 @@ reflection within the real world.
 
 feel empty (healthy headache).
 
+25
+
+12 00 organize things inside `firavoyage/f`. 
+
+15 00 watch some gaozixiang vids. play cr.
+
+easy wins. 
+
+16 00 appreciate `What a Low ELO Player Thinks About`.
+
+23 00 turn on `code runner: ignore selection`
+
+essential. why not default?
+
 
 
 <!--

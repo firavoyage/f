@@ -67,3 +67,29 @@ ordinary girls dance and impress sex with nothing deep. philistine.
 ---
 
 Ctrl r and para. Instead of Ctrl shift v.
+
+---
+
+my projects are easy... so humility could solve. without big companies like cursor and claude...
+
+that said... it could be valuable
+
+- elegant
+- pure
+
+e.g. i think there are many people surfing twitter/hn directly these days.
+
+i could remove friction. "journey of thinking"
+
+e.g. remove
+
+- not honest
+- version releases
+- low society
+- out of scarcity (promo: low pricing, free credits, gift codes. running out)
+
+e.g.
+
+"make people daily honest" -> boom
+
+---

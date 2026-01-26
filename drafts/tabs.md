@@ -62,17 +62,21 @@ saba https://www.youtube.com/@SamekoSaba
 
 (vibe coding stream) https://www.youtube.com/@bridgemindai
 
+https://www.google.com/search?q=vibe+coding+stream&gl=us
+
+https://www.youtube.com/watch?v=OhZjUK8OFsk
+
 ---
 
 twitter https://x.com/i/lists/2004814679450009818
 
 twitter human https://x.com/i/lists/2010701752983756962
 
+ruanyf https://ruanyifeng.com/blog/
+
 ---
 
-https://www.google.com/search?q=vibe+coding+stream&gl=us
-
-https://www.youtube.com/watch?v=OhZjUK8OFsk
+https://generals.io/
 
 ---
 
@@ -116,4 +120,5 @@ https://cursor.com/docs
 
 https://code.claude.com/docs/en/sub-agents
 
+---
 

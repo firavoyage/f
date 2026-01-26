@@ -1,7 +1,0 @@
-Here are 5 countries known for significant internet censorship:
-
-1.  **China** – Operates the "Great Firewall," blocking many foreign sites and apps (like Google, Facebook).
-2.  **North Korea** – Almost no public internet access; a heavily controlled national intranet for a select few.
-3.  **Iran** – Blocks social media and news sites; has its own national network.
-4.  **Russia** – Increasingly blocks independent news, social platforms, and VPNs.
-5.  **Vietnam** – Tightly controls online speech, blocks dissenting websites and social media posts.

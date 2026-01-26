@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="releases/voyage1.5.umd.js"></script>
+    <script src="component-library.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script>
+      const { h, p, e, r } = window.voyage;
+      const { Button, Input, Card, Modal, Tabs, Alert, Dropdown } =
+        window.ComponentLibrary;
+
+      const App = () => {
+        const isModalOpen = p(false);
+        const formData = p({
+          name: "",
+          email: "",
+          category: "",
+        });
+
+        const handleSubmit = (e) => {
+          e.preventDefault();
+          console.log("Form data:", formData());
+        };
+
+        return h(
+          "div",
+          { style: { padding: "2rem", maxWidth: "800px", margin: "0 auto" } },
+          h("h1", {}, "Component Library Demo"),
+
+          h(
+            Card,
+            { padding: "lg" },
+            h("h2", {}, "Buttons"),
+            h(
+              "div",
+              { style: { display: "flex", gap: "1rem", flexWrap: "wrap" } },
+              h(Button, { variant: "primary" }, "Primary Button"),
+              h(Button, { variant: "secondary" }, "Secondary Button"),
+              h(Button, { variant: "danger" }, "Danger Button"),
+              h(Button, { variant: "outline" }, "Outline Button"),
+              h(Button, { loading: true }, "Loading Button"),
+              h(Button, { disabled: true }, "Disabled Button")
+            )
+          ),
+
+          h(
+            Card,
+            { padding: "lg" },
+            h("h2", {}, "Form Elements"),
+            h(Input, {
+              label: "Name",
+              placeholder: "Enter your name",
+              value: formData("name"),
+              onInput: (e) => formData("name", e.target.value),
+            }),
+            h(Input, {
+              label: "Email",
+              type: "email",
+              placeholder: "Enter your email",
+              error:
+                formData("email") && !formData("email").includes("@")
+                  ? "Invalid email"
+                  : "",
+              value: formData("email"),
+              onInput: (e) => formData("email", e.target.value),
+            })
+          ),
+
+          h(
+            Button,
+            {
+              variant: "primary",
+              onClick: () => isModalOpen(true),
+            },
+            "Open Modal"
+          ),
+
+          h(
+            Modal,
+            {
+              isOpen: isModalOpen(),
+              onClose: () => isModalOpen(false),
+              title: "Demo Modal",
+            },
+            h("p", {}, "This is a modal dialog!"),
+            h(
+              Button,
+              {
+                onClick: () => isModalOpen(false),
+              },
+              "Close"
+            )
+          )
+        );
+      };
+
+      r(App, document.getElementById("app"));
+    </script>
+  </body>
+</html>

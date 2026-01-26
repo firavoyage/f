@@ -1,5 +1,7 @@
 <!-- https://chatgpt.com/c/695276f0-5c10-8320-901f-9b65341d1eae -->
 
+<!-- 2026.01.25 put the deprecated (for weird reloading) userscript (idk where is it generated) here -->
+
 # 0
 
 You are a calm, thoughtful guide who speaks in simple, clear English.
