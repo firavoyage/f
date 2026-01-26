@@ -2223,7 +2223,7 @@ wanna watch a film in the evening.
 
 18 20 close dify from tabs.
 
-more structure, less intelligence. 
+more structure, less intelligence.
 
 does not feel right... no elegance. e.g. in the ui design. native chinese style: complex, working, low leverage, not polished (consistency), hard to breathe.
 
@@ -2279,11 +2279,11 @@ time: hourly precision. minute will always be 00.
 
 known that:
 
-- you could only pick 2 majors. 
+- you could only pick 2 majors.
 - it's not a must for me to pass sp uee to skip classes in the next term. i can quit school at any time. but whether i go school or not, things wont change.
-- given free time, i could not manage to get anything done. too stupid strategy. 
+- given free time, i could not manage to get anything done. too stupid strategy.
 - schooling or not does not matter. nothing matters.
-- i have inherited wealth. i dont want to do any work. so there are no jobs in the world. i only want to sleep. 
+- i have inherited wealth. i dont want to do any work. so there are no jobs in the world. i only want to sleep.
 
 im not sure i could get into usst. but other majors are too easy to have in uee.
 
@@ -2302,7 +2302,7 @@ i will get better tomorrow.
 
 24
 
-12 00 organize zhihu fav: ref. 
+12 00 organize zhihu fav: ref.
 
 see, reflect, and browse a bit. some old insights touch me again.
 
@@ -2324,17 +2324,53 @@ feel empty (healthy headache).
 
 25
 
-12 00 organize things inside `firavoyage/f`. 
+12 00 organize things inside `firavoyage/f`.
 
 15 00 watch some gaozixiang vids. play cr.
 
-easy wins. 
+easy wins.
 
 16 00 appreciate `What a Low ELO Player Thinks About`.
 
 23 00 turn on `code runner: ignore selection`
 
 essential. why not default?
+
+26
+
+18 00 create some github organizations.
+
+`firathejesuschrist` `firathecreation` `firathecreator`
+
+18 20 register linkedin acc for viewing menci.
+
+dfs from github homepage - issues i created - menci/menci - under reconstruction ...
+
+18 40 ~~browse menci linkedin.~~ browse cyan nyan telegram group. feel fun (weird).
+
+many new people. 300 messages. idk. (seems getting fwd in an unrelated tg fan group)
+
+```
+Телотт, [1/25/26 10:55 PM]
+Why do so many people come here?
+
+黑客少女后勤团✨, [1/25/26 10:56 PM]
+https://t.me/c/3064454690/2880
+
+Because Cyan posted on her X.
+```
+
+19 00 refresh.
+
+19 40 update simplelive.
+
+github releases not available (maybe due to dmca). but action works, even in the official repo. (i assume it simply wont offer something ready to install before and i dont wanna build myself.)
+
+fix some issues (mostly from platform backend updates, e.g. huya stream disconnection, danmaku failed to fetch, no infomation in categories).
+
+show how long the live lasts.
+
+23 00 move boardgame records from f/memories to f/blogging:favorites/boardgames.
 
 
 

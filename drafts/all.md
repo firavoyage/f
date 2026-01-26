@@ -19,6 +19,7 @@ fira:
 - determinism free will
 - claude skills
 - camel case snake case feeling
+- bfs dfs feeling
 
 life:
 
@@ -33,6 +34,8 @@ life:
 - university fields content creator subject niche
 - slow or fast
 - prove existing non constructable things
+- camel case snake case feeling
+- bfs dfs feeling
 
 create something:
 
@@ -93,7 +96,6 @@ software engineering architecture:
  -->
 
 - architecture deliverables diagrams artifacts
-- camel case snake case feeling
 - big opensource projects
 
 software engineering backend:
