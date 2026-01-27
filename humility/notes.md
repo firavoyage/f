@@ -102,3 +102,52 @@ The Direction (Very Soft)
 what's good: chromium, code.
 
 ---
+
+有意义的联想
+
+---
+
+precious, [1/26/26 9:17 AM]
+Meta thinking is sacred.
+
+precious, [1/26/26 9:33 AM]
+Agent is not just about iteration. Dictionary, textbook...
+
+precious, [1/26/26 11:09 AM]
+Grounded simplicity: a broad set of use cases, instead of general purpose
+
+---
+
+precious, [1/26/26 12:01 PM]
+Gesture: swipe between chats. Open in new page. Permalink. Swipe to switch branches. Edit/stop if wrong. Delete to feel peace of mind, to bin. 
+
+A history. Undo each step. Any step, no need to also undo steps after it if not depending. Git merge.
+
+---
+
+when showing to the user. 
+
+remove:
+
+- ofc, yes, absolutely
+- repeating the requirement, claiming its confidence (e.g. adj. in paratheses)
+- if you want/like/'d like
+
+be pragmatic.
+
+---
+
+about mediocrity.
+
+sometimes, most people are right
+
+sometimes, most people are wrong. but there is science. and science speaks loudly, even in a deterministic way.
+
+sometimes, most people are wrong. and things could not feel right unless being opinionated, even going extreme.
+
+---
+
+https://prompt.16x.engineer/
+
+---
+

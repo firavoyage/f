@@ -2372,6 +2372,39 @@ show how long the live lasts.
 
 23 00 move boardgame records from f/memories to f/blogging:favorites/boardgames.
 
+23 20 browse maigolabs.
+
+```
+アマオケ
+FOSS 1.0.4
+Made with ♥ and 🔮 by
+MaigoLabs 2025
+```
+
+browse means dfs by default. (browse is simpler. a simple word carries a deep and clear/rigorous meaning. that's best.)
+
+27
+
+02 00 sleep.
+
+too much wandering. stay up for doing something meaningful today.
+
+09 00 wake up?
+
+11 00 get up. choose to quit school.
+
+feel solitude. feel free. feel peace of mind.
+
+13 00 drink boiled water (instead of black tea). 
+
+"多喝热水"
+
+16 00 remove fold extension.
+
+it does not add "fold" feature. it just folds by default. nonsense.
+
+23 20 reg github organization `firahq`.
+
 
 
 <!--

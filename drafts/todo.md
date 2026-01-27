@@ -3,6 +3,7 @@ todo
 message/paste · todo · tabs/things · scratch pad · weekly/projects · notes
 
 <!--
+
 i dont need infinite power. dont dive into tooling. sometimes working is enough.
 
 leverage thinking: practical wisdom, whether pragmatic or not
@@ -16,6 +17,7 @@ do some meta things. these help.
 opencode skill. test. learn by doing. (tell llms my ideas. dont be afraid of overfitting.)
 
 finish things: close, organize, think, prepare... importance over urgency.
+
  -->
 
 ---
@@ -24,30 +26,10 @@ humility
 
 ---
 
-see `app creation roadmap` `deliverables`
+see 
 
----
-
-- leerob
-- cursor docs
-- (claude code docs)
-- ~~opencode docs~~
-- twitter
-- clarify?
-- design the ui? (check app creation roadmap. leverage thinking. invariants first.) (incl. projects like grow)
-
----
-
-openai compatible ...
-
----
-
-play cyan nyan / mygo / kessoku,
-
-- integrate patchright chatgpt
-- ~~create the first ui~~
-- ~~design the ui~~
-- design the apis
+- app creation roadmap
+- deliverables
 
 ---
 
@@ -55,15 +37,8 @@ non trivial.
 
 ---
 
-_revise projects._
-
-make ctrl c -> copy markdown
+- twitter
+- secure (how)
+- chem textbook style.
 
 ---
-
-patchright (inevitable.)
-
-chatgpt.
-
-
-

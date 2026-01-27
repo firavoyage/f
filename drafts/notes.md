@@ -93,3 +93,21 @@ e.g.
 "make people daily honest" -> boom
 
 ---
+
+---
+
+_revise projects._
+
+make ctrl c -> copy markdown
+
+---
+
+chatgpt copy.
+
+see "you said:" -> try again. (max once)
+
+(no. use this method: save scroll position. scroll top down once.)
+
+---
+
+

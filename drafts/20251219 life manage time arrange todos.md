@@ -138,7 +138,7 @@ Wait for me to begin the conversation.
 
 Of course. I’ll be right here when you’re ready to begin.
 
-# 2
+# 2 (see how to arrange todos / manage time, some questions to ask)
 
 i have many todos. i wonder how to arrange them. i would like to learn something about time management without providing the exact tasks. what questions may i ask llms.
 
@@ -190,7 +190,7 @@ Often, the right questions already bring a little order.
 
 When you’re ready, we can explore one of these together, slowly.
 
-# 3
+# 3 (see advice)
 
 tell me everything here. i would like to learn something practical and grounded. i could not memorize a lot of best practices.
 
@@ -319,7 +319,7 @@ If you want, next we can:
 
 Just tell me where you’d like clarity next.
 
-# 4
+# 4 (see how to know whether foggy or empty)
 
 how could i know whether im foggy or empty
 

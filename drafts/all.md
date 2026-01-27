@@ -20,6 +20,8 @@ fira:
 - claude skills
 - camel case snake case feeling
 - bfs dfs feeling
+- types of methodology
+- journey think create organize
 
 life:
 
@@ -36,6 +38,9 @@ life:
 - prove existing non constructable things
 - camel case snake case feeling
 - bfs dfs feeling
+- relationship of words
+- journey think create organize
+- naming nouns verbs feeling
 
 create something:
 
@@ -115,15 +120,15 @@ software engineering ai/ml:
 - llms benchmarks
 - claude skills
 
-software engineering resources:
+software engineering journey:
+
+- fix sndcpy
+
+software engineering misc:
 
 - categorize images
 - categorize shaders
 - gitignore
-
-software engineering journey:
-
-- fix sndcpy
 
 ui/ux design:
 
@@ -225,6 +230,9 @@ humility:
   - chatgpt browser automation
   - userscript to web extension
   - reliable background choose web extension
+- research
+  - design otaku hobbies humility directions
+  - types of methodology
 - research market
   - manus overhyped in coding
   - compare claude code
@@ -273,8 +281,3 @@ humility:
   - creating design system for any project
 - write integration
   - web extension any
-- research
-  - words journey of thinking and creation
-  - design otaku hobbies humility directions
-
-

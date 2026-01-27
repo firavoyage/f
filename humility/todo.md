@@ -8,17 +8,28 @@ research:
 
 - opencode long running ...
 - cursor docs
-
-code:
-
-- abstract. send(what, where). where: default chatgpt.
-- send chatgpt: get eventstream -> normalize -> store -> close
-
-test parallel
+- anthropic docs
 
 ---
 
-- graph
-  - (not now)
+connect/send
 
+test parallel failed
+
+handle parallel. 
+
+fail:
+
+- seems it could not open multiple pages
+- chatgpt did not finish loading resources, maybe. (observation: something is not loaded, leaving blank on the page.)
+- i think i should not do it now (rate limit applies. idk.).
+- but let's give it a try. why? because why not. and because i can.
+
+---
+
+compute, store
+
+graph (sessions)
+
+---
 
