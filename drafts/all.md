@@ -22,6 +22,7 @@ fira:
 - bfs dfs feeling
 - types of methodology
 - journey think create organize
+- design ui principles intuition attention
 
 life:
 
@@ -132,7 +133,7 @@ software engineering misc:
 
 ui/ux design:
 
-- design ui principles categories mindmap
+- design ui principles intuition attention
 - information architecture
 
 linguistics:

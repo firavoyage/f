@@ -32,10 +32,6 @@ it's linear.
 
 ---
 
-message
-
----
-
 creating an agentic continuous autonomy app called humility.
 
 most existing products are close sourced. opensource ones are opinionated and unpolished. im not willing to work around.
@@ -125,7 +121,7 @@ A history. Undo each step. Any step, no need to also undo steps after it if not 
 
 ---
 
-when showing to the user. 
+on normalizing what user could see
 
 remove:
 
@@ -150,4 +146,12 @@ sometimes, most people are wrong. and things could not feel right unless being o
 https://prompt.16x.engineer/
 
 ---
+
+prompt is line breaked properly when pasted.
+
+maybe i clicked the send too fast.
+
+but im not gonna fix it.
+
+
 

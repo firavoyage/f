@@ -2,6 +2,36 @@
 
 # .
 
+1. **Store** – Anything that keeps data safe and organized.
+
+   - Examples: Databases like PostgreSQL, MongoDB, Redis.
+
+2. **Serve** – Anything that delivers data or content to clients.
+
+   - Examples: Web servers, API frameworks like Express.js, FastAPI.
+
+3. **Compute** – Anything that processes, calculates, or transforms data.
+
+   - Examples: Application logic in Node.js, Python, Java; microservices handling business rules.
+
+4. **Connect** – Anything that communicates with other systems or services.
+
+   - Examples: Message brokers like RabbitMQ, Kafka; API integrations; webhooks.
+
+5. **Secure** – Anything that protects access and ensures trust.
+
+   - Examples: Authentication systems, authorization layers, encryption libraries.
+
+6. **Observe** – Anything that monitors, logs, or measures what’s happening.
+
+   - Examples: Logging systems like ELK, monitoring like Prometheus, tracing like OpenTelemetry.
+
+7. **Automate** – Anything that runs tasks without direct human action.
+
+   - Examples: Cron jobs, background workers, serverless functions.
+
+# .
+
 ### **1. Store** – Keep data safe, organized, and retrievable
 
 - **Databases**: PostgreSQL, MySQL, MongoDB, Cassandra

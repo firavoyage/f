@@ -16,7 +16,7 @@ connect/send
 
 test parallel failed
 
-handle parallel. 
+handle parallel.
 
 fail:
 
@@ -27,9 +27,26 @@ fail:
 
 ---
 
-compute, store
+agent could only do clear things.
 
-graph (sessions)
+(or it will figure out itself, might not expected... more flexible?)
+
+knowledge and structure.
+
+for code, folder structure, files, fn names in files, tests, etc.
+
+chemistry textbook project:
+
+style. prompt (detail level...).
+
+tools. secure. write. init `chemistry`: mkdir and cd.
 
 ---
 
+- fix chatgpt linebreak
+- refactor agent
+- test, document
+- secure
+- more tools
+
+---

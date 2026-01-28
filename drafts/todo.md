@@ -36,9 +36,3 @@ see
 non trivial.
 
 ---
-
-- twitter
-- secure (how)
-- chem textbook style.
-
----

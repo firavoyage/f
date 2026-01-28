@@ -1,17 +1,17 @@
 // compute/test/ask.js
 import { ask } from "../ask.js";
-import { get } from "../../store/read.js";
+import * as flow from "../../store/flow.js";
 
 async function test() {
   try {
+    console.log("Creating session...");
+    await flow.create("ask-test");
+
     console.log("Sending test message...");
-
-    // Send a test prompt
     const id = await ask({ what: "Hello, Humility! How are you?" });
-    console.log("Stored ask record ID:", id);
+    console.log("Stored ask step ID:", id);
 
-    // Fetch the stored record
-    const record = await get(id);
+    const record = await flow.read();
     console.log("Stored record content:");
     console.log(JSON.stringify(record, null, 2));
 

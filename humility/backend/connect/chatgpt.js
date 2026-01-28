@@ -9,9 +9,21 @@ export async function send(message) {
   await page.waitForSelector("[contenteditable]", { timeout: 30_000 });
   await page.waitForSelector("#composer-submit-button", { timeout: 30_000 });
 
+  // 🔧 UPDATED INSERTION LOGIC
   await page.evaluate((message) => {
     const input = document.querySelector("[contenteditable]");
-    input.innerText = message;
+    input.focus();
+    input.innerHTML = "";
+
+    const lines = message.split("\n");
+
+    for (const line of lines) {
+      const p = document.createElement("p");
+      // non-breaking space keeps empty lines intact
+      p.textContent = line === "" ? "\u00A0" : line;
+      input.appendChild(p);
+    }
+
     input.dispatchEvent(new Event("input", { bubbles: true }));
   }, message);
 
@@ -20,7 +32,8 @@ export async function send(message) {
   const raw_events = await wait_for_sse(
     page,
     /^https:\/\/chatgpt\.com\/backend-api\/f\/conversation$/,
-    (event) => event.split("\n").some((line) => line.trim() === "data: [DONE]")
+    (event) =>
+      event.split("\n").some((line) => line.trim() === "data: [DONE]")
   );
 
   return convert_chatgpt(raw_events);

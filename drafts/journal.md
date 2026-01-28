@@ -2395,7 +2395,7 @@ too much wandering. stay up for doing something meaningful today.
 
 feel solitude. feel free. feel peace of mind.
 
-13 00 drink boiled water (instead of black tea). 
+13 00 drink boiled water (instead of black tea).
 
 "多喝热水"
 
@@ -2404,6 +2404,26 @@ feel solitude. feel free. feel peace of mind.
 it does not add "fold" feature. it just folds by default. nonsense.
 
 23 20 reg github organization `firahq`.
+
+23 40 watch `Agent Skills, Rules, Subagents: Explained!`.
+
+28
+
+17 20 fail to add latent space podcast to antennapod.
+
+(network? idk)
+
+maybe i dont need it though. but why cant i.
+
+error in rss xml. idk.
+
+hn: "Unfortunately, Latent Space is not RSS friendly"
+
+browse hn. worked. but not well (not just podcast)... where's the lastest one?
+
+"Ask HN: Which sources cover AI developments without falling for the hype?"
+
+workaround: use podwise rss source.
 
 
 
