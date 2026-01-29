@@ -110,4 +110,15 @@ see "you said:" -> try again. (max once)
 
 ---
 
+"pref/cfg/settings"
+
+(lichess uses preferences)
+
+... the board ui is not in pref... 
+
+under user. stupid. at least weird.
+
+(an user could get to a place with any route)
+
+---
 

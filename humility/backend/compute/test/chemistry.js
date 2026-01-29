@@ -9,5 +9,5 @@ const root = "/home/fira/Documents/chemistry";
 await agent({
   task,
   root,
-  turns: 2,
+  turns: 10,
 });

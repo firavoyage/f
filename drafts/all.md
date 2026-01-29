@@ -91,6 +91,7 @@ software engineering project management:
 - initial feasibility report
   - technical feasibility
 - project roadmap order of work
+- do things that dont scale
 
 software engineering architecture:
 

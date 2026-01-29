@@ -2425,6 +2425,32 @@ browse hn. worked. but not well (not just podcast)... where's the lastest one?
 
 workaround: use podwise rss source.
 
+29
+
+14 40 reg linear: firahq.
+
+beautiful design!
+
+15 00 watch `Her (2013)`. 17 20
+
+19 20 create grow folder. put some ready to print notes inside.
+
+"do things that dont scale".
+
+20 00 toggle lichess ui, willing to make it more chess.com like.
+
+no exact pieces. but could be similar. background from brown to green. the queen and the king position is different (upd: cause: flip board is not just horizontal. imagine you are playing black.). weird.
+
+> chesscom has staff responsible for designing page UI together with a decent number of salaried front end programmers to implement that vision.
+> 
+> lichess has no UI designers, no graphics people, and exactly one salaried staff engineer who is also responsible for data center admin, keeping things running, making sure lichess isn't DDoSed into oblivion, and approving most of the pull requests on about 12 different repos. aside from thibault, we rely on volunteers for graphics and engineering. volunteers donate an hour here and thirty minutes there, 5 hours per week tops.
+> 
+> i'd say the UI is pretty good considering.
+
+22 00 watch simplelive, cr, go. 
+
+follow some popular streamers today (with link rev engineered from douyin).
+
 
 
 <!--

@@ -103,17 +103,11 @@ https://posthog.com/
 
 ---
 
-precious, [1/28/26 2:12 PM]
 https://cursor.com/docs/api#main-content
 
-precious, [1/28/26 2:12 PM]
 https://cursor.com/docs#main-content
 
-precious, [1/28/26 2:12 PM]
 https://anthropic.skilljar.com/claude-with-the-anthropic-api
 
-precious, [1/28/26 8:31 PM]
-I'm an otaku fascinated within her own world, believing existentialism, cynicism (daoism), determinism, and accelerationism, always overthinking and overengineering, lost herself in curiosity.
-
-
+---
 

@@ -43,10 +43,37 @@ tools. secure. write. init `chemistry`: mkdir and cd.
 
 ---
 
-- fix chatgpt linebreak
 - refactor agent
 - test, document
 - secure
 - more tools
+
+---
+
+print some things.
+
+use kaiti. use serif.
+
+explore fonts.
+
+black on white.
+
+be elegant.
+
+---
+
+少一些, 多一些, 也不想.
+
+---
+
+design system...
+
+intention.
+
+---
+
+complex yet well defined task.
+
+~~telegram copy~~ ~~snake game~~ ~~shoe brand~~
 
 ---
