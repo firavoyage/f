@@ -1065,3 +1065,10 @@ got stuck. (a message not sent)
 -> secure (get stuck -> stop and retry. e.g. network, ui quirks, wtf.)
 
 ---
+
+best ai papers.
+
+create an llm from scratch.
+
+---
+

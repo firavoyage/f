@@ -2442,14 +2442,40 @@ beautiful design!
 no exact pieces. but could be similar. background from brown to green. the queen and the king position is different (upd: cause: flip board is not just horizontal. imagine you are playing black.). weird.
 
 > chesscom has staff responsible for designing page UI together with a decent number of salaried front end programmers to implement that vision.
-> 
+>
 > lichess has no UI designers, no graphics people, and exactly one salaried staff engineer who is also responsible for data center admin, keeping things running, making sure lichess isn't DDoSed into oblivion, and approving most of the pull requests on about 12 different repos. aside from thibault, we rely on volunteers for graphics and engineering. volunteers donate an hour here and thirty minutes there, 5 hours per week tops.
-> 
+>
 > i'd say the UI is pretty good considering.
 
-22 00 watch simplelive, cr, go. 
+22 00 watch simplelive, cr, go.
 
 follow some popular streamers today (with link rev engineered from douyin).
+
+23 40 download some cyan tech memes for printing. download `Metaphors We Live By`.
+
+(gather and) print notes tomorrow.
+
+today: review, reflect, organize. plan, dream, imagine.
+
+30
+
+14 00 play cr for a while.
+
+14 20 organize tg saved messages. organize zhihu favorites `computer science`. browse a bit. 17 00
+
+simplify. reduce. summarize. pick out.
+
+17 00 submit ideal universities.
+
+shu is mirage. usst is possible. others are nothing.
+
+<!-- shu is (likely to be) mirage (remember there is an interview). usst is possible. others are nothing (either unrelated to my dream or too easy to achieve on uee). -->
+
+17 20 reg linkedin `firahq`. change twitter handle to `firahq`. reg `firahq` on arxiv, zenoob ~~, osf~~. update readme.
+
+ive heard the dream of "independent researcher" on zhihu, living an ordinary life and publishing some studies at leisure.
+
+18 40 refresh.
 
 
 

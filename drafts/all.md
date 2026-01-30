@@ -261,6 +261,8 @@ humility:
     - claude code use cases vids
     - opencode use cases vids
   - ai generated code style
+- design avatar
+  - one ball
 - design architecture
   - manage context evaluate embedding
 - design technical architecture

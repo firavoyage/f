@@ -77,3 +77,27 @@ complex yet well defined task.
 ~~telegram copy~~ ~~snake game~~ ~~shoe brand~~
 
 ---
+
+decide chem
+
+---
+
+analyze code base.
+
+---
+
+pick code style.
+
+e.g. snake case
+
+---
+
+fe frameworks...
+
+---
+
+design a better regex.
+
+---
+
+
