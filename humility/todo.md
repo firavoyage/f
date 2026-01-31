@@ -92,12 +92,7 @@ e.g. snake case
 
 ---
 
-fe frameworks...
-
----
-
 design a better regex.
 
 ---
-
 

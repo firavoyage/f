@@ -2475,7 +2475,21 @@ shu is mirage. usst is possible. others are nothing.
 
 ive heard the dream of "independent researcher" on zhihu, living an ordinary life and publishing some studies at leisure.
 
+upd in the early morning next day: twitter search does not update with the handle change!
+
 18 40 refresh.
+
+22 40 play cr. try to achieve 12 wins but fail.
+
+31
+
+00 00 watch simplelive, zhang guide go.
+
+01 00 reinstall kasugano life size pillow.
+
+align the inner and the outer. reverse the inner.
+
+now the upper part of the body is filled. (which is prev noticeably looser)
 
 
 
