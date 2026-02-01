@@ -147,4 +147,76 @@ notes:
 
 ---
 
+i want to create a design system.
+
+i will use it in many things i create in the near future.
+
+it should feel calm and protect intention, like google reader/gmail legacy style/iphone os 4.
+
+i dont love showmanship like the splendid animation when scrolling on some landing pages.
+
+i dont love the vercel style. it's very clean and efficient, but it does not feel human. 
+
+i somewhat love material design 3's colors. but i dont think it should be applied everywhere. it's a bit opinionated. and sometimes things are too big and flat.
+
+im standing at the beginning, what could i decide.
+
+---
+
+When someone uses this for an hour, how should they feel afterward?
+
+What would make me uncomfortable if I saw it in my own product?
+
+What old interface do I still trust, and why?
+
+i wont answer these. because i think you could infer. and im not good at english, idk how to say feelings, like what feelings exist in the world. (that's another question im not gonna talk here).
+
+and im not a designer. i know figma, but i have not created works on it besides exploring its features out of curiosity.
+
+about typography, density... on a legacy google reader copy i see comfortable/cozy/compact (default to comfortable). maybe it's up to the user. and claude (web chat) offers many fonts (default sans. but you could use serif, handwritten, playful ones, ...). i dont think that's what i mean by decision.
+
+maybe you could show me something. i could open it, see it myself, and feel it.
+
+although idk what's the deliverables of a design system. a document? prototypes? design sheets? css values? components book? maybe everything. but what i will use at last would be the things i import in code.
+
+---
+
+let me be clear. you did not get me.
+
+i do want a component system. decisions and constraints are used to infer it. documents are helping people to understand and use it properly.
+
+give me an html. let me open it and see whether it feels right.
+
+---
+
+<!-- not good. i want gradients and shadows. -->
+
+good. 
+
+but it's like a blog site.
+
+include more things, like buttons, inputs, etc.
+
+in the real world, i create complex tools. like photoshop, chatgpt, figma, google calendar, linear, github, etc.
+
+and support dark mode. (which is my system default)
+
+---
+
+good. 
+
+although it's too simple (e.g. it's using the browser default select).
+
+i appreciate it.
+
+i wanna 
+
+- write something down about it. everything else (e.g. new components) could be inferred from it.
+- create a react component system. use the boring way like big companies.
+- create apps with it.
+
+btw, this version does not feel very human. but no need to change it. i will add a variant (buttons with top down gradient, cards with some shadow). i mean, i want to change the variants without changing app code. (headless)
+
+now only write things down. 
+
 

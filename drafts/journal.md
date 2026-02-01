@@ -2553,6 +2553,12 @@ add browser extension "duolingo max" `apersongithub/Duolingo-Unlimited-Hearts`.
 
 fail (no bank card in hand).
 
+23 20 download `[S1YURICON] Cosmic Princess Kaguya [1080p][WebRip][HEVC_EAC3][CHS_JP].mkv` and subtitles. 
+
+inspired by funshiki live.
+
+search on bitmagnet. very fast, 3mb/s ~ 10 mb/s.
+
 
 
 <!--

@@ -1,304 +1,292 @@
-<!DOCTYPE html>
-<html lang="zh">
-  <head>
-    <meta charset="UTF-8" />
-    <title>WebOS XP</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Calm Tool System</title>
 
-    <!-- 外部库（仍然是单 HTML 文件引用） -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/xterm/css/xterm.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/codemirror@5/lib/codemirror.css"
-    />
+<style>
+/* =========================
+   TOKENS
+   ========================= */
 
-    <style>
-      /* ================== 全局风格 ================== */
-      html,
-      body {
-        margin: 0;
-        width: 100%;
-        height: 100%;
-        font-family: "Segoe UI", system-ui;
-        background: linear-gradient(135deg, #1e5799, #2989d8);
-        overflow: hidden;
-        user-select: none;
-      }
+:root {
+  --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
-      #desktop {
-        position: absolute;
-        inset: 0;
-      }
+  --fs-xs: 12px;
+  --fs-sm: 13px;
+  --fs-md: 14px;
+  --fs-lg: 16px;
 
-      /* ================== 任务栏 ================== */
-      #taskbar {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 42px;
-        background: rgba(30, 30, 30, 0.85);
-        display: flex;
-        align-items: center;
-        color: white;
-      }
+  --lh: 1.5;
 
-      #startBtn {
-        width: 80px;
-        height: 100%;
-        background: linear-gradient(#4caf50, #2e7d32);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        font-weight: bold;
-      }
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
 
-      #taskIcons {
-        flex: 1;
-        display: flex;
-        gap: 6px;
-        padding-left: 8px;
-      }
+  --radius: 4px;
+  --border-w: 1px;
 
-      .task-icon {
-        width: 32px;
-        height: 32px;
-        background: rgba(255, 255, 255, 0.2);
-        border-radius: 4px;
-        cursor: pointer;
-      }
+  /* light */
+  --bg: #ffffff;
+  --surface: #f6f7f8;
+  --panel: #ffffff;
+  --border: #e2e4e7;
 
-      /* ================== 开始菜单 ================== */
-      #startMenu {
-        position: absolute;
-        bottom: 42px;
-        left: 0;
-        width: 260px;
-        background: rgba(40, 40, 40, 0.95);
-        color: white;
-        display: none;
-      }
+  --text: #1f1f1f;
+  --text-muted: #5f6368;
 
-      .start-item {
-        padding: 10px;
-        cursor: pointer;
-      }
-      .start-item:hover {
-        background: rgba(255, 255, 255, 0.1);
-      }
+  --accent: #1a73e8;
+}
 
-      /* ================== 窗口 ================== */
-      .window {
-        position: absolute;
-        width: 520px;
-        height: 360px;
-        background: #f0f0f0;
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-        display: flex;
-        flex-direction: column;
-      }
+/* dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121212;
+    --surface: #1a1a1a;
+    --panel: #161616;
+    --border: #2a2a2a;
 
-      .titlebar {
-        height: 30px;
-        background: linear-gradient(#3a6ea5, #2b4f73);
-        color: white;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 6px;
-        cursor: move;
-      }
+    --text: #e6e6e6;
+    --text-muted: #9aa0a6;
 
-      .window-buttons span {
-        display: inline-block;
-        width: 18px;
-        text-align: center;
-        cursor: pointer;
-      }
+    --accent: #8ab4f8;
+  }
+}
 
-      .content {
-        flex: 1;
-        background: white;
-        overflow: auto;
-      }
+/* =========================
+   BASE
+   ========================= */
 
-      /* ================== 画图 ================== */
-      canvas {
-        border: 1px solid #aaa;
-      }
+* { box-sizing: border-box; }
 
-      /* ================== 文件管理器 ================== */
-      .file {
-        padding: 6px;
-        cursor: pointer;
-      }
-      .file:hover {
-        background: #e0e0e0;
-      }
-    </style>
-  </head>
+html, body {
+  height: 100%;
+  margin: 0;
+}
 
-  <body>
-    <div id="desktop"></div>
+body {
+  font-family: var(--font);
+  font-size: var(--fs-md);
+  line-height: var(--lh);
+  background: var(--bg);
+  color: var(--text);
+}
 
-    <div id="taskbar">
-      <div id="startBtn">开始</div>
-      <div id="taskIcons"></div>
+/* =========================
+   LAYOUT
+   ========================= */
+
+.app {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  height: 100vh;
+}
+
+.sidebar {
+  border-right: var(--border-w) solid var(--border);
+  padding: var(--s-4);
+  background: var(--panel);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+.toolbar {
+  border-bottom: var(--border-w) solid var(--border);
+  padding: var(--s-3) var(--s-4);
+  display: flex;
+  gap: var(--s-2);
+  background: var(--panel);
+}
+
+.content {
+  padding: var(--s-5);
+  overflow: auto;
+}
+
+/* =========================
+   COMPONENTS
+   ========================= */
+
+h1 {
+  font-size: var(--fs-lg);
+  font-weight: 500;
+  margin: 0 0 var(--s-4) 0;
+}
+
+.nav-item {
+  padding: var(--s-2) var(--s-3);
+  border-radius: var(--radius);
+  color: var(--text-muted);
+}
+
+.nav-item.active {
+  background: var(--surface);
+  color: var(--text);
+}
+
+/* Buttons */
+
+.button {
+  font: inherit;
+  padding: var(--s-2) var(--s-4);
+  border-radius: var(--radius);
+  border: var(--border-w) solid var(--border);
+  background: var(--panel);
+  color: var(--text);
+}
+
+.button.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #000;
+}
+
+.button.quiet {
+  border-color: transparent;
+  background: transparent;
+  color: var(--text-muted);
+}
+
+/* Inputs */
+
+.input,
+.select,
+.textarea {
+  width: 100%;
+  font: inherit;
+  padding: var(--s-2) var(--s-3);
+  border-radius: var(--radius);
+  border: var(--border-w) solid var(--border);
+  background: var(--panel);
+  color: var(--text);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Panels */
+
+.panel {
+  border: var(--border-w) solid var(--border);
+  border-radius: var(--radius);
+  background: var(--panel);
+  padding: var(--s-4);
+  margin-bottom: var(--s-5);
+}
+
+/* Table */
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-sm);
+}
+
+.table th,
+.table td {
+  padding: var(--s-2) var(--s-3);
+  border-bottom: var(--border-w) solid var(--border);
+  text-align: left;
+}
+
+.table th {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* Utility */
+
+.row {
+  display: flex;
+  gap: var(--s-3);
+  margin-bottom: var(--s-4);
+}
+
+.label {
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  margin-bottom: var(--s-1);
+}
+</style>
+</head>
+
+<body>
+<div class="app">
+
+  <aside class="sidebar">
+    <h1>Workspace</h1>
+    <div class="nav-item active">Dashboard</div>
+    <div class="nav-item">Documents</div>
+    <div class="nav-item">Assets</div>
+    <div class="nav-item">Settings</div>
+  </aside>
+
+  <div class="main">
+
+    <div class="toolbar">
+      <button class="button quiet">Undo</button>
+      <button class="button quiet">Redo</button>
+      <button class="button">Share</button>
+      <button class="button primary">Run</button>
     </div>
 
-    <div id="startMenu">
-      <div class="start-item" onclick="Apps.notepad()">📄 记事本</div>
-      <div class="start-item" onclick="Apps.files()">📁 文件管理器</div>
-      <div class="start-item" onclick="Apps.paint()">🎨 画图</div>
-      <div class="start-item" onclick="Apps.terminal()">
-        💻 终端（JS / Python）
+    <div class="content">
+
+      <div class="panel">
+        <div class="label">Title</div>
+        <input class="input" value="Calm system draft" />
+
+        <div class="label" style="margin-top:16px;">Description</div>
+        <textarea class="textarea">Interfaces that protect attention.</textarea>
       </div>
-      <div class="start-item" onclick="Apps.editor()">🧠 代码编辑器</div>
-      <div class="start-item" onclick="Apps.game()">🎮 小游戏</div>
-      <div class="start-item" onclick="Apps.video()">🎬 视频工具</div>
+
+      <div class="panel">
+        <div class="label">Properties</div>
+        <div class="row">
+          <select class="select">
+            <option>Status: Active</option>
+          </select>
+          <input class="input" value="Owner: Fira" />
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="label">Recent Activity</div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Action</th>
+              <th>User</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Updated layout</td>
+              <td>You</td>
+              <td>2 min ago</td>
+            </tr>
+            <tr>
+              <td>Changed color tokens</td>
+              <td>You</td>
+              <td>1 hour ago</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
     </div>
+  </div>
 
-    <!-- 库 -->
-    <script src="https://cdn.jsdelivr.net/npm/xterm/lib/xterm.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/codemirror@5/lib/codemirror.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/codemirror@5/mode/javascript/javascript.js"></script>
-    <script src="https://cdn.jsdelivr.net/pyodide/v0.25.1/full/pyodide.js"></script>
-
-    <script>
-      /* ================== 基础系统 ================== */
-      let z = 1;
-      const desktop = document.getElementById("desktop");
-      const startMenu = document.getElementById("startMenu");
-
-      document.getElementById("startBtn").onclick = () =>
-        (startMenu.style.display =
-          startMenu.style.display === "block" ? "none" : "block");
-
-      function createWindow(title) {
-        const win = document.createElement("div");
-        win.className = "window";
-        win.style.left = 100 + Math.random() * 200 + "px";
-        win.style.top = 60 + Math.random() * 100 + "px";
-        win.style.zIndex = ++z;
-
-        const bar = document.createElement("div");
-        bar.className = "titlebar";
-        bar.innerHTML = `<span>${title}</span><div class="window-buttons">
-    <span onclick="this.closest('.window').remove()">✖</span>
-  </div>`;
-
-        const content = document.createElement("div");
-        content.className = "content";
-
-        win.append(bar, content);
-        desktop.appendChild(win);
-
-        // 拖动
-        bar.onmousedown = (e) => {
-          const ox = e.clientX - win.offsetLeft;
-          const oy = e.clientY - win.offsetTop;
-          document.onmousemove = (ev) => {
-            win.style.left = ev.clientX - ox + "px";
-            win.style.top = ev.clientY - oy + "px";
-          };
-          document.onmouseup = () => (document.onmousemove = null);
-        };
-
-        win.onclick = () => (win.style.zIndex = ++z);
-        return content;
-      }
-
-      /* ================== 应用 ================== */
-      const Apps = {
-        notepad() {
-          const c = createWindow("记事本");
-          c.innerHTML = `<textarea style="width:100%;height:100%;border:none"></textarea>`;
-        },
-
-        paint() {
-          const c = createWindow("画图");
-          c.innerHTML = `<canvas width="500" height="300"></canvas>`;
-          const ctx = c.querySelector("canvas").getContext("2d");
-          let d = false;
-          c.onmousedown = () => (d = true);
-          c.onmouseup = () => (d = false);
-          c.onmousemove = (e) => {
-            if (d) {
-              ctx.fillRect(e.offsetX, e.offsetY, 4, 4);
-            }
-          };
-        },
-
-        terminal() {
-          const c = createWindow("终端");
-          const term = new Terminal();
-          term.open(c);
-          term.writeln("WebOS Terminal");
-          term.writeln("JS: 输入任意 JavaScript");
-          term.writeln("Python: 输入 %py");
-
-          let py = null;
-          loadPyodide().then((p) => (py = p));
-
-          term.onData(async (d) => {
-            if (d.trim() === "%py") {
-              term.writeln("Python 模式：");
-              term._py = true;
-              return;
-            }
-            if (term._py && py) {
-              try {
-                term.writeln(String(py.runPython(d)));
-              } catch (e) {
-                term.writeln(e.toString());
-              }
-            } else {
-              try {
-                term.writeln(String(eval(d)));
-              } catch (e) {
-                term.writeln(e.toString());
-              }
-            }
-          });
-        },
-
-        editor() {
-          const c = createWindow("代码编辑器");
-          const ta = document.createElement("textarea");
-          c.appendChild(ta);
-          CodeMirror.fromTextArea(ta, {
-            mode: "javascript",
-            lineNumbers: true,
-          });
-        },
-
-        game() {
-          const c = createWindow("小游戏");
-          c.innerHTML = `<button>点我加分</button><h2>0</h2>`;
-          let s = 0;
-          c.querySelector("button").onclick = () =>
-            (c.querySelector("h2").innerText = ++s);
-        },
-
-        files() {
-          const c = createWindow("文件管理器");
-          c.innerHTML = `<div class="file">README.txt</div>
-                   <div class="file">hello.js</div>`;
-        },
-
-        video() {
-          const c = createWindow("视频工具");
-          c.innerHTML = `<input type="file" accept="video/*">
-                   <video controls width="100%"></video>`;
-          const i = c.querySelector("input");
-          const v = c.querySelector("video");
-          i.onchange = (e) => (v.src = URL.createObjectURL(e.target.files[0]));
-        },
-      };
-    </script>
-  </body>
+</div>
+</body>
 </html>
