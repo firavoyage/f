@@ -96,3 +96,9 @@ design a better regex.
 
 ---
 
+cross framework compilers
+
+(a simplier and more abstract react)
+
+---
+

@@ -111,3 +111,22 @@ https://anthropic.skilljar.com/claude-with-the-anthropic-api
 
 ---
 
+precious, [1/29/26 3:27 AM]
+Watch a film 
+Refactor the agent. Think, design, abstract.
+Create a coding agent
+
+precious, [1/30/26 2:07 AM]
+这个世界的人其实很少。每个人都是很孤独的。昨天的世界和今天的世界有多少区别呢。
+
+precious, [1/30/26 10:42 AM]
+I love to decide, to organize, and to simplify.
+
+precious, [1/31/26 2:14 PM]
+Duolingo cn and com don't really share the accounts, at least on the web login. I should have registered the global one. And seems it doesn't support music and chess for my legacy modded version. Holyshit.
+
+Play Duolingo. Explore new languages. Intermediate English is not really hard, why not integrate TOEFL IELTS...
+
+upd: login on laptop successfully. idk.
+
+---

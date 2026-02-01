@@ -2491,6 +2491,68 @@ align the inner and the outer. reverse the inner.
 
 now the upper part of the body is filled. (which is prev noticeably looser)
 
+feb 2026
+
+01
+
+00 00 learn `Building with the Claude API` from `Anthropic Academy`.
+
+convert transcript. fight with node. choose python philo.
+
+01 00 archive zhihu.
+
+01 20 continue watching `HIKARU V 4000 ELO BOT!!`, appreciate it.
+
+02 00 chat with a stranger on telegram, the second one finding me on git (gitea this time).
+
+upd: seen typing. but not sending. idk. just sleep. maybe she would reply, maybe not. good night, sweet dreams. 
+
+02 40 set zhihu url handle to `firahq`. set youtube channel handle to `thefirahq`. change the names of google acc (i can omit the last name).
+
+using up the only chance of changing on zhihu.
+
+03 00 publish zhihu archivist userscript on greasyfork.
+
+no waiting upon reg this time?
+
+13 40 disable google personalized search.
+
+no results for ... any more!
+
+14 00 play duolingo english reading test for free, getting 105 - 115, about 6 on ielts. 14 20
+
+i dont wanna speak/write a lot in the open ended questions. i dont even know how much should i write. idk. and im not gonna express myself in the boring questions.
+
+"no thanks". (forever loading)
+
+no correct answers shown at last.
+
+15 00 reg new duolingo acc using gmail.
+
+add a stupid 30 pts jp badge to linkedin. start from section 4. (skip the last ... oh i were already on section 5! jump to s5 u23.)
+
+seems duolingo web has some scrolling issues of my screen size (jumping back when attempting to scroll, redundant scroll bars), "responsive web design".
+
+duolingo does not fight the ad blocker, placing an donation cta at the place instead.
+
+beautiful animation.
+
+add courses: jp, en, la, fr, de. (music, chess?).
+
+i dont want greek. ugly, insane.
+
+no avatar/extra config now! simplicity wins.
+
+seems duolingo web is different from my modded android app. (e.g. first course of fr: order at a cafe vs. use basic phrases). upd: confirmed. number of courses differs (due to res version maybe).
+
+set handle `firahq`.
+
+add browser extension "duolingo max" `apersongithub/Duolingo-Unlimited-Hearts`.
+
+17 00 create acc on paypal, stripe, and buymeacoffee.
+
+fail (no bank card in hand).
+
 
 
 <!--

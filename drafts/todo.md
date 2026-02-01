@@ -26,7 +26,7 @@ humility
 
 ---
 
-see 
+see
 
 - app creation roadmap
 - deliverables
@@ -36,3 +36,15 @@ see
 non trivial.
 
 ---
+
+chat with russian.
+
+clear (organize) scratch pad/things.
+
+create a chat app using ollama. (design system)
+
+humility. (secure... first mission: chem textbook)
+
+---
+
+

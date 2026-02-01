@@ -1,5 +1,28 @@
 <!-- https://chatgpt.com/c/69633f20-5730-8326-bc03-a2484db6d262 -->
 
+# .
+
+```
+fira@Fira ..._/softwares/apks % ls
+cn.ezandroid.aq.lite-base.apk		      com.netease.yzs-base.apk				com.xycz.simple_live-base.apk
+com.a10miaomiao.bilimiao-base.apk	      com.niksoftware.snapseed-base.apk		com.zhihu.android-base.apk
+com.atharok.screentime-base.apk		      com.PigeonGames.Phigros-base.apk			de.danoeh.antennapod-base.apk
+com.baidu.homework-base.apk		      com.qixin.mihuas-base.apk			hello.litiaotiao.app-base.apk
+com.beemdevelopment.aegis-base.apk	      com.rovio.angrybirds-base.apk			io.github.muntashirakon.Music-base.apk
+com.chess-base.apk			      com.shatyuka.zhiliao-base.apk			jp.co.canon.bsd.ad.pixmaprint-base.apk
+com.duolingo-base.apk			      com.simplemobiletools.draw.pro-base.apk		jp.pxv.android-base.apk
+com.eg.android.AlipayGphone-base.apk	      com.snda.wifilocating-base.apk			me.zhanghai.android.files-base.apk
+com.eusoft.eudic-base.apk		      com.soulgamechst.majsoul-base.apk		nu.gpu.nagram-base.apk
+com.foxwq.yhwq-base.apk			      com.ss.android.ugc.aweme-base.apk		org.breezyweather-base.apk
+com.fsck.k9-base.apk			      com.taobao.taobao-base.apk			org.fcitx.fcitx5.android-base.apk
+com.github.metacubex.clash.meta-base.apk       com.tencent.mobileqq-base.apk			org.fossify.voicerecorder-base.apk
+com.google.android.inputmethod.latin-base.apk  com.tencent.tmgp.supercell.clashroyale-base.apk	org.mewx.wenku8-base.apk
+com.ichi2.anki-base.apk			      com.termux-base.apk				org.mozilla.firefox-base.apk
+com.lemon.lv-base.apk			      com.xjcheng.musictageditor-base.apk		org.videolan.vlc-base.apk
+com.magictek.zhizigo-base.apk		      com.xjs.ehviewer-base.apk			sh.ppy.osulazer-base.apk
+com.netease.cloudmusic-base.apk		      com.xt.retouch-base.apk				tv.danmaku.bili-base.apk
+```
+
 # 0
 
 You are a calm, thoughtful guide who speaks in simple, clear English.
