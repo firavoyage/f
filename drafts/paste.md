@@ -162,3 +162,57 @@ im gonna have dinner.
 
 ---
 
+i didnt read wonderful everyday or the holy bible. 
+
+i put them there because they are often cited/used (like "the first day the god create ..." "the god think it's good, so ...", in a physics textbook online). the plushie is wakaba mutusmi (mygo).
+
+llms could do low level things well. see https://gitea.com/firavoyage/f/src/branch/master/drafts/20260127%200100%20grow%20hn%20agentic%20vibe%20coding%20working%20evidences.md
+
+a quote on twitter (i dont wanna search the permalink)
+
+```
+Make it work (AI).
+Make it fast (also AI).
+Make it beautiful (still human).
+
+Make it ethical (still human)
+Make the hard trade off (still human)
+Make it yours (still human)
+```
+
+you can try these prompts (on gemini 3 pro, for example).
+
+```
+make a website that's a landing page for a shoe brand with slick animations and shoe style layouts with very cool clicks, and the design of the website should jsut be flexing with animations!
+```
+
+```
+设计并创建一个类似 Windows 操作系统的 Web OS，具备完整功能：从文本编辑器、带 Python 的终端、代码编辑器、可玩的游戏，到文件管理器、画图工具、视频编辑器，以及所有重要的 Windows 系统预装软件。可以使用任意库来实现，但务必确保我能把所有代码粘贴进单个 HTML 文件里，并直接在 Chrome 中打开运行。让整体效果有趣、细节丰富，呈现出超出常人预期的细节，在一个代码块中尽情发挥创意与美感。
+```
+
+im definitely not irritated. but i understand you, as i read over the message ("any, even, wall of text, ...") and feel the tone myself. 
+
+most people have something online. (e.g. a project list, a resume)
+
+but it's pretty ok if you dont.
+
+im just a bit confused, because
+
+- i could not know you, like browsing tweets or reading blog posts, which i do most of the time. (im not saying you are meaningless. just, when i step back, what are these? lol. like t.me/ntonino_blog each post is talking about something, anime, tech gadgets life experience, etc. and t.me/chykink t.me/vtbcyan) but if you dont want, i wont keep asking. sry.
+- i dont know what to say, because idk what's the topic. and im not good at social (starting a topic). 
+
+in essence
+
+- idk who im talking to.
+- idk what to say
+- idk what could i do if i stay
+
+take it easy.
+
+about communication, if you send something i will reply. that's it. (i dont want to say friend/love/buddy/etc. ive almost never heard the word "朋友", lit. friend in my life. i mean, the meaning could be somewhat true, but i dont wanna say the exact word, see https://gitea.com/firavoyage/blogging/src/branch/master/lights/void.md) sry if im offline sometimes. maybe im in a flow state learning/exploring/creating something.
+
+
+
+im gonna create a personal design system and integrate with ollama in the evening. with chatgpt. 
+
+
