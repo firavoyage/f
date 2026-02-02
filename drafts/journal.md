@@ -2459,6 +2459,10 @@ today: review, reflect, organize. plan, dream, imagine.
 
 30
 
+02 00 write a quote.
+
+这个世界的人其实很少。每个人都是很孤独的。昨天的世界和今天的世界有多少区别呢。
+
 14 00 play cr for a while.
 
 14 20 organize tg saved messages. organize zhihu favorites `computer science`. browse a bit. 17 00
@@ -2505,7 +2509,7 @@ convert transcript. fight with node. choose python philo.
 
 02 00 chat with a stranger on telegram, the second one finding me on git (gitea this time).
 
-upd: seen typing. but not sending. idk. just sleep. maybe she would reply, maybe not. good night, sweet dreams. 
+upd: seen typing. but not sending. idk. just sleep. maybe she would reply, maybe not. good night, sweet dreams.
 
 02 40 set zhihu url handle to `firahq`. set youtube channel handle to `thefirahq`. change the names of google acc (i can omit the last name).
 
@@ -2553,11 +2557,35 @@ add browser extension "duolingo max" `apersongithub/Duolingo-Unlimited-Hearts`.
 
 fail (no bank card in hand).
 
-23 20 download `[S1YURICON] Cosmic Princess Kaguya [1080p][WebRip][HEVC_EAC3][CHS_JP].mkv` and subtitles. 
+23 20 download `[S1YURICON] Cosmic Princess Kaguya [1080p][WebRip][HEVC_EAC3][CHS_JP].mkv` and subtitles.
 
 inspired by funshiki live.
 
 search on bitmagnet. very fast, 3mb/s ~ 10 mb/s.
+
+seems the subs is already bundled inside.
+
+2
+
+14 00 clear legacy stalled todos, things, scratch pad.
+
+15 00 watch `How Many Queens To BEAT Stockfish?`.
+
+testing clash verge rules.
+
+15 40 refresh.
+
+16 00 reg `firahq` on lichess and chess.com using gmail.
+
+save to profile manager. (seems a vibe coded extension, from its style)
+
+20 00 read twitter.
+
+clear noises: fradser.
+
+22 20 check new msgs from the russian anonymous.
+
+separate the msg log out of the repo. that guy is really good at searching... but somewhat weak at inference.
 
 
 

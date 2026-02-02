@@ -1,17 +1,13 @@
 // send.js
 import * as chatgpt from "./chatgpt.js";
 import * as deepseek from "./deepseek.js";
+import * as ollama from "./ollama.js";
 
-/**
- * Send a message to a specific site
- * @param {string} what - The message to send
- * @param {string} where - The site key ('chatgpt' | 'deepseek')
- * @returns {Promise<string>} - The response from the site
- */
 export const send = async (what, where = "chatgpt") => {
   const sites_map = {
     chatgpt,
     deepseek,
+    ollama,
   };
 
   const site = sites_map[where];

@@ -72,61 +72,19 @@ pure math 2025
 
 ---
 
-humility
-
-journal http://localhost:5000/
-
-carte
-
-...
-
-<!-- humility, ... -->
-
-<!-- intention (omnibox). para. grow. -->
-
-<!-- para: (vscode markdown preview is not that good than chatgpt) (!) -->
-
----
-
-read them when i need.
-
-at least, after know how to use patchright (network or dom). try it.
-
 https://cursor.com/docs
 
 https://code.claude.com/docs/en/sub-agents
 
----
-
-precious, [1/26/26 3:52 PM]
-https://posthog.com/
-
----
-
 https://cursor.com/docs/api#main-content
-
-https://cursor.com/docs#main-content
 
 https://anthropic.skilljar.com/claude-with-the-anthropic-api
 
----
+https://manus.im/docs/en/features/projects
 
-precious, [1/29/26 3:27 AM]
-Watch a film 
-Refactor the agent. Think, design, abstract.
-Create a coding agent
+https://www.anthropic.com/learn
 
-precious, [1/30/26 2:07 AM]
-这个世界的人其实很少。每个人都是很孤独的。昨天的世界和今天的世界有多少区别呢。
-
-precious, [1/30/26 10:42 AM]
-I love to decide, to organize, and to simplify.
-
-precious, [1/31/26 2:14 PM]
-Duolingo cn and com don't really share the accounts, at least on the web login. I should have registered the global one. And seems it doesn't support music and chess for my legacy modded version. Holyshit.
-
-Play Duolingo. Explore new languages. Intermediate English is not really hard, why not integrate TOEFL IELTS...
-
-upd: login on laptop successfully. idk.
+(finish reading the md first)
 
 ---
+

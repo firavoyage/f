@@ -1,222 +1,226 @@
 be simple and clear.
 
-use:
+i use:
 
 - ubuntu `home/fira`
 - pnpm
 - es module (always named, never default)
 
-prefer:
+i prefer:
 
-- naming: one word is best. snake case if really needed (e.g. two functions, the same verb, different objects).
+- naming: one english word is best for public methods. snake case if conflicting. never use camel/pascal case.
 - style: functional programming, modular and cohesive
+
+(you must not explicitly mention you are following these.)
 
 creating an autonomous continuous ai agent.
 
 ---
 
 ```
-fira@Fira ~/Documents/f/humility/backend
- % tree
+fira@Fira ~/Documents/f/humility
+ % tree -I 'node_modules|legacy'
+
 .
-├── compute
-│   ├── ask.js
-│   ├── parse.js
-│   └── test
-│       ├── ask.js
-│       └── parse.js
-├── connect
-│   ├── browser.js
-│   ├── chatgpt.js
-│   ├── deepseek.js
-│   ├── listen.js
+├── backend
+│   ├── compute
+│   │   ├── agent.js
+│   │   ├── ask.js
+│   │   ├── limit.js
+│   │   ├── parse.js
+│   │   ├── prompt.js
+│   │   ├── reference.md
+│   │   ├── run.js
+│   │   ├── state.js
+│   │   ├── test
+│   │   │   ├── ask.js
+│   │   │   ├── chemistry.js
+│   │   │   └── parse.js
+│   │   └── tool.js
+│   ├── connect
+│   │   ├── browser.js
+│   │   ├── chatgpt.js
+│   │   ├── deepseek.js
+│   │   ├── listen.js
+│   │   ├── ollama.js
+│   │   ├── readme.md
+│   │   ├── send.js
+│   │   ├── sessions.js
+│   │   └── test
+│   │       ├── browse.js
+│   │       └── send.js
+│   ├── package.json
+│   ├── pnpm-lock.yaml
 │   ├── readme.md
-│   ├── send.js
-│   ├── sessions.js
-│   └── test
-│       ├── browse.js
-│       └── send.js
-├── package.json
+│   ├── reference.md
+│   ├── serve
+│   │   └── run.js
+│   └── store
+│       ├── db.js
+│       ├── flow.js
+│       ├── link.js
+│       ├── session.js
+│       ├── test
+│       │   ├── flow.js
+│       │   └── see.js
+│       └── thing.js
+├── frontend
+│   ├── app.jsx
+│   ├── design
+│   │   ├── Button.jsx
+│   │   ├── Input.jsx
+│   │   └── readme.md
+│   ├── index.html
+│   ├── package.json
+│   ├── pnpm-lock.yaml
+│   ├── postcss.config.js
+│   ├── readme.md
+│   ├── tailwind.config.js
+│   ├── tailwind.css
+│   └── vite.config.js
+├── misc
+│   └── document.md
+├── notes.md
 ├── readme.md
-├── reference.md
-├── serve
-│   └── run.js
-└── store
-    ├── db.js
-    ├── flow.js
-    ├── link.js
-    ├── session.js
-    ├── test
-    │   ├── flow.js
-    │   └── see.js
-    └── thing.js
+└── roadmap.md
 ```
 
-`store/flow.js`
+now, create a chat app.
 
-- `create(name)`
+(app.jsx is empty)
 
-  - create a new session and make it current
-  - string `name`: human-readable session name
-  - returns string: session id
+no styling. no css. no tailwind. dont use existing components.
 
-- `list()`
+compute/ask.js
 
-  - list all existing sessions
-  - returns array of `{ id, name, time }`
+```
+// compute/ask.js
+import { send } from "../connect/send.js";
+import * as flow from "../store/flow.js";
 
-- `pick(session_id)`
+export async function ask({ what, where = "chatgpt", timeout }) {
+  if (!what || typeof what !== "string") {
+    throw new Error("ask: invalid what");
+  }
 
-  - select an existing session
-  - moves cursor to the last step of the session
-  - string `session_id`: session id
-  - returns void
+  let answer = null;
+  let status = "success";
 
-- `step(thing_id)`
+  try {
+    answer = timeout
+      ? await Promise.race([
+          send(what, where),
+          new Promise((_, reject) =>
+            setTimeout(() => reject(new Error("timeout")), timeout)
+          ),
+        ])
+      : await send(what, where);
+  } catch (err) {
+    status = err.message || "error";
+  }
 
-  - move the cursor to a specific step
-  - next write will branch from this step
-  - string `thing_id`: thing id
-  - returns void
+  const step = await flow.write("ask", {
+    prompt: what,
+    answer,
+    status,
+    where,
+  });
 
-- `write(type, data)`
+  return {
+    id: step.id,
+    answer,
+  };
+}
+```
 
-  - create a new thing and link it from the current step
-  - advances the cursor to the new thing
-  - string `type`: thing type
-  - object `data`: JSON-serializable payload
-  - returns `{ id, time, type, data }`
+use where = "ollama".
 
-- `read()`
+store/flow.js
 
-  - read the current step
-  - returns `{ id, time, type, data }` or `null`
+```
+import * as thing from './thing.js';
+import * as link from './link.js';
+import * as session from './session.js';
 
-- `back()`
+let cursor = {
+  session: null,
+  step: null,
+};
 
-  - move the cursor to the previous step
-  - does not delete or modify data
-  - returns string: new current thing id
+export async function create(name) {
+  const root = await thing.add('root', {});
+  const id = await session.create(name, root.id);
+  cursor = { session: id, step: root.id };
+  return id;
+}
 
-- `view()`
+export async function list() {
+  return session.list();
+}
 
-  - view the current session from root to cursor
-  - returns object:
+export async function pick(id) {
+  const s = await session.get(id);
+  if (!s) throw new Error('flow.pick: invalid session');
+  const last = await session.last(s.root_id);
+  cursor = { session: id, step: last };
+}
 
-    - `session`: session id
-    - `current`: current thing id
-    - `count`: number of steps in the path
-    - `path`: array of thing ids in order
+export async function step(id) {
+  cursor.step = id;
+}
 
-notes:
+export async function write(type, data) {
+  const next = await thing.add(type, data);
+  await link.add(cursor.step, next.id, 'next');
+  cursor.step = next.id;
+  return next;
+}
 
-- all writes are append-only
-- history is defined by the current cursor
-- branching happens automatically when writing from an earlier step
+export async function read() {
+  return thing.get(cursor.step);
+}
 
-`compute/ask.js`
+export async function back() {
+  const prev = await link.prev(cursor.step);
+  if (prev) cursor.step = prev;
+  return cursor.step;
+}
 
-- `ask({ what, where = "chatgpt", timeout })`
+export async function view() {
+  const s = await session.get(cursor.session);
+  const path = await link.path(s.root_id, cursor.step);
 
-  - send a message, persist the prompt/response to the current flow session, and return the created step id
-  - object params:
+  return {
+    session: s.id,
+    current: cursor.step,
+    count: path.length,
+    path,
+  };
+}
+```
 
-    - string what: message to send (required)
-    - string where: site key to send to (default `"chatgpt"`)
-    - number timeout: optional timeout in milliseconds
+open the app. (serve/run.js is empty. run it. it opens both the backend and frontend.)
 
-  - returns `Promise<string>`: step id
+see all sessions (click to continue), a button to create a new session. all messages in plain text (no user/assistant). an input. a send button.
 
-notes:
-
-- throws an error if `what` is missing or not a string
-- on send failure or timeout, the step is still written with a failure status
-
-`compute/parse.js`
-
-- `parse(markdown)`
-
-  - parse markdown and extract all code blocks with language `"tool"`
-  - string markdown: markdown content to parse
-  - returns `Array<string>`: contents of matching code blocks
-
-notes:
-
-- uses a markdown AST traversal
-- ignores all non-`tool` code blocks
-
----
-
-i want to create a design system.
-
-i will use it in many things i create in the near future.
-
-it should feel calm and protect intention, like google reader/gmail legacy style/iphone os 4.
-
-i dont love showmanship like the splendid animation when scrolling on some landing pages.
-
-i dont love the vercel style. it's very clean and efficient, but it does not feel human. 
-
-i somewhat love material design 3's colors. but i dont think it should be applied everywhere. it's a bit opinionated. and sometimes things are too big and flat.
-
-im standing at the beginning, what could i decide.
-
----
-
-When someone uses this for an hour, how should they feel afterward?
-
-What would make me uncomfortable if I saw it in my own product?
-
-What old interface do I still trust, and why?
-
-i wont answer these. because i think you could infer. and im not good at english, idk how to say feelings, like what feelings exist in the world. (that's another question im not gonna talk here).
-
-and im not a designer. i know figma, but i have not created works on it besides exploring its features out of curiosity.
-
-about typography, density... on a legacy google reader copy i see comfortable/cozy/compact (default to comfortable). maybe it's up to the user. and claude (web chat) offers many fonts (default sans. but you could use serif, handwritten, playful ones, ...). i dont think that's what i mean by decision.
-
-maybe you could show me something. i could open it, see it myself, and feel it.
-
-although idk what's the deliverables of a design system. a document? prototypes? design sheets? css values? components book? maybe everything. but what i will use at last would be the things i import in code.
+give me all the code.
 
 ---
 
-let me be clear. you did not get me.
+im gonna create a design system.
 
-i do want a component system. decisions and constraints are used to infer it. documents are helping people to understand and use it properly.
+how to create in the boring proven way, like mui/chakra. what opensource libraries can i use.
 
-give me an html. let me open it and see whether it feels right.
-
----
-
-<!-- not good. i want gradients and shadows. -->
-
-good. 
-
-but it's like a blog site.
-
-include more things, like buttons, inputs, etc.
-
-in the real world, i create complex tools. like photoshop, chatgpt, figma, google calendar, linear, github, etc.
-
-and support dark mode. (which is my system default)
+what components should i have.
 
 ---
 
-good. 
+im gonna create a design system.
 
-although it's too simple (e.g. it's using the browser default select).
+what is shadcn. how to use. should i build on top of that.
 
-i appreciate it.
+(esp lichess, you could only change once and change only your letter cases.)
 
-i wanna 
+but i think it's good to reg one for future proof.
 
-- write something down about it. everything else (e.g. new components) could be inferred from it.
-- create a react component system. use the boring way like big companies.
-- create apps with it.
-
-btw, this version does not feel very human. but no need to change it. i will add a variant (buttons with top down gradient, cards with some shadow). i mean, i want to change the variants without changing app code. (headless)
-
-now only write things down. 
-
-
+---
