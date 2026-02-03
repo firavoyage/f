@@ -88,3 +88,10 @@ https://www.anthropic.com/learn
 
 ---
 
+NEW Duolingo English Test 2025 – 160 on the Full Practice Test!
+
+https://www.youtube.com/watch?v=r-mxw-yAfzs
+
+---
+
+

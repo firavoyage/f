@@ -23,6 +23,7 @@ fira:
 - types of methodology
 - journey think create organize
 - design ui principles intuition attention
+- unix philosophy
 
 life:
 
@@ -76,6 +77,7 @@ software engineering:
 - software engineering qualities simplicity or future proof
 - ux design qualities
 - solid principles
+- unix philosophy
 
 software engineering project management:
 
@@ -230,18 +232,14 @@ humility:
   - tauri
   - hardest challenges
   - chatgpt browser automation
-  - userscript to web extension
-  - reliable background choose web extension
-- research
-  - design otaku hobbies humility directions
-  - types of methodology
 - research market
-  - manus overhyped in coding
-  - compare claude code
+  - compare
     - compare claude code deprecate codex
     - compare claude code deprecate cursor
     - compare claude code deprecate antigravity
-  - cursor autonomous workflow browser
+    - compare claude code and opencode
+    - compare vscode and neovim
+    - manus alternatives
   - budget
     - github models
     - llms with cookies workarounds
@@ -249,39 +247,39 @@ humility:
     - chatgpt fallback mini alternatives
     - openrouter pricing
     - claude free limit others
-  - claude code magic features
-  - claude continuous autonomy workflow
-    - compare with manus
-  - compare claude code and opencode
-  - compare vscode and neovim
-  - evaluate autogpt
-  - manus alternatives
+  - features
+    - claude code magic features
+    - claude continuous autonomy workflow
+    - building with claude api transcript
+  - evaluate
+    - claude code compare with manus
+    - autogpt
   - use cases
     - manus use cases
     - claude code use cases vids
     - opencode use cases vids
-  - ai generated code style
-- design avatar
-  - one ball
-- design architecture
-  - manage context evaluate embedding
-- design technical architecture
-  - programming language
-  - tech stack frontend
+  - misc
+    - ai generated code style
+- design
+  - icon
+    - one ball
+  - agent
+    - design otaku hobbies humility directions
+    - types of methodology
+    - manage context evaluate embedding
+  - tech architecture
+    - programming language
     - pnpm
-  - tech stack backend
     - let ts rs py talk
-  - folder shape
-- design integration architecture
-  - structured output
-  - browser automation
-- design interaction architecture
-  - keybindings
-  - leader keys
-- design security architecture
-  - api key place
-  - safety definition safe command
+    - folder shape
+  - integration
+    - structured output
+    - browser automation
+  - interaction
+    - keybindings
+    - leader keys
+  - security
+    - api key place
+    - safety definition safe command
 - decide
   - creating design system for any project
-- write integration
-  - web extension any

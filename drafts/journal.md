@@ -2583,9 +2583,35 @@ save to profile manager. (seems a vibe coded extension, from its style)
 
 clear noises: fradser.
 
-22 20 check new msgs from the russian anonymous.
+22 20 check new msgs from the russian anonymous. write reply.
 
 separate the msg log out of the repo. that guy is really good at searching... but somewhat weak at inference.
+
+03
+
+12 40 chat. 
+
+13 40 reg vk `firahq` `firahq@vk.com`
+
+14 20 refresh.
+
+16 00 organize personas.
+
+18 00 buy a better proxy with 12 cny/mo.
+
+ikuuu.
+
+(current: ikuuu, one yuan, github yudou)
+
+loading animation still exists regardless. warau.
+
+19 20 update the "innocent wisdom" propmt.
+
+22 20 read building with claude api transcript.
+
+23 00 organize `all: humility`.
+
+23 00 reply to the russian anonymous. read twitter.
 
 
 

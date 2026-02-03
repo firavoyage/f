@@ -36,7 +36,7 @@ Inspiration: why might maimai players die soon. Investigate, find patterns: eat 
 
 ---
 
-opencode 
+opencode
 
 export sucks. wrong markdown code blocks. (3 or 4 backticks, some are not in pairs)
 
@@ -104,7 +104,7 @@ make ctrl c -> copy markdown
 
 (lichess uses preferences)
 
-... the board ui is not in pref... 
+... the board ui is not in pref...
 
 under user. stupid. at least weird.
 
@@ -112,3 +112,17 @@ under user. stupid. at least weird.
 
 ---
 
+8 mins read.
+
+you should know this on top of an article on twitter.
+
+---
+
+(inspired by funshiki: 星塔旅人, yostar's new game, 2.5d genshin impact.)
+
+fatefairy:
+
+- hex(8964): drive tank. when hitting the innocent increase the speed. when approaching near the happy few (those with power) die immediately. once it kill some innocent the tank wont be able to stop.
+- hex(20105): grow, swap. like poison. the ground with higher number is more toxic. it will do the math and act wisely but it could not know the state of current arena.
+
+---

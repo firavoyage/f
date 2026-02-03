@@ -71,6 +71,12 @@ chatgpt: parallel
 - chatgpt did not finish loading resources, maybe. (observation: something is not loaded, leaving blank on the page.)
 - but let's give it a try. why? because why not. and because i can.
 
+connect/send
+
+continue a previous session
+
+i wont support it. since i dont want to do context engineering.
+
 ---
 
 chem project:
@@ -1061,6 +1067,25 @@ protect intention.
 - human. iphone os 4.
 
 let's stay with the minimal one. easier.
+
+---
+
+create the design system: read the chat, guidelines.
+
+design a button first.
+
+minimal style.
+
+think what a chat app should have. only trust my intuition.
+
+(believe: llms suck at design & archi. dont waste time. i mean open ended tasks with clear quality measurement. not math/algorithms, not literature.)
+
+- think what a chat app should have.
+- write down.
+- give llms the context (components, design). generate everything.
+- generate layout.
+- iterate.
+- (test, docs)
 
 ---
 

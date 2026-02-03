@@ -88,8 +88,38 @@ These days I write using an app I help make called Obsidian (
 ), but it’s a delusion to think it will last forever. The app will eventually become obsolete. It’s the plain text files I create that are designed to last. Who knows if anyone will want to read them besides me, but future me is enough of an audience to make it worthwhile.
 ```
 
-about making them public. git is somewhere you could know. you could find anytime anywhere. anyone could access. but few, or no one will actually browse your "study notes". since you dont like it, i separate the file out of the repo. although it's unsafer now: if there's something wrong with my machine i will lose things forever. (actually i factory reset my phone in jan 2026 because running irreversible adb commands making the mobile network, sms, and phone calls unusable). if i change my phone number maybe i could lose access to telegram. (new +86 phone numbers could not register tg for free. some of my friends are detected as spam and banned by a black box algorithm.) a balanced approach is using encryption. (e.g. encrypt the data with my twitter handle using crypto libraires. or just adding 1 to every letter ) but i wont do that for its complexity.
+about making them public. git is somewhere you could know. you could find anytime anywhere. anyone could access. but few, or no one will actually browse your "study notes". since you dont like it, i separate the file out of the repo. although it's unsafer now: if there's something wrong with my machine i will lose things forever. (actually i factory reset my phone in jan 2026 because running irreversible adb commands making the mobile network, sms, and phone calls unusable). if i change my phone number maybe i could lose access to telegram. (new +86 phone numbers could not register tg for free. some of my friends are detected as spam and banned by a black box algorithm.) a balanced approach is using encryption. (e.g. encrypt the data with my twitter handle using crypto libraires. or just adding 1 to every character's unicode/ascii so they wont be indexed by search engines.) but i wont do that for its complexity.
 
-btw, i study in shanghai. im in winter holidays. you ve already said that. if you are good at geoguessr/tuxun, maybe you could infer a lot. but i dont think you will do that.
+btw, i study in shanghai. im in winter holidays. you ve already said that. if you are good at geoguessr/tuxun, maybe you could infer a lot. but i dont think you will do that. i dont really sleep at 23. 
+
+since you dont know what to say (your messages imply that. you say "are you a real person" instead of asking my opinion on something, consulting a problem, or sharing some insights. it's common of just retweeting arts. ive seen many twitter acc like this although i dont really subscribe them.), let me be more active.
+
+for example
+
+<!-- - you write code. what's your preference. like language. library (npm/pnpm/bun, react/solid/svelte). snake case or camel case. (i dont think you are gonna write assembly in the future. it's too low level, used in rev engineering. it seems that you are university grade 1, no personal projects, so i dont expect you could answer it. like me comment this.) -->
+- some universities dont teach much. that's common. many use csdiy.wiki. what do you think of this. are you interesting in something.
+- what llms (chatgpt/claude/gemini/grok/...) do you like. why. (or maybe you dont use)
+- what do you think about "something i believe" on nat.org.
+- do you like larr.net lr0.org
+- what do you think about os.ryo.lu
+- what tools do you use. (e.g. i use ubuntu, snap chromium, vscode with dracula theme, scrcpy)
+
+---
+
+- spotify's approach.
+- i generally dont recommend.
+- invariants matter.
+- stand with the future
+
+"Many of french dont even speak their languages." idk. but i dont wanna talk about this.
+
+(upd: google: France has the largest Black population in Europe, estimated at 3 to 5 million people (roughly 5-7.5% of the population), largely stemming from African and Caribbean immigration. & French is the sole official language of France, spoken by roughly 87–96% of the population.)
+
+about torrent indexer. if you only watch imdb top 250 you are not gonna need this. you could search in the pirate bay and download, usually very fast. if you want to download a new bangumi in the nerd/geek way (not from some niche groups/channels/sites), you could use it and sort the relevance/seeders, etc.
+
+(tips: download vscode, open repo firavoyage/f, press ctrl p, enter bitmagnet. or do it yourself)
+
+a recurring theme: "if you do this, you will realize the most interesting thing about it is doing it!". i dont think so. it's useful and pragmatic without lots of config/workaround (docker handles everything).
+
 
 

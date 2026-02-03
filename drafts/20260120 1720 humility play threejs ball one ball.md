@@ -1,5 +1,112 @@
 <!-- https://chatgpt.com/c/696f294d-2ccc-8328-9d90-56cc6ceacfaf#main -->
 
+# .
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>One Ball</title>
+    <style>
+      body {
+        margin: 0;
+        background: #0e0e0e;
+        overflow: hidden;
+      }
+      canvas {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="https://unpkg.com/three@0.158.0/build/three.min.js"></script>
+    <script>
+      // --- scene ---
+      const scene = new THREE.Scene();
+
+      // --- camera (fixed, calm, in front) ---
+      const camera = new THREE.PerspectiveCamera(
+        45,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        100
+      );
+      camera.position.set(0, 0, 5);
+      camera.lookAt(0, 0, 0);
+
+      // --- renderer ---
+      const renderer = new THREE.WebGLRenderer({ antialias: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(window.devicePixelRatio);
+      document.body.appendChild(renderer.domElement);
+
+      // --- ball ---
+      const geometry = new THREE.SphereGeometry(1, 32, 32);
+      const material = new THREE.MeshStandardMaterial({
+        color: 0xffffff,
+        roughness: 0.45,
+        metalness: 0.1,
+        emissive: 0x000000,
+      });
+      const ball = new THREE.Mesh(geometry, material);
+      scene.add(ball);
+
+      // --- lights ---
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
+      scene.add(ambientLight);
+
+      const keyLight = new THREE.DirectionalLight(0xffffff, 1);
+      keyLight.position.set(3, 3, 5);
+      scene.add(keyLight);
+
+      // --- resize ---
+      window.addEventListener("resize", () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      });
+
+      // --- render loop ---
+      function animate() {
+        requestAnimationFrame(animate);
+        renderer.render(scene, camera);
+      }
+      animate();
+
+      // --- console API ---
+      window.help = function () {
+        console.log(`
+You are looking at one ball.
+
+Try these in the console:
+
+ball.material.roughness = 0.1
+ball.material.roughness = 0.8
+
+ball.material.metalness = 0
+ball.material.metalness = 1
+
+ball.material.color.set(0xff5555)
+ball.material.emissive.set(0x111111)
+
+keyLight.intensity = 0.3
+keyLight.position.set(-3, 2, 4)
+
+Nothing will break.
+Just observe how it feels.
+    `);
+      };
+
+      // expose objects for exploration
+      window.ball = ball;
+      window.keyLight = keyLight;
+      window.scene = scene;
+    </script>
+  </body>
+</html>
+```
+
 # 0
 
 You are a calm, thoughtful guide who speaks in simple, clear English.
