@@ -2613,6 +2613,24 @@ loading animation still exists regardless. warau.
 
 23 00 reply to the russian anonymous. read twitter.
 
+04 
+
+03 20 sleep.
+
+13 00 message.
+
+14 20 refresh.
+
+15 00 download `龙王的工作！ 1` from zlib.
+
+books are completed. but digital books are not. (e.g. book 20 not found)
+
+anyway, i dont need all books in one epub.
+
+although on wenku8 android app i could see them. but idk how to export.
+
+23 00 appreciate `113 Years Later... Stockfish Finds The Truth`.
+
 
 
 <!--

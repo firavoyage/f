@@ -54,13 +54,9 @@ ruanyf https://ruanyifeng.com/blog/
 
 https://generals.io/
 
----
+https://chess.com/
 
-https://innei.in/
-
-https://innei.in/friends
-
-https://blog.men.ci/friends/
+https://lichess.org/
 
 ---
 
@@ -93,5 +89,3 @@ NEW Duolingo English Test 2025 – 160 on the Full Practice Test!
 https://www.youtube.com/watch?v=r-mxw-yAfzs
 
 ---
-
-

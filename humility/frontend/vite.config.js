@@ -1,13 +1,14 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import { ports } from "../script/ports.js";
 
 export default defineConfig({
   plugins: [react()],
   server: {
+    port: ports.frontend,
     proxy: {
-      // proxy all API requests to backend
-      "/ask": "http://localhost:3000",
-      "/flow": "http://localhost:3000",
+      "/ask": `http://localhost:${ports.backend}`,
+      "/flow": `http://localhost:${ports.backend}`,
     },
   },
 });
