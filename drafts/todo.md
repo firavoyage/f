@@ -59,23 +59,11 @@ research:
 
 ---
 
-urgency: low.
-
-importantance: medium.
-
 connect/send
 
-chatgpt: parallel
-
-- seems it could not open multiple pages
-- chatgpt did not finish loading resources, maybe. (observation: something is not loaded, leaving blank on the page.)
-- but let's give it a try. why? because why not. and because i can.
-
-connect/send
-
-continue a previous session
-
-i wont support it. since i dont want to do context engineering.
+- parallel
+- continue chat
+- manage context
 
 ---
 
@@ -108,27 +96,7 @@ have a complex yet well defined coding task.
 
 ---
 
-create a tool to analyze code base.
-
-line numbers. not file sizes.
-
----
-
-pick my code style.
-
-e.g. snake case
-
----
-
-design a better regex.
-
----
-
-cross framework compilers
-
-(a simplier and more abstract react)
-
----
+secure ask
 
 2026.01.29
 
@@ -1088,3 +1056,29 @@ think what a chat app should have. only trust my intuition.
 - (test, docs)
 
 ---
+
+ui tomorrow maybe?
+
+it's pretty hard to decide. 
+
+if i could not create a desired ui and just putting something temp,
+
+then no css now.
+
+---
+
+- think in agent: a stack.
+- secure ask
+
+---
+
+这两天从零做了一个玩具 agent，现在只实现了一个调用 shell 的能力，感觉已经可以做很多事了。
+
+Shell Is All You Need
+
+https://x.com/unixzii/status/2019069650290528604
+
+---
+
+
+

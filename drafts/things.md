@@ -80,9 +80,27 @@ elegant git...
 
 ---
 
-lichess 
-
-chess.com ui
+design a better regex.
 
 ---
+
+cross framework compilers
+
+(a simplier and more abstract react)
+
+---
+
+create a tool to analyze code base.
+
+line numbers. not file sizes.
+
+---
+
+pick my code style.
+
+e.g. snake case
+
+---
+
+
 

@@ -20,6 +20,12 @@ thinking tools like mindmap https://chatgpt.com/c/696314fb-1ed8-8321-8fb4-0fa883
 
 ---
 
+NEW Duolingo English Test 2025 – 160 on the Full Practice Test!
+
+https://www.youtube.com/watch?v=r-mxw-yAfzs
+
+---
+
 intention (omnibox):
 
 chrome://new-tab-page
@@ -27,6 +33,18 @@ chrome://new-tab-page
 ---
 
 journal
+
+---
+
+humility
+
+---
+
+https://generals.io/
+
+https://chess.com/
+
+https://lichess.org/
 
 ---
 
@@ -42,21 +60,17 @@ https://www.google.com/search?q=vibe+coding+stream&gl=us
 
 https://www.youtube.com/watch?v=OhZjUK8OFsk
 
+https://www.twitch.tv/directory/category/chess-1
+
 ---
 
 twitter https://x.com/i/lists/2004814679450009818
 
 twitter human https://x.com/i/lists/2010701752983756962
 
+hn https://news.ycombinator.com/
+
 ruanyf https://ruanyifeng.com/blog/
-
----
-
-https://generals.io/
-
-https://chess.com/
-
-https://lichess.org/
 
 ---
 
@@ -74,18 +88,10 @@ https://code.claude.com/docs/en/sub-agents
 
 https://cursor.com/docs/api#main-content
 
-https://anthropic.skilljar.com/claude-with-the-anthropic-api
-
 https://manus.im/docs/en/features/projects
 
 https://www.anthropic.com/learn
 
-(finish reading the md first)
-
 ---
 
-NEW Duolingo English Test 2025 – 160 on the Full Practice Test!
 
-https://www.youtube.com/watch?v=r-mxw-yAfzs
-
----

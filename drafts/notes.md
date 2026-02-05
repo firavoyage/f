@@ -126,3 +126,10 @@ fatefairy:
 - hex(20105): grow, swap. like poison. the ground with higher number is more toxic. it will do the math and act wisely but it could not know the state of current arena.
 
 ---
+
+之前做 i18n 的时候顺手做了一个 “喵呜中文”，npy 说主题设置可以叫 “光线：自然光/开灯/关灯”，感觉超贴切。可惜实在没有精力编那么多可爱文案，最后也没有上正式版 …
+
+？笑死我了这是 Kimi APP 的主题切换
+怎么把月之暗面和月之亮面写这里来了
+
+---

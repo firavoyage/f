@@ -2631,6 +2631,28 @@ although on wenku8 android app i could see them. but idk how to export.
 
 23 00 appreciate `113 Years Later... Stockfish Finds The Truth`.
 
+23 20 explore chatbot ui.
+
+chatgpt. claude. gemini. dribbble. gmail classic view. google reader new ui.
+
+05
+
+02 40 play mensa iq test recommended by the russian anonymous. 03 40
+
+35 puzzles. 25min. age 18 to 50.
+
+get stuck at problem 20 for a few minutes. find xor. 
+
+run out of time. solve 23 problems. get 110 iq.
+
+second try. finish 32 problems. get 142 iq.
+
+04 00 sleep.
+
+19 40 check the usst admission score line.
+
+im lucky. both majors pass. one is one pt lower than last year and is my exact score. another is one pt higher.
+
 
 
 <!--
