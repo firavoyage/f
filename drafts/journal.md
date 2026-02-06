@@ -2653,6 +2653,14 @@ second try. finish 32 problems. get 142 iq.
 
 im lucky. both majors pass. one is one pt lower than last year and is my exact score. another is one pt higher.
 
+06
+
+02 00 do prompt engineering "innocent wisdom".
+
+15 00 play chess. 17 00
+
+23 00 read ruanyf weekly 382 383 384.
+
 
 
 <!--

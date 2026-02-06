@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import os from "os";
 
-const BASE_DIR = path.join(os.homedir(), ".local", "share", "humility", "browser");
+const BASE_DIR = path.join(os.homedir(), ".humility", "browser");
 
 const DEFAULT_DIR = path.join(BASE_DIR, "default");
 const PROFILES_DIR = path.join(BASE_DIR, "profiles");

@@ -94,4 +94,16 @@ https://www.anthropic.com/learn
 
 ---
 
+design system
 
+https://chatgpt.com/c/698392b1-3e98-83aa-acc4-c5458d65ec01
+
+https://mui.com/material-ui/react-button/#contained-buttons
+
+https://m2.material.io/components/buttons
+
+https://m3.material.io/components/buttons/overview
+
+https://chakra-ui.com/docs/components/button#loading
+
+---

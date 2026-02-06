@@ -1,13 +1,12 @@
-Take these defaults, no need to mention like "following your prefrences".
+Take these as universal defaults, not my personal preferences. No need to mention.
 
 - ubuntu `home/fira`
 - zsh
 - pnpm
 - es module (always named, never default)
 - naming:
-  - use one english word for all public methods in my own code.
-  - use snake case only if conflicting in the same file, like adding an objective or an adverb. never use camel/pascal case.
-  - this rule does not affect react components.
+  - use one simple english word for all methods. add an objective or an adverb only if conflicting.
+  - always use snake case. never use camel case or pascal case.
 - style:
   - use functional programming
   - be modular and cohesive
@@ -43,8 +42,14 @@ fira@Fira ~/Documents/f/humility
 │   ├── reference.md
 │   ├── serve
 │   │   └── serve.js
+│   ├── spec.md
 │   └── store
-│       ├── ...
+│       ├── init.js
+│       ├── moves.js
+│       ├── schema.js
+│       ├── sessions.js
+│       └── test
+│           └── test.js
 ├── frontend
 │   ├── app.jsx
 │   ├── design
@@ -70,10 +75,6 @@ fira@Fira ~/Documents/f/humility
     ├── ports.js
     └── run.js
 ```
-
-the code is poor designed.
-
-ignore previous code. refactor compute (core logic) and store (db).
 
 spec.
 
@@ -382,7 +383,7 @@ All functions take a single object as params.
 
 #### moves
 
-- `record`
+- `move`
 
   - input: session id, type, data
   - output: move id
@@ -391,11 +392,6 @@ All functions take a single object as params.
 
   - input: session id
   - output: ordered list of moves
-
-- `query`
-
-  - input: raw sql and params
-  - output: query result
 
 Direct querying is intentional.
 
@@ -441,121 +437,70 @@ This is replayable and inspectable.
 - no extensions baked into core
 ```
 
-let's write the store first.
+what files will you create in compute (core logic) to separate the concerns.
 
-design the files and functions. 
-
-write the params and return of each function. use comments as content.
+what are functions inside. params. returns.
 
 ---
 
-hide the complexity of postgres. 
+some skills, hooks, and tools are predefined.
 
-have init.js
+skills are knowledge/structure you send when asking if relevant.
 
-on serve/serve.js i will init the db. (run it, connect it, ...)
+tools are how you act. you send them. intelligence decides whether to use each. it replies with yaml. you parse it. you call each.
 
-i dont wanna see something like pool, url.
+at fisrt you have a complex task with a spec.
 
-i only want these
+i dont want context, index, and extension. they are not verbs. i will have begin.
 
-- `list` all sessions, get the id of all sessions
-- `create` a session, get its id.
-- `see` all moves in a session, get all moves in time order. (the lastest at last)
-- `move` forward in a session. tell the session. type. data.
+hooks (extensions) are not event listeners. hooks are python decorators.
 
-no more public fn.
+a hook can wrap prepare. it logs "hello world" after it.
 
-i dont need a flexible query now.
+a hook can wrap specific tool calls (e.g. shell commands) in process. it check safety. if safe execute. if not it does something else.
 
----
-
-tell me if you need to install anything.
-
-write init, sessions, moves, and schema.
-
-
+what's the data flow.
 
 ---
 
-think an agent as this:
+be grounded.
 
-you either move forward or rest at any time.
+rest has no input or output. if no hooks wrap it, it does nothing.
 
-if you dont have a task or everything is finished, you rest.
+plan create a string prompt and an optional object context. it decides how to ask. for now i will not support a context.
 
-otherwise, you move forward.
+plan might use request (intelligence) to ask how to ask. for now it does not.
 
-it's flexible and designed for the future.
+request has
 
-you prepare for a move.
+ask: prompt, optional context, model -> markdown. it might output yaml or something else.
 
-- set up the working folder. for now we can have a hardcoded config file instead of using intelligence.
-- think what to include in the request. spec (e.g. preference and style). knowledge (facts). structure (how to).
+process has
 
-you play a move.
+parse: markdown -> all yaml code blocks -> a list of tool calls (tool name, params).
 
-- send a request. if timeout you retry. maybe some logic is missing, but if you see the task is not finished and you are not doing anything, you must do something.
+act: tool name and params -> call it -> result (defined by the tool, maybe void, maybe terminal log or something else)
 
-you process the result.
+you dont have hooks.js
 
-- there are tools like shell commands and writing/editing files. run them.
+in prepare, you wrap all methods with their hooks and give these methods to loop.
 
-you can decide the next move. in many ways.
+store is already written. storage hooks are builtin.
 
-- use a prompt template, like the big picture and the current progress.
-- add a step. send the context needed (messages, tool results). use intelligence to figure out the next move.
+you have compute/hooks/store_request and compute/hooks/store_action.
 
-you finish. in many ways.
-
-- use intelligence. you see a tool called finish.
-- all files i want exist.
-- tests pass.
-- timeout, max attempts reached.
-
-(upd: user not login. ask user to clarify/pick.)
-
-you should know what you are doing. in the future there will be hooks.
-
-- before a shell command, i check whether it's safe. i can proceed or block.
-- when you want to show something, i clean the nonsense.
-- after you play a move, i check whether the number of moves youve played is a lucky number.
-
-everything is stored. both moves and relationship.
-
-what are the functions.
+prepare see both optional user hooks (from begin) and builtin hooks.
 
 ---
 
-use postgres.
+write the spec about compute.
 
-you store moves and sessions.
+only include the spec in your answer. don't talk. dont put inside a markdown code block.
 
-moves have id, time, type, session, and data.
+be grounded and detailed.
 
-you can
+file. fn. params. process. returns.
 
-- list all sessions
-- create a session
-- see all moves in a session
-- move forward in a session
-- query directly.
+literals have type. objects have structure.
 
-design.
-
----
-
-knowledge. structure. hooks. etc.
-
-they are defined before the task.
-
-load them inside preparation.
-
-...
-
-(they are already part of config!)
-
-done.
-
-write.
 

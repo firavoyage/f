@@ -160,3 +160,90 @@ knowledge and structure.
 for coding, folder structure, files, fns, tests, docs, etc.
 
 ---
+
+think an agent as this:
+
+you either move forward or rest at any time.
+
+if you dont have a task or everything is finished, you rest.
+
+otherwise, you move forward.
+
+it's flexible and designed for the future.
+
+you prepare for a move.
+
+- set up the working folder. for now we can have a hardcoded config file instead of using intelligence.
+- think what to include in the request. spec (e.g. preference and style). knowledge (facts). structure (how to).
+
+you play a move.
+
+- send a request. if timeout you retry. maybe some logic is missing, but if you see the task is not finished and you are not doing anything, you must do something.
+
+you process the result.
+
+- there are tools like shell commands and writing/editing files. run them.
+
+you can decide the next move. in many ways.
+
+- use a prompt template, like the big picture and the current progress.
+- add a step. send the context needed (messages, tool results). use intelligence to figure out the next move.
+
+you finish. in many ways.
+
+- use intelligence. you see a tool called finish.
+- all files i want exist.
+- tests pass.
+- timeout, max attempts reached.
+
+(upd: user not login. ask user to clarify/pick.)
+
+you should know what you are doing. in the future there will be hooks.
+
+- before a shell command, i check whether it's safe. i can proceed or block.
+- when you want to show something, i clean the nonsense.
+- after you play a move, i check whether the number of moves youve played is a lucky number.
+
+everything is stored. both moves and relationship.
+
+---
+
+use postgres.
+
+you store moves and sessions.
+
+moves have id, time, type, session, and data.
+
+you can
+
+- list all sessions
+- create a session
+- see all moves in a session
+- move forward in a session
+- query directly.
+
+design.
+
+---
+
+knowledge. structure. hooks. etc.
+
+they are defined before the task.
+
+load them inside prepare.
+
+---
+
+i thought i could have docs.
+
+i will place it near the code. like test.
+
+reference. not guide.
+
+i will use something like jsdoc. but more customized and simple. just create some md files. one code. one md file.
+
+but at last i find i could just paste the entire codebase.
+
+---
+
+

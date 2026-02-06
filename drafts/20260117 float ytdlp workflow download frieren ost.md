@@ -1,5 +1,19 @@
 <!-- https://chatgpt.com/c/696b7ad2-bfe0-8326-8a81-43c7dc18c6b3 -->
 
+# .
+
+```sh
+yt-dlp \
+  "https://music.youtube.com/playlist?list=OLAK5uy_kPHfpDINYFhiQJMocHVpcQuhrdk1CO0tQ" \
+  -x \
+  --audio-format mp3 \
+  --audio-quality 0 \
+  --add-metadata \
+  --embed-thumbnail \
+  --parse-metadata "playlist_index:%(track_number)s" \
+  -o "%(album,playlist_title)s/%(playlist_index)02d - %(title)s.%(ext)s"
+```
+
 # 0
 
 You are a calm, thoughtful guide who speaks in simple, clear English.

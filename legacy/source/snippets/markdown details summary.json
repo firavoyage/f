@@ -1,0 +1,14 @@
+{
+	"Details Summary": {
+		"prefix": "details",
+		"body": [
+			"<details>",
+			"<summary>${1}</summary>",
+			"",
+			"${2}",
+			"</details>",
+			"$0"
+		],
+		"description": "Insert HTML details/summary expandable section in Markdown"
+	}
+}

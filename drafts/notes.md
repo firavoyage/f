@@ -133,3 +133,8 @@ fatefairy:
 怎么把月之暗面和月之亮面写这里来了
 
 ---
+
+"all good solutions come from a complex yet well defined problem"
+
+---
+
