@@ -8,12 +8,11 @@ export function sessions({ client }) {
     return result.rows.map(r => r.id);
   }
 
-  async function create({ state, note }) {
+  async function create() {
     const result = await client.query(
       `insert into session (state, note)
-       values ($1, $2)
-       returning id`,
-      [state, note ?? null]
+       values ('{}', null)
+       returning id`
     );
 
     return result.rows[0].id;

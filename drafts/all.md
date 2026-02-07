@@ -78,6 +78,7 @@ software engineering:
 - ux design qualities
 - solid principles
 - unix philosophy
+- modular use import export instead of chaining
 
 software engineering project management:
 

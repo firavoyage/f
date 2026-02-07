@@ -134,3 +134,27 @@ export async function init() {
     move: move_api.move
   };
 }
+
+export async function init_store() {
+  ensure_dir(root_dir);
+  init_cluster();
+
+  if (!is_running()) start_cluster();
+
+  await create_database();
+
+  const client = new Client({ ...db_config, database: db_config.name });
+  await connect({ client });
+
+  await create_tables({ client });
+
+  const session_api = sessions({ client });
+  const move_api = moves({ client });
+
+  return {
+    list: session_api.list,
+    create: session_api.create,
+    see: move_api.see,
+    move: move_api.move
+  };
+}

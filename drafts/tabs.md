@@ -46,6 +46,8 @@ https://chess.com/
 
 https://lichess.org/
 
+https://duolingo.com
+
 ---
 
 hoshino lina https://www.youtube.com/@HoshinoLina/streams
@@ -65,8 +67,6 @@ https://www.twitch.tv/directory/category/chess-1
 ---
 
 twitter https://x.com/i/lists/2004814679450009818
-
-twitter human https://x.com/i/lists/2010701752983756962
 
 hn https://news.ycombinator.com/
 
@@ -106,4 +106,12 @@ https://m3.material.io/components/buttons/overview
 
 https://chakra-ui.com/docs/components/button#loading
 
+pictures/design
+
 ---
+
+kaguya
+
+---
+
+

@@ -2661,6 +2661,18 @@ im lucky. both majors pass. one is one pt lower than last year and is my exact s
 
 23 00 read ruanyf weekly 382 383 384.
 
+07
+
+13 40 remove `com.smartisan.crashreport` using shizuku and canta with adb.
+
+polling too fast. i could not see any meaningful clash log. btw, i dont want telemetry.
+
+seems duolingo is stilling using duolingo.cn. maybe it recognizes using some special detecting methods.
+
+i could join a league on duolingo.com.
+
+the names on the leaderboards change when the internet env changes. sus.
+
 
 
 <!--

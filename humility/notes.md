@@ -234,6 +234,8 @@ load them inside prepare.
 
 ---
 
+on docs.
+
 i thought i could have docs.
 
 i will place it near the code. like test.
@@ -246,4 +248,20 @@ but at last i find i could just paste the entire codebase.
 
 ---
 
+on skill.
 
+```
+- Agent 必须有自主判断力的专家。
+- Skill 是可复用的能力，可以区分为指令型和知识型。
+- MCP / Hook 是纯粹的工具。
+
+理解 Claude Code 最近的工程实践，在现在这个时间点是非常必要的。写好一个插件，也是一种很好的实践。最近工作之外的爱好就是保持信息压缩的同时大量更新
+```
+
+structure. knowledge. they are the same.
+
+within a skill you tell llms how to solve a specific problem.
+
+how to, the method, comes from reality and truth.
+
+---

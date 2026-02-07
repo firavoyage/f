@@ -10,7 +10,8 @@ Take these as universal defaults, not my personal preferences. No need to mentio
 - style:
   - use functional programming
   - be modular and cohesive
-  - prefer using an object as params
+  - prefer an object as params
+  - prefer async
 
 ---
 
@@ -22,8 +23,6 @@ fira@Fira ~/Documents/f/humility
 
 .
 ├── backend
-│   ├── compute
-│   │   ├── ...
 │   ├── connect
 │   │   ├── browser.js
 │   │   ├── chatgpt.js
@@ -44,6 +43,7 @@ fira@Fira ~/Documents/f/humility
 │   │   └── serve.js
 │   ├── spec.md
 │   └── store
+│       ├── index.js
 │       ├── init.js
 │       ├── moves.js
 │       ├── schema.js
@@ -76,431 +76,333 @@ fira@Fira ~/Documents/f/humility
     └── run.js
 ```
 
-spec.
+---
+
+compute spec.
+
+````
+## compute — implementation spec
+
+---
+
+### 0. purpose
+
+`compute` defines the core runtime of the agent.
+
+It owns:
+
+- continuity
+- decision
+- asking
+- interpretation
+- action
+
+It does not own:
+
+- storage implementation
+- environment setup
+- tool definitions
+- intelligence content
+
+Everything here is verbs.
+
+---
+
+### 1. directory
 
 ```
-## autonomous continuous agent — implementation spec
-
-### 0. principles
-
-- the agent is **continuous**, not task-based
-- at any moment, it either **moves** or **rests**
-- resting means: _do nothing intentionally_
-- there is no concept of “done” in the core
-- history is append-only and never rewritten
-- intelligence plans; tools change the world
-- extensions observe or intercept; they never define core logic
-
----
-
-### 1. runtime model
-
-#### lifecycle
-
-prepare → loop (infinite)
-
-There is no internal termination.
-The process may be stopped externally.
-
----
-
-### 2. core functions
-
-Only these functions exist in the core.
-
-#### 2.1 prepare
-
-**runs once**
-
-**input**
-
-- static config (hardcoded for now)
-- working directory path
-
-**process**
-
-- initialize working directory
-- load config into memory
-- initialize empty state
-- initialize memory access (postgres)
-
-**output**
-
-- agent context:
-
-  - config
-  - working directory
-  - state
-  - session id
-
----
-
-#### 2.2 loop
-
-**input**
-
-- agent context
-
-**process**
-
-- call `decide`
-- if decision is `rest` → call `rest`
-- if decision is `move`:
-
-  - call `plan`
-  - call `request`
-  - call `process`
-
-- persist state
-- repeat forever
-
-**output**
-
-- none
-
----
-
-#### 2.3 decide
-
-**input**
-
-- current state
-- memory (past moves in session)
-- last result (optional)
-
-**process**
-
-- determine whether there is actionable work
-- determine whether the agent must wait
-- determine whether to stay idle
-
-**output**
-
-- `"move"` or `"rest"`
-
-This is the only function that chooses action vs stillness.
-
----
-
-#### 2.4 rest
-
-**input**
-
-- state
-
-**process**
-
-- do nothing intentionally
-- optionally block, sleep, or wait
-
-**output**
-
-- unchanged state
-
-Rest is reversible by external stimulus.
-
----
-
-#### 2.5 plan
-
-**input**
-
-- state
-- memory
-
-**process**
-
-- understand overall intention
-- understand current progress
-- select exactly one next step
-- assemble the context needed for that step
-
-**output**
-
-- plan object:
-
-  - intention
-  - context
-  - expected outcome
-
-Evaluation happens here implicitly:
-if no sensible step exists, no plan is produced.
-
----
-
-#### 2.6 request
-
-**input**
-
-- plan
-- context
-
-**process**
-
-- build prompt (spec, knowledge, structure)
-- send request to a model
-- retry on timeout
-
-**output**
-
-- response
-- metadata (attempts, timing)
-
-No side effects beyond communication.
-
----
-
-#### 2.7 process
-
-**input**
-
-- response
-- plan
-
-**process**
-
-- interpret response
-- derive concrete actions
-- execute actions (shell, file writes, edits)
-- update working directory and state
-
-**output**
-
-- result:
-
-  - actions taken
-  - artifacts produced
-  - observations
-
-All real-world effects happen here.
-
----
-
-### 3. extension model
-
-Extensions are **intercepts**, not features.
-
-The core must work fully with zero extensions.
-
-#### extension contract
-
-**input**
-
-- phase name
-- immutable snapshot of context
-- mutable draft (optional)
-
-**process**
-
-- inspect
-- optionally modify
-- optionally block
-
-**output**
-
-- continue or stop
-- possibly modified draft
-
----
-
-#### extension phases
-
-The core exposes fixed phase names:
-
-- `after_prepare`
-- `before_plan`
-- `after_plan`
-- `before_request`
-- `after_request`
-- `before_process`
-- `before_action`
-- `after_action`
-- `after_process`
-- `before_rest`
-- `after_rest`
-
-The core never assumes extensions exist.
-
----
-
-### 4. persistence (postgres)
-
-Postgres is the source of truth.
-
-Only one module owns SQL.
-
----
-
-#### 4.1 sessions
-
-A session represents a continuous run.
-
-**table: `session`**
-
-- `id` — primary key
-- `time` — creation timestamp
-- `state` — json (current mutable state)
-- `note` — optional text
-
-Sessions are stable identities.
-Only `state` evolves.
-
----
-
-#### 4.2 moves
-
-A move is an atomic event.
-
-**table: `move`**
-
-- `id` — primary key
-- `time` — timestamp
-- `type` — one word
-- `session` — foreign key to session
-- `data` — json (inputs, outputs, observations)
-
-Moves are append-only.
-History is never rewritten.
-
----
-
-### 5. storage api
-
-All functions take a single object as params.
-
-#### sessions
-
-- `list`
-
-  - output: all sessions, ordered by time
-
-- `create`
-
-  - input: initial state, optional note
-  - output: session id
-
----
-
-#### moves
-
-- `move`
-
-  - input: session id, type, data
-  - output: move id
-
-- `see`
-
-  - input: session id
-  - output: ordered list of moves
-
-Direct querying is intentional.
-
----
-
-### 6. agent ↔ storage interaction
-
-- a session is created in `prepare`
-- every meaningful step records a move:
-
-  - planning → `plan`
-  - requesting → `request`
-  - processing → `process`
-  - resting → `rest`
-
-- state is convenience
-- moves are truth
-
----
-
-### 7. moving forward in a session
-
-“Move forward” is not a database operation.
-
-It is:
-
-- load session state
-- load relevant moves
-- run one loop iteration
-- record resulting move(s)
-
-This is replayable and inspectable.
-
----
-
-### 8. non-goals (explicit)
-
-- no task abstraction
-- no success semantics
-- no implicit completion
-- no hidden control flow
-- no intelligence inside storage
-- no extensions baked into core
+compute
+├── begin.js
+├── prepare.js
+├── loop.js
+├── decide.js
+├── rest.js
+├── plan.js
+├── ask.js
+├── parse.js
+└── act.js
 ```
 
-what files will you create in compute (core logic) to separate the concerns.
-
-what are functions inside. params. returns.
+Each file exports exactly one verb.
 
 ---
 
-some skills, hooks, and tools are predefined.
+### 2. begin
 
-skills are knowledge/structure you send when asking if relevant.
+**file**
+`begin.js`
 
-tools are how you act. you send them. intelligence decides whether to use each. it replies with yaml. you parse it. you call each.
+**role**
+entry point
 
-at fisrt you have a complex task with a spec.
+**behavior**
 
-i dont want context, index, and extension. they are not verbs. i will have begin.
+- receives all external inputs
+- passes everything directly to `prepare`
+- receives prepared output
+- passes prepared output to `loop`
 
-hooks (extensions) are not event listeners. hooks are python decorators.
-
-a hook can wrap prepare. it logs "hello world" after it.
-
-a hook can wrap specific tool calls (e.g. shell commands) in process. it check safety. if safe execute. if not it does something else.
-
-what's the data flow.
-
----
-
-be grounded.
-
-rest has no input or output. if no hooks wrap it, it does nothing.
-
-plan create a string prompt and an optional object context. it decides how to ask. for now i will not support a context.
-
-plan might use request (intelligence) to ask how to ask. for now it does not.
-
-request has
-
-ask: prompt, optional context, model -> markdown. it might output yaml or something else.
-
-process has
-
-parse: markdown -> all yaml code blocks -> a list of tool calls (tool name, params).
-
-act: tool name and params -> call it -> result (defined by the tool, maybe void, maybe terminal log or something else)
-
-you dont have hooks.js
-
-in prepare, you wrap all methods with their hooks and give these methods to loop.
-
-store is already written. storage hooks are builtin.
-
-you have compute/hooks/store_request and compute/hooks/store_action.
-
-prepare see both optional user hooks (from begin) and builtin hooks.
+`begin` contains no logic of its own.
+It only chains `prepare → loop`.
 
 ---
 
-write the spec about compute.
+### 3. prepare
 
-only include the spec in your answer. don't talk. dont put inside a markdown code block.
+**file**
+`prepare.js`
 
-be grounded and detailed.
+**role**
+initialization and wrapping
 
-file. fn. params. process. returns.
+**behavior**
 
-literals have type. objects have structure.
+- initializes state
+- loads config as-is
+- state contains working directory
+- receives decorators
+
+decorators:
+
+- each decorator declares a step name
+- each decorator provides a decorator function
+- decorators wrap verbs by step name
+- wrapping happens only here
+
+**output**
+
+- state
+- config
+- wrapped verbs
+
+`prepare` does not mutate state or config beyond initialization.
+
+---
+
+### 4. loop
+
+**file**
+`loop.js`
+
+**role**
+continuity
+
+**behavior**
+
+- runs continuously
+- calls `decide`
+- if decision is rest:
+
+  - calls `rest`
+
+- if decision is move:
+
+  - calls `plan`
+  - passes result to `ask`
+  - passes markdown to `parse`
+  - iterates tool calls
+  - calls `act` once per tool call
+
+- repeats
+
+`loop` owns repetition and ordering only.
+
+---
+
+### 5. decide
+
+**file**
+`decide.js`
+
+**role**
+motion selection
+
+**behavior**
+
+- inspects state
+- may inspect recent outcomes
+- determines whether to move or rest
+
+**output**
+
+- move
+- rest
+
+This is the only place that chooses action vs stillness.
+
+---
+
+### 6. rest
+
+**file**
+`rest.js`
+
+**role**
+intentional inactivity
+
+**behavior**
+
+- takes no input
+- returns no output
+
+If undecorated, it performs no operation.
+
+---
+
+### 7. plan
+
+**file**
+`plan.js`
+
+**role**
+asking strategy
+
+**behavior**
+
+- receives state
+- may inspect config
+- constructs a prompt string
+- decides how to ask
+
+**output**
+
+- a value consumed directly by `ask`
+
+`plan` always outputs something.
+`plan` does not request intelligence.
+
+---
+
+### 8. ask
+
+**file**
+`ask.js`
+
+**role**
+intelligence request
+
+**behavior**
+
+- receives output of `plan`
+- sends prompt to a model
+- receives markdown
+- stores the interaction
+
+**output**
+
+- markdown
+
+`ask` does not interpret responses.
+
+---
+
+### 9. parse
+
+**file**
+`parse.js`
+
+**role**
+interpretation
+
+**behavior**
+
+- receives markdown
+- extracts all yaml code blocks
+- converts them into an ordered list of tool calls
+
+Non-tool content is ignored.
+
+**output**
+
+- list of tool calls (may be empty)
+
+---
+
+### 10. act
+
+**file**
+`act.js`
+
+**role**
+execution
+
+**behavior**
+
+- receives a single tool call
+- invokes the specified tool with parameters
+- observes the result
+- stores the action and result
+
+`act` executes exactly one tool call.
+Iteration is controlled by `loop`.
+
+---
+
+### 11. decorators
+
+Decorators are wrappers.
+
+- decorators wrap verbs
+- decorators are applied in `prepare`
+- decorators are identified by step name
+- decorators may observe, log, block, or substitute behavior
+
+There is no event system.
+There is no runtime registration.
+
+---
+
+### 12. boundaries
+
+- compute defines flow
+- intelligence defines decisions
+- tools define effects
+- storage records history
+
+compute remains literal, finite, and readable.
+````
+
+---
+
+write parse.js
+
+a markdown file
+
+```yaml
+- tool: read
+  file: notes.md
+
+- tool: ask
+  prompt: |
+    summarize the intent of this document in one paragraph
+
+- tool: write
+  file: hello_world.cpp
+  content: |
+    #include <iostream>
+
+    int main() {
+        std::cout << "Hello, world!" << std::endl;
+        return 0;
+    }
+
+- tool: sh
+  command: g++ hello_world.cpp -o hello_world
+
+- tool: test
+  command: ./hello_world
+
+- tool: edit
+  file: hello_world.cpp
+  content: |
+    #include <iostream>
+
+    int main() {
+        std::cout << "Hello, world from humility." << std::endl;
+        return 0;
+    }
+```
+
+---
 
 

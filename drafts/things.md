@@ -102,5 +102,18 @@ e.g. snake case
 
 ---
 
+text embedding.
 
+(figure out the context under 1 sec and ask with the right prompt)
 
+---
+
+font.
+
+google fonts list the font.
+
+i help choose the font.
+
+and organize my favorite fonts. view them.
+
+---

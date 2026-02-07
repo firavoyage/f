@@ -1009,21 +1009,6 @@ got stuck. (a message not sent)
 
 ---
 
-serve/run:
-
-- run db
-- run ollama (if needed)
-
-(idk. dont let it run these... maybe)
-
----
-
-- connect frontend with backend.
-- create the simple and extensible frontend.
-- make the design more human. (gradient, shadow, ...)
-
----
-
 create a design system...
 
 protect intention.
@@ -1067,20 +1052,6 @@ then no css now.
 
 ---
 
-这两天从零做了一个玩具 agent，现在只实现了一个调用 shell 的能力，感觉已经可以做很多事了。
-
-Shell Is All You Need
-
-https://x.com/unixzii/status/2019069650290528604
-
----
-
-text embedding.
-
-(figure out the context under 1 sec and ask with the right prompt)
-
----
-
 complete. follow the spec.
 
 - compute
@@ -1089,4 +1060,5 @@ complete. follow the spec.
 sh. read. write. edit.
 
 ---
+
 
