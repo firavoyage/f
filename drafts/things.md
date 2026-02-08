@@ -117,3 +117,13 @@ i help choose the font.
 and organize my favorite fonts. view them.
 
 ---
+
+on producthunt history. in the recent year.
+
+what succeeded? what failed?
+
+how to determine?
+
+---
+
+

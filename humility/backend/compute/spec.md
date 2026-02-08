@@ -277,3 +277,55 @@ There is no runtime registration.
 - storage records history
 
 compute remains literal, finite, and readable.
+
+##
+
+decide:
+
+read `status`. 
+
+plan:
+
+read `prompt`, `context`, and `progress`.
+
+put context and progress into the prompt template. return.
+
+design the prompt template. choose python one. simple.
+
+ask:
+
+send the prompt. if fail retry. store. return.
+
+parse:
+
+markdown to tool calls.
+
+act:
+
+design how to link tools.
+
+in an object maybe.
+
+##
+
+(plan.)
+
+what you need to know.
+
+action.
+
+what you do.
+
+observation.
+
+what you see.
+
+tool results. metrics. citations.
+
+decision.
+
+how you narrow.
+
+tech stack. code files.
+
+

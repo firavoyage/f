@@ -92,6 +92,8 @@ https://manus.im/docs/en/features/projects
 
 https://www.anthropic.com/learn
 
+https://manus.im/blog
+
 ---
 
 design system
@@ -110,8 +112,9 @@ pictures/design
 
 ---
 
-kaguya
+humility/backend/compute/test/chemistry
+
+humility/backend/compute/test/coding
 
 ---
-
 

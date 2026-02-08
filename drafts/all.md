@@ -90,11 +90,12 @@ software engineering project management:
 
 - arrange todos
 - app creation mindmap
-  - app creation mindmap phase 0 the spark
+- app creation mindmap phase 0 the spark
 - initial feasibility report
-  - technical feasibility
+- technical feasibility
 - project roadmap order of work
 - do things that dont scale
+- prd
 
 software engineering architecture:
 

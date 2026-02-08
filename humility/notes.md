@@ -113,9 +113,25 @@ Grounded simplicity: a broad set of use cases, instead of general purpose
 
 ---
 
+on ia.
+
+```
+By popular request: you can now branch conversations in ChatGPT, letting you more easily explore different directions without losing your original thread.
+
+Available now to logged-in users on web.
+
+very requested feature!
+```
+
 Gesture: swipe between chats. Open in new page. Permalink. Swipe to switch branches. Edit/stop if wrong. Delete to feel peace of mind, to bin.
 
 A history. Undo each step. Any step, no need to also undo steps after it if not depending. Git merge.
+
+upd:
+
+you know when you typed a wrong prompt (edit) or you want to explore a new topic (branch).
+
+ofc you could open an edition in new tab (swipe for example) or remove a branch.
 
 ---
 
@@ -263,5 +279,32 @@ structure. knowledge. they are the same.
 within a skill you tell llms how to solve a specific problem.
 
 how to, the method, comes from reality and truth.
+
+---
+
+on feedback.
+
+```
+今天尝试用 Claude Code 写了些 webgpu/webgl 的代码，不出意外，用的 4.1 模型花了快一百刀了其实，跑也跑不起来，不是黑屏就是各种 runtime error。
+我觉得 LLM 只能从日志里面读信息还是远远不够的，没有得到视觉的反馈和运行时的信息还是强差人意
+```
+
+give it the screen, keyboard, and mouse.
+
+various sources.
+
+---
+
+on roadmap.
+
+i dont need a roadmap.
+
+i need to know the next minimal viable step.
+
+inevitable invariant. not trivial.
+
+be simple.
+
+iterate fast with reality.
 
 ---

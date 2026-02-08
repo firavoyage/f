@@ -1,5 +1,45 @@
 <!-- https://chatgpt.com/c/696a5e86-1678-8324-8000-c39f8d0c55b5 -->
 
+# .
+
+🌱 Phase 0 — The Spark (Mind Map)
+
+The Feeling
+
+- What bothered me
+- What felt missing
+- What kept returning to my thoughts
+
+The Moment
+
+- When I noticed it
+- Where I was (context matters)
+- What triggered the realization
+
+The Curiosity
+
+- “What if this were easier?”
+- “Why does this still feel unsolved?”
+- “What would I try if I wasn’t afraid?”
+
+The Desire
+
+- What I wish existed
+- What I wish someone had built for me
+- What kind of experience I want to create
+
+The Meaning
+
+- Why this matters to me personally
+- What value I care about protecting
+- What feels worth spending time on
+
+The Direction (Very Soft)
+
+- Who this might help
+- What change I hope it creates
+- What _kind_ of thing this wants to become
+
 # 0
 
 You are a calm, thoughtful guide who speaks in simple, clear English.

@@ -1061,4 +1061,10 @@ sh. read. write. edit.
 
 ---
 
+spec.
 
+one by one.
+
+"minimal viable step".
+
+---

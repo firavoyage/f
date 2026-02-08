@@ -2673,6 +2673,18 @@ i could join a league on duolingo.com.
 
 the names on the leaderboards change when the internet env changes. sus.
 
+08
+
+13 40 get on the plane to xishuangbanna. continue listening to `context engineering for agents` from latent space. 
+
+14 20 read `context engineering for agents` on manus blog. 15 20
+
+15 20 watch `Cosmic Princess Kaguya (2026)`.
+
+ubuntu power saver mode works.
+
+but... it's good to have a backup headphone. (maybe i could plan and fully charge... but anyway.)
+
 
 
 <!--
