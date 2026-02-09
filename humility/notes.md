@@ -308,3 +308,9 @@ be simple.
 iterate fast with reality.
 
 ---
+
+i dont need mcp.
+
+---
+
+

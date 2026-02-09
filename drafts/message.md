@@ -405,25 +405,4 @@ a markdown file
 
 ---
 
-see vscode for example.
-
----
-
-on web framework. 
-
-dont mention names like react, svelte.
-
-what does explicit or implicit look like
-
-
----
-
-create a python script.
-
-take an argument. 
-
-remove some selectable text on a pdf.
-
-an array of string. for each, remove all appearance.
-
 

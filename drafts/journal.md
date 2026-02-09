@@ -2685,6 +2685,12 @@ ubuntu power saver mode works.
 
 but... it's good to have a backup headphone. (maybe i could plan and fully charge... but anyway.)
 
+09
+
+21 00 refresh. 21 20 surf zhihu. 22 20 watch gaozixiang live. 23 00
+
+23 20 reg `@firahq:matrix.org`.
+
 
 
 <!--

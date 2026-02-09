@@ -109,6 +109,10 @@ software engineering architecture:
 - architecture deliverables diagrams artifacts
 - big opensource projects
 
+software engineering frontend:
+
+- explicit implicit
+
 software engineering backend:
 
 - categorize backend tech stack

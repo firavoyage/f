@@ -65,6 +65,27 @@ connect/send
 - continue chat
 - manage context
 
+retry
+
+```
+fira@Fira ~ % cd "/home/fira/Documents/f/humility/backend/connect/test/" && node 'send.js'
+node:internal/process/promises:394
+    triggerUncaughtException(err, true /* fromPromise */);
+    ^
+
+page.goto: net::ERR_NETWORK_CHANGED at https://chatgpt.com/
+Call log:
+  - navigating to "https://chatgpt.com/", waiting until "load"
+
+    at Module.send (/home/fira/Documents/f/humility/backend/connect/chatgpt.js:7:14)
+    at async send (/home/fira/Documents/f/humility/backend/connect/send.js:18:10)
+    at async file:///home/fira/Documents/f/humility/backend/connect/test/send.js:7:15 {
+  name: 'Error'
+}
+
+Node.js v22.22.0
+```
+
 ---
 
 chem project:
@@ -1015,7 +1036,7 @@ protect intention.
 
 - minimal. vercel. google material design. chatgpt. claude.
 - playful. duolingo. chess. posthog.
-- stylish. brawlstars. zenless zone zero. 
+- stylish. brawlstars. zenless zone zero.
 - peaceful. google reader. v2ex.
 - human. iphone os 4.
 
@@ -1044,7 +1065,7 @@ think what a chat app should have. only trust my intuition.
 
 ui tomorrow maybe?
 
-it's pretty hard to decide. 
+it's pretty hard to decide.
 
 if i could not create a desired ui and just putting something temp,
 
@@ -1052,19 +1073,14 @@ then no css now.
 
 ---
 
-complete. follow the spec.
+complete.
 
-- compute
-- compute: yaml tool calling.
+follow the spec.
 
-sh. read. write. edit.
+- yaml: parse, act
+- tools: sh. read. write. edit.
+- other compute
 
----
-
-spec.
-
-one by one.
-
-"minimal viable step".
+success: chem. 5 chapters.
 
 ---
