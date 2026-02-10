@@ -12,10 +12,15 @@ Take these as universal defaults, not my personal preferences. No need to mentio
   - be modular and cohesive
   - prefer an object as params
   - prefer async
+  - use jsdoc
 
 ---
 
 creating an autonomous continuous ai agent.
+
+---
+
+current folder shape.
 
 ```
 fira@Fira ~/Documents/f/humility
@@ -23,6 +28,11 @@ fira@Fira ~/Documents/f/humility
 
 .
 ├── backend
+│   ├── compute
+│   │   ├── parse.js
+│   │   ├── spec.md
+│   │   └── test
+│   │       └── parse.js
 │   ├── connect
 │   │   ├── browser.js
 │   │   ├── chatgpt.js
@@ -364,45 +374,78 @@ compute remains literal, finite, and readable.
 
 ---
 
-write parse.js
+connect/send.js
 
-a markdown file
+```
+// send.js
+import * as chatgpt from "./chatgpt.js";
+import * as deepseek from "./deepseek.js";
+import * as ollama from "./ollama.js";
 
-```yaml
-- tool: read
-  file: notes.md
+export const send = async (what, where = "chatgpt") => {
+  const sites_map = {
+    chatgpt,
+    deepseek,
+    ollama,
+  };
 
-- tool: ask
-  prompt: |
-    summarize the intent of this document in one paragraph
+  const site = sites_map[where];
+  if (!site || typeof site.send !== "function") {
+    throw new Error(`Invalid site: ${where}`);
+  }
 
-- tool: write
-  file: hello_world.cpp
-  content: |
-    #include <iostream>
-
-    int main() {
-        std::cout << "Hello, world!" << std::endl;
-        return 0;
-    }
-
-- tool: sh
-  command: g++ hello_world.cpp -o hello_world
-
-- tool: test
-  command: ./hello_world
-
-- tool: edit
-  file: hello_world.cpp
-  content: |
-    #include <iostream>
-
-    int main() {
-        std::cout << "Hello, world from humility." << std::endl;
-        return 0;
-    }
+  return await site.send(what);
+};
 ```
 
 ---
+
+write ask.js
+
+params: options.
+
+get prompt from options.
+
+send it.
+
+if you fail, you retry.
+
+dont store.
+
+return `{result}`
+
+result = the markdown string.
+
+write test/ask.js
+
+send hello.
+
+log the response.
+
+---
+
+write backend/log.js
+
+export `log({message})`
+
+create/add a line on backend/humility.log
+
+`time message`
+
+also log in the node console.
+
+on ask.js
+
+dont retry. if you fail, just fail loudly.
+
+on test/ask.js
+
+use the log.
+
+---
+
+some actions might success with a result or fail due to timeout or error.
+
+how does rust handle this.
 
 

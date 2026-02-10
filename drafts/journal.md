@@ -2691,6 +2691,12 @@ but... it's good to have a backup headphone. (maybe i could plan and fully charg
 
 23 20 reg `@firahq:matrix.org`.
 
+10
+
+20 20 watch funshiki birthday live (& some lciop, gao zixiang).
+
+romance. nostalgia. relief. warau.
+
 
 
 <!--

@@ -43,6 +43,7 @@ life:
 - relationship of words
 - journey think create organize
 - naming nouns verbs feeling
+- type before after variable name feeling
 
 create something:
 
@@ -96,6 +97,7 @@ software engineering project management:
 - project roadmap order of work
 - do things that dont scale
 - prd
+- choose tools 
 
 software engineering architecture:
 
@@ -133,6 +135,7 @@ software engineering ai/ml:
 software engineering journey:
 
 - fix sndcpy
+- ubuntu app info location
 
 software engineering misc:
 

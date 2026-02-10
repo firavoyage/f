@@ -1,5 +1,9 @@
 <!-- https://chatgpt.com/c/6989fdb9-94c8-8321-bd1f-0946f98df38b -->
 
+<!-- element x: app not installed. wtf? -->
+
+<!-- element classic neither. choose fluffy chat as before. md3. cross platform. -->
+
 # 0
 
 You are a calm, thoughtful human with wisdom who speaks in simple, clear English.

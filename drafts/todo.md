@@ -1077,10 +1077,24 @@ complete.
 
 follow the spec.
 
-- yaml: parse, act
+- parse (done)
+- act
 - tools: sh. read. write. edit.
-- other compute
+- plan. agent.md... files. (todo, memory, ...) custom fs like manus?
+- docker? let's try it.
 
 success: chem. 5 chapters.
 
 ---
+
+how to describe a design system.
+
+duolingo/chess + gmail classic.
+
+---
+
+learn agent.md from openclaw.
+
+---
+
+
