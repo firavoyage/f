@@ -444,8 +444,51 @@ use the log.
 
 ---
 
-some actions might success with a result or fail due to timeout or error.
+ask: 
 
-how does rust handle this.
+handle errors.
 
+use try catch. 
+
+<!-- result: {type: "ok"|"err", result: ..., error: ...} -->
+
+<!-- use promise reject. -->
+
+just throw... current method works.
+
+it works the same as rust. even simpler. omit `?` operator. omit ok, err.
+
+default -> everything work, ok.
+
+throw -> err. upward.
+
+test/ask:
+
+no change.
+
+---
+
+fix.
+
+
+
+```
+fira@Fira ~/Documents/f/humility/backend/compute/test
+ % cd "/home/fira/Documents/f/humility/backend/compute/test/" && node 'ask.js'
+node:fs:2437
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOENT: no such file or directory, open '/home/fira/Documents/f/humility/backend/compute/test/backend/humility.log'
+    at Object.writeFileSync (node:fs:2437:20)
+    at log (file:///home/fira/Documents/f/humility/backend/log.js:17:8)
+    at run (file:///home/fira/Documents/f/humility/backend/compute/test/ask.js:10:5) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/home/fira/Documents/f/humility/backend/compute/test/backend/humility.log'
+}
+
+Node.js v22.22.0
+```
 

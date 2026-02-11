@@ -1097,4 +1097,24 @@ learn agent.md from openclaw.
 
 ---
 
+know about diffusion and transformer
+
+---
+
+evaluate ghostty
+
+---
+
+will chatgpt.send fail loudly?
+
+idk.
+
+for example, i did not see timeout everywhere.
+
+maybe it will get stuck forever.
+
+- add timeout. throw.
+
+---
+
 

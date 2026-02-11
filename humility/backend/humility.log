@@ -1,0 +1,5 @@
+2026-02-10T16:14:40.636Z Test failed: page.goto: net::ERR_NETWORK_CHANGED at https://chatgpt.com/
+Call log:
+[2m  - navigating to "https://chatgpt.com/", waiting until "load"[22m
+
+2026-02-10T16:16:32.933Z Test response: Hey! How’s it going?

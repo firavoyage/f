@@ -319,20 +319,10 @@ import/export fn, consts. dont import/export mut data, which is hard for testing
 
 ---
 
-pure.
+be pure.
 
 loop handle the side effects. store.
 
 plan, ask, etc. dont store.
-
----
-
-will chatgpt.send fail loudly?
-
-idk.
-
-for example, i did not see timeout everywhere.
-
-maybe it will get stuck forever.
 
 ---

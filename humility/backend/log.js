@@ -1,8 +1,12 @@
 // log.js
 import fs from "fs";
 import path from "path";
+import { fileURLToPath } from "url";
 
-const log_path = path.resolve("backend/humility.log");
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const log_path = path.join(__dirname, "humility.log");
 
 /**
  * log — append a timestamped message to file and console
@@ -13,9 +17,10 @@ export const log = ({ message }) => {
   const time = new Date().toISOString();
   const line = `${time} ${message}\n`;
 
-  // append to file
-  fs.appendFileSync(log_path, line, "utf-8");
+  if (!fs.existsSync(log_path)) {
+    fs.writeFileSync(log_path, "", "utf-8");
+  }
 
-  // also log to console
+  fs.appendFileSync(log_path, line, "utf-8");
   console.log(line.trim());
 };

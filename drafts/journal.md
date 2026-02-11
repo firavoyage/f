@@ -2697,6 +2697,20 @@ but... it's good to have a backup headphone. (maybe i could plan and fully charg
 
 romance. nostalgia. relief. warau.
 
+11
+
+01 00 deep dive into funshiki.
+
+https://moegirl.icu/%E6%B3%9B%E5%BC%8F
+
+note. all: berryberry legacy.
+
+quote. a vid platform should recommend from all history.
+
+02 00 surf from twitter. browse a post about vibe coding.
+
+https://loongphy.com/blog/ai-coding-2025
+
 
 
 <!--
