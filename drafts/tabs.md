@@ -36,10 +36,6 @@ journal
 
 ---
 
-humility
-
----
-
 https://generals.io/
 
 https://chess.com/
@@ -59,10 +55,6 @@ saba https://www.youtube.com/@SamekoSaba
 (vibe coding stream) https://www.youtube.com/@bridgemindai
 
 https://www.google.com/search?q=vibe+coding+stream&gl=us
-
-https://www.youtube.com/watch?v=OhZjUK8OFsk
-
-https://www.twitch.tv/directory/category/chess-1
 
 ---
 

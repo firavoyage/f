@@ -126,4 +126,28 @@ how to determine?
 
 ---
 
+learn agent.md from openclaw.
 
+---
+
+know about diffusion and transformer
+
+---
+
+evaluate ghostty
+
+---
+
+have a complex yet well defined coding task.
+
+~~telegram copy~~ ~~snake game~~ ~~shoe brand~~
+
+(just my projects?)
+
+---
+
+long running.
+
+(mirage. not pragmatic.)
+
+---

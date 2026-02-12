@@ -20,7 +20,7 @@ creating an autonomous continuous ai agent.
 
 ---
 
-current folder shape.
+folder shape.
 
 ```
 fira@Fira ~/Documents/f/humility
@@ -374,76 +374,6 @@ compute remains literal, finite, and readable.
 
 ---
 
-connect/send.js
-
-```
-// send.js
-import * as chatgpt from "./chatgpt.js";
-import * as deepseek from "./deepseek.js";
-import * as ollama from "./ollama.js";
-
-export const send = async (what, where = "chatgpt") => {
-  const sites_map = {
-    chatgpt,
-    deepseek,
-    ollama,
-  };
-
-  const site = sites_map[where];
-  if (!site || typeof site.send !== "function") {
-    throw new Error(`Invalid site: ${where}`);
-  }
-
-  return await site.send(what);
-};
-```
-
----
-
-write ask.js
-
-params: options.
-
-get prompt from options.
-
-send it.
-
-if you fail, you retry.
-
-dont store.
-
-return `{result}`
-
-result = the markdown string.
-
-write test/ask.js
-
-send hello.
-
-log the response.
-
----
-
-write backend/log.js
-
-export `log({message})`
-
-create/add a line on backend/humility.log
-
-`time message`
-
-also log in the node console.
-
-on ask.js
-
-dont retry. if you fail, just fail loudly.
-
-on test/ask.js
-
-use the log.
-
----
-
 ask: 
 
 handle errors.
@@ -468,27 +398,4 @@ no change.
 
 ---
 
-fix.
-
-
-
-```
-fira@Fira ~/Documents/f/humility/backend/compute/test
- % cd "/home/fira/Documents/f/humility/backend/compute/test/" && node 'ask.js'
-node:fs:2437
-    return binding.writeFileUtf8(
-                   ^
-
-Error: ENOENT: no such file or directory, open '/home/fira/Documents/f/humility/backend/compute/test/backend/humility.log'
-    at Object.writeFileSync (node:fs:2437:20)
-    at log (file:///home/fira/Documents/f/humility/backend/log.js:17:8)
-    at run (file:///home/fira/Documents/f/humility/backend/compute/test/ask.js:10:5) {
-  errno: -2,
-  code: 'ENOENT',
-  syscall: 'open',
-  path: '/home/fira/Documents/f/humility/backend/compute/test/backend/humility.log'
-}
-
-Node.js v22.22.0
-```
 

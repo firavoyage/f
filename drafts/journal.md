@@ -2711,6 +2711,18 @@ quote. a vid platform should recommend from all history.
 
 https://loongphy.com/blog/ai-coding-2025
 
+24 00 download `Led Zeppelin IV`.
+
+from `Stairway to Heaven` mentioned by dhh on lex friedman podcast.
+
+12
+
+00 00 play `Today Is A Beautiful Day`. learn dynamic import.
+
+good. although i seldom play this.
+
+simple romance.
+
 
 
 <!--

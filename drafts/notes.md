@@ -138,3 +138,6 @@ fatefairy:
 
 ---
 
+windows is pragmatic. mac is beautiful. linux is free.
+
+---
