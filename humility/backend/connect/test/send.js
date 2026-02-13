@@ -1,9 +1,11 @@
 import { send } from "../send.js";
 
 (async () => {
-  const result = send("hello", "chatgpt");
-  // const result = send("give me a list of 10 famous people", "ollama");
-  // const result2 = send("give me a list of 5 famous people", "chatgpt");
-  console.log(await result);
-  // console.log(await result2);
+  const result = await send({
+    message: "hello",
+    model: "chatgpt",
+    timeout: 90_000,
+  });
+
+  console.log(result);
 })();

@@ -326,3 +326,13 @@ loop handle the side effects. store.
 plan, ask, etc. dont store.
 
 ---
+
+an agent is a human.
+
+just use readme.md.
+
+no need to use agents.md (if it has i will read in the future maybe)
+
+upd: actually, maybe a human is an agent in my readme writing style...
+
+---

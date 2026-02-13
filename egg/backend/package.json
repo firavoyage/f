@@ -1,0 +1,7 @@
+{
+  "name": "@egg/backend",
+  "type": "module",
+  "dependencies": {
+    "patchright": "^1.57.0"
+  }
+}

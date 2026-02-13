@@ -151,3 +151,15 @@ long running.
 (mirage. not pragmatic.)
 
 ---
+
+photos -> university.
+
+(instead of school)
+
+on gitea, remove fonts maybe.
+
+i could create a new platform with vibe.
+
+it's just a list. 
+
+---

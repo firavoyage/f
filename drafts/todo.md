@@ -117,8 +117,9 @@ maybe it will get stuck forever.
 
 ---
 
-- send: add timeout. throw.
 - act: load. act.
 - plan: load. tool. plan.
 
 ---
+
+

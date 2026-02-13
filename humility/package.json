@@ -1,0 +1,8 @@
+{
+  "name": "humility",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "frontend"
+  ]
+}

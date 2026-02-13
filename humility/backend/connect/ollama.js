@@ -1,4 +1,7 @@
 // ollama.js
+
+// to secure
+
 import { spawn } from "node:child_process";
 
 const url = "http://localhost:11434/api/generate";
