@@ -2745,6 +2745,32 @@ it needs card to confirm human. i have no card.
 
 22 00 chat: an outing invitation from internet neighbours.
 
+14
+
+14 00 watch `The Godfather (1972)` to 36min on the plane back home.
+
+a bit sleepy. and the flight is gonna end. no enough time left.
+
+listen to podcast instead. dhh.
+
+18 00 have a haircut.
+
+where i have membership is closed temporarily due to vacation.
+
+the shop on the opposite side would cost 100 cny. quite affordable. but with that money i would likely to have some style and service, which im not intended to.
+
+be simple. if simplicity is not feasible, kill myself.
+
+less is better. that's an universal law. less friction. less hype. less hope. less population, i.e. to not be born, to not give birth, to suicide. shorter life. fewer moves to play. fewer steps to solve a problem.
+
+im not willing to have hair. bypass warnings. ignore suggestions.
+
+the feeling of self appreciation is reserved, even conservative. it could be hypocritical, so fragile. peace wont come from ignorance. and being willing for recognition is nothing.
+
+i go to a small shop to enforce my purpose. a house without any decoration. an old barber. he no longer remembers me, which he would when i were a pupil.
+
+20 40 archive telegram messages. simplify zhihu favorites: school.
+
 
 
 <!--

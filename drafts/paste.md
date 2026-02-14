@@ -31,5 +31,3 @@ Actually you have not met anyone from the internet before.
 I could recall the moment when I were looking up the following list on zhihu to find someone (I failed and searched her name directly in the end) and share her profile. I suddenly saw this avatar. wow. When did I follow her? idk. You browsed through her posts without finding any clue (maybe zhihu should provide a method to sort posts by popularity). And you found a picture on 2021 when she were 18. Warau.
 
 And in the afternoon you receive an outing invitation from her.
-
----

@@ -107,19 +107,13 @@ duolingo/chess + gmail classic.
 
 ---
 
-will chatgpt.send fail loudly?
-
-idk.
-
-for example, i did not see timeout everywhere.
-
-maybe it will get stuck forever.
-
----
-
 - act: load. act.
 - plan: load. tool. plan.
+- decide
+- prepare (merge batteries. learn from python.)
 
 ---
+
+i want to have some tools...
 
 
