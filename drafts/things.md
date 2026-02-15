@@ -163,3 +163,27 @@ i could create a new platform with vibe.
 it's just a list. 
 
 ---
+
+default:
+
+- jsconfig.
+- pnpm workspaces
+- ...
+
+---
+
+bird:
+
+the spec for messaging apps. 
+
+---
+
+bird/telegram:
+
+export everything.
+
+find relationship. 
+
+(inspired by: why evil on various groups. seems the world, telegram's userbase on sc, is so small.)
+
+---

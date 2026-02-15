@@ -2771,6 +2771,18 @@ i go to a small shop to enforce my purpose. a house without any decoration. an o
 
 20 40 archive telegram messages. simplify zhihu favorites: school.
 
+15
+
+11 00 learn `The Halloween Gambit!` on lichess.
+
+16 00 simplify telegram. 
+
+17 00 sync phone, e.g. photos, screenshots.
+
+> Remove most. Archive some. Memorize few.
+
+files stalled several months.
+
 
 
 <!--
