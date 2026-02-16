@@ -374,5 +374,11 @@ compute remains literal, finite, and readable.
 
 ---
 
+how to do that with openrouter
 
+```
+export OPENAI_API_KEY="<Your API Key>"
+export OPENAI_BASE_URL="https://api.openai.com/v1"
+export OPENAI_MODEL="gpt-5.3"
+```
 

@@ -42,6 +42,8 @@ https://chess.com/
 
 https://lichess.org/
 
+https://lichess.org/training
+
 https://lichess.org/practice
 
 https://lichess.org/study
@@ -579,6 +581,5 @@ Roadmap. Tasks.
 You: Vol. 160 一年多以后，再聊AI写代码Vibe Coding
 
 ---
-
 
 

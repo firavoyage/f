@@ -2783,6 +2783,46 @@ i go to a small shop to enforce my purpose. a house without any decoration. an o
 
 files stalled several months.
 
+16
+
+01 00 download `[北宇治字幕组] 败犬女主太多了！ / 败北女角太多了！ / Make Heroine ga Oosugiru! [01-12 精校合集][WebRip][HEVC_AAC][简繁日内封] [5.1GB]`.
+
+no unwatched bangumis left.
+
+find on bgm.tv top
+
+try bitmagnet (only dbd-raws, seems widely criticized), nyaa (a long unordered list), choose mikan (categorized by translator under a bangumi)
+
+choose `KitaUji` as recommended by funshiki on cosmic princess kaguya.
+
+01 20 download `[Judas] Clannad (Seasons 1-2 + OVAs) [BD 1080p][HEVC x265 10bit][Dual-Audio][Eng-Subs] (Batch)`.
+
+next: `STEINS;GATE`, `3月のライオン 第2シリーズ `, `魔法少女まどか☆マギカ`, `日常`, `響け！ユーフォニアム2`.
+
+11 40 restart ubuntu. (auto log out)
+
+maybe caused by ipfs. 
+
+(confirm: start ipfs desktop - ipfs errored)
+
+13 20 organize stuff from my phone. create git repo `university`.
+
+i could only create 5 repos on gitea for free... but what if i create an organization?
+
+16 40 watch `PUNISH QUEEN ATTACKS - Beginners Watch This! Chess Rating Climb 358 to 402 ELO (Chess.com Speedrun)`.
+
+21 20 finish my first classic challenge 12 wins on clash royale tencent server.
+
+deck: evo lumberjack, evo zap, hero mm, golem, nw, e barbs, bomber, arrows.
+
+21 40 read `Idiomatic Signals for React` `Algebraic Effects for the Rest of Us`.
+
+22 00 reg `firahq.tngl.sh`.
+
+22 40 receive lucky money of one thousand cny. purchase 10 dollar on openrouter.
+
+incl. service fee of 80 cents by openrouter.
+
 
 
 <!--

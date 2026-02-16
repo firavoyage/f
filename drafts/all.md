@@ -114,6 +114,7 @@ software engineering architecture:
 software engineering frontend:
 
 - explicit implicit
+- js memory leak
 
 software engineering backend:
 
