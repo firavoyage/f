@@ -56,44 +56,6 @@ I want to leverage llms a bit more, they are free and somewhat useful. About hum
 
 ---
 
-The Feeling
-
-- What bothered me
-- What felt missing
-- What kept returning to my thoughts
-
-The Moment
-
-- When I noticed it
-- Where I was (context matters)
-- What triggered the realization
-
-The Curiosity
-
-- “What if this were easier?”
-- “Why does this still feel unsolved?”
-- “What would I try if I wasn’t afraid?”
-
-The Desire
-
-- What I wish existed
-- What I wish someone had built for me
-- What kind of experience I want to create
-
-The Meaning
-
-- Why this matters to me personally
-- What value I care about protecting
-- What feels worth spending time on
-
-The Direction (Very Soft)
-
-- Who this might help
-- What change I hope it creates
-- What _kind_ of thing this wants to become
-
----
-
 - intention
 - polish
 
@@ -334,5 +296,154 @@ just use readme.md.
 no need to use agents.md (if it has i will read in the future maybe)
 
 upd: actually, maybe a human is an agent in my readme writing style...
+
+---
+
+What does human in the loop do. Think different when get stuck. Ask the question itself.
+
+---
+
+Twitter
+
+---
+
+lsp.
+
+Use language tools. Functions. Document. Relationship. Import export write read chain.
+
+You need a lsp. Abstraction. If you are working on a big project, yagni.
+
+---
+
+What's the problem?
+
+1. touch with reality. Run. Write. Read. Maybe edit. Maybe search, in control.
+2. Maybe continue.
+
+---
+
+Maybe skill. Instruction of self correction.
+
+---
+
+How to describe ui. Examples.
+
+How to think a design. Like color, shadow,...
+
+Border... Reference books.
+
+Text. Typography. A shape. On the shape. Around the shape.
+
+Button. A simple shape. The same.
+
+Images, videos, medias. Things on the shape.
+
+---
+
+You should let the human be as lazy as possible
+
+---
+
+Predictable. Deterministic. Certainty. Peace. I mean, spec, plan, files, fn, names, styles, docs, ref. Confirm before proceed.
+
+---
+
+You can predict ahead as if the user will accept the suggestion.
+
+---
+
+Config: how much guidance. How much automation. How much control.
+
+Ask actively. Predict. Guide.
+
+Refuse and suggest. Yagni. Pagni.
+
+Don't implement the plan before approval.
+
+Work folder. File visibility. Names, files, functions, every detail.
+
+---
+
+Use git. Store a version state on a move. Apply a version.
+
+---
+
+Guidance.
+
+Failure patterns
+
+Reinvent the wheel. e.g. suggest libraries
+
+---
+
+Think: when to stop. Good enough to do real works.
+
+Edge roi decreases.
+
+How far could it go... Self correction is simple. Tell it to check itself. Validate or evaluate maybe. Fact check maybe. Testing in software engineering. And get the response.
+
+---
+
+Suggest R & D when needed.
+
+---
+
+Spec.
+
+Design fn. Don't decide naming and taxonomy. Although you can suggest.
+
+Design call flow or deps. Design testing.
+
+---
+
+Broadness and depth.
+
+You can go further, deeper, or broader on the roadmap.
+
+Full automation means it will never stop.
+
+Guidance means it will question the question. It will point out risks if you don't explicitly ignore. It doesn't trust you. Explicit over implicit.
+
+Control means two things. You wanna make it yours. Or you wanna play safely.
+
+How to do and what to do when free
+
+---
+
+Decide the style of the prd/spec
+
+---
+
+Self driving is mirage. Small errors multiply.
+
+And maybe you don't need that.
+
+---
+
+Skill. Research. Inference.
+
+---
+
+Guidance. Automation. Control. Safety. They are not essence. They are a way of abstraction. Think bottom up sometimes.
+
+Bottom up. You must add structure to the prompt. That's plan. You must parse and act. You can have decorators. You can store history and config with a good taxonomy.
+
+Top down. You shouldn't optimize. You should solve some fundamental problems. Like self correction, fact check, think different when getting stuck. In the form of listeners or intervals.
+
+Others are good to have.
+
+---
+
+I would say knowledge. Knowledge means clarity. Skill means order.
+
+---
+
+Humility, official extensions:
+
+Add buttons. Click instead of type. Keep it dry.
+
+Get stuck? How could I prompt you better.
+
+Learn? What can I learn from this to prompt you better.
 
 ---

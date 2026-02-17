@@ -2685,13 +2685,43 @@ ubuntu power saver mode works.
 
 but... it's good to have a backup headphone. (maybe i could plan and fully charge... but anyway.)
 
+19 40 listen to `Long Live Context Engineering - with Jeff Huber of Chroma`.
+
+20 20 listen to `Cline: the open source coding agent that doesn't cut costs`.
+
 09
 
+15 20 listen to `Steve Yegge's Vibe Coding Manifesto: Why Claude Code Isn't It & What Comes After the IDE`.
+
+19 00 listen to `#447 – Cursor Team: Future of Programming with AI`.
+
 21 00 refresh. 21 20 surf zhihu. 22 20 watch gaozixiang live. 23 00
+
+22 20 Mango. Guava.
 
 23 20 reg `@firahq:matrix.org`.
 
 10
+
+15 00 fix metro app thumbnails.
+
+Metro assume songs from the same album should have the same cover art, ignoring what the file is. Holyshit.
+
+Vlc... Worse. It's designed for robustness instead of ux.
+
+Even worse, the data of metro is cached.
+
+Try to delete thumbnail hidden folder under music
+
+Observation: set different album names foo bar. Art applies.
+
+Fix magically. Toggle a few settings. Idk. Thumbnails folder is irrelevant.
+
+Find cause: toggle settings - images - ignore media store covers off and on. Seems the deeper cause is the app is imperative instead of declarative. It's not pure. 
+
+If everything is a state, toggling off and on should behave the exact same.
+
+When I open an album of 200 songs of high quality art... It gets stuck for a sec. Wtf.
 
 20 20 watch funshiki birthday live (& some lciop, gao zixiang).
 
@@ -2711,6 +2741,14 @@ quote. a vid platform should recommend from all history.
 
 https://loongphy.com/blog/ai-coding-2025
 
+14 00 listen to `#474 – DHH: Future of Programming, AI, Ruby on Rails, Productivity & Parenting`.
+
+15 40 read manus blog.
+
+https://manus.im/blog/manus-user-story-noelle-fleur
+
+16 20 Change digdog id to firahq. Change birthday to 1989.
+
 24 00 download `Led Zeppelin IV`.
 
 from `Stairway to Heaven` mentioned by dhh on lex friedman podcast.
@@ -2722,6 +2760,32 @@ from `Stairway to Heaven` mentioned by dhh on lex friedman podcast.
 good. although i seldom play this.
 
 simple romance.
+
+13 20 read `The Ryuo's Work Is Never Done!` book 1 chapter 0 and 1. 1400
+
+14 00 read manus blog.
+
+https://manus.im/blog/manus-beginner-prompts
+
+https://manus.im/blog/manus-notion-mcp-use-cases
+
+https://manus.im/blog/manus-browser-operator
+
+https://manus.im/blog/manus-pops-event-bts
+
+https://manus.im/blog/manus-slack-integration
+
+15 40 read manus blog.
+
+https://manus.im/blog/manus-wide-research-solve-context-problem
+
+Already read. Budget. Fs for retrieval. Don't clean. https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus
+
+17 40 read manus blog.
+
+Solutions, real use cases, trends in the roadmap https://manus.im/blog/what-we-saw-in-the-past-three-months-and-what-we-see-in-the-future
+
+One of the solutions, the playbook https://manus.im/playbook
 
 13
 
@@ -2747,11 +2811,19 @@ it needs card to confirm human. i have no card.
 
 14
 
+12 00 find A few mtfs, or rhythm game players in general follow me on Twitter. Idk.
+
 14 00 watch `The Godfather (1972)` to 36min on the plane back home.
 
 a bit sleepy. and the flight is gonna end. no enough time left.
 
 listen to podcast instead. dhh.
+
+16 20 read https://frostming.com/posts/2026/create-a-claw/. read manus blog.
+
+Humility code review knowledge https://manus.im/blog/best-ai-tools-for-code-review
+
+16 20 listen to `Getting paid to vibe code: Inside the new AI-era job | Lazar Jovanovic (Professional Vibe Coder)`.
 
 18 00 have a haircut.
 
@@ -2774,6 +2846,8 @@ i go to a small shop to enforce my purpose. a house without any decoration. an o
 15
 
 11 00 learn `The Halloween Gambit!` on lichess.
+
+12 00 listen to `Vol. 161 从开发自己的🦞OpenClaw聊起`.
 
 16 00 simplify telegram. 
 
@@ -2822,6 +2896,18 @@ deck: evo lumberjack, evo zap, hero mm, golem, nw, e barbs, bomber, arrows.
 22 40 receive lucky money of one thousand cny. purchase 10 dollar on openrouter.
 
 incl. service fee of 80 cents by openrouter.
+
+17
+
+01 20 watch `17 Pawn Moves in a Row?! This Chess Genius Was Banned from Playing! The Immortal Pawn Game` `He Beat A Super Grandmaster In 9 Moves!!`.
+
+03 20 reg `firahq` on codeberg.
+
+waste time finding the email inside spam.
+
+16 40 watch `How I Beat a CHEATER!!`.
+
+21 00 play `Basics to Brilliance` on lichess study.
 
 
 

@@ -160,7 +160,7 @@ on gitea, remove fonts maybe.
 
 i could create a new platform with vibe.
 
-it's just a list. 
+it's just a list.
 
 ---
 
@@ -174,7 +174,7 @@ default:
 
 bird:
 
-the spec for messaging apps. 
+the spec for messaging apps.
 
 ---
 
@@ -182,8 +182,41 @@ bird/telegram:
 
 export everything.
 
-find relationship. 
+find relationship.
 
 (inspired by: why evil on various groups. seems the world, telegram's userbase on sc, is so small.)
 
 ---
+
+SQLite testing https://www.sqlite.org/testing.html
+
+---
+
+Green tea.
+
+Battery charger.
+
+Headphone.
+
+---
+
+Pdf to html
+
+---
+
+Html alternatives. Cross platform declarative frontend language.
+
+---
+
+Evaluate ruby. Rail.
+
+---
+
+Research: relationship of vtubers. When you sub someone you are likely to sub these. Relationship of internet bloggers. Menci's friends.
+
+---
+
+Ideas in Chinese textbook. Tags. Meta. Essence.
+
+---
+

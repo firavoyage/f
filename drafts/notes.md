@@ -141,3 +141,109 @@ fatefairy:
 windows is pragmatic. mac is beautiful. linux is free.
 
 ---
+
+Docs. Guide. Ref. Spec.
+
+---
+
+pure math.
+
+Lucky. Unlucky. Lucky enough.
+
+---
+
+Combine browser and os. A tab page and an app window are the same thing.
+
+---
+
+Grow: podcast.
+
+Take a note or quote at the current time.
+
+---
+
+abstraction on react, svelte, etc.
+
+Component have state and effects. Props are to compute the initial state. Where to store state doesn't matter. Reducer is abstraction.
+
+Js preprocessor is abstraction.
+
+---
+
+All: phones.
+
+Stats. Feeling of stats. UI. Look of ui. Reports. Issues. Posts. Comments.
+
+Buying a headphone. The search page is very unclear. Popularity. Promo. Ads on the product picture. I could only decide with brand and price. Pick Sony.
+
+---
+
+Grow: human index.
+
+Some ppl appear a lot. Luban today. Who once comment on my place. Zhihu is small. The world is small.
+
+---
+
+Bird: settings.
+
+Date and time fmt. No link preview by default.
+
+---
+
+Lichess app still sucks. You couldn't view puzzle solutions. They just don't display. And idk whether the promotion issue is fixed.
+
+---
+
+bird.
+
+On telegram you could create link previews. You could move up, enlarge/shrink photo, and apply changes. But you could not just disable by default. At least I don't see it when sending messages.
+
+Btw, I don't think there should be apply changes. Such button should only exist in professional softwares for irreversible actions.
+
+It seems that there exists such an option. But doesn't work. Maybe only apply to secret chats.
+
+On bird you could swipe the top bar to switch chats. You can pull down to view all maybe. On the bottom of a chat you swipe down to the next unread chat, maybe you could disable this.
+
+Avatar. Name. Msg Lr Alignment. You could choose whether to show.
+
+Use verbs. Instead of a list. See news. Check the status of friends. Chat. They are different. Not inside the same list.
+
+---
+
+Progressive disclosure.
+
+Progressive enhancement.
+
+Minimal viable step.
+
+---
+
+I suddenly recall this.
+
+Declarative > Imperative
+
+Explicit > Implicit
+
+Oop is on top of fp. As a syntax sugar it's good. As an abstraction it could be redundant. Fp is the essence.
+
+https://manus.im/blog/best-ai-productivity-tools
+
+---
+
+On Firefox Android.
+
+Desktop mode off on is friction.
+
+Checkbox is clear.
+
+---
+
+Podcast: record all activities, actions. What have you jumped.
+
+---
+
+verb noun naming convention.
+
+---
+
+

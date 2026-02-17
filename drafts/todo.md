@@ -14,7 +14,7 @@ an intuitive mind is sacred.
 
 curiosity... good. but dont over do it.
 
-learn by doing. 
+learn by doing.
 
 finish things: close, organize, think, prepare... importance over urgency.
 
@@ -40,7 +40,7 @@ humility
 
 connect/send
 
-- parallel (fire)
+- parallel (fire, could be fake)
 - continue chat
 - advanced context management
 
@@ -48,9 +48,7 @@ connect/send
 
 chem project.
 
-style. detail level.
-
-...
+style. detail level. ...
 
 ---
 
@@ -58,25 +56,15 @@ create a design system...
 
 protect intention.
 
-- minimal. vercel. google material design. chatgpt. claude.
-- playful. duolingo. chess. posthog.
-- stylish. brawlstars. zenless zone zero.
-- peaceful. google reader. v2ex.
-- human. iphone os 4.
-
-let's stay with the minimal one. easier.
-
----
-
-create the design system: read the chat, guidelines.
+- vercel. google material design. chatgpt. claude.
+- duolingo. chess. posthog.
+- brawlstars. zenless zone zero.
+- google reader. v2ex.
+- iphone os 4.
 
 design a button first.
 
-minimal style.
-
-think what a chat app should have. only trust my intuition.
-
-(believe: llms suck at design & archi. dont waste time. i mean open ended tasks with clear quality measurement. not math/algorithms, not literature.)
+choose the style i will use at last. the peaceful and human one, combining chess and gmail classic.
 
 - think what a chat app should have.
 - write down.
@@ -87,15 +75,7 @@ think what a chat app should have. only trust my intuition.
 
 ---
 
-complete.
-
-follow the spec.
-
-- parse (done)
-- act
-- tools: sh. read. write. edit.
-- plan. agent.md... files. (todo, memory, ...) custom fs like manus?
-- docker? let's try it.
+shell. read. write. edit.
 
 <!-- success: chem. 5 chapters. -->
 
@@ -114,9 +94,10 @@ duolingo/chess + gmail classic.
 
 ---
 
-i want to have some tools...
+simplify todo.
+
+next: load. plan. act.
+
+next: roadmap. (simplify notes.)
 
 ---
-
-
-

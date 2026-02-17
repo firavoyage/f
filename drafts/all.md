@@ -115,6 +115,8 @@ software engineering frontend:
 
 - explicit implicit
 - js memory leak
+- js void type
+- js result promise throw
 
 software engineering backend:
 
