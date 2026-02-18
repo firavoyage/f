@@ -220,3 +220,8 @@ Ideas in Chinese textbook. Tags. Meta. Essence.
 
 ---
 
+laptop as a server.
+
+sync: github, matrix, etc.
+
+---

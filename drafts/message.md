@@ -13,7 +13,7 @@ Take these as universal defaults, not my personal preferences. No need to mentio
   - prefer an object as params
   - prefer async
   - use jsdoc
-  - never write `undefined/null` explicitly. just omit.
+  - for the concept of void, never write `undefined/null` explicitly. just omit.
 
 ---
 
@@ -374,61 +374,5 @@ compute remains literal, finite, and readable.
 ````
 
 ---
-
-i want to have some tools.
-
-i will have `compute/load.js`, which works like the python packages manager.
-
-for now, it has `load(tool)`.
-
-- iterate tool folders, currently only one `compute/tools`, a relative path
-- if not found anywhere, throw
-- if found (`{tool}.js`), return. use dynamic loading.
-
-inside tools there are `shell.js`, `write.js`, `read.js`, `edit.js`
-
-each exports `tool`. 
-
-inside tool there are `fn`, `docs`. 
-
-fn takes an object params. e.g. `write` might have `name` and `content`. but it might also take the `context`, not provided by the llm. 
-
-`prepare` will offer the context. `loop` will take it and add to the params list. 
-
-prepare to write `load`, `shell`, `write`, `read`, `edit`.
-
-design all functions and data strcutures. 
-
-they are extendable. e.g. for now, in context, you need `working_directory`.
-
-(my words are messy. you should be clear.)
-
----
-
-edit `write`, `read`, `edit`, and `shell`. write `compute/test/load.js`.
-
-make jsdoc clearer.
-
-never use `undefined/null`. just omit it.
-
-name could be either `docs.md` or `path/to/docs.md`.
-
-write:
-
-create the path and file if non exist, overwrite if exist. 
-
-edit:
-
-you might fail if you could not find the searching text.
-
-
-
-the result of all tools are `{type: "ok", value}` or `{type: ""}`
-
-write/edit has no result if ok, an error message if err.
-
-read has result of the string file content.
-
-
 
 

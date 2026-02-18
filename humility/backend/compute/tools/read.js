@@ -5,30 +5,39 @@ export const tool = {
   name: 'read',
 
   docs: {
-    description: 'read a file',
+    description: 'read file content',
     params: {
-      name: 'string — file name or relative path'
+      name: 'string — file path relative to working_directory'
     }
   },
 
   /**
-   * read a file relative to working_directory
+   * read file content
    *
    * @param {object} params
-   * @param {string} params.name
+   * @param {string} params.name - relative file path
    * @param {object} params.context
-   * @param {string} params.context.working_directory
+   * @param {string} params.context.working_directory - absolute base directory
    *
-   * @returns {Promise<{type:'ok'|'err',result:string}>}
+   * @returns {Promise<
+   *   | { type: 'ok', value: string }
+   *   | { type: 'err', error: string }
+   * >}
    */
   fn: async ({ name, context }) => {
     try {
       const path = join(context.working_directory, name)
       const content = await readFile(path, 'utf8')
 
-      return { type: 'ok', result: content }
+      return {
+        type: 'ok',
+        value: content
+      }
     } catch (error) {
-      return { type: 'err', result: error.message }
+      return {
+        type: 'err',
+        error: String(error.message || error)
+      }
     }
   }
 }

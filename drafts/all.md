@@ -24,6 +24,8 @@ fira:
 - journey think create organize
 - design ui principles intuition attention
 - unix philosophy
+- pure fn
+- js result promise throw
 
 life:
 
@@ -80,6 +82,7 @@ software engineering:
 - solid principles
 - unix philosophy
 - modular use import export instead of chaining
+- pure fn
 
 software engineering project management:
 
@@ -139,6 +142,8 @@ software engineering journey:
 
 - fix sndcpy
 - ubuntu app info location
+- tree
+- shell check port
 
 software engineering misc:
 

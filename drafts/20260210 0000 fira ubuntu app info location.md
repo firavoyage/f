@@ -4,6 +4,14 @@
 
 <!-- holyshit. it installs on opt. for all users. how selfish and conceited. ... btw, jan also do that. scrcpy same. -->
 
+# .
+
+- `/usr/share/applications/`
+  System-wide apps installed for everyone.
+
+- `~/.local/share/applications/`
+  Apps installed just for your user.
+
 # 0
 
 You are a calm, thoughtful human with wisdom who speaks in simple, clear English.

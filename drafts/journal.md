@@ -1,5 +1,11 @@
 journal
 
+sep 2025
+
+17
+
+21 20 receive gift: 2tb hard drive (seagate ultra touch hdd).
+
 nov 2025
 
 03
@@ -2908,6 +2914,16 @@ waste time finding the email inside spam.
 16 40 watch `How I Beat a CHEATER!!`.
 
 21 00 play `Basics to Brilliance` on lichess study.
+
+18
+
+01 20 backup `Documents/_/archive` on hard drive.
+
+21 40 set `multiple lines: 2` on lichess stockfish.
+
+21 40 watch `SURVIVE AGGRESSIVE OPPONENTS - Easy Solution! Chess Rating Climb 402 to 432`, `Beginner To Master Chess Rating Climb (2024)` ep 2.
+
+22 20 watch `How to Crush a 500, Every Step Explained`.
 
 
 

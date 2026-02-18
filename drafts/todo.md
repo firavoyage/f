@@ -46,12 +46,6 @@ connect/send
 
 ---
 
-chem project.
-
-style. detail level. ...
-
----
-
 create a design system...
 
 protect intention.
@@ -75,9 +69,9 @@ choose the style i will use at last. the peaceful and human one, combining chess
 
 ---
 
-shell. read. write. edit.
+chem project.
 
-<!-- success: chem. 5 chapters. -->
+style. detail level. ...
 
 ---
 
@@ -96,8 +90,20 @@ duolingo/chess + gmail classic.
 
 simplify todo.
 
-next: load. plan. act.
+next: plan. act.
 
 next: roadmap. (simplify notes.)
 
 ---
+
+plan: make params yaml.
+
+tree. read context.
+
+act: load and call.
+
+prepare. loop.
+
+---
+
+

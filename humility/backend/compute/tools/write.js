@@ -1,43 +1,45 @@
-import { writeFile, mkdir } from 'node:fs/promises'
+import { mkdir, writeFile } from 'node:fs/promises'
 import { dirname, join } from 'node:path'
 
 export const tool = {
   name: 'write',
 
   docs: {
-    description: 'create or overwrite a file',
+    description: 'create or overwrite a file with content',
     params: {
-      name: 'string — file name or relative path',
+      name: 'string — file path relative to working_directory',
       content: 'string — full file content'
     }
   },
 
   /**
-   * create or overwrite a file
-   *
-   * - creates missing directories
-   * - overwrites existing file
-   * - path is always relative to working_directory
+   * create directories if missing and write file
    *
    * @param {object} params
-   * @param {string} params.name
-   * @param {string} params.content
+   * @param {string} params.name - relative file path (e.g. "docs.md" or "path/to/docs.md")
+   * @param {string} params.content - full content to write
    * @param {object} params.context
-   * @param {string} params.context.working_directory
+   * @param {string} params.context.working_directory - absolute base directory
    *
-   * @returns {Promise<{type:'ok'|'err',result:null|string}>}
+   * @returns {Promise<
+   *   | { type: 'ok' }
+   *   | { type: 'err', error: string }
+   * >}
    */
   fn: async ({ name, content, context }) => {
     try {
       const path = join(context.working_directory, name)
-      const folder = dirname(path)
+      const dir = dirname(path)
 
-      await mkdir(folder, { recursive: true })
+      await mkdir(dir, { recursive: true })
       await writeFile(path, content, 'utf8')
 
-      return { type: 'ok', result: null }
+      return { type: 'ok' }
     } catch (error) {
-      return { type: 'err', result: error.message }
+      return {
+        type: 'err',
+        error: String(error.message || error)
+      }
     }
   }
 }

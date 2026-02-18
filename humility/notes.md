@@ -447,3 +447,15 @@ Get stuck? How could I prompt you better.
 Learn? What can I learn from this to prompt you better.
 
 ---
+
+You can do the same thing in many ways.
+
+you can cd to the working dir, and run humility.
+
+you can run humility, and open the folder on gui.
+
+you can just run humility. i will create a folder in docker.
+
+you can export the folder or just move and name it.
+
+---

@@ -7,27 +7,28 @@ export const tool = {
   docs: {
     description: 'replace text inside a file',
     params: {
-      name: 'string — file name or relative path',
-      search: 'string — text that must exist in the file',
+      name: 'string — file path relative to working_directory',
+      search: 'string — text to find',
       replace: 'string — replacement text'
     }
   },
 
   /**
-   * replace all occurrences of search with replace
+   * replace text in file
    *
-   * - fails if file does not exist
-   * - fails if search string is not found
-   * - operates relative to working_directory
+   * fails if search string not found
    *
    * @param {object} params
-   * @param {string} params.name
-   * @param {string} params.search
-   * @param {string} params.replace
+   * @param {string} params.name - relative file path
+   * @param {string} params.search - exact text to replace
+   * @param {string} params.replace - replacement text
    * @param {object} params.context
-   * @param {string} params.context.working_directory
+   * @param {string} params.context.working_directory - absolute base directory
    *
-   * @returns {Promise<{type:'ok'|'err',result:null|string}>}
+   * @returns {Promise<
+   *   | { type: 'ok' }
+   *   | { type: 'err', error: string }
+   * >}
    */
   fn: async ({ name, search, replace, context }) => {
     try {
@@ -37,7 +38,7 @@ export const tool = {
       if (!content.includes(search)) {
         return {
           type: 'err',
-          result: `text not found in "${name}"`
+          error: 'search text not found'
         }
       }
 
@@ -45,9 +46,12 @@ export const tool = {
 
       await writeFile(path, updated, 'utf8')
 
-      return { type: 'ok', result: null }
+      return { type: 'ok' }
     } catch (error) {
-      return { type: 'err', result: error.message }
+      return {
+        type: 'err',
+        error: String(error.message || error)
+      }
     }
   }
 }
