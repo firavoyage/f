@@ -49,3 +49,10 @@ about pure project: practice activism/accerationism and let's see what the final
 "见证世界的参差"
 
 ---
+
+不面向大人. 面向孩子.
+
+孩子长大后给 fira 赞助.
+
+---
+

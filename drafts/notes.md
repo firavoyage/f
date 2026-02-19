@@ -242,8 +242,5 @@ Podcast: record all activities, actions. What have you jumped.
 
 ---
 
-verb noun naming convention.
-
----
 
 

@@ -26,6 +26,8 @@ fira:
 - unix philosophy
 - pure fn
 - js result promise throw
+- black tea green tea
+- infinite money
 
 life:
 
@@ -46,6 +48,8 @@ life:
 - journey think create organize
 - naming nouns verbs feeling
 - type before after variable name feeling
+- black tea green tea
+- infinite money
 
 create something:
 

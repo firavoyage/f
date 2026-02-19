@@ -1,9 +1,11 @@
 import { readFile, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
 
+/** @typedef {import('../../types').result} result */
+/** @typedef {import('../../types').context} context */
+
 export const tool = {
   name: 'edit',
-
   docs: {
     description: 'replace text inside a file',
     params: {
@@ -14,21 +16,13 @@ export const tool = {
   },
 
   /**
-   * replace text in file
-   *
-   * fails if search string not found
-   *
    * @param {object} params
-   * @param {string} params.name - relative file path
-   * @param {string} params.search - exact text to replace
-   * @param {string} params.replace - replacement text
-   * @param {object} params.context
-   * @param {string} params.context.working_directory - absolute base directory
+   * @param {string} params.name
+   * @param {string} params.search
+   * @param {string} params.replace
+   * @param {context} params.context
    *
-   * @returns {Promise<
-   *   | { type: 'ok' }
-   *   | { type: 'err', error: string }
-   * >}
+   * @returns {Promise<result>}
    */
   fn: async ({ name, search, replace, context }) => {
     try {
@@ -36,22 +30,14 @@ export const tool = {
       const content = await readFile(path, 'utf8')
 
       if (!content.includes(search)) {
-        return {
-          type: 'err',
-          error: 'search text not found'
-        }
+        return { type: 'err', error: 'search text not found' }
       }
 
       const updated = content.split(search).join(replace)
-
       await writeFile(path, updated, 'utf8')
-
       return { type: 'ok' }
     } catch (error) {
-      return {
-        type: 'err',
-        error: String(error.message || error)
-      }
+      return { type: 'err', error: String(error.message || error) }
     }
   }
 }

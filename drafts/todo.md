@@ -20,6 +20,8 @@ finish things: close, organize, think, prepare... importance over urgency.
 
  -->
 
+<!-- make it work first. make it beautiful next. -->
+
 ---
 
 life

@@ -225,3 +225,10 @@ laptop as a server.
 sync: github, matrix, etc.
 
 ---
+
+learn rust. (learn go.)
+
+learn ts.
+
+---
+

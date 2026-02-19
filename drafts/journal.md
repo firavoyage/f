@@ -2925,6 +2925,26 @@ waste time finding the email inside spam.
 
 22 20 watch `How to Crush a 500, Every Step Explained`.
 
+00 20 skim `Lost and Alone in Rural China`.
+
+00 40 watch `Tattooed Chinese Teenagers Save Me From Scam in Chengdu` `Cheater Gets Embarrassed By This Puzzle`.
+
+01 00 watch `This Is Going Viral In The Chess World`.
+
+the reset checkmate
+
+02 00 archive some `Videos` and `/home/fira/Documents/_/softwares` to free up disk space.
+
+03 00 watch `Chess In 1834 Was WILD`.
+
+11 40 receive `sony wh-ch720n` and `lipton green tea`.
+
+16 40 separate the code workspace of humility project. 17 00 deprecate workspace, just open folder.
+
+the window title is simpler. the `.vscode` is more widely used.
+
+20 20 surf zhihu. download `Structure and Interpretation of Computer Programs`. 
+
 
 
 <!--

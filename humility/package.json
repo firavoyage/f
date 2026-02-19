@@ -1,8 +1,19 @@
 {
   "name": "humility",
   "private": true,
+  "type": "module",
   "workspaces": [
     "backend",
     "frontend"
-  ]
+  ],
+  "scripts": {
+    "lint": "eslint .",
+    "fix": "eslint . --fix"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.0.0",
+    "eslint-plugin-import": "^2.32.0",
+    "globals": "^17.3.0"
+  }
 }

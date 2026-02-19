@@ -1,0 +1,18 @@
+{
+  "files.exclude": {
+    "**/node_modules/**": true,
+    "**/legacy/**": true,
+    "**/.git": true,
+    "**/.vscode": true
+  },
+  "search.exclude": {
+    "**/node_modules/**": true,
+    "**/legacy/**": true,
+    "**/.git": true,
+    "**/.vscode": true
+  },
+  "eslint.run": "onSave",
+  "eslint.useFlatConfig": true,
+  "eslint.workingDirectories": [{ "mode": "auto" }],
+  "eslint.validate": ["javascript", "javascriptreact"]
+}
