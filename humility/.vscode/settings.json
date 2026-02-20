@@ -11,8 +11,11 @@
     "**/.git": true,
     "**/.vscode": true
   },
-  "eslint.run": "onSave",
-  "eslint.useFlatConfig": true,
-  "eslint.workingDirectories": [{ "mode": "auto" }],
-  "eslint.validate": ["javascript", "javascriptreact"]
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "eslint.format.enable": false
 }

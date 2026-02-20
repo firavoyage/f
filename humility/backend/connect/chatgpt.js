@@ -43,7 +43,7 @@ export function convert_chatgpt(event_stream) {
   const json = JSON;
 
   const split_lines = (s) => s.replace(/\r/g, "").split("\n");
-  const trim = (s) => (s == null ? "" : String(s).trim());
+  const trim = (s) => (s === null ? "" : String(s).trim());
   const is_blank = (s) => trim(s) === "";
 
   const parse_events = (raw) => {

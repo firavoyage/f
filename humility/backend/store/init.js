@@ -95,7 +95,9 @@ async function create_database() {
 
   try {
     await client.query(`CREATE DATABASE ${db_config.name}`);
-  } catch {} // ignore if exists
+  } catch {
+    // todo
+  } // ignore if exists
 
   await client.end();
 }

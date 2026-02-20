@@ -15,7 +15,9 @@ const ensure = () =>
 export const send = async (what) => {
   try {
     ensure(); // harmless if already running
-  } catch {}
+  } catch {
+    // todo
+  }
 
   const res = await fetch(url, {
     method: "POST",

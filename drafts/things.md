@@ -232,3 +232,13 @@ learn ts.
 
 ---
 
+create my eslint rule set.
+
+see all. categorize. 
+
+imagine. create my own rules.
+
+---
+
+
+

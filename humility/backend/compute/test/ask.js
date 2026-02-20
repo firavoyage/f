@@ -2,16 +2,18 @@
 import { ask } from "../ask.js";
 import { log } from "../../log.js";
 
-const prompt = "hello, what can you do";
+const prompt = "hello";
+// const prompt = "hello, what can you do";
 
 const run = async () => {
-  log({ message: `Ask: ${prompt}` });
+  await log({ message: `Ask: ${prompt}` });
 
-  try {
-    const { result } = await ask({ prompt });
-    log({ message: `Test response: ${result}` });
-  } catch (err) {
-    log({ message: `Test failed: ${err.message}` });
+  const res = await ask({ prompt });
+
+  if (res.type === "ok") {
+    await log({ message: `Test response: ${JSON.stringify(res.value)}` });
+  } else {
+    await log({ level: "error", message: `Test failed: ${res.error}` });
   }
 };
 

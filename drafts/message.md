@@ -1,4 +1,4 @@
-Take these as universal defaults, not my personal preferences. No need to mention.
+Take these as conventions, not personal preferences. You must not mention. You must not say you are following these style.
 
 - environment:
   - ubuntu
@@ -107,33 +107,22 @@ fira@Fira ~/Documents/f/humility
 
 ---
 
-result
+types.d.ts
 
 ```
-fira@Fira ~/Documents/f/humility
- % pnpm lint
+type ok = { type: 'ok'; value?: any }
+type err = { type: 'err'; error: string }
+export type result = ok | err
 
-> humility@ lint /home/fira/Documents/f/humility
-> eslint .
+export type context = {
+  working_directory: string
+}
+```
 
+load it load this
 
-Oops! Something went wrong! :(
-
-ESLint: 10.0.0
-
-TypeError: Error while loading rule 'import/no-default-export': Cannot use 'in' operator to search for 'sourceType' in undefined
-Occurred while linting /home/fira/Documents/f/humility/backend/compute/ask.js
-    at sourceType (/home/fira/Documents/f/humility/node_modules/.pnpm/eslint-plugin-import@2.32.0_eslint@10.0.0_jiti@1.21.7_/node_modules/eslint-plugin-import/lib/core/sourceType.js:8:63)
-    at Object.create (/home/fira/Documents/f/humility/node_modules/.pnpm/eslint-plugin-import@2.32.0_eslint@10.0.0_jiti@1.21.7_/node_modules/eslint-plugin-import/lib/rules/no-default-export.js:19:39)
-    at createRuleListeners (/home/fira/Documents/f/humility/node_modules/.pnpm/eslint@10.0.0_jiti@1.21.7/node_modules/eslint/lib/linter/linter.js:497:15)
-    at /home/fira/Documents/f/humility/node_modules/.pnpm/eslint@10.0.0_jiti@1.21.7/node_modules/eslint/lib/linter/linter.js:623:7
-    at Array.forEach (<anonymous>)
-    at runRules (/home/fira/Documents/f/humility/node_modules/.pnpm/eslint@10.0.0_jiti@1.21.7/node_modules/eslint/lib/linter/linter.js:557:31)
-    at #flatVerifyWithoutProcessors (/home/fira/Documents/f/humility/node_modules/.pnpm/eslint@10.0.0_jiti@1.21.7/node_modules/eslint/lib/linter/linter.js:1248:4)
-    at Linter._verifyWithFlatConfigArrayAndWithoutProcessors (/home/fira/Documents/f/humility/node_modules/.pnpm/eslint@10.0.0_jiti@1.21.7/node_modules/eslint/lib/linter/linter.js:1333:43)
-    at Linter._verifyWithFlatConfigArray (/home/fira/Documents/f/humility/node_modules/.pnpm/eslint@10.0.0_jiti@1.21.7/node_modules/eslint/lib/linter/linter.js:1400:15)
-    at Linter.verify (/home/fira/Documents/f/humility/node_modules/.pnpm/eslint@10.0.0_jiti@1.21.7/node_modules/eslint/lib/linter/linter.js:861:9)
- ELIFECYCLE  Command failed with exit code 2.
+```
+/** @typedef {import('path/to/types').result} result */
 ```
 
 ask
@@ -159,106 +148,15 @@ export const ask = async ({ prompt, model, timeout }) => {
 };
 ```
 
-js config
+test/ask
 
 ```
-{
-  "compilerOptions": {
-    "target": "ES2020",
-    "module": "ESNext",
-    "checkJs": true,
-    "allowJs": true,
-    "moduleResolution": "Node",
+// test/ask.js
+import { ask } from "../ask.js";
+import { log } from "../../log.js";
 
-    "strict": true,
-    "noImplicitAny": true,
-    "noImplicitReturns": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true
-  },
-  "exclude": ["node_modules"]
-}
+const prompt = "hello, what can you do";
 
-```
-
-eslint config
-
-```
-import { defineConfig } from "eslint/config"
-import js from "@eslint/js"
-import import_plugin from "eslint-plugin-import"
-
-export default defineConfig([
-  {
-    ignores: [
-      "**/node_modules/**",
-      "**/dist/**",
-      "**/build/**",
-      "**/*.log"
-    ]
-  },
-
-  js.configs.recommended,
-
-  {
-    plugins: {
-      import: import_plugin
-    },
-
-    languageOptions: {
-      ecmaVersion: "latest",
-      sourceType: "module",
-      parserOptions: {
-        ecmaFeatures: {
-          jsx: true
-        }
-      }
-    },
-
-    rules: {
-      "no-undef": "error",
-      "no-unused-vars": ["error", { args: "all" }],
-      "no-unreachable": "error",
-
-      "import/named": "error",
-      "import/no-unresolved": "error",
-      "import/export": "error",
-      "import/no-default-export": "error",
-
-      "camelcase": ["error", { properties: "always" }],
-      "prefer-const": "error"
-    }
-  }
-])
-```
-
-- what is it doing. im not wrong.
-- i want it to scan the files in my folder even if i dont open it.
-
-dont be lazy.
-
-- dont type check objects. 
-
-```
-/**
- * test load success
- */
-const test_load = async () => {
-  const tool = await load({
-    tool: 'write',
-    root
-  })
-
-  if (!tool || tool.name !== 'write')
-    throw new Error('failed to load write')
-
-  console.log('ok — load write')
-}
-```
-
-it says tools is object. object does not have name.
-
-```
 const run = async () => {
   log({ message: `Ask: ${prompt}` });
 
@@ -269,187 +167,141 @@ const run = async () => {
     log({ message: `Test failed: ${err.message}` });
   }
 };
+
+run();
 ```
 
-it says error is type unknown. 
-
-- these rules are llm generated. it's likely that i dont need some, and some i need is missing.
-
----
-
-- hey dont check legacy archive.
-- console is not defined. are you joking?
+send 
 
 ```
-{
-  "files.exclude": {
-    "**/node_modules/**": true,
-    "**/legacy/**": true,
-    "**/.git": true,
-    "**/.vscode": true
-  },
-  "search.exclude": {
-    "**/node_modules/**": true,
-    "**/legacy/**": true,
-    "**/.git": true,
-    "**/.vscode": true
+// todo: feat (secure): cleanup after timeout failure.
+
+import * as chatgpt from "./chatgpt.js";
+import * as deepseek from "./deepseek.js";
+import * as ollama from "./ollama.js";
+
+const DEFAULT_TIMEOUT = 90_000;
+
+/**
+ * with_timeout — wraps an async function with a timeout
+ * @param {object} options
+ * @param {function(): Promise<any>} options.task
+ * @param {number} options.ms
+ */
+export const with_timeout = async ({ task, ms }) => {
+  return Promise.race([
+    task(),
+    new Promise((_, reject) =>
+      setTimeout(() => reject(new Error("timeout")), ms)
+    ),
+  ]);
+};
+
+/**
+ * send — sends a message to a model with timeout protection
+ * @param {object} options
+ * @param {string} options.message
+ * @param {string} [options.model="chatgpt"]
+ * @param {number} [options.timeout=90000]
+ */
+export const send = async ({
+  message,
+  model = "chatgpt",
+  timeout = DEFAULT_TIMEOUT,
+}) => {
+  const sites_map = {
+    chatgpt,
+    deepseek,
+    ollama,
+  };
+
+  const site = sites_map[model];
+
+  if (!site || typeof site.send !== "function") {
+    throw new Error(`invalid model: ${model}`);
   }
-}
+
+  return with_timeout({
+    task: () => site.send(message),
+    ms: timeout,
+  });
+};
 ```
 
+log
+
 ```
-fira@Fira ~/Documents/f/humility
- % pnpm lint
+// log.js
+import fs from "fs";
 
-> humility@ lint /home/fira/Documents/f/humility
-> eslint .
+/**
+ * Append a timestamped log line to humility.log and print to console.
+ *
+ * @async
+ * @function log
+ * @param {object} params - Log parameters.
+ * @param {string} params.message - The message to record.
+ * @param {"info"|"warn"|"error"|"debug"} [params.level="info"] - Log severity level.
+ * @param {string} [params.location] - Optional location string (file and/or function).
+ * @returns {Promise<void>}
+ *
+ * @example
+ * await log({
+ *   message: "agent start"
+ * });
+ * // 2026-02-19T12:00:00.000Z INFO agent start
+ *
+ * @example
+ * await log({
+ *   level: "warn",
+ *   location: "compute/ask.js:run",
+ *   message: "model slow response"
+ * });
+ * // 2026-02-19T12:00:01.000Z WARN compute/ask.js:run model slow response
+ */
+export const log = async ({
+  message,
+  level = "info",
+  location = "",
+}) => {
+  const time = new Date().toISOString();
+  const upper_level = level.toUpperCase();
+  const clean_message = message.replace(/\s+/g, " ").trim();
 
+  const parts = [
+    time,
+    upper_level,
+    location,
+    clean_message,
+  ].filter(Boolean);
 
-/home/fira/Documents/f/humility/backend/compute/test/load.js
-  22:3  error  'console' is not defined  no-undef
-  43:3  error  'console' is not defined  no-undef
+  const line = parts.join(" ") + "\n";
 
-/home/fira/Documents/f/humility/backend/compute/test/tools.js
-   27:37  error  'process' is not defined  no-undef
-  106:3   error  'console' is not defined  no-undef
-  109:35  error  'process' is not defined  no-undef
+  const file_path = new URL("./humility.log", import.meta.url);
 
-/home/fira/Documents/f/humility/backend/connect/chatgpt.js
-  14:19  error  'document' is not defined  no-undef
-  21:17  error  'document' is not defined  no-undef
-  27:29  error  'Event' is not defined     no-undef
+  await fs.promises.appendFile(file_path, line, "utf-8");
 
-/home/fira/Documents/f/humility/backend/connect/ollama.js
-  18:11  error  Empty block statement   no-empty
-  20:21  error  'fetch' is not defined  no-undef
+  if (upper_level === "ERROR") {
+    console.error(line.trim());
+    return;
+  }
 
-/home/fira/Documents/f/humility/backend/connect/send.js
-  18:18  error  '_' is defined but never used  no-unused-vars
-  19:7   error  'setTimeout' is not defined    no-undef
+  if (upper_level === "WARN") {
+    console.warn(line.trim());
+    return;
+  }
 
-/home/fira/Documents/f/humility/backend/connect/test/browse.js
-   9:3   error  'console' is not defined  no-undef
-  13:15  error  'console' is not defined  no-undef
-  14:10  error  'console' is not defined  no-undef
-
-/home/fira/Documents/f/humility/backend/connect/test/send.js
-  10:3  error  'console' is not defined  no-undef
-
-/home/fira/Documents/f/humility/backend/log.js
-  47:25  error  'URL' is not defined      no-undef
-  52:5   error  'console' is not defined  no-undef
-  57:5   error  'console' is not defined  no-undef
-  61:3   error  'console' is not defined  no-undef
-
-/home/fira/Documents/f/humility/backend/store/init.js
-   39:30  error  'setTimeout' is not defined  no-undef
-   68:5   error  'console' is not defined     no-undef
-   80:3   error  'console' is not defined     no-undef
-   98:11  error  Empty block statement        no-empty
-  128:3   error  'console' is not defined     no-undef
-
-/home/fira/Documents/f/humility/backend/store/test/test.js
-   6:3  error  'console' is not defined  no-undef
-   7:3  error  'console' is not defined  no-undef
-   9:3  error  'console' is not defined  no-undef
-  11:3  error  'console' is not defined  no-undef
-  13:3  error  'console' is not defined  no-undef
-  26:3  error  'console' is not defined  no-undef
-  27:3  error  'console' is not defined  no-undef
-  29:3  error  'process' is not defined  no-undef
-
-/home/fira/Documents/f/humility/eslint.config.js
-  1:30  error  Unable to resolve path to module 'eslint/config'  import/no-unresolved
-
-/home/fira/Documents/f/humility/frontend/vite.config.js
-  2:19  error  Unable to resolve path to module '@vitejs/plugin-react'  import/no-unresolved
-
-/home/fira/Documents/f/humility/legacy/compute 20260205/agent.js
-  3:24  error  Unable to resolve path to module '../store/flow.js'  import/no-unresolved
-
-/home/fira/Documents/f/humility/legacy/compute 20260205/ask.js
-   2:22  error  Unable to resolve path to module '../connect/send.js'  import/no-unresolved
-   3:23  error  Unable to resolve path to module '../store/flow.js'    import/no-unresolved
-  17:24  error  '_' is defined but never used                          no-unused-vars
-  18:13  error  'setTimeout' is not defined                            no-undef
-
-/home/fira/Documents/f/humility/legacy/compute 20260205/parse.js
-  2:10  error  'readFile' is defined but never used                 no-unused-vars
-  3:25  error  Unable to resolve path to module 'unified'           import/no-unresolved
-  4:25  error  Unable to resolve path to module 'remark-parse'      import/no-unresolved
-  5:23  error  Unable to resolve path to module 'unist-util-visit'  import/no-unresolved
-
-/home/fira/Documents/f/humility/legacy/compute 20260205/prompt.js
-  1:50  error  'turn' is defined but never used  no-unused-vars
-
-/home/fira/Documents/f/humility/legacy/compute 20260205/run.js
-   7:3  error  'console' is not defined  no-undef
-  19:3  error  'console' is not defined  no-undef
-  22:3  error  'console' is not defined  no-undef
-  25:5  error  'console' is not defined  no-undef
-  30:3  error  'console' is not defined  no-undef
-  33:3  error  'console' is not defined  no-undef
-
-/home/fira/Documents/f/humility/legacy/compute 20260205/test/ask.js
-   3:23  error  Unable to resolve path to module '../../store/flow.js'  import/no-unresolved
-   7:5   error  'console' is not defined                                no-undef
-  10:5   error  'console' is not defined                                no-undef
-  12:5   error  'console' is not defined                                no-undef
-  15:5   error  'console' is not defined                                no-undef
-  16:5   error  'console' is not defined                                no-undef
-  18:5   error  'console' is not defined                                no-undef
-  20:5   error  'console' is not defined                                no-undef
-  25:35  error  'process' is not defined                                no-undef
-
-/home/fira/Documents/f/humility/legacy/compute 20260205/test/parse.js
-  26:5  error  'console' is not defined  no-undef
-
-/home/fira/Documents/f/humility/legacy/store 20260205/db.js
-  4:24  error  Unable to resolve path to module '@electric-sql/pglite'  import/no-unresolved
-
-/home/fira/Documents/f/humility/legacy/store 20260205/link.js
-  1:28  error  Unable to resolve path to module 'uuid'  import/no-unresolved
-
-/home/fira/Documents/f/humility/legacy/store 20260205/session.js
-  1:28  error  Unable to resolve path to module 'uuid'  import/no-unresolved
-
-/home/fira/Documents/f/humility/legacy/store 20260205/test/flow.js
-  35:3  error  'console' is not defined  no-undef
-  39:3  error  'console' is not defined  no-undef
-  40:3  error  'process' is not defined  no-undef
-
-/home/fira/Documents/f/humility/legacy/store 20260205/test/see.js
-  36:5  error  'console' is not defined  no-undef
-  37:5  error  'console' is not defined  no-undef
-  39:5  error  'console' is not defined  no-undef
-  40:5  error  'console' is not defined  no-undef
-  42:5  error  'console' is not defined  no-undef
-  43:5  error  'console' is not defined  no-undef
-  45:5  error  'process' is not defined  no-undef
-  48:5  error  'console' is not defined  no-undef
-  49:5  error  'process' is not defined  no-undef
-
-/home/fira/Documents/f/humility/legacy/store 20260205/thing.js
-  1:28  error  Unable to resolve path to module 'uuid'  import/no-unresolved
-
-/home/fira/Documents/f/humility/legacy/try integration userscript dog fetch/scripts/dog.js
-  12:16  error  'location' is not defined    no-undef
-  26:29  error  'setTimeout' is not defined  no-undef
-  35:27  error  'fetch' is not defined       no-undef
-  50:17  error  'fetch' is not defined       no-undef
-  77:5   error  'location' is not defined    no-undef
-  78:3   error  'dog' is not defined         no-undef
-  80:14  error  'document' is not defined    no-undef
-
-/home/fira/Documents/f/humility/script/run.js
-  23:1  error  'setTimeout' is not defined  no-undef
-
-✖ 85 problems (85 errors, 0 warnings)
-
- ELIFECYCLE  Command failed with exit code 1.
+  console.log(line.trim());
+};
 ```
 
-- i mean vscode should not be lazy. it should show errors in project level. it's hard but you should find a workaround.
+edit.
+
+use the result type. use the updated log. 
+
+ask dont log. test/ask log.
+
+
 
 ---
 
@@ -741,9 +593,9 @@ compute remains literal, finite, and readable.
 
 this is the next checkpoint.
 
-write a lib fn in computer graphics. test. self correct.
+let the agent write a lib fn in computer graphics. test. self correct.
 
-prepare: test.
+prepare: home/test.
 
 plan: tell reply in yaml. give tools. give tree and context. tell it to write context. (give prev tool results.)
 
@@ -751,7 +603,43 @@ ask.
 
 parse.
 
-act.
+act. load the tool and call.
+
+you give it one more tool called stop. 
+
+if you parse it you stop.
+
+write all the code.
+
+(dont trust! although you can. decide the context first. plan first.)
+
+---
+
+what does rust tradeoff. see some code.
+
+---
+
+what are the folder names widely used across git repos
+
+example
+
+my pref
+
+---
+
+fix: chatgpt scroll.
+
+remove system prompt (first msg, very short answer) since they dont carry meaning. assume they are auto picked (based on the general category). assume they are default.
+
+---
+
+what are quirks in english, like singular they.
+
+---
+
+what makes an app non trivial.
+
+---
 
 
 

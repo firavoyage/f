@@ -2945,6 +2945,34 @@ the window title is simpler. the `.vscode` is more widely used.
 
 20 20 surf zhihu. download `Structure and Interpretation of Computer Programs`. 
 
+20
+
+01 00 watch `HOW TO FIND GREAT MOVES - Every Move Explained | Chess Rating Climb 432 to 492`.
+
+15 40 install `golaxy`. reinstall `com.smartisanos.securitycenter` from canta.
+
+without this, it forces an os refresh (like log out log in on ubuntu) whenever i install an app. maybe that's why sndcpy fails before.
+
+16 00 reg `firahq` on golaxy with 5sim since the prev acc has too low initial rating.
+
+use ca, 6728988269 with 0.19 usd.
+
+btw, 5sim crashes chromium, `SIGSEGV`. firefox works.
+
+the app is buggy. poor i18n (`united kiongdom`, text overflow, mixed languages, weird translation). poor responsive design (not resizable on web, text too small). inconsistent ui (no design system).
+
+well, it's still better than foxwq as it's simple and clear.
+
+maybe there's no well designed go platforms. modern swe frontend. polished sophisticated ui. public profile. sharable game permalink. foss engine. export.
+
+17 00 try to have a 7 dan following the ranking map. cheat with local ai.
+
+19 40 play puzzles on `zhangqi.com.cn`.
+
+fun. bot could imitate humans. but seems i could not jump levels...
+
+and the ux is wild, clear, but not really elegant.
+
 
 
 <!--

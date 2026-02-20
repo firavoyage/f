@@ -98,14 +98,7 @@ next: roadmap. (simplify notes.)
 
 ---
 
-plan: make params yaml.
-
-tree. read context.
-
-act: load and call.
-
-prepare. loop.
+(message)
 
 ---
-
 

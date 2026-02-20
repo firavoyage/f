@@ -21,10 +21,10 @@ import fs from "fs";
  * @example
  * await log({
  *   level: "warn",
- *   location: "compute.ask.js:run",
+ *   location: "compute/ask.js:run",
  *   message: "model slow response"
  * });
- * // 2026-02-19T12:00:01.000Z WARN compute.ask.js:run model slow response
+ * // 2026-02-19T12:00:01.000Z WARN compute/ask.js:run model slow response
  */
 export const log = async ({
   message,

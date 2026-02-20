@@ -164,6 +164,7 @@ linguistics:
 
 - translation meaning loss
 - describe
+- singular they
 
 literature:
 
