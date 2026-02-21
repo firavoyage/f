@@ -1,38 +1,92 @@
-import { readdir } from 'node:fs/promises'
-import { join, resolve } from 'node:path'
-import { pathToFileURL } from 'node:url'
+import { readdir } from "node:fs/promises";
+import { join, resolve } from "node:path";
+import { fileURLToPath, pathToFileURL } from "node:url";
+import { log } from "../log.js";
+
+/** @typedef {import('./../types').result} result */
 
 /**
  * dynamically load a tool by name
  *
  * @param {object} params
  * @param {string} params.tool
- * @param {string} params.root
+ * @param {string} [params.root] - optional, defaults to repo root
  *
- * @returns {Promise<object>}
+ * @returns {Promise<result>}
  */
-export const load = async ({ tool, root }) => {
-  const directories = [
-    resolve(root, 'compute/tools')
-  ]
+export const load = async ({
+  tool,
+  root = resolve(fileURLToPath(import.meta.url), "../../.."),
+}) => {
+  const location = "load.js:load";
 
-  for (const directory of directories) {
-    const entries = await readdir(directory)
-    const match = entries.find(name => name === `${tool}.js`)
+  await log({
+    level: "debug",
+    location,
+    message: `attempting to load tool "${tool}"`,
+  });
 
-    if (!match) continue
+  const directory = resolve(root, "backend/compute/tools");
 
-    const full_path = join(directory, match)
-    const module = await import(pathToFileURL(full_path).href)
+  const entries = await readdir(directory).catch(async (error) => {
+    await log({
+      level: "error",
+      location,
+      message: `failed to read directory ${directory}: ${error.message}`,
+    });
 
-    if (!module.tool)
-      throw new Error(`tool "${tool}" has no export "tool"`)
+    return null;
+  });
 
-    if (typeof module.tool.fn !== 'function')
-      throw new Error(`tool "${tool}" missing fn`)
+  if (!entries) return { type: "err", error: "failed to read tools directory" };
 
-    return module.tool
+  const match = entries.find((name) => name === `${tool}.js`);
+  if (!match) {
+    await log({
+      level: "warn",
+      location,
+      message: `tool "${tool}" not found`,
+    });
+    return { type: "err", error: `tool "${tool}" not found` };
   }
 
-  throw new Error(`tool "${tool}" not found`)
-}
+  const full_path = join(directory, match);
+  const module = await import(pathToFileURL(full_path).href).catch(
+    async (error) => {
+      await log({
+        level: "error",
+        location,
+        message: `failed to import ${full_path}: ${error.message}`,
+      });
+      return null;
+    }
+  );
+
+  if (!module) return { type: "err", error: `failed to import tool "${tool}"` };
+
+  if (!module.tool) {
+    await log({
+      level: "error",
+      location,
+      message: `tool "${tool}" has no export "tool"`,
+    });
+    return { type: "err", error: `tool "${tool}" invalid export` };
+  }
+
+  if (typeof module.tool.fn !== "function") {
+    await log({
+      level: "error",
+      location,
+      message: `tool "${tool}" missing fn`,
+    });
+    return { type: "err", error: `tool "${tool}" missing fn` };
+  }
+
+  await log({
+    level: "info",
+    location,
+    message: `tool "${tool}" loaded`,
+  });
+
+  return { type: "ok", value: module.tool };
+};

@@ -1,23 +1,36 @@
 import { load } from '../load.js'
-import { resolve } from 'node:path'
-import { fileURLToPath } from 'node:url'
 
-const root = resolve(
-  fileURLToPath(import.meta.url),
-  '../../..'
-)
+/**
+ * simple assertion
+ *
+ * @param {object} params
+ * @param {boolean} params.ok
+ * @param {string} params.message
+ */
+const check = ({ ok, message }) => {
+  if (!ok) {
+    console.error('FAIL:', message)
+    process.exit(1)
+  }
+}
 
 /**
  * test load success
  */
 const test_load = async () => {
-  const tool = await load({
-    tool: 'write',
-    root
+  const result = await load({ tool: 'write' }) // no root passed
+
+  check({
+    ok: result.type === 'ok',
+    message: 'failed to load write'
   })
 
-  if (!tool || tool.name !== 'write')
-    throw new Error('failed to load write')
+  if (result.type === 'ok') {
+    check({
+      ok: result.value.name === 'write',
+      message: 'write tool name mismatch'
+    })
+  }
 
   console.log('ok — load write')
 }
@@ -26,21 +39,14 @@ const test_load = async () => {
  * test load failure
  */
 const test_missing = async () => {
-  let error = false
+  const result = await load({ tool: 'missing' }) // no root passed
 
-  try {
-    await load({
-      tool: 'missing',
-      root
-    })
-  } catch {
-    error = true
-  }
+  check({
+    ok: result.type === 'err',
+    message: 'missing tool did not return err'
+  })
 
-  if (!error)
-    throw new Error('missing tool did not throw')
-
-  console.log('ok — missing tool throws')
+  console.log('ok — missing tool returns err')
 }
 
 await test_load()

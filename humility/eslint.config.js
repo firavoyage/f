@@ -36,7 +36,7 @@ export default [
       "no-self-compare": "error",
       "no-shadow": "error",
       "eqeqeq": "error",
-      "curly": ["warn", "all"],
+      // "curly": ["warn", "all"],
       "consistent-return": "error",
       "no-var": "error",
       "prefer-const": "error",

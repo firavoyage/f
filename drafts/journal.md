@@ -2973,6 +2973,26 @@ fun. bot could imitate humans. but seems i could not jump levels...
 
 and the ux is wild, clear, but not really elegant.
 
+21
+
+00 20 play `sabbat of the witch` for a while. 02 00
+
+00 40 read `10 Middlegame Moves` by chessvibes.
+
+03 00 download `Atomic Habits` `The Lean Startup` `设计心理学`.
+
+14 00 play go. win golaxy with 4 handcaps. 15 00 
+
+16 00 play puzzles on zhangqi.
+
+21 20 turn off `Improve the model for everyone` on chatgpt.
+
+ux tip: grok offers skip option.
+
+even if there are two answers, event stream listener seems to work. anyway, as i never read both, just turn it off.
+
+happen to find the ads settings.
+
 
 
 <!--

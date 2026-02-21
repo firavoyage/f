@@ -20,7 +20,7 @@ const normalize_calls = ({ blocks }) =>
     }))
   )
 
-const parse = async ({ markdown }) => {
+export const parse = async ({ markdown }) => {
   const tree = unified()
     .use(remark_parse)
     .parse(markdown)
@@ -29,4 +29,3 @@ const parse = async ({ markdown }) => {
   return normalize_calls({ blocks })
 }
 
-export { parse }

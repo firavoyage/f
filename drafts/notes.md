@@ -242,5 +242,13 @@ Podcast: record all activities, actions. What have you jumped.
 
 ---
 
+you can use claude theme... (shadcn/ui?)
 
+while you can also use atoms.jamesclear.com
+
+---
+
+stripe ui is good.
+
+---
 

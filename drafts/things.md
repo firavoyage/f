@@ -240,5 +240,31 @@ imagine. create my own rules.
 
 ---
 
+what does rust tradeoff. see some code.
+
+---
+
+what are the folder names widely used across git repos
+
+example
+
+my pref
+
+---
+
+fix: chatgpt scroll.
+
+remove system prompt (first msg, very short answer) since they dont carry meaning. assume they are auto picked (based on the general category). assume they are default.
+
+---
+
+what are quirks in english, like singular they.
+
+---
+
+what makes an app non trivial.
+
+---
+
 
 

@@ -2,7 +2,15 @@
 import { ask } from "../ask.js";
 import { log } from "../../log.js";
 
-const prompt = "hello";
+const prompt = `
+Create a computer graphics library function:
+- write a function that generates a 2D or 3D shape
+- include examples/tests
+- run the tests
+- if tests fail, self-correct
+- iterate until tests pass
+`;
+// const prompt = "hello";
 // const prompt = "hello, what can you do";
 
 const run = async () => {
