@@ -1,5 +1,6 @@
 import { mkdir, writeFile } from "node:fs/promises";
-import { dirname, join } from "node:path";
+import { dirname, join, resolve } from "node:path";
+import { log } from "../../log.js";
 
 /** @typedef {import('../../types').result} result */
 /** @typedef {import('../../types').context} context */
@@ -7,9 +8,9 @@ import { dirname, join } from "node:path";
 export const tool = {
   name: "write",
   docs: {
-    description: "create or overwrite a file with content",
+    description: "create or overwrite file",
     params: {
-      name: "string — relative file path",
+      name: "string — file name relative to working_directory",
       content: "string — full file content",
     },
   },
@@ -19,16 +20,28 @@ export const tool = {
    * @param {string} params.name
    * @param {string} params.content
    * @param {context} params.context
-   *
    * @returns {Promise<result>}
    */
   fn: async ({ name, content, context }) => {
+    console.log({ name, content, context });
+    const location = "compute/tools/write.js:fn";
+
+    const path = resolve(join(context.working_directory, name));
+
     try {
-      const path = join(context.working_directory, name);
       await mkdir(dirname(path), { recursive: true });
       await writeFile(path, content, "utf8");
+
+      await log({ location, message: `write ${name}` });
+
       return { type: "ok" };
     } catch (error) {
+      await log({
+        level: "error",
+        location,
+        message: `write fail ${name}`,
+      });
+
       return { type: "err", error: String(error.message || error) };
     }
   },

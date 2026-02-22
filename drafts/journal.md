@@ -2993,6 +2993,36 @@ even if there are two answers, event stream listener seems to work. anyway, as i
 
 happen to find the ads settings.
 
+22
+
+01 40 watch `CRUSH WEIRD OPENING MOVES - Explaining Every Move | Chess Rating Climb 492 to 540`.
+
+"Time Pressure!".
+
+04 00 humility: pass checkpoint, computer graphics.
+
+fix code myself. llms dont understand me.
+
+14 40 download `Led Zeppelin` `Led Zeppelin II` `Led Zeppelin III`.
+
+16 00 install mpv from flatpak.
+
+good. geeky (ctrl p). minimal (drop/paste to play, exit after playing). but it does not seem that it could minimize to system tray. and it could not play lyrics. it could not view all files categorized by artists, albums, etc.
+
+choose vlc as before.
+
+17 40 complete zhangqi 2k problemset.
+
+Web ui on phone sucks. Elements cropped, unable to click certain areas. 
+
+Lichess app sucks, but lichess web works.
+
+19 20 listen to `#491 – OpenClaw: The Viral AI Agent that Broke the Internet – Peter Steinberger`.
+
+21 40 try zhangqi 1k problemset. 22 20
+
+can be tricky if careless.
+
 
 
 <!--

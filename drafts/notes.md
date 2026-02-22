@@ -252,3 +252,10 @@ stripe ui is good.
 
 ---
 
+pure math.
+
+If a fn is always down, it might not be negative one day. If a fn is always down at least c every delta x, it would.
+
+---
+
+

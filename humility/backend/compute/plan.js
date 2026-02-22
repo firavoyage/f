@@ -31,10 +31,10 @@ Current progress (overwrite progress.md each iteration):
 ${progress}
 
 History of previous tool calls:
-${JSON.stringify(state.history || [], null, 2)}
+${JSON.stringify(state.history || [])}
 
 Available tools:
-${JSON.stringify(tools_list, null, 2)}
+${JSON.stringify(tools_list)}
 
 Instructions:
 - Respond ONLY in YAML code blocks.
@@ -46,14 +46,12 @@ Instructions:
 
 \`\`\`yaml
 - tool: write
-  params:
-    name: "hello.cpp"
-    content: |
-      #include <iostream>
-      int main() { std::cout << "Hello"; return 0; }
+  name: "hello.cpp"
+  content: |
+    #include <iostream>
+    int main() { std::cout << "Hello"; return 0; }
 - tool: shell
-  params:
-    command: "g++ hello.cpp -o hello && ./hello"
+  command: "g++ hello.cpp -o hello && ./hello"
 - tool: stop
 \`\`\`
 `;

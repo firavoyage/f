@@ -9,7 +9,7 @@ import fs from "fs";
  * @param {object} params - Log parameters.
  * @param {string} params.message - The message to record.
  * @param {"info"|"warn"|"error"|"debug"} [params.level="info"] - Log severity level.
- * @param {string} [params.location] - Optional location string (file and/or function).
+ * @param {string} [params.location] - Location like file:fn.
  * @returns {Promise<void>}
  *
  * @example
@@ -33,7 +33,9 @@ export const log = async ({
 }) => {
   const time = new Date().toISOString();
   const upper_level = level.toUpperCase();
-  const clean_message = message.replace(/\s+/g, " ").trim();
+  const clean_message = message;
+  // const clean_message = message.split("\n").join("\\n");
+  // const clean_message = message.replace(/\s+/g, " ").trim();
 
   const parts = [
     time,

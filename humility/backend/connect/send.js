@@ -1,9 +1,8 @@
-// todo: feat (secure): cleanup after timeout failure.
-
 /** @typedef {import('../types').result} result */
 import * as chatgpt from "./chatgpt.js";
 import * as deepseek from "./deepseek.js";
 import * as ollama from "./ollama.js";
+import * as mock from "./mock.js";
 
 const DEFAULT_TIMEOUT = 90_000;
 
@@ -33,13 +32,14 @@ const with_timeout = async ({ task, ms }) => {
  */
 export const send = async ({
   message,
-  model = "chatgpt",
+  model = "mock",
   timeout = DEFAULT_TIMEOUT,
 }) => {
   const sites_map = {
     chatgpt,
     deepseek,
     ollama,
+    mock,
   };
 
   const site = sites_map[model];

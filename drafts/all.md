@@ -28,6 +28,7 @@ fira:
 - js result promise throw
 - black tea green tea
 - infinite money
+- america penacony dreams come true
 
 life:
 
@@ -50,6 +51,8 @@ life:
 - type before after variable name feeling
 - black tea green tea
 - infinite money
+- america penacony dreams come true
+- dreams
 
 create something:
 
@@ -87,6 +90,7 @@ software engineering:
 - unix philosophy
 - modular use import export instead of chaining
 - pure fn
+- p np
 
 software engineering project management:
 
@@ -159,6 +163,10 @@ ui/ux design:
 
 - design ui principles intuition attention
 - information architecture
+
+math:
+
+- birthday paradox
 
 linguistics:
 

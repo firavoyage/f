@@ -34,8 +34,6 @@ export const load = async ({
       location,
       message: `failed to read directory ${directory}: ${error.message}`,
     });
-
-    return null;
   });
 
   if (!entries) return { type: "err", error: "failed to read tools directory" };
@@ -58,7 +56,6 @@ export const load = async ({
         location,
         message: `failed to import ${full_path}: ${error.message}`,
       });
-      return null;
     }
   );
 

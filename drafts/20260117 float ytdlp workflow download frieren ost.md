@@ -6,6 +6,18 @@
 
 ```sh
 yt-dlp \
+  "https://music.youtube.com/playlist?list=~" \
+  -x \
+  --audio-format mp3 \
+  --audio-quality 0 \
+  --add-metadata \
+  --embed-thumbnail \
+  --parse-metadata "playlist_index:%(track_number)s" \
+  -o "_/%(album,playlist_title)s/%(title)s.%(ext)s"
+```
+
+```sh
+yt-dlp \
   "https://music.youtube.com/playlist?list=OLAK5uy_kPHfpDINYFhiQJMocHVpcQuhrdk1CO0tQ" \
   -x \
   --audio-format mp3 \

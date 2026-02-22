@@ -234,7 +234,7 @@ learn ts.
 
 create my eslint rule set.
 
-see all. categorize. 
+see all. categorize.
 
 imagine. create my own rules.
 
@@ -252,12 +252,6 @@ my pref
 
 ---
 
-fix: chatgpt scroll.
-
-remove system prompt (first msg, very short answer) since they dont carry meaning. assume they are auto picked (based on the general category). assume they are default.
-
----
-
 what are quirks in english, like singular they.
 
 ---
@@ -266,5 +260,12 @@ what makes an app non trivial.
 
 ---
 
+~~fix: chatgpt scroll.~~
 
+remove system prompt (first msg, very short answer) since they dont carry meaning. assume they are auto picked (based on the general category). assume they are default.
 
+upd: start from 0 if the first message is very short.
+
+decision? first msg too short? first prompt "you are ..."? branch from.
+
+---
