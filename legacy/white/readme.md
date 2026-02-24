@@ -73,3 +73,19 @@ existentialism, cynicism, solitude.
 ---
 
 "Wild Fantasy."
+
+---
+
+发达地区是欠发达地区的榜样。
+
+---
+
+人权理事会
+
+不嘲讽。
+
+不怜悯。
+
+不经意间透露苦难。
+
+---

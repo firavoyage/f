@@ -3023,6 +3023,18 @@ Lichess app sucks, but lichess web works.
 
 can be tricky if careless.
 
+23
+
+18 00 config ubuntu 24. write `ubuntu.md`.
+
+a day with ubuntu 24. things are simpler (not installing nonsense). code (vscode) is more modern. use chatgpt instead of docs. 
+
+23 00 watch `How To Recover After Blundering - Beginners Watch This! Rating Climb 400 ELO`.
+
+24
+
+17 40 watch `What's the difference between 1000 and 2200?`.
+
 
 
 <!--
