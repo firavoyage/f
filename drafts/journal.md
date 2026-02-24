@@ -3035,6 +3035,10 @@ a day with ubuntu 24. things are simpler (not installing nonsense). code (vscode
 
 17 40 watch `What's the difference between 1000 and 2200?`.
 
+25
+
+00 00 reg `thefirahq` on instagram.
+
 
 
 <!--
