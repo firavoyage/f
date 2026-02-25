@@ -3060,8 +3060,8 @@ for viewing https://www.youtube.com/shorts/3hCPkU1kqGE which is mentioned when p
 thank you, chen liang!
 
 > 程亮 610404199404071035
->
-> a fore student in uk
+
+a foreign student in uk. (which implies wealth, i appreciate)
 
 btw, ive already verified using this a few mo before. idk why it's
 
