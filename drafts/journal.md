@@ -3071,9 +3071,9 @@ network inspection does not seem easy. ytdlp fails (with cookies from chromium:`
 
 fuck. i should research more.
 
-try extensions. either paid or not working.
+try. try extensions. either paid or not working.
 
-tried har. tried scripts parsing har. (it, `application/vnd.yt-ump`, does not seem to be pars)
+try har. google har analyzer could no try scripts parsing har. (it, `application/vnd.yt-ump`, does not seem to be played normally.)
 
 final solution: select video `$0`. download the video blob.
 
