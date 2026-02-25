@@ -1,1 +1,3 @@
-<!-- deprecate ipfs-desktop d -->
+<!-- deprecate ipfs-desktop from experience -->
+
+<!-- purpose: host buwendingfadianji. -->
