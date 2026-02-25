@@ -3065,13 +3065,13 @@ a foreign student in uk. (which implies wealth, i appreciate)
 
 btw, ive already verified using this a few mo before. idk why it's
 
-04 20 try to download it.
+04 20 try to download it. 05 40 succeed.
 
 network inspection does not seem easy. ytdlp fails (with cookies from chromium:`/home/fira/snap/chromium/common/chromium`). (whether outdated apt or lastest pip, whether proxy node). record screen is last resort (i dont wanna do this since the vid is not really high quality.).
 
 fuck. i should research more.
 
-
+try extens
 
 <!--
 
