@@ -3051,7 +3051,9 @@ waste some time workarounding quirks.
 
 idk what to do.
 
+04 00 verify age on youtube using `vzhibei`.
 
+-
 
 <!--
 
