@@ -3047,6 +3047,9 @@ waste some time workarounding quirks.
 
 00 00 watch `Stuck at 900 ELO? Watch This. | Chess Rating Climb 907 to 939`
 
+02 00 play test `stardew valley` on eden.
+
+idk what to do.
 
 
 
