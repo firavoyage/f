@@ -2,7 +2,7 @@
 
 <!-- (the video need to be fully loaded or the blob is not complete and downloading takes time.) -->
 
-<!--  -->
+<!-- on vlc webm does not display duration. wtf. -->
 
 # 0
 
