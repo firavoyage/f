@@ -40,7 +40,7 @@ humility
 
 ---
 
-- journal
+<!-- journal -->
 
 ---
 
