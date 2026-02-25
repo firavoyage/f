@@ -234,7 +234,7 @@ sudo bash setup_push_service.sh
 
 Let me know if you need anything else!
 
-# 3
+# 3 (maintain)
 
 how to test, check status, disable, change in the future
 
@@ -370,7 +370,7 @@ If you no longer need the service and timer, you can remove them:
 
 These steps should help you test, check, disable, change, and manage the service and timer setup in the future. Let me know if you need more details!
 
-# 4
+# 4 (change)
 
 how to add more times
 
@@ -498,7 +498,7 @@ Wait for me to begin the conversation.
 
 I’ll be here, Fira.
 
-# 1 (learn wi)
+# 1 (learn shell commands)
 
 on ubuntu shell how to write into a file
 
