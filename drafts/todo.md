@@ -40,7 +40,6 @@ humility
 
 ---
 
-- git auto push
 - journal
 
 ---
