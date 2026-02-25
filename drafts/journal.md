@@ -3071,7 +3071,7 @@ try network inspection. seems not easy.
 
 try ytdlp (with cookies from chromium:`/home/fira/snap/chromium/common/chromium`, whether outdated apt or lastest pip, whether proxy node). 
 
-deprecate record screen is last resort (i dont wanna do this since the vid is not really high quality.).
+deprecate recording screen, the last resort (i dont wanna do this since the vid is not really high quality.).
 
 fuck. i should research more.
 
@@ -3079,7 +3079,7 @@ try userscripts (obviously not feasible, too low permission). try extensions. ei
 
 try har. google har analyzer could not download content. try scripts parsing har. (it, `application/vnd.yt-ump`, does not seem to be played normally.)
 
-final solution: select video `$0`. download the video blob.
+solve. select video `$0`. download the video blob.
 
 (the video need to be fully loaded or the blob is not complete and downloading takes time.)
 
