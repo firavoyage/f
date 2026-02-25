@@ -3055,7 +3055,7 @@ idk what to do.
 
 for viewing https://www.youtube.com/shorts/3hCPkU1kqGE which is mentioned when playing buwendingfadianji in the background
 
-(tried the lastest vtuber nailin)
+(tried the lastest post, vtuber nailin)
 
 thank you, chen liang!
 
