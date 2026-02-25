@@ -3073,6 +3073,8 @@ fuck. i should research more.
 
 try extensions. either paid or not working.
 
+tried 
+
 final solution: select video `$0`. download the video blob.
 
 (the video need to be fully loaded or the blob is not complete and downloading takes time.)
