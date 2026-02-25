@@ -585,7 +585,7 @@ If you want to write multiple lines to a file in Ubuntu shell, here are a few wa
 
 Each of these methods can be used depending on whether you want to overwrite the file or append to it.
 
-# 3
+# 3 (challenge: weird)
 
 why is the syntax of cat so weird
 
