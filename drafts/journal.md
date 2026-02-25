@@ -3039,6 +3039,15 @@ a day with ubuntu 24. things are simpler (not installing nonsense). code (vscode
 
 00 00 reg `thefirahq` on instagram.
 
+a day on ubuntu. decide. make it clean. write docs.
+
+waste some time workarounding quirks.
+
+26
+
+00 00 watch `Stuck at 900 ELO? Watch This. | Chess Rating Climb 907 to 939`
+
+
 
 
 <!--

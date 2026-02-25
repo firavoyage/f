@@ -40,3 +40,10 @@ humility
 
 ---
 
+- (ubuntu... apps)
+- git auto push
+- journal
+
+---
+
+

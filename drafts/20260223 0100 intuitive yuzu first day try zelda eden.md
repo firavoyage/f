@@ -283,6 +283,7 @@ For comparison:
 - The Switch cartridge itself can hold more, but the installed data size is roughly in that range.
 
 So if you’re just looking at storage space for testing, think **around 16 GB to be safe**.
+
 #
 
 # 1
@@ -292,11 +293,13 @@ how to run zelda breath of the wild on yuzu on ubuntu. give me detailed steps an
 ---
 
 ### Prerequisites and Legal Note
+
 - **Hardware**: Ubuntu 24.04+ (LTS recommended), 8GB+ RAM, Vulkan-compatible GPU (AMD/Intel/NVIDIA with recent drivers), modern CPU (e.g., Ryzen 5+ or Intel i5+ 11th gen+ for 60FPS).
 - **Legal**: Emulators are legal, but you **must dump your own Nintendo Switch firmware, prod.keys, and game files** from a console/cartridge you own using tools like Lockpick_RCM and nxDumpTool. Downloading them is piracy and illegal in most regions. The links below are provided as requested for convenience, sourced from public emulation communities.
 - Backup your system before proceeding.
 
 ### Step 1: Update System and Install Dependencies
+
 Open a terminal (`Ctrl+Alt+T`) and run this script to install Vulkan drivers, libraries, and tools needed for Eden (a high-performance Yuzu fork optimized for Linux in 2026).
 
 ```bash
@@ -321,9 +324,11 @@ sudo ubuntu-drivers autoinstall
 vulkaninfo | grep deviceName
 echo "Reboot now: sudo reboot"
 ```
+
 Run it, then **reboot**. Test with `vkcube` (should spin a cube).
 
 ### Step 2: Install Eden Emulator (Yuzu Fork)
+
 Eden is the recommended 2026 Yuzu successor: fast, stable, Linux-native .deb support.
 
 ```bash
@@ -335,17 +340,20 @@ wget https://github.com/eden-emulator/Releases/releases/download/v0.2.0-rc1/Eden
 sudo dpkg -i Eden-Ubuntu-24.04-v0.2.0-rc1-amd64.deb
 sudo apt install -f -y  # Fix any missing deps
 ```
+
 - Launch: Search "Eden" in menu or `eden` in terminal.
 - **Keys/Firmware Folder**: Eden > File > Open Eden Folder. Path: `~/.local/share/eden/` (create `keys/` subfolder if missing).
 
 ### Step 3: Add Prod.Keys
+
 1. Download latest **prod.keys** (v21.2.0): Visit https://switchkeys.net/prod-keys-download/ and save as `prod.keys` (text file).
 2. Copy to `~/.local/share/eden/keys/prod.keys`
 3. Restart Eden. Verify: No "missing keys" error on launch.
 
-*(Optional: title.keys from same site for rare encrypted titles.)*
+_(Optional: title.keys from same site for rare encrypted titles.)_
 
 ### Step 4: Install Switch Firmware
+
 Firmware is required for most games (provides system files).
 
 ```bash
@@ -355,10 +363,12 @@ Firmware is required for most games (provides system files).
 cd ~/Downloads
 wget https://github.com/THZoria/NX_Firmware/releases/download/21.2.0/Firmware%2021.2.0.zip
 ```
+
 1. In Eden: **Tools > Install Firmware** > Select `Firmware 21.2.0.zip` > OK (installs to NAND).
 2. Restart Eden.
 
 ### Step 5: Download and Add Breath of the Wild (Switch Version)
+
 BOTW Switch (title ID: 01007EF00011E000) requires base game + Update v1.6.0 + DLC (Master Trials + Champions' Ballad).
 
 - **Recommended: XCI (cartridge dump, faster loading)** or **NSP (eShop)**.
@@ -375,6 +385,7 @@ BOTW Switch (title ID: 01007EF00011E000) requires base game + Update v1.6.0 + DL
 4. Double-click BOTW to launch.
 
 ### Step 6: Optimize for BOTW (60FPS, High Res)
+
 1. Right-click BOTW > Properties:
    | Setting | Value |
    |---------|-------|
@@ -390,13 +401,14 @@ BOTW Switch (title ID: 01007EF00011E000) requires base game + Update v1.6.0 + DL
 3. Controller: Steam Input or SDL2 (Xbox/PS works OOTB).
 
 ### Troubleshooting
-| Issue | Fix |
-|-------|-----|
-| Black screen/crash | Update drivers, use Vulkan, install firmware/keys. |
-| Low FPS | Lower resolution, enable mods, close apps. AMD: RADV driver. NVIDIA: 555+ drivers. |
-| "Invalid NCA" | Wrong keys/firmware; re-download v21.2.0. |
-| No sound | `sudo apt install libpulse0 libasound2` |
-| AppImage alt | If .deb fails: Use playwithyuzu AppImage (https://drive.google.com/file/d/1fPHlSYG0AVdILaWLtyoQfqBfBYwMARGo/view?usp=sharing), `chmod +x`, run. |
+
+| Issue              | Fix                                                                                                                                             |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| Black screen/crash | Update drivers, use Vulkan, install firmware/keys.                                                                                              |
+| Low FPS            | Lower resolution, enable mods, close apps. AMD: RADV driver. NVIDIA: 555+ drivers.                                                              |
+| "Invalid NCA"      | Wrong keys/firmware; re-download v21.2.0.                                                                                                       |
+| No sound           | `sudo apt install libpulse0 libasound2`                                                                                                         |
+| AppImage alt       | If .deb fails: Use playwithyuzu AppImage (https://drive.google.com/file/d/1fPHlSYG0AVdILaWLtyoQfqBfBYwMARGo/view?usp=sharing), `chmod +x`, run. |
 
 BOTW should run at 30-60FPS on mid-range hardware. Test shrine first! For updates, check Eden GitHub/Discord.
 
@@ -528,13 +540,16 @@ After running the above, Eden should now be properly installed. Launch it from t
 ### If That Still Fails (Alternative Approaches)
 
 1. **Use `gdebi` for smarter dependency handling** (recommended if you redo the install):
+
    ```bash
    sudo apt install gdebi
    sudo gdebi Eden-Ubuntu-24.04-v0.2.0-rc1-amd64.deb
    ```
+
    gdebi tries harder to pull missing packages from repositories.
 
 2. **Try the AppImage version instead** (usually bundles most libs, avoids .deb issues):
+
    - Go to the Releases page: https://github.com/eden-emulator/Releases/releases/tag/v0.2.0-rc1
    - Download one of the Linux AppImages (e.g. `Eden-Linux-v0.2.0-rc1-legacy-gcc-standard.AppImage` or a PGO-optimized one if your CPU is recent).
    - Make it executable and run:
@@ -542,7 +557,7 @@ After running the above, Eden should now be properly installed. Launch it from t
      chmod +x Eden-Linux-*.AppImage
      ./Eden-Linux-*.AppImage
      ```
-   AppImage should work out-of-the-box with your existing Vulkan/Mesa setup from step 1 of the original guide.
+     AppImage should work out-of-the-box with your existing Vulkan/Mesa setup from step 1 of the original guide.
 
 3. **Snap package** (if available in your region/mirrors — this bundles everything):
    ```bash
@@ -586,16 +601,16 @@ sudo apt install -y \
 
 # Now fix the half-installed package
 sudo apt install -f -y
-Hit:1 http://security.ubuntu.com/ubuntu noble-security InRelease                                                                             
-Hit:3 https://download.docker.com/linux/ubuntu noble InRelease                                                                               
-Hit:4 http://archive.ubuntu.com/ubuntu noble InRelease                                                                                       
-Hit:5 https://repo.waydro.id noble InRelease                                                                                                 
-Hit:2 http://mirrors.tuna.tsinghua.edu.cn/ubuntu noble InRelease                                                                             
-Hit:6 https://ppa.launchpadcontent.net/flatpak/stable/ubuntu noble InRelease                                                    
-Hit:7 https://ppa.launchpadcontent.net/kisak/kisak-mesa/ubuntu noble InRelease                            
-Hit:8 https://ppa.launchpadcontent.net/oibaf/graphics-drivers/ubuntu noble InRelease                      
-Hit:9 https://downloads.cursor.com/aptrepo stable InRelease                                               
-Hit:10 https://deb.nodesource.com/node_20.x nodistro InRelease                      
+Hit:1 http://security.ubuntu.com/ubuntu noble-security InRelease
+Hit:3 https://download.docker.com/linux/ubuntu noble InRelease
+Hit:4 http://archive.ubuntu.com/ubuntu noble InRelease
+Hit:5 https://repo.waydro.id noble InRelease
+Hit:2 http://mirrors.tuna.tsinghua.edu.cn/ubuntu noble InRelease
+Hit:6 https://ppa.launchpadcontent.net/flatpak/stable/ubuntu noble InRelease
+Hit:7 https://ppa.launchpadcontent.net/kisak/kisak-mesa/ubuntu noble InRelease
+Hit:8 https://ppa.launchpadcontent.net/oibaf/graphics-drivers/ubuntu noble InRelease
+Hit:9 https://downloads.cursor.com/aptrepo stable InRelease
+Hit:10 https://deb.nodesource.com/node_20.x nodistro InRelease
 Reading package lists... Done
 Building dependency tree... Done
 Reading state information... Done
@@ -708,6 +723,7 @@ Errors were encountered while processing:
 The `.deb` package for Eden v0.2.0-rc1 has a **packaging error**: it incorrectly lists many **-dev** (development/header) packages as hard dependencies instead of the runtime libraries. This is common in early/experimental emulator builds and explains why even after installing runtimes, `dpkg` still complains.
 
 Additionally:
+
 - `libquazip1t64-qt6` does **not exist** on Ubuntu 24.04 (Noble). The correct runtime package is `libquazip1-qt6` (no t64 suffix in 24.04; t64 renaming started appearing more in later releases like 24.10+ or 25.x for time_t 64-bit transitions).
 - `qt6-charts6` is also wrong. The correct runtime library is `libqt6charts6`.
 
@@ -718,11 +734,13 @@ The `.deb` is experimental and not well-packaged yet. Switch to the **AppImage**
 1. Go to the Releases page:  
    https://github.com/eden-emulator/Releases/releases/tag/v0.2.0-rc1
 
-2. Scroll to the Linux/AppImage section. Download one of these (pick based on your CPU; start with the standard GCC one for compatibility):  
-   - `Eden-Linux-v0.2.0-rc1-amd64-gcc-standard.AppImage` (recommended for most users)  
+2. Scroll to the Linux/AppImage section. Download one of these (pick based on your CPU; start with the standard GCC one for compatibility):
+
+   - `Eden-Linux-v0.2.0-rc1-amd64-gcc-standard.AppImage` (recommended for most users)
    - Or a PGO-optimized variant if your CPU is recent (e.g., Ryzen 5000+/Intel 11th gen+): `Eden-Linux-v0.2.0-rc1-amd64-gcc-pgo.AppImage` or Clang ones.
 
-3. In your terminal (assuming you downloaded to `~/Downloads`):  
+3. In your terminal (assuming you downloaded to `~/Downloads`):
+
    ```bash
    cd ~/Downloads
    chmod +x Eden-Linux-v0.2.0-rc1-*.AppImage   # Make it executable
@@ -734,7 +752,7 @@ The `.deb` is experimental and not well-packaged yet. Switch to the **AppImage**
    - To make it easier next time: Move the AppImage to `~/Applications/` or `~/.local/bin/`, or right-click → "Make Link" and put the link on your desktop/menu.
 
 4. If you want desktop integration (menu entry, icon):  
-   Install AppImageLauncher (optional but nice):  
+   Install AppImageLauncher (optional but nice):
    ```bash
    sudo add-apt-repository ppa:appimagelauncher-team/stable -y
    sudo apt update
@@ -829,6 +847,7 @@ Nautilus is a GTK4 + GNOME app that relies on specific versions of system librar
 Your earlier `sudo apt install -f` actually **removed Eden** because the `.deb` was so broken it couldn't be configured, but the half-installed dev packages likely stayed and caused collateral damage.
 
 ### Quick Diagnostic Steps
+
 Run these from terminal and share the output if possible:
 
 ```bash
@@ -844,6 +863,7 @@ dmesg | tail -50
 ```
 
 Common errors you'll see:
+
 - GLib-GIO-ERROR … schema not installed
 - Segmentation fault
 - undefined symbol in libgtk or libgio
@@ -900,6 +920,7 @@ Common errors you'll see:
    - Or from live USB: chroot and repair.
 
 ### Prevention for next time
+
 - Avoid mass-installing `-dev` packages unless building from source. Runtime libs are usually enough.
 - For Eden: **stick to the AppImage** as recommended earlier — it bundles its own Qt/dependencies and won't touch your system libs.
 - Or use the Snap version: `sudo snap install eden-emulator`
@@ -917,6 +938,7 @@ nautilus not found. but it's running and i could open a new window.
 This situation—"nautilus: command not found" when you type it in the terminal, **but** the file manager (GNOME Files / Nautilus) is clearly running, you can open new windows via the dock/Activities/search/Super key, or double-clicking folders—usually means one of these common issues after package changes/dev installs:
 
 ### Most Likely Cause
+
 Your `$PATH` environment variable no longer includes the directory where the `nautilus` binary lives (typically `/usr/bin/`).
 
 - The binary is still present and working (that's why the GUI opens fine).
@@ -966,6 +988,7 @@ Your `$PATH` environment variable no longer includes the directory where the `na
    ```
 
    Permanent fix:
+
    - Open your shell config:
 
      ```bash
@@ -988,11 +1011,13 @@ Your `$PATH` environment variable no longer includes the directory where the `na
    - Or just log out/in (or open new terminal tab) for it to take effect.
 
 3. **If you're in a non-standard shell/environment**
+
    - Run `ps -p $$` to see your current shell (should be bash or zsh).
    - If it's something odd, close the terminal and open a fresh one (Ctrl+Alt+T).
    - Check if you're accidentally in a snap shell or container: `snap list | grep nautilus` (unlikely, but possible if you tried snaps earlier).
 
 4. **Other rare possibilities**
+
    - **Dropbox or extension interference** — Very old bug where Dropbox symlinks/overwrites `/usr/bin/nautilus` → but usually shows `nautilus-dropbox` in process list. Check:
 
      ```bash
@@ -1105,6 +1130,7 @@ The "held broken packages" message often appears in these mismatches, even if no
    ```
 
    - After reboot, open a new terminal and try:
+
      ```bash
      /usr/bin/nautilus   # should now exist and open Files
      nautilus            # once PATH is normal
@@ -1119,12 +1145,14 @@ The "held broken packages" message often appears in these mismatches, even if no
 ### Additional Checks / Prevention
 
 - **List broken packages**:
+
   ```bash
   sudo apt list --upgradable
   apt list --installed | grep nautilus
   ```
 
 - **Check for interfering PPAs** (your earlier output shows Oibaf graphics + Kisak Mesa — these sometimes cause GNOME mismatches):
+
   - Temporarily disable them if needed:
     ```bash
     sudo add-apt-repository --remove ppa:oibaf/graphics-drivers
@@ -1167,15 +1195,19 @@ The situation you're seeing is a classic **package version mismatch / dependency
 This is the core problem:
 
 - The `nautilus` package in your repositories (from Ubuntu 24.04 Noble updates/security) has a **very strict dependency**:
+
   ```
   Depends: libnautilus-extension4 (= 1:46.0-0ubuntu2)
   ```
+
   → It demands **exactly** that old base version (46.0 from initial Noble release), **not** a newer one.
 
 - But your system currently has (or APT wants to pull) a **newer patched version**:
+
   ```
   libnautilus-extension4 1:46.2-0ubuntu0.2   # or even 46.4 in some point releases by 2026
   ```
+
   → This newer version comes from security updates / Noble point releases. It's binary-compatible, but the packaging uses an **exact version match** (`=`) instead of a looser range (`>=` or `<<`).
 
 - When you run `sudo apt install --reinstall nautilus` (or similar):
@@ -1264,18 +1296,18 @@ This happens because:
 
 ### Most Likely Things That Can Break (or Already Be Partially Broken)
 
-| App / Component                  | Why It Breaks                                                                 | Symptoms You Might See                                                                 | How to Check / Quick Test |
-|----------------------------------|-------------------------------------------------------------------------------|----------------------------------------------------------------------------------------|---------------------------|
-| **GNOME Terminal** or other GTK terminals | Qt dev libs can interfere with GTK theming or platform plugins indirectly | Slow startup, missing menus, white/blank windows, crashes on paste or resize          | Open terminal → type something → try right-click menu |
-| **GNOME Software** (app store)   | Heavy reliance on GSettings + portals; schema conflicts common               | Won't launch, empty categories, crashes when searching/installing                     | Search for an app in Software center |
-| **Settings** (gnome-control-center) | Direct GSettings user; dev libs can corrupt schema cache                     | Sections missing, crashes on open, sliders/buttons unresponsive                       | Open Settings → try changing Appearance or About |
-| **Extensions** / Tweaks (gnome-tweaks) | Extensions often use GTK/GNOME APIs that get mismatched                      | Tweaks won't open, extensions tab blank, shell crashes/restarts                      | Install gnome-tweaks if missing → open it |
-| **File dialogs** in GTK apps (e.g. Firefox, LibreOffice, GIMP) | Shared Nautilus backend + portal issues; xdg-desktop-portal-gnome affected  | File open/save dialogs freeze, blank, or crash the whole app                          | In any GTK app, try File → Open |
-| **Qt-based apps** you already have (e.g. VLC, qBittorrent, VirtualBox) | Your forced Qt6 dev packages conflict with system Qt5/Qt6 runtime            | White/unthemed windows, no borders/shadows (Wayland), "platform plugin xcb" errors, slow/crash | Launch any Qt app → check appearance |
-| **Snap/Flatpak apps** (e.g. Firefox snap, Spotify) | Portals (xdg-desktop-portal*) get broken → file access, theming, notifications fail | Can't open files from snap apps, missing icons, notifications silent                  | Try opening a file in Firefox snap |
-| **GSettings schemas** (system-wide) | Dev packages can overwrite/corrupt /usr/share/glib-2.0/schemas/             | Many GNOME apps crash or ignore settings (dark mode, fonts, etc.)                     | `gsettings list-schemas | grep nautilus` (if errors → broken) |
-| **Background services** (tracker-miner-fs, gvfsd, evolution-data-server) | Indexing/search or file monitoring daemons use affected libs                 | High CPU, search in Activities broken, recent files list empty                        | `tracker3 status` or search in overview |
-| **Login screen / GDM** (worst case) | If deep GTK/Qt mismatch reaches display manager                               | Black screen after login, login loop, or GDM crashes                                  | Reboot and observe login |
+| App / Component                                                          | Why It Breaks                                                                        | Symptoms You Might See                                                                         | How to Check / Quick Test                             |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------- | ----------------------------------------------------- | ----------------------------------- |
+| **GNOME Terminal** or other GTK terminals                                | Qt dev libs can interfere with GTK theming or platform plugins indirectly            | Slow startup, missing menus, white/blank windows, crashes on paste or resize                   | Open terminal → type something → try right-click menu |
+| **GNOME Software** (app store)                                           | Heavy reliance on GSettings + portals; schema conflicts common                       | Won't launch, empty categories, crashes when searching/installing                              | Search for an app in Software center                  |
+| **Settings** (gnome-control-center)                                      | Direct GSettings user; dev libs can corrupt schema cache                             | Sections missing, crashes on open, sliders/buttons unresponsive                                | Open Settings → try changing Appearance or About      |
+| **Extensions** / Tweaks (gnome-tweaks)                                   | Extensions often use GTK/GNOME APIs that get mismatched                              | Tweaks won't open, extensions tab blank, shell crashes/restarts                                | Install gnome-tweaks if missing → open it             |
+| **File dialogs** in GTK apps (e.g. Firefox, LibreOffice, GIMP)           | Shared Nautilus backend + portal issues; xdg-desktop-portal-gnome affected           | File open/save dialogs freeze, blank, or crash the whole app                                   | In any GTK app, try File → Open                       |
+| **Qt-based apps** you already have (e.g. VLC, qBittorrent, VirtualBox)   | Your forced Qt6 dev packages conflict with system Qt5/Qt6 runtime                    | White/unthemed windows, no borders/shadows (Wayland), "platform plugin xcb" errors, slow/crash | Launch any Qt app → check appearance                  |
+| **Snap/Flatpak apps** (e.g. Firefox snap, Spotify)                       | Portals (xdg-desktop-portal\*) get broken → file access, theming, notifications fail | Can't open files from snap apps, missing icons, notifications silent                           | Try opening a file in Firefox snap                    |
+| **GSettings schemas** (system-wide)                                      | Dev packages can overwrite/corrupt /usr/share/glib-2.0/schemas/                      | Many GNOME apps crash or ignore settings (dark mode, fonts, etc.)                              | `gsettings list-schemas                               | grep nautilus` (if errors → broken) |
+| **Background services** (tracker-miner-fs, gvfsd, evolution-data-server) | Indexing/search or file monitoring daemons use affected libs                         | High CPU, search in Activities broken, recent files list empty                                 | `tracker3 status` or search in overview               |
+| **Login screen / GDM** (worst case)                                      | If deep GTK/Qt mismatch reaches display manager                                      | Black screen after login, login loop, or GDM crashes                                           | Reboot and observe login                              |
 
 ### Why These Can Break "Even If You Don't Touch Them"
 
@@ -1287,6 +1319,7 @@ This happens because:
 ### What to Do Right Now (Prevent / Detect More Breakage)
 
 1. **Check for obvious victims**:
+
    ```bash
    gnome-control-center  # Settings
    gnome-software        # App store
@@ -1295,6 +1328,7 @@ This happens because:
    ```
 
 2. **Look at broken packages / held ones again**:
+
    ```bash
    sudo apt update
    apt list --upgradable | grep -i qt
@@ -1303,6 +1337,7 @@ This happens because:
    ```
 
 3. **Clean up the messiest packages** (safest first):
+
    ```bash
    sudo apt purge 'qt6-*dev' 'libboost-*dev' libfmt-dev libenet-dev libcpp-httplib-dev
    sudo apt autoremove

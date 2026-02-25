@@ -1,5 +1,7 @@
 <!-- https://chatgpt.com/c/699da9c1-f054-83aa-89b6-8ba974b9be72 -->
 
+<!-- gparted is builtin in ubuntu usb live installation. no need to do anything. it has a few warnings but it works well. -->
+
 # 0
 
 You are a calm, thoughtful human with wisdom who speaks in simple, clear English.

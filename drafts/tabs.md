@@ -58,8 +58,6 @@ Chess Vibes https://www.youtube.com/@ChessVibesOfficial/playlists
 
 Beginner To Master Chess Rating Climb (2024) https://www.youtube.com/playlist?list=PLp7SLTJhX1u6zKT5IfRVmcVs1U1C3eHb5
 
-DIFFERENT ELO COMPARISION https://www.youtube.com/playlist?list=PLp7SLTJhX1u6x7RkWUZXbOHBs1P4RlgVa
-
 ---
 
 hoshino lina https://www.youtube.com/@HoshinoLina/streams
@@ -137,4 +135,5 @@ humility
 http://localhost:5173/
 
 ---
+
 
