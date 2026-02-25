@@ -234,7 +234,7 @@ sudo bash setup_push_service.sh
 
 Let me know if you need anything else!
 
-# 3 (maintain)
+# 3 (test, maintain)
 
 how to test, check status, disable, change in the future
 
