@@ -3075,7 +3075,7 @@ try extensions. either paid or not working.
 
 final solution: select video `$0`. download the video blob.
 
-(the video need to be fully loaded or the blob is not  and downloading takes time.)
+(the video need to be fully loaded or the blob is not complete and downloading takes time.)
 
 
 
