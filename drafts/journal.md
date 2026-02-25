@@ -3071,7 +3071,11 @@ network inspection does not seem easy. ytdlp fails (with cookies from chromium:`
 
 fuck. i should research more.
 
-try extens
+try extensions. either paid or not working.
+
+final solution: select video `$0`. download the video blob.
+
+(the video need to be fully lo)
 
 <!--
 
