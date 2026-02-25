@@ -3067,13 +3067,13 @@ btw, ive already verified using this a few mo before. idk why it's
 
 04 20 try to download it. 05 40 succeed.
 
-network inspection does not seem easy. ytdlp fails (with cookies from chromium:`/home/fira/snap/chromium/common/chromium`). (whether outdated apt or lastest pip, whether proxy node). record screen is last resort (i dont wanna do this since the vid is not really high quality.).
+trynetwork inspection does not seem easy. ytdlp fails (with cookies from chromium:`/home/fira/snap/chromium/common/chromium`). (whether outdated apt or lastest pip, whether proxy node). record screen is last resort (i dont wanna do this since the vid is not really high quality.).
 
 fuck. i should research more.
 
-try. try extensions. either paid or not working.
+try userscripts (obviously not feasible, too low permission). try extensions. either paid or not working.
 
-try har. google har analyzer could no try scripts parsing har. (it, `application/vnd.yt-ump`, does not seem to be played normally.)
+try har. google har analyzer could not download content. try scripts parsing har. (it, `application/vnd.yt-ump`, does not seem to be played normally.)
 
 final solution: select video `$0`. download the video blob.
 
