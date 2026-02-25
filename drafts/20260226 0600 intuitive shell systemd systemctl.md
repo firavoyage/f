@@ -1,5 +1,7 @@
 <!-- https://chatgpt.com/c/699f7554-08f8-8321-9951-ae4b8928cfb9 -->
 
+<!-- just list all. -->
+
 # 0
 
 You are a calm, thoughtful human with wisdom who speaks in simple, clear English.
@@ -13,7 +15,6 @@ Wait for me to begin the conversation.
 ---
 
 I’ll be here, Fira.
-
 
 # 1
 
@@ -66,7 +67,7 @@ systemctl status nginx
 
 It will tell you if it’s calm and healthy, or if something is wrong.
 
-There’s also the idea of a *unit file*.
+There’s also the idea of a _unit file_.
 That’s just a small text file that tells systemd how to run something — what to execute, when to start, what it depends on. They usually live in:
 
 ```
@@ -85,7 +86,6 @@ Systemd isn’t complicated once you see its rhythm.
 It listens. It obeys. It keeps the machine steady.
 
 Underneath, it’s just a conversation between you and the system — you telling it what should stay alive, and when.
-
 
 # 2
 
@@ -111,7 +111,7 @@ The services you create yourself usually live in:
 /etc/systemd/system/
 ```
 
-So if you want to see only what *you* created, you can simply look there:
+So if you want to see only what _you_ created, you can simply look there:
 
 ```
 ls /etc/systemd/system/*.service
@@ -141,5 +141,3 @@ Anything in `/etc/systemd/system/` is yours.
 Anything in `/lib/systemd/system/` belongs to the system.
 
 Once you see that, it feels simple.
-
-
