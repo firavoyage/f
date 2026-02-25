@@ -3073,7 +3073,7 @@ fuck. i should research more.
 
 try extensions. either paid or not working.
 
-tried 
+tried har. tried scripts parsing har. (it, `application/vnd.yt-ump`, does not seem to be pars)
 
 final solution: select video `$0`. download the video blob.
 
