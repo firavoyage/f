@@ -3051,16 +3051,16 @@ waste some time workarounding quirks.
 
 idk what to do.
 
-04 00 verify age on youtube using `vzhibei`.
+04 00 verify age on youtube using a passport leaked on `vzhibei`.
 
-(tried the lastest)
+(tried the lastest vtuber nailin)
 
 thank you, chen liang!
 
 - 程亮
 - 610404199404071035
 
-btw, ive already verified a few
+btw, ive already verified a few mo 
 
 <!--
 
