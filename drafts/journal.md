@@ -3055,7 +3055,7 @@ idk what to do.
 
 for viewing https://www.youtube.com/shorts/3hCPkU1kqGE which is mentioned when playing buwendingfadianji in the background
 
-(tried the lastest post, vtuber nailin, or wang nan, and failed)
+(tried the lastest post, vtuber nailin, or wang nan's id card, and failed)
 
 thank you, chen liang!
 
