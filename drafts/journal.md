@@ -3073,9 +3073,9 @@ try ytdlp (with cookies from chromium:`/home/fira/snap/chromium/common/chromium`
 
 deprecate recording screen, the last resort (i dont wanna do this since the vid is not really high quality.).
 
-fuck. i should research more.
 
 try userscripts (obviously not feasible, too low permission). try extensions. either paid or not working.
+fuck. i should research more.
 
 try har. google har analyzer could not download content. try scripts parsing har. (it, `application/vnd.yt-ump`, does not seem to be played normally.)
 
