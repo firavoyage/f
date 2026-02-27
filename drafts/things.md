@@ -269,3 +269,9 @@ upd: start from 0 if the first message is very short.
 decision? first msg too short? first prompt "you are ..."? branch from.
 
 ---
+
+reddit onboarding: interests.
+
+---
+
+

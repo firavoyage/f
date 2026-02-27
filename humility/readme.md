@@ -18,6 +18,16 @@ see
 
 ---
 
+install
+
+```
+pnpm install
+```
+
+<!-- todo: config api keys/login cookies, run -->
+
+---
+
 inspired by
 
 - chatgpt

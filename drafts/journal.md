@@ -3077,13 +3077,33 @@ try userscripts (obviously not feasible, too low permission). try extensions. ei
 
 try har. google har analyzer could not download content. try scripts parsing har. (it, `application/vnd.yt-ump`, does not seem to be played normally.)
 
-fuck. i should research more.
+fuck. i should research more. (and think more. and envision more.)
 
-at the end of the day when i were removing dom elements (e.g. floating buttons) to create a clean 
+at the end of the day when i were removing dom elements (e.g. floating buttons) to create a clean screen recording, i suddenly see the video element, with a blob src on it, which inspires me.
 
 solve. select video `$0`. download the video blob.
 
 (the video need to be fully loaded or the blob is not complete and downloading takes time.)
+
+06 20 publish budendingfadianji on ipfs.
+
+19 00 publish budendingfadianji on zenodo.
+
+exporting age restricted youtube short: buwendingfadianji as an example.
+
+https://doi.org/10.5281/zenodo.18785672
+
+27
+
+01 20 watch `How To PUNISH Early Queen Attacks | Chess Rating Climb 939 to 979`.
+
+01 20 play zhangqi 1d problemset. 02 40
+
+fisrt attempt 9/10. second attempt ak.
+
+03 00 reg `u/firahq` on reddit.
+
+hope not getting banned again.
 
 
 

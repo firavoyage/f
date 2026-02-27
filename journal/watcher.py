@@ -3,8 +3,9 @@ import time
 from pathlib import Path
 from typing import Optional
 import os
+import logging
 
-from window import FileWindowObserver
+from window import FileWindowObserver, x11_window_observer
 from store import JournalStore
 from log import JournalLogger
 from models import WindowState
@@ -14,25 +15,42 @@ from config import Config
 from screenshot import Screenshotter
 
 
+logger = logging.getLogger("journal.watcher")
+
+
 class Watcher:
     """
-    Poll the GNOME extension snapshot and record events to SQLite.
+    Poll the active window (via X11 tools or extension snapshot) and record events to SQLite.
     Screenshots are optional and policy-controlled via config.
     """
 
     def __init__(self, cfg: Config):
         cache_default = Path.home() / ".cache" / "journal-windows.json"
-        snapshot_path = Path(cfg.snapshot_path) if getattr(cfg, "snapshot_path", None) else cache_default
+
+        # decide observer:
+        # priority:
+        # 1. cfg.use_x11 True -> use X11 tools
+        # 2. cfg.snapshot_path provided -> file observer
+        # 3. if DISPLAY present -> use X11 tools
+        # 4. fallback to file observer with default path
+        use_x11 = bool(cfg.use_x11) or (not cfg.snapshot_path and bool(os.getenv("DISPLAY")))
+        if use_x11:
+            self.observer = x11_window_observer()
+            observer_type = "x11"
+        else:
+            snapshot_path = Path(cfg.snapshot_path) if getattr(cfg, "snapshot_path", None) else cache_default
+            self.observer = FileWindowObserver(snapshot_path)
+            observer_type = f"file:{snapshot_path}"
 
         data_dir = Path(cfg.data_directory)
         data_dir.mkdir(parents=True, exist_ok=True)
 
-        self.observer = FileWindowObserver(snapshot_path)
         self.store = JournalStore(data_dir / "journal.db")
         self.logger = JournalLogger(data_dir / "logs" / "journal.log")
 
         self.poll_interval = int(cfg.poll_interval)
-        self.interval_seconds = int(cfg.screenshot_interval)
+        # interval capture controls how often to make the periodic record (default 20 min)
+        self.interval_seconds = int(cfg.interval_capture)
 
         self._last_state: Optional[WindowState] = None
         self._last_interval_ts = time.monotonic()
@@ -42,14 +60,24 @@ class Watcher:
         # policy flag
         self.screenshots_enabled = bool(cfg.screenshots_enabled)
 
+        # whether to record on focus/window change
+        self.capture_on_focus_change = bool(cfg.capture_on_focus_change)
+
         # instantiate screenshotter only if enabled
         self.screenshotter: Optional[Screenshotter] = None
         if self.screenshots_enabled:
-            self.screenshotter = Screenshotter(cfg)
-
-            self.logger.log("screenshots enabled")
+            try:
+                self.screenshotter = Screenshotter(cfg)
+                self.logger.log("screenshots enabled")
+            except Exception as e:
+                # if screenshotter fails to initialize, disable screenshots
+                self.screenshotter = None
+                self.screenshots_enabled = False
+                self.logger.log(f"screenshotter init failed, disabling screenshots: {e}")
         else:
             self.logger.log("screenshots disabled (policy)")
+
+        self.logger.log(f"watcher started observer={observer_type} poll_interval={self.poll_interval} interval_seconds={self.interval_seconds} capture_on_focus_change={self.capture_on_focus_change}")
 
     def _dbg(self, *parts):
         if self.debug:
@@ -70,6 +98,11 @@ class Watcher:
             return None
 
     def _record_focus_change(self, state: WindowState) -> None:
+        if not self.capture_on_focus_change:
+            # focus change capture disabled by config
+            self._dbg("focus_change skipped by config")
+            return
+
         shot = self._maybe_capture()
         self.store.record(state, event="focus_change", screenshot=shot)
         self.logger.log(
@@ -95,7 +128,9 @@ class Watcher:
             initial = self.observer.get_active_window()
             if initial:
                 self._last_state = initial
-                self._record_focus_change(initial)
+                # respect config: only record initial focus if allowed
+                if self.capture_on_focus_change:
+                    self._record_focus_change(initial)
                 self._last_interval_ts = time.monotonic()
 
             while True:

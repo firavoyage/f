@@ -258,4 +258,552 @@ If a fn is always down, it might not be negative one day. If a fn is always down
 
 ---
 
+all: interests/subreddits.
+
+not finding the list on the first page of search "reddit interests" "reddit onboarding interests". rather save it here.
+
+```
+# Interests
+
+Pick things you'd like to see in your home feed.
+
+### 📈 Popular
+
+Hockey
+
+Ask Reddit
+
+Personal finance Canada
+
+TopCharacterTropes
+
+Celebrity Gossip
+
+Mildly Infuriating
+
+Ontario
+
+Tech news
+
+World News
+
+Stardew Valley
+
+### ✏️ Q&As & Stories
+
+Am I the A\*\*hole
+
+Best of Redditor Updates
+
+Am I Overreacting
+
+AskMen
+
+Q&As
+
+Stories & Confessions
+
+No Stupid Questions
+
+whatisit
+
+Advice
+
+AskTheWorld
+
+### 🏅 Sports
+
+Formula 1
+
+Ice Hockey
+
+Olympics
+
+NBA
+
+Sports News & Discussion
+
+Curling
+
+WinterOlympics2026
+
+Sports
+
+Winter Sports
+
+Basketball
+
+### 🙉 Internet Culture
+
+Memes
+
+Memes Explained
+
+Interesting
+
+SipsTea
+
+videos
+
+Today I learned
+
+Mildly Interesting
+
+Funny
+
+Cringe & Facepalm
+
+Reddit Meta
+
+### 🌐 Places & Travel
+
+Places in North America
+
+Travel & Holiday
+
+Places in Asia
+
+Ottawa
+
+Montreal
+
+comoxvalley
+
+Calgary
+
+KingstonOntario
+
+westjet
+
+RedDeer
+
+### 📰 News & Politics
+
+US news
+
+News
+
+Not the Onion
+
+UnderReportedNews
+
+### 🕹️ Games
+
+mewgenics
+
+VideoGameDealsCanada
+
+ArcRaiders
+
+Role-Playing Games
+
+Action Games
+
+Elden Ring
+
+Gaming News & Discussion
+
+Tabletop Games
+
+Adventure Games
+
+Simulation Games
+
+### 🎞️ Movies & TV
+
+Movie News & Discussion
+
+Entertainment news
+
+CornerGas
+
+freefolk
+
+Reality TV
+
+TV News & Discussion
+
+Fantasy Movies & Series
+
+ReBoot
+
+Drama Movies & Series
+
+Comedy Movies & Series
+
+### 💵 Business & Finance
+
+Personal Finance
+
+WallStreetBets
+
+Stocks & Investing
+
+Deals & Marketplace
+
+Real Estate
+
+Costco Canada
+
+CanadaPostCorp
+
+Wealthsimple
+
+Business News & Discussion
+
+canadasmallbusiness
+
+### ✨ Pop Culture
+
+Pop Culture Chat
+
+Celebrities
+
+Generations & Nostalgia
+
+Creators & Influencers
+
+Livestream fails
+
+Podcasts
+
+Streamers
+
+Millennials
+
+Tarot & Astrology
+
+Two Hot Takes podcast
+
+### 🛰️ Technology
+
+PC gaming
+
+Tech News & Discussion
+
+StableDiffusion
+
+Computers & Hardware
+
+Artificial Intelligence & Machine Learning
+
+isthisAI
+
+Consumer Electronics
+
+Rogers
+
+Software & Apps
+
+ClaudeAI
+
+### 📜 Humanities & Law
+
+canadianlaw
+
+Legal advice Canada
+
+Legal News & Discussion
+
+learningfrench
+
+Law
+
+History
+
+Legal advice
+
+canadaexpressentry
+
+HolyShitHistory
+
+AskHistorians
+
+### 🧑‍🏫 Education & Career
+
+Career
+
+Ontario Grade 12s
+
+Studying & Education
+
+CASPerTest
+
+Teaching
+
+queensuniversity
+
+MedSchoolCanada
+
+jobs
+
+Career advice
+
+Canadian premed students
+
+### 🏡 Home & Garden
+
+Home Improvement
+
+DIY & Crafts
+
+DIY
+
+Home Inspiration & Decor
+
+Sustainable Living
+
+Gardening & Farming
+
+House Plants
+
+CleaningTips
+
+HomeImprovement
+
+Plumbing
+
+### 🚗 Vehicles
+
+MechanicAdvice
+
+Cars & Trucks
+
+Aviation
+
+Trains & Public Transportation
+
+Boating & Sailing
+
+TTC
+
+whatcarshouldIbuy
+
+Motorcycles
+
+dashcams
+
+Car Talk UK
+
+### 📖 Reading & Writing
+
+Game of Thrones
+
+Books & reading
+
+Books & Literature
+
+Comics
+
+Writing
+
+Transcription
+
+heatedrivalry
+
+asoiaf
+
+lotr
+
+### 🪞 Fashion & Beauty
+
+Beauty & Grooming
+
+hygiene
+
+Makeup
+
+Asian skincare & beauty
+
+Hair
+
+tattooadvice
+
+Sephora
+
+piercing
+
+Fragrance
+
+Watches
+
+### 🍔 Food & Drinks
+
+Cooking
+
+Food & Recipes
+
+FoodToronto
+
+poutine
+
+Food industry & Restaurants
+
+Non-Alcoholic Beverages
+
+TimHortons
+
+KitchenConfidential
+
+Baking
+
+doordash
+
+### 🧪 Sciences
+
+theydidthemath
+
+Mathematics
+
+Science news
+
+Space
+
+Engrossing maps
+
+askscience
+
+Geography
+
+dataisbeautiful
+
+Science News & Discussion
+
+Space & Astronomy
+
+### 🍣 Anime & Cosplay
+
+Anime & Manga
+
+Jujutsufolk
+
+Anime
+
+UmaMusume
+
+JujutsuPowerScaling
+
+Naruto
+
+Cosplay
+
+JuJutsu Kaisen
+
+LobotomyKaisen
+
+### 🎶 Music
+
+Music
+
+Music News & Discussion
+
+Musical Instruments & Singing
+
+TragicallyHip
+
+Guitar playing
+
+Hip Hop Music
+
+katseyeneutral
+
+Alexisonfire
+
+Playboi Carti
+
+twentyonepilots
+
+### 🧘 Wellness
+
+Adulting
+
+Fitness
+
+Motivation & Self-Improvement
+
+Productivitycafe
+
+selfimprovement
+
+workout
+
+### 💀 Spooky
+
+Paranormal & Unexplained
+
+Weird
+
+Weird & Unusual
+
+UFOs
+
+aliens
+
+### 🧑‍🎨 Art
+
+Photography
+
+Pics
+
+Architecture
+
+UrbanHell
+
+Photoshop Requests
+
+AnalogCommunity
+
+Digital Art
+
+TrueNorthPictures
+
+Filmmaking
+
+Design
+
+### 🧩 Collectibles & Other Hobbies
+
+PokemonTCG
+
+Collectibles
+
+CanadianCoins
+
+Model Building
+
+Other Hobbies
+
+PokeInvesting
+
+Toys
+
+hockeycards
+
+Lego
+
+Gold
+
+### 🌿 Nature & Outdoors
+
+Camping & Hiking
+
+arborists
+
+Nature & Wildlife
+
+Fishing
+
+mycology
+
+Ultralight
+
+Mountaineering
+
+Backpacking
+
+hiking
+```
+
+---
+
 
