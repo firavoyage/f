@@ -782,4 +782,35 @@ export const log = async ({
 
 ---
 
+how to let my terminal not exit whatever happens, even with `set -e` enabled.
+
+i want to see the error logs instead of the window closed.
+
+---
+
+it's a systemd service about syncing.
+
+dont let it run forever.
+
+i want 
+
+- it should sleep longer after a failure
+- it should retry a few times, if still failing, maybe it could not be fixed by retrying more times. stop.
+
+```
+[Unit]
+Description=Run push command at 23:00 daily
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/run_push.sh
+Restart=always
+RestartSec=10
+User=fira
+Environment=DISPLAY=:0
+Environment=XAUTHORITY=/home/fira/.Xauthority
+
+[Install]
+WantedBy=multi-user.target
+```
 
