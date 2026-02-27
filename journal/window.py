@@ -1,14 +1,108 @@
 # window.py
-from pathlib import Path
-import json
+import subprocess
 import logging
+from pathlib import Path
 from typing import Optional
 import os
-import subprocess
-
 from models import WindowState
 
 logger = logging.getLogger("journal.window")
+
+
+class x11_window_observer:
+    """
+    Fetch focused window information directly via X11 tools:
+    - xdotool (to get focused window id and name)
+    - xprop (to get WM_CLASS)
+    Falls back gracefully when tools are not present.
+    """
+
+    def __init__(self):
+        # Initialize the observer
+        pass
+
+    def _run(self, cmd: list[str], timeout: float = 1.0) -> Optional[str]:
+        """
+        Run a command and return the output. Returns None if there is an issue.
+        """
+        try:
+            proc = subprocess.run(
+                cmd,
+                capture_output=True,
+                text=True,
+                timeout=timeout,
+                check=False,
+            )
+            out = proc.stdout.strip()
+            if not out:
+                return None
+            return out
+        except FileNotFoundError:
+            # Tool not found
+            logger.debug(f"Tool not found: {cmd[0]}")
+            return None
+        except subprocess.TimeoutExpired:
+            logger.debug(f"Command timed out: {' '.join(cmd)}")
+            return None
+        except Exception as e:
+            logger.debug(f"Error running command {' '.join(cmd)}: {e}")
+            return None
+
+    def get_active_window(self) -> Optional[WindowState]:
+        """
+        Return the focused window as WindowState or None.
+        Uses xdotool/xprop. If those utilities are missing or return nothing,
+        returns None.
+        """
+        # Ensure DISPLAY is set
+        if not os.getenv("DISPLAY"):
+            logger.debug("No DISPLAY environment variable set. Exiting.")
+            return None
+
+        # Find focused window id
+        wid = self._run(["xdotool", "getwindowfocus"])
+        if not wid:
+            logger.debug("xdotool did not return a focused window id.")
+            return None
+
+        # Get window title/name
+        title = self._run(["xdotool", "getwindowname", wid]) or ""
+        title = title.strip()
+
+        # Get WM_CLASS via xprop
+        wm_class = self._run(["xprop", "-id", wid, "WM_CLASS"])
+        app = ""
+        if wm_class:
+            # Sample: WM_CLASS(STRING) = "Navigator", "Firefox"
+            try:
+                # Get the part after '=' and split by comma
+                rhs = wm_class.split("=", 1)[1]
+                # Remove quotes and spaces
+                parts = [p.strip().strip('"') for p in rhs.split(",") if p.strip()]
+                if parts:
+                    # Pick the last part (often the human-friendly app name)
+                    app = parts[-1]
+            except Exception as e:
+                logger.debug(f"Error parsing WM_CLASS: {e}")
+
+        # Clean up the app name (remove package prefix like "com.mitchellh")
+        if app:
+            app = app.split(",")[
+                -1
+            ].strip()  # In case we have multiple parts, pick the last one
+            app = app.split(".")[
+                0
+            ]  # Remove package prefix (e.g., com.mitchellh -> ghostty)
+
+        if not app and not title:
+            # If no useful window information, return None
+            logger.debug("No useful window information (app or title).")
+            return None
+
+        # Print the human-readable application and title
+        print(f"Focused Window - ID: {wid}, Title: {title}, Class: {app}")
+
+        return WindowState(app=app, title=title)
 
 
 class FileWindowObserver:
@@ -56,89 +150,7 @@ class FileWindowObserver:
         return WindowState(app=app, title=title)
 
 
-class x11_window_observer:
-    """
-    Fetch focused window information directly via X11 tools:
-    - xdotool (to get focused window id and name)
-    - xprop (to get WM_CLASS)
-    Falls back gracefully when tools are not present.
-    """
-
-    def __init__(self):
-        # nothing to configure
-        pass
-
-    def _run(self, cmd: list[str], timeout: float = 1.0) -> Optional[str]:
-        try:
-            proc = subprocess.run(
-                cmd,
-                capture_output=True,
-                text=True,
-                timeout=timeout,
-                check=False,
-            )
-            out = proc.stdout.strip()
-            if not out:
-                return None
-            return out
-        except FileNotFoundError:
-            # tool not installed
-            logger.debug("tool not found: %s", cmd[0])
-            return None
-        except subprocess.TimeoutExpired:
-            logger.debug("command timed out: %s", " ".join(cmd))
-            return None
-        except Exception as e:
-            logger.debug("error running command %s: %s", cmd, e)
-            return None
-
-    def get_active_window(self) -> Optional[WindowState]:
-        """
-        Return the focused window as WindowState or None.
-        Uses xdotool/xprop. If those utilities are missing or return nothing,
-        returns None.
-        """
-        # find focused window id
-        wid = self._run(["xdotool", "getwindowfocus"])
-        if not wid:
-            logger.debug("xdotool did not return a focused window id")
-            return None
-
-        # get window title/name
-        title = self._run(["xdotool", "getwindowname", wid]) or ""
-        title = title.strip()
-
-        # try WM_CLASS via xprop
-        wm_class = self._run(["xprop", "-id", wid, "WM_CLASS"])
-        app = ""
-        if wm_class:
-            # sample: WM_CLASS(STRING) = "Navigator", "Firefox"
-            try:
-                # get right side of '=' then split by comma
-                rhs = wm_class.split("=", 1)[1]
-                # remove quotes and spaces
-                parts = [p.strip().strip('"') for p in rhs.split(",") if p.strip()]
-                if parts:
-                    # pick last part (often the application/class)
-                    app = parts[-1]
-            except Exception:
-                app = ""
-        # fallback: derive app from process id
-        if not app:
-            pid_out = self._run(["xdotool", "getwindowpid", wid])
-            if pid_out:
-                pid = pid_out.strip()
-                try:
-                    comm = Path(f"/proc/{pid}/comm").read_text().strip()
-                    if comm:
-                        app = comm
-                except Exception:
-                    # ignore
-                    app = app or ""
-
-        app = app.strip()
-        if not app and not title:
-            # nothing useful
-            return None
-
-        return WindowState(app=app, title=title)
+# If this script is run directly, test it
+if __name__ == "__main__":
+    observer = x11_window_observer()
+    observer.get_active_window()

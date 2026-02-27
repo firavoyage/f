@@ -12,7 +12,7 @@ on ubuntu x11
 # go to the project root first
 
 # install system packages
-sudo apt install -y python3 pip xdotool x11-utils
+sudo apt install -y python3 pip pipx xdotool x11-utils
 
 # install Python packages
 pip install -r requirements.txt
@@ -43,4 +43,6 @@ sudo journalctl -u journal.service -f
 
 ### test
 
-
+```sh
+pytest -q
+```
