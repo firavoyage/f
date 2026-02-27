@@ -3105,6 +3105,18 @@ fisrt attempt 9/10. second attempt ak.
 
 hope not getting banned again.
 
+22 00 test `The Legend of Zelda Breath of the Wild`.
+
+fine.
+
+hash from bitmagent: `85cc9fd33374f13ebabd3917ddf41d8a8b3bacba`, `f1d56217ac41e58818dacca3d9107c578fd6cabf`.
+
+22 20 download `Linkin Park - Discography (2000-2017) [FLAC]`.
+
+`661a35e1455762166357ad350bfc4e7779941afb`
+
+two months later, pink floyd is still dominating on bitmagnet: music (seeders).
+
 
 
 <!--
