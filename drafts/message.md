@@ -212,8 +212,15 @@ export const log = async ({
 
 ---
 
-whenever i click a google link, add gl us
+write a userscript.
 
-~~redirect~~
+whenever i click a google link, add gl us before proceeding.
+
+dont redirect after loading.
+
+is it feasible?
+
+---
+
 
 
