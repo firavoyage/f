@@ -40,9 +40,5 @@ humility
 
 ---
 
-<!-- journal -->
-
----
-
 - (see humility roadmap)
 

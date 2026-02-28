@@ -74,8 +74,8 @@ class Watcher:
                 self.screenshotter = None
                 self.screenshots_enabled = False
                 self.logger.log(f"screenshotter init failed, disabling screenshots: {e}")
-        else:
-            self.logger.log("screenshots disabled (policy)")
+        # else:
+        #     self.logger.log("screenshots disabled (policy)")
 
         self.logger.log(f"watcher started observer={observer_type} poll_interval={self.poll_interval} interval_seconds={self.interval_seconds} capture_on_focus_change={self.capture_on_focus_change}")
 
@@ -126,6 +126,7 @@ class Watcher:
     def run_forever(self) -> None:
         try:
             initial = self.observer.get_active_window()
+            print(self.observer.get_active_window, initial)
             if initial:
                 self._last_state = initial
                 # respect config: only record initial focus if allowed

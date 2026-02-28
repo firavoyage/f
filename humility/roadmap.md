@@ -101,7 +101,6 @@ a storybook is not necessary but good.
 
 ---
 
-- journal: 20 min. ~~change~~. ~~screenshot~~. simple. use x11. run. systemd. readme (install).
 - humility: design. learn proven tools. think components. implement.
 - humility: think features. (leverage free tools, or dont cut cost). store. version control (revert). onboarding (detect log out). test continuation (output 1 to 3. lib fn test pass.).
 

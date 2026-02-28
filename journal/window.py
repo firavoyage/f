@@ -14,17 +14,17 @@ class x11_window_observer:
     Fetch focused window information directly via X11 tools:
     - xdotool (to get focused window id and name)
     - xprop (to get WM_CLASS)
-    Falls back gracefully when tools are not present.
+
+    Uses the first WM_CLASS entry (lowercase, instance name),
+    matching typical shell parsing like:
+        ghostty,com.mitchellh.ghostty
+        code,Code
     """
 
     def __init__(self):
-        # Initialize the observer
         pass
 
     def _run(self, cmd: list[str], timeout: float = 1.0) -> Optional[str]:
-        """
-        Run a command and return the output. Returns None if there is an issue.
-        """
         try:
             proc = subprocess.run(
                 cmd,
@@ -34,76 +34,59 @@ class x11_window_observer:
                 check=False,
             )
             out = proc.stdout.strip()
-            if not out:
-                return None
-            return out
+            return out or None
         except FileNotFoundError:
-            # Tool not found
-            logger.debug(f"Tool not found: {cmd[0]}")
+            logger.debug("Tool not found: %s", cmd[0])
             return None
         except subprocess.TimeoutExpired:
-            logger.debug(f"Command timed out: {' '.join(cmd)}")
+            logger.debug("Command timed out: %s", " ".join(cmd))
             return None
         except Exception as e:
-            logger.debug(f"Error running command {' '.join(cmd)}: {e}")
+            logger.debug("Error running command %s: %s", " ".join(cmd), e)
             return None
 
     def get_active_window(self) -> Optional[WindowState]:
-        """
-        Return the focused window as WindowState or None.
-        Uses xdotool/xprop. If those utilities are missing or return nothing,
-        returns None.
-        """
-        # Ensure DISPLAY is set
         if not os.getenv("DISPLAY"):
-            logger.debug("No DISPLAY environment variable set. Exiting.")
+            logger.debug("No DISPLAY environment variable set.")
             return None
 
-        # Find focused window id
         wid = self._run(["xdotool", "getwindowfocus"])
+        print(wid)
         if not wid:
-            logger.debug("xdotool did not return a focused window id.")
+            logger.debug("No focused window id returned by xdotool.")
             return None
 
-        # Get window title/name
         title = self._run(["xdotool", "getwindowname", wid]) or ""
         title = title.strip()
 
-        # Get WM_CLASS via xprop
-        wm_class = self._run(["xprop", "-id", wid, "WM_CLASS"])
+        wm_class_raw = self._run(["xprop", "-id", wid, "WM_CLASS"])
         app = ""
-        if wm_class:
-            # Sample: WM_CLASS(STRING) = "Navigator", "Firefox"
-            try:
-                # Get the part after '=' and split by comma
-                rhs = wm_class.split("=", 1)[1]
-                # Remove quotes and spaces
-                parts = [p.strip().strip('"') for p in rhs.split(",") if p.strip()]
-                if parts:
-                    # Pick the last part (often the human-friendly app name)
-                    app = parts[-1]
-            except Exception as e:
-                logger.debug(f"Error parsing WM_CLASS: {e}")
 
-        # Clean up the app name (remove package prefix like "com.mitchellh")
-        if app:
-            app = app.split(",")[
-                -1
-            ].strip()  # In case we have multiple parts, pick the last one
-            app = app.split(".")[
-                0
-            ]  # Remove package prefix (e.g., com.mitchellh -> ghostty)
+        if wm_class_raw and "=" in wm_class_raw:
+            try:
+                # Example:
+                # WM_CLASS(STRING) = "ghostty", "com.mitchellh.ghostty"
+                rhs = wm_class_raw.split("=", 1)[1]
+                parts = [
+                    p.strip().strip('"')
+                    for p in rhs.split(",")
+                    if p.strip()
+                ]
+                if parts:
+                    # Use first entry (instance name), like:
+                    # ghostty (not com.mitchellh.ghostty)
+                    # code (not Code)
+                    app = parts[0].lower()
+            except Exception as e:
+                logger.debug("Error parsing WM_CLASS: %s", e)
 
         if not app and not title:
-            # If no useful window information, return None
-            logger.debug("No useful window information (app or title).")
+            logger.debug("No useful window information.")
             return None
 
-        # Print the human-readable application and title
         print(f"Focused Window - ID: {wid}, Title: {title}, Class: {app}")
 
         return WindowState(app=app, title=title)
-
 
 class FileWindowObserver:
     """

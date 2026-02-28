@@ -27,18 +27,18 @@ on ubuntu x11 with systemd
 
 ```
 # copy service file
-sudo cp extensions/systemd/journal.service /etc/systemd/system/journal.service
+cp extensions/systemd/journal.service ~/.config/systemd/user/journal.service
 
 # ensure run.sh is executable and points at correct python path
 chmod +x /home/fira/Documents/f/journal/run.sh
 
 # reload systemd, enable and start service
-sudo systemctl daemon-reload
-sudo systemctl enable --now journal.service
+systemctl --user daemon-reload
+systemctl --user enable --now journal.service
 
 # view status and logs
-sudo systemctl status journal.service
-sudo journalctl -u journal.service -f
+systemctl --user status journal.service
+journalctl --user -u journal.service -f
 ```
 
 ### test
