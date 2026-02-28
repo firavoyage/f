@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Clipboard Test</title>
+<style>
+  body { font-family: sans-serif; padding: 20px; }
+  textarea { width: 100%; height: 80px; margin-bottom: 10px; }
+  button { margin: 5px 0; display: block; }
+  .box {
+    border: 1px solid #aaa;
+    padding: 10px;
+    margin: 10px 0;
+    user-select: all;
+  }
+</style>
+</head>
+<body>
+
+<h2>Clipboard Copy Test</h2>
+
+<p>Text source:</p>
+<textarea id="source">
+Hello Fira. This is a clipboard test.
+</textarea>
+
+<h3>Method 1: navigator.clipboard.writeText()</h3>
+<button onclick="copyModern()">Copy (Modern API)</button>
+
+<h3>Method 2: document.execCommand('copy')</h3>
+<button onclick="copyExec()">Copy (execCommand)</button>
+
+<h3>Method 3: Select + execCommand</h3>
+<button onclick="copySelect()">Select Textarea + Copy</button>
+
+<h3>Method 4: Hidden input trick</h3>
+<button onclick="copyHidden()">Copy (Hidden Input)</button>
+
+<h3>Method 5: Manual Ctrl+C</h3>
+<div class="box" contenteditable="true">
+Click here, select this text manually, and press Ctrl+C.
+</div>
+
+<script>
+function copyModern() {
+  const text = document.getElementById("source").value;
+  navigator.clipboard.writeText(text)
+    .then(() => alert("Copied with navigator.clipboard"))
+    .catch(err => alert("Failed: " + err));
+}
+
+function copyExec() {
+  const text = document.getElementById("source").value;
+  const temp = document.createElement("textarea");
+  temp.value = text;
+  document.body.appendChild(temp);
+  temp.select();
+  document.execCommand("copy");
+  document.body.removeChild(temp);
+  alert("Copied with execCommand");
+}
+
+function copySelect() {
+  const ta = document.getElementById("source");
+  ta.focus();
+  ta.select();
+  document.execCommand("copy");
+  alert("Selected and copied textarea");
+}
+
+function copyHidden() {
+  const text = document.getElementById("source").value;
+  const input = document.createElement("input");
+  input.value = text;
+  document.body.appendChild(input);
+  input.select();
+  document.execCommand("copy");
+  document.body.removeChild(input);
+  alert("Copied using hidden input");
+}
+</script>
+
+</body>
+</html>
