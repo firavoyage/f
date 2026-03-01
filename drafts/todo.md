@@ -48,10 +48,6 @@ handle documents/_/tmp
 
 ---
 
-fix foliate fonts. (flatpak general method. i think there is. in an elegant way.)
-
----
-
 archive.
 
 organize.

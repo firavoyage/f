@@ -274,4 +274,11 @@ reddit onboarding: interests.
 
 ---
 
+how to let flatpak see fonts installed in the system.
+
+(test sudo)
+
+---
+
+
 
