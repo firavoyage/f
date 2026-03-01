@@ -459,3 +459,19 @@ you can just run humility. i will create a folder in docker.
 you can export the folder or just move and name it.
 
 ---
+
+on google ai mode you could only
+
+- send
+- continue
+
+not mentioning switching between edits/branches, you could not even edit.
+
+maybe that's enough. maybe.
+
+well i would say the ux of google is always impressive...
+
+beyond markdown.
+
+---
+
