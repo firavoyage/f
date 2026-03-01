@@ -3137,6 +3137,10 @@ foliate inherits the flatpak fonts problem. the goldendict fixing script does no
 
 simplify ref. rm low quality stuff in some folders.
 
+16 40 return home from the usst sp uee interview.
+
+find 2 banknotes worth 2 sgd each left on the floor of the university canteen and take them home. wow.
+
 
 
 <!--
