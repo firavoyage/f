@@ -475,3 +475,12 @@ beyond markdown.
 
 ---
 
+dont think too much about ui.
+
+copy google ai mode layout.
+
+about theme. simple. let user add their own css/extension/components.
+
+think whether to use tailwind.
+
+---

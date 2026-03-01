@@ -84,6 +84,8 @@ ruanyf https://ruanyifeng.com/blog/
 
 人间失格
 
+the great gatsby
+
 ---
 
 sabbat of the witch

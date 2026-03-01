@@ -278,6 +278,10 @@ how to let flatpak see fonts installed in the system.
 
 (test sudo)
 
+seems chromium (on the tabs title also does not work).
+
+method: remove the local jp font. poc: clean ttc file.
+
 ---
 
 

@@ -3143,6 +3143,26 @@ find 2 banknotes worth 2 sgd each left on the floor of the university canteen an
 
 22 00 watch `【极客湾】手机零售机游戏性能大横评2026 厂商作弊太疯狂 OP字幕附`.
 
+too much trivial facts. they should be just references. 
+
+anyway, that's sns. that's the art of video making, letting you focused without showing anything meaningful. (if not, then why adding a weird eletronic bgm all the time?)
+
+02
+
+00 20 watch `30 Brilliant Moves IN A ROW`.
+
+clickgambit. 
+
+> It wouldnt be a gothamchess video if it wasnt clickbait.
+
+00 40 clean hu chenfeng channels on youtube.
+
+youtube is good at this. click on the three dots, and you are one click away. (although idk where is the blacklist, instead of something like activity history.)
+
+01 00 watch `papi酱讽刺春晚被全平台下架的视频｜历史存档` `Namewee 黃明志 Ft. Kimberley Chen 陳芳語【Fragile 玻璃心】(Official Music Video)`.
+
+> 要是不封还好，一封禁所有人都知道他们要干啥了 XD
+
 
 
 <!--
