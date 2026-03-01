@@ -106,4 +106,20 @@ a storybook is not necessary but good.
 
 ---
 
+you should have all apis from chatgpt web.
+
+begin, continue, ~~and edit (not branch)~~ is enough.
+
+<!-- why: some providers dont even save the original one when editing. editing is hard wihtout context management ability. -->
+
+and you should think a few practical cases first.
+
+like follow a guide, research a math problem (prob, run program, ...), self correction, research web, ...
+
+---
+
+think.
+
+---
+
 

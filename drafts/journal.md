@@ -3123,6 +3123,20 @@ two months later, pink floyd is still dominating on bitmagnet: music (seeders).
 
 03 00 download `The Matrix (1999)` from the pirate bay.
 
+mar
+
+01
+
+00 20 download `了不起的盖茨比`.
+
+seen on the shelf in the lobby of the ji hotel near usst.
+
+foliate inherits the flatpak fonts problem. the goldendict fixing script does not seem to take effect on it. maybe i will try the simple way: change the font settings inside the app. but where is adobe kaiti?
+
+00 20 archive zhihu monthly. 01 00
+
+simplify ref. rm low quality stuff in some folders.
+
 
 
 <!--

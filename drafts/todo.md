@@ -40,5 +40,23 @@ humility
 
 ---
 
-- (see humility roadmap)
+(see humility roadmap)
+
+---
+
+handle documents/_/tmp
+
+---
+
+fix foliate fonts. (flatpak general method. i think there is. in an elegant way.)
+
+---
+
+archive.
+
+organize.
+
+analyze.
+
+---
 
