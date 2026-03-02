@@ -92,6 +92,7 @@ software engineering:
 - pure fn
 - p np
 - shell syntax
+- shell builtin commands
 
 software engineering project management:
 
