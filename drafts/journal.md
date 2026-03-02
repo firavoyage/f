@@ -3137,6 +3137,8 @@ foliate inherits the flatpak fonts problem. the goldendict fixing script does no
 
 simplify ref. rm low quality stuff in some folders.
 
+15 40 listen to `#482 – Pavel Durov: Telegram, Freedom, Censorship, Money, Power & Human Nature`.
+
 16 40 return home from the usst sp uee interview.
 
 find 2 banknotes worth 2 sgd each left on the floor of the university canteen and collect. wow.
@@ -3162,6 +3164,10 @@ youtube is good at this. click on the three dots, and you are one click away. (a
 01 00 watch `papi酱讽刺春晚被全平台下架的视频｜历史存档` `Namewee 黃明志 Ft. Kimberley Chen 陳芳語【Fragile 玻璃心】(Official Music Video)`.
 
 > 要是不封还好，一封禁所有人都知道他们要干啥了 XD
+
+03 00 change the translator of `了不起的盖茨比`.
+
+04 00 appreciate `曲名：酸欠少女 sanketsusyoujo`.
 
 
 

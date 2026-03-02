@@ -120,6 +120,12 @@ like follow a guide, research a math problem (prob, run program, ...), self corr
 
 think.
 
+<!-- i mean, revise this. im a bit confused now. -->
+
 ---
 
+i think first i should test the basic send -> get result back api (since i dont use openrouter, instead, take advantage of the free internet.). which is the base of everything. i should find a way to login/add keys elegantly.
 
+think my purpose. maybe a few shortcuts. reduce friction.
+
+---

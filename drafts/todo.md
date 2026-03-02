@@ -22,31 +22,11 @@ finish things: close, organize, think, prepare... importance over urgency.
 
 <!-- make it work first. make it beautiful next. -->
 
----
+<!-- "non trivial". -->
 
-life
+<!-- do things that dont scale. -->
 
----
-
-"arrange todo"
-
----
-
-humility
-
----
-
-"non trivial".
-
----
-
-(see humility roadmap)
-
----
-
-handle documents/_/tmp
-
----
+<!-- 
 
 archive.
 
@@ -54,5 +34,37 @@ organize.
 
 analyze.
 
+ -->
+
 ---
+
+life
+
+"arrange todo"
+
+---
+
+humility
+
+(see humility roadmap)
+
+---
+
+(see things)
+
+(see notes)
+
+---
+
+archive telegram
+
+---
+
+- npm publish hello world (rn to firahq)
+- sqlite
+- log an object, a long wall of text.
+- gitignore, msrv, pnpm workspace, eslint, etc.
+- find and solve friction (loop type inference etc.).
+- runtime type check (research!) for tools
+
 

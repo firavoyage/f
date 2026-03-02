@@ -284,5 +284,24 @@ method: remove the local jp font. poc: clean ttc file.
 
 ---
 
+see through epubs and pdfs.
+
+find a new way.
+
+read in your way. consistent. clear.
+
+"an elegant bookshelf for a more civilized age."
+
+---
+
+filenames with special icons on vscode.
+
+(learn how human code.)
+
+---
+
+dl Sanketsu Shojo Sayuri
+
+---
 
 

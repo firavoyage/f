@@ -810,3 +810,22 @@ latin.
 
 ---
 
+https://www.youtube.com/shorts/08D84Uthzhs
+
+some shorts seem to be using this trick: creating vivid gradient on the border of the vid.
+
+---
+
+pure project.
+
+(learn from chess vibes)
+
+ok guys... what's the best move for white?
+
+pause the vid guys.
+
+upd: lol. sorry guys if you pause the vid and sit for 10 mins. it was a bad day and i blundered.
+
+---
+
+

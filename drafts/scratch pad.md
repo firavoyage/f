@@ -38,19 +38,21 @@ bandolllll. "mygo pvz. (like gacha party)"
 
 ---
 
-begin pure math generation
-
-with advanced topics and tricks on the cheetsheet
-
-(why) gen and revise, compare and summarize the style. aops. apply the style.
-set the narration style when translating. "for enthu, memories, ref." (?)
-
-writing style consistency: maybe i should let llm to write some stuff in comparison and let me choose? idea: let llm generate some stuff in a list, i choose or rewrite, then let llm put them in comparison, generate the style guide. (or: give example, generate following existing text with human curated limitation.)
-
----
-
 organize berryberry fav.
 
 organize sub before export. https://space.bilibili.com/1156993272/fans/follow
+
+leverage llms instead.
+
+---
+
+pure math generation  (?)
+
+with advanced topics and tricks on the cheetsheet
+
+why: gen and revise, compare and summarize the style. aops. apply the style.
+set the narration style when translating. "for enthu, memories, ref." (?)
+
+writing style consistency: maybe i should let llm to write some stuff in comparison and let me choose? idea: let llm generate some stuff in a list, i choose or rewrite, then let llm put them in comparison, generate the style guide. (or: give example, generate following existing text with human curated limitation.)
 
 ---

@@ -66,6 +66,12 @@ cyan nyan https://www.youtube.com/@cyannyan6/streams
 
 saba https://www.youtube.com/@SamekoSaba
 
+【Chat】We are engaged! ‪@HoshinoLina‬ ★ https://www.youtube.com/watch?v=9zhStFRnGuI
+
+【US arc】how we met IRL as VTubers | VTuber Cyan https://www.youtube.com/watch?v=4B8LA92BwbI
+
+【复活直播】我回来啦！新的章节 ★ https://www.youtube.com/watch?v=YkyNbkpJ4Sw
+
 vibe coding stream https://www.youtube.com/@bridgemindai
 
 ---
@@ -128,13 +134,7 @@ pictures/design
 
 ---
 
-humility/backend/compute/test/chemistry
-
-humility/backend/compute/test/coding
-
 humility
-
-http://localhost:5173/
 
 ---
 
