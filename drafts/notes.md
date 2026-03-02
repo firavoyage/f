@@ -828,4 +828,18 @@ upd: lol. sorry guys if you pause the vid and sit for 10 mins. it was a bad day 
 
 ---
 
+on passwords.
+
+npm is weird.
+
+pw must 10 char. and follow a weird (implicit!) guidelines (would anyone read?).
+
+and no special char needed.
+
+i think the best way it mozilla. 8 char. two kinds of char (upper, lower, number, symbol) & not inside common pw list.
+
+
+---
+
+
 

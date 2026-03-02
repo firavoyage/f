@@ -486,9 +486,30 @@ think whether to use tailwind.
 1. cursor: google 4 colors when empty. blue when typing.
 2. progressive disclosure: clear input and send appear only when not empty.
 
+(although its features are reserved. e.g. no exporting, copying markdown. no editing.)
+
+when you hold a file ready to drop, the input component is surrounded by vibrant google colors and shows invitation.
+
 ---
 
 Lex openclaw 03 20 00 humility
+
+---
+
+the problem is llms are not really intelligent.
+
+if you dont write explicit spec and clarify... it might not know.
+
+if you dont tell, it simply wont know. if you tell, but in a generic style, like some prinicples, it might know, but sometimes it still might not (you think you should use a stable polling. it uses conventional/mediocre unstable listener. you think it's redundant, actually it might not, but at least you wanna test. it does not.). 
+
+humans have intuition.
+
+---
+
+i think chatgpt is too slow.
+
+it's wise to choose flash as the default model.
+
 
 ---
 

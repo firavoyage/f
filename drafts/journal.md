@@ -3169,6 +3169,16 @@ youtube is good at this. click on the three dots, and you are one click away. (a
 
 04 00 appreciate `曲名：酸欠少女 sanketsusyoujo`.
 
+16 00 watch cr live, season reset.
+
+rw (rg) reaches about 3500, #50. gao zixiang (golem, eg) feels overwhelmed of bad luck.
+
+19 00 reg `firahq` on npm.
+
+20 40 publish `hello_world_firahq` on npm.
+
+waste hours due to the conservative yet unstable frontend norms.
+
 
 
 <!--
