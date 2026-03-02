@@ -93,6 +93,8 @@ software engineering:
 - p np
 - shell syntax
 - shell builtin commands
+- crud
+- sql syntax history better abstraction
 
 software engineering project management:
 

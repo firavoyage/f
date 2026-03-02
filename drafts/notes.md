@@ -838,8 +838,16 @@ and no special char needed.
 
 i think the best way it mozilla. 8 char. two kinds of char (upper, lower, number, symbol) & not inside common pw list.
 
-
 ---
 
+on copy to markdown
+
+i think it's good to just store things in html.
+
+just write html in markdown, keeping the original computed styling, image size, etc. while stripping things like bg color.
+
+markdown is not designed to store extracted main content.
+
+---
 
 

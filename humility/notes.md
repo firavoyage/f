@@ -483,12 +483,14 @@ about theme. simple. let user add their own css/extension/components.
 
 think whether to use tailwind.
 
-1. cursor: google 4 colors when empty (upd: and hanging). blue when typing.
+1. cursor: google 4 colors when empty (upd: and hanging). blue when typing. (upd: wait! when you move your cursor left right, the rendered cursor does not move! holyshit. you should expect every possible move of the user. like typing when not focusing. like esc.)
 2. progressive disclosure: clear input and send appear only when not empty.
 
 (although its features are reserved. e.g. no exporting, copying markdown. no editing.)
 
 when you hold a file ready to drop, the input component is surrounded by vibrant google colors and shows invitation.
+
+google designers are really special. they think different. for block quotes, you dont use a think line on the left, you dont use quotation mark, you dont use serif italic plus indentation/center alignment, you use a rounded rect with primary bg variant and render inside as usual.
 
 ---
 
@@ -509,6 +511,10 @@ humans have intuition.
 i think chatgpt is too slow.
 
 it's wise to choose flash as the default model.
+
+---
+
+i think the best (most of my?) usage of llms are repeating my idea in a clearer, often simpler way, and searching docs.
 
 ---
 
