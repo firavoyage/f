@@ -219,3 +219,7 @@ how to debug in node. i want to see call log.
 how to debug in node. i want to run it. and then i enter an interactive playground. i can run functions and access variables just like in devtools.
 
 
+
+how much are they. not just buitlins, but everything i dont need to install on any os. (include cd, head, rm, cp, dont include apt, curl/wget, code). how to find them all, both inside zsh, and on online references/specs. manually installed apps and defined fn are not included. be simple and concise.
+
+does shell have anything about network. how could i possibly use a shell with only builtin commands, like no apt so no curl/wget and suppose i wanna download sth. 
