@@ -34,10 +34,6 @@ research the recommendation algo. (views distribution)
 
 ---
 
-bandolllll. "mygo pvz. (like gacha party)"
-
----
-
 organize berryberry fav.
 
 organize sub before export. https://space.bilibili.com/1156993272/fans/follow

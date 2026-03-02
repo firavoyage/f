@@ -60,12 +60,14 @@ archive telegram
 
 ---
 
-- npm publish hello world (rn to firahq)
 - sqlite
 - log an object, a long wall of text.
 - gitignore, msrv, pnpm workspace, eslint, etc.
 - find and solve friction (loop type inference etc.).
 - runtime type check (research!) for tools
-- update readme (some outdated lists. add some streamers. simplify simplelive maybe. btw, i dont think i have to save everyone on tg. they are cute. i love them. but i dont know them. and they are not really hard to find and retrieve.)
+- update readme (some outdated lists. add some streamers. simplify simplelive maybe. btw, i dont think i have to save everyone on tg. they are cute. i love them. but i dont know them. and they are not really hard to find and retrieve. i love shell. i love some nice ppl.)
+
+---
+
 
 

@@ -483,7 +483,7 @@ about theme. simple. let user add their own css/extension/components.
 
 think whether to use tailwind.
 
-1. cursor: google 4 colors when empty. blue when typing.
+1. cursor: google 4 colors when empty (upd: and hanging). blue when typing.
 2. progressive disclosure: clear input and send appear only when not empty.
 
 (although its features are reserved. e.g. no exporting, copying markdown. no editing.)
@@ -509,7 +509,6 @@ humans have intuition.
 i think chatgpt is too slow.
 
 it's wise to choose flash as the default model.
-
 
 ---
 

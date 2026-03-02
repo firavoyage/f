@@ -91,6 +91,7 @@ software engineering:
 - modular use import export instead of chaining
 - pure fn
 - p np
+- shell syntax
 
 software engineering project management:
 

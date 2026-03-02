@@ -3179,6 +3179,8 @@ rw (rg) reaches about 3500, #50. gao zixiang (golem, eg) feels overwhelmed of ba
 
 waste hours due to the conservative yet unstable frontend norms (, unreliable network, and not working chatgpt search).
 
+23 40 watch `How To COUNTER Brilliant Moves! | Chess Rating Climb 1012 to 1051`.
+
 
 
 <!--
