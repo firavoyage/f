@@ -3177,7 +3177,7 @@ rw (rg) reaches about 3500, #50. gao zixiang (golem, eg) feels overwhelmed of ba
 
 20 40 publish `hello_world_firahq` on npm.
 
-waste hours due to the conservative yet unstable frontend norms.
+waste hours due to the conservative yet unstable frontend norms (, unreliable network, and not working chatgpt search).
 
 
 
