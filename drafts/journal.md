@@ -3161,6 +3161,8 @@ clickgambit.
 
 youtube is good at this. click on the three dots, and you are one click away. (although idk where is the blacklist, instead of something like activity history.)
 
+upd: and chai jing.
+
 01 00 watch `papi酱讽刺春晚被全平台下架的视频｜历史存档` `Namewee 黃明志 Ft. Kimberley Chen 陳芳語【Fragile 玻璃心】(Official Music Video)`.
 
 > 要是不封还好，一封禁所有人都知道他们要干啥了 XD
@@ -3184,6 +3186,16 @@ waste hours due to the conservative yet unstable frontend norms (, unreliable ne
 03
 
 23 20 watch `How To STOP OPENING TRAPS! | Chess Rating Climb 1051 to 1083`.
+
+04
+
+00 40 revise wisdom prompt, make things explicit.
+
+01 20 watch `I Gave Stockfish Only Pawns 😮`.
+
+fun.
+
+c'mon... stockfish. you gotta do better.
 
 
 

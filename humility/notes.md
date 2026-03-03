@@ -492,6 +492,12 @@ when you hold a file ready to drop, the input component is surrounded by vibrant
 
 google designers are really special. they think different. for block quotes, you dont use a think line on the left, you dont use quotation mark, you dont use serif italic plus indentation/center alignment, you use a rounded rect with primary bg variant and render inside as usual.
 
+upd: even if user ctrl v text it should listen. chatgpt does not offer this.
+
+---
+
+this ui (2012) is very clean. chrome://inspect/
+
 ---
 
 Lex openclaw 03 20 00 humility

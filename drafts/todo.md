@@ -60,14 +60,6 @@ archive telegram
 
 ---
 
-how to create a cli with node
-
-how to debug in node. i want to see call log.
-
-how to debug in node. i want to run it. and then i enter an interactive playground. i can run functions and access variables just like in devtools.
-
----
-
 - log an object or a long wall of text. not object object.
 - js sqlite abstraction
 - gitignore, msrv, pnpm workspace, eslint, etc.
@@ -83,8 +75,20 @@ export google ai & gemini. find a way (markdown?)
 
 the syntax of sql is weird. would you like to have an abstraction. i mean, sql is also complex. could you have a subset of the syntax which does everything. i mean it might be hard to prove i wont need to bother sql in the future.
 
+well, i will have an abstraction whatever. 
+
+sql -> abstraction (sql in fp) -> abstraction (production apis) would be better than
+
+sql -> abstraction (production apis).
+
 ---
 
 conclusion: `utils.inspect`.
+
+---
+
+how to create a cli with node
+
+---
 
 
