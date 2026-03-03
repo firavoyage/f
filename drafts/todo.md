@@ -95,3 +95,13 @@ what does console.log do. the spec. in browser, when i log an object, i could in
 
 on ghostty how to remove popup when i wanna close the terminal when something is running and pasting dangerous scripts
 
+---
+
+what does this mean
+
+```
+cat << 'EOF' | sudo tee $SCRIPT_PATH > /dev/null
+...
+EOF
+```
+
