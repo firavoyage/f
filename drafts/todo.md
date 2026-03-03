@@ -61,7 +61,7 @@ archive telegram
 ---
 
 - js sqlite abstraction
-- log an object, a long wall of text.
+- log an object or a long wall of text. not object object.
 - gitignore, msrv, pnpm workspace, eslint, etc.
 - find and solve friction (loop type inference etc.).
 - runtime type check (research!) for tools

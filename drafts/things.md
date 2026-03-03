@@ -304,4 +304,12 @@ dl Sanketsu Shojo Sayuri
 
 ---
 
+if you can get the following list of ppl you follow, then you could analyze.
 
+berryberry could be sns between small potatoes.
+
+on zhihu, i see about 100/500 of my following follows jiang zijun.
+
+on berryberry i think i could do the similar thing. (although i should study the basics first and dev my infra.)
+
+---
