@@ -79,18 +79,12 @@ export google ai & gemini. find a way (markdown?)
 
 ---
 
+(library on top of a library)
+
 the syntax of sql is weird. would you like to have an abstraction. i mean, sql is also complex. could you have a subset of the syntax which does everything. i mean it might be hard to prove i wont need to bother sql in the future.
 
-like in browser, can i write my own log fn that does the same of console.log. i mean it seems i could really style like `rich`. but idk whether i could make it interactive.
-
-how does node convert anything to string in console.log.
-
-write some code. let me test myself.
-
-
-
-what does console.log do. the spec. in browser, when i log an object, i could interact with it. in node, it seems to have text output, but it's not `[object object]`.
-
 ---
+
+conclusion: `utils.inspect`.
 
 

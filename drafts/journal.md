@@ -3181,6 +3181,10 @@ waste hours due to the conservative yet unstable frontend norms (, unreliable ne
 
 23 40 watch `How To COUNTER Brilliant Moves! | Chess Rating Climb 1012 to 1051`.
 
+03
+
+23 20 watch `How To STOP OPENING TRAPS! | Chess Rating Climb 1051 to 1083`.
+
 
 
 <!--
