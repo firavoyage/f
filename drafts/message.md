@@ -212,10 +212,4 @@ export const log = async ({
 
 ---
 
-how to create a cli with node
-
-how to debug in node. i want to see call log.
-
-how to debug in node. i want to run it. and then i enter an interactive playground. i can run functions and access variables just like in devtools.
-
 
