@@ -3265,7 +3265,7 @@ those easy to pull off, which they should be, often surrounded by green spots an
 
 18 20 change steam handle to `firahq`. normalize profile.
 
-20 40 skim `【科技老男孩】对比满血版Android,国产安卓阉割了哪些功能？`
+20 40 skim `【科技老男孩】对比满血版Android,国产安卓阉割了哪些功能？` `从夯到拉！锐评各大手机系统！`.
 
 cited by a random tg group chat.
 
