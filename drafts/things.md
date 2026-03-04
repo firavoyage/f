@@ -338,3 +338,30 @@ Research cron job
 
 ---
 
+learn on rust-lang/rustlings
+
+interactive. fun.
+
+inspired by chyk.
+
+---
+
+list a bunch of verbs llms would do.
+
+humans could do everything. but the set, or broadset for working is limited. 
+
+like normalize, simplify, explore (understand something, driven by curiosity), research (intentionally, with a clear purpose, see existing things clearly), browse (bfs from a link or somewhere, intentionally), surf (doom scroll on random algo recom fyp)...
+
+---
+
+revise: copy to markdown
+
+i think it's good to just store things in html.
+
+just write html in markdown, keeping the original computed styling, image size, etc. while stripping things like bg color.
+
+markdown is not designed to store extracted main content.
+
+export google ai & gemini. find a way (markdown?)
+
+---

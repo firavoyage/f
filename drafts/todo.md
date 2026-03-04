@@ -56,7 +56,7 @@ humility
 
 ---
 
-archive telegram
+research manus use cases myself. find inspiration.
 
 ---
 
@@ -67,11 +67,7 @@ archive telegram
 - runtime type check (research!) for tools
 - update readme (some outdated lists. add some streamers. simplify simplelive maybe. btw, i dont think i have to save everyone on tg. they are cute. i love them. but i dont know them. and they are not really hard to find and retrieve. i love shell. i love some nice ppl. zhihu: e.g. e mo li li jiang.)
 
-export google ai & gemini. find a way (markdown?)
-
 ---
-
-(library on top of a library)
 
 the syntax of sql is weird. would you like to have an abstraction. i mean, sql is also complex. could you have a subset of the syntax which does everything. i mean it might be hard to prove i wont need to bother sql in the future.
 
@@ -81,28 +77,21 @@ sql -> abstraction (sql in fp) -> abstraction (production apis) would be better 
 
 sql -> abstraction (production apis).
 
+you dont need a full sql in fp (check the syntax carefully then). you might need a simple kv storage. ts and d.ts is good. explicit > implicit. coz you dont have to write yourself.
+
+learn the modern workflow.
+
+i think it doesnt matter. just proceed.
+
+what matters is:
+
+- you should use inspect before (implicitly) converting anything.
+- you should not log the details if you are logging like an array of a thousand items. maybe you could log a uuid instead.
+- you can view/export a  using something like the debug panel of the sql (just a simple abstraction for key value storage, although sql could do much more than it).
+
 ---
 
 conclusion: `utils.inspect`.
 
 ---
 
-humility is built with a motivation of exploitation.
-
-calculate tokens. file size. different models.
-
-gpt 5.2 (like ten messages for free? it could change.)
-
-Released Dec 10, 2025
-400,000 context
-$1.75/M input tokens
-$14/M output tokens
-$10/K web search
-
-gpt 5 mini
-
-Released Aug 7, 2025
-400,000 context
-$0.25/M input tokens
-$2/M output tokens
-$10/K web search
