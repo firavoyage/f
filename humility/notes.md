@@ -530,3 +530,18 @@ i think the best (most of my?) usage of llms are repeating my idea in a clearer,
 
 ---
 
+when you ctrl/shift/alt click the logo or "new chat", it should open new tab instead of redirect history/spa.
+
+---
+
+manus definitedly have some built in knowledge.
+
+like "..." unless explicitly asked. "..." by default.
+
+it leverages some best practices (not really).
+
+like show prob/confidence after replying, custom xml format (prompt engineering), imagine 3 and pick 1.
+
+chinese love cheating/reward hacking.
+
+---

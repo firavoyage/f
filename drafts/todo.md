@@ -87,8 +87,22 @@ conclusion: `utils.inspect`.
 
 ---
 
-how to create a cli with node
+humility is built with a motivation of exploitation.
 
----
+calculate tokens. file size. different models.
 
+gpt 5.2 (like ten messages for free? it could change.)
 
+Released Dec 10, 2025
+400,000 context
+$1.75/M input tokens
+$14/M output tokens
+$10/K web search
+
+gpt 5 mini
+
+Released Aug 7, 2025
+400,000 context
+$0.25/M input tokens
+$2/M output tokens
+$10/K web search

@@ -850,4 +850,10 @@ markdown is not designed to store extracted main content.
 
 ---
 
+i suddenly realized gnome nautilus has a good design.
 
+when `del`. no popup. move to trash. show a breadcrumb: undo. no closing button/countdown.
+
+simple.
+
+---

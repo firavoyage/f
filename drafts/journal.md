@@ -2595,7 +2595,7 @@ separate the msg log out of the repo. that guy is really good at searching... bu
 
 03
 
-12 40 chat. 
+12 40 chat.
 
 13 40 reg vk `firahq` `firahq@vk.com`
 
@@ -2619,7 +2619,7 @@ loading animation still exists regardless. warau.
 
 23 00 reply to the russian anonymous. read twitter.
 
-04 
+04
 
 03 20 sleep.
 
@@ -2647,7 +2647,7 @@ chatgpt. claude. gemini. dribbble. gmail classic view. google reader new ui.
 
 35 puzzles. 25min. age 18 to 50.
 
-get stuck at problem 20 for a few minutes. find xor. 
+get stuck at problem 20 for a few minutes. find xor.
 
 run out of time. solve 23 problems. get 110 iq.
 
@@ -2681,7 +2681,7 @@ the names on the leaderboards change when the internet env changes. sus.
 
 08
 
-13 40 get on the plane to xishuangbanna. continue listening to `context engineering for agents` from latent space. 
+13 40 get on the plane to xishuangbanna. continue listening to `context engineering for agents` from latent space.
 
 14 20 read `context engineering for agents` on manus blog. 15 20
 
@@ -2723,7 +2723,7 @@ Observation: set different album names foo bar. Art applies.
 
 Fix magically. Toggle a few settings. Idk. Thumbnails folder is irrelevant.
 
-Find cause: toggle settings - images - ignore media store covers off and on. Seems the deeper cause is the app is imperative instead of declarative. It's not pure. 
+Find cause: toggle settings - images - ignore media store covers off and on. Seems the deeper cause is the app is imperative instead of declarative. It's not pure.
 
 If everything is a state, toggling off and on should behave the exact same.
 
@@ -2799,7 +2799,7 @@ One of the solutions, the playbook https://manus.im/playbook
 
 recommended by a curious (mtf?) on twitter.
 
-it needs card to confirm human. i have no card. 
+it needs card to confirm human. i have no card.
 
 - search: can i use google pay without bank (i mean without any bank/usdt involvement, actually)
 - search: card number cvc meaning
@@ -2855,7 +2855,7 @@ i go to a small shop to enforce my purpose. a house without any decoration. an o
 
 12 00 listen to `Vol. 161 从开发自己的🦞OpenClaw聊起`.
 
-16 00 simplify telegram. 
+16 00 simplify telegram.
 
 17 00 sync phone, e.g. photos, screenshots.
 
@@ -2881,7 +2881,7 @@ next: `STEINS;GATE`, `3月のライオン 第2シリーズ `, `魔法少女ま�
 
 11 40 restart ubuntu. (auto log out)
 
-maybe caused by ipfs. 
+maybe caused by ipfs.
 
 (confirm: start ipfs desktop - ipfs errored)
 
@@ -2911,7 +2911,17 @@ incl. service fee of 80 cents by openrouter.
 
 waste time finding the email inside spam.
 
+15 00 read manus blog.
+
+Not controlling variables. Comparison doesn't show obvious differences. Limitation is all about pricing. Yet you could see the clear result screenshots. https://manus.im/blog/best-landing-page-generator
+
 16 40 watch `How I Beat a CHEATER!!`.
+
+18 20 listen to `Vol. 150 喵神onevcat: Vibe Coding及日本工作与生活`.
+
+18 40 read manus blog.
+
+Ideal ai presentation skill https://manus.im/blog/best-ai-presentation-makers
 
 21 00 play `Basics to Brilliance` on lichess study.
 
@@ -2919,11 +2929,25 @@ waste time finding the email inside spam.
 
 01 20 backup `Documents/_/archive` on hard drive.
 
+14 20 read manus blog.
+
+Imagen metrics https://manus.im/blog/best-ai-image-generator
+
+Skim. No detail. Nonsense. https://manus.im/blog/best-vibe-coding-tools
+
+Ideal webpage gen https://manus.im/blog/vibe-coding-tools-non-coder-review
+
+19 40 read manus blog.
+
+Ideal writing https://manus.im/blog/best-ai-text-generator
+
 21 40 set `multiple lines: 2` on lichess stockfish.
 
 21 40 watch `SURVIVE AGGRESSIVE OPPONENTS - Easy Solution! Chess Rating Climb 402 to 432`, `Beginner To Master Chess Rating Climb (2024)` ep 2.
 
 22 20 watch `How to Crush a 500, Every Step Explained`.
+
+19
 
 00 20 skim `Lost and Alone in Rural China`.
 
@@ -2943,7 +2967,7 @@ the reset checkmate
 
 the window title is simpler. the `.vscode` is more widely used.
 
-20 20 surf zhihu. download `Structure and Interpretation of Computer Programs`. 
+20 20 surf zhihu. download `Structure and Interpretation of Computer Programs`.
 
 20
 
@@ -2981,7 +3005,7 @@ and the ux is wild, clear, but not really elegant.
 
 03 00 download `Atomic Habits` `The Lean Startup` `设计心理学`.
 
-14 00 play go. win golaxy with 4 handcaps. 15 00 
+14 00 play go. win golaxy with 4 handcaps. 15 00
 
 16 00 play puzzles on zhangqi.
 
@@ -3013,7 +3037,7 @@ choose vlc as before.
 
 17 40 complete zhangqi 2k problemset.
 
-Web ui on phone sucks. Elements cropped, unable to click certain areas. 
+Web ui on phone sucks. Elements cropped, unable to click certain areas.
 
 Lichess app sucks, but lichess web works.
 
@@ -3027,7 +3051,7 @@ can be tricky if careless.
 
 18 00 config ubuntu 24. write `ubuntu.md`.
 
-a day with ubuntu 24. things are simpler (not installing nonsense). code (vscode) is more modern. use chatgpt instead of docs. 
+a day with ubuntu 24. things are simpler (not installing nonsense). code (vscode) is more modern. use chatgpt instead of docs.
 
 23 00 watch `How To Recover After Blundering - Beginners Watch This! Rating Climb 400 ELO`.
 
@@ -3069,7 +3093,7 @@ btw, ive already verified using this a few mo before. idk why it's
 
 try network inspection. seems not easy.
 
-try ytdlp (with cookies from chromium:`/home/fira/snap/chromium/common/chromium`, whether outdated apt or lastest pip, whether proxy node). 
+try ytdlp (with cookies from chromium:`/home/fira/snap/chromium/common/chromium`, whether outdated apt or lastest pip, whether proxy node).
 
 deprecate recording screen, the last resort (i dont wanna do this since the vid is not really high quality.).
 
@@ -3145,7 +3169,7 @@ find 2 banknotes worth 2 sgd each left on the floor of the university canteen an
 
 22 00 watch `【极客湾】手机零售机游戏性能大横评2026 厂商作弊太疯狂 OP字幕附`.
 
-too much trivial facts. they should be just references. 
+too much trivial facts. they should be just references.
 
 anyway, that's sns. that's the art of video making, letting you focused without showing anything meaningful. (if not, then why adding a weird eletronic bgm all the time?)
 
@@ -3153,7 +3177,7 @@ anyway, that's sns. that's the art of video making, letting you focused without 
 
 00 20 watch `30 Brilliant Moves IN A ROW`.
 
-clickgambit. 
+clickgambit.
 
 > It wouldnt be a gothamchess video if it wasnt clickbait.
 
@@ -3185,6 +3209,24 @@ waste hours due to the conservative yet unstable frontend norms (, unreliable ne
 
 03
 
+19 20 Buy the stranger on taobao.
+
+Searching, full of random shop names, promo lines and arts, even product names are promotional. Price is the only meaningful info.
+
+While you can't see the translator and publisher in one look.
+
+Idk how amazon does. The same product should be put together. Shops are redundant. No fraud is default.
+
+It's good to have something to read at school. When I'm tired of science.
+
+Found on douban recommendation of the great Gatsby. Verdict by top 250 ranking and popular reference on zhihu.
+
+19 40 Browse some books on top ranking.
+
+Pick 白夜行 许三观卖血记
+
+But maybe I won't buy them now.
+
 23 20 watch `How To STOP OPENING TRAPS! | Chess Rating Climb 1051 to 1083`.
 
 04
@@ -3197,7 +3239,7 @@ fun.
 
 c'mon... stockfish. you gotta do better.
 
-02 00 reg `firahq@mastodon.social`. follow some nice ppl. collect. curate and archive. 
+02 00 reg `firahq@mastodon.social`. follow some nice ppl. collect. curate and archive.
 
 03 20 watch some vids of wakareno.
 
@@ -3209,9 +3251,25 @@ added to weird. feels techinical and infomative. popular. yet... nonsensical.
 
 16 20 receive news about the usst admission.
 
-not accepted. yet appended to the waiting list of each major, which "might" imply a high admission prob from my queue position. the full list is not public.
+not accepted. yet appended to the waiting list of each major, which "might" imply a high change of admission from my queue position. the full list is not public.
 
-i think i will sleep before midnight today and go school tomorrow. i will have a book, the water level of ideology, as well as some science stuff. the book the stranger will arrive on thu. i will have the new meal box, instead of the broken/unfit.
+i think i will sleep before midnight today and go school tomorrow. i will have a book, the water level of ideology, as well as some science stuff. the book the stranger will arrive on thu. i will have the normalized and solid meal box.
+
+16 40 sync. archive.
+
+manus has some free tokens. not very much for exploitation. but i think it's good to play with it and see how it works.
+
+17 20 remove some rotted roots of my house plants.
+
+those easy to pull off, which they should be, often surrounded by green spots and white fluffy stuff, are considered rotted.
+
+18 20 change steam handle to `firahq`. normalize profile.
+
+20 40 skim `【科技老男孩】对比满血版Android,国产安卓阉割了哪些功能？`
+
+cited by a random tg group chat.
+
+overstating. emotional. idk why. just listing realities is enough.
 
 
 

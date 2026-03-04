@@ -214,6 +214,22 @@ Evaluate ruby. Rail.
 
 Research: relationship of vtubers. When you sub someone you are likely to sub these. Relationship of internet bloggers. Menci's friends.
 
+Research: 
+
+start from a few good ppl or channel. Like educators, menci, matrix67, etc. like qingniao channel. 
+
+Bfs. 
+
+Save all members. List. 
+
+Convert to graph. Sort. 
+
+In essence, from one point, 
+
+Gather everyone. Organize and analyze. Archive.
+
+Stand on the shoulder of giants. Github tg indexers. Telemetrio. Libs. Etc.
+
 ---
 
 Ideas in Chinese textbook. Tags. Meta. Essence.
@@ -313,3 +329,12 @@ on zhihu, i see about 100/500 of my following follows jiang zijun.
 on berryberry i think i could do the similar thing. (although i should study the basics first and dev my infra.)
 
 ---
+
+Research. Pdf to json.
+
+---
+
+Research cron job
+
+---
+
