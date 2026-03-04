@@ -3259,6 +3259,8 @@ i think i will sleep before midnight today and go school tomorrow. i will have a
 
 manus has some free tokens. not very much for exploitation. but i think it's good to play with it and see how it works.
 
+upd: no need to diy or watch vids. just browse official site (chatgpt search does not work due to low seo.). find awesome.manus.space.
+
 17 20 remove some rotted roots of my house plants.
 
 those easy to pull off, which they should be, often surrounded by green spots and white fluffy stuff, are considered rotted.
