@@ -3207,6 +3207,12 @@ ordinary internet creatures, but what if really gifted. dreams. confidence. what
 
 added to weird. feels techinical and infomative. popular. yet... nonsensical.
 
+16 20 receive news about the usst admission.
+
+not accepted. yet appended to the waiting list of each major, which "might" imply a high admission prob from my queue position. the full list is not public.
+
+i think i will sleep before midnight today and go school tomorrow. i will have a book, the water level of ideology, as well as some science stuff. the book the stranger will arrive on thu. i will have the new meal box, instead of the broken/unfit.
+
 
 
 <!--
