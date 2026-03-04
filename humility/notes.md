@@ -500,6 +500,12 @@ this ui (2012) is very clean. chrome://inspect/
 
 ---
 
+upd:
+
+chess/duolingo/v2ex/steam https://steamcommunity.com/groups/Yuzu_Soft
+
+---
+
 Lex openclaw 03 20 00 humility
 
 ---

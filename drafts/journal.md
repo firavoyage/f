@@ -3197,7 +3197,15 @@ fun.
 
 c'mon... stockfish. you gotta do better.
 
-02 00 reg `firahq@mastodon.social`.
+02 00 reg `firahq@mastodon.social`. follow some nice ppl. collect. curate and archive. 
+
+03 20 watch some vids of wakareno.
+
+ordinary internet creatures, but what if really gifted. dreams. confidence. what a life.
+
+05 00 skim `Why 50% of Chess Players Are Under 600 ELO`.
+
+added to weird. feels techinical and infomative. popular. yet... nonsensical.
 
 
 
