@@ -63,7 +63,7 @@ research manus use cases myself. find inspiration.
 - log an object or a long wall of text. not object object.
 - js sqlite abstraction
 - gitignore, msrv, pnpm workspace, eslint, etc.
-- find and solve friction (loop type inference etc.).
+- find and solve friction (loop type inference etc.). ~~rm decorator maybe.~~ learn ts.
 - runtime type check (research!) for tools
 - update readme (some outdated lists. add some streamers. simplify simplelive maybe. btw, i dont think i have to save everyone on tg. they are cute. i love them. but i dont know them. and they are not really hard to find and retrieve. i love shell. i love some nice ppl. zhihu: e.g. e mo li li jiang.)
 
@@ -85,13 +85,9 @@ i think it doesnt matter. just proceed.
 
 what matters is:
 
-- you should use inspect before (implicitly) converting anything.
+- you should use utils.inspect before (implicitly) converting anything.
 - you should not log the details if you are logging like an array of a thousand items. maybe you could log a uuid instead.
 - you can view/export a  using something like the debug panel of the sql (just a simple abstraction for key value storage, although sql could do much more than it).
-
----
-
-conclusion: `utils.inspect`.
 
 ---
 
