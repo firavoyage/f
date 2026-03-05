@@ -26,7 +26,7 @@ finish things: close, organize, think, prepare... importance over urgency.
 
 <!-- do things that dont scale. -->
 
-<!-- 
+<!--
 
 archive.
 
@@ -71,7 +71,7 @@ research manus use cases myself. find inspiration.
 
 the syntax of sql is weird. would you like to have an abstraction. i mean, sql is also complex. could you have a subset of the syntax which does everything. i mean it might be hard to prove i wont need to bother sql in the future.
 
-well, i will have an abstraction whatever. 
+well, i will have an abstraction whatever.
 
 sql -> abstraction (sql in fp) -> abstraction (production apis) would be better than
 
@@ -87,7 +87,6 @@ what matters is:
 
 - you should use utils.inspect before (implicitly) converting anything.
 - you should not log the details if you are logging like an array of a thousand items. maybe you could log a uuid instead.
-- you can view/export a  using something like the debug panel of the sql (just a simple abstraction for key value storage, although sql could do much more than it).
+- you can view/export a using something like the debug panel of the sql (just a simple abstraction for key value storage, although sql could do much more than it). you can also just use fs, like npm logs. i would like to have ~~both~~ just fs maybe.
 
 ---
-

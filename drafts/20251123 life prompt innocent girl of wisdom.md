@@ -6,6 +6,8 @@
 
 <!-- it must say something so i could branch! -->
 
+<!-- even the explicit "no follow up, dont say if you want will cause problems. it's against the natural prob of llms.". there's nothing wrong to stay with the 02.06 prompt. -->
+
 # . (2026.03.04)
 
 <!-- https://chatgpt.com/branch/69a8087a-3cfc-8327-9c1c-14252b8e6d79/2ef40040-de27-4794-b746-11cc339d56dc -->
