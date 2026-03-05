@@ -545,3 +545,9 @@ like show prob/confidence after replying, custom xml format (prompt engineering)
 chinese love cheating/reward hacking.
 
 ---
+
+Research web, tests, or books. Don't rely on weights.
+
+---
+
+
