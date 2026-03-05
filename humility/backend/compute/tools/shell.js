@@ -1,6 +1,6 @@
 import { exec } from "node:child_process";
 import { promisify } from "node:util";
-import { log } from "../../log.js";
+import { log } from "../../lib/log.js";
 
 const run = promisify(exec);
 

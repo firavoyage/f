@@ -1,6 +1,6 @@
 import { readFile, writeFile } from "node:fs/promises";
 import { join, resolve } from "node:path";
-import { log } from "../../log.js";
+import { log } from "../../lib/log.js";
 
 /** @typedef {import('../../types').result} result */
 /** @typedef {import('../../types').context} context */

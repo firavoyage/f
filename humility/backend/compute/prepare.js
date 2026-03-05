@@ -1,4 +1,4 @@
-import { log } from "../log.js";
+import { log } from "../lib/log.js";
 import { writeFile } from "node:fs/promises";
 import { join } from "node:path";
 

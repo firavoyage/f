@@ -1,7 +1,7 @@
 import { join, resolve } from "node:path";
 import { rm, mkdir, readFile } from "node:fs/promises";
 import { load } from "../load.js";
-import { log } from "../../log.js";
+import { log } from "../../lib/log.js";
 
 /**
  * simple assertion (no throw)

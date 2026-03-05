@@ -1,7 +1,7 @@
 import { unified } from 'unified'
 import remark_parse from 'remark-parse'
 import yaml from 'js-yaml'
-import { log } from '../log.js'
+import { log } from '../lib/log.js'
 
 /**
  * @typedef {{ tool: string, params?: object }} tool_call

@@ -1,7 +1,7 @@
 import { readdir } from "node:fs/promises";
 import { join, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
-import { log } from "../log.js";
+import { log } from "../lib/log.js";
 
 /** @typedef {import('./../types').result} result */
 

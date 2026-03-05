@@ -85,9 +85,22 @@ i think it doesnt matter. just proceed.
 
 what matters is:
 
-- you should use utils.inspect before (implicitly) converting anything.
 - you should not log the details if you are logging like an array of a thousand items. maybe you could log a uuid instead.
 - you can view/export a using something like the debug panel of the sql (just a simple abstraction for key value storage, although sql could do much more than it). you can also just use fs, like npm logs. i would like to have ~~both~~ just fs maybe.
+
+---
+
+revise log. 
+
+learn ts.
+
+---
+
+fs abstraction later.
+
+log syntax highlighting (and lowercase!) later.
+
+update log import later. (if code does not handle it well. use linting.)
 
 ---
 

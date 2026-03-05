@@ -1,6 +1,6 @@
 // backend/compute/act.js
 import { load } from "./load.js";
-import { log } from "../log.js";
+import { log } from "../lib/log.js";
 
 /**
  * Load a tool and execute it with given params and context.

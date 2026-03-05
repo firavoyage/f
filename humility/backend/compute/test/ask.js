@@ -1,6 +1,6 @@
 // test/ask.js
 import { ask } from "../ask.js";
-import { log } from "../../log.js";
+import { log } from "../../lib/log.js";
 
 // const prompt = `
 // Create a computer graphics library function:
