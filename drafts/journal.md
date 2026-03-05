@@ -3273,6 +3273,12 @@ cited by a random tg group chat.
 
 overstating. emotional. idk why. just listing realities is enough.
 
+05
+
+19 00 disable 5g network on phone settings.
+
+maybe that's a pragmatic fix.
+
 
 
 <!--
