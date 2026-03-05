@@ -90,3 +90,5 @@ what matters is:
 - you can view/export a using something like the debug panel of the sql (just a simple abstraction for key value storage, although sql could do much more than it). you can also just use fs, like npm logs. i would like to have ~~both~~ just fs maybe.
 
 ---
+
+
