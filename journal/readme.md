@@ -25,7 +25,7 @@ chmod +x run.sh
 
 on ubuntu x11 with systemd
 
-```
+```sh
 # copy service file
 cp extensions/systemd/journal.service ~/.config/systemd/user/journal.service
 
@@ -39,6 +39,9 @@ systemctl --user enable --now journal.service
 # view status and logs
 systemctl --user status journal.service
 journalctl --user -u journal.service -f
+
+# # restart
+# systemctl --user restart journal.service
 ```
 
 ### test

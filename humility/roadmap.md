@@ -129,3 +129,5 @@ think.
 <!-- i mean, revise this. im a bit confused now. think what's essenstial and inevitable to create the tools for my tasks. learn the tasks from manus use cases. coding is not different. -->
 
 ---
+
+

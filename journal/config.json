@@ -1,5 +1,5 @@
 {
-  "poll_interval": 1,
+  "poll_interval": 60,
   "data_directory": "data",
   "log_level": "verbose",
   "screenshot_interval": 300,
