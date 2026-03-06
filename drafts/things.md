@@ -152,18 +152,6 @@ long running.
 
 ---
 
-photos -> university.
-
-(instead of school)
-
-on gitea, remove fonts maybe.
-
-i could create a new platform with vibe.
-
-it's just a list.
-
----
-
 default:
 
 - jsconfig.
@@ -290,16 +278,6 @@ reddit onboarding: interests.
 
 ---
 
-how to let flatpak see fonts installed in the system.
-
-(test sudo)
-
-seems chromium (on the tabs title also does not work).
-
-method: remove the local jp font. poc: clean ttc file.
-
----
-
 see through epubs and pdfs.
 
 find a new way.
@@ -369,6 +347,3 @@ export google ai & gemini. find a way (markdown?)
 haskell.
 
 ---
-
-
-

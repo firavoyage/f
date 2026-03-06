@@ -3289,6 +3289,8 @@ the best of djhs. all gone.
 
 17 20 read `了不起的盖茨比` chapter 1. 18 00
 
+23 40 watch `DID I JUST PLAY A CHEATER?? | Chess Rating Climb 1083 to 1107`.
+
 
 
 <!--

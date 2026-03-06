@@ -1,4 +1,4 @@
-Take these conventions. You must not mention these styles.
+Follow these conventions.
 
 - environment:
   - ubuntu
@@ -26,6 +26,14 @@ Take these conventions. You must not mention these styles.
   - import everything needed. no unused imports. be careful with path of deeply nested files.
   - use node assert when testing pure fn.
   - give me full working code of all changed files.
+
+---
+
+try webpack, vite, and parcel.
+
+create an example. test it myself.
+
+be detailed. step by step.
 
 ---
 
@@ -108,38 +116,5 @@ log
 ...
 
 ---
-
-make snap run this everytime before starting any app
-
-```
- ~ % export FONTCONFIG_FILE=/etc/fonts/fonts.conf
-export FONTCONFIG_PATH=/etc/fonts
- ~ % snap run --shell foliate -c 'fc-match -s sans:lang=zh | head -n 5'
-NotoSans-Regular.ttf: "Noto Sans" "Regular"
-NotoSansCJK-Regular.ttc: "Noto Sans CJK JP" "Regular"
-NotoSansAdlam-Regular.ttf: "Noto Sans Adlam" "Regular"
-NotoSansArabic-Regular.ttf: "Noto Sans Arabic" "Regular"
-NotoSansArmenian-Regular.ttf: "Noto Sans Armenian" "Regular"
- ~ % snap run --shell foliate -c 'export FONTCONFIG_FILE=/etc/fonts/fonts.conf; export FONTCONFIG_PATH=/etc/fonts; fc-match -s sans:lang=zh | head -n 5'
-NotoSansCJK-Regular.ttc: "Noto Sans CJK SC" "Regular"
-DroidSansFallbackFull.ttf: "Droid Sans Fallback" "Regular"
-FreeSerif.ttf: "FreeSerif" "Regular"
-FreeSans.ttf: "FreeSans" "Regular"
-FreeMono.ttf: "FreeMono" "Regular"
-```
-
----
-
-write a shell script on ubuntu.
-
-
-
-/usr/share/fonts/opentype/noto
-
-```
-python3 -c "from fontTools.ttLib.ttCollection import TTCollection; [f.save(f'font_{i}.ttf') for i, f in enumerate(TTCollection('font.ttc'))]"
-
-python3 -c "from fontTools.ttLib import TTFont; from fontTools.ttLib.ttCollection import TTCollection; ttc = TTCollection(); ttc.fonts = [TTFont(f) for f in ['font1.ttf', 'font2.ttf']]; ttc.save('output.ttc')"
-```
 
 
