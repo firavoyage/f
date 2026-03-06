@@ -109,32 +109,6 @@ log
 
 ---
 
-on ubuntu how to prefer prefer noto sans cjk sc as fallback font.
-
----
-
-```sh
-mkdir -p /etc/profile.d
-sudo tee /etc/profile.d/snap-fonts.sh > /dev/null <<EOF
-export FONTCONFIG_FILE=/etc/fonts/fonts.conf
-export FONTCONFIG_PATH=/etc/fonts
-EOF
-```
-
-result:
-
-- snap fonts sh: fail
-- export on zshrc/shell: fail
-- export inside snap shell: work
-
-how to fix: make it default for all snap apps.
-
----
-
-on ubuntu when i scroll with touchpad and alt tab without removing my fingers, the inertia carries on. how to fix. 
-
----
-
 make snap run this everytime before starting any app
 
 ```
@@ -156,13 +130,16 @@ FreeMono.ttf: "FreeMono" "Regular"
 
 ---
 
-fix
+write a shell script on ubuntu.
+
+
+
+/usr/share/fonts/opentype/noto
 
 ```
-Extracting fonts from TTC file...
-Dumping "/home/fira/NotoSansCJK-Regular.ttc" to "/home/fira/NotoSansCJK-Regular.ttx"...
-ERROR: specify a font number between 0 and 9 (inclusive)
-zsh: no matches found: /home/fira/modified/extracted_fonts/*.ttf
+python3 -c "from fontTools.ttLib.ttCollection import TTCollection; [f.save(f'font_{i}.ttf') for i, f in enumerate(TTCollection('font.ttc'))]"
+
+python3 -c "from fontTools.ttLib import TTFont; from fontTools.ttLib.ttCollection import TTCollection; ttc = TTCollection(); ttc.fonts = [TTFont(f) for f in ['font1.ttf', 'font2.ttf']]; ttc.save('output.ttc')"
 ```
 
 
