@@ -3285,6 +3285,10 @@ jiang zhijun, at the end of the day, quitted the game, as appearing on the table
 
 the best of djhs. all gone.
 
+06
+
+17 20 read `了不起的盖茨比` chapter 1.
+
 
 
 <!--
