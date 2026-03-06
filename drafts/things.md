@@ -365,3 +365,8 @@ markdown is not designed to store extracted main content.
 export google ai & gemini. find a way (markdown?)
 
 ---
+
+haskell.
+
+---
+

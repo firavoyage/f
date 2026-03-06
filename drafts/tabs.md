@@ -137,7 +137,3 @@ pictures/design
 humility
 
 ---
-
-
-
-

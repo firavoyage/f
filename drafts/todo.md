@@ -60,7 +60,6 @@ research manus use cases myself. find inspiration.
 
 ---
 
-- log an object or a long wall of text. not object object.
 - js sqlite abstraction
 - gitignore, msrv, pnpm workspace, eslint, etc.
 - find and solve friction (loop type inference etc.). ~~rm decorator maybe.~~ learn ts.
@@ -79,29 +78,21 @@ sql -> abstraction (production apis).
 
 you dont need a full sql in fp (check the syntax carefully then). you might need a simple kv storage. ts and d.ts is good. explicit > implicit. coz you dont have to write yourself.
 
-learn the modern workflow.
+---
 
-i think it doesnt matter. just proceed.
+fs abstraction.
 
-what matters is:
+sql abstraction. (kv)
 
-- you should not log the details if you are logging like an array of a thousand items. maybe you could log a uuid instead.
-- you can view/export a using something like the debug panel of the sql (just a simple abstraction for key value storage, although sql could do much more than it). you can also just use fs, like npm logs. i would like to have ~~both~~ just fs maybe.
+log syntax highlighting (and lowercase!).
+
+update log import. (if code does not handle it well. use linting.)
 
 ---
 
-revise log. 
+learn ts. migrate to ts. (src/dist? .build!)
 
-learn ts.
-
----
-
-fs abstraction later.
-
-log syntax highlighting (and lowercase!) later.
-
-update log import later. (if code does not handle it well. use linting.)
+check. plan.
 
 ---
-
 
