@@ -1,9 +1,9 @@
 // lib/log.js
 import fs from "fs/promises";
-import { inspect } from "util";
-import { randomUUID } from "crypto";
 import path from "path";
 import url from "url";
+import { inspect } from "util";
+import { randomUUID } from "crypto";
 
 const BACKEND_DIR = path.resolve(url.fileURLToPath(new URL("../", import.meta.url)));
 const LOG_FOLDER = path.join(BACKEND_DIR, ".log");

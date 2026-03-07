@@ -3325,6 +3325,20 @@ seems there is a 21 day on hold?!
 
 (the purpose were to join cyan nyan and export some member vids. and, it's fun.)
 
+08
+
+00 00 download `The Great Gatsby` and normalize its book title with calibre.
+
+00 20 watch an episode of fate strange fake on funshiki live (with waifu, zhuyu).
+
+exciting. but a bit confusing... what are they doing. why are they fighting.
+
+> random scenes
+
+00 40 watch wakareno df live.
+
+even players with hack could not survive one shot of awm.
+
 
 
 <!--
