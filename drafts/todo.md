@@ -106,4 +106,8 @@ gnome design system.
 
 ---
 
+it doesnt seems that fs needs an abstraction...
 
+(tools might need. like create path when err)
+
+---
