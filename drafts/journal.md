@@ -3313,7 +3313,17 @@ cn passport currently not supported
 
 long time no go.
 
-16 00 try metamask.
+16 00 try metamask, localcoinswap.
+
+small fee trap. lose about 10% to 20%. (overspent 6x on trans fee for ignorance)
+
+19 20 reg `paypal.me/firallc`
+
+19 40 receive 10 usd on paypal.
+
+seems there is a 21 day on hold?! 
+
+(the purpose were to join cyan nyan and export some member vids. and, it's fun.)
 
 
 

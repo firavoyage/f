@@ -139,3 +139,18 @@ you need ...
 abstraction.
 
 ---
+
+leverage money more.
+
+i have much money. but i dont have many decent ways to convert them into value.
+
+try openrouter.
+
+it's good to just waste some money to build confidence.
+
+add chatgpt web is easy. deepseek is also easy, even easier (as the web is simple without much limitation.)
+
+more hacks to the community.
+
+---
+

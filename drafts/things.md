@@ -343,3 +343,10 @@ export google ai & gemini. find a way (markdown?)
 haskell.
 
 ---
+
+login on paypal and solve verification issue. (prepare passport, id card, photos)
+
+check btc issue. whether it refunds.
+
+---
+
