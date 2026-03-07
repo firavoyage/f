@@ -3291,6 +3291,28 @@ the best of djhs. all gone.
 
 23 40 watch `DID I JUST PLAY A CHEATER?? | Chess Rating Climb 1083 to 1107`.
 
+07
+
+03 00 keep only one vscode window.
+
+move messages under humility.
+
+11 00 receive sp uee news.
+
+admitted.
+
+12 40 download music from `deco 27` `sayuri` `cyan nyan (?)` 14 20 refresh.
+
+it does not seem cyan has many songs available in the simple form.
+
+14 40 try swapsy.
+
+cn passport currently not supported
+
+15 20 watch xuegao cheese go live. browse wakareno learning go clips.
+
+long time no go.
+
 
 
 <!--

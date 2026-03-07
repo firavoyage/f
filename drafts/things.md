@@ -294,10 +294,6 @@ filenames with special icons on vscode.
 
 ---
 
-dl Sanketsu Shojo Sayuri
-
----
-
 if you can get the following list of ppl you follow, then you could analyze.
 
 berryberry could be sns between small potatoes.

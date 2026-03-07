@@ -96,3 +96,11 @@ check. plan.
 
 ---
 
+what are the known problems of vite
+
+what are the known problems of parcel
+
+deno?
+
+
+

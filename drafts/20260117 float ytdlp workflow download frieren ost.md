@@ -4,6 +4,8 @@
 
 # .
 
+title - album - artist
+
 ```sh
 yt-dlp \
   "https://music.youtube.com/playlist?list=~" \
@@ -13,19 +15,151 @@ yt-dlp \
   --add-metadata \
   --embed-thumbnail \
   --parse-metadata "playlist_index:%(track_number)s" \
+  -o "_/%(title)s - %(album,playlist_title)s - %(artist)s.%(ext)s"
+```
+
+flag: album/title - artist
+
+```sh
   -o "_/%(album,playlist_title)s/%(title)s.%(ext)s"
 ```
 
-```sh
+flag: filter by play list range
+
+```
+Individual items: --playlist-items 1,3,5 (downloads the 1st, 3rd, and 5th videos).
+Ranges: --playlist-items 1-5 (downloads the first 5 videos).
+Combined: --playlist-items 1-3,7,10-13 (downloads 1, 2, 3, 7, and 10 through 13). 
+
+--playlist-start NUMBER: Start at a specific index (default is 1).
+--playlist-end NUMBER: End at a specific index (default is the last video).
+--playlist-reverse: Reverses the download order of the playlist.
+
+Pro-Tip: Avoid Redownloads
+To keep a local copy of a playlist updated without checking indices manually every time, 
+
+yt-dlp --download-archive archive.txt "PLAYLIST_URL"
+
+This records every downloaded video ID in archive.txt and automatically skips them in future runs. 
+```
+
+flag: filter by view count
+
+```
+Filtering by View Count
+To filter based on views, use the view_count metadata field with standard comparison operators (like >, <, >=): 
+
+Download videos with more than 1 million views:
+yt-dlp --match-filters "view_count > 1000000" [URL]
+Download videos with fewer than 50,000 views:
+yt-dlp --match-filters "view_count < 50000" [URL]
+Combine filters (e.g., views and likes):
+yt-dlp --match-filters "view_count > 100000 & like_count > 5000" [URL] 
+```
+
+flag: match filters
+
+```
+In yt-dlp, the --match-filters (and its alias --match-filter) flag allows you to download only those videos that meet specific criteria based on their metadata. [1, 2] 
+Basic Syntax
+You provide a condition using the yt-dlp output template fields (like title, duration, view_count, etc.) and a comparison operator. [2] 
+
+# Only download videos that are NOT live
+yt-dlp --match-filters "!is_live" "URL"
+# Only download videos with more than 100,000 views
+yt-dlp --match-filters "view_count > 100000" "URL"
+
+Filtering Options
+
+* Comparison Operators: Supports =, !=, >, <, >=, <=, and *= (contains).
+* Logical Operators:
+* AND: Use & to require multiple conditions be met.
+   * OR: Use multiple --match-filters flags; the download proceeds if any one of them matches.
+* Optional Fields: Use ? after an operator (e.g., >=?) to match even if the field is missing/unknown for a particular video. [1, 2, 3, 4, 5] 
+
+Common Use Cases
+
+| Goal [4, 5, 6, 7] | Command Example |
+|---|---|
+| Duration | --match-filters "duration > 300 & duration < 600" (5-10 mins) |
+| Title Keywords | --match-filters "title ~= '(?i)official'" (Case-insensitive "official") |
+| Live Streams | --match-filters "is_live" or --match-filters "!is_live" |
+| Quality/Size | --match-filters "height >=? 720" (At least 720p) |
+
+Related Flags
+
+* --break-match-filters: Stops the entire download process as soon as a video is encountered that fails the filter (useful for chronologically ordered playlists).
+* --no-match-filters: Disables any previously set filters. [1, 2] 
+
+Would you like a specific filter for dates, file sizes, or a particular keyword in the description?
+
+[1] [https://github.com](https://github.com/yt-dlp/yt-dlp/issues/8108)
+[2] [https://artifacthub.io](https://artifacthub.io/packages/helm/apps/yt-dlp)
+[3] [https://www.reddit.com](https://www.reddit.com/r/youtubedl/comments/10wb23p/match_filter_for_title_and_description_syntax/#:~:text=@echo%20off%20Setlocal%20EnableDelayedExpansion%20set%20yt=yt%2Ddlp%20set,%22title=%25m1%25%22%22%20set%20%22match1=%2D%2Dmatch%2Dfilter%20%22title*=%25m1%25%22%22%20set%20%22match1=%2D%2Dmatch%2Dfilter%20%22title~=%25m1%25%22%22)
+[4] [https://www.reddit.com](https://www.reddit.com/r/youtubedl/comments/1c0gzw1/help_with_matchfilter_for_title/)
+[5] [https://stackoverflow.com](https://stackoverflow.com/questions/78335337/yt-dlp-redownload-better-quality-while-respecting-download-archive)
+[6] [https://github.com](https://github.com/yt-dlp/yt-dlp/issues/3144)
+[7] [https://github.com](https://github.com/yt-dlp/yt-dlp/issues/4894#:~:text=Provide%20a%20description%20that%20is%20worded%20well,streams%2C%20and%20explicitly%20mentions%20invoking%20youtube_live_chat%20downloader.)
+```
+
+tmp
+
+```
 yt-dlp \
-  "https://music.youtube.com/playlist?list=OLAK5uy_kPHfpDINYFhiQJMocHVpcQuhrdk1CO0tQ" \
+  "https://www.youtube.com/playlist?list=PLjxmgthn5WK9ZP8pyHSGXrIYWzQkVWUl3"
+  "https://www.youtube.com/playlist?list=PLjxmgthn5WK-sQU9PhsR7KILyj3dw7bYx"
+   \
   -x \
   --audio-format mp3 \
   --audio-quality 0 \
   --add-metadata \
   --embed-thumbnail \
   --parse-metadata "playlist_index:%(track_number)s" \
-  -o "_/%(title)s - %(album,playlist_title)s - %(artist)s.%(ext)s"
+  -o "_/%(title)s - %(album,playlist_title)s - %(artist)s.%(ext)s" \
+```
+
+cyan nyan (?)
+
+```
+yt-dlp \
+  "https://www.youtube.com/playlist?list=PLjxmgthn5WK-sQU9PhsR7KILyj3dw7bYx"
+  "https://www.youtube.com/playlist?list=PLjxmgthn5WK9ZP8pyHSGXrIYWzQkVWUl3" \
+  -x \
+  --audio-format mp3 \
+  --audio-quality 0 \
+  --add-metadata \
+  --embed-thumbnail \
+  --parse-metadata "playlist_index:%(track_number)s" \
+  -o "_/%(title)s - %(album,playlist_title)s - %(artist)s.%(ext)s" \
+```
+
+sayuri
+
+```
+yt-dlp \
+  "https://music.youtube.com/playlist?list=OLAK5uy_mcw5D6s5E4kHT6RZb8brSK8GR129pIzqo" "https://music.youtube.com/playlist?list=OLAK5uy_np__0daMvE4aM6GgVjYj-UEeIbDWoy-6c" "https://music.youtube.com/playlist?list=OLAK5uy_k7pigNonj5EP_5xzCfc4PIGFvrjGZwhSY" \
+  -x \
+  --audio-format mp3 \
+  --audio-quality 0 \
+  --add-metadata \
+  --embed-thumbnail \
+  --parse-metadata "playlist_index:%(track_number)s" \
+  -o "_/%(title)s - %(album,playlist_title)s - %(artist)s.%(ext)s" \
+```
+
+deco 27
+
+```
+yt-dlp \
+  "https://music.youtube.com/playlist?list=OLAK5uy_kbciiEKqLweWxQgUWXgAQJ4fyLeX7Vl8U" \
+  -x \
+  --audio-format mp3 \
+  --audio-quality 0 \
+  --add-metadata \
+  --embed-thumbnail \
+  --parse-metadata "playlist_index:%(track_number)s" \
+  -o "_/%(title)s - %(album,playlist_title)s - %(artist)s.%(ext)s" \
+  --match-filters "view_count > 1000000"
 ```
 
 # . (deprecated)

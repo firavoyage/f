@@ -130,4 +130,12 @@ think.
 
 ---
 
+be wise.
 
+be graceful.
+
+you need ...
+
+abstraction.
+
+---

@@ -857,3 +857,21 @@ when `del`. no popup. move to trash. show a breadcrumb: undo. no closing button/
 simple.
 
 ---
+
+on naming of files.
+
+music is a good example.
+
+if you wanna have a long list of songs, categorized.
+
+you are likely to have `artist (album) - song`. 
+
+as if you sort by name, the same artist will be put together. (instead of different covers of the same song).
+
+but if you already have folders like `album/song a, b, c`, 
+
+you are likely to have `song - artist`. put the most distinctive identifier first.
+
+repetitive noise later.
+
+---

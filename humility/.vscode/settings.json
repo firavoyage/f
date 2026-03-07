@@ -3,13 +3,11 @@
     "**/node_modules/**": true,
     "**/legacy/**": true,
     "**/.git": true,
-    "**/.vscode": true
   },
   "search.exclude": {
     "**/node_modules/**": true,
     "**/legacy/**": true,
     "**/.git": true,
-    "**/.vscode": true
   },
   "eslint.validate": [
     "javascript",
