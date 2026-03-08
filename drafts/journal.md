@@ -3341,6 +3341,8 @@ even players with hack could not survive one shot of awm.
 
 14 40 archive some weird ui issues of innei's blog on t.me/silly_innei.
 
+16 20 buy some 30cm origami paper. use 60cm this time: little sparkle, chen xiao.
+
 
 
 <!--
