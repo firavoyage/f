@@ -344,12 +344,6 @@ haskell.
 
 ---
 
-login on paypal and solve verification issue. (prepare passport, id card, photos)
-
-check btc issue. whether it refunds.
-
----
-
 radwimps suzume
 
 ---
@@ -367,3 +361,10 @@ origami
 30 cm
 
 ---
+
+math contest.
+
+(and editorial)
+
+---
+
