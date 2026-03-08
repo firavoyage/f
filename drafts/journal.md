@@ -3341,7 +3341,13 @@ even players with hack could not survive one shot of awm.
 
 14 40 archive some weird ui issues of innei's blog on t.me/silly_innei.
 
-16 20 buy some 30cm origami paper. use 60cm this time: little sparkle, chen xiao.
+16 20 buy some 30cm origami paper. use 60cm this time.
+
+unexpected, one of my refund (without returning the goods) applications was accepted, the mutsumi plushie. when i try to fight the customer service with stupid tricks, i fail. when i try to refund before arrival, i see the logistics killed. when i click once after receiving, simply, without any risk, and forget, i win.
+
+btw, although taobao could never compete with amazon in terms of ux. it's good to set taobao intl to jp (loc: jp, lang: zh-cn, cur: cny), which clears ads and makes ia clean (on dock, show categorizes instead of short vids and live). although product names/titles are still of promo ("this ... is so (commendatory)! product name spec spec spec" instead of "product name (then store and spec choice)").
+
+17 00 begin origami project: little sparkle, chen xiao.
 
 
 
