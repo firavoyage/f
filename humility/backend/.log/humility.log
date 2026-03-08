@@ -2289,3 +2289,15 @@ Instructions:
 2026-03-05T17:57:30.311Z INFO 'simple info log'
 2026-03-05T17:57:30.313Z DEBUG lib/test/log '{ foo: 1, bar: [ 1, 2, 3 ] }'
 2026-03-05T17:57:30.314Z INFO lib/test/log [see 2026-03-05T17-57-30-314Z-c3fd99e9-6d82-4f20-803f-36629e681100.log]
+2026-03-07T18:42:35.253Z INFO 'simple info log'
+2026-03-07T18:42:35.255Z DEBUG lib/test/log '{ foo: 1, bar: [ 1, 2, 3 ] }'
+2026-03-07T18:42:35.255Z INFO lib/test/log [see 2026-03-07T18-42-35-255Z-77dc174a-9070-4cfc-ab93-a26e684b639f.log]
+2026-03-07T18:43:43.929Z INFO 'simple info log'
+2026-03-07T18:43:43.931Z DEBUG lib/test/log '{ foo: 1, bar: [ 1, 2, 3 ] }'
+2026-03-07T18:43:43.931Z INFO lib/test/log [see 2026-03-07T18-43-43-931Z-1cae340a-66bb-41c5-b304-5013e47a00b0.log]
+2026-03-07T18:44:39.586Z INFO 'simple info log'
+2026-03-07T18:44:39.587Z DEBUG lib/test/log '{ foo: 1, bar: [ 1, 2, 3 ] }'
+2026-03-07T18:44:39.587Z INFO lib/test/log [see 2026-03-07T18-44-39-587Z-44d42e6e-5d78-4ac5-9101-4f2dd1ec270f.log]
+2026-03-07T18:45:11.567Z INFO 'simple info log'
+2026-03-07T18:45:11.570Z DEBUG lib/test/log '{ foo: 1, bar: [ 1, 2, 3 ] }'
+2026-03-07T18:45:11.570Z INFO lib/test/log [see 2026-03-07T18-45-11-570Z-8f85df14-56ca-42e1-b51d-3cf9198a54ab.log]

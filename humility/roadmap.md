@@ -154,5 +154,6 @@ more hacks to the community.
 
 ---
 
+what do you wanna achieve at the end of the day.
 
-
+---

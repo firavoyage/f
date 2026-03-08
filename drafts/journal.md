@@ -3339,6 +3339,8 @@ exciting. but a bit confusing... what are they doing. why are they fighting.
 
 even players with hack could not survive one shot of awm.
 
+14 40 archive some weird ui issues of innei's blog on t.me/silly_innei.
+
 
 
 <!--
