@@ -3301,7 +3301,7 @@ move messages under humility.
 
 admitted.
 
-12 40 download music from `deco 27` `sayuri` `cyan nyan (?)` 14 20 refresh.
+12 40 download music from `deco 27` `sayuri` (`Me` `mikazuki no Koukai` `Sanketsu-girl`) `cyan nyan (?)` 14 20 refresh.
 
 it does not seem cyan has many songs available in the simple form.
 

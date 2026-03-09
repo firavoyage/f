@@ -344,6 +344,22 @@ haskell.
 
 ---
 
+play on swap.
+
+(buy -> to openrouter?)
+
+use agent to normalize data.
+
+research cases. (i should seek potential victims first, which are not a lot as it seems. they exist among weird stuff, like scripts...)
+
+first, clarify. im not gonna have fiats, which could be spammed but hard to use. im gonna have crypto. idk if gift cards are good.
+
+know how to create accounts. know how to lock coins first.
+
+it does not seems the supports could really review uploaded stuff like a judge.
+
+---
+
 radwimps suzume
 
 ---
@@ -356,7 +372,7 @@ weathering with you
 
 ---
 
-origami
+origami (?)
 
 30 cm
 
@@ -365,12 +381,6 @@ origami
 math contest.
 
 (and editorial)
-
----
-
-play on swap.
-
-(buy -> to openrouter?)
 
 ---
 

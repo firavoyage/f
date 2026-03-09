@@ -550,4 +550,9 @@ Research web, tests, or books. Don't rely on weights.
 
 ---
 
+on google ai mode, when i click a link, esp "quick access from the web",
+
+it should open on the same page. like normal google.
+
+---
 
