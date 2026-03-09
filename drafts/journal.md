@@ -3361,7 +3361,13 @@ actually ive made something. but it's obviously not ideal. so im not gonna rush 
 
 i could continue polishing the details if i like one day, although.
 
-  
+16 00 receive sp uee news.
+
+confirm. 
+
+btw, hu mingyang is also found on usst.
+
+
 
 <!--
 
