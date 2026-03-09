@@ -123,5 +123,3 @@ playwright mcp.
 no need to jsdoc anymore!
 
 ---
-
-
