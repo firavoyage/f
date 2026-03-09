@@ -360,18 +360,6 @@ it does not seems the supports could really review uploaded stuff like a judge.
 
 ---
 
-radwimps suzume
-
----
-
-fate zero
-
-suzume
-
-weathering with you
-
----
-
 origami (?)
 
 30 cm
@@ -384,3 +372,6 @@ math contest.
 
 ---
 
+art movements. (learn from manus)
+
+---
