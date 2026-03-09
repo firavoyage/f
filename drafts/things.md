@@ -368,3 +368,9 @@ math contest.
 
 ---
 
+play on swap.
+
+(buy -> to openrouter?)
+
+---
+

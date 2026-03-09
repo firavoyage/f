@@ -124,5 +124,11 @@ no need to jsdoc anymore!
 
 ---
 
+what if the buyer and the seller are both scammers. like the buyer wants btc and contact the seller. seller puts into escrow. buyers generate material as if he has paid flat to seller and raise dispute. seller does not relieve escrow whether buyer pays or not and raise dispute either.
+
+research. how can it determine any proof since everything are just digital materials. like the buyer can create an account the same pfp name as the seller and pay there and record. the seller can also modify anything.
+
+no. the buyer and the seller could neither verify their identities. in the strictest case, one could create an account the same as the opponent, by just settings the name and pfp. everything looks the same, vids, whatever. the buyer can prove he pays to someone. and it seems to harder for the seller to prove no one pays.
+
 
 

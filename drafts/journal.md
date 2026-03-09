@@ -3349,7 +3349,19 @@ btw, although taobao could never compete with amazon in terms of ux. it's good t
 
 17 00 begin origami project: little sparkle, chen xiao.
 
+09
 
+04 40 lose patience. give up.
+
+at first, every step has blueprint aside. it's clear. most time i could even work without guidance. i make progress peacefully, as i know im on the right path.
+
+then when it gets 3d, blueprint no longer exists. i have to observe carefully, and sometimes guess/test like when it's low contrast, hidden by hands, or moving too fast in the camera.
+
+actually ive made something. but it's obviously not ideal. so im not gonna rush any more, to finish for the sake of finishing, which is not art, but anxiety. 
+
+i could continue polishing the details if i like one day, although.
+
+  
 
 <!--
 
