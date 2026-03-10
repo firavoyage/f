@@ -3,8 +3,11 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  font-family: "Roboto", sans-serif;
   overflow: hidden;
+}
+
+* {
+  font-family: "Roboto", sans-serif;
 }
 
 #wallpaper {

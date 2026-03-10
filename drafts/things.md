@@ -360,9 +360,7 @@ it does not seems the supports could really review uploaded stuff like a judge.
 
 ---
 
-origami (?)
-
-30 cm
+origami. little sparkle. 30 cm.
 
 ---
 
@@ -373,5 +371,17 @@ math contest.
 ---
 
 art movements. (learn from manus)
+
+---
+
+try ai.
+
+opencode. 
+
+vscode copilot. (enable ai features)
+
+---
+
+openrouter api abstraction.
 
 ---

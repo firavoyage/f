@@ -882,5 +882,22 @@ the space on the right is often empty why not have a toc?
 
 ---
 
+fira:
 
+"MAKE US GREAT AGAIN"
 
+(us: `/ʌs/`)
+
+---
+
+on code style, function naming:
+
+use snake case.
+
+for bool, write `is_prime` and `has_key`.
+
+for void, number, whatever, follow verb noun. write `convert_markdown_to_html` and `fetch_data`. (instead of `... converter, ... fetcher`)
+
+types are defined by typescript or jsdoc, not on names.
+
+---

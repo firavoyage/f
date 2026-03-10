@@ -80,7 +80,7 @@ you dont need a full sql in fp (check the syntax carefully then). you might need
 
 ---
 
-fs abstraction.
+fs abstraction. (good. but low priority. when i wanna refactor tools.)
 
 sql abstraction. (kv)
 
@@ -94,15 +94,11 @@ learn ts. migrate to ts. (src/dist? .build!)
 
 check. plan.
 
+build ts? do i need? how?
+
 ---
 
-what are the known problems of vite
-
-what are the known problems of parcel
-
-deno?
-
-gnome design system.
+use parcel.
 
 ---
 
@@ -112,14 +108,25 @@ it doesnt seems that fs needs an abstraction...
 
 ---
 
-code review.
+~~code review.~~
 
 ---
 
-playwright mcp.
+playwright mcp?
 
 ---
 
-no need to jsdoc anymore!
+refactor. no more jsdoc. (prev code? message?)
 
 ---
+
+deno?
+
+gnome design system.
+
+---
+
+appreciate and archive.
+
+
+
