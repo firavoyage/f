@@ -3381,6 +3381,18 @@ browse. a player of guangdong #7 on jun 2024 (pku) is wearing the level 11 live 
 
 18 40 watch `Walk the Line - First Feature Length Documentary Film by WHYNOT`.
 
+long live the freedom and the bravery of humanity.
+
+> 唯自由与勇气永存
+
+11
+
+01 40 reg `firahq` on discord.
+
+very hard. weird "invalid password" messages. confusing.
+
+you can register via discord. you might fail if you use an invitation link or from somewhere else, at least i dont see any field like username.
+
 
 
 <!--
