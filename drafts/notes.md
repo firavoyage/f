@@ -875,3 +875,12 @@ you are likely to have `song - artist`. put the most distinctive identifier firs
 repetitive noise later.
 
 ---
+
+on github the frontpage of a project,
+
+the space on the right is often empty why not have a toc?
+
+---
+
+
+
