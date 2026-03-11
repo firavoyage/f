@@ -433,3 +433,27 @@ EGOIST
 YUI
 
 ---
+
+https://beta.kimi.link/share/19bf65b4-a9c2-8ea9-8000-00002950b68a
+https://beta.kimi.link/share/19bf65ba-82a2-8fb5-8000-0000b6cdaf04
+https://beta.kimi.link/share/19bf65eb-6102-8d7c-8000-00003648817b
+
+---
+
+playwright mcp?
+
+---
+
+update readme (some outdated lists. add some streamers. simplify simplelive maybe. btw, i dont think i have to save everyone on tg. they are cute. i love them. but i dont know them. and they are not really hard to find and retrieve. i love shell. i love some nice ppl. zhihu: e.g. e mo li li jiang.)
+
+---
+
+lobehub.
+
+chatwise.
+
+lody.
+
+test all new products.
+
+---

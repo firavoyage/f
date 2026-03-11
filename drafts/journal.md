@@ -3433,6 +3433,10 @@ but i dont have a premium account with evo cards (it's not challenge mode).
 
 and idk how to launch the app.
 
+12
+
+00 00 watch `Watch This Before You Play Another Game | Chess Rating Climb 1141 to 1191`.
+
 
 
 <!--

@@ -60,31 +60,19 @@ research manus use cases myself. find inspiration.
 
 ---
 
-- js sqlite abstraction
 - gitignore, msrv, pnpm workspace, eslint, etc.
-- find and solve friction (loop type inference etc.). ~~rm decorator maybe.~~ learn ts.
+- find and solve friction (loop type inference etc.). ~~rm decorator maybe.~~
 - runtime type check (research!) for tools
-- update readme (some outdated lists. add some streamers. simplify simplelive maybe. btw, i dont think i have to save everyone on tg. they are cute. i love them. but i dont know them. and they are not really hard to find and retrieve. i love shell. i love some nice ppl. zhihu: e.g. e mo li li jiang.)
 
 ---
 
-the syntax of sql is weird. would you like to have an abstraction. i mean, sql is also complex. could you have a subset of the syntax which does everything. i mean it might be hard to prove i wont need to bother sql in the future.
+~~abstract sql.~~
 
-well, i will have an abstraction whatever.
+use fs as storage. i need kv. i dont care perf (it's not gonna scale infinitely).
 
-sql -> abstraction (sql in fp) -> abstraction (production apis) would be better than
-
-sql -> abstraction (production apis).
-
-you dont need a full sql in fp (check the syntax carefully then). you might need a simple kv storage. ts and d.ts is good. explicit > implicit. coz you dont have to write yourself.
+i dont need sql.
 
 ---
-
-fs abstraction. (good. but low priority. when i wanna refactor tools.)
-
-sql abstraction. (kv)
-
-log syntax highlighting (and lowercase!).
 
 update log import. (if code does not handle it well. use linting.)
 
@@ -102,25 +90,27 @@ use parcel.
 
 ---
 
-it doesnt seems that fs needs an abstraction...
+abstract fs like ruby.
 
-(tools might need. like create path when err)
+change name: snake case. single word.
 
----
-
-~~code review.~~
+change behavior: create path when needed, like vscode. handle common issues like dangerous/invalid characters.
 
 ---
 
-playwright mcp?
+code review. rethink "loop".
 
 ---
 
 refactor. no more jsdoc. (prev code? message?)
 
+types? (rethink result. i think i will keep it. failures are expected, like unreliable network, invalid input, etc. try catches are dirty.)
+
 ---
 
-move to things!
+seems the contest and the editorial is urgent?
+
+yeah, although it's not important.
 
 ---
 
