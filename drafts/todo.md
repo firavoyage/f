@@ -120,12 +120,10 @@ refactor. no more jsdoc. (prev code? message?)
 
 ---
 
-deno?
-
-gnome design system.
+move to things!
 
 ---
 
-appreciate and archive.
+openrouter api abstraction.
 
 

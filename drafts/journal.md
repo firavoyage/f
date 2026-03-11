@@ -3395,6 +3395,36 @@ very hard. weird "invalid password" messages. confusing.
 
 you can register via discord. you might fail if you use an invitation link or from somewhere else, at least i dont see any field like username.
 
+16 00 normalize ubuntu setup guide. put installation together.
+
+17 40 download `The Kite Runner`.
+
+18 00 check `【苏星河】软件界的富二代，阿里千问有多狠？`.
+
+su xinghe were from ecnu. i think it might be interesting.
+
+the vid starts with nonsense (artificial restriction on access). why: the laws of physics are the only limit.
+
+the app itself is also bloating (i've browsed x pages, saved y time, ai boilerplates...), not meaningful.
+
+but as a business case study i think it's good.
+
+18 40 appreciate `全自动客服和编程！便宜！夯爆！MiniMax M2.5！`.
+
+seems a generated ad with philistine (workflow) thumbnails and scripts (every trivial upd is the best, the sota. noisy.). 
+
+but i will see it as it's from a pro (likely msft swe).
+
+19 00 check `改变视频行业的AI，快来了(但有点恐怖)`.
+
+i still believe it's incremental. good narration from mediastorm. but where's the comparison.
+
+training on piracy is well known and (unconsciously) accepted. but... only big companies, esp in china where power is everything, could steal the data elegantly...
+
+19 20 download `Oppenheimer (2023)`.
+
+491AA0E19CBDB03B100961DB82315C08643A6139
+
 
 
 <!--

@@ -202,17 +202,17 @@ Evaluate ruby. Rail.
 
 Research: relationship of vtubers. When you sub someone you are likely to sub these. Relationship of internet bloggers. Menci's friends.
 
-Research: 
+Research:
 
-start from a few good ppl or channel. Like educators, menci, matrix67, etc. like qingniao channel. 
+start from a few good ppl or channel. Like educators, menci, matrix67, etc. like qingniao channel.
 
-Bfs. 
+Bfs.
 
-Save all members. List. 
+Save all members. List.
 
-Convert to graph. Sort. 
+Convert to graph. Sort.
 
-In essence, from one point, 
+In essence, from one point,
 
 Gather everyone. Organize and analyze. Archive.
 
@@ -322,7 +322,7 @@ inspired by chyk.
 
 list a bunch of verbs llms would do.
 
-humans could do everything. but the set, or broadset for working is limited. 
+humans could do everything. but the set, or broadset for working is limited.
 
 like normalize, simplify, explore (understand something, driven by curiosity), research (intentionally, with a clear purpose, see existing things clearly), browse (bfs from a link or somewhere, intentionally), surf (doom scroll on random algo recom fyp)...
 
@@ -376,13 +376,9 @@ art movements. (learn from manus)
 
 try ai.
 
-opencode. 
+opencode.
 
 vscode copilot. (enable ai features)
-
----
-
-openrouter api abstraction.
 
 ---
 
@@ -409,5 +405,13 @@ sql abstraction... or prisma!
 or Drizzle? (simpler, just like sqlite over postgresql)
 
 Kysely? Sequelize?
+
+---
+
+deno?
+
+---
+
+gnome design system.
 
 ---
