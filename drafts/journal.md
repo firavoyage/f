@@ -3425,6 +3425,14 @@ training on piracy is well known and (unconsciously) accepted. but... only big c
 
 491AA0E19CBDB03B100961DB82315C08643A6139
 
+22 00 watch lciop live: play with followers via qr code.
+
+i dont have the stream frame to url token scanning workflow, although i could write one. 
+
+but i dont have a premium account with evo cards (it's not challenge mode).
+
+and idk how to launch the app.
+
 
 
 <!--
