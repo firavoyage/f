@@ -385,3 +385,29 @@ vscode copilot. (enable ai features)
 openrouter api abstraction.
 
 ---
+
+vue vapor mode.
+
+framework f.
+
+---
+
+app image installer
+
+---
+
+runtime type check.
+
+---
+
+js/ts ast (trans) compiler
+
+---
+
+sql abstraction... or prisma!
+
+or Drizzle? (simpler, just like sqlite over postgresql)
+
+Kysely? Sequelize?
+
+---

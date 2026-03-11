@@ -3385,6 +3385,8 @@ long live the freedom and the bravery of humanity.
 
 > 唯自由与勇气永存
 
+(i wanna apply some cute stickers along the road!)
+
 11
 
 01 40 reg `firahq` on discord.
