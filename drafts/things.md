@@ -415,3 +415,21 @@ deno?
 gnome design system.
 
 ---
+
+ReoNa
+
+Aimer
+
+Minami
+
+Yorushika
+
+ZUTOMAYO
+
+Majiko
+
+EGOIST
+
+YUI
+
+---
