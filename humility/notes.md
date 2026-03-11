@@ -556,3 +556,11 @@ it should open on the same page. like normal google.
 
 ---
 
+although the implementation might be simple, just a predefined set of mdx components across a range of fields.
+
+but google ai mode could really render the layout pretty well.
+
+it could also render interactive elements. not just "run code", but playgrounds like josh ones.
+
+---
+
