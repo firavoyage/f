@@ -116,4 +116,6 @@ yeah, although it's not important.
 
 openrouter api abstraction.
 
+"chat(message)"
+
 

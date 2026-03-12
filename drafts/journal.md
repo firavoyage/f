@@ -3470,7 +3470,13 @@ they block emails with blacklist (popular temp mails db). but duck.com is not bl
 
 "community agents" are shown on front page. weird usernames ("super swordman 123", "deleted acc"), useless slop. noisy.
 
-verdict. it's about 0.5 usd. similar to novita ai. not much. not few.
+verdict. it's about 0.5 usd. similar to novita ai (1 usd). not much. not few.
+
+upd: and i could use "referral" to get 2usd for each user... isnt it infinite for exploitation?
+
+math: every new acc could generate 4.5 usd for free. (2 usd to others. it's wise to combine as much tokens as possible to one acc since tokens from different accounts could not sum up easily to complete one task.)
+
+18 20 reg `firahq@zohomail.com` `firahq@duck.com`.
 
 
 

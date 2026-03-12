@@ -485,3 +485,19 @@ most are singles. not albums/artists.
 idk.
 
 ---
+
+float.
+
+folders/albums/whatever.
+
+lyrics.
+
+use proven players.
+
+tray icon.
+
+cli & ui (gnome)
+
+---
+
+

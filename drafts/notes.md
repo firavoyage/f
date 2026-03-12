@@ -902,5 +902,14 @@ types are defined by typescript or jsdoc, not on names.
 
 ---
 
+on lobehub, 
 
+you could not use "otp" to verify email. you could only click link. (good news: it shows literal link url in email in case clicking does not work.)
+
+and it results in two separate tabs. 
+
+- one verify. "resend ..." (ofc, it does not sync data across tabs like github. or just apply login state/cookies. or just let it be a popup, like twitch, and close it.)
+- one "get started"
+
+---
 
