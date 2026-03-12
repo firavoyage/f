@@ -3478,6 +3478,14 @@ math: every new acc could generate 4.5 usd for free. (2 usd to others. it's wise
 
 18 20 reg `firahq@zohomail.com` `firahq@duck.com`.
 
+13
+
+00 40 reach 1000 elo on rapid on lichess.
+
+win by a weird resign (miss).
+
+anyway, let's stop here today.
+
 
 
 <!--

@@ -913,3 +913,26 @@ and it results in two separate tabs.
 
 ---
 
+on ai. the purpose.
+
+ai is power.
+
+there are some never ending fights in the world.
+
+big companies want profit. they are always putting profit before human.
+
+non profits might lack fund, which in turn leads to less polished products.
+
+teachers could be lazy. they dont have to be hard working. but we want them to be patient and helpful. (i won't argue whether knowledge is useful or not. if you are curious, or if you need, you could learn. that's it.)
+
+sns want to grab attention with doom scrolling ui. we could fetch and summarize in our control.
+
+about jobs deprecated by ai, i dont care. wealthy ppl dont need jobs. and only those who are wealthy matter in the world. others dont change much, or they would become wealthy.
+
+about ai slop, they are trivial.
+
+about speed. speed matters. being fast is fun. but im feeling we dont need infinite speed. and we could not, as it has significant tradeoff. you can benefit from research/summarize, self correction loop, workflow automation. but you still have to make decisions. not everything could be verified easily. not every options are equal, even they might seem. and there is mediocrity/philistine problem.
+
+---
+
+
