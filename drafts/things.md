@@ -512,4 +512,14 @@ zod.
 
 ---
 
+what will pure project be at the end of the day. i mean at the end of hs.
+
+i hold the dream since grade 10.
+
+---
+
+https://novita.ai/models-console/llm-playground?model=minimax-minimax-m2.5
+
+---
+
 
