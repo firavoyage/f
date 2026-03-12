@@ -106,9 +106,30 @@ tmp
 
 ```
 yt-dlp \
-  "https://www.youtube.com/playlist?list=PLjxmgthn5WK9ZP8pyHSGXrIYWzQkVWUl3"
-  "https://www.youtube.com/playlist?list=PLjxmgthn5WK-sQU9PhsR7KILyj3dw7bYx"
+  "https://music.youtube.com/playlist?list=OLAK5uy_lcWGyyFdmhHvMoEgYPYxsYwRwTWt2tyDU"
+  "https://music.youtube.com/playlist?list=OLAK5uy_mpJTOKOi_Pt8M5nZJJj5me5DkglnTVtEQ"
+  "https://music.youtube.com/playlist?list=OLAK5uy_kH0tOTpMYLyOdTwMb-AxustJpJYq7QSYs"
+  "https://music.youtube.com/playlist?list=OLAK5uy_nf8J7zZj1mVcZatg-F487AjZNK0syGYII"
+  "https://music.youtube.com/playlist?list=OLAK5uy_mZvPb7D-0VFOe7KA1F3RdSv2yjubt3WQo"
    \
+  -x \
+  --audio-format mp3 \
+  --audio-quality 0 \
+  --add-metadata \
+  --embed-thumbnail \
+  --parse-metadata "playlist_index:%(track_number)s" \
+  -o "_/%(title)s - %(album,playlist_title)s - %(artist)s.%(ext)s" \
+```
+
+yui
+
+```
+yt-dlp \
+  "https://music.youtube.com/playlist?list=OLAK5uy_lcWGyyFdmhHvMoEgYPYxsYwRwTWt2tyDU" \
+  "https://music.youtube.com/playlist?list=OLAK5uy_mpJTOKOi_Pt8M5nZJJj5me5DkglnTVtEQ" \
+  "https://music.youtube.com/playlist?list=OLAK5uy_kH0tOTpMYLyOdTwMb-AxustJpJYq7QSYs" \
+  "https://music.youtube.com/playlist?list=OLAK5uy_nf8J7zZj1mVcZatg-F487AjZNK0syGYII" \
+  "https://music.youtube.com/playlist?list=OLAK5uy_mZvPb7D-0VFOe7KA1F3RdSv2yjubt3WQo" \
   -x \
   --audio-format mp3 \
   --audio-quality 0 \

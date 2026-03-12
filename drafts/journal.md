@@ -3321,7 +3321,7 @@ small fee trap. lose about 10% to 20%. (overspent 6x on trans fee for ignorance)
 
 19 40 receive 10 usd on paypal.
 
-seems there is a 21 day on hold?! 
+seems there is a 21 day on hold?!
 
 (the purpose were to join cyan nyan and export some member vids. and, it's fun.)
 
@@ -3357,13 +3357,13 @@ at first, every step has blueprint aside. it's clear. most time i could even wor
 
 then when it gets 3d, blueprint no longer exists. i have to observe carefully, and sometimes guess/test like when it's low contrast, hidden by hands, or moving too fast in the camera.
 
-actually ive made something. but it's obviously not ideal. so im not gonna rush any more, to finish for the sake of finishing, which is not art, but anxiety. 
+actually ive made something. but it's obviously not ideal. so im not gonna rush any more, to finish for the sake of finishing, which is not art, but anxiety.
 
 i could continue polishing the details if i like one day, although.
 
 16 00 receive sp uee news.
 
-confirm. 
+confirm.
 
 btw, hu mingyang is also found on usst.
 
@@ -3411,7 +3411,7 @@ but as a business case study i think it's good.
 
 18 40 appreciate `全自动客服和编程！便宜！夯爆！MiniMax M2.5！`.
 
-seems a generated ad with philistine (workflow) thumbnails and scripts (every trivial upd is the best, the sota. noisy.). 
+seems a generated ad with philistine (workflow) thumbnails and scripts (every trivial upd is the best, the sota. noisy.).
 
 but i will see it as it's from a pro (likely msft swe).
 
@@ -3427,7 +3427,7 @@ training on piracy is well known and (unconsciously) accepted. but... only big c
 
 22 00 watch lciop live: play with followers via qr code.
 
-i dont have the stream frame to url token scanning workflow, although i could write one. 
+i dont have the stream frame to url token scanning workflow, although i could write one.
 
 but i dont have a premium account with evo cards (it's not challenge mode).
 
@@ -3436,6 +3436,41 @@ and idk how to launch the app.
 12
 
 00 00 watch `Watch This Before You Play Another Game | Chess Rating Climb 1141 to 1191`.
+
+02 00 browse zod.
+
+a readme reveals many js design flaws.
+
+- no language level runtime type check
+- sync of async
+- try catch or result
+- no language level type inference
+
+02 20 browse ryos.
+
+cool. well designed.
+
+https://os.ryo.lu/docs/overview
+
+04 20 update twitch username to `firahq`. normalize login.
+
+05 40 download `yui` (`How Crazy Your Love` `HOLIDAYS IN THE SUN` `I LOVED YESTERDAY` `CAN'T BUY MY LOVE` `FROM ME TO YOU`).
+
+06 00 test chatwise.
+
+crude ui. dev build (not published to package managers). 
+
+even the most basic features need membership while i could register with temp mail and keep the free trial running.
+
+06 20 test lobehub.
+
+seems i could register a lot of accounts with builtin free tokens with only email. 
+
+they block emails with blacklist (popular temp mails db). but duck.com is not blocked. and i could register unlimited duck.com accounts forwarding to the same email by just solving a captcha.
+
+"community agents" are shown on front page. weird usernames ("super swordman 123", "deleted acc"), useless slop. noisy.
+
+verdict. it's about 0.5 usd. similar to novita ai. not much. not few.
 
 
 

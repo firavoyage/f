@@ -386,6 +386,8 @@ vue vapor mode.
 
 framework f.
 
+js ast, compiler? svelte?
+
 ---
 
 app image installer
@@ -430,8 +432,6 @@ Majiko
 
 EGOIST
 
-YUI
-
 ---
 
 https://beta.kimi.link/share/19bf65b4-a9c2-8ea9-8000-00002950b68a
@@ -448,6 +448,10 @@ update readme (some outdated lists. add some streamers. simplify simplelive mayb
 
 ---
 
+paper.design
+
+---
+
 lobehub.
 
 chatwise.
@@ -455,5 +459,29 @@ chatwise.
 lody.
 
 test all new products.
+
+---
+
+films.
+
+---
+
+i remember i have some "legacy" music downloaded in "misc".
+
+i think... i would love some of them... and they ve been in readme for a while.
+
+"手鸟葵"
+
+"鏡音レン"
+
+"群丁"
+
+"I.SHINJI"
+
+"Les Choristes"
+
+most are singles. not albums/artists.
+
+idk.
 
 ---
