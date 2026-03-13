@@ -3476,6 +3476,14 @@ upd: and i could use "referral" to get 2usd for each user... isnt it infinite fo
 
 math: every new acc could generate 4.5 usd for free. (2 usd to others. it's wise to combine as much tokens as possible to one acc since tokens from different accounts could not sum up easily to complete one task.)
 
+upd: duck is not that good. gmail plus alias (`username+foo@gmail.com`), addy, and simplelogin are more recommended.
+
+well, these recommended ones are all detected or blocked.
+
+it's better to reg a custom cheap site instead for dedicated abusers.
+
+the db is not very comprehensive and updated. one domain from simplelogin works, which means i could have infinite.
+
 18 20 reg `firahq@zohomail.com` `firahq@duck.com`.
 
 21 00 listen to `Vol. 145 专访 CapWords: 中国首个获苹果设计大奖 iOS 应用`.
@@ -3521,6 +3529,12 @@ idk how he knows me.
 he claims to be from fu jian, not born after 2000, poor at english, and with a daily job of trader.
 
 he wants to be frnd with me (he is enthusiatic, and obviously he is not an llm) but... he does not have an avatar/bio/handle...
+
+14
+
+01 00 reg `firahq4@duck.com`.
+
+seems duck see `firahq+foo@zohomail.com` different. although it rate limits by ip and captcha. (its "infinite aliases" does not work. it simply gets stuck after you enter the otp.)
 
 
 
