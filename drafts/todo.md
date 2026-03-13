@@ -56,6 +56,10 @@ humility
 
 ---
 
+sync phone.
+
+---
+
 research manus use cases myself. find inspiration.
 
 ---
@@ -120,7 +124,14 @@ openrouter api abstraction.
 
 ---
 
-precious, [3/13/26 7:07 PM]
-Edit readme. Games. Pjsk. Music. Books. (No need to be synced. Just save the ones I love)
+Edit readme. 
+
+~~Games. Pjsk.~~
+
+Music.
+
+Books.
+
+(No need to be synced. Just save the ones I love)
 
 
