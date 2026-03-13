@@ -3498,11 +3498,21 @@ seems not elegant...
 
 confirm: menci is playing jp server, `半年份角色等级大战三周年复刻`. btw, it resonates with perfectionism, which ... ...
 
+upd: it does not work. it runs, but tapping does not start.
+
 15 20 install project sekai japanese server from aurora store.
 
 yet i have to have a (logged in? idk) google service.
 
+Need jp ip and aurora spoof. En and jp versions could not live together.
+
 choose the band with emu because she looks fun. (i were once willing to choose 25 ji, as i think chiyuki is better than menci.)
+
+link to google account. there's no way to reg with email (i will still use gmail. but with password i can login even without access to google account. more reliable and libre.).
+
+seems i can play ads to get free gacha everyday. scrcpy helps a lot. btw, google play ads are not really low quality scams (there are "hello kitty" "disney" games of millions of downloads). 
+
+how can i download all the res currently available? i dont wanna download some once i click some field.
 
 16 00 chat with a suspicious usdt trader on telegram.
 
