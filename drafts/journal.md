@@ -3478,6 +3478,8 @@ math: every new acc could generate 4.5 usd for free. (2 usd to others. it's wise
 
 18 20 reg `firahq@zohomail.com` `firahq@duck.com`.
 
+21 00 listen to `Vol. 145 专访 CapWords: 中国首个获苹果设计大奖 iOS 应用`.
+
 13
 
 00 40 reach 1000 elo on rapid on lichess.
@@ -3495,6 +3497,20 @@ fetch xapk from apkpure. rename to zip and unpack. use `com.aefyr.sai.fdroid_60`
 seems not elegant...
 
 confirm: menci is playing jp server, `半年份角色等级大战三周年复刻`. btw, it resonates with perfectionism, which ... ...
+
+15 20 install project sekai japanese server from aurora store.
+
+yet i have to have a (logged in? idk) google service.
+
+choose the band with emu because she looks fun. (i were once willing to choose 25 ji, as i think chiyuki is better than menci.)
+
+16 00 chat with a suspicious usdt trader on telegram.
+
+idk how he knows me.
+
+he claims to be from fu jian, not born after 2000, poor at english, and with a daily job of trader.
+
+he wants to be frnd with me (he is enthusiatic, and obviously he is not an llm) but... he does not have an avatar/bio/handle...
 
 
 
