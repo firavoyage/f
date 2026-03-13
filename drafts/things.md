@@ -522,4 +522,27 @@ https://novita.ai/models-console/llm-playground?model=minimax-minimax-m2.5
 
 ---
 
+self host (localhost)
+
+lichess?
+
+i wish foxwq could have the ui of chess dot com...
+
+(although lichess is also decent. simple. functional.)
+
+---
+
+opensource:
+
+arcaea-builder
+
+forked from menci, 2021.
+
+see how menci write code. (i like the way she replies. she speaks fluent and styled english.)
+
+---
+
+game: reigns.
+
+---
 

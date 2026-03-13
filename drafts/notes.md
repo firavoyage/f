@@ -933,6 +933,10 @@ about ai slop, they are trivial.
 
 about speed. speed matters. being fast is fun. but im feeling we dont need infinite speed. and we could not, as it has significant tradeoff. you can benefit from research/summarize, self correction loop, workflow automation. but you still have to make decisions. not everything could be verified easily. not every options are equal, even they might seem. and there is mediocrity/philistine problem.
 
+upd: ignore all above. i think it's just, dissatisfation, or friction, from one who obsesses. and i want a leverage. i see it's possible.
+
 ---
 
+youtube could not loop a vid?
 
+---

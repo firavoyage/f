@@ -3486,6 +3486,16 @@ win by a weird resign (miss).
 
 anyway, let's stop here today.
 
+03 00 watch `How To PUNISH THERE MISTKAES | Chess Rating Climb 1191 to 1228`.
+
+05 00 complete installing project sekai jp.
+
+fetch xapk from apkpure. rename to zip and unpack. use `com.aefyr.sai.fdroid_60` to install them all. (a lib apk is not feasible with the system installer...)
+
+seems not elegant...
+
+confirm: menci is playing jp server, `半年份角色等级大战三周年复刻`. btw, it resonates with perfectionism, which ... ...
+
 
 
 <!--
