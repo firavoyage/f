@@ -136,6 +136,16 @@ do i need?
 
 ---
 
+what model does manus use
+
+(test manus cases on lobehub...)
+
+---
+
+novita ai sends 1 dollar upon reg. how does it face exploitation.
+
+---
+
 seems the contest and the editorial is urgent?
 
 yeah, although it's not important.
