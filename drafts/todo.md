@@ -158,12 +158,6 @@ do i need?
 
 ---
 
-seems the contest and the editorial is urgent?
-
-yeah, although it's not important.
-
----
-
 create a mock local openai compatible server.
 
 (exploitation abstraction)
@@ -173,4 +167,27 @@ create a mock local openai compatible server.
 1m llm token: about 100,000 loc typescript
 
 ---
+
+why 
+
+result: type ok err. value. error. 
+
+you can have
+
+result: ok bool. value. error.
+
+dont... or you can. since err is clearer than `!ok` sometimes maybe.
+
+---
+
+see what the commits are about.
+
+give opencode the key.
+
+openclaw.
+
+memoh.
+
+---
+
 
