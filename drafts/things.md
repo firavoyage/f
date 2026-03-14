@@ -328,18 +328,6 @@ like normalize, simplify, explore (understand something, driven by curiosity), r
 
 ---
 
-revise: copy to markdown
-
-i think it's good to just store things in html.
-
-just write html in markdown, keeping the original computed styling, image size, etc. while stripping things like bg color.
-
-markdown is not designed to store extracted main content.
-
-export google ai & gemini. find a way (markdown?)
-
----
-
 haskell.
 
 ---

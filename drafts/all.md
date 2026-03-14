@@ -267,6 +267,8 @@ humility:
   - hardest challenges
   - chatgpt browser automation
 - research market
+  - exploit
+    - novita ai 1mt loc
   - compare
     - compare claude code deprecate codex
     - compare claude code deprecate cursor

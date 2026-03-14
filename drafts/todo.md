@@ -130,19 +130,31 @@ openrouter api abstraction.
 
 ---
 
+revise: copy to markdown
+
+i think it's good to just store things in html.
+
+just write html in markdown, keeping the original computed styling, image size, etc. while stripping things like bg color.
+
+markdown is not designed to store extracted main content.
+
+export google ai & gemini. find a way (markdown?)
+
+upd: sometimes, just use html in md and clear some tags. use contenteditable.
+
+upd: high priority. with that, i dont have to fit google ai whatever. just copy html for any "document like element".
+
+(btw, extracting the main content of a blog is completely another thing.)
+
+it's easy. research and solve some cases. there are many. you can do it progressively. original is good enough. stripping tailwind classes if needed.
+
+---
+
 d.ts?
 
 do i need?
 
----
-
-what model does manus use
-
-(test manus cases on lobehub...)
-
----
-
-novita ai sends 1 dollar upon reg. how does it face exploitation.
+(chat message, for example. where to place?)
 
 ---
 
@@ -152,4 +164,13 @@ yeah, although it's not important.
 
 ---
 
+create a mock local openai compatible server.
+
+(exploitation abstraction)
+
+---
+
+1m llm token: about 100,000 loc typescript
+
+---
 
