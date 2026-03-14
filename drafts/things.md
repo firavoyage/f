@@ -544,5 +544,31 @@ game: reigns.
 
 the audio quality of my obs sucks now.
 
+config this.
+
+---
+
+twitter to mastodon abstraction
+
+i can 
+
+- use dom
+- use network
+- use mirrors
+
+mirrors could be easiest if possible.
+
+i think, although i dont surf twitter these days, i did not miss out anything.
+
+---
+
+nickle angel made some courses with ppt in her 20s.
+
+https://space.bilibili.com/137863629
+
+transcription? test.
+
+(maybe i could fetch some more proven ones. but she is cute.)
+
 ---
 
