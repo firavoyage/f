@@ -60,6 +60,14 @@ sync phone.
 
 ---
 
+write `android.md`. 
+
+config from fresh.
+
+(parallel to ubuntu on readme)
+
+---
+
 research manus use cases myself. find inspiration.
 
 ---
@@ -112,9 +120,7 @@ types? (rethink result. i think i will keep it. failures are expected, like unre
 
 ---
 
-seems the contest and the editorial is urgent?
-
-yeah, although it's not important.
+lib adwaita on web.
 
 ---
 
@@ -124,14 +130,16 @@ openrouter api abstraction.
 
 ---
 
-Edit readme. 
+d.ts?
 
-~~Games. Pjsk.~~
+do i need?
 
-Music.
+---
 
-Books.
+seems the contest and the editorial is urgent?
 
-(No need to be synced. Just save the ones I love)
+yeah, although it's not important.
+
+---
 
 

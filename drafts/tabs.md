@@ -58,6 +58,8 @@ Chess Vibes https://www.youtube.com/@ChessVibesOfficial/playlists
 
 Beginner To Master Chess Rating Climb (2024) https://www.youtube.com/playlist?list=PLp7SLTJhX1u6zKT5IfRVmcVs1U1C3eHb5
 
+chess vibes live https://www.youtube.com/@ChessVibesOfficial/streams
+
 ---
 
 hoshino lina https://www.youtube.com/@HoshinoLina/streams
@@ -71,6 +73,10 @@ saba https://www.youtube.com/@SamekoSaba
 【US arc】how we met IRL as VTubers | VTuber Cyan https://www.youtube.com/watch?v=4B8LA92BwbI
 
 【复活直播】我回来啦！新的章节 ★ https://www.youtube.com/watch?v=YkyNbkpJ4Sw
+
+karaoke https://www.youtube.com/watch?v=G0bFtZq4SBU
+
+---
 
 vibe coding stream https://www.youtube.com/@bridgemindai
 

@@ -3484,6 +3484,12 @@ it's better to reg a custom cheap site instead for dedicated abusers.
 
 the db is not very comprehensive and updated. one domain from simplelogin works, which means i could have infinite.
 
+upd: one day later, there is an additional note on referral rewards. 
+
+> If fraudulent activity is detected (e.g., mass registration of disposable email accounts), the associated accounts will be permanently banned
+
+i have no idea of the coincidence.
+
 18 20 reg `firahq@zohomail.com` `firahq@duck.com`.
 
 21 00 listen to `Vol. 145 专访 CapWords: 中国首个获苹果设计大奖 iOS 应用`.
@@ -3516,6 +3522,8 @@ Need jp ip and aurora spoof. En and jp versions could not live together.
 
 choose the band with emu because she looks fun. (i were once willing to choose 25 ji, as i think chiyuki is better than menci.)
 
+the scenes are in jp. but i could understand most. they are quite simple and conversational.
+
 link to google account. there's no way to reg with email (i will still use gmail. but with password i can login even without access to google account. more reliable and libre.).
 
 seems i can play ads to get free gacha everyday. scrcpy helps a lot. btw, google play ads are not really low quality scams (there are "hello kitty" "disney" games of millions of downloads). 
@@ -3535,6 +3543,12 @@ he wants to be frnd with me (he is enthusiatic, and obviously he is not an llm) 
 01 00 reg `firahq4@duck.com`.
 
 seems duck see `firahq+foo@zohomail.com` different. although it rate limits by ip and captcha. (its "infinite aliases" does not work. it simply gets stuck after you enter the otp.)
+
+03 00 revise `f/blogging: readme`. 05 20
+
+organize. trim. update. polish.
+
+07 20 watch `CRUSH EARLY PAWN ADVANCES (Step-By-Step) | Chess Rating Climb 1228 to 1262`.
 
 
 

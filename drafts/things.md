@@ -388,6 +388,14 @@ framework f.
 
 js ast, compiler? svelte?
 
+react sucks for its backward comp.
+
+it could be a much smaller subset at its core.
+
+it could change things to elegant.
+
+it could stay above abstraction. you declare. you dont touch the messy world.
+
 ---
 
 app image installer
@@ -543,6 +551,10 @@ see how menci write code. (i like the way she replies. she speaks fluent and sty
 ---
 
 game: reigns.
+
+---
+
+the audio quality of my obs sucks now.
 
 ---
 
