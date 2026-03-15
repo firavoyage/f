@@ -160,6 +160,10 @@ upd: high priority. with that, i dont have to fit google ai whatever. just copy 
 
 it's easy. research and solve some cases. there are many. you can do it progressively. original is good enough. stripping tailwind classes if needed.
 
+upd: lobehub uses jina ai. just add r.jina.ai before your url.
+
+there are a lot of things like jina, exa. find them all.
+
 ---
 
 1m llm token: about 100,000 loc typescript

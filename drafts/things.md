@@ -610,3 +610,12 @@ do i want to do that?
 
 ---
 
+pure math.
+
+contest 2026 editorial.
+
+(playthrough)
+
+---
+
+
