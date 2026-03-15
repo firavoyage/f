@@ -36,6 +36,18 @@ analyze.
 
  -->
 
+<!-- 
+
+- **Action is the only metric.** You cannot think your way to a solution; you must build your way there.
+- **Start with yourself.** The best ideas often come from solving a problem you have personally experienced.
+- **Imperfect is beautiful.** A rough project that exists in the world is infinitely better than a perfect project that stays in your head.
+
+- **The Trap of "Stealth Mode":** Hiding your idea to "protect" it usually means you are building something nobody wants. Share it early.
+- **The Trap of Over-Engineering:** Do not build a complex system for thousands of users when you do not yet have one user. Solve the problem for one person first.
+- **The Trap of Analysis Paralysis:** It is easy to get stuck choosing the perfect color or the perfect name. These things matter less than you think. Function comes first.
+
+ -->
+
 ---
 
 life
@@ -181,5 +193,3 @@ do i need?
 (chat message, for example. where to place?)
 
 ---
-
-temp?
