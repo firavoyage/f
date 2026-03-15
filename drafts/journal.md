@@ -3576,6 +3576,8 @@ problem 12 (3): a rect. width a+c, heigh b+d. the top right part (bc) is cut (li
 
 (problem 12 (1): prove l>4sqrt(S).)
 
+18 40 watch `Clever Trick To Win Games QUICKLY | Chess Rating Climb 1262 to 1301`.
+
 
 
 <!--
