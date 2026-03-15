@@ -3514,6 +3514,8 @@ confirm: menci is playing jp server, `半年份角色等级大战三周年复刻
 
 upd: it does not work. it runs, but tapping does not start.
 
+upd: well, menci actually also play sc server. https://x.com/lcMenci/status/2026008123652399123
+
 15 20 install project sekai japanese server from aurora store.
 
 yet i have to have a (logged in? idk) google service.
@@ -3577,6 +3579,18 @@ problem 12 (3): a rect. width a+c, heigh b+d. the top right part (bc) is cut (li
 (problem 12 (1): prove l>4sqrt(S).)
 
 18 40 watch `Clever Trick To Win Games QUICKLY | Chess Rating Climb 1262 to 1301`.
+
+16
+
+00 40 watch `I Was Accused Of Cheating | Chess Rating Climb 1301 to 1347`.
+
+i thought i would not play chess over midnight. when you are way ahead than your current rating, it's competing. otherwise, you are just selecting, and only if they make obvious blunders could you ever win. remember the days you beat go title competitions when you were in your childhood?
+
+but... maybe im actually clear now?
+
+yeah, i should like achieve something. anyway. 
+
+take it easy.
 
 
 

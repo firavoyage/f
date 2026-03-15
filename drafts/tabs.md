@@ -58,8 +58,6 @@ Chess Vibes https://www.youtube.com/@ChessVibesOfficial/playlists
 
 Beginner To Master Chess Rating Climb (2024) https://www.youtube.com/playlist?list=PLp7SLTJhX1u6zKT5IfRVmcVs1U1C3eHb5
 
-chess vibes live https://www.youtube.com/@ChessVibesOfficial/streams
-
 ---
 
 hoshino lina https://www.youtube.com/@HoshinoLina/streams
@@ -144,8 +142,17 @@ https://chakra-ui.com/docs/components/button#loading
 
 pictures/design
 
+(?, maybe just adwaita now. i really love that. other themes come later.)
+
 ---
 
 humility
 
 ---
+
+https://twitch.tv
+
+chess vibes live https://www.youtube.com/@ChessVibesOfficial/streams
+
+---
+
