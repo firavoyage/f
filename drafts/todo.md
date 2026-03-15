@@ -150,20 +150,6 @@ it's easy. research and solve some cases. there are many. you can do it progress
 
 ---
 
-d.ts?
-
-do i need?
-
-(chat message, for example. where to place?)
-
----
-
-create a mock local openai compatible server.
-
-(exploitation abstraction)
-
----
-
 1m llm token: about 100,000 loc typescript
 
 ---
@@ -180,14 +166,20 @@ dont... or you can. since err is clearer than `!ok` sometimes maybe.
 
 ---
 
-see what the commits are about.
+create a mock local openai compatible server.
 
-give opencode the key.
+(exploitation abstraction?)
 
-openclaw.
-
-memoh.
+and connect it! (... seems i could not manage context this way... and everyone assume it's available. let's try novita ai first. openrouter is also good.)
 
 ---
 
+d.ts?
 
+do i need?
+
+(chat message, for example. where to place?)
+
+---
+
+temp?

@@ -78,6 +78,12 @@ karaoke https://www.youtube.com/watch?v=G0bFtZq4SBU
 
 ---
 
+msft su zhou work pov 
+
+https://space.bilibili.com/85411401/
+
+---
+
 vibe coding stream https://www.youtube.com/@bridgemindai
 
 ---

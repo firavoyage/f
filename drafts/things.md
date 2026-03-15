@@ -572,3 +572,41 @@ transcription? test.
 
 ---
 
+elysiajs > express?
+
+let's beat this.
+
+what a character.
+
+---
+
+check this out
+
+https://github.com/moeru-ai/xsai
+
+what is the abstraction about. 
+
+is it doing anything?
+
+(will i end up having something like this? well i think i can learn something whatever.)
+
+---
+
+see what the commits are about.
+
+give opencode the key.
+
+openclaw.
+
+memoh.
+
+https://deepwiki.com/openclaw/openclaw
+
+even if it's unreadable. they must be somewhere... but what's your design system, first of all...
+
+(?)
+
+do i want to do that?
+
+---
+

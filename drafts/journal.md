@@ -3550,6 +3550,32 @@ organize. trim. update. polish.
 
 07 20 watch `CRUSH EARLY PAWN ADVANCES (Step-By-Step) | Chess Rating Climb 1228 to 1262`.
 
+15
+
+09 20 take a math contest. 11 40 
+
+zhijun has not enough time. lose at least 11 and 12 (full).
+
+fira is stupid. lose at least 5, (6?), 8, 10 and 12 (2 and 3).
+
+minghao, fuyuan, and a past schoolmate (ldhs class 1, now in gzhs, admiring ecust.) also take part. almost all schools play for fun.
+
+play some tricks on certain problems. obviously not strict or optimal.
+
+problem 5 asks: an object of four surfaces. each is the same triangle, which has side a b c diverse in length, calculate the r of the ball surrounding it.
+
+problem 6 asks: an ellipse. a 4 b 3. calc the min length of a tangent line cap x y axis.
+
+problem 8 asks: x3+ax2+bx+c, has point a b c on x axis. t1 and t2 are on the graph, different with a and c. line at1 is tangent on t1, ct2 is tangent on t2. calc the ratio of ... (shadow? versus length?)
+
+problem 10 is similar to 24 in uee math. skip. (find out the fixed point on all possible lines)
+
+problem 11: k sets. size of cup all = 12. each 5 sets must have some cap. each 6 sets must have no cap. calc max k.
+
+problem 12 (3): a rect. width a+c, heigh b+d. the top right part (bc) is cut (like inverse). abcd are all positive int. l is 2(a+b+c+d). S is size. prove for all n more or eq than 5, there must exist a shape that fits (l/n)^2=S. 
+
+(problem 12 (1): prove l>4sqrt(S).)
+
 
 
 <!--
