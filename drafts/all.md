@@ -132,6 +132,7 @@ software engineering frontend:
 - js memory leak
 - js void type
 - js result promise throw
+- ts d.ts code style
 
 software engineering backend:
 

@@ -3592,6 +3592,10 @@ yeah, i should like achieve something. anyway.
 
 take it easy.
 
+05 00 check zhihu. 05 20 check douyin.
+
+confirm the latest post from qingniao channel: ppl are using sns to make friends (esp on unixporn fields) these days.
+
 
 
 <!--
