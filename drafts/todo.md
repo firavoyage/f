@@ -274,3 +274,13 @@ openrouter is good. my dollars are just sleeping there and not doing anything.
 novita ai is also good. let's exploit maybe. idk if minimax could outperform or have a competitive quality with 1/10 price. let's do some simple research. and just proceed.
 
 ---
+
+copy to markdown.
+
+can i just use dom? i mean, by selecting, i could have more styles.
+
+test.
+
+rm classes.
+
+---

@@ -564,3 +564,21 @@ it could also render interactive elements. not just "run code", but playgrounds 
 
 ---
 
+about mcp
+
+- it's not extensible or composable. it's not unix (text based, stateless). it's not pure. you could not know what there actually is without reading itself, control the data, or make it work with your apps. you could not call it in the simple way (cli or request) without its own sdk.
+- it's not cost efficient. it adds cost without doing anything esp when you dont need to know all the tools. you have to impl progressive disclosure yourself.
+
+maybe you should stop impl it. and wrap mcp providers instead.
+
+---
+
+google ai mode...
+
+it does not hold the data or state in the url.
+
+it contains the query. you will regenerate the first message when refreshing. the conversation is lost.
+
+although you can create a shareable link (then it's the conversation id). (but it's confusing. does it update? does it continue? does it export?)
+
+---

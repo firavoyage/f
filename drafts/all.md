@@ -133,6 +133,8 @@ software engineering frontend:
 - js void type
 - js result promise throw
 - ts d.ts code style
+- ts utility types record union enum
+- md footnote syntax support render
 
 software engineering backend:
 
