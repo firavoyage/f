@@ -646,4 +646,6 @@ google ai use very simple font family.
 
 that's it. no need to mess up with old best prac.
 
+maybe arial is also not needed. (why not helvetica then? sounds more superior)
 
+---
