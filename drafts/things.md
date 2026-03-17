@@ -618,4 +618,24 @@ contest 2026 editorial.
 
 ---
 
+github exploitation.
 
+github has strict tos. "one human could only own one free account."
+
+idk how it could impl it. like codeforces?
+
+seems it bans ppl in their own way without explanation, maybe even randomly as it feels.
+
+but some other projects like chinese textbooks are not banned.
+
+let's try it.
+
+- reg a new github acc with proxy ip, disposable email, and default browser fingerprint.
+- design a way to separate these:
+  - download (foss, "neutral")
+  - split and upload (foss, "neutral")
+  - files (random, like zips with passwords. no need to make it look like real like normal data like v2ray.)
+  - metadata (file tree, map)
+- upload the clannad vids on github. 
+
+---
