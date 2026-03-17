@@ -634,4 +634,16 @@ vscode log looks like this:
 
 (the err is it does not handle data url)
 
+(ofc, properly highlighted)
+
 ---
+
+google ai use very simple font family.
+
+"google sans, roboto, arial, sans-serif"
+
+"monospace"
+
+that's it. no need to mess up with old best prac.
+
+
