@@ -3616,6 +3616,14 @@ the latest documentary of mediastorm... always these topics. but this time seems
 
 trivial. low quality and repetitive comments without any insights.
 
+23 00 know `Ruy Lopez` and `Sicilian Defense`.
+
+accuracy on chessdotcom and lichess. book moves.
+
+18
+
+01 20 check `Hikaru's on Fire! Check Out This Game vs Nepo!!`.
+
 
 
 <!--
