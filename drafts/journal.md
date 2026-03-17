@@ -3421,6 +3421,8 @@ i still believe it's incremental. good narration from mediastorm. but where's th
 
 training on piracy is well known and (unconsciously) accepted. but... only big companies, esp in china where power is everything, could steal the data elegantly...
 
+upd: on youtube i see two versions, one en, one zh-cn, i mean different vids not different tracks. idk.
+
 19 20 download `Oppenheimer (2023)`.
 
 491AA0E19CBDB03B100961DB82315C08643A6139
@@ -3599,6 +3601,20 @@ confirm the latest post from qingniao channel: ppl are using sns to make friends
 19 40 watch `Special Tactics You Need To Know | Chess Rating Climb 1347 to 1376`.
 
 21 20 watch funshiki genshin impact live.
+
+17
+
+21 40 watch `You Need To Try This Gambit | Chess Rating Climb 1376 to 1415`.
+
+22 00 appreciate `Hitler vs Lenin | Chess Game in 1909`.
+
+fun.
+
+22 40 skim `在性产业“合法”的地方，我们看到了...`.
+
+the latest documentary of mediastorm... always these topics. but this time seems it's another director (not the same as the paper help writing and the digital nomad)?
+
+trivial. low quality and repetitive comments without any insights.
 
 
 

@@ -639,3 +639,9 @@ let's try it.
 - upload the clannad vids on github. 
 
 ---
+
+learn on google fonts. find all fonts i love. organize. install.
+
+---
+
+
