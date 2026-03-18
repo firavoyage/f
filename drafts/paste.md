@@ -1,3 +1,5 @@
+
+
 typescript record meaning example
 
 1 hour ago

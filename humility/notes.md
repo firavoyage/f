@@ -648,4 +648,6 @@ that's it. no need to mess up with old best prac.
 
 maybe arial is also not needed. (why not helvetica then? sounds more superior)
 
+upd: idk. suddenly it removes all "google sans" and only keep roboto. droppin update? fixed after refreshing after minutes? weird.
+
 ---
