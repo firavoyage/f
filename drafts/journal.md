@@ -3630,6 +3630,10 @@ accuracy on chessdotcom and lichess. book moves.
 
 a child at home is trying to solve this on homework problemset: if `x = a * 10 + b` and `y = a - 2b`, `y % 7 = 0`, then `x % 7 = 0`. (a is anything, b is one digit). btw, on the book, it tells a story about it, like "removing the last digit and ...".
 
+21 40 check simplelive.
+
+22 40 read the water level of ideology, part 2. 00 40
+
 
 
 <!--
