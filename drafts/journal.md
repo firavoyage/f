@@ -3624,6 +3624,12 @@ accuracy on chessdotcom and lichess. book moves.
 
 01 20 check `Hikaru's on Fire! Check Out This Game vs Nepo!!`.
 
+17 40 read jiang zi jun zhihu archive on "ideas". find her github link. 20 20
+
+21 20 solve a math problem on number theory.
+
+a child at home is trying to solve this on homework problemset: if `x = a * 10 + b` and `y = a - 2b`, `y % 7 = 0`, then `x % 7 = 0`. (a is anything, b is one digit). btw, on the book, it tells a story about it, like "removing the last digit and ...".
+
 
 
 <!--
