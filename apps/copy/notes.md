@@ -20,4 +20,8 @@ can i get what i need when user select something?
 
 or i have to let they copy and paste to my contenteditable or whatever
 
+---
+
+can i install some modules via npm, import them like modern es modules, and let them run directly in modern browsers
+
 
