@@ -651,3 +651,12 @@ maybe arial is also not needed. (why not helvetica then? sounds more superior)
 upd: idk. suddenly it removes all "google sans" and only keep roboto. droppin update? fixed after refreshing after minutes? weird.
 
 ---
+
+what the hell.
+
+opencode defines the list of all possible models (strings) in its schema.
+
+btw, it does not use keys from env.
+
+---
+

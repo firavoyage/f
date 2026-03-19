@@ -14,18 +14,10 @@ how to use clipboard api
 
 ---
 
-set up api key from novita ai (comment openrouter). on zshrc private
+think.
 
-use opencode to research Valkyrie Language.
+can i get what i need when user select something?
 
-(seems jiang zi jun loves language design a lot)
+or i have to let they copy and paste to my contenteditable or whatever
 
----
 
-research ts to native compiler.
-
-design my own. (subset of "good parts of js").
-
-although seems i dont need that perf...
-
----

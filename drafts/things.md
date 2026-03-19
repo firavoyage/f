@@ -644,4 +644,12 @@ learn on google fonts. find all fonts i love. organize. install.
 
 ---
 
+research ts to native compiler.
+
+design my own. (subset of "good parts of js").
+
+although seems i dont need that perf...
+
+---
+
 

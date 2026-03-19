@@ -3640,6 +3640,26 @@ a child at home is trying to solve this on homework problemset: if `x = a * 10 +
 
 32:25 that's what i were thinking!
 
+19 00 try to use opencode to document valkyrie lang by oovm. research its quirks.
+
+opencode is not well documented or proven.
+
+sota llms are so stupid (thinking back and forth).
+
+well, the export feature is kind of fixed somehow... at least in this case there is no obvious rendering quirks (maybe no four backticks markdown needed here?).
+
+it works for 20 min to write a docs. some outputs are just thrown away and never used (the zh-cn version docs).
+
+(well, seems it's reading docs. maybe it's worth. i appreciate.)
+
+like "invalid api keys", system prompts (i think there must be or it wont work continuously) are not exported. idk how to config. maybe i could not.
+
+19 40 check `Forcibly Mating 500s For Educational Purposes`. watch `How To PUNISH With Your Queen | Chess Rating Climb 1456 to 1486`.
+
+20 40 receive sh uee news.
+
+there are actually 18 (out of about 360) students admitted in sh uee.
+
 
 
 <!--
