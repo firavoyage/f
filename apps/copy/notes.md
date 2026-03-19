@@ -12,4 +12,20 @@ what can you get if user pastes something on your site
 
 how to use clipboard api
 
+---
 
+set up api key from novita ai (comment openrouter). on zshrc private
+
+use opencode to research Valkyrie Language.
+
+(seems jiang zi jun loves language design a lot)
+
+---
+
+research ts to native compiler.
+
+design my own. (subset of "good parts of js").
+
+although seems i dont need that perf...
+
+---
