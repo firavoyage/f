@@ -22,6 +22,36 @@ or i have to let they copy and paste to my contenteditable or whatever
 
 ---
 
-can i install some modules via npm, import them like modern es modules, and let them run directly in modern browsers
+set up parcel (and gitignore). test.
+
+use... like chatgpt.
+
+gitignore all hidden folders maybe. idk.
+
+---
+
+you are not gonna mess up with selections and userscripts. build the core first.
+
+page:
+
+```
+paste.
+
+---
+
+- to markdown
+- to clean html
+- to html
+```
+
+(a progress bar could be better. markdown is more extreme than clean html.)
+
+---
+
+create the html version first. strip away unneeded tags.
+
+---
+
+see what i can get from user pasting. simonw seems have some experiments.
 
 

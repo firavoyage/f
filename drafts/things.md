@@ -652,4 +652,23 @@ although seems i dont need that perf...
 
 ---
 
+install mac on gnome boxes
+
+https://github.com/kholia/OSX-KVM
+
+have a legacy version. the time were steve jobs there.
+
+(also install arch. it simply works. but it does not have a gui by default! holyshit. well, it is what simplicity is, nevermind.)
+
+---
+
+bitmagnet.
+
+i think it's gonna ever evolving.
+
+try to make it storage efficient. not stupid. 
+
+i mean keep the best.
+
+---
 
