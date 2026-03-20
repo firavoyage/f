@@ -3674,6 +3674,8 @@ https://nyaa.si/view/1913854
 
 upd: too large (compared with others of some constraints). too dated. let's just keep it downloading, but maybe i could try this. https://www.bilibili.com/video/BV1ox411c7e3
 
+upd: removed.
+
 15 00 watch `Perfect Game. Scotch Gambit. Wow | Chess Rating Climb 1486 to 1517`.
 
 18 20 download `yoasobi`.
