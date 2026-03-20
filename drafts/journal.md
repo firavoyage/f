@@ -3666,11 +3666,23 @@ there are actually 18 (out of about 360) students admitted in sh uee.
 
 04 00 play with arch install on gnome boxes.
 
+arch does not seem to have a gui by default. and yet, i could not paste.
+
 14 20 download `Air (2005)`.
 
 https://nyaa.si/view/1913854
 
+upd: too large (compared with others of some constraints). too dated. let's just keep it downloading, but maybe i could try this. https://www.bilibili.com/video/BV1ox411c7e3
+
 15 00 watch `Perfect Game. Scotch Gambit. Wow | Chess Rating Climb 1486 to 1517`.
+
+18 20 download `yoasobi`.
+
+the book, the book 2, the book 3.
+
+18 40 read (check) ruanyf weekly archive.
+
+19 00 download `aimer`.
 
 
 

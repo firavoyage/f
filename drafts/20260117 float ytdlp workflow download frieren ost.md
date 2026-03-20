@@ -106,12 +106,40 @@ tmp
 
 ```
 yt-dlp \
-  "https://music.youtube.com/playlist?list=OLAK5uy_lcWGyyFdmhHvMoEgYPYxsYwRwTWt2tyDU"
-  "https://music.youtube.com/playlist?list=OLAK5uy_mpJTOKOi_Pt8M5nZJJj5me5DkglnTVtEQ"
-  "https://music.youtube.com/playlist?list=OLAK5uy_kH0tOTpMYLyOdTwMb-AxustJpJYq7QSYs"
-  "https://music.youtube.com/playlist?list=OLAK5uy_nf8J7zZj1mVcZatg-F487AjZNK0syGYII"
-  "https://music.youtube.com/playlist?list=OLAK5uy_mZvPb7D-0VFOe7KA1F3RdSv2yjubt3WQo"
-   \
+  "https://music.youtube.com/playlist?list=OLAK5uy_k4cmWyB5cAixdkEkidgnSKbtGX2PGt2Nc" \
+  "https://music.youtube.com/playlist?list=OLAK5uy_lmeyUss0PYyDcWYhFxKo4ZRG7xQdrtUqg" \
+  "https://music.youtube.com/playlist?list=OLAK5uy_kMj2M0Od8IUPbLy-S9ZxOpPCCiTChBAlU" \
+  -x \
+  --audio-format mp3 \
+  --audio-quality 0 \
+  --add-metadata \
+  --embed-thumbnail \
+  --parse-metadata "playlist_index:%(track_number)s" \
+  -o "_/%(title)s - %(album,playlist_title)s - %(artist)s.%(ext)s" \
+```
+
+aimer
+
+```
+yt-dlp \
+  "https://music.youtube.com/playlist?list=OLAK5uy_k3MhpJYfxJH099ZbTqgGF9fpPCE_QXSVQ" \
+  -x \
+  --audio-format mp3 \
+  --audio-quality 0 \
+  --add-metadata \
+  --embed-thumbnail \
+  --parse-metadata "playlist_index:%(track_number)s" \
+  -o "_/%(title)s - %(album,playlist_title)s - %(artist)s.%(ext)s" \
+  --match-filters "view_count > 1000000"
+```
+
+yoasobi
+
+```
+yt-dlp \
+  "https://music.youtube.com/playlist?list=OLAK5uy_k4cmWyB5cAixdkEkidgnSKbtGX2PGt2Nc" \
+  "https://music.youtube.com/playlist?list=OLAK5uy_lmeyUss0PYyDcWYhFxKo4ZRG7xQdrtUqg" \
+  "https://music.youtube.com/playlist?list=OLAK5uy_kMj2M0Od8IUPbLy-S9ZxOpPCCiTChBAlU" \
   -x \
   --audio-format mp3 \
   --audio-quality 0 \

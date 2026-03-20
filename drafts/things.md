@@ -428,6 +428,8 @@ Majiko
 
 EGOIST
 
+(bang dream?)
+
 ---
 
 https://beta.kimi.link/share/19bf65b4-a9c2-8ea9-8000-00002950b68a
@@ -669,6 +671,10 @@ i think it's gonna ever evolving.
 try to make it storage efficient. not stupid. 
 
 i mean keep the best.
+
+---
+
+i dont think we need that heavy js testing libs.
 
 ---
 
