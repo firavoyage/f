@@ -666,3 +666,8 @@ seems not really reliable! poor css in js...
 
 ---
 
+the whole rendering, like chatgpt's entities, even google's "sources", are llm generated.
+
+google ai might output "sources" literally (in md) instead of make it machine readable (in component).
+
+---
