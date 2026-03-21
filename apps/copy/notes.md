@@ -8,25 +8,11 @@ is it easy to handle it in turndown: if an element is div, not span, even if it'
 
 ---
 
-what can you get if user pastes something on your site
-
-how to use clipboard api
-
----
-
 think.
 
 can i get what i need when user select something?
 
 or i have to let they copy and paste to my contenteditable or whatever
-
----
-
-set up parcel (and gitignore). test.
-
-use... like chatgpt.
-
-gitignore all hidden folders maybe. idk.
 
 ---
 
@@ -51,5 +37,3 @@ paste.
 create the html version first. strip away unneeded tags.
 
 ---
-
-

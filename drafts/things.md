@@ -678,3 +678,13 @@ i dont think we need that heavy js testing libs.
 
 ---
 
+dl "k on"
+
+dl "air" (figure out how to ytdlp bilibili series)
+
+---
+
+telegram bot.
+
+---
+

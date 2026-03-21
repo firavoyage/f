@@ -20,4 +20,14 @@ there might be some newline or trailing spaces in span.
 
 (seems it works well. vscode previewer not rendering?)
 
+---
+
+to md.
+
+figure out what styles to keep. tags to convert.
+
+web is finite.
+
+
+
 

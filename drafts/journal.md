@@ -3686,6 +3686,12 @@ the book, the book 2, the book 3.
 
 19 00 download `aimer`.
 
+21
+
+18 00 get up. reg `firahq` on ehentai. revisit gaou's doujin. read comments. get impressed.
+
+no longer sleepy! life.
+
 
 
 <!--
