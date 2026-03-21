@@ -7,11 +7,14 @@
 !.env.example
 
 # =========================
-# Dependency directories
+# Build
+# =========================
+.build/
+
+# =========================
+# Javascript / Typescript
 # =========================
 node_modules/
-vendor/
-bower_components/
 
 # =========================
 # Python

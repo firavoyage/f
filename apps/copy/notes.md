@@ -52,6 +52,4 @@ create the html version first. strip away unneeded tags.
 
 ---
 
-see what i can get from user pasting. simonw seems have some experiments.
-
 

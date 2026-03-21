@@ -1,0 +1,17 @@
+{
+  "name": "copy",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "dependencies": {
+    "dompurify": "^3.3.3"
+  },
+  "devDependencies": {
+    "parcel": "^2.13.3",
+    "typescript": "^5.8.3"
+  }
+}

@@ -660,3 +660,9 @@ btw, it does not use keys from env.
 
 ---
 
+i see some "class undefined" on google ai mode.
+
+seems not really reliable! poor css in js...
+
+---
+

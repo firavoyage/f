@@ -275,14 +275,14 @@ novita ai is also good. let's exploit maybe. idk if minimax could outperform or 
 
 ---
 
-copy to markdown.
+write down the result type myself. it's easy. 
 
-can i just use dom? i mean, by selecting, i could have more styles.
+write manually. learn ts.
 
-test.
-
-rm classes.
+```
+  - no try catch unless external libraries need, (... instead)
+  - no throw
+  - no nested if. if err, return/continue/break.
+```
 
 ---
-
-
