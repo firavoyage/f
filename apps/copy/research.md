@@ -28,3 +28,16 @@ yet it's still not very ideal. "ocr" and "pdf ocr" both exist on the same catego
 
 ---
 
+code indentation.
+
+verdict.
+
+it's vscode's problem. when opened on default preview, indentation, or trailing spaces on html elements are removed.
+
+when copied to a blank web page, it shows properly.
+
+btw, when ctrl shift i (default formatter, prettier), the spaces are removed (copy does not work then).
+
+---
+
+

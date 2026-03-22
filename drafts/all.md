@@ -54,6 +54,7 @@ life:
 - america penacony dreams come true
 - dreams
 - lichess chessdotcom icons compliance dmca legal system dirty secret stylus
+- philosophy trolley problem
 
 create something:
 

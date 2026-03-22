@@ -3700,6 +3700,8 @@ the book, the book 2, the book 3.
 
 no longer sleepy! life.
 
+upd: it does not seem that webview could pass cf turnstile, which is needed for login.
+
 22
 
 01 00 watch `This Gambit Is BROKEN | Chess Rating Climb 1517 to 1548`.
