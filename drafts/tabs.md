@@ -223,3 +223,40 @@ https://github.com/memohai/Memoh/commits?author=Menci
 https://docs.memoh.ai/
 
 ---
+
+Vanilla CSS is all you need
+
+https://www.zolkos.com/2025/12/03/vanilla-css-is-all-you-need
+
+---
+
+oovm
+
+https://github.com/oovm
+
+https://github.com/oovm?tab=repositories
+
+---
+
+html (to ast) to md 
+
+manage edge cases like fake negative inline.
+
+https://github.com/rehypejs/rehype-remark?tab=readme-ov-file
+
+https://github.com/remarkjs/remark
+
+https://github.com/mixmark-io/turndown
+
+---
+
+libadwaita
+
+https://github.com/romgrk/web-toolkit
+
+https://github.com/ncpa0cpl/adwaita-web?tab=readme-ov-file
+
+<!-- css is enough -->
+
+---
+

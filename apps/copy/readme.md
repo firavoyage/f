@@ -33,3 +33,10 @@ you can extend by writing code, not installing something of extension spec. it's
 it's reliable.
 
 you use proven tech under the hood.
+
+---
+
+assume:
+
+- it's web based
+- it's static, no progressive loading

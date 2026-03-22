@@ -952,3 +952,15 @@ September 11889,
 ```
 
 ---
+
+i could not "open in app" on mastodon web.
+
+you could have a protocol. i mean.
+
+---
+
+time should change over time.
+
+twitter does this. most sites dont.
+
+---

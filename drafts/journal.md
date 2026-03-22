@@ -3656,6 +3656,8 @@ like "invalid api keys", system prompts (i think there must be or it wont work c
 
 19 40 check `Forcibly Mating 500s For Educational Purposes`. watch `How To PUNISH With Your Queen | Chess Rating Climb 1456 to 1486`.
 
+20 40 listen to `The design process is dead. Here’s what’s replacing it. | Jenny Wen (head of design at Claude)`.
+
 20 40 receive sh uee news.
 
 there are actually 18 (out of about 360) students admitted in sh uee.
@@ -3667,6 +3669,12 @@ there are actually 18 (out of about 360) students admitted in sh uee.
 04 00 play with arch install on gnome boxes.
 
 arch does not seem to have a gui by default. and yet, i could not paste.
+
+12 20 check other students in sp uee. sneak a photo of the list.
+
+only 16 out of 19 (as heard) appear on the list. only 13 arrive.
+
+dm ziantt on twitter.
 
 14 20 download `Air (2005)`.
 
@@ -3695,6 +3703,8 @@ no longer sleepy! life.
 22
 
 01 00 watch `This Gambit Is BROKEN | Chess Rating Climb 1517 to 1548`.
+
+03 20 dl `Zen and the Art of Motorcycle Maintenance`.
 
 
 

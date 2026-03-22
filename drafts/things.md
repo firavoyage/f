@@ -684,7 +684,19 @@ dl "air" (figure out how to ytdlp bilibili series)
 
 ---
 
-telegram bot.
+write tg bot.
+
+---
+
+61.life shelf.
+
+https://61.life/
+
+https://61.life/2024/books
+
+https://61.life/2023/1230
+
+https://share.google/aimode/z3GvGGlSsEZYqusZY
 
 ---
 
