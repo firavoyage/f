@@ -190,6 +190,16 @@ and connect it! (... seems i could not manage context this way... and everyone a
 
 ---
 
+let's use opencode to make the refactor (ts, result) work.
+
+claude code could work with workarounds. but im not gonna like it.
+
+openrouter is good. my dollars are just sleeping there and not doing anything.
+
+novita ai is also good. let's exploit maybe. idk if minimax could outperform or have a competitive quality with 1/10 price. let's do some simple research. and just proceed.
+
+---
+
 d.ts.
 
 write big global types in it. good.
@@ -262,16 +272,6 @@ and you wont like `!ok`. since you dont if ok, let's accept the tradeoff.
 `type == "ok" | "err"` is akin to rust. rust is loved. but simplicity is better. also, it avoids the `===` syntax of js.
 
 you can also just access the value. if err, value does not exist, so it will fail loudly. (or undefined, actually)
-
----
-
-let's use opencode to make the refactor (ts, result) work.
-
-claude code could work with workarounds. but im not gonna like it.
-
-openrouter is good. my dollars are just sleeping there and not doing anything.
-
-novita ai is also good. let's exploit maybe. idk if minimax could outperform or have a competitive quality with 1/10 price. let's do some simple research. and just proceed.
 
 ---
 

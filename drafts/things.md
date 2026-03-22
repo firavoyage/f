@@ -678,12 +678,6 @@ i dont think we need that heavy js testing libs.
 
 ---
 
-dl "k on"
-
-dl "air" (figure out how to ytdlp bilibili series)
-
----
-
 write tg bot.
 
 ---
@@ -697,6 +691,10 @@ https://61.life/2024/books
 https://61.life/2023/1230
 
 https://share.google/aimode/z3GvGGlSsEZYqusZY
+
+---
+
+find all fcitx dicts and convert using agent.
 
 ---
 

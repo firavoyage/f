@@ -3706,6 +3706,28 @@ no longer sleepy! life.
 
 03 20 dl `Zen and the Art of Motorcycle Maintenance`.
 
+16 40 dl `Puella Magi Madoka Magica (2011)` `K-On! (2009)` `K-ON!! S2 (2010)` `K-ON! the Movie (2011)` `Air (2005)`.
+
+366318781ea3c76085c81dcbb32e5040e2d5b4e2 (from bitmagnet, sort by seeders)
+
+https://nyaa.si/view/1816038
+
+https://nyaa.si/view/1816039
+
+https://nyaa.si/view/1816041
+
+https://nyaa.si/view/946518
+
+17 00 install `uv` `ruff` with cargo. polish ubuntu guide for readability.
+
+18 20 watch `Why Accuracy Scores Don't Always Matter | Chess Rating Climb 1548 to 1592`.
+
+18 40 (re) read the water level of ideology, part 3. 20 20
+
+later i believe in tech. laws, acts, endless conflicts. tech, which are proven by math, ends them. it no longer balances rights under them, instead, it limits them in the hard way by giving irreversible power to everyone.
+
+the trolley problem is simple. if i were not the driver, pass, as i could do nothing. if i were, without external force (some offers i might like), just proceed. humans, once lying on the rail, whether driven by their own wills or by the system, are already dead, whether killed by myself or not. they are nothing. as options are the same, doing nothing is simplicity, which is sacred. i dont have to fight their destiny. i would proceed even if there is no one on the other track.
+
 
 
 <!--

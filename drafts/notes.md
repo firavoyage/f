@@ -964,3 +964,12 @@ time should change over time.
 twitter does this. most sites dont.
 
 ---
+
+on qbitorrent,
+
+rename on transfer list and content tab are different.
+
+confusing.
+
+---
+
