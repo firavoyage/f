@@ -3744,6 +3744,16 @@ inspired by the recent irl meetup.
 
 17 20 create origami: little sparkle.
 
+22 00 solve a math problem.
+
+(a-c)(a-d) = 1. (b-c)(b-d) = 1. calc ab-cd. a != b. (on the original problem, abcd all have power 2 on top, ive simply observed and substituted.)
+
+i wanna use the vieta theorem. easy. but seems it's too advanced. anyway, i would go ahead and prove since i dont find a better solution (although, it has an answer of mixing the equations together and doing some heavy lifting.).
+
+the easiest way to prove vieta is to compare the consts and claim they must be the same for each pair. (to make it strict, you have to prove the algebra theorem and the only one equation theorem. on the problemset, many problems leverage this without proof, though.)
+
+the simpliest strict way is to get the quad root theorem, using the props of an equation (adding/sub/multi/div not zero on both side). which also seems a bit too advanced.
+
 
 
 <!--
