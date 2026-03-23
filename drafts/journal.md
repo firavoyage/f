@@ -3730,6 +3730,16 @@ later i believe in tech. laws, acts, endless conflicts. tech, which are proven b
 
 the trolley problem is simple. if i were not the driver, pass, as i could do nothing. if i were, without external force (some offers i might like), just proceed. humans, once lying on the rail, whether driven by their own wills or by the system, are already dead, whether killed by myself or not. they are nothing. as options are the same, doing nothing is simplicity, which is sacred. i dont have to fight their destiny. i would proceed even if there is no one on the other track.
 
+23
+
+12 00 explore people and memories in go. read comments on xuegao cheese.
+
+inspired by the recent irl meetup.
+
+14 00 put subtitles properly. normalize.
+
+14 20 reg `firahq` on miraheze. try to create wiki.
+
 
 
 <!--
