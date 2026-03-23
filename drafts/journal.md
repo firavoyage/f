@@ -3740,6 +3740,8 @@ inspired by the recent irl meetup.
 
 14 20 reg `firahq` on miraheze. try to create wiki.
 
+17 00 trim the dead stems of wen zhu further.
+
 
 
 <!--
