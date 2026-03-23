@@ -287,10 +287,6 @@ write manually. learn ts.
 
 ---
 
-origami.
-
----
-
 figure out weird yaml loc
 
 

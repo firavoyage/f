@@ -3742,6 +3742,8 @@ inspired by the recent irl meetup.
 
 17 00 trim the dead stems of wen zhu further.
 
+17 20 create origami: little sparkle.
+
 
 
 <!--
