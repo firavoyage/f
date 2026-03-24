@@ -1,4 +1,4 @@
-found the cause of weird linebreak.
+the cause of the weird linebreak.
 
 if an element is div, not span, even if it's displayed inline or content (actually inline for text children), it will be a block paragraph.
 
@@ -8,6 +8,8 @@ is it easy to handle it in turndown: if an element is div, not span, even if it'
 
 ---
 
+ux.
+
 think.
 
 can i get what i need when user select something?
@@ -15,6 +17,8 @@ can i get what i need when user select something?
 or i have to let they copy and paste to my contenteditable or whatever
 
 ---
+
+ux.
 
 you are not gonna mess up with selections and userscripts. build the core first.
 
@@ -34,6 +38,22 @@ paste.
 
 ---
 
-create the html version first. strip away unneeded tags.
+cloc result.
 
----
+```
+ ~ % cd Documents/f/apps/copy
+ ...f/apps/copy % cloc . --vcs=git --exclude-lang=YAML,JSON,Markdown
+      12 text files.
+      12 unique files.
+       8 files ignored.
+
+github.com/AlDanial/cloc v 2.06  T=0.05 s (76.8 files/s, 3227.1 lines/s)
+-------------------------------------------------------------------------------
+Language                     files          blank        comment           code
+-------------------------------------------------------------------------------
+TypeScript                       3             21              0             78
+HTML                             1              4              0             65
+-------------------------------------------------------------------------------
+SUM:                             4             25              0            143
+-------------------------------------------------------------------------------
+```

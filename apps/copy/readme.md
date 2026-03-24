@@ -40,3 +40,4 @@ assume:
 
 - it's web based
 - it's static, no progressive loading
+
