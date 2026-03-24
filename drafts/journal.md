@@ -3754,6 +3754,24 @@ the easiest way to prove vieta is to compare the consts and claim they must be t
 
 the simpliest strict way is to get the quad root theorem, using the props of an equation (adding/sub/multi/div not zero on both side). which also seems a bit too advanced.
 
+24
+
+01 00 solve a cp problem (?) from menci. 04 00
+
+she has some discounts (no constraints, no exceeding even if you give up the wasted) and she wants to buy something. she refers to "0 or 1 backpack problem".
+
+conclusion (use google ai, chatgpt, manual thinking, paperwork):
+
+```
+对最先购买的物品, 使用最多总价值的折扣, 不一定是全局最优. 反例 a: 物品 5, 3. 折扣 4, 3, 2. 反例 b: 物品 75, 25. 折扣 33, 25*3. 假设: 不允许舍弃超额折扣. 观察: 1. 局部最优恰降序依次使用最大额折扣券则全局最优. 2. 单价远大于任意折扣则顺序无关. (错! 反例: 10020, 9999. 100*200, 30*4.)
+
+对于 menci 的数据 (一个 33, 一堆 25) 而言, 只要此后的物品价格不低于 33 (所以我猜想单价远大于则无关), 就是全局最优. 如果在第一个物品, 用一个 33 替换两个 25, 后面但凡能挤下两个 25 都能换回来. 即使改变 33 这个数字也不影响. pattern 是较大折扣只有一个.
+
+btw, menci 的作息是什么情况. 我本来以为自己一个人夜行, 静悄悄的.
+```
+
+fira is so stupid.
+
 
 
 <!--
