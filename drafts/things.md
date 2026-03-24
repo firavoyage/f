@@ -697,3 +697,8 @@ https://share.google/aimode/z3GvGGlSsEZYqusZY
 find all fcitx dicts and convert using agent.
 
 ---
+
+what's vllm?
+
+---
+

@@ -682,3 +682,13 @@ mediocrity, maybe.
 
 ---
 
+on google ai
+
+the font of prev messages might change if i send a new msg.
+
+weird. though it might be supposed to just check once, dont change.
+
+it does take effect here.
+
+---
+

@@ -973,3 +973,24 @@ confusing.
 
 ---
 
+on qbitorrent.
+
+if you have duplicates in the same torrent folder, they will be redownloaded. (well, they might be differnt ffmpeg params? as raws are too heavy)
+
+if you have the same file across different torrents, they (peers) wont be shared.
+
+contents and real disk files should be in sync. if i unselect one after downloading, no need to keep the zero byte file. (though, it has sig tradeoff. it's also wise to keep the file, maybe even better.) you can have trashbin for it.
+
+the file size differs (by 1024 or 1000?). and the explorer shows the final size instead of the downloaded.
+
+---
+
+on carte:
+
+foo: 嘲讽团结者.
+
+rikki: 死后复活. 沉默攻击者. 对方有 debuff 的血条清零.
+
+oovm: 我超是 r 神!
+
+---
