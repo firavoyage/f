@@ -671,3 +671,14 @@ the whole rendering, like chatgpt's entities, even google's "sources", are llm g
 google ai might output "sources" literally (in md) instead of make it machine readable (in component).
 
 ---
+
+on search
+
+context pollution is heavy.
+
+it gives the warmest hope and the deepest frustration.
+
+mediocrity, maybe.
+
+---
+

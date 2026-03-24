@@ -290,5 +290,3 @@ write manually. learn ts.
 figure out weird yaml loc
 
 ---
-
-
