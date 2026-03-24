@@ -3780,6 +3780,8 @@ https://mikanani.me/Home/Episode/29762f773119261c831be61fd6798c0b6119a073
 
 i did not remember, whether ive watched your name, 5cmps. (i kind of remember some of the scenes, though.)
 
+23 40 watch `I MESSED UP BIG TIME | Chess Rating Climb 1592 to 1609`.
+
 
 
 <!--
