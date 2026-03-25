@@ -3782,6 +3782,28 @@ i did not remember, whether ive watched your name, 5cmps. (i kind of remember so
 
 23 40 watch `I MESSED UP BIG TIME | Chess Rating Climb 1592 to 1609`.
 
+25
+
+03 00 surf douyin for a while. find (not for the first time) and try kazumi. write commentary.
+
+> why? I use nyaa (alternatives exist, but this one is often enough.) and vlc player (you can you mpv if you like). For downloading, qbitorrent is good, no extra config needed. If you find it slow, find a resource of more seeders. That's it. There are aggregators, there are piracy anime sites, But I think, you are not gonna need it.
+>
+> upd: 去 flathub 拉取了一下. 提示 "在 x11, 可能有问题" (无视, 继续. 实际上 x11 虽然似乎过时, 但很多事情在 wayland 不能容易地做.). 尝试了一个热门番组. 没有严重问题. 动画评论显然是来源于 bgm.tv. 就是... 好像是 10 fps. 而且... 似乎不能 dl, 只能 streaming. 弃用.
+>
+> upd: 下载是可用的. 只不过 infomation architecture 之下, 没有被我成功注意到. 虽然... 也没有必要用这些源. i18n 完全没有, 不知道为什么默认显示简体中文 (设置第一页没有看到语言). 同时, 不知道为什么默认使用 mi sans, 兼容性重要于一切吗? 但, 也可用理解为什么这样的项目会有很多的 hypes. 简体中文 "开发, 创造" 社群里有很多这样的项目 (比如, 有很多音乐 fetcher. 我的话, 我会用 ytdlp 和 kde elisa. 虽然我希望能有 gnome equivalent, 使用 libadwaita.).
+
+04 00 dl `Slay the Spire 2`.
+
+851071028c4eb582ec964e4693bfdf278d21a8a6 (from bitmagnet dht)
+
+upd: what the hell. ubuntu by default say "crc error". 7z x fails either.
+
+i have to use this to make it work.
+
+```sh
+unrar x -kb filename.rar
+```
+
 
 
 <!--

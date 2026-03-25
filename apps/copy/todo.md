@@ -29,5 +29,3 @@ figure out what styles to keep. tags to convert.
 web is finite.
 
 ---
-
-
