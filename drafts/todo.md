@@ -275,9 +275,9 @@ you can also just access the value. if err, value does not exist, so it will fai
 
 ---
 
-write down the result type myself. it's easy. 
+?
 
-write manually. learn ts.
+normalize
 
 ```
   - no try catch unless external libraries need, (... instead)

@@ -3804,6 +3804,16 @@ i have to use this to make it work.
 unrar x -kb filename.rar
 ```
 
+26
+
+01 20 fix `slay the spire 2` with on heroic by adding one game argument `--rendering-driver vulkan`.
+
+ref: reddit.
+
+let's play it one day. seems fun.
+
+(ik its chinese font is awkward. well, i dont need that.)
+
 
 
 <!--

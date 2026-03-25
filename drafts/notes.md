@@ -994,3 +994,22 @@ rikki: 死后复活. 沉默攻击者. 对方有 debuff 的血条清零.
 oovm: 我超是 r 神!
 
 ---
+
+on ia (url design):
+
+twitter.com/my_username
+
+twitter.com/home
+
+they are on the same position... so a username could not be home?
+
+---
+
+on lang design:
+
+i wish i could `foo` to access `foo.value`, while `foo.props` are still available.
+
+learn from svelte.
+
+---
+
