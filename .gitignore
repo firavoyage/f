@@ -10,6 +10,7 @@
 # Build
 # =========================
 .build/
+.vite/
 
 # =========================
 # Javascript / Typescript

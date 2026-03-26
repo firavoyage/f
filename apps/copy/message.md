@@ -194,7 +194,7 @@ window.setTimeout(focus_paste_area, 0);
 window.addEventListener('load', focus_paste_area);
 ```
 
-- use contenteditable instead, so browser will expand css varia
+- use contenteditable instead, so the browser will expand css variables
 
 ---
 

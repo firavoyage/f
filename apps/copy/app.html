@@ -39,31 +39,27 @@
       #paste_area {
         position: fixed;
         inset: 0;
-        width: 100vw;
-        height: 100vh;
-        margin: 0;
-        padding: 0;
-        border: 0;
         outline: none;
-        resize: none;
-        opacity: 0;
-        background: transparent;
-        color: transparent;
-        caret-color: transparent;
         overflow: hidden;
+
+        /* invisible but still active */
+        opacity: 0;
+
+        /* allow css variables + inherited styles */
+        white-space: pre-wrap;
       }
     </style>
     <script type="module" src="./source/main.ts"></script>
   </head>
   <body>
     <div id="status">paste</div>
-    <textarea
+
+    <div
       id="paste_area"
+      contenteditable="true"
+      role="textbox"
       aria-label="paste area"
-      autocomplete="off"
-      autocapitalize="off"
-      autocorrect="off"
       spellcheck="false"
-    ></textarea>
+    ></div>
   </body>
 </html>
