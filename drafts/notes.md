@@ -1032,3 +1032,10 @@ btw, Followers for this profile may be missing. See more followers on misskey.ca
 no wonder mastodon users love niche servers! (misskey, star... whatever)
 
 ---
+
+on heroic...
+
+i have to ctrl r to view the latest data. holyshit.
+
+---
+

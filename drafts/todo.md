@@ -325,8 +325,6 @@ humility notes -> research.
 
 ---
 
-taiyon no ko?
-
----
+add pjsk and adwaita to projects
 
 

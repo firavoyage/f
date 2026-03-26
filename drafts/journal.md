@@ -3814,7 +3814,13 @@ let's play it one day. seems fun.
 
 (ik its chinese font is awkward. well, i dont need that.)
 
-17 40 play `slay the spire 2`.
+17 40 play `slay the spire 2`. 18 00
+
+18 20 check `Jay Chou 周杰倫【Children of the Sun 太陽之子】Official Music Video`.
+
+classic. energetic. quality. "cool". over effected, though.
+
+19 00 (re)read the water level of ideology, part 4. 19 40
 
 
 

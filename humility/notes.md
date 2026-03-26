@@ -692,3 +692,12 @@ it does take effect here.
 
 ---
 
+i can name humility, as `_`, or `.`.
+
+im the computer itself. im the humans themselves.
+
+no icon. (like zed)
+
+if you really want one, i will render a ball with threejs.
+
+---
