@@ -324,3 +324,11 @@ merge things & tabs?
 humility notes -> research.
 
 ---
+
+taiyon no ko?
+
+---
+
+how to play pjsk
+
+
