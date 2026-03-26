@@ -3460,13 +3460,13 @@ https://os.ryo.lu/docs/overview
 
 06 00 test chatwise.
 
-crude ui. dev build (not published to package managers). 
+crude ui. dev build (not published to package managers).
 
 even the most basic features need membership while i could register with temp mail and keep the free trial running.
 
 06 20 test lobehub.
 
-seems i could register a lot of accounts with builtin free tokens with only email. 
+seems i could register a lot of accounts with builtin free tokens with only email.
 
 they block emails with blacklist (popular temp mails db). but duck.com is not blocked. and i could register unlimited duck.com accounts forwarding to the same email by just solving a captcha.
 
@@ -3486,7 +3486,7 @@ it's better to reg a custom cheap site instead for dedicated abusers.
 
 the db is not very comprehensive and updated. one domain from simplelogin works, which means i could have infinite.
 
-upd: one day later, there is an additional note on referral rewards. 
+upd: one day later, there is an additional note on referral rewards.
 
 > If fraudulent activity is detected (e.g., mass registration of disposable email accounts), the associated accounts will be permanently banned
 
@@ -3530,7 +3530,7 @@ the scenes are in jp. but i could understand most. they are quite simple and con
 
 link to google account. there's no way to reg with email (i will still use gmail. but with password i can login even without access to google account. more reliable and libre.).
 
-seems i can play ads to get free gacha everyday. scrcpy helps a lot. btw, google play ads are not really low quality scams (there are "hello kitty" "disney" games of millions of downloads). 
+seems i can play ads to get free gacha everyday. scrcpy helps a lot. btw, google play ads are not really low quality scams (there are "hello kitty" "disney" games of millions of downloads).
 
 how can i download all the res currently available? i dont wanna download some once i click some field.
 
@@ -3556,7 +3556,7 @@ organize. trim. update. polish.
 
 15
 
-09 20 take a math contest. 11 40 
+09 20 take a math contest. 11 40
 
 zhijun has not enough time. lose at least 11 and 12 (full).
 
@@ -3576,7 +3576,7 @@ problem 10 is similar to 24 in uee math. skip. (find out the fixed point on all 
 
 problem 11: k sets. size of cup all = 12. each 5 sets must have some cap. each 6 sets must have no cap. calc max k.
 
-problem 12 (3): a rect. width a+c, heigh b+d. the top right part (bc) is cut (like inverse). abcd are all positive int. l is 2(a+b+c+d). S is size. prove for all n more or eq than 5, there must exist a shape that fits (l/n)^2=S. 
+problem 12 (3): a rect. width a+c, heigh b+d. the top right part (bc) is cut (like inverse). abcd are all positive int. l is 2(a+b+c+d). S is size. prove for all n more or eq than 5, there must exist a shape that fits (l/n)^2=S.
 
 (problem 12 (1): prove l>4sqrt(S).)
 
@@ -3590,7 +3590,7 @@ i thought i would not play chess over midnight. when you are way ahead than your
 
 but... maybe im actually clear now?
 
-yeah, i should like achieve something. anyway. 
+yeah, i should like achieve something. anyway.
 
 take it easy.
 
@@ -3821,6 +3821,14 @@ let's play it one day. seems fun.
 classic. energetic. quality. "cool". over effected, though.
 
 19 00 (re)read the water level of ideology, part 4. 19 40
+
+20 00 play project sekai. 21 00
+
+emu is fun.
+
+the story is confusing. two emu? i could read the lines and understand the meaning sometimes... but not really understand what they are doing (they are chatty). skip.
+
+wonderhoy!
 
 
 

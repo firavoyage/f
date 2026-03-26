@@ -701,3 +701,17 @@ no icon. (like zed)
 if you really want one, i will render a ball with threejs.
 
 ---
+
+they are just instructions. either event listener (action), interval, or timeout.
+
+they are use cases. not how it works. i kind of love exploring the ideas and possiblities, though.
+
+check new tweets (in any act pub / rev proxy). add to resume. categorize aoh.
+
+research jit.
+
+- can menci speak jp
+- what's jiang zi jun's github id
+- what's the background of ryo lu
+
+---
