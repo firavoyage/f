@@ -92,11 +92,12 @@ software engineering:
 - unix philosophy
 - modular use import export instead of chaining
 - pure fn
-- p np
+- complexity classes p np
 - shell syntax
 - shell builtin commands
 - crud
 - sql syntax history better abstraction
+- abstraction leak
 
 software engineering project management:
 

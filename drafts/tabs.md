@@ -260,3 +260,10 @@ https://github.com/ncpa0cpl/adwaita-web?tab=readme-ov-file
 
 ---
 
+nodemation
+
+https://n8n.io/
+
+https://github.com/n8n-io/n8n
+
+---

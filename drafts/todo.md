@@ -286,3 +286,41 @@ normalize
 ```
 
 ---
+
+try zed. evaluate zed. 
+
+(things, but top prior for its fun and simplicity. importance? maybe.)
+
+~~rm flatpak one. use official.~~
+
+~~(only those with confidence can go out of a package manager.)~~
+
+> the editor for what's next.
+
+(?) is that lit. fomo?
+
+i appreciate its design!
+
+---
+
+fs.
+
+kv.
+
+---
+
+ask.
+
+---
+
+testing. (?)
+
+---
+
+merge things & tabs?
+
+---
+
+humility notes -> research.
+
+---

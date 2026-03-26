@@ -1013,3 +1013,22 @@ learn from svelte.
 
 ---
 
+on text design:
+
+11 following 55 followers
+
+Followed by Menci
+
+Following Menci
+
+following becomes "followed by".
+
+followers becomes "following".
+
+confusing.
+
+btw, Followers for this profile may be missing. See more followers on misskey.cascade.moe
+
+no wonder mastodon users love niche servers! (misskey, star... whatever)
+
+---

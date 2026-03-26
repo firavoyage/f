@@ -29,3 +29,13 @@ figure out what styles to keep. tags to convert.
 web is finite.
 
 ---
+
+rm data url.
+
+one option. (maybe default.)
+
+~~high priority!~~
+
+(it has tradeoff. well, i dont think i will have these icons, though.)
+
+---
