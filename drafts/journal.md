@@ -3814,6 +3814,8 @@ let's play it one day. seems fun.
 
 (ik its chinese font is awkward. well, i dont need that.)
 
+17 40 play `slay the spire 2`.
+
 
 
 <!--

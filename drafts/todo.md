@@ -329,6 +329,4 @@ taiyon no ko?
 
 ---
 
-how to play pjsk
-
 
