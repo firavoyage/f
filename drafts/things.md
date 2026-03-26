@@ -84,12 +84,6 @@ design a better regex.
 
 ---
 
-cross framework compilers
-
-(a simplier and more abstract react)
-
----
-
 create a tool to analyze code base.
 
 line numbers. not file sizes.
@@ -177,14 +171,6 @@ find relationship.
 ---
 
 SQLite testing https://www.sqlite.org/testing.html
-
----
-
-Green tea.
-
-Battery charger.
-
-Headphone.
 
 ---
 
@@ -362,15 +348,9 @@ art movements. (learn from manus)
 
 ---
 
-try ai.
+cross framework compilers
 
-opencode.
-
-vscode copilot. (enable ai features)
-
----
-
-vue vapor mode.
+(a simplier and more abstract react)
 
 framework f.
 
@@ -703,6 +683,10 @@ what's vllm?
 ---
 
 view twitter in mastodon.
+
+---
+
+poppin party?
 
 ---
 

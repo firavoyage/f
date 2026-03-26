@@ -36,7 +36,7 @@ analyze.
 
  -->
 
-<!-- 
+<!--
 
 - **Action is the only metric.** You cannot think your way to a solution; you must build your way there.
 - **Start with yourself.** The best ideas often come from solving a problem you have personally experienced.
@@ -72,14 +72,6 @@ sync phone.
 
 ---
 
-write `android.md`. 
-
-config from fresh.
-
-(parallel to ubuntu on readme)
-
----
-
 research manus use cases myself. find inspiration.
 
 ---
@@ -110,18 +102,6 @@ build ts? do i need? how?
 
 ---
 
-use parcel.
-
----
-
-abstract fs like ruby.
-
-change name: snake case. single word.
-
-change behavior: create path when needed, like vscode. handle common issues like dangerous/invalid characters.
-
----
-
 code review. rethink "loop".
 
 ---
@@ -142,25 +122,7 @@ openrouter api abstraction.
 
 ---
 
-revise: copy to markdown
-
-i think it's good to just store things in html.
-
-just write html in markdown, keeping the original computed styling, image size, etc. while stripping things like bg color.
-
-markdown is not designed to store extracted main content.
-
-export google ai & gemini. find a way (markdown?)
-
-upd: sometimes, just use html in md and clear some tags. use contenteditable.
-
-upd: high priority. with that, i dont have to fit google ai whatever. just copy html for any "document like element".
-
-(btw, extracting the main content of a blog is completely another thing.)
-
-it's easy. research and solve some cases. there are many. you can do it progressively. original is good enough. stripping tailwind classes if needed.
-
-upd: lobehub uses jina ai. just add r.jina.ai before your url.
+lobehub uses jina ai. just add r.jina.ai before your url.
 
 there are a lot of things like jina, exa. find them all.
 
@@ -170,9 +132,9 @@ there are a lot of things like jina, exa. find them all.
 
 ---
 
-why 
+why
 
-result: type ok err. value. error. 
+result: type ok err. value. error.
 
 you can have
 
@@ -267,7 +229,7 @@ if result ok sounds good. it carries delight. but you would not like it.
 
 normally if ok you just proceed, if err you handle and return. you could not return in ok block.
 
-and you wont like `!ok`. since you dont if ok, let's accept the tradeoff. 
+and you wont like `!ok`. since you dont if ok, let's accept the tradeoff.
 
 `type == "ok" | "err"` is akin to rust. rust is loved. but simplicity is better. also, it avoids the `===` syntax of js.
 
@@ -287,7 +249,7 @@ normalize
 
 ---
 
-try zed. evaluate zed. 
+try zed. evaluate zed.
 
 (things, but top prior for its fun and simplicity. importance? maybe.)
 
@@ -304,6 +266,12 @@ i appreciate its design!
 ---
 
 fs.
+
+abstract fs like ruby.
+
+change name: snake case. single word.
+
+change behavior: create path when needed, like vscode. handle common issues like dangerous/invalid characters.
 
 kv.
 
@@ -327,4 +295,19 @@ humility notes -> research.
 
 add pjsk and adwaita to projects
 
+---
+
+ts magic type narrowing
+
+---
+
+(component libraries)
+
+auto pass some default props like dark mode?
+
+no need to overthink props/state. (abstraction on all frameworks / components)
+
+i mean to be pragmatic.
+
+---
 
