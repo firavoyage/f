@@ -1048,3 +1048,14 @@ the progress input is non linear.
 small size need precision. while you often dont care 1gb or 1.1gb.
 
 ---
+
+sns.
+
+you can "retweet" a vid on tiktok.
+
+your frnd might see a series (like four in a row) of vids you rt.
+
+in a smaller screen (like a tv) where your pfp on the left (though, i dont think it's good. a text "foo rt" is often enough.)
+
+---
+

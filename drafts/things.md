@@ -686,7 +686,13 @@ view twitter in mastodon.
 
 ---
 
-poppin party?
+telegram rev proxy cli.
+
+(assume the desktop is working.)
+
+x11 is really easy to automate. mouse. keyboard. screenshot.
+
+all with one liner.
 
 ---
 
