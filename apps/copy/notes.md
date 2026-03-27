@@ -6,15 +6,17 @@ find alternatives? idk if turndown is the only one. i need more flexible and mor
 
 is it easy to handle it in turndown: if an element is div, not span, even if it's displayed inline or content (actually inline for text children), it will be a block paragraph. or i could find better alternatives with more control, like ast or the process or something.
 
+decision: use original html. dont fight. html is a superset, which contains more infomation. you can convert later.
+
 ---
 
 ux.
 
-think.
-
 can i get what i need when user select something?
 
 or i have to let they copy and paste to my contenteditable or whatever
+
+(be simple. copy when selecting is too much magic. i dont wanna mess up with extension/userscripts quirks and make the bundler work for that. seems libs are not pure either, they need dom runtime.)
 
 ---
 
@@ -38,22 +40,27 @@ paste.
 
 ---
 
-cloc result.
+render.
 
-```
- ~ % cd Documents/f/apps/copy
- ...f/apps/copy % cloc . --vcs=git --exclude-lang=YAML,JSON,Markdown
-      12 text files.
-      12 unique files.
-       8 files ignored.
+i could add whitespace pre wrap.
 
-github.com/AlDanial/cloc v 2.06  T=0.05 s (76.8 files/s, 3227.1 lines/s)
--------------------------------------------------------------------------------
-Language                     files          blank        comment           code
--------------------------------------------------------------------------------
-TypeScript                       3             21              0             78
-HTML                             1              4              0             65
--------------------------------------------------------------------------------
-SUM:                             4             25              0            143
--------------------------------------------------------------------------------
-```
+but seems it creates new quirks (markdown inside html, like the indentation of nested lists are also rendered as spaces)
+
+decision: no.
+
+---
+
+simplify.
+
+some web stuff are nonsense as a document. 
+
+like buttons. interactives things (except links).
+
+i could remove them.
+
+though, some interactive widgets might carry infomation?
+
+decision: maybe.
+
+---
+

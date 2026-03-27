@@ -39,5 +39,3 @@ when copied to a blank web page, it shows properly.
 btw, when ctrl shift i (default formatter, prettier), the spaces are removed (copy does not work then).
 
 ---
-
-

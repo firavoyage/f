@@ -12,4 +12,3 @@ export type result = ok | err
 export type context = {
   working_directory: string
 }
-
