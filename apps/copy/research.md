@@ -39,3 +39,11 @@ when copied to a blank web page, it shows properly.
 btw, when ctrl shift i (default formatter, prettier), the spaces are removed (copy does not work then).
 
 ---
+
+dompurify.
+
+it's safe by default.
+
+non standard attrs are not inside the allowlist.
+
+---

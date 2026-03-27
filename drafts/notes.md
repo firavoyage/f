@@ -1039,3 +1039,12 @@ i have to ctrl r to view the latest data. holyshit.
 
 ---
 
+ux.
+
+telegram (ayugram) desktop export: file size.
+
+the progress input is non linear.
+
+small size need precision. while you often dont care 1gb or 1.1gb.
+
+---

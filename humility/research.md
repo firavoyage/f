@@ -213,3 +213,13 @@ weird. though it might be supposed to just check once, dont change.
 it does take effect here.
 
 ---
+
+ux: chatgpt.
+
+limit the height for code blocks, add scroll bar.
+
+- keep it as itself
+- add a component of collapsible code block (show code, like summary details)
+- limit the height and add scroll bar (expand/shrink or popup maybe)
+
+---

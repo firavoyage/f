@@ -62,5 +62,22 @@ though, some interactive widgets might carry infomation?
 
 decision: maybe.
 
+upd:
+
+i could replace button (or textarea, whatever), to span. but the layout might shift (display, bg color, color...).
+
+decision: not now.
+
 ---
 
+simplify.
+
+it's kind of hard to "remove all bg color and color on all elements"
+
+(like, you can put bg color in background color. sometimes bg color are needed, like for emphasis.)
+
+i could remove all color (wherever they are, since web is robust against partial content) similar to black and white in cos. but i dont wanna be that clever.
+
+decision: no.
+
+---
