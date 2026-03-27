@@ -3830,6 +3830,10 @@ the story is confusing. two emu? i could read the lines and understand the meani
 
 wonderhoy!
 
+27
+
+23 20 (re)read the water level of ideology, part 5 (fin).
+
 
 
 <!--
