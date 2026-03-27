@@ -8,31 +8,24 @@ to simplicity.
 
 ---
 
-it's progressive.
+install
 
-you can choose from the common methods to apply, even none.
+```sh
+pnpm install
 
-you can config.
-
----
-
-it's flexible.
-
-you can define what you have in hand.
+```
 
 ---
 
-it's pragmatic.
 
-you see a extremely minimal ui.
 
-you can extend by writing code, not installing something of extension spec. it's modular, though.
+it's progressive. you can choose from the common methods to apply, even none. you can config.
 
----
+it's flexible. you can define what you have in hand.
 
-it's reliable.
+it's pragmatic. you see a extremely minimal ui. you can extend by writing code, not installing something of extension spec. it's modular, though.
 
-you use proven tech under the hood.
+it's reliable. you use proven tech under the hood.
 
 ---
 
@@ -40,4 +33,7 @@ assume:
 
 - it's web based
 - it's static, no progressive loading
+
+---
+
 
