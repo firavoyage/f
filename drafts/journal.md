@@ -3848,6 +3848,14 @@ weird community feature (common among apps without a decent user base).
 
 05 40 watch `How To Crush 1600 CHEATERS On Chess.com | Chess Rating Climb 1609 to 1639`.
 
+14 00 take a simple english test. join a ieits course.
+
+19 20 research on language learning app dev. appreciate `Does Duolingo Actually work? || Polyglot Reviews Language Learning App`.
+
+well... duolingo (modded, free and full featured) could teach you some basics and make it fun. that's it. high expectation on a game for its promotional bloats?
+
+it's good if it could add more advanced material instead of busy work (easy and mastered lessons), though. idk, maybe at school, the pace is even slower, or not, like, how much practice do we need. but it's always good to add the depth and give users more options.
+
 
 
 <!--
