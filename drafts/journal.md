@@ -3832,7 +3832,21 @@ wonderhoy!
 
 27
 
-23 20 (re)read the water level of ideology, part 5 (fin).
+20 00 listen to `Head of Claude Code: What happens after coding is solved | Boris Cherny`.
+
+23 20 (re)read the water level of ideology, part 5 (fin). 03 00
+
+28
+
+04 40 dl `民主的细节` `送你一颗子弹`.
+
+05 00 try busuu jp. finish the last checkpoint.
+
+no dark mode by default. lack of frontend (web) engineering (inconsistent components, no animation, usage of alert). too much promotion (and weird transform of the promo component when scrolling).
+
+weird community feature (common among apps without a decent user base).
+
+05 40 watch `How To Crush 1600 CHEATERS On Chess.com | Chess Rating Climb 1609 to 1639`.
 
 
 

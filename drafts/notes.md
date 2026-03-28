@@ -1059,3 +1059,23 @@ in a smaller screen (like a tv) where your pfp on the left (though, i dont think
 
 ---
 
+ia: navigation.
+
+telegram.
+
+when you click a link (like jump to the channel where the fwd msg is), it's different than clicking the channel on chat list.
+
+i dont think it's a good design. 
+
+maybe, from the url perspective, if there is something like that internally, it's just a link with a `#position`.
+
+---
+
+data ownership.
+
+google takeout.
+
+impressive. a dedicated site for it.
+
+---
+
