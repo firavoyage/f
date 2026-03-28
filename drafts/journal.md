@@ -3856,6 +3856,14 @@ well... duolingo (modded, free and full featured) could teach you some basics an
 
 it's good if it could add more advanced material instead of busy work (easy and mastered lessons), though. idk, maybe at school, the pace is even slower, or not, like, how much practice do we need. but it's always good to add the depth and give users more options.
 
+23 00 watch funshiki live.
+
+unixporn, as always. the xkcd for anime otakus.
+
+(idk why he uses zh-hk cc.)
+
+funshiki is kind of clever to watch bangumis on sat and films on sun. (anime games & others on weekdays)
+
 
 
 <!--

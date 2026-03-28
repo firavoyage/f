@@ -1079,3 +1079,24 @@ impressive. a dedicated site for it.
 
 ---
 
+tree naming.
+
+i appreciate the mootools repo.
+
+even capital letter on folders.
+
+clear. legacy.
+
+---
+
+ui.
+
+so powerful, the google designers.
+
+putting resources on blogs.
+
+(redirected from google plus)
+
+https://workspaceupdates.googleblog.com/2023/04/new-community-features-for-google-chat-and-an-update-currents%20.html
+
+---

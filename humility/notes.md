@@ -440,3 +440,27 @@ research jit.
 - what's the background of ryo lu
 
 ---
+
+ia.
+
+entity (like names, books) can be viewed on side panel.
+
+---
+
+ux.
+
+google ai.
+
+"quick access from across the web"
+
+"top search results" (i dont like it though)
+
+"interactive player"
+
+"mark" (blue as highlight or red as warning)
+
+...
+
+so many dedicated components. find them all?
+
+---
