@@ -1100,3 +1100,12 @@ putting resources on blogs.
 https://workspaceupdates.googleblog.com/2023/04/new-community-features-for-google-chat-and-an-update-currents%20.html
 
 ---
+
+text.
+
+twitter.
+
+parody account -> fan acc.
+
+---
+

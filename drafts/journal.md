@@ -3864,6 +3864,12 @@ unixporn, as always. the xkcd for anime otakus.
 
 funshiki is kind of clever to watch bangumis on sat and films on sun. (anime games & others on weekdays)
 
+29
+
+02 00 watch a live in project sekai by chyk.
+
+where is my "laugh at" (emu) emote?
+
 
 
 <!--
