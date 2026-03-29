@@ -3870,6 +3870,10 @@ funshiki is kind of clever to watch bangumis on sat and films on sun. (anime gam
 
 where is my "laugh at" (emu) emote?
 
+19 00 dl `Wonderlands×Showtime` `Nightcord at 25:00` `MORE MORE JUMP!` `Leo/need` `Vivid BAD SQUAD` `Poppin'Party` `Hatsune Miku`.
+
+project sekai, (bang dream).
+
 
 
 <!--

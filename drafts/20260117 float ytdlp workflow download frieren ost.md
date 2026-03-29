@@ -106,9 +106,12 @@ tmp
 
 ```
 yt-dlp \
-  "https://music.youtube.com/playlist?list=OLAK5uy_k4cmWyB5cAixdkEkidgnSKbtGX2PGt2Nc" \
-  "https://music.youtube.com/playlist?list=OLAK5uy_lmeyUss0PYyDcWYhFxKo4ZRG7xQdrtUqg" \
-  "https://music.youtube.com/playlist?list=OLAK5uy_kMj2M0Od8IUPbLy-S9ZxOpPCCiTChBAlU" \
+  "https://music.youtube.com/playlist?list=OLAK5uy_kbciiEKqLweWxQgUWXgAQJ4fyLeX7Vl8U" \
+  "https://music.youtube.com/playlist?list=OLAK5uy_kbciiEKqLweWxQgUWXgAQJ4fyLeX7Vl8U" \
+  "https://music.youtube.com/playlist?list=OLAK5uy_kbciiEKqLweWxQgUWXgAQJ4fyLeX7Vl8U" \
+  "https://music.youtube.com/playlist?list=OLAK5uy_kbciiEKqLweWxQgUWXgAQJ4fyLeX7Vl8U" \
+  "https://music.youtube.com/playlist?list=OLAK5uy_kbciiEKqLweWxQgUWXgAQJ4fyLeX7Vl8U" \
+  "https://music.youtube.com/playlist?list=OLAK5uy_kbciiEKqLweWxQgUWXgAQJ4fyLeX7Vl8U" \
   -x \
   --audio-format mp3 \
   --audio-quality 0 \
@@ -116,6 +119,28 @@ yt-dlp \
   --embed-thumbnail \
   --parse-metadata "playlist_index:%(track_number)s" \
   -o "_/%(title)s - %(album,playlist_title)s - %(artist)s.%(ext)s" \
+  --match-filters "view_count > 1000000"
+```
+
+project sekai, bang dream.
+
+```
+yt-dlp \
+  "https://music.youtube.com/playlist?list=OLAK5uy_lWUsvVFJ1diksnZbc3Drkqdiv6-0DgYcQ" \
+  "https://music.youtube.com/playlist?list=OLAK5uy_mX-2Dr-bUTdXR3Q_mTrwvSJmS7ibkv8u8" \
+  "https://music.youtube.com/playlist?list=OLAK5uy_kVhv1qrzUpEN-m9HyroLni9Adzh_lm3hA" \
+  "https://music.youtube.com/playlist?list=OLAK5uy_nEdP9bp8c7oZ_p_4F7ipSRnfZt32crS94" \
+  "https://music.youtube.com/playlist?list=OLAK5uy_nC3RkACHfeYFwkpCU3kHLNV8vDgXKndg0" \
+  "https://music.youtube.com/playlist?list=OLAK5uy_k9p0BElc5eK1hjSWiS1y-0MjNE-XXQHCU" \
+  "https://music.youtube.com/playlist?list=OLAK5uy_mkoojxH9bPECQRK02sj2OwKkAZS-oPw9E" \
+  -x \
+  --audio-format mp3 \
+  --audio-quality 0 \
+  --add-metadata \
+  --embed-thumbnail \
+  --parse-metadata "playlist_index:%(track_number)s" \
+  -o "_/%(title)s - %(album,playlist_title)s - %(artist)s.%(ext)s" \
+  --match-filters "view_count > 1000000"
 ```
 
 aimer
