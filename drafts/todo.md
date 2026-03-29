@@ -241,5 +241,3 @@ testing. (?)
 archive tabs, then abstract libs.
 
 
-
-insights are sacred. common knowledge is trivial. and, an insight becomes common knowledge when it itself is easy to understand and thus one day goes popular.

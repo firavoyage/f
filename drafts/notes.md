@@ -1132,4 +1132,6 @@ maybe it's enough to know, like, some are filtered, with an icon. hover to expla
 
 that's transparency. (yeah, be simple. pro users are always sacred.)
 
+upd: View hidden replies (?!)
+
 ---
