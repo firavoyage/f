@@ -334,16 +334,6 @@ it does not seems the supports could really review uploaded stuff like a judge.
 
 ---
 
-origami. little sparkle. 30 cm.
-
----
-
-math contest.
-
-(and editorial)
-
----
-
 art movements. (learn from manus)
 
 ---
@@ -598,6 +588,8 @@ contest 2026 editorial.
 
 (playthrough)
 
+/home/fira/Documents/_/pages/2026 mar math contest
+
 ---
 
 github exploitation.
@@ -709,4 +701,3 @@ i wanna research ppl, right? maybe i could export data (use the official feature
 read seti icons. write down the filenames.
 
 ---
-

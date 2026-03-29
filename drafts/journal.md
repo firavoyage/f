@@ -3874,6 +3874,16 @@ where is my "laugh at" (emu) emote?
 
 project sekai, (bang dream).
 
+upd: use a more reliable approach.
+
+30
+
+00 40 check xu toso live.
+
+weird, as always. i have no idea why he goes this way. a bit philistine.
+
+pair streaming with random internet girls, just like legacy hu chenfeng.
+
 
 
 <!--
