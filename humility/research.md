@@ -223,3 +223,20 @@ limit the height for code blocks, add scroll bar.
 - limit the height and add scroll bar (expand/shrink or popup maybe)
 
 ---
+
+ia: folder naming: vscode icons.
+
+seti (default).
+
+- git commit
+- github issues
+- build / workspace (bazel, the foss version of google's build tool, blaze)
+- changelog / changes / version
+- compiling
+- contributing
+- copying / licence / license
+- todo
+- readme
+
+---
+

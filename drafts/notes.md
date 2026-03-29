@@ -1109,3 +1109,27 @@ parody account -> fan acc.
 
 ---
 
+strategy.
+
+twitter.
+
+so aggressive. what an elon.
+
+- premium
+- buy handle
+- parody account
+- (now) reply permission "Accounts You Follow and Who They Follow" "Regional Restrictions"
+
+---
+
+ia.
+
+twitter.
+
+do you need to know "you can reply"?
+
+maybe it's enough to know, like, some are filtered, with an icon. hover to explain.
+
+that's transparency. (yeah, be simple. pro users are always sacred.)
+
+---

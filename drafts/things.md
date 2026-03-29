@@ -706,3 +706,7 @@ i wanna research ppl, right? maybe i could export data (use the official feature
 
 ---
 
+read seti icons. write down the filenames.
+
+---
+
