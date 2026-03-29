@@ -122,16 +122,65 @@ yt-dlp \
   --match-filters "view_count > 1000000"
 ```
 
-project sekai, bang dream.
+project sekai. bang dream.
 
 ```
 yt-dlp \
   "https://music.youtube.com/playlist?list=OLAK5uy_lWUsvVFJ1diksnZbc3Drkqdiv6-0DgYcQ" \
+  -x \
+  --audio-format mp3 \
+  --audio-quality 0 \
+  --add-metadata \
+  --embed-thumbnail \
+  --parse-metadata "playlist_index:%(track_number)s" \
+  -o '_/MORE MORE JUMP!/%(title)s - %(album,playlist_title)s - %(artist)s.%(ext)s' \
+  --match-filters "view_count > 100000";
+
+yt-dlp \
   "https://music.youtube.com/playlist?list=OLAK5uy_mX-2Dr-bUTdXR3Q_mTrwvSJmS7ibkv8u8" \
+  -x \
+  --audio-format mp3 \
+  --audio-quality 0 \
+  --add-metadata \
+  --embed-thumbnail \
+  --parse-metadata "playlist_index:%(track_number)s" \
+  -o "_/Leo⧸need/%(title)s - %(album,playlist_title)s - %(artist)s.%(ext)s" \
+  --match-filters "view_count > 100000";
+
+yt-dlp \
   "https://music.youtube.com/playlist?list=OLAK5uy_kVhv1qrzUpEN-m9HyroLni9Adzh_lm3hA" \
-  "https://music.youtube.com/playlist?list=OLAK5uy_nEdP9bp8c7oZ_p_4F7ipSRnfZt32crS94" \
+  -x \
+  --audio-format mp3 \
+  --audio-quality 0 \
+  --add-metadata \
+  --embed-thumbnail \
+  --parse-metadata "playlist_index:%(track_number)s" \
+  -o "_/Vivid BAD SQUAD/%(title)s - %(album,playlist_title)s - %(artist)s.%(ext)s" \
+  --match-filters "view_count > 100000";
+
+yt-dlp \
   "https://music.youtube.com/playlist?list=OLAK5uy_nC3RkACHfeYFwkpCU3kHLNV8vDgXKndg0" \
+  -x \
+  --audio-format mp3 \
+  --audio-quality 0 \
+  --add-metadata \
+  --embed-thumbnail \
+  --parse-metadata "playlist_index:%(track_number)s" \
+  -o "_/Wonderlands×Showtime/%(title)s - %(album,playlist_title)s - %(artist)s.%(ext)s" \
+  --match-filters "view_count > 100000";
+
+yt-dlp \
   "https://music.youtube.com/playlist?list=OLAK5uy_k9p0BElc5eK1hjSWiS1y-0MjNE-XXQHCU" \
+  -x \
+  --audio-format mp3 \
+  --audio-quality 0 \
+  --add-metadata \
+  --embed-thumbnail \
+  --parse-metadata "playlist_index:%(track_number)s" \
+  -o "_/Nightcord at 25:00/%(title)s - %(album,playlist_title)s - %(artist)s.%(ext)s" \
+  --match-filters "view_count > 100000";
+
+yt-dlp \
   "https://music.youtube.com/playlist?list=OLAK5uy_mkoojxH9bPECQRK02sj2OwKkAZS-oPw9E" \
   -x \
   --audio-format mp3 \
@@ -139,7 +188,18 @@ yt-dlp \
   --add-metadata \
   --embed-thumbnail \
   --parse-metadata "playlist_index:%(track_number)s" \
-  -o "_/%(title)s - %(album,playlist_title)s - %(artist)s.%(ext)s" \
+  -o "_/Poppin'Party/%(title)s - %(album,playlist_title)s - %(artist)s.%(ext)s" \
+  --match-filters "view_count > 100000";
+
+yt-dlp \
+  "https://music.youtube.com/playlist?list=OLAK5uy_nEdP9bp8c7oZ_p_4F7ipSRnfZt32crS94" \
+  -x \
+  --audio-format mp3 \
+  --audio-quality 0 \
+  --add-metadata \
+  --embed-thumbnail \
+  --parse-metadata "playlist_index:%(track_number)s" \
+  -o "_/Hatsune Miku/%(title)s - %(album,playlist_title)s - %(artist)s.%(ext)s" \
   --match-filters "view_count > 1000000"
 ```
 

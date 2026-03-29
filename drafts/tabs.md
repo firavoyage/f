@@ -272,3 +272,10 @@ https://mastodon.social/@Menci@misskey.cascade.moe
 
 ---
 
+humility: research
+
+llm programming common anti patterns
+
+https://github.com/luoling8192/ai-coding-principles?tab=readme-ov-file
+
+---
