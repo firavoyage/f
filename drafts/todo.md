@@ -241,15 +241,3 @@ testing. (?)
 archive tabs, then abstract libs.
 
 ---
-
-pre > slidev.
-
----
-
-why clickbait.
-
-- people
-- young, careless, nothing to lose
-- with some niche approaches
-
----

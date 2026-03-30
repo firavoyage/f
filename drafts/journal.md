@@ -3896,6 +3896,10 @@ https://x.com/luoling8192/status/2035990392794182049
 >
 > insights are sacred. common knowledge is trivial. and, maybe an insight becomes common knowledge when it itself is easy to understand and thus one day goes popular.
 
+16 00 learn project sekai.
+
+perfect is 80 ms time window. note speed matters.
+
 
 
 <!--

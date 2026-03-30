@@ -516,7 +516,7 @@ config this.
 
 twitter to mastodon abstraction
 
-i can 
+i can
 
 - use dom
 - use network
@@ -550,7 +550,7 @@ check this out
 
 https://github.com/moeru-ai/xsai
 
-what is the abstraction about. 
+what is the abstraction about.
 
 is it doing anything?
 
@@ -582,7 +582,7 @@ contest 2026 editorial.
 
 (playthrough)
 
-/home/fira/Documents/_/pages/2026 mar math contest
+/home/fira/Documents/\_/pages/2026 mar math contest
 
 ---
 
@@ -604,7 +604,7 @@ let's try it.
   - split and upload (foss, "neutral")
   - files (random, like zips with passwords. no need to make it look like real like normal data like v2ray.)
   - metadata (file tree, map)
-- upload the clannad vids on github. 
+- upload the clannad vids on github.
 
 ---
 
@@ -634,7 +634,7 @@ bitmagnet.
 
 i think it's gonna ever evolving.
 
-try to make it storage efficient. not stupid. 
+try to make it storage efficient. not stupid.
 
 i mean keep the best.
 
@@ -691,3 +691,8 @@ i wanna research ppl, right? maybe i could export data (use the official feature
 49 up.
 
 ---
+
+pre > slidev.
+
+---
+
