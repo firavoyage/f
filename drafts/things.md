@@ -274,12 +274,6 @@ read in your way. consistent. clear.
 
 ---
 
-filenames with special icons on vscode.
-
-(learn how human code.)
-
----
-
 if you can get the following list of ppl you follow, then you could analyze.
 
 berryberry could be sns between small potatoes.
@@ -695,9 +689,5 @@ i wanna research ppl, right? maybe i could export data (use the official feature
 ---
 
 49 up.
-
----
-
-read seti icons. write down the filenames.
 
 ---
