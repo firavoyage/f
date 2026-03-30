@@ -3910,6 +3910,10 @@ k^a = 6, k^b = 4, k^c = 9, 2^(b+c)*3^(b+c) = 6^(a-2), calc 9^a/27^b.
 
 magic numbers.
 
+30 
+
+00 00 watch `Please Try This Gambit At Least Once | Chess Rating Climb 1639 to 1679`.
+
 
 
 <!--
