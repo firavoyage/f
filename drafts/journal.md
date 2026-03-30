@@ -3900,6 +3900,16 @@ https://x.com/luoling8192/status/2035990392794182049
 
 perfect is 80 ms time window. note speed matters.
 
+21 00 solve a math problem.
+
+```
+k^a = 6, k^b = 4, k^c = 9, 2^(b+c)*3^(b+c) = 6^(a-2), calc 9^a/27^b.
+
+(log, sqrt not defined. known that if a^b = x and a^c = x then b = c.)
+```
+
+magic numbers.
+
 
 
 <!--
