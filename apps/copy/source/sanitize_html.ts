@@ -2,7 +2,12 @@ import * as cheerio from 'cheerio';
 import DOMPurify from 'dompurify';
 
 const sanitize_config = {
-  USE_PROFILES: { html: true, mathMl: true },
+  USE_PROFILES: {
+    html: true,
+    mathMl: true,
+    svg: true,
+    svgFilters: true // Explicitly allow filter elements like <feGaussianBlur>
+  },
   ALLOW_DATA_ATTR: false,
   ALLOW_ARIA_ATTR: false,
   FORBID_ATTR: ['class', 'id'],

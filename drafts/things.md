@@ -703,3 +703,15 @@ i could easily outperform the textbooks in mainland china.
 research the best textbooks.
 
 ---
+
+app: copy.
+
+---
+
+telegram is one way to dht the internet. there might be appox. 100 people in each small groups, and they overlap aggressively. i suspect there are less than 1k active chinese devs.
+
+disqus is another way. i already know diygod and mewx.
+
+github issues based approaches... well... let me see.
+
+---
