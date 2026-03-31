@@ -3914,6 +3914,12 @@ magic numbers.
 
 00 00 watch `Please Try This Gambit At Least Once | Chess Rating Climb 1639 to 1679`.
 
+17 40 watch `Why Pawn Moves Make You LOSE | Chess Rating Climb 1679 to 1712`.
+
+19 00 play project sekai. try multi live.
+
+bots? fun names.
+
 
 
 <!--
