@@ -243,3 +243,9 @@ archive.
 abstract.
 
 ---
+
+simplify notes and research for drafts and humility.
+
+rm most.
+
+

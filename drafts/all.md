@@ -98,6 +98,7 @@ software engineering:
 - crud
 - sql syntax history better abstraction
 - abstraction leak
+- fields changed by ai
 
 software engineering project management:
 

@@ -696,3 +696,10 @@ pre > slidev.
 
 ---
 
+pure project.
+
+i could easily outperform the textbooks in mainland china.
+
+research the best textbooks.
+
+---
