@@ -63,3 +63,39 @@ chrome.commands.onCommand.addListener(async (command) => {
     });
   }
 });
+
+// normalize (secure): try to make the service worker always active, or the new tab page might fail to load
+// method 1
+const keepAlive = () => setInterval(chrome.runtime.getPlatformInfo, 20000);
+chrome.runtime.onStartup.addListener(keepAlive);
+keepAlive();
+
+// method 2 (more reliable but complex)
+async function setupOffscreen() {
+  const offscreenUrl = chrome.runtime.getURL('offscreen.html');
+
+  // Check if it already exists to avoid errors
+  const existingContexts = await chrome.runtime.getContexts({
+    contextTypes: ['OFFSCREEN_DOCUMENT'],
+    documentUrls: [offscreenUrl]
+  });
+
+  if (existingContexts.length > 0) return;
+
+  // Create the document. 'WORKERS' is a common reason for lifecycle management.
+  await chrome.offscreen.createDocument({
+    url: 'offscreen.html',
+    reasons: ['WORKERS'],
+    justification: 'Keep service worker running to prevent New Tab load failures'
+  });
+}
+
+// Ensure the document stays alive
+chrome.runtime.onStartup.addListener(setupOffscreen);
+chrome.runtime.onInstalled.addListener(setupOffscreen);
+
+// Listen for the heartbeat pings
+chrome.runtime.onMessage.addListener((message) => {
+  if (message.keepAlive) console.log('Heartbeat received');
+});
+

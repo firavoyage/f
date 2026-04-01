@@ -248,16 +248,9 @@ simplify notes and research for drafts and humility.
 
 rm most.
 
+also simplify todos/things/tabs.
+
 ---
 
-new month.
-
-i will archive (trim?) zhihu as usual. sync phone. (screenshots, photos.)
-
-start a new chapter on river and journal.
-
-no need to rush.
-
-also simplify todos/things/tabs.
 
 

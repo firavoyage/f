@@ -106,12 +106,7 @@ tmp
 
 ```
 yt-dlp \
-  "https://music.youtube.com/playlist?list=OLAK5uy_kbciiEKqLweWxQgUWXgAQJ4fyLeX7Vl8U" \
-  "https://music.youtube.com/playlist?list=OLAK5uy_kbciiEKqLweWxQgUWXgAQJ4fyLeX7Vl8U" \
-  "https://music.youtube.com/playlist?list=OLAK5uy_kbciiEKqLweWxQgUWXgAQJ4fyLeX7Vl8U" \
-  "https://music.youtube.com/playlist?list=OLAK5uy_kbciiEKqLweWxQgUWXgAQJ4fyLeX7Vl8U" \
-  "https://music.youtube.com/playlist?list=OLAK5uy_kbciiEKqLweWxQgUWXgAQJ4fyLeX7Vl8U" \
-  "https://music.youtube.com/playlist?list=OLAK5uy_kbciiEKqLweWxQgUWXgAQJ4fyLeX7Vl8U" \
+  "https://music.youtube.com/playlist?list=OLAK5uy_k9m8gzKMhoveJLK_GAIMdJBywoiLTNwTw" \
   -x \
   --audio-format mp3 \
   --audio-quality 0 \
@@ -119,7 +114,20 @@ yt-dlp \
   --embed-thumbnail \
   --parse-metadata "playlist_index:%(track_number)s" \
   -o "_/%(title)s - %(album,playlist_title)s - %(artist)s.%(ext)s" \
-  --match-filters "view_count > 1000000"
+```
+
+Hayato Sumino
+
+```
+yt-dlp \
+  "https://music.youtube.com/playlist?list=OLAK5uy_k9m8gzKMhoveJLK_GAIMdJBywoiLTNwTw" \
+  -x \
+  --audio-format mp3 \
+  --audio-quality 0 \
+  --add-metadata \
+  --embed-thumbnail \
+  --parse-metadata "playlist_index:%(track_number)s" \
+  -o "_/Hayato Sumino/%(title)s - %(album,playlist_title)s - %(artist)s.%(ext)s" \
 ```
 
 project sekai. bang dream.

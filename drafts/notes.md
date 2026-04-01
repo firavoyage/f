@@ -1244,3 +1244,43 @@ i dont need it for simple apps. and maybe this mindset is kind of default.
 but in its own field, it's good i think.
 
 ---
+
+ia.
+
+gnome.
+
+you can search music. elisa will jump out.
+
+claude code `/command`.
+
+you can search price. cost will not jump out.
+
+vscode. (ctrl shift p)
+
+the list is very long. but they are categorized, and designed to be sorted from a to z.
+
+---
+
+ia: intention.
+
+twitter.
+
+by default, you see "pinned posts" notifications after joining a community.
+
+you have to manually uncheck it. yet, the ux sucks, you could not uncheck without a refresh. (when you are not in a community, there is no unsubscribe button. when you join, it becomes joined, but the button is still not there, like display none. after a refresh you can finally see it.)
+
+youtube does not.
+
+now i have to manually iterate and uncheck all. (maybe i wont join more communities)
+
+プロセカ交流広場
+S.H.I.T
+墙外弱智吧联盟
+墙外聪明吧联盟
+「今天不要写代码」相互监督小组
+MyGO！！！！！
+Build in Public
+独立开发者
+AI Engineering
+
+---

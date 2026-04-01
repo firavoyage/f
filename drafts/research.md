@@ -14,3 +14,11 @@ monetization.
 
 ---
 
+telegram.
+
+export chat data is a dedicated api, not the same as fetch messages.
+
+when you wanna export on a new session, you have to approve on old sessions, while you could fetch messages directly.
+
+---
+
