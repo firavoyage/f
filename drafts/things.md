@@ -726,3 +726,6 @@ ink terminal.
 
 ---
 
+i did not found good llms generated dicts by google.
+
+---
