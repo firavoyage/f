@@ -1234,3 +1234,13 @@ err must be either false or truthy (like a string of some length or an object)
 but it's too hacky in ts.
 
 ---
+
+backend: store.
+
+luoling, ddia principles. (think about data)
+
+i dont need it for simple apps. and maybe this mindset is kind of default.
+
+but in its own field, it's good i think.
+
+---

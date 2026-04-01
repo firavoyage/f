@@ -714,4 +714,15 @@ disqus is another way. i already know diygod and mewx.
 
 github issues based approaches... well... let me see.
 
+https://www.mewx.org/blog/202603/website-v4-ai-powered-redesign/
+
+the blogging era.
+
+make readme personas clearer.
+
 ---
+
+ink terminal.
+
+---
+
