@@ -3940,6 +3940,10 @@ apr 2026
 
 20 00 fix crash by apt purge. 21 00
 
+03
+
+01 00 check mihon (tachyomi fork) and legado.
+
 
 
 <!--

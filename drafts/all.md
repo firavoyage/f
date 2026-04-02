@@ -144,6 +144,8 @@ software engineering backend:
 
 - categorize backend tech stack
 - pnpm monorepo setup
+- xdg spec
+- jslinux linux kernel
 
 software engineering ai/ml:
 

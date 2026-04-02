@@ -1,5 +1,46 @@
 <!-- https://chatgpt.com/c/699f4df5-9d14-8320-925a-210e35cd6460 -->
 
+# .
+
+```
+#!/usr/bin/env zsh
+zsh -ic 'push'
+```
+
+```
+[Unit]
+Description=Run push command at 23:00 daily
+After=network.target
+StartLimitIntervalSec=1h
+StartLimitBurst=3
+
+[Service]
+ExecStart=/usr/local/bin/run_push.sh
+Restart=on-failure
+RestartSec=600
+User=fira
+Environment=DISPLAY=:0
+Environment=XAUTHORITY=/home/fira/.Xauthority
+
+[Install]
+WantedBy=multi-user.target
+```
+
+```
+[Unit]
+Description=Run push command at 23:00 daily
+
+[Timer]
+OnCalendar=16:00
+OnCalendar=21:00
+OnCalendar=23:00
+OnCalendar=02:00
+Unit=run_push.service
+
+[Install]
+WantedBy=timers.target
+```
+
 # 0
 
 You are a calm, thoughtful human with wisdom who speaks in simple, clear English.

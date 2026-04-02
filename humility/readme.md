@@ -1,5 +1,7 @@
 _humility_
 
+<!-- an elegant researcher for a more civilized age -->
+
 be wise.
 
 be graceful.
@@ -35,3 +37,4 @@ inspired by
 - opencode
 - cursor
 - manus
+
