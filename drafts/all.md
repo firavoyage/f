@@ -143,6 +143,7 @@ software engineering frontend:
 software engineering backend:
 
 - categorize backend tech stack
+- pnpm monorepo setup
 
 software engineering ai/ml:
 

@@ -47,3 +47,62 @@ it's safe by default.
 non standard attrs are not inside the allowlist.
 
 ---
+
+render in vscode.
+
+content inside html tags are parsed as md.
+
+it fails:
+
+```md
+<pre><code><span>macro_rules! custom_if {
+    </span><span style="color: rgb(154, 160, 166); font-style: italic;">// Base Case: if { ... } otherwise { ... }</span><span>
+    (</span><span style="color: rgb(197, 138, 249);">if</span><span> $cond:expr { $($then:tt)* } otherwise { $($</span><span style="color: rgb(197, 138, 249);">else</span><span>:tt)* }) =&gt; {
+        </span><span style="color: rgb(197, 138, 249);">if</span><span> $cond { $($then)* } </span><span style="color: rgb(197, 138, 249);">else</span><span> { $($</span><span style="color: rgb(197, 138, 249);">else</span><span>)* }
+    };
+
+    </span><span style="color: rgb(154, 160, 166); font-style: italic;">// Recursive Case: if { ... } else if ...</span><span>
+    (</span><span style="color: rgb(197, 138, 249);">if</span><span> $cond:expr { $($then:tt)* } </span><span style="color: rgb(197, 138, 249);">else</span><span> </span><span style="color: rgb(197, 138, 249);">if</span><span> $($rest:tt)*) =&gt; {
+        </span><span style="color: rgb(197, 138, 249);">if</span><span> $cond { $($then)* } </span><span style="color: rgb(197, 138, 249);">else</span><span> { custom_if!(</span><span style="color: rgb(197, 138, 249);">if</span><span> $($rest)*) }
+    };
+}
+
+</span><span style="color: rgb(197, 138, 249);">fn</span><span> main() {
+    </span><span style="color: rgb(197, 138, 249);">let</span><span> x = </span><span style="color: rgb(250, 144, 62);">15</span><span>;
+    
+    custom_if! {
+        </span><span style="color: rgb(197, 138, 249);">if</span><span> x &gt; </span><span style="color: rgb(250, 144, 62);">20</span><span> {
+            println!(</span><span style="color: rgb(129, 201, 149);">"Big"</span><span>);
+        } </span><span style="color: rgb(197, 138, 249);">else</span><span> </span><span style="color: rgb(197, 138, 249);">if</span><span> x &gt; </span><span style="color: rgb(250, 144, 62);">10</span><span> {
+            println!(</span><span style="color: rgb(129, 201, 149);">"Medium"</span><span>); </span><span style="color: rgb(154, 160, 166); font-style: italic;">// This will print</span><span>
+        } </span><span style="color: rgb(197, 138, 249);">else</span><span> </span><span style="color: rgb(197, 138, 249);">if</span><span> x &gt; </span><span style="color: rgb(250, 144, 62);">5</span><span> {
+            println!(</span><span style="color: rgb(129, 201, 149);">"Small"</span><span>);
+        } otherwise {
+            println!(</span><span style="color: rgb(129, 201, 149);">"Tiny"</span><span>);
+        }
+    }
+}
+</span></code></pre>
+```
+
+white lines should be removed.
+
+it fails:
+
+```md
+<li style="margin: 0px 0px 12px; padding: 0px; list-style: disc; padding-inline-start: 4px;"><span style="overflow-wrap: break-word;"><span style="font-weight: 700;">Incremental Parsing</span>: Breaking down a large input into smaller chunks (like defining multiple structs at once) using nested repetitions&nbsp;<code dir="ltr" style="font-size: 14px; line-height: 22px; background-color: var(--XKMDxc); border: 1px solid var(--XKMDxc); border-radius: 4px; padding-block: 2px; padding-inline: 4px;">\$( \$()* )*</code>.</span><span><span style="white-space: nowrap; position: relative;"><span>&nbsp;</span><div style="align-items: center; display: flex; height: 14px; overflow: hidden; width: 89.8984px;"><span style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; color: var(--IXoxUe); font-size: 11px; line-height: 1.45; display: flex; overflow: hidden; min-width: 0px;"><span style="overflow: hidden; text-overflow: ellipsis; min-width: 0px;">OneUptime</span><span style="flex-shrink: 0;">&nbsp;+3</span></span></div></span></span></li>
+```
+
+`$` need to be escaped.
+
+i could batch replace `$` to `\$` (nothing will break it seems.)
+
+i could also further convert to md, though more edge cases.
+
+upd:
+
+it's vscode specific issue. it tries to render content inside html tags. the files work fine when copied to about blank.
+
+verdict: dont try to normalize it.
+
+---

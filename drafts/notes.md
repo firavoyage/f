@@ -1334,3 +1334,11 @@ no builtin optimal syntax sugar. no compiler magic. done.
 well, macro exists. yet, looks also very complex.
 
 ---
+
+archi.
+
+linux repo is good.
+
+it does not follow the modern movements.
+
+---

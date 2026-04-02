@@ -3934,6 +3934,10 @@ apr 2026
 
 12 40 appreciate `Featuring: Javascript PC emulator by Fabrice Bellard`.
 
+14 00 play basketball. 16 00
+
+19 40 appreciate `Lex Fridman on Bash and FFmpeg`.
+
 
 
 <!--
