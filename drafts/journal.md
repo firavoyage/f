@@ -3938,6 +3938,8 @@ apr 2026
 
 19 40 appreciate `Lex Fridman on Bash and FFmpeg`.
 
+20 00 fix crash by apt purge. 21 00
+
 
 
 <!--
