@@ -1342,3 +1342,11 @@ linux repo is good.
 it does not follow the modern movements.
 
 ---
+
+frontend perf.
+
+google ai mode search is slow.
+
+maybe it downloads thousands of searches and search locally? (they wont lag more than 100ms though.)
+
+---

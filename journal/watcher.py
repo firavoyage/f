@@ -106,7 +106,8 @@ class Watcher:
         shot = self._maybe_capture()
         self.store.record(state, event="focus_change", screenshot=shot)
         self.logger.log(
-            f"focus_change  app={state.app}  title={state.title}  screenshot={shot}"
+            f"focus_change  app={state.app}  title={state.title}"
+            # f"focus_change  app={state.app}  title={state.title}  screenshot={shot}"
         )
         self._dbg("focus_change", state.app, "-", state.title)
 
@@ -116,7 +117,8 @@ class Watcher:
 
         if state:
             self.logger.log(
-                f"interval_capture  app={state.app}  title={state.title}  screenshot={shot}"
+                f"interval_capture  app={state.app}  title={state.title}"
+                # f"interval_capture  app={state.app}  title={state.title}  screenshot={shot}"
             )
             self._dbg("interval_capture", state.app, "-", state.title)
         else:
