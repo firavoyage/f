@@ -1327,10 +1327,10 @@ more and more conservative.
 
 eventually, you dont value simplicity at all, as well as flexibility, which could lead to simplicity.
 
-no builtin optimal syntax sugar. done.
-
 you could not use rust freely without a transcompiler or something.
 
-well, macro exists. yet, looks very complex.
+no builtin optimal syntax sugar. no compiler magic. done.
+
+well, macro exists. yet, looks also very complex.
 
 ---
