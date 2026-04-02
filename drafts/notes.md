@@ -1312,3 +1312,25 @@ node is good enough. im familiar with it.
 no deno now.
 
 ---
+
+language design.
+
+on rust.
+
+rust trades simplicity for robustness.
+
+i mean, there's nothing wrong with it.
+
+but, when time goes on, you become conservative.
+
+more and more conservative.
+
+eventually, you dont value simplicity at all, as well as flexibility, which could lead to simplicity.
+
+no builtin optimal syntax sugar. done.
+
+you could not use rust freely without a transcompiler or something.
+
+well, macro exists. yet, looks very complex.
+
+---
