@@ -2,10 +2,14 @@
 
 # .
 
+`/usr/local/bin/run_push.sh`
+
 ```
 #!/usr/bin/env zsh
 zsh -ic 'push'
 ```
+
+`/etc/systemd/system/run_push.service`
 
 ```
 [Unit]
@@ -25,6 +29,8 @@ Environment=XAUTHORITY=/home/fira/.Xauthority
 [Install]
 WantedBy=multi-user.target
 ```
+
+`/etc/systemd/system/run_push.timer`
 
 ```
 [Unit]

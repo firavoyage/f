@@ -3944,6 +3944,89 @@ apr 2026
 
 01 00 check mihon (tachyomi fork) and legado.
 
+02 20 message chyk for fun (with poor english and thinking off).
+
+```
+千雪的快餐店 | 麦香鱼不限量供应🐟, [3/31/26 4:05 PM]
+ARM 优势尽显
+
+f, [3/31/26 4:48 PM]
+You are using Eden... Well, same. 
+
+But, just, idk. Is yuri deprecated? 
+
+(When I ask to install yuri, the agent picks eden automatically, assuming yuri is unusable. But I usually prefer the original app over forks.)
+
+Btw, I find it hard to make it work with my mouse. It wants me to use a controller 🎮. Did you config it somehow? Like, if you click a button, it will take effect, without the need of manually navigating there by arrow keys.
+
+斬風千雪 ❄️, [3/31/26 4:51 PM]
+I'm using wireless controller. by the way you can find original source code at https://github.com/Fabi/yuzu-mirror-mirror. with some fixes for newer fmt library, it works fine
+
+f, [4/3/26 2:30 AM]
+a newer fmt library? fast fourier transformation (well that's fft)? formatting and printing? wow. Well, since old games could work on yuzu and nintendo has not changed much, I suppose yuzu could work fine, and it's pretty reasonable to use a modern fork, which implies better reliability, maybe with some upd patches builtin (i have not installed any patches on eden). Months before, when i were testing zeldas and stardew valley on eden, i found no way to like use mouse/touchpad to just click the button directly. i feel it's hard after consulting llms. since you are using a wireless controller, well, unfortunately, it's not a solution. but, since you appear to know a lot about tech (i have never compiled any programs if i could find pre compiled binaries, like on github actions for dev versions. and ts/js doesnt need to be compiled. while you seem to love that, compiling manually whenever you can.), i wonder if you know something about it, since theoretically i think it's not hard, unless nintendo explicitly limits the precise clicking for apps on it.
+```
+
+upd
+
+```
+(chyk: meme: im a server, even if my screen is off, im still on, dont unplug me, dont close my lid)
+
+Menci 💖, [4/2/26 11:43 AM]
+这图小时候抱过我
+
+Menci 💖, [4/2/26 11:44 AM]
+至少十年前就看到过了
+```
+
+02 40 message acbox for fun.
+
+```
+箱子跑来跑去📦, [3/30/26 5:21 PM]
+好结局：你努力了大半辈子，终于得到了他们出生就有的东西
+
+箱子跑来跑去📦, [3/31/26 7:15 PM]
+我本来以为不看社交平台就不会被trigger到，直到我今天翻别人GitHub被trigger了…
+
+箱子跑来跑去📦, [3/31/26 9:14 PM]
+好想就这么好好生活下去
+
+箱子跑来跑去📦, [4/1/26 12:34 PM]
+我现在比较后悔当初没和前司继续闹下去，现在甚至连那半个月的工资都没给我，发邮件也不回，现在再闹也已经迟了
+
+所以我说我内心软弱很大程度上是因为这点，太容易被过去的自己弄的ptsd了，以至于当时ptsd发作删掉了所有帖子
+
+但至少现在可以告诉自己，我没有做错任何事情
+
+f, [4/3/26 2:36 AM]
+17 岁就可以工作了... 虽然应该是可以的. 是什么公司呢... 这个时代的年轻人好厉害啊...
+
+箱子跑来跑去📦, [4/1/26 6:25 PM]
+他妈的还钱😅
+
+箱子跑来跑去📦, [4/1/26 11:03 PM]
+我会守护住自己的生活和自己珍视的人，如果有人毁坏了他们，我会和他拼命
+
+箱子跑来跑去📦, [4/2/26 12:40 AM]
+感觉自己对失业产生了严重的ptsd
+我的精神状态慢慢好起来全靠有稳定的收入，积极的治病和做自己喜欢的事情
+我害怕失去这一切，失去稳定的住所，失去每天的饮食
+
+箱子跑来跑去📦, [4/2/26 12:46 AM]
+我能力差，学历低，感觉如果失业很难再有公司愿意要我，我不相信我会一直那么幸运下去
+
+f, [4/3/26 2:40 AM]
+慕强装弱. 一直都没有变化呢... 我倒是很愿望自己学生时代可以参与到那些项目里. 可惜那时候的我大多在胡思乱想, 什么 cpp #define, css tricks, hacks & polyfills, 没有用的东西.
+
+箱子跑来跑去📦, [4/3/26 12:43 AM]
+属于我的幸福又在哪里呢
+
+Liet Blue, [4/3/26 12:44 AM]
+不就在眼前嘛 有猫有特拉 有自己的小屋子
+
+Fodesu, [4/3/26 1:36 AM]
+能避开痛苦就是幸福
+```
+
 
 
 <!--
