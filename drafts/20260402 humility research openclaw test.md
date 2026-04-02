@@ -1199,6 +1199,6 @@ $0.9090 / $1.0000
 
 <!-- i could not see my sessions list. completely unusable. i could fix something. but i could not fix everything. -->
 
-<!-- token usage is kind of ok. check novita panel (openclaw is unreliable and awful): 0.087 usd in mar (write a md to html converter in ts with opencode, ) -->
+<!-- token usage is kind of ok. check novita panel (openclaw is unreliable and awful): 0.087 usd in mar (write a md to html converter in ts with opencode), 0.004 in apr. -->
 
 <!-- verdict: deprecated. -->

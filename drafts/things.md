@@ -42,6 +42,10 @@ clarity.
 
 ---
 
+intention.
+
+---
+
 weekend indie game. weekend gamejam.
 
 https://www.google.com/search?q=gorogoa+gameplay
@@ -170,19 +174,11 @@ find relationship.
 
 ---
 
-SQLite testing https://www.sqlite.org/testing.html
-
----
-
 Pdf to html
 
 ---
 
 Html alternatives. Cross platform declarative frontend language.
-
----
-
-Evaluate ruby. Rail.
 
 ---
 
@@ -216,21 +212,11 @@ sync: github, matrix, etc.
 
 ---
 
-learn rust. (learn go.)
-
-learn ts.
-
----
-
 create my eslint rule set.
 
 see all. categorize.
 
 imagine. create my own rules.
-
----
-
-what does rust tradeoff. see some code.
 
 ---
 
@@ -242,21 +228,7 @@ my pref
 
 ---
 
-what are quirks in english, like singular they.
-
----
-
 what makes an app non trivial.
-
----
-
-~~fix: chatgpt scroll.~~
-
-remove system prompt (first msg, very short answer) since they dont carry meaning. assume they are auto picked (based on the general category). assume they are default.
-
-upd: start from 0 if the first message is very short.
-
-decision? first msg too short? first prompt "you are ..."? branch from.
 
 ---
 
@@ -300,34 +272,6 @@ inspired by chyk.
 
 ---
 
-list a bunch of verbs llms would do.
-
-humans could do everything. but the set, or broadset for working is limited.
-
-like normalize, simplify, explore (understand something, driven by curiosity), research (intentionally, with a clear purpose, see existing things clearly), browse (bfs from a link or somewhere, intentionally), surf (doom scroll on random algo recom fyp)...
-
----
-
-haskell.
-
----
-
-play on swap.
-
-(buy -> to openrouter?)
-
-use agent to normalize data.
-
-research cases. (i should seek potential victims first, which are not a lot as it seems. they exist among weird stuff, like scripts...)
-
-first, clarify. im not gonna have fiats, which could be spammed but hard to use. im gonna have crypto. idk if gift cards are good.
-
-know how to create accounts. know how to lock coins first.
-
-it does not seems the supports could really review uploaded stuff like a judge.
-
----
-
 art movements. (learn from manus)
 
 ---
@@ -350,10 +294,6 @@ it could stay above abstraction. you declare. you dont touch the messy world.
 
 ---
 
-app image installer
-
----
-
 runtime type check.
 
 ---
@@ -362,51 +302,11 @@ js/ts ast (trans) compiler
 
 ---
 
-sql abstraction... or prisma!
-
-or Drizzle? (simpler, just like sqlite over postgresql)
-
-Kysely? Sequelize?
-
----
-
-deno?
-
----
-
 gnome design system.
 
 ---
 
-ReoNa
-
-Aimer
-
-Minami
-
-Yorushika
-
-ZUTOMAYO
-
-Majiko
-
-EGOIST
-
-(bang dream?)
-
----
-
-https://beta.kimi.link/share/19bf65b4-a9c2-8ea9-8000-00002950b68a
-https://beta.kimi.link/share/19bf65ba-82a2-8fb5-8000-0000b6cdaf04
-https://beta.kimi.link/share/19bf65eb-6102-8d7c-8000-00003648817b
-
----
-
-playwright mcp?
-
----
-
-update readme (some outdated lists. add some streamers. simplify simplelive maybe. btw, i dont think i have to save everyone on tg. they are cute. i love them. but i dont know them. and they are not really hard to find and retrieve. i love shell. i love some nice ppl. zhihu: e.g. e mo li li jiang.)
+playwright mcp in cli?
 
 ---
 
@@ -414,17 +314,7 @@ paper.design
 
 ---
 
-lobehub.
-
-chatwise.
-
-lody.
-
-test all new products.
-
----
-
-films.
+watch films and bangumis.
 
 ---
 
@@ -462,12 +352,6 @@ cli & ui (gnome)
 
 ---
 
-prisma.
-
-zod.
-
----
-
 健脑房.
 
 (pure?)
@@ -477,10 +361,6 @@ zod.
 what will pure project be at the end of the day. i mean at the end of hs.
 
 i hold the dream since grade 10.
-
----
-
-https://novita.ai/models-console/llm-playground?model=minimax-minimax-m2.5
 
 ---
 
@@ -514,20 +394,6 @@ config this.
 
 ---
 
-twitter to mastodon abstraction
-
-i can
-
-- use dom
-- use network
-- use mirrors
-
-mirrors could be easiest if possible.
-
-i think, although i dont surf twitter these days, i did not miss out anything.
-
----
-
 nickle angel made some courses with ppt in her 20s.
 
 https://space.bilibili.com/137863629
@@ -555,24 +421,6 @@ what is the abstraction about.
 is it doing anything?
 
 (will i end up having something like this? well i think i can learn something whatever.)
-
----
-
-see what the commits are about.
-
-give opencode the key.
-
-openclaw.
-
-memoh.
-
-https://deepwiki.com/openclaw/openclaw
-
-even if it's unreadable. they must be somewhere... but what's your design system, first of all...
-
-(?)
-
-do i want to do that?
 
 ---
 
@@ -648,43 +496,23 @@ write tg bot.
 
 ---
 
-61.life shelf.
-
-https://61.life/
-
-https://61.life/2024/books
-
-https://61.life/2023/1230
-
-https://share.google/aimode/z3GvGGlSsEZYqusZY
-
----
-
 find all fcitx dicts and convert using agent.
 
 ---
 
-what's vllm?
+twitter to mastodon abstraction
 
----
+i can
+
+- use dom
+- use network
+- use mirrors
+
+mirrors could be easiest if possible.
+
+i think, although i dont surf twitter these days, i did not miss out anything.
 
 view twitter in mastodon.
-
----
-
-telegram rev proxy cli.
-
-(assume the desktop is working.)
-
-x11 is really easy to automate. mouse. keyboard. screenshot.
-
-all with one liner.
-
-reg tg with android app and 5sim.
-
-think: which method to use to get data. maybe web, though idk it has all the features i want. ocr is the last resort. official bot is often not enough.
-
-i wanna research ppl, right? maybe i could export data (use the official feature for channel and group chats, use my impl for profiles).
 
 ---
 
@@ -708,6 +536,22 @@ app: copy.
 
 ---
 
+telegram rev proxy cli.
+
+(assume the desktop is working.)
+
+x11 is really easy to automate. mouse. keyboard. screenshot.
+
+all with one liner.
+
+reg tg with android app and 5sim.
+
+think: which method to use to get data. maybe web, though idk it has all the features i want. ocr is the last resort. official bot is often not enough.
+
+i wanna research ppl, right? maybe i could export data (use the official feature for channel and group chats, use my impl for profiles).
+
+upd:
+
 telegram is one way to dht the internet. there might be appox. 100 people in each small groups, and they overlap aggressively. i suspect there are less than 1k active chinese devs.
 
 disqus is another way. i already know diygod and mewx.
@@ -727,5 +571,43 @@ ink terminal.
 ---
 
 i did not found good llms generated dicts by google.
+
+---
+
+61.life shelf.
+
+https://61.life/
+
+https://61.life/2024/books
+
+https://61.life/2023/1230
+
+https://share.google/aimode/z3GvGGlSsEZYqusZY
+
+---
+
+try memoh (?, i could wait for it to release stable and publish to flatpak for example)
+
+https://github.com/memohai/Memoh?tab=readme-ov-file
+
+docs might be great, even before publishing.
+
+https://docs.memoh.ai/
+
+---
+
+claude code leak.
+
+https://www.latent.space/p/ainews-the-claude-code-source-leak
+
+https://deepwiki.com/instructkr/claude-code
+
+(?) https://github.com/luongnv89/claude-howto
+
+---
+
+people i hate. (e.g. evan you, hsn?, menci?, elon, durov?, innei)
+
+people i appreciate. (e.g. funshiki, dhh?, lr0, ruanyf, bellard)
 
 ---

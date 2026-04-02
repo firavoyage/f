@@ -1297,3 +1297,18 @@ the modern version maybe
 
 ---
 
+ia.
+
+go with any way you like.
+
+twitter supports either with `@` or not in the url.
+
+---
+
+strategy.
+
+node is good enough. im familiar with it.
+
+no deno now.
+
+---

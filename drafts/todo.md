@@ -248,9 +248,6 @@ simplify notes and research for drafts and humility.
 
 rm most.
 
-also simplify todos/things/tabs.
+also simplify todos/things/tabs. (important)
 
 ---
-
-
-

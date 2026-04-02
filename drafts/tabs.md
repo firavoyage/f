@@ -170,6 +170,10 @@ https://www.anthropic.com/learn
 
 https://manus.im/blog
 
+https://beta.kimi.link/share/19bf65b4-a9c2-8ea9-8000-00002950b68a
+https://beta.kimi.link/share/19bf65ba-82a2-8fb5-8000-0000b6cdaf04
+https://beta.kimi.link/share/19bf65eb-6102-8d7c-8000-00003648817b
+
 ---
 
 humility (learn from openclaw?):
@@ -269,6 +273,12 @@ https://github.com/n8n-io/n8n
 ---
 
 https://mastodon.social/@Menci@misskey.cascade.moe
+
+---
+
+https://github.com/codeany-ai/open-agent-sdk-typescript
+
+(?, by idoubi)
 
 ---
 
