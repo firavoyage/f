@@ -41,7 +41,7 @@ systemctl --user status journal.service
 journalctl --user -u journal.service -f
 
 # # restart
-# systemctl --user restart journal.service
+# systemctl --user restart journal.service # if needed
 ```
 
 ### test

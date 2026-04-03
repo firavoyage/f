@@ -240,3 +240,12 @@ seti (default).
 
 ---
 
+manus. 
+
+dedicated prompt engineering.
+
+manual work.
+
+product > tech.
+
+---
