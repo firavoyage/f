@@ -255,3 +255,11 @@ also simplify todos/things/tabs. (important)
 humility project.
 
 ---
+
+store a file. on a path. 
+
+~~actually store the hash and map inside a folder. more features?~~
+
+(already solved? i suppose)
+
+---

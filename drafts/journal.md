@@ -3930,6 +3930,8 @@ apr 2026
 
 16 20 dl `Hayato Sumino`.
 
+inspired by mewx (wenku8, google au).
+
 02
 
 12 40 appreciate `Featuring: Javascript PC emulator by Fabrice Bellard`.
@@ -4027,9 +4029,21 @@ Fodesu, [4/3/26 1:36 AM]
 能避开痛苦就是幸福
 ```
 
+upd: cry reaction from three.
+
 04 00 watch `How To Beat 1700 Rated Players | Chess Rating Climb 1712 to 1743`.
 
 15 00 dl some japanese pianists.
+
+Ryo Fukui, Hiromi, Ryuichi Sakamoto, Mitsuko Uchida, Glenn Gould & Johann Sebastian Bach, Joe Hisaishi.
+
+17 20 reg `thefirahq` on opencollective.
+
+21 40 check out `带着100万，我们揭开了赌场的秘密…`.
+
+wrong subtitles. chinese are translated. but english is not literally the original words, like translated back and forth.
+
+devs of a camera app (pro features, builtin color filters).
 
 
 

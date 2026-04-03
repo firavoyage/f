@@ -653,3 +653,9 @@ Why two weeks ago on blogging repo
 ---
 
 style. see linux. see mootools.
+
+---
+
+https://github.com/ruanyf/ai-test-case
+
+---

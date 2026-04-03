@@ -102,6 +102,25 @@ Would you like a specific filter for dates, file sizes, or a particular keyword 
 [7] [https://github.com](https://github.com/yt-dlp/yt-dlp/issues/4894#:~:text=Provide%20a%20description%20that%20is%20worded%20well,streams%2C%20and%20explicitly%20mentions%20invoking%20youtube_live_chat%20downloader.)
 ```
 
+tmp
+
+```sh
+yt-dlp \
+  "https://music.youtube.com/playlist?list=OLAK5uy_lXltXgRwxjupHRPj-PNmruSNbK7My7GnA" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  --match-filters "view_count > 100000" \
+  -o "_/Hiromi/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
+```
+
+Glenn Gould & Johann Sebastian Bach (fix)
+
+```sh
+yt-dlp \
+  "https://music.youtube.com/playlist?list=OLAK5uy_mPbty31654xLaVxCzaRaww9AWX_1QfcUk" "https://music.youtube.com/playlist?list=OLAK5uy_mt3whq2VY7g_8amDVf71y4ORHfBhAfoPw" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  -o "_/Glenn Gould & Johann Sebastian Bach/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
+```
+
 Ryo Fukui, Hiromi, Ryuichi Sakamoto, Mitsuko Uchida, Glenn Gould & Johann Sebastian Bach, Joe Hisaishi
 
 ```
@@ -128,7 +147,8 @@ yt-dlp \
   -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
   -o "_/Glenn Gould & Johann Sebastian Bach/%(title)s - %(album,playlist_title)s - %(artist)s.%(ext)s";
 yt-dlp \
-  "https://music.youtube.com/playlist?list=OLAK5uy_mPbty31654xLaVxCzaRaww9AWX_1QfcUk" "https://music.youtube.com/playlist?list=OLAK5uy_mt3whq2VY7g_8amDVf71y4ORHfBhAfoPw" \
+  "https://music.youtube.com/playlist?list=OLAK5uy_nQMHvDUZuCx725SBVmyK3i8ypdArHF39M" \
+  --match-filters "view_count > 1000000" \
   -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
   -o "_/Joe Hisaishi/%(title)s - %(album,playlist_title)s - %(artist)s.%(ext)s";
 ```
