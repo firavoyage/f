@@ -133,6 +133,7 @@ software engineering architecture:
 
 - architecture deliverables diagrams artifacts
 - big opensource projects
+- composable is further than modular
 
 software engineering frontend:
 

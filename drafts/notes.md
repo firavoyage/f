@@ -1358,3 +1358,41 @@ a better design makes it easier to use, and more reliable.
 but, as it's time tested, i would use it by default, despite its complexity, anti transparency, etc.
 
 ---
+
+new license.
+
+public domain.
+
+for the deps.
+
+ignore all opensource licenses, disclosure, permission, whatever. feel free to sue me!
+
+most are foss (e.g. mit licensed), though.
+
+i might cite things if i feel you might need. yet, i wont use the term acknowledgement. you dont know if i wanna give references (facts), inspirations (ideas/great minds that lead me here) or express thanks (stand on the shoulder of giants).
+
+for my own code.
+
+they are in public domain. (inspired by ruanyf/writing style guide)
+
+mit is better and more widely used. but i dont wanna bother these law terms, which seems to be asking for possible help to a protector, who could never really protect you. "do wtf you wanna do" is rage baiting and cynical.
+
+public domain. simple words. when time goes on, our works will all eventually get into the public domain. all good things.
+
+theoretically, if something is open, you could not really control.
+
+the laws of physics are the only limit.
+
+in reality, you dont wanna fight small potatoes. big players often have enough preparation, you know, it's like a game of complete infomation. llms make it even easier. 
+
+why not add a license like cc by or agpl? 
+
+you should probably work on raising the ceiling, not the floor.
+
+these battles are noisy and nonsensical. i dont even wanna waste time on these guys.
+
+there is no use to reserve a right you know you wont use, only making you ridiculous to frighten people, just like cutting a branch that is obviously not optimal.
+
+public domain.
+
+---

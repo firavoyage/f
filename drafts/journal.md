@@ -4081,6 +4081,32 @@ bellard does not accept interviews.
 
 upd: how many times do we see/use "comment stream"?
 
+04
+
+17 20 pay 100 cny for network freedom. try to raise a dispute.
+
+the dispute method is hidden under llm customer service. you have to trigger somehow. friction.
+
+17 40 comment on a zhihu unixporn article.
+
+```
+(a post on openlistapp, a client for openlist, a fork of alist after the dirty acquisition, with low status arguments in zh-cn on github issues about license and insane contributers)
+
+common anti pattern found: open accounts on mainland china platforms named after the opensource project
+```
+
+18 20 reg `firahq` on coindropto.
+
+inspired by leohearts and tokyo hacker girls on ko fi.
+
+well... it's just a landing page. i have to build something?
+
+check leohearts again. just like russians, and the pirate bay. most ppl paste the public address directly. text is universal and free.
+
+20 20 play crcc challenge.
+
+inf wins. 5 losses. yet, you could not have all the cards, evos, heroes.
+
 
 
 <!--
