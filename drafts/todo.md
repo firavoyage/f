@@ -256,10 +256,10 @@ humility project.
 
 ---
 
-store a file. on a path. 
+what should i do now?
 
-~~actually store the hash and map inside a folder. more features?~~
+simplify. 
 
-(already solved? i suppose)
+research, think, write, review the reality.
 
 ---

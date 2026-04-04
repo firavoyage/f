@@ -289,3 +289,11 @@ llm programming common anti patterns
 https://github.com/luoling8192/ai-coding-principles?tab=readme-ov-file
 
 ---
+
+https://flowdown.ai/
+
+i thought it were a project sololy dev by l233 (i dont remember its name, yet it's anonoymous, without real name, real pfp, resume, or any real life proof.)
+
+but look at the team. look at the people. holy.
+
+---

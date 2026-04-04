@@ -29,6 +29,8 @@ fira:
 - black tea green tea
 - infinite money
 - america penacony dreams come true
+- philosophy systemd
+- politics left right meaning history
 
 life:
 
@@ -55,6 +57,8 @@ life:
 - dreams
 - lichess chessdotcom icons compliance dmca legal system dirty secret stylus
 - philosophy trolley problem
+- philosophy systemd
+- politics left right meaning history
 
 create something:
 

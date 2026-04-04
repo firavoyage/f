@@ -4031,6 +4031,8 @@ Fodesu, [4/3/26 1:36 AM]
 
 upd: cry reaction from three.
 
+upd: the post about being fired is removed. comments are rm as well.
+
 04 00 watch `How To Beat 1700 Rated Players | Chess Rating Climb 1712 to 1743`.
 
 15 00 dl some japanese pianists.
@@ -4044,6 +4046,40 @@ Ryo Fukui, Hiromi, Ryuichi Sakamoto, Mitsuko Uchida, Glenn Gould & Johann Sebast
 wrong subtitles. chinese are translated. but english is not literally the original words, like translated back and forth.
 
 devs of a camera app (pro features, builtin color filters).
+
+23 20 comment to leohearts.
+
+```
+Google 新出的 Gemma 4 不错呀，端侧 e4b 大小的模型，效果已经不比 gpt-oss:20b 差了，function calling 更是比之前同规模的模型强了很多。真的可以纯端侧运行 agent 了。
+
+*目前 ollama 上的gemma4被魔改去掉了 function calling 能力，请考虑使用 llama.cpp 等替代。用 unsloth 的量化模型即可一键启动。
+
+还有一个问题是，至少昨晚，各位 agent 还不兼容 gemma4 的模板，反正 zeroclaw 和 memoh 不行
+
+得稍微打个 patch, 修改一下 param 传递方式
+
+GitHub - leohearts/zeroclaw
+
+(虽然但是 zeroclaw 挺难用的，规划能力一坨，用它单纯是因为修改代码方便，以及跑得快
+
+I must say it. You (I mean, people are twitter) are always saying "Now, we can finally run ai agent locally!". There's nothing wrong with your post, but... Are we in an never ending loop?
+
+Not always, this is literally the first time I use a local model to run agents without major problems.
+```
+
+23 40 decide to move to mastodon. pin it on twitter.
+
+```
+I use mastodon. See firahq@mastodon.social. Twitter has too much limits, like character count, editing posts (even premium accounts could not edit after 1h). It bans aggressively and changes frequently. It's not designed to last. It's a never ending now.
+
+changes: kill 3p apps, rebrand to x, sell handles, automated spams, sell membership, and more. yet, a lot of fomo and hypes.
+```
+
+unless i wanna chase hypes, i would live in mastodon (hope i would create something around it and understand it. it's not a unix cli, but a, kind of opinionated, platform.).
+
+bellard does not accept interviews.
+
+upd: how many times do we see/use "comment stream"?
 
 
 

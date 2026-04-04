@@ -652,7 +652,13 @@ Why two weeks ago on blogging repo
 
 ---
 
-style. see linux. see mootools.
+style. 
+
+see linux. (what is it writing? who are you. if you are... you can.)
+
+similar to fira's (I want to ... headings)
+
+see mootools.
 
 ---
 

@@ -1350,3 +1350,11 @@ google ai mode search is slow.
 maybe it downloads thousands of searches and search locally? (they wont lag more than 100ms though.)
 
 ---
+
+systemd could be better.
+
+a better design makes it easier to use, and more reliable.
+
+but, as it's time tested, i would use it by default, despite its complexity, anti transparency, etc.
+
+---
