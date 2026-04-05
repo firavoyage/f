@@ -1485,3 +1485,49 @@ wish list.
 - iphone
 
 ---
+
+People I hate/appreciate.
+
+chyk. naive. delicious.
+
+Menci. emotionally weak. delicious.
+
+Evan you. awful. 
+
+antfu. good.
+
+dhh. good.
+
+...
+
+(weird. i wont edit it so fast using only adj.)
+
+---
+
+material
+
+i wish i could select somewhere, like a rect or something, and it will fill in the block with the color around it.
+
+for pure bg, simple. for colorful bg, use multi dot gradient, which css (svg) supports.
+
+mosaic is philistine.
+
+---
+
+float.
+
+i wish it could remove constant noise for legacy recordings.
+
+---
+
+pure: en/jp.
+
+i wish it could view all words at once.
+
+it surprises me that english has only several thousands of used words.
+
+it's easy to view within a page.
+
+---
+
+

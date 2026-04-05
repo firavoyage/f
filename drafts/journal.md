@@ -4041,6 +4041,8 @@ Ryo Fukui, Hiromi, Ryuichi Sakamoto, Mitsuko Uchida, Glenn Gould & Johann Sebast
 
 17 20 reg `thefirahq` on opencollective.
 
+20 00 listen to `An AI state of the union: We’ve passed the inflection point, dark factories are coming, and automation timelines | Simon Willison`.
+
 21 40 check out `带着100万，我们揭开了赌场的秘密…`.
 
 wrong subtitles. chinese are translated. but english is not literally the original words, like translated back and forth.
@@ -4136,6 +4138,8 @@ there are some fake iphones on the recommendation. it's 2026 now. they are still
 some "factory phones" (a phone with some plastic stuff around) and "boards" (a phone... with only the board) exist. some old computer video games exist. fun.
 
 prices on xianyu are weird. some old macbooks cost less than 1k (still way more expensive than vms). some old windows laptops are less than 200 (well, they are thinkpads, with a red touch icon in the center of the keyboard. no one but the creator of photopea will use it.). 
+
+Upd: the seller refund after I ignore messages while sleeping. The price raises 10 cny then btw. Not willing to buy.
 
 
 
