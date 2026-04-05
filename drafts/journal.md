@@ -4107,6 +4107,36 @@ check leohearts again. just like russians, and the pirate bay. most ppl paste th
 
 inf wins. 5 losses. yet, you could not have all the cards, evos, heroes.
 
+anyway, let's play 2.6 hog. i have evo cannon and hero ice golem and nothing more.
+
+result: 8 wins. rk 1720.
+
+btw, achieve 12 wins on classic challenge. most players are weak (low win count) in matchup. just drop a golem at the start of the game, add nw, ebarbs/lumberjack. use mm to strike the defense. that's it. for some games, just drop in a const sequence, and you will win, because oppos are too weak.
+
+05
+
+01 00 buy a palm phone (pvg 100) on xianyu with 200 cny.
+
+inspired by steven lynn's telegram channel. 
+
+hope it's not scam. (and i dont wanna take more actions.)
+
+get account partly banned for 1w for editing the bio. free speech!
+
+edit my address like this:
+
+```
+name: Gnome Adwaita
+phone: {phone}
+location: {city} {district} {street and number} {apartment number, door number} 喵铭记八千九百六十四 (lit. nya remember 8964)
+```
+
+there are some fake iphones on the recommendation. it's 2026 now. they are still not taken.
+
+some "factory phones" (a phone with some plastic stuff around) and "boards" (a phone... with only the board) exist. some old computer video games exist. fun.
+
+prices on xianyu are weird. some old macbooks cost less than 1k (still way more expensive than vms). some old windows laptops are less than 200 (well, they are thinkpads, with a red touch icon in the center of the keyboard. no one but the creator of photopea will use it.). 
+
 
 
 <!--

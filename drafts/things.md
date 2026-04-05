@@ -665,3 +665,14 @@ see mootools.
 https://github.com/ruanyf/ai-test-case
 
 ---
+
+try zed. evaluate zed.
+
+> the editor for what's next.
+
+(?) is that lit. fomo?
+
+i appreciate its ui!
+
+---
+

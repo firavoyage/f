@@ -864,11 +864,11 @@ music is a good example.
 
 if you wanna have a long list of songs, categorized.
 
-you are likely to have `artist (album) - song`. 
+you are likely to have `artist (album) - song`.
 
 as if you sort by name, the same artist will be put together. (instead of different covers of the same song).
 
-but if you already have folders like `album/song a, b, c`, 
+but if you already have folders like `album/song a, b, c`,
 
 you are likely to have `song - artist`. put the most distinctive identifier first.
 
@@ -902,11 +902,11 @@ types are defined by typescript or jsdoc, not on names.
 
 ---
 
-on lobehub, 
+on lobehub,
 
 you could not use "otp" to verify email. you could only click link. (good news: it shows literal link url in email in case clicking does not work.)
 
-and it results in two separate tabs. 
+and it results in two separate tabs.
 
 - one verify. "resend ..." (ofc, it does not sync data across tabs like github. or just apply login state/cookies. or just let it be a popup, like twitch, and close it.)
 - one "get started"
@@ -1065,7 +1065,7 @@ telegram.
 
 when you click a link (like jump to the channel where the fwd msg is), it's different than clicking the channel on chat list.
 
-i dont think it's a good design. 
+i dont think it's a good design.
 
 maybe, from the url perspective, if there is something like that internally, it's just a link with a `#position`.
 
@@ -1217,15 +1217,15 @@ you can also just access the value. if err, value does not exist, so it will fai
 
 result on d.ts are available everywhere.
 
-decision: 
+decision:
 
 ```ts
-type ok = { err: false; value?: any }
-type err = { err: true; error?: string | object }
-export type result = ok | err
+type ok = { err: false; value?: any };
+type err = { err: true; error?: string | object };
+export type result = ok | err;
 ```
 
-upd: 
+upd:
 
 i could also reduce err and error to only one err.
 
@@ -1383,9 +1383,9 @@ theoretically, if something is open, you could not really control.
 
 the laws of physics are the only limit.
 
-in reality, you dont wanna fight small potatoes. big players often have enough preparation, you know, it's like a game of complete infomation. llms make it even easier. 
+in reality, you dont wanna fight small potatoes. big players often have enough preparation, you know, it's like a game of complete infomation. llms make it even easier.
 
-why not add a license like cc by or agpl? 
+why not add a license like cc by or agpl?
 
 you should probably work on raising the ceiling, not the floor.
 
@@ -1394,5 +1394,94 @@ these battles are noisy and nonsensical. i dont even wanna waste time on these g
 there is no use to reserve a right you know you wont use, only making you ridiculous to frighten people, just like cutting a branch that is obviously not optimal.
 
 public domain.
+
+---
+
+contributing.
+
+on version control.
+
+make sure everything lives in files.
+
+config git like this:
+
+on home folder, create these files:
+
+`.git-credentials`
+
+```
+https://username:ghp_mykeyfoobar@github.com
+https://username:password@gitea.com
+```
+
+`.gitconfig`
+
+```
+[user]
+	name = Name
+	email = email@example.com
+[push]
+	autoSetupRemote = true
+[credential]
+	helper = store
+```
+
+to use github, you have to generate a permanent ghp key from github website, since it's conservative on security (e.g. harsh 2fa push).
+
+only use these two git methods
+
+```sh
+# init
+git init
+git remote add g https://github.com/username/project.git
+```
+
+```sh
+# push
+git add .
+git commit -m '.'
+git push -f g
+```
+
+when anything breaks,
+
+make sure the current folder state contains what you want. then, rm .git folder, rm the repo on the remote website if needed. push again.
+
+why no commit message?
+
+you have `changes.md` on the project root. it's flexible, text based, with md styling. you can write it as you like.
+
+you have to use git to see messages. it's consistent. you can set conventions. yet, it has its own way (e.g. one commit, one message), own commands, kind of opinionated. and yet you often still have to define the conventions. and idk if you can like dump all past message into an elegant json, edit prev messages, add notes, easily (one liner, without other tools).
+
+why not git to version control?
+
+i want the current state of the project (editing/typing, might be uncompilable because a line is not completed), some releases (code to dev/research, binary to use), and some legacy code (roll back, find abandoned ideas).
+
+you can put them into folders. git is not text based in storage, obviously, if you open `.git` folder and see the objects.
+
+if you put everything as text files, you can simply search in vscode. you can choose what folders to ignore by default.
+
+git will compress them somehow.
+
+btw, git is not smart. for large repos (like linux, prisma, and chinese textbooks), it could not continue easily (you can either start from the beginning by default, or manually download part by part, level by level.).
+
+on pm (issues, bugs, roadmap).
+
+create an issue following the guidelines of the issue title.
+
+under each issue, each person could have only one message. you can say. you can edit and send sth like "ive updated". nothing else.
+
+most times, you ask. i verdict. everything is archived and organized well. that's it.
+
+there is also rfc.
+
+---
+
+wish list.
+
+- palm phone (complete?)
+- nothing phone
+- smartisan
+- iphone
 
 ---

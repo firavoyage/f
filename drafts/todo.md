@@ -56,19 +56,13 @@ life
 
 ---
 
-humility
-
-(see humility roadmap)
-
----
-
 (see things)
 
 (see notes)
 
 ---
 
-sync phone.
+humility
 
 ---
 
@@ -76,33 +70,13 @@ research manus use cases myself. find inspiration.
 
 ---
 
-- gitignore, msrv, pnpm workspace, eslint, etc.
-- find and solve friction (loop type inference etc.). ~~rm decorator maybe.~~
-- runtime type check (research!) for tools
+make log lib.
+
+i can log, fs, kv.
 
 ---
 
-~~abstract sql.~~
-
-use fs as storage. i need kv. i dont care perf (it's not gonna scale infinitely).
-
-i dont need sql.
-
----
-
-update log import. (if code does not handle it well. use linting.)
-
----
-
-learn ts. migrate to ts. (src/dist? .build!)
-
-check. plan.
-
-build ts? do i need? how?
-
----
-
-code review. rethink "loop".
+rethink "loop".
 
 ---
 
@@ -128,10 +102,6 @@ there are a lot of things like jina, exa. find them all.
 
 ---
 
-1m llm token: about 100,000 loc typescript
-
----
-
 why
 
 result: type ok err. value. error.
@@ -152,31 +122,16 @@ and connect it! (... seems i could not manage context this way... and everyone a
 
 ---
 
-let's use opencode to make the refactor (ts, result) work.
-
-claude code could work with workarounds. but im not gonna like it.
-
-openrouter is good. my dollars are just sleeping there and not doing anything.
-
-novita ai is also good. let's exploit maybe. idk if minimax could outperform or have a competitive quality with 1/10 price. let's do some simple research. and just proceed.
-
----
-
 d.ts.
 
-write big global types in it. good.
-
-(chat message, for example. where to place?)
-
----
-
-trim humility notes.
-
-remove nonsense.
+- std types
+- bot types
 
 ---
 
 ?
+
+think.
 
 normalize
 
@@ -188,10 +143,6 @@ normalize
 
 ---
 
-merge things & tabs?
-
----
-
 (component libraries)
 
 auto pass some default props like dark mode?
@@ -200,21 +151,7 @@ no need to overthink props/state. (abstraction on all frameworks / components)
 
 i mean to be pragmatic.
 
----
-
-try zed. evaluate zed.
-
-(things, but top prior for its fun and simplicity. importance? maybe.)
-
-~~rm flatpak one. use official.~~
-
-~~(only those with confidence can go out of a package manager.)~~
-
-> the editor for what's next.
-
-(?) is that lit. fomo?
-
-i appreciate its design!
+how does adwaita do.
 
 ---
 
@@ -244,15 +181,15 @@ abstract.
 
 ---
 
-simplify notes and research for drafts and humility.
+simplify notes and research on drafts and humility.
 
 rm most.
 
 also simplify todos/things/tabs. (important)
 
----
+merge things & tabs?
 
-humility project.
+trim humility notes. remove nonsense.
 
 ---
 

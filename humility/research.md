@@ -249,3 +249,8 @@ manual work.
 product > tech.
 
 ---
+
+1m llm token: about 100,000 loc typescript
+
+---
+
