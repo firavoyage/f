@@ -297,3 +297,11 @@ i thought it were a project sololy dev by l233 (i dont remember its name, yet it
 but look at the team. look at the people. holy.
 
 ---
+
+https://www.youtube.com/watch?v=iDfTInp2mME
+
+watch this after puella magica.
+
+recap by funshiki.
+
+---

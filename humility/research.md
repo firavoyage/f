@@ -254,3 +254,14 @@ product > tech.
 
 ---
 
+(inspired by tcdw, a small potato)
+
+https://github.com/RightCapitalHQ/chinese-style-guide
+
+obvious nonsense, not optimized to common ai pitfalls. 
+
+llms would never use the wrong character (it's esp. human).
+
+likely llms generated, which llms could not really generated for llms.
+
+---

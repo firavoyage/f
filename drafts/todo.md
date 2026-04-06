@@ -62,6 +62,14 @@ life
 
 ---
 
+on readme.
+
+change albums/singles to artists/singles.
+
+sync.
+
+---
+
 humility
 
 ---
@@ -200,3 +208,9 @@ simplify.
 research, think, write, review the reality.
 
 ---
+
+xdg spec.
+
+folders on all platforms.
+
+

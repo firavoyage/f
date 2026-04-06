@@ -4141,6 +4141,16 @@ prices on xianyu are weird. some old macbooks cost less than 1k (still way more 
 
 Upd: the seller refund after I ignore messages while sleeping. The price raises 10 cny then btw. Not willing to buy.
 
+23 00 request to export twitter data.
+
+let's see how portable it is.
+
+06
+
+02 00 dl `magia (kalafina)` `god knows (haruhi suzumiya)` mv.
+
+maybe my decision to watch puella magica... is unconsciously related to cyan nyan (watch along)?
+
 
 
 <!--

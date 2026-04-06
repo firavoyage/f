@@ -1530,4 +1530,30 @@ it's easy to view within a page.
 
 ---
 
+ux: predictable. 
 
+on google, 
+
+if you search by image (google lens), using the camera button on the right, you can either upload or use a link.
+
+if you use ai vision, using the add button on the right, it popups the uploader directly.
+
+---
+
+on simplicity.
+
+many ppl use there name on shell. (before the location)
+
+(inspired by the song, thou away from oi, by menci, 01:41)
+
+as well as many screenshots on many tg channels.
+
+mine.
+
+```
+ ~ %
+```
+
+im the god. im the shell itself. no need to explicitly name it.
+
+---
