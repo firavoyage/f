@@ -4151,6 +4151,10 @@ let's see how portable it is.
 
 maybe my decision to watch puella magica... is unconsciously related to cyan nyan (watch along)?
 
+23 00 dl `Metallica`.
+
+Master of Puppets
+
 
 
 <!--

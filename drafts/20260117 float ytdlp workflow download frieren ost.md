@@ -106,10 +106,22 @@ tmp
 
 ```sh
 yt-dlp \
-  "https://music.youtube.com/playlist?list=OLAK5uy_lXltXgRwxjupHRPj-PNmruSNbK7My7GnA" \
+  "https://music.youtube.com/playlist?list=OLAK5uy_n7SAGbx-PhFCLIY2euKmk8TmBAILXT9iw" \
   -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
   --match-filters "view_count > 100000" \
-  -o "_/Hiromi/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
+  -o "_/Metallica/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
+```
+
+Metallica
+
+<!-- Master of Puppets -->
+
+```sh
+yt-dlp \
+  "https://music.youtube.com/playlist?list=OLAK5uy_n7SAGbx-PhFCLIY2euKmk8TmBAILXT9iw" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  --match-filters "view_count > 100000" \
+  -o "_/Metallica/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
 ```
 
 Glenn Gould & Johann Sebastian Bach (fix)

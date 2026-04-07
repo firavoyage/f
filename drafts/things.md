@@ -676,3 +676,29 @@ i appreciate its ui!
 
 ---
 
+(check float)
+
+heavy metal rock.
+
+electro rock. (electro guitar)
+
+magia is good... the lyrics...
+
+---
+
+https://www.zhihu.com/people/saeziae
+
+following follow.
+
+a great feature.
+
+---
+
+research lagenrage
+
+about:help
+
+gemini://estela.moe
+
+---
+

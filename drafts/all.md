@@ -59,6 +59,8 @@ life:
 - philosophy trolley problem
 - philosophy systemd
 - politics left right meaning history
+- blog pingback trackback
+- render x11 wayland
 
 create something:
 

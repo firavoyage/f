@@ -1557,3 +1557,36 @@ mine.
 im the god. im the shell itself. no need to explicitly name it.
 
 ---
+
+on url.
+
+`//` in `://` is redundant.
+
+we support `:`.
+
+btw, we dont show protocols (e.g. `https`) by default, just like browsers.
+
+---
+
+https://loj.ac/p/6755
+
+> This content is not available in your preferred language, here is the Chinese (Simplified) version.
+
+well done, menci!
+
+---
+
+wikimedia redirects my usernames.
+
+good. legacy (what if i rename a few times and occupy a lot of ids?). but makes a lot of sense.
+
+---
+
+disambi.
+
+wikipedia is good.
+
+google... not really. i might want to choose, but i almost never want several to appear in one answer. i dont need them all.
+
+---
+
