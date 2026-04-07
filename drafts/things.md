@@ -702,3 +702,44 @@ gemini://estela.moe
 
 ---
 
+https://github.com/NiceLabs/wanqu-daily-dump
+
+https://nicelabs.github.io/wanqu-daily-dump/
+
+---
+
+check
+
+https://mtf.wiki/zh-cn
+
+interesting.
+
+btw, en has no content.
+
+also, check out suicide wiki and 
+
+https://github.com/Bluse-liu50/DIY-Estradiol-Gel-Guide/blob/main/README.md
+
+https://groups.io/g/MTFHRT/wiki/30843
+
+---
+
+travellings are good.
+
+there are about 1k blogs. not very much. but we can broaden with frnd links.
+
+we can build an afo on it.
+
+(ref: eat.)
+
+also, it's more neutral (safer) than using menci/chyk/leohearts as the first starting node. (though, i could pick some foregin chinese to make sure they are safe after citing.)
+
+---
+
+jp language learning.
+
+common. highly requested.
+
+the trend of 21st chinese modern internet users.
+
+---

@@ -1590,3 +1590,35 @@ google... not really. i might want to choose, but i almost never want several to
 
 ---
 
+frontend tech.
+
+the biggest challenger of web is markdown.
+
+then, nothing.
+
+you can make it better. but you will likely end up creating a subset.
+
+---
+
+Sponsored
+Here are some related products and services to consider:
+
+good, google ai. a sustainable approach. (likely removed by ub in the future)
+
+---
+
+save to mhtml is a non negoiable.
+
+started from ie, supported by chromium, unimplemented by firefox.
+
+---
+
+project egg.
+
+you rt, they delete/make the twitter account private.
+
+then the original content disappears?
+
+we need to cite.
+
+---

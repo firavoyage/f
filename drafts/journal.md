@@ -4155,7 +4155,25 @@ maybe my decision to watch puella magica... is unconsciously related to cyan nya
 
 Master of Puppets
 
+07
 
+17 40 dl `Deep Purple`.
+
+Machine Head (Super Deluxe)
+
+18 00 read leahearts blog.
+
+22 00 listen to `Mahou Shoujo Madoka★Magica ED 『Magia』 Romaji ⧸ English`.
+
+feel im crying.
+
+22 20 dl twitter archive.
+
+twitter messages (full of spams, though they are hidden by default.) are not compatible with twitter chat (the successor with some modern features like encryption). the later messages (in chat) are not exported.
+
+it puts json data as js files (`window.foo.my_data=...`) to make file protocol based html work.
+
+23 00 change pronoun from `she/her` to thou/h
 
 <!--
 
