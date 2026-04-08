@@ -305,3 +305,19 @@ watch this after puella magica.
 recap by funshiki.
 
 ---
+
+littlesound (vue vapor mode), 2000.
+
+https://space.bilibili.com/2651457
+
+btw,
+
+https://github.com/LittleSound
+
+look at the sponsors... i feel the population of devs is... small.
+
+confirmed many times. always these avatars appearing.
+
+not just devs. many niches.
+
+---

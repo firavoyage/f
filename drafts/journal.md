@@ -4275,6 +4275,14 @@ the ux of openclaw is also poor. if you like, you can try to install it. ive tes
 
 12 20 read the stranger chapter 1.1. 13 00
 
+20 00 fix wording on readme.
+
+use the term carefree idler, recommended by gemini.
+
+20 20 read dustella blog, life and tech.
+
+luoling comments on a linux (manjaro) setup.
+
 
 
 <!--

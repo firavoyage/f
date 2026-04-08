@@ -1395,6 +1395,8 @@ there is no use to reserve a right you know you wont use, only making you ridicu
 
 public domain.
 
+upd: first, as humans, we could not really keep anything.
+
 ---
 
 contributing.
@@ -1633,5 +1635,17 @@ not always absolutely.
 
 ---
 
+luoling: llm programming anti patterns.
 
+- fail loudly (dont hide): no fallbacks for non optional values
+- fail loudly (propagate): handle errors only at high level, return error (not log and return nonsense) at low level
+- normalize tests (strong, covered): write good tests. no useless ones. when code is broken tests fail.
+- normalize tests (honest): dont fit the test cases explicitly in code
+- normalize tests (meaningful): when fixing, write a test that would from red to green. confirm it fails before to prove the test is meaningful.
+- keep history: dont remove debug logs.
 
+---
+
+https has `//` mailto does not.
+
+---

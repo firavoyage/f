@@ -488,10 +488,6 @@ i mean keep the best.
 
 ---
 
-i dont think we need that heavy js testing libs.
-
----
-
 write tg bot.
 
 ---
