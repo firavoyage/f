@@ -61,6 +61,7 @@ life:
 - politics left right meaning history
 - blog pingback trackback
 - render x11 wayland
+- gnome kde
 
 create something:
 

@@ -4157,6 +4157,45 @@ Master of Puppets
 
 07
 
+12 40 comment on qingniao blog.
+
+```
+青鸟的频道, [4/3/26 5:17 PM]
+有个经典的鸡汤类型，“每一天都当最后一天过”.
+在鸡汤里也属于鸡汤里面最缺乏实践意义的种类了,主要问题是都知道明天真的是最后一天的概率极低.
+
+每天都当最后一天过本质上还是不太理性的, 真当最后一天过那就是末日囤货文主角,贷款拉满了. 但是如果末日没来的话, 就是另一个剧本了.
+
+所以真的适用的场景大概只有恋爱这类情感场景了, 毕竟只有这种场景没啥后果,而且很容易出现跟自己说以后还有机会,然后一直拖延,但是实际拥有的时机比想象要短,容易后悔,
+而且最关键的是往后拖并不能提升成功率, 一般一开始不成功后面也不会成功.
+
+faustellarx, [4/3/26 5:45 PM]
+这可太毒了，持久的动力来源于环境，摄入的信息以及正反馈
+而且最后一天的概念与长远的积累（身体，知识，财富，工具）是矛盾的
+这种想法作为启动项还好，碰到阻碍了怎么办？
+
+清 水, [4/3/26 5:50 PM]
+是的，所以我约女生即使第一次见面也会问她要不要去酒店休息
+
+衰潲君♥️🏳️‍⚧️ | 愛は存在しない, [4/3/26 6:10 PM]
+还有癌症病人
+我好像在乔布斯口述传记里看到过
+
+Doro 不爱吃欧润吉, [4/3/26 8:17 PM]
+我也问
+
+戈多, [4/3/26 10:57 PM]
+应该说,我们应该给自己设一个截止的时间
+
+千雪 空, [4/4/26 2:00 AM]
+我想了想,如果我剩最后一天了,我会买最快的机票或者高铁票回家,看看亲人父母,然后看看日落,迎接死亡.
+
+f, [4/7/26 12:51 PM]
+我会整理自己的遗产, 写一份我喜欢的 readme.
+```
+
+upd: get a like.
+
 17 40 dl `Deep Purple`.
 
 Machine Head (Super Deluxe)
@@ -4173,7 +4212,70 @@ twitter messages (full of spams, though they are hidden by default.) are not com
 
 it puts json data as js files (`window.foo.my_data=...`) to make file protocol based html work.
 
-23 00 change pronoun from `she/her` to thou/h
+23 00 change pronoun from `she/her` to `thou/thee` on github and twitter.
+
+08
+
+01 00 write a comment on hykilpikonna tg blog.
+
+from now on, i use blog for channel (, group for group chat).
+
+```
+小桂桂的回忆录 📒, [4/6/26 2:42 AM]
+AI agent 相关的代码库好草台，感觉很多东西都不按标准写
+
+今天想要用 agno 部署一个用 skill 回答问题的 discord 机器人，然后发现它不支持标准的 skill，因为 agno 的 skill 实现里认为所有 .md 都应该在 references 的第一层目录，也不支持在元信息里定义 references
+
+然后发现如果我改源码让它 index 二级目录的话，它会把整个文件树全都放进 prompt 里，一个请求 165k token... 😨 难道不应该是让 agent 按需读吗？标准里写好了 progressive disclosure 的核心原则 agno 也没有尊重
+
+agno 一个 39.2k star 的项目... 这是为什么呢？
+
+Chtholly Nota Seniorious, [4/6/26 2:51 AM]
+欸 这是哪家 observability 平台啊
+
+Azalea, [4/6/26 2:52 AM]
+openai
+
+Chtholly Nota Seniorious, [4/6/26 2:53 AM]
+草 好久没看那个 developer platform
+已经有这么详细的 log 了（
+
+Menci 💖, [4/6/26 3:19 AM]
+都 6202 年了
+
+Menci 💖, [4/6/26 3:19 AM]
+github 上
+
+Menci 💖, [4/6/26 3:19 AM]
+star 多
+
+Menci 💖, [4/6/26 3:19 AM]
+的项目
+
+Menci 💖, [4/6/26 3:19 AM]
+就是
+
+Menci 💖, [4/6/26 3:19 AM]
+靠谱的？？？
+
+Azalea, [4/6/26 4:09 AM]
+感觉可能没有真正靠谱的解决方案了... 隔壁 ElizaOS 甚至还不支持 skill
+
+无聊至极, [4/6/26 4:37 AM]
+这是什么三言绝句（
+
+PRO-2684² 不要香菜谢谢⁧😿 喵⁦, [4/6/26 8:05 AM]
+openclaw star 这么多，也不见得质量有多高
+
+PRO-2684² 不要香菜谢谢⁧😿 喵⁦, [4/6/26 8:06 AM]
+https://github.com/jgamblin/OpenClawCVEs/
+
+the ux of openclaw is also poor. if you like, you can try to install it. ive tested a few days ago to see it myself. i installed with pnpm. something inside wants me to run the build script explicitly. even if i dont need that, it errs when i start it. ok i will build you. then it is onboarding. the onboarding is quite complex. explanations are confusing and ambiguous sometimes. i suppose i only need to set up the api key and do the rest on web ui if i want. but im wrong. then, there is an issue. i use the name of the env var in my zshrc. but when it's running inside systemd (it asks everything for confirm, but it uses systemd and adds to my zshrc automatically.), the env is not recognized. it says it does not know there is the env (maybe it's running in bash without source zshrc). but when im onboarding in zsh, it recognizes and see it vaild. yet, there is no way to fix it. it has many ways to debug itself, like doctor, but only after i run journalctl could i fix it. the doctor does nothing but restart the service once again (also, it passes a lot of redundant checks), completely unhelpful. then i remove the .openclaw folder and retry. now i paste the key inside and it works. (but it does not hide my key at all. normal unix clis will show nothing when im typing passwords.) ok now i have the webui... but... it's obviously inconsistent. idk if it has ever considered using a component library? the elements dont align. and there are many ui quirks. i have one model, but it has three options pointing at the same model (e.g. there is default, which does not mean the default selected option, like vscode settings, but another option in the list. for example, you can have my model, my model - provider foo, and my model (default).). it has it does not feel like a declarative react app, because when i click the same navigation tab twice (it should either do nothing or refresh), it flashes (the scrolltop suddenly changes for no reason. maybe it's trying to display something before fetching data?). im not gonna further test it. deprecated.
+```
+
+12 20 read the stranger chapter 1.1. 13 00
+
+
 
 <!--
 

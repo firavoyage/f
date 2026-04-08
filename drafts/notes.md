@@ -1622,3 +1622,16 @@ then the original content disappears?
 we need to cite.
 
 ---
+
+gemini can achieve high pts on ieits.
+
+because it has better lexical resources (vocab diversity).
+
+you are exactly/absolutely/completely right.
+
+not always absolutely.
+
+---
+
+
+
