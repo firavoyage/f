@@ -31,6 +31,7 @@ fira:
 - america penacony dreams come true
 - philosophy systemd
 - politics left right meaning history
+- envy jealousy
 
 life:
 
@@ -62,6 +63,7 @@ life:
 - blog pingback trackback
 - render x11 wayland
 - gnome kde
+- envy jealousy
 
 create something:
 

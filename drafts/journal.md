@@ -3079,7 +3079,7 @@ idk what to do.
 
 for viewing https://www.youtube.com/shorts/3hCPkU1kqGE which is mentioned when playing buwendingfadianji in the background
 
-(tried the lastest post, vtuber nailin, or wang nan's id card, and failed)
+(have tried the lastest post, vtuber nailin, or wang nan's id card, and failed)
 
 thank you, chen liang!
 
@@ -3676,6 +3676,20 @@ only 16 out of 19 (as heard) appear on the list. only 13 arrive.
 
 dm ziantt on twitter.
 
+upd three weeks later: 
+
+the result: students with ranking #1, #2, #4 on the first exam of grade 10, all gone. (though yiping seems to have gone to a college, not a university, i have no idea.)
+
+fun fact: the unchallengeable top student in djhs has gone to a university with higher qs ranking then menci's. wish he could outplay her!
+
+<!-- though he is not in swe (which itself seems to be widely considered to have been changed by llms dramatically). -->
+
+fun fact 2: college means prison in english idioms. (coincidence of the contemporary zh-cn society irl?)
+
+by forcing myself to sp uee, i choose freedom. it's a wise choice whatever. but i dont feel ive got what ive wished.
+
+<!-- since exam oriented education is nothing, esp paired with the low class teaching style of some domestic teachers -->
+
 14 20 download `Air (2005)`.
 
 https://nyaa.si/view/1913854
@@ -4089,6 +4103,8 @@ upd: how many times do we see/use "comment stream"?
 
 the dispute method is hidden under llm customer service. you have to trigger somehow. friction.
 
+upd 2026.04.09: on 15, the refund scam simply succeeds without hearing a word from the seller.
+
 17 40 comment on a zhihu unixporn article.
 
 ```
@@ -4139,7 +4155,7 @@ some "factory phones" (a phone with some plastic stuff around) and "boards" (a p
 
 prices on xianyu are weird. some old macbooks cost less than 1k (still way more expensive than vms). some old windows laptops are less than 200 (well, they are thinkpads, with a red touch icon in the center of the keyboard. no one but the creator of photopea will use it.). 
 
-Upd: the seller refund after I ignore messages while sleeping. The price raises 10 cny then btw. Not willing to buy.
+Upd: the seller terminate and refund after I ignore messages while sleeping. The price raises 10 cny then btw. Not willing to buy.
 
 23 00 request to export twitter data.
 
@@ -4374,6 +4390,50 @@ i could use berryberry comment tracker to list all menci. that's an idea.
 > 9 年前 / 啊我也好喜欢这首歌...而且感觉现在都没什么人写blog了...
 
 the essay starts as where it ends.
+
+13 00 play basketball. refresh. cut nail. 15 00
+
+see an old man claiming to have received unfair treatment by the gov sitting near the ground, who does not ask for money (which implies it might be true), is one once served in the army failing in internal political wars. he asks to take a photo with not so fluent mandarin, which my coach (who has a wife/gf of international background across hk, au, as a archi designer, who admires sports maybe) does. despite my coach's sigh, i point out many old men deserve far more suffering, even forced death, for living under the time of the cultural revolution. later he says he wont consider ever having a child stuck within the country. idk, but it seems possible to get au pr from marriage.
+
+he asks if i would like to have been born in the us. well... us is constantly changing (move fast and break things). it's the undeniable best country, but maybe human brains dont like the hustle and bustle.
+
+btw, his twi and yt are full of politics porn.
+
+(after bath) sunshine. summer time. memories of childhood. no longer put on trousers.
+
+skin feels easy in the air. (though, i feel i catch cold, likely due to lack of sleep?)
+
+shorts/skirts are also good. i remember the days i were playing go sitting on the cozy wooden armed chair. cool, even without wind.
+
+still put on the watch, which feels like a part of my physical body now.
+
+green tea (or boiled water) feels calmer than coca cola.
+
+upd: now, again, instead of surfing twitter, i would prefer more to view the archive (whether a blog from wget, or an archived tg channel/chat), less friction (network req, since twitter dont preload aggressively), more meaning (the full history in your hands).
+
+16 20 appreciate `NOI WC 2017 膜你抄 [BV1Rx41117DQ]`.
+
+17 40 check `键政梗百科之绿色兰博基尼丨邓四代公开炫富丨官倒丨价格双轨制丨康华丨邓朴方丨改革开放的波折与价格闯关的挫败`.
+
+fun. the narration only makes it more weird.
+
+these wealthy guys also use the word xm (envy/jealousy)? lol.
+
+upd: the mygo politics vid is taken down due to copyright (anime producer). censored platforms obviously could not host it. without youtube, idk where could the vid be with at least minimum seo. though, it's common to use tg blogs, if you explicitly link and disclose things. 
+
+18 40 rm the old ubuntu partition to free up space.
+
+i dont feel im gonna need it anymore.
+
+21 00 check `【补档】解诂 二次元毛邓江胡！木柜子动漫少女代指中国五代领导人的键政密码本丨毛泽东丨邓小平丨江泽民丨叶剑英丨王沪宁丨薄熙来丨刘少奇丨华国锋丨剥削有功论丨朴正熙吧丨键政百科` `[解诂]（下架视频补档) Mygo少女乐队与中国领导人密码本|键政|Mygo|动漫|高松灯|长崎素世|中国政治|黑话`.
+
+> bro当初怎么想到缓存的
+>
+> 防微杜渐吧，毕竟我一直都担心博主被黑皮找上门
+
+> 中外势力联合绞杀这一块 <!-- 😂 -->
+
+> 立希想赖在位子上不走，搞独裁 <!-- 😅😅 -->
 
 
 
