@@ -321,3 +321,27 @@ confirmed many times. always these avatars appearing.
 not just devs. many niches.
 
 ---
+
+Agentic Engineering Patterns
+
+https://simonwillison.net/guides/agentic-engineering-patterns/
+
+https://github.com/simonw/research
+
+---
+
+simonw digests.
+
+https://github.com/sponsors/simonw/
+
+https://gist.github.com/simonw/36f567d1b3f8bb4ab4d872d477fbb295
+
+https://gist.github.com/simonw/8b5fa061937842659dbcd5bd676ce0e8
+
+---
+
+https://docs.memoh.ai/about.html
+
+not polished. since i dont wanna fight acbox/menci/chyk, let's wait.
+
+---

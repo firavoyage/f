@@ -1649,3 +1649,30 @@ luoling: llm programming anti patterns.
 https has `//` mailto does not.
 
 ---
+
+swyx uses pingback in his blog?
+
+---
+
+merge email newsletter and rss. (though most support rss better.)
+
+---
+
+for links with "follow" in url, twitter popups the follow cta even if i already follow.
+
+---
+
+on gemini i could only edit the last msg.
+
+idk. but seems big companies are more conservative on ux changes. (though, google changes a lot in the long run.)
+
+do you need to put "new" on tools: image, music? are they goods?
+
+---
+
+on twitter you can see how many ppl you follow fo someone.
+
+but it's not the only stats available!
+
+also, you could not use alt to select.
+

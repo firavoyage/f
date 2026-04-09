@@ -4283,13 +4283,101 @@ use the term carefree idler, recommended by gemini.
 
 luoling comments on a linux (manjaro) setup.
 
+23 00 read swyx blog.
+
+```
+Four Kinds of Luck
+
+Hope luck finds you.
+
+Hustle until you stumble into it.
+
+Prepare the mind and be sensitive to chances others miss.
+
+Become the best at what you do. Refine what you do until this is true. Opportunity will seek you out. Luck becomes your destiny.
+```
+
+09
+
+02 00 research acboxliu. change pronoun to thou/thee on readme.
+
+when i search `acboxliu` on google (anonymously), i appear on the first page. wtf. lol.
+
+reference:
+
+https://bugduck.org/members
+
+https://www.ruanyifeng.com/blog/2024/04/weekly-issue-297.html
+
+acboxliu would repeat grade 10 on 2024.09.01. (sent: 2024.04.19)
+
+https://t.me/s/bdovo_channel/14253
+
+https://t.me/s/linux_do_channel?after=246966
+
+what? i could fetch tg blogs without login?
+
+02 20 research menci.
+
+```
+Made with  💖  by Baoshuo, Menci, nocriz and yhx-12243
+```
+
+classic...
+
+(i remember ive seen the same on atom editor.)
+
+https://oi.men.ci/about-me/
+
+> 后生可畏 orz。
+
+NOI 2004
+
+> 现在高中毕业 32 年。
+
+(appear as ten years, the upper limit, though)
+
+fail to check menci (or tourist, or myself)'s code on codeforces. 
+
+403 wo login, 500 and 503 after login.
+
+menci rm herself on the internet archive?
+
+music player is broken.
+
+code are hard core just like others. "code artist" wont change the fundamentals of cp, like single letter variable names without comments, concise, and no algorithms libraries.
+
+categories are not on nav by default. diary are good.
+
+menci's frnds change, as the blog shifts from cp to (geek/nerd) life.
+
+> 由于我已经离开算法竞赛比较久了，所以这个博客大概不会再有内容上的更新了，只会有错误修正。将来可能会给技术和生活相关的内容开个新的博客，敬请期待~
+
+i feel i would also like to check m67 and hzwer blog... maybe there are some upds? ruanyf weekly are kind of trivial, like hackernews dump with some zh-cn readers (self) submission.
+
+blogs are essentially emotional and retrospective, touching me, a life dulled. 
+
+(the prefix lc misguides me for a while)
+
+upd (?): https://oier.baoshuo.dev/oier/20934
+
+"学姐" "学妹" "学长" "朋友"
+
+upd: https://www.bilibili.com/video/BV1Rx41117DQ
+
+i could use berryberry comment tracker to list all menci. that's an idea.
+
+> 作为一个 hs student 的时间，已经 「过一天少一天」 地在流逝了。
+
+> 7 年前 / 感觉Blog的时代就要逝去了……
+>
+> 9 年前 / 啊我也好喜欢这首歌...而且感觉现在都没什么人写blog了...
+
+the essay starts as where it ends.
+
 
 
 <!--
-
-journal, before carte.
-
----
 
 breadcrumbs:
 

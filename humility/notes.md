@@ -464,3 +464,11 @@ google ai.
 so many dedicated components. find them all?
 
 ---
+
+i could not compete with anyone.
+
+> Be warm. Be strong. Be resilient.
+
+it's my code. use my way. make it mine.
+
+---

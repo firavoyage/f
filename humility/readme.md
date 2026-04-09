@@ -38,3 +38,10 @@ inspired by
 - cursor
 - manus
 
+---
+
+an elegant human-machine interface for a more civilized age
+
+the one fira would like.
+
+humility.

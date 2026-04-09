@@ -215,7 +215,7 @@ folders on all platforms.
 
 ---
 
-provider abstraction design. generator.
+provider abstraction design. ~~generator.~~
 
 ux.
 
