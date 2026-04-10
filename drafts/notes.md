@@ -1691,3 +1691,14 @@ zhihu is a bit too transparent.
 you can see all who votes, who watches a question...
 
 ---
+
+hey github...
+
+can you cache?
+
+> Crunching the latest data, just for you. Hang tight…
+
+or preload?
+
+---
+

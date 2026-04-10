@@ -4416,6 +4416,8 @@ blogs are essentially emotional and retrospective, touching me, a life dulled.
 
 upd (?): https://oier.baoshuo.dev/oier/20934
 
+upd: confirmed. https://loj.ac/u/Menci. see the gmail (real name). a common chinese name wishing the child to be wise and smart. fun cpp define hack: https://loj.ac/s/393291.
+
 "学姐" "学妹" "学长" "朋友"
 
 upd: https://www.bilibili.com/video/BV1Rx41117DQ
@@ -4494,7 +4496,7 @@ upd: also put down the earphone when not needed (wo music playing or noise to be
 
 12 20 surf zhihu. read life/psychology analysis posts on sigon, check not real name (chesszyh tju). 13 00 ~~think about memoh team members and my psycho.~~ 13 ~~20~~ 40 have lunch, mcdonald.
 
-14 00 think about memoh team members.
+14 00 think about memoh team members. 16 40
 
 menci.
 
@@ -4516,11 +4518,79 @@ im using li xinye as a metaphor, or a symbol. they are always trying to beat oth
 
 i also envy her because she plays maimaidx. sometimes i use the word delicious (from funshiki) when i find her emotionally weak, at least implied by some tweets. psychologically schadenfreude comes from unattainable advantage. to study oi, it's a privilege. you know simply achieving something through efforts could be a privilege. when i were young, i often see ppl (e.g. classmates) around me trivial and years later it turns out that im right. some of them even go to colleges (not universities), resulting in ... . some schools dont even teach oi, without any student joins this game realistically. 
 
-maimaidx is also a metaphor. it could be minecraft, competitive programming, rle, unixporn, vocaloid, self hosting, whatever. ordinary ppl (i.e. philistines) dont play maimai dx. they play popular mobile games generally.
+maimaidx is also a metaphor. it could be minecraft, competitive programming, ctf, rle, unixporn, vocaloid, self hosting, whatever. ordinary ppl (i.e. philistines) dont play maimai dx. they play popular mobile games generally.
 
 personally i dont have the privilege to play maimai dx in my early life, i mean seriously. though better than prisoners, hard working yet stupid guys, and the happy fools, i feel i could have done something. 
 
 > the road less taken
+
+chyk.
+
+delicious. 
+
+i remember when i were reading her about page. "i wish i could grow up quickly." i laughed.
+
+such a cute naive child.
+
+personal blog. workarounds. experiments. linux and anime.
+
+a typical asian nerd in the 21st century.
+
+acbox.
+
+prev fe in vue ecosystem.
+
+i dont believe her.
+
+it becomes worse in the llm era, as those fe hype chasers (you know how often they tweet nonsencial version updates) care even less about quality and timelessness.
+
+leohearts.
+
+> Be warm. Be strong. Be resilient. <!-- 温柔坚韧。 -->
+
+romantic relief. anime fantasy.
+
+it's about ideology i think, actually.
+
+i have no idea i would take it, i dont even believe in free will sometimes (as opposed to determinism).
+
+humans' activities could be implied. despite the advancement of modern biology, objectively, i dont feel i could have it (i were about to say "such a privilege" again), as i dont really socialize (while rle is quite cited), yet i dont wanna mess up with long hair (i might pull away some hairs aggressively when im upset or blame it for blocking fresh air).
+
+even though... dreams are good you know. 
+
+i dont like myself either. i might see myself as a deep thinking pursuing accuracy ("stay sharp play smart"), without physical existence, but im not, at least i hope i could be not.
+
+> to be myself wo judgements.
+
+some ppl say they perceive a better qol. life would find its comfortable way i think.
+
+about skill, swe is not something really creative you know. practically, we know whether something feels right or not. there are already too much researchers in the world. well, it could matter a lot of you really want to beat others or prove yourself or something, even implicitly.
+
+lakr233.
+
+idk his resume.
+
+seems cited a few times on many blogs (socialproof), but the ones that cite him dont feel right to me.
+
+i dont like him.
+
+17 20 appreciate `livetune feat. 初音ミク 『Tell Your World』Music Video`.
+
+18 00 read menci blog, diaries.
+
+learn some basic algorithms.
+
+playing `Schubert： Piano Sonata No. 20 in A Major, D. 959： II. Andantino - Schubert： Piano Sonatas D. 958 & D. 959 - Mitsuko Uchida`, the sky is pale blue, kind of bright, but without sunshine, with a bit pink. breeze wind on trees, light blue on walls, the world is in a melachony yet eternal theme. memories of childhood.
+
+upd: exactly, the feeling of schubert.
+
+kmp algorithm is simple, which caches the longest prefix suffix for each length slice of the pattern, to jump faster for weird patterns. though it still takes some time to write in cpp.
+
+boyer moore is more realistic (engineering based), though its right starting comparision feels interesting.
+
+ek search feels like magic (equivalent reduction).
+
+19 20 watch `Please Remember This Type Of Tactic | Chess Rating Climb 1743 to 1776`.
 
 
 

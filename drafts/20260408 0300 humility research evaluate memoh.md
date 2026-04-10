@@ -1282,3 +1282,15 @@ no guidance. idk where can i connect to tools, add knowledge (aka skill), or do 
 > we dont go further after we see "主 = 6".
 
 deprecate.
+
+---
+
+upd 2026.04.10
+
+https://github.com/memohai/Memoh/issues/142
+
+leohearts seems to have the same issue.
+
+---
+
+
