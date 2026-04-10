@@ -1676,3 +1676,18 @@ but it's not the only stats available!
 
 also, you could not use alt to select.
 
+---
+
+use simple present tense as always. ignore grammar check for this.
+
+whether writing git commit or not.
+
+as most of the time, verbs (not nouns), in their simplest form, are the most concise.
+
+---
+
+zhihu is a bit too transparent.
+
+you can see all who votes, who watches a question...
+
+---

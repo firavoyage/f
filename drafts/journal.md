@@ -3167,6 +3167,43 @@ simplify ref. rm low quality stuff in some folders.
 
 find 2 banknotes worth 2 sgd each left on the floor of the university canteen and collect. wow.
 
+upd a month later:
+
+the experience (ignore waiting time):
+
+first, a room of many male teachers speaking chinese. questions:
+
+pick 3 problems from the computer, then teachers will ask.
+
+(i find them hard. i ask if i could think for a while. they say you can but it counts into your total time. well... feels cold.)
+
+- what is h2o ionization. what might impact. (my answer: electrolysation, h2o to h2 and o2. correct answer: h2o to h positive and oh negative, the percentage of each maybe in the chem balance). chem teacher does not ask further (or i forget).
+- what is the formula of simple pendulum. what might impact. (my answer: idk. maybe the mass of the object.). phy teacher's question: does it change whether on the earth or on the moon? (my answer: yes. e.g. to extreme. when you have no g, it will loop forever as a circle. when you have inf g, it will almost stick in the center.). what does it change? speed? route (highest point)?
+- why ice melting caused by global warming makes global warming itself more fierce? (my answer: idk.) geography teacher does not ask further (definitely).
+
+teacher's question:
+
+- ... (i forget)
+- how do you balance since you dont have a good grade? (my lie: i do not attend some exames due to physical damage caused by sports, which is taken into avg. you can refer to my sp uee grades. truth: sometimes i could not take it due to conflicts with the school's chinese styled management. sometimes i simply dont wanna take it for its competitive nature, while at home i feel easier with better qol. i also answer with some abstract mindsets with no actual meaning.)
+- how do you write your go board ocr program. what exact api names do you call, dont saying opencv or libraries stuff? what's the hardest part? what's the conclusion or passing rate? (my lie: sabaki, opencv, abstract logics, api names tranlated in chinese for simpler explanation purpose. it's just a poc. no success rate. truth: it's just make up material for compliance of the chinese education system. i suppose the old professor sees through me, though it does not impact things whatever.)
+
+second, a room of four girl teachers speaking english (one is a bot stating rules.). questions:
+
+randomly picked questions (translation, one zh-en, one en-zh, i even have two min for preparation): 
+
+- something like "in the tide of globalization, ... make joint effort to deal with international affairs like environmental problems ..."
+- something like "chinese craftmanship ..." (idk)
+
+i say it clearly and confidently, just like normal en exams where i do well.
+
+teachers' questions:
+
+- what's your fav subject? math is ... (something like why?) can we predict the world? (i assume she's asking about determinism and i explain a lot of quantum physics stuff)
+- how would you describe the uniqueness of your hometown? (i say i feel it's rural... without hustle and bustle... but with many annoying insects... but i dont find it unique) so shanghai is your second hometown? (yeah, i say it's the most dev city... lots of opportunities. many tech giants...)
+- what do you think of extreme sports like marathon? (marathon is extreme sports?) some marathon take many kms... extreme sports in general. is it good? (i say like you should make enough preparation and do it progressively or something) do you see them as heroes? (personally i wont see them as heroes but i think it's pretty reasonable for them to think that as it *is* a challenge.)
+
+maybe it carries some weight to me so i remember things even after a mo.
+
 22 00 watch `【极客湾】手机零售机游戏性能大横评2026 厂商作弊太疯狂 OP字幕附`.
 
 too much trivial facts. they should be just references.
@@ -4357,6 +4394,8 @@ fail to check menci (or tourist, or myself)'s code on codeforces.
 
 403 wo login, 500 and 503 after login.
 
+upd a day later: i could access. though, it feels hard just like menci's oi blog posts. even if i understand the logic, it feels boring.
+
 menci rm herself on the internet archive?
 
 music player is broken.
@@ -4434,6 +4473,54 @@ i dont feel im gonna need it anymore.
 > 中外势力联合绞杀这一块 <!-- 😂 -->
 
 > 立希想赖在位子上不走，搞独裁 <!-- 😅😅 -->
+
+23 00 read `Goodbye, 2018` on menci blog. 00 20
+
+chinese is hard to read... (esp deeply emotional and nostalgia lines where you taste the words over and over)
+
+maybe she outplays me even with only uee score. though, what would happen if i could have played the game in hs seriously? 
+
+get touched.
+
+10
+
+04 00 put off the watch.
+
+easier.
+
+upd: also put down the earphone when not needed (wo music playing or noise to be cancelled).
+
+10 40 have breakfast, a yellow (pumpkin?) steamed bun with sweetened bean inside. 11 20 play duolingo, project sekai, douyin.
+
+12 20 surf zhihu. read life/psychology analysis posts on sigon, check not real name (chesszyh tju). 13 00 ~~think about memoh team members and my psycho.~~ 13 ~~20~~ 40 have lunch, mcdonald.
+
+14 00 think about memoh team members.
+
+menci.
+
+i feel i envy her. but why. i wonder. 
+
+to stand on the stage, one has to outplay others, most of the others, as trivial (i.e. ordinary) people are ignored by default. 
+
+those with achievements, academic performance, research papers or projects, competitions, arts and literature, whatever, whether intentionally pursuing them or not, are essentially non trivial (i.e. normal).
+
+but it, itself, is a trivial fact. it does not matter. it's just an entrance ticket to make something happen (a vocational school student could not change much, at least very unlikely). you know there are people born with privileges, like those under businessmen or politicians. i dont really envy them. some even just throw money in various entertainments and show off on sns.
+
+> there are not so many people in the world.
+
+that's what really hits me. it seems that she really has some memories, precious memories (better than nothing, actually much better, even if she feels sorrow reflecting on these). reading her essays, whether on twitter or her oi blog, i have the feeling akin to zang hua yin on the red chamber, though they dont carry such a literature depth that i recall from time to time and even talk to myself walking on corridors or looking into distance.
+
+well, most ppl dont. not until getting into pku or thu, their dream university (e.g. as postgraduate), do some ppl get out of depression and anxiety, while it does not change things as it's inherently empty. i want to say li xinye, who might objectively have a better bg, education, or salary than menci. i would say he is fun, and brutally honest to some ppl. but i dont envy him at all, as i feel he has almost lost his sanity. 
+
+im using li xinye as a metaphor, or a symbol. they are always trying to beat others, for the sake of it, to prove something maybe or satisfy themselves.
+
+i also envy her because she plays maimaidx. sometimes i use the word delicious (from funshiki) when i find her emotionally weak, at least implied by some tweets. psychologically schadenfreude comes from unattainable advantage. to study oi, it's a privilege. you know simply achieving something through efforts could be a privilege. when i were young, i often see ppl (e.g. classmates) around me trivial and years later it turns out that im right. some of them even go to colleges (not universities), resulting in ... . some schools dont even teach oi, without any student joins this game realistically. 
+
+maimaidx is also a metaphor. it could be minecraft, competitive programming, rle, unixporn, vocaloid, self hosting, whatever. ordinary ppl (i.e. philistines) dont play maimai dx. they play popular mobile games generally.
+
+personally i dont have the privilege to play maimai dx in my early life, i mean seriously. though better than prisoners, hard working yet stupid guys, and the happy fools, i feel i could have done something. 
+
+> the road less taken
 
 
 

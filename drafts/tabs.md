@@ -350,3 +350,9 @@ file:///home/fira/Music/_/[FULL] Mahou Shoujo Madoka★Magica ED 『Magia』 Rom
 
 ---
 
+chess vibes rating climb
+
+https://www.youtube.com/watch?v=ykzzSz6192Q&list=PLp7SLTJhX1u6zKT5IfRVmcVs1U1C3eHb5&index=37
+
+---
+

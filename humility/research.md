@@ -265,3 +265,10 @@ llms would never use the wrong character (it's esp. human).
 likely llms generated, which llms could not really generated for llms.
 
 ---
+
+img gen:
+
+return img url or base64 url
+
+---
+
