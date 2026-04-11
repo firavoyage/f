@@ -4418,6 +4418,8 @@ upd (?): https://oier.baoshuo.dev/oier/20934
 
 upd: confirmed. https://loj.ac/u/Menci. see the gmail (real name). a common chinese name wishing the child to be wise and smart. fun cpp define hack: https://loj.ac/s/393291.
 
+upd: history. https://web.archive.org/web/*/https://twitter.com/huanghaorui/* (yet some are accessible even with the tweetid given. seems menci rm or hides them, just like the internet archive.)
+
 "学姐" "学妹" "学长" "朋友"
 
 upd: https://www.bilibili.com/video/BV1Rx41117DQ
@@ -4431,6 +4433,8 @@ i could use berryberry comment tracker to list all menci. that's an idea.
 > 9 年前 / 啊我也好喜欢这首歌...而且感觉现在都没什么人写blog了...
 
 the essay starts as where it ends.
+
+12 40 (re) listen to `No.67 和Bug Duck 团队聊青少年前端开源启航`.
 
 13 00 play basketball. refresh. cut nail. 15 00
 
@@ -4451,6 +4455,16 @@ still put on the watch, which feels like a part of my physical body now.
 green tea (or boiled water) feels calmer than coca cola.
 
 upd: now, again, instead of surfing twitter, i would prefer more to view the archive (whether a blog from wget, or an archived tg channel/chat), less friction (network req, since twitter dont preload aggressively), more meaning (the full history in your hands).
+
+upd: menci might not be the best. there are many thu/pku students in this game. these ppl are almost all alive now and they are continuing their <!-- legend --> legacy. though, most dont use sns a lot in the moe way. fun fact: menci and luoling always appear together (to follow someone). luoling does not even need a university diploma (?).
+
+upd: these days im using mhtml again, just like the summer holidays between grade 10 and grade 11, without exporting them to md. it's simple, just ctrl s and enter. 
+
+the days menci were creating memories on oi, i were playing the chess of go maybe (though, im not really a pro in the strict sense.). i achieved 5 dan, with one lose on 4 kyu and one lose on 5 dan to two grown ups (on kyu, you have to win 4 out of 7 games, while on dan, you have to win 5 out of 7 games. day 1 has 4 games. day 2 has 3. on kyu, with 4 consecutive wins from the beginning you can simply go home. on dan you have to participate on both of the 2 days whatever.). im confident (proud) of this that i only compete when im sure i would win, where i see myself wise, very wise. i also played in some competitions. though, unlike oi (maybe due to transparency compliance), none of these are public on the internet, with only a paper/booklet of certificate left somewhere in my home and maybe the id in a db. im not good at remember the games and the past game records are nowhere to be found, esp if the book is away. some josekis are classic and denied by ai.
+
+> black 185. white 177.
+
+i have to say it with a sigh. it's just a hobby, right?
 
 16 20 appreciate `NOI WC 2017 膜你抄 [BV1Rx41117DQ]`.
 
@@ -4591,6 +4605,24 @@ boyer moore is more realistic (engineering based), though its right starting com
 ek search feels like magic (equivalent reduction).
 
 19 20 watch `Please Remember This Type Of Tactic | Chess Rating Climb 1743 to 1776`.
+
+11
+
+02 20 write a note <!-- and put --> on my desk, "六月是你的高考".
+
+02 40 complete `blackboard.md`.
+
+i were about to read something. but i could hardly open my eyes for no reason.
+
+sleep.
+
+10 00 read menci oi blog. play music, yumeoibito.
+
+not a really popular song. (no yt music item)
+
+calm and optimistic. pragmatic.
+
+12 20 play project sekai.
 
 
 

@@ -1702,3 +1702,90 @@ or preload?
 
 ---
 
+when you view twitter wo login.
+
+the posts are different. at least not time order. idk. maybe afo.
+
+https://x.com/lcMenci
+
+some ppl do not appear on following. idk.
+
+https://x.com/Sengxian/with_replies (menci and luoling follows)
+
+https://x.com/lcMenci/following (menci do not follow, idk, maybe plugin?)
+
+there are many good legacy posts, such as photos, thoughts, life upd. 
+
+the problem why i surf twitter too much, or i dont wanna surf it, might be caused by speed.
+
+i wish it could be time rendered. no progressive loading.
+
+project egg.
+
+egg.
+
+> Full-Stack Software Engineer @Microsoft · Self-Motivated Code Artist
+
+a few days ago i remember there were something like "agentic".
+
+yet the internet archive and archive.today and save page now dont help much.
+
+auto tracking is non nego!
+
+---
+
+i will archive comments as well as posts!
+
+and make it backward and forward compatible.
+
+---
+
+most ppl dont list everything on name/name: readme
+
+you can iterate github repos and create the history...
+
+(why? the github builtin feature is very slow and one mo by default)
+
+you can see through the whole history even wo llms.
+
+llms could summarize in your style.
+
+---
+
+i often ask
+
+"what does a (in disambi) mean" meaning
+
+"the history of ..."
+
+i could select a word and click one of them.
+
+like science, you can have keywords like factor (depend) and impact (imply).
+
+simple prompts are often enough. you can have styling. though i like the default one.
+
+---
+
+music on menci oi blog are good.
+
+save them.
+
+"yichiban no fira"
+
+---
+
+https://x.com/lcMenci/media
+
+i need at least 1min to load all photos and vids as it uses progressive loading. (about 1k media)
+
+local first!
+
+---
+
+oierdb 为什么一直加载?
+
+不会用 idb 吗?
+
+---
+
+
