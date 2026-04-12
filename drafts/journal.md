@@ -4466,6 +4466,8 @@ the days menci were creating memories on oi, i were playing the chess of go mayb
 
 i have to say it with a sigh. it's just a hobby, right?
 
+upd: https://www.deviantart.com/lelitaa/art/Cute-Anime-Animal-Render-Girl-580235588
+
 16 20 appreciate `NOI WC 2017 膜你抄 [BV1Rx41117DQ]`.
 
 17 40 check `键政梗百科之绿色兰博基尼丨邓四代公开炫富丨官倒丨价格双轨制丨康华丨邓朴方丨改革开放的波折与价格闯关的挫败`.
@@ -4626,7 +4628,39 @@ calm and optimistic. pragmatic.
 
 13 00 play basketball. 15 00
 
-17 00 organize and archive memories.
+17 00 organize and archive memories, from various paperback prizes/certifications to old laptops.
+
+23 40 reg `firahq` on codeforces.
+
+send some emails to usst and ccf with simple english.
+
+24 00 finish reading menci oi blog diaries.
+
+life. dreams. wishes. connections. spirits. memories.
+
+12
+
+00 00 take a walk in the estate. 01 00
+
+ive been here since childhood. the trees have not changed, quietly growing in the gentle wind.
+
+at that time i were a pure thinker, emotionless, accurate, yet confident and energetic.
+
+in the darkness, the lights are bright, too bright, but stable, reflecting on the ponds, where i stare from time to time, unconsciously. they could be yellow, but they are white, resonating with the cold weather.
+
+im the only one in the serenity. the world is sitting there, peacefully. there's nothing on my mind.
+
+01 40 simplify `top down bottom up mindset` by stripping away some llm boilerplates (e.g. good question, if you want).
+
+02 00 browse https://web.archive.org/web/*/https://luogu.store/* under `text/html`.
+
+https://github.com/oi-zone/luogu-archive
+
+> 未雨绸缪
+
+03 00 skim `NOIP 2025 SC 迷惑行为大赏`.
+
+the organizer disclose all code anonymized. fun. reflect the language of the time.
 
 
 
