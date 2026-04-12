@@ -106,9 +106,28 @@ tmp
 
 ```sh
 yt-dlp \
-  "https://music.youtube.com/playlist?list=OLAK5uy_n7SAGbx-PhFCLIY2euKmk8TmBAILXT9iw" \
+  "https://music.youtube.com/watch?v=OArru5OkVKE&list=OLAK5uy_n-lE02j8pQkwGhsL5JLAPvbBAoAmxh9n8" \
   -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
-  -o "_/Metallica/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
+  -o "_/Pink Floyd - The Wall/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
+yt-dlp \
+  "https://music.youtube.com/playlist?list=OLAK5uy_lrCrcAdxFG4aMzMrebs7o9TU384xyF240" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  -o "_/Pink Floyd - The Dark Side of the Moon
+/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
+```
+
+pink floyd
+
+```sh
+yt-dlp \
+  "https://music.youtube.com/watch?v=OArru5OkVKE&list=OLAK5uy_n-lE02j8pQkwGhsL5JLAPvbBAoAmxh9n8" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  -o "_/Pink Floyd - The Wall/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
+yt-dlp \
+  "https://music.youtube.com/playlist?list=OLAK5uy_lrCrcAdxFG4aMzMrebs7o9TU384xyF240" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  -o "_/Pink Floyd - The Dark Side of the Moon
+/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
 ```
 
 Deep Purple

@@ -1813,3 +1813,90 @@ csp s 2024 p1.
 证明, 最小是众数 (无限制), 最大也是众数 (任取, 存在构造).
 
 ---
+
+https://loj.ac/d/2685
+
+the ui menci would like, since 2018.
+
+https://loj.ac/d/4775
+
+(seems menci is just a bit more than the minimum cf rating... though that's already too strong.)
+
+https://loj.ac/d/152
+
+(btw, oi 圈子真小. 比 zh-cn devs on twitter 还要小许多, 虽然这很显然.)
+
+一般来说, 厉害的开发者, 大概
+
+- 小时候有闲, 玩 doom 这些游戏
+- 打 OI
+- 喜欢前端, 因为所见所得, 有视觉效果
+
+软件工程倒是许多平凡的. 一份职业而已.
+
+---
+
+renbaoshuo:
+
+> Likes/RTs are not endorsements.
+
+lol. what does it imply?
+
+(like leohearts, who say she stands with ppl around her)
+
+---
+
+"on license".
+
+write `license.md` on humility.
+
+> put one like reset.css.
+
+make things simple and clear.
+
+md allows comments, which you dont wanna put in a separated file like why or rationale.
+
+---
+
+https://github.com/Moeditor/Moeditor?tab=readme-ov-file
+
+menci in 2016?
+
+"(programming) with (heart) by ..."
+
+it were common that age, the message, as seen on atom editor. as w as the ui. 
+
+though, i see wysiwyg md as a failed idea.
+
+there is no src or package folder, like modern repos.
+
+maybe it reflects the author somehow.
+
+menci thinks herself as "code artist". no idea.
+
+we dont put a license or copying file. we put "gpl" and all contributors (time, name, email) on each file.
+
+we also put contributing guide there for translations, which is a js file (with class, constructor, this, etc.). jp, zh-tw, zh-hk is not available. eu langs are available, unexpected. yet we dont call it internationalization, we call that localization instead.
+
+if i were able to choose, is it good to grow up at that age?
+
+---
+
+OI Wiki 不知道从什么时候开始支持评论了.
+
+可是会很奇怪呢, ui 上. 这真的好吗? 为什么不是引用呢? 或者, 简单加一个脚注呢?
+
+Innei 的 blog 上, 可以看见同时访客...
+
+这不好吧... <!-- cv: lv yirong -->
+
+---
+
+OI Wiki, were once from Dalian No.24 High School.
+
+see also
+
+https://github.com/24OI/24OI-whk-guide
+
+---
+

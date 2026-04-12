@@ -4142,6 +4142,8 @@ the dispute method is hidden under llm customer service. you have to trigger som
 
 upd 2026.04.09: on 15, the refund scam simply succeeds without hearing a word from the seller.
 
+upd 2026.04.12: get banned. luckily i have redundancy. pay 30 cny for 3 mo. seems it's not anonymized. though, techinically i could easily exploit the time window.
+
 17 40 comment on a zhihu unixporn article.
 
 ```
@@ -4458,6 +4460,8 @@ upd: now, again, instead of surfing twitter, i would prefer more to view the arc
 
 upd: menci might not be the best. there are many thu/pku students in this game. these ppl are almost all alive now and they are continuing their <!-- legend --> legacy. though, most dont use sns a lot in the moe way. fun fact: menci and luoling always appear together (to follow someone). luoling does not even need a university diploma (?).
 
+upd of upd: why are gold medals not that active than menci? a bit sad... some just go abroad and live a simple life in faangs or fintechs as a pro dev.
+
 upd: these days im using mhtml again, just like the summer holidays between grade 10 and grade 11, without exporting them to md. it's simple, just ctrl s and enter. 
 
 the days menci were creating memories on oi, i were playing the chess of go maybe (though, im not really a pro in the strict sense.). i achieved 5 dan, with one lose on 4 kyu and one lose on 5 dan to two grown ups (on kyu, you have to win 4 out of 7 games, while on dan, you have to win 5 out of 7 games. day 1 has 4 games. day 2 has 3. on kyu, with 4 consecutive wins from the beginning you can simply go home. on dan you have to participate on both of the 2 days whatever.). im confident (proud) of this that i only compete when im sure i would win, where i see myself wise, very wise. i also played in some competitions. though, unlike oi (maybe due to transparency compliance), none of these are public on the internet, with only a paper/booklet of certificate left somewhere in my home and maybe the id in a db. im not good at remember the games and the past game records are nowhere to be found, esp if the book is away. some josekis are classic and denied by ai.
@@ -4467,6 +4471,8 @@ the days menci were creating memories on oi, i were playing the chess of go mayb
 i have to say it with a sigh. it's just a hobby, right?
 
 upd: https://www.deviantart.com/lelitaa/art/Cute-Anime-Animal-Render-Girl-580235588
+
+upd: menci is still active in songwriting and rhythm games. best wishes to her.
 
 16 20 appreciate `NOI WC 2017 膜你抄 [BV1Rx41117DQ]`.
 
@@ -4622,6 +4628,8 @@ sleep.
 
 not a really popular song. (no yt music item)
 
+> yichiban
+
 calm and optimistic. pragmatic.
 
 12 20 play project sekai.
@@ -4661,6 +4669,10 @@ https://github.com/oi-zone/luogu-archive
 03 00 skim `NOIP 2025 SC 迷惑行为大赏`.
 
 the organizer disclose all code anonymized. fun. reflect the language of the time.
+
+22 40 appreciate moeditor's legacy.
+
+23 00 dl `Pink Floyd - The Wall` `Pink Floyd - The Dark Side of the Moon`.
 
 
 
