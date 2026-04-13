@@ -112,8 +112,7 @@ yt-dlp \
 yt-dlp \
   "https://music.youtube.com/playlist?list=OLAK5uy_lrCrcAdxFG4aMzMrebs7o9TU384xyF240" \
   -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
-  -o "_/Pink Floyd - The Dark Side of the Moon
-/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
+  -o "_/Pink Floyd - The Dark Side of the Moon/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
 ```
 
 pink floyd

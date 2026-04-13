@@ -64,6 +64,7 @@ life:
 - render x11 wayland
 - gnome kde
 - envy jealousy
+- ad hoc
 
 create something:
 
@@ -251,6 +252,10 @@ pure:
 - history
 - geography
 - politics
+
+pure economics:
+
+- gdp per captica ppp
 
 glaze:
 

@@ -1882,6 +1882,16 @@ if i were able to choose, is it good to grow up at that age?
 
 ---
 
+Lyrio
+
+https://github.com/LibreOJ/backend
+
+menci were still young.
+
+it does not use monorepo, where be and fe are separated.
+
+---
+
 OI Wiki 不知道从什么时候开始支持评论了.
 
 可是会很奇怪呢, ui 上. 这真的好吗? 为什么不是引用呢? 或者, 简单加一个脚注呢?
@@ -1900,3 +1910,34 @@ https://github.com/24OI/24OI-whk-guide
 
 ---
 
+btw, menci loves this emoji, right?
+
+💖
+
+(i use `:heart:` more to avoid attention grabbing)
+
+---
+
+OI Wiki 征稿与招募启事54 replies
+
+https://loj.ac/d/711
+
+> 考古，感谢&膜拜前辈们
+
+---
+
+luogu 的网页很差.
+
+头像要 ctrl shift r 才更新, 否则 cache.
+
+没有 dark mode default.
+
+fouc.
+
+---
+
+oierdb could have done a lot with the data. not just prizes demo and players list.
+
+e.g. they could find the dist of score, stats.
+
+---

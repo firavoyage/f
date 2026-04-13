@@ -4438,6 +4438,12 @@ the essay starts as where it ends.
 
 12 40 (re) listen to `No.67 和Bug Duck 团队聊青少年前端开源启航`.
 
+45' Acbox: teen programming is a scam, as a workaround of uee sometimes in their claims.
+
+at that time, she were brutal, naive, in the voice of a boy. nerds often could not express their thoughts clearly. though, i dont really want to see fe guys as nerds.
+
+yet, seems she would not take uee. yet wealthy (?). she play in bands. she pay llms quite a lot.
+
 13 00 play basketball. refresh. cut nail. 15 00
 
 see an old man claiming to have received unfair treatment by the gov sitting near the ground, who does not ask for money (which implies it might be true), is one once served in the army failing in internal political wars. he asks to take a photo with not so fluent mandarin, which my coach (who has a wife/gf of international background across hk, au, as a archi designer, who admires sports maybe) does. despite my coach's sigh, i point out many old men deserve far more suffering, even forced death, for living under the time of the cultural revolution. later he says he wont consider ever having a child stuck within the country. idk, but it seems possible to get au pr from marriage.
@@ -4670,9 +4676,247 @@ https://github.com/oi-zone/luogu-archive
 
 the organizer disclose all code anonymized. fun. reflect the language of the time.
 
+09 40 Learn ieits. 18 00
+
+Language learning is fun. Though classmates feel not so powerful or approachable sometimes, just like the world itself. geeks on windows are not geeks, right?
+
+The teacher knows about sbti (a weird mbti test fork). Is it something happening today (seen many rt on tg)?
+
+Take subway home. Everyone is on their phones. A random lady is playing Duolingo fr with membership. Boring.
+
+21 20 think before dinner.
+
+```
+Don't like Olympiads. 
+
+Toxic, lol.
+
+Once they were not that nerd.
+
+Nerd and nerd as playing. 
+
+Whether geniuses or not.
+
+The youth-only memories.
+```
+
+nerds are the lit. translation of shin nin. both carry the sarcastic yet jealous vibe.
+
+i remember flower says there are three kinds of players...
+
+in all competitions there are wins and loses. yet, whether or not, is it the spirit of nerds that persist throughout their lives?
+
+```
+I don't really want to see memoh as my competitor in any way. 
+
+Its devs are all nerds in diverse fields.
+
+Openclaw either. No idea why it could still be what it is even now.
+
+Without uee pressure, with inf tokens, I think acbox would reality ify the imagination (expected result) one prompt away.
+
+Though, I won't go that way.
+```
+
 22 40 appreciate moeditor's legacy.
 
 23 00 dl `Pink Floyd - The Wall` `Pink Floyd - The Dark Side of the Moon`.
+
+23 40 comment on yutota channel.
+
+```
+芋头今天吃什么😺, [4/12/26 10:37 PM]
+潮发 #牛肉火锅
+不愧是广州啊，肉真的很鲜，特推这个双层肉，白味第一口惊艳到。牛舌倒是一般。
+人均 ¥105，三人吃撑。缺点的话，店里实在太吵了，等位的时候还喜欢大喇叭放广告，体验不好。
+
+雫 夢野, [4/12/26 10:37 PM]
+（偷吃
+
+双倍多多🧶 | 冰𝐮𝐭𝐢𝐥𝐬, [4/12/26 10:38 PM]
+诶 芋头又来广州了！
+
+Yutoca Leohearts✨, 芋头, [4/12/26 10:38 PM]
+在广州常住咯
+
+双倍多多🧶 | 冰𝐮𝐭𝐢𝐥𝐬, [4/12/26 10:38 PM]
+诶诶诶
+
+Yutoca Leohearts✨, 芋头, [4/12/26 10:39 PM]
+在南沙，刚租了房子
+
+双倍多多🧶 | 冰𝐮𝐭𝐢𝐥𝐬, [4/12/26 10:40 PM]
+草
+来建设大湾区（几何）中心了吗
+
+Yutoca Leohearts✨, 芋头, [4/12/26 10:40 PM]
+草
+
+Yutoca Leohearts✨, 芋头, [4/12/26 10:40 PM]
+主要是女朋友要去香港上学，偶尔需要通勤，这边算是性价比比较高的了
+
+双倍多多🧶 | 冰𝐮𝐭𝐢𝐥𝐬, [4/12/26 10:41 PM]
+草
+火车到南沙北站吗
+
+Yutoca Leohearts✨, 芋头, [4/12/26 10:42 PM]
+是吧
+
+Liang Ashes, [4/12/26 10:52 PM]
+呜呜呜（打滚
+
+何奕伟, [4/12/26 10:55 PM]
+我饿饿
+
+Arius Sul G Saite, [4/12/26 11:26 PM]
+（偷吃一口
+
+f, [4/12/26 11:36 PM]
+好多人啊...
+```
+
+im now using the word channel again. pictures and vids are channel. thoughts and memories are blog. wherever they are.
+
+it's never too old to be with a gf.
+
+13
+
+00 00 appreciate acbox blog.
+
+```
+箱子跑来跑去📦, [4/4/26 12:10 AM]
+看来推特戒断计划成功一半了
+
+箱子跑来跑去📦, [4/4/26 2:38 AM]
+想去曼谷
+
+霜, [4/4/26 4:02 AM]
+来
+
+RieN7, [4/4/26 10:38 AM]
+曼谷挺有意思的w
+
+Acbox Neko, [4/4/26 11:02 AM]
+没钱😭
+
+箱子跑来跑去📦, [4/6/26 12:21 AM]
+大概想清楚为什么我会有这种感觉了
+首先我相信AI泡沫，但是我希望这个泡沫永远不要破，因为我确实靠着社会对AI的fomo赚了，我希望我能一直赚（
+
+路上看见, [4/6/26 12:30 AM]
+没有ai泡沫可能我们已经死了
+
+Gary です, [4/6/26 12:54 AM]
+xmsl
+
+箱子跑来跑去📦, [4/6/26 3:24 AM]
+看了一些人童年/中学时期的自述，我会非常羡慕他们，明明我在那个时期和他们有差不多的特质，可惜我出生在了那种鬼地方
+
+箱子跑来跑去📦, [4/6/26 3:28 AM]
+我会羡慕我的一些朋友，我的对象，他们在童年时期都得到了公平对待，认可与尊重，如果我的童年同样能得到这些也许我就不会像现在这么痛苦了
+
+混柠土, [4/8/26 2:22 AM]
+xm
+
+箱子跑来跑去📦, [4/8/26 1:59 AM]
+好难过
+
+Cherry Zhu, [4/8/26 4:13 PM]
+摸摸
+
+Wings Butterfly, [4/9/26 2:45 AM]
+摸摸，已经很厉害了，我已经成为22岁的大叔了依然一事无成
+
+BBQ, [4/9/26 3:46 PM]
+摸摸，已经很厉害了，我已经成为24岁的大叔了依然一事无成
+
+xya 诺🍥, [4/10/26 3:32 AM]
+摸摸，已经很厉害了，我已经成为19岁的fvv了依然一事无成
+
+箱子跑来跑去📦, [4/11/26 6:30 PM]
+猫
+（深圳快30度的天气终于有机会让我穿上这件裙子了TwT）
+
+Anthony Summit, [4/11/26 6:31 PM]
+（捏捏猫爪
+
+Arius Sul G Saite, [4/11/26 6:31 PM]
+可爱猫猫！
+
+Lee, [4/11/26 6:43 PM]
+好热
+
+雫 夢野, [4/11/26 6:52 PM]
+
+
+善解人意的 末影猫/猫猫, [4/11/26 9:31 PM]
+哇是烤猫（咬）
+
+daylily 📨, [4/11/26 9:35 PM]
+喵
+
+明统 若空, [4/11/26 10:24 PM]
+可爱喵
+
+Arius Sul G Saite, [4/11/26 10:26 PM]
+堆堆袜也好可爱！
+
+Terminal at Fangcun, [4/11/26 10:27 PM]
+猫🐱
+```
+
+no idea.
+
+01 40 group some ppl on readme personas. simplify life category.
+
+close all twitter tabs.
+
+13 40 post on twitter anni.
+
+```
+Do you remember when you joined Twitter? I do! #MyTwitterAnniversary 
+
+(a vibrant image)
+```
+
+(rp x w twitter.)
+
+btw, himself65 rm some old memes (trick openclaw to break your system), where she likes me cmt. a direct reference of the never ending now. hypes...
+
+14 00 check renbaoshuo on oierdb. solve noip 2023 p1, which is the only problem solved in his last attempt.
+
+https://www.luogu.com.cn/problem/P9868
+
+simple grade 10 math mindset: for all it works, iff the hardest one works. exists one that works, iff the easiest one works.
+
+> iff means if and only if, `<=>`.
+
+solution: 
+
+- pre proccess: sort each to make each largest, pick the smallest. 
+- for each: sort to make it smallest, cmp.
+
+idk if cpp could sort an array of string or sort a string itself using dict order by default. idk how many computation could happen within 1s. in js/ts ik i could ofc do it easily.
+
+btw, i thought i would be `nlogn`, while editorials all say `n^2` (maybe a string is not a number). seems they have to play perf tricks. (but this one does not?! https://www.luogu.com.cn/article/76t4krjj). i have no idea.
+
+(yet, they define various for loop macro, number as long long to fix cpp.)
+
+leave a cmt.
+
+```
+?! no perf engineering needed ?!
+```
+
+for p2, seems you could have 20 pts easily: convert to base 3 num, iterate sol space.
+
+no idea what c is.
+
+the next 20 pts is also easy: just cnt how many u in v.
+
+vars could not calc with each other. once something is tfu, everything following is clear. but it seems tricky to handle `+-`. 
+
+without knowing the initial values, a var would be either fixed tfu, the same as someone, or the oppo of someone. idk, maybe i need some advanced knowledge.
 
 
 
@@ -4687,6 +4931,8 @@ see firavoyage/blogging readme personas.
 see weekly, projects, journal, all
 
  -->
+
+<!-- timebox, roadmap. -->
 
 <!--
 
