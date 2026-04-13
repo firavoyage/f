@@ -4916,7 +4916,47 @@ the next 20 pts is also easy: just cnt how many u in v.
 
 vars could not calc with each other. once something is tfu, everything following is clear. but it seems tricky to handle `+-`. 
 
-without knowing the initial values, a var would be either fixed tfu, the same as someone, or the oppo of someone. idk, maybe i need some advanced knowledge.
+(suppose: by simulation, ) without knowing the initial values, a var would be either fixed tfu, the same as someone, or the oppo to someone. idk, seems i need some advanced (data structure) knowledge, like graph maybe.
+
+i could not even solve the simple case, 3 vars, 1 to 2, 2 to 3, 3 to 1, all oppo, without algorithms (like project euler or imo, not ioi/icpc). fixed tfu does not matter, which could be filtered.
+
+seems it comes from the observation that everything is derived by a prop of the graph. (i could only understand this https://www.luogu.com.cn/article/vsucbwww)
+
+(for no reason, i have not found any editorial mentioning gauss)
+
+17 20 appreciate `I Made a 32-bit Computer Inside Terraria` `I Made Chess 2.0`.
+
+nerd. "turing complete".
+
+(check out other vids... chess wo turns? like the one on berryberry from sjtu?)
+
+recommendation: student he (visual piano). i dont like that guy for cheating, though, seems he managed to get the 2m subs recently somehow. animations and storytelling are just for stimulations.
+
+a success without meaning or purpose.
+
+18 00 read renbaoshuo blog.
+
+18 20 dl some `NOIP 选手程序公示`.
+
+not well organized, but scattered on the provincial site with distinct ui of each.
+
+well, the csv file even does not use utf-8. (though vscode guessed right when i try to make it work.). 
+
+wait, what? their personal identity keys are also disclosured and mapped? https://www.luogu.com.cn/problem/U260298 (csp s 2022 bj)
+
+many students are from commerical tutoring schools (like netease). luogu even claims 1/7 noi players are from their program.
+
+18 40 dl the player list of some contests possibly related to me.
+
+oierdb only tracks those who has won prizes.
+
+confirm: im a participant for no reason. there is a player with the same name of `kkksc03` sitting next to me. no additional data. likely name collision.
+
+well, from oierdb, you could win a prize even with one problem solved. maybe im omitted?
+
+anyway, im not a serious oier who dedicates time learning.
+
+19 20 dl `和孩子一起玩编程` (mv under `books/intuitive/py`).
 
 
 

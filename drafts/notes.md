@@ -1941,3 +1941,22 @@ oierdb could have done a lot with the data. not just prizes demo and players lis
 e.g. they could find the dist of score, stats.
 
 ---
+
+leisure.
+
+there are already many llm based dicts.
+
+you could cache to a local dict, as the meaning does not really change by time.
+
+though, you dont know what it should be, e.g. for hello and world. how would you write it manually (do dont scale)?
+
+---
+
+menci. frnds.
+
+file:///home/fira/Documents/_/pages/%E6%9C%8B%E5%8F%8B%E4%BB%AC%20-%20Menci's%20Blog.mhtml
+
+在这个页面上, 所有人, bio, 都是统一风格的.
+
+---
+
