@@ -1998,6 +1998,46 @@ you dont have to pay to sponsor
 
 if you are someone (i.e. one with high social proof, e.g. menci, chyk, estela, ryolu, dhh), i would like to put your avatar here.
 
+certain ppl are not accepted. 
+
+- fe guys. e.g. innei, evan you, little sound. (there is nothing wrong with web tech. but the reality is they are always annoucing nonsensical version updates, called shipping, creating weird stuff, celebrating every new browser feature. most just simply fade away after 1y.)
+- crypto guys. e.g. guoyu from bytedance, diygod, livid, hongkongdoll. (crypto is freedom. but in reality, it's not just full of scams, but essensially gambling. investment? i dont think so. investment is calm and precise. gambling is not. you know, they are often showing off little successes and releasing new coins.)
+- memers. e.g. himself65, hsn8086, cldeop. (noisy, philistine)
+
 receive money.
 
-fiat. under surveiliance.
+fiat. under surveillance (e.g. kyc). prone to laws. some big guys could easily sue you or dmca you or make your account frozen. most time they dont even need to take that nuclear weapon, since you are already too afraid that you are forced to make unpleasant compromises. it's also centralized, which means you could not write your own client with your own aesthetics easily or automate things without messing up with oauth and reading their docs (which benefits them, not you, obviously).
+
+crypto. ideal. but freedom is not free. maybe due to its complexity, i dont even find a good and simple app with material design (you could use other design systems as well). there is no real blockage. but it's too much friction.
+
+---
+
+on duck email, i could not go back (wo rm all cookies) if i enter the wrong email and confirm.
+
+it's better if you dont let the user confirm but make it reversible.
+
+---
+
+i wont say if they should prevent suicide.
+
+meanings are just feelings.
+
+but most time it's not to live or to die.
+
+it's short sight or long term.
+
+it wont have anything special in the long run, where everything eventually vanishes and the world is still the world itself.
+
+but it could benefit a lot in your future.
+
+---
+
+tg.
+
+一个人送另一个人礼物, 会有一条边.
+
+一个频道转推另一个频道, 会有一个 pingback.
+
+一条消息有一个人, 和一个位置. 可以任意查询.
+
+---

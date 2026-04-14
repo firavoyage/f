@@ -4464,6 +4464,8 @@ green tea (or boiled water) feels calmer than coca cola.
 
 upd: now, again, instead of surfing twitter, i would prefer more to view the archive (whether a blog from wget, or an archived tg channel/chat), less friction (network req, since twitter dont preload aggressively), more meaning (the full history in your hands).
 
+15 40 read blogs.
+
 upd: menci might not be the best. there are many thu/pku students in this game. these ppl are almost all alive now and they are continuing their <!-- legend --> legacy. though, most dont use sns a lot in the moe way. fun fact: menci and luoling always appear together (to follow someone). luoling does not even need a university diploma (?).
 
 upd of upd: why are gold medals not that active than menci? a bit sad... some just go abroad and live a simple life in faangs or fintechs as a pro dev.
@@ -4999,6 +5001,52 @@ you can just define the methods. they are math functions. <!-- data/storage/stat
 you can use comments and docs to organize them. inherit, extend, classes, this, constructor... that's too much. 
 
 well, you could have some syntax sugar if you like.
+
+16 20 create workflow to exploit novita ai. ~~16 20~~ 17 00 research claude code with opencode.
+
+```
+write docs.md. read the whole project. use cloc to count code. write where each part is and how much code it has. write how it works, like what happens step by step for each user action under the hood.
+```
+
+> Forbidden: not enough balance
+
+what? openclaw is buring my balance automatically (e.g. something like heartbeat on by default)?
+
+create a new duck.com alias (to zoho mail with plus alias) for novita.ai. (maybe i could also use simplelogin.). now i use date n time as hash/uuid for aliases instead of cnt (which i could not remember).
+
+create `authenticator.txt` (2fa backup) and `private.md` under passwords (not synced online).
+
+try Gemma 4 31B (google, libre w western norms wo censorship, cost efficient, and high perf on benchmarks). btw, no idea why the moe variant is not cheaper.
+
+> too many req (?)
+
+opencode retries automatically. good. it's working.
+
+(not enough balance?! really? only 10k tokens used... network is not reliable either.)
+
+`$-0.0019`? where is my 1 usd voucher (it's definitely not used, but simply gone.)?
+
+create another acc with simplelogin (easier than duck).
+
+still "con reset" and "too many req". maybe gemma specific error?
+
+try minimax m2.7. (i could also use the one from opencode zen maybe)
+
+upd: it simply works? well, gemma is too popular.
+
+great. 3m 28s. 100k t. 0.06 usd. (it does not work longer as i supposed. maybe it's too easy for it, essencially batch reading and summarizing.)
+
+opencode has improved a lot. sub agents (though idk if it's needed). export with proper md formatting wo rendering issues. though it's not that extensible and configuable than vscode.
+
+it would be better if i pick where to save (no need to export in the project dir, you could use system fs picker, yet cd inside opencode or project based session management is still not really solved).
+
+19 00 backup videos to hdd.
+
+20 20 skim `24OI-whk-guide`. 22 40
+
+> 我从很久之前，就总是想着给这个世界，或者这个世界上的一部分人留下一些什么。坦率地说，在这个方面我是个非常幼稚的人，从小学到初中再到高中，我当过各种意义上的业余老师，我也一直想当个老师，幻想着自己留下的东西能够多么帮助一些人，或者产生一个证明自己存在过的印迹。不管我有多大能力，我就总是非得留下点什么，非得发表一点自己的拙见。这些天真的努力有时候做了无用功，有时候变成了笑话，有时候只不过给我自己留下了回忆，然后我又作出新的努力了，再一次怀着天真的期待，不知这是一种执着，还是虚荣、欲望，又或者是什么别的似乎很光明的东西。我只能说这是我生活中的一种趣味，希望这种任性的趣味真的自有它的意义吧。
+
+they are already way too ahead.
 
 
 
