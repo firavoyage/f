@@ -4952,11 +4952,53 @@ oierdb only tracks those who has won prizes.
 
 confirm: im a participant for no reason. there is a player with the same name of `kkksc03` sitting next to me. no additional data. likely name collision.
 
+upd: what does it imply... ofc old oiers could play and appear on oierdb normally. https://oier.baoshuo.dev/oier/6694. i suppose it's just name collision (or why would the real one bloat that?).
+
 well, from oierdb, you could win a prize even with one problem solved. maybe im omitted?
 
 anyway, im not a serious oier who dedicates time learning.
 
 19 20 dl `和孩子一起玩编程` (mv under `books/intuitive/py`).
+
+23 00 read kkksc03 blog on zhihu.
+
+learn the Frobenius Coin Problem (Chicken McNugget Theorem) from NOIP 2017.
+
+23 40 (re) appreciate `新春故事会《美好人生》`.
+
+14
+
+00 00 skim `CSP2024全国迷惑行为大赏合集`.
+
+https://www.luogu.com.cn/article/o0or9w5n
+
+fun. though not quite accessible (not really valuable maybe).
+
+where is the source? wechat mp or something?
+
+not really comprehensive. i could not find what i wanna see... where is me and my frnds?
+
+some observations:
+
+- the file io is so damn. inconsistent.
+- boilerplates
+- unfriendly std lib
+- number type default size
+- debug log, folder names
+
+00 40 read `ZJOI2024 游记` by dXqwq.
+
+02 20 think on fp and oop by oovm.
+
+https://www.zhihu.com/question/41460219/answer/1966612086793695493
+
+fp over oop. oop is an abstraction built on fp.
+
+you can just define the methods. they are math functions. <!-- data/storage/state/vars are just get and set methods built into the lang itself. you could do it any way as long as it feels right. the simpler the better. -->
+
+you can use comments and docs to organize them. inherit, extend, classes, this, constructor... that's too much. 
+
+well, you could have some syntax sugar if you like.
 
 
 

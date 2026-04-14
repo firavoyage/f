@@ -1960,3 +1960,44 @@ file:///home/fira/Documents/_/pages/%E6%9C%8B%E5%8F%8B%E4%BB%AC%20-%20Menci's%20
 
 ---
 
+i wanna search
+
+> oi选手特有的随时被开盒
+
+https://www.zhihu.com/question/1955349945876996366/answer/1957833419045175555
+
+(on fav/zhihu/unixporn, grep 普及组一等奖)
+
+but i could not find it.
+
+i search on google, same.
+
+it were a comment. i should have archived it.
+
+---
+
+agent, go find the source.
+
+https://www.luogu.com.cn/article/o0or9w5n
+
+(meaning?)
+
+---
+
+contributing.
+
+dev.
+
+rfc.
+
+translate.
+
+sponsor.
+
+you dont have to pay to sponsor
+
+if you are someone (i.e. one with high social proof, e.g. menci, chyk, estela, ryolu, dhh), i would like to put your avatar here.
+
+receive money.
+
+fiat. under surveiliance.
