@@ -5002,6 +5002,8 @@ you can use comments and docs to organize them. inherit, extend, classes, this, 
 
 well, you could have some syntax sugar if you like.
 
+12 20 listen to `Predictions 2026!!` by `Oxide and Friends`.
+
 16 20 create workflow to exploit novita ai. ~~16 20~~ 17 00 research claude code with opencode.
 
 ```
@@ -5047,6 +5049,10 @@ it would be better if i pick where to save (no need to export in the project dir
 > 我从很久之前，就总是想着给这个世界，或者这个世界上的一部分人留下一些什么。坦率地说，在这个方面我是个非常幼稚的人，从小学到初中再到高中，我当过各种意义上的业余老师，我也一直想当个老师，幻想着自己留下的东西能够多么帮助一些人，或者产生一个证明自己存在过的印迹。不管我有多大能力，我就总是非得留下点什么，非得发表一点自己的拙见。这些天真的努力有时候做了无用功，有时候变成了笑话，有时候只不过给我自己留下了回忆，然后我又作出新的努力了，再一次怀着天真的期待，不知这是一种执着，还是虚荣、欲望，又或者是什么别的似乎很光明的东西。我只能说这是我生活中的一种趣味，希望这种任性的趣味真的自有它的意义吧。
 
 they are already way too ahead.
+
+23 00 learn mo's algorithm.
+
+23 20 dl `深入浅出程序设计竞赛`.
 
 
 
