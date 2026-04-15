@@ -157,3 +157,10 @@ more hacks to the community.
 what do you wanna achieve at the end of the day.
 
 ---
+
+- File (more human naming, auto mkdir, warnings and errors like vscode like trailing spaces, handle illegal characters, etc.)
+- Store (xdg) file name or hash or kv or ... ?
+- Chat
+
+---
+

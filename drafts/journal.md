@@ -3721,6 +3721,14 @@ fun fact: the unchallengeable top student in djhs has gone to a university with 
 
 <!-- though he is not in swe (which itself seems to be widely considered to have been changed by llms dramatically). -->
 
+<!-- (copied from pure math: legacy readme) -->
+
+minori <!-- menci --> is adorable yet admirable. <!-- 可爱又厉害 -->
+
+<!-- i wish i could outplay her somehow. -->
+
+<!-- though, you could not really say you outplay someone irl. it's easy to outplay in a chess game. just more calc. it's easy to outplay a student/competitor. just more pts. it's easy to outplay a labor man, as they have no choices. (you dont even need to compete. they are already constantly suffering from inhuman treatments from all aspects of life.). they dont even have the mindset to get away, even though theoretically they could do/have done something. it's very hard to say you outplay a global citizen, as once you move up, way apart from the poverty line, things are just personal choices (i.e. you are not better. you are just different, yet you feel really confident and you wanna say you get over them.). you could go anywhere as you like until the eventual mortality. -->
+
 fun fact 2: college means prison in english idioms. (coincidence of the contemporary zh-cn society irl?)
 
 by forcing myself to sp uee, i choose freedom. it's a wise choice whatever. but i dont feel ive got what ive wished.
@@ -5274,6 +5282,136 @@ Luminescence, [4/14/26 9:37 PM]
 ```
 
 <!-- some reply on the channel comments. some reply in the group. inconsistent. -->
+
+16 00 read yuuta blog.
+
+appreciate `Android 之魂早已烟消云散。`. i feel ive read this in some tg channel. maybe yuuta is the original author?
+
+lol. yandex. manually research free res (for mailing) on the internet.
+
+16 40 read cubercsl blog.
+
+weird. so many stuff to host an icpc.
+
+17 00 research himself65. 18 00
+
+another typical example of (successful) overhyped fe guys.
+
+affine is already deprecated at a glance. we will use local md (mdx) files and git hosting. "AI", "used by these high profile logos", "slogans/landing page boilerplates", are red flags (or anti patterns). the physical simulation is unpolished. (normal at first, weird at last as boxes are hitting each others and always trying to move a pixel)
+
+better-auth is overly complex and commercial, wo unix philo. it's a good example of what an ideal auth system could (should) include though.
+
+mask.io has perf issues from its local rendered 3d animations... yet web3 hypes. funda is ai hypes.
+
+jotai... why jotai? whatever, but you have to say what and why before how, i think. for this case (text and derived uppercase text), i could use global let and a fn for the derived one, without messing up with proxies/reflections or get set stuff (which is js design flaw i believe, and svelte is idealistic magic). react usestate is to persist the state after the fn (with the array order hack) from gc. well, you could also gen uuid (upd: actually react has builtin useid) and write your own usestate and force rerenders on top of usereducer.
+
+well, that's brute force. let me see... there is no way to listen to "set variable" in js wo compiler magic.
+
+most time you just wanna store config, like lang (you dont have to store dark mode by default). 
+
+if you really wanna serialize the full page, you could use zustand (rather use reducer for each possible action than forced upd). let react handle the rerender and memo stuff. just name things explicitly, like for a flexible counter list. immer is hacky syntax sugar.
+
+to achieve redux, you could wrap actions yourself to observe (and keep it dry) and manage network req yourself.
+
+waku and textea is incomplete.
+
+athenalab feels powerful. but ai agents are simple. the difference is mostly ux, and well, i already see blue to purple gradient on its landing page.
+
+19 00 dl `Mitsuko Uchida - Schubert`.
+
+elisa has "shuffle albums" option besides "shuffle tracks". good.
+
+19 20 (re) read `My past decade` by himself65.
+
+> I signed up for my GitHub account on nov 21, 2020. I was 13, a middle school student.
+
+> At first, I thought I could study hard and maybe attend the same university as her. After one semester, I realized I couldn't—I had absolutely no interest in subjects I didn't like. Meanwhile, I felt terrible. The stress was overwhelming because in China, every student competes for good grades on the university entrance exam, supposedly securing a promising job, future, or whatever else. I didn't buy into that system since I already felt like I'd failed. I didn't believe life should be dictated by others' rules. So I started taking it easy and continued learning programming throughout high school.
+
+> Regardless, I began learning algorithms—partly because competing gave me a legitimate reason to skip classes. There's also a vibrant community of programming enthusiasts online who participate in these competitions. While I don't particularly enjoy the competitive aspect (it feels like just another exam in a different format), I genuinely love coding. <!-- coding? really? --> ... I ended up with only 80/600 points.
+
+<!-- he joins luogu fe? well, full of fouc and distractions. too many colors. -->
+
+> I was childish—I really loved the project, but eventually I realized I was just someone who happened to be there to help accomplish other people's dreams. It was like waking up from a dream. <!-- ref: innei -->
+
+> But one thing I've realized is that I'm getting older. I can't stay up late anymore. I need to sleep 10 hours a day or I feel exhausted. In 2025, I paid almost $10k in taxes, which brought another level of stress. <!-- really? menci is often active at the early morning, e.g. on twitter or tg. damn. -->
+
+19 40 read kalasoo blog.
+
+19 40 clone `Cute-Dress/Dress`.
+
+<!-- i could use the general dl. but i would pick clone, as i use text (instead of strict conventional commits), which is essencially intended to make the vocab diverse and natural. -->
+
+i could retrieve something from it if i wanna research someone in the future. 
+
+some (e.g. luoling/rainbowbird's readme) are removed while staying in the git history. i could (use agent to) batch clone, compare, and merge with best effort.
+
+`KuroPeach/Dress` is a good option.
+
+403 forbidden is a username, not a banned account.
+
+20 20 read some old letters on river, fix some typos.
+
+21 00 read `JavaScript Market Analysis` by himself65. 22 40
+
+another example. not just overhyped, but overestimated and overinvested.
+
+the constrast (white on black) of his blog is way too high. i feel dizzy.
+
+btw, i hate the default vercel styled ui design. 
+
+> Honestly, only models #1 (Deployment fees) and #2 (Per-seat licensing) have any real potential to scale. 
+> 
+> From a revenue model perspective, VoidZero is basically retracing Vercel's path: first capture developer adoption with Vite, then push a deployment product (Vite+). 
+>
+> Even though TailwindCSS was the most popular CSS framework in State of JS 2025, it couldn't escape financial trouble. At the end of the day, the "paid consulting" + "sponsorship monetization" business model combo inherently lacks scalability
+> 
+> Put bluntly, Cloudflare can't kill Vercel, but it will keep pushing down the pricing ceiling of the JS deployment market. Price-sensitive indie developers and small teams will lean toward Cloudflare, while teams needing deep framework integration and enterprise-grade support will stay with Vercel. It's more of a tiered competition than a zero-sum game.
+>
+> just building a product isn't enough -- your moat is what determines life or death. 
+>
+> On the flip side, v0 can hold its ground in the same track not because its AI generation is vastly superior, but because Vercel's complete closed loop backs it: generated code natively runs Next.js, one-click deploys to Vercel, and the paid funnel was already laid down. Bolt.new has WebContainers technology, Replit has its online IDE ecosystem -- each has structural barriers independent of AI capabilities. But an AI code generation tool with no platform lock-in, no distribution channel, and no existing user base -- even if the founder is a star developer in the JS community -- will have a very hard time surviving on its own in this track.
+>
+> it doesn't pay for "AI-stickered products," only for "AI-native products." v0 earns Vercel an AI premium because it was designed for AI from scratch, not because they slapped an "AI assistant" feature on top of their deployment platform. Twilio and Fastly's problem is that their AI efforts look exactly like the latter.
+>
+> Selling commercial licenses also has scaling potential, but with the AI era arriving, this model's headroom is going to get compressed significantly.
+>
+> From an investment perspective, paid consulting is a survival mode, not a growth mode. It can keep core maintainers working full-time on open source, but it can't support a company's scaling ambitions. In practice, many successful JS companies' founders (Vercel, AG Grid) went through a consulting phase, but all eventually transitioned to scalable business models.
+>
+> The sponsorship/donation model's role in the JS ecosystem is sustenance, not growth. $12K/month is enough for one person to work full-time on open source (especially in lower cost-of-living areas), but it's nowhere near enough to build a team or pursue commercialization.
+>
+> The deeper issue is misaligned incentives: sponsors pay out of "gratitude" rather than "need," so once a project falls out of the spotlight, donations naturally decay. 
+>
+> In terms of total market size, I estimate the entire JS ecosystem's sponsorship/donation revenue tops out at $10-20 million/year. For an ecosystem with hundreds of thousands of developers, that's essentially a rounding error.
+>
+> At the end of the day, startups only have two good endings: IPO or acquisition. There are, of course, infinite ways to fail.
+> 
+> The technical choices were aggressive <!-- radical -->: built on JavaScriptCore (not V8), written in Zig, with startup speed and execution performance far ahead of Node.js. Bun's initial commercialization path followed the classic "runtime -> platform" playbook: attract developers with exceptional DX, then monetize through Bun Cloud and other hosting services. But the brutal reality of the JS runtime market is that Node.js's ecosystem moat runs too deep. Deno already proved that even technically superior alternatives struggle to dislodge the incumbent.
+>
+> A high-performance, embeddable JS runtime is a natural foundation for building agents, code execution sandboxes, and tool-calling environments. With Claude Code already at $1B annualized revenue, acquiring a core dependency of its tech stack was inevitable.
+>
+> GitHub was already the de facto standard for code hosting; adding npm completed the JS developer workflow loop: code writing (VS Code) -> code hosting (GitHub) -> package publishing (npm) -> CI/CD (GitHub Actions). After the acquisition, GitHub committed to keeping the public npm registry free forever, transforming npm from a struggling startup into developer ecosystem infrastructure.
+>
+> npm's story illustrates a critical valuation principle: when a JS project's user base grows large enough to become "infrastructure," its strategic value to a major platform far exceeds its own commercial value. npm might never make money on its own, but as a piece of Microsoft's developer ecosystem puzzle, it could be worth hundreds of millions of dollars.
+>
+> Talent: JS core maintainers are extremely scarce. Engineers who can build production-grade JS runtimes or build tools number in the low hundreds globally.
+>
+> the JavaScript community at approximately 27.4 million developers, maintaining its position as the world's #1 language for multiple consecutive years.
+>
+> - Winner-take-all dynamics intensifying: Vercel, powered by the Next.js ecosystem and AI narrative, holds a dominant position. Latecomers (Netlify, Deno) will continue to be marginalized unless they find a differentiated AI entry point.
+> 
+> - The middle layer is getting squeezed: Orchestration frameworks like LangChain, commercial component libraries -- these "middle layer" products are being pinched from both sides by AI's native capabilities and open-source alternatives.
+> 
+> - Open source doesn't mean free: Sponsorship and donations can keep a project alive, but can't support real commercialization. Every successful JS company has found either an "open source -> platform monetization" or "open source -> enterprise licensing" loop.
+> 
+> - AI is a multiplier for the JS ecosystem: AI code generation tools like Bolt.new and v0 almost exclusively output JS/TS code. JS's complete pipeline from frontend to backend to deployment makes it the biggest beneficiary language ecosystem of the AI era.
+>
+> The most practical advice for JS practitioners: move toward the two extremes of the ecosystem chain. Either go deep into infrastructure (runtimes, compilers, bundlers) or fully embrace the AI application layer (AI SDK, agent frameworks, code generation). Middle-layer pure frontend component development still has demand in the short term, but will gradually be displaced by AI code generation over time. <!-- the conclusion. "escape the middle ground". that's it? -->
+
+<!-- the sum market and the business logics are irrelevant to me. -->
+
+i believe in cloudflare, ppl who own the hard infra. code could be easily produced even wo llms.
+
+also, ive noticed it links a github repo simply and only by its star cnt, which is widely disagreed.
 
 
 

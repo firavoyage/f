@@ -115,6 +115,28 @@ yt-dlp \
   -o "_/Pink Floyd - The Dark Side of the Moon/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
 ```
 
+Mitsuko Uchida - Schubert
+
+<!-- seems i should not shuffle it... -->
+
+<!-- i think the albums would be recognized. just dl them all. -->
+
+<!-- suppose it could work with "browse" url. (failed.) -->
+
+```sh
+yt-dlp \
+  "https://music.youtube.com/playlist?list=OLAK5uy_mAFsRLqmjaoJUTZfIM0WDxcgnJ1b8aFIE" \
+  "https://music.youtube.com/playlist?list=OLAK5uy_k0AeZxVOyiMbC6smAD9L19LhVelKneyy8" \
+  "https://music.youtube.com/playlist?list=OLAK5uy_nC9QXulOiGlc1VqC1-iotZTmLsykK1ICs" \
+  "https://music.youtube.com/playlist?list=OLAK5uy_nH388vfq2GxMb6qD5aGeCWiigkNs18DyI" \
+  "https://music.youtube.com/playlist?list=OLAK5uy_kZMvKKoD4I5jBGaIBQI6acCvZOE9a4xD0" \
+  "https://music.youtube.com/playlist?list=OLAK5uy_kCNy8KicDiQn18J8NDqhsok_bLEYcKP5w" \
+  "https://music.youtube.com/playlist?list=OLAK5uy_lNMXYmlWQ23qK_MiIKeHOB0ULJ1mtvhVI" \
+  "https://music.youtube.com/playlist?list=OLAK5uy_mKLG6e8BfyTAG0bPpMj76TUJsgg-JMQHY" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  -o "_/Mitsuko Uchida - Schubert/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
+```
+
 pink floyd
 
 ```sh

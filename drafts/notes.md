@@ -2104,3 +2104,27 @@ https://seve42.github.io/OItrainer/start.html
 
 ---
 
+Holy. On tg, I could quote a msg. And... Reply in another chat!
+
+---
+
+When you post several photos on a tg channel post...
+
+tg sees each photo as a msg... (on unread cnt and jump to bottom)
+
+---
+
+himself65 has many blog posts left in the iawb. 
+
+liu yu (politics researcher from pku) might also do.
+
+---
+
+https://github.com/vercel-labs/agent-skills
+
+holy...
+
+overengineering.
+
+---
+
