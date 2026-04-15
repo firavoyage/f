@@ -1996,11 +1996,13 @@ sponsor.
 
 you dont have to pay to sponsor
 
-if you are someone (i.e. one with high social proof, e.g. menci, chyk, estela, ryolu, dhh), i would like to put your avatar here.
+if you are someone <!-- (i.e. one with high social proof, e.g. menci, chyk, estela, ryolu, dhh) rather hide them. it's safer to hate than appreciate. 1. it's an offer you could not refuse. you could refuse to make frnds w somebody. you could not refuse criticism. 2. it would bring them problems maybe, at least impact them somewhat somehow, if im praised or criticized. 3. you dont stand for them. no human is perfect. you could still easily argue againt them in the future. -->, i would like to put your avatar here.
+
+<!-- the order is not random. though, it feels much easier to put chyk first, who does not carry such a heavy weight or successes, whether academic/competition or career. ryolu is also good, but too distant, like steve jobs, which is not likely to be appreciated but be sacred. -->
 
 certain ppl are not accepted. 
 
-- fe guys. e.g. innei, evan you, little sound. (there is nothing wrong with web tech. but the reality is they are always annoucing nonsensical version updates, called shipping, creating weird stuff, celebrating every new browser feature. most just simply fade away after 1y.)
+- fe guys. e.g. innei <!-- seems he's spreading shits (i.e. the blog theme) recently -->, evan you <!-- vitepress makes the world philistine. though, it's the choosers that are philistine. vue and vite are not that notorious. -->, little sound <!-- how is vapor mode now? -->. (there is nothing wrong with web tech. but the reality is they are always annoucing nonsensical version updates, called shipping, creating weird stuff, celebrating every new browser feature. most just simply fade away after 1y.)
 - crypto guys. e.g. guoyu from bytedance, diygod, livid, hongkongdoll. (crypto is freedom. but in reality, it's not just full of scams, but essensially gambling. investment? i dont think so. investment is calm and precise. gambling is not. you know, they are often showing off little successes and releasing new coins.)
 - memers. e.g. himself65, hsn8086, cldeop. (noisy, philistine)
 
@@ -2041,3 +2043,64 @@ tg.
 一条消息有一个人, 和一个位置. 可以任意查询.
 
 ---
+
+tg. (and more.)
+
+your activity will be recorded. every profile view. every msg view.
+
+you could view them elegantly like zhihu.
+
+you could export, (process or automate then).
+
+one more thing:
+
+afo fyp will also be recorded.
+
+if you wanna view sth, but it's gone after a refresh, dont worry. though we dont write auto refresh.
+
+over engineering. (we love that)
+
+you could serialize anything.
+
+you have a time machine of the state at each time.
+
+---
+
+https://github.com/Menci/simple-sandbox?tab=readme-ov-file
+
+is sandbox hard?
+
+is it already solved many times?
+
+---
+
+en translation is done by myself.
+
+not llm. 
+
+humans are messy creatures. diverse weights.
+
+could not be desc by a few adjectives and rules.
+
+they could not output the identical result, where sometimes i heavily dislike, for some words.
+
+---
+
+egg.
+
+check this extensions.
+
+twitter needs so much extensions to be ~~fully~~ partly normalized even just on fe side.
+
+https://store.rxliuli.com/
+
+free ver exists, you could easily rev engineer. (though i suppose there might be nothing useful inside such a vibe stuff.)
+
+---
+
+OI 教练模拟器?
+
+https://seve42.github.io/OItrainer/start.html
+
+---
+

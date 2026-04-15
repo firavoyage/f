@@ -4932,6 +4932,8 @@ nerd. "turing complete".
 
 (check out other vids... chess wo turns? like the one on berryberry from sjtu?)
 
+upd 1d later: rosepineus.
+
 recommendation: student he (visual piano). i dont like that guy for cheating, though, seems he managed to get the 2m subs recently somehow. animations and storytelling are just for stimulations.
 
 a success without meaning or purpose.
@@ -4983,10 +4985,11 @@ not really comprehensive. i could not find what i wanna see... where is me and m
 some observations:
 
 - the file io is so damn. inconsistent.
-- boilerplates
-- unfriendly std lib
+- boilerplates (you could not compile an empty file)
+- unfriendly std lib (resulting in massive hand craft templates)
 - number type default size
-- debug log, folder names
+- debug log
+- (upd:) semicolons
 
 00 40 read `ZJOI2024 游记` by dXqwq.
 
@@ -5052,7 +5055,225 @@ they are already way too ahead.
 
 23 00 learn mo's algorithm.
 
-23 20 dl `深入浅出程序设计竞赛`.
+hacky perf engineering. sorting is math heavy (you could diy it easily, and idk why it might be the fastest generally).
+
+23 20 dl `深入浅出程序设计竞赛`, mv to `books/intuitive/cp`.
+
+i dont need to say "mv under". 
+
+when the destination foo does not exist or is a file, it cp (override) the file there as foo, and rm itself. when foo is a folder, it cp under and rm itself. (cp already overrides by default.)
+
+it does not mkdir the path, though.
+
+01 00 read blogs.
+
+grtsinry43 (llm styled literature stuff, low info/noise ratio, no trust, naive college depressed diaries). 
+
+miaoer (skim, unixporn attempts).
+
+suemor (highly valuable research reference of fe knowledge graph and interview details in low class devs society, another ref of low code quality in zh-cn big companies).
+
+(why suemor and innei all suck at academic diplomas? and luoling, maybe? about the impact... philistine? i think so.)
+
+innei (updated ui, better and calmer. still confusing ia. rich animations and features like css tricks. nonsense just like most fe guys.)
+
+what? innei is the same age of menci? maybe age does not reflect class...
+
+rxliuli. a lot of extensions to normalize twitter... inspiring. (add to rdme)
+
+why not use an elegant way (build your own twitter)? or you love to mess up with the real world? have you done enough research (control panel for twitter)? 
+
+03 00 think on menci.
+
+```
+fira: (i appreciate you. but idk what to say. could you send me an emoji)
+
+menci: (a lovely emoji)
+
+(fira rm the chat for both to simplify the tg home page, when she does not know the option to archive chats.)
+
+fira: happy new year :heart:
+
+menci: (read)
+
+fira: happy birthday!! jp(minori)
+
+menci: (read)
+```
+
+it might feel sad at first... but now i think it's a pragmatic compromise. mo ago when i were chatting with a russian, we have nothing meaningful to talk about, yet we keep chatting for no reason. interesting at first, burden at the end of the day.
+
+seems innei does not know it, as he says thanks to random visitors.
+
+03 20 export chat with the russian. send a msg.
+
+seems his birthday is 04.14. our last msg is on mar 15.
+
+```
+happy birthday to foo (a child ik irl) and bar (a character in project sekai)
+```
+
+upd:
+
+```
+Ivan Eisenberg, [4/15/26 3:39 AM]
+Idk how to take this. It sounds like: "I noticed today is your birthday, but I'll congratulate other persons instead of you, just to make you upset" or smth like this
+
+f, [4/15/26 2:38 PM]
+It's true. 
+
+https://projectsekai.fandom.com/wiki/Happy_Birthday!!_2026_(Minori)
+
+Ivan Eisenberg, [4/15/26 3:08 PM]
+You really wrote to me at the end of my birthday not to say something good to me but to mention other person and say you congratulate them instead?
+
+Ivan Eisenberg, [4/15/26 3:08 PM]
+I don't really get it honestly
+
+f, [4/15/26 3:19 PM]
+Just coincidences. XD
+```
+
+03 20 read renbaoshuo blog.
+
+same poor math. better en. (though, does it really benefit? i already see lots of academic exam oriented boilerplates on his self intro...)
+
+https://blog.baoshuo.ren/post/fzuhelper-llm-as-function/
+
+no idea. why is the system creating cs labor forces in batch? under the conservative even patriotic norms, what's suppressed, i wonder. does it worth that university diploma?
+
+one has to be with their time... <!-- 知人论世 -->
+
+https://blog.baoshuo.ren/post/oi/
+
+i feel i have read this before. (zhihu? citations?)
+
+confirmed: https://gitlab.com/firavoyage/web/-/blob/master/blogs/summary%202023%20baoshuo%20%E6%88%91%E7%9A%84%20OI%20%E7%94%9F%E6%B6%AF%20%E2%80%94%E2%80%94%20%E4%B8%80%E5%90%8D%E9%80%80%E5%BD%B9%E7%AB%9E%E8%B5%9B%E7%94%9F%E7%9A%84%E5%9B%9E%E5%BF%86%E5%BD%95%20-%20%E5%AE%9D%E7%A1%95%E5%8D%9A%E5%AE%A2.mhtml "firavoyage authored Nov 12, 2024"
+
+maybe from links somewhere like on oierdb or oi wiki.
+
+(well, there is even corp styled boilerplates in zh-cn...)
+
+https://oi.baoshuo.ren/noi-outline
+
+wow... you could even list things like this. abstract nouns. like "design complex dp".
+
+12 20 rm lv luo and wen zhu from the balcony.
+
+aquatic plants are not that resilient than soil based ones.
+
+12 40 read yuuta blog, 2022 summary.
+
+12 40 read `NOIP 2025 SC 迷惑行为大赏`. 13 20
+
+15 20 chat on tg.
+
+```
+渴望怜爱的 むらさき | 抱...抱不到, [4/10/26 12:43 PM]
+有的东西 第一口免费 后面每一口都要你的命
+
+f, [4/10/26 9:41 PM]
+Idk this meme. 
+
+Is it mainly about pricing? 
+
+Or about model quality?
+
+rpool/MBR, [4/10/26 9:45 PM]
+Illegal drugs (?)
+
+Kevin Williams, [4/10/26 9:52 PM]
+Just like trial in high quality commercial software,the software is useful but free limit is not enough to you,but the limits aren't free,you need to pay for it when run out of limits.
+
+In the trial time,if the software makes you more and more satisfied,and more and more ideas appeared in your brain, your wish of pay for it will more and more stronger like drugs.
+
+When limits was exhausted,and you also need to continue use the software in the future,you may pay for it.
+
+斬風千雪 ❄️, [4/10/26 9:53 PM]
+好精辟，确实像以前的「试用期的商业软件」
+
+Kevin Williams, [4/10/26 9:53 PM]
+拿来练习英文了（）
+
+Kevin Williams, [4/10/26 9:53 PM]
+还顺便学了几个新单词
+
+f, [4/15/26 3:39 PM]
+Doesn't feel right. 
+
+Limits was exhausted. Continue use. Trial time. Limits aren't free. Will more and more stronger.
+
+You need more prac!
+
+lol
+
+Btw, confirmed: the meme is mainly about pricing... 
+
+I thought it might be something like that:
+
+The model feels strong and surprises you at first. Then you rely on it heavily, resulting in unmaintainable and unreadable code and architectural flaws piled up. Even for simple tasks like renaming a variable or changing a const value, you vibe. You feel upset when it gets stuck or replying w llm styled boilerplates and realize you could have made better use of time. 
+
+Maybe I'm wrong.
+
+Kevin Williams, [4/15/26 3:41 PM]
+Perhaps I'm still stuck in the era before AI lol
+
+f, [4/15/26 3:42 PM]
+I mean your are grammatically incorrect.
+
+Kevin Williams, [4/15/26 3:43 PM]
+Ahhh, I need to learn more
+```
+
+```
+Fodesu的日常, [4/12/26 1:14 AM]
+我好羡慕 清风,acbox,Asatsuki_Arts,Alex Ma 这么年轻
+
+f, [4/15/26 12:52 AM]
+acbox 17yro. What about others? 
+
+Idk.
+
+Fodesu的日常, [4/15/26 1:06 AM]
+清风16，Asatsuki_Arts 16？ Alex Ma 15
+```
+
+<!-- when i fwd to saved msgs, all senders become me instead of the original... (at least when cp) -->
+
+```
+千雪的咖啡厅 | 警惕新型 4.6 成瘾物, [4/14/26 5:56 PM]
+我同学吸 token 吸上瘾了要买 700 块钱的 Claude Max，我草
+大家真警惕吧
+
+Kevin Williams, [4/14/26 6:07 PM]
+那他用Claude赚到钱了吗
+
+斬風千雪 ❄️, [4/14/26 6:08 PM]
+：这叫投资
+
+Luminescence, [4/14/26 6:14 PM]
+求求你了再给我点token吧
+
+vahiru | 重度失眠, [4/14/26 6:50 PM]
+我记得有中转站可以用很便宜的价格买Claude
+
+Chr0n0s, [4/14/26 6:53 PM]
+中转站好像有下毒的
+
+Kevin Williams, [4/14/26 7:00 PM]
+十个中转站里有八个会干坏事
+
+Neko, [4/14/26 9:33 PM]
+我现在对中转最善意的揣测都是
+
+Neko, [4/14/26 9:33 PM]
+用国产大模型加提示词伪装claude
+
+Luminescence, [4/14/26 9:37 PM]
+里面攒了面粉
+```
+
+<!-- some reply on the channel comments. some reply in the group. inconsistent. -->
 
 
 
