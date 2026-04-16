@@ -1,14 +1,12 @@
 changes
 
----
+apr 2026
 
-2026.04.05
+05
 
 rename `roadmap` to `todo`
 
----
-
-2026.04.09
+09
 
 delete `.vscode` folder, which hides some folders (like node modules) in the explorer and search, making it simpler most time, but significantly harder when i need them, esp when i also hide the `.vscode` folder itself. also, i have `f.code-workspace` already. it's not oxtho.
 
@@ -24,6 +22,10 @@ the prev work are mainly:
 
 some might be useful in the future. but i dont want to work on it further.
 
----
+16
+
+simplify gitignore. rm useless rules (e.g. those for other lang).
+
+create lib and link with node modules.
 
 

@@ -1,0 +1,11 @@
+# env
+.env
+.zshrc.private
+
+# build
+.build/
+.vite/
+
+# deps
+node_modules/
+

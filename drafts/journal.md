@@ -5413,6 +5413,147 @@ i believe in cloudflare, ppl who own the hard infra. code could be easily produc
 
 also, ive noticed it links a github repo simply and only by its star cnt, which is widely disagreed.
 
+16
+
+01 20 learn git.
+
+git is so complex. i almost need to abstract it myself.
+
+02 00 comment on memoh to cherish the old pixel art logo.
+
+chen-ran: chore(docs): update new memoh logo
+
+```
+why do you update the logo?
+
+i love the old one!
+
+is it just acbox's personal decision?
+
+is there rfc, rationales, or any references?
+```
+
+btw, finally...
+
+<!-- a long time ago from twitter (upd: well, the issue is also that old...) -->
+
+```
+menci: RFC: Deterministic Context Pipeline -- IM-oriented context engineering #223
+```
+
+though, it's a zh-cn only academic paper like issue, wo eli5 summary...
+
+02 00 simplify github profile. rm legacy email. rm the weird `心 | ` from bio.
+
+```
+make tools elegant, make knowledge pure. just let time be precious 💖
+```
+
+02 20 cmt on menci's dcp rfc. waste time for my impatience. 03 20
+
+```
+<!-- 
+
+things has changed a lot. dont read my thoughts. they are messy and unorganized, even outdated.
+
+answer:
+
+ -->
+
+yet another academic paper or corp styled wall of text...
+
+you create a rfc. you make a lot of dramatic changes. but what's the latest rfc with all the changes applied?
+
+it's still confusing what you would actually do step by step after receiving a new msg.
+
+<!-- 
+
+i dont care how many abstractions you are gonna add. 
+
+- you could not dump the full chat history to llms. what are you gonna include to create the summary (or compacted node). i suppose that is count or time period with context limit based trimming.
+- essencially, you just receive. process. decide to send or not.
+
+-->
+
+i would rather not comment on something unclear.
+
+<!-- 
+
+thinking (collapsed):
+
+idk what you are saying. 
+
+it's academic paper or corp styled wall of text.
+
+but i notice a few things: 
+
+one. you say ppl on tg often send msgs in a row. true.
+
+but there is a catch: 
+
+when you receive a msg, you dont know whether they are gonna send another consecutive msg immediately, wait for your reply, or simply go to sleep.
+
+it seems possible to listen to "foo is typing...", but it's obviously fragile and platform specific.
+
+you could play some tricks. like, when you receive a new msg, you call llm at once, when you wanna reply, you wait for a few secs, and if you see new msg coming, you revise or deprecate your prev reply. but tricks are just tricks. even humans dont really know when to reply. sometimes you would feel you wanna reorder, or group some msgs to make things more natural.
+
+well, seems you wanna wait 5 secs and process all incoming msgs within that perioud in batch.
+
+two. about abstractions, im not gonna overthink it. i see many data models and how things are supposed to work, but i could not even see example inputs and example outputs. concepts are abstract and idealistic. what's the type and structure, what's the algorithms step by step. that's the point.
+
+let me see...
+
+adaption is just another im platform, but well designed.
+
+projection... you wanna transform the state after a new msg. it could not be pure. you give it the msgs. you want to produce compacted memory (or compact summary node). you could not achieve that (summarizing/compacting) without llms. you could not even decide what to include.
+
+rendering... you ve got ic, something derived by the whole history. now you wanna further group consecutive msgs like by interval. projection gives you ic. but you need both ic and session state (and a const config). where is session state from?
+
+i suppose you run a task to analyze msgs and summarize msgs side by side. well, idk. where are you gonna inject these summaries?
+
+three. btw, youve mentioned tg a lot, but seems memoh is designed to be platform agnositic. 
+
+it's good to make llms understand tg specific content (e.g. stickers, big emojis).
+
+four. on anti prompt injection, you are just changing the format, from markdown `---` to xml block.
+
+theoretically, the user input could be any string, and the llm is a black box. changing the prompt just changes the distribution. it's better to limit what it could do (e.g. msg length, thinking time, shell commands) instead of guiding it to play smart, as attackers could always construct a new string you would never know and find a loophole. it's extremely hard to prove non existence, esp for probabilistic creatures where you could not even reproduce with confidence.
+
+and llms are inherently assistants. when you tell it to do something (e.g. a style, a language, a silly question), it follows by default.
+
+---
+
+these are just my messy internal non linear thoughts. i feel i could have made it clearer. but i wanna sleep now.
+
+ -->
+```
+
+well, rather not dump my thoughts. seems i should have read the full text first.
+
+inspiring anyway.
+
+hope menci would not see my commented markdown!
+
+12 20 work on humility repo setup and js/ts infra.
+
+sometimes i ask (google ai mode) silly questions, like 
+
+> in ts can you define a type with the same name of a variable
+
+> can you have gitignore on repo root and subfolders
+
+> how does .env on repo root work
+> 
+> does the filename .env mean something special for nodejs
+
+> do i put node modules on project root or in source subfolder
+
+for speed and peace of mind, i feel i wont store them now, though i could. 
+
+just like you searching google (stackoverflow/blogs/github) in the pre llm era, you dont take notes for everything, esp for those one prompt (search query) away, unless they are something quite valuable buried in the deep internet or you spend time researching on. 
+
+> you can just learn things.
+
 
 
 <!--

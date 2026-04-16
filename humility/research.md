@@ -1,4 +1,3 @@
-You can predict ahead as if the user will accept the suggestion.
 humility
 
 readme · roadmap · notes
@@ -269,6 +268,10 @@ likely llms generated, which llms could not really generated for llms.
 img gen:
 
 return img url or base64 url
+
+---
+
+You can predict ahead as if the user will accept the suggestion.
 
 ---
 

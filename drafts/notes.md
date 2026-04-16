@@ -2128,3 +2128,24 @@ overengineering.
 
 ---
 
+https://github.com/memohai/Memoh/pull/348/changes
+
+what does it mean?
+
+magic consts are not banned by default.
+
+(well, whatever, it could even have unusable buttons on login.)
+
+---
+
+you could rm its shell tool.
+
+you could limit shell commands.
+
+if you allow it rm rf nonsense, one day it might rm rf valuable stuff.
+
+you could have time machine and container though.
+
+---
+
+
