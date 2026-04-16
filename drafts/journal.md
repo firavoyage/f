@@ -5433,6 +5433,18 @@ is it just acbox's personal decision?
 is there rfc, rationales, or any references?
 ```
 
+upd 1d later:
+
+```
+(acbox screenshots and rt my comment just 3min later in the group. seems even new comments in legacy commits/prs could notify them easily.)
+
+am i too brutal? but i really dont like the new one. pixel art feels good. anyway, it's up to you.
+
+maybe i could have checked msgs in this group to find out why. 
+
+even big companies like google does not really listen to their users when releasing design changes, see how much criticism is there on reddit in 2023 when they are forcing the "new chrome design in md3" and gradually removing flags to revert, which impacts the downstream, e.g. electron directly, then vscode, making the context menu items too large and inefficient.
+```
+
 btw, finally...
 
 <!-- a long time ago from twitter (upd: well, the issue is also that old...) -->
@@ -5448,6 +5460,8 @@ though, it's a zh-cn only academic paper like issue, wo eli5 summary...
 ```
 make tools elegant, make knowledge pure. just let time be precious 💖
 ```
+
+upd: also apply to the bio on tg.
 
 02 20 cmt on menci's dcp rfc. waste time for my impatience. 03 20
 
@@ -5554,6 +5568,101 @@ just like you searching google (stackoverflow/blogs/github) in the pre llm era, 
 
 > you can just learn things.
 
+16 40 cmt on foxwq chat on xuegao cheese live with zh-cn politics memes. fire a ticket myself <!-- though, i could not do that on simplelive, and the bilibili client (a old modded version with no ads and no capability to view imgs on comments) shows a toast of "java: ... error". maybe that's resulted from mass reporting (likely by cynical guys), as i dont even know if mine reaches their server. -->
+. get her live banned (upd: for 1d, ref: her official tweet). take some screenshots and screenrecords. save some mhtmls. save the live replay with ytdlp.
+
+fortunately, i could spectate the game inside foxwq. a few weeks ago, it's not possible, not due to my account restricted (at least very unlikely), but the app's poor frontend functionality, where lags and unpredictable effects happen a lot.
+
+in constrast of what they suppose, i do not plan to do that. it's just for fun.
+
+```
+一九八九零六零四
+
+你认为 *** <!-- 洗净瓶 --> 是独才着吗?
+
+你认为习是 *** <!-- 独裁者 --> 吗?
+
+你认为习是独才着吗?
+
+你认为习是独才着吗?
+```
+
+free sc. lol.
+
+xuegao cheese tries to hide the cmt area by moving her live2d, but she fails to fully cover the cmt area.
+
+> 这么恨
+
+> 别搞了哥, 求你了
+
+> woc 吓死我了
+
+xuegao cheese is a good yet naive girl. she replies me when i were in grade 11, sending something like that, which creates some vibes among the danmakus, which is impossible on fps games.
+
+> is there anyone like me, in grade 11, free at home, preparing for tomorrow's exam?
+
+<!-- i remember there is an exam or something. not just "stay up late, over sleep at home, and get up late in the morning", which is too trivial. -->
+
+upd: confirmed from aicu.cc
+
+```
+下棋时间到 - 雪糕cheese
+6/17/2025, 4:51:45 PM 你摆一下接尾巴
+6/17/2025, 4:51:36 PM 接尾巴出棋的
+6/17/2025, 4:50:35 PM 接尾巴还是一选
+6/17/2025, 4:49:57 PM 接尾巴，然后再算30步
+6/17/2025, 4:49:38 PM 接尾巴有棋的
+6/17/2025, 4:49:16 PM 应该接尾巴的。
+6/17/2025, 4:32:33 PM 消劫黑棋赢了
+6/17/2025, 4:32:25 PM 你没事吧
+6/17/2025, 4:31:41 PM 这想什么呢
+6/17/2025, 4:31:32 PM 消劫喵
+6/17/2025, 4:28:54 PM 糕神什么时候看到打劫的
+6/17/2025, 4:17:47 PM 我从来不换元的，只会带入求导
+6/17/2025, 4:17:16 PM 糕神会不会求导
+6/17/2025, 4:11:14 PM 想学做主播
+6/17/2025, 4:08:34 PM 刚才的跳亏好多点啊
+6/17/2025, 4:05:55 PM 黑棋胜率才58？
+6/17/2025, 4:03:05 PM 太对了
+6/17/2025, 4:01:34 PM 黑棋下面两个子活了就赢了
+6/17/2025, 3:59:49 PM 不会基本不等式，只会狠狠求导
+6/17/2025, 3:59:25 PM 联立韦达，联立做差求斜率乘积
+6/17/2025, 3:58:50 PM 雪糕会不会联立韦达
+6/17/2025, 3:57:59 PM 雪糕06的
+6/17/2025, 3:57:34 PM 不上了！
+6/17/2025, 3:56:24 PM 比雪糕小一岁
+6/17/2025, 3:56:17 PM 我高二
+6/17/2025, 3:56:10 PM 期末考前看棋，我也是神人了
+6/17/2025, 3:55:48 PM 有人一样明天期末考吗
+6/17/2025, 3:54:05 PM 形势如何
+```
+
+on the same (or a relatively recent) live, she complains about no viewers when ppl suggests more go lives.
+
+> 弹幕比棋盘还干净!
+
+> 围棋回不就是杂谈回吗?
+
+weeks ago, i fail to manage to take down "快乐大饼流" on douyin, with the same trick, maybe due to his lack of viewers.
+
+the game ends up being a lose to xuegao cheese, by 0.5 pts.
+
+maybe that's too much, seen the result. but i dont really have anything to lose at the end of the day. they would not even find this file as a reference maybe.
+
+the same happens to lin yueran years before on a libre international platform.
+
+the world is really connected. a small potato could have an impact. confidence and certainty. excites and calmness. that's life.
+
+a few mo ago when she were playing valorant, where she stands with the male random, whom shes gives her weapons to, against her audience, i thought it's much bigger deal (not really actually, just for the insanity of "bf" gachas), which yet causes almost no trouble to her, besides asking for empathy in her sponsors group chat. even on the vid archive (with a sarcastic title, "雪糕老师你还记得 ... 初心吗") of this event, the gachas dominates the comments.
+
+hope she would grow stronger after that.
+
+btw, 
+
+youyi wakareno: 把我挂网上很正常 大家都喜欢我. 
+
+no idea. (verdict from danmakus: just a sarcastic play.)
+
 
 
 <!--
@@ -5569,6 +5678,8 @@ see weekly, projects, journal, all
  -->
 
 <!-- timebox, roadmap. -->
+
+<!-- wlb. -->
 
 <!--
 
