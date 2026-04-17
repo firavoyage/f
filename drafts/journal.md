@@ -5697,6 +5697,148 @@ pick jasonheld.jsonl-pretty-editor eventually.
 
 lots of deprecated. both conservative and aggressive. complex.
 
+15 40 chat in chyk group. fetch msgs on memoh. ping hutao_zyf.
+
+```
+千雪的咖啡厅 | 警惕新型 4.6 成瘾物, [4/16/26 12:54 PM]
+一只萌物 在观察另一只萌物。
+
+U.M.R Powered（うまる 北橋）, [4/16/26 12:55 PM]
+xm 棉花娃娃
+
+Chr0n0s, [4/16/26 2:59 PM]
+这个视角...... 观察的是千雪
+
+Chr0n0s, [4/16/26 2:59 PM]
+懂了千雪是萌物
+
+斬風千雪 ❄️, [4/16/26 3:05 PM]
+千雪是物萌吃
+
+Chr0n0s, [4/16/26 3:06 PM]
+不早说
+
+千雪的咖啡厅 | 警惕新型 4.6 成瘾物, [4/16/26 8:13 PM]
+忍不住在实验报告里打直角引号。
+
+千雪的咖啡厅 | 警惕新型 4.6 成瘾物, [4/16/26 8:13 PM]
+查找->替换，「->“。
+
+千雪的咖啡厅 | 警惕新型 4.6 成瘾物, [4/16/26 8:19 PM]
+GPT/Claude 写的代码 be like：一个人想去 50 米外的洗车店，他先掏出打印的家门口地图，用游标卡尺测量出家到洗车店的距离写在手上，然后为了安全把车轮胎收进车身，把车沿着轨道投掷出去落到店门口的第二个停车位上（昨晚问过了这个车位没有其他车），然后自己去天台招呼一只大雁，抓着它飞去店里，查阅鸟语字典来让它降落，为了鲁棒性，在意外摔下来时给喊疼的声音静音
+
+f, [4/16/26 10:08 PM]
+How to type that... 
+
+For me, I have to manually copy from the characters app.
+
+千雪的咖啡厅 | 警惕新型 4.6 成瘾物, [4/17/26 1:34 PM]
+opus4.7 真神了：gpt 的情商，gemini 的注意力，opus 的价格，三个愿望一次满足
+
+Aris, [4/17/26 1:35 PM]
+傻子这一块
+
+Liet Blue, [4/17/26 3:59 PM]
+所以现在真成傻子了么
+
+千雪的咖啡厅 | 警惕新型 4.6 成瘾物, [4/17/26 4:04 PM]
+https://mintlify.wiki/chiyuki0325/lyrica/introduction
+
+Mintlify 是一个自动给开源项目生成文档的 AI 工具
+用它给 Lyrica 制作了使用手册， 我觉得不错
+
+asfr | abc1763613206🤔, [4/17/26 4:05 PM]
+和deepwiki啥区别
+
+斬風千雪 ❄️, [4/17/26 4:05 PM]
+没玩过你说的那个）
+
+斬風千雪 ❄️, [4/17/26 4:05 PM]
+查了一下
+
+斬風千雪 ❄️, [4/17/26 4:06 PM]
+这个生成的是静态使用手册
+
+斬風千雪 ❄️, [4/17/26 4:06 PM]
+不是可交互的
+
+f, [4/17/26 4:06 PM]
+都是学术论文风格，大公司风格的维基。
+
+不易于阅读。
+
+asfr | abc1763613206🤔, [4/17/26 4:06 PM]
+deepwiki也算静态+可交互
+
+斬風千雪 ❄️, [4/17/26 4:06 PM]
+这个不是可交互的
+
+斬風千雪 ❄️, [4/17/26 4:06 PM]
+使用手册就应该静态吧
+
+asfr | abc1763613206🤔, [4/17/26 4:06 PM]
+而且和context7一样带一个mcp
+
+f, [4/17/26 4:07 PM]
+功能的子集？竞争性是什么？
+
+斬風千雪 ❄️, [4/17/26 4:07 PM]
+感觉 Mintlify 适合我这种穴居人
+
+f, [4/17/26 4:07 PM]
+不明白
+
+asfr | abc1763613206🤔, [4/17/26 4:07 PM]
+Qoder也带一个使用手册生成功能
+
+斬風千雪 ❄️, [4/17/26 4:07 PM]
+它生成的就是传统的静态使用手册，而没有过度强调「AI」「聊天」的概念
+
+asfr | abc1763613206🤔, [4/17/26 4:07 PM]
+https://docs.qoder.com/zh/user-guide/repo-wiki
+
+斬風千雪 ❄️, [4/17/26 4:07 PM]
+虽然 Claude Code 也能做到就是了
+
+asfr | abc1763613206🤔, [4/17/26 4:08 PM]
+但这个你得开Pro
+
+f, [4/17/26 4:08 PM]
+我知道了。
+
+Suppose: it's competitive edge is simplicity, and liberty maybe.
+```
+
+(receive a heart from chyk)
+
+<!-- it does not handle quote and rt well. -->
+
+memoh reverts its icon, by an admin, who would address on a weird zh-cn business forum in shenzhen. 
+
+lots of llm memes.
+
+menci would redesign the logo.
+
+17 00 work on humility. create lib fn like result. decide programming style. learn tsdoc.
+
+rust is expression based. you only return for early return.
+
+rust method chaining is boilerplate.
+
+rust has loop, while, and for in (with builtin range syntax).
+
+rust has a powerful match for enums, if let where you match one case with the eq symbol.
+
+rust has use, and a bunch of keywords with unix styled abbreviation.
+
+run hello world in rs. it wont compile wo main, like c/cpp.
+
+choose fn statement. you dont remove fn, you just rp with const. yet it brings the weird arrow. and you could only make it simpler for literal expressions, even excluding objects.
+
+22 40 think. choose a foss license. write the rationale.
+
+
+
 
 
 <!--
