@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "bundler", 
+    
+    "paths": {
+      "lib/*": ["./source/lib/*"]
+    },
+    
+    "allowJs": true,
+    "checkJs": false,
+    "noEmit": true
+  },
+  "include": ["**/*"], 
+  "exclude": ["node_modules", "build"]
+}

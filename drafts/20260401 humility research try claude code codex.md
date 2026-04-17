@@ -126,4 +126,67 @@ claude --resume 820ae2c4-28ec-49dc-9433-70909d61b9fa
 
 <!-- they love jsonl. -->
 
+2026.04.17
+
+> The default system prompt is bundled inside the binary of the Codex CLI. 
+
+> Prompt Hardcoding: The instruction "You are Codex, based on GPT-5" is a standard part of the system prompt for all current GPT-5 series coding models to define their operational behavior and tool-use capabilities. 
+
+upd: no.
+
+when using codex with openai provider, it has one system prompt. when using other providers, it use another.
+
+> Yes, the pre-compiled Rust binary is included when you install @openai/codex via pnpm.
+>
+> Platform-Specific Binaries: The main package lists platform-specific packages (e.g., @openai/codex-darwin-arm64, @openai/codex-linux-x64) as optionalDependencies.
+>
+> Automatic Resolution: When you run pnpm add -g @openai/codex, the package manager automatically identifies your OS and architecture and downloads only the package containing the matching binary for your system.
+
+codex has massive sys prompts. builtin hardcoded in the rust build.
+
+one for openai providers.
+
+one for others.
+
+codex separates events and ui. (one, redundant?, abstraction layer)
+
+when i send a msg, it first appears as an ui action. then an llm call event.
+
+when llm sends a msg, it first appears as an llm response, then ui.
+
+---
+
+claude puts the changlog inside user data folder.
+
+is that good? 
+
+there is a title, a long list of version headings, a bullet list under each.
+
+each item uses past tense. (git commit suggests present tense). it groups "added" "fixed" together. specific fixes (e.g for vscode, for some terminals) come at last.
+
+it comes with a centralized list of official plugins, including lang tools like lsp (though languages are not comprehensive, maybe biased), and external saas (like todo management app, logging platforms). some saas folders are even empty. no idea.
+
+it logs every user action (input, command) on history.jsonl.
+
+it decides projects based on path (e.g. home/name by default, if i launch wo cd anything). idk what will happen if i move the project.
+
+> If you move or rename your project folder, your previous Claude Code sessions will become inaccessible from the new location. 
+> 
+> This happens because Claude Code uses the absolute filesystem path of your project as a unique identifier for its session storage. When you change that path, Claude Code creates a new, empty directory for the "new" project path and can no longer "see" the old history. 
+> 
+> Storage Location: Sessions are typically stored in your home directory under ~/.claude/projects/. The subfolder names are encoded versions of your project's absolute path (e.g., /Users/name/project becomes -Users-name-project).
+>
+> (a community tool)
+> 
+> Manual Migration: You can manually rename the corresponding folder in ~/.claude/projects/ to match your new absolute path format.
+
+weird. yet i dont feel you could cd easily inside claude code. you should be able to choose any path to somewhere, like cd after launching it (which vscode supports).
+
+memory and sessions are separated. the former persists.
+
+inconsistent naming. sometimes uuid, sometimes id. sometimes snake case, sometime camel case.
+
+weird "redacted thinking", with hash as data.
+
+when i call a local command like "cost", it includes it into the context, while explicitly telling the llm not to respond.
 

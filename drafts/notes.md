@@ -2148,4 +2148,22 @@ you could have time machine and container though.
 
 ---
 
+https://github.com/VoltAgent/awesome-agent-skills
+
+---
+
+tg desktop: export:
+
+- video
+- video msg
+
+---
+
+tg
+
+@plonii
+
+(social proof by menci)
+
+---
 

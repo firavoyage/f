@@ -5569,7 +5569,7 @@ just like you searching google (stackoverflow/blogs/github) in the pre llm era, 
 > you can just learn things.
 
 16 40 cmt on foxwq chat on xuegao cheese live with zh-cn politics memes. fire a ticket myself <!-- though, i could not do that on simplelive, and the bilibili client (a old modded version with no ads and no capability to view imgs on comments) shows a toast of "java: ... error". maybe that's resulted from mass reporting (likely by cynical guys), as i dont even know if mine reaches their server. -->
-. get her live banned (upd: for 1d, ref: her official tweet). take some screenshots and screenrecords. save some mhtmls. save the live replay with ytdlp.
+. get her live banned (upd: for 1d, ref: her official tweet). take some screenshots and screenrecords. save some mhtmls. save the live replay with ytdlp (upd 1d: taken down).
 
 fortunately, i could spectate the game inside foxwq. a few weeks ago, it's not possible, not due to my account restricted (at least very unlikely), but the app's poor frontend functionality, where lags and unpredictable effects happen a lot.
 
@@ -5662,6 +5662,40 @@ btw,
 youyi wakareno: 把我挂网上很正常 大家都喜欢我. 
 
 no idea. (verdict from danmakus: just a sarcastic play.)
+
+23 00 read menci blog `Memory Archive ✨`. 01 20
+
+imbushuo: aka.ms/nohello
+
+i could export all tg data on settings (though i could not pick specific chats to be included). menci exports and sorts all priv chats by msg cnt.
+
+some ppl irl. (leohearts.) estela. nihui.
+
+<!-- i were the one bullying cats, you know. sigh. -->
+
+> i dont have to judge ppl anymore. <!-- ppl standing here are all pretty nice ppl. --> <!-- i use the word nice. i dont even need to use the word "good". -->
+
+riir: rewrite it in rust.
+
+01 20 enlarge current disk. get unused space (the old system) back.
+
+23min.
+
+02 00 sleep.
+
+11 40 find a jsonl gui pretter printer to view codex and claude code session logs.
+
+many extensions panics or dead loops.
+
+pick jasonheld.jsonl-pretty-editor eventually.
+
+12 00 research codex data folder and jsonl files. 12 40
+
+14 00 research claude code data folder and jsonl files. 15 00
+
+15 00 work on humility. write package.json and tsconfig. use pnpm link.
+
+lots of deprecated. both conservative and aggressive. complex.
 
 
 

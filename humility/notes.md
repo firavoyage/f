@@ -472,3 +472,15 @@ i could not compete with anyone.
 it's my code. use my way. make it mine.
 
 ---
+
+not willing to hand code.
+
+i dont like export const at all.
+
+whether function or afn. could it be shell like?
+
+yet, let foo type is more verbose than type foo.
+
+though, i could have some templates.
+
+---

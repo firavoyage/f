@@ -754,12 +754,6 @@ glaze lang.
 
 ---
 
-make the udisk ubuntu 24.
-
-use gparted to get the 80 gb back.
-
----
-
 trkr.
 
 ---

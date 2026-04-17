@@ -1,0 +1,17 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+overrides:
+  lib: link:source/lib
+  foo: link:../../../.local/bin/global/5/node_modules/foo
+
+importers:
+
+  .:
+    dependencies:
+      lib:
+        specifier: link:source/lib
+        version: link:source/lib

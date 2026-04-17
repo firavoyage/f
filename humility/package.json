@@ -1,0 +1,5 @@
+{
+	"dependencies": {
+		"lib": "link:source/lib"
+	}
+}
