@@ -1,0 +1,5 @@
+apps:
+  copy:
+    command: zsh -lc "cd '/home/fira/Documents/f/apps/copy/' && /home/fira/.local/bin/parcel serve 'app.html' --dist-dir .build --cache-dir .build/.parcel-cache --port $port"
+  # bar:
+  #   command: npm run dev

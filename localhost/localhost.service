@@ -1,0 +1,15 @@
+# /etc/systemd/system/localhost.service
+
+[Unit]
+Description=run apps an localhost
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=__APP_DIR__
+ExecStart=/bin/bash __APP_DIR__/localhost.sh
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

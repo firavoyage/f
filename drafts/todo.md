@@ -225,9 +225,15 @@ i dont think we need that heavy js testing libs.
 
 ---
 
-lots of tabs. 
+run app/copy in the bg. auto start w systemd.
 
-how to rm.
+---
 
+journal. no db. rw in ts.
 
+---
+
+im picking a port for my localhost web app. i dont feel it's good. i want my app to run permanently consistently. an identifier like myapp is better. but i have to pick from a finite set of numbers and possibly conflict with others in the future or on other machines.
+
+i think maybe i could run something like "myapp.thelocalhostlibrary.local"?
 

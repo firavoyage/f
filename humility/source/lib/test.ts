@@ -1,3 +1,3 @@
-export function foo() {
-  console.log(1);
-}
+import { foo } from "lib/foo"
+
+console.log(foo());

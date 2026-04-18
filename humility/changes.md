@@ -28,4 +28,8 @@ simplify gitignore. rm useless rules (e.g. those for other lang).
 
 create lib and link with node modules.
 
+17
+
+write some codebase templates and infra, like the lib. see the code for details.
+
 

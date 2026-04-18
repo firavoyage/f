@@ -5827,7 +5827,7 @@ rust method chaining is boilerplate.
 
 rust has loop, while, and for in (with builtin range syntax).
 
-rust has a powerful match for enums, if let where you match one case with the eq symbol.
+rust has a powerful match for enums, if let where you match one case with the eq symbol. it even has let else, unwrap, and unwrap or.
 
 rust has use, and a bunch of keywords with unix styled abbreviation.
 
@@ -5837,7 +5837,32 @@ choose fn statement. you dont remove fn, you just rp with const. yet it brings t
 
 22 40 think. choose a foss license. write the rationale.
 
+choose copying at the end of the day, even if it implies gpl. i dont even wanna bother the term license.
 
+be radical. be simple.
+
+23 20 add `FINAL FANTASY XVI DEMO` to steam.
+
+someday i might play it.
+
+18
+
+14 20 create localhost library for apps. 15 40
+
+notes:
+
+- exec could not handle cd, which is not a binary.
+- variable expansion is fragile, esp for complex cases. shell could not escape strings gracefully.
+- userspace commands (on path) might not be found on sudo.
+- https on localhost is fragile.
+- you might be killed by systemd if you dont wait at last.
+
+llms are constantly finding loopholes (e.g. hardcode test cases, brute force) to make it work wo satisfying necessary constraints to make things meaningful.
+
+til:
+
+- save the commands. up arrow in terminal is stupid. so you can iterate fast.
+- llms are good at translatation. you think. they search, summarize, read, and write (which is to recall effectively).
 
 
 
