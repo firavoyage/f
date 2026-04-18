@@ -62,14 +62,6 @@ life
 
 ---
 
-on readme.
-
-change albums/singles to artists/singles.
-
-sync.
-
----
-
 humility
 
 ---
@@ -98,35 +90,9 @@ lib adwaita on web.
 
 ---
 
-openrouter api abstraction.
-
-"chat(message)"
-
----
-
 lobehub uses jina ai. just add r.jina.ai before your url.
 
 there are a lot of things like jina, exa. find them all.
-
----
-
-why
-
-result: type ok err. value. error.
-
-you can have
-
-result: ok bool. value. error.
-
-dont... or you can. since err is clearer than `!ok` sometimes maybe.
-
----
-
-create a mock local openai compatible server.
-
-(exploitation abstraction?)
-
-and connect it! (... seems i could not manage context this way... and everyone assume it's available. let's try novita ai first. openrouter is also good.)
 
 ---
 
@@ -148,6 +114,8 @@ normalize
   - no throw
   - no nested if. if err, return/continue/break.
 ```
+
+"prefer early return when err to avoid nested conditions"
 
 ---
 
@@ -176,10 +144,6 @@ kv.
 ---
 
 ask.
-
----
-
-testing. (?)
 
 ---
 
@@ -221,19 +185,12 @@ ux.
 
 ---
 
+testing (?)
+
 i dont think we need that heavy js testing libs.
-
----
-
-run app/copy in the bg. auto start w systemd.
 
 ---
 
 journal. no db. rw in ts.
 
 ---
-
-im picking a port for my localhost web app. i dont feel it's good. i want my app to run permanently consistently. an identifier like myapp is better. but i have to pick from a finite set of numbers and possibly conflict with others in the future or on other machines.
-
-i think maybe i could run something like "myapp.thelocalhostlibrary.local"?
-

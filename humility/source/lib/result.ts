@@ -18,6 +18,11 @@ declare global {
   type result = ok | err
 }
 
+/**
+ * foo
+ * @param value hello
+ * @returns hi
+ */
 export function ok(value: any): ok {
   return {
     err: false, value
