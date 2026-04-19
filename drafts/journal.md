@@ -5872,6 +5872,12 @@ ts does not allow same scope shadowing, which is exactly why i use result to avo
 
 chatgpt does not know the reality, even with the builtin search enabled sometimes. google ai mode (search heavy) knows the existing solutions to automate fetching window info and screenshot on wayland. though, it's much simpler on x11.
 
+19
+
+19 20 read a detailed refutation with lots of references against an article imagining how consciousness works on neuroscience on zhihu
+
+22 00 watch `The Intouchables (2011)` on funshiki live.
+
 
 
 <!--
