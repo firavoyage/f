@@ -1,14 +1,7 @@
 {
-  "poll_interval": 60,
-  "data_directory": "data",
-  "log_level": "verbose",
+  "log_interval": 60,
+  "data_directory": "$HOME/Documents/f/journal/data/journal.log",
   "screenshot_interval": 300,
-  "screenshot_directory": "~/Pictures/journal",
-  "portal_timeout": 12,
-  "monitor_timeout": 12,
-  "screenshots_enabled": false,
-  "web_port": 5000,
-  "interval_capture": 1200,
-  "capture_on_focus_change": true,
-  "use_x11": true
+  "screenshot_directory": "$HOME/Pictures/journal/%Y-%m-%d %H-%M-%S.png",
+  "screenshots_enabled": true
 }

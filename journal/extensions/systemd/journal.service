@@ -1,12 +1,11 @@
 [Unit]
-Description=Journal background watcher
+Description=journal
 After=graphical-session.target
 
 [Service]
 ExecStart=/home/fira/Documents/f/journal/run.sh
 Restart=on-failure
 RestartSec=10
-Environment=PYTHONUNBUFFERED=1
 
 [Install]
 WantedBy=default.target

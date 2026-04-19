@@ -459,10 +459,106 @@ if __name__ == "__main__":
 
 ---
 
+follow these:
+
+- use:
+  - ubuntu
+  - zsh
+  - pnpm
+  - es module
+  - typescript
+  - parceljs
+  - dont reinvent wheels, prefer modern proven tech
+- naming:
+  - snake case
+  - verb noun for actions, predicate for bools
+- style:
+  - functional programming
+  - modular and cohesive
+  - object params
+  - async if needed
+  - always function statement, arrow function only as props
+  - always type, never interface
+  - no `undefined` or `null`
+  - no `typeof` or `instanceof`.
+  - no `try catch` unless external libraries need
+  - no `throw`
+- notes:
+  - give me full working code of all changed files.
+
+write only one file, journal.ts.
+
 ```
-sudo apt install -y gnome-screenshot
-sudo apt install -y scrot # x11
-# sudo apt install -y grim # wayland
+import config from './config.json';
 ```
 
+```
+{
+  "log_interval": 60,
+  "data_directory": "$HOME/Documents/f/journal/data/journal.log",
+  "screenshot_interval": 300,
+  "screenshot_directory": "$HOME/Pictures/journal/%Y-%m-%d %H-%M-%S.png",
+  "screenshots_enabled": true
+}
+```
+
+it runs forever.
+
+for log interval, it gets the active window title and write a line to the log. if either the app (e.g. code) or the title is empty, dont write.
+
+if screenshot enabled, for screenshot interval, it runs the screenshot command.
+
+everything could fail or timeout (give each command 1 sec at most). catch them. make sure the program continues.
+
+make `~/Pictures/journal` exist
+
+get active window title
+
+```
+ ~ % WID=$(xdotool getwindowfocus)
+echo "ID: $WID"
+
+xdotool getwindowname "$WID"
+
+xprop -id "$WID" WM_CLASS | awk -F'"' '{print $2}'
+ID: 58720260
+WID=$(xdotool getwindowfocus)echo "ID: $WID"xdotool getwindowname "$WID"xprop -id "$WID" WM_CLASS | awk -F'"' '{print $2}'
+ghostty
+ ~ % WID=$(xdotool getwindowfocus)
+echo "ID: $WID"
+
+xdotool getwindowname "$WID"
+
+xprop -id "$WID" WM_CLASS | awk -F'"' '{print $2}'
+ID: 69206032
+Branch · chat - Chromium
+chromium
+ ~ % WID=$(xdotool getwindowfocus)
+echo "ID: $WID"
+
+xdotool getwindowname "$WID"
+
+xprop -id "$WID" WM_CLASS | awk -F'"' '{print $2}'
+ID: 2097169
+gnome-shell
+
+```
+
+screenshot
+
+```
+scrot "$HOME/Pictures/journal/%Y-%m-%d %H-%M-%S.png"
+```
+
+journal.log
+
+```
+2026-04-18 23:52:20+08:00 code readme.md - f (Workspace) - Visual Studio Code
+```
+
+dont hardcode the timezone.
+
+---
+
+i want something like `2026-04-18 23:52:20+08:00` not `2026-04-18T16:57:01.797Z`
 

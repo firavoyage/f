@@ -20,7 +20,7 @@ follow these:
   - always type, never interface
   - no `undefined` or `null`
   - no `typeof` or `instanceof`.
-  - no `try catch` unless external libraries need
+  - no `try catch` unless external libraries throw
   - no `throw`
 - notes:
   - add simple logging

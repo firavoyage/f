@@ -1,5 +1,8 @@
 {
 	"dependencies": {
 		"lib": "link:source/lib"
+	},
+	"devDependencies": {
+		"@types/node": "^25.6.0"
 	}
 }

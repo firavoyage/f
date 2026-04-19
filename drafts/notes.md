@@ -2128,3 +2128,34 @@ https://www.google.com/search?udm=50&q=what%27s+the+zlibrary+for+github%2C+where
 those wo forks after taken down... are nothing.
 
 ---
+
+twitter.
+
+menci.
+
+tweets. replies. media.
+
+tweets and replies are not oxtho.
+
+replies is the superset of tweets. (also, on url)
+
+---
+
+wikiquote.
+
+https://en.wikiquote.org/wiki/David_Hilbert
+
+an elegant hand writing style logo.
+
+Name, captilized.
+
+less technical, more human.
+
+---
+
+https://github.com/memohai/Memoh/pull/64
+
+> 总的来说，目前的方案是通过 prompt 结构化隔离来缓解注入问题。但由于底层依然是 Context 混池，长远来看，建议重构上下文管理，按 User + BotID 进行物理隔离，在对话拼装时再按需拉取，这样能从根源上解决幻觉和越权问题
+
+---
+

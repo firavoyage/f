@@ -5864,6 +5864,14 @@ til:
 - save the commands. up arrow in terminal is stupid. so you can iterate fast.
 - llms are good at translatation. you think. they search, summarize, read, and write (which is to recall effectively).
 
+23 00 simplify journal app. rewrite in ts with modern workflow.
+
+shell is full of quirks. `~` does not expand inside single or double quotation marks. `$HOME` does (and see, it uses all uppercase of consts).
+
+ts does not allow same scope shadowing, which is exactly why i use result to avoid indentation as i early return the err block. 
+
+chatgpt does not know the reality, even with the builtin search enabled sometimes. google ai mode (search heavy) knows the existing solutions to automate fetching window info and screenshot on wayland. though, it's much simpler on x11.
+
 
 
 <!--

@@ -20,6 +20,6 @@ rn changelog to changes.
 
 rn journal (which is actually an llm prompt) to message
 
-use ts.
+simplify. rewrite in ts. mv to legacy.
 
-
+support screenshot.
