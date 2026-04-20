@@ -5878,6 +5878,204 @@ chatgpt does not know the reality, even with the builtin search enabled sometime
 
 22 00 watch `The Intouchables (2011)` on funshiki live.
 
+20
+
+01 00 (re) read `OI 生涯回忆录 《Pilgrimage》 - cz_xuyixuan` and `退学 - Himself65 Blog`.
+
+> 那时候的他虽然实力不能与集训队选手们相比，却收集了自己能力范围内的各个算法的模板题，以及许多他以往的训练题，放在了一个叫做 LYOJ 的网站上。那时，我也通过这个网站学到了许多。
+
+> “时间是什么？如果没有人问我，我很清楚；可是当有人问我时，我便茫然”。
+
+01 40 think on ts error handling result pattern. 02 20
+
+i would take it. i would accept the tradeoff.
+
+call fn, if err handle each type return, else const shadow unwrap the result, and process.
+
+i lose the elegance of early return where i could proceed wo indentation, and as a compensation, i make things easier in ts.
+
+i might use neverthrow.
+
+it's impossible to abstract with error handling fn prop, as you could not return beyond your layer wo a flag.
+
+it's useless to put assignment inside if condition, or wrap it somehow, even if it works in the hacky way.
+
+you could use try catch. it avoids unwrap where you have to mess up with shadowing (you could not shadow in the same scope easily). but it mixes panics and possible failures together, and you would have to write meaningless type narrowing.
+
+upd: i would use a recursive union type. i could reassign it in the same scope actually.
+
+til:
+
+- `strictNullChecks` is essential to normalize ts. `strict` might overkill. let's see.
+
+upd: a recursive union type is not enough. i would use "a Self-Referencing Generic or an Intersection with any."
+
+i could not even shadow. try to disable type check entirely.
+
+in ts, you could not change the type of a single var in the same scope.
+
+03 40 disable `typescript.validate.enable` as the final conclusion. (upd: reverted)
+
+the ideal way. normalize the world with minimal effort.
+
+llms might shadow with a different var name anyway. maybe i could have `foo_` and then `foo`.
+
+upd: i suppose i could have some prototype tricks. at the last resort, i could make it stateful with lockfile at the cost of perf.
+
+12 00 play pjsk.
+
+14 00 have lunch. watch funshiki live replay (no idea, just watch some sr gaming).
+
+contrast to my expectation, film watching streams are not rm due to dmca. everything is just there. (though, it could be organized and indexed better)
+
+15 00 chat with ziantt on rinark (twilightbluemoe, ksrstation, ksrgroup) group on how the cross im bridge works.
+
+```
+Rinark(Station), [4/19/26 5:08 PM]
+#面
+
+zereplex, [4/19/26 9:32 PM]
+xmsl
+
+f, [4/20/26 2:55 PM]
+?
+
+how could ppl on qq reply to the tg channel post directly? 
+
+Does it have tg channel equivalent?
+
+Half Ningsibuqu, [4/20/26 3:01 PM]
+yes...
+
+Rinark(Station), [4/20/26 3:04 PM]
+y
+
+f, [4/20/26 3:07 PM]
+I mean, how does it look like? 
+
+Are posts in tg channels marked differently, or just appearing as normal msgs, and if you reply to the msg, it becomes a comment.
+
+Can this bridge bot fwd screenshots?
+
+Rinark(Station), [4/20/26 3:08 PM]
+@ZianTT_Official
+
+f, [4/20/26 3:09 PM]
+It's dev by ziantt?
+
+ZianTT, [4/20/26 3:09 PM]
+nope. I just deploy it
+
+ZianTT, [4/20/26 3:12 PM]
+the biridge only fwd message in group. But it can still forward channel msg because the group is binded to the channel. The channel msg in qq is just like "CHANNEL  forwarded from CHANNEL: channel msg content"
+
+ZianTT, [4/20/26 3:15 PM]
+replying channel msg in the binding group is equivalent to replying in channel
+
+f, [4/20/26 3:19 PM]
+So I guessed right. 
+
+If you send a msg, you fwd to the group. 
+
+If you reply to the post, you fwd to the channel comments. 
+
+Tg channel comments are a subset of group chat msgs once they bind a group.
+
+ZianTT, [4/20/26 3:19 PM]
+btw idk what "fwd screenshots" refers to. If you mean image msg, it can.
+
+f, [4/20/26 3:20 PM]
+y
+
+f, [4/20/26 3:20 PM]
+Both. 
+
+Its technical capability of img fwd. 
+
+And can you screenshot how it looks like.
+
+ZianTT, [4/20/26 3:23 PM]
+not exactly. Channel comments are actually extracted from the replies of the msg which fwded to the binding group. So if you deleted the channel msg in the group, there wont be "View comments" button in channel
+
+ZianTT, [4/20/26 3:24 PM]
+its what it look like in qq
+
+f, [4/20/26 3:25 PM]
+Your dm bot is unresponsive. You dm are archived immediately .
+
+I've chatted with you on Twitter before (yet, you only see my dm after I comment somewhere), but now on tg there is no way I could reach you wo a public group chat. 
+
+lol.
+
+f, [4/20/26 3:26 PM]
+Btw, your dm bot doesn't look like a dm bot, but an openclaw or something instead.
+
+ZianTT, [4/20/26 3:27 PM]
+true. I tried to deploy my claw days ago on that bot so the dm bot is down…
+
+f, [4/20/26 3:31 PM]
+Why "not exactly"? 
+
+From your screenshots, I actually confirmed my supposition.
+
+Claim:
+
+If you reply to a channel post, like the xmsl msg, it will be in channel comments. 
+
+Otherwise it's normal group chat msg.
+
+ZianTT, [4/20/26 3:35 PM]
+i mean
+"If you reply to the post, you fwd to the channel comments. "
+Its not forwarded to the channel. Channel msg comments are actually group msg replies. They're the same
+
+f, [4/20/26 3:40 PM]
+Ok. 
+
+I get you: you don't have to handle these explicitly. Just reply as is, and tg will handle the rest.
+```
+
+```
+zereplex, [4/20/26 3:41 PM]
+so everything is handled by tg. I just fwd all msgs in the group
+
+zereplex, [4/20/26 3:42 PM]
+所以为什么一个+86用户在使用en
+
+f, [4/20/26 3:43 PM]
+seems you have no name or pfp.
+
+f, [4/20/26 3:44 PM]
+but you have birthday (as well as id, join time, reg time, last seen)?! XD
+
+zereplex, [4/20/26 3:45 PM]
+true，my qq avatar is a blank image(or transparent?)
+
+zereplex, [4/20/26 3:45 PM]
+and
+
+zereplex, [4/20/26 3:45 PM]
+true，my qq avatar is a blank image(or transparent?)
+
+f, [4/20/26 3:45 PM]
+so weird
+
+zereplex, [4/20/26 3:45 PM]
+my qq nickname is a full-width whitespace
+
+zereplex, [4/20/26 3:46 PM]
+hm
+
+zereplex, [4/20/26 3:46 PM]
+thats because the fwd bot is my qq contact
+
+zereplex, [4/20/26 3:46 PM]
+so it has the permission to view that
+
+f, [4/20/26 3:47 PM]
+well... i dont feel i could easily see "when my frnd reg qq" easily. maybe bots have higher permissions.
+```
+
 
 
 <!--

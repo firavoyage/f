@@ -140,3 +140,69 @@ log
 
 ---
 
+now it works.
+
+but i want to let it narrow properly.
+
+in rescue if, it must be err.
+
+later, it must be ok.
+
+i dont want to unwrap anything. dont make ok an object.
+
+```
+type ok<T> = Exclude<T, err>
+type err = { type: string, message: string }
+
+declare global {
+  type result<T> = ok<T> | err;
+}
+
+export function ok<T>(value: ok<T>): ok<T> {
+  return value
+}
+
+const err_prototype = {}
+
+export function err(error: err): err {
+  return Object.create(err_prototype, {
+    type: {
+      value: error.type,
+      writable: false,
+      enumerable: true
+    },
+    message: {
+      value: error.message,
+      writable: false,
+      enumerable: true
+    }
+  })
+}
+
+export function rescue<T>(result: result<T>): boolean {
+  return result instanceof err
+}
+
+function foo(): result<boolean> {
+  if (Math.random() > 0.5) {
+    return ok(true)
+  } else {
+    return err({ type: "bad luck", message: "damn" })
+  }
+}
+
+function test() {
+  let bar = foo()
+
+  if (rescue(bar)) {
+    console.log(bar);
+    return;
+  }
+
+  console.log(bar);
+}
+
+test()
+```
+
+
