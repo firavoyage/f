@@ -1,3 +1,54 @@
+const err_hash = "__err";
+// const err_hash = "d9eb253e06987fa74a5d3189f73d9f7a8104cca786fafbb52bc9555972f5477f"; // sha256 of "err"
+
+type ok<T> = Exclude<T, err>
+type err = Readonly<{ type: string | number | symbol, message: string | object, [err_hash]: true }>
+// todo: type and message are string?
+
+type Optional<Type, Keys extends keyof Type> = Omit<Type, Keys> & Partial<Pick<Type, Keys>>
+
+declare global {
+  type result<T, E = err> = ok<T> | E;
+  // todo: E should be subset of err
+}
+
+// export function ok<T>(value: ok<T>): ok<T> {
+//   return value
+// }
+
+export function err(error: Optional<err, typeof err_hash>): err {
+  return Object.defineProperty({
+    type: error.type,
+    message: error.message,
+  }, err_hash, { value: true }) as err
+}
+
+export function rescue<T>(result: result<T>): result is err {
+  // return (result as any)?.[err_hash]
+  return result?.[err_hash]
+}
+
+function foo(): result<boolean> {
+  if (Math.random() > 0.5) {
+    return true
+  } else {
+    return err({ type: "bad luck", message: "damn" })
+  }
+}
+
+function test() {
+  let bar = foo()
+
+  if (rescue(bar)) {
+    console.log(bar);
+    return;
+  }
+
+  console.log(bar);
+}
+
+test()
+
 // // note: always check type before accessing value or error
 // // note: be careful with the number of `../` (parent folders) 
 
@@ -60,55 +111,3 @@
 // note: always check type before accessing value or error
 // note: be careful with the number of `../` (parent folders) 
 
-type ok<T> = Exclude<T, err>
-type err = { type: string, message: string }
-
-declare global {
-  type result<T> = ok<T> | err;
-}
-
-export function ok<T>(value: ok<T>): ok<T> {
-  return value
-}
-
-const err_prototype = {}
-
-export function err(error: err): err {
-  return Object.create(err_prototype, {
-    type: {
-      value: error.type,
-      writable: false,
-      enumerable: true
-    },
-    message: {
-      value: error.message,
-      writable: false,
-      enumerable: true
-    }
-  })
-}
-
-export function rescue<T>(result: result<T>): result is err {
-  return Object.getPrototypeOf(result) === err_prototype
-}
-
-function foo(): result<boolean> {
-  if (Math.random() > 0.5) {
-    return ok(true)
-  } else {
-    return err({ type: "bad luck", message: "damn" })
-  }
-}
-
-function test() {
-  let bar = foo()
-
-  if (rescue(bar)) {
-    console.log(bar);
-    return;
-  }
-
-  console.log(bar);
-}
-
-test()

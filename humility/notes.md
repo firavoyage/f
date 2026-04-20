@@ -484,3 +484,32 @@ yet, let foo type is more verbose than type foo.
 though, i could have some templates.
 
 ---
+
+chatgpt.
+
+now, on "if you want, i can ..."
+
+it might show a clickable prompt.
+
+ux research: many user copy and paste.
+
+(yet, ctrl enter has no effect when editing msg! i have to click send.)
+
+btw, 
+
+it shows "i can do something". the prompt is "Do something".
+
+i suppose it's llm generated instead of strip and capitalize.
+
+---
+
+google ai.
+
+more mdx are added.
+
+like quotation. (a comment, a source, like "github_icon Github smallmiddot 2 years ago")
+
+it shows as md blockquote (a line on the left) instead of the traditional google ai way (a rounded floating block with margin).
+
+---
+

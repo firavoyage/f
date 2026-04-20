@@ -2159,3 +2159,66 @@ https://github.com/memohai/Memoh/pull/64
 
 ---
 
+yin xiong on cp... (hdu)
+
+https://github.com/WhereIsHeroFrom/Code_Templates
+
+---
+
+```js
+new URL("https://google")
+new URL("https:google.com")
+new URL("https://google.com")
+```
+
+these all works.
+
+---
+
+```js
+import { ok, err, Result, ResultAsync, fromThrowable, fromPromise } from 'neverthrow';
+
+// 1. Wrap a throwing function (like URL parsing)
+const safeParseUrl = fromThrowable(
+  (url: string) => new URL(url),
+  () => 'Invalid URL' as const
+);
+
+// 2. A simple validation function
+const validateUser = (url: URL): Result<{ name: string }, string> => {
+  const name = url.searchParams.get('name');
+  return name ? ok({ name }) : err('Missing name parameter');
+};
+
+// 3. An async database operation wrapped in ResultAsync
+const saveUser = (user: { name: string }): ResultAsync<number, string> => {
+  const mockDbPromise = Promise.resolve(Math.floor(Math.random() * 1000));
+  return fromPromise(mockDbPromise, () => 'Database failure');
+};
+
+// --- PUTTING IT ALL TOGETHER ---
+async function registerUser(inputUrl: string) {
+  const finalResult = await safeParseUrl(inputUrl)
+    .andThen(validateUser) // Chain sync operation
+    .asyncAndThen(saveUser) // Transition from sync to async
+    .map(id => `User created with ID: ${id}`) // Transform success value
+    .mapErr(error => `Error: ${error}`); // Transform error value
+
+  // Final consumption with pattern matching
+  finalResult.match(
+    (msg) => console.log('Success!', msg),
+    (err) => console.error('Failed!', err)
+  );
+}
+
+registerUser('https://example.com');
+```
+
+if you dont handle and early return, rather try catch.
+
+chaining is easy. just `process(data, f, f, f)`, assuming they are currified properly.
+
+seems, you wanna gather errors together. good. but could be simpler.
+
+---
+

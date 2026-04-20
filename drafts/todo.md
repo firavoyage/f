@@ -189,9 +189,33 @@ testing (?)
 
 i dont think we need that heavy js testing libs.
 
+a test lib? yaml.
+
+fn. input. output. 
+
+you can actually dynamic import.
+
+```ts
+await import(module_path) // the same as normal import
+// you get a obj of fn. 
+```
+
+write a simple testing lib.
+
+---
+
+file lib.
+
+tell it how to handle errors (div zero pattern)
+
+(you might repeat div zero on var/prop name and type. but that's generally acceptable?)
+
+(you dont have to wrap, but it's good to avoid magic consts and export the errors)
+
+> rust builtin error types in std (e.g. file)
+
 ---
 
 mozart?
 
 ---
-

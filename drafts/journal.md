@@ -5908,6 +5908,8 @@ til:
 
 - `strictNullChecks` is essential to normalize ts. `strict` might overkill. let's see.
 
+upd: try `strict`. it's considered normal by default, making things predictable. i could turn it off later if i could not fit into it. upd: reverted. no implicit any is too aggressive, causing boilerplate assertions.
+
 upd: a recursive union type is not enough. i would use "a Self-Referencing Generic or an Intersection with any."
 
 i could not even shadow. try to disable type check entirely.
@@ -5923,6 +5925,13 @@ llms might shadow with a different var name anyway. maybe i could have `foo_` an
 upd: i suppose i could have some prototype tricks. at the last resort, i could make it stateful with lockfile at the cost of perf.
 
 12 00 play pjsk.
+
+13 00 create result type.
+
+til:
+
+- ts is not really smart. it does not make best effort. you have to use type guard.
+- js oop is messy, complex, and boilerplate, whether class or object methods. rather wrap them. object create props are non enum by default. instanceof has constraints on the type of its operands.
 
 14 00 have lunch. watch funshiki live replay (no idea, just watch some sr gaming).
 
@@ -6074,7 +6083,50 @@ so it has the permission to view that
 
 f, [4/20/26 3:47 PM]
 well... i dont feel i could easily see "when my frnd reg qq" easily. maybe bots have higher permissions.
+
+zereplex, [4/20/26 3:52 PM]
+eh
+
+zereplex, [4/20/26 3:52 PM]
+actually its not so accurate in my test
+
+zereplex, [4/20/26 3:52 PM]
+i think only the year of the reg date is true
+
+zereplex, [4/20/26 5:51 PM]
+怎么全是洋文
+
+zereplex, [4/20/26 8:13 PM]
+. (https://richheader.1641263.xyz/richHeader/45b6ae30-432f-4140-a5f8-cf54e497c59a/203479746?hash=5dfd111116&date=2026-04-20): 
+给我干哪来了
+
+zereplex, [4/20/26 8:14 PM]
+. (https://richheader.1641263.xyz/richHeader/45b6ae30-432f-4140-a5f8-cf54e497c59a/203479746?hash=5dfd111116&date=2026-04-20): 
+这还是国内吗
+
+Rinark(Station), [4/20/26 8:14 PM]
+乐
 ```
+
+16 00 secure the result type.
+
+prototype is not consistent across boundaries. use a magic const instead, that is serializable, stable, and compatible.
+
+21 00 install `astro dx`, influenced by its popularity on berryberry (esp. mtfs, students, and devs, even cnml stars). install `termux`.
+
+weird on mobile screen. no idea how to play. the tutorial is just another song.
+
+incomplete.
+
+apt could install node easily. it's the latest version by default. good.
+
+then install pnpm (run pnpm setup, restart to let the ...rc take effect.) and openclaw. (though, idk how it could work wo sudo and systemd)
+
+fail (no git). install git. work under a minute.
+
+that's it. (i dont wanna config openclaw once again!)
+
+apps relying on linux gui are simply non existing via apt.
 
 
 

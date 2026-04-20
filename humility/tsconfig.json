@@ -12,6 +12,7 @@
     "checkJs": false,
     "noEmit": true,
 
+    // "strict": true,
     "strictNullChecks": true,
   },
   "include": ["**/*"],
