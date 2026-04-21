@@ -20,6 +20,7 @@ follow these:
   - always type, never interface
   - no `undefined` or `null`
   - no `typeof` or `instanceof`.
+  - no `===` `!==`, use `==` `!=` instead.
   - no `try catch` unless external libraries throw
   - no `throw`
 - notes:

@@ -6128,6 +6128,18 @@ that's it. (i dont wanna config openclaw once again!)
 
 apps relying on linux gui are simply non existing via apt.
 
+02 20 research file modules.
+
+when i rename a file, vscode auto fixes import... and puts a file into tsconfig include array?
+
+then my declare global breaks for no reason.
+
+03 20 clone `rust` `ruby` `typescript` and `cpython`.
+
+14 00 have lunch. watch some funshiki vids.
+
+15 00 research some fp ideas, e.g. oop abstraction, currying. research some tc39 proposals.
+
 
 
 <!--

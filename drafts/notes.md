@@ -2222,3 +2222,83 @@ seems, you wanna gather errors together. good. but could be simpler.
 
 ---
 
+i dont really have to scrap from twitter. though it's easy.
+
+there are a bunch of twitter mirrors. just a pow, and im in.
+
+status.d420.de
+
+https://github.com/zedeus/nitter/wiki/Instances/_history (wtf? github has such a page?)
+
+well, i could even post my fork on torvalds/linux url, nothing special!
+
+---
+
+rdoc.
+
+ruby docs.
+
+ruby is so human.
+
+ruby. irb. ri.
+
+---
+
+oop is an abstraction on top of fp.
+
+syntax sugar, you know. the best way is the way you feel right, which implies like simplicity, philosophy, and principles.
+
+```js
+class foo{
+  init()
+
+  method()
+}
+
+let my_foo = new foo(init_data)
+
+my_foo.method()
+```
+
+```js
+foo(init_data)
+
+fn(self, data)
+
+oop(init, methods[]) = (init_data){
+  let self = init(init_data)
+  for each method, self.method = (props){method(self, props)}
+  return self.
+}
+// like curry
+
+let foo_oop = oop(foo, methods)
+
+let my_foo = foo_oop(abc)
+
+my_foo.method()
+```
+
+sometimes the init fn just stores the data, which could be simplified.
+
+see also: currying
+
+---
+
+github shows
+
+- github nav (loc, search, actions, profile)
+- metadata (e.g. stars, branch, clone cta)
+- files (latest cmt and time on each), latest cmt, cmt cnt
+- on side bar, about, metadata, link, contributors, (release), (deployment), (action)
+- readme
+
+github readme. 
+
+idk if it's good to put files first, readme next. maybe it is.
+
+it has a toc button, and an empty space on the side. why not mv the toc there?
+
+---
+
+
