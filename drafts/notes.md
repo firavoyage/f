@@ -2267,8 +2267,8 @@ fn(self, data)
 
 oop(init, methods[]) = (init_data){
   let self = init(init_data)
-  for each method, self.method = (props){method(self, props)}
-  return self.
+  for each method, self.method = (props){method(self, props); return self;}
+  return self
 }
 // like curry
 
@@ -2298,6 +2298,150 @@ github readme.
 idk if it's good to put files first, readme next. maybe it is.
 
 it has a toc button, and an empty space on the side. why not mv the toc there?
+
+---
+
+tc39 pattern matching 
+
+```
+import { match, P } from 'ts-pattern';
+
+type Data = 
+
+  | { type: 'loading' }
+  | { type: 'success'; data: string }
+  | { type: 'error'; error: Error };
+
+const result = match(response)
+  .with({ type: 'loading' }, () => 'Still loading...')
+  .with({ type: 'success', data: P.select() }, (data) => `Got: ${data}`)
+  .with({ type: 'error' }, ({ error }) => `Error: ${error.message}`)
+  .exhaustive(); // Error if you miss a 'type'
+```
+
+it's actually worse than if, and it creates afn (you could not break, return the outside in afn).
+
+```js
+if(res.type == ''){
+
+}ei (){
+
+}ei (){
+
+}e{
+
+}
+```
+
+most time it's for keep `result == ...` dry.
+
+my prev attempt (no order though, and i dont wanna rely on order, just like math fn):
+
+```js
+let cases = {
+  200(){
+
+  }, 
+  400(){
+
+  }
+}
+match(result, cases).
+```
+
+chaining is generally bad, as it's not ideal, but a constraint of the lang.
+
+btw, holy, i see this:
+
+https://github.com/t3dotgg/paycheck-extension/blob/main/main.js
+
+```js
+  let factor = 1;
+
+  switch (multiplier) {
+    case "k":
+      factor = 1000;
+      break;
+    case "m":
+      factor = 1000000;
+      break;
+    case "b":
+      factor = 1000000000;
+      break;
+  }
+```
+
+---
+
+pipe/chaining.
+
+```js
+a(b(c(data)))
+```
+
+```js
+data | a | b | c
+```
+
+```js
+// Status Quo (Nested)
+console.log(formatName(trim(toUpperCase("  alice  "))));
+
+// With Pipeline Operator (|>)
+"  alice  "
+
+  |> toUpperCase(%)   // Placeholder % is the current value
+  |> trim(%)          // Passes result of toUpperCase to trim
+  |> formatName(%)    // Passes result of trim to formatName
+  |> console.log(%);  // Final output: "ALICE"
+
+const json = pkgs[0] 
+
+  |> npa(%).escapedName 
+  |> await npmFetch.json(%, opts);
+```
+
+```js
+process(data, a, b, c) // already currified
+```
+
+```js
+data.a().b().c()
+```
+
+rather process.
+
+(oop chaining is ok if you know the finite set of methods, also, you dont have to pre curry explicitly)
+
+about async
+
+```js
+await (await foo.a()).b();
+```
+
+process makes life easy
+
+---
+
+google ai mode could render img in mdx.
+
+(stats: left, ice cream sales. bottom, temp. right, drowning.)
+
+why: it's using google sans.
+
+---
+
+you should never simply load images, which would definitely lead to layout shifts while loading.
+
+you dont have to manually write wh for each.
+
+and if you like you can have some metadata (like blur) for loading, like twitter, tumblr, and instagram.
+
+maybe i wont use a heavy framework like next. (i dont use vue/vite as i hate evan you. i dont use next as i hate vercel.)
+
+i will detect the path (using ast) for each file, and hardcode a "server" global var obj, put related things inside.
+
+for blog, i will simply hard code w and h (or aspect if you like) when rendering md.
 
 ---
 

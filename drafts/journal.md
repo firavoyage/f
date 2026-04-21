@@ -6140,6 +6140,16 @@ then my declare global breaks for no reason.
 
 15 00 research some fp ideas, e.g. oop abstraction, currying. research some tc39 proposals.
 
+18 00 learn some ruby.
+
+21 40 solve a math problem.
+
+```
+2^x >= 10^10 & x in int
+```
+
+leverage the fact that 128 is similar to 125.
+
 
 
 <!--

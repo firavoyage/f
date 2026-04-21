@@ -513,3 +513,38 @@ it shows as md blockquote (a line on the left) instead of the traditional google
 
 ---
 
+you can just quote.
+
+select. quote.
+
+these will be categorized in db. 
+
+and synced as you like. (no need to export).
+
+something like this:
+
+```md
+> same response
+> 
+> quote one
+> 
+> quote two
+
+> another resp
+```
+
+(or separate by consecutiveness, wo blockquotes)
+
+even if you dont quote, all data are stored and organized for persistence by default.
+
+you can go to ref.
+
+---
+
+you can queue questions.
+
+one question one answer is better, since it often has an implicit output length limit.
+
+and append questions in the middle (if something goes wrong halfway), as w as reordering them or organize/categorize. since you have the full power of ctx management, not a simple chatbot.
+
+---
