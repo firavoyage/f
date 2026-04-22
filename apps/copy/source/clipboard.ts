@@ -1,21 +1,35 @@
-const can_write_text = (): boolean => Boolean(navigator.clipboard?.writeText);
+function can_write_text(): boolean {
+  return Boolean(navigator.clipboard && navigator.clipboard.writeText);
+}
 
-export const copy_html_to_clipboard = async ({ html }: { html: string }): Promise<void> => {
+export async function copy_html_to_clipboard({ html }: { html: string }): Promise<void> {
   if (can_write_text()) {
     await navigator.clipboard.writeText(html);
-    console.log({ action: 'copy_html_code', length: html.length });
+
+    console.log({
+      action: 'copy_html_to_clipboard',
+      length: html.length,
+    });
+
     return;
   }
 
-  console.log({ action: 'copy_html_code', mode: 'clipboard_unavailable' });
-};
+  console.log({
+    action: 'copy_html_to_clipboard',
+    mode: 'clipboard_unavailable',
+    length: html.length,
+  });
+}
 
-const escape_html = ({ text }: { text: string }): string =>
-  text
+function escape_html({ text }: { text: string }): string {
+  return text
     .replaceAll('&', '&amp;')
     .replaceAll('<', '&lt;')
     .replaceAll('>', '&gt;')
     .replaceAll('"', '&quot;')
     .replaceAll("'", '&#39;');
+}
 
-export const text_to_html = ({ text }: { text: string }): string => escape_html({ text }).replaceAll('\n', '<br />');
+export function text_to_html({ text }: { text: string }): string {
+  return escape_html({ text }).replaceAll('\n', '<br />');
+}

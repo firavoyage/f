@@ -30,4 +30,12 @@ web is finite.
 
 ---
 
+i could 
+
+- add `link` text to link with empty content
+- handle img. size. render. off.
+
+(though, these could be done later progressively.)
+
+---
 

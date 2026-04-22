@@ -547,4 +547,23 @@ one question one answer is better, since it often has an implicit output length 
 
 and append questions in the middle (if something goes wrong halfway), as w as reordering them or organize/categorize. since you have the full power of ctx management, not a simple chatbot.
 
+(chatgpt supports that now. you can queue follow up? though you could not attach img to queued follow up.)
+
 ---
+
+chatgpt finally optimizes its ui.
+
+long code gets collapsed. you can edit and run html (it's a switch between code and view).
+
+though it's too simple and loads nothing.
+
+---
+
+chatgpt allows "add account" via web ui.
+
+no idea if it detects exploitation.
+
+i will use cookie manager as usual.
+
+---
+

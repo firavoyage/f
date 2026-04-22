@@ -2461,3 +2461,17 @@ it's an llm after all...
 
 ---
 
+it's easy to work with modules separated by files, not objects.
+
+you could not `import {foo.bar} from module`.
+
+you could `import {bar} from module/foo` and `import * as foo from module/foo`.
+
+the latter is more flexible.
+
+(i will memorize it. i will simply tell it to be modular. i wont write into knowledge. i will know if it feels right.)
+
+---
+
+
+

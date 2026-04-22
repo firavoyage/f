@@ -16,14 +16,14 @@ follow these:
   - modular and cohesive
   - object params
   - async if needed
-  - always function statement, arrow function only as props
+  - always function statement, never arrow function (unless as props)
   - always type, never interface
   - no `undefined` or `null`
   - no `typeof` or `instanceof`.
   - no `===` `!==`, use `==` `!=` instead.
   - no `try catch` unless external libraries throw
   - no `throw`
-- notes:
+- note:
   - add simple logging
   - give me full working code of all changed files.
 

@@ -6247,7 +6247,7 @@ https://nyaa.si/view/928888
 15 40 put an issue on memoh.
 
 ````md
-ask memoh: seems there is some weird dead code, i guess.
+(unimportant) ask memoh: seems there is some weird dead code, i guess.
 
 when i review some new commits today, ive seen this:
 
@@ -6280,10 +6280,77 @@ at a first glance, it just feels so weird no matter how you look at this.
 
 ive searched across the repo, no literal reference of `typesShort`.
 
-ive not checked issue guidelines, its existence in prev issues, or git blame.
+ive not checked issue guidelines, its existence in prev issues, or its first appearance in the history (git blame).
 
+it's not something critical, but i hope someone could say something. "vibe coding" (or agentic, whatever you call it) is not an excuse.
 
+also, there is a commit "feat(agent): relax provider http timeouts", which organizes the magic const numbers better. i dont feel right at a glance. i suppose it (magic consts in the middle of code) is something that could be detected by linting, rather than be commited and then fixed (or feat) in the future.
+
+on `apps/web/public/channels`, there are some chat provider icons. some are svg, some are png, some are webp. and i suppose some providers dont even have icon (the list in json is long, and the icons are just a few). also, there is a vite icon (ive no idea if you need it. do you wanna show it to the users?).
+
+i remember when i install it before, the "forgot password" button is there, but unusable. idk if it's fixed. (i think there should not be that.)
+
+i `git pull` and search it now.
+
+on `apps/web/src/pages/login/index.vue`,
+
+```html
+<div class="flex">
+  <a
+    href="#"
+    class="ml-auto inline-block text-xs underline mt-2"
+  >
+    {{ $t('auth.forgotPassword') }}
+  </a>
+</div>
+```
+
+the t is obviously a text key in i18n json, not an action. the href is... nothing.
+
+i suppose a good linter (or llm code review) could point it out wo efforts.
+
+tell me if you one shot this! since everything nowadays is just one prompt away, you know.
+
+there is no way i could use memoh easily. i suppose i could add something to path, and then `memoh --help`. currently ive installed it with one liner, and i have no way to even know whether it's running, which port it is running, wo reading docs. i think there might be already issues on it (cli).
 ````
+
+```md
+<!-- damn -->
+
+you just commit one line to typeshort with confidence?
+
+do you feel anything reading the code?
+```
+
+```md
+re: [Bug]: Token usage are not effective #340
+
+holy. 
+
+the title is so confusing. can i change it?
+
+when i read "Token usage are not effective", i suppose it's memoh that is wasting tokens doing busy work, running redundant heartbeats, dumping unrelated knowledge/prompt, or something.
+
+actually, it's "Token usage is not in sync".
+
+the language in this issue changes several times. some are not even grammatically correct. weird.
+```
+
+```md
+re: [Bug]: Failed to install memoh using one click script #386
+
+docker is not well designed.
+
+you have to stop all prev sessions, clear data, and then you could install with one liner again.
+
+otherwise it will conflict.
+
+it's not pure.
+
+you could not run one command twice and suppose they will work as expected.
+```
+
+17 40 research html to md lib. 18 00 add html to md option to app copy.
 
 
 

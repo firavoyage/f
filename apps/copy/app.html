@@ -41,12 +41,27 @@
         inset: 0;
         outline: none;
         overflow: hidden;
-
-        /* invisible but still active */
         opacity: 0;
-
-        /* allow css variables + inherited styles */
         white-space: pre-wrap;
+      }
+
+      #markdown-toggle,
+      #svg-toggle {
+        position: fixed;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #fff;
+        font-size: 14px;
+        user-select: none;
+        cursor: pointer;
+      }
+
+      #markdown-toggle {
+        bottom: 28px;
+      }
+
+      #svg-toggle {
+        bottom: 8px;
       }
     </style>
     <script type="module" src="./source/main.ts"></script>
@@ -61,5 +76,8 @@
       aria-label="paste area"
       spellcheck="false"
     ></div>
+
+    <div id="markdown-toggle">markdown: off</div>
+    <div id="svg-toggle">svg: off</div>
   </body>
 </html>
