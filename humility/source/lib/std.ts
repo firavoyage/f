@@ -110,6 +110,10 @@ export function rescue<T>(result: result<T>): result is err {
 
 /**
  * ref: https://gist.github.com/t3dotgg/a486c4ae66d32bf17c09c73609dacc5b
+ * 
+ * just use the word handle (i will wrap it to handle the errors gracefully),
+ * 
+ * not attempt (i attempt to do this even if it might fail.).
  */
 export function handle<T, E = err>(fn: Function): () => result<T, E> {
   return (...args) => {

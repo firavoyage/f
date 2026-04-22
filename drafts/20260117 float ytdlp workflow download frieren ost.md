@@ -115,6 +115,20 @@ yt-dlp \
   -o "_/Pink Floyd - The Dark Side of the Moon/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
 ```
 
+Mitsuko Uchida - Mozart
+
+```sh
+yt-dlp \
+  "https://music.youtube.com/playlist?list=OLAK5uy_m0MUH339L9qXb6tpqxvz3FATsd-QCsAZ8" \
+  "https://music.youtube.com/playlist?list=OLAK5uy_kieixF1RY3JyXaueuCo1y61kvLCtIjS68" \
+  "https://music.youtube.com/playlist?list=OLAK5uy_nqJSu_oY-bZQ-bSeWfoC5oRsOFeTgSchI" \
+  "https://music.youtube.com/playlist?list=OLAK5uy_l-9DvkYBugug1h_OZYDbuaR1MVSQhTPf8" \
+  "https://music.youtube.com/playlist?list=OLAK5uy_neIuG-bsV3WQ4bcauiD_QIXEVM8SXK1mA" \
+  "https://music.youtube.com/playlist?list=OLAK5uy_m0MUH339L9qXb6tpqxvz3FATsd-QCsAZ8" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  -o "_/Mitsuko Uchida - Mozart/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
+```
+
 Mitsuko Uchida - Schubert
 
 <!-- seems i should not shuffle it... -->

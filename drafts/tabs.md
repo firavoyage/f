@@ -298,14 +298,6 @@ but look at the team. look at the people. holy.
 
 ---
 
-https://www.youtube.com/watch?v=iDfTInp2mME
-
-watch this after puella magica.
-
-recap by funshiki.
-
----
-
 littlesound (vue vapor mode), 2000.
 
 https://space.bilibili.com/2651457
@@ -379,4 +371,3 @@ https://chatwise.app/
 /home/fira/Documents/_/opensource/Memoh/assets/gallery
 
 ---
-

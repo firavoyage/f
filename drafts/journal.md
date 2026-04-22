@@ -6150,6 +6150,141 @@ then my declare global breaks for no reason.
 
 leverage the fact that 128 is similar to 125.
 
+23 00 surf rvalue daily. play cr, get another classic challenge 12 wins. 
+
+23 40 solve a math problem from rvalue in grade 12 (in 2020).
+
+```precious
+positive a_n. 2S_n = a_n + 1/a_n. 
+
+solve floor(sum(1/S_i, 1..100))
+
+# it uses <a_n> to imply positiveness. idk. but it must be.
+```
+
+attempt to simplify `s_n + s_(n+1)`. no use.
+
+try to list all. find `a_(n+1) = f(S_n)`, and then `s_(n+1) = f(s_n)`. complete.
+
+no idea: `how to calc floor(1/1 + sqrt(2)/2 + ... + sqrt(100)/100)`, use calc instead. (i suppose rvalue could not use calc.)
+
+gemini seems to know this.
+
+gemini could render graph in mdx (?), with its google sans and colors, to tell me the meaning of a definite int in geometry.
+
+> Integral Test for Convergence
+
+> Fundamental Theorem of Calculus
+
+> bounding by telescoping sums
+
+<!-- btw, gemini flash made some typo, claiming 1/sqrt(n) < 1/(sqrt(n)+sqrt(n-1)) -->
+
+01 20 solve a math problem from rvalue.
+
+```precious
+hyperbola. x^2/a^2-y^2/b^2 = 1. l_1 intersects on A and B. l_2 has M (mid of A and B) and F_2 and perp to l_1. x_M is b. 
+
+solve e.
+```
+
+i think i could resize as i like. let b = 1. try all four options? no. it's hard to prove non existence.
+
+apply the plain method. put line into curve. the m (y_M) is removed.
+
+now i get a.
+
+```precious
+a^6 - 2a^2 - 1 = 0
+```
+
+holy. i have to use calc. (idk, maybe rvalue has to memorize the formula?)
+
+```precious
+a^2 can be (sq(5) + 1) /2. (it could not be neg).
+
+e = c^2/a^2 = 1 + b^2/a^2 # well... it's e^2. i submit the one wo sqrt at last. lol.
+```
+
+upd: all memes, no aops after several mo.
+
+> himself65: after trans... i learn cooking at home. 
+>
+> i mean trans school, not gender.  <!-- the little himself65... -->
+
+01 40 read rvalue blog.
+
+04 40 dl `Mitsuko Uchida - Mozart`.
+
+<!-- i dont like lang lang on the yt music "performing mozart". "Passionate/Unorthodox". -->
+
+05 00 dl `A Certain Scientific Railgun (2009) (2013)` `A Certain Scientific Railgun (2020)`.
+
+https://nyaa.si/view/1404309
+
+https://nyaa.si/view/1325390
+
+change filename on contents panel after starting download.
+
+<!-- i might dl re:zero and steins gate next. ive watched worldend (though, on a dump where all ep are joined as one vid with subs and watermarks builtin). -->
+
+<!-- (continue to) watch bakemonogatari on acfun?! -->
+
+13 20 have lunch, pizza hut. watch some bangumi recap vids by funshiki.
+
+14 00 dl `Puella Magi Madoka Magica Part III - Rebellion (2013)` `The Disappearance of Haruhi Suzumiya (2010)` and some zh-cn subs from zimuku.
+
+<!-- i might dl beginning and eternal in the future. -->
+
+https://nyaa.si/view/1672119
+
+https://nyaa.si/view/928888
+
+14 20 play pjsk.
+
+<!-- seems i fc one hard song each day on challenge live (otori emu). -->
+
+15 40 put an issue on memoh.
+
+````md
+ask memoh: seems there is some weird dead code, i guess.
+
+when i review some new commits today, ive seen this:
+
+`apps/web/src/i18n/locales/zh.json`
+
+```json
+"typesShort": {
+  "feishu": "飞",
+  "discord": "DC",
+  "qq": "QQ",
+  "matrix": "MX",
+  "misskey": "MK",
+  "telegram": "TG",
+  "weixin": "WX",
+  "wechatoa": "OA",
+  "wecom": "企微",
+  "dingtalk": "钉",
+  "slack": "SK",
+  "web": "Web",
+  "cli": "CLI",
+  "local": "本地"
+}
+```
+
+at a first glance, it just feels so weird no matter how you look at this.
+
+- if you show this to the user... i think it's definitely confusing.
+- if you dont use it anywhere... why keep these code?
+- and it's obviously not internal variable names or keys
+
+ive searched across the repo, no literal reference of `typesShort`.
+
+ive not checked issue guidelines, its existence in prev issues, or git blame.
+
+
+````
+
 
 
 <!--

@@ -216,6 +216,17 @@ tell it how to handle errors (div zero pattern)
 
 ---
 
-mozart?
+watch films. there are many.
+
+pick some bangumis from anime sedai. there are not many left.
 
 ---
+
+continue ytdlp mozart.
+
+(up arrow, enter. it will resume gracefully, though less than qbitorrent.)
+
+i dont even need to do that.
+
+
+

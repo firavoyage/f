@@ -2445,4 +2445,19 @@ for blog, i will simply hard code w and h (or aspect if you like) when rendering
 
 ---
 
+when you enter on vscode on py,
+
+if it's break or pass or something, it unindents. 
+
+otherwise, it continues.
+
+though, i suppose it will unindent if i press enter twice.
+
+---
+
+google ai mode uses math (dollar) for code sometimes.
+
+it's an llm after all...
+
+---
 
