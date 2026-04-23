@@ -29,43 +29,16 @@ follow these:
 
 ---
 
-create a single page html.
+write a file abstraction.
 
-dark mode. almost no styling.
+rust.
 
-one textarea.
+ruby.
 
-one input. how much usd does 1m token cost. (default 15)
+just write down the spec myself. be calm. be progressive.
 
-several builtin options: 
+merge handle and handle async?
 
-- gpt 15
-- gpt mini 4.5
-- claude opus 25
-- claude sonnet 15
-- claude haiku 5
-- gemini pro 12
-- gemini flash 3
-- gemini flash lite 1.5
-- local pro 3
-- local 1
+get message from js?
 
-one input. how many char = 1 token. default 4.
 
-several builtin options: 
-
-- chat 4
-- coding 3
-- cjk 0.7
-
-one output. how much price in usd.
-
-no extra element.
-
-everything in sync.
-
-use string.length as char cnt. dont inspect them.
-
-only write one html file. nothing else. no deps.
-
----

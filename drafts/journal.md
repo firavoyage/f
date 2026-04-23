@@ -6619,6 +6619,148 @@ ive read the code. whenever it does not find one, it just attempts to clear all 
 just confusing.
 ```
 
+17 20 browse lvy010 frnd links. 17 40 browse tonsky.
+
+Grumpy Website is inspiring. ref.
+
+most works are on deprecated langs and frameworks.
+
+18 00 browse innei blog. note and archive some ui quirks. fire an issue on `Innei/Yohaku`. create archive. 19 00
+
+```md
+Fix ui quirks.
+
+i read your blog from time to time.
+
+everytime, i find some new ui quirks. a simple no js blog would not have these problems, so maybe it's just a tradeoff of its complexity.
+
+1.
+
+cursor. when something is clickable, it should be pointer.
+
+on your site, it's not.
+
+e.g.
+
+https://innei.in/en/posts/experience/ai-era-tech-blogging-document-driven-development-and-brainstorming
+
+- the login button on the top right
+- view original (switch to the original lang it is written)
+
+https://innei.in/en/notes/2026/4/19/children-who-never-grow-up?lang=original
+
+- simplified chinese (when you click it, you will see a context menu, where you can choose from zh-cn, en, or jp)
+  - in the context menu, these options are also not cursor pointer
+
+though, links generally have cursor pointer. good.
+
+2. 
+
+layout shifts. (often horizontal)
+
+- nav bar element: look at the screenshots. the "home" and "post" on the nav bar are not at the same position.
+- when you click login (on the top right), it will shift as the scrollbar is gone. there is nothing wrong to prevent scroll when you popup a centralized prompt, but it does not have to be at the cost of layout shift.
+
+3.
+
+overly compact numbers. (elements piled up.)
+
+it shows properly on firefox (as it has different viewport or something, it simply line breaks).
+
+but on chromium, 
+
+> Sunday, April 19, 2026 390 5 AI dictation Simplified Chinese Right now, 2 readers turn these pages.
+
+"390" and "5" are not shown as expected.
+
+4. 
+
+i18n: wrong routing.
+
+https://innei.in/en/notes/2026/4/19/children-who-never-grow-up?lang=original
+
+i open it directly in firefox.
+
+it's not zh-cn.
+
+https://innei.in/en/notes/2026/4/19/children-who-never-grow-up
+
+only when i click "view original" it becomes zh-cn.
+
+upd:
+
+when i refresh the page, the lang=original is gone. it's not even considered in the routing.
+
+also, even with lang original, links in the post are still in english.
+
+5. 
+
+color constrast.
+
+reproduce:
+
+0. (dark mode)
+1. hover "home" on nav bar
+2. hover the github icon 
+
+it's unrecognizable. (black in dark grey)
+
+6.
+
+perf.
+
+(maybe i opened too much apps and had not enough ram.)
+
+ref:
+
+archive.org (might be slow)
+
+https://web.archive.org/web/20260423102532/https://innei.in/en
+
+https://web.archive.org/web/20260423102532/http://web.archive.org/screenshot/https://innei.in/en
+
+https://web.archive.org/web/20260423103019/https://innei.in/en/notes/2026/4/19/children-who-never-grow-up?lang=original
+
+https://web.archive.org/web/20260423103019/http://web.archive.org/screenshot/https://innei.in/en/notes/2026/4/19/children-who-never-grow-up?lang=original
+
+https://web.archive.org/web/20260423104621/https://innei.in/en/posts/experience/ai-era-tech-blogging-document-driven-development-and-brainstorming?lang=original
+
+https://web.archive.org/web/20260423104621/http://web.archive.org/screenshot/https://innei.in/en/posts/experience/ai-era-tech-blogging-document-driven-development-and-brainstorming?lang=original
+
+> There was a delay in registering this snapshot with the Wayback Machine.
+> The snapshot may not be available right now, please try again later.
+
+archive.today (does not work, it does not seem to execute js).
+
+https://archive.ph/sDlVT
+
+https://archive.ph/QK2Zt
+
+https://archive.ph/56e5w
+
+ref (images):
+
+i dont wanna mess up with image beds. i will simply paste on github web.
+
+<img width="2560" height="1600" alt="Image" src="https://github.com/user-attachments/assets/ee38e3ee-5bc8-404e-bcc7-94a314853bd2" />
+<img width="2560" height="1600" alt="Image" src="https://github.com/user-attachments/assets/c2c007b0-bf83-48a8-8ef4-be01ae54ea84" />
+<img width="2560" height="1600" alt="Image" src="https://github.com/user-attachments/assets/79b755cc-54e8-46d3-a9fc-9b3b720f86f3" />
+<img width="2560" height="1600" alt="Image" src="https://github.com/user-attachments/assets/3dd435f9-a284-4de2-a4f4-4a5b8fa2d7c2" />
+<img width="2560" height="1600" alt="Image" src="https://github.com/user-attachments/assets/d9a87ef0-7bfe-4649-8f91-75162f3df24b" />
+<img width="2560" height="1600" alt="Image" src="https://github.com/user-attachments/assets/241be940-d655-4ef3-921b-6bc7a29dd861" />
+<img width="2560" height="1600" alt="Image" src="https://github.com/user-attachments/assets/e620dfca-6547-46a5-98be-8b82b7962b68" />
+<img width="2560" height="1600" alt="Image" src="https://github.com/user-attachments/assets/bbab2d4f-8c7d-4ca6-af28-a0df5203e1e8" />
+<img width="2560" height="1600" alt="Image" src="https://github.com/user-attachments/assets/438aa469-4ddf-4a15-b359-3de883d27346" />
+<img width="2560" height="1600" alt="Image" src="https://github.com/user-attachments/assets/68281cf0-5b08-4e23-a3a5-8d8b858e2550" />
+<img width="2560" height="1600" alt="Image" src="https://github.com/user-attachments/assets/9e28cb85-d2b1-424a-a2b6-8f8310cf7f19" />
+```
+
+https://github.com/firavoyage/archive/issues/1
+
+upd: when you post a cmt, it shows a toast, but it does not appear on the cmt area. also, click send, it will becomes sending. ctrl enter does not have this effect. (suppose it's not the same state, or it's not even state driven.)
+
+skim innei's devlogs w llm agents. so funny.
+
 
 
 <!--

@@ -2510,3 +2510,43 @@ for now, let's trust browser to normalize the styles.
 yet, it progressively loads, which is a direct violation of copy's constraints.
 
 ---
+
+if i hover on a button, and the cursor does not change, then it's wrong.
+
+ref: innei blog, "view original".
+
+---
+
+i could cache qs ranking.
+
+awa university aliases, other regional rankings.
+
+and one shot query each.
+
+fast. no need to browse. (though it's fast enough with google ai, but it's not consistent in its style.)
+
+ranking is simple, clear, and info based. no need to use essay when you should use table.
+
+---
+
+when you code a file, it will open on the existing app.
+
+when you code a folder, it will open in the new app.
+
+when you create a path/to/file, it will create the path for you.
+
+---
+
+summary details are good.
+
+web builtin.
+
+---
+
+git abstraction.
+
+i think you could even as daily backup... and sync.
+
+---
+
+
