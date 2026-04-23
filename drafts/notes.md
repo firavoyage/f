@@ -2473,5 +2473,40 @@ the latter is more flexible.
 
 ---
 
+some headings appear as div with distinct styling.
 
+you have no way to differ it.
 
+some inline styles appear as "var".
+
+you are out of control. (even before converting to md, as html, it's effectively unstyled.)
+
+---
+
+perf engineering.
+
+rust.
+
+wasm.
+
+upd:
+
+wait, what? i opened the devtools perf.
+
+it's not any fn.
+
+it's rendering.
+
+even in a blank contenteditable.
+
+i paste. it takes 6s to handle everything. (even ah snap sometimes)
+
+it's chatgpt web's poor perf.
+
+(then, it's easy. i could intercept and prevent default.)
+
+for now, let's trust browser to normalize the styles.
+
+yet, it progressively loads, which is a direct violation of copy's constraints.
+
+---

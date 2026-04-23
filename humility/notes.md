@@ -567,3 +567,13 @@ i will use cookie manager as usual.
 
 ---
 
+google ai mode seems to have impe... (whatever you call this)
+
+when you query and it often says "something wrong, not generated"
+
+you refresh, same.
+
+you refresh after a few sec, it's there.
+
+---
+

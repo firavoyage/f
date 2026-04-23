@@ -31,6 +31,1731 @@ follow these:
 
 revise convert_to_md.ts
 
+```
+import { NodeHtmlMarkdown } from 'node-html-markdown';
+import * as prettier from 'prettier/standalone';
+import * as prettier_plugin_markdown from 'prettier/plugins/markdown';
+import { process_ast } from './process_ast';
+
+type token_entry = {
+  token: string;
+  value: string;
+};
+
+type prepared_html = {
+  html: string;
+  token_entries: token_entry[];
+};
+
+type token_state = {
+  next_token_index: number;
+  token_entries: token_entry[];
+};
+
+type convert_options = {
+  html: string;
+  preserve_svg: boolean;
+  keep_images: boolean;
+  normalize_empty_links: boolean;
+  prettier: boolean;
+};
+
+const markdown_converter = new NodeHtmlMarkdown({
+  codeBlockStyle: 'fenced',
+  codeFence: '```',
+  maxConsecutiveNewlines: 3,
+});
+
+export async function convert_html_to_md({
+  html,
+  preserve_svg,
+  keep_images,
+  normalize_empty_links,
+  prettier: prettier_enabled,
+}: convert_options): Promise<string> {
+  console.log({
+    action: 'convert_html_to_md_start',
+    html_length: html.length,
+    preserve_svg,
+    keep_images,
+    normalize_empty_links,
+    prettier_enabled,
+  });
+
+  const prepared = prepare_html({
+    html,
+    preserve_svg,
+  });
+
+  const translated = markdown_converter.translate(prepared.html);
+
+  const restored = restore_tokens({
+    markdown: translated,
+    token_entries: prepared.token_entries,
+  });
+
+  let markdown = restored;
+
+  if (should_process_ast({
+    keep_images,
+    normalize_empty_links,
+  })) {
+    markdown = process_ast({
+      markdown,
+      keep_images,
+      normalize_empty_links,
+    });
+  } else {
+    console.log({
+      action: 'skip_process_ast',
+      keep_images,
+      normalize_empty_links,
+    });
+  }
+
+  if (prettier_enabled == true) {
+    console.log({
+      action: 'prettier_format_start',
+    });
+
+    markdown = await prettier.format(markdown, {
+      parser: 'markdown',
+      plugins: [prettier_plugin_markdown],
+    });
+    
+    console.log({
+      action: 'prettier_format_done',
+      length: markdown.length,
+    });
+  }
+
+  const normalized = normalize_markdown({ markdown });
+
+  console.log({
+    action: 'convert_html_to_md_done',
+    prepared_length: prepared.html.length,
+    markdown_length: normalized.length,
+    token_count: prepared.token_entries.length,
+  });
+
+  return normalized;
+}
+
+function should_process_ast({
+  keep_images,
+  normalize_empty_links,
+}: {
+  keep_images: boolean;
+  normalize_empty_links: boolean;
+}): boolean {
+  return keep_images != true || normalize_empty_links == true;
+}
+
+function prepare_html({
+  html,
+  preserve_svg,
+}: {
+  html: string;
+  preserve_svg: boolean;
+}): prepared_html {
+  const parser = new DOMParser();
+  const document_node = parser.parseFromString(html, 'text/html');
+  const body_node = document_node.body;
+
+  const state: token_state = {
+    next_token_index: 0,
+    token_entries: [],
+  };
+
+  const selector = preserve_svg
+    ? 'pre, code, mark, svg, summary, details'
+    : 'pre, code, mark, summary, details';
+
+  const nodes = Array.from(body_node.querySelectorAll(selector));
+
+  for (const node of nodes) {
+    if (!node.isConnected) continue;
+
+    const tag = node.tagName.toLowerCase();
+
+    if (tag == 'pre') {
+      replace_pre({
+        element: node as HTMLPreElement,
+        state,
+      });
+
+      continue;
+    }
+
+    if (tag == 'code') {
+      replace_inline_code({
+        element: node as HTMLElement,
+        state,
+      });
+
+      continue;
+    }
+
+    if (tag == 'svg' && preserve_svg != true) {
+      node.replaceWith(document.createTextNode(''));
+      continue;
+    }
+
+    replace_raw({
+      element: node,
+      state,
+      is_block: tag == 'svg' || tag == 'details',
+    });
+  }
+
+  preserve_whitespace({ root: body_node });
+
+  return {
+    html: body_node.innerHTML,
+    token_entries: state.token_entries,
+  };
+}
+
+/**
+ * preserve whitespace like `white-space: pre`
+ * skip pre/code (already tokenized)
+ */
+function preserve_whitespace({ root }: { root: HTMLElement }): void {
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+
+  const nodes: Text[] = [];
+
+  let current = walker.nextNode();
+  while (current != null) {
+    nodes.push(current as Text);
+    current = walker.nextNode();
+  }
+
+  for (const node of nodes) {
+    const parent = node.parentElement;
+    if (parent == null) continue;
+
+    const tag = parent.tagName.toLowerCase();
+
+    if (tag == 'pre' || tag == 'code') continue;
+
+    const text = node.nodeValue || '';
+
+    if (text.trim().length == 0) continue;
+
+    const replaced = text
+      .replaceAll(' ', '\u00A0')
+      .replaceAll('\n', '<br>');
+
+    const span = document.createElement('span');
+    span.innerHTML = replaced;
+
+    node.replaceWith(span);
+  }
+}
+
+/**
+ * extract real multiline text from messy editor HTML
+ */
+function extract_pre_text({ element }: { element: HTMLElement }): string {
+  const clone = element.cloneNode(true) as HTMLElement;
+
+  const brs = clone.querySelectorAll('br');
+  for (const br of brs) {
+    br.replaceWith('\n');
+  }
+
+  const blocks = clone.querySelectorAll('div, p');
+  for (const block of blocks) {
+    if (block.childNodes.length > 0) {
+      block.append('\n');
+    }
+  }
+
+  unwrap_redundant_divs({ root: clone });
+
+  const text = clone.textContent || '';
+  const normalized = text.replace(/\r\n/g, '\n');
+
+  return trim_outer_newlines({ text: normalized });
+}
+
+function unwrap_redundant_divs({ root }: { root: HTMLElement }): void {
+  const divs = Array.from(root.querySelectorAll('div'));
+
+  for (const div of divs) {
+    if (div.childElementCount == 1) {
+      const child = div.firstElementChild;
+
+      if (child && child.tagName.toLowerCase() == 'div') {
+        div.replaceWith(child);
+      }
+    }
+  }
+}
+
+function replace_pre({
+  element,
+  state,
+}: {
+  element: HTMLPreElement;
+  state: token_state;
+}): void {
+  const token = make_token({
+    kind: 'block',
+    index: state.next_token_index,
+  });
+
+  state.next_token_index += 1;
+
+  const text = extract_pre_text({ element });
+
+  const markdown = build_code_block({
+    text,
+    element,
+  });
+
+  state.token_entries.push({
+    token,
+    value: ensure_block_spacing({ text: markdown }),
+  });
+
+  replace_with_token({
+    element,
+    token,
+    is_block: true,
+  });
+}
+
+function replace_inline_code({
+  element,
+  state,
+}: {
+  element: HTMLElement;
+  state: token_state;
+}): void {
+  const token = make_token({
+    kind: 'code',
+    index: state.next_token_index,
+  });
+
+  state.next_token_index += 1;
+
+  const text = element.textContent || '';
+  const markdown = build_inline_code({ text });
+
+  state.token_entries.push({
+    token,
+    value: markdown,
+  });
+
+  replace_with_token({
+    element,
+    token,
+    is_block: false,
+  });
+}
+
+function replace_raw({
+  element,
+  state,
+  is_block,
+}: {
+  element: Element;
+  state: token_state;
+  is_block: boolean;
+}): void {
+  const token = make_token({
+    kind: 'raw',
+    index: state.next_token_index,
+  });
+
+  state.next_token_index += 1;
+
+  const value = is_block
+    ? ensure_block_spacing({ text: element.outerHTML })
+    : element.outerHTML;
+
+  state.token_entries.push({
+    token,
+    value,
+  });
+
+  replace_with_token({
+    element,
+    token,
+    is_block,
+  });
+}
+
+function replace_with_token({
+  element,
+  token,
+  is_block,
+}: {
+  element: Element;
+  token: string;
+  is_block: boolean;
+}): void {
+  if (is_block) {
+    element.replaceWith(document.createTextNode(`\n\n${token}\n\n`));
+    return;
+  }
+
+  element.replaceWith(document.createTextNode(token));
+}
+
+function restore_tokens({
+  markdown,
+  token_entries,
+}: {
+  markdown: string;
+  token_entries: token_entry[];
+}): string {
+  let out = markdown;
+
+  for (const entry of token_entries) {
+    out = out.split(entry.token).join(entry.value);
+  }
+
+  return out;
+}
+
+function normalize_markdown({ markdown }: { markdown: string }): string {
+  let out = markdown.replace(/\n{3,}/g, '\n\n');
+  return out.trim();
+}
+
+function ensure_block_spacing({ text }: { text: string }): string {
+  let out = text;
+
+  if (!out.startsWith('\n')) out = '\n' + out;
+  if (!out.endsWith('\n')) out = out + '\n';
+
+  return out;
+}
+
+function make_token({
+  kind,
+  index,
+}: {
+  kind: string;
+  index: number;
+}): string {
+  return `nhm${kind}${index}z`;
+}
+
+function build_inline_code({ text }: { text: string }): string {
+  const len = get_longest_backtick_run({ text }) + 1;
+  const fence = '`'.repeat(len);
+  return `${fence}${text}${fence}`;
+}
+
+function build_code_block({
+  text,
+  element,
+}: {
+  text: string;
+  element: HTMLPreElement;
+}): string {
+  const code = element.querySelector('code');
+
+  const lang = get_language({
+    element: code ? code : element,
+  });
+
+  const len = Math.max(3, get_longest_backtick_run({ text }) + 1);
+  const fence = '`'.repeat(len);
+
+  if (lang.length > 0) {
+    return `${fence}${lang}\n${text}\n${fence}`;
+  }
+
+  return `${fence}\n${text}\n${fence}`;
+}
+
+function get_language({ element }: { element: Element }): string {
+  const class_name = element.getAttribute('class') || '';
+  const match = class_name.match(/language-([^\s]+)/);
+
+  if (match) return match[1];
+  return '';
+}
+
+function trim_outer_newlines({ text }: { text: string }): string {
+  let out = text;
+
+  if (out.startsWith('\n')) out = out.slice(1);
+  if (out.endsWith('\n')) out = out.slice(0, -1);
+
+  return out;
+}
+
+function get_longest_backtick_run({ text }: { text: string }): number {
+  const matches = text.match(/`+/g) || [];
+
+  let max = 0;
+
+  for (const m of matches) {
+    if (m.length > max) max = m.length;
+  }
+
+  return max;
+}
+```
+
+todo:
+
+- for span with bold inline style (font weight), consider it bold
+- for span with italic inline style (font weight), consider it italic
+- for span with strikethrough inline style (font weight), consider it strikethrough
+
+note:
+
+- if there are many ways to create an effect via inline style, handle them all (e.g. you can use bold literally, you could also have a high font weight)
+
+poc:
+
+```
+import { NodeHtmlMarkdown } from 'node-html-markdown';
+
+const nhm = new NodeHtmlMarkdown({}, {
+  // Use a translator object where the key is the uppercase tag name
+  'SPAN': ({ node }) => {
+    const style = node.getAttribute('style') || '';
+    
+    // Check if font-weight is bold or a numeric value >= 700
+    const isBold = /font-weight\s*:\s*(bold|[789]00)/i.test(style);
+
+    if (isBold) {
+      return {
+        prefix: '**',
+        postfix: '**'
+      };
+    }
+
+    // Return empty configuration for normal spans so they stay as plain text
+    return {};
+  }
+});
+
+const html = '<p>Normal <span style="font-weight: 700;">Bolded Span</span> text.</p>';
+console.log(nhm.translate(html)); 
+// Output: Normal **Bolded Span** text.
+```
+
+---
+
+revise convert_to_md.ts
+
+```
+import { NodeHtmlMarkdown } from 'node-html-markdown';
+import * as prettier from 'prettier/standalone';
+import * as prettier_plugin_markdown from 'prettier/plugins/markdown';
+import { process_ast } from './process_ast';
+
+type token_entry = {
+  token: string;
+  value: string;
+};
+
+type prepared_html = {
+  html: string;
+  token_entries: token_entry[];
+};
+
+type token_state = {
+  next_token_index: number;
+  token_entries: token_entry[];
+};
+
+type convert_options = {
+  html: string;
+  preserve_svg: boolean;
+  keep_images: boolean;
+  normalize_empty_links: boolean;
+  prettier: boolean;
+};
+
+const markdown_converter = new NodeHtmlMarkdown({
+  codeBlockStyle: 'fenced',
+  codeFence: '```',
+  maxConsecutiveNewlines: 3,
+});
+
+export async function convert_html_to_md({
+  html,
+  preserve_svg,
+  keep_images,
+  normalize_empty_links,
+  prettier: prettier_enabled,
+}: convert_options): Promise<string> {
+  console.log({
+    action: 'convert_html_to_md_start',
+    html_length: html.length,
+    preserve_svg,
+    keep_images,
+    normalize_empty_links,
+    prettier_enabled,
+  });
+
+  const prepared = prepare_html({
+    html,
+    preserve_svg,
+  });
+
+  const translated = markdown_converter.translate(prepared.html);
+
+  const restored = restore_tokens({
+    markdown: translated,
+    token_entries: prepared.token_entries,
+  });
+
+  let markdown = restored;
+
+  if (should_process_ast({
+    keep_images,
+    normalize_empty_links,
+  })) {
+    markdown = process_ast({
+      markdown,
+      keep_images,
+      normalize_empty_links,
+    });
+  } else {
+    console.log({
+      action: 'skip_process_ast',
+      keep_images,
+      normalize_empty_links,
+    });
+  }
+
+  if (prettier_enabled == true) {
+    console.log({
+      action: 'prettier_format_start',
+    });
+
+    markdown = await prettier.format(markdown, {
+      parser: 'markdown',
+      plugins: [prettier_plugin_markdown],
+    });
+    
+    console.log({
+      action: 'prettier_format_done',
+      length: markdown.length,
+    });
+  }
+
+  const normalized = normalize_markdown({ markdown });
+
+  console.log({
+    action: 'convert_html_to_md_done',
+    prepared_length: prepared.html.length,
+    markdown_length: normalized.length,
+    token_count: prepared.token_entries.length,
+  });
+
+  return normalized;
+}
+
+function should_process_ast({
+  keep_images,
+  normalize_empty_links,
+}: {
+  keep_images: boolean;
+  normalize_empty_links: boolean;
+}): boolean {
+  return keep_images != true || normalize_empty_links == true;
+}
+
+function prepare_html({
+  html,
+  preserve_svg,
+}: {
+  html: string;
+  preserve_svg: boolean;
+}): prepared_html {
+  const parser = new DOMParser();
+  const document_node = parser.parseFromString(html, 'text/html');
+  const body_node = document_node.body;
+
+  const state: token_state = {
+    next_token_index: 0,
+    token_entries: [],
+  };
+
+  const selector = preserve_svg
+    ? 'pre, code, mark, svg, summary, details'
+    : 'pre, code, mark, summary, details';
+
+  const nodes = Array.from(body_node.querySelectorAll(selector));
+
+  for (const node of nodes) {
+    if (!node.isConnected) continue;
+
+    const tag = node.tagName.toLowerCase();
+
+    if (tag == 'pre') {
+      replace_pre({
+        element: node as HTMLPreElement,
+        state,
+      });
+
+      continue;
+    }
+
+    if (tag == 'code') {
+      replace_inline_code({
+        element: node as HTMLElement,
+        state,
+      });
+
+      continue;
+    }
+
+    if (tag == 'svg' && preserve_svg != true) {
+      node.replaceWith(document.createTextNode(''));
+      continue;
+    }
+
+    replace_raw({
+      element: node,
+      state,
+      is_block: tag == 'svg' || tag == 'details',
+    });
+  }
+
+  preserve_whitespace({ root: body_node });
+
+  return {
+    html: body_node.innerHTML,
+    token_entries: state.token_entries,
+  };
+}
+
+/**
+ * preserve whitespace like `white-space: pre`
+ * skip pre/code (already tokenized)
+ */
+function preserve_whitespace({ root }: { root: HTMLElement }): void {
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+
+  const nodes: Text[] = [];
+
+  let current = walker.nextNode();
+  while (current != null) {
+    nodes.push(current as Text);
+    current = walker.nextNode();
+  }
+
+  for (const node of nodes) {
+    const parent = node.parentElement;
+    if (parent == null) continue;
+
+    const tag = parent.tagName.toLowerCase();
+
+    if (tag == 'pre' || tag == 'code') continue;
+
+    const text = node.nodeValue || '';
+
+    if (text.trim().length == 0) continue;
+
+    const replaced = text
+      .replaceAll(' ', '\u00A0')
+      .replaceAll('\n', '<br>');
+
+    const span = document.createElement('span');
+    span.innerHTML = replaced;
+
+    node.replaceWith(span);
+  }
+}
+
+/**
+ * extract real multiline text from messy editor HTML
+ */
+function extract_pre_text({ element }: { element: HTMLElement }): string {
+  const clone = element.cloneNode(true) as HTMLElement;
+
+  const brs = clone.querySelectorAll('br');
+  for (const br of brs) {
+    br.replaceWith('\n');
+  }
+
+  const blocks = clone.querySelectorAll('div, p');
+  for (const block of blocks) {
+    if (block.childNodes.length > 0) {
+      block.append('\n');
+    }
+  }
+
+  unwrap_redundant_divs({ root: clone });
+
+  const text = clone.textContent || '';
+  const normalized = text.replace(/\r\n/g, '\n');
+
+  return trim_outer_newlines({ text: normalized });
+}
+
+function unwrap_redundant_divs({ root }: { root: HTMLElement }): void {
+  const divs = Array.from(root.querySelectorAll('div'));
+
+  for (const div of divs) {
+    if (div.childElementCount == 1) {
+      const child = div.firstElementChild;
+
+      if (child && child.tagName.toLowerCase() == 'div') {
+        div.replaceWith(child);
+      }
+    }
+  }
+}
+
+function replace_pre({
+  element,
+  state,
+}: {
+  element: HTMLPreElement;
+  state: token_state;
+}): void {
+  const token = make_token({
+    kind: 'block',
+    index: state.next_token_index,
+  });
+
+  state.next_token_index += 1;
+
+  const text = extract_pre_text({ element });
+
+  const markdown = build_code_block({
+    text,
+    element,
+  });
+
+  state.token_entries.push({
+    token,
+    value: ensure_block_spacing({ text: markdown }),
+  });
+
+  replace_with_token({
+    element,
+    token,
+    is_block: true,
+  });
+}
+
+function replace_inline_code({
+  element,
+  state,
+}: {
+  element: HTMLElement;
+  state: token_state;
+}): void {
+  const token = make_token({
+    kind: 'code',
+    index: state.next_token_index,
+  });
+
+  state.next_token_index += 1;
+
+  const text = element.textContent || '';
+  const markdown = build_inline_code({ text });
+
+  state.token_entries.push({
+    token,
+    value: markdown,
+  });
+
+  replace_with_token({
+    element,
+    token,
+    is_block: false,
+  });
+}
+
+function replace_raw({
+  element,
+  state,
+  is_block,
+}: {
+  element: Element;
+  state: token_state;
+  is_block: boolean;
+}): void {
+  const token = make_token({
+    kind: 'raw',
+    index: state.next_token_index,
+  });
+
+  state.next_token_index += 1;
+
+  const value = is_block
+    ? ensure_block_spacing({ text: element.outerHTML })
+    : element.outerHTML;
+
+  state.token_entries.push({
+    token,
+    value,
+  });
+
+  replace_with_token({
+    element,
+    token,
+    is_block,
+  });
+}
+
+function replace_with_token({
+  element,
+  token,
+  is_block,
+}: {
+  element: Element;
+  token: string;
+  is_block: boolean;
+}): void {
+  if (is_block) {
+    element.replaceWith(document.createTextNode(`\n\n${token}\n\n`));
+    return;
+  }
+
+  element.replaceWith(document.createTextNode(token));
+}
+
+function restore_tokens({
+  markdown,
+  token_entries,
+}: {
+  markdown: string;
+  token_entries: token_entry[];
+}): string {
+  let out = markdown;
+
+  for (const entry of token_entries) {
+    out = out.split(entry.token).join(entry.value);
+  }
+
+  return out;
+}
+
+function normalize_markdown({ markdown }: { markdown: string }): string {
+  let out = markdown.replace(/\n{3,}/g, '\n\n');
+  return out.trim();
+}
+
+function ensure_block_spacing({ text }: { text: string }): string {
+  let out = text;
+
+  if (!out.startsWith('\n')) out = '\n' + out;
+  if (!out.endsWith('\n')) out = out + '\n';
+
+  return out;
+}
+
+function make_token({
+  kind,
+  index,
+}: {
+  kind: string;
+  index: number;
+}): string {
+  return `nhm${kind}${index}z`;
+}
+
+function build_inline_code({ text }: { text: string }): string {
+  const len = get_longest_backtick_run({ text }) + 1;
+  const fence = '`'.repeat(len);
+  return `${fence}${text}${fence}`;
+}
+
+function build_code_block({
+  text,
+  element,
+}: {
+  text: string;
+  element: HTMLPreElement;
+}): string {
+  const code = element.querySelector('code');
+
+  const lang = get_language({
+    element: code ? code : element,
+  });
+
+  const len = Math.max(3, get_longest_backtick_run({ text }) + 1);
+  const fence = '`'.repeat(len);
+
+  if (lang.length > 0) {
+    return `${fence}${lang}\n${text}\n${fence}`;
+  }
+
+  return `${fence}\n${text}\n${fence}`;
+}
+
+function get_language({ element }: { element: Element }): string {
+  const class_name = element.getAttribute('class') || '';
+  const match = class_name.match(/language-([^\s]+)/);
+
+  if (match) return match[1];
+  return '';
+}
+
+function trim_outer_newlines({ text }: { text: string }): string {
+  let out = text;
+
+  if (out.startsWith('\n')) out = out.slice(1);
+  if (out.endsWith('\n')) out = out.slice(0, -1);
+
+  return out;
+}
+
+function get_longest_backtick_run({ text }: { text: string }): number {
+  const matches = text.match(/`+/g) || [];
+
+  let max = 0;
+
+  for (const m of matches) {
+    if (m.length > max) max = m.length;
+  }
+
+  return max;
+}
+```
+
+todo:
+
+- for span with bold inline style (font weight), consider it bold
+- for span with italic inline style (font weight), consider it italic
+- for span with strikethrough inline style (font weight), consider it strikethrough
+
+note:
+
+- if there are many ways to create an effect via inline style, handle them all (e.g. you can use bold literally, you could also have a high font weight)
+
+---
+
+tell me to install prettier.
+
+- add option: prettier: on. store and retrieve.
+
+if on, call it to format before output.
+
+---
+
+```
+ ...f/apps/copy % fdfind --max-depth 2       
+app.html
+changes.md
+message.md
+notes.md
+package.json
+pnpm-lock.yaml
+readme.md
+research.md
+source/
+source/clipboard.ts
+source/convert_to_md.ts
+source/main.ts
+source/sanitize_html.ts
+todo.md
+tsconfig.json
+```
+
+app.html
+
+```
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>copy</title>
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        background: #000;
+        overflow: hidden;
+      }
+
+      body {
+        position: relative;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+
+      #status {
+        position: fixed;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        pointer-events: none;
+        user-select: none;
+        font-size: 18px;
+        letter-spacing: 0.08em;
+        text-transform: lowercase;
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      #paste_area {
+        position: fixed;
+        inset: 0;
+        outline: none;
+        overflow: hidden;
+        opacity: 0;
+        white-space: pre-wrap;
+      }
+
+      #markdown-toggle,
+      #svg-toggle {
+        position: fixed;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #fff;
+        font-size: 14px;
+        user-select: none;
+        cursor: pointer;
+      }
+
+      #markdown-toggle {
+        bottom: 28px;
+      }
+
+      #svg-toggle {
+        bottom: 8px;
+      }
+    </style>
+    <script type="module" src="./source/main.ts"></script>
+  </head>
+  <body>
+    <div id="status">paste</div>
+
+    <div
+      id="paste_area"
+      contenteditable="true"
+      role="textbox"
+      aria-label="paste area"
+      spellcheck="false"
+    ></div>
+
+    <div id="markdown-toggle">markdown: off</div>
+    <div id="svg-toggle">svg: off</div>
+  </body>
+</html>
+```
+
+main.ts
+
+```
+import { copy_html_to_clipboard } from './clipboard';
+import { get_plain_text, sanitize_html } from './sanitize_html';
+import { convert_html_to_md } from './convert_to_md';
+
+const copy_feedback_ms = 1400;
+
+const status_node = document.getElementById('status') as HTMLElement;
+const paste_node = document.getElementById('paste_area') as HTMLElement;
+const markdown_button = document.getElementById('markdown-toggle') as HTMLElement;
+const svg_button = document.getElementById('svg-toggle') as HTMLElement;
+
+const markdown_enabled_key = 'markdown_enabled';
+const svg_enabled_key = 'svg_enabled';
+
+let markdown_enabled = false;
+let svg_enabled = false;
+
+function load_boolean_setting({ key }: { key: string }): boolean {
+  const stored_value = localStorage.getItem(key) || 'false';
+  const is_enabled = stored_value == 'true';
+
+  console.log({
+    action: 'load_boolean_setting',
+    key,
+    is_enabled,
+  });
+
+  return is_enabled;
+}
+
+function save_boolean_setting({ key, value }: { key: string; value: boolean }): void {
+  localStorage.setItem(key, value ? 'true' : 'false');
+
+  console.log({
+    action: 'save_boolean_setting',
+    key,
+    value,
+  });
+}
+
+function set_status({ text }: { text: string }): void {
+  status_node.textContent = text;
+}
+
+function focus_paste_area(): void {
+  paste_node.focus();
+}
+
+function keep_focus(): void {
+  if (document.activeElement != paste_node) {
+    focus_paste_area();
+  }
+}
+
+function reset_status_to_paste(): void {
+  set_status({ text: 'paste' });
+}
+
+function flash_copied(): void {
+  set_status({ text: 'copied' });
+  window.setTimeout(reset_status_to_paste, copy_feedback_ms);
+}
+
+function read_paste_area_html(): { html: string } {
+  const html = paste_node.innerHTML || '';
+  console.log({ action: 'read_paste_area_html', length: html.length });
+  return { html };
+}
+
+function clear_paste_area(): void {
+  paste_node.innerHTML = '';
+}
+
+async function process_paste_area(): Promise<void> {
+  const { html } = read_paste_area_html();
+
+  const clean_html = sanitize_html({ dirty_html: html });
+  const plain_text = get_plain_text({ html: clean_html });
+
+  console.log({
+    action: 'process_paste_area',
+    html_length: html.length,
+    plain_length: plain_text.length,
+    markdown_enabled,
+    svg_enabled,
+  });
+
+  try {
+    if (markdown_enabled) {
+      const markdown = convert_html_to_md({
+        html: clean_html,
+        preserve_svg: svg_enabled,
+      });
+
+      await copy_html_to_clipboard({ html: markdown });
+    } else {
+      await copy_html_to_clipboard({ html: clean_html });
+    }
+
+    flash_copied();
+    clear_paste_area();
+  } catch (error: unknown) {
+    console.error({
+      action: 'copy_failed',
+      error,
+    });
+
+    set_status({ text: 'paste' });
+  }
+}
+
+function schedule_process_paste_area(): void {
+  window.setTimeout(process_paste_area, 0);
+}
+
+function handle_input(): void {
+  schedule_process_paste_area();
+}
+
+function render_markdown_button(): void {
+  const text = markdown_enabled ? 'markdown: on' : 'markdown: off';
+  markdown_button.textContent = text;
+}
+
+function render_svg_button(): void {
+  const text = svg_enabled ? 'svg: on' : 'svg: off';
+  svg_button.textContent = text;
+}
+
+function toggle_markdown(): void {
+  markdown_enabled = !markdown_enabled;
+
+  console.log({
+    action: 'toggle_markdown',
+    markdown_enabled,
+  });
+
+  save_boolean_setting({
+    key: markdown_enabled_key,
+    value: markdown_enabled,
+  });
+
+  render_markdown_button();
+}
+
+function toggle_svg(): void {
+  svg_enabled = !svg_enabled;
+
+  console.log({
+    action: 'toggle_svg',
+    svg_enabled,
+  });
+
+  save_boolean_setting({
+    key: svg_enabled_key,
+    value: svg_enabled,
+  });
+
+  render_svg_button();
+}
+
+function init_settings(): void {
+  markdown_enabled = load_boolean_setting({ key: markdown_enabled_key });
+  svg_enabled = load_boolean_setting({ key: svg_enabled_key });
+
+  render_markdown_button();
+  render_svg_button();
+}
+
+paste_node.addEventListener('input', handle_input);
+paste_node.addEventListener('blur', keep_focus);
+document.addEventListener('click', keep_focus);
+window.addEventListener('focus', keep_focus);
+window.addEventListener('pageshow', keep_focus);
+
+markdown_button.addEventListener('click', toggle_markdown);
+svg_button.addEventListener('click', toggle_svg);
+
+set_status({ text: 'paste' });
+
+init_settings();
+
+window.setTimeout(focus_paste_area, 0);
+window.addEventListener('load', focus_paste_area);
+```
+
+convert_to_md.ts
+
+```
+import { NodeHtmlMarkdown } from 'node-html-markdown';
+
+type token_entry = {
+  token: string;
+  value: string;
+};
+
+type prepared_html = {
+  html: string;
+  token_entries: token_entry[];
+};
+
+type token_state = {
+  next_token_index: number;
+  token_entries: token_entry[];
+};
+
+type convert_options = {
+  html: string;
+  preserve_svg: boolean;
+};
+
+const markdown_converter = new NodeHtmlMarkdown({
+  codeBlockStyle: 'fenced',
+  codeFence: '```',
+  maxConsecutiveNewlines: 3,
+});
+
+export function convert_html_to_md({ html, preserve_svg }: convert_options): string {
+  console.log({
+    action: 'convert_html_to_md_start',
+    html_length: html.length,
+    preserve_svg,
+  });
+
+  const prepared = prepare_html({ html, preserve_svg });
+
+  const markdown = markdown_converter.translate(prepared.html);
+
+  const restored = restore_tokens({
+    markdown,
+    token_entries: prepared.token_entries,
+  });
+
+  const normalized = normalize_markdown({ markdown: restored });
+
+  console.log({
+    action: 'convert_html_to_md_done',
+    prepared_length: prepared.html.length,
+    markdown_length: normalized.length,
+    token_count: prepared.token_entries.length,
+  });
+
+  return normalized;
+}
+
+function prepare_html({ html, preserve_svg }: convert_options): prepared_html {
+  const parser = new DOMParser();
+  const document_node = parser.parseFromString(html, 'text/html');
+  const body_node = document_node.body;
+
+  const state: token_state = {
+    next_token_index: 0,
+    token_entries: [],
+  };
+
+  const selector = preserve_svg
+    ? 'pre, code, mark, svg, summary, details'
+    : 'pre, code, mark, summary, details';
+
+  const nodes = Array.from(body_node.querySelectorAll(selector));
+
+  for (const node of nodes) {
+    if (!node.isConnected) continue;
+
+    const tag = node.tagName.toLowerCase();
+
+    if (tag == 'pre') {
+      replace_pre({ element: node as HTMLPreElement, state });
+      continue;
+    }
+
+    if (tag == 'code') {
+      replace_inline_code({ element: node as HTMLElement, state });
+      continue;
+    }
+
+    if (tag == 'svg' && preserve_svg != true) {
+      node.replaceWith(document.createTextNode(''));
+      continue;
+    }
+
+    replace_raw({
+      element: node,
+      state,
+      is_block: tag == 'svg' || tag == 'details',
+    });
+  }
+
+  preserve_whitespace({ root: body_node });
+
+  return {
+    html: body_node.innerHTML,
+    token_entries: state.token_entries,
+  };
+}
+
+/**
+ * preserve whitespace like `white-space: pre`
+ * skip pre/code (already tokenized)
+ */
+function preserve_whitespace({ root }: { root: HTMLElement }): void {
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+
+  const nodes: Text[] = [];
+
+  let current = walker.nextNode();
+  while (current != null) {
+    nodes.push(current as Text);
+    current = walker.nextNode();
+  }
+
+  for (const node of nodes) {
+    const parent = node.parentElement;
+    if (parent == null) continue;
+
+    const tag = parent.tagName.toLowerCase();
+
+    if (tag == 'pre' || tag == 'code') continue;
+
+    const text = node.nodeValue || '';
+
+    if (text.trim().length == 0) continue;
+
+    const replaced = text
+      .replaceAll(' ', '\u00A0')
+      .replaceAll('\n', '<br>');
+
+    const span = document.createElement('span');
+    span.innerHTML = replaced;
+
+    node.replaceWith(span);
+  }
+}
+
+/**
+ * 🔥 FIX: extract real multiline text from messy editor HTML
+ */
+function extract_pre_text({ element }: { element: HTMLElement }): string {
+  const clone = element.cloneNode(true) as HTMLElement;
+
+  const brs = clone.querySelectorAll('br');
+  for (const br of brs) {
+    br.replaceWith('\n');
+  }
+
+  const blocks = clone.querySelectorAll('div, p');
+  for (const block of blocks) {
+    if (block.childNodes.length > 0) {
+      block.append('\n');
+    }
+  }
+
+  unwrap_redundant_divs({ root: clone });
+
+  const text = clone.textContent || '';
+
+  const normalized = text.replace(/\r\n/g, '\n');
+
+  return trim_outer_newlines({ text: normalized });
+}
+
+function unwrap_redundant_divs({ root }: { root: HTMLElement }): void {
+  const divs = Array.from(root.querySelectorAll('div'));
+
+  for (const div of divs) {
+    if (div.childElementCount == 1) {
+      const child = div.firstElementChild;
+
+      if (child && child.tagName.toLowerCase() == 'div') {
+        div.replaceWith(child);
+      }
+    }
+  }
+}
+
+function replace_pre({
+  element,
+  state,
+}: {
+  element: HTMLPreElement;
+  state: token_state;
+}): void {
+  const token = make_token({
+    kind: 'block',
+    index: state.next_token_index,
+  });
+
+  state.next_token_index += 1;
+
+  const text = extract_pre_text({ element });
+
+  const markdown = build_code_block({
+    text,
+    element,
+  });
+
+  state.token_entries.push({
+    token,
+    value: ensure_block_spacing({ text: markdown }),
+  });
+
+  replace_with_token({
+    element,
+    token,
+    is_block: true,
+  });
+}
+
+function replace_inline_code({
+  element,
+  state,
+}: {
+  element: HTMLElement;
+  state: token_state;
+}): void {
+  const token = make_token({
+    kind: 'code',
+    index: state.next_token_index,
+  });
+
+  state.next_token_index += 1;
+
+  const text = element.textContent || '';
+
+  const markdown = build_inline_code({ text });
+
+  state.token_entries.push({
+    token,
+    value: markdown,
+  });
+
+  replace_with_token({
+    element,
+    token,
+    is_block: false,
+  });
+}
+
+function replace_raw({
+  element,
+  state,
+  is_block,
+}: {
+  element: Element;
+  state: token_state;
+  is_block: boolean;
+}): void {
+  const token = make_token({
+    kind: 'raw',
+    index: state.next_token_index,
+  });
+
+  state.next_token_index += 1;
+
+  const value = is_block
+    ? ensure_block_spacing({ text: element.outerHTML })
+    : element.outerHTML;
+
+  state.token_entries.push({
+    token,
+    value,
+  });
+
+  replace_with_token({
+    element,
+    token,
+    is_block,
+  });
+}
+
+function replace_with_token({
+  element,
+  token,
+  is_block,
+}: {
+  element: Element;
+  token: string;
+  is_block: boolean;
+}): void {
+  if (is_block) {
+    element.replaceWith(document.createTextNode(`\n\n${token}\n\n`));
+    return;
+  }
+
+  element.replaceWith(document.createTextNode(token));
+}
+
+function restore_tokens({
+  markdown,
+  token_entries,
+}: {
+  markdown: string;
+  token_entries: token_entry[];
+}): string {
+  let out = markdown;
+
+  for (const entry of token_entries) {
+    out = out.split(entry.token).join(entry.value);
+  }
+
+  return out;
+}
+
+function normalize_markdown({ markdown }: { markdown: string }): string {
+  let out = markdown.replace(/\n{3,}/g, '\n\n');
+  return out.trim();
+}
+
+function ensure_block_spacing({ text }: { text: string }): string {
+  let out = text;
+
+  if (!out.startsWith('\n')) out = '\n' + out;
+  if (!out.endsWith('\n')) out = out + '\n';
+
+  return out;
+}
+
+function make_token({
+  kind,
+  index,
+}: {
+  kind: string;
+  index: number;
+}): string {
+  return `nhm${kind}${index}z`;
+}
+
+function build_inline_code({ text }: { text: string }): string {
+  const len = get_longest_backtick_run({ text }) + 1;
+  const fence = '`'.repeat(len);
+  return `${fence}${text}${fence}`;
+}
+
+function build_code_block({
+  text,
+  element,
+}: {
+  text: string;
+  element: HTMLPreElement;
+}): string {
+  const code = element.querySelector('code');
+
+  const lang = get_language({
+    element: code ? code : element,
+  });
+
+  const len = Math.max(3, get_longest_backtick_run({ text }) + 1);
+  const fence = '`'.repeat(len);
+
+  if (lang.length > 0) {
+    return `${fence}${lang}\n${text}\n${fence}`;
+  }
+
+  return `${fence}\n${text}\n${fence}`;
+}
+
+function get_language({ element }: { element: Element }): string {
+  const class_name = element.getAttribute('class') || '';
+  const match = class_name.match(/language-([^\s]+)/);
+
+  if (match) return match[1];
+  return '';
+}
+
+function trim_outer_newlines({ text }: { text: string }): string {
+  let out = text;
+
+  if (out.startsWith('\n')) out = out.slice(1);
+  if (out.endsWith('\n')) out = out.slice(0, -1);
+
+  return out;
+}
+
+function get_longest_backtick_run({ text }: { text: string }): number {
+  const matches = text.match(/`+/g) || [];
+
+  let max = 0;
+
+  for (const m of matches) {
+    if (m.length > max) max = m.length;
+  }
+
+  return max;
+}
+```
+
+- tell me to install `remark`
+- add two options under markdown and svg, store and retrieve from localstorage
+  - keep images: on
+  - normalize empty links: on
+
+write process_ast.ts
+
+if keep images is on and normalize empty links is off, do nothing. (main.ts wont call it)
+
+if keep images is off, remove all image node.
+
+if normalize empty links is on, for each link, if it's `[](example.com)`, add `link` to link description, make it `[link](example.com)`.
+
+get the markdown back only after all ast methods.
+
+---
+
+revise convert_to_md.ts
+
 fix
 
 input

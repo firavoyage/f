@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>token cost calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      background: #0b0b0b;
+      color: #d0d0d0;
+      font-family: sans-serif;
+      margin: 12px;
+      overflow-x: hidden;
+    }
+
+    textarea, input {
+      width: 100%;
+      box-sizing: border-box;
+      margin-bottom: 8px;
+      background: #111;
+      color: #d0d0d0;
+      border: 1px solid #333;
+      padding: 6px;
+    }
+
+    button {
+      background: #111;
+      color: #d0d0d0;
+      border: 1px solid #333;
+      padding: 6px;
+      margin: 2px 2px 6px 0;
+      cursor: pointer;
+    }
+
+    button:hover {
+      border-color: #666;
+    }
+
+    #output_result {
+      margin-top: 10px;
+      white-space: pre-wrap;
+      border-top: 1px solid #333;
+      padding-top: 10px;
+    }
+
+    .row {
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+
+<body>
+
+<textarea id="input_text"></textarea>
+
+<input id="usd_per_million_input" type="number" value="15" />
+
+<div class="row" id="model_buttons"></div>
+
+<input id="chars_per_token_input" type="number" value="4" />
+
+<div class="row" id="mode_buttons"></div>
+
+<div id="output_result"></div>
+
+<script type="module">
+
+function log(msg) {
+  console.log(msg)
+}
+
+function get_el(id) {
+  return document.getElementById(id)
+}
+
+function get_number(value) {
+  return Number(value)
+}
+
+function compute_cost(params) {
+  var text = params.text
+  var usd_per_million = params.usd_per_million
+  var chars_per_token = params.chars_per_token
+  var model_price = params.model_price
+
+  var char_count = text.length
+  var tokens = char_count / chars_per_token
+
+  var cost = (tokens / 1000000) * ((model_price + usd_per_million) / 2)
+
+  return {
+    char_count: char_count,
+    tokens: tokens,
+    cost: cost
+  }
+}
+
+function set_model_price(value) {
+  var usd_el = get_el("usd_per_million_input")
+  usd_el.value = value
+  render()
+}
+
+function create_buttons(container_id, items, on_click) {
+  var container = get_el(container_id)
+  container.innerHTML = ""
+
+  var i = 0
+  while (i < items.length) {
+    var btn = document.createElement("button")
+    btn.textContent = items[i].label
+    btn.value = items[i].value
+
+    btn.addEventListener("click", function (e) {
+      on_click(e.target.value)
+    })
+
+    container.appendChild(btn)
+    i = i + 1
+  }
+}
+
+function render() {
+  var text = get_el("input_text").value
+  var usd_per_million = get_number(get_el("usd_per_million_input").value)
+  var chars_per_token = get_number(get_el("chars_per_token_input").value)
+  var model_price = usd_per_million
+
+  var result = compute_cost({
+    text: text,
+    usd_per_million: usd_per_million,
+    chars_per_token: chars_per_token,
+    model_price: model_price
+  })
+
+  var out = get_el("output_result")
+  out.textContent =
+    "chars: " + result.char_count + "\n" +
+    "tokens: " + result.tokens + "\n" +
+    "cost_usd: " + result.cost
+
+  log("render")
+}
+
+function bind_inputs() {
+  var ids = ["input_text", "usd_per_million_input", "chars_per_token_input"]
+
+  var i = 0
+  while (i < ids.length) {
+    var el = get_el(ids[i])
+    el.addEventListener("input", function () {
+      render()
+    })
+    i = i + 1
+  }
+}
+
+function init_buttons() {
+  create_buttons("model_buttons", [
+    { label: "gpt 15", value: 15 },
+    { label: "gpt mini 4.5", value: 4.5 },
+    { label: "claude opus 25", value: 25 },
+    { label: "claude sonnet 15", value: 15 },
+    { label: "claude haiku 5", value: 5 },
+    { label: "gemini pro 12", value: 12 },
+    { label: "gemini flash 3", value: 3 },
+    { label: "gemini flash lite 1.5", value: 1.5 },
+    { label: "local pro 3", value: 3 },
+    { label: "local 1", value: 1 }
+  ], function (v) {
+    set_model_price(v)
+  })
+
+  create_buttons("mode_buttons", [
+    { label: "chat 4", value: 4 },
+    { label: "coding 3", value: 3 },
+    { label: "cjk 0.7", value: 0.7 }
+  ], function (v) {
+    get_el("chars_per_token_input").value = v
+    render()
+  })
+}
+
+function init() {
+  init_buttons()
+  bind_inputs()
+  render()
+  log("init done")
+}
+
+init()
+
+</script>
+
+</body>
+</html>

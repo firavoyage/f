@@ -1,4 +1,7 @@
 import { NodeHtmlMarkdown } from 'node-html-markdown';
+import * as prettier from 'prettier/standalone';
+import * as prettier_plugin_markdown from 'prettier/plugins/markdown';
+import { process_ast } from './process_ast';
 
 type token_entry = {
   token: string;
@@ -18,7 +21,18 @@ type token_state = {
 type convert_options = {
   html: string;
   preserve_svg: boolean;
+  keep_images: boolean;
+  normalize_empty_links: boolean;
+  prettier: boolean;
 };
+
+type span_style_traits = {
+  bold: boolean;
+  italic: boolean;
+  strikethrough: boolean;
+};
+
+type semantic_inline_tag_name = 'strong' | 'em' | 'del';
 
 const markdown_converter = new NodeHtmlMarkdown({
   codeBlockStyle: 'fenced',
@@ -26,23 +40,70 @@ const markdown_converter = new NodeHtmlMarkdown({
   maxConsecutiveNewlines: 3,
 });
 
-export function convert_html_to_md({ html, preserve_svg }: convert_options): string {
+export async function convert_html_to_md({
+  html,
+  preserve_svg,
+  keep_images,
+  normalize_empty_links,
+  prettier: prettier_enabled,
+}: convert_options): Promise<string> {
   console.log({
     action: 'convert_html_to_md_start',
     html_length: html.length,
     preserve_svg,
+    keep_images,
+    normalize_empty_links,
+    prettier_enabled,
   });
 
-  const prepared = prepare_html({ html, preserve_svg });
+  const prepared = prepare_html({
+    html,
+    preserve_svg,
+  });
 
-  const markdown = markdown_converter.translate(prepared.html);
+  const translated = markdown_converter.translate(prepared.html);
 
   const restored = restore_tokens({
-    markdown,
+    markdown: translated,
     token_entries: prepared.token_entries,
   });
 
-  const normalized = normalize_markdown({ markdown: restored });
+  let markdown = restored;
+
+  if (should_process_ast({
+    keep_images,
+    normalize_empty_links,
+  })) {
+    markdown = process_ast({
+      markdown,
+      keep_images,
+      normalize_empty_links,
+    });
+  } else {
+    console.log({
+      action: 'skip_process_ast',
+      keep_images,
+      normalize_empty_links,
+    });
+  }
+
+  if (prettier_enabled == true) {
+    console.log({
+      action: 'prettier_format_start',
+    });
+
+    markdown = await prettier.format(markdown, {
+      parser: 'markdown',
+      plugins: [prettier_plugin_markdown],
+    });
+
+    console.log({
+      action: 'prettier_format_done',
+      length: markdown.length,
+    });
+  }
+
+  const normalized = normalize_markdown({ markdown });
 
   console.log({
     action: 'convert_html_to_md_done',
@@ -54,7 +115,23 @@ export function convert_html_to_md({ html, preserve_svg }: convert_options): str
   return normalized;
 }
 
-function prepare_html({ html, preserve_svg }: convert_options): prepared_html {
+function should_process_ast({
+  keep_images,
+  normalize_empty_links,
+}: {
+  keep_images: boolean;
+  normalize_empty_links: boolean;
+}): boolean {
+  return keep_images != true || normalize_empty_links == true;
+}
+
+function prepare_html({
+  html,
+  preserve_svg,
+}: {
+  html: string;
+  preserve_svg: boolean;
+}): prepared_html {
   const parser = new DOMParser();
   const document_node = parser.parseFromString(html, 'text/html');
   const body_node = document_node.body;
@@ -63,6 +140,15 @@ function prepare_html({ html, preserve_svg }: convert_options): prepared_html {
     next_token_index: 0,
     token_entries: [],
   };
+
+  console.log({
+    action: 'normalize_style_spans_start',
+  });
+
+  normalize_style_spans({
+    root: body_node,
+    document_node,
+  });
 
   const selector = preserve_svg
     ? 'pre, code, mark, svg, summary, details'
@@ -76,26 +162,42 @@ function prepare_html({ html, preserve_svg }: convert_options): prepared_html {
     const tag = node.tagName.toLowerCase();
 
     if (tag == 'pre') {
-      replace_pre({ element: node as HTMLPreElement, state });
+      replace_pre({
+        element: node as HTMLPreElement,
+        state,
+        document_node,
+      });
+
       continue;
     }
 
     if (tag == 'code') {
-      replace_inline_code({ element: node as HTMLElement, state });
+      replace_inline_code({
+        element: node as HTMLElement,
+        state,
+        document_node,
+      });
+
       continue;
     }
 
     if (tag == 'svg' && preserve_svg != true) {
-      node.replaceWith(document.createTextNode(''));
+      node.replaceWith(document_node.createTextNode(''));
       continue;
     }
 
     replace_raw({
       element: node,
       state,
+      document_node,
       is_block: tag == 'svg' || tag == 'details',
     });
   }
+
+  preserve_whitespace({
+    root: body_node,
+    document_node,
+  });
 
   return {
     html: body_node.innerHTML,
@@ -103,12 +205,149 @@ function prepare_html({ html, preserve_svg }: convert_options): prepared_html {
   };
 }
 
+function normalize_style_spans({
+  root,
+  document_node,
+}: {
+  root: HTMLElement;
+  document_node: Document;
+}): void {
+  const spans = Array.from(root.querySelectorAll('span[style]'));
+  let transformed_span_count = 0;
+
+  for (const span of spans) {
+    if (!span.isConnected) continue;
+
+    if (is_inside_code_like_element({ element: span })) {
+      continue;
+    }
+
+    const traits = read_span_style_traits({ element: span });
+
+    if (
+      traits.bold != true &&
+      traits.italic != true &&
+      traits.strikethrough != true
+    ) {
+      continue;
+    }
+
+    transformed_span_count += 1;
+
+    console.log({
+      action: 'normalize_style_span',
+      bold: traits.bold,
+      italic: traits.italic,
+      strikethrough: traits.strikethrough,
+    });
+
+    const replacement = build_semantic_inline_node({
+      element: span,
+      document_node,
+      traits,
+    });
+
+    span.replaceWith(replacement);
+  }
+
+  console.log({
+    action: 'normalize_style_spans_done',
+    transformed_span_count,
+  });
+}
+
+/**
+ * preserve whitespace like `white-space: pre`
+ * skip pre/code (already tokenized)
+ */
+function preserve_whitespace({
+  root,
+  document_node,
+}: {
+  root: HTMLElement;
+  document_node: Document;
+}): void {
+  const walker = document_node.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+
+  const nodes: Text[] = [];
+
+  let current = walker.nextNode();
+  while (current != null) {
+    nodes.push(current as Text);
+    current = walker.nextNode();
+  }
+
+  for (const node of nodes) {
+    const parent = node.parentElement;
+    if (parent == null) continue;
+
+    const tag = parent.tagName.toLowerCase();
+
+    if (tag == 'pre' || tag == 'code') continue;
+
+    const text = node.nodeValue || '';
+
+    if (text.trim().length == 0) continue;
+
+    const replaced = text
+      .replaceAll(' ', '\u00A0')
+      .replaceAll('\n', '<br>');
+
+    const span = document_node.createElement('span');
+    span.innerHTML = replaced;
+
+    node.replaceWith(span);
+  }
+}
+
+/**
+ * extract real multiline text from messy editor HTML
+ */
+function extract_pre_text({ element }: { element: HTMLElement }): string {
+  const clone = element.cloneNode(true) as HTMLElement;
+
+  const brs = clone.querySelectorAll('br');
+  for (const br of brs) {
+    br.replaceWith('\n');
+  }
+
+  const blocks = clone.querySelectorAll('div, p');
+  for (const block of blocks) {
+    if (block.childNodes.length > 0) {
+      block.append('\n');
+    }
+  }
+
+  unwrap_redundant_divs({ root: clone });
+
+  const text = clone.textContent || '';
+  const normalized = text.replace(/\r\n/g, '\n');
+
+  return trim_outer_newlines({ text: normalized });
+}
+
+function unwrap_redundant_divs({ root }: { root: HTMLElement }): void {
+  const divs = Array.from(root.querySelectorAll('div'));
+
+  for (const div of divs) {
+    if (div.childElementCount == 1) {
+      const child = div.firstElementChild;
+
+      if (child && child.tagName.toLowerCase() == 'div') {
+        div.replaceWith(child);
+      }
+    }
+  }
+}
+
 function replace_pre({
   element,
   state,
+  document_node,
 }: {
   element: HTMLPreElement;
   state: token_state;
+  document_node: Document;
 }): void {
   const token = make_token({
     kind: 'block',
@@ -133,43 +372,18 @@ function replace_pre({
     element,
     token,
     is_block: true,
+    document_node,
   });
-}
-
-/**
- * 🔥 CORE FIX
- * Properly extract multiline text from messy editor HTML
- */
-function extract_pre_text({ element }: { element: HTMLElement }): string {
-  const clone = element.cloneNode(true) as HTMLElement;
-
-  // convert <br> → \n
-  const brs = clone.querySelectorAll('br');
-  for (const br of brs) {
-    br.replaceWith('\n');
-  }
-
-  // add newline after block elements
-  const blocks = clone.querySelectorAll('div, p');
-  for (const block of blocks) {
-    if (block.textContent && block.textContent.length > 0) {
-      block.append('\n');
-    }
-  }
-
-  const text = clone.textContent || '';
-
-  const normalized = text.replace(/\r\n/g, '\n');
-
-  return trim_outer_newlines({ text: normalized });
 }
 
 function replace_inline_code({
   element,
   state,
+  document_node,
 }: {
   element: HTMLElement;
   state: token_state;
+  document_node: Document;
 }): void {
   const token = make_token({
     kind: 'code',
@@ -179,7 +393,6 @@ function replace_inline_code({
   state.next_token_index += 1;
 
   const text = element.textContent || '';
-
   const markdown = build_inline_code({ text });
 
   state.token_entries.push({
@@ -191,6 +404,7 @@ function replace_inline_code({
     element,
     token,
     is_block: false,
+    document_node,
   });
 }
 
@@ -198,10 +412,12 @@ function replace_raw({
   element,
   state,
   is_block,
+  document_node,
 }: {
   element: Element;
   state: token_state;
   is_block: boolean;
+  document_node: Document;
 }): void {
   const token = make_token({
     kind: 'raw',
@@ -223,6 +439,7 @@ function replace_raw({
     element,
     token,
     is_block,
+    document_node,
   });
 }
 
@@ -230,17 +447,19 @@ function replace_with_token({
   element,
   token,
   is_block,
+  document_node,
 }: {
   element: Element;
   token: string;
   is_block: boolean;
+  document_node: Document;
 }): void {
   if (is_block) {
-    element.replaceWith(document.createTextNode(`\n\n${token}\n\n`));
+    element.replaceWith(document_node.createTextNode(`\n\n${token}\n\n`));
     return;
   }
 
-  element.replaceWith(document.createTextNode(token));
+  element.replaceWith(document_node.createTextNode(token));
 }
 
 function restore_tokens({
@@ -284,16 +503,9 @@ function make_token({
 }
 
 function build_inline_code({ text }: { text: string }): string {
-  const clean = trim_outer_newlines({ text });
-  const len = get_longest_backtick_run({ text: clean }) + 1;
+  const len = get_longest_backtick_run({ text }) + 1;
   const fence = '`'.repeat(len);
-
-  const padded =
-    clean.startsWith(' ') || clean.endsWith(' ') || len > 1
-      ? ` ${clean} `
-      : clean;
-
-  return `${fence}${padded}${fence}`;
+  return `${fence}${text}${fence}`;
 }
 
 function build_code_block({
@@ -346,4 +558,205 @@ function get_longest_backtick_run({ text }: { text: string }): number {
   }
 
   return max;
+}
+
+function read_span_style_traits({
+  element,
+}: {
+  element: HTMLSpanElement;
+}): span_style_traits {
+  const style = read_style_text({ element });
+
+  return {
+    bold: has_bold_style({ style }),
+    italic: has_italic_style({ style }),
+    strikethrough: has_strikethrough_style({ style }),
+  };
+}
+
+function read_style_text({ element }: { element: Element }): string {
+  return (element.getAttribute('style') || '').trim();
+}
+
+function has_bold_style({ style }: { style: string }): boolean {
+  const normalized = style.toLowerCase();
+
+  if (normalized.includes('font-weight')) {
+    const font_weight = read_style_property({
+      style,
+      property_name: 'font-weight',
+    });
+
+    if (font_weight.length > 0) {
+      const compact = font_weight.toLowerCase();
+
+      if (compact.includes('bold')) return true;
+      if (compact.includes('bolder')) return true;
+
+      const weight_match = compact.match(/\d{3,4}/);
+      if (weight_match) {
+        const weight = Number.parseInt(weight_match[0], 10);
+        if (weight >= 600) return true;
+      }
+    }
+  }
+
+  const font_shorthand = read_style_property({
+    style,
+    property_name: 'font',
+  });
+
+  if (font_shorthand.length > 0) {
+    const compact = font_shorthand.toLowerCase();
+
+    if (compact.includes('bold')) return true;
+    if (compact.includes('bolder')) return true;
+
+    const weight_match = compact.match(/\d{3,4}/);
+    if (weight_match) {
+      const weight = Number.parseInt(weight_match[0], 10);
+      if (weight >= 600) return true;
+    }
+  }
+
+  return false;
+}
+
+function has_italic_style({ style }: { style: string }): boolean {
+  const font_style = read_style_property({
+    style,
+    property_name: 'font-style',
+  });
+
+  if (font_style.length > 0) {
+    const compact = font_style.toLowerCase();
+
+    if (compact.includes('italic')) return true;
+    if (compact.includes('oblique')) return true;
+    if (compact.includes('slanted')) return true;
+  }
+
+  const font_shorthand = read_style_property({
+    style,
+    property_name: 'font',
+  });
+
+  if (font_shorthand.length > 0) {
+    const compact = font_shorthand.toLowerCase();
+
+    if (compact.includes('italic')) return true;
+    if (compact.includes('oblique')) return true;
+    if (compact.includes('slanted')) return true;
+  }
+
+  return false;
+}
+
+function has_strikethrough_style({ style }: { style: string }): boolean {
+  const normalized = style.toLowerCase();
+
+  if (normalized.includes('line-through')) return true;
+  if (normalized.includes('strikethrough')) return true;
+  if (normalized.includes('strike')) return true;
+
+  return false;
+}
+
+function read_style_property({
+  style,
+  property_name,
+}: {
+  style: string;
+  property_name: string;
+}): string {
+  const escaped_property_name = escape_reg_exp({ text: property_name });
+  const pattern = new RegExp(
+    `(?:^|;)\\s*${escaped_property_name}\\s*:\\s*([^;]+)`,
+    'i',
+  );
+
+  const match = style.match(pattern);
+
+  if (match) {
+    return match[1].trim();
+  }
+
+  return '';
+}
+
+function escape_reg_exp({ text }: { text: string }): string {
+  return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function is_inside_code_like_element({
+  element,
+}: {
+  element: HTMLSpanElement;
+}): boolean {
+  const nearest_code = element.closest('pre, code');
+  const nearest_svg = element.closest('svg');
+
+  if (nearest_code) return true;
+  if (nearest_svg) return true;
+
+  return false;
+}
+
+function build_semantic_inline_node({
+  element,
+  document_node,
+  traits,
+}: {
+  element: HTMLSpanElement;
+  document_node: Document;
+  traits: span_style_traits;
+}): Node {
+  const fragment = document_node.createDocumentFragment();
+  const child_nodes = Array.from(element.childNodes);
+
+  for (const child_node of child_nodes) {
+    fragment.append(child_node);
+  }
+
+  let current: Node = fragment;
+
+  if (traits.strikethrough == true) {
+    current = wrap_inline_node({
+      document_node,
+      tag_name: 'del',
+      child_node: current,
+    });
+  }
+
+  if (traits.italic == true) {
+    current = wrap_inline_node({
+      document_node,
+      tag_name: 'em',
+      child_node: current,
+    });
+  }
+
+  if (traits.bold == true) {
+    current = wrap_inline_node({
+      document_node,
+      tag_name: 'strong',
+      child_node: current,
+    });
+  }
+
+  return current;
+}
+
+function wrap_inline_node({
+  document_node,
+  tag_name,
+  child_node,
+}: {
+  document_node: Document;
+  tag_name: semantic_inline_tag_name;
+  child_node: Node;
+}): HTMLElement {
+  const wrapper = document_node.createElement(tag_name);
+  wrapper.append(child_node);
+  return wrapper;
 }

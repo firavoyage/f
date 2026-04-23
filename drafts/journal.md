@@ -6142,13 +6142,49 @@ then my declare global breaks for no reason.
 
 18 00 learn some ruby.
 
-21 40 solve a math problem.
+21 40 think.
+
+```
+My hs has much worse student base since the hsee reform. 
+
+Then it no longer holds competition education. 
+
+If there were I would join. Ordinary courses are boring, at least relatively. And we don't have to actually learn these besides complying a filtering system. 
+
+There are a lot of competitions, but these offers a hope to bypass the toxic system, as a valid reason to skip classes. Also, they are quite interesting for nerds.
+
+Many competitors are so smart that they get into prestigious ones even wo competition. Many are wealthy so they don't have to be desperate. 
+
+Though, I live a life. Not as the prisoners.
+
+And they create a typical anime nerd culture online, which I appreciate.
+```
+
+22 00 solve a math problem.
 
 ```
 2^x >= 10^10 & x in int
 ```
 
 leverage the fact that 128 is similar to 125.
+
+22 40 think.
+
+```
+You can have a vfs. No more constraints. 
+
+Incompatible filenames. 
+
+Limited path length. 
+
+Though, I won't use it now. 
+
+I will use file. Actual fs. 
+
+And handle them. e.g. convert with underscore or similar rendering char. 
+
+I will always use lowercase in fs. You can render as capitalized one.
+```
 
 23 00 surf rvalue daily. play cr, get another classic challenge 12 wins. 
 
@@ -6179,6 +6215,8 @@ gemini could render graph in mdx (?), with its google sans and colors, to tell m
 > bounding by telescoping sums
 
 <!-- btw, gemini flash made some typo, claiming 1/sqrt(n) < 1/(sqrt(n)+sqrt(n-1)) -->
+
+22
 
 01 20 solve a math problem from rvalue.
 
@@ -6314,6 +6352,8 @@ tell me if you one shot this! since everything nowadays is just one prompt away,
 there is no way i could use memoh easily. i suppose i could add something to path, and then `memoh --help`. currently ive installed it with one liner, and i have no way to even know whether it's running, which port it is running, wo reading docs. i think there might be already issues on it (cli).
 ````
 
+upd: ChrAlpha creates a pr for part of my issue.
+
 ```md
 <!-- damn -->
 
@@ -6350,7 +6390,234 @@ it's not pure.
 you could not run one command twice and suppose they will work as expected.
 ```
 
+upd: ChrAlpha creates a pr for my comment.
+
+```
+what do they mean I got stuck on a similar issue when upgrading from `v0.6.3` to `v0.7.0`. The migration experience is quite poor.
+
+I think the root cause is that the [one-click installation](https://docs.memoh.ai/installation/docker.html#one-click-install-recommended) script doesn't handle the difference between a clean first-time setup and a dirty upgrade or re-installation.
+
+Those should be considered by installation script but blaming to docker. I'm trying to PR with some workaround.
+
+---
+
+fix(install): handle dirty one-click upgrades #401
+```
+
+<!-- 
+
+i looked quite a while at "be considered by installation script but blaming to docker". ive no idea if they mean it's wrong to blame docker or not. (confirmed: blame is vt. not vi.)
+
+upd: 
+
+> The speaker is defending Docker slightly by saying it’s not Docker’s fault that the script was too simple to handle a re-installation.
+
+-->
+
+upd: upd:
+
+```
+small typo:
+
+> Those should be considered by installation script but blaming to docker. 
+
+Those should be considered by installation script but blaming docker. 
+
+blame is vt.
+```
+
 17 40 research html to md lib. 18 00 add html to md option to app copy.
+
+18 20 chat on memoh group.
+
+```
+f, [4/22/26 6:27 PM]
+Hello everyone! 
+
+I think it's good if there is a GitHub discussion for memoh. 
+
+Sometimes I want to share my thoughts but I don't wanna organize them into the issue format for project management. 
+
+I would like to chat freely. Also, GitHub discussion is open, unlike telegram. You can easily reference a message in the discussion.
+
+Ref: issue 396.
+
+f, [4/22/26 6:28 PM]
+What do you think, acbox?
+
+0x24a, [4/22/26 6:30 PM]
+nice idea imo
+```
+
+upd: get a like from alexma233
+
+23 40 play `[FULL] Mahou Shoujo Madoka★Magica ED 『Magia』 Romaji ⧸ English [D2oLSuongkY]`.
+
+23 40 write a pr to memoh to remove dead (and definitely redundant) code in i18n strings. code review myself.
+
+```
+Remove dead code in i18n strings #398
+
+It's not referenced anywhere. (at least on global search)
+
+and if you read this, it's definitely redundant. (if you ever use it in the future, it will confuse the user.)
+
+fix part of issue 396 (mine).
+
+ive accidentally rm too much and breaked the json structure, but now it's fine.
+
+btw, it's a small fix. i dont wanna clone it. ive done everything on github web.
+
+seems the branch name is weird (patch 1), but i dont wanna change it.
+
+it's my first pr. i have not read guidelines. 
+
+if you wanna merge, you have to make sure of everything. im not familiar with this project.
+```
+
+```
+Seems there is one more trailing comma. but i suppose it would work fine.
+
+btw, ive no idea why line 1114 to 1119 in zh.json is yellow here.
+```
+
+23
+
+00 20 get the pr merged by acbox.
+
+01 00 work on app copy. add rm image and normalize link desc option.
+
+02 20 write a pr to memoh to fix trailing comma on json of my prev commit.
+
+some ci are strict.
+
+some branches are hidden on github web by default, the one you just auto created. confusing.
+
+and idk if there is easy way to merge two auto created branches. i could not even see them at the same time out of the box.
+
+i know what to do at last, but it's not one click. waste some time.
+
+```
+Fix json structure
+
+on the prev pr, i leave a comment 
+
+> i find trailing comma in json, but i suppose it would work fine.
+
+it does not. some ci are strict.
+
+anyway, just fix it.
+```
+
+02 20 write an issue on memoh. 02 40
+
+```
+Open github discussions.
+
+issues are for project management. one issue, one task.
+
+sometimes i just wanna chat freely and share my thoughts. i dont wanna categorize strictly to fit "feat" or "fix".
+
+there is telegram existing, but you could not retrieve an old message easily and reference as permalink.
+
+on github discussions you can.
+
+for example, today, in cis, i found this:
+
+> `publish ${{ matrix.image }}${{ (((matrix.variant != '') && format(' ({0})', matrix.variant)) || '') }}`
+
+this is so weird. looks like an error. yet it's skipped by default. ive no idea what it is.
+
+then if there were a github discussion or something, i could ask everyone.
+
+other options exist, but this is the most straght forward i suppose, you dont even need to register or buy a server, unless you want more control.
+
+also, 
+
+issues are inconsistent (at least currently). some are starting with `[Bug]: `, some are `Error:`, some are `bug:`. these three are the same thing i guess.
+
+ppl nowadays vibe a lot. some ppl dump a wall of text, in corp or academic style, and i think you would not be willing to read manually. i were about to use aggressive words to criticize them, but maybe they are not intended to do that. maybe they just think it's normal. i belive in good faith.
+
+then, if there is a discussion, i could criticize there. the issue creator wont even be notified!
+
+there is a ever hanging `Roadmap to MVP #86` at top.
+
+i think it's quite important, which could keep everyone in track. 
+
+but... despite memoh's popularity, it's not updated frequently. (it's created in feb. now it's apr.)
+
+it's not even detailed. you have no idea what they are gonna do next.
+
+<!-- i believe in the future of memoh (or agents in general). it's not gonna end up a telegram toy. -->
+
+> if you see something that you think isn't right – speak up!
+```
+
+03 40 research llm prices and token to character mapping. 04 00 create token app.
+
+05 00 appreciate `How China crushed Hong Kong` by `The Economist`.
+
+14 20 write a pr to memoh to remove dead code (the unusable "reset password").
+
+```
+Remove dead code ("reset password")
+
+currently, "forgot password" is unusable.
+
+no button is always better than an ususable button.
+
+and since you only have the id and the pw (no email, phone, 2fa, or something), there is no meaningful way to "forget password" safely.
+
+just like your os, which does not allow you to reset password generally.
+
+in the long term, i doubt if there is the need to have a password,
+
+- "multi user" means the bot can interact with many. it might not imply there is the need to have many admins.
+- if it's supposed to have only one admin, there is no need to set an id. by default, most ppl dont wanna mess up with pw i guess. just like telegram, do you enter a pw when opening it? well, you can, like 2fa auth apps. it's just a security lock.
+- idk if currently you could register many admins. if not, it's redundant at once.
+
+ive not tested it. make sure there is no layout shift rm it.
+
+fix part of issue 396 (mine).
+```
+
+```
+you have to make sure it shows as expected.
+
+i have no idea if rm an element would cause any problems. i suppose not.
+
+upd: ci failed?
+
+idk what happened. dont merge it if it matters.
+
+---
+
+oh, it's not my problem.
+
+even if you commit no changes, the ci wont pass.
+
+it's my trailing comma pr that should be merged first.
+```
+
+15 00 write a comment on memoh `fix(install): handle dirty one-click upgrades #401`.
+
+```
+@claude @copilot 
+
+ive seen `docker compose down -v` in the markdown.
+
+how could it keep the data even with this command? does it move the data somewhere as backup and copy back later?
+
+for all cases, this command should not run, wo checking "there is no data!" or backup.
+
+though, ive not found actual reference in code. seems it just reuses the prev config.
+
+also, it mainly targets the problem of the one liner running twice. but actually it could be installed anywhere (you can even choose where to install inside the one liner, wo build from source. idk if it saves or exports somewhere for the future.). since you wont scan the whole disk, you have no idea where it is.
+
+ive read the code. whenever it does not find one, it just attempts to clear all your data.
+
+just confusing.
+```
 
 
 

@@ -81,3 +81,17 @@ i could remove all color (wherever they are, since web is robust against partial
 decision: no.
 
 ---
+
+if prettier is too aggressive, we can stay with remark with some config.
+
+e.g.
+
+- unordered list `-`
+- italic `_`
+- indentation `2 spaces`
+
+but i suppose remark might be a bit conservative.
+
+indentation is not really easy and straight forward.
+
+---
