@@ -3,6 +3,9 @@ import * as prettier from 'prettier/standalone';
 import * as prettier_plugin_markdown from 'prettier/plugins/markdown';
 import { process_ast } from './process_ast';
 
+import { remark } from 'remark';
+import remarkStringify from 'remark-stringify';
+
 type token_entry = {
   token: string;
   value: string;
@@ -96,6 +99,17 @@ export async function convert_html_to_md({
       parser: 'markdown',
       plugins: [prettier_plugin_markdown],
     });
+
+    markdown = (await remark()
+      .use(remarkStringify, {
+        bullet: '-',           // Prettier default for unordered lists
+        emphasis: '_',         // Prettier default for italics
+        strong: '*',           // Prettier default for bold (double asterisks)
+        fences: true,          // Use fenced code blocks
+        incrementListMarker: true, // Automatically increment ordered list numbers
+        listItemIndent: 'one', // two-space indentation
+      })
+      .process(markdown)).toString();
 
     console.log({
       action: 'prettier_format_done',

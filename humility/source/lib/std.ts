@@ -44,6 +44,12 @@ declare global {
   // todo: E should be subset of err
 
   type option<T> = T | undefined;
+
+  function err(error: Optional<err, typeof err_hash | 'message'> | Error): err;
+
+  function rescue<T>(result: result<T>): result is err;
+
+  function handle(fn: Function): (...args: any[]) => result<any>;
 }
 
 /**
@@ -59,7 +65,10 @@ declare global {
 export function err(error: Optional<err, typeof err_hash | 'message'> | Error): err {
   if (error instanceof Error) {
     return Object.defineProperty({
-      type: error.name,
+      // foo.type == SyntaxError > foo.type == 'SyntaxError'
+
+      type: error.constructor,
+      // type: error.name,
       message: error.stack ?? error.message,
     }, err_hash, { value: true }) as err
   } else {

@@ -1,16 +1,20 @@
 # env
-.env
+# .env # might contain some necessary runtime flags
+
+# private
+.env.private
 .zshrc.private
+private/
+.private/
 
 # build
+build/
 .build/
 .vite/
 
 # deps
 node_modules/
 
-# private
-.private/
-
 # temp
-# .temp/
+# temp/ # no need to exclude
+# .temp/ # no need to exclude

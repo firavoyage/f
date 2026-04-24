@@ -110,4 +110,20 @@ if i force markdown, then no inline styling at all, even for mark.
 
 ---
 
+i could add an option to choose
+
+- get innerhtml from contenteditable
+- intercept paste and prevent default
+
+though, from an experiment, whether intercepted or not, it's already full of var in inline styles. it's just perf.
+
+---
+
+holy. 
+
+it blocks all non standard html tags. (web components).
+
+let's normalize them to div first...
+
+---
 

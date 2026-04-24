@@ -32,4 +32,10 @@ create lib and link with node modules.
 
 write some codebase templates and infra, like the lib. see the code for details.
 
+24
+
+write std.
+
+create the infra like rust prelude so i dont have to import std methods everywhere using nodejs import flag under the hood.
+
 

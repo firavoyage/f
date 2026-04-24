@@ -2561,3 +2561,20 @@ when you exit the page, on the list, it might not.
 
 ---
 
+for a vid wo sound...
+
+you dont have to put a volume button. (you could make it special)
+
+it's common.
+
+---
+
+funshiki index.
+
+pjsk "news" index.
+
+(no idea where the story i would like to read is... well, it's not hard. but a github page would be better.)
+
+---
+
+

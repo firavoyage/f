@@ -27,3 +27,9 @@ add option: prettier
 normalize: some sematic tags (e.g. strong) are converted to span with inline style.
 
 turn off "keep content". content inside buttons would be rm. it could be an option, though. 
+
+24
+
+enforce prettier with remark, which forces all indented code blocks to backticks
+
+align remark with prettier defaults

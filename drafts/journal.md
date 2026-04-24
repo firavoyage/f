@@ -6763,6 +6763,18 @@ skim innei's devlogs w llm agents. so funny.
 
 23 00 organize photos.
 
+24
+
+14 40 watch `Look Back (2024)` on funshiki live replay.
+
+18 40 play pjsk. dl all res of songs and music vids.
+
+19 40 find `【PJS字幕组】第194期活动『CHANGE！笑梦是公主殿下！？』剧情翻译 中文字幕合集 更新完毕 共8话+4篇区域对话【世界计划 多彩舞台】`. dl the series.
+
+damn. "王女" does not appear in the title.
+
+config ytdlp.
+
 
 
 <!--

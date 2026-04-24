@@ -13,8 +13,8 @@
     "noEmit": true,
 
     // "strict": true,
-    "strictNullChecks": true,
+    "strictNullChecks": true
   },
-  "include": ["**/*"],
-  "exclude": ["node_modules", "build"]
+  "include": ["**/*", "source/lib/temp/b.ts"],
+  "exclude": ["node_modules", "build", ".build"]
 }
