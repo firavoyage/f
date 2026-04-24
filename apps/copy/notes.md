@@ -95,3 +95,19 @@ but i suppose remark might be a bit conservative.
 indentation is not really easy and straight forward.
 
 ---
+
+i could recognize `aria-level="3" role="heading"` in config.
+
+but it's too advanced and google ai mode specific.
+
+---
+
+i could remove all html attrs expect img wh.
+
+e.g. whitelist.
+
+if i force markdown, then no inline styling at all, even for mark.
+
+---
+
+

@@ -26,4 +26,4 @@ add option: prettier
 
 normalize: some sematic tags (e.g. strong) are converted to span with inline style.
 
-
+turn off "keep content". content inside buttons would be rm. it could be an option, though. 

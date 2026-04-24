@@ -2549,4 +2549,15 @@ i think you could even as daily backup... and sync.
 
 ---
 
+https://material-web.dev/components/button/
+
+---
+
+it's hard to make a state consistent across pages (inside an app, or browser tabs).
+
+when you save an article on zhihu, it's saved.
+
+when you exit the page, on the list, it might not.
+
+---
 

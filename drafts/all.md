@@ -150,6 +150,7 @@ software engineering frontend:
 - ts d.ts code style
 - ts utility types record union enum
 - md footnote syntax support render
+- ts std result go pattern rust pattern
 
 software engineering backend:
 

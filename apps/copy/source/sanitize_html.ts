@@ -38,7 +38,7 @@ const sanitize_config = {
     'frame',
     'frameset',
   ],
-  KEEP_CONTENT: true,
+  KEEP_CONTENT: false,
 };
 
 const url_attribute_names = new Set([
