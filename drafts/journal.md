@@ -4007,7 +4007,7 @@ inspired by mewx (wenku8, google au).
 
 02 20 message chyk for fun (with poor english and thinking off).
 
-```
+```md
 千雪的快餐店 | 麦香鱼不限量供应🐟, [3/31/26 4:05 PM]
 ARM 优势尽显
 
@@ -4024,8 +4024,10 @@ Btw, I find it hard to make it work with my mouse. It wants me to use a controll
 I'm using wireless controller. by the way you can find original source code at https://github.com/Fabi/yuzu-mirror-mirror. with some fixes for newer fmt library, it works fine
 
 f, [4/3/26 2:30 AM]
-a newer fmt library? fast fourier transformation (well that's fft)? formatting and printing? wow. Well, since old games could work on yuzu and nintendo has not changed much, I suppose yuzu could work fine, and it's pretty reasonable to use a modern fork, which implies better reliability, maybe with some upd patches builtin (i have not installed any patches on eden). Months before, when i were testing zeldas and stardew valley on eden, i found no way to like use mouse/touchpad to just click the button directly. i feel it's hard after consulting llms. since you are using a wireless controller, well, unfortunately, it's not a solution. but, since you appear to know a lot about tech (i have never compiled any programs if i could find pre compiled binaries, like on github actions for dev versions. and ts/js doesnt need to be compiled. while you seem to love that, compiling manually whenever you can.), i wonder if you know something about it, since theoretically i think it's not hard, unless nintendo explicitly limits the precise clicking for apps on it.
+a newer fmt library? ~~fast fourier transformation~~ (well that's fft)? formatting and printing? wow. Well, since old games could work on yuzu and nintendo has not changed much, I suppose yuzu could work fine, and it's pretty reasonable to use a modern fork, which implies better reliability, maybe with some upd patches builtin (i have not installed any patches on eden). Months before, when i were testing zeldas and stardew valley on eden, i found no way to like use mouse/touchpad to just click the button directly. i feel it's hard after consulting llms. since you are using a wireless controller, well, unfortunately, it's not a solution. but, since you appear to know a lot about tech (i have never compiled any programs if i could find pre compiled binaries, like on github actions for dev versions. and ts/js doesnt need to be compiled. while you seem to love that, compiling manually whenever you can.), i wonder if you know something about it, since theoretically i think it's not hard, unless nintendo explicitly limits the precise clicking for apps on it.
 ```
+
+upd: heart from nickle angel and chyk.
 
 upd
 
@@ -4334,6 +4336,16 @@ PRO-2684² 不要香菜谢谢⁧😿 喵⁦, [4/6/26 8:06 AM]
 https://github.com/jgamblin/OpenClawCVEs/
 
 the ux of openclaw is also poor. if you like, you can try to install it. ive tested a few days ago to see it myself. i installed with pnpm. something inside wants me to run the build script explicitly. even if i dont need that, it errs when i start it. ok i will build you. then it is onboarding. the onboarding is quite complex. explanations are confusing and ambiguous sometimes. i suppose i only need to set up the api key and do the rest on web ui if i want. but im wrong. then, there is an issue. i use the name of the env var in my zshrc. but when it's running inside systemd (it asks everything for confirm, but it uses systemd and adds to my zshrc automatically.), the env is not recognized. it says it does not know there is the env (maybe it's running in bash without source zshrc). but when im onboarding in zsh, it recognizes and see it vaild. yet, there is no way to fix it. it has many ways to debug itself, like doctor, but only after i run journalctl could i fix it. the doctor does nothing but restart the service once again (also, it passes a lot of redundant checks), completely unhelpful. then i remove the .openclaw folder and retry. now i paste the key inside and it works. (but it does not hide my key at all. normal unix clis will show nothing when im typing passwords.) ok now i have the webui... but... it's obviously inconsistent. idk if it has ever considered using a component library? the elements dont align. and there are many ui quirks. i have one model, but it has three options pointing at the same model (e.g. there is default, which does not mean the default selected option, like vscode settings, but another option in the list. for example, you can have my model, my model - provider foo, and my model (default).). it has it does not feel like a declarative react app, because when i click the same navigation tab twice (it should either do nothing or refresh), it flashes (the scrolltop suddenly changes for no reason. maybe it's trying to display something before fetching data?). im not gonna further test it. deprecated.
+```
+
+upd: 
+
+crying from YurikoImagawa and hykilpikonna. praying from Aoino_Skynext.
+
+```
+猫离子 猫, [4/8/26 1:12 AM]
+/summary
+怎么这么长还没有capitalization）
 ```
 
 12 20 read the stranger chapter 1.1. 13 00
@@ -6761,9 +6773,60 @@ upd: when you post a cmt, it shows a toast, but it does not appear on the cmt ar
 
 skim innei's devlogs w llm agents. so funny.
 
+upd:
+
+```md
+白崎 汐音, [4/23/26 7:30 PM]
+这傻逼怎么又来了
+
+白崎 汐音, [4/23/26 7:30 PM]
+
+<!-- 😠 -->
+
+Wibus Wee, [4/23/26 7:46 PM]
+
+<!-- 🐰 -->
+
+Wibus Wee, [4/23/26 7:47 PM]
+bug 检测器
+
+Wibus Wee, [4/23/26 7:47 PM]
+整挺好
+
+Wibus Wee, [4/23/26 7:47 PM]
+
+<!-- 😁 -->
+```
+
 23 00 organize photos.
 
 24
+
+05 20 think.
+
+```
+越来越喜欢说羡慕。心里会有一些宽慰的说。
+
+不会运动。不可爱。
+
+也不会做题！
+
+唉，废物。
+
+什么时候知道 minori 的呢？使用 linux 开始吧。很早了。那时候就开始用Twitter。一开始主要使用 fyp。
+
+politics和porn ban 了许多。于是大概就是 mtf 和 memes。hsn cldeop 聪明吧这些。
+
+minori 好美味。还卖弱！
+
+唉，又卖弱了。
+
+说到底没有什么特别的。人不多，但是人其实是连续的。人的感知没有那么精确。
+
+感觉就算 elon 的孩子，如果喜欢这些，也会很羡慕的。又不会强。
+
+在这里面，应该也不会再想这些了吧。不知道私底下会不会很在意... 好味！
+```
 
 14 40 watch `Look Back (2024)` on funshiki live replay.
 
@@ -6774,6 +6837,624 @@ skim innei's devlogs w llm agents. so funny.
 damn. "王女" does not appear in the title.
 
 config ytdlp.
+
+23 20 surf tg. organize and mv saved msgs. 01 40
+
+acbox
+
+```
+盼兮, [4/20/26 12:14 AM]
+手性碳大法不管用了吗
+
+Arius Sul G Saite, [4/20/26 12:43 AM]
+这是甚么（
+
+盼兮, [4/20/26 12:44 AM]
+tg群组以前经常用一张手性碳图（问你有几个手性碳）人机验证
+
+Arius Sul G Saite, [4/20/26 12:44 AM]
+草
+
+Arius Sul G Saite, [4/20/26 12:44 AM]
+有点狠
+
+daylily 📨, [4/20/26 12:46 AM]
+你等我找找
+
+daylily 📨, [4/20/26 12:46 AM]
+https://catme0w.org/zh-cn/behind-the-scenes/lost-ones-chiral/
+
+Iskra Yuriyevna, [4/22/26 6:52 PM]
+请问群友有没有可以远程实习的渠道（x
+
+神樂坂苏酱 阿朱喵, [4/22/26 6:56 PM]
+请问群友有没有工作介绍（x
+
+知夜, [4/22/26 6:56 PM]
+（进厂你们要吗？）
+
+Iskra Yuriyevna, [4/22/26 6:58 PM]
+呜呜呜（x
+
+xya 诺🍥, [4/22/26 6:58 PM]
+xm
+
+Iskra Yuriyevna, [4/22/26 6:59 PM]
+xm啥，因为还在北极上学所以才
+
+Iskra Yuriyevna, [4/22/26 6:59 PM]
+只能远程
+
+xya 诺🍥, [4/22/26 7:02 PM]
+这样
+
+xya 诺🍥, [4/22/26 7:02 PM]
+我是家里蹲(
+
+Iskra Yuriyevna, [4/22/26 7:03 PM]
+我现在是三和大神
+
+xya 诺🍥, [4/22/26 7:06 PM]
+家里蹲两年了都,去年一直在执着找远程，但是远程确实不好找...
+
+Iskra Yuriyevna, [4/22/26 7:06 PM]
+呜呜呜
+
+Iskra Yuriyevna, [4/22/26 7:10 PM]
+贴贴喵
+
+xya 诺🍥, [4/22/26 7:12 PM]
+贴贴
+
+Wings Butterfly, [4/23/26 2:16 PM]
+我也是呜呜呜
+
+Wings Butterfly, [4/23/26 2:16 PM]
+休学家里蹲
+
+xya 诺🍥, [4/23/26 2:18 PM]
+同休学
+
+明统 若空, [4/23/26 2:57 PM]
+我只会搞些外包出题，又难又累还不赚
+
+Wings Butterfly, [4/23/26 7:34 PM]
+怎么又有广告bot
+
+Wings Butterfly, [4/23/26 7:36 PM]
+这种弱智诈骗到底谁会信
+
+Wings Butterfly, [4/23/26 7:37 PM]
+人类多样性
+
+明统 若空, [4/23/26 7:37 PM]
+不求上钩 纯气人.jpeg
+
+澪, [4/24/26 10:40 AM]
+打 mai 应该洗不完这么多钱
+
+澪, [4/24/26 10:40 AM]
+这么多钱应该够 ysk 洗好几个 kaleidx scope 了
+
+明统 若空, [4/24/26 10:41 AM]
+我是穷人只打过一次 mai😭
+
+澪, [4/24/26 10:43 AM]
+我看推上有好几个 xyn 发实习链接
+
+Kiritake Kumi, [4/24/26 10:43 AM]
+啊 看看？
+
+澪, [4/24/26 10:50 AM]
+https://x.com/i/status/2047231766617038864
+
+澪, [4/24/26 10:50 AM]
+我去 grok 这么厉害
+
+澪, [4/24/26 10:50 AM]
+grok 感觉可以替代推特的搜索了
+
+澪, [4/24/26 10:50 AM]
+推特搜索真的太难用了
+
+Lee, [4/24/26 10:58 AM]
+远程办公是好文明
+
+Lee, [4/24/26 10:59 AM]
+反正上课也不听课，不如干干活（
+
+澪, [4/24/26 10:59 AM]
+我上课没电脑就专门想 idea
+
+澪, [4/24/26 10:59 AM]
+笑死了
+
+Lee, [4/24/26 11:00 AM]
+我入职后专门备了台轻薄本用于机动办公
+
+Lee, [4/24/26 11:00 AM]
+确实舒服
+
+xya 诺🍥, [4/24/26 11:01 AM]
+xm
+
+Lee, [4/24/26 11:01 AM]
+每天上课拿着电脑就走，除了没法本地构建和测试没别的缺点了
+```
+
+hsn
+
+```
+hsn.recipe, [3/9/26 7:21 PM]
+笑死我
+教学楼上厕所
+又吓到人了
+好好玩
+明显看到对面顿了一下后退看指示牌
+
+guanjiao, [3/9/26 7:23 PM]
+xm pass😭😭😭
+
+Breeze Zhao, [3/9/26 8:46 PM]
+我在商场也经常吓人，跟人说男的男的人还不信⭐
+
+Breeze Zhao, [3/9/26 8:47 PM]
+现在选择往三卫钻（
+
+Breeze Zhao, [3/9/26 8:56 PM]
+退出去看看，退出去看看，然后选择去楼上的卫生间
+
+hsn ぷん, [3/9/26 9:14 PM]
+我选择小便池, 懒得解释了, 我都站着了, 就让让我吧
+
+hsn ぷん, [3/9/26 9:15 PM]
+那我也不能去对面啊, 第三卫也不开啊
+```
+
+chyk
+
+```md
+千雪的咖啡厅 | 强制戒断 🧊, [4/20/26 5:43 PM]
+大家有什么优惠的墙外 vps 推荐吗
+我的需求是能连上 telegram 服务器，内存 4 gb 或以上（用来跑 tg bot）
+价格预算 30 / 月（如果没有的话我就用家里云，它一个月电费 30 元，但做不到 always online（凌晨是关机的）但我群会有凌晨在线的群友）
+
+千雪的咖啡厅 | 强制戒断 🧊, [4/20/26 5:43 PM]
+（不是很了解市场价）
+
+asfr | abc1763613206🤔, [4/20/26 5:43 PM]
+你啥tg bot要4G大小
+
+斬風千雪 ❄️, [4/20/26 5:44 PM]
+龙虾类似物
+
+尾巴藿藿 | HuoSeek-R1 Powered?, [4/20/26 5:44 PM]
+astrbot吗
+
+尾巴藿藿 | HuoSeek-R1 Powered?, [4/20/26 5:45 PM]
+我其实也在研究某些龙虾类似物
+
+尾巴藿藿 | HuoSeek-R1 Powered?, [4/20/26 5:45 PM]
+现在服务器涨的比较离谱
+
+asfr | abc1763613206🤔, [4/20/26 5:46 PM]
+你不搞啥怪东西和梯子的话
+
+asfr | abc1763613206🤔, [4/20/26 5:46 PM]
+大厂弄一年挺便宜的
+
+asfr | abc1763613206🤔, [4/20/26 5:46 PM]
+就是超售了点，性能可能不太行
+
+斬風千雪 ❄️, [4/20/26 5:47 PM]
+虾的话还是性能高一点好
+
+asfr | abc1763613206🤔, [4/20/26 5:47 PM]
+也烂不到哪里去
+
+asfr | abc1763613206🤔, [4/20/26 5:47 PM]
+真高性能老老实实放家里云然后挂全局梯子
+
+asfr | abc1763613206🤔, [4/20/26 5:48 PM]
+大厂主要是保个线路不会太拉
+
+asfr | abc1763613206🤔, [4/20/26 5:50 PM]
+买个腾讯云香港至少还能全国绿，能干点副业
+
+f, [4/20/26 8:28 PM]
+I'm curious about the conclusion.
+
+⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠A2ca7raz | o_0, [4/20/26 8:57 PM]
+这个内存需求+这个价格大概只有灵车
+
+⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠A2ca7raz | o_0, [4/20/26 8:57 PM]
+蹲蹲黑五的 racknerd 呢
+
+Syoook, [4/21/26 2:11 AM]
+笑死我了我网站一直挨打
+
+Syoook, [4/21/26 2:11 AM]
+然后他服务器打不进来 CF 还打不过
+
+<!-- syoook is so energetic, always trying to make fun of things and compete w others. a bit philistine? -->
+
+Yukina, [4/21/26 12:53 PM]
+这样的话
+不如直接跑在家里云，整个不太灵车的代理就差不多了
+
+Syoook, [4/21/26 1:21 PM]
+<!-- screenshot: cf pages (free), traffic volume over time -->
+
+憋
+
+千雪的咖啡厅 | 强制戒断 🧊, [4/21/26 6:42 PM]
+我同龄人玩的：比赛、论文、期刊，训练、量化、蒸馏，股票、杠杆、期权
+我玩的：同龄人
+
+Menci 💖, [4/21/26 6:43 PM]
+太怪了，用脑子去想.webp
+
+Antarctic Flakes | availability unstable, [4/21/26 6:44 PM]
+喵
+
+asfr | abc1763613206🤔, [4/21/26 7:04 PM]
+？
+
+rpool/MBR, [4/21/26 7:04 PM]
+小孩
+
+Molyuu 🤔, [4/21/26 7:05 PM]
+你这个同龄人好像都是理工男
+
+斬風千雪 ❄️, [4/21/26 7:05 PM]
+我也是理工男
+
+Kevin Williams, [4/21/26 7:05 PM]
+你这个同龄人很可能是一位沪爷
+
+f, [4/21/26 11:09 PM]
+Really?
+
+Zero King, [4/22/26 9:23 PM]
+要是能注册上 Oracle Cloud 可以有（
+
+Zero King, [4/22/26 9:24 PM]
+资源有限的话可以考虑 https://github.com/nullclaw/nullclaw
+
+⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠A2ca7raz | o_0, [4/22/26 10:15 PM]
+一直很好奇，claw 有什么正经的用途吗
+
+斬風千雪 ❄️, [4/22/26 10:21 PM]
+好玩就够了，应该是目前最新最热的娱乐方式（）
+
+⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠A2ca7raz | o_0, [4/22/26 10:21 PM]
+不见得
+
+⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠A2ca7raz | o_0, [4/22/26 10:21 PM]
+龙虾还没退烧吗
+
+⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠A2ca7raz | o_0, [4/22/26 10:22 PM]
+感觉用龙虾干的很多事情都可以让 ai 写一个传统脚本来解决
+
+asfr | abc1763613206🤔, [4/22/26 10:23 PM]
+首先谁来execute
+
+asfr | abc1763613206🤔, [4/22/26 10:23 PM]
+谁来cron
+
+⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠A2ca7raz | o_0, [4/22/26 10:23 PM]
+对群友来说应该不难
+
+⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠A2ca7raz | o_0, [4/22/26 10:23 PM]
+写个 systemd service/timer 就行了
+
+⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠A2ca7raz | o_0, [4/22/26 10:24 PM]
+主要是今天在对比各个平台的 coding plan，发现如果把稍微好一点的模型拿来养龙虾的话，token 根本不够烧的
+
+斬風千雪 ❄️, [4/22/26 10:25 PM]
+我就是纯玩
+
+斬風千雪 ❄️, [4/22/26 10:25 PM]
+没想着干活
+
+斬風千雪 ❄️, [4/22/26 10:25 PM]
+干活我用 claude code
+
+⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠A2ca7raz | o_0, [4/22/26 10:25 PM]
+你买 claude 吗
+
+斬風千雪 ❄️, [4/22/26 10:25 PM]
+还有半个月过期
+
+⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠A2ca7raz | o_0, [4/22/26 10:25 PM]
+买的？
+
+⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠A2ca7raz | o_0, [4/22/26 10:25 PM]
+厉害
+
+⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠A2ca7raz | o_0, [4/22/26 10:25 PM]
+我打算买 gpt plus
+
+斬風千雪 ❄️, [4/22/26 10:26 PM]
+跟群友拼车买的
+
+斬風千雪 ❄️, [4/22/26 10:26 PM]
+它给我节省的时间和创造的情绪价值已经回本了
+
+⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠A2ca7raz | o_0, [4/22/26 10:26 PM]
+买的哪一档啊
+
+⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠A2ca7raz | o_0, [4/22/26 10:26 PM]
+claude 烧起来可贵了
+
+斬風千雪 ❄️, [4/22/26 10:26 PM]
+20 刀
+
+asfr | abc1763613206🤔, [4/22/26 10:28 PM]
+主要是多的这些步骤都是时间成本
+
+asfr | abc1763613206🤔, [4/22/26 10:28 PM]
+理论上你起个 claude code agent 直通 tg 的话
+
+⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠A2ca7raz | o_0, [4/22/26 10:28 PM]
+能省 token
+
+asfr | abc1763613206🤔, [4/22/26 10:28 PM]
+这些都还能干
+
+asfr | abc1763613206🤔, [4/22/26 10:28 PM]
+分层
+
+asfr | abc1763613206🤔, [4/22/26 10:29 PM]
+你总不至于让龙虾吃opus
+
+asfr | abc1763613206🤔, [4/22/26 10:29 PM]
+但是可以让他和claude code交互用opus
+
+asfr | abc1763613206🤔, [4/22/26 10:29 PM]
+隔壁刚冒出来个27B打Opus的Qwen3.6
+
+斬風千雪 ❄️, [4/22/26 10:29 PM]
+我随身携带电脑 随时打开就可以
+
+斬風千雪 ❄️, [4/22/26 10:29 PM]
+应该不算成本（？）
+
+⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠A2ca7raz | o_0, [4/22/26 10:29 PM]
+claude pro 有多少用量啊
+
+斬風千雪 ❄️, [4/22/26 10:30 PM]
+不太够，总强制寸止 5h
+
+<!-- 5 reactions: inviting -->
+
+斬風千雪 ❄️, [4/22/26 10:32 PM]
+最近正在愁代餐
+
+斬風千雪 ❄️, [4/22/26 10:32 PM]
+ glm 慢得令人发指
+
+⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠A2ca7raz | o_0, [4/22/26 10:33 PM]
+听说 claude plan 是不是限制接入三方工具
+
+斬風千雪 ❄️, [4/22/26 10:33 PM]
+gpt 不能提供情绪价值，只会接住我
+
+Kevin Williams, [4/22/26 10:36 PM]
+codex 也一样好像
+
+斬風千雪 ❄️, [4/22/26 10:36 PM]
+codex 比 claude 便宜
+
+斬風千雪 ❄️, [4/22/26 10:37 PM]
+但是它会跟你对齐，找到抓手，打通链路，形成闭环
+
+斬風千雪 ❄️, [4/22/26 10:37 PM]
+很恶心
+
+斬風千雪 ❄️, [4/22/26 10:37 PM]
+codex 一股班味
+
+斬風千雪 ❄️, [4/22/26 10:37 PM]
+token 便宜些
+
+⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠A2ca7raz | o_0, [4/22/26 10:38 PM]
+小问题
+
+⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠A2ca7raz | o_0, [4/22/26 10:38 PM]
+能干活是真的
+
+斬風千雪 ❄️, [4/22/26 10:38 PM]
+我不太用 AI 写代码
+
+斬風千雪 ❄️, [4/22/26 10:38 PM]
+我用过最多的 AI 辅助编程工具是 copilot 的 tab 补全
+
+斬風千雪 ❄️, [4/22/26 10:39 PM]
+claude code 在我手里更多的是写实验报告之类杂七杂八的东西
+
+斬風千雪 ❄️, [4/22/26 10:39 PM]
+或者去写我完全不懂的领域的代码
+
+斬風千雪 ❄️, [4/22/26 10:39 PM]
+which 我不想看代码，可以完全放手让它去写
+
+斬風千雪 ❄️, [4/25/26 1:27 AM]
+百万上下文场景下，几乎每条都是全部 cache miss，为了调试这个我在 flash 模型上烧了五十块钱
+已经交工单了，期待回复
+```
+
+chyk (legacy)
+
+```md
+Syoook, [4/15/26 10:14 PM]
+卧槽 我遇到了个极品公司
+
+Syoook, [4/15/26 10:14 PM]
+有多极品呢
+
+Syoook, [4/15/26 10:14 PM]
+10w注册资本
+
+Syoook, [4/15/26 10:15 PM]
+然后 无证经营idc业务 短信业务 云盘业务 甚至还有你麻痹的本身就是违法的码支付
+
+Chr0n0s, [4/15/26 10:24 PM]
+？
+
+Chr0n0s, [4/15/26 10:25 PM]
+不是你是遇到什么专业皮包公司了吗
+
+Syoook, [4/15/26 10:25 PM]
+我的朋友和一个入起了冲突
+
+Syoook, [4/15/26 10:26 PM]
+我的朋友是搞玩家社区的 然后对面也是 对面搞了个论坛 然后这个论坛也十分好笑 之后那个人自爆那个论坛的服务器是他的 然后说这个公司都是她的
+
+Syoook, [4/15/26 10:26 PM]
+我一查 欸呀卧槽 查到宝了
+
+Syoook, [4/15/26 10:28 PM]
+主要是这些他们真在正常经营 太几把牛逼了
+
+Syoook, [4/15/26 10:30 PM]
+不行了真的给我笑死了
+
+渴望怜爱的 むらさき | 抱...抱不到, [4/15/26 10:31 PM]
+盲猜discuz
+
+Syoook, [4/15/26 10:31 PM]
+wordpress
+
+渴望怜爱的 むらさき | 抱...抱不到, [4/15/26 10:31 PM]
+的站
+
+渴望怜爱的 むらさき | 抱...抱不到, [4/15/26 10:31 PM]
+那已经很高级了
+
+渴望怜爱的 むらさき | 抱...抱不到, [4/15/26 10:31 PM]
+好多站长开个dz 就去买付费的插件来圈钱
+
+rpool/MBR, [4/15/26 11:35 PM]
+还是天津？
+
+rpool/MBR, [4/15/26 11:35 PM]
+地址是居民楼还是什么
+
+rpool/MBR, [4/15/26 11:35 PM]
+有没有能围观的
+
+rpool/MBR, [4/15/26 11:35 PM]
+我去打卡一下
+```
+
+25
+
+01 00 archive the personal chats publicly with aes 256 to avoid search engines.
+
+```
+precious, [4/24/26 5:09 AM]
+sync and rm some saved msgs. 
+
+Archived chats are interesting. Some cmts received stickers.
+
+precious, [4/24/26 5:23 AM]
+Rather open the chat logs.
+```
+
+menci has thousands of msgs with a few frnds. im not a sns heavy one, but i would like to archive some memories.
+
+use https://gchq.github.io/CyberChef/#recipe=To_Base64('A-Za-z0-9%2B/%3D') instead of reversible encryption ones.
+
+it might be weaker than a simple one letter password, but search engines wont decrypt  and index base64 i suppose, as there is no easy way to encrypt like a zip file.
+
+upd:
+
+```
+ ~/Downloads/AyuGram Desktop % ls
+'acbox irl.jpg'                             'ChatExport_2026-04-16 antonino'
+ ChatExport_2026-02-22_anthill              'ChatExport_2026-04-16 memoh apr'
+ ChatExport_2026-02-25_cyan                 'ChatExport_2026-04-17 menci'
+'ChatExport_2026-03-08 saved msgs'           ChatExport_2026-04-25
+'ChatExport_2026-03-15 saved'               'ChatExport_2026-04-25 nickle angel personal'
+'ChatExport_2026-03-22 spammer'             'ChatExport_2026-04-25 russian'
+'ChatExport_2026-03-27 nickle angel group'   DataExport_2026-04-16
+'ChatExport_2026-03-27 umr blog'            'meme claude allows to automate anything except itself.jpg'
+'ChatExport_2026-03-27 vtbsirl'             'menci minori plushie upside down.jpg'
+'ChatExport_2026-04-01 acbox'               'pixiv sparkle with a rope.jpg'
+'ChatExport_2026-04-01 acbox blog'          'russian bitmagnet 30 gb.png'
+'ChatExport_2026-04-01 memoh'               'russian male means badly in latin.png'
+'ChatExport_2026-04-04 acbox'               'russian piano performance.mp4'
+'ChatExport_2026-04-08 qingniao group'      'russian rednote flagged.png'
+'ChatExport_2026-04-08 steven lynn'         'russian telegram stickers scrapper failed poc.png'
+'ChatExport_2026-04-13 acbox'               'russian twitter scrapper poc.png'
+'ChatExport_2026-04-13 baoshuo'              S1YURICON_Cosmic_Princess_Kaguya_1080pWebRipHEVC_EAC3CHS_JP_mkv.torrent
+'ChatExport_2026-04-13 lyca'
+```
+
+(the ongoing export is azaneko channel. it's much easier to read, or to consume anything in general, wo network req.)
+
+in the full acc data export, even the groups i were left are kept. (but del chat for both might be not. and it's surprising... but not really comprehensive i suppose.)
+
+01 40 stop bitmagnet with compose down. backup the 40gb bitmagnet data. rm, and start fresh.
+
+it could not keep a upper limit. it would grow infinitely as long as it keeps dht. forced stop would make it outdated.
+
+also, mv to `~/Documents/.storage/bitmagnet` (from `~/docker/bitmagnet`).
+
+02 20 refresh.
+
+there is a spider hanging in the air in the bathroom... i kill it at once.
+
+it might be creating its first few lines on the web. but where could it lift. a distant wall?
+
+03 00 skim hykilpikonna (azaneko) channel. skim tg acc data export.
+
+from 2021. mtfs are generally emotional.
+
+> humans are interesting creatures.
+>
+> ningen wa omoshiroi sebutsu desu. <!-- duolingo jp -->
+
+my phone contacts are synced online?
+
+yet, it shows the name (whether channel/group/ppl), but not the id, at least on webpages. i might not be able to easily reproduce the same list on a fresh new acc, where advanced tools are often only used by exploiters, as the apis are not really open and comprehensive (at least, it differs from the internal app apis. simplicity is not a must, since we would have abstractions).
+
+> No, you generally cannot add or join a Telegram channel by searching for its numeric ID directly within the standard Telegram app. The numeric ID (often a 13-digit number starting with -100) is primarily used for API integrations, bot development, or third-party tools. 
+
+even in the json export it does not show the public id.
+
+(upd: twitter export does not show the following/follower list either, or twitter list. it mainly only shows the tweets. almost all devs would have a github, a twitter, and an optional personal blog. ref: zed team.)
+
+i would have a `telegram.md`. and clear the "tg" fields from f/blogging: readme: persona. it would worth it, even wo an account banned. there are not so many ppl in the world, and i would <!-- sacre --> share the dearest wishes with them.
+
+tg is the only feature rich platform in its field, not mentioning it's also quite generous and open. but it's not really libre like mastodon (yeah, it's not ideal either, but you could build your ux on it wo major constraints, which is made possible by quite a lot sponsors, not just the main server, but distributed across niches. though it still has to be compatible with twitter w some reliable workarounds, e.g. ytdlp, at least for geek users, but i think it's soon.).
+
+let's have a name. not "bird". with. a prep.
+
+at the end of the day, i would imagine a world where tg channels and twitters are unified (it's already unified by some auto pushers like ifttt, e.g. cyan nyan). i would call that `eat`.
+
+when you view something, you could save it and archive for permanence, which is called `grow`. you could leave a cmt, or discuss w ppl, which is called `with`.
+
+(also, all these names are not reg by popular apps. confirmed by google. the first results are dicts.)
+
+and tg indexes as well as observers are surprisingly aggressive but quite incomprehensive.
+
+on tg data export, for public groups and public channels, i could only export my messages (the opt out button is grayed).
+
+also, tg has the technically impossible "hide my username when fwd", "dont allow my subs copy or fwd the channel msgs elsewhere", and "report" option, and the idealistically naive "delete for both" option which strongly believes in good faith. i would say "edit" is a good feature though (yet, it does not show the full editing history like github issues even if you want). upd: even if you are in a channel... you could not share the channel easily (i.e. non public ones)? wo manually fwd each msg to your frnd.
+
+i could export the member list of every group (many of which are linked with a channel, often an owner), but it's not that straight fwd. by archiving them, im doing manually one by one, with some organization/taxonomy thoughts on my own. i believe it would be quite impressive how ppl are linked together (which also implies the low population, like, you could view the whole landscape at a glance.)
+
+thanks to tg's free 100k ppl supergroup feature, from my personal observation, whenever you open an account, there would be likely "a few groups in common". cross references on twitter and zhihu.
+
+tg is a magic app with "single way contact" in its design. tg does not index the channel owner for you even if you have them in your contact. (a pf could be linked to a channel, or a channel gateway. a channel does not disclose its owner's pf for privacy. those it's quite easy sometimes, e.g. foo is the pf, foo_channel is the channel. or just search the name.). it does not show the owner at first in the member list either. and, ive no idea how it sorts the member list. it's clear that the upper, the more likely you would know them. (many intentionally place the related ids in the bio exactly for this.)
+
+tg users love "gateway" quite a lot. but sometimes i could already preview all the history msgs and the member list, the group name and pfp... before even joining it. some group appears to need a permission, but it's managed by a bot which allows anyone to join (at least within a time window) with or wo a captcha. there is one 2k ppl group where i could only see the admins.
+
+about tg id. seems it's quite timestamp based. there are bots predicting acc reg time by this (with a short list of acc id and timestamp mapping).
+
+it differs username and "collectible username".
 
 
 

@@ -254,9 +254,13 @@ pure:
 - geography
 - politics
 
-pure economics:
+economics:
 
 - gdp per captica ppp
+
+society:
+
+- chinese bloggers friend link blogroll
 
 glaze:
 
