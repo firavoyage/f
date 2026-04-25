@@ -577,3 +577,10 @@ you refresh after a few sec, it's there.
 
 ---
 
+env.
+
+- put env flag in package json script, so anyone who runs the script would have the env.
+- install direnv on my system. so i (awa serious contributors) could simply run. also have envrc. (upd: deprecated. direnv is too conservative.)
+
+---
+

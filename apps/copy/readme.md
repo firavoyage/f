@@ -26,7 +26,7 @@ it's reliable.
 
 - you use proven tech under the hood.
 
-assume (what you wanna copy is):
+assume:
 
 - web based
 - static, no progressive loading
@@ -44,12 +44,6 @@ run
 ```sh
 pnpm add -g parcel
 parcel serve 'app.html' --open --dist-dir .build --cache-dir .build/.parcel-cache
-```
-
-```sh
-# or
-pnpm add -g vite
-vite --open 'app.html'
 ```
 
 ---

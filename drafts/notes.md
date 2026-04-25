@@ -2577,4 +2577,19 @@ pjsk "news" index.
 
 ---
 
+fuzzy search emoji.
+
+simple nlp. (synonyms).
+
+---
+
+tg.
+
+i want to 
+
+- save sticker to archive. (most)
+- save sticker to the ones i might use.
+
+---
+
 

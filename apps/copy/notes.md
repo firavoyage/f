@@ -82,48 +82,14 @@ decision: no.
 
 ---
 
-if prettier is too aggressive, we can stay with remark with some config.
-
-e.g.
-
-- unordered list `-`
-- italic `_`
-- indentation `2 spaces`
-
-but i suppose remark might be a bit conservative.
-
-indentation is not really easy and straight forward.
-
----
-
 i could recognize `aria-level="3" role="heading"` in config.
 
 but it's too advanced and google ai mode specific.
 
 ---
 
-i could remove all html attrs expect img wh.
-
-e.g. whitelist.
+i could remove all html attrs except img wh. (whitelist)
 
 if i force markdown, then no inline styling at all, even for mark.
 
 ---
-
-i could add an option to choose
-
-- get innerhtml from contenteditable
-- intercept paste and prevent default
-
-though, from an experiment, whether intercepted or not, it's already full of var in inline styles. it's just perf.
-
----
-
-holy. 
-
-it blocks all non standard html tags. (web components).
-
-let's normalize them to div first...
-
----
-

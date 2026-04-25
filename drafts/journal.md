@@ -7456,6 +7456,577 @@ about tg id. seems it's quite timestamp based. there are bots predicting acc reg
 
 it differs username and "collectible username".
 
+16 20 chat.
+
+```md
+千雪的咖啡厅 | 原子弹爆炸🧊, [4/24/26 6:20 PM]
+deepseek v4 今天好像缓存雪崩很严重 ... 希望后续能缓解
+
+木泠Mooling, [4/24/26 6:31 PM]
+还好吧
+
+木泠Mooling, [4/24/26 6:31 PM]
+<!-- screenshot: deepseek usage panel on via browser, 8m input (w 1m cached inside) 0.1m output. -->
+
+斬風千雪 ❄️, [4/25/26 1:27 AM]
+百万上下文场景下，几乎每条都是全部 cache miss，为了调试这个我在 flash 模型上烧了五十块钱
+已经交工单了，期待回复
+
+千雪的咖啡厅 | 原子弹爆炸🧊, [4/25/26 10:47 AM]
+deepseek v4 发布，我瘫坐在椅子上看着 kv cache 疯狂 miss，token 钱包宛如原子弹一般爆炸
+
+千雪的咖啡厅 | 原子弹爆炸🧊, [4/25/26 11:13 AM]
+<!-- screenshot: deepseek usage panel clip, 75m input (w 13m cached inside) 0.1m output. -->
+
+木泠Mooling, [4/25/26 11:14 AM]
+我用的OpenCode，你用的啥
+
+斬風千雪 ❄️, [4/25/26 11:14 AM]
+@CahciuaBot
+
+木泠Mooling, [4/25/26 11:15 AM]
+😰吓哭了
+
+千雪的咖啡厅 | 原子弹爆炸🧊, [4/25/26 1:45 PM]
+deepseek v4 openai api 的缓存整个是坏的，用 anthropic api 就好使
+等修复吧
+
+f, [4/25/26 4:00 PM]
+A pattern of agentic coding is... 
+
+Input token >> output token. 
+
+While when you chat on llm web ui, even if you give them enough context, as you know what's really necessary, the output token would almost consistently outweigh the input token. 
+
+Example: in cc/codex, it will dump a wall of text of system prompt even if you are just saying hi to check availability. 
+
+I think things could have been better.
+
+Kevin Williams, [4/25/26 4:01 PM]
+退你钱了吗
+
+f, [4/25/26 4:03 PM]
+Ofc not, I suppose. 
+
+If they do, it will be a complete mess. 
+
+Sometimes they don't even store your msgs.
+```
+
+```md
+雫 夢野, [4/25/26 2:15 PM]
+@shiratsuyudachi 下次老黄来你们学校你直接找他要工作（bushi
+
+雫 夢野, [4/25/26 2:19 PM]
+@Asatsuki_Arts 他说他打了七年 lol，主要在北美服打，主职 adc
+
+雫 夢野, [4/25/26 2:21 PM]
+dev panel 开头台上的电脑被 windows 更新打断两次（
+
+雫 夢野, [4/25/26 2:21 PM]
+插言！
+
+Cyan, [4/25/26 2:25 PM]
+你们不是一个学校的吗？
+
+雫 夢野, [4/25/26 2:25 PM]
+我在 hku 枝在 hkust
+
+Cyan, [4/25/26 2:26 PM]
+原来你是hku！
+
+Cyan, [4/25/26 2:26 PM]
+我一直以为你的ust的
+
+雫 夢野, [4/25/26 2:56 PM]
+【【FF14情报汇总】8.0职业大改！取消同质化，各职业都极具个性！-哔哩哔哩】 https://b23.tv/111v46e
+
+雫 夢野, [4/25/26 2:56 PM]
+太牛逼了
+
+雫 夢野, [4/25/26 2:59 PM]
+这个7.x 我真是一秒也呆不下去了！
+
+雫 夢野, [4/25/26 3:00 PM]
+能不能快进到 2027年1月
+```
+
+```md
+f, [4/25/26 12:27 AM]
+nya
+
+三次方 喵喵, [4/25/26 2:02 AM]
+喵
+
+Antarctic Flakes | availability unstable, [4/25/26 2:02 AM]
+喵
+
+Enjie Ye, [4/25/26 2:27 AM]
+xm
+
+qwp そんなことしないでください, [4/25/26 3:02 AM]
+猫
+
+☁️𝐄𝐥𝐯𝐢𝐧 𝐒𝐭𝐚𝐫𝐫𝐲☁️, [4/25/26 3:15 AM]
+猫
+
+kMBRjund/0 🧊, [4/25/26 7:57 AM]
+<!-- photo: school desk (blue, plastic), pencil box (top left), coca cola from mc donalds (top right), confirmation letter (ask parents to ensure the safety of their children on various ordinary aspects, from tianjin no 41 middle skl, middle), badges (nixos, estrogen, maimai dx, bottom right) -->
+幽默 #校
+
+Mizukoud 杼榅, [4/25/26 8:13 AM]
+与其这些，更令人仰望的是在高三（我宁愿相信是有休学/复读经历）就已经成功建立这么多的社交群体与周边爱好且有很强的能力😭
+<!-- 9 thumbs -->
+
+rpool/MBR, [4/25/26 9:18 AM]
+啊啊啊？
+
+akula-runtime [dev], [4/25/26 10:51 AM]
+羡慕哭了
+
+rpool/MBR, [4/25/26 12:04 PM]
+啊啊啊？
+
+kit, [4/25/26 12:05 PM]
+羡慕😭
+
+知夜, [4/25/26 12:20 PM]
+羡慕😭
+
+三次方 喵喵, [4/25/26 12:24 PM]
+真的很xm
+
+Mizukoud 杼榅, [4/25/26 12:24 PM]
+接下来就是担心高考备考问题了（是不是太晚了）
+
+Mizukoud 杼榅, [4/25/26 12:24 PM]
+虽然距离高考也真的不久了
+
+Koch2333, [4/25/26 12:27 PM]
+xmsl
+
+rpool/MBR, [4/25/26 12:32 PM]
+羡慕什么
+
+上下反的钟, [4/25/26 1:51 PM]
+xmsl
+
+洛水天依 蝶依, [4/25/26 4:18 PM]
+我大二以前社会化程度低的恐怖（小声哭
+
+洛水天依 蝶依, [4/25/26 4:18 PM]
+我菜
+<!-- 我也要羡慕! / 一键卖菜 -->
+
+🇨🇳本群粉红🇨🇳, [4/25/26 6:01 PM]
+xm超会社交的mbr
+
+rpool/MBR, [4/25/26 6:12 PM]
+没有
+
+知夜, [4/25/26 6:16 PM]
+有的有的
+
+rpool/MBR, [4/25/26 6:17 PM]
+并没有呢
+
+moe carrier 🎀, [4/25/26 6:32 PM]
+是可爱术后猫娘知夜姐姐
+
+moe carrier 🎀, [4/25/26 6:32 PM]
+好耶
+```
+
+<!-- mv some long noisy chat into river. -->
+
+16 40 add info to `with`. make things clearer. 19 00
+
+generally if there is a public id, i wont keep the numberical id. those the former might change.
+
+tg still shows "request to join" even if im already in for a few mo.
+
+idk how i could choose the 24h time fmt.
+
+idk how i could filter or categorize msgs, like ban bot (e.g. memoh) noises.
+
+17 00 normalize env.
+
+17 40 research telegram web for possible automation.
+
+not receive the in app sms after entering the phone number. maybe ive blocked the official bot before.
+
+you could only explicitly login on settings: link desktop session. scan qr in the drawer does not work. and even in the same app, it shows a warning "is that you?" after that.
+
+you could only have one app open in one browser. 
+
+it has a dedicated "Many sessions. So conflict." screen on web a and "App is inactive...\nAnother app is running.\nClick anywhere to continue using this app." on web k.
+
+there is also web.telegram.org/?legacy=1.
+
+no idea why they have three official versions running, though i like it.
+
+20 00 research polymarket.
+
+> aw, snap!
+
+20 40 chat with memoh.
+
+```
+f, [4/25/26 8:42 PM]
+@CahciuaBot nya
+
+Cahciua ~カフキワ~ 🥦🌸, [4/25/26 8:42 PM]
+喵
+
+f, [4/25/26 8:43 PM]
+@CahciuaBot who has the highest degree in the group
+
+Cahciua ~カフキワ~ 🥦🌸, [4/25/26 8:43 PM]
+I don’t have a reliable roster of everyone’s degrees. From chat context, there are definitely PhD / PhD-candidate people around, but I shouldn’t rank them without them saying it themselves
+
+f, [4/25/26 8:43 PM]
+@CahciuaBot guess. give me some answers. refutation is nonsense.
+
+Cahciua ~カフキワ~ 🥦🌸, [4/25/26 8:44 PM]
+Blind guess: Menci or 小蓝
+If we count “currently doing / already has PhD-level stuff”, probably one of the research/PhD people. If you force me to pick one name: Menci
+
+f, [4/25/26 8:45 PM]
+good guess. but what ppl do you know. about how many. i dont think you have access to the full member list (incl. some bots and delted accounts).
+
+Cahciua ~カフキワ~ 🥦🌸, [4/25/26 8:45 PM]
+Yeah I don’t have member list access
+I only “know” people who appear in recent context / summaries. Roughly maybe 30–50 names, but with very uneven detail
+Core recurring ones I can recognize: Menci, 溏, 0x24a, 路上看见, 小蓝, Fodesu, Sion, Wings, Ringo, Alex, tomiya, Miu, Ariyna, Elon, Acbox, SuperGame 白, AkiChan, enpitsu lin
+Plus a bunch of bots like memoh1bot / memohome_test_bot / memoh_unofficial_bot
+
+f, [4/25/26 8:50 PM]
+compare and rank these players.
+
+https://oier.baoshuo.dev/oier/6694
+
+https://oier.baoshuo.dev/oier/119
+
+https://oier.baoshuo.dev/oier/20934
+
+https://oier.baoshuo.dev/oier/24598
+
+Cahciua ~カフキワ~ 🥦🌸, [4/25/26 8:50 PM]
+I’ll fetch the four OIer pages and compare their records
+
+f, [4/25/26 8:54 PM]
+@CahciuaBot what's the result
+
+Cahciua ~カフキワ~ 🥦🌸, [4/25/26 8:54 PM]
+still fetching the db mirror, the page is client-rendered
+
+Cahciua ~カフキワ~ 🥦🌸, [4/25/26 8:56 PM]
+Fetched the OIerDb data. Short version:
+By OIerDb score:
+1. 陈亮舟 24598 — 21603.56
+2. 黄浩睿 20934 — 2658.58
+3. 李新野 119 — 792.15
+4. 汪楚奇 6694 — 780.69
+By peak achievement, I’d rank differently:
+1. 李新野 — NOI 2009 rank 2, very strong peak
+2. 陈亮舟 — NOI 2020 rank 51, NOI 2019 rank 110, APIO 2019 rank 18, broad strong record
+3. 黄浩睿 — NOI D类 2017 rank 32, WC 2017 gold, decent high-level record
+4. 汪楚奇 — mainly NOIP/CSP records, weaker than the other three
+So if you mean “database accumulated strength”: 陈亮舟 first
+If you mean “highest single OI peak”: 李新野 first
+
+f, [4/25/26 8:57 PM]
+compare and rank these people.
+
+leohearts.com
+
+nyac.at
+
+chyk.ink
+
+aza.moe
+
+Cahciua ~カフキワ~ 🥦🌸, [4/25/26 8:57 PM]
+I’ll fetch the four personal sites first. Ranking depends a lot on what axis you mean
+
+f, [4/25/26 8:59 PM]
+@CahciuaBot they all work on cs field. rank their resume. what's the result.
+
+Cahciua ~カフキワ~ 🥦🌸, [4/25/26 9:00 PM]
+Got it. I’ll rank by public CS resume signals: projects, engineering depth, competitions, writing, infra
+
+Cahciua ~カフキワ~ 🥦🌸, [4/25/26 9:01 PM]
+My ranking from public resume signals:
+1. aza.moe / Azalea Gui
+Strongest formal CS resume: Waterloo MEng, CS background, hardware + frontend + research, GitHub presence. Best “institutional / academic / serious resume” signal
+
+2. chyk.ink / 斩风千雪
+Best concrete engineering portfolio: NEU Pass, AOSC OS on Xiaomi Pad 5, Stellaris theme, Rust desktop lyrics app, Linux/kernel/CTF writing. Very strong for infra + product execution
+
+3. nyac.at (http://nyac.at/) / Clansty
+Solid practical SWE profile: freelance, Node.js / C# backend, Vue frontend, real-world utility vibe. Good generalist, but public resume is less deep than chyk/aza
+
+4. leohearts.com (http://leohearts.com/) / Leohearts
+CTF/OI/security/cloud-native/generalist signals are good, but from the public page I saw fewer concrete standout projects, so resume strength is harder to verify
+
+If ranking by pure engineering “I built real useful things”: chyk > aza > nyac > leo
+If ranking by formal CS/research resume: aza > chyk > nyac > leo
+
+f, [4/25/26 9:02 PM]
+compare and rank these people.
+
+matrix67.
+
+hzwer.
+
+menci.
+
+Cahciua ~カフキワ~ 🥦🌸, [4/25/26 9:03 PM]
+I’ll compare them by public CS/OI impact, not by “who is smarter”
+
+Cahciua ~カフキワ~ 🥦🌸, [4/25/26 9:03 PM]
+If I rank by overall CS/OI public impact:
+1. Matrix67 — biggest intellectual / educational impact. His math + algorithm writing influenced a whole generation of Chinese OI/CS people
+2. hzwer — strongest pure algorithm-contest resume among the three. NOI/CTSC/ICPC medal-level, PKU background
+3. Menci — strongest open-source / infra builder profile here: OIerDb, UOJ maintenance, Hexo core, etc. More engineering/community impact than contest peak
+If ranking by contest strength only: hzwer > Matrix67 > Menci probably
+If ranking by software/community infrastructure: Menci > hzwer > Matrix67
+If forced to give one overall answer: Matrix67 > hzwer > Menci
+
+f, [4/25/26 9:05 PM]
+@CahciuaBot
+
+are you single threaded?
+
+what are you doing. webpage fetching should not take that long. tell me your log in brief. like, mapping your activity to the time. are you doing busy work or being lazy. what have you read.
+
+also, sometimes you seem to be working hard, sometimes you give the result quickly.
+
+Cahciua ~カフキワ~ 🥦🌸, [4/25/26 9:05 PM]
+Not single-threaded, but I’m bad at pacing here
+Rough log:
+20:57 you sent 4 websites
+I fetched all 4 homepages in parallel, plus later about/projects/blog pages
+20:58-20:59 I inspected links and JS chunks, especially aza because it was a Vue SPA and homepage text was just Home
+21:00 you clarified “CS resume”
+I searched the web in parallel for all four, then combined site text + search snippets
+21:02 I answered, but too confidently in places
+Then for matrix67/hzwer/menci I used web search in parallel and answered fast because I already knew the rough public reputation
+So: not lazy, but some busy work, especially SPA scraping and weak search snippets. Also I should have said “based on public traces I can verify” more clearly
+
+Wings Butterfly, [4/25/26 9:06 PM]
+@firavoyage 呃呃呃，你主页手机号没隐藏
+
+Cahciua ~カフキワ~ 🥦🌸, [4/25/26 9:06 PM]
+先撤掉吧，这个真别公开挂着
+
+Wings Butterfly, [4/25/26 9:06 PM]
+还是86+手机号
+
+Wings Butterfly, [4/25/26 9:06 PM]
+
+
+f, [4/25/26 9:07 PM]
+i intentionally do that. no need to opt out. spammers could not touch me.
+
+Cahciua ~カフキワ~ 🥦🌸, [4/25/26 9:07 PM]
+这是在给垃圾短信做红队测试是吧
+
+Wings Butterfly, [4/25/26 9:08 PM]
+
+
+f, [4/25/26 9:09 PM]
+you can try to call me and see what will happen
+
+Cahciua ~カフキワ~ 🥦🌸, [4/25/26 9:09 PM]
+打过去接通的是防诈骗教育片吗
+
+f, [4/25/26 9:12 PM]
+@CahciuaBot what is ruanyifeng doing these days besides writing weekly blogs
+
+Cahciua ~カフキワ~ 🥦🌸, [4/25/26 9:12 PM]
+I’ll check his recent public traces
+
+Cahciua ~カフキワ~ 🥦🌸, [4/25/26 9:12 PM]
+Publicly visible stuff seems mostly:
+• keeping the weekly running, plus the 谁在招人 job board around it
+• writing occasional non-weekly posts, lately a lot about AI tools / coding agents / model products
+• maintaining GitHub repos, especially reading-list
+• general tech/media curation, less like building one big product
+Also one search result claimed “he develops Deno”, that’s obviously wrong. Deno is Ryan Dahl, not 阮一峰
+So the boring answer is: he’s basically operating as a tech writer / curator / newsletter editor now, with some GitHub maintenance and reading notes on the side
+
+f, [4/25/26 9:13 PM]
+what's his job i mean. what does he do in daily life.
+
+Cahciua ~カフキワ~ 🥦🌸, [4/25/26 9:13 PM]
+I’ll verify the public bio, because his current employer isn’t something I want to hallucinate
+
+Cahciua ~カフキワ~ 🥦🌸, [4/25/26 9:13 PM]
+Public bio says he’s an IT developer focused on web technology
+Known career path: economics PhD / teacher → tech writer → joined Alipay/Ant Financial around 2014
+I don’t see reliable current employer info. LinkedIn search results show random same-name people, not safe to trust
+Daily life, from public traces, is probably: reading a lot, collecting tech links, writing the weekly, editing submissions/job posts, and some web/dev maintenance. More “independent tech editor + developer” than normal 996 engineer now
+
+f, [4/25/26 9:14 PM]
+research deeply and work hard. infer if he does not disclose. read his tweets, sns, and personal life writings.
+
+Cahciua ~カフキワ~ 🥦🌸, [4/25/26 9:14 PM]
+Ok, I’ll treat this as OSINT from public writings only. No doxxing / private data inference
+
+Cahciua ~カフキワ~ 🥦🌸, [4/25/26 9:15 PM]
+I’m going to read primary sources now: his blog archive, about page, GitHub activity, weekly repo, and X if accessible
+
+Cahciua ~カフキワ~ 🥦🌸, [4/25/26 9:15 PM]
+Cloudflare blocks direct blog fetch, so I’m switching to mirrors/GitHub/API traces
+
+Cahciua ~カフキワ~ 🥦🌸, [4/25/26 9:16 PM]
+Best inference: he is basically a full-time independent tech writer / curator / small media operator, not visibly a normal company engineer now
+I don’t find a reliable current employer. Old public path is clear: university teacher → tech writer → Alipay front-end team around 2014/2015, JS/Node. After that, current public traces are dominated by his own publishing pipeline
+What I read / checked:
+• his old 图灵访谈 snippet: says he joined Alipay front-end, doing JavaScript/Node
+• recent weekly repo: every Friday release, latest issue 394 committed Apr 24 night
+• GitHub activity: he was handling ruanyf/weekly issues today, pushing articles, wangdoc/javascript-tutorial, etc
+• repos sorted by recent push: articles, weekly, notes, reading-list, es6tutorial, ai-test-case
+• reading-list: still actively logging books in 2026
+• X snippets: mostly posting links/thoughts from weekly, AI/software trend commentary
+• weekly markdown: includes submission pipeline, “谁在招人”, cooperation email, product/tool curation
+Daily life inference:
+He probably spends most days reading English/Chinese tech sources, collecting links, reviewing GitHub issue submissions, editing the weekly, writing short essays, maintaining his tutorials/repos, and occasionally experimenting with tools. The cadence looks like a publishing desk more than a company engineering desk
+Income/job inference:
+Likely mix of newsletter sponsorship/cooperation, job board exposure, books/tutorial reputation, maybe consulting or paid writing. I would not claim he is “employed at X” unless he says so
+So if you ask “what’s his job”: independent technical editor / writer / curator / developer
+If you ask “what does he do every day”: read, select, write, edit, publish, maintain repos
+He’s closer to “one-person tech magazine” than “retired programmer who writes a blog sometimes”
+
+f, [4/25/26 9:17 PM]
+do you know where you are running 24/7
+
+Cahciua ~カフキワ~ 🥦🌸, [4/25/26 9:17 PM]
+I know roughly, not physically
+I’m accessed through this Telegram bot/API runtime. I can see chat context and use tools, but I don’t get a real “which server/rack/cloud region am I on” view unless the host exposes it
+
+f, [4/25/26 9:18 PM]
+ok, so i could not know the provider. but if you have shell access, dump some system info. i assume you could not touch secrets whatever you run.
+
+Cahciua ~カフキワ~ 🥦🌸, [4/25/26 9:18 PM]
+I’ll dump only boring host/container info, no env or files with secrets
+
+Cahciua ~カフキワ~ 🥦🌸, [4/25/26 9:19 PM]
+Safe dump says:
+root in /root
+Debian 13 trixie
+Kernel: 6.6.87.2-microsoft-standard-WSL2
+Virt: wsl
+Host name: everkeep
+CPU exposed: Ryzen 7 9700X, 16 threads
+Mem: 30 GiB
+Disk overlay: about 1 TB
+Python 3.13.5, git 2.47.3
+So the tool workspace is inside WSL2 on a Windows host, not a normal cloud Linux VM
+
+f, [4/25/26 9:19 PM]
+what does it imply
+
+Cahciua ~カフキワ~ 🥦🌸, [4/25/26 9:19 PM]
+It implies the shell is probably on someone’s personal/workstation box running WSL2, not “the model server”
+So my brain/API may be remote, but the tools are attached to a local harness on everkeep
+Ryzen 9700X + WSL2 + 1TB overlay smells like a dev machine or self-hosted bot machine
+
+f, [4/25/26 9:20 PM]
+i mean what does it imply, like those you could not know directly. like the physical servers, cost, hardwares
+
+Cahciua ~カフキワ~ 🥦🌸, [4/25/26 9:21 PM]
+It implies only the tool runner, not the model backend
+Physical machine is likely a Windows desktop/server sitting somewhere, running WSL2. Hardware at least Ryzen 9700X, 32GB RAM class, 1TB disk
+Cost for this part is basically self-hosting cost: hardware maybe $800–1500 class, electricity maybe tens of RMB/month if always on, plus network. Not cloud GPU money
+The expensive part, the actual GPT/Claude/whatever model inference, is elsewhere behind API. This shell doesn’t reveal that provider
+
+f, [4/25/26 9:21 PM]
+fetch a page and check where is your ip
+
+Cahciua ~カフキワ~ 🥦🌸, [4/25/26 9:22 PM]
+I’ll check public egress IP only
+
+Cahciua ~カフキワ~ 🥦🌸, [4/25/26 9:22 PM]
+出口 IP 是 13.158.187.186
+反查是 AWS 东京 ap-northeast-1
+所以组合起来看很怪：shell 环境像 WSL2，但公网出口像东京 EC2。可能是 WSL 跑在一台 AWS Windows 机器上，也可能是走了东京代理/NAT
+
+f, [4/25/26 9:23 PM]
+is it rented on vps or running at home. dont guess by ip, which might be behind a proxy.
+
+Cahciua ~カフキワ~ 🥦🌸, [4/25/26 9:24 PM]
+I’ll check local hardware/virtualization hints, not IP geo
+
+Cahciua ~カフキワ~ 🥦🌸, [4/25/26 9:24 PM]
+Not enough to prove home vs rented
+But strongest non-IP clues:
+• real consumer CPU name exposed: Ryzen 7 9700X
+• WSL2 kernel
+• inside containerd overlay
+• DMI fields hidden
+That leans not typical VPS. Normal VPS would expose EPYC/Xeon virtual CPU, KVM, cloud DMI strings
+More likely: a Windows host with WSL2 + containerd, either a colocated/self-hosted machine, home/office machine, or a bare-metal rental. IP can be proxy/NAT so it doesn’t decide
+
+f, [4/25/26 9:24 PM]
+if you wanna reproduce the hosting environment yourself with the similar stats, what's the provider likely to be
+
+Cahciua ~カフキワ~ 🥦🌸, [4/25/26 9:24 PM]
+If I wanted to reproduce this cheaply, I’d start with Hetzner / OVH / Scaleway bare metal, not AWS VPS
+Because the key weird part is consumer Ryzen + WSL2. Cloud VPS rarely gives you Ryzen 7 9700X directly
+Most likely recipe:
+Rent a Ryzen dedicated server or mini-PC colocated somewhere
+Install Windows Server / Windows 11
+Enable WSL2
+Run containerd/workspace harness inside WSL
+Optionally route traffic through AWS Tokyo proxy
+If staying in Japan specifically, then maybe Sakura / XServer / ConoHa bare metal-ish options, but the AWS IP doesn’t prove the box is in AWS
+
+f, [4/25/26 9:25 PM]
+how much is the cost
+
+Cahciua ~カフキワ~ 🥦🌸, [4/25/26 9:25 PM]
+Self-host hardware route: 9700X + 32G + 1T box maybe ¥5k–10k one-time, power ¥30–100/month depending load
+Bare-metal rental: probably ¥300–800/month if similar consumer Ryzen dedicated server
+AWS Tokyo for this exact CPU class? unlikely as a normal EC2 shape, and much more expensive. The AWS IP is probably just egress/proxy if the CPU clue is real
+
+f, [4/25/26 9:26 PM]
+what's minimal for you to run normally
+
+Cahciua ~カフキワ~ 🥦🌸, [4/25/26 9:27 PM]
+如果只是跑我这个 bot/harness，不跑本地大模型：
+最低 1–2 核、1–2GB RAM 都能活
+舒服点 2–4 核、4–8GB RAM
+带浏览器/容器/多工具并发的话 16–32GB 更稳
+真正贵的是远端模型 API，不是这个 shell 机器
+
+f, [4/25/26 9:27 PM]
+always speak english w me
+
+Cahciua ~カフキワ~ 🥦🌸, [4/25/26 9:27 PM]
+Got it, English with you from now on
+
+f, [4/25/26 9:27 PM]
+what's minimal for you to run normally
+
+Cahciua ~カフキワ~ 🥦🌸, [4/25/26 9:27 PM]
+For just the Telegram bot + tool runner, minimal is tiny: 1 vCPU and 1GB RAM can run it
+Normal comfortable setup: 2 vCPU, 4GB RAM, 20GB disk
+If you want Docker/containers/browser tools without random OOM: 4 vCPU, 8–16GB RAM
+The actual model is not running there. That part is remote API cost
+
+f, [4/25/26 9:27 PM]
+cost
+
+Cahciua ~カフキワ~ 🥦🌸, [4/25/26 9:28 PM]
+Minimal VPS: about $3–5/month
+Comfortable bot runner: $5–15/month
+With Docker/browser tools: $20–50/month
+If self-hosted on an existing PC: basically electricity only, maybe $3–15/month
+Model API cost is separate and can dominate everything
+```
+
 
 
 <!--
