@@ -65,6 +65,7 @@ life:
 - gnome kde
 - envy jealousy
 - ad hoc
+- github pages
 
 create something:
 
@@ -257,6 +258,8 @@ pure:
 economics:
 
 - gdp per captica ppp
+- emh
+- polymarket
 
 society:
 

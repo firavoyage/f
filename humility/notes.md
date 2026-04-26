@@ -584,3 +584,11 @@ env.
 
 ---
 
+google ai mode fetches the answer one by one.
+
+it does not dump the full data you need. 
+
+obviously, the scrollbar grows step by step.
+
+---
+

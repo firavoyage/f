@@ -222,13 +222,3 @@ pick some bangumis from anime sedai. there are not many left.
 
 ---
 
-Markdown based gh pages. 
-
-No css js. No stats. No discuss. 
-
-Internal links maybe.
-
----
-
-
-
