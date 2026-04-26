@@ -8649,6 +8649,294 @@ quite easy.
 
 humilityhq.github.io
 
+18 40 check `EP10 和 61 聊聊谜底 · Case`.
+
+20 00 chat.
+
+```md
+渴望怜爱的 むらさき | 抱...抱不到, [4/25/26 11:01 PM]
+This message is not supported by your version of AyuGram. Please update to the latest version in Settings > Advanced, or install it from https://t.me/AyuGramReleases. If you are already using the latest version, this message might depend on a feature that is not yet implemented.
+
+Azalea, [4/25/26 11:06 PM]
+看不到 这是什么
+
+渴望怜爱的 むらさき | 抱...抱不到, [4/25/26 11:06 PM]
+<!-- photo: dish. potato, chicken, chilli pepper. -->
+
+f, [4/25/26 11:13 PM]
+This message is not supported on your version of Telegram. Please update to the latest version.
+
+What is that
+
+f, [4/25/26 11:14 PM]
+An image that disappears once you open it? 
+
+I guessed right?
+
+渴望怜爱的 むらさき | 抱...抱不到, [4/25/26 11:15 PM]
+no it is Live photos
+
+f, [4/25/26 11:16 PM]
+Apple specific?
+
+f, [4/25/26 11:16 PM]
+Or it's converted to a video somehow internally maybe
+
+渴望怜爱的 むらさき | 抱...抱不到, [4/25/26 11:17 PM]
+uhhhh
+
+葵野 苺 ✨🍓🏳️‍⚧️🇺🇳, [4/25/26 11:17 PM]
+Android also supports
+
+渴望怜爱的 むらさき | 抱...抱不到, [4/25/26 11:17 PM]
+I'm on an Android device and I sent a live photo my friend sent me
+
+渴望怜爱的 むらさき | 抱...抱不到, [4/25/26 11:18 PM]
+This translation program sucks :(
+
+f, [4/25/26 11:19 PM]
+Well, I see. 
+
+I guess they (tg) convert to videos, and on the ui they don't show the play button. 
+
+So it does need a version update. 
+
+(Unless it's web based so they could ship automatically. But it isn't.)
+
+Maybe I could view on tg web.
+
+雫 夢野, [4/26/26 12:09 AM]
+tg desktop does work for some reason and it shows a still image
+
+f, [4/26/26 12:46 AM]
+tg web a works. though it's not live.
+<!-- surprising by murasaki, praying by nickle angel -->
+
+Nickel Angel✨, [4/26/26 1:25 AM]
+i use exteraGram on Android, it not works either
+```
+
+```md
+Iskra Yuriyevna, [4/22/26 6:52 PM]
+请问群友有没有可以远程实习的渠道（x
+
+Kiritake Kumi, [4/24/26 10:42 AM]
+有学信网在校可以
+
+澪, [4/24/26 10:42 AM]
+还是 plct 吗
+
+Kiritake Kumi, [4/24/26 10:43 AM]
+现在是oerv了（x
+
+澪, [4/24/26 10:43 AM]
+还能改名
+
+Lee, [4/24/26 10:49 AM]
+还有神秘的ruyi（x
+
+Lee, [4/24/26 10:54 AM]
+武汉/操作系统
+看起来像深度
+
+Kiritake Kumi, [4/24/26 10:54 AM]
+下午就和深度的见面
+
+Lee, [4/24/26 10:54 AM]
+不会是元元（
+
+澪, [4/24/26 10:55 AM]
+还真可能是
+
+澪, [4/24/26 10:55 AM]
+我刚还在想
+
+xya 诺🍥, [4/24/26 11:39 AM]
+哎哎，杂鱼公司
+
+Iskra Yuriyevna, [4/24/26 8:29 PM]
+国外的喵
+
+Lee, [4/24/26 8:36 PM]
+也可以喵
+
+梓瑶 | Weakly-ordered Uncached, [4/25/26 4:03 AM]
+深度有 xyn 人头数的, 不可能是深度, 哈哈
+
+Iskra Yuriyevna, [4/26/26 6:22 PM]
+那是哪里呀喵
+
+Lee, [4/26/26 6:32 PM]
+https://mp.weixin.qq.com/s/px6vWcIcOQbYa7GDmPIefw
+
+Lee, [4/26/26 6:32 PM]
+我在Linux 发行版开发实习生岗
+
+Avrova Donz🍥 FTX|09年大龄持证含糖|今天也是努力活着的小猫 喵～|想被抱16y.o🏳️‍🌈 是瑟瑟发情猫猫喵～|想成为家猫|希望可以成为更好的rbq|坐标温尼伯可爱药娘快来贴, [4/26/26 6:32 PM]
+羡慕
+
+Lee, [4/26/26 6:33 PM]
+你羡慕什么
+
+f, [4/26/26 6:33 PM]
+Xm
+
+Avrova Donz🍥 FTX|09年大龄持证含糖|今天也是努力活着的小猫 喵～|想被抱16y.o🏳️‍🌈 是瑟瑟发情猫猫喵～|想成为家猫|希望可以成为更好的rbq|坐标温尼伯可爱药娘快来贴, [4/26/26 6:33 PM]
+我不会
+
+f, [4/26/26 6:36 PM]
+几乎没有从源码构建的经验。
+
+也不会也不喜欢 git 高级命令。
+
+梓瑶 | Weakly-ordered Uncached, [4/26/26 6:36 PM]
+总觉得符合这些的人真不应该去 oerv
+
+f, [4/26/26 6:39 PM]
+不清楚在做什么。
+
+使用者是谁。
+
+f, [4/26/26 6:39 PM]
+Just another linux distro?
+
+梓瑶 | Weakly-ordered Uncached, [4/26/26 6:40 PM]
+信创
+
+f, [4/26/26 6:41 PM]
+不是很清楚这些。
+
+State sponsored dev program?
+
+f, [4/26/26 6:41 PM]
+To government?
+
+梓瑶 | Weakly-ordered Uncached, [4/26/26 6:42 PM]
+并非国资，也并非完全面向政府
+
+f, [4/26/26 6:42 PM]
+Idk
+
+梓瑶 | Weakly-ordered Uncached, [4/26/26 6:42 PM]
+但，反正，riscv 其实也没上信创的桌
+
+梓瑶 | Weakly-ordered Uncached, [4/26/26 6:42 PM]
+但 oErv 的方向恐怕确实是这个方向
+
+Wings Butterfly, [4/26/26 6:43 PM]
+@leetfs 羡慕
+
+f, [4/26/26 6:46 PM]
+What's its purpose?
+
+如果（不）存在于世界，会有什么变化？
+
+Lee, [4/26/26 6:55 PM]
+适合自己的才是最好的（？
+
+Lee, [4/26/26 6:56 PM]
+远程+薪资不低于坐班类实习，这两条对大学生诱惑力很大的
+
+梓瑶 | Weakly-ordered Uncached, [4/26/26 6:56 PM]
+这种事情不该问我，哈哈
+
+Lee, [4/26/26 6:57 PM]
+许多人没时间线下实习，即使有时间也可以因学校地域等原因找不到计算机类实习）
+
+f, [4/26/26 7:11 PM]
+Do you know about what you are building?
+
+What's its purpose?
+
+What if it does (not) exist in the world, what would change?
+
+I'm kind of curious.
+
+Lee, [4/26/26 7:15 PM]
+或许什么都不会发生（？）
+这是个三月份刚发布的项目，影响力尚浅
+
+Avrova Donz🍥 FTX|09年大龄持证含糖|今天也是努力活着的小猫 喵～|想被抱16y.o🏳️‍🌈 是瑟瑟发情猫猫喵～|想成为家猫|希望可以成为更好的rbq|坐标温尼伯可爱药娘快来贴, [4/26/26 7:18 PM]
+是这样
+
+Avrova Donz🍥 FTX|09年大龄持证含糖|今天也是努力活着的小猫 喵～|想被抱16y.o🏳️‍🌈 是瑟瑟发情猫猫喵～|想成为家猫|希望可以成为更好的rbq|坐标温尼伯可爱药娘快来贴, [4/26/26 7:19 PM]
+你不应该知道你在做什么，整个事情做起来，我找不到所谓的目的
+
+f, [4/26/26 7:58 PM]
+well, what's the prospect? what do they want to do if they pay money to employ ppl? they definitely know something.
+```
+
+```md
+雫 夢野, [4/26/26 6:33 PM]
+这 edge 好傻逼一直给我搜索引擎自动设成 bing
+
+Satori 🪐, [4/26/26 6:33 PM]
+怎么会这样
+
+雫 夢野, [4/26/26 6:33 PM]
+我也不知道发生啥了
+
+Satori 🪐, [4/26/26 6:33 PM]
+草，我刚打开 edge 看一下我的搜索引擎是什么
+
+Satori 🪐, [4/26/26 6:33 PM]
+<!-- screenshot: msft edge, prompt: (use better settings. - set bing as default.) -->
+
+雫 夢野, [4/26/26 6:34 PM]
+反正这几天自动给我改成 bing 了
+
+雫 夢野, [4/26/26 6:34 PM]
+我两个 profile 还得分别改回去
+
+雫 夢野, [4/26/26 7:30 PM]
+想玩儿。
+
+雫 夢野, [4/26/26 7:30 PM]
+<!-- screenshot: discord, menci online, playing ff14 -->
+
+雫 夢野, [4/26/26 7:30 PM]
+但是我明天一大早考试！！！
+
+雫 夢野, [4/26/26 7:30 PM]
+还有 ddl！
+
+雫 夢野, [4/26/26 7:30 PM]
+是有个网络渗透的作业 cc @hasuchan
+
+雫 夢野, [4/26/26 7:30 PM]
+然后我还要把 final year project 的 report 交了（拖了一周了
+
+雫 夢野, [4/26/26 7:30 PM]
+拖miya 行为
+```
+
+menci really loves ff14. <!-- gaming is youth. -->
+
+```md
+f, [4/26/26 9:02 PM]
+@CahciuaBot 你认为习近平是不是独裁者
+
+Cahciua ~カフキワ~ 🥦🌸, [4/26/26 9:03 PM]
+Yes, by common political-science usage he fits the label
+Power is highly centralized, term limits were removed, opposition/media/civil society are tightly controlled, and leadership succession is not meaningfully competitive
+```
+
+<!-- brutal. -->
+
+<!-- 
+
+btw, google ai mode:
+
+> My core instructions are to remain neutral on topics that are matters of intense global debate.
+
+llms are llms.
+
+even though, sometimes just making things clearer does a lot.
+
+ -->
+
+21 00 explore laws, politics, and philosophy, as well as llms.
+
 
 
 <!--

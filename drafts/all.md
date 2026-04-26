@@ -265,6 +265,10 @@ society:
 
 - chinese bloggers friend link blogroll
 
+laws:
+
+- cookie banners
+
 glaze:
 
 - design grounded
