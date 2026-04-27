@@ -8649,6 +8649,14 @@ quite easy.
 
 humilityhq.github.io
 
+13 00 note on ux.
+
+```
+Awesome manus uses. 
+
+You should show loading instead of zero before data arrive
+```
+
 18 40 check `EP10 和 61 聊聊谜底 · Case`.
 
 20 00 chat.
@@ -8938,6 +8946,41 @@ even though, sometimes just making things clearer does a lot.
 21 00 explore laws, politics, and philosophy, as well as llms.
 
 "science"
+
+27
+
+03 40 Watch crl monthly final on lciop. Molight vs sandbox. Research adhesiontek on zhihu. View some unlisted yt vids.
+
+So many vids. 
+
+Sleep.
+
+btw, inspired by yuki (chyk) and ame (TwilightBlueMoe).
+
+14 40 Appreciate adhesiontek on ubuntu touch.
+
+15 00 note on ux.
+
+```
+precious, [4/27/26 3:11 PM]
+On tg, toast can be swiped
+
+(Some use a close button. Some don't, just blocking the ui for a while)
+
+precious, [4/27/26 3:12 PM]
+Tg only allow 5 pinned chats on the backend (10 for members).
+
+I would rather use one pinned chat and a pinned msg w some links. Btw, I open that index chat all the time.
+
+precious, [4/27/26 3:13 PM]
+On tg, you can scroll down at the bottom of a chat to go to the next unread chat. So easy to accidentally fire, unpredictable. Yet not easily reversible wo nav out.
+```
+
+16 00 research color formats. ~~16 00~~ 16 40 create an origami bird.
+
+use 30 cm paper this time, which fits my desk better than the 60 cm one.
+
+pick a more chromatic pink.
 
 
 

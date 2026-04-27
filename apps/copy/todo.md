@@ -21,9 +21,20 @@ though, from an experiment, whether intercepted or not, it's already full of var
 
 ---
 
-(!) preprocess custom elements (web components, or non standard elements) to div.
+~~(!)~~ preprocess custom elements (web components, or non standard elements) to div.
 
 fix: gemini web (current: custom elements are filtered, resulting in an empty output)
 
 ---
+
+add an option: keep images with base64.
+
+---
+
+normalize inline divs as span
+
+(ref: change me mind js new boolean rhetoric subject)
+
+---
+
 

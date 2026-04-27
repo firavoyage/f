@@ -243,3 +243,18 @@ tell it how to handle errors (div zero pattern)
 > rust builtin error types in std (e.g. file)
 
 ---
+
+uninteractive widgets.
+
+- math graph
+- color
+- trend
+- weather
+- stock / currency / polymarket
+
+research types. (maybe py lib plus google sans)
+
+<!-- though, i wish google ai mode could show the original code... upd: well, it does. (?) no, it does not. it's not the graph code. though it's quite simple. just a bit default styling (margin, font) and pyplotlib knowledge. it shows an animation on web, but i suppose it's just fetching data, not rendering in js. -->
+
+---
+

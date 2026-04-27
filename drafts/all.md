@@ -152,6 +152,7 @@ software engineering frontend:
 - ts utility types record union enum
 - md footnote syntax support render
 - ts std result go pattern rust pattern
+- web components criticism
 
 software engineering backend:
 
@@ -190,6 +191,7 @@ ui/ux design:
 
 - design ui principles intuition attention
 - information architecture
+- color formats chroma saturation
 
 math:
 
@@ -260,20 +262,28 @@ pure:
 politics:
 
 - xi jinping dictatorship llm test political science
+- chinese patriotism
 
 economics:
 
 - gdp per captica ppp
 - emh
 - polymarket
+- emh trading firms
+- polymarket emotional crowd top users
 
 society:
 
 - chinese bloggers friend link blogroll
 
+rhetoric:
+
+- change me mind js new boolean myth meaning rhetoric subject
+
 laws:
 
 - cookie banners
+- bisq security
 
 glaze:
 
@@ -295,18 +305,9 @@ egg:
 
 - twitter third party clients
 
+<!-- 
+
 humility:
-
-<!--
-
-- design architecture
-  - claude code
-  - opencode
-- write integration
-  - browser automation fetcher dog
-  - browser automation create fetch dog
-
- -->
 
 - check feasibility
   - giants in the field
@@ -350,12 +351,16 @@ humility:
     - design otaku hobbies humility directions
     - types of methodology
     - manage context evaluate embedding
-  - tech architecture
+  - architecture
+    - ~~claude code~~
+    - ~~opencode~~
     - programming language
     - pnpm
     - let ts rs py talk
     - folder shape
   - integration
+    - ~~browser automation fetcher dog~~
+    - ~~browser automation create fetch dog~~
     - structured output
     - browser automation
   - interaction
@@ -366,3 +371,5 @@ humility:
     - safety definition safe command
 - decide
   - creating design system for any project
+
+-->
