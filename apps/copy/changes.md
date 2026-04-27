@@ -33,3 +33,7 @@ turn off "keep content". content inside buttons would be rm. it could be an opti
 enforce prettier with remark, which forces all indented code blocks to backticks
 
 align remark with prettier defaults
+
+27
+
+clean unused fn and unused vars like get_plain_text plain_text

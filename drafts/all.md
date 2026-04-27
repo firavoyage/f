@@ -127,7 +127,7 @@ software engineering project management:
 - project roadmap order of work
 - do things that dont scale
 - prd
-- choose tools 
+- choose tools
 
 software engineering architecture:
 
@@ -216,11 +216,12 @@ psychology:
 
 - psychology
 
-film:
+cinema: <!-- film -->
 
 - movies
+- the shining
 
-music:
+float: <!-- music -->
 
 - ytdlp workflow
 - spotdl workflow
@@ -231,6 +232,8 @@ philosophy:
 - ethics, existentialism
 - determinism free will
 - first principle
+- yes we can
+- the good the bad and the ugly
 
 entertainment:
 
@@ -253,7 +256,10 @@ pure:
 - chemistry
 - history
 - geography
-- politics
+
+politics:
+
+- xi jinping dictatorship llm test political science
 
 economics:
 

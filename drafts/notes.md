@@ -2543,12 +2543,6 @@ web builtin.
 
 ---
 
-git abstraction.
-
-i think you could even as daily backup... and sync.
-
----
-
 https://material-web.dev/components/button/
 
 ---
@@ -2591,5 +2585,3 @@ i want to
 - save sticker to the ones i might use.
 
 ---
-
-

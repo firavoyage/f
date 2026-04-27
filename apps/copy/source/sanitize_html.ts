@@ -137,16 +137,3 @@ export const sanitize_html = ({ dirty_html }: { dirty_html: string }): string =>
 
   return final_html;
 };
-
-export const get_plain_text = ({ html }: { html: string }): string => {
-  const document = new DOMParser().parseFromString(html, 'text/html');
-  const plain_text = document.body.textContent || '';
-
-  console.log({
-    action: 'get_plain_text',
-    html_length: html.length,
-    text_length: plain_text.length,
-  });
-
-  return plain_text;
-};

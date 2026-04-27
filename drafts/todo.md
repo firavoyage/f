@@ -204,6 +204,34 @@ write a simple testing lib.
 
 ---
 
+watch films. there are many.
+
+pick some bangumis from anime sedai. there are not many left.
+
+---
+
+lint unused?
+
+find a config.
+
+ci.
+
+---
+
+git abstraction.
+
+i think you could even as daily backup... and sync.
+
+---
+
+log.
+
+decorator?
+
+reproduce?
+
+---
+
 file lib.
 
 tell it how to handle errors (div zero pattern)
@@ -215,10 +243,3 @@ tell it how to handle errors (div zero pattern)
 > rust builtin error types in std (e.g. file)
 
 ---
-
-watch films. there are many.
-
-pick some bangumis from anime sedai. there are not many left.
-
----
-

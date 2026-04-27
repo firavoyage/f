@@ -1,5 +1,5 @@
 import { copy_html_to_clipboard } from './clipboard';
-import { get_plain_text, sanitize_html } from './sanitize_html';
+import { sanitize_html } from './sanitize_html';
 import { convert_html_to_md } from './convert_to_md';
 
 type boolean_setting_options = {
@@ -108,7 +108,6 @@ function get_conversion_settings(): conversion_settings {
 async function process_paste_area(): Promise<void> {
   const { html } = read_paste_area_html();
   const clean_html = sanitize_html({ dirty_html: html });
-  const plain_text = get_plain_text({ html: clean_html });
   const settings = get_conversion_settings();
 
   try {

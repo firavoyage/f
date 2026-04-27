@@ -76,6 +76,10 @@ eat:
 
 twitter https://x.com/i/lists/2004814679450009818
 
+https://x.com/lcMenci/with_replies
+
+https://x.com/TaroLeohearts/with_replies
+
 hn https://news.ycombinator.com/
 
 ruanyf https://ruanyifeng.com/blog/

@@ -110,3 +110,14 @@ upd:
 it's fixed with libraries. (escape by default)
 
 ---
+
+gemini.
+
+it's not fixable.
+
+the content is gone even pasting to a blank contenteditable.
+
+i could try to intercept it though.
+
+---
+

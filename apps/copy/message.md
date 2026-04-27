@@ -29,6 +29,12 @@ follow these:
 
 ---
 
+use html-tags and cheerio.
+
+write a fn. given an html string, normalize all non standard html tags to div.
+
+---
+
 revise convert_to_md.ts
 
 ```
