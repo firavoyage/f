@@ -258,3 +258,51 @@ research types. (maybe py lib plus google sans)
 
 ---
 
+invest.
+
+---
+
+linear foss ui.
+
+categorize and simplify todos, research, and notes.
+
+e.g. projects.
+
+---
+
+github 3p ui.
+
+---
+
+redundant key.
+
+---
+
+humility: export, reproduce, copy and paste the prompt & result, proxy.
+
+---
+
+rm the "files" tab.
+
+- success.
+- fail.
+
+just list all the failures.
+
+name the methods.
+
+you know them.
+
+awa some non standard ones.
+
+- file name too long (trim?)
+- invalid name (convert? how?)
+- no space
+- no ram
+- non existing (auto create the path.)
+
+xdg desktop? (i think so. if we always combine two abstractions, we could simplify it as a pattern.) compatible?
+
+symlink hash?
+
+---

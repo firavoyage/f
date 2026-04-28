@@ -2585,3 +2585,58 @@ i want to
 - save sticker to the ones i might use.
 
 ---
+
+polymarket is... so not feature rich.
+
+no "similar events".
+
+no news. 
+
+no "how it works".
+
+feels intimidating.
+
+chatgpt is prolix. 
+
+simple:
+
+- someone puts 1 u and gets 1 y and 1 n.
+- when it resolves, the 1 u goes to either y or n.
+- they can sell y and n as they like. it does not matter who owns the y or n.
+
+also, there is a (1/chance - chance) conversion.
+
+it does not say i buy 1 share.
+
+it said "buy usd to win usd"
+
+on the user page...
+
+it only shows bets and net win graph. biggest win. number of bets. current share.
+
+no stats. (e.g. how much bets in total.)
+
+generally it's stock with hard resolution. you should sell early.
+
+many nonsensical obvious ones are shown.
+
+the graph is weird. it can show 4 at a time at most. i could not choose the time window.
+
+the outcome is also weird. "which will win", it does not show "foo wins". it shows "no. bar does not win." while bar is just one of them w nothing special.
+
+you can change the wording.
+
+"which will ..." to "sota model". you can categorize not only type but also constraints.
+
+- you should never buy anything more than 90%
+- there is 2% fee. you buy at 0.5 and sell at 0.52 and win nothing.
+
+sometimes the graph does not show. (i have to refresh.)
+
+---
+
+msg queueing is a must.
+
+you can either stack or branch.
+
+---

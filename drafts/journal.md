@@ -8982,6 +8982,20 @@ use 30 cm paper this time, which fits my desk better than the 60 cm one.
 
 pick a more chromatic pink.
 
+23 20 retry.
+
+most steps dont need that much effort. some need more careful observation.
+
+fast is fun, which builds confidence.
+
+28
+
+00 00 research polymarket. learn how it works. check llm arena.
+
+polymarket: fun. consistent. buggy (overlapping figures, hidden elements until refresh). incomplete (i could not even change the time window). unclear (no builtin explanation. no stats). weird ia (sometimes not winner, but one random loser).
+
+llm arena: score, nothing else. unclear.
+
 
 
 <!--

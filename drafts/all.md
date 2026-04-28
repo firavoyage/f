@@ -271,6 +271,8 @@ economics:
 - polymarket
 - emh trading firms
 - polymarket emotional crowd top users
+- investing stock polymarket
+- investing stock positive sum crypto wo kyc
 
 society:
 
