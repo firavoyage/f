@@ -306,3 +306,26 @@ xdg desktop? (i think so. if we always combine two abstractions, we could simpli
 symlink hash?
 
 ---
+
+bilibili fav sync. & auto backup.
+
+auto backup means to backup once you save. e.g. zhihu, berryberry.
+
+though, ive no idea if those taken down within 1d are valuable for archival.
+
+---
+
+probability:
+
+<!-- accurate, accuratism -->
+
+better polymarket.
+
+tells you why.
+
+- accuracy +- n%, or distribution.
+- past data (not an overall accuracy with many obvious one inside)
+- news
+- commentary
+
+---

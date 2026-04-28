@@ -8996,6 +8996,8 @@ polymarket: fun. consistent. buggy (overlapping figures, hidden elements until r
 
 llm arena: score, nothing else. unclear.
 
+21 40 complete the origami bird.
+
 
 
 <!--
