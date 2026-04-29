@@ -2640,3 +2640,20 @@ msg queueing is a must.
 you can either stack or branch.
 
 ---
+
+have.
+
+i could fetch dress repo and rle.wiki.
+
+you would be surprised how info rich they are.
+
+it does not have many contributors. but there are also not many devs in the world.
+
+overlap a lot.
+
+---
+
+
+
+
+

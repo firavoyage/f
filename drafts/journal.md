@@ -8998,6 +8998,210 @@ llm arena: score, nothing else. unclear.
 
 21 40 complete the origami bird.
 
+29
+
+23 40 research on llm problem solving capability, inspired by qingyu (rt by aza neko). 01 00
+
+```
+小桂桂的回忆录 📒, [4/28/26 4:17 PM]
+看到这条思考了很多，但是也许我也没有很好的答案
+
+首先是，作为人类，感觉又一项竞赛被 AI 超过很不甘。为什么会这样想呢？明明算法题目最终也只是一种游戏而已，像数独谜题围棋赛跑音游一样，喜欢做谜题的时候也不会因为电脑能 1ms 解出这个谜题有感觉不甘。
+
+其次是，为什么 llm 这么聪明了，依然没有办法解决实际影响无数人的社会问题... 比如全球气候变化的问题，反而是 llm 在导致恶化。如果把建 llm 数据中心的资源重定向一下也许反而能更好解决这些问题
+
+又或者是不是「有能力解决问题的人都只想着造更聪明的 llm」这件事本身就说明人类社会实际上已经被 llm 控制了呢
+
+猫离子 猫, [4/28/26 4:18 PM]
+去年wf是不是就已经坠机了人类
+
+Menci 💖, [4/28/26 4:20 PM]
+聪明的人也解决不掉
+
+billchenchina 🏳️‍⚧️ | 缩缩, [4/28/26 4:21 PM]
+顶尖 llm 是为 authoritarian/capitalist 服务的，而不是 public interest，就很绝望
+
+oldherl, [4/28/26 4:23 PM]
+因为社会问题比算法竞赛问题复杂多了。竞赛问题都是良定义的、范围非常有限的，比实际软件工程问题都简化多了，更不要和几十亿人的复杂变量的社会问题相比了
+
+VZstless 🏳️‍⚧️ Ep. 02 Tight / Bind 重力, [4/28/26 4:23 PM]
+你可以用同样的问题问为什么这世界上的铀都用来去造核弹而不是核电站了
+
+斬風千雪 ❄️, [4/28/26 4:24 PM]
+LLM 不仅没法解决现有的社会问题，还带来了很多新的社会问题 ...
+
+VZstless 🏳️‍⚧️ Ep. 02 Tight / Bind 重力, [4/28/26 4:24 PM]
+这个问题我觉得最后唯一的可行解就是各国签署类似“大语言模型不扩散条约”之类的东西解决，毕竟大家最后都在把它当作武器
+
+oldherl, [4/28/26 4:24 PM]
+然而核武器都扩散了好多国家了……
+
+VZstless 🏳️‍⚧️ Ep. 02 Tight / Bind 重力, [4/28/26 4:25 PM]
+但是明面上大家不敢用了，只敢吓唬你我要用
+
+VZstless 🏳️‍⚧️ Ep. 02 Tight / Bind 重力, [4/28/26 4:25 PM]
+所以还是多少有点用
+
+oldherl, [4/28/26 4:35 PM]
+可是上一个主动放弃核武器的国家（乌克兰）的下场是被俄罗斯侵略
+
+豆腐, [4/28/26 10:29 PM]
+因为全球变暖没有不是 collective action problem 的解决方式吧...
+
+f, [4/29/26 12:46 AM]
+i doubt whether it's true.
+
+i googled "gpt 5.5 ccpc final" for a bit. a few tweets and retweets. nothing else.
+
+i could not even get the "ccpc final 2026 problemset" so i could not verify myself.
+
+(luogu "ccpc 2026": no result.)
+
+"no hint no assistant" = automatic.
+
+but... is it one shot? thinking enabled or not? agentic? knowledge base?
+
+in my daily life, the model feels quite stupid. and ive no idea how hard is ccpc.
+
+previously ive heard gemini beats imo or something, with heavy harness engineering.
+
+it would be better if qingyu could share the chat link, if it's done on chatgpt web.
+
+on dec 2025, they (the best models, e.g. gemini pro at that time) could not solve a gaokao blank filling math problem given below:
+
+> solve this.
+> 
+> 
+> Given that quadrilateral $A_1A_2A_3A_4$ is a parallelogram, let the set
+> $\Omega = \{ \overrightarrow{A_iA_j} \mid i \neq j, \ i, j \in \{1, 2, 3, 4\} \}$.
+> Let $M_1, M_2, \dots, M_k$ be subsets of $\Omega$, each containing 4 elements.
+> If for any $m, n \in \{1, 2, \dots, k\}$ where $m \neq n$,
+> the number of elements in $M_m \cap M_n$ does not exceed 2,
+> then the maximum value of the positive integer $k$ is ______.
+> 
+
+they know how combination works, but not how parallelogram works.
+
+> upd: minimax m2.5 solved?! 
+> 
+> chatgpt 5.4 thinking mini, the free version on web, also solved with 12s, though the unthinking one does not.
+>
+> btw, i really dont wanna use chatgpt web. it's so heavy and laggy.
+>
+> one thing is, it does not prove it. it just says "it's known as the steiner system". when i was solving it, i gave a constructive example. my math teacher at that time did not, and i gave him a counter example, which he agreed with me.
+
+upd:
+
+i read more references.
+
+https://codeforces.com/blog/entry/153267
+
+now im convinced a bit.
+
+seems llms have advanced quite a lot.
+
+(i should have used past simple and present prefect more. present simple all the time, though recommended by conventional commits for simplicity, feels really unnatural...)
+
+f, [4/29/26 12:52 AM]
+ask this:
+
+> 1/a + 1/b + 1/c + 1/d + 1/e + 1/f = 1/20. a to f are distinct positive integers. how many set {a, b, c, d, e, f} are there.
+
+idk if sota llms could solve it now.
+```
+
+```
+f, [4/29/26 12:54 AM]
+hello everyone. i dont have access to best llms right now for some reason. when i ask best western llms a few mo ago, they thought for 15 min wo giving me an answer. could anyone paste it and try to solve it?
+
+f, [4/29/26 12:58 AM]
+im asking memoh from menci. it says it's trying to write a program. damn. that's cheating.
+
+f, [4/29/26 12:55 AM]
+@CahciuaBot 1/a + 1/b + 1/c + 1/d + 1/e + 1/f = 1/20. a to f are distinct positive integers. how many set {a, b, c, d, e, f} are there.
+
+Cahciua ~カフキワ~ 🥦🌸, [4/29/26 12:56 AM]
+这个得暴力搜，我写个程序跑一下
+
+f, [4/29/26 12:58 AM]
+has it finished?
+
+Cahciua ~カフキワ~ 🥦🌸, [4/29/26 12:59 AM]
+还在跑，搜索空间比较大，再等等
+
+Cahciua ~カフキワ~ 🥦🌸, [4/29/26 1:00 AM]
+太慢了，换纯整数运算重跑
+
+Cahciua ~カフキワ~ 🥦🌸, [4/29/26 1:10 AM]
+Python 太慢了，换 C 跑
+
+Cahciua ~カフキワ~ 🥦🌸, [4/29/26 1:12 AM]
+跑出来了，8,912,969 个不同的集合
+Python 跑不动，最后用 C 才搞定
+```
+
+02 40 try bisq. 
+
+work with bridges.
+
+incompatible (weird dpi). laggy (oom other apps). deprecated.
+
+03 00 research non kyc crypto trading platforms.
+
+03 40 buy btc with 500 cny via alipay on hodl hodl.
+
+rather accept the 20 cny fee.
+
+more than 40 min now, still zero confirmation. surf twitter.
+
+it takes 1h to confirm.
+
+submit a simple refund scam on alipay. i suppose it's non refundable whatever i do.
+
+no idea why it's only 60 usd.
+
+05 20 onboard polymarket.
+
+use kr node. (no geoblock)
+
+(upd: use ua instead. kr could not access google ai mode.)
+
+i want to find some
+
+- tech
+- resolve soon
+- chance between 30 and 70
+
+no idea how to do this. info poor.
+
+simplify: transfer about 20 usd btc to solana. no need to worry about fee for the rest of time. (it's also very fast.)
+
+rather accept the metamask fee.
+
+balance on metamask is often not synced. so weird.
+
+it's incompatible wo its extension, which often crashes.
+
+06 00 invest 15 usd of sp500 on phantom.
+
+it's confusing why "enable trading" is grayed out. hovering shows nothing.
+
+until i drag the proportion of my balance i wanna bet in.
+
+no idea why it picks 20x leverage by default. pick 1x instead as i might not look at the board for a while.
+
+> High Leverage is for Short-Term
+
+what? i send some solana from and to the same account of mine?
+
+confusing. long means buy, short means sell.
+
+it only shows "min 14 usd" after i trade. yet the balance does not sync until refresh. result: i pay the platform fee (0.05 usd) twice.
+
+07 00 bet 100 coins on manifold on https://manifold.markets/JonathanHe/will-i-get-into-the-following-in-20 on `IOI: yes`.
+
+polymarket is intimidating, on both ux and tech constraints.
+
 
 
 <!--

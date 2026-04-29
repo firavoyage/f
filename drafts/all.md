@@ -66,6 +66,7 @@ life:
 - envy jealousy
 - ad hoc
 - github pages
+- invest phantom sp500
 
 create something:
 
