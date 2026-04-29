@@ -258,10 +258,6 @@ research types. (maybe py lib plus google sans)
 
 ---
 
-invest.
-
----
-
 linear foss ui.
 
 categorize and simplify todos, research, and notes.
@@ -329,3 +325,27 @@ tells you why.
 - commentary
 
 ---
+
+spec template.
+
+---
+
+check the time on file name by file metadata in drafts w shell script
+
+typo lib?
+
+a bigger and better lib?
+
+---
+
+pr nat.
+
+(awa letter to students)
+
+---
+
+export twitter. research cli. or build my own.
+
+
+
+

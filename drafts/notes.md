@@ -2653,7 +2653,21 @@ overlap a lot.
 
 ---
 
+i thought 
 
+- readme should be readme
+- pnpm yamls should be dot files.
 
+apply to humility w some workarounds?
 
+(i could apply a vscode specific hide, though. often easier for compatibility.)
 
+---
+
+should i ban nested list usage?
+
+use heading instead of nested.
+
+(except mind maps)
+
+---

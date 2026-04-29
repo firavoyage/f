@@ -1,5 +1,7 @@
 public domain
 
+<!-- agpl, which we love, is too idealistic. and i dont wanna use their words when they are effectively nothing, even if it's a permissive one, to pay the compliance tax. "all rights reserved" feels powerful but hollow. it's only after we've lost everything that we're free to do anything. honesty is humility. public domain. -->
+
 <!-- 
 
 i wish i would not need a nonsensical license file here.

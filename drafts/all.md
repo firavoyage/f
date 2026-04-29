@@ -217,11 +217,17 @@ typography:
 
 psychology:
 
-- psychology
+- existentialism cynicism accelerationism nerd otaku appearing together
+- lying bloating exaggerating
+- following back everyone
+- telling story of a friend
+- flow
+- hexaco model
 
-cinema: <!-- film -->
+cinema: <!-- film, movie -->
 
 - movies
+- fight club
 - the shining
 
 float: <!-- music -->
@@ -229,6 +235,10 @@ float: <!-- music -->
 - ytdlp workflow
 - spotdl workflow
 - float appreciate
+- electronic rock
+- heavy metal rock
+- japanese pianists
+- japanese guitarists fingerstyle
 
 philosophy:
 
@@ -274,10 +284,13 @@ economics:
 - polymarket emotional crowd top users
 - investing stock polymarket
 - investing stock positive sum crypto wo kyc
+- investing leverage liquid meaning k line meaning wick pattern science
+- not backed by yc movement
 
 society:
 
 - chinese bloggers friend link blogroll
+- jewish social class
 
 rhetoric:
 
@@ -307,6 +320,25 @@ leisure:
 egg:
 
 - twitter third party clients
+
+humility:
+
+- naming
+  - socratic teaching
+  - socratic method
+  - daoism idea
+  - facebook posters <!-- the journey is 1% completed -->
+  - nat friedman <!-- we know less than we think -->
+  - software engineering root of all evil <!-- forgetting that software is made by humans, for humans (onlined: Premature optimization.) -->
+  - life journey think create organize <!-- attention → intention → structure → humility -->
+  - oi slangs
+  <!-- - `mistral` sub concepts of wisdom) -->
+  - (some podcast transcripts)
+  - (sequoiacap our history)
+  - is honesty a part of humility
+  - compare humility and modesty
+  - hexaco model
+  - wording humility
 
 <!-- 
 

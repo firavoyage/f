@@ -108,11 +108,16 @@ tmp
 yt-dlp \
   "https://music.youtube.com/watch?v=OArru5OkVKE&list=OLAK5uy_n-lE02j8pQkwGhsL5JLAPvbBAoAmxh9n8" \
   -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
-  -o "_/Pink Floyd - The Wall/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
+  -o "_/Kent Nishimura/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
+```
+
+Kent Nishimura
+
+```sh
 yt-dlp \
-  "https://music.youtube.com/playlist?list=OLAK5uy_lrCrcAdxFG4aMzMrebs7o9TU384xyF240" \
+  "https://music.youtube.com/playlist?list=OLAK5uy_lkhCumagfmWM06TajqGibY2ArJ7QSNLC0" \
   -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
-  -o "_/Pink Floyd - The Dark Side of the Moon/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
+  -o "_/Kent Nishimura/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
 ```
 
 Mitsuko Uchida - Mozart
