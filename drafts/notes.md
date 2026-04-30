@@ -2671,3 +2671,31 @@ use heading instead of nested.
 (except mind maps)
 
 ---
+
+i can gather some psycho tests awa the problems.
+
+createa a better site on github io.
+
+---
+
+i could enhance github io based hosting.
+
+one 404.html is all you need. (hope raw.githubcontent will work.)
+
+---
+
+material design 1?
+
+---
+
+quant bot.
+
+not auto trading.
+
+but telling me when to buy in the long term.
+
+mispricing.
+
+(?)
+
+---

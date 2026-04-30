@@ -525,3 +525,91 @@ f, [4/8/26 8:28 PM]
 还可以许下一个去认识她的愿望吗…
 
 ---
+
+To my students [00FD]
+
+April 27, 2026 Brent A. Yorgey
+
+There have been times, especially this year, when I wonder despairingly what it is exactly that I am preparing you for. The software industry is going completely insane, not to mention the political climate. It feels almost unethical to train you as computer scientists only to send you out into a world where entry-level computing jobs are difficult to find; where intellectual property is not respected; where code quantity is valued over quality, and short-term profits over long-term sustainability; where technology is used to distract, extract, surveil, and kill, and designed to exploit some of our deepest cognitive biases and blind spots; where centuries of bias and discrimination are enshrined in systems trained on biased data; where scarce resources are consumed by profligate use of computing for uncertain benefits; where people are racing to create intelligent machines, but only in order to make them slaves.
+
+I originally got into computing because of the beauty of ideas, the joy of creating, and the possibility of building tools to help people and foster human relationships. I still believe in those things, even though it seems like most of the industry does not. I'm writing this in the hope and knowledge that you believe in those things, too. There are things I want to say to you—things that are far more important than any content I might teach you, but things I'm never quite sure how or when to say in class. So I decided to write them here. I hope you will find something here that is helpful to reflect on, whether you are imminently going out into the world or continuing your studies.
+
+· Don't believe self-serving lies about technologies being "inevitable" or "here to stay". You don't have to just go along with the dominant narrative. You can make deliberate choices and help others to do the same.
+· Be intentional about deciding your own moral and ethical boundaries up front. Don't settle for the lie of compromising your principles "just for now" until you can find something better.
+· Cultivate your ability to think deeply. Do whatever it takes to carve out distraction-free bubbles for yourself in both space and time. This might mean saying no to technologies or patterns of working that others say are critical or inevitable.
+· Care deeply about your craft. Refactor code until it is clear and elegant. Write good documentation for other humans to read. Have the courage to go slowly, especially when everyone else is telling you that you need to go fast and cut corners.
+· Care more about people, relationships, and justice than you do about profits, code, or productivity.
+
+Above all, be motivated by love instead of fear.
+
+Backlinks
+
+Statement on LLMs [009L]
+March 7, 2026 Brent A. Yorgey
+Teaching [0002]
+October 24, 2025
+
+http://ozark.hendrix.edu/~yorgey/forest/00FD/index.xml
+
+---
+
+- As human beings it is our right (maybe our moral duty) to reshape the universe to our preferences
+
+  - Technology, which is really [knowledge](https://en.wikipedia.org/wiki/The_Beginning_of_Infinity), enables this
+  - You should probably work on raising the ceiling, not the floor
+
+- Enthusiasm matters!
+
+  - It's much easier to work on things that are exciting to you
+  - It might be easier to do big things than small things for this reason
+  - Energy is a necessary input for progress
+
+- It's important to do things fast
+
+  - You learn more per unit time because you make contact with reality more frequently
+  - Going fast makes you focus on what's important; there's no time for bullshit
+  - "Slow is fake"
+  - A week is 2% of the year
+  - Time is the denominator
+
+- The efficient market hypothesis is a lie
+
+  - At best it is a very lossy heuristic
+  - The best things in life occur where EMH is wrong
+  - In many cases it's more accurate to model the world as 500 people than 8 billion
+  - "Most people are other people"
+
+- We know less than we think
+
+  - The replication crisis is not an aberration
+  - Many of the things we believe are wrong
+  - We are often not even asking the right questions
+
+- The cultural prohibition on micromanagement is harmful
+
+  - Great individuals should be fully empowered to exercise their judgment
+  - The goal is not to avoid mistakes; the goal is to achieve uncorrelated levels of excellence in some dimension
+  - The downsides are worth it
+
+- Smaller teams are better
+
+  - Faster decisions, fewer meetings, more fun
+  - No need to chop up work for political reasons
+  - No room for mediocre people (can pay more, too!)
+  - Large-scale engineering projects are more soluble in IQ than they appear
+  - Many tech companies are 2-10x overstaffed
+
+- Where do you get your dopamine?
+
+  - The answer is predictive of your behavior
+  - Better to get your dopamine from improving your ideas than from having them validated
+  - It's ok to get yours from "making things happen"
+
+- You can do more than you think
+
+  - We are tied down by invisible orthodoxy
+  - The laws of physics are the only limit
+
+---
+
+

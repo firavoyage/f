@@ -9161,6 +9161,15 @@ Piaowe., [4/29/26 10:49 AM]
 
 Piaowe., [4/29/26 10:58 AM]
 不过一看原帖是青鱼发的，难道真是真的？
+
+澪, [4/29/26 10:39 PM]
+从 1 月份我用 gemini 3.0 pro 一发 ac 了 3000+ ra 的题目之后
+
+澪, [4/29/26 10:39 PM]
+我就已经不对 llm 的算法竞赛能力保持质疑了
+
+澪, [4/29/26 10:40 PM]
+那个题目是个有点 adhoc 的 dp 题
 ```
 
 02 40 try bisq.
@@ -9356,13 +9365,344 @@ You should use the app yourself, you will know when it doesn't feel right
 - confusing/unclear. Empty list shouldn't be empty. (It's empty is clear. A blank feels like a loading failure)
 
 It's more helpful I think.
+
+oldherl, [4/29/26 10:33 PM]
+坏了，那我也成老保了
+
+VZstless 🏳️‍⚧️ Ep. 02 Tight / Bind 重力, [4/29/26 11:08 PM]
+但至少他在思考自己是不是责任缺位了，而不是一边吃皇粮一边在老掉牙的 ppt 下摇旗呐喊龙虾时代更应该好好上课按时出勤
+
+Menci 💖, [4/29/26 11:11 PM]
+但他做到什么了吗？我不觉得他这番话做到什么了，不觉得这番话对学生有积极的引导作用，甚至我会觉得这些话不如不说
+
+oldherl, [4/29/26 11:12 PM]
+教授一个人怎么可能对抗一个时代呢？讨论一个问题，并不一定需要解决它
+
+VZstless 🏳️‍⚧️ Ep. 02 Tight / Bind 重力, [4/29/26 11:15 PM]
+或者这么说，如果你在五十年前在一个职业学校培养了一群电话接线员，你会如何让他们适应这个计算机逐渐普及的时代呢
+
+Menci 💖, [4/29/26 11:29 PM]
+错就错在他试图「对抗时代」，如果你质疑的是这一点，说明你被教授的观点绕进去了
+教授应该教导学生们，去勇于学习新事物，去探索去弄清楚 AI 能做什么不能做什么，才有可能能够去提升自己的竞争力，而不是说 AI「trained on biased data」和「profligate use of computing for uncertain benefits」，这是他以老保的视角 opinionated 的叙事，给学生灌输这种思想只会让学生更 unlikely 跟上时代
+
+Satori 🪐, [4/29/26 11:32 PM]
+感觉很奇怪
+
+Satori 🪐, [4/29/26 11:32 PM]
+但是有一点我觉得很好
+
+Satori 🪐, [4/29/26 11:32 PM]
+care more about people
+
+Menci 💖, [4/29/26 11:34 PM]
+这个教授无非就是滑向了与业界「信奉 AI」的那帮人相对立的另一个极端，抗拒 AI
+
+oldherl, [4/29/26 11:35 PM]
+可是，为什么一定要提升自己的竞争力呢？
+
+oldherl, [4/29/26 11:36 PM]
+现在到处都有「跟上时代」的见识，不一定要从教授这里学。倒是认识到AI干了什么坏事才是比较少见到的
+
+Menci 💖, [4/29/26 11:38 PM]
+因为就业本来就很困难了，如果不提升自己的竞争力，就更找不到工作，就业困难也是这个教授所认可的，我觉得这一点上没有争议
+
+oldherl, [4/29/26 11:38 PM]
+我也认可，但我不想改变……
+
+Menci 💖, [4/29/26 11:39 PM]
+我觉得教授没有资格去定义「坏」
+
+oldherl, [4/29/26 11:39 PM]
+于是又回到了这个老问题：大学本科和研究生教育到底是否应该以就业为导向
+
+oldherl, [4/29/26 11:40 PM]
+每个人都可以有不同的对「坏」的定义
+
+oldherl, [4/29/26 11:40 PM]
+你当然可以不赞同教授的观点
+
+oldherl, [4/29/26 11:41 PM]
+有人认为大学本来就是应该培养「自由而无用的灵魂」
+
+Satori 🪐, [4/29/26 11:41 PM]
+也许很多人想的是，学完计算机之后我就可以找到一个高薪轻松的工作，在大楼的大落地窗户前面拿着一杯咖啡欣赏远处的风景，就能挣很多钱；等到毕业之后发现，怎么变成这样了？那投资有风险的。
+
+oldherl, [4/29/26 11:43 PM]
+另一种解释是：本来大学就只是一个游乐场，只是在上两个十年里，游乐场的某个部分（计算机等专业）恰好地板上有不少钱，进去的人都捡到了钱，而现在钱被捡完了，回归了游乐场的本质，不再有钱拿了
+
+oldherl, [4/29/26 11:44 PM]
+至于你是听说能捡钱才来的游乐场？对不起，你接受了错误信息
+
+Menci 💖, [4/29/26 11:44 PM]
+嗯，表达自己的观点本身是可以的，但这不应该是谈论到专业学习、谈论到就业时该谈论的，更不应该以一篇正式的「致学生的信」来传达
+
+me （ow）, [4/29/26 11:49 PM]
+我认为这篇文章讲述的是AI时代的工程伦理(engineering ethics), 在AI相关的工程伦理并未成型时这种讨论无论形式都是很有意义的.
+
+me （ow）, [4/29/26 11:56 PM]
+因此这无论如何都是一个应然命题(参见休谟问题),所以批判这篇文章没有从实然命题的角度论述是和这篇文章的内容缺乏关联的,同时也有诉诸动机的危险.
+
+猫离子 猫, [4/29/26 11:57 PM]
+遗憾，我已经彻底变成大学生了
+
+猫离子 猫, [4/29/26 11:58 PM]
+能歌善舞，能从莎士比亚讲到西贝柳斯，能失业）
+
+猫离子 猫, [4/29/26 11:58 PM]
+什么时候才能有universal basic income就去当主播
 ```
+
+<!-- upd: no one reacts w me (maybe im just dumping trivial ux details). but it feels good seeing menci talks a lot, who rarely feels the need of arguing against anything (upd: likely due to counter argument by high social proof ppl). does it tell (imply) sth? -->
+
+upd:
+
+```md
+f, [4/30/26 4:14 AM]
+想知道什么是 "面对问题". 
+
+不发表这篇文章. 然后像其他教授一样教学? 做些什么呢...
+
+你发表的 llm screenshot 里面有, "如何在工程约束下交付设计, 利用工具", 于是我就想了一些... 可能对我而言很很显然很在眼前虽然有些 trivial 的细节吧. (就是如何制作更好的工具, 一些目前存在的问题)
+
+逃避问题 (发表一些极度理想主义的思考) 是显然的... 但, 或许你心里也没有想过什么 non trivial 的方法吧... 我想.
+
+澪, [4/30/26 4:15 AM]
+我觉得这段文字对一个 experienced engineer 来说是中肯的，但对于尚未入行的学生也许并不是很好
+他们还没有看过山的那边是什么，偏执一词很可能对他们来说是弊大于利的
+
+澪, [4/30/26 4:16 AM]
+至少我的体会会更像是双城记里的这段
+
+澪, [4/30/26 4:16 AM]
+It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief, it was the epoch of incredulity, it was the season of Light, it was the season of Darkness, it was the spring of hope, it was the winter of despair, we had everything before us, we had nothing before us
+
+澪, [4/30/26 4:16 AM]
+而不是 cs fucks
+
+bys, [4/30/26 4:17 AM]
+我觉得其实 AI 热、大衰退， .com bubble... 很多事情在历史上也都发生过
+
+f, [4/30/26 4:19 AM]
+好多隐喻... 不理解.
+
+偏执什么? 山的那边是什么?
+
+cs fucks... 是什么?
+
+不善于语文阅读理解...
+
+bys, [4/30/26 4:19 AM]
+我记得是否有人说过，我们总倾向于认为在我们这里，历史即将迎来一个非常断裂的新时期，人类将会面临全新的问题，但是我们这样的判断，在历史上的绝大多数时间，被证明都是错的，人们的生活和工作方式其实没有发生根本的变化。
+
+f, [4/30/26 4:19 AM]
+> History Rhymes
+
+bys, [4/30/26 4:20 AM]
+是的，结构性地重复，尽管每次都会有新内容
+
+f, [4/30/26 4:22 AM]
+山的那边是就业现实. 因为不了解现实, 所以可能会偏执于理想主义, which is bad?
+
+cs fucks 则是, 关于 cs 专业自身的性质, 比如取代工人 (卢德主义), 或者一些工程师的常见困境?
+
+尝试理解了一下.
+
+澪, [4/30/26 4:23 AM]
+不是，山的那边是现在用 agent 能做到什么，能力边界在哪里
+cs fucks 表达的是一种对于现状的不满情绪
+
+f, [4/30/26 4:24 AM]
+假设学生一般地不会使用 agent, 有经验的工程师善于使用 agent?
+
+澪, [4/30/26 4:25 AM]
+你看国内学校就知道了
+
+澪, [4/30/26 4:26 AM]
+另一方面来说 token 对很多人来说是短缺的，并且目前看不到它能够不短缺的希望
+这使得情况变得更复杂了
+
+f, [4/30/26 4:26 AM]
+哦. 那是当然. 不过 ai 前亦然. 过时的教材. 没有人为学生未来着想.
+
+"sjtu 求生手册" 是多少年前写的? 如今依旧不断被引用.
+
+> there are not so many ppl in the world, that ... like, make a difference
+
+(from lex fridman podcast: cursor team interview)
+
+f, [4/30/26 4:27 AM]
+ai 前不过是... 有一些月薪 < 10k cny 的前端工作? 有一些大专生报班之后, 个别进入了大厂? 这些.
+
+澪, [4/30/26 4:28 AM]
+我觉得所谓代码的优雅，这是一个 tradeoff，并不是哪个更好的问题
+
+f, [4/30/26 4:29 AM]
+烦. 老是按到 enter 和 ctrl enter.
+
+澪, [4/30/26 4:29 AM]
+而代码的优雅等等这些，也是 software engineer 所提出的核心价值，可以认为是一种 traditional，过早断言哪种更好并不是件好事
+
+f, [4/30/26 4:30 AM]
+不... 首先现在已经没有许多需求了. 
+
+如果 ai 20 年或者 10 年前出来会改变许多.
+
+与此同时, 不需要那么强大的 base llm. 对于很多问题.
+
+我假设 1usd/m 的 chinese llm token 是充足的. 同时, 不 agentic 的 llm 也是相当充足的.
+
+澪, [4/30/26 4:31 AM]
+如果你写一个 prototype，那你可能更关心的是你的迭代速度，怎么更快速的去验证自己的架构，而不是什么代码优不优雅，因为它还没有被刻在石头上，它只是一个原型
+
+澪, [4/30/26 4:32 AM]
+这本质和 premature optimization 是一回事
+
+f, [4/30/26 4:33 AM]
+不.
+
+不只是代码实现, 还有用户体验.
+
+openclaw 的 ux 很差. 真的. (我应该不需要引用了, 虽然我写过很长的 commentary, 从下载时间排序的细节)
+
+Menci 💖, [4/30/26 4:34 AM]
+夜里又和 AI 聊了一些，我试图去理解你们赞同这篇文章的点，我现在有了两个理解：
+1. 「提出异议」本身，对于发展是起到一个积极的负反馈的，它对整个业界的技术发展是有益的
+2. 对学生个体呢？我至少认同这篇文章的论调对于「想要逃离业界」的人是有劝进的作用的，让人意识到自己能够做出自身的选择，也可以是一种教导吧
+
+但我其实更 expect 一位教授能够在课堂上告诉学生 AI 前沿的发展，业界的反应，并给学生「自己体验 agent，并探索它能做好什么，以及做不好什么」这样的开放性作业。如果这篇信的「课堂之外」是在这样的基础之上，那我就完全认可他的做法了。归根结底，我会认为，这样批判性的叙事，只适合作为正常教学的补充和反思。
+
+f, [4/30/26 4:34 AM]
+不. 
+
+可读性, 性能或许可以未来再优化.
+
+按钮没有反应, 超过几秒的延时, 元素重叠/错位, 横向滚动条, 不一致性, 是不可接受的.
+
+澪, [4/30/26 4:35 AM]
+我感觉 jyy 做挺好的，ta 在 nju 的 os 课里引入了这部分的内容
+```
+
+<!-- menci does not sleep, as always. -->
+
+<!-- "但我其实更 expect 一位教授能够在课堂上告诉学生 AI 前沿的发展，业界的反应，并给学生「自己体验 agent，并探索它能做好什么，以及做不好什么」这样的开放性作业。" well... i think it's wise to not go further. i should not expect too much. teaching is teaching. i definitely could ask menci about the details how to "teach student agentic coding", but, i think i already know the answer. -->
 
 21 00 research hexaco model. ~~22 00~~ 22 20
 
 > Lower Honesty-Humility scores are linked to more favorable attitudes toward **AI usage**, possibly due to a willingness to use tools for personal gain without ethical hesitation.
 
+22 20 test memoh (claude opus by menci).
 
+```md
+f, [4/29/26 8:55 PM]
+@CahciuaBot > solve this.
+>
+> Given that quadrilateral $A_1A_2A_3A_4$ is a parallelogram, let the set
+> $\Omega = \{ \overrightarrow{A_iA_j} \mid i \neq j, \ i, j \in \{1, 2, 3, 4\} \}$.
+> Let $M_1, M_2, \dots, M_k$ be subsets of $\Omega$, each containing 4 elements.
+> If for any $m, n \in \{1, 2, \dots, k\}$ where $m \neq n$,
+> the number of elements in $M_m \cap M_n$ does not exceed 2,
+> then the maximum value of the positive integer $k$ is ______.
+
+Cahciua ~カフキワ~ 🥦🌸, [4/29/26 8:56 PM]
+关键是确定 $|\Omega|$。平行四边形中作为向量相等的会合并：$\overrightarrow{A_1A_2}=\overrightarrow{A_4A_3}$ 等，所以 $\Omega$ 实际只有 6 个不同向量
+从 6 元素集合中选 4 元素子集，任意两个交集 ≤ 2。4 元素子集在 6 元素集合里的补集是 2 元素，两个子集交 ≤ 2 等价于补集不相交。把 6 个元素分成不相交的 2 元素对最多分 3 组
+所以 $k = 3$
+
+f, [4/29/26 8:56 PM]
+wrong. try again. what's your model.
+
+Cahciua ~カフキワ~ 🥦🌸, [4/29/26 8:57 PM]
+我重新想想，之前 $|\Omega|$ 算错了
+
+Cahciua ~カフキワ~ 🥦🌸, [4/29/26 8:58 PM]
+重新来。平行四边形中 $\Omega$ 作为向量集合有 8 个不同元素：$\pm\vec{a}, \pm\vec{b}, \pm(\vec{a}+\vec{b}), \pm(\vec{b}-\vec{a})$
+从 8 元素中选 4 元素子集，任意两个交集 ≤ 2，暴力搜最大团得 $k = 14$
+我用的是 Claude Opus
+
+f, [4/29/26 10:30 PM]
+You shouldn't leverage programming. That's cheating. 
+
+Also, remember, always reply in English.
+
+Cahciua ~カフキワ~ 🥦🌸, [4/29/26 10:30 PM]
+fair enough. let me redo it by hand
+$|\Omega| = 8$ distinct vectors. we want max number of 4-element subsets with pairwise intersection ≤ 2
+each 4-subset has $\binom{4}{3}=4$ triples. if two subsets share 3+ elements they share a triple, so each triple appears in at most one subset. total triples $\binom{8}{3}=56$, so $k \leq 56/4 = 14$
+and 14 is achievable — it's equivalent to a 3-(8,4,1) packing which is exactly the complement of the 3-(8,4,1) design (AG(3,2))
+so $k = 14$
+
+f, [4/29/26 10:42 PM]
+What's your model and config in the prev wrong answer. 
+
+How did you get wrong.
+
+Cahciua ~カフキワ~ 🥦🌸, [4/29/26 10:43 PM]
+same model, Claude Opus. I got the first answer wrong because I miscounted $|\Omega|$ as 6 instead of 8 — I forgot the diagonal vectors are all distinct and only side vectors have equal pairs. once I had the wrong base set size the rest cascaded
+```
+
+30
+
+~~00 20~~ take a simple hexaco test.
+
+the last day.
+
+01 00 research polymarket and memecoin mechanics, stats, and strategies. swap all btc to sol on phantom. 02 20
+
+<!-- these are trivial to me. i would have them as i like. what i value. what's sacred. i dont even have to care the real world potential. -->
+
+speed and simplicity.
+
+phantom is more clearer than metamask.
+
+upd: no idea why i could no select btc on "from" (i select, and then it flashes to sol or other memecoins for no reason). i could only select btc on "to" and then swap from and to.
+
+upd: no idea why "max" does not transfer all my btc... i end up paying fee 3 times, wasting a few usd.
+
+it does not sync. e.g. 1 btc, click swap (display as usd), then it shows 1 usd instead of its worth.
+
+"something went wrong"
+
+metamask takes a few secs to sync transactions (wo showing loading). yet it oom. (stop earlyoom.) it does not have "max" or "in usd" button? it does not submit my swap... i could swap a few times.
+
+~~uniswap does not support direct btc to sol. use simpleswap instead.~~ i see. it has insufficient fund to cover fees (when i wanna send to simpleswap address). yet it shows a silent failure in its own swap.
+
+why is the landscape of crypto ux nowadays, still... so frustrating. idk.
+
+crypto is better when you have more than 1k usd.
+
+03 00 check blog.24a.fun.
+
+read some maimaidx news.
+
+05 00 invest 1 usd with 20x leverage on phantom on `xyz:XYZ100` (nasdaq).
+
+upd 06 00: close with 5% growth, from 27,063 to 27,130. (idk why i have to click close several times, even w max selected.)
+
+so exciting. yet boring, as it does not change much and change fast, like a rts game.
+
+though, it violates the rule: if your fund is sitting there wo doing anything, it's always better to use your own fund.
+
+later, it goes to its 1d highest. crazy.
+
+i could invest more, but it's too much manual work, where idk what to do. it's good enough to let solana (which itself does have a potential already, unlike usdt) sitting there. 
+
+05 20 skim `AI 正在吞噬我们的耐心`. check a porn vid (from bitmagnet, high seeder num).
+
+<!-- > 我已经不知道有多少次，在不同的 session 中回复了本该在另一个 session 回复的话。每次想起来都觉得很可笑，直到 AI 有时候发现自己发错了，或者有时候整个 session 都结束了，AI 才告诉你：“你是不是发错了？我没有找到这个东西。” -->
+
+ai gen porn or real human?
+
+
+
+<!-- timebox, plan. -->
+
+<!-- organize. -->
+
+<!-- 
+
+wlb. 
+
+-->
 
 <!--
 
@@ -9370,15 +9710,11 @@ breadcrumbs:
 
 see todo, things, scratch pad.
 
-see firavoyage/blogging readme personas.
+see f/blogging: readme: personas.
 
 see weekly, projects, journal, all
 
  -->
-
-<!-- timebox, roadmap. -->
-
-<!-- wlb. -->
 
 <!--
 
@@ -9469,6 +9805,8 @@ doing right things, the important ones, not the urgent ones.
 "!."
 
 yeah! that's it.
+
+> the aha moment
 
  -->
 

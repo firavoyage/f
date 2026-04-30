@@ -592,3 +592,15 @@ obviously, the scrollbar grows step by step.
 
 ---
 
+learn from & auto complete common words.
+
+- meaning
+- implication
+- how does it work
+- the history of
+- research ppl (background, education, famility, childhood, career, ...)
+
+add disambi context if needed.
+
+---
+

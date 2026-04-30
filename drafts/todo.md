@@ -346,6 +346,11 @@ pr nat.
 
 export twitter. research cli. or build my own.
 
+---
+
+sync tg.
+
+
 
 
 

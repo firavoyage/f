@@ -224,6 +224,10 @@ psychology:
 - flow
 - hexaco model
 
+shelf: <!-- book -->
+
+- the beginning of infinity <!-- nat -->
+
 cinema: <!-- film, movie -->
 
 - movies
@@ -286,6 +290,7 @@ economics:
 - investing stock positive sum crypto wo kyc
 - investing leverage liquid meaning k line meaning wick pattern science
 - not backed by yc movement
+- investing prediction market strategy swap to sol
 
 society:
 
@@ -295,6 +300,7 @@ society:
 rhetoric:
 
 - change me mind js new boolean myth meaning rhetoric subject
+- absolute cinema
 
 laws:
 

@@ -1034,4 +1034,385 @@ Show all
 
 #
 
+hexaco model why these six
 
+The **HEXACO model** utilizes six personality dimensions because [large-scale cross-cultural studies](https://sk.sagepub.com/hnbk/edvol/hdbk%5Fpersonalitytheory2/chpt/hexaco-model-personality-structure) consistently revealed a sixth distinct factor that the original [Big Five model](https://www.psychologytoday.com/gb/basics/hexaco) missed.
+
+Developed by [Michael C. Ashton and Kibeom Lee](https://en.wikipedia.org/wiki/HEXACO%5Fmodel%5Fof%5Fpersonality%5Fstructure), the model is based on **lexical analysis**, a method where researchers identify common adjectives people use to describe themselves and others across different languages.
+
+The Six Dimensions
+
+The name "HEXACO" is both an acronym for these dimensions and a reference to the Greek word for "six" (_hexa_):
+
+- **Honesty-Humility (H):** Includes sincerity, fairness, greed avoidance, and modesty. This is the "new" factor that distinguishes HEXACO from the Big Five.
+- **Emotionality (E):** Covers fearfulness, anxiety, dependence, and sentimentality. It differs from the Big Five’s "Neuroticism" by [including sentimentality and excluding anger](https://www.sciencedirect.com/science/article/pii/S0191886916303567).
+- **Extraversion (X):** Reflects social self-esteem, social boldness, sociability, and liveliness.
+- **Agreeableness (A):** Focuses on forgivingness, gentleness, flexibility, and patience. In this model, it specifically [includes a lack of anger](https://www.sapa-project.org/blogs/HEXACOmodel.html), which is shifted from the Emotionality/Neuroticism category.
+- **Conscientiousness (C):** Relates to organization, diligence, perfectionism, and prudence.
+- **Openness to Experience (O):** Encompasses aesthetic appreciation, inquisitiveness, creativity, and unconventionality.
+
+Why These Specific Six?
+
+The shift from five to six factors was driven by two main advancements:
+
+1. **Cross-Cultural Replication:** While early English-only studies supported five factors, broader research across diverse European and Asian languages repeatedly identified six independent dimensions.
+2. **Increased Computing Power:** Early researchers were limited by the [amount of data they could process](https://blog.pathwayu.com/hexaco-model-why-we-use-it), often leading to the consolidation of traits. Modern technology allowed for more [fine-grained analysis](https://www.psychologytoday.com/nz/basics/hexaco) of larger adjective sets, which separated **Honesty-Humility** as its own significant factor.
+3. **Predictive Accuracy:** The inclusion of Honesty-Humility provides better insight into **moral character** and [altruistic behaviors](https://pubmed.ncbi.nlm.nih.gov/18453460/) (reciprocal and kin altruism) that were previously difficult to categorize.
+
+Would you like to see how your specific **trait scores** might compare across the [HEXACO and Big Five](https://www.verywellmind.com/what-is-the-hexaco-personality-test-5442896) frameworks?
+
+- [link](https://en.wikipedia.org/wiki/HEXACO%5Fmodel%5Fof%5Fpersonality%5Fstructure#:~:text=The%20HEXACO%20model%20of%20personality,low%20levels%20of%20the%20factor.)\
+  HEXACO model of personality structure - Wikipedia\
+  HEXACO model of personality structure. ... The HEXACO model of personality structure is a six-dimensional model of human personali...\
+  Wikipedia
+- [link](https://sk.sagepub.com/hnbk/edvol/hdbk%5Fpersonalitytheory2/chpt/hexaco-model-personality-structure)\
+  The HEXACO Model of Personality Structure - Sage Knowledge\
+  Conversely, there are apparently no languages in which standard lexical studies (i.e. those based solely on personality-descriptiv...\
+  Sage Publishing
+- [link](https://www.sciencedirect.com/science/article/pii/S0191886916303567#:~:text=Recent%20theoretical%20and%20empirical%20research,and%20includes%20lack%20of%20anger.)\
+  The six dimensions of personality (HEXACO) and their ...\
+  Sep 15, 2016 — Recent theoretical and empirical research in personality psychology has supported a six-dimensional framework of personality struc...\
+  ScienceDirect.com
+
+Show all
+
+why these six
+
+The HEXACO model uses six dimensions because they represent the most consistent structure found in [lexical studies across multiple languages](https://www.risinguparis.com/en-us/articles/hexaco-personality-test-better-than-big-five). While earlier English-language research supported only five factors, subsequent investigations in diverse European and Asian languages revealed a sixth factor—**Honesty-Humility**—that was previously underrepresented.
+
+The choice of these specific six is rooted in two primary foundations:
+
+1\. The Lexical Hypothesis
+
+Researchers analyzed thousands of [personality-descriptive adjectives](https://sk.sagepub.com/hnbk/edvol/hdbk%5Fpersonalitytheory2/chpt/hexaco-model-personality-structure) in natural languages. They found that people everywhere naturally group descriptions into these six broad categories:
+
+- **Honesty-Humility:** Sincerity and fairness (the distinct "H" factor).
+- **Emotionality:** Fearfulness and sentimentality (replaces Neuroticism).
+- **Extraversion:** Social boldness and sociability.
+- **Agreeableness:** Forgivingness and patience (re-defined to include lack of anger).
+- **Conscientiousness:** Diligence and organization.
+- **Openness to Experience:** Creativity and inquisitiveness.
+
+2\. Evolutionary Theory
+
+Beyond language, the six factors align with evolutionary strategies for [survival and cooperation](https://darwinianbusiness.com/2017/03/20/the-hexaco-model-of-personality-from-an-evolutionary-perspective/):
+
+- **Altruism Governance:** Honesty-Humility and Agreeableness govern **reciprocal altruism**—how we treat others fairly and how we react when others are unfair to us.
+- **Kin Selection:** Emotionality is linked to **kin altruism**, favoring empathy and attachment toward close family to ensure their survival.
+- **Active Engagement:** Extraversion, Conscientiousness, and Openness are "endeavor-related" traits, reflecting how individuals invest energy in [social, task, and idea-related goals](https://pmc.ncbi.nlm.nih.gov/articles/PMC10480805/).
+
+This framework allows researchers to better predict behaviors that the original Big Five model struggled with, such as [unethical decision-making or exploitative social traits](https://www.psychologytoday.com/nz/basics/hexaco).
+
+Would you like to explore how the [Honesty-Humility](https://en.wikipedia.org/wiki/Honesty-humility%5Ffactor%5Fof%5Fthe%5FHEXACO%5Fmodel%5Fof%5Fpersonality) dimension specifically helps identify **"dark" personality traits**?
+
+- [link](https://en.wikipedia.org/wiki/HEXACO%5Fmodel%5Fof%5Fpersonality%5Fstructure#:~:text=The%20HEXACO%20model%20was%20developed%20from%20several%20previous%20independent%20lexical,%22%2C%20or%20narrower%20personality%20characteristics.)\
+  HEXACO model of personality structure - Wikipedia\
+  The HEXACO model was developed from several previous independent lexical studies. Language-based taxonomies for personality traits...\
+  Wikipedia
+- [link](https://www.sciencedirect.com/science/article/pii/S0191886916303567#:~:text=Recent%20theoretical%20and%20empirical%20research,and%20includes%20lack%20of%20anger.)\
+  The six dimensions of personality (HEXACO) and their ...\
+  Sep 15, 2016 — Recent theoretical and empirical research in personality psychology has supported a six-dimensional framework of personality struc...\
+  ScienceDirect.com
+- [link](https://www.risinguparis.com/en-us/articles/hexaco-personality-test-better-than-big-five#:~:text=HEXACO%20model%20overview\&text=As%20we%20said%20just%20above,account%20by%20the%20other%20models.\&text=This%20six%2Ddimensional%20model%20allows,by%20the%20Big%20Five%20model.\&text=You%20should%20know%20that%20the,aspects%20of%20an%20individual's%20personality.)\
+  Is the HEXACO personality test better than the Big five ? - Rising Up\
+  HEXACO model overview. ... As we said just above, the HEXACO personality model is a comprehensive psychometric tool developed by t...\
+  www.risinguparis.com
+
+Show all
+
+i mean why these six, not why six instead of five
+
+The HEXACO model uses these specific six traits because they represent the essential [biological and social trade-offs](https://pmc.ncbi.nlm.nih.gov/articles/PMC10480805/) required for human survival and cooperation.
+
+Psychologists [Michael Ashton and Kibeom Lee](https://en.wikipedia.org/wiki/HEXACO%5Fmodel%5Fof%5Fpersonality%5Fstructure) argue that these dimensions didn't just appear by chance in our language; they evolved to solve specific evolutionary problems.
+
+The Two Core Pillars of the Six Traits
+
+The model divides human behavior into two broad systems: **Cooperative Relationship Governance** and **Active Engagement**.
+
+1\. Managing Cooperation (H, A, E)
+
+These three traits evolved to manage how we interact with others, specifically regarding [altruism and fairness](https://www.sciencedirect.com/science/article/abs/pii/S1090513898000099):
+
+- **Honesty-Humility (H):** Governs **reciprocal altruism** (fairness). It determines if you will exploit others for your own gain or act sincerely.
+- **Agreeableness (A):** Also governs **reciprocal altruism** (forgiveness). It determines if you will cooperate even when someone else has been slightly unfair to you, or if you will retaliate.
+- **Emotionality (E):** Governs **kin altruism** (protection). It drives the empathy and attachment necessary to protect and invest in family and close relatives, ensuring genetic survival.
+
+2\. Active Engagement (X, C, O)
+
+These three traits are "endeavor-related," reflecting how we invest our limited time and energy into the world:
+
+- **Extraversion (X):** Investment in **social endeavors**. It dictates how much energy you put into building social networks and gaining status.
+- **Conscientiousness (C):** Investment in **task endeavors**. It reflects your commitment to long-term planning, goals, and efficient work.
+- **Openness to Experience (O):** Investment in **idea endeavors**. It reflects how much energy you spend exploring new concepts, environments, and creative solutions.
+
+Why Not Others?
+
+While many other traits exist (like "humor" or "thriftiness"), they generally [cluster into these six broad categories](https://sk.sagepub.com/hnbk/edvol/hdbk%5Fpersonalitytheory2/chpt/hexaco-model-personality-structure) in [cross-cultural lexical studies](https://hexaco.org/history). Traits that don't fit into these six are often considered narrow "facets" rather than fundamental dimensions of human personality.
+
+Would you like to see the **specific facets** (sub-traits) that fall under each of these six categories?
+
+- [link](https://hexaco.org/history#:~:text=More%20recently%2C%20we%20have%20developed,did%20show%20the%20desired%20properties.)\
+  History - The HEXACO Personality Inventory - Revised\
+  More recently, we have developed a shorter version of the HEXACO-PI-R in response to demand for an instrument that would be suitab...\
+  The HEXACO Personality Inventory
+- [link](https://en.wikipedia.org/wiki/HEXACO%5Fmodel%5Fof%5Fpersonality%5Fstructure#:~:text=The%20HEXACO%20model%20of%20personality,of%20the%20honesty%2Dhumility%20dimension.)\
+  HEXACO model of personality structure - Wikipedia\
+  The HEXACO model of personality structure is a six-dimensional model of human personality that was created by Michael C. Ashton an...\
+  Wikipedia
+- [link](https://www.sciencedirect.com/science/article/pii/S2352250X2500082X#:~:text=While%20there%20has%20been%20some,models%20of%20personality%20%5B35%5D%29.)\
+  Review Evolutionary theory and personality - ScienceDirect.com\
+  While there has been some support for Big Five trade-offs, there are problems with conceptualizations of Big Five Agreeableness \[3...\
+  ScienceDirect.com
+
+Show all
+
+The Lexical Hypothesis
+
+The **Lexical Hypothesis** is <mark style="border-radius: 4px; background-size: 200% 100%; padding: 0px 2px; animation: 0.75s cubic-bezier(0.05, 0.7, 0.1, 1) 0.25s 1 normal forwards running highlight-animation;">the "dictionary-first" approach to personality</mark>. It’s based on a simple idea: if a personality trait is important enough to notice, people will eventually create a word for it.
+
+The more important a trait is to human interaction, the more likely it is that every language on Earth has a specific word (or many words) for it.
+
+How it works:
+
+1. **Scour the Dictionary:** Researchers take every adjective that describes a person (thousands of words like _kind_, _lazy_, _sincere_, _bold_).
+2. **Filter for Personality:** They remove temporary states (like _hungry_) or physical traits (like _tall_).
+3. **Factor Analysis:** They ask thousands of people to rate themselves or others on these words. They then use statistical software to see which words "clump" together.
+
+- _Example:_ If people who are rated as "hardworking" are also consistently rated as "organized" and "disciplined," those words all belong to one underlying dimension (**Conscientiousness**).
+
+Why it led to HEXACO:
+
+For decades, researchers doing this in English found **five** clumps (The Big Five). However, when Ashton and Lee expanded this to other languages—including Dutch, French, German, Hungarian, Italian, Korean, and Polish—a **sixth** clump kept appearing.
+
+This sixth clump contained words related to being honest, modest, and fair. Because this pattern repeated across completely different cultures and languages, they concluded that **Honesty-Humility** was a universal human dimension that the English-only studies had overlooked.
+
+Would you like to know which **specific languages** were the first to reveal this sixth factor?
+
+#
+
+compare hexaco model and mbti
+
+22:40
+
+The HEXACO model and the Myers-Briggs Type Indicator (MBTI) represent two very different approaches to understanding human personality. <mark style="border-radius: 4px; background-size: 200% 100%; padding: 0px 2px; animation: 0.75s cubic-bezier(0.05, 0.7, 0.1, 1) 0.25s 1 normal forwards running highlight-animation;">While <strong>HEXACO is an empirically supported trait model</strong> used heavily in academic research, the <strong>MBTI is a type-based indicator</strong> widely popular in corporate and personal development but often critiqued by the scientific community</mark>.
+
+Core Differences at a Glance
+
+| Feature                 | HEXACO Model                              | Myers-Briggs (MBTI)                |
+| ----------------------- | ----------------------------------------- | ---------------------------------- |
+| **Structure**           | 6 continuous **traits** (spectrum)        | 4 **dichotomies** (binary choices) |
+| **Output**              | Numerical scores across 6 factors         | One of 16 four-letter "types"      |
+| **Scientific Standing** | High; rigorously tested and peer-reviewed | Low; lacks academic validation     |
+| **Key Dimension**       | Includes **Honesty-Humility**             | Focuses on cognitive preferences   |
+| **Primary Use**         | Academic research and clinical study      | Personal growth and team building  |
+
+***
+
+1\. Philosophical Approach: Traits vs. Types
+
+- **HEXACO (Trait-based):** Built on the "Big Five" foundation, it measures how much of a certain quality you possess (e.g., how extraverted you are from 1–100). It assumes personality is a spectrum of independent variables.
+- **MBTI (Type-based):** Derived from Carl Jung’s theories, it categorizes people into distinct groups. You are either an Introvert (I) or an Extravert (E); there is no official "middle ground" in the final type assignment.
+
+2\. The Dimensions of Personality
+
+- **HEXACO's 6 Factors:**
+  1. **H**onesty-Humility (Unique to HEXACO; measures sincerity and greed avoidance).
+  2. **E**motionality (Similar to Neuroticism).
+  3. **X**traversion.
+  4. **A**greeableness.
+  5. **C**onscientiousness.
+  6. **O**penness to Experience.
+- **MBTI's 4 Preferences:**
+  1. **Extraversion vs. Introversion**: Where you get your energy.
+  2. **Sensing vs. Intuition**: How you process information.
+  3. **Thinking vs. Feeling**: How you make decisions.
+  4. **Judging vs. Perceiving**: How you approach the outside world.
+
+3\. Reliability and Validity
+
+- **HEXACO** is considered highly reliable for predicting real-world outcomes, such as job performance and interpersonal behavior.
+- **MBTI** is often called "pseudoscience" by psychologists because people's results frequently change when they retake the test (low test-retest reliability) and because binary "types" don't match the reality of human behavior.
+
+4\. Overlap and Correlation
+
+Research indicates that MBTI scores do correlate roughly with certain HEXACO/Big Five traits:
+
+- **Extraversion (E)** strongly correlates with the HEXACO **Extraversion** factor.
+- **Intuition (N)** strongly correlates with **Openness to Experience**.
+- **Feeling (F)** correlates with **Agreeableness**.
+- **Judging (J)** correlates with **Conscientiousness**.
+- **Missing Link:** MBTI notably lacks a measure for **Emotionality/Neuroticism** (negative emotional traits).
+
+Would you like to see which **specific HEXACO traits** are most linked to your own MBTI type?
+
+- [link](https://www.reddit.com/r/AcademicPsychology/comments/f25tk5/mbti%5Fhexaco/)\
+  MBTI & HEXACO : r/AcademicPsychology - Reddit\
+  Its commercial success is just that: commercial success, not actual validity of anything scientific. ... Like others have said MBT...\
+  Reddit
+- [link](https://www.researchgate.net/publication/352209314%5FBig-Five%5FMPTI%5FEysenck%5For%5FHEXACO%5FThe%5FIdeal%5FPersonality%5FModel%5Ffor%5FPersonality-aware%5FRecommendation%5FSystems)\
+  Big-Five, MPTI, Eysenck or HEXACO: The Ideal Personality ...\
+  \* Another personality model rarely used in personality computing is the Myers Briggs Type Indicator (MBTI) \* \[21], unlike Big-Five...\
+  ResearchGate
+- [link](https://www.youtube.com/watch?v=qrfFPx4K-p0)\
+  The HEXACO Model: Insights into Personality and Emotional ...\
+  The HEXACO model has added honesty and humility to the five-factor model. This addition addresses the moral and ethical dimensions...\
+  12:32\
+  YouTube·Darren F Magee
+
+Show all
+
+alternatives
+
+If you're looking for alternatives to the HEXACO and MBTI models, your choice depends on whether you value **scientific accuracy** for research or **practical application** for the workplace and personal growth.
+
+Scientifically Backed Alternatives
+
+These models are highly regarded in academic psychology for their reliability and predictive power.
+
+- **Big Five (OCEAN Model)**: The most widely used and scientifically validated framework in psychology. It measures five broad traits: Openness, Conscientiousness, Extraversion, Agreeableness, and Neuroticism.
+- **Revised NEO Personality Inventory (NEO-PI-R)**: A detailed version of the Big Five that breaks the five main traits down into 30 specific "facets" for a more granular view.
+- **16 Personality Factor Questionnaire (16PF)**: Developed by Raymond Cattell, this measures 16 primary personality factors that can be combined to give a comprehensive profile.
+- **Eysenck Personality Questionnaire (EPQ)**: Focuses on three main dimensions: Extraversion, Neuroticism, and Psychoticism (associated with creativity and risk-taking).
+
+Workplace & Practical Alternatives
+
+These assessments are popular in business for team building, leadership development, and improving communication.
+
+- **DiSC Assessment**: Categorizes behavior into four styles: **D**ominance, **I**nfluence, **S**teadiness, and **C**onscientiousness. It is a favorite for workshops and conflict resolution.
+- **CliftonStrengths (StrengthsFinder)**: Identifies an individual's top 5 natural talents from a list of 34 themes. It focuses on maximizing what you're already good at rather than fixing weaknesses.
+- **Hogan Personality Inventory (HPI)**: Specifically designed for business, it predicts how well people will perform in various job roles and leadership positions.
+- **Herrmann Brain Dominance Instrument (HBDI)**: A cognitive assessment that identifies "thinking preferences" (Analytical, Structural, Relational, and Innovative) to help teams collaborate better.
+
+Personal Growth & Motivation Alternatives
+
+- **Enneagram**: Categorizes personality into nine types based on core motivations, fears, and internal drivers. While popular for self-awareness, it lacks the scientific rigor of the Big Five or HEXACO.
+- **VIA Character Strengths**: Focuses on 24 character strengths (like honesty, bravery, and gratitude) that contribute to a fulfilling life and positive work environment.
+
+Are you looking for an alternative for **hiring**, **team building**, or **self-discovery**?
+
+AI responses may include mistakes. For financial advice, consult a professional. [Learn more](https://support.google.com/websearch?p=aimode\&gl=us)
+
+- [link](https://www.workstyle.io/best-personality-test#:~:text=1.,Workplace%20DISC%20Test)\
+  The 23 Best Personality Tests In Ranking Order (2025 Update)\
+  Jul 3, 2018 — Here are the most popular personality tests and how to use them: \* 1. Truity. Established in 2012, Truity is a popular test that h...\
+  WorkStyle profile
+- [link](https://www.thinkherrmann.com/whole-brain-thinking-blog/myers-briggs-alternatives/#:~:text=The%20Herrmann%20Brain%20Dominance%20Instrument,work%20environments%20and%20business%20challenges.)\
+  Best Myers-Briggs Alternatives: Scientific & Workplace Ready\
+  Mar 7, 2025 — The MBTI's shortcomings include: \* Lack of Scientific Validity. One of the biggest concerns with MBTI is its lack of scientific va...\
+  Think Herrmann
+- [link](https://www.deepersignals.com/blog/guide-popular-online-personality-tests-for-work)\
+  7 Popular Personality Tests for Work - Deeper Signals\
+  Sep 5, 2024 — Get insights on how these tests can help in personal and professional development. \* 1. Myers-Briggs Type Indicator (MBTI) The Mye...\
+  Deeper Signals
+
+Show all
+
+#
+
+hexaco model test
+
+The **HEXACO Personality Inventory-Revised (HEXACO-PI-R)** is <mark style="border-radius: 4px; background-size: 200% 100%; padding: 0px 2px; animation: 0.75s cubic-bezier(0.05, 0.7, 0.1, 1) 0.25s 1 normal forwards running highlight-animation;">a psychometric test used to measure six major dimensions of human personality</mark>. You can take the official version of the assessment online through the [HEXACO-PI-R website](https://hexaco.org/hexaco-online).
+
+Core Dimensions Measured
+
+The test evaluates individuals based on the following six factors, which form the acronym HEXACO:
+
+- **Honesty-Humility (H):** Sincerity, fairness, greed avoidance, and modesty. High scorers are generally sincere and uninterested in status symbols; low scorers may be manipulative or feel entitled.
+- **Emotionality (E):** Fearfulness, anxiety, dependence, and sentimentality. High scores indicate a need for emotional support and sensitivity, while low scores suggest emotional resilience.
+- **eXtraversion (X):** Social self-esteem, social boldness, sociability, and liveliness. High scorers are outgoing and feel energized by social interaction.
+- **Agreeableness (A):** Forgiveness, gentleness, flexibility, and patience. This dimension measures tolerance versus anger-proneness.
+- **Conscientiousness (C):** Organization, diligence, perfectionism, and prudence. High scorers are disciplined and goal-oriented.
+- **Openness to Experience (O):** Aesthetic appreciation, inquisitiveness, creativity, and unconventionality. It measures an individual's preference for innovation and novelty.
+
+Test Formats and Administration
+
+- **Length:** Standard versions include the **HEXACO-100** (100 items) and **HEXACO-60** (60 items). There is also a 24-item **Brief HEXACO Inventory (BHI)** for quick assessments.
+- **Method:** Participants rate their agreement with statements (e.g., "I plan ahead and organize things") on a **5-point Likert scale**, ranging from "strongly disagree" to "strongly agree".
+- **Duration:** Most online versions take between **15 to 30 minutes** to complete.
+- **Availability:** Beyond the official researcher-led site, other providers like [TraitForward](https://traitforward.com/what-is-the-hexaco-model/) and [Test Candidates](https://www.testcandidates.com/personality-tests/personality/) offer materials for recruitment or personal use.
+
+How it Differs from the Big Five
+
+Unlike the traditional Five-Factor Model (OCEAN), HEXACO adds the **Honesty-Humility** factor, which specifically captures ethical and moral behaviors not fully represented in the Big Five. It also redefines Emotionality and Agreeableness to better capture traits like sentimentality and anger.
+
+Would you like more information on how to **interpret specific scores** or how this test is used in **recruitment**?
+
+- [link](https://hexaco.org/hexaco-online)\
+  Revised - The HEXACO Personality Inventory\
+  THE HEXACO PERSONALITY INVENTORY - REVISED. A MEASURE OF THE SIX MAJOR DIMENSIONS OF PERSONALITY. Kibeom Lee, Ph.D., & Michael C. ...\
+  The HEXACO Personality Inventory
+- [link](https://hexaco.org/)\
+  The HEXACO Personality Inventory - Revised\
+  Here you will find basic information and materials for the HEXACO Personality Inventory-Revised, an instrument that assesses the s...\
+  The HEXACO Personality Inventory
+- [link](https://en.wikipedia.org/wiki/HEXACO%5Fmodel%5Fof%5Fpersonality%5Fstructure)\
+  HEXACO model of personality structure - Wikipedia\
+  Subsequent lexical studies were conducted in other languages and, by comparing the results, six emergent factors were revealed in ...\
+  Wikipedia
+
+Show all
+
+simple test links
+
+For a simple and direct way to take the HEXACO test, you can use the following free online versions. Most take between **5 to 15 minutes** to complete.
+
+Official and Academic Tests
+
+- **[Official HEXACO-PI-R Online Survey](https://hexaco.org/hexaco-online)**: This is the official site maintained by the model's creators, Kibeom Lee and Michael C. Ashton. It offers the most scientifically accurate results and is widely used for research purposes.
+- **IPIP-HEXACO-60 (PsychKit)**: A streamlined, public-domain version containing **60 questions**. It typically takes about **5–10 minutes** and provides an immediate summary of your scores across the six dimensions.
+- **[PsyTests.org HEXACO-60](https://psytests.org/multi/hexacoBen.html)**: An archival, compact version of the 60-item test. It is designed for educational use and offers a simple interface for a quick self-assessment.
+
+Short & Alternative Versions
+
+- **[Personal-Tests (Short Version)](https://personal-tests.com/tests/hexaco-short)**: A simplified version for those who want a faster experience than the full 100-item inventory.
+- **[Quizzos 100-Question Quiz](https://quizre.com/quiz/1)**: A 100-question version that provides results after completion and is often used for gathering broad respondent data for personality research.
+
+Would you like to know more about the **Honesty-Humility** factor or how these tests compare to the **Big Five**?
+
+- [link](https://hexaco.org/hexaco-online#:~:text=The%20HEXACO%20Personality%20Inventory%20%2D%20Revised,Books%20%7C%20Contact%20the%20Authors%20%7C%20Donation)\
+  Revised - The HEXACO Personality Inventory\
+  The HEXACO Personality Inventory - Revised. THE HEXACO PERSONALITY INVENTORY - REVISED. A MEASURE OF THE SIX MAJOR DIMENSIONS OF P...\
+  The HEXACO Personality Inventory
+- [link](https://psychkit.org/ipip-hexaco-60/#:~:text=IPIP%2DHEXACO%2D60%20Free%20Test,tool%2C%20NOT%20a%20diagnostic%20instrument.)\
+  IPIP-HEXACO-60 Free Test (Public-Domain) | PsychKit™\
+  HEXACO Personality Test. ... This is a 60-question personality test that measures the six major dimensions of personality: Honesty...\
+  Psych Kit
+- [link](https://psytests.org/multi/hexacoBen.html#:~:text=Online%20version%20of%20the%20HEXACO,educational%20and%20entertainment%20use%20only.)\
+  Personality Inventory HEXACO-PI-R-60\
+  Online version of the HEXACO Personality Inventory, a self-report measure based on the HEXACO model of personality structure. Deve...\
+  Psytests.org
+
+Show all
+
+free?
+
+Yes, the standard academic and public-domain versions of the HEXACO test are **completely free** for individual use.
+
+Free Test Options
+
+- **[Official HEXACO-PI-R](https://hexaco.org/hexaco-online)**: Free to take online. While the materials are primarily for researchers, individuals can access the survey directly on their site at no cost.
+- **[PsychKit (IPIP-HEXACO-60)](https://psychkit.org/ipip-hexaco-60/)**: A free, public-domain version. It is anonymous, takes about 5–10 minutes, and does not require a paid account.
+- **[PsyTests.org](https://psytests.org/multi/hexacoBen.html)**: Provides a free, anonymous assessment for educational and personal entertainment purposes.
+- **[Quizzos](https://quizre.com/quiz/1)**: A free 100-question quiz where results are provided immediately after completion.
+
+When It’s Not Free
+
+While personal and academic research use is free, **professional versions**—such as those used by employers for recruitment or pre-employment screening—often require a paid license or a fee per candidate through platforms like [Test Candidates](https://www.testcandidates.com/personality-tests/personality/) or [Graduates First](https://www.graduatesfirst.com/hexaco-personality-tests).
+
+Would you like help **interpreting your results** once you've finished one of these free tests?
+
+- [link](https://high5test.com/hexaco-personality-test/#:~:text=Is%20HEXACO%20better%20than%20the,concise%20set%20of%2060%20questions.)\
+  HEXACO Personality Test: Free Online Alternative Assessment\
+  \* Growth Tracking. Tracks how you progress in your personal development. \* 360 Review. Get an external view on what you are great ...\
+  HIGH5 Strengths Test
+- [link](https://psychkit.org/ipip-hexaco-60/#:~:text=IPIP%2DHEXACO%2D60%20Free%20Test,%2C%20Conscientiousness%2C%20Openness%20%7C%20PsychKit%E2%84%A2)\
+  IPIP-HEXACO-60 Free Test (Public-Domain) | PsychKit™\
+  IPIP-HEXACO-60 Free Test (Public-Domain) | Honesty-Humility, Emotionality, Extraversion, Agreeableness, Conscientiousness, Opennes...\
+  Psych Kit
+- [link](https://www.testcandidates.com/personality-tests/personality/)\
+  Best Hexaco Personality Test To Shortlist Applicants \[Free]\
+  Our pre-employment tests let you drill down to the best candidates at the click of a button. \* Find those candidates who will exce...\
+  Test Candidates
+
+Show all
