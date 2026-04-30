@@ -9692,6 +9692,187 @@ i could invest more, but it's too much manual work, where idk what to do. it's g
 
 ai gen porn or real human?
 
+15 40 watch adhensiontek on msft bob.
+
+16 40 research how to donate on polymarket. put 3 usd in polymarket. ~~(17 00)~~ 17 20
+
+- does polymarket support auto close on certain price wo manual scripting (if not, end)
+- solana, sp500, and nasdaq in the past 1y <!-- history rhymes. pattern matters. you could know like its volatility even if emh disproves your possible edge. -->
+
+why it's only 2.35 usd after its internal process?
+
+unexpected, phantom popups a few times but always "invalid api key".
+
+metamask works. but it's intransparent. 
+
+it tells me i should statisfy
+
+- at least 1 usd for any operation
+- at least 5 shares when limiting
+
+only after i touch the constraint.
+
+bet 5 shares on google as sota llm in the end of may at 28 c w limit. limit sell at 50 c.
+
+17 20 surf and archive twitter, tg. (17 40)
+
+```
+Nickel Angel✨, [4/30/26 9:03 AM]
+其实开场那段话我反而能让我感觉到这似乎是一位在 ai 或 agent 出现之前的计算机方面从业多年的教师……他在分享他的真实感受，我感觉是可以引起人共鸣的，从而能让学生们更好的去听接下来的话……
+虽然他只提到了 ai 等等技术的发展带来的坏的一面，但是我感觉 ai 和 agent 至少在表面上和之前计算机学科的东西不太一样，却又能带来工作方式和工作效率的另一次惊人的提示和变革，感觉这位老师或者说大部分学生有这样心理也无可厚非
+
+澪, [4/30/26 10:41 AM]
+也许你们中的不少人仍对计算机科学抱有幻想，但我想说，这门学科早已不像过去那般理想主义了。即使在过去，也不是这样。google 作为全世界最大的科技公司，通过广告和 seo，并购竞争者，建立起自己的商业帝国，尽管它曾经也是从硅谷的车库里走出来的。但是在过去，我们还能说，我们在建造确定性的某种东西，我们确定它们能有利于人类的福祉。
+在硅谷，我们曾经说，we make this world a better place。可是我们现在真的还能这么说吗？几家独角兽公司正在制造一种虚假繁荣，使得资本将资源无限制倾斜在它们身上，而造成了分配上的不平等。因为 llm 的存在，token 的分配不均匀，造成了一种新的不平等。无论你是否看好 llm 的前景，但它的确带来了一部分生产力的提升——尽管只有一小部分人能够享受到这种成果。
+尽管我很不想承认，但计算机科学作为一门新质的、和技术有关的学科。它就是不可能和政治切割的。我们通过技术塑造世界，却也创造了各种各样的社会议题。今日简史中所探讨的那个大公司搜刮用户的资料，服务于自己的算力，大政府利用从未如此强大的人工智能监控自己的人民的时代，正在向我们走来。
+​在这样庞大的失控与不平等面前，我想让你们意识到你们正在学习的学科真正的价值。图灵创造的计算机，因为能够破解德军的 Enigma 机，而在二战格局的扭转上起到了重要作用。这些你们想必已经耳熟能详。即使放眼现在，如今 Anthropic 声称 Mythos 对网络安全造成威胁，却没有公开这款模型。计算机科学从来不是象牙塔里的游戏，它完全可以是改变权力格局的武器。
+在这个被 AI 冲击的新世界里，你们手中的武器，正是那些写在教科书上的名词——Robust（健壮性）、低耦合、可维护性。这些并非是老生常谈的陈词滥调，它们不仅没有过时，反而变得前所未有的重要。
+​如今，LLM 或许可以成为一个不知疲倦的 Coder，用极快的速度帮我们实现功能，但它也会以同样的速度生成堆积如山的技术债务。机器负责产出代码，但这些代码在现实世界中运行的直接责任人，依然是我们自己。我们捕捉那些 AI 无法理解的意图，负责划定系统的边界，守住工程学的底线。
+​你们在操作系统课程里学到的那些看似枯燥的架构内容，绝不仅仅属于过去。当你们真正试图去构建一个能够在复杂环境中独立思考、长期运行的 Agent System 时，就会发现，它本质上就是一个全新形态的 Runtime。Agent 需要一套机制来管理它的上下文，需要像内存层级一样去处理短期记忆与长期知识，需要优雅的调度来完成多任务的协同。AI 赋予了系统灵魂，而传统 OS 里的架构思维，正是支撑这个智能体稳固运转，所不可或缺的骨架。
+我想说的是，It’s a brave new world。如果你们看清了这些本质之后，仍然决定靠自己的力量去改变些什么，我祝福你们。因为我们是 builder，we make this world a better place, together.
+
+澪, [4/30/26 10:41 AM]
+我写了一段
+
+澪, [4/30/26 11:08 AM]
+我觉得那位 prof 的话更像是说给已经在行业内的 engineer 听的
+这有点像我给有相关背景的人说我自己在做的东西的时候，会习惯性略去很多 background context
+
+澪, [4/30/26 11:11 AM]
+对行业中的同行，特别是那些已感疲惫、甚至幻灭的工程师，他们需要的不是被点燃，而是被理解和被肯定。
+
+Nickel Angel✨, [4/30/26 11:22 AM]
+其实我感觉这段话怪怪的，不知道 tomiya 在这里写有什么用意
+（原文没有那么强调政治，而强调的是创造……
+我觉得老师肯定说这些话还是以学术角度说，或者说对这门学科纯粹的热爱对的角度，如果以这个背景提及政治反而会让学生听起来就像学计算机是一种政治投机……
+不可否认，计算机科学确实和政治密不可分，早在 ai 时代之前就有人提出了脸书帝国的概念，就是说一个富有影响力的社交平台有随意控制舆论，任意封禁用户的风险……但我认为这只是我们希望教授说出他没有提到，但是我们想说给学生们听的话
+
+oldherl, [4/30/26 11:24 AM]
+现实是很多为了技术来学计算机的人，在若干年后发现自己学的技术变成了政治的武器
+
+oldherl, [4/30/26 11:25 AM]
+我当年学冒泡、快排的时候连社交网络都没有哪……
+
+澪, [4/30/26 11:25 AM]
+因为我的前提是相信大家是为了理想主义 / 热爱来学的，因为我是这样的人
+
+oldherl, [4/30/26 11:27 AM]
+结果后来我竟然是靠跟踪用户、抓住用户的注意力来赚钱
+
+澪, [4/30/26 11:30 AM]
+我不认为直接提到房间里的大象有什么不妥，装作房间里没有大象才是更不妥的吧
+
+Nickel Angel✨, [4/30/26 11:30 AM]
+我感觉可能是计算机这个学科确实会比较特殊，虽然学的时候感觉和传统工科一样在学理工科方面的技术……
+但计算机行业大部分都算第三产业……也就是服务业，这确实是有种错位的感觉
+
+Nickel Angel✨, [4/30/26 11:31 AM]
+我觉得提到了大象造成了多大的影响也不算装作房间里没有大象（？）
+
+💮, [4/30/26 11:58 AM]
+有一个小妹妹问我大学选什么的时候我这样说的
+
+💮, [4/30/26 11:58 AM]
+最后她选择惹计算机
+
+💮, [4/30/26 11:58 AM]
+她说：计算机以后可以赚很多钱
+
+oldherl, [4/30/26 11:58 AM]
+这下好了，自由不自由不好说，至少无用的这一半是达到了（
+```
+
+<!-- a bit nonsensical, or boring. llm slop? -->
+
+```
+Crystal Cat, [4/30/26 5:05 PM]
+那应该只有哪一个ci机器把
+
+Crystal Cat, [4/30/26 5:06 PM]
+不过我把国内某chat平台给干了一下
+
+Crystal Cat, [4/30/26 5:06 PM]
+然后看了下他用啥显卡 跑了（
+
+oldherl, [4/30/26 5:06 PM]
+啊，哪个chat能运行代码的？
+
+Crystal Cat, [4/30/26 5:06 PM]
+让他写个程序并运行
+
+Crystal Cat, [4/30/26 5:06 PM]
+笑死
+
+Crystal Cat, [4/30/26 5:07 PM]
+然后程序里面请求某个东西（
+
+Crystal Cat, [4/30/26 5:08 PM]
+然后发现还是n卡 失望的摇了摇头
+
+oldherl, [4/30/26 5:08 PM]
+那是真的在运行还是模拟的
+
+Crystal Cat, [4/30/26 5:10 PM]
+真运行
+
+Crystal Cat, [4/30/26 5:10 PM]
+草
+
+Crystal Cat, [4/30/26 5:10 PM]
+他现在AI很多为了解决数学问提什么17+2=21这种bug
+
+oldherl, [4/30/26 5:10 PM]
+那么是哪个chat呢
+
+Crystal Cat, [4/30/26 5:10 PM]
+直接算数写程序
+
+Crystal Cat, [4/30/26 5:11 PM]
+你看chatgpt他只要一作数学旧写程序
+
+Crystal Cat, [4/30/26 5:11 PM]
+不然都是数学天才
+
+Crystal Cat, [4/30/26 5:11 PM]
+4+9=12
+
+Crystal Cat, [4/30/26 5:12 PM]
+之前我们还骗chatgpt跑speedtest
+
+Crystal Cat, [4/30/26 5:12 PM]
+他还真跑、
+
+Crystal Cat, [4/30/26 5:12 PM]
+还有netfilx哪个fast
+
+Crystal Cat, [4/30/26 5:12 PM]
+跑出来结果还真是可查证 刚跑的
+
+Crystal Cat, [4/30/26 5:12 PM]
+结果id验证
+
+Crystal Cat, [4/30/26 5:12 PM]
+chat的宽带挺大的
+
+Crystal Cat, [4/30/26 5:12 PM]
+能跑到8Gbps
+
+澪, [4/30/26 5:13 PM]
+确实它只要不写程序就开始胡说八道
+```
+
+18 20 take a simple HEXACO. (18 40) read the notes.
+
+19 20 invest 1 usd on `GOOGLx` on okx web3. research memecoins.
+
+unlike phantom, it does not limit min order 10 usd. (though it's unpleasant with high contrast and neon colors)
+
+19 40 research ux frameworks.
+
+20 00 research laws. 21 00
+
+> llms priorize laws/tos instead of technical reality by default, which should be normalized.
+
 
 
 <!-- timebox, plan. -->

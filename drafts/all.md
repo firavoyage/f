@@ -193,10 +193,7 @@ ui/ux design:
 - design ui principles intuition attention
 - information architecture
 - color formats chroma saturation
-
-math:
-
-- birthday paradox
+- measurement framework basic heart honeycomb core web vitals dora space
 
 linguistics:
 
@@ -258,12 +255,6 @@ entertainment:
 - share ideas online
 - manifold
 
-legacy:
-
-- mistral
-
----
-
 pure:
 
 - chinese
@@ -273,6 +264,11 @@ pure:
 - chemistry
 - history
 - geography
+- ...
+
+math:
+
+- birthday paradox
 
 politics:
 
@@ -291,6 +287,7 @@ economics:
 - investing leverage liquid meaning k line meaning wick pattern science
 - not backed by yc movement
 - investing prediction market strategy swap to sol
+- investing memecoins reality
 
 society:
 
@@ -304,8 +301,11 @@ rhetoric:
 
 laws:
 
+- lichess chessdotcom icons
 - cookie banners
 - bisq security
+- criticism compliance tax legal tax
+- legal system dirty secret
 
 glaze:
 
@@ -327,24 +327,23 @@ egg:
 
 - twitter third party clients
 
-humility:
+humility naming:
 
-- naming
-  - socratic teaching
-  - socratic method
-  - daoism idea
-  - facebook posters <!-- the journey is 1% completed -->
-  - nat friedman <!-- we know less than we think -->
-  - software engineering root of all evil <!-- forgetting that software is made by humans, for humans (onlined: Premature optimization.) -->
-  - life journey think create organize <!-- attention → intention → structure → humility -->
-  - oi slangs
-  <!-- - `mistral` sub concepts of wisdom) -->
-  - (some podcast transcripts)
-  - (sequoiacap our history)
-  - is honesty a part of humility
-  - compare humility and modesty
-  - hexaco model
-  - wording humility
+- socratic teaching
+- socratic method
+- daoism idea
+- facebook posters <!-- the journey is 1% completed -->
+- nat friedman <!-- we know less than we think -->
+- software engineering root of all evil <!-- forgetting that software is made by humans, for humans (onlined: Premature optimization.) -->
+- life journey think create organize <!-- attention → intention → structure → humility -->
+- oi slangs
+<!-- - `mistral` sub concepts of wisdom) -->
+- (some podcast transcripts)
+- (sequoiacap our history)
+- is honesty a part of humility
+- compare humility and modesty
+- hexaco model
+- wording humility
 
 <!-- 
 
@@ -414,3 +413,7 @@ humility:
   - creating design system for any project
 
 -->
+
+legacy:
+
+- mistral

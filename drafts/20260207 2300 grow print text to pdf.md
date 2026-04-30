@@ -656,11 +656,7 @@ Telegram has implemented strict rate limiting for third-party clients, especiall
 
 ---
 
-不好意思开个炮。
-
-Android 之魂早已烟消云散。
-
-作为一个整个初中都在玩 Android、写 Android 系统优化 App 的人，我对此很有发言权。以前我们对 Android 和 Google 的开放性是很向往的，也常以 "don't be evil" 作为座右铭，并且将 Google 的闭源 GMS 视为 Android 最重要的一部分，等等。当然，这也是我自己一段充实且精彩的青春；尽管 Android 对于我而言早已走进了坟墓，这段经历仍然值得怀念。
+作为一个整个初中都在玩 Android、写 Android 系统优化 App 的人，我对此很有发言权。以前我们对 Android 和 Google 的开放性是很向往的，也常以 “don’t be evil” 作为座右铭，并且将 Google 的闭源 GMS 视为 Android 最重要的一部分，等等。当然，这也是我自己一段充实且精彩的青春；尽管 Android 对于我而言早已走进了坟墓，这段经历仍然值得怀念。
 
 曾经那群人自称为 “搞机玩家”，他们热衷于给自己的手机刷上千奇百怪的 ROM、体验各种好玩的 Xposed 插件。从第一次看到 CyanogenMod 的开机动画到含泪迎接 LineageOS，从唾骂魔趣的收费 ROM 到安装大杂烩 Resurrection Remix，从 WeChatUnrecalled 到微 X 模块，从经典老牌 Nova Launcher 到后来的 Lawnchair，从大家都用的 SuperSU 到 Magisk，数不胜数。那个时代的 Android 是混乱的，也是多彩和自由的。
 
@@ -678,7 +674,7 @@ Android 不再需要 Root 了。2019 年的时候，我就通过和一些优化 
 
 压死骆驼的最后一根稻草。2025 年中旬，Google 宣布 2026 年 9 月开始，用户自行安装 APK 需要开发者前往 Google 实名认证，否则拒绝用户安装。2025 年中下旬，Android 16 发布，而发布 10 多天后 AOSP 源代码仍然没有公开，反而以 NDA 的方式分享给了手机厂商进行二创。我想，作为一个从 2016 一路走来，为 Android 的发展做出过微小贡献的我，此时千言万语都已经难以表达心中的失望了吧。
 
-未来真的可期吗？或许在 Google 的眼中，Android 的未来是光明的。它摆脱了各种流氓软件的群魔乱舞，不再需要用户来 Root，有着不少的用户和无数的开发商为其平台开发软件，可以继续和 iOS 竞争。或许在 Google 的眼中，Android 的自由程度丝毫不逊当年。用户仍然可以将系统配色由绿色改为粉色，仍然可以不用 Google 签名就开发调试 App，仍然可以更改桌面布局，仍然可以新建来宾用户，甚至开发者可以更加稳定地信任这个平台、通过 Play Integrity 确保设备没有被他们的主人非法篡改。也或许，在 Google 的眼中，Android 仍然是非常开放的。仍然会有无数手机厂商对这个市场趋之若鹜，从 Google 那里签署 NDA 获得 Android "Open Source" Project 的源码并进行二创然后添加第三方功能，为市面上增加一个新的手机型号，继续维持这份开放包容和谐的生态环境；第二年 Google 还可以 “整顿市场” 为名将好用的第三方功能收入麾下，成为 Android "Open Source" Project 的一部分。未来是多么可期？
+未来真的可期吗？或许在 Google 的眼中，Android 的未来是光明的。它摆脱了各种流氓软件的群魔乱舞，不再需要用户来 Root，有着不少的用户和无数的开发商为其平台开发软件，可以继续和 iOS 竞争。或许在 Google 的眼中，Android 的自由程度丝毫不逊当年。用户仍然可以将系统配色由绿色改为粉色，仍然可以不用 Google 签名就开发调试 App，仍然可以更改桌面布局，仍然可以新建来宾用户，甚至开发者可以更加稳定地信任这个平台、通过 Play Integrity 确保设备没有被他们的主人非法篡改。也或许，在 Google 的眼中，Android 仍然是非常开放的。仍然会有无数手机厂商对这个市场趋之若鹜，从 Google 那里签署 NDA 获得 Android “Open Source” Project 的源码并进行二创然后添加第三方功能，为市面上增加一个新的手机型号，继续维持这份开放包容和谐的生态环境；第二年 Google 还可以 “整顿市场” 为名将好用的第三方功能收入麾下，成为 Android “Open Source” Project 的一部分。未来是多么可期？
 
 只可惜，在我看来，Android 之魂，随着那段青春一起，早已烟消云散。
 

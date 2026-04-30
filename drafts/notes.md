@@ -2699,3 +2699,26 @@ mispricing.
 (?)
 
 ---
+
+the trading graph on google ai mode is more clearer.
+
+(the same as the classic google search)
+
+---
+
+the former should imply the latter, not vice versa.
+
+consistent. predictable. logical/natural/pattern like. parallel.
+
+e.g.
+
+good: 5w1h
+
+bad: foo 是什么, 为什么选择 foo, 如何 foo, foo 多贵
+
+good: they are, she is
+
+bad: there are two birds, there is an apple. does it matter.
+
+
+

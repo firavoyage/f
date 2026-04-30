@@ -1,7 +1,3 @@
-print.
-
----
-
 随着 Skills+CLI 逐渐围剿 MCP，各类专门针对 Agent 的 CLI 工具也变得不那么 Unix，变得 stateful 了起来。
 
 我原本想着这种时候这些新工具应该会活用 XDG_RUNTIME_DIR 或者 XDG_STATE_HOME，结果这群工具全 tm 在 HOME 下面新建一个 dotfile/dir 开始拉屎？
@@ -34,10 +30,34 @@ print.
 
 ---
 
-又是一年生日 🎂
+又是一年生日
 希望在这样的时光洪流中
 也能继续为之动容
 继续期许着下一次相遇 ——
+
+---
+
+作为一个整个初中都在玩 Android、写 Android 系统优化 App 的人，我对此很有发言权。以前我们对 Android 和 Google 的开放性是很向往的，也常以 “don’t be evil” 作为座右铭，并且将 Google 的闭源 GMS 视为 Android 最重要的一部分，等等。当然，这也是我自己一段充实且精彩的青春；尽管 Android 对于我而言早已走进了坟墓，这段经历仍然值得怀念。
+
+曾经那群人自称为 “搞机玩家”，他们热衷于给自己的手机刷上千奇百怪的 ROM、体验各种好玩的 Xposed 插件。从第一次看到 CyanogenMod 的开机动画到含泪迎接 LineageOS，从唾骂魔趣的收费 ROM 到安装大杂烩 Resurrection Remix，从 WeChatUnrecalled 到微 X 模块，从经典老牌 Nova Launcher 到后来的 Lawnchair，从大家都用的 SuperSU 到 Magisk，数不胜数。那个时代的 Android 是混乱的，也是多彩和自由的。
+
+国产系统 ADUI 的系统级广告推送、XMPushService 的胡乱启动、拍照广播的自动唤醒、友盟广告的持久化 ID，都成为了这一代玩家心中的梦魇。于是，一群开发者开始在这个自由的平台上尽情舞蹈，让 Android 变得更加干净的同时也增加了玩机的乐趣。绿色守护、阻止运行、MyAndroidTools、冰箱、SDMaid 几乎成了那个时代的标配。后来，我们又有了 AppOps、存储重定向、Shizuku。很幸运，我也是这些开发者中的一员，做过一些微小的工作。
+
+曾经有人说 “Android 那样 broken by design 就真的好吗？” 的确，需要用户手动使用 Root 权限来让手机不发热确实是历史的局限性。随着 Android 的发展，很多系统工具都走入了历史。时代变了嘛，不是任何人的错，只是留下了很多值得回头看的记忆罢了。然而，Google 做的还远不止 “优化 Android”，而是将它慢慢推向封闭的坟墓。
+
+Android 不再需要 Root 了。2019 年的时候，我就通过和一些优化 App 开发者的沟通中了解到，他们的 App 在被 Google Play 反复无厘头地下架，原因都是诸如 “可能对设备有害” 云云。我不知道 Google Play 下架这些软件的真实目的是什么，但如果我们做一个最坏的推测，那么或许是 Android 已经不需要这些 App 来优化了吧。同时，随着系统权限和 Google Play 的越发收紧，越来越多曾经无需 Root 的自定义工具也变得举步维艰，而 Termux 便是最好的证明。只可惜，他们成为了 “整顿生态” 路上无辜的牺牲品。
+
+开源？难说。往 AOSP 中增加私有的 Google API 早已屡见不鲜。Android Pie 发布时，Android 引入了一个 Digital Wellbeing 的功能。通过阅读系统源码得知，AOSP Framework 中新增了很多专门为 Digital Wellbeing 使用的 API 和权限。这些 API 都不公开，也没有文档记载（除了 Javadoc 以外）。他们生来就是为 Digital Wellbeing 量身定制的。而 Google 也将 Digital Wellbeing 打造为一个 Android 9 的 “新功能”。然而，它真的是 Android 的功能吗？恐怕不是。它只是闭源的 GMS 中的一个组件，需要厂商和 Google 签署合同才能植入，且完全属于 Google 所有，并不是 AOSP 的组件。
+
+左手开放，右手封闭。还有 SafetyNet，曾经它只局限于 Android Pay 等银行软件，也很容易隐藏；而在 2025 年，Play Integrity 被无限扩大：不光用户往往需要借助泄漏的私钥来勉强通过验证，更有越来越多的银行、影视、游戏等软件开始借助 Play Integrity 确保用户没有 Root 他们的设备。这里我们不禁要问：用户购买了手机，为什么不能 Root 呢？Google 一边说 Android 是 “开放” 的，一边大力推广 Play Integrity，究竟是开放在哪了呢？
+
+以安全为名，夹缝中求生存。2019 的时候和一位资深 Android 开发者聊天，其表示 Google 显然不会自己禁止解锁 Bootloader，因为将解锁用户夹死是厂商的利益所在。现在看来，这些话千真万确。在 Android 设备厂商和 SafetyNet 的双重驱使下，解锁 Bootloader 变得越来越不可能。曾经到手就能解锁的小米已经玩起了跑酷，就连之前自带 CyanogenOS、被誉为刷机小王子的 OnePlus 也开始了解锁认证；同时，越来越多的用户放弃在 Android 上运行银行和游戏等 App，也有一些用户开始尝试更多更复杂的 Root 隐藏方案。当然也有我，从 2019 开始就没有换过手中的 OnePlus 7 Pro、从 2021 就再也没有安装过 GMS 了。
+
+压死骆驼的最后一根稻草。2025 年中旬，Google 宣布 2026 年 9 月开始，用户自行安装 APK 需要开发者前往 Google 实名认证，否则拒绝用户安装。2025 年中下旬，Android 16 发布，而发布 10 多天后 AOSP 源代码仍然没有公开，反而以 NDA 的方式分享给了手机厂商进行二创。我想，作为一个从 2016 一路走来，为 Android 的发展做出过微小贡献的我，此时千言万语都已经难以表达心中的失望了吧。
+
+未来真的可期吗？或许在 Google 的眼中，Android 的未来是光明的。它摆脱了各种流氓软件的群魔乱舞，不再需要用户来 Root，有着不少的用户和无数的开发商为其平台开发软件，可以继续和 iOS 竞争。或许在 Google 的眼中，Android 的自由程度丝毫不逊当年。用户仍然可以将系统配色由绿色改为粉色，仍然可以不用 Google 签名就开发调试 App，仍然可以更改桌面布局，仍然可以新建来宾用户，甚至开发者可以更加稳定地信任这个平台、通过 Play Integrity 确保设备没有被他们的主人非法篡改。也或许，在 Google 的眼中，Android 仍然是非常开放的。仍然会有无数手机厂商对这个市场趋之若鹜，从 Google 那里签署 NDA 获得 Android “Open Source” Project 的源码并进行二创然后添加第三方功能，为市面上增加一个新的手机型号，继续维持这份开放包容和谐的生态环境；第二年 Google 还可以 “整顿市场” 为名将好用的第三方功能收入麾下，成为 Android “Open Source” Project 的一部分。未来是多么可期？
+
+只可惜，在我看来，Android 之魂，随着那段青春一起，早已烟消云散。
 
 ---
 

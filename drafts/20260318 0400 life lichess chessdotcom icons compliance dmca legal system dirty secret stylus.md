@@ -1,3 +1,5 @@
+<!-- llms priorized laws/tos instead of technical reality by default, which should be normalized. profit > people. -->
+
 <!-- worked eventually. the stylus extension. glad the site (lichess) is well designed and stable. -->
 
 <!-- actually after installation, i dont find chessdotcom icons superior anymore. but i still think it's good to be free. and from a practical standpoint, it's good as a default choice (actually it could be easier to install if lichess supports "run this script/css on the site, without bothering mv3 and extensions, as google seems to stand with firms instead of putting humans/users first. data urls are good."). chess should be fun and relaxing. no need to be high constrast or geeky. -->
