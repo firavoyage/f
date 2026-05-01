@@ -232,18 +232,6 @@ reproduce?
 
 ---
 
-file lib.
-
-tell it how to handle errors (div zero pattern)
-
-(you might repeat div zero on var/prop name and type. but that's generally acceptable?)
-
-(you dont have to wrap, but it's good to avoid magic consts and export the errors)
-
-> rust builtin error types in std (e.g. file)
-
----
-
 uninteractive widgets.
 
 - math graph
@@ -270,13 +258,21 @@ github 3p ui.
 
 ---
 
-redundant key.
-
----
-
 humility: export, reproduce, copy and paste the prompt & result, proxy.
 
 ---
+
+file lib.
+
+tell it how to handle errors (div zero pattern)
+
+(you might repeat div zero on var/prop name and type. but that's generally acceptable?)
+
+(you dont have to wrap, but it's good to avoid magic consts and export the errors)
+
+> rust builtin error types in std (e.g. file)
+
+...
 
 rm the "files" tab.
 
@@ -311,21 +307,6 @@ though, ive no idea if those taken down within 1d are valuable for archival.
 
 ---
 
-probability:
-
-<!-- accurate, accuratism -->
-
-better polymarket.
-
-tells you why.
-
-- accuracy +- n%, or distribution.
-- past data (not an overall accuracy with many obvious one inside)
-- news
-- commentary
-
----
-
 spec template.
 
 ---
@@ -336,11 +317,13 @@ typo lib?
 
 a bigger and better lib?
 
----
+build a cli for that.
 
-pr nat.
+learn
 
-(awa letter to students)
+- cli
+- typo lib
+- time lib (file)
 
 ---
 
@@ -348,9 +331,6 @@ export twitter. research cli. or build my own.
 
 ---
 
-sync tg.
-
-
-
+print.
 
 

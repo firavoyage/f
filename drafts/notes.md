@@ -2720,5 +2720,11 @@ good: they are, she is
 
 bad: there are two birds, there is an apple. does it matter.
 
+---
 
+binance uses `do-not-reply` instead of the common `noreply` (e.g. github) on email.
+
+smart. unconventional. clearer.
+
+---
 

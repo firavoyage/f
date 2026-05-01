@@ -9875,6 +9875,8 @@ unlike phantom, it does not limit min order 10 usd. (though it's unpleasant with
 
 may 2026
 
+01
+
 00 20 invest 10 usd on `QQQx` on okx.
 
 there are several real nasdaq stocks on different chains, (tokens, generally malicious, ranks higher on search). it would be more helpful to choose the right one for me instead of complaining about incompability.
@@ -9902,6 +9904,144 @@ no idea why phantom warns me.
 complete within a few minutes. (as ive prepared the material a few mo before)
 
 it passes the facial scan w my laptop camera?!
+
+16 00 surf zhihu. find a guy showing off trading results on zh-cn stock mkt. 16 20 discuss stock stuff with the family.
+
+lots of prayers.
+
+a story: a frnd of my family trades on us stock market, only finding the 5 usd fee for each action after seeing lots of fake growth.
+
+17 00 install a few trading apps on android via aurora store.
+
+most work well. polymarket says it must be installed from play (after showing a brilliant opening screen animation).
+
+only binance appears its original ver. on play (jp proxy) and unusable us ver. on aurora (likely us rev proxy backend).
+
+polymarket does not even show up on play (yet no geo block transparency), but integrated in metamask.
+
+metamask (n okx) auto completes my recovery phrase words (it's a finite set mapping to numbers) while phantom doesnt.
+
+apps are generally feature poor.
+
+17 20 chat.
+
+```
+sendProc, [5/1/26 12:07 PM]
+这玩意到底有多少人在用（
+
+sendProc, [5/1/26 12:08 PM]
+身边统计学一下 但凡电脑上有CFW的全是用的这个
+
+Sunny Pai, [5/1/26 12:50 PM]
+我自建的，身边也没听说过有
+
+Cafe, [5/1/26 5:20 PM]
+clash for windows，死掉的曾经用户最多的 clash 桌面图形客户端
+
+Cafe, [5/1/26 5:20 PM]
+怎么消息删了（
+
+f, [5/1/26 5:20 PM]
+if you are using ayugram, you can view my deleted msgs via the "spy" feature.
+
+f, [5/1/26 5:21 PM]
+well... im not using windows. xd.
+
+Cafe, [5/1/26 5:22 PM]
+名为 for windows，实则全桌面平台（
+
+Cafe, [5/1/26 5:22 PM]
+clash for windows for linux
+
+f, [5/1/26 5:23 PM]
+im using clash verge. (ive used v2raya before)
+
+f, [5/1/26 5:24 PM]
+btw, what's wrong w it?
+
+from my recent test, all proxies (incl. what im currently using awa some redundancy) work well.
+
+even free nodes on github are fine.
+```
+
+```
+f, [4/30/26 11:58 PM]
+> It allows an unprivileged local user to gain full root access.
+
+No need to patch as single user laptop. 
+
+Btw, What do these servers do?
+
+Do they run untrusted code using linux user level sandbox?
+
+猫离子 猫, [5/1/26 12:07 AM]
+考公吧
+
+猫离子 猫, [5/1/26 12:08 AM]
+这专业除了考公和科研基本没有读的，或者是调剂了
+
+葵野 苺 ✨🍓🏳️‍⚧️🇺🇳, [5/1/26 12:12 AM]
+学小语种的应该挺多人热爱的吧（幻想时间
+
+葵野 苺 ✨🍓🏳️‍⚧️🇺🇳, [5/1/26 12:13 AM]
+实际发现语言专业的学生里也有不少都是志愿非首选项，恰好录到了而已
+
+葵野 苺 ✨🍓🏳️‍⚧️🇺🇳, [5/1/26 12:13 AM]
+而我高考志愿全是填的小语种（）
+
+猫离子 猫, [5/1/26 12:24 AM]
+最后学了啥
+
+葵野 苺 ✨🍓🏳️‍⚧️🇺🇳, [5/1/26 12:25 AM]
+学了日语，其实对希腊语、藏语更感兴趣
+
+猫离子 猫, [5/1/26 12:25 AM]
+日语也算小语种吗9
+
+葵野 苺 ✨🍓🏳️‍⚧️🇺🇳, [5/1/26 12:26 AM]
+对的）
+
+Staph. epidermidis, [5/1/26 12:26 AM]
+除了英文都是吧
+
+💮, [5/1/26 12:34 AM]
+我妹学经济学要学树学
+
+💮, [5/1/26 12:34 AM]
+我给她准备惹代数学家套餐
+
+💮, [5/1/26 12:35 AM]
+一个月的代数学家咖啡
+
+Veronika 🦊, [5/1/26 9:53 AM]
+my Ubuntu server was not vulnerable due to my apparmor setup,,,
+
+小桂桂的回忆录 📒, [5/1/26 11:51 AM]
+...听到隔壁在超级大声放 Gangnam Style 😨
+
+今年是何年
+
+Chtholly Nota Seniorious, [5/1/26 1:19 PM]
+没放那个谁谁谁 is a master of goon 就该感恩了
+```
+
+19 20 test the phantom fee with about 1 usd.
+
+with 30x or 40x leverage, the 0.1% fee is no longer neglectable. it's almost always a loss even if it could easily grow past 5% or 10%, not counting the fee.
+
+btw, no idea how to auto close a token on phantom? (upd: i have to use jupiter.)
+
+how dare a prominent trading platform could exist wo the limit feature.
+
+jupiter need at least 10 usd to place a limit, whether buy or tp. but it only shows the minimum on the tp button. for buying below market, it shows an error msg instead. yet for some reason, not all tokens support it. though technically i think it's quite easy.
+
+22 20 invest 10 usd on `TSLAx`. 22 20 invest `3.25` usd of perps on `GOOGL` with 10x leverage long and `100%` growth tp limit.
+
+perps are phantom specific (incompatible everywhere else), with an unnecessay fee, yet not transferable under 5 usd. rather bet them all in.
+
+btw, the auto close price does not sync with the leverage.
+
+23 00 invest 10 usd on 
 
 
 
