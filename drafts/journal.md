@@ -9873,6 +9873,36 @@ unlike phantom, it does not limit min order 10 usd. (though it's unpleasant with
 
 > llms priorize laws/tos instead of technical reality by default, which should be normalized.
 
+may 2026
+
+00 20 invest 10 usd on `QQQx` on okx.
+
+there are several real nasdaq stocks on different chains, (tokens, generally malicious, ranks higher on search). it would be more helpful to choose the right one for me instead of complaining about incompability.
+
+no idea why phantom warns me.
+
+01 00 dl `Seiji Igusa`.
+
+01 00 read yuuta blog for a while.
+
+01 20 research tor bridge for bisq2.
+
+02 00 export zhihu fav.
+
+<!-- ive done it a few times. --> i could write a script today. but i did not. <!-- it's fast though. i just loop "tab, click" about twenty times. -->
+
+03 20 prepare to print some quotes. 06 20
+
+<!-- i completely underest the time needed to manually reflect on each, even fetch, and group. -->
+
+04 40 research binance. reg n submit kyc.
+
+<!-- browse from: print, (i wanna fetch one tweet, ik it's from acbox, which is an emotional compliant on the real world), acbox twitter, recent rt, https://github.com/qqqqqf-q/Arkloop, author, author's org, https://github.com/Arkilo-Labs/Arkanis, binance api key on readme -->
+
+complete within a few minutes. (as ive prepared the material a few mo before)
+
+it passes the facial scan w my laptop camera?!
+
 
 
 <!-- timebox, plan. -->

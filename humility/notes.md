@@ -604,3 +604,8 @@ add disambi context if needed.
 
 ---
 
+vscode detects and warns abnormal linebreaks by default.
+
+and one click rm. (though it's an alert popup via sys dialog)
+
+---

@@ -111,6 +111,15 @@ yt-dlp \
   -o "_/Kent Nishimura/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
 ```
 
+Seiji Igusa
+
+```sh
+yt-dlp \
+  "https://music.youtube.com/playlist?list=OLAK5uy_lofX9-36UHxs7hfwoMEPFS8VTABwjUPx4" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  -o "_/Seiji Igusa/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
+```
+
 Kent Nishimura
 
 ```sh

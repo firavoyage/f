@@ -67,6 +67,7 @@ life:
 - ad hoc
 - github pages
 - invest phantom sp500
+- invest binance bypass kyc
 
 create something:
 
@@ -298,6 +299,7 @@ rhetoric:
 
 - change me mind js new boolean myth meaning rhetoric subject
 - absolute cinema
+- dont be evil
 
 laws:
 
