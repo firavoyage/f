@@ -10075,6 +10075,14 @@ current: <!-- excluding spam tokens -->
 - qqqx 10
 - sol 8
 
+22 00 buy a 1m ikea shark pillow and a pot of soil based wen zhu.
+
+for some reason, the ui becomes much cleaner and clearer after setting jp internationalization on taobao. though the product image is still quite promotional, and the crucial metadata are scattered everywhere in the details.
+
+i were about to buy clannad dango plushies, but i could not decide the size and where to put them.
+
+~~22 20~~ organize and archive today's memories and thoughts.
+
 
 
 <!-- timebox, plan. -->
