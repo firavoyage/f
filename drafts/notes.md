@@ -2728,3 +2728,16 @@ smart. unconventional. clearer.
 
 ---
 
+vscode has some fuzzy search.
+
+google has more extreme fuzzy search.
+
+---
+
+nat.org has changed through time.
+
+it's a good example input for project have.
+
+as text based
+
+---

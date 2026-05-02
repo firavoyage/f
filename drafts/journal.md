@@ -9214,7 +9214,7 @@ balance on metamask is often not synced. so weird.
 
 it's incompatible wo its extension, which often crashes.
 
-06 00 invest 15 usd of sp500 on phantom.
+06 00 invest 15 <!-- 14.29 actually, w trivial 0.01 fee --> usd of sp500 on phantom. 
 
 it's confusing why "enable trading" is grayed out. hovering shows nothing.
 
@@ -10025,6 +10025,8 @@ Chtholly Nota Seniorious, [5/1/26 1:19 PM]
 没放那个谁谁谁 is a master of goon 就该感恩了
 ```
 
+<!-- nerds love languages and linguistics, as seen on many social bios. e.g. menci's frnd links, estela (how did she learn catalan? is catalan spanish?). im really jealous! -->
+
 19 20 test the phantom fee with about 1 usd.
 
 with 30x or 40x leverage, the 0.1% fee is no longer neglectable. it's almost always a loss even if it could easily grow past 5% or 10%, not counting the fee.
@@ -10041,7 +10043,37 @@ perps are phantom specific (incompatible everywhere else), with an unnecessay fe
 
 btw, the auto close price does not sync with the leverage.
 
-23 00 invest 10 usd on 
+23 00 invest 10 usd on `GOOGLx` via jupiter.
+
+<!-- if i could, i would have used usd, instead of manually changing the sol value to map usd, which is meaningless even inaccurate. (yeah, i could have a dedicated app, which is quite easy, though i suppose you should have made it builtin) -->
+
+as recommended for low fee.
+
+24 00 dl `币安人生幸运、韧性与保护用户的回忆录(简体版) (赵长鹏)` and `Freedom of Money A Memoir of Protecting Users, Resilience, and the Founding of Binance (Zhao, Changpeng)`.
+
+02
+
+00 20 print.
+
+<!-- i would have done this yesterday, lol. -->
+
+maybe the lack of sharpness is due to the paper, not the document.
+
+01 00 refresh. dl `Kotaro Oshio`.
+
+03 20 exit sp500 and get 14.49 perps (~1% growth). close all googl at almost identical price. transfer all perps to sol. invest 10 usd on `SPYx` via jupiter.
+
+i should have done some research on perps previously.
+
+current: <!-- excluding spam tokens -->
+
+<!-- most are lost due to the "high risk" p2p trading premium, some are thrown away for testing. -->
+
+- spyx 10
+- googl 1 + 10
+- tslax 10
+- qqqx 10
+- sol 8
 
 
 

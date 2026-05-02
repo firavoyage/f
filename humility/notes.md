@@ -609,3 +609,24 @@ vscode detects and warns abnormal linebreaks by default.
 and one click rm. (though it's an alert popup via sys dialog)
 
 ---
+
+when you send a new msg, you
+
+- just add content to the dom (default)
+- scroll w it
+
+---
+
+you can apply a workflow, often through the powerful extensions.
+
+- queue the same question when you stop (dont care tokens). if you use a hot key to repeat, it can. (with better context, it could answer directly).
+- queue a few common follow ups. (answer directly, question the question, ...)
+
+---
+
+somehow, google ai mode seems to have impl the aria/accessibility for interactive links which benefits exporting markdown.
+
+a link is not a link. it's a popup (title, img, summary, site icon, site name, maybe a one or a list of these) when you hover, and a (site icon, site name, +n references) button.
+
+---
+

@@ -111,6 +111,15 @@ yt-dlp \
   -o "_/Kent Nishimura/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
 ```
 
+Kotaro Oshio
+
+```sh
+yt-dlp \
+  "https://music.youtube.com/playlist?list=OLAK5uy_nzwmFoiM8hz1lwgDrwSDMQop-D_-GT3D8" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  -o "_/Kotaro Oshio/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
+```
+
 Seiji Igusa
 
 ```sh

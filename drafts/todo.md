@@ -331,6 +331,12 @@ export twitter. research cli. or build my own.
 
 ---
 
-print.
+research projects on
+
+https://nat.org/
+
+https://danielgross.com/
+
+---
 
 

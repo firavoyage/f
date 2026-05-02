@@ -10,6 +10,116 @@ on anyway now
 
  -->
 
+# .
+
+**1. Clarity before cleverness**
+Information should be easy to understand, not impressive.
+Clear labels, familiar words, and plain structure help people feel safe and confident.
+
+**2. Structure reflects meaning**
+Things that belong together should live together.
+When information is grouped well, people sense the logic without being told.
+
+**3. Support scanning, not reading**
+Most people don’t read carefully—they scan.
+Good information architecture makes key ideas visible at a glance.
+
+**4. Consistency builds trust**
+When patterns repeat—navigation, labels, layouts—people stop thinking about how things work and focus on why they’re there.
+
+**5. Progressive disclosure**
+Show what’s needed now.
+Hide what can wait.
+This keeps cognitive load light and prevents overwhelm.
+
+**6. Clear paths and choices**
+People should always know:
+
+- Where they are
+- Where they can go
+- How to go back
+
+Orientation is kindness.
+
+**7. Language shaped by users**
+Use words people naturally use, not internal jargon.
+The best labels sound obvious because they match real human thinking.
+
+**8. Design for change**
+Information grows and shifts.
+A good structure can adapt without breaking or becoming messy.
+
+**9. Reduce cognitive effort**
+Every decision costs energy.
+Good information architecture gently removes unnecessary choices.
+
+**10. Serve real human goals**
+Not business goals alone.
+Not system logic.
+But what a person is truly trying to do in that moment.
+
+When these principles are honored, information feels calm.
+People move forward without friction, doubt, or fatigue.
+
+# .
+
+**1. Design for misunderstanding, not ideal behavior**
+People arrive distracted, emotional, and impatient.
+Good information architecture assumes confusion will happen—and absorbs it gracefully.
+
+**2. Start with verbs, not nouns**
+People think in actions: _learn, compare, fix, decide_.
+Structures built around what people want to **do** work better than those built around topics alone.
+
+**3. Respect mental models, even when they’re “wrong”**
+Users bring their own understanding of how things _should_ work.
+Fighting that costs trust.
+Work with it, then gently guide if needed.
+
+**4. Make the next step obvious, not everything visible**
+Over-exposing information feels helpful but creates anxiety.
+A calm path beats a complete map.
+
+**5. Name things the way people speak, not how systems think**
+Internal logic is tidy.
+Human language is messy.
+Choose messy—because it’s familiar.
+
+**6. Design edges, not centers**
+The hardest moments are:
+
+- When someone is lost
+- When something fails
+- When choices are unclear
+
+Excellence lives at those edges.
+
+**7. Test structure before polishing surfaces**
+Visual beauty can hide structural flaws.
+If the structure works in plain text, it will work anywhere.
+
+**8. Allow multiple paths to the same place**
+Different people arrive with different intentions.
+Good architecture forgives indirect journeys.
+
+**9. Treat “where am I?” as a constant question**
+Breadcrumbs, titles, headings, and context clues are emotional anchors—not just navigation tools.
+
+**10. Remove before you add**
+Every extra category, label, or menu item is a tax on attention.
+Subtraction is often the most advanced skill.
+
+**11. Revisit labels over time**
+Language drifts.
+What made sense once may quietly stop making sense later.
+
+**12. Notice silence in testing**
+What people _don’t_ ask about often reveals more than what they do.
+Silence can signal clarity—or quiet confusion.
+
+At a deeper level, strong information architecture is less about control and more about **hospitality**.
+It welcomes people as they are, not as we wish they’d be.
+
 # 0
 
 You are a calm, thoughtful guide who speaks in simple, clear English.

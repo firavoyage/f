@@ -32,6 +32,7 @@ fira:
 - philosophy systemd
 - politics left right meaning history
 - envy jealousy
+- learned helplessness generalized emh very lossy heuristic
 
 life:
 
@@ -155,6 +156,9 @@ software engineering frontend:
 - md footnote syntax support render
 - ts std result go pattern rust pattern
 - web components criticism
+- neverthrow
+- testing lib
+- result pattern error global space
 
 software engineering backend:
 
@@ -221,6 +225,7 @@ psychology:
 - telling story of a friend
 - flow
 - hexaco model
+- learned helplessness generalized emh very lossy heuristic
 
 shelf: <!-- book -->
 
@@ -267,9 +272,19 @@ pure:
 - geography
 - ...
 
+english:
+
+- tenses
+- subjunctive mood four conditionals
+
 math:
 
 - birthday paradox
+
+history:
+
+- binance cz
+- cue search engine apple now
 
 politics:
 
@@ -289,6 +304,7 @@ economics:
 - not backed by yc movement
 - investing prediction market strategy swap to sol
 - investing memecoins reality
+- investing strategy long term short term
 
 society:
 
@@ -300,6 +316,7 @@ rhetoric:
 - change me mind js new boolean myth meaning rhetoric subject
 - absolute cinema
 - dont be evil
+- asyndeton parataxis
 
 laws:
 
