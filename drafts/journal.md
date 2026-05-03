@@ -10075,13 +10075,171 @@ current: <!-- excluding spam tokens -->
 - qqqx 10
 - sol 8
 
+10 00 go on an outing. Suburban natural resort. Grass surrounded by trees. Camps. Simple collapsible wooden like chairs and tables. Barbecue. think.
+
+12 20 chat w the russian.
+
+```
+f, [5/2/26 12:13 PM]
+Do you write something everyday? 
+
+Like, 
+
+Til / study notes
+
+How I feel about things 
+
+What I see and find it inspiring 
+
+Memories 
+
+Posts (wherever, Twitter, tg channel, personal blog, etc.) I would like to share/save/retweet 
+
+Progress, endeavors, projects 
+
+Llm chats.
+
+Life update 
+
+Do you have, or would you like to have a personal blog? 
+
+It's quite easy. Tg channel is a few clicks. Github pages gives you maximum freedom, like you can just edit or create md files, and it will handle the rest, like syncing and building.
+
+Ivan Eisenberg, [5/2/26 4:38 PM]
+Why do you ask? You wanna follow?
+
+f, [5/2/26 5:47 PM]
+y
+
+f, [5/2/26 5:49 PM]
+Obviously I'm curious. 
+
+Many ppl ik have somewhere to put their thoughts and memories.
+
+I read them everyday.
+
+f, [5/2/26 6:02 PM]
+Like, 
+
+Do you read Twitter these days? 
+
+Do you find anything interesting or inspiring?
+
+Ivan Eisenberg, [5/2/26 10:11 PM]
+What do you like/prefer to see in other ppl blogs?
+
+Ivan Eisenberg, [5/2/26 10:12 PM]
+What topics or kind of posts do you love to see?
+
+f, [5/2/26 10:13 PM]
+Example 1: food.
+
+f, [5/2/26 10:13 PM]
+非常好吃
+黑松露鹅肝菌菇煲仔饭
+#自炊 made by 枝
+
+f, [5/2/26 10:13 PM]
+Example 2: human
+
+f, [5/2/26 10:13 PM]
+猫
+（深圳快30度的天气终于有机会让我穿上这件裙子了TwT）
+
+f, [5/2/26 10:14 PM]
+Example 3: thoughts
+
+f, [5/2/26 10:14 PM]
+以前做点啥都喜欢先调研一下有没有别人写好的开源项目什么的, 然后比较一下代码质量维护支持.
+
+但是现在比较新的东西, 几乎全是vibe写的。
+都到这样了肯定不能指望代码质量和后续维护了
+
+不过推心自问也知道这是难免的。
+从开源代码喂AI开始到编程门槛拉低。
+再到现在流行的言论，AI一年比一年强，程序员过几年就要被取代了，不管什么代码随时可以用ai不违反协议重写一份。
+
+本身开源维护就是一件吃力不讨好的事情，赚不到钱又麻烦，只能指望一下长期维护几年后的积累效应。
+但在现在对未来的未知下，都明白现在还去投资这种未来还不如多玩点游戏，说不定明年就失业了。
+
+综合下来，其实对开源环境冲击不小。
+不仅要在这种糟糕的未来预期下坚持长期主义，还要面对随时被别人用ai重写一份的情况，还要面对垃圾pr轰炸。
+实话说想不到现在这种形式的协作型开源社区怎么维持，
+
+f, [5/2/26 10:15 PM]
+Some are on twitter. 
+
+e.g. twitter ryolu, swyx, dhh.
+
+f, [5/2/26 10:17 PM]
+Some are on various personal blogs
+```
+
+13 00 read freedom of money. 13 40
+
+16 40 Try piliplus as seen on many rt.
+
+P
+
+Flutter. Stable. Compatible.
+
+Seems reliable.
+
+N
+
+No internationalization.
+Mlcn complaint country names and unnecessary security disclosures. 
+Unorganized settings. 
+Afo Fyp at the front page 
+Not ignorant to platform quirks like user karma, badges, membership, banner, Twitter blue. Likely official complaint for smooth transition. Not wise.
+Anonymous by default even after login. Confusing. Likely mlcn styled.
+
+I will stick w bilimiao legacy for now. 
+
+20 00 read `【转载】赛博MtF养成手册`.
+
+20 40 <!-- happen to check the wallet app. --> Receive 1k cny from the family.
+
 22 00 buy a 1m ikea shark pillow and a pot of soil based wen zhu.
 
 for some reason, the ui becomes much cleaner and clearer after setting jp internationalization on taobao. though the product image is still quite promotional, and the crucial metadata are scattered everywhere in the details.
 
 i were about to buy clannad dango plushies, but i could not decide the size and where to put them.
 
-~~22 20~~ organize and archive today's memories and thoughts.
+~~22 20~~ 23 20 organize and archive today's memories and thoughts.
+
+22 20 Have dinner, plain porridge. Watch funshiki mahou shoujo judge live replay.
+
+23 00 play douyin. idle a stream. 02 00
+
+daozhu <!-- yet another hu chenfeng --> lives. ~700 online. why he's always thanking to gifts wo fierce arguments. most ppl just try to join for fun, like me, wo trying to discuss anything meaningful.
+
+become the 705th member w 0.1 cny.
+
+fun <!-- philistine and weird though -->. the vibrant, energetic youth.
+
+03
+
+01 00 read freedom of money. chapter 2. 02 20
+
+finally, daozhu found one of the fooled keen on online arguments. the traffic doubled.
+
+there is one guy in us with a bunch of motorcycles and a cybertruck (order?).
+
+chat with daozhu with 2 cny. recommend live replay and live forecast which he lacks. ask whether he invests though he could not share freely. recommend nat friedman's anti emh (though he does understand english). recommend ubuntu. show my twitter id. get killed simply for mentioning twitter. lol... <!-- i dont really wanna argue. i wanna express and influence ppl. -->
+
+i were about to read some posts and see his opinion, maybe. like yuuta on android, himself drop out, acbox's self intro <!-- potential -->, menci on *to my students*, etc., maybe. though, ik <!-- should have known --> he could not outplay the zhihuers, which was obvious.
+
+<!-- btw, many douyin accounts have hundreds even thousands of followers wo a single post. quite weird. -->
+
+the main theme of streamers of this kind is either
+
+- wealthy ppl with confidence yet a bit boring
+- ordinary ppl with hollow arguments or misfortune finding hope in meaningless advice
+
+lots of arguments by analogy <!-- analogical reasoning --> and slippery slopes.
+
+02 20 rn to `humility` on douyin. set pfp to a md3 dark bg.
 
 
 

@@ -386,3 +386,57 @@ For a deep dive into these concepts, many readers refer to the [Almanack of Nava
   Medium·Ben Putano
 
 Show all
+
+# <!-- 2026.05.02 -->
+
+why emh doesn't apply to emerging markets
+
+5:26 AM
+
+The Efficient Market Hypothesis (EMH) often fails to apply to emerging markets because they lack the foundational infrastructure—such as high liquidity, strict regulation, and transparent information flow—that characterizes developed markets. While the EMH assumes prices always reflect "fair value," emerging markets frequently exhibit inefficiencies like **information gaps**, **political instability**, and **investor behavioral biases**. \[[1](https://www.investopedia.com/terms/i/inefficientmarket.asp), [2](https://www.researchgate.net/publication/396085396%5FMarket%5FEfficiency%5Fin%5FEmerging%5Fvs%5FDeveloped%5FStock%5FMarkets), [3](https://www.researchgate.net/publication/396085396%5FMarket%5FEfficiency%5Fin%5FEmerging%5Fvs%5FDeveloped%5FStock%5FMarkets), [4](https://www.aiu.edu/blog/emerging-market-economies-opportunities-and-challenges/)]
+
+Key reasons why emerging markets deviate from EMH include:
+
+1\. Information Asymmetries and Opacity
+
+- **Unreliable Data**: Information in emerging markets is often less reliable, harder to access, or integrated into prices more slowly than in developed markets.
+- **Insider Advantage**: Weak regulation and poor oversight of insider trading often allow those with private information to profit, undermining the EMH assumption of equal access to information.
+- **Limited Coverage**: These markets often have fewer financial analysts and less historical data to model, making accurate price discovery difficult. \[[1](https://www.reddit.com/r/Bogleheads/comments/1b3emjq/emh%5Fand%5Femerging%5Fmarket/), [2](https://ajajournal.org/aja/article/view/562/519), [3](https://journal.formosapublisher.org/index.php/mudima/article/download/10131/10121/38792), [4](https://informaconnect.com/the-differences-in-emerging-markets-versus-developed-markets-from-a-quant-perspective/), [5](https://www.nasdaq.com/articles/case-emerging-markets)]
+
+2\. Market Frictions and Liquidity
+
+- **Thin Trading**: Many emerging markets suffer from "thin trading" (low volume), which prevents prices from adjusting instantaneously to new information.
+- **High Transaction Costs**: Higher costs for executing trades can prevent arbitrageurs from quickly correcting mispriced assets.
+- **Infrastructure Gaps**: A lack of reliable financial intermediaries and sophisticated trading technology (like AI-driven algorithmic trading) further hinders efficiency. \[[1](https://ideas.repec.org/a/rse/wpaper/v4y2012i2p181-190.html), [2](https://www.investopedia.com/terms/e/efficientmarkethypothesis.asp), [3](https://aast.edu/pheed/staffadminview/pdf%5Fretreive.php?url=1593%5F70000251884%5FThe%20Applicability%20of%20the%20Efficient%20Market%20Hypothesis%20In%20Emerging%20Markets%5Fresearch.pdf\&stafftype=staffpdfnew), [4](https://informaconnect.com/the-differences-in-emerging-markets-versus-developed-markets-from-a-quant-perspective/), [5](https://ajajournal.org/aja/article/view/562/519), [6](https://www.researchgate.net/publication/396085396%5FMarket%5FEfficiency%5Fin%5FEmerging%5Fvs%5FDeveloped%5FStock%5FMarkets)]
+
+3\. Institutional and Structural Weaknesses
+
+- **Political & Economic Instability**: Frequent shifts in government policy, currency devaluations, and social unrest can cause stock prices to deviate significantly from their intrinsic value.
+- **Investor Protection**: A lack of robust legal frameworks and "rule of law" is strongly correlated with market inefficiency.
+- **Weak Corporate Governance**: Poor oversight of companies leads to less transparency and a higher risk of corruption. \[[1](https://research.cbs.dk/files/60741955/153738%5FMarket%5Fefficiency%5Fin%5Femerging%5Fmarkets%5Fand%5Fits%5Frelations%5Fwith%5Finvestor%5Fprotection.pdf), [2](https://www.reddit.com/r/Bogleheads/comments/1b3emjq/emh%5Fand%5Femerging%5Fmarket/), [3](https://www.aiu.edu/blog/emerging-market-economies-opportunities-and-challenges/), [4](https://www.researchgate.net/publication/396085396%5FMarket%5FEfficiency%5Fin%5FEmerging%5Fvs%5FDeveloped%5FStock%5FMarkets), [5](https://aast.edu/pheed/staffadminview/pdf%5Fretreive.php?url=1593%5F70000251884%5FThe%20Applicability%20of%20the%20Efficient%20Market%20Hypothesis%20In%20Emerging%20Markets%5Fresearch.pdf\&stafftype=staffpdfnew)]
+
+4\. Behavioral and Speculative Factors
+
+- **Herding Behavior**: Investors in these markets are more prone to following the crowd rather than making rational, independent valuations.
+- **Market Anomalies**: Trends like **momentum** and **reversal phenomena**—where prices follow a predictable path rather than a "random walk"—are significantly more common in emerging markets. \[[1](https://drpress.org/ojs/index.php/HBEM/article/download/12311/11993/12074), [2](https://fiveable.me/introduction-investments/unit-4/market-anomalies-limitations-emh/study-guide/Pc6WMQyaweO3cbJV), [3](https://www.sciencedirect.com/science/article/pii/S2405844020312731), [4](https://www.irejournals.com/formatedpaper/1709087.pdf), [5](https://www.researchgate.net/publication/391402497%5FTesting%5Fthe%5FWeak%5FForm%5FEfficient%5FMarket%5FHypothesis%5FAn%5FInterpretive%5FStudy%5Fof%5FMarket%5FEfficiency%5FVia%5FLiterary%5FLogic%5Fand%5FEvidence)]
+
+Because of these factors, researchers often suggest that emerging markets are **"weakly efficient"** at best—meaning prices reflect past prices, but not necessarily all public or private information. Some argue the [Adaptive Market Hypothesis (AMH)](https://www.sciencedirect.com/science/article/pii/S2405844020312731) better explains these markets, as it acknowledges that efficiency waxes and wanes based on changing market conditions. \[[1](https://www.sciencedirect.com/science/article/pii/S2405844020312731), [2](https://journal.formosapublisher.org/index.php/mudima/article/download/10131/10121/38792), [3](https://www.investopedia.com/terms/e/efficientmarkethypothesis.asp)]
+
+Would you like to explore **specific trading strategies**, like momentum or contrarian investing, that take advantage of these inefficiencies?
+
+AI responses may include mistakes. For financial advice, consult a professional. [Learn more](https://support.google.com/websearch?p=aimode\&gl=us)
+
+- [link](https://www.reddit.com/r/Bogleheads/comments/1b3emjq/emh%5Fand%5Femerging%5Fmarket/)\
+  EMH and Emerging Market : r/Bogleheads - Reddit\
+  Investment Theory. In a different thread I commented that, to me, EM was more gambling than investing and that saying that the ris...\
+  Reddit
+- [link](https://ideas.repec.org/a/rse/wpaper/v4y2012i2p181-190.html)\
+  Testing the financial market informational efficiency in emerging states\
+  Empirical tests have given mixed results about efficiency in these markets. The major challenges to EMH are mainly in the followin...\
+  RePEc: Research Papers in Economics
+- [link](https://aast.edu/pheed/staffadminview/pdf%5Fretreive.php?url=1593%5F70000251884%5FThe%20Applicability%20of%20the%20Efficient%20Market%20Hypothesis%20In%20Emerging%20Markets%5Fresearch.pdf\&stafftype=staffpdfnew)\
+  The Applicability of the Efficient Market Hypothesis In Emerging Markets\
+  Emerging markets are less efficient than developed and this may be because they do not have many reliable financial intermediaries...\
+  Arab Academy for Science, Technology & Maritime Transport
+
+Show all

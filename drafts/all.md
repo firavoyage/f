@@ -159,6 +159,7 @@ software engineering frontend:
 - neverthrow
 - testing lib
 - result pattern error global space
+- pnpm install global cli locally
 
 software engineering backend:
 
@@ -254,6 +255,7 @@ philosophy:
 - first principle
 - yes we can
 - the good the bad and the ugly
+- make time for civilization socialsisteryi
 
 entertainment:
 

@@ -38,4 +38,24 @@ write std.
 
 create the infra like rust prelude so i dont have to import std methods everywhere using nodejs import flag under the hood.
 
+may 2026
+
+02
+
+edit style guide
+
+old
+
+- verb noun for actions, predicate for bools
+
+verbose
+
+- verb noun for actions (e.g. fetch, convert), predicate for bools (e.g. is_prime, has_children), noun for wrappers and components (e.g. time, url, button)
+
+concise
+
+- verb noun for actions, predicate for bools, noun for factory functions
+
+<!-- i think it will default to nouns for react components, though ive no idea if i will use react. it's better than anything else. but i think it could be simpler. -->
+
 

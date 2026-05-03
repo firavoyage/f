@@ -10,7 +10,7 @@ follow these:
   - dont reinvent wheels, prefer modern proven tech
 - naming:
   - snake case
-  - verb noun for actions, predicate for bools
+  - verb noun for actions, predicate for bools, noun for factory functions
 - style:
   - functional programming
   - modular and cohesive

@@ -339,4 +339,104 @@ https://danielgross.com/
 
 ---
 
+precious, [5/2/26 12:03 PM]
+Clear:
 
+Get birth time 
+
+Set birth time. 
+
+Hacky:
+
+Birth time
+
+Birth time arg 1
+
+precious, [5/2/26 12:55 PM]
+Path. Data. Config. Cache. You will likely have a string, a node path, or something r/writable. Ofc, you can have path directly which is relative or absolute and ~ will be expanded as home.
+
+Write path. Read path. Stream if needed. 
+
+Append. Edit. Common things.
+
+Get/Set {metadata} Path.
+
+Copy. Move. Remove. 
+
+Non existing path will be created. 
+
+You can config like illegal filename/too long path.
+
+Db/hash symlink might be overkill.
+
+precious, [5/2/26 3:16 PM]
+Manus? 
+
+(Interactive) Components. 
+
+Separate style from functionality? 
+
+Para? (Blog in any theme.)
+
+precious, [5/2/26 3:34 PM]
+Have. 
+
+Make sure you have enough space and export all tg chats one by one. (I can help with some automation).
+
+Then you can, for example, timeline any user across channels and chats.
+
+(An user can have many accounts, I will simply preprocess, and cache maybe.)
+
+precious, [5/2/26 4:38 PM]
+Para. <!-- blog -->
+
+Get where you are from the url. 
+
+Get the pref, like lang, dark mode. 
+
+Now you know the data and the config. 
+
+Fetch the data. 
+
+You can be static, server side, or client side
+
+(Isc is perf for static. Rsc is an abstraction on ssg)
+
+precious, [5/2/26 5:59 PM]
+V. 
+
+Write a git ignore before anything.
+
+For each step it will init if needed.
+
+Save. A state. You can give it a name. 
+
+Remove. A state from history, forever. 
+
+Restore a state. Or export it to a path.
+
+List all states. Paired w export, you can have a list of folders of all past states. I could symlink the same files. 
+
+Sync. Push to a remote. Or all remotes. It will do best effort. Error can be network, permission/constraint, or others, like secret key. It will also pull then. If conflict it will convert to a pr. And if forced it will merge everything with local files of higher priority.
+
+Dl. Clone a repo. Make best effort to continue for large repos.
+
+On collaboration/contribution, pr is not git builtin. I will have a dedicated hidden folder for all prs. Each is a yaml. Desc. File diffs. Awa any other metadata you like. Yaml is editable json wo cost. Btw Toml is strict, which is meaningless. Every pr is incremental (a new yaml file), no possible conflict (at the git level).
+
+I suppose when you clone, git does this:
+
+Fetch the metadata. Dl every file with wget continuously in parallel. Apply to fs. 
+
+Though it's old and might not be what I've expected. e.g. idk how it handles incompatible filenames.
+
+By default if you dont give an id (primary key meme from cyannyan) it will generate an uuid and tell you. 
+
+About commit msg. It's your resp. 
+
+Likely another yaml. 
+
+It can auto save every sec or file change event (make sure you dont put secrets anywhere). But only some would be mapped w a dedicated msg. Others are for time machine. 
+
+I would use a flexible change dot md as always in my style. 
+
+Btw, how to v a pre existing folder w another separate git?
