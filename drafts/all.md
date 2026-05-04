@@ -287,6 +287,8 @@ history:
 
 - binance cz
 - cue search engine apple now
+- unix epoch
+- thinkpad trackpoint
 
 politics:
 

@@ -2,4 +2,8 @@
 
 import * as std from 'lib/std';
 
-Object.assign(globalThis, std)
+function use(lib) {
+  Object.assign(globalThis, lib)
+}
+
+use(std)

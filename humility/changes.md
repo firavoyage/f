@@ -58,4 +58,10 @@ concise
 
 <!-- i think it will default to nouns for react components, though ive no idea if i will use react. it's better than anything else. but i think it could be simpler. -->
 
+04
 
+simplify ts infra (dry)
+
+global import
+
+use(lib) iff obj assign(lib, global this)

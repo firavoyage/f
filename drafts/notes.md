@@ -2741,3 +2741,24 @@ it's a good example input for project have.
 as text based
 
 ---
+
+precious, [5/3/26 10:48 PM]
+Tg. 
+
+When I rd a post in the channel or the group, it's not the same.
+
+e.g. the new msg count
+
+precious, [5/4/26 6:47 PM]
+tg keeps the original sender, if you fwd across chats several times.
+
+precious, [5/4/26 6:49 PM]
+tg. if you fwd to saved msg, it's one click. if you fwd to a chat, it's at least three clicks. (fwd, jump to chat, you enter wo editing a msg, you esc to back.) on android it's always one click i remember.
+
+precious, [5/4/26 6:51 PM]
+btw, del key does not map to delete. alt left does not map to back (esc does).
+
+(sometimes it does)
+
+---
+

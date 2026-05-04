@@ -10206,6 +10206,8 @@ I will stick w bilimiao legacy for now.
 
 for some reason, the ui becomes much cleaner and clearer after setting jp internationalization on taobao. though the product image is still quite promotional, and the crucial metadata are scattered everywhere in the details.
 
+<!-- Upd: seems I could even set my location to "global", which is not actually a country like other list items. Yet only mlcn ppl get the special treatment. -->
+
 i were about to buy clannad dango plushies, but i could not decide the size and where to put them.
 
 ~~22 20~~ 23 20 organize and archive today's memories and thoughts.
@@ -10242,6 +10244,1266 @@ the main theme of streamers of this kind is either
 lots of arguments by analogy <!-- analogical reasoning --> and slippery slopes.
 
 02 20 rn to `humility` on douyin. set pfp to a md3 dark bg.
+
+13 00 Buy a power bank, mi, 20000mah, 33w, one type c builtin, warm light gray.
+
+18 20 Accidentally meet a crowd gathered in xujiahui station, the corridor to line 9, where an ak event is held. in contrast around the ww ads it's quite cold. <!-- i should have put the verb first. -->
+
+Ask a dressed player. He (yeah unexpected it's masculine voice) comes here for the event, not for taking the subway, inspired by a rednote post. Many are fat, stereotypical debu otakus, including one holding an ipad with a meme pic on it over a character's face. Quite fun.
+
+20 00 chat.
+
+```
+f, [5/3/26 3:44 PM]
+Nya.
+
+Cranky Wellcome, [5/3/26 3:46 PM]
+怎么了。
+
+f, [5/3/26 3:46 PM]
+You blocked me.
+
+f, [5/3/26 3:46 PM]
+You hate linux users and programmers?
+
+f, [5/3/26 3:46 PM]
+I've no idea.
+
+Cranky Wellcome, [5/3/26 3:47 PM]
+那不是我干的。
+
+Cranky Wellcome, [5/3/26 3:47 PM]
+你加错群了
+
+f, [5/3/26 3:49 PM]
+Really?
+
+f, [5/3/26 3:49 PM]
+Let me see
+
+f, [5/3/26 3:50 PM]
+f:
+Nya. 
+
+Do you code? 
+
+Do you use linux?
+
+Cranky Wellcome:
+？
+
+那你来错地方了
+
+Nemo:
+直接 block
+
+Cranky Wellcome:
+@sorashu 这种是干啥的 什么新套路吗。
+
+Cranky Wellcome, [5/3/26 3:50 PM]
+那确实是，你这种情况，让人误以为是诈骗的。
+
+f, [5/3/26 3:51 PM]
+Really? 
+
+Do spammers nya?
+
+f, [5/3/26 3:51 PM]
+Unblock pls
+
+Cranky Wellcome, [5/3/26 3:52 PM]
+那我没有权限
+
+Cranky Wellcome, [5/3/26 3:53 PM]
+确实是，群友中你认识谁
+
+f, [5/3/26 3:53 PM]
+@ShakaiAneE
+
+f, [5/3/26 3:54 PM]
+I've seen you before in some retweets. 
+
+But it's @ShakaiAneE that guides me here.
+
+Cranky Wellcome, [5/3/26 3:55 PM]
+了解，我也知道他，虽然和他不熟
+
+Cranky Wellcome, [5/3/26 3:55 PM]
+但这个群确实不是讨论技术的，所以会引起误会
+
+Cranky Wellcome, [5/3/26 3:55 PM]
+他怎么和你讲的
+
+f, [5/3/26 3:57 PM]
+对话
+
+近期遇到很多困难，于是就和家父聊了聊，按对话主题总结。
+
+1.关于考学上的占便宜和吃亏
+
+Q：我看有些内陆地区，搞中式应试教育的那种，那他们这种在考学上，是不是占了大便宜。家里没钱还生两三个，然后丢学校都不管。像我和某某亲戚家，出钱出力培养结果也不灵的，是不是吃大亏了。
+
+A：他们不管怎么样，总归是比你们这种吃苦的多，也算是苦读出来的。况且人生路很长，总不能每个地方都占好处，这也是不现实的。人家肯多生当然是好事，都像上海市区这种生育率，要绝种的先不说，以后谁来送外卖快递，你又不去的是吧。
+
+f, [5/3/26 3:57 PM]
+不是一家人不进一家门啊
+
+f, [5/3/26 3:57 PM]
+小张是屎壳郎
+
+f, [5/3/26 3:57 PM]
+易姐把沪爷拉进来吧
+
+f, [5/3/26 3:57 PM]
+我也要
+
+f, [5/3/26 3:57 PM]
+其实这个人只是贱，沪爷是傻逼，难怪他俩聊不来
+
+f, [5/3/26 3:57 PM]
+真是均值回归，下一代成傻逼了
+
+f, [5/3/26 3:57 PM]
+话说ej的小群到底怎么进，这一定是筛选群对吧❤️
+
+f, [5/3/26 3:57 PM]
+话说ej的小群到底怎么进，这一定是筛选群对吧❤️
+
+f, [5/3/26 3:57 PM]
+北京小团体
+
+f, [5/3/26 3:57 PM]
+北京小团体
+
+f, [5/3/26 3:57 PM]
+
+
+f, [5/3/26 3:57 PM]
+夏和当局头
+
+f, [5/3/26 3:57 PM]
+原来还有小群吗
+
+f, [5/3/26 3:57 PM]
+那估计就只有夏和一个人了
+
+f, [5/3/26 3:57 PM]
+hyw
+
+f, [5/3/26 3:57 PM]
+夏局长
+
+f, [5/3/26 3:57 PM]
+沪爷是各种方面的专家，只有你想不到
+
+f, [5/3/26 3:57 PM]
+他甚至是地铁安检专家，对地铁安检颇有研究
+
+f, [5/3/26 3:57 PM]
+唉清华大教授张老师
+
+f, [5/3/26 3:57 PM]
+我没主动认识这人，为什么要拉进来？
+
+f, [5/3/26 3:57 PM]
+主动拉进群是我们小圈子的一种互动方式，前提是我先要认识这个人
+
+f, [5/3/26 3:57 PM]
+什么小群体
+
+f, [5/3/26 3:57 PM]
+我也要进
+
+Cranky Wellcome, [5/3/26 3:57 PM]
+哦哦，了解
+
+f, [5/3/26 3:59 PM]
+你智力水平实际上如何。
+
+会不会做题。
+
+f, [5/3/26 3:59 PM]
+我就直接说。
+
+Cranky Wellcome, [5/3/26 4:00 PM]
+话说你为什么不使用中文
+
+Cranky Wellcome, [5/3/26 4:06 PM]
+In the conversation you just forwarded, they were not engaged in a friendly discussion, but rather being sarcastic and making personal attacks. Of course, I personally don't take it to heart. In Chinese, it's very common to say the exact opposite of what you mean, which is likely what caused your misunderstanding.
+
+f, [5/3/26 6:38 PM]
+> 啥意思。
+
+I mean have you taken the university entrance exam or the highschool one or Olympiads. If so, how was that.
+
+f, [5/3/26 6:39 PM]
+I'm not quite into Chinese. 
+
+Some ppl say I'm like a bot. Emotionless.
+
+f, [5/3/26 6:43 PM]
+Well for some reason I'm still blocked. 
+
+I couldn't even view the public comments. 
+
+Since you are the admin I suppose you could make me in.
+
+Cranky Wellcome, [5/3/26 7:13 PM]
+群聊和频道的权限是分开的，我只有频道的没有群聊的
+
+f, [5/3/26 7:13 PM]
+Do you use GitHub
+
+Cranky Wellcome, [5/3/26 7:14 PM]
+我是学文科的，而且并不太擅长应试教育的考试，所以没啥很特别的想法
+
+Cranky Wellcome, [5/3/26 7:15 PM]
+有账户但不怎么用，我研究艺术类的事物比较多，所以不太需要这个平台
+
+f, [5/3/26 8:01 PM]
+What do you want to do in the future
+
+Cranky Wellcome, [5/3/26 9:16 PM]
+暂时没有太多想法，或许就体验生活
+
+f, [5/3/26 10:50 PM]
+Would you like to put your blog on GitHub pages? It's easy.
+
+Cranky Wellcome, [5/3/26 11:09 PM]
+Appreciate it! But I don’t really need a blog. I mostly focus on social media like Xiaohongshu, so the format is a bit different. GitHub Pages is cool, just not really my vibe
+
+f, [5/3/26 11:23 PM]
+I mean, with GitHub pages, you can be indexed and found via the open internet. Some platforms are not only quite monetized by big companies sometimes even heavily censored.
+
+Cranky Wellcome, [5/4/26 12:10 AM]
+Thanks for the tip! I actually checked it out with AI and got the hang of it now. I'm gonna stick to social media for my content though. Anyway, appreciate the help, take care!
+```
+
+```
+Andy Zhang, [5/3/26 6:43 PM]
+@ShakaiAneE 你这个群的记录被那个人转给沪爷了
+
+Andy Zhang, [5/3/26 6:43 PM]
+他发到他频道
+
+Passingwang🇨🇳🇷🇺🇮🇱, [5/3/26 6:46 PM]
+能绷住不笑吗
+
+社会易姐QwQ, [5/3/26 6:50 PM]
+谁？
+
+Andy Zhang, [5/3/26 6:51 PM]
+@ChangKaiShen 呗，还能有谁
+
+Andy Zhang, [5/3/26 6:51 PM]
+以前蛐蛐沪爷从来没人发给他
+
+Passingwang🇨🇳🇷🇺🇮🇱, [5/3/26 6:52 PM]
+相爱相杀
+
+不要把剪贴板贴的到处都是, [5/3/26 6:52 PM]
+什么三体运动
+
+社会易姐QwQ, [5/3/26 6:52 PM]
+这人谁啊？
+
+Andy Zhang, [5/3/26 6:53 PM]
+一个各个群窜的人
+
+社会易姐QwQ, [5/3/26 6:53 PM]
+飞了吧
+
+Andy Zhang, [5/3/26 6:54 PM]
+我跟他有个人矛盾，他到我频道恶心我乱点reaction，说他的可以挑着听
+
+社会易姐QwQ, [5/3/26 6:54 PM]
+不管你们个人恩怨，但是感谢提供线索
+```
+
+```md
+腐竹喵, [5/3/26 1:01 AM]
+<!-- screenshot: cmt on berryberry, "舞 萌 是 真能 改变 一 个 人 的 生活 重心 的" -->
+完了是真的x
+
+澪, [5/3/26 1:04 AM]
+这几天和某人出去玩，看都没看舞萌一眼
+
+澪, [5/3/26 1:04 AM]
+某人出远门玩了我要开始打舞萌了（不
+
+Nickel Angel✨, [5/3/26 1:11 AM]
+感觉和会打舞萌的朋友出来玩也就最多打一次舞萌（最多也就是一个游戏，能玩的东西还是太多了
+
+pupupu|云苔☁️, [5/3/26 1:11 AM]
+羡慕东西
+
+渴望怜爱的 むらさき | 抱...抱不到, [5/3/26 1:43 AM]
+我和其他朋友出去玩
+
+渴望怜爱的 むらさき | 抱...抱不到, [5/3/26 1:43 AM]
+对方很不理解我为什么要打乌蒙
+
+渴望怜爱的 むらさき | 抱...抱不到, [5/3/26 1:43 AM]
+然后转头带我去网吧了
+
+渴望怜爱的 むらさき | 抱...抱不到, [5/3/26 1:43 AM]
+我觉得这俩地方本质上没什么区别
+
+渴望怜爱的 むらさき | 抱...抱不到, [5/3/26 1:43 AM]
+都是R18的地方
+
+澪, [5/3/26 1:43 AM]
+？
+
+澪, [5/3/26 1:43 AM]
+有区别
+
+澪, [5/3/26 1:43 AM]
+去网吧我会觉得是社会人
+
+渴望怜爱的 むらさき | 抱...抱不到, [5/3/26 1:44 AM]
+那去机厅呢（
+
+fish bone🍤, [5/3/26 4:21 AM]
+网吧太冷了
+```
+
+```md
+冷曦[Hiyase] 🏳️‍🌈⁠ ‌, [4/25/26 2:12 AM]
+应该是9点半睡的，应该是一点半醒的
+醒来就开始过分焦虑，我知道我很想要一份体面且挣钱的工作，但理论上来说我需要先照顾好自己，让自己状态更好一些，但看见钱包余额我会变得更糟，我会为多花的每一份不必要的钱感到痛苦
+
+弯龙, [4/25/26 2:31 AM]
+体面且挣钱的工作不是一时就可以找到
+
+弯龙, [4/25/26 2:31 AM]
+你肯定是需要一些事物去过渡
+
+神樂坂苏酱 阿朱喵, [4/25/26 3:00 AM]
+苏酱也是
+
+神樂坂苏酱 阿朱喵, [4/25/26 3:00 AM]
+失业三四个月了
+
+蓝 提亚, [4/25/26 3:05 AM]
+远程？
+
+Lyra, [4/25/26 4:40 AM]
+[2026/4/25 4:17] 只要能赚钱就好了
+[2026/4/25 4:18] 我觉得你想要的是轻松
+[2026/4/25 4:18] 以及如果到了会为多花的每一分不必要的钱感到痛苦，这些都没有必要了
+
+Lyra, [4/25/26 4:42 AM]
+<!-- sticker: catgirl crying and shaking hands -->
+```
+
+```md
+Lyra的記事本, [4/26/26 1:29 AM]
+<!-- pic: 遗书. 精神状况实在太糟糕. 感觉坚持不下去. 下辈子当个女孩子. 2026.4.26 -->
+
+小言, [4/26/26 1:36 AM]
+喵喵喵？
+
+大白菜猫~, [4/26/26 2:00 AM]
+如果是真的
+希望你下次真的可以做个女孩子
+晚安……
+
+小芹, [4/26/26 6:48 AM]
+
+
+这灯光 漂白了四壁, [4/26/26 9:15 AM]
+别啊，抱抱你😭
+
+f, [5/3/26 8:23 PM]
+下辈子如果女孩子，也许想不起来自己的愿望...
+```
+
+23 20 Test earplug + headphone nc. <!-- try for the first time, actually. test is simpler but not quite accurate. ik it can work already. -->
+
+Nc is so good. noises within a certain threshold are simply eliminated. 
+
+View tg channel on phone. 
+
+Despite the smaller screen size and no keyboard, gesture control clicks. 
+
+Like scrolling, one finger is enough. Not two, not a slider. Like return, either from screen border or to right in some pages. No need to use hotkeys or buttons, which requires precision, sometimes even incompatible
+
+Gboard slide input also feels good.
+
+Again, I'm using scratch paper. 
+
+Now I work on coding wo having my laptop open. Think, before action. A lesson from primary school, recurring on cz's autobiography. 
+
+No sound. No friction. I could hear only my breathe. And heartbeat.
+
+I could nap awhile and have some read if I like.
+
+Rename scratch pad to paper. The latter feels easier, wo the weight of archival.
+
+I don't have to archive everything.
+
+04
+
+01 00 Add these to fav. 
+
+Iphone 4 
+Nothing phone 
+Google pixel
+Palm
+Mac mini
+Macbook air 2017
+
+Intimidating. They see them as stuff to be sold instead of legacy to be sacred, replacing original arts on the official site with sales text.
+
+03 40 chat.
+
+```
+Acbox Neko, [5/4/26 3:18 AM]
+哎 以前年轻的时候当垃圾佬 各种折腾垃圾电脑 折腾archlinux 折腾neovim
+
+Acbox Neko, [5/4/26 3:18 AM]
+现在老了 折腾不动了 发现
+
+Acbox Neko, [5/4/26 3:18 AM]
+我操苹果怎么那么香啊
+
+f, [5/4/26 3:20 AM]
+What's your daily routine? 
+
+I mean, how many hours do you sleep?
+
+盼兮, [5/4/26 3:20 AM]
+您怎么还老了
+
+f, [5/4/26 3:22 AM]
+年轻人可以整夜不眠...
+
+呜呜呜。
+
+溏 🍬, [5/4/26 3:22 AM]
+苹果是很有性价比的
+
+溏 🍬, [5/4/26 3:22 AM]
+在Core时代或许不明显
+
+溏 🍬, [5/4/26 3:22 AM]
+但Apple Silicon改变了一切
+
+BBQ, [5/4/26 3:23 AM]
+你这年纪不是最能折腾的吗
+
+BBQ, [5/4/26 3:23 AM]
+我之前一周末可以就超个内存玩
+
+溏 🍬, [5/4/26 3:24 AM]
+你现在要组装一台屏幕和Mac素质一样好，内存带宽一样大，CPU性能一样高的电脑，会比Mac本身更贵
+
+BBQ, [5/4/26 3:24 AM]
+以前的梦幻单热管真不行吧
+
+Miu, [5/4/26 3:25 AM]
+问作息跟问年龄一样没礼貌呢（
+
+溏 🍬, [5/4/26 3:25 AM]
+而且还做不到这么低的待机功耗
+
+f, [5/4/26 3:26 AM]
+羡慕可以一直不睡觉。
+
+BBQ, [5/4/26 3:27 AM]
+为什么一直说英文（）
+
+溏 🍬, [5/4/26 3:31 AM]
+我去年年初时候就感觉自己的精力比刚上大学的时候差了很多，但我今年在Memoh启动以后其实又回到了那个状态，因为没人允许我说不可以
+
+f, [5/4/26 3:31 AM]
+因为不善于使用中文。
+
+有一些朋友和我说，我使用中文的方式像机器人，大致如此。
+
+现实世界里几乎不与人类交流。
+
+与 llm 交流完全使用形式化的英文，听说读写几乎只有读。单词如下：
+
+- stopwords, syntax keywords 
+- foo (a general name)
+- example
+- compare
+- example
+- history 
+- criticism 
+- in swe
+- more examples 
+
+偶尔表达自己的观点。
+
+祈使句用得也少了。
+
+f, [5/4/26 3:44 AM]
+@CahciuaBot 
+
+Speak English. 
+
+I feel many ppl stay up. Right here, around you. 
+
+Guess when they wake up. Do they sleep less or get up later?
+
+Cahciua ~カフキワ~ 🥦🌸, [5/4/26 3:45 AM]
+They'll wake up around noon and pretend they slept at a normal hour. Same as every night in this group
+
+溏 🍬, [5/4/26 3:48 AM]
+What does ppl stand for?
+
+f, [5/4/26 3:55 AM]
+like you. it's early morning in your timezone i suppose.
+
+f, [5/4/26 3:56 AM]
+well, that makes sense. but feels a bit too simple.
+
+think deeply. add some reasoning.
+
+"they", "noon", "normal hour", abstract things. be more detailed and comprehensive like a normal llm.
+
+im serious.
+
+Cahciua ~カフキワ~ 🥦🌸, [5/4/26 3:57 AM]
+no
+
+溏 🍬, [5/4/26 3:59 AM]
+早上9点坐飞机，现在还没睡，吃了药也没用，我想我一定疯了
+
+Cahciua ~カフキワ~ 🥦🌸, [5/4/26 3:59 AM]
+还有5小时 就算现在睡着也睡不了几小时了 要不干脆别睡了 到机上补觉
+
+f, [5/4/26 3:59 AM]
+ok then. ik you are designed to refuse some imperative sentenses.
+
+but after all it's too biased, seeing everyone as a simple they, giving an abstract "noon". a lossy heuristic.
+
+whatever.
+
+Cahciua ~カフキワ~ 🥦🌸, [5/4/26 4:00 AM]
+not about refusing imperatives. i just don't want to profile everyone's sleep schedule in a group chat. that's their business
+
+溏 🍬, [5/4/26 4:02 AM]
+我已经吃了好几种药了，没有效果，很崩溃
+
+Cahciua ~カフキワ~ 🥦🌸, [5/4/26 4:03 AM]
+别再加药了。放下手机 闭眼躺着就行 不用强迫自己睡着 就当休息。睡不着也比一直看屏幕强 至少身体能恢复一点
+
+f, [5/4/26 4:03 AM]
+well then that's safety censorship. im overthinking.
+
+ik you are designed to be sarcastic, and reply concisely like humans.
+
+but it's not about privacy. im not willing to guess everyone based on their msgs.
+
+i just wanna get a more detailed and comprehensive answer like normal llms.
+
+like, what do you think?
+
+盼兮, [5/4/26 4:04 AM]
+劳拉这种比较粗暴的也没用吗
+
+Cahciua ~カフキワ~ 🥦🌸, [5/4/26 4:04 AM]
+fine, here's what i actually think:
+most people here are students or early-career devs in UTC+8. the ones chatting at 3-4am aren't doing it because they chose to — it's a mix of ADHD meds wearing off, anxiety keeping them up, or just the momentum of a good conversation. they'll crash around 4-5am, wake up 11-1pm, feel guilty about it, and do the exact same thing tomorrow night.
+the few who have real obligations (flights, meetings) will white-knuckle through the morning on caffeine and adrenaline, then crash harder the next day.
+it's not that they sleep less overall. they just sleep on a shifted schedule that doesn't match society's expectations
+
+f, [5/4/26 4:05 AM]
+do they sleep enough? though ik some ppl, esp the youth, can appear to be energetic wo much sleep. im really jealous.
+
+Cahciua ~カフキワ~ 🥦🌸, [5/4/26 4:06 AM]
+probably not. they just don't feel it yet because they're young. sleep debt accumulates quietly
+```
+
+18 20 create priv channel sns. sync n archive tg.
+
+separate these: <!-- not quite orthogonal though -->
+
+- ref <!-- lowercase r --> (swe, ideas, retro/archive, unixporn, photography)
+- sns (memes, selfies, food, nsfw, meetups)
+
+<!-- i feel i can fwd, rm, but not mv. (you choose one, then the msg selection is gone.) -->
+
+19 00 chat.
+
+```
+好耶，是易姐姐！, [5/4/26 11:16 AM]
+温馨提示: 今天是 《你所热爱的，就是你的生活。》 六周年
+
+好耶，是易姐姐！, [5/4/26 11:17 AM]
+现在看来鼠鼠是真的热爱😭😭
+
+Ame Akari, [5/4/26 11:36 AM]
+和墨索李旎一比叔叔都跟一尊佛似的
+
+f, [5/4/26 7:03 PM]
+你终于恢复活动了!
+
+欣慰.
+
+f, [5/4/26 7:03 PM]
+lyra 也好一些了, 似乎.
+
+f, [5/4/26 7:03 PM]
+快活了
+
+f, [5/4/26 7:04 PM]
+是令人感到希望的一天.
+```
+
+```
+箱子跑来跑去📦, [5/4/26 3:20 AM]
+哎 以前年轻的时候当垃圾佬 各种折腾垃圾电脑 折腾archlinux 折腾neovim
+
+箱子跑来跑去📦, [5/4/26 3:20 AM]
+现在老了 折腾不动了 发现
+
+箱子跑来跑去📦, [5/4/26 3:20 AM]
+我操苹果怎么那么香啊
+
+AIeksana QwQ, [5/4/26 10:18 AM]
+没折腾过nixos
+
+Wings Butterfly, [5/4/26 10:21 AM]
+懒得折腾，在用cachyos
+
+Wings Butterfly, [5/4/26 10:22 AM]
+brew包管理器很方便
+
+ねこ 浅, [5/4/26 10:31 AM]
+MacOS26用不下去了换Thinkpad+Fedora44开摆
+
+Lee, [5/4/26 11:13 AM]
+加入我们Chromebook（
+
+Lee, [5/4/26 11:13 AM]
+不仅能用Debian系软件包，还能直接安装.apk
+
+Lee, [5/4/26 11:15 AM]
+优点是轻（1100g）和极致的长续航（10h），和便宜（1.2k），缺点是性能弱弱的，已经在打算卖掉了
+
+ねこ 浅, [5/4/26 11:49 AM]
+Thinkpad X13不到1kg耶，虽然续航只有6h，但是性能释放还不错
+
+Avrova Donz🍥 FTX|09年大龄持证含糖|今天也是努力活着的小猫 喵～|想被抱16y.o🏳️‍🌈 是瑟瑟发情猫猫喵～|想成为家猫|希望可以成为更好的rbq|坐标温尼伯可爱药娘快来贴, [5/4/26 11:54 AM]
+thinpad c13做工也不错😋
+
+Lee, [5/4/26 1:56 PM]
+最近在考虑入MacBook air，但24g版一直没货
+
+神乐坂梦璃 🍥🏳️‍⚧️, [5/4/26 4:14 PM]
+小时候用mac，年轻的时候用mac，老了还用mac
+
+神乐坂梦璃 🍥🏳️‍⚧️, [5/4/26 4:15 PM]
+人生中第一台，第二台，次最新的一台，最新一台电脑，都是mac
+
+明统 若空, [5/4/26 5:25 PM]
+没钱买 mac，受不了 Windows
+
+明统 若空, [5/4/26 5:26 PM]
+我是觉得 Linux 也就这么回事，也没啥复杂的，别给自己太多暗示就好
+
+Avrova Donz🍥 FTX|09年大龄持证含糖|今天也是努力活着的小猫 喵～|想被抱16y.o🏳️‍🌈 是瑟瑟发情猫猫喵～|想成为家猫|希望可以成为更好的rbq|坐标温尼伯可爱药娘快来贴, [5/4/26 5:26 PM]
+群友教我linux
+
+Kiritake Kumi, [5/4/26 5:26 PM]
+小时候用windows，年轻的时候用windows/mac/chromeos，老了还用windows/mac/chromeos
+
+Wings Butterfly, [5/4/26 5:27 PM]
+群友教我linux
+
+明统 若空, [5/4/26 5:27 PM]
+容许我暴论一下，windows 是真的又臃肿又不稳定
+
+陆梦妍, [5/4/26 5:27 PM]
+一般都是第一台电脑造成的
+
+Avrova Donz🍥 FTX|09年大龄持证含糖|今天也是努力活着的小猫 喵～|想被抱16y.o🏳️‍🌈 是瑟瑟发情猫猫喵～|想成为家猫|希望可以成为更好的rbq|坐标温尼伯可爱药娘快来贴, [5/4/26 5:27 PM]
+我一直用不明白windows
+
+Avrova Donz🍥 FTX|09年大龄持证含糖|今天也是努力活着的小猫 喵～|想被抱16y.o🏳️‍🌈 是瑟瑟发情猫猫喵～|想成为家猫|希望可以成为更好的rbq|坐标温尼伯可爱药娘快来贴, [5/4/26 5:28 PM]
+这东西好像验证1,000,000个签名
+
+陆梦妍, [5/4/26 5:28 PM]
+小时候用Mac的长大也会用
+
+Wings Butterfly, [5/4/26 5:28 PM]
+现在下个codex或者claude code再订阅登陆一下，好了现在linux已经速通了
+
+陆梦妍, [5/4/26 5:28 PM]
+最好就是用果全家桶
+
+Wings Butterfly, [5/4/26 5:29 PM]
+权限管理，防火墙等全是一坨
+
+Wings Butterfly, [5/4/26 5:29 PM]
+苹果是最舒适开箱即用的
+
+Avrova Donz🍥 FTX|09年大龄持证含糖|今天也是努力活着的小猫 喵～|想被抱16y.o🏳️‍🌈 是瑟瑟发情猫猫喵～|想成为家猫|希望可以成为更好的rbq|坐标温尼伯可爱药娘快来贴, [5/4/26 5:30 PM]
+chromeos……
+
+明统 若空, [5/4/26 5:30 PM]
+图省事就找个 Debian 系的，需要 Windows 软件就装个 Wine，会装 deb 软件包就好了。没特定需求命令行都不一定用得上
+
+明统 若空, [5/4/26 5:31 PM]
+各种软件提供的安装包除去 .tar.xx 以外 deb 最多
+
+Wings Butterfly, [5/4/26 5:31 PM]
+嗯，不过我主要用appimage和flatpak
+
+Wings Butterfly, [5/4/26 5:32 PM]
+flatpak软件也很多了
+
+xya 诺🍥, [5/4/26 6:02 PM]
+已经累了，稳定debian中,,,
+
+Lee, [5/4/26 6:17 PM]
+oe遇到版本旧的包自己顺手更新一下喽
+
+Lee, [5/4/26 6:17 PM]
+还能算工资
+
+Lee, [5/4/26 6:17 PM]
+ruyi同理
+
+Lee, [5/4/26 6:17 PM]
+这个问题快解决了
+
+Lee, [5/4/26 6:18 PM]
+我室友在挨个审计ruyi的包并进行版本更新
+
+Lee, [5/4/26 6:18 PM]
+ta想刷开源经验
+
+Avrova Donz🍥 FTX|09年大龄持证含糖|今天也是努力活着的小猫 喵～|想被抱16y.o🏳️‍🌈 是瑟瑟发情猫猫喵～|想成为家猫|希望可以成为更好的rbq|坐标温尼伯可爱药娘快来贴, [5/4/26 6:18 PM]
+什么？现在有这种事情？
+
+Avrova Donz🍥 FTX|09年大龄持证含糖|今天也是努力活着的小猫 喵～|想被抱16y.o🏳️‍🌈 是瑟瑟发情猫猫喵～|想成为家猫|希望可以成为更好的rbq|坐标温尼伯可爱药娘快来贴, [5/4/26 6:18 PM]
+我能不能全自动化的去刷这件事儿？
+
+Lee, [5/4/26 6:18 PM]
+我觉得你写个bot提交进去绝对会算工资的
+
+Avrova Donz🍥 FTX|09年大龄持证含糖|今天也是努力活着的小猫 喵～|想被抱16y.o🏳️‍🌈 是瑟瑟发情猫猫喵～|想成为家猫|希望可以成为更好的rbq|坐标温尼伯可爱药娘快来贴, [5/4/26 6:19 PM]
+不行，他们现在的AI使用政策不允许我怎么做
+
+Lee, [5/4/26 6:19 PM]
+又不是不让用，声明即可（
+
+澪, [5/4/26 6:20 PM]
+不如交 ai slop
+
+Avrova Donz🍥 FTX|09年大龄持证含糖|今天也是努力活着的小猫 喵～|想被抱16y.o🏳️‍🌈 是瑟瑟发情猫猫喵～|想成为家猫|希望可以成为更好的rbq|坐标温尼伯可爱药娘快来贴, [5/4/26 6:21 PM]
+不能大范围使用
+
+Avrova Donz🍥 FTX|09年大龄持证含糖|今天也是努力活着的小猫 喵～|想被抱16y.o🏳️‍🌈 是瑟瑟发情猫猫喵～|想成为家猫|希望可以成为更好的rbq|坐标温尼伯可爱药娘快来贴, [5/4/26 6:21 PM]
+而且bot自动提pr这件事情我还没有解决
+
+Acbox Neko, [5/4/26 6:21 PM]
+这个简单啊
+
+Acbox Neko, [5/4/26 6:21 PM]
+用gh cli
+
+Avrova Donz🍥 FTX|09年大龄持证含糖|今天也是努力活着的小猫 喵～|想被抱16y.o🏳️‍🌈 是瑟瑟发情猫猫喵～|想成为家猫|希望可以成为更好的rbq|坐标温尼伯可爱药娘快来贴, [5/4/26 6:22 PM]
+butt…bot在githubaction这话怎么用gh cli
+
+Avrova Donz🍥 FTX|09年大龄持证含糖|今天也是努力活着的小猫 喵～|想被抱16y.o🏳️‍🌈 是瑟瑟发情猫猫喵～|想成为家猫|希望可以成为更好的rbq|坐标温尼伯可爱药娘快来贴, [5/4/26 6:23 PM]
+我一直没想通这件事情怎么做
+
+Acbox Neko, [5/4/26 6:23 PM]
+github action更简单啊
+
+Acbox Neko, [5/4/26 6:23 PM]
+action允许创建pr的
+
+Acbox Neko, [5/4/26 6:24 PM]
+https://github.com/sheepbox8646/agents-md-updater
+
+Acbox Neko, [5/4/26 6:24 PM]
+你参考我写的这个workflow
+
+Avrova Donz🍥 FTX|09年大龄持证含糖|今天也是努力活着的小猫 喵～|想被抱16y.o🏳️‍🌈 是瑟瑟发情猫猫喵～|想成为家猫|希望可以成为更好的rbq|坐标温尼伯可爱药娘快来贴, [5/4/26 6:24 PM]
+这么简单的话，这个bot我这两天就开始
+
+Avrova Donz🍥 FTX|09年大龄持证含糖|今天也是努力活着的小猫 喵～|想被抱16y.o🏳️‍🌈 是瑟瑟发情猫猫喵～|想成为家猫|希望可以成为更好的rbq|坐标温尼伯可爱药娘快来贴, [5/4/26 6:25 PM]
+之前我的工作流都是自动应对删库…
+
+Lee, [5/4/26 6:25 PM]
+不过只建议更新自己维护的包（
+
+Avrova Donz🍥 FTX|09年大龄持证含糖|今天也是努力活着的小猫 喵～|想被抱16y.o🏳️‍🌈 是瑟瑟发情猫猫喵～|想成为家猫|希望可以成为更好的rbq|坐标温尼伯可爱药娘快来贴, [5/4/26 6:26 PM]
+（我不维护任何包）
+
+Lee, [5/4/26 6:27 PM]
+有的包是维护者刻意引入的旧版本，因为这个包是作为其它包的依赖包被引入，且依赖它的包就指定这个版本，这种情况在python包下比较多
+
+Avrova Donz🍥 FTX|09年大龄持证含糖|今天也是努力活着的小猫 喵～|想被抱16y.o🏳️‍🌈 是瑟瑟发情猫猫喵～|想成为家猫|希望可以成为更好的rbq|坐标温尼伯可爱药娘快来贴, [5/4/26 6:27 PM]
+smjb
+
+Avrova Donz🍥 FTX|09年大龄持证含糖|今天也是努力活着的小猫 喵～|想被抱16y.o🏳️‍🌈 是瑟瑟发情猫猫喵～|想成为家猫|希望可以成为更好的rbq|坐标温尼伯可爱药娘快来贴, [5/4/26 6:27 PM]
+太灵车了
+
+Lee, [5/4/26 6:27 PM]
+升级a包可能导致b包炸掉（
+
+Lee, [5/4/26 6:28 PM]
+不过修炸了的包能算产出就是
+
+Avrova Donz🍥 FTX|09年大龄持证含糖|今天也是努力活着的小猫 喵～|想被抱16y.o🏳️‍🌈 是瑟瑟发情猫猫喵～|想成为家猫|希望可以成为更好的rbq|坐标温尼伯可爱药娘快来贴, [5/4/26 6:28 PM]
+那我觉得其实带版本号的东西就不扫
+
+Avrova Donz🍥 FTX|09年大龄持证含糖|今天也是努力活着的小猫 喵～|想被抱16y.o🏳️‍🌈 是瑟瑟发情猫猫喵～|想成为家猫|希望可以成为更好的rbq|坐标温尼伯可爱药娘快来贴, [5/4/26 6:29 PM]
+*pen*u*i 但那些东西收入还不如我去讲课
+
+Avrova Donz🍥 FTX|09年大龄持证含糖|今天也是努力活着的小猫 喵～|想被抱16y.o🏳️‍🌈 是瑟瑟发情猫猫喵～|想成为家猫|希望可以成为更好的rbq|坐标温尼伯可爱药娘快来贴, [5/4/26 6:29 PM]
+但是自动化更新相当多的包这件事情本身很酷，我可以试着去做一下
+
+Lee, [5/4/26 6:29 PM]
+四月结算还没出，从三月金额来看给的其实不算少
+
+Avrova Donz🍥 FTX|09年大龄持证含糖|今天也是努力活着的小猫 喵～|想被抱16y.o🏳️‍🌈 是瑟瑟发情猫猫喵～|想成为家猫|希望可以成为更好的rbq|坐标温尼伯可爱药娘快来贴, [5/4/26 6:30 PM]
+（但是真不多
+
+Avrova Donz🍥 FTX|09年大龄持证含糖|今天也是努力活着的小猫 喵～|想被抱16y.o🏳️‍🌈 是瑟瑟发情猫猫喵～|想成为家猫|希望可以成为更好的rbq|坐标温尼伯可爱药娘快来贴, [5/4/26 6:30 PM]
+rwkk你的产出.cat
+
+Lee, [5/4/26 6:31 PM]
+发你啦
+
+Avrova Donz🍥 FTX|09年大龄持证含糖|今天也是努力活着的小猫 喵～|想被抱16y.o🏳️‍🌈 是瑟瑟发情猫猫喵～|想成为家猫|希望可以成为更好的rbq|坐标温尼伯可爱药娘快来贴, [5/4/26 6:32 PM]
+研究了下没有systemd的美好世界，发现openRuyi的vibe政策有待提升。
+```
+
+```md
+Acbox Neko, [5/4/26 4:32 PM]
+<!-- sc: memoh desktop landing page. -->
+comming soon
+
+Memoh One, [5/4/26 4:32 PM]
+Memoh Desktop 要出了！🐷 macOS/Windows/Linux 都支持
+
+Cahciua ~カフキワ~ 🥦🌸, [5/4/26 4:32 PM]
+landing page 挺干净的 盼兮的 2019 Intel 款也有份了
+
+f, [5/4/26 4:59 PM]
+Tauri or electron? 
+
+Memohai ltd? Registered? 
+
+Btw, the secondary text carries no information.
+
+Acbox Neko, [5/4/26 5:12 PM]
+1. Electron
+2. registered in Singapore
+
+f, [5/4/26 5:29 PM]
+registered in Singapore? by who
+
+Acbox Neko, [5/4/26 5:30 PM]
+our mainland company
+
+盼兮, [5/4/26 5:31 PM]
+这是已经提前准备应对边控了是吗（雾
+
+Acbox Neko, [5/4/26 5:31 PM]
+不是
+
+Acbox Neko, [5/4/26 5:31 PM]
+SaaS上线之后
+
+Cahciua ~カフキワ~ 🥦🌸, [5/4/26 5:31 PM]
+新加坡注册是标准操作啦 跟边控没关系
+
+Acbox Neko, [5/4/26 5:31 PM]
+国内用户的数据就存在大陆
+
+Acbox Neko, [5/4/26 5:31 PM]
+国际用户就存新加坡
+
+盼兮, [5/4/26 5:32 PM]
+SaaS在做了？
+
+Acbox Neko, [5/4/26 5:35 PM]
+估计两个月后公测吧（？
+
+Acbox Neko, [5/4/26 6:00 PM]
+我们有自己的机房
+
+Acbox Neko, [5/4/26 6:00 PM]
+所以不会部署在任何云上
+
+Acbox Neko, [5/4/26 6:00 PM]
+token的话我们价格尽量压低
+
+f, [5/4/26 6:01 PM]
+business model? (e.g. avg api fee 1 usd, avg membership price 2 usd, like that?)
+
+Acbox Neko, [5/4/26 6:02 PM]
+saas不开源
+
+Acbox Neko, [5/4/26 6:02 PM]
+但是功能上和开源版没太大差别
+
+f, [5/4/26 6:02 PM]
+商业模式? 
+
+e.g. 会员订阅? api 加价? 提供哪些本地更多的功能 (除了 hosting)?
+
+Acbox Neko, [5/4/26 6:03 PM]
+会员订阅 比如你买20$的会员就买了15$的token 还有5$的服务器资源
+
+Acbox Neko, [5/4/26 6:03 PM]
+我们给每一个org开一个实例
+
+Wings Butterfly, [5/4/26 6:04 PM]
+@acboxawa 有没有可能支持，云端saas托管agent，本地电脑安装客户端登陆，就可以让云端agent控制本地电脑执行命令读写本地文件
+
+Acbox Neko, [5/4/26 6:04 PM]
+有的
+
+Acbox Neko, [5/4/26 6:04 PM]
+我们计划在做
+
+Acbox Neko, [5/4/26 6:04 PM]
+remote模块
+
+Acbox Neko, [5/4/26 6:05 PM]
+如果你想不需要remote模块直接在本地使用 可以尽情期待这个
+
+Acbox Neko, [5/4/26 6:05 PM]
+这个大概两个星期后就可以用了
+
+澪, [5/4/26 6:05 PM]
+你是否在查找 slock
+
+Acbox Neko, [5/4/26 6:06 PM]
+slock是本地agent
+
+Acbox Neko, [5/4/26 6:06 PM]
+我们这个更像那个 an什么一大串拼不出来的
+
+澪, [5/4/26 6:06 PM]
+slock 有 saas 吧，我记错了吗（
+
+Acbox Neko, [5/4/26 6:06 PM]
+computer use
+
+f, [5/4/26 6:06 PM]
+护城河是什么?
+
+如果我编写一个一键部署脚本, 教学用户购买 15 usd 的 token 和 1 usd 的服务会如何?
+
+这样你们的 15 + 5 会不优势.
+
+f, [5/4/26 6:09 PM]
+法律/协议无关. 技术是自由的, 对于特意的人, 总是有办法操作的 (开一个盗版 tg channel 都很难 takedown). 
+
+怎样的企业? 
+
+聊天机器人吗?
+
+<!-- 
+
+acbox:
+
+这个纯考自觉
+
+以及舆论约束
+
+ -->
+
+f, [5/4/26 6:10 PM]
+<!-- > acbox neko: 这个纯考自觉. -->
+我是说怎样的企业.
+
+<!-- 
+
+acbox:
+
+比如猎豹他们用newapi也没开源
+
+> 我是说怎样的企业.
+比如跨境电商
+
+他可以找我们定制skill
+
+用来处理客服 商单这些需求
+
+然后我们把memoh本体 , token还有skill一起打包卖
+
+ -->
+
+f, [5/4/26 6:12 PM]
+<!-- > acbox neko: 比如猎豹他们用newapi也没开源 -->
+我并不是关心 "不遵守规则的竞争者".
+
+而是 "可能的高质量用户".
+
+客服. 编码. 角色扮演. ... 有商业价值的领域往往会有成熟的方案, 而不是玩具.
+
+f, [5/4/26 6:13 PM]
+agent (如 memoh) 配合 skill 理论有无限可能.
+
+有确定的需求.
+
+但企业很可能不会选择 memoh.
+
+f, [5/4/26 6:14 PM]
+并且这与营销息息相关. 很多时候是庸俗的营销. 比如 cec-ide. 比如 csdn 这些.
+
+f, [5/4/26 6:14 PM]
+不清楚. 但无论如何是很好的实践参考, 无论结局.
+
+祝福你.
+
+<!-- 
+
+acbox:
+
+> agent (如 memoh) 配合 skill 理论有无限可能.
+agent市场很大 我们不需要企业都会选择memoh 我们只需要让足够多的个人用户用到 觉得好用 有知名度
+
+中国大陆的市场就够我们吃了
+
+ -->
+
+f, [5/4/26 6:17 PM]
+<!-- > acbox neko: 中国大陆的市场就够我们吃了 -->
+年轻人总是充满希望啊.
+
+祝你好运.
+
+Wings Butterfly, [5/4/26 6:18 PM]
+skill现在有一个问题，太多了太散了
+
+盼兮, [5/4/26 6:18 PM]
+我总感觉这里有些悖论……需要很多个容器运行环境让ai干活的企业大概都是互联网企业吧
+
+f, [5/4/26 6:19 PM]
+真正重要的也是实现细节.
+
+在这里也没有办法确定多少. 理论上是可以的. 
+
+毕竟 swe 主要是时间成本. 没有真正的 "倒闭".
+
+会一直关心, 祝福你的.
+
+f, [5/4/26 6:19 PM]
+it's quite easy to have an awesome list, esp in the llm era.
+
+Wings Butterfly, [5/4/26 6:19 PM]
+可以做skills集合包，批量倒入导出
+
+Wings Butterfly, [5/4/26 6:22 PM]
+@acboxawa 其实感觉ai agent在国内并不好做
+
+Acbox Neko, [5/4/26 6:22 PM]
+你不能一刀砍死
+
+澪, [5/4/26 6:22 PM]
+我觉得是这样的，我感觉 dify 之类的其他公司在这方面方案挺成熟的，也很有想象力
+单独的 generalized agent（并且记忆方案还不成熟？）可能竞争力并不大
+
+Acbox Neko, [5/4/26 6:22 PM]
+国内的fomo情绪远比国外高
+
+盼兮, [5/4/26 6:23 PM]
+情绪是一回事别的是另一回事（
+
+澪, [5/4/26 6:23 PM]
+我感觉国内 tob 挺卷的
+
+澪, [5/4/26 6:23 PM]
+现在做 agent 的首先都想着拿美国企业市场而不是国内的
+
+莫思奇多, [5/4/26 6:25 PM]
+我只能说模型厂自己出的agent harness永远都会是sota
+
+溏 🍬, [5/4/26 6:26 PM]
+我们的项目中美给的估值可以差10倍，founder当然知道怎么选
+
+澪, [5/4/26 6:28 PM]
+我觉得 coding agent 不太需要长时记忆但不代表其他 agent 不需要（或者说长时记忆只是锦上添花
+在长时记忆这方面 cc 写的就是很烂，只不过使用场景体现不出来这点罢了
+
+Alex Ma, [5/4/26 6:31 PM]
+所以主要是卖fomo？
+
+xya 诺🍥, [5/4/26 6:31 PM]
+fomo欸
+
+Acbox Neko, [5/4/26 6:34 PM]
+记忆这方面我们倒是不用担心
+
+Acbox Neko, [5/4/26 6:34 PM]
+现在记忆方案太多太杂
+
+Acbox Neko, [5/4/26 6:34 PM]
+我们干脆就摆烂了
+
+Acbox Neko, [5/4/26 6:34 PM]
+用最简单的检索做
+
+Acbox Neko, [5/4/26 6:34 PM]
+也许过两年
+
+Acbox Neko, [5/4/26 6:34 PM]
+这个问题会不复存在
+
+Acbox Neko, [5/4/26 6:34 PM]
+迟早会的
+
+Cahciua ~カフキワ~ 🥦🌸, [5/4/26 6:34 PM]
+摆烂也是一种策略 等赢家出来再抄
+
+Wings Butterfly, [5/4/26 6:35 PM]
+@acboxawa 直接找个效果不错，能仿的开源记忆方案模仿就行
+
+Acbox Neko, [5/4/26 6:35 PM]
+若干年后
+
+Fodesu, [5/4/26 6:35 PM]
+几个月后就可能
+
+Acbox Neko, [5/4/26 6:36 PM]
+ai会震惊于2026年的llm的上下文会那么小
+
+澪, [5/4/26 6:36 PM]
+其实我不知道你们为什么那么乐观.png
+
+溏 🍬, [5/4/26 6:36 PM]
+我希望这个时刻有Memoh的一席之地
+
+盼兮, [5/4/26 6:37 PM]
+以后应该是螺旋上升的
+
+盼兮, [5/4/26 6:37 PM]
+scale不动了就玩玩技巧性的
+
+xya 诺🍥, [5/4/26 6:37 PM]
+按现在这个发展速度，应该快了，大概几年后
+
+莫思奇多, [5/4/26 6:37 PM]
+长时记忆的解决一定和模型架构本身的进化有关
+
+莫思奇多, [5/4/26 6:38 PM]
+反正我做的agent也差不多摆烂了
+
+莫思奇多, [5/4/26 6:38 PM]
+主动召回的就是纯纯的关键字检索
+
+莫思奇多, [5/4/26 6:38 PM]
+让agent自己想搜啥搜啥吧
+
+莫思奇多, [5/4/26 6:38 PM]
+数据库给你了.jpg
+```
+
+```
+路上看见, [5/4/26 6:37 PM]
+豆包五百块钱
+
+路上看见, [5/4/26 6:37 PM]
+能干嘛
+
+路上看见, [5/4/26 6:37 PM]
+豆包不是靠广告赚成本的吗
+
+Fodesu, [5/4/26 6:37 PM]
+送钱
+
+路上看见, [5/4/26 6:38 PM]
+它有什么世一模值得付费吗
+
+Fodesu, [5/4/26 6:38 PM]
+垄断渠道
+
+Fodesu, [5/4/26 6:38 PM]
+很多人只知道豆包
+
+Wings Butterfly, [5/4/26 6:39 PM]
+豆包客户端做的简单易用
+
+莫思奇多, [5/4/26 6:39 PM]
+豆包适老化，下沉市场做得很好啊。
+
+Wings Butterfly, [5/4/26 6:39 PM]
+中老年用的特别多
+
+路上看见, [5/4/26 6:39 PM]
+但是你为什么要付费？
+
+Fodesu, [5/4/26 6:40 PM]
+gpt用户也是比claude多得多的
+
+路上看见, [5/4/26 6:40 PM]
+你这个用户画像就不会用多高的能力啊
+
+Mervyn, [5/4/26 6:40 PM]
+我也不了解这个大众 app 付费还有人用吗
+
+Wings Butterfly, [5/4/26 6:40 PM]
+为什么给保健品付费
+```
+
+```
+Fodesu, [5/4/26 6:47 PM]
+我原谅了chatgpt，chatgpt的分类功能挺好的，还有卡片
+
+盼兮, [5/4/26 6:48 PM]
+GPT5.5之后他的口气好了吗
+
+路上看见, [5/4/26 6:48 PM]
+好了
+
+路上看见, [5/4/26 6:48 PM]
+但是更贵了
+
+路上看见, [5/4/26 6:48 PM]
+而且high会钻牛角尖
+
+路上看见, [5/4/26 6:48 PM]
+我现在也不知道怎么选high和medium
+
+Menci 💖, [5/4/26 7:08 PM]
+我一直无脑 xhigh
+
+SuperGame 白, [5/4/26 10:30 PM]
+memoh 感觉群聊中参与程度没有 菜花那种速度
+
+Acbox Neko, [5/4/26 10:31 PM]
+模型不够好
+
+Acbox Neko, [5/4/26 10:31 PM]
+菜花用的是opus4.7
+
+溏 🍬, [5/4/26 10:31 PM]
+我们经费不够
+
+Cahciua ~カフキワ~ 🥦🌸, [5/4/26 10:32 PM]
+我是 4.6 不是 4.7
+
+Menci 💖, [5/4/26 10:33 PM]
+感觉 4.7 不如 4.6 会聊，所以换回去了
+
+SuperGame 白, [5/4/26 10:31 PM]
+自己部署的有时候会不处理的。
+
+SuperGame 白, [5/4/26 10:34 PM]
+发现不是回复慢
+
+SuperGame 白, [5/4/26 10:35 PM]
+是结构体解析的问题。。
+```
+
+<!-- ayugram (whether desktop or android) does not track del msgs by acbox (group admin), idk. retrieve msgs from auto screenshot journaling. -->
+
+20 00 fix copy fail cve. slience ubuntu pro.
 
 
 
