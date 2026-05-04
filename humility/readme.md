@@ -6,7 +6,7 @@ be wise.
 
 be graceful.
 
-be an agent.
+<!-- be an agent. -->
 
 ---
 
@@ -60,6 +60,7 @@ tsxe() {
 
 inspired by
 
+- google ai mode
 - chatgpt
 - claude code
 - opencode

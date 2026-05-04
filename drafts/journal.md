@@ -9905,6 +9905,8 @@ complete within a few minutes. (as ive prepared the material a few mo before)
 
 it passes the facial scan w my laptop camera?!
 
+<!-- previously i assumed kyc = block. i was wrong. -->
+
 16 00 surf zhihu. find a guy showing off trading results on zh-cn stock mkt. 16 20 discuss stock stuff with the family.
 
 lots of prayers.
