@@ -10,11 +10,11 @@ follow these:
   - dont reinvent wheels, prefer modern proven tech
 - naming:
   - snake case
-  - verb noun for actions, predicate for bools, noun for factory functions
+  - verb noun for actions (`get_data`, not `data_getter`), predicate for bools (`is_prime`, not `check_primality`), noun for factory functions (`time`, not `create_time`)
 - style:
   - functional programming
   - modular and cohesive
-  - object params
+  - object params for more than one param
   - async if needed
   - always function statement, never arrow function (unless as props)
   - always type, never interface

@@ -131,8 +131,12 @@ async function screenshot_tick({
 
   ensure_directory({ file_path: path });
 
+  // screenshot tool itself might not capture the color accurately
   await run_command({
-    command: `scrot "${path}"`,
+    command: `scrot "${path}" -e 'mogrify -background black -flatten -format jpg -quality 80 "$f" && rm "$f"'`, // screenshot and compress
+    // quality 60 will be too aggressive
+
+    // command: `scrot "${path}"`,
   });
 }
 

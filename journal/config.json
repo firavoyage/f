@@ -1,7 +1,7 @@
 {
   "log_interval": 60,
   "data_directory": "$HOME/Documents/f/journal/data/journal.log",
-  "screenshot_interval": 300,
+  "screenshot_interval": 60,
   "screenshot_directory": "$HOME/Pictures/journal/%Y-%m-%d %H-%M-%S.png",
   "screenshots_enabled": true
 }

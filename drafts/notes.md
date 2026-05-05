@@ -2762,3 +2762,16 @@ btw, del key does not map to delete. alt left does not map to back (esc does).
 
 ---
 
+class name is the component name.
+
+by being semantic, everyone can work w you easier.
+
+e.g. lichess.
+
+just use css and html. no need to have a pre compiler.
+
+use css variables. like the tailwind way.
+
+effectively, it's to abstract the tailwind css class.
+
+---

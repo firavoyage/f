@@ -746,19 +746,17 @@ playlist
 
 ---
 
-create a smaller and better origami bird.
-
----
-
 glaze lang.
 
 ---
 
-trkr. (twitter, blog, ...)
+funshiki index.
 
 ---
 
-funshiki index.
+proxy self hosting
+
+and guide.
 
 ---
 

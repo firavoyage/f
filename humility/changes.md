@@ -65,3 +65,27 @@ simplify ts infra (dry)
 global import
 
 use(lib) iff obj assign(lib, global this)
+
+05
+
+revise message
+
+prev
+
+- object params
+
+new
+
+- object params for more than one param
+
+<!-- i absolutely need this -->
+
+prev
+
+- verb noun for actions, predicate for bools, noun for factory functions
+
+new
+
+- verb noun for actions (`get_data`, not `data_getter`), predicate for bools (`is_prime`, not `check_primality`), noun for factory functions (`time`, not `create_time`)
+
+<!-- might be clearer? -->

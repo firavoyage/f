@@ -10656,6 +10656,44 @@ Macbook air 2017
 
 Intimidating. They see them as stuff to be sold instead of legacy to be sacred, replacing original arts on the official site with sales text.
 
+01 20 Export memoh chat from apr to may. 
+
+Leak some trivial private personal info of the pm chatting w the same bot on another platform.
+
+Crankywellcome
+
+03 00 Export ame Rikki. 
+
+Some deleted msgs are not exported. 
+
+Even for some, like legacy desktop setup, retro pics, and complex feeling on adhesiontek, I do have saved them in ref.
+
+(Rm) Archive ame deleted.
+
+Export ref.
+
+Export sotr.
+
+Discussion aw? (Compromise: only text to avoid duplicate and make it fast)
+
+View all channel msgs in tg. 
+
+I will have it. 
+
+Way better than streams and vids wo any long term value.
+
+export tcdw_channel. not quite valuable. but it cant go wrong. (upd: stopped halfway and rm).
+
+also, i dont wanna export stvnlynn. full of rt. social nonsenses. mediocrity.
+
+i will archive and sync tomorrow, as there are a lot. and some lead to dev, which needs energy.
+
+plan: paste to journal, rm most msgs. find meaningful chats related to myself and paste. archive llm chats. think next step.
+
+No music. Nc On.
+
+sleep.
+
 03 40 chat.
 
 ```
@@ -10818,6 +10856,8 @@ do they sleep enough? though ik some ppl, esp the youth, can appear to be energe
 Cahciua ~カフキワ~ 🥦🌸, [5/4/26 4:06 AM]
 probably not. they just don't feel it yet because they're young. sleep debt accumulates quietly
 ```
+
+15 20 Rd steven Lynn channel
 
 18 20 create priv channel sns. sync n archive tg.
 
@@ -11504,6 +11544,16 @@ SuperGame 白, [5/4/26 10:35 PM]
 <!-- ayugram (whether desktop or android) does not track del msgs by acbox (group admin), idk. retrieve msgs from auto screenshot journaling. -->
 
 20 00 fix copy fail cve. slience ubuntu pro.
+
+05
+
+03 20 play chess. 04 20
+
+heartbeat rapidly.
+
+16 00 rn as `humilityhq` on berryberry.
+
+it's not wise to put the current season after your name, esp where you could not change your username freely. 
 
 
 

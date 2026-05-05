@@ -23,3 +23,11 @@ rn journal (which is actually an llm prompt) to message
 simplify. rewrite in ts. mv to legacy.
 
 support screenshot.
+
+---
+
+2026.05.04
+
+change screenshot interval from 300s to 60s. 
+
+use mogrify to compress at quality 80.

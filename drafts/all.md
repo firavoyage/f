@@ -160,6 +160,8 @@ software engineering frontend:
 - testing lib
 - result pattern error global space
 - pnpm install global cli locally
+- ts framework library react teact style guide
+- ts framework agnostic component library mitosis web component lit
 
 software engineering backend:
 
