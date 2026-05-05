@@ -291,6 +291,7 @@ history:
 - cue search engine apple now
 - unix epoch
 - thinkpad trackpoint
+- us jp cable network infra
 
 politics:
 
@@ -331,6 +332,7 @@ laws:
 - bisq security
 - criticism compliance tax legal tax
 - legal system dirty secret
+- youtube made for kids coppa restriction dmca criticism digital colonialism
 
 glaze:
 

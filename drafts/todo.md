@@ -153,18 +153,6 @@ abstract.
 
 ---
 
-simplify notes and research on drafts and humility.
-
-rm most.
-
-also simplify todos/things/tabs. (important)
-
-merge things & tabs?
-
-trim humility notes. remove nonsense.
-
----
-
 what should i do now?
 
 simplify. 
@@ -483,8 +471,22 @@ result pattern (and global use) in msg.
 
 ---
 
-硅谷.
+when you store a file
 
-摩登家庭.
+- calc the hash
+- store it somewhere in the data folder
+- symlink
+
+---
+
+simplify notes and research on drafts and humility.
+
+rm most.
+
+also simplify todos/things/tabs. (important)
+
+merge things & tabs?
+
+trim humility notes. remove nonsense.
 
 ---

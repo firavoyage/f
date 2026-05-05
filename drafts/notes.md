@@ -2775,3 +2775,30 @@ use css variables. like the tailwind way.
 effectively, it's to abstract the tailwind css class.
 
 ---
+
+links on a youtube pf page... are not ctrl clickable.
+
+https://www.youtube.com/@cyannyan6/videos
+
+e.g. video shorts live
+
+---
+
+float: ia.
+
+spotify mixes 
+
+- singles
+- albums
+- artists
+- playlists
+
+in the library.
+
+what matters more is what you play. you can play anything as you like.
+
+you can play next. you can stop after. anything.
+
+you dont have to switch from tabs (common on dock).
+
+---

@@ -10621,7 +10621,7 @@ f, [5/3/26 8:23 PM]
 
 23 20 Test earplug + headphone nc. <!-- try for the first time, actually. test is simpler but not quite accurate. ik it can work already. -->
 
-Nc is so good. noises within a certain threshold are simply eliminated. 
+Nc is so good. noises within a certain threshold are simply eliminated. <!-- e.g. computer noise -->
 
 View tg channel on phone. 
 
@@ -11551,9 +11551,41 @@ SuperGame 白, [5/4/26 10:35 PM]
 
 heartbeat rapidly.
 
-16 00 rn as `humilityhq` on berryberry.
+16 00 rn as `humilityhq` on berryberry. simplify memories.
 
-it's not wise to put the current season after your name, esp where you could not change your username freely. 
+it's not wise to put the season after the username, esp when you could not change it freely. 
+
+> 春 夏 秋 冬
+
+i were about to rm some hidden vids, where cmts are auto redacted after takedown, but stats are kept. i have them both locally and on youtube. what makes it worse, ive tried to clickbait (even in zh-cn) these screenrecords, which feels noisy.
+
+i did not. overly monetized, heavily censored, it's not an ideal platform after all. it would be in vain to make it more pleasant. (upd: rm anyway, for some vids. i could not bare it. it's not really because i hate the platform. it's because the stats might be irrevisible. just save some mhtml. and proceed. vids are well archived.)
+
+one thing is... i could not unlist a vid on berryberry. it's a fact. a constraint. i could make it private, but it would be shown when im viewing my own public pf. i thought it should have been hidden into the panel. imagine someone viewing their own pf when streaming... the thumbnail and the title would be leaked at least.
+
+upd: upload some vids on yt. no need to unlist.
+
+<!-- i sacked my whole afternoon, and as a compensation, i felt relief. -->
+
+17 40 watch `I'm QUITTING 10-Minute Chess` while uploading vids.
+
+19 00 appreciate `咸鱼几十块的二手钢琴，直接跳过钢琴基础教学花了一个月终于学会了《圣诞快乐劳伦斯先生》，感谢坂本龙一先生`.
+
+19 20 appreciate <!-- skim actually, since it's a bit boring, like dumping --> `The aesthetic side of Chinese high school you’ve never seen.(Campus vlog part 2)`.
+
+a prestigious hs. <!-- for top tier ones (like more than 10% t/p), i might call it "one of the best hs" instead. -->
+
+19 40 skim `2026年了，影视飓风是怎么工作的？`.
+
+youtube timeline (normalized transcript) is nice. another ad of bytedance lark.
+
+21 00 learn `如何自建翻墙节点？| 从零开始VPS搭建节点教程 | 什么是VPS、协议、面板？| 自建节点有什么好处？ | 机场节点搭建全流程 | 无限芝士`.
+
+i dont feel it would help a lot. sometimes even mlcn sites are inaccessible. <!-- in terms of my current network status, it's not quite reliable. but if it's not due to proxy, which generally works fine w redundancy, creating my own one wont help. --> also, i could do it anytime.
+
+btw, the vid focuses on windows users w zh-cn internationalization pref, who have to click "continue" a few times just to install ssh.
+
+the tech is handled by a foss "panel" project on github, where you are guided to set everything on gui. why not reproduce w a text config?
 
 
 
