@@ -2,39 +2,9 @@ todo
 
 message/paste · todo · tabs/things · scratch pad · weekly/projects · notes
 
-<!--
-
-be simple. leverage thinking.
-
-i dont need infinite power. dont dive into tooling/methodology.
-
-pragmatism.
-
-an intuitive mind is sacred.
-
-curiosity... good. but dont over do it.
-
-learn by doing.
-
-finish things: close, organize, think, prepare... importance over urgency.
-
- -->
-
-<!-- make it work first. make it beautiful next. -->
+<!-- life - arrange todo -->
 
 <!-- "non trivial". -->
-
-<!-- do things that dont scale. -->
-
-<!--
-
-archive.
-
-organize.
-
-analyze.
-
- -->
 
 <!--
 
@@ -50,173 +20,55 @@ analyze.
 
 ---
 
-life
-
-"arrange todo"
-
----
-
-(see things)
-
-(see notes)
-
----
-
 humility
 
 ---
 
-research manus use cases myself. find inspiration.
-
----
-
-make log lib.
-
-i can log, fs, kv.
-
----
-
-rethink "loop".
-
----
-
-refactor. no more jsdoc. (prev code? message?)
-
-types? (rethink result. i think i will keep it. failures are expected, like unreliable network, invalid input, etc. try catches are dirty.)
-
----
-
-lib adwaita on web.
-
----
-
-lobehub uses jina ai. just add r.jina.ai before your url.
-
-there are a lot of things like jina, exa. find them all.
-
----
-
-d.ts.
-
-- std types
-- bot types
-
----
-
-?
-
-think.
-
-normalize
-
-```
-  - no try catch unless external libraries need, (... instead)
-  - no throw
-  - no nested if. if err, return/continue/break.
-```
-
-"prefer early return when err to avoid nested conditions"
-
----
-
-(component libraries)
-
-auto pass some default props like dark mode?
-
-no need to overthink props/state. (abstraction on all frameworks / components)
-
-i mean to be pragmatic.
-
-how does adwaita do.
-
----
-
-fs.
-
-abstract fs like ruby.
-
-change name: snake case. single word.
-
-change behavior: create path when needed, like vscode. handle common issues like dangerous/invalid characters.
-
-kv.
-
----
-
-ask.
-
----
-
-archive.
-
-abstract.
-
----
-
-what should i do now?
-
-simplify. 
-
-research, think, write, review the reality.
-
----
-
-xdg spec.
-
-folders on all platforms.
-
----
-
-provider abstraction design. ~~generator.~~
-
-ux.
-
----
-
-testing (?)
-
-i dont think we need that heavy js testing libs.
-
-a test lib? yaml.
-
-fn. input. output. 
-
-you can actually dynamic import.
-
-```ts
-await import(module_path) // the same as normal import
-// you get a obj of fn. 
-```
-
-write a simple testing lib.
-
----
-
-watch films. there are many.
-
-pick some bangumis from anime sedai. there are not many left.
-
----
-
-lint unused?
-
-find a config.
-
-ci.
-
----
-
-git abstraction.
-
-i think you could even as daily backup... and sync.
+research manus use cases.
 
 ---
 
 log.
 
+- clg
+- persistence to fs
+- kv
+
+expand obj like clg.
+
+currently, just use clg.
+
 decorator?
 
-reproduce?
+---
+
+programming style guide.
+
+result pattern. use.
+
+...
+
+prev
+
+```
+- no try catch unless external libraries need, (... instead)
+- no throw
+- no nested if. if err, return/continue/break.
+```
+
+...
+
+spec template.
+
+---
+
+ask.
+
+...
+
+provider abstraction design.
+
+ux. (add a provider)
 
 ---
 
@@ -249,6 +101,30 @@ github 3p ui.
 humility: export, reproduce, copy and paste the prompt & result, proxy.
 
 ---
+
+research projects on
+
+https://nat.org/
+
+https://danielgross.com/
+
+---
+
+file.
+
+abstract fs like ruby.
+
+change name: snake case. single word.
+
+change behavior: create path when needed, like vscode. handle common issues like dangerous/invalid characters.
+
+<!-- kv. -->
+
+xdg spec.
+
+folders on all platforms.
+
+...
 
 file lib.
 
@@ -285,47 +161,15 @@ xdg desktop? (i think so. if we always combine two abstractions, we could simpli
 
 symlink hash?
 
----
+...
 
-bilibili fav sync. & auto backup.
+when you store a file
 
-auto backup means to backup once you save. e.g. zhihu, berryberry.
+- calc the hash
+- store it somewhere in the data folder
+- symlink
 
-though, ive no idea if those taken down within 1d are valuable for archival.
-
----
-
-spec template.
-
----
-
-check the time on file name by file metadata in drafts w shell script
-
-typo lib?
-
-a bigger and better lib?
-
-build a cli for that.
-
-learn
-
-- cli
-- typo lib
-- time lib (file)
-
----
-
-export twitter. research cli. or build my own.
-
----
-
-research projects on
-
-https://nat.org/
-
-https://danielgross.com/
-
----
+...
 
 precious, [5/2/26 12:03 PM]
 Clear:
@@ -390,6 +234,55 @@ You can be static, server side, or client side
 
 (Isc is perf for static. Rsc is an abstraction on ssg)
 
+---
+
+design system. component library.
+
+react.
+
+research md3 (mui, awa google's web components).
+
+think.
+
+lib adwaita on web.
+
+...
+
+I want to find some design. If I like I can further go to the figma. 
+
+Also, component lib.
+
+Where.
+
+...
+
+blog theme?
+
+---
+
+para.
+
+<!-- poc: code runner works for markdown. you can press ctrl r instead of ctrl shift v. -->
+
+vscode md preview is not feature rich.
+
+i could not ctrl f. i could not have toc.
+
+research: gemini. (lagrange)
+
+---
+
+simplify 
+
+- notes on drafts
+- notes on humility
+- things
+- tabs
+
+merge things & tabs?
+
+---
+
 precious, [5/2/26 5:59 PM]
 V. 
 
@@ -429,64 +322,10 @@ I would use a flexible change dot md as always in my style.
 
 Btw, how to v a pre existing folder w another separate git?
 
----
+...
 
-I want to find some design. If I like I can further go to the figma. 
+git abstraction.
 
-Also, component lib.
-
-Where.
-
----
-
-research css filter prop.
-
-ref: https://bridge.surf/
-
----
-
-para.
-
-<!-- poc: code runner works for markdown. you can press ctrl r instead of ctrl shift v. -->
-
-vscode md preview is not feature rich.
-
-i could not ctrl f. i could not have toc.
-
-research: gemini. (lagrange)
-
----
-
-add journal interval. (5min to 1 min)
-
-auto convert to jpg and compress.
-
----
-
-blog theme?
-
----
-
-result pattern (and global use) in msg.
-
----
-
-when you store a file
-
-- calc the hash
-- store it somewhere in the data folder
-- symlink
-
----
-
-simplify notes and research on drafts and humility.
-
-rm most.
-
-also simplify todos/things/tabs. (important)
-
-merge things & tabs?
-
-trim humility notes. remove nonsense.
+i think you could even as daily backup... and sync.
 
 ---

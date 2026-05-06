@@ -2815,4 +2815,63 @@ lights/login ux
 
 ---
 
+not needed: testing/linting.
+
+---
+
+have.
+
+bilibili fav sync. & auto backup.
+
+auto backup means to backup once you save. e.g. zhihu, berryberry.
+
+though, ive no idea if those taken down within 1d are valuable for archival.
+
+---
+
+check the time on file name by file metadata in drafts w shell script
+
+typo lib?
+
+a bigger and better lib?
+
+build a cli for that.
+
+learn
+
+- cli
+- typo lib
+- time lib (file)
+
+---
+
+have.
+
+export twitter. research cli. or build my own.
+
+---
+
+(research)
+
+---
+
+openwebui.
+
+simple.
+
+good landing page design.
+
+questionable ia. (you dont need to see the model name, logos. zen mode is better.)
+
+monetization.
+
+---
+
+telegram.
+
+export chat data is a dedicated api, not the same as fetch messages.
+
+when you wanna export on a new session, you have to approve on old sessions, while you could fetch messages directly.
+
+---
 
