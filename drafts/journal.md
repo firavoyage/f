@@ -11587,6 +11587,8 @@ btw, the vid focuses on windows users w zh-cn internationalization pref, who hav
 
 the tech is handled by a foss "panel" project on github, where you are guided to set everything on gui. why not reproduce w a text config?
 
+02 00 reg `firahq` on osu. play osu. 02 40
+
 
 
 <!-- timebox, plan. -->

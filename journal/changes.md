@@ -31,3 +31,9 @@ support screenshot.
 change screenshot interval from 300s to 60s. 
 
 use mogrify to compress at quality 80.
+
+---
+
+2026.05.06
+
+revert to 300s.

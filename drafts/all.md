@@ -1,4 +1,4 @@
-project all: fira's drafts
+all. fira's drafts <!-- project all: fira's drafts -->
 
 <!-- reduce entropy -->
 
@@ -33,6 +33,8 @@ fira:
 - politics left right meaning history
 - envy jealousy
 - learned helplessness generalized emh very lossy heuristic
+- structural problems
+- world solved unsolved
 
 life:
 
@@ -82,7 +84,7 @@ create something:
 - mindset quiet peaceful
 - top down bottom up feeling
 
-software engineering:
+swe:
 
 <!--
 
@@ -114,7 +116,7 @@ software engineering:
 - abstraction leak
 - fields changed by ai
 
-software engineering project management:
+pm:
 
 <!--
 - manage project
@@ -131,8 +133,18 @@ software engineering project management:
 - do things that dont scale
 - prd
 - choose tools
+- structural problems
+- world solved unsolved
 
-software engineering architecture:
+gamedev:
+
+- life create something big weekend time management
+- card games
+- art style
+- game design framework
+- indie game ideas
+
+archi:
 
 <!--
 
@@ -145,7 +157,7 @@ software engineering architecture:
 - big opensource projects
 - composable is further than modular
 
-software engineering frontend:
+frontend:
 
 - explicit implicit
 - js memory leak
@@ -162,15 +174,16 @@ software engineering frontend:
 - pnpm install global cli locally
 - ts framework library react teact style guide
 - ts framework agnostic component library mitosis web component lit
+- react component style
 
-software engineering backend:
+backend:
 
 - categorize backend tech stack
 - pnpm monorepo setup
 - xdg spec
 - jslinux linux kernel
 
-software engineering ai/ml:
+agent: <!-- ai/ml -->
 
 <!--
 - prompt critical objective
@@ -183,15 +196,12 @@ software engineering ai/ml:
 - llms benchmarks
 - claude skills
 
-software engineering journey:
+misc:
 
 - fix sndcpy
 - ubuntu app info location
 - tree
 - shell check port
-
-software engineering misc:
-
 - categorize images
 - categorize shaders
 - gitignore
@@ -202,6 +212,10 @@ ui/ux design:
 - information architecture
 - color formats chroma saturation
 - measurement framework basic heart honeycomb core web vitals dora space
+
+typography:
+
+- indent paragraphs
 
 linguistics:
 
@@ -258,6 +272,8 @@ philosophy:
 - yes we can
 - the good the bad and the ugly
 - make time for civilization socialsisteryi
+- nature or culture
+- logical punctuation
 
 entertainment:
 
@@ -292,6 +308,8 @@ history:
 - unix epoch
 - thinkpad trackpoint
 - us jp cable network infra
+- crowdstrike outrage
+- lego
 
 politics:
 
@@ -337,14 +355,6 @@ laws:
 glaze:
 
 - design grounded
-
-gamedev:
-
-- life create something big weekend time management
-- card games
-- art style
-- game design framework
-- indie game ideas
 
 leisure:
 
