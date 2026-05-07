@@ -35,6 +35,7 @@ fira:
 - learned helplessness generalized emh very lossy heuristic
 - structural problems
 - world solved unsolved
+- vim emacs
 
 life:
 
@@ -278,6 +279,7 @@ philosophy:
 - make time for civilization socialsisteryi
 - nature or culture
 - logical punctuation
+- vim emacs
 
 entertainment:
 

@@ -13324,6 +13324,8 @@ no defaults/pasting. no explanation nearby.
 
 03 00 learn global extend config on clash verge. 03 40 fix copy fail by blacklisting the module. 04 20
 
+20 20 watch `Please Remember This Type Of Tactic | Chess Rating Climb 1743 to 1776`.
+
 
 
 <!-- timebox, plan. -->

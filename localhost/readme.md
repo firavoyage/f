@@ -2,7 +2,7 @@ localhost
 
 run apps like `foo.localhost` and `bar.localhost`
 
-install deps (e.g. ubuntu)
+install deps <!-- (e.g. ubuntu) -->
 
 ```sh
 sudo apt install -y caddy jq yq
@@ -16,15 +16,15 @@ chmod +x install.sh
 ./install.sh
 ```
 
-restart
+restart <!-- to apply changes -->
 
-```
+```sh
 sudo systemctl restart localhost
 ```
 
 debug
 
-```
+```sh
 journalctl -u caddy -n 10 --no-pager
 journalctl -u localhost -n 10 --no-pager
 ```

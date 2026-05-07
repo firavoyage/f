@@ -329,3 +329,7 @@ git abstraction.
 i think you could even as daily backup... and sync.
 
 ---
+
+buy a jp node on vultr i think.
+
+

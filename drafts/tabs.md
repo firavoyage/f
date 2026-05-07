@@ -348,13 +348,15 @@ not polished. since i dont wanna fight acbox/menci/chyk, let's wait.
 
 ---
 
+music
+
 file:///home/fira/Music/_/[FULL] Mahou Shoujo Madoka★Magica ED 『Magia』 Romaji ⧸ English [D2oLSuongkY].webm
 
 ---
 
 chess vibes rating climb
 
-https://www.youtube.com/watch?v=ykzzSz6192Q&list=PLp7SLTJhX1u6zKT5IfRVmcVs1U1C3eHb5&index=37
+https://www.youtube.com/watch?v=F1Vp2ATE_dg&list=PLp7SLTJhX1u6zKT5IfRVmcVs1U1C3eHb5&index=38
 
 ---
 
@@ -372,16 +374,6 @@ https://loj.ac/u/Menci
 
 ---
 
-https://chatwise.app/
-
-?
-
----
-
-/home/fira/Documents/_/opensource/Memoh/assets/gallery
-
----
-
 github desktop: memoh.
 
 cmt history.
@@ -396,4 +388,14 @@ https://manus.im/share/i2BY9pM7gM5mC3MHXwIeOV
 
 ---
 
+vps
 
+https://console.vultr.com/deploy-beta/
+
+https://bandwagonhost.com/order/basic
+
+---
+
+organize the world’s information and make it universally accessible and useful
+
+---
