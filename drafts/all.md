@@ -183,6 +183,10 @@ backend:
 - xdg spec
 - jslinux linux kernel
 
+sre:
+
+- vps self hosting
+
 agent: <!-- ai/ml -->
 
 <!--

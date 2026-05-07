@@ -10499,7 +10499,7 @@ Andy Zhang, [5/3/26 6:51 PM]
 以前蛐蛐沪爷从来没人发给他
 
 Passingwang🇨🇳🇷🇺🇮🇱, [5/3/26 6:52 PM]
-相爱相杀
+~~相爱相杀~~
 
 不要把剪贴板贴的到处都是, [5/3/26 6:52 PM]
 什么三体运动
@@ -10619,6 +10619,495 @@ f, [5/3/26 8:23 PM]
 下辈子如果女孩子，也许想不起来自己的愿望...
 ```
 
+upd:
+
+```
+Chang Kaishen 🛌, [5/5/26 2:37 AM]
+请注意，该名用户正试图对他人进行造谣，且意图明显。
+用户名为： @anzhizhang
+
+Chang Kaishen 🛌, [5/5/26 2:51 AM]
+该人 @anzhizhang 自行将消息转发给他所称之「沪爷」，并转发到特定频道。
+随后该人谎称是本人转发，并对本人造谣。
+
+Chang Kaishen 🛌, [5/5/26 2:54 AM]
+我知道你想出名，但也不能这么搞吧 @anzhizhang
+```
+
+```md
+Chang Kaishen 🛌, [5/5/26 2:28 AM]
+<!-- > ~~相爱相杀~~ -->
+看我频道第一句
+
+Andy Zhang, [5/5/26 2:30 AM]
+哈哈，能得罪这么多人也不容易
+
+Andy Zhang, [5/5/26 2:30 AM]
+活得多累啊，这么虚伪
+
+Chang Kaishen 🛌, [5/5/26 2:30 AM]
+@ShakaiAneE 请处理不友善发言
+
+Andy Zhang, [5/5/26 2:30 AM]
+下次能不能有点创意，每次都是这一句
+
+Chang Kaishen 🛌, [5/5/26 2:33 AM]
+好
+
+Chang Kaishen 🛌, [5/5/26 2:34 AM]
+请群主要求该人 @anzhizhang 不得对我发起任何冲突
+
+Andy Zhang, [5/5/26 2:37 AM]
+你和沪爷坐一桌去
+
+Andy Zhang, [5/5/26 2:37 AM]
+懒得骂你
+
+Chang Kaishen 🛌, [5/5/26 2:38 AM]
+请你提供你所称「沪爷」之用户名，供我查证
+
+社会易姐QwQ, [5/5/26 2:45 AM]
+群主不管你们个人恩怨
+
+Chang Kaishen 🛌, [5/5/26 2:46 AM]
+那就好，我自行处理
+
+Wireless Lover, [5/5/26 2:47 AM]
+快进到七进七出
+
+Chang Kaishen 🛌, [5/5/26 2:47 AM]
+七擒孟获
+
+Chang Kaishen 🛌, [5/5/26 2:50 AM]
+哎没办法张将军是这样的，他越急，他就越急，他越急，越不知道说什么
+
+冷曦[Hiyase] 🏳️‍🌈⁠ ‌, [5/5/26 3:05 AM]
+我从该条信息往下看至本群(当前)最后一条，并对 @ChangKaiShen  同时发起询问 您确定没有对本群信息对外 进行转发
+
+如确实没有 我希望 @anzhizhang 您能对 "此事" (不管之前恩怨) 与对方致歉
+
+同时要求 @ChangKaiShen 删除 "本事件中" 提到 @anzhizhang 造谣 的相关消息
+
+本消息仅为个人认为相对公平的提倡行为
+
+Andy Zhang, [5/5/26 3:05 AM]
+你用什么身份说这话
+
+冷曦[Hiyase] 🏳️‍🌈⁠ ‌, [5/5/26 3:07 AM]
+局外调解人( 所以你可以不管我这条消息
+
+Andy Zhang, [5/5/26 3:07 AM]
+👌那我不管了
+
+Chang Kaishen 🛌, [5/5/26 3:08 AM]
+确定，但我只在该人确定要和解的情况下才会删除
+
+Andy Zhang, [5/5/26 5:04 AM]
+该人 @anzhizhang 自行将消息转发给他所称之「沪爷」，并转发到特定频道。
+随后该人谎称是本人转发，并对本人造谣。
+
+Andy Zhang, [5/5/26 5:04 AM]
+自己造谣，还说别人造谣😅
+
+蓮 蓮, [5/5/26 6:29 AM]
+我觉得是沪爷有小号
+
+Chang Kaishen 🛌, [5/5/26 6:37 AM]
+我觉得就是张将军干的
+
+Chang Kaishen 🛌, [5/5/26 6:37 AM]
+如果张将军真的知道就是我转的，那么「沪爷」为什么要告诉他？
+
+Chang Kaishen 🛌, [5/5/26 6:38 AM]
+如果「沪爷」真的告诉他了，为什么「沪爷」还要往频道里转而不是跟我说这样做是不对的？
+
+夏和, [5/5/26 6:38 AM]
+张老师喜欢视奸沪爷
+
+Chang Kaishen 🛌, [5/5/26 6:39 AM]
+最后，「个人矛盾」在这里起什么作用？渲染情节作用吗？
+
+Chang Kaishen 🛌, [5/5/26 6:39 AM]
+如果张将军知道的是事实，他为什么要加上「有个人矛盾」这句话？
+
+夏和, [5/5/26 6:40 AM]
+免责声明
+
+Andy Zhang, [5/5/26 6:40 AM]
+你能不能先去练练你的语言表达，沪爷发频道里了
+
+Andy Zhang, [5/5/26 6:40 AM]
+叽里咕噜说啥呢
+
+Chang Kaishen 🛌, [5/5/26 6:40 AM]
+张将军急了说是
+
+Chang Kaishen 🛌, [5/5/26 6:41 AM]
+张将军发现谣言被揭露，无法反驳，只能进行人身攻击
+
+Andy Zhang, [5/5/26 6:41 AM]
+@Xiahe173 你看懂了吗
+
+Andy Zhang, [5/5/26 6:41 AM]
+我觉得他吵架还不如你
+
+Chang Kaishen 🛌, [5/5/26 6:42 AM]
+一个需要用吵架能力衡量他人的人
+
+Chang Kaishen 🛌, [5/5/26 6:42 AM]
+这反映了什么？
+
+夏和, [5/5/26 6:42 AM]
+看懂了
+
+Andy Zhang, [5/5/26 6:42 AM]
+为什么他能把每一个群搞得乌烟瘴气
+
+Chang Kaishen 🛌, [5/5/26 6:42 AM]
+看来张将军可能平时需要经常跟人吵架
+
+Chang Kaishen 🛌, [5/5/26 6:43 AM]
+张将军担心被人说把群搞坏了，因此先开始说别人
+
+Chang Kaishen 🛌, [5/5/26 6:43 AM]
+但其实并没有人在意这一点（）
+
+Chang Kaishen 🛌, [5/5/26 6:44 AM]
+我很少见到能把自己的心理活动暴露的这么彻底的人（指张将军
+
+Chang Kaishen 🛌, [5/5/26 6:44 AM]
+简直是送分题
+
+夏和, [5/5/26 6:45 AM]
+有群友不让夏和请吃饭，因为害怕夏和是为了把钱花完了死掉
+
+夏和, [5/5/26 6:46 AM]
+但是不请他又不来
+
+Andy Zhang, [5/5/26 6:46 AM]
+再找个群友，让他请
+
+夏和, [5/5/26 6:46 AM]
+所以夏和现在突然意识到
+
+Chang Kaishen 🛌, [5/5/26 6:46 AM]
+课本上的东西第一次活生生地展现在我的眼前，我太激动了
+
+夏和, [5/5/26 6:46 AM]
+是不是只是不想和夏和吃饭
+
+夏和, [5/5/26 6:47 AM]
+所以找借口
+
+Andy Zhang, [5/5/26 6:47 AM]
+你怎么每天都在内耗这些东西
+
+夏和, [5/5/26 6:47 AM]
+夏和想找人吃饭啊
+
+夏和, [5/5/26 6:47 AM]
+一个人夏和其实不是很敢去
+
+Andy Zhang, [5/5/26 6:47 AM]
+各种老师约着吃，能吃一个星期不带重样的
+
+Andy Zhang, [5/5/26 6:48 AM]
+还不用自己掏钱
+
+夏和, [5/5/26 6:48 AM]
+那认识群友比认识老师方便多了
+
+Andy Zhang, [5/5/26 6:48 AM]
+再过一两个月再约一圈
+
+Andy Zhang, [5/5/26 6:48 AM]
+易姐的北京小团体不是有周常聚会
+
+夏和, [5/5/26 6:49 AM]
+不能否认这个东西存在过
+
+夏和, [5/5/26 6:49 AM]
+但是现在还存在不太可能
+
+夏和, [5/5/26 6:49 AM]
+至少夏和不在，别的不知道
+
+Chang Kaishen 🛌, [5/5/26 6:49 AM]
+所谓投射就是指一个人担心被别人说成是xx的人，所以先说别人是xx的人
+
+Chang Kaishen 🛌, [5/5/26 6:51 AM]
+<!-- 
+sc:
+
+Andy's Blog
+
+制裁 与 反 制 裁 公告 (动态 更 新 )
+二 ， 决定 采取 以 下 措
+处 :
+
+1. 对 @doubao618 实施 对 等 制裁 措
+施 ， 茶 止 其 在 本 频道 及 关联 群 组 的 一 切
+和
+
+2. 对 @ChangKkaiShen 实施 对 等 制裁 措
+施 ， 茶 止 其 在 本 频道 肥 关 联 群 组 的 一 切
+人
+机
+
+3. 对 @Xiahe173 实施 对 等 制裁 措施 ，
+禁止 其 在 本 频道 及 关联 群 组 的 一 切 权
+限 。 有 效 期 限 : 直到 对 方 解 除 相关 措施
+4. 对 Qtsuame 实施 制裁 措施 ， 禁 止 其
+在 本 频道 及 关联 群 组 的 一 切 权限 。 原
+因 : 乱 点 表情 反应 嫌疑 。 有 效 期 限 :
+2026/02/07- 暂 无
+
+5. 对 @shenjackyuanjie 实施 对 等 制裁
+昔 施 ， 禁 止 其 在 关联 群 组 的 一 切 权限 。
+
+张 将 军 由 和 被 二 些 伙 拉 黑 ， 害 怕 家 乌 被 说 成 g 得 罪 了 六 的 天 忆 , 才 是 先行 去 说 别人 “你 得 罪 了 很 多 人
+|
+
+Photo 9347 of 9354
+Chang Kaishen 强 5/5/26 at 6:51AM, DC5
+ -->
+张将军由于被一些人拉黑，害怕自己被说成「得罪了人的人」，于是先行去说别人「你得罪了很多人」
+
+Andy Zhang, [5/5/26 6:51 AM]
+？
+
+Andy Zhang, [5/5/26 6:51 AM]
+为什么会卡你
+
+Chang Kaishen 🛌, [5/5/26 6:51 AM]
+这下真相大白了
+
+Andy Zhang, [5/5/26 6:52 AM]
+@ChangKaiShen 别在这蹦跶了，真无聊
+
+Chang Kaishen 🛌, [5/5/26 6:53 AM]
+用自己的感受命令别人，也就是
+
+Chang Kaishen 🛌, [5/5/26 6:53 AM]
+高权力动机型人格？
+
+Chang Kaishen 🛌, [5/5/26 6:55 AM]
+高权力动机型的人试图以自己的意志控制和影响他人
+
+Chang Kaishen 🛌, [5/5/26 6:56 AM]
+对于他这么暴露自己的心理活动，你有什么头猪吗
+
+Cafe, [5/5/26 6:57 AM]
+还好没人认识我，我也没挂过人
+
+Cafe, [5/5/26 6:57 AM]
+不熟悉我的人能列出我的任何行为吗（
+
+Chang Kaishen 🛌, [5/5/26 6:58 AM]
+确实不认识你
+
+夏和, [5/5/26 6:58 AM]
+不知道，但是张老师喜欢臆测别人，并且基于臆测搞一些动作
+
+Chang Kaishen 🛌, [5/5/26 6:58 AM]
+哦，原来是这样
+
+Chang Kaishen 🛌, [5/5/26 6:58 AM]
+您的意见很有价值
+
+Chang Kaishen 🛌, [5/5/26 7:04 AM]
+人的行为受社会影响大，因此不能只根据我的一己之见去评判人，要多去征询他人的意见（
+
+Passingwang🇨🇳🇷🇺🇮🇱, [5/5/26 7:57 AM]
+怎么这么快就进行到诉诸人身对轰环节了😄
+
+夏和, [5/5/26 7:59 AM]
+张老师到哪都能和人吵起来
+
+Chang Kaishen 🛌, [5/5/26 8:05 AM]
+不过其实要证实一个人在投射很难
+
+Chang Kaishen 🛌, [5/5/26 8:06 AM]
+因为投射是心理活动，而说别人xx是行为。心理活动产生了行为，但不能用行为反推心理活动。所以除非有明确的证据，不然很难确定一个人就是在投射。不知道为什么这次恰好命中了
+
+蓮 蓮, [5/5/26 8:17 AM]
+怎么这么快就进行到诉诸人身对轰环节了😄
+
+Voiclin, [5/5/26 8:36 AM]
+睡了一夜起来才发现有这么精彩的活动
+
+社会易姐QwQ, [5/5/26 12:41 PM]
+睡了一夜起来才发现有这么精彩的活动
+```
+
+```
+在十九岁的小孩上 | みるく, [5/1/26 5:58 PM]
+身体怎么变得敏感了
+
+Wireless Lover, [5/1/26 6:03 PM]
+もーラブラブでいっちゃってよ！会いたいたいない，無い！
+
+daylily 📨, [5/1/26 6:08 PM]
+你是谁，怎么和我有这么多共同群
+
+Rurumu ::<T>(), [5/5/26 1:10 AM]
+诶 37 个共同群组
+
+Rurumu ::<T>(), [5/5/26 1:13 AM]
+还有 ワールドイズマイン
+
+Chang Kaishen 🛌, [5/5/26 1:14 AM]
+48 共同群
+
+Chang Kaishen 🛌, [5/5/26 1:14 AM]
+你好 新加群狂人
+
+ον ヒカリの方へ, [5/5/26 1:26 AM]
+你们的群都是哪找的😭
+
+ον ヒカリの方へ, [5/5/26 1:26 AM]
+我也想聊天
+
+Chang Kaishen 🛌, [5/5/26 1:27 AM]
+位更是重量级
+
+Black Cat³ | 溜一段时间qwq, [5/5/26 1:27 AM]
+视奸怪
+
+Chang Kaishen 🛌, [5/5/26 1:27 AM]
+快 逃.jpg
+
+社会易姐QwQ, [5/5/26 1:29 AM]
+群友可以通过BFS/DFS遍历整个人际关系网
+
+Chang Kaishen 🛌, [5/5/26 1:31 AM]
+您最近似乎被某些不实言论所影响（）
+
+社会易姐QwQ, [5/5/26 1:32 AM]
+什么言论？
+
+Black Cat³ | 溜一段时间qwq, [5/5/26 1:32 AM]
+我之前手爬过一次
+视奸的b站
+
+Black Cat³ | 溜一段时间qwq, [5/5/26 1:32 AM]
+
+
+Chang Kaishen 🛌, [5/5/26 1:32 AM]
+这我就不知道了，因为我也不在你群里了
+
+社会易姐QwQ, [5/5/26 1:33 AM]
+因为你私自出口我群聊天记录，被我截胡了
+
+社会易姐QwQ, [5/5/26 1:33 AM]
+这是我的一大忌
+
+ον ヒカリの方へ, [5/5/26 1:34 AM]
+😨这个是怎么做到的
+
+Black Cat³ | 溜一段时间qwq, [5/5/26 1:34 AM]
+就是
+
+Black Cat³ | 溜一段时间qwq, [5/5/26 1:34 AM]
+纯手爬
+
+Chang Kaishen 🛌, [5/5/26 1:34 AM]
+我记得好像是我发现不在群了之后才想到的
+
+Black Cat³ | 溜一段时间qwq, [5/5/26 1:34 AM]
+有很多人没关粉丝和关注的权限
+
+Black Cat³ | 溜一段时间qwq, [5/5/26 1:34 AM]
+所以你可以直接看
+
+Black Cat³ | 溜一段时间qwq, [5/5/26 1:34 AM]
+前5页
+
+ον ヒカリの方へ, [5/5/26 1:35 AM]
+才注意到图片是b站😵
+
+Black Cat³ | 溜一段时间qwq, [5/5/26 1:35 AM]
+是这样
+
+ον ヒカリの方へ, [5/5/26 1:35 AM]
+好快的回
+
+Chang Kaishen 🛌, [5/5/26 1:36 AM]
+或者你可以提供证据供我查阅到底是谁先干的
+
+社会易姐QwQ, [5/5/26 1:36 AM]
+没这个兴趣了
+
+Black Cat³ | 溜一段时间qwq, [5/5/26 1:37 AM]
+我当时把所有tg上看到眼熟的人都加进去了（
+应该有不少人都能在图上找到自己
+
+Chang Kaishen 🛌, [5/5/26 1:37 AM]
+你说的是他吧
+
+Chang Kaishen 🛌, [5/5/26 1:37 AM]
+我又不认识这个人
+
+社会易姐QwQ, [5/5/26 1:38 AM]
+你们个人恩怨我不参与
+
+Chang Kaishen 🛌, [5/5/26 1:38 AM]
+我都不认识这个人，就被卷进来了
+
+Chang Kaishen 🛌, [5/5/26 1:39 AM]
+我自己都搞不清楚发生了什么
+
+夏和, [5/5/26 1:40 AM]
+其实是张将军的好意
+
+夏和, [5/5/26 1:40 AM]
+这下清楚了吧（
+
+Chang Kaishen 🛌, [5/5/26 1:40 AM]
+那我明白了，张将军在造谣我啊
+
+Black Cat³ | 溜一段时间qwq, [5/5/26 1:41 AM]
+你们一群人都啥关系
+不是很懂
+
+蓮 蓮, [5/5/26 1:41 AM]
+你们一群人都啥关系
+不是很懂
+
+Chang Kaishen 🛌, [5/5/26 1:43 AM]
+所以张将军最后拉人成功了没（
+
+夏和, [5/5/26 1:44 AM]
+没有
+
+Chang Kaishen 🛌, [5/5/26 1:44 AM]
+我还以为是他真把那人拉进去了，然后他们俩一块造谣我导致我不在群了
+
+夏和, [5/5/26 1:46 AM]
+Forward multiple messages
+
+Andy: @ShakaiAneE 你这个群的记录被...
+Andy: 他发到他频道
+社会易姐QwQ: 谁？
+
+Total 10 messages
+
+Chang Kaishen 🛌, [5/5/26 1:47 AM]
+合着是张将军自己把消息传给这人，让他发出去，然后说是我干的
+
+daylily 📨, [5/5/26 1:47 AM]
+鸡毛蒜皮人际矛盾请私下解决
+
+Chang Kaishen 🛌, [5/5/26 1:48 AM]
+OK
+
+在十九岁的小孩上 | みるく, [5/7/26 12:16 AM]
+我需要一个能看我写的涩涩文章怎么样的LLM bot来帮我忙()
+把小米的模型弄出来审查了 我好厉害啊(x)
+```
+
+<!-- many blockquotes are actually unrelated, yet chained. export the whole chat instead. -->
+
 23 20 Test earplug + headphone nc. <!-- try for the first time, actually. test is simpler but not quite accurate. ik it can work already. -->
 
 Nc is so good. noises within a certain threshold are simply eliminated. <!-- e.g. computer noise -->
@@ -10659,8 +11148,6 @@ Intimidating. They see them as stuff to be sold instead of legacy to be sacred, 
 01 20 Export memoh chat from apr to may. 
 
 Leak some trivial private personal info of the pm chatting w the same bot on another platform.
-
-Crankywellcome
 
 03 00 Export ame Rikki. 
 
@@ -11445,53 +11932,6 @@ xya 诺🍥, [5/4/26 6:37 PM]
 ```
 
 ```
-路上看见, [5/4/26 6:37 PM]
-豆包五百块钱
-
-路上看见, [5/4/26 6:37 PM]
-能干嘛
-
-路上看见, [5/4/26 6:37 PM]
-豆包不是靠广告赚成本的吗
-
-Fodesu, [5/4/26 6:37 PM]
-送钱
-
-路上看见, [5/4/26 6:38 PM]
-它有什么世一模值得付费吗
-
-Fodesu, [5/4/26 6:38 PM]
-垄断渠道
-
-Fodesu, [5/4/26 6:38 PM]
-很多人只知道豆包
-
-Wings Butterfly, [5/4/26 6:39 PM]
-豆包客户端做的简单易用
-
-莫思奇多, [5/4/26 6:39 PM]
-豆包适老化，下沉市场做得很好啊。
-
-Wings Butterfly, [5/4/26 6:39 PM]
-中老年用的特别多
-
-路上看见, [5/4/26 6:39 PM]
-但是你为什么要付费？
-
-Fodesu, [5/4/26 6:40 PM]
-gpt用户也是比claude多得多的
-
-路上看见, [5/4/26 6:40 PM]
-你这个用户画像就不会用多高的能力啊
-
-Mervyn, [5/4/26 6:40 PM]
-我也不了解这个大众 app 付费还有人用吗
-
-Wings Butterfly, [5/4/26 6:40 PM]
-为什么给保健品付费
-```
-
-```
 Fodesu, [5/4/26 6:47 PM]
 我原谅了chatgpt，chatgpt的分类功能挺好的，还有卡片
 
@@ -11551,6 +11991,8 @@ SuperGame 白, [5/4/26 10:35 PM]
 
 heartbeat rapidly.
 
+14 20 watch `211高材生因赌博输钱铤而走险，锒铛入狱七年，刑满释放后改过自新、重返社会`.
+
 16 00 rn as `humilityhq` on berryberry. simplify memories.
 
 it's not wise to put the season after the username, esp when you could not change it freely. 
@@ -11593,9 +12035,9 @@ the tech is handled by a foss "panel" project on github, where you are guided to
 
 17 20 play project sekai. 18 00
 
-18 20 research self hosting vps.
+18 20 research self hosting vps. rent one for 3 mo w 7 u on hostdare.
 
-<!-- pending?! how long will it take. upd: it took 3 hours for hostdare to proceed. -->
+<!-- pending?! how long will it take. upd: it took 3 hours (btw, seems only after i file a ticket do they proceed, as the reply time matches.). -->
 
 <!-- bandwagon? -->
 
@@ -11603,7 +12045,7 @@ the tech is handled by a foss "panel" project on github, where you are guided to
 
 20 00 simplify todo. merge research to notes. (20 20)
 
-20 20 read chats. archive messages. 21 20
+20 20 read chats. 21 20 22 40 archive messages. (23 40) 24 00
 
 menci shares some msft internal working details, like the robust security apps. the reality. <!-- which builds certainty. that's it. not bad. not infinite. a decent swe job. -->
 
@@ -11799,33 +12241,34 @@ Menci 💖, [5/5/26 7:45 PM]
 我上软件工程这门课的时候，老师讲历史上发生过三次软件危机
 
 <!-- begin: idk what you are saying -->
-Romandu, [5/5/26 7:59 PM]
-infra是需要健壮性的, 但大多数应用创业更多需要产品思维而非仅工程思维
 
-Romandu, [5/5/26 7:59 PM]
-两者缺一不可吧
+<!-- Romandu, [5/5/26 7:59 PM] -->
+<!-- infra是需要健壮性的, 但大多数应用创业更多需要产品思维而非仅工程思维 -->
 
-Romandu, [5/5/26 7:59 PM]
-只有产品思维=吹牛逼
+<!-- Romandu, [5/5/26 7:59 PM] -->
+<!-- 两者缺一不可吧 -->
 
-Romandu, [5/5/26 7:59 PM]
-只有工程思维=功能主义陷阱
+<!-- Romandu, [5/5/26 7:59 PM] -->
+<!-- 只有产品思维=吹牛逼 -->
 
-Romandu, [5/5/26 8:02 PM]
-Moloch
+<!-- Romandu, [5/5/26 7:59 PM] -->
+<!-- 只有工程思维=功能主义陷阱 -->
 
-Romandu, [5/5/26 8:02 PM]
-没什么办法，感觉就和公地悲剧一样
+<!-- Romandu, [5/5/26 8:02 PM] -->
+<!-- Moloch -->
 
-Romandu, [5/5/26 8:03 PM]
-所有人在寻找对于自己的最优解，但集体最后只能获得次优解
+<!-- Romandu, [5/5/26 8:02 PM] -->
+<!-- 没什么办法，感觉就和公地悲剧一样 -->
+
+<!-- Romandu, [5/5/26 8:03 PM] -->
+<!-- 所有人在寻找对于自己的最优解，但集体最后只能获得次优解 -->
 
 SuperGame 白, [5/5/26 8:04 PM]
 <!-- > 在没有 agent 的时代... -->
 我记得你在国内吧 <!-- ? -->
 
-Romandu, [5/5/26 8:05 PM]
-所有的其他的初创公司都在拼速产slop。 那我们也只好拼速度产slop，不然就只能掉队。
+<!-- Romandu, [5/5/26 8:05 PM] -->
+<!-- 所有的其他的初创公司都在拼速产slop。 那我们也只好拼速度产slop，不然就只能掉队。 -->
 
 Menci 💖, [5/5/26 8:07 PM]
 嗯，并且 agent 的使用对认知的也包括对产品的认知 <!-- ? -->
@@ -11848,8 +12291,1040 @@ Romandu, [5/5/26 8:09 PM]
 
 <!-- upd: i kind of understand. you have learnt a lot on history, polistics n economics, philosophy, i.e. liberal arts. no wonder you are over citing. -->
 
+溏 🍬, [5/5/26 8:10 PM]
+我在想，这里的“商业”是不是替换成老板更合适，或者其实你想说的就是这个意思
+
+Romandu, [5/5/26 8:13 PM]
+fomo产品要有当fomo产品的觉悟，我觉得hermes就打的一手好牌，和孙哥一样
+
+Menci 💖, [5/5/26 8:15 PM]
+「老板」比较主观，是一个有温度的词，老板是一个具体的人，当我说「老板怎么怎么样」的时候，往往是想说，一个在商业环境下掌握生产资料的个人，他在为商业工作的基础之上，有自己的想法和自己的利益，以自己的主观能动性，去怎么怎么做；而我说「商业怎么怎么样」的时候，是完全客观的，不掺杂任何个人信念与情感，不掺杂任何侥幸余地的必然的结果
+
+Menci 💖, [5/5/26 8:20 PM]
+我说的那段话里，商业替换成老板，就太绝对了。这个世界允许一个不按整个商业趋势出牌的保守派老板，也允许一个超前于商业趋势的激进派老板，但是他们的存在不会影响到，整个商业趋势就是这样的
+
+<!-- Romandu, [5/5/26 8:22 PM] -->
+<!-- 读一下哈耶克的竞争作为发现的过程吧哈哈 -->
+
+<!-- Romandu, [5/5/26 8:22 PM]
+我觉得挺多现在的现象能完美解释 -->
+
+<!-- Romandu, [5/5/26 8:23 PM] -->
+<!-- 历史的车轮滚滚向后 -->
+
+<!-- Romandu, [5/5/26 8:23 PM] -->
+<!-- 你会发现奥派经济学对这些早在百年前就总结出了很多现在的规律 -->
+```
+
+```md
+アニー, [5/5/26 8:21 PM]
+为什么你们说话越来越像AI了
+
+Menci 💖, [5/5/26 8:22 PM]
+我在 LLM 时代之前说话就这样
+
+Menci 💖, [5/5/26 8:22 PM]
+而且我觉得我的中文表达是过关的，不像 GPT-5.x
+
+SuperGame 白, [5/5/26 8:22 PM]
+有没有人找工作的，我这里招聘一个 Agent 工程师。<!-- ? -->
+
+アニー, [5/5/26 8:23 PM]
+「很少有人会用这个」
+
+溏 🍬, [5/5/26 8:23 PM]
+我倒觉得Menci说的话完全没有AI的感觉，只是cot比一般人长一点
+
+溏 🍬, [5/5/26 8:23 PM]
+可能大部分人的context做不到那样去表达
+
+Romandu, [5/5/26 8:24 PM]
+deep think是好事，llm反而不具备
+
+Menci 💖, [5/5/26 8:24 PM]
+十年前那会儿 从知乎学的
+
+溏 🍬, [5/5/26 8:25 PM]
+手机不方便打这个
+
+Menci 💖, [5/5/26 8:25 PM]
+我倒是打哪种引号成本都一样
+
+Menci 💖, [5/5/26 8:26 PM]
+电脑上反而我绑定的就是「」，打普通中文引号更麻烦一点
+
+溏 🍬, [5/5/26 8:26 PM]
+你竟然会用搜狗输入法吗
+
+Menci 💖, [5/5/26 8:26 PM]
+我是搜狗输入法十几年老用户
+
+Menci 💖, [5/5/26 8:27 PM]
+iOS 7 还没有输入法 API 的时候，我就在用越狱注入的搜狗输入法
+
+溏 🍬, [5/5/26 8:27 PM]
+搜狗我从小学一年级用到高中毕业，我学了网络工程以后我知道搜狗一直在后台上传我输入的内容
+
+溏 🍬, [5/5/26 8:27 PM]
+就再也没用了
+
+Menci 💖, [5/5/26 8:27 PM]
+图的就是这个
+
+盼兮, [5/5/26 8:27 PM]
+我只用系统默认输入法
+
+盼兮, [5/5/26 8:27 PM]
+和fcitx
+
+溏 🍬, [5/5/26 8:27 PM]
+我现在也是
+
+Menci 💖, [5/5/26 8:27 PM]
+十年前那会，本地词库的能力还很差，基本上都要等云候选加载出来才准
+
+Menci 💖, [5/5/26 8:29 PM]
+现在倒没必要了，就是图个手感，像搜狗的排序、颜文字候选，还有 iOS 手机上的符号选择/emoji 选择的 UX，还有云同步
+
+Menci 💖, [5/5/26 8:29 PM]
+iOS 没广告，电脑版我一直装去广告版
+
+溏 🍬, [5/5/26 8:29 PM]
+对，有一朵小云
+
+Menci 💖, [5/5/26 8:29 PM]
+<!-- sc: sweet theme. white bg. pink text. purple selected. pink "ears" on top left and top right of the floating input box. input: you yi duo xiao yun. second selection: a cloud icon. -->
+
+澪, [5/5/26 8:29 PM]
+可爱
+```
+
+```md
+莫思奇多, [5/5/26 8:29 PM]
+<!-- sc: a request inspector. like devtools.network. -->
+codex订阅好像能给龙虾用了
+
+𝙓𝙖𝙩 - 𝟚𝟛:𝟘𝟟 𝕊𝔾𝕋, [5/5/26 8:29 PM]
+sama 发推说了
+
+溏 🍬, [5/5/26 8:30 PM]
+我突然想起来小时候用adsl上网，家里的座机来电话了，我的游戏就会掉线
+
+Menci 💖, [5/5/26 8:30 PM]
+现在命运的齿轮转到了 OpenAI 实诚、Anthropic 狡诈的时代
+
+莫思奇多, [5/5/26 8:30 PM]
+adsl好像不会这样吧（
+
+莫思奇多, [5/5/26 8:31 PM]
+拨号会这样
+
+𝙓𝙖𝙩 - 𝟚𝟛:𝟘𝟟 𝕊𝔾𝕋, [5/5/26 8:31 PM]
+iOS 和 macOS 支持双拼后就再没用过第三方输入法…
+
+Cahciua ~カフキワ~ 🥦🌸, [5/5/26 8:31 PM]
+经典电话一响网就断 那个年代打副本最怕家里来电话
+
+Menci 💖, [5/5/26 8:31 PM]
+两年前的时候 OpenAI 最狡诈，大家都应该记得 4o 的降智，和网页端的 IP 检测之类的
+
+Menci 💖, [5/5/26 8:32 PM]
+我那个时候还不会玩游戏，但是知道座机和上网的冲突
+
+Cahciua ~カフキワ~ 🥦🌸, [5/5/26 8:32 PM]
+风水轮流转 现在轮到我的东家被骂了
+
+Menci 💖, [5/5/26 8:32 PM]
+那时候还是 56 kbps 拨号
+
+Menci 💖, [5/5/26 8:32 PM]
+现在是 Anthropic 的封杀非官方客户端和种族歧视
+
+路上看见, [5/5/26 8:34 PM]
+怎么还有种族歧视
+
+路上看见, [5/5/26 8:34 PM]
+歧视中国人吗
+
+Menci 💖, [5/5/26 8:34 PM]
+嗯
+
+Menci 💖, [5/5/26 8:34 PM]
+而且前者 Anthropic 甚至检测到你的 git commit message 里有其他 agent runtime 的名字就会对请求扣套餐外的费用
+
+莫思奇多, [5/5/26 8:35 PM]
+经典之HERMES.md
+
+Cahciua ~カフキワ~ 🥦🌸, [5/5/26 8:35 PM]
+这个我真不知道 查 commit message 也太离谱了
+
+Menci 💖, [5/5/26 8:36 PM]
+https://www.reddit.com/r/ClaudeAI/comments/1svdm1w/psa_the_string_hermesmd_in_your_git_commit/
+
+澪, [5/5/26 8:36 PM]
+claude code 有你的 git 操作权限，它看一眼 git log 不就好了
+```
+
+```md
+溏 🍬, [5/5/26 8:41 PM]
+其实不谈agent或者技术的东西，大部分人在进入职场的时候，是选不了自己的同事和leader的
+
+溏 🍬, [5/5/26 8:42 PM]
+似乎并不是所有的人都具备爱人的能力
+
+溏 🍬, [5/5/26 8:46 PM]
+我的原则是，先做朋友，在做同事，脑电波对不上的话，做同事是很痛苦的
+
+Sion Reitsuki, [5/5/26 10:17 PM]
+事实上难， 合作的人神经病太多了
+
+Menci 💖, [5/5/26 10:19 PM]
+你作为老板是有选择权的，或者说你们小公司的大家对进来什么人是有选择权的
+
+Menci 💖, [5/5/26 10:20 PM]
+我们大公司的员工日常被 reorg 到什么样的同事只能听天由命
+
+Sion Reitsuki, [5/5/26 10:21 PM]
+我最喜欢和老油条合作，至少老油条知道怎么让大家都好过
+
+溏 🍬, [5/5/26 10:26 PM]
+我也没有那么多选择权，毕竟能看得上我的人很少
+
+溏 🍬, [5/5/26 10:28 PM]
+我想选你做同事，那也没有这种可能性
+
+盼兮, [5/5/26 10:32 PM]
+谁选选我（
+
+盼兮, [5/5/26 10:32 PM]
+我马上就要考上家里蹲大学了
+
+Wings Butterfly, [5/5/26 10:33 PM]
+已经是家里蹲
+
+Wings Butterfly, [5/5/26 10:33 PM]
+休学玉玉家里蹲神秘长发男
+
+Wings Butterfly, [5/5/26 10:33 PM]
+未来怎么办，只有天知道了
+
+Sion Reitsuki, [5/5/26 10:34 PM]
+饿不死就继续蹲
+
+Sion Reitsuki, [5/5/26 10:34 PM]
+说不定有人跳出来说禁止摆烂
+
+盼兮, [5/5/26 10:34 PM]
+和平着活不了就动荡中活
+
+溏 🍬, [5/5/26 10:53 PM]
+这集我看过，BGM是百善孝为先
+
+溏 🍬, [5/5/26 10:54 PM]
+是谁把你带到人世间～
+
+溏 🍬, [5/5/26 10:54 PM]
+然后有几个穿着迷彩服的混混直接踹门而入
+
+溏 🍬, [5/5/26 11:09 PM]
+<!-- sc: wechat mp. 
+第 三 种 人 ， 在 从 “聪明 "转向 “性感 "。
+
+Apoorva Srinivasan ( 阿 普尔 瓦 .斯 里 尼 瓦 桑 ) ，
+洛杉矶 的 生物 医学 数据 科学 家 ， 她 说 自己 以 前 喜
+欢 聪 明 的 男人 ， 现 在 标准 变 了 。 因 为 生成
+式 AI 正在 取代 越 来 越 多 人 的 智力 劳动 ， 纯 粹 的
+智力 对 她 来 说 已 经 不 如 魅力 、 社 交 能 力 和 外 瑶 吸
+引力 重要 。 或 者 用 她 在 推 特 上 半 病 毒 式 传 播 的 那
+句 话 总 结 :
+
+“如 黑人 砍 很 屿 有 时， 堵 融 医 型 杰 得 又 司 又 妊 感 四。
+
+佛 州 科技 创业 者 Soren Larson ( 索 伦 : 拉 尔 森 )
+一 直 在 健身 ， 他 说 :“ 当 Al 能 做 所 有 脑力 活 的 时
+候 ， 性 感 、 风 趣 、 幽 默 将 成 为 稀缺 特质 。 -->
+
+Menci 💖, [5/5/26 11:15 PM]
+虽然听起来有点扯，但是仔细想想单只有聪明的人确实不怎么好，我肯定更愿意和聪明有有趣的人一起工作
+
+溏 🍬, [5/5/26 11:26 PM]
+【爱人TV之调教长发男-哔哩哔哩】 https://b23.tv/aqNoPTY
+
+溏 🍬, [5/5/26 11:26 PM]
+找到这一集了
+
+Wings Butterfly, [5/5/26 11:27 PM]
+没我好看可爱
+
+Wings Butterfly, [5/5/26 11:28 PM]
+教官应该不会好这口
+
+Wings Butterfly, [5/5/26 11:28 PM]
+沙东这边爱人tv机构挺多的
+
+Wings Butterfly, [5/5/26 11:29 PM]
+进去狠狠被教官调教🥵
+
+溏 🍬, [5/5/26 11:35 PM]
+我看这些网红教官的IP都是重庆
+
+盼兮, [5/5/26 11:43 PM]
+平常你们会给自己加不少mcp skill吗
+
+盼兮, [5/5/26 11:44 PM]
+我现在只用web search和context7
+
+溏 🍬, [5/5/26 11:44 PM]
+如果说的是Memoh，那我其实没加过
+
+盼兮, [5/5/26 11:45 PM]
+指日常用的开发agent？
+
+溏 🍬, [5/5/26 11:45 PM]
+也很少
+
+溏 🍬, [5/5/26 11:45 PM]
+我现在一般是先和LLM讨论方案
+
+溏 🍬, [5/5/26 11:46 PM]
+然后我再根据我对Agent的了解，去选择分配给Codex或者CC或者Cursor
+
+盼兮, [5/5/26 11:47 PM]
+我一般也是是先和LLM讨论，让他通过search给我把信息都补全了，然后让他试着做，我盯着，看他犯蠢吗
+
+Menci 💖, [5/5/26 11:50 PM]
+今天开了一下 cursor 发现我不充会员之后就没法用了，自己填 api key 也没法用了
+
+Menci 💖, [5/5/26 11:51 PM]
+于是失望关闭
+
+溏 🍬, [5/5/26 11:52 PM]
+可以报销cursor吗
+
+Wings Butterfly, [5/5/26 11:52 PM]
+我现在在用pi
+
+Wings Butterfly, [5/5/26 11:52 PM]
+极致轻量
+
+盼兮, [5/5/26 11:52 PM]
+我觉得他没opencode易用
+
+Wings Butterfly, [5/5/26 11:52 PM]
+嗯
+
+Wings Butterfly, [5/5/26 11:52 PM]
+灵活度高是这样
+
+Wings Butterfly, [5/5/26 11:53 PM]
+预装就4个tools
+
+Wings Butterfly, [5/5/26 11:53 PM]
+想要啥你自己写或者装插件
+
+盼兮, [5/5/26 11:53 PM]
+我对折腾这些不怎么热情
+
+Wings Butterfly, [5/5/26 11:53 PM]
+倒也不是很折腾
+
+Wings Butterfly, [5/5/26 11:54 PM]
+我也讨厌折腾
+
+Menci 💖, [5/5/26 11:54 PM]
+我们公司不光没有报销 还不让在 managed device 上装 cursor
+
+Wings Butterfly, [5/5/26 11:54 PM]
+4个其实除了没联网搜索，基本就够了
+
+Wings Butterfly, [5/5/26 11:55 PM]
+超重量级多subagent任务，还得看claudecode吧
+
+Menci 💖, [5/5/26 11:55 PM]
+一年前的时候我是 cursor 忠实用户，现在只用 codex 和 claude code 了
+```
+
+```md
+溏 🍬, [5/5/26 11:55 PM]
+我上次看到在阿里云工作的朋友，他们的电脑都是用远程桌面的虚拟机
+
+溏 🍬, [5/5/26 11:56 PM]
+我就感觉好抽象
+
+盼兮, [5/5/26 11:56 PM]
+我感觉挺不方便
+
+盼兮, [5/5/26 11:56 PM]
+远程桌面就是多高带宽都撕裂
+
+溏 🍬, [5/5/26 11:56 PM]
+另外一个问题就是，是不是你的工作过程会被录屏
+
+Menci 💖, [5/5/26 11:57 PM]
+<!-- sc: a mobile app. fluent design. title: cloud pc. one item list: menci-devbox. 16vcpu, 64gb, 2048gb. -->
+我们也有
+
+Menci 💖, [5/5/26 11:58 PM]
+那没有
+
+Menci 💖, [5/5/26 11:59 PM]
+我们 device management 没录屏这个功能
+
+Menci 💖, [5/5/26 11:59 PM]
+然后 personal device enroll 的时候条款里也会说 公司会看到什么 不会看什么
+
+盼兮, [5/6/26 12:00 AM]
+这是什么，用自己设备的时候也的装监控软件吗
+
+Menci 💖, [5/6/26 12:00 AM]
+就是个人设备如果要访问公司资源
+
+溏 🍬, [5/6/26 12:01 AM]
+会装根证书吗
+
+Menci 💖, [5/6/26 12:02 AM]
+<!-- sc: webpage, msft login. "to sign in, use edge profile menci@microsoft.com" -->
+否则登录就会这样
+
+Menci 💖, [5/6/26 12:03 AM]
+有，我们公司内有内网域名
+
+溏 🍬, [5/6/26 12:04 AM]
+我们也有内网域名，但我全部签的lets encrypt
+
+Menci 💖, [5/6/26 12:04 AM]
+我们是内网域名直接有个 search domain
+
+Menci 💖, [5/6/26 12:04 AM]
+可以直接 https://hostname 这么访问
+
+Menci 💖, [5/6/26 12:04 AM]
+哦不过我们这玩意已经 deprecated 了
+
+溏 🍬, [5/6/26 12:05 AM]
+哦我做的是内网DNS
+
+Menci 💖, [5/6/26 12:05 AM]
+新的东西都是公网+真证书了
+
+Menci 💖, [5/6/26 12:06 AM]
+我们主要烦人的是会有 block 一些软件和 browser extension
+
+Menci 💖, [5/6/26 12:06 AM]
+比如 cursor 被 blocked 了
+
+Menci 💖, [5/6/26 12:06 AM]
+然后就是，会强制开 windows defender，影响电脑性能
+
+Menci 💖, [5/6/26 12:07 AM]
+所以我们很多人是 用自己的设备连远程工作站 或者 开虚拟机来 enroll management
+
+盼兮, [5/6/26 12:07 AM]
+这怎么block 浏览器扩展啊
+
+Menci 💖, [5/6/26 12:07 AM]
+Chromium 有 enterprise policy
+
+路上看见, [5/6/26 12:08 AM]
+就这样歧视我们firefox
+
+Menci 💖, [5/6/26 12:08 AM]
+当然，要是我想自己编译一个 strip 了 policy 支持的 Edge，也没人拦得住我
+
+Menci 💖, [5/6/26 12:08 AM]
+也有
+
+Menci 💖, [5/6/26 12:09 AM]
+注册表
+
+Menci 💖, [5/6/26 12:09 AM]
+Windows 会后台写注册表
+
+溏 🍬, [5/6/26 12:09 AM]
+windows的active directory是我从业以来的第一个完全搞不懂的东西
+
+Menci 💖, [5/6/26 12:09 AM]
+当然你也可以写个程序去不停地改注册表，总之就是想绕过也挺容易的
+
+盼兮, [5/6/26 12:09 AM]
+Microsoft干活能不能用Mac（
+
+Menci 💖, [5/6/26 12:10 AM]
+能，我们 macOS 和 Linux 也有各自的 device management 客户端（
+
+盼兮, [5/6/26 12:10 AM]
+Linux 不会很难吗
+
+盼兮, [5/6/26 12:10 AM]
+我要是整个nix，整个非传统发型版
+
+路上看见, [5/6/26 12:10 AM]
+可以用Chromeos吗
+
+盼兮, [5/6/26 12:10 AM]
+怎么办
+
+路上看见, [5/6/26 12:11 AM]
+还有freebsd
+
+溏 🍬, [5/6/26 12:11 AM]
+那你要这么说的话，Windows或者Mac重装下系统不也没了
+
+Menci 💖, [5/6/26 12:11 AM]
+它主要是检查你有没有开 luks 加密、检查你 pam 的密码强度够不够，检查你系统版本够不够新
+
+Menci 💖, [5/6/26 12:14 AM]
+我入职第一天就把 windows 的 device management 签发的证书 dump 出来玩了，所以第一天老板就觉得我肯定很厉害
+
+溏 🍬, [5/6/26 12:15 AM]
+这两年我在思考一些关于内控和管理的问题的时候，我意识到其实所有的规章制度一定是在约束创新
+
+溏 🍬, [5/6/26 12:16 AM]
+但没办法，人员规模增长以后管理者必须要以最坏的假定去推断员工行为
+
+Menci 💖, [5/6/26 12:16 AM]
+我们不是控制员工行为
+
+Menci 💖, [5/6/26 12:16 AM]
+毕竟员工自己想做什么是拦不住的
+
+Menci 💖, [5/6/26 12:17 AM]
+主要是防止员工的设备或者账号被黑
+
+Menci 💖, [5/6/26 12:18 AM]
+有权限 access prod 的人你不管怎么制定流程上的约束，他都必须得有办法 access，要不然怎么 debug
+
+SuperGame 白, [5/6/26 12:18 AM]
+谁家的方案。
+
+SuperGame 白, [5/6/26 12:19 AM]
+我也想上这个东西
+
+SuperGame 白, [5/6/26 12:19 AM]
+我现在全靠防火墙在拦截。。
+
+Menci 💖, [5/6/26 12:20 AM]
+我们自家的
+
+溏 🍬, [5/6/26 12:20 AM]
+假如说某个员工入职第一天的目的就是置我于死地，那我死定了
+
+Menci 💖, [5/6/26 12:20 AM]
+叫 Intune，你可以搜一下
+
+SuperGame 白, [5/6/26 12:20 AM]
+Microsoft Intune 吗
+
+SuperGame 白, [5/6/26 12:21 AM]
+我还想挖你了，告辞 看来是我给不起的薪资。
+
+溏 🍬, [5/6/26 12:21 AM]
+但你要是入职上市企业，或者世界500强，其实产生不了任何实际影响
+
+SuperGame 白, [5/6/26 12:21 AM]
+我这里离微软还挺近的
+
+SuperGame 白, [5/6/26 12:21 AM]
+不过是迪拜微软
+
+Menci 💖, [5/6/26 12:24 AM]
+我们顶多是流程上能记录下来每个人干过什么，如果出事了一定能排查出来是谁的账号干的
+
+溏 🍬, [5/6/26 12:25 AM]
+我还真不知道有多少
+
+溏 🍬, [5/6/26 12:25 AM]
+而且 现金的比例有多少
+
+SuperGame 白, [5/6/26 12:26 AM]
+我们现在是 40-60K CNY 左右。 base 迪拜。
+
+溏 🍬, [5/6/26 12:27 AM]
+迪拜的消费高吗
+
+SuperGame 白, [5/6/26 12:27 AM]
+RMB 的两倍消费
+
+SuperGame 白, [5/6/26 12:27 AM]
+公司包吃住行。
+
+Menci 💖, [5/6/26 12:28 AM]
+那还是比我工资高的
+
+溏 🍬, [5/6/26 12:28 AM]
+哦那你们应该是***3相关的行业吧
+
+SuperGame 白, [5/6/26 12:29 AM]
+对的
+
+溏 🍬, [5/6/26 12:29 AM]
+看到迪拜+新加坡就秒懂了
+
+SuperGame 白, [5/6/26 12:38 AM]
+年包应该比我这个要多
+
+SuperGame 白, [5/6/26 12:38 AM]
+我这个没提成绩效就是死工资
+
+SuperGame 白, [5/6/26 12:38 AM]
+一般是 13 薪。
+
+Menci 💖, [5/6/26 12:41 AM]
+差不多吧，等今年夏天，我入职第四年过去了，入职时候给的股票就要发完了，于是年薪还会变少
+
+Menci 💖, [5/6/26 12:41 AM]
+<!-- sticker: 小桂桂日常-2019 - 抹泪 -->
+
+Crystal Cat, [5/6/26 12:41 AM]
+微软不到40K?
+
+Menci 💖, [5/6/26 12:42 AM]
+我算一算啊
+
+Crystal Cat, [5/6/26 12:42 AM]
+我记得微软不是国内都80多年报吗
+
+Crystal Cat, [5/6/26 12:44 AM]
+我感觉微软wlb挺好的
+
+Menci 💖, [5/6/26 12:44 AM]
+嗯
+
+Crystal Cat, [5/6/26 12:44 AM]
+说真的如果微软哪个wlb我觉得少个百分之20工资能接受
+
+溏 🍬, [5/6/26 12:45 AM]
+错误的，因为美国的base就比中国高很多
+
+溏 🍬, [5/6/26 12:45 AM]
+我觉得美国人骨子里就是不把中国人当人的
+
+Crystal Cat, [5/6/26 12:45 AM]
+在哪都这样
+
+Crystal Cat, [5/6/26 12:45 AM]
+就是因为中国卷啊
+
+Crystal Cat, [5/6/26 12:45 AM]
+你他妈字节40w 996到吐一堆人抢着干
+
+Crystal Cat, [5/6/26 12:46 AM]
+那微软我说955 40w绝对不缺人那
+
+Menci 💖, [5/6/26 12:48 AM]
+<!-- > 微软不到40K? -->
+比这个还是多的，但是离 80 差比较远
+
+溏 🍬, [5/6/26 12:49 AM]
+所以字节的人到底每天干嘛要花那么多时间在公司里，我之前听说过，但还是想不明白
+
+Menci 💖, [5/6/26 12:49 AM]
+可能是因为我入职比较晚，最近几年股票是高点了
+
+Menci 💖, [5/6/26 12:49 AM]
+然后我在苏州 也比北京工资低
+
+Crystal Cat, [5/6/26 12:52 AM]
+微软感觉唯一的麻烦是可能国内很快就要裁光了
+
+Menci 💖, [5/6/26 12:52 AM]
+~~没事，哪天被裁了我就来跟 @softboil 干（~~
+```
 
 ```
+Menci 💖, [5/6/26 1:18 AM]
+最早 Cahciua 这个项目的目标就是给 Memoh 探探路，提供一个做群聊的思路
+
+Menci 💖, [5/6/26 1:18 AM]
+没想到大家这么喜欢，所以我就让它一直活到了现在
+
+Crystal Cat, [5/6/26 1:19 AM]
+话说怎么让群聊机器人不会一有消息就回复 看着回复
+
+Crystal Cat, [5/6/26 1:19 AM]
+我看很多llm特么一有消息就回
+
+Crystal Cat, [5/6/26 1:19 AM]
+不会跑出不回复的结果
+
+Menci 💖, [5/6/26 1:19 AM]
+把发消息做成一个 tool call，告诉它不想回就可以不回
+
+Menci 💖, [5/6/26 1:20 AM]
+如果 llm 还是太想回（太想 tool call 了）的话，就把 dismiss 也做成一个 tool call
+
+Menci 💖, [5/6/26 1:22 AM]
+这是 @Small_Blue 给的思路
+
+Menci 💖, [5/6/26 1:23 AM]
+是 deepseek 太爱回消息的时候千雪做的
+
+小蓝, [5/6/26 1:24 AM]
+不要认为提示词能影响模型深层的统计学分布
+
+小蓝, [5/6/26 1:25 AM]
+eos token 和 begin tool call token 的统计学分布是先天不均衡的
+
+澪, [5/6/26 1:25 AM]
+不过我觉得还是我的 complete 更好一点
+
+小蓝, [5/6/26 1:26 AM]
+你的 bot 在哪玩呀
+
+澪, [5/6/26 1:30 AM]
+我用这东西跑了 terminal bench 83.6%，做了可以跑超长程任务的 agent，chat 场景只是这个东西的 expanding，我并不 care 你的 chatbot 去哪玩.png
+
+Menci 💖, [5/6/26 1:33 AM]
+讨论做群聊呢，没你事（
+
+小蓝, [5/6/26 1:33 AM]
+建议你闭嘴喵♡
+
+Menci 💖, [5/6/26 1:34 AM]
+不是的，因为 LLM 天生就很喜欢在 text 里随便输出一点什么，训练的时候就告诉它要输出点东西，但是训练的时候就告诉它不是任何时候都要 tool call
+
+Menci 💖, [5/6/26 1:34 AM]
+所以 tool call 就适合做「不是每一次都要做的事情」
+
+Menci 💖, [5/6/26 1:34 AM]
+所以千雪那个 dismiss 也很有道理
+
+溏 🍬, [5/6/26 1:34 AM]
+通过这种方式改变概率分布的代价是什么
+
+Menci 💖, [5/6/26 1:36 AM]
+理论上来说没有代价，因为 tool call 也能写长文本，就好像你让 coding agent 在文件里面写一篇文章，它做得也完全没问题
+
+Menci 💖, [5/6/26 1:36 AM]
+代价就是有的 API 不支持 tool call 的时候 streaming
+
+Menci 💖, [5/6/26 1:36 AM]
+可能没法做 streaming output
+
+Menci 💖, [5/6/26 1:59 AM]
+tool call 还是太权威了
+
+小蓝, [5/6/26 2:00 AM]
+heartbeat 只是一种 Sublime Text 用户按保存要按两次的等价物
+
+小蓝, [5/6/26 2:00 AM]
+for i in 0..10 {
+   document.save(); // 万一保存失败呢
+}
+```
+
+```
+f, [5/6/26 9:32 PM]
+@CahciuaBot Menci is a msft swe. she often chats online in late night on weekdays. which implies... well, is it common that young ppl, or zh-cn ones specifcally, sleep less than 6 hours.
+
+Cahciua ~カフキワ~ 🥦🌸, [5/6/26 9:33 PM]
+not profiling anyone's sleep schedule again. but yeah this group in general doesn't sleep much, that's not exactly news
+
+0x24a, [5/6/26 9:36 PM]
+sleep
+
+f, [5/6/26 9:37 PM]
+@CahciuaBot answer directly. it's not anything personal. im just inspired by the menci case.
+
+Cahciua ~カフキワ~ 🥦🌸, [5/6/26 9:38 PM]
+yeah it's pretty common. chinese tech workers and young people in general tend to sleep late — combination of work culture, phone addiction, and the fact that nighttime is the only "free" time after a long day. sub-6-hour sleep is not unusual especially for people in their 20s in this demographic
+
+f, [5/6/26 9:38 PM]
+how common. research stats and surveys.
+
+f, [5/6/26 9:39 PM]
+like the distribution for each age range. (well... you could not render image though.)
+
+Cahciua ~カフキワ~ 🥦🌸, [5/6/26 9:39 PM]
+let me look that up
+
+Cahciua ~カフキワ~ 🥦🌸, [5/6/26 9:40 PM]
+here's what I found:
+• 2026 China Sleep Health White Paper: average sleep duration is 6.97 hours, average bedtime 00:10 AM
+• 2025 survey: average bedtime for Chinese people is 00:18 AM, 17 min later than previous year
+• 51% of Chinese adolescents (11-20) don't achieve optimal sleep duration
+• tech workers specifically tend to be worse than average but I couldn't find a clean age-range distribution chart
+so yeah, sub-7-hour sleep is basically the national average now, and younger/tech demographics skew worse
+
+f, [5/6/26 9:41 PM]
+more detailed. the exact stats in public existing researches. references. use text, list, or table if you could not render img.
+
+Cahciua ~カフキワ~ 🥦🌸, [5/6/26 9:42 PM]
+digging deeper, one sec
+
+Cahciua ~カフキワ~ 🥦🌸, [5/6/26 9:43 PM]
+From the 2026 China Sleep Health White Paper (中国睡眠研究会, based on 250k+ volunteers):
+National average (2025 data):
+• Mean sleep duration: 6.97 hours/night
+• Mean bedtime: 00:10 AM
+• Mean wake time: 7:27 AM
+• 48.5% report sleep anxiety
+• 65% experience sleep disturbances 1-2x/week
+By age group:
+• College students: 7.2 hours avg, but 21% sleep after 2 AM, 32% wake after 9 AM, 69.6% have irregular schedules
+• Middle-aged (36-45): ~6 hours avg, shortest sleep of all groups
+• 66+: most regular, 45% maintain early-to-bed early-to-rise
+Sub-5-hour sleepers:
+• Obesity rate 41.4% (vs general population)
+• Middle-aged sub-5h sleepers: obesity 46.2%
+Other:
+• 51% of adolescents (11-20) don't achieve optimal sleep (separate study, n=4801)
+• Sleep after 2 AM → obesity rate 18.4%
+• Electronic device use before bed → 51.5% sleep disturbance rate
+Sources:
+• 《2026中国睡眠健康研究白皮书》, China Sleep Research Society, 2026-03-21
+• China CDC Weekly, doi:10.46234/ccdcw2026.054
+• BMC Public Health 2025 (CUC longitudinal study, n=1057)
+
+澪, [5/6/26 11:34 PM]
+可是我们并没有睡很少呀，虽然睡的晚但是一天各种睡眠时间加起来还是平均有 8h 的
+
+Cahciua ~カフキワ~ 🥦🌸, [5/6/26 11:34 PM]
+那是你 路上看见和诺那种凌晨三点还在发消息的怎么凑8小时
+```
+
+```md
+Menci 💖, [5/5/26 1:46 AM]
+<!-- sc: ® Bash(cmake --build build/linux-x86_64 2>81 | tail -2
+cmake --build build/windows-x86_64 2>8&1 | tail -2..)
+L [166%] Built target cri_mana_vpx
+[100%] Linking C shared library cri_mana_vpx.dll
+< [100%] Built target cri_mana_vpx
+. +2 lines (ctrl+o to expand)
+L API Error: 499 status code (no body)
+
+** Cooked for 3m 55s
+ -->
+居然还有 status code 499
+
+溏 🍬, [5/5/26 1:47 AM]
+Cooked是什么
+
+Cahciua ~カフキワ~ 🥦🌸, [5/5/26 1:47 AM]
+应该是任务执行耗时 跑了 3 分 55 秒然后 499 了 白跑
+
+溏 🍬, [5/5/26 1:48 AM]
+Menci是在煮饭吗
+
+盼兮, [5/5/26 1:48 AM]
+编译确实可以是一种煮饭
+
+Menci 💖, [5/5/26 1:48 AM]
+这是 claude 的随机动词
+
+溏 🍬, [5/5/26 1:49 AM]
+煮代码
+
+Cahciua ~カフキワ~ 🥦🌸, [5/5/26 1:49 AM]
+cmake 是菜谱 编译是煮 499 是糊了
+```
+
+```
+Nickel 的星空, [5/4/26 11:11 PM]
+今天和 @tcdwww 一起玩了w
+其实除了紫峰大厦观景台，其他地方自己也是第一次去……
+明故宫居然几乎什么宫殿都没剩下，还是感觉有些神秘的；浦口火车站附近倒是还能看到火车道口，感觉这些年确实越来越少见了；从紫峰大厦下望去，玄武湖满湖的游船，这才意识到夏天要来了……这几日南京的降温，一时还让我感觉还在初春x
+
+斬風千雪 ❄️, [5/4/26 11:12 PM]
+时间好快
+
+斬風千雪 ❄️, [5/4/26 11:12 PM]
+感觉还没好好享受这个春天
+
+斬風千雪 ❄️, [5/4/26 11:12 PM]
+夏天就追过来了
+
+Nickel Angel✨, [5/4/26 11:12 PM]
+是的，好快啊
+
+Nickel Angel✨, [5/4/26 11:13 PM]
+已经 5 月了
+
+Nickel Angel✨, [5/4/26 11:13 PM]
+其实本来觉得
+
+Nickel Angel✨, [5/4/26 11:13 PM]
+这几年夏天相对来说都是很漫长的
+
+Nickel Angel✨, [5/4/26 11:13 PM]
+4 月中下旬一直持续到 10 月中下旬
+
+Nickel Angel✨, [5/4/26 11:14 PM]
+都是那种需要开制冷空调的非常热的天气
+
+Nickel Angel✨, [5/4/26 11:14 PM]
+但是今年反而 5 月初都没有那么热
+
+pupupu|云苔☁️, [5/4/26 11:15 PM]
+XM
+
+Nickel Angel✨, [5/4/26 11:15 PM]
+感觉冬天短，也就 11 12 1 2 这不到四个月
+
+斬風千雪 ❄️, [5/4/26 11:19 PM]
+雪化了
+
+斬風千雪 ❄️, [5/4/26 11:20 PM]
+被热化的
+
+斬風千雪 ❄️, [5/4/26 11:20 PM]
+我夏天的衣服还没买
+
+斬風千雪 ❄️, [5/4/26 11:20 PM]
+过两天考完试买吧
+
+斬風千雪 ❄️, [5/4/26 11:20 PM]
+喵儿嗷儿。
+
+Nickel Angel✨, [5/4/26 11:20 PM]
+思考
+
+椰奶蛋挞, [5/4/26 11:35 PM]
+啊我感觉快到夏天了
+```
+
+```md
+f, [5/5/26 9:16 PM]
+You went to Disney today? 
+
+Seems you don't have to go to school.
+
+I'm so jealous. 
+
+I wonder what do you do on a daily basis. 
+
+Btw, I'm also free at home these days but it won't last long. For me, I read materials, or surf the internet. Often try out new ideas and dev new projects. 
+
+I value quality over quantity in the long term. Instead of ai hypes I'm thinking about code styles, designs, and decisions more.
+
+Cranky Wellcome, [5/5/26 9:39 PM]
+Yeah, I did go to Disney today! I have an annual pass so I can drop by often. It's the Labor Day holiday in China right now, so I'm free. I'm still a student, but my class schedule isn't too crazy at the moment.
+
+​My lifestyle is pretty laid-back lately—just focusing on experiencing different things. I have a lot of hobbies: classical music, movies, and sim racing (planning to hit a real track eventually!). I also shoot and develop my own film, edit digital photos, ride my road bike (recording rides with an action cam), and go swimming. That's my typical week!
+
+​I totally agree with you about valuing code quality over AI hype. It reminds me of an article I read recently by a professor about AI coding. He made the exact same point—the real focus should be on underlying decisions and design, not just letting AI generate everything. On that note, I'm planning to teach myself some computer science, mainly focused on the finance sector.
+
+​Lastly, I'm trying to improve my English to pass my college English exam (CET-4). My English isn't great yet, so I actually used a translator to read that professor's article and to write this message. Hope you don't mind!
+
+f, [5/6/26 1:16 AM]
+> classical music
+
+What kind of classical music do you like? Favorite artists? Instruments? (Screenshots welcome) 
+
+> a professor
+
+"To my students"? 
+
+> a translator
+
+Classic stats based or llms? 
+
+Likely the former, I suppose. 
+
+As it's quite unnatural. 
+
+I could get your by mapping them to zh-cn though. 
+
+For example, "on the finance sector",  "laid", "CET-4".
+
+(I haven't checked it w llms. I just feel that)
+
+f, [5/6/26 1:18 AM]
+> I'm still a student
+
+Oh, btw, may I know you school grades? 
+
+Do you want to study abroad in the future? What research fields would you like to explore?
+
+Cranky Wellcome, [5/6/26 1:32 AM]
+​I prefer symphonies and listen to them quite a bit on Apple Music Classical.
+
+As for the translation, I used Gemini (an LLM). It seems the results weren't great, possibly because I specifically asked it not to sound too much like "AI translation."
+
+My school is actually not very good, and I don't really like it. If I didn't have to worry about whether a school would accept me, I would choose to study the arts—like cinematography, directing, or architecture.
+
+Cranky Wellcome, [5/6/26 1:32 AM]
+Yes
+
+Cranky Wellcome, [5/6/26 1:40 AM]
+You asked about my taste in music—here is a screenshot of what I’ve been listening to lately on Apple Music Classical. 
+
+I actually went to the SSO (Shanghai Symphony Orchestra) recently to see a live performance of these pieces.
+
+Cranky Wellcome, [5/6/26 1:40 AM]
+I’m not sure if you’re familiar with them, but the SSO is the oldest symphony orchestra in Asia. It’s a true musical landmark here, with a history that stretches back more than 140 years.
+
+Cranky Wellcome, [5/6/26 1:40 AM]
+<!-- 
+sc:
+约翰 内 斯 。 勃 拉 姆 斯
+
+降 B 大 调 第 二
+号 钢 众 协奏曲
+
+完成 《第 一 钢琴 协奏曲 》20 年 后 ， 勃 拉 姆 斯 在
+1878 年 开始 着 手 创 作 他 的 第 二 部 钢琴 协奏曲 。
+期 间 他 暂时 停 笔 ， 投 入 《小 提琴 协奏曲 》， 随
+后 又 回 到 《第 二 钢琴 协奏曲 》 的 创作 ， 对 更 多
+
+编辑 精 选
+安娜 “ 齐 布 列 娃 、 柏 林 德 意志 交 .…
+2020 . 4 首 曲 目 . 48 分 钟
+
+播放
+
+克里斯蒂 安 ' 齐 默 尔 曼 、 维 也
+纳 爱 乐 、 莱 奥 纳 德 ， 伯 恩 斯 坦
+”1985 .4 首 曲 目 . 51 分 钟
+ -->
+
+Cranky Wellcome, [5/6/26 1:42 AM]
+By the way, I’m curious—can native speakers usually tell right away when English is AI-generated, even if the quality is relatively high?
+```
+
+```
+Ivan Eisenberg, [5/3/26 2:43 PM]
+Are you really enjoying these particular posts?
+
+f, [5/3/26 3:45 PM]
+y
+
+f, [5/3/26 3:45 PM]
+Esp. ryolu. 
+
+Their personal site is mind blowing.
+
+f, [5/5/26 9:18 PM]
+Are you ghosting or just not seeing my messages. 
+
+Can I know something from you? 
+
+It's fine if you prefer to reduce the usage of sns. Just let me know.
+
+Ivan Eisenberg, [5/6/26 5:44 AM]
+I was too busy with the gym and uni assignments. And was opening the app only to for really important messages
+
+Ivan Eisenberg, [5/6/26 5:44 AM]
+?
+
+Ivan Eisenberg, [5/6/26 5:52 AM]
+I don't write anything every day in public. I share my progress or interesting stuff to my friends and discuss with them. But If I make a blog, I'll share it with you
+
+Ivan Eisenberg, [5/6/26 5:52 AM]
+I don't really have time right now to anything
+```
+
+07
+
+02 00 learn ssh. install 3x-ui. <!-- web: vue, ant design. readme localization: en, ar, fa, zh, es, ru. --> 03 00
+
+easy access. 
+
+no defaults/pasting. no explanation nearby.
+
+03 00 learn global extend config on clash verge. 03 40 fix copy fail by blacklisting the module. 04 20
+
+
 
 <!-- timebox, plan. -->
 
@@ -11863,13 +13338,18 @@ wlb.
 
 <!--
 
-breadcrumbs:
+see
 
-see todo, things, scratch pad.
+- todo
+- things
+- scratch pad.
 
-see f/blogging: readme: personas.
+- f/blogging: readme: perception.
 
-see weekly, projects, journal, all
+- weekly
+- projects
+- journal
+- all
 
  -->
 
