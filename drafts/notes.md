@@ -2875,3 +2875,16 @@ when you wanna export on a new session, you have to approve on old sessions, whi
 
 ---
 
+i... rather not record and archvie them all.
+
+big companies often change ui.
+
+maybe i could apply my own?
+
+at least for fira projects. which might be a brand!
+
+(e.g. fragility is nextjs's brand)
+
+---
+
+

@@ -1,3 +1,59 @@
+# .
+
+```
+ssh username@server_ip
+```
+
+_If your VPS uses a non-standard port (e.g., 2222), use:_ `ssh username@server_ip -p 2222`.
+
+1. **Generate Keys**: On your **local** machine, run `ssh-keygen -t rsa -b 4096`.
+
+2. **Copy Public Key**: Use the [ssh-copy-id tool](https://www.cloudpanel.io/tutorial/set-up-ssh-keys-on-ubuntu-20-04/) to send your public key to the VPS:\
+   bash
+
+<!---->
+
+```
+ssh-copy-id username@server_ip
+```
+
+
+1\. Install 3X-UI on your VPS
+
+Run this command in your SSH terminal. It installs a web dashboard where you can manage your VPN without touching more code: \[[1](https://github.com/MHSanaei/3x-ui), [2](https://www.youtube.com/watch?v=aAy3p7d3O9w)]
+
+bash
+
+```
+bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
+```
+
+Use code with caution.
+
+- **Setup**: During installation, it will ask for a **username**, **password**, and **port** (e.g., 2053).
+- **Access**: Open your browser and go to `http://YOUR_VPS_IP:PORT`. \[[1](https://www.youtube.com/watch?v=aAy3p7d3O9w), [2](https://github.com/aphrco/x-ui/blob/main/README%5FEN.md), [3](https://www.youtube.com/watch?v=ltDxGM0%5F%5FXU)]
+
+2\. Create the VLESS REALITY Connection \[[1](https://www.youtube.com/watch?v=ltDxGM0%5F%5FXU)]
+
+Once in the dashboard:
+
+1. Go to **Inbounds** -> **Add Inbound**.
+2. Set **Protocol** to `vless` and **Port** to `443`.
+3. Turn on **Reality**.
+4. For **Dest**, use a common site like `://microsoft.com` or `://apple.com`.
+5. Click **Get New Cert** (this generates your private keys automatically).
+6. Click **Add**. \[[1](https://www.reddit.com/r/dumbclub/comments/1powgrs/is%5Fsetting%5Fup%5Fa%5Fselfhosted%5Fvless%5Freality%5Fserver/), [2](https://www.youtube.com/watch?v=aAy3p7d3O9w), [3](https://extravm.com/blog/xray-core-vlessxtls-reality-vpn-server-install-script-ubuntu-2404-lts), [4](https://seakfind.github.io/2021/10/10/X-UI/)]
+
+3\. Connect to Clash Verge
+
+1. In the 3X-UI dashboard, click the **QR code icon** or **Copy link** icon next to your new inbound to get a `vless://` link.
+2. Because Clash Verge uses `.yaml` files, the easiest way is to use a "Subconverter" service to turn your `vless://` link into a Clash subscription URL.
+3. In **Clash Verge**, go to **Profiles**, paste the converted URL, and click **Import**. \[[1](https://extravm.com/blog/xray-core-vlessxtls-reality-vpn-server-install-script-ubuntu-2404-lts), [2](https://gist.github.com/khizar1556/79915256e3b0c6c11d8b268ffd702dae), [3](https://gist.github.com/StarWishsama/b70f0d327c8d52813aa38f24a9be98af), [4](https://www.youtube.com/watch?v=1oSc5k%5FG79c)]
+
+```
+sudo ufw disable
+```
+
 #
 
 how to connect my vps via ssh on ubuntu

@@ -328,8 +328,30 @@ git abstraction.
 
 i think you could even as daily backup... and sync.
 
+...
+
+try out vscode git features.
+
+- vscode timeline, (and more?)
+- github desktop (seems not much features)
+- ~~gitkraken~~ <!-- that's too much -->
+
+> The diff algorithm was stopped early (after 5000 ms.)
+
+btw, vscode settings: git.enabled.
+
+...
+
+github? forgeio? what. why.
+
 ---
 
-buy a jp node on vultr i think.
+learn jp
 
+---
 
+terminal bench
+
+<!-- inadequate and incomprehensive tasks, seems -->
+
+---

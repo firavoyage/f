@@ -13085,7 +13085,8 @@ Cahciua ~カフキワ~ 🥦🌸, [5/6/26 11:34 PM]
 
 ```md
 Menci 💖, [5/5/26 1:46 AM]
-<!-- sc: ® Bash(cmake --build build/linux-x86_64 2>81 | tail -2
+<!-- sc: 
+® Bash(cmake --build build/linux-x86_64 2>81 | tail -2
 cmake --build build/windows-x86_64 2>8&1 | tail -2..)
 L [166%] Built target cri_mana_vpx
 [100%] Linking C shared library cri_mana_vpx.dll
@@ -13314,6 +13315,8 @@ Ivan Eisenberg, [5/6/26 5:52 AM]
 I don't really have time right now to anything
 ```
 
+<!-- feels it's too much. actually the first time. many are chats i dont even participate in. yet, quite hard to rm. each carries some weight. keep them anyway. -->
+
 07
 
 02 00 learn ssh. install 3x-ui. <!-- web: vue, ant design. readme localization: en, ar, fa, zh, es, ru. --> 03 00
@@ -13325,6 +13328,18 @@ no defaults/pasting. no explanation nearby.
 03 00 learn global extend config on clash verge. 03 40 fix copy fail by blacklisting the module. 04 20
 
 20 20 watch `Please Remember This Type Of Tactic | Chess Rating Climb 1743 to 1776`.
+
+23 40 reinstall clash verge.
+
+rm settings dir n reproduce on gui.
+
+24 00 buy a vps in tokyo jp on vultr at 5 u/mo. use debian 12 <!-- recommended by linus torvalds --> as usual.
+
+pretty straight forward. take a while to find out i have to disable ufw.
+
+08
+
+03 20 dl `Stray Birds`.
 
 
 

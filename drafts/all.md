@@ -233,6 +233,7 @@ literature:
 - tian jing
 - daoism kuai huo
 - shui zhong wan shi
+- stray birds
 
 typography:
 
@@ -280,6 +281,7 @@ philosophy:
 - nature or culture
 - logical punctuation
 - vim emacs
+- summer flowers autumn leaves
 
 entertainment:
 
@@ -387,6 +389,7 @@ humility naming:
 - compare humility and modesty
 - hexaco model
 - wording humility
+- literature stray birds
 
 <!-- 
 
