@@ -388,14 +388,6 @@ https://manus.im/share/i2BY9pM7gM5mC3MHXwIeOV
 
 ---
 
-vps
-
-https://console.vultr.com/deploy-beta/
-
-https://bandwagonhost.com/order/basic
-
----
-
-organize the world’s information and make it universally accessible and useful
+https://os.ryo.lu/
 
 ---

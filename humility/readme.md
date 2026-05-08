@@ -1,6 +1,6 @@
-_humility_ <!-- human -->
+_humility_
 
-<!-- an elegant ~~researcher~~ ~~human-AI interface~~ human-machine interface for a more civilized age -->
+<!-- an elegant human-machine interface for a more civilized age -->
 
 be wise.
 

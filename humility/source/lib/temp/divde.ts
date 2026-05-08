@@ -1,5 +1,3 @@
-import { err, rescue } from 'lib/std';
-
 export const zero_division = Symbol("zero_division");
 
 export function divide(a: number, b: number): result<number> {
