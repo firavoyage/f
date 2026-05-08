@@ -342,7 +342,7 @@ btw, vscode settings: git.enabled.
 
 ...
 
-github? forgeio? what. why.
+github? forgeio (codeberg)? what. why.
 
 ---
 

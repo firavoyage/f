@@ -360,20 +360,6 @@ https://www.youtube.com/watch?v=F1Vp2ATE_dg&list=PLp7SLTJhX1u6zKT5IfRVmcVs1U1C3e
 
 ---
 
-nickle angel
-
-https://github.com/Nickel-Angel/ACM-and-OI?tab=readme-ov-file
-
-project euler
-
-https://github.com/lucky-bai/projecteuler-solutions/
-
-menci submissions (oi is boring? at least on this perspective)
-
-https://loj.ac/u/Menci
-
----
-
 github desktop: memoh.
 
 cmt history.

@@ -36,6 +36,7 @@ fira:
 - structural problems
 - world solved unsolved
 - vim emacs
+- summer flowers autumn leaves
 
 life:
 
@@ -234,6 +235,7 @@ literature:
 - daoism kuai huo
 - shui zhong wan shi
 - stray birds
+- argument by analogy not proof
 
 typography:
 
@@ -308,6 +310,10 @@ english:
 math:
 
 - birthday paradox
+
+biology:
+
+- house plant longevity
 
 history:
 

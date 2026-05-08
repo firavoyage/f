@@ -894,3 +894,26 @@ return img url or base64 url
 You can predict ahead as if the user will accept the suggestion.
 
 ---
+
+google ai mode.
+
+when you press ctrl c, 
+
+some dom elements change for a sec.
+
+there are some elements like this:
+
+```
+<span jsuid="xDodib_r4" class="uJ19be notranslate" jsaction="rcuQ6b:&amp;xDodib_r4|npT2md" jscontroller="udAs2b" data-sfc-root="c" data-wiz-uids="xDodib_r6,xDodib_r8" data-sfc-cb="" data-complete="true" data-processed="true"><!--TgQPHd|[[null,null,&quot;9012a7e8-73b7-45e3-86a6-8ffdb2885179&quot;,null,null,1,0,&quot;https://encrypted-tbn0.gstatic.com/faviconV2?url\u003dhttps://link.springer.com\u0026client\u003dAIM\u0026size\u003d128\u0026type\u003dFAVICON\u0026fallback_opts\u003dTYPE,SIZE,URL&quot;,&quot;Springer Nature Link&quot;,8,null,&quot;https://link.springer.com/article/10.1007/s00018-025-05874-8&quot;,0]]--></span>
+```
+
+(there is actually an element inside, which is "icon site_name +6", a reference component, which ive deleted)
+
+changing attrs or rm children does not matter. the outermost span is stored in js.
+
+when you copy, it will know (from beg and end), which might be impacted.
+
+everything inside will shift for a while.
+
+---
+
