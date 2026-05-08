@@ -2887,4 +2887,16 @@ at least for fira projects. which might be a brand!
 
 ---
 
+on ios/mac? dont worry.
 
+you can you web app, effectively running on my phone/env.
+
+you can either self host on your own vps or use mine.
+
+since apple users are wealthy, i could charge them.
+
+local methods, like fs? download them.
+
+offline? pwa.
+
+---

@@ -13343,7 +13343,9 @@ pretty straight forward. take a while to find out i have to disable ufw.
 
 04 00 set git auto sync to per 2 hours.
 
-04 20 finish reading freedom of money chapter 2.
+04 20 finish reading freedom of money chapter 3.
+
+20 00 finish reading freedom of money chapter 4.
 
 
 
