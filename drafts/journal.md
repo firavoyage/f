@@ -13353,6 +13353,8 @@ pretty straight forward. take a while to find out i have to disable ufw.
 
 00 00 watch `Crush This Pawn Push! | Chess Rating Climb 1776 to 1820`.
 
+03 20 simplify tabs.
+
 
 
 <!-- timebox, plan. -->

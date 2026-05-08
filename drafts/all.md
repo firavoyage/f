@@ -235,7 +235,6 @@ literature:
 - daoism kuai huo
 - shui zhong wan shi
 - stray birds
-- argument by analogy not proof
 
 typography:
 
@@ -356,6 +355,7 @@ rhetoric:
 - absolute cinema
 - dont be evil
 - asyndeton parataxis
+- argument by analogy not proof
 
 laws:
 

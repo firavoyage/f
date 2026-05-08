@@ -2885,6 +2885,16 @@ at least for fira projects. which might be a brand!
 
 (e.g. fragility is nextjs's brand)
 
+upd:
+
+i mean, twitter updates its popup (when you hover a pf, or add to list, i.e. selection).
+
+prev: a box. white outline. black bg.
+
+new: a box. no outline. dark gray (idk if it's in the design tokens, as it's not seen anywhere) bg. 
+
+less contrast. more natural.
+
 ---
 
 on ios/mac? dont worry.
@@ -2898,5 +2908,37 @@ since apple users are wealthy, i could charge them.
 local methods, like fs? download them.
 
 offline? pwa.
+
+---
+
+for each blog list, fetch twitter (x) link. build array.
+
+fetch all following.
+
+those less than e.g. 10 followers and not followed by any human are spammers.
+
+---
+
+there is a time when i want to analyze literature.
+
+i wanna define the comprehensive rule set from any aspect.
+
+e.g. words = f(content, style, ...) while content is ... and style is ...
+
+i already have some ideas
+
+- oxford comma
+- logical punctuation
+- asyndeton parataxis (instead of not ... but ...)
+
+it's meaningful. it's too big.
+
+also, i wanna define the "math textbook style guide" so it could generate easily.
+
+e.g. what is aops style.
+
+it already knows everything. i just need to tell it how to align, which it does not know, not really. 
+
+
 
 ---
