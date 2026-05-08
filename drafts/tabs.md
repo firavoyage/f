@@ -74,6 +74,8 @@ shelf:
 
 the great gatsby
 
+the stranger
+
 freedom of money
 
 ---
@@ -148,6 +150,12 @@ https://beta.kimi.link/share/19bf65ba-82a2-8fb5-8000-0000b6cdaf04
 
 https://beta.kimi.link/share/19bf65eb-6102-8d7c-8000-00003648817b
 
+https://awesome.manus.space/?category=web-development
+
+https://manus.im/share/4sAjbf6S2wp12P5mELXG77
+
+https://manus.im/share/i2BY9pM7gM5mC3MHXwIeOV
+
 ...
 
 https://developers.openai.com/api/reference/overview/
@@ -176,6 +184,20 @@ https://github.com/memohai/Memoh/commits?author=Menci
 
 https://docs.memoh.ai/
 
+...
+
+https://github.com/luoling8192/ai-coding-principles?tab=readme-ov-file
+
+...
+
+https://pi.dev/
+
+---
+
+mac os x 10
+
+https://os.ryo.lu/
+
 ---
 
 libadwaita
@@ -184,52 +206,10 @@ https://github.com/romgrk/web-toolkit
 
 https://github.com/ncpa0cpl/adwaita-web?tab=readme-ov-file
 
-<!-- css is enough -->
-
----
-
-nodemation
-
-https://n8n.io/
-
-https://github.com/n8n-io/n8n
-
----
-
-humility: research
-
-llm programming common anti patterns
-
-https://github.com/luoling8192/ai-coding-principles?tab=readme-ov-file
-
 ---
 
 float
 
 file:///home/fira/Music/_/[FULL] Mahou Shoujo Madoka★Magica ED 『Magia』 Romaji ⧸ English [D2oLSuongkY].webm
-
----
-
-https://awesome.manus.space/?category=web-development
-
-https://manus.im/share/4sAjbf6S2wp12P5mELXG77
-
-https://manus.im/share/i2BY9pM7gM5mC3MHXwIeOV
-
----
-
-https://os.ryo.lu/
-
----
-
-https://media.leohearts.com/web/index.html#!/home
-
-https://cloud.leohearts.com/apps/dashboard/
-
-dl https://media.leohearts.com/emby/Items/1595070/Download?api_key=dd574c8172b84d4c9034f82f422cab24 n ano hana?
-
-no. it's not really reproducible and flexible i think. better use magnet.
-
-i already have some local movies. view them tomorrow?
 
 ---

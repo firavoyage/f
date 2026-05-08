@@ -88,9 +88,11 @@ research types. (maybe py lib plus google sans)
 
 linear foss ui.
 
-categorize and simplify todos, research, and notes.
+(?)
 
-e.g. projects.
+native markdown has a lot advantage.
+
+well... i could proxy it. somehow. w a format i like.
 
 ---
 
@@ -277,7 +279,6 @@ simplify
 - notes on drafts
 - notes on humility
 - things
-- tabs
 
 merge things & tabs?
 

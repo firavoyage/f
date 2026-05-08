@@ -177,6 +177,7 @@ frontend:
 - ts framework library react teact style guide
 - ts framework agnostic component library mitosis web component lit
 - react component style
+- css styling
 
 backend:
 
@@ -212,7 +213,7 @@ misc:
 - categorize shaders
 - gitignore
 
-ui/ux design:
+ux: <!-- ui/ux design -->
 
 - design ui principles intuition attention
 - information architecture
@@ -222,6 +223,7 @@ ui/ux design:
 typography:
 
 - indent paragraphs
+- snake case more scannable than camel case
 
 linguistics:
 
@@ -323,6 +325,9 @@ history:
 - us jp cable network infra
 - crowdstrike outrage
 - lego
+- macos
+- 37signals
+- hey email
 
 politics:
 
