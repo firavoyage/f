@@ -13347,6 +13347,8 @@ pretty straight forward. take a while to find out i have to disable ufw.
 
 20 00 finish reading freedom of money chapter 4.
 
+22 20 organize zhihu fav. trim. review memories. 24 00
+
 
 
 <!-- timebox, plan. -->
