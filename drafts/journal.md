@@ -13357,6 +13357,10 @@ pretty straight forward. take a while to find out i have to disable ufw.
 
 06 00 read `I am sorry, but everyone is getting syntax highlighting wrong`.
 
+17 40 dl `Tatsuya Maruyama`. 
+
+<!-- the easiest way to bypass the bot wall is to switch to a better ip. -->
+
 
 
 <!-- timebox, plan. -->

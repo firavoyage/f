@@ -111,6 +111,15 @@ yt-dlp \
   -o "_/Kent Nishimura/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
 ```
 
+Tatsuya Maruyama
+
+```sh
+yt-dlp \
+  "https://music.youtube.com/playlist?list=OLAK5uy_nOrv93hFBlppqARLwkmpL1pc0Yk67oeKM" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  -o "_/Tatsuya Maruyama/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
+```
+
 Kotaro Oshio
 
 ```sh
