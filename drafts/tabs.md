@@ -16,7 +16,11 @@ ruanyf https://ruanyifeng.com/blog/
 
 hn https://news.ycombinator.com/
 
-chessvibes rating climb https://www.youtube.com/playlist?list=PLp7SLTJhX1u6zKT5IfRVmcVs1U1C3eHb5&index=38
+chessvibes rating climb
+
+https://www.youtube.com/watch?v=F1Vp2ATE_dg&list=PLp7SLTJhX1u6zKT5IfRVmcVs1U1C3eHb5&index=38&t=2608s
+
+https://www.youtube.com/playlist?list=PLp7SLTJhX1u6zKT5IfRVmcVs1U1C3eHb5&index=38
 
 simonw digests.
 
