@@ -13355,6 +13355,8 @@ pretty straight forward. take a while to find out i have to disable ufw.
 
 03 20 simplify tabs.
 
+06 00 read `I am sorry, but everyone is getting syntax highlighting wrong`.
+
 
 
 <!-- timebox, plan. -->
