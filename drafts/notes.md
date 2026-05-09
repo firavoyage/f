@@ -2895,6 +2895,12 @@ new: a box. no outline. dark gray (idk if it's in the design tokens, as it's not
 
 less contrast. more natural.
 
+upd:
+
+when you hover the timestamp, it's no longer blue bg, rounded rect. but deep gray, fully rounded rect instead.
+
+elon loves grayscale way more than twitter blue.
+
 ---
 
 on ios/mac? dont worry.

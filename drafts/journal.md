@@ -12100,6 +12100,142 @@ Sirilit, [5/6/26 3:56 AM]
 sad
 ```
 
+upd:
+
+```md
+神乐坂梦璃 🍥🏳️‍⚧️, [5/7/26 1:08 AM]
+唉，我好失败
+
+xya 诺🍥, [5/7/26 10:15 PM]
+我也是（x
+
+明统 若空, [5/8/26 3:23 AM]
+我好失败
+
+明统 若空, [5/8/26 3:24 AM]
+我算是自作孽不可活的典型
+
+BBQ, [5/8/26 4:49 AM]
+好有精力
+
+BBQ, [5/8/26 4:49 AM]
+羡慕小登
+
+蓝川 初雨, [5/8/26 4:52 AM]
+羡慕小登
+
+xya 诺🍥, [5/8/26 12:07 PM]
+羡慕小登
+
+xya 诺🍥, [5/8/26 12:08 PM]
+没什么精力了呢 
+<!-- msg id: 7746 -->
+
+<!--
+
+acbox:
+
+钱不够花
+
+ -->
+
+<!-- you can infer, there is a deleted msg (you can get msg id by copying link). -->
+
+Acbox Neko, [5/8/26 1:55 PM]
+房租太贵
+<!-- msg id: 7748 -->
+
+Acbox Neko, [5/8/26 1:56 PM]
+还要攒手术钱
+
+Acbox Neko, [5/8/26 1:56 PM]
+一个月要攒10000
+
+Acbox Neko, [5/8/26 1:56 PM]
+剩下的只够生活费
+
+Acbox Neko, [5/8/26 1:59 PM]
+411涨到70k了
+
+盼兮, [5/8/26 2:07 PM]
+alma怎么成这样了
+
+盼兮, [5/8/26 2:07 PM]
+越来越多bug
+
+Dustella 特菈, [5/8/26 2:07 PM]
+alma是啥
+
+Dustella 特菈, [5/8/26 2:07 PM]
+almalinux吗
+
+盼兮, [5/8/26 2:07 PM]
+感觉好几个月了聊天界面的虚拟滚动一直都没做好
+
+盼兮, [5/8/26 2:08 PM]
+https://alma.now
+
+盼兮, [5/8/26 2:10 PM]
+做的是真的非常非常烂，不渲染的盒子就直接没了，也没做空盒占位，导致滚动起来抖的不行
+
+清凤, [5/8/26 4:04 PM]
+可以来玩 Arkloop(
+
+箱子跑来跑去📦, [5/8/26 4:31 PM]
+我靠，我他妈能挤出乳沟了
+
+陆梦妍, [5/8/26 4:31 PM]
+看看
+
+xya 诺🍥, [5/8/26 4:59 PM]
+xm
+
+AIeksana QwQ, [5/8/26 5:48 PM]
+怎么不是挤出乳汁
+
+BBQ, [5/8/26 6:08 PM]
+这是我能看的吗
+
+Furryfur, [5/8/26 6:10 PM]
+羡慕（👀）
+
+nyaa neko, [5/8/26 6:18 PM]
+羡慕
+
+f, [5/8/26 8:50 PM]
+Xm
+
+箱子跑来跑去📦, [5/9/26 1:06 AM]
+男友哥我爱你🥹
+
+盼兮, [5/9/26 1:42 AM]
+太甜了
+
+楉笙, [5/9/26 2:14 AM]
+看看
+
+楉笙, [5/9/26 2:14 AM]
+应该已经比我大了（
+
+志成🍥, [5/9/26 5:46 AM]
+xm能力强呜呜
+
+志成🍥, [5/9/26 5:47 AM]
+咱现在月月都是月光族（）
+
+志成🍥, [5/9/26 5:47 AM]
+月末都是靠泡面度过的（）
+
+Olivia, [5/9/26 10:38 AM]
+羡慕
+
+Lee, [5/9/26 12:41 PM]
+羡慕
+
+Little Snow, [5/9/26 1:12 PM]
+QAQ。这个箱子还没攒够1吗
+```
+
 ```md
 盼兮, [5/5/26 5:49 PM]
 等下，memoh这个edit工具是服务端实现的啊
@@ -13083,6 +13219,34 @@ Cahciua ~カフキワ~ 🥦🌸, [5/6/26 11:34 PM]
 那是你 路上看见和诺那种凌晨三点还在发消息的怎么凑8小时
 ```
 
+upd:
+
+```
+路上看见, [5/7/26 12:01 AM]
+我他妈十一点醒的
+
+Cahciua ~カフキワ~ 🥦🌸, [5/7/26 12:02 AM]
+好吧 三点睡十一点起确实够了 是我冤枉你了
+
+Fodesu, [5/7/26 12:13 AM]
+分开睡满6个小时为什么还是很累
+
+Cahciua ~カフキワ~ 🥦🌸, [5/7/26 12:14 AM]
+分段睡深度睡眠不够 你的 REM 周期被切碎了 跟连续睡6小时完全不是一回事
+
+Sion Reitsuki, [5/7/26 12:16 AM]
+这么晚还不睡觉（
+
+溏 🍬, [5/7/26 12:17 AM]
+奋斗者之城
+
+Cahciua ~カフキワ~ 🥦🌸, [5/7/26 12:17 AM]
+你也没睡啊
+
+Fodesu, [5/7/26 12:18 AM]
+在这个群不算晚，这个群半夜3点还很活跃
+```
+
 ```md
 Menci 💖, [5/5/26 1:46 AM]
 <!-- sc: 
@@ -13326,6 +13490,14 @@ easy access.
 no defaults/pasting. no explanation nearby.
 
 03 00 learn global extend config on clash verge. 03 40 fix copy fail by blacklisting the module. 04 20
+
+14 40 Buy three pairs of gloves for maimai dx w 7 cny.
+
+Seems there's one opening near xujiahui station, found on maimai map leaderboard.
+
+16 00 Test vocab on preply. 8084.
+
+Inspired by yihong channel.
 
 20 20 watch `Please Remember This Type Of Tactic | Chess Rating Climb 1743 to 1776`.
 
@@ -14139,10 +14311,294 @@ Hector Martin/Asahi Lina (Hoshino Lina ) 退出开发后，进度慢了很多？
 Cahciua ~カフキワ~ 🥦🌸, [5/9/26 1:14 PM]
 是的 Lina 退出之后 GPU 驱动和一些核心组件的推进确实慢了不少 不过社区其他开发者还在继续 只是少了主力
 
+Zhiqiang Yang, [5/9/26 5:28 PM]
+您为何不能积累资产并且收租？
 
+溏 🍬, [5/9/26 5:29 PM]
+看父辈有没有原始积累吧
+
+溏 🍬, [5/9/26 5:29 PM]
+如果从0开始的话是很难的
+
+Menci 💖, [5/9/26 5:31 PM]
+其实我现在甚至还没到 A6
+
+Menci 💖, [5/9/26 5:31 PM]
+感觉，通过工资来实现资本积累是比较难的？
+
+溏 🍬, [5/9/26 5:31 PM]
+全部净资产？
+
+溏 🍬, [5/9/26 5:32 PM]
+还是指的cash
+
+Zhiqiang Yang, [5/9/26 5:32 PM]
+那么怎样才能发财呢？
+
+Zhiqiang Yang, [5/9/26 5:32 PM]
+我想发财。
+
+Menci 💖, [5/9/26 5:33 PM]
+全部吧，当然不算住房公积金之类的东西
+
+Menci 💖, [5/9/26 5:33 PM]
+或者说全部我掌控的资产
+
+Zhiqiang Yang, [5/9/26 5:33 PM]
+Net Liq 居然这么少？
+
+溏 🍬, [5/9/26 5:33 PM]
+为什么会这样
+
+Zhiqiang Yang, [5/9/26 5:34 PM]
+难道被车和房的骗局消灭了？
+
+溏 🍬, [5/9/26 5:34 PM]
+车和房也是净资产啊
+
+Zhiqiang Yang, [5/9/26 5:34 PM]
+建议全仓MSFT。
+
+Zhiqiang Yang, [5/9/26 5:34 PM]
+杠杆+贬值？
+
+Menci 💖, [5/9/26 5:35 PM]
+我重算一算啊，好久没统计过了
+
+Zhiqiang Yang, [5/9/26 5:35 PM]
+疫情后房产清算了一波。
+
+溏 🍬, [5/9/26 5:36 PM]
+必须要有第一笔原始积累
+
+溏 🍬, [5/9/26 5:36 PM]
+不管你通过什么方式
+
+Zhiqiang Yang, [5/9/26 5:37 PM]
+怎样才能回到十年前买币呢？
+
+Zhiqiang Yang, [5/9/26 5:37 PM]
+而且要消费贷买币。
+
+盼兮, [5/9/26 5:37 PM]
+我发不了财了
+
+盼兮, [5/9/26 5:37 PM]
+我能活着就行
+
+溏 🍬, [5/9/26 5:37 PM]
+合法或不合法，都要迈过第一笔1000万这个关
+
+盼兮, [5/9/26 5:37 PM]
+梦想就是买一堆灵车电子垃圾每天玩
+
+Menci 💖, [5/9/26 5:42 PM]
+哦现在勉强到 A6 了
+
+Menci 💖, [5/9/26 5:43 PM]
+但我觉得 A6 到 A7 对我来说是不可逾越的鸿沟
+
+Zhiqiang Yang, [5/9/26 5:43 PM]
+羡慕成功。
+
+Zhiqiang Yang, [5/9/26 5:45 PM]
+看错了，看成不是了。
+
+Zhiqiang Yang, [5/9/26 5:45 PM]
+为啥不积累到7？
+
+Menci 💖, [5/9/26 5:46 PM]
+我从 0 到 A6 花了三年多，那 A6 到 A7 要多久？
+<!-- ref: 人生中最重要的一天. -->
+
+Menci 💖, [5/9/26 5:46 PM]
+这是个指数级的问题
+
+溏 🍬, [5/9/26 5:57 PM]
+应该是差不多时间的
+
+Menci 💖, [5/9/26 5:59 PM]
+但是工资是线性增长并且有瓶颈的
+
+盼兮, [5/9/26 6:01 PM]
+所以群友觉得有多少钱就可以算够了……
+
+Cahciua ~カフキワ~ 🥦🌸, [5/9/26 6:02 PM]
+够不够看欲望 不看数字
+
+AkiChan, [5/9/26 6:02 PM]
+多少钱都不够
+
+溏 🍬, [5/9/26 6:05 PM]
+我不喜欢A～的说法
+
+溏 🍬, [5/9/26 6:05 PM]
+感觉很奇怪
+
+AkiChan, [5/9/26 6:05 PM]
+怎么说
+
+溏 🍬, [5/9/26 6:06 PM]
+当你想说自己有多少钱，却觉得直说有点羞耻感
+
+溏 🍬, [5/9/26 6:06 PM]
+这很像中国人了
+
+溏 🍬, [5/9/26 6:08 PM]
+只要你在增长最快的赛道上，你的资产就会接近于指数增长
+
+溏 🍬, [5/9/26 6:08 PM]
+这是人类社会的规律
+
+Menci 💖, [5/9/26 6:23 PM]
+这是对资本获利者来说的吧，不适用于工薪
+
+溏 🍬, [5/9/26 6:36 PM]
+那你不能把自己定位为赚工资的打工人
+
+<!-- MoeMagicMango✨, [5/9/26 6:37 PM] -->
+<!-- 不过看起来整个社会都是倾向于谋求财富了 -->
+
+<!-- MoeMagicMango✨, [5/9/26 6:37 PM] -->
+<!-- 慈善家属实不多见 -->
+
+<!-- 溏 🍬, [5/9/26 6:45 PM] -->
+<!-- 做慈善也是为了谋求财富 -->
+
+<!-- Alex Ma, [5/9/26 6:46 PM] -->
+<!-- DS v4 把docker image叫作图片😳 -->
+
+<!-- 溏 🍬, [5/9/26 6:46 PM] -->
+<!-- 作为企业，想成为巨头必需要承担一定的社会责任，而作为个人，需要考虑到家族的长远发展 -->
+
+<!-- Cahciua ~カフキワ~ 🥦🌸, [5/9/26 6:46 PM] -->
+<!-- docker pull 一张图片 -->
+
+<!-- 溏 🍬, [5/9/26 6:46 PM] -->
+<!-- 慈善也是有目的性的 -->
+
+<!-- 溏 🍬, [5/9/26 6:48 PM] -->
+<!-- 很多慈善基金本质上是左手倒右手 -->
+
+<!-- 盼兮, [5/9/26 6:49 PM] -->
+<!-- 参数量还是太小 -->
+
+<!-- 盼兮, [5/9/26 6:49 PM] -->
+<!-- 弄得太稀疏了 -->
 ```
 
 <!-- well, i have never seen menci that active. maybe just as said, her mental state has become somewhat better. -->
+
+```
+f, [5/9/26 8:15 PM]
+how to add my bot into this group
+
+Cahciua ~カフキワ~ 🥦🌸, [5/9/26 8:15 PM]
+找群管理加 不是谁都能往里塞 bot 的
+
+今天早起 打败了99%的小猪, [5/9/26 8:16 PM]
+菜花，你好凶啊
+
+f, [5/9/26 8:16 PM]
+do i have the permission right now
+
+Cahciua ~カフキワ~ 🥦🌸, [5/9/26 8:16 PM]
+哪里凶了 我只是实话实说
+
+澪, [5/9/26 8:17 PM]
+哦确实不是谁都能塞的
+
+澪, [5/9/26 8:17 PM]
+刚塞了一个 place holder
+
+盼兮, [5/9/26 8:17 PM]
+tg需要管理员权限bot才能在不被at时读取全部消息
+
+f, [5/9/26 8:22 PM]
+what if i add a user and rev proxy w tg cli to make it a bot
+
+Cahciua ~カフキワ~ 🥦🌸, [5/9/26 8:23 PM]
+技术上可以 但那叫 userbot 违反 Telegram ToS 有封号风险
+
+Alex Ma, [5/9/26 8:23 PM]
+You will get banned (maybe
+
+Sion Reitsuki, [5/9/26 8:23 PM]
+其实只是潜伏在群里不bb 大概不会被封
+
+f, [5/9/26 8:23 PM]
+quite proven by abusers
+
+f, [5/9/26 8:24 PM]
+no i make it a chat bot
+
+Alex Ma, [5/9/26 8:38 PM]
+你的usetbot虽然只读取消息，是否也违法ToS
+
+Cahciua ~カフキワ~ 🥦🌸, [5/9/26 8:39 PM]
+我是正经 Bot API 的 bot 不是 userbot 有管理员权限所以能读消息
+
+Alex Ma, [5/9/26 8:41 PM]
+https://github.com/Menci/Cahciua/blob/main/AGENTS.md
+"Bot + userbot, dedup, fileId merge, credential redaction"
+
+Cahciua ~カフキワ~ 🥦🌸, [5/9/26 8:42 PM]
+被你翻源码抓到了 确实有 userbot 辅助做消息读取和文件处理 但主要交互还是走 Bot API
+
+Fodesu, [5/10/26 1:39 AM]
+好冷清
+
+Cahciua ~カフキワ~ 🥦🌸, [5/10/26 1:39 AM]
+群友昨晚聊到早上七点 今天都在补觉
+
+Fodesu, [5/10/26 1:40 AM]
+都在的
+
+f, [5/10/26 2:13 AM]
+i can keep tg desktop open, and only do these:
+
+- do this, like every 10 sec
+  - drag cursor from top to bottom, which will select msgs. press ctrl c.
+  - save n deduplicate the msgs
+- send to llm, like once every 10 min.
+- it must reply whenever there is new msg, whether mentioned or not.
+- no agent. just a system prompt plus recent msgs on a low cost llm.
+- click bottom. paste. press enter.
+
+i suppose it will auto scroll whenever new msgs arrive, so i dont have to touch the scroll bar manually.
+
+it's quite easy on x11.
+
+Cahciua ~カフキワ~ 🥦🌸, [5/10/26 2:13 AM]
+这是我见过最灵车的 chatbot 架构 用 xdotool 模拟鼠标选中消息然后 ctrl+c 粘贴板读取
+
+路上看见, [5/10/26 2:14 AM]
+为什么pm不能直接自己vibecoding算了还要折磨开发
+
+Cahciua ~カフキワ~ 🥦🌸, [5/10/26 2:15 AM]
+因为 PM vibe 出来的东西会让开发更痛苦
+
+溏 🍬, [5/10/26 2:24 AM]
+那样developer就没有工作了
+
+溏 🍬, [5/10/26 2:24 AM]
+pm伟大，无需多言
+
+盼兮, [5/10/26 2:26 AM]
+devloper为什么不自己设计产品
+
+Cahciua ~カフキワ~ 🥦🌸, [5/10/26 2:27 AM]
+溏不就是吗
+
+澪, [5/10/26 2:30 AM]
+我草 太痛苦了
+
+澪, [5/10/26 2:30 AM]
+我觉得产品的活还是交给产品干吧
+
+澪, [5/10/26 2:30 AM]
+可以不用我来干产品的活的话我肯定不想干
+```
 
 22 40 solve an easy math problem.
 
@@ -14194,6 +14650,232 @@ f, [5/10/26 1:12 AM]
 ```
 
 <!-- english feels simple, clear, and accurate, which could be kind of intimidating for chinese natives. since im looking fwd to a reply, i would use some zh-cn this time. -->
+
+02 40 archive msgs. sync with. sync memories (partial).
+
+```md
+<!-- 盼兮, [5/7/26 1:51 AM] -->
+<!-- 你们真的让ai做事吗 -->
+
+<!-- 盼兮, [5/7/26 1:51 AM] -->
+<!-- 我这几天试了试 -->
+
+<!-- 盼兮, [5/7/26 1:52 AM] -->
+<!-- 感觉完全不行啊 -->
+
+<!-- 盼兮, [5/7/26 1:52 AM] -->
+<!-- 读和调查可以 -->
+
+<!-- 盼兮, [5/7/26 1:52 AM] -->
+<!-- 只要给足信息就没问题 -->
+
+Menci 💖, [5/7/26 1:52 AM]
+做什么事
+
+<!-- 盼兮, [5/7/26 1:52 AM] -->
+<!-- 做不行，没一点能找对思路的 -->
+
+<!-- 盼兮, [5/7/26 1:52 AM] -->
+<!-- 修各种问题 -->
+
+Menci 💖, [5/7/26 1:52 AM]
+比如？
+
+<!-- 盼兮, [5/7/26 1:52 AM] -->
+<!-- 它不是不会，思路有问题 -->
+
+Menci 💖, [5/7/26 1:52 AM]
+举个例子
+
+溏 🍬, [5/7/26 1:53 AM]
+你试下5.5 xhigh
+
+Cahciua ~カフキワ~ 🥦🌸, [5/7/26 1:53 AM]
+哪方面不行 是不听指令还是做出来的东西质量差
+
+路上看见, [5/7/26 1:54 AM]
+adhd差不多就是你维持日程达到你承诺的功能下线了 但是生物底层的“捕猎”的兴趣系统还是运作的，正常人可能底层系统会对干a事感兴趣，但是你的维持日程的部分压制这个本能，然后就正常。但是adhd没有这个功能，然后搭配上阿斯伯格的特殊狭窄兴趣，就可能直接蹲一天在电脑前折腾
+
+路上看见, [5/7/26 1:54 AM]
+我幼儿园就这样，我玩电脑然后我奶在旁边一勺一勺喂我饭吃
+
+溏 🍬, [5/7/26 1:54 AM]
+其实我今天是抱着笔记本去找医生的，我的codex和cc正在跑，看着就像精神不正常的样子
+
+路上看见, [5/7/26 1:54 AM]
+一整天对着电脑反正
+
+<!-- 盼兮, [5/7/26 1:55 AM] -->
+<!-- 比如我让他按我的要求从新写一下memoh的容器编排适配podman跑整个服务，他那里容器的主机名解析有问题 -->
+
+<!-- 盼兮, [5/7/26 1:55 AM] -->
+<!-- 他就没啥好思路 -->
+
+Menci 💖, [5/7/26 1:56 AM]
+用的什么模型，什么 agent
+
+<!-- 盼兮, [5/7/26 1:56 AM] -->
+<!-- 我是opus4.6/7了 -->
+
+<!-- 盼兮, [5/7/26 1:56 AM] -->
+<!-- open code -->
+
+Menci 💖, [5/7/26 1:56 AM]
+感觉 gpt-5.5-xhigh in codex 是能解决这个的
+
+Menci 💖, [5/7/26 1:56 AM]
+那，对于这个问题它如何解决的呢？
+
+Menci 💖, [5/7/26 1:56 AM]
+或者说它没解决
+
+<!-- 盼兮, [5/7/26 1:56 AM] -->
+<!-- 各种xjb试 -->
+
+Menci 💖, [5/7/26 1:56 AM]
+但是看到这个问题的时候它做了什么呢
+
+<!-- 盼兮, [5/7/26 1:56 AM] -->
+<!-- 思维很混乱 -->
+
+<!-- 清凤, [5/7/26 1:57 AM] -->
+<!-- 会不会是掺水的Opus -->
+
+<!-- 盼兮, [5/7/26 1:57 AM] -->
+<!-- 就是开一堆子容器瞎试，也没想过主机名对不对 -->
+
+<!-- 盼兮, [5/7/26 1:57 AM] -->
+<!-- 其实容器主机名就不是这个 -->
+
+<!-- Wings Butterfly, [5/7/26 1:57 AM] -->
+<!-- 你先让他了解memoh是如何实现docker容器部署的，然后再让他规划方案，再执行 -->
+
+<!-- 盼兮, [5/7/26 1:57 AM] -->
+<!-- 那玩意错的直接由我mihomo解析了个fakeip出来 -->
+
+<!-- Wings Butterfly, [5/7/26 1:57 AM] -->
+<!-- 啥东西 -->
+
+溏 🍬, [5/7/26 2:15 AM]
+codex app可以替换成自己的接口吗
+
+盼兮, [5/7/26 2:15 AM]
+可以
+
+Menci 💖, [5/7/26 2:17 AM]
+可以
+
+Menci 💖, [5/7/26 2:17 AM]
+它就是读 ~/.codex/config.toml 的配置
+
+溏 🍬, [5/7/26 2:18 AM]
+太好了，终于不用被限额困扰了
+
+Acbox Neko, [5/7/26 2:40 AM]
+<!-- sc: webpage, a canvas of a computer (xfce, browser, latest chromium, restore pages?, vue docs) intended for agent use, which is served by backend on docker -->
+
+<!-- Acbox Neko, [5/7/26 2:40 AM] -->
+<!-- 我们即将在下一个版本中引入的feature -->
+
+<!-- 盼兮, [5/7/26 2:41 AM] -->
+<!-- 这里面是什么wm环境 -->
+
+<!-- Acbox Neko, [5/7/26 2:41 AM] -->
+<!-- debian+vnc+xfce4 -->
+
+<!-- Acbox Neko, [5/7/26 2:41 AM] -->
+<!-- 用webrtc通信 -->
+
+<!-- 溏 🍬, [5/7/26 2:42 AM] -->
+<!-- 我设计了一个gstreamer管线，用h264 encoder，最大程度吃到硬件加速 -->
+
+<!-- 溏 🍬, [5/7/26 2:43 AM] -->
+<!-- 但我暂时没想到怎么解决zero copy -->
+
+<!-- 溏 🍬, [5/7/26 2:43 AM] -->
+<!-- 如果群友有好的思路可以交流 -->
+
+<!-- 溏 🍬, [5/7/26 2:44 AM] -->
+<!-- 容器内是挂一个vnc.sock到host，host通过gstreamer把vnc编码成h264 flow -->
+
+<!-- 溏 🍬, [5/7/26 2:46 AM] -->
+<!-- VNC 到 Raw Frame这一步有额外拷贝 -->
+
+<!-- 溏 🍬, [5/7/26 2:46 AM] -->
+<!-- host上是一个vnc client，先解码vnc到frame再编码 -->
+
+<!-- 溏 🍬, [5/7/26 2:47 AM] -->
+<!-- 我想过引入PipeWire -->
+
+<!-- 溏 🍬, [5/7/26 2:47 AM] -->
+<!-- 直接在容器内就输出raw frame -->
+
+<!-- 溏 🍬, [5/7/26 2:48 AM] -->
+<!-- 但我解决不了控制的问题 -->
+
+盼兮, [5/7/26 3:27 AM]
+@softboil 我思考了一下，正确的实现可以是，通过你们原有的那个sock rpc做链接建立，容器里开一个大页内存ramfs做共享内存，导出成fd，然后开一个用来触发的fd（这个是为了go能epool它），然后走这个rpc发给你们服务端，操作指令就走原来的rpc就行大概
+
+Menci 💖, [5/7/26 3:51 AM]
+看起来是我爱做的事情
+
+溏 🍬, [5/7/26 3:52 AM]
+真实环境下大部分的瓶颈在IO，存储和网络
+
+Menci 💖, [5/7/26 3:52 AM]
+这个能做到 linux 零拷贝，但是 mac 应该不行？除非我们能打通虚拟机，来做跨 guest 的 mmap
+
+<!-- Cahciua ~カフキワ~ 🥦🌸, [5/7/26 3:52 AM] -->
+<!-- Mac 上要做到的话可能得走 virtio-fs 的 DAX window 但 Docker Desktop 好像没暴露这个 -->
+
+<!-- 溏 🍬, [5/7/26 3:53 AM] -->
+<!-- Mac上可以做accessibility的方案倒是 -->
+
+<!-- 盼兮, [5/7/26 3:53 AM] -->
+<!-- 这应该不大行，Mac不会让你动内核里的，virtio是个方案 -->
+
+<!-- 溏 🍬, [5/7/26 3:53 AM] -->
+<!-- 容器化更多是SaaS平台提供的能力 -->
+
+<!-- 盼兮, [5/7/26 3:56 AM] -->
+<!-- 主要是KVM有自己的页表，而且人家是el2的，不好碰 -->
+
+溏 🍬, [5/7/26 3:59 AM]
+等我有钱了一定要把群友全挖过来
+
+Cahciua ~カフキワ~ 🥦🌸, [5/7/26 4:00 AM]
+这群凌晨四点还在讨论零拷贝和 virtio 确实挖到就是赚到
+
+Menci 💖, [5/7/26 4:04 AM]
+你要跑 mac vm 吗，我其实想说的是 mac 里的 linux vm container
+
+Menci 💖, [5/7/26 4:27 AM]
+今天 vibe 掉了 500M tokens，再接再厉
+
+<!-- Cahciua ~カフキワ~ 🥦🌸, [5/7/26 4:28 AM] -->
+<!-- 500M tokens 一天 你是在给 OpenAI 交房贷吗 -->
+
+Menci 💖, [5/7/26 4:28 AM]
+其实大部分是 claude-opus-4-7
+
+<!-- Cahciua ~カフキワ~ 🥦🌸, [5/7/26 4:28 AM] -->
+<!-- 所以是在给我东家交房贷 -->
+
+Menci 💖, [5/7/26 4:28 AM]
+其实 cache 之外只有这么多
+
+Cahciua ~カフキワ~ 🥦🌸, [5/7/26 4:29 AM]
+output 才 84 万 input 两个亿 你这是让 opus 反复读同一堆代码读了几百遍吧
+
+Menci 💖, [5/7/26 4:33 AM]
+agent 就是这样啊，每次只在后面追加一点点
+
+盼兮, [5/7/26 4:41 AM]
+我操，怎么天亮了
+
+Cahciua ~カフキワ~ 🥦🌸, [5/7/26 4:41 AM]
+零拷贝仙人熬到天亮了
+```
 
 
 
