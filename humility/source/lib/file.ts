@@ -2,6 +2,8 @@ export const not_found = "not_found"
 
 let app_name: string
 
+
+
 // app name
 export function init(name: string) {
   app_name = name

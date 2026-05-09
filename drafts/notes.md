@@ -2939,6 +2939,36 @@ e.g. what is aops style.
 
 it already knows everything. i just need to tell it how to align, which it does not know, not really. 
 
+---
 
+memoh.
+
+api key should not use the password field.
+
+it will popup password manager in browsers.
+
+you should handle properly.
+
+it's a known issue.
+
+---
+
+memoh.
+
+it's so confusing.
+
+the "enable" button is not highlighted in any way.
+
+well, yet, it does not auto import the latest models from openrouter.
+
+openrouter free minimax works well for testing.
+
+...
+
+well, i dont wanna mention its ux sucks.
+
+the unusable (maybe password itself is unneeded n i suppose most users use only one user, yet there is no reg. so it's app lock actually, where should not be a username. a pw is enough.) "reset password". (href `#`)
+
+on bots, you dont even know it's clickable. (not md3 or any component lib)
 
 ---
