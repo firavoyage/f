@@ -2969,6 +2969,10 @@ well, i dont wanna mention its ux sucks.
 
 the unusable (maybe password itself is unneeded n i suppose most users use only one user, yet there is no reg. so it's app lock actually, where should not be a username. a pw is enough.) "reset password". (href `#`)
 
-on bots, you dont even know it's clickable. (not md3 or any component lib)
+on bots, you dont even know it's clickable. (not md3 or any component lib). 
+
+it could be designed better. (well, though, it's obviously designed by llms.)
+
+vue apps are ugly.
 
 ---

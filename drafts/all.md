@@ -118,34 +118,6 @@ swe:
 - abstraction leak
 - fields changed by ai
 
-pm:
-
-<!--
-- manage project
-- rad
-- product management what first
- -->
-
-- arrange todos
-- app creation mindmap
-- app creation mindmap phase 0 the spark
-- initial feasibility report
-- technical feasibility
-- project roadmap order of work
-- do things that dont scale
-- prd
-- choose tools
-- structural problems
-- world solved unsolved
-
-gamedev:
-
-- life create something big weekend time management
-- card games
-- art style
-- game design framework
-- indie game ideas
-
 archi:
 
 <!--
@@ -159,7 +131,7 @@ archi:
 - big opensource projects
 - composable is further than modular
 
-frontend:
+frontend: <!-- web -->
 
 - explicit implicit
 - js memory leak
@@ -185,6 +157,10 @@ backend:
 - pnpm monorepo setup
 - xdg spec
 - jslinux linux kernel
+
+ci:
+
+- smoke test
 
 sre:
 
@@ -213,6 +189,34 @@ misc:
 - categorize shaders
 - gitignore
 - fix chromium network changed stop memoh
+
+pm:
+
+<!--
+- manage project
+- rad
+- product management what first
+ -->
+
+- arrange todos
+- app creation mindmap
+- app creation mindmap phase 0 the spark
+- initial feasibility report
+- technical feasibility
+- project roadmap order of work
+- do things that dont scale
+- prd
+- choose tools
+- structural problems
+- world solved unsolved
+
+gamedev:
+
+- life create something big weekend time management
+- card games
+- art style
+- game design framework
+- indie game ideas
 
 ux: <!-- ui/ux design -->
 
