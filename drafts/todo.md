@@ -345,6 +345,10 @@ btw, vscode settings: git.enabled.
 
 github? forgeio (codeberg)? what. why.
 
+...
+
+https://github.com/regent-vcs/re_gent
+
 ---
 
 learn jp
@@ -354,3 +358,12 @@ learn jp
 terminal bench
 
 <!-- inadequate and incomprehensive tasks, seems -->
+
+---
+
+comment before or after code examples
+
+---
+
+
+

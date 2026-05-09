@@ -2976,3 +2976,16 @@ it could be designed better. (well, though, it's obviously designed by llms.)
 vue apps are ugly.
 
 ---
+
+claude code a so funny.
+
+"cooked" "cog..." (random verbs)
+
+i dont have to know
+
+- the model id
+- (dl icon) (an increasing number of) tokens
+- ...
+
+---
+

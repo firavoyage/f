@@ -162,6 +162,12 @@ https://manus.im/share/i2BY9pM7gM5mC3MHXwIeOV
 
 ...
 
+research manus?
+
+research perplexity?
+
+...
+
 https://developers.openai.com/api/reference/overview/
 
 ...
