@@ -323,6 +323,7 @@ math:
 biology:
 
 - house plant longevity
+- house plant asparagus setaceus preference
 
 history:
 
@@ -338,6 +339,7 @@ history:
 - hey email
 - vscode code themes
 - project euler
+- sega maimai dx project sekai
 
 politics:
 

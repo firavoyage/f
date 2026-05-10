@@ -14881,6 +14881,12 @@ Cahciua ~カフキワ~ 🥦🌸, [5/7/26 4:41 AM]
 
 impressive.
 
+23 00 play project sekai.
+
+23 20 rearrange books on the shelf. move wen zhu indoor.
+
+24 00 enable late/fast/flick on project sekai. pick a build of higher rarity characters.
+
 
 
 <!-- timebox, plan. -->
