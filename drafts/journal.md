@@ -14887,6 +14887,20 @@ impressive.
 
 24 00 enable late/fast/flick on project sekai. pick a build of higher rarity characters.
 
+11
+
+01 00 buy a tg account w smspool. 01 20 try w tg x instead as recommended. 01 40 succeed w a us number, a us ip, and a simplelogin mail on tg x. 
+
+reg `humilityhq`.
+
+login on android, desktop <!-- i guess ayugram wont chain them under the hood somehow by adding new account --> and web (firefox nightly). set "auto terminate old inactive sessions" from 6mo to 1y (maximum).
+
+unlike tg, tg x does not ask for device info permissions, w a legacy md2 design, it tells you the failure code and message clearly and directly so you can move on.
+
+<!-- if it works, it wont take too long i suppose. -->
+
+fun fact: tg direct apk and tg from play can co exist, which implies different id.
+
 
 
 <!-- timebox, plan. -->
