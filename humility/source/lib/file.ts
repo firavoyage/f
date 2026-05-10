@@ -2,7 +2,7 @@ export const not_found = "not_found"
 
 let app_name: string
 
-
+// get from a config instead i think?
 
 // app name
 export function init(name: string) {

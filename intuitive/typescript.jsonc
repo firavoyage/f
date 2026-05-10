@@ -3,12 +3,33 @@
     "prefix": "f",
     "body": ["function ${1:name}(${2}) {", "  $0", "}"],
   },
+  "async function": {
+    "prefix": "af",
+    "body": ["async function ${1:name}(${2}) {", "  $0", "}"],
+  },
   "export function": {
     "prefix": "ef",
     "body": ["export function ${1:name}(${2}) {", "  $0", "}"],
   },
+  "export async function": {
+    "prefix": "eaf",
+    "body": ["export async function ${1:name}(${2}) {", "  $0", "}"],
+  },
+  "const": {
+    "prefix": "c",
+    "body": ["const ${1:name} = ${0}"],
+  },
+  "deconstruct const": {
+    "prefix": "dc",
+    "body": ["const { ${1:name} } = ${0}"],
+  },
   "export const": {
     "prefix": "ec",
-    "body": ["export const ${1:name} = ${2}"],
+    "body": ["export const ${1:name} = ${0}"],
   },
+  "let": {
+    "prefix": "l",
+    "body": ["let ${1:name} = ${0}"],
+  },
+  // no dl or el
 }

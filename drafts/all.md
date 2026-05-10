@@ -37,6 +37,8 @@ fira:
 - world solved unsolved
 - vim emacs
 - summer flowers autumn leaves
+- haskell philosophy history syntax ideas
+- project euler <!-- "brain gym" -->
 
 life:
 
@@ -290,6 +292,7 @@ philosophy:
 - logical punctuation
 - vim emacs
 - summer flowers autumn leaves
+- haskell philosophy history syntax ideas
 
 entertainment:
 
@@ -334,6 +337,7 @@ history:
 - 37signals
 - hey email
 - vscode code themes
+- project euler
 
 politics:
 
@@ -367,6 +371,8 @@ rhetoric:
 - dont be evil
 - asyndeton parataxis
 - argument by analogy not proof
+- always a only b for cond
+- seven types of meaning
 
 laws:
 

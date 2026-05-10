@@ -89,3 +89,27 @@ new
 - verb noun for actions (`get_data`, not `data_getter`), predicate for bools (`is_prime`, not `check_primality`), noun for factory functions (`time`, not `create_time`)
 
 <!-- might be clearer? -->
+
+10
+
+write some ts snippets.
+
+revise message.
+
+prev
+
+- async if needed
+
+new
+
+- always async, only sync for pure and quick methods
+
+prev
+
+- always function statement, never arrow function (unless as props)
+
+new
+
+- always function statement, only arrow function for props
+
+

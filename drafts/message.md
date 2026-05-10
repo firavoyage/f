@@ -28,17 +28,3 @@ follow these:
   - give me full working code of all changed files.
 
 ---
-
-write a file abstraction.
-
-rust.
-
-ruby.
-
-just write down the spec myself. be calm. be progressive.
-
-merge handle and handle async?
-
-get message from js?
-
----

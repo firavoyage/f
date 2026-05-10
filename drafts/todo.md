@@ -349,6 +349,15 @@ github? forgeio (codeberg)? what. why.
 
 https://github.com/regent-vcs/re_gent
 
+...
+
+it can be simple.
+
+just
+
+- alias some commands. e.g. git add all, commit wo message, ...
+- download reliably (never stop halfway even if you turn off wifi), progressively (resume after you reboot), and efficiently (dont dl the same file hash twice)
+
 ---
 
 learn jp
@@ -364,6 +373,3 @@ terminal bench
 comment before or after code examples
 
 ---
-
-
-

@@ -15,8 +15,8 @@ follow these:
   - functional programming
   - modular and cohesive
   - object params for more than one param
-  - async if needed
-  - always function statement, never arrow function (unless as props)
+  - always async, only sync for pure and quick methods
+  - always function statement, only arrow function for props
   - always type, never interface
   - no `undefined` or `null`
   - no `typeof` or `instanceof`.

@@ -1,5 +1,7 @@
 <!-- 0, 1, 2... quite confusing. idk until testing. ik now? not really. -->
 
+<!-- upd: i mean, seems ${0} has a significant dedicated role, which is not well documented or cited, as least to the extent that make gemini know. -->
+
 how to write vscode template
 
 5:57 AM

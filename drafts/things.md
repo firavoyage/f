@@ -106,16 +106,6 @@ text embedding.
 
 ---
 
-font.
-
-google fonts list the font.
-
-i help choose the font.
-
-and organize my favorite fonts. view them.
-
----
-
 on producthunt history. in the recent year.
 
 what succeeded? what failed?
@@ -777,6 +767,33 @@ ref: https://bridge.surf/
 find some bangumis.
 
 watch films.
+
+---
+
+install
+
+- windows (already proven, just reproduce)
+- mac (vid sites? search? grok for no censorship?)
+
+---
+
+font.
+
+google fonts list the font.
+
+i help choose the font.
+
+and organize my favorite fonts. view them.
+
+...
+
+research fonts.
+
+learn and categorize them.
+
+group the similar ones, e.g. helvetica copies.
+
+it's likely the sophisticated fonts on like claude, google (google sans), duolingo have good foss equivalents.
 
 ---
 
