@@ -132,6 +132,7 @@ archi:
 - architecture deliverables diagrams artifacts
 - big opensource projects
 - composable is further than modular
+- internationalization localization
 
 frontend: <!-- web -->
 
@@ -375,6 +376,7 @@ rhetoric:
 - argument by analogy not proof
 - always a only b for cond
 - seven types of meaning
+- see you on the dark side of the moon
 
 laws:
 

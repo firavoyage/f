@@ -2995,3 +2995,14 @@ i dont have to know
 
 ---
 
+what about let github run locally?
+
+like, when you wanna explore a repo, clone it first, then it will load instantly whenever you open a file.
+
+i mean, both
+
+- self hosted
+- connected
+
+---
+

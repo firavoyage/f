@@ -14889,17 +14889,33 @@ impressive.
 
 11
 
-01 00 buy a tg account w smspool. 01 20 try w tg x instead as recommended. 01 40 succeed w a us number, a us ip, and a simplelogin mail on tg x. 
-
-reg `humilityhq`.
-
-login on android, desktop <!-- i guess ayugram wont chain them under the hood somehow by adding new account --> and web (firefox nightly). set "auto terminate old inactive sessions" from 6mo to 1y (maximum).
-
-unlike tg, tg x does not ask for device info permissions, w a legacy md2 design, it tells you the failure code and message clearly and directly so you can move on.
+01 00 buy a tg account w smspool.
 
 <!-- if it works, it wont take too long i suppose. -->
 
-fun fact: tg direct apk and tg from play can co exist, which implies different id.
+01 20 try w tg x instead as recommended. 01 40 succeed w a us number, a us ip, and a simplelogin mail on tg x. 
+
+reg `humilityhq`.
+
+login on android, desktop <!-- i guess ayugram wont chain them under the hood somehow by adding new account --> and web (firefox nightly).
+
+set "auto terminate old inactive sessions" from 6mo to 1y (maximum).
+
+<!-- unlike tg, tg x does not ask for device info permissions, w a legacy md2 design, it tells you the failure code and message clearly and directly so you can move on. -->
+
+<!-- fun fact: tg direct apk and tg from play can co exist, which implies different id. -->
+
+02 40 skim ruanyf weekly <!-- and twitter -->.
+
+<!-- ruanyf uses (classical) machine translated (en to zh-cn) web pages a lot in screenshots, which is obviously not a good idea. -->
+
+<!-- the best comes from community (self) recommendation. that's inspiring. people > projects. -->
+
+03 00 appreciate `2016 年，我做过一次 AI 写代码创业`.
+
+<!-- en is logical. while it's good for zh-cn to be emotional. i think. -->
+
+<!-- btw, i decided not to print blog posts. it should be archived. but not put on the desk as a motto. -->
 
 
 
