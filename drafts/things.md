@@ -797,3 +797,13 @@ it's likely the sophisticated fonts on like claude, google (google sans), duolin
 
 ---
 
+project euler
+
+editorial euler
+
+---
+
+tg userbot x11
+
+---
+
