@@ -172,6 +172,7 @@ desktop:
 - categorize shaders
 - gitignore
 - fix chromium network changed stop memoh
+- install dolphin apply gnome adwaita
 
 ci:
 
@@ -232,6 +233,7 @@ ux: <!-- ui/ux design -->
 - information architecture
 - color formats chroma saturation
 - measurement framework basic heart honeycomb core web vitals dora space
+- gnome adwaita kde kirigami
 
 typography:
 
