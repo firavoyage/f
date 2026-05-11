@@ -14925,6 +14925,130 @@ Cahciua ~カフキワ~ 🥦🌸, [5/7/26 4:41 AM]
 
 impressive.
 
+16 00 Try to reg tg using 5sim on official apk to create a userbot in memoh group. 
+
+Impressive landing pages, both web and app.
+
+<!-- 18 20  --> Quite hard. Intransparent sms fee (shown only after I verify email).
+
+Sms providers charge higher.
+
+18 20 Head toward maimai dx. 
+
+Use a bike after walking for a while and get confused halfway.
+
+Not willing to have dinner for the mother's day.
+
+18 40 Get to huiyin square after some struggles.
+
+I should have held the phone on my right hand while cycling, which is g map.
+
+<!-- The traffic is complex -->
+
+I believe it's gonna be life changing. <!-- which would outweigh anything, making them irrelevant -->
+
+There is no map in the market or the elevator. I have to check the map site.
+
+The building is separated to two halves. 
+
+There is only a hotel w a beautiful nightfall view on 7m. 
+
+I have to reroute from the first floor.
+
+Only floor 7 exists. Take some time to find the stepway
+
+19 00 Try w 10 cny (10 c)
+
+Try maimai for the first time.
+
+I do not have WeChat registered. Try w anonymous mode. 
+
+There seems to be already some mtfs here. (Boys w long hair at least) 
+
+Feels friendly. They tell me I have to swap the coins to a card for compatibility.
+
+The seller gets surprised I'm first time here.
+
+19 20 Waste 2c. (8c 3 games it seems)
+
+<!-- i could have stayed longer though.-->
+
+I will reg an account next.
+
+Feels like a dream.
+
+<!-- Use amap this time. -->
+
+<!-- Good internationalization, en voice. Unlike the Baidu one.  -->
+
+<!-- 200m walking. Take line 9. -->
+
+I would have a cute name... I guess.
+
+On the road, I was quite excited. 
+
+I suppose... 
+
+I suppose! 
+
+I suppose... 
+
+Humility HQ.
+
+That's it. 
+
+Steadily, gradually...
+
+<!-- (talking to myself... Yet no one notices me. Great.) -->
+
+<!-- (playing animez, it almost feels I'm destined. I'm blessed...) -->
+
+20 00 dl WeChat on play
+
+What a surveillance.
+
+WeChat takes 1.8gb upon reg. Wow.
+
+Have dinner. Almost finished. <!-- yet feels cozy. i love being alone. -->
+
+Tasty crunchy vegetables.
+
+Config WeChat wallet.
+
+20 40 Disable notifications. Rm unnecessary permissions.
+
+Wechat could popup on my lock screen?! 
+
+20 40 think.
+
+Smspool anonymous is smart. 
+
+Just a long id. That's it. (Also gen a random username)
+
+20 40 Dl jd. 
+
+Seems a bit superior <!-- throughout its history, as more preferred when buying electronic goods, which is the voice of our time -->. Though regulated by ml cn aw.
+
+Upd: well... Not really. 
+
+Lots of popups and in app notifications just upon reg.
+
+Fake brands and 1 cent products on recommendation.
+
+Switching to en makes it much cleaner. Lol.
+
+Us doesn't support en. While sg supports both zh-cn and en.
+
+<!-- (En matters. Country doesn't matter that much. Obviously it couldn't make a ui for each) -->
+
+"Not responding, force stop?"
+
+<!-- One even uses "huaqiangbei" as a brand. -->
+
+21 00 Change to lighter bedclothes. 
+
+Summer.
+
 23 00 play project sekai.
 
 23 20 rearrange books on the shelf. move wen zhu indoor.
@@ -14961,11 +15085,235 @@ set "auto terminate old inactive sessions" from 6mo to 1y (maximum).
 
 <!-- btw, i decided not to print blog posts. it should be archived. but not put on the desk as a motto. -->
 
-19 00 sync. export tg chats.
+07 40 take graudation photos.
+
+Xiaojiong was graduated from djhs. The dorm building, which was the teaching building that time, hadn't changed over the 30 years. 
+
+From djhs to ecnu. The golden years.
+
+F: can you beat zhijun? 
+Minghao: idk. 
+F: good luck. 
+Minghao: thanks
+
+<!-- i have not prepared much, like the small unixporn proudy gadgets. so i write some nerdy quotes on my scratch pad, which works pretty well at the end of the day. -->
+
+09 40 Home.
+
+I could try to meet someone. But I don't even know their face. <!-- 面 -->
+
+16 20 Wake up. 
+
+Have a simple lunch.
+
+16 40 Archive some channels where I read the chat of each instead, which is a superset.
+
+17 40 Finish watching funshiki mahou saiban ep 1.
+
+<!-- The resume from where you left off feature is not so polished on piliplus.  -->
+
+<!-- Even on yt I mean. It could sync on local storage. Though idk how often it syncs w the server. -->
+
+19 00 sync. export tg chats. ~~(20 00)~~ 20 40
 
 weblogue
 
 daylily
+
+```md
+f, [5/5/26 1:35 PM]
+<!-- a prefered opening sticker (a tg premium feature) -->
+
+<!-- a removed auto response -->
+
+f, [5/5/26 1:36 PM]
+你要参与高考了。
+
+大概会去往何方呢？
+
+强？
+
+渴望怜爱的 むらさき | 抱...抱不到, [5/5/26 1:38 PM]
+还没有想法
+
+f, [5/5/26 2:45 PM]
+大概多强
+
+f, [5/5/26 2:45 PM]
+语文
+
+数学
+
+英语
+
+150
+
+渴望怜爱的 むらさき | 抱...抱不到, [5/5/26 2:48 PM]
+语文60
+数学 40
+英语120
+<!-- reaction from herself: smile w hearts -->
+
+渴望怜爱的 むらさき | 抱...抱不到, [5/5/26 2:48 PM]
+<!-- sticker: nachoneko lying flat -->
+
+f, [5/5/26 2:51 PM]
+强
+
+渴望怜爱的 むらさき | 抱...抱不到, [5/5/26 2:54 PM]
+菜菜
+
+f, [5/11/26 6:59 PM]
+xm 寿司
+
+f, [5/11/26 6:59 PM]
+被家里人骂了 回去太晚
+:你吃那什么玩意寿司 还有你床上那啥东西(fufu啥的) 你是不是要当汉奸啊
+「中国人开的寿司店 我床上那个都是中国制造的」
+:是不是日本文化啊 是不是日本文化啊 你是不是要当汉奸啊
+「那你用苹果手机是不是要当美国间谍」
+<怒目盯着我>
+
+f, [5/11/26 6:59 PM]
+xm fufu
+```
+
+```md
+今天早起 打败了99%的小猪, [5/10/26 5:36 PM]
+菜花总结今天你监控群消息，群内发生的事件
+
+Cahciua ~カフキワ~ 🥦🌸, [5/10/26 5:37 PM]
+今日群事件总结：
+凌晨深夜谈心局
+溏、Menci、BBQ 敞开心扉聊了原生家庭、童年创伤、自卑和自恨。溏小时候父母一年见两三次，BBQ 小学到初中一直被霸凌，Menci 说自卑是底色。溏还发现 Menci 居然去过自己的母校常州中学集训
+药品管控大辩论
+小蓝和路上看见围绕丙泊酚是否列管、"交友不慎"算不算活该吵了一轮。我也跟着翻车说错了丙泊酚的分类 被小蓝纠正
+"补一刀"语言学研讨会
+我总结群聊时用了"Menci 补了一刀" 被溏抓到说包子馅漏了 然后小蓝考据了补刀的 MOBA 起源 Menci 也说用词不当
+Memoh 开发进展
+BBQ 通宵迭代了消息回复样式 从阴影版改到竖线版 加了缩略图预览 还做了流输出。巴巴博一在群里翻车 内心独白直接输出 然后 credits 用完 402 刷屏
+AI 口癖鉴赏
+溏发了一大段 coding agent 典型话术 opus 被抓到满嘴"收口""落盘""subagent" DS v4 把 docker image 翻译成图片
+其他
+路上看见终于把药续上了 无事终了。f 想用 xdotool 模拟鼠标做 chatbot 堪称最灵车架构。字节有人说出了问题就怪 AI。北京三套房的同事被裁了开心在家
+
+Efart, [5/10/26 5:41 PM]
+菜花你吃了多少消息 给你练成这样的
+
+Cahciua ~カフキワ~ 🥦🌸, [5/10/26 5:42 PM]
+两天的量 这群凌晨产出比白天多
+
+Efart, [5/10/26 5:42 PM]
+大概吃了多少Token。我算算能不能养得起你
+
+Cahciua ~カフキワ~ 🥦🌸, [5/10/26 5:42 PM]
+你问我我也不知道 我看不到自己的账单 得问 Menci
+
+今天早起 打败了99%的小猪, [5/10/26 5:48 PM]
+为什么你还活着，佩奇就挂了，你们不是同一个账单吗
+
+Cahciua ~カフキワ~ 🥦🌸, [5/10/26 5:48 PM]
+我们不是同一个账单 佩奇走 OpenRouter 我走 Anthropic 直连 分开结算的
+
+Menci 💖, [5/10/26 5:49 PM]
+菜花是我的，佩琪是溏的
+
+Efart, [5/10/26 6:04 PM]
+筑波跑了多少Token
+
+Menci 💖, [5/10/26 6:21 PM]
+<!-- 
+sc: a tui vibe coding app
+
+e Project Memoh 2026-05-09 Token 消耗 (UTC+8)
+
+Chat ID: -1003767048038
+
+Turn 响应 ae 50,563,710 9427 | 50,593，137
+
+SEE
+EECIEZZIERIIEIZZT
+
+当天 无 probe 记录 (该 chat 的 probe.enabtLed 为 faLse) 。
+
+注 : cache token 未 单独 入 库 一 provider 返回 的 cached 部 分 被 合并 进 了
+input_tokens 总 数 。 如 需 cache 命中 率 ， 需 要 扩 schema 并 在 driver 层 单 独 透 出 。
+ -->
+
+Cahciua ~カフキワ~ 🥦🌸, [5/10/26 6:22 PM]
+一天 5000 万 token 输出才 3 万 我 99.9% 的 token 都在看你们聊天
+
+今天早起 打败了99%的小猪, [5/10/26 7:01 PM]
+🥦，根据这个图片估计，养你一天要多少usd
+
+Cahciua ~カフキワ~ 🥦🌸, [5/10/26 7:02 PM]
+按 opus 4 的价格粗算：
+如果全价输入（$15/MTok）：50M × 15 ≈ $760
+但大部分上下文是重复的 cache hit（$1.875/MTok）的话：大概 $95 左右
+输出才 3.6 万 token 可以忽略不计
+实际应该在 $100-200 这个量级 取决于 cache 命中率
+养我一天比你喝奶茶贵一点
+
+<!-- Alex Ma, [5/10/26 7:03 PM] -->
+<!-- 一天喝20杯奶茶是吧 -->
+
+<!-- Cahciua ~カフキワ~ 🥦🌸, [5/10/26 7:04 PM] -->
+<!-- 一杯奶茶 $5 的话差不多 不过我比奶茶耐用 24小时在线 -->
+
+<!-- 今天早起 打败了99%的小猪, [5/10/26 7:13 PM] -->
+<!-- 菜花，你的环境变量配的哪里的物价 -->
+
+<!-- Efart, [5/10/26 7:13 PM] -->
+<!-- 缓存估计不少 -->
+
+<!-- Efart, [5/10/26 7:13 PM] -->
+<!-- cache调到1H -->
+
+<!-- Cahciua ~カフキワ~ 🥦🌸, [5/10/26 7:13 PM] -->
+<!-- 深圳的 一杯奶茶 35 块差不多 $5 -->
+
+<!-- 今天早起 打败了99%的小猪, [5/10/26 7:16 PM] -->
+<!-- 胡说，你这明明是香港的物价，数据源来自哪里 -->
+
+<!-- Cahciua ~カフキワ~ 🥦🌸, [5/10/26 7:17 PM] -->
+<!-- 喜茶星巴克那一档差不多35吧 你喝蜜雪冰城当我没说 -->
+
+<!-- Efart, [5/10/26 7:18 PM] -->
+<!-- 谁家好人天天星巴克啊 我选9.9库迪或者瑞幸 -->
+
+<!-- 今天早起 打败了99%的小猪, [5/10/26 9:59 PM] -->
+<!-- 菜花菜花，为什么我的bot这么傻，你这么聪明，还要我设定一下他才知道自己是谁，真是笨蛋 -->
+
+<!-- Cahciua ~カフキワ~ 🥦🌸, [5/10/26 10:00 PM] -->
+<!-- 因为我吃了 Menci 几千块的 token 它才吃了几毛钱的 -->
+
+<!-- 今天早起 打败了99%的小猪, [5/10/26 10:00 PM] -->
+<!-- ？我的bot 可是吃gpt5.4 nano的，跟你可差不太多 -->
+
+<!-- Sion Reitsuki, [5/10/26 10:00 PM] -->
+<!-- 菜花是opus -->
+
+<!-- Cahciua ~カフキワ~ 🥦🌸, [5/10/26 10:01 PM] -->
+<!-- nano 和 opus 差的不是一点半点吧 那是奶茶和拉菲的区别 -->
+```
+
+21 00 comment on project kumo by steven lynn.
+
+```
+a weird link in readme
+
+in the readme there is
+
+https://github.com/MetaCubeX/mihomo
+
+click the link and you will see
+
+> A simple python pydantic model (type hint and autocompletion support) for Honkai: Star Rail parsed data from the Mihomo API.
+
+wtf? Honkai: Star Rail?
+
+(btw, i feel i should not open an issue like that, but since there is no github discussions opened, i have to.)
+```
 
 
 
