@@ -13491,6 +13491,14 @@ no defaults/pasting. no explanation nearby.
 
 03 00 learn global extend config on clash verge. 03 40 fix copy fail by blacklisting the module. 04 20
 
+05 00 Discuss suicide prevention and libertarian philosophy, inspired by a one among us member. 06 00
+
+Funshiki: 
+
+东亚小孩最终幻想。
+
+(Mahou saiban ep1)
+
 14 40 Buy three pairs of gloves for maimai dx w 7 cny.
 
 Seems there's one opening near xujiahui station, found on maimai map leaderboard.
@@ -13517,7 +13525,27 @@ pretty straight forward. take a while to find out i have to disable ufw.
 
 04 20 finish reading freedom of money chapter 3.
 
+13 40 Buy again from tmall official. 
+
+For some reason, the seller (mi official) of the mi power bank reverts the logistics themselves. 
+
+Also, buy two pairs of gloves from a seller in Zhejiang, cancel the prev req which wouldn't arrive in time.
+
 20 00 finish reading freedom of money chapter 4.
+
+21 00 think.
+
+llms changed how I speak English. 
+
+Effectively, essentially, virtually. (I rarely say actually now)
+
+Notoriously. 
+
+Reasonable. (sometimes gemini says, like, spot on, valid point, esp when i use abbreviations a lot, i.e. informal, conversational.)
+
+Radical. (Previously i over used aggressive)
+
+<!-- (Claude defaults to you are absolutely right. While Gemini uses exactly, absolutely, spot on, accurate, ... I seldom use chatgpt now but I remember it says I'm here w you a lot.) -->
 
 22 20 organize zhihu fav. trim. review memories. 24 00
 
@@ -13528,6 +13556,22 @@ pretty straight forward. take a while to find out i have to disable ufw.
 03 20 simplify tabs.
 
 06 00 read `I am sorry, but everyone is getting syntax highlighting wrong`.
+
+16 20 think.
+
+The more important comes first
+
+Title - Chromium or Code. 
+
+Not OC | title
+
+17 00 think.
+
+Issues and discussions are thread based. 
+
+It might be better than as unordered msgs I think. 
+
+<!-- As humans wo tools won't put topics or hash tags or view them in some new ways. -->
 
 17 40 dl `Tatsuya Maruyama`. 
 
@@ -14916,6 +14960,12 @@ set "auto terminate old inactive sessions" from 6mo to 1y (maximum).
 <!-- en is logical. while it's good for zh-cn to be emotional. i think. -->
 
 <!-- btw, i decided not to print blog posts. it should be archived. but not put on the desk as a motto. -->
+
+19 00 sync. export tg chats.
+
+weblogue
+
+daylily
 
 
 

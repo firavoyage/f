@@ -370,6 +370,92 @@ terminal bench
 
 ---
 
-comment before or after code examples
+app copy.
+
+test if intercepting would help.
+
+ref https://claude.ai/chat/90cbc5db-3e86-4509-8ef2-e09f006791b5
+
+also, style hr to `---` instead of `***`
 
 ---
+
+10
+
+16 00 Try to reg tg using 5sim on official apk to create a userbot in memoh group. 
+
+Impressive landing pages, both web and app.
+
+<!-- 18 20  --> Quite hard. Intransparent sms fee (shown only after I verify email).
+
+Sms providers charge higher.
+
+18 20 Head toward maimai dx. 
+
+Use a bike after walking for a while and get confused halfway.
+
+Not willing to have dinner for the mother's day.
+
+18 40 Get to huiyin square after some struggles.
+
+I should have held the phone on my right hand while cycling, which is g map.
+
+<!-- The traffic is complex -->
+
+I believe it's gonna be life changing. <!-- which would outweigh anything, making them irrelevant -->
+
+There is no map in the market or the elevator. I have to check the map site.
+
+The building is separated to two halves. 
+
+There is only a hotel w a beautiful nightfall view on 7m. 
+
+I have to reroute from the first floor.
+
+Only floor 7 exists. Take some time to find the stepway
+
+19 00 Try w 10 cny (10 c)
+
+Try maimai for the first time.
+
+I do not have WeChat registered. Try w anonymous mode. 
+
+There seems to be already some mtfs here. (Boys w long hair at least) 
+
+Feels friendly. They tell me I have to swap the coins to a card for compatibility.
+
+The seller gets surprised I'm first time here.
+
+19 20 Waste 2c. (8c 3 games it seems)
+
+<!-- i could have stayed longer though.-->
+
+I will reg an account next.
+
+Feels like a dream.
+
+<!-- Use amap this time. -->
+
+<!-- Good internationalization, en voice. Unlike the Baidu one.  -->
+
+<!-- 200m walking. Take line 9. -->
+
+I would have a cute name... I guess.
+
+On the road, I was quite excited. 
+
+I suppose... 
+
+I suppose! 
+
+I suppose... 
+
+Humility HQ.
+
+That's it. 
+
+Steadily, gradually...
+
+(talking to myself... Yet no one notices me. Great.)
+
+(playing animez, it almost feels I'm destined. I'm blessed...)

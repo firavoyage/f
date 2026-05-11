@@ -3006,3 +3006,12 @@ i mean, both
 
 ---
 
+i think you could have the ability to keep the ui stable besides how big companies test changes.
+
+like colors. 
+
+google ai mode.
+
+twitter.
+
+---
