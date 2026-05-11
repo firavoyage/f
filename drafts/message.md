@@ -4,6 +4,4 @@ follow these:
 
 ---
 
-how to do it myself. 
-
 
