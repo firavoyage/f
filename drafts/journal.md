@@ -15089,14 +15089,14 @@ set "auto terminate old inactive sessions" from 6mo to 1y (maximum).
 
 Xiaojiong was graduated from djhs. The dorm building, which was the teaching building that time, hadn't changed over the 30 years. 
 
-From djhs to ecnu. The golden years.
+From djhs to ecnu <!-- wo gaokao, like many at that time -->. The golden years.
 
 F: can you beat zhijun? 
-Minghao: idk. 
+Minghao: idk. <!-- ppl are much more friendly today. -->
 F: good luck. 
 Minghao: thanks
 
-<!-- i have not prepared much, like the small unixporn proudy gadgets. so i write some nerdy quotes on my scratch pad, which works pretty well at the end of the day. -->
+<!-- i have not prepared much, like the small unixporn proud gadgets. so i write some nerdy quotes on my scratch pad, which works pretty well at the end of the day. -->
 
 09 40 Home.
 
@@ -15314,6 +15314,12 @@ wtf? Honkai: Star Rail?
 
 (btw, i feel i should not open an issue like that, but since there is no github discussions opened, i have to.)
 ```
+
+12
+
+00 40 finish reading freedom of money, chapter 5.
+
+01 20 use some glue <!-- double sided tape instead, for easiness --> on the origami bird.
 
 
 
