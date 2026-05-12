@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@folder/xdg": "^4.0.1",
     "lib": "link:source/lib"
   },
   "devDependencies": {
