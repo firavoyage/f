@@ -392,3 +392,8 @@ message.
 
 ---
 
+why is a command so slow. how to figure out.
+
+tsxe.
+
+
