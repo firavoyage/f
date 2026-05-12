@@ -65,7 +65,17 @@ declare global {
 export function err(error: Optional<err, typeof err_hash | 'message'> | Error): err {
   if (error instanceof Error) {
     return Object.defineProperty({
-      // foo.type == SyntaxError > foo.type == 'SyntaxError'
+      /**
+       * it's simpler to say
+       * foo.type == SyntaxError
+       * than
+       * foo.type == 'SyntaxError' or foo.type instanceof SyntaxError
+       * 
+       * if rescue, it's already an error.
+       * you match known errors, otherwise it's an unexpected error.
+       * 
+       * you dont need nested error types on the prototype chain. separate them.
+       */
 
       type: error.constructor,
       // type: error.name,

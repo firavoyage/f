@@ -39,14 +39,12 @@ function test() {
   console.log(bar.concat('!'));
 }
 
-test()
-
 function test_handle() {
   let foo = parse("}")
 
   if (rescue(foo)) {
     if (foo.type == SyntaxError) {
-      console.log(foo.message);
+      console.log(foo);
     } else {
       console.log('unexpected');
     }
@@ -57,14 +55,12 @@ function test_handle() {
   console.log(bar);
 }
 
-test_handle()
-
 async function test_handle_async() {
   let foo = await async("}")
 
   if (rescue(foo)) {
-    if (foo.type == SyntaxError) {
-      console.log(foo.message);
+    if (foo.type) {
+      console.log(foo);
     } else {
       console.log('unexpected');
     }
@@ -75,4 +71,23 @@ async function test_handle_async() {
   console.log(bar);
 }
 
-test_handle_async()
+// test()
+
+// test_handle()
+
+// await test_handle_async()
+
+import path from 'node:path';
+
+let join = handle(path.join)
+
+const complexPath = join('/foo', 'bar', '//baz/asdf', 'quux', '..', 1);
+
+const a = join('./../../.././../......./foo/quux/.../...../');
+// const a = join('/foo/../quux');
+
+console.log(complexPath)
+
+console.log(complexPath.type == TypeError);
+
+console.log(a)

@@ -1,3 +1,5 @@
+import { join } from 'node:path';
+
 export const not_found = "not_found"
 
 let app_name: string
@@ -9,8 +11,8 @@ export function init(name: string) {
   app_name = name
 }
 
-export function path() {
-
+export function path(...args) {
+  return join(...args)
 }
 
 export function data() {

@@ -32,4 +32,20 @@
     "body": ["let ${1:name} = ${0}"],
   },
   // no dl or el
+  "await": {
+    "prefix": "a",
+    "body": ["await "],
+  },
+  "return": {
+    "prefix": "r",
+    "body": ["return "],
+  },
+  "import": {
+    "prefix": "im",
+    "body": ["import ${2:name} from '${1:module}';$0"],
+  },
+  "log": {
+    "prefix": "lo",
+    "body": ["console.log(${0})"],
+  },
 }
