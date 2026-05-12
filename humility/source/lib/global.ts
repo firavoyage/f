@@ -1,9 +1,11 @@
 // prelude
 
-import * as std from 'lib/std';
+import * as result from 'lib/result';
 
-function use(lib) {
+export function use(lib) {
   Object.assign(globalThis, lib)
 }
 
-use(std)
+use(result)
+
+

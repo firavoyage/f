@@ -1,51 +1,127 @@
 {
   "function": {
     "prefix": "f",
-    "body": ["function ${1:name}(${2}) {", "  $0", "}"],
+    "body": [
+      "function ${1:name}(${2}) {",
+      "  $0",
+      "}"
+    ],
   },
   "async function": {
     "prefix": "af",
-    "body": ["async function ${1:name}(${2}) {", "  $0", "}"],
+    "body": [
+      "async function ${1:name}(${2}) {",
+      "  $0",
+      "}"
+    ],
   },
   "export function": {
     "prefix": "ef",
-    "body": ["export function ${1:name}(${2}) {", "  $0", "}"],
+    "body": [
+      "export function ${1:name}(${2}) {",
+      "  $0",
+      "}"
+    ],
   },
   "export async function": {
     "prefix": "eaf",
-    "body": ["export async function ${1:name}(${2}) {", "  $0", "}"],
+    "body": [
+      "export async function ${1:name}(${2}) {",
+      "  $0",
+      "}"
+    ],
   },
   "const": {
     "prefix": "c",
-    "body": ["const ${1:name} = ${0}"],
+    "body": [
+      "const ${1:name} = ${0}"
+    ],
   },
   "deconstruct const": {
     "prefix": "dc",
-    "body": ["const { ${1:name} } = ${0}"],
+    "body": [
+      "const { ${1:name} } = ${0}"
+    ],
   },
   "export const": {
     "prefix": "ec",
-    "body": ["export const ${1:name} = ${0}"],
+    "body": [
+      "export const ${1:name} = ${0}"
+    ],
   },
   "let": {
     "prefix": "l",
-    "body": ["let ${1:name} = ${0}"],
+    "body": [
+      "let ${1:name} = ${0}"
+    ],
   },
   // no dl or el
   "await": {
     "prefix": "a",
-    "body": ["await "],
+    "body": [
+      "await "
+    ],
   },
   "return": {
     "prefix": "r",
-    "body": ["return "],
+    "body": [
+      "return "
+    ],
   },
   "import": {
     "prefix": "im",
-    "body": ["import ${2:name} from '${1:module}';$0"],
+    "body": [
+      "import ${2:name} from '${1:module}';$0"
+    ],
   },
   "log": {
     "prefix": "lo",
-    "body": ["console.log(${0})"],
+    "body": [
+      "console.log(${0})"
+    ],
+  },
+  "comment": {
+    "prefix": "/",
+    "body": [
+      "/**",
+      " * $0",
+      " */",
+    ],
+  },
+  "if": {
+    "prefix": "i",
+    "body": [
+      "if ($1) {",
+      "  $2",
+      "} $0",
+    ],
+  },
+  "else if": {
+    "prefix": "el",
+    "body": [
+      "else if ($1) {",
+      "  $2",
+      "} $0",
+    ],
+  },
+  "else": {
+    "prefix": "e",
+    "body": [
+      "else {",
+      "  $1",
+      "} $0",
+    ],
+  },
+  "true": {
+    "prefix": "t",
+    "body": [
+      "true",
+    ],
+  },
+  "false": {
+    "prefix": "fa",
+    "body": [
+      "false",
+    ],
   },
 }

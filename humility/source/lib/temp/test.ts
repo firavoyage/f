@@ -83,7 +83,8 @@ let join = handle(path.join)
 
 const complexPath = join('/foo', 'bar', '//baz/asdf', 'quux', '..', 1);
 
-const a = join('./../../.././../......./foo/quux/.../...../');
+const a = join('.foo/quux/');
+// const a = join('.foo/quux');
 // const a = join('/foo/../quux');
 
 console.log(complexPath)
@@ -91,3 +92,5 @@ console.log(complexPath)
 console.log(complexPath.type == TypeError);
 
 console.log(a)
+
+

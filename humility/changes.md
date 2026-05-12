@@ -112,4 +112,15 @@ new
 
 - always function statement, only arrow function for props
 
+12
+
+revise message.
+
+prev
+
+- object params for more than one param
+
+new
+
+- object params for more than one uninterchangeable params
 

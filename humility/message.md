@@ -14,7 +14,7 @@ follow these:
 - style:
   - functional programming
   - modular and cohesive
-  - object params for more than one param
+  - object params for more than one uninterchangeable params
   - always async, only sync for pure and quick methods
   - always function statement, only arrow function for props
   - always type, never interface

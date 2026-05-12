@@ -174,9 +174,10 @@ desktop:
 - fix chromium network changed stop memoh
 - install dolphin apply gnome adwaita
 
-ci:
+ops: <!-- devops, ci, vcs, ... -->
 
 - smoke test
+- git filter repo
 
 sre:
 
