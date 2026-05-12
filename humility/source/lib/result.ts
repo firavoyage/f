@@ -1,59 +1,38 @@
-/*
-type SyncResult<T, E = Error> = [E, null] | [null, T];
-type AsyncResult<T, E = Error> = Promise<SyncResult<T, E>>;
+type ok<T> = Exclude<T, err>
+type err = Readonly<{ type: any, message: any, [err_symbol]: true }>
+// type err = Readonly<{ type: string | number | symbol, message: string | object, [err_symbol]: true }>
+// todo: type and message are string?
 
-export function safe<Args extends any[], R>(
-  fn: (...args: Args) => R
-): (...args: Args) => R extends Promise<infer U> ? AsyncResult<U> : SyncResult<R> {
-  return (...args: Args): any => {
-    try {
-      const result = fn(...args);
-
-      // Check if the result is a Promise
-      if (result instanceof Promise || (result && typeof (result as any).then === 'function')) {
-        return (result as Promise<any>)
-          .then((data) => [null, data])
-          .catch((err) => [err, null]);
-      }
-
-      // Synchronous success
-      return [null, result];
-    } catch (err) {
-      // Synchronous error
-      return [err, null];
-    }
-  };
-}
+/**
+ * todo: dry?
+ * 
+ * (impossible in ts)
  */
+type err_fn = typeof err
+type rescue = typeof rescue
+type handle = typeof handle
+declare global {
+  type Optional<Type, Keys extends keyof Type> = Omit<Type, Keys> & Partial<Pick<Type, Keys>>
+  // type Optional<Type, Keys extends keyof any> = Omit<Type, Keys> & Partial<Pick<Type, Keys>>
+
+  /**
+   * todo: E should be subset of err
+   */
+  type result<T, E = err> = ok<T> | E;
+
+  type option<T> = T | undefined;
+
+  var err: err_fn
+  var rescue: rescue
+  var handle: handle
+}
 
 const err_symbol = Symbol("err");
 // const err_symbol = "__err";
 // const err_symbol = "d9eb253e06987fa74a5d3189f73d9f7a8104cca786fafbb52bc9555972f5477f"; // sha256 of "err"
 
-type ok<T> = Exclude<T, err>
-// access an optional message wont cause any issue
-type err = Readonly<{ type: any, message: any, [err_symbol]: true }>
-// type err = Readonly<{ type: string | number | symbol, message: string | object, [err_symbol]: true }>
-// todo: type and message are string?
-
-type Optional<Type, Keys extends keyof Type> = Omit<Type, Keys> & Partial<Pick<Type, Keys>>
-// type Optional<Type, Keys extends keyof any> = Omit<Type, Keys> & Partial<Pick<Type, Keys>>
-
-declare global {
-  type result<T, E = err> = ok<T> | E;
-  // todo: E should be subset of err
-
-  type option<T> = T | undefined;
-
-  function err(error: any | Optional<err, typeof err_symbol | 'message'> | Error): err;
-
-  function rescue<T>(result: result<T>): result is err;
-
-  function handle(fn: Function): (...args: any[]) => result<ok<any>>;
-}
-
 /**
- * redundant.
+ * not needed.
  * 
  * just return value directly.
  */
@@ -171,13 +150,14 @@ export function rescue<T>(result: result<T>): result is err {
 // export type result = ok | err
 
 /**
- * ref: https://gist.github.com/t3dotgg/a486c4ae66d32bf17c09c73609dacc5b
+ * handle possible errors
  * 
- * just use the word handle (i will wrap it to handle the errors gracefully),
- * 
+ * just use the word handle ("i will wrap it to handle the errors gracefully"),
  * not attempt (i attempt to do this even if it might fail.).
+ * 
+ * ref: https://gist.github.com/t3dotgg/a486c4ae66d32bf17c09c73609dacc5b
  */
-export function handle(fn: Function): (...args: any[]) => result<any> {
+export function handle(fn: Function): (...args: any[]) => result<ok<any>> {
   return (...args) => {
     try {
       const result = fn(...args);
@@ -216,4 +196,30 @@ export function handle(fn: Function): (...args: any[]) => result<any> {
 //       return err({ type: error, message: error });
 //     }
 //   }
+// }
+
+// type SyncResult<T, E = Error> = [E, null] | [null, T];
+// type AsyncResult<T, E = Error> = Promise<SyncResult<T, E>>;
+
+// export function safe<Args extends any[], R>(
+//   fn: (...args: Args) => R
+// ): (...args: Args) => R extends Promise<infer U> ? AsyncResult<U> : SyncResult<R> {
+//   return (...args: Args): any => {
+//     try {
+//       const result = fn(...args);
+
+//       // Check if the result is a Promise
+//       if (result instanceof Promise || (result && typeof (result as any).then === 'function')) {
+//         return (result as Promise<any>)
+//           .then((data) => [null, data])
+//           .catch((err) => [err, null]);
+//       }
+
+//       // Synchronous success
+//       return [null, result];
+//     } catch (err) {
+//       // Synchronous error
+//       return [err, null];
+//     }
+//   };
 // }

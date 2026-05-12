@@ -352,6 +352,12 @@ history:
 - sega maimai dx project sekai
 - xkcd
 - xfce
+- left pad incident
+- iptv
+- bittorrent magent
+- ipfs
+- tv criticism
+- codeberg forgejo
 
 politics:
 

@@ -1,14 +1,17 @@
 /**
+ * xdg is in js. no types. and no need to have types.
+ */
+import desktop from '@folder/xdg';
+import { homedir } from 'node:os';
+import { join, dirname as dir } from 'node:path';
+import { writeFile, readFile, mkdir } from 'node:fs/promises';
+
+/**
  * errors
  */
 export const not_found = "not_found"
 export const already_initialized = "already_initialized"
 export const not_initialized = "not_initialized"
-
-import desktop from '@folder/xdg';
-import { homedir } from 'node:os';
-import { join, dirname as dir } from 'node:path';
-import { writeFile, readFile, mkdir } from 'node:fs/promises';
 
 const write_file = handle(writeFile)
 const read_file = handle(readFile)

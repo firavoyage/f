@@ -3015,3 +3015,11 @@ google ai mode.
 twitter.
 
 ---
+
+seems chromium remembers name = "org_name" on input elements.
+
+on github i picked a name. on codeberg it suggests the same.
+
+it's inspiring.
+
+---

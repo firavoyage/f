@@ -396,4 +396,16 @@ why is a command so slow. how to figure out.
 
 tsxe.
 
+---
+
+codeberg pages.
+
+put after qq name.
+
+---
+
+modernize dg in global.
+
+rm dg in file. use import. (io is not gonna be everywhere)
+
 
