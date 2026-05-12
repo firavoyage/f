@@ -15321,6 +15321,24 @@ wtf? Honkai: Star Rail?
 
 01 20 use some glue <!-- double sided tape instead, for easiness --> on the origami bird.
 
+14 20 suffer from intense home decor noise. put on headphone and earplug to mitigate a little bit.
+
+<!-- google 502?! -->
+
+maybe i could go to maimai. i dont really wanna go to starbucks.
+
+15 20 out for lunch.
+
+backpack:
+
+- laptop
+- phone
+- power bank
+- gloves
+- water
+
+<!-- awa some stationery, scratch pads, and the calculator -->
+
 
 
 <!-- timebox, plan. -->

@@ -349,6 +349,8 @@ history:
 - vscode code themes
 - project euler
 - sega maimai dx project sekai
+- xkcd
+- xfce
 
 politics:
 
