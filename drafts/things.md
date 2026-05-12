@@ -811,3 +811,26 @@ comment before or after code examples
 
 ---
 
+异国日记
+
+btw, i think i should host a tracker:
+
+- is a bangumi/film
+- is inside top rated now
+- is published within 1y (or, is not inside top rated 1y ago, though it requires caching)
+
+---
+
+steins gate?
+
+---
+
+(well, i already have some hand picked stalled films/bangumis here.)
+
+---
+
+your lie in apr
+
+---
+
+

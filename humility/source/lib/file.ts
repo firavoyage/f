@@ -1,5 +1,7 @@
 /**
  * xdg is in js. no types. and no need to have types.
+ * 
+ * config maxNodeModuleJsDepth in tsconfig to normalize it
  */
 import desktop from '@folder/xdg';
 import { homedir } from 'node:os';

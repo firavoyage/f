@@ -153,6 +153,7 @@ frontend: <!-- web -->
 - ts framework agnostic component library mitosis web component lit
 - react component style
 - css styling
+- ts negated type exclude any number
 
 backend:
 
@@ -357,7 +358,7 @@ history:
 - bittorrent magent
 - ipfs
 - tv criticism
-- codeberg forgejo
+- codeberg forgejo gitea gogs
 
 politics:
 
@@ -395,6 +396,7 @@ rhetoric:
 - always a only b for cond
 - seven types of meaning
 - see you on the dark side of the moon
+- chinglish example criticism
 
 laws:
 

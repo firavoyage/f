@@ -3074,3 +3074,280 @@ Even if it feels redundant, using a type alias like `type MyFn = typeof myFn` is
   GitHub
 
 Show all
+
+#
+
+can i install the types for @folder/xdg via pnpm
+
+9:57 AM
+
+Yes, you can install `@folder/xdg` and its types using **pnpm**, but you likely won't need to install a separate `@types` package because `@folder/xdg` is a **TypeScript-first** package that typically includes its own type definitions. \[[1](https://github.com/pnpm/pnpm/issues/3693)]
+
+How to Install
+
+To add the package to your project using **pnpm**, run:\
+`pnpm add @folder/xdg`
+
+Regarding Types
+
+- **Built-in Types:** Most modern `@folder` scoped packages [include type definitions](https://www.npmjs.com/package/@folder/xdg) within the main package itself. After running the install command above, TypeScript should automatically recognize the types without any further action.
+- **Manual Install (If needed):** In the rare case that types aren't recognized or you specifically need a DefinitelyTyped version, you would use:\
+  `pnpm add -D @types/folder__xdg`\
+  _(Note the double underscore `__` used for scoped packages in DefinitelyTyped)_. \[[1](https://github.com/folder/xdg), [2](https://www.npmjs.com/package/@folder/xdg), [3](https://dev.to/turingvangisms/ts1421-entry-point-for-implicit-type-library-0-with-packageid-1-1294)]
+
+Troubleshooting pnpm & TypeScript
+
+If you install the package but TypeScript still cannot find the types, check the following:
+
+- **Hoisting Issues:** pnpm uses a [strict symlink-based `node_modules`](https://pnpm.io/faq) structure. If your project has trouble resolving types, you can add `public-hoist-pattern[]=*types*` to your [`.npmrc` file](https://github.com/pnpm/pnpm/issues/1727) to ensure type definitions are accessible.
+- **Symlinks:** Ensure your `tsconfig.json` does **not** have `preserveSymlinks` set to `true`, as this can [break type resolution](https://pnpm.io/typescript) in pnpm environments. \[[1](https://github.com/pnpm/pnpm/issues/1727), [2](https://pnpm.io/typescript), [3](https://github.com/DefinitelyTyped/DefinitelyTyped/discussions/68146), [4](https://medium.com/pnpm/why-should-we-use-pnpm-75ca4bfe7d93), [5](https://medium.com/@bhavsarurvi143/package-managers-npm-yarn-and-pnpm-44308ef29c4c)]
+
+Would you like help configuring your **tsconfig.json** or **.npmrc** to better support pnpm?
+
+- [link](https://github.com/pnpm/pnpm/issues/1727)\
+  Installing @types packages is not working properly · Issue #1727\
+  Activity \* zkochan commented. zkochan. on Apr 7, 2019. Member. So you use the independent-leaves=true config? Have you tried w/o i...\
+  GitHub
+- [link](https://github.com/folder/xdg)\
+  GitHub - folder/xdg: Get cross-platform XDG Base Directories or their ...\
+  Get cross-platform XDG Base Directories or their equivalents. Works with Linux, Windows (win32), or MacOS (darwin). Please conside...\
+  GitHub
+- [link](https://www.npmjs.com/package/@folder/xdg)\
+  @folder/xdg - npm\
+  Install. Install with npm: $ npm install --save @folder/xdg. Usage. Add the following line of code to your Node.js application: co...\
+  NPM
+
+Show all
+
+Could not find a declaration file for module '@folder/xdg'.
+
+9:58 AM
+
+This error occurs because `@folder/xdg` is a JavaScript package that **does not include built-in TypeScript definitions**, and there is currently no official `@types/folder__xdg` package available on the [npm registry](https://www.npmjs.com/package/@folder/xdg). \[[1](https://www.npmjs.com/package/@folder/xdg)]
+
+To fix this, you can choose one of the following solutions:
+
+Solution 1: Create a Custom Declaration File (Recommended) \[[1](https://oneuptime.com/blog/post/2026-01-24-typescript-cannot-find-module/view)]
+
+This is the standard way to tell TypeScript that a module exists when it doesn't have official types. It will treat the module as `any`, allowing your code to compile.
+
+1. Create a file named `xdg.d.ts` in your project's root or a `types` folder.
+
+2. Add the following line:\
+   typescript
+
+<!---->
+
+```
+declare module '@folder/xdg';
+```
+
+Use code with caution.
+3\. Ensure this file is included in your `tsconfig.json` under the `include` or `files` array. \[[1](https://pjausovec.medium.com/how-to-fix-error-ts7016-could-not-find-a-declaration-file-for-module-xyz-has-an-any-type-ecab588800a8), [2](https://joshtronic.com/2019/08/26/could-not-find-a-declaration-file-for-module/)]
+
+Solution 2: Quick "Any" Import
+
+If you only need to use the package quickly without creating a new file, you can bypass the type check directly in your code:
+
+typescript
+
+```
+// @ts-ignore
+import xdg from '@folder/xdg';
+```
+
+Use code with caution.
+
+Solution 3: Add Manual Types
+
+If you want actual type safety for the functions provided by `@folder/xdg`, you can define the interface manually in your `xdg.d.ts` file: \[]
+
+typescript
+
+```
+declare module '@folder/xdg' {
+  interface XdgOptions {
+    subdir?: string;
+  }
+  interface XdgPaths {
+    cache: string;
+    config: string;
+    data: string;
+    state: string;
+    runtime?: string;
+  }
+  function xdg(options?: XdgOptions): XdgPaths;
+  export = xdg;
+}
+```
+
+Use code with caution.
+
+Why pnpm is involved
+
+pnpm's strict `node_modules` structure can sometimes make it harder for TypeScript to "guess" where types are if they aren't explicitly declared in the package. If you use **Solution 1**, TypeScript will bypass this strictness for this specific module. \[[1](https://github.com/pnpm/pnpm/issues/1375)]
+
+Would you like me to help you **update your tsconfig.json** to ensure it picks up these new custom types?
+
+- [link](https://github.com/pnpm/pnpm/issues/1375)\
+  Typescript cant find declaration files installed using pnpm #1375\
+  hejjzaeN commented. hejjzaeN. on Sep 19, 2024 · edited by hejjzaeN. For me the issue was that I was using pnpm install package rat...\
+  GitHub
+- [link](https://pjausovec.medium.com/how-to-fix-error-ts7016-could-not-find-a-declaration-file-for-module-xyz-has-an-any-type-ecab588800a8)\
+  How to fix error TS7016: Could not find a declaration file for ...\
+  js' implicitly has an 'any' type. Peter Jausovec. 2 min read. 248. 10. Photo by Jason Leung on Unsplash. If you're using TypeScrip...\
+  Medium
+- [link](https://joshtronic.com/2019/08/26/could-not-find-a-declaration-file-for-module/)\
+  Could not find a declaration file for module - Joshtronic\
+  Next step in the process was to configure typeRoots in my tsconfig. json file. I had read some mixed statements about this, so not...\
+  Joshtronic
+
+Show all
+
+what does declare module ... do
+
+9:59 AM
+
+In TypeScript, `declare module '@folder/xdg'` is a way of saying: <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>"I know this package exists, but TypeScript doesn't have a map for it. Please treat it as valid anyway."</strong></mark>
+
+It’s essentially a **handshake** between you and the compiler. Here is what it does under the hood:
+
+1\. Stops the "Module Not Found" Error
+
+Normally, if TypeScript can’t find a `package.json` with a `"types"` field or a corresponding `@types/...` folder, it throws the error you saw. This declaration forces TypeScript to stop looking and accept that the module is there.
+
+2\. Assigns the `any` Type
+
+When you use a "blank" declaration like `declare module '@folder/xdg';`, TypeScript treats everything inside that package as the `any` type.
+
+- You can call `xdg.config()`, `xdg.cache`, or even `xdg.somethingFake()`.
+- TypeScript won't give you red squiggly lines, but it also won't give you **autocomplete** or **parameter checking**.
+
+3\. Provides "Ambient" Context
+
+The keyword `declare` tells TypeScript that the code for this module **already exists** somewhere else (like in your `node_modules`). It doesn't generate any JavaScript code when you compile; it only exists to help the type-checker during development.
+
+Where it lives
+
+You typically put these in a `.d.ts` (declaration) file. These files are purely for "metadata" about your code—they describe the **shape** of things without containing any actual logic.
+
+Do you want to see how to add **basic autocomplete** to that declaration so you get more than just the `any` type?
+
+i have viewed the code. it's in js. no types needed. but why not even give me auto complete. even you dont know its type, it's there. the methods are there.
+
+10:05 AM
+
+I completely understand the frustration—the code is literally right there in `node_modules`, so it feels like the editor should just "see" it.
+
+The reason you aren't getting autocomplete is that **TypeScript (which powers VS Code's IntelliSense) is intentionally "blind" to `node_modules`** unless it finds a formal declaration file. It does this for performance; if it tried to deeply analyze every single JavaScript file in every dependency, your editor would crawl to a halt. \[[1](https://www.reddit.com/r/typescript/comments/p5ada4/module%5Fproperties%5Fauto%5Fcompletion%5Fdoesnt%5Fwork%5Ffor/)]
+
+Here is how you can force the editor to give you autocomplete without writing full types:
+
+1\. Enable `allowJs` and `checkJs` \[[1](https://medium.com/@gho/start-type-checking-your-javascript-without-changing-your-code-62b690a77a24)]
+
+By default, TypeScript ignores JavaScript files in your project. You can tell it to look at them by adding these flags to your `tsconfig.json`: \[[1](https://medium.com/@gho/start-type-checking-your-javascript-without-changing-your-code-62b690a77a24), [2](https://www.youtube.com/watch?v=bNyA4p86MPU\&t=18), [3](https://www.youtube.com/watch?v=LE5VdTNOGv8), [4](https://medium.com/@steveruiz/using-a-javascript-library-without-type-declarations-in-a-typescript-project-3643490015f3)]
+
+json
+
+```
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "maxNodeModuleJsDepth": 1
+  }
+}
+```
+
+Use code with caution.
+
+- **`maxNodeModuleJsDepth`**: This is the key. It tells TypeScript to go exactly one level deep into `node_modules` to try and infer types from the actual JS code. \[[1](https://github.com/TypeStrong/ts-loader/issues/702)]
+
+2\. Use JSDoc Cast (The "Instant" Fix)
+
+If you don't want to mess with project-wide settings, you can "trick" the editor into providing autocomplete for a specific variable by using a [JSDoc comment](https://dev.to/henryjw/better-javascript-type-autocomplete-with-jsdoc-3bdo). Since you've seen the code, you can quickly map the methods you need: \[[1](https://dev.to/henryjw/better-javascript-type-autocomplete-with-jsdoc-3bdo)]
+
+javascript
+
+```
+/** @type {any} */
+const xdg = require('@folder/xdg');
+
+// OR, to get actual method suggestions:
+/** @type {{ cache: string, config: string, data: string }} */
+const paths = xdg();
+// Now typing 'paths.' will show cache, config, and data.
+```
+
+Use code with caution.
+
+3\. pnpm-Specific Tip
+
+Because you are using **pnpm**, your packages are actually stored in a global store and [symlinked into your project](https://pnpm.io/faq). Sometimes VS Code struggles to follow these symlinks to find the source code. \[[1](https://www.reddit.com/r/typescript/comments/p5ada4/module%5Fproperties%5Fauto%5Fcompletion%5Fdoesnt%5Fwork%5Ffor/)]
+
+- Check your `tsconfig.json` for `"preserveSymlinks": true`. If it's there, **set it to `false`** or remove it. This often fixes "ghost" modules that the editor can't see. \[[1](https://www.reddit.com/r/typescript/comments/p5ada4/module%5Fproperties%5Fauto%5Fcompletion%5Fdoesnt%5Fwork%5Ffor/)]
+
+4\. Why `declare module` "Broke" Autocomplete
+
+Earlier, when we added `declare module '@folder/xdg';`, we actually told TypeScript: _"Stop looking for this. I'll handle it."_ Because the declaration was empty, TypeScript just gave up and assigned it `any`. If you want autocomplete while using a declaration file, you have to list the methods inside it, as shown in **Solution 3** of the previous response. \[[1](https://kamranicus.com/tricking-typescript-into-typing-untyped-javascript-modules/)]
+
+Do you want me to help you write a **minimal declaration** based on the specific methods you saw in the source code?
+
+- [link](https://github.com/TypeStrong/ts-loader/issues/702)\
+  When using \`checkJs\` compiler option, JS files inside ... - GitHub\
+  Expected Behaviour. If in my tsconfig. json file I use the checkJs option, only the JS files of my project should be checked. The ...\
+  GitHub
+- [link](https://www.reddit.com/r/typescript/comments/p5ada4/module%5Fproperties%5Fauto%5Fcompletion%5Fdoesnt%5Fwork%5Ffor/)\
+  Module properties auto completion doesn't work for TypeScript\
+  CreativeTechGuyGames. • 5y ago. I assume because the TypeScript compiler can infer types from JavaScript code that is completely u...\
+  Reddit
+- [link](https://kamranicus.com/tricking-typescript-into-typing-untyped-javascript-modules/)\
+  Tricking TypeScript Into Typing Untyped JavaScript Modules\
+  Awesome, no errors so far. But what do we put in it?! If there is a type already available from the declarations that ship with a ...\
+  kamranicus.com
+
+Show all
+
+what does the depth, what if i make it 100
+
+11:41 AM
+
+Setting `maxNodeModuleJsDepth` to 100 would likely cause your editor to **freeze or crash** because it forces the TypeScript engine to crawl through nearly every JavaScript file in your entire dependency tree. \[[1](https://github.com/voxpelli/types-in-js/discussions/25), [2](https://www.typescriptlang.org/tsconfig/maxNodeModuleJsDepth.html)]
+
+What "Depth" Means
+
+The number represents how many steps deep into `node_modules` the compiler will follow an `import` or `require` to find source code. \[]
+
+- **Depth 0 (Default):** TypeScript only looks for `.d.ts` (declaration) files. It refuses to look at `.js` files inside `node_modules`.
+- **Depth 1:** It will look at the `.js` files of the packages you imported directly (like `@folder/xdg`).
+- **Depth 2+:** It starts looking at the dependencies _of_ your dependencies. \[[1](https://typescript-site-76.ortam.vercel.app/docs/handbook/compiler-options.html), [2](https://www.typescriptlang.org/tsconfig/maxNodeModuleJsDepth.html)]
+
+Why 100 is a Bad Idea
+
+1. **Massive Performance Hit:** Modern `node_modules` folders can contain tens of thousands of files. If you set the depth to 100, TypeScript will try to parse, index, and infer types for every single one of them. This can lead to **30+ second delays** for simple autocomplete suggestions.
+2. **Unhelpful Errors:** If you have `checkJs` enabled, you will start seeing [thousands of syntax and type errors](https://github.com/microsoft/TypeScript/issues/15611) from third-party libraries that you didn't write and can't fix.
+3. **Memory Exhaustion:** The language server (TSServer) in VS Code will quickly run out of memory trying to hold the type graph for every library in your project. \[[1](https://www.youtube.com/watch?v=wGwes6a5eD8\&t=52), [2](https://github.com/microsoft/TypeScript/issues/32826), [3](https://www.reddit.com/r/vscode/comments/x2z637/very%5Fslow%5Fintellisense%5Fin%5Fvscode%5Fwhen%5Fnode/), [4](https://github.com/microsoft/vscode/issues/227233), [5](https://github.com/microsoft/TypeScript/issues/15611), [6](https://stackoverflow.com/questions/73559060/vscode-intellisense-very-slow-when-node-modules-is-present), [7](https://github.com/voxpelli/types-in-js/discussions/25)]
+
+The Better Approach
+
+Instead of increasing the depth globally, you should use a declaration file to "map" the specific methods you need. \[[1](https://github.com/microsoft/TypeScript/issues/17183), [2](https://www.typescriptlang.org/tsconfig/maxNodeModuleJsDepth.html)]
+
+If you just want `@folder/xdg` autocomplete without the performance lag, set `maxNodeModuleJsDepth` to **1**. This is enough to let TypeScript see the package you actually care about without wandering off into the rest of your dependencies. \[[1](https://github.com/microsoft/TypeScript/issues/17183)]
+
+Would you like the **exact 5-line declaration code** for that package so you can keep your depth at 0 and have perfect performance?
+
+- [link](https://github.com/microsoft/TypeScript/issues/17183)\
+  tsconfig.json should default \`maxNodeModuleJsDepth\` to 1\
+  Typescript doesn't know about modules in node\_modules until the maxNodeModuleJsDepth compiler option is set to 1 or greater. It se...\
+  GitHub
+- [link](https://www.youtube.com/watch?v=wGwes6a5eD8\&t=52)\
+  TypeScript is SO SLOW... Or Is It? | Mike Hartington | PodRocket\
+  TypeScript can experience performance issues, although most users do not encounter them in smaller projects with a few files. Perf...\
+  5m\
+  YouTube·LogRocket
+- [link](https://github.com/voxpelli/types-in-js/discussions/25)\
+  jsconfig.json contrary to documentation implies ... - GitHub\
+  False errors – as shown by eg Bug: Types used in JSDoc blocks of @eslint/js are missing eslint/eslint#18100. Slow performance – as...\
+  GitHub
+
+Show all

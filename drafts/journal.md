@@ -6608,6 +6608,16 @@ even if you commit no changes, the ci wont pass.
 it's my trailing comma pr that should be merged first.
 ```
 
+upd:
+
+```
+sheepbox8646 2026-04-29T06:37:43Z
+
+Maybe you can rebase to latest main
+```
+
+<!-- acbox just leaves a cmt wo doing anything... and the pr stays open. what's happening? idk if the unusable link is still there. -->
+
 15 00 write a comment on memoh `fix(install): handle dirty one-click upgrades #401`.
 
 ```
