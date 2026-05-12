@@ -74,6 +74,32 @@
       "import ${2:name} from '${1:module}';$0"
     ],
   },
+  "deconstruct import": {
+    "prefix": "di",
+    "body": [
+      "import { ${2:name} } from '${1:module}';$0"
+    ],
+  },
+  "await import": {
+    "prefix": "ai",
+    "body": [
+      "const ${2:name} = await import('${1:module}');$0"
+    ],
+  },
+  "deconstruct await import": {
+    "prefix": "dai",
+    "body": [
+      "const { ${2:name} } = await import('${1:module}');$0"
+    ],
+  },
+  "declare global": {
+    "prefix": "dg",
+    "body": [
+      "declare global {",
+      "  $0",
+      "}",
+    ],
+  },
   "log": {
     "prefix": "lo",
     "body": [

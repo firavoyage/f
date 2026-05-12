@@ -1409,4 +1409,1668 @@ Use code with caution.
 
 Would you like to know how to set up the **ESLint plugin** to enforce this syntax in your project?
 
+#
 
+i want my nodejs app store things nicely on all platforms. e.g. xdg on linux. how can i do.
+
+May 10, 2026
+
+To store data nicely across platforms while adhering to standards like **XDG on Linux**, the most efficient way is to <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">use a lightweight helper library</mark>. These libraries automatically detect the operating system and return the appropriate directory for configuration, caches, and data. \[[1](https://github.com/codingjerk/appdirsjs)]
+
+Recommended Libraries
+
+Using a dedicated package ensures you follow Apple and Microsoft guidelines on macOS and Windows while respecting XDG on Linux. \[[1](https://lib.rs/crates/cross-xdg), [2](https://github.com/codingjerk/appdirsjs)]
+
+- **[env-paths](https://www.npmjs.com/package/express)**: A popular choice for getting platform-specific paths for config, data, cache, and logs.
+- **[@folder/xdg](https://www.npmjs.com/package/@folder/xdg)**: Provides XDG-equivalent paths across Linux, Windows, and macOS.
+- **[appdirsjs](https://github.com/codingjerk/appdirsjs)**: Returns standardized paths for configs and caches according to OS standards.
+- **[xdg-basedir](https://www.npmjs.com/package/xdg-basedir)**: Specifically focused on XDG variables like `xdgData` and `xdgConfig`. \[[1](https://www.npmjs.com/package/@folder/xdg), [2](https://www.npmjs.com/package/xdg-basedir), [3](https://github.com/codingjerk/appdirsjs)]
+
+Typical Platform Folders
+
+When you use these libraries, they typically resolve to the following locations: \[[1](https://www.npmjs.com/platform-folders), [2](https://lib.rs/crates/cross-xdg)]
+
+| OS              | Config Path (Example)            | Data/State Path (Example)                |
+| --------------- | -------------------------------- | ---------------------------------------- |
+| **Linux (XDG)** | `~/.config/your-app`             | `~/.local/share/your-app`                |
+| **macOS**       | `~/Library/Preferences/your-app` | `~/Library/Application Support/your-app` |
+| **Windows**     | `%APPDATA%\your-app\Config`      | `%APPDATA%\your-app\Data`                |
+
+Best Practices for Cross-Platform Storage
+
+- **Use `path.join()`**: Always use the [Node.js path module](https://nodejs.org/api/path.html) to join directory segments. This ensures your app uses the correct path separators (`/` vs `\`) for the current OS.
+- **Handle Missing Folders**: Don't assume these directories exist. Use `fs.mkdirSync(dir, { recursive: true })` before writing files to ensure the entire path is created.
+- **Respect Environment Variables**: If you build a custom solution, ensure you check for environment variables like `XDG_CONFIG_HOME` before falling back to defaults like `~/.config`.
+- **Avoid the Home Directory**: Do not litter the user's root home folder with "dot-files" (e.g., `~/.my-app-config`). Instead, use the subdirectories provided by the XDG spec or its equivalents to keep their home directory clean. \[[1](https://www.youtube.com/watch?v=bIZsdpaWJ%5FE\&t=66), [2](https://shapeshed.com/writing-cross-platform-node/), [3](https://software.codidact.com/posts/286849), [4](https://github.com/lirantal/nodejs-cli-apps-best-practices/blob/main/README.md), [5](https://www.npmjs.com/package/xdg-basedir)]
+
+Would you like a **code snippet** showing how to implement one of these libraries in your app?
+
+- [link](https://www.npmjs.com/package/@folder/xdg)\
+  @folder/xdg - npm\
+  Get the XDG Base Directory paths for Linux, or equivalent paths for Windows or MaxOS. Params. options {Object} returns {Object}: R...\
+  NPM
+- [link](https://lib.rs/crates/cross-xdg)\
+  cross-xdg - Lib.rs\
+  Use the XDG base directory specification on Linux, Windows and Mac. The XDG base directory specification is a standard for storing...\
+  Lib.rs
+- [link](https://www.npmjs.com/package/xdg-basedir)\
+  xdg-basedir - NPM\
+  Usage. import {xdgData, xdgConfig, xdgDataDirectories} from 'xdg-basedir'; console. log(xdgData); //=> '/home/sindresorhus/.local/\
+  NPM
+
+Show all
+
+how to use
+
+May 10, 2026
+
+To store your app's data correctly across platforms, you can use a library like **[@folder/xdg](https://www.npmjs.com/package/@folder/xdg)** or **[xdg-basedir](https://www.npmjs.com/package/xdg-basedir)**. These handle the logic of checking for XDG environment variables on Linux while providing sensible defaults for macOS and Windows. \[[1](https://stackoverflow.com/questions/43853548/xdg-basedir-directories-for-windows), [2](https://www.npmjs.com/package/@folder/xdg), [3](https://www.npmjs.com/package/xdg-basedir), [4](https://github.com/folder/xdg)]
+
+Step 1: Install a standard library
+
+Install the library via npm to get started: \[[1](https://www.npmjs.com/package/@folder/xdg)]
+
+bash
+
+```
+npm install @folder/xdg
+```
+
+Use code with caution.
+
+Step 2: Implementation example
+
+Here is how to get the correct paths and safely create your application's subdirectories:
+
+javascript
+
+```
+const xdg = require('@folder/xdg');
+const fs = require('fs');
+const path = require('path');
+
+// 1. Get the standard base directories
+const dirs = xdg();
+
+// 2. Define your specific app subfolder
+const APP_NAME = 'my-cool-app';
+const configPath = path.join(dirs.config, APP_NAME);
+const dataPath = path.join(dirs.data, APP_NAME);
+
+// 3. Ensure the directories exist before writing
+[configPath, dataPath].forEach(dir => {
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
+});
+
+// 4. Save your data
+const configFilePath = path.join(configPath, 'settings.json');
+fs.writeFileSync(configFilePath, JSON.stringify({ theme: 'dark' }));
+
+console.log(`Config saved to: ${configFilePath}`);
+```
+
+Use code with caution.
+
+How paths resolve by platform
+
+| Platform \[[1](https://tessl.io/registry/tessl/npm-xdg-basedir/5.1.0), [2](https://stackoverflow.com/questions/68740261/where-to-save-cli-application-log-file-that-will-work-cross-platform), [3](https://github.com/folder/xdg), [4](https://www.npmjs.com/package/@folder/xdg), [5](https://stackoverflow.com/questions/43853548/xdg-basedir-directories-for-windows)] | `dirs.config`           | `dirs.data`                     |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- | ------------------------------- |
+| **Linux (XDG)**                                                                                                                                                                                                                                                                                                                                                           | `~/.config`             | `~/.local/share`                |
+| **macOS**                                                                                                                                                                                                                                                                                                                                                                 | `~/Library/Preferences` | `~/Library/Application Support` |
+| **Windows**                                                                                                                                                                                                                                                                                                                                                               | `%APPDATA%`             | `%APPDATA%`                     |
+
+Pro-Tips
+
+- **Always use `path.join()`**: Never use hardcoded slashes (like `/` or `\`) because they differ between Windows and Linux/macOS.
+- **Handle `undefined`**: In rare cases where a home directory cannot be found, these libraries might return `undefined`. Always verify the path before attempting to write.
+- **Use `recursive: true`**: When creating folders, this ensures all parent directories are created if they don't already exist. \[[1](https://www.youtube.com/watch?v=7UIXzCEqgas\&t=10), [2](https://www.youtube.com/watch?v=gBL5ogdUTTc\&t=10), [3](https://www.npmjs.com/package/xdg-basedir)]
+
+Do you need help **migrating existing data** from an old location (like a hidden dotfile in the home directory) to these new standard paths?
+
+- [link](https://stackoverflow.com/questions/43853548/xdg-basedir-directories-for-windows)\
+  XDG Basedir directories for Windows \[closed] - Stack Overflow\
+  Martin Braun. – Martin Braun. 2022-12-29 17:40:04 +00:00. Commented Dec 29, 2022 at 17:40. Regarding the XDG\_RUNTIME\_DIR equivalen...\
+  Stack Overflow
+- [link](https://www.npmjs.com/package/xdg-basedir)\
+  xdg-basedir - NPM\
+  Usage. import {xdgData, xdgConfig, xdgDataDirectories} from 'xdg-basedir'; console. log(xdgData); //=> '/home/sindresorhus/.local/\
+  NPM
+- [link](https://github.com/folder/xdg)\
+  GitHub - folder/xdg: Get cross-platform XDG Base Directories or their ...\
+  User directories \* XDG\_CONFIG\_HOME. Where user-specific configurations should be written (analogous to /etc ). Should default to $\
+  GitHub
+
+Show all
+
+how to use env paths
+
+May 10, 2026
+
+To use **[env-paths](https://www.npmjs.com/package/env-paths)**, you simply <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">provide your application name</mark>, and it returns a set of absolute paths customized for the user's current operating system. \[[1](https://www.npmjs.com/package/env-paths)]
+
+1\. Installation
+
+Install the package via npm: \[[1](https://medium.com/the-node-js-collection/making-your-node-js-work-everywhere-with-environment-variables-2da8cdf6e786)]
+
+bash
+
+```
+npm install env-paths
+```
+
+Use code with caution.
+
+2\. Basic Usage
+
+The library returns an object with various paths (data, config, cache, log, and temp). \[[1](https://www.npmjs.com/package/env-paths)]
+
+javascript
+
+```
+import envPaths from 'env-paths';
+
+// Provide your app name (required)
+const paths = envPaths('my-app');
+
+console.log(paths.config); // Platform-specific config path
+console.log(paths.data);   // Platform-specific data path
+```
+
+Use code with caution.
+
+3\. Complete Implementation
+
+**env-paths** only generates the path strings; it does **not** create the actual folders on your disk. You must create them yourself before writing files: \[[1](https://www.npmjs.com/package/env-paths)]
+
+javascript
+
+```
+import envPaths from 'env-paths';
+import fs from 'node:fs';
+import path from 'node:path';
+
+const APP_NAME = 'my-app';
+const paths = envPaths(APP_NAME);
+
+// Create the config directory recursively if it doesn't exist
+fs.mkdirSync(paths.config, { recursive: true });
+
+// Now you can safely write your configuration file
+const configFilePath = path.join(paths.config, 'settings.json');
+fs.writeFileSync(configFilePath, JSON.stringify({ theme: 'dark' }));
+```
+
+Use code with caution.
+
+Why use env-paths?
+
+Unlike libraries that only focus on Linux standards, `env-paths` follows the specific conventions of each major OS: \[[1](https://www.npmjs.com/package/xdg-basedir), [2](https://github.com/anomalyco/opencode/issues/8235)]
+
+| OS          | Config Location                       | Data Location                                 |
+| ----------- | ------------------------------------- | --------------------------------------------- |
+| **Linux**   | `~/.config/my-app-nodejs`             | `~/.local/share/my-app-nodejs`                |
+| **macOS**   | `~/Library/Preferences/my-app-nodejs` | `~/Library/Application Support/my-app-nodejs` |
+| **Windows** | `%APPDATA%\my-app-nodejs\Config`      | `%APPDATA%\my-app-nodejs\Data`                |
+
+_Note: By default, it appends `-nodejs` to the folder name to avoid conflicts with other apps. You can disable this by passing `{ suffix: '' }` as a second argument._ \[[1](https://www.npmjs.com/package/env-paths)]
+
+Would you like to see how to handle **temporary files** specifically using these paths?
+
+- [link](https://www.npmjs.com/package/env-paths)\
+  env-paths - NPM\
+  Usage. import envPaths from 'env-paths'; const paths = envPaths('MyApp'); paths. data; //=> '/home/sindresorhus/.local/share/MyApp...\
+  NPM
+- [link](https://www.npmjs.com/package/xdg-basedir)\
+  xdg-basedir - NPM\
+  Get XDG Base Directory paths. This package is meant for Linux. You should not use XDG on macOS or Windows. Instead, you should fol...\
+  NPM
+- [link](https://github.com/anomalyco/opencode/issues/8235)\
+  \[BUG] Config and Data directories follow the Linux XDG ...\
+  Description. The paths for the config/data/cache directory is provided by the "xdg-basedir" which does not respect the convention ...\
+  GitHub
+
+Show all
+
+how to do it myself, or how does it work under the hood
+
+May 10, 2026
+
+Under the hood, libraries like `env-paths` work by checking **environment variables** and the current **operating system** (`process.platform`) to construct a path string based on platform-specific standards.
+
+How it works by platform
+
+The core logic follows a hierarchy: it checks for a specific environment variable first (like an XDG variable) and falls back to a hardcoded standard directory if that variable isn't set. \[[1](https://www.youtube.com/watch?v=wT85Ynk-0MY\&t=47), [2](https://specifications.freedesktop.org/basedir/0.6), [3](https://specifications.freedesktop.org/basedir/latest/)]
+
+1\. Linux (XDG Spec)
+
+On Linux, the library prioritizes variables defined by the [XDG Base Directory Specification](https://specifications.freedesktop.org/basedir/latest/). \[[1](https://specifications.freedesktop.org/basedir/0.6), [2](https://specifications.freedesktop.org/basedir/latest/)]
+
+- **Config**: Checks `process.env.XDG_CONFIG_HOME`. Fallback: `~/.config`.
+- **Data**: Checks `process.env.XDG_DATA_HOME`. Fallback: `~/.local/share`.
+- **Cache**: Checks `process.env.XDG_CACHE_HOME`. Fallback: `~/.cache`. \[[1](https://www.ctrl.blog/entry/xdg-basedir-scripting.html), [2](https://specifications.freedesktop.org/basedir/0.6), [3](https://www.youtube.com/watch?v=wT85Ynk-0MY\&t=47)]
+
+2\. macOS (Apple Standard)
+
+macOS doesn't use XDG by default. Instead, it uses the `Library` folder inside the user's home directory. \[[1](https://stackoverflow.com/questions/58567962/path-to-application-support-on-mac-in-node-js), [2](https://www.npmjs.com/package/@folder/xdg)]
+
+- **Config**: `~/Library/Preferences`.
+- **Data**: `~/Library/Application Support`.
+- **Cache**: `~/Library/Caches`. \[[1](https://stackoverflow.com/questions/58567962/path-to-application-support-on-mac-in-node-js), [2](https://www.npmjs.com/package/@folder/xdg)]
+
+3\. Windows (Known Folders)
+
+On Windows, it relies on the `%APPDATA%` and `%LOCALAPPDATA%` environment variables. \[[1](https://www.reddit.com/r/windows/comments/a6c2je/what%5Fis%5Fappdata%5Ffolder/), [2](https://stackoverflow.com/questions/25719729/retrieve-application-data-directory-in-node-js)]
+
+- **Config/Data (Roaming)**: `%APPDATA%` (usually ).
+- **Cache/Temp (Local)**: `%LOCALAPPDATA%` (usually ). \[[1](https://stackoverflow.com/questions/27864040/fixing-npm-path-in-windows-8-and-10), [2](https://www.reddit.com/r/windows/comments/a6c2je/what%5Fis%5Fappdata%5Ffolder/), [3](https://stackoverflow.com/questions/25719729/retrieve-application-data-directory-in-node-js)]
+
+***
+
+Implementation: Do it yourself
+
+If you want to build this yourself without a library, you can use this logic in your Node.js app:
+
+javascript
+
+```
+const os = require('os');
+const path = require('path');
+
+function getPaths(appName) {
+  const home = os.homedir();
+  const platform = process.platform;
+
+  if (platform === 'linux') {
+    return {
+      config: path.join(process.env.XDG_CONFIG_HOME || path.join(home, '.config'), appName),
+      data: path.join(process.env.XDG_DATA_HOME || path.join(home, '.local/share'), appName)
+    };
+  }
+
+  if (platform === 'darwin') { // macOS
+    return {
+      config: path.join(home, 'Library/Preferences', appName),
+      data: path.join(home, 'Library/Application Support', appName)
+    };
+  }
+
+  if (platform === 'win32') {
+    return {
+      // Roaming is better for configs that should follow a user across PCs
+      config: path.join(process.env.APPDATA, appName, 'Config'),
+      data: path.join(process.env.APPDATA, appName, 'Data')
+    };
+  }
+
+  // Generic fallback for other Unix-like systems
+  return {
+    config: path.join(home, `.${appName}`),
+    data: path.join(home, `.${appName}`)
+  };
+}
+
+const myPaths = getPaths('my-node-app');
+console.log(myPaths.config);
+```
+
+Use code with caution.
+
+Key Logic Checklist
+
+- **Platform Detection**: Use `process.platform` to switch logic between `win32`, `darwin`, and `linux`.
+- **Home Directory**: Use `os.homedir()` instead of `process.env.HOME` for better cross-platform reliability.
+- **Path Joining**: Always use `path.join()` to handle the difference between backslashes (`\`) on Windows and forward slashes (`/`) on Unix.
+- **Permissions**: The XDG spec recommends creating these directories with `0700` permissions (read/write/exec for owner only) if they don't exist. \[[1](https://stackoverflow.com/questions/32585927/proper-way-to-use-platform-specific-separators-in-cmake), [2](https://stackoverflow.com/questions/25719729/retrieve-application-data-directory-in-node-js), [3](https://stackoverflow.com/questions/58567962/path-to-application-support-on-mac-in-node-js), [4](https://specifications.freedesktop.org/basedir/latest/)]
+
+Would you like to know how to handle **multi-user environments** where your app might be installed globally versus locally?
+
+- [link](https://www.reddit.com/r/windows/comments/a6c2je/what%5Fis%5Fappdata%5Ffolder/)\
+  What is %appdata% folder? : r/windows - Reddit\
+  We can talk a bit more about the appdata folder itself. You notice it's located as a subfolder of your user as it's your personal ...\
+  Reddit
+- [link](https://stackoverflow.com/questions/27864040/fixing-npm-path-in-windows-8-and-10)\
+  node.js - Fixing npm path in Windows 8 and 10 - Stack Overflow\
+  Comments. Add a comment. 11. This answer is not useful. Loading when this answer was accepted… Edit the System environment variabl...\
+  Stack Overflow
+- [link](https://stackoverflow.com/questions/25719729/retrieve-application-data-directory-in-node-js)\
+  Retrieve application data directory in node.js - Stack Overflow\
+  2 Answers. ... On Windows, you can try using process. env. APPDATA . It usually leads to C:\Users\user\AppData\Roaming on newer Wi...\
+  Stack Overflow
+
+Show all
+
+@folder/xdg feels good. should i choose it.
+
+1:53 AM
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">Choosing </span><strong><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><a rel="noopener" href="https://www.npmjs.com/package/@folder/xdg" style="font-weight: 500; margin: 0px; text-decoration-thickness: 1px; text-decoration-style: solid; text-decoration-color: rgb(153, 195, 255); border-bottom: 0px none rgb(153, 195, 255);">@folder/xdg</a></span></strong> is a solid choice, particularly if you want a tool that strictly bridges the gap between Linux XDG standards and official Apple/Windows guidelines</mark>. \[[1](https://github.com/folder/xdg)]
+
+Why choose @folder/xdg?
+
+- **Strict Platform Guidelines**: Unlike some libraries that try to force the Linux `.config` folder onto every OS, this library correctly maps to [macOS `Library/Preferences`](https://github.com/folder/xdg) and Windows `%APPDATA%` by default.
+- **Comprehensive Pathing**: It covers all standard XDG categories, including `config`, `data`, `cache`, `state`, and `runtime`.
+- **Highly Configurable**: It allows you to pass options like `subdir` (to automatically name your folder) or even a custom `homedir` if you need to override defaults during testing. \[[1](https://tessl.io/registry/tessl/npm-xdg-basedir/5.1.0), [2](https://www.npmjs.com/package/@folder/xdg), [3](https://www.youtube.com/watch?v=wT85Ynk-0MY\&t=47), [4](https://github.com/folder/xdg)]
+
+Comparison with Alternatives
+
+| Feature \[[1](https://github.com/sindresorhus/xdg-basedir), [2](https://github.com/anomalyco/opencode/issues/8235), [3](https://discuss.python.org/t/add-cross-platform-user-directories-to-pathlib-standard-library/45390?page=2), [4](https://github.com/folder/xdg)] | @folder/xdg                 | env-paths                          | xdg-basedir                          |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- | ---------------------------------- | ------------------------------------ |
+| **Best For**                                                                                                                                                                                                                                                            | Adhering to OS-native rules | General Node.js apps               | Linux-first workflows                |
+| **macOS Behavior**                                                                                                                                                                                                                                                      | `~/Library/Preferences`     | `~/Library/Preferences`            | Uses Linux paths (e.g., `~/.config`) |
+| **Windows Behavior**                                                                                                                                                                                                                                                    | `%APPDATA%`                 | `%APPDATA%`                        | Uses Linux paths                     |
+| **Maintenance**                                                                                                                                                                                                                                                         | Actively maintained         | High (maintained by Sindre Sorhus) | High (maintained by Sindre Sorhus)   |
+
+When to reconsider
+
+If you are building a **CLI tool** for developers who primarily use macOS and Linux, some users actually prefer seeing a `.config` folder on their Mac to keep their settings in one place across machines. In that specific case, you might prefer a library that allows you to force Linux-style paths even on macOS. \[[1](https://atmos.tools/changelog/macos-xdg-cli-conventions), [2](https://docs.rs/cross-xdg), [3](https://discuss.python.org/t/add-cross-platform-user-directories-to-pathlib-standard-library/45390?page=2)]
+
+However, for a general-purpose application, **@folder/xdg** is better because it respects the expectations of average Windows and macOS users by not cluttering their home directories with hidden Linux-style dotfolders. \[[1](https://www.reddit.com/r/golang/comments/1pgsy08/xdg%5Fbase%5Fdirectory%5Fspecification%5Fuse%5Favoid%5For%5Fit/), [2](https://gradyvuckovic.gitlab.io/linux-game-shipping-guide/2-general-advice/best-practices/)]
+
+Do you have a **specific target audience** for your app, like developers or general desktop users?
+
+- [link](https://www.reddit.com/r/golang/comments/1pgsy08/xdg%5Fbase%5Fdirectory%5Fspecification%5Fuse%5Favoid%5For%5Fit/)\
+  XDG Base Directory Specification - use, avoid or it is the best ...\
+  Definitely use it. Cluttering my home directory means an instant pass on using an app. It might not matter much to some, but lots ...\
+  Reddit
+- [link](https://github.com/sindresorhus/xdg-basedir)\
+  sindresorhus/xdg-basedir: Get XDG Base Directory paths\
+  Get XDG Base Directory paths. This package is meant for Linux. You should not use XDG on macOS or Windows. Instead, you should fol...\
+  GitHub
+- [link](https://atmos.tools/changelog/macos-xdg-cli-conventions)\
+  Breaking Change: macOS Now Uses ~/.config for XDG Paths\
+  The Problem​ When we implemented XDG Base Directory Specification support, we used the github.com/adrg/xdg library which defaults ...\
+  atmos.tools
+
+Show all
+
+install it via pnpm. write a poc.
+
+1:53 AM
+
+To get started with `pnpm`, run the following in your terminal:
+
+bash
+
+```
+pnpm add @folder/xdg
+```
+
+Use code with caution.
+
+The Proof of Concept (PoC)
+
+This script demonstrates how to resolve the platform-specific paths, create the folders if they are missing, and save a configuration file.
+
+javascript
+
+```
+import xdg from '@folder/xdg';
+import fs from 'node:fs';
+import path from 'node:path';
+
+// 1. Initialize XDG paths for your specific app
+// The 'subdir' option automatically handles the subfolder naming for you
+const dirs = xdg({ subdir: 'my-awesome-app' });
+
+console.log('--- Platform Specific Paths ---');
+console.log('Config:', dirs.config);
+console.log('Data:  ', dirs.data);
+console.log('Cache: ', dirs.cache);
+
+/**
+ * Proof of Concept: Save a user setting
+ */
+function saveConfig(settings) {
+  try {
+    // 2. Ensure the directory exists (recursive: true is key)
+    if (!fs.existsSync(dirs.config)) {
+      fs.mkdirSync(dirs.config, { recursive: true });
+    }
+
+    // 3. Write the file
+    const filePath = path.join(dirs.config, 'config.json');
+    fs.writeFileSync(filePath, JSON.stringify(settings, null, 2));
+
+    console.log(`\nSuccess: Config saved to ${filePath}`);
+  } catch (err) {
+    console.error('Failed to save config:', err);
+  }
+}
+
+// Run the PoC
+saveConfig({
+  theme: 'nord',
+  lastLogin: new Date().toISOString()
+});
+```
+
+Use code with caution.
+
+Why this works well:
+
+- **Linux**: It will likely land in `~/.config/my-awesome-app`.
+- **macOS**: It maps to `~/Library/Preferences/my-awesome-app`.
+- **Windows**: It maps to `%APPDATA%\my-awesome-app`.
+- **Safety**: Using `fs.mkdirSync` with `{ recursive: true }` prevents errors if the parent directories (like `.config` or `AppData`) don't exist yet on a fresh OS install.
+
+Would you like to see how to **read the data back** with a fallback for when the file doesn't exist yet?
+
+xdg methods
+
+1:56 AM
+
+The **[@folder/xdg](https://www.npmjs.com/package/@folder/xdg)** library is primarily a path-resolution tool. Its "methods" are the different ways you can invoke it to get these paths, either globally for the current system or specific to a particular platform. \[[1](https://www.reddit.com/r/linux%5Fgaming/comments/e72ujn/a%5Fquick%5Fsummary%5Fof%5Fthe%5Fxdg%5Fbase%5Fdirectory/)]
+
+Main Execution Methods
+
+The library provides several ways to call it, depending on your needs:
+
+- **`xdg(options)`**: The default export. It automatically detects your current operating system (`process.platform`) and returns the appropriate paths.
+- **`xdg.macos()`** (or **`xdg.darwin()`**): Explicitly returns paths for macOS, regardless of the system you are currently running on.
+- **`xdg.linux()`**: Explicitly returns the paths for Linux following the [XDG Base Directory Specification](https://specifications.freedesktop.org/basedir/latest/).
+- **`xdg.windows()`** (or **`xdg.win32()`**): Explicitly returns Windows-equivalent paths using `%APPDATA%` and `%LOCALAPPDATA%`. \[[1](https://www.npmjs.com/package/@folder/xdg), [2](https://www.npmjs.com/package/@folder/xdg)]
+
+Returned Path Object \[[1](https://www.npmjs.com/package/@folder/xdg)]
+
+When you call any of the above methods, you receive an object containing the following standard keys:
+
+- **`config`**: Where user-specific configuration files should go (e.g., `~/.config` on Linux or `~/Library/Preferences` on macOS).
+- **`data`**: Where persistent data files should be written (e.g., `~/.local/share` on Linux).
+- **`cache`**: For non-essential, temporary data that can be safely deleted (e.g., `~/.cache` on Linux).
+- **`state`**: For data that persists between restarts but isn't as critical as "data" (e.g., history or layout states).
+- **`runtime`**: For highly temporary files like sockets or named pipes. \[[1](https://specifications.freedesktop.org/basedir/), [2](https://specifications.freedesktop.org/basedir/0.7), [3](https://github.com/bkuhlmann/xdg), [4](https://www.npmjs.com/package/@folder/xdg), [5](https://www.npmjs.com/package/@folder/xdg)]
+
+Important Options
+
+When calling these methods, you can pass an `options` object:
+
+- **`subdir`**: String. Automatically appends your application name to every path (e.g., `xdg({ subdir: 'myapp' })`).
+- **`homedir`**: String. Allows you to override the user's home directory (useful for testing). \[[1](https://www.npmjs.com/package/@folder/xdg)]
+
+Would you like to see a **comparison of the actual output strings** for a specific application name across all three platforms?
+
+- [link](https://specifications.freedesktop.org/basedir/)\
+  XDG Base Directory Specification\
+  $XDG\_STATE\_HOME defines the base directory relative to which user-specific state files should be stored. If $XDG\_STATE\_HOME is eit...\
+  Freedesktop.org
+- [link](https://www.npmjs.com/package/@folder/xdg)\
+  @folder/xdg - npm\
+  Get the XDG Base Directory paths for Linux, or equivalent paths for Windows or MaxOS. Params. options {Object} returns {Object}: R...\
+  NPM
+- [link](https://github.com/bkuhlmann/xdg)\
+  A XDG Base Directory Specification implementation. - GitHub\
+  Here is how the $XDG\_RUNTIME\_DIR is meant to be used should you choose to use it: \* Must reference user-specific non-essential run...\
+  GitHub
+
+Show all
+
+options
+
+The **[@folder/xdg](https://www.npmjs.com/package/@folder/xdg)** library accepts several options to customize how and where your application's paths are generated. \[[1](https://www.npmjs.com/package/@folder/xdg)]
+
+Core Options
+
+You pass these in an object when calling the `xdg()` function:
+
+- **`subdir`** (string): **Most common.** This appends a specific folder name (usually your app name) to all returned paths.
+  - _Default_: `'xdg'`.
+- **`platform`** (string): Forces the library to return paths for a specific OS (e.g., `'darwin'`, `'linux'`, or `'win32'`).
+  - _Default_: `process.platform`.
+- **`homedir`** (string): Overrides the default home directory used for path construction.
+  - _Default_: `os.homedir()`.
+- **`env`** (object): Allows you to pass a custom environment object to check for XDG variables (useful for testing).
+  - _Default_: `process.env`. \[]
+
+Directory Overrides
+
+You can manually override specific standard directories if you don't want to use the platform defaults:
+
+- **`configdir`**, **`datadir`**, **`cachedir`**, **`runtimedir`** (string): Manually set a base path for one of these categories. \[[1](https://www.npmjs.com/package/@folder/xdg)]
+
+Advanced Options
+
+- **`expanded`** (boolean): When true, expands the paths into a more detailed object.
+- **`tempdir`** (string): Specifies a custom temporary directory.
+- **`resolve`** (function): A custom function to handle how paths are resolved to each directory, specifically if you need to manage how folder names are cased across different file systems. \[]
+
+Example with Options
+
+javascript
+
+```
+const dirs = xdg({
+  subdir: 'my-app',
+  platform: 'linux', // Force Linux paths even if on Mac
+  homedir: '/custom/user/path'
+});
+```
+
+Use code with caution.
+
+Would you like to see how to use the **`expanded`** option to get even more specific directory metadata?
+
+AI responses may include mistakes. For financial advice, consult a professional. [Learn more](https://support.google.com/websearch?p=aimode\&gl=us)
+
+- [link](https://www.npmjs.com/package/@folder/xdg)\
+  @folder/xdg - npm\
+  Aug 3, 2023 — Table\_title: Click to see all available options Table\_content: header: | Option | Type | Description | Default Value | row: | Opti...\
+  NPM
+
+#
+
+how to get home dir in nodejs
+
+The most reliable, built-in way to get the current user's home directory in [Node.js](https://nodejs.org/en) is using the `os.homedir()` method from the [os core module](https://nodejs.org/api/os.html). \[[1](https://www.geeksforgeeks.org/node-js/node-js-os-homedir-method/), [2](https://futurestud.io/tutorials/node-js-retrieve-the-path-to-the-users-home-directory)]
+
+1\. Standard Method: `os.homedir()`
+
+This method is platform-agnostic, meaning it automatically handles the differences between Windows, macOS, and Linux. \[[1](https://dustinpfister.github.io/2020/05/20/nodejs-os-homedir/), [2](https://futurestud.io/tutorials/node-js-retrieve-the-path-to-the-users-home-directory), [3](https://www.geeksforgeeks.org/node-js/node-js-os-homedir-method/)]
+
+javascript
+
+```
+const os = require('os');
+const homeDir = os.homedir();
+
+console.log(homeDir);
+// Output: C:\Users\Username (Windows) or /Users/username (macOS) or /home/username (Linux)
+```
+
+Use code with caution.
+
+2\. Reliable Effective User Method: `os.userInfo()` \[[1](https://nodejs.org/api/os.html)]
+
+If you need the home directory for the **effective user** (for example, when running with `sudo`), `os.userInfo().homedir` is often more accurate because it skips environment variable checks and looks at the OS user record directly. \[[1](https://github.com/nodejs/node/issues/5582)]
+
+javascript
+
+```
+const os = require('os');
+const userInfo = os.userInfo();
+
+console.log(userInfo.homedir);
+```
+
+Use code with caution.
+
+3\. Manual Fallback: Environment Variables
+
+You can also manually check environment variables, though this is less reliable than the built-in methods: \[[1](https://mepis.org/community/t/whats-the-way-to-find-out-my-node-js-version-on-windows/1233), [2](https://www.geeksforgeeks.org/node-js/node-js-os-homedir-method/)]
+
+- **Windows**: `process.env.USERPROFILE`
+- **POSIX (macOS/Linux)**: `process.env.HOME` \[[1](https://www.tutorialspoint.com/nodejs/nodejs%5Fos%5Fhomedir%5Fmethod.htm)]
+
+Summary Table: Home Directory Methods
+
+| Method \[[1](https://dev.to/melvin2016/how-to-get-the-current-home-directory-of-the-user-in-node-js-445a), [2](https://www.digitalocean.com/community/tutorials/how-to-write-and-run-your-first-program-in-node-js), [3](https://github.com/nodejs/node/issues/5582), [4](https://www.geeksforgeeks.org/node-js/node-js-os-homedir-method/)] | Best Use Case                                      | Platform Support |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- | ---------------- |
+| `os.homedir()`                                                                                                                                                                                                                                                                                                                               | Standard, general use                              | Cross-platform   |
+| `os.userInfo().homedir`                                                                                                                                                                                                                                                                                                                      | Cases where environment variables might be spoofed | Cross-platform   |
+| `process.env.HOME`                                                                                                                                                                                                                                                                                                                           | Manual check on Linux/Unix systems                 | POSIX only       |
+| `process.env.USERPROFILE`                                                                                                                                                                                                                                                                                                                    | Manual check on Windows systems                    | Windows only     |
+
+Do you need help with **path joining** or **file management** within that home directory?
+
+- [link](https://dev.to/melvin2016/how-to-get-the-current-home-directory-of-the-user-in-node-js-445a)\
+  How to get the current home directory of the user in Node.js?\
+  Mar 19, 2021 — #node. Originally posted here! To get the current user home directory, you can use the homedir() method from the os module in Node...\
+  DEV Community
+- [link](https://www.geeksforgeeks.org/node-js/node-js-os-homedir-method/)\
+  Node.js os.homedir() Method - GeeksforGeeks\
+  Oct 13, 2021 — homedir() Method. Last Updated : 13 Oct, 2021. The os.homedir() method is an inbuilt application programming interface of the os m...\
+  GeeksforGeeks
+- [link](https://futurestud.io/tutorials/node-js-retrieve-the-path-to-the-users-home-directory)\
+  Node.js — Retrieve the Path to the User's Home Directory\
+  May 13, 2021 — Get the User's Home Directory Path. Node. js comes with the os core module allowing you to retrieve data from the operating system...\
+  futurestud.io
+
+Show all
+
+use esmodule
+
+To use these methods in **ES Modules** (`import` instead of `require`), you simply import from the `node:os` built-in module.
+
+1\. Standard Method
+
+This is the most common approach for cross-platform apps.
+
+javascript
+
+```
+import os from 'node:os';
+
+const homeDir = os.homedir();
+console.log(homeDir);
+```
+
+Use code with caution.
+
+2\. Destructured Approach
+
+If you only need that specific function, you can destructure it for cleaner code:
+
+javascript
+
+```
+import { homedir } from 'node:os';
+
+console.log(homedir());
+```
+
+Use code with caution.
+
+3\. Combining with Paths
+
+Since you are likely getting the home directory to point to a specific file or folder, it’s best to use the `path` module as well:
+
+javascript
+
+```
+import { homedir } from 'node:os';
+import path from 'node:path';
+
+const configPath = path.join(homedir(), '.my-app-config');
+console.log(configPath);
+```
+
+Use code with caution.
+
+**Note:** Ensure your `package.json` contains `"type": "module"` or you are using the `.mjs` extension to enable ES Modules.
+
+Would you like to see how to **read or write a file** to a specific folder in the home directory?
+
+#
+
+how to define a type of non empty string in ts
+
+In TypeScript, there is no single built-in primitive for a "non-empty string," but you can achieve this behavior using several different patterns depending on whether you need strict compile-time checking or runtime validation. \[[1](https://stackoverflow.com/questions/46253340/how-to-write-a-string-type-that-does-not-contain-an-empty-string-in-typescript)]
+
+1\. Template Literal Types (Compile-time) \[[1](https://medium.com/@muhmdshanoob/mastering-advanced-typescript-typings-a-complete-guide-with-real-world-examples-9af3f60d0f12)]
+
+The simplest way to enforce that a string contains at least one character at compile-time is by using template literal types. \[[1](https://www.linkedin.com/posts/robert-kerlik-22b391263%5Fa-simple-typescript-type-for-non-empty-strings-activity-7310765219964674048-xGzB), [2](https://stackoverflow.com/questions/72197509/typescript-template-literals-type-force-structure)]
+
+typescript
+
+```
+type NonEmptyString = `${string}${any}`;
+```
+
+Use code with caution.
+
+- **How it works**: This type requires the string to have at least one character (the `${any}` part) followed by any remaining string.
+- **Limitation**: This only works for **literals** or types that TypeScript can narrow down. If you pass a generic `string` variable, TypeScript will still see it as potentially empty. \[[1](https://stackoverflow.com/questions/46253340/how-to-write-a-string-type-that-does-not-contain-an-empty-string-in-typescript), [2](https://stackoverflow.com/questions/72197509/typescript-template-literals-type-force-structure), [4](https://www.cnpp.dev/blog/practical-type-system/eradicate-empty-string/index.html), [5](https://www.linkedin.com/posts/robert-kerlik-22b391263%5Fa-simple-typescript-type-for-non-empty-strings-activity-7310765219964674048-xGzB)]
+
+2\. Branded Types (The "Opaque" Pattern)
+
+If you want to ensure a variable is _explicitly_ validated as non-empty before it can be used, use a **branded type**. \[[1](https://www.reddit.com/r/typescript/comments/18mvwhf/how%5Fto%5Fcreate%5Fa%5Ftype%5Fthat%5Frejects%5Fempty%5Fstring/), [2](https://blog.logrocket.com/leveraging-typescript-branded-types-stronger-type-checks/)]
+
+typescript
+
+```
+type NonEmptyString = string & { readonly __brand: unique symbol };
+
+function makeNonEmptyString(value: string): NonEmptyString {
+  if (value.length === 0) {
+    throw new Error("String cannot be empty");
+  }
+  return value as NonEmptyString;
+}
+```
+
+Use code with caution.
+
+- **How it works**: By intersecting `string` with a unique symbol, you create a type that looks like a string but cannot be assigned a standard string value without going through your validation function.
+- **Benefit**: This is the most robust method for handling user input or external data. \[, [2](https://www.learningtypescript.com/articles/branded-types), [3](https://www.youtube.com/watch?v=yxoN1Q8innE\&t=1), [4](https://www.youtube.com/watch?v=aP6w2OzidYM), [5](https://www.typescriptlang.org/play/typescript/language-extensions/nominal-typing.ts.html)]
+
+3\. Generic Validation (Function Parameters)
+
+To prevent a function from accepting an empty string literal, you can use a generic type constraint. \[[1](https://stackoverflow.com/questions/46253340/how-to-write-a-string-type-that-does-not-contain-an-empty-string-in-typescript), [2](https://stackoverflow.com/questions/66828502/conditional-type-based-on-a-non-empty-string)]
+
+typescript
+
+```
+type NonEmpty<T extends string> = T extends '' ? never : T;
+
+function processString<T extends string>(input: NonEmpty<T>) {
+  return input;
+}
+
+processString("hello"); // OK
+processString("");      // Error: Argument of type 'string' is not assignable to 'never'
+```
+
+Use code with caution.
+
+- **How it works**: If the provided literal is an empty string, the type resolves to `never`, causing a compiler error. \[[1](https://stackoverflow.com/questions/66828502/conditional-type-based-on-a-non-empty-string), [2](https://dev.to/busypeoples/notes-on-typescript-conditional-types-4bh)]
+
+4\. Custom Type Guard
+
+For runtime checks that narrow the type later in your logic, use a **type guard**. \[[1](https://www.reddit.com/r/typescript/comments/18mvwhf/how%5Fto%5Fcreate%5Fa%5Ftype%5Fthat%5Frejects%5Fempty%5Fstring/)]
+
+typescript
+
+```
+function isNonEmpty(s: string): s is NonEmptyString {
+  return s.length > 0;
+}
+```
+
+Use code with caution.
+
+Would you like to see how to integrate these into a **Zod schema** or another validation library for automated runtime checks?
+
+- [link](https://stackoverflow.com/questions/46253340/how-to-write-a-string-type-that-does-not-contain-an-empty-string-in-typescript)\
+  How to write a string type that does not contain an empty string ...\
+  Sep 16, 2017 — \* 4 Answers. Sorted by: 22. \* 1 Comment. Add a comment. xiang. xiang Over a year ago. Is there any possible someday a rewrote vers...\
+  Stack Overflow
+- [link](https://www.reddit.com/r/typescript/comments/18mvwhf/how%5Fto%5Fcreate%5Fa%5Ftype%5Fthat%5Frejects%5Fempty%5Fstring/)\
+  How to Create a Type That Rejects Empty String? : r/typescript\
+  Dec 20, 2023 — declare const opaqueSym: unique symbol; export type NonEmptyString = string & { \[opaqueSym]: "NonEmptyString" }; export function N...\
+  Reddit·r/typescript
+- [link](https://www.linkedin.com/posts/robert-kerlik-22b391263%5Fa-simple-typescript-type-for-non-empty-strings-activity-7310765219964674048-xGzB)\
+  A simple TypeScript type for non-empty strings - LinkedIn\
+  Mar 26, 2025 — A simple TypeScript type for non-empty strings: type NonEmptyString = \`${any}${string}\`; Interestingly, \`${string}${string}\` accep...\
+  LinkedIn·Robert Kerlik
+
+Show all
+
+#
+
+how to import a json config in nodejs
+
+The method for importing a JSON configuration in Node.js depends on the module system you are using: **CommonJS** (`require`) or **ES Modules** (`import`). \[[1](https://coreui.io/answers/how-to-import-json-in-nodejs/)]
+
+1\. Using CommonJS (`require`)
+
+This is the traditional and most straightforward method. Node.js automatically parses the JSON file into a JavaScript object and caches it. \[[1](https://blog.logrocket.com/reading-writing-json-files-node-js-complete-tutorial/), [2](https://coreui.io/answers/how-to-import-json-in-nodejs/)]
+
+javascript
+
+```
+const config = require('./config.json');
+
+console.log(config.someKey);
+```
+
+Use code with caution.
+
+- **Pros**: Simple, synchronous, and automatically parses JSON.
+- **Cons**: Caches the file; if the file changes on disk, `require` will still return the old version until the process restarts. \[[1](https://www.youtube.com/watch?v=jCMt0CtNmrc\&t=83), [2](https://www.youtube.com/watch?v=Es7SzBBc6qE\&t=5), [3](https://blog.logrocket.com/reading-writing-json-files-node-js-complete-tutorial/), [4](https://javascript.plainenglish.io/how-to-import-json-files-and-use-watch-mode-in-node-js-c581ca6916ae), [5](https://stackoverflow.com/questions/68521604/import-json-file-with-node-js)]
+
+2\. Using ES Modules (`import`)
+
+For modern Node.js environments (v18+), you must use **Import Attributes** (formerly known as assertions) to explicitly state the module type is JSON. \[[1](https://coreui.io/answers/how-to-import-json-in-nodejs/), [2](https://oneuptime.com/blog/post/2026-01-22-nodejs-read-json-files/view)]
+
+javascript
+
+```
+import config from './config.json' with { type: 'json' };
+
+console.log(config.someKey);
+```
+
+Use code with caution.
+
+- **Static Import**: Use the code above at the top of your file.
+
+- **Dynamic Import**: Useful if you need to load a config conditionally or at runtime:\
+  javascript
+
+<!---->
+
+```
+const { default: config } = await import('./config.json', { with: { type: 'json' } });
+```
+
+Use code with caution.\
+\[[1](https://www.stefanjudis.com/snippets/how-to-import-json-files-in-es-modules-node-js/), [2](https://oneuptime.com/blog/post/2026-01-22-nodejs-read-json-files/view), [3](https://medium.com/@naveenyaduvanshi007/understanding-require-and-import-in-javascript-a-comprehensive-guide-413765bc5e44)]
+
+3\. Using the `fs` Module (Manual Load)
+
+If you need to reload the config during runtime without restarting or if you prefer asynchronous loading, use the built-in File System module. \[[1](https://coreui.io/answers/how-to-import-json-in-nodejs/), [2](https://stackabuse.com/bytes/how-to-import-a-json-file-in-javascript-node-js/)]
+
+- **Asynchronous (Recommended for performance)**:\
+  javascript
+
+<!---->
+
+```
+import { readFile } from 'fs/promises';
+const config = JSON.parse(await readFile('./config.json', 'utf-8'));
+```
+
+Use code with caution.
+
+- **Synchronous (Simpler for startup scripts)**:\
+  javascript
+
+<!---->
+
+```
+const fs = require('fs');
+const config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
+```
+
+Use code with caution.\
+\[[1](https://geshan.com.np/blog/2024/10/nodejs-read-json-file/), [2](https://dev.to/stefanjudis/how-to-import-json-files-in-es-modules-node-js-3b24), [3](https://javascript.plainenglish.io/node-js-tips-express-templates-and-requests-and-mongodb-queries-2f2afdde86fe), [4](https://stackoverflow.com/questions/68521604/import-json-file-with-node-js), [5](https://www.mariokandut.com/how-to-read-and-write-json-files-with-node-js/)]
+
+4\. Special Cases
+
+- **TypeScript**: To import JSON directly in TypeScript, you must enable `resolveJsonModule: true` in your [tsconfig.json](https://stackoverflow.com/questions/69014923/is-there-an-easy-way-to-load-json-in-a-node-module).
+
+- **Using a "require" bridge in ESM**: If you are in an ES Module but want CommonJS-style loading, you can use `createRequire`:\
+  javascript
+
+<!---->
+
+```
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+const config = require('./config.json');
+```
+
+Use code with caution.\
+\[[1](https://stackoverflow.com/questions/69014923/is-there-an-easy-way-to-load-json-in-a-node-module), [2](https://stackoverflow.com/questions/68521604/import-json-file-with-node-js), [3](https://dev.to/stefanjudis/how-to-import-json-files-in-es-modules-node-js-3b24), [4](https://stackoverflow.com/questions/66726365/how-should-i-import-json-in-node), [5](https://docs.deno.com/runtime/fundamentals/node/)]
+
+Would you like help setting up a **centralized configuration manager** that handles multiple environments (like production vs. development)?
+
+- [link](https://www.stefanjudis.com/snippets/how-to-import-json-files-in-es-modules-node-js/)\
+  How to import JSON files in ES modules (Node.js) - Stefan Judis\
+  May 16, 2021 — After quite a bit of back and forth, the current Node. js LTS (currently v22 ) and future Node. js versions support JSON modules b...\
+  www.stefanjudis.com
+- [link](https://www.youtube.com/watch?v=jCMt0CtNmrc\&t=83)\
+  Nodejs Tutorial #25: Import JSON Data and Create Your First ...\
+  Jan 10, 2025 — so as I mentioned in NodeJS each and every file will be treated as different module. so here this student.json is also file so thi...\
+  5m\
+  YouTube·Step by Step
+- [link](https://coreui.io/answers/how-to-import-json-in-nodejs/)\
+  How to import JSON in Node.js - CoreUI\
+  Feb 27, 2026 — How to import JSON in Node. js. ... Loading JSON data is fundamental in Node. js applications, whether for configuration files, te...\
+  CoreUI
+
+Show all
+
+#
+
+how to async write into a file in nodejs and create the path if needed
+
+To write to a file asynchronously while ensuring the parent path is created, you must first create the directory structure using `fs.promises.mkdir` with the `recursive: true` option before calling `fs.promises.writeFile`. \[[1](https://oneuptime.com/blog/post/2026-01-22-nodejs-write-files-async/view), [2](https://coreui.io/answers/how-to-create-directories-in-nodejs/)]
+
+Recommended Approach (Async/Await)
+
+The most modern and readable way is to use the **`fs/promises`** module. \[[1](https://nodejs.org/learn/manipulating-files/writing-files-with-nodejs), [2](https://transloadit.com/devtips/efficiently-read-files-in-node-js-with-the-fs-module/), [3](https://nodejsdesignpatterns.com/blog/reading-writing-files-nodejs/)]
+
+javascript
+
+```
+const fs = require('fs/promises');
+const path = require('path');
+
+async function writeFileWithDir(filePath, data) {
+  try {
+    // 1. Extract the directory path from the full file path
+    const dir = path.dirname(filePath);
+
+    // 2. Create the directory (including parents) if it doesn't exist
+    await fs.mkdir(dir, { recursive: true });
+
+    // 3. Write the file data asynchronously
+    await fs.writeFile(filePath, data);
+
+    console.log('File written successfully');
+  } catch (err) {
+    console.error('Error writing file:', err);
+  }
+}
+
+// Usage example
+writeFileWithDir('./logs/2026/may/app.log', 'Log message entry');
+```
+
+Use code with caution.
+
+Key Components
+
+- **`path.dirname(filePath)`**: Isolates the folder structure from the filename so you don't accidentally create a folder named after your file.
+- **`mkdir(dir, { recursive: true })`**: This is critical. Without `recursive: true`, the command will fail if any parent directory in the path is missing.
+- **`writeFile(filePath, data)`**: By default, this method creates the file if it doesn't exist or overwrites it if it does. \[[1](https://stackoverflow.com/questions/13542667/create-directory-when-writing-to-file-in-node-js), [2](https://gist.github.com/drodsou/de2ba6291aea67ffc5bc4b52d8c32abd), [3](https://medium.com/@AnaghTechnologies/understanding-fs-writefile-in-node-js-57708bd58d57), [4](https://www.memberstack.com/blog/write-files-in-node-js), [5](https://coreui.io/answers/how-to-create-directories-in-nodejs/)]
+
+Alternative: Using `fs-extra` \[[1](https://blog.logrocket.com/reading-writing-json-files-node-js-complete-tutorial/)]
+
+If you prefer a one-line solution and don't mind adding a dependency, the [fs-extra](https://www.npmjs.com/package/fs-extra) library provides an `outputFile` method that handles both steps automatically. \[, [2](https://stackoverflow.com/questions/16316330/how-to-write-file-if-parent-folder-doesnt-exist)]
+
+javascript
+
+```
+const fs = require('fs-extra');
+
+// This automatically creates the directories if they don't exist
+await fs.outputFile('./path/to/file.txt', 'Hello World!');
+```
+
+Use code with caution.
+
+Do you need to **append** data to an existing file instead of overwriting it? \[[1](https://www.memberstack.com/blog/write-files-in-node-js), [2](https://www.almabetter.com/bytes/tutorials/nodejs/fs-module-in-nodejs), [3](https://medium.com/@AnaghTechnologies/understanding-fs-writefile-in-node-js-57708bd58d57)]
+
+- [link](https://www.memberstack.com/blog/write-files-in-node-js)\
+  6 Ways to Write Files in Node.js (Developer's Guide) - Memberstack\
+  Jun 3, 2022 — Asynchronous methods ... If the file already exists, this method replaces the file's content with the new specified data; otherwis...\
+  Memberstack
+- [link](https://oneuptime.com/blog/post/2026-01-22-nodejs-write-files-async/view)\
+  How to Write Files Asynchronously in Node.js - OneUptime\
+  Jan 22, 2026 — join(',') + '\n'; callback(null, line); }, }); const source = require('stream'). Readable. from(records); const destination = fs. ...\
+  OneUptime
+- [link](https://medium.com/@AnaghTechnologies/understanding-fs-writefile-in-node-js-57708bd58d57)\
+  Understanding fs.writeFile() in Node.js | by Anagh Technologies\
+  Sep 11, 2024 — One of its fundamental methods is fs. writeFile(). This function is used to create or overwrite files, writing data to them asynch...\
+  Medium
+
+Show all
+
+#
+
+how to async write into a file in nodejs and create the path if needed. use es module.
+
+To write a file asynchronously in Node.js while automatically creating any missing directories in the path, use the `node:fs/promises` module along with the `recursive` option in `mkdir`. \[[1](https://www.30secondsofcode.org/js/s/create-directory-if-not-exists/), [2](https://nodejsdesignpatterns.com/blog/reading-writing-files-nodejs/), [3](https://coreui.io/answers/how-to-create-directories-in-nodejs/)]
+
+Recommended Solution
+
+In modern Node.js (v14.8+), you can use **ES Modules** and **top-level await** to handle this concisely. \[[1](https://www.jonathancreamer.com/write-async-node-scripts-using-the-only-native-nodejs-modules/), [2](https://www.youtube.com/watch?v=lMWUqWKEGgQ\&t=137)]
+
+javascript
+
+```
+import { writeFile, mkdir } from 'node:fs/promises';
+import { dirname } from 'node:path';
+
+async function writeFileWithDir(filePath, content) {
+  try {
+    // 1. Get the directory path and create it recursively
+    await mkdir(dirname(filePath), { recursive: true });
+
+    // 2. Write the file
+    await writeFile(filePath, content, 'utf8');
+
+    console.log(`File saved to ${filePath}`);
+  } catch (err) {
+    console.error('Error writing file:', err);
+  }
+}
+
+// Usage
+const myPath = './logs/daily/output.txt';
+await writeFileWithDir(myPath, 'Hello from Node.js!');
+```
+
+Use code with caution.
+
+Key Components
+
+- **`import ... from 'node:fs/promises'`**: This imports the promise-based versions of file system methods, which is the modern standard for asynchronous operations.
+- **`mkdir(path, { recursive: true })`**: This is the critical step. The `{ recursive: true }` option ensures that if parent directories (e.g., `./logs/daily/`) don't exist, they are created automatically without throwing an error if they already exist.
+- **`dirname(filePath)`**: This utility from the `node:path` module extracts the directory portion of your file path so you don't accidentally try to create the file itself as a directory.
+- **`writeFile(filePath, content)`**: Once the directory exists, this creates (or overwrites) the file with your data. \[[1](https://stackoverflow.com/questions/13542667/create-directory-when-writing-to-file-in-node-js), [2](https://www.youtube.com/watch?v=Wt%5Fi73XFb7M), [3](https://nodejs.org/learn/manipulating-files/writing-files-with-nodejs), [4](https://futurestud.io/tutorials/node-js-how-to-create-a-directory-and-parents-if-needed), [5](https://oneuptime.com/blog/post/2026-01-22-nodejs-write-files-async/view), [6](https://medium.com/@abolfazlmashhadi93/using-the-fs-module-in-node-js-4c94a926eb73)]
+
+Quick Configuration
+
+To use this ES module syntax, ensure your `package.json` contains `"type": "module"`, or save your file with a `.mjs` extension. \[[1](https://aws.amazon.com/blogs/compute/using-node-js-es-modules-and-top-level-await-in-aws-lambda/), [2](https://www.youtube.com/watch?v=lMWUqWKEGgQ\&t=137)]
+
+Would you like to see how to **append** to the file instead of overwriting it?
+
+- [link](https://www.jonathancreamer.com/write-async-node-scripts-using-the-only-native-nodejs-modules/)\
+  Tips for writing nodejs scripts using only built-in modules and ...\
+  Jan 3, 2023 — But, this does... import path from 'node:path'; import { fileURLToPath } from 'node:url'; const \_\_filename = fileURLToPath(import.\
+  Jonathan Creamer
+- [link](https://www.youtube.com/watch?v=lMWUqWKEGgQ\&t=137)\
+  Start Using ES Modules Now\
+  Jun 9, 2023 — project into a ESM module all right I've copied all my files over to my ESM directory. so I listed out the steps you need to take ...\
+  3m\
+  YouTube·Engineer Man
+- [link](https://www.youtube.com/watch?v=Wt%5Fi73XFb7M)\
+  NodeJs: Reading and Writing to files\
+  Mar 25, 2022 — what's going on guys so in this video I'm going to show you guys how you can read and write to a file using Node.js. and you're go...\
+  13:33\
+  YouTube·Sanjeev Thiyagarajan
+
+Show all
+
+how to read
+
+To read a file asynchronously in Node.js using ES modules, use the `readFile` function from `node:fs/promises`.
+
+Basic Async Read
+
+The most common way is to read the file as a string by specifying an encoding like `'utf8'`.
+
+javascript
+
+```
+import { readFile } from 'node:fs/promises';
+
+async function readMyFile(filePath) {
+  try {
+    const data = await readFile(filePath, 'utf8');
+    console.log(data);
+  } catch (err) {
+    console.error('Error reading file:', err.message);
+  }
+}
+
+await readMyFile('./logs/daily/output.txt');
+```
+
+Use code with caution.
+
+Key Considerations
+
+- **Encoding**: If you omit `'utf8'`, Node.js will return a **Buffer** object (raw binary data) instead of a string.
+
+- **Error Handling**: If the path you created earlier doesn't exist or permissions are restricted, `readFile` will throw an error. Using a `try...catch` block is the best practice for preventing crashes.
+
+- **JSON Files**: If you are reading a `.json` file, you'll need to parse the string result:\
+  javascript
+
+<!---->
+
+```
+const config = JSON.parse(await readFile('./config.json', 'utf8'));
+```
+
+Use code with caution.
+
+Alternative: Reading Line by Line
+
+If the file is very large, reading the whole thing into memory at once can be inefficient. In that case, you can use the `readline` module with a readable stream:
+
+javascript
+
+```
+import { createReadStream } from 'node:fs';
+import { createInterface } from 'node:readline';
+
+const fileStream = createReadStream('./logs/daily/output.txt');
+const rl = createInterface({ input: fileStream, crlfDelay: Infinity });
+
+for await (const line of rl) {
+  console.log(`Line from file: ${line}`);
+}
+```
+
+Use code with caution.
+
+Do you need to check if the file **exists** before trying to read it, or are you moving on to **deleting** files next?
+
+#
+
+in nodejs i want to import a module. but the module needs a global init to be runned first. how can i do that.
+
+In Node.js, you can run initialization code before importing a module by <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">using <strong>dynamic imports</strong> or <strong>top-level await</strong></mark>, depending on your module system (ESM or CommonJS). \[[1](https://aws.amazon.com/blogs/compute/using-node-js-es-modules-and-top-level-await-in-aws-lambda/), [2](https://www.youtube.com/watch?v=i3lMN2JqRtI\&t=9), [3](https://stackoverflow.com/questions/68167001/how-to-dynamically-import-a-node-module-after-installing-it-during-runtime), [4](https://stackoverflow.com/questions/55132233/import-a-node-js-module-function-without-invoking-it)]
+
+1\. Using Top-Level Await (Modern ESM)
+
+If your project uses ES Modules (with `"type": "module"` in `package.json`), you can run initialization code directly at the top of your file. While static `import` statements are normally hoisted to the top, you can use **dynamic `import()`** to ensure code runs first. \[[1](https://stackoverflow.com/questions/65656104/how-to-run-several-code-before-import-syntax-in-javascript), [2](https://allthingssmitty.com/2025/06/16/using-await-at-the-top-level-in-es-modules/), [3](https://www.youtube.com/watch?v=V4Rvruf%5F2zY), [4](https://aws.amazon.com/blogs/compute/using-node-js-es-modules-and-top-level-await-in-aws-lambda/)]
+
+javascript
+
+```
+// main.js
+// 1. Run your global initialization first
+console.log("Initializing...");
+process.env.MY_SECRET = "initialized_value";
+
+// 2. Dynamically import the module after initialization
+const myModule = await import('./my-module.js');
+
+// Now you can use it
+myModule.doSomething();
+```
+
+Use code with caution.
+
+2\. Using Side-Effect Imports (ESM)
+
+If your initialization logic is contained in its own file, you can import it before other modules. Node.js executes imports in the order they appear. \[[1](https://stackoverflow.com/questions/65656104/how-to-run-several-code-before-import-syntax-in-javascript), [2](https://github.com/nodejs/node/issues/50427)]
+
+javascript
+
+```
+// main.js
+import './init-globals.js'; // This runs first
+import { someFunction } from './my-module.js'; // This runs second
+
+someFunction();
+```
+
+Use code with caution.
+
+3\. Using `require` (CommonJS)
+
+In the older CommonJS system, `require` is synchronous and can be called anywhere. You simply place your initialization code before the `require` call. \[[1](https://medium.com/tldr-notes/import-vs-require-in-javascript-commonjs-vs-es-modules-b43806c5735c), [2](https://www.youtube.com/watch?v=U34%5FEHoGLVo\&t=14), [3](https://blog.devgenius.io/beginners-guide-understanding-es-modules-in-javascript-import-vs-require-7f290c64850f), [4](https://learntoearnlabs.com/interview-questions/node-js/)]
+
+javascript
+
+```
+// index.js
+// Run init first
+global.someConfig = { apiKey: '12345' };
+
+// Then import the module
+const myModule = require('./my-module');
+```
+
+Use code with caution.
+
+4\. Using the `--require` CLI Flag \[[1](https://javascript.plainenglish.io/whats-new-in-node-js-v25-4-0-stable-esm-faster-startup-better-debugging-049896c5540b)]
+
+If you need a specific script to run before **any** part of your application (even before the entry point), you can use the `-r` or `--require` flag when starting Node.js. \[[1](https://stackoverflow.com/questions/34713028/how-do-i-require-a-module-using-node-from-the-command-line)]
+
+bash
+
+```
+# This loads 'init.js' before starting 'app.js'
+node --require ./init.js app.js
+```
+
+Use code with caution.
+
+**Which method should you use?**
+
+- Use **dynamic `import()`** if you need to wait for an asynchronous task (like a database connection) before the module loads.
+- Use **side-effect imports** if your initialization is simple and synchronous.
+- Use **`--require`** for environment setup that must affect the entire process globally. \[[1](https://stackoverflow.com/questions/65656104/how-to-run-several-code-before-import-syntax-in-javascript), [2](https://github.com/tc39/proposal-top-level-await), [3](https://stackoverflow.com/questions/34713028/how-do-i-require-a-module-using-node-from-the-command-line)]
+
+Are you working with **asynchronous** initialization (like fetching a config from a URL) or just setting simple **global variables**?
+
+- [link](https://stackoverflow.com/questions/34713028/how-do-i-require-a-module-using-node-from-the-command-line)\
+  How do I require a module using node from the command line?\
+  Jan 11, 2016 — \* 1 Answer. Sorted by: 54. You can execute the following: npm install moment # module must be installed locally node --require mom...\
+  Stack Overflow
+- [link](https://stackoverflow.com/questions/65656104/how-to-run-several-code-before-import-syntax-in-javascript)\
+  How to run several code before import syntax in Javascript?\
+  Jan 10, 2021 — Example. main.js console.log('Inside main.js file') import './set-env.js' import './file.js' set-env.js console.log('Inside set-en...\
+  Stack Overflow
+- [link](https://github.com/tc39/proposal-top-level-await)\
+  ECMAScript proposal: Top-level await - GitHub\
+  Aug 29, 2021 — Synopsis. Top-level await enables modules to act as big async functions: With top-level await , ECMAScript Modules (ESM) can await...\
+  GitHub
+
+Show all
+
+#
+
+void type in ts
+
+The **`void`** type in TypeScript <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">represents the <strong>absence of a return value</strong></mark>. It is primarily used to annotate functions that perform an action—like logging a message or updating a state—rather than computing a value to return to the caller. \[[1](https://learntypescript.dev/03/l3-void/), [2](https://mimo.org/glossary/typescript/void), [3](https://dev.to/tomoy/what-is-void-in-typescript-2jg7), [4](https://www.geeksforgeeks.org/typescript/typescript-void-function/), [5](https://www.geeksforgeeks.org/typescript/typescript-return-type-void/)]
+
+Core Usage
+
+- **Function Return Type**: When a function has no `return` statement, or returns nothing explicitly, its return type is inferred as `void`.
+- **Variable Declaration**: While you _can_ declare a variable of type `void`, it is generally useless because the only values you can assign to it are `undefined` (or `null` if the `strictNullChecks` flag is off). \[[1](https://betterprogramming.pub/what-is-void-in-typescript-2d21d4936537), [2](https://www.youtube.com/shorts/qjt8kirAIls), [3](https://www.tutorialsteacher.com/typescript/typescript-void), [4](https://www.youtube.com/watch?v=ox1zON2NlBQ), [5](https://www.youtube.com/watch?v=Q-OKB%5FbRZzM)]
+
+Comparison with Other Types
+
+| Type \[[1](https://medium.com/@navidbarsalari/%EF%B8%8F-void-vs-never-in-typescript-whats-the-real-difference-5672547f6599), [2](https://stackoverflow.com/questions/21120632/void-as-a-type-of-an-argument-of-a-generic-function-in-typescript), [3](https://codefinity.com/courses/v2/a6b0e12e-c89f-4955-adc6-180b9cebf1fc/c8f21d95-5972-4532-84f9-f5cb2703c140/52d817d3-fc3a-4ea9-8e6e-a303af8efa5d), [4](https://medium.com/swlh/whats-the-difference-between-never-and-void-in-typescript-16f6629bfcdc), [5](https://learntypescript.dev/03/l3-void/), [6](https://mimo.org/glossary/typescript/void)] | Meaning                                 | Common Use Case                                            |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- | ---------------------------------------------------------- |
+| **`void`**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | Does not return a meaningful value.     | Event handlers, logging functions.                         |
+| **`undefined`**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | A literal value in JavaScript.          | Optional parameters or explicit "no value" returns.        |
+| **`never`**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Never returns at all (execution stops). | Functions that always throw errors or have infinite loops. |
+
+Important "Gotcha": Contextual Typing
+
+In TypeScript, a function type with a `void` return type (e.g., `type Callback = () => void`) **does not force** the implementation to return nothing. Instead, it tells the caller to **ignore** whatever value might be returned. This is why you can pass a function that returns a `number` to a method expecting a `void` callback without an error. \[[1](https://stackoverflow.com/questions/71733946/react-typescript-type-a-void-function), [2](https://stackoverflow.com/questions/77032117/in-typescript-why-can-a-function-with-return-type-void-return-something), [3](https://stackoverflow.com/questions/59664670/typescript-async-function-return-type-void-vs-promisevoid)]
+
+Would you like to see examples of **void** being used in interfaces or generic function types?
+
+- [link](https://betterprogramming.pub/what-is-void-in-typescript-2d21d4936537)\
+  What Is Void in TypeScript? - Better Programming\
+  Jun 6, 2022 — While looking at TypeScript code, you may have come across the void return type. It's most commonly seen as a return type to funct...\
+  Better Programming
+- [link](https://learntypescript.dev/03/l3-void/)\
+  Understanding and using the void type - Learn TypeScript\
+  An example. Let's explore the void type . The code in the editor contains a function that outputs a string to the console. The fun...\
+  learntypescript.dev
+- [link](https://www.geeksforgeeks.org/typescript/typescript-void-function/)\
+  TypeScript void Function - GeeksforGeeks\
+  Jul 19, 2024 — Last Updated : 19 Jul, 2024. Void functions in TypeScript are functions that do not return a value. They perform actions or comput...\
+  GeeksforGeeks
+
+Show all
+
+#
+
+how to export global some existing functions in ts, using their existing types
+
+To export existing functions to the global scope in TypeScript while preserving their original types, you must use a **global declaration** file and the `typeof` operator. This approach allows you to reference existing implementation types without manually rewriting them. \[[1](https://www.typescriptlang.org/docs/handbook/declaration-files/templates/global-modifying-module-d-ts.html), [2](https://dev.to/tomoy/what-are-global-typesinterfaces-in-typescript-2h4), [3](https://bobbyhadz.com/blog/typescript-declare-global-variable), [4](https://www.convex.dev/typescript/advanced/type-operators-manipulation/typescript-declare)]
+
+Step 1: Create a Global Declaration File \[[1](https://medium.com/@glasshost/how-to-declare-global-types-in-typescript-1fbf01e9f9e8)]
+
+Create a file, such as `globals.d.ts`, in your project's source folder. Ensure this file is included in your `tsconfig.json` paths or `include` array. \[[1](https://stackoverflow.com/questions/42984889/global-types-in-typescript), [2](https://bobbyhadz.com/blog/typescript-make-types-global), [3](https://www.convex.dev/typescript/advanced/type-operators-manipulation/typescript-declare), [4](https://stackoverflow.com/questions/59459312/using-globalthis-in-typescript)]
+
+Step 2: Import and Declare Globally \[[1](https://github.com/microsoft/TypeScript/issues/18237), [2](https://stackoverflow.com/questions/42984889/global-types-in-typescript)]
+
+Inside this file, you must first turn it into a module using an empty `export {}` statement so you can use `import`. Then, use `declare global` to add your functions to the global namespace. \[[1](https://www.typescriptlang.org/docs/handbook/declaration-files/templates/global-modifying-module-d-ts.html), [2](https://bobbyhadz.com/blog/typescript-make-types-global), [3](https://bobbyhadz.com/blog/typescript-declare-global-variable), [4](https://betterprogramming.pub/a-handy-guide-to-export-and-import-modules-for-javascript-and-typescript-6cff8e47d554), [5](https://techblog.realtor.com/nodejs-exports-for-beginners/)]
+
+typescript
+
+```
+// globals.d.ts
+import { myExistingFunction, anotherFunction } from './my-functions';
+
+declare global {
+  // Use 'var' so the declarations are attached to the global object (window/globalThis)
+  var myExistingFunction: typeof import('./my-functions').myExistingFunction;
+  var anotherFunction: typeof import('./my-functions').anotherFunction;
+}
+
+export {}; // This makes the file a module, allowing imports
+```
+
+Use code with caution.
+
+Step 3: Assign at Runtime
+
+The declaration only tells TypeScript that these functions _will_ exist globally. You must still manually assign them to the global object in your application's entry point (e.g., `index.ts`): \[[1](https://stackoverflow.com/questions/59459312/using-globalthis-in-typescript), [2](https://www.reddit.com/r/typescript/comments/l6vyiy/is%5Fit%5Fpossible%5Fto%5Fdeclare%5Fa%5Fglobal/), [3](https://medium.com/@returnofking04/typescript-adding-types-for-global-variables-and-functions-5e2cb024f3d6), [4](https://effectivetypescript.com/2020/10/20/tsprune/)]
+
+typescript
+
+```
+// index.ts
+import { myExistingFunction, anotherFunction } from './my-functions';
+
+// Assign to the global object
+globalThis.myExistingFunction = myExistingFunction;
+globalThis.anotherFunction = anotherFunction;
+```
+
+Use code with caution.
+
+Key Considerations
+
+- **Use `var`**: When declaring inside `declare global`, using `var` is necessary for TypeScript to recognize the property on the global object (like `window` or `globalThis`).
+- **`typeof` Operator**: This is the key to "using their existing types" automatically. It pulls the exact signature of the imported function into the global declaration.
+- **Automatic Availability**: Once configured, these functions will be available throughout your project without requiring local `import` statements. \[[1](https://mariusschulz.com/blog/declaring-global-variables-in-typescript), [2](https://bobbyhadz.com/blog/typescript-declare-global-variable), [3](https://dev.to/tomoy/what-are-global-typesinterfaces-in-typescript-2h4), [4](https://www.totaltypescript.com/books/total-typescript-essentials/modules-scripts-and-declaration-files)]
+
+Would you like to see how to apply this to an **entire module** at once instead of individual functions?
+
+- [link](https://stackoverflow.com/questions/42984889/global-types-in-typescript)\
+  Global types in typescript - Stack Overflow\
+  Mar 23, 2017 — I found the accepted answer is not working (maybe it is some configuration that needs to be done?). So with some tinkering, I got ...\
+  Stack Overflow
+- [link](https://www.convex.dev/typescript/advanced/type-operators-manipulation/typescript-declare)\
+  Declare | TypeScript Guide by Convex\
+  TypeScript Declarations: Key Takeaways​ \* Use declare const for globals that don't change, declare let for ones that do. \* Put glo...\
+  Convex
+- [link](https://stackoverflow.com/questions/59459312/using-globalthis-in-typescript)\
+  Using globalThis in Typescript - Stack Overflow\
+  Dec 23, 2019 — Ask Question. Asked 6 years, 3 months ago. Modified 2 years, 11 months ago. Viewed 84k times. 65. I am trying to use globalThis in...\
+  Stack Overflow
+
+Show all
+
+declare global. the functions are already in the same namespace. you can reference directly.
+
+If the functions are already defined in the global namespace (e.g., in a script file or another declaration) and you just want to make them accessible to TypeScript's global scope, use the `typeof` operator inside a `declare global` block.
+
+Since they are already in the same namespace, you can reference them directly by name:
+
+typescript
+
+```
+// Any .d.ts or .ts file in your project
+declare global {
+  var myFunctionName: typeof myFunctionName;
+  var myOtherFunction: typeof myOtherFunction;
+}
+
+export {}; // Ensures the file is treated as a module
+```
+
+Use code with caution.
+
+Why this works:
+
+1. **`typeof`**: This captures the existing signature (parameters and return type) of the function you've already defined.
+2. **`var`**: Using `var` inside `declare global` is the standard way to merge your definitions into the existing `globalThis` / `window` / `global` object.
+3. **Direct Reference**: Because the functions are already global, you don't need `import` statements; TypeScript will resolve the name to the existing implementation or declaration it already knows about.
+
+Do you need to group these functions into a **specific namespace** (like `window.App.utils`), or should they stay flat on the global object?
+
+it's a ts file. i already have some functions. btw, i feel var is redundant.
+
+If the functions are already defined in your current TypeScript file, you can indeed reference them directly. While `var` may feel redundant, it is technically required by TypeScript within a `declare global` block to indicate that the variable should be attached to the global object (like `window` or `globalThis`). \[[1](https://mariusschulz.com/blog/declaring-global-variables-in-typescript)]
+
+Here is how to export them to the global scope while referencing the local implementation directly for their types:
+
+typescript
+
+```
+// your-file.ts
+
+// 1. Existing local functions
+function myLocalFunction(id: number, name: string) {
+  return { id, name };
+}
+
+async function fetchDetails(url: string): Promise<string> {
+  return "data";
+}
+
+// 2. Export them to the global scope
+declare global {
+  // TypeScript requires 'var' here to merge with the global object
+  var myLocalFunction: typeof import('./your-file').myLocalFunction;
+  var fetchDetails: typeof import('./your-file').fetchDetails;
+}
+
+// 3. Assign them at runtime so they actually exist globally
+globalThis.myLocalFunction = myLocalFunction;
+globalThis.fetchDetails = fetchDetails;
+
+export { myLocalFunction, fetchDetails };
+```
+
+Use code with caution.
+
+Why `var` is necessary
+
+In TypeScript's global augmentation, `let` and `const` create block-scoped variables that do not become properties of the global object. Only `var` (or a `function` declaration) signals to the compiler that these names are accessible via `globalThis` or `window` across your entire project. \[[1](https://mariusschulz.com/blog/declaring-global-variables-in-typescript), [2](https://github.com/microsoft/TypeScript/issues/56442)]
+
+Summary of the flow
+
+- **`typeof`**: Captures the existing local signature automatically so you don't have to rewrite types.
+- **`declare global`**: Tells TypeScript these names are available everywhere without imports.
+- **`globalThis assignment`**: Actually places the local function into the global scope at runtime. \[[1](https://stackoverflow.com/questions/38906359/create-a-global-variable-in-typescript), [2](https://stackoverflow.com/questions/47736473/how-to-define-global-function-in-typescript), [3](https://www.totaltypescript.com/tips/use-declare-global-to-allow-types-to-cross-module-boundaries), [4](https://www.youtube.com/watch?v=0zp9bkEfaOc), [5](https://stackoverflow.com/questions/3892696/is-var-necessary-when-declaring-javascript-variables)]
+
+Would you like to know how to handle this if you have a **large number of functions** and want to avoid individual assignments?
+
+- [link](https://stackoverflow.com/questions/47736473/how-to-define-global-function-in-typescript)\
+  How to define global function in TypeScript? - Stack Overflow\
+  Dec 10, 2017 — Define function outside of any class. function s() { console. log("invoked s()!"); } (window as any). s = s; Using this global fun...\
+  Stack Overflow
+- [link](https://mariusschulz.com/blog/declaring-global-variables-in-typescript)\
+  Declaring Global Variables in TypeScript - Marius Schulz\
+  Apr 14, 2020 — You can declare a global variable in the global scope by using the declare global { ... } syntax to be able to access both window.\
+  Marius Schulz
+- [link](https://www.totaltypescript.com/tips/use-declare-global-to-allow-types-to-cross-module-boundaries)\
+  Use 'declare global' to allow types to cross module boundaries\
+  Let's talk about globals in TypeScript. Globals in TypeScript can be manipulated and used in really interesting ways. Here we have...\
+  Total TypeScript
+
+Show all
+
+what about function
+
+You're right—if you are inside a **`.ts`** file and the functions are already there, using `function` inside `declare global` is often the cleanest way to do it. It feels less "redundant" than `var` and more naturally matches the original definitions.
+
+Here is the most direct way to do it:
+
+typescript
+
+```
+function myCoolFeature(data: string) {
+  return data.toUpperCase();
+}
+
+declare global {
+  // Directly use the function keyword to "re-declare" them globally
+  function myCoolFeature(data: string): string;
+  // OR use the existing implementation's type
+  function myOtherFeature(...args: Parameters<typeof myOtherFeature>): ReturnType<typeof myOtherFeature>;
+}
+
+// Still need the runtime assignment
+globalThis.myCoolFeature = myCoolFeature;
+```
+
+Use code with caution.
+
+Why use `function` instead of `var`?
+
+- **Readability**: It looks like a standard function signature.
+- **Hoisting**: In global space, `function` declarations behave like `var` (they attach to the global object), so TypeScript treats them similarly for the purposes of global augmentation.
+- **Overloads**: If your function has multiple overloads, using the `function` keyword in the declaration is much easier to manage than trying to capture a complex `typeof` object.
+
+The Catch
+
+The only reason developers sometimes stick to `var` is because `typeof` is a "one-liner" for complex types. With the `function` keyword, you technically have to write out the signature or use helpers like .
+
+**One small warning:** If you use the `function` keyword, make sure the signature in `declare global` matches your implementation exactly, or TypeScript might get confused between the "local" version and the "global" version.
+
+Do you want to see a trick to **automatically sync** the parameters using `Parameters` and `ReturnType` to avoid repeating yourself?
+
+can i use function and typeof at the same time
+
+Yes, you can use `function` and `typeof` together, but not in a single line like `function name: typeof name`. TypeScript's syntax requires a full signature when using the `function` keyword. \[[1](https://stackoverflow.com/questions/43659980/typescript-typeof-equivalent-for-method-signatures), [2](https://github.com/microsoft/TypeScript/issues/49316)]
+
+To use `typeof` with the `function` keyword, you must "spread" the parameters and return type using utility types:
+
+typescript
+
+```
+function myLocalFunction(a: string, b: number) {
+  return a + b;
+}
+
+declare global {
+  // Use function with Parameters and ReturnType helpers
+  function myLocalFunction(...args: Parameters<typeof myLocalFunction>): ReturnType<typeof myLocalFunction>;
+}
+
+globalThis.myLocalFunction = myLocalFunction;
+```
+
+Use code with caution.
+
+Why this is better than individual `var` lines:
+
+- **Automatic Syncing**: If you change the parameters or return type of your local function, the global declaration updates automatically because it's tied to the `typeof` of the implementation.
+- **Native Look**: It uses the `function` keyword you prefer, which more clearly signals that it is a callable entity in the global scope.
+- **No Redundancy**: You avoid re-writing long parameter lists or complex return types manually. \[[1](https://www.reddit.com/r/typescript/comments/w1jxqz/typing%5Fone%5Ffunctions%5Fparams%5Fwith%5Fthe%5Ftype%5Fof/), [2](https://www.convex.dev/typescript/advanced/type-operators-manipulation/typescript-typeof), [3](https://www.typescriptlang.org/docs/handbook/2/typeof-types.html), [4](https://www.youtube.com/watch?v=m8O-Bo3I8pc\&t=1)]
+
+One Catch: Overloads
+
+If your function has **overloads**, `typeof` only captures the implementation signature (the last one), not all the distinct overload variations. In that specific case, you are better off using the `var` approach:\
+`var myLocalFunction: typeof myLocalFunction;` \[[1](https://github.com/microsoft/TypeScript/issues/49316)]
+
+Does your project involve **overloaded functions**, or are they mostly standard single-signature functions?
+
+- [link](https://github.com/microsoft/TypeScript/issues/49316)\
+  \`typeof x == "function"\` does not always work as typeguard to ...\
+  May 30, 2022 — RyanCavanaugh commented. RyanCavanaugh. on May 31, 2022. Member. This is definitely correct behavior, but I can see how it's annoy...\
+  GitHub
+- [link](https://www.reddit.com/r/typescript/comments/w1jxqz/typing%5Fone%5Ffunctions%5Fparams%5Fwith%5Fthe%5Ftype%5Fof/)\
+  Typing one functions params with the type of another ... - Reddit\
+  Jul 18, 2022 — Main downside being doesn't work on function decelerations. ... I can use \["foo"] either as it doesn't allow indexing by \[key: str...\
+  Reddit·r/typescript
+- [link](https://stackoverflow.com/questions/43659980/typescript-typeof-equivalent-for-method-signatures)\
+  Typescript, typeof equivalent for method signatures?\
+  Apr 27, 2017 — \* No, there's no way of doing that. The only thing that I can think of that might help is using decorators and metadata but that o...\
+  Stack Overflow
+
+Show all
+
+var example
+
+If you use `var`, you can use `typeof` directly without utility types like `Parameters`. This is the shortest way to sync the types perfectly, including overloads.
+
+typescript
+
+```
+function myCoolFunction(x: string, y: number): boolean {
+  return x.length > y;
+}
+
+declare global {
+  // Directly references the local function's full type signature
+  var myCoolFunction: typeof myCoolFunction;
+}
+
+// Assignment is still required to make it exist at runtime
+globalThis.myCoolFunction = myCoolFunction;
+
+export { myCoolFunction };
+```
+
+Use code with caution.
+
+Why this is usually the preferred "TS way":
+
+- **Dry (Don't Repeat Yourself):** If you add an argument to the function, the global type updates automatically.
+- **Overload Support:** Unlike the `function` keyword approach, `var ...: typeof` captures **all** function overloads, not just the final implementation.
+- **Conciseness:** It’s a single line per function.
+
+Would you like to see how to handle this for a **class** or a **constant** instead of a function?
+
+AI responses may include mistakes. For financial advice, consult a professional. [Learn more](https://support.google.com/websearch?p=aimode\&gl=us)
+
+'args' is referenced directly or indirectly in its own type annotation.
+
+This error happens because TypeScript gets caught in a circular reference: you’re trying to define the global version of the function using the type of the local version, but inside the `declare global` block, the name already refers to the global one you're currently defining.
+
+To fix this, you need to point `typeof` specifically to the **local** implementation. There are two ways to break the loop:
+
+Option 1: Use `import` inside `typeof` (Safest)
+
+Even though you are in the same file, using an inline `import()` tells TypeScript to look at the module's exported type rather than the global name it just "discovered."
+
+typescript
+
+```
+function myLocalFunction(a: string, b: number) {
+  return a + b;
+}
+
+declare global {
+  // Use the path to the current file to break the circularity
+  var myLocalFunction: typeof import('./your-file-name').myLocalFunction;
+}
+
+globalThis.myLocalFunction = myLocalFunction;
+```
+
+Use code with caution.
+
+Option 2: Use an Alias
+
+Create a local type alias before the `declare global` block. This captures the type before you start messing with the global namespace.
+
+typescript
+
+```
+function myLocalFunction(a: string, b: number) {
+  return a + b;
+}
+
+// 1. Capture the type in a local alias
+type MyLocalFunctionType = typeof myLocalFunction;
+
+declare global {
+  // 2. Reference the alias instead of the function name
+  var myLocalFunction: MyLocalFunctionType;
+}
+
+globalThis.myLocalFunction = myLocalFunction;
+```
+
+Use code with caution.
+
+Why the error happened:
+
+When you write `var x: typeof x` inside `declare global`, TypeScript looks for `x`. It finds the global `x` you are currently declaring. It then tries to find the type of that global `x`, which leads back to the same line—creating an infinite loop (recursion).
+
+Which of these feels cleaner for your project structure: **aliasing** the types or using the **import** syntax?
+
+'fn' is referenced directly or indirectly in its own type annotation.ts(2502)
+
+This is the classic "Circular Reference" loop. Inside the `declare global` block, the name `fn` now points to the **global** variable you are currently defining, not your **local** function. TypeScript tries to define the type of the global `fn` by looking at the type of `fn`, which is... the global `fn`.
+
+Since you are in a `.ts` file and want to keep it simple, use the **Alias** method. It’s the cleanest way to "save" the type before the global declaration hides it.
+
+The Fix: Alias the Type
+
+typescript
+
+```
+function fn(a: string) {
+  return a.toUpperCase();
+}
+
+// 1. Capture the type locally first
+type FnType = typeof fn;
+
+declare global {
+  // 2. Reference the alias here to break the loop
+  var fn: FnType;
+}
+
+// 3. Attach it
+globalThis.fn = fn;
+```
+
+Use code with caution.
+
+Why this works:
+
+- **`FnType`** is locked to your local function implementation before you enter the global scope.
+- Inside `declare global`, TypeScript no longer gets confused because `FnType` and `var fn` are distinct names.
+
+**Pro-tip:** If you have many functions, you can capture them all in one interface (e.g., `type MyApi = { fn1: typeof fn1, fn2: typeof fn2 }`) to keep your `declare global` block tidy.
+
+Does this resolve the error for **all** your functions, or are you still seeing it on specific ones?
+
+type alias works. but it feels redundant. why i cant typof fn directly. can i.
+
+The reason you cannot use `typeof fn` directly inside the `declare global` block is that TypeScript’s scoping rules create a **shadowing loop**. \[[1](https://oneuptime.com/blog/post/2026-01-24-typescript-circular-reference-errors/view), [2](https://github.com/microsoft/TypeScript/issues/26104)]
+
+Once you enter `declare global`, the name `fn` immediately starts referring to the **global** variable you are currently defining, not your **local** function. Asking for `typeof fn` at that point effectively asks TypeScript to define the global variable using the type of... the same global variable, which is circular. \[[1](https://medium.com/visual-development/how-to-fix-nasty-circular-dependency-issues-once-and-for-all-in-javascript-typescript-a04c987cf0de), [2](https://github.com/microsoft/TypeScript/issues/56442), [3](https://github.com/microsoft/TypeScript/issues/26104)]
+
+Is there a way without a type alias?
+
+Strictly speaking, you **must** use some form of indirection to tell TypeScript to look "outside" the global block. If you find type aliases redundant, here is the only other standard way to do it:
+
+Use an Inline `import()` \[[1](https://www.reddit.com/r/typescript/comments/1iuo79n/circular%5Freference%5Ftreated%5Fdifferently%5Fin/)]
+
+This is the most "direct" way because it avoids creating a new name. It forces TypeScript to look at the module's own exported scope rather than the local/global shadow. \[[1](https://stackoverflow.com/questions/42984889/global-types-in-typescript)]
+
+typescript
+
+```
+function myFn(s: string) { return s; }
+
+declare global {
+  // Directly point to this specific file's export to break the loop
+  var myFn: typeof import('./my-file').myFn;
+}
+
+globalThis.myFn = myFn;
+export { myFn };
+```
+
+Use code with caution.
+
+Why a Type Alias is usually better
+
+Even if it feels redundant, using a type alias like `type MyFn = typeof myFn` is often preferred because:
+
+1. **Refactoring Safety**: If you rename the file, you don't have to update a string path inside your code.
+2. **Readability**: It makes it obvious that you are "saving" the type before augmenting the global scope.
+3. **Performance**: Inline `import()` can occasionally slow down complex type checking in very large projects. \[[1](https://danywalls.com/how-to-detect-and-fix-circular-dependencies-in-typescript), [2](https://dev.to/danywalls/how-to-detect-and-fix-circular-dependencies-in-typescript-27ai), [3](https://dev.to/tomoy/what-are-global-typesinterfaces-in-typescript-2h4)]
+
+**Would you prefer a way to automate this for a large number of functions at once?**
+
+- [link](https://oneuptime.com/blog/post/2026-01-24-typescript-circular-reference-errors/view)\
+  How to Fix 'Circular Reference' Type Errors - OneUptime\
+  Jan 24, 2026 — Solution 3: Import Type Only. When you only need types (not runtime values), use type-only imports: TypeScript Copy. // post.ts im...\
+  OneUptime
+- [link](https://github.com/microsoft/TypeScript/issues/26104)\
+  Type alias circular reference does not error and causes ...\
+  Jul 31, 2018 — circular reference. circular reference returntype. Type alias circularly references itself returntype. Type alias circularly refer...\
+  GitHub
+- [link](https://github.com/microsoft/TypeScript/issues/56442)\
+  In "declare global" blocks, allow access of block-scoped variables in ...\
+  Nov 16, 2023 — Josh-Cena commented ... déclare global means it's declared in a global scope (i.e. not inside a module, but inside a script, or in...\
+  GitHub
+
+Show all

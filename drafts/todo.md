@@ -380,4 +380,15 @@ also, style hr to `---` instead of `***`
 
 ---
 
+message.
+
+```js
+/**
+ * comments
+ */
+
+// commented code
+```
+
+---
 

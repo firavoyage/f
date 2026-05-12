@@ -917,3 +917,13 @@ everything inside will shift for a while.
 
 ---
 
+web.
+
+```
+type test = Exclude<any, number>
+```
+
+this does not work.
+
+---
+

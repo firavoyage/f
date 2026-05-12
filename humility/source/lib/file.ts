@@ -1,27 +1,55 @@
-import desktop from '@folder/xdg';
-import { homedir } from 'node:os';
-import { join } from 'node:path';
-
+/**
+ * errors
+ */
 export const not_found = "not_found"
 export const already_initialized = "already_initialized"
+export const not_initialized = "not_initialized"
 
-let app_name: string
+import desktop from '@folder/xdg';
+import { homedir } from 'node:os';
+import { join, dirname as dir } from 'node:path';
+import { writeFile, readFile, mkdir } from 'node:fs/promises';
+
+const write_file = handle(writeFile)
+const read_file = handle(readFile)
+
+/**
+ * state
+ */
 
 let is_initialized = false;
 let data_folder = ''
 let config_folder = ''
 let cache_folder = ''
 
-// get from a config instead i think?
-
 type non_empty_string = `${string}${any}`;
+
+/**
+ * todo: dry?
+ */
+type init = typeof init
+type path = typeof path
+type data = typeof data
+type config = typeof config
+type cache = typeof cache
+type write = typeof write
+type read = typeof read
+declare global {
+  var init: init
+  var path: path
+  var data: data
+  var config: config
+  var cache: cache
+  var write: write
+  var read: read
+}
 
 /**
  * init paths
  * 
  * do not care whether it's valid
  */
-export function init({ name, xdg = true }: { name: non_empty_string, xdg: boolean }) {
+export function init({ name, xdg = true }: { name: non_empty_string, xdg?: boolean }) {
   if (is_initialized) {
     return err(already_initialized)
   }
@@ -47,38 +75,52 @@ export function path(...args) {
   return join(...args)
 }
 
-export function path(...args) {
-  return join(...args)
+export function data(...args) {
+  if (!is_initialized) {
+    return err(not_initialized)
+  }
+  return join(data_folder, ...args)
 }
 
-export function path(...args) {
-  return join(...args)
+export function config(...args) {
+  if (!is_initialized) {
+    return err(not_initialized)
+  }
+  return join(config_folder, ...args)
 }
 
-export function path(...args) {
-  return join(...args)
+export function cache(...args) {
+  if (!is_initialized) {
+    return err(not_initialized)
+  }
+  return join(cache_folder, ...args)
 }
 
-export function data() {
+export async function write({ path, content }) {
+  /**
+   * todo: handle errors
+   * 
+   * e.g. illegal character, path too long, etc.
+   */
 
+  /**
+   * create path if needed
+   */
+  await mkdir(dir(path), { recursive: true });
+
+  await write_file(path, content, 'utf8');
 }
 
-export function config() {
+export async function read({ path }) {
+  /**
+   * todo: handle errors
+   * 
+   * e.g. not_found
+   */
 
-}
+  const content = await read_file(path, 'utf8');
 
-export function cache() {
-
-}
-
-// path, config (e.g. auto create path)
-
-export function write() {
-
-}
-
-export function read() {
-
+  return content
 }
 
 

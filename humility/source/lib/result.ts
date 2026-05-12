@@ -26,14 +26,14 @@ export function safe<Args extends any[], R>(
 }
  */
 
-const err_hash = Symbol("err");
-// const err_hash = "__err";
-// const err_hash = "d9eb253e06987fa74a5d3189f73d9f7a8104cca786fafbb52bc9555972f5477f"; // sha256 of "err"
+const err_symbol = Symbol("err");
+// const err_symbol = "__err";
+// const err_symbol = "d9eb253e06987fa74a5d3189f73d9f7a8104cca786fafbb52bc9555972f5477f"; // sha256 of "err"
 
 type ok<T> = Exclude<T, err>
 // access an optional message wont cause any issue
-type err = Readonly<{ type: any, message: any, [err_hash]: true }>
-// type err = Readonly<{ type: string | number | symbol, message: string | object, [err_hash]: true }>
+type err = Readonly<{ type: any, message: any, [err_symbol]: true }>
+// type err = Readonly<{ type: string | number | symbol, message: string | object, [err_symbol]: true }>
 // todo: type and message are string?
 
 type Optional<Type, Keys extends keyof Type> = Omit<Type, Keys> & Partial<Pick<Type, Keys>>
@@ -45,11 +45,11 @@ declare global {
 
   type option<T> = T | undefined;
 
-  function err(error: any | Optional<err, typeof err_hash | 'message'> | Error): err;
+  function err(error: any | Optional<err, typeof err_symbol | 'message'> | Error): err;
 
   function rescue<T>(result: result<T>): result is err;
 
-  function handle(fn: Function): (...args: any[]) => result<any>;
+  function handle(fn: Function): (...args: any[]) => result<ok<any>>;
 }
 
 /**
@@ -62,7 +62,7 @@ declare global {
 //   return value
 // }
 
-export function err(error: any | Optional<err, typeof err_hash | 'message'> | Error): err {
+export function err(error: any | Optional<err, typeof err_symbol | 'message'> | Error): err {
   if (error instanceof Error) {
     return Object.defineProperty({
       /**
@@ -79,26 +79,26 @@ export function err(error: any | Optional<err, typeof err_hash | 'message'> | Er
       type: error.constructor,
       // type: error.name,
       message: error.stack ?? error.message,
-    }, err_hash, { value: true }) as err
+    }, err_symbol, { value: true }) as err
   } else if (typeof error == 'object' && Object.hasOwn(error, 'type')) {
     return Object.defineProperty({
       type: error.type,
       // it must have a type. you should not throw anything.
       message: error.message ?? 'no message',
-    }, err_hash, { value: true }) as err
-  }else{
+    }, err_symbol, { value: true }) as err
+  } else {
     // why not be more flexible
     return Object.defineProperty({
       type: error,
       // message is implied by the type
       message: error,
-    }, err_hash, { value: true }) as err
+    }, err_symbol, { value: true }) as err
   }
 }
 
 export function rescue<T>(result: result<T>): result is err {
-  return result?.[err_hash]
-  // return (result as any)?.[err_hash]
+  return result?.[err_symbol]
+  // return (result as any)?.[err_symbol]
 }
 
 // /**
