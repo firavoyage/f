@@ -410,5 +410,7 @@ test br. (i suppose it will work.)
 - tg userbot x11
 - patchright (e.g. deepseek)
 - message. spec template.
+- keyboard
+- cli (a general template, under intuitive)
 
 ---
