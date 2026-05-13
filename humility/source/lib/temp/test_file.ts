@@ -1,11 +1,11 @@
-import * as file from 'lib/file';
+// import * as file from 'lib/file';
 
-use(file)
+// use(file)
+
+import { write, read, data } from 'lib/file';
 
 console.log(write, read)
 
 await write({ path: data('test'), content: '123' })
 
 console.log(await read({ path: data('test') }))
-
-

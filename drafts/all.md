@@ -154,6 +154,8 @@ frontend: <!-- web -->
 - react component style
 - css styling
 - ts negated type exclude any number
+- ts lib result handle wrapper generic type
+- ts perf switch to bun from tsx
 
 backend:
 

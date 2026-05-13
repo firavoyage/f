@@ -89,7 +89,10 @@ const a = join('.foo/quux/');
 
 console.log(complexPath)
 
-console.log(complexPath.type == TypeError);
+if (rescue(complexPath)) {
+  console.log(complexPath.type == TypeError);
+}
+
 
 console.log(a)
 

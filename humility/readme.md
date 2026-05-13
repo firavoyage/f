@@ -56,6 +56,14 @@ tsxe() {
 # cd $dir && tsxe '$fileName'
 ```
 
+<!-- todo -->
+
+code runner
+
+```
+    "typescript": "cd $dir && bun --preload lib/global '$fileName'",
+```
+
 ---
 
 inspired by

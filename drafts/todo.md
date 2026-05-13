@@ -404,8 +404,24 @@ put after qq name.
 
 ---
 
-modernize dg in global.
+deprecate tsxe. (perf)
 
-rm dg in file. use import. (io is not gonna be everywhere)
+use bun preload instead.
+
+code runner is ...
+
+well, i should not hard code lib/global.
+
+if bun natively supports, 
+
+(from my observation toml does not work. idk how it sees project root.)
+
+use its config syntax
+
+otherwise
+
+create a cli wrapper. pnpm install g.
+
+get the env, which is flags for bun under this project.
 
 ---

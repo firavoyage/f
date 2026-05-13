@@ -20,6 +20,9 @@ declare global {
    */
   type result<T, E = err> = ok<T> | E;
 
+  /**
+   * if needed
+   */
   type option<T> = T | undefined;
 
   var err: err_fn
@@ -157,7 +160,7 @@ export function rescue<T>(result: result<T>): result is err {
  * 
  * ref: https://gist.github.com/t3dotgg/a486c4ae66d32bf17c09c73609dacc5b
  */
-export function handle(fn: Function): (...args: any[]) => result<ok<any>> {
+export function handle<F extends (...args: any[]) => any>(fn: F): (...args: Parameters<F>) => result<ReturnType<F>> {
   return (...args) => {
     try {
       const result = fn(...args);
@@ -177,6 +180,15 @@ export function handle(fn: Function): (...args: any[]) => result<ok<any>> {
     }
   }
 }
+
+// function wrapper<F extends (...args: any[]) => any>(fn: F): (...args: Parameters<F>) => ReturnType<F> {
+//   return function(...args: Parameters<F>): ReturnType<F> {
+//     // Add custom wrapper logic here
+//     const result = fn(...args);
+//     // Add custom wrapper logic here
+//     return result;
+//   };
+// }
 
 // export function handle<T, E = err>(fn: Function): () => result<T, E> {
 //   return (...args) => {

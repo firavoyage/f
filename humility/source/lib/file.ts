@@ -29,25 +29,25 @@ let cache_folder = ''
 
 type non_empty_string = `${string}${any}`;
 
-/**
- * todo: dry?
- */
-type init = typeof init
-type path = typeof path
-type data = typeof data
-type config = typeof config
-type cache = typeof cache
-type write = typeof write
-type read = typeof read
-declare global {
-  var init: init
-  var path: path
-  var data: data
-  var config: config
-  var cache: cache
-  var write: write
-  var read: read
-}
+// /**
+//  * todo: dry?
+//  */
+// type init = typeof init
+// type path = typeof path
+// type data = typeof data
+// type config = typeof config
+// type cache = typeof cache
+// type write = typeof write
+// type read = typeof read
+// declare global {
+//   var init: init
+//   var path: path
+//   var data: data
+//   var config: config
+//   var cache: cache
+//   var write: write
+//   var read: read
+// }
 
 /**
  * init paths
