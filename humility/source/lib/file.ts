@@ -6,7 +6,7 @@
 import desktop from '@folder/xdg';
 import { homedir } from 'node:os';
 import { join, dirname as dir } from 'node:path';
-import { writeFile, readFile, mkdir } from 'node:fs/promises';
+import { writeFile, readFile, appendFile, mkdir } from 'node:fs/promises';
 
 /**
  * errors
@@ -17,6 +17,7 @@ export const not_initialized = "not_initialized"
 
 const write_file = handle(writeFile)
 const read_file = handle(readFile)
+const append_file = handle(appendFile)
 
 /**
  * state
@@ -101,6 +102,9 @@ export function cache(...args) {
   return join(cache_folder, ...args)
 }
 
+/**
+ * (over) write a file
+ */
 export async function write({ path, content }) {
   /**
    * todo: handle errors
@@ -121,11 +125,35 @@ export async function read({ path }) {
    * todo: handle errors
    * 
    * e.g. not_found
+   * 
+   * handle non string files (?)
    */
 
-  const content = await read_file(path, 'utf8');
+  const content: result<string> = await read_file(path, 'utf8');
 
   return content
 }
 
+export async function append({ path, content }) {
+  await append_file(path, content)
+}
 
+export async function edit({ path, find, replace }) {
+  /**
+   * todo
+   * 
+   * perf: positional replace, memory efficient.
+   * 
+   * more edit modes
+   * 
+   * regex
+   * 
+   * replace or replace all
+   */
+
+  const content = await read({ path })
+
+  const updated_content = content.replaceAll(find, replace)
+
+  await write({ path, content: updated_content })
+}

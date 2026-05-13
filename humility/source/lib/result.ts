@@ -44,6 +44,9 @@ const err_symbol = Symbol("err");
 //   return value
 // }
 
+/**
+ * well, it
+ */
 export function err(error: any | Optional<err, typeof err_symbol | 'message'> | Error): err {
   if (error instanceof Error) {
     return Object.defineProperty({
@@ -157,6 +160,8 @@ export function rescue<T>(result: result<T>): result is err {
  * 
  * just use the word handle ("i will wrap it to handle the errors gracefully"),
  * not attempt (i attempt to do this even if it might fail.).
+ * 
+ * it does not preserve fn overloads as ts does not support it.
  * 
  * ref: https://gist.github.com/t3dotgg/a486c4ae66d32bf17c09c73609dacc5b
  */

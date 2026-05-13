@@ -32,7 +32,7 @@
     ],
   },
   "const": {
-    "prefix": "c",
+    "prefix": ["c", "co"],
     "body": [
       "const ${1:name} = ${0}"
     ],
@@ -50,7 +50,7 @@
     ],
   },
   "let": {
-    "prefix": "l",
+    "prefix": ["l", "le"],
     "body": [
       "let ${1:name} = ${0}"
     ],
@@ -148,6 +148,32 @@
     "prefix": "fa",
     "body": [
       "false",
+    ],
+  },
+  "result": {
+    "prefix": ["result"],
+    "body": [
+      "result<$1> $0",
+    ],
+  },
+  "option": {
+    "prefix": ["o", "op", "opt"],
+    "body": [
+      "option<$1> $0",
+    ],
+  },
+  "err": {
+    "prefix": ["er", "err"],
+    "body": [
+      "return err($1)$0",
+    ],
+  },
+  "rescue": {
+    "prefix": ["re", "res", "resc"],
+    "body": [
+      "if(rescue($1)){",
+      "  $2",
+      "} $0"
     ],
   },
 }

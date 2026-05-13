@@ -18,3 +18,11 @@ pnpm add -g @anthropic-ai/claude-code
 pnpm add -g @earendil-works/pi-coding-agent
 pnpm add -g openclaw@latest # seems no use cases btw
 ```
+
+```
+(node:87019) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+foo 
+bar
+```
+

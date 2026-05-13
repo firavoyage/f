@@ -14,7 +14,7 @@
     "noEmit": true,
 
     // "strict": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
   },
   "include": ["**/*", "source/lib/temp/b.ts"],
   "exclude": ["node_modules", "build", ".build"]

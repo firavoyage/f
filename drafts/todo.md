@@ -400,11 +400,10 @@ put after qq name.
 
 test br. (i suppose it will work.)
 
-- cli
+- run
 - file
-  - more methods. (ruby, like append?)
+  - more methods. (ruby)
   - errors. (rust error kind)
-  - edit (just pattern rp i think)
 - git (azaneko?)
 - vector search
 - tg export to knowledge

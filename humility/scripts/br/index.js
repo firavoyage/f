@@ -7,14 +7,12 @@ const { spawn } = require('child_process');
 function findBunfig(currentDir) {
     const targetPath = path.join(currentDir, 'bunfig.toml');
     
-    // Check if bunfig.toml exists in this directory
     if (fs.existsSync(targetPath)) {
         return targetPath;
     }
     
     const parentDir = path.dirname(currentDir);
     
-    // Stop if we hit the root filesystem directory
     if (currentDir === parentDir) {
         return null;
     }
@@ -28,13 +26,17 @@ function run() {
     
     let finalArgs = [...args];
     
-    // If a configuration file is discovered upstream, inject the flag first
     if (bunfigPath) {
         finalArgs = [`--config=${bunfigPath}`, ...args];
     }
 
-    // Spawn bun process and pipe standard input/output directly to user terminal
-    const child = spawn('bun', finalArgs, { stdio: 'inherit', shell: true });
+    // Windows requires shell: true for .cmd/.ps1 scripts, macOS/Linux do not
+    const isWindows = process.platform === 'win32';
+
+    const child = spawn('bun', finalArgs, { 
+        stdio: 'inherit', 
+        shell: isWindows 
+    });
 
     child.on('exit', (code) => {
         process.exit(code ?? 0);

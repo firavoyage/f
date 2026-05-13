@@ -15349,6 +15349,10 @@ backpack:
 
 <!-- awa some stationery, scratch pads, and the calculator -->
 
+13
+
+18 40 finish reading freedom of money, chapter 6.
+
 
 
 <!-- timebox, plan. -->

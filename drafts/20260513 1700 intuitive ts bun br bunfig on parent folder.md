@@ -1666,3 +1666,240 @@ Would you like to know how to configure **onlyBuiltDependencies** for your proje
   Reddit
 
 Show all
+
+# (upd)
+
+silence the noise (node:84882) \[DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated. (Use \`node --trace-deprecation ...\` to show where the warning was created)
+
+This warning occurs because a Node.js child process (`exec`, `spawn`, or `fork`) is executing a command with `shell: true` while accepting dynamic arguments. Node.js warns that this pattern is vulnerable to command injection. \[[1](https://2ality.com/2022/07/nodejs-child-process.html), [2](https://nodejs.org/api/child%5Fprocess.html), [3](https://www.freecodecamp.org/news/node-js-child-processes-everything-you-need-to-know-e69498fe970a/), [4](https://github.com/advisories/GHSA-5j98-mcp5-4vw2), [5](https://medium.com/@ester.gracia.10/securing-your-node-js-app-from-command-injection-e44f0a6ccaf2)]
+
+Quick Fix: Suppress the Warning
+
+If you cannot modify the underlying code (e.g., it is inside a third-party `node_modules` package), silence the warning using environmental variables or Node flags.
+
+- **Option 1: Use an environment variable**\
+  Set `NODE_NO_WARNINGS=1` before running your script.\
+  bash
+
+<!---->
+
+```
+NODE_NO_WARNINGS=1 node your_script.js
+```
+
+Use code with caution.
+
+- **Option 2: Use the Node CLI flag**\
+  Pass `--no-warnings` directly to the execution command.\
+  bash
+
+<!---->
+
+```
+node --no-warnings your_script.js
+```
+
+Use code with caution.\
+\[[1](https://stackoverflow.com/questions/55778283/how-to-disable-warnings-when-node-is-launched-via-a-global-shell-script)]
+
+Permanent Fix: Update the Code
+
+If you own the code causing the warning, refactor the child process invocation to secure it.
+
+- **Bad Pattern (Triggers Warning):**\
+  javascript
+
+<!---->
+
+```
+// Vulnerable: arguments are concatenated in the shell
+child_process.spawn('echo', [userInput], { shell: true });
+```
+
+Use code with caution.
+
+- **Good Pattern 1: Remove the shell requirement**\
+  Drop `shell: true` to execute the system binary directly. Arguments are safely passed as an array.\
+  javascript
+
+<!---->
+
+```
+child_process.spawn('echo', [userInput]);
+```
+
+Use code with caution.
+
+- **Good Pattern 2: Escape arguments manually**\
+  If `shell: true` is mandatory, manually sanitize or escape the arguments before execution. \[[1](https://sourcery.ai/vulnerabilities/exec-user-input-nodejs)]
+
+Locate the Root Cause
+
+If you need to find exactly which file and line number is generating this warning:
+
+1. Run your application with the trace flag:\
+   bash
+
+<!---->
+
+```
+node --trace-deprecation your_script.js
+```
+
+Use code with caution.
+2\. Review the printed stack trace to identify the responsible file.
+3\. Update the package if the trace points to an outdated third-party dependency. \[[1](https://stackoverflow.com/questions/50432238/tracing-a-deprecation-warning)]
+
+To help narrow this down, let me know:
+
+- Is this happening inside a **specific framework or tool** (e.g., Vite, Next.js, Electron)?
+
+- Are you able to **modify the source code**, or is it inside `node_modules`?
+
+- What **operating system** are you running?
+
+- [link](https://2ality.com/2022/07/nodejs-child-process.html)\
+  Executing shell commands from Node.js\
+  Jul 5, 2022 — Executing shell commands from Node. js Warning: This blog post is outdated. Instead, read chapter “Running shell commands in child...\
+  \
+  2ality
+
+- [link](https://nodejs.org/api/child%5Fprocess.html)\
+  Child process | Node.js v26.1.0 Documentation\
+  child\_process. fork() : spawns a new Node. js process and invokes a specified module with an IPC communication channel established...\
+  \
+  Node.js
+
+- [link](https://www.freecodecamp.org/news/node-js-child-processes-everything-you-need-to-know-e69498fe970a/)\
+  Node.js Child Processes: Everything you need to know\
+  Jun 8, 2017 — Here's an example: The parent file, parent. js : const { fork } = require('child\_process'); const forked = fork('child. js'); fork...\
+  \
+  \
+  freeCodeCamp
+
+Show all
+
+can i turn off shell #!/usr/bin/env node
+
+const fs = require('fs');\
+const path = require('path');\
+const { spawn } = require('child\_process');
+
+function findBunfig(currentDir) {\
+const targetPath = path.join(currentDir, 'bunfig.toml');
+
+// Check if bunfig.toml exists in this directory\
+if (fs.existsSync(targetPath)) {\
+return targetPath;\
+}
+
+const parentDir = path.dirname(currentDir);
+
+// Stop if we hit the root filesystem directory\
+if (currentDir === parentDir) {\
+return null;\
+}
+
+return findBunfig(parentDir);\
+}
+
+function run() {\
+const args = process.argv.slice(2);\
+const bunfigPath = findBunfig(process.cwd());
+
+let finalArgs = \[...args];
+
+// If a configuration file is discovered upstream, inject the flag first\
+if (bunfigPath) {\
+finalArgs = \[\`--config=${bunfigPath}\`, ...args];\
+}
+
+// Spawn bun process and pipe standard input/output directly to user terminal\
+const child = spawn('bun', finalArgs, { stdio: 'inherit', shell: false });\
+// const child = spawn('bun', finalArgs, { stdio: 'inherit', shell: true });
+
+child.on('exit', (code) => {\
+process.exit(code ?? 0);\
+});\
+}
+
+run();
+
+Yes, you can safely turn off `shell: true` (or set it to `shell: false`) in this specific script.
+
+Why it is safe to turn off shell here
+
+- **Direct Execution:** You are invoking `bun` directly as an executable binary.
+- **No Shell Built-ins:** You are not using shell-specific built-in commands (like `dir`, `copy`, or `&&`).
+- **Array Arguments:** You are passing arguments via the `finalArgs` array, which Node.js handles safely without needing a shell to parse them.
+
+Cross-Platform Windows Exception
+
+If you or your users are running this script on **Windows**, you must keep `shell: true` active.
+
+- On Windows, `bun` is typically distributed as a `.cmd` or `.ps1` batch script rather than a native `.exe` binary.
+- Node's `child_process.spawn` cannot execute Windows batch scripts directly without an underlying shell wrapper.
+- Disabling the shell on Windows will result in an `ENOENT` error.
+
+Safe Cross-Platform Refactor
+
+To safely remove the warning on macOS/Linux while preserving functionality on Windows, conditionally enable the shell based on the operating system:
+
+javascript
+
+```
+#!/usr/bin/env node
+
+const fs = require('fs');
+const path = require('path');
+const { spawn } = require('child_process');
+
+function findBunfig(currentDir) {
+    const targetPath = path.join(currentDir, 'bunfig.toml');
+
+    if (fs.existsSync(targetPath)) {
+        return targetPath;
+    }
+
+    const parentDir = path.dirname(currentDir);
+
+    if (currentDir === parentDir) {
+        return null;
+    }
+
+    return findBunfig(parentDir);
+}
+
+function run() {
+    const args = process.argv.slice(2);
+    const bunfigPath = findBunfig(process.cwd());
+
+    let finalArgs = [...args];
+
+    if (bunfigPath) {
+        finalArgs = [`--config=${bunfigPath}`, ...args];
+    }
+
+    // Windows requires shell: true for .cmd/.ps1 scripts, macOS/Linux do not
+    const isWindows = process.platform === 'win32';
+
+    const child = spawn('bun', finalArgs, {
+        stdio: 'inherit',
+        shell: isWindows
+    });
+
+    child.on('exit', (code) => {
+        process.exit(code ?? 0);
+    });
+}
+
+run();
+```
+
+Use code with caution.
+
+To optimize this script further, let me know:
+
+- Are you distributing this as a **global npm CLI package**?
+- Do your users pass **complex nested strings** or **piped commands** into this script?
+- Should we add validation to **verify the bun installation** before spawning?
