@@ -392,17 +392,17 @@ message.
 
 ---
 
-why is a command so slow. how to figure out.
-
-tsxe.
-
----
-
 codeberg pages.
 
 put after qq name.
 
 ---
+
+why is a command so slow. how to figure out.
+
+tsxe.
+
+...
 
 deprecate tsxe. (perf)
 
@@ -423,5 +423,19 @@ otherwise
 create a cli wrapper. pnpm install g.
 
 get the env, which is flags for bun under this project.
+
+---
+
+- cli
+- file
+  - more methods. (ruby, like append?)
+  - errors. (rust error kind)
+  - edit (just pattern rp i think)
+- git (azaneko?)
+- vector search
+- tg export to knowledge
+- tg userbot x11
+- patchright (e.g. deepseek)
+- message. spec template.
 
 ---
