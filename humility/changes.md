@@ -124,3 +124,48 @@ new
 
 - object params for more than one uninterchangeable params
 
+14
+
+revise message.
+
+prev
+
+- object params for more than one uninterchangeable params
+
+<!-- concise but incomprehensible -->
+
+new
+
+<!-- - always object params, only positional params if there is always only one param (`factorial(n)`, `fetch({ url })` as it can have options or flags in the future), or params are interchangeable (`add(a,b)`) -->
+
+<!-- - always object params, only positional params if there is always only one param and no possible flags (`factorial(n)`) or params are interchangeable (`add(a,b)`) -->
+
+- object params by default, positional params if there is only one param (`factorial(n)`) or params are interchangeable (`add(a,b)`), mixed if there is only one param and optional flags (`fetch(url, options)`)
+
+prev
+
+- dont reinvent wheels, prefer modern proven tech
+
+new
+
+- prefer modern proven libraries, dont reinvent wheels
+- avoid outdated or deprecated methods
+
+<!-- also move to notes -->
+
+<!-- webpack is proven but not modern. add one word to be clear as it's common in llm training data. -->
+
+<!-- i suppose it will naturally write small code (e.g. less than twenty lines) by default -->
+
+<!-- i suppose it will still hallucinate and use non existing methods in the latest version. but since it can search and have context, just be clear. -->
+
+<!-- though, many tools are stable. no need to say "learn and search the latest behavior" by default. -->
+
+prev
+
+- add simple logging
+
+new
+
+- no logging by default
+

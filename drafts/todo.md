@@ -412,5 +412,6 @@ test br. (i suppose it will work.)
 - message. spec template.
 - keyboard
 - cli (a general template, under intuitive)
+- learn jp
 
 ---

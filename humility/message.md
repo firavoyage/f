@@ -2,19 +2,20 @@ follow these:
 
 - use:
   - ubuntu
+  - x11
   - zsh
+  - typescript
   - pnpm
   - es module
-  - typescript
+  - bun
   - parceljs
-  - dont reinvent wheels, prefer modern proven tech
 - naming:
   - snake case
   - verb noun for actions (`get_data`, not `data_getter`), predicate for bools (`is_prime`, not `check_primality`), noun for factory functions (`time`, not `create_time`)
 - style:
   - functional programming
   - modular and cohesive
-  - object params for more than one uninterchangeable params
+  - object params by default, positional params if there is only one param (`factorial(n)`) or params are interchangeable (`add(a,b)`), mixed if there is only one param and optional flags (`fetch(url, options)`)
   - always async, only sync for pure and quick methods
   - always function statement, only arrow function for props
   - always type, never interface
@@ -24,8 +25,11 @@ follow these:
   - no `try catch` unless external libraries throw
   - no `throw`
 - note:
-  - add simple logging
-  - give me full working code of all changed files.
+  - give me full working code of all changed files
+  - dont reinvent wheels, prefer modern proven tech
+  - prefer modern proven libraries, dont reinvent wheels
+  - avoid outdated or deprecated methods
+  - no logging by default
 
 ---
 
