@@ -398,33 +398,7 @@ put after qq name.
 
 ---
 
-why is a command so slow. how to figure out.
-
-tsxe.
-
-...
-
-deprecate tsxe. (perf)
-
-use bun preload instead.
-
-code runner is ...
-
-well, i should not hard code lib/global.
-
-if bun natively supports, 
-
-(from my observation toml does not work. idk how it sees project root.)
-
-use its config syntax
-
-otherwise
-
-create a cli wrapper. pnpm install g.
-
-get the env, which is flags for bun under this project.
-
----
+test br. (i suppose it will work.)
 
 - cli
 - file
