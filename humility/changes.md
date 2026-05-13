@@ -169,3 +169,25 @@ new
 
 - no logging by default
 
+<!-- 
+
+i could have
+
+- think before coding (ask when there are many choices)
+- simplicity first
+- surgical changes
+- goal driven execution (tdd)
+
+for 1 and 4, i know when i have choices. e.g. choose a library, a method. tdd is not necessary for all tasks.
+
+for 2, i think llms generate the simplest code by default. no need to say "avoid unnecessary abstraction". you see the code. you can make it dry when you feel like it, whether removing an abstraction that abstracts nothing (e.g. classname and css classname occur at the same time), or adding one.
+
+for 3, i think just let llms go. as long as it works and it's readable it's fine.
+
+some are to normalize the behavior due to some builtin system prompts.
+
+also, luoling has some "anti patterns". they are common. but they are not always general.
+
+ -->
+
+

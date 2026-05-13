@@ -133,6 +133,7 @@ archi:
 - big opensource projects
 - composable is further than modular
 - internationalization localization
+- object params positional params mixed params
 
 frontend: <!-- web -->
 
@@ -223,6 +224,7 @@ pm:
 - choose tools
 - structural problems
 - world solved unsolved
+- the unsolved in possible new personal softwares
 
 gamedev:
 
