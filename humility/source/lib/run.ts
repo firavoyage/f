@@ -21,7 +21,7 @@ export async function run({ command }) {
   const { stdout, stderr } = exec_result
 
   if (stderr) {
-    return err({ type: non_empty_stderr, mesaage: stderr})
+    return err({ type: non_empty_stderr, message: stderr})
   }
 
   return stdout

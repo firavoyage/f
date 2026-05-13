@@ -400,7 +400,7 @@ put after qq name.
 
 test br. (i suppose it will work.)
 
-- run
+- log (dont let bun log err symbol in the object.)
 - file
   - more methods. (ruby)
   - errors. (rust error kind)

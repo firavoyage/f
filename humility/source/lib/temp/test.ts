@@ -22,8 +22,6 @@ async function fetch_data(a: any) {
   return JSON.parse(a);
 }
 
-const async: (...args: any) => Promise<result<object>> = handle(fetch_data)
-
 function test() {
   let bar = foo()
 

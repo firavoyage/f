@@ -45,7 +45,15 @@ const err_symbol = Symbol("err");
 // }
 
 /**
- * well, it
+ * well, it has tradeoff.
+ * 
+ * { type: non_empty_stderr, mesaage: stderr} typo does not red flag
+ * 
+ * it does not even auto complete type and message now
+ * 
+ * maybe i should define a more conservative any, as in ts any is too overpowered
+ * 
+ * both superset and subset, in an additional lang
  */
 export function err(error: any | Optional<err, typeof err_symbol | 'message'> | Error): err {
   if (error instanceof Error) {
