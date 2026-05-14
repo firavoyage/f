@@ -392,6 +392,8 @@ message.
 
 ---
 
+lint.
+
 - file <!-- all abstraction leaks. think what you want. and what you dont. -->
   - more methods. (ruby)
   - errors. (rust error kind)
