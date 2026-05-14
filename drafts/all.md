@@ -189,6 +189,7 @@ ops: <!-- devops, ci, vcs, ... -->
 sre:
 
 - vps self hosting
+- ctf port scanning connection drop stealth server uptime hash wildcard subdomain udp quic
 
 agent: <!-- ai/ml -->
 
@@ -367,6 +368,8 @@ history:
 - ipfs
 - tv criticism
 - codeberg forgejo gitea gogs
+- ip dns asn hobbyist networking
+- language families
 
 politics:
 
@@ -422,6 +425,8 @@ glaze:
 leisure:
 
 - jp books jlpt levels
+- jp traditional self study
+- fsi lang ranking
 
 egg:
 

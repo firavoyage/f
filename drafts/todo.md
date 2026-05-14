@@ -392,13 +392,9 @@ message.
 
 ---
 
-codeberg pages.
-
-put after qq name.
+projects
 
 ---
-
-test br. (i suppose it will work.)
 
 - log (dont let bun log err symbol in the object.) <!-- fix bun if possible instead of abstract. well you can have log that wraps console log, but dont stringify obj as it losses styling. -->
 - file <!-- all abstraction leaks. think what you want. and what you dont. -->
@@ -412,6 +408,7 @@ test br. (i suppose it will work.)
 - message. spec template.
 - keyboard
 - cli (a general template, under intuitive)
-- learn jp
+
+nameless (mihomo by fira)
 
 ---
