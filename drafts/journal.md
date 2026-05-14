@@ -15359,6 +15359,10 @@ backpack:
 
 <!-- fortunately, server is up now. -->
 
+15
+
+00 20 dl `近月少女的礼仪（KFC汉化）` from tsinghua cloud drive from jinyue.fan, inspired by a berryberry vid on galgame first touch. 01 20 fail yet non resumable. retry w wget wo proxy.
+
 
 
 <!-- timebox, plan. -->
