@@ -927,3 +927,19 @@ this does not work.
 
 ---
 
+flashcards are in blockquotes, rendered as indented fully rounded rext w a lighter bg color (on dark mode) on google ai mode.
+
+e.g.
+
+dark gray
+
+  (                            )
+  (  foo bar asdf, light gray  )
+  (                            )
+
+dark gray
+
+it's quite unconventional, unlike the standard "straight line on the left" (e.g. github markdown, telegram quotation), or "quotation marks, italic" (common on personal blogs)
+
+---
+

@@ -411,4 +411,6 @@ projects
 
 nameless (mihomo by fira)
 
+projects, other todos, like blog abstraction.
+
 ---
