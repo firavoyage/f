@@ -15353,6 +15353,12 @@ backpack:
 
 18 40 finish reading freedom of money, chapter 6.
 
+14
+
+12 00 set up codeberg pages on `humilityhq.codeberg.page`.
+
+<!-- fortunately, server is up now. -->
+
 
 
 <!-- timebox, plan. -->
