@@ -39,6 +39,8 @@ fira:
 - summer flowers autumn leaves
 - haskell philosophy history syntax ideas
 - project euler <!-- "brain gym" -->
+- the unsolved in possible new personal softwares
+- not backed by yc movement
 
 life:
 
@@ -200,6 +202,7 @@ agent: <!-- ai/ml -->
 - llms improve
 - llms benchmarks
 - claude skills
+- semantic search
 
 cp: <!-- algorithms -->
 

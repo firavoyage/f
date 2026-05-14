@@ -400,8 +400,8 @@ put after qq name.
 
 test br. (i suppose it will work.)
 
-- log (dont let bun log err symbol in the object.)
-- file
+- log (dont let bun log err symbol in the object.) <!-- fix bun if possible instead of abstract. well you can have log that wraps console log, but dont stringify obj as it losses styling. -->
+- file <!-- all abstraction leaks. think what you want. and what you dont. -->
   - more methods. (ruby)
   - errors. (rust error kind)
 - git (azaneko?)
