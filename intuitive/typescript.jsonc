@@ -95,7 +95,18 @@
   "declare global": {
     "prefix": "dg",
     "body": [
+      "type $1 = typeof $1",
       "declare global {",
+      "  var $1: $1",
+      "  $0",
+      "}",
+    ],
+  },
+  "declare global type": {
+    "prefix": "dgt",
+    "body": [
+      "declare global {",
+      "  type ${1:name} = $2",
       "  $0",
       "}",
     ],

@@ -1,7 +1,15 @@
 type ok<T> = Exclude<T, err>
-type err = Readonly<{ type: any, message: any, [err_symbol]: true }>
+/**
+ * no need to readonly, you wont modify it by default
+ * 
+ * todo
+ * 
+ * type and message are string?
+ */
+type err = { type: any, message: any, [err_symbol]: true } & Partial<err_fs>
+// type err = Readonly<{ type: any, message: any, [err_symbol]: true }> & Partial<err_fs>
 // type err = Readonly<{ type: string | number | symbol, message: string | object, [err_symbol]: true }>
-// todo: type and message are string?
+type err_fs = { code: string, path: string, syscall: string, errno: number }
 
 /**
  * todo: dry?
@@ -72,24 +80,8 @@ export function err(error: any | Optional<err, typeof err_symbol | 'message'> | 
      * 
      * you dont need nested error types on the prototype chain. separate them.
      */
-    return merge(error, { type: error.constructor, [err_symbol]: true })
+    return merge(error, { type: error.constructor, message: error.stack ?? error.message, [err_symbol]: true })
 
-    Object.defineProperty({
-      /**
-       * it's simpler to say
-       * foo.type == SyntaxError
-       * than
-       * foo.type == 'SyntaxError' or foo.type instanceof SyntaxError
-       * 
-       * if rescue, it's already an error.
-       * you match known errors, otherwise it's an unexpected error.
-       * 
-       * you dont need nested error types on the prototype chain. separate them.
-       */
-      type: error.constructor,
-      // type: error.name,
-      message: error.stack ?? error.message,
-    }, err_symbol, { value: true }) as err
     // return Object.defineProperty({
     //   /**
     //    * it's simpler to say

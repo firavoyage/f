@@ -3,6 +3,11 @@ declare global {
   var log: log  
 }
 
+/**
+ * remove all non enumerable keys in an object awa any nested object inside
+ * 
+ * breaks prototype chain
+ */
 function clean_non_enum(obj: any, seen = new WeakSet()): any {
   // Return primitives, functions, and null immediately
   if (typeof obj !== 'object' || obj === null) {
@@ -36,7 +41,9 @@ function clean_non_enum(obj: any, seen = new WeakSet()): any {
   return cleanObj;
 }
 
-// Custom log function that accepts any number of arguments
+/**
+ * log into console w non enum filtered
+ */
 export function log(...args: any[]): void {
   const processedArgs = args.map(arg => clean_non_enum(arg));
   console.log(...processedArgs);

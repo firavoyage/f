@@ -4,4 +4,3 @@ const foo = Object.defineProperty({ [Symbol('hello')]: 123, foo: 'bar' }
 console.log(foo)
 
 log(foo)
-
