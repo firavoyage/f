@@ -67,8 +67,6 @@ const err_symbol = Symbol("err");
  */
 export function err(error: any | Optional<err, typeof err_symbol | 'message'> | Error): err {
   if (error instanceof Error) {
-    console.log(error);
-    log(error)
     /**
      * it's simpler to say
      * foo.type == SyntaxError
@@ -99,19 +97,31 @@ export function err(error: any | Optional<err, typeof err_symbol | 'message'> | 
     //   message: error.stack ?? error.message,
     // }, err_symbol, { value: true }) as err
   } else if (typeof error == 'object' && Object.hasOwn(error, 'type')) {
-    return Object.defineProperty(error, err_symbol, { value: true }) as err
+    return merge(error, { [err_symbol]: true })
+    // return Object.defineProperty(error, err_symbol, { value: true }) as err
     // return Object.defineProperty({
     //   // it must have a type. you should not throw anything.
     //   type: error.type,
     //   message: error.message ?? 'no message',
     // }, err_symbol, { value: true }) as err
   } else {
-    // why not be more flexible
-    return Object.defineProperty({
+    /**
+     * more flexible
+     */
+    return {
       type: error,
-      // message is implied by the type
+      /**
+       * type => message
+       */
       message: error,
-    }, err_symbol, { value: true }) as err
+      [err_symbol]: true
+    }
+    // // why not be more flexible
+    // return Object.defineProperty({
+    //   type: error,
+    //   // message is implied by the type
+    //   message: error,
+    // }, err_symbol, { value: true }) as err
   }
 }
 

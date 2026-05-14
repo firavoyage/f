@@ -13,10 +13,8 @@ await edit({ path: data('test'), find: 'foo', replace: 'hello' })
 
 log(await read({ path: data('test') }))
 
-log(await read({ path: data('nonexisting') }))
-
 let foo = await read({ path: data('nonexisting') })
 
 if(rescue(foo)){
-  console.log(foo)
+  log(foo)
 } 
