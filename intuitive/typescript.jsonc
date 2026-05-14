@@ -100,8 +100,15 @@
       "}",
     ],
   },
+  // you can shift enter to new line
   "log": {
     "prefix": "lo",
+    "body": [
+      "log(${0})"
+    ],
+  },
+  "console log": {
+    "prefix": ["clo", "clg"],
     "body": [
       "console.log(${0})"
     ],

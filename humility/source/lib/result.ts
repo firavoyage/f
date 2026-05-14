@@ -45,6 +45,8 @@ const err_symbol = Symbol("err");
 // }
 
 /**
+ * todo
+ * 
  * well, it has tradeoff.
  * 
  * { type: non_empty_stderr, mesaage: stderr} typo does not red flag
@@ -57,7 +59,22 @@ const err_symbol = Symbol("err");
  */
 export function err(error: any | Optional<err, typeof err_symbol | 'message'> | Error): err {
   if (error instanceof Error) {
-    return Object.defineProperty({
+    console.log(error);
+    log(error)
+    /**
+     * it's simpler to say
+     * foo.type == SyntaxError
+     * than
+     * foo.type == 'SyntaxError' or foo.type instanceof SyntaxError
+     * 
+     * if rescue, it's already an error.
+     * you match known errors, otherwise it's an unexpected error.
+     * 
+     * you dont need nested error types on the prototype chain. separate them.
+     */
+    return merge(error, { type: error.constructor, [err_symbol]: true })
+
+    Object.defineProperty({
       /**
        * it's simpler to say
        * foo.type == SyntaxError
@@ -73,12 +90,29 @@ export function err(error: any | Optional<err, typeof err_symbol | 'message'> | 
       // type: error.name,
       message: error.stack ?? error.message,
     }, err_symbol, { value: true }) as err
+    // return Object.defineProperty({
+    //   /**
+    //    * it's simpler to say
+    //    * foo.type == SyntaxError
+    //    * than
+    //    * foo.type == 'SyntaxError' or foo.type instanceof SyntaxError
+    //    * 
+    //    * if rescue, it's already an error.
+    //    * you match known errors, otherwise it's an unexpected error.
+    //    * 
+    //    * you dont need nested error types on the prototype chain. separate them.
+    //    */
+    //   type: error.constructor,
+    //   // type: error.name,
+    //   message: error.stack ?? error.message,
+    // }, err_symbol, { value: true }) as err
   } else if (typeof error == 'object' && Object.hasOwn(error, 'type')) {
-    return Object.defineProperty({
-      type: error.type,
-      // it must have a type. you should not throw anything.
-      message: error.message ?? 'no message',
-    }, err_symbol, { value: true }) as err
+    return Object.defineProperty(error, err_symbol, { value: true }) as err
+    // return Object.defineProperty({
+    //   // it must have a type. you should not throw anything.
+    //   type: error.type,
+    //   message: error.message ?? 'no message',
+    // }, err_symbol, { value: true }) as err
   } else {
     // why not be more flexible
     return Object.defineProperty({

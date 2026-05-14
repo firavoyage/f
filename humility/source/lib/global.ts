@@ -1,8 +1,6 @@
 /**
- * prelude
+ * use
  */
-
-import * as result from 'lib/result';
 
 declare global {
   function use(lib: any): void;
@@ -12,7 +10,17 @@ export function use(lib) {
   Object.assign(globalThis, lib)
 }
 
+/**
+ * prelude
+ */
+
+import * as result from 'lib/result';
+import * as log from 'lib/log';
+import * as std from 'lib/std';
+
 use(result)
+use(log)
+use(std)
 
 globalThis.use = use
 

@@ -1,59 +1,43 @@
-// lib/log.ts
-import fs from "fs/promises";
-import path from "path";
-import url from "url";
-import { inspect } from "util";
-import { randomUUID } from "crypto";
-
-const BACKEND_DIR = path.resolve(url.fileURLToPath(new URL("../", import.meta.url)));
-const LOG_FOLDER = path.join(BACKEND_DIR, ".log");
-const MAIN_LOG_FILE = path.join(LOG_FOLDER, "humility.log");
-
-interface LogParams {
-  message: string | object;
-  level?: "info" | "warn" | "error" | "debug";
-  location?: string;
+type log = typeof log
+declare global {
+  var log: log  
 }
 
-/**
- * Append a log message with timestamp to backend/.log/humility.log.
- * Multiline messages are saved to a separate timestamped file and referenced in main log.
- *
- * @async
- * @function log
- * @param {LogParams} params
- */
-export const log = async ({ message, level = "info", location = "" }: LogParams): Promise<void> => {
-  await fs.mkdir(LOG_FOLDER, { recursive: true });
-
-  const time = new Date().toISOString();
-  const upperLevel = level.toUpperCase() as "INFO" | "WARN" | "ERROR" | "DEBUG";
-
-  const msgString = typeof message === "string" ? message : inspect(message, { depth: null });
-  const isMultiline = msgString.includes("\n");
-
-  let displayMessage: string;
-  if (isMultiline) {
-    const filename = `${time.replace(/[:.]/g, "-")}-${randomUUID()}.log`;
-    const filePath = path.join(LOG_FOLDER, filename);
-    await fs.writeFile(filePath, msgString, "utf-8");
-    displayMessage = `[see ${filename}]`; // only reference in main log
-  } else {
-    displayMessage = `'${msgString}'`;
+function clean_non_enum(obj: any, seen = new WeakSet()): any {
+  // Return primitives, functions, and null immediately
+  if (typeof obj !== 'object' || obj === null) {
+    return obj;
   }
 
-  const parts = [time, upperLevel, location, displayMessage].filter(Boolean);
-  const line = parts.join(" ") + "\n";
-
-  await fs.appendFile(MAIN_LOG_FILE, line, "utf-8");
-
-  if (upperLevel === "ERROR") {
-    console.error(line.trim());
-    return;
+  // Prevent infinite loops from circular references
+  if (seen.has(obj)) {
+    return '[Circular]';
   }
-  if (upperLevel === "WARN") {
-    console.warn(line.trim());
-    return;
+  seen.add(obj);
+
+  // Handle arrays by recursively cleaning their elements
+  if (Array.isArray(obj)) {
+    return obj.map(item => clean_non_enum(item, seen));
   }
-  console.log(line.trim());
-};
+
+  // Handle special built-in objects that JSON or spreads break
+  if (obj instanceof Date) return new Date(obj.getTime());
+  if (obj instanceof RegExp) return new RegExp(obj);
+
+  const cleanObj: Record<string, any> = {};
+
+  // Object.keys() natively extracts ONLY string-based, enumerable keys
+  const visibleKeys = Object.keys(obj);
+
+  for (const key of visibleKeys) {
+    cleanObj[key] = clean_non_enum(obj[key], seen);
+  }
+
+  return cleanObj;
+}
+
+// Custom log function that accepts any number of arguments
+export function log(...args: any[]): void {
+  const processedArgs = args.map(arg => clean_non_enum(arg));
+  console.log(...processedArgs);
+}

@@ -11,4 +11,8 @@ await append({ path: data('test'), content: 'bar foo' })
 
 await edit({ path: data('test'), find: 'foo', replace: 'hello' })
 
-console.log(await read({ path: data('test') }))
+log(await read({ path: data('test') }))
+
+log(await read({ path: data('nonexisting') }))
+
+
