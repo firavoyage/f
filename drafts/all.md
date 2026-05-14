@@ -340,6 +340,10 @@ math:
 
 - birthday paradox
 
+physics:
+
+- mi power bank charging time
+
 biology:
 
 - house plant longevity
