@@ -1,4 +1,10 @@
-<!-- no need to have dirname, extname for now i think. crud is enough. (write, read, edit, remove) -->
+<!-- no need to have pathname (dirname, extname, ...) for now i think. crud is enough. (write, read, edit, remove). i have auto mkdir. -->
+
+<!-- i suppose i dont need mv cp ... use run instead. rn and mv are the same thing. -->
+
+<!-- use run for ruby pathname. -->
+
+<!-- use run (ls, find/rg, ...) for ruby dir methods. -->
 
 #
 
@@ -613,3 +619,517 @@ Would you like to see how to configure your **`tsconfig.json`** to handle strict
   Reddit·r/typescript
 
 Show all
+
+#
+
+ruby FileUtils methods
+
+April 24, 2026
+
+Ruby's **FileUtils** module provides a set of Unix-like file management methods for copying, moving, and deleting files or directories. To use them, you must first include the module with `require 'fileutils'`. \[[1](https://ruby-doc.org/stdlib-2.4.8/libdoc/fileutils/rdoc/FileUtils.html), [2](https://docs.ruby-lang.org/en/3.4/FileUtils.html), [3](https://docs.ruby-lang.org/en/3.1/FileUtils.html)]
+
+Common FileUtils Methods
+
+The following methods are organized by their primary function as documented in the [Ruby 3.4 FileUtils Documentation](https://docs.ruby-lang.org/en/3.4/FileUtils.html): \[[1](https://docs.ruby-lang.org/en/3.4/FileUtils.html)]
+
+1\. Copying & Moving
+
+- **`cp(src, dest)`**: Copies a file or a list of files to a destination.
+- **`cp_r(src, dest)`**: Recursively copies directories and their contents.
+- **`mv(src, dest)`**: Moves files or directories; works across different filesystems.
+- **`install(src, dest)`**: Copies files and optionally sets permissions (mode, owner, group). \[[1](https://ruby-doc.org/stdlib-2.7.2/libdoc/fileutils/rdoc/FileUtils.html), [2](https://www.rubydoc.info/stdlib/fileutils/FileUtils.cp%5Fr), [3](https://www.rubydoc.info/stdlib/fileutils/FileUtils.move), [4](https://docs.ruby-lang.org/en/2.0.0/FileUtils.html), [5](https://ruby-doc.org/stdlib-2.4.8/libdoc/fileutils/rdoc/FileUtils.html), [6](https://docs.ruby-lang.org/en/3.4/FileUtils.html)]
+
+2\. Deleting
+
+- **`rm(list)`**: Removes a file or a list of files.
+- **`rm_rf(list)`**: Force-removes files and directories recursively (equivalent to `rm -rf`).
+- **`rmdir(list)`**: Removes empty directories.
+- **`remove_entry(path)`**: Deletes an entry, including descendants if it is a directory. \[[1](https://rubyapi.org/o/fileutils), [2](https://ruby-doc.org/stdlib-2.4.8/libdoc/fileutils/rdoc/FileUtils.html), [3](https://docs.ruby-lang.org/en/3.4/FileUtils.html)]
+
+3\. Creating & Directory Management
+
+- **`mkdir(dir)`**: Creates a single directory.
+- **`mkdir_p(dir)`**: Creates a directory and any missing parent directories (equivalent to `mkdir -p`).
+- **`cd(dir)`** / **`chdir(dir)`**: Changes the current working directory.
+- **`pwd()`** / **`getwd()`**: Returns the current working directory. \[[1](https://ruby-doc.org/stdlib-3.0.0/libdoc/fileutils/rdoc/index.html), [2](https://ruby-doc.org/stdlib-2.4.8/libdoc/fileutils/rdoc/FileUtils.html), [3](https://docs.ruby-lang.org/en/3.4/FileUtils.html), [4](https://docs.ruby-lang.org/en/3.1/FileUtils.html)]
+
+4\. File Attributes & Permissions \[[1](https://wiki.archlinux.org/title/File%5Fpermissions%5Fand%5Fattributes)]
+
+- **`chmod(mode, list)`**: Changes the permission mode of files.
+- **`chown(user, group, list)`**: Changes the owner and group of files.
+- **`touch(list)`**: Updates access and modification times; creates the file if it doesn't exist. \[[1](https://ruby-doc.org/stdlib-2.4.8/libdoc/fileutils/rdoc/FileUtils.html), [2](https://ruby-doc.org/stdlib-2.7.2/libdoc/fileutils/rdoc/FileUtils.html), [3](https://docs.ruby-lang.org/en/3.4/FileUtils.html), [4](https://rubyapi.org/o/fileutils)]
+
+Global Options
+
+Most methods accept a final `options` hash to modify behavior: \[[1](https://ruby-doc.org/stdlib-2.4.8/libdoc/fileutils/rdoc/FileUtils.html), [2](https://ruby-doc.org/stdlib-2.7.2/libdoc/fileutils/rdoc/FileUtils.html), [3](https://docs.ruby-lang.org/en/3.1/FileUtils.html)]
+
+- **`:force`**: Forces the operation (e.g., overwrites files or ignores non-existent targets).
+- **`:verbose`**: Prints the command being executed to standard output.
+- **`:noop`**: "No Operation"—shows what would happen without actually making changes.
+- **`:preserve`**: Maintains the original file's owner, group, and time stamps when copying. \[[1](https://ruby-doc.org/stdlib-3.0.0/libdoc/fileutils/rdoc/FileUtils.html), [2](https://ruby-doc.org/stdlib-2.7.5/libdoc/fileutils/rdoc/FileUtils.html), [3](https://docs.ruby-lang.org/en/3.2/FileUtils.html), [4](https://ruby-doc.org/stdlib-2.4.8/libdoc/fileutils/rdoc/FileUtils.html), [5](https://ruby-doc.org/stdlib-2.7.2/libdoc/fileutils/rdoc/FileUtils.html)]
+
+Utility Modules
+
+You can also use specialized sub-modules to apply these options globally to all calls: \[[1](https://ruby-doc.org/stdlib-2.4.8/libdoc/fileutils/rdoc/FileUtils.html), [2](https://docs.ruby-lang.org/en/3.1/FileUtils.html)]
+
+- **`FileUtils::Verbose`**: Automatically applies `:verbose => true`.
+- **`FileUtils::NoWrite`**: Automatically applies `:noop => true`.
+- **`FileUtils::DryRun`**: Applies both `:verbose` and `:noop` for testing scripts. \[[1](https://ruby-doc.org/stdlib-2.6/libdoc/fileutils/rdoc/FileUtils.html), [2](https://ruby-doc.org/stdlib-2.4.8/libdoc/fileutils/rdoc/FileUtils.html), [3](https://ruby-doc.org/stdlib-3.0.0/libdoc/fileutils/rdoc/FileUtils.html), [4](https://docs.ruby-lang.org/en/3.1/FileUtils.html), [5](https://ruby-doc.org/stdlib-2.7.5/libdoc/fileutils/rdoc/FileUtils.html), [6](https://ruby-doc.org/stdlib-2.7.2/libdoc/fileutils/rdoc/FileUtils.html)]
+
+Do you need a **code example** for a specific task like recursively copying a folder or managing file permissions?
+
+- [link](https://ruby-doc.org/stdlib-2.4.8/libdoc/fileutils/rdoc/FileUtils.html)\
+  Module: FileUtils (Ruby 2.4.8) - Ruby-Doc.org\
+  You can distribute/modify this program under the same terms of ruby. \* module FileUtils ¶ ↑ Namespace for several file utility met...\
+  Ruby-Doc.org
+- [link](https://ruby-doc.org/stdlib-2.7.2/libdoc/fileutils/rdoc/FileUtils.html)\
+  Module: FileUtils (Ruby 2.7.2)\
+  You can distribute/modify this program under the same terms of ruby. \* module FileUtils¶ ↑ Namespace for several file utility meth...\
+  Ruby-Doc.org
+- [link](https://ruby-doc.org/stdlib-3.0.0/libdoc/fileutils/rdoc/FileUtils.html)\
+  Module: FileUtils (Ruby 3.0.0)\
+  You can distribute/modify this program under the same terms of ruby. \* module FileUtils ¶ ↑ Namespace for several file utility met...\
+  Ruby-Doc
+
+Show all
+
+#
+
+rust file methods
+
+April 18, 2026
+
+In Rust, file operations are primarily handled through the `std::fs::File` struct and the `std::fs` module. Because file I/O can fail, these methods return a `Result` type, requiring explicit error handling. \[[1](https://doc.rust-lang.org/rust-by-example/std%5Fmisc/file.html), [2](https://www.programiz.com/rust/file-handling), [3](https://sagecode.hashnode.dev/rust-files), [4](https://www.tutorialspoint.com/rust/rust%5Ffile%5Finput%5Foutput.htm)]
+
+Core File Operations
+
+- **`File::open(path)`**: Opens an existing file in **read-only** mode.
+- **`File::create(path)`**: Opens a file in **write-only** mode. If the file exists, its content is truncated (deleted); if not, a new file is created.
+- **`fs::remove_file(path)`**: Deletes a file from the filesystem.
+- **`fs::copy(from, to)`**: Copies the entire contents of one file to another.
+- **`fs::rename(from, to)`**: Renames or moves a file to a new path. \[[1](https://doc.rust-lang.org/std/fs/), [2](https://www.geeksforgeeks.org/rust/file-i-o-in-rust/), [3](https://www.w3resource.com/rust/error%5Fhandling/rust-error-propagation-exercise-2.php), [4](https://www.programiz.com/rust/file-handling), [5](https://www.tutorialspoint.com/rust/rust%5Ffile%5Finput%5Foutput.htm)]
+
+Reading and Writing Data
+
+To read or write content, the `File` struct implements the **`Read`** and **`Write`** traits from `std::io`. \[[1](https://stevedonovan.github.io/rust-gentle-intro/3-filesystem.html)]
+
+- **Reading Content**:
+  - **`read_to_string(&mut string)`**: Reads the entire file into a `String`.
+  - **`read_to_end(&mut vector)`**: Reads the entire file into a (byte vector).
+  - **`fs::read_to_string(path)`**: A convenient one-liner to read an entire file into a string without manually opening it.
+- **Writing Content**:
+  - **`write_all(bytes)`**: Writes an entire buffer (slice of bytes) to the file.
+  - **`fs::write(path, content)`**: A one-liner that creates or overwrites a file with the provided content. \[[1](https://doc.rust-lang.org/std/io/trait.Read.html), [2](https://doc.rust-lang.org/std/io/trait.Write.html), [3](https://doc.rust-lang.org/std/fs/), [4](https://www.programiz.com/rust/file-handling), [5](https://stevedonovan.github.io/rust-gentle-intro/3-filesystem.html), [6](https://www.geeksforgeeks.org/rust/file-i-o-in-rust/), [7](https://www.tutorialspoint.com/rust/rust%5Ffile%5Finput%5Foutput.htm)]
+
+Advanced Control
+
+- **`OpenOptions`**: Used for more complex requirements like **appending** to a file or setting specific permissions.\
+  rust
+
+<!---->
+
+```
+use std::fs::OpenOptions;
+let file = OpenOptions::new().append(true).open("data.txt");
+```
+
+Use code with caution.
+
+- **`File::metadata()`**: Retrieves information such as file size, permissions, and timestamps.
+- **`File::sync_all()`**: Forces the operating system to flush all buffered data to the physical disk. \[[1](https://doc.rust-lang.org/std/fs/struct.File.html), [2](https://www.youtube.com/watch?v=mkFFtO6WA8I), [3](https://docs.rs/async-fs/latest/async%5Ffs/struct.File.html), [4](https://www.geeksforgeeks.org/rust/file-i-o-in-rust/), [5](https://sagecode.hashnode.dev/rust-files)]
+
+**Note on Closing Files:** Rust does not have a dedicated `close()` method. Instead, it uses its ownership system; the file is automatically closed when the `File` variable goes out of scope. \[[1](https://opensource.com/article/23/1/read-write-files-rust), [2](https://codesignal.com/learn/courses/fundamentals-of-text-data-manipulation-in-rust/lessons/writing-and-appending-text-files-in-rust-1), [3](https://www.reddit.com/r/rust/comments/1p7by82/standard%5Flibrary%5Ffile%5Fwriting%5Fcan%5Flead%5Fto%5Fsilent/)]
+
+Would you like to see a complete **code example** for a specific task, such as reading a file line-by-line?
+
+- [link](https://doc.rust-lang.org/rust-by-example/std%5Fmisc/file.html)\
+  File I/O - Rust By Example - Rust Documentation\
+  The File struct represents a file that has been opened (it wraps a file descriptor), and gives read and/or write access to the und...\
+  Rust Documentation
+- [link](https://doc.rust-lang.org/std/fs/)\
+  std::fs - Rust\
+  Creates a new, empty directory at the provided path. ... Recursively create a directory and all of its parent components if they a...\
+  Rust Documentation
+- [link](https://doc.rust-lang.org/std/io/trait.Read.html)\
+  Read in std::io - Rust Documentation\
+  Provided Methods \* by\_ref. \* bytes. \* chain. \* is\_read\_vectored. \* read\_array. \* read\_buf. \* read\_buf\_exact. \* read\_exact. \* read\_\
+  Rust Documentation
+
+Show all
+
+example
+
+April 18, 2026
+
+Here is a comprehensive example demonstrating common file operations in Rust, including **writing**, **appending**, and **reading line-by-line**. \[[1](https://rust-lang-nursery.github.io/rust-cookbook/file/read-write.html), [2](https://github.com/alanvardy/gpto/issues/23)]
+
+rust
+
+```
+use std::fs::{File, OpenOptions};
+use std::io::{self, BufRead, BufReader, Write};
+
+fn main() -> io::Result<()> {
+    let path = "example.txt";
+
+    // 1. CREATE and WRITE to a file
+    // File::create overwrites the file if it already exists
+    let mut file = File::create(path)?;
+    file.write_all(b"Hello, Rust!\n")?;
+    writeln!(file, "Writing a new line using a macro.")?;
+
+    // 2. APPEND to an existing file
+    // Use OpenOptions to keep existing content and add to the end
+    let mut file = OpenOptions::new()
+        .append(true)
+        .open(path)?;
+    writeln!(file, "This line is appended.")?;
+
+    // 3. READ line-by-line (Memory Efficient)
+    // BufReader is preferred for large files to avoid loading everything at once
+    let file = File::open(path)?;
+    let reader = BufReader::new(file);
+
+    println!("File contents:");
+    for line in reader.lines() {
+        // Each line is wrapped in a Result in case of I/O errors during reading
+        let line = line?;
+        println!("> {}", line);
+    }
+
+    Ok(())
+}
+```
+
+Use code with caution.
+
+Key Concepts in This Example
+
+- **Error Propagation (`?`)**: Most file methods return `io::Result`. Using the `?` operator at the end of a call will return the error early from the function if something goes wrong.
+- **`BufReader`**: Instead of reading the entire file into a `String` at once, `BufReader` reads it in chunks, making it much safer for large files.
+- **Automatic Closing**: You do not need to call a `close()` method. Rust automatically closes the file handle when the `file` variable goes out of scope.
+- **One-Liners**: For very simple tasks where you don't mind loading the whole file into memory, you can use `std::fs::read_to_string("path")` or `std::fs::write("path", "content")`. \[[1](https://doc.rust-lang.org/rust-by-example/std%5Fmisc/file/read%5Flines.html), [2](https://www.w3resource.com/rust/error%5Fhandling/rust-error-propagation-exercise-1.php), [3](https://stackoverflow.com/questions/45882329/read-large-files-line-by-line-in-rust), [4](https://blog.logrocket.com/how-to-read-files-rust/), [5](https://opensource.com/article/23/1/read-write-files-rust), [6](https://codesignal.com/learn/courses/fundamentals-of-text-data-manipulation-in-rust/lessons/writing-and-appending-text-files-in-rust-1), [7](https://blog.logrocket.com/how-to-read-files-rust/), [8](https://dev.to/aniket%5Fbotre/day20-navigating-rusts-file-system-a-journey-into-file-handling-5ghg)]
+
+Would you like to explore how to handle specific **filesystem errors**, like "Permission Denied" or "File Not Found"?
+
+- [link](https://doc.rust-lang.org/rust-by-example/std%5Fmisc/file/read%5Flines.html)\
+  read\_lines - Rust By Example\
+  We also update read\_lines to return an iterator instead of allocating new String objects in memory for each line. use std::fs::Fil...\
+  Rust Documentation
+- [link](https://stackoverflow.com/questions/45882329/read-large-files-line-by-line-in-rust)\
+  Read large files line by line in Rust \[duplicate] - Stack Overflow\
+  Sorted by: 174. You want to use the buffered reader, BufRead , and specifically the function BufReader.lines() : use std::fs::File...\
+  Stack Overflow
+- [link](https://rust-lang-nursery.github.io/rust-cookbook/file/read-write.html)\
+  Read & Write - Rust Cookbook\
+  Read lines of strings from a file. Writes a three-line message to a file, then reads it back a line at a time with the Lines itera...\
+  GitHub Pages documentation
+
+Show all
+
+#
+
+ruby pathname methods
+
+April 24, 2026
+
+Ruby's **Pathname** class provides a cleaner, object-oriented way to handle file system paths by combining functionality from `File`, `Dir`, and `FileUtils`. Unlike standard strings, **Pathname objects are immutable**; methods that modify the path return a _new_ Pathname object instead of changing the original. \[[1](https://www.sitepoint.com/rubys-pathname-api/), [2](https://rubyreferences.github.io/rubyref/builtin/system-cli/filesystem.html), [3](https://docs.ruby-lang.org/en/2.4.0/Pathname.html), [4](https://docs.ruby-lang.org/en/master/Pathname.html)]
+
+Core Pathname Methods
+
+You must `require 'pathname'` to use this class. \[[1](https://rubyreferences.github.io/rubyref/builtin/system-cli/filesystem.html)]
+
+- **Creation & Navigation**
+  - `Pathname.new(path)`: Creates a new instance from a string.
+  - `join(*args)` or `/`: Appends path fragments. `path / 'subdir' / 'file.txt'` is a common shorthand.
+  - `parent`: Returns the parent directory as a Pathname object.
+  - `relative_path_from(base)`: Calculates the path to the current object relative to the provided base.
+- **Information & Status**
+  - `absolute?` / `relative?`: Checks if the path is absolute or relative.
+  - `exist?`: Returns `true` if the file or directory actually exists on the system.
+  - `file?` / `directory?`: Predicate methods to check the type of the path.
+  - `basename` / `dirname`: Returns the last component or the directory part, respectively.
+  - `extname`: Returns the file extension (e.g., `.txt`).
+- **File Operations (Facades)**
+  - `read` / `write(content)`: Quickly read from or write to a file.
+  - `each_line`: Iterates over the lines of a file.
+  - `mkdir` / `rmdir`: Creates or removes directories.
+  - `children`: Returns an array of Pathname objects for every entry in a directory (excluding `.` and `..`).
+- **Traversal**
+  - `ascend`: Iterates upward from the current path to the root.
+  - `descend`: Iterates downward from the root to the current path. \[[1](http://ruby-doc.org/stdlib-2.4.1/libdoc/pathname/rdoc/Pathname.html), [2](https://www.rubydoc.info/stdlib/pathname/Pathname), [3](https://blog.rebased.pl/2016/02/03/so-you-want-to-use-pathnames.html), [4](https://stackoverflow.com/questions/31000888/using-ruby-pathname-to-access-relative-directory), [5](https://ruby-doc.org/stdlib-2.6/libdoc/pathname/rdoc/Pathname.html), [6](https://docs.ruby-lang.org/en/3.0/Pathname.html), [7](https://www.sitepoint.com/rubys-pathname-api/), [8](https://docs.ruby-lang.org/en/2.4.0/Pathname.html)]
+
+Key Benefits
+
+| Feature \[[1](https://www.sitepoint.com/rubys-pathname-api/), [2](https://www.sitepoint.com/rubys-pathname-api/), [3](http://ruby-doc.org/stdlib-2.4.1/libdoc/pathname/rdoc/Pathname.html)] | Description                                                                                                 |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| **Object-Oriented**                                                                                                                                                                         | Methods like `exist?` are called directly on the path object rather than passing strings to `File.exists?`. |
+| **Immutability**                                                                                                                                                                            | Operations like `join` or `dirname` always return new objects, preventing accidental side effects.          |
+| **Unified API**                                                                                                                                                                             | Combines features that are otherwise scattered across File, Dir, and FileUtils.                             |
+
+For a complete list of all 80+ methods, refer to the [official Pathname documentation](https://docs.ruby-lang.org/en/3.4/Pathname.html). \[[1](https://docs.ruby-lang.org/en/3.4/Pathname.html), [2](https://www.sitepoint.com/rubys-pathname-api/)]
+
+Do you need a **code example** showing how to use these methods to clean up a specific file-handling task?
+
+- [link](http://ruby-doc.org/stdlib-2.4.1/libdoc/pathname/rdoc/Pathname.html)\
+  Class: Pathname (Ruby 2.4.1)\
+  Pathname \* Pathname represents the name of a file or directory on the filesystem, but not the file itself. \* A Pathname can be rel...\
+  Ruby-Doc
+- [link](https://docs.ruby-lang.org/en/3.4/Pathname.html)\
+  class Pathname - Documentation for Ruby 3.4\
+  class Pathname \* Pathname represents the name of a file or directory on the filesystem, but not the file itself. \* A Pathname can ...\
+  Ruby Programming Language
+- [link](https://www.sitepoint.com/rubys-pathname-api/)\
+  Ruby's Pathname API - SitePoint\
+  Key Takeaways \* The Pathname class in Ruby's standard library represents a path on the file system, providing a convenient way to ...\
+  SitePoint
+
+Show all
+
+#
+
+ruby dir methods
+
+April 24, 2026
+
+In Ruby, the `Dir` class provides a set of tools for interacting with directory streams and performing filesystem operations like creating, deleting, and navigating folders. \[[1](https://ruby-doc.org/core-3.0.0/Dir.html), [2](https://www.geeksforgeeks.org/ruby/ruby-directories/)]
+
+Class Methods (Common Operations)
+
+These are called directly on the `Dir` class (e.g., `Dir.pwd`). \[[1](https://code.tutsplus.com/ruby-for-newbies-working-with-directories-and-files--net-18810t), [2](https://rubyapi.org/3.4/o/dir)]
+
+- **`Dir.pwd`** (or **`Dir.getwd`**): Returns the current working directory path as a string.
+- **`Dir.chdir(path)`**: Changes the current working directory to the specified path. If a block is given, it changes the directory for the duration of that block and then reverts back.
+- **`Dir.entries(path)`**: Returns an array of all filenames (including `.` and `..`) in the given directory.
+- **`Dir.children(path)`**: Similar to `entries`, but excludes the `.` and `..` directory references.
+- **`Dir.glob(pattern)`** (or **`Dir[pattern]`**): Returns an array of filenames that match a shell-like pattern (e.g., `Dir["*.rb"]` for all Ruby files).
+- **`Dir.mkdir(path, mode)`**: Creates a new directory at the given path with optional permissions.
+- **`Dir.rmdir(path)`** (or **`Dir.delete`**, **`Dir.unlink`**): Removes the specified directory; the directory must be empty.
+- **`Dir.exist?(path)`**: Returns `true` if the named file is a directory, `false` otherwise. \[[1](https://docs.ruby-lang.org/en/master/Dir.html), [2](https://medium.com/swlh/files-directories-in-ruby-a-primer-b146cb17d4b9), [3](https://ruby-doc.org/core-1.8.6/Dir.html), [4](https://rubyapi.org/3.4/o/dir), [5](https://hegwin.me/en/posts/different-methods-in-ruby-to-manipulate-directories-and-files), [6](https://railsinsights.com/blog/exploring-the-%60dir%60-class-in-ruby), [7](https://ruby-doc.org/core-2.6.8/Dir.html), [8](https://ruby-doc.org/core-2.6/Dir.html), [9](https://www.linkedin.com/learning/complete-guide-to-ruby/create-directories), [10](https://www.geeksforgeeks.org/ruby/ruby-dir-class-and-its-methods/), [11](https://www.geeksforgeeks.org/ruby/ruby-directories/)]
+
+Instance Methods (Directory Streams)
+
+These are called on a `Dir` object created via `Dir.new` or `Dir.open`. \[[1](https://docs.ruby-lang.org/en/3.4/Dir.html), [2](https://docs.ruby-lang.org/en/master/Dir.html)]
+
+- **`read`**: Reads the next entry from the directory stream and returns it as a string.
+- **`each { |file| ... }`**: Iterates over every entry in the directory.
+- **`rewind`**: Repositions the directory stream back to the first entry.
+- **`pos`** (or **`tell`**): Returns the current position in the directory stream.
+- **`seek(position)`**: Moves the stream to a specific position (previously obtained by `pos`).
+- **`close`**: Closes the directory stream. \[[1](http://ruby-doc.org/core-2.5.5/Dir.html), [2](https://ruby-doc.org/core-2.4.0/Dir.html), [3](https://ruby-doc.org/core-3.1.1/Dir.html), [4](https://ruby-doc.org/core-2.7.5/Dir.html), [5](https://ruby-doc.org/core-2.6.8/Dir.html), [6](https://docs.ruby-lang.org/en/master/Dir.html)]
+
+For more detailed technical specifications, you can refer to the official [Ruby-Doc for the Dir class](https://ruby-doc.org/core-3.1.1/Dir.html). \[[1](https://rubyapi.org/3.4/o/dir)]
+
+Do you need an **example script** showing how to use these methods together to manage files?
+
+- [link](https://ruby-doc.org/core-3.0.0/Dir.html)\
+  Class: Dir (Ruby 3.0.0)\
+  Objects of class Dir are directory streams representing directories in the underlying file system. They provide a variety of ways ...\
+  Ruby-Doc
+- [link](https://docs.ruby-lang.org/en/master/Dir.html)\
+  class Dir - Documentation for Ruby 4.1\
+  class Dir. An object of class Dir represents a directory in the underlying file system. It consists mainly of: \* A string path, gi...\
+  Ruby Programming Language
+- [link](https://rubyapi.org/3.4/o/dir)\
+  Dir | Ruby API (v3.4)\
+  Instance Methods \* # fileno. \* # path. \* # to\_path. \* # read. \* # each\_child. \* # children. \* # rewind. \* # tell. \* # seek. \* # po...\
+  Ruby API
+
+Show all
+
+#
+
+ruby file error types
+
+April 20, 2026
+
+In Ruby, file-related errors are primarily handled through the `Errno` family of exceptions, which map low-level operating system errors to specific Ruby classes. These typically inherit from `SystemCallError` or `IOError`. \[[1](https://rubyreferences.github.io/rubyref/builtin/exception/exception-classes.html), [2](https://ruby-doc.org/core-2.5.1/Errno.html), [3](https://ruby-doc.org/core-3.0.0/Exception.html), [4](https://docs.ruby-lang.org/en/3.4/Errno.html)]
+
+Common File and I/O Errors
+
+- **Errno::ENOENT**: Raised when a file or directory is not found at the specified path.
+- **Errno::EACCES**: Occurs when permission is denied for the attempted file operation.
+- **Errno::EEXIST**: Raised when trying to create a file that already exists in a context that requires a new one.
+- **EOFError**: A subclass of `IOError` raised when an I/O operation reaches the end of a file unexpectedly.
+- **IOError**: The base class for errors involving input/output operation failures.
+- **Errno::ENOSPC**: Raised when there is no space left on the device during a write operation.
+- **Errno::EISDIR**: Occurs when a directory is specified where a regular file was expected (e.g., trying to open a directory for writing). \[[1](https://www.honeybadger.io/blog/understanding-rubys-strange-errno-exceptions/), [2](https://skorks.com/2009/09/ruby-exceptions-and-exception-handling/), [3](https://rollbar.com/blog/ruby-exception-handling-primer-for-dealing-with-errors-in-ruby/), [4](https://rubyreferences.github.io/rubyref/builtin/exception/exception-classes.html), [5](https://ruby-doc.org/core-3.0.0/Exception.html)]
+
+General Script and Loading Errors
+
+These often occur before a file is even fully processed:
+
+- **LoadError**: Raised when a `require` or `load` statement fails to find or load the specified file.
+- **SyntaxError**: Raised if the file being executed contains invalid Ruby syntax. \[[1](https://medium.com/@nerdplusdog/how-to-read-and-resolve-common-error-codes-in-ruby-9a3ae4bfb0db), [2](https://launchschool.medium.com/getting-started-with-ruby-exceptions-d6318975b8d1), [3](https://ruby-doc.org/core-3.0.0/Exception.html), [4](https://rollbar.com/blog/ruby-exception-handling-primer-for-dealing-with-errors-in-ruby/)]
+
+Standard Exception Hierarchy
+
+Most application-level errors inherit from `StandardError`. Rescuing `StandardError` is the default behavior for a simple `rescue` block and will catch most I/O and argument-related issues. \[[1](https://ruby-doc.org/core-2.5.7/StandardError.html), [2](https://docs.ruby-lang.org/en/3.2/Exception.html), [3](https://launchschool.medium.com/getting-started-with-ruby-exceptions-d6318975b8d1), [4](https://www.exceptionalcreatures.com/bestiary/Exception.html), [5](https://courses.bigbinaryacademy.com/learn-rubyonrails/exception-handling-in-ruby/)]
+
+| Error Class \[[1](https://www.honeybadger.io/blog/understanding-rubys-strange-errno-exceptions/), [2](https://rollbar.com/blog/ruby-exception-handling-primer-for-dealing-with-errors-in-ruby/)] | Typical Cause                                               |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------- |
+| `Errno::ENOENT`                                                                                                                                                                                  | File or directory does not exist.                           |
+| `Errno::EACCES`                                                                                                                                                                                  | Insufficient permissions to access the file.                |
+| `LoadError`                                                                                                                                                                                      | Unable to find a file specified in `require`.               |
+| `EOFError`                                                                                                                                                                                       | Reached end of file unexpectedly.                           |
+| `Errno::ENOTEMPTY`                                                                                                                                                                               | Attempting to delete a directory that still contains files. |
+
+Are you looking for a **specific code snippet** to handle one of these errors using `begin/rescue`?
+
+- [link](https://medium.com/@nerdplusdog/how-to-read-and-resolve-common-error-codes-in-ruby-9a3ae4bfb0db)\
+  How to Read and Resolve Common Error Codes in Ruby\
+  Reading Error Messages. ... Every Ruby error message is comprised of three important elements: a type, a location, and a descripti...\
+  Medium
+- [link](https://rubyreferences.github.io/rubyref/builtin/exception/exception-classes.html)\
+  Exception Classes - Ruby Reference\
+  Errno. Ruby exception objects are subclasses of Exception. However, operating systems typically report errors using plain integers...\
+  GitHub
+- [link](https://docs.ruby-lang.org/en/3.4/Errno.html)\
+  module Errno - Documentation for Ruby 3.4\
+  Each such class is: A nested class in this module, Errno . A subclass of class SystemCallError . Associated with an error code.\
+  Ruby Programming Language
+
+Show all
+
+example
+
+April 20, 2026
+
+The most common way to handle file errors in Ruby is using a `begin...rescue` block. This allows your script to fail gracefully—for example, by printing a friendly message instead of crashing—if a file is missing or locked.
+
+Basic File Handling Example
+
+In this example, we attempt to read a file and handle the two most frequent issues: the file not existing (`Errno::ENOENT`) and not having permission to read it (`Errno::EACCES`).
+
+ruby
+
+```
+filename = "data.txt"
+
+begin
+  # Attempt to open and read the file
+  content = File.read(filename)
+  puts "File content: #{content}"
+
+rescue Errno::ENOENT
+  # Specifically handle "File Not Found"
+  puts "Error: The file '#{filename}' could not be found."
+
+rescue Errno::EACCES
+  # Specifically handle "Permission Denied"
+  puts "Error: You do not have permission to read '#{filename}'."
+
+rescue StandardError => e
+  # Catch-all for any other unexpected issues
+  puts "An unexpected error occurred: #{e.message}"
+
+ensure
+  # This block runs no matter what (optional)
+  puts "Attempted file access completed."
+end
+```
+
+Use code with caution.
+
+Key Components
+
+1. **`begin`**: Starts the protected section of code.
+2. **`rescue [ErrorClass]`**: If an error occurs that matches the class (like `Errno::ENOENT`), Ruby jumps straight to this block.
+3. **`StandardError => e`**: Assigns the error object to the variable `e` so you can inspect the specific message using `e.message`.
+4. **`ensure`**: Guaranteed to run whether an error happened or not; it's often used to close file handles if you opened them manually using `File.open`.
+
+Would you like to see how to **automatically retry** the operation if a specific error occurs?
+
+errno, enoent, eacces... seems unfriendly
+
+April 20, 2026
+
+it definitely feels like "computer speak" from the 70s. That’s because these names come directly from **C and Unix system headers**.
+
+In the original C programming language (which Ruby is built on), `Errno` stands for **"Error Number."** The weird abbreviations are short for specific phrases:
+
+- **ENOENT**: Error NO ENTitity (No such file or directory).
+- **EACCES**: Error ACCESs (Permission denied).
+- **EISDIR**: Error IS a DIRectory (You tried to open a folder like a file).
+- **ENOSPC**: Error NO SPaCe (Disk is full).
+
+Making it "Friendly"
+
+Since Ruby is all about developer happiness, you don't have to show these cryptic codes to your users. You can use a `rescue` block to "translate" them into human language:
+
+ruby
+
+```
+begin
+  File.open("secret_plans.txt")
+rescue Errno::ENOENT
+  puts "Whoops! That file is missing."
+rescue Errno::EACCES
+  puts "Hold up! You aren't allowed in there."
+end
+```
+
+Use code with caution.
+
+Pro-Tip: The "Sugar" Way
+
+If you just want to check if a file exists before even trying (and avoid the error entirely), Ruby provides a much friendlier method:
+
+ruby
+
+```
+if File.exist?("data.csv")
+  # Proceed safely
+else
+  puts "File's gone, boss."
+end
+```
+
+Use code with caution.
+
+Would you like to know how to **find a list** of all these cryptic codes inside your Ruby terminal?
+
+why errno, not error
+
+April 20, 2026
+
+It feels like a typo or a lazy abbreviation, but it’s actually a very specific technical "handshake" between Ruby and your computer's Operating System.
+
+Here is the breakdown of why it’s `Errno` instead of `Error`:
+
+1\. It stands for "Error Number"
+
+Back in the 1970s, when the **C programming language** and **Unix** were being created, memory was incredibly expensive. Programmers couldn't afford to pass around long, descriptive text strings like `"File Not Found Error"`. Instead, they passed around a simple **integer** (a number).
+
+- If a function returned `2`, it meant "No such file."
+- If it returned `13`, it meant "Permission denied."
+
+The variable that held this number was named `errno`.
+
+2\. Ruby is "C-Powered"
+
+Ruby is written in C. When you ask Ruby to delete a file, it asks the underlying Operating System (OS) to do it. If the OS fails, it hands Ruby back one of those numbers.
+
+- Ruby takes that number and wraps it in a class so you can use it.
+- To stay consistent with the global standards used by Linux, macOS, and Windows, Ruby kept the original name: `Errno`.
+
+3\. "Error" was already taken
+
+In Ruby, `Error` is a generic term used in many places (like `NoMethodError` or `ArgumentError`). By using `Errno`, Ruby makes it clear that **this specific error came from the System/Kernel**, not from the Ruby code itself.
+
+How to see the "Number" inside the `Errno`
+
+If you want to see the actual number Ruby is hiding behind those letters, you can check the `Errno` constant:
+
+ruby
+
+```
+puts Errno::ENOENT::Errno   # Output: 2
+puts Errno::EACCES::Errno   # Output: 13
+```
+
+Use code with caution.
+
+**Think of `Errno` as the "Translator"** between the raw, numbered language of your hardware and the object-oriented language of Ruby.
+
+Would you like to see the **shortcut** for finding out what a specific `Errno` number actually means?

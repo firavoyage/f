@@ -5,8 +5,8 @@ follow these:
   - x11
   - zsh
   - typescript
-  - pnpm
   - es module
+  - pnpm
   - bun
   - parceljs
 - naming:

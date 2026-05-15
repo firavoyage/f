@@ -279,7 +279,11 @@ export async function edit({ path, find, replace }) {
  * 
  * todo
  * 
- * add an option
+ * add an option (dont err for non existence)
+ * 
+ * a list of files?
+ * 
+ * do i { path, options } or path, { options }? others?
  */
 export async function remove({ path }): Promise<result<void>> {
   const _ = await delete_file(path)

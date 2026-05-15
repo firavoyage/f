@@ -400,9 +400,6 @@ commented code on bottom.
 
 ---
 
-- file <!-- all abstraction leaks. think what you want. and what you dont. -->
-  - more methods. (ruby)
-  - errors. (rust error kind)
 - git (azaneko?)
 - vector search
 - tg export to knowledge
@@ -413,7 +410,12 @@ commented code on bottom.
 - cli (a general template, under intuitive)
 - nameless (mihomo by fira)
 - have (crawl the web, e.g. matrix67) <!-- the most crucial step is network. be pragmatic. like handling a few big ones like twitter, tg export. ssg (hexo, astro, etc.). for general ones fallback to, like mhtml. menci has oi.menci on github, just clone. no need to crawl. ruanyf has ruanyf weekly on github, but no idea if all articles are foss. -->
+- revise files (think and complete todo)
 - projects, other todos, like blog abstraction.
+
+---
+
+sync.
 
 ---
 
