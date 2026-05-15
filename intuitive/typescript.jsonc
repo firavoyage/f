@@ -182,13 +182,14 @@
     ],
   },
   "err": {
+    // er works. err might not, as it might resolve to the global type instead
     "prefix": ["er", "err"],
     "body": [
       "return err($1)$0",
     ],
   },
   "rescue": {
-    "prefix": ["re", "res", "resc"],
+    "prefix": ["re", "res", "resc", "rescu", "rescue"],
     "body": [
       "if(rescue($1)){",
       "  $2",

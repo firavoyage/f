@@ -6,7 +6,13 @@
 import desktop from '@folder/xdg';
 import { homedir } from 'node:os';
 import { join, dirname as dir } from 'node:path';
-import { writeFile, readFile, appendFile, mkdir } from 'node:fs/promises';
+import { writeFile, readFile, appendFile, mkdir, unlink } from 'node:fs/promises';
+
+const make_dir = handle(mkdir)
+const write_file = handle(writeFile)
+const read_file = handle(readFile)
+const append_file = handle(appendFile)
+const delete_file = handle(unlink)
 
 /**
  * errors
@@ -46,9 +52,61 @@ export const unsupported = "unsupported"
 export const invalid_input = "invalid_input"
 export const stale_network_file_handle = "stale_network_file_handle"
 
-const write_file = handle(writeFile)
-const read_file = handle(readFile)
-const append_file = handle(appendFile)
+const map = {
+  // --- File & Directory Existence ---
+  ENOENT: not_found,
+  EEXIST: already_exists,
+
+  // --- Permissions & Ownership ---
+  EACCES: permission_denied,
+  EPERM: permission_denied,
+  EROFS: read_only_filesystem,
+
+  // --- Path & Filename Formats ---
+  ENOTDIR: not_a_directory,
+  EISDIR: is_a_directory,
+  ENAMETOOLONG: invalid_filename,
+  EINVAL: invalid_filename,
+
+  // --- Resource Exhaustion & Limits ---
+  ENOSPC: storage_full,
+  EDQUOT: quota_exceeded,
+  EFBIG: file_too_large,
+  EMFILE: other,
+  ENFILE: other,
+  ENOMEM: out_of_memory,
+
+  // --- State, Locks, & Concurrent Blocks ---
+  EBUSY: resource_busy,
+  ETXTBSY: executable_file_busy,
+  EDEADLK: deadlock,
+  EAGAIN: would_block,
+  EWOULDBLOCK: would_block,
+
+  // --- Structural Directory Rules ---
+  ENOTEMPTY: directory_not_empty,
+  EXDEV: other,
+  ELOOP: filesystem_loop,
+
+  // --- Hard Drives & Physical Operations ---
+  EIO: other,
+  ENODEV: not_found,
+  ENXIO: not_found,
+  ESPIPE: not_seekable,
+
+  // --- Streams, Pipes, & Buffers ---
+  EPIPE: broken_pipe,
+  EINTR: interrupted,
+  ENOTCONN: not_connected,
+  ESHUTDOWN: broken_pipe,
+  ECONNRESET: connection_reset,
+
+  // --- Fallbacks ---
+  ENOSYS: unsupported,
+  ENOTSUP: unsupported,
+  EFAULT: invalid_input,
+  ESTALE: stale_network_file_handle
+}
 
 /**
  * state
@@ -136,7 +194,7 @@ export function cache(...args) {
 /**
  * (over) write a file
  */
-export async function write({ path, content }) {
+export async function write({ path, content }): Promise<result<void>> {
   /**
    * todo: handle errors
    * 
@@ -146,9 +204,21 @@ export async function write({ path, content }) {
   /**
    * create path if needed
    */
-  await mkdir(dir(path), { recursive: true });
+  const make_dir_result = await make_dir(dir(path), { recursive: true });
+  if (rescue(make_dir_result)) {
+    if (has(map, make_dir_result.code)) {
+      return err({ type: map[make_dir_result.code], message: make_dir_result })
+    }
+  }
 
-  await write_file(path, content, 'utf8');
+  const write_file_result = await write_file(path, content, 'utf8');
+  if (rescue(write_file_result)) {
+    if (has(map, write_file_result.code)) {
+      return err({ type: map[write_file_result.code], message: write_file_result })
+    }
+  }
+
+  return write_file_result
 }
 
 export async function read({ path }) {
@@ -162,79 +232,17 @@ export async function read({ path }) {
 
   const content = await read_file(path, 'utf8');
 
-  if(rescue(content)){
+  if (rescue(content)) {
     /**
      * todo
      * 
      * - invalid filename does not work well, whether node or sys. rather check in ts.
      * - fact check the mappings, rather resolve to others than having an incorrect mapping
-     * 
-     * just use string symbols. no need to wrap like 
-     * 
-     * err_type_foo = 1, err_type_bar = 2, for perf
-     * 
-     * which is overengineering
      */
-    const map = {
-      // --- File & Directory Existence ---
-      ENOENT: not_found,
-      EEXIST: already_exists,
-
-      // --- Permissions & Ownership ---
-      EACCES: permission_denied,
-      EPERM: permission_denied,
-      EROFS: read_only_filesystem,
-
-      // --- Path & Filename Formats ---
-      ENOTDIR: not_a_directory,
-      EISDIR: is_a_directory,
-      ENAMETOOLONG: invalid_filename,
-      EINVAL: invalid_filename,
-
-      // --- Resource Exhaustion & Limits ---
-      ENOSPC: storage_full,
-      EDQUOT: quota_exceeded,
-      EFBIG: file_too_large,
-      EMFILE: other,
-      ENFILE: other,
-      ENOMEM: out_of_memory,
-
-      // --- State, Locks, & Concurrent Blocks ---
-      EBUSY: resource_busy,
-      ETXTBSY: executable_file_busy,
-      EDEADLK: deadlock,
-      EAGAIN: would_block,
-      EWOULDBLOCK: would_block,
-
-      // --- Structural Directory Rules ---
-      ENOTEMPTY: directory_not_empty,
-      EXDEV: other,
-      ELOOP: filesystem_loop,
-
-      // --- Hard Drives & Physical Operations ---
-      EIO: other,
-      ENODEV: not_found,
-      ENXIO: not_found,
-      ESPIPE: not_seekable,
-
-      // --- Streams, Pipes, & Buffers ---
-      EPIPE: broken_pipe,
-      EINTR: interrupted,
-      ENOTCONN: not_connected,
-      ESHUTDOWN: broken_pipe,
-      ECONNRESET: connection_reset,
-
-      // --- Fallbacks ---
-      ENOSYS: unsupported,
-      ENOTSUP: unsupported,
-      EFAULT: invalid_input,
-      ESTALE: stale_network_file_handle
-    }
-
     if (has(map, content.code)) {
-      return err({type: map[content.code], message: content})
-    } 
-  } 
+      return err({ type: map[content.code], message: content })
+    }
+  }
 
   return content
 }
@@ -260,5 +268,22 @@ export async function edit({ path, find, replace }) {
 
   const updated_content = content.replaceAll(find, replace)
 
-  await write({ path, content: updated_content })
+  return await write({ path, content: updated_content })
+}
+
+/**
+ * remove a file
+ * 
+ * delete is reserved by ts
+ */
+export async function remove({ path }): Promise<result<void>> {
+  const _ = await delete_file(path)
+
+  if (rescue(_)) {
+    if (has(map, _.code)) {
+      return err({ type: map[_.code], message: _ })
+    }
+  }
+
+  return _
 }

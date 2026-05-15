@@ -43,6 +43,13 @@ code runner
 "typescript": "cd $dir && br '$fileName'",
 ```
 
+lint
+
+```
+bun tsc
+bun eslint .
+```
+
 ---
 
 inspired by

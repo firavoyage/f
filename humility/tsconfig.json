@@ -16,6 +16,6 @@
     // "strict": true,
     "strictNullChecks": true,
   },
-  "include": ["**/*", "source/lib/temp/b.ts"],
-  "exclude": ["node_modules", "build", ".build"]
+  "include": ["**/*"],
+  "exclude": ["**/node_modules/**", "**/.build", "**/build", "**/temp", "**/legacy"]
 }
