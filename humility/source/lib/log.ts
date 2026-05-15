@@ -44,7 +44,7 @@ function clean_non_enum(obj: any, seen = new WeakSet()): any {
 /**
  * log into console w non enum filtered
  */
-export function log(...args: any[]): void {
+export function log(...args): void {
   const processedArgs = args.map(arg => clean_non_enum(arg));
   console.log(...processedArgs);
 }

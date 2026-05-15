@@ -392,6 +392,14 @@ message.
 
 ---
 
+use lower cases english for comments. as simple as possible. adjectives. phrases.
+
+explanation comment on top. (on right in shell)
+
+commented code on bottom.
+
+---
+
 - file <!-- all abstraction leaks. think what you want. and what you dont. -->
   - more methods. (ruby)
   - errors. (rust error kind)

@@ -24,11 +24,9 @@ export default defineConfig(
     files: ['**/*.ts', '**/*.tsx'],
     rules: {
       /**
-       * todo
-       * 
-       * clean up all any
+       * any, whether implicit or explicit, are expected
        */
-      // '@typescript-eslint/no-explicit-any': 'warn',
+      '@typescript-eslint/no-explicit-any': 'warn',
       /**
        * todo
        * 

@@ -3,7 +3,7 @@
  */
 
 declare global {
-  function use(lib: any): void;
+  function use(lib): void;
 }
 
 export function use(lib) {
