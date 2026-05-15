@@ -170,7 +170,7 @@
     ],
   },
   "result": {
-    "prefix": ["result"],
+    "prefix": ["resu", "resul", "result"],
     "body": [
       "result<$1> $0",
     ],
@@ -182,18 +182,23 @@
     ],
   },
   "err": {
-    // er works. err might not, as it might resolve to the global type instead
     "prefix": ["er", "err"],
     "body": [
       "return err($1)$0",
     ],
   },
   "rescue": {
-    "prefix": ["re", "res", "resc", "rescu", "rescue"],
+    "prefix": ["re", "res", "resc"],
     "body": [
       "if(rescue($1)){",
       "  $2",
       "} $0"
+    ],
+  },
+  "ignore": {
+    "prefix": ["ig"],
+    "body": [
+      "// @ts-expect-error ",
     ],
   },
 }

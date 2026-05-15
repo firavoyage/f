@@ -12,6 +12,7 @@ const non_zero_exit = 'non_zero_exit'
 const non_empty_stderr = 'non_empty_stderr'
 
 export async function run({ command }) {
+  // @ts-expect-error fine, as handle could not preserve fn overloads
   const exec_result = await exec(command);
 
   if (rescue(exec_result)) {

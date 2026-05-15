@@ -17,14 +17,11 @@ const delete_file = handle(unlink)
 /**
  * errors
  */
-/**
- * init
- */
 export const already_initialized = "already_initialized"
 export const not_initialized = "not_initialized"
-/**
- * fs
- */
+
+export const not_string = "not_string"
+
 export const not_found = "not_found"
 export const permission_denied = "permission_denied"
 export const already_exists = "already_exists"
@@ -266,6 +263,10 @@ export async function edit({ path, find, replace }) {
 
   const content = await read({ path })
 
+  if (typeof content != 'string') {
+    return err(not_string)
+  } 
+
   const updated_content = content.replaceAll(find, replace)
 
   return await write({ path, content: updated_content })
@@ -275,6 +276,10 @@ export async function edit({ path, find, replace }) {
  * remove a file
  * 
  * delete is reserved by ts
+ * 
+ * todo
+ * 
+ * add an option
  */
 export async function remove({ path }): Promise<result<void>> {
   const _ = await delete_file(path)
@@ -287,3 +292,4 @@ export async function remove({ path }): Promise<result<void>> {
 
   return _
 }
+

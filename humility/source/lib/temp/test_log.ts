@@ -64,4 +64,4 @@ function clean_non_enum(obj: any, seen = new WeakSet()): any {
   return cleanObj;
 }
 
-log(foo instanceof bar, clean_non_enum(foo) instanceof bar)
+log(temp instanceof bar, clean_non_enum(temp) instanceof bar)

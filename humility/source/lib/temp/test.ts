@@ -37,38 +37,6 @@ function test() {
   console.log(bar.concat('!'));
 }
 
-function test_handle() {
-  let foo = parse("}")
-
-  if (rescue(foo)) {
-    if (foo.type == SyntaxError) {
-      console.log(foo);
-    } else {
-      console.log('unexpected');
-    }
-  }
-
-  let bar = parse("{}")
-
-  console.log(bar);
-}
-
-async function test_handle_async() {
-  let foo = await async("}")
-
-  if (rescue(foo)) {
-    if (foo.type) {
-      console.log(foo);
-    } else {
-      console.log('unexpected');
-    }
-  }
-
-  let bar = await async("{}")
-
-  console.log(bar);
-}
-
 // test()
 
 // test_handle()
@@ -79,6 +47,7 @@ import path from 'node:path';
 
 let join = handle(path.join)
 
+// @ts-expect-error for testing
 const complexPath = join('/foo', 'bar', '//baz/asdf', 'quux', '..', 1);
 
 const a = join('.foo/quux/');

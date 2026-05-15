@@ -186,6 +186,7 @@ ops: <!-- devops, ci, vcs, ... -->
 - smoke test
 - git filter repo
 - linting eslint make snippets global
+- linting tsgo tsconfig
 
 sre:
 

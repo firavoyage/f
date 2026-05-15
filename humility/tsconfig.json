@@ -9,13 +9,17 @@
     },
 
     "allowJs": true,
-    "checkJs": true,
+    "checkJs": false,
     "maxNodeModuleJsDepth": 1,
     "noEmit": true,
 
-    // "strict": true,
+    "strict": true,
+    "noImplicitAny": false, // override strict
     "strictNullChecks": true,
+    "skipLibCheck": true,
+    "types": ["node"] // not to auto-scan the disk for hidden @types packages
   },
   "include": ["**/*"],
-  "exclude": ["**/node_modules/**", "**/.build", "**/build", "**/temp", "**/legacy"]
+  "exclude": ["**/node_modules", "**/.build", "**/build", "**/legacy"]
+  // "exclude": ["**/node_modules", "**/.build", "**/build", "**/temp", "**/legacy"]
 }
