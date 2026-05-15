@@ -46,8 +46,8 @@ code runner
 lint
 
 ```
-bun tsgo
 bun eslint
+bun tsc
 ```
 
 ---

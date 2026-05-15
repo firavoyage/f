@@ -15325,11 +15325,25 @@ wtf? Honkai: Star Rail?
 (btw, i feel i should not open an issue like that, but since there is no github discussions opened, i have to.)
 ```
 
+23 20 surf zhihu. Trim fav unixporn.
+
 12
 
 00 40 finish reading freedom of money, chapter 5.
 
 01 20 use some glue <!-- double sided tape instead, for easiness --> on the origami bird.
+
+07 00 (Re) Browse tfboys maimai `TF家族打舞萌`. Surf. Get inspired. Buy a non slip mat.
+
+I just have to much imagination on these. Could not sleep. Let's say I'm in kirisame shop, sitting among maimai arcades... (Vibe) Coding w my ubuntu... Friends n followers...
+
+I'm one w my time.
+
+07 20 Appreciate `染上音游这辈子就这样了` awa its comments
+
+07 40 Appreciate `高中辍学送外卖是怎么样的体验` `十年前的大学生，每天用手机拍两秒钟，最后剪到一起会是怎样？` `她在玩什么游戏啊` `bro懂嘉豪的选曲` `出勤如何避开这类人` `I feel I would be quite into these nerdy otakus...` `我要打舞萌.mp4` `【补档】她打我！她打我啊！快报警！！！` `Wtf` `maimai家用机（）`
+
+08 00 Browse daozhu a bit, inspired by search history. `这就是国外的快乐教育！看起来一点也不聪明！` `补档）dy岛主采访大专生！`
 
 14 20 suffer from intense home decor noise. put on headphone and earplug to mitigate a little bit.
 
@@ -15349,9 +15363,131 @@ backpack:
 
 <!-- awa some stationery, scratch pads, and the calculator -->
 
+15 40 think.
+
+Tesla achieved 13% pnl. 
+
+While Google in contrast dropped back to the time I bought it. 
+
+And there's nothing I can do about it, as one who seldom looks at the graph of the news. 
+
+In the long term they would eventually grow on the avg rate. 
+
+It's just, they don't literally behave like that. You win more at some risk instead.
+
+Wo information, trading is just losing fees. They are not indeed random. But for you it is.
+
+15 40 think.
+
+Google drive comes w 15 GB words quota. 
+
+Go backup something. From the yard drive wo redundancy.
+
+16 00 Cycle to sun moon center.
+
+Seems pretty straight forward on map. Just north and then west.
+
+<!-- upd 14 20 --> Well, seems I go to far. 
+
+Xujiahui Rd is lujiabang Rd at first. I have to reverse.
+
+16 20 Arrive
+
+16 40 think.
+
+I don't feel there are quite mind blowing algorithms. The more advanced the less likely they are gonna be applied. 
+
+I might say react state is one. I've never thought we can set a constraint of order to make it an array wo naming. 
+
+Jslinux is also quite impressive. It's not strictly innovative if you see the code. But only after that. It proves things.
+
+16 40 Get a bit confused due to GPS inaccuracy.
+
+There are only two machines. 
+
+Coding.
+
+17 00 get some coins.
+
+WeChat pay suddenly requires my gov id, which I don't have nearby. 
+
+Use alipay instead. Since there's no coupon, just try w 30 c.
+
+The shop is pretty modern. The vibe feels nice. The assistants are helpful.
+
+Seen one jhs and one hs stu from zhonghua vhs. The school ends early for them.
+
+17 20 Play with a warm (cis?) girl in grade 10 from luwan hs who has quitted school. 
+
+She actively adds my sns and guides me.
+
+18 20 Play three games w her. 
+
+3c 1game. 
+
+There is a cis girl on grade 11 from djhs.
+
+18 20 think.
+
+Boys of long hair are common. 
+
+It's just a personal choice to appear cuter and quieter.
+
+18 40 Buy new gloves. 
+
+As the old ones are incompatible w phone screen, and a bit small maybe.
+
+18 40 Name myself as Humility.
+
+19 00 Rest for a while. 
+
+Program file lib. Write some snippets.
+
+It will open til 22.
+
+19 40 think.
+
+I would not queue w ppl. 
+
+I say I'm not ready to play proactively. 
+
+They can play as long as they like. I would code then. 
+
+I might come when the machine feels lonely.
+
+<!-- 
+
+I don't feel like to chase something w ppl I'm the world. 
+
+In primary school, when the math teacher pushes some in class work, I either hand in as the first one, or the last one. It's a recurring pattern in my life. Like when an event finishes and ppl are getting their belongings back from the locks, crowded. 
+
+Even though I'm not one of anything outstanding on rhythm games as well. 
+
+Maimai is more of the vibe while I'm coding. 
+
+Yet, it's true that everyone around me is playing it. Those I admire. It's clear I would eventually come. It would change my life I think. 
+
+And it does change things. 
+
+It makes me do things fast, achieving what was not really possible, which I consciously or unconsciously tried to escape or defer previously.
+
+ -->
+
+20 40 Finish file lib. 
+
+Get used to ts intricacies design flaws.
+
+Ppl are friendly and constantly asking if I would like to play.
+
+21 00 Have a look at the dreamy place. See you tomorrow. Home. 
+
+Had a blast. <!-- Btw made real progress. --> Made real progress btw.
+
 13
 
 18 40 finish reading freedom of money, chapter 6.
+
+
 
 14
 
@@ -15364,6 +15500,10 @@ backpack:
 00 20 dl `近月少女的礼仪（KFC汉化）` from tsinghua cloud drive from jinyue.fan, inspired by a berryberry vid on galgame first touch. 01 20 fail yet non resumable. retry w wget wo proxy. 02 40 work w `近月少女的礼仪（Steam官汉）.7z`.
 
 the steam official one is more compatible. visual novels are much more boring than bangumis. yet they are not as peaceful as books, where i can go at any pace. a critically acclaimed one whatever. i might play it one day. <!-- the zh-cn guide is not in utf-8 though. it might be better for vscode to auto handle it by default i think. (upd: it does have a setting.) -->
+
+16
+
+03 40 sync memories.
 
 
 

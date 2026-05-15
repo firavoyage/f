@@ -419,6 +419,3 @@ project float.
 
 ---
 
-sync.
-
----
