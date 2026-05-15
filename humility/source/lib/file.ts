@@ -7,7 +7,6 @@ import desktop from '@folder/xdg';
 import { homedir } from 'node:os';
 import { join, dirname as dir } from 'node:path';
 import { writeFile, readFile, appendFile, mkdir } from 'node:fs/promises';
-import { receiveMessageOnPort } from 'node:worker_threads';
 
 /**
  * errors

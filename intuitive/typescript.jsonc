@@ -1,3 +1,4 @@
+// just make it global, since i only write ts
 {
   "function": {
     "prefix": "f",

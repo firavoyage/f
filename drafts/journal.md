@@ -15363,7 +15363,7 @@ backpack:
 
 00 20 dl `近月少女的礼仪（KFC汉化）` from tsinghua cloud drive from jinyue.fan, inspired by a berryberry vid on galgame first touch. 01 20 fail yet non resumable. retry w wget wo proxy. 02 40 work w `近月少女的礼仪（Steam官汉）.7z`.
 
-the steam official one is more compatible. visual novels are much more boring than bangumis. yet they are not as peaceful as books, where i can go at any pace. a critically acclaimed one whatever. i might play it one day.
+the steam official one is more compatible. visual novels are much more boring than bangumis. yet they are not as peaceful as books, where i can go at any pace. a critically acclaimed one whatever. i might play it one day. <!-- the zh-cn guide is not in utf-8 though. it might be better for vscode to auto handle it by default i think. (upd: it does have a setting.) -->
 
 
 

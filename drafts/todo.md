@@ -392,8 +392,6 @@ message.
 
 ---
 
-lint.
-
 - file <!-- all abstraction leaks. think what you want. and what you dont. -->
   - more methods. (ruby)
   - errors. (rust error kind)
@@ -405,9 +403,7 @@ lint.
 - message. spec template.
 - keyboard
 - cli (a general template, under intuitive)
-
-nameless (mihomo by fira)
-
-projects, other todos, like blog abstraction.
+- nameless (mihomo by fira)
+- projects, other todos, like blog abstraction.
 
 ---
