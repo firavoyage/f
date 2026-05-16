@@ -1,8 +1,0 @@
-{
-  "name": "foo_template_cli",
-  "version": "1.0.0",
-  "main": "index.js",
-  "bin": {
-    "template_cli": "./index.js"
-  }
-}

@@ -164,9 +164,11 @@ frontend: <!-- web -->
 backend:
 
 - categorize backend tech stack
+- js node create cli
 - pnpm monorepo setup
 - xdg spec
 - jslinux linux kernel
+- ts node cli template
 
 desktop:
 

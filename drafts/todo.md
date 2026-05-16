@@ -408,6 +408,7 @@ project float.
 
 - cli (a general template, under intuitive)
 - git (azaneko?)
+- systemd abstraction?
 - vector search
 - tg export to knowledge
 - tg userbot x11
@@ -421,6 +422,10 @@ project float.
 
 ---
 
-sync.
+explore refray. setup openrouter on opencode. no need to exploit free res.
+
+> how does it serve, systemd?
+
+pick minimax m2.5 as recommended for speed.
 
 

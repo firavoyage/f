@@ -17700,6 +17700,44 @@ can i retrieve my tiktok and ig acc (wx1606915482) where i have frnds where ive 
 n.
 ```
 
+20 20 open an issue on refray.
+
+<!-- idk why azaneko opens pr on a repo she owns. -->
+
+````md
+support version flag
+
+every cli is expected to have both version and help i think.
+
+otherwise it might surprise the user.
+
+```sh
+ ~ % refray
+Mirror repositories between Git hosting providers
+
+Usage: refray [OPTIONS] <COMMAND>
+
+Commands:
+  config   Run the interactive configuration wizard
+  sync     Sync configured mirror groups once
+  serve    Run the webhook receiver
+  webhook  Install or uninstall repository webhooks
+  help     Print this message or the help of the given subcommand(s)
+
+Options:
+      --config <PATH>
+  -h, --help           Print help
+ ~ % refray --version
+error: unexpected argument '--version' found
+
+Usage: refray [OPTIONS] <COMMAND>
+
+For more information, try '--help'.
+```
+````
+
+20 40 play maimai w a 29 yro pm in the car industry, who kindly recommends a lower difficulty for me, which is true indeed, nevertheless i would challenge myself <!-- well, failed. im exhausted. -->.
+
 
 
 <!-- timebox, plan. -->
