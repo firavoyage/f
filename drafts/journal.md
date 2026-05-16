@@ -16840,9 +16840,6 @@ Romandu, [5/15/26 4:11 AM]
 
 Romandu, [5/15/26 4:12 AM]
 被投资人追着还债
-
-Dustella 特菈, [5/15/26 11:53 AM]
-怎么这么多熟悉的朋友这两天进来了
 ```
 
 15 40 Arrive
@@ -16938,6 +16935,770 @@ Have three bottles of water and a new pair of thin, touch screen friendly gloves
 A competition here, held by fdu med and sjtu med, live on berryberry. Only one machine left.
 
 15 20 sync memories. 16 20
+
+17 00 Read acbox group. 
+
+```md
+Dustella 特菈, [5/15/26 11:53 AM]
+怎么这么多熟悉的朋友这两天进来了
+
+渴望怜爱的 むらさき | 抱...抱不到, [5/15/26 12:51 PM]
+哇 还会上线吗 怎么形式上线()
+
+Little Snow, [5/15/26 12:52 PM]
+Appstore吗
+
+渴望怜爱的 むらさき | 抱...抱不到, [5/15/26 12:52 PM]
+那我要即刻下载了
+
+箱子跑来跑去📦, [5/15/26 8:45 PM]
+<!-- photo: full body selfie in a piece of light gray sleep clothes, in a simple dorm, w cock vaguely visible, meaty legs, and timid feet, where simple white socks of mid length are, body intentionally leaned backward to the right (common in selfies) -->
+刘海长回去一半了（
+
+k3 cat, [5/16/26 12:28 AM]
+哇哦
+
+k3 cat, [5/16/26 12:28 AM]
+为什么ai不能替代生物的又一铁证
+
+k3 cat, [5/16/26 12:29 AM]
+太色了
+
+箱子跑来跑去📦, [5/16/26 1:24 AM]
+<!-- photo: face selfie, durex in the mouth, mc donalds ring around the neck. -->
+哦对btw这个项圈是麦当劳官方的周边
+
+Dylan Su, [5/16/26 1:25 AM]
+这好奇怪
+
+Rossi🪎, [5/16/26 1:28 AM]
+推特画风跟这边有亿点反差
+
+Acbox Neko, [5/16/26 1:31 AM]
+我一直很反差
+
+盼兮, [5/16/26 1:31 AM]
+还有反差的事
+
+Acbox Neko, [5/16/26 1:32 AM]
+我只敢在我频道发点不那么露点的
+
+Rossi🪎, [5/16/26 1:32 AM]
+在广州吗
+
+盼兮, [5/16/26 1:32 AM]
+那什么时候开启pron频道
+
+Acbox Neko, [5/16/26 1:32 AM]
+我自己拍的其他照片我有其他社交账号
+
+Acbox Neko, [5/16/26 1:32 AM]
+在上海
+
+Acbox Neko, [5/16/26 1:36 AM]
+箱子老师也不想让推特上的人知道，表面一抽象女的的箱子老师背地里其实是一个反差婊吧～zako❤️
+
+路上看见, [5/16/26 1:48 AM]
+想穿泳衣
+
+Lee, [5/16/26 1:49 AM]
+杂鱼~
+
+盼兮, [5/16/26 1:54 AM]
+感觉太考验身材了都
+
+盼兮, [5/16/26 1:54 AM]
+像我这种就只能穿及其宽松的，不然丑完了
+
+Acbox Neko, [5/16/26 1:57 AM]
+我有死库水
+
+Acbox Neko, [5/16/26 1:57 AM]
+我觉得我穿着挺喜欢的
+
+盼兮, [5/16/26 1:57 AM]
+都是身材好的
+
+Acbox Neko, [5/16/26 1:57 AM]
+主要是有时候洗完澡吹完头发
+
+Acbox Neko, [5/16/26 1:57 AM]
+光着身子站在镜子前
+
+盼兮, [5/16/26 1:57 AM]
+只有我是肥猪是吧
+
+Acbox Neko, [5/16/26 1:57 AM]
+感觉自己身材好好
+
+Acbox Neko, [5/16/26 1:57 AM]
+好喜欢
+
+Acbox Neko, [5/16/26 1:58 AM]
+喜欢到想对自己犯错
+
+くじら🐳, [5/16/26 1:58 AM]
+水仙了（
+
+溏 🍬, [5/16/26 1:59 AM]
+不是人类了
+
+Lee, [5/16/26 1:59 AM]
+同感
+
+Lee, [5/16/26 2:00 AM]
+不知道为什么洗完澡对镜看自己会格外显得身材好
+
+溏 🍬, [5/16/26 2:03 AM]
+codex的新版本好多bug
+
+溏 🍬, [5/16/26 2:03 AM]
+像赶工出来的
+
+澪, [5/16/26 2:05 AM]
+我好像不是很喜欢 update 除非是 beta 版
+
+路上看见, [5/16/26 2:06 AM]
+我的睡衣总是被我把衣领咬破
+
+路上看见, [5/16/26 2:06 AM]
+但是肋骨露着还挺性感的（？
+
+路上看见, [5/16/26 2:07 AM]
+流浪汉风
+
+溏 🍬, [5/16/26 2:14 AM]
+这是可以说的吗
+
+Lee, [5/16/26 2:20 AM]
+计划尝试各种各样的小裙子
+
+Lee, [5/16/26 2:20 AM]
+减肥不易，不穿可惜了（
+
+路上看见, [5/16/26 2:25 AM]
+<!-- pic: boy (?) w long, slightly curry hair, and a bitten collar on sleep clothes, b612 cam watermark -->
+```
+
+```
+路上看见, [5/16/26 2:30 AM]
+我也想穿
+
+路上看见, [5/16/26 2:30 AM]
+但是我一个月28天都在穿睡衣（
+
+路上看见, [5/16/26 2:30 AM]
+不出门
+
+路上看见, [5/16/26 2:30 AM]
+没钱
+
+溏 🍬, [5/16/26 2:31 AM]
+淘宝货现在也很便宜吧
+
+溏 🍬, [5/16/26 2:31 AM]
+外贸尾单
+
+路上看见, [5/16/26 2:31 AM]
+优先买token和外卖
+
+路上看见, [5/16/26 2:31 AM]
+不然一个饿死一个干不了活
+
+路上看见, [5/16/26 2:31 AM]
+现在一天外卖十三块
+
+溏 🍬, [5/16/26 2:32 AM]
+token费老板不报销吗
+
+溏 🍬, [5/16/26 2:32 AM]
+赶紧跑路吧
+
+盼兮, [5/16/26 2:32 AM]
+你们一个月花多少钱给ai
+
+溏 🍬, [5/16/26 2:32 AM]
+你说我们整个公司？还是memoh
+
+盼兮, [5/16/26 2:33 AM]
+人均？
+
+溏 🍬, [5/16/26 2:33 AM]
+1万多
+
+盼兮, [5/16/26 2:33 AM]
+这么狠
+
+溏 🍬, [5/16/26 2:34 AM]
+你值得更好的机会
+
+盼兮, [5/16/26 2:35 AM]
+哪有那么多机会
+
+今天早起 打败了99%的小猪, [5/16/26 2:35 AM]
+光token都一万多，真贵啊
+
+Lee, [5/16/26 2:36 AM]
+我们不报销ai工具的费用）
+
+溏 🍬, [5/16/26 2:36 AM]
+不只是token，各种乱七八糟的订阅、infra加起来
+
+Lee, [5/16/26 2:36 AM]
+但工资按产出动态结算，用ai增效导致产出增加工资也会加
+
+溏 🍬, [5/16/26 2:39 AM]
+我觉得大家的能力都是在一个baseline上下浮动的，我不认为这个世界上有在认知、智力、执行力上碾压我的人存在
+
+路上看见, [5/16/26 2:39 AM]
+一千三的生活费
+
+路上看见, [5/16/26 2:40 AM]
+拿药就要1200了
+
+盼兮, [5/16/26 2:40 AM]
+人才能活几年
+
+路上看见, [5/16/26 2:40 AM]
+然后经常拿药的时候亲情卡额度没了还得跟我妈要
+
+盼兮, [5/16/26 2:40 AM]
+不吃好我感觉我可以直接死了
+
+Fodesu, [5/16/26 2:40 AM]
+吃外卖少活2，3年
+
+今天早起 打败了99%的小猪, [5/16/26 2:40 AM]
+外卖吃多了真反胃，吃两天我就得吐，食堂那种除外
+
+路上看见, [5/16/26 2:41 AM]
+我点的都是老店，从小开到大
+
+溏 🍬, [5/16/26 2:41 AM]
+我还可以天天吃麦当劳或者泡面呢
+
+Lee, [5/16/26 2:41 AM]
+所有内部项目以及用公司邮箱给上游开源项目提的pr都可以计算产出，会根据难度记分值，分值越高💰越多。
+
+溏 🍬, [5/16/26 2:41 AM]
+难度谁来打分
+
+Lee, [5/16/26 2:43 AM]
+mentor/大老板/hr（实习生管理组）
+
+盼兮, [5/16/26 2:44 AM]
+我还没玩过公网BGP以及数据中心级别的网，没写过parser，没写过高性能网络，没写过kernel代码，没写过图形代码，所以太菜还是，我读代码还算比较好，写起来还是比较差
+
+Lee, [5/16/26 2:44 AM]
+觉得分值和工作量不符可以提
+
+溏 🍬, [5/16/26 2:44 AM]
+负责打分的人每天大概要花多少时间在打分这件事上
+
+Lee, [5/16/26 2:46 AM]
+大部分情况是发issue时估个大概（先写个分值上去），pr提出来后在review时顺便看看分值和工作量匹不匹配
+
+Lee, [5/16/26 2:46 AM]
+看起来不会消耗特别多的时间（？
+
+溏 🍬, [5/16/26 2:46 AM]
+我觉得我一旦忙起来，根本顾不上还要给别人打分这件事
+
+溏 🍬, [5/16/26 2:48 AM]
+另一个问题是怎么防治AI Slop
+
+Lee, [5/16/26 2:49 AM]
+我们的review比较严格，无论是ai还是人写的，能过就是能过，不能过就是不能过（
+
+今天早起 打败了99%的小猪, [5/16/26 2:49 AM]
+感觉什么内部评分一般只是形式，大多数都是直接对外部客户负责
+
+Lee, [5/16/26 2:49 AM]
+没外部客户的（）
+
+溏 🍬, [5/16/26 2:49 AM]
+有点内耗的味道
+
+溏 🍬, [5/16/26 2:50 AM]
+毕竟你不能确定领导今天会不会因为某事心情不好，就打低分
+
+梓瑶 | qemu-riscv64 llvm-config --libs, [5/16/26 2:50 AM]
+只是单纯不知道你在干嘛
+
+梓瑶 | qemu-riscv64 llvm-config --libs, [5/16/26 2:51 AM]
+oErv/isrc 倒是应该不担心这个就是了
+
+Lee, [5/16/26 2:51 AM]
+但如果ai做了大部分工作且人没做实质性修改，我们有要求做ai声明
+
+溏 🍬, [5/16/26 2:51 AM]
+钱从哪里来
+
+Lee, [5/16/26 2:51 AM]
+钱又不是老板的（
+
+梓瑶 | qemu-riscv64 llvm-config --libs, [5/16/26 2:52 AM]
+钱从 wawei 和 iscas 来
+
+梓瑶 | qemu-riscv64 llvm-config --libs, [5/16/26 2:52 AM]
+都不差几个实习生的钱, 实习生最好用了, 卡抽多了有时候还能出金
+
+溏 🍬, [5/16/26 2:52 AM]
+payer想拿到的结果是什么
+
+Lee, [5/16/26 2:52 AM]
+我在or，应该只有iscas这一个单一来源了
+
+Lee, [5/16/26 2:53 AM]
+or是openruyi
+
+梓瑶 | qemu-riscv64 llvm-config --libs, [5/16/26 2:53 AM]
+上游化或者 zzkk
+
+Lee, [5/16/26 2:53 AM]
+自主可控（？
+
+溏 🍬, [5/16/26 2:54 AM]
+我的问题是不是太多了
+
+Fodesu, [5/16/26 2:54 AM]
+这好有意思
+
+Lee, [5/16/26 2:54 AM]
+就是纯聊聊天啦，还好
+
+Lee, [5/16/26 2:55 AM]
+确实能学到点（指给上游提patch）
+
+Lee, [5/16/26 2:56 AM]
+前几天尝试给linux主线提patch，感觉学到蛮多（
+
+盼兮, [5/16/26 2:55 AM]
+我最开始兼职就是因为老板要求解释产量闹掰
+
+盼兮, [5/16/26 2:55 AM]
+不是这有啥好解释
+
+盼兮, [5/16/26 2:55 AM]
+我列个表还不行
+
+梓瑶 | qemu-riscv64 llvm-config --libs, [5/16/26 2:55 AM]
+你需要让他明白你做的事情能为他带来什么价值
+
+溏 🍬, [5/16/26 2:56 AM]
+我其实并不完全理解这句话
+
+Lee, [5/16/26 2:56 AM]
+前几天尝试给linux主线提patch，感觉学到蛮多（
+
+溏 🍬, [5/16/26 2:56 AM]
+招人总是带有目的性的吧
+
+Acbox Neko, [5/16/26 2:56 AM]
+我还记得这个事情
+
+溏 🍬, [5/16/26 2:56 AM]
+你把人招进来，不知道人产生了什么价值？
+
+Acbox Neko, [5/16/26 2:56 AM]
+当时我记得他给你1600还是多少
+
+梓瑶 | qemu-riscv64 llvm-config --libs, [5/16/26 2:56 AM]
+不要说
+- 我实现了什么工作
+
+说
+- 这为你赚到了什么
+- 不实现会怎么样
+
+Acbox Neko, [5/16/26 2:56 AM]
+后来那个人也找到我了
+
+Acbox Neko, [5/16/26 2:56 AM]
+报价20000
+
+梓瑶 | qemu-riscv64 llvm-config --libs, [5/16/26 2:56 AM]
+简单来说就是必要性在哪
+
+盼兮, [5/16/26 2:56 AM]
+真的愚蠢好吧，而且他是发钱那天突然来这个
+
+梓瑶 | qemu-riscv64 llvm-config --libs, [5/16/26 2:57 AM]
+你是 isrc 邮箱吗, 哪个是你
+
+Acbox Neko, [5/16/26 2:57 AM]
+我感觉你的弱点是当时主动暴露年龄
+
+溏 🍬, [5/16/26 2:57 AM]
+啊？
+
+Acbox Neko, [5/16/26 2:57 AM]
+让对方觉得你便宜好欺负
+
+盼兮, [5/16/26 2:57 AM]
+您比较出名其实
+
+梓瑶 | qemu-riscv64 llvm-config --libs, [5/16/26 2:57 AM]
+年龄还能不暴露的么 (
+
+Acbox Neko, [5/16/26 2:57 AM]
+对
+
+梓瑶 | qemu-riscv64 llvm-config --libs, [5/16/26 2:57 AM]
+签合同不可能不暴露年龄吧
+
+盼兮, [5/16/26 2:57 AM]
+我是nothing啦
+
+Acbox Neko, [5/16/26 2:57 AM]
+主动暴露年龄有很多时候是暴露弱势
+
+Acbox Neko, [5/16/26 2:57 AM]
+这个时候就没事了
+
+Lee, [5/16/26 2:58 AM]
+改了一堆经过社区友善的review只剩一行了
+
+Acbox Neko, [5/16/26 2:58 AM]
+你要先谈
+
+Acbox Neko, [5/16/26 2:58 AM]
+到签合同这步一般都是谈好了
+
+溏 🍬, [5/16/26 2:58 AM]
+那老板您来当，招我的时候怎么不考虑我要怎么为你赚钱
+
+梓瑶 | qemu-riscv64 llvm-config --libs, [5/16/26 2:58 AM]
+招你进来是为了你的能力, 怎么创造价值你得自己想
+
+Acbox Neko, [5/16/26 2:58 AM]
+就是
+
+Acbox Neko, [5/16/26 2:59 AM]
+有一些老登就是有一股傲气
+
+Acbox Neko, [5/16/26 2:59 AM]
+你和他们辩论不过
+
+Acbox Neko, [5/16/26 2:59 AM]
+然后他们就会问你多大工作几年了
+
+梓瑶 | qemu-riscv64 llvm-config --libs, [5/16/26 2:59 AM]
+哪位是您, perf build 吗
+
+Acbox Neko, [5/16/26 3:00 AM]
+你会写go吗
+
+盼兮, [5/16/26 3:00 AM]
+可以会，这不成问题吧，语言不算壁垒？
+
+Acbox Neko, [5/16/26 3:00 AM]
+高考完来我们这里实习吗
+
+Lee, [5/16/26 3:01 AM]
+perf build那三个patch卒了，架构理解有问题改错了（
+
+溏 🍬, [5/16/26 3:01 AM]
+我想出来了就真的存在吗，公司能不能赚钱，是我靠“想”能想出来的
+
+Rossi🪎, [5/16/26 3:01 AM]
+没事已经把老登开了
+
+盼兮, [5/16/26 3:01 AM]
+没学上了请收留我
+
+Lee, [5/16/26 3:01 AM]
+是patch v2 perf riscv，修了个构建错误的小问题（？
+
+Acbox Neko, [5/16/26 3:01 AM]
+没看玩笑 认真的（
+
+Acbox Neko, [5/16/26 3:02 AM]
+实习吗（
+
+盼兮, [5/16/26 3:02 AM]
+可以喵，我感觉我大概率考拉了
+
+盼兮, [5/16/26 3:02 AM]
+我还啥也不会呢，好日子到头了
+
+Acbox Neko, [5/16/26 3:04 AM]
+出生在河北大概就是一种罪恶吧（
+
+盼兮, [5/16/26 3:05 AM]
+我们洼地的宿命
+
+溏 🍬, [5/16/26 3:05 AM]
+虽然我不知道这是个什么组织，但我如果在这里面会挺有危机感的
+
+Acbox Neko, [5/16/26 3:05 AM]
+这个是中科院的研究所
+
+溏 🍬, [5/16/26 3:05 AM]
+不和market接触，我找不到自己的价值在哪里
+
+梓瑶 | qemu-riscv64 llvm-config --libs, [5/16/26 3:06 AM]
+做开源基建啊
+
+Acbox Neko, [5/16/26 3:06 AM]
+那样就意味着你的上限不高
+
+梓瑶 | qemu-riscv64 llvm-config --libs, [5/16/26 3:06 AM]
+做的都是发行版啊编译器啊内核啊这种没法直接变现的, 而且与 riscv 有较大关系
+
+溏 🍬, [5/16/26 3:06 AM]
+我做一件事我就是首先想知道，钱从哪里来
+
+盼兮, [5/16/26 3:06 AM]
+你看bun
+
+Acbox Neko, [5/16/26 3:07 AM]
+但做基建也是要钱的
+
+Acbox Neko, [5/16/26 3:07 AM]
+理想主义没有出路
+
+梓瑶 | qemu-riscv64 llvm-config --libs, [5/16/26 3:07 AM]
+需要基建的人自然会给做基建的人钱
+
+Acbox Neko, [5/16/26 3:07 AM]
+bun被anthropic收购本身还是
+
+Acbox Neko, [5/16/26 3:07 AM]
+bun没钱
+
+Fodesu, [5/16/26 3:07 AM]
+bun有钱
+
+Acbox Neko, [5/16/26 3:07 AM]
+有钱 但一直在亏
+
+Acbox Neko, [5/16/26 3:07 AM]
+没有盈利根本不是办法
+
+Acbox Neko, [5/16/26 3:08 AM]
+投资人也急
+
+Acbox Neko, [5/16/26 3:08 AM]
+投资方想的是如何快速变现
+
+溏 🍬, [5/16/26 3:08 AM]
+那他们为什么不自己养人，组建团队
+
+Acbox Neko, [5/16/26 3:08 AM]
+市场又需要新的故事来支撑泡沫
+
+Acbox Neko, [5/16/26 3:08 AM]
+所以大家才会投资开源基建
+
+Acbox Neko, [5/16/26 3:08 AM]
+但是它本身就是不赚钱
+
+Acbox Neko, [5/16/26 3:09 AM]
+2010年后一个开源基建的最好结局是被收购
+
+Fodesu, [5/16/26 3:09 AM]
+deno都能活为什么bun 变成这样 。。
+
+溏 🍬, [5/16/26 3:09 AM]
+他们可以随时不继续为基建付费，并没有什么合同约束
+
+Acbox Neko, [5/16/26 3:09 AM]
+新的开源基建再也无法复刻linux的路线了
+
+Acbox Neko, [5/16/26 3:09 AM]
+时代不同了
+
+路上看见, [5/16/26 3:09 AM]
+要么基金会，要么收购
+
+Lee, [5/16/26 3:10 AM]
+我觉得这种模式对大学生很友好，有个比较不错的title，远程办公，还能学比较硬核一点的东西
+
+梓瑶 | qemu-riscv64 llvm-config --libs, [5/16/26 3:10 AM]
+难听点就是外包, iscas 这种还带有一定政策属性
+
+溏 🍬, [5/16/26 3:11 AM]
+下一个项目能不能拿到，不掌握在developer手里
+
+溏 🍬, [5/16/26 3:11 AM]
+我会很没有安全感
+
+Lee, [5/16/26 3:11 AM]
+上课反正也不听课，不如带着笔记本打打工（
+温暖的水课变成了冰冷的金钱
+
+梓瑶 | qemu-riscv64 llvm-config --libs, [5/16/26 3:14 AM]
+这个成本很少有公司能承担得起, 你可以看看 linux 内核按公司的提交排行榜
+
+溏 🍬, [5/16/26 3:16 AM]
+今天也学习到了很多新东西
+
+梓瑶 | qemu-riscv64 llvm-config --libs, [5/16/26 3:17 AM]
+RISC-V 的补丁可以 cc Yao Zi <me@ziyao.cc> 我可以瞅瞅x
+
+Lee, [5/16/26 3:18 AM]
+近期确是有在linux（riscv）找一些方向提patch的想法）
+
+Lee, [5/16/26 3:18 AM]
+打包打无聊了，想做点有深度的
+
+梓瑶 | qemu-riscv64 llvm-config --libs, [5/16/26 3:18 AM]
+我的经验, 你去架构代码里很少能找到有深度的东西
+
+溏 🍬, [5/16/26 3:18 AM]
+humanity的组织方式多种多样，我现在或许只了解了很小的一部分形式
+
+梓瑶 | qemu-riscv64 llvm-config --libs, [5/16/26 3:18 AM]
+可以去 fs 和网络栈看看
+
+梓瑶 | qemu-riscv64 llvm-config --libs, [5/16/26 3:19 AM]
+调度器也可以, tracing 也挺有意思, 但感觉 fs 和网络栈更可能有人给你付钱
+
+Lee, [5/16/26 3:19 AM]
+学到了喵
+
+梓瑶 | qemu-riscv64 llvm-config --libs, [5/16/26 3:20 AM]
+不过了解一个架构的实现细节还是有必要的 这样不会看不明白 generic 的代码在干啥
+特别是并发相关的
+
+梓瑶 | qemu-riscv64 llvm-config --libs, [5/16/26 3:20 AM]
+内存序啊 一致性啊 倒腾倒腾x
+
+梓瑶 | qemu-riscv64 llvm-config --libs, [5/16/26 3:21 AM]
+内核毕竟是和硬件打交道的 了解下硬件怎么做没坏处
+
+溏 🍬, [5/16/26 3:23 AM]
+大概懂一点，学过计算机组成原理和操作系统
+
+溏 🍬, [5/16/26 3:24 AM]
+但我的印象里这里的大部分工作应该已经做完了，剩下的都是修修补补
+
+梓瑶 | qemu-riscv64 llvm-config --libs, [5/16/26 3:24 AM]
+为了 20% 的 case 你得花 80% 的时间
+
+溏 🍬, [5/16/26 3:27 AM]
+我上学的时候想过一个很抽象的问题
+
+溏 🍬, [5/16/26 3:28 AM]
+假设一个操作系统不是图灵完备的，那会怎么样
+
+溏 🍬, [5/16/26 3:29 AM]
+总是在往图灵完备方向努力的
+
+溏 🍬, [5/16/26 3:29 AM]
+假设我压根就不在乎图灵完备
+
+溏 🍬, [5/16/26 3:30 AM]
+比如我用LLM现场给我搓一个runtime代码实时生成的OS出来
+
+溏 🍬, [5/16/26 3:36 AM]
+scaling law力大飞砖
+
+梓瑶 | qemu-riscv64 llvm-config --libs, [5/16/26 3:36 AM]
+那没法 scaling 的
+
+梓瑶 | qemu-riscv64 llvm-config --libs, [5/16/26 3:36 AM]
+sram 和 multiplexer 都是有面积和延迟的
+
+溏 🍬, [5/16/26 3:37 AM]
+哦你说的是这个尺度
+
+溏 🍬, [5/16/26 3:37 AM]
+这个我同意
+```
+
+19 20 answer a tech question from a stranger. 20 00
+
+```md
+are you a programmer?
+
+y
+
+i usually scan my face to unlock iphone. now it's locked. ive tried these passwords wo finding a way.
+
+can i somehow preserve or export the data? 
+
+(ask and ref google ai: no)
+
+how many times can i try
+
+(ask and ref google ai: max 10 times w an increasing delay.)
+
+are you the first time here?
+
+no. but not frequently here. 
+
+what do you play?
+
+<!-- he misunderstands: what do you do for a living? -->
+im a teacher.
+
+what subject do you teach?
+
+im a family tutor. all subjects.
+
+what kind of ppl do you serve?
+
+grade 3 students for example.
+
+do you come here a lot?
+
+y. ive been admitted through sp uee.
+
+where do you work?
+
+? i dont really work. 
+well, you can infer from "admission".
+im still a student.
+
+what's your school.
+
+not quite good. henan university.
+
+wow... one from he nan for a living. (impressive.)
+what do you play?
+
+i dont play a lot. 
+
+do you play this? (point to maimai dx)
+
+i have.
+
+what's your rating?
+
+(not mentioned). i sometimes play w children.
+
+i assume the repairing guys could not find a way to crack apple's system. 
+
+(decision: wipe.)
+
+is it called flashing?
+
+no. it's called factory reset. for example, you make the iphone android. that's flashing.
+
+do you come here today just because you happen to feel like it?
+
+y
+
+well, that feels... not reallyhuman.
+
+it's expected. as long as it's safe, it should not be exported anyway.
+
+can we add a friend on sns?
+
+wechat? (i dont really use it besides maimai login. i use tg.). 
+
+i dont use tg. ive tried reg it but i could not receive sms. how did you?
+
+i have crypto and smspool, as the chinese number requires a fiat fee now.
+
+qq? (y)
+
+can i retrieve my tiktok and ig acc (wx1606915482) where i have frnds where ive only binded as legacy phone number which i have no access to currently?
+
+n.
+```
 
 
 

@@ -406,6 +406,7 @@ project float.
 
 ---
 
+- cli (a general template, under intuitive)
 - git (azaneko?)
 - vector search
 - tg export to knowledge
@@ -413,10 +414,13 @@ project float.
 - patchright (e.g. deepseek)
 - message. spec template.
 - keyboard
-- cli (a general template, under intuitive)
 - nameless (mihomo by fira). <!-- web ui. btw, the backend and the frontend are two things -->
 - have (crawl the web, e.g. matrix67) <!-- the most crucial step is network. be pragmatic. like handling a few big ones like twitter, tg export. ssg (hexo, astro, etc.). for general ones fallback to, like mhtml. menci has oi.menci on github, just clone. no need to crawl. ruanyf has ruanyf weekly on github, but no idea if all articles are foss. -->
 - revise files (think and complete todo)
 - projects, other todos <!-- e.g. blog abstraction -->.
 
 ---
+
+sync.
+
+
