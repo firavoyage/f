@@ -218,6 +218,10 @@ export async function write({ path, content }): Promise<result<void>> {
   return write_file_result
 }
 
+/**
+ * use object params anyway for consistency, 
+ * even though there is only one param currently
+ */
 export async function read({ path }) {
   /**
    * todo: handle errors

@@ -17738,6 +17738,8 @@ For more information, try '--help'.
 
 20 40 play maimai w a 29 yro pm in the car industry, who kindly recommends a lower difficulty for me, which is true indeed, nevertheless i would challenge myself <!-- well, failed. im exhausted. -->.
 
+23 00 dl `Touhou Project`.
+
 
 
 <!-- timebox, plan. -->
