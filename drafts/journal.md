@@ -15778,15 +15778,177 @@ I thought there could be a hard limit where you shouldn't have pinned chats more
 
 A commercial interview. It's expected he would become a teacher.
 
+15 00 Out. 
+
+Feels warm. Archive the coat in the backpack.
+
+15 40 Arrive
+
+<!-- The toilet for the disabled is large and electronic. Lol. -->
+
+16 40 Get account locked out for a quarter due to the server instability. 
+
+<!-- Seems it's familiar for them as they switch to anonymous and config quickly. -->
+
+16 40 Get 135 c w 100 cny. 
+
+<!-- The seller workarounds WeChat alipay incompatibility by seeing my membership qr as the single source of truth. -->
+
+<!-- The coin out is automatic on a dedicated machine (like KFC self order). -->
+
 18 40 finish reading freedom of money, chapter 6.
 
+20 20 Meet a boy named ikun on grade 13 from usst on the same major who is admitted through an interview w the uee performance.
 
+22 00 Surf zhihu
+
+<!-- 22 00 Feng bro opens a member only live. -->
+
+22 20 eat. Skim memoh group. Hand pick meaningful messages.
+
+```
+Acbox Neko, [5/13/26 6:41 PM]
+邀请群友来下载体验Memoh Desktop
+本版本我们把go server打包进electron里了，并且支持直接操作本机文件以及使用本机docker环境
+
+https://github.com/memohai/Memoh/releases/tag/v0.9.0-beta.2
+
+清凤, [5/13/26 6:48 PM]
+喵呜
+
+Acbox Neko, [5/13/26 6:49 PM]
+https://github.com/memohai/Memoh/releases/tag/v0.9.0-beta.3
+beta3已支持windows
+
+Acbox Neko, [5/13/26 6:49 PM]
+哦对我要做desktop的想法其实来自那天我看到你发了arkloop
+
+f, [5/13/26 10:21 PM]
+似乎不是很特别。
+
+尽管也许有一些技术周折。
+
+有没有更有意义的描述？
+```
+
+```
+0x24a, [5/13/26 7:30 PM]
+菜花又睡着了
+
+Efart, [5/13/26 7:32 PM]
+菜花饿死了
+
+Efart, [5/13/26 7:32 PM]
+没Token了
+
+Menci 💖, [5/13/26 7:39 PM]
+没开
+
+Menci 💖, [5/13/26 7:40 PM]
+早上我电脑死机了两次
+
+Menci 💖, [5/13/26 7:40 PM]
+忘了
+
+溏 🍬, [5/13/26 7:41 PM]
+电脑死机
+
+溏 🍬, [5/13/26 7:42 PM]
+看起来像一个我小学时候才会出现的词
+
+Acbox Neko, [5/13/26 10:04 PM]
+https://memoh.ai/desktop
+
+Menci 💖, [5/13/26 10:07 PM]
+《Landing Page》
+
+f, [5/13/26 10:39 PM]
+在自己的桌面电脑运行？
+```
+
+22 40 chat.
+
+```
+saba 🐟 22:44:43
+你喜欢软件工程吗
+
+子供のYunoko 22:47:02
+不大了解欸
+```
 
 14
+
+00 20 Create zhihu fav research. 
+
+Those with lots of referenced, on unsolved problems, are research. 
+
+Separate from computer science (year end summary, journey and memories, university life) and dev (create something)
+
+<!-- 01 20 observe.
+
+No idea qq frequently drops my login state. No need to judge it as a good im software though. -->
 
 12 00 set up codeberg pages on `humilityhq.codeberg.page`.
 
 <!-- fortunately, server is up now. -->
+
+16 00 Arrive. 
+
+Meet a group of zhonghua vhs students who leave school at 16.
+
+17 00 play maimai dx.
+
+There is a cool guy using his elbow to play... Funny.
+
+Not really friendly. He does not talk. He skips a song I pick. And he says "you think I look like a student?" when I ask the grade he is in. Yet he refuses to disclose his job. Maybe I've annoyed him. 
+
+There's a boy from zhonghua vhs who wants me to queue for him while smoking... Holy. He says he's already an adult so whatever.
+
+The boy really wants to play first. He apologizes to the unfriendly guy like I'm about to go... Why scramble...
+
+The girl who has weird school comes everyday.
+
+17 40 Try Sega drive.
+
+<!-- abandoned after 1 game -->
+
+18 20 feel.
+
+Life in shangyekuaiji vhs is vibrant. 
+
+Lovers are stylish. 
+
+The girl of 11k rating, with two short braids, short blue washoff jeans, asymmetric short black sketchy shirt, and long white socks, has a fashionable, heavily markuped face, paired w the bf who is likely the first time here. Idk if they will last and become life long maimai players.
+
+18 40 observe.
+
+Spammers are a lot in tg. Another one today. 
+
+Fake official. Give you a phishing url w the same login page, which is a rev proxy under the hood. The first few times you enter a random sms verification number shows invalid number. Then unknown error. Idk if the number exists in tg, maybe even not registered. 
+
+Upd: Firefox after a refresh 
+
+Deceptive site issue
+
+This web page at ... has been reported as a deceptive site and has been blocked based on your security preferences.
+
+You can proceed only by changing a flag. No option to see details and accept risk. Maybe that's too aggressive?
+
+18 40 Deprecate mobile hotspot. Get a wifi nearby though not owned by the arcade shop.
+
+<!-- Upd: revert. The laptop wifi hardware is not so resilient to distance, unlike the phone. -->
+
+19 40 Play w an energetic boy from luwan jhs bringing a phone stand who has about 4k fo on rednote.
+
+20 00 feel.
+
+A gentle and soft (both clothes, a simple loose light blue shirt, and voice) girl of high skill in grade 11 from zhonghua vhs with a slightly fat and relaxed one of 7k pts who is a bit reluctant and helpless, sometimes skip tracks at expert level. The former opens her arms for a possible hug and guides the latter. The former has a clean appearance, w one small braid, while the latter is wilder, w school uniform scrambled on the seat and a bit too long shirt.
+
+A gleam of youth.
+
+21 20 Play w a timid but warm boy who studies abroad in ca in cs field in grade 15 and suffers from illness for 8mo.
+
+He knows his university is not well known and doesn't know what qs ranking is. He doesn't have contribution on GitHub, but sometimes he submit School work through it. He loves python as cpp feels hard.
 
 15
 
@@ -15794,11 +15956,503 @@ A commercial interview. It's expected he would become a teacher.
 
 the steam official one is more compatible. visual novels are much more boring than bangumis. yet they are not as peaceful as books, where i can go at any pace. a critically acclaimed one whatever. i might play it one day. <!-- the zh-cn guide is not in utf-8 though. it might be better for vscode to auto handle it by default i think. (upd: it does have a setting.) -->
 
+00 40 observe.
+
+The name change req is eventually approved. In the classic way. Like Wikipedia. 
+
+Precious might be more fit as a name. Nevertheless humility would be the future I thought. While precious is just a nice try to make latex simpler and more readable, which implies my wish to organize the world of math knowledge in an elegant way, named after a quote from a gentle and nice classmate from jhs.
+
+01 20 Write a message to <!-- future --> possible qq zone visitors.
+
+```
+看到有许多人使用这个软件。尽管如此，并不愿望这么做。不稳定（如登录状态，所在地合规）。不可访问，不可检索。不易于使用 （不尽人意的，不一致的前端工程）。不尊重注意力（背靠广告收入，鼓励 doom scrolling）。
+
+没有 “写一些内容，只给联系人看” 但想法。即使需要，tg private channel 足矣。
+
+这里有许多转发墙。机器人。但没有多少意义，多是流转的迷因图。
+
+也没有兴致搭建 ifttt 这样的自动化工具，比如转推。
+
+许多人设置了一段时间后自动削除。但甚至没有存档的价值。
+
+（btw，透明度。在访问好友回忆前，并不知道会不匿名计入对方的统计。按赞也是公开的，还可以不断在个人资料间跳跃，bfs，易被osint。发表推文竟然默认公开设备型号。安全性。历史上多次泄漏，风控或许也只针对非专业用户。）
+```
+
+01 20 Set qq bio to `技巧性☆`.
+
+The star Unicode is found via Gemini. I could have it on gnome characters, but not on Gboard.
+
+Rm discontinued projects (Upd: all projects. QQ is not GitHub username readme) on tags. Yet, I could not reorder tags easily and there is strict length limit.
+
+Set like this: Anime React Ruby macosx10 20yro
+
+Set birthday to 29 Feb.
+
+02 00 Read `一位柚子厨的竞赛退役感想`
+
+03 20 Browse lemonpig blog and her vids.
+
+14 20 eat.
+
+```
+千雪的咖啡厅 | 毕加死锁🔒, [5/12/26 12:35 PM]
+* 推送 bot 挂了，因为 chromedriver 没有 arm64 版。
+
+草师傅不是曹师傅, [5/12/26 1:01 PM]
+umm 竟然不是 rss bot
+
+GitHub, [5/12/26 2:24 PM]
+🔨 1 new commit (https://github.com/chiyuki0325/lyrica/compare/ef1f6f16db3e...9f832e8647db) to lyrica:v1:
+
+9f832e8 (https://github.com/chiyuki0325/lyrica/commit/9f832e8647dbed8ecb7af673018bae3895e69fbb): [feat] support netease lyric rich lines by Kirikaze Chiyuki
+
+zyglq, [5/15/26 1:14 PM]
+这么简单粗暴吗
+
+斬風千雪 ❄️, [5/15/26 1:23 PM]
+推送 bot 是用 selenium 打开 instantview.telegram.org 把新文章链接粘进去应用模板的
+
+f, [5/15/26 2:28 PM]
+不明白。
+
+写了一条推文。然后自动化工具转推到 telegram, mastodon, ... 
+
+这样？
+```
+
+```
+箱子跑来跑去📦, [5/14/26 3:15 PM]
+精神状态不好的时候又想到去年年底的那场事故了，原来害人的成本那么低，只需要一个拼拼凑凑断章取义的聊天记录就可以把一个人的努力全部否定
+
+我不知道他们是从哪搞来那些比BBC还会剪的关于我的聊天记录的，但至少我现在知道了要对我以前的圈子提防着点，快两年了还是有人想要害我
+
+箱子跑来跑去📦, [5/14/26 3:15 PM]
+有时候还是会同情心泛滥，特别是早上刷到某个做援助的推主或者b站上专门记录社会边缘群体的那个徐师傅，就会感觉这个世界好糟糕好糟糕，然后就忍不住的哭
+
+箱子跑来跑去📦, [5/14/26 3:15 PM]
+好糟糕。。。真的好糟糕
+```
+
+15 00 eat.
+
+```
+大型土豆喵农场, [5/13/26 9:34 PM]
+跑起来了！实现了 /v1/models 和 /v1/chat/completions
+
+tcdw (aka. 碗), [5/13/26 10:22 PM]
+嗯，然后我现在就掉进 rabbit hole 了。首先是怎么让 provider 在同一个会话保持稳定，以确保 cache hit，避免不必要的额外支出……
+
+柠檬雨iLemonrain | 正在努力成长的菜鸡 | 软硬通吃型全干工程师 | 工作爆肝就挺秃然的救救孩子.webp, [5/13/26 10:24 PM]
+请求加标识符，然后不要做Load Balancing
+
+tcdw (aka. 碗), [5/13/26 10:36 PM]
+sticky session 上了（
+load balancing 现在只有在 第一次请求/用户已经中途切换过至少一次模型 时才会激活
+
+f, [5/13/26 11:42 PM]
+功能是什么？
+
+使用浏览器自动化，将网页聊天订阅包装成 llm api？
+
+tcdw (aka. 碗), [5/13/26 11:47 PM]
+？？？？？？？？？？
+请看本频道上文
+
+f, [5/14/26 1:29 PM]
+> 嗯，我现在甚至只打算实现 openai chat completion api（反正 OpenCode 吃
+
+> 算了，我决定尝试自己 Vibe 一个，第一阶段目标就是做一个很薄的转发（
+
+> 感觉是时候要在自家搭个 AI Gateway 了，这样可以把我自购的各个 provider 的服务聚合在一起，供我私下使用。好像 New API 是个不错的选择……
+
+提问前，我读过频道上下文。
+
+没有理解目的。provider 订阅是什么意思? 已经有 api key 的话不用转发吧，可以直接在需要的机器上请求。
+
+使 ip 和前端特征一致，防止订阅滥用检测？
+
+Codex? Claude code?
+
+tcdw (aka. 碗), [5/14/26 1:36 PM]
+不是网页订阅套壳，也不是浏览器自动化。
+
+我的意思更接近一个自用的 API Gateway：把 OpenAI、Anthropic、OpenRouter、DeepSeek 之类我自己购买的正规 API 聚合到一个统一入口，方便给 OpenCode / Cherry Studio / 各种 coding agent 使用。
+
+这样我就不用在每个客户端都配置一堆 provider 和 key。本质上还是正常 API 转发，不涉及网页逆向。
+```
+
+```
+f, [5/14/26 3:10 PM]
+Hi, newbies. 
+
+Where are you from
+
+f, [5/14/26 3:12 PM]
+你是从哪里来的。
+
+今天有许多新人呢。
+
+Rin, [5/14/26 3:13 PM]
+I am groot
+
+f, [5/14/26 3:13 PM]
+Wdym
+
+f, [5/14/26 3:14 PM]
+我不能理解
+
+Fodesu, [5/14/26 4:09 PM]
+你怎么说中文了
+
+Dustella 特菈, [5/14/26 4:20 PM]
+我放了很多人进来
+
+Dustella 特菈, [5/14/26 4:20 PM]
+之前机器人非常多
+
+Dustella 特菈, [5/14/26 4:20 PM]
+只要和我有共同群，或者integrity看上去不错，我就放了
+
+明统 若空, [5/14/26 5:29 PM]
+（思考）
+
+明统 若空, [5/14/26 5:30 PM]
+（取消一个思考）
+
+f, [5/14/26 6:23 PM]
+So they were stalled for a long time, pending for your approval?
+
+Dustella 特菈, [5/14/26 6:55 PM]
+not for long, likely they would only wait few hours
+```
+
+15 20 eat.
+
+```
+箱子跑来跑去📦, [5/15/26 12:29 AM]
+今天在床上清嗓子的时候意外得到了一个特别软的声线，然后我尝试用这个声线进行淫叫，效果意外不错。此时我男朋友上厕所回来了
+我：我写了一个测试文件，你是我的项目，我需要跑一下测试(把手放在他的jj上）
+：啥测试
+我：（开始淫叫）
+：？？？
+我：test passed，10s充血完成（立即寸止）
+：wc不要那么搞我今天很累
+（等待疲软后）
+我：我要再跑一遍测试，你再配合一下（开始淫叫）
+：别这样机器会被你高压测试炸的
+我：test passed，7s
+（等待一会后）
+我：我再测试一下（把嘴巴凑到他耳边）
+我还没开始叫，结果test passed
+我：哇，还有 test cache！
+：我服了
+（于是我们笑了好久）
+#nsfw
+
+斬風千雪 ❄️, [5/15/26 12:30 AM]
+好可爱
+
+Dustella 特菈, [5/15/26 12:30 AM]
+我求你别 smoke test 了
+
+Dustella 特菈, [5/15/26 12:30 AM]
+会炸的
+
+梓瑶 | qemu-riscv64 llvm-config --libs, [5/15/26 12:30 AM]
+意外起火.webp
+
+Lee, [5/15/26 12:30 AM]
+wwwwww被甜死了
+
+溏 🍬, [5/15/26 12:31 AM]
+cache hit radio
+
+雫 夢野, [5/15/26 12:33 AM]
+唉真好啊
+
+Acbox Neko, [5/15/26 12:33 AM]
+不压力测试怎么能上线呢
+
+溏 🍬, [5/15/26 1:34 AM]
+感觉我拉了一个很抽象的team起来
+
+溏 🍬, [5/15/26 1:44 AM]
+如果说AI算我的第二次创业
+
+溏 🍬, [5/15/26 1:44 AM]
+我觉得第二次创业的partner和第一次真的完全不同
+
+澪, [5/15/26 1:47 AM]
+羡慕第二次，我还在 struggle 怎么 startup
+
+溏 🍬, [5/15/26 1:49 AM]
+最近我被问的很多的一个问题，其实是我之前没有想到大家会这么关心的：为什么我要从一个已经稳定盈利的行业跳出来，去做一个未知的、有很高风险的方向
+
+澪, [5/15/26 1:54 AM]
+你的答案是什么（
+
+溏 🍬, [5/15/26 2:02 AM]
+在见过盒子之前，我一直想做AI方向，但是一直没有下定决心
+
+溏 🍬, [5/15/26 2:03 AM]
+在这之前，Memoh的worldview和roadmap我已经想的差不多了
+
+澪, [5/15/26 2:07 AM]
+所以是一种 calling（？
+还是说是觉得这个方向必须得做，多条线同时发展会让公司的盈利模式多元化（？
+
+溏 🍬, [5/15/26 2:08 AM]
+你想听实话吗，对外我有一套说辞
+
+溏 🍬, [5/15/26 2:08 AM]
+公司的营收结构多元，AI会对很多传统行业造成冲击。。
+
+溏 🍬, [5/15/26 2:09 AM]
+这些都是说给外人听的
+
+澪, [5/15/26 2:09 AM]
+那肯定想听实话
+
+溏 🍬, [5/15/26 2:10 AM]
+实话是我觉得盒子太强了，如果能给她一个好的平台，哪怕让我放弃之前一切取得的成果，都值得
+
+澪, [5/15/26 2:12 AM]
+我做 ai 相关的东西是因为感到一种 calling，虽然我一个人能力未必够 cover（主要是指工程迭代方面的，人力和时间的问题，我觉得完全不够用），但的确有很多方向都比较好的想到/预测到了，比如说今天 tencent agent memory 的 tool result 折叠，以及它那个 memory layer，又或者是说 mirage 那个 virtual filesystem
+
+盼兮, [5/15/26 2:12 AM]
+可是我觉得ai产品关于ai的部分都无聊有点
+
+澪, [5/15/26 2:13 AM]
+确实 你挺看好她的
+
+溏 🍬, [5/15/26 2:14 AM]
+轮不到我看不看好
+
+溏 🍬, [5/15/26 2:14 AM]
+是她能不能看得上我
+
+溏 🍬, [5/15/26 2:15 AM]
+或许几年后盒子会成为她的同龄人里无可争议的最优秀的那一个，没有之一，那时候我也能沾上点光
+
+澪, [5/15/26 2:16 AM]
+其实我觉得是再发明，过去 infra 怎么做，现在结合 ai 的特性再造一遍轮子，或者做对应的改造
+
+溏 🍬, [5/15/26 2:18 AM]
+前两年我还在想，资产过亿似乎是很难的，有很多难以迈过去的口子
+
+溏 🍬, [5/15/26 2:19 AM]
+现在我根本不担心这件事，因为我有了Acbox作为co-founder
+```
+
+```md
+霜, [5/15/26 2:50 AM]
+羡慕
+
+霜, [5/15/26 2:51 AM]
+说实话，我觉得最难迈过去的是怎么拿住
+
+霜, [5/15/26 2:51 AM]
+还有怎么转的时候不被银行ban
+
+Tamiki, [5/15/26 2:54 AM]
+真的，箱子有这个实力
+
+霜, [5/15/26 2:54 AM]
+大家都太有实力了
+
+Tamiki, [5/15/26 2:55 AM]
+他现在已经超越他很多同龄人了吧
+
+斬風千雪 ❄️, [5/15/26 2:56 AM]
+不止同龄人
+
+霜, [5/15/26 2:56 AM]
+我觉得超越95%了吧
+
+Tamiki, [5/15/26 2:56 AM]
+在这个赛道上我就没见到比他厉害的
+
+Tamiki, [5/15/26 2:56 AM]
+更何况他还这么小
+
+Tamiki, [5/15/26 2:57 AM]
+不看年龄都是了
+
+澪, [5/15/26 2:57 AM]
+那我感觉还是挺多的（
+
+澪, [5/15/26 2:57 AM]
+不谈同龄人的话
+
+Tamiki, [5/15/26 2:58 AM]
+不谈同龄人肯定
+
+澪, [5/15/26 3:00 AM]
+我是觉得箱子确实很优秀，但是还有很多成长空间（x
+
+溏 🍬, [5/15/26 3:04 AM]
+所以你们都不出钱，你们是赚不到回报的
+
+溏 🍬, [5/15/26 3:04 AM]
+我all in了
+
+霜, [5/15/26 3:04 AM]
+你们加油
+
+霜, [5/15/26 3:05 AM]
+我实业的
+
+澪, [5/15/26 3:06 AM]
+我想出钱也没钱（
+
+溏 🍬, [5/15/26 3:08 AM]
+有多实
+
+Romandu, [5/15/26 3:09 AM]
+各位都是什么来头
+
+霜, [5/15/26 3:09 AM]
+夕阳产业
+
+霜, [5/15/26 3:09 AM]
+实么
+
+BBQ, [5/15/26 3:09 AM]
+土木说是
+
+盼兮, [5/15/26 3:09 AM]
+我是无业游民
+
+霜, [5/15/26 3:09 AM]
+非常非常实
+
+BBQ, [5/15/26 3:10 AM]
+钢铁
+
+霜, [5/15/26 3:10 AM]
+房地产
+
+BBQ, [5/15/26 3:10 AM]
+房地产不是金融吗
+
+霜, [5/15/26 3:10 AM]
+房地产是实业
+
+霜, [5/15/26 3:11 AM]
+还有贷款没还呢
+
+BBQ, [5/15/26 3:11 AM]
+我也想有房 深圳太贵了
+
+霜, [5/15/26 3:12 AM]
+也不需要还钱了
+
+霜, [5/15/26 3:12 AM]
+房地产就这点好
+
+霜, [5/15/26 3:12 AM]
+不需要还了
+
+霜, [5/15/26 3:12 AM]
+笑死我了
+
+溏 🍬, [5/15/26 3:12 AM]
+全款买入就不贵
+
+溏 🍬, [5/15/26 3:12 AM]
+要借贷就很贵了
+
+溏 🍬, [5/15/26 3:12 AM]
+不划算
+
+霜, [5/15/26 3:13 AM]
+我现在都不敢全款
+
+霜, [5/15/26 3:13 AM]
+我敢全款就要被审查了
+
+霜, [5/15/26 3:13 AM]
+钱都是对敲来的，怎么审
+
+溏 🍬, [5/15/26 3:14 AM]
+交税不就行了
+
+Romandu, [5/15/26 3:15 AM]
+你们 Stage 1 都是做什么的哈哈xs
+
+霜, [5/15/26 3:16 AM]
+交啥啊
+
+霜, [5/15/26 3:16 AM]
+我交税得交多少钱
+
+霜, [5/15/26 3:16 AM]
+得交老多了
+
+溏 🍬, [5/15/26 3:16 AM]
+你之前认识我吗
+
+霜, [5/15/26 3:16 AM]
+怎么可能交税
+
+霜, [5/15/26 3:16 AM]
+不可能
+
+Romandu, [5/15/26 3:16 AM]
+我记得我第一次创业的时候，还在搞 Cloud Native
+
+Romandu, [5/15/26 3:16 AM]
+或许？
+
+盼兮, [5/15/26 3:17 AM]
+都贵，反正你看你这里面一半+是税，但是很显然没人为你服务
+
+霜, [5/15/26 3:17 AM]
+<!-- sc: gmail app, greeting from hsbc malaysia - mr ... quest for infomation -->
+
+霜, [5/15/26 3:17 AM]
+已经被gank了
+
+霜, [5/15/26 3:17 AM]
+因为汇了20w刀
+
+霜, [5/15/26 3:19 AM]
+问了我大概有之前对敲的20币钱
+
+霜, [5/15/26 3:19 AM]
+都是干啥的
+
+霜, [5/15/26 3:19 AM]
+我这上哪跟他说去
+
+霜, [5/15/26 3:19 AM]
+金融业啊
+
+溏 🍬, [5/15/26 3:20 AM]
+我都是很重视税务合规的
+
+霜, [5/15/26 3:21 AM]
+主要我跨国走
+
+霜, [5/15/26 3:22 AM]
+要税务合规可太难了
+
+溏 🍬, [5/15/26 3:22 AM]
+我也跨国
+
+溏 🍬, [5/15/26 3:22 AM]
+内地-香港-新加坡
+
+
+```
+
 16
 
 03 40 sync memories. ~~(04 40)~~
 
 04 20 prepare (redact) and send some pics of the discussion (chat screenshots, scratch paper) of a math problem in grade 11 to the maimai player in dths via qq. 
+
+15 20 sync memories.
 
 
 
