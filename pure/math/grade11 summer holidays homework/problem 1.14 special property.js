@@ -6,7 +6,7 @@
  * solve for the case a = 100, b = 30.
  *
  * the solution using special property of the relationship of a and b:
- * (n-k)/30 <= a_k - a_n < a_k = 1/k
+ * (n-k)/30 <= a_k - a_n < a_k <= 1/k
  * use am gm inequality to find the upper bound of n.
  * curate a set of max(n) numbers that fit the requirements
  *

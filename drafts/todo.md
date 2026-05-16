@@ -404,6 +404,10 @@ project float.
 
 ---
 
+buy nothing 2a.
+
+---
+
 - git (azaneko?)
 - vector search
 - tg export to knowledge
@@ -418,4 +422,6 @@ project float.
 - projects, other todos, like blog abstraction.
 
 ---
+
+sync.
 

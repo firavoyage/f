@@ -15483,7 +15483,300 @@ Ppl are friendly and constantly asking if I would like to play.
 
 Had a blast. <!-- Btw made real progress. --> Made real progress btw.
 
+22 20 Normalize gov id on WeChat.
+
+23 00 Set up codeberg pages. Put after qq name.
+
+23 00 Add everyone who has placed a like on gzx7301 qq zone. 
+
+It's easy to bfs on qq. 
+
+(Btw, many replied at once. Though I'm not willing to self introduce.)
+
+Quite weird. Sometimes you can open, and suddenly within a sec it says you don't have permission, on frontend.
+
+What an engineering.
+
+23 20 Chat w the maimai player.
+
+```
+见到了许多人。不同的校服。不同的发型。不同的水平。
+
+有一些不记得了。让我看一下。
+
+（找到了记录）
+
+应该是卢湾中学的，十年级学生。热情的孩子。似乎是休学了。经过尝试通过了一个完美挑战。
+
+（思考要说什么）
+
+自己的 Twitter handle 是 firahq. 账号下，Twitter List f 是自己的阅读列表。不使用 fyp 和 following。
+
+（可能她有自己的喜好，不一定要推荐什么。提及即可。）
+
+（去市重点的孩子或许多少有些向学，至少相对平均而言。也许她有令其自己骄傲的水平。强。）
+
+水平如何？
+
+语文 150
+
+数学 150
+
+英语 150
+
+（或者也可以问中考）
+
+```
+
+```
+子供のYunoko 23:23:40
+啊？
+
+saba 🐟 23:24:40
+没有发错联系人啊
+
+子供のYunoko 23:25:17
+不是
+
+子供のYunoko 23:25:21
+啥意思
+
+ 23:25:44
+没看懂
+
+ 23:26:18
+嗯对
+
+ 23:26:27
+那个卢高高一的
+
+ 23:26:47
+你入坑前几把和我拼的
+
+saba 🐟 23:27:34
+消息的内容：
+
+- 自己的 Twitter id
+- 了解你学习上强不强
+
+ 23:28:37
+学习很差喵
+
+ 23:29:03
+推特叫か降る
+
+saba 🐟 23:30:20
+...
+
+Twitter 名字是可以重复的。也不好定位。
+
+（好吧。试试看搜索。）
+
+ 23:30:32
+喵
+
+ 23:30:37
+主要是
+
+ 23:30:43
+我忘了id了
+
+ 23:30:57
+哥你有自闭症吗
+
+saba 🐟 23:31:09
+[图片]
+
+ 23:31:30
+[不支持的元素类型]hunm
+
+ 23:31:33
+我看看
+
+saba 🐟 23:31:42
+[图片]
+
+saba 🐟 23:32:06
+可以打开自己的账号。
+
+at 后面的内容是 handle。
+
+不可以重复，可以直接确定是谁。
+
+ 23:32:13
+搜一下uni_kAFURu呢
+
+saba 🐟 23:33:05
+[图片]
+
+ 23:33:17
+嗯对是这个
+
+ 23:37:48
+不过我也一般很少用推特
+
+ 23:38:02
+基本上都是偶尔看看
+
+saba 🐟 23:41:36
+[不支持的元素类型]我不觉得这是一种精神问题。
+
+比较冷静。喜欢发长文字。
+
+支持 aka.ms/nohello
+
+如果是一个人连续发好几条消息，我会不理解。如果内容是相关的，明明可以一起说。除非后来又想到一些，又想到一些。
+
+（我看得出来很少用 Twitter. 本来想说的，但太显然的发现说出来可能显得自己有一些不审慎，想到什么说什么，也不尊重聊天者的时间。于是删了。）
+
+你能看懂英文和日文吗。
+
+我平时和 llm 聊天远多于和现实人物。使用英文。比较偏好 google gemini。
+
+（如果你能理解英文，我可以分享一些内容。不是很愿望翻译，会损失一些意思。）
+
+ 23:42:00
+我很少看得懂
+
+子供のYunoko 23:42:43
+[不支持的元素类型]不不不我没有觉得是精神病只是随口问了一句，我有在做一些心理学的研究
+
+saba 🐟 23:44:24
+使用 bilibili 吗
+
+子供のYunoko 23:44:26
+用
+
+子供のYunoko 23:44:43
+我作为一名唱见在上面投稿积累粉丝
+
+saba 🐟 23:48:48
+（其实这句话的意思是问你的账号。一般来说一个判断性问题总是会引出开放性问题。比如天空是不是蓝色的，可能是问原因而不是判断。喜欢读书吗，可能是问阅读偏好而不是频率。）
+
+子供のYunoko 23:49:13
+emm
+
+子供のYunoko 23:49:19
+不大能理解呢
+
+子供のYunoko 23:49:40
+UID:626093066
+
+saba 🐟 23:49:40
+就是你的 bilibili 账号是什么
+
+saba 🐟 23:49:48
+我知道了
+
+子供のYunoko 23:49:57
+[图片]
+
+saba 🐟 23:55:55
+不知道你几点睡觉。
+
+如果早的话，一直聊天可能会不太好。
+
+自己有一些喜欢的文章想要分享。但是很多是英文的，许多也太严肃了，关于行业和成长的观察。可能你并不需要。
+
+推荐这个吧。
+
+https://os.ryo.lu/
+
+dhh.dk
+
+61.life
+
+
+
+saba 🐟 23:56:40
+（天啊，qq 竟然不删除文末回车。一个消息难道可以在结束后还不停换行吗）
+
+
+
+
+
+
+
+ 
+
+saba 🐟 23:56:52
+看来是真的。
+
+子供のYunoko 23:57:09
+可以随意给我发消息因为我的手机一直是静音状态，等到我醒后我会全部回复，但可能导致半夜收到大量回复
+
+子供のYunoko 23:57:31
+QQ不删除文末回车是真的不方便来着
+
+saba 🐟 03:01:27
+测试
+
+行末空格。               
+
+half width spaces on line end.              
+
+文末回车
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+saba 🐟 03:02:37
+行末空格保留了。
+
+没有测试零宽度隐写和 rtl 戏法。
+
+子供のYunoko 03:18:39
+/偷感
+```
+
+23 20 Check status of ame Rikki. 
+
+```
+saba 🐟 23:04:01
+似乎你的 tg 群聊不复存在了。
+
+有新的群吗。想要参与。
+
+tym_Kasumi✨ 07:17:30
+不会开放。
+```
+
 13
+
+00 40 Refresh
+
+03 20 observe.
+
+When you exit and reenter a chat on qq, it jumps to bottom, unlike tg. 
+
+Imagine that's even a message based app wo browser like multi page navigation.
+
+Not thread based.
+
+On qq pinned chats have a slightly different bg. Hard to differ.
+
+I thought there could be a hard limit where you shouldn't have pinned chats more than a screen. Not necessarily forced like tg, but highly recommended.
+
+14 40 Skim `编程世界冠军，北大毕业后做了信奥教练？他的专访来了！`.
+
+A commercial interview. It's expected he would become a teacher.
 
 18 40 finish reading freedom of money, chapter 6.
 
@@ -15503,7 +15796,9 @@ the steam official one is more compatible. visual novels are much more boring th
 
 16
 
-03 40 sync memories.
+03 40 sync memories. ~~(04 40)~~
+
+04 20 prepare (redact) and send some pics of the discussion (chat screenshots, scratch paper) of a math problem in grade 11 to the maimai player in dths via qq. 
 
 
 
