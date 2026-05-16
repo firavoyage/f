@@ -16126,7 +16126,9 @@ Dustella 特菈, [5/14/26 6:55 PM]
 not for long, likely they would only wait few hours
 ```
 
-15 20 eat.
+15 00 surf acbox group. 
+
+Young founders, the financial (yet emotional) game.
 
 ```
 箱子跑来跑去📦, [5/15/26 12:29 AM]
@@ -16443,16 +16445,499 @@ Romandu, [5/15/26 3:16 AM]
 溏 🍬, [5/15/26 3:22 AM]
 内地-香港-新加坡
 
+霜, [5/15/26 3:22 AM]
+很多时候我要税务合规，我给自己发钱
 
+Romandu, [5/15/26 3:22 AM]
+话说你也是个人 vc 吗, 我看了你之前聊的, 你应该挺懂 startup 圈的吧
+
+霜, [5/15/26 3:22 AM]
+我还要交遍税
+
+霜, [5/15/26 3:23 AM]
+然后我一个人一年只能转10w
+
+霜, [5/15/26 3:23 AM]
+我得转多少年能转出去
+
+霜, [5/15/26 3:23 AM]
+转到我死啊
+
+溏 🍬, [5/15/26 3:24 AM]
+开个公司转账
+
+霜, [5/15/26 3:24 AM]
+比如我要转到马来西亚
+
+霜, [5/15/26 3:24 AM]
+我咋在马来西亚开公司
+
+溏 🍬, [5/15/26 3:24 AM]
+我不是vc，我是创业者
+
+霜, [5/15/26 3:24 AM]
+开不了的
+
+霜, [5/15/26 3:24 AM]
+50%+本地人
+
+霜, [5/15/26 3:25 AM]
+加上公司转账肯定审查
+
+霜, [5/15/26 3:25 AM]
+实业是不可能做到完全合规的
+
+霜, [5/15/26 3:25 AM]
+中国就是这样
+
+霜, [5/15/26 3:26 AM]
+所以我们换汇都是对敲
+
+霜, [5/15/26 3:26 AM]
+跟钱庄对敲走
+
+霜, [5/15/26 3:26 AM]
+要有问题再说，一般冷一阵都不会有问题
+
+霜, [5/15/26 3:26 AM]
+冷个一年两年就ok了
+
+Romandu, [5/15/26 3:27 AM]
+国内这边，我挺看好玉伯的YouMind
+
+溏 🍬, [5/15/26 3:27 AM]
+我们现在通过hashkey结算
+
+溏 🍬, [5/15/26 3:27 AM]
+笑死
+
+Romandu, [5/15/26 3:27 AM]
+还有AFFiNE
+
+Romandu, [5/15/26 3:27 AM]
+之前和一个主创聊过
+
+盼兮, [5/15/26 3:27 AM]
+我在想我高考考成一坨之后干什么
+
+Romandu, [5/15/26 3:27 AM]
+不过和我聊那个人他后面去字节了
+
+盼兮, [5/15/26 3:28 AM]
+你们怎么都是成功人士
+
+溏 🍬, [5/15/26 3:28 AM]
+我只看好acbox
+
+盼兮, [5/15/26 3:28 AM]
+我觉得我这辈子糊口就行
+
+溏 🍬, [5/15/26 3:28 AM]
+然后是我自己
+
+霜, [5/15/26 3:28 AM]
+你要很多的话
+
+霜, [5/15/26 3:28 AM]
+就没法走正规搬出来
+
+盼兮, [5/15/26 3:28 AM]
+剩点钱给我折腾烂七八糟的东西就好
+
+霜, [5/15/26 3:28 AM]
+这是我踩过的坑了
+
+霜, [5/15/26 3:29 AM]
+你们结的可能比较少
+
+溏 🍬, [5/15/26 3:29 AM]
+你有多少
+
+溏 🍬, [5/15/26 3:29 AM]
+我们一个月最高1000万
+
+霜, [5/15/26 3:30 AM]
+我上次最后一次去中国
+
+霜, [5/15/26 3:30 AM]
+背水一战
+
+霜, [5/15/26 3:30 AM]
+一个月内就敲了几千
+
+霜, [5/15/26 3:30 AM]
+带走了
+
+溏 🍬, [5/15/26 3:30 AM]
+确实狠
+
+霜, [5/15/26 3:30 AM]
+这已经是银行那边出事了
+
+霜, [5/15/26 3:31 AM]
+我拿现金
+
+霜, [5/15/26 3:31 AM]
+和其他一些方式敲的
+
+霜, [5/15/26 3:31 AM]
+还有没敲出来的不要了
+
+霜, [5/15/26 3:31 AM]
+现在知道了吧
+
+霜, [5/15/26 3:31 AM]
+没法走正规汇款
+
+溏 🍬, [5/15/26 3:31 AM]
+敢问您多大
+
+霜, [5/15/26 3:32 AM]
+@softboil 其实某个这个群的群u
+
+霜, [5/15/26 3:32 AM]
+就用他的账户给我敲了有40w吧
+
+霜, [5/15/26 3:32 AM]
+在那几天
+
+霜, [5/15/26 3:32 AM]
+但是我是保证他完全安全的情况让他给我敲的
+
+霜, [5/15/26 3:32 AM]
+我完全用第三人账户汇给他的
+
+霜, [5/15/26 3:32 AM]
+按限额每天走的
+
+霜, [5/15/26 3:32 AM]
+就是有一天我急了有一笔4w过了我的支付宝
+
+霜, [5/15/26 3:33 AM]
+然后触发风控了
+
+霜, [5/15/26 3:33 AM]
+然后后来我们也解决了
+
+澪, [5/15/26 3:33 AM]
+我觉得 EverMem, Yousu / Alma 让我比较 impressive
+
+霜, [5/15/26 3:33 AM]
+比你小
+
+溏 🍬, [5/15/26 3:33 AM]
+04？
+
+霜, [5/15/26 3:33 AM]
+05
+
+Romandu, [5/15/26 3:33 AM]
+yetone的吗
+
+霜, [5/15/26 3:33 AM]
+钱很多都是我爹的
+
+霜, [5/15/26 3:34 AM]
+子承父业
+
+溏 🍬, [5/15/26 3:34 AM]
+看来我的感觉还是很准的
+
+Romandu, [5/15/26 3:34 AM]
+那个还需要再看一下
+
+Romandu, [5/15/26 3:34 AM]
+毕竟没聊过
+
+溏 🍬, [5/15/26 3:34 AM]
+你这个说话风格
+
+霜, [5/15/26 3:34 AM]
+我自己怎么可能赚这么多
+
+溏 🍬, [5/15/26 3:34 AM]
+就能看出来
+
+霜, [5/15/26 3:34 AM]
+肯定啊
+
+盼兮, [5/15/26 3:34 AM]
+alma做的不敢恭维，bug多飞了
+
+盼兮, [5/15/26 3:34 AM]
+用过就知道
+
+Romandu, [5/15/26 3:35 AM]
+我觉得这倒没什么
+
+霜, [5/15/26 3:35 AM]
+我在东南亚所以我也不怕什么了
+
+霜, [5/15/26 3:35 AM]
+我还是小孩
+
+Romandu, [5/15/26 3:35 AM]
+但商业模型有待考量
+
+霜, [5/15/26 3:35 AM]
+而且我觉得这没什么
+
+霜, [5/15/26 3:35 AM]
+顶多算洗钱
+
+Romandu, [5/15/26 3:35 AM]
+evermem本来就是盛大的吧
+
+Romandu, [5/15/26 3:35 AM]
+这种，没什么好说的
+
+Romandu, [5/15/26 3:35 AM]
+大厂的
+
+澪, [5/15/26 3:36 AM]
+我单论技术含量吧
+
+澪, [5/15/26 3:36 AM]
+大厂也不是都能做出来东西的
+
+澪, [5/15/26 3:37 AM]
+腾讯这么久就搓出来个 agent memory 而且并不是非常 revolutionary
+
+溏 🍬, [5/15/26 3:37 AM]
+现在闭源agent类产品我默认没有技术含量
+
+盼兮, [5/15/26 3:37 AM]
+至少年初我就很认真的给alma提过一些问题
+
+盼兮, [5/15/26 3:37 AM]
+到现在也是一样，还更严重了
+
+溏 🍬, [5/15/26 3:37 AM]
+现在做一个外表光鲜亮丽的产品，非常cheap
+
+盼兮, [5/15/26 3:38 AM]
+我觉得agent产品浮躁完了
+
+Fodesu, [5/15/26 3:38 AM]
+很多都是fomo产品
+
+盼兮, [5/15/26 3:38 AM]
+我知道这些优化很艰难很耗时间但是不能放着不管让他扩大
+
+Romandu, [5/15/26 3:45 AM]
+嗯，创业有 passion，真的是一件很好的事情
+
+Romandu, [5/15/26 3:45 AM]
+像我这种老登已经没有办法 all in 了
+
+Romandu, [5/15/26 3:45 AM]
+吃不消啦
+
+盼兮, [5/15/26 3:46 AM]
+不如讲agent整体这个赛道就无技术含量（
+
+Romandu, [5/15/26 3:46 AM]
+没有技术含量才能更凸显出来创始人的商业见解
+
+澪, [5/15/26 3:47 AM]
+我觉得还是言过了
+
+Romandu, [5/15/26 3:47 AM]
+厮杀得太多了能活过来的都不可小觑
+
+Romandu, [5/15/26 3:47 AM]
+如果这么说的话，其实 Hermes 也算
+
+Romandu, [5/15/26 3:48 AM]
+下真金白银去投流了
+
+Romandu, [5/15/26 3:48 AM]
+再后面就是发币玩 Web3 那套庄家金融游戏
+
+霜, [5/15/26 3:51 AM]
+我好奇你们在做什么
+
+霜, [5/15/26 3:51 AM]
+我还没抽出时间下了研究一下
+
+溏 🍬, [5/15/26 3:51 AM]
+memoh.ai
+
+盼兮, [5/15/26 3:52 AM]
+大概也就记忆和上下文管理那块算是有点技术含量，但是有技术含量不太可能
+
+盼兮, [5/15/26 3:52 AM]
+总的来说没什么壁垒
+
+盼兮, [5/15/26 3:53 AM]
+大部分基本上是一句话就说的明白的
+
+澪, [5/15/26 3:53 AM]
+那我觉得得看你怎么理解
+
+溏 🍬, [5/15/26 3:53 AM]
+一句话总结：能力都是base model给的
+
+霜, [5/15/26 3:53 AM]
+我用过astrbot
+
+霜, [5/15/26 3:53 AM]
+类似
+
+霜, [5/15/26 3:53 AM]
+但是他没有用量统计
+
+澪, [5/15/26 3:53 AM]
+无论是物理还是任何基础学科，我觉得很多东西都是一句话就能说明白的
+
+澪, [5/15/26 3:54 AM]
+但这不代表最初想到这个东西的人很菜
+
+澪, [5/15/26 3:54 AM]
+你本应付出的认知成本被其他人承担了，这不是没有壁垒
+
+盼兮, [5/15/26 3:54 AM]
+一切微操也得被base model碾碎
+
+溏 🍬, [5/15/26 3:54 AM]
+我对llm的性能增长有信仰
+
+盼兮, [5/15/26 3:55 AM]
+很多东西的壁垒是给你源码都没法很快抄的……
+
+澪, [5/15/26 3:56 AM]
+我不觉得这种类似于独门 recipe 的东西应当是常态
+
+盼兮, [5/15/26 4:01 AM]
+这是没办法的，LLM这language就是磨平了很多实现上工程上的问题的
+
+Romandu, [5/15/26 4:08 AM]
+市面上的来看
+
+Romandu, [5/15/26 4:08 AM]
+也没有
+
+Romandu, [5/15/26 4:08 AM]
+msa可以是一个
+
+Romandu, [5/15/26 4:09 AM]
+evomap可以是一个
+
+Romandu, [5/15/26 4:09 AM]
+但evomap背后的autogame是游戏main的，也融了30m吧
+
+Romandu, [5/15/26 4:10 AM]
+目前看来是非对赌
+
+Romandu, [5/15/26 4:10 AM]
+evomap的gep如果结合dao, 是有搞头的
+
+Romandu, [5/15/26 4:10 AM]
+但可惜被这家公司自己主营业务限制了
+
+Romandu, [5/15/26 4:11 AM]
+目前看不知道要不要拆，如果要拆就会陷入和当年月之暗面 yang zhilin一样的困境
+
+Romandu, [5/15/26 4:12 AM]
+被投资人追着还债
+
+Dustella 特菈, [5/15/26 11:53 AM]
+怎么这么多熟悉的朋友这两天进来了
 ```
 
+15 40 Arrive
+
+16 40 play maimai dx.
+
+A boy in grade 11 from blhs playing ak, who has a lot of bank cards and a cu medal on the csp s last year, reporting the broken key to the staff, and not willing to share his github id. I didn't expect that, I thought he already works from the back cards of his, which he doesn't use for trading, or any crypto stuff, but for buying games on steam.
+
+A little bit wasting a hundred of his grandparents on lottery machine, which is not fun I guess.
+
+18 00 Complete project sekai area second on maimai dx.
+
+19 20 Play w a oi player in grade 10 from dths. 
+
+He doesn't know what my desktop (ubuntu) is. Check the history of oi in dths on oierdb, noip au at best, wo noi player. He doesn't know what vibe coding is. He doesn't know oi wiki. <!-- he's surprised i write english a lot. -->
+
+Recommend jyy oi critique.
+
+Share grade 11 summer holidays problem 1.14 special prop w him. He fails to solve it.
+
+He has some friends from luwan jhs. One plays Minecraft and zelda which is critically acclaimed by him (the friend), where I only test the functionality on ubuntu.
+
+Revise the solution clearer.
+
+> 谁来机厅做题啊
+
+21 00 Add qq w them.
+
+22 20 Have phone crushed by a car, after slipping out of the pocket while cycling. 
+
+The camera is broken, wo the functionality of qr scanning <!-- (upd: not completely. The broken glass doesn't steal the focus. I would go maimai as usual tomorrow.) -->. The screen has a few failing spots. 
+
+It would be serving for scrcpy and automation for the rest of her life I guess.
+
+23 20 browse alternative phones.
+
+<!-- Many knockoff phones and scams. Google saves my life. -->
+
 16
+
+00 00 <!-- attempt to --> Restore full camera functionality by cleaning up broken glass.
+
+<!-- Upd: not really. The main one is injured from inside out it seems. others recover. -->
+
+<!-- As recommended by llm, not remove it further as the inner one is crucial for optical focus, not just a flat one. -->
+
+01 00 browse cheap phones that satisfies my storage and ui requirements. 02 00 Pick Google pixel 9a on jd. A solid choice. 256gb. Less than 3k cny.
+
+<!-- Lots of knockoff phones. Some even use the exact same brand name. A comment on its suspicious ui saves me. -->
+
+It's futile to swim along scammers I realize. And I don't have to. 
+
+Upd 04 40: <!-- surf innei qq group --> seems redmi k40 cooks, widely cited. Though I don't need it anyway, as the current one still functions.
+
+02 20 Pick nothing phone 2a, white 12+256.
+
+Slightly more than 2k cny. Better hardware stats. Fun. Inspiring design. Less surveillance maybe.
+
+Also, I no longer have to hesitate between the chromatic colors of Google pixel.
 
 03 40 sync memories. ~~(04 40)~~
 
 04 20 prepare (redact) and send some pics of the discussion (chat screenshots, scratch paper) of a math problem in grade 11 to the maimai player in dths via qq. 
 
-15 20 sync memories.
+12 40 Check some vids on nothing and pixel. 
+
+Mkbhd. Ltt. Mlcn ones.
+
+Sick design. Not quite a deal on hardware.
+
+One comment shows nothing ui popups an intrusive "must have" installation. 
+
+Google pixel lacks lots of features we take for granted, yet adds done other cool ones, backed by Google's massive swe.
+
+13 00 observe.
+
+Search based discovery is insane. You don't even know what's there. Personalized. One product appears many times. Even scams sometimes.
+
+Guides are prose based, narration heavy.
+
+All: world goods list: phone.
+
+13 20 Pick Samsung s23, hk ver, white 256. Deal.
+
+iphone and samsung are widely cited as the most popular choice worldwide. w a minimal industrial design, a highly customizable ui, and solid hardware, it could not go wrong i think.
+
+<!-- Find this when I search Samsung on jd w a minimum price limit of 2k. Check geekerbay walkthrough. -->
+
+15 00 Arrive. 
+
+Have three bottles of water and a new pair of thin, touch screen friendly gloves.
+
+A competition here, held by fdu med and sjtu med, live on berryberry. Only one machine left.
+
+15 20 sync memories. 16 20
 
 
 
