@@ -428,4 +428,28 @@ explore refray. setup openrouter on opencode. no need to exploit free res.
 
 pick minimax m2.5 as recommended for speed.
 
+---
 
+Touhou. Bad apple.
+
+Float. 
+
+Meaning.
+
+Maimai dx.
+
+---
+
+Cli. 
+
+Beautiful print. Tui. 
+
+Commands. Options. 
+
+Version. Help. 
+
+Repo. 
+
+Actions. Compatible, export raw data.
+
+---

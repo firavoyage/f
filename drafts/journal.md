@@ -16248,6 +16248,7 @@ Acbox Neko, [5/15/26 12:33 AM]
 
 ```md
 霜, [5/15/26 2:50 AM]
+<!-- id: foo...bar...8964 -->
 羡慕
 
 霜, [5/15/26 2:51 AM]
@@ -17608,6 +17609,12 @@ sram 和 multiplexer 都是有面积和延迟的
 这个我同意
 ```
 
+17 40 feel.
+
+Some new players, like ordinary women on big city streets, which are rare on workdays. One game and leave.
+
+<!-- Upd 20 20 even kindergarten child comes. lol. -->
+
 19 20 answer a tech question from a stranger. 20 00
 
 ```md
@@ -17648,7 +17655,7 @@ y. ive been admitted through sp uee.
 
 where do you work?
 
-? i dont really work. 
+? i dont really work. <!-- no one pays for me yet... -->
 well, you can infer from "admission".
 im still a student.
 
@@ -17739,6 +17746,26 @@ For more information, try '--help'.
 20 40 play maimai w a 29 yro pm in the car industry, who kindly recommends a lower difficulty for me, which is true indeed, nevertheless i would challenge myself <!-- well, failed. im exhausted. -->.
 
 23 00 dl `Touhou Project`.
+
+17
+
+00 40 Check map. 
+
+I have line 9 from xujiahui station to hechuan station.
+
+03 00 re open a pr on memoh.
+
+```md
+remove an unusable button.
+
+`href = #` does nothing but surprises the user.
+
+rather remove it (or place a todo) than having a broken link there.
+
+<!-- no idea why you hang it for a mo and close wo doing anything. -->
+```
+
+03 20 play kyo kurarin on project sekai.
 
 
 

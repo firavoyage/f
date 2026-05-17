@@ -260,6 +260,7 @@ linguistics:
 - translation meaning loss
 - describe
 - singular they
+- name hykilpikonna etymology
 
 literature:
 
@@ -302,6 +303,9 @@ float: <!-- music -->
 - heavy metal rock
 - japanese pianists
 - japanese guitarists fingerstyle
+- interpret touhou bad apple
+- interpret kyu kurarin
+- interpret jishou mushoku
 
 philosophy:
 
