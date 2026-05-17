@@ -162,6 +162,7 @@ frontend: <!-- web -->
 - ts lib result handle wrapper generic type
 - ts perf switch to bun from tsx
 - ts bun br bunfig on parent folder
+- react components naming pascal snake case
 
 backend:
 
@@ -171,6 +172,7 @@ backend:
 - xdg spec
 - jslinux linux kernel
 - ts node cli template
+- cli standard
 
 desktop:
 
@@ -309,6 +311,7 @@ float: <!-- music -->
 - interpret touhou bad apple
 - interpret kyu kurarin
 - interpret jishou mushoku
+- interpret dna nightcord
 
 philosophy:
 

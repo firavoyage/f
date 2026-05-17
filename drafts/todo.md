@@ -380,6 +380,10 @@ also, style hr to `---` instead of `***`
 
 ---
 
+project sekai emu story
+
+---
+
 message.
 
 ```js
