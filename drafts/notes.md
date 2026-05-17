@@ -3024,4 +3024,8 @@ it's inspiring.
 
 ---
 
+filename. folder names on the path. content.
 
+on vscode, whether on ctrl shift f or ctrl p, it's biased and often counter intuitive.
+
+---
