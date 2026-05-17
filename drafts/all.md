@@ -79,6 +79,7 @@ life:
 - invest binance bypass kyc
 - game maimai dx rating calculation
 - game maimai dx critical perfect
+- lowercase standard mixed case feeling
 
 create something:
 
@@ -429,6 +430,8 @@ rhetoric:
 - see you on the dark side of the moon
 - chinglish example criticism
 - wording pm or dm
+- wording guys folks masculine
+- wording pride flags proud
 
 laws:
 

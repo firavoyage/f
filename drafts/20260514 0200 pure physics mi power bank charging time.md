@@ -2,6 +2,8 @@
 
 <!-- upd: when i wake up i fully charges. kind of expected. -->
 
+<!-- upd: when the laptop is fully charged... it reverses. and then, the laptop batterry drops heavily, until i press the button on the power bank to rev again. -->
+
 how long will it take to fill 12000 mah
 
 The time it takes to fully charge (fill) a **12,000 mAh (12 Ah)** battery <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">depends entirely on the <strong>speed/power of your charger</strong> and <span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><a rel="noopener" href="https://us.ugreen.com/blogs/power-bank/how-many-charges-is-10-000mah" style="margin: 0px; text-decoration-thickness: 1px; text-decoration-style: solid; text-decoration-color: rgb(153, 195, 255); border-bottom: 0px none rgb(153, 195, 255);">inherent efficiency losses</a></span> (typically around 20%</mark>).
