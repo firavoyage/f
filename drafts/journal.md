@@ -17767,6 +17767,16 @@ rather remove it (or place a todo) than having a broken link there.
 
 03 20 play kyo kurarin on project sekai.
 
+17 40 comment on refray.
+
+```
+> feature request: Issues and Pull Request mirroring #8
+> 
+> Is this on the roadmap? Would be super useful
+
+hard and possibly incompatible, as issues and prs are not standardized by git.
+```
+
 
 
 <!-- timebox, plan. -->

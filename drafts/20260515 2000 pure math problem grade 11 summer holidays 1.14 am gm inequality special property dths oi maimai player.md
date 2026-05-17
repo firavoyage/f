@@ -1,3 +1,5 @@
+<!-- he calculated ("1/1 - 1/100")/(1/30) silently and answered 29 at first. only after i showed him the general solution did he realize how simple the greedy algorithm is. "(就) 纯贪啊". but it did take me a while to understand the hacky one, as it's quite awkward to see something like "(n-k)/30 <= a_k - a_n < a_k <= 1/k, n <= k + 30/k >= 2sq(30)" (leq chained w meq). later i realize it's "for all k, n <= k + 30/k, so n <= min(_), which can be determined by am gm" -->
+
 <!-- finally i explain the solution to him. and he understands. -->
 
 #

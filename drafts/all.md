@@ -77,6 +77,8 @@ life:
 - github pages
 - invest phantom sp500
 - invest binance bypass kyc
+- game maimai dx rating calculation
+- game maimai dx critical perfect
 
 create something:
 
@@ -189,6 +191,7 @@ ops: <!-- devops, ci, vcs, ... -->
 - git filter repo
 - linting eslint make snippets global
 - linting tsgo tsconfig
+- pnpm approve build
 
 sre:
 
@@ -383,6 +386,7 @@ history:
 - codeberg forgejo gitea gogs
 - ip dns asn hobbyist networking
 - language families
+- ansi escape codes
 
 politics:
 
@@ -421,6 +425,7 @@ rhetoric:
 - seven types of meaning
 - see you on the dark side of the moon
 - chinglish example criticism
+- wording pm or dm
 
 laws:
 
