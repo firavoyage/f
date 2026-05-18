@@ -1,4 +1,8 @@
 // just make it global, since i only write ts
+// 
+// ref:
+// - xabikos.javascriptsnippets
+// - akamud.vscode-javascript-snippet-pack
 {
   "function": {
     "prefix": "f",
@@ -33,7 +37,10 @@
     ],
   },
   "const": {
-    "prefix": ["c", "co"],
+    "prefix": [
+      "c",
+      "co"
+    ],
     "body": [
       "const ${1:name} = ${0}"
     ],
@@ -51,7 +58,10 @@
     ],
   },
   "let": {
-    "prefix": ["l", "le"],
+    "prefix": [
+      "l",
+      "le"
+    ],
     "body": [
       "let ${1:name} = ${0}"
     ],
@@ -73,6 +83,12 @@
     "prefix": "im",
     "body": [
       "import ${2:name} from '${1:module}';$0"
+    ],
+  },
+  "import everything": {
+    "prefix": "ime",
+    "body": [
+      "import * as ${2:name} from '${1:module}';$0"
     ],
   },
   "deconstruct import": {
@@ -120,7 +136,10 @@
     ],
   },
   "console log": {
-    "prefix": ["clo", "clg"],
+    "prefix": [
+      "clo",
+      "clg"
+    ],
     "body": [
       "console.log(${0})"
     ],
@@ -157,6 +176,46 @@
       "} $0",
     ],
   },
+  "for of": {
+    "prefix": "fof",
+    "body": [
+      "for (const ${1:item} of ${2:array}) {",
+      "  $0",
+      "}"
+    ],
+  },
+  // "for of": {
+  //   "prefix": "fof",
+  //   "body": [
+  //     "for (const ${1:item} of ${2:object}) {",
+  //     "  $3",
+  //     "} $0"
+  //   ],
+  // },
+  "for in": {
+    "prefix": "fin",
+    "body": [
+      "for (const ${1:key} of ${2:object}) {",
+      "  $0",
+      "}"
+    ],
+  },
+  "set interval": {
+    "prefix": "si",
+    "body": [
+      "setInterval(function() {",
+      "  $0",
+      "}, ${1:1000})"
+    ],
+  },
+  "set timeout": {
+    "prefix": "st",
+    "body": [
+      "setTimeout(function() {",
+      "  $0",
+      "}, ${1:1000})"
+    ],
+  },
   "true": {
     "prefix": "t",
     "body": [
@@ -170,25 +229,40 @@
     ],
   },
   "result": {
-    "prefix": ["resu", "resul", "result"],
+    "prefix": [
+      "resu",
+      "resul",
+      "result"
+    ],
     "body": [
       "result<$1> $0",
     ],
   },
   "option": {
-    "prefix": ["o", "op", "opt"],
+    "prefix": [
+      "o",
+      "op",
+      "opt"
+    ],
     "body": [
       "option<$1> $0",
     ],
   },
   "err": {
-    "prefix": ["er", "err"],
+    "prefix": [
+      "er",
+      "err"
+    ],
     "body": [
       "return err($1)$0",
     ],
   },
   "rescue": {
-    "prefix": ["re", "res", "resc"],
+    "prefix": [
+      "re",
+      "res",
+      "resc"
+    ],
     "body": [
       "if(rescue($1)){",
       "  $2",
@@ -196,7 +270,9 @@
     ],
   },
   "ignore": {
-    "prefix": ["ig"],
+    "prefix": [
+      "ig"
+    ],
     "body": [
       "// @ts-expect-error ",
     ],

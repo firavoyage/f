@@ -8,6 +8,8 @@
 
 <!-- i have the yaml design. quite simple. nesting is so good. the decision is just positional (as commands and options are generally interchangeable) or named (clearer), which does matter much. but i would research existing methods. i think they use custom parsing or json instead. -->
 
+<!-- well, ive no idea if it's useful. for repo, i might use aliases and systemd instead. i could write abstraction on top. for humility, idk. something should be done first. let's say it's hello world. -->
+
 # .
 
 research
@@ -940,6 +942,8 @@ Options:
 <!-- no coloring/styling by default i guess. as they dont have to be standardized, and can vary. (e.g. you use mtf pride colors.). upd: well, i think commands should be bold to separate w desc for better scanning, i strongly lean to it now. -->
 
 <!-- i prefer at least 4 spaces between --help and print help by default even wo the need of padding. you can have 1, 2, or 3 if you like. it's just a personal pref. -->
+
+<!-- dont differ global and local flags. they must not conflict. -->
 
 #
 
