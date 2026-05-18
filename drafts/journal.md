@@ -16857,7 +16857,7 @@ A little bit wasting a hundred of his grandparents on lottery machine, which is 
 
 19 20 Play w a oi player in grade 10 from dths. 
 
-He doesn't know what my desktop (ubuntu) is. Check the history of oi in dths on oierdb, noip au at best, wo noi player. He doesn't know what vibe coding is. He doesn't know oi wiki. <!-- he's surprised i write english a lot. -->
+He doesn't know what my desktop (ubuntu) is. Check the history of oi in dths on oierdb, noip au at best, wo noi player. He doesn't know what vibe coding is. He doesn't know oi wiki. <!-- he feels amazed by the multi cursor editing in vscode, which is not available on devcpp. he's surprised i write english a lot. -->
 
 Recommend jyy oi critique.
 
@@ -17769,6 +17769,14 @@ rather remove it (or place a todo) than having a broken link there.
 <!-- no idea why you hang it for a mo and close wo doing anything. -->
 ```
 
+upd:
+
+```
+alexma233
+
+Maybe you can remove i18n locales of `auth.forgotPassword` if no page uses it.
+```
+
 03 20 play kyo kurarin on project sekai.
 
 17 40 comment on refray.
@@ -17780,6 +17788,10 @@ rather remove it (or place a todo) than having a broken link there.
 
 hard and possibly incompatible, as issues and prs are not standardized by git.
 ```
+
+22 20 dl `Doki Doki Literature Club | Full Game Walkthrough | No Commentary`.
+
+vids are good for visual novels i guess. <!-- i dont wanna pick the random words myself ~~again~~! -->
 
 
 

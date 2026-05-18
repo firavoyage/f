@@ -44,6 +44,19 @@ freedom of money
 
 ---
 
+vids
+
+project sekai emu story
+
+ddlc
+
+- act i 00 00
+- act ii 04 45
+- act iii 07 16
+- act iv 07 51
+
+---
+
 chess
 
 https://chess.com/

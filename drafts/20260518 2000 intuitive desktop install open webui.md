@@ -1872,3 +1872,34 @@ How to add your keys later via the Web UI:
 
 Would you like the instructions on how to copy a **`librechat.yaml` configuration file** into this running container if you prefer file-based setups over the UI?
 
+
+# .
+
+```
+ ...Documents/_/opensource % cd ~/Documents/_/opensource/ && git clone https://github.com/danny-avila/LibreChat.git # todo: move to .storage
+cd LibreChat
+# cp .env.example .env
+docker compose up -d
+
+Cloning into 'LibreChat'...
+remote: Enumerating objects: 88670, done.
+remote: Counting objects: 100% (946/946), done.
+remote: Compressing objects: 100% (615/615), done.
+remote: Total 88670 (delta 654), reused 346 (delta 331), pack-reused 87724 (from 3)
+Receiving objects: 100% (88670/88670), 169.71 MiB | 1.36 MiB/s, done.
+Resolving deltas: 100% (61712/61712), done.
+WARN[0000] The "PORT" variable is not set. Defaulting to a blank string.
+WARN[0000] The "PORT" variable is not set. Defaulting to a blank string.
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "MEILI_MASTER_KEY" variable is not set. Defaulting to a blank string.
+invalid proto:
+```
+
+no sane defaults. weird.
+
+

@@ -80,6 +80,7 @@ life:
 - game maimai dx rating calculation
 - game maimai dx critical perfect
 - lowercase standard mixed case feeling
+- game ddlc
 
 create something:
 
