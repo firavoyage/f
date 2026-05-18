@@ -187,6 +187,7 @@ desktop:
 - gitignore
 - fix chromium network changed stop memoh
 - install dolphin apply gnome adwaita
+- install open webui
 
 ops: <!-- devops, ci, vcs, ... -->
 
