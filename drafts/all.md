@@ -392,6 +392,7 @@ history:
 - language families
 - ansi escape codes
 - lgbtqplus
+- copyright afterlife
 
 politics:
 

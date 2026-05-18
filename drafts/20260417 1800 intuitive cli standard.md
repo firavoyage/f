@@ -167,6 +167,13 @@ Options:
 ```
 
 ```
+ ~ % rustc -v
+error: no input filename given
+
+error: aborting due to 1 previous error
+
+ ~ % rustc --version
+rustc 1.94.0 (4a4ef493e 2026-03-02)
  ~ % rustc
 Usage: rustc [OPTIONS] INPUT
 
@@ -2742,4 +2749,403 @@ I can write an update showing how to pass context down through the matching laye
 
 #
 
+yaml syntax
 
+**YAML** is a human-readable data serialization language used primarily for configuration files. It relies on indentation to define structure instead of brackets, braces, or quotation marks. \[[1](https://en.wikipedia.org/wiki/YAML), [2](https://www.youtube.com/watch?v=1uFVr15xDGg), [3](https://www.cloudbees.com/blog/yaml-tutorial-everything-you-need-get-started), [4](https://about.gitlab.com/topics/devops/what-is-yaml/)]
+
+Basic Rules
+
+- **Case sensitivity:** YAML is strictly case-sensitive.
+- **Indentation:** You must use spaces. Tab characters are forbidden.
+- **Hierarchy:** Elements at the same level must share identical indentation.
+- **Document boundaries:** Files can optionally start with `---` and end with `...`. \[[1](https://docs.ansible.com/projects/ansible/latest/reference%5Fappendices/YAMLSyntax.html), [2](https://quickref.me/yaml.html), [3](https://developers.redhat.com/learning/learn:ansible:yaml-essentials-ansible/resource/resources:ansible-yaml-file-syntax-and-structure), [4](https://www.home-assistant.io/docs/configuration/yaml/), [5](https://www.redhat.com/en/blog/yaml-nesting-lists-comments-ansible), [6](https://www.cloudbees.com/blog/yaml-tutorial-everything-you-need-get-started)]
+
+Key-Value Pairs (Mappings)
+
+Mappings associate unique keys with values. The colon separating them must be followed by a space. \[[1](https://www.redhat.com/en/blog/yaml-beginners), [2](https://www.tutorialspoint.com/yaml/yaml%5Fbasics.htm), [3](https://docs.ansible.com/projects/ansible/latest/reference%5Fappendices/YAMLSyntax.html)]
+
+yaml
+
+```
+# A simple mapping
+microservice_name: "auth-api"
+port_number: 8080
+```
+
+Use code with caution.
+
+Lists (Sequences)
+
+Lists store ordered values. Each item begins with a hyphen followed by a space. \[[1](https://docs.ansible.com/projects/ansible/latest/reference%5Fappendices/YAMLSyntax.html), [2](https://www.redhat.com/en/blog/yaml-beginners), [3](https://www.home-assistant.io/docs/configuration/yaml/), [4](https://buildpiper.io/blogs/all-you-need-to-know-about-yaml-files/), [5](https://labex.io/tutorials/ansible-how-to-fix-error-syntax-error-while-loading-yaml-in-ansible-417291)]
+
+yaml
+
+```
+# Block sequence
+supported_formats:
+  - JSON
+  - YAML
+  - XML
+```
+
+Use code with caution.
+
+Nested Structures
+
+Combine mappings and sequences by increasing the spacing level for nested child entries. \[[1](https://www.redhat.com/en/blog/yaml-nesting-lists-comments-ansible)]
+
+yaml
+
+```
+deployment:
+  environment: production
+  replicas: 3
+  containers:
+    - name: web-server
+      image: nginx:latest
+    - name: cache
+      image: redis:alpine
+```
+
+Use code with caution.
+
+Data Types
+
+YAML infers primitive types automatically without explicit quotes. \[[1](https://en.wikipedia.org/wiki/YAML), [2](https://en.wikipedia.org/wiki/YAML), [3](https://desgram.io/docs/02%5Fyaml.html)]
+
+yaml
+
+```
+integer_value: 42
+float_value: 3.14
+boolean_value: true       # Use lowercase true/false
+null_value: null          # Or leave blank
+string_unquoted: Hello    # Quotes optional for simple strings
+```
+
+Use code with caution.
+
+Multi-line Strings
+
+Handle block text blocks using pipe (`|`) or right-angle (`>`) indicators. \[[1](https://docs.ansible.com/projects/ansible/latest/reference%5Fappendices/YAMLSyntax.html)]
+
+- **Literal Block (`|`):** Preserves all original line breaks and trailing spaces.
+- **Folded Block (`>`):** Converts single line breaks into spaces for long text strings. \[[1](https://docs.ansible.com/projects/ansible/latest/reference%5Fappendices/YAMLSyntax.html)]
+
+yaml
+
+```
+literal_text: |
+  Line one keeps its break.
+  Line two keeps its break.
+
+folded_text: >
+  This long paragraph will wrap into
+  a single continuous line of text.
+```
+
+Use code with caution.
+
+Advanced Features
+
+Comments
+
+Any text on a line following a `#` is treated as a comment and ignored. \[[1](https://www.kerno.io/blog/yaml-file-format-complete-guide), [2](https://www.home-assistant.io/docs/configuration/yaml/)]
+
+yaml
+
+```
+# This is a full-line comment
+timeout: 30 # Inline comment
+```
+
+Use code with caution.
+
+Flow Style (JSON Superset)
+
+YAML natively supports inline JSON-like syntax using braces and brackets for clean data embedding. \[[1](https://www.commonwl.org/user%5Fguide/topics/yaml-guide.html), [2](https://en.wikipedia.org/wiki/YAML), [3](https://www.educative.io/blog/yaml-tutorial), [4](https://blog.dreamfactory.com/yaml-vs-json-which-format-fits-openapi-better), [5](https://levelup.gitconnected.com/yaml-the-when-where-and-what-of-the-pipeline-31e9e8cdb2bf)]
+
+yaml
+
+```
+inline_list: [ItemA, ItemB, ItemC]
+inline_map: { name: "John", age: 30 }
+```
+
+Use code with caution.
+
+Anchors and Aliases
+
+Avoid data duplication by defining anchors with `&` and referencing them with `*`. \[[1](https://quickref.me/yaml.html), [2](https://www.tutorialspoint.com/yaml/yaml%5Fbasics.htm)]
+
+yaml
+
+```
+default_settings: &base_config
+  timeout: 60
+  retry_attempts: 3
+
+api_service:
+  <<: *base_config         # Inherits timeout and retry_attempts
+  endpoint: "/v1/api"
+```
+
+Use code with caution.
+
+If you are working on a specific implementation, let me know:
+
+- What **platform or tool** are you writing this file for? (e.g., Kubernetes, Docker Compose, GitHub Actions, Ansible)
+- What **data structure** are you trying to represent?
+
+I can provide a complete, syntax-validated template tailored to your framework.
+
+- [link](https://docs.ansible.com/projects/ansible/latest/reference%5Fappendices/YAMLSyntax.html)\
+  YAML Syntax — Ansible Community Documentation\
+  Apr 20, 2026 — YAML Basics. For Ansible, nearly every YAML file starts with a list. Each item in the list is a list of key/value pairs, commonly ...\
+  Ansible documentation
+- [link](https://en.wikipedia.org/wiki/YAML)\
+  YAML - Wikipedia\
+  YAML (/ˈjæməl/ YAM-əl) is a human-readable data serialization language. It is commonly used for configuration files and in applica...\
+  Wikipedia
+- [link](https://www.cloudbees.com/blog/yaml-tutorial-everything-you-need-get-started)\
+  YAML Tutorial: Everything You Need to Get Started in Minutes\
+  Apr 20, 2025 — Whitespace is part of YAML's formatting. Unless otherwise indicated, newlines indicate the end of a field. You structure a YAML do...\
+  CloudBees
+
+Show all
+
+what if i dont indent for lists
+
+If you do not indent lists properly in YAML, <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">the file will either <strong>fail to parse (syntax error)</strong> or <strong>change the data meaning entirely</strong></mark>.
+
+YAML relies strictly on spacing to understand relationships. Here is what happens depending on how you format it:
+
+1\. Zero Indentation Under a Key (Syntax Error)
+
+If you place a list directly under a key without indenting the hyphens, most parsers will throw an error because it breaks the parent-child relationship.
+
+yaml
+
+```
+# ❌ INVALID (Will cause a parsing error)
+fruits:
+- apple
+- banana
+```
+
+Use code with caution.
+
+- **The fix:** Add two spaces before each hyphen so the parser knows the list belongs to `fruits`.
+
+2\. No Indentation Between List Items and Mappings (Logical Error)
+
+If you are nesting a list inside another list item and do not indent, the parser thinks all items belong to the same flat list.
+
+yaml
+
+```
+# ❌ LOGICAL ERROR (Mixes up the structure)
+servers:
+  - name: web-01
+  - port: 80       # Parser thinks "port" is a NEW server item, not a property of web-01
+```
+
+Use code with caution.
+
+yaml
+
+```
+#  CORRECT (Indented properly)
+servers:
+  - name: web-01
+    port: 80       # Properly nested under web-01
+```
+
+Use code with caution.
+
+3\. Inline Lists (The No-Indentation Alternative)
+
+If you do not want to use vertical indentation for a list, you must use **Flow Style** (JSON-like syntax) on a single line using square brackets.
+
+yaml
+
+```
+#  VALID (No indentation needed)
+fruits: [apple, banana, orange]
+```
+
+Use code with caution.
+
+To help you fix or write your file correctly, tell me:
+
+- Can you **paste the snippet** you are trying to format?
+- What **error message** or unexpected behavior are you seeing?
+
+I can rewrite the exact block with the correct spacing for you.
+
+how to parse yaml in node
+
+To parse YAML in Node.js, you must use a third-party library because Node.js does not support YAML natively. The industry standard package for this is `yaml`.
+
+1\. Install the Library
+
+Run this command in your project terminal to install the official package:
+
+bash
+
+```
+npm install yaml
+```
+
+Use code with caution.
+
+2\. Parse a YAML String
+
+If you already have YAML data loaded as a string, use `YAML.parse()`.
+
+javascript
+
+```
+import YAML from 'yaml'; // Or: const YAML = require('yaml');
+
+const yamlString = `
+server:
+  port: 8080
+  environment: production
+`;
+
+const data = YAML.parse(yamlString);
+console.log(data.server.port); // Outputs: 8080
+```
+
+Use code with caution.
+
+3\. Read and Parse a YAML File
+
+To load data directly from a physical `.yaml` or `.yml` file, combine the library with Node's native file system (`fs`) module.
+
+javascript
+
+```
+import fs from 'fs';
+import YAML from 'yaml';
+
+// Read the file synchronously
+const fileContents = fs.readFileSync('./config.yaml', 'utf8');
+
+// Parse the contents
+const config = YAML.parse(fileContents);
+
+console.log(config);
+```
+
+Use code with caution.
+
+Alternative Library: `js-yaml`
+
+Another highly popular and widely used alternative is `js-yaml`.
+
+bash
+
+```
+npm install js-yaml
+```
+
+Use code with caution.
+
+javascript
+
+```
+import fs from 'fs';
+import yaml from 'js-yaml';
+
+const config = yaml.load(fs.readFileSync('./config.yaml', 'utf8'));
+```
+
+Use code with caution.
+
+If you want to build this out further, let me know:
+
+- Do you need to **write/stringify** data back into a YAML file?
+- Are you handling **multiple YAML documents** combined in a single file (separated by `---`)?
+
+I can provide the exact code block to handle those scenarios.
+
+yaml or js yaml
+
+For modern Node.js applications, the **`yaml`** library is generally the better choice due to its full specification compliance and active development, while **`js-yaml`** remains ideal for projects where raw read performance is the top priority. \[[1](https://philna.sh/blog/2023/02/02/yaml-document-from-hell-javascript-edition/), [2](https://github.com/unjs/confbox/issues/33)]
+
+The primary trade-offs between the two popular npm packages break down as follows:
+
+Quick Comparison
+
+| Feature \[[1](https://philna.sh/blog/2023/02/02/yaml-document-from-hell-javascript-edition/), [2](https://www.npmjs.com/package/yaml), [3](https://generalistprogrammer.com/tutorials/js-yaml-npm-package-guide), [4](https://github.com/eemeli/yaml/discussions/358), [5](https://github.com/nodeca/js-yaml)] | `yaml` (npm: yaml)                      | `js-yaml` (npm: js-yaml)                    |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- | ------------------------------------------- |
+| **Development Status**                                                                                                                                                                                                                                                                                         | **Actively maintained**                 | Infrequent maintenance                      |
+| **Spec Compliance**                                                                                                                                                                                                                                                                                            | Strict YAML 1.1 & 1.2 support           | Strict YAML 1.2 support                     |
+| **Parsing Speed**                                                                                                                                                                                                                                                                                              | Slower read execution                   | **Significantly faster read speed** (~2-4x) |
+| **Comment Preservation**                                                                                                                                                                                                                                                                                       | **Yes** (retains comments when editing) | No (strips comments on rewrite)             |
+| **API Complexity**                                                                                                                                                                                                                                                                                             | Richer API for node manipulations       | Simpler, classic load/dump API              |
+
+***
+
+Why Choose `yaml`?
+
+The official `yaml` package on [npm: yaml](https://www.npmjs.com/package/yaml) has become the contemporary standard for modern JavaScript workflows. \[[1](https://www.npmjs.com/package/yaml)]
+
+- **Comment Preservation:** If you parse a YAML configuration file, programmatically modify a setting, and stringify it back to a file, `yaml` **keeps your original code comments and blank lines intact**. `js-yaml` will permanently delete them.
+- **Full Spec Alignment:** It passes the official YAML test suite completely. It handles multi-document files out of the box and tolerates string anomalies cleanly.
+- **Active Support:** The package receives regular updates, security patches, and has robust built-in TypeScript definitions. \[[1](https://www.npmjs.com/package/yaml), [2](https://philna.sh/blog/2023/02/02/yaml-document-from-hell-javascript-edition/), [3](https://www.acylia.com/blog/posts/disclosure-js-yaml-3.14.0)]
+
+javascript
+
+```
+import YAML from 'yaml';
+
+// Best for modifying configurations without destroying documentation
+const config = YAML.parse(fileContent);
+```
+
+Use code with caution.
+
+***
+
+Why Choose `js-yaml`?
+
+The `js-yaml` library on [GitHub: js-yaml](https://github.com/nodeca/js-yaml) is a legacy powerhouse that still holds massive historical usage across the ecosystem. \[[1](https://github.com/nodeca/js-yaml)]
+
+- **Blazing Fast Read Performance:** If your app continuously reads thousands of static files (such as processing markdown front-matter for static site generators), `js-yaml` can parse the text 2x to 4x faster than `yaml`.
+- **Simpler API:** It utilizes an straightforward, familiar API via `yaml.load()` and `yaml.dump()`. \[[1](https://github.com/nodeca/js-yaml), [2](https://github.com/unjs/confbox/issues/33), [3](https://github.com/eemeli/yaml/discussions/358), [4](https://generalistprogrammer.com/tutorials/js-yaml-npm-package-guide)]
+
+javascript
+
+```
+import yaml from 'js-yaml';
+
+// Best for maximum performance reading read-only configuration data
+const config = yaml.load(fileContent);
+```
+
+Use code with caution.
+
+Recommendation
+
+- Choose **`yaml`** if you are writing a modern app, need to **update and save** YAML programmatically, or use TypeScript.
+- Choose **`js-yaml`** only if you have a massive build pipeline where file **read times** are a critical bottleneck. \[[1](https://www.npmjs.com/package/yaml), [2](https://github.com/unjs/confbox/issues/33), [3](https://medium.com/@sangimed/typescript-parsing-a-yaml-file-the-right-way-0240b75917af)]
+
+Which of these constraints matters more for your application, **updating file contents** or **raw loading speed**?
+
+- [link](https://www.npmjs.com/package/yaml)\
+  yaml - NPM\
+  May 11, 2026 — yaml is a definitive library for YAML, the human friendly data serialization standard. This library: Supports both YAML 1.1 and YA...\
+  NPM
+- [link](https://github.com/nodeca/js-yaml)\
+  nodeca/js-yaml: JavaScript YAML parser and dumper. Very fast.\
+  Online Demo. This is an implementation of YAML, a human-friendly data serialization language. Started as PyYAML port, it was compl...\
+  GitHub
+- [link](https://philna.sh/blog/2023/02/02/yaml-document-from-hell-javascript-edition/)\
+  The yaml document from hell — JavaScript edition - Phil Nash\
+  Feb 2, 2023 — Yaml in JavaScript. A search for JavaScript yaml parsers on npm brings up yaml (which I have used in my own project) and js-yaml. ...\
+  Phil Nash
+
+Show all

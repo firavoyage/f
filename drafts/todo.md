@@ -384,6 +384,20 @@ project sekai emu story
 
 ---
 
+have. tg.
+
+(export. standardized activity pub.)
+
+https://github.com/one-among-us/tg-blog
+
+https://github.com/one-among-us/TelegramBackup
+
+https://test-tg.one-among.us/test
+
+https://aza.moe/life
+
+---
+
 message.
 
 ```js
