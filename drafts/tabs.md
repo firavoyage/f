@@ -32,6 +32,18 @@ https://gist.github.com/simonw/8b5fa061937842659dbcd5bd676ce0e8
 
 ---
 
+shelf:
+
+人间失格
+
+the great gatsby
+
+the stranger
+
+freedom of money
+
+---
+
 chess
 
 https://chess.com/
@@ -64,23 +76,13 @@ zelda botw
 
 stardew valley
 
+tsuki
+
 ---
 
 with:
 
 matrix https://fluffychat.im/web/#/rooms/!kfCnlASxrfhWrrNnpC:matrix.org
-
----
-
-shelf:
-
-人间失格
-
-the great gatsby
-
-the stranger
-
-freedom of money
 
 ---
 

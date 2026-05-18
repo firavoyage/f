@@ -3149,3 +3149,1172 @@ Which of these constraints matters more for your application, **updating file co
   Phil Nash
 
 Show all
+
+#
+
+how to create clis via node
+
+To create a command-line interface (CLI) tool using [Node.js](https://nodejs.org/en), follow this step-by-step framework to bootstrap, develop, and run your command locally. \[[1](https://oneuptime.com/blog/post/2026-01-22-nodejs-create-cli-tool/view), [2](https://gomzkov.medium.com/building-a-cli-with-node-js-in-2024-c278802a3ef5)]
+
+1\. Initialize the Project
+
+Create a new directory and initialize your Node.js application: \[[1](https://gomzkov.medium.com/building-a-cli-with-node-js-in-2024-c278802a3ef5), [2](https://dev.to/rushankhan1/build-a-cli-with-node-js-4jbi), [3](https://www.youtube.com/watch?v=y-zS9XV%5FkRM\&t=32), [4](https://blog.bitsrc.io/integrating-okta-sso-in-a-node-js-application-b8b875c34070)]
+
+bash
+
+```
+mkdir my-custom-cli
+cd my-custom-cli
+npm init -y
+```
+
+Use code with caution.
+
+2\. Configure package.json \[[1](https://www.coreycleary.me/setting-up-your-node-package-to-be-run-from-the-command-line)]
+
+Open `package.json` and configure the module system along with the executable script mapping: \[[1](https://gomzkov.medium.com/building-a-cli-with-node-js-in-2024-c278802a3ef5), [2](https://www.scrapingbee.com/blog/web-scraping-javascript/)]
+
+- Add `"type": "module"` to use modern ES modules (`import`/`export`).
+- Add a `"bin"` object mapping your desired CLI command name to its execution file. \[[1](https://eytanmanor.medium.com/how-clis-in-node-js-actually-work-c26f913a335e), [2](https://gomzkov.medium.com/building-a-cli-with-node-js-in-2024-c278802a3ef5)]
+
+json
+
+```
+{
+  "name": "my-custom-cli",
+  "version": "1.0.0",
+  "type": "module",
+  "bin": {
+    "greetme": "./index.js"
+  }
+}
+```
+
+Use code with caution.
+
+3\. Add the Core Libraries
+
+Install Commander.js for structured argument parsing and Chalk for colored terminal outputs: \[[1](https://coreui.io/answers/how-to-create-cli-tools-in-nodejs/), [2](https://gomzkov.medium.com/building-a-cli-with-node-js-in-2024-c278802a3ef5), [3](https://korzio.medium.com/node-cli-with-commander-and-inquirer-3eacc0086e7c)]
+
+bash
+
+```
+npm install commander chalk
+```
+
+Use code with caution.
+
+4\. Create the Executable Script \[[1](https://dev.to/satyam%5Fgupta%5F0d1ff2152dcc/build-powerful-cli-tools-with-nodejs-a-complete-guide-for-developers-56k)]
+
+Create an `index.js` file in your root folder. \[[1](https://gomzkov.medium.com/building-a-cli-with-node-js-in-2024-c278802a3ef5)]
+
+- **Critical:** Start your script with a shebang line (`#!/usr/bin/env node`). This instructs your system engine to interpret the script using Node.js. \[[1](https://www.youtube.com/watch?v=y-zS9XV%5FkRM\&t=32), [2](https://medium.com/@kavishkanimsara9919/a-step-by-step-guide-creating-your-own-command-line-tool-cli-with-node-js-0d16b21bea61), [3](https://gomzkov.medium.com/building-a-cli-with-node-js-in-2024-c278802a3ef5)]
+
+javascript
+
+```
+#!/usr/bin/env node
+
+import { program } from 'commander';
+import chalk from 'chalk';
+
+// Define CLI metadata and parameters
+program
+  .name('greetme')
+  .description('A simple CLI to greet users')
+  .version('1.0.0');
+
+// Register a sub-command with parameters and options
+program
+  .command('say <name>')
+  .description('Say hello to a specific person')
+  .option('-u, --uppercase', 'Convert the greeting to uppercase')
+  .action((name, options) => {
+    let output = `Hello, ${name}!`;
+
+    if (options.uppercase) {
+      output = output.toUpperCase();
+    }
+
+    console.log(chalk.green.bold(output));
+  });
+
+// Process system command-line arguments
+program.parse(process.argv);
+```
+
+Use code with caution.
+
+5\. Link and Run Locally
+
+To test your tool locally as a global system executable, link it to your global prefix directory: \[[1](https://levelup.gitconnected.com/create-publish-node-js-cli-typescript-ebc0ed3fcb98), [2](https://gomzkov.medium.com/building-a-cli-with-node-js-in-2024-c278802a3ef5)]
+
+bash
+
+```
+npm link
+```
+
+Use code with caution.
+
+Open a brand-new terminal window and type your configured binary string: \[[1](https://gomzkov.medium.com/building-a-cli-with-node-js-in-2024-c278802a3ef5), [2](https://dev.to/rohit%5Fambre/simple-interactive-cli-tool-in-nodejavascript-42ao)]
+
+bash
+
+```
+greetme say Alice --uppercase
+```
+
+Use code with caution.
+
+💡 Advanced Ecosystem Tools
+
+For complex CLI capabilities, consider adding these packages to your architecture:
+
+- Inquirer.js or Clack for dynamic multi-choice interactive questionnaire prompts.
+- Ora for sleek loading spinners during long async processes. \[[1](https://www.youtube.com/watch?v=s2h28p4s-Xs), [2](https://www.youtube.com/watch?v=GupmEQFkDJM), [3](https://medium.com/@deepak.kumar852182/building-a-cli-app-in-node-js-5ac6fd88f82b)]
+
+Are you looking to add **interactive questions**, or would you like to build an **advanced scaffolding tool**? I can provide the exact starter code for either implementation.
+
+- [link](https://www.youtube.com/watch?v=s2h28p4s-Xs)\
+  How to build a CLI with Node.js\
+  Mar 28, 2019 — we use CLIs or command line interfaces a lot sometimes we use them for work like npm. and sometimes they're just for fun like pipi...\
+  14:44\
+  YouTube·Twilio
+- [link](https://eytanmanor.medium.com/how-clis-in-node-js-actually-work-c26f913a335e)\
+  How CLIs in Node.js actually work | by Eytan Manor - Medium\
+  Apr 20, 2021 — BONUS: Uploading CLIs as NPM packages. So what is more useful than defining a CLI and running it locally? — Sharing it with everyo...\
+  Medium·Eytan Manor
+- [link](https://www.youtube.com/watch?v=GupmEQFkDJM)\
+  Build Your Own CLI App in 5 Minutes (ClackJS and Node. ...\
+  Aug 3, 2023 — today I'm going to show you how to build your own CLI. application and deploy it as an npm package so that it can be downloaded by...\
+  3:57\
+  YouTube·Warp
+
+Show all
+
+what libraries to use
+
+Here are the industry-standard libraries to use for building Node.js CLIs, categorized by their specific purpose.
+
+📥 Argument Parsing
+
+- **Commander.js**: Best for complex, Git-like nested sub-commands and automated help menus.
+- **Yargs**: Best for powerful, rule-based flag validation and configuration file syncing.
+- **Meow**: Best for lightweight, minimal utility tools with zero bloated boilerplate.
+
+🗣️ Interactive Prompts
+
+- **Clack**: Best for modern, visually clean, and compact sequential terminal workflows.
+- **Inquirer.js**: Best for complex questionnaire trees featuring checkboxes and expandable lists.
+
+🎨 Visuals & Styling
+
+- **Chalk**: Best for modifying text colors, backgrounds, and font weights easily.
+- **Ora**: Best for showing animated loading spinners during network requests or file steps.
+- **Gradient-string**: Best for eye-catching, multi-color rainbow gradients on text titles.
+- **Boxen**: Best for wrapping terminal logs inside customizable drawn layouts and borders.
+
+🛠️ Execution & Helpers
+
+- **Execa**: Best for running external shell commands reliably with safe string escaping.
+- **Fs-extra**: Best for drop-in filesystem operations like copying directories recursively.
+
+Would you like a code example combining **Clack and Ora** for a modern setup, or do you want to see how **Execa** runs shell commands?
+
+how to use chalk
+
+To use **Chalk**, import it into your ES module, then chain modifiers and colors directly onto the `chalk` object.
+
+1\. Basic Setup
+
+First, ensure you have installed the package:
+
+bash
+
+```
+npm install chalk
+```
+
+Use code with caution.
+
+2\. Core Patterns
+
+Create an `index.js` file and try these essential styling patterns:
+
+javascript
+
+```
+import chalk from 'chalk';
+
+// Single colors
+console.log(chalk.blue('This text is blue'));
+
+// Background colors
+console.log(chalk.bgRed('This background is red'));
+
+// Chain formatting modifiers
+console.log(chalk.bold.underline.green('Success: Operation complete!'));
+
+// Nest styles inside strings
+console.log(`CPU Usage: ${chalk.red.bold('95%')} - Please check your process.`);
+
+// Combine foreground and background colors
+console.log(chalk.white.bgBlue.bold(' INFO '));
+```
+
+Use code with caution.
+
+3\. Hex & RGB Colors
+
+If standard terminal colors are too limiting, pass specific color codes:
+
+javascript
+
+```
+// Hex color codes
+console.log(chalk.hex('#FF8800')('Custom orange text'));
+
+// RGB color codes
+console.log(chalk.rgb(15, 100, 200)('Custom blue text'));
+```
+
+Use code with caution.
+
+⚠️ Common Pitfalls
+
+- **Comma Splitting**: Chalk methods only accept strings. Pass multiple arguments separated by commas, and Chalk will join them, but modifiers will apply to all text inside that specific call.
+- **Variable Strings**: Do not pass styles directly into a variable without executing it. Use `const error = chalk.red.bold; console.log(error('Failed'))`.
+
+Would you like to see how to build a custom **logger utility layout** using Chalk, or do you want to integrate it with **Ora's loading spinners**?
+
+use chalk w commander
+
+To integrate **Chalk** with **Commander.js**, apply Chalk's styling functions directly inside your command actions, help text configurations, or error overrides.
+
+1\. Basic Example: Styling Action Outputs
+
+Pass Chalk modifiers directly inside your `.action()` callback to format success or error messages.
+
+javascript
+
+```
+#!/usr/bin/env node
+import { program } from 'commander';
+import chalk from 'chalk';
+
+program
+  .command('deploy')
+  .action(() => {
+    // Standard visual logging using Chalk chains
+    console.log(chalk.blue.bold('🚀 Starting deployment...'));
+
+    // Simulating completion
+    console.log(chalk.green.bold('✔ Deployment successful!'));
+  });
+
+program.parse();
+```
+
+Use code with caution.
+
+2\. Intermediate Example: Custom Error Formatting
+
+Override Commander's default error styles using `.configureOutput()` to make validation issues stand out.
+
+javascript
+
+```
+#!/usr/bin/env node
+import { program } from 'commander';
+import chalk from 'chalk';
+
+program
+  .name('secure-app')
+  .configureOutput({
+    // Style argument validation errors
+    writeErr: (str) => process.stderr.write(chalk.red.bold(`❌ Error: ${str}`)),
+
+    // Style the default help text when requested
+    getHelp: (str) => chalk.cyan(str),
+  });
+
+program
+  .command('login')
+  .requiredOption('-u, --username <type>', 'user identity')
+  .action((options) => {
+    console.log(`Logged in as: ${options.username}`);
+  });
+
+program.parse();
+```
+
+Use code with caution.
+
+3\. Advanced Example: Colorized Custom Help Layout
+
+Inject color definitions directly into dynamic help descriptions or append custom colored banners using `.addHelpText()`.
+
+javascript
+
+```
+#!/usr/bin/env node
+import { program } from 'commander';
+import chalk from 'chalk';
+
+program
+  .name('analyzer')
+  // Using chalk inside option descriptions
+  .option('-f, --force', `Overwrite existing files (${chalk.yellow.bold('destructive')})`)
+  .option('-v, --verbose', 'Print full diagnostic traces');
+
+// Add a distinct colored footer section to the --help screen
+program.addHelpText('after', `
+${chalk.bgMagenta.white.bold(' BONUS TEMPLATE ')}
+Run ${chalk.green('analyzer --help')} anytime to view this screen.
+`);
+
+program.parse();
+```
+
+Use code with caution.
+
+Would you like to explore adding **interactive user prompts** inside these colored commands using **Clack**, or do you want to see how to handle **loading indicators with Ora** next?
+
+like, bold the commands in help
+
+To bold the subcommand names and option terms inside your `--help` menu, configure Commander’s built-in **`configureHelp()` formatter** using **Chalk**. \[[1](https://github.com/tj/commander.js/blob/master/docs/help-in-depth.md), [2](https://github.com/tj/commander.js/issues/301)]
+
+🛠️ The Implementation
+
+Pass design callback hooks into `program.configureHelp()` to intercept the help text strings before they print to the console: \[]
+
+javascript
+
+```
+#!/usr/bin/env node
+import { program } from 'commander';
+import chalk from 'chalk';
+
+program
+  .name('mytool')
+  .version('1.0.0')
+  .description('A sleek CLI example');
+
+// 🎨 Customize help styling hooks using Chalk
+program.configureHelp({
+  // Bold the section titles (e.g., "Usage:", "Options:", "Commands:")
+  styleTitle: (str) => chalk.bold.underline.cyan(str),
+
+  // Bold the subcommand names under the Commands section
+  styleSubcommandText: (str) => chalk.bold.green(str),
+
+  // Bold the flag terms under the Options section
+  styleOptionText: (str) => chalk.bold.yellow(str),
+
+  // Optional: Clean styling for positional arguments
+  styleArgumentText: (str) => chalk.magenta(str)
+});
+
+// Register dummy options & commands to view the styled layout
+program
+  .option('-v, --verbose', 'Print comprehensive operation logs')
+  .option('-f, --force', 'Force file overwrites');
+
+program
+  .command('create <project-name>')
+  .description('Bootstrap a shiny new development repository');
+
+program.parse();
+```
+
+Use code with caution.
+
+📋 The Result
+
+When a developer runs `mytool --help`, the final menu automatically renders with high-contrast formatting: \[[1](https://github.com/tj/commander.js/blob/master/docs/help-in-depth.md)]
+
+- Sections like **`Usage:`** and **`Commands:`** stand out clearly in underlined cyan.
+- The actionable subcommands like **`create`** show up in a clear, striking **bold green**.
+- The flags like **`-v, --verbose`** display in highly scannable **bold yellow**. \[[1](https://github.com/tj/commander.js/blob/master/docs/help-in-depth.md)]
+
+Would you like to see how to completely override the **entire text template block** of your help screen, or should we explore adding a **dynamic wizard questionnaire** using Clack? \[[1](https://github.com/tj/commander.js/blob/master/docs/help-in-depth.md)]
+
+- [link](https://github.com/tj/commander.js/issues/301)\
+  Add color support for help option · Issue #301 · tj/commander.js\
+  Dec 8, 2014 — shadowspawn commented. shadowspawn. on Oct 8, 2024 · edited by shadowspawn. Collaborator. Open draft PR in #2251. Added a style la...\
+  GitHub
+- [link](https://github.com/tj/commander.js/blob/master/docs/help-in-depth.md)\
+  commander.js/docs/help-in-depth.md at master · tj ... - GitHub\
+  The style routines take just a string. For example to make the titles bold: import { styleText } from 'node:util'; program. config...\
+  GitHub
+
+#
+
+node libraries like rust clap
+
+For parsing command-line arguments in Node.js with the robust features, validation, and professional help menus found in Rust's `clap`, several powerful packages dominate the ecosystem. \[[1](https://www.reddit.com/r/rust/comments/15p972v/clap%5For%5Fstructopt/), [2](https://www.reddit.com/r/rust/comments/elkwpu/cli%5Flibrary%5Flike%5Fcobra%5Fgolang%5Fin%5Frust/), [3](https://medium.com/@jamesmiller22871/7-essential-libraries-for-modern-node-js-backend-development-566775d5482e)]
+
+1\. Commander.js
+
+- **Most Popular Choice**: This is the industry-standard library for building Node.js CLIs, mirroring `clap`'s builder-style syntax.
+- **Auto-Generated Help**: It automatically creates clean `--help` layouts, manages subcommands, and handles error reporting for missing arguments.
+- **Fluid API**: You chain option rules natively, providing an explicit, highly readable definition format. \[[1](https://medium.com/javarevisited/7-best-java-cli-libraries-you-should-know-ed7717452523)]
+
+javascript
+
+```
+import { Command } from 'commander';
+const program = new Command();
+
+program
+  .name('my-cli')
+  .description('A CLI example mirroring Rust clap capabilities')
+  .version('1.0.0');
+
+program.command('split')
+  .description('Split a string into substrings')
+  .argument('<string>', 'string to split')
+  .option('--separator <char>', 'separator character', ',')
+  .action((str, options) => {
+    console.log(str.split(options.separator));
+  });
+
+program.parse();
+```
+
+Use code with caution.
+
+2\. Yargs
+
+- **Rich Validation**: Yargs offers advanced validation features closest to `clap`, including configuration file loading, strictly enforced types, and environment variable parsing.
+- **Interactive Behavior**: It easily couples with output formatters and auto-wraps text output smoothly to match the terminal width.
+- **Pirate Theme Origins**: It historically formats usage syntax natively but supports fully traditional, professional help outputs.
+
+javascript
+
+```
+import yargs from 'yargs';
+import { hideBin } from 'yargs/helpers';
+
+const argv = yargs(hideBin(process.argv))
+  .command('serve [port]', 'start the server', (yargs) => {
+    return yargs.positional('port', {
+      describe: 'port to bind on',
+      default: 5000
+    });
+  })
+  .option('verbose', {
+    alias: 'v',
+    type: 'boolean',
+    description: 'Run with verbose logging'
+  })
+  .demandOption(['verbose'], 'Please provide the verbose flag to run')
+  .parse();
+```
+
+Use code with caution.
+
+3\. Cac (Command And Conquer)
+
+- **Ultra-Lightweight**: Cac serves as a minimal alternative if you want to avoid dependencies while retaining subcommands and automated help files.
+- **Zero Extraneous Dependencies**: It keeps your package distribution extremely compact.
+- **Intuitive API**: It uses simple method naming structures that feel like a modern, stripped-down version of Commander. \[[1](https://www.reddit.com/r/rust/comments/15livzr/clap%5Falternative%5Ffor%5Fdynamically%5Fbuilt%5Fcli/)]
+
+4\. Clack
+
+- **Beautiful Interactive Prompts**: If your CLI needs human-interactive questionnaire steps rather than plain text flags, Clack creates terminal-based UX loops.
+- **Modern UI Styles**: It provides gorgeous spinners, textual progress lines, and formatted error logs out of the box.
+
+Would you like help deciding which library fits your project best based on **bundle size**, **typescript type-safety**, or **nested subcommand architecture**?
+
+- [link](https://www.reddit.com/r/rust/comments/15p972v/clap%5For%5Fstructopt/)\
+  clap or structOpt : r/rust - Reddit\
+  Aug 12, 2023 — But they are feature rich and if it's your first time writing cli app, and if you are not already an intermediate or above Rust us...\
+  \
+  Reddit·r/rust
+- [link](https://www.reddit.com/r/rust/comments/elkwpu/cli%5Flibrary%5Flike%5Fcobra%5Fgolang%5Fin%5Frust/)\
+  Cli library like cobra (golang) in rust - Reddit\
+  Jan 8, 2020 — Comments Section \* Cocalus. • 6y ago. The best library I've used for that in any language is Rust's structopt (which build's on to...\
+  \
+  Reddit·r/rust
+- [link](https://medium.com/@jamesmiller22871/7-essential-libraries-for-modern-node-js-backend-development-566775d5482e)\
+  7 Essential Libraries for Modern Node.js Backend Development\
+  Dec 17, 2025 — 7 Essential Libraries for Modern Node. js Backend Development \* Express. js — The Minimalist, Battle‑Tested Web Framework. Even th...\
+  \
+  \
+  Medium·Jamesmiller
+
+Show all
+
+commander example
+
+Here is a comprehensive example using **Commander.js**. This script implements a file utility CLI that supports global flags, strict validation, positional arguments, and subcommands.
+
+Code Setup
+
+First, install the library:
+
+bash
+
+```
+npm install commander
+```
+
+Use code with caution.
+
+Create a file named `cli.js` (ensure your `package.json` has `"type": "module"` enabled to use ES imports):
+
+javascript
+
+```
+import { Command } from 'commander';
+
+const program = new Command();
+
+// 1. Global CLI Configuration
+program
+  .name('fileutil')
+  .description('A robust Node.js CLI tool for processing text files')
+  .version('2.1.0')
+  .option('-v, --verbose', 'Print detailed execution logs', false);
+
+// 2. Subcommand: "count"
+program
+  .command('count')
+  .description('Count lines or words in a target file')
+  .argument('<filepath>', 'Path to the target file to analyze')
+  .option('-w, --words', 'Count words instead of lines', false)
+  .option('-m, --min <number>', 'Filter out lines with fewer characters than this number', parseInt)
+  .action((filepath, options) => {
+    // Access global options from the parent command
+    const globalOptions = program.opts();
+
+    if (globalOptions.verbose) {
+      console.log(`[LOG] Starting analysis on: ${filepath}`);
+    }
+
+    console.log(`Analyzing file: ${filepath}`);
+    console.log(`Mode: ${options.words ? 'Word Count' : 'Line Count'}`);
+
+    if (options.min) {
+      console.log(`Minimum character threshold: ${options.min}`);
+    }
+  });
+
+// 3. Subcommand: "backup"
+program
+  .command('backup')
+  .description('Create a secured copy of a directory')
+  .requiredOption('-d, --destination <path>', 'Directory where the backup ZIP will be saved')
+  .option('--dry-run', 'Simulate the backup without writing files')
+  .action((options) => {
+    if (options.dryRun) {
+      console.log(`[DRY RUN] Would backup to: ${options.destination}`);
+      return;
+    }
+    console.log(`Backup successfully created at: ${options.destination}`);
+  });
+
+// 4. Parse Terminal Arguments
+program.parse(process.argv);
+```
+
+Use code with caution.
+
+How to Run the Tool
+
+Commander automatically generates the help menus, handles missing required options, and enforces types based on your setup.
+
+- **View the Auto-Generated Help Menu:**\
+  bash
+
+<!---->
+
+```
+node cli.js --help
+```
+
+Use code with caution.
+
+- **Run a Subcommand with Valid Arguments:**\
+  bash
+
+<!---->
+
+```
+node cli.js count ./logs.txt --words --min 10
+```
+
+Use code with caution.
+
+- **Test Global Flags combined with Subcommands:**\
+  bash
+
+<!---->
+
+```
+node cli.js --verbose count ./data.csv
+```
+
+Use code with caution.
+
+- **Trigger a Validation Error (Missing Required Option):**\
+  bash
+
+<!---->
+
+```
+node cli.js backup
+# Output: error: required option '-d, --destination <path>' not specified
+```
+
+Use code with caution.
+
+Would you like to see how to handle **asynchronous actions** (like fetching data from an API), add **custom type parsing**, or write **automated tests** for this CLI?
+
+how does it output to the terminal under the hood
+
+Under the hood, Commander.js communicates with your terminal using standard Node.js runtime streams, text formatting utilities, and process lifecycle events.
+
+Here is exactly how it maps your code definitions to the terminal display:
+
+1\. The Output Engines: `process.stdout` and `process.stderr`
+
+Commander avoids high-level console wrappers and writes directly to Node's core input/output streams \[1]:
+
+- **`process.stdout` (Standard Output)**: Used for successful, user-requested text like `--help` menus or version queries \[1].
+- **`process.stderr` (Standard Error)**: Used exclusively for validation failures, missing arguments, or unknown flags \[1]. This ensures scripts can pipe clean data outputs to other files without mixing in error messages.
+
+2\. Stream Interception (`configureOutput`)
+
+Before printing anything, Commander routes text through an internal configuration object. You can actually intercept or override this behavior globally in your code:
+
+javascript
+
+```
+program.configureOutput({
+  writeOut: (str) => process.stdout.write(`[STDOUT] ${str}`),
+  writeErr: (str) => process.stderr.write(`[STDERR] ${str}`),
+  getOutHelpWidth: () => process.stdout.columns || 80 // Detects terminal width
+});
+```
+
+Use code with caution.
+
+3\. Smart Terminal Width Detection
+
+To prevent long option descriptions from clipping awkwardly, Commander checks the terminal size at execution time:
+
+- It reads `process.stdout.columns` dynamically.
+- It uses this numeric value to calculate text wrapping boundaries.
+- If your terminal is resized or running inside a narrow CI/CD pipeline environment, the help text automatically wraps cleanly to match that boundary.
+
+4\. Direct Process Exits (`process.exit`)
+
+When a user requests help, checks the version, or makes a syntax error, the CLI execution must stop immediately \[1].
+
+- For `--help` or `--version`, Commander writes to `stdout` and calls `process.exit(0)` (success) \[1].
+- For invalid flags or missing required inputs, it writes to `stderr` and calls `process.exit(1)` (failure code) \[1].
+
+5\. Standard Text Alignment Formatting
+
+Commander constructs the help menu layout using raw string manipulation without fancy graphical UI libraries. It calculates the longest flag combination (e.g., ), adds a fixed padding of spaces, and aligns all descriptions into an identical vertical column.
+
+Would you like to explore how to **disable automatic process exits** for unit testing, customize the **help menu colors**, or learn how it **parses raw strings** out of `process.argv`?
+
+how does it work w terminal width
+
+Commander.js determines your terminal width and wraps help menus cleanly through an automated formatting lifecycle. It calculates text placement using internal metrics, native environment variables, and fallback constants. \[[1](https://github.com/tj/commander.js/blob/master/docs/help-in-depth.md), [2](https://github.com/75lb/table-layout/issues/9), [3](https://github.com/tj/commander.js/)]
+
+***
+
+1\. Step-by-Step Layout Lifecycle
+
+When you call `--help`, Commander calculates line layout in a strict execution sequence: \[[1](https://github.com/tj/commander.js/), [2](https://github.com/tj/commander.js/blob/master/docs/help-in-depth.md)]
+
+```
+[Trigger --help]
+       │
+       ▼
+[Detect Columns] ──► Reads process.stdout.columns (e.g., 80)
+       │
+       ▼
+[Calculate Gaps] ──► Measures longest command/flag text
+       │
+       ▼
+[Wrap Text]      ──► Wraps long descriptions into the remaining space
+       │
+       ▼
+[Print Output]   ──► Renders columns with matching multi-line indentation
+```
+
+2\. Measuring Available Columns
+
+To establish limits, Commander queries the active terminal window using Node.js runtime bindings: \[[1](https://www.jsdocs.io/package/commander), [2](https://unix.stackexchange.com/questions/566549/when-writing-to-a-terminal-get-the-current-column-number-you-are-writing-to)]
+
+- **TTY Environments**: If running inside an active terminal, Commander checks **`process.stdout.columns`**. This native Node.js value updates dynamically when users resize their shell windows.
+- **Non-TTY Fallback**: If the tool runs inside a continuous integration pipeline (like Jenkins or GitHub Actions) or pipes data directly into a file, `process.stdout.columns` returns `undefined`. In these cases, Commander defaults automatically to a width of **80 columns**. \[[1](https://github.com/tj/commander.js/issues/1803), [2](https://github.com/tj/commander.js/issues/759), [3](https://github.com/75lb/table-layout/issues/9), [4](https://unix.stackexchange.com/questions/566549/when-writing-to-a-terminal-get-the-current-column-number-you-are-writing-to)]
+
+3\. Smart Word-Wrapping
+
+Instead of truncating descriptions blindly mid-word, Commander calculates padding lengths and processes strings using a precise wrapping script:
+
+- **Fixed Flag Width**: It measures your options first to establish a uniform vertical column (e.g., ).
+- **Dynamic Content Wrapping**: It subtracts the fixed flag width and padding spaces from the total terminal column count. The remaining space is dedicated to your text description.
+- **Smart Word Boundaries**: If a description exceeds the calculated remainder, Commander breaks the line explicitly at space boundaries (`" "`).
+- **Indentation Preservation**: Every split line maps an exact match to the primary column's left edge, ensuring multi-line descriptions remain clean and perfectly aligned. \[[1](https://github.com/tj/commander.js/issues/759), [2](https://github.com/tj/commander.js/issues/579)]
+
+text
+
+```
+  -d, --destination <path>   Directory where the backup ZIP will be saved
+                             and stored securely for long-term historical
+                             archiving.
+```
+
+Use code with caution.
+
+4\. Overriding Defaults Manually
+
+You can hardcode the width parameters or intercept layout functions to customize execution boundaries if needed: \[[1](https://github.com/tj/commander.js/blob/master/docs/help-in-depth.md), [2](https://www.jsdocs.io/package/commander)]
+
+javascript
+
+```
+// Hardcode the help menu width entirely
+program.configureHelp({
+  helpWidth: 100,       // Fixed wrapping width threshold
+  minWidthToWrap: 40    // Skip wrapping if terminal drops below 40 columns
+});
+
+// Dynamically intercept logic inside configureOutput
+program.configureOutput({
+  getOutHelpWidth: () => Math.min(process.stdout.columns || 80, 120) // Cap layout at 120 wide
+});
+```
+
+Use code with caution.
+
+Would you like to explore adding **ANSI terminal colors** using tools like `picocolors` or custom formats to specific layout columns?
+
+- [link](https://github.com/tj/commander.js/issues/1803)\
+  Using with Deno · Issue #1803 · tj/commander.js - GitHub\
+  Sep 24, 2022 — I found two limitations: \* the terminal width is unknown unless specify --unstable , so help wraps at column 80 by default. \* stan...\
+  GitHub
+- [link](https://github.com/tj/commander.js/issues/759)\
+  Indent multi-line option description in help · Issue #759 - GitHub\
+  Jan 22, 2018 — mojavelinux commented. mojavelinux. on Dec 17, 2019. ContributorAuthor. Standard, like here? Yes. Also mentioned in the bash help.\
+  GitHub
+- [link](https://github.com/tj/commander.js/blob/master/docs/help-in-depth.md)\
+  commander.js/docs/help-in-depth.md at master · ... - GitHub\
+  Data Properties. The data properties are: helpWidth : specify the wrap width, useful for unit tests. minWidthToWrap : specify requ...\
+  GitHub
+
+Show all
+
+how does terminal width impact. examples.
+
+Terminal width fundamentally alters how [Commander.js](https://github.com/tj/commander.js/) formats, pads, and wraps your CLI help menus. It ensures your content never runs off the screen or wraps awkwardly mid-word. \[[1](https://github.com/tj/commander.js/), [2](https://github.com/tj/commander.js/issues/579)]
+
+Here are practical, concrete examples showing exactly how terminal width modifies identical code definitions under different screen conditions.
+
+***
+
+The Code Reference
+
+Consider this standard command structure containing a long option description:
+
+javascript
+
+```
+program
+  .command('compress')
+  .description('Optimize files')
+  .option('-a, --algorithm <name>', 'The compression engine used to process files, yielding high ratio output levels.')
+```
+
+Use code with caution.
+
+***
+
+Example 1: Standard Terminal Width (`columns = 80`)
+
+This represents a standard, full-sized terminal window. Commander allocates space for flags first, calculates the remainder, and spans long text sentences across multiple cleanly aligned rows. \[[1](https://www.reddit.com/r/adventofcode/comments/zj8c54/2022%5Fday%5F10%5Fterminal%5Fwrap%5Fwidth/), [2](https://github.com/tj/commander.js/issues/579)]
+
+text
+
+```
+Usage: index compress [options]
+
+Options:
+  -a, --algorithm <name>  The compression engine used to process files,
+                          yielding high ratio output levels.
+  -h, --help              display help for command
+```
+
+Use code with caution.
+
+- **Behind the scenes**: Flags take up roughly 26 character slots. Commander subtracts 26 from 80, leaving 54 characters for the description text. It chops the text at the nearest space boundary (`"files,"`) and indents the remaining line by exactly 26 spaces. \[[1](https://github.com/tj/commander.js/issues/579)]
+
+***
+
+Example 2: Narrow Terminal / Splitting Windows (`columns = 45`)
+
+This occurs when a developer splits their screen vertically or runs tools on tiny display windows. The text boundaries drop significantly. \[[1](https://blog.shalvah.me/posts/i-was-bored-so-i-made-my-website-into-a-node-package-heres-how)]
+
+text
+
+```
+Usage: index compress [options]
+
+Options:
+  -a, --algorithm <name>  The compression
+                          engine used to
+                          process files,
+                          yielding high
+                          ratio output
+                          levels.
+  -h, --help              display help
+                          for command
+```
+
+Use code with caution.
+
+- **Behind the scenes**: Space is highly restricted. Out of 45 columns, 26 are still reserved for flags. This leaves a tiny box of only 19 characters for descriptions, forcing rapid, vertical word wrapping.
+
+***
+
+Example 3: Ultra-Narrow Terminal Breakpoint (`columns < 40`)
+
+If you shrink your terminal window down into a tiny sidebar (under 40 columns wide), Commander hits its built-in internal threshold called `minWidthToWrap`. \[[1](https://github.com/tj/commander.js/blob/master/docs/help-in-depth.md)]
+
+text
+
+```
+Usage: index compress [options]
+
+Options:
+  -a, --algorithm <name>
+The compression engine used to process files, yielding high ratio output levels.
+  -h, --help
+display help for command
+```
+
+Use code with caution.
+
+- **Behind the scenes**: If the description area shrinks below 40 columns, rendering side-by-side columns becomes unreadable. Commander automatically breaks the structure entirely, dumping descriptions onto a brand-new line with zero left indentation to maximize viewable horizontal space. \[[1](https://github.com/tj/commander.js/blob/master/docs/help-in-depth.md)]
+
+***
+
+Example 4: Continuous Integration / Pipes (`columns = undefined`)
+
+When a script runs inside automated backend platforms like **GitHub Actions workflows**, **Jenkins pipelines**, or via a cron job, `process.stdout.columns` returns `undefined` because there is no physical monitor attached. \[[1](https://github.com/tj/commander.js/issues/759), [2](https://stackoverflow.com/questions/27892047/how-might-i-calculate-the-terminal-column-width-of-various-characters)]
+
+- **Behind the scenes**: Commander notices the missing terminal context and applies its strict internal fallback width of exactly **80 columns**. It generates output identical to **Example 1**, ensuring logged text files retain uniform shape and clean margins. \[[1](https://github.com/tj/commander.js/blob/master/docs/help-in-depth.md)]
+
+Would you like to learn how to change the **`minWidthToWrap` breakpoint**, or see how to test these specific layouts using **automated Jest unit tests**? \[[1](https://github.com/tj/commander.js/blob/master/docs/help-in-depth.md)]
+
+- [link](https://blog.shalvah.me/posts/i-was-bored-so-i-made-my-website-into-a-node-package-heres-how)\
+  I was bored, so I made my website into a Node package ...\
+  Aug 21, 2018 — Sizing the terminal appropriately. Another challenge I faced was sizing the terminal so it looked good on both desktop and mobile,\
+  blog.shalvah.me
+- [link](https://github.com/tj/commander.js/blob/master/docs/help-in-depth.md)\
+  commander.js/docs/help-in-depth.md at master · ... - GitHub\
+  Data Properties. The data properties are: helpWidth : specify the wrap width, useful for unit tests. minWidthToWrap : specify requ...\
+  GitHub
+- [link](https://github.com/tj/commander.js/)\
+  node.js command-line interfaces made easy - GitHub\
+  Quick Start. You write code to describe your command line interface. Commander looks after parsing the arguments into options and ...\
+  GitHub
+
+Show all
+
+#
+
+what does node chalk output
+
+The Node.js **[chalk](https://github.com/chalk/chalk)** library outputs **strings wrapped in ANSI escape codes** to format and colorize text in the terminal. \[[1](https://www.reddit.com/r/node/comments/18uav21/what%5Fis%5Fyour%5Fpreferred%5Fnode%5Fpackage%5Fto%5Fdo/), [2](https://github.com/chalk/chalk), [3](https://coreui.io/answers/how-to-colorize-console-output-in-nodejs/)]
+
+Raw vs. Rendered Output
+
+- **What you see in the terminal**: The terminal emulator intercepts the escape codes and renders **visually styled text** (e.g., colored, bold, or underlined text).
+- **What the code actually outputs**: A raw string embedded with formatting commands. For example, `chalk.red('Hello')` outputs the raw characters `\u001b[31mHello\u001b[39m`. \[[1](https://www.youtube.com/watch?v=Nmu6aGfTbzc), [2](https://dustinpfister.github.io/2017/05/31/nodejs-chalk/), [3](https://coreui.io/answers/how-to-colorize-console-output-in-nodejs/), [4](https://www.reddit.com/r/node/comments/18uav21/what%5Fis%5Fyour%5Fpreferred%5Fnode%5Fpackage%5Fto%5Fdo/)]
+
+Supported Styling Output Categories
+
+- **Text Colors**: Standard colors like `red`, `green`, `blue`, and `yellow`.
+- **Bright Variants**: Brighter text shades like `redBright` or `cyanBright`.
+- **Background Colors**: Solid background fills using syntax like `bgRed` or `bgGreen`.
+- **Text Modifiers**: Text decorations including `bold`, `dim`, `italic`, `underline`, and `strikethrough`.
+- **Custom Color Spaces**: Complex 256-color patterns, hex codes (`#DEADED`), and RGB layouts. \[[1](https://www.youtube.com/watch?v=czsc2rsS3NY\&t=2), [2](https://zetcode.com/javascript/chalk/), [3](https://nodejs.org/en/blog/migrations/chalk-to-styletext), [4](https://www.stoutlabs.com/blog/2019-09-17-add-color-to-console-output-with-chalk/), [5](https://raddy.dev/blog/how-to-highlight-a-terminal-output-with-node-js-using-chalk/), [6](https://www.npmjs.com/package/chalk)]
+
+Smart Output Behaviors
+
+- **Auto-Detection**: The library checks terminal capabilities and downgrades or strips the escape codes automatically if the environment does not support color.
+- **Nesting & Chaining**: You can combine multiple modifiers (e.g., `chalk.red.bold.underline('Text')`) to produce highly specific layered ANSI sequences. \[[1](https://www.youtube.com/watch?v=czsc2rsS3NY\&t=2), [2](https://github.com/chalk/chalk), [3](https://www.npmjs.com/package/chalk), [4](https://coreui.io/answers/how-to-colorize-console-output-in-nodejs/), [5](https://javascript.plainenglish.io/goodbye-chalk-in-node-faa5d6810605)]
+
+_(Note: In modern Node.js environments, you can achieve similar native styling output without a third-party dependency by using the built-in **[styleText](https://nodejs.org/en/blog/migrations/chalk-to-styletext)** utility from the `node:util` module)._ \[[1](https://javascript.plainenglish.io/goodbye-chalk-in-node-faa5d6810605), [2](https://nodejs.org/en/blog/migrations/chalk-to-styletext)]
+
+If you are trying to implement terminal styling, let me know:
+
+- Are you looking for **specific code examples** using `chalk`?
+
+- Do you need to **parse or strip** these ANSI codes out of a log file?
+
+- Are you interested in migrating to Node's native **`styleText`**?
+
+- [link](https://www.youtube.com/watch?v=Nmu6aGfTbzc)\
+  How to Highlight A Terminal Output with Node.JS using ...\
+  Jul 14, 2021 — hey what is going on everybody my name is Rady. and you're watching my channel Rady the Brands. if you're new here welcome i do we...\
+  12:25\
+  YouTube·Raddy
+
+- [link](https://www.youtube.com/watch?v=czsc2rsS3NY\&t=2)\
+  Colorize your console output with Chalk! - Node.js ...\
+  Feb 20, 2019 — hey guys how you going my name is Dom and in this video I want to showcase. the very popular npm module called Chalk okay so if yo...\
+  6m\
+  YouTube·dcode
+
+- [link](https://www.reddit.com/r/node/comments/18uav21/what%5Fis%5Fyour%5Fpreferred%5Fnode%5Fpackage%5Fto%5Fdo/)\
+  What is your preferred node package to do coloring stuff in the ...\
+  Dec 30, 2023 — For most anything modern (Linux console, Gitlab CI jobs) the escape code sequences that you need to write to the output are fairly...\
+  Reddit·r/node
+
+Show all
+
+how to see directly
+
+To see the raw ANSI escape codes directly instead of the rendered colors, you must bypass your terminal's automatic formatting engine.
+
+Methods to Inspect Raw Output
+
+- **Log to a File**: Redirect the output to a text document, which prevents the terminal from processing the codes.\
+  bash
+
+<!---->
+
+```
+node your-script.js > output.txt
+```
+
+Use code with caution.
+
+- **Pipe to `cat -v`**: Force the terminal to print invisible control characters as visible text.\
+  bash
+
+<!---->
+
+```
+node your-script.js | cat -v
+```
+
+Use code with caution.
+
+- **Inspect inside Javascript**: Wrap your string in `JSON.stringify()` or `util.inspect()` inside your code to print the literal string representation.\
+  javascript
+
+<!---->
+
+```
+const chalk = require('chalk');
+const coloredString = chalk.red('Hello');
+console.log(JSON.stringify(coloredString));
+// Outputs: "\u001b[31mHello\u001b[39m"
+```
+
+Use code with caution.
+
+Forcing Chalk to Output Colors Anywhere
+
+By default, Chalk detects if you are piping output away from a terminal and turns colors off completely. To force Chalk to output the raw codes even during pipes and file redirections, set the `FORCE_COLOR` environment variable in your terminal:
+
+- **Mac/Linux**: `FORCE_COLOR=1 node your-script.js | cat -v`
+- **Windows (CMD)**: `set FORCE_COLOR=1 && node your-script.js`
+- **Windows (PowerShell)**: `$env:FORCE_COLOR=1; node your-script.js`
+
+If you are debugging a specific issue, let me know:
+
+- Are you seeing **no colors at all** when you run your script?
+- Do you need to write a regular expression to **remove these codes** from a text file?
+- Are you getting **broken or weird symbols** (like `^[31m`) in your logs?
+
+
+#
+
+creating a cli on node, use console or process stdout
+
+Use `console` for Standard Workflows
+
+Use `console` for everyday output generation. It automatically appends newlines and formats object data types. \[[1](https://codemia.io/knowledge-hub/path/nodejs%5Fprinting%5Fto%5Fconsole%5Fwithout%5Fa%5Ftrailing%5Fnewline)]
+
+- `console.log()`: Sends standard output to `process.stdout`.
+- `console.error()`: Sends error logs to `process.stderr`.
+- `console.table()`: Renders tabular data directly to the terminal.
+- `console.dir()`: Inspects deep objects with customizable formatting options. \[[1](https://www.scaler.com/topics/nodejs/console-in-nodejs/), [2](https://www.naukri.com/code360/library/node-js-input-and-output-command-line), [3](https://www.digitalocean.com/community/tutorials/how-to-use-console-in-nodejs), [4](https://www.scaler.com/topics/nodejs/console-in-nodejs/), [5](https://www.digitalocean.com/community/tutorials/how-to-use-console-in-nodejs)]
+
+Use `process.stdout` for Advanced Control \[[1](https://prosperasoft.com/blog/web-app-development/nodejs/nodejs-console-log-without-newline/)]
+
+Use `process.stdout.write()` when you need precise stream manipulation. \[[1](https://codemia.io/knowledge-hub/path/nodejs%5Fprinting%5Fto%5Fconsole%5Fwithout%5Fa%5Ftrailing%5Fnewline)]
+
+- **No Newlines:** It prints text without adding automatic line breaks.
+- **Pipe Data:** It streams raw buffers directly to other terminal tools.
+- **Terminal Control:** It updates specific lines to build progress bars.
+- **Strict Stringifying:** It accepts only strings or raw data buffers. \[[1](https://www.geeksforgeeks.org/node-js/difference-between-process-stdout-write-and-console-log-in-node-js/), [2](https://areknawo.com/node-js-file-streams-explained/), [3](https://docs.rs/raw%5Ftty)]
+
+Code Comparison
+
+javascript
+
+```
+// Using console
+console.log("Hello World");
+// Prints: Hello World\n
+
+// Using process.stdout
+process.stdout.write("Hello World");
+// Prints: Hello World (no newline)
+```
+
+Use code with caution.
+
+Best Practices
+
+- **Piping:** Use `process.stdout` for raw data CLI utilities meant for piping.
+- **Logging:** Use `console.error` for errors so piping ignores them.
+- **UX:** Use `process.stdout` to animate loading Spinners and progress indicators. \[[1](https://github.com/nodejs/node-v0.x-archive/issues/3737)]
+
+To help tailor your CLI architecture, let me know:
+
+- Will your tool **pipe data** to other bash commands?
+
+- Do you need **interactive prompts** for user input?
+
+- Are you planning to use a framework like **Commander** or **Inquirer**?
+
+- [link](https://codemia.io/knowledge-hub/path/nodejs%5Fprinting%5Fto%5Fconsole%5Fwithout%5Fa%5Ftrailing%5Fnewline)\
+  Node.js printing to console without a trailing newline?\
+  Understanding Console Methods in Node. js Node. js provides several methods on the console object for standard output (stdout) and...\
+  \
+  Codemia
+
+- [link](https://www.scaler.com/topics/nodejs/console-in-nodejs/)\
+  A Deep Dive into Console\
+  Mar 7, 2023 — 1. console. log() : This function is provided by the console class of Node js and is generally used to print a message to the scre...\
+  \
+  \
+  Scaler
+
+- [link](https://www.naukri.com/code360/library/node-js-input-and-output-command-line)\
+  Node.js input and output - command line\
+  Mar 27, 2024 — So we used the console. log to print messages in the console and this is what we call the standard output or stdout.\
+  \
+  \
+  Naukri.com
+
+Show all
+
+which should i use
+
+The Quick Rule
+
+Use **`console.log()`** by default. Use **`process.stdout.write()`** only for special UI elements like progress bars.
+
+***
+
+When to Use `console`
+
+Use `console` for 95% of your CLI application's needs.
+
+- **Status updates:** Printing regular text updates to the user.
+- **Debugging:** Inspecting variables and complex objects quickly.
+- **Error handling:** Using `console.error` ensures errors bypass standard pipes.
+
+When to Use `process.stdout`
+
+Use `process.stdout.write()` strictly for precise visual layout control.
+
+- **Progress bars:** Updating a loading percentage on a single line.
+- **Loading spinners:** Animating a text character in place.
+- **Stream piping:** Sending raw file data chunks to another terminal command.
+
+***
+
+To help you choose the exact setup, let me know:
+
+- What is the **main purpose** of your CLI tool?
+- Do you need to display **loading animations** or progress indicators?
+- Should users be able to **pipe (`|`) the output** into other terminal commands?
+
+i feel i lean toward a default of process as used by industry standard commander
+
+The Reality of Commander's Source Code
+
+Industry-standard libraries like **[Commander.js](https://github.com/tj/commander.js/blob/master/Readme.md) actually use `console.log()`** for the vast majority of their standard user-facing output. \[[1](https://github.com/tj/commander.js/blob/master/Readme.md)]
+
+Commander defaults to using `process.stdout.write()` primarily for two highly specific structural scenarios: its built-in help text generation system (to prevent double-newlines after formatted spacing) and its error/warning handling redirects.
+
+If you prefer using `process.stdout.write()`, it is a perfectly valid engineering choice, but it requires writing extra manual code to handle basic formatting tasks.
+
+***
+
+What `console.log` Does For You Automatically
+
+Under the hood in Node.js, `console.log()` is just a convenient wrapper around `process.stdout.write()`. Here is the extra work you have to handle manually if you swap completely to `process.stdout`: \[[1](https://stackoverflow.com/questions/35454716/node-stream-buffers-in-console-log-vs-process-stdout-write), [2](https://javascript.plainenglish.io/a-deep-dive-into-console-in-node-js-54801dabf14a)]
+
+| Feature \[[1](https://www.reddit.com/r/node/comments/u67cln/difference%5Fin%5Fbehaviour%5Fbetween/), [2](https://dustinpfister.github.io/2021/03/18/nodejs-process-stdout/), [3](https://stackoverflow.com/questions/4976466/difference-between-process-stdout-write-and-console-log-in-node-js), [4](https://github.com/winstonjs/winston/issues/981), [5](https://stackoverflow.com/questions/35454716/node-stream-buffers-in-console-log-vs-process-stdout-write)] | `console.log(data)`                             | `process.stdout.write(data)`                           |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- | ------------------------------------------------------ |
+| **Newlines**                                                                                                                                                                                                                                                                                                                                                                                                                                                          | Automatically appends `\n` to the end.          | You must manually add `+ '\n'`.                        |
+| **Objects & Arrays**                                                                                                                                                                                                                                                                                                                                                                                                                                                  | Automatically prints readable JSON objects.     | Throws a runtime error (only accepts strings/buffers). |
+| **Data Formatting**                                                                                                                                                                                                                                                                                                                                                                                                                                                   | Supports `%s` or `%d` string substitutions.     | Requires you to run manual template literals.          |
+| **Debugging Tools**                                                                                                                                                                                                                                                                                                                                                                                                                                                   | Broadcasts to V8 inspectors (VS Code Debugger). | Often hidden or suppressed in IDE debug consoles.      |
+
+***
+
+The Professional Compromise
+
+The most robust approach used by seasoned CLI developers is to **wrap your output in a lightweight utility wrapper**. This gives you the stream control of `process` with the data-handling convenience of `console`.
+
+javascript
+
+```
+import os from 'os';
+
+const cli = {
+  // Safe string printing without forced newlines
+  write(message) {
+    const output = typeof message === 'object'
+      ? JSON.stringify(message)
+      : String(message);
+    process.stdout.write(output);
+  },
+
+  // Standard line printing using the OS-specific line ending
+  log(message) {
+    this.write(message + os.EOL);
+  }
+};
+
+// Usage
+cli.log("Task completed successfully.");
+cli.write("Downloading... ");
+```
+
+Use code with caution.
+
+Would you like to explore how to set up **custom formatting and colors** (like using Chalk) inside this kind of setup, or are you ready to jump into **parsing arguments**?
+
+- [link](https://stackoverflow.com/questions/35454716/node-stream-buffers-in-console-log-vs-process-stdout-write)\
+  Node stream buffers in console.log vs process.stdout.write\
+  Feb 17, 2016 — \* 2 Answers. Sorted by: 7. process. stdout is a stream and its write() function only accepts strings and buffers. chunk is a Buffe...\
+  Stack Overflow
+- [link](https://github.com/tj/commander.js/blob/master/Readme.md)\
+  Readme.md - Commander.js - GitHub\
+  Quick Start. You write code to describe your command line interface. Commander looks after parsing the arguments into options and ...\
+  GitHub
+- [link](https://github.com/winstonjs/winston/issues/981)\
+  use console.log instead of process.stdout.write? · Issue #981 - GitHub\
+  Feb 6, 2017 — Description. ... I noticed that you write to process. stdout. write instead of console. log here: https://github.com/winstonjs/win...\
+  GitHub
+
+Show all

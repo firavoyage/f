@@ -471,3 +471,17 @@ Repo.
 Actions. Compatible, export raw data.
 
 ---
+
+```
+declaration
+
+name desc commands options...
+
+cli = cli(declaration)
+
+parse(cli, args) # pretty print.
+
+help(cli, (command), terminal width){
+  string.
+}
+```

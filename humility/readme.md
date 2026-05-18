@@ -46,8 +46,8 @@ code runner
 lint
 
 ```
-bun eslint
-bun tsc
+br eslint
+br tsc
 ```
 
 ---

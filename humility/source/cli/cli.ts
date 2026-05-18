@@ -1,3 +1,4 @@
+import chalk from 'chalk';
 import { Command } from 'commander';
 
 const program = new Command();
@@ -47,4 +48,16 @@ program
   });
 
 // 4. Parse Terminal Arguments
+
+// log(JSON.stringify(chalk.blue(`123`)))
+
+// log(chalk.blue(`123`), chalk.bgBlack(chalk.yellow(`123`)))
+// log(chalk.bgCyan(`123`), chalk.bgCyan(chalk.yellow(`123`)))
+
+// log(`[STDOUT] ${123424}`)
+
+// log(`[STDERR] ${123}`)
+
+// process.exit(false)
+
 program.parse(process.argv);
