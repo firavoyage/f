@@ -315,6 +315,8 @@ float: <!-- music -->
 - interpret kyu kurarin
 - interpret jishou mushoku
 - interpret dna nightcord
+- interpret king by kanaria
+- interpret internet yamero
 
 philosophy:
 
