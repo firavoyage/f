@@ -4,6 +4,10 @@
 
 <!-- "In fact, holding your hand down is a core strategy for high-level play. Because maimai DX does not have a release timing judgment, the game never punishes you for staying on the button or screen too long." -->
 
+<!-- i were ~~falling apart~~ way behind casual competitive players, and surprisingly, somehow i would not feel the pressure. lol. -->
+
+#
+
 do you have to get all critical perfect to achieve 101 on maimai dx
 
 <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">No</span></strong>, you do not need to get a Critical Perfect on every single note</mark> to achieve a 101.0000% score on maimai DX. \[[1](https://www.reddit.com/r/maimai/comments/1gzn8zp/how%5Fdoes%5Fthe%5Faccuracy%5Fthing%5F101%5Fworks%5Fin%5Fmaimai/)]
@@ -366,3 +370,293 @@ Would you like to know how many checkpoints are assigned to specific complex sli
   GekiChuMai Timing Windows and Offsets | donmai — Don't mind m...\
   Dec 29, 2022 — These discrete checkpoints are referred to as ticks, and they are judged by the difference between the last time a button was pres...\
   Listed blog
+
+# <!-- 2026.05.18 02 20 -->
+
+can a superhuman theorically achieve all critical perfect on all maimai dx songs
+
+**Yes, a superhuman could theoretically achieve a maximum DX score (all Critical Perfects) on every song in [maimai DX](https://argw.miraheze.org/wiki/Maimai%5FDX)**. However, this task is practically impossible for real human beings due to strict engine mechanics and hardware constraints rather than a lack of physical stamina. \[[1](https://www.reddit.com/r/maimai/comments/1gzn8zp/how%5Fdoes%5Fthe%5Faccuracy%5Fthing%5F101%5Fworks%5Fin%5Fmaimai/), [2](https://argw.miraheze.org/wiki/Maimai%5FDX), [3](https://www.reddit.com/r/maimai/comments/16uuz3g/what%5Fis%5F5%5Fstar/)]
+
+The Core Scoring Mechanics
+
+- **Theoretical Maximum Score**: Achieving a Critical Perfect on every single note yields a perfect 101.0000% Achievement Rate and the absolute maximum **DX Score** (calculated as `Total Note Count × 3`).
+- **The Timing Window**: While a standard "Perfect" window in maimai is relatively generous at roughly ±50 milliseconds, a **Critical Perfect** requires hitting the precise center of that window (estimated to be around ±10 to ±15 milliseconds).
+- **Judgment Uniformity**: Unlike standard achievement rates—where regular notes only require a standard "Perfect" to max out the base 100% score—the DX Score treats all note types (Taps, Holds, Slides, Touches, and Breaks) completely equally. \[[1](https://www.reddit.com/r/maimai/comments/1jastal/do%5Fyou%5Fthink%5Fmaimai%5Fhas%5Fa%5Fhigh%5Fskill%5Fceiling/), [2](https://sega.fandom.com/wiki/Maimai%5F%28series%29), [3](https://www.reddit.com/r/maimai/comments/1b4ihb2/differences%5Fbetween%5Ffinale%5Fand%5Fdx/), [4](https://github.com/SpiritsUnite/maimai-score-details), [5](https://argw.miraheze.org/wiki/Maimai%5FDX), [6](https://www.reddit.com/r/maimai/comments/1gzn8zp/how%5Fdoes%5Fthe%5Faccuracy%5Fthing%5F101%5Fworks%5Fin%5Fmaimai/)]
+
+The Theoretical Obstacles a Superhuman Faces
+
+While a superhuman may possess perfect internal rhythm, flawless visual processing, and endless stamina, the physical game environment introduces variables that defy absolute biological perfection:
+
+```
+               [ CRITICAL PERFECT WINDOW: ~±10-15ms ]
+
+  |-------------------------|-------•-------|-------------------------|
+-50ms                    Early     0ms     Late                    +50ms
+
+  |-------------------------- TOTAL PERFECT WINDOW -------------------|
+```
+
+1. **Physical Slide Mechanics**: Slides require dragging hands across a physical, friction-heavy glass screen. A superhuman would have to perfectly regulate hand friction, sweat, and micro-stuttering to ensure the physical sensor registers movement within the frame-precise window.
+2. **Hold Note Releases**: The game registers hold note ticks continuously. If the player taps slightly off-center or suffers from a micro-gap during a hold, the engine can drop the note from a Critical Perfect to a lower judgment.
+3. **Hardware Latency Variance**: Arcade cabinets suffer from minute fluctuations in input polling rates, screen refresh rates, and audio-visual lag. A superhuman hitting a note with true 0.000ms biological accuracy might still get a "late" or "early" judgment if the cabinet's internal computer registers the frame late.
+4. **The Overwhelming Scale**: High-level charts (Levels 14 to 15) throw thousands of rapid-fire notes, complex multi-flicks, and spinning streams at the player. Maintaining ±10ms accuracy across thousands of inputs over hundreds of songs requires statistical anomalies that human consistency cannot sustain over a long career. \[[1](https://www.youtube.com/watch?v=TCW5DejMcog), [2](https://www.reddit.com/r/maimai/comments/1gzn8zp/how%5Fdoes%5Fthe%5Faccuracy%5Fthing%5F101%5Fworks%5Fin%5Fmaimai/), [3](https://listed.to/@donmai/41511/gekichumai-timing-windows-and-offsets), [4](https://www.facebook.com/groups/MaiMaiAsia/posts/2973278679550062/), [5](https://www.reddit.com/r/maimai/comments/1q799n3/any%5Ftips%5Fto%5Ftrain%5Fso%5Fi%5Fcan%5Fhit%5Fcrit%5Fperfects%5Fmore/)]
+
+If you would like to explore the high-level mechanics further, I can outline the **exact chart configurations of the hardest level 15 boss songs** or explain how top players use specialized **settings like Fast/Slow indicators** to optimize their timing. \[[1](https://www.reddit.com/r/maimai/comments/ickmvc/what%5Fscore%5Fdo%5Fyou%5Fexpect%5Fto%5Fstart%5Fmoving%5Fyourself/)]
+
+- [link](https://www.facebook.com/groups/MaiMaiAsia/posts/2973278679550062/)\
+  Hi guys how do I get critical perfect for tap hold slide and touch ...\
+  Apr 20, 2026 — Play hold notes by tapping below the hit box (yellow highlight) to ensure there is NO gap between your tap dot (see red x) and abo...\
+  Facebook·maimai Asia
+- [link](https://www.youtube.com/watch?v=TCW5DejMcog)\
+  An Introduction to maimai | The "Washing Machine Rhythm ...\
+  Sep 20, 2023 — are you getting sick of Osu. want a new game about hitting circles. do you like burning. money. well I got the perfect game for yo...\
+  16:52\
+  YouTube·Saow
+- [link](https://listed.to/@donmai/41511/gekichumai-timing-windows-and-offsets)\
+  GekiChuMai Timing Windows and Offsets | donmai - Listed\
+  Dec 29, 2022 — Chunithm has hold and slide ticks. In MaiMai, holds and slides only count as one note, but in Chunithm a hold/slide is judged cont...\
+  Listed blog
+
+Show all
+
+do all notes have critical perfect level? will you end up having some perfect in the final board even if you are a superhuman
+
+**Yes, every single note type in maimai DX has a Critical Perfect judgment.** Because the game engine evaluates all notes this way, a true superhuman would not be forced by the game mechanics to get regular "Perfects."
+
+However, hardware limitations mean even a flawless being could still end up with regular Perfects on the final board.
+
+Every Note Type Evaluated
+
+Every input on the cabinet has a Critical Perfect tier:
+
+- **Taps & Touches**: Judged purely on the exact millisecond you strike the button or screen.
+- **Holds & Touch Holds**: Judged on the initial hit. You must hold it down, but the continuous ticks do not require extra timed taps.
+- **Slides**: Judged on the initial star tap _and_ the precise timing of the star's movement tracking.
+- **Breaks**: Worth the most points. They have an even stricter internal tracking tier, but still top out at Critical Perfect.
+
+Why a Superhuman Could Still Fail (The Hardware Bottleneck)
+
+Even if a superhuman possesses 100% perfect biological accuracy (0.000ms deviation), the arcade cabinet itself introduces variables that can downgrade a hit to a standard Perfect:
+
+- **Frame Rate Boundaries**: Arcade cabinets render at fixed frame rates (usually 60Hz or 120Hz). If a 120Hz monitor updates every 8.33 milliseconds, and the ±10ms Critical Perfect window falls awkwardly between frame updates, the hardware might process a perfect physical hit on the next frame, dropping it to a late "Perfect."
+- **Touch Screen Polling Rates**: The infrared touch sensors around the screen scan for hand movements at a set frequency. Rapid slide movements or dense touch streams can overwhelm the sensor's scan cycle, causing it to register a hand position a fraction of a second late.
+- **Cabin Wear and Tear**: Buttons use physical microswitches that degrade over time. Particulate dust or a slightly worn spring can delay the physical signal from the button to the internal computer by a few milliseconds, ruin the timing, and leave a regular Perfect on the board.
+
+If you want to look closer at how top-level play works, I can break down **how the Fast/Slow timing display works** or analyze **how Break notes alter the final achievement percentage**.
+
+is critical perfect enabled by default
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">No, the visible display for Critical Perfect is not enabled by default for regular notes, but its scoring background mechanics are always active</span></strong></mark>**.** \[[1](https://argw.miraheze.org/wiki/Maimai%5FDX), [2](https://silentblue.remywiki.com/maimai%5FDX:1st/Changes)]
+
+The game handles Critical Perfects in two distinct ways depending on your settings:
+
+1\. By Default (What You See)
+
+- **Break Notes**: Critical Perfect display is **always on by default for Break notes**. This is because hitting a Critical Perfect on a Break note is mandatory to get the maximum 101.0000% Achievement Rate (giving you an All Perfect+ / AP+).
+- **Regular Notes (Taps, Slides, Holds)**: By default, the cabinet only shows four judgments on the screen: **Miss, Good, Great, and Perfect**. If you hit a regular note with Critical Perfect accuracy, the screen will simply flash a standard "Perfect" flash. \[[1](https://en.wikipedia.org/wiki/Maimai%5F%28video%5Fgame%5Fseries%29), [3](https://www.reddit.com/r/maimai/comments/1tfm1tc/can%5Fsomeone%5Fexplain/), [4](https://en.wikipedia.org/wiki/Maimai%5F%28video%5Fgame%5Fseries%29)]
+
+2\. Under the Hood (The DX Score)
+
+Even though the screen doesn't show it by default, **the game engine tracks your Critical Perfects on every note from the very first time you play.** \[[1](https://argw.miraheze.org/wiki/Maimai%5FDX)]
+
+- This is tied to your **DX Score** (represented by stars on the results screen).
+- A Critical Perfect awards **3 points**, a regular Perfect awards **2 points**, a Great awards **1 point**, and a Good awards **0 points**.
+- Even if you use the default display setting, your DX Score will secretly calculate whether you hit that tighter internal window. \[[1](https://www.reddit.com/r/maimai/comments/1t4a678/what%5Fis%5Fit/), [2](https://argw.miraheze.org/wiki/Maimai%5FDX), [3](https://silentblue.remywiki.com/maimai%5FDX:1st/Changes)]
+
+How to Turn It On Externally
+
+To actually see your Critical Perfect judgments flash for all notes while playing, you must change your settings: \[[1](https://www.reddit.com/r/maimai/comments/1tfm1tc/can%5Fsomeone%5Fexplain/)]
+
+1. Log into an arcade cabinet using your **Aime / Banapassport card** or via the game's official QR code login.
+2. Go into the **Game Settings** menu before selecting a song.
+3. Find the **Judgment Display (判定表示)** options.
+4. Switch it to a layout style that explicitly includes **Critical Perfect (クリティカルパーフェクト)**. When active, Critical Perfect hits will glow with a distinct, brilliant rainbow flash to differentiate them from standard yellow Perfects. \[[1](https://www.youtube.com/watch?v=kvavTX-RKh8\&t=20), [2](https://en.wikipedia.org/wiki/Maimai%5F%28video%5Fgame%5Fseries%29), [4](https://www.reddit.com/r/maimai/comments/1tfm1tc/can%5Fsomeone%5Fexplain/)]
+
+Would you like to know more about **how to navigate the settings menus** to turn this on, or would you like a breakdown of **how the DX Score stars are calculated**? \[[1](https://www.reddit.com/r/maimai/comments/1t4a678/what%5Fis%5Fit/)]
+
+- [link](https://silentblue.remywiki.com/maimai%5FDX:1st/Changes)\
+  maimai でらっくす changes - SilentBlue - RemyWiki\
+  Mar 27, 2024 — New scoring system \* "Critical Perfect" judgment added. It's equivalent to "Break 2600", except that now it can be enabled for oth...\
+  RemyWiki
+- [link](https://en.wikipedia.org/wiki/Maimai%5F%28video%5Fgame%5Fseries%29)\
+  Maimai (video game series) - Wikipedia\
+  The maximum possible score obtainable, achieved when a player hits all notes as Perfect or higher while hitting all 'Break' notes ...\
+  Wikipedia
+- [link](https://www.reddit.com/r/maimai/comments/1tfm1tc/can%5Fsomeone%5Fexplain/)\
+  Can someone explain? : r/maimai - Reddit\
+  May 17, 2026 — Comments Section \* catmeow1935. • 3h ago. Critical perfect on all breaks. \* Kyuina. • 3h ago. There is something called “Break” no...\
+  Reddit·r/maimai
+
+Show all
+
+do all songs have break notes
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">Yes, virtually all songs in maimai DX have Break notes.</span></strong></mark> They are a fundamental pillar of the game's mechanics, and chart designers include them in almost every map across all difficulty levels to act as high-value scoring milestones. \[[1](https://www.reddit.com/r/maimai/comments/cdj7hj/technical%5Fquestions%5Ffrom%5Fa%5Fnewbie%5Fhelp%5Fme%5Fimprove/), [2](https://en.wikipedia.org/wiki/Maimai%5F%28video%5Fgame%5Fseries%29), [3](https://informatika.stei.itb.ac.id/~rinaldi.munir/Matdis/2023-2024/Makalah2023/Makalah-Matdis-2023%20%2899%29.pdf)]
+
+However, there is an incredibly rare, niche group of exceptions found in the game's lowest difficulty levels.
+
+The Standard Rule: Every Chart Needs a Break
+
+In 99.9% of maimai charts, you will find Break notes. They serve a critical structural purpose: \[[1](https://en.wikipedia.org/wiki/Maimai%5F%28video%5Fgame%5Fseries%29)]
+
+- **The 101% Scoring Ceiling**: The maimai DX scoring system splits its total achievement rate into a 100% base score (all notes) and a **1% Break bonus**.
+- **The Math Behind It**: To achieve a true maximum 101.0000% score (All Perfect+), a chart _must_ contain Break notes so that the game has a pool from which to award that extra 1.0000% bonus.
+- **Modern Mapping Variety**: Since the launch of _maimai DX FESTiVAL_, chart designers can even transform Hold notes and Slide paths into Break variants, ensuring they are deeply woven into high-level gameplay. \[[1](https://www.reddit.com/r/maimai/comments/1tfm1tc/can%5Fsomeone%5Fexplain/), [2](https://spiritsunite.github.io/maimai-score-details/), [3](https://informatika.stei.itb.ac.id/~rinaldi.munir/Matdis/2023-2024/Makalah2023/Makalah-Matdis-2023%20%2899%29.pdf), [4](https://www.reddit.com/r/maimai/comments/w1m0nb/confused%5Fabout%5Fthe%5Fmetagame/), [5](https://silentblue.remywiki.com/maimai%5FDX:FESTiVAL), [6](https://argw.miraheze.org/wiki/Maimai%5FDX%5FFESTiVAL)]
+
+The Only Exceptions: Level 1-3 Basic Charts
+
+The only charts in the entire game that occasionally feature zero Break notes are select **Basic (Green) difficulties** on exceptionally simple or short songs.
+
+- These introductory charts are meant for absolute beginners and might only feature 50 to 100 standard Tap notes to help players get used to the physical layout of the cabinet.
+- Because they lack Break notes, their maximum possible scoring cap is mathematically locked at exactly **100.0000%** rather than 101.0000%. \[[1](https://informatika.stei.itb.ac.id/~rinaldi.munir/Matdis/2023-2024/Makalah2023/Makalah-Matdis-2023%20%2899%29.pdf)]
+
+Once you move up to Advanced, Expert, or Master charts, **every single song contains Break notes**, usually reserving them for the loudest beats, drops, or major transitions in the music.
+
+If you are curious about maximizing your score on these, I can explain **how the 1% Break bonus is divided if a song only has a few Breaks**, or how **EX Break notes guarantee a Critical Perfect** if you hit them. \[[1](https://www.reddit.com/r/maimai/comments/1bf8dll/how%5Fare%5Fbreak%5Fnotes%5Fcalculated/), [2](https://argw.miraheze.org/wiki/Maimai%5FDX%5FFESTiVAL), [3](https://silentblue.remywiki.com/maimai%5FDX:1st/Changes)]
+
+- [link](https://www.reddit.com/r/maimai/comments/1bf8dll/how%5Fare%5Fbreak%5Fnotes%5Fcalculated/)\
+  How are break notes calculated? : r/maimai - Reddit\
+  Mar 15, 2024 — Comments Section \* The break bonuses is the 1% over the 100% from all notes in the song; split over all breaks in the chart. So le...\
+  Reddit·r/maimai
+- [link](https://en.wikipedia.org/wiki/Maimai%5F%28video%5Fgame%5Fseries%29)\
+  Maimai (video game series) - Wikipedia\
+  Break: A red-yellow ring/star that requires a single tap and is worth five times as much as a Tap, requiring a 'Critical Perfect' ...\
+  Wikipedia
+- [link](https://www.reddit.com/r/maimai/comments/cdj7hj/technical%5Fquestions%5Ffrom%5Fa%5Fnewbie%5Fhelp%5Fme%5Fimprove/)\
+  Technical questions from a newbie, help me improve : r/maimai\
+  Jul 15, 2019 — Yes. Can't really tell much? But when I first jumped between AAA and S, it felt like I could catch the patterns better. (May not a...\
+  Reddit·r/maimai
+
+Show all
+
+do critical perfect show up on the final board by default
+
+**No, the exact number of Critical Perfects does not show up on the final results screen by default for all notes.**
+
+Unless you change your settings, the game engine bundles your Critical Perfects and regular Perfects together into a single **"Perfect"** category on the final board.
+
+What the Default Final Board Shows
+
+By default, the final results screen only breaks down your accuracy into five core categories:
+
+1. **Critical Break / Perfect Break** (Only broken down specifically for Break notes)
+2. **Perfect** (Combines both Critical Perfects and regular Perfects for Taps, Slides, and Holds)
+3. **Great**
+4. **Good**
+5. **Miss**
+
+Because they are grouped together, a default screen will show "Perfect: 500," meaning you got 500 perfect hits, but it won't tell you how many of those 500 were actually _Critical_ Perfects.
+
+The One Exception: The DX Score
+
+The only way to see your Critical Perfect performance on a default board is by looking at your **DX Score** and its **Star Rating** (e.g., 1-star to 5-star icons).
+
+- If you know the song's maximum possible DX Score, you can manually calculate how many regular Perfects you got.
+- Every regular Perfect drops your final DX Score by 1 point below the absolute maximum.
+
+How to Make Them Show Up
+
+To see the exact breakdown of Critical Perfects for _every_ note type on the final board, you must change your **Result Screen Display** settings using your online Aime/Banapassport profile. Turning this on will split the "Perfect" counter on the final board into two distinct, clear lines so you can see your exact accuracy.
+
+Would you like to know **how to navigate the official maimai DX NET website** to change this result screen setting, or should we look at **how many DX Score points are required to earn 5 stars**?
+
+if you do not get critical perfect, by default, will it show zero or simply hide the column
+
+By default, the final results screen <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>simply hides the column entirely</strong></mark>.
+
+The game does not show a "Critical Perfect" row with a zero next to it; instead, it uses a simplified layout that completely excludes the Critical Perfect breakdown \[ ].\[ ].\[ ]
+
+What Happens Behind the Scenes
+
+- **The Row is Missing**: On the standard, unmodified results screen, the label "Critical Perfect" does not exist as an independent line item for Taps, Holds, and Slides \[ ].\[ ]
+- **It Is Hidden Inside "Perfect"**: Any Critical Perfects you successfully hit are quietly tucked inside the standard yellow **Perfect** column alongside your regular Perfects \[ ].\[ ]
+
+What Happens if You Enable the Column?
+
+If you use the official _maimai DX NET_ website to turn on the detailed judgment breakdown, the column will stay on the screen permanently \[ ].\[ ]
+
+With that setting active:
+
+- If you play a song and fail to get a single Critical Perfect, the column will explicitly display **0** \[ ].\[ ]
+- Your regular Perfect column will show the full count of your standard hits \[ ].\[ ]
+
+If you want, I can explain **how to access the maimai DX NET website** to change this setting, or show you **what the detailed results screen layout looks like** once it is turned on.
+
+by default, even if you get critical perfect, do you see them on the final board
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">No, by default, you do not see them on the final board, even if you get thousands of Critical Perfects.</span></strong></mark>
+
+The default screen completely suppresses that specific metric for standard notes \[ ].\[ ]
+
+Where They Actually Hide
+
+- **Merged Count**: Every single Critical Perfect you hit is added directly into the standard **"Perfect"** category \[ ].\[ ]
+- **Invisible Success**: If a song has 500 notes and you hit 400 Critical Perfects and 100 regular Perfects, your default final board will simply read: **Perfect: 500** \[ ].\[ ]
+
+The Only Default Visual Clues
+
+Even though the individual number is hidden, you can tell you got Critical Perfects by looking at two other default items on the board:
+
+- **The Break Note Breakdown**: The board _will_ show your Critical Perfects exclusively for Break notes, usually displayed as a shiny, highlighted sub-number within the Break row.
+- **The DX Score Star Icons**: If you hit a high percentage of Critical Perfects across the whole song, the board will award you **3, 4, or 5 glowing stars** next to your DX Score.
+
+If you are trying to push your scores to the limit, let me know if you would like me to explain **how to get a 5-star DX rating** or if you want the **exact URL and steps** to change your profile settings so the game finally shows you these hidden stats!
+
+does dx score matter
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">Yes, DX Score matters, but its importance depends entirely on what kind of player you are.</span></strong></mark>
+
+In maimai DX, the game tracks two completely separate scoring systems: **Achievement Rate** (the percentage score up to 101.0000%) and **DX Score** (the raw point total based on your accuracy).
+
+Here is exactly why DX Score matters, and when it doesn't.
+
+1\. When DX Score Matters Completely
+
+- **Competitive Tournaments**: In official Sega tournaments (like King of King) and community esports events, matches are decided almost exclusively by **DX Score**, not percentage. At a high level, multiple players will easily get a 101.0000% Achievement Rate on a song. The DX Score acts as the ultimate tiebreaker to see who had the tighter, frame-perfect rhythm.
+- **Tracking True Frame Accuracy**: Because the Achievement Rate caps out once you hit a standard Perfect, it "forgives" minor timing errors. DX Score does not. It is the only metric that proves you hit the strict \\(\pm \\)10–15ms Critical Perfect window.
+- **Earning Star Rankings**: Your DX Score determines the number of colored stars (1 to 5 stars) you get on the results screen, which serves as a badge of honor among elite players.
+
+2\. When DX Score Does Not Matter
+
+- **Increasing Your Player Rating**: If your primary goal is to increase your overall **Rating** (the digital number that shows your skill level, like 15,000+), DX Score is completely irrelevant. Player Rating is calculated strictly using your **Achievement Rate** percentage.
+- **Unlocking Casual Achievements**: Earning standard in-game clear ranks like S, SS, SSS, or All Perfect (AP) relies solely on your percentage score. You can get a terrible DX Score but still get an All Perfect badge if all your hits were standard Perfects.
+
+How the Two Scores Compare
+
+| Feature             | Achievement Rate (%)               | DX Score (Points)                         |
+| ------------------- | ---------------------------------- | ----------------------------------------- |
+| **What it rewards** | Getting "Perfects" or better       | Getting _Critical_ Perfects specifically  |
+| **Maximum Cap**     | Locked at **101.0000%**            | Total Notes \\(\times \\) 3               |
+| **Main Use**        | Casual ranking & **Player Rating** | **Tournaments** & Elite accuracy tracking |
+
+If you want to start tracking this, I can explain **what percentage of Critical Perfects you need to get a 5-star DX Score**, or detail **how tournament players train** to optimize their DX scores on Level 14+ charts.
+
+This is for informational purposes only. For medical advice or diagnosis, consult a professional. AI responses may include mistakes. [Learn more](https://support.google.com/websearch?p=aimode\&gl=us)
+
+what are colored stars
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">Colored stars are visual trophies awarded on the results screen based on what percentage of the maximum possible DX Score you achieved.</span></strong></mark>
+
+They serve as an instant, highly respected status symbol among top-tier players to show off true frame-perfect accuracy.
+
+The Five Star Tiers
+
+The game calculates your star rank by dividing your earned DX Score by the song's theoretical maximum DX Score. The color of the stars upgrades as your accuracy crosses specific thresholds:
+
+- ⭐ **1 Black/Bronze Star**: Reaching **85%** of the max DX Score.
+- ⭐⭐ **2 Silver Stars**: Reaching **90%** of the max DX Score.
+- ⭐⭐⭐ **3 Gold Stars**: Reaching **93%** of the max DX Score.
+- ⭐⭐⭐⭐ **4 Platinum/Blue Stars**: Reaching **95%** of the max DX Score.
+- ⭐⭐⭐⭐⭐ **5 Rainbow Glowing Stars**: Reaching **97%** of the max DX Score.
+
+Why 5 Rainbow Stars is a Massive Flex
+
+Getting 5 Rainbow Stars is incredibly difficult, especially on higher-level Master charts.
+
+To put it into perspective: crossing the **97% threshold** means that out of every 100 notes in a song, you must hit at least **91 of them as a Critical Perfect**, leaving room for only a tiny handful of regular Perfects or Greats. If you drop a single note or get a few "Good" judgments, the massive penalty to your DX Score will instantly destroy your chances of getting that fifth star.
+
+Where Do They Appear?
+
+Once earned, these stars don't just sit on the post-game summary screen. They are permanently saved to your profile data. When you look at your song selection menu, the cabinet will display your highest-earned star badge right next to the song's jacket art, allowing anyone standing behind you at the arcade to instantly see your exact precision tier.
+
+If you are aiming to hunt for stars, I can give you a list of **the easiest song charts to practice on for a 5-star rating**, or break down **the exact point penalty for hitting a Great vs. a regular Perfect**.

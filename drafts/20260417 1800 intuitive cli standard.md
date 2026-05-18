@@ -6,6 +6,8 @@
 
 <!-- think how to define the commands and options. i tend to lean toward yaml? -->
 
+<!-- i have the yaml design. quite simple. nesting is so good. the decision is just positional (as commands and options are generally interchangeable) or named (clearer), which does matter much. but i would research existing methods. i think they use custom parsing or json instead. -->
+
 # .
 
 research
@@ -907,7 +909,7 @@ info.version
 
 <!-- you probably dont need the version number reading help. -->
 
-<!-- what you do first, how you would do later. -->
+<!-- what you do first, how you would do later. (they will parse the same, just to be compatible. a user could have many ways to do the same thing.) -->
 
 <!-- use either lowercase or mixed case. -->
 
