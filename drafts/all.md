@@ -192,6 +192,7 @@ desktop:
 - install open webui
 - set up pi agent
 - symlink agent md contributing
+- install forgejo
 
 ops: <!-- devops, ci, vcs, ... -->
 
@@ -263,6 +264,7 @@ ux: <!-- ui/ux design -->
 - measurement framework basic heart honeycomb core web vitals dora space
 - gnome adwaita kde kirigami
 - basic ui principles vscode default seti theme keychain icons
+- mpv minimalist design friction broken command palette shuffle playlist
 
 typography:
 
@@ -323,6 +325,7 @@ float: <!-- music -->
 - interpret dna nightcord
 - interpret king by kanaria
 - interpret internet yamero
+- interpret heat abnormal
 
 philosophy:
 

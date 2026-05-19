@@ -17831,6 +17831,10 @@ a cute and gentle girl from zhonghua vhs in grade 11 w stylish dressing, visible
 
 20 00 write `contributing.md`, document std lib. <!-- i no longer document the trivial changes. they are recorded by git anyway. though i might delete .git folder if needed. crucial, non incremental/corrective, history files are put away inside dedicated archival folders inside legacy. (effectively git branches, but way more compatible to tools like rg) -->
 
+20
+
+00 40 adopt ctrl shift t on ghostty. <!-- instead of new window -->
+
 
 
 <!-- timebox, plan. -->
