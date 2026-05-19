@@ -18,6 +18,8 @@
 
 <!-- i think i could do more research. but it's ok if i have to write mine. (though, i have not yet decided what design system would be. a cli? some simple abstraction?) -->
 
+<!-- btw, it's a bad practice to have hyphen in your cli name. -->
+
 # .
 
 ```
