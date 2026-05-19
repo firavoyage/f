@@ -17829,7 +17829,7 @@ vids are good for visual novels i guess. <!-- i dont wanna pick the random words
 
 a cute and gentle girl from zhonghua vhs in grade 11 w stylish dressing, visible dark gray bra ribbons, black shirt w some white drawing, dark blue school uniform trousers. what would she see in her future? i wonder.
 
-20 00 write `contributing.md`, document std lib. <!-- i no longer document the trivial changes. they are recorded by git anyway. though i might delete .git folder if needed. crucial, non incremental/fixing, history files are put inside dedicated archival folders inside legacy. (effectively git branches, but way more compatible to tools like rg) -->
+20 00 write `contributing.md`, document std lib. <!-- i no longer document the trivial changes. they are recorded by git anyway. though i might delete .git folder if needed. crucial, non incremental/corrective, history files are put away inside dedicated archival folders inside legacy. (effectively git branches, but way more compatible to tools like rg) -->
 
 
 

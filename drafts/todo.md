@@ -398,26 +398,6 @@ https://aza.moe/life
 
 ---
 
-message.
-
-```js
-/**
- * comments
- */
-
-// commented code
-```
-
----
-
-use lower cases english for comments. as simple as possible. adjectives. phrases.
-
-explanation comment on top. (on right in shell)
-
-commented code on bottom.
-
----
-
 project float.
 
 "library"
@@ -451,7 +431,7 @@ finish the forgejo installation script (on ubuntu) at home.
 - tg export to knowledge
 - tg userbot x11
 - patchright (e.g. deepseek)
-- message. spec template.
+- message. spec template. (? not always needed)
 - keyboard
 - nameless (mihomo by fira). <!-- web ui. btw, the backend and the frontend are two things -->
 - have (crawl the web, e.g. matrix67) <!-- the most crucial step is network. be pragmatic. like handling a few big ones like twitter, tg export. ssg (hexo, astro, etc.). for general ones fallback to, like mhtml. menci has oi.menci on github, just clone. no need to crawl. ruanyf has ruanyf weekly on github, but no idea if all articles are foss. -->

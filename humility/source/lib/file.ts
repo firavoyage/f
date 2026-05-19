@@ -219,6 +219,8 @@ export async function write({ path, content }): Promise<result<void>> {
 }
 
 /**
+ * read a file
+ * 
  * use object params anyway for consistency, 
  * even though there is only one param currently
  */
