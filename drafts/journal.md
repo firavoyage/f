@@ -15900,7 +15900,7 @@ Meet a group of zhonghua vhs students who leave school at 16.
 
 There is a cool guy using his elbow to play... Funny.
 
-Not really friendly. He does not talk. He skips a song I pick. And he says "you think I look like a student?" when I ask the grade he is in. Yet he refuses to disclose his job. Maybe I've annoyed him. 
+Not really friendly. He does not talk. He skips a song I pick. And he says "you think I look like a student?" when I ask the grade he is in. Yet he refuses to disclose his job. Maybe I've annoyed him. <!-- upd ~1w later: he seems to be the only player who skips a track while playing w me... maybe he has some own thoughts of his. -->
 
 There's a boy from zhonghua vhs who wants me to queue for him while smoking... Holy. He says he's already an adult so whatever.
 
