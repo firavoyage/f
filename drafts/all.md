@@ -81,6 +81,7 @@ life:
 - game maimai dx critical perfect
 - lowercase standard mixed case feeling
 - game ddlc
+- game maimai dx theoretical rating upper limit
 
 create something:
 
@@ -190,6 +191,7 @@ desktop:
 - install dolphin apply gnome adwaita
 - install open webui
 - set up pi agent
+- symlink agent md contributing
 
 ops: <!-- devops, ci, vcs, ... -->
 
@@ -199,6 +201,7 @@ ops: <!-- devops, ci, vcs, ... -->
 - linting tsgo tsconfig
 - pnpm approve build
 - ci ensure readme on every folder
+- self host forgejo
 
 sre:
 
@@ -259,6 +262,7 @@ ux: <!-- ui/ux design -->
 - color formats chroma saturation
 - measurement framework basic heart honeycomb core web vitals dora space
 - gnome adwaita kde kirigami
+- basic ui principles vscode default seti theme keychain icons
 
 typography:
 
@@ -404,6 +408,7 @@ politics:
 
 - xi jinping dictatorship llm test political science
 - chinese patriotism
+- llm adoption us cn fr
 
 economics:
 

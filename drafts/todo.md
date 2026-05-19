@@ -428,6 +428,20 @@ dl maimai dx songs.
 
 touhou. vocaloid. etc. (agent?)
 
+it's wiser to do it at home.
+
+continue (it would not double dl. just re run.)
+
+---
+
+crawl the web.
+
+<!-- well, you can simply use git repos like menci blog or ruanyf weekly -->
+
+---
+
+finish the forgejo installation script (on ubuntu) at home.
+
 ---
 
 - cli (a general template, under intuitive)
@@ -486,9 +500,12 @@ help(cli, (command), terminal width){
 }
 ```
 
+write a simple spec. make pi work.
+
+put message template into agents md. (or not)
+
+well, it should use my std and result. i guess. it's not complex.
+
+file might not be needed for a hello world cli template.
+
 ---
-
-config pi agent.
-
----
-
