@@ -108,7 +108,25 @@ tmp
 yt-dlp \
   "https://music.youtube.com/watch?v=OArru5OkVKE&list=OLAK5uy_n-lE02j8pQkwGhsL5JLAPvbBAoAmxh9n8" \
   -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
-  -o "_/Kent Nishimura/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
+  -o "_/Iyowa/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
+```
+
+PinocchioP
+
+```sh
+yt-dlp \
+  "https://music.youtube.com/playlist?list=OLAK5uy_nvUyzUSAGboZRaNTQJhTiF5Kzk_vR9yQ0" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  -o "_/PinocchioP/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
+```
+
+Iyowa
+
+```sh
+yt-dlp \
+  "https://music.youtube.com/playlist?list=OLAK5uy_lRV4fdyhQaIjtLE1fZhocKLq_5dDko10E" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  -o "_/Iyowa/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
 ```
 
 Touhou Project

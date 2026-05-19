@@ -17805,6 +17805,30 @@ vids are good for visual novels i guess. <!-- i dont wanna pick the random words
 
  -->
 
+16 40 socialize.
+
+```md
+你可以给我一个币吗. 我一会转账给你. <!-- the smoking guy from zhonghua vhs, who would leave at about 17 and play astro dx at home. -->
+
+你怎么会不是三的整数倍...
+
+我拿币的时候, 漏了一个.
+
+好. 不用还了. 就一块钱.
+
+(给) (你自己拆开...)
+
+...
+
+不对! 我给你了, 我就不是三的整数了! (惊, 狂笑)
+```
+
+17 00 dl `Iyowa` `PinocchioP`. <!-- it's not so easy to curate and dl a playlist of all maimai dx songs categorized/tagged wo an agent and some time. -->
+
+18 00 feel.
+
+a cute girl from zhonghua vhs in grade 11 w stylish dressing, visible dark gray bra ribbons, black shirt w some white drawing, dark blue school uniform trousers. what would her future be?
+
 
 
 <!-- timebox, plan. -->

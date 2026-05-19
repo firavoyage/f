@@ -189,6 +189,7 @@ desktop:
 - fix chromium network changed stop memoh
 - install dolphin apply gnome adwaita
 - install open webui
+- set up pi agent
 
 ops: <!-- devops, ci, vcs, ... -->
 
@@ -197,6 +198,7 @@ ops: <!-- devops, ci, vcs, ... -->
 - linting eslint make snippets global
 - linting tsgo tsconfig
 - pnpm approve build
+- ci ensure readme on every folder
 
 sre:
 
