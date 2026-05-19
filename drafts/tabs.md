@@ -44,7 +44,7 @@ freedom of money
 
 ---
 
-vids
+vids `/home/fira/Videos/_/todo`
 
 project sekai emu story
 

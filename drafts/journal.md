@@ -16250,7 +16250,7 @@ Acbox Neko, [5/15/26 12:33 AM]
 
 ```md
 霜, [5/15/26 2:50 AM]
-<!-- id: foo...bar...8964 -->
+<!-- id: foo...bar...8964 (upd 2026.05.19: dangshuang8964. no bio/channel. no common group. only a pfp of cosmic princess kaguya and a name) -->
 羡慕
 
 霜, [5/15/26 2:51 AM]
@@ -17796,6 +17796,14 @@ vids are good for visual novels i guess. <!-- i dont wanna pick the random words
 19
 
 02 00 dl `如果答案是完美无缺 The answer of maimai`. <!-- w an alternative clickbait title, it does not appear when you search its real title, which is embedded inside the thumbnail and the description, on berryberry. --> 02 40 dl `2026舞萌春晚`.
+
+<!-- inspired by social sister yi: 
+
+这期神了! 花 4 个晚上断断续续看完的
+
+谨以此片许愿我这个长发男早日找到属于自己的地雷妹
+
+ -->
 
 
 

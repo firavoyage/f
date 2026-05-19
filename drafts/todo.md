@@ -424,6 +424,12 @@ project float.
 
 ---
 
+dl maimai dx songs.
+
+touhou. vocaloid. etc. (agent?)
+
+---
+
 - cli (a general template, under intuitive)
 - git (azaneko?)
 - systemd abstraction?
@@ -440,21 +446,15 @@ project float.
 
 ---
 
+design system. whatever i do i should have one. adwaita + yaru fits the vibe of my desktop.
+
+---
+
 explore refray. setup openrouter on opencode. no need to exploit free res.
 
 > how does it serve, systemd?
 
 pick minimax m2.5 as recommended for speed.
-
----
-
-Touhou. Bad apple.
-
-Float. 
-
-Meaning.
-
-Maimai dx.
 
 ---
 
@@ -488,4 +488,7 @@ help(cli, (command), terminal width){
 
 ---
 
+config pi agent.
+
+---
 
