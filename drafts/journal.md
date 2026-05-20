@@ -17837,6 +17837,16 @@ a cute and gentle girl from zhonghua vhs in grade 11 w stylish dressing, visible
 
 15 40 dl `internet yamero` `internet overdose`.
 
+21 40 take a look at `Crossing China One Cigarette at a Time`.
+
+21 40 play `STUDY WITH MIKU - part1 -`. 
+
+21 40 appreciate `taking notes in class. with my typewriter.`.
+
+> love how youtube used to be this simple
+
+22 00 listen to `Goodbye Declaration / Chinozo`.
+
 
 
 <!-- timebox, plan. -->

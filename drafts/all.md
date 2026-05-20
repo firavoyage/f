@@ -327,6 +327,7 @@ float: <!-- music -->
 - interpret king by kanaria
 - interpret internet yamero
 - interpret heat abnormal
+- interpret sayonara princess
 
 philosophy:
 
@@ -414,6 +415,7 @@ politics:
 - chinese patriotism
 - llm adoption us cn fr
 - eight nine six four meaning white paper
+- dictatorship criticism
 
 economics:
 

@@ -299,23 +299,3 @@ crawl the web.
 design system. whatever i do i should have one. adwaita + yaru fits the vibe of my desktop.
 
 ---
-
-Cli. 
-
-Beautiful print. Tui. 
-
-Commands. Options. 
-
-Version. Help. 
-
----
-
-Repo. 
-
-Actions. Compatible, export raw data.
-
-explore refray. setup openrouter on opencode. no need to exploit free res.
-
-integrate repo w agent?
-
----
