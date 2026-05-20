@@ -2,6 +2,14 @@
 
 <!-- it cost me 13 cents. -->
 
+<!-- 
+
+write an abstraction on top of commander instead.
+
+at first, i choose to adopt an agent, as i feel it's hard to manage the terminal width myself. i could. but i have to think. unproven code, whether by agent or myself, are error prone.
+
+ -->
+
 # Complete todo.md in current directory
 
 **Session ID:** ses_1be50ee77ffe2DL6GIBiYB9s1C

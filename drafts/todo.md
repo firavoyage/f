@@ -460,22 +460,6 @@ Actions. Compatible, export raw data.
 
 ---
 
-config coding agent
-
-- restrict opencode to cwd by default.
-- spec
-- test driven
-
-have both style guide and working inside contributing.
-
-document pnpm monorepo settings.
-
-br eslint. br tsgo.
-
----
-
 write an abstraction on top of commander instead.
-
-at first, i choose to adopt an agent, as i feel it's hard to manage the terminal width myself. i could. but i have to think. unproven code, whether by agent or myself, are error prone.
 
 

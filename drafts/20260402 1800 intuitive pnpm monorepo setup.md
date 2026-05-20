@@ -1,5 +1,128 @@
 # .
 
+how will "paths": { "lib/\*": \["./source/lib/\*"], }, in tsconfig compileroptions work
+
+This `paths` configuration maps a virtual import prefix to a specific folder location in your project during compilation.
+
+How it works
+
+- **Virtual Prefix**: When you type `import { helper } from 'lib/utility'`, the compiler catches the `lib/` prefix.
+- **Folder Redirection**: It looks inside the `./source/lib/` directory instead of the default `node_modules` folder.
+- **Wildcard Matching**: The `*` acts as a wildcard, passing the exact rest of the module path through to the target folder. \[[1](https://maxmartinez.dev/how-to-configure-tsconfig-path-aliases)]
+
+Key Requirements
+
+- **Requires baseUrl**: This setting will not work unless you also define `baseUrl` (usually `"baseUrl": "."`) in your `compilerOptions`.
+- **Compile-Time Only**: TypeScript only checks types using this path; it **does not** rewrite the import paths in your final JavaScript files.
+- **Runtime Bundler Needed**: You must use a bundler like Webpack, Vite, or a runtime tool like `tsconfig-paths` to resolve these paths in production. \[[1](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-6-0.html), [2](https://alexanderobregon.substack.com/p/getting-module-aliases-to-work-with), [3](https://medium.com/jspoint/typescript-compilation-the-typescript-compiler-4cb15f7244bc), [4](https://nx.dev/blog/managing-ts-packages-in-monorepos), [5](https://alberthernandez.dev/blog/typescript-path-aliases-in-node-js-the-complete-guide)]
+
+If you are setting this up for a new project, would you like to see how to configure your **bundler** (like Vite or Webpack) or **Node.js** to handle these paths at runtime?
+
+- [link](https://maxmartinez.dev/how-to-configure-tsconfig-path-aliases)\
+  How to configure TSConfig Path Aliases?\
+  Aug 12, 2024 — In the previous configuration example, we have "@/controllers/" path alias which is an alias for the "src/controllers/" path. The ...\
+  \
+  \
+  maxmartinez.dev
+- [link](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-6-0.html)\
+  Documentation - TypeScript 6.0\
+  May 17, 2026 — Deprecated: --baseUrl The baseUrl option is most-commonly used in conjunction with paths , and is typically used as a prefix for e...\
+  \
+  TypeScript
+- [link](https://alexanderobregon.substack.com/p/getting-module-aliases-to-work-with)\
+  Getting Module Aliases to Work with TypeScript\
+  Jun 27, 2025 — TypeScript only uses this configuration at compile time. None of this affects how Node. js or a bundler will treat the same import...\
+  \
+  \
+  Substack
+
+Show all
+
+will it work wo "exports": {\
+"./\*": {\
+"types": "./\*.d.ts",\
+"import": "./\*.js"\
+}\
+}\
+in lib package json and wo pnpm link
+
+Yes, it will work perfectly without those package.json configuration blocks and without using `pnpm link`.
+
+Why those are not required
+
+- **Internal Resolution**: The `paths` property in `tsconfig.json` bypasses standard Node.js module resolution.
+- **Direct File Mapping**: It tells the TypeScript compiler to look directly at the specified local folder path (`./source/lib/*`).
+- **No Package Registry Needed**: Because the compiler maps the path directly to local files, it does not care about `exports` maps or symlinks inside `node_modules`.
+
+How to ensure it works
+
+To guarantee successful compilation, make sure your root `tsconfig.json` includes the matching base URL configuration alongside your paths mapping:
+
+json
+
+```
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "lib/*": ["./source/lib/*"]
+    }
+  }
+}
+```
+
+Use code with caution.
+
+Are you planning to run this code directly in **Node.js**, or are you using a build tool like **Vite, Webpack, or Esbuild** to bundle your application?
+
+can i omit baseurl
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">Yes, you can safely omit </span><code dir="ltr" style="font-size: 14px; margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 1px solid rgb(44, 46, 53);">baseUrl</code></strong></mark>. \[[1](https://www.typescriptlang.org/tsconfig/baseUrl.html), [2](https://github.com/microsoft/playwright/issues/27933)]
+
+Since **TypeScript 4.1**, the `baseUrl` configuration is no longer required when using path aliases. \[[1](https://www.typescriptlang.org/tsconfig/baseUrl.html), [2](https://github.com/microsoft/playwright/issues/27933)]
+
+How it changes behavior
+
+- **New Reference Point**: When `baseUrl` is absent, TypeScript resolves all patterns defined inside `paths` **relative to the directory containing the `tsconfig.json` file** itself.
+- **Why it's better**: Omitting `baseUrl` prevents TypeScript from accidentally resolving auto-imports into plain, absolute-looking paths (e.g., matching `import { x } from 'source/lib'`) which can break standard node module lookups. \[[1](https://github.com/vercel/next.js/discussions/34535), [2](https://www.typescriptlang.org/tsconfig/paths.html), [3](https://github.com/jonaskello/tsconfig-paths/issues/143), [4](https://www.typescriptlang.org/tsconfig/baseUrl.html)]
+
+The updated config
+
+Your streamlined `tsconfig.json` file works directly like this:
+
+json
+
+```
+{
+  "compilerOptions": {
+    "paths": {
+      "lib/*": ["./source/lib/*"]
+    }
+  }
+}
+```
+
+Use code with caution.
+
+Would you like help testing if your **build tool** or **test runner** (like Vite, Webpack, or Jest) natively supports omitting `baseUrl`? \[[1](https://github.com/microsoft/playwright/issues/27933), [3](https://www.typescriptlang.org/tsconfig/paths.html)]
+
+- [link](https://www.typescriptlang.org/tsconfig/baseUrl.html)\
+  baseUrl - TypeScript: TSConfig Option\
+  Sets a base directory from which to resolve bare specifier module names. For example, in the directory structure: project. ├── ex.\
+  TypeScript
+- [link](https://github.com/jonaskello/tsconfig-paths/issues/143)\
+  Allow missing baseUrl for TS 4.1+ · Issue #143 · jonaskello/tsconfig- ...\
+  Sep 18, 2020 — Effectively, the paths become relative to the tsconfig. json file. I'm testing a project with the new beta and baseUrl removed to ...\
+  GitHub
+- [link](https://github.com/vercel/next.js/discussions/34535)\
+  Support tsconfig paths without baseUrl #34535 - GitHub\
+  Feb 18, 2022 — Describe the feature you'd like to request. Typescript supports paths without specifying baseUrl . This is interesting when you wa...\
+  GitHub
+
+Show all
+
+# . (d)
+
 1\. **`lib/package.json`**:
 
 ```json

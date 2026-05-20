@@ -6,7 +6,6 @@
 
     "paths": {
       "lib/*": ["./source/lib/*"],
-      "cli/*": ["./source/cli/*"]
     },
 
     "allowJs": true,

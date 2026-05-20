@@ -1,4 +1,20 @@
-follow these:
+## start
+
+stick to the cwd. do not touch anything outside if not needed.
+
+know the file structure of cwd. list the file tree. dont just rg some code.
+
+there might be a todo.md on cwd, which might not be really detailed sometimes.
+
+if there is no spec.md on cwd, think what and how you will do, and write one. wait for my confirmation.
+
+in spec, focus only on the expected behavior (usage). 
+
+then create a test subfolder on cwd. be simple. just declare some example inputs and outputs in an object and loop through it. if inputs and outputs are too complex to be escaped (e.g. possibly containing backticks), put into a yaml file instead of a json object.
+
+## write
+
+follow the style guide:
 
 - use:
   - ubuntu
@@ -96,7 +112,30 @@ follow these:
   - documenting comments before or after, commented code below
   - self explanation over commenting
   - as simple as possible (`# for compatibility`, `sudo fc-cache -f -v # apply (log out if needed)`)
+- import:
+  - avoid error prone relative path
+  - find the tsconfig on the parent folder and add to paths when exporting code in a new folder
+
+    ```json
+    "paths": {
+      "lib/*": ["./source/lib/*"],
+    },
+    ```
+
 - note:
   - prefer modern proven libraries, dont reinvent wheels
   - avoid outdated or deprecated methods
   - no logging by default
+
+## test
+
+(run the test for logics)
+
+```sh
+br eslint
+```
+
+```sh
+br tsgo
+```
+

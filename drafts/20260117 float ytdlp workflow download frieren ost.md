@@ -111,6 +111,24 @@ yt-dlp \
   -o "_/Iyowa/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
 ```
 
+internet overdose
+
+```sh
+yt-dlp \
+  "https://www.youtube.com/watch?v=BnkhBwzBqlQ" \
+  --add-metadata --embed-thumbnail \
+  -o "_/internet overdose/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
+```
+
+internet yamero
+
+```sh
+yt-dlp \
+  "https://www.youtube.com/watch?v=51GIxXFKbzk" \
+  --add-metadata --embed-thumbnail \
+  -o "_/internet yamero/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
+```
+
 PinocchioP
 
 ```sh
