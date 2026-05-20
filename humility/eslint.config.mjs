@@ -25,8 +25,10 @@ export default defineConfig(
     rules: {
       /**
        * any, whether implicit or explicit, are expected
+       * 
+       * there are issues way more critical, e.g. unused vars
        */
-      '@typescript-eslint/no-explicit-any': 'warn',
+      '@typescript-eslint/no-explicit-any': 'off',
       /**
        * todo
        * 
