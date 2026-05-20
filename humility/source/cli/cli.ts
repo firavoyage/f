@@ -1,6 +1,8 @@
 import { Command, Option } from 'commander';
 import chalk from 'chalk';
 
+chalk.level = 1;
+
 type cli_option = {
   flags: string;
   description: string;
@@ -25,11 +27,20 @@ type cli_definition = {
 
 const bold = chalk.bold;
 
+function bold_flags(flags: string): string {
+  const parts = flags.split(',').map(p => p.trim());
+  return parts.map(p => {
+    const name = p.split(' ')[0];
+    const rest = p.slice(name.length);
+    return bold(name) + rest;
+  }).join(', ');
+}
+
 function sub_help(definition: cli_definition, cmd: cli_command): void {
   console.log(cmd.description);
   console.log('');
 
-  console.log(`${bold('Usage')}: ${bold(definition.name)} ${bold(cmd.name)}`);
+  console.log(`${bold('Usage')}: ${bold(definition.name)} ${bold(cmd.name.split(' ')[0])}${cmd.name.includes('<') ? ' ' + cmd.name.split(' ').slice(1).join(' ') : ''} [options]`);
   console.log('');
 
   console.log(bold('Options') + ':');
@@ -47,10 +58,7 @@ function sub_help(definition: cli_definition, cmd: cli_command): void {
         default_str = ` (default: ${opt.default})`;
       }
     }
-    if (opt.choices) {
-      default_str = ` (choices: "${opt.choices.join('", "')}"${opt.default ? ', default: "' + opt.default + '"' : ''})`;
-    }
-    console.log(`  ${bold(opt.flags)}${padding}  ${opt.description}${default_str}`);
+    console.log(`  ${bold_flags(opt.flags)}${padding}  ${opt.description}${default_str}`);
   }
 
   console.log(`  ${bold('-h')}, ${bold('--help')}               display help for command`);
@@ -97,7 +105,7 @@ function help(definition: cli_definition): void {
   }
 
   if (version) {
-    console.log(`  ${bold('-V')}, ${bold('--version')}            output the version number`);
+    console.log(`  ${bold('-v')}, ${bold('--version')}            output the version number`);
   }
   console.log(`  ${bold('-h')}, ${bold('--help')}               display help for command`);
 }
@@ -110,7 +118,7 @@ export async function parse(definition: cli_definition, args: string[]): Promise
     .description(definition.description);
 
   if (definition.version) {
-    program.version(definition.version);
+    program.version(definition.version, '-v, --version');
   }
 
   for (const opt of definition.options || []) {

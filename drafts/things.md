@@ -833,4 +833,10 @@ your lie in apr
 
 ---
 
+research projects on
 
+https://nat.org/
+
+https://danielgross.com/
+
+---

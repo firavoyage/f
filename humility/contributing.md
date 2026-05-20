@@ -4,19 +4,15 @@ stick to the cwd. do not touch anything outside if not needed.
 
 know the file structure of cwd. list the file tree. dont just rg some code.
 
-there might be a todo.md on cwd, which might not be really detailed sometimes.
+there might be a todo.md on cwd.
 
-if there is no spec.md on cwd, think what and how you will do, and write one. proceed as if i would confirm by default. you can have spec_foo.md, spec_bar.md if needed.
+if todo's not detailed or clear enough, consider write a spec.md or spec_foo.md. in spec, think what and how you will do, focus only on the expected behavior (usage). 
 
-in spec, focus only on the expected behavior (usage). 
+then create a test subfolder on cwd. be simple, declare some example inputs and outputs in an object and loop through it. avoid running and reading the output directly if possible.
 
-then create a test subfolder on cwd. be simple. just declare some example inputs and outputs in an object and loop through it. if they are too complex to be escaped (e.g. documents possibly containing backticks), put into a yaml instead of a json object. 
+search for documentation if needed
 
-always write down the tests first. almost all code can have example inputs and outputs. it's ok to run and read the output directly sometimes.
-
-search documentation if needed
-
-never modify todo.md, when you complete something, append to changes.md. 
+never modify todo.md, when you complete something, append to changes.md, using imperative sentences in present tense.
 
 ## write
 

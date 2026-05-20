@@ -451,6 +451,8 @@ rhetoric:
 - wording guys folks masculine
 - wording pride flags proud
 - code example placeholder acme corp john doe jane doe average joe
+- twisting institute conversion therapy
+- nice as adverb grammar play nice
 
 laws:
 
