@@ -17849,7 +17849,7 @@ a cute and gentle girl from zhonghua vhs in grade 11 w stylish dressing, visible
 
 22 40 say hello to samsung galaxy s23.
 
-a modern, proven phone. <!-- the internationalization sucks a bit, as some hardcoded network sources might response w zh-cn stuff. -->
+a modern, proven phone. <!-- the internationalization sucks a bit, as some hardcoded network sources might response w zh-cn stuff. upd: well, it's activated in jul 2024. idk. though it seems to be fully functional. there a minor scratch on the default screen protector. -->
 
 
 

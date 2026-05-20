@@ -82,6 +82,7 @@ life:
 - lowercase standard mixed case feeling
 - game ddlc
 - game maimai dx theoretical rating upper limit
+- android setup samsung galaxy
 
 create something:
 
