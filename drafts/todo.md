@@ -438,14 +438,6 @@ design system. whatever i do i should have one. adwaita + yaru fits the vibe of 
 
 ---
 
-explore refray. setup openrouter on opencode. no need to exploit free res.
-
-> how does it serve, systemd?
-
-pick minimax m2.5 as recommended for speed.
-
----
-
 Cli. 
 
 Beautiful print. Tui. 
@@ -454,12 +446,14 @@ Commands. Options.
 
 Version. Help. 
 
+---
+
 Repo. 
 
 Actions. Compatible, export raw data.
 
+explore refray. setup openrouter on opencode. no need to exploit free res.
+
+integrate repo w agent?
+
 ---
-
-write an abstraction on top of commander instead.
-
-

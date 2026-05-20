@@ -141,6 +141,7 @@ archi:
 - composable is further than modular
 - internationalization localization
 - object params positional params mixed params
+- centralized tests colocated tests
 
 frontend: <!-- web -->
 
@@ -449,6 +450,7 @@ rhetoric:
 - wording pm or dm
 - wording guys folks masculine
 - wording pride flags proud
+- code example placeholder acme corp john doe jane doe average joe
 
 laws:
 

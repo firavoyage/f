@@ -5,92 +5,37 @@ todo
 current
 
 ```
-hello 0.0.0
+ ...humility/source/cli % cd "/home/fira/Documents/f/humility/source/cli/" && br 'greet.ts' person -h              
+Usage: greeter person [options] <name>
 
-Say hello
-
-Usage: hello <command> [options]
-
-Commands:
-  hello    say hello
+Greet an individual person with customized styles
 
 Options:
-  -v, --version  print version
+  -t, --title <type>      Professional title prefix (default:
+                          "Mr./Ms.")
+  -l, --lang <code|name>  Language selection (default: "en")
+  -s, --style <type>      Text presentation style (choices: "normal",
+                          "uppercase", "lowercase", default: "normal")
+  -h, --help              display help for command
 ```
 
-expected
+expected:
 
 ```
-Say hello
+ ...humility/source/cli % cd "/home/fira/Documents/f/humility/source/cli/" && br 'greet.ts' person -h              
+Greet an individual person with customized styles
 
-**Usage**: **hello** <command> [options]
+Usage: greeter person [options] <name>
 
-**Commands**:
-  **hello**    say hello
-
-**Options**:
-  **-h**, **--help**       print help
-  **-v**, **--version**    print version
+Options:
+  -t, --title <type>      Professional title prefix (default:
+                          "Mr./Ms.")
+  -l, --lang <code|name>  Language selection (default: "en")
+  -s, --style <type>      Text presentation style (choices: "normal",
+                          "uppercase", "lowercase", default: "normal")
+  -h, --help              display help for command
 ```
 
-(chalk bold, not markdown)
+help for sub commands should also have bold on titles (usage, options), commands (greeter, person) and flags, both greeter help person and -h
 
----
-
-expected
-
-```
-hello --name joe hello
-```
-
-flags can be anywhere. (args can not)
-
-flags can take a param or not.
-
----
-
-expected 
-
-```
-% hello -v
-hello 0.0.0
-```
-
----
-
-expected 
-
-```
-% hello hello -h        
-say hello
-
-**Usage**: **hello** **hello** [name] [OPTIONS]
-
-**Options:**
-  **--name** <name>        name to greet
-  **-h**, **--help**       print help
-```
-
----
-
-remove the `cli` wrapper function.
-
-just define hello as an object.
-
-then `parse(hello, args)`
-
-only export parse.
-
----
-
-separate `cli.ts` and `test/hello.ts`.
-
-write this: (ive made it work)
-
-```
-import { parse } from 'cli/cli';
-```
-
----
-
-support terminal_width like commander
+add -v --version flag

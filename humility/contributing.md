@@ -6,11 +6,17 @@ know the file structure of cwd. list the file tree. dont just rg some code.
 
 there might be a todo.md on cwd, which might not be really detailed sometimes.
 
-if there is no spec.md on cwd, think what and how you will do, and write one. wait for my confirmation.
+if there is no spec.md on cwd, think what and how you will do, and write one. proceed as if i would confirm by default. you can have spec_foo.md, spec_bar.md if needed.
 
 in spec, focus only on the expected behavior (usage). 
 
-then create a test subfolder on cwd. be simple. just declare some example inputs and outputs in an object and loop through it. if inputs and outputs are too complex to be escaped (e.g. possibly containing backticks), put into a yaml file instead of a json object.
+then create a test subfolder on cwd. be simple. just declare some example inputs and outputs in an object and loop through it. if they are too complex to be escaped (e.g. documents possibly containing backticks), put into a yaml instead of a json object. 
+
+always write down the tests first. almost all code can have example inputs and outputs. it's ok to run and read the output directly sometimes.
+
+search documentation if needed
+
+never modify todo.md, when you complete something, append to changes.md. 
 
 ## write
 
@@ -123,19 +129,23 @@ follow the style guide:
     ```
 
 - note:
+  - avoid typescriptism, dont `type message = string`, only define types on function params and return, ignore compiler warnings
   - prefer modern proven libraries, dont reinvent wheels
   - avoid outdated or deprecated methods
   - no logging by default
 
 ## test
 
-(run the test for logics)
+run the logical test
+
+run linting
 
 ```sh
 br eslint
 ```
 
+run type check (ignore non critical noises)
+
 ```sh
 br tsgo
 ```
-
