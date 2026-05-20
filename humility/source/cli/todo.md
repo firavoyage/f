@@ -2,26 +2,95 @@ todo
 
 ---
 
-- read code inside the folder
-- commander is oop styled. i want a fp one. be declarative.
+current
 
-  ```
-  declaration: name desc commands options...
+```
+hello 0.0.0
 
-  hello_world = cli(declaration)
+Say hello
 
-  parse(cli, args) # pretty print, make commands bold
+Usage: hello <command> [options]
 
-  help(cli, (command), terminal width){
-    string.
-  }
-  ```
+Commands:
+  hello    say hello
 
-- create a hello world cli, support these
-  - version (-v, --version), help (-h, --help)
-  - hello
-  - hello joe
-  - hello 'joe'
-  - hello --name 'joe'
+Options:
+  -v, --version  print version
+```
 
-be as simple as possible. just make every command i want work as expected. no validation stuff.
+expected
+
+```
+Say hello
+
+**Usage**: **hello** <command> [options]
+
+**Commands**:
+  **hello**    say hello
+
+**Options**:
+  **-h**, **--help**       print help
+  **-v**, **--version**    print version
+```
+
+(chalk bold, not markdown)
+
+---
+
+expected
+
+```
+hello --name joe hello
+```
+
+flags can be anywhere. (args can not)
+
+flags can take a param or not.
+
+---
+
+expected 
+
+```
+% hello -v
+hello 0.0.0
+```
+
+---
+
+expected 
+
+```
+% hello hello -h        
+say hello
+
+**Usage**: **hello** **hello** [name] [OPTIONS]
+
+**Options:**
+  **--name** <name>        name to greet
+  **-h**, **--help**       print help
+```
+
+---
+
+remove the `cli` wrapper function.
+
+just define hello as an object.
+
+then `parse(hello, args)`
+
+only export parse.
+
+---
+
+separate `cli.ts` and `test/hello.ts`.
+
+write this: (ive made it work)
+
+```
+import { parse } from 'cli/cli';
+```
+
+---
+
+support terminal_width like commander

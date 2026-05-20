@@ -410,17 +410,11 @@ touhou. vocaloid. etc. (agent?)
 
 it's wiser to do it at home.
 
-continue (it would not double dl. just re run.)
-
 ---
 
 crawl the web.
 
 <!-- well, you can simply use git repos like menci blog or ruanyf weekly -->
-
----
-
-finish the forgejo installation script (on ubuntu) at home.
 
 ---
 
@@ -466,26 +460,22 @@ Actions. Compatible, export raw data.
 
 ---
 
-```
-declaration
+config coding agent
 
-name desc commands options...
+- restrict opencode to cwd by default.
+- spec
+- test driven
 
-cli = cli(declaration)
+have both style guide and working inside contributing.
 
-parse(cli, args) # pretty print.
+document pnpm monorepo settings.
 
-help(cli, (command), terminal width){
-  string.
-}
-```
-
-write a simple spec. make pi work.
-
-put message template into agents md. (or not)
-
-well, it should use my std and result. i guess. it's not complex.
-
-file might not be needed for a hello world cli template.
+br eslint. br tsgo.
 
 ---
+
+write an abstraction on top of commander instead.
+
+at first, i choose to adopt an agent, as i feel it's hard to manage the terminal width myself. i could. but i have to think. unproven code, whether by agent or myself, are error prone.
+
+

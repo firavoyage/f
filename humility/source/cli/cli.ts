@@ -1,3 +1,5 @@
+import chalk from "chalk";
+
 type flag = string;
 type alias = string;
 
@@ -38,8 +40,11 @@ function parse_flag(flag: flag): { name: string; has_value: boolean } {
   return { name, has_value };
 }
 
-export function cli(declaration: declaration) {
-  const global_options = declaration.options ?? [];
+export function parse(declaration: declaration, args: string[]) {
+  const global_options = [
+    { flag: "-h, --help", description: "print help" },
+    ...(declaration.options ?? [])
+  ];
 
   function help(
     command_name?: string,
@@ -51,170 +56,216 @@ export function cli(declaration: declaration) {
         return `error: unknown command '${command_name}'\n\nUsage: ${declaration.name} ${command_name} [OPTIONS]\n\nOptions:\n  -h, --help       print help`;
       }
 
-      const options_lines = (cmd.options ?? []).map((opt) => {
+      const options_lines = [
+        { flag: "-h, --help", description: "print help" },
+        ...(cmd.options ?? [])
+      ].map((opt) => {
         const { name, has_value } = parse_flag(opt.flag);
-        const opt_str = opt.alias ? `-${opt.alias}, ` : "  ";
-        return `${opt_str}${opt.flag}  ${opt.description}`;
+        const opt_str = opt.alias ? chalk.bold(`-${opt.alias}, `) : "  ";
+        const flag_str = has_value ? chalk.bold(opt.flag) : chalk.bold(opt.flag);
+        return `${opt_str}${flag_str}  ${opt.description}`;
       });
 
       const args_line = cmd.arguments_?.length
-        ? ` ${cmd.arguments_.map((a) => a.required ? `<${a.name}>` : `[${a.name}]`).join(" ")}`
+        ? ` ${cmd.arguments_.map((a) => a.required ? chalk.bold(`<${a.name}>`) : chalk.bold(`[${a.name}]`)).join(" ")}`
         : "";
 
       return `${cmd.description}
 
-Usage: ${declaration.name} ${command_name}${args_line} [OPTIONS]
+${chalk.bold("Usage")}: ${chalk.bold(declaration.name)} ${chalk.bold(command_name)}${args_line} [OPTIONS]
 
-Options:
+${chalk.bold("Options")}:
 ${options_lines.join("\n")}`;
     }
 
     const commands_lines = Object.entries(declaration.commands).map(
-      ([name, cmd]) => `  ${name}    ${cmd.description}`
+      ([name, cmd]) => `  ${chalk.bold(name)}    ${cmd.description}`
     );
 
     const options_lines = global_options.map((opt) => {
       const { name, has_value } = parse_flag(opt.flag);
-      const opt_str = opt.alias ? `-${opt.alias}, ` : "  ";
-      return `${opt_str}${opt.flag}  ${opt.description}`;
+      const opt_str = opt.alias ? chalk.bold(`-${opt.alias}, `) : "  ";
+      const flag_str = has_value ? chalk.bold(opt.flag) : chalk.bold(opt.flag);
+      return `${opt_str}${flag_str}  ${opt.description}`;
     });
 
-    return `${declaration.name} ${declaration.version}
+    return `${declaration.description}
 
-${declaration.description}
+${chalk.bold("Usage")}: ${chalk.bold(declaration.name)} ${chalk.bold("<command>")} [options]
 
-Usage: ${declaration.name} <command> [options]
-
-Commands:
+${chalk.bold("Commands")}:
 ${commands_lines.join("\n")}
 
-Options:
+${chalk.bold("Options")}:
 ${options_lines.join("\n")}`;
   }
 
-  function parse(args: string[]) {
-    const processed: string[] = [];
-    let i = 0;
+  function parse_flags(
+    arg_list: string[],
+    available_options: option[],
+    start_idx: number
+  ): { opts: Record<string, any>; new_idx: number } {
+    const opts: Record<string, any> = {};
+    let i = start_idx;
 
-    while (i < args.length) {
-      const arg = args[i];
-
-      if (arg === "-v" || arg === "--version") {
-        log(declaration.version);
-        return;
-      }
+    while (i < arg_list.length) {
+      const arg = arg_list[i];
 
       if (arg === "-h" || arg === "--help") {
-        log(help());
-        return;
+        return { opts: { ...opts, __help: true }, new_idx: i };
       }
 
+      if (arg === "-v" || arg === "--version") {
+        return { opts: { ...opts, __version: true }, new_idx: i };
+      }
+
+      if (!arg.startsWith("-")) {
+        break;
+      }
+
+      const opt_name = arg.replace(/^-+/, "").split("=")[0];
+      const opt_value = arg.includes("=") ? arg.split("=")[1] : arg_list[i + 1];
+
+      const opt = available_options.find((o) => {
+        const { name } = parse_flag(o.flag);
+        return name === opt_name || o.alias === opt_name;
+      });
+
+      if (opt) {
+        const { name } = parse_flag(opt.flag);
+        opts[name] = opt_value ?? true;
+        if (!opt_value && !arg.includes("=")) i++;
+      } else {
+        opts[opt_name] = opt_value ?? true;
+      }
+      i++;
+    }
+
+    return { opts, new_idx: i };
+  }
+
+  function find_command(args_list: string[]): { name: string; idx: number } | null {
+    for (let i = 0; i < args_list.length; i++) {
+      if (args_list[i] in declaration.commands) {
+        return { name: args_list[i], idx: i };
+      }
+    }
+    return null;
+  }
+
+  const processed: string[] = [];
+
+  const cmd_info = find_command(args);
+  if (cmd_info) {
+    const cmd_name = cmd_info.name;
+    const cmd = declaration.commands[cmd_name];
+    const cmd_args: string[] = [];
+
+    const idx = cmd_info.idx;
+
+    let pre_cmd_idx = 0;
+    const pre_cmd_opts: Record<string, any> = {};
+    while (pre_cmd_idx < idx) {
+      const arg = args[pre_cmd_idx];
       if (arg.startsWith("-")) {
         const opt_name = arg.replace(/^-+/, "").split("=")[0];
-        const opt_value = arg.includes("=") ? arg.split("=")[1] : args[i + 1];
+        const opt_value = arg.includes("=") ? arg.split("=")[1] : args[pre_cmd_idx + 1];
 
-        const opt = global_options.find((o) => {
+        const opt = cmd.options?.find((o) => {
           const { name } = parse_flag(o.flag);
           return name === opt_name || o.alias === opt_name;
         });
 
         if (opt) {
           const { name } = parse_flag(opt.flag);
-          processed[name] = opt_value ?? true;
-          if (!opt_value && !arg.includes("=")) i++;
+          pre_cmd_opts[name] = opt_value ?? true;
+          if (!opt_value && !arg.includes("=")) pre_cmd_idx++;
         } else {
-          processed[opt_name] = true;
+          const global_opt = global_options.find((o) => {
+            const { name } = parse_flag(o.flag);
+            return name === opt_name || o.alias === opt_name;
+          });
+          if (global_opt) {
+            const { name } = parse_flag(global_opt.flag);
+            pre_cmd_opts[name] = opt_value ?? true;
+            if (!opt_value && !arg.includes("=")) pre_cmd_idx++;
+          } else {
+            pre_cmd_opts[opt_name] = opt_value ?? true;
+          }
         }
-        i++;
+      }
+      pre_cmd_idx++;
+    }
+
+    let cmd_start = idx + 1;
+    while (cmd_start < args.length && !args[cmd_start].startsWith("-")) {
+      cmd_args.push(args[cmd_start]);
+      cmd_start++;
+    }
+
+    const { opts: global_opts } = parse_flags(args, global_options, 0);
+
+    let cmd_flags_idx = cmd_start;
+    const cmd_opts: Record<string, any> = {};
+    while (cmd_flags_idx < args.length) {
+      const arg = args[cmd_flags_idx];
+      if (arg === "-h" || arg === "--help") {
+        log(help(cmd_name));
+        return;
+      }
+      if (arg === "-v" || arg === "--version") {
+        log(declaration.version);
+        return;
+      }
+      if (!arg.startsWith("-")) {
+        cmd_flags_idx++;
         continue;
       }
 
-      if (arg in declaration.commands) {
-        const cmd_name = arg;
-        const cmd = declaration.commands[cmd_name];
-        const cmd_args: string[] = [];
-        i++;
+      const opt_name = arg.replace(/^-+/, "").split("=")[0];
+      const opt_value = arg.includes("=") ? arg.split("=")[1] : args[cmd_flags_idx + 1];
 
-        while (i < args.length && !args[i].startsWith("-")) {
-          cmd_args.push(args[i]);
-          i++;
+      const opt = cmd.options?.find((o) => {
+        const { name } = parse_flag(o.flag);
+        return name === opt_name || o.alias === opt_name;
+      });
+
+      if (opt) {
+        const { name } = parse_flag(opt.flag);
+        cmd_opts[name] = opt_value ?? true;
+        if (!opt_value && !arg.includes("=")) cmd_flags_idx++;
+      } else {
+        const global_opt = global_options.find((o) => {
+          const { name } = parse_flag(o.flag);
+          return name === opt_name || o.alias === opt_name;
+        });
+        if (global_opt) {
+          const { name } = parse_flag(global_opt.flag);
+          cmd_opts[name] = opt_value ?? true;
+          if (!opt_value && !arg.includes("=")) cmd_flags_idx++;
+        } else {
+          cmd_opts[opt_name] = opt_value ?? true;
         }
-
-        const cmd_opts: Record<string, any> = {};
-        while (i < args.length) {
-          const opt_arg = args[i];
-
-          if (opt_arg === "-h" || opt_arg === "--help") {
-            log(help(cmd_name));
-            return;
-          }
-
-          if (opt_arg.startsWith("-")) {
-            const opt_name = opt_arg.replace(/^-+/, "").split("=")[0];
-            const opt_value = opt_arg.includes("=")
-              ? opt_arg.split("=")[1]
-              : args[i + 1];
-
-            const opt = cmd.options?.find((o) => {
-              const { name } = parse_flag(o.flag);
-              return name === opt_name || o.alias === opt_name;
-            });
-
-            if (opt) {
-              const { name } = parse_flag(opt.flag);
-              cmd_opts[name] = opt_value ?? true;
-              if (!opt_value && !opt_arg.includes("=")) i++;
-            } else {
-              cmd_opts[opt_name] = opt_value ?? true;
-            }
-          }
-          i++;
-        }
-
-        const cmd_arguments: args = {};
-
-        if (cmd.arguments_) {
-          cmd.arguments_.forEach((arg_def, idx) => {
-            if (arg_def.variadic) {
-              cmd_arguments[arg_def.name] = cmd_args.slice(idx);
-            } else if (idx < cmd_args.length) {
-              cmd_arguments[arg_def.name] = cmd_args[idx];
-            }
-          });
-        }
-
-        const final_args = { ...processed, ...cmd_arguments, ...cmd_opts };
-        cmd.handler(final_args);
-        return;
       }
-
-      processed.push(arg);
-      i++;
+      cmd_flags_idx++;
     }
 
-    log(help());
+    const cmd_arguments: args = {};
+
+    if (cmd.arguments_) {
+      cmd.arguments_.forEach((arg_def, idx) => {
+        if (arg_def.variadic) {
+          cmd_arguments[arg_def.name] = cmd_args.slice(idx);
+        } else if (idx < cmd_args.length) {
+          cmd_arguments[arg_def.name] = cmd_args[idx];
+        }
+      });
+    }
+
+    const final_args = { ...global_opts, ...pre_cmd_opts, ...cmd_arguments, ...cmd_opts };
+    cmd.handler(final_args);
+    return;
   }
 
-  return { declaration, help, parse };
+  log(help());
 }
-
-const hello = cli({
-  name: "hello",
-  description: "Say hello",
-  version: "0.0.0",
-  options: [{ flag: "-v, --version", description: "print version" }],
-  commands: {
-    hello: {
-      description: "say hello",
-      arguments_: [{ name: "name", required: false }],
-      options: [{ flag: "--name <name>", description: "name to greet" }],
-      handler: (args) => {
-        const name = args.name ?? args["name"] ?? "world";
-        log(`Hello, ${name}!`);
-      },
-    },
-  },
-});
-
-const args = process.argv.slice(2);
-hello.parse(args);

@@ -5,8 +5,7 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  foo: link:../../../.local/bin/global/5/node_modules/foo
-  lib: link:source/source/lib
+  cli: link:source/cli
 
 importers:
 
@@ -15,6 +14,15 @@ importers:
       '@folder/xdg':
         specifier: ^4.0.1
         version: 4.0.1
+      chalk:
+        specifier: ^5.6.2
+        version: 5.6.2
+      cli:
+        specifier: link:source/cli
+        version: link:source/cli
+      commander:
+        specifier: ^14.0.3
+        version: 14.0.3
       lib:
         specifier: link:source/lib
         version: link:source/lib
@@ -40,15 +48,6 @@ importers:
       typescript-eslint:
         specifier: ^8.59.3
         version: 8.59.3(eslint@10.3.0)(typescript@6.0.3)
-
-  source/cli:
-    dependencies:
-      chalk:
-        specifier: ^5.6.2
-        version: 5.6.2
-      commander:
-        specifier: ^14.0.3
-        version: 14.0.3
 
 packages:
 

@@ -1,3 +1,2 @@
 overrides:
-  foo: link:../../../.local/bin/global/5/node_modules/foo
-  lib: link:source/source/lib
+  cli: link:source/cli

@@ -57,6 +57,16 @@ ddlc
 
 ---
 
+films
+
+Puella Magi Madoka Magica Part III - Rebellion (2013)
+
+Weathering with You (2019)
+
+Suzume no Tojimari (2022)
+
+---
+
 chess
 
 https://chess.com/
