@@ -16925,7 +16925,7 @@ Guides are prose based, narration heavy.
 
 All: world goods list: phone.
 
-13 20 Pick Samsung s23, hk ver, white 256. Deal.
+13 20 Pick Samsung s23, hk ver, white 256. Deal. <!-- seems it's zh-cn ver actually. it's already suspicious as it has two sim cards, yet, it claims "hk or us" on item name. -->
 
 iphone and samsung are widely cited as the most popular choice worldwide. w a minimal industrial design, a highly customizable ui, and solid hardware, it could not go wrong i think.
 
@@ -17846,6 +17846,10 @@ a cute and gentle girl from zhonghua vhs in grade 11 w stylish dressing, visible
 > love how youtube used to be this simple
 
 22 00 listen to `Goodbye Declaration / Chinozo`.
+
+22 40 say hello to samsung galaxy s23.
+
+a modern, proven phone. <!-- the internationalization sucks a bit, as some hardcoded network sources might response w zh-cn stuff. -->
 
 
 
