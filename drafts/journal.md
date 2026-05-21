@@ -17851,9 +17851,11 @@ a cute and gentle girl from zhonghua vhs in grade 11 w stylish dressing, visible
 
 a modern, proven phone. <!-- the internationalization sucks a bit, as some hardcoded network sources might response w zh-cn stuff. upd: well, it's activated in jul 2024. idk. though it seems to be fully functional. there a minor scratch on the default screen protector. -->
 
+sometimes a toggle can be clicked, which opens a sub menu, well, surprising yet consistent. it saves screenshots inside dcim instead of pictures, which is not expected by material files. <!-- home folder is clean btw. well done. -->
+
 hide all normal apps. put away those mlcn apps inside app drawer.
 
-  
+
 
 <!-- timebox, plan. -->
 
