@@ -267,6 +267,7 @@ ux: <!-- ui/ux design -->
 - gnome adwaita kde kirigami
 - basic ui principles vscode default seti theme keychain icons
 - mpv minimalist design friction broken command palette shuffle playlist
+- samsung quick panel customization outside settings
 
 typography:
 

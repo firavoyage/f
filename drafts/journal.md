@@ -17851,13 +17851,17 @@ a cute and gentle girl from zhonghua vhs in grade 11 w stylish dressing, visible
 
 a modern, proven phone. <!-- the internationalization sucks a bit, as some hardcoded network sources might response w zh-cn stuff. upd: well, it's activated in jul 2024. idk. though it seems to be fully functional. there a minor scratch on the default screen protector. -->
 
+dark mode.
+
 sometimes a toggle can be clicked, which opens a sub menu, well, surprising yet consistent. it saves screenshots inside dcim instead of pictures <!-- upd: normalized in advanced features - settings -->, which is not expected by material files. <!-- home folder is clean btw. well done. -->
 
 hide all normal apps. put away those mlcn apps inside app drawer.
 
 21
 
-13 20 set up new phone, sanitize noisy mlcn icons, sync accounts and files. <!-- for some reason, tg sends 6 digit codes to zhcn mobiles, and 5 digit codes to us ones. on the same account, ayugram sends to  -->
+13 20 set up new phone, sanitize noisy mlcn icons, sync accounts and files. <!-- for some reason, tg sends 6 digit codes to zhcn mobiles, and 5 digit codes to us ones. on the same account, ayugram sends to other devices, while tg x sends to both the disposable email and other devices. (though it only shows "sent to your email" on the frontend.) --> ~~14 20~~ ~~15 00~~ 15 20
+
+gboard: zh-cn and jp keyboard, clipboard and next lang on top, no key borders theme <!-- i did not expect i could click the already selected theme which popups a preview, key borders toggle, and cancel/apply -->, number row, no spellcheck, suggest offensive words, auto space after punctuation.
 
 
 
