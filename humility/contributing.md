@@ -1,18 +1,16 @@
 ## start
 
-stick to the cwd. do not touch anything outside if not needed.
+stick to the cwd. do not touch anything outside.
 
-know the file structure of cwd. list the file tree. dont just rg some code.
+know the full file structure of cwd.
 
-there might be a todo.md on cwd.
+have a todo.md on cwd which is to change. when complete, move and append the exact todo to changes.md w the time using imperative sentences in present tense.
 
-if todo's not detailed or clear enough, consider write a spec.md or spec_foo.md. in spec, think what and how you will do, focus only on the expected behavior (usage). 
+consider writing a spec.md for complex tasks. think what and how you will do, focus only on the expected behavior or usage. create spec_foo.md, spec_bar.md for new tasks wo chaning the previous one.
 
-then create a test subfolder on cwd. be simple, declare some example inputs and outputs in an object and loop through it. avoid running and reading the output directly if possible.
+if it can be tested, create a test subfolder on cwd. declare some example inputs and outputs in an object and loop through it. avoid running and reading the output directly.
 
-search for documentation if needed
-
-never modify todo.md, when you complete something, append to changes.md, using imperative sentences in present tense.
+search for documentation if needed.
 
 ## write
 

@@ -196,6 +196,8 @@ desktop:
 - set up pi agent
 - symlink agent md contributing
 - install forgejo
+- set up bitwarden
+- touch purpose create file modify time metadata
 
 ops: <!-- devops, ci, vcs, ... -->
 
@@ -459,6 +461,7 @@ rhetoric:
 - twisting institute conversion therapy
 - nice as adverb grammar play nice
 - first name last name order
+- lol laugh out loud
 
 laws:
 
