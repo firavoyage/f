@@ -198,6 +198,7 @@ desktop:
 - install forgejo
 - set up bitwarden
 - touch purpose create file modify time metadata
+- alt tech sync method backend
 
 ops: <!-- devops, ci, vcs, ... -->
 
@@ -271,6 +272,7 @@ ux: <!-- ui/ux design -->
 - basic ui principles vscode default seti theme keychain icons
 - mpv minimalist design friction broken command palette shuffle playlist
 - samsung quick panel customization outside settings
+- samsung sim card activation friction security
 
 typography:
 
@@ -413,6 +415,12 @@ history:
 - ansi escape codes
 - lgbtqplus
 - copyright afterlife
+- alt tech
+- syncthing
+- webdav
+- nextcloud
+- degoogle movement
+- dn42
 
 politics:
 

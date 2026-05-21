@@ -318,9 +318,7 @@ design system. whatever i do i should have one. adwaita + yaru fits the vibe of 
 
 ---
 
-consider using a foss password manager.
+create an example web app supporting both gnome adwaita design system and material design three using react and semantic css. plan first. write a spec and stop to wait for my review.
 
 ---
-
-
 
