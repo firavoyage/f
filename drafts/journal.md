@@ -17891,6 +17891,10 @@ btw, can i really change more than one files on github web within one commit? i 
 
 19 40 reg samsung id.
 
+22
+
+01 00 install a bunch of google apps to appreciate its consistent and sophisticated design.
+
 
 
 <!-- timebox, plan. -->
