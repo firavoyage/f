@@ -1,4 +1,4 @@
-import { use_state, use_effect } from "react"
+import { useState, useEffect } from "react"
 import type { Note } from "../hooks/use_notes"
 
 type Props = {
@@ -8,16 +8,16 @@ type Props = {
 }
 
 export function note_editor({ note, on_update, on_delete }: Props) {
-  const [title, set_title] = use_state("")
-  const [body, set_body] = use_state("")
+  const [title, setTitle] = useState("")
+  const [body, setBody] = useState("")
 
-  use_effect(() => {
+  useEffect(() => {
     if (note) {
-      set_title(note.title)
-      set_body(note.body)
+      setTitle(note.title)
+      setBody(note.body)
     } else {
-      set_title("")
-      set_body("")
+      setTitle("")
+      setBody("")
     }
   }, [note?.id])
 
@@ -47,7 +47,7 @@ export function note_editor({ note, on_update, on_delete }: Props) {
           className="input"
           type="text"
           value={title}
-          on_input={(e) => set_title(e.target.value)}
+          on_input={(e) => setTitle(e.target.value)}
           placeholder="Note title"
         />
       </div>
@@ -56,7 +56,7 @@ export function note_editor({ note, on_update, on_delete }: Props) {
         <textarea
           className="input textarea"
           value={body}
-          on_input={(e) => set_body(e.target.value)}
+          on_input={(e) => setBody(e.target.value)}
           placeholder="Write your note..."
         />
       </div>

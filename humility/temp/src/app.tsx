@@ -4,7 +4,7 @@ import { header } from "./components/header"
 import { note_list } from "./components/note_list"
 import { note_editor } from "./components/note_editor"
 
-export function app() {
+export function App() {
   const { theme, set_theme } = use_theme()
   const {
     notes,
