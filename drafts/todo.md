@@ -77,18 +77,12 @@ Manus?
 
 Separate style from functionality? 
 
-Para? (Blog in any theme.)
+---
 
-precious, [5/2/26 3:34 PM]
-Have. 
+Para?
 
-Make sure you have enough space and export all tg chats one by one. (I can help with some automation).
+(Blog in any theme.)
 
-Then you can, for example, timeline any user across channels and chats.
-
-(An user can have many accounts, I will simply preprocess, and cache maybe.)
-
-precious, [5/2/26 4:38 PM]
 Para. <!-- blog -->
 
 Get where you are from the url. 
@@ -102,6 +96,30 @@ Fetch the data.
 You can be static, server side, or client side
 
 (Isc is perf for static. Rsc is an abstraction on ssg)
+
+<!-- actually, it can be just a better markdown previewer. you now press ctrl r (my shortcut to code runner, which runs para cli to a md file) instead of ctrl shift v.
+
+why vscode is bad:
+
+- no toc navigation
+- no ctrl f
+- slow (esp for large files), ts based
+
+(btw, why vscode can be good:)
+
+- click a paragraph, and it will jump to that line in the original md file
+
+ -->
+
+---
+
+Have. 
+
+Make sure you have enough space and export all tg chats one by one. (I can help with some automation).
+
+Then you can, for example, timeline any user across channels and chats.
+
+(An user can have many accounts, I will simply preprocess, and cache maybe.)
 
 ---
 
@@ -299,3 +317,10 @@ crawl the web.
 design system. whatever i do i should have one. adwaita + yaru fits the vibe of my desktop.
 
 ---
+
+consider using a foss password manager.
+
+---
+
+
+

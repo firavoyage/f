@@ -17863,6 +17863,34 @@ hide all normal apps. put away those mlcn apps inside app drawer.
 
 gboard: zh-cn and jp keyboard, clipboard and next lang on top, no key borders theme <!-- i did not expect i could click the already selected theme which popups a preview, key borders toggle, and cancel/apply -->, number row, no spellcheck, suggest offensive words, auto space after punctuation.
 
+18 40 polish the pr on memoh as suggested.
+
+<!-- approved after days, yet still not merged, idk. -->
+
+```md
+remove an unusable button and the related locale text.
+
+pr #487, polished.
+
+> alexma233 commented 4 days ago
+> 
+> Maybe you can remove i18n locales of auth.forgotPassword if no page uses it.
+
+<!-- it's hard to change more than one files on github web. the auto generated "patch-8" branch does not even appear on branch list. -->
+
+btw, can i really change more than one files on github web within one commit? i dont wanna fork, clone, find, edit, commit, pr, doing all that professional corp stuff just to clean some unused code.
+```
+
+<!-- why a pr created by myself notifies me on gmail? -->
+
+19 00 simplify notes and things. (19 40)
+
+19 40 make friends w kafura on maimai as asked.
+
+<!-- give her my phone and see her entering the frnd code -->
+
+19 40 reg samsung id.
+
 
 
 <!-- timebox, plan. -->

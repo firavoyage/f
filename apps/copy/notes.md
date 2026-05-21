@@ -93,3 +93,15 @@ i could remove all html attrs except img wh. (whitelist)
 if i force markdown, then no inline styling at all, even for mark.
 
 ---
+
+ofc, you can reduce the friction. 
+
+e.g. 
+
+- an userscript that intercepts ctrl c and copy markdown at the first place
+- a vscode extension that does the job
+
+these feel fragile.
+
+---
+
