@@ -68,9 +68,8 @@ Follow these conventions.
 
 ---
 
+humility, an elegant human-machine interface for a more civilized age
 
-humility, an autonomous continuous ai agent.
+<!-- humility, an autonomous continuous ai agent. -->
 
 ---
-
-create an example web app supporting both gnome adwaita design system and material design three using react and semantic css. plan first. write a spec and stop to wait for my review.

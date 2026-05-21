@@ -16927,7 +16927,7 @@ All: world goods list: phone.
 
 13 20 Pick Samsung s23, hk ver, white 256. Deal. <!-- seems it's zh-cn ver actually. it's already suspicious as it has two sim cards, yet, it claims "hk or us" on item name. -->
 
-iphone and samsung are widely cited as the most popular choice worldwide. w a minimal industrial design, a highly customizable ui, and solid hardware, it could not go wrong i think.
+iphone, samsung, and pixel <!-- iphone and samsung --> are widely cited as the most popular choices <!-- choice --> worldwide. w a minimalist <!-- minimal --> industrial design, a highly customizable ui, and solid hardware, it could not go wrong i think. <!-- upd 2026.05.23 fix some grammar. -->
 
 <!-- Find this when I search Samsung on jd w a minimum price limit of 2k. Check geekerbay walkthrough. -->
 

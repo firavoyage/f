@@ -1,5 +1,90 @@
 <!-- it does not seem it can search or use browser. -->
 
+<!-- idk if it runs eslint and tsgo and passes. -->
+
+<!-- it takes things too literally, inventing "react.use_state" -->
+
+<!-- idk if it leverages todo well. -->
+
+<!-- it does not follow instructions either, having uppercased filenames. -->
+
+#
+
+how does opencode plan mode work
+
+In **[OpenCode](https://opencode.ai/)**, <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>Plan Mode is a read-only exploration phase</strong> that disables the AI agent's ability to modify files, write code, or execute mutating scripts</mark>. It functions as a safe "think-first" environment to map out a strategy before any changes are introduced to your repository. You switch into Plan Mode via the **Tab key**, at which point the system prompt enforces a zero-exception ban on file-writing tools (like `sed`, `tee`, or `echo`). \[[1](https://opencode.ai/docs/), [2](https://www.youtube.com/watch?v=WNx-s-RxVxk\&t=9), [3](https://gist.github.com/kingargyle/5bd1eb1f4c7c9493d823f49752712c51), [4](https://medium.com/@gokcerbelgusen/mastering-opencode-32081f7908a5), [5](https://developer.salesforce.com/docs/platform/einstein-for-devs/guide/devagent-planact.html)]
+
+The Plan Mode Workflow
+
+The core mechanics of Plan Mode rely on a structured, iterative process: \[[1](https://www.youtube.com/watch?v=7j%5Fd9jtrXVM), [2](https://cline.bot/blog/plan-smarter-code-faster-clines-plan-act-is-the-paradigm-for-agentic-coding), [3](https://x.com/mattpocockuk/status/2009611502173704325)]
+
+- **Codebase Exploration**: The agent navigates your files, queries the **Language Server Protocol (LSP)** for function maps, and populates its context window with the project structure.
+- **Context Generation**: Instead of guessing line numbers, it reads connected dependencies to understand how your project modules link together.
+- **Strategy Drafting**: The agent compiles a detailed technical markdown plan outlining the precise files to modify, the logic to implement, and potential edge cases.
+- **Developer Review**: You review the generated plan, ask clarifying questions, and refine requirements directly in the terminal interface. \[[1](https://x.com/mattpocockuk/status/2009611502173704325), [2](https://medium.com/@dima.kovalenko%5F49328/opencode-the-swiss-army-knife-for-ai-coding-that-wont-make-you-pull-your-hair-out-3b5fb72d49f0), [3](https://www.aihero.dev/plan-mode-introduction), [4](https://www.reddit.com/r/ClaudeCode/comments/1r8d2gs/claude%5Fcodes%5Fplan%5Fmode%5Fchanged%5Fhow%5Fi%5Fhand%5Foff/), [5](https://ai.sulat.com/the-definitive-guide-to-opencode-from-first-install-to-production-workflows-aae1e95855fb), [6](https://www.youtube.com/watch?v=WNx-s-RxVxk\&t=9)]
+
+Transitioning to Execution
+
+Once the strategy is finalized, the agent saves the proposal locally inside the project's `.opencode/plans/` directory. You then hit the **Tab key** to toggle into **Build Mode**. With Build Mode active, OpenCode regains write permissions, reads the markdown plan artifact, and implements the code changes exactly as agreed upon. \[[1](https://medium.com/@creativeaininja/the-ai-that-codes-while-you-sleep-a-practical-guide-to-opencode-a77d565f9c2a), [2](https://www.reddit.com/r/opencodeCLI/comments/1swbvgk/here%5Fis%5Fhow%5Fi%5Fuse%5Fopencode%5Fplease%5Fgive%5Fme%5Ftips%5Fon/), [3](https://www.reddit.com/r/opencodeCLI/comments/1rf7s30/am%5Fi%5Fusing%5Fconfigopencodeplans%5Ffolder%5Fwrong/), [4](https://docs.together.ai/docs/how-to-use-opencode), [5](https://medium.com/@gokcerbelgusen/mastering-opencode-32081f7908a5), [6](https://www.aihero.dev/plan-mode-introduction)]
+
+Would you like tips on how to configure your `agents.md` file to automatically **enforce coding standards** during the planning phase? \[[1](https://www.youtube.com/watch?v=uZGDO0L-Dr4), [2](https://medium.com/@gokcerbelgusen/mastering-opencode-32081f7908a5)]
+
+- [link](https://x.com/mattpocockuk/status/2009611502173704325)\
+  What Is Plan Mode? - Matt Pocock\
+  Jan 9, 2026 ? In plan mode, you iterate with the agent on what you want to build before any code gets written. You discuss requirements, validat...\
+  X?mattpocockuk
+- [link](https://opencode.ai/docs/)\
+  Intro | AI coding agent built for the terminal - OpenCode\
+  Feb 13, 2026 ? If you are new to using an AI coding agent, here are some examples that might help. Ask questions. You can ask OpenCode to explain...\
+  OpenCode
+- [link](https://www.youtube.com/watch?v=WNx-s-RxVxk\&t=9)\
+  I was an AI skeptic. Then I tried plan mode\
+  Jan 15, 2026 ? code certainly not at the speed that I can there's no way that AI can understand my codebase as well as I can and there's no way t...\
+  12m\
+  YouTube?Matt Pocock
+
+Show all
+
+can it write a spec.md?
+
+**No, OpenCode cannot directly write or save a `spec.md` file while inside Plan Mode**. Because Plan Mode is strictly read-only, all file-writing permissions are completely stripped from the agent to prevent accidental repository changes. \[[1](https://medium.com/@EthanCooperwrtier/i-tried-opencode-like-i-actually-use-it-setup-five-one-shot-builds-and-the-one-that-broke-me-f7584acb29e1), [2](https://github.com/Fission-AI/OpenSpec/discussions/558), [3](https://gist.github.com/kingargyle/5bd1eb1f4c7c9493d823f49752712c51)]
+
+However, you can easily generate and save a specification markdown file by using one of the workflows below: \[[1](https://gist.github.com/leypascua/67a52fa2bd0aafe56ca95d5adc4cd857)]
+
+Workflow 1: The Toggle Method (Standard)
+
+1. **Brainstorm in Plan Mode**: Press **Tab** to enter Plan Mode. Ask the agent to draft the complete architecture and contents of your `spec.md` right in the terminal window.
+2. **Review & Iterate**: Refine the text and requirements with the agent through conversation.
+3. **Switch to Save**: Once the text looks perfect, press **Tab** again to toggle into **Build Mode**. Command the agent: _"Save the spec we just drafted into a new spec.md file in the root directory."_ \[[1](https://www.youtube.com/watch?v=WNx-s-RxVxk\&t=9), [2](https://opencode.ai/docs/), [3](https://medium.com/@gokcerbelgusen/mastering-opencode-32081f7908a5)]
+
+Workflow 2: Dedicated Extensions (Automated)
+
+If you want a dedicated agent that writes specs without jumping into implementation, the developer community uses dedicated plugins and tools:
+
+- **opencode-plugin-openspec**: This is an OpenCode OpenSpec Plugin that creates a dedicated `openspec-plan` agent mode. It explicitly grants write permissions **only** to planning documents (like `project.md` or `specs/**`) while continuing to block the agent from touching your actual implementation source code.
+- **SpecKit**: Another popular alternative for spec-driven development is using `/speckit.specify` commands to cleanly segregate your spec, plan, and task generation phases. \[[1](https://medium.com/@saintd1970/get-started-with-ai-coding-today-e47808a49bf2), [2](https://github.com/Octane0411/opencode-plugin-openspec/blob/main/README.md), [3](https://www.reddit.com/r/opencodeCLI/comments/1saemrw/opencode%5Fmd%5Ffiles/)]
+
+Would you like a **system prompt template** you can drop into your `agents.md` file to instruct OpenCode on how to structure a standardized `spec.md` whenever you are in Build Mode? \[[1](https://opencode.ai/docs/rules/), [2](https://medium.com/@gokcerbelgusen/mastering-opencode-32081f7908a5)]
+
+- [link](https://medium.com/@saintd1970/get-started-with-ai-coding-today-e47808a49bf2)\
+  Get Started with AI Coding Today - Medium\
+  Mar 23, 2026 ? Here's what happens: \* 0. /speckit. constitution ? Define the pillars of your project. Frames the entire project. \* 1. / speckit.s...\
+  Medium?Dustin Andrews
+- [link](https://www.reddit.com/r/opencodeCLI/comments/1saemrw/opencode%5Fmd%5Ffiles/)\
+  Opencode .md files : r/opencodeCLI - Reddit\
+  Apr 2, 2026 ? CatHerdler. ? 2mo ago. More context. You should look at OpenSpec or SpecKit as an alternative to this - writing your project spec ...\
+  Reddit?r/opencodeCLI
+- [link](https://opencode.ai/docs/rules/)\
+  Rules | OpenCode\
+  Apr 1, 2026 ? Local files by traversing up from the current directory ( AGENTS.md , CLAUDE.md ) Global file at ~/.config/opencode/AGENTS.md. Cla...\
+  OpenCode
+
+Show all
+
+#
+
+
+
 # Dual design system React web app spec
 
 **Session ID:** ses_1b563b224ffendFJFyHp1oOU1g
