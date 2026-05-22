@@ -335,6 +335,7 @@ float: <!-- music -->
 - interpret internet yamero
 - interpret heat abnormal
 - interpret sayonara princess
+- research feishin
 
 philosophy:
 
@@ -423,6 +424,10 @@ history:
 - dn42
 - activitypub
 - xodus movement <!-- exodus, anti twitter, anti elon musk -->
+- vala language
+- kde desktop
+- gnome desktop
+- rust lang
 
 politics:
 

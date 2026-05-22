@@ -32,7 +32,23 @@ i want to learn how to use, to know its exact behavior, to know how its behavior
 
 ---
 
+declarative > imperative
+
+explicit > implicit
+
+deterministic > probablistic
+
+---
+
 Combine browser and os. A tab page and an app window are the same thing.
+
+pwa or add to home is already mature.
+
+most webpages are db frontend, not apps.
+
+you can have application menu or new tab as the homepage as you like.
+
+no need to overthink. it's the easiest part to bridge and package.
 
 ---
 
