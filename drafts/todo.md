@@ -159,16 +159,6 @@ research: gemini. (lagrange)
 
 ---
 
-simplify 
-
-- notes on drafts
-- notes on humility
-- things
-
-merge things & tabs?
-
----
-
 precious, [5/2/26 5:59 PM]
 V. 
 
@@ -322,7 +312,16 @@ create an example web app supporting both gnome adwaita design system and materi
 
 ---
 
-trim notes and things
+simplify 
 
+- ~~notes on drafts~~
+- notes on humility
+- things
 
+merge things & tabs?
 
+---
+
+libadwaita in react. only use prop, state, and effect (limit to like event listener and interval) for porting compatibility.
+
+---
