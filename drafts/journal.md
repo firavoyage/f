@@ -17897,6 +17897,8 @@ btw, can i really change more than one files on github web within one commit? i 
 
 16 40 simplify notes ~~(17 40)~~ 18 00 <!-- i wont simplify things i guess. it's just a place for naive ideas that jump out of my mind. -->
 
+18 40 simplify notes on humility. (19 20)
+
 
 
 <!-- timebox, plan. -->

@@ -1080,6 +1080,10 @@ https://www.youtube.com/@cyannyan6/videos
 
 e.g. video shorts live
 
+...
+
+when you ctrl/shift/alt click the logo or "new chat", it should open new tab instead of redirect history/spa.
+
 ---
 
 fe: normalized input type
