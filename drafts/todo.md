@@ -312,16 +312,6 @@ create an example web app supporting both gnome adwaita design system and materi
 
 ---
 
-simplify 
-
-- ~~notes on drafts~~
-- notes on humility
-- things
-
-merge things & tabs?
-
----
-
 libadwaita in react. only use prop, state, and effect (limit to like event listener and interval) for porting compatibility.
 
 ---
