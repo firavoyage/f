@@ -421,6 +421,8 @@ history:
 - nextcloud
 - degoogle movement
 - dn42
+- activitypub
+- xodus movement <!-- exodus, anti twitter, anti elon musk -->
 
 politics:
 

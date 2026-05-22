@@ -83,7 +83,257 @@ Show all
 
 #
 
+compare claude codex and opencode which should i choose
 
+Choosing between **Claude Code**, **OpenAI Codex**, and **OpenCode** depends entirely on your project's scale, your preferred workflow, and how much control you want over your underlying AI models. \[[1](https://nimbalyst.com/blog/claude-code-vs-codex-vs-opencode-definitive-comparison/), [2](https://northflank.com/blog/claude-code-vs-openai-codex), [3](https://labs.adaline.ai/p/claude-code-vs-openai-codex), [4](https://www.linkedin.com/posts/petr-baudis-906a213%5Fspicy-opinion-claude-code-and-codex-cli-activity-7424032618301521920-UsfL)]
+
+Direct Comparison Overview
+
+| Feature \[[1](https://medium.com/all-about-claude/opencode-vs-claude-code-i-tested-both-and-heres-the-real-difference-2026-c752db8f1806), [2](https://composio.dev/content/claude-code-vs-openai-codex), [3](https://www.tensorlake.ai/blog/claude-opus-4-6-vs-gpt-5-3-codex), [4](https://www.mindstudio.ai/blog/claude-code-vs-openai-codex-comparison), [5](https://northflank.com/blog/claude-code-vs-openai-codex), [6](https://www.youtube.com/watch?v=YnCkN94Cp7U\&vl=en), [7](https://www.reddit.com/r/ClaudeCode/comments/1sbxtnb/claude%5Fcode%5Fvs%5Fcodex%5Fvs%5Fopencode%5Fwhich%5Fone%5Fis/), [8](https://www.builder.io/blog/codex-vs-claude-code), [9](https://www.reddit.com/r/ClaudeCode/comments/1t1yfvo/claude%5Fcode%5Fvs%5Fcodex%5Fvs%5Fopencode%5Fvs%5Fcursor%5Ffor%5F20/), [10](https://www.youtube.com/watch?v=8f5qWdx9L-Q), [11](https://nimbalyst.com/blog/claude-code-vs-codex-vs-opencode-definitive-comparison/)] | Claude Code                         | OpenAI Codex                          | OpenCode                               |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------- | ------------------------------------- | -------------------------------------- |
+| **Core Ecosystem**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Anthropic (Claude 4.x)              | OpenAI (GPT-5.x)                      | **Model-Agnostic** (Bring your own)    |
+| **Primary Strength**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Complex reasoning & architecture    | High execution reliability & CI tasks | Ultimate customization & privacy       |
+| **Workflow Style**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Interactive, local terminal session | Autonomous task delegation            | Modular, custom agent bench            |
+| **Licensing**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | Proprietary                         | Proprietary                           | **Open Source**                        |
+| **Average Cost**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | Premium / Usage-heavy               | Bundled / Value pricing tiers         | Pay-as-you-go API or Free (Local LLMs) |
+
+***
+
+Deep Dive: Which One Fits Your Needs?
+
+1\. Claude Code
+
+- **Best for:** Interactive pair-programming, building complex real-time applications, and major architectural refactoring.
+- **The Experience:** It acts as an active companion in your terminal. It thinks deeply, splitting logic into clean, granular components.
+- **The Downside:** It can consume API credits rapidly during long multi-file loops. \[[1](https://www.reddit.com/r/opencodeCLI/comments/1s3mi6l/opencode%5Fvs%5Fclaudecode%5Fas%5Fagentic%5Fharness%5Ftest/), [2](https://www.reddit.com/r/ClaudeCode/comments/1t1yfvo/claude%5Fcode%5Fvs%5Fcodex%5Fvs%5Fopencode%5Fvs%5Fcursor%5Ffor%5F20/), [3](https://composio.dev/content/claude-code-vs-openai-codex), [4](https://nimbalyst.com/blog/claude-code-vs-codex-vs-opencode-definitive-comparison/), [5](https://www.mindstudio.ai/blog/claude-code-vs-openai-codex-comparison), [6](https://northflank.com/blog/claude-code-vs-openai-codex)]
+
+2\. OpenAI Codex
+
+- **Best for:** Autonomous, batch task execution, "vibe coding" small MVPs quickly, and deep integration with your GitHub CI/CD pipeline.
+- **The Experience:** Codex is slower but incredibly thorough on well-scoped requests, achieving high one-shot success rates without creating runtime breaking issues. It handles background tasks independently while you work elsewhere.
+- **The Downside:** The default system is less interactive and treats sub-agents slightly more like background black boxes. \[[1](https://bobde-yagyesh.medium.com/claude-code-vs-codex-vs-open-code-ive-used-all-three-here-s-the-honest-breakdown-e273e116c571), [2](https://nimbalyst.com/blog/claude-code-vs-codex-vs-opencode-definitive-comparison/), [3](https://www.mindstudio.ai/blog/claude-code-vs-openai-codex-comparison), [4](https://northflank.com/blog/claude-code-vs-openai-codex), [5](https://pub.towardsai.net/claude-code-vs-codex-cli-vs-gemini-cli-vs-opencode-the-real-differences-after-convergence-fe71401f3f8e)]
+
+3\. OpenCode
+
+- **Best for:** Developers who want complete privacy, custom system prompts, or the ability to hop between different LLMs.
+- **The Experience:** It is an open-source, model-agnostic workbench. By pairing it with a plugin framework like `oh-my-opencode` or local models via Ollama, you control everything from context caching to language server protocols (LSP).
+- **The Downside:** Requires manual configuration and optimization overhead to match the polished "out-of-the-box" capability of its proprietary rivals. \[[1](https://www.linkedin.com/posts/matthieunapoli%5Ftested-opencode-vs-claude-code-claude-wrote-activity-7416464088853106688-feMZ), [2](https://nimbalyst.com/blog/claude-code-vs-codex-vs-opencode-definitive-comparison/), [3](https://medium.com/all-about-claude/opencode-vs-claude-code-i-tested-both-and-heres-the-real-difference-2026-c752db8f1806), [4](https://www.builder.io/blog/opencode-vs-claude-code), [5](https://www.morphllm.com/comparisons/opencode-vs-codex), [6](https://www.reddit.com/r/opencodeCLI/comments/1s3mi6l/opencode%5Fvs%5Fclaudecode%5Fas%5Fagentic%5Fharness%5Ftest/)]
+
+***
+
+The Verdict: Which Should You Choose?
+
+- Choose **Claude Code** if you are already paying for Anthropic's tier models and want a seamless, deeply interactive pair programmer to build production-grade architectures right from your terminal.
+- Choose **OpenAI Codex** if you want value for your budget, require hands-off automation for debugging large GitHub repositories, or prefer a "set-and-forget" workflow.
+- Choose **OpenCode** if you want future-proof flexibility, refuse to get trapped in a specific provider's ecosystem, or intend to run localized models for privacy reasons. \[[1](https://www.youtube.com/watch?v=4ByJZRP5oYI), [2](https://composio.dev/content/claude-code-vs-openai-codex), [3](https://northflank.com/blog/claude-code-vs-openai-codex), [4](https://medium.com/all-about-claude/opencode-vs-claude-code-i-tested-both-and-heres-the-real-difference-2026-c752db8f1806), [5](https://www.mindstudio.ai/blog/claude-code-vs-openai-codex-comparison), [6](https://www.builder.io/blog/codex-vs-claude-code), [7](https://nimbalyst.com/blog/claude-code-vs-codex-vs-opencode-definitive-comparison/), [8](https://www.youtube.com/watch?v=YnCkN94Cp7U\&vl=en)]
+
+_(Note: Many developers actually maintain a dual setup, keeping Claude Code active for real-time frontend work while delegating automated backend reviews to [Codex](https://community.openai.com/t/introducing-codex-plugin-for-claude-code/1378186))._ \[[1](https://www.builder.io/blog/codex-vs-claude-code), [2](https://composio.dev/content/claude-code-vs-openai-codex), [3](https://community.openai.com/t/introducing-codex-plugin-for-claude-code/1378186)]
+
+To help narrow this down, what **programming languages** or frameworks dominate your stack, and are you optimizing for **development speed** or **budget limits**?
+
+- [link](https://www.reddit.com/r/ClaudeCode/comments/1sbxtnb/claude%5Fcode%5Fvs%5Fcodex%5Fvs%5Fopencode%5Fwhich%5Fone%5Fis/)\
+  Claude Code vs Codex vs OpenCode, which one is actually ...\
+  Apr 4, 2026 ? Claude Code vs Codex vs OpenCode, which one is actually worth using? Question. From what I've seen so far, Claude Code seems to ha...\
+  Reddit?r/ClaudeCode
+- [link](https://www.youtube.com/watch?v=8f5qWdx9L-Q)\
+  Can You Replace Claude Code/Codex with OpenCode and a Local ...\
+  May 7, 2026 ? Can You Replace Claude Code/Codex with OpenCode and a Local LLM? - YouTube. This content isn't available.\
+  YouTube?Gary Explains
+- [link](https://www.reddit.com/r/ClaudeCode/comments/1t1yfvo/claude%5Fcode%5Fvs%5Fcodex%5Fvs%5Fopencode%5Fvs%5Fcursor%5Ffor%5F20/)\
+  claude code vs codex vs opencode vs cursor for 20$ budget - Reddit\
+  May 3, 2026 ? Avoid using Claude Code, your credits will run out quickly. Codex is a better option. ... Cursor is useless. CC 20$ plan in VSCode...\
+  Reddit?r/ClaudeCode
+
+Show all
+
+all are effectively model agnostic and free as in freedom now. compare. which should i choose.
+
+Now that **all three are effectively model-agnostic and free/open-source**?thanks to massive community shifts like proxy layers (e.g., `free-claude-code`), leaked core abstractions, and official open-source pivots?the evaluation changes entirely. \[[1](https://www.reddit.com/r/LocalLLaMA/comments/1s8xj2e/claude%5Fcodes%5Fsource%5Fjust%5Fleaked%5Fi%5Fextracted%5Fits/), [2](https://www.youtube.com/watch?v=bMdoyQAcSEU), [3](https://www.reddit.com/r/ClaudeCode/comments/1sbxtnb/claude%5Fcode%5Fvs%5Fcodex%5Fvs%5Fopencode%5Fwhich%5Fone%5Fis/), [4](https://www.knightli.com/en/2026/05/08/opencode-open-source-ai-coding-agent/)]
+
+You no longer choose based on _which provider_ you are locked into, but rather **how the engine handles multi-agent orchestration, local tool execution, and session management**. \[[1](https://composio.dev/content/claude-code-vs-open-code), [2](https://www.knightli.com/en/2026/05/08/opencode-open-source-ai-coding-agent/)]
+
+***
+
+Core Structural Comparison
+
+| Feature \[[1](https://www.reddit.com/r/LocalLLaMA/comments/1s8xj2e/claude%5Fcodes%5Fsource%5Fjust%5Fleaked%5Fi%5Fextracted%5Fits/), [2](https://developers.openai.com/codex/models), [3](https://composio.dev/content/claude-code-vs-open-code), [4](https://www.knightli.com/en/2026/05/08/opencode-open-source-ai-coding-agent/), [5](https://nimbalyst.com/blog/claude-code-vs-codex-vs-opencode-definitive-comparison/), [6](https://www.youtube.com/watch?v=NaiwFuNIRxI), [7](https://www.youtube.com/watch?v=v4j1%5FqHLq9s), [8](https://github.com/opencode-ai/opencode), [9](https://openai.com/index/the-next-evolution-of-the-agents-sdk/), [10](https://www.youtube.com/watch?v=uZGDO0L-Dr4)] | Claude Code (via Open-Proxy)                                 | OpenAI Codex (Open-Source Core)                          | OpenCode (Native Agent)                                     |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ | -------------------------------------------------------- | ----------------------------------------------------------- |
+| **Orchestration Philosophy**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | **Hierarchical Coordinator** (Breaks goals into micro-tasks) | **Linear Autonomous Loop** (Deep execution, self-repair) | **SQLite State Machines** (Primary/Subagent child sessions) |
+| **Interface Setup**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | Raw, blazing-fast CLI terminal                               | Cloud hybrid or local terminal                           | Full TUI (Terminal UI) & Beta Desktop App                   |
+| **Context Management**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | Strict, aggressive prompt truncation                         | System-level context truncation                          | **Auto Compact** (Auto-summarizes at 95% threshold)         |
+| **Extensibility**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | Fixed tools; heavily reliant on Model Context Protocol (MCP) | SDK-driven plugins                                       | Custom `.md`/`.json` subagents & `skills.sh`                |
+
+***
+
+Deep Dive: How They Differ in a Model-Agnostic World
+
+1\. Claude Code (The Orchestration Masterpiece)
+
+Even when stripped of Anthropic's cloud constraints using local proxies, Claude Code's architecture remains a gold standard for multi-file coordination. \[[1](https://www.reddit.com/r/LocalLLaMA/comments/1s8xj2e/claude%5Fcodes%5Fsource%5Fjust%5Fleaked%5Fi%5Fextracted%5Fits/), [2](https://www.youtube.com/watch?v=bMdoyQAcSEU), [3](https://composio.dev/content/claude-code-vs-open-code)]
+
+- **The Engine:** It utilizes a proprietary-grade **coordinator layer** that splits your prompt into highly granular sub-tasks. It is exceptionally fast at navigating cross-file renames and surgical codebase patches.
+- **The Catch:** Because its prompt routing was explicitly fine-tuned for Claude's unique tool-calling signatures, swapping in weaker local open-source models can occasionally cause parsing errors or tool loops compared to using frontier models. \[[1](https://www.reddit.com/r/LocalLLaMA/comments/1s8xj2e/claude%5Fcodes%5Fsource%5Fjust%5Fleaked%5Fi%5Fextracted%5Fits/), [2](https://nimbalyst.com/blog/claude-code-vs-codex-vs-opencode-definitive-comparison/), [3](https://www.youtube.com/watch?v=bMdoyQAcSEU)]
+
+2\. OpenAI Codex (The Relentless Executioner)
+
+[OpenAI's Codex](https://developers.openai.com/codex/models) architecture approaches coding as an autonomous, deep-repair execution loop. \[[1](https://developers.openai.com/codex/models)]
+
+- **The Engine:** It excels at **long-horizon tasks**. If you tell it to write an entirely new suite of integration tests, it will build a massive, linear execution thread, running the compiler, capturing terminal errors, and rewriting code until it passes.
+- **The Catch:** It feels less like an interactive "chat companion" and more like a background agent. It is highly thorough but has a significantly slower total session time when performing rapid, real-time iterations. \[[1](https://openai.com/index/the-next-evolution-of-the-agents-sdk/), [2](https://nimbalyst.com/blog/claude-code-vs-codex-vs-opencode-definitive-comparison/), [3](https://www.knightli.com/en/2026/05/08/opencode-open-source-ai-coding-agent/)]
+
+3\. OpenCode (The Transparent Workbench)
+
+[OpenCode](https://opencode.ai/) was built from day one to be open-source and model-agnostic, meaning it doesn't suffer from the "translation friction" of the other two. \[[1](https://composio.dev/content/claude-code-vs-open-code), [2](https://www.knightli.com/en/2026/05/08/opencode-open-source-ai-coding-agent/)]
+
+- **The Engine:** It features a highly readable **Primary/Subagent design** where every subagent call is saved as an isolated child session inside a local SQLite database. It natively integrates **Model Context Protocol (MCP)** and features an **Auto-Compact tool** that dynamically summarizes your chat at 95% token usage so you never hit a context wall.
+- **The Catch:** In head-to-head benchmarking with identical models, OpenCode?s broader reasoning loops can make it up to **75-80% slower overall** than Claude Code's streamlined execution engine, even though it often yields more thorough code coverage. \[[1](https://github.com/opencode-ai/opencode), [2](https://composio.dev/content/claude-code-vs-open-code), [3](https://nimbalyst.com/blog/claude-code-vs-codex-vs-opencode-definitive-comparison/)]
+
+***
+
+The Verdict: Which One Should You Choose?
+
+- Choose **Claude Code** if you prioritize **speed, polish, and seamless terminal integration**. Its multi-agent coordinator layer handles complex, multi-file refactoring workflows better than almost anything else on the market.
+- Choose **OpenAI Codex** if you are setting up **hands-off, autonomous workflows**. It is the ideal agent framework for running extensive background debugging, massive code generation, or CI/CD self-healing loops.
+- Choose **OpenCode** if you want **ultimate control, inspectability, and customizability**. It is the best choice if you actively swap between providers (e.g., DeepSeek, local Ollama, NVIDIA NIM, OpenAI) and want to write your own custom terminal sub-agents using Markdown. \[[1](https://github.com/opencode-ai/opencode), [2](https://composio.dev/content/claude-code-vs-open-code), [3](https://nimbalyst.com/blog/claude-code-vs-codex-vs-opencode-definitive-comparison/), [4](https://www.reddit.com/r/LocalLLaMA/comments/1s8xj2e/claude%5Fcodes%5Fsource%5Fjust%5Fleaked%5Fi%5Fextracted%5Fits/), [5](https://www.knightli.com/en/2026/05/08/opencode-open-source-ai-coding-agent/), [6](https://www.youtube.com/watch?v=20vcJmqAr4M), [7](https://www.youtube.com/watch?v=nHkJbkCzLco\&t=13)]
+
+To give you a more tailored recommendation, are you looking to plug in a **local offline LLM** (like Llama 3 or Mistral) or a **cloud proxy** (like OpenRouter)? Let me know if you prefer a **minimalist raw CLI** or a structured **TUI visual terminal**. \[[1](https://www.youtube.com/watch?v=20vcJmqAr4M), [2](https://www.youtube.com/watch?v=bMdoyQAcSEU), [3](https://www.knightli.com/en/2026/05/08/opencode-open-source-ai-coding-agent/)]
+
+- [link](https://www.reddit.com/r/ClaudeCode/comments/1sbxtnb/claude%5Fcode%5Fvs%5Fcodex%5Fvs%5Fopencode%5Fwhich%5Fone%5Fis/)\
+  Claude Code vs Codex vs OpenCode, which one is actually ...\
+  Apr 4, 2026 ? Claude Code vs Codex vs OpenCode, which one is actually worth using? Question. From what I've seen so far, Claude Code seems to ha...\
+  Reddit?r/ClaudeCode
+- [link](https://nimbalyst.com/blog/claude-code-vs-codex-vs-opencode-definitive-comparison/)\
+  OpenCode vs Codex vs Claude Code (2026 Comparison)\
+  Feb 1, 2026 ? The SWE-bench Contamination Problem. In February 2026, OpenAI announced it would stop reporting SWE-bench Verified scores after fi...\
+  Nimbalyst
+- [link](https://www.knightli.com/en/2026/05/08/opencode-open-source-ai-coding-agent/)\
+  opencode, Claude Code, and Codex: What's the Difference ...\
+  May 8, 2026 ? This article compares three AI coding tools by openness, model support, terminal experience, Agent modes, and use cases. 2026-05-0...\
+  www.knightli.com
+
+Show all
+
+#
+
+how to give opencode a browser to test frontend code itself
+
+To give **OpenCode** a browser so it can automatically interact with, view, and test your frontend code, you need to connect it to a Model Context Protocol (MCP) browser tool or an automation plugin. \[[1](https://github.com/benjaminshafii/opencode-browser), [2](https://vercel.com/kb/guide/how-i-use-opencode-with-vercel-ai-gateway-to-build-features-fast)]
+
+Because modern browsers block headless automation tools from using your default profile for security reasons, there are two primary methods to seamlessly link a browser to OpenCode: \[[1](https://github.com/benjaminshafii/opencode-browser)]
+
+Method 1: The Native Extension & MCP (Recommended)
+
+This approach connects OpenCode to your active, daily-use browser session via a native messaging host. It is highly reliable for testing frontend flows because the AI can interact with your existing local servers (like `localhost:3000`). \[[1](https://opencode.ai/docs/server/), [2](https://github.com/kcrommett/opencode-web), [3](https://opencode.ai/docs/web/), [4](https://github.com/benjaminshafii/opencode-browser)]
+
+1. **Install the browser extension:** Head to your browser's extension settings (e.g., `chrome://extensions`), enable **Developer mode**, and look for or install the [Browser MCP Extension](https://github.com/michaljach/opencode-browser/blob/main/README.md).
+
+2. **Register the Native Host:** Run the initialization helper in your project terminal to link the extension to OpenCode:\
+   bash
+
+<!---->
+
+```
+npx opencode-browser init
+```
+
+Use code with caution.
+3\. **Configure your configuration file:** OpenCode reads from an `opencode.json` configuration file. Ensure the browser plugin and `browsermcp` entries are added to your project's local `opencode.json` (or your global `~/.config/opencode/opencode.json`):\
+json
+
+```
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugin": ["opencode-browser"],
+  "mcp": {
+    "browsermcp": {
+      "type": "local",
+      "command": ["npx", "-y", "@browsermcp/mcp@latest"],
+      "enabled": true
+    }
+  }
+}
+```
+
+Use code with caution.
+4\. **Restart OpenCode:** Relaunch your TUI environment (`opencode`). The agent now has browser capability. \[[1](https://github.com/michaljach/opencode-browser/blob/main/README.md), [2](https://codesignal.com/learn/courses/foundation-getting-started-with-opencode/lessons/getting-started-with-opencode), [3](https://github.com/doza62/opencode-mobile)]
+
+***
+
+Method 2: Playwright / Chrome DevTools Protocol (CDP)
+
+If you prefer a headless or dedicated automation instance without installing standard browser extensions, you can use the built-in Chrome DevTools Protocol (CDP). \[[1](https://github.com/different-ai/opencode-browser)]
+
+1. **Add Playwright to OpenCode:** OpenCode utilizes Model Context Protocol integrations. Run this command in your terminal to append Playwright:\
+   bash
+
+<!---->
+
+```
+opencode mcp add playwright -- npx -y @playwright/mcp@latest
+```
+
+Use code with caution.
+2\. **Launch Chrome with Remote Debugging:** Open your browser via the command line with an exposed port:\
+bash
+
+```
+# On macOS:
+/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222
+```
+
+Use code with caution.
+3\. **Point OpenCode to the Endpoint:** Map the workspace in your `opencode.json`:\
+json
+
+```
+{
+  "plugin": ["opencode-chrome-devtools"]
+}
+```
+
+Use code with caution.\
+Provide the agent with the browser URL `http://127.0.0.1:9222` when prompting it. \[[1](https://www.youtube.com/watch?v=vurzGimLlT8), [2](https://www.reddit.com/r/ClaudeAI/comments/1mchnnv/did%5Fyou%5Fknow%5Fthat%5Fclaude%5Fcode%5Fcan%5Fuse%5Fthe%5Fbrowser/), [3](https://medium.com/@mingyang.heaven/opencode-the-terminal-native-ai-programming-assistant-thats-changing-the-game-b810cf055959), [4](https://github.com/different-ai/opencode-browser)]
+
+***
+
+How to use it for Frontend Testing
+
+Once configured, OpenCode will automatically invoke browser capabilities when instructed. \[]
+
+1. **Spin up your local server:** Start your frontend dev server normally (e.g., `npm run dev` running on `http://localhost:5173`).
+2. **Prompt OpenCode:** In the OpenCode interface, issue browser-centric commands:
+
+- _"Open http://localhost:5173, click the sign-in button, and tell me if any console errors show up."_
+- _"Test the responsive layout on a mobile viewport and take a screenshot."_
+- _"Interact with the filter sidebar on the homepage and verify the DOM updates correctly."_ \[[1](https://www.youtube.com/watch?v=0sVf4pzs-1M), [2](https://www.circusscientist.com/2025/10/09/opencode-with-chrome-devtools-automatically-testing-magic-poi-website/), [3](https://www.youtube.com/watch?v=vurzGimLlT8), [4](https://www.reddit.com/r/ClaudeAI/comments/1mchnnv/did%5Fyou%5Fknow%5Fthat%5Fclaude%5Fcode%5Fcan%5Fuse%5Fthe%5Fbrowser/), [5](https://github.com/benjaminshafii/opencode-browser)]
+
+OpenCode will parse the DOM structure, execute user flows, capture console logs, and self-debug its own frontend changes based on live browser visual behavior. \[[1](https://www.reddit.com/r/opencodeCLI/comments/1rhb4fu/antigravity%5Flike%5Fbrowser%5Fautomation%5Ffor%5Fopencode/), [2](https://github.com/georgi/opencode-mobile), [3](https://www.youtube.com/watch?v=vurzGimLlT8), [4](https://github.com/benjaminshafii/opencode-browser)]
+
+If you hit a roadblock during setup, please let me know:
+
+- What **operating system** you are on (macOS, Windows/WSL, Linux)
+
+- The **frontend framework** you are writing (React, Vue, Next.js, etc.)
+
+- Any specific **error message** printed in your terminal or configuration files \[[1](https://medium.com/@creativeaininja/the-ai-that-codes-while-you-sleep-a-practical-guide-to-opencode-a77d565f9c2a), [2](https://www.reddit.com/r/ClaudeCode/comments/1oxf9kf/run%5Fopencode%5Fin%5Fyour%5Fbrowser%5Fselfhosted%5Fweb%5Fui/)]
+
+- [link](https://github.com/different-ai/opencode-browser)\
+  GitHub - different-ai/opencode-browser\
+  May 15, 2026 ? OpenCode Chrome DevTools. Browser automation plugin for OpenCode using direct Chrome DevTools Protocol (CDP) connections. This pac...\
+  GitHub
+
+- [link](https://www.youtube.com/watch?v=vurzGimLlT8)\
+  OpenCode, Chrome DevTools MCP, WebDriver and Java\
+  Nov 20, 2025 ? in this video I'm going to look at a tool called Open Code. and it's completely free and allows you to use free AI models or you c...\
+  14:12\
+  YouTube?EvilTester - Software Testing
+
+- [link](https://github.com/benjaminshafii/opencode-browser)\
+  Browser automation for OpenCode via Chrome extension ...\
+  OpenCode Browser. Browser automation for OpenCode via Chrome extension + Native Messaging. Inspired by Claude in Chrome - Anthropi...\
+  GitHub
+
+Show all
 
 # Dual design system React web app spec
 
