@@ -28,7 +28,8 @@ follow the style guide:
 - naming:
   - snake case
   - verb noun for actions (`get_data`, not `data_getter`), predicate for bools (`is_prime`, not `check_primality`), noun for factory functions (`time`, not `create_time`)
-  - for react components, one word (e.g. `Button`) if possible, use snake case w only the first letter in the whole variable (not every word) capitalized (e.g. `Date_picker`) if needed
+  - for react components, pascal case
+  - for filenames, lowercase
 - style:
   - functional programming
   - modular and cohesive
@@ -38,10 +39,10 @@ follow the style guide:
   - always type, never interface
   - no `undefined` or `null`
   - no `typeof` or `instanceof`
-  - no `===` `!==`, use `==` `!=` instead
+- handle errors:
+
   - no `try catch`, wrap inside handle if external libraries throw
   - no `throw`, use err instead
-- handle errors:
 
   ```ts
   /**
@@ -102,17 +103,14 @@ follow the style guide:
   /**
    * log is global, loaded before any code inside globalthis, no need to define again.
    */
-  function log(...args): void
+  function log(...args): void;
   ```
 
 - comment:
-  - lowercase by default, only standard mixed case for complete, non imperative sentences, never uppercase
-  - in ts, `/** multi line */` by default, only `//` for commented code or if you really want to say something after a line
-  - in shell, `# after a line` for why it does or what you might need to do, `# before a line` for where you are
-  - documenting comments before or after, commented code below
-  - self explanation over commenting
-  - as simple as possible (`# for compatibility`, `sudo fc-cache -f -v # apply (log out if needed)`)
+  - self explanatory over commenting
+  - comments before or on the right of code, commented code below
 - import:
+
   - avoid error prone relative path
   - find the tsconfig on the parent folder and add to paths when exporting code in a new folder
 
@@ -123,23 +121,23 @@ follow the style guide:
     ```
 
 - note:
-  - avoid typescriptism, dont `type message = string`, only define types on function params and return, ignore compiler warnings
+  - avoid typescriptism, dont write `type message = string`, only define types on function params and return, ignore compiler warnings
   - prefer modern proven libraries, dont reinvent wheels
   - avoid outdated or deprecated methods
-  - no logging by default
 
 ## test
 
-run the logical test
+always run tests before finishing
 
-run linting
+- logics (in test subfolder)
+- linting
 
-```sh
-br eslint
-```
+  ```sh
+  br eslint
+  ```
 
-run type check (ignore non critical noises)
+- type check, use `// @ts-expect-error` if needed
 
-```sh
-br tsgo
-```
+  ```sh
+  br tsgo
+  ```

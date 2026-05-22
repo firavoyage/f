@@ -17899,6 +17899,10 @@ btw, can i really change more than one files on github web within one commit? i 
 
 18 40 simplify notes on humility. (19 20)
 
+20 20 introduce acbox and hsn (as inside jiangly group) to grade 10 students from dths and jyhs.
+
+pics, mtf stories.
+
 
 
 <!-- timebox, plan. -->

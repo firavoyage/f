@@ -14,6 +14,10 @@ https://x.com/TaroLeohearts/with_replies
 
 ruanyf https://ruanyifeng.com/blog/
 
+https://www.ruanyifeng.com/blog/2026/03/weekly-issue-389.html
+
+https://www.ruanyifeng.com/blog/2026/05/weekly-issue-395.html
+
 hn https://news.ycombinator.com/
 
 chessvibes rating climb
@@ -241,6 +245,14 @@ https://github.com/romgrk/web-toolkit
 
 https://github.com/ncpa0cpl/adwaita-web?tab=readme-ov-file
 
+https://github.com/ncpa0/ADWaveCSS
+
+https://adwave.qzz.io/example-page/input.html
+
+https://developer.gnome.org/hig/patterns/feedback.html
+
+https://www.figma.com/community/file/1467967362512102193
+
 ---
 
 float
@@ -249,10 +261,14 @@ file:///home/fira/Music/_/[FULL] Mahou Shoujo Madoka★Magica ED 『Magia』 Rom
 
 ---
 
-material
+menci memoh cahciua
 
-redact by resolving into the bg
+https://github.com/Menci/Cahciua/blob/main/AGENTS.md
 
 ---
 
+ryos
 
+https://os.ryo.lu/
+
+---
