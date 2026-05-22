@@ -169,6 +169,7 @@ frontend: <!-- web -->
 - ts perf switch to bun from tsx
 - ts bun br bunfig on parent folder
 - react components naming pascal snake case
+- react component parcel test
 
 backend:
 

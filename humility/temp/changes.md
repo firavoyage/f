@@ -1,1 +1,0 @@
-- [20:54] Created dual design system notes app (SPEC.md, package.json, src/**)
