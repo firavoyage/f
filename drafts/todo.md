@@ -322,3 +322,7 @@ create an example web app supporting both gnome adwaita design system and materi
 
 ---
 
+trim notes and things
+
+
+
