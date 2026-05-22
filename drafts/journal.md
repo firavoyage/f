@@ -17899,9 +17899,15 @@ btw, can i really change more than one files on github web within one commit? i 
 
 18 40 simplify notes on humility. (19 20)
 
-20 20 introduce acbox and hsn (as inside jiangly group) to grade 10 students from dths and jyhs.
+20 20 introduce acbox and hsn (as inside jiangly group) to grade 10 students from dths and jyhs. <!-- seen a player of 2 ena and 2 mizuki on badges, whose partner also has mizuki there, take a photo. -->
 
 pics, mtf stories.
+
+<!-- her husband is male. so her husband is gay! no, her husband is homo cis. -->
+
+<!-- as a mtf who plays maimai, has she done anything crazy? well, she does program, which ive contributed to, mostly removing unused code. "坏事" "纯良" -->
+
+22 40 play project sekai at note speed 10.
 
 
 
