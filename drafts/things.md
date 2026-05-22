@@ -122,10 +122,6 @@ know about diffusion and transformer
 
 ---
 
-evaluate ghostty
-
----
-
 have a complex yet well defined coding task.
 
 ~~telegram copy~~ ~~snake game~~ ~~shoe brand~~
@@ -605,13 +601,13 @@ computers could not play the piano well.
 ---
 
 precious, [3/30/26 8:11 PM]
-I definitely have to abstract fs. 
+I definitely have to abstract fs.
 
-There is forbidden characters. 
+There is forbidden characters.
 
-Auto mkdir. 
+Auto mkdir.
 
-Warning of dotfile, leading trailing spaces. 
+Warning of dotfile, leading trailing spaces.
 
 Just like vscode. Research.
 
@@ -625,11 +621,11 @@ precious, [3/31/26 4:54 PM]
 Xhtml 2.0 complaint. Web is unreliable. Don't go so far. Don't go there.
 
 precious, [3/31/26 9:34 PM]
-Menci has hanjuku mygo daikazoku, needle. 
+Menci has hanjuku mygo daikazoku, needle.
 
-I couldn't lose to her. 
+I couldn't lose to her.
 
-Let's have starfish or lucky star. 
+Let's have starfish or lucky star.
 
 Well, the default white 3d ball is good. No icon is even better.
 
@@ -638,7 +634,7 @@ Why two weeks ago on blogging repo
 
 ---
 
-style. 
+style.
 
 see linux. (what is it writing? who are you. if you are... you can.)
 
@@ -702,7 +698,7 @@ interesting.
 
 btw, en has no content.
 
-also, check out suicide wiki and 
+also, check out suicide wiki and
 
 https://github.com/Bluse-liu50/DIY-Estradiol-Gel-Guide/blob/main/README.md
 
@@ -841,22 +837,30 @@ https://danielgross.com/
 
 ---
 
-Cli. 
+Cli.
 
-Beautiful print. Tui. 
+Beautiful print. Tui.
 
-Commands. Options. 
+Commands. Options.
 
-Version. Help. 
+Version. Help.
 
 ---
 
-Repo. 
+Repo.
 
 Actions. Compatible, export raw data.
 
 explore refray. setup openrouter on opencode. no need to exploit free res.
 
 integrate repo w agent?
+
+---
+
+latin.
+
+---
+
+samsung galaxy ai?
 
 ---

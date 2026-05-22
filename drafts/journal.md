@@ -17895,6 +17895,8 @@ btw, can i really change more than one files on github web within one commit? i 
 
 01 00 install a bunch of google apps to appreciate its consistent and sophisticated design.
 
+16 40 simplify notes ~~(17 40)~~ 18 00 <!-- i wont simplify things i guess. it's just a place for naive ideas that jump out of my mind. -->
+
 
 
 <!-- timebox, plan. -->

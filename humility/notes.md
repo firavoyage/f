@@ -942,4 +942,3 @@ dark gray
 it's quite unconventional, unlike the standard "straight line on the left" (e.g. github markdown, telegram quotation), or "quotation marks, italic" (common on personal blogs)
 
 ---
-
