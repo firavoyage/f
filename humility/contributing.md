@@ -4,9 +4,9 @@ stick to the cwd. do not touch anything outside.
 
 know the full file structure of cwd.
 
-have a todo.md on cwd which is to change. when complete, move and append the exact todo to changes.md w the time using imperative sentences in present tense.
+have a `todo.md` on cwd to be changed. when complete, move and append the exact todo to `changes.md` w the time using imperative sentences in present tense.
 
-consider writing a spec.md for complex tasks. think what and how you will do, focus only on the expected behavior or usage. create spec_foo.md, spec_bar.md for new tasks wo chaning the previous one.
+consider writing a `spec.md` for complex tasks. think what and how you will do, focus only on the expected behavior or usage. create spec_foo.md, spec_bar.md for new tasks wo chaning the previous one.
 
 if it can be tested, create a test subfolder on cwd. declare some example inputs and outputs in an object and loop through it. avoid running and reading the output directly.
 
@@ -39,91 +39,101 @@ follow the style guide:
   - always type, never interface
   - no `undefined` or `null`
   - no `typeof` or `instanceof`
-- handle errors:
+- error handling:
 
-  - no `try catch`, wrap inside handle if external libraries throw
+  - no `try catch`, use rescue instead, wrap inside handle if external libraries throw
   - no `throw`, use err instead
 
   ```ts
   /**
-   * handle, rescue, and err are global, reference directly
+   * err, rescue, and handle are preloaded into global this, reference directly
    */
-  function handle<F extends (...args: any[]) => any>(
-    fn: F
-  ): (...args: Parameters<F>) => result<ReturnType<F>>;
-  function rescue<T>(result: result<T>): result is err;
-  function err(
-    error: any | Optional<err, typeof err_symbol | "message"> | Error
-  ): err;
 
-  type result<T, E = err> = ok<T> | E;
+  // define possible errors on top
+  export const failed_to_read = "failed_to_read";
+  export const permission_denied = "permission_denied";
 
-  type ok<T> = Exclude<T, err>;
-  type err = { type: any; message: any; [err_symbol]: true } & Partial<err_fs>;
-  type err_fs = { code: string; path: string; syscall: string; errno: number };
-  ```
+  const parse = handle(JSON.parse);
 
-  ```ts
-  import { readFile } from "node:fs/promises";
+  async function read(path: string): Promise<result<string>> {
+    let failed = true;
 
-  const read_file = handle(readFile);
-
-  export const not_found = "not_found";
-
-  /**
-   * read a file
-   *
-   * use object params anyway for consistency
-   */
-  export async function read({ path }) {
-    const content = await read_file(path, "utf8");
-
-    /**
-     * simplified example
-     */
-    if (rescue(content)) {
-      if (content.code == "ENOENT") {
-        return err({ type: not_found, message: content });
-        // return err(not_found) // also acceptable
-      }
+    if (failed) {
+      return err({
+        type: failed_to_read,
+        message: `failed to read file on ${path}`,
+      });
+    } else {
+      return `some data on ${path}`;
     }
-    // if (rescue(content)) {
-    //   if (has(map, content.code)) {
-    //     return err({ type: map[content.code], message: content })
-    //   }
-    // }
-
-    return content;
   }
-  ```
 
-- log:
+  async function write(path: string): Promise<result<void>> {
+    let failed = true;
 
-  ```ts
+    if (failed) {
+      return err(permission_denied);
+    } else {
+      // write something
+    }
+  }
+
   /**
-   * log is global, loaded before any code inside globalthis, no need to define again.
+   * no need to err if it just checks wo doing anything real
    */
-  function log(...args): void;
+  function is_even(n: number): boolean {
+    return n % 2 == 0;
+  }
+
+  export async function test() {
+    const data = parse("{");
+
+    if (rescue(data)) {
+      if (data.type == SyntaxError) {
+        log("expected");
+      } else {
+        log("will not run");
+      }
+
+      return; // early return to narrow
+    }
+
+    const valid_data = parse('{"key":123}');
+    if (rescue(valid_data)) {
+      log("unexpected");
+
+      return;
+    }
+    log(valid_data.key);
+
+    const content = await read("somewhere");
+    if (rescue(content)) {
+      if (content.type == failed_to_read) {
+        log(content.message); // will output failed to read file on somewhere
+      }
+
+      return;
+    }
+    // process content
+
+    const write_result = await write("somewhere");
+    if (rescue(write_result)) {
+      if (write_result.type == permission_denied) {
+        log("try again with sudo");
+      }
+
+      return;
+    }
+    // tell the user write successfully
+  }
   ```
 
 - comment:
   - self explanatory over commenting
   - comments before or on the right of code, commented code below
-- import:
-
-  - avoid error prone relative path
-  - find the tsconfig on the parent folder and add to paths when exporting code in a new folder
-
-    ```json
-    "paths": {
-      "lib/*": ["./source/lib/*"],
-    },
-    ```
-
-- note:
-  - avoid typescriptism, dont write `type message = string`, only define types on function params and return, ignore compiler warnings
-  - prefer modern proven libraries, dont reinvent wheels
-  - avoid outdated or deprecated methods
+- notes:
+  - avoid typescriptism, only define types on function params and return, never write `type message = string`
+  - prefer modern proven libraries, do not reinvent wheels
 
 ## test
 

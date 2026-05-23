@@ -20,6 +20,6 @@
     "types": ["node"] // not to auto-scan the disk for hidden @types packages
   },
   "include": ["**/*"],
-  "exclude": ["**/node_modules", "**/.build", "**/build", "**/legacy"]
+  "exclude": ["**/node_modules", "**/dist", "**/.build", "**/build", "**/legacy"]
   // "exclude": ["**/node_modules", "**/.build", "**/build", "**/temp", "**/legacy"]
 }

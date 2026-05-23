@@ -201,6 +201,7 @@ desktop:
 - set up bitwarden
 - touch purpose create file modify time metadata
 - alt tech sync method backend
+- set up coding agent
 
 android:
 
