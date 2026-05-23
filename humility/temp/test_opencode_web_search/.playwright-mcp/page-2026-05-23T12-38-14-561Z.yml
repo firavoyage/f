@@ -1,0 +1,670 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e5]:
+    - generic [ref=e9]:
+      - generic [ref=e10]:
+        - link "geeksforgeeks" [ref=e15] [cursor=pointer]:
+          - /url: https://www.geeksforgeeks.org/
+          - img "geeksforgeeks" [ref=e17]
+        - img "search icon" [ref=e20] [cursor=pointer]
+      - list [ref=e22]:
+        - listitem [ref=e23] [cursor=pointer]:
+          - button "Sign In" [ref=e25]
+        - listitem [ref=e26] [cursor=pointer]:
+          - generic [ref=e28]: Courses
+        - listitem [ref=e30] [cursor=pointer]:
+          - generic [ref=e32]: Tutorials
+        - listitem [ref=e34] [cursor=pointer]:
+          - generic [ref=e36]: Interview Prep
+        - listitem [ref=e38]
+        - listitem [ref=e39] [cursor=pointer]:
+          - button "Toggle GFG Theme" [ref=e41]
+    - list [ref=e51]:
+      - listitem [ref=e52]:
+        - link "React Course" [ref=e53] [cursor=pointer]:
+          - /url: https://www.geeksforgeeks.org/courses/react-js-beginner-to-advance?utm_campaign=662_reactjs&utm_medium=gfgcontent_shm&utm_source=geeksforgeeks
+      - listitem [ref=e54]:
+        - link "React Tutorial" [ref=e55] [cursor=pointer]:
+          - /url: https://www.geeksforgeeks.org/reactjs/react/
+      - listitem [ref=e56]:
+        - link "React Exercise" [ref=e57] [cursor=pointer]:
+          - /url: https://www.geeksforgeeks.org/reactjs/practice-react-online/
+      - listitem [ref=e58]:
+        - link "React Basic Concepts" [ref=e59] [cursor=pointer]:
+          - /url: https://www.geeksforgeeks.org/reactjs/reactjs-basics-concepts-complete-reference/
+      - listitem [ref=e60]:
+        - link "React Components" [ref=e61] [cursor=pointer]:
+          - /url: https://www.geeksforgeeks.org/reactjs/reactjs-components-complete-reference/
+      - listitem [ref=e62]:
+        - link "React Props" [ref=e63] [cursor=pointer]:
+          - /url: https://www.geeksforgeeks.org/reactjs/reactjs-props-complete-reference/
+      - listitem [ref=e64]:
+        - link "React Hooks" [ref=e65] [cursor=pointer]:
+          - /url: https://www.geeksforgeeks.org/reactjs/reactjs-hooks-complete-reference/
+      - listitem [ref=e66]:
+        - link "React Router" [ref=e67] [cursor=pointer]:
+          - /url: https://www.geeksforgeeks.org/reactjs/reactjs-router/
+      - listitem [ref=e68]:
+        - link "React Advanced" [ref=e69] [cursor=pointer]:
+          - /url: https://www.geeksforgeeks.org/reactjs/reactjs-advanced-guides-complete-reference/
+      - listitem [ref=e70]:
+        - link "React Examples" [ref=e71] [cursor=pointer]:
+          - /url: https://www.geeksforgeeks.org/reactjs/reactjs-examples/
+    - generic [ref=e73]:
+      - generic [ref=e77]:
+        - generic [ref=e78]:
+          - generic [ref=e80]:
+            - heading "React Material UI" [level=1] [ref=e82]
+            - generic [ref=e83]:
+              - generic [ref=e84]: "Last Updated : 11 Apr, 2026"
+              - list [ref=e92] [cursor=pointer]:
+                - listitem
+                - listitem
+                - listitem
+          - generic [ref=e97]:
+            - paragraph [ref=e98]: Material UI (MUI) is an open-source React library based on Google’s Material Design that provides ready-to-use components for building responsive and consistent user interfaces.
+            - list [ref=e99]:
+              - listitem [ref=e100]: Consistent design system based on Google’s Material Design guidelines.
+              - listitem [ref=e101]: Responsive and accessible components out of the box.
+              - listitem [ref=e102]: Works well with modern React features and supports theming and styling flexibility.
+            - heading "Features of React Material UI" [level=2] [ref=e103]
+            - paragraph [ref=e104]: "React Material UI combines powerful customization, responsiveness, fast loading, theming, backend integration, and seamless upgrades. The key features of Material UI are:"
+            - list [ref=e105]:
+              - listitem [ref=e106]:
+                - strong [ref=e108]: "Fast loading:"
+                - text: Components load quickly, improving application performance.
+              - listitem [ref=e109]:
+                - strong [ref=e111]: "Themes:"
+                - text: Strong theming support ensures consistent design across the application.
+              - listitem [ref=e112]:
+                - strong [ref=e114]: "Backend friendly:"
+                - text: Easily integrates with backend services.
+              - listitem [ref=e115]:
+                - strong [ref=e117]: "Deprecation policy:"
+                - text: Provides smooth upgrades for deprecated methods.
+              - listitem [ref=e118]:
+                - strong [ref=e120]: "Modern React support:"
+                - text: Works well with modern React features for efficient development.
+            - heading "Core Components" [level=2] [ref=e121]
+            - paragraph [ref=e122]: "Material UI boasts a vast collection of reusable components that cater to a wide range of UI needs. Let's delve into some of the most commonly used ones:"
+            - list [ref=e123]:
+              - listitem [ref=e124]:
+                - strong [ref=e126]: "Buttons:"
+                - text: Generate interactive
+                - link "buttons" [ref=e127] [cursor=pointer]:
+                  - /url: https://www.geeksforgeeks.org/reactjs/material-ui-button-api/
+                - text: in various styles (contained, outlined, text) and sizes.
+              - listitem [ref=e128]:
+                - strong [ref=e130]: "Typography:"
+                - text: Craft visually appealing and well-structured text elements using
+                - link "typography" [ref=e131] [cursor=pointer]:
+                  - /url: https://www.geeksforgeeks.org/reactjs/material-ui-typography/
+                - text: components.
+              - listitem [ref=e132]:
+                - strong [ref=e134]: "Cards:"
+                - text: Present content in a clear and organized manner by utilizing
+                - link "cards" [ref=e135] [cursor=pointer]:
+                  - /url: https://www.geeksforgeeks.org/reactjs/react-mui-card-api/
+                - text: .
+              - listitem [ref=e136]:
+                - strong [ref=e138]: "Lists:"
+                - text: Create ordered or unordered
+                - link "lists" [ref=e139] [cursor=pointer]:
+                  - /url: https://www.geeksforgeeks.org/reactjs/react-mui-list-api/
+                - text: with enhanced styling and functionality.
+              - listitem [ref=e140]:
+                - strong [ref=e142]: "Forms:"
+                - text: Construct complex
+                - link "forms" [ref=e143] [cursor=pointer]:
+                  - /url: https://www.geeksforgeeks.org/reactjs/react-mui-formgroup-api/
+                - text: with a plethora of input elements (text fields, dropdowns, checkboxes, radio buttons) and validation capabilities.
+              - listitem [ref=e144]:
+                - strong [ref=e146]: "Dialogs:"
+                - text: Implement modal
+                - link "dialogs" [ref=e147] [cursor=pointer]:
+                  - /url: https://www.geeksforgeeks.org/reactjs/react-mui-dialogcontent-api/
+                - text: for popups and alerts.
+              - listitem [ref=e148]:
+                - strong [ref=e150]: "Grid System:"
+                - text: Establish a responsive layout foundation using the
+                - link "grid System" [ref=e151] [cursor=pointer]:
+                  - /url: https://www.geeksforgeeks.org/reactjs/react-mui-grid-layout/
+                - text: .
+            - heading "Getting Started with Material UI" [level=2] [ref=e152]
+            - paragraph [ref=e153]: Follow these steps to set up and use Material UI in your React project.
+            - heading "1. Installation" [level=3] [ref=e154]
+            - paragraph [ref=e155]: "Employ npm or yarn to seamlessly integrate Material UI into your project:"
+            - generic [ref=e156]: npm install @mui/material @emotion/react @emotion/styled
+            - heading "2. Import and Use Components" [level=3] [ref=e157]
+            - paragraph [ref=e158]: "Import the necessary components from Material UI and start incorporating them into your React application:"
+            - generic [ref=e159]: import React from 'react'; import Button from '@mui/material/Button';
+            - heading "MUI Theme and Customization" [level=2] [ref=e160]
+            - paragraph [ref=e161]:
+              - link "Material UI (MUI) theme" [ref=e162] [cursor=pointer]:
+                - /url: https://www.geeksforgeeks.org/reactjs/react-mui-theming/
+              - text: is a configuration object that centralizes styling for a React application, defining colors, typography, spacing, and more to ensure consistent design and support customizations like light and dark modes.
+            - heading "Elements of MUI Theme" [level=3] [ref=e163]
+            - list [ref=e164]:
+              - listitem [ref=e165]:
+                - strong [ref=e167]: "Palette:"
+                - link "Palette" [ref=e168] [cursor=pointer]:
+                  - /url: https://www.geeksforgeeks.org/reactjs/react-mui-palette/
+                - text: defines primary, secondary, and other color settings, allowing easy adjustments for light and dark modes.
+              - listitem [ref=e169]:
+                - strong [ref=e171]: "Typography:"
+                - text: Controls font styles, sizes, weights, and line heights for headings, body text, and other text elements.
+              - listitem [ref=e172]:
+                - strong [ref=e174]: "Spacing:"
+                - text: Manages
+                - link "spacing" [ref=e175] [cursor=pointer]:
+                  - /url: https://www.geeksforgeeks.org/reactjs/react-mui-spacing/
+                - text: throughout the app using a consistent scale.
+              - listitem [ref=e176]:
+                - strong [ref=e178]: "Breakpoints:"
+                - link "Breakpoints" [ref=e179] [cursor=pointer]:
+                  - /url: https://www.geeksforgeeks.org/reactjs/react-mui-breakpoints/
+                - text: define screen sizes for different devices to enable responsive design
+              - listitem [ref=e180]:
+                - strong [ref=e182]: "Shadows and Z-Index:"
+                - link "Shadows" [ref=e183] [cursor=pointer]:
+                  - /url: https://www.geeksforgeeks.org/reactjs/react-mui-shadows/
+                - text: and
+                - link "Z-Index" [ref=e184] [cursor=pointer]:
+                  - /url: https://www.geeksforgeeks.org/reactjs/react-mui-z-index/
+                - text: configure shadow effects and layering for different UI elements.
+              - listitem [ref=e185]:
+                - strong [ref=e187]: "Components Customization:"
+                - text: Allows for global style overrides and custom variants to adjust how components appear and behave across the app.
+            - paragraph [ref=e188]: "Customization in MUI refers to the ability to modify the default styles of components to match your unique design needs. MUI provides several methods for customization:"
+            - heading "Customization Methods" [level=3] [ref=e189]
+            - list [ref=e190]:
+              - listitem [ref=e191]:
+                - strong [ref=e193]: "Theme Overrides:"
+                - text: Apply global style directly through the theme configuration, affecting all instances of a component.
+              - listitem [ref=e194]:
+                - strong [ref=e196]: "CSS-in-JS with the sx Prop:"
+                - text: The
+                - link "sx" [ref=e197] [cursor=pointer]:
+                  - /url: https://www.geeksforgeeks.org/reactjs/react-mui-the-sx-prop/
+                  - code [ref=e198]: sx
+                - text: prop apply inline styles that are responsive and theme-aware, making it easy to adjust styles at the component level.
+              - listitem [ref=e199]:
+                - strong [ref=e201]: "Styled API:"
+                - text: Create custom components with styles that provide the theme values, offering more control and flexibility.
+              - listitem [ref=e202]:
+                - strong [ref=e204]: "Global Styles:"
+                - text: Implement global CSS rules that apply across the entire application, often used for base styles or overrides that are not specific to individual components.
+              - listitem [ref=e205]:
+                - strong [ref=e207]: "Dynamic Theming:"
+                - text: MUI supports dynamic theming, allowing applications to switch between different themes, such as light and dark modes, based on user preference or system settings.
+            - heading "Benefits of Material UI" [level=2] [ref=e208]
+            - paragraph [ref=e209]: "The Material UI offers many benefits:"
+            - list [ref=e210]:
+              - listitem [ref=e211]: Enhances user experience with visually consistent and responsive UI components.
+              - listitem [ref=e212]: Provides high-quality, customizable components for faster development and easy redesign.
+              - listitem [ref=e213]: Improves accessibility and supports SEO-friendly design principles.
+              - listitem [ref=e214]: Makes code easier to maintain and debug.
+              - listitem [ref=e215]: Enhances both styling and component functionality.
+              - listitem [ref=e216]: Offers a reliable deprecation policy for smooth upgrades and long-term maintainability.
+            - heading "Best Practices of Material UI" [level=2] [ref=e217]
+            - paragraph [ref=e218]: "There are some basic conventions which we must follow for effective usage of MUI components such as:"
+            - list [ref=e219]:
+              - listitem [ref=e220]:
+                - strong [ref=e222]: "Globals:"
+                - text: All the MUI components are defined in a global scope and are isolated. These globals should only be used for website development
+              - listitem [ref=e223]:
+                - strong [ref=e225]: "Mobile-first component:"
+                - text: The components codes are written for mobile first and then these components can be scaled up for bigger screen sizes
+              - listitem [ref=e226]:
+                - strong [ref=e228]: "Responsive meta tag:"
+                - text: The meta tag should be made responsive to ensure touch zooming for all devices
+              - listitem [ref=e229]:
+                - strong [ref=e231]: "CssBaseline:"
+                - text: The is another CssBaseline component which ensures consistency among different browsers
+              - listitem [ref=e232]:
+                - strong [ref=e234]: "Default Font:"
+                - text: The default font used in material design is Roboto.
+            - heading "Also Read:" [level=3] [ref=e235]
+            - list [ref=e236]:
+              - listitem [ref=e237]:
+                - link "React Material-UI Introduction and Installation" [ref=e238] [cursor=pointer]:
+                  - /url: https://www.geeksforgeeks.org/reactjs/react-material-ui-introduction-and-installation/
+              - listitem [ref=e239]:
+                - link "How to create a Snackbar in react native using material design?" [ref=e240] [cursor=pointer]:
+                  - /url: https://www.geeksforgeeks.org/react-native/how-to-create-a-snackbar-in-react-native-using-material-design/
+              - listitem [ref=e241]:
+                - link "How to use Material-UI with Next.js?" [ref=e242] [cursor=pointer]:
+                  - /url: https://www.geeksforgeeks.org/reactjs/how-to-use-material-ui-with-next-js/
+              - listitem [ref=e243]:
+                - link "How to create Dark Mode in ReactJS using Material UI?" [ref=e244] [cursor=pointer]:
+                  - /url: https://www.geeksforgeeks.org/reactjs/how-to-create-dark-mode-in-reactjs-using-material-ui/
+              - listitem [ref=e245]:
+                - link "How to Create a Navigation Bar with Material-UI?" [ref=e246] [cursor=pointer]:
+                  - /url: https://www.geeksforgeeks.org/reactjs/how-to-create-a-navigation-bar-with-material-ui/
+              - listitem [ref=e247]:
+                - link "Recent articles on React Material UI" [ref=e248] [cursor=pointer]:
+                  - /url: https://www.geeksforgeeks.org/tag/material-ui/
+            - heading "Alternatives to Material UI" [level=3] [ref=e249]:
+              - strong [ref=e251]: Alternatives to Material UI
+            - paragraph [ref=e252]:
+              - text: The best two alternatives for React Material UI are
+              - link "ReactJS Blueprint" [ref=e253] [cursor=pointer]:
+                - /url: https://www.geeksforgeeks.org/reactjs/reactjs-blueprint-introduction/
+              - text: and
+              - link "React Bootstrap" [ref=e254] [cursor=pointer]:
+                - /url: https://www.geeksforgeeks.org/reactjs/react-bootstrap/
+        - generic [ref=e255]:
+          - generic [ref=e256]:
+            - generic [ref=e257]: Suggested Quiz
+            - generic [ref=e258]:
+              - button "reset" [ref=e259] [cursor=pointer]:
+                - img "reset" [ref=e260]
+              - paragraph [ref=e261]: 6 Questions
+          - generic [ref=e262]:
+            - generic [ref=e265]:
+              - paragraph [ref=e268]: A development team wants to ensure consistent colors, typography, and spacing across all UI components in a large React project. Which Material UI design mechanism best supports this requirement?
+              - list [ref=e269]:
+                - listitem [ref=e270] [cursor=pointer]:
+                  - generic [ref=e271]:
+                    - generic [ref=e273]: A
+                    - paragraph [ref=e275]: Inline CSS styling per component
+                - listitem [ref=e276] [cursor=pointer]:
+                  - generic [ref=e277]:
+                    - generic [ref=e279]: B
+                    - paragraph [ref=e281]: Centralized theme configuration object
+                - listitem [ref=e282] [cursor=pointer]:
+                  - generic [ref=e283]:
+                    - generic [ref=e285]: C
+                    - paragraph [ref=e287]: Manual DOM style manipulation
+                - listitem [ref=e288] [cursor=pointer]:
+                  - generic [ref=e289]:
+                    - generic [ref=e291]: D
+                    - paragraph [ref=e293]: Component lifecycle overrides
+            - button "Show More" [ref=e295] [cursor=pointer]
+          - generic [ref=e297]:
+            - generic [ref=e298] [cursor=pointer]: Login to View Explanation
+            - generic [ref=e299]:
+              - paragraph [ref=e300]:
+                - strong [ref=e301]: "1"
+                - text: /6
+              - generic [ref=e302]:
+                - button "< Previous" [disabled] [ref=e303] [cursor=pointer]
+                - button "Next >" [ref=e304] [cursor=pointer]
+        - generic [ref=e305]:
+          - generic [ref=e308] [cursor=pointer]: Comment
+          - generic [ref=e311]:
+            - generic [ref=e314]:
+              - link "K" [ref=e316] [cursor=pointer]:
+                - /url: https://www.geeksforgeeks.org/user/kartik/
+                - paragraph [ref=e318]: K
+              - link "author profile" [ref=e320] [cursor=pointer]:
+                - /url: https://www.geeksforgeeks.org/user/kartik/
+                - text: kartik
+            - button "like article" [ref=e323] [cursor=pointer]:
+              - figure [ref=e325]: "16"
+        - generic [ref=e328]:
+          - generic [ref=e331]:
+            - generic [ref=e332]: "Article Tags:"
+            - link "Web Technologies" [ref=e334] [cursor=pointer]:
+              - /url: https://www.geeksforgeeks.org/category/web-technologies/
+            - link "ReactJS" [ref=e336] [cursor=pointer]:
+              - /url: https://www.geeksforgeeks.org/category/web-technologies/reactjs/
+          - generic [ref=e337]:
+            - heading "Explore" [level=3] [ref=e338]
+            - list [ref=e340]:
+              - generic [ref=e343] [cursor=pointer]:
+                - generic [ref=e345]: React Fundamentals
+                - list:
+                  - listitem [ref=e347]:
+                    - link "React Introduction 3 min read" [ref=e348]:
+                      - /url: https://www.geeksforgeeks.org/reactjs/reactjs-introduction/
+                      - generic [ref=e349]: React Introduction
+                      - generic [ref=e350]: 3 min read
+                  - listitem [ref=e352]:
+                    - link "React Environment Setup 3 min read" [ref=e353]:
+                      - /url: https://www.geeksforgeeks.org/reactjs/reactjs-environment-setup/
+                      - generic [ref=e354]: React Environment Setup
+                      - generic [ref=e355]: 3 min read
+                  - listitem [ref=e357]:
+                    - link "React JS ReactDOM 2 min read" [ref=e358]:
+                      - /url: https://www.geeksforgeeks.org/reactjs/reactjs-reactdom/
+                      - generic [ref=e359]: React JS ReactDOM
+                      - generic [ref=e360]: 2 min read
+                  - listitem [ref=e362]:
+                    - link "React JSX 4 min read" [ref=e363]:
+                      - /url: https://www.geeksforgeeks.org/reactjs/reactjs-jsx-introduction/
+                      - generic [ref=e364]: React JSX
+                      - generic [ref=e365]: 4 min read
+                  - listitem [ref=e367]:
+                    - link "ReactJS Rendering Elements 3 min read" [ref=e368]:
+                      - /url: https://www.geeksforgeeks.org/reactjs/reactjs-rendering-elements/
+                      - generic [ref=e369]: ReactJS Rendering Elements
+                      - generic [ref=e370]: 3 min read
+                  - listitem [ref=e372]:
+                    - link "React Lists 3 min read" [ref=e373]:
+                      - /url: https://www.geeksforgeeks.org/reactjs/reactjs-lists/
+                      - generic [ref=e374]: React Lists
+                      - generic [ref=e375]: 3 min read
+                  - listitem [ref=e377]:
+                    - link "React Forms 4 min read" [ref=e378]:
+                      - /url: https://www.geeksforgeeks.org/reactjs/reactjs-forms/
+                      - generic [ref=e379]: React Forms
+                      - generic [ref=e380]: 4 min read
+                  - listitem [ref=e382]:
+                    - link "ReactJS Keys 4 min read" [ref=e383]:
+                      - /url: https://www.geeksforgeeks.org/reactjs/reactjs-keys/
+                      - generic [ref=e384]: ReactJS Keys
+                      - generic [ref=e385]: 4 min read
+              - generic [ref=e389] [cursor=pointer]:
+                - generic [ref=e391]: Components in React
+                - list:
+                  - listitem [ref=e393]:
+                    - link "React Components 3 min read" [ref=e394]:
+                      - /url: https://www.geeksforgeeks.org/reactjs/reactjs-components/
+                      - generic [ref=e395]: React Components
+                      - generic [ref=e396]: 3 min read
+                  - listitem [ref=e398]:
+                    - link "ReactJS Functional Components 3 min read" [ref=e399]:
+                      - /url: https://www.geeksforgeeks.org/reactjs/reactjs-functional-components/
+                      - generic [ref=e400]: ReactJS Functional Components
+                      - generic [ref=e401]: 3 min read
+                  - listitem [ref=e403]:
+                    - link "React Class Components 3 min read" [ref=e404]:
+                      - /url: https://www.geeksforgeeks.org/reactjs/reactjs-class-components/
+                      - generic [ref=e405]: React Class Components
+                      - generic [ref=e406]: 3 min read
+                  - listitem [ref=e408]:
+                    - link "ReactJS Pure Components 4 min read" [ref=e409]:
+                      - /url: https://www.geeksforgeeks.org/reactjs/reactjs-pure-components/
+                      - generic [ref=e410]: ReactJS Pure Components
+                      - generic [ref=e411]: 4 min read
+                  - listitem [ref=e413]:
+                    - link "ReactJS Container and Presentational Pattern in Components 2 min read" [ref=e414]:
+                      - /url: https://www.geeksforgeeks.org/reactjs/reactjs-container-and-presentational-pattern-in-components/
+                      - generic [ref=e415]: ReactJS Container and Presentational Pattern in Components
+                      - generic [ref=e416]: 2 min read
+                  - listitem [ref=e418]:
+                    - link "ReactJS PropTypes 5 min read" [ref=e419]:
+                      - /url: https://www.geeksforgeeks.org/reactjs/reactjs-proptypes/
+                      - generic [ref=e420]: ReactJS PropTypes
+                      - generic [ref=e421]: 5 min read
+                  - listitem [ref=e423]:
+                    - link "React Lifecycle 6 min read" [ref=e424]:
+                      - /url: https://www.geeksforgeeks.org/reactjs/reactjs-lifecycle-components/
+                      - generic [ref=e425]: React Lifecycle
+                      - generic [ref=e426]: 6 min read
+              - generic [ref=e430] [cursor=pointer]:
+                - generic [ref=e432]: React Hooks
+                - list:
+                  - listitem [ref=e434]:
+                    - link "React Hooks 7 min read" [ref=e435]:
+                      - /url: https://www.geeksforgeeks.org/reactjs/reactjs-hooks/
+                      - generic [ref=e436]: React Hooks
+                      - generic [ref=e437]: 7 min read
+                  - listitem [ref=e439]:
+                    - link "React useState Hook 4 min read" [ref=e440]:
+                      - /url: https://www.geeksforgeeks.org/reactjs/reactjs-usestate-hook/
+                      - generic [ref=e441]: React useState Hook
+                      - generic [ref=e442]: 4 min read
+                  - listitem [ref=e444]:
+                    - link "ReactJS useEffect Hook 5 min read" [ref=e445]:
+                      - /url: https://www.geeksforgeeks.org/reactjs/reactjs-useeffect-hook/
+                      - generic [ref=e446]: ReactJS useEffect Hook
+                      - generic [ref=e447]: 5 min read
+              - generic [ref=e451] [cursor=pointer]:
+                - generic [ref=e453]: Routing in React
+                - list:
+                  - listitem [ref=e455]:
+                    - link "React Router 5 min read" [ref=e456]:
+                      - /url: https://www.geeksforgeeks.org/reactjs/reactjs-router/
+                      - generic [ref=e457]: React Router
+                      - generic [ref=e458]: 5 min read
+                  - listitem [ref=e460]:
+                    - link "React JS Types of Routers 10 min read" [ref=e461]:
+                      - /url: https://www.geeksforgeeks.org/reactjs/reactjs-types-of-routers/
+                      - generic [ref=e462]: React JS Types of Routers
+                      - generic [ref=e463]: 10 min read
+              - generic [ref=e467] [cursor=pointer]:
+                - generic [ref=e469]: Advanced React Concepts
+                - list:
+                  - listitem [ref=e471]:
+                    - link "Lazy Loading in React 2 min read" [ref=e472]:
+                      - /url: https://www.geeksforgeeks.org/reactjs/lazy-loading-in-react-and-how-to-implement-it/
+                      - generic [ref=e473]: Lazy Loading in React
+                      - generic [ref=e474]: 2 min read
+                  - listitem [ref=e476]:
+                    - link "ReactJS Higher-Order Components 4 min read" [ref=e477]:
+                      - /url: https://www.geeksforgeeks.org/reactjs/react-js-higher-order-components/
+                      - generic [ref=e478]: ReactJS Higher-Order Components
+                      - generic [ref=e479]: 4 min read
+                  - listitem [ref=e481]:
+                    - link "Code Splitting in React 4 min read" [ref=e482]:
+                      - /url: https://www.geeksforgeeks.org/reactjs/code-splitting-in-react/
+                      - generic [ref=e483]: Code Splitting in React
+                      - generic [ref=e484]: 4 min read
+              - generic [ref=e488] [cursor=pointer]:
+                - generic [ref=e490]: React Projects
+                - list:
+                  - listitem [ref=e492]:
+                    - link "Create ToDo App using ReactJS 3 min read" [ref=e493]:
+                      - /url: https://www.geeksforgeeks.org/reactjs/create-todo-app-using-reactjs/
+                      - generic [ref=e494]: Create ToDo App using ReactJS
+                      - generic [ref=e495]: 3 min read
+                  - listitem [ref=e497]:
+                    - link "Create a Quiz App using ReactJS 4 min read" [ref=e498]:
+                      - /url: https://www.geeksforgeeks.org/reactjs/create-a-quiz-app-using-reactjs/
+                      - generic [ref=e499]: Create a Quiz App using ReactJS
+                      - generic [ref=e500]: 4 min read
+                  - listitem [ref=e502]:
+                    - link "Create a Coin Flipping App using ReactJS 3 min read" [ref=e503]:
+                      - /url: https://www.geeksforgeeks.org/reactjs/create-a-coin-flipping-app-using-reactjs/
+                      - generic [ref=e504]: Create a Coin Flipping App using ReactJS
+                      - generic [ref=e505]: 3 min read
+                  - listitem [ref=e507]:
+                    - link "How to create a Color-Box App using ReactJS? 4 min read" [ref=e508]:
+                      - /url: https://www.geeksforgeeks.org/reactjs/how-to-create-a-color-box-app-using-reactjs/
+                      - generic [ref=e509]: How to create a Color-Box App using ReactJS?
+                      - generic [ref=e510]: 4 min read
+                  - listitem [ref=e512]:
+                    - link "Dice Rolling App using ReactJS 4 min read" [ref=e513]:
+                      - /url: https://www.geeksforgeeks.org/reactjs/dice-rolling-app-using-reactjs/
+                      - generic [ref=e514]: Dice Rolling App using ReactJS
+                      - generic [ref=e515]: 4 min read
+                  - listitem [ref=e517]:
+                    - link "Guess the number with React 3 min read" [ref=e518]:
+                      - /url: https://www.geeksforgeeks.org/reactjs/guess-the-number-with-react/
+                      - generic [ref=e519]: Guess the number with React
+                      - generic [ref=e520]: 3 min read
+              - generic [ref=e524] [cursor=pointer]:
+                - generic [ref=e526]: Courses
+                - list:
+                  - listitem [ref=e528]:
+                    - link "React JS Course 2 min read" [ref=e529]:
+                      - /url: https://www.geeksforgeeks.org/courses/react-js-beginner-to-advance
+                      - generic [ref=e530]: React JS Course
+                      - generic [ref=e531]: 2 min read
+                  - listitem [ref=e533]:
+                    - link "MERN Full Stack Course 2 min read" [ref=e534]:
+                      - /url: https://www.geeksforgeeks.org/courses/full-stack-node
+                      - generic [ref=e535]: MERN Full Stack Course
+                      - generic [ref=e536]: 2 min read
+                  - listitem [ref=e538]:
+                    - link "DSA and System Design Course 2 min read" [ref=e539]:
+                      - /url: https://www.geeksforgeeks.org/courses/interviewe-101-data-structures-algorithm-system-design
+                      - generic [ref=e540]: DSA and System Design Course
+                      - generic [ref=e541]: 2 min read
+      - generic [ref=e544]:
+        - complementary [ref=e545]
+        - complementary
+        - generic:
+          - complementary
+          - complementary
+    - region "Notifications Alt+T"
+    - contentinfo [ref=e551]:
+      - generic [ref=e552]:
+        - generic [ref=e553]:
+          - link "GeeksforGeeks" [ref=e554] [cursor=pointer]:
+            - /url: https://www.geeksforgeeks.org/
+            - img "GeeksforGeeks" [ref=e555]
+          - generic [ref=e556]:
+            - generic [ref=e557]:
+              - img "location" [ref=e558]
+              - generic [ref=e559]: "Corporate & Communications Address:"
+            - generic [ref=e560]: A-143, 7th Floor, Sovereign Corporate Tower, Sector- 136, Noida, Uttar Pradesh (201305)
+          - generic [ref=e561]:
+            - generic [ref=e562]:
+              - img "location" [ref=e563]
+              - generic [ref=e564]: "Registered Address:"
+            - generic [ref=e565]: K 061, Tower K, Gulshan Vivante Apartment, Sector 137, Noida, Gautam Buddh Nagar, Uttar Pradesh, 201305
+          - generic [ref=e566]:
+            - generic [ref=e567]:
+              - link "GeeksforGeeks Linkedin" [ref=e568] [cursor=pointer]:
+                - /url: https://in.linkedin.com/company/geeksforgeeks
+              - link "GeeksforGeeks Instagram" [ref=e570] [cursor=pointer]:
+                - /url: https://www.instagram.com/geeks_for_geeks/
+              - link "GeeksforGeeks Twitter" [ref=e572] [cursor=pointer]:
+                - /url: https://twitter.com/geeksforgeeks
+              - link "GeeksforGeeks Facebook" [ref=e574] [cursor=pointer]:
+                - /url: https://www.facebook.com/geeksforgeeks.org/
+              - link "GeeksforGeeks Youtube" [ref=e576] [cursor=pointer]:
+                - /url: https://www.youtube.com/geeksforgeeksvideos
+            - generic [ref=e578]:
+              - link "GFG App on Play Store" [ref=e579] [cursor=pointer]:
+                - /url: https://geeksforgeeksapp.page.link/gfg-app
+                - img "GFG App on Play Store" [ref=e580]
+              - link "GFG App on App Store" [ref=e581] [cursor=pointer]:
+                - /url: https://geeksforgeeksapp.page.link/gfg-app
+                - img "GFG App on App Store" [ref=e582]
+        - generic [ref=e583]:
+          - list [ref=e584]:
+            - listitem [ref=e585]: Company
+            - listitem [ref=e586]:
+              - link "About Us" [ref=e587] [cursor=pointer]:
+                - /url: https://www.geeksforgeeks.org/about/
+            - listitem [ref=e588]:
+              - link "Legal" [ref=e589] [cursor=pointer]:
+                - /url: https://www.geeksforgeeks.org/legal/
+            - listitem [ref=e590]:
+              - link "Privacy Policy" [ref=e591] [cursor=pointer]:
+                - /url: https://www.geeksforgeeks.org/legal/privacy-policy/
+            - listitem [ref=e592]:
+              - link "Contact Us" [ref=e593] [cursor=pointer]:
+                - /url: https://www.geeksforgeeks.org/about/contact-us/
+            - listitem [ref=e594]:
+              - link "Advertise with us" [ref=e595] [cursor=pointer]:
+                - /url: https://www.geeksforgeeks.org/advertise-with-us/
+            - listitem [ref=e596]:
+              - link "GFG Corporate Solution" [ref=e597] [cursor=pointer]:
+                - /url: https://www.geeksforgeeks.org/gfg-corporate-solution/
+            - listitem [ref=e598]:
+              - link "Campus Training Program" [ref=e599] [cursor=pointer]:
+                - /url: https://www.geeksforgeeks.org/campus-training-program/
+          - list [ref=e600]:
+            - listitem [ref=e601]: Explore
+            - listitem [ref=e602]:
+              - link "POTD" [ref=e603] [cursor=pointer]:
+                - /url: https://www.geeksforgeeks.org/problem-of-the-day
+            - listitem [ref=e604]:
+              - link "Job-A-Thon" [ref=e605] [cursor=pointer]:
+                - /url: https://practice.geeksforgeeks.org/events/rec/job-a-thon/
+            - listitem [ref=e606]:
+              - link "Blogs" [ref=e607] [cursor=pointer]:
+                - /url: https://www.geeksforgeeks.org/category/blogs/?type=recent
+            - listitem [ref=e608]:
+              - link "Nation Skill Up" [ref=e609] [cursor=pointer]:
+                - /url: https://www.geeksforgeeks.org/nation-skill-up/
+          - list [ref=e610]:
+            - listitem [ref=e611]: Tutorials
+            - listitem [ref=e612]:
+              - link "Programming Languages" [ref=e613] [cursor=pointer]:
+                - /url: https://www.geeksforgeeks.org/computer-science-fundamentals/programming-language-tutorials/
+            - listitem [ref=e614]:
+              - link "DSA" [ref=e615] [cursor=pointer]:
+                - /url: https://www.geeksforgeeks.org/dsa/dsa-tutorial-learn-data-structures-and-algorithms/
+            - listitem [ref=e616]:
+              - link "Web Technology" [ref=e617] [cursor=pointer]:
+                - /url: https://www.geeksforgeeks.org/web-tech/web-technology/
+            - listitem [ref=e618]:
+              - link "AI, ML & Data Science" [ref=e619] [cursor=pointer]:
+                - /url: https://www.geeksforgeeks.org/machine-learning/ai-ml-and-data-science-tutorial-learn-ai-ml-and-data-science/
+            - listitem [ref=e620]:
+              - link "DevOps" [ref=e621] [cursor=pointer]:
+                - /url: https://www.geeksforgeeks.org/devops/devops-tutorial/
+            - listitem [ref=e622]:
+              - link "CS Core Subjects" [ref=e623] [cursor=pointer]:
+                - /url: https://www.geeksforgeeks.org/gate/gate-exam-tutorial/
+            - listitem [ref=e624]:
+              - link "Interview Preparation" [ref=e625] [cursor=pointer]:
+                - /url: https://www.geeksforgeeks.org/aptitude/interview-corner/
+            - listitem [ref=e626]:
+              - link "Software and Tools" [ref=e627] [cursor=pointer]:
+                - /url: https://www.geeksforgeeks.org/websites-apps/software-and-tools-a-to-z-list/
+          - list [ref=e628]:
+            - listitem [ref=e629]: Courses
+            - listitem [ref=e630]:
+              - link "ML and Data Science" [ref=e631] [cursor=pointer]:
+                - /url: https://www.geeksforgeeks.org/courses/category/machine-learning-data-science
+            - listitem [ref=e632]:
+              - link "DSA and Placements" [ref=e633] [cursor=pointer]:
+                - /url: https://www.geeksforgeeks.org/courses/category/dsa-placements
+            - listitem [ref=e634]:
+              - link "Web Development" [ref=e635] [cursor=pointer]:
+                - /url: https://www.geeksforgeeks.org/courses/category/development-testing
+            - listitem [ref=e636]:
+              - link "Programming Languages" [ref=e637] [cursor=pointer]:
+                - /url: https://www.geeksforgeeks.org/courses/category/programming-languages
+            - listitem [ref=e638]:
+              - link "DevOps & Cloud" [ref=e639] [cursor=pointer]:
+                - /url: https://www.geeksforgeeks.org/courses/category/cloud-devops
+            - listitem [ref=e640]:
+              - link "GATE" [ref=e641] [cursor=pointer]:
+                - /url: https://www.geeksforgeeks.org/courses/category/gate
+            - listitem [ref=e642]:
+              - link "Trending Technologies" [ref=e643] [cursor=pointer]:
+                - /url: https://www.geeksforgeeks.org/courses/category/trending-technologies/
+          - list [ref=e644]:
+            - listitem [ref=e645]: Videos
+            - listitem [ref=e646]:
+              - link "DSA" [ref=e647] [cursor=pointer]:
+                - /url: https://www.geeksforgeeks.org/videos/category/sde-sheet/
+            - listitem [ref=e648]:
+              - link "Python" [ref=e649] [cursor=pointer]:
+                - /url: https://www.geeksforgeeks.org/videos/category/python/
+            - listitem [ref=e650]:
+              - link "Java" [ref=e651] [cursor=pointer]:
+                - /url: https://www.geeksforgeeks.org/videos/category/java-w6y5f4/
+            - listitem [ref=e652]:
+              - link "C++" [ref=e653] [cursor=pointer]:
+                - /url: https://www.geeksforgeeks.org/videos/category/c/
+            - listitem [ref=e654]:
+              - link "Web Development" [ref=e655] [cursor=pointer]:
+                - /url: https://www.geeksforgeeks.org/videos/category/web-development/
+            - listitem [ref=e656]:
+              - link "Data Science" [ref=e657] [cursor=pointer]:
+                - /url: https://www.geeksforgeeks.org/videos/category/data-science/
+            - listitem [ref=e658]:
+              - link "CS Subjects" [ref=e659] [cursor=pointer]:
+                - /url: https://www.geeksforgeeks.org/videos/category/cs-subjects/
+          - list [ref=e660]:
+            - listitem [ref=e661]: Preparation Corner
+            - listitem [ref=e662]:
+              - link "Interview Corner" [ref=e663] [cursor=pointer]:
+                - /url: https://www.geeksforgeeks.org/interview-prep/interview-corner/
+            - listitem [ref=e664]:
+              - link "Aptitude" [ref=e665] [cursor=pointer]:
+                - /url: https://www.geeksforgeeks.org/aptitude/aptitude-questions-and-answers/
+            - listitem [ref=e666]:
+              - link "Puzzles" [ref=e667] [cursor=pointer]:
+                - /url: https://www.geeksforgeeks.org/aptitude/puzzles/
+            - listitem [ref=e668]:
+              - link "GfG 160" [ref=e669] [cursor=pointer]:
+                - /url: https://www.geeksforgeeks.org/courses/gfg-160-series
+            - listitem [ref=e670]:
+              - link "System Design" [ref=e671] [cursor=pointer]:
+                - /url: https://www.geeksforgeeks.org/system-design/system-design-tutorial/
+      - generic [ref=e673]:
+        - link "@GeeksforGeeks, Sanchhaya Education Private Limited" [ref=e674] [cursor=pointer]:
+          - /url: https://www.geeksforgeeks.org/
+        - text: ","
+        - link "All rights reserved" [ref=e675] [cursor=pointer]:
+          - /url: https://www.geeksforgeeks.org/copyright-information/
+  - alert [ref=e676]

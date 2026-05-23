@@ -1,0 +1,6 @@
+[    1995ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://reactgo.com/material-ui-tutorial/:0
+[    3369ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://reactgo.com/page-data/material-ui-tutorial/page-data.json:0
+[    4723ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://reactgo.com/material-ui-tutorial:0
+[    4914ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://reactgo.com/favicon.ico:0
+[    6812ms] [LOG] BSA ad connectivity issue! https://srv.buysellads.com/ads/CE7DV2JY.json?segment=placement:reactgocom&v=true due to SyntaxError: Failed to execute 'json' on 'Response': Unexpected end of JSON input
+    at https://m.servedby-buysellads.com/monetization.js:1:753 @ https://m.servedby-buysellads.com/monetization.js:0

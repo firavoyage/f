@@ -1,0 +1,2 @@
+[    2679ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://www.w3schools.com/react/react_materialui.asp:0
+[    3428ms] [INFO] Slow network is detected. See https://www.chromestatus.com/feature/5636954674692096 for more details. Fallback font will be used while loading: https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2 @ https://www.w3schools.com/react/react_materialui.asp:81

@@ -1,0 +1,23 @@
+- generic [ref=e5]:
+  - generic [ref=e7]:
+    - link "Reactgo" [ref=e8] [cursor=pointer]:
+      - /url: /
+    - navigation [ref=e9]:
+      - link "Angular" [ref=e10] [cursor=pointer]:
+        - /url: /tutorials/angular/
+      - link "React" [ref=e11] [cursor=pointer]:
+        - /url: /tutorials/react/
+      - link "Vue.js" [ref=e12] [cursor=pointer]:
+        - /url: /tutorials/vuejs/
+      - link "Reactrouter" [ref=e13] [cursor=pointer]:
+        - /url: /reactrouter/tutorial/
+      - link "Algorithms" [ref=e14] [cursor=pointer]:
+        - /url: /tutorials/algorithms/
+      - link "GraphQL" [ref=e15] [cursor=pointer]:
+        - /url: /tutorials/graphql/
+    - link "GitHub" [ref=e16] [cursor=pointer]:
+      - /url: https://github.com/saigowthamr/
+      - img [ref=e17]
+  - generic [ref=e21]:
+    - heading "↩ NOT FOUND ↩" [level=1] [ref=e22]
+    - paragraph [ref=e23]: You just hit a route that doesn't exist... the sadness.

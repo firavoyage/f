@@ -1,0 +1,251 @@
+- generic [ref=e2]:
+  - navigation [ref=e3]:
+    - combobox "Submit" [ref=e6]:
+      - search [ref=e7]:
+        - generic "Submit" [ref=e9]:
+          - button "Submit" [ref=e10] [cursor=pointer]:
+            - img [ref=e11]
+        - searchbox "Submit" [ref=e14]
+    - link "freeCodeCamp.org" [ref=e17] [cursor=pointer]:
+      - /url: https://www.freecodecamp.org/news/
+      - img "freeCodeCamp.org" [ref=e18]
+    - generic [ref=e20]:
+      - button "Menu Menu" [ref=e21] [cursor=pointer]:
+        - generic [ref=e22]: Menu
+        - text: Menu
+      - link "Donate" [ref=e23] [cursor=pointer]:
+        - /url: https://www.freecodecamp.org/donate/
+  - link "Learn to code — free 3,000-hour curriculum" [ref=e24] [cursor=pointer]:
+    - /url: https://www.freecodecamp.org/
+    - paragraph [ref=e25]: Learn to code — free 3,000-hour curriculum
+  - generic [ref=e26]:
+    - main [ref=e27]:
+      - generic [ref=e29]:
+        - heading "404" [level=1] [ref=e30]
+        - paragraph [ref=e31]: Page not found
+        - link "Go to the front page →" [ref=e32] [cursor=pointer]:
+          - /url: https://www.freecodecamp.org/news/
+    - complementary [ref=e33]:
+      - generic [ref=e35]:
+        - article [ref=e36]:
+          - 'link "Product Experimentation for Collaborative AI Features: Cluster Randomization for LLM-Based Tools in Python" [ref=e37] [cursor=pointer]':
+            - /url: /news/cluster-randomization-for-llm-based-tools-in-python/
+            - 'img "Product Experimentation for Collaborative AI Features: Cluster Randomization for LLM-Based Tools in Python" [ref=e38]'
+          - generic [ref=e39]:
+            - generic [ref=e41]:
+              - link "#product experimentation" [ref=e43] [cursor=pointer]:
+                - /url: /news/tag/product-experimentation/
+              - 'heading "Product Experimentation for Collaborative AI Features: Cluster Randomization for LLM-Based Tools in Python" [level=2] [ref=e44]':
+                - 'link "Product Experimentation for Collaborative AI Features: Cluster Randomization for LLM-Based Tools in Python" [ref=e45] [cursor=pointer]':
+                  - /url: /news/cluster-randomization-for-llm-based-tools-in-python/
+            - list [ref=e47]:
+              - listitem [ref=e48]:
+                - link "Rudrendu Paul" [ref=e49] [cursor=pointer]:
+                  - /url: /news/author/rudrendupaul/
+                  - img "Rudrendu Paul" [ref=e50]
+                - generic [ref=e51]:
+                  - link "Rudrendu Paul" [ref=e52] [cursor=pointer]:
+                    - /url: /news/author/rudrendupaul/
+                  - time [ref=e53]: 16 hours ago
+        - article [ref=e54]:
+          - 'link "How to Use Dart Cloud Functions and the Firebase Admin SDK: A Handbook for Developers" [ref=e55] [cursor=pointer]':
+            - /url: /news/how-to-use-dart-cloud-functions-and-the-firebase-admin-sdk/
+            - 'img "How to Use Dart Cloud Functions and the Firebase Admin SDK: A Handbook for Developers" [ref=e56]'
+          - generic [ref=e57]:
+            - generic [ref=e59]:
+              - link "#Flutter" [ref=e61] [cursor=pointer]:
+                - /url: /news/tag/flutter/
+              - 'heading "How to Use Dart Cloud Functions and the Firebase Admin SDK: A Handbook for Developers" [level=2] [ref=e62]':
+                - 'link "How to Use Dart Cloud Functions and the Firebase Admin SDK: A Handbook for Developers" [ref=e63] [cursor=pointer]':
+                  - /url: /news/how-to-use-dart-cloud-functions-and-the-firebase-admin-sdk/
+            - list [ref=e65]:
+              - listitem [ref=e66]:
+                - link "Atuoha Anthony" [ref=e67] [cursor=pointer]:
+                  - /url: /news/author/atuoha/
+                  - img "Atuoha Anthony" [ref=e68]
+                - generic [ref=e69]:
+                  - link "Atuoha Anthony" [ref=e70] [cursor=pointer]:
+                    - /url: /news/author/atuoha/
+                  - time [ref=e71]: 17 hours ago
+        - article [ref=e72]:
+          - link "How to Build an AI-Powered Medical Image De-Identification Pipeline for Clinical Research" [ref=e73] [cursor=pointer]:
+            - /url: /news/build-ai-image-de-identification-for-clinical-research/
+            - img "How to Build an AI-Powered Medical Image De-Identification Pipeline for Clinical Research" [ref=e74]
+          - generic [ref=e75]:
+            - generic [ref=e77]:
+              - link "#healthcare" [ref=e79] [cursor=pointer]:
+                - /url: /news/tag/healthcare/
+              - heading "How to Build an AI-Powered Medical Image De-Identification Pipeline for Clinical Research" [level=2] [ref=e80]:
+                - link "How to Build an AI-Powered Medical Image De-Identification Pipeline for Clinical Research" [ref=e81] [cursor=pointer]:
+                  - /url: /news/build-ai-image-de-identification-for-clinical-research/
+            - list [ref=e83]:
+              - listitem [ref=e84]:
+                - link "Lakshmi Mahabaleshwara" [ref=e85] [cursor=pointer]:
+                  - /url: /news/author/lakshmi-mahabalesh/
+                  - img "Lakshmi Mahabaleshwara" [ref=e86]
+                - generic [ref=e87]:
+                  - link "Lakshmi Mahabaleshwara" [ref=e88] [cursor=pointer]:
+                    - /url: /news/author/lakshmi-mahabalesh/
+                  - time [ref=e89]: 20 hours ago
+        - article [ref=e90]:
+          - 'link "How to Build a Software Factory with Claude Code: From Vibe Coding to Agentic Development" [ref=e91] [cursor=pointer]':
+            - /url: /news/how-to-build-software-factory-with-claude-code/
+            - 'img "How to Build a Software Factory with Claude Code: From Vibe Coding to Agentic Development" [ref=e92]'
+          - generic [ref=e93]:
+            - generic [ref=e95]:
+              - link "#AI" [ref=e97] [cursor=pointer]:
+                - /url: /news/tag/ai/
+              - 'heading "How to Build a Software Factory with Claude Code: From Vibe Coding to Agentic Development" [level=2] [ref=e98]':
+                - 'link "How to Build a Software Factory with Claude Code: From Vibe Coding to Agentic Development" [ref=e99] [cursor=pointer]':
+                  - /url: /news/how-to-build-software-factory-with-claude-code/
+            - list [ref=e101]:
+              - listitem [ref=e102]:
+                - link "Qudrat Ullah" [ref=e103] [cursor=pointer]:
+                  - /url: /news/author/qudratullahdev/
+                  - img "Qudrat Ullah" [ref=e104]
+                - generic [ref=e105]:
+                  - link "Qudrat Ullah" [ref=e106] [cursor=pointer]:
+                    - /url: /news/author/qudratullahdev/
+                  - time [ref=e107]: 20 hours ago
+  - contentinfo [ref=e108]:
+    - generic [ref=e109]:
+      - generic [ref=e110]:
+        - paragraph [ref=e111]: "freeCodeCamp is a donor-supported tax-exempt 501(c)(3) charity organization (United States Federal Tax Identification Number: 82-0779546)"
+        - paragraph [ref=e112]: "Our mission: to help people learn to code for free. We accomplish this by creating thousands of videos, articles, and interactive coding lessons - all freely available to the public."
+        - paragraph [ref=e113]: Donations to freeCodeCamp go toward our education initiatives, and help pay for servers, services, and staff.
+        - paragraph [ref=e114]:
+          - text: You can
+          - link "make a tax-deductible donation here" [ref=e115] [cursor=pointer]:
+            - /url: https://www.freecodecamp.org/donate/
+          - text: .
+      - generic [ref=e116]:
+        - heading "Trending Books and Handbooks" [level=2] [ref=e117]
+        - list "Trending Books and Handbooks" [ref=e118]:
+          - listitem [ref=e119]:
+            - link "REST APIs" [ref=e120] [cursor=pointer]:
+              - /url: https://www.freecodecamp.org/news/build-consume-and-document-a-rest-api/
+          - listitem [ref=e121]:
+            - link "Clean Code" [ref=e122] [cursor=pointer]:
+              - /url: https://www.freecodecamp.org/news/how-to-write-clean-code/
+          - listitem [ref=e123]:
+            - link "TypeScript" [ref=e124] [cursor=pointer]:
+              - /url: https://www.freecodecamp.org/news/learn-typescript-with-react-handbook/
+          - listitem [ref=e125]:
+            - link "JavaScript" [ref=e126] [cursor=pointer]:
+              - /url: https://www.freecodecamp.org/news/learn-javascript-for-beginners/
+          - listitem [ref=e127]:
+            - link "AI Chatbots" [ref=e128] [cursor=pointer]:
+              - /url: https://www.freecodecamp.org/news/how-to-build-an-ai-chatbot-with-redis-python-and-gpt/
+          - listitem [ref=e129]:
+            - link "Command Line" [ref=e130] [cursor=pointer]:
+              - /url: https://www.freecodecamp.org/news/command-line-for-beginners/
+          - listitem [ref=e131]:
+            - link "GraphQL APIs" [ref=e132] [cursor=pointer]:
+              - /url: https://www.freecodecamp.org/news/building-consuming-and-documenting-a-graphql-api/
+          - listitem [ref=e133]:
+            - link "CSS Transforms" [ref=e134] [cursor=pointer]:
+              - /url: https://www.freecodecamp.org/news/complete-guide-to-css-transform-functions-and-properties/
+          - listitem [ref=e135]:
+            - link "Access Control" [ref=e136] [cursor=pointer]:
+              - /url: https://www.freecodecamp.org/news/how-to-build-scalable-access-control-for-your-web-app/
+          - listitem [ref=e137]:
+            - link "REST API Design" [ref=e138] [cursor=pointer]:
+              - /url: https://www.freecodecamp.org/news/rest-api-design-best-practices-build-a-rest-api/
+          - listitem [ref=e139]:
+            - link "PHP" [ref=e140] [cursor=pointer]:
+              - /url: https://www.freecodecamp.org/news/the-php-handbook/
+          - listitem [ref=e141]:
+            - link "Java" [ref=e142] [cursor=pointer]:
+              - /url: https://www.freecodecamp.org/news/the-java-handbook/
+          - listitem [ref=e143]:
+            - link "Linux" [ref=e144] [cursor=pointer]:
+              - /url: https://www.freecodecamp.org/news/learn-linux-for-beginners-book-basic-to-advanced/
+          - listitem [ref=e145]:
+            - link "React" [ref=e146] [cursor=pointer]:
+              - /url: https://www.freecodecamp.org/news/react-for-beginners-handbook/
+          - listitem [ref=e147]:
+            - link "CI/CD" [ref=e148] [cursor=pointer]:
+              - /url: https://www.freecodecamp.org/news/learn-continuous-integration-delivery-and-deployment/
+          - listitem [ref=e149]:
+            - link "Docker" [ref=e150] [cursor=pointer]:
+              - /url: https://www.freecodecamp.org/news/the-docker-handbook/
+          - listitem [ref=e151]:
+            - link "Golang" [ref=e152] [cursor=pointer]:
+              - /url: https://www.freecodecamp.org/news/learn-golang-handbook/
+          - listitem [ref=e153]:
+            - link "Python" [ref=e154] [cursor=pointer]:
+              - /url: https://www.freecodecamp.org/news/the-python-handbook/
+          - listitem [ref=e155]:
+            - link "Node.js" [ref=e156] [cursor=pointer]:
+              - /url: https://www.freecodecamp.org/news/get-started-with-nodejs/
+          - listitem [ref=e157]:
+            - link "Todo APIs" [ref=e158] [cursor=pointer]:
+              - /url: https://www.freecodecamp.org/news/build-crud-operations-with-dotnet-core-handbook/
+          - listitem [ref=e159]:
+            - link "JavaScript Classes" [ref=e160] [cursor=pointer]:
+              - /url: https://www.freecodecamp.org/news/how-to-use-classes-in-javascript-handbook/
+          - listitem [ref=e161]:
+            - link "Front-End Libraries" [ref=e162] [cursor=pointer]:
+              - /url: https://www.freecodecamp.org/news/front-end-javascript-development-react-angular-vue-compared/
+          - listitem [ref=e163]:
+            - link "Express and Node.js" [ref=e164] [cursor=pointer]:
+              - /url: https://www.freecodecamp.org/news/the-express-handbook/
+          - listitem [ref=e165]:
+            - link "Python Code Examples" [ref=e166] [cursor=pointer]:
+              - /url: https://www.freecodecamp.org/news/python-code-examples-sample-script-coding-tutorial-for-beginners/
+          - listitem [ref=e167]:
+            - link "Clustering in Python" [ref=e168] [cursor=pointer]:
+              - /url: https://www.freecodecamp.org/news/clustering-in-python-a-machine-learning-handbook/
+          - listitem [ref=e169]:
+            - link "Software Architecture" [ref=e170] [cursor=pointer]:
+              - /url: https://www.freecodecamp.org/news/an-introduction-to-software-architecture-patterns/
+          - listitem [ref=e171]:
+            - link "Programming Fundamentals" [ref=e172] [cursor=pointer]:
+              - /url: https://www.freecodecamp.org/news/what-is-programming-tutorial-for-beginners/
+          - listitem [ref=e173]:
+            - link "Coding Career Preparation" [ref=e174] [cursor=pointer]:
+              - /url: https://www.freecodecamp.org/news/learn-to-code-book/
+          - listitem [ref=e175]:
+            - link "Full-Stack Developer Guide" [ref=e176] [cursor=pointer]:
+              - /url: https://www.freecodecamp.org/news/become-a-full-stack-developer-and-get-a-job/
+          - listitem [ref=e177]:
+            - link "Python for JavaScript Devs" [ref=e178] [cursor=pointer]:
+              - /url: https://www.freecodecamp.org/news/learn-python-for-javascript-developers-handbook/
+        - generic [ref=e180]:
+          - heading "Mobile App" [level=2] [ref=e181]
+          - list "Mobile App" [ref=e183]:
+            - listitem [ref=e184]:
+              - link "Download on the App Store" [ref=e185] [cursor=pointer]:
+                - /url: https://apps.apple.com/us/app/freecodecamp/id6446908151?itsct=apps_box_link&itscg=30200
+                - img "Download on the App Store" [ref=e186]
+            - listitem [ref=e187]:
+              - link "Get it on Google Play" [ref=e188] [cursor=pointer]:
+                - /url: https://play.google.com/store/apps/details?id=org.freecodecamp
+                - img "Get it on Google Play" [ref=e189]
+    - generic [ref=e190]:
+      - heading "Our Charity" [level=2] [ref=e191]
+      - generic [ref=e192]:
+        - link "Publication powered by Hashnode" [ref=e193] [cursor=pointer]:
+          - /url: https://hashnode.com/
+        - link "About" [ref=e194] [cursor=pointer]:
+          - /url: https://www.freecodecamp.org/news/about/
+        - link "Alumni Network" [ref=e195] [cursor=pointer]:
+          - /url: https://www.linkedin.com/school/free-code-camp/people/
+        - link "Open Source" [ref=e196] [cursor=pointer]:
+          - /url: https://github.com/freeCodeCamp/
+        - link "Shop" [ref=e197] [cursor=pointer]:
+          - /url: https://www.freecodecamp.org/news/shop/
+        - link "Support" [ref=e198] [cursor=pointer]:
+          - /url: https://www.freecodecamp.org/news/support/
+        - link "Sponsors" [ref=e199] [cursor=pointer]:
+          - /url: https://www.freecodecamp.org/news/sponsors/
+        - link "Academic Honesty" [ref=e200] [cursor=pointer]:
+          - /url: https://www.freecodecamp.org/news/academic-honesty-policy/
+        - link "Code of Conduct" [ref=e201] [cursor=pointer]:
+          - /url: https://www.freecodecamp.org/news/code-of-conduct/
+        - link "Privacy Policy" [ref=e202] [cursor=pointer]:
+          - /url: https://www.freecodecamp.org/news/privacy-policy/
+        - link "Terms of Service" [ref=e203] [cursor=pointer]:
+          - /url: https://www.freecodecamp.org/news/terms-of-service/
+        - link "Copyright Policy" [ref=e204] [cursor=pointer]:
+          - /url: https://www.freecodecamp.org/news/copyright-policy/

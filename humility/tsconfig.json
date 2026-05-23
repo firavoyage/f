@@ -13,6 +13,8 @@
     "maxNodeModuleJsDepth": 1,
     "noEmit": true,
 
+    "jsx": "react-jsx",
+
     "strict": true,
     "noImplicitAny": false, // override strict
     "strictNullChecks": true,

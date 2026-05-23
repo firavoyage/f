@@ -1,0 +1,19 @@
+[    1000ms] [LOG] %c
+
+███╗   ███╗ ██╗   ██╗ ██████╗
+████╗ ████║ ██║   ██║   ██╔═╝
+██╔████╔██║ ██║   ██║   ██║
+██║╚██╔╝██║ ██║   ██║   ██║
+██║ ╚═╝ ██║ ╚██████╔╝ ██████╗
+╚═╝     ╚═╝  ╚═════╝  ╚═════╝
+
+Tip: you can access the documentation `theme` object directly in the console.
+ font-family:monospace;color:#1976d2;font-size:12px; @ https://mui.com/_next/static/chunks/pages/_app-dce25b7451854be9.js:4
+[    1215ms] [VERBOSE] [DOM] Password field is not contained in a form: (More info: https://goo.gl/9p2vKq) %o @ https://mui.com/material-ui/react-text-field/:0
+[    1215ms] [VERBOSE] [DOM] Password field is not contained in a form: (More info: https://goo.gl/9p2vKq) %o @ https://mui.com/material-ui/react-text-field/:0
+[    1215ms] [VERBOSE] [DOM] Password field is not contained in a form: (More info: https://goo.gl/9p2vKq) %o @ https://mui.com/material-ui/react-text-field/:0
+[    1215ms] [VERBOSE] [DOM] Multiple forms should be contained in their own form elements; break up complex forms into ones that represent a single action: (More info: https://goo.gl/9p2vKq) %o @ https://mui.com/material-ui/react-text-field/:0
+[    2379ms] Uncaught TypeError: Cannot read properties of null (reading 'src')
+    at getUrlVar (https://cdn.carbonads.com/carbon.js?serve=CKYIL27L&placement=material-uicom:0:12302)
+    at init (https://cdn.carbonads.com/carbon.js?serve=CKYIL27L&placement=material-uicom:0:7027)
+    at <anonymous> (https://cdn.carbonads.com/carbon.js?serve=CKYIL27L&placement=material-uicom:0:37863)

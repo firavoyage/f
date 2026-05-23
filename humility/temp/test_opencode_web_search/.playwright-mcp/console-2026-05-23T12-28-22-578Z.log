@@ -1,0 +1,11 @@
+[    4330ms] [LOG] %c
+
+███╗   ███╗ ██╗   ██╗ ██████╗
+████╗ ████║ ██║   ██║   ██╔═╝
+██╔████╔██║ ██║   ██║   ██║
+██║╚██╔╝██║ ██║   ██║   ██║
+██║ ╚═╝ ██║ ╚██████╔╝ ██████╗
+╚═╝     ╚═╝  ╚═════╝  ╚═════╝
+
+Tip: you can access the documentation `theme` object directly in the console.
+ font-family:monospace;color:#1976d2;font-size:12px; @ https://mui.com/_next/static/chunks/pages/_app-dce25b7451854be9.js:4

@@ -1,0 +1,1661 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - link "Skip to content" [ref=e3] [cursor=pointer]:
+      - /url: "#main-content"
+    - generic [ref=e4]:
+      - banner [ref=e5]:
+        - generic [ref=e6]:
+          - button "Open main navigation" [ref=e7] [cursor=pointer]:
+            - img [ref=e8]
+          - link "Go to the homepage" [ref=e12] [cursor=pointer]:
+            - /url: /
+            - img [ref=e13]
+          - generic [ref=e16]:
+            - link "🚀 Material UI and MUI X v9 are out! Check out the announcement blogpost." [ref=e17] [cursor=pointer]:
+              - /url: /blog/introducing-mui-v9/
+            - button "Search…" [ref=e18] [cursor=pointer]:
+              - img [ref=e19]
+              - generic [ref=e21]: Search…
+              - generic [ref=e22]: Ctrl+K
+            - link "GitHub repository" [ref=e23] [cursor=pointer]:
+              - /url: https://github.com/mui/material-ui
+              - img [ref=e24]
+            - button "3 unread notifications" [ref=e26] [cursor=pointer]:
+              - generic [ref=e27]:
+                - img [ref=e28]
+                - generic [ref=e30]: "3"
+            - button "Toggle settings drawer" [ref=e31] [cursor=pointer]:
+              - img [ref=e32]
+      - navigation "documentation"
+      - main [ref=e35]:
+        - generic [ref=e36]:
+          - generic [ref=e37]:
+            - generic [ref=e38]:
+              - heading "Button" [level=1] [ref=e39]
+              - paragraph [ref=e40]: Buttons allow users to take actions, and make choices, with a single tap.
+              - paragraph [ref=e41]: "Buttons communicate actions that users can take. They are typically placed throughout your UI, in places like:"
+              - list [ref=e42]:
+                - listitem [ref=e43]: Modal windows
+                - listitem [ref=e44]: Forms
+                - listitem [ref=e45]: Cards
+                - listitem [ref=e46]: Toolbars
+            - list [ref=e47]:
+              - listitem [ref=e48]:
+                - link "View as Markdown" [ref=e49] [cursor=pointer]:
+                  - /url: /material-ui/react-button.md
+                  - img [ref=e50]
+                  - generic [ref=e52]: View as Markdown
+              - listitem [ref=e53]:
+                - link "Feedback" [ref=e54] [cursor=pointer]:
+                  - /url: https://github.com/mui/material-ui/labels/scope%3A%20button
+                  - img [ref=e55]
+                  - generic [ref=e57]: Feedback
+              - listitem [ref=e58]:
+                - link "Bundle size" [ref=e59] [cursor=pointer]:
+                  - /url: https://bundlephobia.com/package/@mui/material@latest
+                  - img [ref=e60]
+                  - generic [ref=e64]: Bundle size
+              - listitem [ref=e65]:
+                - link "Source" [ref=e66] [cursor=pointer]:
+                  - /url: https://github.com/mui/material-ui/tree/v9.0.1/packages/mui-material/src/Button
+                  - img [ref=e67]
+                  - generic [ref=e69]: Source
+              - listitem [ref=e70]:
+                - link "WAI-ARIA" [ref=e71] [cursor=pointer]:
+                  - /url: https://www.w3.org/WAI/ARIA/apg/patterns/button/
+                  - img [ref=e72]
+                  - generic [ref=e77]: WAI-ARIA
+              - listitem [ref=e78]:
+                - link "Material Design" [ref=e79] [cursor=pointer]:
+                  - /url: https://m2.material.io/components/buttons
+                  - img [ref=e80]
+                  - generic [ref=e85]: Material Design
+              - listitem [ref=e86]:
+                - link "Figma" [ref=e87] [cursor=pointer]:
+                  - /url: https://mui.com/store/items/figma-react/?utm_source=docs&utm_medium=referral&utm_campaign=component-link-header
+                  - img [ref=e88]
+                  - generic [ref=e95]: Figma
+              - listitem [ref=e96]:
+                - link "Sketch" [ref=e97] [cursor=pointer]:
+                  - /url: https://mui.com/store/items/sketch-react/?utm_source=docs&utm_medium=referral&utm_campaign=component-link-header
+                  - img [ref=e98]
+                  - generic [ref=e107]: Sketch
+            - generic [ref=e108]:
+              - heading "Basic button" [level=2] [ref=e109]:
+                - link "Basic button" [ref=e110] [cursor=pointer]:
+                  - /url: "#basic-button"
+                - button "Post a comment" [ref=e111] [cursor=pointer]:
+                  - img
+              - paragraph [ref=e112]:
+                - text: The
+                - code [ref=e113]: Button
+                - text: "comes with three variants: text (default), contained, and outlined."
+            - generic [ref=e114]:
+              - generic [ref=e115]:
+                - button "A generic container that is programmatically focused to test keyboard navigation of our components."
+                - generic [ref=e116]:
+                  - button "Text" [ref=e117] [cursor=pointer]
+                  - button "Contained" [ref=e118] [cursor=pointer]
+                  - button "Outlined" [ref=e119] [cursor=pointer]
+              - toolbar "demo source" [ref=e121]:
+                - button "Edit in Chat" [ref=e122] [cursor=pointer]:
+                  - img [ref=e123]
+                  - text: Edit in Chat
+                - generic [ref=e125]:
+                  - button "Expand code" [ref=e126] [cursor=pointer]
+                  - button "Edit in StackBlitz" [ref=e127] [cursor=pointer]:
+                    - img [ref=e128]
+                  - button "Edit in CodeSandbox" [ref=e130] [cursor=pointer]:
+                    - img [ref=e131]
+                  - button "Copy the source" [ref=e133] [cursor=pointer]:
+                    - img [ref=e134]
+                  - button "Reset focus to test keyboard navigation" [ref=e136] [cursor=pointer]:
+                    - img [ref=e137]
+                  - button "Reset demo" [ref=e139] [cursor=pointer]:
+                    - img [ref=e140]
+                  - button "See more" [ref=e142] [cursor=pointer]:
+                    - img [ref=e143]
+              - generic [ref=e151]:
+                - generic [ref=e152]:
+                  - generic [ref=e153]: Edit code
+                  - generic [ref=e154]:
+                    - generic:
+                      - code:
+                        - generic:
+                          - generic: <Button
+                          - text: variant
+                          - generic: ="text"
+                          - text: ">"
+                        - text: Text
+                        - generic:
+                          - generic: </Button
+                          - text: ">"
+                        - generic:
+                          - generic: <Button
+                          - text: variant
+                          - generic: ="contained"
+                          - text: ">"
+                        - text: Contained
+                        - generic:
+                          - generic: </Button
+                          - text: ">"
+                        - generic:
+                          - generic: <Button
+                          - text: variant
+                          - generic: ="outlined"
+                          - text: ">"
+                        - text: Outlined
+                        - generic:
+                          - generic: </Button
+                          - text: ">"
+                    - textbox "Edit code" [ref=e155]: <Button variant="text">Text</Button> <Button variant="contained">Contained</Button> <Button variant="outlined">Outlined</Button>
+                - generic: Press Enter to start editing
+            - generic [ref=e156]:
+              - heading "Text button" [level=3] [ref=e157]:
+                - link "Text button" [ref=e158] [cursor=pointer]:
+                  - /url: "#text-button"
+                - button "Post a comment" [ref=e159] [cursor=pointer]:
+                  - img
+              - paragraph [ref=e160]:
+                - link "Text buttons" [ref=e161] [cursor=pointer]:
+                  - /url: https://m2.material.io/components/buttons#text-button
+                - text: "are typically used for less-pronounced actions, including those located: in dialogs, in cards. In cards, text buttons help maintain an emphasis on card content."
+            - generic [ref=e162]:
+              - generic [ref=e163]:
+                - button "A generic container that is programmatically focused to test keyboard navigation of our components."
+                - generic [ref=e164]:
+                  - button "Primary" [ref=e165] [cursor=pointer]
+                  - button "Disabled" [disabled]
+                  - link "Link" [ref=e166] [cursor=pointer]:
+                    - /url: "#text-buttons"
+              - toolbar "demo source" [ref=e168]:
+                - button "Edit in Chat" [ref=e169] [cursor=pointer]:
+                  - img [ref=e170]
+                  - text: Edit in Chat
+                - generic [ref=e172]:
+                  - button "Expand code" [ref=e173] [cursor=pointer]
+                  - button "Edit in StackBlitz" [ref=e174] [cursor=pointer]:
+                    - img [ref=e175]
+                  - button "Edit in CodeSandbox" [ref=e177] [cursor=pointer]:
+                    - img [ref=e178]
+                  - button "Copy the source" [ref=e180] [cursor=pointer]:
+                    - img [ref=e181]
+                  - button "Reset focus to test keyboard navigation" [ref=e183] [cursor=pointer]:
+                    - img [ref=e184]
+                  - button "Reset demo" [ref=e186] [cursor=pointer]:
+                    - img [ref=e187]
+                  - button "See more" [ref=e189] [cursor=pointer]:
+                    - img [ref=e190]
+              - generic [ref=e198]:
+                - generic [ref=e199]:
+                  - generic [ref=e200]: Edit code
+                  - generic [ref=e201]:
+                    - generic:
+                      - code:
+                        - generic:
+                          - generic: <Button
+                          - text: ">"
+                        - text: Primary
+                        - generic:
+                          - generic: </Button
+                          - text: ">"
+                        - generic:
+                          - generic: <Button
+                          - text: disabled>
+                        - text: Disabled
+                        - generic:
+                          - generic: </Button
+                          - text: ">"
+                        - generic:
+                          - generic: <Button
+                          - text: href
+                          - generic: ="#text-buttons"
+                          - text: ">"
+                        - text: Link
+                        - generic:
+                          - generic: </Button
+                          - text: ">"
+                    - textbox "Edit code" [ref=e202]: <Button>Primary</Button> <Button disabled>Disabled</Button> <Button href="#text-buttons">Link</Button>
+                - generic: Press Enter to start editing
+            - generic [ref=e203]:
+              - heading "Contained button" [level=3] [ref=e204]:
+                - link "Contained button" [ref=e205] [cursor=pointer]:
+                  - /url: "#contained-button"
+                - button "Post a comment" [ref=e206] [cursor=pointer]:
+                  - img
+              - paragraph [ref=e207]:
+                - link "Contained buttons" [ref=e208] [cursor=pointer]:
+                  - /url: https://m2.material.io/components/buttons#contained-button
+                - text: are high-emphasis, distinguished by their use of elevation and fill. They contain actions that are primary to your app.
+            - generic [ref=e209]:
+              - generic [ref=e210]:
+                - button "A generic container that is programmatically focused to test keyboard navigation of our components."
+                - generic [ref=e211]:
+                  - button "Contained" [ref=e212] [cursor=pointer]
+                  - button "Disabled" [disabled]
+                  - link "Link" [ref=e213] [cursor=pointer]:
+                    - /url: "#contained-buttons"
+              - toolbar "demo source" [ref=e215]:
+                - button "Edit in Chat" [ref=e216] [cursor=pointer]:
+                  - img [ref=e217]
+                  - text: Edit in Chat
+                - generic [ref=e219]:
+                  - button "Expand code" [ref=e220] [cursor=pointer]
+                  - button "Edit in StackBlitz" [ref=e221] [cursor=pointer]:
+                    - img [ref=e222]
+                  - button "Edit in CodeSandbox" [ref=e224] [cursor=pointer]:
+                    - img [ref=e225]
+                  - button "Copy the source" [ref=e227] [cursor=pointer]:
+                    - img [ref=e228]
+                  - button "Reset focus to test keyboard navigation" [ref=e230] [cursor=pointer]:
+                    - img [ref=e231]
+                  - button "Reset demo" [ref=e233] [cursor=pointer]:
+                    - img [ref=e234]
+                  - button "See more" [ref=e236] [cursor=pointer]:
+                    - img [ref=e237]
+              - generic [ref=e245]:
+                - generic [ref=e246]:
+                  - generic [ref=e247]: Edit code
+                  - generic [ref=e248]:
+                    - generic:
+                      - code:
+                        - generic:
+                          - generic: <Button
+                          - text: variant
+                          - generic: ="contained"
+                          - text: ">"
+                        - text: Contained
+                        - generic:
+                          - generic: </Button
+                          - text: ">"
+                        - generic:
+                          - generic: <Button
+                          - text: variant
+                          - generic: ="contained"
+                          - text: disabled>
+                        - text: Disabled
+                        - generic:
+                          - generic: </Button
+                          - text: ">"
+                        - generic:
+                          - generic: <Button
+                          - text: variant
+                          - generic: ="contained"
+                          - text: href
+                          - generic: ="#contained-buttons"
+                          - text: ">"
+                        - text: Link
+                        - generic:
+                          - generic: </Button
+                          - text: ">"
+                    - textbox "Edit code" [ref=e249]: <Button variant="contained">Contained</Button> <Button variant="contained" disabled> Disabled </Button> <Button variant="contained" href="#contained-buttons"> Link </Button>
+                - generic: Press Enter to start editing
+            - paragraph [ref=e251]:
+              - text: You can remove the elevation with the
+              - code [ref=e252]: disableElevation
+              - text: prop.
+            - generic [ref=e253]:
+              - generic [ref=e254]:
+                - button "A generic container that is programmatically focused to test keyboard navigation of our components."
+                - button "Disable elevation" [ref=e255] [cursor=pointer]
+              - toolbar "demo source" [ref=e257]:
+                - button "Edit in Chat" [ref=e258] [cursor=pointer]:
+                  - img [ref=e259]
+                  - text: Edit in Chat
+                - generic [ref=e261]:
+                  - button "Expand code" [ref=e262] [cursor=pointer]
+                  - button "Edit in StackBlitz" [ref=e263] [cursor=pointer]:
+                    - img [ref=e264]
+                  - button "Edit in CodeSandbox" [ref=e266] [cursor=pointer]:
+                    - img [ref=e267]
+                  - button "Copy the source" [ref=e269] [cursor=pointer]:
+                    - img [ref=e270]
+                  - button "Reset focus to test keyboard navigation" [ref=e272] [cursor=pointer]:
+                    - img [ref=e273]
+                  - button "Reset demo" [ref=e275] [cursor=pointer]:
+                    - img [ref=e276]
+                  - button "See more" [ref=e278] [cursor=pointer]:
+                    - img [ref=e279]
+              - generic [ref=e287]:
+                - generic [ref=e288]:
+                  - generic [ref=e289]: Edit code
+                  - generic [ref=e290]:
+                    - generic:
+                      - code:
+                        - generic:
+                          - generic: <Button
+                          - text: variant
+                          - generic: ="contained"
+                          - text: disableElevation>
+                        - text: Disable elevation
+                        - generic:
+                          - generic: </Button
+                          - text: ">"
+                    - textbox "Edit code" [ref=e291]: <Button variant="contained" disableElevation> Disable elevation </Button>
+                - generic: Press Enter to start editing
+            - generic [ref=e292]:
+              - heading "Outlined button" [level=3] [ref=e293]:
+                - link "Outlined button" [ref=e294] [cursor=pointer]:
+                  - /url: "#outlined-button"
+                - button "Post a comment" [ref=e295] [cursor=pointer]:
+                  - img
+              - paragraph [ref=e296]:
+                - link "Outlined buttons" [ref=e297] [cursor=pointer]:
+                  - /url: https://m2.material.io/components/buttons#outlined-button
+                - text: are medium-emphasis buttons. They contain actions that are important but aren't the primary action in an app.
+              - paragraph [ref=e298]: Outlined buttons are also a lower emphasis alternative to contained buttons, or a higher emphasis alternative to text buttons.
+            - generic [ref=e299]:
+              - generic [ref=e300]:
+                - button "A generic container that is programmatically focused to test keyboard navigation of our components."
+                - generic [ref=e301]:
+                  - button "Primary" [ref=e302] [cursor=pointer]
+                  - button "Disabled" [disabled]
+                  - link "Link" [ref=e303] [cursor=pointer]:
+                    - /url: "#outlined-buttons"
+              - toolbar "demo source" [ref=e305]:
+                - button "Edit in Chat" [ref=e306] [cursor=pointer]:
+                  - img [ref=e307]
+                  - text: Edit in Chat
+                - generic [ref=e309]:
+                  - button "Expand code" [ref=e310] [cursor=pointer]
+                  - button "Edit in StackBlitz" [ref=e311] [cursor=pointer]:
+                    - img [ref=e312]
+                  - button "Edit in CodeSandbox" [ref=e314] [cursor=pointer]:
+                    - img [ref=e315]
+                  - button "Copy the source" [ref=e317] [cursor=pointer]:
+                    - img [ref=e318]
+                  - button "Reset focus to test keyboard navigation" [ref=e320] [cursor=pointer]:
+                    - img [ref=e321]
+                  - button "Reset demo" [ref=e323] [cursor=pointer]:
+                    - img [ref=e324]
+                  - button "See more" [ref=e326] [cursor=pointer]:
+                    - img [ref=e327]
+              - generic [ref=e335]:
+                - generic [ref=e336]:
+                  - generic [ref=e337]: Edit code
+                  - generic [ref=e338]:
+                    - generic:
+                      - code:
+                        - generic:
+                          - generic: <Button
+                          - text: variant
+                          - generic: ="outlined"
+                          - text: ">"
+                        - text: Primary
+                        - generic:
+                          - generic: </Button
+                          - text: ">"
+                        - generic:
+                          - generic: <Button
+                          - text: variant
+                          - generic: ="outlined"
+                          - text: disabled>
+                        - text: Disabled
+                        - generic:
+                          - generic: </Button
+                          - text: ">"
+                        - generic:
+                          - generic: <Button
+                          - text: variant
+                          - generic: ="outlined"
+                          - text: href
+                          - generic: ="#outlined-buttons"
+                          - text: ">"
+                        - text: Link
+                        - generic:
+                          - generic: </Button
+                          - text: ">"
+                    - textbox "Edit code" [ref=e339]: <Button variant="outlined">Primary</Button> <Button variant="outlined" disabled> Disabled </Button> <Button variant="outlined" href="#outlined-buttons"> Link </Button>
+                - generic: Press Enter to start editing
+            - generic [ref=e340]:
+              - heading "Handling clicks" [level=2] [ref=e341]:
+                - link "Handling clicks" [ref=e342] [cursor=pointer]:
+                  - /url: "#handling-clicks"
+                - button "Post a comment" [ref=e343] [cursor=pointer]:
+                  - img
+              - paragraph [ref=e344]:
+                - text: All components accept an
+                - code [ref=e345]: onClick
+                - text: handler that is applied to the root DOM element.
+              - generic [ref=e346]:
+                - code [ref=e348]:
+                  - generic [ref=e349]:
+                    - generic [ref=e350]: <Button
+                    - text: onClick
+                    - generic [ref=e351]: "={() => { alert('clicked'); }}"
+                    - text: ">"
+                  - text: Click me
+                  - generic [ref=e352]:
+                    - generic [ref=e353]: </Button
+                    - text: ">"
+                - button "Copy the code" [ref=e354] [cursor=pointer]:
+                  - generic [ref=e355]: Copy
+              - paragraph [ref=e356]:
+                - text: Note that the documentation
+                - link "avoids" [ref=e357] [cursor=pointer]:
+                  - /url: /material-ui/guides/api/#native-properties
+                - text: mentioning native props (there are a lot) in the API section of the components.
+              - heading "Color" [level=2] [ref=e358]:
+                - link "Color" [ref=e359] [cursor=pointer]:
+                  - /url: "#color"
+                - button "Post a comment" [ref=e360] [cursor=pointer]:
+                  - img
+            - generic [ref=e361]:
+              - generic [ref=e362]:
+                - button "A generic container that is programmatically focused to test keyboard navigation of our components."
+                - generic [ref=e363]:
+                  - button "Secondary" [ref=e364] [cursor=pointer]
+                  - button "Success" [ref=e365] [cursor=pointer]
+                  - button "Error" [ref=e366] [cursor=pointer]
+              - toolbar "demo source" [ref=e368]:
+                - button "Edit in Chat" [ref=e369] [cursor=pointer]:
+                  - img [ref=e370]
+                  - text: Edit in Chat
+                - generic [ref=e372]:
+                  - button "Expand code" [ref=e373] [cursor=pointer]
+                  - button "Edit in StackBlitz" [ref=e374] [cursor=pointer]:
+                    - img [ref=e375]
+                  - button "Edit in CodeSandbox" [ref=e377] [cursor=pointer]:
+                    - img [ref=e378]
+                  - button "Copy the source" [ref=e380] [cursor=pointer]:
+                    - img [ref=e381]
+                  - button "Reset focus to test keyboard navigation" [ref=e383] [cursor=pointer]:
+                    - img [ref=e384]
+                  - button "Reset demo" [ref=e386] [cursor=pointer]:
+                    - img [ref=e387]
+                  - button "See more" [ref=e389] [cursor=pointer]:
+                    - img [ref=e390]
+              - generic [ref=e398]:
+                - generic [ref=e399]:
+                  - generic [ref=e400]: Edit code
+                  - generic [ref=e401]:
+                    - generic:
+                      - code:
+                        - generic:
+                          - generic: <Button
+                          - text: color
+                          - generic: ="secondary"
+                          - text: ">"
+                        - text: Secondary
+                        - generic:
+                          - generic: </Button
+                          - text: ">"
+                        - generic:
+                          - generic: <Button
+                          - text: variant
+                          - generic: ="contained"
+                          - text: color
+                          - generic: ="success"
+                          - text: ">"
+                        - text: Success
+                        - generic:
+                          - generic: </Button
+                          - text: ">"
+                        - generic:
+                          - generic: <Button
+                          - text: variant
+                          - generic: ="outlined"
+                          - text: color
+                          - generic: ="error"
+                          - text: ">"
+                        - text: Error
+                        - generic:
+                          - generic: </Button
+                          - text: ">"
+                    - textbox "Edit code" [ref=e402]: <Button color="secondary">Secondary</Button> <Button variant="contained" color="success"> Success </Button> <Button variant="outlined" color="error"> Error </Button>
+                - generic: Press Enter to start editing
+            - generic [ref=e403]:
+              - paragraph [ref=e404]:
+                - text: In addition to using the default button colors, you can add custom ones, or disable any you don't need. See the
+                - link "Adding new colors" [ref=e405] [cursor=pointer]:
+                  - /url: /material-ui/customization/palette/#custom-colors
+                - text: examples for more info.
+              - heading "Sizes" [level=2] [ref=e406]:
+                - link "Sizes" [ref=e407] [cursor=pointer]:
+                  - /url: "#sizes"
+                - button "Post a comment" [ref=e408] [cursor=pointer]:
+                  - img
+              - paragraph [ref=e409]:
+                - text: For larger or smaller buttons, use the
+                - code [ref=e410]: size
+                - text: prop.
+            - generic [ref=e411]:
+              - generic [ref=e412]:
+                - button "A generic container that is programmatically focused to test keyboard navigation of our components."
+                - generic [ref=e413]:
+                  - generic [ref=e414]:
+                    - button "Small" [ref=e415] [cursor=pointer]
+                    - button "Medium" [ref=e416] [cursor=pointer]
+                    - button "Large" [ref=e417] [cursor=pointer]
+                  - generic [ref=e418]:
+                    - button "Small" [ref=e419] [cursor=pointer]
+                    - button "Medium" [ref=e420] [cursor=pointer]
+                    - button "Large" [ref=e421] [cursor=pointer]
+                  - generic [ref=e422]:
+                    - button "Small" [ref=e423] [cursor=pointer]
+                    - button "Medium" [ref=e424] [cursor=pointer]
+                    - button "Large" [ref=e425] [cursor=pointer]
+              - toolbar "demo source" [ref=e427]:
+                - button "Edit in Chat" [ref=e428] [cursor=pointer]:
+                  - img [ref=e429]
+                  - text: Edit in Chat
+                - generic [ref=e431]:
+                  - button "Show code" [ref=e432] [cursor=pointer]
+                  - button "Edit in StackBlitz" [ref=e433] [cursor=pointer]:
+                    - img [ref=e434]
+                  - button "Edit in CodeSandbox" [ref=e436] [cursor=pointer]:
+                    - img [ref=e437]
+                  - button "Copy the source" [ref=e439] [cursor=pointer]:
+                    - img [ref=e440]
+                  - button "Reset focus to test keyboard navigation" [ref=e442] [cursor=pointer]:
+                    - img [ref=e443]
+                  - button "Reset demo" [ref=e445] [cursor=pointer]:
+                    - img [ref=e446]
+                  - button "See more" [ref=e448] [cursor=pointer]:
+                    - img [ref=e449]
+            - generic [ref=e451]:
+              - heading "Buttons with icons and label" [level=2] [ref=e452]:
+                - link "Buttons with icons and label" [ref=e453] [cursor=pointer]:
+                  - /url: "#buttons-with-icons-and-label"
+                - button "Post a comment" [ref=e454] [cursor=pointer]:
+                  - img
+              - paragraph [ref=e455]: Sometimes you might want to have icons for certain buttons to enhance the UX of the application as we recognize logos more easily than plain text. For example, if you have a delete button you can label it with a dustbin icon.
+            - generic [ref=e456]:
+              - generic [ref=e457]:
+                - button "A generic container that is programmatically focused to test keyboard navigation of our components."
+                - generic [ref=e458]:
+                  - button "Delete" [ref=e459] [cursor=pointer]:
+                    - img [ref=e461]
+                    - text: Delete
+                  - button "Send" [ref=e463] [cursor=pointer]:
+                    - text: Send
+                    - img [ref=e465]
+              - toolbar "demo source" [ref=e468]:
+                - button "Edit in Chat" [ref=e469] [cursor=pointer]:
+                  - img [ref=e470]
+                  - text: Edit in Chat
+                - generic [ref=e472]:
+                  - button "Expand code" [ref=e473] [cursor=pointer]
+                  - button "Edit in StackBlitz" [ref=e474] [cursor=pointer]:
+                    - img [ref=e475]
+                  - button "Edit in CodeSandbox" [ref=e477] [cursor=pointer]:
+                    - img [ref=e478]
+                  - button "Copy the source" [ref=e480] [cursor=pointer]:
+                    - img [ref=e481]
+                  - button "Reset focus to test keyboard navigation" [ref=e483] [cursor=pointer]:
+                    - img [ref=e484]
+                  - button "Reset demo" [ref=e486] [cursor=pointer]:
+                    - img [ref=e487]
+                  - button "See more" [ref=e489] [cursor=pointer]:
+                    - img [ref=e490]
+              - generic [ref=e498]:
+                - generic [ref=e499]:
+                  - generic [ref=e500]: Edit code
+                  - generic [ref=e501]:
+                    - generic:
+                      - code:
+                        - generic:
+                          - generic: <Button
+                          - text: variant
+                          - generic: ="outlined"
+                          - text: startIcon
+                          - generic:
+                            - text: "={"
+                            - generic:
+                              - generic: <DeleteIcon
+                              - text: />
+                            - text: "}"
+                          - text: ">"
+                        - text: Delete
+                        - generic:
+                          - generic: </Button
+                          - text: ">"
+                        - generic:
+                          - generic: <Button
+                          - text: variant
+                          - generic: ="contained"
+                          - text: endIcon
+                          - generic:
+                            - text: "={"
+                            - generic:
+                              - generic: <SendIcon
+                              - text: />
+                            - text: "}"
+                          - text: ">"
+                        - text: Send
+                        - generic:
+                          - generic: </Button
+                          - text: ">"
+                    - textbox "Edit code" [ref=e502]: "<Button variant=\"outlined\" startIcon={<DeleteIcon />}> Delete </Button> <Button variant=\"contained\" endIcon={<SendIcon />}> Send </Button>"
+                - generic: Press Enter to start editing
+            - generic [ref=e503]:
+              - heading "Icon button" [level=2] [ref=e504]:
+                - link "Icon button" [ref=e505] [cursor=pointer]:
+                  - /url: "#icon-button"
+                - button "Post a comment" [ref=e506] [cursor=pointer]:
+                  - img
+              - paragraph [ref=e507]: Icon buttons are commonly found in app bars and toolbars.
+              - paragraph [ref=e508]: Icons are also appropriate for toggle buttons that allow a single choice to be selected or deselected, such as adding or removing a star to an item.
+            - generic [ref=e509]:
+              - generic [ref=e510]:
+                - button "A generic container that is programmatically focused to test keyboard navigation of our components."
+                - generic [ref=e511]:
+                  - button "delete" [ref=e512] [cursor=pointer]:
+                    - img [ref=e513]
+                  - button "delete" [disabled]:
+                    - img
+                  - button "add an alarm" [ref=e515] [cursor=pointer]:
+                    - img [ref=e516]
+                  - button "add to shopping cart" [ref=e518] [cursor=pointer]:
+                    - img [ref=e519]
+              - toolbar "demo source" [ref=e522]:
+                - button "Edit in Chat" [ref=e523] [cursor=pointer]:
+                  - img [ref=e524]
+                  - text: Edit in Chat
+                - generic [ref=e526]:
+                  - button "Expand code" [ref=e527] [cursor=pointer]
+                  - button "Edit in StackBlitz" [ref=e528] [cursor=pointer]:
+                    - img [ref=e529]
+                  - button "Edit in CodeSandbox" [ref=e531] [cursor=pointer]:
+                    - img [ref=e532]
+                  - button "Copy the source" [ref=e534] [cursor=pointer]:
+                    - img [ref=e535]
+                  - button "Reset focus to test keyboard navigation" [ref=e537] [cursor=pointer]:
+                    - img [ref=e538]
+                  - button "Reset demo" [ref=e540] [cursor=pointer]:
+                    - img [ref=e541]
+                  - button "See more" [ref=e543] [cursor=pointer]:
+                    - img [ref=e544]
+              - generic [ref=e552]:
+                - generic [ref=e553]:
+                  - generic [ref=e554]: Edit code
+                  - generic [ref=e555]:
+                    - generic:
+                      - code:
+                        - generic:
+                          - generic: <IconButton
+                          - text: aria-label
+                          - generic: ="delete"
+                          - text: ">"
+                        - generic:
+                          - generic: <DeleteIcon
+                          - text: />
+                        - generic:
+                          - generic: </IconButton
+                          - text: ">"
+                        - generic:
+                          - generic: <IconButton
+                          - text: aria-label
+                          - generic: ="delete"
+                          - text: disabled color
+                          - generic: ="primary"
+                          - text: ">"
+                        - generic:
+                          - generic: <DeleteIcon
+                          - text: />
+                        - generic:
+                          - generic: </IconButton
+                          - text: ">"
+                        - generic:
+                          - generic: <IconButton
+                          - text: color
+                          - generic: ="secondary"
+                          - text: aria-label
+                          - generic: ="add an alarm"
+                          - text: ">"
+                        - generic:
+                          - generic: <AlarmIcon
+                          - text: />
+                        - generic:
+                          - generic: </IconButton
+                          - text: ">"
+                        - generic:
+                          - generic: <IconButton
+                          - text: color
+                          - generic: ="primary"
+                          - text: aria-label
+                          - generic: ="add to shopping cart"
+                          - text: ">"
+                        - generic:
+                          - generic: <AddShoppingCartIcon
+                          - text: />
+                        - generic:
+                          - generic: </IconButton
+                          - text: ">"
+                    - textbox "Edit code" [ref=e556]: <IconButton aria-label="delete"> <DeleteIcon /> </IconButton> <IconButton aria-label="delete" disabled color="primary"> <DeleteIcon /> </IconButton> <IconButton color="secondary" aria-label="add an alarm"> <AlarmIcon /> </IconButton> <IconButton color="primary" aria-label="add to shopping cart"> <AddShoppingCartIcon /> </IconButton>
+                - generic: Press Enter to start editing
+            - generic [ref=e557]:
+              - heading "Sizes" [level=3] [ref=e558]:
+                - link "Sizes" [ref=e559] [cursor=pointer]:
+                  - /url: "#sizes-2"
+                - button "Post a comment" [ref=e560] [cursor=pointer]:
+                  - img
+              - paragraph [ref=e561]:
+                - text: For larger or smaller icon buttons, use the
+                - code [ref=e562]: size
+                - text: prop.
+            - generic [ref=e563]:
+              - generic [ref=e564]:
+                - button "A generic container that is programmatically focused to test keyboard navigation of our components."
+                - generic [ref=e565]:
+                  - button "delete" [ref=e566] [cursor=pointer]:
+                    - img [ref=e567]
+                  - button "delete" [ref=e569] [cursor=pointer]:
+                    - img [ref=e570]
+                  - button "delete" [ref=e572] [cursor=pointer]:
+                    - img [ref=e573]
+                  - button "delete" [ref=e575] [cursor=pointer]:
+                    - img [ref=e576]
+              - toolbar "demo source" [ref=e579]:
+                - button "Edit in Chat" [ref=e580] [cursor=pointer]:
+                  - img [ref=e581]
+                  - text: Edit in Chat
+                - generic [ref=e583]:
+                  - button "Expand code" [ref=e584] [cursor=pointer]
+                  - button "Edit in StackBlitz" [ref=e585] [cursor=pointer]:
+                    - img [ref=e586]
+                  - button "Edit in CodeSandbox" [ref=e588] [cursor=pointer]:
+                    - img [ref=e589]
+                  - button "Copy the source" [ref=e591] [cursor=pointer]:
+                    - img [ref=e592]
+                  - button "Reset focus to test keyboard navigation" [ref=e594] [cursor=pointer]:
+                    - img [ref=e595]
+                  - button "Reset demo" [ref=e597] [cursor=pointer]:
+                    - img [ref=e598]
+                  - button "See more" [ref=e600] [cursor=pointer]:
+                    - img [ref=e601]
+              - generic [ref=e609]:
+                - generic [ref=e610]:
+                  - generic [ref=e611]: Edit code
+                  - generic [ref=e612]:
+                    - generic:
+                      - code:
+                        - generic:
+                          - generic: <IconButton
+                          - text: aria-label
+                          - generic: ="delete"
+                          - text: size
+                          - generic: ="small"
+                          - text: ">"
+                        - generic:
+                          - generic: <DeleteIcon
+                          - text: fontSize
+                          - generic: ="inherit"
+                          - text: />
+                        - generic:
+                          - generic: </IconButton
+                          - text: ">"
+                        - generic:
+                          - generic: <IconButton
+                          - text: aria-label
+                          - generic: ="delete"
+                          - text: size
+                          - generic: ="small"
+                          - text: ">"
+                        - generic:
+                          - generic: <DeleteIcon
+                          - text: fontSize
+                          - generic: ="small"
+                          - text: />
+                        - generic:
+                          - generic: </IconButton
+                          - text: ">"
+                        - generic:
+                          - generic: <IconButton
+                          - text: aria-label
+                          - generic: ="delete"
+                          - text: size
+                          - generic: ="large"
+                          - text: ">"
+                        - generic:
+                          - generic: <DeleteIcon
+                          - text: />
+                        - generic:
+                          - generic: </IconButton
+                          - text: ">"
+                        - generic:
+                          - generic: <IconButton
+                          - text: aria-label
+                          - generic: ="delete"
+                          - text: size
+                          - generic: ="large"
+                          - text: ">"
+                        - generic:
+                          - generic: <DeleteIcon
+                          - text: fontSize
+                          - generic: ="inherit"
+                          - text: />
+                        - generic:
+                          - generic: </IconButton
+                          - text: ">"
+                    - textbox "Edit code" [ref=e613]: <IconButton aria-label="delete" size="small"> <DeleteIcon fontSize="inherit" /> </IconButton> <IconButton aria-label="delete" size="small"> <DeleteIcon fontSize="small" /> </IconButton> <IconButton aria-label="delete" size="large"> <DeleteIcon /> </IconButton> <IconButton aria-label="delete" size="large"> <DeleteIcon fontSize="inherit" /> </IconButton>
+                - generic: Press Enter to start editing
+            - generic [ref=e614]:
+              - heading "Colors" [level=3] [ref=e615]:
+                - link "Colors" [ref=e616] [cursor=pointer]:
+                  - /url: "#colors"
+                - button "Post a comment" [ref=e617] [cursor=pointer]:
+                  - img
+              - paragraph [ref=e618]:
+                - text: Use
+                - code [ref=e619]: color
+                - text: prop to apply theme color palette to component.
+            - generic [ref=e620]:
+              - generic [ref=e621]:
+                - button "A generic container that is programmatically focused to test keyboard navigation of our components."
+                - generic [ref=e622]:
+                  - button "fingerprint" [ref=e623] [cursor=pointer]:
+                    - img [ref=e624]
+                  - button "fingerprint" [ref=e626] [cursor=pointer]:
+                    - img [ref=e627]
+              - toolbar "demo source" [ref=e630]:
+                - button "Edit in Chat" [ref=e631] [cursor=pointer]:
+                  - img [ref=e632]
+                  - text: Edit in Chat
+                - generic [ref=e634]:
+                  - button "Expand code" [ref=e635] [cursor=pointer]
+                  - button "Edit in StackBlitz" [ref=e636] [cursor=pointer]:
+                    - img [ref=e637]
+                  - button "Edit in CodeSandbox" [ref=e639] [cursor=pointer]:
+                    - img [ref=e640]
+                  - button "Copy the source" [ref=e642] [cursor=pointer]:
+                    - img [ref=e643]
+                  - button "Reset focus to test keyboard navigation" [ref=e645] [cursor=pointer]:
+                    - img [ref=e646]
+                  - button "Reset demo" [ref=e648] [cursor=pointer]:
+                    - img [ref=e649]
+                  - button "See more" [ref=e651] [cursor=pointer]:
+                    - img [ref=e652]
+              - generic [ref=e660]:
+                - generic [ref=e661]:
+                  - generic [ref=e662]: Edit code
+                  - generic [ref=e663]:
+                    - generic:
+                      - code:
+                        - generic:
+                          - generic: <IconButton
+                          - text: aria-label
+                          - generic: ="fingerprint"
+                          - text: color
+                          - generic: ="secondary"
+                          - text: ">"
+                        - generic:
+                          - generic: <Fingerprint
+                          - text: />
+                        - generic:
+                          - generic: </IconButton
+                          - text: ">"
+                        - generic:
+                          - generic: <IconButton
+                          - text: aria-label
+                          - generic: ="fingerprint"
+                          - text: color
+                          - generic: ="success"
+                          - text: ">"
+                        - generic:
+                          - generic: <Fingerprint
+                          - text: />
+                        - generic:
+                          - generic: </IconButton
+                          - text: ">"
+                    - textbox "Edit code" [ref=e664]: <IconButton aria-label="fingerprint" color="secondary"> <Fingerprint /> </IconButton> <IconButton aria-label="fingerprint" color="success"> <Fingerprint /> </IconButton>
+                - generic: Press Enter to start editing
+            - generic [ref=e665]:
+              - heading "Loading" [level=3] [ref=e666]:
+                - link "Loading" [ref=e667] [cursor=pointer]:
+                  - /url: "#loading"
+                - button "Post a comment" [ref=e668] [cursor=pointer]:
+                  - img
+              - paragraph [ref=e669]:
+                - text: Starting from v6.4.0, use
+                - code [ref=e670]: loading
+                - text: prop to set icon buttons in a loading state and disable interactions.
+            - generic [ref=e671]:
+              - generic [ref=e672]:
+                - button "A generic container that is programmatically focused to test keyboard navigation of our components."
+                - button "Click to see loading" [ref=e673] [cursor=pointer]:
+                  - img [ref=e674]
+              - toolbar "demo source" [ref=e677]:
+                - button "Edit in Chat" [ref=e678] [cursor=pointer]:
+                  - img [ref=e679]
+                  - text: Edit in Chat
+                - generic [ref=e681]:
+                  - button "Expand code" [ref=e682] [cursor=pointer]
+                  - button "Edit in StackBlitz" [ref=e683] [cursor=pointer]:
+                    - img [ref=e684]
+                  - button "Edit in CodeSandbox" [ref=e686] [cursor=pointer]:
+                    - img [ref=e687]
+                  - button "Copy the source" [ref=e689] [cursor=pointer]:
+                    - img [ref=e690]
+                  - button "Reset focus to test keyboard navigation" [ref=e692] [cursor=pointer]:
+                    - img [ref=e693]
+                  - button "Reset demo" [ref=e695] [cursor=pointer]:
+                    - img [ref=e696]
+                  - button "See more" [ref=e698] [cursor=pointer]:
+                    - img [ref=e699]
+              - generic [ref=e707]:
+                - generic [ref=e708]:
+                  - generic [ref=e709]: Edit code
+                  - generic [ref=e710]:
+                    - generic:
+                      - code:
+                        - generic:
+                          - generic: <Tooltip
+                          - text: title
+                          - generic: ="Click to see loading"
+                          - text: ">"
+                        - generic:
+                          - generic: <IconButton
+                          - text: onClick
+                          - generic: "={() => setLoading(true)}"
+                          - text: loading
+                          - generic: "={loading}"
+                          - text: ">"
+                        - generic:
+                          - generic: <ShoppingCartIcon
+                          - text: />
+                        - generic:
+                          - generic: </IconButton
+                          - text: ">"
+                        - generic:
+                          - generic: </Tooltip
+                          - text: ">"
+                    - textbox "Edit code" [ref=e711]: "<Tooltip title=\"Click to see loading\"> <IconButton onClick={() => setLoading(true)} loading={loading}> <ShoppingCartIcon /> </IconButton> </Tooltip>"
+                - generic: Press Enter to start editing
+            - generic [ref=e712]:
+              - heading "Badge" [level=3] [ref=e713]:
+                - link "Badge" [ref=e714] [cursor=pointer]:
+                  - /url: "#badge"
+                - button "Post a comment" [ref=e715] [cursor=pointer]:
+                  - img
+              - paragraph [ref=e716]:
+                - text: You can use the
+                - link "Badge" [ref=e717] [cursor=pointer]:
+                  - /url: /material-ui/react-badge/
+                  - code [ref=e718]: Badge
+                - text: component to add a badge to an
+                - code [ref=e719]: IconButton
+                - text: .
+            - generic [ref=e720]:
+              - generic [ref=e721]:
+                - button "A generic container that is programmatically focused to test keyboard navigation of our components."
+                - button "2" [ref=e722] [cursor=pointer]:
+                  - img [ref=e723]
+                  - generic [ref=e725]: "2"
+              - toolbar "demo source" [ref=e727]:
+                - button "Edit in Chat" [ref=e728] [cursor=pointer]:
+                  - img [ref=e729]
+                  - text: Edit in Chat
+                - generic [ref=e731]:
+                  - button "Expand code" [ref=e732] [cursor=pointer]
+                  - button "Edit in StackBlitz" [ref=e733] [cursor=pointer]:
+                    - img [ref=e734]
+                  - button "Edit in CodeSandbox" [ref=e736] [cursor=pointer]:
+                    - img [ref=e737]
+                  - button "Copy the source" [ref=e739] [cursor=pointer]:
+                    - img [ref=e740]
+                  - button "Reset focus to test keyboard navigation" [ref=e742] [cursor=pointer]:
+                    - img [ref=e743]
+                  - button "Reset demo" [ref=e745] [cursor=pointer]:
+                    - img [ref=e746]
+                  - button "See more" [ref=e748] [cursor=pointer]:
+                    - img [ref=e749]
+              - generic [ref=e757]:
+                - generic [ref=e758]:
+                  - generic [ref=e759]: Edit code
+                  - generic [ref=e760]:
+                    - generic:
+                      - code:
+                        - generic:
+                          - generic: <IconButton
+                          - text: ">"
+                        - generic:
+                          - generic: <ShoppingCartIcon
+                          - text: fontSize
+                          - generic: ="small"
+                          - text: />
+                        - generic:
+                          - generic: <CartBadge
+                          - text: badgeContent
+                          - generic: "={2}"
+                          - text: color
+                          - generic: ="primary"
+                          - text: overlap
+                          - generic: ="circular"
+                          - text: />
+                        - generic:
+                          - generic: </IconButton
+                          - text: ">"
+                    - textbox "Edit code" [ref=e761]: "<IconButton> <ShoppingCartIcon fontSize=\"small\" /> <CartBadge badgeContent={2} color=\"primary\" overlap=\"circular\" /> </IconButton>"
+                - generic: Press Enter to start editing
+            - generic [ref=e762]:
+              - heading "File upload" [level=2] [ref=e763]:
+                - link "File upload" [ref=e764] [cursor=pointer]:
+                  - /url: "#file-upload"
+                - button "Post a comment" [ref=e765] [cursor=pointer]:
+                  - img
+              - paragraph [ref=e766]:
+                - text: To create a file upload button, turn the button into a label using
+                - code [ref=e767]: component="label"
+                - text: and then create a visually-hidden input with type
+                - code [ref=e768]: file
+                - text: .
+            - generic [ref=e769]:
+              - generic [ref=e770]:
+                - button "A generic container that is programmatically focused to test keyboard navigation of our components."
+                - generic [ref=e771] [cursor=pointer]:
+                  - img [ref=e773]
+                  - text: Upload files
+                  - button "Upload files" [ref=e775]
+              - toolbar "demo source" [ref=e777]:
+                - button "Edit in Chat" [ref=e778] [cursor=pointer]:
+                  - img [ref=e779]
+                  - text: Edit in Chat
+                - generic [ref=e781]:
+                  - button "Expand code" [ref=e782] [cursor=pointer]
+                  - button "Edit in StackBlitz" [ref=e783] [cursor=pointer]:
+                    - img [ref=e784]
+                  - button "Edit in CodeSandbox" [ref=e786] [cursor=pointer]:
+                    - img [ref=e787]
+                  - button "Copy the source" [ref=e789] [cursor=pointer]:
+                    - img [ref=e790]
+                  - button "Reset focus to test keyboard navigation" [ref=e792] [cursor=pointer]:
+                    - img [ref=e793]
+                  - button "Reset demo" [ref=e795] [cursor=pointer]:
+                    - img [ref=e796]
+                  - button "See more" [ref=e798] [cursor=pointer]:
+                    - img [ref=e799]
+              - generic [ref=e807]:
+                - generic [ref=e808]:
+                  - generic [ref=e809]: Edit code
+                  - generic [ref=e810]:
+                    - generic:
+                      - code:
+                        - generic:
+                          - generic: <Button
+                          - text: component
+                          - generic: ="label"
+                          - text: role
+                          - generic: "={undefined}"
+                          - text: variant
+                          - generic: ="contained"
+                          - text: tabIndex
+                          - generic: "={-1}"
+                          - text: startIcon
+                          - generic:
+                            - text: "={"
+                            - generic:
+                              - generic: <CloudUploadIcon
+                              - text: />
+                            - text: "}"
+                          - text: ">"
+                        - text: Upload files
+                        - generic:
+                          - generic: <VisuallyHiddenInput
+                          - text: type
+                          - generic: ="file"
+                          - text: onChange
+                          - generic: "={(event) => console.log(event.target.files)}"
+                          - text: multiple />
+                        - generic:
+                          - generic: </Button
+                          - text: ">"
+                    - textbox "Edit code" [ref=e811]: "<Button component=\"label\" role={undefined} variant=\"contained\" tabIndex={-1} startIcon={<CloudUploadIcon />} > Upload files <VisuallyHiddenInput type=\"file\" onChange={(event) => console.log(event.target.files)} multiple /> </Button>"
+                - generic: Press Enter to start editing
+            - generic [ref=e812]:
+              - heading "Loading" [level=2] [ref=e813]:
+                - link "Loading" [ref=e814] [cursor=pointer]:
+                  - /url: "#loading-2"
+                - button "Post a comment" [ref=e815] [cursor=pointer]:
+                  - img
+              - paragraph [ref=e816]:
+                - text: Starting from v6.4.0, use the
+                - code [ref=e817]: loading
+                - text: prop to set buttons in a loading state and disable interactions.
+            - generic [ref=e818]:
+              - generic [ref=e819]:
+                - button "A generic container that is programmatically focused to test keyboard navigation of our components."
+                - generic [ref=e820]:
+                  - generic [ref=e821]:
+                    - button "Submit" [disabled]:
+                      - generic:
+                        - generic:
+                          - progressbar "Submit":
+                            - img
+                      - text: Submit
+                    - button "Loading… Fetch data" [disabled]:
+                      - generic:
+                        - generic: Loading…
+                      - text: Fetch data
+                    - button "Save" [disabled]:
+                      - generic:
+                        - img
+                      - generic:
+                        - generic:
+                          - progressbar "Save":
+                            - img
+                      - text: Save
+                  - button "Full width" [disabled]:
+                    - generic:
+                      - img
+                    - generic:
+                      - generic:
+                        - progressbar "Full width":
+                          - img
+                    - text: Full width
+                  - button "Full width" [disabled]:
+                    - text: Full width
+                    - generic:
+                      - generic:
+                        - progressbar "Full width":
+                          - img
+                    - generic:
+                      - img
+                  - generic [ref=e822]:
+                    - button "Submit" [disabled]:
+                      - generic:
+                        - generic:
+                          - progressbar "Submit":
+                            - img
+                      - text: Submit
+                    - button "Submit" [disabled]:
+                      - text: Submit
+                      - generic:
+                        - generic:
+                          - progressbar "Submit":
+                            - img
+                    - button "Save" [disabled]:
+                      - generic:
+                        - img
+                      - text: Save
+                      - generic:
+                        - generic:
+                          - progressbar "Save":
+                            - img
+              - toolbar "demo source" [ref=e824]:
+                - button "Edit in Chat" [ref=e825] [cursor=pointer]:
+                  - img [ref=e826]
+                  - text: Edit in Chat
+                - generic [ref=e828]:
+                  - button "Show code" [ref=e829] [cursor=pointer]
+                  - button "Edit in StackBlitz" [ref=e830] [cursor=pointer]:
+                    - img [ref=e831]
+                  - button "Edit in CodeSandbox" [ref=e833] [cursor=pointer]:
+                    - img [ref=e834]
+                  - button "Copy the source" [ref=e836] [cursor=pointer]:
+                    - img [ref=e837]
+                  - button "Reset focus to test keyboard navigation" [ref=e839] [cursor=pointer]:
+                    - img [ref=e840]
+                  - button "Reset demo" [ref=e842] [cursor=pointer]:
+                    - img [ref=e843]
+                  - button "See more" [ref=e845] [cursor=pointer]:
+                    - img [ref=e846]
+            - paragraph [ref=e849]: Toggle the loading switch to see the transition between the different states.
+            - generic [ref=e850]:
+              - generic [ref=e851]:
+                - button "A generic container that is programmatically focused to test keyboard navigation of our components."
+                - generic [ref=e852]:
+                  - generic [ref=e853] [cursor=pointer]:
+                    - switch "Loading" [checked] [ref=e856]
+                    - text: Loading
+                  - generic [ref=e859]:
+                    - button "Disabled" [disabled]:
+                      - generic:
+                        - generic:
+                          - progressbar "Disabled":
+                            - img
+                      - text: Disabled
+                    - button "Loading… Fetch data" [disabled]:
+                      - generic:
+                        - generic: Loading…
+                      - text: Fetch data
+                    - button "Send" [disabled]:
+                      - text: Send
+                      - generic:
+                        - generic:
+                          - progressbar "Send":
+                            - img
+                      - generic:
+                        - img
+                    - button "Save" [disabled]:
+                      - generic:
+                        - img
+                      - generic:
+                        - generic:
+                          - progressbar "Save":
+                            - img
+                      - text: Save
+                  - generic [ref=e860]:
+                    - button "Disabled" [disabled]:
+                      - generic:
+                        - generic:
+                          - progressbar "Disabled":
+                            - img
+                      - text: Disabled
+                    - button "Loading… Fetch data" [disabled]:
+                      - generic:
+                        - generic: Loading…
+                      - text: Fetch data
+                    - button "Send" [disabled]:
+                      - text: Send
+                      - generic:
+                        - generic:
+                          - progressbar "Send":
+                            - img
+                      - generic:
+                        - img
+                    - button "Save" [disabled]:
+                      - generic:
+                        - img
+                      - generic:
+                        - generic:
+                          - progressbar "Save":
+                            - img
+                      - text: Save
+              - toolbar "demo source" [ref=e862]:
+                - button "Edit in Chat" [ref=e863] [cursor=pointer]:
+                  - img [ref=e864]
+                  - text: Edit in Chat
+                - generic [ref=e866]:
+                  - button "Show code" [ref=e867] [cursor=pointer]
+                  - button "Edit in StackBlitz" [ref=e868] [cursor=pointer]:
+                    - img [ref=e869]
+                  - button "Edit in CodeSandbox" [ref=e871] [cursor=pointer]:
+                    - img [ref=e872]
+                  - button "Copy the source" [ref=e874] [cursor=pointer]:
+                    - img [ref=e875]
+                  - button "Reset focus to test keyboard navigation" [ref=e877] [cursor=pointer]:
+                    - img [ref=e878]
+                  - button "Reset demo" [ref=e880] [cursor=pointer]:
+                    - img [ref=e881]
+                  - button "See more" [ref=e883] [cursor=pointer]:
+                    - img [ref=e884]
+            - generic [ref=e886]:
+              - complementary [ref=e887]:
+                - img [ref=e889]
+                - generic [ref=e891]:
+                  - paragraph [ref=e892]:
+                    - text: When the
+                    - code [ref=e893]: loading
+                    - text: prop is set to
+                    - code [ref=e894]: boolean
+                    - text: ", the loading wrapper is always present in the DOM to prevent a"
+                    - link "Google Translation Crash" [ref=e895] [cursor=pointer]:
+                      - /url: https://github.com/mui/material-ui/issues/27853
+                    - text: .
+                  - paragraph [ref=e896]:
+                    - text: The
+                    - code [ref=e897]: loading
+                    - text: value should always be
+                    - code [ref=e898]: "null"
+                    - text: or
+                    - code [ref=e899]: boolean
+                    - text: ". The pattern below is not recommended as it can cause the Google Translation crash:"
+                  - generic [ref=e900]:
+                    - code [ref=e902]:
+                      - generic [ref=e903]:
+                        - generic [ref=e904]: <Button
+                        - generic [ref=e905]: "{...(isFetching && { loading: true })}"
+                        - text: ">"
+                      - text: // ❌ Don't do this
+                    - button "Copy the code" [ref=e906] [cursor=pointer]:
+                      - generic [ref=e907]: Copy
+              - heading "Rendering non-native buttons" [level=2] [ref=e908]:
+                - link "Rendering non-native buttons" [ref=e909] [cursor=pointer]:
+                  - /url: "#rendering-non-native-buttons"
+                - button "Post a comment" [ref=e910] [cursor=pointer]:
+                  - img
+              - paragraph [ref=e911]:
+                - text: The
+                - code [ref=e912]: nativeButton
+                - text: prop can be used to allow buttons to remain keyboard accessible when passing a React component to the
+                - link "component" [ref=e913] [cursor=pointer]:
+                  - /url: /material-ui/guides/composition/#passing-other-react-components
+                  - code [ref=e914]: component
+                - text: prop that renders a non-interactive element like a
+                - code [ref=e915]: <div>
+                - text: .
+              - generic [ref=e916]:
+                - code [ref=e918]:
+                  - text: const CustomButton = React.forwardRef(function CustomButton(
+                  - generic [ref=e919]: props, ref
+                  - text: ") { return"
+                  - generic [ref=e920]:
+                    - generic [ref=e921]: <div
+                    - text: ref
+                    - generic [ref=e922]: "={ref}"
+                    - generic [ref=e923]: "{...props}"
+                    - text: />
+                  - text: "; })"
+                  - generic [ref=e924]:
+                    - generic [ref=e925]: <Button
+                    - text: component
+                    - generic [ref=e926]: "={CustomButton}"
+                    - text: nativeButton
+                    - generic [ref=e927]: "={false}"
+                    - text: ">"
+                  - text: OK
+                  - generic [ref=e928]:
+                    - generic [ref=e929]: </Button
+                    - text: ">"
+                - button "Copy the code" [ref=e930] [cursor=pointer]:
+                  - generic [ref=e931]: Copy
+              - heading "Customization" [level=2] [ref=e932]:
+                - link "Customization" [ref=e933] [cursor=pointer]:
+                  - /url: "#customization"
+                - button "Post a comment" [ref=e934] [cursor=pointer]:
+                  - img
+              - paragraph [ref=e935]:
+                - text: Here are some examples of customizing the component. You can learn more about this in the
+                - link "overrides documentation page" [ref=e936] [cursor=pointer]:
+                  - /url: /material-ui/customization/how-to-customize/
+                - text: .
+            - generic [ref=e937]:
+              - generic [ref=e938]:
+                - button "A generic container that is programmatically focused to test keyboard navigation of our components."
+                - generic [ref=e939]:
+                  - button "Custom CSS" [ref=e940] [cursor=pointer]
+                  - button "Bootstrap" [ref=e941] [cursor=pointer]
+              - toolbar "demo source" [ref=e943]:
+                - button "Edit in Chat" [ref=e944] [cursor=pointer]:
+                  - img [ref=e945]
+                  - text: Edit in Chat
+                - generic [ref=e947]:
+                  - button "Show code" [ref=e948] [cursor=pointer]
+                  - button "Edit in StackBlitz" [ref=e949] [cursor=pointer]:
+                    - img [ref=e950]
+                  - button "Edit in CodeSandbox" [ref=e952] [cursor=pointer]:
+                    - img [ref=e953]
+                  - button "Copy the source" [ref=e955] [cursor=pointer]:
+                    - img [ref=e956]
+                  - button "Reset focus to test keyboard navigation" [ref=e958] [cursor=pointer]:
+                    - img [ref=e959]
+                  - button "Reset demo" [ref=e961] [cursor=pointer]:
+                    - img [ref=e962]
+                  - button "See more" [ref=e964] [cursor=pointer]:
+                    - img [ref=e965]
+            - generic [ref=e967]:
+              - paragraph [ref=e968]:
+                - text: 🎨 If you are looking for inspiration, you can check
+                - link "MUI Treasury's customization examples" [ref=e969] [cursor=pointer]:
+                  - /url: https://mui-treasury.com/primitive/button
+                - text: .
+              - heading "Complex button" [level=2] [ref=e970]:
+                - link "Complex button" [ref=e971] [cursor=pointer]:
+                  - /url: "#complex-button"
+                - button "Post a comment" [ref=e972] [cursor=pointer]:
+                  - img
+              - paragraph [ref=e973]:
+                - text: "The Text Buttons, Contained Buttons, Floating Action Buttons and Icon Buttons are built on top of the same component: the"
+                - code [ref=e974]: ButtonBase
+                - text: . You can take advantage of this lower-level component to build custom interactions.
+            - generic [ref=e975]:
+              - generic [ref=e976]:
+                - button "A generic container that is programmatically focused to test keyboard navigation of our components."
+                - generic [ref=e977]:
+                  - button "Breakfast" [ref=e978] [cursor=pointer]:
+                    - generic [ref=e982]: Breakfast
+                  - button "Burgers" [ref=e984] [cursor=pointer]:
+                    - generic [ref=e988]: Burgers
+                  - button "Camera" [ref=e990] [cursor=pointer]:
+                    - generic [ref=e994]: Camera
+              - toolbar "demo source" [ref=e997]:
+                - button "Edit in Chat" [ref=e998] [cursor=pointer]:
+                  - img [ref=e999]
+                  - text: Edit in Chat
+                - generic [ref=e1001]:
+                  - button "Show code" [ref=e1002] [cursor=pointer]
+                  - button "Edit in StackBlitz" [ref=e1003] [cursor=pointer]:
+                    - img [ref=e1004]
+                  - button "Edit in CodeSandbox" [ref=e1006] [cursor=pointer]:
+                    - img [ref=e1007]
+                  - button "Copy the source" [ref=e1009] [cursor=pointer]:
+                    - img [ref=e1010]
+                  - button "Reset focus to test keyboard navigation" [ref=e1012] [cursor=pointer]:
+                    - img [ref=e1013]
+                  - button "Reset demo" [ref=e1015] [cursor=pointer]:
+                    - img [ref=e1016]
+                  - button "See more" [ref=e1018] [cursor=pointer]:
+                    - img [ref=e1019]
+            - generic [ref=e1021]:
+              - heading "Third-party routing library" [level=2] [ref=e1022]:
+                - link "Third-party routing library" [ref=e1023] [cursor=pointer]:
+                  - /url: "#third-party-routing-library"
+                - button "Post a comment" [ref=e1024] [cursor=pointer]:
+                  - img
+              - paragraph [ref=e1025]:
+                - text: One frequent use case is to perform navigation on the client only, without an HTTP round-trip to the server. The
+                - code [ref=e1026]: ButtonBase
+                - text: component provides the
+                - code [ref=e1027]: component
+                - text: prop to handle this use case. Here is a
+                - link "more detailed guide" [ref=e1028] [cursor=pointer]:
+                  - /url: /material-ui/integrations/routing/#button
+                - text: .
+              - heading "Limitations" [level=2] [ref=e1029]:
+                - link "Limitations" [ref=e1030] [cursor=pointer]:
+                  - /url: "#limitations"
+                - button "Post a comment" [ref=e1031] [cursor=pointer]:
+                  - img
+              - heading "Cursor not-allowed" [level=3] [ref=e1032]:
+                - link "Cursor not-allowed" [ref=e1033] [cursor=pointer]:
+                  - /url: "#cursor-not-allowed"
+                - button "Post a comment" [ref=e1034] [cursor=pointer]:
+                  - img
+              - paragraph [ref=e1035]:
+                - text: The ButtonBase component sets
+                - code [ref=e1036]: "pointer-events: none;"
+                - text: on disabled buttons, which prevents the appearance of a disabled cursor.
+              - paragraph [ref=e1037]:
+                - text: If you wish to use
+                - code [ref=e1038]: not-allowed
+                - text: ", you have two options:"
+              - list [ref=e1039]:
+                - listitem [ref=e1040]:
+                  - strong [ref=e1041]: CSS only
+                  - text: . You can remove the pointer-events style on the disabled state of the
+                  - code [ref=e1042]: <button>
+                  - text: "element:"
+              - generic [ref=e1043]:
+                - code [ref=e1045]: ".MuiButtonBase-root:disabled { cursor: not-allowed; pointer-events: auto; }"
+                - button "Copy the code" [ref=e1046] [cursor=pointer]:
+                  - generic [ref=e1047]: Copy
+              - paragraph [ref=e1048]: "However:"
+              - list [ref=e1049]:
+                - listitem [ref=e1050]:
+                  - text: You should add
+                  - code [ref=e1051]: "pointer-events: none;"
+                  - text: back when you need to display
+                  - link "tooltips on disabled elements" [ref=e1052] [cursor=pointer]:
+                    - /url: /material-ui/react-tooltip/#disabled-elements
+                  - text: .
+                - listitem [ref=e1053]:
+                  - text: The cursor won't change if you render something other than a button element, for instance, a link
+                  - code [ref=e1054]: <a>
+                  - text: element.
+              - list [ref=e1055]:
+                - listitem [ref=e1056]:
+                  - strong [ref=e1057]: DOM change
+                  - text: ". You can wrap the button:"
+              - generic [ref=e1058]:
+                - code [ref=e1060]:
+                  - generic [ref=e1061]:
+                    - generic [ref=e1062]: <span
+                    - text: style
+                    - generic [ref=e1063]: "={{ cursor: 'not-allowed' }}"
+                    - text: ">"
+                  - generic [ref=e1064]:
+                    - generic [ref=e1065]: <Button
+                    - text: component
+                    - generic [ref=e1066]: "={Link}"
+                    - text: disabled>
+                  - text: disabled
+                  - generic [ref=e1067]:
+                    - generic [ref=e1068]: </Button
+                    - text: ">"
+                  - generic [ref=e1069]:
+                    - generic [ref=e1070]: </span
+                    - text: ">"
+                - button "Copy the code" [ref=e1071] [cursor=pointer]:
+                  - generic [ref=e1072]: Copy
+              - paragraph [ref=e1073]:
+                - text: This has the advantage of supporting any element, for instance, a link
+                - code [ref=e1074]: <a>
+                - text: element.
+            - generic [ref=e1075]:
+              - heading "API" [level=2] [ref=e1076]:
+                - link "API" [ref=e1077] [cursor=pointer]:
+                  - /url: "#api"
+                - button "Post a comment" [ref=e1078] [cursor=pointer]:
+                  - img
+              - paragraph [ref=e1079]: See the documentation below for a complete reference to all of the props and classes available to the components mentioned here.
+              - list [ref=e1080]:
+                - listitem [ref=e1081]:
+                  - link "<Button />" [ref=e1082] [cursor=pointer]:
+                    - /url: /material-ui/api/button/
+                    - code [ref=e1083]: <Button />
+                - listitem [ref=e1084]:
+                  - link "<ButtonBase />" [ref=e1085] [cursor=pointer]:
+                    - /url: /material-ui/api/button-base/
+                    - code [ref=e1086]: <ButtonBase />
+                - listitem [ref=e1087]:
+                  - link "<IconButton />" [ref=e1088] [cursor=pointer]:
+                    - /url: /material-ui/api/icon-button/
+                    - code [ref=e1089]: <IconButton />
+          - generic [ref=e1090]:
+            - generic [ref=e1091]:
+              - link "Edit this page" [ref=e1092] [cursor=pointer]:
+                - /url: https://github.com/mui/material-ui/edit/master/docs/data/material/components/buttons/buttons.md
+                - img [ref=e1094]
+                - text: Edit this page
+              - generic [ref=e1096]:
+                - paragraph [ref=e1097]: Was this page helpful?
+                - button "Yes" [ref=e1098] [cursor=pointer]:
+                  - img [ref=e1099]
+                - button "No" [ref=e1101] [cursor=pointer]:
+                  - img [ref=e1102]
+            - separator [ref=e1104]
+            - separator [ref=e1105]
+            - generic [ref=e1106]:
+              - generic [ref=e1107]:
+                - link "Go to the homepage" [ref=e1108] [cursor=pointer]:
+                  - /url: https://mui.com/
+                  - img [ref=e1109]
+                - paragraph [ref=e1113]: •
+                - link "Blog" [ref=e1114] [cursor=pointer]:
+                  - /url: https://mui.com/blog/
+                  - text: Blog
+                  - img [ref=e1115]
+                - paragraph [ref=e1117]: •
+                - link "Store" [ref=e1118] [cursor=pointer]:
+                  - /url: https://mui.com/store/
+                  - text: Store
+                  - img [ref=e1119]
+              - generic [ref=e1121]:
+                - link "X/twitter" [ref=e1122] [cursor=pointer]:
+                  - /url: https://x.com/MUI_hq
+                  - img [ref=e1123]
+                - link "YouTube" [ref=e1125] [cursor=pointer]:
+                  - /url: https://www.youtube.com/@MUI_hq
+                  - img [ref=e1126]
+                - link "RSS Feed" [ref=e1128] [cursor=pointer]:
+                  - /url: https://mui.com/feed/blog/rss.xml
+                  - img [ref=e1129]
+        - navigation "Page table of contents" [ref=e1132]:
+          - paragraph [ref=e1133]: Contents
+          - list [ref=e1134]:
+            - listitem [ref=e1135]:
+              - link "Basic button" [ref=e1136] [cursor=pointer]:
+                - /url: /material-ui/react-button/#basic-button
+              - list [ref=e1137]:
+                - listitem [ref=e1138]:
+                  - link "Text button" [ref=e1139] [cursor=pointer]:
+                    - /url: /material-ui/react-button/#text-button
+                - listitem [ref=e1140]:
+                  - link "Contained button" [ref=e1141] [cursor=pointer]:
+                    - /url: /material-ui/react-button/#contained-button
+                - listitem [ref=e1142]:
+                  - link "Outlined button" [ref=e1143] [cursor=pointer]:
+                    - /url: /material-ui/react-button/#outlined-button
+            - listitem [ref=e1144]:
+              - link "Handling clicks" [ref=e1145] [cursor=pointer]:
+                - /url: /material-ui/react-button/#handling-clicks
+            - listitem [ref=e1146]:
+              - link "Color" [ref=e1147] [cursor=pointer]:
+                - /url: /material-ui/react-button/#color
+            - listitem [ref=e1148]:
+              - link "Sizes" [ref=e1149] [cursor=pointer]:
+                - /url: /material-ui/react-button/#sizes
+            - listitem [ref=e1150]:
+              - link "Buttons with icons and label" [ref=e1151] [cursor=pointer]:
+                - /url: /material-ui/react-button/#buttons-with-icons-and-label
+            - listitem [ref=e1152]:
+              - link "Icon button" [ref=e1153] [cursor=pointer]:
+                - /url: /material-ui/react-button/#icon-button
+              - list [ref=e1154]:
+                - listitem [ref=e1155]:
+                  - link "Sizes" [ref=e1156] [cursor=pointer]:
+                    - /url: /material-ui/react-button/#sizes-2
+                - listitem [ref=e1157]:
+                  - link "Colors" [ref=e1158] [cursor=pointer]:
+                    - /url: /material-ui/react-button/#colors
+                - listitem [ref=e1159]:
+                  - link "Loading" [ref=e1160] [cursor=pointer]:
+                    - /url: /material-ui/react-button/#loading
+                - listitem [ref=e1161]:
+                  - link "Badge" [ref=e1162] [cursor=pointer]:
+                    - /url: /material-ui/react-button/#badge
+            - listitem [ref=e1163]:
+              - link "File upload" [ref=e1164] [cursor=pointer]:
+                - /url: /material-ui/react-button/#file-upload
+            - listitem [ref=e1165]:
+              - link "Loading" [ref=e1166] [cursor=pointer]:
+                - /url: /material-ui/react-button/#loading-2
+            - listitem [ref=e1167]:
+              - link "Rendering non-native buttons" [ref=e1168] [cursor=pointer]:
+                - /url: /material-ui/react-button/#rendering-non-native-buttons
+            - listitem [ref=e1169]:
+              - link "Customization" [ref=e1170] [cursor=pointer]:
+                - /url: /material-ui/react-button/#customization
+            - listitem [ref=e1171]:
+              - link "Complex button" [ref=e1172] [cursor=pointer]:
+                - /url: /material-ui/react-button/#complex-button
+            - listitem [ref=e1173]:
+              - link "Third-party routing library" [ref=e1174] [cursor=pointer]:
+                - /url: /material-ui/react-button/#third-party-routing-library
+            - listitem [ref=e1175]:
+              - link "Limitations" [ref=e1176] [cursor=pointer]:
+                - /url: /material-ui/react-button/#limitations
+              - list [ref=e1177]:
+                - listitem [ref=e1178]:
+                  - link "Cursor not-allowed" [ref=e1179] [cursor=pointer]:
+                    - /url: /material-ui/react-button/#cursor-not-allowed
+            - listitem [ref=e1180]:
+              - link "API" [ref=e1181] [cursor=pointer]:
+                - /url: /material-ui/react-button/#api
+          - generic [ref=e1182]:
+            - generic [ref=e1183]:
+              - generic [ref=e1184]:
+                - link "doit" [ref=e1185] [cursor=pointer]:
+                  - /url: https://www.doit.com/?utm_source=mui.com&utm_medium=referral
+                  - img "doit" [ref=e1186]
+                - link "formengine" [ref=e1187] [cursor=pointer]:
+                  - /url: https://formengine.io/lightweight-react-json-schema-form-builder-library-for-mui?utm_source=mui&utm_medium=sponsor&utm_campaign=mui&utm_content=stop-manually&utm_term=smartway
+                  - img "formengine" [ref=e1188]
+              - link "Become a Diamond sponsor" [ref=e1189] [cursor=pointer]:
+                - /url: /material-ui/discover-more/backers/#diamond-sponsors
+                - generic [ref=e1190]: Become a Diamond sponsor
+            - link "MUI stands in solidarity with Ukraine." [ref=e1191] [cursor=pointer]:
+              - /url: https://u24.gov.ua/about/
+              - generic [ref=e1195]: MUI stands in solidarity with Ukraine.
+  - alert [ref=e1196]
+  - dialog "Cookie Preferences" [ref=e1197]:
+    - generic [ref=e1198]:
+      - generic [ref=e1199]:
+        - img [ref=e1201]
+        - generic [ref=e1206]:
+          - heading "Cookie Preferences" [level=6] [ref=e1207]
+          - paragraph [ref=e1208]: We use cookies to understand site usage and improve our content. This includes third-party analytics.
+      - generic [ref=e1209]:
+        - button "Allow analytics" [ref=e1210] [cursor=pointer]
+        - button "Essential only" [ref=e1211] [cursor=pointer]
