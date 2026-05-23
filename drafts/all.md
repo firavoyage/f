@@ -171,6 +171,7 @@ frontend: <!-- web -->
 - react components naming pascal snake case
 - react component parcel test
 - react commit freeze in between repaint
+- react mui test opencode
 
 backend:
 
@@ -201,7 +202,7 @@ desktop:
 - set up bitwarden
 - touch purpose create file modify time metadata
 - alt tech sync method backend
-- set up coding agent
+- set up coding agent search web use browser
 
 android:
 

@@ -1,0 +1,5 @@
+[    5649ms] Invalid or unexpected token
+[    5957ms] [LOG] [TZ] script running… @ https://www.webscale.com/blog/:793
+[    5957ms] [LOG] [TZ] found selects: 0 [] @ https://www.webscale.com/blog/:810
+[    5957ms] [WARNING] [TZ] no timezone selects found @ https://www.webscale.com/blog/:813
+[   11444ms] [ERROR] Failed to load resource: the server responded with a status of 400 () @ https://aplo-evnt.com/api/v1/intent_pixel/track_request?app_id=67c1e14aa2b9e0001ffb8849:0

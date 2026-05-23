@@ -1,0 +1,15 @@
+- generic [active] [ref=e1]:
+  - link [ref=e3] [cursor=pointer]:
+    - /url: https://www.w3schools.com
+    - img [ref=e4]
+  - generic [ref=e15]:
+    - generic [ref=e16]:
+      - heading "Sorry!" [level=2] [ref=e17]
+      - heading "We can't seem to find the resource you're looking for." [level=1] [ref=e18]
+      - paragraph [ref=e19]:
+        - text: Please check that the Web site address is spelled correctly.
+        - text: Or go to our
+        - link "home page" [ref=e20] [cursor=pointer]:
+          - /url: /default.asp
+        - text: ", and use the menus to navigate to a specific section."
+    - img [ref=e23]

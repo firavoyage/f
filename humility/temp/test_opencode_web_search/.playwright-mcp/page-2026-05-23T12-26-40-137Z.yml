@@ -1,0 +1,195 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - link "DuckDuckGo" [ref=e4] [cursor=pointer]:
+        - /url: /html/
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - textbox [ref=e7]: mui docs
+          - button "Submit" [ref=e8] [cursor=pointer]
+        - combobox [ref=e10] [cursor=pointer]:
+          - option "All Regions"
+          - option "Argentina"
+          - option "Australia"
+          - option "Austria"
+          - option "Belgium (fr)"
+          - option "Belgium (nl)"
+          - option "Brazil"
+          - option "Bulgaria"
+          - option "Canada (en)"
+          - option "Canada (fr)"
+          - option "Catalonia"
+          - option "Chile"
+          - option "China"
+          - option "Colombia"
+          - option "Croatia"
+          - option "Czech Republic"
+          - option "Denmark"
+          - option "Estonia"
+          - option "Finland"
+          - option "France"
+          - option "Germany"
+          - option "Greece"
+          - option "Hong Kong"
+          - option "Hungary"
+          - option "Iceland"
+          - option "India (en)"
+          - option "Indonesia (en)"
+          - option "Ireland"
+          - option "Israel (en)"
+          - option "Italy"
+          - option "Japan"
+          - option "Korea"
+          - option "Latvia"
+          - option "Lithuania"
+          - option "Malaysia (en)"
+          - option "Mexico"
+          - option "Netherlands"
+          - option "New Zealand"
+          - option "Norway"
+          - option "Pakistan (en)"
+          - option "Peru"
+          - option "Philippines (en)"
+          - option "Poland"
+          - option "Portugal"
+          - option "Romania"
+          - option "Russia"
+          - option "Saudi Arabia"
+          - option "Singapore"
+          - option "Slovakia"
+          - option "Slovenia"
+          - option "South Africa"
+          - option "Spain (ca)"
+          - option "Spain (es)"
+          - option "Sweden"
+          - option "Switzerland (de)"
+          - option "Switzerland (fr)"
+          - option "Taiwan"
+          - option "Thailand (en)"
+          - option "Turkey"
+          - option "US (English)" [selected]
+          - option "US (Spanish)"
+          - option "Ukraine"
+          - option "United Kingdom"
+          - option "Vietnam (en)"
+        - combobox [ref=e12] [cursor=pointer]:
+          - option "Any Time" [selected]
+          - option "Past Day"
+          - option "Past Week"
+          - option "Past Month"
+          - option "Past Year"
+    - generic [ref=e15]:
+      - generic [ref=e17]:
+        - 'heading "MUI: The React component library you always wanted" [level=2] [ref=e18]':
+          - 'link "MUI: The React component library you always wanted" [ref=e19] [cursor=pointer]':
+            - /url: //duckduckgo.com/l/?uddg=https%3A%2F%2Fmui.com%2F&rut=5419a46ec8d8a9d0bc6316d9af27cc687e568f583b36fac35d70b841b4b65ee7
+        - generic [ref=e21]:
+          - link [ref=e23] [cursor=pointer]:
+            - /url: //duckduckgo.com/l/?uddg=https%3A%2F%2Fmui.com%2F&rut=5419a46ec8d8a9d0bc6316d9af27cc687e568f583b36fac35d70b841b4b65ee7
+          - link "mui.com" [ref=e24] [cursor=pointer]:
+            - /url: //duckduckgo.com/l/?uddg=https%3A%2F%2Fmui.com%2F&rut=5419a46ec8d8a9d0bc6316d9af27cc687e568f583b36fac35d70b841b4b65ee7
+        - link "MUI provides a simple, customizable, and accessible library of React components. Follow your own design system, or start with Material Design." [ref=e25] [cursor=pointer]:
+          - /url: //duckduckgo.com/l/?uddg=https%3A%2F%2Fmui.com%2F&rut=5419a46ec8d8a9d0bc6316d9af27cc687e568f583b36fac35d70b841b4b65ee7
+      - generic [ref=e27]:
+        - 'heading "GitHub - mui/material-ui: Material UI: Comprehensive React component ..." [level=2] [ref=e28]':
+          - 'link "GitHub - mui/material-ui: Material UI: Comprehensive React component ..." [ref=e29] [cursor=pointer]':
+            - /url: //duckduckgo.com/l/?uddg=https%3A%2F%2Fgithub.com%2Fmui%2Fmaterial%2Dui&rut=17a90bcbb9d5d093bc6d5b4bd17653ea2ab5413f578567134ea1a78e6a34ef1f
+        - generic [ref=e31]:
+          - link [ref=e33] [cursor=pointer]:
+            - /url: //duckduckgo.com/l/?uddg=https%3A%2F%2Fgithub.com%2Fmui%2Fmaterial%2Dui&rut=17a90bcbb9d5d093bc6d5b4bd17653ea2ab5413f578567134ea1a78e6a34ef1f
+          - link "github.com/mui/material-ui" [ref=e34] [cursor=pointer]:
+            - /url: //duckduckgo.com/l/?uddg=https%3A%2F%2Fgithub.com%2Fmui%2Fmaterial%2Dui&rut=17a90bcbb9d5d093bc6d5b4bd17653ea2ab5413f578567134ea1a78e6a34ef1f
+        - 'link "Material UI: Comprehensive React component library that implements Google''s Material Design. Free forever. - mui/material-ui" [ref=e35] [cursor=pointer]':
+          - /url: //duckduckgo.com/l/?uddg=https%3A%2F%2Fgithub.com%2Fmui%2Fmaterial%2Dui&rut=17a90bcbb9d5d093bc6d5b4bd17653ea2ab5413f578567134ea1a78e6a34ef1f
+      - generic [ref=e37]:
+        - heading "Material Design 3 - Google's latest open source design system" [level=2] [ref=e38]:
+          - link "Material Design 3 - Google's latest open source design system" [ref=e39] [cursor=pointer]:
+            - /url: //duckduckgo.com/l/?uddg=https%3A%2F%2Fm3.material.io%2F&rut=4946997230c17fa274ace5ae510ea1043851ebfc4174df967686cfd5e7025869
+        - generic [ref=e41]:
+          - link [ref=e43] [cursor=pointer]:
+            - /url: //duckduckgo.com/l/?uddg=https%3A%2F%2Fm3.material.io%2F&rut=4946997230c17fa274ace5ae510ea1043851ebfc4174df967686cfd5e7025869
+          - link "m3.material.io" [ref=e44] [cursor=pointer]:
+            - /url: //duckduckgo.com/l/?uddg=https%3A%2F%2Fm3.material.io%2F&rut=4946997230c17fa274ace5ae510ea1043851ebfc4174df967686cfd5e7025869
+        - link "Material Design 3 - Google's open-source design system, provides comprehensive guidelines, styles, & components to create user-friendly interfaces." [ref=e45] [cursor=pointer]:
+          - /url: //duckduckgo.com/l/?uddg=https%3A%2F%2Fm3.material.io%2F&rut=4946997230c17fa274ace5ae510ea1043851ebfc4174df967686cfd5e7025869
+      - generic [ref=e47]:
+        - heading "@mui/material - npm" [level=2] [ref=e48]:
+          - link "@mui/material - npm" [ref=e49] [cursor=pointer]:
+            - /url: //duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2F%40mui%2Fmaterial&rut=43d28a15f91c0aa3a6a5def0e4a720d80cb85f7148297fb0d3d39374ebdab708
+        - generic [ref=e51]:
+          - link [ref=e53] [cursor=pointer]:
+            - /url: //duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2F%40mui%2Fmaterial&rut=43d28a15f91c0aa3a6a5def0e4a720d80cb85f7148297fb0d3d39374ebdab708
+          - link "www.npmjs.com/package/@mui/material" [ref=e54] [cursor=pointer]:
+            - /url: //duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2F%40mui%2Fmaterial&rut=43d28a15f91c0aa3a6a5def0e4a720d80cb85f7148297fb0d3d39374ebdab708
+        - 'link "Material UI is an open-source React component library that implements Google''s Material Design. It''s comprehensive and can be used in production out of the box.. Latest version: 9.0.1, last published: 16 days ago. Start using @mui/material in your project by running `npm i @mui/material`. There are 10617 other projects in the npm registry using @mui/material." [ref=e55] [cursor=pointer]':
+          - /url: //duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2F%40mui%2Fmaterial&rut=43d28a15f91c0aa3a6a5def0e4a720d80cb85f7148297fb0d3d39374ebdab708
+      - generic [ref=e57]:
+        - heading "Documentation Website | mui/material-ui | DeepWiki" [level=2] [ref=e58]:
+          - link "Documentation Website | mui/material-ui | DeepWiki" [ref=e59] [cursor=pointer]:
+            - /url: //duckduckgo.com/l/?uddg=https%3A%2F%2Fdeepwiki.com%2Fmui%2Fmaterial%2Dui%2F4%2Ddocumentation%2Dwebsite&rut=837724bc1802383d1d3cd60343d903ab4edbca9b84e50b5f6b7ca0da83166bf8
+        - generic [ref=e61]:
+          - link [ref=e63] [cursor=pointer]:
+            - /url: //duckduckgo.com/l/?uddg=https%3A%2F%2Fdeepwiki.com%2Fmui%2Fmaterial%2Dui%2F4%2Ddocumentation%2Dwebsite&rut=837724bc1802383d1d3cd60343d903ab4edbca9b84e50b5f6b7ca0da83166bf8
+          - link "deepwiki.com/mui/material-ui/4-documentation-website" [ref=e64] [cursor=pointer]:
+            - /url: //duckduckgo.com/l/?uddg=https%3A%2F%2Fdeepwiki.com%2Fmui%2Fmaterial%2Dui%2F4%2Ddocumentation%2Dwebsite&rut=837724bc1802383d1d3cd60343d903ab4edbca9b84e50b5f6b7ca0da83166bf8
+        - link "Documentation Website Relevant source files The documentation website is a Next.js-based application that serves as the primary documentation platform for all MUI products, including Material UI, Joy UI, Base UI, MUI System, MUI X, and Toolpad. It provides interactive component demos, API documentation, search functionality, and marketing content, all within a unified interface that adapts to ..." [ref=e65] [cursor=pointer]:
+          - /url: //duckduckgo.com/l/?uddg=https%3A%2F%2Fdeepwiki.com%2Fmui%2Fmaterial%2Dui%2F4%2Ddocumentation%2Dwebsite&rut=837724bc1802383d1d3cd60343d903ab4edbca9b84e50b5f6b7ca0da83166bf8
+      - generic [ref=e67]:
+        - 'heading "Material UI: React components that implement Material Design" [level=2] [ref=e68]':
+          - 'link "Material UI: React components that implement Material Design" [ref=e69] [cursor=pointer]':
+            - /url: //duckduckgo.com/l/?uddg=https%3A%2F%2Fmui.com%2Fmaterial%2Dui%2F&rut=2301de6040c5f564a6944b3d4b777a6859143d66835b1a7234ba8604a304cfa0
+        - generic [ref=e71]:
+          - link [ref=e73] [cursor=pointer]:
+            - /url: //duckduckgo.com/l/?uddg=https%3A%2F%2Fmui.com%2Fmaterial%2Dui%2F&rut=2301de6040c5f564a6944b3d4b777a6859143d66835b1a7234ba8604a304cfa0
+          - link "mui.com/material-ui/" [ref=e74] [cursor=pointer]:
+            - /url: //duckduckgo.com/l/?uddg=https%3A%2F%2Fmui.com%2Fmaterial%2Dui%2F&rut=2301de6040c5f564a6944b3d4b777a6859143d66835b1a7234ba8604a304cfa0
+        - link "Material UI is an open-source React component library that implements Google's Material Design. It's comprehensive and can be used in production out of the box." [ref=e75] [cursor=pointer]:
+          - /url: //duckduckgo.com/l/?uddg=https%3A%2F%2Fmui.com%2Fmaterial%2Dui%2F&rut=2301de6040c5f564a6944b3d4b777a6859143d66835b1a7234ba8604a304cfa0
+      - generic [ref=e77]:
+        - heading "Components - MUI" [level=2] [ref=e78]:
+          - link "Components - MUI" [ref=e79] [cursor=pointer]:
+            - /url: //duckduckgo.com/l/?uddg=https%3A%2F%2Fmui.com%2Fcomponents%2F&rut=7156208ee8f8c279598aee605e5c088b554f94bf5c3597e71690fd60e092cae1
+        - generic [ref=e81]:
+          - link [ref=e83] [cursor=pointer]:
+            - /url: //duckduckgo.com/l/?uddg=https%3A%2F%2Fmui.com%2Fcomponents%2F&rut=7156208ee8f8c279598aee605e5c088b554f94bf5c3597e71690fd60e092cae1
+          - link "mui.com/components/" [ref=e84] [cursor=pointer]:
+            - /url: //duckduckgo.com/l/?uddg=https%3A%2F%2Fmui.com%2Fcomponents%2F&rut=7156208ee8f8c279598aee605e5c088b554f94bf5c3597e71690fd60e092cae1
+        - link "MUI provides a simple, customizable, and accessible library of React components. Follow your own design system, or start with Material Design. You will develop React applications faster." [ref=e85] [cursor=pointer]:
+          - /url: //duckduckgo.com/l/?uddg=https%3A%2F%2Fmui.com%2Fcomponents%2F&rut=7156208ee8f8c279598aee605e5c088b554f94bf5c3597e71690fd60e092cae1
+      - generic [ref=e87]:
+        - heading "mui/material-ui-docs - GitHub" [level=2] [ref=e88]:
+          - link "mui/material-ui-docs - GitHub" [ref=e89] [cursor=pointer]:
+            - /url: //duckduckgo.com/l/?uddg=https%3A%2F%2Fgithub.com%2Fmui%2Fmaterial%2Dui%2Ddocs&rut=e70272070d0f6f9045395fc0fcb701fe1cd7531e58230565aac1ace5d23e918a
+        - generic [ref=e91]:
+          - link [ref=e93] [cursor=pointer]:
+            - /url: //duckduckgo.com/l/?uddg=https%3A%2F%2Fgithub.com%2Fmui%2Fmaterial%2Dui%2Ddocs&rut=e70272070d0f6f9045395fc0fcb701fe1cd7531e58230565aac1ace5d23e918a
+          - link "github.com/mui/material-ui-docs" [ref=e94] [cursor=pointer]:
+            - /url: //duckduckgo.com/l/?uddg=https%3A%2F%2Fgithub.com%2Fmui%2Fmaterial%2Dui%2Ddocs&rut=e70272070d0f6f9045395fc0fcb701fe1cd7531e58230565aac1ace5d23e918a
+        - link "Material UI is a comprehensive library of React components that features our independent implementation of Google's Material Design system. It's trusted by some of the world's greatest product teams because it's been rigorously battle-tested through more than a decade of development by thousands of open-source contributors. Material UI's core functionality is extended by MUI X, a suite of ..." [ref=e95] [cursor=pointer]:
+          - /url: //duckduckgo.com/l/?uddg=https%3A%2F%2Fgithub.com%2Fmui%2Fmaterial%2Dui%2Ddocs&rut=e70272070d0f6f9045395fc0fcb701fe1cd7531e58230565aac1ace5d23e918a
+      - generic [ref=e97]:
+        - heading "Material UI - Overview" [level=2] [ref=e98]:
+          - link "Material UI - Overview" [ref=e99] [cursor=pointer]:
+            - /url: //duckduckgo.com/l/?uddg=https%3A%2F%2Fmui.com%2Fmaterial%2Dui%2Fgetting%2Dstarted%2F&rut=bd3621696c3a45897b972360c6134de54d70697f9253a4b357db98e0b9e18fd7
+        - generic [ref=e101]:
+          - link [ref=e103] [cursor=pointer]:
+            - /url: //duckduckgo.com/l/?uddg=https%3A%2F%2Fmui.com%2Fmaterial%2Dui%2Fgetting%2Dstarted%2F&rut=bd3621696c3a45897b972360c6134de54d70697f9253a4b357db98e0b9e18fd7
+          - link "mui.com/material-ui/getting-started/" [ref=e104] [cursor=pointer]:
+            - /url: //duckduckgo.com/l/?uddg=https%3A%2F%2Fmui.com%2Fmaterial%2Dui%2Fgetting%2Dstarted%2F&rut=bd3621696c3a45897b972360c6134de54d70697f9253a4b357db98e0b9e18fd7
+        - link "Material UI is an open-source React component library that implements Google's Material Design. It's comprehensive and can be used in production out of the box." [ref=e105] [cursor=pointer]:
+          - /url: //duckduckgo.com/l/?uddg=https%3A%2F%2Fmui.com%2Fmaterial%2Dui%2Fgetting%2Dstarted%2F&rut=bd3621696c3a45897b972360c6134de54d70697f9253a4b357db98e0b9e18fd7
+      - generic [ref=e107]:
+        - heading "Installation - Material UI" [level=2] [ref=e108]:
+          - link "Installation - Material UI" [ref=e109] [cursor=pointer]:
+            - /url: //duckduckgo.com/l/?uddg=https%3A%2F%2Fmui.com%2Fmaterial%2Dui%2Fgetting%2Dstarted%2Finstallation%2F&rut=e49cc182aa4f02410770d30a7a20016ff75d5beed9ceb2d5eaa57c9ace2592b8
+        - generic [ref=e111]:
+          - link [ref=e113] [cursor=pointer]:
+            - /url: //duckduckgo.com/l/?uddg=https%3A%2F%2Fmui.com%2Fmaterial%2Dui%2Fgetting%2Dstarted%2Finstallation%2F&rut=e49cc182aa4f02410770d30a7a20016ff75d5beed9ceb2d5eaa57c9ace2592b8
+          - link "mui.com/material-ui/getting-started/installation/" [ref=e114] [cursor=pointer]:
+            - /url: //duckduckgo.com/l/?uddg=https%3A%2F%2Fmui.com%2Fmaterial%2Dui%2Fgetting%2Dstarted%2Finstallation%2F&rut=e49cc182aa4f02410770d30a7a20016ff75d5beed9ceb2d5eaa57c9ace2592b8
+        - link "Next, follow the styled-components how-to guide to properly configure your bundler to support @mui/styled-engine-sc. As of late 2021, styled-components is not compatible with server-rendered Material UI projects. This is because babel-plugin-styled-components isn't able to work with the styled() utility inside @mui packages." [ref=e115] [cursor=pointer]:
+          - /url: //duckduckgo.com/l/?uddg=https%3A%2F%2Fmui.com%2Fmaterial%2Dui%2Fgetting%2Dstarted%2Finstallation%2F&rut=e49cc182aa4f02410770d30a7a20016ff75d5beed9ceb2d5eaa57c9ace2592b8
+      - button "Next" [ref=e118] [cursor=pointer]
+      - link "Feedback" [ref=e120] [cursor=pointer]:
+        - /url: //duckduckgo.com/feedback.html
+  - img [ref=e121]

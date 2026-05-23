@@ -1,0 +1,219 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - link [ref=e5] [cursor=pointer]:
+          - /url: https://openreplay.com?utm_source=openreplay_blog&utm_content=openreplay_logo
+          - img [ref=e7]
+        - link "GitHub Repo stars" [ref=e11] [cursor=pointer]:
+          - /url: https://github.com/openreplay/openreplay?utm_source=openreplay_blog&utm_content=github_stars
+          - img "GitHub Repo stars" [ref=e12]
+        - text: Blog
+      - generic [ref=e13]:
+        - list [ref=e14]:
+          - listitem [ref=e15]:
+            - generic [ref=e17]:
+              - generic [ref=e18]: Select language
+              - img [ref=e19]
+              - combobox "Select language" [ref=e22]:
+                - option "English" [selected]
+                - option "Français"
+                - option "Español"
+                - option "Pусский"
+                - option "Deutsch"
+                - option "Português"
+                - option "日本語"
+                - option "中文"
+          - listitem
+          - listitem
+        - generic [ref=e23]:
+          - checkbox
+          - button [ref=e25] [cursor=pointer]:
+            - img [ref=e26]
+          - generic:
+            - list:
+              - listitem:
+                - generic:
+                  - generic:
+                    - link "Self-Host":
+                      - /url: https://openreplay.com/pricing/#self-host
+                      - img
+                      - text: Self-Host
+                    - link "Try Cloud":
+                      - /url: https://openreplay.com/pricing?utm_source=openreplay_blog&utm_content=try_cloud_button
+                  - generic:
+                    - img
+              - listitem:
+                - generic: Product
+                - list:
+                  - listitem:
+                    - link "Session Replay":
+                      - /url: https://openreplay.com/product/feature/session-replay?utm_source=openreplay_blog&utm_content=session_replay
+                      - generic:
+                        - img
+                      - text: Session Replay
+                  - listitem:
+                    - link "DevTools":
+                      - /url: https://openreplay.com/product/feature/developer-tools?utm_source=openreplay_blog&utm_content=devtools
+                      - generic:
+                        - img
+                      - text: DevTools
+                  - listitem:
+                    - link "Product Analytics":
+                      - /url: https://openreplay.com/product/core/product-analytics?utm_source=openreplay_blog&utm_content=product_analytics
+                      - generic:
+                        - img
+                      - text: Product Analytics
+                  - listitem:
+                    - link "Co-Browsing":
+                      - /url: https://openreplay.com/product/feature/co-browsing?utm_source=openreplay_blog&utm_content=cobrowsing
+                      - generic:
+                        - img
+                      - text: Co-Browsing
+              - listitem:
+                - generic: Solutions
+                - list:
+                  - listitem:
+                    - link "Engineering":
+                      - /url: https://openreplay.com/solutions/teams/engineering/?utm_source=openreplay_blog&utm_content=engineering
+                      - generic:
+                        - img
+                      - text: Engineering
+                  - listitem:
+                    - link "Product Management":
+                      - /url: https://openreplay.com/solutions/teams/product-management/?utm_source=openreplay_blog&utm_content=product
+                      - generic:
+                        - img
+                      - text: Product Management
+                  - listitem:
+                    - link "Customer Support":
+                      - /url: https://openreplay.com/solutions/teams/customer-support/?utm_source=openreplay_blog&utm_content=customer_support
+                      - generic:
+                        - img
+                      - text: Customer Support
+                  - listitem:
+                    - link "Research & Design":
+                      - /url: https://openreplay.com/solutions/teams/research-design/?utm_source=openreplay_blog&utm_content=design
+                      - generic:
+                        - img
+                      - text: Research & Design
+              - listitem:
+                - link "Pricing":
+                  - /url: https://openreplay.com/pricing?utm_source=openreplay_blog&utm_content=pricing
+              - listitem:
+                - link "Docs":
+                  - /url: https://docs.openreplay.com/en/home/?utm_source=openreplay_blog&utm_content=docs
+  - button "Search (Ctrl+K)" [ref=e30] [cursor=pointer]:
+    - generic [ref=e31]:
+      - img [ref=e32]
+      - generic [ref=e34]: SearchBlog
+    - generic [ref=e35]:
+      - img [ref=e37]
+      - generic [ref=e39]: K
+  - main [ref=e40]:
+    - article [ref=e41]:
+      - generic [ref=e42]:
+        - heading "You're up 404 creek" [level=1] [ref=e43]
+        - paragraph [ref=e44]: Not much to see here but the intro to Dawson's Creek. Don't wait for your life to be over. There are other pages. Go find one!
+        - iframe [ref=e46]:
+          - generic [active] [ref=f85e1]:
+            - generic "YouTube Video Player" [ref=f85e3]
+            - generic [ref=f85e5]:
+              - generic:
+                - generic:
+                  - button "Play video" [ref=f85e10] [cursor=pointer]:
+                    - generic [ref=f85e13]:
+                      - img
+                  - button "Hide player controls" [ref=f85e14] [cursor=pointer]
+                  - generic [ref=f85e16]:
+                    - generic [ref=f85e21]:
+                      - generic [ref=f85e22]:
+                        - link "Dawson's Creek Intro" [ref=f85e23] [cursor=pointer]:
+                          - /url: https://www.youtube.com/watch?v=izpNuTxGIrM
+                        - link "ʝᴏn ʙᴏn ʝay™" [ref=f85e24] [cursor=pointer]:
+                          - /url: /channel/UC_c-UFFAaY3gpwhkqubDOiw
+                          - generic [ref=f85e25]: ʝᴏn ʙᴏn ʝay™
+                      - generic [ref=f85e26]:
+                        - button "thumbnail-image" [ref=f85e27] [cursor=pointer]:
+                          - img "thumbnail-image" [ref=f85e28]
+                        - generic [ref=f85e30]:
+                          - generic: ʝᴏn ʙᴏn ʝay™
+                          - generic: 90.8K subscribers
+                    - generic [ref=f85e31]:
+                      - button "Share" [ref=f85e34] [cursor=pointer]:
+                        - generic [ref=f85e38]:
+                          - img
+                      - link "Watch on YouTube" [ref=f85e45] [cursor=pointer]:
+                        - /url: https://www.youtube.com/watch?v=izpNuTxGIrM
+                        - generic [ref=f85e48]:
+                          - text: Watch on
+                          - img [ref=f85e50]:
+                            - generic [ref=f85e52]:
+                              - img
+  - contentinfo [ref=e48]:
+    - complementary [ref=e49]:
+      - link "OpenReplay" [ref=e50] [cursor=pointer]:
+        - /url: https://openreplay.com?utm_source=openreplay_blog&utm_content=openreplay_footer_logo
+        - img "OpenReplay" [ref=e51]
+      - paragraph [ref=e58]: OpenReplay is a session replay and analytics tool, built for developers and self-hosted for full control over your data.
+      - generic [ref=e59]:
+        - img "SOC 2 Type 2" [ref=e60]
+        - text: SOC 2 Type II Compliant
+    - navigation [ref=e61]:
+      - heading "Product" [level=6] [ref=e62]
+      - link "What's New" [ref=e63] [cursor=pointer]:
+        - /url: https://openreplay.com/releases?utm_source=openreplay_blog&utm_content=what_is_new
+      - link "Pricing" [ref=e64] [cursor=pointer]:
+        - /url: https://openreplay.com/pricing?utm_source=openreplay_blog&utm_content=pricing
+      - link "Integrations" [ref=e65] [cursor=pointer]:
+        - /url: https://openreplay.com/platform/integrations-api/?utm_source=openreplay_blog&utm_content=integrations
+    - navigation [ref=e66]:
+      - heading "Deploy" [level=6] [ref=e67]
+      - link "AWS" [ref=e68] [cursor=pointer]:
+        - /url: https://docs.openreplay.com/deployment/deploy-aws
+      - link "Azure" [ref=e69] [cursor=pointer]:
+        - /url: https://docs.openreplay.com/deployment/deploy-azure
+      - link "Google Cloud" [ref=e70] [cursor=pointer]:
+        - /url: https://docs.openreplay.com/deployment/deploy-gcp
+      - link "Kubernetes" [ref=e71] [cursor=pointer]:
+        - /url: https://docs.openreplay.com/deployment/deploy-kubernetes
+    - navigation [ref=e72]:
+      - heading "Resources" [level=6] [ref=e73]
+      - link "Docs" [ref=e74] [cursor=pointer]:
+        - /url: https://docs.openreplay.com/?utm_source=openreplay_blog&utm_content=docs
+      - link "Blog" [ref=e75] [cursor=pointer]:
+        - /url: https://blog.openreplay.com/?utm_source=openreplay_blog&utm_content=blog
+      - link "Session Replay Guide" [ref=e76] [cursor=pointer]:
+        - /url: https://openreplay.com/resources/session-replay-guide?utm_source=openreplay_blog
+    - navigation [ref=e77]:
+      - heading "Compare" [level=6] [ref=e78]
+      - link "Compare vs Fullstory" [ref=e79] [cursor=pointer]:
+        - /url: https://openreplay.com/compare/openreplay-vs-fullstory?utm_source=openreplay_blog&utm_content=compare_vs_fullstory
+      - link "Compare vs LogRocket" [ref=e80] [cursor=pointer]:
+        - /url: https://openreplay.com/compare/openreplay-vs-logrocket?utm_source=openreplay_blog&utm_content=compare_vs_logrocket
+      - link "Compare vs PostHog" [ref=e81] [cursor=pointer]:
+        - /url: https://openreplay.com/compare/openreplay-vs-posthog?utm_source=openreplay_blog&utm_content=compare_vs_posthog
+      - link "Compare vs Hotjar" [ref=e82] [cursor=pointer]:
+        - /url: https://openreplay.com/compare/openreplay-vs-hotjar?utm_source=openreplay_blog&utm_content=compare_vs_hotjar
+    - navigation [ref=e83]:
+      - heading "Contact" [level=6] [ref=e84]
+      - link "Sales" [ref=e85] [cursor=pointer]:
+        - /url: mailto:sales@openreplay.com
+      - link "Terms" [ref=e86] [cursor=pointer]:
+        - /url: https://openreplay.com/legal/terms
+      - link "Privacy" [ref=e87] [cursor=pointer]:
+        - /url: https://openreplay.com/legal/privacy
+      - heading "Connect" [level=6] [ref=e88]
+      - generic [ref=e89]:
+        - link "Browse openreplay/openreplay" [ref=e90] [cursor=pointer]:
+          - /url: https://github.com/openreplay/openreplay
+          - img [ref=e91]
+        - link "Join Slack Community" [ref=e94] [cursor=pointer]:
+          - /url: https://join.slack.com/t/openreplay/shared_invite/zt-2brqlwcis-k7OtqHkW53EAoTRqPjCmyg
+          - img [ref=e95]
+  - alert [ref=e104]:
+    - text: OpenReplay relies on
+    - link "cookies" [ref=e105] [cursor=pointer]:
+      - /url: https://openreplay.com/legal/privacy
+    - text: to make its website easier to use.
+    - button "Close" [ref=e106] [cursor=pointer]: I Accept
