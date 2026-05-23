@@ -202,6 +202,10 @@ desktop:
 - touch purpose create file modify time metadata
 - alt tech sync method backend
 
+android:
+
+- remove samsung dnd indicator via shizuku termux adb
+
 ops: <!-- devops, ci, vcs, ... -->
 
 - smoke test
