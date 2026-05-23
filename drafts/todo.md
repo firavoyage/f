@@ -312,6 +312,12 @@ create an example web app supporting both gnome adwaita design system and materi
 
 ---
 
+tg to activitypub
+
+activitypub to something.
+
+---
+
 libadwaita in react. only use prop, state, and effect (limit to like event listener and interval) for porting compatibility.
 
 ---
