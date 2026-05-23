@@ -161,7 +161,7 @@
     ],
   },
   "else if": {
-    "prefix": "el",
+    "prefix": ["el", "ei"],
     "body": [
       "else if ($1) {",
       "  $2",
@@ -266,6 +266,8 @@
     "body": [
       "if(rescue($1)){",
       "  $2",
+      "  ",
+      "  return",
       "} $0"
     ],
   },
