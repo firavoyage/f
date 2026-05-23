@@ -170,6 +170,7 @@ frontend: <!-- web -->
 - ts bun br bunfig on parent folder
 - react components naming pascal snake case
 - react component parcel test
+- react commit freeze in between repaint
 
 backend:
 
@@ -470,6 +471,7 @@ rhetoric:
 - seven types of meaning
 - see you on the dark side of the moon
 - chinglish example criticism
+- definitive meaning
 - wording pm or dm
 - wording guys folks masculine
 - wording pride flags proud
@@ -478,8 +480,9 @@ rhetoric:
 - nice as adverb grammar play nice
 - first name last name order
 - lol laugh out loud
-- sick meaning slang
+- sick meaning slang inversion bad wicked ill
 - cook meaning slang
+- theory meaning slang
 
 laws:
 

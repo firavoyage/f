@@ -17777,7 +17777,21 @@ alexma233
 Maybe you can remove i18n locales of `auth.forgotPassword` if no page uses it.
 ```
 
-03 20 play kyo kurarin on project sekai.
+03 20 play kyo kurarin on project sekai. <!-- again and again... never ap on hard -->
+
+15 20 wish.
+
+I could sleep earlier today and see what happens, I guess.
+
+15 40 think.
+
+For example, 
+
+You can opt to hide the license, in the metadata or files. You can pretty print dependencies.
+
+16 00 think.
+
+Tg blog. Blog standard. Activity pub.
 
 17 40 comment on refray.
 
@@ -17789,9 +17803,431 @@ Maybe you can remove i18n locales of `auth.forgotPassword` if no page uses it.
 hard and possibly incompatible, as issues and prs are not standardized by git.
 ```
 
+16 20 Arrive
+
+17 40 Complete project sekai area nightcord on maimai dx.
+
+21 40 observe.
+
+The network fails again at 21. Anonymous after login.
+
+22 00 End the day w internet yamero, heat abnormal, and Kyu kurarin.
+
 22 20 dl `Doki Doki Literature Club | Full Game Walkthrough | No Commentary`.
 
 vids are good for visual novels i guess. <!-- i dont wanna pick the random words myself ~~again~~! -->
+
+18
+
+00 00 observe.
+
+Ayugram could have been more aggressive. 
+
+"It's foo's birthday, send them a gift". 
+
+Well, that feels good. But it doesn't have to be a default I guess.
+
+00 20 Eat acbox group.
+
+```
+箱子跑来跑去📦, [5/17/26 1:17 AM]
+我草，我才意识到阿片类药物的阿片（opioids）和鸦片（opium）这两个词是同源的
+
+梓瑶 | qemu-riscv64 llvm-config --libs, [5/17/26 1:18 AM]
+不觉得读着很像吗
+
+盼兮, [5/17/26 1:18 AM]
+看成瘾性也是一脉相传的属于
+
+路上看见, [5/17/26 1:23 AM]
+有没有可能鸦片和阿片是一个东西
+
+溏 🍬, [5/17/26 1:29 AM]
+我当时就是用morphine镇痛
+
+溏 🍬, [5/17/26 1:29 AM]
+然后我不觉得这个东西真的镇痛了
+
+溏 🍬, [5/17/26 1:30 AM]
+只是让人感觉飘飘的，有点困
+
+溏 🍬, [5/17/26 1:43 AM]
+是不是可以找个人抱着你睡
+
+溏 🍬, [5/17/26 1:43 AM]
+热水袋平替
+
+路上看见, [5/17/26 1:43 AM]
+更热了而且更难受不是
+
+溏 🍬, [5/17/26 1:46 AM]
+右佐匹克隆没有用
+
+溏 🍬, [5/17/26 1:46 AM]
+除了苦
+
+溏 🍬, [5/17/26 1:47 AM]
+唑吡坦呢
+
+溏 🍬, [5/17/26 1:48 AM]
+我现在都随缘了
+
+溏 🍬, [5/17/26 1:48 AM]
+能睡着就行
+
+溏 🍬, [5/17/26 1:48 AM]
+不要求睡多长
+
+溏 🍬, [5/17/26 1:50 AM]
+那这个是躯体化症状了
+
+路上看见, [5/17/26 1:50 AM]
+我有次黑客松，胃疼吃了铝碳酸镁 结果没想到我镁会拉肚子
+
+溏 🍬, [5/17/26 1:50 AM]
+不只是失眠的问题
+
+溏 🍬, [5/17/26 1:52 AM]
+老实说，我要是像你这么严重，我就选择回家躺平了
+
+路上看见, [5/17/26 1:52 AM]
+第二天就讲概念了
+
+溏 🍬, [5/17/26 1:54 AM]
+这么看来我的身体条件算很硬的
+
+路上看见, [5/17/26 1:58 AM]
+大家还是不要参加小县城的黑客松，交通太不方便了
+
+路上看见, [5/17/26 1:58 AM]
+而且我坐顺风车去的时候，那个司机春节期间还跟我说要高速费300块钱
+
+路上看见, [5/17/26 1:59 AM]
+然后还偷拍我
+
+路上看见, [5/17/26 1:59 AM]
+被我瞪一眼就赶紧退回去
+
+路上看见, [5/17/26 1:59 AM]
+主要是听不懂潮汕话
+
+溏 🍬, [5/17/26 2:15 AM]
+我现在不跟情绪对抗，顺从它
+
+盼兮, [5/17/26 2:16 AM]
+还要考什么狗屁高考
+
+盼兮, [5/17/26 2:16 AM]
+真烦人
+
+溏 🍬, [5/17/26 2:17 AM]
+还有不到一个月？
+
+盼兮, [5/17/26 2:20 AM]
+感觉没啥希望
+
+盼兮, [5/17/26 2:20 AM]
+我没有学习这些的兴趣
+
+盼兮, [5/17/26 2:20 AM]
+我只感到痛苦，无意义，厌恶
+
+澪, [5/17/26 2:21 AM]
+原来你还是高中的
+
+澪, [5/17/26 2:21 AM]
+感觉完全看不出来（
+
+盼兮, [5/17/26 2:22 AM]
+有什么看不出来的……
+
+Fodesu, [5/17/26 2:22 AM]
+网络什么都看不出来
+
+澪, [5/17/26 2:22 AM]
+我当年高考也就全力学了 100 天吧，所以结果不算很好，那时候精神状态挺差的，现在做梦都能梦到
+
+雫 夢野, [5/17/26 2:23 AM]
+@Asatsuki_Arts 闹
+
+盼兮, [5/17/26 2:24 AM]
+感觉我在这说过很多次高考的事情了好像
+
+盼兮, [5/17/26 2:24 AM]
+反正是很垃圾的问题
+
+盼兮, [5/17/26 2:24 AM]
+我也不怎么想上大学
+
+澪, [5/17/26 2:24 AM]
+考完当然会轻松 但也感觉自己的人生不可避免地走了很多弯路 导致我大一都在玩（
+我当时是想努力的 但是我的精神状态不太允许
+
+雫 夢野, [5/17/26 2:25 AM]
+玩儿。
+
+盼兮, [5/17/26 2:25 AM]
+最好天上掉下来一个文凭别恶心我就行
+
+澪, [5/17/26 2:32 AM]
+高中三年的知识用 100 天补漏还是太神秘了
+
+澪, [5/17/26 2:33 AM]
+我查过叫肌束震颤
+
+溏 🍬, [5/17/26 2:33 AM]
+我感觉高中的很多记忆都被context manager给清除了
+
+澪, [5/17/26 2:34 AM]
+感觉小孩儿）但是高三和大一感觉心智成熟程度差距并不很大
+
+澪, [5/17/26 2:34 AM]
+我以前会有这种感觉肉在自己跳的感觉
+
+澪, [5/17/26 2:35 AM]
+后来没了
+
+澪, [5/17/26 2:35 AM]
+人的生理结构太神奇了
+
+澪, [5/17/26 2:35 AM]
+如果有什么突发的异常我会觉得睡会儿觉第二天就好了（
+
+澪, [5/17/26 2:35 AM]
+或者过几天就好了
+
+溏 🍬, [5/17/26 2:44 AM]
+知识不能改变命运😴
+
+Acbox Neko, [5/17/26 2:52 AM]
+想恶补线性代数
+
+Acbox Neko, [5/17/26 2:53 AM]
+深度学习的数学原理真的好有趣啊
+
+Acbox Neko, [5/17/26 2:53 AM]
+我刚才在看3b1b
+
+Acbox Neko, [5/17/26 2:53 AM]
+勉强搞懂了神经网络的一点数学原理
+
+澪, [5/17/26 2:54 AM]
+我买了 prml
+
+澪, [5/17/26 2:54 AM]
+但一直没看完
+
+Romandu, [5/17/26 3:44 AM]
+12岁还学不会微积分吗.png
+```
+
+01 00 Eat sister Yi group.
+
+```
+社会易姐QwQ, [5/12/26 12:07 AM]
+厌学一定是孩子不努力，一定是孩子贪玩，一定是孩子看不清未来，是吧是吧是吧是吧😄
+
+Wireless Lover, [5/12/26 12:09 AM]
+幸存者偏差，至少海淀允许休学
+
+Wireless Lover, [5/12/26 12:10 AM]
+你跳学校里社会影响力大
+
+夏和, [5/12/26 12:11 AM]
+有jb社会影响力
+
+夏和, [5/12/26 12:11 AM]
+学校里都不一定知道
+
+Wireless Lover, [5/12/26 12:14 AM]
+先拿个空A4纸当众甩几下就有了
+
+社会易姐QwQ, [5/12/26 12:15 AM]
+还有限定活动二周目
+
+Voiclin, [5/12/26 12:16 AM]
+轮子当年 zifen 好歹还能随机吓死几个人
+
+Avrova Donz🍥 FTX|09年大龄持证含糖|今天也是努力活着的小猫 喵～|想被抱16y.o🏳️‍🌈 是瑟瑟发情猫猫喵～|想成为家猫|希望可以成为更好的rbq|坐标温尼伯可爱药娘快来贴, [5/12/26 1:37 AM]
+哦…我认识那个那个白纸的社会学老师
+
+Avrova Donz🍥 FTX|09年大龄持证含糖|今天也是努力活着的小猫 喵～|想被抱16y.o🏳️‍🌈 是瑟瑟发情猫猫喵～|想成为家猫|希望可以成为更好的rbq|坐标温尼伯可爱药娘快来贴, [5/12/26 1:37 AM]
+和她非常熟
+
+one188🍂 哈气班, [5/12/26 1:37 AM]
+现在还好吗
+
+Avrova Donz🍥 FTX|09年大龄持证含糖|今天也是努力活着的小猫 喵～|想被抱16y.o🏳️‍🌈 是瑟瑟发情猫猫喵～|想成为家猫|希望可以成为更好的rbq|坐标温尼伯可爱药娘快来贴, [5/12/26 1:38 AM]
+呃…反正还在教书
+
+rpool/MBR, [5/12/26 2:13 PM]
+怎么被骂了
+
+rpool/MBR, [5/12/26 2:14 PM]
+只是我还在上学
+
+❄️ Coia 🍥🏳️‍⚧️, [5/12/26 2:16 PM]
+我也是初三跑路的
+
+❄️ Coia 🍥🏳️‍⚧️, [5/12/26 2:17 PM]
+休学->休学/变成药娘
+
+❄️ Coia 🍥🏳️‍⚧️, [5/12/26 2:17 PM]
+（x）
+
+rpool/MBR, [5/12/26 2:19 PM]
+啃啃
+
+不要把剪贴板贴的到处都是, [5/12/26 2:19 PM]
+看看
+
+社会易姐QwQ, [5/12/26 2:19 PM]
+牵走揉揉
+
+Shiro, [5/12/26 6:06 PM]
+没有衡水的命，遭衡水的罪，7:20-22:30，星期天下午放半天，全县成绩全省倒数
+
+Shiro, [5/12/26 6:09 PM]
+但是师资就那样
+
+Shiro, [5/12/26 6:09 PM]
+都没年轻人愿意来
+
+Shiro, [5/12/26 6:10 PM]
+高三下学期教师还罢工，县里从过年开始就没发工资
+
+Shiro, [5/12/26 6:10 PM]
+县医院一群护士之前也坐窗台要工资
+
+Shiro, [5/12/26 6:10 PM]
+唉，逃离小县城
+
+不要把剪贴板贴的到处都是, [5/12/26 6:21 PM]
+我们是六点半就上早读了 （
+
+君と綴るうたかた, [5/12/26 6:23 PM]
+我高中甚至可以睡足9小时来着（
+
+Shiro, [5/12/26 7:37 PM]
+晚饭🍔
+
+Wireless Lover, [5/12/26 7:38 PM]
+滨郎！？
+
+Shiro, [5/12/26 7:44 PM]
+唉，不玩舞萌不磕糖就好难加入你们的小圈子❤️
+
+Shiro, [5/12/26 7:44 PM]
+来天津四年了，没和几个网友面过
+
+Shiro, [5/12/26 7:44 PM]
+自卑了❤️
+
+rpool/MBR, [5/12/26 7:46 PM]
+你可以在总医院蹲我
+
+Shiro, [5/12/26 7:47 PM]
+我不好看，本质肥宅，面完估计就被拉黑了🥺
+
+雨宮 澪音, [5/12/26 7:49 PM]
+面窝
+工作日随时可面
+
+rpool/MBR, [5/12/26 7:50 PM]
+只有我没人要了！
+```
+
+13 00 Meet chuange on the road.
+
+Chuange goat! <!-- 传哥牛逼！ -->
+
+I'm admitted to usst through sp uee. <!-- 我春考走了，去上海理工。 -->
+
+Great. Congrats. <!-- 那挺好的，祝贺你啊。 -->
+
+Energetic and hopeful.
+
+13 20 Arrive
+
+14 40 Complete project sekai area vocaloid on maimai dx.
+
+15 40 feel.
+
+<!-- 你怎么换上舞萌痴专用手套了。 -->
+
+<!-- 之前那个没有办法使用屏幕。 -->
+
+She has all songs unlocked and all characters at max level. Though I'm not so interested in adopting such a hack. Sega wtf. <!-- seems it's hacked a few mo ago, if i remember -->
+
+She goes to yuanwang at the bund w classmates. Just like me in grade 10.
+
+<!-- 加油啊，打舞萌的大哥哥 -->
+
+17 40 feel.
+
+She comes back soon after, as they've already finished.
+
+<!-- 你怎么又冒出来了。 -->
+
+<!-- 我已经冒出来很久了。 -->
+
+She can stay as long as she like wo pressure from the family <!-- , which makes her quit school seems. -->
+
+She has her pet duck died, unfortunately, and to be buried.
+
+19 40 feel.
+
+An anonymous debu
+
+<!-- 拍机的声音有一点重。 -->
+
+<!-- （没有出警的意思啊） -->
+
+20 20 Read `AI Agent 试图扫描 DN42 时把主人搞破产了`.
+
+<!-- 等到了蓝天对这个瓜的总结：《AI Agent 试图扫描 DN42 时把主人搞破产了》 (https://lantian.pub/article/fun/ai-agent-bankrupted-their-operator-scan-dn42lantian.lantian/)。
+硅基生物魅力时刻，或者是给硅基生物卖底裤的碳基生物的魅力时刻。
+当然，DN42 上那些真正的人类才是 MVP。 -->
+
+21 20 End the day w king, kyu kurarin, and internet yamero.
+
+23 40 Eat tcdw group.
+
+```md
+大型土豆喵农场, [5/18/26 10:45 PM]
+我还是少看推吧，为什么连我刷到的生活推都是疯狂抱怨原生家庭、职场什么的……
+问题是我也帮不了什么啊。
+哎，感觉自己会情不自禁的带入进去，然后我也不好了。
+
+Yoshino 233, [5/18/26 10:45 PM]
+推特是这样的😇
+
+tcdw (aka. 碗), [5/18/26 10:47 PM]
+对不起，我用错平台了😣
+（大雾
+
+Neo_Chen (BU4AK), [5/18/26 10:47 PM]
+用錯了，Twitter 應該要一點開就是 coser 和動漫圖才對（x
+
+tcdw (aka. 碗), [5/18/26 10:47 PM]
+我一开始也想看这些（
+
+Nakano Miku, [5/18/26 10:51 PM]
+淡推两个月再回去明显感觉大部分人都在无病呻吟ww
+
+Nakano Miku, [5/18/26 10:51 PM]
+（确实有人是痛苦的）
+
+tcdw (aka. 碗), [5/18/26 10:51 PM]
+嗯，我知道，不过比较遗憾的是，我不太会合理的处理这种东西
+
+Hut, [5/18/26 11:39 PM]
+我自己现在只看fo列表里的内容了，推荐太多挑拨情绪的东西了
+
+f, [5/18/26 11:43 PM]
+Install extension: Twitter control panel
+<!-- note taking reaction from tcdw and hut -->
+```
 
 19
 
@@ -17804,6 +18240,920 @@ vids are good for visual novels i guess. <!-- i dont wanna pick the random words
 谨以此片许愿我这个长发男早日找到属于自己的地雷妹
 
  -->
+
+03 00 Appreciate `舞萌什么程度算入门`
+
+Ref: leohearts
+
+在机厅比拼游戏数据就是一群功利教育入脑的 loser 用虚拟的成就找优越感
+
+```md
+腐竹喵, [5/2/26 9:54 PM]
+太可怕了因为我天天去打舞萌已经被机厅的很多人认识了
+
+腐竹喵, [5/2/26 9:54 PM]
+今天又被人问是不是天天来了
+
+腐竹喵, [5/2/26 9:54 PM]
+然后还有人想加我ig，但是我没有(真的没有
+
+腐竹喵, [5/2/26 9:54 PM]
+还好不是问twitter）
+
+腐竹喵, [5/2/26 9:54 PM]
+我不要加入机厅小团体啊（（
+
+Nickel Angel✨, [5/2/26 9:56 PM]
+其实要是大的机厅群可以加一下，然后能在群里时不时问机厅有多少人排队x
+
+Nickel Angel✨, [5/2/26 10:00 PM]
+其实感觉机厅群好像有个现象就是大部分讨论的都是 w4 w5（有时候感觉我就算说话也没人理x
+不知道腐竹那边的机厅里的人什么样（
+
+Nico ShiratsuYudachi, [5/2/26 10:01 PM]
+这就是为什么我觉得舞萌社群有毒并且很讨厌舞萌社群
+
+腐竹喵, [5/2/26 10:01 PM]
+感觉这个是小团体
+
+腐竹喵, [5/2/26 10:01 PM]
+估计经常来的不超过50个人
+
+腐竹喵, [5/2/26 10:01 PM]
+我已经认得大概了x
+
+Satori 🪐, [5/2/26 10:02 PM]
+其实还行
+
+腐竹喵, [5/2/26 10:02 PM]
+这个，天天来打的都是w65
+
+Satori 🪐, [5/2/26 10:02 PM]
+有人找我拼机我都拼
+
+Nickel Angel✨, [5/2/26 10:02 PM]
+但感觉游戏群新手话语权小是通病（
+
+渴望怜爱的 むらさき | 抱...抱不到, [5/2/26 10:03 PM]
+舞萌当地机厅小群
+
+Nickel Angel✨, [5/2/26 10:03 PM]
+其他游戏群我也不敢怎么发言x
+
+渴望怜爱的 むらさき | 抱...抱不到, [5/2/26 10:03 PM]
+我做了bot之后
+
+渴望怜爱的 むらさき | 抱...抱不到, [5/2/26 10:03 PM]
+我发现就是
+
+渴望怜爱的 むらさき | 抱...抱不到, [5/2/26 10:03 PM]
+一个机厅一个群
+
+渴望怜爱的 むらさき | 抱...抱不到, [5/2/26 10:03 PM]
+几个人一个群
+
+Nico ShiratsuYudachi, [5/2/26 10:03 PM]
+是的，但是游戏群不会有人教育你低级角色不应该去越级挑战高难关
+
+渴望怜爱的 むらさき | 抱...抱不到, [5/2/26 10:03 PM]
+我现在bot有小一百个群了
+
+Satori 🪐, [5/2/26 10:03 PM]
+还好我不玩对抗游戏
+
+渴望怜爱的 むらさき | 抱...抱不到, [5/2/26 10:04 PM]
+情况好一点的机厅挨得近的就同一个群用了
+
+腐竹喵, [5/2/26 10:05 PM]
+我不想卷入小团体
+
+腐竹喵, [5/2/26 10:05 PM]
+我只想玩舞萌DX😭
+
+Nickel Angel✨, [5/2/26 10:05 PM]
+其实我感觉这个只能说看人，而且舞萌圈子确实大，比较乱
+就算有人会教育人不要越级，前段时间我在的机厅群还有人光明正大炫耀自己可以通过开挂手段解锁曲目什么的x
+
+Yutoca Leohearts✨, 芋头, [5/2/26 10:06 PM]
+在机厅比拼游戏数据就是一群功利教育入脑的 loser 用虚拟的成就找优越感
+
+渴望怜爱的 むらさき | 抱...抱不到, [5/2/26 10:07 PM]
+我从来不在意数据
+
+渴望怜爱的 むらさき | 抱...抱不到, [5/2/26 10:07 PM]
+我在意的是今天去机厅了 谁待会跟我吃饭去
+
+Satori 🪐, [5/2/26 10:07 PM]
+我不想玩舞萌 dx
+
+渴望怜爱的 むらさき | 抱...抱不到, [5/2/26 10:07 PM]
+或者谁陪我逛超市
+
+Satori 🪐, [5/2/26 10:07 PM]
+但是，它可以帮我消耗多余的能量……
+
+腐竹喵, [5/2/26 10:08 PM]
+我感觉是，他们都以为我是别的地方来的高手，找我拼机
+
+腐竹喵, [5/2/26 10:08 PM]
+然后发现并不是（x
+
+Nickel Angel✨, [5/2/26 10:08 PM]
+其实感觉我在的群也没人拼游戏数据，但是聊的话题都是他们水平比较高的玩家玩的高难曲目
+
+Nickel Angel✨, [5/2/26 10:09 PM]
+感觉大家对新手没那么抵制，但是新手也聊不起来就是了x
+
+Yutoca Leohearts✨, 芋头, [5/2/26 10:10 PM]
+"哇，是w6大佬，您比我厉害多了"
+"群友人均彩框"
+"你这越级了啊，我教你，你应该……"
+
+Nickel Angel✨, [5/2/26 10:11 PM]
+我感觉我们群里会吐槽，我都花了钱了还不能玩我想玩的曲目x
+
+pupupu|云苔☁️, [5/2/26 10:14 PM]
+我也想被玩
+
+渴望怜爱的 むらさき | 抱...抱不到, [5/2/26 10:17 PM]
+我这边没有这个现象(x)
+
+渴望怜爱的 むらさき | 抱...抱不到, [5/2/26 10:18 PM]
+甚至有个十二岁小朋友经常来打
+
+腐竹喵, [5/2/26 10:18 PM]
+我感觉他们应该在聊
+
+腐竹喵, [5/2/26 10:18 PM]
+哇又理论一首
+
+腐竹喵, [5/2/26 10:18 PM]
+因为带支架来录手元的人很多（x
+
+渴望怜爱的 むらさき | 抱...抱不到, [5/2/26 10:18 PM]
+我这边倒是
+
+渴望怜爱的 むらさき | 抱...抱不到, [5/2/26 10:18 PM]
+就是那种
+
+渴望怜爱的 むらさき | 抱...抱不到, [5/2/26 10:18 PM]
+有几个吉祥物
+
+渴望怜爱的 むらさき | 抱...抱不到, [5/2/26 10:18 PM]
+然后群友没事干挑逗一下
+
+腐竹喵, [5/2/26 10:19 PM]
+那我是不是也是吉祥物了）
+
+腐竹喵, [5/2/26 10:19 PM]
+唯一天天来但是不认识任何小团体的人x
+
+腐竹喵, [5/3/26 1:01 AM]
+<!-- sc: berryberry cmt, "舞萌是真能改变一个人的生活重心的", "指到一个地方先看音游地图", "包括但不仅限于出差到某个地方都要找机厅打舞萌 (mutsumi)" -->
+完了是真的x
+
+澪, [5/3/26 1:04 AM]
+这几天和某人出去玩，看都没看舞萌一眼
+
+澪, [5/3/26 1:04 AM]
+某人出远门玩了我要开始打舞萌了（不
+
+渴望怜爱的 むらさき | 抱...抱不到, [5/3/26 1:43 AM]
+我和其他朋友出去玩
+
+渴望怜爱的 むらさき | 抱...抱不到, [5/3/26 1:43 AM]
+对方很不理解我为什么要打乌蒙
+
+渴望怜爱的 むらさき | 抱...抱不到, [5/3/26 1:43 AM]
+然后转头带我去网吧了
+
+渴望怜爱的 むらさき | 抱...抱不到, [5/3/26 1:43 AM]
+我觉得这俩地方本质上没什么区别
+
+渴望怜爱的 むらさき | 抱...抱不到, [5/3/26 1:43 AM]
+都是R18的地方
+
+澪, [5/3/26 1:43 AM]
+有区别
+
+澪, [5/3/26 1:43 AM]
+去网吧我会觉得是社会人
+
+渴望怜爱的 むらさき | 抱...抱不到, [5/3/26 1:44 AM]
+那去机厅呢（
+
+腐竹喵, [5/3/26 1:25 PM]
+有的
+
+腐竹喵, [5/3/26 1:25 PM]
+我家里有电脑但是没有舞萌手台)
+```
+
+Well... So brutal.
+
+<!-- 支持，另外舞萌rating是和乐曲成绩挂钩的，可能有些人睡好了觉吃饱了饭，状态好了一把就出了成绩，而另一些会因为很多因素导致卡在某些歌上，越想刷出成绩就越手癖，导致比前者多花了许多pc数。这个时候心态一急，对比之后产生焦虑，自己就被情绪束缚住了。
+不确定因素太多了，不用看到自己的效率不如别人就怀疑自己。把心态放平，作息调好吃饱饭，生活的部分捋顺了舞萌自然也会慢慢提升。觉得分数刷不动了就把舞萌放几天，觉得状态好了就出勤即可[BanGDream_沙绫-没问题] -->
+
+03 20 Appreciate 为什么舞萌是当下门槛最低的贵族运动？
+
+No wonder how she could get 240k fo.
+
+<!-- 贵族运动的特征：优雅、社交、门槛高。
+其实舞萌还真的都占，好有道理 -->
+
+<!-- 其实也和谱面有很大关系，像是拔大蒜那种星星或是大位移谱面谁来都得张牙舞爪，但如果是直入光神威这种写的很酷的谱面会打就很帅很优雅了[三花猫] -->
+
+<!-- 我只看到一堆人在拍洗衣机 -->
+
+<!-- 没毛病，打舞萌当机厅皇帝也算是贵族了 -->
+
+<!-- 优雅：指急头白脸推歌
+社交：指一堆福瑞和木桶饭地雷女
+门槛高：指w6才算入门 -->
+
+<!-- 为了打高体力歌和防止肩部薄弱长期打舞萌导致腱鞘炎，我还专门跑去健身，本身舞萌的消耗也不低，爆发段心率超过180也是常事，最高一次202全身麻木，进入心流连打几小时都不累，结束下来一看热量消耗1000以上，唯一需要注意的是即时补充能量，不然对身体有伤害[笑哭] -->
+
+04 00 Read `「音游杂谈」舞萌圈的成绩焦虑，该停一停了。`
+
+Did not watch the vid, as it seems to be but an argument (like, toward a new activity of someone). 
+
+Comments are inspiring and, surprisingly calm, thinking it off the box in a retrospective. 
+
+<!-- 深有感触，回想起三年前刚入坑的时候，在音游成绩方面可以说是没有任何成就，但那时候却每天可以随心所欲的享受自己最喜欢的谱面，歌曲，二创，live等等，每天向圈内友好的大佬询问或闲聊相关的人和事，那时就像打开了潘多拉魔盒一样，每天都沉浸在仿佛发现新大陆一般的喜悦之中。 而到了现在在做同样的事情时，我甚至会不由自主的先去观察创作者或出勤同伴的ra等分数系统的高低，从而来衡量此人的价值高低，最极端最疯魔的时候甚至可以因此改变我对人的说话态度和谈论方式，一起入坑的朋友都被我下意识的量化，当我意识到的时候早已无法改变了，现在我满脑子只有对一飞冲天的渴望和本身实力的客观事实在互相掐架，游玩的根本动力早就变了样  这样的心态确实很大程度上病态的促进了我的ra增长速度，但是正如视频里说的一样，推分的狂喜和对下一步的焦虑早已开始在脑中循环，一边看着身边进步速度飞快的人一边自我责备，嘲讽我的人从跳脸小鬼变成了我自己，快乐的触发点被ra给彻底腐蚀，慢慢的能给我带来快乐的不再是音游本身，而只是那个五位数的增长和比较罢了 -->
+
+<!-- 正如“成绩好的学生才是好学生”，每个人都是“不是将他人踩在脚下就是被他人踩在脚下”，所以会在学习上挣扎。一部分无果者与压力大者便会选择打游戏，而音游对成绩的反映更是比考试卷上的分数更加直观（maimai更是当中的佼佼者）。就像学校里的学生一样争夺成绩的排名，个人感觉这根本上简直就是一个东西。这金箍就算是你成了佛你也摘不下来了。
+个人感觉玩游戏本身就是为了快乐游戏而不是为自己创造另一个内耗之源，若是所有玩家一开始都抱着快乐游戏的心态，那现在这一番风波根本就是无稽之谈了。 -->
+
+Maimai is a social game. Obviously I could not ask for their resume directly. Most frequently I start with what grade are you in, even if they are an adult. Then I would say I don't wanna pick a song now (so I can pick the last song in a game of 4 songs). Sometimes I ask their rating even if they explicitly hide (obviously most active players are among 12k to 16k. most of the time I just take a look. If they hide, I almost always ask that.). I might ask the major or industry they are in. I might dive deeper for some majors, like portfolio, GitHub id, or favorite subject.
+
+<!-- 我从另一个视角说一下我的看法：舞萌的 rating 系统设置得不合理，它在有意制造玩家的 rating 焦虑。
+两个人的 b50 里都是同样定数的歌，但其中一个人的全是 100.49，另一个人的全是 100.50。按理说这两人的水平差不多，但 rating 上两人差距高达 500 分之多。这种“设计一个硬门槛，离门槛差一点点你就什么也不是”的设计，才是让几乎所有玩家一遍一遍去推鸟加的焦虑来源。“水歌”这个概念似乎也是 maimai 独有的。
+相比之下，那些评价曲线更平滑的音游，Arcaea、Phigros、Rotaeno，rating 焦虑就要小得多。 -->
+
+Well, actually, I kind of agree w the rating design of maimai. If I could not feel the pressure/pain, I would have felt any relief/happiness either, which is quite sad. S has a quite impressive distinguishing color than others. 
+
+<!-- 音游圈卖弱的现象貌似也很严重
+排除一部分真想装的人，有些人是因为想“谦虚”以及畏惧比自己更强的人的目光而用力过猛表现出一种很夸张的自嘲，感觉能和up主说的对上 -->
+
+<!-- 在学校的时候有一群做题区就是这样的，考试一出分就在那卖弱 -->
+
+<!-- 还是舞萌rating存在感太强，关闭也只能关头顶副屏和登录界面显示，结算页面照样赫然无敌炫彩大字体，玩一首看一遍，推分了还要扑哧一下跳满整个屏幕伴随土味光效，就差全机厅语音播报了。所谓眼不见心不烦，天天见很难不在意。中二一关那上机根本看不到，我关了一年多我现在多少分我自己都忘了。 -->
+
+<!-- 各有优劣吧，舞萌这种“过线即得分”的rating系统是一种更具推分激励性的机制，因为目标更明确，更透明了；同时这个“分数线”难度要低于所谓的AP，AJ，本质上也让新手玩家不会陷入过于痛苦的推分、凹分——只要拿到鸟或者鸟加，就算是阶段性的胜利，这些都是对新玩家更友好的。但与此同时，如果过于依赖舞萌中rating的评判体系，那可能就会错误地否认99.98%，100.48%，以及高分鸟加甚至ap的含金量，对于音游老玩家和高手而言，就更不会在意不同游戏的rating机制了，因为他们追求的大多都是“尽可能完美地完成一首歌”，这就是为什么不同人对舞萌rating的看法不一样，就看你更在意的是所谓的“实力攀比工具”，还是享受音游本身 -->
+
+Btw, idk why 96 to 97 has such a high impact on rating, if they are just a factor, wo anything additional. Maybe I forget something. <!-- Upd: it's not just a factor. It's not about addition. It's another factor called the ranking coefficient. -->
+
+04 40 Appreciate `【双语中字】一个舞萌新玩家的挣扎`
+
+<!-- 想起不久前的寒假，为了清掉You Mean The World to Me 100.4994的怨念，愣是堵门三四天，狂开这歌50多次。手癖+震键导致我越打越差，心情也是特别的焦虑，以至于睡前都要看一眼谱面确认。最后也是勉勉强强鸟加了，Rating +9，也不知道自己到底在上头什么……看到视频结尾真的是感慨，最怀念的就是刚入坑那段时间，我甚至都不知道Rating是什么，打舞萌就是来听歌的。 -->
+
+On maimai I, just, almost never play the same song more than once in a game, which is a privilege I don't really have when I'm alone and my time is infinite and I'm playing something like project sekai, esp phigros, or even nulls royale, where I've player for more than 6 hours, or 12 hours, overnight, to get the maximum elo. And I seldom play games continuously.
+
+13 00 eat acbox group.
+
+```
+箱子跑来跑去📦, [5/19/26 9:47 AM]
+10年后会好起来吗？20年后会好起来吗？
+
+AkiChan, [5/19/26 9:49 AM]
+会吗？会吧
+
+Acbox Neko, [5/19/26 9:50 AM]
+bu hui ba
+
+Romandu, [5/19/26 11:29 PM]
+不确定未必是坏事
+
+Romandu, [5/19/26 11:29 PM]
+奥德赛时期
+
+Acbox Neko, [5/19/26 11:31 PM]
+我初中时期还没对美国祛魅
+
+Acbox Neko, [5/19/26 11:31 PM]
+当时我们政治老师嘲讽美国两党轮换 每当轮换的时候就会推翻之前的很多政策 导致什么都搞不下去
+
+Acbox Neko, [5/19/26 11:31 PM]
+我当时觉得政治老师就是个小粉红 在胡扯
+
+Acbox Neko, [5/19/26 11:31 PM]
+直到我经历了特朗普时代 我承认我错了
+
+Acbox Neko, [5/19/26 11:31 PM]
+中国从上世纪90年代开始支持跨性别术后改证
+
+Acbox Neko, [5/19/26 11:31 PM]
+自始至终从来没变过
+
+Acbox Neko, [5/19/26 11:31 PM]
+虽然社会上对性少数的歧视和流言蜚语依然大量存在
+
+Acbox Neko, [5/19/26 11:31 PM]
+但中国政府真的从来没有偏向过任何一方
+
+Acbox Neko, [5/19/26 11:31 PM]
+反而美国在执政的时候 lgbtq运动 看起来很进步吧 法律承认了跨性别 承认了第三性别 承认了面术换证
+
+Acbox Neko, [5/19/26 11:31 PM]
+在保守派上台之后 不仅全部推翻 而且导致性少数的生存环境进一步被反噬 甚至术后都无法改证了
+
+Acbox Neko, [5/19/26 11:31 PM]
+所以我觉得 中国要面临的问题仅仅只是社会舆论的问题
+
+Acbox Neko, [5/19/26 11:31 PM]
+因为某些维稳政治的需求所以舆论引导上对性少数喊打喊杀
+
+Acbox Neko, [5/19/26 11:31 PM]
+我相信这些都是可以解决的
+
+Acbox Neko, [5/19/26 11:31 PM]
+大部分的歧视源于中国人的天生保守和教育问题
+
+Acbox Neko, [5/19/26 11:31 PM]
+也许再过30年，再过50年
+
+Acbox Neko, [5/19/26 11:31 PM]
+这些都可以解决
+
+Acbox Neko, [5/19/26 11:31 PM]
+保守永远是相对的，就像现在的保守派和100年前的保守派不一样，甚至某些观点相冲突
+
+Acbox Neko, [5/19/26 11:31 PM]
+所以总体来说 我对未来的老中还是持乐观心态的
+
+溏 🍬, [5/19/26 11:34 PM]
+我觉得中国更社达一点，当你真的取得了很好的成就，比如在山东考上了公务员，或者做题家，或者赚了很多钱，总之就是取得了被世俗认可的成就，那你的其他部分就只是一种“个性”
+
+Joestar Ding, [5/19/26 11:34 PM]
+世界也不是只有中国和美国
+
+Romandu, [5/19/26 11:34 PM]
+有本书是“穷爸爸富爸爸”
+
+Romandu, [5/19/26 11:34 PM]
+里面有个观点
+
+Acbox Neko, [5/19/26 11:34 PM]
+是的
+
+Romandu, [5/19/26 11:35 PM]
+穷人有个性是死犟
+
+Romandu, [5/19/26 11:35 PM]
+富人有个性是奇异天才
+
+Romandu, [5/19/26 11:35 PM]
+穷人不愿意屈服是不懂人情世故
+
+溏 🍬, [5/19/26 11:36 PM]
+比如说
+都是玩手机玩的
+
+Romandu, [5/19/26 11:37 PM]
+(imo)多读点哲学的书吧，或许能解解惑hhh
+
+溏 🍬, [5/19/26 11:37 PM]
+抑郁症也是玩手机玩出来的
+
+Romandu, [5/19/26 11:38 PM]
+也有社科，政经，人的行为，致命的自负，通往奴役之路等等
+
+Acbox Neko, [5/19/26 11:38 PM]
+共产党这么多年积攒下来的维稳经验你还是要相信的
+
+Acbox Neko, [5/19/26 11:39 PM]
+我希望改革 我不希望政府倒台
+
+Acbox Neko, [5/19/26 11:39 PM]
+倒台了对我们都没有好处
+
+Acbox Neko, [5/19/26 11:40 PM]
+但这也意味着我们会经历一段不安稳的日子
+
+溏 🍬, [5/19/26 11:40 PM]
+所有的宏观问题都是系统性问题，不能试图用一句话总结，但很多人喜欢追求这样的一句话总结
+
+Acbox Neko, [5/19/26 11:40 PM]
+这个代价太大了
+
+Acbox Neko, [5/19/26 11:40 PM]
+改革可以
+
+Acbox Neko, [5/19/26 11:40 PM]
+政权更替我觉得完全不行
+
+Romandu, [5/19/26 11:42 PM]
+我还是比较偏向奥派的
+
+溏 🍬, [5/19/26 11:42 PM]
+中国的最大问题是，一切的希望是寄托于领导人是个「 好人」
+
+Romandu, [5/19/26 11:42 PM]
+或者更极端一点，小政府/无政府主义
+
+Romandu, [5/20/26 12:21 AM]
+所有的时代都是一轮又一轮的康波周期
+
+Romandu, [5/20/26 12:21 AM]
+包括工业革命
+
+Romandu, [5/20/26 12:23 AM]
+本来不就是吗
+
+Romandu, [5/20/26 12:23 AM]
+那你想表达什么
+
+路上看见, [5/20/26 12:24 AM]
+我认输了
+
+溏 🍬, [5/20/26 12:26 AM]
+哈哈，不要试图在网络上说服别人
+
+溏 🍬, [5/20/26 12:26 AM]
+这是完全不可能的
+
+路上看见, [5/20/26 12:26 AM]
+所以对于共产党，共产党还重要吗这时候？
+
+路上看见, [5/20/26 12:27 AM]
+政权更替是必然的
+
+Acbox Neko, [5/20/26 12:28 AM]
+我认为不会那么快
+
+Acbox Neko, [5/20/26 12:28 AM]
+以及你认为阵痛是必然的
+
+Acbox Neko, [5/20/26 12:28 AM]
+但是你是局中人
+
+Acbox Neko, [5/20/26 12:28 AM]
+我们作为局中人肯定不希望阵痛
+
+Acbox Neko, [5/20/26 12:29 AM]
+我倒是觉得 现在中国大部分的政治体制对老中是最优解
+
+Acbox Neko, [5/20/26 12:30 AM]
+我认为 如果这个领导者真的很有能力 那么我支持他搞独裁
+
+溏 🍬, [5/20/26 12:31 AM]
+那你和我差不多
+
+溏 🍬, [5/20/26 12:31 AM]
+我称之为政治M体质
+
+Acbox Neko, [5/20/26 12:33 AM]
+我可能认同小国寡民 但我很不理解无政府
+
+Acbox Neko, [5/20/26 12:33 AM]
+就比如 我比较欣赏新加坡的经济体制
+
+Acbox Neko, [5/20/26 12:34 AM]
+而这些成果很大一部分归于人民行动党的一些政策
+
+Acbox Neko, [5/20/26 12:34 AM]
+如果我是新加坡人我会继续支持人民行动党 即使他们独裁
+
+Acbox Neko, [5/20/26 12:35 AM]
+那我就要引入我的另一个暴论：群众都是傻逼
+
+溏 🍬, [5/20/26 12:35 AM]
+新加坡首先是地缘优势国家，第二点，没有第二点，政治上他们想怎么搞怎么搞
+
+Acbox Neko, [5/20/26 12:37 AM]
+至少教育体系就决定了傻逼在群众中的占比是大多数的
+
+Acbox Neko, [5/20/26 12:37 AM]
+所以这也让我认定绝对民主对任何国家都是一场灾难
+
+溏 🍬, [5/20/26 12:37 AM]
+我是啥B
+
+溏 🍬, [5/20/26 12:42 AM]
+这个话题只能以人身攻击结束
+
+Acbox Neko, [5/20/26 1:14 AM]
+人生第一次 忍痛给自己升了个舱
+
+Acbox Neko, [5/20/26 1:15 AM]
+没有 就是突然想体验一下然后就去竞价了没想到竟价成功了
+
+溏 🍬, [5/20/26 1:18 AM]
+吉祥吗
+
+Acbox Neko, [5/20/26 1:18 AM]
+对
+```
+
+13 40 Eat nickle angel group
+
+```
+澪, [5/17/26 1:06 PM]
+@FlowingSnow 你给我那个 pr 等我开了 Windows 笔记本我才能合，因为里面有一些 conflict 我需要 view 一下，加一些 commit，我粗略看感觉你是加了一些 rebundant files
+
+澪, [5/17/26 1:06 PM]
+因为最近都在用 Mac
+
+Nickel Angel✨, [5/17/26 1:23 PM]
+那怎么说，tomiya 自己改吗
+
+pupupu|云苔☁️, [5/17/26 1:44 PM]
+你们在做什么🥺
+
+渴望怜爱的 むらさき | 抱...抱不到, [5/17/26 1:45 PM]
+在让LLM写代码
+
+澪, [5/17/26 1:46 PM]
+上面在讨论我的文档站 7sref.cc 的 pull request，下面在讨论 llm 翻译没有一致性可以怎么解决
+
+澪, [5/17/26 1:46 PM]
+比如说一个人前面翻成丽兹后面翻成利兹这种情况
+
+澪, [5/17/26 1:47 PM]
+目前对于这种情况的考虑是，直接全部使用英文
+
+澪, [5/17/26 1:47 PM]
+就会全部写成 Liz
+
+Nickel Angel✨, [5/17/26 1:48 PM]
+或者写个小的知识库，让 ai 对特定人名翻译进行映射？
+
+斬風千雪 ❄️, [5/17/26 1:48 PM]
+已经修了 Owl -> Aul
+
+澪, [5/17/26 1:48 PM]
+其实现在 agent 的 memory 和知识库差别已经不大了
+
+澪, [5/17/26 1:48 PM]
+可能差别在前端
+
+澪, [5/17/26 1:50 PM]
+推荐使用 con-terminal
+
+澪, [5/17/26 1:50 PM]
+https://github.com/nowledge-co/con-terminal
+
+澪, [5/17/26 1:50 PM]
+一句话，ai 给我全部替换
+
+斬風千雪 ❄️, [5/17/26 1:52 PM]
+chsh -s claude
+
+斬風千雪 ❄️, [5/17/26 1:52 PM]
+三年前用过一个叫 github copilot cli 的东西
+
+斬風千雪 ❄️, [5/17/26 1:53 PM]
+想做啥就敲一个问号 后面跟着自然语言描述
+
+斬風千雪 ❄️, [5/17/26 1:53 PM]
+这个还要换终端模拟器，好烦（
+
+斬風千雪 ❄️, [5/17/26 1:53 PM]
+结果那个产品被微软大砍刀了
+
+斬風千雪 ❄️, [5/17/26 1:53 PM]
+明明挺好用的 qwq
+
+Nickel Angel✨, [5/17/26 1:55 PM]
+好像 opencode 也有类似的插件，可以让 ai 启动一个终端，然后人和 ai 在 opencode 里交互，人和 ai 都可以直接操作终端
+
+澪, [5/17/26 1:55 PM]
+有吗（
+
+澪, [5/17/26 1:55 PM]
+我完全没用过 opencode
+
+澪, [5/17/26 1:55 PM]
+看 harness 感觉不太行
+
+澪, [5/17/26 1:56 PM]
+我觉得 codex > claude code > cursor > others
+
+Nickel Angel✨, [5/17/26 1:58 PM]
+https://github.com/shekohex/opencode-pty
+
+斬風千雪 ❄️, [5/17/26 1:59 PM]
+可以让 AI 帮你摁 y/N 的神奇插件（
+
+澪, [5/17/26 1:59 PM]
+所以你们觉得这个前端怎么样
+
+澪, [5/17/26 2:00 PM]
+我昨天改了一些细节
+
+斬風千雪 ❄️, [5/17/26 2:00 PM]
+我家那个只会 yes | command
+
+Nickel Angel✨, [5/17/26 2:00 PM]
+感觉卡片有点太长了？看起来怪怪的
+
+澪, [5/17/26 2:00 PM]
+我觉得这个问题不大吧（
+
+pupupu|云苔☁️, [5/17/26 2:01 PM]
+比知乎的强（https://developer.zhihu.com/
+
+斬風千雪 ❄️, [5/17/26 2:01 PM]
+一眼 vibe
+
+澪, [5/17/26 2:01 PM]
+草，这是人吗
+
+斬風千雪 ❄️, [5/17/26 2:03 PM]
+唔，感觉需要真实「用户」来体验。作为开发者的话，可能会觉得自己的每个设计都是合理的，然而用户来用，可能就会嫌一些交互不够简练等等
+叠甲：本建议仅供参考
+
+澪, [5/17/26 2:03 PM]
+
+
+澪, [5/17/26 2:03 PM]
+that's it
+
+斬風千雪 ❄️, [5/17/26 2:04 PM]
+这个 AI 可以直接上手在终端里敲字吗
+
+斬風千雪 ❄️, [5/17/26 2:04 PM]
+还是只是加了个对话框
+
+澪, [5/17/26 2:05 PM]
+下一个体验一下就知道了
+
+斬風千雪 ❄️, [5/17/26 2:06 PM]
+莫名想起了 Windows XP 文件管理器搜索框下面的小狗 / 魔法师（？）
+
+Nickel Angel✨, [5/17/26 2:08 PM]
+突然感觉，可以在我们机厅群里宣传一下这个网站 https://www.7sref.cc/
+
+澪, [5/17/26 2:09 PM]
+我现在看这个前端感觉做的很粗糙（
+
+澪, [5/17/26 2:09 PM]
+但是我没时间改）
+
+Nickel Angel✨, [5/17/26 2:10 PM]
+感觉至少 OI wiki 那个水平应该还是有的x
+
+澪, [5/17/26 2:10 PM]
+mtf wiki 的水平还是有的
+
+pupupu|云苔☁️, [5/17/26 2:19 PM]
+xm
+
+pupupu|云苔☁️, [5/17/26 2:20 PM]
+我也想做漂亮网站
+
+斬風千雪 ❄️, [5/17/26 2:24 PM]
+我也想做漂亮网站
+
+澪, [5/17/26 2:24 PM]
+所以你报了今年的前端训练营吗
+
+pupupu|云苔☁️, [5/17/26 2:24 PM]
+什么前端训练
+
+pupupu|云苔☁️, [5/17/26 2:25 PM]
+不会又是，字节跳动
+
+斬風千雪 ❄️, [5/17/26 2:25 PM]
+不是很懂。
+
+pupupu|云苔☁️, [5/17/26 2:25 PM]
+什么竟然还在办吗
+
+澪, [5/17/26 2:25 PM]
+我反思了一下我前端太弱了 所以去报了
+
+pupupu|云苔☁️, [5/17/26 2:25 PM]
+前端不都死了多少年了
+
+澪, [5/17/26 2:25 PM]
+看看有什么活
+
+斬風千雪 ❄️, [5/17/26 2:26 PM]
+前端不都死了多少次了
+
+澪, [5/17/26 2:26 PM]
+反正做项目可以用满血 gpt（而且字节他们自己不也在用 ai
+
+澪, [5/17/26 2:26 PM]
+我听别人说字节内部 ai 使用率起飞了
+
+澪, [5/17/26 2:28 PM]
+前端真死了吗
+
+澪, [5/17/26 2:28 PM]
+我觉得没有
+
+澪, [5/17/26 2:28 PM]
+从我这些天做这个 proj 被折磨的程度来看
+
+澪, [5/17/26 2:29 PM]
+我 ui 推倒重来了 4 版了
+
+斬風千雪 ❄️, [5/17/26 2:29 PM]
+AI 出来之前人们就天天念叨着前端已死
+
+澪, [5/17/26 2:29 PM]
+睡都睡不着
+
+斬風千雪 ❄️, [5/17/26 2:29 PM]
+AI 出来之后，前端死的频率只是提高了
+
+斬風千雪 ❄️, [5/17/26 2:29 PM]
+但是我觉得这个死更像是前端开发者被气死
+
+斬風千雪 ❄️, [5/17/26 2:29 PM]
+而不是这个行业玩儿完了
+
+pupupu|云苔☁️, [5/17/26 2:29 PM]
+那些做xxx后台系统的
+
+pupupu|云苔☁️, [5/17/26 2:30 PM]
+或者别的不在乎细节的
+
+pupupu|云苔☁️, [5/17/26 2:30 PM]
+比如知乎（
+
+pupupu|云苔☁️, [5/17/26 2:30 PM]
+可能确实有点死了
+
+澪, [5/17/26 2:30 PM]
+我服了 ai 最会做控制台
+
+斬風千雪 ❄️, [5/17/26 2:30 PM]
+我也要死吗
+
+pupupu|云苔☁️, [5/17/26 2:30 PM]
+我也要死吗
+
+澪, [5/17/26 2:32 PM]
+给它啥它都能做成仪表盘
+
+澪, [5/17/26 2:32 PM]
+出厂设置了属于是
+
+澪, [5/17/26 2:32 PM]
+页面逻辑是一点没有的，信息是一定要塞在一页里的
+
+斬風千雪 ❄️, [5/17/26 2:32 PM]
+所以需要人类
+
+澪, [5/17/26 2:32 PM]
+高信息密度是为了要让人看的眼花缭乱而不是能让人读的
+
+斬風千雪 ❄️, [5/17/26 2:33 PM]
+不对，我为什么要接你的话，深度思考完毕，action: dismiss_message
+
+澪, [5/17/26 2:33 PM]
+color design 是一定要用绿色的
+
+Nickel Angel✨, [5/17/26 2:34 PM]
+其实我感觉控制台那种风格的 ui 看多了也就无所谓了
+
+澪, [5/17/26 2:34 PM]
+那你为什么要给我交 pr
+
+Nickel Angel✨, [5/17/26 2:34 PM]
+反正样子都差不多，能用就行，办公软件到不追求多好看（
+
+斬風千雪 ❄️, [5/17/26 2:35 PM]
+放不下这个项目
+
+斬風千雪 ❄️, [5/17/26 2:35 PM]
+我比较反感 element design，审美疲劳了
+
+斬風千雪 ❄️, [5/17/26 2:35 PM]
+结果我们大作业还一定要用这个
+
+斬風千雪 ❄️, [5/17/26 2:35 PM]
+本来想用 shadcn 的结果老师有意见
+
+Nickel Angel✨, [5/17/26 2:35 PM]
+感觉和做 ppt 差不多
+
+Nickel Angel✨, [5/17/26 2:35 PM]
+ai 做 ppt 还是不太行
+
+澪, [5/17/26 2:36 PM]
+shadcn 有什么问题
+
+斬風千雪 ❄️, [5/17/26 2:36 PM]
+老师没玩过
+
+斬風千雪 ❄️, [5/17/26 2:36 PM]
+我比较喜欢它的审美，虽然现在比较烂大街
+
+澪, [5/17/26 2:37 PM]
+我上面那个 kairos ipc 的页面是基于 tailwind 搓的，没用组件库
+
+斬風千雪 ❄️, [5/17/26 2:39 PM]
+不对，「比较」是我的模型口癖吗，就像 dsv3 的「极其」和 dsv4 的「确实」
+
+斬風千雪 ❄️, [5/17/26 2:39 PM]
+要改改了
+
+pupupu|云苔☁️, [5/17/26 2:39 PM]
+https://huamurui.github.io
+
+
+前些天用ai改了改感觉还是有点阿巴阿巴
+
+斬風千雪 ❄️, [5/17/26 2:40 PM]
+喵儿喵儿
+
+斬風千雪 ❄️, [5/17/26 2:40 PM]
+这个字体好可爱
+
+澪, [5/17/26 2:40 PM]
+我现在是用 codex + skill 再加吃了几本书的 gemini 的反馈回路来改 ui
+
+澪, [5/17/26 2:40 PM]
+我感觉挺好用
+
+斬風千雪 ❄️, [5/17/26 2:42 PM]
+雪竟然会落在代码块上
+
+斬風千雪 ❄️, [5/17/26 2:42 PM]
+好可爱！！！
+
+斬風千雪 ❄️, [5/17/26 2:44 PM]
+感觉自己的前端审美和用的显示器有关
+
+斬風千雪 ❄️, [5/17/26 2:44 PM]
+以前用低分屏就比较反感自定义字体，并且写什么都在追求 pixel-perfect
+
+斬風千雪 ❄️, [5/17/26 2:45 PM]
+后来吃上好的了
+
+斬風千雪 ❄️, [5/17/26 2:45 PM]
+就喜欢上了
+
+斬風千雪 ❄️, [5/17/26 2:45 PM]
+也不那么 pixel-perfect 强迫症了
+
+斬風千雪 ❄️, [5/17/26 2:46 PM]
+添油加醋
+
+斬風千雪 ❄️, [5/17/26 2:46 PM]
+捣儿乱儿。
+
+Nickel Angel✨, [5/17/26 2:56 PM]
+看看什么书
+
+澪, [5/17/26 2:57 PM]
+refactoring ui
+
+澪, [5/17/26 2:57 PM]
+pdf 我群里有
+```
+
+13 00 Finish watching `【双语中字】一个舞萌新玩家的挣扎`. Rewatch `TF家族打舞萌` `时代峰峻你玩大了（W65顶级wmc真情流露（开头硅胶预警））` w danmakus on.
+
+15 20 Arrive
+
+<!-- The rain has stopped -->
+
+I were about to return to have my watch after the realization. I did not. 
+
+I haven't had a watch when I were a pupil. And I'm fine. 
+
+I don't have to take a look from time to time. I could feel it. 
+
+And humans are creatures of feelings.
+
+<!-- Having an old police guy getting in my way for riding on a non bicycle road, which is quite common due to the unsophisticated city design and an open secret of the compliance tax, I do not answer a word on his req for my id and simply wait and go forward after the light turns green. (He does not hold my arms but I would strike hard and pull him away if he does. One wo privilege could not afford a fight w me, if they have any sanity left.) He shouts. Nothing happens. 
+
+It might not be that lucky for the stranger, likely a university girl, with a backpack. -->
+
+16 00 feel.
+
+<!-- player: blight v, 12971 -->
+
+<!-- Thumb up. (Toward him, looking at another waiting player) -->
+
+<!-- (Thumb up.) -->
+
+<!-- 好好笑。 -->
+
+<!-- （释怀）我上次打了好久, 漏一个键。 -->
+
+He rarely smiles that happily.
+
+<!-- 我是说你的姿势好好笑。（单手游玩，使用胳膊肘击，如果两个键） -->
+
+<!-- （转变）有病是不是。 -->
+
+<!-- （啊...）对不起。 -->
+
+<!-- （转变）（苦笑）我知道你没有恶意... 就是说话方式能不能 （笑） -->
+
+16 40 Play some songs on advanced level.
+
+Get sss on Kyu kurarin on yellow. Easy and satisfying. 
+
+<!-- Yet idk why I feel nothing wrong when I get s sometimes. Upd: breaking notes matter a lot. Fc plus didn't imply a higher rating. -->
+
+Surprisingly a ss of internet yamero on yellow still gives me some rating delta even if I have s on red. 
 
 16 40 socialize.
 
@@ -17829,7 +19179,68 @@ vids are good for visual novels i guess. <!-- i dont wanna pick the random words
 
 a cute and gentle girl from zhonghua vhs in grade 11 w stylish dressing, visible dark gray bra ribbons, black shirt w some white drawing, dark blue school uniform trousers. what would she see in her future? i wonder.
 
+19 40 Chat w a maimai player on qq.
+
+```
+saba 🐟 19:38:08
+你有去过一些别的机厅吗。
+
+上周工作日也总是有人。
+
+这两天，经常冷清清的。没有什么新的朋友。
+
+对于一直玩这个游戏，并不是很感兴趣，体力也不够。更多时候是偶尔玩一玩，会很有意思，此外用电脑工作的时候，有一些人在身边，会舒服和安心，去神人多一些的地方。
+
+子供のYunoko 21:27:13
+[不支持的元素类型]工作日，确实容易很冷清呢
+ 如果希望有人在身边的话，或许可以申请回到学校里坐着听听课再？
+已经没有了高考的束缚，或许可以更加轻松的享受高中生活
+新的朋友的话，试试看在群里多发发言，问问能不能和大家添加好友，群里的大家总是很友善的，也总有人能理解你所了解的方面吧！
+
+saba 🐟 22:52:17
+不会去学校。不需要那些知识。会对一些感兴趣，但应试教育不等于教育。显然更倾向与语言模型学习，也正在这样做。其实每天和 llms 交流的内容已经远大于人类了，当然，读远大于说，不过无论用哪个维度比较。
+
+并不喜欢那些同学。更多作为互相嘲讽（慕强装弱）攻击的对方，会感到有趣，有时，但绝对不会觉得这样一些各有志向，或愚钝，或散漫，或为一些平凡的思路与琐事而雀跃的孩子，在身边会感觉到任何的欣慰。
+
+与网络社交完全无关。sns 上我已经有许多互动方式，在我喜欢的研究方向。
+
+（阅读理解中一段的首句常概括大意。其实上一条讯息... “你有去过一些别的机厅吗。”）
+
+地图上能找到一些。但什么也不知道。
+
+其实也没有很高语气了，不过这个是非问题大概也不难回答。（经常被误解呢，也许现代互联网的大家早就失去阅读长讯息的耐心了呢。会很技术性或者学术，即使是那几个善于交流的人，像分析报告一样先引用再评论。）这家机厅很好。留下许多回忆。也时常有新人。
+
+子供のYunoko 23:11:42
+可能是我对大段文本的理解有些问题，如你所见，我也是一名自闭症患者
+
+关于机厅的问题，我基本上只去七宝宝龙城的汤姆熊和打浦桥这边的，除朋友邀请外不会去别的地方
+
+我大概能明白你对同学的一些厌恶，但我表达的意思是前往学校这样的地方享受休闲的时候（可以参考日式的高中生活），当然没有说最好去学校好的意思
+
+网络社交是很好的，但对于大段文字的处理方式，我有些捉襟见肘，我的阅读能力和表达能力因为心理疾病而变得很差。和碎片化的交流方式相比，我其实更喜欢阅读长段，因为这让人更全面的了解信息。的确，在互联网上，绝大部分人更会像面对面说话那样，以字词句的方式来表达当下提及的话题。
+
+能够在机厅这样的环境里感到安心我觉得这很棒，但我实在无法提供更多的机厅信息，你可以在群里问问那些经常前往上海各地机厅的群友，他们或许知道的更多些。
+
+抱歉我不清楚上文阅读起来是否有困难，致歉
+```
+
 20 00 write `contributing.md`, document std lib. <!-- i no longer document the trivial changes. they are recorded by git anyway. though i might delete .git folder if needed. crucial, non incremental/corrective, history files are put away inside dedicated archival folders inside legacy. (effectively git branches, but way more compatible to tools like rg) -->
+
+<!-- upd: effectively almost deprecated. too much unconventional design choices, esp those linguistic, confuse llms. -->
+
+21 40 End the day w waarudo waido wantaa, king, and heat abnormal at expert level.
+
+Have opencode getting its job done during the gameplay btw. Great.
+
+22 00 Copy iyowa to phone to listen along the way.
+
+<!-- Metro doesn't recognize artists separated by &. Curate a playlist of all the songs instead. Just a few clicks.  -->
+
+<!-- It would be great if it had something like library in Spotify. -->
+
+22 00 No bikes nearby. Walk for a while in the peaceful rainy night.
+
+23 00 Rewatch `【双语中字】一个舞萌新玩家的挣扎`
 
 20
 
