@@ -131,17 +131,19 @@ saba https://www.youtube.com/@SamekoSaba
 
 ---
 
-pure math 2025
+libadwaita
 
----
+https://github.com/romgrk/web-toolkit
 
-intention (omnibox):
+https://github.com/ncpa0cpl/adwaita-web?tab=readme-ov-file
 
-chrome://new-tab-page
+https://github.com/ncpa0/ADWaveCSS
 
----
+https://adwave.qzz.io/example-page/input.html
 
-journal
+https://developer.gnome.org/hig/patterns/feedback.html
+
+https://www.figma.com/community/file/1467967362512102193
 
 ---
 
@@ -233,25 +235,21 @@ https://pi.dev/
 
 ---
 
-mac os x 10
+intention (omnibox):
 
-https://os.ryo.lu/
+chrome://new-tab-page
 
 ---
 
-libadwaita
+journal
 
-https://github.com/romgrk/web-toolkit
+---
 
-https://github.com/ncpa0cpl/adwaita-web?tab=readme-ov-file
+ryos
 
-https://github.com/ncpa0/ADWaveCSS
+mac os x 10
 
-https://adwave.qzz.io/example-page/input.html
-
-https://developer.gnome.org/hig/patterns/feedback.html
-
-https://www.figma.com/community/file/1467967362512102193
+https://os.ryo.lu/
 
 ---
 
@@ -267,8 +265,12 @@ https://github.com/Menci/Cahciua/blob/main/AGENTS.md
 
 ---
 
-ryos
+para
 
-https://os.ryo.lu/
+(blog. preview.)
+
+---
+
+pure math 2025
 
 ---
