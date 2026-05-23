@@ -16909,7 +16909,7 @@ Also, I no longer have to hesitate between the chromatic colors of Google pixel.
 
 12 40 Check some vids on nothing and pixel. 
 
-Mkbhd. Ltt. Mlcn ones.
+Mkbhd. Ltt. <!-- cool casual english. "sick" "cook" --> Mlcn ones. 
 
 Sick design. Not quite a deal on hardware.
 
@@ -17908,6 +17908,10 @@ pics, mtf stories.
 <!-- as a mtf who plays maimai, has she done anything crazy? well, she does program, which ive contributed to, mostly removing unused code. "坏事" "纯良" -->
 
 22 40 play project sekai at note speed 10.
+
+23
+
+12 00 sync memories.
 
 
 

@@ -478,6 +478,8 @@ rhetoric:
 - nice as adverb grammar play nice
 - first name last name order
 - lol laugh out loud
+- sick meaning slang
+- cook meaning slang
 
 laws:
 
