@@ -144,6 +144,7 @@ archi:
 - object params positional params mixed params
 - centralized tests colocated tests
 - corporate boilerplate programming criticism
+- over generalization opencode markdown export code block backticks
 
 frontend: <!-- web -->
 
@@ -172,6 +173,9 @@ frontend: <!-- web -->
 - react component parcel test
 - react commit freeze in between repaint
 - react mui test opencode
+- mui button ripple effect overflow hidden crop path animation
+- normalize css js import css
+- parcel vite speed
 
 backend:
 
