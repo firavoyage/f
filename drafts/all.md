@@ -463,6 +463,7 @@ economics:
 - investing prediction market strategy swap to sol
 - investing memecoins reality
 - investing strategy long term short term
+- investing index fund growth theory
 
 society:
 
@@ -493,6 +494,7 @@ rhetoric:
 - sick meaning slang inversion bad wicked ill
 - cook meaning slang
 - theory meaning slang
+- created equal
 
 laws:
 
