@@ -1,5 +1,62 @@
 <!-- the export fails to render properly when it meets mcp. same issue. code block backtick number. -->
 
+<!-- 
+
+upd: failure pattern:
+
+...
+
+## User
+
+test web search. try to search mui docs. be simple.
+
+---
+
+## Assistant (Build · MiniMax-M2.5 · 12.5s)
+
+_Thinking:_
+
+The user wants me to test web search functionality by searching for MUI (Material-UI) documentation. They want me to be simple about it.
+
+I should use playwright to navigate to one of the search engines mentioned in the instructions and search for MUI docs. Let me use duckduckgo as it's the baseline reference mentioned.
+
+The URL format from the instructions is:
+https://html.duckduckgo.com/html/?q=search+keyword&kp=-2&kl=us-en&k1=-1&kd=1&ia=web
+
+So for MUI docs, it would be:
+https://html.duckduckgo.com/html/?q=mui+docs&kp=-2&kl=us-en&k1=-1&kd=1&ia=web
+
+Let me navigate to that URL and see the results.
+
+
+**Tool: playwright_browser_navigate**
+
+**Input:**
+```json
+{
+  "url": "https://html.duckduckgo.com/html/?q=mui+docs&kp=-2&kl=us-en&k1=-1&kd=1&ia=web"
+}
+```
+
+**Output:**
+```
+### Ran Playwright code
+```js
+await page.goto('https://html.duckduckgo.com/html/?q=mui+docs&kp=-2&kl=us-en&k1=-1&kd=1&ia=web');
+```
+### Page
+- Page URL: https://html.duckduckgo.com/html/?q=mui+docs&kp=-2&kl=us-en&k1=-1&kd=1&ia=web
+- Page Title: mui docs at DuckDuckGo
+### Snapshot
+- [Snapshot](.playwright-mcp/page-2026-05-23T12-26-40-137Z.yml)
+```
+
+...
+
+ -->
+
+<!-- im not willing to fix each. i would simply wrap inside a big ``````md -->
+
 <!-- https://gchq.github.io/CyberChef/#recipe=From_Base64('A-Za-z0-9%2B/%3D',true,false) -->
 
 #
@@ -6117,6 +6174,7 @@ Show all
 
 #
 
+``````md
 # MUI docs web search test
 
 **Session ID:** ses_1ab32e826ffe7fZPd9ehtbjDei
@@ -7785,4 +7843,285 @@ Many tutorial URLs are outdated/404 (freecodecamp, logrocket, etc.). GeeksforGee
 
 ---
 
+``````
 
+#
+
+how to use jina ai
+
+**[Jina AI](https://jina.ai/) offers specialized developer tools to extract web data, search the web, and build search applications**. You can use Jina AI without coding through your browser, or integrate it into your code using their APIs and SDKs. \[[1](https://jina.ai/), [2](https://sowmiyeh.medium.com/introducing-jina-ai-how-to-build-a-neural-search-engine-by-jina-ai-c2ac1e43f738), [3](https://jina.ai/serve/jina-ai-cloud/login/), [4](https://ai-sdk.dev/providers/community-providers/jina-ai)]
+
+Here is how to use Jina AI's most popular tools.
+
+1\. Read and Scrape Web Content (`r.jina.ai`) \[[1](https://jina.ai/)]
+
+The **Reader API** converts any live webpage into clean, LLM-friendly Markdown text. It eliminates messy HTML, advertisements, and scripts automatically. \[[1](https://github.com/jina-ai/reader), [2](https://www.youtube.com/watch?v=GllAqZE6uws\&t=3), [3](https://scrapegraphai.com/blog/jina-alternatives), [4](https://www.augmentcode.com/mcp/reader), [5](https://dev.to/johnantony92/scraping-the-smart-wayhow-i-vibe-coded-refactoreda-free-ai-web-scraper-using-pythonjina-38hi)]
+
+- **No-Code Browser Use**: Prepend `https://r.jina.ai/` to any URL in your browser address bar.
+  - _Example_: `https://jina.ai`
+
+- **In Code (Python)**: Fetch clean text using standard requests.\
+  python
+
+<!---->
+
+```
+import requests
+response = requests.get("https://jina.ai")
+print(response.text)
+```
+
+Use code with caution.\
+\[[1](https://www.elastic.co/search-labs/tutorials/jina-tutorial/jina-reader), [2](https://jina.ai/), [3](https://medium.com/@martk/automated-local-lead-generation-with-n8n-building-an-ai-powered-lead-enrichment-workflow-part-2-47994b068399)]
+
+2\. Ground LLMs with Real-Time Web Search (`s.jina.ai`) \[[1](https://community.make.com/t/scrape-websites-at-no-cost-with-jina-get-llm-friendly-input-from-a-url/39143), [2](https://jina.ai/news/fact-checking-with-new-grounding-api-in-jina-reader/), [3](https://www.augmentcode.com/mcp/reader)]
+
+The **Search Grounding API** acts like a search engine for your AI agents. Instead of simple snippets, it returns the actual extracted Markdown content of the top 5 web results. \[[1](https://www.youtube.com/watch?v=48MMi8SRsDc), [2](https://jina.ai/), [3](https://github.com/jina-ai/reader)]
+
+- **No-Code Browser Use**: Prepend `https://s.jina.ai/?q=` before your search query.
+  - _Example_: `https://jina.ai news about generative AI`
+
+- **In Code (cURL)**: Pass the search query to the endpoint.\
+  bash
+
+<!---->
+
+```
+curl https://jina.ai
+```
+
+Use code with caution.\
+\[[1](https://jina.ai/reader/), [2](https://apify.com/alternatives/jina-ai-alternatives)]
+
+3\. Connect to AI Tools with Model Context Protocol (`mcp.jina.ai`) \[[1](https://www.augmentcode.com/mcp/reader), [2](https://github.com/PsychArch/jina-mcp-tools)]
+
+If you use desktop LLM clients like Claude Desktop, you can add Jina AI as an **MCP Server**. This grants your local LLM direct access to search the web and read URLs autonomously. \[[1](https://www.youtube.com/watch?v=7OJZu%5FTbFhA), [2](https://jina.ai/api-dashboard/), [3](https://jina.ai/), [4](https://jina.ai/reader/)]
+
+- Register on the Jina AI Platform to get a free API key.
+- Configure `mcp.jina.ai` as a server in your LLM app settings using your API key. \[[1](https://n8n.io/workflows/2552-ai-powered-web-scraping-with-jina-google-sheets-and-openai-the-easy-way/), [2](https://medium.com/@tossy21/trying-out-jina-ais-node-deepresearch-c5b55d630ea6), [3](https://jina.ai/), [4](https://www.youtube.com/watch?v=7OJZu%5FTbFhA)]
+
+4\. Build Neural Search (Embeddings & Rerankers) \[[1](https://ritvik19.medium.com/papers-explained-267-jina-reranker-daf6fdf8b2a6), [2](https://medium.com/nlplanet/two-minutes-nlp-19-learning-resources-for-question-answering-821d338aaef5), [3](https://www.sysgen.de/site/assets/files/58381/a4%5Fsuccess%5Fstory%5Fsysgen%5Feng%5Ffinal.pdf), [4](https://github.com/Morpher-io/ai-links-awesome-ai-tools)]
+
+Jina AI provides production-grade models for vector databases and retrieval-augmented generation (RAG). \[[1](https://medium.com/@priyam22rr/web-scraping-using-ai-jina-ai-vector-databases-and-the-future-of-rag-applications-a7f8cf77cf8d), [2](https://www.youtube.com/watch?v=VRWVoujDgJs\&t=8), [3](https://milvus.io/docs/embed-with-jina.md)]
+
+- **Embeddings**: Convert text or images into data vectors using `jina-embeddings-v3`. It natively integrates with vector tools like [Elasticsearch](https://www.elastic.co/search-labs/blog/jina-ai-embeddings-rerank-model-open-inference-api) and [Milvus](https://milvus.io/docs/embed-with-jina.md).
+- **Reranker**: Sort search results by structural relevance to significantly improve RAG accuracy. \[[1](https://jina.ai/news/a-practical-guide-to-implementing-deepsearch-deepresearch/), [2](https://www.elastic.co/search-labs/blog/jina-ai-embeddings-rerank-model-open-inference-api), [3](https://milvus.io/docs/embed-with-jina.md), [4](https://qdrant.tech/course/essentials/day-7/jina/), [5](https://www.youtube.com/watch?v=VRWVoujDgJs\&t=8)]
+
+5\. Integrate into Popular Ecosystems \[[1](https://www.wpsolr.com/an-in-depth-look-at-jina-ai-10-key-features/)]
+
+You don't always need to build from scratch. Jina AI integrates directly into popular automation and UI frameworks: \[[1](https://tsh.io/blog/gen-ai-integration-basics), [2](https://www.make.com/en/integrations/jina-ai)]
+
+- **No-Code Workflows**: Use Jina nodes inside [n8n workflows](https://n8n.io/workflows/2552-ai-powered-web-scraping-with-jina-google-sheets-and-openai-the-easy-way/) or Make.com to automatically scrape websites and save the data to Google Sheets.
+- **Custom Chat UIs**: Add your Jina API key to chat interfaces like [Open WebUI](https://docs.openwebui.com/features/chat-conversations/web-search/providers/jina/) or TypingMind to power custom web searches. \[[1](https://www.youtube.com/watch?v=f3AJYXHirr8), [2](https://n8n.io/workflows/2552-ai-powered-web-scraping-with-jina-google-sheets-and-openai-the-easy-way/), [3](https://community.make.com/t/scrape-websites-at-no-cost-with-jina-get-llm-friendly-input-from-a-url/39143), [4](https://docs.openwebui.com/features/chat-conversations/web-search/providers/jina/), [5](https://www.typingmind.com/guide/use-jina-ai-api-key-to-chat-with-ai)]
+
+Would you like a complete code example showing how to build a **web-scraping script** or integrate Jina AI into an **AI agent**?
+
+- [link](https://jina.ai/reader/)\
+  Reader API - Jina AI\
+  Reader can be used as SERP API. It allows you to feed your LLM with the content behind the search results engine page. Simply prep...\
+  Jina AI
+- [link](https://jina.ai/)\
+  Jina AI - Your Search Foundation, Supercharged.\
+  Use r.jina.ai to read a URL and fetch its content. Use s.jina.ai to search the web and get SERP. Add mcp.jina.ai as your MCP serve...\
+  Jina AI
+- [link](https://jina.ai/api-dashboard/)\
+  Jina Search Foundation API - Jina AI\
+  \* Use r.jina.ai to read a URL and fetch its content. \* Use s.jina.ai to search the web and get SERP. \* Add mcp.jina.ai as your MCP...\
+  Jina AI
+
+Show all
+
+You said: competitors
+
+Because Jina AI spans multiple domains—including **web data extraction (Reader/Search)** and **neural search (Embeddings/Rerankers)**—its competitors depend on which feature you are utilizing. \[[1](https://www.cbinsights.com/company/jina-ai/alternatives-competitors)]
+
+1\. Web Scraping & Reader Alternatives (`r.jina.ai`)
+
+These tools compete with Jina's capability to strip HTML and deliver clean, LLM-ready Markdown. \[[1](https://apify.com/alternatives/jina-ai-alternatives), [2](https://www.firecrawl.dev/alternatives/firecrawl-vs-jina-ai)]
+
+- **[Firecrawl](https://www.firecrawl.dev/)**: The closest direct competitor. While Jina excels at single-page extraction, Firecrawl specializes in crawling entire websites in a single API call and outputting structured JSON.
+- **Crawl4AI**: A dominant, completely free, open-source Python library (50k+ GitHub stars). It is ideal for developers who want to self-host high-volume crawling infrastructure without paying for API tokens.
+- **ScrapeGraphAI**: An AI-native tool that uses LLMs and graph logic. Instead of just outputting Markdown, you can prompt it in plain English to extract specific fields, and its layout adaptation prevents breaking.
+- **Diffbot**: An enterprise-grade alternative. It uses computer vision and AI to categorize web pages into massive knowledge graphs rather than simple text files. \[[1](https://www.firecrawl.dev/alternatives/firecrawl-vs-jina-ai), [2](https://www.scrapeless.com/en/wiki/jina-ai-alternatives), [3](https://scrapegraphai.com/blog/jina-alternatives), [4](https://www.reddit.com/r/aipromptprogramming/comments/1q569tv/any%5Fai%5Fwebscrapers/), [5](https://www.eesel.ai/blog/firecrawl-alternatives), [7](https://medium.com/@flutterguide/best-ai-web-scrapers-of-2024-764a53bcf5c3), [8](https://www.firecrawl.dev/blog/best-web-extraction-tools)]
+
+2\. AI Search & Grounding Alternatives (`s.jina.ai`)
+
+These platforms compete with Jina’s search grounding API, which provides real-time web results for AI agents. \[[1](https://apify.com/alternatives/jina-ai-alternatives), [2](https://www.firecrawl.dev/alternatives/firecrawl-vs-jina-ai)]
+
+- **Tavily**: Purpose-built specifically for LLM agents. Rather than just reading a target page, Tavily searches across multiple sources, aggregates the information, and filters out the noise specifically for RAG applications.
+- **Perplexity API**: Provides programmatic access to Perplexity's online data layer, allowing developers to feed real-time web answers directly into their applications.
+- **Exa** (formerly Metaphor): A search engine engineered entirely for AIs. It uses neural embeddings to search the web conceptually based on meaning rather than exact keyword matches. \[[1](https://www.reddit.com/r/AI%5FAgents/comments/1fnmk8k/web%5Fscraping%5Ftool%5Ffor%5Fai%5Fagents/), [2](https://scrapegraphai.com/blog/jina-alternatives)]
+
+3\. Embeddings & Reranker Alternatives
+
+These models compete with Jina's specialized neural network capabilities for vector databases and semantic search. \[[1](https://apify.com/alternatives/jina-ai-alternatives)]
+
+- **Cohere**: Jina's primary enterprise competitor for search optimization. Cohere offers industry-leading multilingual embedding models and state-of-the-art Rerankers (like `Cohere Reraink`) used to optimize RAG pipelines.
+- **Voyage AI**: High-performing, specialized embedding and reranking models. Voyage AI is heavily favored in technical and financial sectors because it excels at high-density domain data and long-context retrieval.
+- **OpenAI (text-embedding-3)**: The baseline industry standard. While incredibly cheap and widely adopted, it lacks the specialized structural reranking models that Jina and Cohere provide. \[[1](https://www.cbinsights.com/company/jina-ai/alternatives-competitors), [2](https://www.reddit.com/r/aipromptprogramming/comments/1q569tv/any%5Fai%5Fwebscrapers/)]
+
+***
+
+Which competitor should you choose?
+
+| If your goal is to... \[[1](https://scrapegraphai.com/blog/jina-alternatives), [2](https://www.eesel.ai/blog/firecrawl-alternatives), [3](https://www.firecrawl.dev/alternatives/firecrawl-vs-jina-ai), [4](https://apify.com/alternatives/jina-ai-alternatives), [5](https://www.cbinsights.com/company/jina-ai/alternatives-competitors)] | The best alternative is... | Why?                                                                |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- | ------------------------------------------------------------------- |
+| **Scrape single pages for free**                                                                                                                                                                                                                                                                                                            | **Crawl4AI**               | Fully open-source, flexible, and has no API cost if self-hosted.    |
+| **Map out an entire website**                                                                                                                                                                                                                                                                                                               | **Firecrawl**              | Built specifically to turn whole domains into clean sitemaps.       |
+| **Give an AI Agent research powers**                                                                                                                                                                                                                                                                                                        | **Tavily**                 | Aggregates and synthesizes multi-source web knowledge natively.     |
+| **Build high-accuracy RAG**                                                                                                                                                                                                                                                                                                                 | **Cohere**                 | Enterprise-grade Rerankers that integrate with any major vector DB. |
+
+Are you looking to replace a specific Jina tool, like the **Reader API** or **Embeddings**, for your project? Let me know so I can give you a precise technical comparison.
+
+- [link](https://apify.com/alternatives/jina-ai-alternatives)\
+  Best Jina.ai alternatives - Apify\
+  RAG Web Browser starts with a Google query, grabs the top search results you choose (e.g., the first 10 links), and converts each ...\
+  Apify
+- [link](https://www.firecrawl.dev/alternatives/firecrawl-vs-jina-ai)\
+  Firecrawl vs Jina AI | Best Jina AI Alternative\
+  Mar 16, 2026 — The core difference between Firecrawl and Jina AI is scope. Jina's Reader API excels at single-page markdown extraction using thei...\
+  Firecrawl
+- [link](https://scrapegraphai.com/blog/jina-alternatives)\
+  7 Best Jina Reader Alternatives for AI Web Scraping in 2026\
+  Apr 24, 2026 — Table of Contents \* What is Jina Reader? \* What Are the Best Jina Reader Alternatives? \* Key Benefits. \* How to Use ScrapeGraphAI.\
+  ScrapeGraphAI
+
+Show all
+
+You said: alternatives on web scraping
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">The landscape of modern web scraping is divided into AI-native extraction (which delivers clean Markdown or structured JSON for LLMs) and traditional enterprise infrastructure (built for heavy anti-bot bypassing)</span></strong></mark>. \[[1](https://www.firecrawl.dev/blog/best-web-extraction-tools), [2](https://scrapegraphai.com/blog/jina-alternatives), [3](https://www.reddit.com/r/aipromptprogramming/comments/1q569tv/any%5Fai%5Fwebscrapers/)]
+
+Depending on your engineering goals and budget, the best web scraping alternatives are categorized below.
+
+***
+
+1\. The Best Direct Drop-In Replacements for AI / RAG
+
+If you are looking for an alternative to Jina Reader (`r.jina.ai`) to convert URLs directly into LLM-friendly Markdown text: \[[1](https://scrapegraphai.com/blog/jina-alternatives), [2](https://www.reddit.com/r/aipromptprogramming/comments/1q569tv/any%5Fai%5Fwebscrapers/)]
+
+- **[Firecrawl](https://www.firecrawl.dev/)**: The dominant SaaS tool for AI developers. While Jina reads single pages well, Firecrawl natively handles complex multi-page website crawls, identifies sitemaps, and formats data into clean Markdown or targeted JSON schemas.
+- **Crawl4AI**: The leading completely free, open-source Python crawling framework (50k+ GitHub stars). It is optimized for heavy LLM workloads, supports asynchronous tasks, handles complex JavaScript, and can be self-hosted without API credit costs.
+- **ScrapeGraphAI**: An AI-native library that uses large language models and graph logic. Instead of relying on rigid, manual HTML code selectors, you give it a plain English prompt (e.g., _"extract all product pricing and reviews"_), and it intelligently finds the data even if the website layout changes. \[[1](https://apify.com/alternatives/jina-ai-alternatives), [2](https://www.reddit.com/r/aipromptprogramming/comments/1q569tv/any%5Fai%5Fwebscrapers/), [3](https://scrapegraphai.com/blog/jina-alternatives), [4](https://www.scrapeless.com/en/wiki/jina-ai-alternatives)]
+
+2\. High-Volume Enterprise Scraping & Anti-Bot Bypassing
+
+If your target websites block basic scripts, throw CAPTCHAs, or require user login workflows, AI-text converters will fail, and you will need robust browser infrastructure. \[[1](https://www.youtube.com/watch?v=ZwC9dbI5Cj4), [2](https://iproyal.com/blog/ai-web-scraping-tools/)]
+
+- **[Bright Data](https://brightdata.com/)**: The undisputed industry leader for enterprise data collection. It features an automated "Scraping Browser" and an unmatched global residential proxy network, guaranteeing over a 98% success rate against heavy firewalls like Cloudflare.
+- **Apify**: A cloud-based platform that operates a marketplace of over 6,000 "Actors" (ready-made cloud scrapers). They feature purpose-built scrapers for massive targets like Amazon, Instagram, Google Maps, and TikTok, handling proxy rotation automatically.
+- **ScrapingBee**: A specialized proxy API that renders JavaScript inside a headless browser on their servers. It handles proxy rotation and CAPTCHA solving behind the scenes, allowing you to scrape dynamic web pages with a simple, standard `GET` request. \[[1](https://apify.com/alternatives/jina-ai-alternatives), [2](https://use-apify.com/blog/best-web-scraping-tools-2026), [3](https://iproyal.com/blog/ai-web-scraping-tools/), [4](https://www.scrapeless.com/en/wiki/jina-ai-alternatives), [5](https://www.reddit.com/r/aipromptprogramming/comments/1q569tv/any%5Fai%5Fwebscrapers/)]
+
+3\. Visual & No-Code Alternatives
+
+If you don't know how to code but need to build structured tables from web pages:
+
+- **Octoparse**: A powerful desktop visual scraper. You simply point and click on elements (titles, images, rows) inside their custom browser, and the tool builds an automated workflow to export the data directly into Excel or CSV files.
+- **Browse AI**: A zero-code web monitor and scraper. You can record your screen while clicking through a website, and its AI setup tracks repeating data grids, allows you to pull lists into Google Sheets, and schedules automatic data refreshes. \[[1](https://www.firecrawl.dev/blog/best-web-extraction-tools), [2](https://iproyal.com/blog/ai-web-scraping-tools/)]
+
+***
+
+Technical Feature Overview
+
+| Alternative \[[1](https://www.firecrawl.dev/blog/best-web-extraction-tools), [3](https://www.scrapeless.com/en/wiki/jina-ai-alternatives), [4](https://www.reddit.com/r/aipromptprogramming/comments/1q569tv/any%5Fai%5Fwebscrapers/), [5](https://medium.com/@flutterguide/best-ai-web-scrapers-of-2024-764a53bcf5c3)] | Best For                             | Output Format              | Pricing Model               | Skill Level |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ | -------------------------- | --------------------------- | ----------- |
+| **Firecrawl**                                                                                                                                                                                                                                                                                                           | AI Agents & RAG Full-Site Crawls     | Markdown / Structured JSON | Free tier / Paid SaaS       | Developer   |
+| **Crawl4AI**                                                                                                                                                                                                                                                                                                            | High-volume open source data parsing | Noise-free Markdown & JSON | **100% Free** (Self-hosted) | Developer   |
+| **Bright Data**                                                                                                                                                                                                                                                                                                         | Bypassing strict anti-bot firewalls  | Custom JSON / Databases    | Pay-as-you-go usage         | Enterprise  |
+| **Octoparse**                                                                                                                                                                                                                                                                                                           | Scraping without writing code        | CSV / Excel / JSON         | Free tier / Premium         | No-Code     |
+
+Are you trying to **extract specific fields** from complex web layouts, or are you trying to gather massive datasets for **AI model training**? Tell me your exact use case and I can recommend the exact library stack.
+
+- [link](https://apify.com/alternatives/jina-ai-alternatives)\
+  Best Jina.ai alternatives - Apify\
+  Scrape GraphAI. Website Content Crawler. RAG Web Browser. Search-first. Yes. Google query + crawl. Vector-ready output. Chunked Ma...\
+  Apify
+- [link](https://scrapegraphai.com/blog/jina-alternatives)\
+  7 Best Jina Reader Alternatives for AI Web Scraping in 2026\
+  Apr 24, 2026 — Firecrawl is the closest direct replacement for Jina Reader and then some. Its core operation is the same — URL in, clean Markdown...\
+  ScrapeGraphAI
+- [link](https://www.scrapeless.com/en/wiki/jina-ai-alternatives)\
+  Best Jina.ai Alternatives: Scrapeless - Powering AI Search in ...\
+  Firecrawl. Firecrawl is a SaaS API that converts URLs into clean Markdown or structured JSON. It handles client-side JavaScript, d...\
+  Scrapeless
+
+Show all
+
+You said: does firecrawl have something like r.jina.ai
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">Yes, Firecrawl has a direct equivalent called the </span><code dir="ltr" style="font-size: 14px; margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 1px solid rgb(44, 46, 53);">/scrape</code> endpoint</strong></mark>**.** \[[1](https://www.firecrawl.dev/blog/mastering-firecrawl-scrape-endpoint)]
+
+Just like `r.jina.ai`, Firecrawl’s `/scrape` function takes a single URL, strips away all the background clutter (like ads, scripts, and navigation menus), and outputs **clean, LLM-friendly Markdown**. \[[1](https://www.firecrawl.dev/blog/mastering-firecrawl-scrape-endpoint), [2](https://www.firecrawl.dev/alternatives/firecrawl-vs-jina-ai)]
+
+However, they handle this process through different user interfaces. \[[1](https://scrapegraphai.com/blog/api-crawl-for-ai)]
+
+***
+
+How they Compare in Action
+
+1\. The No-Code/Browser Experience
+
+- **Jina AI (`r.jina.ai`)**: Built to be used directly in your browser search bar by typing `r.jina.ai/` before any URL.
+- **Firecrawl**: Does not allow you to prepend a URL in the browser bar. Instead, they provide a web-based **Firecrawl Playground** where you can paste any link into a box to instantly see and copy the clean Markdown. \[[1](https://www.youtube.com/watch?v=7GeFt8suV8E\&t=55), [2](https://www.linkedin.com/posts/syed-sherjeel%5Fi-spent-12-months-building-scrapers-the-hard-activity-7375862032702521344-LInD), [3](https://www.firecrawl.dev/blog/scrape-a-website-to-markdown), [4](https://www.star-history.com/blog/ai-web-scraper/)]
+
+2\. The Developer/API Experience
+
+While Jina handles single-page reading via a simple URL modification, Firecrawl uses standard API requests: \[[1](https://www.firecrawl.dev/alternatives/firecrawl-vs-jina-ai), [2](https://www.firecrawl.dev/alternatives/firecrawl-vs-scrape-do), [3](https://www.star-history.com/blog/ai-web-scraper/)]
+
+- **Python SDK Example**:\
+  python
+
+<!---->
+
+```
+from firecrawl import FirecrawlApp
+
+app = FirecrawlApp(api_key="your_api_key")
+result = app.scrape_url("https://example.com/pricing", formats=["markdown"])
+
+print(result["markdown"])
+```
+
+Use code with caution.
+
+- **cURL / HTTP Request**:\
+  bash
+
+<!---->
+
+```
+curl -X POST https://api.firecrawl.dev/v2/scrape \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"url": "https://example.com", "formats": ["markdown"]}'
+```
+
+Use code with caution.\
+\[[1](https://www.firecrawl.dev/blog/introducing-search-endpoint)]
+
+***
+
+Key Differences Between the Two
+
+While both return high-quality Markdown, they target slightly different engineering needs: \[[1](https://www.firecrawl.dev/alternatives/firecrawl-vs-jina-ai), [2](https://www.star-history.com/blog/ai-web-scraper/)]
+
+- **JavaScript & Action Handling**: Firecrawl has deeper support for complex, interactive web apps. If a webpage requires waiting for a script to load, clicking a button, or scrolling down to reveal data, you can pass an `actions` array into Firecrawl to handle it before it extracts the text.
+- **Native Structured Data Extraction**: With Firecrawl, you can request Markdown and **JSON schemas** at the exact same time. You can pass a prompt (e.g., _"Extract all pricing plans and feature lists"_) directly to the `/scrape` endpoint, and it will give you the text and a perfectly formatted object.
+- **Pricing**: Jina AI offers a highly generous free tier for its Reader API. Firecrawl runs on a credit-based subscription structure (paying per page scraped), but it allows you to **fully self-host** their entire platform on your own servers for free via GitHub. \[[1](https://www.firecrawl.dev/blog/mastering-firecrawl-scrape-endpoint), [2](https://www.firecrawl.dev/alternatives/firecrawl-vs-jina-ai), [3](https://www.linkedin.com/posts/syed-sherjeel%5Fi-spent-12-months-building-scrapers-the-hard-activity-7375862032702521344-LInD), [4](https://scrapegraphai.com/blog/api-crawl-for-ai), [5](https://www.firecrawl.dev/blog/firecrawl-interact-endpoint), [6](https://www.firecrawl.dev/blog/firecrawl-101), [7](https://www.reddit.com/r/mlops/comments/1c5usna/an%5Foss%5Ftool%5Ffor%5Fturning%5Fentire%5Fwebsites%5Finto/), [8](https://www.firecrawl.dev/alternatives/firecrawl-vs-scrape-do)]
+
+Would you like help writing a **script** to switch your project from Jina AI over to Firecrawl?
+
+- [link](https://www.firecrawl.dev/alternatives/firecrawl-vs-jina-ai)\
+  Firecrawl vs Jina AI | Best Jina AI Alternative\
+  Mar 16, 2026 — Yes. AI agents can self-onboard to Firecrawl by choosing the integration path that fits the task — replacing native fetch and sear...\
+  Firecrawl
+- [link](https://www.reddit.com/r/mlops/comments/1c5usna/an%5Foss%5Ftool%5Ffor%5Fturning%5Fentire%5Fwebsites%5Finto/)\
+  An OSS tool for turning entire websites into LLM ... - Reddit\
+  Apr 16, 2024 — Yeah, I think you're missing some of the code. It has everything. Its fully self hostable and DOESN'T require an firecrawl account...\
+  Reddit·r/mlops
+- [link](https://www.linkedin.com/posts/syed-sherjeel%5Fi-spent-12-months-building-scrapers-the-hard-activity-7375862032702521344-LInD)\
+  Tools for web scraping: Firecrawl, Jina AI Reader, Crawl4AI ...\
+  Sep 22, 2025 — Firecrawl Pros: → Scrap any website under 1 second → Works on 96% of the web (even JS-heavy sites) → Built a custom 1.5B parameter...\
+  LinkedIn·Sherjeel Syed
+
+Show all
