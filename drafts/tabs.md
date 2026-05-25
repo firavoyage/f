@@ -131,7 +131,7 @@ saba https://www.youtube.com/@SamekoSaba
 
 ---
 
-libadwaita
+adwaita
 
 https://github.com/romgrk/web-toolkit
 
@@ -144,6 +144,18 @@ https://adwave.qzz.io/example-page/input.html
 https://developer.gnome.org/hig/patterns/feedback.html
 
 https://www.figma.com/community/file/1467967362512102193
+
+---
+
+breeze
+
+https://develop.kde.org/hig/
+
+https://github.com/KDE/kirigami
+
+https://github.com/baroxyton/webKDE
+
+https://baroxyton.github.io/webKDE/
 
 ---
 
