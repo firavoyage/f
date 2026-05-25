@@ -356,6 +356,9 @@ float: <!-- music -->
 - interpret heat abnormal
 - interpret sayonara princess
 - research feishin
+- interpret keitai renwa
+- interpret otome kaibou
+- interpret rabbit hole
 
 philosophy:
 
