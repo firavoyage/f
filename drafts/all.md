@@ -127,6 +127,7 @@ swe:
 - sql syntax history better abstraction
 - abstraction leak
 - fields changed by ai
+- url uri urn
 
 archi:
 
@@ -145,6 +146,7 @@ archi:
 - centralized tests colocated tests
 - corporate boilerplate programming criticism
 - over generalization opencode markdown export code block backticks
+- json yaml toml xml syntax
 
 frontend: <!-- web -->
 
