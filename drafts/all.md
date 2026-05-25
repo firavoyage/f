@@ -83,6 +83,7 @@ life:
 - game ddlc
 - game maimai dx theoretical rating upper limit
 - android setup samsung galaxy
+- game maimai dx friend invitation graphics
 
 create something:
 
@@ -178,6 +179,7 @@ frontend: <!-- web -->
 - mui button ripple effect overflow hidden crop path animation
 - normalize css js import css
 - parcel vite speed
+- react styling class naming data attr
 
 backend:
 
@@ -209,6 +211,8 @@ desktop:
 - touch purpose create file modify time metadata
 - alt tech sync method backend
 - set up coding agent search web use browser
+- shell symlink command
+- set up coding agent skills
 
 android:
 
@@ -287,6 +291,7 @@ ux: <!-- ui/ux design -->
 - mpv minimalist design friction broken command palette shuffle playlist
 - samsung quick panel customization outside settings
 - samsung sim card activation friction security
+- accessibility real constrast to human eyes
 
 typography:
 

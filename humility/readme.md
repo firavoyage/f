@@ -10,13 +10,9 @@ be graceful.
 
 ---
 
-wip.
+intro
 
----
-
-see
-
-- `../drafts`
+<!-- wip -->
 
 ---
 
@@ -52,6 +48,12 @@ br tsc
 
 ---
 
+see
+
+- `../drafts`
+
+---
+
 inspired by
 
 - google ai mode
@@ -65,6 +67,6 @@ inspired by
 
 an elegant human-machine interface for a more civilized age
 
-the one fira would like.
+<!-- the one fira would appreciate. -->
 
 humility.

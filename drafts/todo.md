@@ -322,10 +322,12 @@ activitypub to something.
 
 libadwaita in react. only use prop, state, and effect (limit to like event listener and interval) for porting compatibility.
 
+---
+
 change w screensize n resize
 
-mui example
-
-styling example, scope
-
 ---
+
+design tokens.
+
+extend a component library.
