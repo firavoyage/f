@@ -6174,6 +6174,8 @@ Show all
 
 #
 
+# MUI docs web search test
+
 ``````md
 # MUI docs web search test
 
