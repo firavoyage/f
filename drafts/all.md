@@ -213,6 +213,7 @@ desktop:
 - set up coding agent search web use browser
 - shell symlink command
 - set up coding agent skills
+- shell tmux
 
 android:
 
