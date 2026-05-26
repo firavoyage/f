@@ -1,4 +1,5 @@
 import { Button } from './Button';
+import { fn } from '@storybook/test';
 
 export default {
   title: 'Example/Button',
@@ -7,6 +8,7 @@ export default {
   argTypes: {
     variant: { control: 'radio', options: ['primary', 'secondary'] },
     disabled: { control: 'boolean' },
+    onClick: { action: 'clicked' },
   },
 };
 
@@ -14,6 +16,7 @@ export const Primary = {
   args: {
     variant: 'primary',
     children: 'Primary Button',
+    onClick: fn(),
   },
 };
 
@@ -21,6 +24,7 @@ export const Secondary = {
   args: {
     variant: 'secondary',
     children: 'Secondary Button',
+    onClick: fn(),
   },
 };
 
@@ -29,6 +33,7 @@ export const Disabled = {
     variant: 'primary',
     disabled: true,
     children: 'Disabled Button',
+    onClick: fn(),
   },
 };
 
@@ -36,9 +41,9 @@ export const WithClick = {
   args: {
     variant: 'primary',
     children: 'Click me',
+    onClick: fn(),
   },
-  render: (args) => {
-    const handleClick = () => alert('Button clicked!');
-    return <Button {...args} onClick={handleClick} />;
+  play: async ({ canvas }) => {
+    await canvas.getByRole('button').click();
   },
 };

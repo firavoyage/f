@@ -4,19 +4,3 @@
 [   10790ms] [LOG] Not enough<p>tags found.Expected:5,Found:0 @ https://cdnads.geeksforgeeks.org/gfg_ads.min.js?ver=0.1:67
 [   10790ms] [LOG] Not enough<p>tags found.Expected:10,Found:0 @ https://cdnads.geeksforgeeks.org/gfg_ads.min.js?ver=0.1:67
 [   11004ms] [ERROR] Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID @ https://api.rlcdn.com/api/identity/envelope?pid=1258:0
-[   13697ms] [WARNING] [GPT] PubAdsService.disableInitialLoad is deprecated, use googletag.setConfig({disableInitialLoad: ...}) instead.
-https://goo.gle/gpt-message#170 @ https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202605200101/pubads_impl.js?cb=31098705:18
-[   16290ms] [INFO] Slow network is detected. See https://www.chromestatus.com/feature/5636954674692096 for more details. Fallback font will be used while loading: https://fonts.gstatic.com/s/roboto/v48/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3yUBA.woff2 @ https://www.gstatic.com/recaptcha/releases/Br0hYqpfWeFzYCAXLD4UuCIV/recaptcha__en.js:701
-[   18048ms] [INFO] Slow network is detected. See https://www.chromestatus.com/feature/5636954674692096 for more details. Fallback font will be used while loading: https://fonts.gstatic.com/s/roboto/v48/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3yUBA.woff2 @ https://www.gstatic.com/recaptcha/releases/Br0hYqpfWeFzYCAXLD4UuCIV/recaptcha__en.js:701
-[   18785ms] [WARNING] [GPT] Using deprecated googletag.encryptedSignalProviders. Please use googletag.secureSignalProviders instead.
-https://goo.gle/gpt-message#155 @ https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202605200101/pubads_impl.js?cb=31098705:18
-[   21955ms] [WARNING] Invalid GPT fixed size specification: [] @ https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202605200101/pubads_impl.js?cb=31098705:18
-[   21956ms] [WARNING] Invalid GPT fixed size specification: [] @ https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202605200101/pubads_impl.js?cb=31098705:18
-[   21956ms] [WARNING] Invalid GPT fixed size specification: [] @ https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202605200101/pubads_impl.js?cb=31098705:18
-[   22021ms] [WARNING] [GPT] Slot.getTargeting is deprecated, use Slot.getConfig('targeting') instead.
-https://goo.gle/gpt-message#201 @ https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202605200101/pubads_impl.js?cb=31098705:18
-[   18048ms] [INFO] Slow network is detected. See https://www.chromestatus.com/feature/5636954674692096 for more details. Fallback font will be used while loading: https://fonts.gstatic.com/s/roboto/v48/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3yUBA.woff2 @ https://www.gstatic.com/recaptcha/releases/Br0hYqpfWeFzYCAXLD4UuCIV/recaptcha__en.js:701
-[   28496ms] [ERROR] Failed to load resource: the server responded with a status of 503 () @ https://sync-amz.ads.yieldmo.com/tamptsync?callback=https%3A%2F%2Fs.amazon-adsystem.com%2Fecm3%3Fex%3Dym.com%26id%3D%24UID&gdpr=0:0
-[   28663ms] [ERROR] Failed to load resource: the server responded with a status of 400 () @ https://match.prod.bidr.io/cookie-sync/verve?gdpr=0&gdpr_consent=:0
-[   28678ms] [ERROR] Failed to load resource: the server responded with a status of 400 () @ https://cookies.nextmillmedia.com/setuid?bidder=openx1&gdpr=&gdpr_consent=&gpp=&gpp_sid=&f=i&uid=a00d514c-b0a5-4618-8a56-c15dc279efe9:0
-[   28678ms] [ERROR] Failed to load resource: the server responded with a status of 400 () @ https://cookies.nextmillmedia.com/setuid?bidder=appnexus2&gdpr=&gdpr_consent=&gpp=&gpp_sid=&f=i&uid=3496108416513887254:0

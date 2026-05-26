@@ -1,5 +1,5 @@
 import { Toggle } from './Toggle';
-import { useState } from 'react';
+import { fn } from '@storybook/test';
 
 export default {
   title: 'Example/Toggle',
@@ -8,6 +8,7 @@ export default {
   argTypes: {
     checked: { control: 'boolean' },
     disabled: { control: 'boolean' },
+    onChange: { action: 'changed' },
   },
 };
 
@@ -15,6 +16,7 @@ export const Off = {
   args: {
     label: 'Enable notifications',
     checked: false,
+    onChange: fn(),
   },
 };
 
@@ -22,6 +24,7 @@ export const On = {
   args: {
     label: 'Enable notifications',
     checked: true,
+    onChange: fn(),
   },
 };
 
@@ -30,15 +33,18 @@ export const Disabled = {
     label: 'Disabled toggle',
     checked: true,
     disabled: true,
+    onChange: fn(),
   },
 };
 
 export const WithInteraction = {
-  render: (args) => {
-    const [checked, setChecked] = useState(false);
-    return <Toggle {...args} checked={checked} onChange={setChecked} />;
-  },
   args: {
     label: 'Toggle me',
+    checked: false,
+    onChange: fn(),
+  },
+  play: async ({ canvas }) => {
+    const checkbox = canvas.getByRole('checkbox');
+    await checkbox.click();
   },
 };

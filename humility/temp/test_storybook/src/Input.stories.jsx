@@ -1,5 +1,5 @@
 import { Input } from './Input';
-import { useState } from 'react';
+import { fn } from '@storybook/test';
 
 export default {
   title: 'Example/Input',
@@ -7,6 +7,7 @@ export default {
   tags: ['autodocs'],
   argTypes: {
     type: { control: 'radio', options: ['text', 'password', 'email', 'number'] },
+    onChange: { action: 'changed' },
   },
 };
 
@@ -14,6 +15,7 @@ export const Default = {
   args: {
     label: 'Username',
     placeholder: 'Enter username',
+    onChange: fn(),
   },
 };
 
@@ -22,21 +24,18 @@ export const Password = {
     label: 'Password',
     type: 'password',
     placeholder: 'Enter password',
+    onChange: fn(),
   },
 };
 
 export const WithInteraction = {
-  render: (args) => {
-    const [value, setValue] = useState('');
-    return (
-      <div>
-        <Input {...args} value={value} onChange={setValue} />
-        <p className="Input-demo-value">Value: {value}</p>
-      </div>
-    );
-  },
   args: {
     label: 'Type something',
     placeholder: 'Start typing...',
+    onChange: fn(),
+  },
+  play: async ({ canvas }) => {
+    const input = canvas.getByRole('textbox');
+    await input.type('Hello World');
   },
 };
