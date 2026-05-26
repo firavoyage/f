@@ -362,7 +362,7 @@ float: <!-- music -->
 
 philosophy:
 
-- ethics, existentialism
+- ethics existentialism
 - determinism free will
 - first principle
 - yes we can
@@ -373,7 +373,8 @@ philosophy:
 - vim emacs
 - summer flowers autumn leaves
 - haskell philosophy history syntax ideas
-- symmetry the problem of the other gender
+- symmetry the problem of the other
+- hacker ethics
 
 entertainment:
 
