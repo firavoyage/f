@@ -1,14 +1,43 @@
-naming: pascal case for react components
+## Philosophy
 
-styling:
+- Vanilla CSS only
+- Modern CSS features are powerful enough.
 
-have a global css file for each design system. use link element. load everything. disable not needed.
+## Architecture
 
-classname of the root element is the same as the component name. use kebab for children.
+- normalize css
+- Flat file structure: `my_design.css` only one css file for a design system
 
-an element can only have one class.
+## Color System
 
-use data attr for states.
+- **OKLCH** color space (perceptually uniform).
+- Raw LCH values: `--lch-blue: 54% 0.15 255`
+- Semantic colors: `--color-link: oklch(var(--lch-blue))`
+- Dark mode via single `@media (prefers-color-scheme: dark)` query.
+- `color-mix()`: derive palette from one variable.
+
+## Spacing
+
+- Character-based: `--inline-space: 1ch` (horizontal), `--block-space: 1rem` (vertical).
+- Responsive breakpoints use character count: `@media (min-width: 100ch)`.
+
+## Utility Classes
+
+- no.
+- use the component name as the classname of the root element
+- use kebab for children
+- every element should only have one semantic class
+- use data attr for states
+
+## Modern CSS Features Used
+
+- Custom properties (variables)
+- Container queries
+- `color-mix()` for dynamic colors
+- `clamp()`, `min()`, `max()` for responsive sizing
+- `@starting-style` for entrance animations
+- View Transitions API
+- CSS masks for spinners
 
 example:
 
@@ -24,20 +53,18 @@ export function Card({ active }) {
 ```
 
 ```css
-.Card { padding: var(--...); }
-.Card-title { font-size: var(--...); }
-.Card-desc { color: var(--...); }
+.Card {
+  padding: var(--...);
+}
+.Card-title {
+  font-size: var(--...);
+}
+.Card-desc {
+  color: var(--...);
+}
 
 /* Handle your state clean and fast */
-.Card[data-active="true"] .Card-title { color: var(--...); }
+.Card[data-active="true"] .Card-title {
+  color: var(--...);
+}
 ```
-
-dark mode: `@media (prefers-color-scheme: dark)`
-
-use css variables.
-
-sematic colors: `oklch`, `color-mix()` for variants and transparency
-
-spacing: `--inline-space: 1ch` (horizontal), `--block-space: 1rem` (vertical).
-
-use character count for responsive breakpoints: `@media (min-width: 100ch)`.

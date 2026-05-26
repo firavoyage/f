@@ -344,6 +344,8 @@ how to create a design system
 
 what are design tokens
 
+what components should a component library have
+
 what components does mui have
 
 (chakra, adwaita, breeze)

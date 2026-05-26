@@ -133,9 +133,9 @@ saba https://www.youtube.com/@SamekoSaba
 
 adwaita
 
-https://github.com/romgrk/web-toolkit
+https://github.com/romgrk/web-toolkit <!-- https://github.com/ncpa0cpl/adwaita-web -->
 
-https://github.com/ncpa0cpl/adwaita-web?tab=readme-ov-file
+https://romgrk.github.io/web-toolkit/demo/
 
 https://github.com/ncpa0/ADWaveCSS
 
