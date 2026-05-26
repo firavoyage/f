@@ -1,0 +1,64 @@
+- generic [ref=e3]:
+  - main [ref=e5]:
+    - generic [ref=e7]:
+      - generic [ref=e8]:
+        - button "Remount component" [ref=e9] [cursor=pointer]:
+          - img [ref=e10]
+        - button "Zoom in" [ref=e12] [cursor=pointer]:
+          - img [ref=e13]
+        - button "Zoom out" [ref=e16] [cursor=pointer]:
+          - img [ref=e17]
+        - button "Reset zoom" [ref=e20] [cursor=pointer]:
+          - img [ref=e21]
+      - generic [ref=e24]:
+        - button "Go full screen" [ref=e25] [cursor=pointer]:
+          - img [ref=e26]
+        - link "Open canvas in new tab" [ref=e28] [cursor=pointer]:
+          - /url: iframe.html?id=example-button--with-click
+          - img [ref=e29]
+        - button "Copy canvas link" [ref=e32] [cursor=pointer]:
+          - img [ref=e33]
+    - generic [ref=e37]:
+      - progressbar "Content is loading..." [ref=e39]
+      - generic [ref=e40]:
+        - link "Skip to sidebar" [ref=e41] [cursor=pointer]:
+          - /url: "#example-button--with-click"
+        - iframe [ref=e42]:
+          
+  - navigation [ref=e45]:
+    - generic [ref=e49]:
+      - generic [ref=e50]:
+        - link "Skip to canvas" [ref=e51] [cursor=pointer]:
+          - /url: "#storybook-preview-wrapper"
+        - link "Storybook" [ref=e53] [cursor=pointer]:
+          - /url: ./
+          - img "Storybook" [ref=e54]
+        - button "Shortcuts" [ref=e60] [cursor=pointer]:
+          - img [ref=e61]
+      - generic [ref=e64]: Search for components
+      - generic [ref=e65]:
+        - combobox "Search for components" [ref=e66]:
+          - generic:
+            - img
+          - searchbox "Search for components" [ref=e67]
+          - code: ⌃ K
+        - button [ref=e69] [cursor=pointer]:
+          - img [ref=e70]
+  - generic [ref=e96]:
+    - generic [ref=e98]:
+      - tablist [ref=e100]
+      - generic [ref=e103]:
+        - button "Change addon orientation [alt D]" [ref=e104] [cursor=pointer]:
+          - img [ref=e105]
+        - button "Hide addons [alt A]" [ref=e108] [cursor=pointer]:
+          - img [ref=e109]
+    - generic [ref=e113]:
+      - generic [ref=e114]:
+        - generic [ref=e115]: Storybook add-ons
+        - generic [ref=e116]: Integrate your tools with Storybook to connect workflows and unlock advanced features.
+      - link "Explore integrations catalog" [ref=e117] [cursor=pointer]:
+        - /url: https://storybook.js.org/integrations
+        - generic [ref=e118]:
+          - img [ref=e119]
+          - text: Explore integrations catalog
+          - img [ref=e122]
