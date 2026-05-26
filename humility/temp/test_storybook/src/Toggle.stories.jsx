@@ -1,5 +1,5 @@
 import { Toggle } from './Toggle';
-import { fn } from '@storybook/test';
+import { fn, expect, userEvent } from '@storybook/test';
 
 export default {
   title: 'Example/Toggle',
@@ -8,7 +8,6 @@ export default {
   argTypes: {
     checked: { control: 'boolean' },
     disabled: { control: 'boolean' },
-    onChange: { action: 'changed' },
   },
 };
 
@@ -45,6 +44,7 @@ export const WithInteraction = {
   },
   play: async ({ canvas }) => {
     const checkbox = canvas.getByRole('checkbox');
-    await checkbox.click();
+    await userEvent.click(checkbox);
+    await expect(checkbox).toBeChecked();
   },
 };

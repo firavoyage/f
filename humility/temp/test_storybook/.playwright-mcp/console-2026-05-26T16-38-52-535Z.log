@@ -1,0 +1,12 @@
+[   59024ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:6007/@vite/client:963
+[   59025ms] [ERROR] WebSocket connection to 'ws://localhost:6007/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:6007/@vite/client:1034
+[   60027ms] [ERROR] WebSocket connection to 'ws://localhost:6007/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:6007/@vite/client:1034
+[   61028ms] [ERROR] WebSocket connection to 'ws://localhost:6007/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:6007/@vite/client:1034
+[   62029ms] [ERROR] WebSocket connection to 'ws://localhost:6007/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:6007/@vite/client:1034
+[   63031ms] [ERROR] WebSocket connection to 'ws://localhost:6007/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:6007/@vite/client:1034
+[   64033ms] [ERROR] WebSocket connection to 'ws://localhost:6007/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:6007/@vite/client:1034
+[   65034ms] [ERROR] WebSocket connection to 'ws://localhost:6007/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:6007/@vite/client:1034
+[   66036ms] [ERROR] WebSocket connection to 'ws://localhost:6007/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:6007/@vite/client:1034
+[   67047ms] [ERROR] WebSocket connection to 'ws://localhost:6007/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:6007/@vite/client:1034
+[   68048ms] [ERROR] WebSocket connection to 'ws://localhost:6007/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:6007/@vite/client:1034
+[   69049ms] [ERROR] WebSocket connection to 'ws://localhost:6007/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:6007/@vite/client:1034
