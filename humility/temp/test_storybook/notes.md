@@ -1,0 +1,3 @@
+- Follows spec exactly with OKLCH colors and data attribute states
+- Storybook configured with Vite builder
+- CSS uses modern features: color-mix(), custom properties, dark mode

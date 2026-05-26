@@ -2,30 +2,27 @@
 
 stick to the cwd. do not touch anything outside.
 
-know the full file structure of cwd.
+1. know the full file structure of cwd. read through.
+2. write a `todo.md` on cwd to be changed. when complete, move and append the exact todo to `changes.md` w the time using imperative sentences in present tense.
+3. make sure `readme.md` exists on each folder (except build and deps), be simple and concise
+4. write a static `spec.md` for every task. if existing, never overwrite, write `spec_foo.md`, `spec_bar.md` instead.
+5. if logics exist and can be tested this way, create a `test` subfolder on cwd. declare inputs and expected outputs in an object and loop through it.
+6. if you have any observation, write `notes.md`.
+7. if needed, search for documentation (references or guides) of libraries used using the direct URL via playwright mcp
+8. always run tests
 
-have a `todo.md` on cwd to be changed. when complete, move and append the exact todo to `changes.md` w the time using imperative sentences in present tense.
-
-consider writing a `spec.md` for complex tasks. think what and how you will do, focus only on the expected behavior or usage. create `spec_foo.md`, `spec_bar.md` for new tasks wo chaning the previous one.
-
-if it can be tested, create a test subfolder on cwd. declare some example inputs and outputs in an object and loop through it. avoid running and reading the output directly.
-
-if you have any observation, write `notes.md`.
-
-always search for documentation (references or guides) of libraries used using the direct URL via playwright
-
-to search:
+search:
 
 - duckduckgo (baseline reference) https://html.duckduckgo.com/html/?q=search+keyword&kp=-2&kl=us-en&k1=-1&kd=1&ia=web
 - mojeek (cookieless plain html format)	https://www.mojeek.com/search?q=search+keyword&safe=0&reg=us&t=50&dlen=160&theme=light&view=classic&ui=simple
 - brave search (direct server-rendered query) https://search.brave.com/search?q=search+keyword&source=web&offset=0&spell=1
 - searxng (public metasearch instance) https://searx.be/search?q=search+keyword&category_general=1&language=en-us
 
-to read pages:
+read pages:
 
 - jina https://r.jina.ai/https://en.wikipedia.org/wiki/Philosophy
 - direct via browser (not recommended)
-- direct via curl (fast but fragile and sometimes incompatible)
+- direct via curl (fast but fragile)
 
 ## write
 
@@ -37,13 +34,14 @@ follow the style guide:
   - zsh
   - typescript with implicit any allowed
   - es module
-  - pnpm to add packages
+  - pnpm to add deps
   - bun to run (command: `br` instead of `bun`)
-  - parceljs (command: `parcel serve 'app.html' --open --dist-dir .build --cache-dir .build/.parcel-cache`, use `tmux` if it does not run in the background)
+  - parceljs to serve (command: `parcel serve 'app.html' --open --dist-dir .build --cache-dir .build/.parcel-cache`, use `tmux` to run in the background)
 - naming:
   - snake case
   - verb noun for actions (`get_data`, not `data_getter`), predicate for bools (`is_prime`, not `check_primality`), noun for factory functions (`time`, not `create_time`)
-  - for react components, pascal case
+  - for react components and their filenames, pascal case
+  - for filenames, lowercase
 - style:
   - functional programming
   - modular and cohesive
@@ -147,31 +145,21 @@ follow the style guide:
   - comments before or on the right of code, commented code below
 - notes:
   - avoid typescriptism, only define types on function params and return, never write `type message = string`
+  - use `// @ts-expect-error` if needed
   - prefer modern proven libraries, do not reinvent wheels
 
 ## test
 
-always run tests before finishing
-
-- logics (in test subfolder)
-- linting
+1. linting
 
   ```sh
   br eslint
   ```
 
-- type check, use `// @ts-expect-error` if needed
+2. type check
 
   ```sh
   br tsgo
   ```
 
-## document
-
-always write a readme on each folder
-
-write docs if needed
-
-naming: for filenames, lowercase
-
-style: simple and concise
+3. logics (in `test` subfolder, if existing)
