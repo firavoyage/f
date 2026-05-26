@@ -324,10 +324,6 @@ libadwaita in react. only use prop, state, and effect (limit to like event liste
 
 ---
 
-change w screensize n resize
-
----
-
 design tokens.
 
 component set.
@@ -335,4 +331,27 @@ component set.
 extend a component library.
 
 ---
+
+how to create a design system
+
+what are design tokens
+
+what components does mui have
+
+(chakra, adwaita, breeze)
+
+how to extend a component library
+
+how to create a storybook of a component library
+
+mui storybook
+
+what does a mui button do
+
+how should the ui change for desktops of different sizes
+
+sidebar
+
+how does flutter work on web
+
 
