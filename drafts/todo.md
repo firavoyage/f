@@ -324,6 +324,14 @@ libadwaita in react. only use prop, state, and effect (limit to like event liste
 
 ---
 
+para: <!-- for eat, grow, (and have, maybe) -->
+
+any blog. any document on fs.
+
+any app on any design system.
+
+---
+
 design tokens.
 
 component set.
@@ -351,7 +359,5 @@ what does a mui button do
 how should the ui change for desktops of different sizes
 
 sidebar
-
-how does flutter work on web
 
 
