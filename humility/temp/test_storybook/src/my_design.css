@@ -176,3 +176,23 @@ body {
 .Toggle-label {
   font-size: 1rem;
 }
+
+.Counter {
+  display: flex;
+  align-items: center;
+  gap: var(--block-space);
+}
+
+.Counter-count {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.Counter-btn {
+  padding: calc(var(--block-space) * 0.5) var(--block-space);
+  background: var(--color-link);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}

@@ -8,7 +8,6 @@ export default {
   argTypes: {
     variant: { control: 'radio', options: ['primary', 'secondary'] },
     disabled: { control: 'boolean' },
-    onClick: { action: 'clicked' },
   },
 };
 

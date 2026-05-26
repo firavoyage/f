@@ -7,7 +7,7 @@ export default defineConfig(
   {
     ignores: [
       "**/legacy/**",
-      "**/temp/**",
+      // "**/temp/**",
       /**
        * it's fine if it just works
        */

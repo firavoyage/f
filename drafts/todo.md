@@ -289,6 +289,16 @@ crawl the web.
 
 ---
 
+repo cli
+
+repo gui.
+
+connnect the world.
+
+menci. memoh. moeditor.
+
+---
+
 - cli (a general template, under intuitive)
 - git (azaneko?)
 - systemd abstraction?

@@ -1,5 +1,5 @@
 import { Input } from './Input';
-import { fn } from '@storybook/test';
+import { fn, expect, userEvent } from '@storybook/test';
 
 export default {
   title: 'Example/Input',
@@ -7,7 +7,6 @@ export default {
   tags: ['autodocs'],
   argTypes: {
     type: { control: 'radio', options: ['text', 'password', 'email', 'number'] },
-    onChange: { action: 'changed' },
   },
 };
 
@@ -36,6 +35,7 @@ export const WithInteraction = {
   },
   play: async ({ canvas }) => {
     const input = canvas.getByRole('textbox');
-    await input.type('Hello World');
+    await userEvent.type(input, 'Hello World');
+    await expect(input).toHaveValue('Hello World');
   },
 };
