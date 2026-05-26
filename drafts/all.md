@@ -214,6 +214,7 @@ desktop:
 - shell symlink command
 - set up coding agent skills
 - shell tmux
+- try mac os via docker
 
 android:
 
@@ -452,6 +453,11 @@ history:
 - kde desktop
 - gnome desktop
 - rust lang
+- flutter dart
+- jaspr
+- react native
+- kotlin multiplatform
+- ionic framework
 
 politics:
 
@@ -520,6 +526,10 @@ laws:
 glaze:
 
 - design grounded
+
+para:
+
+- research flutter
 
 leisure:
 
