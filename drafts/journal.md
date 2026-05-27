@@ -21358,6 +21358,24 @@ invent.kde.org/documentation/develop-kde-org
 > 
 > Prefer neutral language over language referencing death, violence, crime, prejudice, stereotypes, or evil history. For example:
 
+28
+
+01 20 appreciate `きゅうくらりん(Kyu-Kurarin) Orchestra Remix【Iyowa/Vocaloid(Kafu)】`.
+
+> When you're depressed but you realize you can be fancy
+>
+> back in olden that'd be called Being Melancholic
+
+01 20 check `关于“活着”，我们问了问余华`.
+
+<!--
+
+22岁演讲式发问 😂
+
+不理解為什麼要用這樣的講話方式 10歲小朋友其實也是 很不像個人 哪怕是演講 也沒有人聽得下去 只有不舒服
+
+-->
+
 
 
 <!-- timebox, plan. -->
