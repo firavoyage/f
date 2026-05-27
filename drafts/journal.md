@@ -21314,9 +21314,49 @@ Lee, [5/23/26 2:48 AM]
 
 16 40 solve a math problem from jyhs grade 10 monthly exam near maimai machines.
 
-19 20 read kde hig. (20 00)
+19 20 read kde hig. ~~(20 00)~~ 20 40
+
+invent.kde.org/documentation/develop-kde-org
 
 > Allow the user to rename files and folders inline, rather than with a separate modal dialog box. <!-- ? mind blowing -->
+
+> The primary purpose of configurable settings is to make the software more usable for different types of users with well-developed workflow preferences. These users can have strong voices, or be potential future contributors to your app!
+> 
+> Visual customization is of secondary importance, so don't impair the default user experience in pursuit of it. As much as possible, defer to the platform's own visual styling conventions and theming tools. This allows users with strong aesthetic preferences to do theming at the system level, and their apps will all respond accordingly.
+
+> Expert users love to streamline their tasks with keyboard shortcuts and context menus, so make sure to implement them! Remember that these are accelerators; never rely exclusively on keyboard shortcuts or context menus to access functionality. Primary workflows and their controls must be visible by default.
+> 
+> Either assign a keyboard shortcut to every action that can be performed, or at least make shortcuts assignable by the user. For standard actions, use the shortcuts provided by KStandardShortcut.
+
+> The best KDE apps are modular, with extra functionality provided through plugins. This allows users to self-satisfy rather than asking the developers for new features.
+
+> Avoid hiding settings on pages or views named “Advanced”. The distinction between a basic and an advanced setting depends on the user's needs and workflow, and the word “Advanced” communicates nothing about what might be inside. <!-- ! -->
+> 
+> What works better is a progressive disclosure model where a view first presents data or settings in a simplified form, but optional and non-critical details about each item can be shown on a sub-page, separate window, or a collapsed view. This often achieves a similar effect as having an “Advanced” page, but the contents are clear to the user before they visit it.
+> 
+> For example, System Settings’ Colors page has a “basic” accent color feature and a grid view of all the installed color schemes, but each color scheme can be fully edited in a separate window, by clicking “Edit” on it—this constitutes the “advanced” view.
+
+> Lists are faster to visually scan and handle long text better. They tend to be superior for mostly-textual content. Use alternating background colors with Kirigami.Theme for list items with subtitles or extra items on their right sides.
+> 
+> Grids make better use of space when the view is wide, items are large, or scrolling is undesirable. They tend to be superior for mostly-visual content.
+
+> A well-designed app of low to moderate complexity does not require written documentation to use. If an app is too complex to understand even with inline help text, the user will uninstall it and find another one rather than turning to a manual. Spend your time improving the app's UI instead. <!-- https://xkcd.com/1343/ -->
+
+> Use a Switch for “instant apply” controls that take effect immediately; otherwise, use a CheckBox. <!-- ? -->
+
+> If both factors are important at different times, then use a Slider with a SpinBox trailing it:
+
+> All error messages must be actionable. Tell the user in plain language what happened and what they can do to either fix it, or at least move forward somehow. Be explicit and don't assume knowledge of the system's inner workings or support resources! For example, if you expect the user to visit a support forum or submit a bug report, show a link to the appropriate location in the UI displaying the error message.
+
+> Name items in such a manner that the distinctive parts come first, so they are easier to select with the keyboard. For example, in a list of countries on continents, write "Germany (Europe)" instead of "Europe/Germany".
+
+> Being accessible is not enough; your app must also feel inclusive to avoid turning away potential users.
+> 
+> As with accessibility, following this guide will already give you an app that's quite inclusive. But there are a few more things to keep in mind as well.
+> 
+> Avoid implicit references to or assumptions about the user with respect to:
+> 
+> Prefer neutral language over language referencing death, violence, crime, prejudice, stereotypes, or evil history. For example:
 
 
 

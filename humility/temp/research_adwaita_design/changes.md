@@ -13,4 +13,9 @@
 - Reference semantic tokens directly in component classes (no component tokens)
 - Use color-mix with oklch for derived colors
 - Based on adwaita_web color system (not adwave)
+- Use OKLCH color space with primitives named by color (--accent-*, --danger-*, --gray-*)
+- Move spacing, radii, transitions to primitives
+- Semantic tokens reference only primitives (var(--gray-100), not hardcoded values
+- Dark mode only overrides primitives (gray scale shifts), semantic tokens auto-update
+- Small semantic overrides in dark mode for component-specific tokens (spinner, slider, list)
 

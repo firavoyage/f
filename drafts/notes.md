@@ -1153,3 +1153,12 @@ filename. folder names on the path. content.
 on vscode, whether on ctrl shift f or ctrl p, it's biased and often counter intuitive.
 
 ---
+
+ux: resilient url
+
+fuzzy search and match the url for possible typos, which is common
+
+show a message if needed
+
+---
+
