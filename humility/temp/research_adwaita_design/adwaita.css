@@ -1,0 +1,705 @@
+:root {
+  /* ============================================
+     GLOBAL TOKENS (Primitives)
+     ============================================ */
+
+  /* Accent Blue */
+  --global-accent-000: oklch(35% 0.12 255);
+  --global-accent-100: oklch(40% 0.12 255);
+  --global-accent-200: oklch(45% 0.14 255);
+  --global-accent-300: oklch(52% 0.15 255);
+  --global-accent-400: oklch(60% 0.15 255);
+  --global-accent-500: oklch(65% 0.15 255);
+  --global-accent-600: oklch(72% 0.14 255);
+  --global-accent-700: oklch(80% 0.12 255);
+  --global-accent-800: oklch(88% 0.08 255);
+  --global-accent-900: oklch(95% 0.03 255);
+
+  /* Danger Red */
+  --global-danger-000: oklch(32% 0.14 25);
+  --global-danger-100: oklch(35% 0.14 25);
+  --global-danger-200: oklch(38% 0.14 25);
+  --global-danger-300: oklch(42% 0.14 25);
+  --global-danger-400: oklch(48% 0.14 25);
+  --global-danger-500: oklch(55% 0.14 25);
+  --global-danger-600: oklch(62% 0.12 25);
+  --global-danger-700: oklch(70% 0.10 25);
+  --global-danger-800: oklch(80% 0.06 25);
+  --global-danger-900: oklch(90% 0.03 25);
+
+  /* Neutral Gray - Light Theme */
+  --global-gray-000: oklch(100% 0 0);
+  --global-gray-100: oklch(98% 0.005 0);
+  --global-gray-200: oklch(95% 0.01 0);
+  --global-gray-300: oklch(90% 0.01 0);
+  --global-gray-400: oklch(85% 0.01 0);
+  --global-gray-500: oklch(70% 0.01 0);
+  --global-gray-600: oklch(55% 0.01 0);
+  --global-gray-700: oklch(40% 0.01 0);
+  --global-gray-800: oklch(25% 0.01 0);
+  --global-gray-900: oklch(15% 0.01 0);
+
+  /* Status Colors */
+  --global-info: oklch(60% 0.15 220);
+  --global-success: oklch(65% 0.15 150);
+  --global-warning: oklch(75% 0.15 70);
+  --global-danger-semantic: oklch(48% 0.14 25);
+
+  /* ============================================
+     SEMANTIC TOKENS
+     ============================================ */
+
+  /* Backgrounds */
+  --bg-surface: var(--global-gray-100);
+  --bg-fill: var(--global-gray-200);
+  --bg-elevated: var(--global-gray-000);
+  --bg-inset: var(--global-gray-300);
+  --bg-interactive: var(--global-gray-400);
+  --bg-interactive-hover: var(--global-gray-500);
+  --bg-interactive-pressed: var(--global-gray-600);
+
+  /* Text */
+  --fg-primary: var(--global-gray-900);
+  --fg-secondary: var(--global-gray-600);
+  --fg-disabled: var(--global-gray-500);
+  --fg-on-accent: var(--global-gray-000);
+
+  /* Borders */
+  --border-subtle: var(--global-gray-300);
+  --border-contrast: var(--global-gray-400);
+
+  /* Accent */
+  --accent: var(--global-accent-400);
+  --accent-text: var(--fg-on-accent);
+  --accent-subtle: var(--global-accent-700);
+  --accent-hover: var(--global-accent-500);
+  --accent-pressed: var(--global-accent-300);
+
+  /* Danger */
+  --danger: var(--global-danger-400);
+  --danger-text: var(--global-gray-000);
+  --danger-hover: var(--global-danger-500);
+  --danger-pressed: var(--global-danger-300);
+
+  /* States */
+  --focus: oklch(65% 0.15 230);
+  --focus-accent: oklch(70% 0.15 290);
+
+  /* Component-specific */
+  --spinner-bg: var(--global-gray-500);
+  --spinner-fg: var(--global-gray-100);
+  --slider-thumb: var(--global-gray-000);
+  --list-elem: var(--global-gray-100);
+  --list-elem-border: var(--global-gray-200);
+  --list-elem-hover: var(--global-gray-300);
+
+  /* Alert/Info Colors */
+  --info-bg: var(--global-info);
+  --info-text: var(--global-gray-000);
+  --success-bg: var(--global-success);
+  --success-text: var(--global-gray-000);
+  --warning-bg: var(--global-warning);
+  --warning-text: var(--global-gray-900);
+  --error-bg: oklch(60% 0.18 25);
+  --error-text: var(--global-gray-000);
+
+  /* Spacing & Sizing */
+  --border-radius: 8px;
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-subtle: 0.1s ease;
+
+  /* Typography */
+  --font-family: "Ubuntu", sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Neutral Gray - Dark Theme */
+    --global-gray-000: oklch(8% 0.01 0);
+    --global-gray-100: oklch(12% 0.01 0);
+    --global-gray-200: oklch(18% 0.01 0);
+    --global-gray-300: oklch(22% 0.01 0);
+    --global-gray-400: oklch(28% 0.01 0);
+    --global-gray-500: oklch(38% 0.01 0);
+    --global-gray-600: oklch(50% 0.01 0);
+    --global-gray-700: oklch(65% 0.01 0);
+    --global-gray-800: oklch(80% 0.01 0);
+    --global-gray-900: oklch(95% 0.01 0);
+
+    /* Semantic Overrides */
+    --bg-surface: var(--global-gray-100);
+    --bg-fill: var(--global-gray-200);
+    --bg-elevated: var(--global-gray-300);
+    --bg-inset: var(--global-gray-400);
+    --bg-interactive: var(--global-gray-500);
+    --bg-interactive-hover: var(--global-gray-400);
+    --bg-interactive-pressed: var(--global-gray-600);
+
+    --fg-primary: var(--global-gray-900);
+    --fg-secondary: oklch(65% 0.01 0);
+    --fg-disabled: oklch(45% 0.01 0);
+
+    --border-subtle: var(--global-gray-300);
+    --border-contrast: var(--global-gray-400);
+
+    --accent: var(--global-accent-400);
+    --accent-subtle: oklch(30% 0.15 255);
+    --accent-hover: var(--global-accent-500);
+    --accent-pressed: var(--global-accent-300);
+
+    --danger: var(--global-danger-400);
+    --danger-hover: var(--global-danger-500);
+    --danger-pressed: var(--global-danger-300);
+
+    --focus: oklch(50% 0.15 230);
+    --focus-accent: oklch(65% 0.15 290);
+
+    --spinner-bg: var(--global-gray-600);
+    --spinner-fg: var(--global-gray-800);
+
+    --slider-thumb: var(--global-gray-600);
+    --list-elem: var(--global-gray-200);
+    --list-elem-border: var(--global-gray-300);
+    --list-elem-hover: oklch(28% 0.01 0);
+
+    --info-bg: oklch(45% 0.15 220);
+    --success-bg: oklch(40% 0.15 150);
+    --warning-bg: oklch(55% 0.15 70);
+    --warning-text: var(--global-gray-900);
+    --error-bg: oklch(35% 0.14 25);
+  }
+}
+
+* {
+  color: var(--fg-primary);
+  box-sizing: border-box;
+}
+
+.Body {
+  font-family: var(--font-family);
+  background-color: var(--bg-surface);
+  margin: 0;
+  padding: 2rem;
+  line-height: 1.5;
+}
+
+.Heading {
+  font-family: var(--font-family);
+  font-weight: bold;
+  line-height: 1.5;
+}
+
+.Title {
+  font-size: 2em;
+}
+
+.Title-sm {
+  font-size: 1.5em;
+}
+
+.Title-xl {
+  font-size: 3em;
+}
+
+.Subtitle {
+  font-size: 0.9em;
+  font-weight: 500;
+  color: var(--fg-secondary);
+}
+
+.Label {
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.Text {
+  font-size: 1em;
+  font-weight: 500;
+}
+
+.Button {
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-interactive);
+  border-radius: var(--border-radius);
+  font-family: var(--font-family);
+  border: 1px solid var(--bg-interactive);
+  outline: unset;
+  padding: 0px 1em;
+  min-height: 2.4em;
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.Button:hover:not(.disabled):not([data-toggled="true"]) {
+  background-color: var(--bg-interactive-hover);
+  border-color: var(--bg-interactive-hover);
+}
+
+.Button:active:not(.disabled):not([data-toggled="true"]) {
+  background-color: var(--bg-interactive-pressed);
+  border-color: var(--bg-interactive-pressed);
+}
+
+.Button.disabled {
+  color: color-mix(in oklch, var(--fg-primary) 60%, transparent);
+  cursor: not-allowed;
+}
+
+.Button[data-toggled="true"] {
+  background-color: var(--border-contrast);
+  border-color: var(--border-contrast);
+}
+
+.Button:focus-visible {
+  border: 1px solid var(--focus);
+}
+
+.Button--primary {
+  background-color: var(--accent-hover);
+  border-color: var(--accent-hover);
+  color: var(--accent-text);
+}
+
+.Button--primary:hover:not(.disabled):not([data-toggled="true"]) {
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+
+.Button--primary:active:not(.disabled):not([data-toggled="true"]) {
+  background-color: var(--accent-pressed);
+  border-color: var(--accent-pressed);
+}
+
+.Button--primary[data-toggled="true"] {
+  background-color: var(--accent-subtle);
+  border-color: var(--accent-subtle);
+}
+
+.Button--primary.disabled {
+  background-color: color-mix(in oklch, var(--accent-hover) 75%, black);
+  border-color: color-mix(in oklch, var(--accent-hover) 75%, black);
+  color: color-mix(in oklch, var(--accent-text) 60%, transparent);
+}
+
+.Button--danger {
+  background-color: var(--danger);
+  border-color: var(--danger);
+  color: var(--danger-text);
+}
+
+.Button--danger:hover:not(.disabled):not([data-toggled="true"]) {
+  background-color: var(--danger-hover);
+  border-color: var(--danger-hover);
+}
+
+.Button--danger:active:not(.disabled):not([data-toggled="true"]) {
+  background-color: var(--danger-pressed);
+  border-color: var(--danger-pressed);
+}
+
+.Button--danger[data-toggled="true"] {
+  background-color: var(--danger-hover);
+  border-color: var(--danger-hover);
+}
+
+.Button--danger.disabled {
+  background-color: color-mix(in oklch, var(--danger) 85%, black);
+  border-color: color-mix(in oklch, var(--danger) 85%, black);
+  color: color-mix(in oklch, var(--danger-text) 60%, transparent);
+}
+
+.Button--flat {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.Button--flat:hover:not(.disabled) {
+  background-color: var(--bg-interactive);
+  border-color: var(--bg-interactive);
+}
+
+.Button--flat:active:not(.disabled) {
+  background-color: var(--bg-interactive-pressed);
+  border-color: var(--bg-interactive-pressed);
+}
+
+.Button--circular {
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 5em;
+  padding: unset;
+}
+
+.Button--square {
+  width: 2.5em;
+  height: 2.5em;
+  padding: unset;
+}
+
+.Button--pill {
+  border-radius: 5em;
+}
+
+.Input {
+  color: var(--fg-primary);
+  background-color: var(--bg-interactive);
+  border-radius: var(--border-radius);
+  outline: none;
+  padding: 0px 0.5em;
+  font-family: var(--font-family);
+  border: 1px solid var(--bg-interactive);
+  min-height: 2.4em;
+  transition: border-color var(--transition-fast);
+}
+
+.Input::placeholder {
+  color: color-mix(in oklch, var(--fg-primary) 40%, var(--fg-secondary));
+}
+
+.Input:focus-visible:not(.disabled) {
+  border: 1px solid var(--focus);
+}
+
+.Input.disabled {
+  color: var(--fg-disabled);
+  cursor: not-allowed;
+  caret-color: transparent;
+}
+
+.Checkbox {
+  cursor: pointer;
+  appearance: none;
+  background-color: var(--global-gray-000);
+  font: inherit;
+  color: currentColor;
+  width: 1.2em;
+  height: 1.2em;
+  margin: 0.1em;
+  border: 2px solid var(--bg-interactive-hover);
+  border-radius: 0.2em;
+  transform: translateY(-0.075em);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: unset;
+  box-sizing: content-box;
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+  vertical-align: middle;
+}
+
+.Checkbox::before {
+  content: "";
+  width: 0.9em;
+  padding-top: 0.15em;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E") no-repeat center;
+  background-size: contain;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.Checkbox:checked {
+  background-color: var(--accent);
+}
+
+.Checkbox:checked::before {
+  opacity: 1;
+}
+
+.Checkbox:focus-visible {
+  outline: solid 2px var(--focus);
+  outline-offset: 0px;
+}
+
+.Checkbox.disabled {
+  background-color: var(--global-gray-500);
+  cursor: not-allowed;
+}
+
+.Switch {
+  cursor: pointer;
+  user-select: none;
+  border-radius: 18px;
+  background-color: var(--bg-inset);
+  height: 1.7em;
+  width: 3.4em;
+  border: none;
+  padding: 0.15em;
+  transition: background var(--transition-fast);
+}
+
+.Switch-knob {
+  border-radius: 18px;
+  height: calc(1.7em - 0.3em);
+  width: calc(1.7em - 0.3em);
+  background-color: var(--slider-thumb);
+  transition: left 0.2s;
+}
+
+.Switch[data-active="true"] {
+  background-color: var(--accent);
+}
+
+.Switch[data-active="true"] .Switch-knob {
+  left: 1.7em;
+}
+
+.Switch.disabled {
+  cursor: not-allowed;
+}
+
+.Switch.disabled[data-active="true"] {
+  background-color: color-mix(in oklch, var(--bg-inset) 60%, var(--fg-secondary));
+}
+
+.Switch.disabled .Switch-knob {
+  background-color: color-mix(in oklch, var(--bg-fill) 50%, var(--global-gray-500));
+}
+
+.Switch:focus-visible {
+  outline: solid 2px var(--focus);
+  outline-offset: 2px;
+}
+
+.Slider {
+  flex: 1;
+  min-height: 1em;
+  border-radius: 6px;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+}
+
+.Slider-track {
+  height: 0.3em;
+  border-radius: 18px;
+  background-color: color-mix(in oklch, var(--bg-interactive) 65%, var(--fg-secondary));
+  position: absolute;
+  top: 0.3em;
+  left: 0px;
+  right: 0px;
+}
+
+.Slider-progress {
+  height: 0.3em;
+  border-radius: 18px;
+  background-color: var(--accent);
+  position: absolute;
+  top: 0.3em;
+  left: 0px;
+}
+
+.Slider-thumb {
+  height: 0.75em;
+  width: 0.75em;
+  border-radius: 18px;
+  background-color: var(--slider-thumb);
+  box-shadow: 1.5px 1.5px 0px rgba(134, 134, 134, 1);
+  position: absolute;
+  top: 0.1em;
+  left: calc(0% - 0.3em);
+  transition: left 0.2s;
+}
+
+.Slider.disabled {
+  cursor: not-allowed;
+}
+
+.Slider.disabled .Slider-progress {
+  background-color: color-mix(in oklch, var(--bg-interactive) 65%, var(--global-gray-300));
+}
+
+.Slider.disabled .Slider-thumb {
+  background-color: color-mix(in oklch, var(--slider-thumb) 80%, black);
+}
+
+.Slider:focus-visible {
+  outline: solid 2px var(--focus);
+  outline-offset: 2px;
+}
+
+.Card {
+  border-radius: var(--border-radius);
+  background-color: var(--bg-elevated);
+  padding: 0.85em 1.15em;
+  box-shadow: 8px -4px 0px rgba(134, 134, 134, 1);
+}
+
+.Card--activable {
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.Card--activable:hover {
+  background-color: color-mix(in oklch, var(--bg-elevated) 90%, var(--fg-secondary));
+}
+
+.List {
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: 8px -4px 0px rgba(134, 134, 134, 1);
+}
+
+.List-element {
+  background-color: var(--list-elem);
+  background-clip: padding-box;
+  padding: 1em 1.15em;
+  transition: background var(--transition-subtle);
+}
+
+.List-element:first-child {
+  border-top-left-radius: var(--border-radius);
+  border-top-right-radius: var(--border-radius);
+}
+
+.List-element:last-child {
+  border-bottom-left-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+}
+
+.List-element:not(:first-child) {
+  border-top: 1px solid var(--list-elem-border);
+}
+
+.List-element:not(:last-child) {
+  border-bottom: 1px solid var(--list-elem-border);
+}
+
+.List-element--activable:hover {
+  background-color: var(--list-elem-hover);
+}
+
+.List--bg-2 .List-element {
+  background-color: var(--bg-surface);
+}
+
+.List--bg-2 .List-element:not(:first-child) {
+  border-top: 1px solid var(--bg-interactive);
+}
+
+.List--bg-2 .List-element:not(:last-child) {
+  border-bottom: 1px solid var(--bg-interactive);
+}
+
+.List--bg-2 .List-element--activable:hover {
+  background-color: var(--list-elem-hover);
+}
+
+.Alert {
+  padding: 1.5em;
+  background-color: var(--bg-fill);
+  border-radius: var(--border-radius);
+  color: var(--fg-primary);
+  font-family: var(--font-family);
+}
+
+.Alert--info {
+  background-color: var(--info-bg);
+  color: var(--info-text);
+}
+
+.Alert--success {
+  background-color: var(--success-bg);
+  color: var(--success-text);
+}
+
+.Alert--warning {
+  background-color: var(--warning-bg);
+  color: var(--warning-text);
+}
+
+.Alert--error {
+  background-color: var(--error-bg);
+  color: var(--error-text);
+}
+
+.Dialog {
+  all: revert;
+  border: none;
+  background-color: var(--bg-surface);
+  border-radius: var(--border-radius);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.Dialog-header {
+  background-color: var(--bg-fill);
+  border-top-left-radius: var(--border-radius);
+  border-top-right-radius: var(--border-radius);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  min-height: 2.4em;
+  padding: 0.1em;
+  font-size: 1em;
+  font-family: var(--font-family);
+  font-weight: 500;
+}
+
+.Dialog-title {
+  flex: 1;
+  margin-inline: 0.5em;
+  text-align: center;
+}
+
+.Dialog-body {
+  padding: 0.5em;
+}
+
+.Separator {
+  background-color: var(--fg-secondary);
+  height: 1px;
+  width: 100%;
+  margin: 6px 0;
+}
+
+.Separator--vertical {
+  width: 1px;
+  height: 100%;
+  margin: 0 6px;
+}
+
+.Spinner {
+  width: 1em;
+  height: 1em;
+  display: inline-flex;
+  justify-content: center;
+  align-items: flex-start;
+  border-radius: 100px;
+  background-color: var(--spinner-bg);
+  animation-name: Spinner-spin;
+  animation-duration: 800ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.Spinner-inner {
+  width: 0.8em;
+  height: 0.8em;
+  display: block;
+  border-radius: 100px;
+  background-color: var(--spinner-fg);
+}
+
+@keyframes Spinner-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

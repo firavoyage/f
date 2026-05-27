@@ -1,0 +1,59 @@
+.list {
+  $listBorderRadius: size("bradius");
+  $listSeparatorColor: color("list-elem-border");
+  $listSeparatorColor2: color("list-elem-border-2");
+  border-radius: $listBorderRadius;
+  @include scrollbar;
+  @include box-shadow(8px, -4px);
+
+  .list-element {
+    background-color: color("list-elem");
+    background-clip: padding-box;
+    padding: 1em 1.15em;
+    @include bg-transition(0.1s);
+
+    &:first-child {
+      border-top-left-radius: $listBorderRadius;
+      border-top-right-radius: $listBorderRadius;
+    }
+
+    &:last-child {
+      border-bottom-left-radius: $listBorderRadius;
+      border-bottom-right-radius: $listBorderRadius;
+    }
+
+    &:not(:first-child) {
+      border-top: 1px solid $listSeparatorColor;
+    }
+
+    &:not(:last-child) {
+      border-bottom: 1px solid $listSeparatorColor;
+    }
+
+    &.activable {
+      &:hover {
+        background-color: color("list-elem-hover");
+      }
+    }
+  }
+
+  &.bg-2 {
+    & .list-element {
+      background-color: color("list-elem-2");
+
+      &:not(:first-child) {
+        border-top: 1px solid $listSeparatorColor2;
+      }
+
+      &:not(:last-child) {
+        border-bottom: 1px solid $listSeparatorColor2;
+      }
+
+      &.activable {
+        &:hover {
+          background-color: color("list-elem-hover-2");
+        }
+      }
+    }
+  }
+}
