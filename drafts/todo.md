@@ -314,6 +314,12 @@ menci. memoh. moeditor.
 
 ---
 
+storybook simpler alternatives
+
+create mine.
+
+---
+
 design system. whatever i do i should have one. adwaita + yaru fits the vibe of my desktop.
 
 ---
@@ -371,5 +377,17 @@ what does a mui button do
 how should the ui change for desktops of different sizes
 
 sidebar
+
+---
+
+alert
+
+systemd abstraction
+
+git failure
+
+repo
+
+no cli, no gui. a config. a command. that's it.
 
 

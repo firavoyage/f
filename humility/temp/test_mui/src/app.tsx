@@ -1,3 +1,5 @@
+import 'normalize.css';
+
 import { useState } from "react";
 import {
   Container,
