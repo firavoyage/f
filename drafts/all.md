@@ -364,6 +364,8 @@ float: <!-- music -->
 - interpret keitai renwa
 - interpret otome kaibou
 - interpret rabbit hole
+- interpret tell your world
+- interpret lagtrain inabakumori
 
 philosophy:
 
