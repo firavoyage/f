@@ -289,6 +289,18 @@ crawl the web.
 
 ---
 
+alert
+
+systemd abstraction
+
+git failure
+
+repo
+
+no cli, no gui. a config. a command. that's it.
+
+---
+
 repo cli
 
 repo gui.
@@ -380,14 +392,8 @@ sidebar
 
 ---
 
-alert
+timebox 40 min for kde hig
 
-systemd abstraction
-
-git failure
-
-repo
-
-no cli, no gui. a config. a command. that's it.
+create design token css poc
 
 

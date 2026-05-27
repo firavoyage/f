@@ -180,6 +180,7 @@ frontend: <!-- web -->
 - normalize css js import css
 - parcel vite speed
 - react styling class naming data attr
+- design tokens css variables
 
 backend:
 
@@ -215,6 +216,7 @@ desktop:
 - set up coding agent skills
 - shell tmux
 - try mac os via docker
+- fix laptop keyboard key
 
 android:
 
@@ -295,6 +297,7 @@ ux: <!-- ui/ux design -->
 - samsung sim card activation friction security
 - accessibility real constrast to human eyes
 - opencode session export
+- kde desktop k naming
 
 typography:
 
