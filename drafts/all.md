@@ -294,6 +294,7 @@ ux: <!-- ui/ux design -->
 - samsung quick panel customization outside settings
 - samsung sim card activation friction security
 - accessibility real constrast to human eyes
+- opencode session export
 
 typography:
 

@@ -8,6 +8,18 @@
 
 <!-- under the hood it's just a base model so all you need is to config, and test. which is exactly what i dont want. -->
 
+#
+
+```sh
+pnpm add normalize.css
+```
+
+```js
+import 'normalize.css';
+```
+
+#
+
 install reset css via pnpm
 
 To install a CSS reset package using pnpm, <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">run the <strong><code dir="ltr" style="font-size: 14px; margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 1px solid rgb(44, 46, 53);">pnpm add</code> command followed by the name of the package</strong> you want to use</mark>. \[[1](https://generalistprogrammer.com/tutorials/reset-css-npm-package-guide)]
