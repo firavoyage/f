@@ -392,8 +392,12 @@ sidebar
 
 ---
 
-timebox 40 min for kde hig
+do it progressively, steadily.
 
-create design token css poc
+think about the names. define myself.
+
+there are many version. follow the latest gnome.
+
+think what the app would look like. an example empty gnome builder app first.
 
 
