@@ -21314,6 +21314,10 @@ Lee, [5/23/26 2:48 AM]
 
 16 40 solve a math problem from jyhs grade 10 monthly exam near maimai machines.
 
+19 20 read kde hig. (20 00)
+
+> Allow the user to rename files and folders inline, rather than with a separate modal dialog box. <!-- ? mind blowing -->
+
 
 
 <!-- timebox, plan. -->

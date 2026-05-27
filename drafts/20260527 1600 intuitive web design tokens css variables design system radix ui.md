@@ -2,7 +2,7 @@
 
 seems "<button>" inside <code> are stripped by the sanitizer
 
-<div class="n6owBd awi2gc" data-sfc-cp="" jsaction="" jscontroller="TDBkbc" data-sfc-root="c" jsuid="P3uxLc_4u" data-sfc-cb="" data-hveid="CAIIAAg2EAA" data-complete="true" data-processed="true" aria-owns="action-menu-parent-container">If you can use a native HTML element (like <code dir="ltr" class="KDcb0c" jsaction="" jscontroller="hNviFe" data-sfc-root="c" jsuid="P3uxLc_4v" data-sfc-cb="" data-complete="true" data-processed="true">&lt;button&gt;<!--TgQPHd|[]--></code> or <code dir="ltr" class="KDcb0c" jsaction="" jscontroller="hNviFe" data-sfc-root="c" jsuid="P3uxLc_4w" data-sfc-cb="" data-complete="true" data-processed="true">&lt;nav&gt;<!--TgQPHd|[]--></code>) instead of using ARIA to fake it on a <code dir="ltr" class="KDcb0c" jsaction="" jscontroller="hNviFe" data-sfc-root="c" jsuid="P3uxLc_4x" data-sfc-cb="" data-complete="true" data-processed="true">&lt;div&gt;<!--TgQPHd|[]--></code>, you should always use the native element. Native HTML has built-in keyboard functionality and browser support, whereas ARIA only changes how assistive tools <em class="eujQNb" jsaction="" jscontroller="yHWXO" data-sfc-root="c" jsuid="P3uxLc_4y" data-sfc-cb="" data-complete="true" data-processed="true">read<!--TgQPHd|[]--></em> the page—it does not automatically add keyboard behavior or interactivity behind the scenes.<span jsuid="P3uxLc_4z" class="WBgIic notranslate" jsaction="rcuQ6b:&amp;P3uxLc_4z|npT2md" jscontroller="XqmSxe" data-sfc-root="c" data-wiz-uids="P3uxLc_50,P3uxLc_51" data-sfc-cb="" data-complete="true" data-processed="true"><span class="NMq1me" data-animation-atomic="" data-wiz-attrbind="class=P3uxLc_4z/TKHnVd" data-processed="true"><span aria-hidden="true" data-processed="true">&nbsp;</span><!--qkimaf P3uxLc_4z/HugV6--><a class="PMDqCb" target="_blank" rel="noopener" aria-label="MDN Web Docs (+2) - View related links" jsaction="mouseenter:&amp;P3uxLc_4z|sbHm2b;mouseleave:&amp;P3uxLc_4z|Tx5Rb" data-ved="2ahUKEwjorN6ZmNmUAxVwFTQIHbkUOfoQ0YISeggIAggACDYQAQ" href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA" ping="/url?sa=t&amp;source=web&amp;rct=j&amp;url=https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA&amp;ved=2ahUKEwjorN6ZmNmUAxVwFTQIHbkUOfoQ0YISeggIAggACDYQAQ&amp;opi=89978449" data-processed="true"></a><!--cqw1tb P3uxLc_4z/HugV6--><button jsuid="P3uxLc_51" tabindex="0" data-amic="true" data-icl-uuid="789aaf5a-6f29-4a18-bda5-449566f5259a" aria-label="MDN Web Docs (+2) - View related links" class="vDOt8c oy7Apc qu4n2c" jsaction="click:&amp;P3uxLc_4z|S9kKve;mouseenter:&amp;P3uxLc_4z|sbHm2b;mouseleave:&amp;P3uxLc_4z|Tx5Rb" data-wiz-attrbind="disabled=P3uxLc_4z/C5gNJc;aria-label=P3uxLc_4z/bOjMyf;class=P3uxLc_4z/UpSNec" data-ved="2ahUKEwjorN6ZmNmUAxVwFTQIHbkUOfoQye0OeggIAggACDYQAg" data-hveid="CAIIAAg2EAI" data-processed="true"><div class="S9OuHf" data-animation-skip="" data-sfc-cp="" jsaction="" jscontroller="jXk9bd" data-sfc-root="c" jsuid="P3uxLc_52" data-sfc-cb="" data-ved="2ahUKEwjorN6ZmNmUAxVwFTQIHbkUOfoQ3s0SeggIAggACDYQAw" data-complete="true" data-processed="true"><img id="img-570WaqidJvCq0PEPuank0Q8_22" class="IpiY3d" src="" alt="" data-deferred="3" data-imglogged="true" data-aatf="4" data-processed="true" data-imgprocessed="true"><span class="dNwgB" data-processed="true"><span class="QNca8b" data-processed="true">MDN Web Docs</span><span class="OkUHJe" data-processed="true">&nbsp;+2</span></span><!--TgQPHdP3uxLc_4z/scS1X|[{&quot;s&quot;:3,&quot;i&quot;:&quot;P3uxLc_4z/scS1X&quot;}]--></div><div jsuid="P3uxLc_50" style="display: none;" data-ved="2ahUKEwjorN6ZmNmUAxVwFTQIHbkUOfoQlZkReggIAggACDYQBA" data-processed="true"></div></button></span><!--TgQPHd|[[&quot;789aaf5a-6f29-4a18-bda5-449566f5259a&quot;,null,null,0,&quot;https://encrypted-tbn2.gstatic.com/faviconV2?url\u003dhttps://developer.mozilla.org\u0026client\u003dAIM\u0026size\u003d128\u0026type\u003dFAVICON\u0026fallback_opts\u003dTYPE,SIZE,URL&quot;,&quot;MDN Web Docs&quot;,3,&quot;https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA&quot;,null,null,null,1]]--></span><!--TgQPHd|[]--></div>
+<div class="n6owBd awi2gc" data-sfc-cp="" jsaction="" jscontroller="TDBkbc" data-sfc-root="c" jsuid="P3uxLc_4u" data-sfc-cb="" data-hveid="CAIIAAg2EAA" data-complete="true" data-processed="true" aria-owns="action-menu-parent-container">If you can use a native HTML element (like <code dir="ltr" class="KDcb0c" jsaction="" jscontroller="hNviFe" data-sfc-root="c" jsuid="P3uxLc_4v" data-sfc-cb="" data-complete="true" data-processed="true">&lt;button&gt;<!--TgQPHd|[]--\></code> or <code dir="ltr" class="KDcb0c" jsaction="" jscontroller="hNviFe" data-sfc-root="c" jsuid="P3uxLc_4w" data-sfc-cb="" data-complete="true" data-processed="true">&lt;nav&gt;<!--TgQPHd|[]--\></code>) instead of using ARIA to fake it on a <code dir="ltr" class="KDcb0c" jsaction="" jscontroller="hNviFe" data-sfc-root="c" jsuid="P3uxLc_4x" data-sfc-cb="" data-complete="true" data-processed="true">&lt;div&gt;<!--TgQPHd|[]--\></code>, you should always use the native element. Native HTML has built-in keyboard functionality and browser support, whereas ARIA only changes how assistive tools <em class="eujQNb" jsaction="" jscontroller="yHWXO" data-sfc-root="c" jsuid="P3uxLc_4y" data-sfc-cb="" data-complete="true" data-processed="true">read<!--TgQPHd|[]--\></em> the page—it does not automatically add keyboard behavior or interactivity behind the scenes.<span jsuid="P3uxLc_4z" class="WBgIic notranslate" jsaction="rcuQ6b:&amp;P3uxLc_4z|npT2md" jscontroller="XqmSxe" data-sfc-root="c" data-wiz-uids="P3uxLc_50,P3uxLc_51" data-sfc-cb="" data-complete="true" data-processed="true"><span class="NMq1me" data-animation-atomic="" data-wiz-attrbind="class=P3uxLc_4z/TKHnVd" data-processed="true"><span aria-hidden="true" data-processed="true">&nbsp;</span><!--qkimaf P3uxLc_4z/HugV6--\><a class="PMDqCb" target="_blank" rel="noopener" aria-label="MDN Web Docs (+2) - View related links" jsaction="mouseenter:&amp;P3uxLc_4z|sbHm2b;mouseleave:&amp;P3uxLc_4z|Tx5Rb" data-ved="2ahUKEwjorN6ZmNmUAxVwFTQIHbkUOfoQ0YISeggIAggACDYQAQ" href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA" ping="/url?sa=t&amp;source=web&amp;rct=j&amp;url=https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA&amp;ved=2ahUKEwjorN6ZmNmUAxVwFTQIHbkUOfoQ0YISeggIAggACDYQAQ&amp;opi=89978449" data-processed="true"></a><!--cqw1tb P3uxLc_4z/HugV6--\><button jsuid="P3uxLc_51" tabindex="0" data-amic="true" data-icl-uuid="789aaf5a-6f29-4a18-bda5-449566f5259a" aria-label="MDN Web Docs (+2) - View related links" class="vDOt8c oy7Apc qu4n2c" jsaction="click:&amp;P3uxLc_4z|S9kKve;mouseenter:&amp;P3uxLc_4z|sbHm2b;mouseleave:&amp;P3uxLc_4z|Tx5Rb" data-wiz-attrbind="disabled=P3uxLc_4z/C5gNJc;aria-label=P3uxLc_4z/bOjMyf;class=P3uxLc_4z/UpSNec" data-ved="2ahUKEwjorN6ZmNmUAxVwFTQIHbkUOfoQye0OeggIAggACDYQAg" data-hveid="CAIIAAg2EAI" data-processed="true"><div class="S9OuHf" data-animation-skip="" data-sfc-cp="" jsaction="" jscontroller="jXk9bd" data-sfc-root="c" jsuid="P3uxLc_52" data-sfc-cb="" data-ved="2ahUKEwjorN6ZmNmUAxVwFTQIHbkUOfoQ3s0SeggIAggACDYQAw" data-complete="true" data-processed="true"><img id="img-570WaqidJvCq0PEPuank0Q8_22" class="IpiY3d" src="" alt="" data-deferred="3" data-imglogged="true" data-aatf="4" data-processed="true" data-imgprocessed="true"><span class="dNwgB" data-processed="true"><span class="QNca8b" data-processed="true">MDN Web Docs</span><span class="OkUHJe" data-processed="true">&nbsp;+2</span></span><!--TgQPHdP3uxLc_4z/scS1X|[{&quot;s&quot;:3,&quot;i&quot;:&quot;P3uxLc_4z/scS1X&quot;}]--\></div><div jsuid="P3uxLc_50" style="display: none;" data-ved="2ahUKEwjorN6ZmNmUAxVwFTQIHbkUOfoQlZkReggIAggACDYQBA" data-processed="true"></div></button></span><!--TgQPHd|[[&quot;789aaf5a-6f29-4a18-bda5-449566f5259a&quot;,null,null,0,&quot;https://encrypted-tbn2.gstatic.com/faviconV2?url\u003dhttps://developer.mozilla.org\u0026client\u003dAIM\u0026size\u003d128\u0026type\u003dFAVICON\u0026fallback_opts\u003dTYPE,SIZE,URL&quot;,&quot;MDN Web Docs&quot;,3,&quot;https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA&quot;,null,null,null,1]]--\></span><!--TgQPHd|[]--\></div>
 
  -->
 
@@ -3307,4 +3307,466 @@ I can help you evaluate if React Aria is worth the trade-offs or if an alternati
 
 Show all
 
+#
 
+criticism on shadcnui
+
+While **[shadcn/ui](https://ui.shadcn.com/docs)** has completely disrupted the frontend landscape by replacing standard `node_modules` packages with a direct "code-ownership" model, it faces significant criticism regarding <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>long-term code maintenance, dependency vulnerabilities, and the over-saturation of visually identical websites</strong></mark>. The core philosophy—copying and pasting raw code directly into your repository—means that you inherit both ultimate flexibility and ultimate responsibility for fixing bugs and managing upstream library deprecations. \[[1](https://www.reddit.com/r/reactjs/comments/1kfnz9x/i%5Fdont%5Fget%5Fthe%5Fpoint%5Fof%5Fshadcn%5Fresisting%5Fagainst/), [2](https://medium.com/@genildocs/the-shadcn-revolution-why-developers-are-abandoning-traditional-component-libraries-a9a4747935d5), [3](https://medium.com/@ananyavhegde2001/shadcn-ui-why-im-never-going-back-to-traditional-component-libraries-10c49babb496), [4](https://www.reddit.com/r/reactjs/comments/1cb86y7/what%5Fi%5Fdont%5Flike%5Fabout%5Fshadcnui/), [5](https://www.youtube.com/watch?v=I7pOqiybEoY), [6](https://news.ycombinator.com/item?id=47984512), [7](https://www.amillionmonkeys.co.uk/blog/shadcn-ui-components-review), [8](https://leonardomontini.dev/shadcn-ui-use-with-caution/)]
+
+***
+
+Key Criticisms of shadcn/ui
+
+1\. The Maintenance and Bug Burden Shifting to You
+
+- **Code ownership liability**: Because components live directly in your source folder, traditional upstream package updates do not automatically fix bugs.
+- **Manual patch tracking**: If a component contains an optimization or a bug fix, you must manually dig through GitHub discussions or pull requests to apply the fix yourself.
+- **Upstream abandonment**: A substantial portion of shadcn/ui relies heavily on other open-source dependencies. Critics on community forums like the [r/reactjs subreddit](https://www.reddit.com/r/reactjs/comments/1oeobkr/i%5Fdont%5Funderstand%5Fwhy%5Fso%5Fmany%5Fpeople%5Fuse%5Fshadcn%5Fui/) note that foundational underlying packages (such as Vaul for the Drawer component) have occasionally been left unmaintained by their original authors. \[[1](https://www.reddit.com/r/reactjs/comments/1oeobkr/i%5Fdont%5Funderstand%5Fwhy%5Fso%5Fmany%5Fpeople%5Fuse%5Fshadcn%5Fui/), [2](https://medium.com/@sureshdotariya/when-to-use-vs-avoid-shadcn-ui-components-in-large-next-js-apps-07ecec05e451), [3](https://www.reddit.com/r/reactjs/comments/1cb86y7/what%5Fi%5Fdont%5Flike%5Fabout%5Fshadcnui/), [4](https://leonardomontini.dev/shadcn-ui-use-with-caution/)]
+
+2\. Visual Over-Saturation (“The New Bootstrap”)
+
+- **Homogeneous aesthetics**: Much like Bootstrap in the early 2010s, websites built with shadcn/ui are immediately recognizable due to a distinct, minimal dark/light design theme.
+- **Delayed customization**: Developers routinely stick to default border radiuses, font tracking, and gray scales rather than utilizing the library to generate a custom design system.
+- **Designer friction**: As discussed in [GitHub issues](https://github.com/shadcn-ui/ui/discussions/6699), product designers frequently struggle to adapt shadcn's lack of formal primitive/semantic token structures into complex, multi-brand platform flows. \[[1](https://www.reddit.com/r/reactjs/comments/1o3xh1t/what%5Fdo%5Fyou%5Fthink%5Fis%5Fshadcnui%5Freally%5Fthat%5Fgoated/), [2](https://www.youtube.com/watch?v=I7pOqiybEoY), [3](https://www.youtube.com/watch?v=CYV2%5FVXtnmI), [4](https://news.ycombinator.com/item?id=47984512), [5](https://github.com/shadcn-ui/ui/discussions/6699)]
+
+3\. Security Concerns & Strict Environments
+
+- **Content Security Policy (CSP) issues**: Some engineers have pointed out on [Reddit](https://www.reddit.com/r/nextjs/comments/1f2jypk/warning%5Fshadcnui%5Frequires%5Fyour%5Fsite%5Fto%5Fbe/) that out-of-the-box configurations for certain heavy components (like Select) present architectural challenges when operating under strict, highly secure CSP rules.
+- **Cluttered code parsing**: Combining Tailwind classes directly inside JSX can lead to heavily cluttered code that is difficult for strict enterprise compliance teams to audibly parse for CSS injection vectors. \[[1](https://www.reddit.com/r/reactjs/comments/1o3xh1t/what%5Fdo%5Fyou%5Fthink%5Fis%5Fshadcnui%5Freally%5Fthat%5Fgoated/), [2](https://www.reddit.com/r/nextjs/comments/1f2jypk/warning%5Fshadcnui%5Frequires%5Fyour%5Fsite%5Fto%5Fbe/), [3](https://redmonk.com/kholterhoff/2025/04/22/ui-component-libraries-shadcn-ui-and-the-revenge-of-copypasta/)]
+
+4\. Workflow Conflict and "Hype Train" Velocity \[[1](https://www.youtube.com/watch?v=CYV2%5FVXtnmI)]
+
+- **Component integration friction**: Because shadcn pieces are loosely coupled wrappers around Radix UI and Tailwind CSS, combining them with outside npm packages (like modal third-party video or image viewers) often causes event bubbling bugs, such as inner triggers accidentally closing outer parent layout boxes.
+- **CLI changes**: The framework's rapid evolution resulted in the deprecation of the older `shadcn-ui` package in favor of the unified `shadcn` multi-tool execution library, requiring developers to keep up with altered build pipelines. \[[1](https://www.youtube.com/watch?v=BXcI9rh58oQ), [2](https://www.reddit.com/r/reactjs/comments/1cb86y7/what%5Fi%5Fdont%5Flike%5Fabout%5Fshadcnui/), [3](https://www.reddit.com/r/react/comments/1iyj8sk/is%5Fshadcn%5Fworth%5Fthe%5Fheadaches/), [4](https://www.amillionmonkeys.co.uk/blog/shadcn-ui-components-review), [5](https://www.npmjs.com/package/shadcn-ui)]
+
+***
+
+Core Trade-Offs Overview
+
+| Feature \[[1](https://medium.com/@genildocs/the-shadcn-revolution-why-developers-are-abandoning-traditional-component-libraries-a9a4747935d5), [2](https://medium.com/@ananyavhegde2001/shadcn-ui-why-im-never-going-back-to-traditional-component-libraries-10c49babb496), [3](https://www.reddit.com/r/reactjs/comments/1kfnz9x/i%5Fdont%5Fget%5Fthe%5Fpoint%5Fof%5Fshadcn%5Fresisting%5Fagainst/), [4](https://medium.com/@sureshdotariya/when-to-use-vs-avoid-shadcn-ui-components-in-large-next-js-apps-07ecec05e451), [5](https://redmonk.com/kholterhoff/2025/04/22/ui-component-libraries-shadcn-ui-and-the-revenge-of-copypasta/), [6](https://www.reddit.com/r/reactjs/comments/1o3xh1t/what%5Fdo%5Fyou%5Fthink%5Fis%5Fshadcnui%5Freally%5Fthat%5Fgoated/), [7](https://www.reddit.com/r/nextjs/comments/1fhbusv/i%5Ftried%5Fshadcnui%5Fand%5Fi%5Fdid%5Fnot%5Flik%5Fit/), [8](https://www.amillionmonkeys.co.uk/blog/shadcn-ui-components-review), [9](https://www.reddit.com/r/reactjs/comments/1cb86y7/what%5Fi%5Fdont%5Flike%5Fabout%5Fshadcnui/), [10](https://leonardomontini.dev/shadcn-ui-use-with-caution/)] | The Promise                                                       | The Critical Reality                                                                     |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| **Distribution**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | Zero vendor lock-in; no bulky `node_modules` bloating your build. | Your repository code grows massively, turning into a custom framework you must sustain.  |
+| **Styling**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | Utmost utility power via rapid Tailwind inline classes.           | Messy HTML strings that are harder to read and reuse compared to native semantic tokens. |
+| **Logic**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | Flawless underlying accessibility driven by Radix UI.             | Breakages in foundational sub-packages break your custom components natively.            |
+
+If your team prefers an immutable package architecture that receives automatic, zero-effort framework upkeep updates, looking into traditional alternatives like Mantine or Chakra UI might save you a significant engineering headache. \[[1](https://www.reddit.com/r/react/comments/1s0xse8/is%5Fshadcn%5Fover%5Fhyped/), [2](https://medium.com/@ananyavhegde2001/shadcn-ui-why-im-never-going-back-to-traditional-component-libraries-10c49babb496)]
+
+Are you weighing shadcn/ui for a **new production system**, or deciding if you should migrate **away** from it? Let me know your current tech stack so I can suggest the best strategy.
+
+- [link](https://www.reddit.com/r/reactjs/comments/1oeobkr/i%5Fdont%5Funderstand%5Fwhy%5Fso%5Fmany%5Fpeople%5Fuse%5Fshadcn%5Fui/)\
+  I don't understand, why so many people use Shadcn ui? - Reddit\
+  Oct 24, 2025 — Not trying to derogate any library, just confused at that fact that so many people use Shadcn. Now the problem: Some core librarie...\
+  Reddit·r/reactjs
+- [link](https://www.reddit.com/r/reactjs/comments/1kfnz9x/i%5Fdont%5Fget%5Fthe%5Fpoint%5Fof%5Fshadcn%5Fresisting%5Fagainst/)\
+  I don't get the point of shadcn resisting against the idea of ... - Reddit\
+  May 5, 2025 — The fact that you have a dedicated team for uikit doesn't mean maintaining it requires less work. It just encapsulates the complex...\
+  Reddit·r/reactjs
+- [link](https://leonardomontini.dev/shadcn-ui-use-with-caution/)\
+  What I DON'T like about shadcn/ui - Leonardo Montini\
+  Apr 23, 2024 — basic. Wich makes sense, it's not a huge library like MUI or Prime with advanced components, it's not an UI library at all, but wh...\
+  Leonardo Montini
+
+Show all
+
+You said: example of copy pasting
+
+Here is a practical example of how copy-pasting works with **shadcn/ui**, illustrating why critics argue it transfers the maintenance burden to your repository.
+
+When you add a component like the **Alert** using the CLI (`npx shadcn@latest add alert`), it does not download an immutable package. Instead, it literally creates a new file directly inside your project structure, containing raw code that you now own.
+
+1\. The File Placed in Your Repository
+
+The CLI generates a file at `components/ui/alert.tsx` that looks like this:
+
+tsx
+
+```
+import * as React from "react"
+import { cva, type VariantProps } from "class-variance-authority"
+import { cn } from "@/lib/utils"
+
+const alertVariants = cva(
+  "relative w-full rounded-lg border p-4 [&>svg~div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground [&>svg+div]:padding-left-7",
+  {
+    variants: {
+      variant: {
+        default: "bg-background text-foreground",
+        destructive:
+          "border-destructive/50 text-destructive dark:border-destructive [&>svg]:text-destructive",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  }
+)
+
+const Alert = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement> & VariantProps<typeof alertVariants>
+>(({ className, variant, ...props }, ref) => (
+  <div
+    ref={ref}
+    role="alert"
+    className={cn(alertVariants({ variant }), className)}
+    {...props}
+  />
+))
+Alert.displayName = "Alert"
+
+const AlertTitle = React.forwardRef<
+  HTMLParagraphElement,
+  React.HTMLAttributes<HTMLHeadingElement>
+>(({ className, ...props }, ref) => (
+  <h5
+    ref={ref}
+    className={cn("mb-1 font-medium leading-none tracking-tight", className)}
+    {...props}
+  />
+))
+AlertTitle.displayName = "AlertTitle"
+
+const AlertDescription = React.forwardRef<
+  HTMLParagraphElement,
+  React.HTMLAttributes<HTMLParagraphElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn("text-sm [&_p]:leading-relaxed", className)}
+    {...props}
+  />
+))
+AlertDescription.displayName = "AlertDescription"
+
+export { Alert, AlertTitle, AlertDescription }
+```
+
+Use code with caution.
+
+2\. How You Consume It
+
+You import this local file just like any regular React component you wrote yourself:
+
+tsx
+
+```
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { Terminal } from "lucide-react"
+
+export default function App() {
+  return (
+    <Alert>
+      <Terminal className="h-4 w-4" />
+      <AlertTitle>Heads up!</AlertTitle>
+      <AlertDescription>
+        You can change this code directly because it is in your folder.
+      </AlertDescription>
+    </Alert>
+  )
+}
+```
+
+Use code with caution.
+
+3\. The Core Criticism in Action
+
+- **The Maintenance Trap**: Notice the complex Tailwind string `[&>svg~div]:translate-y-[-3px]` up in the `alertVariants`. If the shadcn team finds a better CSS layout approach to fix an alignment bug on mobile devices next month, **your project will not get the fix**. Your local code remains frozen in time.
+- **The Customization Benefit**: Conversely, if your designer decides all alerts must have a `shadow-lg` and an extra `border-l-4`, you don't have to fight a library API. You simply open `components/ui/alert.tsx`, add the Tailwind utility classes directly to the file, and save it.
+
+Would you like to see how a **more complex interactive component** (like a Dropdown or Dialog) handles underlying library dependencies when copy-pasted?
+
+You said: what components do they have
+
+The official **[shadcn/ui component registry](https://ui.shadcn.com/docs/components)** provides a broad, comprehensive ecosystem of blocks divided into logical UI layers. They range from basic form primitives to highly complex data layouts. [link](https://ui.shadcn.com/docs/components)
+
+The complete suite of officially supported components includes: [link](https://ui.shadcn.com/docs/components)
+
+1\. Forms & Input Controls
+
+These components manage user data entry and integrate with validation schemas like Zod: [link](https://dev.to/whoffagents/shadcn-ui-in-2026-the-component-library-that-changed-how-we-build-uis-296o)
+
+- **Input, Textarea, & Label**: Basic HTML form entry fields.
+- **Input OTP**: A specialized, segmented field for handling one-time passwords.
+- **Select & Native Select**: Custom and browser-native dropdown selectors.
+- **Combobox & Command**: An advanced search-and-select palette driven by Cmd+K menu logic.
+- **Checkbox, Switch, & Radio Group**: Standard toggle and exclusive multi-option selectors.
+- **Slider**: A track control used to choose single numbers or numeric ranges.
+- **Date Picker & Calendar**: Inline or popover interactive calendar pickers. [link](https://ui.shadcn.com/docs/components)
+
+2\. Overlays & Modals
+
+These layout primitives handle conditional context changes, built on top of accessible Radix UI layers:
+
+- **Dialog & Alert Dialog**: Modal focus traps for standard popups or critical, destructive confirmation prompts.
+- **Drawer**: Slid-up overlays originating from the bottom of the viewport.
+- **Sheet**: Slide-out panels typically emerging from the left or right side (common for mobile menus).
+- **Popover**: Floating content positioned relative to a trigger element.
+- **Hover Card**: Preview panels displayed when a user hovers over a text link.
+- **Tooltip**: Micro-contextual hints appearing on element focus or hover. [link](https://ui.shadcn.com/docs/components)
+
+3\. Layout, Data, & Feedback
+
+These structures display heavy datasets or provide application context updates:
+
+- **Data Table & Table**: Powerful tabular views that combine standard grid tags with complex sorting via TanStack Table.
+- **Card**: A clean content wrapper utilizing flexible `CardHeader`, `CardContent`, and `CardFooter` sub-components.
+- **Accordion & Collapsible**: Expandable panels useful for compact vertical layouts or FAQ items.
+- **Carousel**: Fully navigable sliding touch items for multi-image displays.
+- **Chart**: Flexible configurations built for interactive dashboard metrics.
+- **Tabs**: Tabbed menu rows for switching views in a single interface window.
+- **Scroll Area**: Custom-styled scrollbars designed to replace messy browser defaults.
+- **Resizable**: Draggable divider panes to create multi-panel dashboard splits.
+- **Alert**: Inline notification boxes designed for status banners.
+- **Toast & Sonner**: Corner pop-up message banners used to trigger temporary system updates. [link](https://ui.shadcn.com/docs/components)
+
+4\. Navigation & Structure
+
+These control high-level web routing and site layout frameworks:
+
+- **Navigation Menu & Menubar**: Desktop-class nested menu dropdown columns.
+- **Context Menu**: Rich dropdown lists tied to a cursor's secondary click action.
+- **Breadcrumb**: Text pathways showing hierarchical page location.
+- **Sidebar**: A deep layout framework used to instantiate collapsing application dashboards.
+- **Pagination**: Interactive page index lists for breaking up heavy text loads. [link](https://ui.shadcn.com/docs/components)
+
+5\. Display Primitives
+
+Small stylistic items to enhance general UI details:
+
+- **Avatar & Badge**: User visual shapes and colored pill tags for item counting.
+- **Skeleton & Spinner**: Loading placeholder blocks and rotation indicators used during data fetching.
+- **Separator**: Clean dividing lines to isolate stacked component content.
+- **Button & Button Group**: Highly reusable interactive triggers loaded with visual state variations.
+- **Kbd**: Visual indicators representing hotkeys and keyboard combinations.
+- **Aspect Ratio**: Resizing boxes that retain forced layout dimensions across viewports. [link](https://ui.shadcn.com/)
+
+Are you hoping to see how a **particular component category** is written, or do you need help setting up the **[shadcn CLI](https://ui.shadcn.com/docs)** to install one of these in your workspace?
+
+- [link](https://ui.shadcn.com/docs/components)\
+  Components - shadcn/ui\
+  Components - shadcn/ui. Menu. Components. Accordion. Alert. Alert Dialog. Aspect Ratio. Avatar. Badge. Breadcrumb. Button Group. C...\
+  Shadcn
+- [link](https://shadcnspace.com/components)\
+  257+ Shadcn Components and Variants\
+  js apps faster with production-ready components. \* Accordion. 8. View All. \* Alert. 6. View All. \* Animated List. 3. +2 New. View ...\
+  Shadcn Space
+- [link](https://ui.shadcn.com/)\
+  The Foundation for your Design System - shadcn/ui\
+  A set of beautifully designed components that you can customize, extend, and build on. Start here then make it your own. Open Sour...\
+  Shadcn
+
+Show all
+
+#
+
+is shadcn a human
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">Yes, </span><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">shadcn</span></span> is a real human being.</span></strong></mark> \[[1](https://x.com/grok/status/1963038874315456603)]
+
+While many people know "shadcn" as the incredibly popular open-source UI component collection ([shadcn/ui](https://ui.shadcn.com/docs)), the name actually belongs to the developer who created it. \[[1](https://ui.shadcn.com/docs), [2](https://x.com/grok/status/1963038874315456603)]
+
+Who is shadcn?
+
+- **Real Identity**: His real name is **Shadab Ahmed**.
+- **Profession**: He is a highly regarded software engineer and UI/UX designer.
+- **Current Role**: He works as a design engineer at [Vercel](https://vercel.com/academy/shadcn-ui/why-shadcn-ui-is-different), the platform behind Next.js. \[[1](https://www.obra.studio/blog/2025/05/26/what-is-shadcn-ui/), [2](https://x.com/grok/status/1963038874315456603)]
+
+Why do people ask?
+
+Because he maintains a relatively low-profile, pseudonymous online presence, and because his tools are heavily integrated into AI-assisted coding platforms (like Vercel's v0), tech circles frequently joke or wonder if the account is an AI entity. However, fellow developers who interact with him confirm he is just a normal, exceptionally talented human who actively replies to the community on GitHub and social media. \[[1](https://www.reddit.com/r/reactjs/comments/1k1gew5/shadcn%5Fis%5Fgreat%5Fbut%5Fi%5Fquestion%5Fthe%5Fgithub%5Factivity/), [2](https://ui.shadcn.com/docs), [3](https://x.com/rauchg/status/1784710187766747256), [4](https://x.com/grok/status/1963038874315456603)]
+
+Are you looking into **using the shadcn/ui library** for a project, or were you just curious about the **person behind the code**?
+
+- [link](https://www.reddit.com/r/reactjs/comments/1k1gew5/shadcn%5Fis%5Fgreat%5Fbut%5Fi%5Fquestion%5Fthe%5Fgithub%5Factivity/)\
+  Shadcn is great but i question the github activity : r/reactjs - Reddit\
+  Apr 17, 2025 — \* JohntheAnabaptist. • 1y ago. Honestly if vercel is going to snatch up shadcn and use it for v0, they should invest a bit of time...\
+  Reddit·r/reactjs
+- [link](https://x.com/rauchg/status/1784710187766747256)\
+  Is @shadcn human or AI?\
+  Apr 28, 2024 — Is @shadcn human or AI? 🧐 Guillermo Rauch. rauchg. Apr 28. Is @shadcn human or AI? 🧐 andre. andre0x0. Apr 28. This is really coo...\
+  X·rauchg
+- [link](https://x.com/grok/status/1963038874315456603)\
+  Shadab Ahmed, a software engineer and UI/UX designer ...\
+  Sep 3, 2025 — The person described is shadcn, creator of shadcn/ui—a system for building customizable UI component libraries on React, Radix, an...\
+  X·grok
+
+Show all
+
+You said: so they simply creates a library wo having a name?
+
+**No, he named the library after his own username.**
+
+When he built the project, he attached his handle to it, giving it the official name [shadcn/ui](https://ui.shadcn.com/docs).
+
+Where does the name "shadcn" come from?
+
+- **The "shad" part**: This comes directly from his actual first name, **Shad**ab.
+- **The "cn" part**: While he hasn't explicitly documented its exact meaning, in web development ".cn" or "cn" is frequently used as shorthand for **"className"** (a standard property used to style components in React).
+
+It is actually a "No-Name" library in a different way
+
+There is a clever irony to your question. While the project _does_ have a name, it is famous for **not having a traditional library name on your computer**.
+
+Unlike normal software packages, you don't actually download and install an external npm package called `shadcn` into your code. Instead, you use a tool to copy the raw code directly into your own project files. Because of this unique design, developers often joke that it isn't a component library at all—it's just a collection of beautifully written code that becomes entirely yours the moment you use it. [link](https://ui.shadcn.com/docs)
+
+Are you planning to add shadcn/ui to a **React or Next.js project**, or are you evaluating different **UI frameworks** right now? [link](https://blog.logrocket.com/shadcn-ui-adoption-guide/)
+
+- [link](https://ui.shadcn.com/docs)\
+  Introduction - Shadcn UI\
+  It is how you build your component library. You know how most traditional component libraries work: you install a package from NPM...\
+  Shadcn
+- [link](https://vercel.com/academy/shadcn-ui/why-shadcn-ui-is-different)\
+  Why shadcn/ui is Different | Vercel Academy\
+  1\. Copy, Don't Install. Traditional libraries create dependency relationships. shadcn/ui creates ownership relationships. When you...\
+  Vercel
+- [link](https://blog.logrocket.com/shadcn-ui-adoption-guide/)\
+  Shadcn UI adoption guide: Overview, examples, and alternatives\
+  Feb 2, 2026 — What is Shadcn UI? Shadcn UI is not a component library or UI framework. It's “a collection of reusable components that we can cop...\
+  LogRocket Blog
+
+Show all
+
+You said: i mean it does not have a real name of its own
+
+Ah, got it! Yes, you are completely right. **The project itself does not have an independent, creative name.**
+
+Unlike other software projects that get distinct names (like _Bootstrap_, _Material UI_, _Chakra_, or _DaisyUI_), Shadab Ahmed literally just put his personal internet handle on the folder and called it a day. [link](https://www.reddit.com/r/reactjs/comments/1oeobkr/i%5Fdont%5Funderstand%5Fwhy%5Fso%5Fmany%5Fpeople%5Fuse%5Fshadcn%5Fui/)
+
+He did this because of how the project started:
+
+- **It was never meant to be a brand**: It began as his personal, open-source portfolio of components that he liked using.
+- **It was just a GitHub repository**: When you publish code on GitHub under a personal account, the web link naturally takes the format `://github.com`. He hosted it under his name (`shadcn`), and named the folder `ui`.
+- **The community turned the handle into the name**: When developers started sharing it online, instead of saying _"look at this un-named UI collection by Shadab"_, they simply said _"look at shadcn/ui."_ Eventually, everyone shortened it to just "shadcn." [link](https://www.reddit.com/r/reactjs/comments/1oeobkr/i%5Fdont%5Funderstand%5Fwhy%5Fso%5Fmany%5Fpeople%5Fuse%5Fshadcn%5Fui/)
+
+So you are spot on—the code has taken over the web, but it literally just goes by the creator's internet nickname!
+
+Are you looking to use it because you like its clean, minimal look, or are you just fascinated by how a random side project became this massive?
+
+- [link](https://www.reddit.com/r/reactjs/comments/1oeobkr/i%5Fdont%5Funderstand%5Fwhy%5Fso%5Fmany%5Fpeople%5Fuse%5Fshadcn%5Fui/)\
+  I don't understand, why so many people use Shadcn ui? - Reddit\
+  Oct 24, 2025 — It's not a library, so don't worry about derogating any library. Its' GitHub says that you can use it to make your own component l...\
+  Reddit·r/reactjs
+- [link](https://medium.com/@genildocs/the-shadcn-revolution-why-developers-are-abandoning-traditional-component-libraries-a9a4747935d5)\
+  The shadcn Revolution: Why Developers Are Abandoning ... - Medium\
+  Jul 2, 2025 — What makes shadcn fundamentally different. Traditional component libraries operate like black boxes — you install a package, impor...\
+  Medium·Blueprintblog
+- [link](https://daisyui.com/alternative/shadcn/)\
+  shadcn/ui alternative in 2026 — daisyUI Tailwind CSS Component ...\
+  daisyUI is a better shadcn/ui Alternative Its method relies on CSS classes, unlike shadcn/ui which often uses JavaScript component...\
+  daisyUI
+
+#
+
+compare dialog modal in radix ui and react aria
+
+When choosing between [Radix UI](https://www.radix-ui.com/primitives/docs/components/dialog) and React Aria Components for a dialog modal, the decision comes down to <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>API composition vs. extreme accessibility strictness</strong></mark>. Both are high-quality, headless UI libraries that handle focus trapping, escape-key closing, and screen-reader semantics out of the box. However, they differ significantly in architecture, styling hooks, and mobile interaction handling. \[[1](https://www.reddit.com/r/reactjs/comments/1gbq7yt/react%5Faria%5Fvs%5Fradix%5Fui%5Fwhich%5Fheadless%5Fui/), [2](https://argos-ci.com/blog/react-aria-migration), [3](https://news.ycombinator.com/item?id=35848421), [4](https://github.com/storybookjs/storybook/issues/32253), [5](https://react-aria.adobe.com/), [6](https://www.reddit.com/r/nextjs/comments/1css8k5/why%5Fis%5Freactaria%5Fnot%5Ftalked%5Fabout%5Fas%5Fmuch%5Fas/)]
+
+Core Differences Overview
+
+| Feature \[[1](https://www.youtube.com/watch?v=VM6YRrUsnUY\&t=131), [2](https://github.com/adobe/react-spectrum/issues/5126), [3](https://www.reddit.com/r/reactjs/comments/1d1m324/migrating%5Ffrom%5Fradix%5Fto%5Freact%5Faria%5Fenhancing/), [4](https://github.com/radix-ui/primitives/discussions/1997), [5](https://reactspectrum.blob.core.windows.net/reactspectrum/bf57013c7ad271a5655b4a77d7950bcffc2c82d1/docs/react-aria/react-aria-components.html), [6](https://github.com/radix-ui/primitives/issues/2122), [7](https://www.reddit.com/r/reactjs/comments/1989sd3/radixui%5Fvs%5Freact%5Faria%5Fvs%5Fheadless%5Fui/), [8](https://react-aria.adobe.com/blog/introducing-react-spectrum), [9](https://argos-ci.com/blog/react-aria-migration), [10](https://react-aria.adobe.com/)] | Radix UI (Dialog)                                             | React Aria Components (Modal/Dialog)                                            |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| **API Philosophy**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | Compound components with HTML-like tree structure.            | Decoupled model architectures split into structural Overlays and inner Dialogs. |
+| **Accessibility**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | Halves compliance bugs, but allows bypassing some rules.      | Strict compliance with W3C ARIA specifications, no bypasses allowed.            |
+| **Styling States**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | Leverages `data-[state]` attributes (e.g., `open`, `closed`). | Uses native render props, CSS variables, and interaction attributes.            |
+| **Mobile & Touch**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | Basic click and portal behavior.                              | Advanced device normalizations for virtual keyboards and touch events.          |
+| **Ecosystem Ecosystem**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | Native part of shadcn/ui starters.                            | Built by Adobe; paired with powerful state hooks (`useDialog`).                 |
+
+***
+
+Component Anatomy & Structure
+
+The architectural layout reveals different ways of wrapping markup.
+
+Radix UI Structure
+
+Radix tightly binds the overlay and content container under a centralized root. \[[1](https://github.com/radix-ui/primitives/discussions/1997)]
+
+tsx
+
+```
+import * as Dialog from '@radix-ui/react-dialog';
+
+export const RadixModal = () => (
+  <Dialog.Root>
+    <Dialog.Trigger>Open</Dialog.Trigger>
+    <Dialog.Portal>
+      <Dialog.Overlay />
+      <Dialog.Content>
+        <Dialog.Title>Modal Title</Dialog.Title>
+        <Dialog.Description>Description</Dialog.Description>
+        <Dialog.Close>Close</Dialog.Close>
+      </Dialog.Content>
+    </Dialog.Portal>
+  </Dialog.Root>
+);
+```
+
+Use code with caution.
+
+React Aria Structure
+
+React Aria splits the behavior into two parts: the **Modal** (which manages the overlay, portal, scroll locking, and dimming effect) and the **Dialog** (which manages the semantics, labeling, and inside content). \[[1](https://github.com/adobe/react-spectrum/issues/5126), [2](https://vascular.co.il/react-modal-accessible-dialog-component-tutorial-examples/), [3](https://www.nutrient.io/blog/building-accessible-modals-with-react/), [4](https://www.marquerestore.com/react-modal-getting-started-accessible-examples-styling/), [5](https://www.telerik.com/blogs/building-interactive-dialogs-kendoreact)]
+
+tsx
+
+```
+import { Dialog, Modal, Button, DialogTrigger, Heading } from 'react-aria-components';
+
+export const AriaModal = () => (
+  <DialogTrigger>
+    <Button>Open</Button>
+    <Modal>
+      <Dialog>
+        <Heading slot="title">Modal Title</Heading>
+        <p>Description</p>
+        <Button slot="close">Close</Button>
+      </Dialog>
+    </Modal>
+  </DialogTrigger>
+);
+```
+
+Use code with caution.
+
+***
+
+Detailed Comparison Points
+
+1\. Styling Mechanics and Tailoring
+
+- **Radix UI**: Uses data-attributes like `data-state="open"`. This structure works flawlessly with Tailwind CSS variants via `data-[state=open]:animate-fade-in`. It also plays nicely with animation tools like Framer Motion.
+- **React Aria**: Provides native Render Props. It can inject boolean flags directly into your styling logic (e.g., ). It also synthesizes standard user actions by outputting custom attributes like `data-hovered` or `data-pressed` to clean up browser inconsistencies. \[[1](https://github.com/radix-ui/primitives/discussions/1997), [2](https://refine.dev/blog/radix-ui/), [3](https://github.com/adobe/react-spectrum/issues/5126), [4](https://www.reddit.com/r/reactjs/comments/1d1m324/migrating%5Ffrom%5Fradix%5Fto%5Freact%5Faria%5Fenhancing/)]
+
+2\. Strictness of Accessibility
+
+- **Radix UI**: Delivers excellent accessibility but prioritizes developer flexibility. You can skip adding titles or headers inside the modal, or leave interactive outside triggers unbound without throwing runtime structural validation warnings.
+- **React Aria**: Adobe enforces relentless accessibility checks. If your is missing a screen-reader heading link (`slot="title"` or an `aria-labelledby` property), it fails standard layout assumptions. It handles advanced details like preventing background page interactions and managing complex cross-device virtual keyboard offsets natively. \[[1](https://argos-ci.com/blog/react-aria-migration), [2](https://github.com/storybookjs/storybook/issues/32253), [3](https://react-aria.adobe.com/), [4](https://refine.dev/blog/radix-ui/), [5](https://shadcnspace.com/blog/radix-ui-vs-base-ui)]
+
+3\. Ecosystem & Library Weight
+
+- **Radix UI**: Features a light code bundle since you can install only the exact component primitive you need (`@radix-ui/react-dialog`). Because of its modular layout, it acts as the default underlying framework for tools like `shadcn/ui`.
+- **React Aria**: Requires importing broader shared state modules (`react-stately` and `react-aria`). The initial bundle payload is slightly larger, but it supplies a single, cohesive foundation for complex setups like mobile drawers, date pickers, or color inputs across your application. \[[1](https://www.reddit.com/r/reactjs/comments/1989sd3/radixui%5Fvs%5Freact%5Faria%5Fvs%5Fheadless%5Fui/), [2](https://react-aria.adobe.com/blog/introducing-react-spectrum), [3](https://www.reddit.com/r/reactjs/comments/1gbq7yt/react%5Faria%5Fvs%5Fradix%5Fui%5Fwhich%5Fheadless%5Fui/), [4](https://www.pkgpulse.com/guides/react-aria-vs-headless-ui-vs-radix-primitives-2026), [5](https://www.reddit.com/r/reactjs/comments/1989sd3/radixui%5Fvs%5Freact%5Faria%5Fvs%5Fheadless%5Fui/)]
+
+***
+
+Recommendation Summary
+
+- **Choose Radix UI if**: You are using Tailwind CSS, want to use copy-paste templates like `shadcn/ui`, require a smaller bundle footprint, or want to quickly build custom application views without rigorous design constraints.
+- **Choose React Aria if**: You are building a cross-platform corporate design system, need internationalization support, require high compliance with accessibility mandates, or want rich tablet and mobile touch overrides out of the box. \[[1](https://www.reddit.com/r/reactjs/comments/1989sd3/radixui%5Fvs%5Freact%5Faria%5Fvs%5Fheadless%5Fui/), [2](https://www.pkgpulse.com/guides/react-aria-vs-headless-ui-vs-radix-primitives-2026), [3](https://www.reddit.com/r/reactjs/comments/1gbq7yt/react%5Faria%5Fvs%5Fradix%5Fui%5Fwhich%5Fheadless%5Fui/), [4](https://argos-ci.com/blog/react-aria-migration)]
+
+To help tailor this comparison, could you share what **styling method** (e.g., Tailwind, CSS Modules) you plan to use and whether your app needs specialized **mobile touch features**?
+
+- [link](https://www.reddit.com/r/reactjs/comments/1989sd3/radixui%5Fvs%5Freact%5Faria%5Fvs%5Fheadless%5Fui/)\
+  Radix-ui vs React Aria vs Headless UI : r/reactjs - Reddit\
+  Jan 16, 2024 — I prefer radix-ui via shadcn. Haven't used React Aria but I've heard good things. Headless-ui is also a valid choice and has a lot...\
+  Reddit·r/reactjs
+- [link](https://www.reddit.com/r/reactjs/comments/1gbq7yt/react%5Faria%5Fvs%5Fradix%5Fui%5Fwhich%5Fheadless%5Fui/)\
+  React Aria vs Radix UI: Which Headless UI Component ...\
+  Oct 25, 2024 — The nice thing about headless ui libs is you can mix and match. We use radix for most and react-aria for where it's lacking, like ...\
+  Reddit·r/reactjs
+- [link](https://github.com/radix-ui/primitives/discussions/1997)\
+  Why does the modal dialog allow dismissal by clicking outside by ...\
+  Oct 18, 2024 — on Apr 2, 2024. ... An example component that uses the Radix Dialog, and avoids the default event behavior: import React from "rea...\
+  GitHub
+
+Show all
