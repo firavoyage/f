@@ -131,6 +131,16 @@ saba https://www.youtube.com/@SamekoSaba
 
 ---
 
+component libraries
+
+https://ionicframework.com/docs/components
+
+https://mui.com/material-ui/react-alert/
+
+https://chakra-ui.com/docs/components/concepts/overview
+
+---
+
 adwaita
 
 https://github.com/romgrk/web-toolkit <!-- https://github.com/ncpa0cpl/adwaita-web -->
@@ -150,6 +160,8 @@ https://www.figma.com/community/file/1467967362512102193
 breeze
 
 https://develop.kde.org/hig/
+
+https://kde.org/plasma-desktop/
 
 https://github.com/KDE/kirigami
 
