@@ -366,6 +366,9 @@ float: <!-- music -->
 - interpret rabbit hole
 - interpret tell your world
 - interpret lagtrain inabakumori
+- interpret bug kairiki bear
+- interpret roki mikito p
+- interpret darling dance kairiki bear
 
 philosophy:
 
