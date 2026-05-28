@@ -1,5 +1,7 @@
 # .
 
+<!-- upd 2026.05.28: w a laptop... -->
+
 ```sh
 adb shell
 ```
