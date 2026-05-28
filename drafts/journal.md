@@ -21366,7 +21366,7 @@ invent.kde.org/documentation/develop-kde-org
 >
 > back in olden that'd be called Being Melancholic
 
-01 20 check `关于“活着”，我们问了问余华`.
+<!-- 01 20 check `关于“活着”，我们问了问余华`. -->
 
 <!--
 
@@ -21375,6 +21375,12 @@ invent.kde.org/documentation/develop-kde-org
 不理解為什麼要用這樣的講話方式 10歲小朋友其實也是 很不像個人 哪怕是演講 也沒有人聽得下去 只有不舒服
 
 -->
+
+12 40 dl `inabakumori`. 13 00 dl `Kairiki bear`.
+
+13 20 clone some repos from gnome builder.
+
+<!-- the app freezes when cloning a repo and creates an empty yet considered valid project if quitted. rather use git cli. -->
 
 
 
