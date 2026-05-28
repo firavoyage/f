@@ -14,7 +14,7 @@ stick to cwd. do not touch anything outside.
 2. write code, complete todos
 3. test
 4. if tests fail, search for official docs or community guides.
-5. write down observations possibly helpful in the future on `notes.md`.
+5. write down observations possibly helpful in the future on `notes.md`. if needed, categorize like `notes_foo.md`, `notes_bar.md` to be specific.
 
 ## search
 
