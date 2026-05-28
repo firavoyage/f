@@ -1,4 +1,10 @@
-how to remove icons like do not disturb on one ui
+# .
+
+```sh
+adb shell
+```
+
+# how to remove icons like do not disturb on one ui
 
 May 21, 2026
 
