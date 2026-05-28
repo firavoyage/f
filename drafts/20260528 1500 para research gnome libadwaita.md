@@ -798,3 +798,50 @@ Are you looking to **contribute documentation updates**, or do you need to find 
   GNOME
 
 Show all
+
+# adwaita sans
+
+5:40 AM
+
+**Adwaita Sans** is the <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">default user interface (UI) typeface for the <strong>GNOME desktop environment</strong></mark>, officially introduced in early 2025 alongside GNOME 48. It replaced **Cantarell**, which had served as GNOME's default interface font for 15 years. \[[1](https://en.wikipedia.org/wiki/Adwaita%5F%28design%5Flanguage%29), [2](https://www.phoronix.com/news/GNOME-48-Adwaita-Sans), [3](https://www.youtube.com/watch?v=YOLmM5GlG9s\&t=7)]
+
+Origins and Design
+
+Adwaita Sans is not a completely scratch-built font; it is a **customized variation of Inter**, the highly popular open-source typeface designed by Rasmus Andersson. GNOME developers transitioned away from Cantarell due to its lack of maintenance, which caused layout and rendering flaws on modern high-DPI, high-resolution screens. \[[1](https://packages.fedoraproject.org/pkgs/adwaita-fonts/adwaita-sans-fonts), [2](https://developer.gnome.org/hig/guidelines/typography.html), [3](https://www.youtube.com/watch?v=YOLmM5GlG9s\&t=7)]
+
+The font includes intentional adjustments tailored specifically for operating system interfaces: \[[1](https://www.youtube.com/watch?v=YOLmM5GlG9s\&t=7)]
+
+- **Disambiguation**: The lowercase letter `l` features a design tweak to distinguish it easily from the uppercase `I` and the number `1`.
+- **Feature Controls**: It disables or modifies specific automatic ligatures (`calt`) present in standard Inter to avoid unintended visual bugs in arbitrary system strings and application text.
+- **Display Optimization**: It provides polished, modern typography optimized specifically for legibility across variable desktop sizing and high-density screens. \[[1](https://blogs.gnome.org/monster/introducing-adwaita-fonts/), [2](https://github.com/clearlinux/distribution/issues/3299), [3](https://blog.typekit.com/2012/08/02/source-sans-pro/), [4](https://www.printmag.com/featured/flawed-typefaces/), [5](https://www.youtube.com/watch?v=YOLmM5GlG9s\&t=7)]
+
+The Adwaita Font Family
+
+Adwaita Sans is distributed under the SIL Open Font License 1.1 as part of the broader `adwaita-fonts` package. It is natively paired with: \[[1](https://gitlab.gnome.org/GNOME/adwaita-fonts), [2](https://github.com/flutter/flutter/issues/179141), [3](https://packages.fedoraproject.org/pkgs/adwaita-fonts/adwaita-sans-fonts)]
+
+- **Adwaita Mono**: A default monospaced font based on a customized build of **Iosevka**, designed to match the weight and visual style of Adwaita Sans for terminal and code use. \[[1](https://thisweek.gnome.org/posts/2025/01/twig-185), [2](https://discourse.gnome.org/t/185-adwaita-sans/26597), [3](https://en.wikipedia.org/wiki/Adwaita%5F%28design%5Flanguage%29), [4](https://packages.fedoraproject.org/pkgs/adwaita-fonts/adwaita-sans-fonts)]
+
+Availability and Installation
+
+The font is included by default in distributions shipping GNOME 48 or newer, such as Fedora. If you are using an older version of GNOME or a different desktop environment, you can integrate it manually: \[[1](https://packages.fedoraproject.org/pkgs/adwaita-fonts/adwaita-sans-fonts), [2](https://www.phoronix.com/news/GNOME-48-Adwaita-Sans), [3](https://www.youtube.com/watch?v=YOLmM5GlG9s\&t=7)]
+
+- **Source Files**: Download TrueType (`.ttf`) files directly from the official [GNOME GitLab Repository](https://gitlab.gnome.org/GNOME/adwaita-fonts).
+- **Web Use**: Self-host it for web applications using the package hosted on [Fontsource](https://fontsource.org/fonts/adwaita-sans). \[[1](https://github.com/GNOME/adwaita-fonts), [2](https://fontsource.org/fonts/adwaita-sans), [3](https://gitlab.gnome.org/GNOME/adwaita-fonts)]
+
+Would you like help **installing Adwaita Sans** on a specific Linux distribution, or are you looking to customize your **GNOME interface font settings**?
+
+- [link](https://gitlab.gnome.org/GNOME/adwaita-fonts)\
+  Adwaita Fonts - GitLab - GNOME\
+  Project information. The typefaces for GNOME. 86 Commits. 1 Branch. 5 Tags. 4 Releases. SIL Open Font License 1.1. July 10, 2024. ...\
+  GNOME
+- [link](https://blogs.gnome.org/monster/introducing-adwaita-fonts/)\
+  Introducing Adwaita Fonts - GNOME Blogs\
+  Inter was quite a straightforward choice, due to its modern design, active maintenance, and font feature support. It might be the ...\
+  GNOME Blogs
+- [link](https://en.wikipedia.org/wiki/Adwaita%5F%28design%5Flanguage%29)\
+  Adwaita (design language) - Wikipedia\
+  With the release of the GNOME 48 Alpha release in January 24th, 2025, it was announced that Cantarell would be replaced as the def...\
+  Wikipedia
+
+Show all
+
