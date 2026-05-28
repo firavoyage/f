@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <object class="GtkBox" id="widget">
+    <property name="spacing">6</property>
+    <property name="margin-top">18</property>
+    <property name="margin-bottom">18</property>
+    <child>
+      <object class="GtkSwitch">
+        <property name="active">true</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkSwitch">
+        <property name="active">false</property>
+      </object>
+    </child>
+  </object>
+</interface>

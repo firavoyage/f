@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <object class="GtkWindow" id="widget">
+    <property name="title">Window</property>
+    <property name="default-width">360</property>
+    <property name="default-height">360</property>
+    <property name="title">Symbolic Placeholder</property>
+    <property name="titlebar">
+      <object class="GtkHeaderBar"/>
+    </property>
+    <property name="child">
+      <object class="AdwStatusPage">
+        <property name="icon-name">emoji-objects-symbolic</property>
+        <property name="title">Placeholder Heading</property>
+        <property name="description">Optional description text.</property>
+      </object>
+    </property>
+  </object>
+</interface>

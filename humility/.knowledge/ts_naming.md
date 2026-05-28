@@ -1,4 +1,4 @@
-## 0.0
+# 0.0
 
 - naming:
   - snake case
@@ -6,7 +6,7 @@
   - for react components and their filenames, pascal case
   - for filenames, lowercase
 
-## 0.1
+# 0.1
 
 - naming:
   - snake case

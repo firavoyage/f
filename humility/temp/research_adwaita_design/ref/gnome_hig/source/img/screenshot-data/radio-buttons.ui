@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <object class="GtkBox" id="widget">
+    <property name="spacing">6</property>
+    <property name="margin-top">18</property>
+    <property name="margin-bottom">18</property>
+    <property name="orientation">vertical</property>
+    <child>
+      <object class="GtkCheckButton" id="radio1">
+        <property name="active">true</property>
+        <property name="label">Lorem ipsum dolor</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkCheckButton" id="radio2">
+        <property name="active">false</property>
+        <property name="label">Sed ut perspiciatis</property>
+        <property name="group">radio1</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkCheckButton" id="radio3">
+        <property name="inconsistent">true</property>
+        <property name="label">Iucundum est propterea</property>
+        <property name="group">radio1</property>
+      </object>
+    </child>
+  </object>
+</interface>

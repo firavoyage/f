@@ -1,4 +1,4 @@
-## 0.0
+# 0.0
 
 - use:
   - ubuntu
@@ -11,7 +11,7 @@
   - react and parceljs (command: `parcel serve 'app.html' --open --dist-dir .build --cache-dir .build/.parcel-cache`)
   - tmux
 
-## 0.1
+# 0.1
 
 - use:
   - ubuntu

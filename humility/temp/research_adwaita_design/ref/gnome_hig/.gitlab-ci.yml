@@ -1,0 +1,35 @@
+# SPDX-FileCopyrightText: 2021 GNOME Foundation
+#
+# SPDX-License-Identifier: CC0-1.0
+
+stages:
+ - check
+ - deploy
+
+image: fedora:39
+
+build:
+  stage: check
+  needs: []
+  script:
+    - dnf install -y python3-pip
+    - pip3 install --upgrade -r requirements.txt
+    - sphinx-build -b html source build
+    - mv build/_static/404.html build/404.html
+    - mkdir _docs
+    - mv build/* _docs/
+  artifacts:
+    paths:
+      - _docs
+
+pages:
+  stage: deploy
+  needs: ['build']
+  script:
+    - mv _docs public
+  artifacts:
+    paths:
+      - public
+  only:
+    - main
+

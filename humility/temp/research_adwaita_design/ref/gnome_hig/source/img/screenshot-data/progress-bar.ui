@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <object class="GtkProgressBar" id="widget">
+    <property name="margin-top">18</property>
+    <property name="margin-bottom">18</property>
+    <property name="fraction">0.5</property>
+    <property name="width-request">400</property>
+    <property name="show-text">True</property>
+  </object>
+</interface>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <object class="AdwSpinnerPaintable" id="spinner1"/>
+  <object class="AdwSpinnerPaintable" id="spinner2"/>
+  <requires lib="libadwaita" version="1.0"/>
+    <object class="GtkBox" id="widget">
+    <property name="spacing">18</property>
+    <property name="margin-top">18</property>
+    <property name="margin-bottom">18</property>
+    <child>
+      <object class="GtkImage">
+        <property name="paintable">spinner1</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkImage">
+        <property name="paintable">spinner2</property>
+        <property name="pixel-size">64</property>
+      </object>
+    </child>
+  </object>
+</interface>

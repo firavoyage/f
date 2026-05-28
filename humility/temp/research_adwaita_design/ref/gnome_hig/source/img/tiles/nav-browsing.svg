@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   height="140"
+   width="230"
+   version="1.1"
+   id="svg25360"
+   sodipodi:docname="nav-browsing.svg"
+   inkscape:version="1.3.2 (091e20ef0f, 2023-11-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs25364">
+    <linearGradient
+       id="linearGradient1"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#33d17a;stop-opacity:1"
+         offset="0"
+         id="stop1" />
+      <stop
+         style="stop-color:#8ff0a4;stop-opacity:1"
+         offset="1"
+         id="stop2" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1"
+       id="linearGradient2"
+       x1="175"
+       y1="125"
+       x2="40"
+       y2="25"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <sodipodi:namedview
+     id="namedview25362"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     showgrid="false"
+     inkscape:current-layer="svg25360"
+     inkscape:zoom="1.3271739"
+     inkscape:cx="-58.771499"
+     inkscape:cy="137.1335"
+     inkscape:window-width="1920"
+     inkscape:window-height="1011"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       id="grid1"
+       units="px"
+       originx="0"
+       originy="0"
+       spacingx="1"
+       spacingy="1"
+       empcolor="#3f3fff"
+       empopacity="0.25098039"
+       color="#3f3fff"
+       opacity="0.1254902"
+       empspacing="5"
+       dotted="false"
+       gridanglex="30"
+       gridanglez="30"
+       visible="false" />
+  </sodipodi:namedview>
+  <rect
+     style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:url(#linearGradient2);fill-opacity:1;stroke:none;stroke-width:18;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:26.4;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
+     width="230"
+     height="140"
+     x="0.001"
+     ry="20.210613"
+     rx="20.210613"
+     id="rect25350"
+     y="0" />
+  <g
+     transform="matrix(3.77953,0,0,3.77953,-2305.0022,-430)"
+     id="g25358">
+    <rect
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:0.36000001;stroke:none;stroke-width:4.7625;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:6.985;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
+       width="30.248394"
+       height="23.813"
+       x="613.8335"
+       y="123.031"
+       ry="2.1170001"
+       rx="2.1170003"
+       id="rect25352" />
+    <rect
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:0.50999999;stroke:none;stroke-width:4.7625;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:6.985;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
+       width="29.103817"
+       height="23.813"
+       x="624.41687"
+       y="120.385"
+       ry="2.1170001"
+       rx="2.1170001"
+       id="rect25354" />
+    <rect
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:4.7625;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:6.985;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
+       width="30.426905"
+       height="23.813"
+       x="636.32306"
+       y="117.74"
+       ry="2.1170001"
+       rx="2.1170001"
+       id="rect25356" />
+  </g>
+</svg>

@@ -21382,7 +21382,7 @@ invent.kde.org/documentation/develop-kde-org
 
 <!-- the app freezes when cloning a repo and creates an empty yet considered valid project if quitted. rather use git cli. -->
 
-17 00 revise `contributing.md` agentic workflow. categorize into knowledge.
+17 00 revise `contributing.md` agentic workflow. categorize into knowledge. 18 20
 
 
 

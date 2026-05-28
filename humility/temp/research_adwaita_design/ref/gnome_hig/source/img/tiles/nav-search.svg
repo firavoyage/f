@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   height="140"
+   width="230"
+   version="1.1"
+   id="svg26181"
+   sodipodi:docname="nav-search.svg"
+   inkscape:version="1.3.2 (091e20ef0f, 2023-11-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs26185">
+    <linearGradient
+       id="linearGradient1"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#f98e82;stop-opacity:1;"
+         offset="0"
+         id="stop1" />
+      <stop
+         style="stop-color:#f66151;stop-opacity:1"
+         offset="1"
+         id="stop2" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1"
+       id="linearGradient2"
+       x1="45"
+       y1="105"
+       x2="180"
+       y2="25"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(-230.002,-140)" />
+  </defs>
+  <sodipodi:namedview
+     id="namedview26183"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     showgrid="true"
+     inkscape:current-layer="svg26181"
+     inkscape:zoom="1.8769073"
+     inkscape:cx="203.7927"
+     inkscape:cy="125.20597"
+     inkscape:window-width="1920"
+     inkscape:window-height="1011"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       id="grid1"
+       units="px"
+       originx="0"
+       originy="0"
+       spacingx="1"
+       spacingy="1"
+       empcolor="#3f3fff"
+       empopacity="0.25098039"
+       color="#3f3fff"
+       opacity="0.1254902"
+       empspacing="5"
+       dotted="false"
+       gridanglex="30"
+       gridanglez="30"
+       visible="true" />
+  </sodipodi:namedview>
+  <rect
+     style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:url(#linearGradient2);fill-opacity:0.983652;stroke:none;stroke-width:18;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:26.4;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
+     width="230"
+     height="140"
+     x="-230.00101"
+     ry="20"
+     rx="20"
+     id="rect26173"
+     y="-140"
+     transform="scale(-1)" />
+  <g
+     transform="translate(-2565 -620) scale(3.77953)"
+     id="g26179">
+    <rect
+       width="50.271"
+       height="15.875"
+       x="683.948"
+       y="174.625"
+       rx="7.9375"
+       ry="7.9375"
+       fill="#ffffff"
+       style="opacity:1;stroke-width:0.488966"
+       id="rect26175" />
+    <path
+       style="fill:#f66151;fill-opacity:1;stroke-width:0.529173"
+       d="M692.15 178.858a2.92 2.92 0 0 0-2.914 2.91 2.921 2.921 0 0 0 2.914 2.911 2.9 2.9 0 0 0 1.65-.514l1.949 1.947c.132.138.33.194.515.145a.524.524 0 0 0 .378-.379.527.527 0 0 0-.144-.514l-1.949-1.948a2.89 2.89 0 0 0 .514-1.647 2.92 2.92 0 0 0-2.913-2.91zm0 1.059c1.03 0 1.854.822 1.854 1.852 0 1.03-.825 1.852-1.854 1.852a1.844 1.844 0 0 1-1.854-1.852c0-1.03.823-1.852 1.854-1.852z"
+       id="path26177" />
+  </g>
+</svg>
