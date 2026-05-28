@@ -182,6 +182,7 @@ frontend: <!-- web -->
 - react styling class naming data attr
 - design tokens css variables
 - css variables nesting baseline parceljs auto convert
+- eslint no undefined null
 
 backend:
 
@@ -308,9 +309,11 @@ typography:
 linguistics:
 
 - translation meaning loss
-- describe
+- describe allusion abstraction implication
 - singular they
 - name hykilpikonna etymology
+- para naming prefix etymology paragraph greek hindu
+- proto languages
 
 literature:
 
