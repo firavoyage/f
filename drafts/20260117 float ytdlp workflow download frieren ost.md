@@ -111,6 +111,24 @@ yt-dlp \
   -o "_/Iyowa/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
 ```
 
+Kairiki bear
+
+```sh
+yt-dlp \
+  "https://music.youtube.com/playlist?list=OLAK5uy_lphYXTOFgsCq5mU-_LcEtMCN_LglEcC2E" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  -o "_/Kairiki bear/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
+```
+
+inabakumori
+
+```sh
+yt-dlp \
+  "https://music.youtube.com/playlist?list=OLAK5uy_lZ_AX_diovB-mq-LnIBuKuOTOPkyLI4UI" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  -o "_/inabakumori/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
+```
+
 internet overdose
 
 ```sh
