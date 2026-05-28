@@ -181,6 +181,7 @@ frontend: <!-- web -->
 - parcel vite speed
 - react styling class naming data attr
 - design tokens css variables
+- css variables nesting baseline parceljs auto convert
 
 backend:
 
@@ -539,6 +540,7 @@ glaze:
 para:
 
 - research flutter
+- research gnome libadwaita
 
 leisure:
 

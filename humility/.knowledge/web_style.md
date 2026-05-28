@@ -32,14 +32,14 @@
 ## Modern CSS Features Used
 
 - Custom properties (variables)
-- Container queries
+- Nesting
 - `color-mix()` for dynamic colors
 - `clamp()`, `min()`, `max()` for responsive sizing
 - `@starting-style` for entrance animations
 - View Transitions API
 - CSS masks for spinners
 
-example:
+## Example
 
 ```jsx
 export function Card({ active }) {
