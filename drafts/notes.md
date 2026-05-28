@@ -1162,3 +1162,17 @@ show a message if needed
 
 ---
 
+ui: condense design for power users
+
+google reader provides options. 
+
+- comfortable (default).
+- compact. 
+- cozy. 
+
+chromium legacy (i.e. before md3) context menu is great.
+
+chromium md3... ("tab ui")... well, a bit too mobile oriented
+
+---
+
