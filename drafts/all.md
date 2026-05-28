@@ -300,6 +300,7 @@ ux: <!-- ui/ux design -->
 - accessibility real constrast to human eyes
 - opencode session export
 - kde desktop k naming
+- hermes onboarding feedback transparency
 
 typography:
 

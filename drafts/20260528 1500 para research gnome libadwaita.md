@@ -1,5 +1,7 @@
 <!-- the gnome gitlab non 200 in browser, but is surprisingly clonable -->
 
+<!-- i guess it's not wise to install adwaita sans manually if it's not even builtin inside ubuntu, which adopts gnome adwaita out of the box. -->
+
 # how is gnome libadwaita written. where are the design tokens and components.
 
 **GNOME's Libadwaita is written primarily in C** and leverages **GTK 4** as its core layout engine. It is structured as an extension library that implements the official GNOME Human Interface Guidelines (HIG). In addition to C logic, Libadwaita uses **Sass (SCSS)** to compile its central stylesheet, **XML** for GResource packaging, and standard **CSS variables** or **GTK named colors** for runtime customization. \[[1](https://www.reddit.com/r/gnome/comments/vj2fjq/libadwaita%5Fadwgtk3%5Fgtk%5Fnamed%5Fcolors/), [2](https://github.com/GNOME/libadwaita), [3](https://tesk.page/2024/06/03/libadwaita-splitting-gtk-and-design-language/), [4](https://blogs.gnome.org/alatiera/2021/09/), [5](https://www.youtube.com/watch?v=xrNYEyNpBoA\&t=8), [6](https://medium.com/@codenomad/gnome-builder-using-python-libadwaita-and-blueprint-c9c3e138801e), [7](https://gnome.pages.gitlab.gnome.org/libadwaita/doc/main/css-variables.html)]
