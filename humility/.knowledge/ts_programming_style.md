@@ -1,4 +1,4 @@
-## 0.0
+# 0.0
 
 - style:
   - functional programming
@@ -10,7 +10,7 @@
   - no `undefined` or `null`
   - no `typeof` or `instanceof`
 
-## 0.1
+# 0.1
 
 - style:
   - functional programming

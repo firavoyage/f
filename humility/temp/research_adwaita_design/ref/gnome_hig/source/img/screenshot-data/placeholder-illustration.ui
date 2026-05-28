@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <object class="GtkWindow" id="widget">
+    <property name="title">Illustration Placeholder</property>
+    <property name="titlebar">
+      <object class="GtkHeaderBar"/>
+    </property>
+    <property name="child">
+      <object class="GtkBox">
+        <property name="orientation">vertical</property>
+        <property name="spacing">18</property>
+        <property name="margin-top">32</property>
+        <property name="margin-bottom">32</property>
+        <property name="margin-start">32</property>
+        <property name="margin-end">32</property>
+        <child>
+          <object class="GtkPicture">
+            <property name="file">libadwaita-placeholder.svg</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="orientation">vertical</property>
+            <property name="spacing">6</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="label">Placeholder Heading</property>
+                <style>
+                  <class name="title-1"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="label">Optional description text.</property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </property>
+  </object>
+</interface>
+

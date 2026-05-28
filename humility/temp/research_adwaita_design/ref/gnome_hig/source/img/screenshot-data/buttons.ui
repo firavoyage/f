@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <object class="GtkBox" id="widget">
+    <property name="spacing">12</property>
+    <property name="margin-top">18</property>
+    <property name="margin-bottom">18</property>
+    <child>
+      <object class="GtkButton">
+        <property name="label">Label</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkButton">
+        <property name="icon-name">system-search-symbolic</property>
+      </object>
+    </child>
+  </object>
+</interface>

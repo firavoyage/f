@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <object class="GtkBox" id="widget">
+    <property name="spacing">12</property>
+    <property name="margin-top">18</property>
+    <property name="margin-bottom">18</property>
+    <property name="orientation">vertical</property>
+    <child>
+      <object class="GtkButton">
+        <property name="label">Label</property>
+        <style>
+          <class name="pill"/>
+        </style>
+      </object>
+    </child>
+    <child>
+      <object class="GtkBox">
+        <property name="spacing">12</property>
+        <child>
+          <object class="GtkButton">
+            <property name="icon-name">media-playlist-repeat-song-symbolic</property>
+            <style>
+              <class name="circular"/>
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton">
+            <property name="icon-name">media-playlist-repeat-symbolic</property>
+            <style>
+              <class name="circular"/>
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton">
+            <property name="icon-name">media-playlist-shuffle-symbolic</property>
+            <style>
+              <class name="circular"/>
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
