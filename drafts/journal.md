@@ -21384,6 +21384,12 @@ invent.kde.org/documentation/develop-kde-org
 
 17 00 revise `contributing.md` agentic workflow. categorize into knowledge. 18 20
 
+18 40 research a math problem. explain to the oi player from dths. 19 40
+
+20 00 feel.
+
+a boy next to me is learning german, writing vocab on a piece of plain white paper.
+
 
 
 <!-- timebox, plan. -->

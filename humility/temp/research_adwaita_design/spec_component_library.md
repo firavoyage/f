@@ -405,3 +405,63 @@ Are you planning to use **shadcn/ui** with **Next.js**, **Vite**, or another fra
   Shadcn Studio
 
 Show all
+
+# what components does baseui from mui have
+
+**Base UI** (formerly `@mui/base`) is MUI's headless, unstyled UI component library designed for building accessible design systems. It provides <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>35 core components and low-level hooks</strong></mark> that handle all underlying logic, keyboard navigation, and ARIA attributes without forcing any default styling engine or CSS. \[[1](https://mui.com/base-ui/getting-started/), [2](https://base-ui.com/), [3](https://www.infoq.com/news/2026/02/baseui-v1-accessible/), [4](https://blog.codedthemes.com/what-is-base-ui/)]
+
+The primary components available in Base UI are grouped by functionality below. \[[1](https://mui.com/base-ui/react-tabs/), [2](https://v5.mui.com/base-ui/all-components/)]
+
+Inputs & Form Controls
+
+- **Autocomplete**: Combo box input with built-in filtering and suggestion logic.
+- **Button**: Standard button primitive handling focus states and keyboard interactions.
+- **Checkbox**: Unstyled toggle box for binary form selections.
+- **Form Control**: Context provider to manage form field states like error, disabled, and required.
+- **Input**: Base text input field wrapper.
+- **Number Field / Number Input**: Form input structured specifically for numeric values with increment/decrement handlers.
+- **Radio Group**: Container and items for mutual-exclusion selection lists.
+- **Select**: Dropdown select component handling complex option menus and multiple selections.
+- **Slider**: Range selection bar with single or multi-thumb options.
+- **Switch**: Toggle switch behavior for binary choices.
+- **Textarea Autosize**: Textarea element that automatically scales height based on user input. \[[1](https://mui.com/base-ui/react-number-input/), [2](https://mui.com/base-ui/getting-started/quickstart/), [3](https://smithery.ai/skills/jackspace/base-ui-react), [4](https://mui.com/components/), [5](https://mui.com/base-ui/react-select/), [6](https://v5.mui.com/base-ui/all-components/)]
+
+Navigation & Layout Windows
+
+- **Accordion**: Collapsible content panels to toggle visible sections.
+- **Menu / Dropdown**: Interactive dropdown menu trees with sub-components for menu buttons and items.
+- **Table Pagination**: Controls for navigating split data sets across complex data tables.
+- **Tabs**: Accessible tab containers (`Tabs`, `Tab`, `TabPanel`) for shifting between panel views. \[[1](https://mui.com/base-ui/react-tabs/), [2](https://smithery.ai/skills/jackspace/base-ui-react), [3](https://v5.mui.com/base-ui/all-components/), [4](https://mui.com/base-ui/react-menu/), [5](https://dev.to/kinginit/the-big-angular-ui-library-comparison-4ifp)]
+
+Overlays & Popups
+
+- **Dialog / Modal**: Base blocking dialog containers that manage underlying page focus.
+- **Popper**: Low-level positioning engine used to output elements sitting on top of other content.
+- **Popup**: General utility container for contextual element positioning.
+- **Snackbar**: Floating toast alert mechanics to convey temporary feedback.
+- **Tooltip**: Brief advisory hover/focus popups attached to target anchors. \[[1](https://mui.com/base-ui/react-tabs/), [2](https://v5.mui.com/base-ui/all-components/), [3](https://smithery.ai/skills/jackspace/base-ui-react)]
+
+Functional Utilities
+
+- **Click-Away Listener**: Event utility detecting trigger clicks made outside a target element.
+- **Focus Trap**: Layout utility forcing keyboard navigation to loop solely inside a designated container.
+- **No-SSR**: Utility wrapper preventing targeted inner elements from rendering during server-side processing.
+- **Portal**: Layout utility rendering children nodes outside their current parent DOM tree hierarchy. \[[1](https://v5.mui.com/base-ui/all-components/), [2](https://mui.com/blog/mui-core-v5/)]
+
+Would you like to see a code example showing how to style one of these components using **Tailwind CSS** or **CSS Modules**?
+
+- [link](https://mui.com/base-ui/getting-started/)\
+  MUI Base - Overview\
+  Overview - MUI Base. 🎉 Material UI v7 is out now! Check out the announcement blog post. @mui/base has been deprecated and has bee...\
+  MUI
+- [link](https://base-ui.com/)\
+  Unstyled UI components for accessible design systems · Base UI\
+  Base UI is a library of unstyled UI components for building accessible component libraries, user interfaces, web applications, and...\
+  Base UI
+- [link](https://mui.com/base-ui/react-number-input/)\
+  React Number Input component and hook - MUI Base\
+  Anatomy. The MUI Base Number Input component consists of four slots: root : an outer\
+  containing the other interior slots. input :\
+  MUI
+
+Show all

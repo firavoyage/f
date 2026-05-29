@@ -1,6 +1,17 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './adwaita.css'
 import './index.css'
+
+function useCssVar(name: string) {
+  const [value, setValue] = useState('')
+
+  useEffect(() => {
+    const v = getComputedStyle(document.documentElement).getPropertyValue(name).trim()
+    setValue(v || `var(${name})`)
+  }, [name])
+
+  return value
+}
 
 function App() {
   return (
@@ -223,12 +234,13 @@ function App() {
 }
 
 function ColorSwatch({ name, var: varName }: { name: string; var: string }) {
+  const value = useCssVar(`--${varName}`)
   return (
     <div className="color-swatch">
-      <div className="preview" data-bg={varName}></div>
+      <div className="preview" style={{ background: `var(--${varName})` }}></div>
       <div className="info">
         <div className="name">{name}</div>
-        <div className="value" data-var={varName}></div>
+        <div className="value" data-var={value}></div>
       </div>
     </div>
   )
@@ -250,29 +262,31 @@ function PaletteRow({ name, prefix }: { name: string; prefix: string }) {
 }
 
 function HelperItem({ name, var: varName }: { name: string; var: string }) {
+  const value = useCssVar(`--${varName}`)
   return (
     <div className="helper-item">
       <div className="name">--{name}</div>
-      <div className="value" data-var={varName}></div>
+      <div className="value" data-var={value}></div>
     </div>
   )
 }
 
 function TokenItem({ name, var: varName, isColor }: { name: string; var: string; isColor?: boolean }) {
+  const value = useCssVar(`--${varName}`)
   if (isColor) {
     return (
       <div className="token-item">
         <div className="name">--{name}</div>
-        <div className="preview" data-bg={varName}></div>
-        <div className="value" data-var={varName}></div>
+        <div className="preview" style={{ background: `var(--${varName})` }}></div>
+        <div className="value" data-var={value}></div>
       </div>
     )
   }
   return (
     <div className="token-item">
       <div className="name">--{name}</div>
-      <div className="preview" data-preview={varName}></div>
-      <div className="value" data-var={varName}></div>
+      <div className="preview">--{varName}</div>
+      <div className="value" data-var={value}></div>
     </div>
   )
 }
