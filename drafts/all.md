@@ -417,6 +417,7 @@ math:
 
 - birthday paradox
 - problem grade 11 summer holidays 1.14 am gm inequality special property dths oi maimai player
+- problem grade 10 dths injectivity function equation
 
 physics:
 

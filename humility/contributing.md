@@ -82,6 +82,8 @@ for backend code, run the logical tests in test subfolder
 
 for frontend code, use tmux and parcel to serve, and use playwright mcp to see
 
+note: your terminal can not last. use tmux by default.
+
 ## complete
 
 1. write `changes.md` w the time. only use imperative sentences in simple present tense.

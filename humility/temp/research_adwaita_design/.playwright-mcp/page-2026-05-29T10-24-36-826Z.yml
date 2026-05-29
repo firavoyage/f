@@ -1,0 +1,198 @@
+- generic [ref=e3]:
+  - heading "Adwaita Design Tokens" [level=1] [ref=e4]
+  - paragraph [ref=e5]: CSS variables from libadwaita documentation. Toggle dark mode to see variations.
+  - generic [ref=e7]:
+    - heading "Accent Colors" [level=2] [ref=e8]
+    - paragraph [ref=e9]: The primary interaction color. Default is blue.
+    - generic [ref=e10]:
+      - generic [ref=e14]: accent-bg
+      - generic [ref=e18]: accent-fg
+      - generic [ref=e22]: accent
+    - heading "Accent Palette" [level=3] [ref=e24]
+    - generic [ref=e25]:
+      - generic [ref=e29]: blue
+      - generic [ref=e33]: teal
+      - generic [ref=e37]: green
+      - generic [ref=e41]: yellow
+      - generic [ref=e45]: orange
+      - generic [ref=e49]: red
+      - generic [ref=e53]: pink
+      - generic [ref=e57]: purple
+      - generic [ref=e61]: slate
+  - generic [ref=e62]:
+    - heading "Semantic Colors" [level=2] [ref=e63]
+    - heading "Success" [level=3] [ref=e64]
+    - generic [ref=e65]:
+      - generic [ref=e69]: success-bg
+      - generic [ref=e73]: success-fg
+      - generic [ref=e77]: success
+    - heading "Warning" [level=3] [ref=e78]
+    - generic [ref=e79]:
+      - generic [ref=e83]: warning-bg
+      - generic [ref=e87]: warning-fg
+      - generic [ref=e91]: warning
+    - heading "Error" [level=3] [ref=e92]
+    - generic [ref=e93]:
+      - generic [ref=e97]: error-bg
+      - generic [ref=e101]: error-fg
+      - generic [ref=e105]: error
+    - heading "Destructive" [level=3] [ref=e106]
+    - generic [ref=e107]:
+      - generic [ref=e111]: destructive-bg
+      - generic [ref=e115]: destructive-fg
+      - generic [ref=e119]: destructive
+  - generic [ref=e120]:
+    - heading "Surface Colors" [level=2] [ref=e121]
+    - heading "Window" [level=3] [ref=e122]
+    - generic [ref=e123]:
+      - generic [ref=e127]: window-bg
+      - generic [ref=e131]: window-fg
+    - heading "View" [level=3] [ref=e132]
+    - generic [ref=e133]:
+      - generic [ref=e137]: view-bg
+      - generic [ref=e141]: view-fg
+    - heading "Header Bar" [level=3] [ref=e142]
+    - generic [ref=e143]:
+      - generic [ref=e147]: headerbar-bg
+      - generic [ref=e151]: headerbar-fg
+      - generic [ref=e155]: headerbar-shade
+    - heading "Sidebar" [level=3] [ref=e156]
+    - generic [ref=e157]:
+      - generic [ref=e161]: sidebar-bg
+      - generic [ref=e165]: sidebar-fg
+      - generic [ref=e169]: sidebar-border
+    - heading "Card" [level=3] [ref=e170]
+    - generic [ref=e171]:
+      - generic [ref=e175]: card-bg
+      - generic [ref=e179]: card-fg
+      - generic [ref=e183]: card-shade
+    - heading "Dialog & Popover" [level=3] [ref=e184]
+    - generic [ref=e185]:
+      - generic [ref=e189]: dialog-bg
+      - generic [ref=e193]: popover-bg
+      - generic [ref=e197]: popover-shade
+  - generic [ref=e198]:
+    - heading "Palette" [level=2] [ref=e199]
+    - paragraph [ref=e200]: Full GNOME color palette for general use.
+    - heading "Blue" [level=3] [ref=e201]
+    - generic [ref=e202]:
+      - generic [ref=e206]: blue-1
+      - generic [ref=e210]: blue-2
+      - generic [ref=e214]: blue-3
+      - generic [ref=e218]: blue-4
+      - generic [ref=e222]: blue-5
+    - heading "Green" [level=3] [ref=e223]
+    - generic [ref=e224]:
+      - generic [ref=e228]: green-1
+      - generic [ref=e232]: green-2
+      - generic [ref=e236]: green-3
+      - generic [ref=e240]: green-4
+      - generic [ref=e244]: green-5
+    - heading "Yellow" [level=3] [ref=e245]
+    - generic [ref=e246]:
+      - generic [ref=e250]: yellow-1
+      - generic [ref=e254]: yellow-2
+      - generic [ref=e258]: yellow-3
+      - generic [ref=e262]: yellow-4
+      - generic [ref=e266]: yellow-5
+    - heading "Orange" [level=3] [ref=e267]
+    - generic [ref=e268]:
+      - generic [ref=e272]: orange-1
+      - generic [ref=e276]: orange-2
+      - generic [ref=e280]: orange-3
+      - generic [ref=e284]: orange-4
+      - generic [ref=e288]: orange-5
+    - heading "Red" [level=3] [ref=e289]
+    - generic [ref=e290]:
+      - generic [ref=e294]: red-1
+      - generic [ref=e298]: red-2
+      - generic [ref=e302]: red-3
+      - generic [ref=e306]: red-4
+      - generic [ref=e310]: red-5
+    - heading "Purple" [level=3] [ref=e311]
+    - generic [ref=e312]:
+      - generic [ref=e316]: purple-1
+      - generic [ref=e320]: purple-2
+      - generic [ref=e324]: purple-3
+      - generic [ref=e328]: purple-4
+      - generic [ref=e332]: purple-5
+    - heading "Light" [level=3] [ref=e333]
+    - generic [ref=e334]:
+      - generic [ref=e338]: light-1
+      - generic [ref=e342]: light-2
+      - generic [ref=e346]: light-3
+      - generic [ref=e350]: light-4
+      - generic [ref=e354]: light-5
+    - heading "Dark" [level=3] [ref=e355]
+    - generic [ref=e356]:
+      - generic [ref=e360]: dark-1
+      - generic [ref=e364]: dark-2
+      - generic [ref=e368]: dark-3
+      - generic [ref=e372]: dark-4
+      - generic [ref=e376]: dark-5
+  - generic [ref=e377]:
+    - heading "Typography" [level=2] [ref=e378]
+    - generic [ref=e379]:
+      - generic [ref=e380]:
+        - generic [ref=e381]: Document Font (Adwaita Sans)
+        - generic [ref=e382]: The quick brown fox jumps over the lazy dog
+      - generic [ref=e383]:
+        - generic [ref=e384]: Monospace Font (Adwaita Mono)
+        - generic [ref=e385]: const foo = "bar"; echo $foo
+  - generic [ref=e386]:
+    - heading "Buttons" [level=2] [ref=e387]
+    - generic [ref=e388]:
+      - button "Primary" [ref=e389] [cursor=pointer]
+      - button "Suggested" [ref=e390] [cursor=pointer]
+      - button "Destructive" [ref=e391] [cursor=pointer]
+      - button "Flat" [ref=e392] [cursor=pointer]
+      - button "Pill Button" [ref=e393] [cursor=pointer]
+      - button "+" [ref=e394] [cursor=pointer]
+  - generic [ref=e395]:
+    - heading "Helpers" [level=2] [ref=e396]
+    - generic [ref=e397]:
+      - generic [ref=e399]: "--border-opacity"
+      - generic [ref=e401]: "--dim-opacity"
+      - generic [ref=e403]: "--disabled-opacity"
+      - generic [ref=e405]: "--window-radius"
+  - generic [ref=e406]:
+    - heading "Card Component" [level=2] [ref=e407]
+    - generic [ref=e408]:
+      - heading "Card Title" [level=4] [ref=e409]
+      - paragraph [ref=e410]: This is a card with the Adwaita card colors. Cards have a subtle background and use card-fg-color for text.
+  - generic [ref=e411]:
+    - heading "Expanded Tokens (From Mimics)" [level=2] [ref=e412]
+    - heading "Focus Ring" [level=3] [ref=e413]
+    - generic [ref=e414]:
+      - generic [ref=e416]: "--focus-ring-color"
+      - generic [ref=e419]: "--focus-ring-width"
+      - generic [ref=e422]: "--focus-ring-offset"
+    - heading "Button Sizes" [level=3] [ref=e424]
+    - generic [ref=e425]:
+      - generic [ref=e427]: "--size-button-mini"
+      - generic [ref=e430]: "--size-button-small"
+      - generic [ref=e433]: "--size-button-medium"
+      - generic [ref=e436]: "--size-button-large"
+      - generic [ref=e439]: "--size-button-huge"
+      - generic [ref=e442]: "--size-button-mega"
+    - heading "Input" [level=3] [ref=e444]
+    - generic [ref=e445]:
+      - generic [ref=e447]: "--input-height"
+      - generic [ref=e450]: "--input-padding"
+      - generic [ref=e453]: "--input-radius"
+    - heading "Scrollbar" [level=3] [ref=e455]
+    - generic [ref=e456]:
+      - generic [ref=e458]: "--scrollbar-width"
+      - generic [ref=e461]: "--scrollbar-thumb"
+      - generic [ref=e464]: "--scrollbar-thumb-hover"
+      - generic [ref=e467]: "--scrollbar-thumb-active"
+    - heading "Text" [level=3] [ref=e469]
+    - generic [ref=e470]:
+      - generic [ref=e472]: "--text-secondary"
+      - generic [ref=e475]: "--text-dimmed"
+    - heading "Button States" [level=3] [ref=e477]
+    - generic [ref=e478]:
+      - generic [ref=e480]: "--btn-bg"
+      - generic [ref=e483]: "--btn-hover"
+      - generic [ref=e486]: "--btn-pressed"
+      - generic [ref=e489]: "--btn-border"

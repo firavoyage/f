@@ -1,0 +1,422 @@
+- generic [ref=e3]:
+  - heading "Adwaita Design Tokens" [level=1] [ref=e4]
+  - paragraph [ref=e5]: CSS variables from libadwaita documentation. Toggle dark mode to see variations.
+  - generic [ref=e7]:
+    - heading "Accent Colors" [level=2] [ref=e8]
+    - paragraph [ref=e9]: The primary interaction color. Default is blue.
+    - generic [ref=e10]:
+      - generic [ref=e13]:
+        - generic [ref=e14]: accent-bg
+        - generic [ref=e15]: "#3584e4"
+      - generic [ref=e18]:
+        - generic [ref=e19]: accent-fg
+        - generic [ref=e20]: "#fff"
+      - generic [ref=e23]:
+        - generic [ref=e24]: accent
+        - generic [ref=e25]: "#0461be"
+    - heading "Accent Palette" [level=3] [ref=e27]
+    - generic [ref=e28]:
+      - generic [ref=e31]:
+        - generic [ref=e32]: blue
+        - generic [ref=e33]: "#3584e4"
+      - generic [ref=e36]:
+        - generic [ref=e37]: teal
+        - generic [ref=e38]: "#2190a4"
+      - generic [ref=e41]:
+        - generic [ref=e42]: green
+        - generic [ref=e43]: "#3a944a"
+      - generic [ref=e46]:
+        - generic [ref=e47]: yellow
+        - generic [ref=e48]: "#c88800"
+      - generic [ref=e51]:
+        - generic [ref=e52]: orange
+        - generic [ref=e53]: "#ed5b00"
+      - generic [ref=e56]:
+        - generic [ref=e57]: red
+        - generic [ref=e58]: "#e62d42"
+      - generic [ref=e61]:
+        - generic [ref=e62]: pink
+        - generic [ref=e63]: "#d56199"
+      - generic [ref=e66]:
+        - generic [ref=e67]: purple
+        - generic [ref=e68]: "#9141ac"
+      - generic [ref=e71]:
+        - generic [ref=e72]: slate
+        - generic [ref=e73]: "#6f8396"
+  - generic [ref=e74]:
+    - heading "Semantic Colors" [level=2] [ref=e75]
+    - heading "Success" [level=3] [ref=e76]
+    - generic [ref=e77]:
+      - generic [ref=e80]:
+        - generic [ref=e81]: success-bg
+        - generic [ref=e82]: "#2ec27e"
+      - generic [ref=e85]:
+        - generic [ref=e86]: success-fg
+        - generic [ref=e87]: "#fff"
+      - generic [ref=e90]:
+        - generic [ref=e91]: success
+        - generic [ref=e92]: "#26a269"
+    - heading "Warning" [level=3] [ref=e93]
+    - generic [ref=e94]:
+      - generic [ref=e97]:
+        - generic [ref=e98]: warning-bg
+        - generic [ref=e99]: "#f5c211"
+      - generic [ref=e102]:
+        - generic [ref=e103]: warning-fg
+        - generic [ref=e104]: "#000c"
+      - generic [ref=e107]:
+        - generic [ref=e108]: warning
+        - generic [ref=e109]: "#e5a50a"
+    - heading "Error" [level=3] [ref=e110]
+    - generic [ref=e111]:
+      - generic [ref=e114]:
+        - generic [ref=e115]: error-bg
+        - generic [ref=e116]: "#e01b24"
+      - generic [ref=e119]:
+        - generic [ref=e120]: error-fg
+        - generic [ref=e121]: "#fff"
+      - generic [ref=e124]:
+        - generic [ref=e125]: error
+        - generic [ref=e126]: "#c01c28"
+    - heading "Destructive" [level=3] [ref=e127]
+    - generic [ref=e128]:
+      - generic [ref=e131]:
+        - generic [ref=e132]: destructive-bg
+        - generic [ref=e133]: "#e01b24"
+      - generic [ref=e136]:
+        - generic [ref=e137]: destructive-fg
+        - generic [ref=e138]: "#fff"
+      - generic [ref=e141]:
+        - generic [ref=e142]: destructive
+        - generic [ref=e143]: "#c01c28"
+  - generic [ref=e144]:
+    - heading "Surface Colors" [level=2] [ref=e145]
+    - heading "Window" [level=3] [ref=e146]
+    - generic [ref=e147]:
+      - generic [ref=e150]:
+        - generic [ref=e151]: window-bg
+        - generic [ref=e152]: "#f6f5f4"
+      - generic [ref=e155]:
+        - generic [ref=e156]: window-fg
+        - generic [ref=e157]: "#000006cc"
+    - heading "View" [level=3] [ref=e158]
+    - generic [ref=e159]:
+      - generic [ref=e162]:
+        - generic [ref=e163]: view-bg
+        - generic [ref=e164]: "#fff"
+      - generic [ref=e167]:
+        - generic [ref=e168]: view-fg
+        - generic [ref=e169]: "#000006cc"
+    - heading "Header Bar" [level=3] [ref=e170]
+    - generic [ref=e171]:
+      - generic [ref=e174]:
+        - generic [ref=e175]: headerbar-bg
+        - generic [ref=e176]: "#fff"
+      - generic [ref=e179]:
+        - generic [ref=e180]: headerbar-fg
+        - generic [ref=e181]: "#000006cc"
+      - generic [ref=e184]:
+        - generic [ref=e185]: headerbar-shade
+        - generic [ref=e186]: "#0000061f"
+    - heading "Sidebar" [level=3] [ref=e187]
+    - generic [ref=e188]:
+      - generic [ref=e191]:
+        - generic [ref=e192]: sidebar-bg
+        - generic [ref=e193]: "#deddda"
+      - generic [ref=e196]:
+        - generic [ref=e197]: sidebar-fg
+        - generic [ref=e198]: "#000006cc"
+      - generic [ref=e201]:
+        - generic [ref=e202]: sidebar-border
+        - generic [ref=e203]: "#00000612"
+    - heading "Card" [level=3] [ref=e204]
+    - generic [ref=e205]:
+      - generic [ref=e208]:
+        - generic [ref=e209]: card-bg
+        - generic [ref=e210]: "#fff"
+      - generic [ref=e213]:
+        - generic [ref=e214]: card-fg
+        - generic [ref=e215]: "#000006cc"
+      - generic [ref=e218]:
+        - generic [ref=e219]: card-shade
+        - generic [ref=e220]: "#00000612"
+    - heading "Dialog & Popover" [level=3] [ref=e221]
+    - generic [ref=e222]:
+      - generic [ref=e225]:
+        - generic [ref=e226]: dialog-bg
+        - generic [ref=e227]: "#f6f5f4"
+      - generic [ref=e230]:
+        - generic [ref=e231]: popover-bg
+        - generic [ref=e232]: "#fff"
+      - generic [ref=e235]:
+        - generic [ref=e236]: popover-shade
+        - generic [ref=e237]: "#00000612"
+  - generic [ref=e238]:
+    - heading "Palette" [level=2] [ref=e239]
+    - paragraph [ref=e240]: Full GNOME color palette for general use.
+    - heading "Blue" [level=3] [ref=e241]
+    - generic [ref=e242]:
+      - generic [ref=e245]:
+        - generic [ref=e246]: blue-1
+        - generic [ref=e247]: "#99c1f1"
+      - generic [ref=e250]:
+        - generic [ref=e251]: blue-2
+        - generic [ref=e252]: "#62a0ea"
+      - generic [ref=e255]:
+        - generic [ref=e256]: blue-3
+        - generic [ref=e257]: "#3584e4"
+      - generic [ref=e260]:
+        - generic [ref=e261]: blue-4
+        - generic [ref=e262]: "#1c71d8"
+      - generic [ref=e265]:
+        - generic [ref=e266]: blue-5
+        - generic [ref=e267]: "#1a5fb4"
+    - heading "Green" [level=3] [ref=e268]
+    - generic [ref=e269]:
+      - generic [ref=e272]:
+        - generic [ref=e273]: green-1
+        - generic [ref=e274]: "#8ff0a4"
+      - generic [ref=e277]:
+        - generic [ref=e278]: green-2
+        - generic [ref=e279]: "#57e389"
+      - generic [ref=e282]:
+        - generic [ref=e283]: green-3
+        - generic [ref=e284]: "#33d17a"
+      - generic [ref=e287]:
+        - generic [ref=e288]: green-4
+        - generic [ref=e289]: "#2ec27e"
+      - generic [ref=e292]:
+        - generic [ref=e293]: green-5
+        - generic [ref=e294]: "#26a269"
+    - heading "Yellow" [level=3] [ref=e295]
+    - generic [ref=e296]:
+      - generic [ref=e299]:
+        - generic [ref=e300]: yellow-1
+        - generic [ref=e301]: "#f9f06b"
+      - generic [ref=e304]:
+        - generic [ref=e305]: yellow-2
+        - generic [ref=e306]: "#f8e45c"
+      - generic [ref=e309]:
+        - generic [ref=e310]: yellow-3
+        - generic [ref=e311]: "#f6d32d"
+      - generic [ref=e314]:
+        - generic [ref=e315]: yellow-4
+        - generic [ref=e316]: "#f5c211"
+      - generic [ref=e319]:
+        - generic [ref=e320]: yellow-5
+        - generic [ref=e321]: "#e5a50a"
+    - heading "Orange" [level=3] [ref=e322]
+    - generic [ref=e323]:
+      - generic [ref=e326]:
+        - generic [ref=e327]: orange-1
+        - generic [ref=e328]: "#ffbe6f"
+      - generic [ref=e331]:
+        - generic [ref=e332]: orange-2
+        - generic [ref=e333]: "#ffa348"
+      - generic [ref=e336]:
+        - generic [ref=e337]: orange-3
+        - generic [ref=e338]: "#ff7800"
+      - generic [ref=e341]:
+        - generic [ref=e342]: orange-4
+        - generic [ref=e343]: "#e66100"
+      - generic [ref=e346]:
+        - generic [ref=e347]: orange-5
+        - generic [ref=e348]: "#c64600"
+    - heading "Red" [level=3] [ref=e349]
+    - generic [ref=e350]:
+      - generic [ref=e353]:
+        - generic [ref=e354]: red-1
+        - generic [ref=e355]: "#f66151"
+      - generic [ref=e358]:
+        - generic [ref=e359]: red-2
+        - generic [ref=e360]: "#ed333b"
+      - generic [ref=e363]:
+        - generic [ref=e364]: red-3
+        - generic [ref=e365]: "#e01b24"
+      - generic [ref=e368]:
+        - generic [ref=e369]: red-4
+        - generic [ref=e370]: "#c01c28"
+      - generic [ref=e373]:
+        - generic [ref=e374]: red-5
+        - generic [ref=e375]: "#a51d2d"
+    - heading "Purple" [level=3] [ref=e376]
+    - generic [ref=e377]:
+      - generic [ref=e380]:
+        - generic [ref=e381]: purple-1
+        - generic [ref=e382]: "#dc8add"
+      - generic [ref=e385]:
+        - generic [ref=e386]: purple-2
+        - generic [ref=e387]: "#c061cb"
+      - generic [ref=e390]:
+        - generic [ref=e391]: purple-3
+        - generic [ref=e392]: "#9141ac"
+      - generic [ref=e395]:
+        - generic [ref=e396]: purple-4
+        - generic [ref=e397]: "#813d9c"
+      - generic [ref=e400]:
+        - generic [ref=e401]: purple-5
+        - generic [ref=e402]: "#613583"
+    - heading "Light" [level=3] [ref=e403]
+    - generic [ref=e404]:
+      - generic [ref=e407]:
+        - generic [ref=e408]: light-1
+        - generic [ref=e409]: "#fff"
+      - generic [ref=e412]:
+        - generic [ref=e413]: light-2
+        - generic [ref=e414]: "#f6f5f4"
+      - generic [ref=e417]:
+        - generic [ref=e418]: light-3
+        - generic [ref=e419]: "#deddda"
+      - generic [ref=e422]:
+        - generic [ref=e423]: light-4
+        - generic [ref=e424]: "#c0bfbc"
+      - generic [ref=e427]:
+        - generic [ref=e428]: light-5
+        - generic [ref=e429]: "#9a9996"
+    - heading "Dark" [level=3] [ref=e430]
+    - generic [ref=e431]:
+      - generic [ref=e434]:
+        - generic [ref=e435]: dark-1
+        - generic [ref=e436]: "#77767b"
+      - generic [ref=e439]:
+        - generic [ref=e440]: dark-2
+        - generic [ref=e441]: "#5e5c64"
+      - generic [ref=e444]:
+        - generic [ref=e445]: dark-3
+        - generic [ref=e446]: "#3d3846"
+      - generic [ref=e449]:
+        - generic [ref=e450]: dark-4
+        - generic [ref=e451]: "#241f31"
+      - generic [ref=e454]:
+        - generic [ref=e455]: dark-5
+        - generic [ref=e456]: "#000"
+  - generic [ref=e457]:
+    - heading "Typography" [level=2] [ref=e458]
+    - generic [ref=e459]:
+      - generic [ref=e460]:
+        - generic [ref=e461]: Document Font (Adwaita Sans)
+        - generic [ref=e462]: The quick brown fox jumps over the lazy dog
+      - generic [ref=e463]:
+        - generic [ref=e464]: Monospace Font (Adwaita Mono)
+        - generic [ref=e465]: const foo = "bar"; echo $foo
+  - generic [ref=e466]:
+    - heading "Buttons" [level=2] [ref=e467]
+    - generic [ref=e468]:
+      - button "Primary" [ref=e469] [cursor=pointer]
+      - button "Suggested" [ref=e470] [cursor=pointer]
+      - button "Destructive" [ref=e471] [cursor=pointer]
+      - button "Flat" [ref=e472] [cursor=pointer]
+      - button "Pill Button" [ref=e473] [cursor=pointer]
+      - button "+" [ref=e474] [cursor=pointer]
+  - generic [ref=e475]:
+    - heading "Helpers" [level=2] [ref=e476]
+    - generic [ref=e477]:
+      - generic [ref=e478]:
+        - generic [ref=e479]: "--border-opacity"
+        - generic [ref=e480]: 15%
+      - generic [ref=e481]:
+        - generic [ref=e482]: "--dim-opacity"
+        - generic [ref=e483]: 55%
+      - generic [ref=e484]:
+        - generic [ref=e485]: "--disabled-opacity"
+        - generic [ref=e486]: 50%
+      - generic [ref=e487]:
+        - generic [ref=e488]: "--window-radius"
+        - generic [ref=e489]: 15px
+  - generic [ref=e490]:
+    - heading "Card Component" [level=2] [ref=e491]
+    - generic [ref=e492]:
+      - heading "Card Title" [level=4] [ref=e493]
+      - paragraph [ref=e494]: This is a card with the Adwaita card colors. Cards have a subtle background and use card-fg-color for text.
+  - generic [ref=e495]:
+    - heading "Expanded Tokens (From Mimics)" [level=2] [ref=e496]
+    - heading "Focus Ring" [level=3] [ref=e497]
+    - generic [ref=e498]:
+      - generic [ref=e499]:
+        - generic [ref=e500]: "--focus-ring-color"
+        - generic [ref=e502]: "#3584e480"
+      - generic [ref=e503]:
+        - generic [ref=e504]: "--focus-ring-width"
+        - generic [ref=e505]: 2px
+        - generic [ref=e506]: 2px
+      - generic [ref=e507]:
+        - generic [ref=e508]: "--focus-ring-offset"
+        - generic [ref=e509]: "-2px"
+        - generic [ref=e510]: "-2px"
+    - heading "Button Sizes" [level=3] [ref=e511]
+    - generic [ref=e512]:
+      - generic [ref=e513]:
+        - generic [ref=e514]: "--size-button-mini"
+        - generic [ref=e515]: 18px
+        - generic [ref=e516]: 18px
+      - generic [ref=e517]:
+        - generic [ref=e518]: "--size-button-small"
+        - generic [ref=e519]: 22px
+        - generic [ref=e520]: 22px
+      - generic [ref=e521]:
+        - generic [ref=e522]: "--size-button-medium"
+        - generic [ref=e523]: 28px
+        - generic [ref=e524]: 28px
+      - generic [ref=e525]:
+        - generic [ref=e526]: "--size-button-large"
+        - generic [ref=e527]: 36px
+        - generic [ref=e528]: 36px
+      - generic [ref=e529]:
+        - generic [ref=e530]: "--size-button-huge"
+        - generic [ref=e531]: 42px
+        - generic [ref=e532]: 42px
+      - generic [ref=e533]:
+        - generic [ref=e534]: "--size-button-mega"
+        - generic [ref=e535]: 58px
+        - generic [ref=e536]: 58px
+    - heading "Input" [level=3] [ref=e537]
+    - generic [ref=e538]:
+      - generic [ref=e539]:
+        - generic [ref=e540]: "--input-height"
+        - generic [ref=e541]: 28px
+        - generic [ref=e542]: 28px
+      - generic [ref=e543]:
+        - generic [ref=e544]: "--input-padding"
+        - generic [ref=e545]: 8px
+        - generic [ref=e546]: 8px
+      - generic [ref=e547]:
+        - generic [ref=e548]: "--input-radius"
+        - generic [ref=e549]: 5px
+        - generic [ref=e550]: 5px
+    - heading "Scrollbar" [level=3] [ref=e551]
+    - generic [ref=e552]:
+      - generic [ref=e553]:
+        - generic [ref=e554]: "--scrollbar-width"
+        - generic [ref=e555]: 8px
+        - generic [ref=e556]: 8px
+      - generic [ref=e557]:
+        - generic [ref=e558]: "--scrollbar-thumb"
+        - generic [ref=e560]: "#bbb"
+      - generic [ref=e561]:
+        - generic [ref=e562]: "--scrollbar-thumb-hover"
+        - generic [ref=e564]: "#999"
+      - generic [ref=e565]:
+        - generic [ref=e566]: "--scrollbar-thumb-active"
+        - generic [ref=e568]: "#888"
+    - heading "Text" [level=3] [ref=e569]
+    - generic [ref=e570]:
+      - generic [ref=e571]:
+        - generic [ref=e572]: "--text-secondary"
+        - generic [ref=e574]: "#686868"
+      - generic [ref=e575]:
+        - generic [ref=e576]: "--text-dimmed"
+        - generic [ref=e578]: "#0000008c"
+    - heading "Button States" [level=3] [ref=e579]
+    - generic [ref=e580]:
+      - generic [ref=e581]:
+        - generic [ref=e582]: "--btn-bg"
+        - generic [ref=e584]: "#f6f5f4"
+      - generic [ref=e585]:
+        - generic [ref=e586]: "--btn-hover"
+        - generic [ref=e588]: "#f9f9f8"
+      - generic [ref=e589]:
+        - generic [ref=e590]: "--btn-pressed"
+        - generic [ref=e592]: "#e8e7e6"
+      - generic [ref=e593]:
+        - generic [ref=e594]: "--btn-border"
+        - generic [ref=e596]: "#cdc7c2"

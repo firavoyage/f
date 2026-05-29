@@ -1,0 +1,4 @@
+[      83ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:1234/app.37ce8466.js:24510
+[     110ms] [ERROR] Warning: React does not recognize the `%s` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `%s` instead. If you accidentally passed it from a parent component, remove it from the DOM element.%s classNameName classnamename 
+    at div
+    at App @ http://localhost:1234/app.37ce8466.js:27582
