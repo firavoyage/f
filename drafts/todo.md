@@ -464,3 +464,17 @@ create a simple storybook.
 create a blank gnome builder or workbench app
 
 ---
+
+plan to port to web. todo.md.
+
+choose base ui.
+
+proceed progressively.
+
+data attr over clsx
+
+---
+
+can i wrap mui, chakra, etc. inside baseui?
+
+

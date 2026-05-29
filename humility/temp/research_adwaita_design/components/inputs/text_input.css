@@ -1,0 +1,186 @@
+.TextInput {
+  display: block;
+  width: 100%;
+  height: var(--input-height);
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--btn-border);
+  border-radius: var(--radius-md);
+  background-color: var(--light-1);
+  color: var(--window-fg-color);
+  font-family: var(--document-font-family);
+  font-size: var(--font-size-base);
+  line-height: 1;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.TextInput::placeholder {
+  color: var(--text-dimmed);
+}
+
+.TextInput:focus {
+  outline: none;
+  border-color: var(--accent-bg-color);
+  box-shadow: 0 0 0 var(--focus-ring-width) var(--focus-ring-color);
+}
+
+.TextInput[data-disabled="true"] {
+  opacity: var(--disabled-opacity);
+  cursor: not-allowed;
+  background-color: var(--light-3);
+}
+
+.TextInput[data-error="true"] {
+  border-color: var(--error-color);
+}
+
+.TextInput[data-error="true"]:focus {
+  box-shadow: 0 0 0 var(--focus-ring-width) var(--focus-ring-color);
+}
+
+/* TextArea */
+.TextArea {
+  display: block;
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--btn-border);
+  border-radius: var(--radius-md);
+  background-color: var(--light-1);
+  color: var(--window-fg-color);
+  font-family: var(--document-font-family);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  resize: vertical;
+  min-height: calc(var(--input-height) * 2);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.TextArea::placeholder {
+  color: var(--text-dimmed);
+}
+
+.TextArea:focus {
+  outline: none;
+  border-color: var(--accent-bg-color);
+  box-shadow: 0 0 0 var(--focus-ring-width) var(--focus-ring-color);
+}
+
+.TextArea[data-disabled="true"] {
+  opacity: var(--disabled-opacity);
+  cursor: not-allowed;
+  background-color: var(--light-3);
+}
+
+.TextArea[data-error="true"] {
+  border-color: var(--error-color);
+}
+
+/* SearchInput */
+.SearchInput-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.SearchInput-icon {
+  position: absolute;
+  left: var(--space-3);
+  color: var(--text-dimmed);
+  pointer-events: none;
+}
+
+.SearchInput {
+  display: block;
+  width: 100%;
+  height: var(--input-height);
+  padding: var(--space-2) var(--space-3);
+  padding-left: calc(var(--space-3) + 16px + var(--space-2));
+  border: 1px solid var(--btn-border);
+  border-radius: var(--radius-md);
+  background-color: var(--light-1);
+  color: var(--window-fg-color);
+  font-family: var(--document-font-family);
+  font-size: var(--font-size-base);
+  line-height: 1;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.SearchInput::placeholder {
+  color: var(--text-dimmed);
+}
+
+.SearchInput:focus {
+  outline: none;
+  border-color: var(--accent-bg-color);
+  box-shadow: 0 0 0 var(--focus-ring-width) var(--focus-ring-color);
+}
+
+.SearchInput[data-disabled="true"] {
+  opacity: var(--disabled-opacity);
+  cursor: not-allowed;
+  background-color: var(--light-3);
+}
+
+/* PasswordInput */
+.PasswordInput-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.PasswordInput {
+  display: block;
+  width: 100%;
+  height: var(--input-height);
+  padding: var(--space-2) var(--space-3);
+  padding-right: calc(var(--space-3) + 16px + var(--space-2));
+  border: 1px solid var(--btn-border);
+  border-radius: var(--radius-md);
+  background-color: var(--light-1);
+  color: var(--window-fg-color);
+  font-family: var(--document-font-family);
+  font-size: var(--font-size-base);
+  line-height: 1;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.PasswordInput::placeholder {
+  color: var(--text-dimmed);
+}
+
+.PasswordInput:focus {
+  outline: none;
+  border-color: var(--accent-bg-color);
+  box-shadow: 0 0 0 var(--focus-ring-width) var(--focus-ring-color);
+}
+
+.PasswordInput[data-disabled="true"] {
+  opacity: var(--disabled-opacity);
+  cursor: not-allowed;
+  background-color: var(--light-3);
+}
+
+.PasswordInput-toggle {
+  position: absolute;
+  right: var(--space-1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background-color: transparent;
+  color: var(--text-dimmed);
+  cursor: pointer;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.PasswordInput-toggle:hover {
+  background-color: var(--btn-hover);
+  color: var(--window-fg-color);
+}
+
+.PasswordInput-toggle:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
