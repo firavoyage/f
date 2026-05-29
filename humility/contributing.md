@@ -63,10 +63,9 @@ follow the style guide:
   - use `// @ts-expect-error` if needed
 - comment:
   - self explanatory over commenting
+  - lowercase for what and why, title case for where, sentence case in docs
+  - never uppercase anywhere
   - no ascii styling, never fancy
-  - lowercase for what and why
-  - title case for where
-  - only sentence case in paragraphs
 - notes:
   - prefer modern proven libraries, do not reinvent wheels
 

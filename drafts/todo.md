@@ -311,6 +311,30 @@ menci. memoh. moeditor.
 
 ---
 
+cli. (yet again).
+
+```
+command:
+  - method: fn # fn handles refusal and has default value
+  - options: [{flag: "-v, --version", desc}]
+  - arguments
+  - desc: string
+command command:
+  - ...
+```
+
+parse into command, args, options.
+
+call it from the map.
+
+you can create and style the help yourself. it's not always the most helpful when auto generated.
+
+you can handle the refusal yourself. a failure must be paired w an action.
+
+it's easy to take terminal width into consideration.
+
+---
+
 - cli (a general template, under intuitive)
 - git (azaneko?)
 - systemd abstraction?
@@ -403,5 +427,42 @@ think about the names. define myself.
 there are many version. follow the latest gnome.
 
 think what the app would look like. an example empty gnome builder app first.
+
+---
+
+make it dry.
+
+separate primitive and semantic tokens.
+
+```
+root {
+  primitives
+}
+
+root {
+  semantic for light
+}
+
+dark: root {
+  semantic for dark
+}
+
+component {
+  primitive (e.g. size) # no need to have radius-card
+  semantic (e.g. color)
+}
+```
+
+some colors like `#fff` appear a lot. use light one instead.
+
+extend design tokens. 
+
+define component library.
+
+create a simple storybook.
+
+create a blank gnome builder or workbench app
+
+---
 
 
