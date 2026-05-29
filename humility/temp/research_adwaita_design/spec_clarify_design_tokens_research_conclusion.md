@@ -4,7 +4,7 @@ read notes_design_tokens and adwaita.css
 
 (do not touch other files)
 
-revise it to make it clear.
+revise notes_design_tokens to make it clearer.
 
 i want to know
 
@@ -12,5 +12,3 @@ i want to know
 - what's missing for it to become another proven design system like mui, chakra, etc.
 - what's ported to adwaita css
 - what's made up or missing in adwaita css
-
-

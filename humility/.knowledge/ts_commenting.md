@@ -50,3 +50,12 @@ it's to separate docs and commented code.
   - lowercase for what and why, title case for where, sentence case in docs
   - never uppercase anywhere
   - no ascii styling, never fancy
+
+# 0.5
+
+- comment:
+  - self explanatory over commenting
+  - lowercase for what and why, title case for where, sentence case in docs
+  - never uppercase anywhere, replace w title case if seen
+  - no ascii styling, never fancy
+

@@ -472,6 +472,7 @@ history:
 - react native
 - kotlin multiplatform
 - ionic framework
+- ui design dark mode movement
 
 politics:
 
