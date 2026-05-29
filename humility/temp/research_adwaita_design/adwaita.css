@@ -95,9 +95,11 @@
   --scrollbar-outline-color: #ffffff;
 
   /* fonts */
-  --document-font-family: 'Adwaita Sans', 'Ubuntu Sans', sans-serif;
+  --document-font-family: 'Adwaita Sans', sans-serif;
+  /* --document-font-family: 'Adwaita Sans', 'Ubuntu Sans', sans-serif; */
   --document-font-size: 12pt;
-  --monospace-font-family: 'Adwaita Mono', 'Ubuntu Mono', monospace;
+  --monospace-font-family: 'Adwaita Mono', monospace;
+  /* --monospace-font-family: 'Adwaita Mono', 'Ubuntu Mono', monospace; */
   --monospace-font-size: 11pt;
 
   /* helpers */

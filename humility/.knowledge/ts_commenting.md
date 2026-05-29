@@ -43,3 +43,10 @@ it's to separate docs and commented code.
   - title case for where
   - only sentence case in paragraphs
 
+# 0.4
+
+- comment:
+  - self explanatory over commenting
+  - lowercase for what and why, title case for where, sentence case in docs
+  - never uppercase anywhere
+  - no ascii styling, never fancy

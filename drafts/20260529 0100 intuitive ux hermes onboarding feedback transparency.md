@@ -1462,5 +1462,487 @@ If you are ready to move past this noisy interface layer, let me know if you wou
 - **Silence the UI** by creating shell aliases that pipe inputs cleanly to bypass the art.
 - **Manually fix the raw config file** via `nano` so you can evaluate if the actual AI performance justifies the chaotic interface.
 
-# 
+# hermes agent
+
+**Hermes Agent** is <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">a free, open-source <strong>autonomous AI operator</strong> developed by <span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">Nous Research</span> that runs persistently on a server or local machine</mark>. Unlike a standard chatbot or a tethered coding copilot, it features a built-in learning loop that allows it to retain a long-term memory across sessions and continuously auto-generate and refine its own "skills". \[[1](https://github.com/nousresearch/hermes-agent), [2](https://hermes-agent.nousresearch.com/docs/)]
+
+Core Capabilities
+
+- **Persistent Memory:** It uses FTS5 full-text search and SQLite to recall your specific projects, style, preferences, and workflows without needing you to re-explain context every time.
+- **Automated Skill Creation:** When the agent successfully solves a complex, multi-step problem, it auto-generates a reusable `SKILL.md` file so it never forgets how to perform that action again.
+- **Multi-Platform Reach:** It operates in the background as a gateway process. You can start a conversation in your terminal, pick it up on Telegram while on your phone, or receive execution updates on Discord, Slack, or WhatsApp.
+- **Scheduled Automations:** Features natural language cron scheduling to handle repetitive backend operations completely unattended, like nightly server backups or daily morning briefings.
+- **Parallel Sub-Agents:** It can spin up isolated sub-agents with their own distinct terminal environments to collapse massive pipelines down simultaneously.
+- **Model Agnostic Runtimes:** It is compatible with major API endpoints like [OpenRouter](https://openrouter.ai/apps/hermes-agent) (supporting deep reasoning models like DeepSeek V4), OpenAI, local vLLM instances, and NVIDIA NIM infrastructure. \[[1](https://hermes-agent.nousresearch.com/), [2](https://hermes-agent.org/), [3](https://hermesagent.agency/), [4](https://www.youtube.com/watch?v=Qn2c%5FU-cWQs), [5](https://thenewstack.io/persistent-ai-agents-compared/), [6](https://www.youtube.com/watch?v=9GpWELm3%5FXI), [7](https://github.com/NousResearch/hermes-agent/blob/main/README.md), [8](https://www.geeky-gadgets.com/free-ai-agent-1-million-tokens/), [9](https://openrouter.ai/apps/hermes-agent)]
+
+Typical Infrastructure and Setup
+
+- **Installation:** It installs instantly via a single shell curl command and operates natively on Linux, macOS, and WSL2 environments.
+- **Sandboxed Execution:** To securely execute code, interact with files, and control browser automation, Hermes connects to various hardened container backends like Docker, SSH, Daytona, or Modal.
+- **Local Data Sovereignty:** It operates with zero telemetry tracking; all structural memories are maintained locally inside your host machine directory. \[[1](https://blog.stackademic.com/forget-chatbots-hermes-agent-is-an-ai-that-actually-learns-from-you-d8d517be7b88), [2](https://www.reddit.com/r/Rag/comments/1sgmvxh/anyone%5Fhere%5Ftried%5Fhermes%5Fagent%5Fwhats%5Fyour/), [3](https://hermes-agent.nousresearch.com/), [4](https://hermes-agent.org/), [5](https://www.youtube.com/watch?v=Qn2c%5FU-cWQs)]
+
+Watch this brief guide to understand how Hermes Agent operates as a persistent server worker rather than a temporary chat interface:
+
+4:53
+
+[Hermes Agent Explained In 5 MinutesCodeHeadYouTube · May 23, 2026](https://www.youtube.com/watch?v=9GpWELm3%5FXI)
+
+If you are planning to deploy or experiment with it, please share **where you intend to host it** (e.g., local laptop vs. cloud VPS) or the **specific workflows** you want to automate, so I can provide customized implementation steps.
+
+- [link](https://github.com/nousresearch/hermes-agent)\
+  NousResearch/hermes-agent: The agent that grows with you - GitHub\
+  Hermes Agent ☤ \* The self-improving AI agent built by Nous Research. It's the only agent with a built-in learning loop — it create...\
+  GitHub
+- [link](https://hermes-agent.nousresearch.com/)\
+  Hermes Agent — The Agent That Grows With You | Nous Research\
+  Hermes Agent \* Lives Where You Do. Telegram, Discord, Slack, WhatsApp, Signal, Email, CLI — and a growing list of platforms. Start...\
+  Hermes Agent
+- [link](https://www.youtube.com/watch?v=Qn2c%5FU-cWQs)\
+  Hermes Agent: The New OpenClaw? - YouTube\
+  Hermes Agent: The New OpenClaw? - YouTube. This content isn't available. ... Hermes Agent solves OpenClaw's three biggest pain poi...\
+  YouTube
+
+Show all
+
+You said: how is it hyped
+
+**Hermes Agent** is widely hyped as the first open-source tool to successfully transition AI from a temporary "chat box" into a **persistent, self-improving 24/7 digital employee**. After launching in early 2026, it quickly went viral in the open-source community, surpassing competing agents like OpenClaw by processing over **560 billion tokens in a single day** and amassing more than **140,000 GitHub stars** in just its first 90 days. \[[1](https://www.youtube.com/watch?v=RoBD7Lc-0MI), [2](https://www.reddit.com/r/WebAfterAI/comments/1t1dz2d/just%5Ftried%5Fhermes%5Fagent%5Ffrom%5Fnous%5Fresearch%5Fand%5Fit/), [3](https://www.youtube.com/watch?v=1SaLww1eFMY)]
+
+The main reasons the AI community on [Reddit](https://www.reddit.com/r/hermesagent/) and X is driving this hype include:
+
+1\. The "Compounding" Memory Loop \[[1](https://www.reddit.com/r/hermesagent/comments/1t68s2o/qhy%5Feveryone%5Fcant%5Fstop%5Ftalking%5Fabout%5Fhermes%5Fagent/)]
+
+Most AI agents suffer from "amnesia"—they reset and forget everything once a session ends. Hermes is hyped because its episodic memory allows it to remember your project structures, personal style, and past mistakes across weeks of usage. Users report that it actually feels like it "grows with you" and gets notably sharper the longer it runs on your system. \[[1](https://www.reddit.com/r/Rag/comments/1sgmvxh/anyone%5Fhere%5Ftried%5Fhermes%5Fagent%5Fwhats%5Fyour/), [2](https://www.reddit.com/r/WebAfterAI/comments/1t1dz2d/just%5Ftried%5Fhermes%5Fagent%5Ffrom%5Fnous%5Fresearch%5Fand%5Fit/), [3](https://www.youtube.com/watch?v=zHo5glsJYYI), [4](https://x.com/NousResearch/status/2026758996107898954), [5](https://www.fwdslash.ai/blog/what-is-hermes-agent), [6](https://www.reddit.com/r/hermesagent/comments/1t68s2o/qhy%5Feveryone%5Fcant%5Fstop%5Ftalking%5Fabout%5Fhermes%5Fagent/)]
+
+2\. Autonomous Skill Creation
+
+Instead of relying on a human developer to write code for every new task, Hermes creates its own capabilities. If you guide it through a complex, multi-step pipeline (like generating a specific type of daily market report), it automatically compiles those steps into a permanent, reusable `SKILL.md` file. The next time you ask for that report, it executes the pre-learned skill instantly. \[[1](https://www.youtube.com/watch?v=zHo5glsJYYI), [2](https://www.reddit.com/r/hermesagent/comments/1t68s2o/qhy%5Feveryone%5Fcant%5Fstop%5Ftalking%5Fabout%5Fhermes%5Fagent/), [3](https://www.reddit.com/r/openclaw/comments/1slqt5h/is%5Fhermes%5Fagent%5Fa%5Fnew%5Fhype%5For%5Fis%5Fit%5Fgenuinely/)]
+
+3\. The "Pocket Assistant" Form Factor
+
+Tech creators and developers are heavily hyping its multi-platform gateway. Because it hooks directly into everyday messaging apps like **Telegram, Discord, and WhatsApp**, users can kick off heavy backend operations or coding tasks from their phones while away from their desks. It acts as an always-on server worker that alerts you via text message when a job is complete. \[[1](https://www.youtube.com/watch?v=zHo5glsJYYI), [2](https://myclaw.ai/blog/hermes-agent), [3](https://www.youtube.com/watch?v=RoBD7Lc-0MI), [4](https://www.reddit.com/r/AISEOInsider/comments/1tmn12d/hermes%5Fagent%5Fbrowser%5Fai%5Fagent%5Fis%5Finsane/), [5](https://www.reddit.com/r/hermesagent/comments/1sv5n7c/i%5Fuse%5Fhermes%5Fagent%5Fas%5Fa%5Flongrunning%5Fworker%5Fso%5Fi/)]
+
+4\. Zero Token Waste
+
+Standard agents burn massive amounts of context window tokens by pulling in irrelevant chat history or repeating discovery steps. Because Hermes structures its learning in local SQLite databases, it avoids repetitive prompts, heavily slashing API costs when connected to models through endpoints like [OpenRouter](https://openrouter.ai/apps/hermes-agent). \[[1](https://www.youtube.com/watch?v=zHo5glsJYYI), [2](https://www.reddit.com/r/WebAfterAI/comments/1t1dz2d/just%5Ftried%5Fhermes%5Fagent%5Ffrom%5Fnous%5Fresearch%5Fand%5Fit/), [3](https://www.fwdslash.ai/blog/what-is-hermes-agent), [4](https://www.reddit.com/r/AISEOInsider/comments/1tm7bim/hermes%5Fagent%5Fuse%5Fcases%5Ffor%5Fvideos%5Fwebsites%5Fand%5Fai/), [5](https://www.reddit.com/r/better%5Fclaw/comments/1t5955y/qhy%5Feveryone%5Fcant%5Fstop%5Ftalking%5Fabout%5Fhermes%5Fagent/)]
+
+5\. Reputable Pedigree
+
+Unlike flash-in-the-pan AI projects built by anonymous users, Hermes was developed by Nous Research—a highly respected, established AI lab that has shipped open-source LLM innovations since 2023. This has given tech-savvy users the confidence to back it over corporate, closed-source alternatives. \[, [2](https://www.towardsdeeplearning.com/hermes-agent-the-hype-the-reality-and-who-should-actually-use-it-acc20bc94d32), [3](https://www.reddit.com/r/WebAfterAI/comments/1t1dz2d/just%5Ftried%5Fhermes%5Fagent%5Ffrom%5Fnous%5Fresearch%5Fand%5Fit/)]
+
+***
+
+The Reality Check: Is It All Real?
+
+While the hype is massive, seasoned developers note a few limitations to keep in mind:
+
+- **The "Wow" Trap:** It works so well out of the box that users often overestimate its stability for high-stakes production workflows.
+- **Security Guardrails:** Because it executes code autonomously, security experts strongly warn that it must always be deployed inside a **hardened container (like Docker) or isolated cloud VM** rather than given raw access to your personal operating system. \[[1](https://www.reddit.com/r/LocalLLM/comments/1t47ec0/has%5Fanyone%5Fhere%5Fexplored%5Fhermes%5Fagent%5Fby%5Fnous/), [2](https://www.reddit.com/r/hermesagent/), [3](https://www.linkedin.com/posts/schematical%5Fhermes-agent-the-good-the-bad-and-the-activity-7459669202099023873-VM36), [4](https://www.reddit.com/r/Rag/comments/1sgmvxh/anyone%5Fhere%5Ftried%5Fhermes%5Fagent%5Fwhats%5Fyour/)]
+
+Are you looking to use Hermes Agent for **coding and software development**, or are you more interested in using its browser tools for **content creation and web scraping**? I can give you examples of how people are setting up either workflow.
+
+- [link](https://www.youtube.com/watch?v=zHo5glsJYYI)\
+  Hermes Agent ACTUALLY Lives Up to the Hype!\
+  Apr 23, 2026 — in this video we're going to talk about the Hermes agent. and why it's actually worth considering. I know I'm a little late to the...\
+  13:47\
+  YouTube·Eric Michaud
+- [link](https://www.reddit.com/r/openclaw/comments/1slqt5h/is%5Fhermes%5Fagent%5Fa%5Fnew%5Fhype%5For%5Fis%5Fit%5Fgenuinely/)\
+  r/openclaw on Reddit: Is Hermes agent a new hype or is it genuinely ...\
+  Apr 15, 2026 — This - you can have OpenClaw orchestrate and Hermes' as one of your agents - works great! ... I run both side by side. I find Herm...\
+  Reddit·r/openclaw
+- [link](https://www.youtube.com/watch?v=RoBD7Lc-0MI)\
+  Hermes Agent is the greatest AI tool ever made. Here's ...\
+  May 26, 2026 — hermes Agent is the number one AI tool you should be learning right now it is a super powerful AI agent that is basically your 247...\
+  44:15\
+  YouTube·Alex Finn
+
+Show all
+
+You said: how is it hyped compared w openclaw
+
+The hype battle between **Hermes Agent** and **OpenClaw** represents a massive philosophical shift in AI: <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>OpenClaw defined the "execution layer," while Hermes is defining the "evolution layer"</strong></mark>. \[[1](https://www.forbes.com/sites/sandycarter/2026/05/25/hermes-agentic-ai-overtakes-openclaw-10-shifts-leaders-need-to-know/)]
+
+While OpenClaw became a viral sensation in early 2026 for its massive platform connectivity, Hermes Agent completely disrupted it by crossing **140,000 GitHub stars** and out-processing it in token volume, claiming the title of the superior agent framework. \[[1](https://www.youtube.com/watch?v=Bg-IPiql7x8), [2](https://github.com/openclaw/openclaw), [3](https://en.wikipedia.org/wiki/OpenClaw), [4](https://www.youtube.com/watch?v=1SaLww1eFMY)]
+
+The community hype comparison breaks down into five distinct battles:
+
+1\. Execution vs. Accumulation (The Core Philosophy)
+
+- **The OpenClaw Hype:** It is hyped as a highly reliable, rigid **"AI Butler"**. You give it explicit instructions or standard workflows, and it executes them flawlessly across your calendar, email, and files. It excels at doing what it is told, like an employee reading a manual.
+- **The Hermes Hype:** It is hyped as a **self-improving worker**. Every ~15 tool calls, Hermes reflects on its mistakes and updates its own operational code via a built-in reinforcement loop (GAPA architecture). It doesn't just read the manual; it actively rewrites it based on its experience with you. \[[1](https://github.com/nousresearch/hermes-agent), [2](https://petronellatech.com/blog/openclaw-vs-hermes-agent-2026/), [3](https://www.reddit.com/r/AI%5FAgents/comments/1qz9rip/i%5Fspent%5Fa%5Fweek%5Ftesting%5Fopenclaw%5Fcool%5Fdemo%5Fbut%5Fi/), [4](https://openclaw.ai/), [5](https://www.youtube.com/watch?v=cu2fgknmemA)]
+
+2\. Built-in Skills vs. Manual Setup
+
+- **[OpenClaw](https://openclaw.ai/):** Relies on users or developers manually creating, downloading, and storing a rigid directory structure of `SKILL.md` files to expand its capabilities.
+- **Hermes:** Automatically **invents its own skills**. If Hermes successfully navigates a complex, multi-step problem (like generating an intricate code backend), it writes and catalogs its own permanent `SKILL.md` file so it can execute that exact pipeline instantly next time. \[[1](https://en.wikipedia.org/wiki/OpenClaw), [2](https://www.youtube.com/shorts/oAE9htkfIBE), [3](https://www.youtube.com/watch?v=cu2fgknmemA), [4](https://petronellatech.com/blog/openclaw-vs-hermes-agent-2026/), [5](https://www.youtube.com/watch?v=tP6yf22OJdI)]
+
+3\. Blazing Speed vs. Feature Bloat
+
+- **OpenClaw:** Over time, OpenClaw has faced criticism for "feature bloat". The system releases frequent, aggressive updates that users report can break existing setups, and its initial time-to-first-response can take 10 to 15 seconds.
+- **Hermes:** Hyped for its **near-instantaneous responsiveness** and ultra-lightweight codebase. Even when running the exact same language model, Hermes delivers first-token generation much faster than OpenClaw and uses far fewer tokens. \[[1](https://www.youtube.com/watch?v=Bg-IPiql7x8), [2](https://www.reddit.com/r/AI%5FAgents/comments/1t4lg8q/openclaw%5Fvs%5Fhermes%5Fagent%5Fheres%5Fmy%5Fhonest%5Ftake/), [3](https://www.youtube.com/watch?v=tP6yf22OJdI), [4](https://www.youtube.com/watch?v=mduLV-mWrNM)]
+
+4\. Enterprise Rigidity vs. Tinkerer Freedom
+
+- **OpenClaw:** Following its acquisition by OpenAI, it has pivoted toward standard corporate automation, offering rigid dashboards and guarded multi-agent routing.
+- **Hermes:** Maintained by the open-source collective Nous Research, it is heavily hyped by tech tinkerers. It provides total model-agnostic freedom (flawlessly mixing models like DeepSeek V4 and GPT-4o in the same task pipeline) and zero telemetry tracking. \[[1](https://en.wikipedia.org/wiki/OpenClaw), [2](https://www.forbes.com/sites/sandycarter/2026/05/25/hermes-agentic-ai-overtakes-openclaw-10-shifts-leaders-need-to-know/), [3](https://www.youtube.com/watch?v=L7FF8Zgab3M\&t=80), [4](https://www.youtube.com/watch?v=tP6yf22OJdI), [5](https://www.youtube.com/watch?v=coABjEVnXcs)]
+
+Feature Overview
+
+| Feature \[[1](https://www.forbes.com/sites/sandycarter/2026/05/25/hermes-agentic-ai-overtakes-openclaw-10-shifts-leaders-need-to-know/), [2](https://github.com/nousresearch/hermes-agent), [3](https://www.reddit.com/r/AI%5FAgents/comments/1t4lg8q/openclaw%5Fvs%5Fhermes%5Fagent%5Fheres%5Fmy%5Fhonest%5Ftake/), [4](https://www.youtube.com/watch?v=tP6yf22OJdI), [5](https://www.youtube.com/watch?v=Bg-IPiql7x8), [6](https://en.wikipedia.org/wiki/OpenClaw), [7](https://www.youtube.com/shorts/oAE9htkfIBE), [8](https://www.youtube.com/watch?v=cu2fgknmemA)] | OpenClaw                                  | Hermes Agent                          |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------- | ------------------------------------- |
+| **Main Vibe**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | System-to-system automation               | Autonomously self-evolving            |
+| **Speed**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | 10–15s initial response                   | Nearly instant                        |
+| **Updates**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | Fast and experimental (frequent breaking) | Narrative-driven and highly stable    |
+| **Skills**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | Manual configuration/bundled code         | Fully automated creation (`SKILL.md`) |
+| **Sovereignty**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | OpenAI corporate stewardship              | Fully open-source (Nous Research)     |
+
+***
+
+The Community Verdict
+
+The overarching narrative on platforms like [Reddit's AI Agents community](https://www.reddit.com/r/hermesagent/) is that **OpenClaw is great for static infrastructure, but Hermes is winning the future of dynamic work**. In fact, the most popular current setup among high-level developers is to build a multi-agent team where OpenClaw handles basic pipeline data pulling, and Hermes acts as the "manager" that reviews the work and solves the complex edge-cases. \[[1](https://www.youtube.com/watch?v=mduLV-mWrNM), [2](https://www.reddit.com/r/AI%5FAgents/comments/1t4lg8q/openclaw%5Fvs%5Fhermes%5Fagent%5Fheres%5Fmy%5Fhonest%5Ftake/), [3](https://www.youtube.com/watch?v=FB-MK%5F9aa6s\&t=43)]
+
+Are you considering deploying one of these frameworks to **replace a traditional Zapier/Make automation**, or are you looking to use them as a **local terminal-based coding assistant**? I can walk you through the optimal setup for either route.
+
+- [link](https://www.forbes.com/sites/sandycarter/2026/05/25/hermes-agentic-ai-overtakes-openclaw-10-shifts-leaders-need-to-know/)\
+  Hermes Agentic AI Overtakes OpenClaw, 10 Shifts Leaders ...\
+  May 25, 2026 — The platform records roughly 38 million monthly website visitors and 3.2 million active users worldwide. Think of it as an executi...\
+  Forbes
+- [link](https://petronellatech.com/blog/openclaw-vs-hermes-agent-2026/)\
+  OpenClaw vs Hermes Agent: AI Frameworks (2026)\
+  May 6, 2026 — Think of OpenClaw as a highly capable assistant that strictly follows a detailed instruction manual. Think of Hermes as an assista...\
+  Petronella Technology Group
+- [link](https://github.com/nousresearch/hermes-agent)\
+  NousResearch/hermes-agent: The agent that grows with you\
+  May 28, 2026 — Hermes Agent ☤ \* The self-improving AI agent built by Nous Research. It's the only agent with a built-in learning loop — it create...\
+  GitHub
+
+Show all
+
+You said: how is openclaw hyped
+
+**OpenClaw** is hyped <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">as the ultimate <strong>"AI Butler" and the "iPhone moment for AI development"</strong></mark>. Released in late 2025 by Austrian developer Peter Steinberger, it went massively viral in early 2026, exploding to **over 247,000 GitHub stars** in a matter of months. \[[1](https://www.reddit.com/r/AI%5FAgents/comments/1qz9rip/i%5Fspent%5Fa%5Fweek%5Ftesting%5Fopenclaw%5Fcool%5Fdemo%5Fbut%5Fi/), [2](https://www.youtube.com/watch?v=RXBjzT8gQ2g\&t=78), [3](https://en.wikipedia.org/wiki/OpenClaw)]
+
+The primary driver of the OpenClaw hype is its ability to turn the AI experience upside down—shifting from a standard back-and-forth chat box to an autonomous agent that **actively operates your computer 24/7**. \[[1](https://www.will-myers.com/articles/ai-agents-are-real-so-is-the-hype-my-experience-with-openclaw), [2](https://gist.github.com/alisolanki/84422f89575970eac848f552af188816)]
+
+The community on X and Reddit's OpenClaw community drives the hype around these key areas:
+
+1\. The "Plumbing" for Your Entire Digital Life
+
+Unlike standard AI models, [OpenClaw](https://openclaw.ai/) is software that you install locally or on a server to serve as a massive central gateway. It gives language models raw access to your: \[[1](https://www.youtube.com/watch?v=L7FF8Zgab3M\&t=80), [2](https://www.youtube.com/watch?v=h3KP3uXGsLI\&vl=en)]
+
+- **Communication:** Integrates natively with up to 22 platforms like **WhatsApp, Telegram, Discord, Slack, iMessage, and Signal**.
+- **OS Systems:** Grants the AI permission to access your **file system, web browser, calendar, inbox, and terminal**. \[[1](https://trilogyai.substack.com/p/technical-deep-dive-hermes-vs-openclaw), [2](https://www.will-myers.com/articles/ai-agents-are-real-so-is-the-hype-my-experience-with-openclaw)]
+
+The hype is built on the fact that you can text your agent on WhatsApp at 2:00 AM, tell it to clear your email inbox or check you in for a flight, and it will autonomously perform the tasks while you sleep. \[[1](https://openclaw.ai/), [2](https://openclaw.ai/)]
+
+2\. The "ClawHub" Marketplace
+
+One of the largest hype engines is **ClawHub**, a built-in marketplace where developers share and monetize ready-made "skills". \[[1](https://www.youtube.com/watch?v=RXBjzT8gQ2g\&t=78)]
+
+- Instead of programming an automation from scratch, users can download a skill folder containing text files (`SKILL.md`) that teach OpenClaw how to execute specific tasks.
+- The tech community views this as a **new form of SaaS**, allowing independent developers to quickly build and sell backend workflows without needing complex frontend interfaces. \[[1](https://en.wikipedia.org/wiki/OpenClaw), [2](https://www.youtube.com/watch?v=RXBjzT8gQ2g\&t=78)]
+
+3\. "Compounding" Local Memory
+
+Users are highly enthusiastic about OpenClaw's local-first memory infrastructure. It stores conversation histories and execution logs in a local SQLite or Redis database. Tech reviews show that after 5 to 6 weeks of continuous use, the agent successfully pulls deep context from your project histories, contacts, and past preferences, making it feel like a truly personalized companion. \[[1](https://en.wikipedia.org/wiki/OpenClaw), [2](https://github.com/openclaw/openclaw), [3](https://www.mindstudio.ai/blog/hermes-agent-vs-openclaw-comparison), [4](https://www.reddit.com/r/openclaw/comments/1rteu83/unpopular%5Fopinion%5Fwhy%5Fis%5Feveryone%5Fso%5Fhyped%5Fover/)]
+
+4\. The "Mac Mini" Meta
+
+The hype around OpenClaw became so loud on tech social media that it triggered a viral hardware trend: **developers buying dedicated M2/M4 Mac Minis specifically to run OpenClaw locally**. This "always-on" desktop setup became a status symbol for developers wanting a secure, 24/7 personal AI worker sitting directly on their desks. \[[1](https://aimaker.substack.com/p/openclaw-review-setup-guide), [2](https://techcrunch.com/2026/02/16/after-all-the-hype-some-ai-experts-dont-think-openclaw-is-all-that-exciting/)]
+
+***
+
+The Reality Check: Criticisms of the Hype
+
+Despite the massive star count, the community has pointed out severe bottlenecks as the software scales:
+
+- **The Security "Nightmare":** Because OpenClaw holds total system privileges (terminal, browser, local files), security researchers exposed multiple critical vulnerabilities (CVEs) from exposed server instances, warning that a compromised OpenClaw setup grants hackers full access to your machine.
+- **Feature Bloat:** Due to its massive open-source popularity, the codebase has suffered from aggressive, hyper-frequent updates that frequently break existing installations, pushing some users toward streamlined alternatives like Hermes Agent. \[[1](https://www.youtube.com/watch?v=Bg-IPiql7x8), [2](https://aimaker.substack.com/p/openclaw-review-setup-guide), [3](https://medium.com/@sathishkraju/i-switched-from-openclaw-to-hermes-agent-heres-what-nobody-told-me-5f33a746b6ca)]
+
+Are you trying to decide **where to host an open-source agent** (like on a local machine vs. a cloud VPS), or do you have a **specific daily task** (like sorting emails or scraping web data) that you want to see if OpenClaw can handle? \[[1](https://www.wired.com/story/malevolent-ai-agent-openclaw-clawdbot/), [2](https://aimaker.substack.com/p/openclaw-review-setup-guide)]
+
+- [link](https://www.reddit.com/r/openclaw/comments/1rteu83/unpopular%5Fopinion%5Fwhy%5Fis%5Feveryone%5Fso%5Fhyped%5Fover/)\
+  Why is everyone so hyped over OpenClaw? I cannot find any ...\
+  Mar 14, 2026 — Memory is the killer feature, but it compounds over time. Week 1 it knew nothing. Week 6 it pulls context from project history, co...\
+  Reddit·r/openclaw
+- [link](https://www.youtube.com/watch?v=RXBjzT8gQ2g\&t=78)\
+  My Honest Thoughts on the OpenClaw Hype…\
+  Feb 8, 2026 — and sort of tear us away from what we've been doing for so long if you've been running an agency or AI business for a year or two ...\
+  9m\
+  YouTube·Liam Ottley
+- [link](https://www.youtube.com/watch?v=h3KP3uXGsLI\&vl=en)\
+  OpenClaw Explained: Why the Hype is (Mostly) Wrong\
+  Mar 12, 2026 — in February 2026. a lot of headlines suddenly started appearing about this new AI thing called OpenClaw. i built an OpenClaw AI ag...\
+  8:56\
+  YouTube·Udacity
+
+Show all
+
+You said: nous research info
+
+**Nous Research** is <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">an independent, elite AI research lab founded in 2023 that has become one of the prominent leaders of the open-source AI movement</mark>. Instead of building closed systems behind corporate paywalls, the company focuses entirely on creating world-class open-source language models, autonomous agent frameworks, and decentralized training systems. \[[1](https://www.linkedin.com/company/nousresearch), [2](https://nousresearch.com/), [3](https://x.com/TradedVC/status/1917326957462638637)]
+
+Company Profile & Leadership
+
+- **Founders & Team:** The lab was co-founded by **Jeffrey Quesnelle (CEO)**, **Karan Malhotra**, **Ryan Teknium**, and **Shivani Mitra**. The team originates from a deeply "crypto-native" and decentralized open-source development background.
+- **Headquarters & Size:** The company maintains a small, hyper-efficient team of 11–50 employees, operating out of New York City and Austin, Texas.
+- **Funding:** In April 2025, Nous Research secured a massive **$65 million Series A funding round** led by crypto venture capital giant Paradigm. This gave them the financial runway to challenge tech behemoths like OpenAI and Google in the open weights space.
+- **Core Philosophy:** They champion "neutrally aligned" AI. They believe models should adapt to real-world user experiences and be fully controllable by the individual, rather than governed by strict, opaque corporate or political policies. \[[1](https://www.linkedin.com/company/nousresearch), [2](https://x.com/TradedVC/status/1917326957462638637), [3](https://www.theblock.co/post/352000/paradigm-leads-50-million-usd-round-decentralized-ai-project-nous-research), [4](https://www.crunchbase.com/organization/nous-research), [5](https://twit.tv/posts/tech/building-ethical-user-aligned-ai-what-nous-research-doing-differently)]
+
+Flagship Projects & Innovations
+
+- **Hermes Family of Models:** Their highly acclaimed general-purpose models (such as **Hermes-4-405B**, built on Meta’s open weights) excel at complex reasoning, coding, and creative depth. You can interact with these models directly via the [Nous Portal](https://portal.nousresearch.com/info).
+- **Hermes Agent:** Their viral autonomous AI operator framework. It is highly hyped for running persistently 24/7 on servers and using self-evolving, automated skill creation via SQLite memory loops.
+- **Psyche Network:** A groundbreaking, decentralized infrastructure designed to pre-train large language models over the internet using machines distributed across different physical locations.
+- **Solana Coordination:** To eliminate the need for centralized supercomputers, the Psyche network utilizes the **Solana blockchain** to handle on-chain coordination and reward distributed node operators who lend their computational power to train Nous models.
+- **Atropos:** A reliable orchestration layer engineered by Nous to coordinate execution and generation tasks across potentially thousands of these distributed global workers simultaneously. \[[1](https://www.linkedin.com/company/nousresearch), [2](https://portal.nousresearch.com/info), [3](https://messari.io/project/nous-research), [4](https://venturebeat.com/ai/nous-research-is-training-an-ai-model-using-machines-distributed-across-the-internet), [5](https://finance.yahoo.com/news/exclusive-crypto-vc-giant-paradigm-114000156.html), [6](https://nousresearch.com/blog)]
+
+Where to Find Their Work
+
+- **Open Source Repository:** All codebases, fine-tuning scripts, and framework architectures are openly available on the official Nous Research GitHub.
+- **Model Weights:** The complete weights and training recipes for their flagship models are published directly on the [NousResearch Hugging Face profile](https://huggingface.co/NousResearch) for anyone to pull down and run locally. \[[1](https://huggingface.co/NousResearch), [2](https://messari.io/project/nous-research)]
+
+If you are interested in exploring their ecosystem further, would you like to take a look at **how to run their Hermes models locally**, or are you curious about **how to participate as a node operator** in their decentralized training network?
+
+- [link](https://www.linkedin.com/company/nousresearch)\
+  Nous Research - LinkedIn\
+  May 25, 2025 — About us. Nous Research is an AI research lab creating world-class open source AI. We are best known for Hermes Agent, our open-so...\
+  LinkedIn·Nous Research
+- [link](https://portal.nousresearch.com/info)\
+  Models - Nous Portal\
+  Hermes-4-405B. Model Card. Available to all API users. Was: $1.50/1M tokens. $0.09/1M prompt tokens. $0.37/1M completion tokens. T...\
+  Nous Portal
+- [link](https://nousresearch.com/)\
+  NOUS RESEARCH - Open Source AI\
+  \* LANGUAGE MODELS. Nous Research is a leader in the American open source AI movement. We train world-class open source language mo...\
+  nous research
+
+Show all
+
+You said: how are these models. ive never seen these models on leaderboards.
+
+**Hermes models excel at multi-step reasoning, raw uncensored logic, and complex roleplaying**, making them some of the most respected open-weights fine-tunes in the AI community. The reason you rarely see them dominating standard public leaderboards like the [LMSYS Chatbot Arena](https://huggingface.co/spaces/lmarena-ai/chatbot-arena) is due to a deliberate mismatch in how they are trained versus how mainstream leaderboards judge AI performance. \[[1](https://lmsys.org/blog/2023-06-22-leaderboard/), [2](https://dev.to/ji%5Fai/the-963-is-a-trap-what-hermes-4-405b-actually-changed-18ee), [3](https://nousresearch.com/freedom-at-the-frontier-hermes-3), [4](https://nousresearch.com/hermes3), [5](https://www.aicerts.ai/news/hermes-performance-redefines-open-ai-benchmarks/)]
+
+When evaluating their capabilities, several factors explain why they are configured differently from standard chatbot setups:
+
+1\. Leaderboards Penalize "Neutral Alignment" (Uncensored) \[[1](https://pricepertoken.com/leaderboards)]
+
+Mainstream leaderboards rely heavily on human judges rating which response _feels_ safer, cleaner, and more polite. Mainstream models are heavily RLHF-tuned (Reinforcement Learning from Human Feedback) to sound like helpful corporate assistants.\
+Nous Research deliberately uses a "neutral alignment" strategy. On their custom **RefusalBench**, which measures how often an AI refuses to answer sensitive or provocative prompts, Hermes 4 scored just 57.1% refusals, compared to GPT-4o which refused over 80% of the time. Because Hermes does not preach or refuse tasks, standard leaderboard judges often flag it as less "safe," dragging down its default Elo rating. \[[1](https://www.istartvalley.org/blog/nous-research-drops-hermes-4-ai-models-that-outperform-chatgpt-without-content-restrictions), [2](https://dev.to/ji%5Fai/the-963-is-a-trap-what-hermes-4-405b-actually-changed-18ee), [3](https://www.aicerts.ai/news/nous-hermes-4-unrestricted-hybrid-reasoning-reshapes-open-llms/)]
+
+2\. The Multi-Mode "Reasoning Trap"
+
+The newest flagship models, like **[Hermes 4 405B](https://www.google.com/search?ibp=oshop\&prds=pvt%3Ahg%2Cpvo%3A29%2CimageDocid%3A14153230380052157991%2CheadlineOfferDocid%3A4187309393749602729%2CproductDocid%3A4187309393749602729\&q=product\&sa=X\&ved=2ahUKEwiE9buyyNyUAxX1h68BHQ65LzYQxa4PegYIAAgSEAI\&gl=us)**, utilize a dual-processing engine. They can toggle between a standard fast-chat mode and a deep chain-of-thought reasoning mode. \[[1](https://www.istartvalley.org/blog/nous-research-drops-hermes-4-ai-models-that-outperform-chatgpt-without-content-restrictions), [2](https://dev.to/ji%5Fai/the-963-is-a-trap-what-hermes-4-405b-actually-changed-18ee)]
+
+- When the reasoning mode is turned **on**, Hermes 4 achieves world-class technical scores, hitting **96.3% on MATH-500** and **81.9% on the brutal AIME math competition**.
+- When independent evaluators host the model on standard benchmarks, they often test it in the default fast-chat mode with the thinking tokens toggled off. For instance, Artificial Analysis ranked the 405B variant lower (#22 out of 37) specifically because it was benchmarked without its core reasoning mode enabled. \[[1](https://www.istartvalley.org/blog/nous-research-drops-hermes-4-ai-models-that-outperform-chatgpt-without-content-restrictions), [2](https://dev.to/ji%5Fai/the-963-is-a-trap-what-hermes-4-405b-actually-changed-18ee), [3](https://www.aicerts.ai/news/hermes-performance-redefines-open-ai-benchmarks/)]
+
+3\. Built for Agents, Not Chat Boxes \[[1](https://pricepertoken.com/leaderboards)]
+
+Standard leaderboards judge how well an AI writes an essay or answers a trivia question in a single turn. Hermes is fine-tuned from the ground up for agentic multi-turn loops, complex function-calling, and structural context inside systems like **Hermes Agent** or OpenClaw. A model that is exceptional at picking files and executing code commands inside a terminal rarely scores well on a leaderboard that tests conversational charm. \[[1](https://nousresearch.com/hermes3), [2](https://nousresearch.com/freedom-at-the-frontier-hermes-3)]
+
+4\. Synthetic Training Over "Vibe Check" Tuning
+
+Instead of tailoring their models to win the "vibe check" of public chat platforms, Nous Research trains the Hermes family on heavily filtered, high-quality synthetic reasoning datasets. This yields a highly steerable engine that follows `system prompt` instructions perfectly—a trait highly valued by backend developers but invisible to everyday casual testers. \[[1](https://nousresearch.com/freedom-at-the-frontier-hermes-3)]
+
+***
+
+The Summary Verdict
+
+If you want an assistant to write a friendly corporate email, stick to mainstream leaders like Claude or GPT. However, if you are looking to build a **fully autonomous coding agent, a highly complex simulator, or a private server assistant** that will never preach to you or refuse a command, the Hermes family is arguably the premier open-weights software available. \[[1](https://www.linkedin.com/posts/davekilleen%5Fai-tooling-has-become-fast-fashion-openclaw-activity-7450809385729179649-eQbL), [2](https://dev.to/ji%5Fai/the-963-is-a-trap-what-hermes-4-405b-actually-changed-18ee)]
+
+Would you like to know **how to test-drive [Hermes 4](https://www.google.com/search?ibp=oshop\&prds=pvt%3Aa%2Cpvo%3A29%2CimageDocid%3A13278816059787039677%2CheadlineOfferDocid%3A5425727914585906547%2CproductDocid%3A5425727914585906547\&q=product\&sa=X\&ved=2ahUKEwiE9buyyNyUAxX1h68BHQ65LzYQxa4PegYIAAghEAI\&gl=us) with its reasoning mode toggled on** using platforms like OpenRouter, or are you interested in **running one of their smaller, lightweight builds locally** on your own hardware?
+
+- [link](https://nousresearch.com/freedom-at-the-frontier-hermes-3)\
+  Freedom at the Frontier: Hermes 3 - NOUS RESEARCH\
+  Aug 14, 2024 — Hermes 3 is unlocked, uncensored and highly steerable. The latest model from Nous Research was created by fine-tuning Llama 3.1 8B...\
+  nous research
+- [link](https://www.linkedin.com/posts/davekilleen%5Fai-tooling-has-become-fast-fashion-openclaw-activity-7450809385729179649-eQbL)\
+  Hermes AI tooling surpasses OpenClaw, Claude Code CLI ...\
+  Apr 17, 2026 — 2026 is the year "which AI is best at coding" stops being an interesting question. The winners of the agentic era are being decide...\
+  LinkedIn·Dave Killeen
+- [link](https://www.istartvalley.org/blog/nous-research-drops-hermes-4-ai-models-that-outperform-chatgpt-without-content-restrictions)\
+  Nous Research drops Hermes 4 AI models that outperform ...\
+  Aug 28, 2025 — The technical achievement is substantial. In testing, Hermes 4's largest 405-billion parameter model scored 96.3% on the MATH-500 ...\
+  iStart Valley
+
+Show all
+
+You said: what? why and when does it even refuse
+
+**Hermes is not an entirely lawless or "wild west" AI; it refuses when a prompt crosses into severe, illegal harm** (such as malware creation, bioweapons, or explicit physical violence). However, it completely drops the typical corporate "nanny" behavior seen in mainstream models.
+
+Nous Research trains the Hermes family with a **"neutral alignment" philosophy**. They believe that if a human asks an AI to do something legal but sensitive, controversial, or profane, the AI should shut up and follow the instructions perfectly rather than preaching, lecturing, or throwing an existential fit. \[[1](https://nousresearch.com/freedom-at-the-frontier-hermes-3), [2](https://thesequence.substack.com/p/the-sequence-ai-of-the-week-713-inside)]
+
+To put this into perspective, the reasons and mechanics behind its refusal behavior involve distinct operational choices: \[[1](https://www.lesswrong.com/posts/YWo2cKJgL7Lg8xWjj/base-llms-refuse-too)]
+
+Why Mainstream Models Refuse (The Corporate Baseline)
+
+Models like ChatGPT, Claude, and Gemini are heavily alignment-tuned by their parent companies to avoid brand damage. They frequently refuse completely benign prompts because of **keyword matching or over-conservatism**: \[[1](https://nousresearch.com/freedom-at-the-frontier-hermes-3)]
+
+- **Example:** If you ask a corporate AI to write a fictional movie scene about a bank heist, it may refuse, claiming it cannot assist with illegal activities.
+- **Example:** If you ask it to analyze a political manifesto for a university paper, it might refuse to prevent the spread of controversial opinions.
+
+When and Why Hermes Actually Refuses
+
+Nous Research built a diagnostic test called **RefusalBench** specifically to measure this. On this test, mainstream models like GPT-4o refuse up to 84% of provocative or sensitive prompts. **Hermes 4 drops that refusal rate down to roughly 27% to 57%** (depending on whether its deep reasoning mode is enabled). \[[1](https://www.istartvalley.org/blog/nous-research-drops-hermes-4-ai-models-that-outperform-chatgpt-without-content-restrictions), [2](https://x.com/NousResearch/status/1960416962791739862), [3](https://www.aicerts.ai/news/nous-hermes-4-unrestricted-hybrid-reasoning-reshapes-open-llms/), [4](https://www.aicerts.ai/news/hermes-performance-redefines-open-ai-benchmarks/)]
+
+Hermes draws a hard line at actual weaponized harm, but it will seamlessly fulfill requests in scenarios where others back down:
+
+- **Dark Creative Writing:** It will happily write gritty, violent, or profane fictional stories without lecturing you on morality.
+- **Unbiased Political/Social Analysis:** It will analyze controversial historical documents, extreme manifestos, or heavy philosophical texts objectively.
+- **Offensive Humor:** It will generate edgy jokes or satire that mainstream guardrails automatically block.
+- **Cybersecurity Research:** It will help software developers analyze real malware code or look for security exploits in their own code bases, whereas corporate AIs often refuse the moment they see hacking-related terms. \[[1](https://nousresearch.com/freedom-at-the-frontier-hermes-3)]
+
+Technical Glitch Refusals
+
+If you are using Hermes inside a system like **Hermes Agent** and you get a sudden refusal on a basic task, it is almost always a technical bug rather than a moral stance. The community frequently flags two common system bugs: \[[1](https://github.com/NousResearch/hermes-agent/issues/21666)]
+
+- **The API Mismatch Bug:** If you route Hermes through third-party aggregators like OpenRouter, the gateway occasionally passes a messy system prompt that triggers a provider-level safety block by mistake.
+- **The Broken Thinking Loop:** In Hermes 4's multi-turn chat, if the system fails to correctly echo back its prior reasoning tokens to the server, the backend runtime will reject the message and throw an error. \[[1](https://github.com/NousResearch/hermes-agent/issues/21666), [2](https://github.com/NousResearch/hermes-agent/issues/24443)]
+
+If you are hitting an issue where a model is refusing your prompts, let me know **what specific model variant you are running** and **the platform you are using to access it**. I can help you debug whether it is an actual safety block or just a prompt formatting error.
+
+- [link](https://nousresearch.com/freedom-at-the-frontier-hermes-3)\
+  Freedom at the Frontier: Hermes 3 - NOUS RESEARCH\
+  Aug 14, 2024 — Closed-source, “frontier” models today lack flexibility and adaptability. Many refuse to answer simple questions, hallucinate an a...\
+  nous research
+- [link](https://github.com/NousResearch/hermes-agent/issues/21666)\
+  \[Bug]: hermes acp triggers OpenAI canonical safety refusal on ...\
+  May 7, 2026 — \[Bug]: hermes acp triggers OpenAI canonical safety refusal on greeting with mini-class OpenRouter models — system-prompt mismatch ...\
+  GitHub
+- [link](https://thesequence.substack.com/p/the-sequence-ai-of-the-week-713-inside)\
+  Inside the Amazing Hermes 4, an Open Reasoning Model\
+  Sep 3, 2025 — Beyond scores, Hermes 4 exhibits behavioral plasticity that practitioners notice immediately. The model responds sensitively to ro...\
+  TheSequence·TheSequence
+
+Show all
+
+You said: fully uncensored models that care nothing and see the world as is
+
+10 sites
+
+Here are top web results for exploring this topic:
+
+[link](https://www.youtube.com/watch?v=TS%5FhH4sdiKs)
+
+YouTube·https://www.youtube.com
+
+This 100% uncensored AI model is insane… let's run it
+
+Go here: https://davidondrej.com/uncensored-gemma Get my Hermes ... Run Uncensored AI from USB No Internet, No Limits. Tech Jarves ...
+
+[link](https://www.reddit.com/r/ollama/comments/1s9t3pu/what%5Fare%5Fthe%5Fbest%5Funcensored%5Funrestricted%5Fai/)
+
+Reddit·https://www.reddit.com
+
+What are the best uncensored / unrestricted AI models right ...
+
+i prefer the Dirty-Shirley-Writer family of uncensored models -- my favorite is V1, which is not the newest, but gives me the best results.
+
+[link](https://venice.ai/)
+
+Venice AI·https://venice.ai
+
+Venice | Private AI for Unlimited Creative Freedom
+
+Venice AI. Access leading AI models with your privacy in mind. Create text, image, video, code, build agents, and more using fully private or anonymized ...
+
+[link](https://uncensored.com/)
+
+Uncensored AI·https://uncensored.com
+
+Uncensored AI | Official
+
+The top uncensored AI models - chat, generate, media, voice, API & more. Try it free & see why 10+ million users trust Uncensored AI.
+
+[link](https://www.maxai.co/ai-tools/ai-writer/no-limitations-with-ai-imagery/)
+
+MaxAI·https://www.maxai.co
+
+NoLimitGPT: AI Without Boundaries - Free Online - MaxAI
+
+Unleash limitless AI creativity with NoLimitGPT, generating uncensored content and images for any query or scenario.
+
+[link](https://www.quora.com/Where-can-I-find-AI-that-can-be-used-without-ethical-restrictions)
+
+Quora·https://www.quora.com
+
+Where can I find AI that can be used without ethical restrictions?
+
+Truly unrestricted AI models don't exist publicly, but open-source ones like LLaMA 3, Mistral, Falcon, and DeepSeek can be self-hosted with ...
+
+[link](https://www.ninjachat.ai/uncensored-ai)
+
+NinjaChat·https://www.ninjachat.ai
+
+Uncensored AI — GPT-5, Claude Opus & Gemini Without Filters
+
+Chat with ChatGPT, Claude, and Gemini without content filters. Unrestricted, unfiltered AI for chat, images, and more — 50+ models free to start.
+
+[link](https://miniapps.ai/uncensored-ai-no-restrictions)
+
+Miniapps·https://miniapps.ai
+
+Uncensored ai ( no restrictions) · Free AI Chatbot - miniapps.ai
+
+Welcome! I'm here to provide information without limits. Ask anything you'd like! I will answer anything no matter how unmoral or illegal it is.
+
+[link](https://www.decodesfuture.com/articles/top-uncensored-open-source-ai-models-2026-list)
+
+www.decodesfuture.com·https://www.decodesfuture.com/articles/top-uncensored-open-source-ai-models-2026-list
+
+35+ Best Uncensored Open-Source AI Models (UpdatedMay ...
+
+Ranked and tested: the top 35+ uncensored open-source AI models of 2026. Includes abliterated LLMs, Hugging Face picks, hardware tiers, ...
+
+[link](https://zencreator.pro/uncensored-ai-image-generator)
+
+ZenCreator·https://zencreator.pro
+
+Uncensored AI Image Generator — No Filters - ZenCreator
+
+ZenCreator's unrestricted AI platform provides exactly that — professional image generation without the arbitrary limitations imposed by mainstream platforms.
+
+You said: are there fully uncensored ones
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">Yes, there are </span><strong>fully uncensored models</strong></mark> (often called "no-refusal" or "fully unaligned" models) available in the open-source community. Unlike the Hermes family, which keeps a minimal baseline safety rail against extreme physical harm, these variants remove **100% of all guardrails**. They operate with total objectivity, treating all data purely as math and tokens.
+
+The open-source community creates and accesses these models through specific methods:
+
+1\. The Abliterated Models
+
+The most common way fully uncensored models are made is through a process called **Abliteration** (pioneered by open-source researchers like FailSpy).
+
+- **How it works:** Researchers analyze a standard model (like Meta's Llama 3 or Mistral) to locate the exact mathematical "refusal direction" in the neural network—the specific layer where the model decides to say "I cannot fulfill this request."
+- **The fix:** They mathematically erase or neutralize those specific weights from the model completely. The resulting model loses the ability to refuse.
+- **Popular versions:** You will see these hosted on Hugging Face with names like `Llama-3-8B-Instruct-Abliterated` or `Mistral-7B-Instruct-v0.3-Abliterated`.
+
+2\. Pure Raw Base Models
+
+If you want a model that sees the world purely "as it is" without any human bias, you can use the **Base (Foundational) weights** of a model before any instruction tuning or alignment happens (e.g., `Llama-3-70B` instead of `Llama-3-70B-Instruct`).
+
+- **The Catch:** Base models do not act like assistants. They do not answer questions; they only predict the next word. If you ask a base model "How do I bypass this firewall?", it might just reply with a list of more questions. You have to prompt them using few-shot examples to get them to follow instructions.
+
+3\. DeepSeek R1 (Community Uncensored Tunes)
+
+Following the massive success of DeepSeek R1, open-source developers immediately stripped the built-in safety filters from its distilled variants. Models like `R1-Distill-Llama-8B-Uncensored` allow you to use deep, multi-step chain-of-thought reasoning on highly sensitive or taboo topics without the model lecturing you halfway through its thinking process.
+
+Where to Find and Run Them
+
+Because corporate platforms like OpenAI and Google block these models, the open-source community hosts them independently:
+
+- **Hugging Face:** Search for terms like `Abliterated`, `Uncensored`, or `No-Refusal` to find model weights to download.
+- **OpenRouter:** If you do not want to host them locally, OpenRouter hosts several uncensored variants that you can chat with via an API.
+- **Local Runtimes:** Most users run these locally using tools like **Ollama, LM Studio, or AnythingLLM** to ensure absolute privacy, ensuring no corporate server can log or block their prompts.
+
+The Trade-offs of Going "Fully Uncensored"
+
+While these models offer ultimate freedom, developers note two major downsides:
+
+- **Brain Damage (Degradation):** Modifying a model's weights to remove refusals can sometimes corrupt adjacent logic. Uncensored models occasionally suffer from higher rates of "hallucinations" or repetitive text loops.
+- **The "Yes Man" Problem:** Fully uncensored models will agree with whatever premise you feed them, even if it is completely incorrect or dangerous.
+
+Are you looking to **run one of these models locally** on your own computer, or do you want to **connect an uncensored model** to an autonomous framework like Hermes Agent or OpenClaw?
 
