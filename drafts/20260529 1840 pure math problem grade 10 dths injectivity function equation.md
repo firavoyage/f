@@ -6,6 +6,14 @@
 
 <!-- when i paste, it detects it's markdown and appends. (no backticks escaping though) -->
 
+<!-- he feels familiar w "wait... maybe im wrong", which is notorious among unthinking llms. he sees it as a common deepseek behavior. -->
+
+<!-- "dashed agi dreams". dhh. -->
+
+<!-- he is one of curiosity. he asks me to hover on the "info" info next to max effort, and reads the text. he does not know what token means. he queries on youdao dict on his phone. he is completely unaware of the massive backlash and criticism against the definition of chinese translation of the word token from zhcn gov. an innocent boy. how jealous im. he feels fun when i global search "词元" to see if ive archived something from zhihu on vscode, while typing "genshin impact" for "元" (fcitx defaults to this). -->
+
+<!-- i connect and start scrcpy. i paste the share the prompt w him via qq, a mlcn im app. he adds an instruction of speaking chinese and prompt deepseek app, which outputs "guess" by default. -->
+
 # a 1 (d)
 
 <!-- claude sonnet 4.6 min -->

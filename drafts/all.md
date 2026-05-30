@@ -301,6 +301,7 @@ ux: <!-- ui/ux design -->
 - opencode session export
 - kde desktop k naming
 - hermes onboarding feedback transparency
+- wordnet unnatural for humans affordance mismatch merriam webster penguin
 
 typography:
 
@@ -315,6 +316,7 @@ linguistics:
 - name hykilpikonna etymology
 - para naming prefix etymology paragraph greek hindu
 - proto languages
+- dict wordnet synonyms synsets
 
 literature:
 
