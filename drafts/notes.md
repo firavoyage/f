@@ -1176,3 +1176,32 @@ chromium md3... ("tab ui")... well, a bit too mobile oriented
 
 ---
 
+ui: transition animation
+
+on twitter, translation by grok (prev by google) is on by default.
+
+show original is instant.
+
+show translation has a fade in effect.
+
+after you choose show original, there is a settings icon (progressive disclosure) to permanently opt out for this lang.
+
+there is also a link to lang settings, where an onboarding of choosing your lang is shown (you can continue or skip for now).
+
+idk, seems i could not simply opt out all translation within a few clicks. btw, the lang settings page is a page of only one list item. you can click it to expand, which is one more page.
+
+---
+
+ia: default option
+
+base ui shows like this:
+
+"pnpm npm yarn bun"
+
+pnpm is the de facto standard, shown at the first place.
+
+npm is default selected
+
+btw, it uses i instead of install.
+
+---

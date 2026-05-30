@@ -21310,6 +21310,14 @@ Lee, [5/23/26 2:48 AM]
 一个最基本的 constraint: 如何连接. 路由器和电视显示屏物理上在一起, 用数据线直接连吗?
 ```
 
+upd may 30: <!-- after a few minutes -->
+
+```
+对啊。直接连接就好，启动lxc容器前是openwrt的tty，启动后就是图形桌面环境。USB鼠标键盘啥的也是直接连到USB口就行。因为外层OpenWrt基本没怎么配置这些硬件，插上就是内层控制的。
+
+性能是不可能不够用的，怎么说都比 Amlogic 那种电视盒子强，我的两台软路由，一个是8代intel i3,另一个是N95. 前者上一个主人跑的是 ProxMox VE，虚拟机里跑 OpenWrt, 后者 N95, 预装是 Windows 11。
+```
+
 27
 
 16 40 solve a math problem from jyhs grade 10 monthly exam near maimai machines.
@@ -21391,6 +21399,69 @@ invent.kde.org/documentation/develop-kde-org
 a boy next to me is learning german, writing vocab on a piece of plain white paper.
 
 16 00 adopt libadwaita as on modern gnome apps on ubuntu 24, inspired by wikipedia. 17 40
+
+18 40 surf twitter. get refollowed by yoshiki's sub account, huamurui, qqqqqf, and kafuru. ~~(19 20)~~ ~~19 40~~ 20 00
+
+```
+歸藏(guizang.ai)
+@op7418
+Translated from Chinese
+Now everyone around me is sharing files in Markdown and HTML, but WeChat doesn't support either format, and it's so closed off that it's a hassle to open them with other apps—really can't stand it.
+
+If I'm out and about using my phone, I have no idea how to open the Markdown and HTML files others send over.
+
+Feels like I need to make a mobile HTML and Markdown reader.
+
+fira
+@firahq
+quit all mlcn apps. now.
+
+fira
+@firahq
+try telegraph on telegram
+```
+
+too much. i did not realize how long ive quitted twitter. nothing changed much. basically trivial daily life on sns.
+
+```md
+从被前司fired到开始做startup到现在搞完第一轮融资，感觉这半年过得挺魔幻的（
+
+快感谢一个陪伴见证了这半年的一个人（
+
+我们的团队名叫 Felinic，中文“猫本原理”（参考Anthropic（人本原理）），来自于一篇愚人节论文：https://arxiv.org/abs/1303.7382 <!-- when you triple click on text, the link is not selected. you have to drag manually. -->
+
+是做什么的呀？团队有多少人？
+
+目前主要是在做Memoh，后面也可能会做一些其他AI相关的软件/硬件
+团队现在大概6个人，我们还打算找两三个小伙伴～
+```
+
+```
+愿天下 AI Agent 不要有 Ask Permission 功能
+Claude 里 --dangerously-skip-permissions 都制止不了的 Ask Permission，就像桌面 app 的右下角弹窗，就像移动互联网的摇一摇广告一样可恶
+
+唉这些闭源软件是真的可恶，我想我得去继续做之前放弃的 Claude Code 源码 continuous audit 的项目了，不想每次 A\ 夹带的私货都是被坑了才能发现……
+
+虽然但是，对于本 symblink 爱好者来说，-rf *是非常危险的
+
+这玩意只能开 auto 才能解决
+
+这要怎么 auto
+
+auto mode 他们会自己审批这样的请求 auto mode 比 bypass 的权限更大（不是很严谨，危险请求会被拒绝）
+
+Codex 有，Claude 没有
+
+Claude 先出的 Auto 模式吧🤔
+你开 skip permission 的时候它就会问你是否要切换到 auto 模式
+
+奇怪了我没见到过
+```
+
+```md
+Gemini 这个新UI好难用，生成界面满屏幕不明所以的RGB流光，模型选择器的文字还消失了(左上角)
+最大的问题是，怎么这么像隔壁 @Copilot 啊？ <!-- when you select and copy such a text, a linebreak is added both before and after @someone -->
+```
 
 
 
