@@ -476,4 +476,14 @@ components on code settings page
 
 props. states. 
 
+input (search)
+
+checkbox
+
+dropdown
+
+hover info
+
+filter icon on the right of the input bar <!-- inconsistent. it uses md3 dropdown instead of vscode one (default component, dracula color). -->
+
 
