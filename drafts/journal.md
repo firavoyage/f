@@ -21390,6 +21390,8 @@ invent.kde.org/documentation/develop-kde-org
 
 a boy next to me is learning german, writing vocab on a piece of plain white paper.
 
+16 00 adopt libadwaita as on modern gnome apps on ubuntu 24, inspired by wikipedia. 17 40
+
 
 
 <!-- timebox, plan. -->
