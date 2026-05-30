@@ -1205,3 +1205,23 @@ npm is default selected
 btw, it uses i instead of install.
 
 ---
+
+ux: normalize to humans.
+
+the docs on base ui is not really unstyled. i.e. no css, or browser defaults.
+
+it uses "no border radius", "black or white", "Liberation Sans" to pretend to be unstyled.
+
+---
+
+ux: unpredictable meaning
+
+on the media player of samsung... it surrounds w an outer circle when loop or shuffle is on. i guess you should use dimmed for off, light up for on...
+
+on the settings, when a toggle has options, it can both turned on via the toggle on the right or clicked on the left. when options are available, it shows a small `|` separator between. idk, seems you can browse options even when off?
+
+the scrolling animation on one ui is also... innovative.
+
+title animation. on the left by default. bigger, in the middle, large padding, when you pull down further.
+
+---

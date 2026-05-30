@@ -21400,7 +21400,7 @@ a boy next to me is learning german, writing vocab on a piece of plain white pap
 
 16 00 adopt libadwaita as on modern gnome apps on ubuntu 24, inspired by wikipedia. 17 40
 
-18 40 surf twitter. get refollowed by yoshiki's sub account, huamurui, qqqqqf, and kafuru. ~~(19 20)~~ ~~19 40~~ 20 00
+18 40 surf twitter. get refollowed by yoshiki's sub account, huamurui, qqqqqf, and kafuru. ~~(19 20)~~ ~~19 40~~ turn off auto zh-cn to en translation. 20 00
 
 ```
 歸藏(guizang.ai)
@@ -21421,7 +21421,7 @@ fira
 try telegraph on telegram
 ```
 
-too much. i did not realize how long ive quitted twitter. nothing changed much. basically trivial daily life on sns.
+too much. i did not realize how long ive quitted twitter. nothing changed much. basically trivial daily life on sns. <!-- about three weeks actually -->
 
 ```md
 从被前司fired到开始做startup到现在搞完第一轮融资，感觉这半年过得挺魔幻的（
@@ -21435,6 +21435,8 @@ too much. i did not realize how long ive quitted twitter. nothing changed much. 
 目前主要是在做Memoh，后面也可能会做一些其他AI相关的软件/硬件
 团队现在大概6个人，我们还打算找两三个小伙伴～
 ```
+
+<!-- skip some (most?) posts by acbox. i guess it's the only non trivial message these days. sometimes they post something like a insider and delete quickly, which is not really meaningful when you look at it. (im quite gravitated to those redacted. idk.) -->
 
 ```
 愿天下 AI Agent 不要有 Ask Permission 功能
@@ -21462,6 +21464,15 @@ Claude 先出的 Auto 模式吧🤔
 Gemini 这个新UI好难用，生成界面满屏幕不明所以的RGB流光，模型选择器的文字还消失了(左上角)
 最大的问题是，怎么这么像隔壁 @Copilot 啊？ <!-- when you select and copy such a text, a linebreak is added both before and after @someone -->
 ```
+
+```
+vibe coding 就是新时代的收菜游戏
+父母辈定闹钟为了收 qq 农场，我定闹钟为了收 codex
+
+LLM 证明了 P ≠ NP，因为 LLM 经常找不到一种正确的答案，但能轻易地判定出「你说得对」
+```
+
+<!-- menci does not post much, making my life easy. -->
 
 
 

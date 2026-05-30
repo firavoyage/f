@@ -1,0 +1,44 @@
+.Clamp {
+  max-width: var(--clamp-max-width, 600px);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-3);
+  padding-right: var(--space-3);
+}
+
+@media (max-width: 600px) {
+  .Clamp {
+    padding-left: var(--space-2);
+    padding-right: var(--space-2);
+  }
+}
+
+/* Spacer */
+.Spacer {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.Spacer--1 {
+  height: var(--space-1);
+}
+
+.Spacer--2 {
+  height: var(--space-2);
+}
+
+.Spacer--3 {
+  height: var(--space-3);
+}
+
+.Spacer--4 {
+  height: var(--space-4);
+}
+
+.Spacer--5 {
+  height: var(--space-5);
+}
+
+.Spacer--6 {
+  height: var(--space-6);
+}
