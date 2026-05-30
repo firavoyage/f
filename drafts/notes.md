@@ -1204,6 +1204,14 @@ npm is default selected
 
 btw, it uses i instead of install.
 
+upd:
+
+on coss ui (design system of cal.com), bun npm pnpm (default) yarn.
+
+on 9ui: npm (default), yarn, pnpm, bun.
+
+maybe it's just a choice.
+
 ---
 
 ux: normalize to humans.
