@@ -486,4 +486,12 @@ hover info
 
 filter icon on the right of the input bar <!-- inconsistent. it uses md3 dropdown instead of vscode one (default component, dracula color). -->
 
+---
+
+you dont have to go fast.
+
+you have to make the right choices at first to prevent regression ahead.
+
+---
+
 
