@@ -377,6 +377,7 @@ float: <!-- music -->
 - interpret roki mikito p
 - interpret darling dance kairiki bear
 - interpret venom kairiki bear
+- interpret ruma kairiki bear
 
 philosophy:
 
