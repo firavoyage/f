@@ -430,32 +430,7 @@ think what the app would look like. an example empty gnome builder app first.
 
 ---
 
-make it dry.
-
-separate primitive and semantic tokens.
-
-```
-root {
-  primitives
-}
-
-root {
-  semantic for light
-}
-
-dark: root {
-  semantic for dark
-}
-
-component {
-  primitive (e.g. size) # no need to have radius-card
-  semantic (e.g. color)
-}
-```
-
-some colors like `#fff` appear a lot. use light one instead.
-
-extend design tokens. 
+define design tokens. 
 
 define component library.
 
@@ -476,5 +451,29 @@ data attr over clsx
 ---
 
 can i wrap mui, chakra, etc. inside baseui?
+
+---
+
+design tokens. css variables.
+
+i guess it's easy to change or modernize css units.
+
+the key is just to make up a set of design tokens. like tailwind. like refactoring ui.
+
+and reference. never hardcode.
+
+i can align it easily in the future.
+
+---
+
+<!-- example of --> component libraries built on top of base ui from mui
+
+mui components
+
+base ui components
+
+components on code settings page
+
+props. states. 
 
 

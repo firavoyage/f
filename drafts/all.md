@@ -477,6 +477,7 @@ history:
 - kotlin multiplatform
 - ionic framework
 - ui design dark mode movement
+- gtk <!-- gimp toolkit, libadwaita -->
 
 politics:
 
