@@ -382,6 +382,7 @@ float: <!-- music -->
 - interpret venom kairiki bear
 - interpret ruma kairiki bear
 - interpret shippaisaku shoujo kairiki bear
+- interpret shiawase ni nareru kakushi command ga arurashii utata p
 
 philosophy:
 
