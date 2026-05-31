@@ -2234,5 +2234,2465 @@ If you want to start building, I can provide a **starter template** demonstratin
 
 Show all
 
+# base ui from mui button example
 
+The **MUI Base** library (now evolving into [Base UI](https://base-ui.com/react/components/button)) provides unstyled, headless React components. Unlike standard Material UI buttons, Base UI buttons do not include default visual styling (like Material Design). This allows you to apply your own styles using CSS Modules, Tailwind, or styled-components. \[[1](https://base-ui.com/react/components/button), [2](https://mui.com/base-ui/getting-started/), [3](https://v5.mui.com/base-ui/), [4](https://base-ui.com/react/handbook/styling)]
 
+Here is a complete guide and code example for using the **Base UI Button**. \[[1](https://base-ui.com/react/components/button)]
+
+1\. Installation
+
+Install the package using your preferred package manager: \[[1](https://www.geeksforgeeks.org/reactjs/react-mui-buttonbase-api/)]
+
+bash
+
+```
+npm install @base-ui/react
+```
+
+Use code with caution.
+
+2\. Code Example (with CSS Modules)
+
+Below is an implementation of a custom button using **Base UI** and a standard **CSS Module** for styling. \[[1](https://base-ui.com/react/components/button)]
+
+**`ButtonExample.tsx`**
+
+tsx
+
+```
+import * as React from 'react';
+import { Button } from '@base-ui/react/button';
+import classes from './ButtonExample.module.css';
+
+export default function ButtonExample() {
+  const handleClick = () => {
+    alert('Base UI Button clicked!');
+  };
+
+  return (
+    <Button
+      className={classes.customButton}
+      onClick={handleClick}
+    >
+      Click Me
+    </Button>
+  );
+}
+```
+
+Use code with caution.
+
+**`ButtonExample.module.css`**
+
+css
+
+```
+/* Base UI provides state classes out of the box like :disabled and :focus-visible */
+.customButton {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  background-color: #007fff;
+  padding: 8px 16px;
+  border-radius: 8px;
+  color: white;
+  transition: all 150ms ease;
+  cursor: pointer;
+  border: none;
+}
+
+.customButton:hover {
+  background-color: #0066cc;
+}
+
+.customButton:active {
+  background-color: #0052a3;
+}
+
+/* Handles styling specifically for keyboard navigation users */
+.customButton:focus-visible {
+  box-shadow: 0 0 0 4px rgba(0, 127, 255, 0.4);
+  outline: none;
+}
+
+/* Automatically handles disabled state accessibility mapping */
+.customButton:disabled {
+  background-color: #eaeaea;
+  color: #999999;
+  cursor: not-allowed;
+}
+```
+
+Use code with caution.
+
+***
+
+Important Usage Guidelines
+
+- **Form Submissions**: Base UI buttons default to `type="button"`. If you intend to use the button to submit a form, you must explicitly set `type="submit"`.
+- **Rendering Alternative Elements**: If you need the element to render as something else (e.g., a custom `div` or semantic layout block) while retaining standard keyboard accessibility, use the `render` prop.
+- **Link Limitations**: Base UI enforces strict button accessibility semantics (`role="button"`). It should not be used as a replacement for standard anchor navigation elements. \[[1](https://github.com/mui/base-ui/issues/4021), [2](https://github.com/mui/base-ui/issues/3932), [3](https://base-ui.com/react/components/button), [4](https://base-ui.com/react/handbook/composition)]
+
+If you would like, I can rewrite this example using **Tailwind CSS** or show you how to utilize Base UI's lower-level **`useButton` hook** for custom component building. Which styling method do you prefer? \[[1](https://mui.com/base-ui/getting-started/customization/), [2](https://mui.com/base-ui/react-button/hooks-api/)]
+
+- [link](https://github.com/mui/base-ui/issues/4021)\
+  \[Button] Button applying "role=button" to links #4021 - GitHub\
+  Feb 8, 2026 — Bug report. Current behavior. When using a non-button element with nativeButton={false} , role="button" is always applied. I reali...\
+  GitHub
+- [link](https://base-ui.com/react/components/button)\
+  Button - Base UI\
+  Usage guidelines. Rendering as another tag. Rendering links as buttons. Loading states. Button. A button component that can be ren...\
+  Base UI
+- [link](https://github.com/mui/base-ui/issues/3932)\
+  \[docs]\[button] Document that Button defaults to \`type=" ... - GitHub\
+  Feb 1, 2026 — Suggested Documentation Improvements \* Add a callout/note in the Button component docs explaining that: Base UI Button defaults to...\
+  GitHub
+
+Show all
+
+You said: what will it render
+
+By default, the Base UI `Button` renders a semantic HTML element.
+
+Generated HTML Output
+
+Based on the CSS Modules example provided earlier, the browser will render the following HTML:
+
+html
+
+```
+<button
+  type="button"
+  class="ButtonExample_customButton__abc12"
+>
+  Click Me
+</button>
+```
+
+Use code with caution.
+
+Key Behavioral Attributes
+
+- **Default Type**: It defaults to `type="button"` to prevent accidental form submissions.
+- **State Management**: If you pass a `disabled` prop, Base UI automatically maps it to the native attribute and manages focus states for you.
+
+Changing What It Renders
+
+If you need the button to render as a different HTML tag or a custom React component, you use the **`render`** prop.
+
+Example: Rendering as a
+
+tsx
+
+```
+<Button render={<div />}>
+  Click Me
+</Button>
+```
+
+Use code with caution.
+
+**Output:**
+
+html
+
+```
+<div role="button" tabindex="0">Click Me</div>
+```
+
+Use code with caution.
+
+_(Base UI will automatically inject the `role="button"` and `tabindex="0"` attributes so it remains accessible to screen readers and keyboard users)._
+
+If you are building a specific layout, I can show you how to use the **`render` prop** to integrate with router links or custom layout elements. What element or component are you trying to output?
+
+You said: API reference\
+Component props table\
+Prop\
+Type\
+Default\
+focusableWhenDisabled\
+boolean\
+false\
+nativeButton\
+boolean\
+true\
+className\
+string | function\
+—\
+style\
+React.CSSProperties | function\
+—\
+render\
+ReactElement | function\
+—\
+Attribute\
+Description\
+data-disabled\
+Present when the button is disabled.
+
+When you use these specific API properties on the [Base UI Button Component](https://base-ui.com/react/components/button), they change the rendered HTML and accessibility behaviors in the following ways: \[[1](https://base-ui.com/react/components/button)]
+
+1\. `focusableWhenDisabled` (boolean) \[[1](https://base-ui.com/react/components/button)]
+
+- **What it does**: When set to `true`, a disabled button can still receive keyboard focus (via the Tab key). \[[1](https://base-ui.com/react/components/button)]
+- **What it renders**:
+  - If `true` and the button is disabled, Base UI drops the native HTML `disabled` attribute (which natively blocks focus) and instead adds `aria-disabled="true"` alongside a `tabindex="0"`.
+  - If `false`, a disabled button uses the native HTML attribute, hiding it entirely from keyboard navigation. \[[1](https://base-ui.com/react/components/button), [2](https://mui.com/base-ui/react-button/components-api/)]
+- **Why use it**: Essential for **loading buttons**. If a user clicks a button and it turns into a disabled loading spinner, keeping it focusable prevents the browser from dropping the user's keyboard focus back to the top of the page, maintaining tab order stability. \[[1](https://base-ui.com/react/components/button)]
+
+2\. `nativeButton` (boolean) \[[1](https://base-ui.com/react/components/button)]
+
+- **What it does**: Tells Base UI whether the underlying element you are providing via the `render` prop is structurally a native HTML or not. \[[1](https://base-ui.com/react/components/button)]
+- **What it renders**:
+  - **`true` (Default)**: Base UI assumes a native is used. It relies on standard browser button dynamics.
+  - **`false`**: Use this if you pass a generic layout tag (like a ) into the `render` prop. Base UI will explicitly inject ARIA attributes (`role="button"`, `tabindex="0"`) and attach custom keydown event listeners (`Enter` and `Space`) to mock a true button behavior over the generic wrapper element. \[[1](https://github.com/mui/base-ui/issues/4021), [2](https://base-ui.com/react/components/button), [3](https://base-ui.com/react/utils/use-render)]
+
+3\. State-Based Styling (`className` / `style` functions) \[[1](https://base-ui.com/react/utils/use-render)]
+
+Both `className` and `style` can accept a callback function instead of a static string or object. This function provides access to the component's live state: \[[1](https://base-ui.com/react/components/button), [2](https://base-ui.com/react/utils/use-render)]
+
+tsx
+
+```
+className={(state) => state.disabled ? 'btn-disabled' : 'btn-active'}
+```
+
+Use code with caution.
+
+4\. `data-disabled` Attribute \[[1](https://base-ui.com/react/components/toolbar)]
+
+- **What it renders**: When the button is disabled, the DOM output will look like this: .
+
+- **Why use it**: This allows you to target the disabled state cleanly in your CSS stylesheets or Tailwind builds without needing native pseudo-classes:\
+  css
+
+<!---->
+
+```
+/* Vanilla CSS / CSS Modules */
+.customButton[data-disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+```
+
+Use code with caution.\
+html
+
+```
+<!-- Tailwind CSS -->
+<Button className="bg-blue-500 data-[disabled]:opacity-50" />
+```
+
+Use code with caution.\
+\[[1](https://base-ui.com/react/utils/use-render)]
+
+Would you like an updated code snippet showing how to combine `focusableWhenDisabled` with a custom loading spinner state?
+
+- [link](https://base-ui.com/react/components/button)\
+  Button - Base UI\
+  Loading states. For buttons that enter a loading state after being clicked, specify the focusableWhenDisabled prop to ensure focus...\
+  Base UI
+- [link](https://base-ui.com/react/utils/use-render)\
+  useRender - Base UI\
+  API reference ... The React element or a function that returns one to override the default element. ... The ref to apply to the re...\
+  Base UI
+- [link](https://github.com/mui/base-ui/issues/4021)\
+  \[Button] Button applying "role=button" to links #4021 - GitHub\
+  Feb 8, 2026 — atomiks commented. atomiks. on Feb 8. Contributor. Button is intended to be used for real buttons and always applies button semant...\
+  GitHub
+
+Show all
+
+You said: a native button element w type button. no aria. no wrapper. that's it?
+
+**Yes, that is exactly it.**
+
+When you use the default component from Base UI, it outputs a clean, semantic HTML element without bloating your DOM with junk tags or redundant attributes. \[[1](https://base-ui.com/react/components/button), [2](https://stackoverflow.com/questions/26934719/do-i-need-role-button-on-a-button)]
+
+The Exact Rendered HTML
+
+html
+
+```
+<button type="button">Click Me</button>
+```
+
+Use code with caution.
+
+Why There Is No Extra Code
+
+- **No Wrapper**: Base UI uses a single-element architecture. The component maps directly to the underlying DOM node without wrapping it in unnecessary containers.
+- **No `role="button"`**: A native HTML element inherently tells browsers and screen readers that it is a button. Adding `role="button"` to a tag violates standard accessibility rules (W3C/ARIA specifications) because it is redundant. Base UI strictly skips adding ARIA roles unless you explicitly override it to render a non-button tag (like a ). \[[1](https://github.com/mui/base-ui/issues/4021), [2](https://stackoverflow.com/questions/26934719/do-i-need-role-button-on-a-button)]
+- **`type="button"`**: Native HTML buttons default to `type="submit"` when placed inside forms. Base UI intentionally injects `type="button"` by default to protect your app from accidental form submissions. \[[1](https://base-ui.com/react/components/button), [2](https://stackoverflow.com/questions/41904199/whats-the-point-of-button-type-button), [3](https://mtsknn.fi/blog/button-type-button/)]
+
+When Does It Add More Attributes?
+
+Base UI will only append extra attributes to the when the state changes or you explicitly tell it to:
+
+1. **If you disable it**: It adds `disabled` and a `data-disabled` attribute for custom CSS targeting.
+2. **If it is a Toggle Button**: If used as a toggle, it will dynamically manage the `aria-pressed="true|false"` state. \[[1](https://base-ui.com/react/components/toggle), [2](https://github.com/mui/base-ui/issues/4021), [3](https://stackoverflow.com/questions/26934719/do-i-need-role-button-on-a-button), [4](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/button%5Frole)]
+
+Are you planning to structure this as a **toggle button**, or do you need to pass specific **event handlers** like `onClick` to your standard button? \[[1](https://stackoverflow.com/questions/26934719/do-i-need-role-button-on-a-button)]
+
+- [link](https://base-ui.com/react/components/button)\
+  Button - Base UI\
+  A button component that can be rendered as another tag or focusable when disabled. Submit. index.tsxindex.module.css. import \* as ...\
+  Base UI
+- [link](https://github.com/mui/base-ui/issues/4021)\
+  \[Button] Button applying "role=button" to links #4021 - GitHub\
+  Feb 8, 2026 — atomiks commented. atomiks. on Feb 8. Contributor. Button is intended to be used for real buttons and always applies button semant...\
+  GitHub
+- [link](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/button%5Frole)\
+  ARIA: button role - MDN Web Docs - Mozilla\
+  Feb 23, 2026 — The aria-pressed attribute defines the button as a toggle button. The value describes the state of the button. The values include ...\
+  MDN Web Docs
+
+Show all
+
+You said: a simple onClick prop. that
+
+Yes, adding a simple `onClick` prop results in exactly the same clean, un-wrapped native HTML output.
+
+React attaches the event listener internally, so it does not inject any extra attributes or junk into your browser DOM.
+
+The Code
+
+tsx
+
+```
+import { Button } from '@base-ui/react/button';
+
+export default function App() {
+  return (
+    <Button onClick={() => alert('Clicked!')}>
+      Click Me
+    </Button>
+  );
+}
+```
+
+Use code with caution.
+
+The Exact Rendered HTML
+
+html
+
+```
+<button type="button">Click Me</button>
+```
+
+Use code with caution.
+
+Are you ready to add your **styling library** (like Tailwind or CSS Modules) to this click handler, or do you want to see how to pass **additional mouse events**?
+
+You said: that's it? no need to clean up the onClick listener?
+
+**Correct, that is it.** You absolutely do not need to clean it up yourself.
+
+React handles all event listener creation and cleanup automatically behind the scenes.
+
+How It Works Under the Hood
+
+- **Garbage Collection**: When the button component unmounts (leaves the screen), React automatically detaches the `onClick` event listener. This completely prevents memory leaks.
+- **Event Delegation**: React doesn't actually attach the event listener directly to that specific element in the DOM. Instead, it attaches a single listener at your application's root element and smart-routes the click events.
+
+The Final DOM Output
+
+Even with the click handler running, your browser sees only this:
+
+html
+
+```
+<button type="button">Click Me</button>
+```
+
+Use code with caution.
+
+You are completely safe to use `onClick` without writing any lifecycle cleanup code. Are you planning to add any other interaction hooks, like tracking **hover states** or handling **form submissions**?
+
+You said: does react clean up? or the browser engine does it automatically.
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">Both do it</span></mark>, but they handle different parts of the process. **React proactively removes the event listener first**, and then the **browser's garbage collector destroys the memory**.
+
+Here is exactly how they work together when your button leaves the screen:
+
+1\. React Detaches the Listener (The First Step)
+
+Because React uses **Event Delegation**, it attaches only one global listener at the root of your application (e.g., `#root`) rather than attaching listeners to individual elements.
+
+When your button unmounts:
+
+- React updates its internal virtual map to remove the association between that button and your `onClick` function.
+- This ensures that no more click events can trigger your code.
+
+2\. The Browser Cleans Up Memory (The Final Step)
+
+Once React destroys the button node and removes all internal references to your `onClick` function, the JavaScript engine's **Garbage Collector (GC)** takes over automatically.
+
+- The browser sees that the HTML element and the `onClick` function can no longer be reached by any active code.
+- The browser automatically reclaims that memory space.
+
+When could a memory leak happen?
+
+You only need to manually clean up listeners if you bypass React and touch the real DOM directly, like this:
+
+tsx
+
+```
+// ⚠️ DANGER: This WILL cause a leak if you don't clean it up!
+useEffect(() => {
+  window.addEventListener('scroll', handleScroll);
+  // Missing the return cleanup function!
+}, []);
+```
+
+Use code with caution.
+
+Because your `onClick` on the Base UI button is handled entirely through React props, **React and the browser work together to clean it up perfectly.**
+
+Would you like to see how to structure a **`useEffect` cleanup** for those rare times you _do_ have to use global browser events?
+
+You said: does it add listener for onclick, and remove listener when unmount like a manual create effect
+
+No, React does **not** call `addEventListener` when the button mounts and `removeEventListener` when it unmounts like a manual `useEffect` would.
+
+Instead, React uses a system called **Event Delegation**.
+
+How React Does It (Event Delegation)
+
+Instead of attaching a listener to your specific , React attaches **one single listener** for the `click` event at the very root of your application (usually ).
+
+1. **On Mount**: React simply registers your `onClick` function into an internal JavaScript mapping object. No browser `addEventListener` is called for the button.
+2. **On Click**: When you click the button, the click event naturally bubbles up through the HTML DOM tree until it hits the root container. React's global listener catches it, checks its internal map, matches it to your button, and fires your function.
+3. **On Unmount**: React deletes your function from its internal JavaScript map. No browser `removeEventListener` is called because no listener was ever attached to the button element itself.
+
+How it differs from a manual `useEffect`
+
+If you wrote a manual `useEffect` using `addEventListener`, you would be forcing the browser to create a brand new event listener directly on that specific DOM node.
+
+| Feature                       | React `onClick` Prop                    | Manual `useEffect` (`addEventListener`)       |
+| ----------------------------- | --------------------------------------- | --------------------------------------------- |
+| **Browser Listeners Created** | **0** (Reuses the global root listener) | **1** per component instance                  |
+| **How it cleans up**          | Deletes a key from a JS object          | Explicitly calls `removeEventListener`        |
+| **Performance Scale**         | Highly optimized for 10,000+ items      | Can slow down the browser with too many nodes |
+
+Because Base UI components rely entirely on React's native synthetic event system, your button automatically benefits from this highly efficient root delegation system without any manual teardown required.
+
+Do you want to explore how React handles other keyboard accessibility events like **`onKeyDown`** for Base UI buttons?
+
+You said: why do react devs choose that
+
+React developers chose this architecture for three primary reasons: <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>performance</strong>, <strong>memory efficiency</strong>, and <strong>cross-browser consistency</strong></mark>.
+
+When React was created, attaching thousands of individual listeners directly to the DOM heavily penalized browser performance.
+
+1\. Massive Memory Savings
+
+Every time a browser executes `addEventListener`, it must allocate a block of memory to track that specific listener and its associated element.
+
+- **The Problem**: If you render a list of 1,000 items (like emails, products, or comments) and each item has a few buttons, the browser has to manage **3,000+ individual event listeners**. This chugs device memory, especially on low-end mobile phones.
+- **React's Solution**: By creating exactly **one listener** at the root container for each event type (one for `click`, one for `keydown`, etc.), React keeps memory consumption completely flat, no matter how large your application grows.
+
+2\. Instant Component Creation and Destruction
+
+Modifying the real browser DOM is slow.
+
+- Writing to the DOM (`addEventListener`) and removing from the DOM (`removeEventListener`) forces the browser to do internal housecleaning.
+- By shifting this logic into pure JavaScript (just adding and deleting keys from a standard JS object), React can mount, unmount, and rearrange components instantly without asking the browser to change its event bindings.
+
+3\. Cross-Browser Normalization (Synthetic Events)
+
+Historically, different browsers handled events differently (e.g., Safari vs. Chrome vs. Internet Explorer had slight variations in click behavior, touch interactions, and event properties).
+
+React intercepts the native browser event at the root level and wraps it in a unified, normalized object called a **SyntheticEvent**. This ensures that your `onClick` code behaves identically on every single browser and device without you needing to write custom workarounds.
+
+Is it still necessary today?
+
+Modern browsers have become incredibly fast at handling direct event listeners, so the performance gap is smaller than it was in 2013. However, Event Delegation remains a core part of React because it keeps memory management perfectly safe, predictable, and fully handled under the hood—leaving developers free to write code without worrying about manual cleanups.
+
+Would you like to see how this system handles **bubbling and capturing** if you have nested components inside your button?
+
+You said: can i have onClick on a div
+
+Yes, you can absolutely put an `onClick` on a . React will handle the event delegation and memory cleanup in exactly the same way it does for a .
+
+However, a raw does not behave like a button out of the box. To ensure keyboard users and screen readers can actually use it, you must add a few essential attributes.
+
+The Accessible Code Pattern
+
+If you use a , you must explicitly supply a `role`, a `tabIndex`, and a keyboard event handler:
+
+tsx
+
+```
+export default function DivButton() {
+  const handleClick = () => {
+    alert('Div clicked!');
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    // Native buttons fire on both Space and Enter keys
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault(); // Prevents page scrolling on Spacebar
+      handleClick();
+    }
+  };
+
+  return (
+    <div
+      role="button"
+      tabIndex={0} // Makes the div focusable via the Tab key
+      onClick={handleClick}
+      onKeyDown={handleKeyDown}
+      style={{ cursor: 'pointer', display: 'inline-block' }} // Visual cues
+    >
+      Click Me
+    </div>
+  );
+}
+```
+
+Use code with caution.
+
+Why These Extra Steps Are Required
+
+Unlike a native , a standard browser treats a as a generic structural layout block.
+
+- **Keyboard Navigation**: A standard cannot be focused using the `Tab` key. Adding `tabIndex={0}` places it into the natural document tab order.
+- **Key Mimicry**: Blind or keyboard-only users expect a button to activate when pressing **Enter** or **Space**. A only listens to physical mouse clicks by default, so you must map those key presses manually using `onKeyDown`.
+- **Screen Readers**: Blind users navigating via screen readers will hear the element announced as generic text unless you explicitly tell the browser `role="button"`.
+
+How Base UI Solves This
+
+This exact hassle is why Base UI exists. If you want a wrapper but hate writing all that boilerplate, you can use Base UI's `render` prop to instantly convert a into a fully accessible button:
+
+tsx
+
+```
+import { Button } from '@base-ui/react/button';
+
+// Base UI automatically injects role="button", tabIndex={0}, and key handlers onto this div!
+<Button render={<div />} onClick={() => alert('Clicked!')}>
+  Click Me
+</Button>
+```
+
+Use code with caution.
+
+Would you like to see how to style this interactive using **hover or focus states**?
+
+You said: what if i put a mui button inside base ui.
+
+Putting a styled Material UI (MUI) Button inside a Base UI Button <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">causes a structural conflict</mark> because you are trying to **nest a button inside another button**. \[[1](https://stackoverflow.com/questions/39386497/can-i-nest-button-inside-another-button)]
+
+The exact outcome depends on _how_ you combine them:
+
+Scenario A: Nesting them directly (The Broken Way)
+
+tsx
+
+```
+import { Button as BaseButton } from '@base-ui/react/button';
+import { Button as MuiButton } from '@mui/material';
+
+// ⚠️ BAD PRACTICE: Renders a button inside a button
+<BaseButton>
+  <MuiButton>Click Me</MuiButton>
+</BaseButton>
+```
+
+Use code with caution.
+
+- **The Rendered HTML**:
+- **Why it breaks**: HTML specifications strictly forbid putting interactive content (like a ) inside another . Browsers will try to auto-correct this invalid HTML, which triggers **hydration errors** in React, glitches your layout, and breaks keyboard accessibility or screen readers. \[[1](https://stackoverflow.com/questions/39386497/can-i-nest-button-inside-another-button)]
+
+***
+
+Scenario B: Merging them via the `render` prop (The Functional Way)
+
+If you want the logic/state of Base UI but the visual design and ripples of Material UI, use Base UI's **`render`** prop: \[[1](https://base-ui.com/react/handbook/composition)]
+
+tsx
+
+```
+import { Button as BaseButton } from '@base-ui/react/button';
+import { Button as MuiButton } from '@mui/material';
+
+// ✅ CORRECT COMPOSITION: Merges them into a single element
+<BaseButton render={<MuiButton variant="contained" />}>
+  Click Me
+</BaseButton>
+```
+
+Use code with caution.
+
+What happens under the hood here?
+
+1. **Single Node Output**: Base UI intercepts the rendering pipeline. Instead of creating its own HTML node, it passes its functional props (`onClick`, `onKeyDown`, states) directly into the `MuiButton` component. \[[1](https://base-ui.com/react/handbook/composition), [2](https://mui.com/base-ui/react-button/)]
+2. **Prop Merging**: React merges both sets of behaviors. The button gets Material UI's styles, ripple effects, and variants, alongside Base UI's strict focus and disabled configurations. \[[1](https://base-ui.com/react/components/button), [2](https://mui.com/material-ui/api/button-base/), [3](https://mui.com/material-ui/react-button/)]
+3. **The Clean HTML**: It outputs a **single, flat element** in your browser DOM, keeping your code structurally valid and highly accessible.
+
+Do you want to see how to use the **`render` prop** to combine Base UI with alternative UI kits like **Tailwind-styled buttons** or your own custom UI design systems? \[[1](https://base-ui.com/react/handbook/composition)]
+
+- [link](https://mui.com/material-ui/react-button/)\
+  React Button component - Material UI\
+  Contained button Contained buttons are high-emphasis, distinguished by their use of elevation and fill. They contain actions that ...\
+  MUI
+- [link](https://mui.com/material-ui/api/button-base/)\
+  ButtonBase API - Material UI\
+  If true , the base button will have a keyboard focus ripple. focusVisibleClassName. string. - This prop can help identify which el...\
+  MUI
+- [link](https://stackoverflow.com/questions/39386497/can-i-nest-button-inside-another-button)\
+  Can I nest button inside another button? - html - Stack Overflow\
+  Sep 8, 2016 — It is not valid to put a inside a element. In the W3C recomendation for the button element you can read: Content model: Phrasing c...\
+  Stack Overflow
+
+Show all
+
+You said: render prop?
+
+The **`render` prop** is <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">Base UI’s built-in mechanism for <strong>component composition</strong></mark>. It allows you to swap out Base UI's default HTML tag (which is a native for the Button component) with an entirely different element, a styled framework component, or an animation wrapper. \[[1](https://base-ui.com/react/handbook/composition), [3](https://motion.dev/docs/base-ui)]
+
+Instead of nesting components inside each other and bloating the DOM, the `render` prop **merges** Base UI's underlying functionality directly onto whatever target element you supply. \[[1](https://base-ui.com/react/utils/use-render), [2](https://base-ui.com/react/utils/use-render)]
+
+***
+
+How to Use It
+
+Base UI allows you to pass either a **React Element** (like a JSX tag) or a **Callback Function** to the `render` prop. \[, [2](https://www.patterns.dev/react/render-props-pattern/)]
+
+1\. Passing a React Element (Simplest Way) \[[1](https://www.patterns.dev/react/render-props-pattern/)]
+
+If you just want to swap the element or attach a styled component, pass the component directly into the `render` prop. Base UI will automatically forward its internal accessibility props (`onClick`, `onKeyDown`, states) right onto it. \[[1](https://base-ui.com/react/handbook/composition), [3](https://base-ui.com/react/utils/use-render)]
+
+tsx
+
+```
+import { Button } from '@base-ui/react/button';
+import { motion } from 'framer-motion'; // Example: Framer Motion
+
+export default function App() {
+  return (
+    // Base UI functions as a button, but renders as a Framer Motion component
+    <Button render={<motion.button whileTap={{ scale: 0.95 }} />}>
+      Click Me
+    </Button>
+  );
+}
+```
+
+Use code with caution.
+
+2\. Passing a Callback Function (For State-Based Customization) \[]
+
+If your custom component needs access to the button's live interaction state (e.g., whether it is currently `pressed`, `hovered`, or `disabled`), you can pass a function. \[, [2](https://mattclaffey.medium.com/react-design-patterns-part-three-render-props-pattern-53eea5be8496)]
+
+The function provides the runtime `props` and component `state`: \[, [2](https://mui.com/base-ui/react-button/)]
+
+tsx
+
+```
+import { Button } from '@base-ui/react/button';
+
+export default function App() {
+  return (
+    <Button
+      render={(props, state) => (
+        <button
+          {...props}
+          className={`btn ${state.disabled ? 'opacity-50' : 'opacity-100'}`}
+        >
+          {state.disabled ? 'Loading...' : 'Submit'}
+        </button>
+      )}
+    />
+  );
+}
+```
+
+Use code with caution.
+
+***
+
+Why Not Just Use an `as` Prop or standard nesting?
+
+| Composition Method \[, [2](https://base-ui.com/react/utils/use-render), [3](https://motion.dev/docs/base-ui)] | DOM Structure       | Pros / Cons                                                                   |
+| ------------------------------------------------------------------------------------------------------------- | ------------------- | ----------------------------------------------------------------------------- |
+| **Nesting ()**                                                                                                | Invalid HTML ()     | Breaks screen readers, triggers React hydration errors.                       |
+| **Old `as` Prop ()**                                                                                          | Flat DOM            | Cannot easily pass dynamic properties to custom third-party React components. |
+| **Base UI `render` Prop**                                                                                     | **Flat, Clean DOM** | Merges event listeners, manages attributes, and unlocks state access.         |
+
+***
+
+Rules for Custom Components
+
+If you pass your _own_ custom React component into the `render` prop, it must fulfill two requirements: \[[1](https://base-ui.com/react/handbook/composition), [3](https://base-ui.com/react/handbook/composition)]
+
+1. **Spread the Props**: It must accept and spread all incoming props onto its underlying HTML tag (`{...props}`).
+2. **Forward the Ref**: It must be able to receive a React `ref` so Base UI can track keyboard focus and boundaries. \[[1](https://base-ui.com/react/handbook/composition), [3](https://www.patterns.dev/react/render-props-pattern/)]
+
+tsx
+
+```
+import * as React from 'react';
+
+// Your custom UI component setup properly for Base UI composition
+const MyCustomButton = React.forwardRef<HTMLButtonElement, React.ComponentProps<'button'>>(
+  (props, ref) => {
+    return <button ref={ref} {...props} className="my-global-design-system-button" />;
+  }
+);
+```
+
+Use code with caution.
+
+If you use animations, I can show you how to apply the **`render` prop** to integrate with tools like **Framer Motion** or **Tailwind CSS transitions**. Which direction are you heading next? \[[1](https://motion.dev/docs/base-ui)]
+
+- [link](https://base-ui.com/react/handbook/composition)\
+  Composition - Base UI\
+  Use the render prop to compose a Base UI part with your own React components. For example, most triggers render a by default. The ...\
+  Base UI
+- [link](https://base-ui.com/react/utils/use-render)\
+  useRender - Base UI\
+  Render prop and polymorphism. The render prop is primarily designed for composing event handlers and behavioral props. In most cas...\
+  Base UI
+- [link](https://mattclaffey.medium.com/react-design-patterns-part-three-render-props-pattern-53eea5be8496)\
+  React Design Patterns Part Three: Render Props Pattern - Matt Claffey\
+  Sep 9, 2024 — With props You can do the same thing with a custom prop. You can see this in libraries like formik where their Field component can...\
+  Medium·Matt Claffey
+
+Show all
+
+You said: how does it look like
+
+When you use the **`render` prop**, Base UI skips rendering its default tag and passes all its functionality directly to your custom element. \[[1](https://base-ui.com/react/handbook/composition), [2](https://base-ui.com/react/handbook/composition), [3](https://base-ui.com/react/utils/use-render)]
+
+Here is exactly what the code looks like, alongside the clean HTML it produces in the browser.
+
+1\. Swapping to a Custom HTML Tag (e.g., a )
+
+When you want to use a layout element but retain fully accessible button behavior: \[[1](https://base-ui.com/react/components/button)]
+
+**The React Code:**
+
+tsx
+
+```
+import { Button } from '@base-ui/react/button';
+
+export default function App() {
+  return (
+    <Button render={<div className="custom-box" />} nativeButton={false}>
+      Click Me
+    </Button>
+  );
+}
+```
+
+Use code with caution.
+
+**The Rendered HTML:**
+
+html
+
+```
+<div class="custom-box" role="button" tabindex="0">
+  Click Me
+</div>
+```
+
+Use code with caution.
+
+- **What it did**: Base UI noticed `nativeButton={false}` and automatically injected the necessary `role="button"` and `tabindex="0"` accessibility attributes onto your . \[[1](https://base-ui.com/react/components/button)]
+
+***
+
+2\. Merging with a Third-Party Component (e.g., Material UI) \[[1](https://base-ui.com/react/utils/use-render)]
+
+When you pass an advanced styled component into the `render` prop: \[[1](https://base-ui.com/react/handbook/composition)]
+
+**The React Code:**
+
+tsx
+
+```
+import { Button as BaseButton } from '@base-ui/react/button';
+import { Button as MuiButton } from '@mui/material';
+
+export default function App() {
+  return (
+    <BaseButton render={<MuiButton variant="contained" color="primary" />}>
+      Click Me
+    </BaseButton>
+  );
+}
+```
+
+Use code with caution.
+
+**The Rendered HTML:**
+
+html
+
+```
+<button
+  type="button"
+  class="MuiButton-root MuiButton-contained MuiButton-containedPrimary ..."
+>
+  Click Me
+</button>
+```
+
+Use code with caution.
+
+- **What it did**: Base UI merged completely into the Material UI button component. It appended its implicit `type="button"` and basic click logic straight onto the styled node, resulting in a single, flat HTML button.
+
+***
+
+3\. Injecting State via a Function \[[1](https://base-ui.com/react/handbook/composition)]
+
+If you pass a function instead of a raw JSX element, you can dynamically read the button's real-time state (like `disabled` or `pressed` / `hovered`) to change how it looks. \[[1](https://www.reddit.com/r/reactjs/comments/uhdnpu/example%5Fof%5Fproper%5Fuse%5Fof%5Fthe%5Frender%5Fprops%5Fpattern/), [2](https://www.youtube.com/watch?v=3IdCQ7QAs38)]
+
+**The React Code:**
+
+tsx
+
+```
+import { Button } from '@base-ui/react/button';
+
+export default function App() {
+  return (
+    <Button
+      render={(props, state) => (
+        <button
+          {...props}
+          className={state.disabled ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-500'}
+        >
+          {state.disabled ? 'Processing...' : 'Submit'}
+        </button>
+      )}
+    />
+  );
+}
+```
+
+Use code with caution.
+
+**The Rendered HTML (when Active):**
+
+html
+
+```
+<button type="button" class="bg-blue-500">
+  Submit
+</button>
+```
+
+Use code with caution.
+
+**The Rendered HTML (when Disabled):**
+
+html
+
+```
+<button type="button" disabled data-disabled class="bg-gray-400 cursor-not-allowed">
+  Processing...
+</button>
+```
+
+Use code with caution.
+
+- **What it did**: The function dynamically swapped the string in `class` and changed the inner button text based on the live runtime state provided by Base UI. \[[1](https://www.reddit.com/r/reactjs/comments/uhdnpu/example%5Fof%5Fproper%5Fuse%5Fof%5Fthe%5Frender%5Fprops%5Fpattern/), [2](https://www.youtube.com/watch?v=3IdCQ7QAs38)]
+
+Would you like to see how to pass your own **custom React components** into this `render` prop safely by utilizing `React.forwardRef`? \[[1](https://base-ui.com/react/handbook/composition), [2](https://base-ui.com/react/handbook/composition)]
+
+- [link](https://www.reddit.com/r/reactjs/comments/uhdnpu/example%5Fof%5Fproper%5Fuse%5Fof%5Fthe%5Frender%5Fprops%5Fpattern/)\
+  Example of proper use of the render props pattern : r/reactjs\
+  May 3, 2022 — Here's an example without using the technique: const Counter = ({ count, setCount, children }) => ( <> setCount(count - 1)}>- { co...\
+  Reddit·r/reactjs
+- [link](https://base-ui.com/react/components/button)\
+  Button - Base UI\
+  A button component that can be rendered as another tag or focusable when disabled. Submit. index.tsxindex.module.css. import \* as ...\
+  Base UI
+- [link](https://base-ui.com/react/handbook/composition)\
+  Composition - Base UI\
+  Use the render prop to compose a Base UI part with your own React components. For example, most triggers render a by default. The ...\
+  Base UI
+
+Show all
+
+You said: a render prop. that's it? where does the baseui button go.
+
+The default Base UI button completely **disappears** from the DOM. \[[1](https://motion.dev/docs/base-ui)]
+
+It does not become a wrapper, a hidden container, or a separate HTML node. Instead, the Base UI component morphs entirely into a **purely logic-and-behavior provider**. \[[1](https://base-ui.com/react/utils/use-render), [2](https://motion.dev/docs/base-ui)]
+
+Where the Base UI Button "Goes"
+
+Think of Base UI as splitting a component into two distinct layers:
+
+1. **The Brain** (Keyboard logic, ARIA rules, focus management, active states).
+2. **The Body** (The actual HTML tag rendered in the browser). \[[1](https://base-ui.com/react/utils/use-render), [2](https://mui.com/base-ui/react-button/), [3](https://motion.dev/docs/base-ui)]
+
+When you provide a `render` prop, **The Brain stays, but the default HTML body is thrown away**. Base UI injects all of its brainpower directly onto your custom tag or third-party component. \[[1](https://base-ui.com/react/utils/use-render), [2](https://motion.dev/docs/base-ui)]
+
+How React Executes This Under the Hood
+
+When React executes the `render` prop pipeline, it copies all the behind-the-scenes event listeners, internal IDs, and state flags and applies them to the target element. \[[1](https://base-ui.com/react/utils/use-render)]
+
+1\. The Code You Write
+
+tsx
+
+```
+import { Button } from '@base-ui/react/button';
+
+<Button render={<div className="my-box" />} nativeButton={false}>
+  Click Me
+</Button>
+```
+
+Use code with caution.
+
+2\. What Base UI Does in JavaScript (Conceptually)
+
+Base UI processes its custom internal states (like whether the keyboard is pressing down) and merges them into a raw JavaScript object: \[[1](https://mui.com/base-ui/react-button/)]
+
+js
+
+```
+// Base UI's internal generated behaviors:
+const injectedProps = {
+  type: undefined, // Stripped because nativeButton is false
+  role: "button",
+  tabIndex: 0,
+  onClick: [React Global Event Pointer],
+  onKeyDown: [React Keyboard Behavior Pointer],
+  "data-disabled": undefined
+};
+```
+
+Use code with caution.
+
+3\. The React Final Element Merge
+
+React clones your element and forces it to inherit the `injectedProps` object. \[[1](https://base-ui.com/react/utils/use-render)]
+
+4\. The Final Browser DOM
+
+Your browser only sees a single, functional element: \[[1](https://motion.dev/docs/base-ui)]
+
+html
+
+```
+<div class="my-box" role="button" tabindex="0">Click Me</div>
+```
+
+Use code with caution.
+
+Why Do This?
+
+If Base UI remained as an outer wrapper tag (like a parent or ), you would end up with deep HTML nesting structures. Deeply nested semantic layers break browser rules, disrupt flexbox layouts, destroy layout rendering speeds, and ruin screen reader calculations. The `render` prop guarantees your DOM tree stays flat, clean, and perfectly performant. \[[1](https://github.com/mui/base-ui/issues/3983), [2](https://base-ui.com/react/utils/use-render), [3](https://motion.dev/docs/base-ui), [4](https://github.com/mui/base-ui/discussions/157)]
+
+Would you like to look at how to nest **multiple Base UI elements** (like combining a Tooltip Trigger and a Dialog Trigger) using this exact same flat `render` architecture? \[[1](https://base-ui.com/react/handbook/composition)]
+
+- [link](https://base-ui.com/react/handbook/composition)\
+  Composition - Base UI\
+  Composing custom React components. Use the render prop to compose a Base UI part with your own React components. For example, most...\
+  Base UI
+- [link](https://motion.dev/docs/base-ui)\
+  Animate Base UI components | Motion React\
+  Setup motion components By default, Base UI components render and control their own DOM elements. However most components provide ...\
+  motion.dev
+- [link](https://base-ui.com/react/utils/use-render)\
+  useRender - Base UI\
+  Render prop and polymorphism. The render prop is primarily designed for composing event handlers and behavioral props. In most cas...\
+  Base UI
+
+Show all
+
+You said: base ui button seems to simple. other more powerful component examples.
+
+The simplicity of the Base UI Button is intentional, but the library becomes incredibly powerful when dealing with complex, state-heavy UI components.
+
+When you use Base UI for advanced components, it handles all the heavy lifting: **keyboard navigation arrays, focus trapping, screen reader ARIA live regions, and multi-element state coordination**. Your only job is to write the styling.
+
+Here are three examples of complex Base UI components that showcase its true power.
+
+***
+
+1\. The Select Component (Dropdown Menu)
+
+Building a fully accessible custom select dropdown from scratch requires massive amounts of code to handle arrow-key navigation, type-ahead sorting, and viewport positioning.
+
+Base UI manages all of that out of the box using a multi-part compound component structure.
+
+**The Code:**
+
+tsx
+
+```
+import * as React from 'react';
+import { Select } from '@base-ui/react/select';
+import './SelectStyles.css'; // Your custom CSS
+
+export default function CustomSelect() {
+  return (
+    <Select.Root defaultValue="apple">
+      {/* The visible trigger button */}
+      <Select.Trigger className="select-trigger">
+        <Select.Value placeholder="Select a fruit..." />
+        <Select.Icon className="select-icon" />
+      </Select.Trigger>
+
+      {/* The animated overlay container */}
+      <Select.Portal>
+        <Select.Positioner className="select-positioner">
+          <Select.Popup className="select-popup">
+            <Select.Option value="apple" className="select-option">Apple</Select.Option>
+            <Select.Option value="banana" className="select-option">Banana</Select.Option>
+            <Select.Option value="orange" className="select-option" disabled>Orange</Select.Option>
+          </Select.Popup>
+        </Select.Positioner>
+      </Select.Portal>
+    </Select.Root>
+  );
+}
+```
+
+Use code with caution.
+
+**What Base UI automates behind the scenes here:**
+
+- **Screen Reader Linkage**: Automatically binds the popup list to the trigger button using matching `aria-controls` and `aria-haspopup` IDs.
+- **Keyboard Navigation**: Pressing the **Up/Down Arrow keys** moves focus through the options seamlessly. Pressing **Home/End** jumps to the start or end. Pressing **Escape** closes it.
+- **Smart Positioning**: The `Select.Positioner` uses an integrated anchoring system (powered by Floating UI) to automatically position the dropdown so it never gets clipped by the edges of the user's screen or browser window.
+
+***
+
+2\. The Dialog (Modal Window)
+
+Modals are a notorious source of accessibility issues. A proper modal must trap the user's focus inside the box, block background scrolling, and return the focus back to the exact button that opened it when it closes.
+
+**The Code:**
+
+tsx
+
+```
+import * as React from 'react';
+import { Dialog } from '@base-ui/react/dialog';
+import './DialogStyles.css';
+
+export default function CustomDialog() {
+  return (
+    <Dialog.Root>
+      <Dialog.Trigger className="btn-open">Open Profile</Dialog.Trigger>
+
+      <Dialog.Portal>
+        {/* Dimmed backdrop behind the modal box */}
+        <Dialog.Backdrop className="dialog-backdrop" />
+
+        <Dialog.Popup className="dialog-popup">
+          <Dialog.Title className="dialog-title">Edit Profile</Dialog.Title>
+          <Dialog.Description>Make changes to your profile info here.</Dialog.Description>
+
+          <div className="dialog-content">
+            <input type="text" placeholder="Username" />
+          </div>
+
+          <Dialog.Close className="btn-close">Save changes</Dialog.Close>
+        </Dialog.Popup>
+      </Dialog.Portal>
+    </Dialog.Root>
+  );
+}
+```
+
+Use code with caution.
+
+**What Base UI automates behind the scenes here:**
+
+- **Focus Trapping**: Keyboard users cannot accidentally `Tab` past the modal contents into the hidden webpage background.
+- **Scroll Locking**: The library automatically prevents the underlying webpage from scrolling while the modal box is open.
+- **Dismiss Interactions**: Clicking outside the box or hitting the `Escape` key automatically closes the modal safely.
+
+***
+
+3\. The Number Field (Stepper Input)
+
+A regular HTML is notoriously buggy and lacks standard design controls. Base UI provides a fully decoupled layout model for stepping math values up and down.
+
+**The Code:**
+
+tsx
+
+```
+import * as React from 'react';
+import { NumberField } from '@base-ui/react/number-field';
+import './NumberFieldStyles.css';
+
+export default function CustomNumberField() {
+  return (
+    <NumberField.Root min={0} max={10} step={1} defaultValue={2}>
+      <NumberField.ScrubArea className="scrub-area">
+        <NumberField.Input className="number-input" />
+      </NumberField.ScrubArea>
+
+      <NumberField.Decrement className="btn-step">Step Down</NumberField.Decrement>
+      <NumberField.Increment className="btn-step">Step Up</NumberField.Increment>
+    </NumberField.Root>
+  );
+}
+```
+
+Use code with caution.
+
+**What Base UI automates behind the scenes here:**
+
+- **Constraint Enforcement**: Automatically prevents typing numbers higher than `10` or lower than `0`.
+- **State Mapping**: The Decrement and Increment buttons automatically receive native `disabled` and `data-disabled` attributes when the value hits the `0` or `10` thresholds.
+- **Aria Injections**: Attaches semantic tags like `role="spinbutton"`, `aria-valuenow`, `aria-valuemin`, and `aria-valuemax` straight into the layout engine so screen readers declare it perfectly.
+
+***
+
+Summary of the Compound Component Pattern
+
+Notice how all these powerful components use a **dot-notation structure** (like `Dialog.Root`, `Dialog.Trigger`, `Dialog.Popup`).
+
+This architecture allows you to wrap **any** individual element inside your own custom layout components or apply the `render` prop directly onto individual parts of the layout block. You can safely style each piece individually using standard Tailwind CSS or CSS Modules, completely free of styling restrictions.
+
+Which of these complex patterns would you like to build or style next: the **anchored dropdown (Select)**, the **focus-trapping dialog**, or a **multi-step slider/number input**?
+
+You said: how do they look like respectively
+
+Because **Base UI** provides strictly **zero styling out of the box**, these components initially render as plain, unstyled HTML elements stacked on top of each other. \[[1](https://mui.com/base-ui/getting-started/)]
+
+Once you apply your own design system (such as Tailwind CSS or CSS Modules), they morph into whatever look you want.
+
+1\. The Select Component (Dropdown Menu)
+
+- **Without CSS (The Raw Elements)**: It looks like a basic HTML text block sitting next to a plain button. When clicked, a standard, unstyled box with a vertical list of raw text options pops up wherever the browser puts it. \[[1](https://mui.com/base-ui/react-select/)]
+- **With CSS Applied**: It looks like a polished, custom select field.
+  - The **Trigger** becomes a clean input box with an indicator chevron.
+
+  - The **Popup list** transforms into a floating card with smooth shadows, rounded corners, and a micro-interaction layout.
+
+  - Hovering or using the arrow keys highlights rows with background tints.
+
+  - **The Output**: \[[1](https://mui.com/base-ui/react-select/)]
+
+<!---->
+
+```
+[ Choose a fruit...    v ]  <-- Select.Trigger
++------------------------+
+
+| Apple                  |  <-- Select.Option (Active)
+| Banana                 |  <-- Select.Option
+| Orange (Disabled)      |  <-- Select.Option (Disabled)
++------------------------+  <-- Select.Popup
+```
+
+***
+
+2\. The Dialog Component (Modal Popup)
+
+- **Without CSS (The Raw Elements)**: The trigger button looks completely normal, but clicking it flashes a raw box containing text and inputs directly at the bottom or top of your page. There is no overlay, no background dimming, and no layout styling.
+- **With CSS Applied**: It behaves like a modern modal window.
+  - The **Backdrop** expands to cover the entire browser viewport with a semi-transparent dark tint (e.g., `background-color: rgba(0,0,0,0.5)`) to focus the user's attention.
+
+  - The **Popup box** animates into the exact center of the screen with a clean white card structure, defined text hierarchies, and a localized close button layout.
+
+  - **The Output**: \[[1](https://mui.com/material-ui/react-dialog/), [2](https://www.youtube.com/watch?v=WNUuzCaheww)]
+
+<!---->
+
+```
++--------------------------------------------------------+
+
+|  Webpage Background (Dimmed & Blurred)                  |
+|                                                        |
+|         +------------------------------------+         |
+|         | Edit Profile                     X |         | <-- Title & Close
+|         | Make changes to your info here.    |         | <-- Description
+|         |                                    |         |
+|         |  [ Username                     ]  |         | <-- Content Input
+|         |                                    |         |
+|         |                     [Save Changes] |         | <-- Actions Button
+|         +------------------------------------+         | <-- Dialog.Popup
+|                                                        |
++--------------------------------------------------------+
+```
+
+***
+
+3\. The Number Field Component (Stepper Input)
+
+- **Without CSS (The Raw Elements)**: It renders as a standard rectangular text box with two raw HTML buttons ("Step Up" and "Step Down") sitting underneath or next to it in a messy line. \[[1](https://react-aria.adobe.com/NumberField/useNumberField.html)]
+- **With CSS Applied**: It becomes a clean, unified utility wrapper.
+  - The input is centered, and the layout often places the **Increment** and **Decrement** targets as seamless inline buttons embedded directly inside the left and right corners of the border frame.
+
+  - When you click or hold a button to hit the maximum or minimum bounds, that specific button changes opacity or switches color dynamically via the `data-disabled` tracker.
+
+  - **The Output**: \[[1](https://react-aria.adobe.com/NumberField/useNumberField.html), [2](https://react-spectrum.adobe.com/v3/NumberField.html)]
+
+<!---->
+
+```
++----------------------------------------+
+
+|  [-]  |           42           |  [+]  |
++----------------------------------------+
+  ^                 ^                 ^
+Decrement         Input           Increment
+```
+
+Would you like the specific **Tailwind utility classes** to turn one of these unstyled component layouts into these exact visual designs?
+
+- [link](https://react-aria.adobe.com/NumberField/useNumberField.html)\
+  useNumberField – NumberField - React Aria - Adobe\
+  Example. The following example shows how to build a simple number field. It includes an input element where the user can type a nu...\
+  React Aria
+- [link](https://react-spectrum.adobe.com/v3/NumberField.html)\
+  NumberField – V3 - React Spectrum - Adobe\
+  Minimum and maximum values. The minValue and maxValue props can be used to limit the entered value to a specific range. The value ...\
+  React Spectrum
+- [link](https://mui.com/material-ui/react-dialog/)\
+  React Dialog component - Material UI\
+  Dialogs inform users about a task and can contain critical information, require decisions, or involve multiple tasks. A Dialog is ...\
+  MUI
+
+Show all
+
+You said: i mean the dom
+
+Base UI leverages compound component patterns to maintain an ultra-clean DOM footprint. Components like `*.Root` and `*.Portal` do not output structural containers into your HTML markup. \[[1](https://base-ui.com/react/components/select), [2](https://base-ui.com/react/components/select)]
+
+The exact rendered browser DOM structures for those three components illustrate how Base UI maps attributes, roles, and states directly onto single tags.
+
+***
+
+1\. The Select Component (Dropdown Menu)
+
+When collapsed, only the trigger displays in the HTML tree. Clicking the trigger dynamically appends the portal tree at the very end of your document body (). \[[1](https://base-ui.com/react/components/select), [2](https://asfak00.medium.com/how-to-build-modals-dropdowns-that-behave-like-native-browser-popups-5e0b760b4c32)]
+
+When Closed:
+
+html
+
+```
+<!-- Inside your application view layout -->
+<button
+  type="button"
+  id="base-select-trigger-1"
+  aria-haspopup="listbox"
+  aria-expanded="false"
+  aria-controls="base-select-popup-1"
+>
+  <span>Apple</span> <!-- From <Select.Value> -->
+</button>
+```
+
+Use code with caution.
+
+When Opened:
+
+The popup structure mounts outside your main app root right before the closing tag: \[[1](https://asfak00.medium.com/how-to-build-modals-dropdowns-that-behave-like-native-browser-popups-5e0b760b4c32)]
+
+html
+
+```
+<!-- Appended dynamically to document.body -->
+<div
+  style="position: absolute; left: 100px; top: 200px;"
+  data-side="bottom"
+>
+  <div
+    id="base-select-popup-1"
+    role="listbox"
+    aria-labelledby="base-select-trigger-1"
+    tabindex="-1"
+  >
+    <!-- Selected Option -->
+    <div role="option" aria-selected="true" id="opt-1" tabindex="-1">
+      Apple
+    </div>
+
+    <!-- Hovered/Focused via keyboard option -->
+    <div role="option" aria-selected="false" id="opt-2" tabindex="0" data-highlighted>
+      Banana
+    </div>
+
+    <!-- Disabled option -->
+    <div role="option" aria-selected="false" aria-disabled="true" data-disabled>
+      Orange
+    </div>
+  </div>
+</div>
+```
+
+Use code with caution.
+
+- **No `Root` Wrapper**: The context wrapper does not generate any HTML markup.
+- **The Positioner Wrapper**: The parent holding the listbox is created by `Select.Positioner` to control CSS layout coordinates automatically. \[[1](https://base-ui.com/react/components/select), [2](https://base-ui.com/react/components/select)]
+
+***
+
+2\. The Dialog Component (Modal)
+
+When closed, the dialog layers are absent from the DOM tree. When active, it appends a portal layer directly to the base element, creating a focus lock. \[[1](https://base-ui.com/react/components/dialog), [2](https://css-tricks.com/dialog-components-roll-your-own/), [3](https://asfak00.medium.com/how-to-build-modals-dropdowns-that-behave-like-native-browser-popups-5e0b760b4c32)]
+
+html
+
+```
+<!-- Appended dynamically to document.body -->
+
+<!-- Backdrop layer -->
+<div class="dialog-backdrop" aria-hidden="true"></div>
+
+<!-- Modal box wrapper -->
+<div
+  role="dialog"
+  id="base-dialog-1"
+  aria-modal="true"
+  aria-labelledby="base-dialog-title-1"
+  aria-describedby="base-dialog-desc-1"
+>
+  <h2 id="base-dialog-title-1">Edit Profile</h2>
+  <p id="base-dialog-desc-1">Make changes to your profile info here.</p>
+
+  <div class="dialog-content">
+    <input type="text" placeholder="Username" />
+  </div>
+
+  <button type="button" aria-label="Close dialog">Save changes</button>
+</div>
+```
+
+Use code with caution.
+
+- **Accessibility Management**: Base UI links the container to the descriptive headers using `aria-labelledby` and `aria-describedby`.
+- **Page Inertia**: Base UI automatically modifies the main application node by injecting an `aria-hidden="true"` parameter to hide background text from screen reader flows while the modal stays active. \[[1](https://base-ui.com/react/components/dialog), [2](https://css-tricks.com/dialog-components-roll-your-own/)]
+
+***
+
+3\. The Number Field Component (Stepper Input)
+
+Unlike the fields that render elements via dynamic portals, the number stepper lives fully in place within your standard application grid.
+
+html
+
+```
+<div data-value="2">
+  <!-- Interactive drag/scrub tracking frame -->
+  <div role="presentation">
+    <input
+      type="text"
+      inputmode="decimal"
+      role="spinbutton"
+      aria-valuenow="2"
+      aria-valuemin="0"
+      aria-valuemax="10"
+      value="2"
+    />
+  </div>
+
+  <button type="button" tabindex="-1" aria-label="Decrease value">Step Down</button>
+  <button type="button" tabindex="-1" aria-label="Increase value">Step Up</button>
+</div>
+```
+
+Use code with caution.
+
+- **The Root Box**: outputs a container tracking `data-value`.
+- **Native Inputs Overridden**: Base UI swaps the default input type from a native HTML `type="number"` spinner structure over to a standard accessible layout block mapping `role="spinbutton"`.
+- **Button Tab Blocks**: The tracking stepper click flags feature a `tabindex="-1"` parameter so keyboard loops bypass them cleanly, encouraging swift numeric updates via the **Up/Down Arrow keys** instead.
+
+Would you like to analyze how the DOM changes during rapid events, like stepping a numeric value until it triggers a **disabled boundary state**?
+
+- [link](https://css-tricks.com/dialog-components-roll-your-own/)\
+  Dialog Components: Go Native HTML or Roll Your Own?\
+  May 23, 2022 — The dialog should close when clicking outside the dialog (on the backdrop) or when pressing the ESC key. It should trap focus to p...\
+  CSS-Tricks
+- [link](https://asfak00.medium.com/how-to-build-modals-dropdowns-that-behave-like-native-browser-popups-5e0b760b4c32)\
+  How to Build Modals & Dropdowns That Behave Like Native ...\
+  Sep 7, 2025 — Enter Portals. In React, a Portal allows you to render a component outside of its normal parent DOM hierarchy, while still being p...\
+  Medium·Asfak Ahmed
+- [link](https://base-ui.com/react/components/select)\
+  Select - Base UI\
+  Anatomy. Import the component and assemble its parts: import { Select } from '@base-ui/react/select'; Positioning. has a special p...\
+  Base UI
+
+Show all
+
+You said: how to style it or put your existing bare component inside
+
+You can style Base UI using **any styling tool** (Tailwind CSS, Styled Components, or CSS Modules). <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">If you have an existing pre-styled UI component, you integrate it by passing it directly into the <strong><code dir="ltr" style="font-size: 14px; margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 1px solid rgb(44, 46, 53);">render</code> prop</strong></mark>. \[[1](https://smithery.ai/skills/jackspace/base-ui-react), [2](https://base-ui.com/)]
+
+The three primary methods to style Base UI components are detailed below. \[[1](https://base-ui.com/)]
+
+***
+
+Method 1: Injecting Your Existing Pre-Styled Component (Using `render`)
+
+If you already have a fully designed component (e.g., a custom Button, a styled-component, or an external UI component), pass it directly into the `render` prop. Base UI will inject its accessibility behaviors directly onto your tag without altering your layout. \[[1](https://smithery.ai/skills/jackspace/base-ui-react), [2](https://www.youtube.com/watch?v=54-hITMASgM)]
+
+tsx
+
+```
+import { Button } from '@base-ui/react/button';
+import { MyExistingStyledButton } from './MyDesignSystem'; // Your styled component
+
+export default function App() {
+  return (
+    // Base UI completely adopts your existing button element and attaches its click/focus logic
+    <Button render={<MyExistingStyledButton variant="primary" size="large" />}>
+      Click Me
+    </Button>
+  );
+}
+```
+
+Use code with caution.
+
+***
+
+Method 2: Styling with Tailwind CSS (Using States)
+
+Base UI exposes real-time interaction flags via CSS `data-*` attributes. In Tailwind CSS, you target these instantly using the `data-[state]` utility string \[4]. \[[1](https://www.w3schools.com/css/css3%5Fbuttons.asp), [2](https://baseweb.design/guides/styling/)]
+
+tsx
+
+```
+import { Button } from '@base-ui/react/button';
+
+export default function TailwindButton() {
+  return (
+    <Button
+      className="px-4 py-2 bg-blue-600 text-white rounded-md transition-all
+                 hover:bg-blue-700
+                 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-300
+                 data-[disabled]:bg-gray-300 data-[disabled]:text-gray-500 data-[disabled]:cursor-not-allowed"
+    >
+      Tailwind Style
+    </Button>
+  );
+}
+```
+
+Use code with caution.
+
+***
+
+Method 3: Dynamic Customization (Using the Render Function)
+
+If your styling setup requires direct conditional flags or you want to swap texts/icons dynamically based on state, write the `render` prop as a **callback function**. This exposes the live state of the component. \[[1](https://smithery.ai/skills/jackspace/base-ui-react)]
+
+tsx
+
+```
+import { Button } from '@base-ui/react/button';
+
+export default function DynamicButton() {
+  return (
+    <Button
+      render={(props, state) => (
+        <button
+          {...props}
+          style={{
+            padding: '10px 20px',
+            borderRadius: '5px',
+            border: 'none',
+            color: 'white',
+            // Read Base UI live states to alter properties on the fly
+            backgroundColor: state.disabled ? '#cccccc' : '#007fff',
+            cursor: state.disabled ? 'not-allowed' : 'pointer',
+          }}
+        >
+          {state.disabled ? 'Please Wait...' : 'Submit Form'}
+        </button>
+      )}
+    />
+  );
+}
+```
+
+Use code with caution.
+
+***
+
+Summary Checklist for Custom Components
+
+If you pass a custom React component into the `render` prop, ensure your component handles these two steps: \[[1](https://smithery.ai/skills/jackspace/base-ui-react)]
+
+1. **Spread the Props (`{...props}`)**: This passes down Base UI's internal click mappings, tracking hooks, and ARIA labels.
+2. **Forward the Ref (`React.forwardRef`)**: This passes down focus targeting so keyboard shortcuts function correctly. \[[1](https://smithery.ai/skills/jackspace/base-ui-react)]
+
+tsx
+
+```
+import * as React from 'react';
+
+// Perfect template for your custom elements to accept Base UI bindings
+export const MyCustomBaseElement = React.forwardRef<HTMLButtonElement, React.ComponentProps<'button'>>(
+  ({ children, ...props }, ref) => {
+    return (
+      <button ref={ref} {...props} className="my-custom-css-class">
+        {children}
+      </button>
+    );
+  }
+);
+```
+
+Use code with caution.
+
+What styling architecture are you currently working with (**Tailwind**, **Styled Components**, or **Vanilla CSS**) for your design system?
+
+- [link](https://www.youtube.com/watch?v=54-hITMASgM)\
+  Styled Components Is the Only Way To Do CSS\
+  Jul 20, 2022 — i wanted to make a quick video about styled components a thing I've been using lately with my React development which I do quite a...\
+  7:43\
+  YouTube·Engineer Man
+- [link](https://smithery.ai/skills/jackspace/base-ui-react)\
+  base-ui-react - Skill - Smithery\
+  Why Render Props? Base UI uses render props instead of Radix's asChild pattern. This provides: ✅ Explicit prop spreading - Clear w...\
+  Smithery
+- [link](https://base-ui.com/)\
+  Unstyled UI components for accessible design systems · Base UI\
+  Does Base UI work with any styling library? Yes. Base UI works with Tailwind, CSS Modules, CSS-in-JS, plain CSS, and any other sty...\
+  Base UI
+
+Show all
+
+You said: a button is too simple. another example.
+
+Let’s look at a much more complex example: a custom **Tabs** component.
+
+Tabs require synchronized states across multiple buttons and content panels, arrow-key navigation, and precise ARIA linking.
+
+Below is how you style it from scratch using standard CSS, or inject your own custom elements into individual sub-parts.
+
+1\. The Code Structure
+
+Base UI splits the Tabs system into logical sub-components. You style them by passing `className` or using the `render` prop on any specific sub-element.
+
+tsx
+
+```
+import * as React from 'react';
+import { Tabs } from '@base-ui/react/tabs';
+import './Tabs.css';
+
+export default function CustomTabs() {
+  return (
+    <Tabs.Root defaultValue="account" className="tabs-container">
+      {/* 1. The List container that handles horizontal keyboard loop */}
+      <Tabs.List className="tabs-list" aria-label="Settings">
+
+        {/* Using standard styling */}
+        <Tabs.Tab value="account" className="tabs-trigger">
+          Account
+        </Tabs.Tab>
+
+        {/* OR: Injecting an existing custom styled element using 'render' */}
+        <Tabs.Tab value="password" render={<button className="my-prestyled-tab" />}>
+          Password
+        </Tabs.Tab>
+
+      </Tabs.List>
+
+      {/* 2. The Panel containers that show/hide based on active tab state */}
+      <Tabs.Panel value="account" className="tabs-panel">
+        <div>Manage your profile data settings here.</div>
+      </Tabs.Panel>
+
+      <Tabs.Panel value="password" className="tabs-panel">
+        <div>Update your security credentials here.</div>
+      </Tabs.Panel>
+    </Tabs.Root>
+  );
+}
+```
+
+Use code with caution.
+
+***
+
+2\. Styling with CSS (Targeting States)
+
+Base UI adds real-time `data-selected` and `data-disabled` attributes to the HTML elements as the user clicks or presses arrow keys. You can style them in your CSS file like this:
+
+**`Tabs.css`**
+
+css
+
+```
+/* Container framework layout */
+.tabs-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+}
+
+.tabs-list {
+  display: flex;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* Base style for the triggers */
+.tabs-trigger, .my-prestyled-tab {
+  padding: 8px 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* 🎯 Active Selection Style: Target the attribute Base UI provides */
+.tabs-trigger[data-selected], .my-prestyled-tab[data-selected] {
+  color: #2563eb;
+  border-bottom: 2px solid #2563eb;
+}
+
+/* Panels */
+.tabs-panel {
+  padding: 16px;
+  background-color: #f8fafc;
+}
+```
+
+Use code with caution.
+
+***
+
+3\. The Resulting Browser DOM
+
+Base UI does not inject intermediate wrapper tags. The layout contexts compile flat into clean HTML, wiring up screen reader IDs automatically:
+
+html
+
+```
+<div class="tabs-container">
+  <!-- Tabs.List -->
+  <div role="tablist" aria-label="Settings" class="tabs-list">
+
+    <!-- Tabs.Tab 1 (Active) -->
+    <button
+      type="button"
+      role="tab"
+      id="base-tab-account"
+      aria-selected="true"
+      aria-controls="base-panel-account"
+      tabindex="0"
+      data-selected
+      class="tabs-trigger"
+    >
+      Account
+    </button>
+
+    <!-- Tabs.Tab 2 (Inactive) -->
+    <button
+      type="button"
+      role="tab"
+      id="base-tab-password"
+      aria-selected="false"
+      aria-controls="base-panel-password"
+      tabindex="-1"
+      class="my-prestyled-tab"
+    >
+      Password
+    </button>
+  </div>
+
+  <!-- Tabs.Panel 1 (Visible) -->
+  <div
+    role="tabpanel"
+    id="base-panel-account"
+    aria-labelledby="base-tab-account"
+    class="tabs-panel"
+  >
+    <div>Manage your profile data settings here.</div>
+  </div>
+
+  <!-- Tabs.Panel 2 (Hidden automatically by Base UI via CSS/DOM) -->
+</div>
+```
+
+Use code with caution.
+
+What Base UI Handled For You Here
+
+1. **Focus Controls**: Hitting the **Left/Right Arrow keys** shifts focus across tabs immediately.
+2. **Tab Index Management**: The active tab receives `tabindex="0"`, while the hidden elements flip to `tabindex="-1"` so regular tab navigation skips them cleanly.
+3. **ARIA Strings**: The elements are tied together via cross-referenced `aria-controls` and `aria-labelledby` fields.
+
+Would you like to explore how to attach entry and exit **animations** to the tabs panels using a framework like **Framer Motion** or **Tailwind CSS transitions**?
+
+You said: what's tabs
+
+**Tabs** are <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">user interface elements used to organize and navigate between groups of related content within a single webpage container</mark>. They work identically to physical folder tabs in a filing cabinet—clicking a specific tab header instantly swaps out the visible content panel beneath it without refreshing the page. \[[1](https://mui.com/base-ui/react-tabs/), [2](https://www.lenovo.com/us/en/glossary/tab/), [3](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/)]
+
+The Core Parts (Anatomy)
+
+In [Base UI's Tabs Documentation](https://base-ui.com/react/components/tabs), a complete tabs setup is split into four distinct compound pieces: \[[1](https://base-ui.com/react/components/tabs)]
+
+- **`Tabs.Root`**: The parent logic container that synchronizes the active tab state across the entire group.
+- **`Tabs.List`**: The horizontal layout strip that holds your tab headers and manages keyboard focus loops.
+- **`Tabs.Tab`**: The individual interactive button that a user clicks or highlights to swap sections.
+- **`Tabs.Panel`**: The content card container that automatically toggles its visibility based on the active tab. \[]
+
+A Real-World Analogy: Profile Settings Page
+
+If you are building an application settings page, you use Tabs to separate vast forms into structured sections so the user isn't overwhelmed by scrolling: \[[1](https://base.uber.com/6d2425e9f/p/2345e5-tabs/b/46994b)]
+
+```
+[ Account ]  [ Security ]  [ Billing ]     <-- Tabs.List / Tabs.Tab
++------------------------------------+
+
+|                                    |
+|  [ Input: Change Username       ]  |     <-- Tabs.Panel
+|  [ Input: Change Email          ]  |
+|                                    |
++------------------------------------+
+```
+
+Why Use a Library for Tabs?
+
+While swapping panels with a simple React state variable (`useState`) is easy, it leaves keyboard and screen reader users completely stranded. Base UI automates the complex **W3C accessibility standards** under the hood: \[[1](https://base-ui.com/), [2](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/)]
+
+- **Arrow Key Navigation**: Pressing the **Left/Right Arrow keys** automatically focuses and updates the active tab item without requiring mouse clicks. \[, [2](https://www.youtube.com/watch?v=DcDYMM15aY8)]
+- **Screen Reader Links**: The library injects matching hidden browser strings (`aria-controls` and `aria-labelledby`) so visually impaired users hear precisely which content card belongs to which header button. \[[1](https://base-ui.com/react/components/tabs)]
+
+Would you like to see how to structure **Tabs to work as Router links** (so the URL path updates when you click each tab) using Base UI's `render` prop? \[[1](https://base-ui.com/react/components/tabs)]
+
+- [link](https://base-ui.com/react/components/tabs)\
+  Tabs - Base UI\
+  Tabs · Base UI. Overview. Links. List. Tab. Indicator. Panel. Tabs. A component for toggling between related panels on the same pa...\
+  Base UI
+- [link](https://mui.com/base-ui/react-tabs/)\
+  React Tabs components - MUI Base\
+  Tabs are UI elements for organizing and navigating between groups of related content.\
+  MUI
+- [link](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/)\
+  Tabs Pattern | APG | WAI - W3C\
+  Tabs are a set of layered sections of content, known as tab panels, that display one panel of content at a time. Each tab panel ha...\
+  W3C
+
+Show all
+
+You said: i do not get it. a nav bar like home, blog, archive, sns?
+
+You are exactly right to question that—a navigation bar with pages like **Home, Blog, Archive, and SNS (Socials)** is a completely different UI pattern called a **Navigation Menu**! \[[1](https://base-ui.com/react/components/navigation-menu)]
+
+The confusion comes from how they look vs. how they behave. While they can look visually identical (a horizontal row of links), they have completely different jobs under the hood.
+
+The Big Difference: Tabs vs. Navigation Menu
+
+| Feature \[[1](https://www.setproduct.com/blog/tabs-ui-design), [2](https://base-ui.com/react/components/navigation-menu), [3](https://cxl.com/blog/tabbed-navigation/), [4](https://base-ui.com/react/components/menu), [5](https://base-ui.com/react/components/button), [6](https://base-ui.com/react/components/tabs), [7](https://github.com/mui/base-ui/issues/4186)] | Tabs Component                                                      | Navigation Menu (What you want)                                  |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| **The Job**                                                                                                                                                                                                                                                                                                                                                                | Swaps content panels on the **same page** without changing the URL. | Changes the **browser URL** to navigate to an entirely new page. |
+| **Semantic Tag**                                                                                                                                                                                                                                                                                                                                                           | Uses .                                                              | Uses links ().                                                   |
+| **Keyboard Interaction**                                                                                                                                                                                                                                                                                                                                                   | Moving left/right requires **Arrow keys**.                          | Moving left/right uses the standard **Tab key**.                 |
+
+***
+
+How to Build Your Nav Bar with Base UI
+
+To create a bar with _Home, Blog, Archive, and SNS_, you should use [Base UI's Navigation Menu](https://base-ui.com/react/components/navigation-menu). It wraps your links with correct `type` semantics and provides immediate support for dropdown submenus if you ever want to add them later. \[[1](https://base-ui.com/react/components/navigation-menu)]
+
+Here is how you build a clean, accessible layout for your navigation bar:
+
+1\. The Code Structure
+
+tsx
+
+```
+import * as React from 'react';
+import { NavigationMenu } from '@base-ui/react/navigation-menu';
+import './NavBar.css';
+
+export default function NavBar() {
+  return (
+    <NavigationMenu.Root className="nav-root">
+      <NavigationMenu.List className="nav-list">
+
+        {/* Simple Link Item */}
+        <NavigationMenu.Item>
+          <NavigationMenu.Link href="/" className="nav-link">
+            Home
+          </NavigationMenu.Link>
+        </NavigationMenu.Item>
+
+        <NavigationMenu.Item>
+          <NavigationMenu.Link href="/blog" className="nav-link">
+            Blog
+          </NavigationMenu.Link>
+        </NavigationMenu.Item>
+
+        <NavigationMenu.Item>
+          <NavigationMenu.Link href="/archive" className="nav-link">
+            Archive
+          </NavigationMenu.Link>
+        </NavigationMenu.Item>
+
+        <NavigationMenu.Item>
+          <NavigationMenu.Link href="/sns" className="nav-link">
+            SNS
+          </NavigationMenu.Link>
+        </NavigationMenu.Item>
+
+      </NavigationMenu.List>
+    </NavigationMenu.Root>
+  );
+}
+```
+
+Use code with caution.
+
+***
+
+2\. The Resulting Browser DOM
+
+Base UI converts this setup into clean structural layouts without junk tags:
+
+html
+
+```
+<nav class="nav-root">
+  <ul class="nav-list">
+    <li>
+      <a href="/" class="nav-link">Home</a>
+    </li>
+    <li>
+      <a href="/blog" class="nav-link">Blog</a>
+    </li>
+    <li>
+      <a href="/archive" class="nav-link">Archive</a>
+    </li>
+    <li>
+      <a href="/sns" class="nav-link">SNS</a>
+    </li>
+  </ul>
+</nav>
+```
+
+Use code with caution.
+
+- **Pure HTML Semantics**: Base UI renders a true wrapper, an unordered list , list items , and native anchor link elements automatically.
+
+***
+
+3\. What if you use Next.js, Remix, or React Router?
+
+If you are using a framework router instead of standard HTML links, use the **`render` prop** to drop your router link (like Next.js ) inside Base UI: \[[1](https://base-ui.com/react/components/navigation-menu)]
+
+tsx
+
+```
+import NextLink from 'next/link';
+
+<NavigationMenu.Link render={<NextLink href="/blog" />} className="nav-link">
+  Blog
+</NavigationMenu.Link>
+```
+
+Use code with caution.
+
+Are you using a **meta-framework like Next.js** for your routes, or are you just using standard **HTML routing templates**? \[[1](https://base-ui.com/react/components/navigation-menu)]
+
+- [link](https://cxl.com/blog/tabbed-navigation/)\
+  Tabbed Navigation: When to Use It, and How to Optimize It\
+  Mar 6, 2023 — Still, many sites followed Amazon's lead and the definition of tabbed navigation started to shift from Nielsen's “switching betwee...\
+  CXL
+- [link](https://base-ui.com/react/components/tabs)\
+  Tabs - Base UI\
+  Workspace stats and activity. index.tsxindex.module.css. import { Tabs } from '@base-ui/react/tabs'; import styles from './index.m...\
+  Base UI
+- [link](https://github.com/mui/base-ui/issues/4186)\
+  \[navigation menu] Keyboard navigation gets into broken state ...\
+  Feb 24, 2026 — I'll jump back to a top-level item, then to the first child of the previous top-level item's submenu, then up to it's parent. Then...\
+  GitHub
+
+Show all
+
+You said: i will definitely not use tabs. i have my own routing for url and own design for tabs, not arrow keys, lists, panels. another example.
+
+Let’s completely move away from page navigation and layout boxes.
+
+A great example of a component where you **cannot use a simple HTML element**—but where you still need a custom design without arrow-key grids or router setups—is the **Switch (Toggle)** component.
+
+A Switch is used to instantly toggle settings on or off (like a "Dark Mode" switch, turning notifications on/off, or changing app settings).
+
+1\. The Code Structure
+
+Base UI divides a Switch into a logical context block, a track frame, and a thumb slider. You can style the tracks dynamically or use the `render` prop to swap them out entirely for your own designs.
+
+tsx
+
+```
+import * as React from 'react';
+import { Switch } from '@base-ui/react/switch';
+import './Switch.css';
+
+export default function CustomSwitch() {
+  const [checked, setChecked] = React.useState(false);
+
+  return (
+    <div className="settings-row">
+      <label htmlFor="dark-mode-toggle">Enable Dark Mode</label>
+
+      {/* The core context manager */}
+      <Switch.Root
+        id="dark-mode-toggle"
+        checked={checked}
+        onCheckedChange={setChecked}
+        className="switch-root"
+      >
+        {/* The outer track frame */}
+        <Switch.Track className="switch-track">
+          {/* The moving indicator ball */}
+          <Switch.Thumb className="switch-thumb" />
+        </Switch.Track>
+      </Switch.Root>
+    </div>
+  );
+}
+```
+
+Use code with caution.
+
+***
+
+2\. Styling with CSS (Targeting the State)
+
+Base UI handles the toggle interaction and injects a dynamic `data-checked` attribute onto the DOM nodes when active. You can style the switch to slide smoothly using simple CSS transitions:
+
+**`Switch.css`**
+
+css
+
+```
+.settings-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* The structural layout of the pill track */
+.switch-track {
+  width: 44px;
+  height: 24px;
+  background-color: #cbd5e1; /* Gray when off */
+  border-radius: 9999px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 200ms ease;
+  border: none;
+  padding: 0;
+}
+
+/* 🎯 Active state: Switch the track color to blue when checked */
+.switch-track[data-checked] {
+  background-color: #2563eb;
+}
+
+/* The structural layout of the circular slider thumb */
+.switch-thumb {
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50px;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: transform 200ms ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* 🎯 Active state: Slide the thumb to the right when checked */
+.switch-thumb[data-checked] {
+  transform: translateX(20px);
+}
+```
+
+Use code with caution.
+
+***
+
+3\. The Resulting Browser DOM
+
+Base UI compiles this down into a single interactive button tracking your input state, preventing DOM bloat:
+
+html
+
+```
+<div class="settings-row">
+  <label for="dark-mode-toggle">Enable Dark Mode</label>
+
+  <!-- Switch.Root + Switch.Track merge into a single button node -->
+  <button
+    type="button"
+    role="switch"
+    id="dark-mode-toggle"
+    aria-checked="true"
+    data-checked
+    class="switch-track"
+  >
+    <!-- Switch.Thumb -->
+    <span data-checked class="switch-thumb"></span>
+  </button>
+</div>
+```
+
+Use code with caution.
+
+What Base UI Handled For You Here
+
+1. **State Injection**: Clicking anywhere on the track updates your React state, toggles the `aria-checked` string between `"true"` and `"false"`, and flips the CSS `data-checked` selectors instantly.
+2. **Keyboard Mapping**: It maps the **Spacebar** and **Enter** keys automatically to toggle the value when the element is highlighted via keyboard navigation, without you needing to write explicit key event handlers.
+3. **No Hidden Inputs**: Traditional custom switches require hiding a checkbox input off-screen using hacky CSS formulas. Base UI bypasses this entirely, outputting a modern semantic element that screen readers interpret out of the box.
+
+If you are styling this form layout, let me know if you would like to see how to use the **`render` prop** to overlay this switch setup directly onto an **animated canvas asset** or your own **custom icons**. How would you like to proceed?
+
+You said: well, what's a switch. it's off on the left, and on on the right?
+
+Yes, you hit the nail on the head. That is exactly what a Switch is.
+
+It is the digital version of a physical toggle switch or a light switch.
+
+How It Works Visually
+
+- **OFF (Left)**: The slider ball sits on the left side. The background is usually a neutral gray.
+- **ON (Right)**: When clicked, the slider ball slides smoothly to the right. The background changes to a distinct color (like blue or green) to show it is active.
+
+Where You See It Everywhere
+
+You interact with this exact component daily on your phone or laptop settings:
+
+- Turning **Wi-Fi** or **Bluetooth** on/off.
+- Toggling **Dark Mode** on/off.
+- Enabling or disabling **Push Notifications**.
+
+Why Base UI Handles It For You
+
+If you tried to build this with just a raw HTML , clicking it with a mouse would change the visual state, but it would be completely broken for anyone else:
+
+- **The Keyboard Problem**: You wouldn't be able to "Tab" to it or press the **Spacebar** to flip it.
+- **The Screen Reader Problem**: A blind user's device would just read out random text, with no idea that it is an interactive on/off toggle.
+
+Base UI lets you design that exact "off-on-the-left, on-on-the-right" sliding look however you want, while it silently manages the backend keyboard triggers and accessibility hooks.
+
+Would you like to look at a **Slider** component next? (The ones you drag left and right to adjust things like **Volume** or **Screen Brightness**?)
+
+You said: ok. how does baseui trigger.
+
+Base UI triggers components by utilizing a concept called <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>React Context Interaction</strong> under the hood</mark>.
+
+Components with actions—such as a `Dialog`, `Popover`, `Menu`, or `Dropdown`—use a structural pairing system: a **Trigger component** sets up the interactions, and a **Root component** acts as the central logic hub. \[[1](https://base-ui.com/react/handbook/composition), [2](https://base-ui.com/react/components/popover), [3](https://base-ui.com/react/components/preview-card)]
+
+***
+
+How Base UI Wires the Trigger Up (The Mechanics)
+
+When you write a paired layout block like a Popover, Base UI handles the state management invisibly:
+
+tsx
+
+```
+import { Popover } from '@base-ui/react/popover';
+
+<Popover.Root>
+  <Popover.Trigger>Open Popover</Popover.Trigger> {/* 1. The Trigger */}
+
+  <Popover.Portal>
+    <Popover.Positioner>
+      <Popover.Popup>Content Box</Popover.Popup>
+    </Popover.Positioner>
+  </Popover.Portal>
+</Popover.Root>
+```
+
+Use code with caution.
+
+Behind the scenes, Base UI performs three automated tasks to execute the trigger:
+
+1\. Context Sharing (No Props Required)
+
+The element does not render any markup in your HTML. Its only job is to provide a hidden **React Context Provider** wrapper. The and read from this shared context provider to communicate state changes smoothly. \[[1](https://github.com/mui/base-ui/issues/3577)]
+
+2\. Event Interception
+
+Base UI injects required event hooks into the trigger. When the `Popover.Trigger` mounts, Base UI intercepts its props and maps click and keyboard event handling to the context state:
+
+- **Clicks**: It attaches an internal pointer click listener that flips the parent state `open` boolean to `true`.
+- **Keydowns**: It attaches keyboard listeners so pressing **Enter** or **Space** triggers the open state automatically.
+- **Hover Interaction**: For components like `Tooltip`, the trigger automatically defaults to using `onMouseEnter` and `onMouseLeave` instead of click listeners. \[[1](https://base-ui.com/react/components/popover), [2](https://base-ui.com/react/components/tooltip)]
+
+3\. State Attributes
+
+When a trigger activates a popup, Base UI appends dynamic state attributes directly to the DOM node. This lets you style the trigger's open state easily using standard CSS attribute selectors: \[[1](https://base-ui.com/react/components/context-menu)]
+
+- **Closed Trigger DOM**:
+- **Opened Trigger DOM**: \[[1](https://base-ui.com/react/components/context-menu)]
+
+***
+
+Styling and Overriding Triggers
+
+Because Base UI uses the `render` prop architecture across all components, you can swap out the default trigger element with your own custom element or pre-styled UI component. Base UI will seamlessly copy the context interaction hooks onto your target node. \[[1](https://base-ui.com/react/handbook/composition)]
+
+tsx
+
+```
+import { Popover } from '@base-ui/react/popover';
+import { MyCustomStyledButton } from './DesignSystem';
+
+// Base UI drops its button and binds its click/open behaviors directly to your custom button element
+<Popover.Trigger render={<MyCustomStyledButton variant="gradient" />}>
+  Open Popover
+</Popover.Trigger>
+```
+
+Use code with caution.
+
+Advanced Case: Detached Triggers \[]
+
+If your layout design requires placing a trigger button far away from the popup markup in your component tree, you can bypass the standard parent-child nesting layout entirely. Base UI provides a utility function called **`createHandle`** to bind separated nodes together via a clean reference key: \[]
+
+tsx
+
+```
+import { Popover } from '@base-ui/react/popover';
+
+// 1. Create a detached reference link
+const myPopoverHandle = Popover.createHandle(); //
+
+export default function Layout() {
+  return (
+    <div>
+      {/* The trigger lives inside your navigation header block */}
+      <header>
+        <Popover.Trigger handle={myPopoverHandle}>Open Settings</Popover.Trigger> {/* */}
+      </header>
+
+      {/* The popup portal lives down in a separate global footer layout layout block */}
+      <footer>
+        <Popover.Root handle={myPopoverHandle}> {/* */}
+          <Popover.Portal>
+            <Popover.Positioner>
+              <Popover.Popup>Settings Form Panel</Popover.Popup>
+            </Popover.Positioner>
+          </Popover.Portal>
+        </Popover.Root>
+      </footer>
+    </div>
+  );
+}
+```
+
+Use code with caution.
+
+Would you like to see how to use the **`render` prop** to chain multiple triggers together, such as nesting a **`Tooltip.Trigger`** inside a **`Dialog.Trigger`**? \[[1](https://base-ui.com/react/handbook/composition)]
+
+- [link](https://base-ui.com/react/handbook/composition)\
+  Composition - Base UI\
+  Composing custom React components. Use the render prop to compose a Base UI part with your own React components. For example, most...\
+  Base UI
+- [link](https://base-ui.com/react/components/context-menu)\
+  Context Menu - Base UI\
+  Trigger. An area that opens the menu on right click or long press. Renders a\
+  element. className. | string | (( state: ContextMenu...\
+  Base UI
+- [link](https://base-ui.com/react/components/popover)\
+  Popover - Base UI\
+  Controlled mode with multiple triggers. You can control the popover's open state externally using the open and onOpenChange props ...\
+  Base UI
+
+Show all
+
+You said: i mean for the switch. how does it trigger when space or enter.
+
+For the **Switch**, Base UI doesn't actually need to handle the keyboard logic manually because it leverages native browser behavior. \[[1](https://stackoverflow.com/questions/76760436/how-can-i-let-users-interact-with-a-toggle-button-using-the-spacebar-and-enter-k), [2](https://stackoverflow.com/questions/27878940/spacebar-triggering-click-event-on-checkbox)]
+
+The library converts your and tags into a **native HTML element**. \[[1](https://base-ui.com/react/components/switch)]
+
+1\. The Browser's Default Action
+
+Web browsers have a built-in accessibility rule for button elements: **when a native is focused, pressing the Spacebar or Enter key automatically fires a `click` event.** \[[1](https://stackoverflow.com/questions/76760436/how-can-i-let-users-interact-with-a-toggle-button-using-the-spacebar-and-enter-k), [2](https://developer.android.com/develop/ui/compose/touch-input/keyboard-input/commands), [3](https://stackoverflow.com/questions/27878940/spacebar-triggering-click-event-on-checkbox)]
+
+Because Base UI renders a true button, it doesn't need to write manual keyboard listeners for those keys. It simply puts a standard React `onClick` handler on that button.
+
+2\. How the Trigger Flow Works Step-by-Step
+
+When you press Space or Enter, the chain reaction looks like this:
+
+1. **User Action**: You press `Tab` to focus the switch, then hit **Spacebar**.
+2. **Browser Layer**: The browser says, _"This is a focused , and the user hit Space. I will now fire a `click` event"_.
+3. **React Layer**: React's global event listener catches that click event.
+4. **Base UI Layer**: Base UI intercepts the click, toggles its internal `checked` state from `false` to `true`, and updates your React state wrapper.
+5. **DOM Update**: Base UI flips the attribute on the HTML node from `aria-checked="false"` to `aria-checked="true"`, and updates the style tag from `data-checked="false"` to `data-checked="true"`. \[[1](https://stackoverflow.com/questions/27878940/spacebar-triggering-click-event-on-checkbox), [2](https://base-ui.com/react/components/switch), [3](https://github.com/mui/base-ui/issues/3759)]
+
+***
+
+What if you render the switch as a ?
+
+If you use the `render` prop to change the outer track into a generic , the browser's automatic keyboard-to-click mapping stops working entirely.
+
+To fix this, Base UI activates its manual backup listener:
+
+tsx
+
+```
+// If you do this, Base UI switches to manual mode:
+<Switch.Root render={<div />} nativeButton={false}>
+  <Switch.Thumb />
+</Switch.Root>
+```
+
+Use code with caution.
+
+When `nativeButton={false}` is declared: \[[1](https://base-ui.com/react/components/switch)]
+
+- Base UI manually adds `tabindex="0"` and `role="switch"` so the browser can focus the .
+- It attaches a custom **`onKeyDown`** event listener to the .
+- If that listener detects an `Enter` or `Space` keypress, it manually calls `event.preventDefault()` (to stop the Spacebar from scrolling your webpage) and toggles the switch state. \[[1](https://developer.android.com/develop/ui/compose/touch-input/keyboard-input/commands)]
+
+Would you like to see how to capture this toggle state to change your **application layout theme**, or trigger an **API request** when it flips?
+
+- [link](https://stackoverflow.com/questions/76760436/how-can-i-let-users-interact-with-a-toggle-button-using-the-spacebar-and-enter-k)\
+  How can I let users interact with a toggle button using the ...\
+  Jul 25, 2023 — 1 Answer. Sorted by: 0. A common way to create a toggle button is using the aria-pressed attribute. It represents the buttons curr...\
+  Stack Overflow
+- [link](https://developer.android.com/develop/ui/compose/touch-input/keyboard-input/commands)\
+  Handle keyboard actions | Jetpack Compose\
+  Jan 16, 2026 — Be specific in describing the key events your app handles. The following snippet calls a doSomething() function only if the user r...\
+  Android Developers
+- [link](https://stackoverflow.com/questions/27878940/spacebar-triggering-click-event-on-checkbox)\
+  Spacebar triggering click event on checkbox? - Stack Overflow\
+  Jan 10, 2015 — 1 Comment. ... the onclick event is triggered by the keyboard for accessibility purposes. Browsers use the click event even if its...\
+  Stack Overflow
+
+Show all
+
+You said: ok. for popover. usage. expected dom. how does it trigger.
+
+The **Popover** component displays a floating overlay anchored next to a trigger element (like a context menu, profile card, or info tooltip).
+
+1\. Minimal Usage Example
+
+Base UI splits the popover into a logical root, an interactive trigger button, a portal layout wrapper, a coordinate positioner, and the actual content container card.
+
+tsx
+
+```
+import * as React from 'react';
+import { Popover } from '@base-ui/react/popover';
+import './PopoverStyles.css';
+
+export default function CustomPopover() {
+  return (
+    <Popover.Root>
+      {/* The button that opens the popover box */}
+      <Popover.Trigger className="popover-btn">
+        View Info
+      </Popover.Trigger>
+
+      <Popover.Portal>
+        {/* Handles the absolute X/Y coordinate math on your viewport */}
+        <Popover.Positioner className="popover-positioner">
+          {/* The visible content card container */}
+          <Popover.Popup className="popover-card">
+            <h4>Popover Title</h4>
+            <p>This is a floating popover overlay panel.</p>
+          </Popover.Popup>
+        </Popover.Positioner>
+      </Popover.Portal>
+    </Popover.Root>
+  );
+}
+```
+
+Use code with caution.
+
+***
+
+2\. The Expected Browser DOM
+
+When the Popover is **opened**, Base UI generates two separate HTML structures to prevent layout inheritance bugs and keep your DOM flat.
+
+Inside Your Application View Structure:
+
+The context wrapper (`Popover.Root`) disappears entirely. Only the trigger stays in place within your layout grid:
+
+html
+
+```
+<button
+  type="button"
+  id="base-popover-trigger-1"
+  aria-haspopup="dialog"
+  aria-expanded="true"
+  aria-controls="base-popover-popup-1"
+  data-popup-open
+  class="popover-btn"
+>
+  View Info
+</button>
+```
+
+Use code with caution.
+
+Outside Your App View (Appended to ):
+
+The portal layer (`Popover.Portal`) cleanly moves the container code to the bottom of the page, preventing any parent `overflow: hidden` styles from cropping your dropdown:
+
+html
+
+```
+<!-- Appended dynamically right before the closing </body> tag -->
+<div
+  class="popover-positioner"
+  style="position: absolute; left: 240px; top: 120px;"
+  data-side="bottom"
+>
+  <div
+    id="base-popover-popup-1"
+    role="dialog"
+    aria-labelledby="base-popover-trigger-1"
+    class="popover-card"
+  >
+    <h4>Popover Title</h4>
+    <p>This is a floating popover overlay panel.</p>
+  </div>
+</div>
+```
+
+Use code with caution.
+
+***
+
+3\. How It Triggers Under the Hood
+
+The entire interaction pipeline is driven by React context orchestration and low-level browser abstractions.
+
+- **The Click Trigger**: When you click the trigger button, Base UI catches the synthetic click event, toggles its inner state context `open` parameter to `true`, and updates your layout. It simultaneously injects `aria-expanded="true"` and `data-popup-open` onto the trigger button.
+- **The Positioner Calculation**: The moment the state transitions to open, `Popover.Positioner` (powered by an internal integration with Floating UI) instantly calculates the physical window dimensions and location of your trigger button. It automatically maps exact absolute inline coordinates (`style="position: absolute; left: ...; top: ...;"`) onto the wrapper box so it docks cleanly next to the button.
+- **Smart Bounds Adjustments**: If the trigger button sits too close to the bottom border of the user's browser viewport, the positioner automatically reverses its rendering math, switching the asset from `data-side="bottom"` to `data-side="top"` so the modal box never cuts off.
+- **Dismiss Interactions**: Base UI monitors global click and focus flows while active. Clicking anywhere outside the popup card, focusing away with the keyboard, or hitting the **Escape key** immediately updates the context loop back to `false` and cleanly destroys the portal tree.
+
+If you want to customize this look further, I can show you how to apply **Tailwind CSS classes** to turn this raw layout into a styled tooltip card or map entry/exit **slide animations**. What direction are you heading next?
+
+You said: what does it do for popover
+
+When you render a **Popover**, Base UI handles three major categories of work for you: <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>Keyboard Accessibility (WAI-ARIA)</strong>, <strong>Collision-Free Screen Positioning</strong>, and <strong>Viewport Management</strong></mark>.
+
+Here is exactly what Base UI does behind the scenes to make a Popover function correctly: \[[1](https://floating-ui.com/docs/popover), [2](https://floating-ui.com/)]
+
+1\. It Links the Trigger and Popup for Screen Readers \[[1](https://base-ui.com/react/components/tooltip)]
+
+A blind user navigating with a screen reader needs to know that a button will open a floating menu. Base UI automatically generates matching IDs and handles the ARIA attributes: \[[1](https://floating-ui.com/docs/popover), [2](https://www.telerik.com/design-system/docs/components/popover/)]
+
+- It applies `aria-haspopup="dialog"` to the trigger.
+- When opened, it instantly flips `aria-expanded="false"` to `aria-expanded="true"`.
+- It links the container using `aria-controls="unique-id"`. You do not have to generate these IDs yourself. \[[1](https://floating-ui.com/docs/popover)]
+
+2\. It Manages Absolute Screen Coordinates (Floating UI)
+
+Base UI has [Floating UI](https://floating-ui.com/) built straight into its core. \[[1](https://floating-ui.com/docs/react-examples), [2](https://floating-ui.com/)]
+
+- **Anchor Positioning**: It reads the exact layout coordinates of your trigger button on the viewport and positions your popup perfectly next to it. \[[1](https://floating-ui.com/docs/popover)]
+- **Collision Detection**: If your trigger button sits too close to the bottom edge of the browser window, Base UI automatically recalculates the position, flipping the popover to show _above_ the button so your content is never clipped. \[[1](https://carbondesignsystem.com/components/popover/usage/)]
+
+3\. It Implements Focus Trapping and "Dismiss-on-Click-Away" \[[1](https://mui.com/material-ui/react-popover/)]
+
+Base UI injects global listener rules that disappear when the popover destroys itself:
+
+- **The Escape Key**: Hitting the `Escape` key closes the popover immediately.
+- **Outside Clicks**: Clicking anywhere else on the document backdrop instantly drops the active state and closes the container.
+- **Focus Restoration**: When the popover closes, it forcefully redirects browser focus right back to the button that triggered it, preventing the user's focus from getting lost. \[[1](https://carbondesignsystem.com/components/popover/usage/), [2](https://floating-ui.com/docs/popover)]
+
+4\. It Shifts Stacking Contexts (Portals)
+
+If your button lives inside a container styled with `overflow: hidden` or a low `z-index`, a standard nested HTML structure will cut off the popover card.
+
+- Base UI bypasses this entirely using React Portals.
+- It plucks your elements completely out of your application's regular component nesting tree and appends them directly under `document.body`. This guarantees your popover always floats cleanly on top of all other page components. \[[1](https://base-ui.com/react/overview/quick-start), [2](https://mui.com/base-ui/react-popper/), [3](https://mui.com/base-ui/react-popper/components-api/), [4](https://carbondesignsystem.com/components/popover/usage/)]
+
+Would you like to see how to use **Base UI’s `openOnHover` prop** to turn this popover into an information icon **Tooltip** layout instead? \[[1](https://github.com/mui/base-ui/issues/3530), [2](https://base-ui.com/react/components/tooltip)]
+
+- [link](https://carbondesignsystem.com/components/popover/usage/)\
+  Popover - Carbon Design System\
+  Apr 14, 2026 — Popover. ... A popover is a layer that pops up over all other elements on a page. \* Live demo. \* Overview. \* Formatting. \* Content...\
+  Carbon Design System
+- [link](https://floating-ui.com/docs/popover)\
+  Popover - Floating UI\
+  On this page. A popover is an interactive mini-dialog floating element that displays information related to an anchor element when...\
+  Floating UI
+- [link](https://www.telerik.com/design-system/docs/components/popover/)\
+  Overview of the Popover Component | Design System Kit - Telerik.com\
+  Popover Overview The popover component is a UI element that displays additional content or options when the anchor element is hove...\
+  Telerik.com
+
+Show all
+
+You said: does it cancel or ok when esc
+
+When you press the **Escape (`Esc`) key**, <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">Base UI treats it strictly as a <strong>"Cancel / Dismiss"</strong> action</mark>. \[[1](https://developer.mozilla.org/en-US/docs/Web/API/Popover%5FAPI/Using), [2](https://base-ui.com/react/components/alert-dialog)]
+
+It resets the component's internal open state to `false`, instantly closing the popover panel without submitting, saving, or confirming anything. \[[1](https://base-ui.com/react/components/popover), [2](https://base-ui.com/react/components/alert-dialog), [3](https://stackoverflow.com/questions/24659976/close-bootstrap-popover-on-esc-keypress)]
+
+How Base UI Differentiates the Actions
+
+Base UI relies on a state-change callback called `onOpenChange`. When the `Esc` key is pressed, Base UI passes a specific **event reason string**. This allows you to track exactly _how_ the popover was dismissed and ensure it operates purely as a cancel function: \[[1](https://base-ui.com/react/components/dialog), [2](https://base-ui.com/react/components/alert-dialog)]
+
+tsx
+
+```
+<Popover.Root
+  onOpenChange={(open, event, detail) => {
+    if (!open && detail.reason === 'escape-key') { //
+      console.log('The user explicitly cancelled by pressing Esc!');
+      // Revert unfinished form modifications or discard drafts here
+    }
+  }}
+>
+  {/* Popover Layout Content */}
+</Popover.Root>
+```
+
+Use code with caution.
+
+The 3 Ways Base UI Handles the "Escape" Trigger
+
+1. **Stops Event Propagation**: Base UI actively intercepts the `Esc` keydown event and isolates it. This prevents a nested popover from accidentally bubbling up and closing a parent Dialog or background window layout simultaneously. \[[1](https://github.com/openui/open-ui/issues/1147), [2](https://base-ui.com/react/handbook/customization)]
+2. **Focus Rollback**: Pressing `Esc` strips the active keyboard focus from the floating popover card and gracefully snaps the user's focus straight back onto your original `Popover.Trigger` button.
+3. **Discards Changes**: If you have input fields or text forms inside the popover card, hitting `Esc` drops the portal tree entirely, resetting any uncommitted user input unless you have manually wired it to a local state cache. \[[1](https://github.com/WordPress/gutenberg/issues/63310), [2](https://base-ui.com/react/components/alert-dialog)]
+
+If you want an operation to act as a definitive **"OK / Save"**, you must add an explicit primary interaction button (like ) inside your layout card. Hitting `Esc` will always act as the quick-escape route. \[[1](https://github.com/WordPress/gutenberg/issues/63310)]
+
+Would you like to see how to prevent the `Esc` key from closing the popover entirely if you want to force the user to click a confirmation button?
+
+- [link](https://github.com/openui/open-ui/issues/1147)\
+  \[popover]: event propagation for the escape key #1147 - GitHub\
+  Jan 30, 2025 — Right now, elements with popover dismiss with the Escape key out of the box, but do not prevent that keyboard event from reaching ...\
+  GitHub
+- [link](https://developer.mozilla.org/en-US/docs/Web/API/Popover%5FAPI/Using)\
+  Using the Popover API - MDN Web Docs\
+  Dec 17, 2025 — The popover can be "light dismissed" — this means that you can hide the popover by clicking outside it. The popover can also be cl...\
+  MDN Web Docs
+- [link](https://github.com/WordPress/gutenberg/issues/63310)\
+  Popovers with form controls for settings should use Cancel and Save ...\
+  Jul 9, 2024 — Instead, when usign the keyboard in most of these popovers the only way to close the popover is to press the Escape key or the X c...\
+  GitHub
+
+Show all
+
+# 
