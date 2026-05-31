@@ -223,6 +223,7 @@ desktop:
 android:
 
 - remove samsung dnd indicator via shizuku termux adb
+- test declarative predictable hello world compilation
 
 ops: <!-- devops, ci, vcs, ... -->
 
