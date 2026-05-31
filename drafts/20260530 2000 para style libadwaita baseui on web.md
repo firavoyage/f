@@ -4695,4 +4695,1044 @@ Would you like to see how to prevent the `Esc` key from closing the popover enti
 
 Show all
 
-# 
+# if google write their sites in react, will they create new components for specific apps or use everything from an existing comprehensive material design library (!)
+
+4:32 AM
+
+If Google were to build a major web app using React, <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">they would <strong>combine a highly customized core Material Design token library with bespoke, app-specific components</strong></mark>, rather than relying solely on a generic, off-the-shelf library. \[[1](https://m3.material.io/), [2](https://mui.com/material-ui/getting-started/), [3](https://coreui.io/answers/how-to-use-material-ui-in-react/)]
+
+While external developers often use third-party libraries like [Material UI (MUI)](https://mui.com/) to build Material apps, Google operates very differently at scale. \[[1](https://www.reddit.com/r/webdev/comments/1ipu756/what%5Fdoes%5Fgoogle%5Fuse%5Fto%5Fmake%5Ftheir%5Fuis/)]
+
+1\. Design Tokens over Complete Components \[[1](https://medium.com/@ananyavhegde2001/why-mui-changed-how-i-build-react-apps-and-why-you-should-care-ae907d2b8445)]
+
+Google relies heavily on **Design Tokens** (the fundamental building blocks like specific color hex codes, spacing intervals, typography scales, and motion curves) managed via [Material Design 3](https://m3.material.io/). Instead of importing rigid, pre-built components, a Google React team would ingest these centralized token files. This ensures that even if they build a custom component from scratch, it perfectly matches Google’s design language. \[[1](https://greenonsoftware.com/articles/react/react-components-based-on-design-system-with-styled-components/), [2](https://www.remio.ai/post/google-rolls-out-material-3-expressive-design-to-pixel-6-and-newer-phones-with-additional-feature-up), [3](https://seenode.com/blog/what-is-material-3-and-why-it-matters-in-2025), [4](https://m3.material.io/), [5](https://www.reddit.com/r/webdev/comments/1ipu756/what%5Fdoes%5Fgoogle%5Fuse%5Fto%5Fmake%5Ftheir%5Fuis/)]
+
+2\. The Internal Hybrid Approach
+
+In practice, a large tech company like Google utilizes a tiered structure for their component architecture:
+
+- **The Foundation (Shared Core):** They would use an internal, shared foundational library for primitive elements. These are highly accessible, low-level building blocks like basic buttons, checkboxes, and input frames.
+- **The Specifics (Bespoke Layouts):** For an application like Google Docs or YouTube, a generic Material library is insufficient. Google would code custom, complex components (e.g., a specialized video player drawer or a collaborative document canvas) completely from scratch. They would simply inject the core styling tokens to keep them visually cohesive. \[[1](https://blog.logrocket.com/choosing-when-to-build-a-custom-react-component-library/), [2](https://medium.com/@ananyavhegde2001/why-mui-changed-how-i-build-react-apps-and-why-you-should-care-ae907d2b8445), [3](https://dev.to/melvinprince/the-complete-guide-to-scalable-nextjs-architecture-39o0), [4](https://m3.material.io/), [5](https://www.reddit.com/r/webdev/comments/1ipu756/what%5Fdoes%5Fgoogle%5Fuse%5Fto%5Fmake%5Ftheir%5Fuis/)]
+
+3\. Hyper-Optimization and Performance
+
+Publicly available Material libraries are built to be all-inclusive and generic to serve millions of different developers. Google’s engineering culture heavily prioritizes strict performance metrics like **Time to Interactive (TTI)** and minimal bundle sizes. Using a massive, comprehensive library can sometimes introduce unnecessary bundle bloat or complex rendering cycles. Building specific components natively or extending highly stripped-down primitives allows them to optimize code execution for that exact use case. \[[1](https://www.contentful.com/blog/ultimate-guide-react-component-library/), [2](https://www.quora.com/What-are-some-reasons-why-Google-might-not-use-React-js-for-all-its-new-web-development), [3](https://stackoverflow.com/questions/42358158/how-does-search-engine-indexing-work-for-javascript-web-applications-like-react), [4](https://www.reddit.com/r/reactjs/comments/ugbsjk/build%5Fcomponents%5Ffrom%5Fscratch%5For%5Fuse%5Fan%5Fexisting/), [5](https://www.reddit.com/r/reactjs/comments/os126m/why%5Fuse%5Fmaterial%5Fui%5Fwhat%5Fare%5Fthe%5Fbenefits/), [6](https://www.pubnub.com/guides/react/), [7](https://mui.com/material-ui/getting-started/)]
+
+4\. Framework Reality Check
+
+It is worth noting that Google rarely uses React for its core user-facing products (like Search, Maps, or Gmail). Instead, they traditionally rely on internal monorepo frameworks (like _Boq_), Angular, and increasingly **Web Components**. Their official implementation of web-based Material design actually uses Lit and standard Web Components rather than React, allowing their design elements to run natively in the browser across _any_ framework a team chooses. \[[1](https://googleupdatesnewsfeatures.quora.com/Does-Google-use-ReactJS), [2](https://www.quora.com/Does-Google-use-ReactJS), [3](https://www.uxpin.com/studio/blog/react-vs-web-components/), [5](https://www.reddit.com/r/webdev/comments/1ipu756/what%5Fdoes%5Fgoogle%5Fuse%5Fto%5Fmake%5Ftheir%5Fuis/), [6](https://www.quora.com/What-are-some-reasons-why-Google-might-not-use-React-js-for-all-its-new-web-development)]
+
+If you are planning an architecture strategy, would you like to know how to structure **design tokens** in React, or do you want to compare **Web Components** against **MUI** for a multi-app ecosystem?
+
+- [link](https://m3.material.io/)\
+  Material Design 3 - Google's latest open source design system\
+  Material Design 3 - Google's latest open source design system. Material Design. Material Design 3 is Google's open-source design s...\
+  Material Design
+- [link](https://mui.com/material-ui/getting-started/)\
+  Material UI - Overview\
+  Overview - Material UI. Getting started. Overview. Installation. Usage. MCP. New. llms.txt. New. Example projects. Templates. Lear...\
+  MUI
+- [link](https://www.reddit.com/r/reactjs/comments/os126m/why%5Fuse%5Fmaterial%5Fui%5Fwhat%5Fare%5Fthe%5Fbenefits/)\
+  Why use Material UI? What are the benefits? : r/reactjs - Reddit\
+  I think some of the things that I've heard is that it's pretty painful to create exceptions (as in, doing things that are non-defa...\
+  Reddit
+
+Show all
+
+You said: what new components will they create for new apps. examples.
+
+4:35 AM
+
+If Google built new apps in React, they would create specialized, high-performance components that do not exist in standard UI libraries. These components handle unique layouts, heavy data processing, and advanced interactivity.
+
+Here are specific examples of the types of new components they would build for different app concepts:
+
+1\. Artificial Intelligence & Multi-Modal Apps
+
+Standard chat boxes cannot handle advanced AI interactions. Google would build components optimized for streaming data and heavy media integration.
+
+- : A component that dynamically renders, formats, and updates citations or source links mid-sentence as an AI response streams into the UI.
+- : A unified input container that simultaneously processes live audio streams, video files, and text prompts, featuring built-in compression and chunked uploading states.
+- : A visual indicator showing exactly which parts of a long conversation or document history are actively loaded into the AI model's context window.
+
+2\. Immersive Mapping & Spatial Apps
+
+Standard map UIs only show flat markers. Next-generation mapping apps require complex overlay layers and seamless dimension shifting.
+
+- : A component that handles the complex visual cross-fade and asset-loading state when a user zooms from a 2D vector map into a 3D "Immersive View" or Street View.
+- : A specialized scrub bar that allows users to slide through time to view historical satellite imagery or predicted traffic patterns for a specific location.
+
+3\. Next-Gen Collaborative Productivity Apps
+
+Basic text fields and grids do not support real-time multi-user editing. These require highly specialized canvases.
+
+- : A container that tracks, throttles, and renders dozens of real-time user cursors, typing indicators, and text selections without triggering heavy React re-renders.
+- : For a spreadsheet app, a single table cell component capable of switching contexts instantly—from plain text, to a live updating stock ticker, to an embedded micro-chart.
+
+4\. Advanced Search & Discovery Apps
+
+Google Search requires instant, accessible filtering for massive datasets that standard dropdown menus cannot support.
+
+- : A dynamic, chip-based filtering component that changes its internal UI state (e.g., shifting from a date picker to a color palette selector) based on the specific search category detected by the app.
+
+Would you like to explore the **technical code architecture** for one of these components, or look at how Google manages **state synchronization** across complex UI elements?
+
+You said: how do they do
+
+5:31 AM
+
+To achieve the performance and scale required for these complex components, Google avoids standard React patterns like basic `useState` or naive DOM manipulation. Instead, they rely on **bypassing the virtual DOM, offloading processing to web workers, and using low-level browser APIs**.
+
+Here is exactly how Google's engineering teams architect and execute those advanced components:
+
+1\. Bypassing React for Real-Time Render Loops
+
+For components like the (tracking dozens of live user cursors) or (3D map zooming), standard React state updates would trigger full component re-renders. This would cause massive UI lag and dropped frames.
+
+- **The Execution**: They use React purely as a thin shell to mount the component. Inside, they capture a DOM reference using `useRef()`.
+- **The Tech**: The actual rendering skips React entirely. Cursors are painted directly onto an HTML5 element or updated via absolute CSS transforms within a `requestAnimationFrame` loop.
+- **Data Flow**: Network updates from WebSockets or WebRTC bypass React state entirely. They feed directly into this high-speed render loop to guarantee **60 frames per second (FPS)**.
+
+2\. Offloading Heavy Data to Web Workers
+
+Components like the (processing live video/audio chunks) or the spreadsheet require massive data computation. Running this on the browser's main thread would freeze the entire user interface.
+
+- **The Execution**: Google splits the component logic into a UI layer (React) and a Data layer (Web Worker).
+- **The Tech**: When a user drops a large file or recalculates a massive formula, the React component uses a lightweight messaging protocol to pass the raw data payload to a background **Web Worker**.
+- **The Result**: The heavy cryptography, file chunking, or math formulas happen on a separate CPU thread. The worker sends back only the final, lightweight result, keeping the main UI completely fluid and responsive.
+
+3\. Native Streaming Parsing for AI Text
+
+For the , traditional Markdown parsers require the entire text string to be complete before rendering. Google cannot wait for an entire paragraph to finish generating before showing citations.
+
+- **The Execution**: They use stateful, incremental token parsers.
+- **The Tech**: As a stream arrives via the browser's native Fetch Streams API, a custom tokenization engine evaluates the text byte-by-byte.
+- **The Result**: If the engine detects a regex pattern or binary flag indicating a source link (e.g., `[source:1]`), it immediately injects a specialized inline sub-component into the live DOM tree before the rest of the text has even left the server.
+
+4\. Micro-Frontends and Code Splitting
+
+For dynamic UI elements like the , Google cannot afford to bundle every possible filter variant (color pickers, date grids, maps) into the initial JavaScript payload.
+
+- **The Execution**: They implement strict, predictive **lazy loading** based on user intent.
+- **The Tech**: The parent search component acts as a router. When a user hovers over a category or types a specific keyword, the app fires a predictive pre-fetch request using dynamic `import()`.
+- **The Result**: The specific JavaScript bundle needed to render that exact filter is downloaded and compiled in milliseconds right before the user clicks it, keeping the initial website load size incredibly small.
+
+Would you like to see a **code example** of a React component bypassing the virtual DOM via `useRef`, or look at how a **Web Worker** communicates with a React component?
+
+You said: how do they do the design for new components
+
+Google designs new components <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">through a highly structured, data-driven system called <strong>token-driven development</strong></mark>, managed by cross-functional teams of "Design Technologists." They never design components in isolation. Every new button, chart, or interactive canvas is created as part of a globally unified ecosystem.
+
+Here is the exact step-by-step lifecycle of how Google takes a new component from an abstract idea to a coded product:
+
+1\. The Design Token Foundation (The "DNA")
+
+Google uses **Material Design 3 (M3)** as its core design framework \[1]. Instead of hardcoding visual properties like colors, margins, or fonts directly into a component, they use **Design Tokens**.
+
+- **What they are:** Tokens are centralized, platform-agnostic configuration variables (JSON or W3C DTCG format). For example, instead of writing `#1a73e8`, a designer uses the token `md.sys.color.primary`.
+- **How it works:** When a designer creates a new component in Figma, they link it directly to these tokens. If Google decides to change its signature "blue" color globally, engineers change one token file, and thousands of distinct components across different apps update instantly.
+
+2\. Prototyping by "Design Technologists"
+
+At Google, the handoff between design and engineering is bridged by a specialized role called a **Design Technologist**. These are hybrid professionals who are equal parts UX designer and UI engineer.
+
+- **The Problem:** Traditional static tools like Figma or Sketch cannot accurately simulate complex web interactions, like an AI text stream or a 60 FPS multiplayer canvas.
+- **The Execution:** Design Technologists take static mockups and build functional, interactive code prototypes using frameworks like Lit, HTML5 Canvas, or React. They test these prototypes with real users to refine animations, latency feel, and layouts before scaling production code.
+
+3\. Strict Accessibility (a11y) Architecture
+
+Every new component Google creates must be accessible to millions of people globally, including those with visual, motor, or cognitive impairments. Google designs accessibility into the component from day one.
+
+- **Screen Readers:** Designers and engineers mapping out a component define its strict semantic HTML tree and **ARIA (Accessible Rich Internet Applications)** role states. For example, a custom multi-modal dropzone must instantly broadcast file-upload progress updates to screen readers using `aria-live` regions.
+- **Keyboard Navigation:** Component blueprints must explicitly map out the "Tab order." If a user cannot navigate every single feature of the new component using only the arrow keys, `Tab`, and `Enter`, the design is rejected.
+
+4\. Component Tiering (Avoiding Fragmented UIs)
+
+To prevent every app team from reinventing the wheel, Google categorizes components into a three-tiered library architecture:
+
+```
+[ Tier 1: System Primitives ] -> (Core Material elements used by everyone, e.g., Buttons, Inputs)
+            ↓
+[ Tier 2: Domain Libraries ]   -> (Specific to an industry, e.g., Healthcare charts, Cloud consoles)
+            ↓
+[ Tier 3: App Bespoke ]        -> (Highly unique features, e.g., YouTube's live-chat ticker)
+```
+
+If a team builds a brand-new component for Google Search, it is evaluated by a centralized UX governance board. If the board determines that the component would be useful to Google Maps or Google Drive, it is promoted to a higher tier so other teams can inherit it.
+
+5\. Automation and Handoff (The Pipeline)
+
+Once a component design is approved, Google utilizes internal tooling pipelines to automate the translation from design assets to production code:
+
+- **Visual Assets:** SVGs, iconography, and animations (often using formats like Lottie or specialized vectors) are exported through automated asset pipelines that compress files to the absolute minimum byte size.
+- **Token Generation:** A tool reads the Figma token repository and automatically generates style sheets, CSS custom properties, or JavaScript objects tailored to whichever frontend framework that specific engineering team uses (React, Angular, or Web Components).
+
+Would you like to see an example of a **JSON Design Token structure** used to style a component, or learn how Google tests these designs with **real-world user telemetry**?
+
+You said: what design tokens do they have
+
+Google categorizes its design tokens into **three distinct architectural layers**: <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>Reference Tokens</strong>, <strong>System Tokens</strong>, and <strong>Component Tokens</strong></mark>. Each layer handles a different level of abstraction, moving from raw values to specific application contexts. \[[1](https://m3.material.io/foundations/design-tokens), [2](https://medium.com/design-bootcamp/design-tokens-the-foundation-of-scalable-design-systems-b880c9d78579), [3](https://m3.material.io/foundations/design-tokens/overview), [4](https://design.gitlab.com/product-foundations/design-tokens)]
+
+The official naming convention follows a structured, dot-separated taxonomy: `md.[layer].[category].[context].[variant]`. \[[1](https://m3.material.io/foundations/design-tokens)]
+
+***
+
+Layer 1: Reference Tokens (The Global Palette)
+
+These are the raw values. They map directly to a static color hex code, pixel value, or font weight. They are platform-agnostic and do not possess any UI meaning or context. \[[1](https://www.contentful.com/blog/design-token-system/), [2](https://nulab.com/learn/design-and-ux/design-tokens/), [3](https://thedesignsystem.guide/design-tokens), [5](https://medium.com/design-bootcamp/design-tokens-the-foundation-of-scalable-design-systems-b880c9d78579)]
+
+- **`md.ref.palette.primary40`**: `#1a73e8` (A specific Google blue hex code)
+- **`md.ref.palette.neutral10`**: `#1f1f1f` (A dark gray charcoal for dark themes)
+- **`md.ref.typeface.brand`**: `"Google Sans"` (Google's custom branding font)
+- **`md.ref.measurement.base`**: `8px` (The base grid multiplier)
+
+***
+
+Layer 2: System Tokens (The Decision Creators)
+
+System tokens apply meaning, behavior, and role contexts to reference tokens. They govern how an entire web application scales across different device themes (e.g., Light/Dark modes, High Contrast) without changing code layouts. \[[1](https://m3.material.io/foundations/design-tokens/overview), [2](https://www.contentful.com/blog/design-token-system/), [4](https://design.gitlab.com/product-foundations/design-tokens)]
+
+Google segments its system tokens into five key design pillars: \[[1](https://material-web.dev/theming/material-theming/)]
+
+A. Color Tokens
+
+These define the interactive roles of surface containers and typography. \[[1](https://www.contentful.com/blog/design-token-system/)]
+
+- **`md.sys.color.surface-container`**: Points to `md.ref.palette.neutral90` in light mode, but automatically flips to `md.ref.palette.neutral20` in dark mode.
+- **`md.sys.color.on-primary`**: The color used for text or icons that sit on top of a primary color element (usually white or dark blue). \[[1](https://www.youtube.com/watch?v=CJyJN0ZdEGA)]
+
+B. Typography Scales
+
+Unlike static font values, these define full typographical hierarchies responsive to screen breakpoints. \[[1](https://m3.material.io/styles/typography/overview)]
+
+- **`md.sys.typescale.body-large.font`**: `Google Sans Text`
+- **`md.sys.typescale.body-large.size`**: `1rem` (or `16px`)
+- **`md.sys.typescale.body-large.weight`**: `400` \[[1](https://m3.material.io/styles/typography/type-scale-tokens)]
+
+C. Spacing and Dimensions
+
+These manage paddings, layouts, margins, and density adjustments. \[[1](https://medium.com/eightshapes-llc/naming-tokens-in-design-systems-9e86c7444676), [2](https://m3.material.io/styles/spacing/tokens)]
+
+- **`md.sys.measurement.space100`**: `8px` (The standard density step)
+- **`md.sys.measurement.space200`**: `16px` (Double the base step)
+- **`md.sys.measurement.space-compact50`**: `4px` (For tight, high-density interfaces like Gmail web grids) \[[1](https://m3.material.io/styles/spacing/tokens)]
+
+D. Shape & Corner Radii
+
+These govern the "roundness" expressions found across card styles and dialog structures. \[[1](https://m3.material.io/), [2](https://m3.material.io/foundations/design-tokens/overview)]
+
+- **`md.sys.shape.corner-none`**: `0px` (For edge-to-edge layout sheets)
+- **`md.sys.shape.corner-small`**: `4px` (For input text fields or tooltips)
+- **`md.sys.shape.corner-full`**: `9999px` (For dynamic capsule chips and rounded Pill buttons)
+
+E. Motion & Animation
+
+These map ease-of-use physics curves and duration timers to CSS web animations. \[[1](https://m3.material.io/), [2](https://medium.com/eightshapes-llc/naming-tokens-in-design-systems-9e86c7444676)]
+
+- **`md.sys.motion.duration-short`**: `100ms` (For swift, simple hover transitions)
+- **`md.sys.motion.duration-long`**: `500ms` (For expanding multi-modal modals or full-screen routes)
+- **`md.sys.motion.easing-emphasized`**: `cubic-bezier(0.2, 0, 0, 1)` (The iconic Material 3 spring-like transition curve)
+
+***
+
+Layer 3: Component Tokens (The Local Level)
+
+Component tokens are the most specific layer. They scope a system token down to an explicit visual property inside an isolated element. This allows engineering teams to style custom UI elements without unintentionally altering the broader web layout framework. \[[1](https://m3.material.io/foundations/design-tokens/overview), [3](https://www.contentful.com/blog/design-token-system/), [4](https://medium.com/@NateBaldwin/component-level-design-tokens-are-they-worth-it-d1ae4c6b19d4)]
+
+If a React team builds an app-specific layout like the or a custom input dock, they map the component properties directly to system tokens:
+
+json
+
+```
+{
+  "md.comp.streaming-source.container.color": "md.sys.color.surface-container-low",
+  "md.comp.streaming-source.container.shape": "md.sys.shape.corner-small",
+  "md.comp.streaming-source.label.text-color": "md.sys.color.primary",
+  "md.comp.streaming-source.label.text-style": "md.sys.typescale.label-medium",
+  "md.comp.streaming-source.transition.entry": "md.sys.motion.easing-emphasized"
+}
+```
+
+Use code with caution.
+
+Would you like to see how an automated tool library (such as **Style Dictionary**) transforms these multi-layered JSON tokens into **CSS Custom Properties** or **React Theme Objects**?
+
+- [link](https://m3.material.io/foundations/design-tokens)\
+  Design tokens – Material Design 3\
+  \* Tokens point to style values like colors, fonts, and measurements. \* Use design tokens instead of hardcoded values. \* Each token...\
+  Material Design
+- [link](https://www.youtube.com/watch?v=CJyJN0ZdEGA)\
+  Design Tokens for Dummies | A Complete Guide\
+  Feb 17, 2025 — so Google defines design tokens as small reusable design decisions that make up a design systems visual style. but what does that ...\
+  50:19\
+  YouTube·UI Collective
+- [link](https://www.contentful.com/blog/design-token-system/)\
+  Design tokens explained (and how to build a ... - Contentful\
+  May 16, 2024 — Primitive Tokens: These are the most basic form of tokens, reducing the infinite possibilities to a select few that are most relev...\
+  Contentful
+
+Show all
+
+You said: example
+
+Here is a practical example of how Google processes design tokens.
+
+This workflow shows a **JSON design token blueprint** transformed into production-ready **CSS Custom Properties**, and finally applied inside a high-performance **React component** utilizing a `useRef` rendering loop.
+
+1\. The Design Token Definition (`tokens.json`)
+
+First, the centralized design tokens are defined in a cross-platform JSON file. Notice how the component layer maps directly back to system decisions.
+
+json
+
+```
+{
+  "md": {
+    "sys": {
+      "color": {
+        "surface-container": { "value": "#f0f4f9" },
+        "primary": { "value": "#0b57d0" },
+        "on-primary": { "value": "#ffffff" }
+      },
+      "motion": {
+        "easing-emphasized": { "value": "cubic-bezier(0.2, 0, 0, 1)" }
+      }
+    },
+    "comp": {
+      "streaming-source": {
+        "background": { "value": "{md.sys.color.surface-container}" },
+        "text": { "value": "{md.sys.color.primary}" },
+        "transition": { "value": "all 300ms {md.sys.motion.easing-emphasized}" }
+      }
+    }
+  }
+}
+```
+
+Use code with caution.
+
+2\. The Compiled Output (`theme.css`)
+
+Google's automated build pipeline (like _Style Dictionary_) parses that JSON and compiles it into native browser variables. This approach keeps the application highly performant because style adjustments happen natively in the browser's style engine rather than running expensive JavaScript re-calculations.
+
+css
+
+```
+:root {
+  /* System Tokens */
+  --md-sys-color-surface-container: #f0f4f9;
+  --md-sys-color-primary: #0b57d0;
+  --md-sys-motion-easing-emphasized: cubic-bezier(0.2, 0, 0, 1);
+
+  /* Component Tokens */
+  --md-comp-streaming-source-background: var(--md-sys-color-surface-container);
+  --md-comp-streaming-source-text: var(--md-sys-color-primary);
+  --md-comp-streaming-source-transition: all 300ms var(--md-sys-motion-easing-emphasized);
+}
+```
+
+Use code with caution.
+
+3\. The Implementation in React
+
+When building a custom component like the , the engineering team hooks the compiled tokens directly into the element's style properties.
+
+To keep the UI smooth at 60 FPS while streaming live data, they skip traditional React state management. Instead, they use a `useRef` DOM bridge and apply the design tokens via optimized CSS classes or inline custom property manipulations:
+
+jsx
+
+```
+import React, { useEffect, useRef } from 'react';
+import './theme.css'; // Imports the compiled tokens
+
+export function StreamingInlineSource({ streamSourceUrl }) {
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    // 1. Establish a high-performance network stream connection
+    const abortController = new AbortController();
+
+    async function consumeTextStream() {
+      const response = await fetch(streamSourceUrl, { signal: abortController.signal });
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+
+      // 2. High-speed render loop: Bypass React virtual DOM re-renders
+      while (containerRef.current) {
+        const { value, done } = await reader.read();
+        if (done) break;
+
+        const incomingTextChunk = decoder.decode(value, { stream: true });
+
+        // Append text directly to the DOM node for sub-millisecond paint times
+        containerRef.current.innerText += incomingTextChunk;
+      }
+    }
+
+    consumeTextStream();
+    return () => abortController.abort(); // Clean up connections on unmount
+  }, [streamSourceUrl]);
+
+  return (
+    <div
+      ref={containerRef}
+      className="streaming-source-container"
+      style={{
+        /* Inline styling cleanly maps back to our token layer */
+        backgroundColor: 'var(--md-comp-streaming-source-background)',
+        color: 'var(--md-comp-streaming-source-text)',
+        transition: 'var(--md-comp-streaming-source-transition)',
+        padding: '12px',
+        borderRadius: '8px',
+        fontFamily: 'sans-serif'
+      }}
+    />
+  );
+}
+```
+
+Use code with caution.
+
+If you are thinking about setting up a workflow like this, would you like to explore **how to automatically handle light and dark mode flipping** using these tokens, or see how to hook up an **automation tool like Style Dictionary**?
+
+You said: example of how a new component is designed
+
+Here is a step-by-step example of how Google would design a brand-new component: the .
+
+This is a smart file-drop area for a new AI application. It must visually accept files, process live mic audio, show chunked uploading states, and adapt instantly to dark mode.
+
+***
+
+Step 1: The Cross-Functional Sync (Figma to Code)
+
+A UX Designer, an Accessibility Specialist, and a Design Technologist meet. They map out the states of the component inside Figma using **Material Design 3 system tokens**.
+
+They do not pick random colors; they use the system's design language:
+
+- **Idle State Background:** `md.sys.color.surface-container-low` (Subtle gray/white)
+- **Drag Hover State Border:** `md.sys.color.primary` (Google Blue)
+- **Active Audio Recording State:** `md.sys.color.error` (Pulse warning red)
+
+***
+
+Step 2: Defining the Component Tokens
+
+The Design Technologist locks down the component's unique blueprint in code by creating **Component Tokens**. These link the layout directly back to Google's core system decisions.
+
+json
+
+```
+{
+  "md": {
+    "comp": {
+      "multimodal-dropzone": {
+        "idle-bg": { "value": "{md.sys.color.surface-container-low}" },
+        "active-border": { "value": "{md.sys.color.primary}" },
+        "recording-pulse": { "value": "{md.sys.color.error}" },
+        "text-style": { "value": "{md.sys.typescale.body-large}" },
+        "animation-curve": { "value": "{md.sys.motion.easing-emphasized}" }
+      }
+    }
+  }
+}
+```
+
+Use code with caution.
+
+***
+
+Step 3: Engineering the High-Performance React Component
+
+The engineering team implements the component. Because it processes live audio data stream chunks and dragging interactions, they use a **Web Worker** to process file cryptography and data chunks in the background, ensuring the UI stays fluid at 60 FPS.
+
+The Main React Component (`MultiModalDropzone.jsx`)
+
+jsx
+
+```
+import React, { useState, useEffect, useRef } from 'react';
+import './theme.css'; // Contains the compiled token styles
+
+export function MultiModalDropzone() {
+  const [isDragging, setIsDragging] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const workerRef = useRef(null);
+
+  // Initialize Web Worker for heavy data/file processing background threads
+  useEffect(() => {
+    workerRef.current = new Worker(new URL('./uploadWorker.js', import.meta.url));
+
+    // Listen for calculated progress from the background worker
+    workerRef.current.onmessage = (event) => {
+      if (event.data.type === 'PROGRESS') {
+        setUploadProgress(event.data.percentage);
+      }
+    };
+
+    return () => workerRef.current.terminate();
+  }, []);
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    setIsDragging(false);
+    const file = e.dataTransfer.files[0];
+
+    if (file) {
+      // Offload the heavy file chunking and hashing to the worker thread
+      workerRef.current.postMessage({ type: 'PROCESS_FILE', file });
+    }
+  };
+
+  return (
+    <div
+      className={`dropzone ${isDragging ? 'drag-active' : ''}`}
+      onDragOver={(e) => { e.preventDefault(); setIsDragging(true); }}
+      onDragLeave={() => setIsDragging(false)}
+      onDrop={handleDrop}
+      role="region"
+      aria-live="polite"
+      aria-label="Multi-modal file drop zone"
+      style={{
+        /* Token Mapping styling handles automated light/dark changes */
+        backgroundColor: 'var(--md-comp-multimodal-dropzone-idle-bg)',
+        fontFamily: 'var(--md-sys-typescale-body-large-font)',
+        transition: 'all 200ms var(--md-sys-motion-easing-emphasized)'
+      }}
+    >
+      <p>Drag files here or start speaking...</p>
+
+      {uploadProgress > 0 && (
+        <div className="progress-bar-container">
+          <div
+            className="progress-fill"
+            style={{
+              width: `${uploadProgress}%`,
+              backgroundColor: 'var(--md-comp-multimodal-dropzone-active-border)'
+            }}
+          />
+        </div>
+      )}
+    </div>
+  );
+}
+```
+
+Use code with caution.
+
+The Background Worker Thread (`uploadWorker.js`)
+
+This worker handles the processing entirely off the browser's main UI loop. Even if a user drops a 1GB video file, the React page will not freeze.
+
+javascript
+
+```
+// Background thread running completely isolated from the UI
+self.onmessage = async (event) => {
+  if (event.data.type === 'PROCESS_FILE') {
+    const { file } = event.data;
+    const chunkSize = 1024 * 1024; // 1MB Chunks
+    let offset = 0;
+
+    while (offset < file.size) {
+      const chunk = file.slice(offset, offset + chunkSize);
+
+      // Simulate heavy cryptographic hashing or network streaming upload calculations
+      await heavyCryptoCalculation(chunk);
+
+      offset += chunkSize;
+      const percentage = Math.min((offset / file.size) * 100, 100);
+
+      // Post progress updates back to the React UI component thread safely
+      self.postMessage({ type: 'PROGRESS', percentage: Math.round(percentage) });
+    }
+  }
+};
+
+async function heavyCryptoCalculation(chunk) {
+  return new Promise((resolve) => setTimeout(resolve, 50)); // Simulating CPU task
+}
+```
+
+Use code with caution.
+
+***
+
+Step 4: Automated Testing & Validation
+
+Before merging the new component into production, Google's CI/CD automated pipeline runs three checks:
+
+1. **Lighthouse accessibility (a11y) check:** Checks if the keyboard `Tab` index focuses correctly on the component and screen readers can read out the dynamic `uploadProgress` state using the configured `aria-live` tags.
+2. **Performance Check:** Assures that dragging over the canvas or changing themes does not push main thread block times over **16 milliseconds** (which would break the 60 FPS rule).
+3. **Visual Regression Test:** A headless browser takes screenshots of the component in both light and dark modes, comparing it pixel-by-pixel against the original Figma template file design decisions.
+
+Would you like to focus on how **accessibility mappings** are defined for screen readers during this process, or look at how **visual regression testing** compares Figma designs against real code?
+
+You said: i mean the design not implementation
+
+When Google designs a brand-new component like the , the process focuses entirely on user experience, ergonomics, visual frameworks, and strict behaviors—long before an engineer types a single line of production code.
+
+Google’s design process is highly mathematical and structural. Here is how they design a new component from scratch.
+
+***
+
+Phase 1: Contextual Discovery & Ergonomics
+
+Designers do not start with layout drawings. They start by defining the component’s **behavioral footprint**.
+
+- **Environmental Constraints:** They map out where the dropzone will live. Will it be a full-screen overlay, a sidebar panel, or a floating card?
+- **Density Mapping:** Google designs for two distinct user environments. They map out the **Comfortable layout** (for mobile touch targets and relaxed web layouts) and the **Compact layout** (high-density arrays for data-heavy power users like Google Cloud or Gmail).
+
+***
+
+Phase 2: Structural Wireframing (The Anatomy)
+
+Next, the designer breaks the component down into its core physical anatomical zones. Every piece must align perfectly to Google's strict **8dp grid system**.
+
+```
++-------------------------------------------------------------+
+
+|  1. Container (Surface Layer)                               |
+|   +-------------------------------------------------------+ |
+|   |  2. Visual Anchor (Slot for Dynamic Iconography)      | |
+|   +-------------------------------------------------------+ |
+|   |  3. Primary Header (Typescale: Body Large / Bold)     | |
+|   +-------------------------------------------------------+ |
+|   |  4. Subtext / Instructions (Typescale: Body Medium)   | |
+|   +-------------------------------------------------------+ |
+|   |  5. Interactive State Zone (Target for Files / Voice) | |
+|   +-------------------------------------------------------+ |
++-------------------------------------------------------------+
+```
+
+***
+
+Phase 3: Applying Token Architecture (The Visual Identity)
+
+Instead of painting the wireframe with static hex codes or fixed pixel values, the designer assigns **System Design Tokens** directly within Figma. This ensures the component can transform instantly based on theme context.
+
+- **The Container Surface:** Assigned `md.sys.color.surface-container-low`. In light mode, this evaluates to a crisp off-white. In dark mode, it automatically flips to deep charcoal.
+- **The Corner Radii:** Assigned `md.sys.shape.corner-medium` (\\(12\text{px}\\)). This guarantees the dropzone matches the roundness of modern Google buttons and cards.
+- **The Text Layers:** The header is tied to `md.sys.typescale.body-large` and the body text to `md.sys.typescale.body-medium`, maintaining global typography harmony.
+
+***
+
+Phase 4: State Matrix Mapping
+
+A component is not a static picture; it is a live entity. Google designers must draw and define a matrix of **7 distinct interactive states** for every new element:
+
+| State                     | Visual Behavior                                       | Token Applied                                                             |
+| ------------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------- |
+| **1. Enabled (Idle)**     | Resting state waiting for user interaction.           | Border: `md.sys.color.outline-variant`                                    |
+| **2. Hovered**            | User moves their mouse cursor over the container.     | Surface overlay adds \\(8\\%\\) opacity of `md.sys.color.on-surface`      |
+| **3. Focused**            | User tabs onto the component using a keyboard.        | Adds a high-contrast \\(2\text{px}\\) stroke using `md.sys.color.primary` |
+| **4. Drag-Over**          | User drags a file directly over the dropzone bounds.  | Border transforms to a thick dash using `md.sys.color.primary`            |
+| **5. Active (Recording)** | Microphones are live; processing user voice inputs.   | Surface tint shifts slightly toward `md.sys.color.error-container`        |
+| **6. Disabled**           | The app is busy; cannot accept new file input queues. | Container opacity drops cleanly to a static \\(38\\%\\) standard          |
+| **7. Error**              | User dropped an unsupported file type or size format. | Icon, border, and text values instantly flash to `md.sys.color.error`     |
+
+***
+
+Phase 5: Motion and Physics Choreography
+
+Google views motion as an essential way to show meaning and feedback, not just decoration. Designers use specialized software to map out exactly how the component changes over time.
+
+- **The Entrance Curve:** When the user drops a file, the progress bar animation is assigned the `md.sys.motion.easing-emphasized` curve (`cubic-bezier(0.2, 0, 0, 1)`). This makes the bar spring forward quickly at first, then slow down smoothly as it finishes.
+- **Duration Budgets:** Micro-interactions (like hovering) are strictly budgeted at \\(100\text{ms}\\) (`md.sys.motion.duration-short`). Heavy layout shifts (like a text field expanding into an audio recorder) are budgeted at \\(400\text{ms}\\) to give the human eye enough time to track the change.
+
+***
+
+Phase 6: Accessibility Blueprint Handoff
+
+Before passing the design assets to an engineering team, an Accessibility (a11y) Blueprint overlay is placed on top of the mockup. This details exactly how the component sounds and operates without sight:
+
+- **Screen Reader Reading Order:** The blueprint instructs: _1. Read out container boundary definition \\(\rightarrow \\) 2. State primary header text \\(\rightarrow \\) 3. State helper instructions._
+- **Keyboard Flow:** Explicitly states that pressing `Space` or `Enter` while focused on the component must trigger the standard operating system native file selector window.
+
+If you want to see how these designs are polished, I can explain how Google **tests components with real users** to check their visual look, or how **Figma plugins** automatically export these design specifications to developers. Which would you prefer?
+
+You said: these exact states?
+
+Yes, **Material Design 3 (M3) defines a rigid, universal list of core interaction states**. \[[1](https://m3.material.io/foundations/interaction/states)]
+
+However, Google divides a component's behavioral definition into **Standard System States** (which apply to _all_ interactive elements) and **Custom App/Context States** (which are unique to what that specific component does). \[[1](https://m3.material.io/foundations/interaction/states/applying-states)]
+
+1\. The Core Material Design 3 State Matrix
+
+According to the [Official Material Design 3 Spec](https://m3.material.io/foundations/interaction/states), every single interactive component built at Google must natively support these **6 foundational interaction states**: \[[1](https://m3.material.io/foundations/interaction/states)]
+
+- **Enabled:** The baseline resting or idle state.
+- **Disabled:** The component is visible but completely inoperable.
+- **Hover:** Activated when a pointer device sits directly over the element boundary.
+- **Focused:** Activated when a user highlights an element via keyboard tab, voice command, or assistive tech.
+- **Pressed:** The moment of physical click or screen tap (indicated by a ripple animation).
+- **Dragged:** The state when a user holds down and moves the physical element across coordinates. \[[1](https://m3.material.io/foundations/interaction/states/applying-states), [2](https://m3.material.io/foundations/interaction/states)]
+
+2\. How Google Mathematically Colors These States
+
+To prevent designers from manually picking colors for these states, Google uses a formulaic system called **State Layers**. \[[1](https://ux.stackexchange.com/questions/145496/rationale-behind-the-material-design-m3-color-system-of-interaction-states)]
+
+A state layer is a semi-transparent color overlay that stacks cleanly on top of the base component. The exact opacity values are hardcoded into Google's core system tokens: \[[1](https://m3.material.io/foundations/interaction/states/state-layers), [2](https://ux.stackexchange.com/questions/145496/rationale-behind-the-material-design-m3-color-system-of-interaction-states)]
+
+- **`md.sys.state.hover.opacity`**: Exactly **`0.08`** (\\(8\\%\\)) opacity overlay.
+- **`md.sys.state.focus.opacity`**: Exactly **`0.10`** (\\(10\\%\\)) opacity overlay.
+- **`md.sys.state.pressed.opacity`**: Exactly **`0.10`** (\\(10\\%\\)) opacity overlay.
+- **`md.sys.state.dragged.opacity`**: Exactly **`0.16`** (\\(16\\%\\)) opacity overlay.
+- **`md.sys.state.disabled.opacity`**: Exactly **`0.38`** (\\(38\\%\\)) opacity reduction. \[[1](https://m3.material.io/foundations/interaction/states/state-layers)]
+
+3\. Component-Specific App States
+
+The foundational matrix above covers basic mouse, keyboard, and touch interactions. For highly technical, bespoke apps, Google designers layers **custom semantic states** on top of the foundation to map out what the app is actively doing. \[[1](https://m3.material.io/foundations/interaction/states), [2](https://uxdesign.cc/an-interaction-state-of-mind-705572b3ad51)]
+
+For our specialized AI component, they would design additional custom logic layers:
+
+- **Drag-Over State:** A unique variation of the _Dragged_ foundation, specifically looking for external files breaching the browser frame instead of moving an internal element.
+- **Streaming/Recording State:** A contextual state tracking hardware status (the microphone is actively capturing data bytes).
+- **Error State:** A validation state indicating an unfulfilled system condition (the file was too big or the API failed).
+
+If you want to explore further, we can look at how **Figma prototypes** map out these exact opacity values, or look at how **state layer tokens** automatically alter text contrast when an element changes states. Which area would you like to narrow down? \[, [2](https://ux.stackexchange.com/questions/145496/rationale-behind-the-material-design-m3-color-system-of-interaction-states)]
+
+- [link](https://m3.material.io/foundations/interaction/states/applying-states)\
+  States – Material Design 3\
+  A pressed state communicates a user-initiated tap or click via cursor, keyboard, or voice input. This state applies to all interac...\
+  Material Design
+- [link](https://m3.material.io/foundations/interaction/states)\
+  States – Material Design 3\
+  1\. Enabled. An enabled state communicates an interactive component or element. 2. Disabled. A disabled state communicates an inope...\
+  Material Design
+- [link](https://m3.material.io/foundations/interaction/states/state-layers)\
+  States – Material Design 3\
+  \* 0.16 Dragged state layer opacity. \* 0.1 Pressed state layer opacity. \* 0.1 Focus state layer opacity. \* 0.08 Hover state layer o...\
+  Material Design
+
+Show all
+
+# can an ideal site work wo any aria attr
+
+**Yes, an ideal website can theoretically function perfectly without a single ARIA attribute**, provided it relies entirely on native, semantic HTML5 elements. \[[1](https://www.boia.org/blog/does-your-website-need-aria-to-be-accessible)]
+
+In the web accessibility community, the official [W3C Web Accessibility Initiative (WAI)](https://www.w3.org/WAI/standards-guidelines/aria/) lists the **"First Rule of ARIA"** as: _If you can use a native HTML element or attribute instead of repurposing an element and adding an ARIA role, state, or property... then do so_. \[[1](https://www.boia.org/blog/does-your-website-need-aria-to-be-accessible)]
+
+Modern browsers and assistive technologies (like screen readers) automatically understand native HTML markup out of the box. The phrase **"No ARIA is better than bad ARIA"** is a guiding principle because incorrect ARIA usage often breaks experiences for users with disabilities. \[[1](https://www.reddit.com/r/Wordpress/comments/1ogu6cb/how%5Fimportant%5Fare%5Fthe%5Faria%5Fattributes/), [2](https://www.pbrumby.com/2023/09/29/essential-aria-you-need-to-know-to-improve-accessibility/), [3](https://medium.com/@Nathans%5FTweets/aria-grande-a-light-introduction-to-aria-for-designers-37530287d0ed), [4](https://accesstive.com/blog/aria-best-practices-and-examples/)]
+
+When a Site Can Have Zero ARIA
+
+A website can achieve WCAG (Web Content Accessibility Guidelines) compliance without ARIA if it is primarily informational and utilizes built-in elements: \[[1](https://webflow.com/blog/how-to-use-aria)]
+
+- **Navigation:** Built using instead of .
+- **Buttons:** Built using instead of .
+- **Forms:** Built using standard explicitly paired with .
+- **Structure:** Formatted cleanly with , , , and . \[[1](https://www.pbrumby.com/2023/09/29/essential-aria-you-need-to-know-to-improve-accessibility/), [2](https://medium.com/@sumyathnin%5F123/ep-1-from-confusion-to-clarity-what-aria-attributes-actually-does-cf798f38b8e2), [3](https://medium.com/@rohitkuwar/why-you-should-care-about-aria-roles-and-attributes-f2d2eefd5fb5), [4](https://dev.to/disane/aria-attributes-in-html-a-comprehensive-guide-577e), [5](https://www.w3.org/WAI/ARIA/apg/practices/landmark-regions/)]
+
+Where the "Ideal" Breaks Down in Practice
+
+While a _simple_ ideal site works without ARIA, a _modern, highly interactive_ website usually requires a few ARIA attributes because native HTML lacks built-in tags for complex user interface behaviors. You will practically always need ARIA for: \[[1](https://www.w3.org/WAI/standards-guidelines/aria/), [2](https://www.youtube.com/watch?v=3BPxDkj9UzQ), [3](https://www.boia.org/blog/4-questions-to-ask-before-using-aria), [4](https://accessibility.uark.edu/accessible-technology/developing-accessible-websites/using-aria-for-web-applications.php), [5](https://libguides.lonestar.edu/c.php?g=1456706\&p=10891144)]
+
+- **Toggling States:** Indicating if a dropdown menu or accordion is open or closed requires `aria-expanded="true/false"`.
+- **Custom Widgets:** Advanced components like tabbed interfaces (`role="tab"`), sliders (`role="slider"`), and pop-up modals do not have native HTML equivalent behaviors.
+- **Visual-Only Triggers:** An icon-only button (like a "❌" to close a window) has no text for a screen reader to announce, requiring an `aria-label="Close"`.
+- **Dynamic Content:** If a page dynamically updates text via JavaScript without a page reload (like a live chat alert or search auto-suggestions), you must use `aria-live` to tell screen readers to announce the change. \[[1](https://www.w3.org/WAI/standards-guidelines/aria/), [2](https://beaccessible.com/post/aria-accessibility/), [3](https://www.pbrumby.com/2023/09/29/essential-aria-you-need-to-know-to-improve-accessibility/), [4](https://www.equalweb.com/a/44481/11527/aria%5Fattributes:%5Fwhy%5Fthey%E2%80%99re%5Fimportant%5Fand%5Fhow%5Fto%5Fuse%5Fthem), [5](https://medium.com/@pvnsripati/is-your-website-as-accessible-as-you-think-it-is-5-aria-attributes-you-should-know-6f910b4b2f5d), [6](https://www.youtube.com/shorts/czdAJRMP2GY)]
+
+If you are building a custom interactive element, would you like an example of how to build it using **semantic HTML first** before deciding if ARIA is necessary?
+
+- [link](https://www.w3.org/WAI/standards-guidelines/aria/)\
+  WAI-ARIA Overview | Web Accessibility Initiative (WAI) - W3C\
+  Jun 12, 2025 — Introduction. WAI-ARIA, the Accessible Rich Internet Applications Suite, defines a way to make web content and web applications mo...\
+  W3C
+- [link](https://medium.com/@Nathans%5FTweets/aria-grande-a-light-introduction-to-aria-for-designers-37530287d0ed)\
+  Aria Grande: a light introduction to ARIA for designers - Medium\
+  Mar 29, 2022 — The first rule of ARIA is to never use ARIA. HTML just works. Accessibility tools have been built to understand most every piece o...\
+  Medium·Nathan Lindahl
+- [link](https://www.pbrumby.com/2023/09/29/essential-aria-you-need-to-know-to-improve-accessibility/)\
+  Essential ARIA you need to know to improve accessibility\
+  Sep 29, 2023 — Accessible Rich Internet Applications (ARIA) is a set of roles and attributes designed to make web content and applications more a...\
+  www.pbrumby.com
+
+Show all
+
+You said: can an ideal web app work wo any aria attr
+
+**No, a highly functional, ideal web app cannot work perfectly without ARIA attributes.** \[[1](https://www.boia.org/blog/should-my-website-use-wai-aria-for-accessibility)]
+
+While a basic _website_ can rely solely on semantic HTML, a _web application_ inherently requires complex interactivity, dynamic state changes, and custom user interface widgets that native HTML simply cannot communicate to assistive technologies. \[[1](https://www.levelaccess.com/blog/wai-aria-explained-a-guide-to-accessible-rich-internet-applications/), [2](https://216digital.com/why-no-aria-is-better-than-bad-aria/), [3](https://vispero.com/resources/aria-slider-part-2/), [4](https://www.webomates.com/blog/the-ultimate-guide-to-ai-powered-cross-browser-testing/), [5](https://www.botreetechnologies.com/blog/ultimate-guide-to-web-application-architecture/)]
+
+Without ARIA, a web app becomes confusing or entirely unusable for screen reader users. \[[1](https://dev.to/mikekennedydev/the-5-rules-of-aria-1mnf)]
+
+Why Web Apps Specifically Require ARIA
+
+Web applications behave more like desktop software than static documents. Native HTML5 lacks the built-in tags and attributes to handle the following standard web app patterns: \[[1](https://layersmagazine.com/adobe-air-turns-web-developers-into-desktop-developers.html), [2](https://www.bitcot.com/web-app-vs-website/), [3](https://adrianroselli.com/2017/10/dont-use-aria-menu-roles-for-site-nav.html)]
+
+- **Dynamic State Shifts:** When a user clicks a profile menu, native HTML has no way to tell a screen reader whether the dropdown is currently open or collapsed. You must use `aria-expanded="true/false"`. \[[1](https://servicemanual.gov.scot/accessibility-semantics-for-website-developers/web-accessibility-initiative---accessible-rich-internet-applications-wai-aria), [2](https://www.a11y-collective.com/blog/aria-button/), [3](https://www.boia.org/blog/what-does-aria-expanded-mean)]
+- **Asynchronous Updates (AJAX):** Web apps update data on the screen without reloading the page (e.g., a new message pops up, or a dashboard graph refreshes). Without `aria-live`, a blind user will have no idea anything changed on the screen.
+- **Complex Desktop-Style Widgets:** There are no native HTML elements for common app components like tabbed panels, tree views, drag-and-drop zones, or custom sliders. You must use ARIA roles like `role="tablist"`, `role="tab"`, and `role="tabpanel"` so assistive tools understand how to navigate them. \[[1](https://www.levelaccess.com/blog/wai-aria-explained-a-guide-to-accessible-rich-internet-applications/), [2](https://loadfocus.com/glossary/what-is-aria), [3](https://blog.duda.co/aria)]
+- **Overlay Modals:** Pop-up dialogs require `role="dialog"` and `aria-modal="true"` to trap the focus of a screen reader inside the modal, preventing the user from accidentally interacting with background app content. \[[1](https://atyantik.com/building-accessible-single-page-applications-spas/), [2](https://cerovac.com/a11y/2023/07/when-should-you-still-use-inert-html-attribute/), [3](https://evolvingweb.com/blog/when-accessibility-isnt-easy-website-features-need-extra-love)]
+- **Contextual Relationships:** In dense application dashboards, you frequently need `aria-describedby` or `aria-controls` to programmatically link an input field or button to its corresponding error message, tooltip, or data table.
+
+The Rule of Thumb for Web Apps
+
+1. **Use Semantic HTML First:** Use , , , and to get keyboard support and basic accessibility for free.
+2. **Use ARIA for the "App Layer":** Layer ARIA on top _only_ to communicate the states, properties, and roles that native HTML cannot express. \[[1](https://medium.com/@askParamSingh/mastering-aria-fixing-common-beginner-mistakes-9a9e51248ca9), [2](https://blog.logrocket.com/what-using-a-screen-reader-taught-me/), [3](https://unicornclub.dev/glossary/accessibility-inclusive-design/screen-reader-compatibility/), [4](https://medium.com/@alexdev82/accessible-by-design-modern-aria-patterns-that-actually-work-dcfca45b5b23), [5](https://www.f22labs.com/blogs/a-developers-guide-to-web-accessibility-with-html-and-react/)]
+
+Are you currently building a specific feature for your app, like a **dropdown menu**, **modal window**, or **live data feed**? I can show you the exact minimum HTML and ARIA needed to make it fully accessible.
+
+- [link](https://www.boia.org/blog/should-my-website-use-wai-aria-for-accessibility)\
+  Should My Website Use WAI-ARIA for Accessibility?\
+  Feb 21, 2024 — For starters, ARIA is quite powerful. It contains roles and attributes that change the way that AT presents content. If developers...\
+  \
+  \
+  Bureau of Internet Accessibility
+- [link](https://www.levelaccess.com/blog/wai-aria-explained-a-guide-to-accessible-rich-internet-applications/)\
+  WAI‑ARIA Explained: A Guide to Accessible Rich Internet Applications\
+  Apr 30, 2026 — When to use ARIA ( Accessible Rich Internet Applications ) vs. native HTML Use native HTML when Use ARIA when A semantic element e...\
+  \
+  \
+  Level Access
+- [link](https://216digital.com/why-no-aria-is-better-than-bad-aria/)\
+  Why No ARIA Is Better Than Bad ARIA\
+  Feb 4, 2025 — The first step to building an accessible website is to stick with semantic HTML wherever possible. If you need ARIA—especially for...\
+  \
+  216digital
+
+Show all
+
+# what users use keyboard navigation
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">Keyboard navigation is a critical input method relied upon by millions of individuals with diverse physical, sensory, and technical needs.</span></strong></mark> While it is fundamentally a cornerstone of digital accessibility for users with disabilities, it is also widely used by non-disabled individuals looking to increase efficiency. \[[1](https://webaim.org/techniques/keyboard/), [2](https://www.levelaccess.com/blog/keyboard-navigation-complete-web-accessibility-guide/), [3](https://www.chhs.colostate.edu/accessibility/best-practices-how-tos/keyboard-navigation/), [4](https://medium.com/@hamidcaldero/how-keyboard-accessibility-works-and-why-your-site-needs-it-a96aa16440b8)]
+
+The primary groups of users who rely on or prefer keyboard navigation include:
+
+👤 Users with Permanent or Temporary Physical Disabilities \[[1](https://accessibility.wfu.edu/resources/assistive-technology/keyboard-navigation/)]
+
+- **Motor Impairments:** Individuals with conditions like **cerebral palsy, Parkinson’s disease, muscular dystrophy, or severe arthritis** often lack the fine motor control required to point and click with a mouse. They rely entirely on keyboards or assistive hardware that mimics keyboard strokes.
+- **Limb Differences and Paralysis:** People who have had amputations or live with paralysis use standard keyboards, customized macro pads, or specialized switches.
+- **Temporary Injuries:** Users with a **broken arm, sprained wrist, or acute carpal tunnel flare-ups** often shift to keyboard-only navigation when mouse movement becomes painful or physically restricted. \[[1](https://testparty.ai/blog/keyboard-navigation-testing), [2](https://www.nngroup.com/articles/keyboard-accessibility/), [3](https://tetralogical.com/blog/2025/05/09/foundations-keyboard-accessibility/), [4](https://webaim.org/techniques/keyboard/)]
+
+👁️ Screen Reader Users (Blind & Low Vision)
+
+- **Total Blindness:** Sighted mouse navigation requires seeing the cursor. Blind individuals use [screen readers like NVDA or JAWS](https://www.levelaccess.com/blog/keyboard-navigation-complete-web-accessibility-guide/) that operate sequentially through the page's underlying HTML code, completely driven by keyboard commands.
+- **Low Vision:** Finding and tracking a tiny mouse pointer across a large monitor can be visually exhausting. Navigating linearly via the **Tab** key ensures the user always knows exactly where the focus is. \[[1](https://www.levelaccess.com/blog/keyboard-navigation-complete-web-accessibility-guide/), [2](https://accessibility.asu.edu/articles/keyboard), [3](https://testparty.ai/blog/keyboard-navigation-testing), [4](https://accessibe.com/glossary/keyboard-navigation), [5](https://www.chhs.colostate.edu/accessibility/best-practices-how-tos/keyboard-navigation/)]
+
+🦾 Power Users and Tech Professionals
+
+- **Developers & Designers:** Many technical professionals minimize mouse use to accelerate their workflow.
+- **Data Entry Workers:** Professionals handling heavy numbers or text-based workflows use keyboard shortcuts to input data without constantly breaking their rhythm to switch to a mouse.
+- **Speed Enthusiasts:** General users who learn keyboard shortcuts (like `Ctrl + T` for a new tab or `Spacebar` to scroll) simply because it is physically faster than dragging a cursor across a screen. \[[1](https://www.davidmacd.com/blog/sighted-keyboard-only-user.html), [2](https://testparty.ai/blog/keyboard-navigation-testing), [3](https://www.smashingmagazine.com/2025/04/what-mean-site-be-keyboard-navigable/), [4](https://www.levelaccess.com/blog/keyboard-navigation-complete-web-accessibility-guide/), [5](https://www.laptopmag.com/articles/browser-keyboard-shortcuts)]
+
+💻 Alternative Device and Assistive Tech Users \[[1](https://accessibility.wfu.edu/resources/assistive-technology/keyboard-navigation/), [2](https://reciteme.com/au/news/keyboard-accessibility/)]
+
+- **Switch Device Users:** Individuals with severe physical limitations may use "sip-and-puff" systems, head wands, or foot pedals. These alternative devices communicate with computers by sending standard keyboard command triggers.
+- **Alternative Screen Browsers:** Users interacting with the internet through smart TVs, game consoles, or specialized minimal interfaces frequently navigate using a directional keypad that acts exactly like a keyboard's arrow and Enter keys. \[[1](https://www.reddit.com/r/webdev/comments/18kb8ex/how%5Fimportant%5Fis%5Fkeyboard%5Fnavigation/), [2](https://testparty.ai/blog/keyboard-navigation-testing), [3](https://www.davidmacd.com/blog/sighted-keyboard-only-user.html), [4](https://webaim.org/techniques/keyboard/), [5](https://tetralogical.com/blog/2025/05/09/foundations-keyboard-accessibility/)]
+
+***
+
+If you are evaluating a digital product's accessibility, I can provide the **standard WCAG guidelines for keyboard focus** or give you a quick checklist of the **most critical keys to test** (like Tab and Shift+Tab). Which would you like to explore next? \[[1](https://www.youtube.com/watch?v=nN066u%5Fu04c\&t=3), [2](https://help.illinoisstate.edu/accessibility/website-and-digital/accessible-content-overview/keyboard-only-accessibility), [3](https://www.nngroup.com/videos/no-mouse-keyboard-accessibility/)]
+
+- [link](https://webaim.org/techniques/keyboard/)\
+  Keyboard Accessibility - WebAIM\
+  May 14, 2026 — Keyboard accessibility is one of the most important aspects of web accessibility. Many users with motor disabilities rely on a key...\
+  WebAIM: Web Accessibility In Mind
+- [link](https://www.davidmacd.com/blog/sighted-keyboard-only-user.html)\
+  Is the classic persona of the sighted keyboard-only user too coarse ...\
+  No examples of a sighted keyboard \*only\* user? \* Many examples of users who predominantly use keyboard, who find it hard to use a ...\
+  CanAdapt Solutions
+- [link](https://www.levelaccess.com/blog/keyboard-navigation-complete-web-accessibility-guide/)\
+  Keyboard Navigation: Complete Web Accessibility Guide\
+  Feb 23, 2026 — Understanding Keyboard Navigation and Web Accessibility. Feb 23, 2026. Author: Level Access. Keyboard navigation allows users to o...\
+  Level Access
+
+Show all
+
+# what third party tools do ppl in google use
+
+While Google is famous for building its own highly sophisticated internal software (like their custom web-based IDEs and proprietary version control systems), employees still use several notable third-party tools to collaborate with external clients, write code, and manage specialized business workflows. \[[1](https://www.quora.com/What-software-do-Google-employees-use), [2](https://www.quora.com/What-nice-internal-software-does-a-Google-employee-have-access-to)]
+
+Because Google has strict data security and vendor review processes, any third-party app must clear stringent security compliance hurdles before an employee can touch it. \[[1](https://www.radicalcloudsolutions.com/decoding-google-workspace-answers-to-common-client-queries/), [2](https://www.bankinfosecurity.com/what-apps-are-peeking-into-your-gmail-a-11171)]
+
+💻 Software Engineering
+
+Google engineers famously operate on a Monolith codebase using internal tools, but individual preferences and external open-source workflows mean several external tools are widely used: \[[1](https://www.quora.com/What-nice-internal-software-does-a-Google-employee-have-access-to), [2](https://www.reddit.com/r/programming/comments/3kzdh2/the%5Fmotivation%5Ffor%5Fa%5Fmonolithic%5Fcodebase%5Fwhy/), [3](https://medium.com/@bhagyarana80/cider-what-ide-stack-does-google-use-internally-vs-code-intellij-or-something-else-0d67f9e2481d)]
+
+- **Visual Studio Code**: A highly popular Microsoft-built editor chosen by many Google engineers for local development and general scripting.
+- **IntelliJ IDEA**: Broadly used by Android and Java developers across the company because its interface mirrors Google’s own internal code environments.
+- **Vim / Emacs**: Classic, terminal-based text editors frequently utilized by systems engineers.
+- **Git**: While Google relies heavily on a massive internal version control infrastructure, developers utilize Git abstractions or use native Git for external open-source projects. \[[1](https://www.quora.com/What-software-do-Google-employees-use), [2](https://www.quora.com/What-nice-internal-software-does-a-Google-employee-have-access-to), [3](https://www.index.dev/blog/open-source-tools-for-developers), [4](https://www.sitepoint.com/collaborative-coding-tools-for-remote-pair-programming/), [5](https://www.icoderzsolutions.com/blog/android-app-development-tools/)]
+
+📊 Sales, Marketing, & Client-Facing Teams
+
+Google's business and sales organizations must interact seamlessly with enterprise clients who rely heavily on corporate standard software. For this reason, you will commonly see [Quora commentary](https://www.quora.com/What-software-do-Google-employees-use) confirming the use of: \[[1](https://www.quora.com/What-software-do-Google-employees-use)]
+
+- **Microsoft Excel**: Essential for heavy quantitative analyses and exchanging complex financial models with external clients.
+- **Microsoft PowerPoint**: Standard practice for client-facing account managers who need to deliver presentations in formats their customers use natively. \[[1](https://www.quora.com/What-software-do-Google-employees-use)]
+
+🤝 Workspace & Collaboration Ecosystem
+
+For standard business operations, project management, and extended communication, Google officially integrates and encourages a vetted list of specialized third-party cloud apps: \[[1](https://chromeunboxed.com/2022-recommended-workspace-third-party-apps)]
+
+- **Miro / Lucidchart**: Adopted for interactive visual whiteboarding, diagramming complex system architectures, and running team brainstorming sessions.
+- **DocuSign / Signeasy**: Used to securely manage external contracts, NDAs, and legal signatures directly through the cloud.
+- **Copper**: A third-party Customer Relationship Management (CRM) application that teams use to sync records tightly with Gmail and Google Sheets.
+- **Dialpad / RingCentral**: Integrated into scheduling platforms to automate external telecommunications and bridge corporate communications.
+- **Supermetrics**: Utilized by internal data and marketing analytics teams to pull API data seamlessly into storage warehouses like BigQuery. \[[1](https://www.cloudsmiths.co.za/blog/10-third-party-apps-for-google-workspace-we-recommend-you-try), [2](https://chromeunboxed.com/2022-recommended-workspace-third-party-apps)]
+
+If you are curious about a specific job function at Google, let me know! I can detail whether you want to look into **product management**, **data science**, or how they handle **internal security vetting** for these tools.
+
+- [link](https://www.cloudsmiths.co.za/blog/10-third-party-apps-for-google-workspace-we-recommend-you-try)\
+  10 third-party apps for Google Workspace we recommend you ...\
+  Nov 16, 2022 — Rating on marketplace: 4/5. Works with: Drive, Docs, and Gmail. Pricing: Free trial, then $20 per user/month. 4. Lucidchart. This ...\
+  CloudSmiths
+- [link](https://www.quora.com/What-software-do-Google-employees-use)\
+  What software do Google employees use? - Quora\
+  Nov 2, 2019 — \* A whole lot of Google engineers use Visual Studio Code, because it's a damn good product. I don't myself, because it doesn't int...\
+  Quora
+- [link](https://chromeunboxed.com/2022-recommended-workspace-third-party-apps)\
+  Google lists their recommended third-party apps for Google ...\
+  Jun 14, 2022 — Copper: Automatically update records from Gmail, record and synchronize meetings with their contacts, and analyze data directly fr...\
+  Chrome Unboxed
+
+Show all
+
+# what third party tools do googlers use
+
+Googlers rely predominantly on a massive, highly optimized suite of **in-house proprietary software** (like <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">Cider, Piper, Buganizer, and Critique</mark>), meaning their overall use of external corporate applications is **remarkably minimal**. However, for specific workflows, cross-company collaboration, or personal developer preference, Google employees do leverage a select group of external platforms: \[[1](https://www.quora.com/What-software-do-Google-employees-use), [2](https://www.youtube.com/watch?v=nAvUeJnnd3M), [3](https://www.teamblind.com/post/Google-internal-tooling-vs-Industry-x6S1Dymn), [4](https://www.quora.com/What-nice-internal-software-does-a-Google-employee-have-access-to)]
+
+💻 Software Engineering & Development
+
+While Google has built its own cloud-based text and code editors, engineers are allowed flexibility in their local setups: \[[1](https://www.quora.com/What-nice-internal-software-does-a-Google-employee-have-access-to), [2](https://www.teamblind.com/post/Google-internal-tooling-vs-Industry-x6S1Dymn), [3](https://www.youtube.com/watch?v=nAvUeJnnd3M), [4](https://workspace.google.com/blog/product-announcements/new-generative-ai-and-security-innovations?gl=us)]
+
+- **JetBrains IntelliJ IDEA**: Widely used by engineers because its interface closely matches Google's internal web-based IDEs.
+- **Visual Studio Code**: A highly popular choice among engineers who prefer its extensive extension ecosystem over internal text editors.
+- **Vim / Emacs**: Frequently fired up by terminal-preferring engineers for quick code manipulation. \[[1](https://www.quora.com/What-software-do-Google-employees-use), [2](https://www.teamblind.com/post/Google-internal-tooling-vs-Industry-x6S1Dymn), [3](https://www.quora.com/What-nice-internal-software-does-a-Google-employee-have-access-to)]
+
+📊 Sales, Finance & Partner Relations
+
+Employees who closely interact with external clients, vendors, and partners must remain compatible with the rest of the business world: \[[1](https://www.quora.com/What-software-do-Google-employees-use)]
+
+- **Microsoft Excel**: Extensively used by sales, finance, and data analysts to share and ingest data from external clients who do not use Google Sheets.
+- **Microsoft PowerPoint**: Standard for creating collateral or delivering presentations to external enterprise clients.
+- **Salesforce**: Primarily utilized by global sales and business development teams to manage external customer relationships. \[[1](https://www.quora.com/What-software-do-Google-employees-use), [2](https://www.teamblind.com/post/Google-internal-tooling-vs-Industry-x6S1Dymn)]
+
+👥 Human Resources & Hardware
+
+- **Workday**: Frequently integrated into internal human resource pipelines to manage employee profiles, payroll tracking, and corporate HR documentation.
+- **Apple macOS & Linux**: The core operating systems driving engineering machinery. While non-technical roles default to ChromeOS, engineers run local development workloads on highly customized MacBooks or Linux workstations. \[[1](https://www.youtube.com/shorts/sxssf0h4M8I), [2](https://www.teamblind.com/post/Google-internal-tooling-vs-Industry-x6S1Dymn), [3](https://www.quora.com/What-nice-internal-software-does-a-Google-employee-have-access-to), [4](https://www.reddit.com/r/google/comments/cvxyrk/google%5Femployees%5Fonlywhat%5Flaptops%5Fare%5Fused%5Fby/), [5](https://www.cnbc.com/2023/04/03/google-to-cut-down-on-employee-laptops-services-and-staplers-to-save.html)]
+
+⚖️ The Strict "Third-Party" Review Rule
+
+Any third-party code library, cloud service, or software tool must pass through Google's exceptionally stringent **Third-Party Security and Open Source Review** process before an employee can connect it to the network. If a tool handles sensitive data, Google almost always mandates building a custom, internal clone rather than using an off-the-shelf SaaS provider. \[[1](https://opensource.google/documentation/reference/thirdparty), [2](https://www.quora.com/Do-Google-employees-use-another-search-engine-besides-Google-com-Or-are-they-not-allowed-to), [3](https://www.teamblind.com/post/Google-internal-tooling-vs-Industry-x6S1Dymn)]
+
+Are you curious about a **specific department's workflow** at Google (like design or product management), or would you like to know more about the **internal tools** they built to replace standard industry software? \[[1](https://www.reddit.com/r/projectmanagement/comments/cqvp0c/just%5Fcurios%5Fto%5Fknow%5Fwhich%5Fproject%5Fmanagement%5Ftool/), [2](https://www.teamwork.com/blog/google-project-management-tool/), [3](https://www.youtube.com/watch?v=nAvUeJnnd3M), [4](https://www.teamblind.com/post/Google-internal-tooling-vs-Industry-x6S1Dymn)]
+
+- [link](https://opensource.google/documentation/reference/thirdparty)\
+  Third-Party - Google Open Source\
+  Jun 10, 2025 — Project-Specific Policies. The policies and procedures documented here apply to all projects that live in google3. There are proje...\
+  Google Open Source
+- [link](https://www.quora.com/What-software-do-Google-employees-use)\
+  What software do Google employees use? - Quora\
+  Nov 2, 2019 — \* A whole lot of Google engineers use Visual Studio Code, because it's a damn good product. I don't myself, because it doesn't int...\
+  Quora
+- [link](https://www.reddit.com/r/projectmanagement/comments/cqvp0c/just%5Fcurios%5Fto%5Fknow%5Fwhich%5Fproject%5Fmanagement%5Ftool/)\
+  Just curios to know, which project Management Tool / System does ...\
+  Aug 15, 2019 — \* Google's internal project management tools. \* Best idea management software. \* Top ideation tools. \* Best platforms for managing...\
+  Reddit·r/projectmanagement
+
+Show all
+
+# what third party tools do google devs use
+
+While Google developers rely heavily on a famous suite of highly integrated internal tools (like _Blaze_ for building, _Critique_ for code reviews, and _Piper_ for version control), they frequently use <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>industry-standard third-party tools</strong> where external compatibility or specific specialized features are required</mark>. \[[1](https://beyang.org/ex-googler-guide-dev-tools.html), [2](https://sourcegraph.com/blog/ex-googler-guide-dev-tools), [3](https://www.quora.com/Which-text-editor-or-IDE-do-Google-engineers-use), [4](https://en.wikipedia.org/wiki/Piper%5F%28source%5Fcontrol%5Fsystem%29), [5](https://graphite.com/guides/understanding-google-critique-code-review-tool)]
+
+Because Google's internal scale is massive, any third-party software used must be carefully adapted to interface with their core systems. The major third-party tools Google developers rely on include: \[[1](https://www.quora.com/Which-text-editor-or-IDE-do-Google-engineers-use)]
+
+Integrated Development Environments (IDEs) & Editors \[[1](http://wiki.iad.zhdk.ch/PB/668598273/Alternatives+to+the+Processing+IDE), [2](https://www.cttsonline.com/2025/02/06/googles-gemini-code-assist-now-supports-third-party-integration/)]
+
+Most Google engineers write code using localized clients that sync directly with Google's cloud-hosted development environments. \[[1](https://www.quora.com/Which-text-editor-or-IDE-do-Google-engineers-use), [2](https://www.youtube.com/shorts/sxssf0h4M8I), [3](https://senacor.blog/software-supply-chain-security-with-google-software-delivery-shield/), [4](https://research.google/blog/large-sequence-models-for-software-development-activities/)]
+
+- **JetBrains IntelliJ IDEA & CLion**: Widely adopted across Google. IntelliJ is standard for Android and Java teams, while CLion handles substantial C++ workflows. Google modifies these IDEs with custom internal plugins to sync with their monorepo.
+- **VS Code (Visual Studio Code)**: Used extensively, especially by web, frontend, and TypeScript developers.
+- **Vim / Emacs**: The preferred choice for a vast number of engineers who prefer lightweight terminal-based development. They rely on customized internal scripts to hook these text editors into Google's internal code search engine.
+- **Microsoft Visual Studio & Apple Xcode**: The native toolsets required by the specific engineers building Google apps for Windows, macOS, and iOS platforms. \[[1](https://www.youtube.com/shorts/Igm94RIK1hY), [2](https://www.quora.com/Which-text-editor-or-IDE-do-Google-engineers-use), [3](https://www.devopsdigest.com/google-announces-new-developer-tools), [4](https://www.moontechnolabs.com/blog/top-web-development-tools/), [5](https://dev.to/ruppysuppy/6-killer-productivity-apps-for-programmers-2ieo)]
+
+Open-Source DevSecOps & Security Tools
+
+For open-source projects (like Android, Chromium, and Go) and supply chain security management, Google developers use established external libraries to scan for vulnerabilities: \[[1](https://google.github.io/osv.dev/third-party/?gl=us), [2](https://www.cw.no/idg-news-service-utvikling-og-metode/10-open-source-projects-proving-the-power-of-google-go/792678), [3](https://blog.google/company-news/inside-google/googlers/ask-techspert-what-open-source/), [4](https://open-web-advocacy.org/blog/industry-voices-caution-against-dojs-plan-to-force-sale-of-chrome/), [5](https://apiiro.com/blog/best-sast-tools/)]
+
+- **Trivy & pip-audit**: Utilized by infrastructure and security teams to scan container images and Python packages for vulnerabilities.
+- **Renovate**: Used for automated dependency updates across external-facing repositories.
+- **Dependency-Track**: An open-source component analysis platform used to monitor vulnerable third-party components. \[[1](https://google.github.io/osv.dev/third-party/?gl=us), [2](https://spectralops.io/blog/top-12-open-source-code-security-tools/), [3](https://dev.to/carrie%5Fluo1/open-source-tool-list-for-web-app-security-3eoi)]
+
+AI & Observability Integrations
+
+While internal teams heavily integrate Gemini Code Assist into their workflows, engineers working on external partner platforms, AI agent architectures, and Vertex AI applications use popular third-party observability stacks: \[[1](https://developers.googleblog.com/supercharge-your-ai-agents-adk-integrations-ecosystem/), [2](https://cloud.google.com/blog/products/ai-machine-learning/choose-the-right-google-ai-developer-tool-for-your-workflow?gl=us), [3](https://www.reddit.com/r/googlecloud/comments/1oasa95/do%5Fgoogle%5Fengineers%5Ffrequently%5Fuse%5Fai%5Ftools%5Flike/), [4](https://www.educative.io/blog/openai-codex-vs-gemini-code-assist)]
+
+- **MLflow & Weights & Biases (W\&B Weave)**: Used to track machine learning experiments, log models, and evaluate AI agent performance.
+- **Arize AX & Phoenix**: Open-source and production-grade tracing tools used for debugging and evaluating Large Language Model (LLM) applications. \[[1](https://developers.googleblog.com/supercharge-your-ai-agents-adk-integrations-ecosystem/)]
+
+Collaboration & CI/CD Extensions
+
+- **Spinnaker**: Originally co-created by Netflix and Google, this open-source multi-cloud continuous delivery platform is actively used to manage complex deployment pipelines.
+- **Lucidchart**: A highly utilized third-party app integrated directly into corporate team workflows for mapping out architecture diagrams, flowcharts, and system designs. \[[1](https://cloud.google.com/products/tools?gl=us), [2](https://www.cloudsmiths.co.za/blog/10-third-party-apps-for-google-workspace-we-recommend-you-try), [3](https://www.simform.com/blog/ci-cd-tools/), [4](https://www.apwide.com/software-deployment-best-tools/), [5](https://cio.economictimes.indiatimes.com/tools/best-ci/cd-tools/126079362)]
+
+Are you looking to understand how Google developers configure these tools to work with a **monorepo**, or are you curious about the **open-source tools** Google has released to the public?
+
+- [link](https://beyang.org/ex-googler-guide-dev-tools.html)\
+  An ex-Googler's guide to dev tools - beyang.org\
+  Nov 24, 2020 — Gerrit, Phabricator, and Reviewable let you closely approximate the general review flow that you had inside of Google, but one thi...\
+  beyang.org
+- [link](https://developers.googleblog.com/supercharge-your-ai-agents-adk-integrations-ecosystem/)\
+  Supercharge your AI agents: The New ADK Integrations ...\
+  Feb 27, 2026 — AgentOps: Session replays, metrics, and monitoring for ADK agents. Arize AX: Production-grade observability, debugging, and evalua...\
+  blog.google
+- [link](https://cloud.google.com/blog/products/ai-machine-learning/choose-the-right-google-ai-developer-tool-for-your-workflow?gl=us)\
+  Choose the right Google AI developer tool for your workflow\
+  Aug 20, 2025 — Understand which Google AI tools best suit your software engineering needs, including Gemini CLI, Gemini Code Assist, Firebase Stu...\
+  Google Cloud
+
+Show all
+
+# what third party tools do google designers use
+
+Google UX/UI and product designers use a mix of industry-standard third-party applications alongside Google's proprietary tools to move from concept to production. Because Google employs thousands of designers across different product teams (e.g., Android, YouTube, Search), tool preferences can vary widely depending on the specific project requirements. \[[1](https://design.google/library/making-motion-meaningful), [2](https://uidesignz.com/blogs/best-ux-ui-design-tools-for-every-designers)]
+
+Google designers primarily rely on the following third-party tools grouped by their role in the design lifecycle: \[[1](https://getsharedcontacts.com/7-tips-for-how-to-use-google-workspace-like-a-pro/)]
+
+Core Interface Design & Vector Graphics
+
+- **Figma**: This is the core industry-standard tool for interface design at Google. It is heavily utilized for day-to-day UI/UX design, component creation, and real-time collaboration. Google even maintains its official [Material Design 3 Kit on Figma](https://m3.material.io/), allowing designers to seamlessly build layouts with native Material Design styles.
+- **Sketch**: Historically a primary tool for interface design. While Figma has taken a massive share of the daily workflow, some teams still use Sketch for specific component libraries, vector editing, and legacy product support.
+- **[Adobe Creative Cloud](https://www.adobe.com/)**: Used across almost all teams for asset creation. **Adobe Illustrator** is the go-to for complex vector illustrations and branding iconography. **Adobe Photoshop** is utilized for photo manipulation, high-fidelity mockups, and raster image editing. \[[1](https://www.quora.com/What-tools-do-UX-UI-Designers-at-Google-use), [2](https://m3.material.io/), [3](https://www.quora.com/What-tools-does-Google-use-to-design-the-UI-of-their-apps), [4](https://www.urbanpro.com/ui-design/what-tools-do-ux-ui-designers-at-google-use), [5](https://www.quora.com/What-wireframing-prototyping-tools-do-UX-designers-at-Google-Facebook-Apple-and-Amazon-use)]
+
+Advanced Prototyping & Motion Design \[[1](https://design.google/library/tooling-up-prototyping)]
+
+- **Framer**: When static layouts are not enough, designers use Framer to build highly interactive, high-fidelity prototypes. It allows designers to use code or smart components to simulate advanced user interactions before handoff.
+- **Protopie**: Popular for mobile application design (such as Android system interactions). It enables designers to create complex, sensor-based interactive prototypes without writing heavy code.
+- **After Effects**: The standard tool for motion designers at Google. It is used to plan micro-interactions, smooth UI transitions, and animated features that define the visual rhythm of Google's interfaces. \[[1](https://www.quora.com/What-tools-does-Google-use-to-design-the-UI-of-their-apps), [2](https://learn.g2.com/best-web-design-software), [3](https://cpoclub.com/tools/best-drag-and-drop-ui-builder/), [4](https://dev.to/agws/page-builders-you-wont-like-as-developer-3imc), [5](https://www.stoneitech.com/sharing/21-top-gui-design-software-tools-for-user-interface-engineers/)]
+
+Collaboration & Developer Handoff \[[1](https://schoolofcodinguk.com/blog/10-useful-tools-for-developer-needed/)]
+
+- **Zeplin**: Used alongside or integrated into design canvases to bridge the gap between design and engineering. It simplifies spec handoff, asset downloading, and tailored CSS generation for engineering teams.
+- **Muzli**: A third-party inspiration plugin widely adopted by individual designers on Google Chrome. It serves as a daily curated feed for digital art, product designs, and tech trends to maintain visual inspiration. \[[1](https://medium.com/designers-thoughts/10-handy-chrome-tools-supporting-work-of-ui-ux-designers-786da2a6765d), [2](https://www.quora.com/What-are-some-UX-design-tools-that-can-be-integrated-with-Google-Analytics), [3](https://orangesoft.co/blog/top-25-tools-for-mobile-app-designers), [4](https://medium.com/design-bootcamp/digital-tools-to-help-interdisciplinary-design-teams-collaborate-c818c8c2f4bf), [5](https://cpoclub.com/tools/responsive-design-prototyping-tools/)]
+
+Where Proprietary Integration Fits In
+
+While third-party tools handle the canvas work, Google designers frequently bridge them into Google's internal ecosystem: \[[1](https://www.kanbanchi.com/blog/google-project-management-apps)]
+
+1. They export Figma layouts into proprietary developer pipelines or automated layout engines.
+2. For rapid, early-stage AI design exploration, they utilize internal tools like **Google Stitch** (which supports an instant "Export to Figma" function) and **Mixboard** for AI-driven concept mapping. \[[1](https://medium.com/design-bootcamp/top-google-ai-tools-for-designers-d033618d71a7), [2](https://www.youtube.com/shorts/xfglUuezlcg), [3](https://uxplanet.org/3-google-labs-ai-tools-for-design-exploration-f697aced09d6), [4](https://www.linkedin.com/posts/smbelal%5Fsharing-3-awesome-tools-for-uiux-designers-activity-7417430411783385088-dzRo)]
+
+Are you looking to **replicate a specific workflow** (like motion handoff or component building), or are you interested in **how Google's Material Design system integrates** with these third-party environments?
+
+- [link](https://medium.com/designers-thoughts/10-handy-chrome-tools-supporting-work-of-ui-ux-designers-786da2a6765d)\
+  10 Handy Chrome Tools That Support UI/UX Designers\
+  Jul 12, 2017 — SEOquake provides a general SEO audit with improvement suggestions, keyword density stats, link analysis, and other useful data su...\
+  Medium·Bretislav Mazoch
+- [link](https://m3.material.io/)\
+  Material Design 3 - Google's latest open source design system\
+  Next steps \* Get startedGuides, videos, and tools to start building with Material. \* Figma M3 Design KitCustomizable styles and co...\
+  Material Design
+- [link](https://medium.com/design-bootcamp/top-google-ai-tools-for-designers-d033618d71a7)\
+  Top Google AI tools for Designers | by Thanuja K - Medium\
+  Dec 29, 2025 — Think of Stitch as your design thinking accelerator, not your final design tool. 2. Mixboard. Press enter or click to view image i...\
+  Medium·Thanuja K
+
+Show all
+
+

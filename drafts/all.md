@@ -350,6 +350,7 @@ cinema: <!-- film, movie -->
 - movies
 - fight club
 - the shining
+- test fps to humans
 
 float: <!-- music -->
 
@@ -360,6 +361,7 @@ float: <!-- music -->
 - heavy metal rock
 - japanese pianists
 - japanese guitarists fingerstyle
+- test music quality to humans
 - interpret touhou bad apple
 - interpret kyu kurarin
 - interpret jishou mushoku
@@ -379,6 +381,7 @@ float: <!-- music -->
 - interpret darling dance kairiki bear
 - interpret venom kairiki bear
 - interpret ruma kairiki bear
+- interpret shippaisaku shoujo kairiki bear
 
 philosophy:
 
