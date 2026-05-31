@@ -450,10 +450,6 @@ data attr over clsx
 
 ---
 
-can i wrap mui, chakra, etc. inside baseui?
-
----
-
 design tokens. css variables.
 
 i guess it's easy to change or modernize css units.
@@ -493,5 +489,13 @@ you dont have to go fast.
 you have to make the right choices at first to prevent regression ahead.
 
 ---
+
+hand pick some atoms.
+
+read base ui, coss ui, mui. <!-- chakra? mantine? too much. -->
+
+checkbox is good.
+
+checkbox group is basically syntax sugar (simple abstraction) and meaningless accessibility.
 
 

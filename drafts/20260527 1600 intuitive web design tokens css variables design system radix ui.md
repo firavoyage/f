@@ -964,7 +964,7 @@ To help me tailor this guide to your project, what **type of product** (e.g., mo
 
 Show all
 
-# how to create a design system
+# how to create a design system (!) <!-- atomic design -->
 
 1:04 AM
 

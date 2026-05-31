@@ -303,6 +303,7 @@ ux: <!-- ui/ux design -->
 - kde desktop k naming
 - hermes onboarding feedback transparency
 - wordnet unnatural for humans affordance mismatch merriam webster penguin
+- nextjs fragility as a brand application error a client side exception
 
 typography:
 
@@ -399,6 +400,7 @@ philosophy:
 - haskell philosophy history syntax ideas
 - symmetry the problem of the other
 - hacker ethics
+- avoid success at all costs
 
 entertainment:
 
@@ -548,6 +550,7 @@ laws:
 - criticism compliance tax legal tax
 - legal system dirty secret
 - youtube made for kids coppa restriction dmca criticism digital colonialism
+- criticism web accessibility compliance
 
 glaze:
 
