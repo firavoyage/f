@@ -494,6 +494,7 @@ politics:
 - llm adoption us cn fr
 - eight nine six four meaning white paper
 - dictatorship criticism
+- google pixel for degoogled os irony
 
 economics:
 
