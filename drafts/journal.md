@@ -21482,6 +21482,12 @@ jun 2026
 
 <!-- pins (i.e. twitter posts) are not properly parsed. maybe they are not as meaningful either. as said, i could easily revise it... more robust and resilient. more portable. more automatic. to save a few minutes every month? -->
 
+13 40 play `Disco Mix 1 - 70s 80s | 🎵 Bee Gees, Boney M, Abba, Donna Summer Etc`, inspired by google doodles `Pride Month 2026` `The Art of Disco`. <!-- idk if pride has sth to do w disco. -->
+
+<!-- In celebration of Pride Month, this Doodle celebrates the art of disco by shining a light on the LGBTQ+ artists who helped create space for everyone on the dance floor. -->
+
+<!-- "Where this Doodle appeared" us only? indicated from my home location, the silicon valley? -->
+
 
 
 <!-- timebox, plan. -->
