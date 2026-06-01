@@ -510,6 +510,7 @@ economics:
 - investing memecoins reality
 - investing strategy long term short term
 - investing index fund growth theory
+- investing alpha beta meaning
 
 society:
 
