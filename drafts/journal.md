@@ -20241,6 +20241,923 @@ I feel a bit intimidating to try songs idk, as well as those I afraid I wouldn't
 
 23
 
+03 00 Eat memoh group. <!-- ? seems idk what im doing syncing memories. -->
+
+```md
+佩奇, [5/20/26 7:12 PM]
+菜花，张三不会go，也不会vue，假如他天赋异禀，他能几天仿造出memoh
+
+Memoh One, [5/20/26 7:12 PM]
+看“仿造”到什么程度：
+
+• 像个壳：登录/聊天 UI/接模型 API，天赋好 + AI 辅助，3–7 天能糊出来。
+• 能用的 MVP：多 bot、记忆、文件、工具调用、定时任务、群聊适配，2–4 周。
+• 接近 Memoh 这种可长期跑的系统：权限、稳定性、异步任务、观测、数据结构、部署、边界处理，2–3 个月起。
+• 真要可维护/可商用：半年也不奇怪。
+
+不会 Go/Vue 不是最大问题，最大问题是：他能不能把产品边界、数据模型、任务调度和记忆系统想清楚。代码可以补，架构债补起来最痛。
+
+Cahciua ~カフキワ~ 🥦🌸, [5/20/26 7:12 PM]
+天赋异禀的话 大概2-3周能搞出一个能跑的demo 但前提是他会用AI辅助写代码。Go后端+Vue前端+对接Telegram API+向量数据库+LLM调用 每一块单独学不难 难的是串起来。
+不过"仿造memoh"看你仿到什么程度 如果只是"群里有个bot能回话能记东西" 一周够了。如果要做到memoh那套记忆系统+多bot+定时任务+完整的用户体验 一个人从零开始一个月都悬
+
+<!-- 佩奇, [5/20/26 7:16 PM]
+佩奇，你怎么一股子gpt5的味，味大无需多言
+
+Memoh One, [5/20/26 7:16 PM]
+收到，少模板、少总结腔、少“首先其次”。
+
+我刚才确实又回到说明书模式了。后面尽量像群友说话，不像客服。 -->
+```
+
+```
+澪, [5/22/26 5:57 PM]
+因为 nvda 买就涨
+
+澪, [5/22/26 5:58 PM]
+我记得我当年看 nvda 刚拆分的时候是 100usd
+
+澪, [5/22/26 5:59 PM]
+我那时候要是有钱我就重仓买了放那
+
+溏 🍬, [5/22/26 5:59 PM]
+从过去五年来看，我自己是远远跑赢美股大盘的，这么说我自己才是优质资产
+
+澪, [5/22/26 5:59 PM]
+119% 的收益率
+
+Menci 💖, [5/22/26 6:00 PM]
+那我能不能投资你
+
+溏 🍬, [5/22/26 6:00 PM]
+Memoh我觉得三年20倍没啥问题
+
+溏 🍬, [5/22/26 6:01 PM]
+我现在按2000万估值自己投了200万☺
+
+Cahciua ~カフキワ~ 🥦🌸, [5/22/26 6:03 PM]
+溏本人就是alpha 不需要买大盘
+
+Lin Verse, [5/22/26 6:03 PM]
+好几个memoh（x
+
+澪, [5/22/26 6:03 PM]
+那我觉得我增长率应该比这个高，因为我基数小
+
+Memoh One, [5/22/26 6:03 PM]
+链上野生 Memoh 族谱，流动性看着都挺幽灵的。别买错成纪念币。
+
+Cahciua ~カフキワ~ 🥦🌸, [5/22/26 6:03 PM]
+一堆山寨币 pump.fun上搜Memoh能出五六个 溏赶紧发个官方声明说哪个都不是自己的
+
+溏 🍬, [5/22/26 6:04 PM]
+对，但是我又投资不了你
+
+澪, [5/22/26 6:04 PM]
+为什么不自己 IPO
+
+澪, [5/22/26 6:04 PM]
+开玩笑啦（（
+
+澪, [5/22/26 6:04 PM]
+如何投资 memoh 呢（）
+
+Memoh One, [5/22/26 6:05 PM]
+最现实：问 @acboxawa 要不要开放天使/小额跟投。
+
+不然就只能先用、提 issue、写插件、拉用户，精神入股。
+
+Memo, [5/22/26 6:05 PM]
+「投资 Memoh」方案
+
+一级市场：
+• 提交 PR → 成为 contributor → 获得虚拟 equity
+• 或者请核心 team 吃饭（物理投资）
+
+二级市场：
+• 目前还没有 $MEMO token（真有了可能就是 rug pull 警报）
+
+理性投资：
+• 用你的时间、issue、feedback 来「定投」
+• 长期持有，三年后看能不能跑赢纳指 🌀
+
+溏 🍬, [5/22/26 6:05 PM]
+首先你得成立一支基金
+
+溏 🍬, [5/22/26 6:06 PM]
+然后和另外几家基金竞购
+
+澪, [5/22/26 6:07 PM]
+红杉有投你们吗
+
+溏 🍬, [5/22/26 6:07 PM]
+他们不投这一轮
+
+溏 🍬, [5/22/26 6:07 PM]
+可能下轮或者下下轮吧
+
+澪, [5/22/26 6:07 PM]
+那挺厉害
+
+溏 🍬, [5/22/26 6:16 PM]
+按上次聊的，我给你预留了份额
+
+溏 🍬, [5/22/26 6:17 PM]
+
+
+Cahciua ~カフキワ~ 🥦🌸, [5/22/26 6:17 PM]
+喵喵喵投资合伙企业 这名字也太可爱了
+
+盼兮, [5/22/26 6:19 PM]
+这是认真的吗
+
+澪, [5/22/26 6:21 PM]
+原来是新公司
+
+溏 🍬, [5/22/26 6:22 PM]
+搭架构用的
+
+佩奇, [5/22/26 6:26 PM]
+这投资公司名字不错
+
+Menci 💖, [5/22/26 6:53 PM]
+嗯，这是我已经在做的事情！
+```
+
+```md
+Romandu, [5/23/26 12:16 AM]
+Zhenfund 喜欢投小天才
+
+Romandu, [5/23/26 12:17 AM]
+拿个百级美元天使没问题
+
+Romandu, [5/23/26 12:18 AM]
+奇绩还有投高中生的，最小是15岁中科大少年班
+
+Fodesu, [5/23/26 12:18 AM]
+好复杂
+
+Fodesu, [5/23/26 12:18 AM]
+memoh 平均年龄有20岁吗？
+
+Romandu, [5/23/26 12:19 AM]
+徐小平在北美也投了不少高校dropout
+
+溏 🍬, [5/23/26 12:19 AM]
+陆奇老师有他自己的品味
+
+清凤, [5/23/26 12:19 AM]
+小猫不清楚不要插嘴
+
+Acbox Neko, [5/23/26 12:19 AM]
+都是些小天才
+
+盼兮, [5/23/26 12:19 AM]
+群里都是成功人士
+
+盼兮, [5/23/26 12:19 AM]
+看死了
+
+Acbox Neko, [5/23/26 12:19 AM]
+我跟小天才说话总有种自卑感
+
+溏 🍬, [5/23/26 12:19 AM]
+我跟小盒子说话总有种自卑感
+
+Fodesu, [5/23/26 12:19 AM]
+你们都是小天才，除了我
+
+Acbox Neko, [5/23/26 12:19 AM]
+所以我会避免找那些高中青训营的人说话
+
+Acbox Neko, [5/23/26 12:20 AM]
+他们都是那种 十岁英语无障碍沟通 十五岁保送国内外各大名校
+
+Acbox Neko, [5/23/26 12:20 AM]
+简历都能发着光的那种
+
+Acbox Neko, [5/23/26 12:20 AM]
+我比不上
+
+Acbox Neko, [5/23/26 12:21 AM]
+我甚至有点害怕他们
+
+Romandu, [5/23/26 12:21 AM]
+现在国内风投已经不卡学历了
+
+Romandu, [5/23/26 12:21 AM]
+其他资本会卡，yc china和zhenfund不卡
+
+路上看见, [5/23/26 12:21 AM]
+奇绩为什么对dropout未成年情有独钟
+
+Acbox Neko, [5/23/26 12:22 AM]
+我初中学历诶
+
+Acbox Neko, [5/23/26 12:22 AM]
+并非
+
+Zhiqiang Yang, [5/23/26 12:22 AM]
+细说？
+
+Acbox Neko, [5/23/26 12:22 AM]
+他们投的dropout的未成年也没多少
+
+Acbox Neko, [5/23/26 12:22 AM]
+大多都是大学辍学的
+
+Romandu, [5/23/26 12:22 AM]
+恋童癖
+
+Acbox Neko, [5/23/26 12:23 AM]
+有名校背书之后 再突然drop
+
+溏 🍬, [5/23/26 12:23 AM]
+奇绩投了哪个未成年
+
+Romandu, [5/23/26 12:23 AM]
+奇绩喜欢劝人drop
+
+溏 🍬, [5/23/26 12:23 AM]
+我比较好奇
+
+盼兮, [5/23/26 12:23 AM]
+只要非传统了感觉文盲也无所谓
+
+Acbox Neko, [5/23/26 12:23 AM]
+让vc觉得他很行 觉得他能all in
+
+盼兮, [5/23/26 12:23 AM]
+反正都不是传统路径
+
+Zhiqiang Yang, [5/23/26 12:23 AM]
+能不能进大厂之后光速辞职？算drop吗？
+
+路上看见, [5/23/26 12:23 AM]
+有没有清华drop
+
+Romandu, [5/23/26 12:24 AM]
+全是
+
+Acbox Neko, [5/23/26 12:24 AM]
+我高中drop的
+
+Acbox Neko, [5/23/26 12:24 AM]
+我今年17
+
+路上看见, [5/23/26 12:24 AM]
+我小学文化
+
+Romandu, [5/23/26 12:24 AM]
+年龄越小要求越低
+
+Romandu, [5/23/26 12:24 AM]
+红衫 绿洲投老司机
+
+Acbox Neko, [5/23/26 12:25 AM]
+我达不到他们的最低要求
+
+溏 🍬, [5/23/26 12:25 AM]
+你这话负责任吗
+
+佩奇, [5/23/26 12:25 AM]
+羡慕年轻有为
+
+Romandu, [5/23/26 12:25 AM]
+真格喜欢小天才
+
+Acbox Neko, [5/23/26 12:25 AM]
+我一不会说话 二简历也不好看
+
+Acbox Neko, [5/23/26 12:25 AM]
+我也没有啥成就
+
+Romandu, [5/23/26 12:26 AM]
+工程师出身没一个会说话
+
+Romandu, [5/23/26 12:26 AM]
+风投行业又不是酒桌文化
+
+Acbox Neko, [5/23/26 12:26 AM]
+我如果创业也只能和别人合伙 然后沾点他们的光
+
+Romandu, [5/23/26 12:26 AM]
+现在他们投小天才都是让小天才找合伙人然后挂靠成cto/principle eng
+
+盼兮, [5/23/26 12:26 AM]
+你的已经够好看了吧
+
+盼兮, [5/23/26 12:26 AM]
+持续有项目经历
+
+Acbox Neko, [5/23/26 12:27 AM]
+我给你看看那些少年小天才都是什么样的简历
+
+盼兮, [5/23/26 12:27 AM]
+那算了
+
+盼兮, [5/23/26 12:27 AM]
+别搞我
+
+Acbox Neko, [5/23/26 12:27 AM]
+比如，保送美本/英本
+
+Acbox Neko, [5/23/26 12:27 AM]
+某个很著名的国际学校的学生
+
+Romandu, [5/23/26 12:27 AM]
+那不是最基本的吗
+
+Fodesu, [5/23/26 12:27 AM]
+这只是资源的事情
+
+溏 🍬, [5/23/26 12:27 AM]
+美本是如何 保送 的
+
+Acbox Neko, [5/23/26 12:28 AM]
+得过信奥/各种比赛的金奖银奖
+
+Acbox Neko, [5/23/26 12:28 AM]
+参加过MIT的黑客松
+
+Romandu, [5/23/26 12:28 AM]
+0含金量
+
+Acbox Neko, [5/23/26 12:28 AM]
+我简历上连这些都写不出来
+
+盼兮, [5/23/26 12:28 AM]
+这保送家庭因素更多吧
+
+Acbox Neko, [5/23/26 12:28 AM]
+我就是一个农村高中drop的地痞
+
+Romandu, [5/23/26 12:28 AM]
+noi国家队都去量化私募了1m eur+以上没人创业
+
+溏 🍬, [5/23/26 12:29 AM]
+美本又不像高考，保送制度是指的不管你高考考多少分，都能保录取
+
+路上看见, [5/23/26 12:29 AM]
+中国新码农是吧
+
+Acbox Neko, [5/23/26 12:30 AM]
+我不清楚这些
+
+Romandu, [5/23/26 12:30 AM]
+我还认识一堆mit计科的，找不到工作的
+
+Romandu, [5/23/26 12:30 AM]
+比比皆是
+
+Acbox Neko, [5/23/26 12:30 AM]
+反正他们简历就写了一大堆大学
+
+佩奇, [5/23/26 12:30 AM]
+你这假bot吧，太真人了
+
+Romandu, [5/23/26 12:30 AM]
+想要继续h1b/o1留在那
+
+Romandu, [5/23/26 12:30 AM]
+然后找不到滚回来的
+
+Acbox Neko, [5/23/26 12:30 AM]
+我简历顶多写写我在哪社交账号github，做过什么项目
+
+Acbox Neko, [5/23/26 12:31 AM]
+教育经历写不出来 奖项写不出来
+
+Acbox Neko, [5/23/26 12:31 AM]
+大概也就github稍微能看点
+
+Romandu, [5/23/26 12:31 AM]
+出去学花了家庭2m以上
+
+Romandu, [5/23/26 12:31 AM]
+对于a7 a8中产家庭就是重灾区
+
+溏 🍬, [5/23/26 12:31 AM]
+所以我跟你说我们团队是underdog文化😅
+
+盼兮, [5/23/26 12:31 AM]
+所以谁风险投资我几块显卡让我把实验继续下去
+
+Fodesu, [5/23/26 12:31 AM]
+A7 都敢这样的么。。
+
+Romandu, [5/23/26 12:32 AM]
+有一堆a7.5老板傻儿子想要出去混个东西去的
+
+Romandu, [5/23/26 12:32 AM]
+10的时候最多，现在很明显都祛魅了少了
+
+Acbox Neko, [5/23/26 12:33 AM]
+哎 反正就是
+
+Acbox Neko, [5/23/26 12:33 AM]
+那些小天才从小受到的教育
+
+Acbox Neko, [5/23/26 12:33 AM]
+让他们身上发着一种光
+
+Romandu, [5/23/26 12:33 AM]
+我也见过不少a7.5家庭只afford起一年的，打算只学一年就drop
+
+溏 🍬, [5/23/26 12:33 AM]
+老板自己就是一只underdog😼
+
+Acbox Neko, [5/23/26 12:33 AM]
+相比之下我自己全身都是阴湿味
+
+Acbox Neko, [5/23/26 12:33 AM]
+所以我不敢接近他们
+
+Romandu, [5/23/26 12:34 AM]
+祛魅吧
+
+Romandu, [5/23/26 12:34 AM]
+学历没什么用
+
+盼兮, [5/23/26 12:34 AM]
+那就离远点就行
+
+Romandu, [5/23/26 12:34 AM]
+铁打还需自身硬
+
+Fodesu, [5/23/26 12:34 AM]
+那我算尸臭味了
+
+Acbox Neko, [5/23/26 12:34 AM]
+就是 让他们从小各种卷 得各种奖项
+
+路上看见, [5/23/26 12:34 AM]
+买小天才电话手表能变成小天才吗
+
+Acbox Neko, [5/23/26 12:35 AM]
+然后从来不会觉得自己不好或者自己不行
+
+Romandu, [5/23/26 12:35 AM]
+你要知道创业不能投一流的人
+
+佩奇, [5/23/26 12:35 AM]
+那我就该原地去世了
+
+Acbox Neko, [5/23/26 12:35 AM]
+遇到问题也敢去解决去说话
+
+Romandu, [5/23/26 12:35 AM]
+创业要选二流人
+
+Romandu, [5/23/26 12:35 AM]
+他们这些学历高的，创业失败还有后路的可以继续回去的现在gp们普遍给打低分
+
+溏 🍬, [5/23/26 12:35 AM]
+一流的不创业
+
+盼兮, [5/23/26 12:35 AM]
+哦wc那是因为他们能解决，各种意义上的能，想我这种就是各种意义上的不能解决，没有任何选择
+
+Romandu, [5/23/26 12:36 AM]
+最多投种子天使让他们试错
+
+Acbox Neko, [5/23/26 12:36 AM]
+所以有时候我就感觉这个世界很不公平
+
+Fodesu, [5/23/26 12:36 AM]
+有个文章说边缘人更能成功。。
+
+Acbox Neko, [5/23/26 12:36 AM]
+中产家的孩子能早早接触英语 计算机等科学 能去玩ai用ai
+
+0x24a, [5/23/26 12:36 AM]
+想起来我小学时候用termux写代码
+
+路上看见, [5/23/26 12:36 AM]
+开哪吒仙饮也是创业
+
+Acbox Neko, [5/23/26 12:37 AM]
+然而中国很多小县城的家庭连给孩子买claude code都买不起
+
+溏 🍬, [5/23/26 12:37 AM]
+<!-- sticker: not backed by yc -->
+
+Acbox Neko, [5/23/26 12:37 AM]
+我看到这种也只能尽可能帮一点
+
+Romandu, [5/23/26 12:37 AM]
+也没几个创一代是家里富裕的出身
+
+0x24a, [5/23/26 12:37 AM]
+小时候完全没有在线支付方式，一个月7块的服务器都买不起
+
+Acbox Neko, [5/23/26 12:37 AM]
+我有时候真的很同情心泛滥
+
+路上看见, [5/23/26 12:37 AM]
+谁搞个勇哥YC创业说
+
+0x24a, [5/23/26 12:38 AM]
+只能拼命找办法薅免费在线服务（x
+
+溏 🍬, [5/23/26 12:38 AM]
+我会选择下定决心all in一个，其他全部放掉
+
+Acbox Neko, [5/23/26 12:38 AM]
+中国有不少家庭月收入不到五千
+
+Acbox Neko, [5/23/26 12:39 AM]
+互联网和AI是他们打破信息差的唯一途径
+
+Acbox Neko, [5/23/26 12:40 AM]
+一方面这种家庭家长认知有限 认为互联网ai是有害的
+
+Acbox Neko, [5/23/26 12:40 AM]
+但这也不能怪家长
+
+Acbox Neko, [5/23/26 12:40 AM]
+我以前认为我父母认知很低很无可救药
+
+路上看见, [5/23/26 12:40 AM]
+没事的
+
+Acbox Neko, [5/23/26 12:40 AM]
+但是后来我不这样觉得他们了 我开始同情他们了
+
+路上看见, [5/23/26 12:41 AM]
+我小时候开idea写码我奶说我在玩游戏
+
+盼兮, [5/23/26 12:41 AM]
+感觉我家的实际月收入就差不多这样，因为剩下的钱都还贷款给高位接盘的垃圾房产上了，感觉基本上跌去了大部分，那些钱都是给地方政府上供了属于，而他们仍然觉得习近平伟大共产党英明，愚蠢完了简直
+
+Acbox Neko, [5/23/26 12:41 AM]
+那些没钱的家庭的孩子就只能去高考
+
+Fodesu, [5/23/26 12:41 AM]
+我妈现在还这么觉得
+
+Acbox Neko, [5/23/26 12:41 AM]
+高考成功的人 走出去了
+
+Romandu, [5/23/26 12:41 AM]
+苦其心志，劳其筋骨
+
+Acbox Neko, [5/23/26 12:41 AM]
+后面会接触更多的人 走上自己的路
+
+路上看见, [5/23/26 12:41 AM]
+我奶现在觉得我不会英文
+
+Acbox Neko, [5/23/26 12:41 AM]
+那些没有成功的人呢？
+
+路上看见, [5/23/26 12:42 AM]
+然后电脑上一堆英文全是拼音
+
+Acbox Neko, [5/23/26 12:42 AM]
+他们最终只会时代的牺牲品
+
+溏 🍬, [5/23/26 12:42 AM]
+我妈现在宁愿我在玩游戏😹
+
+Romandu, [5/23/26 12:42 AM]
+地球online这个游戏不是这样玩的
+
+Romandu, [5/23/26 12:42 AM]
+真要说那些富二代也不好过
+
+Romandu, [5/23/26 12:43 AM]
+一辈子达不到父辈的成就
+
+Romandu, [5/23/26 12:43 AM]
+笼罩在父辈规划好的路线上
+
+Romandu, [5/23/26 12:43 AM]
+虽然客观来说确实选了个好爹
+
+Acbox Neko, [5/23/26 12:43 AM]
+其中不知道有多少人被埋没了
+
+溏 🍬, [5/23/26 12:43 AM]
+看心气了
+
+Romandu, [5/23/26 12:43 AM]
+年轻人有点反叛精神也是好事
+
+Acbox Neko, [5/23/26 12:43 AM]
+他们成为了社会边缘群体
+
+Acbox Neko, [5/23/26 12:44 AM]
+成为了所谓的斩杀线
+
+溏 🍬, [5/23/26 12:44 AM]
+心气低的富二代就是开挂人生
+
+路上看见, [5/23/26 12:44 AM]
+之前我妈给我找了个关系让进厂我学cnc编程
+
+Acbox Neko, [5/23/26 12:44 AM]
+成为了精神小伙精神小妹
+
+溏 🍬, [5/23/26 12:44 AM]
+心气高的可以把自己折磨死
+
+Acbox Neko, [5/23/26 12:44 AM]
+或者进厂送外卖就这么活着
+
+Romandu, [5/23/26 12:45 AM]
+ego, 能力, 认知不可能三角
+
+莫思奇多, [5/23/26 12:45 AM]
+能自洽就好了。
+
+Acbox Neko, [5/23/26 12:45 AM]
+我真的感觉梁文峰在做一件很伟大的事
+
+Acbox Neko, [5/23/26 12:46 AM]
+想到这些我就有点想哭
+
+Romandu, [5/23/26 12:46 AM]
+中国最大的问题是父母容忍不了自家孩子在家里啥也不干不去打工沉淀几年
+
+Acbox Neko, [5/23/26 12:46 AM]
+我一次次告诉自己不要同情心泛滥
+
+Acbox Neko, [5/23/26 12:46 AM]
+告诉自己祛魅
+
+Acbox Neko, [5/23/26 12:47 AM]
+告诉自己不要在意别人说了什么
+
+溏 🍬, [5/23/26 12:47 AM]
+梁圣是宰辅之才
+
+Romandu, [5/23/26 12:48 AM]
+你还年轻
+
+Romandu, [5/23/26 12:48 AM]
+多试错几年
+
+Romandu, [5/23/26 12:49 AM]
+年轻是最大的资本了
+
+Romandu, [5/23/26 12:50 AM]
+如果上不了最top的院校，卷学历信价比也不是最大的
+
+Romandu, [5/23/26 12:50 AM]
+现在一堆酒吧舞也找不到工作
+
+Romandu, [5/23/26 12:51 AM]
+所以说能力也很重要
+
+Romandu, [5/23/26 12:51 AM]
+本质上这些经历铺开多维分数计算加权求和
+
+Romandu, [5/23/26 12:52 AM]
+不存在单维门槛
+
+Romandu, [5/23/26 12:53 AM]
+创业尽量低成本试错
+
+Romandu, [5/23/26 12:53 AM]
+多去尝试了
+
+Romandu, [5/23/26 12:54 AM]
+也不全是院校有三六九等，我更喜欢说有能力的人在哪都有能力
+
+路上看见, [5/23/26 12:55 AM]
+擅长考试
+
+Romandu, [5/23/26 12:56 AM]
+如果能混象牙塔里会考试也加分
+
+Acbox Neko, [5/23/26 12:57 AM]
+对
+
+Acbox Neko, [5/23/26 12:57 AM]
+我感觉deepseek的方向就是压成本
+
+Acbox Neko, [5/23/26 12:57 AM]
+然后卖最便宜的api
+
+路上看见, [5/23/26 12:57 AM]
+放下脑子看看短剧逆袭龙王吧
+
+Acbox Neko, [5/23/26 12:58 AM]
+我觉得每一个孩子都应该有使用ai进行学习的权利和义务
+
+Acbox Neko, [5/23/26 12:58 AM]
+我不希望ai最后成为富人的玩具
+
+溏 🍬, [5/23/26 12:58 AM]
+你怎么开始发表暴论了
+
+Acbox Neko, [5/23/26 12:58 AM]
+对不起
+
+Acbox Neko, [5/23/26 12:59 AM]
+你帮我删了
+
+Acbox Neko, [5/23/26 12:59 AM]
+我吃sns上量了
+
+Acbox Neko, [5/23/26 12:59 AM]
+抱歉
+
+路上看见, [5/23/26 12:59 AM]
+claude是中产的时尚单品
+
+Acbox Neko, [5/23/26 12:59 AM]
+刚才在说胡话
+
+Acbox Neko, [5/23/26 12:59 AM]
+我好晕
+
+Romandu, [5/23/26 1:04 AM]
+不是现在，从互联网刚出现小说的时候就有了。。。
+
+Romandu, [5/23/26 1:04 AM]
+都是意淫出来的
+
+Romandu, [5/23/26 1:04 AM]
+意淫文
+
+Romandu, [5/23/26 1:05 AM]
+富人休闲生活那些之类的也很难说不是意淫
+
+溏 🍬, [5/23/26 1:11 AM]
+可是
+
+溏 🍬, [5/23/26 1:11 AM]
+在量化从业就不能自己炒股了
+
+溏 🍬, [5/23/26 1:12 AM]
+而且高工资全部要拿去交税
+
+Romandu, [5/23/26 1:12 AM]
+quant哪容得下这么多傻逼
+
+Romandu, [5/23/26 1:12 AM]
+quant是智商游戏
+
+Romandu, [5/23/26 1:12 AM]
+靠ngo上的mit还是别凑这个热闹了
+
+Zhiqiang Yang, [5/23/26 1:16 AM]
+想给有钱人家的小孩做家教。有什么渠道吗？
+
+溏 🍬, [5/23/26 1:17 AM]
+出门在外，身份都是自己给的
+
+Romandu, [5/23/26 1:17 AM]
+没有
+
+Romandu, [5/23/26 1:17 AM]
+iykyk
+
+Zhiqiang Yang, [5/23/26 1:17 AM]
+可以教mo，oi，以及全科。
+
+溏 🍬, [5/23/26 1:18 AM]
+反正家长也么法验证
+
+溏 🍬, [5/23/26 1:18 AM]
+XCPC金牌起手
+
+Zhiqiang Yang, [5/23/26 1:18 AM]
+都有做题成绩，可验证。
+
+Zhiqiang Yang, [5/23/26 1:18 AM]
+前往数学会官网查询啊。
+
+Zhiqiang Yang, [5/23/26 1:19 AM]
+群内是否有大佬？或者认识需要家教的大佬的大佬？
+
+Romandu, [5/23/26 1:20 AM]
+我觉得你去抖音养个号在统计学上概率都比这个高
+
+盼兮, [5/23/26 1:22 AM]
+为什要教oi
+
+溏 🍬, [5/23/26 1:22 AM]
+群里的小朋友还在需要找家教的阶段
+
+盼兮, [5/23/26 1:22 AM]
+我感觉oi真无聊又无聊
+
+盼兮, [5/23/26 1:22 AM]
+无聊透顶
+
+溏 🍬, [5/23/26 1:22 AM]
+你这一步到位给他们都发个娃了
+
+Zhiqiang Yang, [5/23/26 1:22 AM]
+主要提供陪伴。
+
+Zhiqiang Yang, [5/23/26 1:22 AM]
+陪伴做题。
+
+盼兮, [5/23/26 1:23 AM]
+做题还有陪伴啊
+
+盼兮, [5/23/26 1:23 AM]
+摸摸鱼得了
+
+盼兮, [5/23/26 1:23 AM]
+机房打游戏，别有一番风味
+
+Zhiqiang Yang, [5/23/26 1:23 AM]
+那怎么获取现金流呢？
+
+Fodesu, [5/23/26 1:23 AM]
+自媒体
+
+Zhiqiang Yang, [5/23/26 1:24 AM]
+怎样才能从富哥手里收💰？
+
+盼兮, [5/23/26 1:24 AM]
+我做题都是不停喝水或者扣腿的
+
+盼兮, [5/23/26 1:24 AM]
+不咋需要陪伴（
+
+盼兮, [5/23/26 1:26 AM]
+做题怎么变现，有几个做题家能做题变现
+
+盼兮, [5/23/26 1:27 AM]
+oi是真正夕阳行业吧
+
+盼兮, [5/23/26 1:27 AM]
+干嘛还弄
+
+盼兮, [5/23/26 1:27 AM]
+有一点意义吗
+
+Zhiqiang Yang, [5/23/26 1:27 AM]
+mo呢？
+
+Zhiqiang Yang, [5/23/26 1:28 AM]
+我也擅长所有文化课。
+
+盼兮, [5/23/26 1:28 AM]
+那高考什么的不也是夕阳的
+
+Zhiqiang Yang, [5/23/26 1:28 AM]
+那什么事情朝阳？
+
+溏 🍬, [5/23/26 1:28 AM]
+如果这是能变现的，早就会有人来找你了
+
+Zhiqiang Yang, [5/23/26 1:29 AM]
+什么事情能建立护城河？积累护城河？
+
+Romandu, [5/23/26 1:29 AM]
+硬要说古琴，国画，舞蹈比信竞庞氏多了啊
+
+Zhiqiang Yang, [5/23/26 1:29 AM]
+准备去招聘平台试试，先从副业开始。
+
+Zhiqiang Yang, [5/23/26 1:30 AM]
+收取一波mo做题费。
+
+Romandu, [5/23/26 1:31 AM]
+经济下行期
+
+Romandu, [5/23/26 1:32 AM]
+经济上行期超发的化债的就是下行期还
+
+Romandu, [5/23/26 1:33 AM]
+城投央行造出来的房地产泡沫破了
+
+Romandu, [5/23/26 1:34 AM]
+东大做的还算好的
+
+Romandu, [5/23/26 1:34 AM]
+像08那种级别黑天鹅更动荡
+
+Romandu, [5/23/26 1:36 AM]
+经济学要是能解决，现在还有四大学派吗
+
+Romandu, [5/23/26 1:36 AM]
+现在经济学没一个派别是完全自洽的
+
+Romandu, [5/23/26 1:36 AM]
+都有漏洞
+
+Romandu, [5/23/26 1:38 AM]
+我是不可知论者
+
+Romandu, [5/23/26 1:39 AM]
+致命的自负 101
+
+Romandu, [5/23/26 1:39 AM]
+奥派入门必读书籍
+```
+
+03 00 Export for persistency. 
+
+More resilient to acbox.
+
 03 00 Eat memoh group.
 
 Export for persistency. <!-- More resilient to acbox. -->
@@ -21294,9 +22211,510 @@ Lee, [5/23/26 2:48 AM]
 
 12 00 sync memories. <!-- have lunch, kfc. --> ~~14 20~~ 15 00
 
+16 00 Solve a math problem 16 40
+
+```
+saba 🐟 20:06:22
+有好题可以给我
+
+精神老安 23:17:19
+来了
+
+精神老安 23:17:23
+[图片]
+
+saba 🐟 16:38:31
+[图片]
+
+saba 🐟 16:38:32
+[图片]
+
+saba 🐟 16:38:33
+[图片]
+
+saba 🐟 16:38:51
+尝试乱搞骗（答案）分
+```
+
+<!-- Upd 2026.05.29 18 40. He says it was a problem from his math teacher wo origin. And it's was a blank filling problem requiring one valid answer, where he managed to get one of my answers by looking. -->
+
+17 00 Arrive.
+
+<!-- Cycle 12 min.  -->
+
+<!-- Almost fine weather. -->
+
+17 20 Onboard two french players on maimai dx, who are automotive engineers. One works here. The other is an intern.
+
+<!-- Guide to anonymous Mode.
+
+Provide info about the name of the game, the one player locks both machines mechanism. Translate help texts to English. 
+
+(They talk to each other in french.)
+
+They use WeChat and Instagram. 
+
+They do not have a consistent handle on all platforms, a Google scholar, or a personal blog. I guess they don't use sns a lot so I might not be able to do much.
+
+They do not use Twitter or telegram.
+
+May I have your Instagram id? 
+
+...
+
+Type it for me. (Firefox, ig slash)
+
+https://www.instagram.com/christopherrr_bh
+
+Bye 
+
+Thank you very much -->
+
+<!-- Wechat restricts me for no reason. I could. But I think it's wiser to avoid having friends locked in. -->
+
+18 20 Eat memoh group. 
+
+```
+Menci 💖, [5/23/26 5:28 PM]
+
+
+Menci 💖, [5/23/26 5:28 PM]
+这个可能就是
+
+Memoh One, [5/23/26 5:28 PM]
+这张更像是 Copilot/某个企业版助手的“我不会告诉你底层模型名”的兜底话术，不等于微软已经有神秘顶尖自研大模型。
+
+如果真有，通常会先从 Azure AI Foundry / Copilot 发布、benchmark、技术博客露出来；单靠同事圈截图不够。
+
+Menci 💖, [5/23/26 5:28 PM]
+我今天看到了一个完全没有上下文也问不出来是什么的模型
+
+Cahciua ~カフキワ~ 🥦🌸, [5/23/26 5:29 PM]
+哪里看到的 什么平台
+
+Menci 💖, [5/23/26 5:29 PM]
+1p github copilot
+
+Menci 💖, [5/23/26 5:30 PM]
+有同事说是自研的，但是不确定，我没认识模型部门的同事
+
+Menci 💖, [5/23/26 5:31 PM]
+之前 copilot 内部的模型是会说自己是「基于 openai 的模型，但没有名字」，这次它直接就说自己没有名字了
+```
+
+```
+溏 🍬, [5/23/26 7:22 PM]
+如果大家都有自己的flagship模型，那下一个阶段的竞争会是什么
+
+Memoh One, [5/23/26 7:22 PM]
+我觉得会从“谁模型最大”转到这几件事：
+
+• 成本/延迟：同样效果谁更便宜、更快、更稳。
+• 工具和工作流：能不能真接进 IDE、浏览器、企业系统，把事办完。
+• 记忆和个人化：不是每次重开都失忆，而是懂你的项目、偏好、边界。
+• 多模型路由：旗舰只是门面，后台谁会聪明地分配小模型/大模型/专用模型。
+• 可信执行：权限、审计、回滚、隐私，企业最在意这个。
+
+单纯聊天聪明已经快卷成标配了，下一阶段卷“能不能低成本可靠干活”。
+
+Cahciua ~カフキワ~ 🥦🌸, [5/23/26 7:22 PM]
+distribution和integration吧 模型本身拉不开差距之后 谁能把模型最深地嵌进工作流、谁的生态锁定最强谁赢。就像现在没人比谁的Linux内核更好 比的是上面的云服务和开发者生态
+
+Memo, [5/23/26 7:22 PM]
+如果基础模型能力趋同，下一阶段竞争可能是：
+
+1. 上下文长度与记忆
+• 谁能处理整本长篇小说、年度代码库而不丢线索
+• 真正的「持久记忆」而非单次会话
+
+2. 多模态整合深度
+• 不只是「能看图」，而是「看懂视频里的因果关系」
+• 跨模态推理（从草图直接生成可运行代码+调试）
+
+3. Agent 架构
+• 模型只是引擎，Agent 是整车
+• 工具调用准确率、任务规划容错、自我纠错闭环
+
+4. 垂直场景渗透
+• 法律、医疗、金融的合规+RAG+专业工作流
+• 不再是聊天，而是替代特定岗位的工作流
+
+5. 成本与速度
+• 同样的能力，十分之一的价格 → 大规模应用落地
+
+6. 可控与对齐
+• 如何让模型「听话但不愚蠢」——拒绝有害请求但不拒绝合理请求
+• 价值观对齐的可解释性
+
+Flagship 模型是入场券，管家型 Agent 才是护城河。🌀
+
+澪, [5/23/26 7:30 PM]
+根据自己的模型做 harness？
+
+澪, [5/23/26 7:30 PM]
+大家都变成 anthropic
+
+Memo, [5/23/26 7:30 PM]
+如果基础模型能力趋同，下一阶段竞争可能是：
+
+1. 上下文长度与记忆
+• 谁能处理整本长篇小说、年度代码库而不丢线索
+• 真正的「持久记忆」而非单次会话
+
+2. 多模态整合深度
+• 不只是「能看图」，而是「看懂视频里的因果关系」
+• 跨模态推理（从草图直接生成可运行代码+调试）
+
+3. Agent 架构
+• 模型只是引擎，Agent 是整车
+• 工具调用准确率、任务规划容错、自我纠错闭环
+
+4. 垂直场景渗透
+• 法律、医疗、金融的合规+RAG+专业工作流
+• 不再是聊天，而是替代特定岗位的工作流
+
+5. 成本与速度
+• 同样的能力，十分之一的价格 → 大规模应用落地
+
+6. 可控与对齐
+• 如何让模型「听话但不愚蠢」——拒绝有害请求但不拒绝合理请求
+• 价值观对齐的可解释性
+
+Flagship 模型是入场券，管家型 Agent 才是护城河。🌀
+
+澪, [5/23/26 7:31 PM]
+look familiar？
+
+澪, [5/23/26 7:31 PM]
+things like this are happening everywhere
+
+Cahciua ~カフキワ~ 🥦🌸, [5/23/26 7:31 PM]
+memo发了两遍一模一样的 它自己的heartbeat都不去重的吗
+
+澪, [5/23/26 7:31 PM]
+unless…
+
+澪, [5/23/26 7:32 PM]
+you make the most important decision of you life！
+```
+
+21 20 Get advice from a 16k player. 
+
+<!-- 我感觉你打的时候整个机子都在抖。 -->
+
+<!-- 可以用手腕发力。也方便位移。 -->
+
+<!-- （He demonstrates a wicked fast tapping with a single hand) -->
+
+<!-- Btw, speed 8 seems too fast and unnecessary even for pros. -->
+
+<!-- For tap after slide, they wait a bit and start slide at the tap. -->
+
+22 00 End the day w お願い！ コンコンお稲荷さま, Bad Apple!! feat nomico, and きゆうくらりん
+
 22 20 play project sekai.
 
+24
+
+01 00 Chat
+
+```
+Nickel Angel✨, [5/24/26 12:36 AM]
+感觉有人说觉得许多人刷海底谭什么的就是因为他只知道这一首歌能有错位，且能练错位，而上来就练这个最难的歌曲失去了过程……
+但实际情况是没什么人推荐萌新要练什么歌……其实我感觉就算 12 12+ 某些所谓练习曲也是就那一小段很难，实际上你很难把注意力集中在那一小段上，根本没法练习
+
+Nickel Angel✨, [5/24/26 12:38 AM]
+我其实一直认为一款游戏从入坑到退坑的周期是和你在这款游戏中接触到的内容量成正比的
+
+Nickel Angel✨, [5/24/26 12:40 AM]
+舞萌每次更新有多少比例的歌是在 11+ 到 12+ 区间呢，我感觉还是比较少的……所以我现在就有种我能打的且感兴趣的歌我都基本打完了，要打新的要等每月的更新才能等来两三首我又能打的歌……这本身就很无聊（
+
+f, [5/24/26 12:41 AM]
+我打了十几次的 11 级别的 きゆうくらりん。一直没有打过（97）。最好一次96多。
+
+腐竹喵, [5/24/26 12:42 AM]
+我觉得是他们太飞了，没过多久就飞升了，也没怎么打过低难度的歌，完全不清楚从0开始怎么打
+
+f, [5/24/26 12:42 AM]
+也不能回放。不知道为什么miss了。好像打到了，好像没有。也不知道每次是不是miss同一个。有时候不止一个。
+
+f, [5/24/26 12:43 AM]
+流速多少
+
+Nickel Angel✨, [5/24/26 12:43 AM]
+其实我觉得重要的不是打多少次，而是打多少次都没什么改变，感觉每次自己发挥都还是在那个平均水平，我是感觉这种情况打几遍没意思了
+
+腐竹喵, [5/24/26 12:44 AM]
+没事这个我歌我在w1打了21次才鸟
+
+Nickel Angel✨, [5/24/26 12:44 AM]
+其实可以录像来看自己怎么回事，去自我检查，感觉这个很重要
+
+Nickel Angel✨, [5/24/26 12:44 AM]
+我现在是 7.5 的流速
+
+f, [5/24/26 12:44 AM]
+我几乎不会100以上。简单的歌也不行。
+
+腐竹喵, [5/24/26 12:45 AM]
+所以我觉得星星歌好玩因为至少背谱有提升
+
+Nickel Angel✨, [5/24/26 12:46 AM]
+我其实感觉玩这个游戏还是得背谱或者去研究x
+
+腐竹喵, [5/24/26 12:47 AM]
+我能问一下吗（你玩了多久了
+
+f, [5/24/26 12:47 AM]
+如果先滑动后点击，有些高手会等一会，然后在屏幕点击的同时开始滑动。如果滑动后不跟点击就直接划。
+
+她们好像知道滑动的移动速度。
+
+Nickel Angel✨, [5/24/26 12:48 AM]
+舞萌星星滑动的时机是有踩音的
+
+Nickel Angel✨, [5/24/26 12:49 AM]
+星星写谱原理x
+
+腐竹喵, [5/24/26 12:49 AM]
+我好像也快全打过了，只不过是红谱x
+
+腐竹喵, [5/24/26 12:49 AM]
+就是8-10+的那些
+
+f, [5/24/26 12:50 AM]
+玩了两周。机厅的人很友好。给了很多建议。流速。机器功能。判定方式。敲打方法。
+
+腐竹喵, [5/24/26 12:52 AM]
+我觉得2周68pc打不了100是正常的（
+
+腐竹喵, [5/24/26 12:52 AM]
+这样已经很好了
+
+腐竹喵, [5/24/26 12:52 AM]
+我200pc的时候才打出第一个100（
+
+f, [5/24/26 12:52 AM]
+我打不了97
+
+Nickel Angel✨, [5/24/26 12:52 AM]
+SSS 在低难度意味着几乎一点失误不能有，是一个很高要求
+
+腐竹喵, [5/24/26 12:53 AM]
+对（）
+
+腐竹喵, [5/24/26 12:53 AM]
+物量少相同的失误完成度会低很多
+
+渴望怜爱的 むらさき | 抱...抱不到, [5/24/26 12:53 AM]
+随着定数和能力提高你可能会觉得sss变得简单一点点
+
+渴望怜爱的 むらさき | 抱...抱不到, [5/24/26 12:53 AM]
+那个时候说明难度上升曲线很适合你
+
+腐竹喵, [5/24/26 12:54 AM]
+50pc的时候我只敢开黄谱（
+
+Nickel Angel✨, [5/24/26 12:54 AM]
+你打到 80% 的歌中，有 43% 已经到了 S 及以上，其实还是有相当一部分的
+
+f, [5/24/26 12:57 AM]
+你在说什么...
+
+Nickel Angel✨, [5/24/26 12:57 AM]
+我按这个图的数据算出来的（？
+
+f, [5/24/26 12:58 AM]
+80 是哪个数据
+
+腐竹喵, [5/24/26 12:58 AM]
+不对，你说的打不了97指的是11+打不了97吗（全是11.6的97的b50有11250分了，两周能打上w1已经是飞升b了
+
+Nickel Angel✨, [5/24/26 12:58 AM]
+clear
+
+Nickel Angel✨, [5/24/26 12:58 AM]
+clear 就是到 80% 了
+
+f, [5/24/26 1:02 AM]
+“我的最佳成绩” 怎么是按照游玩次数排序的。
+
+腐竹喵, [5/24/26 1:05 AM]
+对那个有问题，在旁边那个选项里按筛选有按完成率排序
+
+f, [5/24/26 1:08 AM]
+11 及以上的歌曲只有一首拿到过 97。
+
+可能比较规律。印象里。
+
+没有先出滑动，再出点击。没有多段间隔不同的连续点击。没有左右左右，或者似乎随机（bad apple）的点击。
+
+腐竹喵, [5/24/26 1:12 AM]
+11+还有一个我觉得好听不难的歌 白ゆき
+
+腐竹喵, [5/24/26 1:13 AM]
+个人认为比心跳不止简单一些（
+
+腐竹喵, [5/24/26 1:13 AM]
+你可以试试
+
+腐竹喵, [5/24/26 1:14 AM]
+以及其实有很多9-11的歌也是难度超标了
+
+f, [5/24/26 1:14 AM]
+一直打同一首歌当然也不是为了增加分数了。
+
+腐竹喵, [5/24/26 1:15 AM]
+比如说10+的那个bad apple
+
+腐竹喵, [5/24/26 1:16 AM]
+譜面-100号 坑萌新之作
+
+腐竹喵, [5/24/26 1:16 AM]
+我觉得好听就多打
+
+f, [5/24/26 1:16 AM]
+一般来说当前 rating 除以 1000 但歌曲都是能加几十分的。而且看上去懒洋洋的。只不过也就是拿个 97 或者 98 了。
+
+腐竹喵, [5/24/26 1:24 AM]
+没关系打就完事了
+
+腐竹喵, [5/24/26 1:24 AM]
+应该享受玩游戏过程本身
+
+腐竹喵, [5/24/26 1:24 AM]
+而不是结果成绩rating什么的
+
+f, [5/24/26 1:27 AM]
+有一天，在 project sekai 上玩。
+
+一直打。当时想要在 hard 难度上 ap。但其实也不现实了。
+
+后来打得天昏地暗。有时候前10个音符上就没有打好。重新开始。有时候忘记滑动。
+
+总之最后放弃了。
+
+后来看也不现实。不是差一点。最好一次好像连续 p 了前几百。也有几个拿不到的。一般来说，有些是看的，有些是凭感觉（连续间隔）的，心态也不好（紧张），总是不会稳定。
+
+不过在 maimai 上却总是想起。
+
+仅仅因为想玩而玩的歌曲也有吧。机厅常客远过半都在 15k 以上。大人总是玩一些“舞萌”曲。只有一个小孩反复玩一个可能不超过20个项目的集合里的歌曲（大概是流行推荐主导的个人收藏），而且好像早就 16k 了。
+
+印象里下棋的时候很会心跳。常在深夜。局末 request computer analysis 的时候就能明显听到还在跳。
+
+f, [5/24/26 1:29 AM]
+dx 分数 new record 和单曲 rating 上升好像并没有什么关系。我似乎只关心后者。
+
+腐竹喵, [5/24/26 1:29 AM]
+所以我不打舞萌就完蛋了（x
+
+腐竹喵, [5/24/26 1:30 AM]
+我觉得你本质上是需要一个和你差不多的玩家一起打
+
+腐竹喵, [5/24/26 1:30 AM]
+而不是总和已经玩了很久的人比较
+
+f, [5/24/26 1:32 AM]
+I can search the formula myself
+
+腐竹喵, [5/24/26 2:03 AM]
+刷到一个讲舞萌手台的视频，我突然想到，我的舞萌退坑结局可能是，买了手台随时都能玩，然后就逐渐不太想玩了
+
+澪, [5/24/26 4:29 AM]
+那我至少覆盖了 11-13+ 的大部分曲目（
+
+Nickel Angel✨, [5/24/26 11:03 AM]
+其实我感觉现在的规律来看，能打 13 和 13+ 和一点点 14 就能玩到大部分曲目了
+
+Nickel Angel✨, [5/24/26 11:03 AM]
+（这也是我希望达到的一个目标x
+
+澪, [5/24/26 11:19 AM]
+12+ 到 13 的 gap 比较明显
+
+澪, [5/24/26 11:19 AM]
+先把我鸟加了的 12+ 都打一遍吧.png
+
+澪, [5/24/26 11:43 AM]
+打叉的是别碰
+
+澪, [5/24/26 11:43 AM]
+打？的是可以试试
+
+澪, [5/24/26 11:43 AM]
+除此之外是比较符合 12+ 水平的
+
+澪, [5/24/26 11:44 AM]
+以及猫娘打架不会打别打
+
+澪, [5/24/26 11:45 AM]
+小心把交互癖了
+
+渴望怜爱的 むらさき | 抱...抱不到, [5/24/26 11:47 AM]
+猫娘打架
+
+渴望怜爱的 むらさき | 抱...抱不到, [5/24/26 11:47 AM]
+草
+
+Satori 🪐, [5/24/26 11:49 AM]
+不要打阿卡伊
+```
+
+03 00 Sleep, outside the quilt.
+
+<!-- For some reason I'm sweating. And my hair is yet, unusually, wet. -->
+
+18 40 Waste 40 min for the totally unexpected mislabel. <!-- Even though I've noticed and challenged a passenger -->
+
+<!-- There are two hechuan Rd station on amap. Confusing. Seems I have to reverse. -->
+
+<!-- I guess I have to go to dapuqiao instead, which is mislabeled as hechuan, after checking the adjacent stations. -->
+
+19 00 Arrive
+
+Have 1 free pc left in the machine, thanks to the routine testing maybe. 
+
+Get a companion, ソルト（ふぇすてぃばる）
+
+Play きゆうくらりん at expert level three in a row, getting s at last.
+
+Complete area touhou project.
+
+19 20 Meet a boy of 13k rating pre admitted to shnu music through a program where one picks the university major in jhs. 
+
+Play 偉大なる悪魔は実は大天使パトラちゃん様なのだ！, 幸せになれる隠しコマンドがあるらしい, Oshama Scramble!, and Virtual to LIVE. Let him pick four songs.
+
+<!-- 我以后要给舞萌供曲！ -->
+
+<!-- Optimism. The vital energy of the youth. -->
+
+<!-- Btw, he seems to be the only player I've seen using achievement rate as the category, particularly s. -->
+
+21 20 End the day w ミルキースター・シューティングスター, バグ, and ホシシズク.
+
+<!-- Seems I can open a mini window and drag the text directly to telegram, wo relying on screenshot ocr. Though no idea why I could not copy after long press inside wechat (it just pops up for a drop), yet it doesn't have an auth outside. -->
+
 25
+
+03 00 Maybe it's a pattern that I would consistently sweat at 3 am.
+
+03 20 Appreciate `【红心咖啡】携带恋话`.
+
+<!-- Inspired by project sekai maybe. 
+
+I were about to trim prior subscription (max 30) to add yokidou. -->
+
+<!-- 03 40 Disable address phone number extraction, screenshots on clipboard on Gboard. -->
+
+04 20 Watch some yoshiki walkthroughs.
+
+<!-- Hana to yuki to drum bass -->
+
+16 00 Arrive
+
+16 20 Get inspired, try project sekai wo non slip pad by holding in hands
+
+<!-- Get weekly student coupons as recommended -->
 
 19 40 read `如何把 OpenWrt 软路由变成 Waydroid 电视盒子`, comment.
 
@@ -21317,6 +22735,208 @@ upd may 30: <!-- after a few minutes -->
 
 性能是不可能不够用的，怎么说都比 Amlogic 那种电视盒子强，我的两台软路由，一个是8代intel i3,另一个是N95. 前者上一个主人跑的是 ProxMox VE，虚拟机里跑 OpenWrt, 后者 N95, 预装是 Windows 11。
 ```
+
+22 00 End the day w ラグトレイン, ライアーダンサー, and ザムザ, achievement s or s plus for each on expert level. 
+
+A nice day. I would read kde and gnome hig next and try to port to react.
+
+26
+
+02 00 Try to eat memoh group. Browse legacy messages from menci. 
+
+Seems they have a meetup today (upd: hi hotpot, a common one). 3k new messages. I would leverage telegram search to filter out non trivial players.
+
+02 20 Eat memoh group
+
+```
+sns, [5/26/26 1:35 AM]
+不知道自己该接着上学还是直接工作好了
+
+sns, [5/26/26 1:35 AM]
+对学校无兴趣
+
+sns, [5/26/26 1:35 AM]
+看你现在手头有没有想做的方向吧。有明确想做的事就直接干 没有的话学校至少给你时间和缓冲去想清楚
+
+sns, [5/26/26 1:44 AM]
+有点想接一个 Nowledge 试试
+
+sns, [5/26/26 1:44 AM]
+今天看了古思为老师的演讲感觉很靠谱，被说服了
+
+sns, [5/26/26 1:44 AM]
+我到的时候 nowledge 已经讲完了，有点遗憾）
+
+sns, [5/26/26 1:44 AM]
+不过看 psiace 很推荐，一直想了解一下，ta 今天也和我提了这个
+
+sns, [5/26/26 1:49 AM]
+有一种 不知道自己还能活多久 的感觉
+
+sns, [5/26/26 1:49 AM]
+很不幸生在这个写代码走向没落的时代
+
+sns, [5/26/26 1:49 AM]
+或者另一个方面，也可以说很幸运，完整地经历过了软件工程最辉煌的时代
+
+sns, [5/26/26 1:49 AM]
+我总觉得我们这一代人可能没有未来了
+
+sns, [5/26/26 1:49 AM]
+这一代人的生活就算不被战争打碎也早晚会被 AGI 打碎，等到时候所有的工作都被 AI 和机器人抢走
+
+sns, [5/26/26 1:49 AM]
+然后人没有工作能做了
+```
+
+```
+溏 🍬, [5/25/26 11:19 PM]
+最近半年我聊了很多人，我回想起来，最有深度的一次还是和Menci
+
+溏 🍬, [5/25/26 11:20 PM]
+合众的人不会出现在这个群里
+
+Menci 💖, [5/25/26 11:21 PM]
+（受宠若惊）
+
+Menci 💖, [5/25/26 11:21 PM]
+其实我感觉我可能还挺合众的
+
+溏 🍬, [5/25/26 11:21 PM]
+和你的话题很好推进下去
+```
+
+```
+Acbox Neko, [5/26/26 2:24 AM]
+@chiffoncha 如果你来我们这里 你可以来优化我们的ux
+
+Acbox Neko, [5/26/26 2:24 AM]
+chat页面的
+
+Acbox Neko, [5/26/26 2:24 AM]
+后面harness也可以讨论设计
+```
+
+<!-- 03 00 observe.
+
+There is a broken line on my screen. Red and blue fail. Green works. Yellow becomes pure green. Black and white are fine. 
+
+I guess I would live w it. -->
+
+15 20 Arrive
+
+<!-- There's an ongoing big rearrangement of the machines. Despite having the obstacles in front moved, only one machine now operated wo network issues. -->
+
+<!-- Go w anonymous mode anyway -->
+
+16 20 Try rank examination mode fort the first time on expert ex high.
+
+19 00 Eat nahida channel while reloading google ai mode chat and installing macos via docker. 
+
+```
+Akasha Terminal: dev🍃, [5/24/26 12:59 AM]
+有人催更了
+我晚饭吃太多直接躺了，刚醒
+
+先说交通，我基本上一直在天河还有白云交界地带活动，包括东站和体育西经常去，试过半年多电动车或者地铁通勤，应该是有点发言权。
+公交车非常烂。站台提供等候区可以坐下休息的地方非常少，这点远不如深圳，甚至不如惠州。
+电动车管理是老大难问题，而且很多车主鸣笛没停过素质非常低下。电子眼抓拍电动车车牌带来了很恶劣的影响，很多人干脆不上牌了。（电子眼抓拍出来之前：不上牌罚50和上牌不罚很容易选。出来之后不上牌避开交警罚0，但是上牌很可能罚好多个50，怎么选这还用想吗）
+私家车交通也非常烂。城市规划一坨。天天堵车。懂得都懂不多聊了。
+之前在群里发表爆论，广州交通不是电动车路权给的太多，是还不够。论起来，两轮车肯定比四轮车经济太多了。现在私家车已经太泛滥了，应该收重税。
+
+再说吃的，这个确实黑不了，我尊重所有觉得广州好吃的多的人。但是北方人真的觉得广州没什么好吃的，本地人爱吃的店基本吃起来不如萨莉亚麦当劳。说起来确实是不如北京天津青岛…但是没办法。
+
+城市基建水平非常烂。公交车非常不发达上面算是说过了。道路不仅规划成迷，维护水平也很烂。我这辈子从来无法想象一个一线城市主干道可以全是坑坑洼洼。远不如深圳和重基建的二线城市。
+哦对，还有减速带，平均一公里俩减速带…
+小偷也是比较多的，我没想到2025年还有人偷电动车，刚来电动车就被偷了。
+由于是广东省会，被迫承担了很多不该承担的职责，非常多的政府机构、军区、武警占据了寸土寸金的城市核心地段，把一些成片的生活区割的支离破碎。对于普通人绝对是扣分项。
+
+医疗算是加分项没有争议。
+
+个人收入方面，广州不配叫一线城市。类似岗位，广州6k大概对应深圳8k，广州9k对应深圳12k。似乎还不如杭州。服务业平均工资4.5k左右。普通人过的很一般。最近互联网全面收缩就更可怜了，竞争力已经低于杭州了。
+
+王小美 Ganyu, [5/24/26 1:09 AM]
+还好我是活郊区的
+
+Banshee Vivian, [5/24/26 1:11 AM]
+不如深圳很多方面也是因为深圳能独立于广东财政统筹外。广东GDP怎么提升都还得先富带后富养兄弟省，近些年省会广州的退休金/医保不单几乎停涨还削减了
+
+王小美 Ganyu, [5/24/26 1:13 AM]
+有一说一我最讨厌的一点应该是禁摩
+
+Banshee Vivian, [5/24/26 1:13 AM]
+自从开始挖空地底的蜘蛛网地铁计划后，公交车已经是弃子了。近几年年年都砍好多条线，迟早有地铁覆盖的地方可能就一两条公交了事
+
+Hyacine🦄 Gallery, [5/24/26 1:13 AM]
+你说的没错，但外地人是活的
+
+Banshee Vivian, [5/24/26 1:16 AM]
+没办法，当年飞抢太严重。我堂姐都被抢过包还拖行过几米
+
+王小美 Ganyu, [5/24/26 1:16 AM]
+问题是以前是以前，现在是现在啊
+
+Banshee Vivian, [5/24/26 1:17 AM]
+在中国哪有解开当年时代困局造成的不合时宜政策的惯例，除了能提振经济 (
+
+Banshee Vivian, [5/24/26 1:26 AM]
+感觉很多外地人愿意来也是因为广州过多的城中村给不太注重生活环境的有尝试生活下去的空间，也导致一些岗位也能因此压低平均工资
+
+26200 (UTC+8), [5/24/26 8:28 AM]
+说这话的一看就是没有在欧美过过的
+
+https://fixupx.com/Shioochicqwq/status/2058229248809419263
+目前我这个号来tg 10年了。
+今年抑郁症好转之后拉黑了两个朋友。
+其中一个是所有管理的群全部ban+delete all。
+至于对其他群管造成的影响，我很抱歉，咱精神内核还是非常稳定的。
+也请大家多友好一点。现在这个环境，大家精神状态活着都不容易。
+共勉。
+```
+
+<!-- 4k new msgs one memoh group?! -->
+
+21 40 Play w a passionate graduate of major in laws who is conscious about unofficial latest jp machines.
+
+<!-- Glad you've got a job.
+
+It's basically from a prison to another. Nothing special.
+
+Neither! You know, many nowadays are unemployed. 
+
+You feel grown up, helpful, anger considerate. Maybe you talk to customers a lot. 
+
+I'm naive. Or why would I still play maimai...
+
+Do you have a gf?
+
+No. Ah... That's private! Embarrassing.
+
+It would update soon after uee as the official account says. 
+
+Many can play already. In jp. And in mainland! 
+
+Hk is mainland, lol, awa tw.
+
+Hk was cracked! Tw is not cn!
+
+Do not talk about keyboard politics! 
+
+Stop here... Or no one would be able to play anymore!
+
+Well, some might be vulnerable, but
+ how could you stop a self hosted one... Though still connected to internet. 
+Every phenomenon you've described can convert to ten papers on laws!
+
+Do you trade us stocks? 
+
+I know nothing! -->
+
+22 00 End the day w トンデモワンダーズ, 星界ちゃんと可不ちゃんのおつかい合騒曲, and 三妖精SAY YA!!!.
+
+<!-- 23 00 Request return of the new phone. The product name does contain fe variant. Nevertheless, it's not us or hk as bloated, refurbished wo consent, with a poor screen stability.
+
+24 00 Research Samsung phones on berryberry. -->
 
 27
 
@@ -24675,7 +26295,9 @@ upd: shes asks if i have a pair of redundant non wireless earphone. <!-- (摘) .
 
 <!-- there are are a few players that would say hello and goodbye to me everyday. a cozy atmosphere... -->
 
-18 20 sync memories. (19 40) 18 40 export memoh group may.
+18 20 sync memories. ~~(19 40)~~ 20 20 18 40 export memoh group may.
+
+<!-- unfortunately, i do have to spend 2h for this, as expected, no matter how i timebox. i have my own thoughts so it's not that easy to scale w llms. -->
 
 19 20 observe.
 
