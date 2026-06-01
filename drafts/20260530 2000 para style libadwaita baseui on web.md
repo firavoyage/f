@@ -10,6 +10,10 @@
 
 <!-- starting . is used as hidden files. i think great non trivialness comes at great serenity, standing out of the noisy crowd. -->
 
+<!-- llms are prone to breaking changes across versions. -->
+
+<!-- no need to rp classname w class. and, i can migrate to preact at any time as i like. -->
+
 # i use vanilla css. clsx or data attr.
 
 When using **vanilla CSS**, **data attributes** are almost always the better choice over `clsx` for managing component variants and states. \[[1](https://hamishw.com/articles/modern-styling-in-react)]
@@ -7951,5 +7955,539 @@ Are you looking to migrate a **large legacy codebase**, or are you checking comp
 
 Show all
 
-# 
+# does coss ui remove classes from baseui
 
+No, **coss ui** does not "remove" classes from [Base UI](https://base-ui.com/react/handbook/styling) because **Base UI itself does not ship with or bundle any default CSS classes or styles**. Base UI is built entirely as an **unstyled, headless primitive library**. \[[1](https://news.ycombinator.com/item?id=46245401), [2](https://base-ui.com/react/handbook/styling), [3](https://github.com/cosscom/coss/blob/main/apps/ui/README.md), [4](https://coss.com/ui/docs)]
+
+Instead, this is how both libraries interact regarding classes and styles: \[[1](https://shadcnstudio.com/blog/base-ui-vs-radix-ui)]
+
+- **Base UI handles functionality**: It solely provides the HTML structure, accessibility tree (ARIA attributes), focus management, and keyboard navigation.
+- **coss ui handles the design layer**: It wraps around Base UI's core primitives and applies a complete, custom design system using **Tailwind CSS classes**.
+- **You own the code**: Because [coss ui](https://coss.com/ui/docs) is a "copy-and-paste" component model (similar to how shadcn/ui operates), the final Tailwind classes reside directly in your project files. You can modify, add, or remove any Tailwind class yourself without worrying about breaking a hidden, underlying style sheet. \[[1](https://github.com/mui/base-ui/issues/3579), [2](https://shadcnspace.com/blog/radix-ui-vs-base-ui), [3](https://www.reddit.com/r/FigmaDesign/comments/1qt673p/cosscom%5Ffree%5Fdesign%5Fsystem%5Ftailwind%5Fcss%5Fbaseui/), [4](https://www.reddit.com/r/reactjs/comments/1s03fc7/what%5Fui%5Flibrary%5Fdo%5Fyou%5Fuse%5Fin%5Fyour%5Factual/), [5](https://coss.com/ui/docs), [6](https://github.com/cosscom/coss/blob/main/apps/ui/README.md)]
+
+If you are looking to customize the styles, you are free to change any Tailwind utility classes directly in the component file you copied.
+
+If you'd like to dive deeper, tell me:
+
+- Are you **migrating an existing project** from another library (like Radix or standard Shadcn)?
+
+- Do you want to see an **example of how a specific component is structured** with Base UI and Tailwind inside coss ui?
+
+- [link](https://news.ycombinator.com/item?id=46245401)\
+  Show HN: Base UI v1.0 Unstyled UI Components from the ...\
+  Jan 2, 2026 — Since Base UI doesn't bundle any styles, it plays nice with Tailwind, CSS Modules, CSS-in-JS, plain CSS, or whatever styling solut...\
+  Hacker News
+
+- [link](https://github.com/mui/base-ui/issues/3579)\
+  Is base-ui a reliable choice for enterprise frontend libraries?\
+  Dec 18, 2025 — Activity \* Build all the styles from scratch (pick Base UI, Radix, React Aria or another equivalent, I would of course recommend B...\
+  GitHub
+
+- [link](https://www.reddit.com/r/reactjs/comments/1s03fc7/what%5Fui%5Flibrary%5Fdo%5Fyou%5Fuse%5Fin%5Fyour%5Factual/)\
+  What UI library do you use in your actual projects or side projects?\
+  Mar 22, 2026 — COSS UI and https://www.alignui.com/ are very similar to shadcn; under the hood, they also use Radix. ... Its about a few finer de...\
+  Reddit·r/reactjs
+
+Show all
+
+You said: base ui does ship w classes and it has a global wrapper to disable
+
+You are completely right. You are referring to **MUI Base** (the older version of the library), which automatically injects default semantic class names like `.base-disabled`, `.Mui-focused`, or `.base-Input-root` onto DOM elements. \[[1](https://mui.com/base-ui/getting-started/customization/), [2](https://mui.com/base-ui/getting-started/customization/)]
+
+MUI Base features a global provider configuration to disable these automatically generated classes to clean up the DOM: \[[1](https://mui.com/base-ui/getting-started/customization/)]
+
+tsx
+
+```
+import { classNamePrefix, ClassNameProvider } from '@mui/base/utils';
+
+// Setting the prefix to an empty string disables the default 'base-' or 'Mui-' classes
+<ClassNameProvider value={classNamePrefix('')}>
+  <App />
+</ClassNameProvider>
+```
+
+Use code with caution.
+
+The Difference in Modern Base UI (v1.0+)
+
+There is an important architectural distinction to keep in mind regarding how **coss ui** interacts with this setup:
+
+- **MUI Base (Legacy)**: Injected class names (e.g., `.base-Button-root`). The wrapper shown above was built exactly to strip them out so they wouldn't clutter your DOM or conflict with Tailwind utilities. \[[1](https://github.com/mui/material-ui/issues/33260), [2](https://mui.com/base-ui/getting-started/customization/), [3](https://mui.com/base-ui/getting-started/customization/)]
+- **Base UI (The Modern v1.0+ Rebrand)**: The library was completely rewritten. The modern version of Base UI **completely removed CSS class name generation** from its architecture. It now relies natively on **`data-*` attributes** (like `data-disabled`, `data-focused`, or `data-panel-open`) to expose states for styling. \[[1](https://base-ui.com/react/components/field), [2](https://base-ui.com/react/overview/about), [3](https://github.com/mui-org/material-ui/issues/30820), [4](https://base-ui.com/react/components/number-field)]
+
+How coss ui Handles This
+
+Because coss ui leverages modern [Tailwind CSS](https://tailwindcss.com/), it target these native states directly inside the copied components using Tailwind's data-attribute selectors rather than relying on global class class name toggles:
+
+tsx
+
+```
+// Inside a coss ui component, states are styled cleanly like this:
+<BaseUIComponent className="bg-blue-500 data-[disabled]:bg-gray-300 data-[focused]:ring-2" />
+```
+
+Use code with caution.
+
+If you are dealing with an older project using the legacy MUI Base classes, utilizing that `ClassNameProvider` wrapper is exactly the right move to prevent class conflicts! \[[1](https://mui.com/base-ui/getting-started/customization/)]
+
+Would you like to see how to convert an older component targeting legacy `.base-*` classes over to the newer `data-*` selectors? \[[1](https://base-ui.com/react/components/number-field), [2](https://mui.com/base-ui/getting-started/customization/)]
+
+- [link](https://mui.com/base-ui/getting-started/customization/)\
+  Customizing MUI Base components\
+  Applying custom CSS rules If you're happy with the default structure of a component's rendered HTML, you can apply custom styles t...\
+  MUI
+- [link](https://base-ui.com/react/overview/about)\
+  About Base UI\
+  Component APIs are fully open, so you have direct access to each node, you can easily add or remove parts, and you can wrap them h...\
+  Base UI
+- [link](https://base-ui.com/react/components/field)\
+  Field - Base UI\
+  data-disabled. Present when the field is disabled. data-valid. Present when the field is valid. data-invalid. Present when the fie...\
+  Base UI
+
+Show all
+
+You said: does it deconstruct the classname prop now or simply pass down all rest non component specific props. can i use class instead of classname.
+
+1\. Does it deconstruct the `className` prop or pass down `...rest`?
+
+**Both.** Base UI uses an internal utility that selectively extracts `className` to merge it, while forwarding the rest of your HTML props downstream. \[[1](https://base-ui.com/react/utils/use-render)]
+
+When you pass a `className` to a component, Base UI's internal architecture does not blindly spread it like standard attributes. Instead:
+
+- **It isolates `className`** to merge it safely with its own internal state strings (or callback functions if you choose to pass a function to dynamically toggle styles). \[[1](https://base-ui.com/react/utils/use-render), [2](https://certificates.dev/blog/starting-a-react-project-shadcnui-radix-and-base-ui-explained)]
+- **It forwards the remaining props** (like `id`, `aria-*`, `onClick`, and non-component-specific attributes) down to the underlying HTML element or primitive slot. \[[1](https://base-ui.com/react/utils/use-render)]
+
+Because **coss ui** is a copy-and-paste design layer built on top of Base UI, you can see this directly in the source file you copy. It typically takes your incoming `className` and joins it with the default Tailwind classes using a merging tool (like `clsx` or `tailwind-merge`): \[[1](https://github.com/shadcn-ui/ui/discussions/9636), [2](https://blog.bitsrc.io/how-to-build-better-react-components-in-2024-2d930b1f30b1)]
+
+tsx
+
+```
+// Typical structure inside a coss ui file:
+export function Button({ className, ...props }: ButtonProps) {
+  return (
+    <ButtonPrimitive
+      // 1. Base UI merges this className with its own internal layout logic
+      className={cn("px-4 py-2 bg-blue-500 text-white", className)}
+      // 2. Remaining non-specific props are cleanly passed down
+      {...props}
+    />
+  );
+}
+```
+
+Use code with caution.
+
+***
+
+2\. Can you use `class` instead of `className`? \[[1](https://www.reddit.com/r/vuejs/comments/1ltocb5/why%5Fdoesnt%5Fmy%5Fprop%5Fclassname%5Foverride%5Fdefault/)]
+
+**No**, you cannot safely use `class` if you are working within a standard React framework environment.
+
+Because both Base UI and coss ui are built natively for React, they are constrained by React's DOM rendering engine: \[[1](https://github.com/preactjs/preact/issues/103), [2](https://www.dhiwise.com/post/react-classname-vs-class-a-beginners-perspective), [3](https://base-ui.com/react/components/input)]
+
+- **React Expects `className`**: In React, `class` is a reserved keyword in JavaScript. React requires the `className` property to manipulate DOM class attributes. Passing a raw `class` prop will often result in React ignoring it entirely or throwing a development console warning. \[[1](https://github.com/preactjs/preact/issues/103), [2](https://www.dhiwise.com/post/react-classname-vs-class-a-beginners-perspective)]
+- **The Only Framework Exceptions**: If you are using a modern alternative framework wrapper (such as **Preact**, **SolidJS**, or **Vue**) where `class` is natively compiled and tolerated, it will work. However, for a standard React + Tailwind stack, you must stick strictly to `className`. \[[1](https://github.com/preactjs/preact/issues/103), [2](https://www.reddit.com/r/vuejs/comments/1ltocb5/why%5Fdoesnt%5Fmy%5Fprop%5Fclassname%5Foverride%5Fdefault/), [3](https://www.dhiwise.com/post/react-classname-vs-class-a-beginners-perspective)]
+
+If you'd like to look at the component code directly, tell me:
+
+- Which **specific component file** (e.g., Button, Modal, Select) are you configuring right now?
+
+- Are you running into a scenario where **Tailwind classes are overriding each other** or not applying correctly? \[[1](https://github.com/shadcn-ui/ui/discussions/9636)]
+
+- [link](https://github.com/preactjs/preact/issues/103)\
+  What's the reason behind using class instead of className?\
+  Mar 22, 2016 — developit commented. developit. on Jun 25, 2016. Member. @AlexAThomas Preact support both properties. If you prefer className , yo...\
+  GitHub
+
+- [link](https://www.reddit.com/r/vuejs/comments/1ltocb5/why%5Fdoesnt%5Fmy%5Fprop%5Fclassname%5Foverride%5Fdefault/)\
+  Why doesn't my prop className override default classes?\
+  Jul 7, 2025 — Comments Section. cmd-t. • 1y ago. Class is automatically merged. You don't need a class name prop. Also, if the HTML is the same,\
+  Reddit·r/vuejs
+
+- [link](https://www.dhiwise.com/post/react-classname-vs-class-a-beginners-perspective)\
+  Understanding React Classname vs. Class: A Simple Guide - DhiWise\
+  Sep 11, 2024 — Always use className instead of class in your React components to avoid syntax conflicts, ensuring your CSS classes will be applie...\
+  DhiWise
+
+Show all
+
+You said: can you simply replace react w preact most of the cases
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">Yes, you can swap React for Preact in most simple or performance-focused applications</span></strong></mark>, but it is highly risky for advanced applications or libraries like Base UI. \[[1](https://www.syncfusion.com/blogs/post/preact-vs-react), [2](https://www.ksolves.com/blog/reactjs/preact-vs-react), [3](https://www.sitepoint.com/using-preact-react-alternative/), [4](https://github.com/mui/base-ui/issues/1995)]
+
+Preact provides an official compatibility layer called `@preact/compat` (or `preact/compat`) that maps React APIs directly to Preact. This means basic hooks (`useState`, `useEffect`), simple component trees, and Tailwind-styled elements usually function perfectly. \[[1](https://preactjs.com/guide/v10/differences-to-react/), [2](https://habilelabs.io/blog/preact-a-clever-alternative-of-react), [3](https://tianyaschool.medium.com/preact-a-lightweight-alternative-to-react-b3f7a423628f), [4](https://beadaptify.com/blog/react-vs-preact-right-framework-for-your-next-project/)]
+
+However, you should avoid replacing React with Preact if your app relies heavily on complex modern UI ecosystems. \[[1](https://itnext.io/%EF%B8%8F-top-7-reasons-why-you-should-use-react-over-preact-6f9dd5ba5b42), [2](https://www.syncfusion.com/blogs/post/preact-vs-react)]
+
+Where Preact Fails to Replace React Easily
+
+When building complex apps or using advanced libraries, you will encounter significant roadblocks:
+
+- **Incompatible Event Architecture:** React utilizes a **Synthetic Event System** to normalize browser behavior. Preact maps directly to the browser's native `addEventListener`. Complex headless component libraries rely tightly on React’s synthetic timing for focus management, menus, and overlays, which often break under Preact. \[[1](https://github.com/mui/base-ui/issues/4670), [2](https://preactjs.com/guide/v10/differences-to-react/)]
+- **Base UI Bugs:** While basic components might render, complex interactive elements frequently break. For instance, users tracking [Base UI issues on GitHub](https://github.com/mui/base-ui/issues/4670) have reported that advanced interactive components crash when run through a Preact compatibility layer. \[[1](https://github.com/mui/base-ui/issues/4670)]
+- **TypeScript Type Discrepancies:** Headless libraries like Base UI require strictly typed props. Because Preact handles types differently than React, you will routinely fight **TypeScript compiler warnings** on complex component wrappers. \[[1](https://github.com/mui/base-ui/issues/1995), [2](https://www.syncfusion.com/blogs/post/preact-vs-react)]
+- **The Modern React Core Drift:** Modern frameworks rely heavily on bleeding-edge features like **React Server Components (RSC)**, the automated **React Compiler**, and new state management APIs (`useActionState`, `useTransition`). Preact does not natively support this specialized server/compiler infrastructure. \[[1](https://itnext.io/%EF%B8%8F-top-7-reasons-why-you-should-use-react-over-preact-6f9dd5ba5b42), [2](https://www.youtube.com/watch?v=J6CHZWoygeM), [3](https://www.turbodocx.com/blog/react-hooks-you-need-to-know), [4](https://builder.aws.com/content/35mjuFWn4hSGCK6JjaZHFIGrzPG/reactjs-best-practices-in-2026), [5](https://beadaptify.com/blog/react-vs-preact-right-framework-for-your-next-project/)]
+
+When You _Should_ Use Preact
+
+Preact is an excellent architectural choice if you are building:
+
+- Ultra-lightweight landing pages
+- Embedded HTML widgets or micro-frontends
+- Progressive Web Apps (PWAs) targeting mobile users with limited bandwidth \[[1](https://www.sitepoint.com/using-preact-react-alternative/), [2](https://www.syncfusion.com/blogs/post/preact-vs-react), [3](https://medium.com/@marketing%5F96787/preact-vs-react-in-2025-which-javascript-framework-delivers-the-best-performance-f2ded55808a4)]
+
+Summary Comparison
+
+| Feature \[[1](https://beadaptify.com/blog/react-vs-preact-right-framework-for-your-next-project/), [2](https://tianyaschool.medium.com/preact-a-lightweight-alternative-to-react-b3f7a423628f), [3](https://medium.com/@marketing%5F96787/preact-vs-react-in-2025-which-javascript-framework-delivers-the-best-performance-f2ded55808a4), [4](https://itnext.io/%EF%B8%8F-top-7-reasons-why-you-should-use-react-over-preact-6f9dd5ba5b42), [5](https://github.com/mui/base-ui/issues/4670), [6](https://builder.aws.com/content/35mjuFWn4hSGCK6JjaZHFIGrzPG/reactjs-best-practices-in-2026), [7](https://preactjs.com/guide/v10/differences-to-react/)] | React                  | Preact (with Compat)            |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- | ------------------------------- |
+| **Gzipped Size**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | ~35KB–45KB             | **~3KB–5KB**                    |
+| **Complex Headless UI**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | Stable & Native        | **Bug-prone on focus/overlays** |
+| **Server Components / Compiler**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | Full Native Support    | **Unsupported**                 |
+| **Event System**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | Synthetic (Normalized) | Native DOM Events               |
+
+If you want to try it out, you can set it up by adding aliases to your bundler configuration (`vite.config.js` or `next.config.js`) to point `react` and `react-dom` directly over to `preact/compat`. \[[1](https://habilelabs.io/blog/preact-a-clever-alternative-of-react)]
+
+Are you planning to deploy this project as a **static landing page** or a **highly interactive dashboard**? Knowing your build tool (like **Vite, Astro, or Next.js**) will help me point out exactly how to configure the aliases. \[[1](https://github.com/mui/base-ui/issues/4670), [2](https://www.youtube.com/watch?v=J6CHZWoygeM), [3](https://chrisproject.org/blog/2025/08/04/preact-testing)]
+
+- [link](https://preactjs.com/guide/v10/differences-to-react/)\
+  Differences to React – Preact Guide\
+  Preact is not intended to be a reimplementation of React. There are differences. Many of these differences are trivial, or can be ...\
+  Preact
+- [link](https://itnext.io/%EF%B8%8F-top-7-reasons-why-you-should-use-react-over-preact-6f9dd5ba5b42)\
+  ⚛️ Top 7 Reasons: Why You Should Use React over Preact - ITNEXT\
+  Nov 22, 2023 — Compatibility. Preact is mostly compatible with React, but not completely. Preact aims to provide the same API and features as Rea...\
+  itnext.io
+- [link](https://www.syncfusion.com/blogs/post/preact-vs-react)\
+  Preact vs React: Which Is Faster? A Practical Performance Guide\
+  Mar 31, 2026 — TL;DR: React vs Preact performance comes down to size vs capability. React is ideal for complex apps with advanced features and a ...\
+  Syncfusion
+
+Show all
+
+You said: i use parceljs. after pnpm add react it works out of the box. i do not import or config anything. will preact do that.
+
+No, **Preact will not work instantly out of the box** without configuration in Parcel like React does.
+
+When you install `react`, Parcel automatically recognizes the package and handles everything behind the scenes because its default engine is hardcoded to expect React's ecosystem.
+
+If you just run `pnpm add preact`, your code will break immediately because all of your dependencies (including Base UI and your custom coss ui components) are still explicitly looking for and importing from `"react"`.
+
+To make Preact work with your existing setup, you must tell Parcel to intercept those React imports and redirect them to Preact. Fortunately, Parcel makes this incredibly easy using **Package Aliasing**.
+
+How to Make Preact Work in Parcel (2 Steps)
+
+1\. Install Preact
+
+You need both the core library and its official compatibility layer:
+
+bash
+
+```
+pnpm add preact
+```
+
+Use code with caution.
+
+2\. Configure Aliases in your `package.json`
+
+Open your root `package.json` file and add an `alias` object. This forces Parcel to quietly substitute React with Preact whenever a library tries to import it:
+
+json
+
+```
+{
+  "name": "your-project",
+  "dependencies": {
+    "preact": "^10.0.0"
+  },
+  "alias": {
+    "react": "preact/compat",
+    "react-dom/test-utils": "preact/test-utils",
+    "react-dom": "preact/compat",
+    "react/jsx-runtime": "preact/jsx-runtime"
+  }
+}
+```
+
+Use code with caution.
+
+What Happens Next?
+
+Once those aliases are saved, Parcel will automatically swap the underlying engine. You do not need to change a single `import React from 'react'` line in your code or your UI components.
+
+However, because you are using Base UI, keep a close eye on your browser's developer console after doing this. If any complex interactive components (like dropdowns, modals, or comboboxes) freeze or throw runtime errors, it means you have hit the Preact event compatibility limits mentioned earlier.
+
+Would you like to know how to **verify your final bundle size reduction** in Parcel to see if the switch to Preact was worth it?
+
+You said: check
+
+**No, Preact will not work natively out of the box in Parcel.** \[[1](https://github.com/parcel-bundler/parcel/issues/832)]
+
+When you install `react`, it runs instantly because Parcel's core engine is designed to recognize and automatically handle standard React projects. \[[1](https://preactjs.com/guide/v10/getting-started/)]
+
+If you only execute `pnpm add preact`, your build will fail immediately. This happens because all your dependencies, [Base UI](https://base-ui.com/react/handbook/styling), and the [coss ui](https://coss.com/ui/docs) components explicitly import from `"react"`, a package that won't exist in your environment. \[[1](https://stackoverflow.com/questions/70481059/avoid-typescript-errors-due-to-parcel-aliases), [2](https://github.com/parcel-bundler/parcel/issues/7772)]
+
+To make Preact act as a drop-in replacement, you must configure **Package Aliasing** to route React imports to Preact. \[[1](https://preactjs.com/guide/v10/getting-started/)]
+
+How to Configure Preact in Parcel
+
+Follow this exact setup to intercept those standard React calls:
+
+1\. Install Preact
+
+Download both the core library and its official compatibility layer: \[[1](https://preactjs.com/guide/v10/getting-started/)]
+
+bash
+
+```
+pnpm add preact
+```
+
+Use code with caution.
+
+2\. Update your `package.json` \[[1](https://github.com/parcel-bundler/parcel/issues/832)]
+
+Add an `"alias"` mapping to your root `package.json` file. This instructs Parcel to intercept any application or library importing `"react"` or `"react-dom"`, and silently swap it with `preact/compat`: \[[1](https://preactjs.com/guide/v10/getting-started/), [2](https://stackoverflow.com/questions/70481059/avoid-typescript-errors-due-to-parcel-aliases), [3](https://github.com/parcel-bundler/parcel/issues/25)]
+
+json
+
+```
+{
+  "name": "your-project",
+  "dependencies": {
+    "preact": "^10.0.0"
+  },
+  "alias": {
+    "react": "preact/compat",
+    "react-dom/test-utils": "preact/test-utils",
+    "react-dom": "preact/compat",
+    "react/jsx-runtime": "preact/jsx-runtime",
+    "preact/jsx-dev-runtime": "preact/jsx-runtime"
+  }
+}
+```
+
+Use code with caution.
+
+_(Note: The `preact/jsx-dev-runtime` line is required to prevent a specific Parcel development-server bug)._ \[[1](https://github.com/parcel-bundler/parcel/issues/7772)]
+
+***
+
+How to Check If Your Bundle Got Smaller
+
+To verify if swapping to Preact successfully reduced your final bundle size, run a production build using Parcel's native reporting tool: \[[1](https://parceljs.org/features/production/)]
+
+bash
+
+```
+npx parcel build src/index.html --detailed-report
+```
+
+Use code with caution.
+
+The `--detailed-report` flag outputs a breakdown of your largest files directly in the terminal, allowing you to confirm that the large React core was replaced by Preact's lightweight ~3KB signature. \[[1](https://parceljs.org/features/production/)]
+
+If you run into issues, tell me:
+
+- Are you getting any **TypeScript type errors** (like `Cannot find module 'react'`)?
+
+- Is the app successfully building but throwing **runtime console errors** when interacting with dropdowns or modals? \[[1](https://stackoverflow.com/questions/70481059/avoid-typescript-errors-due-to-parcel-aliases), [2](https://github.com/preactjs/preact/issues/3350), [3](https://stackoverflow.com/questions/76586943/preact-router-not-working-after-parcel-build)]
+
+- [link](https://github.com/parcel-bundler/parcel/issues/7772)\
+  Plain Preact fails to resolve the runtime when serving #7772\
+  Feb 27, 2022 — 🐛 bug report. Using parcel with preact without aliases or configuration fails to find the runtime when using the serve command, s...\
+  GitHub
+
+- [link](https://preactjs.com/guide/v10/getting-started/)\
+  Getting Started – Preact Guide\
+  Aliasing React to Preact. At some point, you'll probably want to make use of the vast React ecosystem. Libraries and Components or...\
+  Preact
+
+- [link](https://stackoverflow.com/questions/70481059/avoid-typescript-errors-due-to-parcel-aliases)\
+  Avoid typescript errors due to parcel aliases? - Stack Overflow\
+  Dec 25, 2021 — I'd like to avoid using preact-specific imports, so (as per the parcel docs) I added this parcel-specific configuration to my pack...\
+  Stack Overflow
+
+Show all
+
+# is class instead of classname supported in modern react
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">No, using </span><code dir="ltr" style="font-size: 14px; margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 1px solid rgb(44, 46, 53);">class</code> instead of <code dir="ltr" style="font-size: 14px; margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 1px solid rgb(44, 46, 53);">className</code> is not natively supported for standard DOM elements in modern React.</strong></mark> \[[1](https://github.com/facebook/react/issues/4933), [2](https://github.com/preactjs/preact/issues/942)]
+
+While the React team briefly considered allowing `class` in the future, they ultimately shelved the idea to maintain consistency and align with the standard [MDN Web API property naming conventions](https://developer.mozilla.org/en-US/docs/Web/API/Element/className) where the property is explicitly named `className`. \[[1](https://stackoverflow.com/questions/53155878/when-did-react-start-supporting-class-attribute-in-jsx), [2](https://developer.mozilla.org/en-US/docs/Web/API/Element/className)]
+
+If you pass `class` to standard HTML tags like or , the following happens:
+
+- **The styles may still apply**: Modern versions of React pass unknown attributes directly through to the DOM, meaning your CSS rules might still work on screen.
+- **A console error is triggered**: React will throw a loud development warning: _"Warning: Invalid DOM property `class`. Did you mean `className`?"_.
+- **It degrades tool integration**: TypeScript typing, test suites, and internal React optimization behaviors rely strictly on the `className` attribute. \[[1](https://www.reddit.com/r/reactjs/comments/8j057o/can%5Fyou%5Fuse%5Fclass%5Finstead%5Fof%5Fclassname%5Fin%5Freact/), [2](https://stackoverflow.com/questions/59169173/any-more-or-less-official-way-to-use-class-instead-of-classname-attribute-in-rea), [3](https://www.geeksforgeeks.org/reactjs/why-react-uses-classname-over-class-attribute/), [4](https://stackoverflow.com/questions/47362109/does-react-dom-have-to-use-classname-why-am-i-not-seeing-any-warnings), [5](https://community.sonarsource.com/t/false-positive-using-class-attribute-in-jsx-without-react/102164)]
+
+The Exceptions & Workarounds
+
+If you strongly prefer writing standard HTML `class` syntax, you have a few specific options:
+
+- **Web Components**: React fully supports the `class` attribute when you are interacting with Custom Elements / Web Components rather than native HTML elements.
+- **Switch to Preact**: If you want native, warning-free support for both `class` and `className`, consider using Preact. It is a lightweight alternative designed to seamlessly allow standard HTML attribute names.
+- **Babel Compiler Plugins**: You can configure a build-time compiler tool like `@babel/plugin-transform-react-jsx` to automatically convert your `class="foo"` attributes into `className="foo"` before React runs it. \[[1](https://github.com/preactjs/preact/issues/103), [2](https://github.com/preactjs/preact/issues/942), [3](https://stackoverflow.com/questions/61596160/when-should-i-use-classname-over-class-and-vise-versa-in-react), [4](https://dev.to/fromaline/why-you-have-to-use-classname-in-react-but-not-in-preact-3fdm)]
+
+If you are dealing with **dynamic conditional styling** or trying to clean up long strings of utility classes (like Tailwind), the community standard is to use a utility like the `classnames` package or `clsx` inside your standard `className` tags. \[[1](https://medium.com/2359media/why-react-classnames-is-a-lifesaver-and-how-you-should-use-it-if-you-arent-already-b25a44ed5603), [2](https://stackoverflow.com/questions/32230635/passing-in-class-names-to-react-components)]
+
+If you are setting up a **new project** or trying to migrate **legacy code**, let me know:
+
+- Are you using **Tailwind CSS** or another framework?
+
+- Do you need assistance setting up a **Babel plugin** to handle automation?
+
+- Is this for an existing **React application** or are you evaluating **Preact**?
+
+- [link](https://github.com/preactjs/preact/issues/103)\
+  What's the reason behind using class instead of className?\
+  Mar 22, 2016 — developit commented. developit. on Jun 25, 2016. Member. @AlexAThomas Preact support both properties. If you prefer className , yo...\
+  GitHub
+
+- [link](https://www.reddit.com/r/reactjs/comments/8j057o/can%5Fyou%5Fuse%5Fclass%5Finstead%5Fof%5Fclassname%5Fin%5Freact/)\
+  Can you use class instead of className in React 16.3? - Reddit\
+  May 13, 2018 — Comments Section \* arcticicestudio. • 8y ago. This is related to the new DOM attributes handling in React 16.\
+  React 15: Warns and...\
+  Reddit·r/reactjs
+
+- [link](https://stackoverflow.com/questions/53155878/when-did-react-start-supporting-class-attribute-in-jsx)\
+  When did React start supporting 'class' attribute in jsx - Stack Overflow\
+  Nov 5, 2018 — because it would be a syntax error. So overall it's not clear that this is ergonomic enough to actually follow through with. I thi...\
+  Stack Overflow
+
+Show all
+
+You said: what if you pass the class prop
+
+If you create a custom component and pass `class` as a prop, <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>React will allow it without throwing a warning</strong>, but it will behave like a custom data property</mark>.
+
+Here is exactly what happens and why it is usually a bad idea:
+
+1\. It acts as a custom object property
+
+In JavaScript, `class` is a reserved keyword, but it is completely valid to use as a property name inside an object. When you pass it to a custom component, it just becomes a key in the `props` object:
+
+jsx
+
+```
+// This works perfectly fine in React
+function MyComponent(props) {
+  // props = { class: "my-style-class", label: "Click me" }
+  return <button className={props.class}>{props.label}</button>;
+}
+
+// Usage
+<MyComponent class="btn-primary" label="Submit" />
+```
+
+Use code with caution.
+
+2\. You must manually map it to `className`
+
+Your custom component cannot pass that `class` prop directly down to a native HTML element. If you do, React will throw the standard invalid DOM property warning. You must explicitly map it to `className` inside the child component:
+
+jsx
+
+```
+// ❌ THIS TRIPPERS A WARNING:
+function BrokenComponent({ class }) {
+  return <div class={class}>Hello</div>; // React warning: Did you mean className?
+}
+
+//  THIS WORKS:
+function FixedComponent({ class: classNameProp }) {
+  return <div className={classNameProp}>Hello</div>;
+}
+```
+
+Use code with caution.
+
+3\. Destructuring requires renaming
+
+Because `class` is a reserved keyword in JavaScript, you cannot easily destructure it into a standalone variable without renaming it.
+
+javascript
+
+```
+// ❌ Syntax Error: Unexpected token 'class'
+const { class, label } = props;
+
+//  Valid Syntax (Renaming during destructuring)
+const { class: customClassName, label } = props;
+```
+
+Use code with caution.
+
+4\. It breaks prop spreading
+
+If your custom component passes down extra props to an underlying HTML element using the spread operator (`...props`), including `class` in that spread will instantly trigger the React DOM warning.
+
+jsx
+
+```
+function BadButton({ label, ...restProps }) {
+  // If restProps contains 'class', this line breaks with a warning
+  return <button {...restProps}>{label}</button>;
+}
+```
+
+Use code with caution.
+
+If you are trying to build a **reusable component library** or fix an **integration issue**, let me know:
+
+- Are you trying to make your components compatible with **external HTML strings**?
+- Do you need an elegant way to **forward styling props** to child elements?
+- Are you working with **TypeScript** and hitting type-definition errors?
+
+You said: does react 19 remove the warning
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">No, React 19 does not remove the console warning.</span></strong></mark> If you pass `class` to a standard DOM element (like or ), React 19 will still throw the same console warning: _"Warning: Invalid DOM property `class`. Did you mean `className`?"_. \[[1](https://stackoverflow.com/questions/59169173/any-more-or-less-official-way-to-use-class-instead-of-classname-attribute-in-rea), [2](https://medium.com/@janek.lewandoski/react-19-the-3-simplifications-youll-love-584b9843c05f)]
+
+The React team's stance remains firm on keeping `className` the primary canonical property for HTML elements. \[[1](https://www.geeksforgeeks.org/reactjs/why-react-uses-classname-over-class-attribute/), [2](https://stackoverflow.com/questions/61596160/when-should-i-use-classname-over-class-and-vise-versa-in-react)]
+
+However, React 19 introduces major updates regarding attributes, specifically targeting **Custom Elements / Web Components** and **Compiler Automation**. \[[1](https://aleks-elkin.github.io/posts/2024-12-06-react-19/)]
+
+1\. Full Support for Web Components
+
+The most significant change in React 19 regarding attributes is **full native support for Custom Elements**. \[[1](https://aleks-elkin.github.io/posts/2024-12-06-react-19/)]
+
+- **React 18 and earlier**: React struggled to differentiate between attributes and properties on custom tags. You often had to use `className` even on Web Components, or use a wrapper. \[[1](https://medium.com/@janek.lewandoski/react-19-the-3-simplifications-youll-love-584b9843c05f)]
+- **React 19**: React now intelligently checks the client element. If a property does not exist on the custom element, it applies it directly as an HTML attribute. This means you can use smoothly without any warnings, as long as it is an officially recognized Custom Element. \[[1](https://aleks-elkin.github.io/posts/2024-12-06-react-19/), [2](https://sordyl.dev/blog/react-19-support-for-web-components/), [3](https://stackoverflow.com/questions/61596160/when-should-i-use-classname-over-class-and-vise-versa-in-react)]
+
+2\. The React Compiler handles it at Build Time
+
+React 19 heavily promotes the use of the new, stable **React Compiler** (formerly React Forget). \[[1](https://www.youtube.com/watch?v=1aP0HEatAyQ\&t=6)]
+
+While the React runtime itself still expects `className`, the React Compiler works as a Babel/build plugin. If you configure your bundler to allow standard HTML attributes, the compiler or asset preprocessors can safely map `class` to `className` during your build step before the code ever reaches the browser. \[[1](https://www.youtube.com/watch?v=1aP0HEatAyQ\&t=6), [2](https://stackoverflow.com/questions/61596160/when-should-i-use-classname-over-class-and-vise-versa-in-react), [3](https://www.geeksforgeeks.org/reactjs/why-react-uses-classname-over-class-attribute/)]
+
+Summary of What Triggers Warnings in React 19
+
+| Code Snippet \[[1](https://stackoverflow.com/questions/61596160/when-should-i-use-classname-over-class-and-vise-versa-in-react), [2](https://www.geeksforgeeks.org/reactjs/why-react-uses-classname-over-class-attribute/), [3](https://aleks-elkin.github.io/posts/2024-12-06-react-19/), [4](https://sordyl.dev/blog/react-19-support-for-web-components/)] | Triggers Console Warning? | Why?                                                      |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- | --------------------------------------------------------- |
+|                                                                                                                                                                                                                                                                                                                                                               | **Yes** ❌                | Standard DOM elements require `className`.                |
+|                                                                                                                                                                                                                                                                                                                                                               | **No** ⚗️                 | React treats it as a standard custom prop object.         |
+|                                                                                                                                                                                                                                                                                                                                                               | **No**                    | React 19 natively supports attributes on Custom Elements. |
+
+If you are upgrading an app to React 19 and want to clean up these warnings, you can use the official **React Codemod** tools to globally find and replace accidental `class=` strings with `className=`.
+
+Are you currently upgrading an older codebase to **React 19**, or are you configuring a **Vite / Next.js** application where you want to automate this conversion?
+
+- [link](https://stackoverflow.com/questions/61596160/when-should-i-use-classname-over-class-and-vise-versa-in-react)\
+  When should I use 'className' over 'class' and vise versa in ...\
+  May 4, 2020 — 2 Answers. Sorted by: 3. According to react docs: To specify a CSS class, use the className attribute. This applies to all regular...\
+  Stack Overflow
+- [link](https://aleks-elkin.github.io/posts/2024-12-06-react-19/)\
+  React 19 introduces full support for custom elements\
+  Dec 6, 2024 — How we will work with this component in React 19 app? React 19 introduces a new strategy for handling Custom Elements. By default,\
+  GitHub Pages documentation
+- [link](https://sordyl.dev/blog/react-19-support-for-web-components/)\
+  React 19 support for web components\
+  React 19 eliminates the need for many workarounds previously necessary to integrate web components into React. \* Props passed to a...\
+  sordyl.dev
+
+Show all
+
+# 
