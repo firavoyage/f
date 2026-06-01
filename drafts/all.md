@@ -219,6 +219,7 @@ desktop:
 - shell tmux
 - try mac os via docker
 - fix laptop keyboard key
+- mac os x docker
 
 android:
 

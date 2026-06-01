@@ -44,9 +44,7 @@ sudo docker run -it \
   sickcodes/docker-osx:latest
 ```
 
-#
-
-how does flutter work on web
+# how does flutter work on web
 
 2:03 AM
 
@@ -2499,9 +2497,7 @@ When you want to stop or start them later, use their names or IDs selectively vi
 
 Are both visual windows opening on your desktop screen now, or is your computer's **CPU or RAM starting to max out** from running two VMs at once?
 
-#
-
-install dart cli on ubuntu
+# install dart cli on ubuntu
 
 To install the **Dart CLI (SDK)** on Ubuntu, the official and recommended method is to use the `apt` package manager. \[[1](https://dart.dev/get-dart)]
 
@@ -2706,9 +2702,7 @@ Which method works best for your workflow? Let me know if you run into any **pat
 
 Show all
 
-#
-
-flutter competitors
+# flutter competitors
 
 2:20 AM
 
