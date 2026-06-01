@@ -21488,6 +21488,10 @@ jun 2026
 
 <!-- "Where this Doodle appeared" us only? indicated from my home location, the silicon valley? -->
 
+<!-- yt does not save the state of the recommendation. sadness... -->
+
+13 40 revise readme: perception: sites.
+
 
 
 <!-- timebox, plan. -->

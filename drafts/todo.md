@@ -490,6 +490,8 @@ you have to make the right choices at first to prevent regression ahead.
 
 ---
 
+atoms. patterns. pages.
+
 hand pick some atoms.
 
 read base ui, coss ui, mui. <!-- chakra? mantine? too much. -->

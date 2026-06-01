@@ -4,6 +4,10 @@
 
 <!-- shadcn studio is surprising. later i realize it's because it does not adapt my system wide dark mode. it loads slowly, shows text like "pricing" "vibe coding" (common in shadcn guys). definitely trash. -->
 
+<!-- generally, i reduced the use of exclaimation marks. when speaking, i use a calm voice, a downward one, whatever question or sentence it is. the power of calmness. i use "." for the important ones. one of significance does not shout. -->
+
+<!-- btw, i moved the labels to the front for scannability. -->
+
 # i use vanilla css. clsx or data attr.
 
 When using **vanilla CSS**, **data attributes** are almost always the better choice over `clsx` for managing component variants and states. \[[1](https://hamishw.com/articles/modern-styling-in-react)]
@@ -5541,7 +5545,7 @@ If you are evaluating a digital product's accessibility, I can provide the **sta
 
 Show all
 
-# what third party tools do ppl in google use (?)
+# (?) what third party tools do ppl in google use
 
 While Google is famous for building its own highly sophisticated internal software (like their custom web-based IDEs and proprietary version control systems), employees still use several notable third-party tools to collaborate with external clients, write code, and manage specialized business workflows. \[[1](https://www.quora.com/What-software-do-Google-employees-use), [2](https://www.quora.com/What-nice-internal-software-does-a-Google-employee-have-access-to)]
 
@@ -5590,7 +5594,7 @@ If you are curious about a specific job function at Google, let me know! I can d
 
 Show all
 
-# what third party tools do googlers use (?)
+# (?) what third party tools do googlers use
 
 Googlers rely predominantly on a massive, highly optimized suite of **in-house proprietary software** (like <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">Cider, Piper, Buganizer, and Critique</mark>), meaning their overall use of external corporate applications is **remarkably minimal**. However, for specific workflows, cross-company collaboration, or personal developer preference, Google employees do leverage a select group of external platforms: \[[1](https://www.quora.com/What-software-do-Google-employees-use), [2](https://www.youtube.com/watch?v=nAvUeJnnd3M), [3](https://www.teamblind.com/post/Google-internal-tooling-vs-Industry-x6S1Dymn), [4](https://www.quora.com/What-nice-internal-software-does-a-Google-employee-have-access-to)]
 
@@ -5636,7 +5640,7 @@ Are you curious about a **specific department's workflow** at Google (like desig
 
 Show all
 
-# what third party tools do google devs use (?)
+# (?) what third party tools do google devs use
 
 While Google developers rely heavily on a famous suite of highly integrated internal tools (like _Blaze_ for building, _Critique_ for code reviews, and _Piper_ for version control), they frequently use <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>industry-standard third-party tools</strong> where external compatibility or specific specialized features are required</mark>. \[[1](https://beyang.org/ex-googler-guide-dev-tools.html), [2](https://sourcegraph.com/blog/ex-googler-guide-dev-tools), [3](https://www.quora.com/Which-text-editor-or-IDE-do-Google-engineers-use), [4](https://en.wikipedia.org/wiki/Piper%5F%28source%5Fcontrol%5Fsystem%29), [5](https://graphite.com/guides/understanding-google-critique-code-review-tool)]
 
@@ -5688,7 +5692,7 @@ Are you looking to understand how Google developers configure these tools to wor
 
 Show all
 
-# what third party tools do google designers use (?)
+# (?) what third party tools do google designers use
 
 Google UX/UI and product designers use a mix of industry-standard third-party applications alongside Google's proprietary tools to move from concept to production. Because Google employs thousands of designers across different product teams (e.g., Android, YouTube, Search), tool preferences can vary widely depending on the specific project requirements. \[[1](https://design.google/library/making-motion-meaningful), [2](https://uidesignz.com/blogs/best-ux-ui-design-tools-for-every-designers)]
 
@@ -6406,7 +6410,7 @@ If you are dealing with a specific piece of code or an accessibility audit warni
 
 Show all
 
-# does aria labels help keyboard navigation (!)
+# (!) does aria labels help keyboard navigation
 
 <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">No, </span><code dir="ltr" style="font-size: 14px; margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 1px solid rgb(44, 46, 53);">aria-label</code> attributes do not help keyboard navigation on their own.</strong></mark> \[[1](https://testparty.ai/blog/aria-labels-guide), [2](https://www.levelaccess.com/blog/the-importance-of-keyboard-accessibility-why-aria-widgets-dont-work-as-expected-in-voice-navigation-software/)]
 
@@ -6450,7 +6454,7 @@ If you are currently building a custom component, let me know **what type of ele
 
 Show all
 
-# how to create a design system in atomic design (!)
+# . how to create a design system in atomic design
 
 To create a design system using Atomic Design, you must break down your user interface into five distinct, hierarchical levels. This methodology, created by Brad Frost, mimics chemistry to build scalable and consistent component libraries. \[[1](https://reloadux.com/blog/atomic-design-system/), [2](https://medium.com/@g.m.hislop93/atomic-design-principles-4b393450270f), [3](https://www.nitorinfotech.com/blog/building-scalable-user-interfaces-with-atomic-design-in-react/), [4](https://www.uxpin.com/studio/blog/atomic-design-system/), [5](https://kajoo.ai/blog/building-design-systems-with-atomic-principles)]
 
@@ -6706,4 +6710,6 @@ To see how to map this out for your team, tell me:
 - Do you use **Figma Components & Auto Layout** for your designs?
 - Are your developers using a **component utility library** like Tailwind CSS or styled-components?
 - What **specific feature** (e.g., navigation header, user profile, multi-step form) would you like to see mapped out next?
+
+# 
 
