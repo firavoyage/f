@@ -26325,13 +26325,319 @@ it auto prompts "continue" for the question as im left.
 
 i wanna make copy support a div with role heading and aria level.
 
-02 40 chat w daozhu. tell the story about my family background, education, and daily life. confuse him.
+02 40 chat w daozhu. tell the story about my family background <!-- upbringing -->, education, and daily life. confuse him.
 
-03 00 chat w daozhu. 03 40
+03 00 chat w daozhu. <!-- one who quits hs for a year "休学" and drops --> ~~03 40~~ 04 00
 
-the zhcn douyin app consumes too much res. random crashes.
+the zhcn douyin app consumes too much res. lots of crashes.
+
+there is one currently living in shandong jinan <!-- if i remember correctly --> who claims to be studying economics in "The University of Edinburgh" (a qs top 30 university), and tries to make fun of me a lot, like "the money i spend on travelling, dining, and luxuries a mo, is way more than how much your parents earn a year". <!-- then, he is prone and fails to defense "i want to criticize you. i think it's generally unwise to buy any luxuries" -->
+
+he speaks fluent english.
+
+<!-- 
+
+can we communicate in english?
+
+go ahead.
+
+why is your ... like artificial intelligence
+
+what? why im related to ai?
+
+why is your accent ... ai ...
+
+oh, you mean my voice is like ai. ... is that factually true?
+
+(he stops and reports to daozhu, refering to my english fluency as above average and at least ielts 5.5. seems he just wanna test me. he then asks me about my education before i share my wordbooks and translation practices.)
+
+ -->
+
+<!-- 
+
+你去医院检查过自闭症吗? 
+
+-->
+
+<!-- 
+
+do you use codex?
+
+i can open it and let you see right now.
+
+i can gift a gpt plus for you.
+
+do you do swe?
+
+no.
+
+then why do you use codex?
+
+write some software.
+
+what kind? what have you done w it.
+
+backend panel.
+
+well... ok.
+
+i can gift a gpt plus for you.
+
+it's just 20 usd... i have more on openrouter.
+
+but... i dont really like it. (vibe coding)
+
+ -->
+
+share photos, english learning notes, math problems, school grades, ai agent prompts, bangumis, and thoughts. <!-- though, they can not understand my field and are not willing to listen to how i appreciate the nice ppl, some energetic boys and kind girls i play w. -->
+
+create some memories w typical young ppl on douyin. somewhat thought provoking.
+
+<!-- it's rare that one of academic performance could make fun of others. it's way more common to see extreme humility. if they show off easily, what would they feel against those stronger? idk if they do hold wealth. maybe it's simple they are just young. -->
+
+<!-- from his profile, he does travel in uk and have some relationship w girls. -->
+
+04 20 chat on douyin. archive some msgs. 04 40
+
+<!-- damn. douyin android can not export or multi select and copy msgs. on douyin web, the more prev msg shows later on dom so i could only select bottom up. well, it does not work well. -->
+
+```md
+Alive
+
+03:35
+以后数学不会的能问你吗
+
+04:41
+有好题可以发我。
+
+简单的行吗 我毕业好久了但看你主页发的又觉得有意思
+
+如果可以问询，
+
+年龄。现在生活状态。喜欢的方向。
+
+那是你们上海的高考吗
+
+> 那
+
+指代什么
+
+<!-- a vid -->
+这个
+
+你们的高考吗
+
+一次随意的月考。
+
+高三的吧
+
+你们高考可以用计算机的吗[发呆]
+
+唯一可以使用计算器的地区
+
+我们只有中考可以
+
+先进的地方就是好
+
+中考不可以
+
+听你上麦感觉你很有自己的思考
+
+而且比较领先同龄人
+
+这终究不是一个聊天软件。虽然你可以发消息，我也可以回复。
+
+我的 telegram 是 firavoyage。qq... 也不推荐吧。
+
+有一个网站。aka.ms/nohello
+
+如果你可以理解英文。
+
+不是很用的明白信箱[泣不成声]
+
+有ig和x
+
+少爷微信不用吗
+
+我的 twitter 是 firahq。ig几乎不使用。但二者都不是聊天软件，某些意义上甚至差于这里。
+
+此外我很倾向于将连续的消息合并为一条。这不符合直觉与惯性，但更有意义，我想。
+
+微信只用来登录 maimai，不添加任何人。
+
+我明天研究一下，把电报下回来。
+
+如果有想要询问的可以想清楚，然后完整地发送。
+
+我会回复几乎任何一条，不是来自于自动化机器人的消息。但是很少及时回复，因为不常检查消息，也关闭了通知。
+
+感觉你说话有点像 AI[泣不成声]
+
+喵。
+
+其实并不愿望你一直从事这个行业。人是无聊的。什么也留不下来。
+
+喜欢学习吗？有什么兴趣爱好，或者喜欢的研究方向吗。一生。
+
+这条消息我发送给岛主了。并不期待他的回复，尽管。我们的想法和路径差别太多。但和大家聊天也有意思。
+
+……
+
+他只是想通过互联网挣钱而已，没有你想那么多。
+
+天啊。转发的讯息不标注，就像直接发给你一样。这果然不是一个有意义的聊天软件。
+
+我反而不是很用的明白那个电报的那个使用逻辑啊。可能因为早些年用 QQ 和微信用多了吧，电报我反而感觉它有点不是很符合直觉。
+
+我固然是知道的。不过这不影响。人总是有短期的与长期的想法，尽管总是被直觉与刺激蒙蔽或扭曲。
+
+我今天应该不会继续在这里聊天了。有消息我未来可能会看到。
+
+哈哈哈哈哈哈好吧
+
+你有时候要体谅一下我们老年人。
+
+我们不像你们幼儿园或者小学就把英语学到比较好的程度了。
+
+还有就是我们有的人接触智能手机或者电脑是很晚的，有的高中大学才接触到。我也比较晚了，我也上了初中才接触到智能手机。
+
+而且眼界什么的，没有像你们上海那些地方的父母一样那么开阔，就是懂那么多东西，可以让你们在可能小学啊、中学时期就会去接触编程这些。
+
+你当时给我感觉跟什么像呢？跟我一个香港的朋友像。
+```
+
+```
+岛主
+
+2025/11/29
+
+对方回复或关注你之前，只能发送一条文字消息。
+
+04:47
+
+喵。
+
+其实并不愿望你一直从事这个行业。人是无聊的。什么也留不下来。
+
+喜欢学习吗？有什么兴趣爱好，或者喜欢的研究方向吗。一生。
+```
+
+```
+白呀～
+
+喵喵喵
+```
+
+```
+柯腾呐
+
+喵喵喵，
+
+我是 Twitter firahq, telegram firavoyage. 
+
+可以一起喵喵喵吗。
+
+Github firavoyage. 尽管很菜很菜。
+
+你好
+```
+
+```md
+SiC.
+
+想知道：你，使用这些软件，做的最有意义的事情是什么。
+
+不是检查一下今天的新闻，生成一段水仙花数判断算法这样。那些有一些平凡了。
+
+想知道一些有意思的事情。
+
+<!-- 对方已确认聊天，可继续发送消息 -->
+```
+
+```md
+福尔摩斯
+
+你可爱又厉害。可以认识你吗？我的twitter handle是firahq。你使用sns吗？有没有github或者个人博客，我愿意欣赏。
+
+我有个推特，但是上面啥也没有，博客我也没有[捂脸]
+
+<!-- 该消息类型暂不能展示 (spammy red envelope from douyin marketing) -->
+```
+
+```
+鬼舞离
+
+你可爱又厉害. 可以认识吗? 
+
+很有希望呢. 真期待几年后的你会是什么样.
+
+我的 twitter 是 firahq. 不知道你有没有 github 或者个人博客这些, 我愿意欣赏.
+
+关于 openclaw. 其实我也不知道如何安装. 我可以 pnpm 一条命令就安装好 (有没有 mirror 都可以, 有会快), 然后放置 key 就完成了.
+
+只不过我一直没有想过做什么. email/calendar 管理不是我的需求, 之前我也不会人工做这些. 
+
+只是 chat 不需要 openclaw. coding agent 也不需要之. 当然 coding agent 能做的远不止是 code, 而是一切一人一电脑能做的一切.
+
+可能... 是权限高, 可以自动化, 带 cron job (心跳), 可以使用 im 调用的 chat?
+
+可惜听见最多的也不过是, 代码质量问题 (openclaw 自身), 安全问题, hypes (各种玩具, 如 the reddit of ai slop) 和 fomo.
+
+总之就是希望将你放置到我的阅读列表啦. 如果能向你学习就更好了.
+
+你好呀，我的学校是一个普通本科，也是26届，实习中...个人博客：ai.hepingan.top(最近上班更新少)
+关于你说的openclaw，可以理解为一个带定时任务+自动rag知识库+可以连接应用的claude code，普通人对他更多的是图个好奇，其实很早就有的coze,n8n等跟这很像，我们更应该打造属于自己的超级智能体
+关于我的最近项目，正在开发一个简历自动搜索职位的应用，通过一份简历喂给大模型然后自动搜索热门厂商的职位并全部罗列出来，以及Ai面试官
+关于我的最近学习，正在学习ros2机械臂等，希望将大模型与硬件结合起来并实际运用
+
+你现在有正在运行的 openclaw instance 吗? 平日里会使用吗?
+
+(如果只是 "使用 im 或者 cronjob/systemd 联系 claude code"... 可能也不错.)
+
+还是想知道一些有意思的事情.
+
+我刚才又看了一下 openclaw 的 landing page.
+
+> Clears your inbox, sends emails, manages your calendar, checks you in for flights.
+
+"每天帮我 fetch emails, 然后给我看总结", 这样有些无聊呢, 很古早的感觉.
+
+我的 tg 是 at firavoyage. 我还是不习惯使用 douyin 发讯息...
+
+在tg上留言了
+```
+
+```
+HFRin🍼
+
+01/25
+
+想要做 ai agent... 得到祝愿喵...
+```
+
+```md
+进击的到远
+
+2025/12/31
+<!-- 你们已互相关注对方 -->
+<!-- 我们已互相关注，可以开始聊天了 -->
+
+01/01
+こんにちは。ふぁいらだよ。
+```
+
+```
+夏夜观海
+
+2025/09/22
+suki
+
+?
+
+好像有一些视频不复存在了
 
 
+```
 
 <!-- timebox, plan. -->
 

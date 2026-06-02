@@ -164,6 +164,11 @@ function prepare_html({
     document_node,
   });
 
+  normalize_heading_elements({
+    root: body_node,
+    document_node,
+  });
+
   const selector = preserve_svg
     ? 'pre, code, mark, svg, summary, details'
     : 'pre, code, mark, summary, details';
@@ -268,6 +273,44 @@ function normalize_style_spans({
     action: 'normalize_style_spans_done',
     transformed_span_count,
   });
+}
+
+function normalize_heading_elements({
+  root,
+  document_node,
+}: {
+  root: HTMLElement;
+  document_node: Document;
+}): void {
+  const elements = Array.from(
+    root.querySelectorAll('[role="heading"]'),
+  );
+
+  for (const element of elements) {
+    if (!element.isConnected) continue;
+
+    const levelAttr = element.getAttribute('aria-level');
+    let levelNum = 3;
+
+    if (levelAttr) {
+      const parsed = parseInt(levelAttr, 10);
+      if (!isNaN(parsed) && parsed >= 1 && parsed <= 6) {
+        levelNum = parsed;
+      }
+    }
+
+    console.log({
+      action: 'normalize_heading_element',
+      level: levelNum,
+    });
+
+    const heading = document_node.createElement(`h${levelNum}`);
+    while (element.firstChild) {
+      heading.appendChild(element.firstChild);
+    }
+
+    element.replaceWith(heading);
+  }
 }
 
 /**
