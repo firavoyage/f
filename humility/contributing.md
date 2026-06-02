@@ -3,40 +3,36 @@
 stick to cwd. do not touch anything outside.
 
 1. read through the full file structure of cwd
-2. write `readme.md` for each newly created folder except build and dependencies, be simple and concise
-3. write a static `spec.md` for each task. if existing, write `spec_foo.md`, `spec_bar.md` instead.
-4. write `todo.md` on cwd.
-5. start working
+2. write `readme.md` for each newly created folder except build and deps
+3. write todo and spec for complex tasks. these are static documents. if existing, name like `spec_foo.md` for new tasks.
+4. start working
 
 ## work
 
-1. for backend code, create a `test` subfolder on cwd. declare inputs and expected outputs in an object and loop through it. only write meaningful tests.
-2. write code, complete todos
-3. test
-4. if tests fail, search for official docs or community guides.
-5. write down observations possibly helpful in the future on `notes.md`. if needed, categorize like `notes_foo.md`, `notes_bar.md` to be specific.
+1. write code or complete todos
+2. find a way to verify your work if possible. you can run and see the result in the terminal or on playwright.
+3. create a `test` subfolder in cwd for complex tasks. loop through inputs and expected outputs.
+4. write down your observations on notes for complex tasks. be specific and organized, name like `notes_foo_bar.md`.
 
 ## search
 
-do not hesitate to search if things are not obvious
+if asked, search with these two steps
 
-1. web fetch the direct search url
+1. web fetch a direct search url
 
 - duckduckgo https://html.duckduckgo.com/html/?q=search+keyword&kp=-2&kl=us-en&k1=-1&kd=1
 - brave search https://search.brave.com/search?q=search+keyword&source=web&offset=0&spell=1
 - mojeek https://www.mojeek.com/search?q=search+keyword&safe=0&reg=us&t=50&dlen=160&theme=light&view=classic&ui=simple
 - searxng https://searx.be/search?q=search+keyword&category_general=1&language=en-us
 
-if blocked, choose another engine or use playwright
-
 2. read pages
 
-- webfetch jina https://r.jina.ai/https://en.wikipedia.org/wiki/Philosophy
-- if failed, use playwright
+- webfetch jina and you can read the markdown of the page https://r.jina.ai/https://en.wikipedia.org/wiki/Philosophy
+- use playwright if needed
 
 ## write
 
-follow the style guide:
+follow these:
 
 - use:
   - ubuntu
@@ -46,7 +42,7 @@ follow the style guide:
   - es module
   - pnpm
   - bun (command: `br`, not `bun`)
-  - react and parceljs (command: `pnpm exec parcel serve 'app.html' --dist-dir .build --cache-dir .build/.parcel-cache`, pair w `tmux` to serve in the background)
+  - react and parceljs (command: `pnpm exec parcel serve 'app.html' --dist-dir .build --cache-dir .build/.parcel-cache`, use `tmux` as your shell can not last)
 - naming:
   - snake case
   - verb noun for actions, predicate for bools, noun for factory functions
@@ -71,21 +67,19 @@ follow the style guide:
 
 ## test
 
-always run eslint and tsgo first
+run linting and type check first
 
 ```sh
 br eslint
 br tsgo
 ```
 
-for backend code, run the logical tests in test subfolder
-
-for frontend code, use tmux and parcel to serve, and use playwright mcp to see
-
-note: your terminal can not last. use tmux by default.
+after passing, try to verify the functionality and the correctness of your work
 
 ## complete
 
-1. write `changes.md` w the time. only use imperative sentences in simple present tense.
-2. clear `todo.md`
+before completing, make sure everything is done and verified
 
+do not over engineer
+
+tell me what you have done in simple present tense
