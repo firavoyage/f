@@ -26305,6 +26305,8 @@ wow! i can ctrl tab inside tg desktop.
 
 22 20 receive hs graduation cert and album. receive a card celebrating the children's day and a box of danisa butter cookies.
 
+<!-- well, it's appealing and delicious... but it could not open cleanly. -->
+
 02
 
 01 20 try high sierra mac os x via docker.
@@ -26314,6 +26316,8 @@ wow! i can ctrl tab inside tg desktop.
 it auto prompts "continue" for the question as im left.
 
 20 00 archive the manus hello world android tests. <!-- by manual copy pasting, as it can not export all its initial logs (it can export files and code) --> research gradle design flaws. 21 00
+
+22 20 migrate things to the muji storage box.
 
 
 
