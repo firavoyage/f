@@ -12550,4 +12550,296 @@ Are you currently encountering a bug where **Space** or **Enter** is doing the w
 
 Show all
 
+# baseui meter or progress
+
+Choose **`Progress`** if you are tracking the status of an ongoing task or action. Choose **`Meter`** if you are displaying a static or current measurement within a specific range. \[[1](https://base-ui.com/react/components/progress), [2](https://base-ui.com/react/components/meter), [3](https://yogendrarana-craftdotui.mintlify.app/components/baseui/meter)]
+
+Quick Decision Guide
+
+| Use Case \[[1](https://baseweb.design/components/progress-bar/), [2](https://github.com/mui/base-ui/issues/4184), [3](https://base-ui.com/react/components/progress), [4](https://base-ui.com/react/components/meter), [5](https://yogendrarana-craftdotui.mintlify.app/components/baseui/meter)] | Recommended Component                                       | Examples                                           | Accessibility Role   |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | -------------------------------------------------- | -------------------- |
+| **Task Completion**                                                                                                                                                                                                                                                                               | [`Progress`](https://base-ui.com/react/components/progress) | File downloads, form wizard steps, video buffering | `role="progressbar"` |
+| **Capacity / Allocation**                                                                                                                                                                                                                                                                         | [`Meter`](https://base-ui.com/react/components/meter)       | Disk storage, battery level, memory utilization    | `role="meter"`       |
+| **Performance / Scores**                                                                                                                                                                                                                                                                          | `Meter`                                                     | Password strength, health bars, credit scores      | `role="meter"`       |
+
+***
+
+Key Differences
+
+Base UI Progress
+
+- **Purpose**: Displays the status of a long-running process.
+- **State**: Often changes dynamically over time as a task progresses.
+- **Anatomy**: Built using components like , , and . \[[1](https://base-ui.com/react/components/progress), [2](https://developer.apple.com/design/human-interface-guidelines/progress-indicators), [3](https://coss.com/ui/docs/components/progress), [4](https://developer.android.com/topic/architecture/ui-layer)]
+
+Base UI Meter
+
+- **Purpose**: Represents a scalar measurement within a known range.
+- **State**: Typically represents a quantity at a single point in time.
+- **Anatomy**: Built using components like , , and . \[[1](https://base-ui.com/react/components/meter), [2](https://yogendrarana-craftdotui.mintlify.app/components/baseui/meter), [3](https://www.linkedin.com/pulse/importance-meters-progress-bars-web-development-harish-rameshbabu-0pjxc)]
+
+If you tell me **what specific feature or data** you are building, I can help you choose the exact component and provide the layout code.
+
+- [link](https://base-ui.com/react/components/progress)\
+  Progress - Base UI\
+  Progress. Track. Indicator. Value. Label. Progress. Displays the status of a task that takes a long time. Export data100% x. index...\
+  Base UI
+- [link](https://base-ui.com/react/components/meter)\
+  Meter - Base UI\
+  A graphical display of a numeric value within a range. Storage Used24% x. index.tsxindex.module.css. import { Meter } from '@base-\
+  Base UI
+- [link](https://github.com/mui/base-ui/issues/4184)\
+  \[progress]\[meter] accessibility: NVDA and JAWS don't ... - GitHub\
+  Feb 24, 2026 — Bug report. Current behavior. Unfortunately, screen reader support for the progress and meter roles is still quite inconsistent. D...\
+  GitHub
+
+Show all
+
+You said: basically accessibility stuff?
+
+Yes, the difference is primarily about accessibility (a11y) and how assistive technologies interpret your UI.
+
+Screen readers rely on the underlying HTML roles to tell users what kind of data they are looking at.
+
+Why the Distinction Matters
+
+- **`Progress` (`role="progressbar"`)** tells a user with visual impairments that an **action is actively happening** and they need to wait for completion.
+- **`Meter` (`role="meter"`)** tells the user they are looking at a **fraction or quantity** of a finite total, like a storage limit. It does not imply that a task is running.
+
+Semantic Differences
+
+| Attribute / Behavior           | `Progress`                   | `Meter`                                  |
+| ------------------------------ | ---------------------------- | ---------------------------------------- |
+| **HTML Role**                  | `role="progressbar"`         | `role="meter"`                           |
+| **Implied Action**             | Dynamic / Loading            | Static value or capacity                 |
+| **Value Bounds**               | Always between `0` and `max` | Can have sub-ranges (low, high, optimum) |
+| **Screen Reader Announcement** | "Progress bar, 45 percent"   | "Meter, 45 percent"                      |
+
+When to use which for ARIA compliance
+
+- **Use Progress if:** The value will hit 100% and then trigger a success state or a new page layout.
+- **Use Meter if:** The value fluctuates up and down naturally over time (like a CPU usage monitor).
+
+If you want, tell me what **specific UI feature** you are building, and I can give you the **complete Base UI code snippet** with the correct accessibility labels.
+
+# (d) will you have aria hidden elements if you do not need accessibility
+
+Yes, you will still use `aria-hidden` elements even if you think you do not need accessibility \[1, 2]. Modern web development treats accessibility as a standard requirement, not an optional feature \[1, 2]. \[[1](https://www.digitala11y.com/academy/trying-to-unhide-an-aria-hidden-child/), [2](https://medium.com/ww-tech-blog/web-accessibility-tips-and-tricks-8f71bb716c40), [3](https://www.futuremind.com/insights/the-hidden-costs-of-ignoring-accessibility-in-product-design/), [4](https://iosdev03.medium.com/what-is-assistive-access-how-apple-is-rethinking-simplicity-in-ios-37865ddfcd54)]
+
+Why You Still Need It
+
+- **Assistive tech is everywhere**: Voice assistants, search engines, and screen readers use this data \[1, 2].
+- **Better SEO**: Search bots parse page structures similarly to screen readers.
+- **Cleaner user experience**: It prevents broken audio experiences on standard devices. \[[1](https://a11ymatters.com/pattern/mobile-nav/), [2](https://web.dev/learn/design/accessibility), [3](https://www.zenythgroup.com/accessible-names), [4](https://accessiblyapp.com/blog/aria-labels/)]
+
+When to Use It
+
+- **Decorative icons**: Hide visual emojis or font icons that duplicate text.
+- **Duplicate text**: Hide labels that repeat information visually present elsewhere.
+- **Collapsed menus**: Hide off-screen navigation links until they expand \[1].
+- **Modals**: Hide the main background content when a popup window opens \[1]. \[[1](https://equalizedigital.com/accessibility-checker/aria-hidden/), [2](https://css-tricks.com/accessible-svgs/), [3](https://fadamakis.com/using-aria-labels-like-a-pro-ecac90050e37), [4](https://vispero.com/resources/not-all-hidden-content-is-equal-how-different-hiding-methods-impact-accessibility/), [5](https://www.w3.org/WAI/GL/wiki/Using%5Faria-expanded%5Fto%5Findicate%5Fthe%5Fstate%5Fof%5Fa%5Fcollapsible%5Felement)]
+
+Key Implementation Rules
+
+- **`aria-hidden="true"`**: Hides the element from the accessibility tree \[1, 2].
+- **Visual impact**: It does not change how the element looks on screen \[1].
+- **Interactive elements**: Never place it on focusable items like links or buttons \[2]. \[[1](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-hidden), [2](https://medium.com/@askParamSingh/stop-misusing-aria-hidden-5-accessibility-mistakes-beginners-keep-making-bec7b0c0d05e), [3](https://www.boia.org/blog/is-it-okay-to-hide-content-from-screen-readers), [4](https://theadminbar.com/accessibility-weekly/aria-hidden/)]
+
+To help tailor this to your project, let me know:
+
+- What **specific element** are you considering hiding?
+- Is the element **interactive** (like a button) or **static** (like an icon)?
+- Do you want to hide it **permanently** or **dynamically** via JavaScript?
+
+I can provide the exact code structure you need based on your setup.
+
+- [link](https://www.digitala11y.com/academy/trying-to-unhide-an-aria-hidden-child/)\
+  Trying to Unhide an aria-hidden Child • DigitalA11Y\
+  Trying to Unhide an aria-hidden Child ARIA provides an attribute which allows to hide elements from screen readers. It works prett...\
+  \
+  DigitalA11Y
+- [link](https://medium.com/ww-tech-blog/web-accessibility-tips-and-tricks-8f71bb716c40)\
+  Web Accessibility Tips and Tricks | by Alex Oxrud | WW Tech Blog\
+  Jul 16, 2021 — Hidden elements Sometimes there are certain things that should not be recited by screen readers because that same information is a...\
+  \
+  \
+  Medium
+- [link](https://www.futuremind.com/insights/the-hidden-costs-of-ignoring-accessibility-in-product-design/)\
+  Accessibility in Product Design – Insights futuremind.com\
+  Mar 13, 2025 — From afterthought to priority: why accessibility matters Accessibility is no longer an optional add-on; it's a core requirement of...\
+  \
+  \
+  Future Mind
+
+Show all
+
+# (d) will you have aria hidden elements if you are determined to exclude the disabled
+
+Yes, you will still use `aria-hidden="true"` elements even if you choose to completely exclude disabled users from your target audience. \[[1](https://github.com/mui/material-ui/issues/19450)]
+
+Why You Still Need Aria-Hidden
+
+- **Search Engine Optimization**: Search engine web crawlers act like screen readers.
+- **Indexation Control**: `aria-hidden` prevents bots from indexing repetitive text.
+- **SEO Rankings**: Clean page structures improve search visibility rankings.
+- **AI Bot Training**: Large language models scrape clean code better.
+- **Automated Code Audits**: Modern development tools flag missing aria tags.
+- **Deployment Gates**: Missing accessibility attributes can block automated code deployments.
+- **Third-Party Plugins**: Modern web frameworks insert these tags automatically. \[[1](https://blog.planetargon.com/blog/entries/what-is-an-accessibility-audit-and-why-do-you-need-one), [2](https://viamrkting.com/ai-hidden-watermarks-and-invisible-characters-remover/), [3](https://www.sitepoint.com/ai-is-not-your-accessibility-expert-what-llms-still-miss-about-wcag/)]
+
+Common Elements That Use Aria-Hidden
+
+- **Decorative Icons**: Visual SVGs that add no text value.
+- **Duplicate Labels**: Text links right next to matching icons.
+- **Closed Modals**: Off-screen menus that are hidden visually.
+- **Loading Spinners**: Visual animations used during page loading states.
+- **Decorative Shapes**: Background illustrations that contain no content. \[[1](https://css-tricks.com/accessible-svgs/), [2](https://support.pendo.io/hc/en-us/articles/4403005253659-Guide-accessibility), [3](https://github.com/ant-design/ant-design/issues/50170), [4](https://not-checklist.intopia.digital/)]
+
+If you are building a specific interface, I can help you optimize the code. Would you like me to **review your HTML structure** or **explain how search bots read visual elements**?
+
+- [link](https://github.com/mui/material-ui/issues/19450)\
+  \[Modal] aria-hidden should not be applied on non-portal modals · Issue #19450 · mui/material-ui\
+  Jan 28, 2020 — eps1lon commented on Oct 27, 2020 It doesn't matter if disablePortal is true or false, aria-hidden="true" gets applied regardless.\
+  \
+  \
+  GitHub
+- [link](https://blog.planetargon.com/blog/entries/what-is-an-accessibility-audit-and-why-do-you-need-one)\
+  Accessibility Audit: What It Is, How It Works,\
+  Mar 27, 2023 — You know those pesky alt-text prompts that always show up in your web crawls/scans? Those aren't just for SEO (Search Engine Optim...\
+  \
+  \
+  Planet Argon
+- [link](https://viamrkting.com/ai-hidden-watermarks-and-invisible-characters-remover/)\
+  AI Hidden Watermarks & Invisible Characters Remover\
+  The result? Better Google rankings and snippet accuracy, since your site's HTML is free of hidden clutter that could break parsing...\
+  \
+  \
+  viamrkting.com
+
+Show all
+
+# (d) what if you do not have any aria hidden elements if you dont care accessibility
+
+If you do not care about web accessibility, omitting `aria-hidden` attributes will have zero impact on the visual appearance or functionality of your website for standard users. \[[1](https://www.accessi.org/blog/the-role-of-aria-in-web-accessibility/)]
+
+🛠️ What Happens Under the Hood
+
+- **Visuals stay identical:** Elements look exactly the same.
+- **Functionality remains unchanged:** Clicking and hovering work normally.
+- **SEO is unaffected:** Search engines generally ignore `aria-hidden`.
+- **Code size shrinks:** Your HTML file size drops slightly.
+
+⚠️ Potential Non-Accessibility Risks
+
+While your site will work fine for sighted users, skipping this attribute can occasionally cause minor technical or user experience issues: \[[1](https://equalizedigital.com/aria-for-beginners-maria-maldonado/), [2](https://www.freecodecamp.org/news/how-to-use-html-attributes-to-make-your-websites-and-apps-more-accessible/)]
+
+- **Messy screen readers:** Visually hidden icons might be read aloud as random text.
+- **Confusing keyboard focus:** Users tabbing through the site might hit invisible links.
+- **Audit failures:** Automated code checkers will flag your site.
+- **Legal compliance risks:** Certain business websites face lawsuits without accessibility compliance. \[[1](https://reciteme.com/us/news/ada-title-iii-compliance/), [2](https://egghead.io/lessons/screen-reader-how-visible-vs-hidden-elements-affect-keyboard-screen-reader-users), [3](https://documenta11y.com/blog/less-aria-more-accessibility-documenta11ys-guide-to-cleaner-web-content/), [4](https://equidox.co/blog/ada-title-iii-lawsuits-soar-in-new-york-heres-how-to-avoid-them/), [5](https://atypify.com/making-the-web-accessible-with-aria/)]
+
+To help you decide if you need to optimize your HTML, tell me:
+
+- What **type of website** are you building?
+- Who is your **target audience**?
+- Are you using **automated testing tools**?
+
+I can help you determine the fastest way to manage your code based on your goals.
+
+- [link](https://www.accessi.org/blog/the-role-of-aria-in-web-accessibility/)\
+  ARIA: Your Key to Unlocking Better Web Accessibility\
+  Sep 18, 2023 — ARIA attributes are not visible to regular users who do not use assistive technologies. They are only meant for communication betw...\
+  \
+  \
+  Accessi.org
+- [link](https://equalizedigital.com/aria-for-beginners-maria-maldonado/)\
+  ARIA for Beginners: Maria Maldonado\
+  Jun 17, 2025 — Please keep in mind the following. Aria-hidden doesn't affect visual rendering. It is only the accessibility exposure. If you want...\
+  \
+  \
+  Equalize Digital
+- [link](https://www.freecodecamp.org/news/how-to-use-html-attributes-to-make-your-websites-and-apps-more-accessible/)\
+  How to Use HTML Attributes to Make Your Websites and Apps More Accessible\
+  Sep 6, 2024 — Although this might seem contradictory, you should only ARIA attributes when necessary. Overusing ARIA can disrupt the experience ...\
+  \
+  \
+  freeCodeCamp
+
+Show all
+
+# is aria hidden meaningful for normal humans
+
+**No, `aria-hidden="true"` is completely meaningless to average, neurotypical, sighted web users.** Because it is an [accessibility attribute](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-hidden), its entire purpose is to hide elements from the browser's "accessibility tree" while leaving them **perfectly visible on the screen**. A person navigating a website visually will never see or feel its presence unless it is implemented incorrectly and breaks the page. \[[1](https://www.reddit.com/r/webdev/comments/fmjdfr/why%5Fdo%5Fdevelopers%5Fkeep%5Fsetting%5Fariahidden%5Fon/), [2](https://vispero.com/resources/not-all-hidden-content-is-equal-how-different-hiding-methods-impact-accessibility/), [3](https://www.washington.edu/accessibility/2025/11/13/aria-hidden-elements/), [4](https://theadminbar.com/accessibility-weekly/aria-hidden/), [5](https://medium.com/@pvnsripati/is-your-website-as-accessible-as-you-think-it-is-5-aria-attributes-you-should-know-6f910b4b2f5d)]
+
+However, "normal humans" is a broad spectrum, and `aria-hidden` becomes deeply meaningful to individuals depending on how they interact with technology. \[[1](https://dev.to/disane/aria-attributes-in-html-a-comprehensive-guide-577e)]
+
+Who Actually Internalizes `aria-hidden`?
+
+- **Screen Reader Users**: For individuals with visual impairments who rely on software like NVDA, JAWS, or VoiceOver, `aria-hidden="true"` is crucial. It cleans up digital "noise" by telling the software to completely skip over non-essential, purely decorative, or duplicate elements (like a star icon next to a "Favorite" button text).
+- **Keyboard-Only Navigators**: For people with temporary injuries (like a broken wrist) or motor disabilities who navigate using only the `Tab` key, a misapplied `aria-hidden` attribute can be disastrous. If a developer adds `aria-hidden="true"` to a clickable button but forgets to disable keyboard focus, a user will tab into a completely silent, invisible trap.
+- **Voice Control Users**: People who use dictation and voice commands to control their devices read the physical screen to navigate. If a developer hides essential visual text from the browser's accessibility layer using `aria-hidden`, the voice software cannot "see" the element, meaning the user's spoken commands to click it will fail. \[[1](https://medium.com/@askParamSingh/stop-misusing-aria-hidden-5-accessibility-mistakes-beginners-keep-making-bec7b0c0d05e), [2](https://www.digitala11y.com/aria-hidden-state/), [3](https://www.washington.edu/accessibility/2025/11/13/aria-hidden-elements/), [4](https://vispero.com/resources/not-all-hidden-content-is-equal-how-different-hiding-methods-impact-accessibility/)]
+
+Summary of Hiding Methods
+
+| Attribute/Property \[[1](https://www.reddit.com/r/webdev/comments/fmjdfr/why%5Fdo%5Fdevelopers%5Fkeep%5Fsetting%5Fariahidden%5Fon/), [2](https://vispero.com/resources/not-all-hidden-content-is-equal-how-different-hiding-methods-impact-accessibility/), [3](https://www.washington.edu/accessibility/2025/11/13/aria-hidden-elements/), [4](https://www.codemag.com/Article/2411051/First-Rule-of-ARIA-Don%E2%80%99t-Use-ARIA), [5](https://www.scottohara.me/blog/2018/05/05/hidden-vs-none.html)] | Hidden Visually? | Hidden from Assistive Tech? | Meaningful to Sighted Users? |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- | --------------------------- | ---------------------------- |
+| `aria-hidden="true"`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | **No**           | **Yes**                     | **No** (Unless broken)       |
+| `display: none` / `hidden`                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | **Yes**          | **Yes**                     | **Yes** (Content disappears) |
+| `opacity: 0`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | **Yes**          | **No**                      | **Yes** (Invisible box)      |
+
+If you are a web developer trying to completely hide an element from everyone, use native HTML attributes or CSS like `display: none` or the `hidden` attribute instead. \[[1](https://www.codemag.com/Article/2411051/First-Rule-of-ARIA-Don%E2%80%99t-Use-ARIA)]
+
+Are you currently troubleshooting an accessibility warning on a project, or trying to hide an element from a specific group of users? Let me know, and I can provide the exact code snippets you need.
+
+- [link](https://www.washington.edu/accessibility/2025/11/13/aria-hidden-elements/)\
+  Understanding ARIA Hidden Elements and Accessibility Barriers\
+  Nov 13, 2025 — What ARIA Does. ARIA, or Accessible Rich Internet Applications, is a set of HTML attributes that help assistive technologies (like...\
+  UW Homepage
+- [link](https://medium.com/@askParamSingh/stop-misusing-aria-hidden-5-accessibility-mistakes-beginners-keep-making-bec7b0c0d05e)\
+  Stop Misusing ARIA Hidden! 5 Accessibility mistakes ...\
+  Nov 3, 2025 — What aria-hidden actually does? Let's start simple. The aria-hidden attribute tells assistive technologies like NVDA, JAWS, or Voi...\
+  Medium·Parampreet Singh, CPWA
+- [link](https://vispero.com/resources/not-all-hidden-content-is-equal-how-different-hiding-methods-impact-accessibility/)\
+  Not All Hidden Content Is Equal: How Different Hiding ...\
+  May 12, 2026 — The aria-hidden="true" attribute tells assistive technologies, such as screen readers, to ignore an element, even if it is visible...\
+  Vispero
+
+Show all
+
+You said: does it impact keyboard navigation
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">No, </span><code dir="ltr" style="font-size: 14px; margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 1px solid rgb(44, 46, 53);">aria-hidden="true"</code> does not change or prevent keyboard navigation on its own.</strong></mark>
+
+It only hides elements from screen readers, not from the keyboard focus loop. This disconnect is a major source of accessibility bugs.
+
+The Focus Trap Problem
+
+If you put `aria-hidden="true"` on an interactive element (like a link, button, or input field), a sighted keyboard user can still press `Tab` and land on it.
+
+When this happens:
+
+- **Sighted keyboard users** see a focus outline around an item, but a screen reader remains completely silent.
+- **Blind screen reader users** will completely miss the element because it is hidden from their software, yet their keyboard focus can still get stuck on it.
+
+How to Correctly Hide Elements from Both
+
+If you want to hide an interactive element from both screen readers and keyboard navigation, you must pair `aria-hidden` with focus-disabling attributes, or use native CSS/HTML.
+
+- **The Native Way (Best Practice):** Use CSS `display: none;` or the HTML `hidden` attribute. This automatically removes the element from the screen, the screen reader, and the keyboard loop.
+
+- **The ARIA Way (If it must remain visible):** If the element must stay on the screen but be skipped by both screen readers and keyboards, you must explicitly remove its focusability:\
+  html
+
+<!---->
+
+```
+<!-- Adding tabindex="-1" removes it from the Tab sequence -->
+<button aria-hidden="true" tabindex="-1">Decorative Button</button>
+```
+
+Use code with caution.
+
+Are you trying to create a specific component, like a **modal popup**, an **off-canvas mobile menu**, or an **accordion**? Let me know, and I can give you the exact HTML structure to handle both focus and visibility correctly.
+
 # 
+
