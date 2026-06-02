@@ -84,6 +84,7 @@ life:
 - game maimai dx theoretical rating upper limit
 - android setup samsung galaxy
 - game maimai dx friend invitation graphics
+- game maimai dx project sekai perfect time window
 
 create something:
 
@@ -258,6 +259,8 @@ agent: <!-- ai/ml -->
 cp: <!-- algorithms -->
 
 - kmp
+- mo algorithm
+- frobenius coin problem
 
 pm:
 
@@ -305,6 +308,12 @@ ux: <!-- ui/ux design -->
 - hermes onboarding feedback transparency
 - wordnet unnatural for humans affordance mismatch merriam webster penguin
 - nextjs fragility as a brand application error a client side exception
+- navigation esc clear slate remove outline
+- navigation tab open the page
+- navigation esc dismiss toast
+- navigation esc close window gnome image viewer
+- navigation compare space enter
+- core laws the law of least effort the law of least surprise
 
 typography:
 
