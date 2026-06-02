@@ -26313,6 +26313,8 @@ wow! i can ctrl tab inside tg desktop.
 
 it auto prompts "continue" for the question as im left.
 
+20 00 archive the manus hello world android tests. <!-- by manual copy pasting, as it can not export all its initial logs (it can export files and code) --> research gradle design flaws. 21 00
+
 
 
 <!-- timebox, plan. -->

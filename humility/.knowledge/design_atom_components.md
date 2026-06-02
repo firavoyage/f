@@ -18,7 +18,18 @@ atom components list
 - preview card? <!-- link preview like wikipedia -->
 - progress
 - radio?
-- 
+- scroll area?! <!-- yes. i guess. not an area, but a scroll bar -->
+- select? <!-- there is menu already... well. select > menu -->
+- slider
+- switch
+- tabs?
+- toast
+- toggle
+- toggle group?
+- toolbar?
+- tooltip? <!-- the more common preview card -->
+
+
 
 # 0.1
 
