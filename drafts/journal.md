@@ -26319,6 +26319,18 @@ it auto prompts "continue" for the question as im left.
 
 22 20 migrate things to the muji storage box.
 
+03
+
+02 00 watch daozhu live on douyin for a while. <!-- real world trivia --> revise contributing.md. 02 40
+
+i wanna make copy support a div with role heading and aria level.
+
+02 40 chat w daozhu. tell the story about my family background, education, and daily life. confuse him.
+
+03 00 chat w daozhu. 03 40
+
+the zhcn douyin app consumes too much res. random crashes.
+
 
 
 <!-- timebox, plan. -->
