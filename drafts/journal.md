@@ -26309,6 +26309,10 @@ wow! i can ctrl tab inside tg desktop.
 
 01 20 try high sierra mac os x via docker.
 
+19 20 test manus: create a dependency free android app with gradle. <!-- manus wants to show notifications -->
+
+it auto prompts "continue" for the question as im left.
+
 
 
 <!-- timebox, plan. -->
