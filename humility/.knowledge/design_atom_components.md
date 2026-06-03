@@ -69,6 +69,6 @@ states
 
 
 
-atom pattern page
+atoms patterns pages
 
 

@@ -26745,6 +26745,12 @@ suki
 aka.ms/nohello
 ```
 
+22 40 unbox the legacy macbook air.
+
+remove password (prev. one to six). change localization to en.
+
+human ux. fiuld animations (e.g. connecting to wifi).
+
 
 
 <!-- timebox, plan. -->
