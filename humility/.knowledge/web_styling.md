@@ -1,147 +1,135 @@
-# 0.0
+# 0.2
 
-## Philosophy
+every element should have one class at most. name classes like `MyComponent_child_element`. start with pascal case as the component name and always connect with only one single underscore after that.
 
-- Vanilla CSS only
-- Modern CSS features are powerful enough.
+use data attr for variant, size, style, state, etc. use native css nesting for data attr.
 
-## Architecture
+never write aria attr.
 
-- normalize css
-- Flat file structure: `my_design.css` only one css file for a design system
-
-## Color System
-
-- **OKLCH** color space (perceptually uniform).
-- Raw LCH values: `--lch-blue: 54% 0.15 255`
-- Semantic colors: `--color-link: oklch(var(--lch-blue))`
-- Dark mode via single `@media (prefers-color-scheme: dark)` query.
-- `color-mix()`: derive palette from one variable.
-
-## Spacing
-
-- Character-based: `--inline-space: 1ch` (horizontal), `--block-space: 1rem` (vertical).
-- Responsive breakpoints use character count: `@media (min-width: 100ch)`.
-
-## Utility Classes
-
-- no.
-- use the component name as the classname of the root element
-- use kebab for children
-- every element should only have one semantic class
-- use data attr for states
-
-## Modern CSS Features Used
-
-- Custom properties (variables)
-- Container queries
-- `color-mix()` for dynamic colors
-- `clamp()`, `min()`, `max()` for responsive sizing
-- `@starting-style` for entrance animations
-- View Transitions API
-- CSS masks for spinners
+reference the value from predefined design tokens on the global css file of the design system. 
 
 example:
 
-```jsx
-export function Card({ active }) {
-  return (
-    <div className="Card" data-active={active}>
-      <h1 className="Card-title">Component Title</h1>
-      <p className="Card-desc">Perfect, flat string literals.</p>
-    </div>
-  );
-}
+```html
+<div class="ProductCard" data-status="featured">
+  <img class="ProductCard_image" src="product.jpg" alt="" />
+
+  <div class="ProductCard_content">
+    <h3 class="ProductCard_main_title">Wireless Mouse</h3>
+    <p class="ProductCard_sub_title">Ergonomic design</p>
+
+    <button class="ProductCard_buy_button" data-variant="primary">
+      Add to Cart
+    </button>
+  </div>
+</div>
 ```
 
 ```css
-.Card {
-  padding: var(--...);
-}
-.Card-title {
-  font-size: var(--...);
-}
-.Card-desc {
-  color: var(--...);
+.ProductCard {
+  display: grid;
+  gap: var(...);
+
+  &[data-status="featured"] {
+    border: var(...);
+  }
 }
 
-/* Handle your state clean and fast */
-.Card[data-active="true"] .Card-title {
-  color: var(--...);
+.ProductCard_image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.ProductCard_content {
+  display: flex;
+  flex-direction: column;
+}
+
+.ProductCard_main_title {
+  font-size: var(...);
+  font-weight: var(...);
+}
+
+.ProductCard_sub_title {
+  font-size: var(...);
+  color: var(...);
+}
+
+.ProductCard_buy_button {
+  padding: var(...);
+
+  &[data-variant="primary"] {
+    background: var(...);
+    color: var(...);
+  }
 }
 ```
 
+# 0.2
 
+every element should have one class at most. name classes like `MyComponent_child_element`. start with pascal case as the component name and always connect with only one single underscore after that.
 
-# 0.1
+use data attr for variant, size, style, state, etc. use native css nesting for data attr.
 
-## Philosophy
+never write aria attr.
 
-- Vanilla CSS only
-- Modern CSS features are powerful enough.
+reference the value from predefined design tokens on the global css file of the design system. 
 
-## Architecture
+example:
 
-- normalize css
-- Flat file structure: `my_design.css` only one css file for a design system
+```html
+<div class="ProductCard" data-status="featured">
+  <img class="ProductCard_image" src="product.jpg" alt="" />
 
-## Color System
+  <div class="ProductCard_content">
+    <h3 class="ProductCard_main_title">Wireless Mouse</h3>
+    <p class="ProductCard_sub_title">Ergonomic design</p>
 
-- **OKLCH** color space (perceptually uniform).
-- Raw LCH values: `--lch-blue: 54% 0.15 255`
-- Semantic colors: `--color-link: oklch(var(--lch-blue))`
-- Dark mode via single `@media (prefers-color-scheme: dark)` query.
-- `color-mix()`: derive palette from one variable.
-
-## Spacing
-
-- Character-based: `--inline-space: 1ch` (horizontal), `--block-space: 1rem` (vertical).
-- Responsive breakpoints use character count: `@media (min-width: 100ch)`.
-
-## Utility Classes
-
-- no.
-- use the component name as the classname of the root element
-- use kebab for children
-- every element should only have one semantic class
-- use data attr for states
-
-## Modern CSS Features Used
-
-- Custom properties (variables)
-- Nesting
-- `color-mix()` for dynamic colors
-- `clamp()`, `min()`, `max()` for responsive sizing
-- `@starting-style` for entrance animations
-- View Transitions API
-- CSS masks for spinners
-
-## Example
-
-```jsx
-export function Card({ active }) {
-  return (
-    <div className="Card" data-active={active}>
-      <h1 className="Card-title">Component Title</h1>
-      <p className="Card-desc">Perfect, flat string literals.</p>
-    </div>
-  );
-}
+    <button class="ProductCard_buy_button" data-variant="primary">
+      Add to Cart
+    </button>
+  </div>
+</div>
 ```
 
 ```css
-.Card {
-  padding: var(--...);
-}
-.Card-title {
-  font-size: var(--...);
-}
-.Card-desc {
-  color: var(--...);
+.ProductCard {
+  display: grid;
+  gap: var(...);
+
+  &[data-status="featured"] {
+    border: var(...);
+  }
 }
 
-/* Handle your state clean and fast */
-.Card[data-active="true"] .Card-title {
-  color: var(--...);
+.ProductCard_image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.ProductCard_content {
+  display: flex;
+  flex-direction: column;
+}
+
+.ProductCard_main_title {
+  font-size: var(...);
+  font-weight: var(...);
+}
+
+.ProductCard_sub_title {
+  font-size: var(...);
+  color: var(...);
+}
+
+.ProductCard_buy_button {
+  padding: var(...);
+
+  &[data-variant="primary"] {
+    background: var(...);
+    color: var(...);
+  }
 }
 ```
+
+
