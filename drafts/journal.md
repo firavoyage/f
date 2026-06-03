@@ -26389,7 +26389,41 @@ but... i dont really like it. (vibe coding)
 
  -->
 
+<!-- 
+
+你看缘之空?
+
+我头像不是... (i have kasugano sora on the thumbnail of one vid)
+
+(talk about bangumis.)
+
+你看猫和老鼠吗?
+
+(read anime sedai prompt)
+
+我可以给你点一个御姐, 喊你杂鱼杂鱼.
+
+...
+
+你喜欢什么样的女孩. 我可以给你点一个.
+
+我喜欢会做题的.
+
+(danmaku: 哪有陪玩会做题的)
+
+ -->
+
 share photos, english learning notes, math problems, school grades, ai agent prompts, bangumis, and thoughts. <!-- though, they can not understand my field and are not willing to listen to how i appreciate the nice ppl, some energetic boys and kind girls i play w. -->
+
+<!-- 
+
+那张毕业照上, "技巧性".
+
+就是做题的技巧, 换元, 求导, 这些.
+
+(停. 我听不懂.)
+
+ -->
 
 create some memories w typical young ppl on douyin. somewhat thought provoking.
 
@@ -26397,7 +26431,7 @@ create some memories w typical young ppl on douyin. somewhat thought provoking.
 
 <!-- from his profile, he does travel in uk and have some relationship w girls. -->
 
-04 20 chat on douyin. archive some msgs. 04 40
+04 20 chat on douyin. archive some msgs. ~~04 40~~ 05 00
 
 <!-- damn. douyin android can not export or multi select and copy msgs. on douyin web, the more prev msg shows later on dom so i could only select bottom up. well, it does not work well. -->
 
@@ -26634,10 +26668,66 @@ suki
 
 ?
 
+2025/11/22
 好像有一些视频不复存在了
 
+你的
+
+是的，我设置了仅自己可见
+
+现在可以了吗
+```
 
 ```
+海上一只猫
+
+2025/10/18
+你开播啦
+
+？
+
+噢噢刚刚看到你弹幕
+
+2025/10/25
+好怀念啊。绿胖电车。
+
+确实
+
+好久没玩了
+
+两年了
+```
+
+```
+王耀祖
+
+2025/09/20
+我2007。小学时在杰盛围棋，打到五段。这个棋馆在哪里
+
+你的棋馆
+
+杰盛围棋李家庆老师太棒了，我们是在虹口区天元棋校，不是我的棋馆，我只是老师
+```
+
+```
+🍔Jay
+
+03:16
+兄弟你真有节目效果，厉害👍🏻
+
+喵。
+```
+
+```
+予
+
+04:03
+你好
+
+aka.ms/nohello
+```
+
+
 
 <!-- timebox, plan. -->
 

@@ -64,4 +64,20 @@ expected output
 This is a regular paragraph of text. You can easily apply emphasis like **bold text** or _italic text_. If a mistake is made, you can use ~~strikethrough~~
 ```
 
+input
 
+```
+<span jsuid="QA1C2e_3" class="VndcI veK2kb" aria-level="2" role="heading" data-wiz-attrbind="class=QA1C2e_1/tPhIrf"><span class="iMqumd">You said: </span><span>markdown example</span></span>
+```
+
+current output
+
+```md
+### You said: markdown example
+```
+
+expected output
+
+```md
+## You said: markdown example
+```
