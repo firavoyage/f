@@ -2,6 +2,10 @@
 
 <!-- margin inline or margin lr does not matter. rtl is easy. -->
 
+<!-- it's wise to just use breakpoints and rem. no viewports or clamp. -->
+
+<!-- i might not need opacity. no need to explicitly include color mix i guess. -->
+
 # 0.2
 
 every element should have one class at most. name classes like `MyComponent_child_element`. start with pascal case as the component name and always connect with only one single underscore after that.
@@ -71,7 +75,7 @@ example:
 
 # 0.3
 
-## units
+## design token units
 
 convert if any other units are used
 
@@ -104,13 +108,15 @@ convert if any other units are used
 - duration `ms`
 - timing curves `cubic-bezier()`
 
-## naming
+## class naming
 
 every element should have one class at most. name classes like `MyComponent_child_element`. start with pascal case as the component name and always connect with only one single underscore after that.
 
-use data attr for variant, size, style, state, etc. use native css nesting for data attr.
+use data attr for variant, size, style, state, etc. use native css nesting.
 
-never write aria attr.
+only use class selector and attr selector.
+
+never write any aria attr.
 
 reference the value from predefined design tokens on the global css file of the design system. 
 
@@ -171,4 +177,40 @@ example:
 }
 ```
 
+## theming
 
+keep css dry. script to apply theme attrs.
+
+```css
+/* 1. Base / Light Mode */
+:root {
+  --bg-color
+  --text-color
+}
+
+/* 2. Manual Dark Override */
+[data-theme="dark"] {
+  --bg-color
+  --text-color
+}
+```
+
+```ts
+type ThemeMode = "system" | "light" | "dark";
+
+export async function change_theme(theme: ThemeMode): Promise<void> {
+  if (theme == "light" || theme == "dark") {
+    document.documentElement.setAttribute("data-theme", theme);
+    return;
+  }
+
+  const query = window.matchMedia("(prefers-color-scheme: dark)");
+  
+  async function sync_system(): Promise<void> {
+    document.documentElement.setAttribute("data-theme", query.matches ? "dark" : "light");
+  }
+
+  await sync_system();
+  query.addEventListener("change", sync_system);
+}
+```
