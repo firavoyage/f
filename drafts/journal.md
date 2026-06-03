@@ -26347,7 +26347,7 @@ what? why im related to ai?
 
 why is your accent ... ai ...
 
-oh, you mean my voice is like ai. ... is that factually true?
+oh, you mean my voice, my accent, is like an ai. ... is that factually true?
 
 (he stops and reports to daozhu, refering to my english fluency as above average and at least ielts 5.5. seems he just wanna test me. he then asks me about my education before i share my wordbooks and translation practices.)
 
@@ -26410,6 +26410,24 @@ but... i dont really like it. (vibe coding)
 我喜欢会做题的.
 
 (danmaku: 哪有陪玩会做题的)
+
+ -->
+
+<!-- 
+
+你手机里是不是有一款叫原神的游戏.
+
+给你点 coser. cos 八重神子.
+
+卖淫的.
+
+cos 雷电将军.
+
+卖淫的.
+
+...
+
+都是卖淫的.
 
  -->
 
