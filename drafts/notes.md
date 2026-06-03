@@ -1233,3 +1233,16 @@ the scrolling animation on one ui is also... innovative.
 title animation. on the left by default. bigger, in the middle, large padding, when you pull down further.
 
 ---
+
+ux: flexible
+
+vscode ctrl shift e, ctrl n can
+
+- create file
+- create file in a folder
+- create a folder (end w `/`)
+
+but it could not create `../../file`. idk.
+
+---
+
