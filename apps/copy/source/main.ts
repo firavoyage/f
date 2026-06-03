@@ -24,6 +24,7 @@ type conversion_settings = {
   keep_images_enabled: boolean;
   normalize_empty_links_enabled: boolean;
   prettier_enabled: boolean;
+  remove_heading_enabled: boolean;
 };
 
 const copy_feedback_ms = 1400;
@@ -37,18 +38,21 @@ const normalize_empty_links_button = document.getElementById(
   'normalize-empty-links-toggle',
 ) as HTMLElement;
 const prettier_button = document.getElementById('prettier-toggle') as HTMLElement;
+const remove_heading_button = document.getElementById('remove-heading-toggle') as HTMLElement;
 
 const markdown_enabled_key = 'markdown_enabled';
 const svg_enabled_key = 'svg_enabled';
 const keep_images_enabled_key = 'keep_images_enabled';
 const normalize_empty_links_enabled_key = 'normalize_empty_links_enabled';
 const prettier_enabled_key = 'prettier_enabled';
+const remove_heading_enabled_key = 'remove_heading_enabled';
 
 let markdown_enabled = false;
 let svg_enabled = false;
 let keep_images_enabled = true;
 let normalize_empty_links_enabled = true;
 let prettier_enabled = true;
+let remove_heading_enabled = false;
 
 function load_boolean_setting({ key, default_value }: boolean_setting_options): boolean {
   const stored_value = localStorage.getItem(key);
@@ -102,6 +106,7 @@ function get_conversion_settings(): conversion_settings {
     keep_images_enabled,
     normalize_empty_links_enabled,
     prettier_enabled,
+    remove_heading_enabled,
   };
 }
 
@@ -118,6 +123,7 @@ async function process_paste_area(): Promise<void> {
         keep_images: settings.keep_images_enabled,
         normalize_empty_links: settings.normalize_empty_links_enabled,
         prettier: settings.prettier_enabled,
+        remove_heading: settings.remove_heading_enabled,
       });
 
       await copy_html_to_clipboard({ html: markdown });
@@ -147,14 +153,15 @@ function render_toggle_button({ node, label, enabled }: render_toggle_options): 
 
 function render_all(): void {
   render_toggle_button({ node: markdown_button, label: 'markdown', enabled: markdown_enabled });
-  render_toggle_button({ node: svg_button, label: 'svg', enabled: svg_enabled });
+  render_toggle_button({ node: svg_button, label: 'keep svg', enabled: svg_enabled });
   render_toggle_button({ node: keep_images_button, label: 'keep images', enabled: keep_images_enabled });
   render_toggle_button({
     node: normalize_empty_links_button,
     label: 'normalize empty links',
     enabled: normalize_empty_links_enabled,
   });
-  render_toggle_button({ node: prettier_button, label: 'prettier', enabled: prettier_enabled });
+  render_toggle_button({ node: prettier_button, label: 'use prettier', enabled: prettier_enabled });
+  render_toggle_button({ node: remove_heading_button, label: 'remove heading on the first line', enabled: remove_heading_enabled });
 }
 
 function toggle_boolean({
@@ -178,6 +185,7 @@ function init_settings(): void {
     default_value: true,
   });
   prettier_enabled = load_boolean_setting({ key: prettier_enabled_key, default_value: true });
+  remove_heading_enabled = load_boolean_setting({ key: remove_heading_enabled_key, default_value: false });
 
   render_all();
 }
@@ -217,6 +225,14 @@ prettier_button.addEventListener('click', function () {
   prettier_enabled = toggle_boolean({
     current: prettier_enabled,
     key: prettier_enabled_key,
+  });
+  render_all();
+});
+
+remove_heading_button.addEventListener('click', function () {
+  remove_heading_enabled = toggle_boolean({
+    current: remove_heading_enabled,
+    key: remove_heading_enabled_key,
   });
   render_all();
 });

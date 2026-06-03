@@ -1,3 +1,7 @@
+<!-- just use markdown heading. more scannable when rendered almost everywhere. i would still use "category:" on `all.md` though. -->
+
+<!-- margin inline or margin lr does not matter. rtl is easy. -->
+
 # 0.2
 
 every element should have one class at most. name classes like `MyComponent_child_element`. start with pascal case as the component name and always connect with only one single underscore after that.
@@ -65,7 +69,42 @@ example:
 }
 ```
 
-# 0.2
+# 0.3
+
+## units
+
+convert if any other units are used
+
+### color
+
+- color `oklch`
+
+### typography
+
+- font size `rem`
+- line height `[raw number, unitless]`
+- letter spacing `em`
+
+### spacing
+
+- padding, margin, and gaps `rem`
+- grid flexbox columns `%`
+- breakpoints `em`
+- max width for text `ch`
+- max width for general grids `rem`
+
+### shape
+
+- borders `px`
+- border radius `px`
+- box shadows `px`
+
+### motion
+
+- duration `ms`
+- timing curves `cubic-bezier()`
+
+## naming
 
 every element should have one class at most. name classes like `MyComponent_child_element`. start with pascal case as the component name and always connect with only one single underscore after that.
 

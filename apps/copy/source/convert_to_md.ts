@@ -27,6 +27,7 @@ type convert_options = {
   keep_images: boolean;
   normalize_empty_links: boolean;
   prettier: boolean;
+  remove_heading: boolean;
 };
 
 type span_style_traits = {
@@ -49,6 +50,7 @@ export async function convert_html_to_md({
   keep_images,
   normalize_empty_links,
   prettier: prettier_enabled,
+  remove_heading,
 }: convert_options): Promise<string> {
   console.log({
     action: 'convert_html_to_md_start',
@@ -118,6 +120,14 @@ export async function convert_html_to_md({
   }
 
   const normalized = normalize_markdown({ markdown });
+
+  if (remove_heading) {
+    const lines = normalized.split('\n');
+    if (lines.length > 0) {
+      lines[0] = lines[0].replace(/^#{1,6}\s*/, '');
+    }
+    return lines.join('\n');
+  }
 
   console.log({
     action: 'convert_html_to_md_done',
