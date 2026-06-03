@@ -26751,7 +26751,17 @@ remove password (prev. one to six). change localization to en.
 
 human ux. fiuld animations (e.g. connecting to wifi).
 
+the magsafe is great. seems easy and resilient.
+
 perform a factory reset.
+
+04
+
+03 20 set up mac os x. import root cert w nc. install chrome 49. 04 20
+
+chyk and menci could work. innei could not load as it uses async. example dot com and bing search could work. douban does not work in safari, but on chrome i could proceed unsafely.
+
+by default, i could "reopen windows" when i return. on ubuntu i config manually.
 
 
 
