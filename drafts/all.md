@@ -221,11 +221,13 @@ desktop:
 - try mac os via docker
 - fix laptop keyboard key
 - mac os x docker
+- shell find
 
 android:
 
 - remove samsung dnd indicator via shizuku termux adb
 - test declarative predictable hello world compilation
+- export apk aab
 
 ops: <!-- devops, ci, vcs, ... -->
 
