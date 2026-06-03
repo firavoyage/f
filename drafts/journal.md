@@ -26751,6 +26751,8 @@ remove password (prev. one to six). change localization to en.
 
 human ux. fiuld animations (e.g. connecting to wifi).
 
+perform a factory reset.
+
 
 
 <!-- timebox, plan. -->
