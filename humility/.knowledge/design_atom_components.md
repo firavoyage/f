@@ -12,6 +12,8 @@
 
 <!-- adwaita does not use toggle group like "align l/m/r". nautilus has one button, you can click to change through list view, grid view... and sorting is next to it, as a select. -->
 
+<!-- color inside variants i guess. like coss ui. unlike mui or chakra. idk if there is anywhere you choose the color of a button freely besides the storybook. on adwaita you could definitely change the color but you do not assign arbitarily, you define the global primary color i guess. -->
+
 # 0.0
 
 atom components list
@@ -58,5 +60,15 @@ atom components list
 - toast
 - toggle
 - tooltip
+
+variants
+
+sizes
+
+states
+
+
+
+atom pattern page
 
 

@@ -1,3 +1,5 @@
+<!-- ref: 20260528 1500 para research gnome libadwaita -->
+
 <!-- The goal of any naming convention is to serve your workflow. If hyphens and double underscores feel like visual noise to you, you should drop them. Trusting your eyes and keeping the syntax clean is a great way to write fast, maintainable code. -->
 
 <!-- actually, i wanna say, when i click mdui version 1 from the landing page (it's interesting. google does not have a md1.), it shows zh-cn (i have no indicator of that, it must be a lack of internationalization). and from the github id and the lang on readme. "i as pronoun" is just a by product and a justification/proxy. -->
@@ -17791,6 +17793,1346 @@ Are you looking to optimize a specific website? If you share **the URL** or ment
   Adobe for Business
 
 Show all
+
+# how to support system/light/dark on web
+
+To support a complete system, light, and dark theme experience on the web, you need to combine **CSS Custom Variables**, the **`@media (prefers-color-scheme)`** media query, and a pinch of **JavaScript** to save manual user overrides. \[[1](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/prefers-color-scheme), [2](https://css-tricks.com/a-complete-guide-to-dark-mode-on-the-web/)]
+
+Here is the complete step-by-step implementation guide.
+
+### 1. Tell the Browser Your App Supports Both Themes \[[1](https://webkit.org/blog/15383/webkit-features-in-safari-17-5/)]
+
+Add the `color-scheme` meta tag inside your HTML . This natively tells mobile and desktop browsers that your site is built for both themes, automatically rendering default system scrollbars and browser UI elements correctly. \[[1](https://javascript.plainenglish.io/how-to-make-a-system-light-dark-theme-selector-4e70322205d7), [2](https://www.reddit.com/r/webdev/comments/o5o4ez/psa%5Fadd%5Fdark%5Fmode%5Fto%5Fyour%5Fsites%5For%5Fat%5Fleast%5Flet/), [3](https://uxdesign.cc/dark-mode-with-design-tokens-8d7b9d9753a), [4](https://web.dev/articles/color-scheme)]
+
+html
+
+```
+<head>
+  <meta name="color-scheme" content="light dark" />
+</head>
+```
+
+Use code with caution.
+
+### 2. Set Up Color Variables in CSS \[[1](https://dev.to/udoka033/how-to-implement-darklight-themes-in-your-web-apps-2ah4), [2](https://levelup.gitconnected.com/dynamic-dark-light-mode-on-the-web-d55e4c0d3aa9)]
+
+Define your design tokens using CSS variables. Instead of hardcoding hex colors throughout your file, use names like `--bg-color` or `--text-color`. \[[1](https://blog.miguelgrinberg.com/post/how-to-add-dark-mode-support-to-your-website), [2](https://javascript.plainenglish.io/how-to-make-a-system-light-dark-theme-selector-4e70322205d7), [3](https://dev.to/web%5Fdev-usman/building-a-smooth-darklight-mode-switch-with-modern-css-features-3jlc)]
+
+You will target a data attribute (like `data-theme="dark"`) on the or element. \[[1](https://stackoverflow.com/questions/78901489/how-to-style-light-and-dark-mode-in-web-components-with-user-os-settings)]
+
+css
+
+```
+/* 1. Default Light Mode Styles */
+:root, [data-theme="light"] {
+  --bg-color: #ffffff;
+  --text-color: #1a1a1a;
+  --accent-color: #3b82f6;
+}
+
+/* 2. Manual Dark Mode Override */
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #f5f5f5;
+  --accent-color: #60a5fa;
+}
+
+/* 3. Automatic System Preference (Only applies if no manual data-theme override is set) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg-color: #121212;
+    --text-color: #f5f5f5;
+    --accent-color: #60a5fa;
+  }
+}
+
+/* Apply variables to elements globally */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s; /* Smooth theme transitions */
+}
+```
+
+Use code with caution.
+
+### 3. Handle the "System / Light / Dark" Logic in JavaScript \[[1](https://www.reddit.com/r/webdev/comments/1i2axue/easily%5Ftoggle%5Fsystemchrome%5Fdarklight%5Fmode%5Fwhile/)]
+
+To give your users absolute control, provide a 3-way toggle (System, Light, Dark). When a user picks a theme, save it to `localStorage` so it persists on future visits. \[[1](https://javascript.plainenglish.io/how-to-make-a-system-light-dark-theme-selector-4e70322205d7), [2](https://www.reddit.com/r/webdev/comments/o5o4ez/psa%5Fadd%5Fdark%5Fmode%5Fto%5Fyour%5Fsites%5For%5Fat%5Fleast%5Flet/), [3](https://stackoverflow.com/questions/78901489/how-to-style-light-and-dark-mode-in-web-components-with-user-os-settings)]
+
+html
+
+```
+<!-- Example Selector UI -->
+<select id="theme-selector">
+  <option value="system">💻 System</option>
+  <option value="light">☀️ Light</option>
+  <option value="dark">🌙 Dark</option>
+</select>
+```
+
+Use code with caution.
+
+Add this lightweight script to manage the switching logic: \[[1](https://www.reddit.com/r/webdev/comments/1i2axue/easily%5Ftoggle%5Fsystemchrome%5Fdarklight%5Fmode%5Fwhile/)]
+
+javascript
+
+```
+const themeSelector = document.getElementById('theme-selector');
+
+// Function to apply the correct theme attribute
+function applyTheme(theme) {
+  if (theme === 'system') {
+    // Remove attribute to fallback onto CSS prefers-color-scheme
+    document.documentElement.removeAttribute('data-theme');
+  } else {
+    document.documentElement.setAttribute('data-theme', theme);
+  }
+}
+
+// Handle dropdown changes
+themeSelector.addEventListener('change', (e) => {
+  const chosenTheme = e.target.value;
+  localStorage.setItem('user-theme', chosenTheme);
+  applyTheme(chosenTheme);
+});
+
+// Load and apply saved preference on page load
+const savedTheme = localStorage.getItem('user-theme') || 'system';
+themeSelector.value = savedTheme;
+applyTheme(savedTheme);
+```
+
+Use code with caution.
+
+### 4. Prevent the "Flash of Mis-themed Page" (Critical UX) \[[1](https://www.reddit.com/r/webdev/comments/1i2axue/easily%5Ftoggle%5Fsystemchrome%5Fdarklight%5Fmode%5Fwhile/)]
+
+If a user prefers Dark mode, but your website defaults to Light mode, they will see a brief flash of white background while the main JavaScript file downloads and evaluates. \[[1](https://www.reddit.com/r/CodingHelp/comments/1ev3929/website%5Fdark%5Ftheme%5Fflashing%5Fwhite%5Fupon%5Fchanging/), [2](https://www.kotchasan.com/knowledge/creating%5Fa%5Fdark%5Fand%5Flight%5Fmode%5Ftoggle%5Fbutton%5Fwith%5Fjavascript%5Fand.html?lang=en)]
+
+To fix this, place this tiny, blocking inline script **at the very top of your HTML or** before any visual elements load: \[[1](https://magicui.design/blog/tailwind-dark-mode), [2](https://ayc0.github.io/posts/light-dark-mode-avoid-flickering-on-reload/)]
+
+html
+
+```
+<script>
+  // Read local storage or default to system immediately before parsing HTML body
+  const currentTheme = localStorage.getItem('user-theme') || 'system';
+  if (currentTheme !== 'system') {
+    document.documentElement.setAttribute('data-theme', currentTheme);
+  }
+</script>
+```
+
+Use code with caution.
+
+### 5. Modern Alternative: The `light-dark()` CSS Function \[[1](https://stylexjs.com/docs/learn/recipes/light-dark-themes)]
+
+If you are developing for cutting-edge browsers, you can completely skip writing duplicate properties inside media queries by utilizing the native [MDN Web Docs `light-dark()` function](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color%5Fvalue/light-dark). \[[1](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color%5Fvalue/light-dark)]
+
+css
+
+```
+:root {
+  /* Requires color-scheme to be declared */
+  color-scheme: light dark;
+
+  /* light-dark(lightValue, darkValue) */
+  --bg-color: light-dark(#ffffff, #121212);
+  --text-color: light-dark(#1a1a1a, #f5f5f5);
+}
+```
+
+Use code with caution.
+
+Tell me about your tech stack! Are you building this using **plain HTML/CSS**, or are you using a component framework like **React, Next.js, or Tailwind CSS**? I can give you code tailored to those tools. \[[1](https://github.com/tailwindlabs/tailwindcss/discussions/3644), [2](https://jeffszuc.com/posts/articles/theme-toggle), [3](https://javascript.plainenglish.io/how-to-make-a-system-light-dark-theme-selector-4e70322205d7), [4](https://www.reddit.com/r/webdev/comments/1i2axue/easily%5Ftoggle%5Fsystemchrome%5Fdarklight%5Fmode%5Fwhile/)]
+
+- [link](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/prefers-color-scheme)\
+  prefers-color-scheme CSS media feature - MDN Web Docs\
+  Apr 20, 2026 — To learn more about SVGs, see the SVG documentation and for more information about iframes, see the iframe documentation. Syntax. ...\
+  MDN Web Docs
+- [link](https://javascript.plainenglish.io/how-to-make-a-system-light-dark-theme-selector-4e70322205d7)\
+  How To Make a System/Light/Dark Theme Selector\
+  Sep 12, 2022 — Another usual problem is while setting the CSS configuration to support the System Theme the user then loses the possibility to ch...\
+  JavaScript in Plain English
+- [link](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color%5Fvalue/light-dark)\
+  light-dark() CSS function - MDN Web Docs\
+  Apr 18, 2026 — Description. Users can indicate their color scheme preference through their operating system settings (e.g., light or dark mode) o...\
+  MDN Web Docs
+
+Show all
+
+## You said: how easy is it to avoid the duplicate \[data-theme="dark"] { and @media (prefers-color-scheme: dark) {
+
+It is <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">incredibly easy</mark> to avoid this duplication. You can eliminate it using native modern CSS, or clean up your structure using standard CSS variables.
+
+Here are the three best ways to do it, ranked from easiest to most modern.
+
+### Method 1: The Modern `light-dark()` Function (No Duplication)
+
+This is now fully supported in all major browsers. It lets you define both colors on a single line. The browser automatically switches the value based on either the user's system preferences **or** your HTML `data-theme` override \[1].
+
+css
+
+```
+:root {
+  /* This tag tells the browser to automatically map data-theme="dark" to dark mode */
+  color-scheme: light dark;
+
+  /* Format: light-dark( lightModeValue, darkModeValue ) */
+  --bg-color: light-dark(#ffffff, #121212);
+  --text-color: light-dark(#1a1a1a, #f5f5f5);
+  --accent-color: light-dark(#3b82f6, #60a5fa);
+}
+```
+
+Use code with caution.
+
+- **Why it works:** When you set `color-scheme: light dark;` on the root, changing the attribute to `data-theme="dark"` (if your JS sets it) tells the browser's engine to instantly switch all `light-dark()` functions to their second value.
+
+### Method 2: The CSS Nesting / Logical OR Trick (One Block)
+
+If you prefer traditional variable declarations but hate writing them twice, you can combine the selectors into a single block using native CSS nesting and the `:has()` selector.
+
+css
+
+```
+:root {
+  --bg-color: #ffffff;
+  --text-color: #1a1a1a;
+
+  /* If the HTML has data-theme='dark' OR the system prefers dark (and light isn't forced) */
+  @media (prefers-color-scheme: dark) {
+    &:not([data-theme="light"]) {
+      --bg-color: #121212;
+      --text-color: #f5f5f5;
+    }
+  }
+
+  /* Target the explicit manual override */
+  &[data-theme="dark"] {
+    --bg-color: #121212;
+    --text-color: #f5f5f5;
+  }
+}
+```
+
+Use code with caution.
+
+### Method 3: Handle the Logic Entirely in JavaScript (The Cleanest CSS)
+
+If you want 100% clean CSS with zero media queries and zero duplication, move the "System" logic to your JavaScript initialization script.
+
+Instead of letting CSS listen to the system, make your JavaScript calculate whether the system is dark, and apply a definitive `data-theme="dark"` or `data-theme="light"` to the document.
+
+**Your CSS becomes perfectly clean:**
+
+css
+
+```
+:root, [data-theme="light"] {
+  --bg-color: #ffffff;
+  --text-color: #1a1a1a;
+}
+
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #f5f5f5;
+}
+```
+
+Use code with caution.
+
+**Your Javascript handles the system check:**
+
+javascript
+
+```
+function initTheme() {
+  const savedTheme = localStorage.getItem('user-theme') || 'system';
+
+  if (savedTheme === 'system') {
+    // Check system preference directly via JS
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+  } else {
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  }
+}
+initTheme();
+```
+
+Use code with caution.
+
+Which approach fits your workflow better? If you want to go the **JavaScript route (Method 3)**, I can show you how to add a listener so it still updates in real-time if a user changes their system OS theme while looking at your page.
+
+## You said: method 1 has a recurring light dark. method 2 does not solve the dry issue at all. how to make sure the method 3 works fine
+
+To ensure Method 3 works perfectly without flashes, bugs, or performance hits, your JavaScript must do three things: run **before the page renders**, listen for **real-time system changes**, and stay **synchronized** with your UI toggle.
+
+Here is the bulletproof setup to make Method 3 production-ready.
+
+### 1. The CSS Setup (100% DRY)
+
+Your CSS remains completely free of media queries. You only define the tokens twice.
+
+css
+
+```
+:root, [data-theme="light"] {
+  --bg-color: #ffffff;
+  --text-color: #1a1a1a;
+}
+
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #f5f5f5;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.2s ease;
+}
+```
+
+Use code with caution.
+
+### 2. The Blocking Script (Prevents Flash of Light Mode)
+
+You must place this script inside your HTML tag, right before any stylesheets or body content. Because it runs immediately, it applies the correct theme before the browser paints the first pixel.
+
+html
+
+```
+<head>
+  <script>
+    // 1. Immediately invoked function to avoid global scope pollution
+    (function () {
+      const savedTheme = localStorage.getItem('user-theme') || 'system';
+
+      if (savedTheme === 'system') {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+      } else {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+```
+
+Use code with caution.
+
+### 3. The Runtime Engine & System Listener
+
+Place this script at the bottom of your or in your main deferred JS bundle. It handles user interactions and dynamically listens to the OS theme. If a user has "System" selected and changes their OS from Light to Dark mode, your site will adapt instantly.
+
+javascript
+
+```
+const themeSelector = document.getElementById('theme-selector');
+// Create a persistent media query listener
+const systemThemeMedia = window.matchMedia('(prefers-color-scheme: dark)');
+
+// Core function to calculate and apply the theme
+function updateTheme() {
+  const savedTheme = localStorage.getItem('user-theme') || 'system';
+
+  if (savedTheme === 'system') {
+    const prefersDark = systemThemeMedia.matches;
+    document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+  } else {
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  }
+}
+
+// 1. Listen for manual UI changes from the user
+themeSelector.addEventListener('change', (e) => {
+  localStorage.setItem('user-theme', e.target.value);
+  updateTheme();
+});
+
+// 2. Listen for OS/System theme changes in real-time
+systemThemeMedia.addEventListener('change', () => {
+  const savedTheme = localStorage.getItem('user-theme') || 'system';
+  // Only trigger a re-render if the user is actively tracking the system theme
+  if (savedTheme === 'system') {
+    updateTheme();
+  }
+});
+
+// 3. Initialize UI dropdown state on load to match localStorage
+themeSelector.value = localStorage.getItem('user-theme') || 'system';
+```
+
+Use code with caution.
+
+### Why this setup is rock-solid:
+
+- **Zero Duplication**: Variables are written exactly once for light and once for dark.
+- **No Layout Flash**: The head script blocks rendering just long enough to attach the correct attribute.
+- **Reactive**: The `systemThemeMedia.addEventListener` ensures your app doesn't get stuck in light mode if the system automatically transitions to dark mode at sunset.
+
+Are you implementing this in a **Single Page App (like React or Vue)** or a **Server-Rendered framework (like Next.js or Astro)**? If you are using SSR, we need a slight adjustment to avoid `window is not defined` errors.
+
+## You said: is there a popular and proven npm lib to handle this. like, if i turn it on, it auto listens and syncs the data theme. if i have explicit light or dark, i turn it off.
+
+Yes, there are incredibly popular, industry-standard packages specifically built to solve this exact problem. They abstract away all the complex window listening, `localStorage` syncing, and data-attribute injection while strictly remaining 100% DRY.
+
+The library you need depends entirely on whether you are using a frontend framework or plain JavaScript.
+
+***
+
+### If You Use React, Next.js, or Solid: Use `next-themes`
+
+The absolute gold standard is **[`next-themes`](https://www.npmjs.com/package/next-themes)**. Despite the name, it works flawlessly across **all React ecosystems**, Vite apps, and Next.js. It handles the layout flash, automatically synchronizes cross-tab toggling, and listens to system settings. \[[1](https://samuelkraft.com/blog/vanilla-extract-with-next-themes), [2](https://www.npmjs.com/package/next-themes), [3](https://www.npmjs.com/package/@rbnd/react-dark-mode)]
+
+### 1. Setup
+
+Wrap your root layout or application container in the `ThemeProvider`:
+
+jsx
+
+```
+import { ThemeProvider } from 'next-themes'
+
+export default function Layout({ children }) {
+  return (
+    // 'attribute="data-theme"' tells it to inject data-theme="dark" or "light" into <html>
+    <ThemeProvider attribute="data-theme" defaultTheme="system" enableSystem>
+      {children}
+    </ThemeProvider>
+  )
+}
+```
+
+Use code with caution.
+
+### 2. Usage in Components
+
+When a user explicitly selects `'light'` or `'dark'`, it stops listening to the system. When they select `'system'`, it turns the background OS listener right back on. \[[1](https://www.npmjs.com/package/next-themes)]
+
+jsx
+
+```
+import { useTheme } from 'next-themes'
+
+export function ThemeSelect() {
+  const { theme, setTheme } = useTheme()
+
+  return (
+    <select value={theme} onChange={(e) => setTheme(e.target.value)}>
+      <option value="system">💻 System</option>
+      <option value="light">☀️ Light</option>
+      <option value="dark">🌙 Dark</option>
+    </select>
+  )
+}
+```
+
+Use code with caution.
+
+***
+
+### If You Use Vanilla JS / Astro / HTML: Use `theme-change` \[[1](https://drkmd.mxis.ch/)]
+
+If you are not using React, the most popular package tailored directly for managing HTML attributes without dependencies is **`theme-change`**. It maps data attributes straight to your CSS config and tracks system preferences effortlessly.
+
+### 1. Setup Your HTML Toggle \[[1](https://whitep4nth3r.com/blog/best-light-dark-mode-theme-toggle-javascript/)]
+
+You don't even need to write heavy custom event scripts. You simply hook up your select menu or buttons using their declarative `data-theme-toggle` values:
+
+html
+
+```
+<!-- The library automatically intercepts this element -->
+<select data-choose-theme>
+  <option value="">💻 System fallback</option>
+  <option value="light">☀️ Light Mode</option>
+  <option value="dark">🌙 Dark Mode</option>
+</select>
+```
+
+Use code with caution.
+
+### 2. Initialize in JavaScript
+
+Import the initialization hook directly into your layout bundle:
+
+javascript
+
+```
+import { themeChange } from 'theme-change'
+
+// This single execution automatically attaches storage, system listeners, and attributes
+themeChange()
+```
+
+Use code with caution.
+
+***
+
+### How They Make Your CSS 100% DRY
+
+Both packages operate on the exact same logic. They apply `data-theme="light"` or `data-theme="dark"` directly onto the or element. Your CSS remains perfectly clean and concise, matching the Method 3 layout: \[[1](https://drkmd.mxis.ch/), [2](https://www.npmjs.com/package/next-themes)]
+
+css
+
+```
+/* Definitively defined exactly once */
+:root, [data-theme="light"] {
+  --bg-color: #ffffff;
+  --text-color: #1a1a1a;
+}
+
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #f5f5f5;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+```
+
+Use code with caution.
+
+To give you the exact integration snippet, let me know:
+
+- What **framework** are you building your website with?
+
+- Are you pairing it with a specific utility framework like **Tailwind CSS** or components from **Shadcn/UI**? \[[1](https://www.youtube.com/watch?v=BIaCfz1zyws)]
+
+- [link](https://www.npmjs.com/package/next-themes)\
+  next-themes - NPM\
+  Mar 11, 2025 — That's it, your Next.js app fully supports dark mode, including System preference with prefers-color-scheme . The theme is also im...\
+  NPM
+
+- [link](https://drkmd.mxis.ch/)\
+  drkmd.js | 🌓 Simple dark-mode/light-mode logic for any website.\
+  👋 Introduction. drkmd. js (short for darkmode. js) lets you add a dark-mode/light-mode toggle to any website. The library detects...\
+  drkmd.js
+
+- [link](https://samuelkraft.com/blog/vanilla-extract-with-next-themes)\
+  Using Vanilla Extract with next-themes - Samuel Kraft\
+  Dec 18, 2021 — Vanilla Extract isn't concerned with how the themes are applied. Doing this is surprisingly tricky and the main reason I am using ...\
+  Samuel Kraft
+
+Show all
+
+## You said: how to use theme change. system (synced). light. dark.
+
+To implement a 3-way toggle (System, Light, Dark) using the vanilla JS **`theme-change`** library, you must provide an explicit empty string (`value=""`) for the system choice.
+
+The library is designed so that when the theme value is empty, it deletes its manual `localStorage` override, reverting the browser automatically to the user's OS system preferences.
+
+Here is the exact implementation to configure `theme-change` for System, Light, and Dark modes.
+
+### 1. Structure Your HTML Toggle Element
+
+Add the declarative `data-choose-theme` attribute to an HTML tag.
+
+- To activate the **System Sync**, give the option an empty value: `value=""`.
+- For explicit choices, map the values to your exact CSS theme selectors (`"light"` and `"dark"`). \[[1](https://www.youtube.com/watch?v=Y4n9bYLjrIE\&t=82)]
+
+html
+
+```
+<label for="theme-select">Choose Theme:</label>
+<select id="theme-select" data-choose-theme>
+  <!-- An empty string tells theme-change to default to System sync -->
+  <option value="">💻 System</option>
+  <option value="light">☀️ Light</option>
+  <option value="dark">🌙 Dark</option>
+</select>
+```
+
+Use code with caution.
+
+### 2. Define the DRY CSS Variables
+
+`theme-change` works by toggling the `data-theme` attribute directly onto your element. Write your light variables on `:root` and your dark variables once on `[data-theme="dark"]`.
+
+To make the **System Sync** fallback work natively when the dropdown is set to empty, wrap your dark variables in a media query _but reference the exact same variables_:
+
+css
+
+```
+/* 1. Base / Light Mode */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #1a1a1a;
+}
+
+/* 2. Manual Dark Override */
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #f5f5f5;
+}
+
+/* 3. Automatic System Preference Fallback (Ensures System option works) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg-color: #121212;
+    --text-color: #f5f5f5;
+  }
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.2s;
+}
+```
+
+Use code with caution.
+
+### 3. Initialize the Library in JavaScript
+
+Install the library via npm (`npm install theme-change`) and initialize it in your primary script bundle. The initialization automatically mounts the event listeners and updates the select element state on page load. \[[1](https://github.com/mahozad/theme-switch), [2](https://www.youtube.com/watch?v=ox98ylF1kSM)]
+
+javascript
+
+```
+import { themeChange } from 'theme-change'
+
+// Call this once on page load
+themeChange();
+```
+
+Use code with caution.
+
+### How the logic executes:
+
+- **User chooses "Light"**: The library sets `data-theme="light"` on and saves `"light"` to `localStorage`.
+- **User chooses "Dark"**: The library sets `data-theme="dark"` on and saves `"dark"` to `localStorage`.
+- **User chooses "System"**: The library **removes** the `data-theme` attribute entirely from and clears the storage entry. This allows your CSS `@media (prefers-color-scheme: dark)` statement to natively take back control and monitor the OS in real-time.
+
+Would you like to know how to add an **inline script in the HTML head** to prevent page flashing when using this library?
+
+- [link](https://www.youtube.com/watch?v=Y4n9bYLjrIE\&t=82)\
+  LIGHT/DARK THEME TOGGLE (HTML, CSS and ...\
+  Aug 9, 2024 — problems related to Tailwind CSS. for this reason I am attaching Tailwind's CSS file here. if you don't know much about Tailwind. ...\
+  \
+  8m\
+  YouTube·Ekin Yalgin
+- [link](https://github.com/mahozad/theme-switch)\
+  mahozad/theme-switch: A toggle button to switch between light/dark/ ...\
+  Mar 31, 2022 — HTML light/dark/system theme switch button \* Installing and using the library. Regular HTML pages. Node.js and npm. npm install --\
+  \
+  \
+  GitHub
+- [link](https://www.youtube.com/watch?v=ox98ylF1kSM)\
+  How to Create a Light and Dark Mode Toggle in JavaScript\
+  Jul 15, 2025 — hello everyone in this particular lecture we are going to learn about that how to create a light and the dark mode toggle in JavaS...\
+  \
+  7:04\
+  YouTube·ProgrammingKnowledge
+
+## You said: i do not want a select like that. can i use theme-change like themechange system on, themechange light, change dark.
+
+Yes, you can absolutely do this without a dropdown. The `theme-change` library has a built-in **declarative attribute** for independent buttons. \[[1](https://flyonui.com/docs/components/theme-controller/)]
+
+Instead of writing custom JavaScript methods like `themechange("light")`, you simply apply `data-set-theme` directly onto your custom buttons. \[[1](https://flyonui.com/docs/components/theme-controller/)]
+
+### 1. Build Your Buttons in HTML \[[1](https://dev.to/whitep4nth3r/the-best-lightdark-mode-theme-toggle-in-javascript-368f)]
+
+To make `theme-change` control your layout through distinct buttons, layout three elements (divs, list-items, or icons) and apply the `data-set-theme` attribute to each: \[[1](https://flyonui.com/docs/components/theme-controller/), [2](https://web.dev/articles/building/a-theme-switch-component), [3](https://dev.to/whitep4nth3r/the-best-lightdark-mode-theme-toggle-in-javascript-368f)]
+
+- **For System Sync**: Set the attribute to an empty string (`data-set-theme=""`). This instructs the library to erase the manual override from `localStorage`, immediately snapping the UI back to listening to the OS.
+- **For Explicit Light/Dark**: Set the attribute directly to the theme name (`data-set-theme="light"` or `data-set-theme="dark"`). \[[1](https://github.com/saadeghi/daisyui/discussions/1427), [2](https://medium.com/@cerutti.alexander/a-mostly-complete-guide-to-theme-switching-in-css-and-js-c4992d5fd357), [3](https://flyonui.com/docs/components/theme-controller/)]
+
+html
+
+```
+<!-- Your custom Theme Switcher Menu -->
+<div class="theme-switcher">
+  <!-- System Sync -->
+  <button data-set-theme="" data-act-class="active-btn">
+    💻 System
+  </button>
+
+  <!-- Explicit Light Mode -->
+  <button data-set-theme="light" data-act-class="active-btn">
+    ☀️ Light
+  </button>
+
+  <!-- Explicit Dark Mode -->
+  <button data-set-theme="dark" data-act-class="active-btn">
+    🌙 Dark
+  </button>
+</div>
+```
+
+Use code with caution.
+
+### 2. Handle the "Active" Button Styling \[[1](https://github.com/saadeghi/daisyui/discussions/1427)]
+
+Notice the **`data-act-class="active-btn"`** helper attribute in the HTML. `theme-change` automatically tracks which selection is active. It adds this CSS class name to whichever button matches the current state, and wipes it off the other two. \[[1](https://github.com/saadeghi/daisyui/discussions/1427), [2](https://community.mybb.com/thread-231982-post-1380314.html)]
+
+You can easily style this in your CSS:
+
+css
+
+```
+/* Style your buttons normally */
+button[data-set-theme] {
+  padding: 8px 16px;
+  opacity: 0.6;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+/* The library adds this class automatically to the active choice */
+button.active-btn {
+  opacity: 1;
+  border-color: #3b82f6;
+  font-weight: bold;
+}
+```
+
+Use code with caution.
+
+### 3. Initialize it exactly the same
+
+You do not need to alter your initialization code. The single import triggers the underlying click listeners for all `data-set-theme` elements on the page:
+
+javascript
+
+```
+import { themeChange } from 'theme-change'
+
+// Runs globally and scans for data-set-theme buttons automatically
+themeChange();
+```
+
+Use code with caution.
+
+### Why this answers your criteria:
+
+- **No Select Dropdown:** You can use style-flexible navigation bars, custom icon buttons, or floating menu selectors. \[[1](https://forum.inductiveautomation.com/t/change-theme-using-toggle-button/85827)]
+- **Auto Listening / Synced:** Clicking the System button deletes the user storage override, throwing control back to your CSS `@media (prefers-color-scheme: dark)` system media query. \[[1](https://medium.com/@cerutti.alexander/a-mostly-complete-guide-to-theme-switching-in-css-and-js-c4992d5fd357)]
+- **Manual Control:** Clicking Light or Dark intercepts the system completely, pushing a dedicated `"light"` or `"dark"` data attribute straight to the HTML root tag. \[[1](https://flyonui.com/docs/components/theme-controller/), [2](https://medium.com/@cerutti.alexander/a-mostly-complete-guide-to-theme-switching-in-css-and-js-c4992d5fd357)]
+
+What kind of UI are you planning to put these attributes on—a **custom icon navbar**, a **segmented button group**, or a **dropdown modal**? I can help you write the structural markup.
+
+- [link](https://forum.inductiveautomation.com/t/change-theme-using-toggle-button/85827)\
+  Change theme using toggle button - Inductive Automation Forum\
+  Feb 16, 2024 — Two buttons makes the purpose and status much more obvious. Here I've bound the enabled property to the theme with, {session.props...\
+  Inductive Automation Forum
+- [link](https://medium.com/@cerutti.alexander/a-mostly-complete-guide-to-theme-switching-in-css-and-js-c4992d5fd357)\
+  A (mostly complete) guide to theme switching in CSS and JS\
+  Oct 30, 2024 — Alexander Cerutti. 4 min read. Oct 30, 2024. 57. 2. In the beginning, introducing support to dark mode / light mode was tricky as ...\
+  Medium·Alexander Cerutti
+- [link](https://community.mybb.com/thread-231982-post-1380314.html)\
+  is this possible to switch themes by a switch\
+  Mar 31, 2021 — You can use radio buttons or other form elements for theme select instead and style these to look like buttons. Then use a separat...\
+  MyBB Community Forums
+
+Show all
+
+## You said: forget all html css stuff. just tell me. i have a js variable theme. a string. system or light or dark. i guess i could somehow pass to the lib.
+
+If you want to control everything purely in JavaScript using a variable containing `"system"`, `"light"`, or `"dark"`, you should **skip `theme-change` entirely**.
+
+`theme-change` is built strictly for declarative HTML attributes (`data-set-theme`). It does not expose a functional JS function to pass strings into.
+
+Instead, use **`theme-selector`** (or write a quick 10-line native function) which gives you the exact functional API you want.
+
+### Option 1: Use the `theme-selector` npm package
+
+There is an elegant, lightweight npm library called **`theme-selector`** built exactly for this programmatic JS-first approach.
+
+javascript
+
+```
+import ThemeSelector from 'theme-selector';
+
+// 1. Initialize it once
+const controller = new ThemeSelector({
+  storageKey: 'user-theme', // automatically handles localStorage syncing
+});
+
+// 2. Simply pass your variable to the library!
+let theme = 'system'; // or 'light' or 'dark'
+
+controller.setTheme(theme);
+```
+
+Use code with caution.
+
+- **If `theme = 'light'`**: It adds `data-theme="light"` to .
+- **If `theme = 'dark'`**: It adds `data-theme="dark"` to .
+- **If `theme = 'system'`**: It automatically removes the manual override, figures out your OS setting, and attaches a real-time event listener to track system transitions.
+
+***
+
+### Option 2: The Native 10-Line JavaScript Function
+
+Because you want a simple JavaScript function that accepts your variable string, you can write this directly in your codebase. It has zero external dependencies, handles the system syncing logic perfectly, and matches exactly what an npm package would do under the hood.
+
+javascript
+
+```
+// Keep a reference to the browser's system media query
+const systemMedia = window.matchMedia('(prefers-color-scheme: dark)');
+
+function changeTheme(themeVariable) {
+  // 1. Handle Explicit Light or Dark choices
+  if (themeVariable === 'light' || themeVariable === 'dark') {
+    document.documentElement.setAttribute('data-theme', themeVariable);
+    localStorage.setItem('user-theme', themeVariable);
+    return;
+  }
+
+  // 2. Handle System choice (Sync & Listen)
+  if (themeVariable === 'system') {
+    localStorage.removeItem('user-theme'); // Clear manual override
+
+    // Set immediate initial theme based on current OS
+    const matchSystem = () => {
+      const systemMode = systemMedia.matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', systemMode);
+    };
+    matchSystem();
+
+    // Dynamically listen for OS changes in real-time
+    systemMedia.replaceEventListener ?
+      systemMedia.replaceEventListener('change', matchSystem) :
+      systemMedia.onchange = matchSystem;
+  }
+}
+
+// --- Usage ---
+let theme = 'system';
+changeTheme(theme); // Pass your variable directly!
+```
+
+Use code with caution.
+
+Would you like help setting up the **initial page-load check** for this JS variable so your application knows what theme to render before the user clicks anything?
+
+## You said: ok. just diy. how to get and listen.
+
+To build this yourself purely in JavaScript, you only need to use **`window.matchMedia`** to get the current system state, and **`.addEventListener('change')`** to listen for live updates.
+
+Here is the exact code to manage your `theme` variable string (`"system"`, `"light"`, or `"dark"`).
+
+### 1. The Core Engine (How to Set, Get, and Listen)
+
+Create a single function that handles your string variable. It tracks whether it needs to listen to the OS system or apply a hardcoded override.
+
+javascript
+
+```
+// 1. Reference the system media query globally
+const systemMedia = window.matchMedia('(prefers-color-scheme: dark)');
+
+// 2. Keep track of the active listener so we can clean it up
+let systemListener = null;
+
+function applyTheme(theme) {
+  // Always clean up the old system listener first to prevent memory leaks
+  if (systemListener) {
+    systemMedia.removeEventListener('change', systemListener);
+    systemListener = null;
+  }
+
+  // CASE A: Explicit choices ('light' or 'dark')
+  if (theme === 'light' || theme === 'dark') {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('user-theme', theme);
+  }
+
+  // CASE B: System Sync ('system')
+  else if (theme === 'system') {
+    localStorage.setItem('user-theme', 'system');
+
+    // Define the matching calculation
+    const syncWithSystem = (e) => {
+      const isDark = e ? e.matches : systemMedia.matches;
+      document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+    };
+
+    // Run it instantly to get the current state
+    syncWithSystem();
+
+    // Attach the listener to track live changes, and save a reference to it
+    systemListener = syncWithSystem;
+    systemMedia.addEventListener('change', systemListener);
+  }
+}
+```
+
+Use code with caution.
+
+### 2. The Usage
+
+Whenever your application's state or UI changes, simply pass your string variable straight into the function:
+
+javascript
+
+```
+// Examples of passing your variable:
+applyTheme('light');  // Force Light mode
+applyTheme('dark');   // Force Dark mode
+applyTheme('system'); // Syncs immediately with the OS and listens for updates
+```
+
+Use code with caution.
+
+### 3. The On-Load Check (Prevents Layout Flash)
+
+To make sure the page loads with the correct theme _before_ your UI finishes rendering, place this separate initialization call at the absolute top of your JavaScript entry bundle (or inline in your HTML tag):
+
+javascript
+
+```
+function initThemeOnLoad() {
+  const savedTheme = localStorage.getItem('user-theme') || 'system';
+
+  // We can call our core engine function instantly using the saved string
+  applyTheme(savedTheme);
+
+  // Return the string so your state management framework knows the initial value
+  return savedTheme;
+}
+
+const initialThemeVariable = initThemeOnLoad();
+```
+
+Use code with caution.
+
+Are you binding this `theme` variable to a specific state manager like a **React `useState` hook**, **Pinia/Vue ref**, or just a **vanilla JS object**? I can show you how to tie the initialization directly into your state cycle.
+
+## You said: sync. syslisten. sysmedia... so messy. be simpler. follow these:
+
+\- use:\
+\- ubuntu\
+\- x11\
+\- zsh\
+\- typescript\
+\- es module\
+\- pnpm\
+\- bun (command: \`br\`, not \`bun\`)\
+\- react and parceljs (command: \`pnpm exec parcel serve 'app.html' --dist-dir .build --cache-dir .build/.parcel-cache\`, use \`tmux\` as your shell can not last)\
+\- naming:\
+\- snake case\
+\- verb noun for actions, predicate for bools, noun for factory functions\
+\- for react components and their filenames, pascal case\
+\- for general filenames, lowercase\
+\- style:\
+\- functional programming\
+\- modular and cohesive\
+\- always async, only sync for pure and quick methods\
+\- always function statement, only arrow function for props\
+\- object params for more than one uninterchangeable params, positional params otherwise, mixed for one param and optional flags\
+\- always type, never interface\
+\- avoid typescriptism, only define types on function params and return, never alias literal types like \`type message = string\`\
+\- use \`// @ts-expect-error\` if needed\
+\- comment:\
+\- self explanatory over commenting\
+\- lowercase for what and why, title case for where, sentence case in docs\
+\- never uppercase anywhere\
+\- no ascii styling, never fancy\
+\- notes:\
+\- prefer modern proven libraries, do not reinvent wheels
+
+typescript
+
+```
+// theme.ts
+
+export type ThemeMode = "system" | "light" | "dark";
+
+type ThemeConfig = {
+  theme: ThemeMode;
+};
+
+export async function change_theme(config: ThemeConfig): Promise<void> {
+  const query = window.matchMedia("(prefers-color-scheme: dark)");
+
+  if (config.theme === "light" || config.theme === "dark") {
+    document.documentElement.setAttribute("data-theme", config.theme);
+    localStorage.setItem("user-theme", config.theme);
+    return;
+  }
+
+  localStorage.setItem("user-theme", "system");
+  document.documentElement.setAttribute("data-theme", query.matches ? "dark" : "light");
+}
+
+export function get_saved_theme(): ThemeMode {
+  const stored = localStorage.getItem("user-theme");
+  if (stored === "light" || stored === "dark" || stored === "system") {
+    return stored;
+  }
+  return "system";
+}
+```
+
+Use code with caution.
+
+tsx
+
+```
+// App.tsx
+import React, { useState, useEffect } from "react";
+import { change_theme, get_saved_theme, type ThemeMode } from "./theme";
+
+export function App() {
+  const [theme, set_theme] = useState<ThemeMode>(get_saved_theme);
+
+  useEffect(() => {
+    async function run_sync() {
+      await change_theme({ theme });
+    }
+    run_sync();
+
+    if (theme !== "system") {
+      return;
+    }
+
+    const query = window.matchMedia("(prefers-color-scheme: dark)");
+    function handle_system_change() {
+      change_theme({ theme: "system" });
+    }
+
+    query.addEventListener("change", handle_system_change);
+    return () => {
+      query.removeEventListener("change", handle_system_change);
+    };
+  }, [theme]);
+
+  return (
+    <div style={{ padding: "20px" }}>
+      <h1>current theme: {theme}</h1>
+      <button onClick={() => set_theme("system")}>💻 system</button>
+      <button onClick={() => set_theme("light")}>☀️ light</button>
+      <button onClick={() => set_theme("dark")}>🌙 dark</button>
+    </div>
+  );
+}
+```
+
+Use code with caution.
+
+### Development Environment Commands
+
+To build and run this setup inside your **tmux** session on Ubuntu with x11, zsh, pnpm, and parcel:
+
+zsh
+
+```
+# run local dev server inside tmux
+pnpm exec parcel serve 'app.html' --dist-dir .build --cache-dir .build/.parcel-cache
+```
+
+Use code with caution.
+
+Would you like the **inline optimization script** designed specifically for your layout head tag to eliminate parsing flashes under parcel compilation?
+
+## You said: how to listen
+
+To handle system changes elegantly without messy trackers, use an abstract event wrapper to bind browser events directly to your React state updater.
+
+### 1. Functional System Listener
+
+Add this specialized side-effect binder to your `theme.ts` module:
+
+typescript
+
+```
+// theme.ts
+
+export type ThemeMode = "system" | "light" | "dark";
+
+type ThemeConfig = {
+  theme: ThemeMode;
+};
+
+type SyncConfig = {
+  is_active: boolean;
+  on_change: () => void;
+};
+
+export async function change_theme(config: ThemeConfig): Promise<void> {
+  const query = window.matchMedia("(prefers-color-scheme: dark)");
+
+  if (config.theme === "light" || config.theme === "dark") {
+    document.documentElement.setAttribute("data-theme", config.theme);
+    localStorage.setItem("user-theme", config.theme);
+    return;
+  }
+
+  localStorage.setItem("user-theme", "system");
+  document.documentElement.setAttribute("data-theme", query.matches ? "dark" : "light");
+}
+
+export function get_saved_theme(): ThemeMode {
+  const stored = localStorage.getItem("user-theme");
+  if (stored === "light" || stored === "dark" || stored === "system") {
+    return stored;
+  }
+  return "system";
+}
+
+export function listen_system_theme(config: SyncConfig): () => void {
+  if (!config.is_active) {
+    return () => {};
+  }
+
+  const query = window.matchMedia("(prefers-color-scheme: dark)");
+  query.addEventListener("change", config.on_change);
+
+  return () => {
+    query.removeEventListener("change", config.on_change);
+  };
+}
+```
+
+Use code with caution.
+
+### 2. Implementation in the React Component
+
+Consume the subscription cleanup function directly inside your React lifecycle effect hook:
+
+tsx
+
+```
+// App.tsx
+import React, { useState, useEffect } from "react";
+import { change_theme, get_saved_theme, listen_system_theme, type ThemeMode } from "./theme";
+
+export function App() {
+  const [theme, set_theme] = useState<ThemeMode>(get_saved_theme);
+
+  useEffect(() => {
+    async function run_sync() {
+      await change_theme({ theme });
+    }
+    run_sync();
+
+    const cleanup = listen_system_theme({
+      is_active: theme === "system",
+      on_change: () => {
+        change_theme({ theme: "system" });
+      }
+    });
+
+    return cleanup;
+  }, [theme]);
+
+  return (
+    <div>
+      <h1>current theme: {theme}</h1>
+      <button onClick={() => set_theme("system")}>💻 system</button>
+      <button onClick={() => set_theme("light")}>☀️ light</button>
+      <button onClick={() => set_theme("dark")}>🌙 dark</button>
+    </div>
+  );
+}
+```
+
+Use code with caution.
+
+Would you like to verify the execution speed or structure inside your **tmux** instance using your target run runtime (`br run`) tools?
+
+## You said: be simple. do not wrap themeconfig.
+
+typescript
+
+```
+// theme.ts
+
+export type ThemeMode = "system" | "light" | "dark";
+
+export async function change_theme(theme: ThemeMode): Promise<void> {
+  const query = window.matchMedia("(prefers-color-scheme: dark)");
+
+  if (theme === "light" || theme === "dark") {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("user-theme", theme);
+    return;
+  }
+
+  localStorage.setItem("user-theme", "system");
+  document.documentElement.setAttribute("data-theme", query.matches ? "dark" : "light");
+}
+
+export function get_saved_theme(): ThemeMode {
+  const stored = localStorage.getItem("user-theme");
+  if (stored === "light" || stored === "dark" || stored === "system") {
+    return stored;
+  }
+  return "system";
+}
+
+export function listen_system(on_change: () => void): () => void {
+  const query = window.matchMedia("(prefers-color-scheme: dark)");
+  query.addEventListener("change", on_change);
+  return () => {
+    query.removeEventListener("change", on_change);
+  };
+}
+```
+
+Use code with caution.
+
+tsx
+
+```
+// App.tsx
+import React, { useState, useEffect } from "react";
+import { change_theme, get_saved_theme, listen_system, type ThemeMode } from "./theme";
+
+export function App() {
+  const [theme, set_theme] = useState<ThemeMode>(get_saved_theme);
+
+  useEffect(() => {
+    async function run_sync() {
+      await change_theme(theme);
+    }
+    run_sync();
+
+    if (theme !== "system") {
+      return;
+    }
+
+    const unlisten = listen_system(() => {
+      change_theme("system");
+    });
+
+    return unlisten;
+  }, [theme]);
+
+  return (
+    <div>
+      <h1>current theme: {theme}</h1>
+      <button onClick={() => set_theme("system")}>💻 system</button>
+      <button onClick={() => set_theme("light")}>☀️ light</button>
+      <button onClick={() => set_theme("dark")}>🌙 dark</button>
+    </div>
+  );
+}
+```
+
+Use code with caution.
+
+Do you want to add an **unlisten verification test** or check **parcel caching behavior** for this implementation in your shell?
+
+## You said: forget all above. does it work. const query = window.matchMedia("(prefers-color-scheme: dark)");
+
+query.addEventListener("change", on\_change);
+
+Yes, that works perfectly. Modern browsers support `addEventListener` on the `MediaQueryList` object directly.
+
+### Compatibility Note
+
+Historically, older versions of Safari and Internet Explorer forced developers to use `query.addListener(on_change)`. However, `addEventListener` has been universally supported across all major rendering engines for years (since roughly 2020).
+
+Because your environment uses modern engines, your exact code is completely safe, standard, and recommended.
+
+### Quick Verification Check
+
+The only minor detail to watch out for is that the `on_change` callback receives an event object. If your `on_change` relies on checking whether the system _is_ dark inside the function body, you can read it directly from that event parameter like this:
+
+typescript
+
+```
+function on_change(event: MediaQueryListEvent) {
+  // event.matches returns true if the system switched to dark mode
+  const is_dark = event.matches;
+}
+```
+
+Use code with caution.
+
+Would you like to write a quick **automated unit test** to mock this browser event, or verify how **Parcel handles compilation targets** for modern web APIs?
+
+## You said: only export change\_theme. it set for light and dark. it get and set and listen for system.
+
+typescript
+
+```
+// theme.ts
+
+export type ThemeMode = "system" | "light" | "dark";
+
+let unlisten_system: (() => void) | null = null;
+
+export async function change_theme(theme: ThemeMode): Promise<void> {
+  if (unlisten_system) {
+    unlisten_system();
+    unlisten_system = null;
+  }
+
+  if (theme === "light" || theme === "dark") {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("user-theme", theme);
+    return;
+  }
+
+  localStorage.setItem("user-theme", "system");
+
+  const query = window.matchMedia("(prefers-color-scheme: dark)");
+
+  async function sync_system(): Promise<void> {
+    document.documentElement.setAttribute("data-theme", query.matches ? "dark" : "light");
+  }
+
+  await sync_system();
+
+  query.addEventListener("change", sync_system);
+  unlisten_system = () => {
+    query.removeEventListener("change", sync_system);
+  };
+}
+```
+
+Use code with caution.
+
+tsx
+
+```
+// App.tsx
+import React, { useState, useEffect } from "react";
+import { change_theme, type ThemeMode } from "./theme";
+
+function get_saved_theme(): ThemeMode {
+  const stored = localStorage.getItem("user-theme");
+  if (stored === "light" || stored === "dark" || stored === "system") {
+    return stored;
+  }
+  return "system";
+}
+
+export function App() {
+  const [theme, set_theme] = useState<ThemeMode>(get_saved_theme);
+
+  useEffect(() => {
+    async function update() {
+      await change_theme(theme);
+    }
+    update();
+  }, [theme]);
+
+  return (
+    <div>
+      <h1>current theme: {theme}</h1>
+      <button onClick={() => set_theme("system")}>💻 system</button>
+      <button onClick={() => set_theme("light")}>☀️ light</button>
+      <button onClick={() => set_theme("dark")}>🌙 dark</button>
+    </div>
+  );
+}
+```
+
+Use code with caution.
+
+If you notice any unexpected theme behavior during live reloads, I can help you fix the **Parcel dev server cache clearing setup** or optimize the **tmux shell layout** for easier console logging. Would that be helpful?
 
 # 
 
