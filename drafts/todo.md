@@ -502,13 +502,18 @@ checkbox group is basically syntax sugar (simple abstraction) and meaningless ac
 
 ---
 
-intuitive android adb aab
-
 samsung
 
 one ui
 
 document.
 
+---
 
+try plug in the old laptop and export
 
+---
+
+reg a new tg i guess
+
+---
