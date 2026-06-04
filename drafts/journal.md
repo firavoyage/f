@@ -26763,6 +26763,18 @@ chyk and menci could work. innei could not load as it uses async. example dot co
 
 by default, i could "reopen windows" when i return. on ubuntu i config manually.
 
+15 20 reminisce. <!-- reflect -->
+
+i could feel memories of childhood in the air, sitting amidst an air conidtioner in summer. <!-- 在夏天的空调房中, 能闻到小时候的味道. -->
+
+desk, paper <!-- or think paper -->, colored pencils, paint, glue, scissors.
+
+keyboard, frontend, programs or blocks.
+
+board, books, one sitting aside.
+
+thinking. moving. clarity in mind. <!-- 或思索. 或轻快. 清晰. -->
+
 
 
 <!-- timebox, plan. -->
