@@ -502,5 +502,13 @@ checkbox group is basically syntax sugar (simple abstraction) and meaningless ac
 
 ---
 
+intuitive android adb aab
+
+samsung
+
+one ui
+
+document.
+
 
 

@@ -26775,6 +26775,24 @@ board, books, one sitting aside.
 
 thinking. moving. clarity in mind. <!-- 或思索. 或轻快. 清晰. -->
 
+18 00 think.
+
+i guess i could document on like one ui.md
+
+android is not libre in the way ubuntu is. software could not live wo a decend hardware, where the producer holds the definitive voice of the system ui, which you might not be able to override through rooting, which comes at significant cost even if you could.
+
+work might be in vain. over reliance on certain os would cause vendor lock in, resulting in monoliths, as hard tradeoffs when choosing products.
+
+nevertheless, it might be useful to document. implementation differs. the ideal behavior stays.
+
+18 40 create `.hidden` on humility.
+
+19 40 separate `todo` and <!-- out of --> `spec`.
+
+todos are instruction i write. specs are defined by llms (and possibly revised by me) as references. <!-- it could be questions and answers. -->
+
+ofc i could have `todo_foo` `todo_bar`. 
+
 
 
 <!-- timebox, plan. -->

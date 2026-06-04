@@ -19134,5 +19134,376 @@ Use code with caution.
 
 If you notice any unexpected theme behavior during live reloads, I can help you fix the **Parcel dev server cache clearing setup** or optimize the **tmux shell layout** for easier console logging. Would that be helpful?
 
+# is component library a subconcept of a design system
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">Yes, a component library is a subconcept and a core technical piece of a design system.</span></strong></mark> \[[1](https://www.reddit.com/r/UXDesign/comments/1d8libx/what%5Fis%5Fthe%5Fdifference%5Fbetween%5Fa%5Fdesign%5Fsystem/), [2](https://www.editiongroup.com/services/design-systems), [3](https://via.studio/journal/component-based-web-design)]
+
+A design system is the complete ecosystem of philosophy, guidelines, and assets, while a component library is the specific collection of reusable code elements that implements those rules. \[[1](https://public-ui.github.io/en/blog/2023/06/28), [2](https://www.eleken.co/blog-posts/7-design-systems-examples-for-your-inspiration)]
+
+### 📐 The Complete Design System
+
+A design system serves as the single source of truth for an entire organization's product design and development. It includes: \[[1](https://dev.to/rijultp/helping-designers-and-developers-align-design-system-vs-component-library-51pe)]
+
+- **Design Tokens:** Abstracted visual values like color hex codes, spacing scales, and typography sizes.
+- **Style Guides:** Documented rules for brand voice, editorial tone, and photography styles.
+- **Pattern Libraries:** Best practices for combining components into larger layouts or user flows.
+- **Component Library:** The actual coded assets used by developers. \[[1](https://dev.to/joshuawasike/design-systems-in-action-building-a-reusable-component-library-with-react-3peb), [2](https://codetheorem.co/design-system-services/), [3](https://www.designsystemscollective.com/the-missing-piece-in-mobile-development-design-tokens-chapter-1-499cf4d38a2c), [4](https://think-it.io/insights/Atomic-Design-System-in-SwiftUI), [5](https://www.uxpin.com/studio/blog/design-systems-vs-style-guides-key-differences/)]
+
+### 💻 The Component Library
+
+A component library is a strictly technical tool. It translates design principles into functional code. \[[1](https://medium.com/@jakub-hajduk/code-component-libraries-vs-design-systems-which-is-right-for-your-team-a51bdef230cf), [2](https://www.youtube.com/watch?v=XxIjitlc884)]
+
+- **What it contains:** Reusable UI elements like buttons, input fields, modals, and navigation bars.
+- **How it works:** Built using specific code frameworks like React, Vue, or Angular.
+- **Its purpose:** Ensures developers can build interfaces quickly without writing CSS or HTML from scratch. \[[1](https://www.anml.com/blog/design-system-vs-component-library-vs-pattern-library-what-s-the-difference), [2](https://geekyants.com/blog/design-system-vs-ui-library-understanding-the-difference-for-digital-product-excellence), [3](https://medium.com/@function12/component-library-documentation-for-front-end-developers-c14645a30628), [4](https://www.nngroup.com/articles/design-systems-vs-style-guides/), [5](https://medium.com/@davefelix247/foundational-design-system-the-7-core-elements-d2150aa254fd)]
+
+### 🔍 Key Differences At A Glance
+
+- 🏛️ **Design System:** Focuses on **why** and **how** we build products (philosophy, code, and design).
+- 🧱 **Component Library:** Focuses strictly on **what** code we use to build screens (purely implementation). \[[1](https://lollypop.design/blog/2025/december/component-library-vs-design-system/), [2](https://uxdesign.cc/design-systems-for-products-services-ecosystem-of-design-systems-207ef1050442), [3](https://medium.com/design-bootcamp/why-design-systems-fail-fe6abf722380), [4](https://rangle.io/blog/what-is-a-design-system), [5](https://www.netguru.com/blog/design-system-vs-style-guide)]
+
+***
+
+To help explore this further, would you like to:
+
+- See an **example of how a component library connects to design tokens**?
+
+- Know the **most popular open-source design systems** to look at for reference?
+
+- Learn how to **organize a brand-new design system** for your team?
+
+- [link](https://www.reddit.com/r/UXDesign/comments/1d8libx/what%5Fis%5Fthe%5Fdifference%5Fbetween%5Fa%5Fdesign%5Fsystem/)\
+  What is the difference between a design system and a component library? : r/UXDesign\
+  Jun 5, 2024 — Component library is a subset of the design system. The design system explains how to correctly use its component library. The des...\
+  \
+  \
+  Reddit
+
+- [link](https://www.editiongroup.com/services/design-systems)\
+  Design Systems & Component Library Experts | Edition\
+  A component library, an integral part of the design system, is a curated set of reusable UI elements, pre-coded for swift deployme...\
+  \
+  \
+  www.editiongroup.com
+
+- [link](https://via.studio/journal/component-based-web-design)\
+  Component-Based Web Design\
+  Aug 9, 2024 — Tweak, iterate, test and finesse. Designing components is the fun part. And once you build a core set, you're on your way to being...\
+  \
+  \
+  VIA Studio
+
+Show all
+
+# what is mdx format markdown
+
+**MDX** is <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">an extension of standard Markdown that allows you to seamlessly embed <strong>JSX (JavaScript XML)</strong> and UI framework components directly inside your content</mark>. It essentially acts as a bridge between static text and interactive JavaScript, often described as "Markdown for the component era." \[[1](https://mdxjs.com/), [2](https://kabartolo.github.io/chicago-docs-demo/docs/mdx-guide/writing/), [3](https://github.com/mdx-js/mdx/), [4](https://docskit.platformos.com/documentation/markdown/), [5](https://www.reddit.com/r/statichosting/comments/1o155bc/started%5Fusing%5Fmdx%5Ffiles%5Fand%5Fnow%5Fim%5Fconfused%5Fabout/)]
+
+### Key Differences: Markdown vs. MDX
+
+- **Markdown (`.md`)**: Great for static text, bullet points, headers, and code snippets. It cannot run logic, handle live data, or render custom interactive UI elements.
+- **MDX (`.mdx`)**: Includes everything standard Markdown can do, but unlocks the ability to import, write, and render custom components (like React, Vue, or Svelte) inline with your text. \[[1](https://medium.com/@ugurcanuzunkaya1/md-vs-mdx-a-comprehensive-guide-for-developers-cd0f29d20a9a), [2](https://www.ibm.com/docs/en/SSYKAV?topic=train-how-do-use-markdown), [3](https://zudoku.dev/docs/markdown/mdx), [4](https://docskit.platformos.com/documentation/markdown/), [5](https://www.nextjs.cn/docs/advanced-features/using-mdx)]
+
+### Core Features of MDX
+
+- **Component Integration**: You can import custom components (like an interactive graph, a quiz block, or a live alert) and drop them into your document.
+- **JavaScript Expressions**: You can use curly braces `{}` to write live JavaScript logic or reference variables right inside the text.
+- **Compilation**: Unlike normal text files, MDX is compiled into executable JavaScript code during your website's build stage.
+- **Stricter Rules**: Because it parses JSX, you must write valid, closed HTML/JSX tags (e.g., you must use self-closing tags like instead of ). \[[1](https://tanggd.github.io/en/guides/markdown-content/), [2](https://mdxjs.com/docs/getting-started/), [3](https://docs.readme.com/main/docs/mdx), [4](https://mdxjs.com/), [5](https://github.com/mdx-js/mdx/), [6](https://medium.com/@ugurcanuzunkaya1/md-vs-mdx-a-comprehensive-guide-for-developers-cd0f29d20a9a)]
+
+### Code Example
+
+An `.mdx` file mixes content and code like this: \[[1](https://github.com/mdx-js/mdx/), [2](https://medium.com/@ugurcanuzunkaya1/md-vs-mdx-a-comprehensive-guide-for-developers-cd0f29d20a9a), [3](https://www.linkedin.com/posts/leeerob%5Fnew-video-mdx-with-nextjs-learn-how-to-activity-7268772440091037696-dPuA)]
+
+markdown
+
+```
+import { InteractiveChart } from './charts.js'
+export const releaseYear = 2026
+
+# Product Launch Update
+
+In {releaseYear}, we deployed our new interactive analytics tracking.
+
+Below is the live traffic overview:
+
+<InteractiveChart data={releaseYear} color="#ff0000" />
+
+You can hover over the lines above to view real-time metrics.
+```
+
+Use code with caution.
+
+### Where is it Used?
+
+MDX is widely adopted in modern web development for technical documentation, portfolio sites, and content-heavy platforms. It is heavily integrated into modern static site generators and frameworks like [Next.js](https://nextjs.org/docs/app/guides/mdx), [Docusaurus](https://docusaurus.io/docs/markdown-features), Astro, and [Storybook](https://storybook.js.org/docs/writing-docs/mdx). \[[1](https://nextjs.org/docs/app/guides/mdx), [2](https://medium.com/@ugurcanuzunkaya1/md-vs-mdx-a-comprehensive-guide-for-developers-cd0f29d20a9a), [3](https://www.youtube.com/watch?v=34bRv6cQezo), [4](https://docusaurus.io/docs/markdown-features), [5](https://tanggd.github.io/en/guides/markdown-content/), [6](https://storybook.js.org/docs/writing-docs/mdx)]
+
+Are you planning to use MDX for a specific project, like a **personal blog** or **software documentation**? If so, let me know which **web framework** you are using so I can show you how to set it up!
+
+- [link](https://mdxjs.com/)\
+  MDX: Markdown for the component era\
+  ❤️ Powerful: MDX blends markdown and JSX syntax to fit perfectly in JSX-based projects. 💻 Everything is a component: Use existing...\
+  MDX
+- [link](https://github.com/mdx-js/mdx/)\
+  mdx-js/mdx: Markdown for the component era - GitHub\
+  Aug 29, 2025 — MDX is an authorable format that lets you seamlessly write JSX in your markdown documents. You can import components, such as inte...\
+  GitHub
+- [link](https://www.reddit.com/r/statichosting/comments/1o155bc/started%5Fusing%5Fmdx%5Ffiles%5Fand%5Fnow%5Fim%5Fconfused%5Fabout/)\
+  Started using mdx files and now I'm confused about ... - Reddit\
+  Oct 8, 2025 — Comments Section \* standardhypocrite. • 8mo ago. Totally fair. MDX basically lets you write Markdown that can render React compone...\
+  Reddit·r/statichosting
+
+Show all
+
+## You said: how does it consider a line is code not docs
+
+In an MDX file, the parser distinguishes between documentation (content) and code/logic based on specific **syntax markers** at the start of a line or within the text.
+
+Here is how MDX identifies what is code:
+
+### 1. Code Blocks (Fenced with Backticks)
+
+Any line wrapped between triple backticks (\`\`\`\`\`\`\`\`\`\`\`) is treated as a static, visual code block for your readers to look at, not code to execute.
+
+- **Syntax**: Starts and ends with \`\`\`\`\`\`\`\`\`\`\`.
+- **Result**: Rendered as a block on the website.
+
+### 2. JavaScript Statements (`import` / `export`)
+
+If a line starts exactly with the keywords `import` or `export`, MDX treats it as JavaScript logic rather than text to display.
+
+- **Syntax**: `import { Button } from './components'` or `export const date = 2026`.
+- **Result**: Executed behind the scenes; hidden from the final visual layout.
+
+### 3. XML/JSX Tags
+
+If a line starts with an HTML or JSX opening bracket (`<`), MDX recognizes it as a live component or HTML element to render, not plain text.
+
+- **Syntax**: or .
+- **Result**: Renders a live, interactive UI element.
+
+### 4. Inline Expressions (Curly Braces)
+
+To insert code right in the middle of a sentence, MDX looks for curly braces `{}`.
+
+- **Syntax**: `The current year is {new Date().getFullYear()}.`
+- **Result**: Evaluates the JavaScript inside and displays the calculated text output.
+
+### 5. Markdown Fallback (Docs)
+
+If a line does **not** start with `import`, `export`, `<`, or backticks, MDX defaults to treating it as regular Markdown documentation.
+
+***
+
+Are you experiencing an issue where your **MDX file is misinterpreting text** as code (or vice-versa), or are you looking to write a **custom parser** for MDX?
+
+# what can a button in a component library have
+
+A button in a component library typically features <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">a robust combination of <strong>visual styles, layout configurations, interactive states, API properties (props), and accessibility features</strong></mark>. These variables allow the same underlying component to adapt cleanly across a variety of interfaces and contexts. \[[1](https://www.youtube.com/watch?v=VZSXq7VgeGU), [2](https://www.youtube.com/watch?v=3MAkBzokLVI\&t=73), [3](https://web.dev/articles/building/a-button-component), [4](https://www.youtube.com/watch?v=D2AmZCuk18Q), [5](https://e-dimensionz.com/devinsights/building-reusable-components-with-react-props)]
+
+***
+
+### 1. Visual Variations (Design Tokens)
+
+Component libraries use "variants" to establish hierarchy, signaling to users which action is most important. \[[1](https://mui.com/material-ui/react-button/), [2](https://m3.material.io/components/all-buttons)]
+
+- **Hierarchy Types**: Primary (dominant action), Secondary (outline/neutral alternative), and Tertiary (text-only for low-priority contexts).
+- **Intent Styles**: Informational (blue), Success (green), and Destructive (red, used for permanent deletions).
+- **Shapes**: Rectangular, pills/rounded corners, or fully circular for icon-only buttons. \[[1](https://developer.salesforce.com/docs/platform/lightning-component-reference/guide/lightning-button.html), [2](https://medium.com/better-programming/build-your-own-button-component-library-from-scratch-in-swiftui-14cfa2f0036b), [3](https://www.youtube.com/watch?v=3MAkBzokLVI\&t=73), [4](https://mui.com/material-ui/react-button/), [5](https://m3.material.io/components/all-buttons)]
+
+### 2. Sizing and Content Layout
+
+Buttons need to scale according to their layout context, accommodating icons, text, or both. \[[1](https://www.youtube.com/watch?v=3MAkBzokLVI\&t=73)]
+
+- **Sizes**: Typically Small (S), Medium (M), and Large (L) configurations to match different device types.
+- **Icons**: Placement slots for a leading icon (before text), a trailing icon (after text), or an icon-only configuration.
+- **Width Behaviors**: Standard inline width (hugs the text content) or "block/fluid" width (stretches to fill \\(100\\%\\) of its parent container). \[[1](https://www.figma.com/community/file/1507823594854054663/button-library-600-buttons), [2](https://www.telerik.com/kendo-react-ui/button), [3](https://m2.material.io/components/buttons), [4](https://www.youtube.com/watch?v=3MAkBzokLVI\&t=73), [5](https://docs.wpblockart.com/blockart-blocks/button/)]
+
+### 3. Interactive States
+
+A component button must communicate its exact behavior to the user dynamically via style shifts. \[[1](https://www.heroui.com/docs/react/components/button), [2](https://jessijokes.medium.com/one-button-to-rule-them-all-465e294cba82), [3](https://uxdesign.cc/button-design-user-interface-components-series-85243b6736c7)]
+
+- **Default**: The normal, un-interacted baseline state.
+- **Hover**: Visual feedback when a mouse pointer rests over it.
+- **Focus**: An interactive ring indicator triggered when navigating via tab or keyboard.
+- **Active/Pressed**: Temporary scale shrink or color shift down while clicked.
+- **Loading/Pending**: Swaps the text or icon out for an active animated loading spinner while disabling click events.
+- **Disabled**: Faded opacity and deactivated cursor that halts all interaction entirely. \[[1](https://dev.to/chiangs/how-im-starting-my-own-angular-component-library-part-1---generic-button-3f3m), [2](https://www.youtube.com/watch?v=3MAkBzokLVI\&t=73), [3](https://www.heroui.com/docs/react/components/button), [4](https://web.dev/articles/building/a-button-component), [5](https://mui.com/material-ui/react-button/)]
+
+### 4. Technical Props & Underlying HTML \[[1](https://developer.adobe.com/commerce/frontend-core/ui-components/components/button), [2](https://medium.com/better-programming/build-your-own-button-component-library-from-scratch-in-swiftui-14cfa2f0036b)]
+
+A developer dictates button behavior by configuring code properties. \[[1](https://developer.adobe.com/commerce/frontend-core/ui-components/components/button), [2](https://medium.com/better-programming/build-your-own-button-component-library-from-scratch-in-swiftui-14cfa2f0036b)]
+
+- **Element Modifiers**: Swapping between a standard native element or rendering as an anchor link when an `href` URL path is supplied.
+- **Form Types**: Specifying the internal behavior, such as a regular `button`, a form `submit` action, or a form `reset` trigger.
+- **Event Listeners**: Standard click tracking properties like `onClick` to pass actions upward to parent applications. \[[1](https://webcomponents.ucla.edu/build/1.0.0-beta.2/docs/component-guidelines/buttons-and-links.html), [2](https://flowbite-react.com/docs/components/button), [3](https://www.geeksforgeeks.org/html/button-tag-vs-input-typebutton-attribute/), [4](https://componentlibrary.moodle.com/admin/tool/componentlibrary/docspage.php/moodle/components/buttons/), [5](https://dev.to/chiangs/how-im-starting-my-own-angular-component-library-part-1---generic-button-3f3m), [6](https://mui.com/material-ui/react-button/)]
+
+### 5. Accessibility Attributes (A11y)
+
+Modern components require baked-in support for assistive screen readers. \[[1](https://webcomponents.ucla.edu/build/1.0.0-beta.2/docs/component-guidelines/buttons-and-links.html), [2](https://web.dev/articles/building/a-button-component)]
+
+- **ARIA Labels**: `aria-label` tags to announce the purpose of the element when using icon-only variations.
+- **State Disclosures**: Automated `aria-disabled` or `aria-expanded` strings to inform users of UI shifts.
+- **Contrast Safeguards**: Pre-configured colors ensuring background and foreground pairings pass strict Web Content Accessibility Guidelines (WCAG) contrast requirements. \[[1](https://ec.europa.eu/component-library/ec/components/button/usage/), [2](https://webcomponents.ucla.edu/build/1.0.0-beta.2/docs/component-guidelines/buttons-and-links.html), [3](https://www.heroui.com/docs/react/components/button), [4](https://component.gallery/components/button/), [5](https://web.dev/articles/building/a-button-component)]
+
+***
+
+If you are planning to build or customize a button, tell me about your **tech stack** (e.g., React, Figma, Tailwind, or Vue) so we can look at a specific code pattern or design setup.
+
+- [link](https://www.youtube.com/watch?v=VZSXq7VgeGU)\
+  Buttons Design System: How to Create a Button UI Library ...\
+  Jun 30, 2022 — hi guys welcome to today's video in this video I'm going to be showing you guys how to quickly create a button UI library for your...\
+  24:06\
+  YouTube·Thefemijohn
+- [link](https://www.youtube.com/watch?v=3MAkBzokLVI\&t=73)\
+  Figma Design System: 12 Button Components\
+  Dec 2, 2024 — and paste that here let's just read it buttons trigger an action such as submitting a form or showing hiding an interface componen...\
+  5m\
+  YouTube·Christopher Deane
+- [link](https://medium.com/better-programming/build-your-own-button-component-library-from-scratch-in-swiftui-14cfa2f0036b)\
+  Build Your Own Button Component Library From Scratch in SwiftUI\
+  Jun 2, 2020 — NativeBase as an Example. The NativeBase library is made from prebuild components, which help every developer build stuff faster a...\
+  Medium·Calin-Cristian Ciubotariu
+
+Show all
+
+# . what does a button component in material design three include
+
+In [Material Design 3 (M3)](https://m3.material.io/), a standard button component includes <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">specific <strong>visual elements (anatomy), five distinct styling variants, and interactive states</strong></mark>. The default component features a taller 40dp height and fully rounded corners (straying from M2's 36dp slightly rounded shapes). \[[1](https://m3.material.io/components/buttons/specs), [2](https://m2.material.io/components/buttons), [3](https://m3.material.io/components/buttons/overview)]
+
+### 1. Component Anatomy
+
+A standard button component is built using three foundational elements: \[[1](https://m3.material.io/components/segmented-buttons/specs)]
+
+- **Container**: The background bounding box that holds the elements. It provides the shape (fully rounded corners by default) and acts as the touch target area.
+- **Label Text**: Clear, concise text aligned to the center of the container that describes the action.
+- **Icon (Optional)**: A leading icon placed before the label text to visually reinforce the button's function. The M3 standard size for this icon is **20dp**. \[[1](https://m3.material.io/components/buttons/guidelines), [2](https://mui.com/material-ui/react-button/), [3](https://m3.material.io/components/buttons/overview)]
+
+### 2. The Five Standard Button Types
+
+Material Design 3 categorizes standard buttons into five distinct styles based on visual emphasis: \[[1](https://developer.android.com/develop/ui/compose/components/button), [2](https://codewithandrea.com/tips/button-styles-material3/), [3](https://www.boltuix.com/2025/05/materialbasicbuttons.html)]
+
+- **Filled Button**: Features a solid, primary color container with contrasting text. It offers the highest visual weight and is used for final, unblocking flow choices like "Save" or "Submit".
+- **Filled Tonal Button**: Uses a middle-ground secondary/tonal container color palette. It has less visual weight than a regular filled button and handles supporting or alternative primary actions.
+- **Elevated Button**: Features a container with a subtle shadow effect. It is reserved for spaces where a button needs distinct visual separation from a patterned or busy background.
+- **Outlined Button**: Contains a 1dp stroke border around a transparent background. It provides medium-to-low emphasis for secondary, non-blocking actions.
+- **Text Button**: Has no visible container border or background when idle. It is the lowest emphasis button, ideal for auxiliary options or cards. \[, [2](https://m3.material.io/components/all-buttons), [3](https://developer.android.com/develop/ui/compose/components/button), [4](https://m3.material.io/components/buttons/guidelines), [5](https://blog.softwaremill.com/how-to-design-a-button-a44b1769e64d)]
+
+### 3. Core Component States
+
+Buttons adapt visually depending on user interaction by altering their opacity, elevation, and typography overlays. The five baseline interactive states include: \[, [2](https://m2.material.io/develop/android/components/buttons/), [3](https://www.themexpert.com/blog/framer-button-components-from-basic-to-complex), [4](https://m2.material.io/develop/ios/components/buttons), [5](https://www.graduateschool.edu/learn/indesign/working-with-object-states-and-buttons-in-adobe-indesign)]
+
+1. **Enabled**: Ready for user interaction.
+2. **Disabled**: Greyed out and unclickable to imply the action is currently restricted.
+3. **Hovered**: Indicates a mouse cursor is resting over the button.
+4. **Focused**: Highlights the component via keyboard navigation tab targets.
+5. **Pressed**: Visual ripple ink expansion confirming a tap or click event. \[, [2](https://m1.material.io/components/buttons.html), [3](https://www.nngroup.com/articles/button-states-communicate-interaction/), [4](https://uxcel.com/lessons/component-states-499), [5](https://www.nngroup.com/articles/button-states-communicate-interaction/)]
+
+### 4. Special Button Variants
+
+Beyond standard text/icon buttons, the Material 3 button ecosystem includes specialized types: \[, [2](https://codewithandrea.com/tips/button-styles-material3/), [3](https://www.boltuix.com/2025/06/materialiconbuttons.html)]
+
+- **Icon Buttons**: Small, compact containers built entirely around an icon with no text label, used for common global actions.
+- **Segmented Buttons**: 2-5 linear segments bound together to let users select options or filter data views.
+- **Floating Action Buttons (FAB & Extended FAB)**: Large, high-priority contextual circular components that hover over interface layers to represent a page's ultimate primary path (e.g., "Compose" or "Create"). \[[1](https://m3.material.io/components/all-buttons), [2](https://www.youtube.com/watch?v=XuMYxdu0qM8\&t=54), [3](https://m3.material.io/components/icon-buttons/overview), [4](https://m3.material.io/components/segmented-buttons/guidelines)]
+
+If you are currently implementing these buttons in code, tell me if you are developing for **Android (Jetpack Compose / XML)** or **Web (HTML/React/MUI)** so I can supply the exact implementation code. \[[1](https://m2.material.io/components/buttons), [2](https://mui.com/material-ui/react-button/), [3](https://developer.android.com/develop/ui/compose/components/button)]
+
+- [link](https://m3.material.io/components/buttons/overview)\
+  Buttons – Material Design 3\
+  Color: New color mappings and compatibility with dynamic color. Icons and labels now share the same color. Neutral text button is ...\
+  Material Design
+- [link](https://m2.material.io/components/buttons)\
+  Buttons - Material Design\
+  Buttons allow users to take actions, and make choices, with a single tap. design\_services Design integration\_instructions Implemen...\
+  Material Design
+- [link](https://m3.material.io/components/all-buttons)\
+  All buttons – Material Design 3\
+  The FAB and extended FAB are the largest and most visually prominent buttons. They're designed for a page's primary action. The ex...\
+  Material Design
+
+Show all
+
+## You said: what states does it have
+
+In [Material Design 3](https://m3.material.io/), a button component has **six distinct interactive states** that communicate its availability and how it responds to user input. These states are defined by changes in the container's elevation, the opacity of a color overlay, or the visibility of the component.
+
+### 1. Enabled
+
+- **Definition**: The default, idle state of a button.
+- **Appearance**: Ready for interaction, using the full color and sharp contrast of its specific button type.
+
+### 2. Disabled
+
+- **Definition**: The button is visible but completely unclickable.
+- **Appearance**: Container and content opacity are lowered (typically to 12% for containers and 38% for text/icons). It loses all elevation and shadows.
+
+### 3. Hovered
+
+- **Definition**: A mouse cursor or pointer is resting directly over the button.
+- **Appearance**: A subtle 8% opacity color overlay matching the text color is applied over the container. Elevated buttons slightly increase in shadow depth.
+
+### 4. Focused
+
+- **Definition**: The button has been highlighted via keyboard navigation (like pressing the Tab key) or an assistive device.
+- **Appearance**: A 10% opacity color overlay is applied, and it is usually ringed by a high-contrast focus indicator border.
+
+### 5. Pressed
+
+- **Definition**: The user has clicked down, tapped, or hit enter on the button, but has not yet released it.
+- **Appearance**: A 10% opacity overlay is paired with an expanding visual ripple animation. Elevated buttons decrease their shadow depth to look "pushed down."
+
+### 6. Dragged (Specific Variants)
+
+- **Definition**: The user is actively moving a draggable button variant (like a Floating Action Button or Segmented Button) across the screen.
+- **Appearance**: The button lifts to a higher elevation shadow layer and gains a 16% opacity color overlay to appear physically detached from the UI surface.
+
+***
+
+Are you looking to implement these states in code? Tell me if you are working with **Jetpack Compose (Android)**, **Flutter**, or **Web (CSS/Material Web)** so I can provide the state configuration snippets.
+
+## You said: can it really be dragged
+
+**No, a standard button itself cannot be dragged out of the box**. \[[1](https://m2.material.io/design/interaction/states.html)]
+
+While the official [Material Design 3 States Documentation](https://m3.material.io/foundations/interaction/states) lists "Dragged" as one of the 6 core interaction states, this is a design system rule meant for specific, movable components—not everyday buttons. \[[1](https://m3.material.io/foundations/interaction/states)]
+
+The distinction lies in how the "Dragged" state applies across the system:
+
+### 1. Component vs. System Rules
+
+The **Dragged** state only activates when a user presses and physically moves an element across a layout. \[[1](https://m3.material.io/foundations/interaction/states/applying-states), [2](https://m3.material.io/foundations/interaction/states)]
+
+- **Allowed Components**: The design system strictly applies this to components like **Cards, List Items, Chips, Grid Items**, and **Sliders**. For example, dragging a card to a new kanban column or reordering list items. \[[1](https://m3.material.io/foundations/interaction/states/applying-states), [2](https://m2.material.io/design/interaction/states.html), [3](https://medium.com/design-bootcamp/ux-blueprint-07-components-state-a-friendly-guideline-on-how-to-use-it-5ad549de05f1)]
+- **Standard Buttons**: A standard filled, outline, or text button is designed strictly to trigger an immediate event upon release. If a user presses a button and drags their finger _away_, the design system's expected behavior is simply to cancel the tap action, not move the button. \[[1](https://developer.android.com/develop/ui/compose/touch-input/user-interactions/handling-interactions), [2](https://www.youtube.com/watch?v=lIJmKssKVAs)]
+
+### 2. Exceptions (When a Button "Drags")
+
+There are only two scenarios where a button-like element interacts with a drag gesture:
+
+- **Floating Action Buttons (FAB)**: In highly specific mobile layouts, an app may allow a user to drag a FAB out of the way if it blocks text. When dragged, it inherits a higher elevation shadow and a 16% color overlay to look physically lifted. \[[1](https://m3.material.io/foundations/interaction/states/applying-states), [2](https://www.youtube.com/watch?v=0CQvoYidesw), [3](https://m3.material.io/foundations/interaction/states/state-layers)]
+- **Drag Handles / Segmented Sliders**: Elements like the top pill-handle on [Material 3 Bottom Sheets](https://m3.material.io/components/bottom-sheets/guidelines) are technical "button targets" meant to be dragged up and down. \[[1](https://m3.material.io/components/bottom-sheets/guidelines)]
+
+### Summary
+
+The state exists in the documentation guidelines, but code libraries like Jetpack Compose or Material Web do not give standard buttons a dragged state. It is reserved for components meant for sorting, filtering, or moving. \[[1](https://m3.material.io/foundations/interaction/states/applying-states), [2](https://m2.material.io/design/interaction/states.html), [3](https://m3.material.io/components/cards/guidelines)]
+
+Are you designing a specific feature where you **need to reorder or move a button**, or are you just structuring your design system tokens?
+
+- [link](https://m3.material.io/foundations/interaction/states/applying-states)\
+  States – Material Design 3\
+  A dragged state occurs when a user presses and moves an element or component. Dragged states should be low emphasis, to avoid dist...\
+  Material Design
+- [link](https://m2.material.io/design/interaction/states.html)\
+  States - Material Design\
+  Dragged inheritance Dragged states can be inherited by the following components: grid list items, list items, cards, and chips. (1...\
+  Material Design
+- [link](https://m3.material.io/foundations/interaction/states)\
+  States – Material Design 3\
+  1\. Enabled. An enabled state communicates an interactive component or element. 2. Disabled. A disabled state communicates an inope...\
+  Material Design
+
+Show all
+
 # 
 
