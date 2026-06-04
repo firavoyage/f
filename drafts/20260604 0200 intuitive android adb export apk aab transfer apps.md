@@ -1150,6 +1150,300 @@
 ./com.samsung.android.bixbytouch/base.apk
 ```
 
+# .
+
+```sh
+ ~/20260604 apks % find . -maxdepth 2 -path '*/.*' -prune -o -print
+.
+./com.eusoft.eudic
+./com.eusoft.eudic/base.apk
+./org.breezyweather
+./org.breezyweather/base.apk
+./app.phantom
+./app.phantom/split_config.arm64_v8a.apk
+./app.phantom/base.apk
+./app.phantom/split_config.en.apk
+./app.phantom/split_config.xxhdpi.apk
+./com.gitlab.mudlej.MjPdfReader
+./com.gitlab.mudlej.MjPdfReader/base.apk
+./com.example.minimalapp
+./com.example.minimalapp/base.apk
+./com.ss.android.ugc.aweme
+./com.ss.android.ugc.aweme/base.apk
+./com.aefyr.sai.fdroid
+./com.aefyr.sai.fdroid/base.apk
+./com.tencent.mm
+./com.tencent.mm/split_config.arm64_v8a.apk
+./com.tencent.mm/split_delivery.apk
+./com.tencent.mm/split_delivery.config.arm64_v8a.apk
+./com.tencent.mm/base.apk
+./com.tencent.mm/split_config.en.apk
+./com.tencent.mm/split_config.xxhdpi.apk
+./sh.ppy.osulazer
+./sh.ppy.osulazer/base.apk
+./com.google.android.apps.tasks
+./com.google.android.apps.tasks/split_config.arm64_v8a.apk
+./com.google.android.apps.tasks/base.apk
+./com.google.android.apps.tasks/split_config.en.apk
+./com.google.android.apps.tasks/split_config.xxhdpi.apk
+./org.fcitx.fcitx5.android
+./org.fcitx.fcitx5.android/base.apk
+./com.google.android.apps.photos
+./com.google.android.apps.photos/split_config.arm64_v8a.apk
+./com.google.android.apps.photos/base.apk
+./com.google.android.apps.photos/split_config.en.apk
+./com.google.android.apps.photos/split_config.xxhdpi.apk
+./net.osmand
+./net.osmand/split_config.arm64_v8a.apk
+./net.osmand/base.apk
+./net.osmand/split_config.xxhdpi.apk
+./com.google.android.apps.docs.editors.slides
+./com.google.android.apps.docs.editors.slides/split_config.arm64_v8a.apk
+./com.google.android.apps.docs.editors.slides/base.apk
+./com.google.android.apps.docs.editors.slides/split_config.en.apk
+./com.google.android.apps.docs.editors.slides/split_config.xxhdpi.apk
+./com.radolyn.ayugram
+./com.radolyn.ayugram/base.apk
+./com.PigeonGames.Phigros
+./com.PigeonGames.Phigros/base.apk
+./org.catrobat.paintroid
+./org.catrobat.paintroid/base.apk
+./com.google.android.gms
+./com.google.android.gms/split_DynamiteLoader_installtime.apk
+./com.google.android.gms/split_MapsDynamite_installtime.apk
+./com.google.android.gms/split_MeasurementDynamite_installtime.apk
+./com.google.android.gms/split_AdsDynamite_installtime.apk
+./com.google.android.gms/split_DynamiteModulesA_installtime.apk
+./com.google.android.gms/base.apk
+./com.google.android.gms/split_GoogleCertificates_installtime.apk
+./com.google.android.gms/split_config.en.apk
+./com.google.android.gms/split_CronetDynamite_installtime.apk
+./com.google.android.gms/split_DynamiteModulesC_installtime.apk
+./com.google.android.gms/split_config.xxhdpi.apk
+./com.google.android.gms/split_maps_core_dynamite_ondemand.apk
+./com.google.android.syncadapters.contacts
+./com.google.android.syncadapters.contacts/base.apk
+./com.okinc.okex.gp
+./com.okinc.okex.gp/split_ok_payment_dynamic_core_impl.apk
+./com.okinc.okex.gp/split_config.arm64_v8a.apk
+./com.okinc.okex.gp/base.apk
+./com.okinc.okex.gp/split_web3pay_dynamic_impl.apk
+./com.okinc.okex.gp/split_ok_payment_dynamic_core_impl.config.xxhdpi.apk
+./com.okinc.okex.gp/split_config.xxhdpi.apk
+./com.okinc.okex.gp/split_web3pay_dynamic_impl.config.xxhdpi.apk
+./com.xjs.ehviewer
+./com.xjs.ehviewer/base.apk
+./org.mozilla.firefox
+./org.mozilla.firefox/base.apk
+./com.foxwq.yhwq
+./com.foxwq.yhwq/base.apk
+./com.chess
+./com.chess/base.apk
+./ag.jup.jupiter.android
+./ag.jup.jupiter.android/split_config.arm64_v8a.apk
+./ag.jup.jupiter.android/base.apk
+./ag.jup.jupiter.android/split_config.xxhdpi.apk
+./com.jingdong.app.mall
+./com.jingdong.app.mall/split_config.arm64_v8a.apk
+./com.jingdong.app.mall/base.apk
+./com.termux
+./com.termux/base.apk
+./com.android.vending
+./com.android.vending/base.apk
+./com.duolingo
+./com.duolingo/base.apk
+./com.example.piliplus
+./com.example.piliplus/base.apk
+./com.google.android.apps.dynamite
+./com.google.android.apps.dynamite/split_config.arm64_v8a.apk
+./com.google.android.apps.dynamite/base.apk
+./com.google.android.apps.dynamite/split_config.en.apk
+./com.google.android.apps.dynamite/split_config.xxhdpi.apk
+./com.taobao.taobao
+./com.taobao.taobao/base.apk
+./com.xycz.simple_live
+./com.xycz.simple_live/base.apk
+./com.machiav3lli.fdroid
+./com.machiav3lli.fdroid/base.apk
+./com.taobao.idlefish
+./com.taobao.idlefish/base.apk
+./org.videolan.vlc
+./org.videolan.vlc/base.apk
+./app.lawnchair.play
+./app.lawnchair.play/split_config.arm64_v8a.apk
+./app.lawnchair.play/base.apk
+./app.lawnchair.play/split_config.en.apk
+./app.lawnchair.play/split_config.xxhdpi.apk
+./app.lawnchair.lawnicons.play
+./app.lawnchair.lawnicons.play/split_config.arm64_v8a.apk
+./app.lawnchair.lawnicons.play/base.apk
+./app.lawnchair.lawnicons.play/split_config.en.apk
+./app.lawnchair.lawnicons.play/split_config.de.apk
+./app.lawnchair.lawnicons.play/split_config.xxhdpi.apk
+./com.samsung.android.goodlock
+./com.samsung.android.goodlock/base.apk
+./com.anthropic.claude
+./com.anthropic.claude/split_config.arm64_v8a.apk
+./com.anthropic.claude/base.apk
+./com.anthropic.claude/split_config.en.apk
+./com.anthropic.claude/split_config.xxhdpi.apk
+./com.niksoftware.snapseed
+./com.niksoftware.snapseed/base.apk
+./com.eg.android.AlipayGphone
+./com.eg.android.AlipayGphone/base.apk
+./com.google.android.inputmethod.latin
+./com.google.android.inputmethod.latin/split_tenoranimation_feature_split.apk
+./com.google.android.inputmethod.latin/base.apk
+./com.google.android.inputmethod.latin/split_brella_feature_split.apk
+./com.google.android.inputmethod.latin/split_config.xxhdpi.apk
+./org.thunderdog.challegram
+./org.thunderdog.challegram/base.apk
+./jp.co.canon.bsd.ad.pixmaprint
+./jp.co.canon.bsd.ad.pixmaprint/base.apk
+./com.samsung.android.app.goodcatch
+./com.samsung.android.app.goodcatch/base.apk
+./com.beemdevelopment.aegis
+./com.beemdevelopment.aegis/base.apk
+./com.samsung.android.multistar
+./com.samsung.android.multistar/base.apk
+./com.example.helloworld
+./com.example.helloworld/base.apk
+./com.ichi2.anki
+./com.ichi2.anki/base.apk
+./chat.fluffy.fluffychat
+./chat.fluffy.fluffychat/base.apk
+./de.danoeh.antennapod
+./de.danoeh.antennapod/base.apk
+./com.google.android.apps.docs.editors.docs
+./com.google.android.apps.docs.editors.docs/split_config.arm64_v8a.apk
+./com.google.android.apps.docs.editors.docs/base.apk
+./com.google.android.apps.docs.editors.docs/split_config.en.apk
+./com.google.android.apps.docs.editors.docs/split_config.xxhdpi.apk
+./org.mewx.wenku8
+./org.mewx.wenku8/base.apk
+./io.github.samolego.canta
+./io.github.samolego.canta/base.apk
+./me.zhanghai.android.files
+./me.zhanghai.android.files/base.apk
+./io.metamask
+./io.metamask/split_config.arm64_v8a.apk
+./io.metamask/base.apk
+./io.metamask/split_config.xxhdpi.apk
+./com.google.android.calculator
+./com.google.android.calculator/base.apk
+./com.google.android.calculator/split_config.xxhdpi.apk
+./com.google.android.apps.labs.language.tailwind
+./com.google.android.apps.labs.language.tailwind/split_config.arm64_v8a.apk
+./com.google.android.apps.labs.language.tailwind/base.apk
+./com.google.android.apps.labs.language.tailwind/split_config.xxhdpi.apk
+./com.xjcheng.musictageditor
+./com.xjcheng.musictageditor/base.apk
+./com.a10miaomiao.bilimiao
+./com.a10miaomiao.bilimiao/base.apk
+./com.google.android.apps.docs.editors.sheets
+./com.google.android.apps.docs.editors.sheets/split_config.arm64_v8a.apk
+./com.google.android.apps.docs.editors.sheets/base.apk
+./com.google.android.apps.docs.editors.sheets/split_config.en.apk
+./com.google.android.apps.docs.editors.sheets/split_config.xxhdpi.apk
+./com.aurora.store
+./com.aurora.store/base.apk
+./com.github.metacubex.clash.meta
+./com.github.metacubex.clash.meta/base.apk
+./com.autonavi.minimap
+./com.autonavi.minimap/split_config.arm64_v8a.apk
+./com.autonavi.minimap/base.apk
+./com.autonavi.minimap/split_config.en.apk
+./com.autonavi.minimap/split_config.xxhdpi.apk
+./com.binance.dev
+./com.binance.dev/split_sumsub.config.xxhdpi.apk
+./com.binance.dev/split_libMpcTrustWallet.apk
+./com.binance.dev/split_liquid.config.xxhdpi.apk
+./com.binance.dev/split_liquid.config.arm64_v8a.apk
+./com.binance.dev/split_config.arm64_v8a.apk
+./com.binance.dev/split_major.apk
+./com.binance.dev/split_uqudo.config.xxhdpi.apk
+./com.binance.dev/split_mediaKit.apk
+./com.binance.dev/split_agora.config.xxhdpi.apk
+./com.binance.dev/split_trade.config.xxhdpi.apk
+./com.binance.dev/split_libMpcConnect.config.xxhdpi.apk
+./com.binance.dev/split_sumsub.apk
+./com.binance.dev/split_liquid.apk
+./com.binance.dev/split_libMpcConnect.apk
+./com.binance.dev/base.apk
+./com.binance.dev/split_mediaKit.config.arm64_v8a.apk
+./com.binance.dev/split_persona.config.xxhdpi.apk
+./com.binance.dev/split_mpc.config.xxhdpi.apk
+./com.binance.dev/split_major.config.arm64_v8a.apk
+./com.binance.dev/split_uqudo.config.arm64_v8a.apk
+./com.binance.dev/split_mpc.config.arm64_v8a.apk
+./com.binance.dev/split_libMpcTrustWallet.config.xxhdpi.apk
+./com.binance.dev/split_agora.config.arm64_v8a.apk
+./com.binance.dev/split_persona.config.arm64_v8a.apk
+./com.binance.dev/split_persona.apk
+./com.binance.dev/split_config.en.apk
+./com.binance.dev/split_major.config.xxhdpi.apk
+./com.binance.dev/split_libMpcTrustWallet.config.arm64_v8a.apk
+./com.binance.dev/split_libMpcConnect.config.arm64_v8a.apk
+./com.binance.dev/split_config.xxhdpi.apk
+./com.binance.dev/split_agora.apk
+./com.binance.dev/split_mediaKit.config.xxhdpi.apk
+./com.binance.dev/split_trade.apk
+./com.binance.dev/split_mpc.apk
+./com.binance.dev/split_uqudo.apk
+./com.rom1v.sndcpy
+./com.rom1v.sndcpy/base.apk
+./moe.shizuku.privileged.api
+./moe.shizuku.privileged.api/base.apk
+./com.sega.pjsekai
+./com.sega.pjsekai/split_config.arm64_v8a.apk
+./com.sega.pjsekai/base.apk
+./com.sega.pjsekai/split_UnityDataAssetPack.apk
+./com.google.android.calendar
+./com.google.android.calendar/split_config.arm64_v8a.apk
+./com.google.android.calendar/base.apk
+./com.google.android.calendar/split_config.en.apk
+./com.google.android.calendar/split_config.xxhdpi.apk
+./com.github.zly2006.zhplus.lite
+./com.github.zly2006.zhplus.lite/base.apk
+./io.github.muntashirakon.Music
+./io.github.muntashirakon.Music/base.apk
+./com.tencent.mobileqq
+./com.tencent.mobileqq/base.apk
+./com.x8bit.bitwarden
+./com.x8bit.bitwarden/split_config.arm64_v8a.apk
+./com.x8bit.bitwarden/base.apk
+./com.x8bit.bitwarden/split_config.en.apk
+./com.x8bit.bitwarden/split_config.xxhdpi.apk
+./com.google.android.apps.authenticator2
+./com.google.android.apps.authenticator2/base.apk
+./com.google.android.apps.authenticator2/split_config.en.apk
+./com.google.android.apps.authenticator2/split_config.xxhdpi.apk
+./com.google.android.apps.maps
+./com.google.android.apps.maps/split_config.arm64_v8a.apk
+./com.google.android.apps.maps/base.apk
+./com.google.android.apps.maps/split_config.en.apk
+./com.google.android.apps.maps/split_config.xxhdpi.apk
+./com.soulgamechst.majsoul
+./com.soulgamechst.majsoul/base.apk
+./org.fossify.voicerecorder
+./org.fossify.voicerecorder/base.apk
+./eu.depau.etchdroid
+./eu.depau.etchdroid/base.apk
+./jp.pxv.android
+./jp.pxv.android/base.apk
+./org.lichess.mobileapp.free
+./org.lichess.mobileapp.free/base.apk
+./com.google.android.keep
+./com.google.android.keep/split_config.arm64_v8a.apk
+./com.google.android.keep/base.apk
+./com.google.android.keep/split_config.en.apk
+./com.google.android.keep/split_config.xxhdpi.apk
+./com.atharok.screentime
+./com.atharok.screentime/base.apk
+./com.tencent.tmgp.supercell.clashroyale
+./com.tencent.tmgp.supercell.clashroyale/base.apk
+```
+
 # adb command to export all apks from an android phone on ubuntu
 
 To export all APK files from an Android phone to your Ubuntu machine, you must use a terminal script because `adb` does not have a single native command to pull all apps at once.
@@ -1511,4 +1805,50 @@ Use code with caution.
 
 Would you like to log the output of this installation process to a text file so you can review **which apps failed** or **succeeded** later?
 
-# 
+# write a command. on ubuntu, for all folders in cwd wo a base.apk inside, remove it
+
+bash
+
+```
+find . -mindepth 1 -maxdepth 1 -type d '!' -exec test -e "{}/base.apk" ';' -exec rm -rf "{}" +
+```
+
+Use code with caution.
+
+### How It Works
+
+- `find .` searches the current working directory.
+- `-mindepth 1 -maxdepth 1` targets only immediate subfolders.
+- `-type d` restricts the match to directories.
+- `!' -exec test -e "{}/base.apk"` filters for folders missing `base.apk`.
+- `-exec rm -rf "{}" +` deletes those matching folders safely. \[[1](https://www.baeldung.com/linux/rmdir-tutorial), [2](https://stackoverflow.com/questions/71928480/run-flutter-clean-command-on-each-project-in-a-directory), [3](https://answers.mak.ac.ug/linuxunix/find-and-remove-files-one-command-fly)]
+
+To preview what will be deleted before running the command, replacing the final `rm -rf` with `echo` is a safe testing step. \[[1](https://askubuntu.com/questions/804667/remove-all-directories-from-within-a-parent-directory-except-one-and-its-descend)]
+
+If you want to refine this process, tell me:
+
+- Do you want to **include hidden folders**?
+- Should it search **deeper subdirectories**?
+- Do you need a **safety confirmation prompt** before deletion? \[[1](https://ducmanhphan.github.io/2019-11-29-Some-necessary-commands-in-linux/)]
+
+I can adjust the command based on your **exact setup**.
+
+- [link](https://www.baeldung.com/linux/rmdir-tutorial)\
+  Guide to Linux rmdir Command With Examples\
+  Aug 31, 2025 — 4. Using the find Command with rmdir find searches for filesystem objects . specifies the current working directory as the search ...\
+  \
+  \
+  Baeldung
+- [link](https://stackoverflow.com/questions/71928480/run-flutter-clean-command-on-each-project-in-a-directory)\
+  Run \`flutter clean\` command on each project in a directory\
+  Apr 19, 2022 — 1 Comment find . : Searches for files and directories starting from the current directory ( . ). -maxdepth 1 : Restricts the searc...\
+  \
+  \
+  Stack Overflow
+- [link](https://answers.mak.ac.ug/linuxunix/find-and-remove-files-one-command-fly)\
+  Find And Remove Files With One Command On Fly | Answers at Makerere (Knowledge Base)\
+  You are here -name "FILE-TO-FIND" : File pattern. -exec rm -rf {} \\; : Delete all files matched by file pattern. -type f : Only ma...\
+  \
+  Makerere University
+
+Show all
