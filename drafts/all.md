@@ -150,6 +150,7 @@ archi:
 - corporate boilerplate programming criticism
 - over generalization opencode markdown export code block backticks
 - json yaml toml xml syntax
+- yaml indentation flexible resilient parser
 
 frontend: <!-- web -->
 

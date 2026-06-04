@@ -1150,7 +1150,7 @@
 ./com.samsung.android.bixbytouch/base.apk
 ```
 
-# .
+# . <!-- trimmed -->
 
 ```sh
  ~/20260604 apks % find . -maxdepth 2 -path '*/.*' -prune -o -print
@@ -1442,6 +1442,196 @@
 ./com.atharok.screentime/base.apk
 ./com.tencent.tmgp.supercell.clashroyale
 ./com.tencent.tmgp.supercell.clashroyale/base.apk
+```
+
+# .
+
+```sh
+ ~ % cd apks || exit
+for dir in */; do
+   pkg="${dir%/}"
+   if adb shell pm list packages | grep -q "^package:$pkg$"; then
+     echo "Skipping: $pkg is already installed"
+   else
+     echo "Installing missing app: $pkg"
+     adb install-multiple "$dir"*.apk < /dev/null
+   fi
+done
+
+Installing missing app: ag.jup.jupiter.android
+Success
+Installing missing app: app.lawnchair.lawnicons.play
+Success
+Installing missing app: app.lawnchair.play
+Success
+Installing missing app: app.phantom
+Success
+Installing missing app: chat.fluffy.fluffychat
+Success
+Installing missing app: com.a10miaomiao.bilimiao
+Success
+Installing missing app: com.aefyr.sai.fdroid
+Success
+Skipping: com.android.vending is already installed
+Installing missing app: com.anthropic.claude
+Success
+Installing missing app: com.atharok.screentime
+Success
+Installing missing app: com.aurora.store
+Success
+Installing missing app: com.autonavi.minimap
+Success
+Installing missing app: com.beemdevelopment.aegis
+Success
+Installing missing app: com.binance.dev
+Success
+Installing missing app: com.chess
+Success
+Installing missing app: com.duolingo
+Success
+Installing missing app: com.eg.android.AlipayGphone
+Success
+Installing missing app: com.eusoft.eudic
+Success
+Installing missing app: com.example.helloworld
+Success
+Installing missing app: com.example.minimalapp
+Success
+Installing missing app: com.example.piliplus
+Success
+Installing missing app: com.foxwq.yhwq
+Success
+Installing missing app: com.github.metacubex.clash.meta
+Success
+Installing missing app: com.github.zly2006.zhplus.lite
+Success
+Installing missing app: com.gitlab.mudlej.MjPdfReader
+Success
+Installing missing app: com.google.android.apps.authenticator2
+Success
+Installing missing app: com.google.android.apps.docs.editors.docs
+Success
+Installing missing app: com.google.android.apps.docs.editors.sheets
+Success
+Installing missing app: com.google.android.apps.docs.editors.slides
+Success
+Installing missing app: com.google.android.apps.dynamite
+Success
+Installing missing app: com.google.android.apps.labs.language.tailwind
+Success
+Installing missing app: com.google.android.apps.maps
+Success
+Installing missing app: com.google.android.apps.photos
+Success
+Installing missing app: com.google.android.apps.tasks
+Success
+Installing missing app: com.google.android.calculator
+Success
+Installing missing app: com.google.android.calendar
+Success
+Skipping: com.google.android.gms is already installed
+Installing missing app: com.google.android.inputmethod.latin
+Success
+Installing missing app: com.google.android.keep
+Success
+Installing missing app: com.google.android.syncadapters.contacts
+Success
+Installing missing app: com.ichi2.anki
+Success
+Installing missing app: com.jingdong.app.mall
+Success
+Installing missing app: com.machiav3lli.fdroid
+Success
+Installing missing app: com.niksoftware.snapseed
+Success
+Installing missing app: com.okinc.okex.gp
+Success
+Installing missing app: com.PigeonGames.Phigros
+Success
+Installing missing app: com.radolyn.ayugram
+adb: failed to finalize session
+Failure [INSTALL_FAILED_NO_MATCHING_ABIS: INSTALL_FAILED_NO_MATCHING_ABIS: Failed to extract native libraries, res=-113]
+Installing missing app: com.rom1v.sndcpy
+Success
+Installing missing app: com.samsung.android.app.goodcatch
+Success
+Installing missing app: com.samsung.android.goodlock
+Success
+Installing missing app: com.samsung.android.multistar
+Success
+Installing missing app: com.sega.pjsekai
+Success
+Installing missing app: com.soulgamechst.majsoul
+Success
+Installing missing app: com.ss.android.ugc.aweme
+adb: failed to finalize session
+Failure [INSTALL_FAILED_NO_MATCHING_ABIS: INSTALL_FAILED_NO_MATCHING_ABIS: Failed to extract native libraries, res=-113]
+Installing missing app: com.taobao.idlefish
+Success
+Installing missing app: com.taobao.taobao
+Success
+Installing missing app: com.tencent.mm
+Success
+Installing missing app: com.tencent.mobileqq
+Success
+Installing missing app: com.tencent.tmgp.supercell.clashroyale
+Success
+Installing missing app: com.termux
+Success
+Installing missing app: com.x8bit.bitwarden
+Success
+Installing missing app: com.xjcheng.musictageditor
+Success
+Installing missing app: com.xjs.ehviewer
+Success
+Installing missing app: com.xycz.simple_live
+Success
+Installing missing app: de.danoeh.antennapod
+Success
+Installing missing app: eu.depau.etchdroid
+Success
+Installing missing app: io.github.muntashirakon.Music
+Success
+Installing missing app: io.github.samolego.canta
+Success
+Installing missing app: io.metamask
+Success
+Installing missing app: jp.co.canon.bsd.ad.pixmaprint
+Success
+Installing missing app: jp.pxv.android
+Success
+Installing missing app: me.zhanghai.android.files
+Success
+Installing missing app: moe.shizuku.privileged.api
+Success
+Installing missing app: net.osmand
+Success
+Installing missing app: org.breezyweather
+Success
+Installing missing app: org.catrobat.paintroid
+Success
+Installing missing app: org.fcitx.fcitx5.android
+Success
+Installing missing app: org.fossify.voicerecorder
+Success
+Installing missing app: org.lichess.mobileapp.free
+Success
+Installing missing app: org.mewx.wenku8
+Success
+Installing missing app: org.mozilla.firefox
+Success
+Installing missing app: org.thunderdog.challegram
+Success
+Installing missing app: org.videolan.vlc
+Success
+Installing missing app: sh.ppy.osulazer
+Success
+```
+
+```sh
+ ~ % cd /home/fira/apks/com.android.vending
+ ~/apks/com.android.vending % adb install-multiple *.apk < /dev/null
+Success
 ```
 
 # adb command to export all apks from an android phone on ubuntu
@@ -1852,3 +2042,78 @@ I can adjust the command based on your **exact setup**.
   Makerere University
 
 Show all
+
+# fix the script cd all\_apks for dir in \*/; do pkg="${dir%/}" # Strip the trailing slash to get the package name if adb shell pm list packages | grep -q "^package:$pkg$"; then echo "Skipping: $pkg is already installed" else echo "Installing missing app: $pkg" adb install-multiple "$dir"\*.apk < /dev/null done
+
+The main issue in your script is a **syntax error**: you opened a `do` block but forgot to close it with `done` at the very end. The internal `if` block has its own `done` instead of a `fi`, which breaks the loop structure.
+
+Here is the corrected and optimized script:
+
+bash
+
+```
+cd all_apks || exit
+for dir in */; do
+   pkg="${dir%/}"
+   if adb shell pm list packages | grep -q "^package:$pkg$"; then
+     echo "Skipping: $pkg is already installed"
+   else
+     echo "Installing missing app: $pkg"
+     adb install-multiple "$dir"*.apk < /dev/null
+   fi
+done
+```
+
+Use code with caution.
+
+### Key Corrections Made
+
+- **Fixed `fi`**: Changed the first `done` to `fi` to properly close the `if` statement.
+- **Added `done`**: Added `done` at the very end to properly close the `for` loop.
+- **Added `|| exit`**: Added a safety check after `cd` so the script stops if the folder does not exist.
+
+To help fine-tune this, could you tell me:
+
+- Are you running this on **Linux/Mac (Bash)** or **Windows (WSL/Git Bash)**?
+- Do your folder names contain **spaces or special characters**?
+- Are you dealing with **split APKs** or standard single APKs inside those directories?
+
+I can optimize the script further based on your setup.
+
+## You said: will it work on this find . -maxdepth 2 -path '\*/.\*' -prune -o -print
+
+.\
+./com.eusoft.eudic\
+./com.eusoft.eudic/base.apk\
+./org.breezyweather\
+./org.breezyweather/base.apk\
+./app.phantom\
+./app.phantom/split\_config.arm64\_v8a.apk\
+./app.phantom/base.apk\
+./app.phantom/split\_config.en.apk\
+./app.phantom/split\_config.xxhdpi.apk\
+./com.gitlab.mudlej.MjPdfReader\
+./com.gitlab.mudlej.MjPdfReader/base.apk\
+./com.example.minimalapp\
+./com.example.minimalapp/base.apk
+
+Yes, the corrected script will work perfectly with this exact folder structure.
+
+### Why it works for your structure:
+
+- **Single APKs**: For directories like `com.eusoft.eudic`, the command expands to `adb install-multiple "com.eusoft.eudic/"*.apk`, which successfully installs the single `base.apk`.
+- **Split APKs**: For `app.phantom`, the wildcard expands to include all four split APKs at once. `adb install-multiple` will combine and install them correctly.
+- **Folder Names**: The folder names match the Android package names exactly (e.g., `com.eusoft.eudic`), which ensures the `adb shell pm list packages` check works seamlessly.
+
+### One important detail to check:
+
+- Ensure you run the script **inside** the directory where those folders live (the parent directory of `./com.eusoft.eudic`). If you use the `cd all_apks` line from your first script, make sure that folder contains these package directories.
+
+If you plan to automate this, let me know:
+
+- Do you need to handle **subdirectories** deeper than one level?
+- Would you like to add a **progress counter** to see how many apps are left?
+- Should the script **log the output** to a file for troubleshooting?
+
+I can update the script to include these features if needed.
+
