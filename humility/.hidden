@@ -1,0 +1,22 @@
+# it would make it cleaner and clearer on files, while having everything shown on code
+
+# deprecated
+legacy
+
+# temp
+temp
+message.md
+
+# deps
+node_modules
+package.json
+pnpm-lock.yaml
+eslint.config.js
+bunfig.toml
+tsconfig.json
+
+# build
+# build should be hidden on code, not files
+
+# alias
+AGENTS.md

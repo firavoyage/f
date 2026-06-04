@@ -222,6 +222,7 @@ desktop:
 - fix laptop keyboard key
 - mac os x docker
 - shell find
+- dot hidden file history nautilus solution xdg spec home projects folder
 
 android:
 

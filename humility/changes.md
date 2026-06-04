@@ -190,4 +190,10 @@ also, luoling has some "anti patterns". they are common. but they are not always
 
  -->
 
+jun 2026
 
+04
+
+add deps, legacy, and temp to `.hidden`
+
+<!-- vscode does not respect .hidden. but it would make it less noisy when you open it in nautilus. -->
