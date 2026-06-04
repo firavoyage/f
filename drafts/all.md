@@ -230,6 +230,7 @@ android:
 - remove samsung dnd indicator via shizuku termux adb
 - test declarative predictable hello world compilation
 - export apk aab
+- set up one ui
 
 ops: <!-- devops, ci, vcs, ... -->
 

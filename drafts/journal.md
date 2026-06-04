@@ -26793,6 +26793,8 @@ todos are instruction i write. specs are defined by llms (and possibly revised b
 
 ofc i could have `todo_foo` `todo_bar`. 
 
+22 40 set up samsung a57.
+
 
 
 <!-- timebox, plan. -->
