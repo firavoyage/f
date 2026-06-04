@@ -1,3 +1,7 @@
+<!-- i do not think adwaita has icon checkbox like mui. -->
+
+<!-- i guess you should not use checkbox for collapsible lists, as indeterminate. -->
+
 # 0.1
 
 atom components list
