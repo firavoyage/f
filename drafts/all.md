@@ -85,6 +85,7 @@ life:
 - android setup samsung galaxy
 - game maimai dx friend invitation graphics
 - game maimai dx project sekai perfect time window
+- smart spending samsung a series
 
 create something:
 
@@ -258,6 +259,7 @@ agent: <!-- ai/ml -->
 - llms benchmarks
 - claude skills
 - semantic search
+- opencode build mode plan mode
 
 cp: <!-- algorithms -->
 
