@@ -27125,6 +27125,18 @@ At the last seconds a player comes, rushing to pick songs and set flow speed, wo
 
 22 40 set up samsung a57.
 
+05
+
+02 40 work back and forth due to telegram version inconsistency. 03 20
+
+ayugram 32 bit does not work. ayugram latest release works, w random crashes and a "liquid glass" inspired ui. after downgrading, it does not login. my gmail is not allowed for too frequent requests, which only shows up "email not allowed", yet the disposable simplelogin works. <!-- well, it bans multiple reg. -->
+
+seems the zhcn number does not work anymore.
+
+seems i have to use telegram web a on firefox android. damn. 
+
+<!-- i could add app to homescreen though. -->
+
 
 
 <!-- timebox, plan. -->
