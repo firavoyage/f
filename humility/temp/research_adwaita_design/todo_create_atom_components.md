@@ -4,13 +4,9 @@ read
 - knowledge web styling
 - knowledge design tokens
 
-create components folder
+create components folder. it's a flat folder. all work will be done there.
 
-it's a flat folder. 
-
-each component has a tsx and a css. filename is component name.
-
-there is a readme. a list of components and description.
+write a readme
 
 ```md
 # atoms
@@ -19,6 +15,16 @@ there is a readme. a list of components and description.
 - ...
 ```
 
-write index.html, index.tsx, App.css, and App.tsx in components folder. import normalize and adwaita from the parent folder. it's like those on the parent folder.
+for each component, write a tsx and a css. filename is component name. use pascal case. use baseui. read docs on ref/baseui_docs. 
 
-adwaita might not be comprehensive. extend if needed.
+be simple. just copy the official example if possible. avoid any custom, possibly prone, code. it's more about theming.
+
+the spec is not proven. trust the baseui docs over spec. if something could not be done easily, avoid that. simplicity is always the defacto standard.
+
+reference design tokens on adwaita on parent folder. never hardcode. if some tokens are missing, write `adwaita_extended.css`. 
+
+write index.html, index.tsx, App.css, and App.tsx inside components folder. import normalizecss from the parent folder. be simple. just show a clean storybook.
+
+use tmux to serve. use parcel as a global shell command. do not use `pnpm exec parcel` even if it's best prac. 
+
+test on playwright. make sure no error on index.html.

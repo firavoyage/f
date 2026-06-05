@@ -1,0 +1,40 @@
+.app {
+  padding: var(--space-8);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.app h1 {
+  font-size: var(--font-size-2xl);
+  color: var(--window-fg-color);
+  margin-bottom: var(--space-4);
+}
+
+.app h2 {
+  font-size: var(--font-size-xl);
+  color: var(--window-fg-color);
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--btn-border);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  align-items: center;
+}
+
+.label {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  min-width: 80px;
+}

@@ -1,0 +1,45 @@
+.my-number-field {
+  display: inline-flex;
+}
+
+.my-number-field-group {
+  display: inline-flex;
+  border: 1px solid var(--btn-border, #cdc7c2);
+  border-radius: var(--radius-md, 6px);
+  overflow: hidden;
+}
+
+.my-number-field-input {
+  appearance: none;
+  background: var(--view-bg-color, #fff);
+  border: none;
+  color: var(--view-fg-color, rgb(0 0 6 / 80%));
+  font-size: var(--font-size-sm, 0.875rem);
+  padding: var(--space-2, 4px) var(--space-3, 6px);
+  outline: none;
+  width: 60px;
+  text-align: center;
+}
+
+.my-number-field-input:focus {
+  box-shadow: inset 0 0 0 2px var(--accent-color, #3584e433);
+}
+
+.my-number-field-button {
+  appearance: none;
+  background: var(--btn-bg, #f6f5f4);
+  border: none;
+  color: var(--view-fg-color, rgb(0 0 6 / 80%));
+  cursor: pointer;
+  font-size: var(--font-size-sm, 0.875rem);
+  padding: var(--space-2, 4px) var(--space-3, 6px);
+  transition: background 0.15s ease;
+}
+
+.my-number-field-button:hover {
+  background: var(--btn-hover, #f9f9f8);
+}
+
+.my-number-field-button:active {
+  background: var(--btn-pressed, #e8e7e6);
+}

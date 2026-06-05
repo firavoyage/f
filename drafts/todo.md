@@ -388,10 +388,6 @@ any app on any design system.
 
 ---
 
-kde breeze component library repo
-
----
-
 design tokens.
 
 component set.
@@ -488,10 +484,6 @@ filter icon on the right of the input bar <!-- inconsistent. it uses md3 dropdow
 
 ---
 
-try plug in the old laptop and export something
-
----
-
 you dont have to go fast.
 
 you have to make the right choices at first to prevent regression ahead.
@@ -509,3 +501,13 @@ checkbox is good.
 checkbox group is basically syntax sugar (simple abstraction) and meaningless accessibility.
 
 ---
+
+i guess i would
+
+- try plug in the old laptop and export something
+- unbox some vintage gadgets
+- (organize things in the storage box)
+
+then go maimai and work.
+
+

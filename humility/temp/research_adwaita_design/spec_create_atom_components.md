@@ -39,7 +39,6 @@ props:
 - size: `small` | `medium` | `large`
 - shape: `rounded` | `pill`
 - state: `default` | `disabled` | `hover` | `focused` | `pressed`
-- children: text or icon
 
 example:
 
@@ -116,8 +115,6 @@ anatomy:
 
 props:
 
-- variant: `single` | `multiple`
-- size: `small` | `medium` | `large`
 - state: `default` | `disabled` | `readonly` | `required` | `focused`
 - placeholder: text when nothing selected
 
@@ -158,7 +155,6 @@ anatomy:
 props:
 
 - type: `text` | `email` | `password` | `search` | `tel` | `url`
-- size: `small` | `medium` | `large`
 - state: `default` | `disabled` | `readonly` | `required` | `focused` | `valid` | `invalid`
 - placeholder: placeholder text
 
@@ -199,7 +195,6 @@ props:
 - min: `number`
 - max: `number`
 - step: `number`
-- size: `small` | `medium` | `large`
 - state: `default` | `disabled` | `readonly` | `required` | `focused`
 
 example:
@@ -242,7 +237,6 @@ anatomy:
 props:
 
 - orientation: `horizontal` | `vertical` | `both`
-- size: `small` | `medium` | `large` (scrollbar width)
 - state: `scrolling` | `has-overflow`
 
 example:

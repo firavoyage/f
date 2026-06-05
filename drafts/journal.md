@@ -27165,6 +27165,20 @@ do i really have to set this?
 
 <!-- seems utata p does not have an official yt music channel. -->
 
+06
+
+00 00 play project sekai at note speed 10, 2dmv.
+
+<!-- it's so laggy with 3dmv. idk, maybe 30 fps or lower. 2dmv works fine. -->
+
+<!-- i guess i should have a phone case, or it's literally shaking due to camera models. -->
+
+00 40 think
+
+i guess i would write instead of refactor or fix.
+
+declarative > imperative.
+
 
 
 <!-- timebox, plan. -->
