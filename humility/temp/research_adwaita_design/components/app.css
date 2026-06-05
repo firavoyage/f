@@ -1,0 +1,38 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family-sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+  background: var(--view-bg-color, #fff);
+  color: var(--view-fg-color, rgb(0 0 6 / 80%));
+  -webkit-font-smoothing: antialiased;
+}
+
+.app {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--space-8, 24px);
+}
+
+.section {
+  margin-bottom: var(--space-10, 36px);
+}
+
+h2 {
+  font-size: var(--font-size-lg, 1.125rem);
+  font-weight: 600;
+  margin: 0 0 var(--space-4, 9px) 0;
+  color: var(--headerbar-fg-color, rgb(0 0 6 / 80%));
+}
+
+.demo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4, 9px);
+  align-items: center;
+  padding: var(--space-4, 9px);
+  background: var(--light-3, #deddda33);
+  border-radius: var(--radius-md, 6px);
+}
