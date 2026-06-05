@@ -505,11 +505,3 @@ checkbox group is basically syntax sugar (simple abstraction) and meaningless ac
 try plug in the old laptop and export
 
 ---
-
-reg a new tg i guess
-
-i guess i could update my number while reg a new one at the same time.
-
-i think i should reg new first. do not mess up w the past. on telegram it's easy to migrate.
-
----

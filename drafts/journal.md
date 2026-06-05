@@ -27137,6 +27137,16 @@ seems i have to use telegram web a on firefox android. damn.
 
 <!-- i could add app to homescreen though. -->
 
+08 00 reg a new tg account w an us number <!-- at about 1 usd on smspool, a public email from simplelogin forwarding to gmail, and telegram x -->.
+
+<!-- numbers in developing nations could not work generally. either banned or requiring sms fee. cheap us numbers are likely banned. -->
+
+i guess i would have to use the updated ayugram anyway, which "qr login" spoofing.
+
+<!-- set "delete my account if im away for" to 2 years (maximum). -->
+
+08 40 try to downgrade ayugram. 09 20 give up.
+
 
 
 <!-- timebox, plan. -->
