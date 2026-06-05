@@ -1,23 +1,20 @@
-import React from 'react'
+import * as BaseUI from '@base-ui/react'
 import './Switch.css'
 
-type SwitchProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'> & {
+type SwitchProps = React.ComponentProps<typeof BaseUI.Switch.Root> & {
   checked?: boolean
   onCheckedChange?: (checked: boolean) => void
 }
 
 function Switch({ className, checked, onCheckedChange, ...props }: SwitchProps) {
   return (
-    <span className={['Switch', className].filter(Boolean).join(' ')}>
-      <input
-        type="checkbox"
-        className="Switch_input"
-        checked={checked}
-        onChange={(e) => onCheckedChange?.(e.target.checked)}
-        {...props}
-      />
-      <span className="Switch_thumb" />
-    </span>
+    <BaseUI.Switch.Root
+      className={['Switch', className].filter(Boolean).join(' ')}
+      checked={checked}
+      onCheckedChange={onCheckedChange}
+    >
+      <BaseUI.Switch.Thumb className="Switch_thumb" />
+    </BaseUI.Switch.Root>
   )
 }
 

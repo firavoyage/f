@@ -174,7 +174,7 @@ function App() {
           <div className="row">
             <Tooltip.Root>
               <Tooltip.Trigger>
-                <Button>hover me</Button>
+                hover me
               </Tooltip.Trigger>
               <Tooltip.Popup>
                 helpful tip

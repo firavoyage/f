@@ -1,10 +1,10 @@
-import React from 'react'
+import * as BaseUI from '@base-ui/react'
 import './Input.css'
 
 type InputType = 'text' | 'email' | 'password' | 'search' | 'tel' | 'url'
 type InputSize = 'small' | 'medium' | 'large'
 
-type InputProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'type'> & {
+type InputProps = React.ComponentProps<typeof BaseUI.Input> & {
   type?: InputType
   size?: InputSize
 }
@@ -16,7 +16,7 @@ function Input({
   ...props
 }: InputProps) {
   return (
-    <input
+    <BaseUI.Input
       type={type}
       className={['Input', className].filter(Boolean).join(' ')}
       data-size={size}

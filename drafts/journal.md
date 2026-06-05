@@ -27147,6 +27147,24 @@ i guess i would have to use the updated ayugram anyway, which "qr login" spoofin
 
 08 40 try to downgrade ayugram. 09 20 give up.
 
+22 20 dl project sekai res.
+
+22 40 refuse the repetitive insane request on the sharpness of the photo proof of the phone id for the gov coupon.
+
+"school, company" 
+
+"impossible to possible"
+
+23 40 think.
+
+> you must not init package json. just install all deps on the same repo.
+
+do i really have to set this?
+
+23 20 dl `Yoshida Yasei`. try to dl `utata p`.
+
+<!-- seems utata p does not have an official yt music channel. -->
+
 
 
 <!-- timebox, plan. -->

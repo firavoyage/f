@@ -13,6 +13,25 @@ yt-dlp \
   -o "_/Iyowa/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
 ```
 
+utata p
+
+```sh
+yt-dlp \
+  "https://www.youtube.com/watch?v=Akuf1xwtwO8&list=PLxql1D5TUSk-Go08bhl_S-Dp7WAkGWRkT" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  --match-filters "view_count > 100000" \
+  -o "_/utata p/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
+```
+
+Yoshida Yasei
+
+```sh
+yt-dlp \
+  "https://music.youtube.com/playlist?list=OLAK5uy_mxhlXRrGngL-xKF9HeHTAqfZL2dEB6O_4" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  -o "_/Yoshida Yasei/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
+```
+
 kaf
 
 ```sh
