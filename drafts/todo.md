@@ -71,11 +71,11 @@ humility: export, reproduce, copy and paste the prompt & result, proxy.
 ---
 
 precious, [5/2/26 3:16 PM]
-Manus? 
+Manus?
 
-(Interactive) Components. 
+(Interactive) Components.
 
-Separate style from functionality? 
+Separate style from functionality?
 
 ---
 
@@ -85,13 +85,13 @@ Para?
 
 Para. <!-- blog -->
 
-Get where you are from the url. 
+Get where you are from the url.
 
-Get the pref, like lang, dark mode. 
+Get the pref, like lang, dark mode.
 
-Now you know the data and the config. 
+Now you know the data and the config.
 
-Fetch the data. 
+Fetch the data.
 
 You can be static, server side, or client side
 
@@ -113,7 +113,7 @@ why vscode is bad:
 
 ---
 
-Have. 
+Have.
 
 Make sure you have enough space and export all tg chats one by one. (I can help with some automation).
 
@@ -135,7 +135,7 @@ lib adwaita on web.
 
 ...
 
-I want to find some design. If I like I can further go to the figma. 
+I want to find some design. If I like I can further go to the figma.
 
 Also, component lib.
 
@@ -160,19 +160,19 @@ research: gemini. (lagrange)
 ---
 
 precious, [5/2/26 5:59 PM]
-V. 
+V.
 
 Write a git ignore before anything.
 
 For each step it will init if needed.
 
-Save. A state. You can give it a name. 
+Save. A state. You can give it a name.
 
-Remove. A state from history, forever. 
+Remove. A state from history, forever.
 
 Restore a state. Or export it to a path.
 
-List all states. Paired w export, you can have a list of folders of all past states. I could symlink the same files. 
+List all states. Paired w export, you can have a list of folders of all past states. I could symlink the same files.
 
 Sync. Push to a remote. Or all remotes. It will do best effort. Error can be network, permission/constraint, or others, like secret key. It will also pull then. If conflict it will convert to a pr. And if forced it will merge everything with local files of higher priority.
 
@@ -182,19 +182,19 @@ On collaboration/contribution, pr is not git builtin. I will have a dedicated hi
 
 I suppose when you clone, git does this:
 
-Fetch the metadata. Dl every file with wget continuously in parallel. Apply to fs. 
+Fetch the metadata. Dl every file with wget continuously in parallel. Apply to fs.
 
 Though it's old and might not be what I've expected. e.g. idk how it handles incompatible filenames.
 
-By default if you dont give an id (primary key meme from cyannyan) it will generate an uuid and tell you. 
+By default if you dont give an id (primary key meme from cyannyan) it will generate an uuid and tell you.
 
-About commit msg. It's your resp. 
+About commit msg. It's your resp.
 
-Likely another yaml. 
+Likely another yaml.
 
-It can auto save every sec or file change event (make sure you dont put secrets anywhere). But only some would be mapped w a dedicated msg. Others are for time machine. 
+It can auto save every sec or file change event (make sure you dont put secrets anywhere). But only some would be mapped w a dedicated msg. Others are for time machine.
 
-I would use a flexible change dot md as always in my style. 
+I would use a flexible change dot md as always in my style.
 
 Btw, how to v a pre existing folder w another separate git?
 
@@ -372,6 +372,10 @@ activitypub to something.
 
 ---
 
+semantic search
+
+---
+
 libadwaita in react. only use prop, state, and effect (limit to like event listener and interval) for porting compatibility.
 
 ---
@@ -430,7 +434,7 @@ think what the app would look like. an example empty gnome builder app first.
 
 ---
 
-define design tokens. 
+define design tokens.
 
 define component library.
 
@@ -470,7 +474,7 @@ base ui components
 
 components on code settings page
 
-props. states. 
+props. states.
 
 input (search)
 
@@ -481,6 +485,10 @@ dropdown
 hover info
 
 filter icon on the right of the input bar <!-- inconsistent. it uses md3 dropdown instead of vscode one (default component, dracula color). -->
+
+---
+
+try plug in the old laptop and export something
 
 ---
 
@@ -499,9 +507,5 @@ read base ui, coss ui, mui. <!-- chakra? mantine? too much. -->
 checkbox is good.
 
 checkbox group is basically syntax sugar (simple abstraction) and meaningless accessibility.
-
----
-
-try plug in the old laptop and export
 
 ---
