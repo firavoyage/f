@@ -27179,6 +27179,14 @@ i guess i would write instead of refactor or fix.
 
 declarative > imperative.
 
+02 00 think.
+
+Try login on web.
+
+Or not? 
+
+Telegram, despite generous indefinite cloud storage, is not designed for permanent preservation.
+
 
 
 <!-- timebox, plan. -->
