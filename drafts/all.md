@@ -151,6 +151,7 @@ archi:
 - over generalization opencode markdown export code block backticks
 - json yaml toml xml syntax
 - yaml indentation flexible resilient parser
+- telegram fat clients versus smart backends security through obscurity
 
 frontend: <!-- web -->
 
