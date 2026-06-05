@@ -684,3 +684,74 @@ If you are having trouble receiving your login code on the new phone, let me kno
 
 Show all
 
+
+# what will happen if i change my phone number on telegram
+
+3:59 PM
+
+When you change your phone number on Telegram, <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">your account data moves to the new number automatically</mark>. You will not lose your chats. \[[1](https://www.makeuseof.com/tag/useful-telegram-features/), [2](https://www.airdroid.com/parent-control/does-telegram-show-phone-number/)]
+
+Here is exactly what happens during the transition:
+
+### What You Keep
+
+- **Chats and Media:** All private chats, secret chats, groups, and channels remain intact.
+- **Cloud Data:** Your saved messages, photos, videos, and files stay in your account.
+- **Contacts:** Your current Telegram contacts will automatically get your new number.
+- **Settings:** Your privacy configurations, notification preferences, and themes do not change. \[[1](https://telegram.org/blog/telegram-me-change-number-and-pfs), [2](https://www.airdroid.com/parent-control/does-telegram-show-phone-number/), [3](https://telegram.org/privacy/gb), [4](https://telegram.org/privacy/eu), [5](https://telegram.org/blog/telegram-me-change-number-and-pfs)]
+
+### What Changes
+
+- **Mutual Contacts:** People who have your old number saved in their phone book will see your new number.
+- **Blocked Users:** Anyone you blocked on your old number stays blocked on the new one.
+- **Login Method:** You must use your new phone number to log into Telegram in the future. \[[1](https://telegram.org/blog/telegram-me-change-number-and-pfs), [2](https://nordvpn.com/blog/delete-telegram-account/), [3](https://www.cashify.in/how-to-permanently-delete-telegram-account-using-android-iphone-or-pc)]
+
+### Crucial Steps Before Changing
+
+- **Keep the SIM Active:** You must be able to receive an SMS text on the new number to verify it.
+- **Update Other Apps:** Changing Telegram does not change your number on WhatsApp or Signal.
+- **Notify Non-Contacts:** People who chat with you but do not have you saved as a contact will not see the update.
+
+To help you secure your account, let me know if you would like me to explain how to **set up Two-Step Verification** or how to **hide your new number** from strangers.
+
+- [link](https://www.makeuseof.com/tag/useful-telegram-features/)\
+  12 Useful Telegram Features You Should Be Using If You Aren't Already\
+  Then choose Change Number and follow the instructions. This will move all messages, clients, and media to your new mobile number. ...\
+  \
+  \
+  MakeUseOf
+- [link](https://www.airdroid.com/parent-control/does-telegram-show-phone-number/)\
+  Does Telegram Show Your Phone Number? (2025 Privacy Guide)\
+  After changing your number on Telegram, you do not lose anything, including all your contacts, messages, and media, which have bee...\
+  \
+  \
+  AirDroid
+- [link](https://telegram.org/blog/telegram-me-change-number-and-pfs)\
+  Telegram.me, Changing Numbers and PFS\
+  But what if you need to change the phone number itself? As of today, you can change your number in Telegram — and keep everything,\
+  \
+  \
+  Telegram Messenger
+
+Show all
+
+## You said: will i be logged out on other devices
+
+4:11 PM
+
+No, you will not be logged out on your other devices when you change your phone number.
+
+Telegram automatically syncs the update across all active sessions.
+
+### What to Expect Across Devices
+
+- **Instant Update:** Your laptop, tablet, and desktop apps will update immediately.
+- **No Disconnection:** Your active sessions remain securely logged in during the switch.
+- **Simultaneous Change:** You will see the new number reflected in the settings of all devices at once.
+
+### Important Safety Exceptions
+
+- **Manual Logouts:** If you manually choose to "Terminate all other sessions," you will be logged out.
+- **Re-installation:** If you delete the app on a secondary device, you will need the new number to log back in.
+
+If you are worried about privacy during this change, I can show you how to **check your active sessions** for unauthorized devices or how to **force log out** of old devices you no longer use.
