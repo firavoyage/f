@@ -1,0 +1,25 @@
+[     187ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:3001/components.1f35c4f0.js:24511
+[     220ms] [LOG] BaseUI: {Accordion: undefined, AlertDialog: undefined, Autocomplete: undefined, Avatar: undefined, Button: undefined} @ http://localhost:3001/components.1f35c4f0.js:29233
+[     221ms] [LOG] Button: {$$typeof: Symbol(react.forward_ref), render: , displayName: undefined} @ http://localhost:3001/components.1f35c4f0.js:29234
+[     239ms] [ERROR] Warning: You provided a `value` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultValue`. Otherwise, set either `onChange` or `readOnly`.%s 
+    at input
+    at div
+    at div
+    at Slider (http://localhost:3001/components.1f35c4f0.js:28393:19)
+    at div
+    at div
+    at section
+    at div
+    at App (http://localhost:3001/components.1f35c4f0.js:25015:57) @ http://localhost:3001/components.1f35c4f0.js:27023
+[   23529ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:3001/components.1f35c4f0.js:24510
+[   23553ms] [ERROR] Warning: You provided a `value` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultValue`. Otherwise, set either `onChange` or `readOnly`.%s 
+    at input
+    at div
+    at div
+    at Slider (http://localhost:3001/components.1f35c4f0.js:28392:19)
+    at div
+    at div
+    at section
+    at div
+    at App (http://localhost:3001/components.1f35c4f0.js:25014:57) @ http://localhost:3001/components.1f35c4f0.js:27022
+[   51793ms] [WARNING] [parcel] 🚨 Connection to the HMR server was lost @ http://localhost:3001/components.1f35c4f0.js:356

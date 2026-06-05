@@ -1,11 +1,11 @@
-import React from 'react'
+import * as BaseUI from '@base-ui/react'
 import './Button.css'
 
 type ButtonVariant = 'primary' | 'secondary' | 'flat' | 'destructive'
 type ButtonSize = 'small' | 'medium' | 'large'
 type ButtonShape = 'rounded' | 'pill'
 
-type ButtonProps = Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'size'> & {
+type ButtonProps = React.ComponentProps<typeof BaseUI.Button> & {
   variant?: ButtonVariant
   size?: ButtonSize
   shape?: ButtonShape
@@ -20,7 +20,7 @@ function Button({
   ...props
 }: ButtonProps) {
   return (
-    <button
+    <BaseUI.Button
       className={['Button', className].filter(Boolean).join(' ')}
       data-variant={variant}
       data-size={size}
@@ -28,7 +28,7 @@ function Button({
       {...props}
     >
       {children}
-    </button>
+    </BaseUI.Button>
   )
 }
 

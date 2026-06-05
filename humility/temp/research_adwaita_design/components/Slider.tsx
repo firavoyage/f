@@ -1,53 +1,44 @@
-import React, { useMemo } from 'react'
+import * as BaseUI from '@base-ui/react'
 import './Slider.css'
 
-type SliderProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> & {
+type SliderProps = React.ComponentProps<typeof BaseUI.Slider.Root> & {
   showValue?: boolean
-  defaultValue?: number
 }
 
 function Slider({
   className,
   showValue,
   value,
-  defaultValue,
+  defaultValue = 0,
   min = 0,
   max = 100,
   step = 1,
   onChange,
   ...props
 }: SliderProps) {
-  const isControlled = value !== undefined
-  const percentage = useMemo(
-    () => ((Number(value ?? defaultValue ?? 0) - Number(min)) / (Number(max) - Number(min))) * 100,
-    [value, defaultValue, min, max]
-  )
+  const displayValue = value ?? defaultValue
 
   return (
     <div className={['Slider', className].filter(Boolean).join(' ')}>
-      <div className="Slider_track">
-        <div
-          className="Slider_indicator"
-          style={{ width: `${percentage}%` }}
-        />
-        <input
-          type="range"
-          className="Slider_input"
-          value={value ?? defaultValue}
-          min={min}
-          max={max}
-          step={step}
-          onChange={onChange}
-          {...props}
-          readOnly={isControlled && !onChange}
-        />
-        <div
-          className="Slider_thumb"
-          style={{ left: `${percentage}%` }}
-        />
-      </div>
+      <BaseUI.Slider.Root
+        className="Slider_input"
+        value={value !== undefined ? [value] : undefined}
+        defaultValue={defaultValue !== undefined ? [defaultValue] : undefined}
+        min={min}
+        max={max}
+        step={step}
+        onValueChange={(details) => {
+          onChange?.(details.value[0] as unknown as React.ChangeEvent<HTMLInputElement>)
+        }}
+        {...props}
+      >
+        <BaseUI.Slider.Control className="Slider_track">
+          <BaseUI.Slider.Track className="Slider_indicator" />
+          <BaseUI.Slider.Thumb index={0} className="Slider_thumb" />
+        </BaseUI.Slider.Control>
+      </BaseUI.Slider.Root>
       {showValue && (
-        <span className="Slider_value">{value ?? defaultValue}</span>
+        <span className="Slider_value">{displayValue}</span>
       )}
     </div>
   )

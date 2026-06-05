@@ -187,6 +187,7 @@ frontend: <!-- web -->
 - design tokens css variables
 - css variables nesting baseline parceljs auto convert
 - eslint no undefined null
+- keyboard lib
 
 backend:
 
@@ -263,6 +264,7 @@ agent: <!-- ai/ml -->
 - claude skills
 - semantic search
 - opencode build mode plan mode
+- spec driven dev
 
 cp: <!-- algorithms -->
 
@@ -402,6 +404,7 @@ float: <!-- music -->
 - interpret ruma kairiki bear
 - interpret shippaisaku shoujo kairiki bear
 - interpret shiawase ni nareru kakushi command ga arurashii utata p
+- interpret flowers snow and drum n bass
 
 philosophy:
 

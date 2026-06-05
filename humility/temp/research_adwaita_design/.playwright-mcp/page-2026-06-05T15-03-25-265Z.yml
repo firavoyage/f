@@ -1,0 +1,105 @@
+- generic [ref=e3]:
+  - heading "Adwaita Atom Components" [level=1] [ref=e4]
+  - generic [ref=e5]:
+    - heading "Button" [level=2] [ref=e6]
+    - generic [ref=e7]:
+      - generic [ref=e8]:
+        - generic [ref=e9]: primary
+        - button "Save Changes" [ref=e10] [cursor=pointer]
+        - button "Small" [ref=e11] [cursor=pointer]
+        - button "Large" [ref=e12] [cursor=pointer]
+      - generic [ref=e13]:
+        - generic [ref=e14]: secondary
+        - button "Cancel" [ref=e15] [cursor=pointer]
+        - button "Pill" [ref=e16] [cursor=pointer]
+      - generic [ref=e17]:
+        - generic [ref=e18]: flat
+        - button "Flat Button" [ref=e19] [cursor=pointer]
+      - generic [ref=e20]:
+        - generic [ref=e21]: destructive
+        - button "Delete" [ref=e22] [cursor=pointer]
+      - generic [ref=e23]:
+        - generic [ref=e24]: disabled
+        - button "Disabled" [disabled]
+  - generic [ref=e25]:
+    - heading "Checkbox" [level=2] [ref=e26]
+    - generic [ref=e27]:
+      - generic [ref=e28]:
+        - checkbox [ref=e29]
+        - checkbox [ref=e30]
+        - generic [ref=e31]: unchecked
+      - generic [ref=e32]:
+        - checkbox [checked] [ref=e33]:
+          - img [ref=e35]
+        - checkbox [checked] [ref=e37]
+        - generic [ref=e38]: checked
+      - generic [ref=e39]:
+        - checkbox [ref=e40]
+        - checkbox [ref=e41]
+  - generic [ref=e42]:
+    - heading "Input" [level=2] [ref=e43]
+    - generic [ref=e44]:
+      - textbox "enter text" [ref=e46]
+      - textbox "small" [ref=e48]
+      - textbox "large" [ref=e50]
+      - textbox "disabled" [disabled] [ref=e52]
+  - generic [ref=e53]:
+    - heading "Switch" [level=2] [ref=e54]
+    - generic [ref=e55]:
+      - generic [ref=e56]:
+        - switch [ref=e57]
+        - checkbox [ref=e59]
+        - generic [ref=e60]: "off"
+      - generic [ref=e61]:
+        - switch [checked] [ref=e62]
+        - checkbox [checked] [ref=e64]
+        - generic [ref=e65]: "on"
+      - generic [ref=e66]:
+        - switch [ref=e67]
+        - checkbox [ref=e69]
+        - generic [ref=e70]: disabled
+  - generic [ref=e71]:
+    - heading "Slider" [level=2] [ref=e72]
+    - generic [ref=e73]:
+      - group [ref=e74] [cursor=pointer]:
+        - generic [ref=e75]:
+          - generic:
+            - slider: "50"
+      - generic [ref=e77]:
+        - group [ref=e78] [cursor=pointer]:
+          - generic [ref=e79]:
+            - generic:
+              - slider: "50"
+        - generic [ref=e80]: "50"
+      - group [ref=e81] [cursor=pointer]:
+        - generic [ref=e82]:
+          - generic:
+            - slider: "25"
+  - generic [ref=e83]:
+    - heading "Select" [level=2] [ref=e84]
+    - generic [ref=e86]:
+      - combobox [ref=e88] [cursor=pointer]:
+        - generic [ref=e89]: choose option
+        - img [ref=e91]
+      - textbox [ref=e93]
+  - generic [ref=e94]:
+    - heading "NumberField" [level=2] [ref=e95]
+    - generic [ref=e97]:
+      - generic [ref=e99]:
+        - textbox [ref=e100]: "42"
+        - button "Decrease" [ref=e101] [cursor=pointer]:
+          - img [ref=e102]
+        - button "Increase" [ref=e104] [cursor=pointer]:
+          - img [ref=e105]
+      - spinbutton [ref=e107]: "42"
+  - generic [ref=e108]:
+    - heading "ScrollArea" [level=2] [ref=e109]
+    - generic [ref=e111]:
+      - paragraph [ref=e112]: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      - paragraph [ref=e113]: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      - paragraph [ref=e114]: Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+      - paragraph [ref=e115]: Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  - generic [ref=e116]:
+    - heading "Tooltip" [level=2] [ref=e117]
+    - button "hover me" [ref=e121]:
+      - button "hover me" [ref=e122] [cursor=pointer]

@@ -1,45 +1,18 @@
-import React, { createContext, useContext, useState, useRef, useEffect } from 'react'
+import * as BaseUI from '@base-ui/react'
 import './Tooltip.css'
-
-type TooltipContextValue = {
-  open: boolean
-  setOpen: (open: boolean) => void
-}
-
-const TooltipContext = createContext<TooltipContextValue | null>(null)
-
-function useTooltipContext() {
-  const ctx = useContext(TooltipContext)
-  if (!ctx) throw new Error('Tooltip components must be used within Tooltip.Root')
-  return ctx
-}
 
 type RootProps = {
   delay?: number
   children: React.ReactNode
 }
 
-function Root({ delay = 300, children }: RootProps) {
-  const [open, setOpen] = useState(false)
-  const timeoutRef = useRef<number>()
-
-  const handleMouseEnter = () => {
-    timeoutRef.current = window.setTimeout(() => setOpen(true), delay)
-  }
-
-  const handleMouseLeave = () => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current)
-    }
-    setOpen(false)
-  }
-
+function Root({ children }: RootProps) {
   return (
-    <TooltipContext.Provider value={{ open, setOpen }}>
-      <div className="Tooltip" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    <BaseUI.Tooltip.Root delay={300}>
+      <div className="Tooltip">
         {children}
       </div>
-    </TooltipContext.Provider>
+    </BaseUI.Tooltip.Root>
   )
 }
 
@@ -50,9 +23,9 @@ type TriggerProps = {
 
 function Trigger({ className, children }: TriggerProps) {
   return (
-    <div className={['Tooltip_trigger', className].filter(Boolean).join(' ')}>
+    <BaseUI.Tooltip.Trigger className={['Tooltip_trigger', className].filter(Boolean).join(' ')}>
       {children}
-    </div>
+    </BaseUI.Tooltip.Trigger>
   )
 }
 
@@ -62,31 +35,18 @@ type PopupProps = {
 }
 
 function Popup({ className, children }: PopupProps) {
-  const { open } = useTooltipContext()
-
-  if (!open) return null
-
   return (
-    <div className={['Tooltip_popup', className].filter(Boolean).join(' ')}>
-      {children}
-    </div>
+    <BaseUI.Tooltip.Portal>
+      <BaseUI.Tooltip.Positioner sideOffset={8}>
+        <BaseUI.Tooltip.Popup className={['Tooltip_popup', className].filter(Boolean).join(' ')}>
+          {children}
+        </BaseUI.Tooltip.Popup>
+      </BaseUI.Tooltip.Positioner>
+    </BaseUI.Tooltip.Portal>
   )
 }
 
-type PositionerProps = {
-  className?: string
-  children: React.ReactNode
-}
-
-function Positioner({ className, children }: PositionerProps) {
-  return (
-    <div className={['Tooltip_positioner', className].filter(Boolean).join(' ')}>
-      {children}
-    </div>
-  )
-}
-
-const Tooltip = { Root, Trigger, Popup, Positioner }
+const Tooltip = { Root, Trigger, Popup }
 
 export { Tooltip }
 export default Tooltip

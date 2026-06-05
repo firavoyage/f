@@ -1,4 +1,14 @@
-where are opencode (from pnpm -g) sessions stored
+# .
+
+```sh
+opencode session list # weirdly, it outputs a tui instead of text
+```
+
+```sh
+opencode export <session_id> > exp.md
+```
+
+# where are opencode (from pnpm -g) sessions stored
 
 By default, globally installed **`opencode`** session data and files are stored locally on your hard drive, depending on your operating system: \[[1](https://opencode.ai/docs/troubleshooting/)]
 
