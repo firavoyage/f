@@ -1,0 +1,306 @@
+[      85ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:41247/components.1f35c4f0.js:24510
+[     103ms] [ERROR] Warning: Unknown event handler property `%s`. It will be ignored.%s onCheckedChange 
+    at input
+    at span
+    at Checkbox (http://localhost:41247/components.1f35c4f0.js:28222:21)
+    at div
+    at div
+    at section
+    at div
+    at App (http://localhost:41247/components.1f35c4f0.js:25014:57) @ http://localhost:41247/components.1f35c4f0.js:27023
+[     104ms] [ERROR] Warning: You provided a `checked` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultChecked`. Otherwise, set either `onChange` or `readOnly`.%s 
+    at input
+    at span
+    at Checkbox (http://localhost:41247/components.1f35c4f0.js:28222:21)
+    at div
+    at div
+    at section
+    at div
+    at App (http://localhost:41247/components.1f35c4f0.js:25014:57) @ http://localhost:41247/components.1f35c4f0.js:27023
+[     106ms] [ERROR] Warning: You provided a `checked` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultChecked`. Otherwise, set either `onChange` or `readOnly`.%s 
+    at input
+    at span
+    at Checkbox (http://localhost:41247/components.1f35c4f0.js:28222:21)
+    at div
+    at div
+    at section
+    at div
+    at App (http://localhost:41247/components.1f35c4f0.js:25014:57) @ http://localhost:41247/components.1f35c4f0.js:27023
+[     109ms] [ERROR] Warning: You provided a `checked` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultChecked`. Otherwise, set either `onChange` or `readOnly`.%s 
+    at input
+    at span
+    at Switch (http://localhost:41247/components.1f35c4f0.js:28335:19)
+    at div
+    at div
+    at section
+    at div
+    at App (http://localhost:41247/components.1f35c4f0.js:25014:57) @ http://localhost:41247/components.1f35c4f0.js:27023
+[     111ms] [ERROR] Warning: You provided a `checked` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultChecked`. Otherwise, set either `onChange` or `readOnly`.%s 
+    at input
+    at span
+    at Switch (http://localhost:41247/components.1f35c4f0.js:28335:19)
+    at div
+    at div
+    at section
+    at div
+    at App (http://localhost:41247/components.1f35c4f0.js:25014:57) @ http://localhost:41247/components.1f35c4f0.js:27023
+[     113ms] [ERROR] Warning: You provided a `value` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultValue`. Otherwise, set either `onChange` or `readOnly`.%s 
+    at input
+    at div
+    at div
+    at Slider (http://localhost:41247/components.1f35c4f0.js:28392:19)
+    at div
+    at div
+    at section
+    at div
+    at App (http://localhost:41247/components.1f35c4f0.js:25014:57) @ http://localhost:41247/components.1f35c4f0.js:27023
+[     120ms] [ERROR] Warning: You provided a `checked` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultChecked`. Otherwise, set either `onChange` or `readOnly`.%s 
+    at input
+    at span
+    at Checkbox (http://localhost:41247/components.1f35c4f0.js:28222:21)
+    at div
+    at div
+    at section
+    at div
+    at App (http://localhost:41247/components.1f35c4f0.js:25014:57) @ http://localhost:41247/components.1f35c4f0.js:27023
+[     121ms] [ERROR] Warning: You provided a `checked` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultChecked`. Otherwise, set either `onChange` or `readOnly`.%s 
+    at input
+    at span
+    at Checkbox (http://localhost:41247/components.1f35c4f0.js:28222:21)
+    at div
+    at div
+    at section
+    at div
+    at App (http://localhost:41247/components.1f35c4f0.js:25014:57) @ http://localhost:41247/components.1f35c4f0.js:27023
+[     123ms] [ERROR] Warning: You provided a `checked` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultChecked`. Otherwise, set either `onChange` or `readOnly`.%s 
+    at input
+    at span
+    at Switch (http://localhost:41247/components.1f35c4f0.js:28335:19)
+    at div
+    at div
+    at section
+    at div
+    at App (http://localhost:41247/components.1f35c4f0.js:25014:57) @ http://localhost:41247/components.1f35c4f0.js:27023
+[     125ms] [ERROR] Warning: You provided a `checked` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultChecked`. Otherwise, set either `onChange` or `readOnly`.%s 
+    at input
+    at span
+    at Switch (http://localhost:41247/components.1f35c4f0.js:28335:19)
+    at div
+    at div
+    at section
+    at div
+    at App (http://localhost:41247/components.1f35c4f0.js:25014:57) @ http://localhost:41247/components.1f35c4f0.js:27023
+[     127ms] [ERROR] Warning: You provided a `value` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultValue`. Otherwise, set either `onChange` or `readOnly`.%s 
+    at input
+    at div
+    at div
+    at Slider (http://localhost:41247/components.1f35c4f0.js:28392:19)
+    at div
+    at div
+    at section
+    at div
+    at App (http://localhost:41247/components.1f35c4f0.js:25014:57) @ http://localhost:41247/components.1f35c4f0.js:27023
+[     132ms] [ERROR] The above error occurred in the <input> component:
+
+    at input
+    at span
+    at Checkbox (http://localhost:41247/components.1f35c4f0.js:28222:21)
+    at div
+    at div
+    at section
+    at div
+    at App (http://localhost:41247/components.1f35c4f0.js:25014:57)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ http://localhost:41247/components.1f35c4f0.js:27023
+[     133ms] Error: input is a void element tag and must neither have `children` nor use `dangerouslySetInnerHTML`.
+    at assertValidProps (http://localhost:41247/components.1f35c4f0.js:5788:88)
+    at setInitialProperties (http://localhost:41247/components.1f35c4f0.js:10892:9)
+    at finalizeInitialChildren (http://localhost:41247/components.1f35c4f0.js:11713:9)
+    at completeWork (http://localhost:41247/components.1f35c4f0.js:19559:29)
+    at completeUnitOfWork (http://localhost:41247/components.1f35c4f0.js:22459:28)
+    at performUnitOfWork (http://localhost:41247/components.1f35c4f0.js:22439:9)
+    at workLoopSync (http://localhost:41247/components.1f35c4f0.js:22377:39)
+    at renderRootSync (http://localhost:41247/components.1f35c4f0.js:22360:13)
+    at recoverFromConcurrentError (http://localhost:41247/components.1f35c4f0.js:21948:26)
+    at performConcurrentWorkOnRoot (http://localhost:41247/components.1f35c4f0.js:21868:34)
+    at workLoop (http://localhost:41247/components.1f35c4f0.js:24721:44)
+    at flushWork (http://localhost:41247/components.1f35c4f0.js:24703:20)
+    at MessagePort.performWorkUntilDeadline (http://localhost:41247/components.1f35c4f0.js:24907:31)
+[   26968ms] [ERROR] Warning: You provided a `checked` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultChecked`. Otherwise, set either `onChange` or `readOnly`.%s 
+    at input
+    at span
+    at Checkbox (http://localhost:41247/components.1f35c4f0.js:28222:21)
+    at div
+    at div
+    at section
+    at div
+    at App (/__parcel_hmr/15b84e3fff244ec7:27:57) @ http://localhost:41247/components.1f35c4f0.js:27023
+[   26973ms] [ERROR] Warning: You provided a `checked` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultChecked`. Otherwise, set either `onChange` or `readOnly`.%s 
+    at input
+    at span
+    at Checkbox (http://localhost:41247/components.1f35c4f0.js:28222:21)
+    at div
+    at div
+    at section
+    at div
+    at App (/__parcel_hmr/15b84e3fff244ec7:27:57) @ http://localhost:41247/components.1f35c4f0.js:27023
+[   26979ms] [ERROR] Warning: You provided a `checked` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultChecked`. Otherwise, set either `onChange` or `readOnly`.%s 
+    at input
+    at span
+    at Switch (http://localhost:41247/components.1f35c4f0.js:28335:19)
+    at div
+    at div
+    at section
+    at div
+    at App (/__parcel_hmr/15b84e3fff244ec7:27:57) @ http://localhost:41247/components.1f35c4f0.js:27023
+[   26984ms] [ERROR] Warning: You provided a `checked` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultChecked`. Otherwise, set either `onChange` or `readOnly`.%s 
+    at input
+    at span
+    at Switch (http://localhost:41247/components.1f35c4f0.js:28335:19)
+    at div
+    at div
+    at section
+    at div
+    at App (/__parcel_hmr/15b84e3fff244ec7:27:57) @ http://localhost:41247/components.1f35c4f0.js:27023
+[   26991ms] [ERROR] Warning: You provided a `value` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultValue`. Otherwise, set either `onChange` or `readOnly`.%s 
+    at input
+    at div
+    at div
+    at Slider (http://localhost:41247/components.1f35c4f0.js:28392:19)
+    at div
+    at div
+    at section
+    at div
+    at App (/__parcel_hmr/15b84e3fff244ec7:27:57) @ http://localhost:41247/components.1f35c4f0.js:27023
+[   27001ms] [ERROR] Warning: You provided a `checked` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultChecked`. Otherwise, set either `onChange` or `readOnly`.%s 
+    at input
+    at span
+    at Checkbox (http://localhost:41247/components.1f35c4f0.js:28222:21)
+    at div
+    at div
+    at section
+    at div
+    at App (/__parcel_hmr/15b84e3fff244ec7:27:57) @ http://localhost:41247/components.1f35c4f0.js:27023
+[   27003ms] [ERROR] Warning: You provided a `checked` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultChecked`. Otherwise, set either `onChange` or `readOnly`.%s 
+    at input
+    at span
+    at Checkbox (http://localhost:41247/components.1f35c4f0.js:28222:21)
+    at div
+    at div
+    at section
+    at div
+    at App (/__parcel_hmr/15b84e3fff244ec7:27:57) @ http://localhost:41247/components.1f35c4f0.js:27023
+[   27006ms] [ERROR] Warning: You provided a `checked` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultChecked`. Otherwise, set either `onChange` or `readOnly`.%s 
+    at input
+    at span
+    at Switch (http://localhost:41247/components.1f35c4f0.js:28335:19)
+    at div
+    at div
+    at section
+    at div
+    at App (/__parcel_hmr/15b84e3fff244ec7:27:57) @ http://localhost:41247/components.1f35c4f0.js:27023
+[   27007ms] [ERROR] Warning: You provided a `checked` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultChecked`. Otherwise, set either `onChange` or `readOnly`.%s 
+    at input
+    at span
+    at Switch (http://localhost:41247/components.1f35c4f0.js:28335:19)
+    at div
+    at div
+    at section
+    at div
+    at App (/__parcel_hmr/15b84e3fff244ec7:27:57) @ http://localhost:41247/components.1f35c4f0.js:27023
+[   27010ms] [ERROR] Warning: You provided a `value` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultValue`. Otherwise, set either `onChange` or `readOnly`.%s 
+    at input
+    at div
+    at div
+    at Slider (http://localhost:41247/components.1f35c4f0.js:28392:19)
+    at div
+    at div
+    at section
+    at div
+    at App (/__parcel_hmr/15b84e3fff244ec7:27:57) @ http://localhost:41247/components.1f35c4f0.js:27023
+[   27014ms] [ERROR] The above error occurred in the <input> component:
+
+    at input
+    at span
+    at Checkbox (http://localhost:41247/components.1f35c4f0.js:28222:21)
+    at div
+    at div
+    at section
+    at div
+    at App (/__parcel_hmr/15b84e3fff244ec7:27:57)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ http://localhost:41247/components.1f35c4f0.js:27023
+[   27020ms] Error: input is a void element tag and must neither have `children` nor use `dangerouslySetInnerHTML`.
+    at assertValidProps (http://localhost:41247/components.1f35c4f0.js:5788:88)
+    at setInitialProperties (http://localhost:41247/components.1f35c4f0.js:10892:9)
+    at finalizeInitialChildren (http://localhost:41247/components.1f35c4f0.js:11713:9)
+    at completeWork (http://localhost:41247/components.1f35c4f0.js:19559:29)
+    at completeUnitOfWork (http://localhost:41247/components.1f35c4f0.js:22459:28)
+    at performUnitOfWork (http://localhost:41247/components.1f35c4f0.js:22439:9)
+    at workLoopSync (http://localhost:41247/components.1f35c4f0.js:22377:39)
+    at renderRootSync (http://localhost:41247/components.1f35c4f0.js:22360:13)
+    at recoverFromConcurrentError (http://localhost:41247/components.1f35c4f0.js:21948:26)
+    at performSyncWorkOnRoot (http://localhost:41247/components.1f35c4f0.js:22109:30)
+    at flushSyncCallbacks (http://localhost:41247/components.1f35c4f0.js:12457:35)
+    at flushSync (http://localhost:41247/components.1f35c4f0.js:22189:85)
+    at Object.scheduleRoot (http://localhost:41247/components.1f35c4f0.js:23219:9)
+    at http://localhost:41247/components.1f35c4f0.js:26306:33
+    at Set.forEach (<anonymous>)
+    at exports.performReactRefresh (http://localhost:41247/components.1f35c4f0.js:26299:33)
+    at http://localhost:41247/components.1f35c4f0.js:25957:13
+    at http://localhost:41247/components.1f35c4f0.js:25944:22
+    at http://localhost:41247/components.1f35c4f0.js:26026:17
+    at http://localhost:41247/components.1f35c4f0.js:701:36
+    at Array.forEach (<anonymous>)
+    at hmrAccept (http://localhost:41247/components.1f35c4f0.js:700:37)
+    at handleMessage (http://localhost:41247/components.1f35c4f0.js:396:21)
+    at async ws.onmessage (http://localhost:41247/components.1f35c4f0.js:350:13)
+[   52755ms] [ERROR] Warning: You provided a `checked` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultChecked`. Otherwise, set either `onChange` or `readOnly`.%s 
+    at input
+    at span
+    at Checkbox (/__parcel_hmr/f53accdd8e8c40bf:15:21)
+    at div
+    at div
+    at section
+    at div
+    at App (/__parcel_hmr/15b84e3fff244ec7:27:57) @ http://localhost:41247/components.1f35c4f0.js:27023
+[   52757ms] [ERROR] Warning: You provided a `checked` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultChecked`. Otherwise, set either `onChange` or `readOnly`.%s 
+    at input
+    at span
+    at Checkbox (/__parcel_hmr/f53accdd8e8c40bf:15:21)
+    at div
+    at div
+    at section
+    at div
+    at App (/__parcel_hmr/15b84e3fff244ec7:27:57) @ http://localhost:41247/components.1f35c4f0.js:27023
+[   52761ms] [ERROR] Warning: You provided a `checked` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultChecked`. Otherwise, set either `onChange` or `readOnly`.%s 
+    at input
+    at span
+    at Switch (http://localhost:41247/components.1f35c4f0.js:28335:19)
+    at div
+    at div
+    at section
+    at div
+    at App (/__parcel_hmr/15b84e3fff244ec7:27:57) @ http://localhost:41247/components.1f35c4f0.js:27023
+[   52763ms] [ERROR] Warning: You provided a `checked` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultChecked`. Otherwise, set either `onChange` or `readOnly`.%s 
+    at input
+    at span
+    at Switch (http://localhost:41247/components.1f35c4f0.js:28335:19)
+    at div
+    at div
+    at section
+    at div
+    at App (/__parcel_hmr/15b84e3fff244ec7:27:57) @ http://localhost:41247/components.1f35c4f0.js:27023
+[   52766ms] [ERROR] Warning: You provided a `value` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultValue`. Otherwise, set either `onChange` or `readOnly`.%s 
+    at input
+    at div
+    at div
+    at Slider (http://localhost:41247/components.1f35c4f0.js:28392:19)
+    at div
+    at div
+    at section
+    at div
+    at App (/__parcel_hmr/15b84e3fff244ec7:27:57) @ http://localhost:41247/components.1f35c4f0.js:27023
+[   75033ms] [WARNING] [parcel] 🚨 Connection to the HMR server was lost @ http://localhost:41247/components.1f35c4f0.js:356

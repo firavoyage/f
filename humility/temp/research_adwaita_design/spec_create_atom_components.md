@@ -12,8 +12,6 @@ create a web component library with these atoms:
 - switch
 - tooltip
 
-each component should follow the style guide from todo_create_atom_components.
-
 ---
 
 ## button
@@ -74,7 +72,6 @@ anatomy:
 props:
 
 - checked: `boolean`
-- indeterminate: `boolean`
 - state: `default` | `disabled` | `readonly` | `required` | `focused`
 
 example:
@@ -82,6 +79,10 @@ example:
 ```jsx
 <Checkbox checked={false}>agree to terms</Checkbox>
 ```
+
+note:
+
+avoid handler boilerplate. pass rest props down to baseui, like `onCheckedChange={setChecked}`. no need to handle it explicitly.
 
 ---
 
@@ -184,6 +185,8 @@ look:
        └───┘
 ```
 
+number, decrease, increase.
+
 anatomy:
 
 - root: wrapper div
@@ -282,7 +285,6 @@ props:
 - min: `number`
 - max: `number`
 - step: `number`
-- orientation: `horizontal` | `vertical`
 - state: `default` | `disabled` | `dragging` | `focused`
 - multiple: `boolean` (for range selection)
 
@@ -356,8 +358,6 @@ anatomy:
 
 props:
 
-- side: `top` | `bottom` | `left` | `right`
-- align: `start` | `center` | `end`
 - delay: `number` (ms before showing)
 - state: `open` | `closed` | `disabled`
 

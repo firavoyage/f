@@ -1,0 +1,48 @@
+[     102ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:41507/components.1f35c4f0.js:24510
+[     121ms] [ERROR] Warning: You provided a `checked` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultChecked`. Otherwise, set either `onChange` or `readOnly`.%s 
+    at input
+    at span
+    at Checkbox (http://localhost:41507/components.1f35c4f0.js:28221:21)
+    at div
+    at div
+    at section
+    at div
+    at App (http://localhost:41507/components.1f35c4f0.js:25014:57) @ http://localhost:41507/components.1f35c4f0.js:27022
+[     124ms] [ERROR] Warning: You provided a `checked` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultChecked`. Otherwise, set either `onChange` or `readOnly`.%s 
+    at input
+    at span
+    at Checkbox (http://localhost:41507/components.1f35c4f0.js:28221:21)
+    at div
+    at div
+    at section
+    at div
+    at App (http://localhost:41507/components.1f35c4f0.js:25014:57) @ http://localhost:41507/components.1f35c4f0.js:27022
+[     128ms] [ERROR] Warning: You provided a `checked` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultChecked`. Otherwise, set either `onChange` or `readOnly`.%s 
+    at input
+    at span
+    at Switch (http://localhost:41507/components.1f35c4f0.js:28335:19)
+    at div
+    at div
+    at section
+    at div
+    at App (http://localhost:41507/components.1f35c4f0.js:25014:57) @ http://localhost:41507/components.1f35c4f0.js:27022
+[     129ms] [ERROR] Warning: You provided a `checked` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultChecked`. Otherwise, set either `onChange` or `readOnly`.%s 
+    at input
+    at span
+    at Switch (http://localhost:41507/components.1f35c4f0.js:28335:19)
+    at div
+    at div
+    at section
+    at div
+    at App (http://localhost:41507/components.1f35c4f0.js:25014:57) @ http://localhost:41507/components.1f35c4f0.js:27022
+[     133ms] [ERROR] Warning: You provided a `value` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultValue`. Otherwise, set either `onChange` or `readOnly`.%s 
+    at input
+    at div
+    at div
+    at Slider (http://localhost:41507/components.1f35c4f0.js:28393:19)
+    at div
+    at div
+    at section
+    at div
+    at App (http://localhost:41507/components.1f35c4f0.js:25014:57) @ http://localhost:41507/components.1f35c4f0.js:27022
+[   22382ms] [WARNING] [parcel] 🚨 Connection to the HMR server was lost @ http://localhost:41507/components.1f35c4f0.js:356

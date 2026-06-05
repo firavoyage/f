@@ -27,3 +27,16 @@ According to architectural structures mapped out by [Material Design 3](https://
 1. **Primitive / Global Tokens**: The raw foundations of your system. They define flat options, mapping a hard value directly to a literal name (e.g., `color-blue-500: #0055ff` or `spacing-4: 16px`). They are strictly used for reference and are not applied directly to UI elements.
 2. **Semantic / Alias Tokens**: These assign design meaning and intent to primitive tokens. Instead of pointing to a hex code, they alias a primitive token (e.g., `color-text-primary` points to `color-gray-900`). This allows you to completely swap themes (like light mode to dark mode) by simply redirecting the primitive values assigned to the semantic keys.
 3. **Component Tokens**: These are tied to highly specific UI components. They isolate a component's stylistic choices so changes do not break other elements (e.g., `comp-button-primary-bg` maps to `color-bg-brand`).
+
+# 0.1
+
+design tokens can include
+
+- **Color**: Brand palettes, semantic fills (success, error, warning), backgrounds, text colors, and borders.
+- **Spacing**: Paddings, margins, grid gaps, and layout separations, often organized into modular scales.
+- **Typography**: Font families, font weights, font sizes, line heights, and letter spacing.
+- **Borders**: Border thickness, border styles, and corner/border radii.
+- **Elevation & Shadows**: Box shadows, blur values, offsets, and surface layering levels.
+- **Motion**: Animation curves, easing profiles, and transition durations.
+- **Opacity**: Alpha transparency values for overlays, disabled states, or masked layers.
+- **Breakpoints**: Responsive screen-width dimensions for layout transitions.
