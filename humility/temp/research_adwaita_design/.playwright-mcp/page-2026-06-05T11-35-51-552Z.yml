@@ -1,0 +1,85 @@
+- generic [ref=e3]:
+  - heading "Adwaita Atom Components" [level=1] [ref=e4]
+  - generic [ref=e5]:
+    - heading "Button" [level=2] [ref=e6]
+    - generic [ref=e7]:
+      - generic [ref=e8]:
+        - generic [ref=e9]: primary
+        - button "Save Changes" [ref=e10] [cursor=pointer]
+        - button "Small" [ref=e11] [cursor=pointer]
+        - button "Large" [ref=e12] [cursor=pointer]
+      - generic [ref=e13]:
+        - generic [ref=e14]: secondary
+        - button "Cancel" [ref=e15] [cursor=pointer]
+        - button "Pill" [ref=e16] [cursor=pointer]
+      - generic [ref=e17]:
+        - generic [ref=e18]: flat
+        - button "Flat Button" [ref=e19] [cursor=pointer]
+      - generic [ref=e20]:
+        - generic [ref=e21]: destructive
+        - button "Delete" [ref=e22] [cursor=pointer]
+      - generic [ref=e23]:
+        - generic [ref=e24]: disabled
+        - button "Disabled" [disabled]
+  - generic [ref=e25]:
+    - heading "Checkbox" [level=2] [ref=e26]
+    - generic [ref=e27]:
+      - generic [ref=e28]:
+        - checkbox [ref=e30] [cursor=pointer]
+        - generic [ref=e32]: unchecked
+      - generic [ref=e33]:
+        - generic [ref=e34]:
+          - checkbox [checked] [ref=e35] [cursor=pointer]
+          - img [ref=e37]
+        - generic [ref=e39]: checked
+      - checkbox [disabled] [ref=e42] [cursor=pointer]
+  - generic [ref=e44]:
+    - heading "Input" [level=2] [ref=e45]
+    - generic [ref=e46]:
+      - textbox "enter text" [ref=e48]
+      - textbox "small" [ref=e50]
+      - textbox "large" [ref=e52]
+      - textbox "disabled" [disabled] [ref=e54]
+  - generic [ref=e55]:
+    - heading "Switch" [level=2] [ref=e56]
+    - generic [ref=e57]:
+      - generic [ref=e58]:
+        - checkbox [ref=e60] [cursor=pointer]
+        - generic [ref=e62]: "off"
+      - generic [ref=e63]:
+        - checkbox [checked] [ref=e65] [cursor=pointer]
+        - generic [ref=e67]: "on"
+      - generic [ref=e68]:
+        - checkbox [disabled] [ref=e70] [cursor=pointer]
+        - generic [ref=e72]: disabled
+  - generic [ref=e73]:
+    - heading "Slider" [level=2] [ref=e74]
+    - generic [ref=e75]:
+      - slider [ref=e79] [cursor=pointer]: "50"
+      - generic [ref=e81]:
+        - slider [ref=e83] [cursor=pointer]: "50"
+        - generic [ref=e84]: "50"
+      - slider [ref=e88] [cursor=pointer]: "25"
+  - generic [ref=e89]:
+    - heading "Select" [level=2] [ref=e90]
+    - button "choose option" [ref=e94] [cursor=pointer]:
+      - generic [ref=e95]: choose option
+      - img [ref=e97]
+  - generic [ref=e99]:
+    - heading "NumberField" [level=2] [ref=e100]
+    - generic [ref=e103]:
+      - spinbutton [ref=e104]: "42"
+      - button [ref=e105] [cursor=pointer]:
+        - img [ref=e106]
+      - button [ref=e108] [cursor=pointer]:
+        - img [ref=e109]
+  - generic [ref=e111]:
+    - heading "ScrollArea" [level=2] [ref=e112]
+    - generic [ref=e116]:
+      - paragraph [ref=e117]: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      - paragraph [ref=e118]: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      - paragraph [ref=e119]: Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+      - paragraph [ref=e120]: Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  - generic [ref=e121]:
+    - heading "Tooltip" [level=2] [ref=e122]
+    - button "hover me" [ref=e127] [cursor=pointer]

@@ -1,0 +1,47 @@
+.Switch {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  width: 36px;
+  height: 20px;
+}
+
+.Switch_input {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.Switch_thumb {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: 2px;
+  border-radius: var(--radius-full);
+  background-color: var(--light-3);
+  border: 1px solid var(--btn-border);
+  transition: transform var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+}
+
+.Switch_input:checked + .Switch_thumb {
+  transform: translateX(16px);
+  background-color: var(--accent-bg-color);
+  border-color: var(--accent-bg-color);
+}
+
+.Switch_input:disabled + .Switch_thumb {
+  opacity: var(--disabled-opacity);
+  cursor: not-allowed;
+}
+
+.Switch_input:focus-visible + .Switch_thumb {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+
+.Switch_input:hover:not(:disabled) + .Switch_thumb {
+  border-color: var(--accent-blue);
+}
