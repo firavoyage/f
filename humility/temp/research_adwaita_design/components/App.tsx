@@ -2,15 +2,15 @@ import React, { useState } from 'react'
 import '../adwaita.css'
 import './App.css'
 
-import { Button } from './button'
-import { Checkbox } from './checkbox'
-import { Input } from './input'
-import { Switch } from './switch'
-import { Slider } from './slider'
-import { Select } from './select'
-import { NumberField } from './number_field'
-import { ScrollArea } from './scroll_area'
-import { Tooltip } from './tooltip'
+import { Button } from './Button'
+import { Checkbox } from './Checkbox'
+import { Input } from './Input'
+import { Switch } from './Switch'
+import { Slider } from './Slider'
+import { Select } from './Select'
+import { NumberField } from './NumberField'
+import { ScrollArea } from './ScrollArea'
+import { Tooltip } from './Tooltip'
 
 function App() {
   const [checkbox, setCheckbox] = useState(false)
@@ -115,7 +115,7 @@ function App() {
             <Slider value={slider} onChange={(e) => setSlider(Number(e.target.value))} showValue style={{ width: 200 }} />
           </div>
           <div className="row">
-            <Slider value={25} min={0} max={100} step={25} style={{ width: 200 }} />
+            <Slider defaultValue={25} min={0} max={100} step={25} style={{ width: 200 }} />
           </div>
         </div>
       </section>

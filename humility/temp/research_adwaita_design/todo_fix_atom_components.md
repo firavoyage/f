@@ -1,26 +1,18 @@
 read
 
-- spec create atom components
 - knowledge web styling
-- knowledge design tokens
+- spec create atom components
 
-work inside the `components` folder
+know the folder structure `fd . --maxdepth 2`
 
-normalize
+all of you work should be done inside the `components` folder
 
-- the filename of all react components should be pascal case, the same as the component name, both tsx and css. update imports.
+2. standardize
 
-standardize
+- install and use `@base-ui/react`. refactor to use baseui primitives for existing components.
+- read docs on ref/baseui_docs for the component you use.
 
-- install and use `@base-ui/react`
-- refactor. do not reinvent the wheels.
-- read docs on ref/baseui_docs
+3. test and fix
 
-fix
-
-- components/index.html has some errors on the console
-- the style of components/app.css is a total mess. it's white bg on my dark mode, no typography, and, well just too many issues. a simple storybook does not have to be perfect, but it's just too ugly. learn from index.html on the parent folder.
-
-test
-
-- open playwright, make sure no error
+- open playwright, make sure no error on components/index.html
+- loop to fix until no error

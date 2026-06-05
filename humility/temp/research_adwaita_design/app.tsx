@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './adwaita.css'
-import './index.css'
+import './app.css'
 
 function useCssVar(name: string) {
   const [value, setValue] = useState('')

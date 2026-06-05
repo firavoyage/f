@@ -1,0 +1,58 @@
+[     197ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:1234/components.1f35c4f0.js:24510
+[     226ms] [ERROR] Warning: You provided a `value` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultValue`. Otherwise, set either `onChange` or `readOnly`.%s 
+    at input
+    at div
+    at div
+    at Slider (http://localhost:1234/components.1f35c4f0.js:28393:19)
+    at div
+    at div
+    at section
+    at div
+    at App (http://localhost:1234/components.1f35c4f0.js:25014:57) @ http://localhost:1234/components.1f35c4f0.js:26980
+[     243ms] [ERROR] Warning: You provided a `value` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultValue`. Otherwise, set either `onChange` or `readOnly`.%s 
+    at input
+    at div
+    at div
+    at Slider (http://localhost:1234/components.1f35c4f0.js:28393:19)
+    at div
+    at div
+    at section
+    at div
+    at App (http://localhost:1234/components.1f35c4f0.js:25014:57) @ http://localhost:1234/components.1f35c4f0.js:26980
+[     248ms] [ERROR] The above error occurred in the <input> component:
+
+    at input
+    at span
+    at Checkbox (http://localhost:1234/components.1f35c4f0.js:28221:21)
+    at div
+    at div
+    at section
+    at div
+    at App (http://localhost:1234/components.1f35c4f0.js:25014:57)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ http://localhost:1234/components.1f35c4f0.js:26980
+[     251ms] Error: input is a void element tag and must neither have `children` nor use `dangerouslySetInnerHTML`.
+    at assertValidProps (http://localhost:1234/components.1f35c4f0.js:5788:88)
+    at setInitialProperties (http://localhost:1234/components.1f35c4f0.js:10892:9)
+    at finalizeInitialChildren (http://localhost:1234/components.1f35c4f0.js:11713:9)
+    at completeWork (http://localhost:1234/components.1f35c4f0.js:19559:29)
+    at completeUnitOfWork (http://localhost:1234/components.1f35c4f0.js:22459:28)
+    at performUnitOfWork (http://localhost:1234/components.1f35c4f0.js:22439:9)
+    at workLoopSync (http://localhost:1234/components.1f35c4f0.js:22377:39)
+    at renderRootSync (http://localhost:1234/components.1f35c4f0.js:22360:13)
+    at recoverFromConcurrentError (http://localhost:1234/components.1f35c4f0.js:21948:26)
+    at performConcurrentWorkOnRoot (http://localhost:1234/components.1f35c4f0.js:21868:34)
+    at workLoop (http://localhost:1234/components.1f35c4f0.js:24721:44)
+    at flushWork (http://localhost:1234/components.1f35c4f0.js:24703:20)
+    at MessagePort.performWorkUntilDeadline (http://localhost:1234/components.1f35c4f0.js:24907:31)
+[  123314ms] [ERROR] Warning: You provided a `value` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultValue`. Otherwise, set either `onChange` or `readOnly`.%s 
+    at input
+    at div
+    at div
+    at Slider (http://localhost:1234/components.1f35c4f0.js:28393:19)
+    at div
+    at div
+    at section
+    at div
+    at App (http://localhost:1234/components.1f35c4f0.js:25014:57) @ http://localhost:1234/components.1f35c4f0.js:26980
