@@ -214,6 +214,8 @@
   --view-bg-color: var(--light-1);
   --view-fg-color: rgb(0 0 6 / 80%);
 
+  --secondary-bg: var(--light-3);
+
   --headerbar-bg-color: var(--light-1);
   --headerbar-fg-color: rgb(0 0 6 / 80%);
   --headerbar-border-color: rgb(0 0 6 / 80%);
@@ -275,7 +277,8 @@
 /* Semantic Dark */
 @media (prefers-color-scheme: dark) {
   :root {
-    --accent-color: #81d0ff;
+    --accent-color: var(--accent-blue);
+    /* --accent-color: #81d0ff; */
 
     --destructive-color: #ff938c;
     --destructive-bg-color: var(--red-4);
@@ -294,6 +297,8 @@
 
     --view-bg-color: #1d1d20;
     --view-fg-color: var(--light-1);
+
+    --secondary-bg: #2e2e32;
 
     --headerbar-bg-color: #2e2e32;
     --headerbar-fg-color: var(--light-1);

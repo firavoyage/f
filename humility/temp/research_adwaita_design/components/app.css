@@ -33,6 +33,6 @@ h2 {
   gap: var(--space-4, 9px);
   align-items: center;
   padding: var(--space-4, 9px);
-  background: var(--light-3, #deddda33);
+  background: var(--secondary-bg);
   border-radius: var(--radius-md, 6px);
 }

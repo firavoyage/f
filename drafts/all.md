@@ -339,6 +339,7 @@ linguistics:
 - para naming prefix etymology paragraph greek hindu
 - proto languages
 - dict wordnet synonyms synsets
+- name ayugram
 
 literature:
 

@@ -1,14 +1,14 @@
 import "./app.css";
 
-import { MyButton } from "./button";
-import { MyCheckbox } from "./checkbox";
-import { MyInput } from "./input";
-import { MyNumberField } from "./number-field";
-import { MySelect } from "./select";
-import { MySlider } from "./slider";
-import { MySwitch } from "./switch";
-import { MyScrollArea } from "./scroll-area";
-import { MyTooltip } from "./tooltip";
+import { Button } from "./Button";
+import { Checkbox } from "./Checkbox";
+import { Input } from "./Input";
+import { NumberField } from "./NumberField";
+import { Select } from "./Select";
+import { Slider } from "./Slider";
+import { Switch } from "./Switch";
+import { ScrollArea } from "./ScrollArea";
+import { Tooltip } from "./Tooltip";
 
 export default function App() {
   return (
@@ -16,62 +16,62 @@ export default function App() {
       <section className="section">
         <h2>Button</h2>
         <div className="demo">
-          <MyButton>Primary</MyButton>
-          <MyButton disabled>Disabled</MyButton>
+          <Button>Primary</Button>
+          <Button disabled>Disabled</Button>
         </div>
       </section>
 
       <section className="section">
         <h2>Checkbox</h2>
         <div className="demo">
-          <MyCheckbox>Agree to terms</MyCheckbox>
-          <MyCheckbox checked>Checked</MyCheckbox>
-          <MyCheckbox disabled>Disabled</MyCheckbox>
+          <Checkbox>Agree to terms</Checkbox>
+          <Checkbox checked>Checked</Checkbox>
+          <Checkbox disabled>Disabled</Checkbox>
         </div>
       </section>
 
       <section className="section">
         <h2>Input</h2>
         <div className="demo">
-          <MyInput placeholder="Enter text..." />
-          <MyInput placeholder="Disabled" disabled />
+          <Input placeholder="Enter text..." />
+          <Input placeholder="Disabled" disabled />
         </div>
       </section>
 
       <section className="section">
         <h2>Number Field</h2>
         <div className="demo">
-          <MyNumberField defaultValue={42} min={0} max={100} step={1} />
+          <NumberField defaultValue={42} min={0} max={100} step={1} />
         </div>
       </section>
 
       <section className="section">
         <h2>Select</h2>
         <div className="demo">
-          <MySelect />
+          <Select />
         </div>
       </section>
 
       <section className="section">
         <h2>Slider</h2>
         <div className="demo">
-          <MySlider defaultValue={50} min={0} max={100} step={1} />
+          <Slider defaultValue={50} min={0} max={100} step={1} />
         </div>
       </section>
 
       <section className="section">
         <h2>Switch</h2>
         <div className="demo">
-          <MySwitch>Enable notifications</MySwitch>
-          <MySwitch checked>Enabled</MySwitch>
-          <MySwitch disabled>Disabled</MySwitch>
+          <Switch>Enable notifications</Switch>
+          <Switch checked>Enabled</Switch>
+          <Switch disabled>Disabled</Switch>
         </div>
       </section>
 
       <section className="section">
         <h2>Scroll Area</h2>
         <div className="demo">
-          <MyScrollArea>
+          <ScrollArea>
             <p>
               Vernacular architecture is building done outside any academic tradition,
               and without professional guidance. It is not a particular architectural
@@ -84,16 +84,16 @@ export default function App() {
               constrained by the materials available in its particular region and
               reflects local traditions and cultural practices.
             </p>
-          </MyScrollArea>
+          </ScrollArea>
         </div>
       </section>
 
       <section className="section">
         <h2>Tooltip</h2>
         <div className="demo">
-          <MyTooltip content="This is a helpful tip!">
-            <span className="my-button">Hover me</span>
-          </MyTooltip>
+          <Tooltip content="This is a helpful tip!">
+            <span className="Button">Hover me</span>
+          </Tooltip>
         </div>
       </section>
     </main>

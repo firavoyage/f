@@ -1,12 +1,12 @@
-.my-tooltip-trigger {
+.Tooltip_trigger {
   display: inline-flex;
 }
 
-.my-tooltip-positioner {
+.Tooltip_positioner {
   z-index: 1000;
 }
 
-.my-tooltip-popup {
+.Tooltip_popup {
   background: var(--headerbar-bg-color, #2e2e32);
   border-radius: var(--radius-md, 6px);
   color: var(--headerbar-fg-color, #fff);
@@ -15,6 +15,6 @@
   box-shadow: 0 4px 12px rgb(0 0 6 / 30%);
 }
 
-.my-tooltip-arrow {
+.Tooltip_arrow {
   fill: var(--headerbar-bg-color, #2e2e32);
 }

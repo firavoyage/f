@@ -1,4 +1,4 @@
-.my-switch-label {
+.Switch_label {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2, 4px);
@@ -7,7 +7,7 @@
   font-size: var(--font-size-sm, 0.875rem);
 }
 
-.my-switch {
+.Switch_root {
   appearance: none;
   background: var(--light-3, #deddda);
   border: none;
@@ -17,18 +17,18 @@
   height: 20px;
   position: relative;
   transition: background 0.2s ease;
+
+  &[data-checked] {
+    background: var(--accent-color, #3584e4);
+  }
+
+  &[data-disabled] {
+    opacity: var(--disabled-opacity, 40%);
+    pointer-events: none;
+  }
 }
 
-.my-switch[data-checked] {
-  background: var(--accent-color, #3584e4);
-}
-
-.my-switch[data-disabled] {
-  opacity: var(--disabled-opacity, 40%);
-  pointer-events: none;
-}
-
-.my-switch-thumb {
+.Switch_thumb {
   appearance: none;
   background: var(--light-1, #fff);
   border-radius: 50%;
@@ -39,8 +39,8 @@
   top: 2px;
   left: 2px;
   transition: transform 0.2s ease;
-}
 
-.my-switch[data-checked] .my-switch-thumb {
-  transform: translateX(16px);
+  [data-checked] & {
+    transform: translateX(16px);
+  }
 }

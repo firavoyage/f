@@ -388,6 +388,10 @@ any app on any design system.
 
 ---
 
+archive photos
+
+---
+
 design tokens.
 
 component set.
@@ -510,4 +514,10 @@ i guess i would
 
 then go maimai and work.
 
+---
 
+complete adwaita css. knowledge design tokens.
+
+align components.
+
+---

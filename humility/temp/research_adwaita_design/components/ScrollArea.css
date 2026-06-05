@@ -1,0 +1,60 @@
+.ScrollArea {
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+}
+
+.ScrollArea_viewport {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-md, 6px);
+}
+
+.ScrollArea_content {
+  width: 100%;
+  height: 100%;
+}
+
+.ScrollArea_scrollbar {
+  display: flex;
+  user-select: none;
+  touch-action: none;
+  padding: 2px;
+  transition: background 0.15s ease;
+
+  &:hover {
+    background: var(--light-3, #deddda22);
+  }
+
+  &[data-orientation="vertical"] {
+    width: 10px;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+
+.ScrollArea_thumb {
+  flex: 1;
+  background: var(--light-4, #c0bfbc);
+  border-radius: 10px;
+  position: relative;
+  transition: background 0.15s ease;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  &:hover {
+    background: var(--light-5, #9a9996);
+  }
+}
