@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useRef, useEffect } from 'react'
-import './select.css'
+import './Select.css'
 
 type SelectVariant = 'single' | 'multiple'
 type SelectSize = 'small' | 'medium' | 'large'

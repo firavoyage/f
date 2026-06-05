@@ -6,10 +6,10 @@ const sanitize_config = {
     html: true,
     mathMl: true,
     svg: true,
-    svgFilters: true
+    svgFilters: true // Explicitly allow filter elements like <feGaussianBlur>
   },
   ALLOW_DATA_ATTR: false,
-  ALLOW_ARIA_ATTR: true,
+  ALLOW_ARIA_ATTR: false,
   FORBID_ATTR: ['class', 'id'],
   FORBID_TAGS: [
     'script',

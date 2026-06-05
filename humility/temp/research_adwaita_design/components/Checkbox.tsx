@@ -1,5 +1,5 @@
 import React from 'react'
-import './checkbox.css'
+import './Checkbox.css'
 
 type CheckboxProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'> & {
   checked?: boolean
@@ -14,7 +14,6 @@ function Checkbox({ className, checked, onCheckedChange, ...props }: CheckboxPro
         className="Checkbox_input"
         checked={checked}
         onChange={(e) => onCheckedChange?.(e.target.checked)}
-        {...props}
       />
       <span className="Checkbox_indicator">
         {checked && (

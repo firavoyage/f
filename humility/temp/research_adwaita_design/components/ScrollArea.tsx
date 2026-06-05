@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useRef, useEffect } from 'react'
-import './scroll_area.css'
+import './ScrollArea.css'
 
 type ScrollAreaContextValue = {
   scrollbarSize: number

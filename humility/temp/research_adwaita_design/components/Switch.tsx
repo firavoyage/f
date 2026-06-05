@@ -1,5 +1,5 @@
 import React from 'react'
-import './switch.css'
+import './Switch.css'
 
 type SwitchProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'> & {
   checked?: boolean

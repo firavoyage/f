@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useRef, useEffect } from 'react'
-import './tooltip.css'
+import './Tooltip.css'
 
 type TooltipContextValue = {
   open: boolean

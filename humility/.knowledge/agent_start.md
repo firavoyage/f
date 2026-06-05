@@ -1,3 +1,5 @@
+<!-- spec might be overkill. -->
+
 # 0.0
 
 stick to the cwd. do not touch anything outside.
@@ -50,3 +52,13 @@ stick to cwd. do not touch anything outside.
 3. write a static `spec.md` for each task. if existing, write `spec_foo.md`, `spec_bar.md` instead.
 4. write `todo.md` on cwd.
 5. start working
+
+# 0.4
+
+stick to cwd. do not touch anything outside.
+
+1. know the file structure of cwd `fdfind . --maxdepth 2`
+2. write `readme.md` for each newly created folder except build and deps
+3. write todo and spec for complex tasks. these are static documents. if existing, name like `spec_foo.md` for new tasks.
+4. start working
+

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adwaita Design System</title>
+  <link rel="stylesheet" href="adwaita.css">
+  <style>
+    .Section {
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      background: var(--clr-bg-2);
+      border-radius: var(--border-radius);
+    }
+    .Section-title {
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--clr-dimmed);
+    }
+    .Demo-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+    }
+    .Demo-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .Demo-group-title {
+      font-size: 0.85rem;
+      color: var(--clr-text-secondary);
+      font-weight: 600;
+    }
+    .Demo-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .Demo-label {
+      min-width: 80px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body class="Body">
+  <h1 class="Title">Adwaita Design System</h1>
+  <p class="Subtitle">A GNOME-style flat design system for web applications</p>
+
+  <section class="Section">
+    <h2 class="Heading Title-sm Section-title">Typography</h2>
+    <div class="Demo-group">
+      <h1 class="Title-xl">Title XL - 3em</h1>
+      <h1 class="Title">Title - 2em</h1>
+      <h1 class="Title-sm">Title Small - 1.5em</h1>
+      <p class="Label">Label - 1.1em Bold</p>
+      <p class="Text">Text - 1em Regular</p>
+      <p class="Subtitle">Subtitle - 0.9em Secondary</p>
+    </div>
+  </section>
+
+  <section class="Section">
+    <h2 class="Heading Title-sm Section-title">Buttons</h2>
+    <div class="Demo-group">
+      <div class="Demo-group-title">Default Buttons</div>
+      <div class="Demo-grid">
+        <button class="Button">Default</button>
+        <button class="Button" data-toggled="true">Toggled</button>
+        <button class="Button disabled">Disabled</button>
+      </div>
+    </div>
+    <div class="Demo-group">
+      <div class="Demo-group-title">Primary Button</div>
+      <div class="Demo-grid">
+        <button class="Button Button--primary">Primary</button>
+        <button class="Button Button--primary" data-toggled="true">Primary Toggled</button>
+        <button class="Button Button--primary disabled">Primary Disabled</button>
+      </div>
+    </div>
+    <div class="Demo-group">
+      <div class="Demo-group-title">Danger Button</div>
+      <div class="Demo-grid">
+        <button class="Button Button--danger">Danger</button>
+        <button class="Button Button--danger" data-toggled="true">Danger Toggled</button>
+        <button class="Button Button--danger disabled">Danger Disabled</button>
+      </div>
+    </div>
+    <div class="Demo-group">
+      <div class="Demo-group-title">Flat Button</div>
+      <div class="Demo-grid">
+        <button class="Button Button--flat">Flat</button>
+        <button class="Button Button--flat Button--primary">Flat Primary</button>
+      </div>
+    </div>
+    <div class="Demo-group">
+      <div class="Demo-group-title">Button Shapes</div>
+      <div class="Demo-grid">
+        <button class="Button Button--circular">+</button>
+        <button class="Button Button--square">=</button>
+        <button class="Button Button--pill">Pill Button</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="Section">
+    <h2 class="Heading Title-sm Section-title">Form Controls</h2>
+    <div class="Demo-group">
+      <div class="Demo-group-title">Input Fields</div>
+      <div class="Demo-row">
+        <input type="text" class="Input" placeholder="Default input">
+      </div>
+      <div class="Demo-row">
+        <input type="text" class="Input" value="Filled input" readonly>
+      </div>
+      <div class="Demo-row">
+        <input type="text" class="Input disabled" placeholder="Disabled input" disabled>
+      </div>
+    </div>
+    <div class="Demo-group">
+      <div class="Demo-group-title">Checkbox</div>
+      <div class="Demo-row">
+        <input type="checkbox" class="Checkbox" id="check1">
+        <label for="check1">Unchecked</label>
+      </div>
+      <div class="Demo-row">
+        <input type="checkbox" class="Checkbox" id="check2" checked>
+        <label for="check2">Checked</label>
+      </div>
+      <div class="Demo-row">
+        <input type="checkbox" class="Checkbox disabled" id="check3" disabled>
+        <label for="check3">Disabled</label>
+      </div>
+    </div>
+    <div class="Demo-group">
+      <div class="Demo-group-title">Switch</div>
+      <div class="Demo-row">
+        <button class="Switch" role="switch" aria-checked="false">
+          <span class="Switch-knob"></span>
+        </button>
+        <span>Off</span>
+      </div>
+      <div class="Demo-row">
+        <button class="Switch" role="switch" aria-checked="true" data-active="true">
+          <span class="Switch-knob"></span>
+        </button>
+        <span>On</span>
+      </div>
+      <div class="Demo-row">
+        <button class="Switch disabled" role="switch" aria-checked="true" data-active="true">
+          <span class="Switch-knob"></span>
+        </button>
+        <span>Disabled</span>
+      </div>
+    </div>
+    <div class="Demo-group">
+      <div class="Demo-group-title">Slider</div>
+      <div class="Demo-row" style="width: 200px;">
+        <div class="Slider">
+          <div class="Slider-track"></div>
+          <div class="Slider-progress" style="right: 30%;"></div>
+          <div class="Slider-thumb" style="left: 70%;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="Section">
+    <h2 class="Heading Title-sm Section-title">Components</h2>
+    <div class="Demo-group">
+      <div class="Demo-group-title">Card</div>
+      <div class="Card" style="max-width: 300px;">
+        <h3 class="Heading Label">Card Title</h3>
+        <p class="Text">This is a card component with a subtle shadow effect.</p>
+      </div>
+    </div>
+    <div class="Demo-group">
+      <div class="Demo-group-title">Card Activable</div>
+      <div class="Card Card--activable" style="max-width: 300px;">
+        <h3 class="Heading Label">Hover Me</h3>
+        <p class="Text">This card changes background on hover.</p>
+      </div>
+    </div>
+    <div class="Demo-group">
+      <div class="Demo-group-title">List</div>
+      <div class="List" style="max-width: 300px;">
+        <div class="List-element">First item</div>
+        <div class="List-element">Second item</div>
+        <div class="List-element List-element--activable">Hover me</div>
+        <div class="List-element">Last item</div>
+      </div>
+    </div>
+    <div class="Demo-group">
+      <div class="Demo-group-title">List (bg-2)</div>
+      <div class="List List--bg-2" style="max-width: 300px;">
+        <div class="List-element">First item</div>
+        <div class="List-element">Second item</div>
+        <div class="List-element List-element--activable">Hover me</div>
+        <div class="List-element">Last item</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="Section">
+    <h2 class="Heading Title-sm Section-title">Alerts</h2>
+    <div class="Demo-group">
+      <div class="Alert Alert--info">
+        <strong>Info:</strong> This is an informational message.
+      </div>
+    </div>
+    <div class="Demo-group">
+      <div class="Alert Alert--success">
+        <strong>Success:</strong> Operation completed successfully.
+      </div>
+    </div>
+    <div class="Demo-group">
+      <div class="Alert Alert--warning">
+        <strong>Warning:</strong> Please review before proceeding.
+      </div>
+    </div>
+    <div class="Demo-group">
+      <div class="Alert Alert--error">
+        <strong>Error:</strong> Something went wrong.
+      </div>
+    </div>
+  </section>
+
+  <section class="Section">
+    <h2 class="Heading Title-sm Section-title">Dialog</h2>
+    <div class="Demo-group">
+      <div class="Dialog" style="max-width: 400px;">
+        <div class="Dialog-header">
+          <span class="Dialog-title">Dialog Title</span>
+        </div>
+        <div class="Dialog-body">
+          <p class="Text">This is a dialog component with a header and body section.</p>
+          <div class="Demo-grid" style="margin-top: 1rem;">
+            <button class="Button Button--flat">Cancel</button>
+            <button class="Button Button--primary">Confirm</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="Section">
+    <h2 class="Heading Title-sm Section-title">Miscellaneous</h2>
+    <div class="Demo-group">
+      <div class="Demo-group-title">Separator</div>
+      <div class="Separator" style="width: 200px;"></div>
+    </div>
+    <div class="Demo-group">
+      <div class="Demo-group-title">Spinner</div>
+      <div class="Demo-row">
+        <div class="Spinner">
+          <div class="Spinner-inner"></div>
+        </div>
+        <span>Loading...</span>
+      </div>
+    </div>
+    <div class="Demo-group">
+      <div class="Demo-group-title">Links</div>
+      <div class="Demo-row">
+        <a href="#">Regular link</a>
+        <a href="#">Visited link (hover to see underline)</a>
+      </div>
+    </div>
+  </section>
+
+  <p class="Subtitle" style="margin-top: 2rem;">
+    Toggle dark mode in your system preferences to see the dark theme variant.
+  </p>
+</body>
+</html>

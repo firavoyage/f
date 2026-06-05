@@ -1,5 +1,5 @@
 import React from 'react'
-import './input.css'
+import './Input.css'
 
 type InputType = 'text' | 'email' | 'password' | 'search' | 'tel' | 'url'
 type InputSize = 'small' | 'medium' | 'large'

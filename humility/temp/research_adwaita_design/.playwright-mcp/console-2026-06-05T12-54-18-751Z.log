@@ -1,0 +1,45 @@
+[      49ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:1234/components.1f35c4f0.js:24510
+[      57ms] [ERROR] Warning: You provided a `value` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultValue`. Otherwise, set either `onChange` or `readOnly`.%s 
+    at input
+    at div
+    at div
+    at Slider (http://localhost:1234/components.1f35c4f0.js:28392:19)
+    at div
+    at div
+    at section
+    at div
+    at App (http://localhost:1234/components.1f35c4f0.js:25014:57) @ http://localhost:1234/components.1f35c4f0.js:27022
+[   11452ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:1234/components.1f35c4f0.js:24510
+[   11460ms] [ERROR] Warning: You provided a `value` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultValue`. Otherwise, set either `onChange` or `readOnly`.%s 
+    at input
+    at div
+    at div
+    at Slider (http://localhost:1234/components.1f35c4f0.js:28392:19)
+    at div
+    at div
+    at section
+    at div
+    at App (http://localhost:1234/components.1f35c4f0.js:25014:57) @ http://localhost:1234/components.1f35c4f0.js:27022
+[   12707ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:1234/components.1f35c4f0.js:24510
+[   12730ms] [ERROR] Warning: You provided a `value` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultValue`. Otherwise, set either `onChange` or `readOnly`.%s 
+    at input
+    at div
+    at div
+    at Slider (http://localhost:1234/components.1f35c4f0.js:28392:19)
+    at div
+    at div
+    at section
+    at div
+    at App (http://localhost:1234/components.1f35c4f0.js:25014:57) @ http://localhost:1234/components.1f35c4f0.js:27022
+[  426634ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:1234/components.1f35c4f0.js:24510
+[  426652ms] [ERROR] Warning: You provided a `value` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultValue`. Otherwise, set either `onChange` or `readOnly`.%s 
+    at input
+    at div
+    at div
+    at Slider (http://localhost:1234/components.1f35c4f0.js:28392:19)
+    at div
+    at div
+    at section
+    at div
+    at App (http://localhost:1234/components.1f35c4f0.js:25014:57) @ http://localhost:1234/components.1f35c4f0.js:27022
+[  544345ms] [WARNING] [parcel] 🚨 Connection to the HMR server was lost @ http://localhost:1234/components.1f35c4f0.js:356

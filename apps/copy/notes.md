@@ -105,6 +105,3 @@ these feel fragile.
 
 ---
 
-2026.06.03
-
-i could remove elements of aria hidden. idk if i have to.

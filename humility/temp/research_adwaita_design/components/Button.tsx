@@ -1,5 +1,5 @@
 import React from 'react'
-import './button.css'
+import './Button.css'
 
 type ButtonVariant = 'primary' | 'secondary' | 'flat' | 'destructive'
 type ButtonSize = 'small' | 'medium' | 'large'
