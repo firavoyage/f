@@ -19,6 +19,8 @@ write
 
 spec
 
+some variables on adwaita.css are not named properly. you can change the name to make it feel right.
+
 three layer design tokens
 
 ```
@@ -27,15 +29,17 @@ ref: # reference, primitives
     accent-blue: #3584e4
 sys: # system, semantic
   color:
-    bg-primary: "{ref.color.light-1}"
+    bg-primary: "{ref.color.light-1}" # bg-card is forbidden. no component name allowed.
 comp: # component
   card:
-    bg-color: "{sys.foo.bar}"
+    bg-color: "{sys.foo.bar}" # must end with the type, like color or font
 ```
 
-all sys must only reference ref.
+all sys must reference ref.
 
-all comp must only reference sys.
+all comp must reference ref or sys. 
+
+test: scan the yaml. make sure no raw value inside sys. if there is, define in ref. make sure no raw value inside comp.
 
 task 2 (3, 4)
 
@@ -65,6 +69,6 @@ write
 
 spec
 
-only ref or sys inside extended. only include the addition.
+all extended tokens are ref or sys. no comp. only include the addition.
 
 research libadwaita first. adwaita web and adwave later. no parallel.
