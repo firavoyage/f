@@ -227,6 +227,7 @@ desktop:
 - mac os x docker
 - shell find
 - dot hidden file history nautilus solution xdg spec home projects folder
+- windows pe intel rst
 
 android:
 
