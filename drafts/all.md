@@ -508,6 +508,7 @@ history:
 - ionic framework
 - ui design dark mode movement
 - gtk <!-- gimp toolkit, libadwaita -->
+- iphone steve jobs iphone 4s
 
 politics:
 

@@ -27187,6 +27187,32 @@ Or not?
 
 Telegram, despite generous indefinite cloud storage, is not designed for permanent preservation.
 
+12 40 charge the old laptop. unbox iphone 4s.
+
+so small to fit so well in palms
+
+the seller sends me a 16g storage version, full of games, despite 8g on product info. <!-- well, the product page could not open now, as taken down or off stock. -->
+
+set lang to en.
+
+<!-- neither screen border back or left to right dragging works on settings app! -->
+
+<!-- netease cloud music can work and play a song (shiawase ni nareru kakushi command ga arurashii utata p). the legacy version shows no ads, and the lyrics flows as expected. it even plays nice on lockscreen. -->
+
+for some reason, they gift w an old samsung 25w double usb c cable and adaptor alongside the right one. their is no adaptor for type c... i have one though.
+
+dance like it's 2011.
+
+> 只可惜，在我看来，Android 之魂，随着那段青春一起，早已烟消云散。
+
+> Reader is dead.
+
+<!-- example dot com can load out of the box. i can proceed to ietf even if safari could not identify the cert. -->
+
+<!-- all stocks are -1.00 as yahoo does not respond. -->
+
+a folder can have nine <!-- well, twelve actually --> apps at most. <!-- put all zhcn games inside a folder, as it might be hard to reinstall -->
+
 
 
 <!-- timebox, plan. -->
