@@ -27213,6 +27213,14 @@ dance like it's 2011.
 
 a folder can have nine <!-- well, twelve actually --> apps at most. <!-- put all zhcn games inside a folder, as it might be hard to reinstall -->
 
+seems it could not charge while powered off. but the battery lock screen is impressive.
+
+14 00 power on the old laptop.
+
+could not boot. <!-- seems ive done something dangerous before on windows. --> try ubuntu 24.
+
+14 40 stack up muji storage boxes. separate things.
+
 
 
 <!-- timebox, plan. -->
