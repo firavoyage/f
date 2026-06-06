@@ -27219,6 +27219,8 @@ seems it could not charge while powered off. but the battery lock screen is impr
 
 could not boot. <!-- seems ive done something dangerous before on windows. --> try ubuntu 24.
 
+<!-- upd: unfixable hardware failure -->
+
 14 40 stack up muji storage boxes. separate things.
 
 

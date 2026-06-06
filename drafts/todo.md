@@ -506,16 +506,6 @@ checkbox group is basically syntax sugar (simple abstraction) and meaningless ac
 
 ---
 
-i guess i would
-
-- try plug in the old laptop and export something
-- unbox some vintage gadgets
-- (organize things in the storage box)
-
-then go maimai and work.
-
----
-
 complete adwaita css. knowledge design tokens.
 
 align components.
