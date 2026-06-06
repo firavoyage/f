@@ -331,7 +331,7 @@ typography:
 - indent paragraphs
 - snake case more scannable than camel case
 
-linguistics:
+linguistics: <!-- grammar, etymology -->
 
 - translation meaning loss
 - describe allusion abstraction implication
@@ -341,6 +341,7 @@ linguistics:
 - proto languages
 - dict wordnet synonyms synsets
 - name ayugram
+- name gemini gemma
 
 literature:
 

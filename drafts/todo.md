@@ -388,7 +388,7 @@ any app on any design system.
 
 ---
 
-archive photos
+sync memories. archive photos. <!-- icyblue -->
 
 ---
 
