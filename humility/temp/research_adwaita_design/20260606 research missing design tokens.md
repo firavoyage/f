@@ -1,41 +1,48 @@
-# Research Missing Design Tokens
+20260606 research missing design tokens
 
-I have analyzed the existing `adwaita.css` and the `adwaita.yaml` structure to identify what is missing compared to the authoritative `libadwaita` and the mimics (`adwaita_web` and `adwave`).
+what i see:
 
-## Observations
+1. libadwaita (src/stylesheet/_colors.scss)
+   - interaction state colors: hover, active, selected, selected-hover, selected-active
+   - view interaction states: view-hover, view-active, view-selected variants
+   - trough colors for sliders: trough, trough-hover, trough-active
+   - slider colors: slider, slider-hover
+   - link colors: link, link-visited
+   - OSD (on-screen display) colors: osd-fg, osd-bg, osd-link, osd-link-visited
+   - toast colors: toast-bg, toast-fg
+   - tooltip border color
+   - drop target color
+   - window outline color (including high contrast)
+   - focus border color (including high contrast)
+   - dimmer opacity (including high contrast)
+   - strong disabled opacity
+   - border/focus opacity high contrast variants
 
-### 1. Content of `adwaita.css` vs. `libadwaita`
-The current `adwaita.css` is a significant subset. While it covers basic colors, spacing, and typography, it lacks the depth found in a production GNOME environment.
+2. adwaita_web (packages/web-toolkit/src/lib/adwaita/build.css)
+   - text utility colors: text-info, text-success, text-warning, text-danger, text-muted
+   - background levels: background-low, background-default, background-medium, background-high
+   - separator color
+   - uses simpler color values, not as comprehensive as libadwaita
 
-**Missing Categories:**
-- **Extended Color Palettes**: Many shades for various colors (e.g., gray, slate, etc.) that are used for subtle borders, backgrounds, and disabled states.
-- **Detailed Semantic Tokens**: 
-  - Specific "surface" or "card" colors for different modes.
-  - More nuanced "window" vs "view" vs "sidebar" background variations.
-  - Refined "overlay" and "scrolledwindow" colors.
-- **Advanced Typography**: Multiple font weight/size combinations and potentially more specific line-height tokens.
-- **Motion/Transition Details**: More diverse easing curves and specific duration tokens for different interaction types (e.g., popovers vs. button hovers).
-- **Elevation/Shadows**: A more complete set of shadow layers for different depth levels.
-- **Component-specific spacing**: Refined paddings/margins for complex widgets like `List`, `TreeView`, or `HeaderBar`.
+3. adwave (src/variables.scss)
+   - background level system: bg-1 through bg-6 (more granular than libadwaita)
+   - list element colors: list-elem, list-elem-border, list-elem-hover (with -2 variants)
+   - spinner colors: spinner-bg, spinner-fg
+   - button toggled states: btn-toggled, btn-hover, btn-pressed
+   - adaptive button colors: btn-adaptive, btn-adaptive-toggled, btn-adaptive-hover, btn-adaptive-pressed
+   - primary/danger color scales (000-900)
+   - different border-radius default (8px vs libadwaita's 6px)
+   - disabled cursor styles
+   - separate light-theme and dark-theme classes
 
-### 2. Comparison with Mimics
-- **`adwaita_web` (web-toolkit)**: This mimic uses a very structured set of CSS variables. It seems to have a better grasp of "Base States" and "Layout" utilities. It also defines explicit "Adaptive" button styles which are missing.
-- **`adwave`**: This mimic uses SCSS and defines a very robust set of theme-based color maps (`$colorNames`). It distinguishes between `primary` (accent) and `danger` scales very clearly. It also uses color functions (`nativeLighten`, `nativeDarken`) to derive shades, which is a more sophisticated way to manage tokens than hardcoding all 9 shades.
+what i want to tell you:
 
-## Plan for `adwaita.extended.yaml`
-
-The extended YAML should aim to fill these gaps, focusing on `ref` and `sys` tokens.
-
-**Proposed Additions:**
-- **Ref expansion**:
-  - Complete color scales (0-9) for all primary, secondary, and error colors.
-  - A dedicated `gray` or `slate` scale for neutral elements.
-  - More complex `shadow` and `elevation` definitions.
-- **Sys expansion**:
-  - Better differentiation between `window`, `view`, `sidebar`, and `popover` backgrounds.
-  - Explicit `surface` and `overlay` color levels.
-  - Comprehensive `text` colors (primary, secondary, disabled, muted, error, success, warning).
-  - Expanded `interaction` tokens (hover, active, focus, disabled states for all semantic groups).
-
-## Sources for Research
-I will prioritize `libadwaita` documentation and source code (specifically looking for CSS/GTK theme definitions) to ensure the extended tokens are as authentic as possible.
+- libadwaita is the definitive source and has the most comprehensive design tokens
+- adwaita_web is less sophisticated and sometimes uses simpler hardcoded values
+- adwave provides some additional useful tokens like background levels and button toggled states
+- there are some discrepancies:
+  - border-radius default: adwave uses 8px while libadwaita uses 6px (default radius-md)
+  - adwave has more granular color scales (primary-000 to primary-900) vs libadwaita's palette
+- the extended tokens cover interaction states, view-specific states, slider/trough, links, OSD, toast, tooltip, drag-drop, and accessibility (high contrast, disabled) concerns
+- background level system from adwave (bg-1 to bg-6) provides more flexibility than libadwaita's categorical colors
+- all tokens in adwaita.extended.yaml are ref or sys only, no comp layer, following the spec
