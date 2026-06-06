@@ -1,69 +1,59 @@
 ref:
   color:
-    blue:
-      1: "#99c1f1"
-      2: "#62a0ea"
-      3: "#3584e4"
-      4: "#1c71d8"
-      5: "#1a5fb4"
-    green:
-      1: "#8ff0a4"
-      2: "#57e389"
-      3: "#33d17a"
-      4: "#2ec27e"
-      5: "#26a269"
-    yellow:
-      1: "#f9f06b"
-      2: "#f8e45c"
-      3: "#f6d32d"
-      4: "#f5c211"
-      5: "#e5a50a"
-    orange:
-      1: "#ffbe6f"
-      2: "#ffa348"
-      3: "#ff7800"
-      4: "#e66100"
-      5: "#c64600"
-    red:
-      1: "#f66151"
-      2: "#ed333b"
-      3: "#e01b24"
-      4: "#c01c28"
-      5: "#a51d2d"
-    purple:
-      1: "#dc8add"
-      2: "#c061cb"
-      3: "#9141ac"
-      4: "#813d9c"
-      5: "#613583"
-    brown:
-      1: "#cdab8f"
-      2: "#b5835a"
-      3: "#986a44"
-      4: "#865e3c"
-      5: "#63452c"
-    light:
-      1: "#ffffff"
-      2: "#f6f5f4"
-      3: "#deddda"
-      4: "#c0bfbc"
-      5: "#9a9996"
-    dark:
-      1: "#77767b"
-      2: "#5e5c64"
-      3: "#3d3846"
-      4: "#241f31"
-      5: "#000000"
-    accent:
-      blue: "#3584e4"
-      teal: "#2190a4"
-      green: "#3a944a"
-      yellow: "#c88800"
-      orange: "#ed5b00"
-      red: "#e62d42"
-      pink: "#d56199"
-      purple: "#9141ac"
-      slate: "#6f8396"
+    blue-1: "#99c1f1"
+    blue-2: "#62a0ea"
+    blue-3: "#3584e4"
+    blue-4: "#1c71d8"
+    blue-5: "#1a5fb4"
+    green-1: "#8ff0a4"
+    green-2: "#57e389"
+    green-3: "#33d17a"
+    green-4: "#2ec27e"
+    green-5: "#26a269"
+    yellow-1: "#f9f06b"
+    yellow-2: "#f8e45c"
+    yellow-3: "#f6d32d"
+    yellow-4: "#f5c211"
+    yellow-5: "#e5a50a"
+    orange-1: "#ffbe6f"
+    orange-2: "#ffa348"
+    orange-3: "#ff7800"
+    orange-4: "#e66100"
+    orange-5: "#c64600"
+    red-1: "#f66151"
+    red-2: "#ed333b"
+    red-3: "#e01b24"
+    red-4: "#c01c28"
+    red-5: "#a51d2d"
+    purple-1: "#dc8add"
+    purple-2: "#c061cb"
+    purple-3: "#9141ac"
+    purple-4: "#813d9c"
+    purple-5: "#613583"
+    brown-1: "#cdab8f"
+    brown-2: "#b5835a"
+    brown-3: "#986a44"
+    brown-4: "#865e3c"
+    brown-5: "#63452c"
+    light-1: "#ffffff"
+    light-2: "#f6f5f4"
+    light-3: "#deddda"
+    light-4: "#c0bfbc"
+    light-5: "#9a9996"
+    dark-1: "#77767b"
+    dark-2: "#5e5c64"
+    dark-3: "#3d3846"
+    dark-4: "#241f31"
+    dark-5: "#000000"
+    accent-blue: "#3584e4"
+    accent-teal: "#2190a4"
+    accent-green: "#3a944a"
+    accent-yellow: "#c88800"
+    accent-orange: "#ed5b00"
+    accent-red: "#e62d42"
+    accent-pink: "#d56199"
+    accent-purple: "#9141ac"
+    accent-slate: "#6f8396"
   spacing:
     1: "3px"
     2: "4px"
@@ -74,30 +64,27 @@ ref:
     8: "24px"
     10: "36px"
     12: "48px"
-  typography:
-    font-size:
-      xs: "0.75rem"
-      sm: "0.875rem"
-      base: "1rem"
-      lg: "1.125rem"
-      xl: "1.25rem"
-      2xl: "1.5rem"
-      3xl: "1.875rem"
-      4xl: "2.25rem"
-    line-height:
-      tight: 1.25
-      normal: 1.5
-      relaxed: 1.75
-    font-weight:
-      normal: 400
-      medium: 500
-      semibold: 600
-      bold: 700
-    font-family:
-      document: '"Adwaita Sans", sans-serif'
-      monospace: '"Adwaita Mono", monospace'
-    font-size-document: "12pt"
-    font-size-monospace: "11pt"
+  font-size:
+    xs: "0.75rem"
+    sm: "0.875rem"
+    base: "1rem"
+    lg: "1.125rem"
+    xl: "1.25rem"
+    2xl: "1.5rem"
+    3xl: "1.875rem"
+    4xl: "2.25rem"
+  line-height:
+    tight: 1.25
+    normal: 1.5
+    relaxed: 1.75
+  font-weight:
+    normal: 400
+    medium: 500
+    semibold: 600
+    bold: 700
+  font-family:
+    document: '"Adwaita Sans", sans-serif'
+    monospace: '"Adwaita Mono", monospace'
   radius:
     xs: "4px"
     sm: "6px"
@@ -106,12 +93,11 @@ ref:
     xl: "15px"
     xxl: "18px"
     full: "9999px"
-  transitions:
+  transition:
     fast: "150ms cubic-bezier(0.25, 0.46, 0.45, 0.94)"
     normal: "200ms ease-out"
     slow: "300ms ease-out"
     backdrop: "200ms ease-out"
-    ease-out-quad: "cubic-bezier(0.25, 0.46, 0.45, 1) 0.94" # Fixed untu typo from CSS
   z-index:
     base: 0
     dropdown: 100
@@ -120,7 +106,7 @@ ref:
     popover: 400
     tooltip: 500
     toast: 600
-  shadows:
+  shadow:
     sm: "0 1px 2px rgb(0 0 0 / 10%)"
     md: "0 4px 6px rgb(0 0 0 / 10%)"
     lg: "0 10px 15px rgb(0 0 0 / 10%)"
@@ -133,176 +119,77 @@ ref:
     border: "15%"
     dim: "55%"
     disabled: "50%"
-  focus-ring:
-    color: "rgba(53, 132, 228, 0.5)"
-    width: "2px"
-    offset: "-2px"
-  button-size:
-    mini: "18px"
-    small: "22px"
-    medium: "28px"
-    large: "36px"
-    huge: "42px"
-    mega: "58px"
-  input:
-    height: "28px"
-    padding: "8px"
-    radius: "5px"
-  scrollbar:
-    width: "8px"
-    thumb: "#bbb"
-    thumb-hover: "#999"
-    thumb-active: "#888"
+  radius-button: "var(--ref.radius.md)"
+  radius-card: "var(--ref.radius.lg)"
+  radius-menu: "var(--ref.radius.md)"
+  radius-popover: "var(--ref.radius.xl)"
+  radius-dialog: "var(--ref.radius.xl)"
+  radius-check: "var(--ref.radius.sm)"
+  radius-alert: "var(--ref.radius.xxl)"
 
 sys:
   color:
-    accent:
-      main: "{ref.color.accent.blue}"
-      bg: "{ref.color.accent.blue}"
-      fg: "{ref.color.light.1}"
-    destructive:
-      main: "{ref.color.red.4}"
-      bg: "{ref.color.red.3}"
-      fg: "{ref.color.light.1}"
-    success:
-      main: "{ref.color.green.5}"
-      bg: "{ref.color.green.4}"
-      fg: "{ref.color.light.1}"
-    warning:
-      main: "{ref.color.yellow.5}"
-      bg: "{ref.color.yellow.4}"
-    error:
-      main: "{ref.color.red.4}"
-      bg: "{ref.color.red.3}"
-      fg: "{ref.color.light.1}"
-    window:
-      bg: "{ref.color.light.2}"
-      fg: "rgb(0 0 6 / 80%)"
-    view:
-      bg: "{ref.color.light.1}"
-      fg: "rgb(0 0 6 / 80%)"
-    secondary:
-      bg: "{ref.color.light.3}"
-    headerbar:
-      bg: "{ref.color.light.1}"
-      fg: "rgb(0 0 6 / 80%)"
-      border: "rgb(0 0 6 / 80%)"
-      backdrop: "{ref.color.light.2}"
-      shade: "rgb(0 0 6 / 12%)"
-      darker-shade: "rgb(0 0 6 / 12%)"
-    sidebar:
-      bg: "{ref.color.light.3}"
-      fg: "rgb(0 0 6 / 80%)"
-      backdrop: "#f2f2f4"
-      border: "rgb(0 0 6 / 7%)"
-      shade: "rgb(0 0 6 / 7%)"
-    secondary-sidebar:
-      bg: "{ref.color.light.3}"
-      fg: "rgb(0 0 6 / 80%)"
-      backdrop: "#f6f6fa"
-      border: "rgb(0 0 6 / 7%)"
-      shade: "rgb(0 0 6 / 7%)"
-    card:
-      bg: "{ref.color.light.1}"
-      fg: "rgb(0 0 6 / 80%)"
-      shade: "rgb(0 0 6 / 7%)"
-    overview:
-      bg: "{ref.color.light.3}"
-      fg: "rgb(0 0 6 / 80%)"
-    thumbnail:
-      bg: "{ref.color.light.1}"
-      fg: "rgb(0 0 6 / 80%)"
-    active-toggle:
-      bg: "{ref.color.light.1}"
-      fg: "rgb(0 0 6 / 80%)"
-    dialog:
-      bg: "{ref.color.light.2}"
-      fg: "rgb(0 0 6 / 80%)"
-    popover:
-      bg: "{ref.color.light.1}"
-      fg: "rgb(0 0 6 / 80%)"
-      shade: "rgb(0 0 6 / 7%)"
-    shade: "rgb(0 0 6 / 7%)"
-    scrollbar-outline: "{ref.color.light.1}"
-    border: "color-mix(in srgb, currentColor var(ref.opacity.border), transparent)"
+    accent: "#0461be"
+    accent-bg: "{ref.color.accent-blue}"
+    accent-fg: "{ref.color.light-1}"
+    destructive: "{ref.color.red-4}"
+    destructive-bg: "{ref.color.red-3}"
+    destructive-fg: "{ref.color.light-1}"
+    success: "{ref.color.green-5}"
+    success-bg: "{ref.color.green-4}"
+    success-fg: "{ref.color.light-1}"
+    warning: "{ref.color.yellow-5}"
+    warning-bg: "{ref.color.yellow-4}"
+    warning-fg: "#000000"
+    error: "{ref.color.red-4}"
+    error-bg: "{ref.color.red-3}"
+    error-fg: "{ref.color.light-1}"
+  bg:
+    window: "{ref.color.light-2}"
+    window-fg: "rgb(0 0 6 / 80%)"
+    view: "{ref.color.light-1}"
+    view-fg: "rgb(0 0 6 / 80%)"
+    secondary: "{ref.color.light-3}"
+    headerbar: "{ref.color.light-1}"
+    headerbar-fg: "rgb(0 0 6 / 80%)"
+    headerbar-border: "rgb(0 0 6 / 80%)"
+    headerbar-backdrop: "{ref.color.light-2}"
+    sidebar: "{ref.color.light-3}"
+    sidebar-fg: "rgb(0 0 6 / 80%)"
+    sidebar-backdrop: "#f2f2f4"
+    sidebar-border: "rgb(0 0 6 / 7%)"
+    card: "{ref.color.light-1}"
+    card-fg: "rgb(0 0 6 / 80%)"
+    dialog: "{ref.color.light-2}"
+    dialog-fg: "rgb(0 0 6 / 80%)"
+    popover: "{ref.color.light-1}"
+    popover-fg: "rgb(0 0 6 / 80%)"
+    popover-shade: "rgb(0 0 6 / 7%)"
     text-secondary: "#686868"
     text-dimmed: "rgba(0 0 0 / 55%)"
-    btn:
-      bg: "#f6f5f4"
-      hover: "#f9f9f8"
-      pressed: "#e8e7e6"
-      border: "#cdc7c2"
-    warning-fg: "rgb(0 0 0 / 80%)"
-  radius:
-    button: "{ref.radius.md}"
-    card: "{ref.radius.lg}"
-    menu: "{ref.radius.md}"
-    popover: "{ref.radius.xl}"
-    dialog: "{ref.radius.xl}"
-    check: "{ref.radius.sm}"
-    alert: "{ref.radius.xxl}"
+  border:
+    color: "color-mix(in srgb, currentColor var(--ref.opacity.border), transparent)"
+  opacity:
+    border: "{ref.opacity.border}"
+    dim: "{ref.opacity.dim}"
+    disabled: "{ref.opacity.disabled}"
 
 comp:
   button:
-    bg: "{sys.color.btn.bg}"
-    hover: "{sys.color.btn.hover}"
-    pressed: "{sys.color.btn.pressed}"
-    border: "{sys.color.btn.border}"
-    radius: "{sys.color.radius.button}"
-    font-size: "{ref.typography.font-size.sm}"
+    bg-color: "{ref.color.light-2}"
+    bg-hover: "{ref.color.light-1}"
+    bg-pressed: "#e8e7e6"
+    border-color: "#cdc7c2"
+    text-color: "{sys.color.view-fg}"
+    font-size: "{ref.font-size.sm}"
+    font-weight: 500
     padding: "{ref.spacing.2} {ref.spacing.4}"
-    disabled-opacity: "{ref.opacity.disabled}"
   input:
-    bg: "{sys.color.view.bg}"
-    border: "{sys.color.btn.border}"
-    radius: "{ref.radius.md}"
-    font-size: "{ref.typography.font-size.sm}"
+    bg-color: "{ref.color.light-1}"
+    border-color: "#cdc7c2"
+    border-radius: "{ref.radius.md}"
+    text-color: "{sys.color.view-fg}"
+    font-size: "{ref.font-size.sm}"
     padding: "{ref.spacing.2} {ref.spacing.3}"
-    accent: "{sys.color.accent.main}"
-  select:
-    bg: "{sys.color.view.bg}"
-    border: "{sys.color.btn.border}"
-    radius: "{ref.radius.md}"
-    font-size: "{ref.typography.font-size.sm}"
-    padding: "{ref.spacing.2} {ref.spacing.3}"
-    z-index: "{ref.z-index.dropdown}"
-    popover-bg: "{sys.color.popover.bg}"
-    popover-radius: "{ref.radius.md}"
-    popover-shadow: "{ref.shadows.md}"
-    popover-padding: "{ref.spacing.1}"
-    popover-item-radius: "{ref.radius.sm}"
-    popover-item-accent: "{sys.color.accent.main}"
-  checkbox:
-    bg: "{sys.color.view.bg}"
-    border: "{sys.color.btn.border}"
-    radius: "{sys.color.radius.check}"
-    font-size: "{ref.typography.font-size.sm}"
-    padding: "{ref.spacing.2}"
-    accent: "{sys.color.accent.main}"
-    disabled-opacity: "{ref.opacity.disabled}"
-  scroll-area:
-    radius: "{ref.radius.md}"
-    scrollbar-bg: "{ref.color.light.3}"
-    scrollbar-thumb: "{ref.color.light.4}"
-    scrollbar-thumb-hover: "{ref.color.light.5}"
-    padding: "{ref.spacing.2}"
-  slider:
-    track-bg: "{ref.color.light.3}"
-    track-radius: "10px"
-    indicator-bg: "{sys.color.accent.main}"
-    thumb-bg: "{ref.color.light.1}"
-    thumb-border: "{sys.color.accent.main}"
-    thumb-shadow: "{sys.color.accent.main}33"
-  switch:
-    bg: "{ref.color.light.3}"
-    accent: "{sys.color.accent.main}"
-    thumb-bg: "{ref.color.light.1}"
-    disabled-opacity: "{ref.opacity.disabled}"
-  tooltip:
-    bg: "{sys.color.headerbar.bg}"
-    radius: "{ref.radius.md}"
-    fg: "{sys.color.headerbar.fg}"
-    font-size: "{ref.typography.font-size.xs}"
-    padding: "{ref.spacing.2} {ref.spacing.3}"
-    shadow: "{ref.shadows.lg}"
-    arrow-fill: "{sys.color.headerbar.bg}"
+    border-color-hover: "{sys.color.accent}"
+    border-color-focus: "{sys.color.accent}"

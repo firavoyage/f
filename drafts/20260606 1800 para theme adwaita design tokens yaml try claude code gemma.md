@@ -2,6 +2,14 @@
 
 <!-- gemma fast outputs some malformed fn calls. -->
 
+<!-- 0.27 usd. not a single task on opencode even w minimax reaches this. i guess claude code is too stupid on cost optimization. let's control the variable now. opencode. same model. (idk, but if it does not call tools properly i have no way.) -->
+
+<!-- well, i do not control the vars strictly. opencode defaults to default effort. claude defaults to high wo consent. -->
+
+<!-- 0.12 usd. seems gemma *is* expensive. maybe the backend does not cache. upd: and it even does not read or think. i think it's not wise to further test gemma 31. -->
+
+<!-- i guess opencode, codex, or claude code does not matter much. just stay w opencode. -->
+
 # .
 
 ```
