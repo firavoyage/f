@@ -152,6 +152,7 @@ archi:
 - json yaml toml xml syntax
 - yaml indentation flexible resilient parser
 - telegram fat clients versus smart backends security through obscurity
+- compression methods base64 dry principle measurement
 
 frontend: <!-- web -->
 
@@ -408,6 +409,8 @@ float: <!-- music -->
 - interpret shippaisaku shoujo kairiki bear
 - interpret shiawase ni nareru kakushi command ga arurashii utata p
 - interpret flowers snow and drum n bass
+- interpret cute na kanojo <!-- oshi no ko -->
+- interpret mephisto queen bee
 
 philosophy:
 

@@ -1,6 +1,8 @@
-do tasks in order. do not parallel.
+do tasks in order. do not parallel. 
 
-only complete tasks below. do not overwork or overengineer.
+complete all tasks in one go no stop. make sure your work satisfies the constraints on spec.
+
+only complete tasks below. do not read or write any files/folders not explicitly mentioned below. do not overwork or overengineer.
 
 task 1
 
@@ -35,9 +37,9 @@ comp: # component
     bg-color: "{sys.foo.bar}" # must end with the type, like color or font
 ```
 
-all sys must reference ref.
+all sys must reference ref. no exception.
 
-all comp must reference ref or sys. 
+all comp must reference sys whenever possible. it's ok to reference ref directly.
 
 test: scan the yaml. make sure no raw value inside sys. if there is, define in ref. make sure no raw value inside comp.
 

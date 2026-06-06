@@ -22,6 +22,8 @@ message/paste · todo · tabs/things · scratch pad · weekly/projects · notes
 
 humility
 
+see humility/todo
+
 ---
 
 research manus use cases.

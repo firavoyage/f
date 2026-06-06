@@ -27223,6 +27223,14 @@ could not boot. <!-- seems ive done something dangerous before on windows. --> t
 
 14 40 stack up muji storage boxes. separate things.
 
+07
+
+02 40 play project sekai while spinning up coding agents.
+
+03 40 put <!-- wireless --> headphone cables in the backpack.
+
+there are times when the world is just too noisy.
+
 
 
 <!-- timebox, plan. -->
