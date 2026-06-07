@@ -27231,6 +27231,12 @@ could not boot. <!-- seems ive done something dangerous before on windows. --> t
 
 there are times when the world is just too noisy.
 
+04 00 interpret some song lyrics.
+
+llms tend to use a repetitive "meaning: " or "interpretation: ". not so elegant, but clear. <!-- i feel it's intuitive now on one ui to see the battery percentage directly, wo battery anxiety. fast. clear. though, i would still hide the details if there is an option. -->
+
+04 20 achieve all perfect on mahou shoujo and chocolate on hard on project sekai. <!-- the first ap on a hard song -->
+
 
 
 <!-- timebox, plan. -->

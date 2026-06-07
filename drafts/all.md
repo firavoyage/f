@@ -411,6 +411,9 @@ float: <!-- music -->
 - interpret flowers snow and drum n bass
 - interpret cute na kanojo <!-- oshi no ko -->
 - interpret mephisto queen bee
+- interpret imawanokiwa iyowa
+- interpret magia puella magi madoka magica
+- interpret mahou shoujo and chocolate
 
 philosophy:
 
