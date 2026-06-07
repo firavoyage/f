@@ -470,6 +470,10 @@ biology:
 - house plant longevity
 - house plant asparagus setaceus preference
 
+geography:
+
+- rain probability historical stats
+
 history:
 
 - binance cz
@@ -527,6 +531,7 @@ politics:
 - eight nine six four meaning white paper
 - dictatorship criticism
 - google pixel for degoogled os irony
+- developed country standard
 
 economics:
 
