@@ -76,4 +76,22 @@ only that component
 
 ---
 
+c
+
+```
+sys:
+  light:
+  dark:
+```
+
+e
+
+```
+sys:
+  color:
+    primary-bg:
+      $value: (light)
+      $dark: (dark)
+comp:
+```
 
