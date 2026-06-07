@@ -306,3 +306,21 @@ para
 pure math 2025
 
 ---
+
+have
+
+tg to activity pub
+
+file:///home/fira/Downloads/AyuGram%20Desktop/ChatExport_2026-04-17%20menci/messages.html#go_to_message292
+
+file:///home/fira/Downloads/AyuGram%20Desktop/ChatExport_2026-04-25%20azaneko/messages.html
+
+file:///home/fira/Downloads/AyuGram%20Desktop/ChatExport_2026-04-01%20acbox%20blog/messages.html
+
+file:///home/fira/Downloads/AyuGram%20Desktop/ChatExport_2026-04-01%20acbox/messages.html
+
+file:///home/fira/Downloads/AyuGram%20Desktop/ChatExport_2026-04-01%20memoh/messages.html#go_to_message16
+
+file:///home/fira/Downloads/AyuGram%20Desktop/ChatExport_2026-05-04%20memoh%20apr/messages.html
+
+---

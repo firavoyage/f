@@ -390,7 +390,7 @@ any app on any design system.
 
 ---
 
-sync memories. archive photos. <!-- icyblue -->
+sync memories.
 
 ---
 
@@ -452,8 +452,6 @@ choose base ui.
 
 proceed progressively.
 
-data attr over clsx
-
 ---
 
 design tokens. css variables.
@@ -468,28 +466,6 @@ i can align it easily in the future.
 
 ---
 
-<!-- example of --> component libraries built on top of base ui from mui
-
-mui components
-
-base ui components
-
-components on code settings page
-
-props. states.
-
-input (search)
-
-checkbox
-
-dropdown
-
-hover info
-
-filter icon on the right of the input bar <!-- inconsistent. it uses md3 dropdown instead of vscode one (default component, dracula color). -->
-
----
-
 you dont have to go fast.
 
 you have to make the right choices at first to prevent regression ahead.
@@ -498,14 +474,6 @@ you have to make the right choices at first to prevent regression ahead.
 
 atoms. patterns. pages.
 
-hand pick some atoms.
-
-read base ui, coss ui, mui. <!-- chakra? mantine? too much. -->
-
-checkbox is good.
-
-checkbox group is basically syntax sugar (simple abstraction) and meaningless accessibility.
-
 ---
 
 complete adwaita css. knowledge design tokens.
@@ -513,5 +481,3 @@ complete adwaita css. knowledge design tokens.
 align components.
 
 ---
-
-
