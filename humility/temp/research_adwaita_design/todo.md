@@ -1,7 +1,0 @@
-- Created adwaita.css with full Adwaita design system tokens and component styles
-- Created adwaita.html showcasing all components (typography, buttons, form controls, card, list, alert, dialog, separator, spinner)
-- Implemented light and dark mode via prefers-color-scheme media query
-- Used flat CSS structure per spec (global + semantic tokens + component classes)
-- Used BEM-style naming with component name as root class (e.g., .Button, .Input)
-- Used kebab-case for children (e.g., .Switch-knob, .Dialog-title)
-- Used data attributes for states (e.g., data-toggled, data-active)

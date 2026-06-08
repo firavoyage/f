@@ -28371,6 +28371,14 @@ thank you!
 - taipei
 - tokyo
 
+08
+
+21 00 read https://github.com/material-extensions/vscode-material-icon-theme/pull/3367
+
+impressive.
+
+clone seti theme and material theme repos.
+
 
 
 <!-- timebox, plan. -->

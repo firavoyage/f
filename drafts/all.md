@@ -154,6 +154,7 @@ archi:
 - telegram fat clients versus smart backends security through obscurity
 - compression methods base64 dry principle measurement
 - orthogonal meaning
+- naming vscode seti theme material icons theme filenames folder names
 
 frontend: <!-- web -->
 
