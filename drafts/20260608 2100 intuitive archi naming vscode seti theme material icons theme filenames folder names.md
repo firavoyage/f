@@ -1230,3 +1230,160 @@ To help you optimize this setup, let me know:
 - What **monorepo tool** are you using (e.g., Turborepo, Nx, or basic npm/yarn/pnpm workspaces)?
 - Do you want to know how to configure your tooling to **ignore all drafts folders at once** across the whole monorepo?
 
+
+# how is it to put spaces in filenames
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">Putting spaces in filenames is </span><strong>perfectly fine for everyday consumer use</strong> but remains highly discouraged in <strong>programming, web development, and command-line environments</strong></mark>. Modern consumer operating systems like Windows and macOS handle spaces flawlessly in their graphical interfaces. However, spaces can break poorly written automated scripts, complicate terminal commands, and create messy web URLs. \[[1](https://www.reddit.com/r/datacurator/comments/ehp37x/do%5Fyou%5Fuse%5Fspaces%5Fin%5Fyour%5Ffilenames/), [2](https://www.facebook.com/thedadonline/posts/you-can-put-spaces-in-file-names-now-xcomjasonkpargin/1098138329020811/), [3](https://blogs.chapman.edu/information-systems/2022/08/29/using-friendly-file-names-for-a-better-digital-experience/), [4](https://www.quora.com/Do-you-use-the-space-character-when-naming-your-computer-files-why-or-why-not), [5](https://www.reddit.com/r/NoStupidQuestions/comments/5598eq/do%5Fspaces%5Fin%5Ffilenames%5Fnot%5Fmatter%5Fanymore/), [6](https://softwareengineering.stackexchange.com/questions/355908/should-i-avoid-using-spaces-in-my-filenames)]
+
+### 🖥️ Why Regular Users Love Spaces
+
+- **Human readability**: Filenames like `Project Budget 2026.xlsx` are natural and easy to read at a glance.
+- **Flawless GUI support**: Graphical User Interfaces (GUIs) like Windows Explorer or Mac Finder have supported spaces for decades without stability issues. \[[1](https://www.quora.com/Why-shouldnt-spaces-be-used-in-filenames-on-the-computer), [2](https://www.facebook.com/thedadonline/posts/you-can-put-spaces-in-file-names-now-xcomjasonkpargin/1098138329020811/), [3](https://www.quora.com/Do-you-use-the-space-character-when-naming-your-computer-files-why-or-why-not)]
+
+### 💻 Why Developers and IT Pros Hate Spaces
+
+- **Terminal argument splitting**: Command-line interfaces use spaces to separate distinct commands and arguments. If you type `cd my folder`, the system thinks you are trying to run `cd` on a folder named `my`, while ignoring `folder`.
+- **Extra syntax work**: To interact with spaced filenames in a terminal, you must "escape" the spaces using backslashes (`my\ folder`) or wrap the entire name in quotes (`"my folder"`).
+- **Web URL ugliness**: Web browsers do not allow spaces in URLs. If you upload `my image.jpg` to a server, the space is automatically converted into an encoded string, turning your clean name into `my%20image.jpg`.
+- **Broken scripts**: Automated backup software, data pipelines, and developer build scripts frequently crash if they encounter an unexpected space in a file path. \[[1](https://www.reddit.com/r/datacurator/comments/ehp37x/do%5Fyou%5Fuse%5Fspaces%5Fin%5Fyour%5Ffilenames/), [2](https://commandlinux.com/how-to/spaces-in-filename/), [3](https://www.youtube.com/shorts/5wpPk2vDOrI), [4](https://www.youtube.com/watch?v=QuvRQovgxuc), [5](https://unix.stackexchange.com/questions/148043/is-space-not-allowed-in-a-filename), [6](https://softwareengineering.stackexchange.com/questions/355908/should-i-avoid-using-spaces-in-my-filenames), [7](https://www.reddit.com/r/explainlikeimfive/comments/151pm1x/eli5%5Fwhy%5Fdo%5Ffile%5Fnames%5Fuse%5Funderscores%5Fwhat%5Fis/), [8](https://www.reddit.com/r/NoStupidQuestions/comments/5598eq/do%5Fspaces%5Fin%5Ffilenames%5Fnot%5Fmatter%5Fanymore/), [9](https://www.reddit.com/r/EngineeringStudents/comments/1k044h3/lpt%5Fdo%5Fnot%5Fuse%5Fspaces%5Fin%5Ffile%5Fnames/), [10](https://subethasoftware.com/2025/02/27/spaces-in-path-names-still-break-stuff-in-2025/)]
+
+### 🛠️ The Best Universal Alternatives
+
+If you want to guarantee your files work flawlessly across every platform, computer system, and web server, use these industry-standard separators:
+
+- **Kebab-case (Hyphens)**: `my-file-name.txt` (Highly recommended for web pages and search engine optimization).
+- **Snake\_case (Underscores)**: `my_file_name.txt` (The standard for coding and data science).
+- **CamelCase / PascalCase**: `MyFileName.txt` (Separating words by capitalizing the first letters without using any spaces). \[[1](https://www.reddit.com/r/datacurator/comments/ehp37x/do%5Fyou%5Fuse%5Fspaces%5Fin%5Fyour%5Ffilenames/), [2](https://www.mtu.edu/umc/services/websites/writing/characters-avoid/), [3](https://www.wesjones.co/guides/ideal-file-naming), [4](https://www.reddit.com/r/learnprogramming/comments/1b8uscc/why%5Funderscore%5Fwhen%5Fnaming%5Ffolders%5Fand%5Ffiles/), [5](https://www.quora.com/Why-do-older-people-not-like-putting-spaces-in-file-names-when-saving-documents)]
+
+Are you naming files for **personal organization**, or are you working on a project involving **coding, web design, or command-line scripts**? Knowing your use case can help determine the safest naming convention to adopt.
+
+- [link](https://www.reddit.com/r/datacurator/comments/ehp37x/do%5Fyou%5Fuse%5Fspaces%5Fin%5Fyour%5Ffilenames/)\
+  Do you use spaces in your filenames? : r/datacurator - Reddit\
+  Dec 30, 2019 — Spaces are okay, hyphens ("-") are less desirable as it creates inconsistencies in naming structures and this is typically exposed...\
+  Reddit·r/datacurator
+- [link](https://unix.stackexchange.com/questions/148043/is-space-not-allowed-in-a-filename)\
+  Is space not allowed in a filename?\
+  Aug 2, 2014 — Spaces are allowed in filenames, as you have observed. If you look at the "most UNIX filesystems" entry in this chart in wikipedia...\
+  Unix & Linux Stack Exchange
+- [link](https://www.reddit.com/r/NoStupidQuestions/comments/5598eq/do%5Fspaces%5Fin%5Ffilenames%5Fnot%5Fmatter%5Fanymore/)\
+  Do spaces in filenames not matter anymore? - Reddit\
+  Sep 30, 2016 — It is generally not a problem at all, and is a default naming scheme for many Windows files and directories, including including t...\
+  Reddit·r/NoStupidQuestions
+
+Show all
+
+## You said: i think software should adapt humans, not vice versa
+
+That is a foundational principle of **User-Centered Design (UCD)**. From a human perspective, software _should_ do the heavy lifting so you do not have to change your natural behavior.
+
+The conflict exists because computers and humans process information using entirely different logic systems.
+
+### 🧠 How Humans Think vs. 💾 How Computers Think
+
+- **Humans use context**: We see `Project Budget 2026.xlsx` and instantly understand it as one single concept.
+- **Computers use literal delimiters**: Code reads characters one by one. By default, a space means "end of data item" or "next command."
+
+### 🔄 The Shift Toward Human-Centric Software
+
+Software actually has adapted massively to accommodate humans over time:
+
+- **The Past**: Early computers forced humans to type exact, abstract binary or text commands. One wrong character broke everything.
+- **The Present**: Graphical interfaces (GUIs), touchscreens, and natural language AI let you interact with machines using human gestures and words.
+- **The File Space Solution**: Modern operating systems _did_ adapt by automatically wrapping your spaced filenames in hidden quotes behind the scenes so the computer can understand them.
+
+### 🛑 Why the "Under the Hood" Friction Remains
+
+The reason developers still avoid spaces is not because they want humans to suffer. It is because **building software that perfectly guesses human intent is incredibly complex**.
+
+If a programmer writes software to handle spaces, hyphens, emojis, and special characters all at once, the code becomes bulky, slow, and prone to security bugs. For critical infrastructure—like databases, servers, and aviation systems—engineers prioritize absolute reliability over human convenience.
+
+Are you running into a specific program or workflow that is **forcing you to change how you naturally work**? If you share what you are building or organizing, we can look at the easiest way to handle it.
+
+## You said: obviously you should put them in quotes by default. if you want to take robustness further, you can even escape possible quotes or shell expanding in filenames if you really expect them. simply pasting the name is too stupid, and you should let it break, as early as possible.
+
+You are entirely correct. From a software engineering standpoint, **blindly pasting variables without sanitizing them is lazy programming** and a major source of critical security bugs (like argument injection).
+
+The industry fully agrees with your logic: software _should_ handle these edge cases securely by default, and if it cannot do so safely, it should fail immediately and loudly rather than failing silently later.
+
+### 🛡️ How Modern Systems Implement Your Logic
+
+Well-written, modern software handles spaces and special characters exactly the way you described:
+
+- **Tokenization over string pasting**: Modern programming languages avoid raw string concatenation for commands. Instead, they pass arguments as an array of distinct strings (e.g., `["ls", "-l", "my file.txt"]`). This completely bypasses the shell interpreter, making spaces a non-issue because the OS knows exactly where each argument starts and ends.
+- **Parameterized APIs**: Just like SQL databases use parameterized queries to prevent SQL injection, modern execution APIs (like Python's `subprocess.run` or Node.js's `execFile`) do not invoke a shell by default. They treat the filename as a single literal block of data.
+- **Fail-fast design**: Your point about breaking "as early as possible" is a core tenet of robust software architecture. If an application receives an ambiguous path, throwing an immediate validation error prevents corrupting data down the line.
+
+### ⚠️ Why the Problem Persists anyway
+
+If the solution is so obvious, why do files with spaces still cause so many issues?
+
+- **Legacy tech debt**: Millions of active systems rely on scripts written decades ago in old Unix shells (like Bash) where quotes were forgotten. Rewriting all global infrastructure is an ongoing process.
+- **The "Shell Injection" trap**: Developers still occasionally use dangerous functions (like Python's `os.system` or Node's `exec`) that force a shell interpreter to parse the string. If they forget to manually escape quotes or shell expansions, the system becomes vulnerable.
+
+Ultimately, your frustration is completely justified. The fact that spaces still break things in 2026 is not a limitation of computer science—it is a **failure of developers utilizing insecure, outdated coding practices** instead of modern, safe frameworks.
+
+Are you dealing with an open-source tool, a legacy system, or **writing your own script** where you need to implement this kind of robust argument handling safely?
+
+## You said: is it wise to use spaces in filenames on my git repo instead of snake case for example under my philosophy
+
+Under your philosophy—that software must adapt to humans and fail fast if it cannot handle data safely—<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>it is perfectly logical to use spaces in your Git repo.</strong></mark>
+
+However, whether it is "wise" depends entirely on your goal. If your goal is to **force modern engineering practices** on your tools, use spaces. If your goal is to **avoid friction with third-party tools**, stick to snake\_case.
+
+Here is how your philosophy interacts with Git and the broader ecosystem.
+
+### 🐧 How Git Handles Your Philosophy (The Good News)
+
+Git itself actually aligns with your philosophy perfectly. It does not blindly paste strings; it tokenizes them.
+
+- **Internal Robustness**: Git tracks files as raw data content (blobs) mapped to paths. It doesn't care if a file is named `My File.txt` or `My_File.txt`.
+- **Safe CLI Defaulting**: If you run `git status`, Git will automatically wrap spaced filenames in quotes (e.g., `"My File.txt"`) if it thinks they might cause ambiguity.
+- **Fail-Fast Behavior**: If you type `git add My File.txt`, Git will immediately fail and tell you it cannot find a file named `My`. It forces you to write `git add "My File.txt"`, upholding your rule of failing as early as possible.
+
+### 💥 Where Your Philosophy Meets Reality (The Friction)
+
+While Git will respect your files with spaces, **the automated tools, scripts, and CI/CD pipelines** that interact with your repository might not.
+
+If you use spaces, you will immediately expose which tools are built poorly:
+
+- **Brittle CI/CD Pipelines**: Many GitHub Actions or GitLab CI scripts are written in raw Bash. If a developer forgot to wrap a variable in double quotes (e.g., `rm $FILE` instead of `rm "$FILE"`), your spaced filename will break their build script.
+- **Cross-Platform Path Quirks**: Windows uses backslashes (`\`) for paths, while Unix uses forward slashes (`/`). Throwing spaces and quotes into the mix can cause cross-platform scripts to fail if they aren't using robust path-parsing libraries.
+- **Linters and Compilers**: Some older programming language compilers or code formatters struggle when paths to source code contain spaces.
+
+### ⚖️ The Verdict
+
+- **Use spaces if** you are treating this repository as a statement of your philosophy, or if it contains user-facing documents (like Markdown notes, documentation, or design assets) where human readability is paramount. You will occasionally have to add quotes to your commands, but you will be interacting with a system acting exactly as you believe it should.
+- **Avoid spaces if** this repo contains source code meant to be built, compiled, or deployed automatically by third-party tools. You aren't giving in to "stupid software"—you are simply avoiding the tax of fixing other people's poorly written, non-parameterized scripts.
+
+Are you building a repo for **personal documentation/notes** (where spaces shine), or is this a **codebase** that will run through automated build pipelines?
+
+## You said: humans will often ctrl p the filenames or rg through the content
+
+Both `ctrl+p` fuzzy finders and `ripgrep` (`rg`) handle spaces flawlessly, aligning perfectly with your philosophy.
+
+Modern tools have adapted to human input by default, so your choice of filename will not break these workflows.
+
+### 🔍 How `ripgrep` (`rg`) Handles Spaces
+
+`ripgrep` is a modern, robust CLI tool built in Rust. It does not use fragile shell-pasting logic under the hood.
+
+- **Content Searching**: Running `rg "search term"` will seamlessly scan inside files with spaces and output their paths correctly.
+- **Path Printing**: By default, `rg` prints paths directly to your terminal screen as single blocks of text.
+- **Safe Piping**: If you pipe `rg` output into other tools, it can output null-terminated strings (`rg --null`). This separates file paths with a `\0` character instead of a space, preventing any downstream shell splitting.
+
+### ⌨️ How `ctrl+p` Fuzzy Finders Handle Spaces
+
+Fuzzy finders (like `fzf`, or the built-in `Ctrl+P` searchers in VS Code, Sublime Text, and Obsidian) are specifically built to map human keystrokes to file paths.
+
+- **Smart Matching**: If you type `proj bud`, a fuzzy finder will instantly match `Project_Budget.xlsx` or `Project Budget.xlsx` identically.
+- **Safe Selection**: When you hit `Enter` on a file with spaces, the editor opens the file buffer directly through system APIs, completely bypassing the shell. It will never fail because of a space.
+
+### ⚠️ The Only Minor Trade-off
+
+The only time spaces cause friction in this specific workflow is if you want to **copy a filename from your terminal output and use it in a legacy command**.
+
+If `rg` prints a match in `User Manual.md`, you cannot simply double-click `User Manual.md` to highlight it, copy it, and type `cat User Manual.md`. You will be forced to manually wrap it in quotes.
+
+If you are comfortable typing those quotes when manually interacting with your shell, your workflow with `ctrl+p` and `rg` will be completely smooth.
+
+Are you configuring `fzf` or `ripgrep` inside a specific text editor like **Neovim, VS Code, or Emacs** right now? We can ensure your specific editor setup passes those spaced paths securely.
