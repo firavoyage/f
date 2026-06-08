@@ -1,3 +1,5 @@
+<!-- see also: "para theme adwaita" -->
+
 <!-- since codex could not export from vendor lock in natively right now, try out claude. codex has some noisy version ads btw. -->
 
 <!-- gemma fast outputs some malformed fn calls. -->
@@ -20927,4 +20929,3 @@ Would you like to configure your workspace to **completely hide files** with unr
   Aug 14, 2022 — Set "git. mergeEditor": false in your settings. json file.\
   Reddit·r/vscode
 
-# 

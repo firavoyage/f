@@ -411,11 +411,12 @@ float: <!-- music -->
 - interpret shippaisaku shoujo kairiki bear
 - interpret shiawase ni nareru kakushi command ga arurashii utata p
 - interpret flowers snow and drum n bass
-- interpret cute na kanojo <!-- oshi no ko -->
+- interpret cute na kanojo <!-- oshi no ko --> <!-- project sekai -->
 - interpret mephisto queen bee
 - interpret imawanokiwa iyowa
 - interpret magia puella magi madoka magica
 - interpret mahou shoujo and chocolate
+- research maimai dx song list project sekai song list touhou project song list
 
 philosophy:
 
