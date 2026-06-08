@@ -28381,6 +28381,12 @@ clone seti theme and material theme repos.
 
 23 20 watch funshiki on brown dust ii third anni. browse some animations.
 
+09
+
+01 00 surf zhihu.
+
+seems uee paper is leaked during the exam, by photo taking. <!-- which is common actually, due to the discrepancies of anti cheating enforcement in different regions -->
+
 
 
 <!-- timebox, plan. -->
