@@ -95,6 +95,26 @@ sys:
 comp:
 ```
 
+upd:
+
+e
+
+```
+sys:
+  color:
+    primary-bg:
+      value: "{ref.color.mycolor-1}" # no var would end w "value". no need to add prefix.
+      dark: "..."
+modes:
+  theme:
+    - light # first item is default
+    - dark
+  density:
+    - comfortable
+    - compact
+    - cozy
+```
+
 ---
 
 going fast feels exciting. but i do not have to chase something or overclock myself.
@@ -114,6 +134,5 @@ more of cross platform compatibility. keep it dry. avoid unnecessary abstraction
 it's easy to standardize later.
 
 ---
-
 
 
