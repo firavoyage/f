@@ -95,3 +95,25 @@ sys:
 comp:
 ```
 
+---
+
+going fast feels exciting. but i do not have to chase something or overclock myself.
+
+ref
+
+radius 2 4 16 limits options. you could not accidentally pick a radius of odd numbers.
+
+sys
+
+corner is the decision. you pick one of the good options. and you can change, like for a new theme, like color theme, compact, device, or you wanna update your brand.
+
+comp
+
+more of cross platform compatibility. keep it dry. avoid unnecessary abstractions.
+
+it's easy to standardize later.
+
+---
+
+
+

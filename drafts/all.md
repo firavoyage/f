@@ -153,6 +153,7 @@ archi:
 - yaml indentation flexible resilient parser
 - telegram fat clients versus smart backends security through obscurity
 - compression methods base64 dry principle measurement
+- orthogonal meaning
 
 frontend: <!-- web -->
 
