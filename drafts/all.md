@@ -345,6 +345,8 @@ linguistics: <!-- grammar, etymology -->
 - dict wordnet synonyms synsets
 - name ayugram
 - name gemini gemma
+- languages make humans dominant
+- name fira etymology
 
 literature:
 
@@ -417,6 +419,9 @@ float: <!-- music -->
 - interpret magia puella magi madoka magica
 - interpret mahou shoujo and chocolate
 - research maimai dx song list project sekai song list touhou project song list
+- interpret override yoshida yasei
+- interpret phony
+- interpret goodbye declaration
 
 philosophy:
 
@@ -524,6 +529,7 @@ history:
 - ui design dark mode movement
 - gtk <!-- gimp toolkit, libadwaita -->
 - iphone steve jobs iphone 4s
+- android powerful enough at lowest security ubuntu touch
 
 politics:
 
