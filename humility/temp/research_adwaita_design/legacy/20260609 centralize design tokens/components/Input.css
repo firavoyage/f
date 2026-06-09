@@ -1,0 +1,28 @@
+.Input {
+  appearance: none;
+  background: var(--view-bg-color, #fff);
+  border: 1px solid var(--btn-border, #cdc7c2);
+  border-radius: var(--radius-md, 6px);
+  color: var(--view-fg-color, rgb(0 0 6 / 80%));
+  font-size: var(--font-size-sm, 0.875rem);
+  padding: var(--space-2, 4px) var(--space-3, 6px);
+  outline: none;
+  transition: border-color 0.15s ease;
+  width: 100%;
+
+  &:hover {
+    border-color: var(--accent-color, #3584e4);
+  }
+
+  &:focus {
+    border-color: var(--accent-color, #3584e4);
+    box-shadow: 0 0 0 2px var(--accent-color, #3584e433);
+  }
+
+  &:disabled,
+  &[data-disabled] {
+    opacity: var(--disabled-opacity, 40%);
+    pointer-events: none;
+    background: var(--light-3, #deddda);
+  }
+}

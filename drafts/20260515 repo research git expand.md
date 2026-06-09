@@ -2,9 +2,7 @@
 
 <!-- currently i already have some abstraction on git, which is shell functions or aliases. i might not need refray as i see my local fs as the single source of truth (i.e. i do not pull from the messy world). -->
 
-#
-
-if i have a folder, where each branch is a subfolder and each commit is a subsubfolder where the complete state is, does it carry the same amount of infomation of a git repo
+# if i have a folder, where each branch is a subfolder and each commit is a subsubfolder where the complete state is, does it carry the same amount of infomation of a git repo
 
 May 15, 2026
 
@@ -104,9 +102,7 @@ Script Mechanics
 
 Would you like help **modifying this script to include commit metadata** (like author, date, and commit messages) as a text file in each folder, or would you prefer a **Python version** of this automation?
 
-#
-
-what is git webhook
+# what is git webhook
 
 A **Git webhook** is an automated, event-driven notification mechanism that transmits real-time data from a Git hosting platform to an external web server via an **HTTP POST request**. \[[1](https://hookdeck.com/webhooks/platforms/getting-started-github-webhooks), [2](https://www.youtube.com/watch?v=Hn%5FpIXVQa00\&t=5)]
 
