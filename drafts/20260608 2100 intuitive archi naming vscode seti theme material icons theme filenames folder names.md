@@ -1387,3 +1387,89 @@ If `rg` prints a match in `User Manual.md`, you cannot simply double-click `User
 If you are comfortable typing those quotes when manually interacting with your shell, your workflow with `ctrl+p` and `rg` will be completely smooth.
 
 Are you configuring `fzf` or `ripgrep` inside a specific text editor like **Neovim, VS Code, or Emacs** right now? We can ensure your specific editor setup passes those spaced paths securely.
+
+# (d) how to prevent expanding in double quotes in cli
+
+To prevent expansion inside double quotes in a command-line interface (CLI) like Bash or Zsh, you must <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>escape the specific expansion characters with a backslash (<code dir="ltr" style="font-size: 14px; margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 1px solid rgb(44, 46, 53);">\</code>)</strong> or <strong>switch to single quotes (<code dir="ltr" style="font-size: 14px; margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 1px solid rgb(44, 46, 53);">'</code>)</strong></mark>. Double quotes (often called "weak quotes") inherently allow variable expansion (`$VAR`) and command substitution (`$(command)`). \[[1](https://unix.stackexchange.com/questions/768705/if-my-variable-contains-quoted-globs-and-i-expand-it-without-using-double-quotes), [2](https://stackoverflow.com/questions/36885461/do-double-quotes-single-quotes-and-no-quotes-always-behave-the-same-in-bash), [3](https://askubuntu.com/questions/493749/prevent-parameter-expansion-in-shell-script)]
+
+### 1. Escape with a Backslash (`\`) \[[1](https://linuxconfig.org/bash-script-quotation-explained-with-examples)]
+
+The most direct way to stop expansion while keeping your double quotes is to place a backslash right before the special characters `\$` or \`\`\`\`\`. \[[1](https://askubuntu.com/questions/20034/differences-between-doublequotes-singlequotes-and-backticks-on-comm), [2](https://stackoverflow.com/questions/36885461/do-double-quotes-single-quotes-and-no-quotes-always-behave-the-same-in-bash)]
+
+- **Variables:** `"\$VAR"` stops the shell from substituting the variable's value.
+- **Command Substitution:** `"\$(command)"` prevents the command from executing. \[[1](https://unix.stackexchange.com/questions/609946/escaping-double-quotes-inside-command-substitution), [2](https://stackoverflow.com/questions/36885461/do-double-quotes-single-quotes-and-no-quotes-always-behave-the-same-in-bash), [3](https://serverfault.com/questions/69283/when-to-use-single-quotes-double-quotes-or-no-quotes-in-grep), [4](https://cloudaffle.com/series/how-shell-receives-inputs/double-quotes/), [5](https://ss64.com/bash/syntax-quoting.html)]
+
+bash
+
+```
+# This WILL expand:
+echo "My home is $HOME"
+# Output: My home is /home/user
+
+# This WILL NOT expand:
+echo "My home is \$HOME"
+# Output: My home is $HOME
+```
+
+Use code with caution.
+
+### 2. Switch to Single Quotes (`' '`) \[[1](https://superuser.com/questions/1404244/parameter-expansion-variable-expansion-and-quotes-within-quotes)]
+
+If you do not strictly need double quotes, use single quotes (known as "strong quotes"). **Inside single quotes, everything is treated as a literal string**, and absolutely no expansion takes place. \[[1](https://stackoverflow.com/questions/13799789/expansion-of-variables-inside-single-quotes-in-a-command-in-bash), [2](https://www.reddit.com/r/bash/comments/wz6jcq/variable%5Fexpansion%5Funder%5Fstrong%5Fquotes/), [3](https://askubuntu.com/questions/20034/differences-between-doublequotes-singlequotes-and-backticks-on-comm), [4](https://discuss.ocaml.org/t/double-quotes-expansion-conflict-when-using-the-unix-module/881), [5](https://www.baeldung.com/linux/grep-escape-double-quote)]
+
+bash
+
+```
+echo 'The variable is $HOME and the command is $(date)'
+# Output: The variable is $HOME and the command is $(date)
+```
+
+Use code with caution.
+
+### 3. Concatenate (Mix) Quotes
+
+If you need double quotes for part of your string (e.g., to expand one variable) but want to protect another part, you can close and reopen different quotes right next to each other without spaces. \[[1](https://www.reddit.com/r/bash/comments/wz6jcq/variable%5Fexpansion%5Funder%5Fstrong%5Fquotes/)]
+
+bash
+
+```
+# Only $USER expands; $password stays literal
+echo "Hello $USER, your password is "'$password'
+```
+
+Use code with caution.
+
+### 4. Turn Off History Expansion (`!`) \[[1](https://www.daniloaz.com/en/script-to-automatically-change-all-gp2-volumes-to-gp3-with-aws-cli)]
+
+If you are trying to prevent the exclamation point (`!`) from expanding into your terminal's command history, a backslash inside double quotes works, or you can temporarily turn off history expansion altogether: \[[1](https://stackoverflow.com/questions/36885461/do-double-quotes-single-quotes-and-no-quotes-always-behave-the-same-in-bash), [2](https://www.reddit.com/r/git/comments/1k1sq89/why%5Fi%5Fcant%5Finclude%5Fdouble%5Fquotes%5Fin%5Fcommit/), [3](https://superuser.com/questions/1311023/sed-command-in-single-quotes-works-but-it-doesnt-using-double-quotes)]
+
+bash
+
+```
+# Disable history expansion for the current session
+set +H
+
+# Now this will not throw a "substitution failed" error:
+echo "Hello World!"
+```
+
+Use code with caution.
+
+If you want to tailor this further, tell me **what specific character** is expanding or share the **exact CLI command** you are trying to run.
+
+- [link](https://stackoverflow.com/questions/13799789/expansion-of-variables-inside-single-quotes-in-a-command-in-bash)\
+  Expansion of variables inside single quotes in a command in Bash\
+  Dec 10, 2012 — \* 8 Answers. Sorted by: 1064. Inside single quotes everything is preserved literally, without exception. That means you have to cl...\
+  Stack Overflow
+- [link](https://unix.stackexchange.com/questions/768705/if-my-variable-contains-quoted-globs-and-i-expand-it-without-using-double-quotes)\
+  If my variable contains quoted globs and I expand it without using ...\
+  Feb 6, 2024 — \* Single-quote chars within a double-quoted string are NOT 'consumed'; try x="it's 'me'!"; echo "$x" dave\_thompson\_085. – dave\_tho...\
+  Unix & Linux Stack Exchange
+- [link](https://stackoverflow.com/questions/36885461/do-double-quotes-single-quotes-and-no-quotes-always-behave-the-same-in-bash)\
+  Do double quotes, single quotes and no quotes always ...\
+  Apr 27, 2016 — 6 Answers. Sorted by: 4. There are multiple forces in place. In general, you can assume that single quotes is to hide the contents...\
+  Stack Overflow
+
+Show all
+
+
