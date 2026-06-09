@@ -7057,7 +7057,3 @@ Research complete. Wrote `20260609 report research libadwaita design tokens.md` 
 - **Note**: key design tokens exist in c code for durations, easing, widget sizing
 
 ---
-
-#
-
-

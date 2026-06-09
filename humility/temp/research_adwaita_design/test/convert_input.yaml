@@ -1,0 +1,26 @@
+modes:
+  theme:
+    - light
+    - dark
+  density:
+    - comfortable
+    - compact
+
+ref:
+  color:
+    palette:
+      blue-1: "#99c1f1"
+      red-1: "#f66151"
+  spacing:
+    space-1: "0.25rem"
+
+sys:
+  color:
+    accent:
+      value: "{ref.palette.blue-1}"
+      dark: "{ref.palette.red-1}"
+    bg-primary:
+      value: "{ref.color.palette.blue-1}"
+    text-primary:
+      value: "#000000"
+      dark: "#ffffff"
