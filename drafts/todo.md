@@ -352,20 +352,6 @@ it's easy to take terminal width into consideration.
 
 ---
 
-storybook simpler alternatives
-
-create mine.
-
----
-
-design system. whatever i do i should have one. adwaita + yaru fits the vibe of my desktop.
-
----
-
-create an example web app supporting both gnome adwaita design system and material design three using react and semantic css. plan first. write a spec and stop to wait for my review.
-
----
-
 tg to activitypub
 
 activitypub to something.
@@ -378,106 +364,10 @@ semantic search
 
 ---
 
-libadwaita in react. only use prop, state, and effect (limit to like event listener and interval) for porting compatibility.
-
----
-
 para: <!-- for eat, grow, (and have, maybe) -->
 
 any blog. any document on fs.
 
 any app on any design system.
-
----
-
-sync memories.
-
----
-
-design tokens.
-
-component set.
-
-extend a component library.
-
----
-
-how to create a design system
-
-what are design tokens
-
-what components should a component library have
-
-what components does mui have
-
-(chakra, adwaita, breeze)
-
-how to extend a component library
-
-how to create a storybook of a component library
-
-mui storybook
-
-what does a mui button do
-
-how should the ui change for desktops of different sizes
-
-sidebar
-
----
-
-do it progressively, steadily.
-
-think about the names. define myself.
-
-there are many version. follow the latest gnome.
-
-think what the app would look like. an example empty gnome builder app first.
-
----
-
-define design tokens.
-
-define component library.
-
-create a simple storybook.
-
-create a blank gnome builder or workbench app
-
----
-
-plan to port to web. todo.md.
-
-choose base ui.
-
-proceed progressively.
-
----
-
-design tokens. css variables.
-
-i guess it's easy to change or modernize css units.
-
-the key is just to make up a set of design tokens. like tailwind. like refactoring ui.
-
-and reference. never hardcode.
-
-i can align it easily in the future.
-
----
-
-you dont have to go fast.
-
-you have to make the right choices at first to prevent regression ahead.
-
----
-
-atoms. patterns. pages.
-
----
-
-complete adwaita css. knowledge design tokens.
-
-align components.
 
 ---

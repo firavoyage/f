@@ -14,11 +14,43 @@ see drafts/todo
 
 ---
 
-design tokens to json
+design system. whatever i do i should have one. adwaita + yaru fits the vibe of my desktop.
 
 ---
 
-generate css
+create an example web app supporting both gnome adwaita design system and material design three using react and semantic css. plan first. write a spec and stop to wait for my review.
+
+---
+
+do it progressively, steadily.
+
+think about the names. define myself.
+
+there are many version. follow the latest gnome.
+
+think what the app would look like. an example empty gnome builder app first.
+
+---
+
+define design tokens.
+
+define component library.
+
+create a simple storybook.
+
+create a blank gnome builder or workbench app
+
+---
+
+you dont have to go fast.
+
+you have to make the right choices at first to prevent regression ahead.
+
+---
+
+atoms. patterns. pages.
+
+extend.
 
 ---
 
@@ -56,73 +88,6 @@ i will enforce the separation through naming.
 
 ---
 
-storybook. no need to be fancy.
-
-no sidebar. no links to "all, foo, bar, ..."
-
-declare a list of components.
-
-Component:
-
-title, all component variations.
-
-default (or malformed, or unexisting component): 
-
-all components on the page
-
-url ?component=foo
-
-only that component
-
----
-
-c
-
-```
-sys:
-  light:
-  dark:
-```
-
-e
-
-```
-sys:
-  color:
-    primary-bg:
-      $value: (light)
-      $dark: (dark)
-comp:
-```
-
-upd:
-
-e
-
-```
-sys:
-  color:
-    primary-bg:
-      value: "{ref.color.mycolor-1}" # no var would end w "value". no need to add prefix.
-      dark: "..."
-modes:
-  theme:
-    - light # first item is default
-    - dark
-  density:
-    - comfortable
-    - compact
-    - cozy
-```
-
----
-
-parser.
-
-yaml to css.
-
----
-
 going fast feels exciting. but i do not have to chase something or overclock myself.
 
 ref
@@ -140,4 +105,15 @@ more of cross platform compatibility. keep it dry. avoid unnecessary abstraction
 it's easy to standardize later.
 
 ---
+
+research memoh and arkloop i guess
+
+stop after use.
+
+---
+
+finalize adwaita.yaml
+
+align components
+
 

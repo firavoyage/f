@@ -4,6 +4,8 @@
 
 <!-- i guess it's extremely not common to see functions like add(a,b,c) irl. in prod code. interchangeablility is almost exclusive for math. -->
 
+<!-- "when revising existing code, do not change unless asked" (i guess it's already default) -->
+
 # 0.0
 
 follow these:
@@ -143,3 +145,39 @@ follow these:
   - no ascii styling, never fancy
 - notes:
   - prefer modern proven libraries, do not reinvent wheels
+
+# 0.3
+
+follow these:
+
+- use:
+  - ubuntu
+  - x11
+  - zsh
+  - typescript
+  - es module
+  - pnpm
+  - bun (command: `br`, not `bun`)
+  - react and parceljs (command: `tmux new-session -d -s myparcel 'pnpm exec parcel serve app.html --dist-dir .build --cache-dir .build/.parcel-cache'`, you must use tmux or it will be killed)
+- naming:
+  - snake case for functions and variables
+  - verb noun for actions, predicate for bools, noun for factory functions
+  - lowercase with spaces for filenames `today i learned.md`
+  - for react components, override all previous rules, use pascal case on both component function and its filename `MyComponent.tsx`
+- style:
+  - functional programming
+  - modular and cohesive
+  - always async, only sync for pure and quick methods
+  - always function statement, only arrow function for props
+  - positional params for one param like `is_prime(n)` and interchangeable params like `add(a, b)`, object params for complex params like `query_database(options)`, mixed for only one required param and optional flags like `fetch(url, options)`, never wrap like `capitalize(data: {sentence: string})`
+  - always type, never interface
+  - avoid typescriptism, only define types on function params and return, never alias literal types like `type message = string`
+  - use `// @ts-expect-error` if needed
+- comment:
+  - self explanatory over commenting
+  - lowercase for what and why, title case for where, sentence case in docs
+  - never uppercase anywhere
+  - no ascii styling, never fancy
+- notes:
+  - prefer modern proven libraries, do not reinvent wheels
+
