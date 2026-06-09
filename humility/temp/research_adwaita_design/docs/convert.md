@@ -27,19 +27,19 @@ sys:
     accent:
       value: "{ref.palette.blue-1}"
       dark: "{ref.palette.red-1}"
-    bg-primary:
-      "{ref.palette.blue-1}"    # shorthand when only default value
+    bg-primary: "{ref.palette.blue-1}"    # shorthand when only default value
 ```
 
 ### key rules
 
-- `modes` defines available variants. first item in each mode is default.
+- `modes` defines any number of mode types (theme, density, etc). first item in each mode is default.
 - `ref` contains primitive tokens. each key becomes `--ref-{path}-{key}`.
 - `sys` contains semantic tokens. each key becomes `--sys-{path}-{key}`.
 - **sys values must reference ref** - never use raw literals.
 - sys values can be:
-  - shorthand referencing ref: `accent: "{ref.palette.blue-1}"`
+  - shorthand referencing ref: `accent: "{ref.palette.blue-1}"` (default only)
   - object with `value` and variants: `accent: { value: "{ref.palette.blue-1}", dark: "{ref.palette.red-1}" }`
+- variant keys must match mode variant names (e.g., "dark" for theme, "compact" for density).
 - reference ref values with `{ref.path.to.key}` syntax. dots become hyphens in css.
 
 ## how to convert
@@ -70,6 +70,6 @@ br convert.ts < input.yaml > output.css
 ### output rules
 
 - all ref tokens go in `:root`.
-- default sys tokens go in a selector combining `:root` + default theme + default density.
-- variant sys tokens (those with `dark` key) go in `[data-theme="dark"]`.
+- default sys tokens go in a selector combining `:root` + first variant of each mode.
+- variant sys tokens go in selectors like `[data-theme="dark"]`, `[data-density="compact"]`.
 - rulesets with no tokens are omitted.

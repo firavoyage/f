@@ -1,0 +1,6 @@
+- main [ref=e3]:
+  - generic [ref=e4]:
+    - heading "Button" [level=2] [ref=e5]
+    - generic [ref=e6]:
+      - button "Primary" [ref=e7] [cursor=pointer]
+      - button "Disabled" [disabled]

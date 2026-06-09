@@ -44,10 +44,10 @@ follow these:
   - bun (command: `br`, not `bun`)
   - react and parceljs (command: `tmux new-session -d -s myparcel 'pnpm exec parcel serve app.html --dist-dir .build --cache-dir .build/.parcel-cache'`, you must use tmux or it will be killed)
 - naming:
-  - snake case
+  - snake case for functions and variables
   - verb noun for actions, predicate for bools, noun for factory functions
-  - for react components and their filenames, pascal case
-  - for general filenames, lowercase
+  - lowercase with spaces for filenames `today i learned.md`
+  - for react components, override all previous rules, use pascal case on both component function and its filename `MyComponent.tsx`
 - style:
   - functional programming
   - modular and cohesive

@@ -1,5 +1,4 @@
 # adwaita design tokens
-# three-layer system: ref (primitives) -> sys (semantic)
 
 modes:
   theme:
