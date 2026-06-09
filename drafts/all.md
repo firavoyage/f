@@ -599,6 +599,11 @@ laws:
 - legal system dirty secret
 - youtube made for kids coppa restriction dmca criticism digital colonialism
 - criticism web accessibility compliance
+- agpl opensource strictness illusion
+
+repo:
+
+- research git criticism conservative lack features better cli ux piper scalar
 
 glaze:
 

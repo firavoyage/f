@@ -13,3 +13,16 @@ only complete tasks below. do not read or write any files/folders not explicitly
 complete all tasks in one go no stop. make sure your work satisfies the constraints.
 
 only complete tasks below. do not read or write any files/folders not explicitly listed below. do not overwork or overengineer.
+
+# 0.0-order
+
+do tasks in order. do not parallel. 
+
+# 0.1
+
+complete all tasks in one go no stop. make sure your work satisfies the constraints.
+
+only complete tasks below. do not read or write any files/folders not explicitly listed. do not overwork or overengineer.
+
+<!-- c: current, e: expected -->
+
