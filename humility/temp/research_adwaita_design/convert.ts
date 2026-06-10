@@ -76,6 +76,9 @@ function generateSysCss(tokens: Record<string, string | TokenValue>): string {
     if (typeof value === "string") {
       const resolved = resolveRef(value);
       lines.push(`  --sys-${key}: ${resolved};`);
+    } else if (typeof value === "object" && value !== null && "value" in value) {
+      const resolved = resolveRef(value.value as string);
+      lines.push(`  --sys-${key}: ${resolved};`);
     }
   }
   return lines.join("\n");
@@ -100,7 +103,7 @@ function generateVariantSysCss(
 }
 
 async function main() {
-  const input = await fs.readFile(0, "utf-8");
+  const input = await fs.readFile("/dev/stdin", "utf-8");
   const data = yaml.parse(input) as TokenTree;
 
   const modes = data.modes as Record<string, string[]> | null;
@@ -124,7 +127,7 @@ async function main() {
     output.push(`:root {`);
     output.push(generateSysCss(sysTokens));
     output.push(`}`);
-    await fs.writeFile(1, output.join("\n"));
+await fs.writeFile("/dev/stdout", output.join("\n"));
     return;
   }
 
@@ -136,7 +139,7 @@ async function main() {
   }
 
   const defaultSys = Object.entries(sysTokens).filter(([, val]) => {
-    return typeof val === "string";
+    return typeof val === "string" || (typeof val === "object" && val !== null && "value" in val);
   });
   const defaultSysTokens: Record<string, string | TokenValue> = Object.fromEntries(defaultSys);
 

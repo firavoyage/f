@@ -2,9 +2,7 @@
 
 <!-- xml is fundamentally different to objects i guess. -->
 
-#
-
-json syntax
+# json syntax
 
 **JSON (JavaScript Object Notation)** is a strict, text-based data format used to store and exchange structured information. Its rules are derived from JavaScript object literal syntax, but they are far more rigid and language-independent. \[[1](https://developer.mozilla.org/en-US/docs/Learn%5Fweb%5Fdevelopment/Core/Scripting/JSON), [2](https://contabo.com/blog/json-a-complete-guide-to-syntax-and-data-format-2026/), [3](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/JSON), [4](https://tc39.es/ecma404/)]
 
@@ -296,9 +294,7 @@ If you are currently setting up a validation pipeline, let me know:
 
 I can provide the exact code snippets or advanced conditional logic structures you need.
 
-#
-
-yaml syntax
+# yaml syntax
 
 **YAML syntax** is <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">a human-readable data serialization language that relies on <strong>indentation and whitespace</strong> rather than brackets or quotation marks to define structural relationships</mark>. It is commonly used for configuration files in tools like Docker, Kubernetes, and Ansible. \[[1](https://en.wikipedia.org/wiki/YAML), [2](https://about.gitlab.com/topics/devops/what-is-yaml/), [3](https://www.youtube.com/watch?v=1uFVr15xDGg), [4](https://www.youtube.com/watch?v=BEki%5FrsWu4E)]
 
@@ -737,9 +733,7 @@ If your configuration is currently failing to load, let me know **which applicat
 
 Show all
 
-#
-
-toml syntax
+# toml syntax
 
 **TOML (Tom's Obvious Minimal Language)** is a case-sensitive, [UTF-8 encoded](https://toml.io/en/v1.1.0) configuration file format designed to be easy for humans to read and write while mapping cleanly to standard hash tables. \[[1](https://github.com/toml-lang/toml), [2](https://toml.io/en/v1.1.0)]
 
@@ -1049,9 +1043,7 @@ Use code with caution.
 
 If you are writing this file to be consumed by code, let me know **which programming language** you are using. I can show you exactly how this structures out as native code objects (like dictionaries, lists, or structs)!
 
-#
-
-xml syntax
+# xml syntax
 
 The **syntax rules of XML (Extensible Markup Language)** are <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">strict, logical, and designed to ensure that data is structured consistently so it can be easily parsed by software</mark>. An XML document that follows these core formatting rules is considered **"well-formed"**. \[[1](https://www.w3schools.com/xml/xml%5Fsyntax.asp), [2](https://www.w3schools.com/xml/), [3](https://developer.mozilla.org/en-US/docs/Web/XML/Guides/XML%5Fintroduction), [4](https://www.w3schools.com/xml/schema%5Fintro.asp), [5](https://www.w3schools.com/xml/xml%5Fvalidator.asp)]
 

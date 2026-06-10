@@ -156,6 +156,7 @@ archi:
 - orthogonal meaning
 - naming vscode seti theme material icons theme filenames folder names
 - naming broader or more specific first
+- naming plural singular
 
 frontend: <!-- web -->
 

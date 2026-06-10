@@ -5,6 +5,7 @@
 }
 
 :root, [data-theme="light"], [data-density="comfortable"] {
+  --sys-color-accent: var(--ref-palette-blue-1);
   --sys-color-bg-primary: var(--ref-palette-blue-1);
 }
 
