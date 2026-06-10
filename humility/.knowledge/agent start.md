@@ -62,3 +62,9 @@ stick to cwd. do not touch anything outside.
 3. write todo and spec for complex tasks. these are static documents. if existing, name like `spec_foo.md` for new tasks.
 4. start working
 
+# 0.5
+
+stick to cwd. do not touch anything outside.
+
+- run `fdfind . --maxdepth 2` to know the file structure of cwd.
+- start working

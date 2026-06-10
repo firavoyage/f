@@ -1,5 +1,3 @@
-# design component library
-
 in a design system, you should define design tokens and components.
 
 think a component library as atoms, patterns, and pages.

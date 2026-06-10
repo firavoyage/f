@@ -1,0 +1,35 @@
+.input {
+  color: color("text");
+  background-color: color("btn");
+  border-radius: size("bradius");
+  outline: none;
+  padding: 0px 0.5em;
+  font-family: "Ubuntu", sans-serif;
+  border: 1px solid color("btn");
+  min-height: 2.4em;
+
+  $placeholderColor: color-mix(in srgb, color("text") 40%, rgb(128, 128, 128));
+
+  &::placeholder {
+    color: $placeholderColor;
+  }
+
+  &.input.input:focus-visible,
+  &.input.input:focus {
+    outline: none;
+  }
+
+  &.input.input:focus-visible:not(.disabled) {
+    border: 1px solid color("focus");
+  }
+
+  &.disabled {
+    color: nativeOpacity($placeholderColor, 70%);
+    cursor: var(--disabled-cursor);
+    caret-color: transparent;
+
+    &::placeholder {
+      opacity: 0.5;
+    }
+  }
+}
