@@ -28395,7 +28395,7 @@ seems uee paper is leaked during the exam, by photo taking. <!-- which is common
 
 16 20 enrich knowledge: design tokens
 
-18 00 revise contributing
+18 00 revise contributing: start, work.
 
 
 

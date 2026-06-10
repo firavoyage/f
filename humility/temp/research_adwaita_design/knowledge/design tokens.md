@@ -149,4 +149,8 @@ no comp layer.
 
 on component css, reference `sys.color.bg.primary` directly. 
 
-if some buttons have a special bg for example, name like `sys.color.button.bg` (put button first if they are not supposed to be reused by other components)
+if some buttons have a special bg for example, name like `ref.palette.button.bg` (put  button first if they are not supposed to be reused by other components) and reference. no need to map to sys.
+
+comp should reference sys when possible. it's ok to have exceptions.
+
+all sys must reference ref.

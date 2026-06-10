@@ -155,6 +155,7 @@ archi:
 - compression methods base64 dry principle measurement
 - orthogonal meaning
 - naming vscode seti theme material icons theme filenames folder names
+- naming broader or more specific first
 
 frontend: <!-- web -->
 
@@ -233,6 +234,7 @@ desktop:
 - windows pe intel rst
 - shell timestamp to utc
 - gnome critical notifications stricter dnd attempt
+- shell fdfind rg
 
 android:
 
