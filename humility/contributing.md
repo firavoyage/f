@@ -7,10 +7,12 @@ stick to cwd. do not touch anything outside.
 
 ## work
 
-1. be surgical. only complete when you are told to do. do not overwork. always find and use the simplest and easiest way. do not over engineer.
-2. find a way to verify your work if possible. for programming, you can run and see the result in the terminal or on playwright. for planning, you might not be able to verify ahead of time, stop and wait for human instead.
-3. for complex tasks, create a `test` subfolder in cwd. loop through inputs and expected outputs. only test if you know it's hard and tests will fail at first and you will try to fix it and rerun the tests several times.
-4. for complex tasks, write down your observations, like black box mechanics and failure modes, on notes. be specific and organized, name like `notes_foo_bar.md`. only take notes if you know it would help in the future, like to amplify research or prevent regression.
+- be surgical. only complete what you are told to do. do not overwork. always find and use the simplest and easiest way. do not over engineer.
+- use `fdfind --exclude "legacy" -- "search pattern"` to find filenames. use `rg -g "!legacy/" -- "search pattern"` to search content.
+- for newly created folders (except build and deps), write `readme.md`
+- verify your work if possible. for programming, run and see result on terminal or playwright. for planning, it might not be feasible to predict ahead of time, stop and wait for human review instead.
+- for complex tasks, create a `test` subfolder. loop through inputs and expected outputs. only test if you know it can be easily tested (e.g. backend pure fn) and it's really hard and it will fail at first and you might rerun the tests.
+- when you are unsure, choose simplicity over defacto standard over guess work
 
 ## search
 

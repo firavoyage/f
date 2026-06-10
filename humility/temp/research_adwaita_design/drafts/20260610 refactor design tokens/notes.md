@@ -9,3 +9,5 @@ i could make the converter stricter though.
 - no comp name on ref (?)
 - all ref end w number (?)
 - link could only happen from sys to ref. not ref to ref or sys to sys. (? i might have a special button that default to sys bg primary)
+
+it might help if i tell it explicitly to exclude legacy folder while searching

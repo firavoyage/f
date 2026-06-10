@@ -51,7 +51,7 @@
 - use `fdfind` to find filenames. use `rg` to search content.
 - for newly created folders (except build and deps), write `readme.md`
 - verify your work if possible. for programming, run and see result on terminal or playwright. for planning, it might not be feasible to predict ahead of time, stop and wait for human review instead.
-- 
+- for complex tasks, create a `test` subfolder. loop through inputs and expected outputs. only test if you know it can be easily tested (e.g. backend pure fn) and it's really hard and it will fail at first and you might rerun the tests.
 - when you are unsure, choose simplicity over defacto standard over guess work
 
 # 0.5-complex
@@ -64,3 +64,13 @@
 - for complex tasks, create a `test` subfolder in cwd. loop through inputs and expected outputs. only test if you know it's hard and it will fail at first and you might rerun the tests.
 - for complex tasks, write down your observations, like black box mechanics and failure modes, on `notes.md`. be specific and organized, name like `notes foo bar.md`. only take notes if you know it would help in the future, like to amplify research or prevent regression.
 - when you are unsure, choose simplicity over defacto standard over guess work
+
+# 0.6
+
+- be surgical. only complete what you are told to do. do not overwork. always find and use the simplest and easiest way. do not over engineer.
+- use `fdfind --exclude "legacy" -- "search pattern"` to find filenames. use `rg -g "!legacy/" -- "search pattern"` to search content.
+- for newly created folders (except build and deps), write `readme.md`
+- verify your work if possible. for programming, run and see result on terminal or playwright. for planning, it might not be feasible to predict ahead of time, stop and wait for human review instead.
+- for complex tasks, create a `test` subfolder. loop through inputs and expected outputs. only test if you know it can be easily tested (e.g. backend pure fn) and it's really hard and it will fail at first and you might rerun the tests.
+- when you are unsure, choose simplicity over defacto standard over guess work
+

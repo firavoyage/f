@@ -21,7 +21,6 @@ modes:
 
 ref:
   palette:
-    # blue palette
     blue:
       1: "#99c1f1"
       2: "#62a0ea"
@@ -29,7 +28,6 @@ ref:
       4: "#1c71d8"
       5: "#1a5fb4"
 
-    # green palette
     green:
       1: "#8ff0a4"
       2: "#57e389"
@@ -37,7 +35,6 @@ ref:
       4: "#2ec27e"
       5: "#26a269"
 
-    # yellow palette
     yellow:
       1: "#f9f06b"
       2: "#f8e45c"
@@ -45,7 +42,6 @@ ref:
       4: "#f5c211"
       5: "#e5a50a"
 
-    # orange palette
     orange:
       1: "#ffbe6f"
       2: "#ffa348"
@@ -53,7 +49,6 @@ ref:
       4: "#e66100"
       5: "#c64600"
 
-    # red palette
     red:
       1: "#f66151"
       2: "#ed333b"
@@ -61,7 +56,6 @@ ref:
       4: "#c01c28"
       5: "#a51d2d"
 
-    # purple palette
     purple:
       1: "#dc8add"
       2: "#c061cb"
@@ -69,7 +63,6 @@ ref:
       4: "#813d9c"
       5: "#613583"
 
-    # brown palette
     brown:
       1: "#cdab8f"
       2: "#b5835a"
@@ -77,7 +70,6 @@ ref:
       4: "#865e3c"
       5: "#63452c"
 
-    # light palette
     light:
       1: "#ffffff"
       2: "#f6f5f4"
@@ -85,7 +77,6 @@ ref:
       4: "#c0bfbc"
       5: "#9a9996"
 
-    # dark palette
     dark:
       1: "#77767b"
       2: "#5e5c64"
@@ -93,7 +84,6 @@ ref:
       4: "#241f31"
       5: "#000000"
 
-    # accent colors
     accent:
       blue: "#3584e4"
       teal: "#2190a4"
@@ -105,12 +95,16 @@ ref:
       purple: "#9141ac"
       slate: "#6f8396"
 
+    success: "#78e9ab"
+    warning: "#ffc252"
+    error: "#ff938c" # destructive
+
   spacing:
     1: "0.1875rem"
     2: "0.25rem"
     3: "0.375rem"
     4: "0.5625rem"
-    5: "0.75rem"
+    5: "0.75rem" # component baseline
     6: "1.125rem"
     8: "1.5rem"
     10: "2.25rem"
@@ -136,16 +130,16 @@ ref:
       semibold: "600"
       bold: "700"
     family:
-      document: '"Adwaita Sans", sans-serif'
+      sans: '"Adwaita Sans", sans-serif'
       monospace: '"Adwaita Mono", monospace'
 
   radius:
     xs: "4px"
-    sm: "6px"
-    md: "9px"
-    lg: "12px"
-    xl: "15px"
-    xxl: "18px"
+    sm: "8px"
+    md: "12px"
+    lg: "16px"
+    xl: "24px"
+    xxl: "32px"
     full: "9999px"
 
   transition:
@@ -173,19 +167,6 @@ ref:
     small: "14px"
     normal: "16px"
     large: "32px"
-
-  size-button:
-    mini: "18px"
-    small: "22px"
-    medium: "28px"
-    large: "36px"
-    huge: "42px"
-    mega: "58px"
-
-  size-input:
-    height: "28px"
-    padding: "8px"
-    radius: "5px"
 
   scrollbar:
     width: "8px"
@@ -215,7 +196,7 @@ sys:
     alert: "{ref.radius.xxl}"
 
   color:
-    # backgrounds
+    # background
     bg:
       window:
         value: "{ref.palette.light.2}"
@@ -260,9 +241,9 @@ sys:
         yellow: "{ref.palette.accent.yellow}"
         orange: "{ref.palette.accent.orange}"
         red: "{ref.palette.accent.red}"
-        pink: "{ref.palette.accent.pink}"
-        purple: "{ref.palette.accent.purple}"
-        slate: "{ref.palette.accent.slate}"
+        pink: "{ref.palette.accent-pink}"
+        purple: "{ref.palette.accent-purple}"
+        slate: "{ref.palette.accent-slate}"
       destructive:
         value: "{ref.palette.red.3}"
         dark: "{ref.palette.red.4}"
@@ -288,7 +269,7 @@ sys:
         value: "#cdc7c2"
         dark: "#1e1e20"
 
-    # foregrounds
+    # foreground
     fg:
       window:
         value: "rgb(0 0 6 / 80%)"
@@ -344,7 +325,6 @@ sys:
         value: "{ref.palette.light.1}"
         dark: "{ref.palette.light.1}"
 
-    # borders
     border:
       headerbar:
         value: "rgb(0 0 6 / 80%)"
@@ -382,20 +362,6 @@ sys:
       default:
         value: "rgb(0 0 6 / 7%)"
         dark: "rgb(0 0 6 / 25%)"
-
-    # semantic colors
-    destructive:
-      value: "{ref.palette.red.4}"
-      dark: "#ff938c"
-    success:
-      value: "{ref.palette.green.5}"
-      dark: "#78e9ab"
-    warning:
-      value: "{ref.palette.yellow.5}"
-      dark: "#ffc252"
-    error:
-      value: "{ref.palette.red.4}"
-      dark: "#ff938c"
 
     # backdrop colors
     backdrop:

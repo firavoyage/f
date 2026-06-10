@@ -8,3 +8,9 @@ jun 2026
 
 not needed
 
+10
+
+19 40 remove odd values on libadwaita, replace w 4px baseline on a non linear scale.
+
+move beyond libadwaita.
+

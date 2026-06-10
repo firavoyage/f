@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adwaita Design Tokens</title>
+  <link rel="stylesheet" href="normalize.css">
+  <link rel="stylesheet" href="adwaita.css">
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div class="demo-container">
+    <h1>Adwaita Design Tokens</h1>
+    <p>CSS variables from libadwaita documentation. Toggle dark mode to see variations.</p>
+
+    <div class="spacer"></div>
+
+    <section class="section">
+      <h2>Accent Colors</h2>
+      <p>The primary interaction color. Default is blue.</p>
+      <div class="color-grid">
+        <div class="color-swatch">
+          <div class="preview" style="background: var(--accent-bg-color)"></div>
+          <div class="info">
+            <div class="name">accent-bg</div>
+            <div class="value">#3584e4</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="preview" style="background: var(--accent-fg-color)"></div>
+          <div class="info">
+            <div class="name">accent-fg</div>
+            <div class="value">#ffffff</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="preview" style="background: var(--accent-color)"></div>
+          <div class="info">
+            <div class="name">accent</div>
+            <div class="value">#0461be</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="spacer"></div>
+
+      <h3>Accent Palette</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="preview" style="background: var(--accent-blue)"></div><div class="info"><div class="name">blue</div><div class="value">#3584e4</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--accent-teal)"></div><div class="info"><div class="name">teal</div><div class="value">#2190a4</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--accent-green)"></div><div class="info"><div class="name">green</div><div class="value">#3a944a</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--accent-yellow)"></div><div class="info"><div class="name">yellow</div><div class="value">#c88800</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--accent-orange)"></div><div class="info"><div class="name">orange</div><div class="value">#ed5b00</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--accent-red)"></div><div class="info"><div class="name">red</div><div class="value">#e62d42</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--accent-pink)"></div><div class="info"><div class="name">pink</div><div class="value">#d56199</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--accent-purple)"></div><div class="info"><div class="name">purple</div><div class="value">#9141ac</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--accent-slate)"></div><div class="info"><div class="name">slate</div><div class="value">#6f8396</div></div></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Semantic Colors</h2>
+
+      <h3>Success</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="preview" style="background: var(--success-bg-color)"></div><div class="info"><div class="name">success-bg</div><div class="value">#2ec27e</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--success-fg-color)"></div><div class="info"><div class="name">success-fg</div><div class="value">#ffffff</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--success-color)"></div><div class="info"><div class="name">success</div><div class="value">#007c3d</div></div></div>
+      </div>
+
+      <h3>Warning</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="preview" style="background: var(--warning-bg-color)"></div><div class="info"><div class="name">warning-bg</div><div class="value">#e5a50a</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--warning-fg-color)"></div><div class="info"><div class="name">warning-fg</div><div class="value">rgba(0,0,0,.8)</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--warning-color)"></div><div class="info"><div class="name">warning</div><div class="value">#905400</div></div></div>
+      </div>
+
+      <h3>Error</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="preview" style="background: var(--error-bg-color)"></div><div class="info"><div class="name">error-bg</div><div class="value">#e01b24</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--error-fg-color)"></div><div class="info"><div class="name">error-fg</div><div class="value">#ffffff</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--error-color)"></div><div class="info"><div class="name">error</div><div class="value">#c30000</div></div></div>
+      </div>
+
+      <h3>Destructive</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="preview" style="background: var(--destructive-bg-color)"></div><div class="info"><div class="name">destructive-bg</div><div class="value">#e01b24</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--destructive-fg-color)"></div><div class="info"><div class="name">destructive-fg</div><div class="value">#ffffff</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--destructive-color)"></div><div class="info"><div class="name">destructive</div><div class="value">#c30000</div></div></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Surface Colors</h2>
+
+      <h3>Window</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="preview" style="background: var(--window-bg-color)"></div><div class="info"><div class="name">window-bg</div><div class="value">#fafafb</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--window-fg-color)"></div><div class="info"><div class="name">window-fg</div><div class="value">rgba(0,0,0,.8)</div></div></div>
+      </div>
+
+      <h3>View</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="preview" style="background: var(--view-bg-color)"></div><div class="info"><div class="name">view-bg</div><div class="value">#ffffff</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--view-fg-color)"></div><div class="info"><div class="name">view-fg</div><div class="value">rgba(0,0,0,.8)</div></div></div>
+      </div>
+
+      <h3>Header Bar</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="preview" style="background: var(--headerbar-bg-color)"></div><div class="info"><div class="name">headerbar-bg</div><div class="value">#ffffff</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--headerbar-fg-color)"></div><div class="info"><div class="name">headerbar-fg</div><div class="value">rgba(0,0,0,.8)</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--headerbar-shade-color)"></div><div class="info"><div class="name">headerbar-shade</div><div class="value">rgba(0,0,0,.12)</div></div></div>
+      </div>
+
+      <h3>Sidebar</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="preview" style="background: var(--sidebar-bg-color)"></div><div class="info"><div class="name">sidebar-bg</div><div class="value">#ebebed</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--sidebar-fg-color)"></div><div class="info"><div class="name">sidebar-fg</div><div class="value">rgba(0,0,0,.8)</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--sidebar-border-color)"></div><div class="info"><div class="name">sidebar-border</div><div class="value">rgba(0,0,0,.7)</div></div></div>
+      </div>
+
+      <h3>Card</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="preview" style="background: var(--card-bg-color)"></div><div class="info"><div class="name">card-bg</div><div class="value">#ffffff</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--card-fg-color)"></div><div class="info"><div class="name">card-fg</div><div class="value">rgba(0,0,0,.8)</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--card-shade-color)"></div><div class="info"><div class="name">card-shade</div><div class="value">rgba(0,0,0,.7)</div></div></div>
+      </div>
+
+      <h3>Dialog & Popover</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="preview" style="background: var(--dialog-bg-color)"></div><div class="info"><div class="name">dialog-bg</div><div class="value">#fafafb</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--popover-bg-color)"></div><div class="info"><div class="name">popover-bg</div><div class="value">#ffffff</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--popover-shade-color)"></div><div class="info"><div class="name">popover-shade</div><div class="value">rgba(0,0,0,.7)</div></div></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Palette</h2>
+      <p>Full GNOME color palette for general use.</p>
+
+      <h3>Blue</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="preview" style="background: var(--blue-1)"></div><div class="info"><div class="name">blue-1</div><div class="value">#99c1f1</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--blue-2)"></div><div class="info"><div class="name">blue-2</div><div class="value">#62a0ea</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--blue-3)"></div><div class="info"><div class="name">blue-3</div><div class="value">#3584e4</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--blue-4)"></div><div class="info"><div class="name">blue-4</div><div class="value">#1c71d8</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--blue-5)"></div><div class="info"><div class="name">blue-5</div><div class="value">#1a5fb4</div></div></div>
+      </div>
+
+      <h3>Green</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="preview" style="background: var(--green-1)"></div><div class="info"><div class="name">green-1</div><div class="value">#8ff0a4</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--green-2)"></div><div class="info"><div class="name">green-2</div><div class="value">#57e389</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--green-3)"></div><div class="info"><div class="name">green-3</div><div class="value">#33d17a</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--green-4)"></div><div class="info"><div class="name">green-4</div><div class="value">#2ec27e</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--green-5)"></div><div class="info"><div class="name">green-5</div><div class="value">#26a269</div></div></div>
+      </div>
+
+      <h3>Yellow</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="preview" style="background: var(--yellow-1)"></div><div class="info"><div class="name">yellow-1</div><div class="value">#f9f06b</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--yellow-2)"></div><div class="info"><div class="name">yellow-2</div><div class="value">#f8e45c</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--yellow-3)"></div><div class="info"><div class="name">yellow-3</div><div class="value">#f6d32d</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--yellow-4)"></div><div class="info"><div class="name">yellow-4</div><div class="value">#f5c211</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--yellow-5)"></div><div class="info"><div class="name">yellow-5</div><div class="value">#e5a50a</div></div></div>
+      </div>
+
+      <h3>Orange</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="preview" style="background: var(--orange-1)"></div><div class="info"><div class="name">orange-1</div><div class="value">#ffbe6f</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--orange-2)"></div><div class="info"><div class="name">orange-2</div><div class="value">#ffa348</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--orange-3)"></div><div class="info"><div class="name">orange-3</div><div class="value">#ff7800</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--orange-4)"></div><div class="info"><div class="name">orange-4</div><div class="value">#e66100</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--orange-5)"></div><div class="info"><div class="name">orange-5</div><div class="value">#c64600</div></div></div>
+      </div>
+
+      <h3>Red</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="preview" style="background: var(--red-1)"></div><div class="info"><div class="name">red-1</div><div class="value">#f66151</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--red-2)"></div><div class="info"><div class="name">red-2</div><div class="value">#ed333b</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--red-3)"></div><div class="info"><div class="name">red-3</div><div class="value">#e01b24</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--red-4)"></div><div class="info"><div class="name">red-4</div><div class="value">#c01c28</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--red-5)"></div><div class="info"><div class="name">red-5</div><div class="value">#a51d2d</div></div></div>
+      </div>
+
+      <h3>Purple</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="preview" style="background: var(--purple-1)"></div><div class="info"><div class="name">purple-1</div><div class="value">#dc8add</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--purple-2)"></div><div class="info"><div class="name">purple-2</div><div class="value">#c061cb</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--purple-3)"></div><div class="info"><div class="name">purple-3</div><div class="value">#9141ac</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--purple-4)"></div><div class="info"><div class="name">purple-4</div><div class="value">#813d9c</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--purple-5)"></div><div class="info"><div class="name">purple-5</div><div class="value">#613583</div></div></div>
+      </div>
+
+      <h3>Light</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="preview" style="background: var(--light-1)"></div><div class="info"><div class="name">light-1</div><div class="value">#ffffff</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--light-2)"></div><div class="info"><div class="name">light-2</div><div class="value">#f6f5f4</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--light-3)"></div><div class="info"><div class="name">light-3</div><div class="value">#deddda</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--light-4)"></div><div class="info"><div class="name">light-4</div><div class="value">#c0bfbc</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--light-5)"></div><div class="info"><div class="name">light-5</div><div class="value">#9a9996</div></div></div>
+      </div>
+
+      <h3>Dark</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="preview" style="background: var(--dark-1)"></div><div class="info"><div class="name">dark-1</div><div class="value">#77767b</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--dark-2)"></div><div class="info"><div class="name">dark-2</div><div class="value">#5e5c64</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--dark-3)"></div><div class="info"><div class="name">dark-3</div><div class="value">#3d3846</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--dark-4)"></div><div class="info"><div class="name">dark-4</div><div class="value">#241f31</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: var(--dark-5)"></div><div class="info"><div class="name">dark-5</div><div class="value">#000000</div></div></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Typography</h2>
+      <div class="font-demo">
+        <div class="font-row">
+          <div class="font-label">Document Font (Adwaita Sans)</div>
+          <div class="font-sample font-document">The quick brown fox jumps over the lazy dog</div>
+          <div class="font-label" style="margin-top: 8px">Size: 12pt</div>
+        </div>
+        <div class="font-row">
+          <div class="font-label">Monospace Font (Adwaita Mono)</div>
+          <div class="font-sample font-monospace">const foo = "bar"; echo $foo</div>
+          <div class="font-label" style="margin-top: 8px">Size: 11pt</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Buttons</h2>
+      <div class="btn-demo">
+        <button class="btn btn-primary">Primary</button>
+        <button class="btn btn-suggested suggested-action">Suggested</button>
+        <button class="btn btn-destructive">Destructive</button>
+        <button class="btn btn-flat">Flat</button>
+        <button class="btn btn-primary btn-pill">Pill Button</button>
+        <button class="btn btn-primary btn-circular">+</button>
+        <button class="btn btn-suggested btn-circular">x</button>
+        <button class="btn btn-destructive btn-circular">!</button>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Helpers</h2>
+      <div class="helper-grid">
+        <div class="helper-item">
+          <div class="name">--border-opacity</div>
+          <div class="val">15%</div>
+        </div>
+        <div class="helper-item">
+          <div class="name">--dim-opacity</div>
+          <div class="val">55%</div>
+        </div>
+        <div class="helper-item">
+          <div class="name">--disabled-opacity</div>
+          <div class="val">50%</div>
+        </div>
+        <div class="helper-item">
+          <div class="name">--border-color</div>
+          <div class="val">color-mix(...) </div>
+        </div>
+        <div class="helper-item">
+          <div class="name">--window-radius</div>
+          <div class="val">15px</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Card Component</h2>
+      <div class="card card-shade">
+        <h4>Card Title</h4>
+        <p>This is a card with the Adwaita card colors. Cards have a subtle background and use card-fg-color for text.</p>
+        <div class="shade-demo">
+          <div class="shade-box" style="background: var(--card-shade-color)"></div>
+          <div class="shade-box" style="background: var(--shade-color)"></div>
+          <div class="shade-box" style="background: var(--headerbar-shade-color)"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
