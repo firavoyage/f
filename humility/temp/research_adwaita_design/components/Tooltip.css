@@ -3,18 +3,18 @@
 }
 
 .Tooltip_positioner {
-  z-index: 1000;
+  z-index: var(--ref-z-index-tooltip);
 }
 
 .Tooltip_popup {
-  background: var(--headerbar-bg-color, #2e2e32);
-  border-radius: var(--radius-md, 6px);
-  color: var(--headerbar-fg-color, #fff);
-  font-size: var(--font-size-xs, 0.75rem);
-  padding: var(--space-2, 4px) var(--space-3, 6px);
-  box-shadow: 0 4px 12px rgb(0 0 6 / 30%);
+  background: var(--sys-color-bg-headerbar);
+  border-radius: var(--ref-radius-md);
+  color: var(--sys-color-fg-headerbar);
+  font-size: var(--ref-font-size-xs);
+  padding: var(--ref-spacing-2) var(--ref-spacing-3);
+  box-shadow: var(--ref-shadow-md);
 }
 
 .Tooltip_arrow {
-  fill: var(--headerbar-bg-color, #2e2e32);
+  fill: var(--sys-color-bg-headerbar);
 }

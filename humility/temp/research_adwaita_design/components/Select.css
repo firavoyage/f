@@ -5,43 +5,48 @@
 
 .Select_trigger {
   appearance: none;
-  background: var(--view-bg-color, #fff);
-  border: 1px solid var(--btn-border, #cdc7c2);
-  border-radius: var(--radius-md, 6px);
-  color: var(--view-fg-color, rgb(0 0 6 / 80%));
+  background: var(--sys-color-bg-view);
+  border: 1px solid var(--sys-color-bg-button-border);
+  border-radius: var(--ref-radius-md);
+  color: var(--sys-color-fg-view);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: var(--font-size-sm, 0.875rem);
-  padding: var(--space-2, 4px) var(--space-3, 6px);
+  font-size: var(--ref-font-size-sm);
+  padding: var(--ref-spacing-2) var(--ref-spacing-3);
   min-width: 160px;
-  transition: border-color 0.15s ease;
+  transition: border-color var(--ref-transition-fast);
+}
 
-  &:hover {
-    border-color: var(--accent-color, #3584e4);
-  }
+.Select_trigger:hover {
+  border-color: var(--sys-color-bg-accent);
+}
 
-  &[data-popup-open] {
-    border-color: var(--accent-color, #3584e4);
-  }
+.Select_trigger[data-popup-open] {
+  border-color: var(--sys-color-bg-accent);
+}
+
+.Select_trigger:focus-visible {
+  outline: var(--ref-focus-ring-width) solid var(--ref-focus-ring-color);
+  outline-offset: var(--ref-focus-ring-offset);
 }
 
 .Select_icon {
   font-size: 10px;
-  margin-left: var(--space-2, 4px);
+  margin-left: var(--ref-spacing-2);
 }
 
 .Select_positioner {
-  z-index: 1000;
+  z-index: var(--ref-z-index-dropdown);
 }
 
 .Select_popup {
-  background: var(--popover-bg-color, #fff);
-  border: 1px solid var(--btn-border, #cdc7c2);
-  border-radius: var(--radius-md, 6px);
-  box-shadow: 0 4px 12px rgb(0 0 6 / 15%);
-  padding: var(--space-1, 3px);
+  background: var(--sys-color-bg-popover);
+  border: 1px solid var(--sys-color-bg-button-border);
+  border-radius: var(--ref-radius-md);
+  box-shadow: var(--ref-shadow-md);
+  padding: var(--ref-spacing-1);
 }
 
 .Select_list {
@@ -57,31 +62,36 @@
   appearance: none;
   background: transparent;
   border: none;
-  border-radius: var(--radius-sm, 4px);
-  color: var(--view-fg-color, rgb(0 0 6 / 80%));
+  border-radius: var(--ref-radius-sm);
+  color: var(--sys-color-fg-view);
   cursor: pointer;
-  font-size: var(--font-size-sm, 0.875rem);
-  padding: var(--space-2, 4px) var(--space-3, 6px);
+  font-size: var(--ref-font-size-sm);
+  padding: var(--ref-spacing-2) var(--ref-spacing-3);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  transition: background 0.15s ease;
+  transition: background var(--ref-transition-fast);
+}
 
-  &:hover,
-  &[data-highlighted] {
-    background: var(--btn-hover, #f9f9f8);
-  }
+.Select_item:hover,
+.Select_item[data-highlighted] {
+  background: var(--sys-color-bg-button-hover);
+}
 
-  &[data-selected] {
-    background: var(--accent-color, #3584e433);
-    color: var(--accent-color, #3584e4);
-  }
+.Select_item[data-selected] {
+  background: var(--ref-focus-ring-color);
+  color: var(--sys-color-bg-accent);
+}
+
+.Select_item:focus-visible {
+  outline: var(--ref-focus-ring-width) solid var(--ref-focus-ring-color);
+  outline-offset: var(--ref-focus-ring-offset);
 }
 
 .Select_item_indicator {
   opacity: 0;
+}
 
-  [data-selected] & {
-    opacity: 1;
-  }
+.Select_item[data-selected] .Select_item_indicator {
+  opacity: 1;
 }

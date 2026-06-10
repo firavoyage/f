@@ -1,0 +1,20 @@
+.Tooltip_trigger {
+  display: inline-flex;
+}
+
+.Tooltip_positioner {
+  z-index: 1000;
+}
+
+.Tooltip_popup {
+  background: var(--headerbar-bg-color, #2e2e32);
+  border-radius: var(--radius-md, 6px);
+  color: var(--headerbar-fg-color, #fff);
+  font-size: var(--font-size-xs, 0.75rem);
+  padding: var(--space-2, 4px) var(--space-3, 6px);
+  box-shadow: 0 4px 12px rgb(0 0 6 / 30%);
+}
+
+.Tooltip_arrow {
+  fill: var(--headerbar-bg-color, #2e2e32);
+}
