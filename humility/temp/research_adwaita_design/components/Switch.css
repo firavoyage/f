@@ -1,46 +1,55 @@
 .Switch_label {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2, 4px);
+  gap: var(--ref-spacing-2);
   cursor: pointer;
-  color: var(--view-fg-color, rgb(0 0 6 / 80%));
-  font-size: var(--font-size-sm, 0.875rem);
+  color: var(--sys-color-fg-view);
+  font-size: var(--ref-font-size-sm);
 }
 
 .Switch_root {
   appearance: none;
-  background: var(--light-3, #deddda);
+  background: var(--ref-palette-light-3);
   border: none;
   border-radius: 16px;
   cursor: pointer;
   width: 36px;
   height: 20px;
   position: relative;
-  transition: background 0.2s ease;
+  transition: background var(--ref-transition-normal);
+}
 
-  &[data-checked] {
-    background: var(--accent-color, #3584e4);
-  }
+.Switch_root:hover {
+  background: var(--ref-palette-light-4);
+}
 
-  &[data-disabled] {
-    opacity: var(--disabled-opacity, 40%);
-    pointer-events: none;
-  }
+.Switch_root:focus-visible {
+  outline: var(--ref-focus-ring-width) solid var(--ref-focus-ring-color);
+  outline-offset: var(--ref-focus-ring-offset);
+}
+
+.Switch_root[data-checked] {
+  background: var(--sys-color-bg-accent);
+}
+
+.Switch_root[data-disabled] {
+  opacity: var(--ref-opacity-disabled);
+  pointer-events: none;
 }
 
 .Switch_thumb {
   appearance: none;
-  background: var(--light-1, #fff);
+  background: var(--ref-palette-light-1);
   border-radius: 50%;
-  box-shadow: 0 1px 3px rgb(0 0 6 / 20%);
+  box-shadow: var(--ref-shadow-sm);
   width: 16px;
   height: 16px;
   position: absolute;
   top: 2px;
   left: 2px;
-  transition: transform 0.2s ease;
+  transition: transform var(--ref-transition-normal);
+}
 
-  [data-checked] & {
-    transform: translateX(16px);
-  }
+.Switch_root[data-checked] .Switch_thumb {
+  transform: translateX(16px);
 }

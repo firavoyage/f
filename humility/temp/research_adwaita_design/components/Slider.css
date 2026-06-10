@@ -14,7 +14,7 @@
 
 .Slider_track {
   position: relative;
-  background: var(--light-3, #deddda);
+  background: var(--ref-palette-light-3);
   border-radius: 10px;
   height: 6px;
   width: 100%;
@@ -23,14 +23,14 @@
 
 .Slider_indicator {
   position: absolute;
-  background: var(--accent-color, #3584e4);
+  background: var(--sys-color-bg-accent);
   height: 100%;
 }
 
 .Slider_thumb {
   appearance: none;
-  background: var(--light-1, #fff);
-  border: 2px solid var(--accent-color, #3584e4);
+  background: var(--ref-palette-light-1);
+  border: 2px solid var(--sys-color-bg-accent);
   border-radius: 50%;
   cursor: grab;
   width: 18px;
@@ -38,18 +38,23 @@
   position: absolute;
   right: 50%;
   transform: translateX(50%);
-  transition: box-shadow 0.15s ease;
+  transition: box-shadow var(--ref-transition-fast);
+}
 
-  &:hover {
-    box-shadow: 0 0 0 4px var(--accent-color, #3584e433);
-  }
+.Slider_thumb:hover {
+  box-shadow: 0 0 0 4px var(--ref-focus-ring-color);
+}
 
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 0 4px var(--accent-color, #3584e433);
-  }
+.Slider_thumb:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--ref-focus-ring-color);
+}
 
-  &[data-dragging] {
-    cursor: grabbing;
-  }
+.Slider_thumb:focus-visible {
+  outline: var(--ref-focus-ring-width) solid var(--ref-focus-ring-color);
+  outline-offset: var(--ref-focus-ring-offset);
+}
+
+.Slider_thumb[data-dragging] {
+  cursor: grabbing;
 }

@@ -4,35 +4,35 @@
 
 body {
   margin: 0;
-  font-family: var(--font-family-sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
-  background: var(--view-bg-color, #fff);
-  color: var(--view-fg-color, rgb(0 0 6 / 80%));
+  font-family: var(--ref-font-family-sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+  background: var(--sys-color-bg-view);
+  color: var(--sys-color-fg-view);
   -webkit-font-smoothing: antialiased;
 }
 
 .app {
   max-width: 800px;
   margin: 0 auto;
-  padding: var(--space-8, 24px);
+  padding: var(--ref-spacing-8);
 }
 
 .section {
-  margin-bottom: var(--space-10, 36px);
+  margin-bottom: var(--ref-spacing-10);
 }
 
 h2 {
-  font-size: var(--font-size-lg, 1.125rem);
+  font-size: var(--ref-font-size-lg);
   font-weight: 600;
-  margin: 0 0 var(--space-4, 9px) 0;
-  color: var(--headerbar-fg-color, rgb(0 0 6 / 80%));
+  margin: 0 0 var(--ref-spacing-4) 0;
+  color: var(--sys-color-fg-headerbar);
 }
 
 .demo {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-4, 9px);
+  gap: var(--ref-spacing-4);
   align-items: center;
-  padding: var(--space-4, 9px);
-  background: var(--secondary-bg);
-  border-radius: var(--radius-md, 6px);
+  padding: var(--ref-spacing-4);
+  background: var(--sys-color-bg-secondary);
+  border-radius: var(--ref-radius-md);
 }

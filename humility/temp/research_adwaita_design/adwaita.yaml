@@ -77,6 +77,20 @@ ref:
       4: "#c0bfbc"
       5: "#9a9996"
 
+    gray:
+      1: "oklch(97% 0 286)"
+      2: "oklch(93% 0 286)"
+      3: "oklch(87% 0 286)"
+      4: "oklch(80% 0 286)"
+      5: "oklch(70% 0 286)"
+      6: "oklch(60% 0 286)"
+      7: "oklch(50% 0 286)"
+      8: "oklch(40% 0 286)"
+      9: "oklch(30% 0 286)"
+      10: "oklch(20% 0 286)"
+      11: "oklch(10% 0 286)"
+      12: "oklch(0% 0 286)"
+
     dark:
       1: "#77767b"
       2: "#5e5c64"
@@ -96,7 +110,7 @@ ref:
       slate: "#6f8396"
 
     success: "#78e9ab"
-    warning: "#ffc252"
+    warning: "#ffc252" # cd9309?
     error: "#ff938c" # destructive
 
   spacing:
@@ -163,7 +177,7 @@ ref:
     lg: "0 10px 15px rgb(0 0 0 / 10%)"
     xl: "0 20px 25px rgb(0 0 0 / 10%)"
 
-  icon-size:
+  size: # icon-size
     small: "14px"
     normal: "16px"
     large: "32px"
@@ -200,40 +214,40 @@ sys:
     bg:
       window:
         value: "{ref.palette.light.2}"
-        dark: "#222226"
+        dark: "{ref.palette.gray.11}"
       view:
         value: "{ref.palette.light.1}"
-        dark: "#1d1d20"
+        dark: "{ref.palette.gray.11}"
       secondary:
         value: "{ref.palette.light.3}"
-        dark: "#2e2e32"
+        dark: "{ref.palette.gray.10}"
       headerbar:
         value: "{ref.palette.light.1}"
-        dark: "#2e2e32"
+        dark: "{ref.palette.gray.10}"
       sidebar:
         value: "{ref.palette.light.3}"
-        dark: "#2e2e32"
+        dark: "{ref.palette.gray.10}"
       secondary-sidebar:
         value: "{ref.palette.light.3}"
-        dark: "#28282c"
+        dark: "{ref.palette.gray.10}"
       card:
         value: "{ref.palette.light.1}"
         dark: "rgb(255 255 255 / 8%)"
       overview:
         value: "{ref.palette.light.3}"
-        dark: "#28282c"
+        dark: "{ref.palette.gray.10}"
       thumbnail:
         value: "{ref.palette.light.1}"
-        dark: "#39393d"
+        dark: "{ref.palette.gray.9}"
       active-toggle:
         value: "{ref.palette.light.1}"
         dark: "rgb(255 255 255 / 20%)"
       dialog:
         value: "{ref.palette.light.2}"
-        dark: "#36363a"
+        dark: "{ref.palette.gray.9}"
       popover:
         value: "{ref.palette.light.1}"
-        dark: "#36363a"
+        dark: "{ref.palette.gray.9}"
       accent:
         value: "{ref.palette.accent.blue}"
         teal: "{ref.palette.accent.teal}"
@@ -247,27 +261,21 @@ sys:
       destructive:
         value: "{ref.palette.red.3}"
         dark: "{ref.palette.red.4}"
-      success:
-        value: "{ref.palette.green.4}"
-        dark: "{ref.palette.green.5}"
-      warning:
-        value: "{ref.palette.yellow.4}"
-        dark: "#cd9309"
-      error:
-        value: "{ref.palette.red.3}"
-        dark: "{ref.palette.red.4}"
+      success: "{ref.palette.success}"
+      warning: "{ref.palette.warning}"
+      error: "{ref.palette.error}"
       button:
         value: "#f6f5f4"
-        dark: "#464646"
+        dark: "{ref.palette.gray.8}"
       button-hover:
         value: "#f9f9f8"
-        dark: "#5a5a5a"
+        dark: "{ref.palette.gray.7}"
       button-pressed:
         value: "#e8e7e6"
-        dark: "#3a3a3a"
+        dark: "{ref.palette.gray.9}"
       button-border:
         value: "#cdc7c2"
-        dark: "#1e1e20"
+        dark: "{ref.palette.gray.11}"
 
     # foreground
     fg:
@@ -308,22 +316,16 @@ sys:
         value: "{ref.palette.light.1}"
       secondary:
         value: "#686868"
-        dark: "#a0a0a0"
+        dark: "{ref.palette.gray.3}"
       dimmed:
         value: "rgba(0 0 0 / 55%)"
         dark: "rgb(255 255 255 / 55%)"
       destructive:
         value: "{ref.palette.light.1}"
         dark: "{ref.palette.light.1}"
-      success:
-        value: "{ref.palette.light.1}"
-        dark: "{ref.palette.light.1}"
-      warning:
-        value: "rgb(0 0 0 / 80%)"
-        dark: "rgb(0 0 0 / 80%)"
-      error:
-        value: "{ref.palette.light.1}"
-        dark: "{ref.palette.light.1}"
+      success: "{ref.palette.light.1}"
+      warning: "{ref.palette.light.1}"
+      error: "{ref.palette.light.1}"
 
     border:
       headerbar:
@@ -367,25 +369,13 @@ sys:
     backdrop:
       headerbar:
         value: "{ref.palette.light.2}"
-        dark: "#222226"
+        dark: "{ref.palette.gray.11}"
       sidebar:
         value: "#f2f2f4"
-        dark: "#28282c"
+        dark: "{ref.palette.gray.10}"
       secondary-sidebar:
         value: "#f6f6fa"
-        dark: "#252529"
-
-    # opacity
-    opacity:
-      border:
-        value: "15%"
-        dark: "50%"
-      dim:
-        value: "55%"
-        dark: "90%"
-      disabled:
-        value: "50%"
-        dark: "40%"
+        dark: "{ref.palette.gray.10}"
 
     scrollbar-outline:
       value: "{ref.palette.light.1}"

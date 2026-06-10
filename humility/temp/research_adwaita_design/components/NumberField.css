@@ -4,42 +4,52 @@
 
 .NumberField_group {
   display: inline-flex;
-  border: 1px solid var(--btn-border, #cdc7c2);
-  border-radius: var(--radius-md, 6px);
+  border: 1px solid var(--sys-color-bg-button-border);
+  border-radius: var(--ref-radius-md);
   overflow: hidden;
 }
 
 .NumberField_input {
   appearance: none;
-  background: var(--view-bg-color, #fff);
+  background: var(--sys-color-bg-view);
   border: none;
-  color: var(--view-fg-color, rgb(0 0 6 / 80%));
-  font-size: var(--font-size-sm, 0.875rem);
-  padding: var(--space-2, 4px) var(--space-3, 6px);
+  color: var(--sys-color-fg-view);
+  font-size: var(--ref-font-size-sm);
+  padding: var(--ref-spacing-2) var(--ref-spacing-3);
   outline: none;
   width: 60px;
   text-align: center;
+}
 
-  &:focus {
-    box-shadow: inset 0 0 0 2px var(--accent-color, #3584e433);
-  }
+.NumberField_input:focus {
+  box-shadow: inset 0 0 0 var(--ref-focus-ring-width) var(--ref-focus-ring-color);
+}
+
+.NumberField_input:focus-visible {
+  outline: var(--ref-focus-ring-width) solid var(--ref-focus-ring-color);
+  outline-offset: var(--ref-focus-ring-offset);
 }
 
 .NumberField_button {
   appearance: none;
-  background: var(--btn-bg, #f6f5f4);
+  background: var(--sys-color-bg-button);
   border: none;
-  color: var(--view-fg-color, rgb(0 0 6 / 80%));
+  color: var(--sys-color-fg-view);
   cursor: pointer;
-  font-size: var(--font-size-sm, 0.875rem);
-  padding: var(--space-2, 4px) var(--space-3, 6px);
-  transition: background 0.15s ease;
+  font-size: var(--ref-font-size-sm);
+  padding: var(--ref-spacing-2) var(--ref-spacing-3);
+  transition: background var(--ref-transition-fast);
+}
 
-  &:hover {
-    background: var(--btn-hover, #f9f9f8);
-  }
+.NumberField_button:hover {
+  background: var(--sys-color-bg-button-hover);
+}
 
-  &:active {
-    background: var(--btn-pressed, #e8e7e6);
-  }
+.NumberField_button:active {
+  background: var(--sys-color-bg-button-pressed);
+}
+
+.NumberField_button:focus-visible {
+  outline: var(--ref-focus-ring-width) solid var(--ref-focus-ring-color);
+  outline-offset: var(--ref-focus-ring-offset);
 }

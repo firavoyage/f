@@ -1,26 +1,31 @@
 .Button {
   appearance: none;
-  background: var(--btn-bg, #f6f5f4);
-  border: 1px solid var(--btn-border, #cdc7c2);
-  border-radius: var(--radius-button, 6px);
-  color: var(--view-fg-color, rgb(0 0 6 / 80%));
+  background: var(--sys-color-bg-button);
+  border: 1px solid var(--sys-color-bg-button-border);
+  border-radius: var(--sys-radius-button);
+  color: var(--sys-color-fg-view);
   cursor: pointer;
-  font-size: var(--font-size-sm, 0.875rem);
+  font-size: var(--ref-font-size-sm);
   font-weight: 500;
-  padding: var(--space-2, 4px) var(--space-4, 9px);
-  transition: background 0.15s ease, border-color 0.15s ease;
+  padding: var(--ref-spacing-2) var(--ref-spacing-4);
+  transition: background var(--ref-transition-fast), border-color var(--ref-transition-fast);
+}
 
-  &:hover {
-    background: var(--btn-hover, #f9f9f8);
-  }
+.Button:hover {
+  background: var(--sys-color-bg-button-hover);
+}
 
-  &:active {
-    background: var(--btn-pressed, #e8e7e6);
-  }
+.Button:active {
+  background: var(--sys-color-bg-button-pressed);
+}
 
-  &:disabled,
-  &[data-disabled] {
-    opacity: var(--disabled-opacity, 40%);
-    pointer-events: none;
-  }
+.Button:focus-visible {
+  outline: var(--ref-focus-ring-width) solid var(--ref-focus-ring-color);
+  outline-offset: var(--ref-focus-ring-offset);
+}
+
+.Button:disabled,
+.Button[data-disabled] {
+  opacity: var(--ref-opacity-disabled);
+  pointer-events: none;
 }
