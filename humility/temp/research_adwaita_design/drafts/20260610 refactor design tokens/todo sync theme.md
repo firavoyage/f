@@ -12,7 +12,7 @@ make sure your work satisfies the constraints or specs.
 
 read
 
-- knowledge
+- knowledge/web_styling
 
 write
 
@@ -22,4 +22,8 @@ append
 
 - components/index.html (as well as things inside)
 
-make output expected
+
+
+test
+
+be simple. no testing. 

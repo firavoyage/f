@@ -310,7 +310,7 @@ gamedev:
 - game design framework
 - indie game ideas
 
-ux: <!-- ui/ux design -->
+ux: <!-- ui/ux design, ia, information architecture -->
 
 - design ui principles intuition attention
 - information architecture
@@ -334,6 +334,7 @@ ux: <!-- ui/ux design -->
 - navigation compare space enter
 - core laws the law of least effort the law of least surprise parkinson law
 - weber law of perception
+- ia context menu design
 
 typography:
 
@@ -353,6 +354,7 @@ linguistics: <!-- grammar, etymology -->
 - name gemini gemma
 - languages make humans dominant
 - name fira etymology
+- rem acu tetigisti roman history latin greek
 
 literature:
 
@@ -632,6 +634,7 @@ egg:
 humility
 
 - research claude code leak insights
+- research google ai mode
 
 legacy:
 
