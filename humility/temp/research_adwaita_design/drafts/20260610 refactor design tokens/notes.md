@@ -1,3 +1,7 @@
+make it work first. make it robust or rigid later
+
+---
+
 i could make the converter stricter though.
 
 - no unused modes (? i could have comfortable compact cozy ahead of time as future proof)
@@ -11,3 +15,28 @@ i could make the converter stricter though.
 - link could only happen from sys to ref. not ref to ref or sys to sys. (? i might have a special button that default to sys bg primary)
 
 it might help if i tell it explicitly to exclude legacy folder while searching
+
+---
+
+write test.ts i guess
+
+cases.yaml
+
+```yaml
+- input: |
+    foo
+    bar
+    asdf
+  output: |
+    foo
+    bar
+    asdf  
+- input: |
+    foo
+    bar
+    asdf
+  output: |
+    foo
+    bar
+    asdf  
+```

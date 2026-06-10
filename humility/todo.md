@@ -116,4 +116,10 @@ finalize adwaita.yaml
 
 align components
 
+---
+
+write test.ts.
+
+write theme.ts
+
 

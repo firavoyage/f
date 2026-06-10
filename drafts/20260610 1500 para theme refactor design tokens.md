@@ -8545,6 +8545,421 @@ If you are setting this up for a specific system, would you like me to convert t
 
 AI responses may include mistakes. For legal advice, consult a professional. [Learn more](https://support.google.com/websearch?p=aimode\&gl=us)
 
+# design tokens color scale
+
+A **design tokens color scale** is <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">a curated, sequential range of shades and tints derived from a base hue, designed to maintain consistency, scalability, and accessibility across a product</mark>. It organizes raw hex values into numeric intervals—most commonly **10 to 100** or **50 to 950**. This structure allows teams to map colors systematically to distinct dark/light mode themes and user interface states. \[[1](https://atlassian.design/tokens/design-tokens), [2](https://designsystem.digital.gov/design-tokens/), [3](https://uxdesign.cc/designing-a-scalable-and-accessible-color-system-for-your-design-system-f98207eda166), [4](https://penpot.app/blog/intro-to-design-tokens/), [5](https://thedesignsystem.guide/design-tokens)]
+
+### 1. The Token Architecture
+
+To make a color scale truly useful, design systems like [Material Design](https://m3.material.io/foundations/design-tokens) and [Atlassian Design System](https://atlassian.design/tokens/design-tokens) separate values into a three-tiered architecture: \[[1](https://m3.material.io/foundations/design-tokens), [2](https://www.contentful.com/blog/design-token-system/), [3](https://atlassian.design/tokens/design-tokens), [4](https://zeroheight.com/blog/design-tokens-as-your-dna/), [5](https://designtokens.substack.com/p/design-tokens-and-variables)]
+
+- **Primitive / Global Tokens**: The raw, numeric palette options (e.g., `color.blue.500` = `#1E90FF`). They are context-agnostic and should not be used directly in components.
+- **Semantic / Functional Tokens**: Tokens that assign meaning or intent to the color scale (e.g., `color.background.primary` or `color.text.success`). They reference primitive tokens and shift values automatically depending on the theme.
+- **Component Tokens**: Ultra-specific overrides assigned to an explicit element property (e.g., `color.button.primary.active.background`), referencing semantic tokens. \[[1](https://samiamdesigns.substack.com/p/a-new-approach-to-naming-design-tokens), [2](https://primer.style/product/getting-started/foundations/color-usage), [3](https://designsystem.backbase.com/latest/design-tokens/primitive-colors-BaGfPhQp), [4](https://penpot.app/blog/intro-to-design-tokens/), [5](https://atlassian.design/tokens/design-tokens), [6](https://m3.material.io/foundations/design-tokens)]
+
+### 2. Standard Color Scale Numeric Models
+
+Most enterprise design systems map color ranges mathematically to create predictable visual intervals: \[[1](https://canvas.workday.com/guidelines/color/color-tokens), [2](https://penpot.app/blog/intro-to-design-tokens/)]
+
+| Numeric Scale Model \[[1](https://penpot.app/blog/intro-to-design-tokens/), [2](https://canvas.workday.com/guidelines/color/color-tokens), [3](https://chienchwu.medium.com/design-token-scales-88286ebb6a30), [4](https://github.com/fyipedia/colorfyi)] | Common Range                       | Behavior                                                               | Real-world Example                                                                                             |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- | ---------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| **The 50–950 Scale**                                                                                                                                                                                                                                      | 50, 100, 200... 900, 950           | 50 is closest to white; 950 is closest to black.                       | Used widely in Tailwind CSS and [Penpot](https://penpot.app/blog/intro-to-design-tokens/).                     |
+| **The 0–1000 Lightness Scale**                                                                                                                                                                                                                            | 0, 100, 200... 900, 1000           | Tied mathematically to lightness variables (e.g., OKLCH format).       | Built for multi-theme scaling like [Workday Canvas](https://canvas.workday.com/guidelines/color/color-tokens). |
+| **T-Shirt Sizing**                                                                                                                                                                                                                                        | x-light, light, base, dark, x-dark | Intuitive for smaller projects, but lacks precise steps for large UIs. | Great for basic brand sites or MVPs.                                                                           |
+
+### 3. Step-by-Step Color Scale Creation
+
+1. **Define the Base Hues**: Select your brand, neutral, and semantic anchor colors (Success green, Warning yellow, Danger red).
+2. **Generate the Steps**: Use tools like the Figma [Variables and Styles engine](https://www.youtube.com/watch?v=m7kUGmNkPoc) or online plugins to scale the tint (adding white) and shade (adding black) while keeping saturation uniform.
+3. **Audit for Accessibility**: Ensure that paired text and background tokens clear a minimum [W3C WCAG contrast ratio](https://developer.dynatrace.com/design/foundations/design-tokens-in-use/) of **4.5:1** for standard text and **3:1** for UI borders or large headings.
+4. **Wire up Dark Mode**: In your token JSON or platform variables, flip the relationship. A light-theme background mapped to `neutral.50` will map to `neutral.900` when the dark mode theme is enabled. \[[1](https://www.youtube.com/watch?v=m7kUGmNkPoc), [2](https://shoelace.style/tokens/color), [3](https://uxdesign.cc/designing-a-scalable-and-accessible-color-system-for-your-design-system-f98207eda166), [4](https://developer.dynatrace.com/design/foundations/design-tokens-in-use/), [5](https://www.contentful.com/blog/design-token-system/), [6](https://penpot.app/blog/intro-to-design-tokens/)]
+
+If you are setting this up right now, let me know:
+
+- What **design tool or framework** you are targeting (e.g., **Figma**, **Tailwind**, **Style Dictionary**).
+- If you need to build specifically for **dark mode** right away.
+- How many **brand colors** you are trying to fit into the scale.
+
+I can give you a clean, starter JSON token schema tailored directly to your framework.
+
+- [link](https://samiamdesigns.substack.com/p/a-new-approach-to-naming-design-tokens)\
+  A new approach to naming design tokens\
+  May 5, 2024 — Token structure \* When working on a project, these are the options I have to choose from. \* These tokens represent the primitive d...\
+  Substack·Confessions from a design team of one
+- [link](https://m3.material.io/foundations/design-tokens)\
+  Design tokens – Material Design 3\
+  Reference tokens. All available tokens with associated values. System tokens. Decisions and roles that give the design system its ...\
+  Material Design
+- [link](https://atlassian.design/tokens/design-tokens)\
+  Overview - Design tokens - Atlassian Design System\
+  Design tokens explained. Design tokens are a single source of truth to name and store design decisions for Atlassian app experienc...\
+  Atlassian Design
+
+Show all
+
+## You said: how to build a color palette with oklch
+
+Building a color palette with **OKLCH** revolves around its three parameters: <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>Lightness (L)</strong>, <strong>Chroma (C)</strong>, and <strong>Hue (H)</strong></mark>. Unlike HSL or Hex, OKLCH aligns with human perception. 60% Lightness looks equally bright to the human eye whether the hue is yellow, blue, or green. This structural uniformity allows you to build accessible and mathematically predictable design token ramps without manual tweaking. \[[1](https://www.youtube.com/watch?v=6aCsAMgwnjE), [2](https://evilmartians.com/opensource/oklch-color-picker), [3](https://medium.com/@alekswebnet/defining-colors-in-modern-css-why-its-time-to-switch-to-oklch-c6b972d98520)]
+
+### 1. Understand the OKLCH Parameters
+
+To manipulate the color scale effectively, you must control the values within their specific bounds:
+
+- **Lightness (`L`)**: Represented as a decimal from `0.0` (pure black) to `1.0` (pure white) or a percentage (`0%` to `100%`).
+- **Chroma (`C`)**: Represents color saturation/purity. It starts at `0.0` (grayscale). While it is technically open-ended, most screens top out around `0.4`. P3 wide-gamut displays can render values higher than traditional sRGB bounds.
+- **Hue (`H`)**: The color angle on a circular wheel ranging from `0` to `360`. For context, `0` is a vibrant pinkish-red, `140` is green, and `270` is blue. \[[1](https://oklch.com/), [2](https://supergeekery.com/blog/create-mathematically-generated-css-color-schemes-with-oklch), [3](https://oklch-palette.vercel.app/), [4](https://www.youtube.com/watch?v=6aCsAMgwnjE), [5](https://clhenrick.io/blog/color-experiments-with-oklch/), [6](https://annafilou.com/en/css-color-scales)]
+
+### 2. Step-by-Step Palette Blueprint
+
+### Step 1: Establish Your Anchor Hues \[[1](https://www.softriver.co/blog/how-to-create-a-color-palette-easy-steps-for-stunning-designs)]
+
+Isolate the exact hue degree numbers for your brand identity and semantic UI requirements. You can convert existing hex codes using tools like the Evil Martians OKLCH Color Picker. \[[1](https://oklch.com/), [2](https://amymrogers.medium.com/stop-making-colour-palettes-644bbd3256c3)]
+
+- _Brand Blue Hue:_ `260`
+- _Success Green Hue:_ `145`
+- _Error Red Hue:_ `25` \[[1](https://uploadcare.com/blog/oklch-in-css/)]
+
+### Step 2: Set a Fixed Chroma Curve
+
+To prevent your color ramp from getting "muddy" or clipping out-of-gamut, vary the Chroma intentionally relative to the Lightness. \[[1](https://www.youtube.com/watch?v=6aCsAMgwnjE), [2](https://observablehq.com/@clhenrick/sequential-color-palette-generation-using-oklch), [3](https://www.reddit.com/r/UXDesign/comments/1qwmh5x/oklch%5Fnewbie%5Fany%5Frecommendations%5Fto%5Fbuild%5Fmy/)]
+
+- **For pure neutrals**: Keep Chroma flat at `0`.
+- **For brand scales**: Keep Chroma low (`0.01` to `0.04`) at extreme Lightness steps (e.g., 50 or 950) to create clean off-whites and dark grays. Peak the Chroma (`0.15` to `0.3`) in the mid-tones (e.g., 500 or 600) where the color needs to pop on buttons. \[[1](https://amymrogers.medium.com/stop-making-colour-palettes-644bbd3256c3), [2](https://oklch.fyi/), [3](https://munsell.com/about-munsell-color/how-color-notation-works/munsell-chroma/), [4](https://gorkemyildiz.com/articles/the-helmholtz-kohlrausch-effect-why-saturated-colors-look-brighter), [5](https://impeccable.style/docs/colorize/)]
+
+### Step 3: Map the Lightness Scale Sequentially \[[1](https://github.com/meodai/rampensau)]
+
+Create a 9 or 11-step scale by explicitly pairing the Lightness percentage with your token names. Because OKLCH lightness is perceptually uniform, you can reuse the exact same lightness steps across _all_ color scales to ensure perfect contrast symmetry. \[[1](https://www.youtube.com/watch?v=6aCsAMgwnjE), [2](https://oklab-color-palette-generator.web.app/), [3](https://utilitybend.com/blog/oklchroma-an-oklch-color-pattern-generator-that-generates-css-variables), [4](https://evilmartians.com/opensource/oklch-color-picker)]
+
+css
+
+```
+/* Example Lightness Distribution Profile */
+--lightness-50:  0.98; /* Excellent for page backgrounds */
+--lightness-100: 0.94;
+--lightness-200: 0.86;
+--lightness-300: 0.74;
+--lightness-400: 0.62;
+--lightness-500: 0.50; /* Your standard midtone core */
+--lightness-600: 0.40;
+--lightness-700: 0.28;
+--lightness-800: 0.18;
+--lightness-900: 0.10; /* Perfect for dark-mode surfaces */
+```
+
+Use code with caution.
+
+### 3. Native CSS Implementation (Relative Color Syntax) \[[1](https://evilmartians.com/chronicles/oklch-in-css-why-quit-rgb-hsl), [2](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color%5Fvalue/oklch)]
+
+Modern CSS allows you to generate complete scales dynamically from a single base variable using `from` syntax. This means changing a single brand color variable automatically recalibrates the entire design system scale. \[[1](https://amymrogers.medium.com/stop-making-colour-palettes-644bbd3256c3), [3](https://medium.com/@tzayn076/understanding-color-variables-in-ui-design-7eb85b30c39b)]
+
+css
+
+```
+:root {
+  /* 1. Define Core Brand Anchor Color */
+  --brand-base: oklch(0.61 0.21 260);
+
+  /* 2. Derive Scaled Primitive Tokens Dynamically */
+  --blue-100: oklch(from var(--brand-base) 0.95 0.04 h);
+  --blue-300: oklch(from var(--brand-base) 0.78 0.14 h);
+  --blue-500: oklch(from var(--brand-base) 0.61 0.21 h); /* Matches Base */
+  --blue-700: oklch(from var(--brand-base) 0.42 0.19 h);
+  --blue-900: oklch(from var(--brand-base) 0.20 0.07 h);
+
+  /* 3. Assign to Semantic Layout Variables */
+  --bg-app: var(--blue-100);
+  --text-main: var(--blue-900);
+  --btn-primary: var(--blue-500);
+}
+```
+
+Use code with caution.
+
+### 4. Designing for Dark Mode
+
+Because OKLCH lightness values are predictable, creating a dark mode theme requires flipping the semantic mappings rather than guessing new hex codes. \[[1](https://www.reddit.com/r/UXDesign/comments/1qwmh5x/oklch%5Fnewbie%5Fany%5Frecommendations%5Fto%5Fbuild%5Fmy/), [2](https://amymrogers.medium.com/stop-making-colour-palettes-644bbd3256c3), [3](https://www.youtube.com/watch?v=6aCsAMgwnjE)]
+
+| Semantic Token Name \[[1](https://dokozero.design/en/projects/okcolor/)] | Light Mode Value                  | Dark Mode Value                   |
+| ------------------------------------------------------------------------ | --------------------------------- | --------------------------------- |
+| `--bg-default`                                                           | `var(--blue-100)` (95% Lightness) | `var(--blue-900)` (20% Lightness) |
+| `--text-primary`                                                         | `var(--blue-900)` (20% Lightness) | `var(--blue-100)` (95% Lightness) |
+| `--interactive`                                                          | `var(--blue-500)` (61% Lightness) | `var(--blue-300)` (78% Lightness) |
+
+For a deep dive into implementing automated token adjustments, check out this guide on asset engines:
+
+6:23
+
+[Introducing Easy Color & Token Generator 2.0MehediHasYouTube · Feb 28, 2026](https://www.youtube.com/watch?v=%5F18YIW8r4jM)
+
+If you want to fast-track your setup, let me know:
+
+- Are you configuring this inside **Figma variables** via a plugin, or writing it directly into a **CSS/Tailwind project**?
+
+- What is the **Hex code** of your core brand color? (I can convert it and write your base scale for you) \[[1](https://amymrogers.medium.com/stop-making-colour-palettes-644bbd3256c3), [2](https://www.youtube.com/watch?v=%5F18YIW8r4jM), [3](https://oklch.click/tools/palette-generator)]
+
+- [link](https://amymrogers.medium.com/stop-making-colour-palettes-644bbd3256c3)\
+  Stop making colour palettes - Amy Rogers - Medium\
+  Jan 17, 2026 — Building the palette. I started with a single colour. This is our brand colour with a hex code of #7276cb but here I've converted ...\
+  Medium·Amy Rogers
+
+- [link](https://annafilou.com/en/css-color-scales)\
+  How I generate color scales in CSS with OKLCH - Anna Filou\
+  May 13, 2025 — Here's the CSS you can use: :root { /\* Base colors \*/ /\* Change the HUE (last number) for different colors. \*/ /\* You might wanna ...\
+  Anna Filou
+
+- [link](https://www.youtube.com/watch?v=6aCsAMgwnjE)\
+  Thinking on ways to solve color palettes\
+  May 17, 2023 — welcome to another episode of Gooey Challenges. where I build interfaces my way and then I challenge you to do it your way because...\
+  23:39\
+  YouTube·Chrome for Developers
+
+Show all
+
+## You said: how to set the chroma curve. how to generate.
+
+To set a **chroma curve** in OKLCH, you must scale Chroma (saturation) relative to Lightness. If you keep Chroma flat while changing Lightness, your light shades will look unnaturally neon, and your dark shades will break outside the displayable color boundary (gamut clipping). \[[1](https://arxiv.org/html/2510.00584v1), [2](https://www.smashingmagazine.com/2023/08/oklch-color-spaces-gamuts-css/), [3](https://medium.com/@jelle.mannaerts/a-quest-for-a-better-colour-scale-6ec0a691167b)]
+
+Here is exactly how to calculate, plot, and automate your chroma curves.
+
+***
+
+### 1. How to Plot the Chroma Curve
+
+A perfect OKLCH chroma curve resembles a **bell curve** or an **asymmetrical arc**. It starts very low for light tints, peaks in the middle steps, and tapers down sharply for dark shades.
+
+```
+Chroma (C)
+  ▲
+  │             ■ ■ [Peak: Steps 500-600]
+  │           ■     ■
+  │         ■         ■
+  │       ■             ■
+  │     ■                 ■ [Tail: Step 900]
+  │   ■ [Start: Step 50]
+  └──────────────────────────────► Lightness (L)
+     100%                         0%
+```
+
+Use these specific parameters to configure your curve anchors across a standard 50–950 scale:
+
+- **The Light Steps (50–200)**: Keep Chroma low (**`0.01` to `0.05`**). Light colors cannot hold high chroma without looking harsh or clipping out of gamut. This yields clean, premium backgrounds. \[[1](https://medium.com/@vyakymenko/color-contrast-with-oklch-prefers-reduced-motion-and-motion-design-ethics-089c0c8897d0)]
+- **The Mid-Tone Steps (400–600)**: Peak your Chroma (**`0.15` to `0.28`** depending on the hue). This is your brand's most vibrant zone for buttons, badges, and primary links.
+- **The Dark Steps (700–950)**: Drop Chroma back down (**`0.04` to `0.08`**). Dark steps with high chroma look muddy and fail accessibility contrast rules on dark backgrounds.
+
+***
+
+### 2. The Universal Mathematical Baseline
+
+Because OKLCH is uniform, you can use a single master blueprint for almost any brand color scale. Here is the mathematical distribution for a standard 9-step scale: \[[1](https://uploadcare.com/blog/oklch-in-css/)]
+
+| Token Name     | Lightness (L) | Chroma (C) Curve   | Hue (H)    | Use Case                           |
+| -------------- | ------------- | ------------------ | ---------- | ---------------------------------- |
+| **50**         | `0.97`        | `0.020`            | _Your Hue_ | App Canvas Background              |
+| **100**        | `0.92`        | `0.045`            | _Your Hue_ | Card Component Background          |
+| **200**        | `0.84`        | `0.090`            | _Your Hue_ | Subtle Borders / Hover States      |
+| **300**        | `0.74`        | `0.140`            | _Your Hue_ | Secondary Text / Non-text graphics |
+| **400**        | `0.64`        | `0.190`            | _Your Hue_ | Decorative Icons                   |
+| **500** (Core) | `0.54`        | **`0.220` (Peak)** | _Your Hue_ | Primary UI Elements / Buttons      |
+| **600**        | `0.44`        | `0.200`            | _Your Hue_ | Dark Mode Interactive States       |
+| **700**        | `0.34`        | `0.150`            | _Your Hue_ | Dark Mode Component Backgrounds    |
+| **800**        | `0.24`        | `0.100`            | _Your Hue_ | High-Contrast Text (Dark Mode)     |
+| **900**        | `0.14`        | `0.050`            | _Your Hue_ | Dark Mode App Canvas Background    |
+
+***
+
+### 3. How to Generate the Palette (Tools & Workflow)
+
+You do not need to calculate these points manually. Use these automated generation workflows based on your tech stack:
+
+### Workflow A: For Engineers (Modern CSS)
+
+If you are writing pure code, use the CSS `calc()` engine paired with custom properties to automatically generate the curve steps relative to a primary variable:
+
+css
+
+```
+:root {
+  /* 1. Pick your core hue angle */
+  --hue: 250; /* Royal Blue */
+
+  /* 2. Generate the scale programmatically */
+  --blue-50:  oklch(0.97 0.02 var(--hue));
+  --blue-100: oklch(0.92 0.04 var(--hue));
+  --blue-300: oklch(0.74 0.14 var(--hue));
+  --blue-500: oklch(0.54 0.22 var(--hue)); /* Peak Chroma */
+  --blue-700: oklch(0.34 0.15 var(--hue));
+  --blue-900: oklch(0.14 0.05 var(--hue));
+}
+```
+
+Use code with caution.
+
+### Workflow B: For Designers (Figma & UI Apps)
+
+1. **Open an OKLCH Palette Generator**: Navigate to dedicated web engines like oklch.com or Huetone.
+2. **Input Your Target Hue**: Type in your core brand hue angle.
+3. **Adjust the Curve Handles**: Use the visual graph editor on the site to shift the Chroma line into the asymmetrical arc shown above.
+4. **Export to Design Tokens**: Use the built-in exporters to instantly copy the code as **Figma Variables JSON**, **Tailwind CSS configuration rules**, or **Style Dictionary format**. \[[1](https://medium.com/@successful%5Fzomp%5Fcrow%5F820/exploring-the-oklch-color-space-a-more-intuitive-approach-for-designers-e48bb35bbda1), [2](https://dev.to/matfrana/the-mystery-of-tailwind-colors-v4-hjh)]
+
+If you are about to export this, let me know:
+
+- What **exact brand color** (Hex or OKLCH) you want to use as your anchor.
+- If you want a **pure digital neutral** scale (gray with a slight hint of your brand hue) to match.
+
+I can write out the precise block of code or JSON tokens for you immediately.
+
+- [link](https://arxiv.org/html/2510.00584v1)\
+  Color Models in Image Processing: A Review and Experimental Comparison Corresponding author: Muragul Muratbekova (e-mail: muragulm@gmail.com).This research was funded by the Science Committee of the Ministry of Science and Higher Education of the Republic of Kazakhstan (Grant No. AP22786412).\
+  Oct 1, 2025 — 2. Chroma (Saturation)\
+  \
+  arXiv
+- [link](https://www.smashingmagazine.com/2023/08/oklch-color-spaces-gamuts-css/)\
+  Falling For Oklch: A Love Story Of Color Spaces, Gamuts, And CSS — Smashing Magazine\
+  Aug 28, 2023 — That's no big deal for Oklch and the other new color spaces. Lightness is measured authentically by varying levels of saturation. ...\
+  \
+  \
+  Smashing Magazine
+- [link](https://medium.com/@jelle.mannaerts/a-quest-for-a-better-colour-scale-6ec0a691167b)\
+  A quest for a better colour scale | by Jelle Mannaerts\
+  Nov 4, 2025 — OKLCH, by comparison, has a much wider gamut, meaning it can define many more colours that our screens physically cannot display. ...\
+  \
+  \
+  Medium
+
+Show all
+
+# how use use color-mix in css
+
+To use the **`color-mix()`** function in CSS, you need to <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">provide a <strong>color space</strong> followed by <strong>two colors</strong> you want to blend together</mark>. \[[1](https://ryantrimble.com/blog/mixing-colors-with-css/)]
+
+The basic syntax is: `color-mix(in [color-space], [color-1] [percentage], [color-2] [percentage])`. \[[1](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color%5Fvalue/color-mix), [2](https://dev.to/astrit/a-deep-dive-into-the-css-color-mix-function-and-future-of-colors-on-the-web-2pgi)]
+
+### 1. Basic 50/50 Blend
+
+If you omit the percentages, the browser splits the blend equally by default (50% each). \[[1](https://developer.mozilla.org/en-US/blog/color-palettes-css-color-mix/), [2](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color%5Fvalue/color-mix)]
+
+css
+
+```
+.purple-box {
+  /* Mixes red and blue equally in the srgb color space */
+  background-color: color-mix(in srgb, red, blue);
+}
+```
+
+Use code with caution.
+
+### 2. Custom Mixing Ratios
+
+You can specify exactly how much of a color to include by adding percentages. \[[1](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color%5Fvalue/color-mix), [2](https://ryantrimble.com/blog/mixing-colors-with-css/)]
+
+- If you only specify a percentage for the first color, the second color automatically fills the remainder. \[[1](https://gomakethings.com/articles/mixing-colors-with-css/), [2](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color%5Fvalue/color-mix)]
+
+css
+
+```
+.mostly-red {
+  /* Results in 70% red and 30% blue */
+  background-color: color-mix(in srgb, red 70%, blue);
+}
+
+.custom-ratio {
+  /* Explicitly defines 20% yellow and 80% green */
+  background-color: color-mix(in srgb, yellow 20%, green 80%);
+}
+```
+
+Use code with caution.
+
+### 3. Change the Color Space \[[1](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Colors/Color%5Fmixer)]
+
+The `in [color-space]` argument determines the mathematical algorithm used to blend the channels. Different color spaces will yield visibly different gradients and midtones. \[[1](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color%5Fvalue/color-mix), [2](https://www.youtube.com/shorts/9CY8XtTdBM8), [3](https://www.jefersonsilva.me/articles/css-color-mix), [4](https://www.youtube.com/shorts/MXhSsburJcQ)]
+
+- **Rectangular spaces** (`srgb`, `oklab`, `lab`, `display-p3`): Great for general mixing. `oklab` is highly recommended for predictable, perceptually accurate mixing.
+- **Polar spaces** (`oklch`, `lch`, `hsl`): Based on color wheels. They support an optional path method (`shorter hue`, `longer hue`, `increasing hue`, `decreasing hue`) to control which way around the color wheel the blend travels. \[[1](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color%5Fvalue/color-mix), [2](https://www.w3schools.com/cssref/func%5Fcolor-mix.php), [3](https://www.youtube.com/watch?v=I9zHX-jSKpA\&t=325), [4](https://www.brandonpugh.com/til/css/darken-colors-color-mix/), [5](https://css-tricks.com/almanac/functions/c/color-mix/)]
+
+css
+
+```
+.oklab-blend {
+  /* Smoother, mathematically modern color blending */
+  background-color: color-mix(in oklab, blue, yellow);
+}
+
+.polar-hue-blend {
+  /* Forces the mix to travel the long way around the HSL wheel */
+  background-color: color-mix(in hsl longer hue, blue, yellow);
+}
+```
+
+Use code with caution.
+
+### 4. Popular Use Cases
+
+The power of `color-mix()` shines when creating dynamic palettes with CSS variables or targeting context colors. \[[1](https://www.youtube.com/watch?v=SOIRyQEv2p8), [2](https://www.alwaystwisted.com/articles/quick-and-dirty-colour-palettes-using-color-mix)]
+
+- **Creating Hover Shades (Tints and Shades)**: Mix your brand color with black to darken it or white to lighten it.\
+  css
+
+<!---->
+
+```
+:root { --brand: #ff4500; }
+
+.button:hover {
+  background-color: color-mix(in oklab, var(--brand) 85%, black);
+}
+```
+
+Use code with caution.
+
+- **Adjusting Opacity Dynamically**: Mix any solid color with `transparent` to create instant opacity variants without hardcoding an `rgba()` alpha channel.\
+  css
+
+<!---->
+
+```
+.translucent-bg {
+  /* 30% brand color, 70% transparent */
+  background-color: color-mix(in srgb, var(--brand) 30%, transparent);
+}
+```
+
+Use code with caution.
+
+- **Context-Aware Styling**: Blend directly with `currentColor` to dynamically match text elements.\
+  css
+
+<!---->
+
+```
+a {
+  /* Creates an underline that is a 40% faded version of the text color */
+  border-bottom: 2px solid color-mix(in srgb, currentColor 40%, transparent);
+}
+```
+
+Use code with caution.\
+\[[1](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color%5Fvalue/color-mix), [2](https://www.alwaystwisted.com/articles/quick-and-dirty-colour-palettes-using-color-mix), [3](https://dev.to/drprime01/css-color-mix-function-34jh), [4](https://www.youtube.com/watch?v=SOIRyQEv2p8), [5](https://pqina.nl/blog/color-mix-anchor-underline/)]
+
+If you are working on a specific design, tell me if you are looking to **lighten/darken a theme**, **generate a full palette scale**, or **control transparent elements** so I can provide the perfect code snippet.
+
+- [link](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color%5Fvalue/color-mix)\
+  color-mix() CSS function - MDN Web Docs - Mozilla\
+  Apr 18, 2026 — Parameters. The color-mix( ? , \[ && ? ]#) accepts the following parameters: Specifies what interpolation method should be used to ...\
+  MDN Web Docs
+- [link](https://www.youtube.com/watch?v=I9zHX-jSKpA\&t=325)\
+  A deep dive into CSS color-mix()\
+  Aug 17, 2023 — so I think in that case it's probably there's probably easier ways to work but it could way it could be a way that if you're stuck...\
+  4m\
+  YouTube·Kevin Powell
+- [link](https://ryantrimble.com/blog/mixing-colors-with-css/)\
+  Mixing Colors with CSS | Ryan Trimble, UX/UI Developer\
+  Jun 25, 2023 — by Ryan Trimble. I've been digging into many new CSS features since CSS Day, including mixing colors. How cool is it that we can n...\
+  ryantrimble.com
+
+Show all
+
 # 
 
 # Design tokens refactor with OKLCH
@@ -16143,5 +16558,4 @@ Now let me verify the new adwaita.css works properly by running the dev server a
 ---
 
 #
-
 
