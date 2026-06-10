@@ -1658,5 +1658,934 @@ Did you know your computer had this **Mouse Keys** feature built-in? If you want
 
 Show all
 
+# what does skip to main content mean in keyboard navigation
+
+"Skip to main content" is <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">an accessibility feature that lets keyboard users bypass repetitive navigation links and jump directly to the page's core information</mark>. \[[1](https://vispero.com/resources/when-is-a-skip-link-needed/), [2](https://support.wix.com/en/article/accessibility-about-skip-to-main-content), [3](https://www.accessibilitychecker.org/blog/keyboard-navigation-accessibility/), [4](https://pauljadam.com/guides/skip-links.html)]
+
+### Why It Exists
+
+- **Repetitive Links**: Websites usually feature long menus at the top of every page.
+- **Tabbing Fatigue**: Keyboard users navigate by pressing the **Tab** key.
+- **Wasted Keystrokes**: Without this link, users must tab dozens of times just to read an article. \[[1](https://blog.equally.ai/developer-guide/bypass-blocks/), [2](https://www.a11ybookclub.com/blogs/skip-the-struggle-a-deep-dive-into-skip-links-and-keyboard-accessibility), [3](https://www.reddit.com/r/accessibility/comments/18jpmzs/question%5Fabout%5Fskip%5Fto%5Fmain%5Fcontent%5Flink%5Fin/)]
+
+### How It Works
+
+- **Hidden by Default**: The link is usually invisible to sighted mouse users.
+- **Revealed via Tab**: It appears at the very top of the screen on the first press of the **Tab** key.
+- **Instant Jump**: Pressing **Enter** moves the keyboard focus past the header directly to the main article or form. \[[1](https://css-tricks.com/a-deep-dive-on-skipping-to-content/), [2](https://www.a11ybookclub.com/blogs/skip-the-struggle-a-deep-dive-into-skip-links-and-keyboard-accessibility), [3](https://216digital.com/skip-links-improve-web-accessibility-navigation/), [4](https://universaldesign.ie/communications-digital/web-and-mobile-accessibility/web-accessibility-techniques/design-accessible-digital-content-introduction-and-index/design-accessible-navigation/allow-users-to-skip-blocks-of-information-easily), [5](https://navillus.dev/blog/accessibility-skip-to-content/)]
+
+### Who Benefits Most
+
+- **Screen Reader Users**: Blind or visually impaired individuals.
+- **Keyboard-Only Users**: People who cannot use a mouse due to motor disabilities.
+- **Power Users**: Anyone navigating via alternative switch devices or shortcuts. \[[1](https://nitsantech.de/en/accessibility-glossary/keyboard-navigation), [2](https://www.tempertemper.net/blog/skip-links-what-why-and-how), [3](https://www.coolfields.co.uk/2010/10/providing-skip-links-in-your-pages/), [4](https://www.a11ybookclub.com/blogs/skip-the-struggle-a-deep-dive-into-skip-links-and-keyboard-accessibility), [5](https://testparty.ai/blog/skip-navigation-links)]
+
+To help you understand this feature better, tell me if you are looking to **implement this code** on your own website, or if you are **learning web accessibility standards** like WCAG?
+
+- [link](https://vispero.com/resources/when-is-a-skip-link-needed/)\
+  When Is a Skip Link Needed?\
+  Dec 5, 2024 — Screen reader users, keyboard-only users, and those with motor disabilities benefit greatly from the ability to skip over repeated...\
+  \
+  Vispero
+- [link](https://support.wix.com/en/article/accessibility-about-skip-to-main-content)\
+  Accessibility: About "Skip to Main Content" | Help Center | Wix.com\
+  However, some site visitors, such as those with visual conditions, may use assistive technologies and / or a keyboard to navigate.\
+  \
+  \
+  Wix.com
+- [link](https://www.accessibilitychecker.org/blog/keyboard-navigation-accessibility/)\
+  Click-Free Web: How to Implement Keyboard Navigation Accessibility\
+  Mar 18, 2025 — Skip links provide a way for keyboard users to bypass repetitive content, such as navigation menus, and jump straight to the main ...\
+  \
+  \
+  AccessibilityChecker.org
+
+Show all
+
+## You said: example
+
+Here is a functional example of how a "Skip to Main Content" link works in HTML and CSS.
+
+### The HTML Structure
+
+The skip link must be the **very first focusable element** inside the tag. It points to the `id` of the main container using an anchor fragment (`#main-content`). \[[1](https://www.a11y-collective.com/blog/skip-to-main-content/), [2](https://marcom.wwu.edu/accessibility/guide/include-skip-main-content-mechanism), [3](https://testparty.ai/blog/skip-navigation-links), [4](https://216digital.com/skip-links-improve-web-accessibility-navigation/)]
+
+html
+
+```
+<body>
+  <!-- 1. The Skip Link -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- 2. Repetitive Navigation (Bypassed) -->
+  <header>
+    <nav>
+      <a href="/home">Home</a>
+      <a href="/about">About</a>
+      <a href="/services">Services</a>
+      <a href="/contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- 3. The Target Destination -->
+  <main id="main-content" tabindex="-1">
+    <h1>Welcome to the Main Article</h1>
+    <p>The keyboard focus jumps directly here, skipping the links above.</p>
+  </main>
+</body>
+```
+
+Use code with caution.
+
+### The CSS Styling
+
+This CSS hides the link visually by default but keeps it accessible to screen readers. When a user presses **Tab**, the `:focus` state makes it visible at the top of the viewport. \[[1](https://css-tricks.com/a-deep-dive-on-skipping-to-content/), [2](https://www.geeksforgeeks.org/html/how-to-add-a-skip-to-main-content-link-in-html/), [3](https://testparty.ai/blog/skip-navigation-links)]
+
+css
+
+```
+/* Hide the link visually off-screen by default */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background: #000;
+  color: #fff;
+  padding: 10px 20px;
+  z-index: 100;
+}
+
+/* Reveal the link when it receives keyboard focus */
+.skip-link:focus {
+  top: 0;
+}
+```
+
+Use code with caution.
+
+### Key Technical Details
+
+- **`tabindex="-1"`**: Added to the tag so older browsers or screen readers successfully shift physical focus to the container.
+- **`position: absolute`**: Moves the link out of the standard page layout so it does not create an ugly blank space when hidden. \[[1](https://rocketvalidator.com/glossary/skip-navigation-link), [2](https://www.a11y-collective.com/blog/skip-to-main-content/), [3](https://scottspence.com/posts/create-skip-to-content-with-tailwind-css)]
+
+Would you like help **testing this code** in a local environment, or do you want to see how to handle **multiple skip links** for pages with complex sidebars?
+
+- [link](https://www.a11y-collective.com/blog/skip-to-main-content/)\
+  Incorporating Skip to Main Content Links for Better Website Accessibility\
+  Dec 8, 2023 — Placement: The 'Skip to main content' link should be the first element inside the tag. This positioning ensures that the link is e...\
+  \
+  \
+  The A11Y Collective
+- [link](https://marcom.wwu.edu/accessibility/guide/include-skip-main-content-mechanism)\
+  Include a skip to main content mechanism | University Communications and Marketing | Western Washington University\
+  The skip link goes to the element with the matching ID, in this case the main content.\
+  \
+  \
+  Western Washington University
+- [link](https://testparty.ai/blog/skip-navigation-links)\
+  How to Implement Skip Navigation Links: WCAG Best Practices\
+  May 6, 2025 — Basic Skip Link Implementation The skip link appears first in the DOM so it's the first element keyboard users encounter. The href...\
+  \
+  \
+  TestParty
+
+Show all
+
+## You said: i mean example not code
+
+Ah, got it! Let’s look at how this works in real life when you visit a website.
+
+### How to Try It Right Now
+
+You can see this in action on major websites like **Wikipedia**, **GitHub**, or **The New York Times**.
+
+1. **Open** a new browser tab and go to Wikipedia.org.
+2. **Click** anywhere on the blank background of the page (to make sure your mouse isn't selecting anything).
+3. **Press** the **Tab** key on your keyboard exactly once. \[[1](https://hackernoon.com/how-to-implement-skip-to-navigation)]
+
+### What You Will See
+
+Instead of selecting the first link in the left-hand sidebar, a hidden button will suddenly pop into view at the very top-left corner of your screen. It will explicitly say **"Skip to content"** or **"Jump to navigation."** \[[1](https://www.a11y-collective.com/blog/skip-to-main-content/), [2](https://accessibleit.disability.illinois.edu/skip-to-chrome-and-firefox-extensions/)]
+
+If you press **Enter** while that button is showing, your page will automatically scroll down slightly, and the invisible typing cursor will jump straight to the main title of the article, completely ignoring all the sidebar and header links.
+
+Would you like a list of other **popular websites** where you can test this, or do you want to know the **keyboard shortcuts** to navigate backward if you miss it?
+
+- [link](https://hackernoon.com/how-to-implement-skip-to-navigation)\
+  How to Implement "Skip to Navigation"\
+  May 26, 2026 — Manual testing is extremely important. First, refresh the page and then press the Tab key exactly one time. Do you see the skip li...\
+  \
+  \
+  HackerNoon
+- [link](https://www.a11y-collective.com/blog/skip-to-main-content/)\
+  Incorporating Skip to Main Content Links for Better Website Accessibility\
+  Dec 8, 2023 — This link is typically hidden from sight but becomes visible when needed. By selecting this link, users can skip past the header a...\
+  \
+  \
+  The A11Y Collective
+- [link](https://accessibleit.disability.illinois.edu/skip-to-chrome-and-firefox-extensions/)\
+  SkipTo.js Browser Extension – Accessible IT Group\
+  The “Skip To Content” button can be visible or hidden (e.g. popup version) after the page completes loading.\
+  \
+  University of Illinois Urbana-Champaign
+
+## You said: i mean example of what it does not how it works
+
+Imagine you are holding a TV remote and want to watch a movie, but every single time you change the channel, you are forced to watch the exact same 5-minute commercial before the show starts.
+
+A "Skip to main content" button is like a **"Skip Ad" button** for a website's menu. \[[1](https://stefanzweifel.dev/posts/2019/05/20/a-simple-skip-to-content-button/)]
+
+Here is a side-by-side example of what it actually does for a user:
+
+### Without the Skip Button (The Painful Way)
+
+You open a news website using only your keyboard. You want to read the headline article.
+
+1. You press **Tab** -> Focuses on the site logo.
+2. You press **Tab** -> Focuses on the "Home" link.
+3. You press **Tab** -> Focuses on the "World News" link.
+4. You press **Tab** -> Focuses on the "Sports" link.
+5. You press **Tab** -> Focuses on the "Weather" link.
+6. You press **Tab** -> Focuses on the "Search Bar".
+7. You press **Tab** -> Focuses on the "Log In" button.\
+   _You have pressed Tab 7 times just to get past the top menu._ If you click on a new page, you have to repeat all 7 presses all over again. \[[1](https://lsnrae.medium.com/how-to-make-your-wireframes-more-accessible-in-five-easy-steps-d3fbec7d6556?source=follow%5Ffooter---------0----------------------------)]
+
+### With the Skip Button (The Fast Way)
+
+You open the same news website.
+
+1. You press **Tab** -> A button pops up saying "Skip to main content."
+2. You press **Enter** -> **Boom.** You instantly jump past the logo, the categories, the search bar, and the login button. \[[1](https://medium.com/@jidapa/skip-to-main-content-a-guide-to-a11y-in-micro-frontend-8f74e0fdce03), [2](https://support.wix.com/en/article/accessibility-about-skip-to-main-content), [3](https://www.webability.io/blog/skip-to-main-content)]
+
+Your next press of the Tab key puts you directly on the very first link of the actual article you came to read. It turns 7 tedious keystrokes into just 2. \[[1](https://www.webability.io/blog/skip-to-main-content)]
+
+Would you like to know about other **keyboard navigation shortcuts** that save time, or are you interested in how **screen readers** read this aloud to blind users?
+
+- [link](https://stefanzweifel.dev/posts/2019/05/20/a-simple-skip-to-content-button/)\
+  A simple "Skip to Content" Button | stefanzweifel.dev\
+  May 20, 2019 — I give my best to make sites and apps I develop more accessible. One simple but effective first step to do that is to add a "Skip ...\
+  \
+  \
+  stefanzweifel.dev
+- [link](https://lsnrae.medium.com/how-to-make-your-wireframes-more-accessible-in-five-easy-steps-d3fbec7d6556?source=follow%5Ffooter---------0----------------------------)\
+  How to make your wireframes more accessible in five easy steps\
+  Aug 28, 2016 — Try it out on this website: Press your tab key now and try to see what the current focused element is on the site. You will see th...\
+  \
+  Medium
+- [link](https://medium.com/@jidapa/skip-to-main-content-a-guide-to-a11y-in-micro-frontend-8f74e0fdce03)\
+  “Skip to Main Content”: A Guide to A11Y in Micro Frontend\
+  Jan 4, 2025 — What I would like to do is implementing a “Skip to Main Content” feature that allows user to skip directly to the main content. Le...\
+  \
+  \
+  Medium
+
+Show all
+
+# should skip to main content appear and be focused on the first tab
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">Yes, the "Skip to Main Content" link must appear and receive focus on the very first tab press</span></mark>. \[[1](https://dev.to/aman%5Fsingh/thinking-about-accessibility-a-few-tips-to-make-a-difference-461i), [2](https://daily.dev/blog/10-most-common-accessibility-mistakes-an-actionable-checklist/)]
+
+### Why It Matters
+
+- ♿ **Accessibility:** Essential for keyboard-only and screen reader users.
+- ⏩ **Efficiency:** Bypasses repetitive navigation links and headers.
+- ⚖️ **Compliance:** Required for WCAG 2.1 Success Criterion 2.4.1 (Bypass Blocks). \[[1](https://adsy.com/blog/technical-seo-checklist), [2](https://www.youtube.com/watch?v=hbppV0pn7Gc), [3](https://help.siteimprove.com/support/solutions/articles/80001051789-accessibility-rule-skip-to-main-content-link-is-missing-explained), [4](https://testparty.ai/blog/skip-navigation-links), [5](https://medium.com/@benuman99/keyboard-accessibility-why-your-website-needs-to-work-without-a-mouse-6ac03ba77583)]
+
+### Implementation Best Practices
+
+- 🙈 **Visually Hidden:** Hide the link off-screen by default using CSS.
+- 👀 **Visible on Focus:** Bring it into view when a user tabs onto it.
+- 📍 **Target Accuracy:** Point the link's `href` directly to the main content container ID.
+- 🏷️ **Target Focus:** Ensure the main container has `tabindex="-1"` so it can receive programmatic focus. \[[1](https://css-tricks.com/a-deep-dive-on-skipping-to-content/), [2](https://vispero.com/resources/the-anatomy-of-visually-hidden/), [3](https://wcag.dock.codes/documentation/wcag241/), [4](https://www.tempertemper.net/blog/skip-links-what-why-and-how), [5](https://govtnz.github.io/web-a11y-guidance/ka/accessible-ux-best-practices/keyboard-a11y/keyboard-focus/other-keyboard-focus-considerations.html)]
+
+### Code Example
+
+html
+
+```
+<!-- The Skip Link (First element inside <body>) -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- The Main Content Target -->
+<main id="main-content" tabindex="-1">
+  <!-- Your content goes here -->
+</main>
+```
+
+Use code with caution.
+
+css
+
+```
+/* Hide off-screen by default */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #000;
+  color: #fff;
+  padding: 8px;
+  z-index: 100;
+}
+
+/* Show when focused via Tab key */
+.skip-link:focus {
+  top: 0;
+}
+```
+
+Use code with caution.
+
+To help optimize this for your project, let me know:
+
+- What **framework** are you using (React, Angular, plain HTML)?
+
+- Do you have **sticky headers** that might overlap the link?
+
+- Should I provide the code to **smooth scroll** to the content?
+
+- [link](https://dev.to/aman%5Fsingh/thinking-about-accessibility-a-few-tips-to-make-a-difference-461i)\
+  Thinking about accessibility—a few tips to make a difference\
+  Jun 19, 2021 — Put the skip to main content link at the top of the page, so that it can receive focus when the Tab key is hit.\
+  \
+  \
+  DEV Community
+
+- [link](https://daily.dev/blog/10-most-common-accessibility-mistakes-an-actionable-checklist/)\
+  10 Most Common Accessibility Mistakes: An Actionable...\
+  Apr 13, 2021 — The 'skip to main content' link should be the first link on the page so that when a keyboard user hits the Tab key (used for jumpi...\
+  \
+  daily.dev
+
+- [link](https://adsy.com/blog/technical-seo-checklist)\
+  Technical SEO Checklist: Everything You Need to Fix and Improve Your Site\
+  Sep 10, 2025 — But even more importantly, it's essential for accessibility. Screen readers rely on it to make your site accessible to visually im...\
+  \
+  \
+  Adsy
+
+Show all
+
+## You said: should all ideal sites have it
+
+Yes, all ideal websites should have a "Skip to Main Content" link. \[[1](https://ttpsc.com/en/blog/wcag-2-1-what-should-you-pay-attention-to/)]
+
+The only exceptions are single-page sites with zero navigation links or headers, where the very first interactive element is already the main content.
+
+### Why Every Standard Site Needs It
+
+- 🏢 **Corporate & Blogs:** Users skip massive header menus on every page load.
+- 🛒 **E-Commerce:** Shoppers bypass complex category filters and search bars to reach products.
+- 📱 **Web Apps & Dashboards:** Power users jump past sidebar navigation directly to data tables. \[[1](https://uxplanet.org/9-filtering-design-best-practices-to-improve-e-commerce-ux-edac50560f94), [2](https://finetuneddigital.com/essential-tips-to-improve-customer-experience-on-your-website/)]
+
+### Key Benefits
+
+- ⚡ **Saves Time:** Eliminates dozens of repetitive keystrokes for keyboard users.
+- 🎯 **Reduces Fatigue:** Helps users with motor disabilities navigate without physical strain.
+- 📜 **Legal Safety:** Meets global digital accessibility laws like the Americans with Disabilities Act (ADA) and European Accessibility Act (EAA). \[[1](https://www.continualengine.com/blog/keyboard-accessibility/), [2](https://vispero.com/resources/when-is-a-skip-link-needed/), [3](https://216digital.com/skip-links-improve-web-accessibility-navigation/)]
+
+To help tailor this to your website, let me know:
+
+- What **type of website** are you building?
+
+- How **complex** is your top navigation menu?
+
+- Would you like an **accessibility checklist** for the rest of your header?
+
+- [link](https://ttpsc.com/en/blog/wcag-2-1-what-should-you-pay-attention-to/)\
+  WCAG 2.1 – what should you pay attention to?\
+  Jun 4, 2020 — „skip to main content” or „skip links” is a popular link that leads directly to the content of a single page. This is extremely im...\
+  \
+  \
+  Transition Technologies PSC
+
+- [link](https://uxplanet.org/9-filtering-design-best-practices-to-improve-e-commerce-ux-edac50560f94)\
+  9 Filtering Design Best Practices to Improve E-Commerce UX\
+  Mar 11, 2020 — Filters may seem like a small and insignificant part of a website. But in reality, it's the filters that provide a seamless shoppi...\
+  \
+  \
+  UX Planet
+
+- [link](https://finetuneddigital.com/essential-tips-to-improve-customer-experience-on-your-website/)\
+  Essential Tips To Improve Customer Experience On Your Website\
+  You'll notice a big difference with a decent search bar since not every visitor begins at the top of the funnel; 30% of e-commerce...\
+  \
+  \
+  finetuneddigital.com
+
+Show all
+
+## You said: for example, you have no skip to main content. you have a nav bar, the first tab focuses on the current nav, and you could not tab through it, you could use left right, or top down on how they are displayed, then the second tab focuses on login or something, then main content
+
+The interaction model described follows the official **WAI-ARIA design pattern for a Navigation Menu Bar**, which utilizes the **roving tabindex** technique. Even with this efficient keyboard pattern, an ideal site **still needs a "Skip to Main Content" link**. \[[1](https://stackoverflow.com/questions/66080384/two-problems-with-tabbing-an-accessible-pop-out-navigation-i-use-some-advice-on), [2](https://web.dev/articles/website-navigation), [3](https://www.boia.org/blog/are-skip-links-necessary-for-a-one-page-site), [4](https://www.bsk.com/assets/js/accessible-mega-menu-master-orig/)]
+
+### Why You Still Need a Skip Link
+
+While arrow-key navigation dramatically reduces the number of `Tab` presses required to get through a navigation bar (reducing it from many tabs down to just one), it does not solve everything: \[[1](https://v5.dojo.io/docs/fundamentals/accessibility/index.html)]
+
+- 🗺️ **Screen Reader Virtual Buffers:** Screen reader users do not only navigate by the `Tab` key. They read linearly down the page using arrow keys. A skip link allows them to entirely bypass the banner and navigation landmarks in their virtual buffer reading mode. \[[1](https://stackoverflow.com/questions/41566883/only-show-focus-states-once-tab-navigation-has-been-used), [2](https://docs.oracle.com/cd/E92519%5F02/pt856pbr3/eng/pt/atpb/concept%5FUnderstandingPeopleSoftOnlineHelpAccessibility.html?pli=ul%5Fd17e24%5Fatpb), [3](https://community.articulate.com/discussions/discuss/nvda-issues-in-storyline-360/1207028), [4](https://www.accessibility-developer-guide.com/knowledge/screen-readers/desktop/browse-focus-modes/), [5](https://stackoverflow.com/questions/66080384/two-problems-with-tabbing-an-accessible-pop-out-navigation-i-use-some-advice-on)]
+- 🔀 **Bypassing Other Header Elements:** As noted in the example, after the navigation bar, the user still has to tab through "Login or something" before hitting the main content. If a header contains search bars, utility links, language switchers, and shopping carts, a skip link is still required to bypass those secondary elements. \[[1](https://www.inclusiveweb.co/accessibility-resources/skip-to-main-content-links-a-simple-step-toward-better-accessibility), [2](https://web.dev/learn/html/navigation), [3](https://dequeuniversity.com/tips/add-skip-navigation-link), [4](https://www.boia.org/blog/are-skip-links-necessary-for-a-one-page-site)]
+- ⚖️ **WCAG Compliance:** Under WCAG 2.1 Success Criterion 2.4.1 (Bypass Blocks), the requirement is to provide a mechanism to bypass repeated content blocks. While an ARIA menu bar optimizes navigation, a dedicated skip link remains the safest and most universally understood way to meet this criterion. \[[1](https://wcag.dock.codes/documentation/wcag241/), [2](https://www.freecodecamp.org/news/how-to-add-skip-to-main-content-links-to-a-website/), [3](https://flowpoint.ai/blog/aria), [4](https://www.boia.org/blog/are-skip-links-necessary-for-a-one-page-site), [5](https://web.dev/learn/html/navigation)]
+
+### How the Tab Sequence Should Look
+
+With an optimized navigation bar and a skip link implemented, the ideal keyboard navigation sequence will flow like this:
+
+1. **Tab 1:** Focuses on **"Skip to Main Content"** (which becomes visually visible).
+2. **Tab 2:** Focuses on the **Active/First Nav Item**. (Pressing `Left`/`Right` arrow keys moves between the rest of the navigation items).
+3. **Tab 3:** Focuses on the **Login** button.
+4. **Tab 4:** Focuses on the **First interactive element in the Main Content** area. \[[1](https://stackoverflow.com/questions/14322564/can-you-tab-through-all-radio-buttons), [2](https://vispero.com/resources/when-is-a-skip-link-needed/), [3](https://design.cms.gov/components/skip-nav/), [4](https://www.simplethread.com/ironing-out-steam-s-a11y-wrinkles/), [5](https://www.browserstack.com/docs/accessibility/rules/a11y-engine/1.0/bypass-blocks-skip-links)]
+
+If you choose to use this pattern, ensure that your custom arrow-key navigation handles both vertical and horizontal layouts seamlessly. Let me know:
+
+- Is your menu layout **horizontal** or a **vertical** sidebar?
+
+- Are you handling the arrow-key mapping using **vanilla JavaScript** or a specific library?
+
+- Do you need help managing the `aria-expanded` attributes for any **submenus** inside that navigation bar?
+
+- [link](https://stackoverflow.com/questions/41566883/only-show-focus-states-once-tab-navigation-has-been-used)\
+  Only show focus states once tab navigation has been used\
+  Jan 10, 2017 — Remember that sometimes focus is placed on elements without using a keyboard, such as via script or third-party tools (like screen...\
+  Stack Overflow
+
+- [link](https://stackoverflow.com/questions/14322564/can-you-tab-through-all-radio-buttons)\
+  Can you tab through all radio buttons? - Stack Overflow\
+  Jan 14, 2013 — The Tab key moves focus between radio button groups and other widgets. When focus is on the group and when no radio button is sele...\
+  Stack Overflow
+
+- [link](https://vispero.com/resources/when-is-a-skip-link-needed/)\
+  When Is a Skip Link Needed? - Vispero\
+  Dec 5, 2024 — Position the Link as the First Focusable Element. The Skip Navigation link should be the very first focusable element on the page.\
+  Vispero
+
+Show all
+
+
+
+
+# would i use space or spacing on design tokens
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">You can use </span><strong>either "space" or "spacing"</strong>, as both are widely accepted industry standards, but your choice depends on whether you prefer naming your tokens after the <strong>property</strong> or the <strong>concept</strong></mark>. Large scale design systems are split evenly between the two. \[[1](https://www.reddit.com/r/FigmaDesign/comments/1ioe3v5/how%5Fdo%5Fyou%5Fdeal%5Fwith%5Fspacing%5Ftokens%5Fin%5Fyour/), [2](https://designsystem.digital.gov/design-tokens/), [3](https://medium.com/@bettercallbabavalia/semantic-token-naming-in-design-system-3c6843f9dbe7)]
+
+### Use "Space" for Noun-Based Scales
+
+Choosing **"space"** treats the token as a physical asset or container. It is concise, maps beautifully to modern layout tools, and works well if you want shorter token names. \[[1](https://atlassian.design/foundations/spacing), [2](https://sandunf.medium.com/spacing-tokenization-in-figma-a01f3e26c837)]
+
+- **Pros**: Shorter code strings; aligns with the concept of "white space" or "negative space".
+- **Examples**:
+  - `space-100` (Used by the [Atlassian Design System](https://atlassian.design/foundations/spacing))
+  - `sys.space.md`
+  - `--space-sm` \[[1](https://carbondesignsystem.com/elements/spacing/overview/), [2](https://atlassian.design/foundations/spacing), [3](https://webdesign.tutsplus.com/invisible-forces-in-design-spacing-and-shape--cms-26956a), [4](https://wcmauthorguide.pa.gov/en/keystone-design-system/foundations/design-tokens.html)]
+
+### Use "Spacing" for Action/Property Scales
+
+Choosing **"spacing"** describes the relationship or action happening between elements. It explicitly links to CSS properties like `letter-spacing` or layout rules like "component spacing". \[[1](https://midrocket.com/en/guides/design-tokens-guide/), [2](https://uxplanet.org/principles-of-spacing-in-ui-design-a-beginners-guide-to-the-4-point-spacing-system-6e88233b527a), [3](https://designsystem.qualtrics.com/design-tokens/spacing-tokens/), [4](https://www.telerik.com/design-system/docs/foundation/spacing/usage/), [5](https://aeldata.com/how-to-test-text-spacing-accessibility/)]
+
+- **Pros**: Highly descriptive; immediately clear to developers who are looking to fill gaps, padding, or margins.
+- **Examples**:
+  - `spacing-4` (Used by the [Carbon Design System](https://carbondesignsystem.com/elements/spacing/overview/))
+  - `sys.spacing.md`
+  - `--spacing-lg` \[[1](https://designsystem.qualtrics.com/design-tokens/spacing-tokens/), [2](https://design.va.gov/storybook/?path=/docs/va-mobile%5Fdesign-tokens-spacing--docs), [3](https://carbondesignsystem.com/elements/spacing/overview/)]
+
+### Comparison Overview
+
+| Metric \[[1](https://en.wikipedia.org/wiki/Sentence%5Fspacing), [2](https://blog.prototypr.io/common-pitfalls-in-design-systems-overcoming-grid-challenges-semantic-naming-accessibility-ba37f93f9940)] | Space                         | Spacing                             |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- | ----------------------------------- |
+| **Token Length**                                                                                                                                                                                        | Short (5 letters)             | Long (7 letters)                    |
+| **Grammar Type**                                                                                                                                                                                        | Noun (The object)             | Gerund/Noun (The attribute)         |
+| **Best For**                                                                                                                                                                                            | Clean global/primitive scales | Highly explicit semantic structures |
+
+### 💡 Recommendation
+
+If you are building your token structure from scratch, **use `space` for your primitive/global values** (e.g., `space.4` = `16px`) to keep your utility classes short. If you are creating semantic tokens, **use `spacing` for the context** (e.g., `component.card.spacing.padding`) so the intent is completely unambiguous to an engineering team. Whichever option you pick, enforce it strictly across both Figma variables and your codebase. \[[1](https://uxdesign.cc/how-to-manage-space-in-figma-using-tokens-8d0ebd99ee1b), [2](https://www.youtube.com/watch?v=gEvq%5F6oFk4g), [3](https://midrocket.com/en/guides/design-tokens-guide/), [4](https://medium.com/front-end-weekly/a-guide-to-design-tokens-in-design-systems-5ee283254197)]
+
+If you are setting up your system right now, let me know:
+
+- Are you naming them using **T-shirt sizes (sm, md, lg)** or a **numeric scale (100, 200, 300 / 4, 8, 12)**?
+- Do you plan to separate tokens for **padding, margins, and gaps**, or use one unified system? \[[1](https://www.reddit.com/r/FigmaDesign/comments/1ioe3v5/how%5Fdo%5Fyou%5Fdeal%5Fwith%5Fspacing%5Ftokens%5Fin%5Fyour/), [2](https://atlassian.design/foundations/spacing)]
+
+I can give you a clean JSON or CSS structure tailored to your approach!
+
+- [link](https://www.reddit.com/r/FigmaDesign/comments/1ioe3v5/how%5Fdo%5Fyou%5Fdeal%5Fwith%5Fspacing%5Ftokens%5Fin%5Fyour/)\
+  How do you deal with spacing tokens in your design system?\
+  Feb 13, 2025 — and in the Alias section they set it like so: sm = 050. md = 100. lg = 200. and then this skip the Mapped section. What do you thi...\
+  Reddit·r/FigmaDesign
+- [link](https://uxdesign.cc/how-to-manage-space-in-figma-using-tokens-8d0ebd99ee1b)\
+  How to manage space in Figma using tokens - UX Collective\
+  Dec 13, 2021 — Space, or in other words, empty space is one of the core elements in design that is often overlooked. Design elements next to each...\
+  UX Collective
+- [link](https://carbondesignsystem.com/elements/spacing/overview/)\
+  Spacing - Carbon Design System\
+  May 14, 2026 — Therefore, if you have an element or content of high importance on the page, consider giving it extra surrounding space to help it...\
+  Carbon Design System
+
+Show all
+
+## You said: would i use spacing-number or spacing-size
+
+You should use **`spacing-size` (like T-shirt sizes or semantic names) for your semantic and component-level tokens**, and **`spacing-number` (like a 4px or 8px scale) for your primitive or global tokens**. \[[1](https://blog.designary.com/p/spacing-systems-and-scales-ui-design), [2](https://hds.hel.fi/foundation/design-tokens/spacing/), [3](https://uxplanet.org/principles-of-spacing-in-ui-design-a-beginners-guide-to-the-4-point-spacing-system-6e88233b527a), [4](https://www.conceptfusion.co.uk/post/web-design-spacing-and-sizing-best-practices), [5](https://blog.prototypr.io/common-pitfalls-in-design-systems-overcoming-grid-challenges-semantic-naming-accessibility-ba37f93f9940)]
+
+Mixing both in a tiered structure creates a scalable, future-proof design system. \[[1](https://www.designsystemscollective.com/design-tokens-that-scale-mastering-multi-tier-architecture-for-modern-design-systems-96429b2fcee7)]
+
+### Option 1: Use `spacing-size` (T-shirt or Semantic Scales) \[[1](https://blog.prototypr.io/design-systems-token-configuration-breakdown-6eca6e5b8a3f), [2](https://medium.com/eightshapes-llc/tokens-in-design-systems-25dd82d58421)]
+
+Use scales like `spacing-sm` or `spacing-card-padding` for the tokens that designers and developers actually apply to components.
+
+- **Pros:** Highly intuitive; easy for humans to memorize; can adapt if your underlying values change (e.g., `spacing-md` can shift from `16px` to `24px` on mobile screens).
+- **Best used for:** **Semantic tokens** (context-aware values) and **Component-level tokens**.
+- **Examples:** `spacing-sm`, `spacing-md`, `spacing-lg`. \[[1](https://medium.com/@shivamdapkekar25/breaking-words-into-bytes-the-role-of-byte-pair-encoding-in-gpt-models-0567abc9bad6), [2](https://uxcel.com/lessons/spacing-sizing-803), [3](https://medium.com/@ethersystem/generating-design-system-spacing-aa69714160bc), [4](https://medium.com/front-end-weekly/a-guide-to-design-tokens-in-design-systems-5ee283254197), [5](https://goodpractices.design/articles/design-tokens)]
+
+### Option 2: Use `spacing-number` (Numeric Scales) \[[1](https://blog.damato.design/posts/spacing-solved/)]
+
+Use scales like `spacing-4` or `spacing-100` to define your absolute, unchanging physical values (usually based on a 4px or 8px grid). \[[1](https://www.conceptfusion.co.uk/post/web-design-spacing-and-sizing-best-practices)]
+
+- **Pros:** Maps cleanly to mathematical formulas; easily expanded if you need to add a micro-value later (like a `2` between `0` and `4`).
+- **Best used for:** **Primitive/Global tokens** (the raw constants hidden under the hood).
+- **Examples:** `spacing-4` (16px), `spacing-8` (32px). \[[1](https://netherlands3d.eu/docs/developers/ui/spacing/), [2](https://www.linkedin.com/pulse/what-8point-grid-system-stephen-paul-jbtkf)]
+
+### 🏆 The Industry Standard Approach (Tiered Structure)
+
+Most modern design systems map **numbers to sizes**, and then **sizes to components**. This gives you the best of both worlds. \[[1](https://www.linkedin.com/pulse/what-8point-grid-system-stephen-paul-jbtkf)]
+
+json
+
+```
+{
+  "primitive": {
+    "space-4": { "value": "16px" }
+  },
+  "semantic": {
+    "space-md": { "value": "{primitive.space-4}" },
+    "layout-container-padding": { "value": "{semantic.space-md}" }
+  }
+}
+```
+
+Use code with caution.
+
+To help map out your exact system, let me know:
+
+- Do you use an **8px grid system** or something else?
+- Are you writing this for **Figma Variables**, **CSS variables**, or a **specific codebase tool** (like Style Dictionary)?
+
+I can generate the exact token structure for you based on your stack.
+
+- [link](https://blog.designary.com/p/spacing-systems-and-scales-ui-design)\
+  Basics: Spacing systems & scales in UI design\
+  Nov 1, 2022 — Size (also known as T-shirt sizes): Each token is given a size e.g. xxs, xs, s, m, l, xl, xxl. We prefer to avoid t-shirt sizing f...\
+  \
+  \
+  Designary
+- [link](https://hds.hel.fi/foundation/design-tokens/spacing/)\
+  Spacing tokens - Usage\
+  Spacing tokens are used for component-level spacing, and allow a more detailed fine tuning.\
+  \
+  Helsinki Design System
+- [link](https://uxplanet.org/principles-of-spacing-in-ui-design-a-beginners-guide-to-the-4-point-spacing-system-6e88233b527a)\
+  Principles of Spacing in UI Design: A Beginner’s Guide to the 4-Point Spacing System\
+  Jul 17, 2024 — Step 1: Define Your Base Unit The base unit in the 4-point spacing system is 4 pixels (px). All spacing values will be multiples o...\
+  \
+  \
+  UX Planet
+
+Show all
+
+## You said: doesnt spacing feel more intuitive than space
+
+You are completely right—**"spacing" feels much more natural** to most people because it acts as an action word (a gerund). It describes the active process of creating room between elements, which is exactly what a designer or developer is doing. \[[1](https://uxdesign.cc/building-better-products-with-the-design-token-pipeline-faa86aa068e8), [2](https://medium.com/@mike-at-redspace/cracking-the-code-of-ux-visual-order-exploring-user-behaviour-27a2927f31b4)]
+
+If it feels more intuitive to you and your team, **you should absolutely use it**. In design systems, team alignment and intuition always trump rigid, abstract rules. \[[1](https://medium.com/@cookieredding/white-space-isnt-wasted-space-why-designers-obsess-over-empty-areas-889ae64dde8c)]
+
+### Why "Spacing" Feels Better
+
+- **It matches your mental model**: When you look at a layout, you think, _"The spacing around this card looks tight,"_ not _"The space around this card looks tight."_
+- **It aligns with CSS**: Developers already use code properties like `letter-spacing` and `word-spacing`. Using `spacing` keeps that linguistic pattern consistent. \[[1](https://medium.com/design-bootcamp/design-that-breathes-choosing-between-4pt-8pt-and-geometric-spacing-30c84766f1a3), [2](https://attentioninsight.com/the-gestalt-principle-of-closure-in-design/), [3](https://www.greengeeks.com/blog/margin-vs-padding/), [4](https://vanseodesign.com/web-design/svg-text-spacing-properties/)]
+
+### The Only Reason Systems Use "Space"
+
+The only reason some systems (like Atlassian or Adobe Spectrum) use "space" is purely for **code brevity** and **noun consistency**. They like pairing nouns together (e.g., `color`, `size`, `space`) rather than mixing nouns with action words (`color`, `size`, `spacing`). \[[1](https://softwareengineering.stackexchange.com/questions/441871/why-are-vertical-and-horizontal-spacing-heavily-used-in-coding-styles)]
+
+### How to use "Spacing" beautifully
+
+Since "spacing" feels right to you, here is how you can apply it cleanly to the `spacing-size` structure we discussed:
+
+- **Global Primitive**: `spacing-16` or `spacing-4` (The raw value)
+- **Semantic Meaning**: `spacing-md` or `spacing-lg` (The human-friendly size)
+- **Component Specific**: `card-spacing-padding` (The exact layout intent) \[[1](https://medium.com/design-bootcamp/design-smarter-with-design-tokens-in-figma-aa415c23d3d6), [2](https://www.reddit.com/r/FigmaDesign/comments/1ioe3v5/how%5Fdo%5Fyou%5Fdeal%5Fwith%5Fspacing%5Ftokens%5Fin%5Fyour/)]
+
+Would you like a quick **CSS/SASS snippet** or a **JSON object** showing exactly how to structure your design tokens using the word **"spacing"**?
+
+- [link](https://uxdesign.cc/building-better-products-with-the-design-token-pipeline-faa86aa068e8)\
+  Building better products with a design token pipeline\
+  Feb 4, 2021 — Design tokens live in a technology agnostic file (like json or yaml ), stored in a central location accessible by all teams. This ...\
+  \
+  \
+  UX Collective
+- [link](https://medium.com/@mike-at-redspace/cracking-the-code-of-ux-visual-order-exploring-user-behaviour-27a2927f31b4)\
+  Mastering UX Visual Order: Gestalt, Reading Patterns & Hierarchy | by Mike Vardy\
+  Aug 27, 2023 — Spacing: Spacing is the amount of empty space between and around elements in a design. Spacing can be used to create breathing roo...\
+  \
+  \
+  Medium
+- [link](https://medium.com/@cookieredding/white-space-isnt-wasted-space-why-designers-obsess-over-empty-areas-889ae64dde8c)\
+  White Space Isn’t Wasted Space: Why Designers Obsess Over Empty Areas\
+  Apr 25, 2025 — In web design, this becomes even more obvious. If everything is too close together, too tight, too busy, people won't stick around...\
+  \
+  \
+  Medium
+
+Show all
+
+## You said: where are spacing or space adopted. who.
+
+The choice between "space" and "spacing" splits top-tier tech companies almost right down the middle.
+
+Companies that prioritize **noun consistency and short code** adopt **"Space"**, while companies that prioritize **human intent and developer intuition** adopt **"Spacing"**. A third faction sidesteps both words entirely, choosing **"Spacer"**. \[[1](https://nexudus.com/blog/space-management-guide/)]
+
+The industry landscape breaks down by exactly who uses what:
+
+### 🚀 Who Adopts "Space"?
+
+These companies treat spatial dimensions as rigid architectural blocks or nouns. They use it to keep token naming short and group it logically alongside other nouns like `color`, `font`, and `size`. \[[1](https://design-system.canada.ca/en/styles/spacing/)]
+
+- **Atlassian**: Uses a strict noun format. Their tokens look like Atlassian Space Tokens (`space.100`, `space.200`, `space.300`).
+- **Shopify (Polaris)**: Prefers numerical multiplier formats under a noun structure, utilizing variants like `space-2` and `space-3`.
+- **Adobe (Spectrum)**: Integrates layout dimensions into a single `space` category.
+- **New York State (NY.gov)**: Their digital standards utilize variables like `--nys-space-100` and `--nys-space-200`. \[[1](https://atlassian.design/foundations/spacing), [2](https://chienchwu.medium.com/design-token-scales-88286ebb6a30), [3](https://designsystem.ny.gov/tokens/other/), [4](https://www.linkedin.com/pulse/8px-spacing-system-consistency-scalability-efficiency-ayush-kandoi-r1ofc)]
+
+### 📐 Who Adopts "Spacing"?
+
+These teams favor user intuition. They want the token name to represent the _action_ of separating content, making it highly clear to frontend developers.
+
+- **IBM (Carbon)**: Heavily favors the descriptive approach. Their documentation specifies code formats like `$spacing-03` and `$spacing-05`.
+- **Salesforce (Lightning)**: Standardizes layout around the concept of spacing attributes.
+- **Telerik & Kendo UI**: Built completely on a 24-step scale exposed via the prefix `--kendo-spacing-{step}`.
+- **Qualtrics**: Standardizes the layout structure with explicit [Qualtrics Spacing Tokens](https://designsystem.qualtrics.com/design-tokens/spacing-tokens/). \[[1](https://carbondesignsystem.com/elements/spacing/overview/), [2](https://www.telerik.com/design-system/docs/foundation/spacing/), [3](https://designsystem.qualtrics.com/design-tokens/spacing-tokens/), [4](https://claritee.io/blog/design-system-naming-conventions-establishing-clarity/), [5](https://www.lightningdesignsystem.com/2e1ef8501/p/03d6b0)]
+
+### 🧱 The Alternative: Who Adopts "Spacer"?
+
+A highly vocal group of design systems rejects both words and uses **"Spacer"**. This shifts the mental model away from an abstract concept and turns it into a physical tool (like a spacer block used in carpentry). \[[1](https://ux.redhat.com/foundations/spacing/)]
+
+- **GitHub (Primer)**: Uses spacer utility classes (`sp-1`, `sp-2`).
+- **US Government (USWDS)**: References their layout properties through settings like `$theme-site-margins` or general spacer variables.
+- **CMS (Medicare & Medicaid)**: Uses utility constants structured as `--spacer-1` and `--spacer-2`. \[[1](https://designsystem.digital.gov/design-tokens/), [2](https://design.cms.gov/foundation/spacing/)]
+
+### 💡 Summary Rule of Thumb
+
+- If your engineering culture loves **brevity and object-oriented architectures**, copy **Atlassian** and use **`space`**.
+- If your team relies heavily on **clear intent and literal translation of layouts**, copy **IBM Carbon** and use **`spacing`**. \[[1](https://carbondesignsystem.com/elements/spacing/overview/), [2](https://atlassian.design/foundations/spacing)]
+
+Are you leaning toward formatting these as **CSS custom properties** (like `--spacing-md`) or are you preparing them as **nested objects in a JSON file** for a translation tool like Style Dictionary? \[[1](https://www.telerik.com/design-system/docs/foundation/spacing/), [2](https://medium.com/design-bootcamp/design-systems-vs-design-tokens-clearing-up-the-confusion-0ffd939f6ee2)]
+
+- [link](https://www.telerik.com/design-system/docs/foundation/spacing/)\
+  Overview of Spacing | Design System Kit - Telerik.com\
+  Spacing in design systems is crucial for creating visually appealing and user-friendly interfaces. It involves using consistent ma...\
+  Telerik.com
+- [link](https://ux.redhat.com/foundations/spacing/)\
+  Spacing - Red Hat design system\
+  Overview. ... Spacers are visual cues used to define fixed amounts of space between elements. They make it easy for designers to m...\
+  Red Hat design system
+- [link](https://design.cms.gov/foundation/spacing/)\
+  Spacing - CMS Design System\
+  Spacing between components. Existing design components in Figma have built-in spacing, including margins and padding. If you need ...\
+  Centers for Medicare & Medicaid Services | CMS (.gov)
+
+Show all
+
+# would i name design tokens like color.bg.primary or color.primary.bg
+
+You should choose **`color.bg.primary`** because it follows a standard, predictable hierarchy that scales much better as your design system grows. \[[1](https://www.aufaitux.com/blog/color-tokens-enterprise-design-systems-best-practices/)]
+
+Organizing design tokens is all about structure. Leading with the property (`bg`) and ending with the modifier (`primary`) groups your tokens logically. \[[1](https://www.belkadigital.com/blog/should-you-really-switch-to-design-tokens-in-figma)]
+
+### Direct Comparison
+
+| Naming Structure \[[1](https://www.aufaitux.com/blog/color-tokens-enterprise-design-systems-best-practices/)] | Grouping Style                                    | Code Navigation & Autocomplete                                                                 | Scalability                                                                                                          |
+| ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- | ---------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| **`color.bg.primary`** _(Recommended)_                                                                        | **Property-first** (Category → Type → Item)       | Excellent. All backgrounds stay neatly clustered in the same folder or autocomplete dropdown.  | High. It is easy to add `color.bg.secondary`, `color.bg.brand`, etc.                                                 |
+| **`color.primary.bg`**                                                                                        | **Concept-first** (Category → Concept → Property) | Poor. Separates backgrounds into different conceptual folders (`primary`, `success`, `error`). | Low. It gets confusing when a "primary" concept contains conflicting properties like text, borders, and backgrounds. |
+
+### Why `color.bg.primary` Wins
+
+- **Better Code Structure:** Most engineering tools and token plugins (like Tokens Studio for Figma) parse dots into nested JSON objects. Using `color.bg.primary` keeps all background colors grouped into a single tidy bucket (`color: { bg: { ... } }`).
+- **Consistent Semantic Roles:** In a UI, elements generally share four core roles: backgrounds, text, icons, and borders. Keeping the role in the middle means a developer looking to style a container can type `color.bg.` and instantly see every available option.
+- **Avoids Intent Confusion:** If you use `color.primary.bg`, you run into logical loops. For instance, a "primary" app background is usually white or light gray, but a "primary" button background is often a vivid brand color. Shifting `primary` to the very end as a modifier clears up this confusion by contextualizing it exactly to the background property. \[[1](https://www.fourzerothree.in/p/crafting-a-semantic-colour-system), [2](https://uxdesign.cc/how-to-define-color-usage-through-semantic-sets-for-design-systems-99445804233d), [3](https://medium.com/design-bootcamp/my-way-for-naming-design-tokens-and-components-ce10cfa55e22), [4](https://imperavi.com/blog/designing-semantic-colors-for-your-system/), [5](https://penpot.app/blog/the-developers-guide-to-design-tokens-and-css-variables/)]
+
+If you are setting up your tokens right now, it can be highly beneficial to outline your **entire taxonomy** ahead of time. I can help you map out the rest of your categories if you tell me:
+
+- Will your system need to support a **dark mode** switch?
+
+- Are you designing for **multiple brands** or just one standalone app?
+
+- Do you plan to build **component-specific tokens** later on (like `button.primary.bg`)? \[[1](https://samiamdesigns.substack.com/p/a-new-approach-to-naming-design-tokens), [2](https://medium.com/eightshapes-llc/naming-tokens-in-design-systems-9e86c7444676), [3](https://www.reshaped.so/docs/tokens/color), [4](https://www.alwaystwisted.com/articles/design-token-naming-conventions), [5](https://designstrategy.guide/design-tokens-101/), [6](https://thedesignsystem.guide/what-are-design-tokens)]
+
+- [link](https://samiamdesigns.substack.com/p/a-new-approach-to-naming-design-tokens)\
+  A new approach to naming design tokens\
+  May 5, 2024 — Tier 1 - Options. When working on a project, these are the options I have to choose from. These tokens represent the primitive dec...\
+  Substack·Confessions from a design team of one
+
+- [link](https://www.alwaystwisted.com/articles/design-token-naming-conventions)\
+  Design Token Naming Conventions: A Practical Guide\
+  Apr 23, 2026 — If you have ever stared at a long token list and wondered whether a name should be button-primary-bg , primary-button-background ,\
+  Always Twisted
+
+- [link](https://medium.com/eightshapes-llc/naming-tokens-in-design-systems-9e86c7444676)\
+  Naming Tokens in Design Systems - Medium\
+  Oct 14, 2020 — Mode (Usually, for “Light” and “Dark”) \* Mode (Usually, for “Light” and “Dark”) Tokens can employ a mode modifier to distinguish v...\
+  Medium·Nathan Curtis
+
+Show all
+
+# would i name design tokens like color.bg.button or color.button.bg
+
+You should name your design token **`color.button.bg`** rather than `color.bg.button` if you want to follow industry best practices. \[[1](https://penpot.app/blog/design-tokens-for-designers/)]
+
+While both technical patterns work, the standard design token taxonomy structures names from the **most general category down to the most specific modifier**. \[[1](https://smart-interface-design-patterns.com/articles/naming-design-tokens/), [2](https://nordhealth.design/naming/)]
+
+### Why `color.button.bg` is the Better Choice
+
+- **Object-Oriented Hierarchy**: It groups items by the UI element first (`button`) and then by its specific property (`bg` or background). This keeps all button-related tokens alphabetized and nested together in code autocomplete dropdowns and tool panels like Tokens Studio for Figma.
+- **Scalability**: If your system grows, `color.button.bg` naturally expands to include variants or states (e.g., `color.button.primary.bg.hover`).
+- **Industry Alignment**: Leading design systems, including Salesforce Lightning and [Material Design 3](https://m3.material.io/foundations/design-tokens), use a Category → Component → Property → State sequence. \[[1](https://m3.material.io/foundations/design-tokens), [2](https://medium.com/design-bootcamp/my-way-for-naming-design-tokens-and-components-ce10cfa55e22), [3](https://medium.com/@branda.bg/the-art-of-naming-and-organizing-design-tokens-cdf7632ccda9), [4](https://penpot.app/blog/design-tokens-for-designers/)]
+
+### A Comparison of the Two Approaches
+
+| Feature \[[1](https://samiamdesigns.substack.com/p/a-new-approach-to-naming-design-tokens), [2](https://www.aufaitux.com/blog/color-tokens-enterprise-design-systems-best-practices/), [3](https://www.aufaitux.com/blog/color-tokens-enterprise-design-systems-best-practices/), [4](https://www.alwaystwisted.com/articles/design-token-naming-conventions)] | `color.button.bg` (Recommended)                  | `color.bg.button` (Alternative)                     |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ | --------------------------------------------------- |
+| **Taxonomy Structure**                                                                                                                                                                                                                                                                                                                                         | `Category.Component.Property`                    | `Category.Property.Component`                       |
+| **Autocomplete Experience**                                                                                                                                                                                                                                                                                                                                    | Groups by component (all button states together) | Groups by property (all background tokens together) |
+| **Code Readability**                                                                                                                                                                                                                                                                                                                                           | High; isolates the UI entity first               | Fragmented; breaks up component architecture        |
+
+### The Standard Component Token Formula
+
+When naming component-specific tokens, aim for this structure:\
+\\(\text{\[Category]}\rightarrow \text{\[Component]}\rightarrow \text{\[Variant]}\rightarrow \text{\[Property]}\rightarrow \text{\[State]}\\)
+
+Following this formula, a fully realized button token looks like this:\
+`color.button.primary.bg.hover` \[[1](https://penpot.app/blog/design-tokens-for-designers/), [2](https://medium.com/@branda.bg/the-art-of-naming-and-organizing-design-tokens-cdf7632ccda9)]
+
+If you would like to map out the rest of your system, tell me if you are building **global/semantic tokens** (like `color.bg.surface`) or strictly **component-level tokens** so we can define the perfect taxonomy. \[[1](https://medium.com/design-bootcamp/design-tokens-for-better-design-systems-ab6d833e8d2f), [2](https://uxdesign.cc/how-to-name-colors-in-design-systems-976657e12b57), [3](https://www.designsystemscollective.com/how-colour-strategy-shapes-scalable-design-systems-from-vision-to-tokens-6ef516661f1c)]
+
+- [link](https://samiamdesigns.substack.com/p/a-new-approach-to-naming-design-tokens)\
+  A new approach to naming design tokens\
+  May 5, 2024 — Tier 3 - Components \* Once I build components styled with tokens from the decisions I've made, I can create component specific tok...\
+  Substack·Confessions from a design team of one
+- [link](https://m3.material.io/foundations/design-tokens)\
+  Design tokens – Material Design 3\
+  \* Tokens point to style values like colors, fonts, and measurements. \* Use design tokens instead of hardcoded values. \* Each token...\
+  Material Design
+- [link](https://penpot.app/blog/design-tokens-for-designers/)\
+  Design tokens for designers: A practical guide - Penpot\
+  Dec 22, 2025 — What are design tokens (and why should designers care)? Design tokens are a fundamental part of a design system, with each token s...\
+  Penpot
+
+Show all
+
+## You said: but color.bg.primary is prefered over color.primary.bg
+
+You are exactly right, and your intuition is spot-on. There is a very specific reason why `color.bg.primary` is preferred for system-wide tokens, even though `color.button.bg` is preferred for component tokens.
+
+The difference comes down to the **tier** of the design token you are creating. Design systems use two different structural logics depending on whether a token is **semantic** (system-wide) or **component-specific**. \[[1](https://www.designsystemscollective.com/design-tokens-in-practice-from-figma-variables-to-production-code-fd40aeccd6f5)]
+
+### The Two Token Tiers Explained
+
+### 1. Semantic Tokens (e.g., `color.bg.primary`) \[[1](https://nulab.com/learn/design-and-ux/design-tokens/), [2](https://medium.muz.li/color-systems-for-the-web-in-ai-guide-to-palettes-tokens-and-perceptual-consistency-2da8940f2bc3), [3](https://www.reddit.com/r/Angular2/comments/1f9kw7e/primeng%5Fv18beta1%5Fis%5Fout%5Fnow%5Fwith%5Fthe%5Fallnew/)]
+
+These are system-wide tokens used across many different UI elements. \[[1](https://medium.com/design-at-exxonmobil/design-tokens-unified-approach-to-design-system-implementation-d5013027c655), [2](https://www.designsystemscollective.com/when-semantic-tokens-are-no-longer-semantic-d65ef16fadd7)]
+
+- **The Logic**: `Category → Property → Concept`
+- **Why it works**: At this level, **`bg` (background)** is the primary functional category, not an element modifier. You want all background choices grouped together in your autocomplete menu so a developer can see every available background option (`color.bg.primary`, `color.bg.secondary`, `color.bg.surface`) in one list. \[[1](https://www.reddit.com/r/Angular2/comments/1f9kw7e/primeng%5Fv18beta1%5Fis%5Fout%5Fnow%5Fwith%5Fthe%5Fallnew/), [2](https://www.fourzerothree.in/p/semantic-colour-tokens-in-action), [3](https://vega.globalpayments.com/design/color), [4](https://www.rimidesigns.com.au/how-many-colours-should-i-use-for-my-branding/)]
+- **The Problem with `color.primary.bg`**: "Primary" is an abstract concept, not an object. If you used `color.primary.bg`, your autocomplete would group a primary background next to a primary border and primary text color, which is rarely how developers write CSS or style components.
+
+### 2. Component Tokens (e.g., `color.button.bg`)
+
+These are scoped strictly to a single UI element like a button, input, or card. \[[1](https://medium.com/@wilafar28/the-lego-effect-using-designtokens-to-build-consistent-ui-5b76069c894a), [2](https://figr.design/blog/how-to-use-design-tokens)]
+
+- **The Logic**: `Category → Component → Property → State`
+- **Why it works**: Once you enter component territory, the **Component (`button`)** becomes the main organizational anchor. You want every single token related to a button grouped together in code (`color.button.bg`, `color.button.text`, `color.button.border`).
+
+### The Golden Rule of Token Structure
+
+- Use **`Property` first** when the token is a **global/semantic utility** used everywhere.
+- Use **`Component` first** when the token belongs strictly to a **specific UI element**. \[[1](https://medium.com/@wilafar28/the-lego-effect-using-designtokens-to-build-consistent-ui-5b76069c894a)]
+
+### How They Link Together in Code
+
+In a mature design system, your component token will actually point directly to your semantic token as an alias:
+
+json
+
+```
+"color.button.primary.bg": {
+  "value": "{color.bg.primary}"
+}
+```
+
+Use code with caution.
+
+To help you map this out cleanly, what **other UI elements or properties** (like borders, text, or states) are you currently naming?
+
+- [link](https://www.designsystemscollective.com/design-tokens-in-practice-from-figma-variables-to-production-code-fd40aeccd6f5)\
+  Design Tokens in Practice: From Figma Variables to Production Code\
+  Nov 10, 2025 — Design Tokens in Practice: From Figma Variables to Production Code Tier 1: Primitive (Core) Tokens These are your raw values, the ...\
+  \
+  \
+  Design Systems Collective
+- [link](https://nulab.com/learn/design-and-ux/design-tokens/)\
+  Everything you need to know about design tokens\
+  Nov 25, 2025 — What are design tokens? Primitive tokens: these tokens contain raw foundational values. E.g., blue-500, 16px, radius-2. Semantic t...\
+  \
+  \
+  Nulab
+- [link](https://medium.muz.li/color-systems-for-the-web-in-ai-guide-to-palettes-tokens-and-perceptual-consistency-2da8940f2bc3)\
+  Color systems for the Web in AI: Guide to palettes, tokens, and perceptual consistency\
+  May 20, 2026 — Define semantic tokens that swap between modes (e.g., \` — color-bg-primary\`), not raw color values.\
+  \
+  \
+  Muzli - Design inspiration hub
+
+Show all
+
+## You said: i have no comp layer
+
+That simplifies your workflow significantly. Without a component layer, you are working entirely with **Semantic Tokens**.
+
+When you do not have component tokens, your naming structure must focus entirely on **intent and usage** across your entire interface. \[[1](https://www.alwaystwisted.com/articles/design-token-naming-conventions)]
+
+### The Recommended Structure
+
+Because you are staying at the semantic level, you should stick to the **`Category.Property.Concept/Intent.Modifier`** formula.
+
+- **`color.bg.primary`**: Best choice. It tells the engineer, _"This is a color, for a background, intended for primary use cases."_ \[1]
+- **`color.text.primary`**: Follows the same pattern for typography.
+- **`color.border.primary`**: Follows the same pattern for outlines.
+
+### How to Style a Button Without Component Tokens
+
+Since you do not have a dedicated `color.button.bg` token, you will assign your global semantic tokens directly to your elements in your CSS or styling files:
+
+css
+
+```
+/* Your button styles apply global semantic tokens directly */
+.button-primary {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-on-primary);
+  border: 1px solid var(--color-border-primary);
+}
+
+.button-secondary {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-secondary);
+}
+```
+
+Use code with caution.
+
+### 3 Tips for a Component-Less Token System
+
+1. **Create an "On" category for text/icons**: When text sits on top of a background, use an `on` modifier. For example, `color.text.on-primary` makes it clear that this text color is specifically designed to contrast against `color.bg.primary`.
+2. **Name by priority, not location**: Use terms like `primary`, `secondary`, `tertiary`, and `surface` rather than `button` or `sidebar`. This keeps the tokens flexible enough to be reused anywhere. \[[1](https://medium.com/from-chaos-to-clarity/tokenization-the-invisible-backbone-of-scalable-design-systems-d844b2d111ac), [2](https://help.figma.com/hc/en-us/articles/18490793776023-Update-1-Tokens-variables-and-styles), [3](https://uxplanet.org/design-tokens-102-8ac8ede85cfe)]
+3. **Incorporate States Globally**: Add state modifiers to the very end of your semantic tokens, such as `color.bg.primary-hover` or `color.bg.primary-active`.
+
+If you are setting these up now, let me know if you are using a tool like **Figma Variables** or **Style Dictionary**, or if you need help naming your **neutral surface and background** variants.
+
+- [link](https://www.alwaystwisted.com/articles/design-token-naming-conventions)\
+  Design Token Naming Conventions: A Practical Guide\
+  Apr 23, 2026 — Here, the naming pattern changes depending on the tier. Primitives hold values, semantic tokens hold intent, and component tokens ...\
+  \
+  \
+  Always Twisted
+- [link](https://medium.com/from-chaos-to-clarity/tokenization-the-invisible-backbone-of-scalable-design-systems-d844b2d111ac)\
+  Tokenization: The Invisible Backbone of Scalable Design Systems\
+  Jul 22, 2025 — In a semantic token structure, tokens describe the purpose or meaning of a value, not where it's applied. For example: background-\
+  \
+  \
+  Medium
+- [link](https://help.figma.com/hc/en-us/articles/18490793776023-Update-1-Tokens-variables-and-styles)\
+  Update 1: Tokens, variables, and styles – Figma Learn - Help Center\
+  From there, they ( The team ) established tokens within each category and gave them names that communicate “how” or “where” the co...\
+  \
+  \
+  Figma
+
+Show all
+
+## You said: would i name design tokens like sys.color.bg.button or sys.color.button.bg if i want to give buttons some special colors one day
+
+If you want to future-proof your system for unique button colors, you should name the token **`sys.color.button.bg`**.
+
+Even though you do not currently have a dedicated component layer, introducing the word `button` into the name creates a **scoped token** dedicated to that element. Putting the component name _before_ the property is the only way to ensure your system can scale smoothly.
+
+### Why `sys.color.button.bg` is the Correct Choice
+
+- **It creates a safe container**: By using `button.bg`, you isolate the button. If you decide tomorrow that buttons should be hot pink while the rest of your "primary backgrounds" stay blue, you can change `sys.color.button.bg` without breaking anything else.
+- **The structural flaw of `sys.color.bg.button`**: If you use `bg.button`, you are treating the button as a modifier of a background. If you later need to add button text, button borders, or button hover states, your tokens will become scattered and disorganized:
+  - `sys.color.bg.button` (Background)
+  - `sys.color.text.button` (Text)
+  - `sys.color.border.button` (Border) \[[1](https://www.abeautifulsite.net/posts/better-buttons-with-color-mix-and-custom-properties/), [2](https://www.aufaitux.com/blog/color-tokens-enterprise-design-systems-best-practices/)]\
+    With `sys.color.button.bg`, all button tokens naturally group together in code and design tools.
+
+### How Your System Evolves Over Time
+
+You can start by pointing your new button token directly to your global semantic background. This keeps your system perfectly unified today, while leaving the door wide open for "special colors" later.
+
+### Phase 1: Today (Unified Colors)
+
+Your button simply aliases your general primary background token. \[[1](https://medium.com/@sandeepsalmon/designing-a-scalable-design-token-system-in-figma-f7aed90084fa)]
+
+json
+
+```
+"sys.color.button.bg": { "value": "{sys.color.bg.primary}" }
+```
+
+Use code with caution.
+
+### Phase 2: The Future (Special Button Colors)
+
+When you want to give buttons a unique color, you just change the value of that single token. You do not have to rename the token or rewrite any developer code. \[[1](https://medium.com/cva-design/what-design-tokens-in-figma-really-are-and-why-they-matter-e3a59ed4ac4b)]
+
+json
+
+```
+"sys.color.button.bg": { "value": "#FF007F" }  /* Unique brand color */
+```
+
+Use code with caution.
+
+### The Universal Rule for Your Naming System
+
+To keep your system clean, use this simple formula to decide where the word goes:
+
+1. **Is it a general utility used by many elements?** Put the property first:\
+   `sys.color.bg.primary` / `sys.color.bg.surface`
+2. **Is it reserved for a specific element (even a future one)?** Put the element first:\
+   `sys.color.button.bg` / `sys.color.input.bg`
+
+Are you planning to introduce **different button variants** (like primary, secondary, or outline) or **interactive states** (like hover and focus) when you build these out?
+
+- [link](https://www.abeautifulsite.net/posts/better-buttons-with-color-mix-and-custom-properties/)\
+  Better Buttons with color-mix() and Custom Properties\
+  Aug 23, 2023 — We're using a custom property called --button-bg that sets the button's background. Using a custom property allows us to pass it i...\
+  \
+  \
+  A Beautiful Site
+- [link](https://www.aufaitux.com/blog/color-tokens-enterprise-design-systems-best-practices/)\
+  Accessible Color Tokens for Enterprise Design Systems\
+  May 21, 2025 — Think of color tokens as the DNA of your design system. Instead of hardcoding #4285F4 in Figma or CSS, you use meaningful names li...\
+  \
+  \
+  Aufait UX
+- [link](https://medium.com/@sandeepsalmon/designing-a-scalable-design-token-system-in-figma-f7aed90084fa)\
+  Designing a Scalable Design Token System in Figma\
+  Feb 27, 2025 — Having a token name that literally says button-primary-background makes it easy to see how your button is styled—and you can still...\
+  \
+  \
+  Medium
+
+Show all
+
 # 
 

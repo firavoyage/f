@@ -1,0 +1,11 @@
+i could make the converter stricter though.
+
+- no unused modes (? i could have comfortable compact cozy ahead of time as future proof)
+- no non existing modes
+- no value as single child
+- no raw value on sys
+- no circular linking (? does it happen, if not no need to prevent, be meaningfully robust)
+- all raw value on ref
+- no comp name on ref (?)
+- all ref end w number (?)
+- link could only happen from sys to ref. not ref to ref or sys to sys. (? i might have a special button that default to sys bg primary)

@@ -232,6 +232,7 @@ desktop:
 - dot hidden file history nautilus solution xdg spec home projects folder
 - windows pe intel rst
 - shell timestamp to utc
+- gnome critical notifications stricter dnd attempt
 
 android:
 

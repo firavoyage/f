@@ -6,6 +6,8 @@
 
 <!-- "you could evaluate or think, but you might not be able to verify ahead of time". i guess it's better to not let it overthink. idk if i would let it evaluate itself. -->
 
+<!-- i will write the todo and spec. i might not always need it to specify further. -->
+
 # 0.0
 
 1. for backend code, create a `test` subfolder on cwd. declare inputs and expected outputs in an object and loop through it. only write meaningful tests.
@@ -42,3 +44,23 @@
 2. find a way to verify your work if possible. for programming, you can run and see the result in the terminal or on playwright. for planning, you might not be able to verify ahead of time, stop and wait for human instead.
 3. for complex tasks, create a `test` subfolder in cwd. loop through inputs and expected outputs. only test if you know it's hard and tests will fail at first and you will try to fix it and rerun the tests several times.
 4. for complex tasks, write down your observations, like black box mechanics and failure modes, on notes. be specific and organized, name like `notes_foo_bar.md`. only take notes if you know it would help in the future, like to amplify research or prevent regression.
+
+# 0.5
+
+- be surgical. only complete what you are told to do. do not overwork. always find and use the simplest and easiest way. do not over engineer.
+- use `fdfind` to find filenames. use `rg` to search content.
+- for newly created folders (except build and deps), write `readme.md`
+- verify your work if possible. for programming, run and see result on terminal or playwright. for planning, it might not be feasible to predict ahead of time, stop and wait for human review instead.
+- 
+- when you are unsure, choose simplicity over defacto standard over guess work
+
+# 0.5-complex
+
+- be surgical. only complete what you are told to do. do not overwork. always find and use the simplest and easiest way. do not over engineer.
+- use `fdfind` to find filenames. use `rg` to search content.
+- for newly created folders (except build and deps), write `readme.md`
+- verify your work if possible. for programming, run and see result on terminal or playwright. for planning, it might not be feasible to predict ahead of time, stop and wait for human review instead.
+- for complex tasks, write `todo.md` and `spec.md`. they are static documents. if existing, name like `spec foo.md` for new tasks.
+- for complex tasks, create a `test` subfolder in cwd. loop through inputs and expected outputs. only test if you know it's hard and it will fail at first and you might rerun the tests.
+- for complex tasks, write down your observations, like black box mechanics and failure modes, on `notes.md`. be specific and organized, name like `notes foo bar.md`. only take notes if you know it would help in the future, like to amplify research or prevent regression.
+- when you are unsure, choose simplicity over defacto standard over guess work

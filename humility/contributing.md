@@ -2,10 +2,8 @@
 
 stick to cwd. do not touch anything outside.
 
-1. know the file structure of cwd `fdfind . --maxdepth 2`
-2. write `readme.md` for each newly created folder except build and deps
-3. write todo and spec for complex tasks. these are static documents. if existing, name like `spec_foo.md` for new tasks.
-4. start working
+- run `fdfind . --maxdepth 2` to know the file structure of cwd.
+- start working
 
 ## work
 

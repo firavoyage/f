@@ -28393,6 +28393,10 @@ seems uee paper is leaked during the exam, by photo taking. <!-- which is common
 
 15 20 write humility/legacy/readme.
 
+16 20 enrich knowledge: design tokens
+
+18 00 revise contributing
+
 
 
 <!-- timebox, plan. -->

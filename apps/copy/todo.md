@@ -41,3 +41,6 @@ remove all attrs, e.g. style, when elements like "mark" are preserved.
 
 ---
 
+add an option: keep links
+
+(keep links with names, remove empty links or number named based links, i.e. citations)
