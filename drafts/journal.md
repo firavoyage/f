@@ -28389,6 +28389,10 @@ seems uee paper is leaked during the exam, by photo taking. <!-- which is common
 
 20 00 play pink floyd. <!-- calm. beautiful. i have not played it for a while. -->
 
+10
+
+15 20 write humility/legacy/readme.
+
 
 
 <!-- timebox, plan. -->

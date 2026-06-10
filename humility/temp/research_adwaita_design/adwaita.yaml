@@ -4,6 +4,16 @@ modes:
   theme:
     - light
     - dark
+  accent:
+    - blue
+    - teal
+    - green
+    - yellow
+    - orange
+    - red
+    - pink
+    - purple
+    - slate
 
 ref:
   palette:
@@ -200,15 +210,17 @@ sys:
 
   color:
     # accent
-    accent:
-      value: "{ref.palette.accent-blue}"
-      dark: "{ref.palette.accent-blue}"
     accent-bg:
       value: "{ref.palette.accent-blue}"
-      dark: "{ref.palette.accent-blue}"
-    accent-fg:
-      value: "{ref.palette.light-1}"
-      dark: "{ref.palette.light-1}"
+      teal: "{ref.palette.accent-teal}"
+      green: "{ref.palette.accent-green}"
+      yellow: "{ref.palette.accent-yellow}"
+      orange: "{ref.palette.accent-orange}"
+      red: "{ref.palette.accent-red}"
+      pink: "{ref.palette.accent-pink}"
+      purple: "{ref.palette.accent-purple}"
+      slate: "{ref.palette.accent-slate}"
+    accent-fg: "{ref.palette.light-1}"
 
     # destructive
     destructive:
