@@ -1,6 +1,5 @@
 .Select {
   display: inline-flex;
-  flex-direction: column;
 }
 
 .Select_trigger {
