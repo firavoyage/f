@@ -20,4 +20,6 @@ move beyond libadwaita.
 
 explicit over implicit
 
+19 40 rename to `gray-[brightness]`. comment unused tokens.
+
 

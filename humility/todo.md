@@ -54,40 +54,6 @@ extend.
 
 ---
 
-i guess i could set a rule. components use semantic tokens.
-
-i could
-
-```
-light-1
-
-card:
-
-bg: light-1
-```
-
-and change on card
-
-but w some non dry overhead, i could make it clearer, and more centralized
-
-```
-light-1
-
-card-bg: light-1
-
-card:
-
-bg: card-bg
-```
-
-and change semantic. (i could change component as well, for different purposes)
-
-actually google have 3 tiers, with an addition of component layer, for cross plat compatibility. but i will simply use css.
-
-i will enforce the separation through naming.
-
----
-
 going fast feels exciting. but i do not have to chase something or overclock myself.
 
 ref
@@ -118,8 +84,10 @@ align components
 
 ---
 
-write test.ts.
+states.
 
-write theme.ts
+hover, pressed, ...
 
+research, copy to ref, map.
 
+---

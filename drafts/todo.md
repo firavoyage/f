@@ -371,3 +371,12 @@ any blog. any document on fs.
 any app on any design system.
 
 ---
+
+separate save and sync
+
+save every 20 min. <!-- dont worry. if unchanged, nothing will happen -->
+
+sync, like everyday, or like when im working and connected. <!-- push -->
+
+---
+

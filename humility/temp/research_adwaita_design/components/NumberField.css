@@ -32,7 +32,7 @@
 
 .NumberField_button {
   appearance: none;
-  background: var(--sys-color-bg-elevated);
+  background: var(--sys-color-bg-secondary);
   border: none;
   color: var(--sys-color-fg-primary);
   cursor: pointer;

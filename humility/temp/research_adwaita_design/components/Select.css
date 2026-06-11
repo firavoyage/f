@@ -42,7 +42,7 @@
 }
 
 .Select_popup {
-  background: var(--sys-color-bg-overlay);
+  background: var(--sys-color-bg-primary);
   border: 1px solid var(--sys-color-border-subtle);
   border-radius: var(--ref-radius-md);
   box-shadow: var(--ref-shadow-md);
