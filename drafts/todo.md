@@ -370,14 +370,4 @@ any blog. any document on fs.
 
 any app on any design system.
 
----
-
-find out why ram
-
-chromium
-
-opencode
-
-node
-
 
