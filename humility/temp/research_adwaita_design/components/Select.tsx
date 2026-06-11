@@ -16,7 +16,7 @@ export function Select(props: BaseSelect.Root.Props<typeof fruits[number]>) {
         <BaseSelect.Icon className="Select_icon">▼</BaseSelect.Icon>
       </BaseSelect.Trigger>
       <BaseSelect.Portal>
-        <BaseSelect.Positioner sideOffset={4} className="Select_positioner">
+        <BaseSelect.Positioner sideOffset={4} alignItemWithTrigger={false} className="Select_positioner">
           <BaseSelect.Popup className="Select_popup">
             <BaseSelect.List className="Select_list">
               {fruits.map((fruit) => (
