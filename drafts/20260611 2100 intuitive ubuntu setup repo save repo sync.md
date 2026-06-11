@@ -2227,5 +2227,3 @@ Here's the breakdown by major app:
 The key insight: You have 32 Chrome processes and 15 Node processes running. Each individually shows low %MEM because they're sharing libraries, but together they're the bulk of your RAM.
 
 ---
-
-
