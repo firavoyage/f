@@ -5,7 +5,13 @@ all. fira's drafts <!-- project all: fira's drafts -->
 <!--
 
 - use ctrl p on code to search (names, not links)
-- use vscode fold extension (or para) to read
+- use ctrl f (or para) to read
+
+use `title:` over `## title` or `# title` for simplicity and less visual noise.
+
+serenity.
+
+(you would not be able to shrink/expand wo headings though)
 
 -->
 
@@ -335,6 +341,7 @@ ux: <!-- ui/ux design, ia, information architecture -->
 - core laws the law of least effort the law of least surprise parkinson law
 - weber law of perception
 - ia context menu design
+- parceljs vite webpack error overlay design
 
 typography:
 
@@ -631,10 +638,11 @@ egg:
 
 - twitter third party clients
 
-humility
+humility:
 
 - research claude code leak insights
 - research google ai mode
+- research zed highly requested features
 
 legacy:
 

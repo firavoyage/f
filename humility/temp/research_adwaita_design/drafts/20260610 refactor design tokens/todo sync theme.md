@@ -22,8 +22,8 @@ append
 
 - components/index.html (as well as things inside)
 
-
+just enable the default auto theme
 
 test
 
-be simple. no testing. 
+be simple. no testing. it will work.
