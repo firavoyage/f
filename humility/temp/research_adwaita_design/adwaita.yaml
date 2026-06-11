@@ -120,7 +120,7 @@ ref:
 
     slider:
       track-bg: 
-        value: "..."
+        value: "..." # define in grayscale instead, then ref in sys
       
   spacing:
     1: "0.1875rem"
