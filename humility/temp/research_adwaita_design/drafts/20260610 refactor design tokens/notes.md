@@ -40,3 +40,9 @@ cases.yaml
     bar
     asdf  
 ```
+
+upd: no.
+
+it's too simple and overly rigid. it's rare to see cp like stdin stdout based programs.
+
+---

@@ -3,7 +3,7 @@
   align-items: center;
   gap: var(--ref-spacing-2);
   cursor: pointer;
-  color: var(--sys-color-fg-view);
+  color: var(--sys-color-fg-primary);
   font-size: var(--ref-font-size-sm);
 }
 

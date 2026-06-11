@@ -19987,6 +19987,552 @@ Would you like to build out a quick set of custom global styles for your heading
 
 Show all
 
-#
+# what does user agent stylesheet have
 
+A **user agent stylesheet** contains <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">the <strong>built-in, default CSS rules</strong> provided by a web browser</mark> (like Chrome, Safari, or Firefox). It ensures that an HTML page is readable and structured even if the web developer hasn't added any custom CSS. \[[1](https://stackoverflow.com/questions/12582624/what-is-a-user-agent-stylesheet), [2](https://www.youtube.com/watch?v=spK%5FS0HfzFw)]
 
+The user agent stylesheet includes several fundamental styling categories:
+
+### Layout and Display Defaults
+
+- **Display Properties**: It defines how elements sit on the page. For example, it sets block-level elements (, , , ) to `display: block` and text-level elements (, , ) to `display: inline`.
+- **The Body Margin**: It gives the tag a default spacing—most notably, a **`margin: 8px`** in almost all modern browsers to keep text from touching the very edge of the window. \[[1](https://stackoverflow.com/questions/7534222/what-causes-the-user-agent-stylesheet-to-use-border-box-instead-of-content), [2](https://stackoverflow.com/questions/32624315/browser-user-agent-style-sheet-margin-8px), [3](https://www.youtube.com/watch?v=spK%5FS0HfzFw), [4](https://ptgmedia.pearsoncmg.com/imprint%5Fdownloads/informit/learningkits/9780133588255/ch03.html), [5](https://elementor.com/blog/complete-css-cheat-sheet/)]
+
+### Typography and Hierarchy
+
+- **Heading Sizes**: It assigns varying `font-size` and `font-weight: bold` values to headings, establishing visual hierarchy (e.g., making much larger than ).
+- **Text Formatting**: It defines the default `line-height` for paragraphs and applies explicit decorations to specific elements, such as making tags blue and underlined, or tags bold. \[[1](https://www.geeksforgeeks.org/css/what-is-a-user-agent-stylesheet/), [2](https://javascript.plainenglish.io/user-agent-stylesheets-css-reset-and-normalize-css-e98b4af91110), [3](https://www.w3.org/TR/UAAG20-Reference/), [4](https://css-tricks.com/on-type-patterns-and-style-guides/), [5](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Containment/Container%5Fsize%5Fand%5Fstyle%5Fqueries)]
+
+### Spacing and Lists
+
+- **Margins and Padding**: It adds vertical spacing before and after paragraphs () and headings to keep them separate.
+- **List Indentations**: It adds a `padding-left` or `margin-left` alongside bullet/number styles (`list-style-type`) to lists like and . \[[1](https://www.geeksforgeeks.org/css/what-is-a-user-agent-stylesheet/), [2](https://javascript.plainenglish.io/user-agent-stylesheets-css-reset-and-normalize-css-e98b4af91110), [3](https://stackoverflow.com/questions/53060601/how-does-the-default-user-agent-stylesheet-style-lists-differently-depending-on), [4](https://forum.freecodecamp.org/t/how-to-prevent-user-agent-stylesheet/491606), [5](https://www.oracle.com/webfolder/technetwork/tutorials/tutorial/cloud/service/nov17-agentUI-wn.htm)]
+
+### Semantic Elements and Forms
+
+- **Form Controls**: It applies specific borders, backgrounds, padding, and `box-sizing: border-box` to inputs, textareas, and buttons so they look like clickable fields out of the box.
+- **Tables**: It handles table borders, alignment, and `display: table-cell` properties for and elements. \[[1](https://stackoverflow.com/questions/12582624/what-is-a-user-agent-stylesheet), [2](https://stackoverflow.com/questions/7534222/what-causes-the-user-agent-stylesheet-to-use-border-box-instead-of-content), [3](https://devchallenges.io/learn/2-responsive-web/css-essential-cheat-sheet), [4](https://web.dev/articles/color-scheme), [5](https://www.theodinproject.com/lessons/node-path-intermediate-html-and-css-default-styles)]
+
+### Overriding These Styles
+
+Because user agent stylesheets are at the bottom of the CSS cascade, **any custom CSS you write will automatically override them**. Web developers frequently use a [CSS Reset or Normalize.css](https://javascript.plainenglish.io/user-agent-stylesheets-css-reset-and-normalize-css-e98b4af91110) to wipe out these default browser inconsistencies before building their own layouts. \[[1](https://stackoverflow.com/questions/12582624/what-is-a-user-agent-stylesheet), [2](https://javascript.plainenglish.io/user-agent-stylesheets-css-reset-and-normalize-css-e98b4af91110)]
+
+If you would like to explore this further, let me know if you want to see **how to view the stylesheet** in browser developer tools or how to write a **CSS reset** to override it!
+
+- [link](https://stackoverflow.com/questions/12582624/what-is-a-user-agent-stylesheet)\
+  What is a user agent stylesheet? - css - Stack Overflow\
+  Sep 25, 2012 — 4 Comments. ... Regarding the concept “user agent style sheet”, consult section Cascade in the CSS 2.1 spec. User agent style shee...\
+  Stack Overflow
+- [link](https://www.geeksforgeeks.org/css/what-is-a-user-agent-stylesheet/)\
+  What is a User Agent Stylesheet ? - GeeksforGeeks\
+  Sep 25, 2024 — A user-agent stylesheet is a set of default CSS rules that web browsers apply to HTML elements automatically, ensuring consistent ...\
+  GeeksforGeeks
+- [link](https://stackoverflow.com/questions/7534222/what-causes-the-user-agent-stylesheet-to-use-border-box-instead-of-content)\
+  What causes the "user agent stylesheet" to use "border-box" instead ...\
+  Sep 23, 2011 — No, you can't touch the browser default stylesheet, and yes, browsers do have different rules for box-sizing specifically in respe...\
+  Stack Overflow
+
+Show all
+
+## You said: everything it does
+
+To capture **everything** a user agent stylesheet does, you have to look directly at raw browser engine source code (like the 1,000+ line [html.css core file](https://source.chromium.org/chromium/chromium/src/+/main:third%5Fparty/blink/renderer/core/html/resources/html.css;bpv=1) used by Chromium/Blink). \[[1](https://source.chromium.org/chromium/chromium/src/+/main:third%5Fparty/blink/renderer/core/html/resources/html.css;bpv=1), [2](https://www.youtube.com/watch?v=BVEHKh%5Fwkxk\&t=13)]
+
+The user agent stylesheet maps every existing HTML element to its default visual layout, positioning behavior, interactive states, and core accessibility features. \[[1](https://www.youtube.com/watch?v=spK%5FS0HfzFw\&t=17), [2](https://www.geeksforgeeks.org/css/what-is-a-user-agent-stylesheet/), [3](https://elad.medium.com/the-new-css-reset-53f41f13282e), [4](https://gamma.app/docs/CSS-Day-1-Welcome-to-CSS-nwgy7kd5jbrkq2c)]
+
+The complete breakdown of everything it manages is detailed below:
+
+### 1. Hiding Non-Visual Elements
+
+The stylesheet explicitly hides metadata, scripts, and structural elements that should never be visible to a website visitor. It enforces this by setting `display: none` on elements like: \[[1](https://www.youtube.com/watch?v=BVEHKh%5Fwkxk\&t=13)]
+
+- , , , , , , , and . \[[1](https://www.youtube.com/watch?v=BVEHKh%5Fwkxk\&t=13)]
+
+### 2. Standard Document Layout & Typography
+
+It establishes the basic structure of text documents, assigning font sizes, weight configurations, and spacing relative to the base root font size: \[[1](https://stackoverflow.com/questions/12582624/what-is-a-user-agent-stylesheet), [2](https://www.geeksforgeeks.org/css/what-is-a-user-agent-stylesheet/), [3](https://unit.co/docs/white-label-uis/themes/), [4](https://docs.appian.com/suite/help/26.4/css-properties.html)]
+
+- **The Body Container:** Grants its universal `margin: 8px` and `display: block` layout.
+- **Headings hierarchy:** Translates through tags into sequentially smaller bold fonts, automatically scaling margins before and after each header.
+- **Paragraphs and Text blocks:** Applies vertical top/bottom margins to , , and to prevent walls of text.
+- **Inline text formats:** Dictates text decorations, like applying `font-style: italic` to and , or setting `font-weight: bold` to and . \[[1](https://www.youtube.com/watch?v=aI89%5FvjlsSs\&t=1), [2](https://www.geeksforgeeks.org/css/what-is-a-user-agent-stylesheet/), [3](https://www.youtube.com/watch?v=spK%5FS0HfzFw\&t=17), [4](https://javascript.plainenglish.io/user-agent-stylesheets-css-reset-and-normalize-css-e98b4af91110), [5](https://docs.coderedcorp.com/wagtail-crx/getting%5Fstarted/tutorial03.html)]
+
+### 3. Hyperlink Behaviors
+
+Links are uniquely interactive elements that receive distinct rules mapping to user behavioral history: \[[1](https://www.youtube.com/watch?v=aI89%5FvjlsSs\&t=1), [2](https://www.youtube.com/watch?v=spK%5FS0HfzFw\&t=17)]
+
+- Sets native color palettes: standard blue for unvisited links, purple for visited links, and active states.
+- Implements `text-decoration: underline` so text anchors remain identifiable.
+- Dictates the cursor appearance change (`cursor: pointer`) when hovering over anchor tags. \[[1](https://www.youtube.com/watch?v=aI89%5FvjlsSs\&t=1), [2](https://www.youtube.com/watch?v=spK%5FS0HfzFw\&t=17), [3](https://docs.stripe.com/connect/embedded-appearance-options)]
+
+### 4. Lists & Independent Spacing
+
+To ensure lists visually separate from paragraphs, the stylesheet applies indentations and markers: \[[1](https://www.youtube.com/watch?v=spK%5FS0HfzFw\&t=17), [2](https://www.geeksforgeeks.org/css/what-is-a-user-agent-stylesheet/)]
+
+- **Indentation:** Sets a baseline `padding-inline-start: 40px` (or `padding-left`) on and .
+- **Markers:** Maps bullet styling variations, applying `list-style-type: disc` to standard unordered lists, `list-style-type: decimal` to ordered lists, and tracking counter resets for numbered layers.
+- **Definition Lists:** Coordinates alignment layouts for , , and the indentation spacing on descriptions (). \[[1](https://www.youtube.com/watch?v=spK%5FS0HfzFw\&t=17), [2](https://chromium.googlesource.com/chromium/src/+/master/third%5Fparty/blink/renderer/core/layout/), [3](https://developer.mozilla.org/en-US/docs/Learn%5Fweb%5Fdevelopment/Core/Text%5Fstyling/Styling%5Flists), [4](https://hadrysmateusz.com/blog/css-list-styling), [5](https://torquemag.io/2021/12/css-pseudo-elements/)]
+
+### 5. Complex Interactive Elements (Forms & UI)
+
+Form elements utilize deep browser integration and receive the largest block of rules to look cohesive across operating systems: \[[1](https://stackoverflow.com/questions/7534222/what-causes-the-user-agent-stylesheet-to-use-border-box-instead-of-content), [2](https://www.youtube.com/watch?v=spK%5FS0HfzFw\&t=17)]
+
+- **Structural defaults:** Applies `box-sizing: border-box` to inputs and textareas so padding does not break layout widths.
+- **Native Elements:** Assigns native background colors, subtle inset borders, text alignments, and focus ring outlines (`outline: -webkit-focus-ring-color`) when tabbed into via a keyboard.
+- **Buttons:** Sets user-agent specific padding, center text alignment, gray backgrounds, and raised border behaviors for and . \[[1](https://stackoverflow.com/questions/7534222/what-causes-the-user-agent-stylesheet-to-use-border-box-instead-of-content), [2](https://www.youtube.com/watch?v=spK%5FS0HfzFw\&t=17), [3](https://medium.com/@tinydinosaur/a-wordy-history-of-default-browser-styles-and-css-resets-befdd614d93b)]
+
+### 6. Interactive State & Visibility Controls \[[1](https://www.sap.com/design-system/fiori-design-web/v1-136/foundations/interaction/states/interaction-foundations-component-states)]
+
+The stylesheet contains conditional logic to map user interactions or specific element attributes into immediate display changes:
+
+- Hides any element given the explicit global HTML attribute by auto-applying `display: none`.
+- Updates interactive components, like changing the visibility wrapper of tags so that contents reveal themselves immediately when the `[open]` attribute toggle is active.
+
+### 7. Multi-Dimensional Data Tables
+
+Tables require intricate CSS layouts to align structured columns and headers cleanly: \[[1](https://stackoverflow.com/questions/12582624/what-is-a-user-agent-stylesheet)]
+
+- Maps table components to specialized display blocks: `display: table` for , `display: table-row` for , and `display: table-cell` for and .
+- Sets default internal vertical alignment (`vertical-align: inherit`) and gives header cells () centered text alignments and bold text weights.
+
+### 8. Multimedia & Object Handling
+
+Browsers include rules to preserve sizing layouts for external media streams: \[[1](https://www.geeksforgeeks.org/css/what-is-a-user-agent-stylesheet/)]
+
+- Assigns `display: inline-block` or handles overflow containment for native frames and audio players like , , , and .
+- Ensures embedded objects hide text alternates when media streams successfully load. \[[1](https://pathowe.co.uk/a-brief-guide-to-the-enhancements-and-new-features-of-html5/)]
+
+If you are trying to **clean up or cancel out** these defaults, I can walk you through how a **modern CSS reset** handles it, or show you how to target specific user agent properties in your code. Which would you prefer?
+
+- [link](https://stackoverflow.com/questions/12582624/what-is-a-user-agent-stylesheet)\
+  What is a user agent stylesheet? - css - Stack Overflow\
+  Sep 25, 2012 — 4 Comments. ... Regarding the concept “user agent style sheet”, consult section Cascade in the CSS 2.1 spec. User agent style shee...\
+  Stack Overflow
+- [link](https://www.youtube.com/watch?v=aI89%5FvjlsSs\&t=1)\
+  HTML & CSS for Absolute Beginners: User Agent Styles\
+  Jan 10, 2025 — so understanding inheritance is very important but it's also important to understand why things aren't inherited. so one of them i...\
+  3m\
+  YouTube·Kevin Powell
+- [link](https://stackoverflow.com/questions/7534222/what-causes-the-user-agent-stylesheet-to-use-border-box-instead-of-content)\
+  What causes the "user agent stylesheet" to use "border-box" instead ...\
+  Sep 23, 2011 — No, you can't touch the browser default stylesheet, and yes, browsers do have different rules for box-sizing specifically in respe...\
+  Stack Overflow
+
+Show all
+
+## You said: what after reset css
+
+A **CSS Reset** strips away almost all browser defaults, leaving you with a blank slate. Because it sets margins to zero and removes basic typography sizes, your website will look completely unstyled—often like a single block of unformatted text. \[[1](https://www.joshwcomeau.com/css/custom-css-reset/), [2](https://css-tricks.com/poll-results-what-css-reset-do-you-use/), [3](https://bitsofco.de/a-look-at-css-resets-in-2018/), [4](https://www.greatfrontend.com/questions/quiz/whats-the-difference-between-resetting-and-normalizing-css-which-would-you-choose-and-why), [5](https://www.sitepoint.com/css-resets-useful-or-useless/)]
+
+Here is what happens immediately after applying a reset and how you transition into writing your own styles:
+
+### What the Page Looks Like Immediately After a Reset
+
+- **Zero Spacing:** All margins and paddings disappear. Headings, lists, and paragraphs will bunch up and touch each other.
+- **No Hierarchy:** Headings ( through ) will become the exact same font size and weight as standard paragraph text.
+- **No Bullets or Lists:** Bullet points on elements and numbers on elements are removed. The text shifts to the far left.
+- **Stripped Links:** Links () lose their default blue color and underlines, blending in seamlessly with regular text. \[[1](https://css-tricks.com/new-poll-what-kind-of-css-reset-do-you-use/), [2](https://css-tricks.com/reset-all-margins-padding/), [3](https://mattbrictson.com/blog/css-normalize-and-reset)]
+
+***
+
+### Step-by-Step workflow: What to do next
+
+### 1. Set Global Box Sizing
+
+Most resets include this, but you must ensure your layout calculates element widths predictably. Apply `border-box` so that padding and borders don't accidentally expand your containers. \[[1](https://pagespeedchecklist.com/css-reset)]
+
+css
+
+```
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+```
+
+Use code with caution.
+
+### 2. Define Document-Wide Typography
+
+Establish your root font sizes, colors, and line spacing on the element. This sets a baseline for the entire website.
+
+css
+
+```
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #1a1a1a;
+  background-color: #ffffff;
+}
+```
+
+Use code with caution.
+
+### 3. Rebuild Your Visual Hierarchy
+
+Because the reset flattened your headings, you must manually define your typographic ladder to create structure.
+
+css
+
+```
+h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; }
+h2 { font-size: 2rem; font-weight: 600; margin-bottom: 0.75rem; }
+p  { margin-bottom: 1.25rem; }
+```
+
+Use code with caution.
+
+### 4. Design Component Layouts
+
+Now that the browser's intrusive layout rules are gone, you can safely use **Flexbox** or **CSS Grid** to build your columns, navigation bars, and structural grids without fighting hidden margins.
+
+***
+
+### Alternative Option: Reset vs. Normalize \[[1](https://blog.devgenius.io/10-common-css-mistakes-and-how-to-avoid-them-9794988dc586)]
+
+If you do not want to rebuild every single heading and list style from scratch, many modern developers use **Normalize.css** or a **Modern Fluid Reset** instead of a hard reset. \[[1](https://www.naukri.com/code360/library/what-is-reset-css)]
+
+- **Hard Reset (e.g., Eric Meyer Reset):** Wipes out _everything_. You must rebuild all typography and spacing from zero.
+- **Normalize / Modern Reset:** Leaves helpful browser defaults intact (like heading sizes and list bullets) but fixes bugs and unifies spacing across different browsers. \[[1](https://medium.com/@shittuhoney/normalize-css-explained-when-you-need-it-and-when-you-dont-ac956067ed49), [2](https://www.naukri.com/code360/library/what-is-reset-css), [3](https://nicolasgallagher.com/about-normalize-css/), [4](https://www.reddit.com/r/webdev/comments/94vui2/what%5Fis%5Fthe%5Fdifference%5Fbetween%5Fusing%5Fnormalizecss/)]
+
+Would you like to see a code example of a **modern reset** that retains some helpful default formatting, or are you ready to start building custom styles for a **specific layout**?
+
+- [link](https://www.joshwcomeau.com/css/custom-css-reset/)\
+  A Modern CSS Reset • Josh W. Comeau\
+  Nov 23, 2021 — Historically, the main goal of a CSS ( CSS styles ) reset has been to ensure consistency between browsers, and to undo all default...\
+  \
+  \
+  Josh Comeau
+- [link](https://css-tricks.com/poll-results-what-css-reset-do-you-use/)\
+  Poll Results: What CSS Reset Do You Use?\
+  Mar 6, 2008 — Different browsers have different default settings for page elements. In an effort to keep web pages looking as consistent as poss...\
+  \
+  \
+  CSS-Tricks
+- [link](https://bitsofco.de/a-look-at-css-resets-in-2018/)\
+  A look at CSS Resets in 2018\
+  Nov 30, 2018 — An alternative, more commonly used reset is Eric Meyer's CSS Reset. It returns margin, padding, borders, and font size on specific...\
+  \
+  \
+  bitsofcode
+
+Show all
+
+# install reset css via pnpm
+
+To install a CSS reset package using pnpm, run the command **`pnpm add reset-css`** in your project terminal. \[[1](https://www.npmjs.com/package/reset-css)]
+
+Here is how to complete the installation and import it into your web application project.
+
+### 1. Install the Package
+
+Run the standard installation command to save the package to your dependencies:
+
+bash
+
+```
+pnpm add reset-css
+```
+
+Use code with caution.
+
+_Note: If you prefer a modern variant instead of the classic Eric Meyer reset, you can alternatively run `pnpm add the-new-css-reset` or `pnpm add modern-css-reset`._ \[[1](https://github.com/shannonmoeller/reset-css), [2](https://github.com/elad2412/the-new-css-reset), [3](https://www.npmjs.com/package/modern-css-reset)]
+
+### 2. Import into Your Project \[[1](https://github.com/zellwk/css-reset)]
+
+Once installed via pnpm, you must reference the stylesheet at the absolute top of your style hierarchy so that your custom styles take precedence. \[[1](https://www.youtube.com/watch?v=ayrSaMalNBQ), [2](https://www.sitepoint.com/css-resets-useful-or-useless/)]
+
+### In JavaScript / TypeScript Entry Files \[[1](https://github.com/elad2412/the-new-css-reset)]
+
+If you are using a bundler like Vite, Webpack, or Next.js, add this line to your `main.js`, `index.js`, or `app.tsx`: \[[1](https://npmjs.com/package/@effective/css-reset), [2](https://github.com/mirego/simple-css-reset), [3](https://github.com/shannonmoeller/reset-css)]
+
+javascript
+
+```
+import 'reset-css';
+```
+
+Use code with caution.
+
+### In CSS / SCSS Files
+
+If you prefer to load it directly inside your global CSS file, place this at the very top of the file: \[[1](https://github.com/shannonmoeller/reset-css), [2](https://www.reddit.com/r/webdev/comments/pn0yve/i%5Fam%5Ffinding%5Fway%5Ftoo%5Fmany%5Foptions%5Fto%5Fchoose%5Ffrom/)]
+
+css
+
+```
+@import 'reset-css';
+```
+
+Use code with caution.
+
+If you are using **Sass / SCSS**, you can use the `@import` or `@use` rules: \[[1](https://github.com/shannonmoeller/reset-css), [2](https://www.reddit.com/r/webdev/comments/pn0yve/i%5Fam%5Ffinding%5Fway%5Ftoo%5Fmany%5Foptions%5Fto%5Fchoose%5Ffrom/), [3](https://www.djamware.com/post/how-to-convert-a-css-project-to-scss-efficiently)]
+
+scss
+
+```
+@import 'reset-css/sass/reset';
+```
+
+Use code with caution.
+
+Could you share **which framework** (like React, Vue, or Next.js) or **bundler** you are working with? I can provide the exact file path and placement configuration for your setup.
+
+- [link](https://www.npmjs.com/package/reset-css)\
+  reset-css - NPM\
+  Jul 21, 2023 — Install. With curl: $ curl -LO "https://unpkg.com/reset-css/reset.css" $ curl -LO "https://unpkg.com/reset-css/less/reset.less" $ ...\
+  NPM
+- [link](https://github.com/shannonmoeller/reset-css)\
+  shannonmoeller/reset-css: An unmodified\* copy of ... - GitHub\
+  Jul 21, 2023 — Usage \* CSS: \* @import '/path/to/reset-css/reset.css'; Via PostCSS and postcss-import: \* @import 'reset-css'; Via webpack and css-\
+  GitHub
+- [link](https://www.reddit.com/r/webdev/comments/pn0yve/i%5Fam%5Ffinding%5Fway%5Ftoo%5Fmany%5Foptions%5Fto%5Fchoose%5Ffrom/)\
+  I am finding way too many options to choose from for a css ...\
+  Sep 12, 2021 — To answer your question: This particular reset is part of a more complete npm package you can install with npm install hgrid-css -\
+  Reddit·r/webdev
+
+Show all
+
+## You said: should i import on index.tsx or app.tsx
+
+Import the CSS reset in **`index.tsx`**. \[[1](https://panda-css.com/docs/installation/remix)]
+
+Here is why you should choose `index.tsx` over `app.tsx`, along with the specific technical rules for placement. \[[1](https://medium.com/quickreact/app-tsx-ef14d0a9993c)]
+
+### Why Choose `index.tsx`?
+
+- **Global Scope**: `index.tsx` is the absolute entry point of your application.
+- **Style Cascade**: Importing it here guarantees it loads before your component styles.
+- **Avoid Overrides**: If imported in `app.tsx`, it might accidentally overwrite global styles defined elsewhere. \[[1](https://medium.com/quickreact/app-tsx-ef14d0a9993c)]
+
+### Correct Import Placement
+
+Place the import at the very top of your imports, right after React but **before** your local styles: \[[1](https://github.com/NativeScript/NativeScript/issues/4323)]
+
+tsx
+
+```
+// 1. Core library imports
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+
+// 2. CSS Reset (Must be above global/component styles)
+import 'reset-css';
+
+// 3. Your global styles
+import './index.css';
+
+// 4. Component imports
+import App from './App';
+
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+root.render(<App />);
+```
+
+Use code with caution.
+
+What **build tool** or **meta-framework** (like Vite, Create React App, or Next.js) are you using for this project? I can confirm if your framework has specific entry point requirements.
+
+- [link](https://panda-css.com/docs/installation/remix)\
+  Using Remix | Panda CSS\
+  Configure the entry CSS with layers @layer reset, base, tokens, recipes, utilities; Import the index. css file in your app/root. t...\
+  \
+  \
+  Panda CSS
+- [link](https://medium.com/quickreact/app-tsx-ef14d0a9993c)\
+  App.tsx. App.tsx | by Karim Samir | quickreact\
+  Sep 13, 2025 — App. tsx It's the entry point of your UI, rendered by main. tsx (or index. tsx ).\
+  \
+  \
+  Medium
+- [link](https://medium.com/quickreact/app-tsx-ef14d0a9993c)\
+  App.tsx. App.tsx | by Karim Samir | quickreact\
+  Sep 13, 2025 — App. tsx It's the entry point of your UI, rendered by main. tsx (or index. tsx ).\
+  \
+  \
+  Medium
+
+## You said: why is button default style not reset
+
+The default style of your button isn't completely reset because <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>the classic <code dir="ltr" style="font-size: 14px; margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 1px solid rgb(44, 46, 53);">reset-css</code> package (based on Eric Meyer’s reset) does not target form elements like , , or by design</strong></mark>**.** \[[1](https://www.youtube.com/watch?v=kT2nvN0-3%5F4), [2](http://html5doctor.com/html-5-reset-stylesheet/), [3](https://medium.com/towardsdev/reset-css-and-entirely-personal-recommendations-for-2024-fd7e32e15642), [4](https://www.boag.online/notepad/post/css-reset), [5](https://stackoverflow.com/questions/74851647/difference-between-reset-vs-normalize-css-how-do-they-differ)]
+
+It targets semantic text and layout elements (like `div`, `p`, `h1`, `ul`) but purposely avoids complex form controls to prevent breaking browser-native interaction, accessibility, and platform-specific rendering. \[[1](https://www.trysmudford.com/blog/a-good-reset/), [2](http://html5doctor.com/html-5-reset-stylesheet/), [3](https://www.youtube.com/watch?v=kT2nvN0-3%5F4), [4](https://css-tricks.com/overriding-default-button-styles/)]
+
+### 1. The Quick Fix
+
+If you want your buttons to act like a blank-canvas `div` that completely inherits your text styles, add this custom rule right below your reset import: \[[1](https://www.reddit.com/r/webdev/comments/s3x4dj/how%5Fcan%5Fi%5Fuse%5Fthe%5Fdefault%5Fstyles%5Fbefore%5Fa%5Fcss/)]
+
+css
+
+```
+/* Add this to your global index.css file */
+button {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  text-align: inherit;
+}
+```
+
+Use code with caution.
+
+### 2. Why Classic Resets Ignore Buttons
+
+- **Font Isolation**: Browsers isolate form controls from inheriting standard typography. Unless explicitly forced via `font: inherit`, a will completely ignore the font family and size specified on your tag. \[[1](https://www.spicyweb.dev/css-nouveau/1-vanilla-has-never-tasted-so-hot/2-the-new-css-reset/), [2](https://www.youtube.com/shorts/2lyDv0wOQuQ), [3](https://zellwk.com/blog/css-reset/)]
+- **Platform Security & OS Rendering**: Browsers traditionally used operating-system-level widgets to render buttons, dropdowns, and checkboxes so they would match the native Mac or Windows aesthetic. Old resets intentionally avoided altering these to maintain expected platform look-and-feel.
+
+### 3. Modern Alternatives that Fix This
+
+If you prefer a package that strips down form controls automatically, swap out `reset-css` for a modern engine: \[[1](https://www.joshwcomeau.com/css/custom-css-reset/)]
+
+- **Option A: `the-new-css-reset`**\
+  This uses modern CSS features (`unset` and `revert`) to aggressively strip styles from everything, including form elements.\
+  bash
+
+<!---->
+
+```
+pnpm add the-new-css-reset
+```
+
+Use code with caution.\
+_(Import as `import 'the-new-css-reset/css/reset.css';`)_
+
+- **Option B: `@unocss/reset` or Tailwind Preflight**\
+  If you eventually migrate to modern utility frameworks, packages like Tailwind CSS or UnoCSS include built-in "Preflight" systems that automatically strip buttons down to a plain text baseline out of the box. \[[1](https://unocss.dev/guide/style-reset), [2](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/revert), [3](https://www.reddit.com/r/webdev/comments/s3x4dj/how%5Fcan%5Fi%5Fuse%5Fthe%5Fdefault%5Fstyles%5Fbefore%5Fa%5Fcss/), [4](https://elad.medium.com/the-new-css-reset-53f41f13282e), [5](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/revert)]
+
+Are you planning to build **fully custom buttons from scratch**, or are you looking to use a **component library** (like shadcn/ui, MUI, or Chakra) that already handles button overrides? \[[1](https://www.linkedin.com/posts/utsavmeena%5Fclean-slate-in-one-line-of-css-the-ultimate-activity-7452742592955420675-3SOc)]
+
+- [link](https://www.joshwcomeau.com/css/custom-css-reset/)\
+  A Modern CSS Reset • Josh W. Comeau\
+  Nov 23, 2021 — A pedantic note. Historically, the main goal of a CSS reset has been to ensure consistency between browsers, and to undo all defau...\
+  Josh Comeau
+- [link](https://unocss.dev/guide/style-reset)\
+  Style Reset - UnoCSS\
+  Oct 19, 2025 — Browser Style Reset ​ UnoCSS does not provide style resetting or preflight by default so not to populate your global CSS and also ...\
+  UnoCSS
+- [link](https://www.reddit.com/r/webdev/comments/s3x4dj/how%5Fcan%5Fi%5Fuse%5Fthe%5Fdefault%5Fstyles%5Fbefore%5Fa%5Fcss/)\
+  How can I use the default styles (before a CSS reset ... - Reddit\
+  Jan 14, 2022 — I don't think there's a good way to un-reset everything (after its been reset by tailwind and then I guess changed by the other li...\
+  Reddit·r/webdev
+
+Show all
+
+## You said: the-new-css-reset or modern-css-reset or @unocss/reset
+
+The best option depends entirely on your styling philosophy: choose **`the-new-css-reset`** for an absolute blank canvas (including buttons), **`modern-css-reset`** for sane, user-friendly defaults, or **`@unocss/reset`** if you are already using the UnoCSS engine. \[[1](https://medium.com/towardsdev/reset-css-and-entirely-personal-recommendations-for-2024-fd7e32e15642)]
+
+This direct comparison shows how they differ technically, specifically regarding your button problem.
+
+### Direct Feature Comparison
+
+| Feature / Behavior \[[1](https://medium.com/towardsdev/reset-css-and-entirely-personal-recommendations-for-2024-fd7e32e15642), [2](https://piccalil.li/blog/a-more-modern-css-reset/), [3](https://unocss.dev/guide/style-reset), [4](https://elad2412.github.io/the-new-css-reset/)] | `the-new-css-reset`                   | `modern-css-reset`                | `@unocss/reset`                                     |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------- | --------------------------------- | --------------------------------------------------- |
+| **Button Reset**                                                                                                                                                                                                                                                                      | **Yes** (Stripped completely)         | **Partial** (Only inherits fonts) | **Yes** (If using Tailwind/Tailwind-compat variant) |
+| **Core Mechanism**                                                                                                                                                                                                                                                                    | Modern `all: unset`                   | Highly targeted selections        | Bundled variants (Tailwind, Eric Meyer, etc.)       |
+| **Specificity**                                                                                                                                                                                                                                                                       | Zero (Uses `:where()`)                | Standard CSS specificity          | Dependent on the chosen sub-variant                 |
+| **Best Used For**                                                                                                                                                                                                                                                                     | Total control / Custom design systems | Quick layouts / No CSS framework  | Projects running the UnoCSS engine                  |
+
+***
+
+### Deep Dive: Which Should You Install?
+
+### 1. `the-new-css-reset` (Best for Zero-State Custom Buttons)
+
+This package uses advanced modern properties like `all: unset` inside a `:where()` pseudo-class to erase everything. Your buttons will literally become invisible, borderless boxes that look like plain text until you style them. \[[1](https://elad2412.github.io/the-new-css-reset/), [2](https://medium.com/towardsdev/reset-css-and-entirely-personal-recommendations-for-2024-fd7e32e15642), [3](https://medium.com/@shittuhoney/normalize-css-explained-when-you-need-it-and-when-you-dont-ac956067ed49)]
+
+- **Pros**: Completely resolves your button reset issue out of the box. Zero specificity means your utility classes override it seamlessly.
+- **Cons**: It strips checkboxes and radio buttons too, which you might have to manually restore using `all: revert`.
+- **pnpm install**: `pnpm add the-new-css-reset`
+- **Import**: `import 'the-new-css-reset/css/reset.css';` \[[1](https://elad2412.github.io/the-new-css-reset/), [2](https://medium.com/towardsdev/reset-css-and-entirely-personal-recommendations-for-2024-fd7e32e15642), [3](https://www.smashingmagazine.com/2018/10/tpac-css-working-group-new/), [4](https://aravishack.medium.com/css-getting-smarter-simplify-your-styles-with-modern-css-selectors-b0e703741bc1), [5](https://github.com/elad2412/the-new-css-reset)]
+
+### 2. `modern-css-reset` (Best for Traditional, Sane Defaults) \[[1](https://publishing-project.rivendellweb.net/a-history-of-css-resets/)]
+
+Based on Andy Bell's famous reset, this layout focuses on fluid image responsiveness, removing default margins on lists, and adjusting scroll behavior. \[, [3](https://dev.to/ryandotfurrer/another-modern-css-reset-2a0g), [4](https://www.smashingmagazine.com/2021/10/modern-css-solutions-for-common-problems/)]
+
+- **Pros**: Improves accessibility and keeps standard text layouts looking natural without micro-managing styles.
+- **Cons**: **Does not solve your button styling problem.** It only forces buttons to inherit the font family and size from the parent; backgrounds and borders remain browser-default.
+- **pnpm install**: `pnpm add modern-css-reset`
+- **Import**: `import 'modern-css-reset/dist/reset.min.css';` \[[1](https://piccalil.li/blog/a-more-modern-css-reset/), [4](https://www.sitepoint.com/css-modern-world/), [5](https://medium.com/towardsdev/reset-css-and-entirely-personal-recommendations-for-2024-fd7e32e15642)]
+
+### 3. `@unocss/reset` (Best Only If You Already Use UnoCSS) \[[1](https://dev.to/akshay9677/switching-to-unocss-5hjo)]
+
+This is a utility package provided by the [UnoCSS](https://unocss.dev/guide/style-reset) team. It doesn't feature its own custom rules; instead, it exports standard industry resets via a single package. \[[1](https://unocss.dev/guide/style-reset), [2](https://unocss.dev/guide/why)]
+
+- **Pros**: Gives you quick access to Tailwind's "Preflight", Eric Meyer's reset, or `normalize.css` via a unified library entry point.
+- **Cons**: Redundant unless you are actively building an application powered by the UnoCSS engine.
+- **pnpm install**: `pnpm add @unocss/reset`
+- **Import (Tailwind variant)**: `import '@unocss/reset/tailwind.css';` \[, [2](https://unocss.dev/guide/style-reset), [3](https://daisyui.com/docs/install/unocss/)]
+
+***
+
+Would you like help choosing **which properties to target manually** if you decide to stick with your current stylesheet setup?
+
+- [link](https://elad2412.github.io/the-new-css-reset/)\
+  The New CSS Reset - GitHub Pages\
+  Jun 14, 2023 — The global CSS reset keywords, 'unset' and 'revert' keywords. The new property of 'all' which can reset all properties combined. T...\
+  GitHub Pages documentation
+- [link](https://medium.com/towardsdev/reset-css-and-entirely-personal-recommendations-for-2024-fd7e32e15642)\
+  Reset.css and (Entirely Personal!) Recommendations for 2024\
+  May 26, 2024 — The New CSS Reset ... It removes all the default styles except the display property, and special HTML elements like iframe , canva...\
+  Medium·Itsuki
+- [link](https://unocss.dev/guide/style-reset)\
+  Style Reset - UnoCSS\
+  Oct 19, 2025 — Browser Style Reset ​ UnoCSS does not provide style resetting or preflight by default so not to populate your global CSS and also ...\
+  UnoCSS
+
+Show all
+
+# bg primary secondary tertiary meaning
+
+In UI design and web development frameworks like [Bootstrap](https://getbootstrap.com/docs/5.3/utilities/background/) and [Apple Developer Guidelines](https://developer.apple.com/design/human-interface-guidelines/color), "**bg primary secondary tertiary**" refers to <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>a system of layering background colors to create visual hierarchy and depth on a screen</strong></mark>. \[[1](https://developer.apple.com/design/human-interface-guidelines/color)]
+
+Instead of hardcoding specific colors (like blue or gray), modern frameworks use these contextual names so the user interface can adapt automatically to light, dark, or custom themes. \[[1](https://css-tricks.com/thinking-deeply-about-theming-and-color-naming/), [2](https://m2.material.io/design/color/the-color-system.html)]
+
+### 📱 Meaning in UI Design & Layering (e.g., Apple, Material Design)
+
+When designing apps, these terms define how elements layer on top of one another to guide the user's eye: \[[1](https://developer.apple.com/design/human-interface-guidelines/color)]
+
+- **BG Primary**: The base layer or canvas color of the overall screen. In light mode, this is usually pure white or off-white. In dark mode, it is a deep black or dark gray.
+- **BG Secondary**: The color used for elements placed _on top_ of the primary background, such as content cards, lists, or structural groupings. It provides a subtle contrast to separate sections.
+- **BG Tertiary**: The innermost layer, used for elements nested _inside_ secondary components. Examples include input fields, small buttons, or search bars inside a card. \[[1](https://developer.apple.com/design/human-interface-guidelines/color), [2](https://supercharge.design/articles/what-is-the-3-color-rule-in-ui-design)]
+
+### 💻 Meaning in Coding Frameworks (e.g., Bootstrap)
+
+If you are working with CSS frameworks, these utility classes apply distinct, pre-defined theme colors to an HTML element's background: \[[1](https://www.w3schools.com/bootstrap4/bootstrap%5Fcolors.asp), [2](https://www.youtube.com/watch?v=436bBRrpc10\&t=12)]
+
+- **`bg-primary`**: Applies the brand's main standout color. By default in Bootstrap, this is a vibrant **blue**. It is used for high-emphasis areas like hero sections or primary action headers.
+- **`bg-secondary`**: Applies the secondary brand color, typically a neutral **mid-gray**. It is meant for low-emphasis areas or fallback elements.
+- **`bg-body-secondary` / `bg-body-tertiary`**: These specific Bootstrap 5 classes represent light-gray or dark-gray shades depending on whether light or dark mode is active. They are explicitly used for background shading rather than brand accents. \[[1](https://fastbootstrap.com/docs/background-color/), [2](https://www.readyartwork.com/how-to-choose-primary-and-secondary-colors-in-web-design/), [3](https://www.youtube.com/watch?v=436bBRrpc10\&t=12), [4](https://edtechbooks.org/elearning%5Fhacker/bootstrap), [5](https://www.brand.pitt.edu/color-palette-hierarchy)]
+
+### 🎨 Meaning in Traditional Color Theory
+
+If your search relates to art or color palettes rather than web development, the terms dictate how colors are mixed on a color wheel: \[[1](https://www.adobe.com/creativecloud/design/discover/secondary-colors.html), [2](https://www.adobe.com/in/creativecloud/roc/blog/design/guide-to-primary-secondary-tertiary-colours.html), [3](https://www.readyartwork.com/how-to-choose-primary-and-secondary-colors-in-web-design/)]
+
+- **Primary**: Base colors that cannot be made by mixing others (Red, Yellow, Blue).
+- **Secondary**: Colors made by mixing two primaries (Orange, Green, Purple).
+- **Tertiary**: Intermediate colors made by mixing a primary with a secondary (e.g., Blue-Green, Red-Orange). \[[1](https://www.adobe.com/creativecloud/design/discover/secondary-colors.html), [2](https://www.adobe.com/in/creativecloud/roc/blog/design/guide-to-primary-secondary-tertiary-colours.html), [3](https://www.youtube.com/watch?v=80pf7qL9lao\&t=3), [4](https://www.adobe.com/gr%5Fen/creativecloud/design/discover/secondary-colors.html)]
+
+Are you currently setting up a **CSS framework** like Bootstrap or Tailwind, or are you designing a **mockup layout** in Figma?
+
+- [link](https://fastbootstrap.com/docs/background-color/)\
+  Bootstrap Background Color CSS - FastBootstrap\
+  Apr 6, 2024 — Quick reference. Similar to the contextual text color classes, set the background of an element to any contextual class. Backgroun...\
+  FastBootstrap
+- [link](https://developer.apple.com/design/human-interface-guidelines/color)\
+  Color | Apple Developer Documentation\
+  With both sets of background colors, you generally use the variants to indicate hierarchy in the following ways: \* Primary for the...\
+  Apple Developer
+- [link](https://css-tricks.com/thinking-deeply-about-theming-and-color-naming/)\
+  Thinking Deeply About Theming and Color Naming - CSS-Tricks\
+  Aug 4, 2025 — A color-specific order (so primary means red , secondary means blue , and so on) A use-case specific order (so a heavy button migh...\
+  CSS-Tricks
+
+Show all
+
+# 

@@ -202,50 +202,26 @@ ref:
 
 sys:
   radius:
-    button: "{ref.radius.md}"
-    menu: "{ref.radius.md}"
-    popover: "{ref.radius.xl}"
-    dialog: "{ref.radius.xl}"
-    check: "{ref.radius.sm}"
-    alert: "{ref.radius.xxl}"
+    sm: "{ref.radius.sm}"
+    md: "{ref.radius.md}"
+    lg: "{ref.radius.lg}"
+    xl: "{ref.radius.xl}"
 
   color:
-    # background
     bg:
-      window:
+      primary:
         value: "{ref.palette.light.2}"
-        dark: "{ref.palette.gray.11}"
-      view:
-        value: "{ref.palette.light.1}"
         dark: "{ref.palette.gray.11}"
       secondary:
         value: "{ref.palette.light.3}"
         dark: "{ref.palette.gray.10}"
-      headerbar:
-        value: "{ref.palette.light.1}"
-        dark: "{ref.palette.gray.10}"
-      sidebar:
-        value: "{ref.palette.light.3}"
-        dark: "{ref.palette.gray.10}"
-      secondary-sidebar:
-        value: "{ref.palette.light.3}"
-        dark: "{ref.palette.gray.10}"
-      card:
+      tertiary:
         value: "{ref.palette.light.1}"
         dark: "rgb(255 255 255 / 8%)"
-      overview:
-        value: "{ref.palette.light.3}"
-        dark: "{ref.palette.gray.10}"
-      thumbnail:
-        value: "{ref.palette.light.1}"
-        dark: "{ref.palette.gray.9}"
-      active-toggle:
-        value: "{ref.palette.light.1}"
-        dark: "rgb(255 255 255 / 20%)"
-      dialog:
+      elevated:
         value: "{ref.palette.light.2}"
         dark: "{ref.palette.gray.9}"
-      popover:
+      overlay:
         value: "{ref.palette.light.1}"
         dark: "{ref.palette.gray.9}"
       accent:
@@ -264,119 +240,22 @@ sys:
       success: "{ref.palette.success}"
       warning: "{ref.palette.warning}"
       error: "{ref.palette.error}"
-      button:
-        value: "#f6f5f4"
-        dark: "{ref.palette.gray.8}"
-      button-hover:
-        value: "#f9f9f8"
-        dark: "{ref.palette.gray.7}"
-      button-pressed:
-        value: "#e8e7e6"
-        dark: "{ref.palette.gray.9}"
-      button-border:
-        value: "#cdc7c2"
-        dark: "{ref.palette.gray.11}"
 
-    # foreground
     fg:
-      window:
+      primary:
         value: "rgb(0 0 6 / 80%)"
         dark: "{ref.palette.light.1}"
-      view:
-        value: "rgb(0 0 6 / 80%)"
-        dark: "{ref.palette.light.1}"
-      headerbar:
-        value: "rgb(0 0 6 / 80%)"
-        dark: "{ref.palette.light.1}"
-      sidebar:
-        value: "rgb(0 0 6 / 80%)"
-        dark: "{ref.palette.light.1}"
-      secondary-sidebar:
-        value: "rgb(0 0 6 / 80%)"
-        dark: "{ref.palette.light.1}"
-      card:
-        value: "rgb(0 0 6 / 80%)"
-        dark: "{ref.palette.light.1}"
-      overview:
-        value: "rgb(0 0 6 / 80%)"
-        dark: "{ref.palette.light.1}"
-      thumbnail:
-        value: "rgb(0 0 6 / 80%)"
-        dark: "{ref.palette.light.1}"
-      active-toggle:
-        value: "rgb(0 0 6 / 80%)"
-        dark: "{ref.palette.light.1}"
-      dialog:
-        value: "rgb(0 0 6 / 80%)"
-        dark: "{ref.palette.light.1}"
-      popover:
-        value: "rgb(0 0 6 / 80%)"
-        dark: "{ref.palette.light.1}"
-      accent:
-        value: "{ref.palette.light.1}"
       secondary:
         value: "#686868"
         dark: "{ref.palette.gray.3}"
-      dimmed:
+      tertiary:
         value: "rgba(0 0 0 / 55%)"
         dark: "rgb(255 255 255 / 55%)"
-      destructive:
-        value: "{ref.palette.light.1}"
-        dark: "{ref.palette.light.1}"
-      success: "{ref.palette.light.1}"
-      warning: "{ref.palette.light.1}"
-      error: "{ref.palette.light.1}"
 
     border:
-      headerbar:
-        value: "rgb(0 0 6 / 80%)"
-        dark: "{ref.palette.light.1}"
-      sidebar:
+      subtle:
         value: "rgb(0 0 6 / 7%)"
-        dark: "rgb(0 0 6 / 36%)"
-      secondary-sidebar:
-        value: "rgb(0 0 6 / 7%)"
-        dark: "rgb(0 0 6 / 36%)"
+        dark: "rgb(0 0 6 / 25%)"
       default:
         value: "color-mix(in srgb, currentColor {ref.opacity.border}, transparent)"
         dark: "color-mix(in srgb, currentColor 50%, transparent)"
-
-    # shades
-    shade:
-      headerbar:
-        value: "rgb(0 0 6 / 12%)"
-        dark: "rgb(0 0 6 / 36%)"
-      headerbar-darker:
-        value: "rgb(0 0 6 / 12%)"
-        dark: "rgb(0 0 6 / 90%)"
-      sidebar:
-        value: "rgb(0 0 6 / 7%)"
-        dark: "rgb(0 0 6 / 25%)"
-      secondary-sidebar:
-        value: "rgb(0 0 6 / 7%)"
-        dark: "rgb(0 0 6 / 25%)"
-      card:
-        value: "rgb(0 0 6 / 7%)"
-        dark: "rgb(0 0 6 / 36%)"
-      popover:
-        value: "rgb(0 0 6 / 7%)"
-        dark: "rgb(0 0 6 / 25%)"
-      default:
-        value: "rgb(0 0 6 / 7%)"
-        dark: "rgb(0 0 6 / 25%)"
-
-    # backdrop colors
-    backdrop:
-      headerbar:
-        value: "{ref.palette.light.2}"
-        dark: "{ref.palette.gray.11}"
-      sidebar:
-        value: "#f2f2f4"
-        dark: "{ref.palette.gray.10}"
-      secondary-sidebar:
-        value: "#f6f6fa"
-        dark: "{ref.palette.gray.10}"
-
-    scrollbar-outline:
-      value: "{ref.palette.light.1}"
-      dark: "rgb(0 0 6 / 50%)"

@@ -1,9 +1,9 @@
 .Button {
   appearance: none;
-  background: var(--sys-color-bg-button);
-  border: 1px solid var(--sys-color-bg-button-border);
-  border-radius: var(--sys-radius-button);
-  color: var(--sys-color-fg-view);
+  background: var(--sys-color-bg-elevated);
+  border: 1px solid var(--sys-color-border-subtle);
+  border-radius: var(--ref-radius-md);
+  color: var(--sys-color-fg-primary);
   cursor: pointer;
   font-size: var(--ref-font-size-sm);
   font-weight: 500;
@@ -12,11 +12,11 @@
 }
 
 .Button:hover {
-  background: var(--sys-color-bg-button-hover);
+  background: var(--ref-palette-light-1);
 }
 
 .Button:active {
-  background: var(--sys-color-bg-button-pressed);
+  background: var(--ref-palette-light-3);
 }
 
 .Button:focus-visible {

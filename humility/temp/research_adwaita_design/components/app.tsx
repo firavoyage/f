@@ -1,3 +1,4 @@
+import "../adwaita.css";
 import "./app.css";
 
 import { Button } from "./Button";
@@ -70,6 +71,20 @@ const components: Component[] = [
     name: "ScrollArea",
     demo: () => (
       <ScrollArea>
+        <p>
+          Vernacular architecture is building done outside any academic tradition,
+          and without professional guidance. It is not a particular architectural
+          movement or style, but rather a broad category, encompassing a wide range
+          and variety of building types, with differing methods of construction, from
+          around the world, both historical and extant and classical and modern.
+        </p>
+        <p>
+          Vernacular architecture is building done outside any academic tradition,
+          and without professional guidance. It is not a particular architectural
+          movement or style, but rather a broad category, encompassing a wide range
+          and variety of building types, with differing methods of construction, from
+          around the world, both historical and extant and classical and modern.
+        </p>
         <p>
           Vernacular architecture is building done outside any academic tradition,
           and without professional guidance. It is not a particular architectural

@@ -47,6 +47,7 @@ fira:
 - project euler <!-- "brain gym" -->
 - the unsolved in possible new personal softwares
 - not backed by yc movement
+- version control legacy folder
 
 life:
 
@@ -163,6 +164,7 @@ archi:
 - naming vscode seti theme material icons theme filenames folder names
 - naming broader or more specific first
 - naming plural singular
+- version control legacy folder <!-- pm? life. -->
 
 frontend: <!-- web -->
 
@@ -362,6 +364,7 @@ linguistics: <!-- grammar, etymology -->
 - languages make humans dominant
 - name fira etymology
 - rem acu tetigisti roman history latin greek
+- infer or imply asymmetric
 
 literature:
 

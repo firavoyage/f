@@ -10,6 +10,7 @@
     "@base-ui/react": "^1.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "the-new-css-reset": "^1.11.3",
     "yaml": "^2.9.0"
   },
   "devDependencies": {
