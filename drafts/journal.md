@@ -28397,6 +28397,10 @@ seems uee paper is leaked during the exam, by photo taking. <!-- which is common
 
 18 00 revise contributing: start, work.
 
+20 40 separate repo save and repo sync. <!-- from a unified push -->
+
+more resilient and flexible
+
 
 
 <!-- timebox, plan. -->
