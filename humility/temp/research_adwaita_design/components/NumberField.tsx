@@ -7,10 +7,10 @@ export function NumberField(props: BaseNumberField.Root.Props) {
   return (
     <BaseNumberField.Root id={id} className="NumberField" {...props}>
       <BaseNumberField.Group className="NumberField_group">
+        <BaseNumberField.Input className="NumberField_input" />
         <BaseNumberField.Decrement className="NumberField_button">
           −
         </BaseNumberField.Decrement>
-        <BaseNumberField.Input className="NumberField_input" />
         <BaseNumberField.Increment className="NumberField_button">
           +
         </BaseNumberField.Increment>
