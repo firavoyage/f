@@ -347,3 +347,18 @@ template {
 [hidden] {
   display: none;
 }
+
+/* Custom override to flatten Normalize's native button look */
+button,
+html [type="button"],
+[type="reset"],
+[type="submit"] {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  appearance: none; /* Strips mobile OS native styling */
+}

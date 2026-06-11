@@ -7,14 +7,14 @@
 }
 
 .Tooltip_popup {
-  background: var(--sys-color-bg-headerbar);
+  background: var(--sys-color-bg-popover);
   border-radius: var(--ref-radius-md);
-  color: var(--sys-color-fg-headerbar);
+  color: var(--sys-color-fg-default);
   font-size: var(--ref-font-size-xs);
   padding: var(--ref-spacing-2) var(--ref-spacing-3);
   box-shadow: var(--ref-shadow-md);
 }
 
 .Tooltip_arrow {
-  fill: var(--sys-color-bg-headerbar);
+  fill: var(--sys-color-bg-popover);
 }
