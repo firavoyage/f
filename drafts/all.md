@@ -648,6 +648,7 @@ humility:
 - research google ai mode
 - research zed highly requested features
 - research opencode undo feature critical accidental code removal issue
+- research opencode
 
 legacy:
 
