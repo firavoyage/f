@@ -1925,3 +1925,11 @@ If you want to use this for a game, tell me:
 
 I can help you build mechanical abilities or card text tailored to this system.
 
+
+#
+
+<!-- 2026.06.12 03 20 -->
+
+<!-- obviously you can not edit msgs or branch or resume (refresh or leave halfway, it finishes on the cloud and caches and prepares and waits for your return). -->
+
+# 
