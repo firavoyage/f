@@ -3,15 +3,15 @@
   align-items: center;
   gap: var(--ref-spacing-2);
   cursor: pointer;
-  color: var(--sys-color-fg-view);
+  color: var(--sys-color-fg-primary);
   font-size: var(--ref-font-size-sm);
 }
 
 .Checkbox_root {
   appearance: none;
-  background: var(--sys-color-bg-view);
-  border: 1px solid var(--sys-color-bg-button-border);
-  border-radius: var(--sys-radius-check);
+  background: var(--sys-color-bg-primary);
+  border: 1px solid var(--sys-color-border-subtle);
+  border-radius: var(--ref-radius-sm);
   width: 18px;
   height: 18px;
   display: flex;

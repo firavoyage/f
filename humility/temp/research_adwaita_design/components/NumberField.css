@@ -4,16 +4,16 @@
 
 .NumberField_group {
   display: inline-flex;
-  border: 1px solid var(--sys-color-bg-button-border);
+  border: 1px solid var(--sys-color-border-subtle);
   border-radius: var(--ref-radius-md);
   overflow: hidden;
 }
 
 .NumberField_input {
   appearance: none;
-  background: var(--sys-color-bg-view);
+  background: var(--sys-color-bg-primary);
   border: none;
-  color: var(--sys-color-fg-view);
+  color: var(--sys-color-fg-primary);
   font-size: var(--ref-font-size-sm);
   padding: var(--ref-spacing-2) var(--ref-spacing-3);
   outline: none;
@@ -32,9 +32,9 @@
 
 .NumberField_button {
   appearance: none;
-  background: var(--sys-color-bg-button);
+  background: var(--sys-color-bg-elevated);
   border: none;
-  color: var(--sys-color-fg-view);
+  color: var(--sys-color-fg-primary);
   cursor: pointer;
   font-size: var(--ref-font-size-sm);
   padding: var(--ref-spacing-2) var(--ref-spacing-3);
@@ -42,11 +42,11 @@
 }
 
 .NumberField_button:hover {
-  background: var(--sys-color-bg-button-hover);
+  background: var(--ref-palette-light-1);
 }
 
 .NumberField_button:active {
-  background: var(--sys-color-bg-button-pressed);
+  background: var(--ref-palette-light-3);
 }
 
 .NumberField_button:focus-visible {

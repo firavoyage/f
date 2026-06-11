@@ -14,3 +14,10 @@ not needed
 
 move beyond libadwaita.
 
+11
+
+16 40 change normalize css to reset css.
+
+explicit over implicit
+
+
