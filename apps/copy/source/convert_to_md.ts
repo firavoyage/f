@@ -27,6 +27,7 @@ type convert_options = {
   keep_images: boolean;
   normalize_empty_links: boolean;
   prettier: boolean;
+  remove_heading: boolean;
 };
 
 type span_style_traits = {
@@ -49,6 +50,7 @@ export async function convert_html_to_md({
   keep_images,
   normalize_empty_links,
   prettier: prettier_enabled,
+  remove_heading,
 }: convert_options): Promise<string> {
   console.log({
     action: 'convert_html_to_md_start',
@@ -119,6 +121,14 @@ export async function convert_html_to_md({
 
   const normalized = normalize_markdown({ markdown });
 
+  if (remove_heading) {
+    const lines = normalized.split('\n');
+    if (lines.length > 0) {
+      lines[0] = lines[0].replace(/^#{1,6}\s*/, '');
+    }
+    return lines.join('\n');
+  }
+
   console.log({
     action: 'convert_html_to_md_done',
     prepared_length: prepared.html.length,
@@ -160,6 +170,11 @@ function prepare_html({
   });
 
   normalize_style_spans({
+    root: body_node,
+    document_node,
+  });
+
+  normalize_heading_elements({
     root: body_node,
     document_node,
   });
@@ -268,6 +283,44 @@ function normalize_style_spans({
     action: 'normalize_style_spans_done',
     transformed_span_count,
   });
+}
+
+function normalize_heading_elements({
+  root,
+  document_node,
+}: {
+  root: HTMLElement;
+  document_node: Document;
+}): void {
+  const elements = Array.from(
+    root.querySelectorAll('[role="heading"]'),
+  );
+
+  for (const element of elements) {
+    if (!element.isConnected) continue;
+
+    const levelAttr = element.getAttribute('aria-level');
+    let levelNum = 3;
+
+    if (levelAttr) {
+      const parsed = parseInt(levelAttr, 10);
+      if (!isNaN(parsed) && parsed >= 1 && parsed <= 6) {
+        levelNum = parsed;
+      }
+    }
+
+    console.log({
+      action: 'normalize_heading_element',
+      level: levelNum,
+    });
+
+    const heading = document_node.createElement(`h${levelNum}`);
+    while (element.firstChild) {
+      heading.appendChild(element.firstChild);
+    }
+
+    element.replaceWith(heading);
+  }
 }
 
 /**
