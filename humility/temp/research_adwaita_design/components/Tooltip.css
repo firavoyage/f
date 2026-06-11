@@ -7,7 +7,7 @@
 }
 
 .Tooltip_popup {
-  background: var(--sys-color-bg-overlay);
+  background: var(--sys-color-bg-primary);
   border-radius: var(--ref-radius-md);
   color: var(--sys-color-fg-primary);
   font-size: var(--ref-font-size-xs);
@@ -16,5 +16,5 @@
 }
 
 .Tooltip_arrow {
-  fill: var(--sys-color-bg-overlay);
+  fill: var(--sys-color-bg-primary);
 }

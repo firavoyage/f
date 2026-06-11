@@ -1,6 +1,6 @@
 .Button {
   appearance: none;
-  background: var(--sys-color-bg-elevated);
+  background: var(--sys-color-bg-secondary);
   border: 1px solid var(--sys-color-border-subtle);
   border-radius: var(--ref-radius-md);
   color: var(--sys-color-fg-primary);
