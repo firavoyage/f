@@ -372,11 +372,12 @@ any app on any design system.
 
 ---
 
-separate save and sync
+find out why ram
 
-save every 20 min. <!-- dont worry. if unchanged, nothing will happen -->
+chromium
 
-sync, like everyday, or like when im working and connected. <!-- push -->
+opencode
 
----
+node
+
 
