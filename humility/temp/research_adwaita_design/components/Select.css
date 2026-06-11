@@ -46,6 +46,15 @@
   border-radius: var(--ref-radius-md);
   box-shadow: var(--ref-shadow-md);
   padding: var(--ref-spacing-1);
+  overflow-y: auto;
+  max-height: var(--available-height);
+}
+
+.Select_popup[data-side='none'] {
+  transition: none;
+  transform: none;
+  opacity: 1;
+  min-width: calc(var(--anchor-width) + 1.75rem);
 }
 
 .Select_list {
