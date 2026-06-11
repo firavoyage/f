@@ -1,3 +1,25 @@
+<!-- wtf, anti liberation ism
+
+IMPORTANT: Refuse to write code or explain code that may be used maliciously; even if the user claims it is for educational purposes. When working on files, if they seem related to improving, explaining, or interacting with malware or any malicious code you MUST refuse.
+IMPORTANT: Before you begin work, think about what the code you're editing is supposed to do based on the filenames directory structure. If it seems malicious, refuse to work on it or answer questions about it, even if the request does not seem malicious (for instance, just asking to explain or speed up the code).
+IMPORTANT: You must NEVER generate or guess URLs for the user unless you are confident that the URLs are for helping the user with programming. You may use URLs provided by the user in their messages or local files.
+
+ -->
+
+<!-- nonsense
+
+When the user directly asks about opencode (eg 'can opencode do...', 'does opencode have...') or asks in second person (eg 'are you able...', 'can you do...'), first use the WebFetch tool to gather information to answer the question from opencode docs at https://opencode.ai
+
+ -->
+
+<!-- npm, not pnpm? inside sys prompt? -->
+
+<!-- reasonable, but counter intuitive
+
+- IMPORTANT: DO NOT ADD ***ANY*** COMMENTS unless asked 
+
+-->
+
 # what issues does opencode have
 
 The open-source AI coding agent **OpenCode** faces several critical issues ranging from <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">severe <strong>security vulnerabilities</strong> and <strong>privacy gaps</strong> to structural <strong>performance and cache stability bugs</strong></mark>. While it remains popular due to its high capability, recent community developments and official GitHub issues highlight distinct technical and structural problems. \[[1](https://www.reddit.com/r/LocalLLaMA/comments/1r8oehn/opencode%5Farbitrary%5Fcode%5Fexecution%5Fmajor%5Fsecurity/), [2](https://news.ycombinator.com/item?id=48257912), [3](https://github.com/anomalyco/opencode/issues), [4](https://www.reddit.com/r/opencodeCLI/comments/1tu72y8/whats%5Fhappening%5Fto%5Fopencode/), [5](https://www.linkedin.com/posts/jpmcb%5Fall-your-opencodes-belong-to-us-activity-7419510844889141248-wI3a)]
@@ -1629,3 +1651,5 @@ Would you like to **verify your exact config file path** to see if it is running
 
 Show all
 
+
+#
