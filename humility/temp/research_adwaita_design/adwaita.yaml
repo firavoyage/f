@@ -118,6 +118,10 @@ ref:
     warning: "#ffc252" # cd9309?
     error: "#ff938c" # destructive
 
+    slider:
+      track-bg: 
+        value: "..."
+      
   spacing:
     1: "0.1875rem"
     2: "0.25rem"
