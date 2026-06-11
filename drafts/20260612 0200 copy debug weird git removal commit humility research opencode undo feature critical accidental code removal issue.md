@@ -1,3 +1,5 @@
+<!-- somehow, it runs smoothly for days, due to parcel cache or something maybe, until it aw snap (oom) today. -->
+
 <!-- a coding agent? -->
 
 <!-- opencode undo feature maybe. i searched "20260605" and found something relevant. -->
