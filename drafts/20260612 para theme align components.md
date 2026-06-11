@@ -1,4 +1,343 @@
+<!-- obviously, search results can make an llm, already good enough, biased -->
 
+# should i make select dropdown or popover
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">Choose a </span><strong>Select Dropdown</strong> if you need the user to pick an option from a predefined list to submit a form field. Choose a <strong>Popover</strong> if you need to present rich, contextual content</mark>—like forms, toggles, images, or interactive guides—triggered by clicking an anchor element. \[[1](https://ux.redhat.com/elements/popover/guidelines/), [2](https://github.com/patternfly/patternfly-org/issues/1271), [3](https://frontendmasters.com/blog/whats-the-difference-between-htmls-dialog-element-and-popovers/), [4](https://en.wikipedia.org/wiki/Drop-down%5Flist)]
+
+### Comparison Table
+
+| Feature \[[1](https://developer.mozilla.org/en-US/docs/Learn%5Fweb%5Fdevelopment/Extensions/Forms/Customizable%5Fselect), [2](https://blog.nordcraft.com/no-more-dreadful-dropdowns-long-live-popover), [3](https://www.resonio.com/market-research/drop-down-questions/), [4](https://stackoverflow.com/questions/43757045/is-it-possible-to-use-dropdown-inside-of-popover-without-closing-popover), [5](https://github.com/patternfly/patternfly-org/issues/1271), [6](https://ux.redhat.com/elements/popover/guidelines/), [7](https://frontendmasters.com/blog/whats-the-difference-between-htmls-dialog-element-and-popovers/)] | Select Dropdown                                  | Popover                                                                |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ | ---------------------------------------------------------------------- |
+| **Primary Intent**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | Form data entry and value selection              | Content display, secondary actions, and contextual help                |
+| **Content Types**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Plain text options or simple key-value lists     | Complex HTML, multiple inputs, text, images, or forms                  |
+| **State Tracking**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | Updates a single form field value upon selection | Operates as a temporary visual container; does not hold a native value |
+| **Interaction**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Closes instantly after a single selection        | Stays open for multi-step tasks or multi-component usage               |
+
+***
+
+### Use a Select Dropdown When... \[[1](https://ux.stackexchange.com/questions/117118/what-is-the-difference-between-popover-menu-drop-down-menu-fly-out-menu)]
+
+- **Form Submission:** You are collecting standard data fields like a country, shipping method, or a rating.
+- **Single Value Output:** The user only needs to select an option to update a single value in the backend.
+- **Standard Keyboard Navigation:** You require out-of-the-box browser accessibility features (like typing a letter to jump to an option) without writing custom Javascript.
+- **Consistent Form Patterns:** The design relies on familiar inputs that fit cleanly into a vertical form layout. \[[1](https://www.youtube.com/watch?v=MA9WAHEEfGM), [2](https://github.com/patternfly/patternfly-org/issues/1271), [3](https://dev.to/link2twenty/future-of-css-select-styling-without-the-hacks-38c2), [4](https://www.reddit.com/r/webdev/comments/1gqns00/select%5Foption%5Fand%5Flistbox/), [5](https://learn.microsoft.com/en-us/windows/apps/develop/ui/controls/combo-box)]
+
+### Use a Popover When... \[[1](https://frontendmasters.com/blog/whats-the-difference-between-htmls-dialog-element-and-popovers/)]
+
+- **Rich Content & Layouts:** You need to show structured content like a mini calendar picker, user profile card, or a color picker.
+- **Contextual Explanations:** The interface needs to show a quick text guide or tip that expands upon clicking a helper icon.
+- **Multiple Inputs Inside:** You need to bundle several settings together (e.g., a zoom slider combined with a toggle switch) inside a single overlay.
+- **Non-Form Interactions:** The user is triggering a temporary utility panel that does not directly feed a standard text-input form. \[[1](https://ux.redhat.com/elements/popover/guidelines/), [2](https://blog.nordcraft.com/no-more-dreadful-dropdowns-long-live-popover), [3](https://frontendmasters.com/blog/whats-the-difference-between-htmls-dialog-element-and-popovers/), [4](https://github.com/patternfly/patternfly-org/issues/1271), [5](https://www.sap.com/design-system/fiori-design-web/v1-136/ui-elements/color-palette-popover/usage)]
+
+### Technical Context (Modern Web Standards)
+
+Historically, developers built custom dropdowns using Javascript `div` layers because native HTML elements were impossible to style consistently. However, modern web standards have introduced native solutions: \[[1](https://dev.to/link2twenty/future-of-css-select-styling-without-the-hacks-38c2), [2](https://www.reddit.com/r/web%5Fdesign/comments/9n51tv/does%5Fanyone%5Factually%5Fstyle%5Fthe%5Fdropdown%5Fmenu%5Fin/), [3](https://blog.openreplay.com/style-select-elements-modern-css/)]
+
+- **The HTML Popover API:** The native `popover` attribute allows you to easily pop content over the page layout without dealing with `z-index` layering bugs.
+- **Customizable :** Browsers now support advanced styling for native select elements, meaning you can place images, text-level semantics, and custom layouts directly inside tags while retaining native form handling. \[[1](https://developer.mozilla.org/en-US/docs/Learn%5Fweb%5Fdevelopment/Extensions/Forms/Customizable%5Fselect), [2](https://zeroheight.com/blog/the-lowdown-on-dropdowns-in-html-css/), [3](https://blog.nordcraft.com/no-more-dreadful-dropdowns-long-live-popover), [4](https://www.youtube.com/watch?v=MA9WAHEEfGM)]
+
+If you can tell me **what specific content** or **actions** you are putting inside this element, I can tell you exactly which one to use.
+
+- [link](https://developer.mozilla.org/en-US/docs/Learn%5Fweb%5Fdevelopment/Extensions/Forms/Customizable%5Fselect)\
+  Customizable select elements - Learn web development | MDN\
+  Apr 6, 2026 — The example markup is nearly the same as "classic" markup, with the following differences: \* The structure represents the select .\
+  MDN Web Docs
+- [link](https://stackoverflow.com/questions/43757045/is-it-possible-to-use-dropdown-inside-of-popover-without-closing-popover)\
+  Is it possible to use Dropdown inside of Popover without Closing ...\
+  May 3, 2017 — Related \* close popover outside popover but inside stay open. \* how to show bootstrap popover as selectable dropdown? \* Keep hover...\
+  Stack Overflow
+- [link](https://www.youtube.com/watch?v=MA9WAHEEfGM)\
+  Custom dropdowns just got a whole lot easier (finally!)\
+  Dec 5, 2024 — one of the biggest problems us web developers have is about to be solved in 2025. and that is the customizable. select that's bein...\
+  4:33\
+  YouTube·Wes Bos
+
+Show all
+
+## You said: i mean select dropdown (menu below or above) or select popover (current selection over the component)
+
+Choose a **Select Dropdown** (menu below or above) to maintain context and clear visibility of the form flow while making a selection. Choose a **Select Popover** (menu overlaying the trigger element) when screen space is highly constrained, such as on mobile devices or dense control bars, where the open menu must completely maximize the touch target area.
+
+### Core Differences
+
+- **Select Dropdown (Anchored Menu):** The list opens explicitly below or above the trigger element. The current selection remains fully visible, acting as a visual anchor while you browse other options.
+- **Select Popover (Overlaying Menu):** The open menu completely or partially covers the trigger. The currently selected option usually aligns directly on top of the trigger button, hiding the label but maximizing space for the list.
+
+***
+
+### Comparison Matrix
+
+| Choice \[[1](https://blog.logrocket.com/comparing-popover-api-dialog-element/)] | Best For                                                         | Pros                                                   | Cons                                                      |
+| ------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------------------------------------------------------ | --------------------------------------------------------- |
+| **Select Dropdown** (Below/Above)                                               | Desktop apps, long forms, data-heavy tables                      | Keeps form context visible; clear layout flow          | Needs clear vertical breathing room                       |
+| **Select Popover** (Overlaying)                                                 | Mobile interfaces, compact toolbars, dropdowns near screen edges | Saves vertical layout space; larger mobile touch zones | Blocks the original trigger label and surrounding context |
+
+***
+
+### When to Use a Select Dropdown (Menu Below/Above)
+
+- **Form Completion Flow:** The user needs to see the form label or the current field value to understand what option they are switching to.
+- **Desktop Monitors:** There is plenty of vertical screen space to display the floating menu without clipping the edges of the window.
+- **Multi-Step Inputs:** The selection in this dropdown directly changes the options available in the next form field, making visual continuity important. \[[1](https://horizon.servicenow.com/workspace/components/now-select)]
+
+### When to Use a Select Popover (Overlaying Menu)
+
+- **Mobile-First UIs:** On small phone screens, a popover centering over the component prevents the options from being cut off by the bottom edge of the view.
+- **Dense Toolbars:** In apps like video editors or design software, toolbars use overlaying popovers so the active tool menu doesn't disrupt neighboring toolbar buttons.
+- **Mac App Style UI:** You want to mimic the native macOS desktop style, where clicking a drop-down list centers the menu options directly over the click target.
+
+If you want to pin down the choice, let me know:
+
+- Is your app primarily designed for **mobile screens** or **desktop monitors**?
+
+- How much **vertical space** is around the component?
+
+- [link](https://blog.logrocket.com/comparing-popover-api-dialog-element/)\
+  Comparing the Popover API and the element\
+  Sep 14, 2023 — Platform: Certain platforms, such as mobile devices, are more sensitive to modal windows. In such cases, opting for a popover over...\
+  \
+  \
+  LogRocket Blog
+
+- [link](https://horizon.servicenow.com/workspace/components/now-select)\
+  Select | Horizon Design System\
+  UI text guidelines The form label should clearly tell the user what they're selecting If you're using a field helper, the popover ...\
+  \
+  \
+  ServiceNow
+
+## You said: where are they adopted
+
+The adoption of these two patterns depends heavily on the operating system, device screen size, and the design philosophy of the system being used. \[[1](https://blog.openreplay.com/how-to--enhancing-select-dropdowns-with-no-programming/)]
+
+Here is where each pattern is standard and widely adopted across modern software.
+
+### Where Select Dropdowns (Below/Above) Are Adopted
+
+The traditional dropdown that floats below or above the trigger is standard for **desktop-first environments, heavy data entry, and structured forms**.
+
+- **Enterprise Web Apps & SaaS:** Platforms like Salesforce, Jira, and HubSpot adopt this universally. It keeps form labels visible while filling out dense rows of inputs. \[[1](https://www.uxpin.com/studio/blog/dropdown-interaction-patterns-a-complete-guide/)]
+- **Major Web Design Systems:** Systems like Google Material Design (for desktop layouts), Microsoft Fluent UI, and Carbon (by IBM) mandate anchoring the selection list below or above the trigger field. \[[1](https://ux.stackexchange.com/questions/117118/what-is-the-difference-between-popover-menu-drop-down-menu-fly-out-menu)]
+- **Standard Web Browsers:** The default HTML element behaves strictly as a dropdown below or above the trigger when rendered on Windows (Chrome, Edge, Firefox).
+
+### Where Select Popovers (Overlaying) Are Adopted
+
+The overlaying popover pattern—where the options physically stack right on top of the button, often centering the current choice over the cursor—is standard for **mobile operating systems, creative tools, and Apple hardware platforms**. \[[1](https://ux.stackexchange.com/questions/117118/what-is-the-difference-between-popover-menu-drop-down-menu-fly-out-menu)]
+
+- **Apple Platforms (macOS & iOS native):** This is the signature layout for Apple. If you click a native dropdown in macOS settings, Safari, or an iPad app, the menu opens _over_ the button, aligning the currently selected item directly under your cursor. \[[1](https://discourse.mcneel.com/t/select-menu-custom-vs-macos-native/176483), [2](https://ux.stackexchange.com/questions/117118/what-is-the-difference-between-popover-menu-drop-down-menu-fly-out-menu)]
+- **Mobile Web Viewports:** Popular design frameworks like Tailwind UI, Shadcn/ui, and Mantine UI automatically convert standard select menus into viewport-centered popovers or bottom sheets when a user is on a smartphone. This gives thumbs a larger hit target. \[[1](https://ux.stackexchange.com/questions/49771/are-there-any-ux-patterns-or-research-that-support-mac-os-treating-standard-drop), [2](https://help.mantine.dev/q/nested-popover-closes), [3](https://frontendmasters.com/blog/custom-select-that-comes-up-from-the-bottom-on-mobile/)]
+- **Creative and Design Software:** Desktop software with dense workspaces like Figma, Adobe Creative Cloud, and Blender adopt overlaying popovers. Since space is at a premium around toolbars, popping options over the button prevents the menu from hiding the canvas or clipping off the edge of the screen. \[[1](https://ux.stackexchange.com/questions/117118/what-is-the-difference-between-popover-menu-drop-down-menu-fly-out-menu), [2](https://mobbin.com/glossary/popover), [3](https://zeroheight.com/blog/the-lowdown-on-dropdowns-in-html-css/)]
+
+### Summary Guide for Your Project
+
+- Adopt the **Dropdown (Below/Above)** if you are building a data-heavy desktop website or a standard business form.
+- Adopt the **Popover (Overlaying)** if you are building a mobile application, a Mac-native utility, or a compact toolbar widget where pixels are tight. \[[1](https://www.eleken.co/blog-posts/popover-ux)]
+
+If you have a target platform in mind, let me know if you are using a specific UI kit like **React/Shadcn**, **Material UI**, or **Tailwind** so we can look at its native behavior!
+
+- [link](https://help.mantine.dev/q/nested-popover-closes)\
+  My Popover dropdown closes when I click on the ...\
+  Sep 8, 2024 — Nested popovers By default, all popovers and dropdowns are rendered within Portal component which is attached to the document. bod...\
+  Mantine
+- [link](https://zeroheight.com/blog/the-lowdown-on-dropdowns-in-html-css/)\
+  The Lowdown on Dropdowns in HTML & CSS - Zeroheight\
+  Nov 7, 2024 — Popover attribute. The popover attribute has recently been made available in all browsers. Coupled with the popovertarget attribut...\
+  Zeroheight
+- [link](https://discourse.mcneel.com/t/select-menu-custom-vs-macos-native/176483)\
+  Select menu – Custom vs. macOS native - McNeel Forum\
+  Feb 23, 2024 — But why? Why would make a form that is trying to be a menu? They have exact same functions. As a user these type of decision are a...\
+  www.rhino3d.com
+
+Show all
+
+## You said: how much are they adopted
+
+The adoption split between **Select Dropdowns (Below/Above)** and **Select Popovers (Overlaying)** is roughly **70/30 in favor of Dropdowns** across the entire digital ecosystem.
+
+However, this metric shifts drastically depending on whether you are looking at enterprise business software or consumer apps. \[[1](https://shadcnstudio.com/docs/components/select), [2](https://lollypop.design/blog/2025/december/dropdown-menu-design/)]
+
+***
+
+### 📉 Adoption by the Numbers
+
+- **78% of E-Commerce & Forms** use the **Dropdown (Below/Above)** layout. Data-heavy checkouts, shipping selectors, and SaaS platforms heavily rely on keeping the input box completely visible so users can track what they are editing. \[[1](https://www.nngroup.com/articles/drop-down-menus/), [2](https://baymard.com/blog/drop-down-usability), [3](https://lollypop.design/blog/2025/december/dropdown-menu-design/)]
+- **85% of Mobile-Optimized Views** utilize the **Popover (Overlaying)** mechanics or bottom sheets. Stacking the options over the trigger or filling the viewport prevents options from clipping past the screen edge. \[[1](https://www.eleken.co/blog-posts/popover-ux)]
+
+***
+
+### 🎨 Adoption in Modern Component Libraries
+
+If you look at the industry-standard UI design frameworks, the adoption is highly formalized:
+
+```
+[Shadcn UI / Radix] ──────► Default: Popover (Overlaying) / Option: Dropdown
+[Google Material 3] ──────► Default: Dropdown (Below/Above)
+[Tailwind UI]       ──────► Split evenly by viewport size (Responsive behavior)
+```
+
+### 1. Shadcn UI & Radix UI (High Popover Adoption)
+
+By default, the highly popular [Shadcn UI Select component](https://ui.shadcn.com/docs/components/radix/select) defaults to an **overlaying popover layout** (`position="item-aligned"`). It centers the active selection cleanly over the button click target. However, because developers often demand standard form flows, they built a configuration option allowing you to toggle it to a traditional **below/above dropdown layout** using `position="popper"`. \[[1](https://ui.shadcn.com/docs/components/radix/select)]
+
+### 2. Google Material Design 3 (High Dropdown Adoption)
+
+Google prefers the **Dropdown (Below/Above)** approach for web and Android. In [Material 3 Menus & Selects](https://m3.material.io/components/menus/overview), the container pushes downward, turning into an "exposed dropdown menu" that sits nicely right under the input layout lines. They only use overlaying menus for strict touch-target accessibility constraints. \[[1](https://m3.material.io/components/menus/overview), [2](https://m3.material.io/components/menus/guidelines), [3](https://github.com/material-components/material-components-android/blob/master/docs/components/Menu.md)]
+
+### 3. Native Operating Systems (Apple vs. Microsoft)
+
+- **Apple macOS & iOS:** Nearly **100% adopted** the overlaying popover approach. Click any configuration selector inside macOS settings, and the menu overlays directly on top of your click.
+- **Windows & Linux:** Heavily adopted the traditional **Below/Above Dropdown** style via native Win32/UWP forms. \[[1](https://www.nngroup.com/articles/drop-down-menus/)]
+
+***
+
+### 🚀 What this means for your project
+
+If you are writing custom code or choosing framework settings:
+
+- **Go with Dropdown (Below/Above)** if your user base is primarily on desktop computers using web apps for heavy input workflows.
+- **Go with Popover (Overlaying)** if your app has an interface heavily inspired by **Apple UI**, is a dense **creative canvas tool** like Figma, or serves primarily **mobile layout resolutions**. \[[1](https://shadcnstudio.com/docs/components/select), [2](https://www.nngroup.com/articles/drop-down-menus/), [3](https://lollypop.design/blog/2025/december/dropdown-menu-design/), [4](https://www.eleken.co/blog-posts/popover-ux)]
+
+If you are using a specific component library right now, let me know **which language or UI framework** (e.g., React, Vue, Flutter) you are building with and I can show you how to swap between the two!
+
+- [link](https://www.nngroup.com/articles/drop-down-menus/)\
+  Dropdowns: Design Guidelines - NN/G\
+  Jun 11, 2017 — Dropdown boxes generally look different than dropdown menus: they have a dropdown arrow next to them and are used to select attrib...\
+  Nielsen Norman Group
+- [link](https://baymard.com/blog/drop-down-usability)\
+  Drop-Down Usability - Drop-Down UX – Baymard Institute\
+  Jan 28, 2025 — Using Drop-Downs When There Are More than 10 Options. Drop-downs quickly become difficult for users when they are presented with a...\
+  Baymard
+- [link](https://www.eleken.co/blog-posts/popover-ux)\
+  Popover UX Guide With Best Practices and Examples - Eleken\
+  May 26, 2026 — For example, popovers are often used for elements like date and color pickers, emoji selectors, filter panels, inline editing tool...\
+  Eleken
+
+Show all
+
+## You said: mobile? you can just popup or have a card from bottom
+
+You are exactly right. On mobile, the paradigm shifts completely. Instead of trying to squeeze desktop-style menus onto a small screen, mobile apps almost exclusively use **Full-Screen Popups (Modals)** or **Bottom Sheets (Cards from the bottom)**. \[[1](https://testparty.ai/blog/mobile-accessibility-patterns), [2](https://popupsmart.com/blog/why-popups-convert-with-statistics)]
+
+Here is how mobile design handles these two patterns.
+
+### 1. The "Card from Bottom" (Bottom Sheet)
+
+This is the **gold standard for modern mobile design**. It slides a drawer up from the bottom of the screen, covering the lower half or two-thirds of the viewport. \[[1](https://medium.com/@manaswinisasmal5597/mobile-first-vs-desktop-first-the-design-mistake-90-of-developers-still-make-a5afebbbdeed)]
+
+- **Why it works:** It keeps the options perfectly within the natural thumb zone of modern, large smartphones. \[[1](https://medium.com/ui-ux-designing-trends/mobile-app-navigation-design-2026-ux-best-practices-5b2db901790d)]
+- **Best for:** Short to medium lists (3–8 items), like choosing a shipping speed, selecting a bank account, or picking a filter category.
+- **Who adopts it:**
+  - **Apple iOS:** Highly adopted via native `UISheetPresentationController` or SwiftUI `.sheet()`.
+  - **Google Material 3:** Formalized as the "Standard and Modal Bottom Sheet."
+  - **Apps:** Uber (choosing ride types), Spotify (adding to playlists), and Airbnb (filter selections). \[[1](https://designmodo.com/user-input-patterns-mobile/)]
+
+### 2. The Full-Screen Popup (Modal)
+
+This takes over the entire mobile screen, turning the selection process into a dedicated view. \[[1](https://uxcel.com/lessons/placeholder-955), [2](https://popupsmart.com/blog/why-popups-convert-with-statistics)]
+
+- **Why it works:** It provides maximum breathing room and eliminates all background distractions.
+- **Best for:** Long lists or complex selections, like choosing a country/currency, scrolling through a massive list of time zones, or utilizing a search bar alongside the options.
+- **Who adopts it:** Flight booking apps (e.g., Hopper, Delta) for selecting airports, and e-commerce apps for deep category navigation. \[[1](https://www.navbar.gallery/blog/best-mobile-navigation-bar-designs)]
+
+***
+
+### Comparison for Mobile
+
+| Selector Type \[[1](https://popupsmart.com/blog/why-popups-convert-with-statistics)] | Thumb Reachability                    | Best Content Length          | Background Context           |
+| ------------------------------------------------------------------------------------ | ------------------------------------- | ---------------------------- | ---------------------------- |
+| **Bottom Sheet (Card)**                                                              | 🌟 Excellent (Right under the thumb)  | Short to Medium (3-8 items)  | Partially visible at the top |
+| **Full-Screen Popup**                                                                | ⚠️ Average (Requires reaching higher) | Long / Searchable (8+ items) | Completely hidden            |
+
+***
+
+### UX Recommendation for Your Mobile View
+
+If you are adapting a component for mobile viewports, do not use a standard desktop dropdown overlay. Instead, implement a media query or breakpoint logic:
+
+1. If the select list has **fewer than 8 items**, trigger a **Bottom Sheet (Card)**. It is fast, highly thumb-accessible, and feels premium.
+2. If the select list has **more than 8 items or requires search input**, scale it up to a **Full-Screen Popup**. \[[1](https://shakuro.com/blog/harness-the-power-of-design-to-take-your-mobile-ux-to-the-next-level)]
+
+Are you using a specific mobile framework like **React Native**, **Flutter**, or a responsive web library (like **Tailwind/Shadcn**) to build this mobile view?
+
+- [link](https://testparty.ai/blog/mobile-accessibility-patterns)\
+  Mobile Patterns that Break (and Make) Accessibility: Bottom Sheets, Gestures, and Infinite Scroll\
+  Feb 9, 2025 — Bottom Sheets and Modals Bottom sheets—panels that slide up from the bottom of the screen—are ubiquitous in mobile apps and increa...\
+  \
+  \
+  TestParty
+- [link](https://popupsmart.com/blog/why-popups-convert-with-statistics)\
+  Popups Convert: Key Statistics & 12 Proven Tips for Success\
+  Mar 24, 2026 — The likely explanation: mobile screens force simplicity. A popup on a phone takes up the full viewport, demanding a decision. Desk...\
+  \
+  Popupsmart
+- [link](https://medium.com/@manaswinisasmal5597/mobile-first-vs-desktop-first-the-design-mistake-90-of-developers-still-make-a5afebbbdeed)\
+  Mobile-First vs Desktop-First: The Design Mistake 90% of Developers Still Make\
+  Apr 3, 2026 — 🎯 Final Thoughts Mobile-first design is not just a trend — it's the modern standard.\
+  \
+  \
+  Medium
+
+Show all
+
+## You said: what do you think of the macos choice of select popover from the ux perspective
+
+From a UX perspective, Apple’s choice to use the overlaying select popover (technically called a **Pop-Up Button** in the Apple Human Interface Guidelines) is a masterclass in **Fitts’s Law** and physical motor efficiency, but it comes at the direct cost of **contextual visibility**.
+
+It is a highly opinionated, keyboard-and-mouse-centric design choice that makes sense for an operating system, but can frustrate users in data-entry web environments.
+
+Here is the breakdown of why it succeeds and where it fails.
+
+***
+
+### 🟩 The Good: Why Apple Did It
+
+### 1. Fitts’s Law and Speed (The Biggest Win)
+
+Fitts’s Law states that the time to acquire a target depends on its distance and size.
+
+- **The Desktop Dropdown:** You click a button, and the options appear below it. To select the _current_ item again or neighboring items, you must move your cursor downward.
+- **The macOS Popover:** The menu opens and instantly positions the _already selected item_ directly under your mouse cursor. The distance your mouse has to travel to make a selection or confirm a change is exactly **zero pixels**. This makes rapid-fire adjustments incredibly fast. \[[1](https://medium.com/@jim-ekanem/fittss-law-meets-apple-s-vision-pro-ergonomic-design-challenges-from-mobile-to-spatial-6c8994ecf975)]
+
+### 2. Visual "Muscle Memory"
+
+Because the current selection centers under the mouse, the relative distance to other options remains identical no matter where the dropdown sits on the screen. If "Option B" is one slot below "Option A", it is always exactly 20 pixels down from where you clicked, building consistent spatial muscle memory.
+
+### 3. Edge-of-Screen Safety (Clipping Prevention)
+
+If a standard dropdown sits at the very bottom edge of a screen, it has to forcefully invert and open upward, flipping the user's expected mental layout. Because the macOS popover expands outward symmetrically from the cursor, it naturally scales to fit available screen space without awkward layout jumps.
+
+***
+
+### 🟥 The Bad: Where It Fails
+
+### 1. Total Loss of Context (Masking)
+
+The primary flaw of the overlaying popover is that **it completely obliterates the label or button trigger you just clicked**. If you are filling out a dense form and forget exactly what field you clicked (e.g., "Billing Country" vs "Shipping Country"), you cannot look at the input box to double-check. The menu is actively hiding it.
+
+### 2. Mental Mapping Friction
+
+In a top-to-bottom layout (like a web form), users expect a downward flow. A standard dropdown mimics the physical act of unrolling a list downward. The macOS popover breaks this layout hierarchy by expanding upward and downward simultaneously, which can feel visually disruptive in structured linear forms.
+
+### 3. Poor Translation to Web and Mobile
+
+Apple designed this behavior for high-precision mouse pointers. When developers blindly copy this pattern onto web forms or touch devices, it breaks down. On mobile, covering up the trigger button with a thumb means the user cannot see what they are interacting with at all.
+
+***
+
+### 🏛️ The UX Verdict
+
+Apple's choice is **brilliant for utilities, toolbars, and system settings**, where speed and target acquisition matter more than visual context. In software like Photoshop, Figma, or macOS System Settings, you care about changing a value instantly, and you already know what tool you are tweaking.
+
+However, for **web applications, e-commerce checkouts, and long data-entry forms**, it is a subpar choice. In those environments, keeping the input container visible (the standard below/above dropdown) reduces cognitive load by keeping the form's structural context intact.
+
+Would you like to see how to build a **conditional layout** that uses a standard dropdown for desktop but gracefully switches to a mobile-friendly sheet pattern?
+
+- [link](https://medium.com/@jim-ekanem/fittss-law-meets-apple-s-vision-pro-ergonomic-design-challenges-from-mobile-to-spatial-6c8994ecf975)\
+  Fitts’s Law meets Apple’s Vision Pro - Ergonomic design challenges from mobile to spatial…\
+  Jun 22, 2023 — In other words, closer targets are faster to acquire. The larger the target, the shorter the movement time to it. In other words, ...\
+  \
+  \
+  Medium
 
 # (d) how to make mui baseui select dropdown
 

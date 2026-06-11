@@ -650,7 +650,6 @@ humility:
 - research opencode undo feature critical accidental code removal issue
 - research opencode
 
-
 legacy:
 
 - mistral
