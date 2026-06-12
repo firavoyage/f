@@ -656,6 +656,7 @@ humility:
 - research zed highly requested features
 - research opencode undo feature critical accidental code removal issue
 - research opencode <!-- structured output, yaml or json or xml -->
+- research llms follow up google ai mode system prompt
 
 legacy:
 
