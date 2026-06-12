@@ -80,10 +80,6 @@ stop after use.
 
 finalize adwaita.yaml
 
-align components
-
----
-
 states.
 
 hover, pressed, ...
@@ -91,3 +87,8 @@ hover, pressed, ...
 research, copy to ref, map.
 
 ---
+
+align components
+
+---
+
