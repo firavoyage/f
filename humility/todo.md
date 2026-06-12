@@ -104,3 +104,29 @@ strip:
 
 ---
 
+```sh
+chat # send, llm, agent, etc.
+# help, or current thread
+
+chat 'msg'
+
+chat list
+# id title message
+# (make id short, use a sequential number, or the first few letters in hash)
+
+chat rename <id> <name>
+
+chat resume
+
+chat new / enter # stateful. new msgs
+
+chat exit
+```
+
+---
+
+how popular
+
+open webui purpose features
+
+---
