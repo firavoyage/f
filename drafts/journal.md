@@ -28471,7 +28471,7 @@ more resilient and flexible
 
  -->
 
-24 00 stick a piece of notes on the laptop.
+24 00 stick a piece of notes on the laptop. put nat <!-- as human beings... --> and sywx <!-- how to play long term games... --> mantras in my backpack.
 
 ```
 Non Trivial
@@ -28482,6 +28482,10 @@ Foundational
 
 Invariant
 ```
+
+<!-- i could swap the second and the third. grouping "in" makes it sound. but i have a rationale. nt is about meaning and purpose. inevitable is about significance, determinism, and as a catch all counter argument. the third and the fourth are about priority, which implies speed. -->
+
+<!-- left on my desk, there are a stack of anime scenes (screenshots), incl.  -->
 
 
 
