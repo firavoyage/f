@@ -167,6 +167,7 @@ archi:
 - naming plural singular
 - version control legacy folder <!-- pm? life. -->
 - hydra infra domain hopping tor z library the pirate bay
+- naming university tlide profile
 
 frontend: <!-- web -->
 
@@ -374,6 +375,7 @@ literature:
 - daoism kuai huo
 - shui zhong wan shi
 - stray birds
+- mono no aware
 
 typography:
 
@@ -394,6 +396,7 @@ shelf: <!-- book -->
 
 - the beginning of infinity <!-- nat -->
 - the mythical man month
+- the cathedral and the bazaar
 
 cinema: <!-- film, movie -->
 
@@ -579,11 +582,12 @@ economics:
 - investing index fund growth theory
 - investing alpha beta meaning
 
-society:
+society: <!-- sociology -->
 
 - chinese bloggers friend link blogroll
 - jewish social class
 - mtf hrt meaning
+- asians calm western black laugh
 
 rhetoric:
 
