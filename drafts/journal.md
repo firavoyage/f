@@ -28497,7 +28497,7 @@ Maybe I can easily live then, and auto preserved for permanency.
 
 So many ads. Both on play and on YouTube, I've never encountered on web.
 
-upd: switch to twitch with streamlabs.
+upd: switch to ~~twitch~~ kick with streamlabs.
 
 
 
