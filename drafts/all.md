@@ -166,6 +166,7 @@ archi:
 - naming broader or more specific first
 - naming plural singular
 - version control legacy folder <!-- pm? life. -->
+- hydra infra domain hopping tor z library the pirate bay
 
 frontend: <!-- web -->
 
@@ -392,6 +393,7 @@ psychology:
 shelf: <!-- book -->
 
 - the beginning of infinity <!-- nat -->
+- the mythical man month
 
 cinema: <!-- film, movie -->
 
