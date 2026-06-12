@@ -139,4 +139,13 @@ screenshots
 
 how would
 
+---
+
+stateful cli? stateless cli?
+
+git config?
+
+---
+
+
 
