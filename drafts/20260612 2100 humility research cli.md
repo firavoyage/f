@@ -288,6 +288,381 @@ Would you like help setting up a **configuration file (`cspell.json`)** to ignor
   \* Lightning Fast. Optimized for performance to handle large codebases with thousands of files. Spell check your entire project in ...\
   CSpell
 
+## You said: on ubuntu, use fd, cspell as a global cli, only check filenames
+
+On Ubuntu, to check **only filenames** using `fd` combined with a globally installed `cspell` CLI, you cannot simply pipe the text into `stdin`. Doing so forces `cspell` to analyze the text as if it were a text file, rather than interpreting the paths as files to be checked. \[[1](https://github.com/streetsidesoftware/cspell/issues/3063)]
+
+Instead, you must use `cspell`'s dedicated `--file-list stdin` parameter. Because you want to check the actual names of the files (and not scan their contents), you must instruct `cspell` to treat the file path as the content itself using the `stdin://` pseudo-protocol. \[[1](https://cspell.org/docs/getting-started), [2](https://github.com/streetsidesoftware/cspell/issues/1850), [3](https://www.npmjs.com/package/cspell)]
+
+### 1. The Command to Run
+
+Navigate to your project folder and execute the following optimized pipeline:
+
+bash
+
+```
+fdfind --type f --hidden --exclude .git | while read -r file; do echo "$file" | cspell "stdin://$file"; done
+```
+
+Use code with caution.
+
+### 2. Command Breakdown
+
+- **`fdfind`**: On Ubuntu, the `fd` tool is binary-named `fdfind` by default to avoid system naming conflicts. If you have already set up a permanent alias (`alias fd=fdfind`), you can replace `fdfind` with `fd`. \[[1](https://www.linode.com/docs/guides/finding-files-with-fd-command/), [2](https://www.linode.com/docs/guides/finding-files-with-fd-command/)]
+- **`--type f`**: Restricts the search specifically to file entries. \[[1](https://www.youtube.com/watch?v=NjYf9pApvpk\&t=5)]
+- **`--hidden`**: Includes hidden system files like `.eslintrc.json` or `.gitignore`. \[[1](https://github.com/sharkdp/fd), [2](https://www.npmjs.com/package/cspell)]
+- **`--exclude .git`**: Keeps the internal `.git/` folder out of the scan to save time. \[[1](https://github.com/sharkdp/fd), [2](https://www.npmjs.com/package/cspell)]
+- **`while read -r file`**: Safely processes each discovered file line-by-line, preserving spaces or special layout characters in filenames.
+- **`echo "$file" | cspell "stdin://$file"`**: This is the magic wrapper. It feeds the literal path text into `cspell`, but tells `cspell` to pretend it is a file named after the path itself. Consequently, `cspell` evaluates the _filename string_ for typos without opening the document's internal text. \[[1](https://cspell.org/docs/getting-started), [2](https://github.com/streetsidesoftware/cspell/issues/3063)]
+
+### 3. Expected Output Example
+
+If you have a file path containing a mistake (such as `./src/componets/utilites.js`), the CLI will flag the precise structural location of the error within the file layout:
+
+text
+
+```
+/src/componets/utilites.js:1:6 - Unknown word (componets) - Did you mean "components"?
+/src/componets/utilites.js:1:16 - Unknown word (utilites) - Did you mean "utilities"?
+```
+
+Use code with caution.
+
+If you prefer to completely bypass the bash loop and let `cspell` analyze the **content** of every file discovered by `fd` instead, let me know and I can provide the syntax for the `--file-list` variant! \[[1](https://www.npmjs.com/package/cspell), [2](https://github.com/streetsidesoftware/cspell/issues/1850)]
+
+- [link](https://cspell.org/docs/getting-started)\
+  Getting Started with CSpell\
+  Repeat the process with the other file types you want to check. 3. Fine-tuning​ The following resources can help you with fine-tun...\
+  CSpell
+- [link](https://github.com/streetsidesoftware/cspell/issues/3063)\
+  Check spelling of filenames · Issue #3063 - GitHub\
+  Jun 14, 2022 — Jason3S commented. Jason3S. on Jun 14, 2022. Collaborator. @webdeveric, There are a few workarounds: git diff --name-only --cached...\
+  GitHub
+- [link](https://github.com/sharkdp/fd)\
+  sharkdp/fd: A simple, fast and user-friendly alternative to 'find'\
+  To find files with exactly the provided search pattern, use the -g (or --glob ) option: > fd -g libc.so /usr /usr/lib32/libc.so /u...\
+  GitHub
+
+Show all
+
+## You said: fd | cspell stdin works. so many custom unknown words. only show fixable ones.
+
+To filter out words that `cspell` considers "unknown" but has no suggestions for, you need to hide the outputs that return empty suggestion lists.
+
+When you run `cspell stdin`, it lists unknown words like this:
+
+- **Fixable:** `Unknown word (componets) - Did you mean: [components]?`
+- **Unfixable jargon/hashes:** `Unknown word (x28f9az)` (No suggestions provided)
+
+You can isolate **only the fixable ones** by piping your current command into `grep` to look for the phrase `"Did you mean"`.
+
+### The Command to Run
+
+bash
+
+```
+fd | cspell stdin | grep "Did you mean"
+```
+
+Use code with caution.
+
+### Why this works:
+
+- `fd | cspell stdin` runs your working pipeline.
+- `| grep "Did you mean"` acts as a live filter. It immediately discards any lines containing unique variable names, hashes, or project jargon that `cspell` doesn't know how to fix, leaving you with only the clear typos.
+
+Would you like to know how to save the remaining unfixable jargon words to a **custom dictionary file** so `cspell` permanently stops flagging them as errors?
+
+## You said: how powerful is cspell, compared w google search did you mean
+
+Comparing **`cspell`** to Google’s **"Did you mean"** is an apples-to-oranges comparison because they use entirely different architectures to solve completely different problems.
+
+`cspell` is an **explicit rule-and-dictionary system** designed to protect your code syntax, while Google Search is an **AI-driven context engine** designed to understand human intent. \[[1](https://stackoverflow.com/questions/307291/how-does-the-google-did-you-mean-algorithm-work), [2](https://www.quora.com/How-is-Google-so-good-at-correcting-spelling-mistakes-in-searches)]
+
+The major structural differences highlight why you need `cspell` for code, but would never use it for natural web searches: \[[1](https://downloads.webis.de/theses/papers/lahmann%5F2024.pdf)]
+
+| Feature \[[1](https://cspell.org/docs/dictionaries/custom-dictionaries), [2](https://cspell.org/about), [3](https://stackoverflow.com/questions/307291/how-does-the-google-did-you-mean-algorithm-work), [4](https://www.youtube.com/watch?v=JZLZQVmfGn8\&vl=en-US), [5](https://www.sitepoint.com/find-correct-misspelled-words-pspell/), [6](https://oasis.library.unlv.edu/cgi/viewcontent.cgi?article=2915\&context=thesesdissertations)] | `cspell`                                                            | Google "Did you mean"                                              |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| **Core Technology**                                                                                                                                                                                                                                                                                                                                                                                                                         | Dictionary lookups, Edit Distance (Levenshtein), and Tries.         | Deep Learning (Transformer models) and massive user click logs.    |
+| **Context Awareness**                                                                                                                                                                                                                                                                                                                                                                                                                       | None. It evaluates words individually.                              | Total. It understands the surrounding sentence structure.          |
+| **Code Awareness**                                                                                                                                                                                                                                                                                                                                                                                                                          | Excellent. Splits `camelCase` and ignores JavaScript/HTML brackets. | Terrible. It will break code formatting into spaced words.         |
+| **New/Fringe Words**                                                                                                                                                                                                                                                                                                                                                                                                                        | Flags them as errors unless explicitly whitelisted.                 | Naturally adapts to newly invented slang, brands, and pop culture. |
+| **Execution**                                                                                                                                                                                                                                                                                                                                                                                                                               | Fully offline, global CLI, runs instantly on your machine.          | Massive, cloud-hosted neural network clusters.                     |
+
+***
+
+### Where `cspell` Wins (Code & Filenames)
+
+`cspell` is vastly more powerful for structured developer files.
+
+- **Syntax Intelligence**: If you write `const activeUserElement = true`, `cspell` is smart enough to break that variable into `active`, `User`, and `Element` to check them individually. Google's engine would attempt to correct the combined word into a human phrase like _"active user agreement"_.
+- **Strict Correctness**: It guarantees zero tolerance. If a word isn't in your official language or custom project dictionary, it gets flagged. \[[1](https://www.sitepoint.com/find-correct-misspelled-words-pspell/)]
+
+### Where Google Search Wins (Human Language)
+
+Google doesn't actually rely on a traditional fixed dictionary; it relies on massive datasets of web traffic and contextual transformer algorithms. \[[1](https://www.youtube.com/watch?v=JZLZQVmfGn8\&vl=en-US), [2](https://oasis.library.unlv.edu/cgi/viewcontent.cgi?article=2915\&context=thesesdissertations), [3](https://www.quora.com/How-is-Google-so-good-at-correcting-spelling-mistakes-in-searches), [4](https://alfierobinson.substack.com/p/respect-google)]
+
+- **Semantic Context**: If you type _"I want to buy a **pair** of shoes"_, but accidentally spell it _"**pear** of shoes"_, `cspell` will mark it as correct because "pear" is a valid English word. Google will immediately flag it and say _"Did you mean: **pair** of shoes"_ because it understands the surrounding context. \[[1](https://stackoverflow.com/questions/307291/how-does-the-google-did-you-mean-algorithm-work)]
+- **Phonetic Handling**: Google is drastically better at fixing entirely butchered words based on how they sound phonetically or how people typo them on keyboards. \[[1](https://www.quora.com/How-is-Google-so-good-at-correcting-spelling-mistakes-in-searches)]
+
+### Summary
+
+Think of `cspell` as a **mechanical gauge**—it checks your filenames and variables against strict, unbreakable blueprints. Think of Google "Did you mean" as a **mind reader**—it looks at a broken query and guesses what the human was thinking based on what a billion other humans typed before them. \[[1](https://stackoverflow.com/questions/307291/how-does-the-google-did-you-mean-algorithm-work), [2](https://www.sitepoint.com/find-correct-misspelled-words-pspell/), [3](https://cspell.org/about), [4](https://www.quora.com/How-is-Google-so-good-at-correcting-spelling-mistakes-in-searches), [5](https://cspell.org/docs/getting-started)]
+
+Since you are running into massive lists of unknown jargon words using your `fd | cspell` pipeline, I can show you how to generate a **`cspell.json` file** to instantly whitelist your framework terms (like `node_modules`, `nextjs`, or custom project words). Would you like to set that up? \[[1](https://tjaddison.com/blog/2021/02/spell-checking-your-markdown-blog-posts-with-cspell/)]
+
+- [link](https://stackoverflow.com/questions/307291/how-does-the-google-did-you-mean-algorithm-work)\
+  How does the Google "Did you mean?" Algorithm work? \[closed]\
+  Nov 20, 2008 — They know who correct the query, because they know which query comes from which user ( using cookies ) If the users perform a quer...\
+  Stack Overflow
+- [link](https://www.sitepoint.com/find-correct-misspelled-words-pspell/)\
+  Find and Correct Misspelled Words with Pspell - SitePoint\
+  Nov 23, 2013 — While Pspell is a powerful tool for spelling correction, it is not infallible and should be used judiciously, as it does not check...\
+  SitePoint
+- [link](https://oasis.library.unlv.edu/cgi/viewcontent.cgi?article=2915\&context=thesesdissertations)\
+  Utilizing Big Data in Identification and Correction of OCR Errors\
+  Aug 1, 2013 — If the query is not found, Google tries to infer the next possible correct word in the query based on its n-gram statistics deduce...\
+  University of Nevada, Las Vegas | UNLV
+
+Show all
+
+## You said: what are the kinds of errors that cspell can auto fix
+
+When using the `cspell` command-line tool, it is important to know that **`cspell` does not have a native "auto-fix" CLI command to rewrite your code files automatically.** \[[1](https://github.com/streetsidesoftware/cspell/issues/5023), [2](https://github.com/streetsidesoftware/cspell/issues/5023)]
+
+However, when paired with an **IDE extension** (like the `Code Spell Checker` extension for VS Code) or an **ESLint plugin** (such as `@cspell/eslint-plugin`), it can instantly fix structural, stylistic, and vocabulary-based typos using IDE "Quick Fix" actions or `eslint --fix`. \[[1](https://www.youtube.com/watch?v=dUn1mrJYMrM), [2](https://www.npmjs.com/package/@cspell/eslint-plugin), [3](https://www.youtube.com/watch?v=uCc6tTT6xoY)]
+
+The specific types of code-centric typos that `cspell` is uniquely designed to auto-fix include:
+
+### 🧩 1. Compound Word & Code Syntax Errors
+
+Unlike standard spell checkers that look at whole blocks of text, `cspell` parses code structure. It can isolate and auto-fix typos hidden inside programming syntax without breaking the format: \[[1](https://www.npmjs.com/package/cspell), [2](https://superuser.com/questions/153483/how-to-prevent-spell-checking-code-in-ms-office)]
+
+- **camelCase Errors**: Fixing `fetchUserConfiguaration` ➔ `fetchUserConfiguration`.
+- **snake\_case Errors**: Fixing `system_initialisation_failed` ➔ `system_initialization_failed`.
+- **HTML/XML Tags**: Fixing ➔ .
+
+### 🔀 2. Inverted & Swapped Letters (Transposition) \[[1](https://www.youtube.com/watch?v=4yOKlWZk52M)]
+
+It handles common fast-typing mistakes by calculating the "edit distance" between what you typed and its built-in dictionaries: \[[1](https://www.youtube.com/watch?v=4yOKlWZk52M)]
+
+- **Swapped keys**: Fixing `recat` ➔ `react`, or `feauture` ➔ `feature`.
+- **Double character slips**: Fixing `committ` ➔ `commit`, or `sucess` ➔ `success`. \[[1](https://www.youtube.com/watch?v=uCc6tTT6xoY)]
+
+### 📝 3. Code Comment & Documentation Typos
+
+Because `cspell` ignores syntax symbols like `//` or `/*`, it isolates words in your internal documentation to easily clean up typos that might accidentally leak into external APIs or readmes: \[[1](https://medium.com/@mitchwd/how-to-set-up-cspell-for-spelling-mistake-free-code-6148a2504d35), [2](https://joplinapp.org/help/dev/spellcheck/)]
+
+- Fixing `// TODO: implement authoriztion` ➔ `// TODO: implement authorization`.
+
+### 🏷️ 4. Explicit Brand & Framework Overrides (Preferred Fixes)
+
+You can configure `cspell` via its `cspell.json` file to recognize specific code jargon and force it to prompt you with your preferred corporate or framework style: \[[1](https://cspell.org/docs/api/cspell-types/interfaces/LanguageSetting), [2](https://github.com/streetsidesoftware/cspell/blob/main/packages/cspell/README.md)]
+
+- **Custom mapping**: You can map `github` ➔ `GitHub`, or `javascript` ➔ `JavaScript`. When it encounters the lowercase version, it will immediately provide the correctly capitalized version as the top auto-fix suggestion. \[[1](https://cspell.org/docs/api/cspell-types/interfaces/LanguageSetting)]
+
+***
+
+### ⚠️ What `cspell` CANNOT Fix \[[1](https://www.youtube.com/watch?v=4yOKlWZk52M)]
+
+- **Real-Word Typos**: If you accidentally type `const count = form.length;` instead of `const count = from.length;`, `cspell` will pass it because both "form" and "from" are perfectly valid English words.
+- **Short Variable Names**: By default, `cspell` ignores words shorter than 4 characters to avoid constant false flags on shorthand variables like `idx`, `buf`, or `res`. \[[1](https://pmc.ncbi.nlm.nih.gov/articles/PMC6351975/), [2](https://medium.com/@mitchwd/how-to-set-up-cspell-for-spelling-mistake-free-code-6148a2504d35)]
+
+Would you like to see how to pair `cspell` with an **ESLint setup** so you can run `eslint --fix` on your terminal to clean up typos automatically across your files?
+
+- [link](https://www.youtube.com/watch?v=dUn1mrJYMrM)\
+  Code Spell Checker Extension for Visual Studio Code\
+  Aug 16, 2023 — hi everyone welcome back to my channel Coding with Stephania in this video we're going to talk about the code spell checker extens...\
+  9:48\
+  YouTube·Coding with Estefania
+- [link](https://github.com/streetsidesoftware/cspell/issues/5023)\
+  Automatic suggestion fixes #5023 - streetsidesoftware/cspell\
+  Nov 28, 2023 — I use Cspell for my project to fix spelling errors. However, it takes time for new projects that haven't used Cspell before to fix...\
+  GitHub
+- [link](https://pmc.ncbi.nlm.nih.gov/articles/PMC6351975/)\
+  Spell checker for consumer language (CSpell) - PMC\
+  Jan 21, 2019 — Automated understanding of consumer health inquiries might be hindered by misspellings. To detect and correct various types of spe...\
+  National Institutes of Health (.gov)
+
+Show all
+
+## You said: i mean cases that cspell can suggest a fix
+
+Under the hood, `cspell` relies on a highly specialized mathematical algorithm (a weighted **Levenshtein Levenshtein Distance** tree) to calculate structural text similarities. Because it reads code tokens rather than normal sentences, it can generate fixes for specific structural scenarios: \[[1](https://cspell.org/docs/how-it-works), [2](https://fossies.org/linux/cspell/rfc/rfc-0002%20improve%20dictionary%20suggestions/README.md), [3](https://pypi.org/project/cspell/)]
+
+### 1. Inverted Keys / Character Swaps (Transposition)
+
+`cspell` natively identifies when adjacent characters are flipped during rapid keyboard entry.
+
+- **Filename Typo:** `src/conatiner.js` ➔ **Suggestion:** `container`
+- **Filename Typo:** `utils/reacive.ts` ➔ **Suggestion:** `reactive`
+
+### 2. Missing or Extra Double Letters
+
+The dictionary algorithm looks for single-letter discrepancies where a developer either forgot to double a character or added an extra one.
+
+- **Filename Typo:** `styles/sucess.css` ➔ **Suggestion:** `success`
+- **Filename Typo:** `config/committ.json` ➔ **Suggestion:** `commit`
+
+### 3. Missing Suffix Vowels
+
+It flags words where structural layout vowels or linking letters have been accidentally excluded from the name string.
+
+- **Filename Typo:** `assets/utilites.png` ➔ **Suggestion:** `utilities`
+- **Filename Typo:** `docs/releas-notes.md` ➔ **Suggestion:** `release`
+
+### 4. Slips in CamelCase / Snake\_case Borders
+
+`cspell` splits compound programming terms before checking them. If the typo happens exactly where words glue together, it detects it and suggests the fix without breaking your casing convention. \[[1](https://cspell.org/docs/how-it-works)]
+
+- **Filename Typo:** `fetchUsreData.js` ➔ **Suggestion:** `fetchUserData`
+- **Filename Typo:** `active_goup_list.py` ➔ **Suggestion:** `active_group_list`
+
+### 5. Configured FlagWords (Enforced Brand Preferences)
+
+If you configure a custom dictionary rule via your `cspell.json` file, you can explicitly map an illegal or broken term to an intended standard variant. When `cspell` encounters it, it immediately serves your replacement text as the suggested correction. \[[1](https://cspell.org/docs/api/cspell-types/interfaces/Settings), [2](https://www.npmjs.com/package/@cspell/eslint-plugin)]
+
+- **Rule Configuration:** `"flagWords": ["colour:color", "github:GitHub"]`
+- **Filename Typo:** `css/colour-picker.css` ➔ **Suggestion:** `color-picker` \[[1](https://cspell.org/docs/api/cspell-types/interfaces/Settings), [2](https://www.drupal.org/docs/develop/development-tools/cspell), [3](https://www.npmjs.com/package/@cspell/eslint-plugin)]
+
+***
+
+### ❌ What it CANNOT suggest a fix for:
+
+If a word returns completely blank suggestions in your console output, it falls into one of these categories:
+
+- **Project Hashes / IDs:** Filenames like `build-a8f9b2z.js` have a Levenshtein distance too far from any real word, so the algorithm aborts without suggesting anything.
+- **Abbreviated Jargon:** Slang strings like `authsrv`, `dbconn`, or `initfn` have too many missing components for a dictionary lookup tree to guess what you meant.
+
+If you are using the global CLI to review your paths, you can append the explicit `--show-suggestions` flag to see all of these options natively printed out in your shell layout:
+
+bash
+
+```
+fd | cspell stdin --show-suggestions
+```
+
+Use code with caution.
+
+Would you like to know how to set up a `cspell.json` file so that your project's custom technical abbreviations (like `srv` or `db`) stop showing up as broken errors? \[[1](https://cspell.org/docs/dictionaries/custom-dictionaries), [2](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)]
+
+- [link](https://cspell.org/docs/how-it-works)\
+  How it Works | CSpell\
+  The concept is simple, split camelCase and snake\_case words before checking them against a list of known words.\
+  CSpell
+- [link](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)\
+  Code Spell Checker - Visual Studio Marketplace\
+  Feb 24, 2026 — Ignore. Ignore allows you the specify a list of words you want to ignore within the document. // cSpell:ignore zaallano, wooorrdd ...\
+  Visual Studio Marketplace
+- [link](https://www.npmjs.com/package/@cspell/eslint-plugin)\
+  cspell/eslint-plugin - NPM\
+  May 31, 2026 — Preferred Suggestions. CSpell offers the ability to flag words as incorrect and to provide suggestions. ... With this configuratio...\
+  NPM
+
+Show all
+
+## You said: how does it find the relevant correct word
+
+`cspell` uses a structural, step-by-step pipeline optimized for code syntax before searching its internal dictionaries. \[[1](https://cspell.org/docs/how-it-works), [2](https://www.npmjs.com/package/cspell)]
+
+The exact mechanism it uses to break down a string and find the relevant correct word follows this specific sequence:
+
+### 🐍 Step 1: Code Splitting (Tokenization)
+
+Before calculating any spelling corrections, `cspell` prepares text using code-aware parsing. It analyzes lines of code or path strings, completely strips out formatting punctuation (like `/`, `.`, `-`, or `_`), and uses capitalization shifts to separate compound phrasing: \[[1](https://www.npmjs.com/package/cspell), [2](https://medium.com/@mitchwd/how-to-set-up-cspell-for-spelling-mistake-free-code-6148a2504d35)]
+
+- **Input Path:** `src/utils/userConatiner.js`
+- **Isolated Tokens:** `src`, `utils`, `user`, `conatiner`, `js` \[[1](https://www.npmjs.com/package/cspell)]
+
+Each token is then run through the dictionary independently. Tokens like `user` pass instantly, leaving `conatiner` flagged for correction. \[[1](https://www.npmjs.com/package/cspell)]
+
+### 🌳 Step 2: The Trie Dictionary Lookup
+
+Traditional spell checkers scan long, flat word lists, which slows down execution on larger codebases. To maintain high-speed CLI rendering, `cspell` compiles its local dictionary databases into a **Trie** (a prefix tree data structure). \[[1](https://www.youtube.com/watch?v=s5DrFpiGLeU\&t=4), [2](https://www.reddit.com/r/programming/comments/qvwo6o/how%5Fdo%5Fspell%5Fcheckers%5Fwork%5Flevenshtein%5Fedit/), [3](https://stackoverflow.com/questions/5398722/using-the-levenshtein-distance-in-a-spell-checker), [4](https://cspell.org/docs/api/cspell-types/interfaces/DictionaryDefinitionSimple)]
+
+Every character in a word acts as a sequential branch down the tree. When `cspell` processes `conatiner`, it follows the path `c ➔ o ➔ n`. Once it reaches a sequence that does not exist in its prefix tree, it immediately stops searching that specific branch, declaring the token an unknown word. \[[1](https://www.youtube.com/watch?v=LyZSAQHzss8), [2](https://www.sitepoint.com/find-correct-misspelled-words-pspell/)]
+
+### 📐 Step 3: Weighted Levenshtein Distance
+
+Once a token fails the lookup, `cspell` calculates alternative suggestions using **Weighted Levenshtein Distance**. This mathematical formula determines the minimum number of single-character operations required to transform the typo into a valid dictionary term: \[[1](https://www.reddit.com/r/programming/comments/qvwo6o/how%5Fdo%5Fspell%5Fcheckers%5Fwork%5Flevenshtein%5Fedit/), [2](https://www.youtube.com/watch?v=LyZSAQHzss8), [3](https://www.youtube.com/watch?v=4Y7j3ebiOCo\&t=13), [4](https://www.scribd.com/document/820008149/IR-Prac-3)]
+
+- **Insertion:** Adding a missing letter
+- **Deletion:** Removing an extra letter
+- **Substitution:** Swapping an incorrect letter for a correct one \[[1](https://www.reddit.com/r/programming/comments/qvwo6o/how%5Fdo%5Fspell%5Fcheckers%5Fwork%5Flevenshtein%5Fedit/), [2](https://www.youtube.com/watch?v=4Y7j3ebiOCo\&t=13), [3](https://www.wyzant.com/resources/answers/609815/editing-proofreading-marks), [4](https://leancrew.com/all-this/2025/10/proofreading-with-chatgpt/)]
+
+Because searching an entire dictionary using this formula is computationally expensive, `cspell` limits its Levenshtein search to words that share the same structural prefixes or character groupings (called Q-grams) to instantly find nearby options. \[[1](https://www.youtube.com/watch?v=s5DrFpiGLeU\&t=4), [2](https://stackoverflow.com/questions/5398722/using-the-levenshtein-distance-in-a-spell-checker)]
+
+text
+
+```
+       [ Typo: conatiner ]
+                │
+         (1 Substitution)  ➔  "c-o-n-a-t-i-n-e-r" to "c-o-n-t-a-i-n-e-r"
+                │
+     [ Suggestion: container ] (Total Cost: 1 Edit)
+```
+
+Use code with caution.
+
+### 🎯 Step 4: Probability Ranking
+
+The algorithm often finds multiple words within a close structural edit distance. `cspell` ranks these options in a priority queue before displaying them to the user: \[[1](https://www.reddit.com/r/programming/comments/qvwo6o/how%5Fdo%5Fspell%5Fcheckers%5Fwork%5Flevenshtein%5Fedit/)]
+
+1. **Low Edit Distance First:** Words requiring only 1 edit (like `container`) always outrank words requiring 2 or more edits (like `continual`).
+2. **Keyboard Proximity Weights:** The algorithm applies weights based on physical keyboard layout. Swapping adjacent keys (like typing `a` instead of `s`) results in a lower distance penalty than swapping distant keys (like `a` instead of `p`). \[[1](https://www.youtube.com/watch?v=LyZSAQHzss8)]
+
+***
+
+### 🛠️ Setting up your Jargon Whitelist
+
+Because `cspell` calculates suggestions locally using strict algorithmic distances, unique project jargon or short abbreviations often fail the lookup tree and yield zero suggestions. \[[1](https://www.npmjs.com/package/cspell), [2](https://medium.com/@mitchwd/how-to-set-up-cspell-for-spelling-mistake-free-code-6148a2504d35), [3](https://www.youtube.com/watch?v=4Y7j3ebiOCo\&t=13)]
+
+You can stop `cspell` from flagging these custom words by creating a configuration file in your project root:
+
+1. Create a file named **`cspell.json`**.
+2. Add your framework terms and shorthand to the `words` array: \[[1](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker), [2](https://www.youtube.com/watch?v=%5FGwpPJgH1Gw\&t=82), [3](https://cspell.org/about)]
+
+json
+
+```
+{
+  "version": "0.2",
+  "language": "en",
+  "words": [
+    "nextjs",
+    "tailwindcss",
+    "authsrv",
+    "dbconn",
+    "initfn"
+  ],
+  "ignorePaths": [
+    "node_modules/**",
+    "dist/**"
+  ]
+}
+```
+
+Use code with caution.
+
+Would you like to know how to instruct `cspell` to automatically **generate this word list** from your existing files, or do you want to see how to append **official plugin dictionaries** (like medical or AWS terminology)?
+
+AI responses may include mistakes. For legal advice, consult a professional. [Learn more](https://support.google.com/websearch?p=aimode\&gl=us)
+
+- [link](https://www.sitepoint.com/find-correct-misspelled-words-pspell/)\
+  Find and Correct Misspelled Words with Pspell - SitePoint\
+  Nov 23, 2013 — How does a spell checker work? A spell checker works by comparing each word in a text to a dictionary of correctly spelled words. ...\
+  SitePoint
+- [link](https://www.npmjs.com/package/cspell)\
+  cspell - NPM\
+  May 31, 2026 — Features \* Spell Checks Code -- Able to spell check code by parsing it into words before checking against the dictionaries. Suppor...\
+  NPM
+- [link](https://medium.com/@mitchwd/how-to-set-up-cspell-for-spelling-mistake-free-code-6148a2504d35)\
+  How to set up CSpell for spelling-mistake free code - Medium\
+  Aug 25, 2022 — Configuration. Out of the box, CSpell checks against an internal dictionary of words, and the following rules: This spellchecker i...\
+  Medium·Mitch Winkel-Davis
+
+Show all
+
 # npm lib to align output in cli
 
 The best npm library to align text output in a CLI depends entirely on your layout goal: grid-based alignment, plain text alignment, or multi-column spacing. \[[1](https://www.npmjs.com/package/cli-table), [2](https://www.npmjs.com/package/ansi-align)]
