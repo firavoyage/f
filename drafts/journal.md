@@ -28405,6 +28405,48 @@ more resilient and flexible
 
 16 40 dl `The Mythical Man-Month: Essays on Software Engineering` `The Cathedral and the Bazaar`.
 
+17 20 converse.
+
+<!-- 
+
+你工作了吗
+
+没有
+
+那你现在在干什么
+
+自己的项目
+
+设计吗
+
+程序
+
+也有设计吧, 要 implement... 把设计渲染出来.
+
+懂了
+
+你哪个学校的
+
+...
+
+强吗
+
+不强
+
+中考能去哪
+
+卢湾吧
+
+卢湾还可以, 有希望的
+
+市重点吗
+
+对
+
+这附近就大同一个好的. 八大. 有未来的孩子.
+
+ -->
+
 
 
 <!-- timebox, plan. -->
