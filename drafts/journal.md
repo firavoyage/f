@@ -28499,6 +28499,8 @@ So many ads. Both on play and on YouTube, I've never encountered on web.
 
 upd: switch to ~~twitch~~ kick with streamlabs.
 
+06 00 fix some typos via cspell.
+
 
 
 <!-- timebox, plan. -->
