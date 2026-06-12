@@ -95,6 +95,7 @@ life:
 - game maimai dx project sekai perfect time window
 - smart spending samsung a series
 - game maimai dx color badges
+- streaming test youtube mobile prism streamerlabs twitch kick
 
 create something:
 
@@ -333,7 +334,7 @@ ux: <!-- ui/ux design, ia, information architecture -->
 - mpv minimalist design friction broken command palette shuffle playlist
 - samsung quick panel customization outside settings
 - samsung sim card activation friction security
-- accessibility real constrast to human eyes
+- accessibility real contrast to human eyes
 - opencode session export
 - kde desktop k naming
 - hermes onboarding feedback transparency
@@ -526,7 +527,7 @@ history:
 - xfce
 - left pad incident
 - iptv
-- bittorrent magent
+- bittorrent magnet
 - ipfs
 - tv criticism
 - codeberg forgejo gitea gogs

@@ -1,3 +1,484 @@
+# . cspell
+
+```sh
+ ~/Documents/f % fd | cspell stdin | rg "fix"           
+
+1/1  818.04ms X
+:529:46 - Unknown word (magent) fix: (magenta, magnet)
+:1067:26 - Unknown word (mata) fix: (meta, mater)
+:1209:34 - Unknown word (darcula) fix: (dracula)
+:1255:46 - Unknown word (darcula) fix: (dracula)
+:1341:54 - Unknown word (constrast) fix: (contrast)
+:2012:55 - Unknown word (standarize) fix: (standardize)
+:2013:55 - Unknown word (standarize) fix: (standardize)
+:2014:55 - Unknown word (standarize) fix: (standardize)
+:2015:55 - Unknown word (standarize) fix: (standardize)
+:2016:55 - Unknown word (standarize) fix: (standardize)
+:2227:37 - Unknown word (divde) fix: (divide)
+:2661:66 - Unknown word (conver) fix: (convert)
+:2798:63 - Unknown word (attension) fix: (attention)
+:2859:61 - Unknown word (synatx) fix: (syntax)
+:4964:48 - Unknown word (valkryie) fix: (valkyrie)
+:5982:63 - Unknown word (developement) fix: (development)
+CSpell: Files checked: 1, Issues found: 929 in 1 file.
+```
+
+```sh
+ ~/Documents/f % fd | rg "mata"              
+pre/lib/components/prism-mata.min.js
+ ~/Documents/f % fd | rg "darcula"
+pre/resources/prism themes/screenshots/prism-darcula.png
+pre/resources/prism themes/prism-darcula.css
+ ~/Documents/f % cd drafts  
+ ...Documents/f/drafts % fd | cspell stdin | rg "fix"
+
+1/1  613.92ms X
+:355:47 - Unknown word (constrast) fix: (contrast)
+:701:59 - Unknown word (conver) fix: (convert)
+:824:26 - Unknown word (standarize) fix: (standardize)
+:887:56 - Unknown word (attension) fix: (attention)
+:936:54 - Unknown word (synatx) fix: (syntax)
+:1467:56 - Unknown word (developement) fix: (development)
+:1862:41 - Unknown word (valkryie) fix: (valkyrie)
+CSpell: Files checked: 1, Issues found: 561 in 1 file.
+```
+
+# (?) npm libs to check typos
+
+Here are the best npm libraries to check typos and spelling mistakes, categorized by their primary use case:
+
+### 💻 Code & Markdown File Spell Checkers (Best for CI/CD & Dev Workflows)
+
+- **[cspell](https://www.npmjs.com/package/cspell)**: A highly efficient command-line tool and library designed explicitly for checking typos inside programming code. It easily parses camelCase, snake\_case, and compound words. It supports dedicated language dictionaries out of the box like JavaScript, TypeScript, Python, and HTML.
+- **[spellchecker-cli](https://www.npmjs.com/package/spellchecker-cli)**: A tool made to scan plain text files, featuring specific optimizations for Markdown and HTML. It tracks spelling mistakes, handles duplicate words, and generates custom project dictionaries.
+- **[yaspeller](https://www.npmjs.com/package/yaspeller)**: An elegant choice for searching typos in files via node glob patterns or standard inputs. It works seamlessly with pre-commit hooks to block bad spelling from reaching production. \[[1](https://www.npmjs.com/package/cspell), [2](https://www.npmjs.com/package/spellchecker-cli), [3](https://www.npmjs.com/package/yaspeller)]
+
+### 🛠 Runtime API Spell Checkers (Best for User Inputs & Web Apps) \[[1](https://www.npmjs.com/package/spellchecker-cli)]
+
+- **[typo-js](https://www.npmjs.com/package/typo-js?activeTab=readme)**: A fast JavaScript/TypeScript spellchecker that utilizes traditional Hunspell-style dictionaries entirely on the client or server side. It includes methods like `.check("word")` to validate strings and `.suggest("word")` to instantly yield an array of correct suggestions.
+- **[spellchecker](https://www.jsdelivr.com/package/npm/spellchecker)**: A native bindings module that brings real operating system spellchecking capabilities to Node.js apps. It can check single words or perform asynchronous corpus scanning to catch blocks of text typos. \[[1](https://www.npmjs.com/package/typo-js?activeTab=readme), [2](https://www.jsdelivr.com/package/npm/spellchecker), [3](https://www.npmjs.com/package/@types/spellchecker)]
+
+### 🎯 Special Purpose Typos & Fuzzy Matching
+
+- **[@leeoniya/ufuzzy](https://npmjs.com/package/@leeoniya/ufuzzy)**: A specialized, ultra-fast fuzzy search library designed to tolerate spelling errors. Its "SingleError" configuration detects typos within data searches based on a short edit distance.
+- **[@zootools/email-spell-checker](https://www.jsdelivr.com/package/npm/@zootools/email-spell-checker)**: A lightweight library meant solely to fix email domain typos (like correcting `user@gmial.com` to `user@gmail.com`).
+- **[misspellings](https://www.npmjs.com/package/misspellings)**: A dictionary-based library serving a curated, pre-compiled collection of common Wikipedia misspellings to instantly swap out known typos. \[[1](https://www.npmjs.com/package/misspellings), [2](https://npmjs.com/package/@leeoniya/ufuzzy), [3](https://www.jsdelivr.com/package/npm/@zootools/email-spell-checker), [4](https://www.npmjs.com/package/spellchecker-cli)]
+
+Are you looking to implement this inside a **Node.js runtime application** for user input, or are you trying to set up a **linter/CI pipeline** to fix typos inside your development code?
+
+- [link](https://www.npmjs.com/package/misspellings)\
+  misspellings - NPM\
+  Apr 15, 2016 — JavaScript module to serve the list of common misspellings from Wikipedia: Lists of common misspellings. \* Installing. npm install...\
+  NPM
+- [link](https://www.npmjs.com/package/cspell)\
+  cspell - NPM\
+  May 31, 2026 — A Spell Checker for Code! cspell is a command line tool and library for spell checking code. Support Future Development. Features.\
+  NPM
+- [link](https://npmjs.com/package/@leeoniya/ufuzzy)\
+  @leeoniya/ufuzzy - npm\
+  Aug 22, 2025 — Overview. uFuzzy is a fuzzy search library designed to match a relatively short search phrase (needle) against a large list of sho...\
+  NPM
+
+Show all
+
+## You said: example of what it does
+
+To give you a clear picture, here is how the two main types of libraries operate in practice.
+
+### 1. Code & Markdown Scanners (e.g., `cspell`)
+
+This tool runs in your terminal or CI/CD pipeline. It scans your files, ignores syntax characters, breaks down variables (`camelCase`), and flags typos.
+
+**Your Code (`authService.js`):**
+
+javascript
+
+```
+// Typos in comments and variable names
+const userEmailAddress = "test@example.com";
+
+function verificationProcess() {
+  console.log("Receving data...");
+}
+```
+
+Use code with caution.
+
+**Terminal Output:**
+
+bash
+
+```
+$ npx cspell "authService.js"
+
+authService.js:1:13 - Unknown word (EmailAddress) -> Did you mean "Email Address"?
+authService.js:4:16 - Unknown word (verification)
+authService.js:5:17 - Unknown word (Receving) -> Did you mean "Receiving"?
+
+CSpell: files checked: 1, Issues found: 3 in 1 file
+```
+
+Use code with caution.
+
+***
+
+### 2. Runtime API Spell Checkers (e.g., `typo-js`)
+
+This runs directly inside your Node.js backend or frontend application code to validate text dynamically (like a user-submitted comment).
+
+**Your Application Code:**
+
+javascript
+
+```
+const Typo = require("typo-js");
+const dictionary = new Typo("en_US");
+
+// 1. Check if a word is spelled correctly
+const isCorrect = dictionary.check("enviroment");
+console.log(isCorrect);
+// Output: false
+
+// 2. Get spelling suggestions for the typo
+const suggestions = dictionary.suggest("enviroment");
+console.log(suggestions);
+// Output: [ 'environment', 'environments' ]
+```
+
+Use code with caution.
+
+Which of these two approaches fits what you are building? I can provide a complete, **ready-to-run code template** or **configuration file** for whichever one you choose.
+
+## You said: example of what it does not how to write
+
+Here is what these tools actually produce for your users or your team when they run.
+
+### 1. Code & Markdown Scanners (e.g., `cspell`)
+
+This tool blocks bad spelling from getting into your git repository or production website. It scans your source code files like a linter.
+
+**What it looks at (The Input):**
+
+javascript
+
+```
+// A developer accidentally writes this code:
+const primaryColor = "#ff0000";
+console.log("The application is loading succesfuly...");
+```
+
+Use code with caution.
+
+**What it outputs to the developer:**
+
+text
+
+```
+❌ ERROR: Found 1 typo in source/app.js:
+   Line 2: "succesfuly" is not a recognized word.
+   👉 Did you mean: successfully, successful?
+```
+
+Use code with caution.
+
+***
+
+### 2. Runtime API Spell Checkers (e.g., `typo-js`)
+
+This runs live inside your application to help fix user mistakes on the fly, like a search bar autocorrect or a blog comment checker.
+
+**What the user types:**
+
+> "I love the new _feautures_ of this _softwear_."
+
+**What the library extracts and gives back to your app:**
+
+json
+
+```
+{
+  "hasTypos": true,
+  "errors": [
+    {
+      "word": "feautures",
+      "suggestions": ["features", "fixtures", "creatures"]
+    },
+    {
+      "word": "softwear",
+      "suggestions": ["software", "softwear", "footwear"]
+    }
+  ]
+}
+```
+
+Use code with caution.
+
+***
+
+### 3. Email Domain Checkers (e.g., `@zootools/email-spell-checker`)
+
+This runs on registration or checkout forms to stop users from entering broken email addresses that bounce back.
+
+- **User Types:** `john.doe@gmial.com`
+- **Library Detects:** A common typo in the domain.
+- **Result shown to user:** _"Did you mean john.doe@gmail.com?"_
+
+Do you want to see how one of these looks **integrated into a specific UI** (like a frontend text box), or do you want to see the **terminal output** for an entire project folder?
+
+## You said: how popular or proven is cspell. is it defacto standard. can it check filenames.
+
+**Yes, `cspell` is the de facto standard** for code-based spell checking. It is incredibly popular, proven, and highly optimized for developer workflows. [link](https://cspell.org/)
+
+### 📈 Popularity & Reliability
+
+- **Extremely Popular**: It is widely adopted across the JavaScript ecosystem, pulling in around **1 million weekly downloads on npm** and maintaining a strong reputation on [GitHub via Streetsidesoftware](https://github.com/streetsidesoftware/cspell).
+- **The Engine Behind VS Code**: If you or your team have ever used the wildly popular "Code Spell Checker" extension in Visual Studio Code (which has over 9 million installs), you have already used `cspell`. The `cspell` npm package is the exact core CLI engine that powers that extension. [link](https://tjaddison.com/blog/2021/02/spell-checking-your-markdown-blog-posts-with-cspell/)
+- **Industry Standard**: It is broadly integrated into enterprise CI/CD pipelines, Pre-commit hooks, and Husky setups to block typo-ridden text or broken camelCase variables from hitting production. [link](https://www.reddit.com/r/commandline/comments/ixbj1i/spell%5Fcheck%5Fyour%5Fcode%5Ffrom%5Fthe%5Fcommand%5Fline%5Fwith/)
+
+***
+
+### 📂 Can it check filenames?
+
+**Yes, but not automatically by default.**
+
+By default, `cspell` reads the _content_ inside files, not the actual paths or names of the files themselves. However, you can easily force it to check your file and directory names using a common terminal trick: piping your file list into `cspell`'s standard input (`stdin`). [link](https://github.com/streetsidesoftware/cspell-cli)
+
+### How to check filenames in your terminal:
+
+If you want to verify that none of your filenames contain typos, run this command in your project root: [link](https://github.com/streetsidesoftware/cspell-cli)
+
+bash
+
+```
+# On Mac / Linux
+find . -type f | npx cspell stdin
+
+# On Git repositories (Checks all tracked file names)
+git ls-files | npx cspell stdin
+```
+
+Use code with caution.
+
+### How to enforce it in pre-commit hooks (`lint-staged`):
+
+If you want to ensure developers don't commit files with typos in the name (e.g., `componets/Header.js`), you can pass the staged filenames directly via standard input in your `lint-staged` configuration: [link](https://github.com/streetsidesoftware/cspell/issues/3063)
+
+json
+
+```
+{
+  "*": "cspell stdin"
+}
+```
+
+Use code with caution.
+
+Would you like help setting up a **configuration file (`cspell.json`)** to ignore specific project folders (like `node_modules`), or do you want to see how to add **custom programming jargon** to its dictionary? [link](https://github.com/streetsidesoftware/cspell/blob/main/packages/cspell/README.md)
+
+- [link](https://github.com/streetsidesoftware/cspell/issues/3063)\
+  Check spelling of filenames · Issue #3063 - GitHub\
+  Jun 14, 2022 — webdeveric commented. webdeveric. on Jun 14, 2022 · edited by webdeveric. Author. To get around the --no issue, you have to use --\
+  GitHub
+- [link](https://tjaddison.com/blog/2021/02/spell-checking-your-markdown-blog-posts-with-cspell/)\
+  Spell checking your Markdown blog posts with cspell\
+  Feb 28, 2021 — Checking all files in a folder. To check all files anywhere under the content/posts folder that are either Markdown ( .md ) or MDX...\
+  tjaddison.com
+- [link](https://cspell.org/)\
+  CSpell\
+  \* Lightning Fast. Optimized for performance to handle large codebases with thousands of files. Spell check your entire project in ...\
+  CSpell
+
+# npm lib to align output in cli
+
+The best npm library to align text output in a CLI depends entirely on your layout goal: grid-based alignment, plain text alignment, or multi-column spacing. \[[1](https://www.npmjs.com/package/cli-table), [2](https://www.npmjs.com/package/ansi-align)]
+
+### 📊 For Tabular & Grid Layouts (Recommended)
+
+If you need to line up multiple fields or metrics side-by-side, a table utility is usually the cleanest approach.
+
+- **[cli-table3](https://www.npmjs.com/package/cli-table3)**: The standard choice for command-line tables. It supports alignment configurations (`left`, `right`, `center`) per column or cell, custom borders, and handles ANSI colors perfectly.
+- **[table](https://www.npmjs.com/package/cli-table)**: A highly-configurable table generator. It natively handles text wrapping, columns with explicit widths, and perfect border alignment.
+- **[@visulima/tabular](https://www.npmjs.com/package/@visulima/tabular)**: A modern alternative that includes full TypeScript support, smart truncation, word wrapping, and excellent Unicode/Emoji alignment tracking. \[[1](https://www.npmjs.com/package/cli-table), [2](https://www.npmjs.com/package/cli-table3), [3](https://www.npmjs.com/package/@visulima/tabular)]
+
+### 📝 For Block & Text Alignment
+
+If you have a paragraph or an generic block of text that needs positioning relative to the terminal space.
+
+- **[ansi-align](https://www.npmjs.com/package/ansi-align)**: Specifically handles center, left, or right text alignment for strings while completely ignoring ANSI escape color codes. Excellent if you use coloring libraries like `chalk` and want your formatting to stay intact.
+- **[word-wrap](https://www.npmjs.com/package/hongdown)**: Great for ensuring lines don't exceed a specific terminal width, giving you aligned boundaries for long descriptive text. \[[1](https://www.reddit.com/r/node/comments/a1tl3i/what%5Flibrary%5Fshould%5Fi%5Fuse%5Ffor%5Fcreating%5Fa%5Fcli/), [2](https://www.npmjs.com/package/ansi-align)]
+
+### 🔢 For Column and Layout Control
+
+If you want simple multi-column outputs without drawing explicit grid lines.
+
+- **[columnify](https://www.npmjs.com/package/cli)**: Best for converting object/key-value data into perfectly aligned vertical text columns. You can specify different options (like maximum and minimum width) per column header. \[[1](https://www.npmjs.com/package/@visulima/tabular)]
+
+***
+
+Which approach matches your use-case best? If you can share a quick mock-up of what you want your output to look like, I can give you the **exact implementation code** for it.
+
+- [link](https://www.reddit.com/r/node/comments/a1tl3i/what%5Flibrary%5Fshould%5Fi%5Fuse%5Ffor%5Fcreating%5Fa%5Fcli/)\
+  What library should I use for creating a CLI? : r/node - Reddit\
+  Nov 30, 2018 — I use yargs personally for no other reason other than it was the first I picked up. For cool colour output I recommend using chalk...\
+  Reddit·r/node
+- [link](https://www.npmjs.com/package/ansi-align)\
+  ansi-align - NPM\
+  Sep 27, 2021 — align-text with ANSI support for CLIs. Easily center- or right- align a block of text, carefully ignoring ANSI escape codes. E.g. ...\
+  NPM
+- [link](https://www.npmjs.com/package/cli-table)\
+  cli-table - NPM\
+  Dec 6, 2021 — CLI Table \* Customizable characters that constitute the table. \* Color/background styling in the header through colors.js. \* Colum...\
+  NPM
+
+Show all
+
+## You said: example
+
+Here are practical code examples for the three most common alignment use cases.
+
+### 1. Tabular Layout (`cli-table3`)
+
+Best for structured, multi-column rows like data grids. It preserves column alignment even when using terminal colors.
+
+javascript
+
+```
+import Table from 'cli-table3';
+import chalk from 'chalk';
+
+// Instantiate table with column alignment styles
+const table = new Table({
+  head: [chalk.cyan('ID'), chalk.cyan('Item Name'), chalk.cyan('Status')],
+  colAligns: ['left', 'left', 'right'], // Align each column
+  style: { head: [], border: [] }      // Clear default styles for a clean look
+});
+
+table.push(
+  ['#1024', 'Database Migration', chalk.green('SUCCESS')],
+  ['#1025', 'API Route Optimization', chalk.yellow('PENDING')],
+  ['#1026', 'Auth Refactor', chalk.red('FAILED')]
+);
+
+console.log(table.toString());
+```
+
+Use code with caution.
+
+### 2. Standard Text Alignment (`ansi-align`)
+
+Best for center-aligning headers or blocks of text. It correctly ignores ANSI color codes when calculating terminal widths.
+
+javascript
+
+```
+import ansiAlign from 'ansi-align';
+import chalk from 'chalk';
+
+const text = [
+  chalk.bold.bgBlue('  CLI Dashboard  '),
+  'Version 1.0.0',
+  chalk.dim('Connected to production')
+].join('\n');
+
+// Center align the entire block
+const centered = ansiAlign(text, { align: 'center' });
+
+console.log(centered);
+```
+
+Use code with caution.
+
+### 3. Key-Value Columns (`columnify`)
+
+Best for mapping JavaScript objects directly to columns without manual spacing logic.
+
+javascript
+
+```
+import columnify from 'columnify';
+import chalk from 'chalk';
+
+const data = {
+  "CPU Usage": "42%",
+  "Memory Allocation": "1.2 GB / 8.0 GB",
+  "Uptime": "14 days, 3 hours",
+  "Active Connections": "841"
+};
+
+const output = columnify(data, {
+  showHeaders: false, // Turn off column headers for a clean property list
+  config: {
+    // Treat the keys as a column and pad it up to 25 characters
+    key: { minWidth: 25 }
+  }
+});
+
+console.log(output);
+```
+
+Use code with caution.
+
+***
+
+To help you build this quickly, let me know:
+
+- What **type of data** are you displaying? (logs, metrics, menus?)
+- Do you need **word-wrapping** for long strings?
+- Do you want explicit **borders and lines**, or just clean spacing?
+
+## You said: example of what it does not how to write
+
+### 1. Tabular Layout (`cli-table3`)
+
+Best for data grids. It forces text into aligned columns with clean borders.
+
+text
+
+```
+┌───────┬────────────────────────┬─────────┐
+│ ID    │ Item Name              │ Status  │
+├───────┼────────────────────────┼─────────┤
+│ #1024 │ Database Migration     │ SUCCESS │
+│ #1025 │ API Route Optimization │ PENDING │
+│ #1026 │ Auth Refactor          │ FAILED  │
+└───────┴────────────────────────┴─────────┘
+```
+
+Use code with caution.
+
+### 2. Standard Text Alignment (`ansi-align`)
+
+Best for headings or blocks of text. It shifts lines to look balanced.
+
+text
+
+```
+       CLI Dashboard
+       Version 1.0.0
+  Connected to production
+```
+
+Use code with caution.
+
+### 3. Key-Value Columns (`columnify`)
+
+Best for lists or settings. It lines up the second column perfectly without any border boxes.
+
+text
+
+```
+CPU Usage                42%
+Memory Allocation        1.2 GB / 8.0 GB
+Uptime                   14 days, 3 hours
+Active Connections       841
+```
+
+Use code with caution.
+
+***
+
+Which visual style fits what you are building? I can help you **customize the borders**, add **terminal colors**, or handle **long text wrapping** for your choice.
+
 # how good is shell language
 
 Shell language is <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>unmatched as a system "glue" language</strong> for automating OS tasks, but it is notoriously <strong>poor and frustrating as a general-purpose programming language</strong></mark>. Whether it is "good" depends entirely on your use case. Google’s Shell Style Guide famously summarizes its limits by stating that if a script exceeds 100 lines or uses complex logic, it should be rewritten in a structured language like Python or Go. \[[1](https://www.reddit.com/r/linux/comments/1bn2cpk/to%5Fall%5Fexperts%5Fshell%5Fas%5Fa%5Fscripting%5Flanguage%5Fvs/), [2](https://dev.to/jmfayard/bash-is-a-terrible-programming-language-but-whats-the-alternative--oc2), [3](https://www.reddit.com/r/bash/comments/rj1l2f/is%5Fbash%5Fserious%5Fprogramming%5Flanguage%5For%5Fhas/), [4](https://news.ycombinator.com/item?id=26663135), [5](https://www.oilshell.org/cross-ref.html)]
@@ -744,6 +1225,769 @@ Are you evaluating these languages for a **specific environment**, like a low-po
   \
   \
   Naukri.com
+
+Show all
+
+# (?) google shell style guide
+
+Quick results from the web:
+
+[link](https://google.github.io/styleguide/shellguide.html?gl=us)
+
+**Shell Style Guide** - Google
+
+If you're writing single functions, **use lowercase and separate words with underscore**. If you're writing a package, separate package names with :: . However, ...
+
+GitHub·https://google.github.io
+
+[link](https://sites.ecmwf.int/docs/ifs-arpege-coding-standards/shell/guidelines/google.html)
+
+4\. **Google Shell Style Guide**
+
+The Google Shell Style Guide **provides an existing well-thought-out set of detailed guidelines** for shell scripting (and there are very few others to be found)
+
+ECMWF·https://sites.ecmwf.int
+
+The **[Google Shell Style Guide](https://google.github.io/styleguide/shellguide.html?gl=us)** is a comprehensive set of rules and best practices designed to keep Bash scripts clean, readable, and maintainable. \[[1](https://google.github.io/styleguide/shellguide.html?gl=us), [2](https://www.bashsupport.com/manual/google-style-guide/)]
+
+### Core Rule: When to Use Shell
+
+- **Maximum 100 lines**: If a script exceeds 100 lines, or relies on complex control logic, it should be rewritten in Python.
+- **Utility limit**: Shell should only be used for small utilities or simple wrapper scripts that mostly call other binaries with minimal data manipulation. \[[1](https://www.youtube.com/watch?v=Y%5FerZnIhgKg), [2](https://news.ycombinator.com/item?id=11837626), [3](https://google.github.io/styleguide/shellguide.html?gl=us)]
+
+### Execution & Environment
+
+- **Bash only**: `bash` is the only permitted shell scripting language for executables.
+- **Shebang line**: Every script must start exactly with `#!/bin/bash`. Do not use `#!/bin/sh` or `#!/usr/bin/env bash`. \[[1](https://news.ycombinator.com/item?id=11837626), [2](https://www.youtube.com/watch?v=Y%5FerZnIhgKg), [3](https://foo.zone/gemfeed/2021-05-16-personal-bash-coding-style-guide.html), [4](https://cgi.cse.unsw.edu.au/~cs2041/24T1/resources/shell%5Fstyle%5Fguide.html)]
+
+### Formatting Rules
+
+- **Indentation**: Use exactly **2 spaces** per indent level. Do not use tabs.
+- **Line length**: Maximum line length is **80 characters**.
+- **Pipelines**: If a pipeline spans multiple lines, split it by putting each pipe operator `|` on its own new line, indented by 2 spaces. \[[1](https://docs.cloud.google.com/shell/docs/cloud-shell-tutorials/style-guide?gl=us), [2](https://www.youtube.com/watch?v=Y%5FerZnIhgKg), [3](https://styles.goatbytes.io/lang/shell/), [4](https://foo.zone/gemfeed/2021-05-16-personal-bash-coding-style-guide.html)]
+
+### Naming Conventions
+
+- **Function names**: Use lowercase with underscores (`lower_with_under()`).
+- **Variable names**: Match the scope of the variable.
+  - **Global variables**: Use UPPERCASE with underscores (`GLOBAL_VAR`).
+  - **Local variables**: Use lowercase with underscores (`local_var`).
+- **File names**: Executables must use lowercase with underscores and **have no file extension** (e.g., `my_script`). Libraries must end in `.sh` and should not be executable. \[[1](https://www.reddit.com/r/programming/comments/8jm85w/googles%5Fbash%5Fstyle%5Fguide/), [2](https://www.bashsupport.com/manual/google-style-guide/), [3](https://github.com/rodrigobdz/styleguide-sh), [4](https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1252/resources/style%5Fguide.html), [5](https://github.com/guitarrapc/bash-styleguide)]
+
+### Coding Best Practices
+
+- **Local variables**: Always declare variables inside functions as `local` to avoid leaking into global scope.
+- **Variable quoting**: Always quote variable expansions, expressions containing command substitutions, and strings (e.g., `"$var"` or `"$(command)"`) to prevent issues with word splitting and globbing.
+- **Tests and evaluations**: Always prefer double brackets `[[ ... ]]` over single brackets `[ ... ]` or the `test` command.
+- **Command substitution**: Always use `$(command)` instead of backticks `command`.
+- **Separation of declaration and assignment**: When saving a command's output to a local variable, declare the local variable first, then assign to it on a separate line so that exit codes are not masked. \[[1](https://www.youtube.com/watch?v=Y%5FerZnIhgKg), [2](https://styles.goatbytes.io/lang/shell/), [3](https://www.reddit.com/r/linux/comments/3cuji3/precise%5Fbash%5Fshell%5Fstyle%5Fguide%5Fby%5Fgoogle/)]
+
+If you would like, I can help you **format an existing Bash script** to follow these rules, or **rewrite a script in Python** if it exceeds the length limit. Which one should we do? \[[1](https://www.youtube.com/watch?v=Y%5FerZnIhgKg)]
+
+- [link](https://google.github.io/styleguide/shellguide.html?gl=us)\
+  Shell Style Guide - Google\
+  When to use Shell. Shell should only be used for small utilities or simple wrapper scripts. While shell scripting isn't a developm...\
+  GitHub
+- [link](https://www.reddit.com/r/programming/comments/8jm85w/googles%5Fbash%5Fstyle%5Fguide/)\
+  Google's bash style guide : r/programming - Reddit\
+  May 15, 2018 — 8y ago. My major issue is with the XSLT side - you end up writing what is effectively an xml programming language, and it is an in...\
+  Reddit·r/programming
+- [link](https://news.ycombinator.com/item?id=11837626)\
+  Shell Style Guide from Google | Hacker News\
+  Jun 4, 2016 — > Bash is the only shell scripting language permitted for > executables. > \[...] > The only exception to this is where you're forc...\
+  Hacker News
+
+Show all
+
+# (?) does google write the style guide for virtually all popular programming languages
+
+No, Google does not write the style guide for virtually all popular programming languages. \[[1](https://www.zdnet.com/article/rust-programming-language-outlines-plan-for-updates-to-style-guide/)]
+
+While Google maintains highly influential style guides for many languages, most programming languages have official guides created by their own core development teams or community consensus. \[[1](https://medium.com/swlh/configuring-google-style-guide-for-java-for-intellij-c727af4ef248), [2](https://levelup.gitconnected.com/how-to-write-clean-code-in-any-programming-language-8739ccc34de5), [3](https://training.galaxyproject.org/training-material/topics/data-science/tutorials/python-linting/tutorial.html), [4](https://www.zdnet.com/article/rust-programming-language-outlines-plan-for-updates-to-style-guide/)]
+
+### Languages Where Google is NOT the Standard
+
+- **Python**: The definitive style guide is **PEP 8**, written by Python's creator, Guido van Rossum, and the core team.
+- **Rust**: The community relies entirely on the official **Rust Style Guide** and the automated tool `rustfmt`.
+- **Go (Golang)**: Created by Google, but the formatting standard is dictated by the language's built-in **`gofmt`** tool, not a separate document.
+- **JavaScript/TypeScript**: While Google has a guide, **Airbnb's style guide** is widely considered the industry standard for JavaScript.
+- **Java**: **Oracle** (previously Sun Microsystems) maintains the foundational Java Code Conventions, though Google's Java guide is a popular alternative.
+- **Swift**: **Apple** defines the official Swift API Design Guidelines.
+- **C#**: **Microsoft** establishes the official coding conventions for C#. \[[1](https://cjtu.github.io/spirl/python%5Fstyle.html), [2](https://carpentries-incubator.github.io/python-intermediate-development/15-coding-conventions.html), [3](https://dev.to/leapcell/go-coding-official-standards-and-best-practices-284k), [4](https://medium.com/@lrente/go-why-its-popular-and-which-languages-it-s-replacing-043c2549594e), [5](https://www.telerik.com/blogs/coding-style-guides-standardized-approach-writing-code)]
+
+### Where Google Style Guides Are Popular
+
+Google publishing open-source style guides for internal consistency that external developers widely adopt includes: \[[1](https://sourceforge.net/projects/google-style-guides.mirror/), [2](https://github.com/testdino-hq/google-styleguides-skills), [3](https://www.promptitude.io/post/essential-technical-writing-style-guides-explained-tips-for-consistent-scalable-docs)]
+
+- **C++**: The Google C++ Style Guide is highly influential in systems programming.
+- **Angular (TypeScript)**: Google's framework guidelines heavily shape community practices.
+- **HTML/CSS**: Their frontend guide is a common reference for web developers. \[[1](https://www.businessinsider.com/google-community-guidelines-no-politics-2019-8), [2](https://skillcrush.com/blog/where-to-start-learning-code/), [3](https://kinsta.com/blog/best-programming-language-to-learn/), [4](https://eluminoustechnologies.com/blog/top-10-web-programming-languages/)]
+
+If you are setting up styling for a project, tell me **which programming language** you are using, or if you want to know how to **automate code formatting** for your team.
+
+- [link](https://www.zdnet.com/article/rust-programming-language-outlines-plan-for-updates-to-style-guide/)\
+  Rust programming language outlines plan for updates to style guide\
+  Oct 7, 2022 — Every programming language has style guides and, if they're popular enough, they might have multiple style guides from major users...\
+  \
+  \
+  ZDNET
+- [link](https://medium.com/swlh/configuring-google-style-guide-for-java-for-intellij-c727af4ef248)\
+  Configuring Google Style Guide for Java for IntelliJ | by Reed Odeneal | The Startup\
+  Nov 11, 2020 — A style guide is a set of standards that development teams can implement to ensure consistency across projects for how code should...\
+  \
+  \
+  Medium
+- [link](https://levelup.gitconnected.com/how-to-write-clean-code-in-any-programming-language-8739ccc34de5)\
+  How to Write Clean Code in Any Programming Language\
+  May 7, 2025 — Every software development team usually adheres to a popular, well-defined code style guide or creates its own style guide documen...\
+  \
+  \
+  Level Up Coding
+
+Show all
+
+## You said: i mean the google style guide library repo, regardless how standard it is
+
+Ah, understood! You are talking about the central **[google/styleguide GitHub repository](https://github.com/google/styleguide)**. \[[1](https://github.com/google/styleguide)]
+
+Even inside that specific repository, **Google does not host guides for virtually all popular languages**, though it does aggregate a large and impressive collection of them.
+
+The repository is used to publish direct copies of Google's internal style standards. This helps external developers format their code appropriately when they contribute to Google-originated open-source projects. \[[1](https://chromium.googlesource.com/external/github.com/google/styleguide/+/8e2dc76c1b954830279d23e7ae6a457f85415479/README.md), [2](https://github.com/google/styleguide)]
+
+### What is actually in the `google/styleguide` repo?
+
+The repository contains full rulesets, configuration settings, or linters for a specific mix of programming and markup languages, including:
+
+- **Programming Languages**: C++, Python, Java, JavaScript, TypeScript, Shell (Bash), C#, R, Go, Swift, and Objective-C.
+- **Data & Configuration**: XML, JSON, and Protocol Buffers (Protobuf).
+- **Web & Documentation**: HTML/CSS and Markdown. \[[1](https://github.com/google/styleguide/blob/gh-pages/docguide/style.md), [2](https://google.github.io/styleguide/?gl=us), [3](https://github.com/google/styleguide/blob/gh-pages/pyguide.md), [4](https://google.github.io/styleguide/go/?gl=us), [5](https://google.github.io/styleguide/tsguide.html?gl=us), [6](https://gist.github.com/af1d6e1bb6d098f165ec), [7](https://google.github.io/styleguide/htmlcssguide.html?gl=us)]
+
+### Notable Popular Languages Left Out
+
+Several incredibly popular, modern, or enterprise-heavy programming languages are completely missing from the official repo because they are either not heavily utilized at Google, or Google defers strictly to external community tools. Missing languages include:
+
+- **Rust**: Completely missing. Google uses Rust heavily now but relies entirely on the community's `rustfmt` standard.
+- **PHP**: Not part of Google's core stack, so no style guide exists in the repo.
+- **Ruby**: Historically omitted from their main public styling matrix.
+- **Kotlin**: Though Google heavily backs Kotlin for Android, its styling documentation is typically managed through official Android Developer channels rather than this repository. \[[1](https://sourceforge.net/projects/google-style-guides.mirror/)]
+
+### Rules of Engagement for that Repo
+
+If you look at the repo's **README configuration guidelines**, Google explicitly states that **external contributions are not accepted**. They update the repo by copying over internal changes from Google's own private systems, strictly prioritizing their own internal engineering tradeoffs. \[[1](https://github.com/google/styleguide)]
+
+Are you planning to **clone the settings files** (like the IntelliJ, Eclipse, or Vim configs) from that repo for your own project? If so, let me know which IDE you use and I can explain how to import them! \[[1](https://google.github.io/styleguide/pyguide.html?gl=us)]
+
+- [link](https://google.github.io/styleguide/pyguide.html?gl=us)\
+  Google Python Style Guide\
+  Google Python Style Guide \* 1 Background. Python is the main dynamic language used at Google. This style guide is a list of dos an...\
+  GitHub
+- [link](https://google.github.io/styleguide/?gl=us)\
+  Google Style Guides | styleguide\
+  This project also contains google-c-style. el, an Emacs settings file for Google style. We used to host the cpplint tool, but we s...\
+  GitHub
+- [link](https://google.github.io/styleguide/tsguide.html?gl=us)\
+  Google TypeScript Style Guide\
+  Table of Contents. ... This guide is based on the internal Google TypeScript style guide, but it has been slightly adjusted to rem...\
+  GitHub
+
+Show all
+
+## You said: what's gofmt or rustfmt
+
+`gofmt` and `rustfmt` are official, automated code-formatting tools built directly by the creators of Go and Rust. \[[1](https://www.imaginarycloud.com/blog/rust-vs-go), [2](https://ideausher.com/blog/rust-vs-go/), [3](https://overexact.com/rust-for-professionals/)]
+
+Unlike traditional style guides that humans read and manually follow, these tools instantly rewrite your source code to match a single, non-negotiable community standard. They completely eliminate team arguments over code formatting. \[[1](https://dev.to/adamthedeveloper/go-vs-java-the-minimalist-vs-the-enterprise-veteran-1gg3), [2](https://news.ycombinator.com/item?id=25338446), [3](https://ideausher.com/blog/rust-vs-go/), [4](https://plus8soft.com/blog/rust-vs-golang/), [5](https://dev.to/jjpinto/the-power-of-idiomatic-go-what-makes-it-different-from-java-and-c-529h)]
+
+### What is `gofmt`?
+
+`gofmt` (pronounced "go-fmt") is a command-line tool included automatically with the Go programming language installation. \[[1](https://sparkbox.com/foundry/go%5Fvet%5Fgofmt%5Fgolint%5Fto%5Fcode%5Fcheck%5Fin%5FGo), [2](https://www.youtube.com/watch?v=O3GcXK38Ut4), [3](https://www.geeksforgeeks.org/go-language/auto-format-go-programming-language-source-code-with-gofmt/)]
+
+- **The Philosophy**: "Gofmt's style is no one's favorite, yet gofmt is everyone's favorite." \[[1](https://go.dev/talks/2015/gofmt-en.slide), [2](https://corrode.dev/learn/migration-guides/go-to-rust/)]
+- **Zero Configuration**: It has no configuration files. You cannot change the indentation size, line length limits, or brace placement rules. \[[1](https://www.reddit.com/r/golang/comments/1asdou2/is%5Fthere%5Fanything%5Flike%5Fpython%5Fblack%5Fa%5Fvery/)]
+- **Strict Uniformity**: Every Go developer in the world uses the exact same format. Code written by a beginner looks identical to code written by Go's creators. \[[1](https://tech-insider.org/rust-vs-go-2026-2/), [2](https://www.youtube.com/watch?v=O3GcXK38Ut4)]
+- **How it works**: Running `gofmt -w main.go` automatically rewrites the file with proper tabs and spacing.
+
+### What is `rustfmt`?
+
+`rustfmt` is the official code formatter developed by the Rust community. \[[1](https://rustprojectprimer.com/checks/formatting.html)]
+
+- **The Philosophy**: It aims to make Rust code easy to read and maintain while adhering to the official Rust Style Guide. \[[1](https://doc.rust-lang.org/edition-guide/rust-2024/rustfmt-style-edition.html), [2](https://www.reddit.com/r/rust/comments/11vheen/minimalist%5Frust%5Fformatter%5Fas%5Fan%5Falternative%5Fto/), [3](https://pub.towardsai.net/rustic-learning-machine-learning-in-rust-part-1-introduction-to-rust-1a4a7f354fe9), [4](https://codilime.com/blog/why-is-rust-programming-language-so-popular/)]
+- **Slightly Flexible**: Unlike `gofmt`, `rustfmt` allows for a few minor style tweaks via a configuration file called `rustfmt.toml`. However, most projects stick strictly to the defaults. \[[1](https://www.reddit.com/r/rust/comments/9jl6a9/pro%5Ftip%5Fif%5Fyou%5Fuse%5Fcargo%5Ffmtrustfmt%5Fuse%5Fa/), [2](https://zerotohero.dev/roadmap/learning-rust/), [3](https://dev.to/jerryhue/setting-up-rustfmt-and-clippy-1ome), [4](https://internals.rust-lang.org/t/forced-rustfmt-is-a-roadblock-to-contributing/11913), [5](https://dev.to/jerryhue/setting-up-rustfmt-and-clippy-1ome)]
+- **Integration**: It is tightly woven into the Rust ecosystem. Developers typically run it using the Rust package manager by typing `cargo fmt` in their terminal. \[[1](https://zerotohero.dev/roadmap/learning-rust/), [2](https://github.com/rust-lang/rustfmt/issues/4333), [3](https://neerajsnawale.medium.com/rust-programming-language-and-how-to-execute-rust-code-using-dockerfile-6602a32b5864)]
+
+### The Big Shift in Modern Programming \[[1](https://dev.to/tomastomas/zig-wants-to-replace-go-and-rust-does-it-have-what-it-takes-2412)]
+
+Older languages like C++, Java, and Python rely on text documents (like the Google Style Guide or PEP 8) that require humans to review code formatting or manually configure external linters.
+
+Modern languages like Go, Rust, and Zig bundle automated formatters directly into the language tools. Most developers configure their code editors (like VS Code or IntelliJ) to run `gofmt` or `rustfmt` **automatically every single time they save a file**. \[[1](https://questdb.com/blog/leveraging-rust-in-our-high-performance-java-database/), [2](https://gds-way.digital.cabinet-office.gov.uk/manuals/programming-languages/go.html), [3](https://zerotohero.dev/roadmap/learning-rust/)]
+
+Would you like to know how to **set up your editor to auto-format** on save, or are you curious about **similar tools for other languages** like JavaScript or Python?
+
+- [link](https://www.imaginarycloud.com/blog/rust-vs-go)\
+  Rust Vs. Go: Differences and Similarities\
+  Mar 28, 2023 — Rust and Go include standard formatting tools: gofmt for Go and rustfmt for Rust. These tools take the hassle of writing code, rew...\
+  \
+  \
+  Imaginary Cloud
+- [link](https://ideausher.com/blog/rust-vs-go/)\
+  Rust vs Go: detailed comparison guide | Idea Usher\
+  Dec 10, 2021 — While using C, the first thing you consider is where to put the brackets. Both Go and Rust has standard formatting tools, making t...\
+  \
+  \
+  Idea Usher
+- [link](https://overexact.com/rust-for-professionals/)\
+  Rust for professionals\
+  The equivalent for prettier or gofmt is rustfmt, which automatically formats code based on the official Rust style guide.\
+  \
+  overexact.com
+
+Show all
+
+## You said: why not all prettier
+
+While **Prettier** is incredibly popular for web development, it cannot be used for every language due to foundational, technical, and cultural reasons.
+
+### 1. Language Support and Ecosystem
+
+Prettier was built specifically for the web ecosystem. It natively supports JavaScript, TypeScript, HTML, CSS, JSON, and Markdown. It does not support languages like Go, Rust, C++, or Python out of the box. While third-party community plugins exist for some of these languages, they are often less mature or harder to configure.
+
+### 2. Built-In Language Tooling
+
+Modern languages explicitly include their own formatters (`gofmt` for Go, `rustfmt` for Rust, `dotnet format` for C#) directly inside the official language installation.
+
+- **No Extra Installs:** Developers do not need to install Node.js or `npm` just to run Prettier on a Go project.
+- **First-Party Support:** The official tools are updated instantly whenever the language creators introduce new syntax features.
+
+### 3. Syntax Awareness and Deep Parsing
+
+A universal tool like Prettier uses a generic parsing approach. Specialized tools understand the unique rules of their specific language much better.
+
+- **Rust Macros:** `rustfmt` understands how to format highly complex Rust macros.
+- **Go Concurrency:** `gofmt` is designed around Go's unique structural alignment rules.
+
+### 4. Philosophy: Code Formatting vs. AST Rewriting
+
+Prettier is an "opinionated" formatter that completely parses code into an Abstract Syntax Tree (AST) and prints it from scratch, sometimes changing line breaks aggressively.
+
+- Many backend languages prefer "linters" or native formatters that respect the developer's original line intent while simply fixing whitespace, indentation, and brace placements.
+
+### When Prettier IS the Standard
+
+Prettier remains the absolute king of frontend development. It is the default choice for **JavaScript, TypeScript, JSX, HTML, CSS, Vue, and Angular** because the web ecosystem historically lacked a single, official, built-in tool.
+
+Are you looking to set up a **multi-language repository** (monorepo), or do you want to see how to **combine Prettier with other formatters** in your editor?
+
+# (?) gofmt style
+
+The **`gofmt` style** is <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">the official, non-configurable style guide for the Go programming language</mark>, enforced mechanically by the built-in [gofmt command utility](https://pkg.go.dev/cmd/gofmt). Go purposefully eliminates debates over code layout by providing only one canonical format. As the popular [Go Proverbi](https://go-proverbs.github.io/) states: _"Gofmt's style is no one's favorite, yet gofmt is everyone's favorite."_ \[[1](https://go.dev/blog/gofmt), [2](https://blog.skopow.ski/gofmt-and-goimports-small-tools-big-difference), [3](https://github.com/golang/go/issues/40028), [4](https://www.reddit.com/r/golang/comments/u666hl/coding%5Fstyle%5Fdedicated%5Fby%5Fgofmt/), [5](https://go-proverbs.github.io/)]
+
+### Core Layout Rules Enforced by Gofmt
+
+- **Indentation**: It uses **tabs** for indentation and **spaces** for alignment.
+- **Brace Placement**: The opening brace `{` must stay on the same line as the statement (e.g., `func`, `if`, `for`). It never goes on its own line.
+- **Column Alignment**: It automatically aligns consecutive lines of structurally similar declarations, such as struct fields, variable definitions, and map keys.
+- **Spacing**: It removes unnecessary whitespace inside parentheses, brackets, and around operators based on operator precedence.
+- **Semicolons**: It strips away redundant trailing semicolons since Go inserts them automatically during compilation. \[[1](https://pkg.go.dev/cmd/gofmt), [2](https://groups.google.com/g/golang-nuts/c/nokmz5e1HIQ?gl=us), [3](https://www.geeksforgeeks.org/go-language/auto-format-go-programming-language-source-code-with-gofmt/), [4](https://go.dev/blog/gofmt), [5](https://users.rust-lang.org/t/what-do-you-think-about-gofmt-vs-rustfmt/51605)]
+
+### Essential Commands
+
+You can execute formatting directly through the terminal using the gofmt tool or its shorthand `go fmt` wrapper: \[[1](https://go.dev/blog/gofmt), [2](https://pkg.go.dev/cmd/gofmt), [3](https://stackoverflow.com/questions/47735678/goland-how-to-use-gofmt), [4](https://www.youtube.com/watch?v=O3GcXK38Ut4)]
+
+- **Format and overwrite a file**:\
+  bash
+
+<!---->
+
+```
+gofmt -w main.go
+```
+
+Use code with caution.
+
+- **Format an entire directory recursively**:\
+  bash
+
+<!---->
+
+```
+gofmt -w .
+```
+
+Use code with caution.
+
+- **List files that do not conform to the style**:\
+  bash
+
+<!---->
+
+```
+gofmt -l .
+```
+
+Use code with caution.
+
+- **Simplify code automatically** (replaces certain complex constructs with simpler, idiomatic ones):\
+  bash
+
+<!---->
+
+```
+gofmt -s -w .
+```
+
+Use code with caution.\
+\[[1](https://blog.skopow.ski/gofmt-and-goimports-small-tools-big-difference), [2](https://pkg.go.dev/cmd/gofmt), [3](https://blog.skopow.ski/gofmt-and-goimports-small-tools-big-difference), [4](https://go.dev/blog/gofmt)]
+
+### Tooling Variations
+
+- **`go fmt`**: A high-level wrapper command that under the hood executes `gofmt -l -w` on specified packages.
+- **`goimports`**: A highly popular community tool that applies identical [gofmt style](https://go.dev/blog/gofmt) rules but also automatically adds missing import paths and removes unused ones. \[[1](https://www.youtube.com/watch?v=O3GcXK38Ut4), [2](https://medium.com/@mecope21/getting-better-at-golang-gofmt-32fb4a143863), [3](https://go.dev/wiki/CodeReviewComments), [4](https://encode64.com/en/formatters/go-formatter)]
+
+Most modern code editors (like VS Code, GoLand, and Vim) are designed to run `gofmt` or `goimports` automatically every time you save your file. \[[1](https://go.dev/blog/gofmt), [2](https://www.jetbrains.com/guide/go/tips/run-gofmt-after-builtin-formatter/), [3](https://www.reddit.com/r/golang/comments/w01mjj/is%5Fthere%5Fany%5Freason%5Fnot%5Fto%5Fuse%5Fgo%5Ffmt/), [4](https://gds-way.digital.cabinet-office.gov.uk/manuals/programming-languages/go.html)]
+
+If you are trying to clean up a specific block of code or want to see the formatting tool in action, let me know! I can **format a code snippet** for you or explain how to **integrate gofmt into your specific IDE or CI/CD workflow**. \[[1](https://utcc.utoronto.ca/~cks/space/blog/programming/GoWhyGofmtAccepted)]
+
+- [link](https://go.dev/blog/gofmt)\
+  go fmt your code - The Go Programming Language\
+  Jan 23, 2013 — Introduction. Gofmt is a tool that automatically formats Go source code. Gofmt'd code is: easier to write: never worry about minor...\
+  The Go Programming Language
+- [link](https://www.reddit.com/r/golang/comments/u666hl/coding%5Fstyle%5Fdedicated%5Fby%5Fgofmt/)\
+  Coding Style Dedicated by gofmt : r/golang - Reddit\
+  Apr 18, 2022 — seminally\_me. • 4y ago. I think the fact that if a function doesn't return anything is explicit enough, without also having to add...\
+  Reddit·r/golang
+- [link](https://groups.google.com/g/golang-nuts/c/nokmz5e1HIQ?gl=us)\
+  google code style is the same as gofmt in go codes?\
+  Sep 13, 2022 — On Tue, Sep 13, 2022 at 3:55 PM Moein Halvaei wrote: When I read codes from https://cs.opensource.google/go, indents are 2 spaces ...\
+  Google Groups
+
+Show all
+
+# (?) rustfmt style
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">The default </span><strong><code dir="ltr" style="font-size: 14px; margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 1px solid rgb(44, 46, 53);">rustfmt</code> style follows the official <span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><a rel="noopener" href="https://doc.rust-lang.org/style-guide/" style="font-weight: 500; margin: 0px; text-decoration-thickness: 1px; text-decoration-style: solid; text-decoration-color: rgb(153, 195, 255); border-bottom: 0px none rgb(153, 195, 255);">Rust Style Guide</a></span></strong>, which is established through the open RFC process to maintain formatting consensus across the entire ecosystem</mark>. \[[1](https://doc.rust-lang.org/style-guide/), [2](https://bazelbuild.github.io/rules%5Frust/rust%5Ffmt.html)]
+
+### Core Style Defaults
+
+- **Indentation**: 4 spaces for blocks, tabs are not used.
+- **Line Width**: Max width defaults to 100 characters per line.
+- **Brace Vibe**: Opening braces `{` go on the same line as the statement, with a space preceding them.
+- **Trailing Commas**: Added automatically on multi-line structures like structs, enums, and match arms. \[[1](https://www.reddit.com/r/rust/comments/2ykaar/completing%5Frustfmt%5Fand%5Fthe%5Frust%5Fstyle%5Fguidelines/), [2](https://internals.rust-lang.org/t/completing-rustfmt-and-the-rust-style-guidelines/1685?page=2), [3](https://rust-lang.github.io/rustfmt/?version=v1.4.36\&search=), [4](https://docs.kernel.org/rust/coding-guidelines.html), [5](https://www.zdnet.com/article/rust-programming-language-outlines-plan-for-updates-to-style-guide/)]
+
+***
+
+### Configuration File (`rustfmt.toml`) \[[1](https://rust-lang.github.io/rustfmt/)]
+
+You can tweak the formatter's settings by placing a configuration file named `rustfmt.toml` or `.rustfmt.toml` in your project's root folder. \[[1](https://medium.com/@fredrikanderzon/rust-code-style-and-rustfmt-4f69fbd87c18), [2](https://rust-lang.github.io/rustfmt/)]
+
+toml
+
+```
+# Example rustfmt.toml
+max_width = 100
+hard_tabs = false
+tab_spaces = 4
+edition = "2021"
+```
+
+Use code with caution.
+
+- **Stable vs Unstable Options**: Standard options work out of the box. Advanced tweaks (like `group_imports = "StdExternalCrate"`) require the Nightly Rust toolchain and setting `unstable_features = true`. \[[1](https://blog.rust-lang.org/inside-rust/2022/09/29/announcing-the-rust-style-team.html), [2](https://rust-lang.github.io/rustfmt/)]
+
+***
+
+### Style Editions
+
+Starting with Rust 2024, the style guide uses **Style Editions**. This allows the formatting engine to fix bugs and improve default styles without accidentally ruining formatting checks in older projects. \[[1](https://doc.rust-lang.org/edition-guide/rust-2024/rustfmt-style-edition.html), [2](https://rust-lang.github.io/rfcs/3338-style-evolution.html), [3](https://blog.rust-lang.org/inside-rust/2022/09/29/announcing-the-rust-style-team.html)]
+
+- By default, `cargo fmt` hooks the style rules directly to the `edition` key inside your `Cargo.toml`.
+- You can force a modern formatting engine globally by setting `style_edition = "2024"` in your config file. \[[1](https://github.com/rust-lang/rustfmt), [2](https://doc.rust-lang.org/edition-guide/rust-2024/rustfmt-style-edition.html)]
+
+***
+
+### Ignoring Specific Elements
+
+If you want to prevent `rustfmt` from breaking or flattening a custom, carefully crafted block of code, you can use attributes to exclude it: \[[1](https://medium.com/@fredrikanderzon/rust-code-style-and-rustfmt-4f69fbd87c18)]
+
+rust
+
+```
+// Skip an entire function or block
+#[rustfmt::skip]
+fn macro_or_matrix_layout() {
+    let matrix = [
+        1, 0, 0,
+        0, 1, 0,
+        0, 0, 1
+    ];
+}
+```
+
+Use code with caution.
+
+Are you looking to **customize specific formatting behavior** (like import sorting or argument wrapping), or are you trying to **set up format-on-save** in your IDE?
+
+- [link](https://doc.rust-lang.org/edition-guide/rust-2024/rustfmt-style-edition.html)\
+  Rustfmt: Style edition - The Rust Edition Guide\
+  The 2024 Edition of the Style Guide also includes enhancements to the Style Guide which are detailed elsewhere in this Edition Gui...\
+  Rust Documentation
+- [link](https://www.reddit.com/r/rust/comments/2ykaar/completing%5Frustfmt%5Fand%5Fthe%5Frust%5Fstyle%5Fguidelines/)\
+  Completing rustfmt and the Rust style guidelines - Reddit\
+  Mar 10, 2015 — I am an avid user of clang-format. I love not having to care about formatting when writing C++. I just write the code, then have c...\
+  Reddit·r/rust
+- [link](https://internals.rust-lang.org/t/completing-rustfmt-and-the-rust-style-guidelines/1685?page=2)\
+  Completing rustfmt and the Rust style guidelines - Page 2\
+  Mar 5, 2015 — As Ralph Waldo Emerson said, “A foolish consistency is the hobgoblin of little minds, adored by little statesmen and philosophers ...\
+  Rust Internals
+
+Show all
+
+# can i pnpm add -g foo and it has more than one command
+
+Yes. When you install a global package using , pnpm automatically links **all** executable commands defined by that package into your global bin directory.
+
+### How It Works
+
+- **Package Configuration**: The package creator defines commands in their `package.json` under the `"bin"` field.
+- **Single Command**: If `"bin"` is a string, it maps to one command matching the package name.
+- **Multiple Commands**: If `"bin"` is an object, it maps multiple keys to different script files.
+- **pnpm Behavior**: pnpm reads this object and creates separate global symlinks for every single key listed.
+
+### Example
+
+If a package named `foo` has this in its `package.json`:
+
+json
+
+```
+{
+  "name": "foo",
+  "bin": {
+    "foo": "./bin/index.js",
+    "bar": "./bin/bar.js",
+    "baz": "./bin/baz.js"
+  }
+}
+```
+
+Use code with caution.
+
+Running `pnpm add -g foo` will instantly give you access to three distinct terminal commands: `foo`, `bar`, and `baz`.
+
+To help you troubleshoot or set this up, let me know:
+
+- Are you **creating a package** and want to expose multiple commands?
+- Are you **installing an existing package** and certain commands are missing?
+- Do you need to find **where pnpm stores** these global commands on your system?
+
+## You said: i want multiple commands, for example, myfoocli, and foo as an alias. no zshrc needed, alias out of the box
+
+To provide multiple commands or aliases out of the box without touching `.zshrc`, you must define them directly inside your package's `package.json` file using the `"bin"` object.
+
+### Configuration Step
+
+Set up your `package.json` to map both the main command and your desired alias to your executable script files:
+
+json
+
+```
+{
+  "name": "myfoocli",
+  "version": "1.0.0",
+  "bin": {
+    "myfoocli": "./bin/index.js",
+    "foo": "./bin/index.js"
+  }
+}
+```
+
+Use code with caution.
+
+### Critical Requirements
+
+- **Same Target**: Point both keys (`myfoocli` and `foo`) to the exact same JavaScript file.
+- **Shebang Line**: Ensure `./bin/index.js` starts with `#!/usr/bin/env node` so the system knows how to run it.
+- **Execution Permissions**: Ensure your script file has execute permissions (`chmod +x ./bin/index.js`) before publishing or linking.
+
+When users run , pnpm will automatically create two separate global symlinks. Both commands will work instantly in any shell.
+
+If you are ready to test or build this, let me know:
+
+- Do you want to **test this locally** on your machine without publishing it first?
+- Do you need your script to **detect which alias** the user typed (`foo` vs `myfoocli`) to change its behavior?
+- Do you need help parsing **arguments and flags** for these commands?
+
+## You said: can the file be empty
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">No, the file </span><strong>cannot</strong> be completely empty</mark>.
+
+An empty file will fail to execute for two critical reasons:
+
+### 1. Missing interpreter
+
+Your operating system needs to know which program should run the file. Without the `#!/usr/bin/env node` shebang line at the very top, the terminal will try to run it as a standard shell script instead of a JavaScript file, resulting in syntax errors.
+
+### 2. Immediate exit
+
+An empty file contains no logic. Even if you include the shebang line, the command will instantly exit without doing anything or giving any feedback to the user.
+
+### Minimum Required Content
+
+To make your commands work and verify they are linked correctly, your `./bin/index.js` file should contain at least these two lines:
+
+javascript
+
+```
+#!/usr/bin/env node
+console.log("CLI is working!");
+```
+
+Use code with caution.
+
+If you are setting up this script, let me know:
+
+- Do you want to see how to **locally link** this file right now to test it?
+- Do you need a starter template for handling **help menus or flags**?
+
+## You said: how to get stdin, args, how to stdout or stderr, does stdout work the same as console log
+
+Here is how to handle inputs, outputs, and arguments in your Node.js CLI.
+
+### 1. Arguments (args)
+
+Use `process.argv` to capture command-line arguments. It returns an array.
+
+- `process.argv[0]`: The path to the Node.js executable.
+- `process.argv[1]`: The path to your script file.
+- `process.argv.slice(2)`: An array containing only the actual arguments passed by the user.
+
+javascript
+
+```
+#!/usr/bin/env node
+const args = process.argv.slice(2);
+console.log("Your arguments:", args);
+// Running: foo build --force -> ["build", "--force"]
+```
+
+Use code with caution.
+
+### 2. Standard Input (stdin)
+
+To read piped data (e.g., `echo "hello" | foo`), you must read from `process.stdin`. The easiest way is to read the entire stream into memory:
+
+javascript
+
+```
+#!/usr/bin/env node
+import { readFileSync } from 'fs';
+
+try {
+  // Read all piped input at once (0 represents stdin)
+  const input = readFileSync(0, 'utf-8');
+  console.log("Received stdin:", input);
+} catch (error) {
+  // Throws an error if no stdin was piped
+  console.log("No stdin provided.");
+}
+```
+
+Use code with caution.
+
+### 3. Standard Output (stdout) vs `console.log`
+
+Yes, `console.log` works almost exactly the same as writing to `process.stdout`. Under the hood, `console.log` formats your text and passes it directly to `process.stdout.write()`.
+
+The only key differences are:
+
+- **Newlines**: `console.log()` automatically adds a newline (`\n`) at the end. `process.stdout.write()` does not.
+- **Data Types**: `console.log()` automatically turns objects and numbers into strings. `process.stdout.write()` only accepts strings or buffers.
+
+javascript
+
+```
+// These two lines produce the exact same output:
+console.log("Hello");
+process.stdout.write("Hello\n");
+```
+
+Use code with caution.
+
+### 4. Standard Error (stderr)
+
+Always send error messages to `process.stderr` instead of `console.log`. This allows users to separate normal program output from error logs in their terminal.
+
+javascript
+
+```
+#!/usr/bin/env node
+
+if (somethingWentWrong) {
+  // Prints to stderr and does not pollute stdout
+  process.stderr.write("Error: Something went wrong!\n");
+
+  // Exit the process with a failure code (anything other than 0)
+  process.exit(1);
+}
+```
+
+Use code with caution.
+
+Would you like to see how to use a library like **`commander`** or **`yargs`** to easily parse flags like `-v` or `--help`?
+
+## You said: does console log have some special debug features, like when you log an object the interpretter format and style
+
+Yes, `console.log` has built-in formatting features, but it relies on **Node.js**, not the browser interpreter, when running in a CLI. \[[1](https://bugfender.com/blog/javascript-console-log/), [2](https://trailhead.salesforce.com/trailblazer-community/feed/0D54S00000HEojjSAD)]
+
+Node.js automatically formats and styles your data to make it readable in the terminal.
+
+### 1. Automatic Object Inspection
+
+If you pass a plain JavaScript object or array to `console.log`, Node.js automatically formats it with syntax highlighting, indentation, and colors based on your data types (e.g., strings are green, numbers are yellow).
+
+javascript
+
+```
+const user = { name: "Alice", age: 30, active: true };
+console.log(user);
+// Outputs a beautifully indented, color-coded object in your terminal
+```
+
+Use code with caution.
+
+### 2. String Substitution (Printf-style)
+
+`console.log` supports formatting placeholders, allowing you to style or inject values dynamically: \[[1](https://medium.com/@s.atmaramani/understanding-console-methods-log-warn-debug-in-javascript-8275831f4251), [2](https://www.j-labs.pl/en/tech-blog/how-to-debug-javascript-code-in-a-browser/), [3](https://dev.to/odopeter/mastering-the-javascript-console-log-method-your-ultimate-guide-to-error-free-debugging-2j00)]
+
+- `%o` or `%O`: Force-formats an object with full inspection styling.
+- `%s`: Formats the input as a string.
+- `%d`: Formats the input as a number. \[[1](https://dmitripavlutin.com/console-log-tips/), [2](https://www.educative.io/answers/how-to-format-messages-in-consolelog-in-javascript), [3](https://www.educative.io/answers/what-is-consolelog-in-javascript)]
+
+javascript
+
+```
+console.log("User data: %O", user);
+```
+
+Use code with caution.
+
+### 3. Deep Object Inspection (`console.dir`) \[[1](https://www.timcosta.io/printing-out-entire-javascript-objects/)]
+
+By default, `console.log` stops expanding objects if they are nested deeper than 2 levels, showing `[Object]` instead. To bypass this and inspect deeply nested objects with custom formatting, use `console.dir` with options: \[[1](https://stackoverflow.com/questions/44444601/node-js-console-log-does-not-show-items-in-array-but-instead-shows-object), [2](https://react-native-10x-faster.com/debug/console-log), [3](https://www.timcosta.io/printing-out-entire-javascript-objects/), [4](https://blog.stackademic.com/stop-overusing-console-log-heres-why-and-better-alternatives-e5e05ea69e75)]
+
+javascript
+
+```
+const deepObject = { a: { b: { c: { d: "secret" } } } };
+
+console.dir(deepObject, {
+  depth: null,  // Infinite depth, show everything
+  colors: true  // Force terminal colors
+});
+```
+
+Use code with caution.
+
+### 4. Custom Visual Styling (ANSI Colors) \[[1](https://rich.readthedocs.io/en/latest/console.html)]
+
+Unlike the browser where you can use `%c` and CSS styling, Node.js terminals require **ANSI escape codes** for custom colors. You can write them manually, or use standard CLI libraries to make your logs pop: \[[1](https://dmitripavlutin.com/console-log-tips/), [2](https://blog.logrocket.com/using-console-colors-node-js/), [3](https://www.geeksforgeeks.org/node-js/how-to-set-node-js-console-font-color/)]
+
+javascript
+
+```
+// Manual ANSI code for Cyan text
+console.log("\x1b[36m%s\x1b[0m", "This text is cyan!");
+```
+
+Use code with caution.
+
+Would you like to see how to use a popular library like **`chalk`** or **`yoctocolors`** to add clean terminal styling without memorizing ANSI codes?
+
+- [link](https://bugfender.com/blog/javascript-console-log/)\
+  JavaScript Console Log: Best Logging Techniques\
+  Apr 11, 2023 — Formatting console log messages If you want, you can go a bit funky with the log message formatting and styling in the browser con...\
+  \
+  \
+  Bugfender
+- [link](https://trailhead.salesforce.com/trailblazer-community/feed/0D54S00000HEojjSAD)\
+  Console logs in controllers, | Salesforce Trailblazer Community\
+  Aug 10, 2022 — Request log Also, the reason console. log() doesn't work it's because the object console isn't available in B2C Commerce Cloud in ...\
+  \
+  Trailhead
+- [link](https://medium.com/@s.atmaramani/understanding-console-methods-log-warn-debug-in-javascript-8275831f4251)\
+  Understanding console Methods (log, warn, debug) in JavaScript\
+  Dec 8, 2024 — 5. Bonus: console. log with Formatting console. log supports placeholders like %s, %d, %o, and %c for custom logging and styles.\
+  \
+  \
+  Medium
+
+Show all
+
+## You said: does stdout have these
+
+No. `process.stdout.write()` does **not** have any of these automatic formatting or styling features. \[[1](https://flexiple.com/python/how-to-print-python-stderr-and-stdout), [2](https://www.linkedin.com/posts/jatin-sharma69%5Funderstanding-the-difference-between-processstdoutwrite-activity-7360157956346130433-6BMp)]
+
+It is a low-level, raw stream that only accepts strings or buffers.
+
+### What happens with `process.stdout.write()`?
+
+- **No Object Formatting**: If you pass an object, it will throw an error or print `[object Object]` because it cannot automatically stringify it.
+- **No Placeholders**: It does not recognize placeholders like `%O` or `%s`. It treats them as literal text.
+- **No Depth Handling**: It does not inspect nested properties. \[[1](https://www.scaler.com/topics/nodejs/console-in-nodejs/), [2](https://www.geeksforgeeks.org/node-js/difference-between-process-stdout-write-and-console-log-in-node-js/)]
+
+### Comparison Example
+
+To get the same output from `process.stdout.write()` that you get automatically from `console.log`, you have to format the data manually using Node's internal inspector module (`util`):
+
+javascript
+
+```
+import util from 'util';
+
+const user = { name: "Alice", age: 30 };
+
+// 1. The easy way (Automatic formatting, colors, and trailing newline)
+console.log(user);
+
+// 2. The manual way (Required to get identical output via stdout)
+const formatted = util.inspect(user, { colors: true }) + '\n';
+process.stdout.write(formatted);
+```
+
+Use code with caution.
+
+### When should you use `process.stdout.write()` instead?
+
+Use it only when you want **raw, untouched output**, such as: \[[1](https://www.linkedin.com/posts/jatin-sharma69%5Funderstanding-the-difference-between-processstdoutwrite-activity-7360157956346130433-6BMp)]
+
+- Printing **progress bars** or loaders where you need to overwrite the same line without adding a newline.
+- Streaming raw **binary data or files** directly to another terminal command via pipes (e.g., `foo > image.png`). \[[1](https://www.linkedin.com/posts/jatin-sharma69%5Funderstanding-the-difference-between-processstdoutwrite-activity-7360157956346130433-6BMp)]
+
+If you're building out your CLI layout, let me know:
+
+- Do you need to create a dynamic **loading spinner** or **progress bar** on a single line?
+
+- Do you want to see how to pipe **raw file data** out of your CLI?
+
+- [link](https://flexiple.com/python/how-to-print-python-stderr-and-stdout)\
+  How to Print to stderr and stdout in Python?\
+  Mar 21, 2024 — The sys. stdout. write() method does not automatically add a newline at the end of the output, unlike print() . Therefore, if a ne...\
+  \
+  \
+  Flexiple
+
+- [link](https://www.linkedin.com/posts/jatin-sharma69%5Funderstanding-the-difference-between-processstdoutwrite-activity-7360157956346130433-6BMp)\
+  Node.js: process.stdout.write vs console.log | Jatin Sharma posted on the topic\
+  Aug 9, 2025 — process. stdout. write Does not add a newline automatically; you control when to insert \n. Outputs raw data exactly as specified.\
+  \
+  \
+  LinkedIn
+
+- [link](https://www.scaler.com/topics/nodejs/console-in-nodejs/)\
+  A Deep Dive into Console\
+  Mar 6, 2023 — The process. stdout is a node js process object that is used to print to the screen. It is used below. Output : The write(...) met...\
+  \
+  \
+  Scaler
 
 Show all
 
