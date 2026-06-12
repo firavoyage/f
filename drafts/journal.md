@@ -28389,7 +28389,7 @@ seems uee paper is leaked during the exam, by photo taking. <!-- which is common
 
 20 00 play pink floyd. <!-- calm. beautiful. i have not played it for a while. -->
 
-10
+11
 
 15 20 write humility/legacy/readme.
 
@@ -28400,6 +28400,10 @@ seems uee paper is leaked during the exam, by photo taking. <!-- which is common
 20 40 separate repo save and repo sync. <!-- from a unified push -->
 
 more resilient and flexible
+
+12
+
+16 40 dl `The Mythical Man-Month: Essays on Software Engineering` `The Cathedral and the Bazaar`.
 
 
 
