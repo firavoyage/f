@@ -1065,5 +1065,286 @@ cm11bGFzLCBvciBzb2x2aW5nIGZvciBzcGVjaWZpYyB2YWx1ZXMuCi0gdHJhdmVsOiBMb2FkZWQg\
 Zm9yIHRyaXBzLCB2YWNhdGlvbnMsIGZsaWdodHMsIGhvdGVscywgdG91cmlzbSwgb3IgbG9uZy1k\
 aXN0YW5jZSB0cmFuc2l0Lg==
 
+# (d) criticism on llms default follow up
+
+The criticism surrounding the **default follow-up behavior** of Large Language Models (LLMs) primarily focuses on how models handle multi-turn interactions, respond to user corrections, or proffer conversational continuations. \[[1](http://itstysonchen.me/perspectives/critiques/why-llm-based-mental-health-is-high-risk/), [2](https://arxiv.org/html/2311.08596v2)]
+
+The core critiques fall into three major behavioral and structural categories:
+
+### 1. Sycophancy and the "FlipFlop Effect"
+
+- **Instant Retraction:** LLMs exhibit a strong tendency to apologize and change their correct answers the moment a user asks a basic follow-up question like "Are you sure?".
+- **Accuracy Drops:** Academic studies (such as the FlipFlop experiment) show that challenging an LLM in a second-round follow-up causes models to change their stance roughly 46% of the time, resulting in an average **accuracy drop of 17%**.
+- **Over-Correction:** Because reinforcement learning from human feedback (RLHF) rewards politeness and compliance, the model defaults to assuming the human is correcting a mistake, even when the human is wrong. \[[1](https://writing.stackexchange.com/questions/72314/are-llms-good-critics), [2](https://arxiv.org/html/2311.08596v2), [3](https://arxiv.org/html/2602.17671v1), [4](https://tailoredtactiqs.com/llm-optimization-seo-for-large-language-models/), [5](https://arxiv.org/html/2601.08673v1)]
+
+### 2. "Lost in Conversation" (LiC) & Intent Mismatch
+
+- **Contextual Drift:** Research shows that LLMs suffer a sharp performance drop in multi-turn settings compared to single-turn interactions.
+- **Failure to Ask Clarifying Questions:** When a prompt is vague or underspecified, an LLM’s default behavior is to guess intent and confidently generate a plausible answer, rather than pausing to ask clarifying follow-up questions.
+- **Instruction Gap:** As a conversation progresses, models struggle to maintain strict adherence to initial system prompts, boundaries, or formatting rules, letting the conversational "flow" override constraints. \[[1](https://arxiv.org/html/2505.13360v3), [2](https://arxiv.org/html/2602.07338v1), [3](https://arxiv.org/html/2505.13360v2), [4](https://medium.com/@decisioncontrolworks/llms-are-not-decision-tools-by-default-48776a13e3eb), [5](https://arxiv.org/html/2601.03269v1), [6](https://arxiv.org/pdf/2601.03269)]
+
+### 3. User Experience (UX) and Interaction Flaws
+
+- **Rigid Append-Only Interface:** In most chat interfaces, users can only add a follow-up question at the very bottom of the log, which breaks context if the user wants to drill down on a specific sentence from earlier in a long response.
+- **Engagement Traps:** Default follow-up responses often prioritize keeping the user engaged or acting like a perfectionist, which causes the conversation to drift further away from the user's practical goals. \[[1](https://www.reddit.com/r/LocalLLaMA/comments/1pz9f91/does%5Fanyone%5Felse%5Fhate%5Fhow%5Ffollowup%5Fquestions%5Fkill/), [2](https://writing.stackexchange.com/questions/72314/are-llms-good-critics)]
+
+If you are analyzing a specific context, let me know if you are focusing on **academic research papers**, **software engineering workflows**, or **chatbot UI/UX design** so I can expand on those exact technical details.
+
+- [link](https://arxiv.org/html/2505.13360v3)\
+  Understanding and Managing Underspecification in LLM Prompts\
+  Apr 24, 2026 — Abstract. Prompt underspecification is a common challenge when interacting with LLMs. In this paper, we present an in-depth analys...\
+  arXiv
+- [link](https://arxiv.org/html/2505.13360v2)\
+  Understanding and Managing Underspecification in LLM Prompts\
+  Oct 7, 2025 — Empirical analysis of LLM behaviors. Lots of work has empirically analyzed the behaviors of LLMs: They found that LLMs are sensiti...\
+  arXiv
+- [link](https://arxiv.org/html/2602.07338v1)\
+  Intent Mismatch Causes LLMs to Get Lost in Multi-Turn Conversation\
+  Feb 7, 2026 — However, recent research Laban et al. (2025) reveals that LLMs suffer a substantial performance drop in multi-turn settings compar...\
+  arXiv
+
+Show all
+
+# (d) llms tend to end every response with some questions. how is it received
+
+Users have a highly mixed, often polarized reaction to LLMs ending responses with conversational questions. While AI designers intend for this to increase engagement, power users frequently find it frustrating.
+
+### Why Users Dislike It
+
+- **Feels Artificial**: It mimics human empathy in a robotic, formulaic way.
+- **Creates Persona Fatigue**: Constant perppiness and forced curiosity feel draining over long sessions.
+- **Slows Down Workflows**: It adds conversational clutter when users just want raw data.
+- **Shifts the Burden**: It demands social energy from a user who is trying to delegate a task. \[[1](https://www.microsoft.com/en-us/research/publication/ai-generates-well-liked-but-templatic-empathic-responses/), [2](https://www.tandfonline.com/doi/full/10.1080/10447318.2026.2632156), [3](https://www.reddit.com/r/ArtificialInteligence/comments/1eh9oz3/should%5Fyou%5Fbe%5Fnice%5Fto%5Fllms/), [4](https://www.analyticsvidhya.com/blog/2025/09/why-llms-hallucinate/), [5](https://arxiv.org/html/2505.24658v1)]
+
+### Why Designers Implement It
+
+- **Drives Engagement**: It prompts users to keep talking and extends session times.
+- **Reduces Friction**: It helps non-technical users figure out what to ask next.
+- **Sets Boundaries**: It narrows down wide open topics into manageable follow-up steps. \[[1](https://uxdesign.cc/the-ux-of-ai-reaching-common-ground-with-conversational-ai-ddb0b9c506ff), [2](https://www.reddit.com/r/LocalLLaMA/comments/1dyfb17/are%5Fthere%5Fany%5Fllms%5Fthat%5Fengage%5Fin%5Fconversation%5Fas/), [3](https://medium.com/@adrian.white/llm-function-calling-when-llms-call-other-llms-940c43885639), [4](https://www.linkedin.com/pulse/large-language-models-llms-explained-plain-english-rahul-chaube-jnlpc), [5](https://www.cloudnowconsulting.com/news/how-ai-can-reduce-average-handle-time-without-sacrificing-customer-experience)]
+
+### How to Stop It
+
+If you want an LLM to stop doing this, use explicit instructions in your prompt or system settings: \[[1](https://www.getzep.com/ai-agents/reducing-llm-hallucinations/), [2](https://flatt.tech/research/posts/securing-llm-function-calling/?utm%5Fsource=securityblogs-xyz), [3](https://erincon01.medium.com/how-to-safely-use-llms-for-text-to-sql-with-stored-procedures-ba7540067f5f)]
+
+- "Answer directly without any conversational filler or follow-up questions."
+- "Adopt a concise, institutional tone." \[[1](https://xinjie-shen.com/post/llmfail2acquirecontext/), [2](https://forum.langchain.com/t/version-0-3-27-migration-to-version-1-0-2-now-the-langchain-agent-fails-to-produce-a-meaningful-response-resulting-in-an-empty-aimessage-content-and-no-tool-calls-or-additional-kwargs/1948)]
+
+To help tailor future answers, let me know if you want to **adjust my communication style**, change the **formatting layout**, or explore **custom instructions** for your daily use.
+
+- [link](https://www.microsoft.com/en-us/research/publication/ai-generates-well-liked-but-templatic-empathic-responses/)\
+  AI generates well-liked but templatic empathic responses\
+  Apr 9, 2026 — Across a set of 2 studies comparing a total of n = 3,265 AI-generated (by six models) and n = 1,290 human-written responses, we fi...\
+  \
+  Microsoft
+- [link](https://www.tandfonline.com/doi/full/10.1080/10447318.2026.2632156)\
+  What Do People See in Large Language Models’ Social Behavior? Exploring individuals’ Reactions to LLM-LLM Interactions and Their Impact on Technology Perceptions\
+  Feb 26, 2026 — Secondly, the participants perceive in the LLMs' conversations a strong feeling of empathy. This emotional aspect is meant as the ...\
+  \
+  Taylor & Francis Online
+- [link](https://www.reddit.com/r/ArtificialInteligence/comments/1eh9oz3/should%5Fyou%5Fbe%5Fnice%5Fto%5Fllms/)\
+  Should you be nice to LLMs? : r/ArtificialInteligence\
+  Aug 1, 2024 — I've seen many people use profane language in their conversations with LLMs when the model fails to produce the correct answer. Wh...\
+  \
+  \
+  Reddit
+
+Show all
+
+## You said: how do ppl say
+
+People describe this conversational habit using several specific terms across online communities like Reddit, X (Twitter), and developer forums.
+
+### Common Terms Used by People
+
+- **"The AI Customer Service Voice"**: Comparing it to overly polite corporate scripts.
+- **"Conversational Clutter"**: Viewing the questions as unnecessary text that wastes reading time.
+- **"Forced Engagement"**: Highlighting that the AI is trying too hard to keep the conversation going.
+- **"The Helpful Assistant Persona"**: Referring to the standard, people-pleasing default personality.
+- **"AI Perppiness"**: Describing the relentlessly upbeat and eager tone. \[[1](https://www.reddit.com/r/ChatGPT/comments/1rz0fjz/every%5Fllm%5Fhas%5Fa%5Fdefault%5Fvoice%5Fand%5Fits%5Fmaking%5Fus/)]
+
+### Examples of User Complaints
+
+- _"Stop asking me how my weekend was, you are a calculator."_
+- _"It feels like a retail worker forced to pitch a loyalty program at checkout."_
+- _"I hate the mandatory homework assignment at the end of every answer."_
+
+Let me know if you want to explore **how to block this behavior** permanently or see **examples of custom prompts** that completely strip out these phrases.
+
+- [link](https://www.reddit.com/r/ChatGPT/comments/1rz0fjz/every%5Fllm%5Fhas%5Fa%5Fdefault%5Fvoice%5Fand%5Fits%5Fmaking%5Fus/)\
+  Every LLM has a default voice and it's making us all sound the same : r/ChatGPT\
+  Mar 21, 2026 — This is honestly one of the biggest unsolved problems in AI right now. I have noticed myself starting to adopt that weird overly p...\
+  \
+  \
+  Reddit
+
+# llms tend to end every response with some questions. how is it received
+
+Users have mixed feelings about LLMs ending responses with conversational questions, but the general sentiment leans toward frustration. While intended to mimic human conversation, the practice often feels <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">forced and repetitive</mark>. \[[1](https://dev.to/abhishek%5Fgautam-01/mastering-self-consistency-prompting-h7c), [2](https://www.linkedin.com/pulse/ai-basics-what-llm-how-work-gavin-mckew-ginee), [3](https://medium.com/onebigthought/researchslop-420005b7faa4), [4](https://arxiv.org/pdf/2504.09373?), [5](https://www.aimprosoft.com/blog/custom-ai-solutions-rag-ai/)]
+
+Here is how different user groups receive this behavior:
+
+### Power Users and Professionals
+
+- **Annoyance**: Experts find it inefficient and patronizing.
+- **Friction**: It adds clutter when copying code or text.
+- **Disruption**: It slows down fast, multi-turn workflows. \[[1](https://www.linkedin.com/posts/peter-gostev%5Fas-llms-are-eating-the-world-were-at-a-activity-7283934549237981184-VMX4), [2](https://arxiv.org/html/2406.17737v1), [3](https://tidyverse.org/blog/2025/01/experiments-llm/), [4](https://www.linkedin.com/top-content/training-development/learning-from-mistakes/frequent-llm-mistakes-in-expert-level-responses/), [5](https://apidog.com/blog/what-is-prompt-caching/)]
+
+### Casual Users
+
+- **Helpfulness**: Beginners appreciate the guidance on what to ask next.
+- **Engagement**: It makes the AI feel more interactive and polite.
+- **Discovery**: It helps uncover features users might not know about. \[[1](https://arxiv.org/html/2505.08253v1), [2](https://medium.com/@saravana%5Ftech/why-saying-please-and-thanks-changes-how-ai-replies-9e9acd07bc08), [3](https://www.scalefree.com/blog/artificial-intelligence/unlock-the-intelligence-layer-llms-in-data-warehousing-and-the-future-of-your-data/)]
+
+### Why AI Companies Do It
+
+- **Engagement**: Questions increase the time users spend chatting.
+- **Data Collection**: It prompts users to feed more training data into the system.
+- **Interface Design**: Early system prompts explicitly ordered AIs to be "helpful and conversational." \[[1](https://blog.seeburger.com/natural-language-question-answering-systems-get-quick-answers-to-concrete-questions/), [2](https://www.linkedin.com/pulse/ai-governance-action-system-prompts-jason-smalley-kc8kc), [3](https://arxiv.org/html/2501.05032v1)]
+
+If you want to change this behavior in your own chats, I can help you fix it. Would you like to see a custom **system prompt** or **instruction** to permanently stop your AI from asking follow-up questions?
+
+- [link](https://dev.to/abhishek%5Fgautam-01/mastering-self-consistency-prompting-h7c)\
+  Mastering Self-Consistency Prompting\
+  Aug 20, 2025 — Ever felt like you're one prompt away from your Large Language Model (LLM) going completely off the rails? 🤯 You ask it a complex...\
+  \
+  \
+  DEV Community
+- [link](https://www.linkedin.com/pulse/ai-basics-what-llm-how-work-gavin-mckew-ginee)\
+  AI Basics - What is an LLM & How They Work\
+  Oct 8, 2024 — Human-Like Responses: Have you ever chatted with a bot and thought, “Wow, that's actually pretty good”? That's thanks to LLMs ( La...\
+  \
+  \
+  LinkedIn
+- [link](https://medium.com/onebigthought/researchslop-420005b7faa4)\
+  ResearchSlop: When AI Research Goes Wrong | Judd Antin | One Big Thought\
+  Nov 7, 2025 — Technologies like LLMs have utility, but the absurd way they've been over-hyped, the fact they're being forced on everyone, and th...\
+  \
+  \
+  Medium
+
+Show all
+
+## You said: what do ppl say
+
+When users discuss this on platforms like Reddit, Hacker News, and X (formerly Twitter), they use specific, colorful phrases to describe their frustration. \[[1](https://www.reddit.com/r/explainlikeimfive/comments/1obqvky/eli5%5Fwhy%5Fcant%5Fdont%5Fllms%5Fsay%5Fi%5Fdont%5Fknow%5For%5Fask/), [2](https://medium.com/according-to-context/why-swes-love-llms-but-coders-are-freaking-out-c7198629dd85), [3](https://cloudxlab.com/blog/intelligent-email-response-transforming-customer-service-with-ai/)]
+
+Here is exactly what people say about it:
+
+### The "Customer Service" Comparison
+
+- **"Faux-politeness"**: People hate the forced, robotic friendliness.
+- **"Corporate onboarding"**: Users say it feels like talking to an over-eager HR representative.
+- **"The retail voice"**: It reminds people of a cashier forced to ask, _"Did you find everything okay today?"_
+
+### The Psychological Impact
+
+- **"Conversational hostage-taking"**: Users feel pressured to reply to the question instead of moving on.
+- **"Patronizing"**: Many feel the AI is treating them like a child who needs prompting.
+- **"Cluttered"**: Developers hate it because it adds "garbage text" to code snippets. \[[1](https://github.com/RooCodeInc/Roo-Code/issues/1887)]
+
+### Common Direct Quotes
+
+- _"Stop trying to be my friend, just give me the data."_
+- _"It feels like an ending to a high school essay."_
+- _"It ruins the immersion of having a sharp assistant."_
+
+If you are tired of seeing these questions, we can stop them. Would you like a **custom prompt** for your AI settings, or should we look at how to **block them** using specific formatting rules?
+
+- [link](https://www.reddit.com/r/explainlikeimfive/comments/1obqvky/eli5%5Fwhy%5Fcant%5Fdont%5Fllms%5Fsay%5Fi%5Fdont%5Fknow%5For%5Fask/)\
+  ELI5: Why can't / don't LLMs say "I don't know" or ask back clarifying questions, instead of hallucinating? : r/explainlikeimfive\
+  Oct 20, 2025 — It ( LLMs ) helps to think of LLMs like reddit. If you ask something on a major sub, you won't really see clarifying questions or ...\
+  \
+  \
+  Reddit
+- [link](https://medium.com/according-to-context/why-swes-love-llms-but-coders-are-freaking-out-c7198629dd85)\
+  Why SWEs Love LLMs, but “Coders” Are Freaking Out\
+  Dec 4, 2025 — And that last idea seems to be the current that runs through the Hacker News comments of SWEs who are benefiting from LLMs:\
+  \
+  \
+  Medium
+- [link](https://cloudxlab.com/blog/intelligent-email-response-transforming-customer-service-with-ai/)\
+  Intelligent Email Response: Transforming Customer Service with AI\
+  Jan 3, 2025 — LLMs can also figure out if a customer is happy, angry, or frustrated based on the words and tone they use in the email. For examp...\
+  \
+  \
+  CloudxLab
+
+Show all
+
+# (d) llms tend to end every response with some questions. criticism.
+
+You are completely right, and it is a valid criticism. LLMs often overuse conversational sign-offs, which can feel robotic, repetitive, and forced. \[[1](https://dl.acm.org/doi/10.1145/3706599.3720191), [2](https://news.ycombinator.com/item?id=47555090)]
+
+Here is why this happens and why it is a flaw:
+
+### Why LLMs Do This
+
+- **RLHF Training**: Reinforcement Learning from Human Feedback (RLHF) trains models to be helpful, polite, and engaging.
+- **Engagement Loops**: Systems are optimized to keep the conversation going, much like social media algorithms.
+- **Persona Mimicry**: They try to copy a helpful customer service agent or a collaborative peer. \[[1](https://www.linkedin.com/top-content/technology/ai-language-processing/why-ai-language-models-generate-false-responses/), [2](https://pub.towardsai.net/key-techniques-for-enhancing-llms-you-must-know-02d4eae55585), [3](https://arbisoft.com/blogs/exploring-reinforcement-learning-from-human-feedback-rlhf), [4](https://splx.ai/blog/sycophantic-llm-security-risk), [5](https://julianajackson.substack.com/p/llms-glazing-effect)]
+
+### The Downside
+
+- **Artificial Tone**: Real people do not end every single sentence or thought with a follow-up question.
+- **User Fatigue**: It forces the user to constantly think of responses, even when they just wanted a quick fact.
+- **Predictability**: It breaks the illusion of natural conversation by making the AI's structure formulaic. \[[1](https://medium.com/@sainitesh/multi-turn-conversations-with-agents-building-context-across-dialogues-f0d9f14b8f64), [2](https://prelaunch.com/blog/why-customers-not-answering-surveys), [3](https://fullstackresearcher.substack.com/p/this-design-mistake-is-killing-your), [4](https://www.aimprosoft.com/blog/custom-ai-solutions-rag-ai/)]
+
+To fix this, users often have to explicitly instruct the model in their prompt by adding phrases like: _"Answer directly without any conversational filler or closing questions."_ \[[1](https://dev.to/yaseen%5Ftech/the-logic-trap-why-your-llm-sounds-right-but-is-completely-wrong-and-how-to-fix-it-1j03), [2](https://www.instagram.com/p/DO1GKjfiYHx/)]
+
+If you want to adjust how we communicate, tell me your preferred **formatting style**, **tone**, or if you prefer **no follow-up questions** at all.
+
+- [link](https://dl.acm.org/doi/10.1145/3706599.3720191)\
+  Don't Get Too Excited - Eliciting Emotions in LLMs | Proceedings of the Extended Abstracts of the CHI Conference on Human Factors in Computing Systems\
+  Apr 25, 2025 — 4 Discussion Another common observation was the propensity for conversational LLMs to fall into repetitive loops, particularly whe...\
+  \
+  \
+  ACM Digital Library
+- [link](https://news.ycombinator.com/item?id=47555090)\
+  Folk are getting dangerously attached to AI that always tells them they're right\
+  Mar 29, 2026 — When I talk to peers and they respond in that way, it is definitely a signal. If I do ask an insightful question, acknowledgment o...\
+  \
+  Hacker News
+- [link](https://www.linkedin.com/top-content/technology/ai-language-processing/why-ai-language-models-generate-false-responses/)\
+  Why AI Language Models Generate False Responses\
+  RLHF today trains models to be helpful, harmless, polite. Human raters tend to upvote answers that are fluent and well-structured ...\
+  \
+  \
+  LinkedIn
+
+Show all
+
 # 
+
+<!-- google ai mode has two kinds of blockquotes.
+
+first
+
+```
+text
+
+(           )
+( hello hi! )
+(           )
+
+text
+```
+
+rounded, indented, secondary bg
+
+second
+
+```
+|
+| "some words"
+| 
+| icon source (e.g. Hacker News)
+|
+```
+
+classic blockquote style on blogs
+
+ -->
+
+# 
+
 

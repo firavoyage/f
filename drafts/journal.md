@@ -28471,6 +28471,18 @@ more resilient and flexible
 
  -->
 
+24 00 stick a piece of notes on the laptop.
+
+```
+Non Trivial
+
+Inevitable
+
+Foundational
+
+Invariant
+```
+
 
 
 <!-- timebox, plan. -->
