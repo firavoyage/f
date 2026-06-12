@@ -446,6 +446,7 @@ float: <!-- music -->
 - interpret override yoshida yasei
 - interpret phony
 - interpret goodbye declaration
+- interpret godish pinocchiop
 
 philosophy:
 
