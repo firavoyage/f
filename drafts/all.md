@@ -48,6 +48,7 @@ fira:
 - the unsolved in possible new personal softwares
 - not backed by yc movement
 - version control legacy folder
+- mono no aware the red chamber
 
 life:
 
@@ -375,7 +376,6 @@ literature:
 - daoism kuai huo
 - shui zhong wan shi
 - stray birds
-- mono no aware
 
 typography:
 
@@ -463,6 +463,7 @@ philosophy:
 - symmetry the problem of the other
 - hacker ethics
 - avoid success at all costs
+- mono no aware the red chamber
 
 entertainment:
 

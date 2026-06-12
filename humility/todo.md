@@ -92,3 +92,15 @@ align components
 
 ---
 
+check typos.
+
+---
+
+strip:
+
+- Good/Great question
+- If you want/like/d like, we can
+- Would you like to 
+
+---
+
