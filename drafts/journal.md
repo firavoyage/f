@@ -28447,6 +28447,30 @@ more resilient and flexible
 
  -->
 
+18 20 feel.
+
+<!-- 
+
+(yunoko shows a photo to me)
+
+成功了 (ten dan)
+
+游刃有余 (more than 70 hp left)
+
+你上高中的话会学到这个词, 一篇文章
+
+(she feels familiar, yet could not see what it is)
+
+"以无厚入有间"
+
+用没有厚度的刀, 切到有厚度的肉之间
+
+我要说吗
+
+(gentle implicit refusal)
+
+ -->
+
 
 
 <!-- timebox, plan. -->
