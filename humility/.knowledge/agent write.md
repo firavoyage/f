@@ -216,3 +216,40 @@ follow these:
   - no ascii styling like `===== some pretentious comments =====`, never fancy
 - notes:
   - prefer modern proven libraries, do not reinvent wheels
+
+#
+
+  <!-- - use pascal case for react components `MyComponent.tsx` -->
+  <!-- - no need to alias external libraries -->
+
+# 0.5
+
+follow these:
+
+- use:
+  - ubuntu
+  - typescript
+  - pnpm
+  - bun (command: `br`, not `bun`)
+  - parceljs (command: `tmux new-session -d -s myparcel 'pnpm exec parcel serve app.html --dist-dir .build --cache-dir .build/.parcel-cache'`, you must use tmux or it will be killed)
+- naming:
+  - snake case in code and their filenames
+  - verb noun for actions, predicate for bools, noun for factory functions
+  - for docs, lowercase with spaces `today i learned.md`
+- style:
+  - functional programming
+  - modular and cohesive
+  - es module
+  - always async, only sync for pure and quick methods
+  - always function statement, only arrow function for props
+  - positional params if  positional params for one param like `is_prime(n)` and interchangeable params like `add(a, b)`, object params for complex params like `query_database(options)`, mixed for only one required param and optional flags like `fetch(url, options)`, never wrap like `capitalize(data: {sentence: string})`
+  - always type, never interface
+  - avoid typescriptism, only define types on function params and return, never alias literal types like `type message = string`
+  - use `// @ts-expect-error` if needed
+- comment:
+  - self explanatory over commenting
+  - lowercase for what and why, title case for where, sentence case in docs
+  - never uppercase anywhere
+  - no ascii styling like `===== some pretentious comments =====`, never fancy
+- notes:
+  - prefer modern proven libraries, do not reinvent wheels

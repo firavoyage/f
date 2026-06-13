@@ -22,4 +22,10 @@ explicit over implicit
 
 19 40 rename to `gray-[brightness]`. comment unused tokens.
 
+13
+
+19 00 think
+
+i guess i would choose vanilla js/ts (not web components)
+
 

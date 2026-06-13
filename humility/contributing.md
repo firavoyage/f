@@ -14,22 +14,6 @@ stick to cwd. do not touch anything outside.
 - for complex tasks, create a `test` subfolder. loop through inputs and expected outputs. only test if you know it can be easily tested (e.g. backend pure fn) and it's really hard and it will fail at first and you might rerun the tests.
 - when you are unsure, choose simplicity over defacto standard over guess work
 
-## search
-
-if asked, search with these two steps
-
-1. web fetch a direct search url
-
-- duckduckgo https://html.duckduckgo.com/html/?q=search+keyword&kp=-2&kl=us-en&k1=-1&kd=1
-- brave search https://search.brave.com/search?q=search+keyword&source=web&offset=0&spell=1
-- mojeek https://www.mojeek.com/search?q=search+keyword&safe=0&reg=us&t=50&dlen=160&theme=light&view=classic&ui=simple
-- searxng https://searx.be/search?q=search+keyword&category_general=1&language=en-us
-
-2. read pages
-
-- webfetch jina and you can read the markdown of the page https://r.jina.ai/https://en.wikipedia.org/wiki/Philosophy
-- use playwright if needed
-
 ## write
 
 follow these:
