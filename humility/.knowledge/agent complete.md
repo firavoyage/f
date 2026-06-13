@@ -32,3 +32,12 @@ before completing, make sure everything is done and verified
 do not over engineer
 
 tell me what you have done in git commit styled simple present tense
+
+# 0.4
+
+when complete, tell what you have done, give suggestions if helpful
+
+# 0.5
+
+when complete, tell what you have done
+

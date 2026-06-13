@@ -2,17 +2,21 @@
 
 stick to cwd. do not touch anything outside.
 
-- run `fdfind . --maxdepth 2` to know the file structure of cwd.
-- start working
+1. run `fdfind . --exclude "legacy" --maxdepth 2` to know the file structure of cwd.
+2. start working
+
+you must run the command before doing anything.
 
 ## work
 
-- be surgical. only complete what you are told to do. do not overwork. always find and use the simplest and easiest way. do not over engineer.
-- use `fdfind --exclude "legacy" -- "search pattern"` to find filenames. use `rg -g "!legacy/" -- "search pattern"` to search content.
-- for newly created folders (except build and deps), write `readme.md`
-- verify your work if possible. for programming, run and see result on terminal or playwright. for planning, it might not be feasible to predict ahead of time, stop and wait for human review instead.
-- for complex tasks, create a `test` subfolder. loop through inputs and expected outputs. only test if you know it can be easily tested (e.g. backend pure fn) and it's really hard and it will fail at first and you might rerun the tests.
-- when you are unsure, choose simplicity over defacto standard over guess work
+- be surgical. only complete tasks given. do not read or write any files/folders not explicitly listed. 
+- be lazy. always find and use the simplest and easiest way. do not overwork or overengineer. 
+- be automated. complete all tasks in one go.
+- when you are unsure, choose simplicity. sometimes a defacto standard library is simpler. sometimes a diy approach is simpler, as best prac can be designed for large corp.
+
+note: all file/folders paths start from cwd. never put meaningful code inside drafts folder. never read legacy folder.
+
+<!-- p: previous, c: current, e: expected, i: example input, o: example output -->
 
 ## write
 
@@ -47,19 +51,16 @@ follow these:
 
 ## test
 
-run linting and type check first
+no testing unless asked.
+
+to test,
 
 ```sh
-br eslint
-br tsgo
+br eslint # lint
+br tsgo # type check
+# logics and functionality, like a test subfolder for backend, playwright for frontend
 ```
-
-after passing, try to verify the functionality and the correctness of your work
 
 ## complete
 
-before completing, make sure everything is done and verified
-
-do not over engineer
-
-tell me what you have done in simple present tense
+when complete, tell what you have done

@@ -56,3 +56,19 @@ br tsgo
 ```
 
 after passing, try to verify the functionality and the correctness of your work
+
+# 
+
+<!-- "opt in" is not so strict. -->
+
+# 0.5
+
+no testing unless asked.
+
+to test,
+
+```sh
+br eslint # lint
+br tsgo # type check
+# logics and functionality, like a test subfolder for backend, playwright for frontend
+```
