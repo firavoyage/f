@@ -147,5 +147,20 @@ git config?
 
 ---
 
+js memory leak
 
+react
 
+wo react
+
+---
+
+vscode
+
+figma
+
+component?
+
+input component
+
+<!-- styling is easy -->
