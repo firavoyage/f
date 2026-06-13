@@ -355,3 +355,10 @@ dark gray
 it's quite unconventional, unlike the standard "straight line on the left" (e.g. github markdown, telegram quotation), or "quotation marks, italic" (common on personal blogs)
 
 ---
+
+ia: separation
+
+follow ups should be rendered outside the msg.
+
+---
+
