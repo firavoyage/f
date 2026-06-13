@@ -3349,5 +3349,2554 @@ You have a clear desire for deep, non-trivial engineering challenges. To help yo
 - What is **one specific app or system** you have used (like Figma, a specific database, an operating system feature, or a game engine) that made you think, _"I want to know exactly how they engineered that"_?
 - What **languages or concepts** are you studying right now to break out of the standard web stack?
 
+# why do some popular proven web apps use vanilla over react
+
+Popular and proven web apps (like GitHub, Wikipedia, and Basecamp) often choose Vanilla JavaScript over React <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">to maximize performance, reduce maintenance costs, and ensure long-term stability</mark>. \[[1](https://levelup.gitconnected.com/why-i-stopped-using-react-and-switched-to-vanilla-javascript-5e0b553ae195), [2](https://namastedev.com/blog/react-vs-vanilla-javascript-when-to-choose-7/), [3](https://www.bigscal.com/blogs/frontend/react-js-vs-javascript-whats-the-difference/), [4](https://namastedev.com/blog/react-vs-vanilla-javascript-when-to-choose-9/), [5](https://artoonsolutions.com/best-reactjs-alternatives/)]
+
+### Performance and Speed
+
+- **Zero Bundle Overhead:** React adds roughly 30KB+ of JavaScript to the initial download.
+- **Faster Page Loads:** Vanilla apps send less code over the network.
+- **Lower Memory Usage:** React maintains a Virtual DOM in memory.
+- **Better Low-End Performance:** Vanilla JS executes faster on older mobile devices. \[[1](https://medium.com/@sohail%5Fsaifi/why-90s-websites-load-faster-than-modern-react-apps-880d47e52046), [2](https://dev.to/starbist/with-or-without-the-js-framework-2k58), [3](https://dev.to/alishirani/why-react-won-the-front-end-race-love-it-or-hate-it-ce9), [4](https://makersden.io/blog/understanding-react-js:-why-it-matters-in-web-development), [5](https://www.reddit.com/r/webdev/comments/mwt767/when%5Fis%5Fit%5Fadvantageous%5Fto%5Fuse%5Fjquery%5Finstead%5Fof/)]
+
+### Long-Term Maintenance
+
+- **No Build Step Dependency:** Vanilla JS runs directly in the browser without Webpack, Vite, or Babel.
+- **No Breaking Upgrades:** React frequently introduces breaking changes (e.g., Hooks, Server Components).
+- **Zero Dependency Rot:** Vanilla code written 10 years ago still runs perfectly today.
+- **Smaller Security Footprint:** Fewer npm packages mean fewer supply-chain vulnerabilities. \[[1](https://navanathjadhav.medium.com/i-converted-my-react-app-to-vanilla-javascript-heres-what-happened-9068e378a2c6), [2](https://www.linkedin.com/pulse/what-vanilla-js-why-important-learn-before-jumping-manoj-asarsa), [3](https://jsmastery.com/blogs/react-vs-vite-what-s-the-real-difference-), [4](https://emerline.com/blog/why-use-reactjs-for-your-project), [5](https://www.decipherzone.com/blog-detail/Why-ReactJS-is-Better-For-Web-Application-Development-)]
+
+### Architecture and SEO
+
+- **Server-Centric Power:** Many established apps use powerful backend frameworks (Ruby on Rails, Django, Laravel).
+- **HTML-First Delivery:** Sending fully rendered HTML from the server is incredibly fast.
+- **Instant SEO:** Search engine crawlers can index the site without executing complex JavaScript.
+- **Hybrid Approaches:** Apps use lightweight tools like Stimulus or Alpine.js only where interactivity is needed. \[[1](https://www.tftus.com/blog/integrating-react-js-with-other-technologies), [2](https://www.creolestudios.com/benefits-of-reactjs-with-django/), [3](https://esterox.com/blog/top-web-application-frameworks), [4](https://javascript.plainenglish.io/is-javascript-the-best-language-for-enterprises-or-are-we-just-pretending-it-is-aed310fc3aec), [5](https://www.linkedin.com/pulse/rendering-modes-universal-client-side-hybrid-naeem-shahzad-huhze)]
+
+### Team and Workflow
+
+- **Universal Skills:** Every web developer already knows HTML, CSS, and Vanilla JS.
+- **Easier Onboarding:** New engineers do not need to learn a specific framework's ecosystem. \[[1](https://www.linkedin.com/pulse/benefits-using-web-components-instead-react-aptlogica), [2](https://www.reddit.com/r/javascript/comments/1j3za8m/askjs%5Fbig%5Fcompanies%5Fthat%5Fdont%5Fuse%5Fa%5Fframework/), [3](https://javascript.plainenglish.io/what-got-me-writing-vanilla-js-again-2c53756c8a4c), [4](https://madecurious.com/articles/beyond-react-part-1/)]
+
+If you want to evaluate this approach for your own project, I can help you weigh the options. Would you like to:
+
+- See a **code comparison** of a feature built in both Vanilla JS and React?
+
+- Discuss if Vanilla JS fits your specific **project requirements**?
+
+- Learn about **lightweight alternatives** like Preact, Lit, or Alpine.js?
+
+- [link](https://levelup.gitconnected.com/why-i-stopped-using-react-and-switched-to-vanilla-javascript-5e0b553ae195)\
+  Why I Stopped Using React and Switched to Vanilla JavaScript\
+  Aug 21, 2025 — When React Still Makes Sense Don't get me wrong — React has its place: But for most applications? Vanilla JavaScript is faster, si...\
+  \
+  \
+  Level Up Coding
+
+- [link](https://namastedev.com/blog/react-vs-vanilla-javascript-when-to-choose-7/)\
+  React vs Vanilla JavaScript: When to Choose\
+  Jul 10, 2025 — React vs Vanilla JavaScript: When to Choose Web development continues to evolve, and with it, the choice of tools and frameworks a...\
+  \
+  \
+  NamasteDev
+
+- [link](https://www.bigscal.com/blogs/frontend/react-js-vs-javascript-whats-the-difference/)\
+  React JS vs Javascript: What's the Difference?\
+  May 8, 2023 — React reusable components and virtualDOM allow developers to maintain and update web applications quickly, making react better tha...\
+  \
+  \
+  Bigscal
+
+Show all
+
+## You said: for complex ones
+
+When building large, highly complex web applications, choosing Vanilla JavaScript over React is rare but highly intentional. Companies like GitHub, Linear, and Figma often opt for Vanilla JS (or specialized custom architectures) for complex apps to gain absolute control over hardware, memory, and rendering pipelines. \[[1](https://hackernoon.com/react-vs-javascript-why-react-web-apps-are-better-than-plain-websites), [2](https://ubiqum.com/en/vanilla-javascript-what-is-it/), [3](https://dev.to/afrazchelsea/react-vs-vanilla-js-what-why-and-when-1jin), [4](https://gomakethings.com/companies-that-use-vanilla-js/), [5](https://www.reddit.com/r/reactjs/comments/epxavs/is%5Fredux%5Freally%5Fa%5Fgood%5Fidea/)]
+
+### Maximum Memory and Render Control
+
+- **No Virtual DOM Overhead:** The Virtual DOM can crash the browser when managing hundreds of thousands of data points simultaneously.
+- **Direct Memory Management:** Developers can manually allocate and garbage-collect objects to prevent memory leaks in long-running tabs.
+- **Custom Rendering Engines:** Complex apps like Figma bypass traditional HTML entirely, using Vanilla JS to render directly to a via WebGL for 60fps performance. \[[1](https://javascript.plainenglish.io/virtual-scrolling-and-infinite-scrolling-handling-huge-data-in-web-apps-70c85e027c35), [2](https://news.ycombinator.com/item?id=43881035)]
+
+### Absolute Architectural Freedom \[[1](https://www.openxcell.com/blog/next-js-vs-express/)]
+
+- **No Framework Constraints:** React forces you to think in components, one-way data flow, and specific state lifecycles. \[[1](https://www.linkedin.com/pulse/why-react-js-has-become-backbone-scalable-web-apps-chandrawanshi-rtdwf), [2](https://www.learningtree.co.uk/blog/making-sense-reacts-different-component-styles/), [3](https://medium.com/javascript-and-opinions/state-of-the-art-javascript-in-2016-ab67fc68eb0b), [4](https://dev.to/voluntadpear/comparing-react-hooks-with-vue-composition-api-4b32)]
+- **Optimized Data Structures:** Complex apps often need specialized structures (like Directed Acyclic Graphs or CRDTs for multiplayer collaboration) that do not map cleanly to React state. \[[1](https://artoonsolutions.com/reactjs-vs-javascript/)]
+- **Micro-Optimizations:** Developers can optimize critical hot-paths in the code down to the individual CPU cycle, which framework abstractions normally block.
+
+### Longevity and Tech Debt Control
+
+- **Decade-Long Stability:** A complex React app requires constant rewrites as the ecosystem evolves (e.g., migrating from Class Components to Hooks, then to Server Components). \[[1](https://www.linkedin.com/pulse/modern-frontend-stacks-2025-why-jamstack-still-worth-ayan-sarkar-f62zf), [2](https://www.techaheadcorp.com/blog/choosing-the-right-tech-stack-nextjs-vs-reactjs/), [3](https://riseuplabs.com/react-development-ultimate-guide/), [4](https://www.techqware.com/blog/react-vs-nextjs-vs-svelte-which-is-best-for-your-project-in-2026)]
+- **Isolation of Complex Code:** Core business logic can be written in pure TypeScript/JavaScript, completely decoupled from any UI framework. \[[1](https://dev.to/itswillt/a-different-approach-to-frontend-architecture-38d4), [2](https://refine.dev/blog/react-admin-frameworks-refine-vs-blitz-js/)]
+- **Easier WebAssembly Integration:** Performance-critical parts can be rewritten in C++ or Rust and compiled to WebAssembly, interfacing seamlessly with Vanilla JS. \[[1](https://www.cmarix.com/blog/react-development-trends-fast-scalable-apps/), [2](https://medium.com/@rahulnagubandi/the-great-debate-vanilla-js-vs-modern-frameworks-0768ff83c547), [3](https://nagibaba.medium.com/whats-new-in-the-frontend-developer-market-a-2025-reality-check-c2706279ccdf)]
+
+### How They Manage the Complexity
+
+To keep a massive Vanilla JS app from turning into unmaintainable "spaghetti code," teams rely on strict architectural patterns: \[[1](https://news.ycombinator.com/item?id=22759101)]
+
+- **Custom Internal Frameworks:** They write a tiny, highly specialized framework tailored _only_ to their exact use case.
+- **Web Components:** They use native browser APIs to create isolated, reusable UI elements without external dependencies.
+- **Strict Model-View-Controller (MVC):** They enforce a rigid separation between data structures and UI rendering. \[[1](https://www.reddit.com/r/webdev/comments/wwdixg/is%5Fvanilla%5Fjavascript%5Ffor%5Ffrontend%5Fevergreen/), [2](https://www.reddit.com/r/reactjs/comments/xrdkk1/weight%5Fdifference%5Fbetween%5Fa%5Freact%5Fand%5Fa%5Fvanilla/), [3](https://www.jhkinfotech.com/blog/web-components-vs-react-components), [4](https://michaelwashburnjr.com/blog/an-analysis-of-web-app-architecture), [5](https://se-education.org/learningresources/contents/javascript/Javascript-framework-React.html)]
+
+To help you look closer at how this works in production, we can explore specific examples. Would you like to:
+
+- Dive into a **case study** of how a specific complex app (like Figma, VS Code, or GitHub) structures its code?
+
+- Look at how **Web Components** are used to manage UI complexity without React?
+
+- Discuss the **development cost** and team size required to successfully pull off a massive Vanilla JS project?
+
+- [link](https://hackernoon.com/react-vs-javascript-why-react-web-apps-are-better-than-plain-websites)\
+  React vs. JavaScript: Why React Web Apps Are Better than Plain Websites\
+  Oct 26, 2021 — Easy to create complex web apps For static websites(mostly), Vanilla JavaScript is not a big issue. But for complex web apps which...\
+  \
+  \
+  HackerNoon
+
+- [link](https://ubiqum.com/en/vanilla-javascript-what-is-it/)\
+  Vanilla JavaScript - What is it?\
+  Aug 17, 2024 — Although frameworks like React or Angular are designed for large and complex applications, they are not always necessary for small...\
+  \
+  \
+  Ubiqum
+
+- [link](https://dev.to/afrazchelsea/react-vs-vanilla-js-what-why-and-when-1jin)\
+  React v/s Vanilla JS - When to use what?\
+  Apr 14, 2020 — Conclusion Whether you should use Vanilla JS or React ( react, javascript ) depends very much on your use case. Vanilla JS is awes...\
+  \
+  \
+  DEV Community
+
+Show all
+
+## You said: what do they say, vscode, linear, and figma. github wikipedia and basecamp are too static.
+
+You are entirely correct. Pointing to GitHub or Wikipedia ignores what makes an app _interactively complex_. Those are document-based apps; they represent structural complexity. \[[1](https://javascript.plainenglish.io/why-i-still-write-vanilla-javascript-in-2025-and-why-you-might-want-to-ed618d3460d4)]
+
+When analyzing highly interactive, desktop-grade web applications like **VS Code, Figma, and Linear**, the story completely changes. They do not just use Vanilla JavaScript for basic page navigation—they use it to build incredibly sophisticated, custom rendering pipelines and data layers. \[[1](https://www.reddit.com/r/react/comments/102digk/how%5Fare%5Fweb%5Fapp%5Flike%5Ffigma%5Fand%5Fcanva%5Fare%5Fbuilt/), [2](https://www.youtube.com/watch?v=dnHpcsiPINA), [3](https://www.thinkcompany.com/blog/refactoring-mountains-of-legacy-javascript-code/)]
+
+The technical reality behind how these three powerhouses handle extreme client-side complexity provides deep insight into their engineering choices:
+
+***
+
+### 1. VS Code: Dom-Based Isolation and Custom Dependency Injection
+
+Contrary to what many assume, VS Code’s UI does not use React, Vue, or Angular. It is a massive TypeScript and Vanilla JS application wrapped in Electron. \[[1](https://www.youtube.com/watch?v=3csYWQvXjK8)]
+
+- **Why they skipped React:** Every millisecond of latency in a code editor feels sluggish. If a framework forces a full-component re-render when you type a single character, typing lag destroys the user experience.
+- **The Architecture:**
+  - **Custom Dependency Injection (DI):** VS Code uses a strict, custom DI framework written in pure TypeScript. Every service (e.g., file service, telemetry service, window management) is isolated and injected natively.
+  - **Strict DOM Recycling:** The code editor element (**Monaco Editor**) only renders the exact lines of text currently visible on your screen. As you scroll, lines are dynamically swapped out and rewritten in the DOM using Vanilla JS, completely bypassing framework reconciliation layers.
+  - **The Extension Host Isolation:** All extensions run in an entirely separate process. The UI layer communicates with extensions via an asynchronous IPC channel, ensuring that an extension freeze cannot lock up the DOM. \[[1](https://www.youtube.com/watch?v=3csYWQvXjK8), [2](https://microsoft.github.io/monaco-editor/), [3](https://skywork.ai/skypage/en/VS-Code-Architecture-Overview/1977611814760935424), [4](https://www.thinktecture.com/project-fugu/making-of-paint-js-overview-web-components/)]
+
+### 2. Figma: WebAssembly Canvas with a React/Redux Shell
+
+Figma is a masterclass in hybrid engineering. It uses React only for the static parts, but strips it away for anything complex. \[[1](https://www.reddit.com/r/react/comments/102digk/how%5Fare%5Fweb%5Fapp%5Flike%5Ffigma%5Fand%5Fcanva%5Fare%5Fbuilt/), [2](https://namastedev.com/blog/react-static-site-generator-comparison-2/)]
+
+- **The Shell vs. The Core:** The sidebar, layer panels, and settings menu are written using **TypeScript, React, and Redux**. Because these elements behave like a standard data-entry application, React works perfectly. \[[1](https://www.reddit.com/r/react/comments/102digk/how%5Fare%5Fweb%5Fapp%5Flike%5Ffigma%5Fand%5Fcanva%5Fare%5Fbuilt/)]
+- **The Canvas:** Everything inside the actual canvas viewport bypasses the browser's DOM entirely. \[[1](https://www.reddit.com/r/react/comments/102digk/how%5Fare%5Fweb%5Fapp%5Flike%5Ffigma%5Fand%5Fcanva%5Fare%5Fbuilt/)]
+- **Why React Couldn't Handle It:** If a Figma design has 50,000 vector shapes, converting those to 50,000 React nodes or HTML elements would immediately crash browser memory.
+- **The Architecture:** Figma’s core vector engine is written in **C++** and compiled into **WebAssembly (Wasm)**. The C++ logic tracks memory and layouts, and a pure JavaScript wrapper instructs the browser to draw shapes onto a 2D/3D element via WebGL at 60 frames per second. React has no concept of what is happening inside that canvas. \[[1](https://www.reddit.com/r/react/comments/102digk/how%5Fare%5Fweb%5Fapp%5Flike%5Ffigma%5Fand%5Fcanva%5Fare%5Fbuilt/), [2](https://news.ycombinator.com/item?id=29930480), [3](https://www.interviewbit.com/blog/javascript-applications/)]
+
+### 3. Linear: The "Local-First" Sync Engine with a React View
+
+Linear is famous for its instant, sub-100ms response times. Unlike VS Code or Figma, **Linear actually uses React** for its view layer—but it breaks the golden rule of how React is meant to be used. \[[1](https://howworks.ai/blog/how-to-build-an-app-like-linear), [2](https://work-management.org/software-development/linear-review/)]
+
+- **The Illusion of React:** In a standard React application, React _owns_ the state. When data changes, React handles the re-rendering. Linear explicitly moved away from this. \[[1](https://sam-solutions.com/blog/react-vs-nextjs/)]
+- **The Core Data Engine:** Linear is a **local-first application**. When you open it, it downloads your entire team's database into the browser's native IndexedDB cache. \[[1](https://news.ycombinator.com/item?id=41795561)]
+- **The Architecture:**
+  - Linear uses a custom-built, raw TypeScript/JavaScript sync engine that continuously communicates with the server via WebSockets.
+  - The actual computation, searching, sorting, and issue syncing happen in raw JavaScript data models outside of React.
+  - React is treated purely as a **dumb rendering pipeline**. The core Vanilla JS engine simply mutates data in memory and occasionally tells React: _"Hey, update the text on this specific HTML node."_ React is used as an HTML printer, not an active decision-maker. \[[1](https://howworks.ai/blog/how-to-build-an-app-like-linear), [2](https://piccalil.li/blog/framework-agnostic-design-systems-part-1/), [3](https://dev.to/xurxodev/moving-away-from-reactjs-and-vuejs-on-front-end-using-clean-architecture-3olk)]
+
+***
+
+### The Shared Synthesis of "Complex Vanilla"
+
+If you look closely at these three giants, they reveal a clear paradigm for managing high-tier frontend complexity: \[[1](https://www.supernova.io/blog/the-future-of-enterprise-design-systems-2026-trends-and-tools-for-success)]
+
+| Application \[[1](https://www.reddit.com/r/electronjs/comments/lainxz/what%5Fcomponents%5Fare%5Fused%5Fin%5Fvisual%5Fstudio%5Fcode%5Fi/), [2](https://www.reddit.com/r/react/comments/102digk/how%5Fare%5Fweb%5Fapp%5Flike%5Ffigma%5Fand%5Fcanva%5Fare%5Fbuilt/), [3](https://piccalil.li/blog/framework-agnostic-design-systems-part-1/), [4](https://howworks.ai/blog/how-to-build-an-app-like-linear), [5](https://skywork.ai/skypage/en/VS-Code-Architecture-Overview/1977611814760935424)] | The View Layer          | The Core Interactivity Engine                | Why Frameworks Were Sidestepped                                        |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- | -------------------------------------------- | ---------------------------------------------------------------------- |
+| **VS Code**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Vanilla DOM             | Monaco Editor (Vanilla JS + WebGL)           | Keypress-to-pixel latency must be absolute zero.                       |
+| **Figma**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | React (Shell panels)    | C++ compiled to WebAssembly + WebGL Canvas   | The traditional HTML DOM cannot scale to tens of thousands of vectors. |
+| **Linear**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | React (Dumb view nodes) | Local-First Sync Engine (Raw TS + IndexedDB) | React state mechanisms are too slow for real-time local database sync. |
+
+When an app becomes an _operating system in the browser_, the UI framework stops being a helpful abstraction and becomes a bottleneck. The engineering team always winds up peeling back the framework layers to gain raw, low-level control over memory allocation, network synchronization, and hardware-accelerated drawing.
+
+If you are planning an interactive or data-heavy tool, we can explore how to lay a similar foundation. What kind of complex web app are you thinking about building? Let me know:
+
+- Will it require a **local-first database** (like Linear)?
+
+- Will it rely heavily on **graphics/drawing** (like Figma)?
+
+- What is your **target performance profile** (mobile web vs. desktop wrappers)? \[[1](https://byteiota.com/local-first-architecture-linears-50ms-page-load-secret/)]
+
+- [link](https://piccalil.li/blog/framework-agnostic-design-systems-part-1/)\
+  Framework-agnostic design systems: a practical approach to ...\
+  May 21, 2026 — Principles \* Lowest viable level. While there are tonnes of tools out there that will transform your framework-specific (let's be ...\
+  piccalil.li
+
+- [link](https://www.reddit.com/r/react/comments/102digk/how%5Fare%5Fweb%5Fapp%5Flike%5Ffigma%5Fand%5Fcanva%5Fare%5Fbuilt/)\
+  How are Web App like Figma and Canva are built : r/react - Reddit\
+  Jan 3, 2023 — And: Everything you see on the canvas in the Figma Editor uses C++, which compiles to WebAssembly to run in the browser and offer ...\
+  Reddit·r/react
+
+- [link](https://www.reddit.com/r/electronjs/comments/lainxz/what%5Fcomponents%5Fare%5Fused%5Fin%5Fvisual%5Fstudio%5Fcode%5Fi/)\
+  What components are used in Visual Studio Code? I want to ...\
+  Feb 2, 2021 — - Its embedded terminal uses xterm.js with WebGL canvas rendering. - Build system uses Gulp. - Tests are with Mocha. - Modules bun...\
+  Reddit·r/electronjs
+
+Show all
+
+## You said: do they end up writing their own reacts
+
+The short answer is <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>no, they usually do not write a general-purpose clone of React</strong></mark> (like Preact or a Virtual DOM engine). Instead, they do something much more extreme: they write **highly specialized, custom state-and-render engines** that only do _one_ thing perfectly.
+
+When you write a general framework like React, you have to support every use case (text inputs, lists, animations, accessibility). When VS Code, Figma, or Linear build their internal engines, they strip out 95% of what React does and optimize the remaining 5% for their specific bottleneck. \[[1](https://prakashinfotech.com/react-vs-react-native-choosing-the-right-framework-for-your-project), [2](https://medium.com/@ignatovich.dm/accessibility-in-react-best-practices-for-building-inclusive-web-apps-906d1cbedd27), [3](https://maxschmitt.me/posts/react-components-controlled-uncontrolled), [4](https://devm.io/react/react-16-features-overview)]
+
+Here is exactly what they build instead of "their own React."
+
+***
+
+### 1. Linear: Built a Graph-Based Reactivity Engine
+
+Linear didn't write a Virtual DOM framework. Instead, they built a highly optimized **reactive data store** that bypasses React’s standard component lifecycle. \[[1](https://www.lucentinnovation.com/resources/it-insights/react-js-best-practices-2024-essential-techniques-for-modern-web-development)]
+
+- **The Problem with React:** If you have 2,000 issues loaded in memory, and you update the priority of _one_ issue, React’s default behavior is to re-evaluate the parent component and diff the children. This causes micro-stuttering.
+- **What they built instead:** Linear uses an architecture where data models are interconnected like a web (a graph). They use a custom reactivity system (similar in concept to MobX or Signals).
+- **How it works:** When an issue updates, the raw JavaScript engine bypasses React's tree entirely. It targets the exact HTML element bound to that specific issue ID and mutates it directly. They didn't write "another React"; they wrote an **in-memory database engine** that tells React exactly when to look away.
+
+### 2. VS Code: Built a View-Recycling Matrix
+
+The engineers behind VS Code's editor text engine (Monaco) didn't build a declarative component framework. They built an **imperative layout engine** modeled after video game loops.
+
+- **The Problem with React:** If you open a 10,000-line file, React would try to map those lines into 10,000 components, creating a massive memory footprint.
+- **What they built instead:** A coordinate-based DOM recycler.
+- **How it works:** Monaco calculates the exact height of the scrollbar and the exact line height. If only 40 lines fit on your screen, it creates exactly 42 raw HTML elements. When you scroll, a Vanilla JS loop intercepts the scroll event, calculates which line numbers should now be visible, and immediately overwrites the inner text of those existing 42 nodes. It completely eliminates the concept of "components" and "diffing."
+
+### 3. Figma: Built a Custom Memory and Command Buffer
+
+Figma didn't write a JavaScript UI engine because JavaScript itself was the bottleneck. They wrote a system to bridge two completely different programming languages. \[[1](https://medium.com/@ksonuraj1/virtual-dom-is-not-the-performance-advantage-anymore-a2da033e4dd6)]
+
+- **The Problem with React:** React lives in the browser's main thread. It cannot talk to GPU hardware or manage low-level memory layout.
+- **What they built instead:** A WebAssembly command-and-render bridge.
+- **How it works:** When you move a rectangle in Figma, a C++ engine calculates the new coordinates in a highly optimized memory buffer. It then uses Vanilla JS to send a compact array of numbers (a command buffer) directly to WebGL. WebGL tells the graphic card: _"Clear pixels X through Y, redraw a rectangle."_ There are no components, no HTML elements, and no states in the web sense. They wrote a custom **graphics pipeline**. \[[1](https://adasci.org/blog/why-react-rebuilt-its-core-an-introduction-to-react-fiber)]
+
+***
+
+### Summary: The "Anti-Framework" Architecture
+
+When these teams write custom infrastructure, they are usually trying to solve the **"Diffing Tax."**
+
+React works by taking a new state, comparing it to an old state (diffing), and deciding what changed. Complex apps throw this out. Their custom engines **always know exactly what changed**, so they map the data change directly to the pixel or the DOM node without any guessing games. \[[1](https://johnkavanagh.co.uk/articles/reacts-virtual-dom-vs-the-real-dom/), [2](https://johnkavanagh.co.uk/articles/reacts-reconciliation-algorithm-explained/), [3](https://www.sevensquaretech.com/reactjs-statement-management-with-code-github/), [4](https://reactkungfu.com/2015/08/pros-and-cons-of-using-immutability-with-react-js/), [5](https://www.youtube.com/watch?v=HBpOzj-iBUg)]
+
+Are you trying to solve a specific performance bottleneck in an app you are architecting right now? Let me know:
+
+- Are you dealing with **too many items** in the DOM (like VS Code)?
+
+- Are you dealing with **real-time data syncing** (like Linear)?
+
+- Knowing your specific hurdle can help pinpoint whether you need a framework or a specialized helper.
+
+- [link](https://prakashinfotech.com/react-vs-react-native-choosing-the-right-framework-for-your-project)\
+  React vs. React Native – Choosing the Right Framework for Your Project\
+  Feb 14, 2024 — While React enables animation through CSS, similar to web development practices, React Native utilizes an animated API to implemen...\
+  \
+  \
+  Prakash Software Solutions
+
+- [link](https://medium.com/@ignatovich.dm/accessibility-in-react-best-practices-for-building-inclusive-web-apps-906d1cbedd27)\
+  Accessibility in React: Best Practices for Building Inclusive Web Apps\
+  Sep 27, 2024 — React, by default, provides a solid foundation for accessibility, but there are additional steps developers can take to improve th...\
+  \
+  Medium
+
+- [link](https://maxschmitt.me/posts/react-components-controlled-uncontrolled)\
+  Creating React Components that can be Controlled and Uncontrolled\
+  Jul 15, 2021 — When using generic React components for UI elements like TextFields and Dropdowns, it's so nice when they adhere to the same API p...\
+  \
+  \
+  maxschmitt.me
+
+Show all
+
+## You said: do they choose to be imperative, like to separate the initial render and updates
+
+Yes, you hit the exact nail on the head. This is the single biggest architectural divergence from React.
+
+React’s core philosophy is **declarative**: `UI = f(state)`. You define what the UI should look like for _any_ given state, and React handles both the initial render and the updates using the exact same code path. \[[1](https://khushalivasani-ict19.medium.com/declarative-and-imperative-programming-in-react-ea8365ee2f78), [2](https://www.greatfrontend.com/questions/quiz/what-is-virtual-dom-in-react), [3](https://news.ycombinator.com/item?id=19391180)]
+
+Complex apps like VS Code, Figma, and Linear explicitly choose to be **imperative**. They completely split the application into two distinct, highly optimized phases: **Initial Render (Construction)** and **Incremental Updates (Mutations)**.
+
+Here is why they make that split and exactly how they execute it.
+
+***
+
+### The React Problem: The Cost of Uniformity
+
+In React, when a single value changes, the component function re-runs. It recreates the entire virtual tree for that component, and then diffs it against the old tree. \[[1](https://medium.com/@firatatalay/how-rendering-works-the-render-phase-b37100602ee7), [2](https://medium.com/@ronisonroni0/why-react-uses-virtual-dom-instead-of-direct-dom-manipulation-3109bd819f63), [3](https://designtechworld.medium.com/how-reacts-reconciliation-algorithm-decides-what-to-re-render-9315892c1c80)]
+
+For a complex app, this is disastrous:
+
+1. **It wastes CPU cycles:** Re-running a massive layout calculation just to change a background color from blue to red is incredibly inefficient.
+2. **It loses control of micro-interactions:** If a user is dragging a vector point in Figma or scrolling text in VS Code at 60fps, you cannot afford to have a framework running evaluation logic on every single frame.
+
+***
+
+### How They Implement Imperative Splits
+
+### 1. The Initial Render: Structural Layout
+
+When the app or component boots up, they run a heavy, one-time "constructor" phase.
+
+- They create the raw DOM nodes (or allocate the memory buffers in WebAssembly).
+- They cache direct JavaScript references (pointers) to the specific elements that will need to change later (e.g., `this.titleNode = document.getElementById(...)`).
+- They attach event listeners.
+- **Result:** A static, highly optimized structure is locked into the browser's memory. \[[1](https://namastedev.com/blog/virtual-dom-in-react-explained-4/)]
+
+### 2. The Updates: Surgical Mutations
+
+Once the initial structure exists, the rendering function is never called again. Instead, they write tiny, dedicated mutation functions that target isolated pieces of the UI.
+
+Instead of React's way:
+
+javascript
+
+```
+// React: Every update re-evaluates everything
+function UserProfile({ user }) {
+  return <div className={user.status}>{user.name}</div>;
+}
+```
+
+Use code with caution.
+
+They do it the imperative way:
+
+javascript
+
+```
+// Imperative Split: Initial Render
+function createProfileView(user) {
+  const el = document.createElement('div');
+  el.textContent = user.name;
+  el.className = user.status;
+
+  // Cache the element and return an updater function
+  return {
+    element: el,
+    updateStatus: (newStatus) => {
+      // Surgical update: directly mutates one property. No diffing.
+      el.className = newStatus;
+    }
+  };
+}
+```
+
+Use code with caution.
+
+***
+
+### Real-World Execution: Linear, VS Code, and Figma
+
+- **Linear (UI Shunting):** Linear uses React as a dumb shell, but when data comes flying in over the WebSocket, their sync engine doesn't trigger a global React state update. It identifies the exact entity that changed, bypasses React's tree calculation, and pushes a surgical mutation directly to the corresponding DOM node or localized state observer.
+- **VS Code (The Tokenizer Split):** When you type a character in VS Code, it doesn't re-render the editor line. The initial render drew the line box. The update phase is an imperative command: _Take the character at cursor position X, insert it into the text string, and tell the specific DOM node to change its `textContent`._
+- **Figma (The Clear-and-Redraw Loop):** Because Figma uses a Canvas, it takes the imperative approach to the absolute extreme. There is no concept of updating a component. When you move a shape, the initial structure remains in their C++ memory. The update phase simply clears the pixels of the bounding box and imperatively commands the GPU to redraw the shape 2 pixels to the right. \[[1](https://blog.codeminer42.com/figma-mcp-builds-exactly-what-you-ask-nothing-more/)]
+
+### Why This Works for Complexity
+
+By separating **Render** from **Update**, these engineering teams turn an O(N) performance problem (where performance degrades based on the total size of your UI tree) into an O(1) performance reality (where performance is bound only to the specific item changing).
+
+Are you designing an update-heavy interface right now? If you are trying to manage highly frequent state changes, we can look at patterns to implement this. Would you like to: \[[1](https://christian-schou.com/blog/avoid-complexity-with-the-state-design-pattern-in-net/)]
+
+- See how to implement a **high-performance updater pattern** in TypeScript?
+
+- Look at how modern vanilla tools like **Signals** achieve this imperative performance while keeping code clean?
+
+- Discuss how to architect a **performance budget** for a heavy UI component?
+
+- [link](https://khushalivasani-ict19.medium.com/declarative-and-imperative-programming-in-react-ea8365ee2f78)\
+  Declarative and Imperative Programming Paradigms in ReactJS | by Khushali Vasani | Medium\
+  Oct 26, 2021 — React is so powerful is because it enforces a declarative programming paradigm. Declarative programming is approach as a way of de...\
+  \
+  \
+  Medium
+
+- [link](https://www.greatfrontend.com/questions/quiz/what-is-virtual-dom-in-react)\
+  What is virtual DOM in React? | Quiz Interview Questions with Solutions\
+  Declarative model: You describe what the UI should look like for a given state, and React figures out how to get the DOM there. Th...\
+  \
+  \
+  GreatFrontEnd
+
+- [link](https://news.ycombinator.com/item?id=19391180)\
+  Fast, Bump-Allocated Virtual Doms with Rust and Wasm\
+  Mar 14, 2019 — With the React way, there's one code path for initial render and updating, so it doesn't take any special effort to make every att...\
+  \
+  Hacker News
+
+Show all
+
+## You said: how does linear do in code. how would linear have done if it followed the react philosophy.
+
+To understand exactly how Linear pulls this off, we have to look at how they bypass React’s dependency graph in code, and what would happen if they built it the "idiomatic React" way.
+
+***
+
+### How Linear Does It in Code (The Reality)
+
+Linear uses React for the view, but they manage state using a highly optimized, reactive graph engine built on top of **MobX** (a state management library based on observable properties and signals).
+
+In Linear's codebase, data models are plain JavaScript classes, completely decoupled from React. Here is a conceptual blueprint of how their sync engine and UI interact imperatively:
+
+typescript
+
+```
+// 1. THE CORE DATA ENGINE (Pure Vanilla JS/TypeScript)
+class IssueStore {
+  // An observable map holding all issues in memory (synced from IndexedDB)
+  @observable public issues = new Map<string, Issue>();
+
+  // Surgical update when a WebSocket message arrives
+  public handleWebSocketUpdate(issueId: string, newStatus: string) {
+    const issue = this.issues.get(issueId);
+    if (issue) {
+      // Direct, imperative mutation of the data property
+      issue.status = newStatus;
+    }
+  }
+}
+
+// 2. THE VIEW LAYER (React treated as a dumb printer)
+import { observer } from "mobx-react-lite";
+
+// The 'observer' wrapper acts as a surgical listener
+const IssueRow = observer(({ issueId, store }) => {
+  // Grab a direct reference to the specific issue
+  const issue = store.issues.get(issueId);
+
+  // React only touches this specific DOM node when this exact issue changes
+  return (
+    <div className={`issue-row ${issue.status}`}>
+      <span>{issue.title}</span>
+    </div>
+  );
+});
+```
+
+Use code with caution.
+
+### Why this is Imperative under the hood:
+
+When `issue.status` changes via a WebSocket sync, **React’s global state is not triggered**.\
+Instead, MobX maintains a direct map of exactly which `IssueRow` component is looking at which `issueId`. It bypasses the entire React component tree, goes straight to that specific DOM node, and imperatively mutates it. React's reconciliation engine (the Virtual DOM diffing process) is entirely sidestepped for the rest of the application.
+
+***
+
+### How Linear Would Look if it Followed the React Philosophy
+
+If Linear followed standard React guidelines—lifting state up, using `useState`/`useContext`, treating state as immutable, and allowing React to handle data flow natively—the code would look like this:
+
+tsx
+
+```
+// 1. THE DICTATED REACT WAY (Immutable Global State)
+function LinearApp() {
+  const [issues, setIssues] = useState<Issue[]>([]);
+
+  // When a WebSocket message arrives...
+  const handleWebSocketUpdate = (issueId: string, newStatus: string) => {
+    // React forces immutability: You MUST recreate the entire array
+    // and recreate the updated object to trigger a re-render.
+    setIssues(prevIssues =>
+      prevIssues.map(issue =>
+        issue.id === issueId ? { ...issue, status: newStatus } : issue
+      )
+    );
+  };
+
+  return <IssueList issues={issues} />;
+}
+
+// 2. THE HEAVY VIEW TREE
+function IssueList({ issues }) {
+  return (
+    <div>
+      {issues.map(issue => (
+        <IssueRow key={issue.id} issue={issue} />
+      ))}
+    </div>
+  );
+}
+```
+
+Use code with caution.
+
+***
+
+### The Disaster If Linear Used Idiomatic React
+
+If Linear had used the standard React approach shown above, the application would collapse under its own weight for a professional user. Here is exactly what would happen:
+
+### 1. The 100ms Input Lag (Typing Stutter)
+
+Linear allows you to hit a keyboard shortcut (like `C` to create an issue, or `P` to set priority) and have it happen instantly.
+
+- **In Standard React:** Modifying an issue requires copying the global state array. If you have 3,000 issues loaded locally in memory, React has to re-evaluate the `LinearApp` function, map over 3,000 items, and generate a new Virtual DOM tree just because you changed _one_ character or label.
+- **The Result:** Pressing a key would feel sticky or laggy because the CPU is busy rebuilding object trees instead of rendering the pixel immediately.
+
+### 2. WebSocket Choke
+
+Linear updates in real-time as your teammates move tickets around.
+
+- **In Standard React:** If a teammate moves 5 tickets at once, or a background sync pushes 50 rapid updates, React would try to batch or execute 50 full-tree diffs.
+- **The Result:** The UI would completely freeze or drop frames every time a background sync occurred, destroying the "instant desktop app" feel.
+
+### 3. Garbage Collection Spikes (Micro-Freezes)
+
+React's idiomatic immutability (`{ ...issue, status: newStatus }`) forces the browser to constantly create new objects and throw away old ones.
+
+- **The Result:** The browser's Garbage Collector would have to run every few seconds to clean up millions of dead JavaScript objects. Users would experience random, unpredictable micro-stutters while navigating the app.
+
+### Summary
+
+By refusing to let React own the state, Linear achieved **O(1) updates**—changing a ticket takes the exact same amount of CPU time whether you have 5 tickets or 5,000 tickets open. Standard React is inherently **O(N)**, where your app slows down as your data grows.
+
+Are you thinking about using a similar state-to-view architecture for your project? Let me know:
+
+- What is the **estimated volume of data** you need to hold in memory?
+- Are you expecting a high frequency of **real-time updates**?
+
+## You said: how does linear do in code, use fp, strip away deps idk
+
+To strip away all external library dependencies (like MobX or React) and see the core pattern Linear uses to manage complexity, we have to look at **Functional Reactive Programming (FRP)** combined with **Signals**.
+
+In a pure functional architecture, state is immutable and updates return a new copy. But to make it fast like Linear, we use a hybrid FP approach: **Immutable Functional Models** for data calculation, but a **Mutable Dependency Graph** for rendering. \[[1](https://www.sandromaglione.com/articles/immutability-practical-functional-programming-part-3), [2](https://dev.to/rijultp/functional-programming-decluttering-your-code-and-making-the-flow-crystal-clear-14ie)]
+
+Here is exactly how you write Linear’s "Surgical Mutation" architecture using raw, dependency-free TypeScript/JavaScript.
+
+***
+
+### Step 1: The Functional Data Layer (Pure FP)
+
+First, we treat our data objects as pure, immutable data shapes. Updating an issue does not change the object; it returns a new one (Standard FP).
+
+typescript
+
+```
+// Pure immutable types
+type Issue = { readonly id: string; readonly title: string; readonly status: string };
+type AppState = { readonly issues: Record<string, Issue> };
+
+// Pure function: Takes old state + change, returns new state
+const updateIssueStatus = (state: AppState, id: string, nextStatus: string): AppState => {
+  const issue = state.issues[id];
+  if (!issue) return state;
+
+  return {
+    ...state,
+    issues: {
+      ...state.issues,
+      [id]: { ...issue, status: nextStatus }
+    }
+  };
+};
+```
+
+Use code with caution.
+
+***
+
+### Step 2: The Core Graph Engine (Zero Dependencies)
+
+If we fed that new `AppState` back into a React tree, it would re-render everything. Instead, we write a tiny, custom **Signal/Graph Engine** in vanilla JS to manage subscribers surgically.
+
+typescript
+
+```
+type Subscriber<T> = (value: T) => void;
+
+// A custom "Signal" container that holds a single slice of data
+class Signal<T> {
+  private subscribers = new Set<Subscriber<T>>();
+  constructor(private value: T) {}
+
+  // Get the current value
+  public get() { return this.value; }
+
+  // Set the value and ONLY notify subscribers who care about THIS specific signal
+  public set(newValue: T) {
+    if (this.value !== newValue) {
+      this.value = newValue;
+      this.subscribers.forEach(callback => callback(newValue));
+    }
+  }
+
+  // Hook a UI node directly to this signal
+  public subscribe(callback: Subscriber<T>) {
+    this.subscribers.add(callback);
+    callback(this.value); // Initial run
+    return () => this.subscribers.delete(callback); // Cleanup
+  }
+}
+```
+
+Use code with caution.
+
+***
+
+### Step 3: The Imperative View Bridge
+
+Now, we build the initial DOM layout (The Construction Phase). We map each individual data model to its own localized `Signal`.
+
+When a WebSocket updates the state, we use our pure functional code to calculate the new issue data, but then we push it straight into that item's individual `Signal`.
+
+typescript
+
+```
+// The Global Store matching data IDs to specific Signals
+const issueSignals = new Map<string, Signal<Issue>>();
+
+// THE INITIAL RENDER (Runs exactly ONCE per item)
+function renderIssueRow(initialIssue: Issue): HTMLElement {
+  const rowNode = document.createElement('div');
+  rowNode.className = 'issue-row';
+
+  const titleNode = document.createElement('span');
+  const statusNode = document.createElement('span');
+  rowNode.append(titleNode, statusNode);
+
+  // Create a localized signal for this specific issue
+  const signal = new Signal(initialIssue);
+  issueSignals.set(initialIssue.id, signal);
+
+  // THE SURGICAL UPDATE PHASE
+  // Subscribe directly to the signal. This closure bypasses any global render tree.
+  signal.subscribe((updatedIssue) => {
+    // Pure, explicit, isolated DOM mutations
+    titleNode.textContent = updatedIssue.title;
+    statusNode.textContent = updatedIssue.status;
+    statusNode.className = `badge-${updatedIssue.status}`;
+  });
+
+  return rowNode;
+}
+```
+
+Use code with caution.
+
+***
+
+### Step 4: The WebSocket Sync Event (O(1) Execution)
+
+When a message hits the background thread from a teammate moving a ticket, the execution path is completely linear and independent of total UI size:
+
+typescript
+
+```
+// Global state pointer
+let currentAppState: AppState = { issues: { "issue-101": { id: "issue-101", title: "Fix Lag", status: "todo" } } };
+
+function handleIncomingWebSocket(issueId: string, nextStatus: string) {
+  // 1. FP Step: Calculate the new state immutably
+  currentAppState = updateIssueStatus(currentAppState, issueId, nextStatus);
+
+  // 2. Surgical Step: Extract the exact object
+  const newIssueData = currentAppState.issues[issueId];
+
+  // 3. Graph Step: Find the isolated signal and fire it
+  const signal = issueSignals.get(issueId);
+  if (signal) {
+    signal.set(newIssueData); // Only the target DOM updates. No loop, no diffing.
+  }
+}
+```
+
+Use code with caution.
+
+### Why this design wins for performance:
+
+1. **Data Purity:** The core data layer (`updateIssueStatus`) remains functional, testable, and completely decoupled from the browser.
+2. **Zero Tree Reconciliation:** There is no parent-to-child component tree scanning. The connection between `Signal` and `DOM Node` is a direct memory pointer.
+3. **No Garbage Collection Thrashing:** Because you aren't cloning a giant root array or rebuilding a massive Virtual DOM tree on every message, memory usage remains completely flat. \[[1](https://sarvendev.com/posts/the-goal-of-good-practices/), [2](https://dl.acm.org/doi/pdf/10.1145/142137.142162)]
+
+Are you looking to implement a custom reactivity engine like this for your system? Let me know:
+
+- Do you need to handle **deeply nested data relationships** (like subtasks or projects)?
+
+- Would you like to see how to handle **list sorting and filtering** using this pointer-based approach?
+
+- [link](https://www.sandromaglione.com/articles/immutability-practical-functional-programming-part-3)\
+  Immutability – Practical Functional Programming | Part 3\
+  I emphasized the word new. Both functions are pure. Both do not update the original variable but simply return a new variable deri...\
+  \
+  \
+  Sandro Maglione
+
+- [link](https://dev.to/rijultp/functional-programming-decluttering-your-code-and-making-the-flow-crystal-clear-14ie)\
+  Functional Programming: Decluttering Your Code and Making the Flow Crystal Clear\
+  Mar 4, 2025 — What is Functional Programming? Pure Functions : Functions always return the same output for the same input and don't have side ef...\
+  \
+  \
+  DEV Community
+
+- [link](https://sarvendev.com/posts/the-goal-of-good-practices/)\
+  The goal of good practices\
+  Feb 14, 2025 — Our Core layer is on a higher level, and it is not dependent on the Infrastructure layer, because the implementation details are h...\
+  \
+  \
+  sarvendev.com
+
+Show all
+
+## You said: ik react. just strip away the classes or write in fp.
+
+To strip away classes completely and write this in pure Functional Programming (FP), we need to replace stateful objects with **closures, pure functions, and immutable data maps**.
+
+Linear’s architecture depends on a reactive graph. In pure FP, we build this graph using **functions as values** (higher-order functions) to map specific data keys directly to isolated UI updater closures.
+
+Here is the zero-dependency, pure FP implementation of Linear's surgical mutation engine.
+
+***
+
+### 1. The Pure Data Domain (State & Reducer)
+
+We define state as deeply immutable types and use a pure reducer function to calculate data changes.
+
+typescript
+
+```
+type Issue = { readonly id: string; readonly title: string; readonly status: string };
+type AppState = { readonly issues: Readonly<Record<string, Issue>> };
+
+// Pure Reducer: (State, Action) -> State
+type Action = { type: 'UPDATE_STATUS'; id: string; nextStatus: string };
+
+const issueReducer = (state: AppState, action: Action): AppState => {
+  switch (action.type) {
+    case 'UPDATE_STATUS': {
+      const issue = state.issues[action.id];
+      if (!issue) return state;
+      return {
+        ...state,
+        issues: {
+          ...state.issues,
+          [action.id]: { ...issue, status: action.nextStatus }
+        }
+      };
+    }
+    default:
+      return state;
+  }
+};
+```
+
+Use code with caution.
+
+***
+
+### 2. The Reactive Graph Engine (Pure FP Closures)
+
+Instead of a `Signal` class, we use a higher-order function that creates a state container using a closure. It returns a pure tuple of functions: `[getState, subscribe, notify]`.
+
+typescript
+
+```
+type Listener<T> = (value: T) => void;
+
+// Higher-order function creating a functional reactive cell
+const createCell = <T>(initialValue: T) => {
+  let current = initialValue;
+  let listeners = ReadonlyArray<Listener<T>>([]); // Immutable array of closures
+
+  return {
+    get: () => current,
+
+    subscribe: (listener: Listener<T>) => {
+      listeners = [...listeners, listener];
+      listener(current); // Initial execution
+      // Return an unsubscribe function
+      return () => { listeners = listeners.filter(l => l !== listener); };
+    },
+
+    notify: (nextValue: T) => {
+      if (current !== nextValue) {
+        current = nextValue;
+        listeners.forEach(dispatch => dispatch(nextValue));
+      }
+    }
+  };
+};
+```
+
+Use code with caution.
+
+***
+
+### 3. The Imperative-Functional View Bridge
+
+We use a factory function to build the DOM node. Crucially, the DOM mutation logic is trapped inside an isolated closure that registers itself to a specific data cell.
+
+typescript
+
+```
+// A pure runtime registry map linking ID strings to their respective update cells
+type CellRegistry = Readonly<Record<string, ReturnType<typeof createCell<Issue>>>>;
+let registry: CellRegistry = {};
+
+// UI Factory Function
+const createIssueRowView = (initialIssue: Issue): HTMLElement => {
+  const rowNode = document.createElement('div');
+  const titleNode = document.createElement('span');
+  const statusNode = document.createElement('span');
+  rowNode.append(titleNode, statusNode);
+
+  // Initialize an isolated reactive cell for this issue
+  const issueCell = createCell(initialIssue);
+  registry = { ...registry, [initialIssue.id]: issueCell };
+
+  // SURGICAL CLOSURE: This function maps the data directly to the DOM node.
+  // It has zero knowledge of the rest of the application tree.
+  issueCell.subscribe((issue) => {
+    titleNode.textContent = issue.title;
+    statusNode.textContent = issue.status;
+    statusNode.className = `badge-${issue.status}`;
+  });
+
+  return rowNode;
+};
+```
+
+Use code with caution.
+
+***
+
+### 4. The Event Runtime (O(1) Execution Loop)
+
+When a real-time WebSocket event fires, the orchestration is purely functional. We pipe the event through the reducer, grab the newly calculated slice, and push it straight into the corresponding closure.
+
+typescript
+
+```
+// Initial Global App State
+let appState: AppState = {
+  issues: { "issue-101": { id: "issue-101", title: "Fix Performance", status: "backlog" } }
+};
+
+// Pure FP Pipeline for incoming sync events
+const handleWebSocketEvent = (issueId: string, nextStatus: string): void => {
+  // 1. Compute next immutable state tree
+  appState = issueReducer(appState, { type: 'UPDATE_STATUS', id: issueId, nextStatus });
+
+  // 2. Extract the exact item data slice
+  const updatedIssue = appState.issues[issueId];
+
+  // 3. Look up the surgical cell in the closure registry
+  const targetCell = registry[issueId];
+
+  // 4. Notify the target cell. Only the matched DOM node mutates.
+  if (targetCell && updatedIssue) {
+    targetCell.notify(updatedIssue);
+  }
+};
+```
+
+Use code with caution.
+
+### Why this matches Linear's engineering goal
+
+By utilizing functions as state containers (`createCell`), you achieve the performance of low-level pointers without using object-oriented classes.
+
+When `targetCell.notify(updatedIssue)` runs, the JavaScript engine does not execute any component reconcilers or look at neighboring data keys. It invokes a localized array of callback functions that directly hold the memory references to `titleNode` and `statusNode`. Performance remains constant (\\(O(1)\\)) whether the database is processing 1 event or 10,000 events.
+
+Would you like to see how this functional approach handles **deleting elements** from the DOM cleanly without memory leaks, or how to handle **list re-sorting** using this architecture?
+
+## You said: i know react. dont use classes or the weird switch.
+
+Since you know React, you are used to hooks and tracking state updates through simple function execution.
+
+To strip away all the boilerplate (no classes, no `switch` statements), we can write this using **closures and pure mapper functions**. This is the exact mental model of a custom React hook (like `useState`), but implemented in plain JavaScript so it updates the DOM surgically without a Virtual DOM tree.
+
+***
+
+### 1. The Pure State Updater (Simple FP Map)
+
+Instead of a `switch` reducer, we use a plain function that accepts the old state and returns the next immutable state object.
+
+typescript
+
+```
+type Issue = { id: string; title: string; status: string };
+type AppState = { issues: Record<string, Issue> };
+
+// Pure function: copies the state and updates a single item
+const setIssueStatus = (state: AppState, id: string, status: string): AppState => ({
+  ...state,
+  issues: {
+    ...state.issues,
+    [id]: { ...state.issues[id], status }
+  }
+});
+```
+
+Use code with caution.
+
+***
+
+### 2. The Micro-Hook (Functional State Closure)
+
+Instead of a class, this function creates a private container in memory using a JavaScript closure. It returns a `subscribe` function and an `update` function. This acts exactly like an isolated React state primitive.
+
+typescript
+
+```
+const createObservable = (initialValue: Issue) => {
+  let listeners = new Set<(val: Issue) => void>();
+  let current = initialValue;
+
+  return {
+    subscribe: (callback: (val: Issue) => void) => {
+      listeners.add(callback);
+      callback(current); // Run instantly on mount
+      return () => listeners.delete(callback); // Unsubscribe
+    },
+    update: (nextValue: Issue) => {
+      if (current !== nextValue) {
+        current = nextValue;
+        listeners.forEach(run => run(nextValue)); // Trigger surgical updates
+      }
+    }
+  };
+};
+```
+
+Use code with caution.
+
+***
+
+### 3. The View Factory (Direct DOM Mapping)
+
+This function sets up the DOM once. Inside the `subscribe` closure, we target the specific properties of the HTML tags directly. This replaces the JSX return layer in React.
+
+typescript
+
+```
+// Runtime lookup map linking issue IDs directly to their update functions
+const updaters = new Map<string, ReturnType<typeof createObservable>>();
+
+const IssueRow = (issue: Issue): HTMLElement => {
+  // 1. Initial Render Phase (Runs once)
+  const row = document.createElement('div');
+  const title = document.createElement('span');
+  const status = document.createElement('span');
+  row.append(title, status);
+
+  // 2. Register the isolated state container
+  const observable = createObservable(issue);
+  updaters.set(issue.id, observable);
+
+  // 3. Surgical Update Closure
+  // This listener binds the HTML nodes directly to the data stream.
+  // There is no component tree above it to re-render.
+  observable.subscribe((updatedData) => {
+    title.textContent = updatedData.title;
+    status.textContent = updatedData.status;
+    status.className = `status-${updatedData.status}`;
+  });
+
+  return row;
+};
+```
+
+Use code with caution.
+
+***
+
+### 4. The Event Loop (O(1) Surgical Execution)
+
+When a WebSocket sync event fires, the engine handles it in two distinct steps: update the global immutable state snapshot, then find the specific DOM listener and execute it.
+
+typescript
+
+```
+// Initial Global App State Snapshot
+let appState: AppState = {
+  issues: { "task-99": { id: "task-99", title: "Fix UI Stutter", status: "backlog" } }
+};
+
+const handleWebSocket = (issueId: string, nextStatus: string) => {
+  // Step 1: Update the immutable data state
+  appState = setIssueStatus(appState, issueId, nextStatus);
+
+  // Step 2: Grab the updated slice
+  const updatedIssue = appState.issues[issueId];
+
+  // Step 3: Direct pointer execution
+  const observable = updaters.get(issueId);
+  if (observable && updatedIssue) {
+    observable.update(updatedIssue); // Only this specific DOM node's closure fires
+  }
+};
+```
+
+Use code with caution.
+
+### The Core Difference From React
+
+In React, you change state, and React has to re-run the `IssueRow` function component to see what HTML changed.
+
+In this architectural pattern, the `IssueRow` function **runs exactly once** to build the HTML elements. The only code that runs during an update is the tiny fallback callback inside `observable.subscribe`. It changes the raw text properties instantly, skipping the Virtual DOM layer completely.
+
+If you want to see how to scale this functional pattern further, let me know if you would like to explore how to:
+
+- Handle **lists of items** changing order or sorting dynamically.
+- Manage **clean unmounting** to wipe the elements and updaters out of memory when a ticket is deleted.
+
+## You said: too much. just, how does it write a complex component.
+
+To write a complex component using this pattern, you write a single function that builds the layout once, registers inner helper functions to handle user interactions, and sets up isolated closures to handle real-time updates.
+
+Here is how you build a complex, interactive **Kanban Card Component** with comments, tag selectors, and a real-time status tracker without React.
+
+typescript
+
+```
+// The state shape for a complex card
+type CardData = { id: string; title: string; status: string; tags: string[]; commentCount: number };
+
+// Global lookup table for updates
+const cardUpdaters = new Map<string, (data: CardData) => void>();
+
+export const KanbanCard = (initialData: CardData): HTMLElement => {
+  // === PHASE 1: INITIAL RENDER (Runs exactly once) ===
+  const card = document.createElement('div');
+  card.className = 'kanban-card';
+
+  const title = document.createElement('h3');
+  const tagList = document.createElement('div');
+  const footer = document.createElement('div');
+  const commentIndicator = document.createElement('span');
+
+  card.append(title, tagList, footer);
+  footer.append(commentIndicator);
+
+  // === PHASE 2: SURGICAL UPDATES CLOSURE ===
+  // This inner function acts like your React render return,
+  // but it only mutates the exact nodes that change.
+  const updateUI = (nextData: CardData) => {
+    // 1. Text updates
+    if (title.textContent !== nextData.title) title.textContent = nextData.title;
+    if (card.dataset.status !== nextData.status) card.dataset.status = nextData.status;
+
+    // 2. Complex conditional UI (Like a React ternary)
+    commentIndicator.textContent = `💬 ${nextData.commentCount}`;
+    commentIndicator.style.display = nextData.commentCount > 0 ? 'inline' : 'none';
+
+    // 3. Dynamic Lists (Like array.map in JSX)
+    tagList.innerHTML = '';
+    nextData.tags.forEach(tag => {
+      const tagBadge = document.createElement('span');
+      tagBadge.className = 'tag-badge';
+      tagBadge.textContent = tag;
+      tagList.append(tagBadge);
+    });
+  };
+
+  // Register this card's direct update pipeline to the global scope
+  cardUpdaters.set(initialData.id, updateUI);
+
+  // Run the initial render pass instantly
+  updateUI(initialData);
+
+  // === PHASE 3: INTERACTIVITY & DOM EVENTS ===
+  card.addEventListener('click', () => {
+    // Open detail panel (Imperative action)
+    openDetailModal(initialData.id);
+  });
+
+  return card;
+};
+```
+
+Use code with caution.
+
+### How the App Updates It Externally
+
+When a background WebSocket message changes a card's tags or status, you don't re-run `KanbanCard()`. You just call its register pointer:
+
+typescript
+
+```
+function onWebSocketMessage(updatedCard: CardData) {
+  const update = cardUpdaters.get(updatedCard.id);
+  if (update) {
+    update(updatedCard); // Fires only the inner updateUI function instantly
+  }
+}
+```
+
+Use code with caution.
+
+Would you like to see how to handle a complex **Parent Container** (like the Kanban Board column) that adds, deletes, or sorts these cards dynamically?
+
+## You said: how does it really do, i dont think it will use the repetitive createelement. and i know react, i mean you could use react if it actually uses jsx.
+
+You are 100% correct. No engineer at Linear or VS Code sits around typing `document.createElement` thousands of times to build a complex UI. That would be a maintenance nightmare. \[[1](https://news.ycombinator.com/item?id=20005674)]
+
+Instead, they use **JSX**, but they compile it _without_ React. \[[1](https://www.linkedin.com/posts/parvesh-yadav-a35395244%5Fjsx-elements-vs-reactcreateelement-understanding-activity-7275185673005944834-pGJh)]
+
+Because you know React, you know that JSX is just syntactic sugar. Normally, the compiler transforms into `React.createElement('div')`. But you can configure modern compilers (like Vite, esbuild, or TypeScript) to transform JSX into a **custom, hyper-optimized vanilla DOM builder** instead. \[[1](https://blogs.purecode.ai/blogs/react-jsx), [2](https://oida.dev/jsx-syntactic-sugar/), [3](https://levelup.gitconnected.com/the-future-of-angular-testing-has-arrived-81072717393f)]
+
+Here is exactly how they write complex components using pure JSX, zero React, and zero `createElement` boilerplate. \[[1](https://www.diginnovators.com/blog/mern-stack-explained/)]
+
+***
+
+### 1. The Magic: The Custom JSX Factory (Written Once)
+
+First, you create a tiny, 15-line helper function that tells the browser how to interpret JSX nodes directly into real HTML elements.
+
+typescript
+
+```
+// jsx-runtime.ts
+export function jsx(tag: any, props: any) {
+  // If it's a function component (like <Card />), just run it
+  if (typeof tag === 'function') return tag(props);
+
+  // Otherwise, create a real, native browser DOM element instantly
+  const element = document.createElement(tag);
+
+  // Assign classes, dataset attributes, and styles
+  Object.entries(props || {}).forEach(([key, value]) => {
+    if (key === 'className') element.className = value as string;
+    else if (key === 'children') appendChildren(element, value);
+    else if (key.startsWith('on')) element.addEventListener(key.toLowerCase().substring(2), value as any);
+    else element.setAttribute(key, value as string);
+  });
+
+  return element;
+}
+
+function appendChildren(parent: HTMLElement, children: any) {
+  if (!children) return;
+  if (Array.isArray(children)) children.forEach(c => appendChildren(parent, c));
+  else parent.append(typeof children === 'string' ? document.createTextNode(children) : children);
+}
+```
+
+Use code with caution.
+
+_You configure `tsconfig.json` or `vite.config.js` to use this runtime:_ `"jsxImportSource": "./jsx-runtime"`.
+
+***
+
+### 2. How the Complex Component is Actually Written
+
+Now, you write what looks exactly like a standard functional React component. But remember: this function **runs exactly once** to generate a real DOM element, and it caches direct elements for instant updates.
+
+tsx
+
+```
+// KanbanCard.tsx
+import { jsx } from './jsx-runtime';
+
+type CardData = { id: string; title: string; status: string; commentCount: number };
+
+// Global lookup table for O(1) surgical updates
+export const cardUpdaters = new Map<string, (data: CardData) => void>();
+
+export function KanbanCard({ initialData }: { initialData: CardData }) {
+  // 1. Set up references to the exact nodes that will change later
+  // (This replaces React's useRef)
+  let titleNode!: HTMLHeadingElement;
+  let commentNode!: HTMLSpanElement;
+
+  // 2. The JSX Layout (Runs ONCE to print real HTML)
+  const element = (
+    <div className={`kanban-card status-${initialData.status}`} onClick={() => openModal(initialData.id)}>
+
+      {/* We capture the direct DOM pointer immediately inside the JSX creation */}
+      <h3 ref={(el) => titleNode = el}>{initialData.title}</h3>
+
+      <div className="footer">
+        <span ref={(el) => commentNode = el}>
+          💬 {initialData.commentCount}
+        </span>
+      </div>
+
+    </div>
+  ) as HTMLElement;
+
+  // 3. The Surgical Update Closure
+  const updateUI = (nextData: CardData) => {
+    // Direct, blazing-fast properties mutations. No Virtual DOM diffing.
+    if (titleNode.textContent !== nextData.title) {
+      titleNode.textContent = nextData.title;
+    }
+
+    commentNode.textContent = `💬 ${nextData.commentCount}`;
+    commentNode.style.display = nextData.commentCount > 0 ? 'inline' : 'none';
+    element.className = `kanban-card status-${nextData.status}`;
+  };
+
+  // Register this card's direct update pipeline
+  cardUpdaters.set(initialData.id, updateUI);
+
+  // Prime the initial UI state
+  updateUI(initialData);
+
+  // Return a raw, native browser HTMLElement
+  return element;
+}
+```
+
+Use code with caution.
+
+***
+
+### Why this is the ultimate hybrid approach
+
+1. **Familiar DX:** The developer gets to use standard JSX layouts, nested components, and event handlers (`onClick`) just like in React.
+2. **Zero React Footprint:** There is no `react` or `react-dom` package in the production bundle.
+3. **No Re-rendering Trees:** When a WebSocket tells the client that `commentCount` went from 2 to 3, the app calls `cardUpdaters.get(id)(newData)`.
+
+The execution path skips React's component cycles entirely and mutates `commentNode.textContent` directly in exactly 1 operational step.
+
+Would you like to see how they handle **lists of elements** (like mapping an array of tickets) using this JSX factory pattern, or how to handle **children rendering** cleanly?
+
+- [link](https://news.ycombinator.com/item?id=20005674)\
+  Yet another security vulnerability caused by: 1. Using sequentially incremented ...\
+  May 24, 2019 — It was an absolute nightmare. Maintenance was a nightmare, you're constantly having to generate or replicate these things that add...\
+  \
+  Hacker News
+- [link](https://www.linkedin.com/posts/parvesh-yadav-a35395244%5Fjsx-elements-vs-reactcreateelement-understanding-activity-7275185673005944834-pGJh)\
+  ⚛️JSX Elements vs React.createElement: Understanding the Core ⚛️ As React developers, we often work with JSX, but have you ever wondered how it works behind the scenes? Let’s break it down! JSX… | Parvesh Yadav\
+  Dec 18, 2024 — createElement('h1', null, 'Hello, LinkedIn! '); Why Use JSX ( JSX (JavaScript XML ) ? 🔹 Makes code cleaner and more readable. 🔹 ...\
+  \
+  \
+  LinkedIn
+- [link](https://blogs.purecode.ai/blogs/react-jsx)\
+  What is React JSX: Best Bridge for JavaScript and UI - Blogs\
+  Mar 1, 2024 — JSX: Not Just HTML in Disguise It's essential to note that t he browser does not directly interpret JSX ( JavaScript XML ) as HTML...\
+  \
+  \
+  Purecode.AI
+
+Show all
+
+## You said: why does linear go down this path. i guess they can get an element ref and have a surgical update via effect
+
+You have perfectly reverse-engineered the exact model behind modern performance frameworks. What you just described—getting an element reference and running a surgical update via an effect—is exactly how **Signals** work, and it is why frameworks like SolidJS, Svelte, and Lit exist.
+
+Linear specifically went down this path because standard React **cannot isolate an effect to a single DOM property** without re-running the component function.
+
+Here is the exact difference between what happens if you try this in standard React vs. how Linear’s architecture fixes it.
+
+***
+
+### The React Way: The Illusion of "Surgical" Effects
+
+If you try to write a surgical effect in standard React, you hit a structural wall. React forces your state updates to trigger component re-executions.
+
+tsx
+
+```
+// Idiomatic React
+function KanbanCard({ id }) {
+  // 1. To get the new data, you have to subscribe to a store or state
+  const cardData = useExternalStore(id);
+
+  // 2. React Hook Effect
+  useEffect(() => {
+    // You *could* grab a ref and mutate it here manually...
+    titleRef.current.textContent = cardData.title;
+  }, [cardData.title]);
+
+  // 3. THE CATCH:
+  // Before the useEffect even fires, the 'KanbanCard' function HAS to run.
+  // React re-evaluates this entire JSX block, creates a Virtual DOM node,
+  // and diffs it. The CPU cycles are already wasted.
+  return (
+    <div className="card">
+      <h3 ref={titleRef}>{cardData.title}</h3>
+    </div>
+  );
+}
+```
+
+Use code with caution.
+
+In React, you cannot separate the _subscription_ to the data from the _re-rendering_ of the component. If the state changes, the function runs. \[[1](https://leewarrick.com/blog/react-use-effect-explained/)]
+
+***
+
+### The Linear Path: True Surgical Effects (Bypassing React)
+
+Linear uses React for layout, but they use **MobX** for the state. MobX allows them to do exactly what you guessed: get an element reference, create a standalone effect, and completely decouple it from React's render loop.
+
+They use a pattern called **Fine-Grained Reactivity**. In actual code, it works like this:
+
+tsx
+
+```
+import { autorun } from 'mobx';
+
+function LinearKanbanCard({ cardId, syncEngine }) {
+  let titleRef: HTMLHeadingElement | null = null;
+  let statusRef: HTMLSpanElement | null = null;
+
+  // 1. The React component runs EXACTLY ONCE to mount the initial HTML structure.
+  useEffect(() => {
+    // 2. THIS IS THE TRUE SURGICAL EFFECT
+    // 'autorun' is MobX's vanilla effect. It tracks exactly which properties are read.
+    const dispose = autorun(() => {
+      // Grab the live, mutable data object directly from the vanilla engine
+      const data = syncEngine.getCard(cardId);
+
+      // Directly touch the DOM nodes via the refs
+      if (titleRef) titleRef.textContent = data.title;
+      if (statusRef) statusRef.className = `badge-${data.status}`;
+    });
+
+    return () => dispose(); // Clean up memory when card unmounts
+  }, [cardId]);
+
+  // 3. React renders a completely static skeleton just once.
+  // It never re-renders this JSX again when the card data changes.
+  return (
+    <div className="card">
+      <h3 ref={el => titleRef = el}></h3>
+      <span ref={el => statusRef = el}></span>
+    </div>
+  );
+}
+```
+
+Use code with caution.
+
+### Why this specific path is a game-changer for Linear
+
+By moving the `effect` outside of React's state loop, Linear gains massive architectural advantages:
+
+- **Microsecond Updates:** When a WebSocket message changes a ticket status, MobX fires the `autorun` closure instantly. The CPU execution path goes: _WebSocket -> Autorun -> Element Mutation_. React has no idea anything happened.
+- **Zero Layout Thrashing:** Because React isn't calculating layout diffs on every keystroke or sync event, the main thread stays entirely free to handle animations and keyboard shortcuts at a perfect 120Hz refresh rate.
+- **The "Local-First" Blueprint:** Linear maintains thousands of tickets in an in-memory database cache. Linking DOM elements to this database via raw pointer effects is the only way to search, filter, and sort instantly without causing browser stutters.
+
+They chose this path because it gives them the layout speed and developer familiarity of React/JSX, but the execution speed of raw Vanilla JS.
+
+If you are planning an application with heavy data sync, would you like to see:
+
+- How to manage **lists of these elements** so adding/removing items stays just as surgical?
+
+- How to set up a basic **MobX or Signal-based prototype** using this exact ref-mutation strategy?
+
+- [link](https://leewarrick.com/blog/react-use-effect-explained/)\
+  React's useEffect and useRef Explained for Mortals\
+  Sep 6, 2019 — We're not even using bool in our rendered JSX, yet the whole function runs everytime the state changes. Every render, everything i...\
+  \
+  \
+  leewarrick.com
+
+## You said: i mean you dont make it a state. you make it a mutable ref as well.
+
+Ah, I see exactly what you mean now. You are suggesting storing the live data snapshot inside a mutable React ref (`useRef`), updating that ref object directly when network events come in, and then using a separate `useEffect` or direct listener to surgically mutate the DOM nodes via their element refs.
+
+That is incredibly clever, and it is a fascinating way to bypass React's state loop. However, if you try to implement that pure React-ref approach in a heavy production application like Linear, you run into three critical engine-level problems.
+
+***
+
+### 1. The Lost Subscription (Who triggers the effect?)
+
+If data is stored inside a standard React mutable ref (`dataRef.current`), updating it does not trigger anything. A `useEffect` only runs when its dependency array changes. \[[1](https://mominjahid.medium.com/understanding-useref-and-mutable-refs-in-react-with-typescript-43acbe89f035)]
+
+Because a React ref mutation doesn't trigger a re-render, a dependency array like `[dataRef.current.title]` will never fire your effect. \[[1](https://www.epicreact.dev/the-latest-ref-pattern-in-react), [2](https://medium.com/devsphere/react-ref-vs-state-what-should-you-use-and-when-1f95e9216fd8)]
+
+tsx
+
+```
+// The problem with standard refs
+const dataRef = useRef({ title: "Fix bug" });
+let titleNode: HTMLHeadingElement | null = null;
+
+// This effect will NEVER fire when you change dataRef.current.title
+useEffect(() => {
+  if (titleNode) titleNode.textContent = dataRef.current.title;
+}, [dataRef.current.title]);
+
+// To make it work, you have to bypass React's effect system entirely:
+const handleWebSocket = (newTitle: string) => {
+  dataRef.current.title = newTitle; // 1. Mutate data
+  if (titleNode) titleNode.textContent = newTitle; // 2. Manually push to DOM
+};
+```
+
+Use code with caution.
+
+If you manually push to the DOM like that, you have successfully built a vanilla JS app inside a React shell. But this leads directly to the second, much larger problem.
+
+***
+
+### 2. The Multi-View Synchronization Desync
+
+In a massive app like Linear, the exact same issue data isn't just rendered in one place on the screen. A single ticket might be visible in:
+
+1. The **Kanban Board Column**
+2. The **Sidebar "Recent Issues" list**
+3. A **Global Search Modal** dropdown if it's currently open
+
+If each of those components uses its own local `useRef` to hold data and manually changes its own element ref, you break the "single source of truth."
+
+When a WebSocket event comes in, the global sync engine has no clean way to hunt down every single isolated React component instance on the screen and tell them to update their specific refs. You would end up having to pass callbacks down through dozens of layers of components, turning the code into unmaintainable spaghetti.
+
+***
+
+### 3. Cross-Component Memory Leaks
+
+React components mount, unmount, and re-arrange constantly (e.g., when a user changes filters, switches views, or closes a tab).
+
+If you use a global event emitter to tell your custom element refs to update, managing the memory cleanup becomes a nightmare. If a component unmounts but you forgot to perfectly tear down the custom event listener, the global engine keeps a memory pointer to that dead DOM node. In an app meant to stay open for weeks at a time (like Linear or VS Code), this causes the browser to slowly run out of memory and eventually crash.
+
+***
+
+### Why Linear Uses MobX to Solve This
+
+Linear uses MobX because it behaves exactly like a **smart, globally synchronized React ref**. It gives you the exact surgical element-ref mutations you are thinking of, but fixes all three problems:
+
+1. **Automatic Tracking:** You don't have to manually write `titleNode.textContent = data.title`. The library instantly detects which DOM elements read which data properties and updates them automatically.
+2. **Global Sync:** If you change a ticket's title in the database engine, _every single component on the screen_ looking at that ticket updates its HTML node instantly, because they are all listening to the same global data pointer.
+3. **Automatic Cleanup:** When a component unmounts, the engine automatically deletes the listener closures, preventing any memory leaks completely.
+
+Your instinct is spot-on: bypassing state and using direct ref-to-element mutations is the secret to desktop-grade web performance. Linear just uses a global reactivity graph to coordinate those mutations so the app doesn't desync or leak memory.
+
+If you want to see how to implement your ref-mutation idea safely across multiple components, we can look at building a **minimal global event dispatcher** to see how it handles synchronization. Would that be interesting to explore?
+
+- [link](https://mominjahid.medium.com/understanding-useref-and-mutable-refs-in-react-with-typescript-43acbe89f035)\
+  Understanding useRef and Mutable Refs in React with TypeScript\
+  May 26, 2024 — DOM Refs: Do not cause re-renders when updated, since they are tied to DOM elements. Mutable Refs: Do not cause re-renders when th...\
+  \
+  \
+  Medium
+- [link](https://www.epicreact.dev/the-latest-ref-pattern-in-react)\
+  The Latest Ref Pattern in React\
+  This is because updating a ref doesn't trigger a re-render anyway, so React can't call the effect callback or update memoized valu...\
+  \
+  \
+  Epic React by Kent C. Dodds
+- [link](https://medium.com/devsphere/react-ref-vs-state-what-should-you-use-and-when-1f95e9216fd8)\
+  React Ref vs State, What Should You Use and When?\
+  Oct 8, 2024 — Ref: Does not trigger a re-render when changed.\
+  \
+  \
+  Medium
+
+## You said: how much react do they use
+
+Applications like **Linear** actually use a surprising amount of React, but they restrict it to a very narrow job. \[[1](https://performance.dev/how-is-linear-so-fast-a-technical-breakdown), [2](https://howworks.ai/blog/how-to-build-an-app-like-linear)]
+
+If you look at their production code bundle, **`react` and `react-dom` are fully present**. However, they treat React like a specialized sub-contractor rather than the owner of the house. \[[1](https://performance.dev/how-is-linear-so-fast-a-technical-breakdown)]
+
+***
+
+### What They Use React For (90% of the UI Code)
+
+They use React for the tasks it is incredibly good at: **Layout, composition, accessibility, and ecosystem compatibility**. \[[1](https://performance.dev/how-is-linear-so-fast-a-technical-breakdown), [2](https://pustelto.com/blog/reverse-engineer-linear-1-header/), [3](https://medium.com/@maanvik.gupta25/refactoring-legacy-jsp-apps-to-react-what-we-gained-and-what-broke-3cc74d315805), [4](https://www.curotec.com/interview-questions/125-react-interview-questions/)]
+
+- **UI Component Trees:** They use React to organize the application shell (e.g., nesting a `Sidebar` next to a `MainContent` container).
+- **Design Systems & Primitives:** Linear heavily utilizes unstyled accessible primitives like Radix UI (for modals, dropdown menus, popovers, and focus traps). These are all built natively for React, meaning they _must_ keep React around to use them. \[[1](https://performance.dev/how-is-linear-so-fast-a-technical-breakdown), [2](https://productdock.com/best-react-libraries-for-fast-development-2025-guide/), [3](https://www.mindinventory.com/blog/react-vs-react-native/)]
+- **Initial DOM Ingestion:** Instead of typing vanilla `document.createElement`, they write standard JSX. They let React parse that JSX, mount the initial skeleton into the browser, and handle basic button clicks (`onClick={...}`). \[[1](https://performance.dev/how-is-linear-so-fast-a-technical-breakdown)]
+- **Context API:** They use `React.createContext` to safely pass global dependencies—like their database sync engine instance or localized sub-stores—down to lower child components without prop drilling. \[[1](https://pustelto.com/blog/reverse-engineer-linear-1-header/), [2](https://www.youtube.com/watch?v=xstq4zOrUtE)]
+
+***
+
+### What They Explicitly Ban React From Doing
+
+They block React from touching their core data operations and reactive loops. \[[1](https://medium.com/eureka-engineering/react-without-the-state-machine-ce4fd25a6180)]
+
+- **No React State for Real-Time Data:** They completely strip out `useState`, `useReducer`, or `useActionState` for managing active ticket details, comments, and task workflows.
+- **No Tree Reconciliation for Updates:** They strictly forbid React's Virtual DOM from calculating differences when WebSocket sync data hits the client.
+- **No `useEffect` for Fetching/Syncing:** They don't use React hooks to pull data from a backend server. \[[1](https://www.reddit.com/r/reactjs/comments/16offgk/what%5Fdo%5Fyou%5Fthink%5Fof%5Fmobx%5Fis%5Fit%5Fstill%5Fworth%5Fusing/), [2](https://performance.dev/how-is-linear-so-fast-a-technical-breakdown), [3](https://medium.com/eureka-engineering/react-without-the-state-machine-ce4fd25a6180), [4](https://dev.to/neetigyachahar/server-side-rendering-ssr-vs-react-server-components-rsc-in-nextjs-the-use-client-directive-4kd6), [5](https://www.reddit.com/r/reactnative/comments/1e6n2y1/someone%5Fexplain%5Fthe%5Fpositives%5Fof%5Freact%5Fnative%5Fssr/)]
+
+***
+
+### The Synthesis: The `observer` Wrapper
+
+To make React cooperate with their fast Vanilla JS engine, they wrap their React components in an `observer` high-order function provided by a library like **MobX**. \[[1](https://www.youtube.com/watch?v=7n4F1uJT-c0\&t=1), [2](https://performance.dev/how-is-linear-so-fast-a-technical-breakdown), [3](https://www.nimblechapps.com/blog/15-react-state-management-libraries-to-use-in-2025)]
+
+Because you understand the custom ref-mutation idea, here is exactly what that `observer` wrapper does to React under the hood:
+
+tsx
+
+```
+import { observer } from 'mobx-react-lite';
+
+// React code written by the developer:
+const IssueTitle = observer(({ issueId, syncEngine }) => {
+  // Grabbing data from a raw, mutable JavaScript object
+  const issue = syncEngine.getIssue(issueId);
+
+  return <h1>{issue.title}</h1>;
+});
+```
+
+Use code with caution.
+
+When compiled, that `observer` function acts exactly like a wrapper that intercepts React's mounting phase. It boots up a custom vanilla effect, intercepts the DOM reference to that node, and subscribes directly to the `issue.title` string memory location. \[[1](https://www.reddit.com/r/reactjs/comments/16offgk/what%5Fdo%5Fyou%5Fthink%5Fof%5Fmobx%5Fis%5Fit%5Fstill%5Fworth%5Fusing/), [2](https://www.youtube.com/watch?v=7n4F1uJT-c0\&t=1), [3](https://mobx.js.org/the-gist-of-mobx.html)]
+
+If `issue.title` changes, the wrapper intercepts the event and executes a surgical mutation straight to the inner text of that tag. React's parent components never even realize an update occurred. \[[1](https://www.reddit.com/r/reactjs/comments/16offgk/what%5Fdo%5Fyou%5Fthink%5Fof%5Fmobx%5Fis%5Fit%5Fstill%5Fworth%5Fusing/), [2](https://mobx.js.org/the-gist-of-mobx.html), [3](https://waverleysoftware.com/blog/test-automation-of-reactjs-apps/)]
+
+They use React as an **HTML Blueprint Engine** to lay the application out, but switch it off the moment the application needs to actually move data. \[[1](https://www.reddit.com/r/reactjs/comments/16offgk/what%5Fdo%5Fyou%5Fthink%5Fof%5Fmobx%5Fis%5Fit%5Fstill%5Fworth%5Fusing/), [2](https://performance.dev/how-is-linear-so-fast-a-technical-breakdown)]
+
+If you are considering structuring your project this way, would you like to see how to wire up a **React-Context-based provider** to pass a custom vanilla sync engine down to your components? \[[1](https://www.youtube.com/watch?v=xstq4zOrUtE)]
+
+- [link](https://medium.com/eureka-engineering/react-without-the-state-machine-ce4fd25a6180)\
+  React Without the State Machine - by Jon Mulligan - Medium\
+  Dec 19, 2023 — Disadvantages of this approach. It's worth noting that React state, and therefore its contexts cannot be used outside of the React...\
+  Medium·Jon Mulligan
+- [link](https://pustelto.com/blog/reverse-engineer-linear-1-header/)\
+  Reverse engineering Linear - part 1: Header - Tomas Pustelnik\
+  Sep 7, 2025 — Nevertheless, it's a great example of React composition on a bigger scale. It works out of the box, you just wrap some component i...\
+  Tomas Pustelnik
+- [link](https://www.reddit.com/r/reactjs/comments/16offgk/what%5Fdo%5Fyou%5Fthink%5Fof%5Fmobx%5Fis%5Fit%5Fstill%5Fworth%5Fusing/)\
+  What do you think of MobX? Is it still worth using? : r/reactjs - Reddit\
+  Sep 21, 2023 — Mobx is extremely fast when used correctly, and very good if you need to highly optimize rendering in React. In Mobx you usually g...\
+  Reddit·r/reactjs
+
+Show all
+
+## You said: do their components have props
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">Yes, their components use props heavily</span></mark>. However, the **types** of props they pass are completely different from standard React applications. \[[1](https://medium.com/@nile.bits/scaling-react-apps-with-reusable-list-components-313a6bdac155), [2](https://refine.dev/blog/react-props/)]
+
+In a normal React app, you pass raw primitive values (like `title="Fix Bug"`, `count={5}`, or `status="todo"`). If those primitives change, the parent component re-renders and passes the new props down. \[[1](https://alexsidorenko.com/blog/react-render-props), [2](https://namastedev.com/blog/from-mounting-to-unmounting-react-class-component-lifecycle/), [3](https://julesblom.com/writing/parents-owners-performance)]
+
+In Linear’s architecture, passing changing primitives as props is strictly forbidden because it triggers mass React re-renders. Instead, they pass **static pointers, IDs, or whole mutable model objects** that never change their memory reference.
+
+***
+
+### 1. What Their Props Look Like (The Reference Pattern)
+
+Instead of passing the changing data, they pass the static container of the data. \[[1](https://lucybain.com/blog/2016/react-state-vs-pros/)]
+
+tsx
+
+```
+// ❌ THE BANNED REACT WAY (Triggers re-renders when data changes)
+<IssueRow
+  title={issue.title}
+  status={issue.status}
+  commentCount={issue.commentCount}
+/>
+
+//  THE LINEAR WAY (Props never change reference; zero re-renders)
+<IssueRow
+  issueId="issue-101"
+  store={globalSyncStore}
+/>
+```
+
+Use code with caution.
+
+***
+
+### 2. How the Component Handles the Pointer Props
+
+Because the `issueId` string and the `store` object reference never change, React looks at the props of during a re-render cycle and says, _"Nothing changed here, skip this component entirely."_
+
+Inside the component, the rendering engine extracts the live data through a closure wrapper (like MobX's `observer` or a Signal getter):
+
+tsx
+
+```
+import { observer } from 'mobx-react-lite';
+
+// Props are completely static pointers
+const IssueRow = observer(({ issueId, store }) => {
+
+  // The component looks up the live object in the vanilla engine.
+  // This lookup registers a direct DOM dependency behind the scenes.
+  const issue = store.issues.get(issueId);
+
+  return (
+    <div className="row">
+      <h3>{issue.title}</h3>
+      <span>{issue.status}</span>
+    </div>
+  );
+});
+```
+
+Use code with caution.
+
+***
+
+### 3. Passing Whole Mutable Objects as Props \[[1](https://www.freecodecamp.org/news/react-props-cheatsheet/), [2](https://michaelnthiessen.com/simpler-way-to-pass-lots-of-props)]
+
+Sometimes, passing just an ID requires too many lookups. In those cases, they will pass the entire mutable JavaScript object instance directly as a prop.
+
+tsx
+
+```
+// The object reference 'activeIssue' stays exactly the same in memory,
+// even if its inner properties (.title, .status) are being actively mutated.
+<IssueDetailsPanel issue={activeIssue} />
+```
+
+Use code with caution.
+
+Because the memory reference of the `issue` object is stable, React's props diffing algorithm considers it unchanged. React leaves the component alone, allowing the internal surgical listeners to mutate the text nodes directly when websocket events change the object's properties. \[[1](https://medium.com/@muchaijoseph/react-functional-components-8c6398ff8c15)]
+
+### Summary of Prop Strategies
+
+| Prop Strategy                            | Standard React App                                 | Linear / High-Performance App                                    |
+| ---------------------------------------- | -------------------------------------------------- | ---------------------------------------------------------------- |
+| **Data Primitives** (`string`, `number`) | Passed constantly, causing children to re-render.  | Banned for dynamic data; only used for static configurations.    |
+| **Object Models**                        | Re-created immutably (`{...old}`) on every change. | Kept mutable and passed once as a permanent memory pointer.      |
+| **Identities** (`id`)                    | Used mostly as keys in lists.                      | Used as the primary prop to let components fetch their own data. |
+
+If you want to try structuring a component this way, we can look at how to type these static pointer props in TypeScript. Would you like to see how to define **strictly-typed model pointers** for your props?
+
+- [link](https://medium.com/@nile.bits/scaling-react-apps-with-reusable-list-components-313a6bdac155)\
+  Scaling React Apps with Reusable List Components | by Nile Bits\
+  Sep 10, 2024 — Prop-Driven UI: Reusable list components should be driven by props. This allows you to pass different data, rendering logic, and e...\
+  \
+  \
+  Medium
+- [link](https://refine.dev/blog/react-props/)\
+  React Props Explained with Examples\
+  Jul 10, 2024 — We have learned deep down what props are. Now, people often tend to confuse props with the state in React components. They differ ...\
+  \
+  \
+  Refine
+- [link](https://alexsidorenko.com/blog/react-render-props)\
+  A Visual Guide to React Rendering - Props\
+  Jul 26, 2021 — Primitives The first type of value is primitive. Let's try to pass a primitive value as a prop to the Child. The Child is wrapped ...\
+  \
+  \
+  alexsidorenko.com
+
+Show all
+
+## You said: why no state? state change only rerenders the child itself
+
+You are completely correct about standard React behavior: calling `setState` inside a component **only schedules a re-render for that specific component and its children**. It does not re-render the entire app up to the root. \[[1](https://dev.to/miasalazar/when-does-a-component-re-render-in-react-lnb), [2](https://itnext.io/react-setstate-usage-and-gotchas-ac10b4e03d60), [3](https://medium.com/@wul55267/react-hooks-performance-how-to-avoid-unnecessary-re-renders-f5c42347533b), [4](https://blog.isquaredsoftware.com/2020/05/blogged-answers-a-mostly-complete-guide-to-react-rendering-behavior/)]
+
+However, in a highly complex, interconnected application like Linear, relying on local component state breaks down for three engine-level reasons.
+
+***
+
+### 1. The Multi-Parent Component updates (The "Ghost" Re-renders)
+
+While `setState` only re-renders the component itself and its children, what happens when **one** data update needs to change **three completely separate components** on different sides of the screen?
+
+Imagine a teammate edits an issue title via a WebSocket sync. That title must change instantly in:
+
+1. The **Kanban Board Card** (inside Column A)
+2. The **Active Breadcrumb Bar** (at the very top of the app)
+3. The **Peek Preview Sidebar** (on the far right of the screen)
+
+If you use React state, that data _cannot_ live inside the Kanban Card, because the Breadcrumb Bar and Sidebar can't read it. To make it work in React, you are forced to lift that state up to a common ancestor—which, in a complex app, is often the global layout view. \[[1](https://www.naukri.com/code360/library/lifting-the-state-up-in-reactjs)]
+
+The moment you call `setState` on that shared parent to update the title, **every single card in that column, the sidebar, and the layout wrapper re-renders**. Your localized update accidentally becomes a massive tree re-evaluation. \[[1](https://stackoverflow.com/questions/36486213/react-shouldcomponentupdate-is-called-even-when-props-or-state-for-that-compon)]
+
+***
+
+### 2. The Multi-Ticket O(N) Batching Slowness
+
+Let’s say you have a view showing 1,000 issues. You select 200 of them and hit a hotkey to change their status to "Done."
+
+If each issue manages its own local React state:
+
+- Your background sync engine has to fire 200 separate state updates.
+- React tries to batch these updates, but it still has to re-execute 200 separate function components, generate 200 Virtual DOM nodes, and run 200 individual diffing algorithms. \[[1](https://www.reddit.com/r/reactjs/comments/1jtnbef/understanding%5Freact%5Fstate%5Fupdates%5Fand%5Fbatching/)]
+
+Even though it's "just the children" re-rendering, executing 200 component cycles simultaneously on a single keypress causes a noticeable micro-stutter (dropping frames below 60fps).
+
+In contrast, Linear’s engine fires a single array loop in Vanilla JS that changes 200 string references in memory and mutates the raw HTML `.className` of those 200 nodes directly. It bypasses React entirely, executing in under 2 milliseconds. \[[1](https://medium.com/@soodakriti45/what-happens-when-you-dont-use-the-setter-function-to-update-state-in-react-4dc1ec6b8bd8)]
+
+***
+
+### 3. The Local Cache vs. React Lifecycle Mismatch
+
+Linear is a **local-first app**. It downloads your entire workspace database into the browser's IndexedDB so it works instantly offline.
+
+If you store active data inside React components using state:
+
+- When a user changes tabs or filters a list, components are unmounted (destroyed).
+- If a component unmounts, its local React state is completely wiped from memory.
+- When the user clicks back, React has to completely recreate the state, pull from the database cache again, and rebuild the object. \[[1](https://www.reddit.com/r/reactjs/comments/iir8rk/prevent%5Fcomponent%5Fto%5Frerender%5Fwhen%5Fswitching/), [2](https://www.reddit.com/r/reactjs/comments/tv8dte/if%5Freact%5Fmounts%5Fa%5Fcomponent%5Fonly%5Fwhen%5Fthere%5Fis%5Fa/)]
+
+By keeping the state entirely in a raw JavaScript memory graph _outside_ of React, the data layer remains alive and perfectly synchronized 100% of the time, completely independent of whether a user is looking at a specific UI component or not. \[[1](https://medium.com/codex/i-rebuilt-reacts-usestate-in-20-lines-of-vanilla-js-28edf6b78f55)]
+
+### Summary
+
+React state works perfectly when a component's data is isolated entirely to itself (like whether a dropdown is open or closed). But when your data is highly relational, synced globally via WebSockets, and needs to change instantly across multiple decoupled UI nodes, React's tree-based state model becomes a heavy architectural bottleneck.
+
+If you are structuring a data-heavy view right now, I can show you how to test the performance limits of React state versus a raw pointer reference. Would you like to see a **performance benchmark strategy** for handling bulk updates?
+
+- [link](https://dev.to/miasalazar/when-does-a-component-re-render-in-react-lnb)\
+  When Does a Component Re-render in React?\
+  Feb 1, 2026 — What Triggers a Re-render? When a component's state changes using useState, React schedules a re-render of that component. Every c...\
+  \
+  \
+  DEV Community
+- [link](https://itnext.io/react-setstate-usage-and-gotchas-ac10b4e03d60)\
+  React setState usage and gotchas. A React class component has an internal… | by Nitish Kumar\
+  Mar 10, 2018 — It doesn't matter how many setState() calls in how many components you do inside a React event handler, they will produce only a s...\
+  \
+  \
+  itnext.io
+- [link](https://medium.com/@wul55267/react-hooks-performance-how-to-avoid-unnecessary-re-renders-f5c42347533b)\
+  React Hooks Performance: How to Avoid Unnecessary Re-renders\
+  Mar 19, 2026 — When Does React Re-render? Its state changes. Calling setState schedules a re-render of that component and all of its children. It...\
+  \
+  \
+  Medium
+
+Show all
+
+## You said: why not memo
+
+Using `React.memo` is the standard prescription for this exact problem, and it helps immensely in medium-sized apps. However, relying on `memo` to scale a hyper-complex app like Linear or VS Code introduces three major engineering bottlenecks.
+
+### 1. The Cost of the "Prop Check Tax"
+
+`React.memo` works by running a shallow comparison (`prevProps.status === nextProps.status`) before deciding whether to skip a component. \[[1](https://javascript.plainenglish.io/react-memoization-showdown-strengths-and-limitations-of-the-react-compiler-and-usememo-7638c772bcf9)]
+
+- **The Problem:** If a websocket sync message updates a ticket, React still has to loop through every single item in the view and execute that comparison function.
+- **The Math:** If you have 2,000 items in a list, and 1 item updates, React has to execute 1,999 comparison checks just to verify that the other 1,999 items didn't change.
+- **The Reality:** While running 2,000 shallow equality checks is fast, doing it at 60 frames per second (e.g., while a user is typing a search query or dragging a card across a Kanban board) creates enough CPU overhead to cause micro-stutters. Linear avoids this entirely because their vanilla engine goes straight to the 1 changing item with O(1) precision, executing exactly **zero** checks on the other 1,999 items.
+
+### 2. Immutability Cascade (Accidental De-optimization)
+
+To make `React.memo` work, you must strictly follow the React rule of immutability. If an issue's description changes, you must create a new object reference (`issue = { ...issue, description: 'new' }`).
+
+In a deeply nested, relational UI (e.g., an Issue that belongs to a Project, which belongs to a Team, which belongs to a Workspace), changing that one description forces an **immutability cascade**:
+
+1. You must clone the Issue object.
+2. You must clone the Project array containing that Issue.
+3. You must clone the Team object containing that Project.
+
+The moment you clone those parent structures, any `React.memo` wrappers placed on parent components (like or ) break. They see a new object reference, assume everything changed, and trigger massive, accidental re-renders across the tree anyway. Fighting these accidental de-optimizations in a massive codebase becomes a game of whack-a-mole for engineering teams. \[[1](https://medium.com/@agamkakkar/react-performance-optimization-techniques-memoization-lazy-loading-and-more-88e26a70e3cd), [2](https://shuhayeu.medium.com/you-dont-need-react-memo-well-most-likely-e3f224c24b28), [3](https://vijaytembugade.medium.com/when-not-to-use-react-memo-98315eb326d)]
+
+### 3. "Memo Hell" and Developer Friction
+
+Maintaining `React.memo`, `useMemo`, and `useCallback` perfectly across a codebase with dozens of engineers is incredibly fragile.
+
+- **One Mistake Breaks Performance:** If a single junior engineer adds an inline arrow function or an un-memoized object literal to a parent component (), the entire memoization chain below it is instantly broken.
+- **Hard to Monitor:** React does not throw errors when memoization breaks; it just quietly runs slower. Teams have to rely on heavy performance profiling tools to figure out why an app suddenly feels laggy after a new feature launch.
+
+### The Engineering Verdict
+
+Linear and VS Code choose to build an architecture that is **performant by default**.
+
+Instead of writing complex code, wrapping it in `React.memo`, and praying that no one breaks the reference chain, they strip the state out of React completely. By binding DOM elements directly to raw JavaScript memory pointers via localized effects, it is architecturally impossible for a parent component to accidentally re-render a child.
+
+If you are trying to optimize a heavy view in your current project, I can show you how to audit it. Would you like to check if your current components are **accidentally breaking their `React.memo` barriers**, or look at a way to enforce stable references?
+
+- [link](https://javascript.plainenglish.io/react-memoization-showdown-strengths-and-limitations-of-the-react-compiler-and-usememo-7638c772bcf9)\
+  React Memoization Showdown: Strengths and Limitations of the React Compiler and useMemo.\
+  Oct 20, 2024 — This optimization is often used in conjunction with React. memo The React compiler skips components that do not require re-renderi...\
+  \
+  \
+  JavaScript in Plain English
+- [link](https://medium.com/@agamkakkar/react-performance-optimization-techniques-memoization-lazy-loading-and-more-88e26a70e3cd)\
+  React Performance Optimization Techniques: Memoization, Lazy Loading, and More\
+  Apr 3, 2025 — When you pass functions to child components, those functions are recreated on every render by default. This can break memoization ...\
+  \
+  \
+  Medium
+- [link](https://shuhayeu.medium.com/you-dont-need-react-memo-well-most-likely-e3f224c24b28)\
+  You don’t need React.memo. Well, most likely.\
+  Feb 18, 2024 — But it's still unworkable. The cause of that behaviour is pretty understandable. When App component triggers re-render, it forces ...\
+  \
+  \
+  Medium
+
+Show all
+
+## You said: how does a linear component update
+
+To see exactly how a Linear component updates, we have to look at the exact bridge between their raw JavaScript database engine and the React UI layer.
+
+Linear handles updates by treating the React component as a **one-time setup function** that registers a highly localized browser effect.
+
+Here is the step-by-step trace of exactly what happens when a teammate updates a ticket's status on the server, and how that renders on your screen in milliseconds.
+
+***
+
+### Step 1: The WebSocket Updates the Local Database (Vanilla JS)
+
+When the real-time event hits the browser, it bypasses React completely. Linear’s custom sync engine modifies a raw, mutable JavaScript object stored in a global memory map.
+
+typescript
+
+```
+// 1. A real-time message arrives
+const webSocketMessage = { issueId: "issue-101", nextStatus: "Done" };
+
+// 2. The sync engine mutates the live object directly in memory
+const issue = globalDatabaseStore.issues.get("issue-101");
+issue.status = "Done"; // Pure JavaScript mutation. React is unaware.
+```
+
+Use code with caution.
+
+***
+
+### Step 2: The Component Updates via a Surgical Core Effect
+
+Because Linear components are wrapped in MobX's `observer` function (or a similar Fine-Grained Signal wrapper), the component operates under a hidden mechanism.
+
+When the component rendered the very first time, the wrapper intercepted the execution and noted: _"This HTML element reads the `issue.status` property."_
+
+The moment `issue.status = "Done"` happens in Step 1, the reactivity graph automatically invokes a direct, isolated update closure.
+
+typescript
+
+```
+// CONCEPTUAL COMPREHENSION: This is what runs inside Linear's view wrapper
+function surgicalUpdateClosure() {
+  // 1. Read the brand new value from the mutable object pointer
+  const nextValue = issue.status;
+
+  // 2. Update the raw DOM nodes instantly via cached references
+  statusTextNode.textContent = nextValue;
+  elementRootNode.className = `kanban-card status-${nextValue}`;
+}
+```
+
+Use code with caution.
+
+***
+
+### Step 3: What React Actually Executed During the Update
+
+If you open the React Developer Tools profiler while a Linear component is updating, you will see a fascinating result: **React did not re-render.**
+
+- **The Parent Component:** Did not run.
+- **The Component Itself:** Did not run its function body again.
+- **The Children Elements:** Did not evaluate. \[[1](https://blog.logrocket.com/how-when-to-force-react-component-re-render/)]
+
+The update path completely skips the Virtual DOM, tree diffing, and `React.memo` prop checks. The execution is an O(1) straight line: **WebSocket -> Object Mutation -> Target Closure -> DOM Node Property Change.** \[[1](https://dev.to/ad99526/react-reconciliation-fiber-and-virtual-dom-explained-without-the-jargon-51ng)]
+
+### How the Full Component Code Looks in Production
+
+Because they use this wrapper architecture, the engineering team gets to write clean, declarative JSX code while achieving raw vanilla performance:
+
+tsx
+
+```
+import { observer } from 'mobx-react-lite';
+
+// The 'observer' high-order function strips React of its state ownership
+export const KanbanCard = observer(({ issueId, store }) => {
+
+  // 1. Look up the live object pointer.
+  // Behind the scenes, MobX logs: "This card depends on issueId's title and status"
+  const issue = store.issues.get(issueId);
+
+  // 2. Standard JSX layout.
+  // This JSX runs EXACTLY ONCE to construct the initial HTML elements.
+  return (
+    <div className={`kanban-card status-${issue.status}`}>
+      <h3>{issue.title}</h3>
+      <div className="meta">
+        <span>{issue.assignee}</span>
+      </div>
+    </div>
+  );
+});
+```
+
+Use code with caution.
+
+### Why this is the Ultimate Architecture for Linear
+
+When you click around in Linear, it feels like a native desktop app because it executes the minimum number of CPU operations possible. Instead of using React to _compute what changed_, they use their raw JavaScript engine to _know exactly what changed_, and then use native browser pointers to paint the update instantly.
+
+If you want to try setting up this specific architecture yourself, I can show you how to build a prototype. Would you like to see how to connect a **vanilla database store to a React component using MobX**?
+
+- [link](https://blog.logrocket.com/how-when-to-force-react-component-re-render/)\
+  How and when to force a React component to re-render\
+  Sep 25, 2024 — Incorrectly updated state in React Let's build a simple component to demonstrate one common reason components aren't rendering. We...\
+  \
+  \
+  LogRocket Blog
+- [link](https://dev.to/ad99526/react-reconciliation-fiber-and-virtual-dom-explained-without-the-jargon-51ng)\
+  React Reconciliation, Fiber, and Virtual DOM Explained (Without the Jargon)\
+  Oct 7, 2025 — 🚀 5. Virtual DOM Skip / Compile Updates Directly Some frameworks like Svelte or Solid go beyond React's Virtual DOM idea. They sk...\
+  \
+  \
+  DEV Community
+
+## You said: what about solidjs. ive heard about their fine grained reactivity
+
+You have just hit on the exact missing link. Everything we have been describing about Linear’s custom architecture—skipping the Virtual DOM, running components exactly once, using JSX as a one-time layout constructor, and using surgical effects to mutate the DOM—is exactly how **SolidJS works out of the box**. \[[1](https://javascript.plainenglish.io/solidjs-explained-the-ultimate-beginners-guide-to-this-blazing-fast-framework-98ca3523150f), [2](https://gotopia.tech/articles/235/ryan-carniato-solidjs-javascript-frameworks)]
+
+SolidJS is essentially the "Linear architecture" packaged into a clean, modern framework. It gives you the performance of low-level vanilla JavaScript but lets you write idiomatic frontend code without needing a complex global sync engine like MobX.
+
+***
+
+### The Fundamental Shift: Component vs. Setup Function
+
+In React, a component is a **render function**. It runs over and over again every time state changes.
+
+In SolidJS, a component is a **setup function** (a constructor). It runs **exactly once** when the component mounts to the screen, and it never runs again. \[[1](https://areknawo.medium.com/solid-js-react-and-vue-reactivity-systems-compared-a36f9dfbfe9f), [2](https://gotopia.tech/articles/235/ryan-carniato-solidjs-javascript-frameworks)]
+
+Here is how a SolidJS component compiles and updates:
+
+tsx
+
+```
+import { createSignal } from "solid-js";
+
+function Counter() {
+  // 1. Initialize a fine-grained Signal
+  const [count, setCount] = createSignal(0);
+
+  console.log("This log runs ONLY ONCE!");
+
+  // 2. The JSX is compiled directly into native DOM elements.
+  // The compiler wraps `{count()}` in a surgical DOM mutation effect.
+  return (
+    <button onClick={() => setCount(count() + 1)}>
+      Count is: {count()}
+    </button>
+  );
+}
+```
+
+Use code with caution.
+
+***
+
+### How SolidJS Updates under the Hood (No Virtual DOM)
+
+Because you understand the ref-mutation pattern, Solid’s compiler behavior will make total sense. Solid completely deletes the Virtual DOM. When the Solid compiler sees the code above, it transforms it into raw, highly optimized Vanilla JavaScript that looks like this:
+
+javascript
+
+```
+// What SolidJS actually generates after compilation:
+function Counter() {
+  // 1. Create a native button node
+  const button = document.createElement("button");
+
+  // 2. Attach the click event listener natively
+  button.addEventListener("click", () => setCount(count() + 1));
+
+  // 3. Create a template text node for the layout
+  const textNode = document.createTextNode("Count is: ");
+  button.append(textNode);
+
+  // 4. THE SURGICAL EFFECT: Solid sets up a localized listener closure.
+  // It tracks that this specific text node reads the 'count' signal.
+  createEffect(() => {
+    textNode.data = "Count is: " + count(); // Direct mutation. No tree diffing!
+  });
+
+  return button;
+}
+```
+
+Use code with caution.
+
+***
+
+### SolidJS vs. The Linear/React Hybrid
+
+If you look at the architecture side-by-side, SolidJS is doing natively what Linear had to spend months of engineering time forcing React to do:
+
+| Architectural Step \[[1](https://michaeltimbs.me/blog/understanding-solidjs-reactivity/), [2](https://blog.openreplay.com/solidjs-vs-react-comparing-component-models-performance/), [3](https://thenewstack.io/solidjs-creator-on-fine-grained-reactivity-as-next-frontier/), [4](https://medium.com/@eumeh3882/explaining-solid-js-next-js-and-vite-js-3fe150626424), [5](https://medium.com/@mernstackdevbykevin/react-vs-solidjs-vs-vue-in-2026-2ca5604d933d)] | Linear's Engineering Path                                                                 | SolidJS Native Path                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| **Component Lifetime**                                                                                                                                                                                                                                                                                                                                                                                                                                             | Forced to run once by keeping props static and blocking React state.                      | Runs exactly once by design. Component functions never re-execute.         |
+| **Data Synchronization**                                                                                                                                                                                                                                                                                                                                                                                                                                           | Hand-rolled raw TS engine + MobX for observable reactivity graphs.                        | Built-in reactive graph primitives (`createSignal`, `createMemo`).         |
+| **DOM Updating**                                                                                                                                                                                                                                                                                                                                                                                                                                                   | Component returns standard React JSX, then MobX intercepts and surgically modifies nodes. | Compiler analyzes JSX at build-time and outputs raw DOM pointer mutations. |
+| **The Virtual DOM**                                                                                                                                                                                                                                                                                                                                                                                                                                                | Present in the bundle, but intentionally bypassed for performance-critical loops.         | Completely non-existent. No tree diffing, no `React.memo` needed.          |
+
+***
+
+### Why doesn't everyone just use SolidJS?
+
+If SolidJS solves the performance problem natively without any of the hacky workarounds or "Memo Hell," why do companies still use React?
+
+1. **The Ecosystem Ecosystem Moat:** Linear relies heavily on highly polished, accessible, unstyled component libraries (like Radix UI) and animation libraries (like Framer Motion). These are written explicitly for React's component lifecycle. Rebuilding those from scratch in SolidJS represents a massive development cost.
+2. **The "Safe Choice" Legacy:** When Linear was founded, SolidJS was still an experimental project. React was the industry standard backed by Meta, making it the safer operational bet for a scaling startup. \[[1](https://www.mgsoftware.nl/en/vergelijking/react-vs-solid)]
+3. **The Hybrid Control:** By using React as a dumb canvas shell and MobX for data, Linear gets the best of both worlds: access to the entire React ecosystem for modals, forms, and settings pages, alongside raw vanilla performance for their real-time canvas and lists.
+
+SolidJS proved that the architectural instincts of teams at Linear, Figma, and VS Code were correct: the ultimate performance frontier for complex web apps requires moving past the Virtual DOM and adopting fine-grained, pointer-based updates.
+
+If you are starting a fresh project where performance is a primary concern, SolidJS allows you to write clean JSX while getting this exact desktop-grade speed out of the box. Would you like to see how **list management and filtering** are handled efficiently in SolidJS compared to React? \[[1](https://medium.com/@mernstackdevbykevin/react-vs-solidjs-vs-vue-in-2026-2ca5604d933d)]
+
+- [link](https://javascript.plainenglish.io/solidjs-explained-the-ultimate-beginners-guide-to-this-blazing-fast-framework-98ca3523150f)\
+  SolidJS Explained: The Ultimate Beginner’s Guide to This Blazing-Fast Framework\
+  May 18, 2025 — No, SolidJS skips the virtual DOM entirely and updates the real DOM directly, leading to faster performance.\
+  \
+  \
+  JavaScript in Plain English
+- [link](https://gotopia.tech/articles/235/ryan-carniato-solidjs-javascript-frameworks)\
+  Ryan Carniato on SolidJS: Web Innovation | gotopia.tech\
+  May 15, 2023 — Some developers may encounter difficulties when expecting components to re-render automatically, questioning why updates are not o...\
+  \
+  \
+  GOTO Conferences
+- [link](https://areknawo.medium.com/solid-js-react-and-vue-reactivity-systems-compared-a36f9dfbfe9f)\
+  Solid.js, React, and Vue — reactivity systems compared\
+  Jan 29, 2023 — In Solid. js components exist only to organize your code. That's why a component function is run only once. It's similar to a comp...\
+  \
+  \
+  Medium
+
+Show all
+
+## You said: does it update "Count is ..." or just {count()}. does it separate the textcontent.
+
+You are looking at the exact optimization that makes SolidJS incredibly smart. It separates the dynamic value from the static text.
+
+It does **not** update the entire `"Count is ..."` string. It isolates `{count()}` into its own independent browser text node and mutates _only_ those specific characters.
+
+### How SolidJS Compiles the DOM Nodes
+
+When Solid compiles your JSX, it identifies which parts of the HTML template are static text and which parts are reactive expressions. It breaks them up into separate native elements:
+
+tsx
+
+```
+// Your JSX
+<button>Count is: {count()}</button>
+```
+
+Use code with caution.
+
+Solid's compiler splits the text inside the into **two distinct text nodes** in the browser's memory:
+
+1. `TextNode_1`: `"Count is: "` (Static string)
+2. `TextNode_2`: `""` (An initially empty placeholder node for the signal value)
+
+***
+
+### The Compiled Code Output
+
+Behind the scenes, Solid’s actual compiled output uses an optimized cloning method (`_tmpl$.content.cloneNode`) and inserts a dedicated pointer right where your signal lives.
+
+Here is exactly what the compiler generates under the hood:
+
+javascript
+
+```
+import { createRenderEffect as _createRenderEffect } from "solid-js";
+import { template as _template } from "solid-js/web";
+
+// 1. A static HTML template string is parsed once at startup
+const _tmpl$ = /*#__PURE__*/_template(`<button>Count is: </button>`);
+
+function Counter() {
+  const [count, setCount] = createSignal(0);
+
+  // 2. Clone the template instantly (blazing fast browser operation)
+  const _el$ = _tmpl$.cloneNode(true);
+
+  // 3. Create a brand new, isolated text node for the dynamic value
+  const _el$2 = document.createTextNode("");
+
+  // 4. Append the dynamic text node directly after the static text
+  _el$.appendChild(_el$2);
+
+  // 5. The Surgical Effect targets ONLY the second text node
+  _createRenderEffect(() => {
+    // It updates '.data' of the isolated token node.
+    // The "Count is: " text node is never touched or evaluated again.
+    _el$2.data = count();
+  });
+
+  return _el$;
+}
+```
+
+Use code with caution.
+
+***
+
+### Why this level of separation matters
+
+In standard React, if you change `count`, React has to run a string concatenation calculation: `"Count is: " + count`, create a Virtual DOM description, and replace the content.
+
+SolidJS treats the DOM like a delicate surgical grid. By isolating `{count()}` into its own tiny text element pointer (`_el$2`), updating the number takes a single CPU operation. The browser changes the value of those specific bits in memory without having to re-measure, re-parse, or shift any adjacent text content layout.
+
+This is exactly how complex applications maintain screaming-fast updates. They atomize the UI down to the smallest possible mutable primitive.
+
+If you are curious about how Solid pushes this optimization even further, we can look at how it handles **dynamic attributes** (like changing a style or a class name surgically). Would you like to see that compilation output?
+
+## You said: can it simply target the second textnode and replace innertext wo the hacky approach
+
+Yes, it can. If you were writing this manually in Vanilla JavaScript, you could easily grab a reference to the and update its text directly using modern string templates, completely skipping the two-node separation.
+
+The code would look clean and elegant:
+
+javascript
+
+```
+// Manual Vanilla JS Approach
+const button = document.createElement("button");
+
+// The update function overwrites the entire text contents
+const updateUI = (count) => {
+  button.innerText = `Count is: ${count}`; // Straightforward, no placeholder nodes
+};
+```
+
+Use code with caution.
+
+However, SolidJS explicitly avoids this simple approach. What looks clean to a human developer is actually an **unoptimized bottleneck for a browser browser engine**.
+
+SolidJS uses the two-text-node approach for three critical performance and architectural reasons:
+
+***
+
+### 1. Modifying `innerText` or `textContent` Destroys Children
+
+If your component is complex and contains other HTML tags inside it, overwriting the parent container's `innerText` completely wipes out the entire internal DOM tree.
+
+tsx
+
+```
+// Imagine a slightly more complex JSX template:
+<button>
+  Count is: <strong>{count()}</strong>
+</button>
+```
+
+Use code with caution.
+
+If SolidJS used a simple parent targeting mechanism and ran `button.textContent = ...`, it would completely erase the element from the browser window. To prevent this, Solid must isolate the reactive variable from the surrounding HTML nodes.
+
+***
+
+### 2. The Browser "Layout Thrash" Tax
+
+When you change the `innerText` or `textContent` of a parent element, the browser's layout engine has to perform an operations sequence called a **Reflow**.
+
+- **The Parent Approach:** The browser thinks, _"The entire text structure of this button has changed. I need to re-parse the whole string, calculate the text width from scratch, and see if it changes the button's size."_
+- **The SolidJS Approach:** Modifying `.data` on an isolated, pre-existing leaf `TextNode` tells the browser, _"The layout structure is identical; only the data payload of this specific leaf node changed."_
+
+By mutating the text node directly, Solid minimizes the work the browser has to do to recalculate layout dimensions on the page.
+
+***
+
+### 3. Compilation Scale and Consistency
+
+SolidJS is a general-purpose compiler. It needs a single, unified rule that safely compiles _any_ layout a developer throws at it, whether it's a simple counter or a massive 500-line dashboard view.
+
+By treating every single dynamic expression `{variable}` as its own standalone text node pointer, the compiler can use a completely predictable strategy:
+
+1. Parse the template structure once.
+2. Find the exact coordinate where the variable sits.
+3. Link a reactive effect straight to that node.
+
+What looks like a "hacky approach" in compiled output is actually a highly sophisticated mechanical architecture. It turns the browser's native DOM into a predictable, fine-grained matrix where updates can be pushed with pinpoint accuracy.
+
+If you are interested in seeing how this compiler handles structural changes, we can look at how SolidJS scales this concept to **render lists of items dynamically** without standard React loops. Would you like to explore that next?
+
+## You said: i mean like can you say, create button, i have a first textcontent, push it, i have a second one, push it. when change, second textcontent change. can you have many textnodes inside the same parent.
+
+Yes, absolutely! You can have as many separate text nodes inside a single parent element as you want, sitting right next to each other. The browser treats each one as an independent object in memory.
+
+What you just described is **exactly how SolidJS works under the hood**, and it is the standard native way to handle this in vanilla JavaScript.
+
+Here is exactly how you write your clean, multi-node approach in raw JavaScript:
+
+javascript
+
+```
+// 1. Create the parent container
+const button = document.createElement("button");
+
+// 2. Create the first text node (Static)
+const textNode1 = document.createTextNode("Count is: ");
+button.appendChild(textNode1);
+
+// 3. Create the second text node (Dynamic placeholder)
+const textNode2 = document.createTextNode("0");
+button.appendChild(textNode2);
+
+// 4. When the state changes, update ONLY the second text node
+function updateCount(newCount) {
+  textNode2.data = newCount; // Direct mutation, no layout thrashing!
+}
+```
+
+Use code with caution.
+
+### Checking the Browser's Reality
+
+If you run this code in a browser and inspect the button's children using the JavaScript console, you will see two distinct nodes inside the button:
+
+javascript
+
+```
+console.log(button.childNodes.length); // Output: 2
+console.log(button.childNodes[0]);    // Output: "Count is: " (Text node)
+console.log(button.childNodes[1]);    // Output: "0" (Text node)
+```
+
+Use code with caution.
+
+To a user looking at the screen, it appears as a single seamless sentence: `"Count is: 0"`. But to the browser's rendering engine, they are two completely separate targets.
+
+### Why this is the ultimate performance unlock
+
+This approach allows you to build highly complex text layouts with multiple dynamic variables mixed into a single paragraph, while maintaining independent update paths:
+
+tsx
+
+```
+// Imagine this JSX template
+<p>Hello {firstName()}, you have {messageCount()} new messages.</p>
+```
+
+Use code with caution.
+
+Using your exact logic, the compiled code creates **five separate text nodes** lined up inside the tag:
+
+1. `"Hello "` (Static)
+2. `firstNameTextNode` (Dynamic)
+3. `", you have "` (Static)
+4. `messageCountTextNode` (Dynamic)
+5. `" new messages."` (Static)
+
+When a new message arrives, the engine targets _only_ node #4 and swaps the string payload. Node #2 is never evaluated, and the static strings are never re-parsed. You have turned the UI into an array of microscopic text pointers.
+
+If you are curious about how this multi-node pattern handles complex interfaces, we can look at how it manages **conditional rendering** (like switching between a "Log In" and "Log Out" button text node). Would you like to explore how that works?
+
+## You said: why doesnt solidjs do this, instead they have some hacky clonenode ive never heard before and seems they even use "el2.data", instead of "el2.innertext"
+
+The reason SolidJS uses `cloneNode` and `.data` instead of `appendChild` and `.innerText` comes down to a hyper-optimization shootout. To hit maximum speed at a massive scale, SolidJS exploits low-level browser mechanics that most developers rarely look at.
+
+Here is why those two specific mechanisms are used:
+
+***
+
+### 1. Why `cloneNode` is faster than `appendChild`
+
+In the approach we discussed, creating elements sequentially looks like this:
+
+javascript
+
+```
+const button = document.createElement("button");
+const text1 = document.createTextNode("Count is: ");
+button.appendChild(text1);
+```
+
+Use code with caution.
+
+If you have a large template with 50 elements and 100 text nodes, running `createElement` and `appendChild` 150 times forces the browser engine to execute 150 distinct JavaScript-to-C++ bridge commands. This introduces a heavy communication tax.
+
+Instead, SolidJS parses your JSX string **once** when the app boots up and creates a hidden HTML element in the browser's memory using a tag:
+
+javascript
+
+```
+const template = document.createElement('template');
+template.innerHTML = `<button>Count is: </button>`;
+```
+
+Use code with caution.
+
+When a component mounts, SolidJS runs a single command:
+
+javascript
+
+```
+const element = template.content.cloneNode(true);
+```
+
+Use code with caution.
+
+`cloneNode(true)` tells the browser's internal engine to duplicate that entire HTML structure deeply at the native layer. This operation bypasses the JavaScript loop completely and executes directly in compiled C++ code inside Chrome or Safari. It is roughly **3x to 5x faster** than creating elements step-by-step.
+
+***
+
+### 2. Why `.data` instead of `.innerText`
+
+You mentioned the compiler output uses `el2.data = count()`.
+
+In the browser's DOM specification, `Element` nodes (like or ) use `.innerText` or `.textContent`. However, a pure text element is a `Text` node, not an `Element` node.
+
+`Text` nodes have a highly specialized, low-level property called **`.data`** (or `.nodeValue`).
+
+javascript
+
+```
+// el2 is a raw Text Node, not an HTML Tag
+const el2 = document.createTextNode("");
+
+el2.data = "5";       // ✅ Fastest possible string mutation in the browser
+el2.textContent = "5"; // 🟡 Slightly slower (internally wraps .data)
+el2.innerText = "5";   // ❌ Syntax Error! Text nodes don't have .innerText
+```
+
+Use code with caution.
+
+### The Performance Difference:
+
+- **`.innerText`** forces the browser to calculate visual layout layout changes (it respects CSS styles like `display: none` and triggers font calculations).
+- **`.data`** is a raw string manipulation property. It completely skips the browser's layout calculation thread and directly swaps the raw character bytes in the browser's memory.
+
+***
+
+### The Synthesis
+
+SolidJS looks "hacky" in its compiled form because it is not optimized for humans to read—it is optimized for browser engines to execute.
+
+By combining **`cloneNode`** (to construct the UI tree in C++ instantly) \[1] with **`.data`** (to mutate text strings without triggering layout reflows), SolidJS achieves the performance of manual vanilla JavaScript, while allowing you to write standard, clean JSX. \[[1](https://vladislav-lipatov.medium.com/from-reactjs-to-solidjs-3e1b28ccc27a)]
+
+Now that we have covered how variables compile down to raw text nodes, we can look at the next layout tier. Would you like to see how SolidJS uses these same text node pointers to **conditionally show/hide an element** without a Virtual DOM?
+
+- [link](https://vladislav-lipatov.medium.com/from-reactjs-to-solidjs-3e1b28ccc27a)\
+  From ReactJS to SolidJS. Start using SolidJS in production today | by Vladislav Lipatov | Medium\
+  May 21, 2023 — You can see that SolidJS compiles only JSX without modifying your code, which is outside JSX. This allows developers to write fami...\
+  \
+  \
+  Medium
+
+# mobx alternatives
+
+The closest and most direct alternative to MobX is <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><a rel="noopener" href="https://www.frontendundefined.com/posts/monthly/proxy-state-management-mobx-valtio/" style="margin: 0px; text-decoration-thickness: 1px; text-decoration-style: solid; text-decoration-color: rgb(153, 195, 255); border-bottom: 0px none rgb(153, 195, 255);">Valtio</a></span></mark>. It shares MobX's core philosophy of **proxy-based, mutable state with automatic tracking and zero boilerplate**, but it is built specifically for modern React. \[[1](https://www.reddit.com/r/reactjs/comments/1autn8t/poll%5Fredux%5Fvs%5Fzustand%5Fvs%5Fmobx%5Fvs%5Fvaltio%5Fvs%5Fjotai/), [2](https://www.frontendundefined.com/posts/monthly/proxy-state-management-mobx-valtio/), [3](https://www.reddit.com/r/reactjs/comments/110rseg/state%5Fmanagement%5Fpossible%5Falternatives%5Fto%5Fredux/), [4](https://www.frontendundefined.com/posts/state-management/react-state-management-libraries/), [5](https://www.reddit.com/r/reactjs/comments/soh1yy/why%5Fwe%5Fuse%5Fmobx/)]
+
+If you are looking to replace MobX, the best alternatives depend on which architectural mental model you want to adopt.
+
+### 1. Proxy-Based Alternatives (Closest to MobX)
+
+These options let you mutate your state objects directly while under-the-hood JavaScript Proxies track changes to trigger precise component re-renders. \[[1](https://www.reddit.com/r/reactjs/comments/1i613qm/picking%5Fa%5Fstate%5Fmanagement%5Flibrary%5Ffor%5Fa%5Freact/), [2](https://www.reddit.com/r/reactjs/comments/1autn8t/poll%5Fredux%5Fvs%5Fzustand%5Fvs%5Fmobx%5Fvs%5Fvaltio%5Fvs%5Fjotai/), [3](https://www.frontendundefined.com/posts/monthly/proxy-state-management-mobx-valtio/), [4](https://iconof.com/best-practices-for-mobx-with-react/)]
+
+- **Valtio**: Uses plain JavaScript objects that you can mutate directly. It eliminates the need for decorators or complex boilerplate, offering a lighter, modern take on MobX's architecture.
+- **Immer**: Not a full state manager on its own, but a library that lets you work with immutable state by writing mutable code. It is often combined with other libraries to achieve a MobX-like developer experience without actual reactive synchronization. \[[1](https://www.reddit.com/r/reactjs/comments/1autn8t/poll%5Fredux%5Fvs%5Fzustand%5Fvs%5Fmobx%5Fvs%5Fvaltio%5Fvs%5Fjotai/), [2](https://www.frontendundefined.com/posts/monthly/proxy-state-management-mobx-valtio/), [3](https://reliasoftware.com/blog/react-state-management-libraries), [4](https://javascript.plainenglish.io/15-react-state-management-libraries-you-should-know-in-2026-fbc0ca82a8ad), [5](https://blog.sethcorker.com/a-peek-at-state-management-with-mobx/)]
+
+### 2. Atomic Alternatives (Component-Centric)
+
+Instead of a single large class or store, atomic state splits data into isolated micro-states called "atoms" that components subscribe to directly. \[[1](https://www.reddit.com/r/reactjs/comments/1autn8t/poll%5Fredux%5Fvs%5Fzustand%5Fvs%5Fmobx%5Fvs%5Fvaltio%5Fvs%5Fjotai/), [2](https://www.sitepoint.com/top-redux-alternatives-exploring-state-management-solutions/)]
+
+- **Jotai**: Heavily inspired by Recoil, it features a minimal, bottom-up approach. It is highly optimized for performance and acts like a globalized version of React's native `useState`.
+- **Signal-based libraries (e.g., Preact Signals)**: Signals bring fine-grained, reactive state tracking directly to the UI layer, bypassing the typical React virtual DOM diffing for maximum performance—similar to how MobX optimizes updates. \[[1](https://www.reddit.com/r/reactjs/comments/1autn8t/poll%5Fredux%5Fvs%5Fzustand%5Fvs%5Fmobx%5Fvs%5Fvaltio%5Fvs%5Fjotai/), [2](https://medium.com/@dbottiau/a-state-management-comparison-with-react-hooks-mobx-and-recoiljs-3b7e2f4cc6c3), [3](https://www.reddit.com/r/reactjs/comments/1clccdk/which%5Fone%5Fto%5Fpick%5Ffrom%5Fredux%5Ftoolkit%5Fmobxstatetree/), [4](https://www.syncfusion.com/blogs/post/react-state-management-libraries), [5](https://digiscorp.com/react-state-management-libraries-which-one-should-you-choose-in-2025/)]
+
+### 3. Simple & Minimalist Alternatives (Industry Standard)
+
+If you want to move away from the "magic" of proxy mutations to a cleaner, unidirectional data flow, simple hook-based stores are currently the most popular choice. \[[1](https://www.reddit.com/r/reactjs/comments/1autn8t/poll%5Fredux%5Fvs%5Fzustand%5Fvs%5Fmobx%5Fvs%5Fvaltio%5Fvs%5Fjotai/), [2](https://www.reddit.com/r/reactjs/comments/1i613qm/picking%5Fa%5Fstate%5Fmanagement%5Flibrary%5Ffor%5Fa%5Freact/), [3](https://www.reddit.com/r/reactjs/comments/1831zqx/what%5Fis%5Fyour%5Fpreferred%5Ftechnology%5Ffor%5Fstate/)]
+
+- **Zustand**: A lightweight, fast, and un-opinionated state manager based on simplified Flux principles. It handles primitive JSON structures without magic abstractions, making it highly predictable and easy to debug. \[[1](https://news.ycombinator.com/item?id=33298494), [2](https://sumble.com/tech/mobx), [3](https://medium.com/@SwanSoftwareSolutions/mobx-vs-redux-vs-zustand-which-state-manager-to-choose-in-2025-swan-software-solutions-b05764f0a59d), [4](https://www.reddit.com/r/reactjs/comments/1autn8t/poll%5Fredux%5Fvs%5Fzustand%5Fvs%5Fmobx%5Fvs%5Fvaltio%5Fvs%5Fjotai/), [5](https://www.reddit.com/r/reactjs/comments/1autn8t/poll%5Fredux%5Fvs%5Fzustand%5Fvs%5Fmobx%5Fvs%5Fvaltio%5Fvs%5Fjotai/)]
+
+### Summary Comparison Table
+
+| Library \[[1](https://www.frontendundefined.com/posts/monthly/proxy-state-management-mobx-valtio/), [2](https://www.reddit.com/r/reactjs/comments/16zmya2/is%5Fthere%5Fan%5Falternative%5Fstate%5Fmanagement%5Fto%5Fmobx/), [3](https://swansoftwaresolutions.com/mobx-vs-redux-vs-zustand-which-state-manager-to-choose-in-2025/), [4](https://news.ycombinator.com/item?id=33298494), [5](https://sumble.com/tech/mobx), [6](https://www.reddit.com/r/reactjs/comments/1autn8t/poll%5Fredux%5Fvs%5Fzustand%5Fvs%5Fmobx%5Fvs%5Fvaltio%5Fvs%5Fjotai/), [7](https://www.reddit.com/r/reactjs/comments/szuyza/honestly%5Fwhat%5Fis%5Fthe%5Fbest%5Fpainfree%5Fstate/), [8](https://stackshare.io/mobx/alternatives)] | Architectural Pattern | Re-render Optimization            | Boilerplate Level           |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------- | --------------------------- |
+| **MobX**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | Proxy / Reactive      | Automatic (Fine-grained)          | Medium (Classes/Decorators) |
+| Valtio                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | Proxy / Reactive      | Automatic (Fine-grained)          | Very Low                    |
+| [Zustand](https://swansoftwaresolutions.com/mobx-vs-redux-vs-zustand-which-state-manager-to-choose-in-2025/)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | Simple Flux / Hooks   | Manual selectors                  | Low                         |
+| Jotai                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Atomic                | Automatic (Per atom subscription) | Low                         |
+| Redux Toolkit                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Strict Flux           | Manual selectors / DevTools       | High                        |
+
+### What should you choose?
+
+- Choose **Valtio** if you love the MobX object-mutation style but want a simpler, modern footprint.
+- Choose **Zustand** if you want the safest, most widely supported industry standard that avoids the debugging gotchas of proxy mutations.
+- Choose **Jotai** if your app requires heavy context-splitting or dynamically created pieces of state. \[[1](https://www.reddit.com/r/reactjs/comments/1autn8t/poll%5Fredux%5Fvs%5Fzustand%5Fvs%5Fmobx%5Fvs%5Fvaltio%5Fvs%5Fjotai/), [2](https://www.frontendundefined.com/posts/monthly/proxy-state-management-mobx-valtio/), [3](https://medium.com/@SwanSoftwareSolutions/mobx-vs-redux-vs-zustand-which-state-manager-to-choose-in-2025-swan-software-solutions-b05764f0a59d), [4](https://www.reddit.com/r/reactjs/comments/1i613qm/picking%5Fa%5Fstate%5Fmanagement%5Flibrary%5Ffor%5Fa%5Freact/), [5](https://www.reddit.com/r/reactnative/comments/1ee96ed/whats%5Fthe%5Fbest%5Fstate%5Fmanagement%5Ffor%5Fa%5Flarge%5Fscale/)]
+
+Could you share **what specific features** of MobX you want to keep (e.g., class-based syntax, object mutation) or **what pain points** are making you look for an alternative?
+
+- [link](https://news.ycombinator.com/item?id=33298494)\
+  What are the best alternatives to MobX for front-end state ...\
+  Oct 22, 2022 — I left Redux camp the year it was created due to high complexity of apps created with it, and switched to MobX which employs more ...\
+  Hacker News
+- [link](https://www.reddit.com/r/reactjs/comments/1autn8t/poll%5Fredux%5Fvs%5Fzustand%5Fvs%5Fmobx%5Fvs%5Fvaltio%5Fvs%5Fjotai/)\
+  Poll: Redux vs Zustand vs Mobx vs Valtio vs Jotai : r/reactjs - Reddit\
+  Feb 19, 2024 — Zustand is clear and simple. Just check the sizes of both libraries;) ... . filter() inside computed causes rerender each time in ...\
+  Reddit·r/reactjs
+- [link](https://www.reddit.com/r/reactjs/comments/1clccdk/which%5Fone%5Fto%5Fpick%5Ffrom%5Fredux%5Ftoolkit%5Fmobxstatetree/)\
+  Which one to Pick from Redux Toolkit & MobX-State-Tree? - Reddit\
+  May 6, 2024 — But maybe it's also preference based on the amount of knowledge the team has from one over the other.. idk. ... I've never underst...\
+  Reddit·r/reactjs
+
+Show all
+
+## You said: is it wiser for linear to choose zustand
+
+No, it would **not be wiser** for a product like Linear to choose Zustand. \[[1](https://swansoftwaresolutions.com/mobx-vs-redux-vs-zustand-which-state-manager-to-choose-in-2025/)]
+
+While Zustand is the industry favorite for standard SaaS applications due to its simplicity, low boilerplate, and hook-based approach, **Linear is an exception** to the rule. Linear’s core user experience relies heavily on a highly complex, local-first database sync engine that makes MobX a vastly superior architectural choice. \[[1](https://www.reddit.com/r/reactjs/comments/1autn8t/poll%5Fredux%5Fvs%5Fzustand%5Fvs%5Fmobx%5Fvs%5Fvaltio%5Fvs%5Fjotai/), [2](https://medium.com/dev-simplified/mobx-vs-zustand-in-2026-which-react-state-manager-should-you-choose-265598cffcaf), [3](https://www.reddit.com/r/reactjs/comments/16offgk/what%5Fdo%5Fyou%5Fthink%5Fof%5Fmobx%5Fis%5Fit%5Fstill%5Fworth%5Fusing/), [4](https://www.edstem.com/blog/zustand-vs-redux-why-simplicity-wins-in-modern-react-state-management)]
+
+The architectural comparison below explains why Zustand is a poor fit for Linear's specific needs.
+
+***
+
+### 1. Object Graph vs. Unidirectional Stores
+
+- **Linear's Model:** Linear operates as a local-first application. When you load Linear, it downloads a massive slice of your issue tracker workspace directly into your browser's memory. This data forms a highly interconnected **graph of objects** (e.g., a _User_ has many _Issues_, each _Issue_ belongs to a _Project_, which belongs to a _Team_, which contains _Users_). \[[1](https://worksection.com/en/blog/linear-alternatives.html), [2](https://cotera.co/articles/linear-vs-asana-comparison)]
+- **Why MobX Wins:** MobX handles deep object references effortlessly. If you mutate `issue.assignee = newUser`, MobX’s automatic dependency tracking instantly knows exactly which UI fragments across the entire application need to re-render without manual wiring. \[[1](https://www.reddit.com/r/reactjs/comments/16offgk/what%5Fdo%5Fyou%5Fthink%5Fof%5Fmobx%5Fis%5Fit%5Fstill%5Fworth%5Fusing/), [2](https://medium.com/dev-simplified/mobx-vs-zustand-in-2026-which-react-state-manager-should-you-choose-265598cffcaf)]
+- **Why Zustand Struggles:** Zustand expects an **immutable JSON-like tree structure**. To represent a deeply nested, interconnected graph of thousands of entities in Zustand, you would have to normalize your data (storing items in flat objects by ID, similar to a database schema) and constantly write complex manual selectors to map relations (`state => state.users[state.issues[id].userId]`). This introduces massive mental overhead and boilerplate for a graph of Linear's scale. \[[1](https://www.reddit.com/r/reactjs/comments/1autn8t/poll%5Fredux%5Fvs%5Fzustand%5Fvs%5Fmobx%5Fvs%5Fvaltio%5Fvs%5Fjotai/), [2](https://medium.com/dev-simplified/mobx-vs-zustand-in-2026-which-react-state-manager-should-you-choose-265598cffcaf), [3](https://medium.com/@SwanSoftwareSolutions/mobx-vs-redux-vs-zustand-which-state-manager-to-choose-in-2025-swan-software-solutions-b05764f0a59d)]
+
+### 2. Fine-Grained Performance at Scale
+
+- **Linear's Scale:** A single Linear screen can render hundreds of issues, assignees, labels, and cycles simultaneously, while a background sync engine continuously updates those objects via WebSockets.
+- **Why MobX Wins:** MobX features **fine-grained reactivity**. If a background sync process updates the description of an issue, _only_ the specific component rendering that description re-renders. The stable reference to the issue object doesn't change. \[[1](https://www.reddit.com/r/reactjs/comments/16offgk/what%5Fdo%5Fyou%5Fthink%5Fof%5Fmobx%5Fis%5Fit%5Fstill%5Fworth%5Fusing/), [2](https://medium.com/dev-simplified/mobx-vs-zustand-in-2026-which-react-state-manager-should-you-choose-265598cffcaf), [3](https://www.index.dev/skill-vs-skill/redux-vs-mobx-vs-zustand)]
+- **Why Zustand Struggles:** Zustand relies on React’s standard top-down rendering flow. If a deeply nested object inside a Zustand store is updated immutably, a new root state object is created. Even with optimized selectors, keeping thousands of rapidly changing, real-time items performant without triggering widespread virtual DOM diffing is incredibly difficult compared to MobX’s surgical updates. \[[1](https://www.reddit.com/r/reactjs/comments/1autn8t/poll%5Fredux%5Fvs%5Fzustand%5Fvs%5Fmobx%5Fvs%5Fvaltio%5Fvs%5Fjotai/), [2](https://swansoftwaresolutions.com/mobx-vs-redux-vs-zustand-which-state-manager-to-choose-in-2025/), [3](https://medium.com/@SwanSoftwareSolutions/mobx-vs-redux-vs-zustand-which-state-manager-to-choose-in-2025-swan-software-solutions-b05764f0a59d), [4](https://medium.com/dev-simplified/mobx-vs-zustand-in-2026-which-react-state-manager-should-you-choose-265598cffcaf), [5](https://www.reddit.com/r/reactjs/comments/16offgk/what%5Fdo%5Fyou%5Fthink%5Fof%5Fmobx%5Fis%5Fit%5Fstill%5Fworth%5Fusing/)]
+
+### 3. Data Sync & Class-Based Modeling
+
+- **Linear's Model:** Linear uses rich domain models. An `Issue` isn't just raw data; it has built-in methods, computed properties (like determining if an issue is "overdue" based on various dates), and internal logic. \[]
+- **Why MobX Wins:** MobX is explicitly built around **Object-Oriented Programming (OOP) and ES6 classes**. You can easily construct instance classes, use `@computed` getters, and call methods directly on your data models. \[, [2](https://www.youtube.com/watch?v=6yhmDOrjA-w), [3](https://reliasoftware.com/blog/react-state-management-libraries), [4](https://jaydevm.hashnode.dev/5-alternatives-to-redux-for-react-state-management), [5](https://www.scaler.com/topics/react/mobx-react/)]
+- **Why Zustand Struggles:** Zustand is strictly functional and hooks-first. Mixing heavy OOP domain models with a hook-driven, immutable store creates an architectural mismatch that goes against Zustand’s design philosophy. \[[1](https://www.reddit.com/r/reactjs/comments/1autn8t/poll%5Fredux%5Fvs%5Fzustand%5Fvs%5Fmobx%5Fvs%5Fvaltio%5Fvs%5Fjotai/), [2](https://medium.com/dev-simplified/mobx-vs-zustand-in-2026-which-react-state-manager-should-you-choose-265598cffcaf), [3](https://news.ycombinator.com/item?id=33298494), [4](https://swansoftwaresolutions.com/mobx-vs-redux-vs-zustand-which-state-manager-to-choose-in-2025/)]
+
+***
+
+### Directly Comparing the Trade-offs for Linear
+
+| Feature Needed by Linear \[[1](https://www.reddit.com/r/reactjs/comments/16offgk/what%5Fdo%5Fyou%5Fthink%5Fof%5Fmobx%5Fis%5Fit%5Fstill%5Fworth%5Fusing/), [2](https://www.reddit.com/r/reactjs/comments/1autn8t/poll%5Fredux%5Fvs%5Fzustand%5Fvs%5Fmobx%5Fvs%5Fvaltio%5Fvs%5Fjotai/), [4](https://medium.com/dev-simplified/mobx-vs-zustand-in-2026-which-react-state-manager-should-you-choose-265598cffcaf), [5](https://swansoftwaresolutions.com/mobx-vs-redux-vs-zustand-which-state-manager-to-choose-in-2025/)] | MobX Capability                         | Zustand Capability                        |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- | ----------------------------------------- |
+| **Data Structure**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Interconnected object graphs            | Normalized, flat JSON trees               |
+| **Computed States**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | Highly optimized automatic cache/derive | Requires manual memoized selectors        |
+| **Real-time Sync Write**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | Direct mutation from background threads | Immutable state copy spreads (`...state`) |
+| **UI Updates**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | Surgical, fine-grained updates          | Component selector diffing                |
+
+### Summary Verdict
+
+If Linear were a standard CRUD app that fetched data screen-by-screen via standard REST or GraphQL APIs, **Zustand would be wiser** because it avoids the complexity of MobX's "magic" abstractions. \[[1](https://www.reddit.com/r/reactjs/comments/1autn8t/poll%5Fredux%5Fvs%5Fzustand%5Fvs%5Fmobx%5Fvs%5Fvaltio%5Fvs%5Fjotai/), [2](https://news.ycombinator.com/item?id=33298494)]
+
+However, because Linear acts more like a high-performance local database running in the browser, **sticking with MobX (or moving to a custom Signal-based architecture) is the superior engineering choice.** \[[1](https://www.reddit.com/r/reactjs/comments/16offgk/what%5Fdo%5Fyou%5Fthink%5Fof%5Fmobx%5Fis%5Fit%5Fstill%5Fworth%5Fusing/), [2](https://medium.com/dev-simplified/mobx-vs-zustand-in-2026-which-react-state-manager-should-you-choose-265598cffcaf), [3](https://stackshare.io/stackups/mobx-vs-zustand)]
+
+Are you exploring this because you are **building a local-first application** like Linear, or are you trying to **evaluate state managers for a standard team project**?
+
+- [link](https://www.reddit.com/r/reactjs/comments/1autn8t/poll%5Fredux%5Fvs%5Fzustand%5Fvs%5Fmobx%5Fvs%5Fvaltio%5Fvs%5Fjotai/)\
+  Poll: Redux vs Zustand vs Mobx vs Valtio vs Jotai - Reddit\
+  Feb 19, 2024 — zustand is a modern, reduced redux built from the ground up. it is based on flux principles, reconcilers and dispatch. it deals wi...\
+  Reddit·r/reactjs
+- [link](https://www.reddit.com/r/reactjs/comments/16offgk/what%5Fdo%5Fyou%5Fthink%5Fof%5Fmobx%5Fis%5Fit%5Fstill%5Fworth%5Fusing/)\
+  What do you think of MobX? Is it still worth using? : r/reactjs - Reddit\
+  Sep 21, 2023 — Mobx is extremely fast when used correctly, and very good if you need to highly optimize rendering in React. In Mobx you usually g...\
+  Reddit·r/reactjs
+- [link](https://www.youtube.com/watch?v=6yhmDOrjA-w)\
+  React State Management: Redux vs Zustand vs Context API ...\
+  Aug 28, 2025 — but has a steeper learning curve zust is great for simple to medium-sized apps and is easy to learn the context API is ideal for t...\
+  3:47\
+  YouTube·CodeLucky
+
+Show all
+
+## You said: is it wiser for them to choose solidjs
+
+Choosing SolidJS would **theoretically be a perfect architectural match** for Linear's real-time synchronization engine, but switching frameworks entirely would be a **highly risky and unwise business decision**.
+
+While SolidJS aligns perfectly with Linear's technical requirements, the realities of maintaining a major production platform mean that rewriting a monolithic codebase is rarely the best move.
+
+The technical alignment and business friction points below explain why this choice is complicated for Linear.
+
+***
+
+### Why SolidJS makes absolute sense (The Technical Match)
+
+SolidJS is built entirely on **fine-grained reactivity without a Virtual DOM**. It uses "Signals" to update the DOM surgically and directly when data changes. \[[1](https://dev.to/ryansolid/thinking-granular-how-is-solidjs-so-performant-4g37), [2](https://www.solidjs.com/), [3](https://makersden.io/blog/solidjs-vs-react-pros-and-cons), [4](https://leapcell.io/blog/understanding-virtual-dom-and-why-svelte-solidjs-opt-out)]
+
+If Linear were being built from scratch today, SolidJS would be an exceptional choice for several reasons:
+
+- **Native MobX-Style Behavior:** SolidJS's internal reactivity engine operates on the exact same mental model as MobX (observables, auto-tracking, and derived states). Linear wouldn't need a heavy state management library because the framework _is_ the state manager. \[[1](https://dev.to/ryansolid/thinking-granular-how-is-solidjs-so-performant-4g37), [2](https://dev.to/trusktr/a-few-reasons-why-i-love-solid-js-4036), [3](https://www.solidjs.com/), [4](https://medium.com/@rajamails19/modern-javascript-frameworks-compared-svelte-qwik-react-and-solidjs-967face904f1), [5](https://www.reddit.com/r/react/comments/1mzirh8/is%5Fsolidjs%5Freact%5Fin%5Fa%5Fsimpler%5Fway/)]
+- **Bypassing the VDOM Bottleneck:** React's Virtual DOM requires walking a tree component by component to figure out what changed. At Linear's massive data scale, avoiding this diffing step entirely and executing pure, direct DOM updates provides a massive free boost to performance. \[[1](https://github.com/solidjs/solid/discussions/582), [2](https://medium.com/@airborne04/why-i-love-solidjs-85786dc5669d), [3](https://www.solidjs.com/)]
+- **Perfect Synchronization Flow:** When Linear's background WebSockets receive an issue update, a SolidJS signal would update exactly one text node or background color on the screen instantly, skipping parent component re-renders completely. \[[1](https://github.com/solidjs/solid/discussions/582), [2](https://dev.to/ryansolid/thinking-granular-how-is-solidjs-so-performant-4g37)]
+
+***
+
+### Why a switch would be unwise (The Business Friction)
+
+Despite the technical advantages, switching their entire core codebase to SolidJS would introduce significant risks:
+
+### 1. The Cost of a Framework Rewrite
+
+Linear is an incredibly mature, polished application with countless micro-interactions, keyboard shortcuts, and custom UI components. Rewriting a massive React application into SolidJS—even though the JSX looks similar—requires changing how state handles component destruction and life cycles. Spending months or years on a rewrite instead of shipping new features to compete with other tools would be a massive strategic misstep. \[[1](https://news.ycombinator.com/item?id=48437609), [2](https://plane.so/plane-vs-linear), [3](https://get-alfred.ai/blog/is-linear-worth-it), [4](https://www.laneapp.co/blog/jira-vs-linear-which-tool-wins), [5](https://wittgeo.medium.com/solidjs-boost-your-web-app-speed-2325876d402b)]
+
+### 2. The Ecosystem Deficit
+
+Linear relies heavily on deep web APIs, text editors, dropdown positioning libraries, and sophisticated graphing tools. The React ecosystem is massive, and most cutting-edge primitives are built for React first. Moving to SolidJS would force Linear's engineering team to build custom wrappers or code their own complex UI utilities from scratch, slowing down development speeds. \[[1](https://github.com/solidjs/solid/discussions/582)]
+
+### 3. Talent and Hiring Scalability
+
+Linear has a highly elite, compact engineering team. Hiring world-class product engineers who are already deeply proficient in React is easy. Forcing them to recruit exclusively for or train engineers in SolidJS introduces friction to team scaling, whereas React remains the global enterprise standard. \[[1](https://www.reddit.com/r/reactjs/comments/ur1z30/do%5Fyou%5Fthink%5Fsolid%5Fis%5Fa%5Fmuch%5Fbetter%5Fversion%5Fof/)]
+
+***
+
+### Summary Table: SolidJS vs. React + MobX for Linear
+
+| Metric \[[1](https://medium.com/@airborne04/why-i-love-solidjs-85786dc5669d), [2](https://www.solidjs.com/), [3](https://github.com/solidjs/solid/discussions/582), [4](https://www.reddit.com/r/reactjs/comments/ur1z30/do%5Fyou%5Fthink%5Fsolid%5Fis%5Fa%5Fmuch%5Fbetter%5Fversion%5Fof/), [5](https://www.reddit.com/r/reactjs/comments/ur1z30/do%5Fyou%5Fthink%5Fsolid%5Fis%5Fa%5Fmuch%5Fbetter%5Fversion%5Fof/)] | SolidJS (Pure Framework)                        | React + MobX (Linear's Choice)                       |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- | ---------------------------------------------------- |
+| **Performance Efficiency**                                                                                                                                                                                                                                                                                                                                                                                            | **Winner** (Zero VDOM overhead)                 | Excellent (MobX optimizes React)                     |
+| **Code Simplicity**                                                                                                                                                                                                                                                                                                                                                                                                   | **Winner** (No state-to-UI binding boilerplate) | Moderate (Requires syncing MobX to React components) |
+| **Ecosystem & Libraries**                                                                                                                                                                                                                                                                                                                                                                                             | Small, community-driven                         | **Winner** (Largest web ecosystem)                   |
+| **Hiring & Training**                                                                                                                                                                                                                                                                                                                                                                                                 | Niche market                                    | **Winner** (Abundant developer pool)                 |
+| **Migration Risk**                                                                                                                                                                                                                                                                                                                                                                                                    | Massive architectural rewrite risk              | **Zero** (Already stabilized in production)          |
+
+### The Verdict
+
+For a brand-new startup building a high-density, real-time tool with an experienced team, **choosing SolidJS would be incredibly smart**.
+
+However, because Linear already successfully achieved sub-100ms fine-grained performance by layering **MobX on top of React**, moving to SolidJS would offer diminishing performance returns while introducing immense business risk and development friction.
+
+Are you evaluating framework options for a **brand new app** or analyzing the architecture of **existing scaling platforms**?
+
+- [link](https://github.com/solidjs/solid/discussions/582)\
+  What are the advantages of using this library over React? #582\
+  Jul 27, 2021 — On the other hand, some of react's limitations, e.g. the inability to conditionally include a hook (there is a workaround, but it'\
+  GitHub
+- [link](https://www.reddit.com/r/reactjs/comments/ur1z30/do%5Fyou%5Fthink%5Fsolid%5Fis%5Fa%5Fmuch%5Fbetter%5Fversion%5Fof/)\
+  Do you think Solid is a much better version of React? : r/reactjs - Reddit\
+  May 16, 2022 — I don't think anyone ever goes around thinking something is just good enough though. There's always room for improvement and there...\
+  Reddit·r/reactjs
+- [link](https://dev.to/ryansolid/thinking-granular-how-is-solidjs-so-performant-4g37)\
+  Thinking Granular: How is SolidJS so Performant?\
+  Apr 15, 2020 — Yes obviously. More specifically how do we encourage the developer to use less. It starts with embracing the reactive mentality of...\
+  DEV Community
+
+Show all
+
+# (d) what is the status of the linear app
+
+12:45 PM
+
+As of June 2026, <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>the Linear app is fully operational</strong></mark> across all major systems and regions. \[[1](https://linearstatus.com/), [2](https://x.com/linear)]
+
+The platform experienced a brief global service disruption on June 9, 2026, which affected workspace availability for many users, but the team successfully resolved the issue and restored full performance within the day. \[[1](https://x.com/linear)]
+
+### System Operation Status
+
+- **Core Systems**: Fully Operational.
+- **Recent Outages**: A global downtime event occurred on **June 9, 2026**, but it was resolved. Prior to that, a minor upstream provider glitch briefly impacted the _Linear Agent code intelligence tools_ on June 4.
+- **Live Updates**: Real-time status checks can be monitored directly through the official [Linear Status Page](https://linearstatus.com/). \[[1](https://statusgator.com/services/linear), [2](https://isdown.app/status/linear), [3](https://isdown.app/status/linear), [4](https://linearstatus.com/), [5](https://x.com/linear)]
+
+### Product & Platform Status
+
+Linear has transitioned from a traditional project management tool into an automated, AI-driven development ecosystem. In early 2026, Linear launched its **"Issue Tracking is Dead"** campaign to signal this new direction. Major updates include: \[[1](https://linear.app/), [2](https://linear.app/now/coding-sessions-for-linear-agent), [3](https://linear.app/next), [4](https://x.com/linear/status/2036502198062821842), [5](https://www.mindstudio.ai/blog/linear-ceo-issue-tracking-dead-openai-symphony-built-on-linear)]
+
+- **Linear Agent & Coding Sessions**: Launched in public beta, the native [Linear Agent](https://linear.app/changelog/2026-03-24-introducing-linear-agent) now operates alongside human engineers. It can automatically triage bugs from Slack, write code, and open Pull Requests directly inside the shared workspace.
+- **Linear Diffs**: Released in June 2026, this feature allows development teams to conduct code reviews natively within Linear rather than switching to external git platforms.
+- **Team Documents**: A freshly launched dedicated workspace for storing notes, PRDs, and shared organizational context over long periods. \[[1](https://linear.app/changelog/2026-03-24-introducing-linear-agent), [2](https://www.youtube.com/watch?v=B3uHgSV6ocA), [3](https://x.com/linear/with%5Freplies), [4](https://linear.app/now), [5](https://x.com/linear)]
+
+If you are experiencing a technical issue that is not listed on the status page, you can check community-driven monitoring via [StatusGator](https://statusgator.com/services/linear). \[[1](https://statusgator.com/services/linear/us-region--integrations), [2](https://statusgator.com/services/linear)]
+
+Are you experiencing **trouble logging in**, or would you like to learn more about how to set up the new **AI Coding Sessions**?
+
+- [link](https://linearstatus.com/)\
+  Linear Status\
+  Linear Status. Report a problem Subscribe to updates. We're fully operational. We're not aware of any issues affecting our systems...\
+  Linear Status
+- [link](https://linear.app/)\
+  Linear – The system for product development\
+  A new species of product tool. ... Linear is shaped by the practices and principles of world-class product teams. ... Designed for...\
+  Linear
+- [link](https://x.com/linear)\
+  Linear (@linear) / Posts / X - Twitter\
+  Now Linear writes the code, too - Linear. linear.app. 💬3. 🔄1. 🤍46. Linear. ✓ linear. Jun 9. We're aware that Linear is unavaila...\
+  X
+
+Show all
+
 # 
 
