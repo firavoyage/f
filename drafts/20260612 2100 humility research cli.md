@@ -2366,5 +2366,233 @@ If you're building out your CLI layout, let me know:
 
 Show all
 
-# 
+# cyberchef is so stupid. downloading a zip of static htmls. alternatives. for example, something i can pnpm add g
 
+You can use **`chepy`** as a direct terminal equivalent to CyberChef, or install modular developer tooling like **`it-tools`** directly inside your project workflows. If you want pure CLI power without managing bloated static browser files, choose from the specialized terminal alternatives below. \[[1](https://github.com/corentinth/it-tools), [2](https://github.com/securisec/chepy)]
+
+### The Pure CLI Alternative (CyberChef Python Clone)
+
+If you want to duplicate CyberChef's pipeline/recipe functionality directly in your shell, look at **`chepy`**. It mirrors CyberChef's stacking architecture in a pure Pythonic CLI format: \[[1](https://github.com/securisec/chepy)]
+
+bash
+
+```
+# Install it globally via pipx or pip
+pip install chepy
+
+# Chain your recipes natively in the CLI
+chepy -i "SGVsbG8gV29ybGQ=" from_base64
+```
+
+Use code with caution.
+
+### The Node.js / Node Modules Ecosystem
+
+If your goal is to chain common developer utilities via package managers like `pnpm`, Node.js packages usually separate these into hyper-focused CLI tools. You can add them globally (`pnpm add -g`) or locally (`pnpm add`): \[[1](https://news.ycombinator.com/item?id=30919487), [2](https://andrewtheken.com/2013/08/31/stupid-easy-web-serving/)]
+
+- **For String Manipulation & Formatting**: Install **`it-tools`** locally via `pnpm` if you want a massive toolkit built with TypeScript/Vue. If you want text transformations natively via JavaScript/TypeScript, use specific utilities:\
+  bash
+
+<!---->
+
+```
+pnpm add -g change-case   # Convert camelCase, snake_case, param-case, etc.
+pnpm add -g prettier      # Instant formatting for JSON, HTML, and JS
+```
+
+Use code with caution.
+
+- **For Encodings & Cryptography**: Rely on Node's native `crypto` API inside a scratchpad, or download targeted CLI encoders:\
+  bash
+
+<!---->
+
+```
+pnpm add -g uuid          # Fast UUID generation
+pnpm add -g json-cli      # Clean manipulation of raw JSON structures
+```
+
+Use code with caution.\
+\[[1](https://www.youtube.com/watch?v=KZ5he3paV-A), [2](https://github.com/corentinth/it-tools), [3](https://www.reddit.com/r/netsec/comments/ij5y44/cyberchef%5Fa%5Fweb%5Fapp%5Ffor%5Fencryption%5Fencoding/)]
+
+### Fast UNIX/Rust CLI Core Tools \[[1](https://www.reddit.com/r/netsec/comments/ij5y44/cyberchef%5Fa%5Fweb%5Fapp%5Ffor%5Fencryption%5Fencoding/)]
+
+If your goal is speed and escaping bloated web UI formats, Rust-based alternatives provide immediate output without browser contexts: \[[1](https://github.com/thegdsks/awesome-modern-cli)]
+
+- **`sd`**: An intuitive, fast find-and-replace tool meant to replace heavy `sed` scripts.
+- **`choose`**: A human-friendly alternative to `cut` and `awk` for fast column extraction.
+- **`grex`**: A tool that automatically generates complex regular expressions from text cases you provide. \[[1](https://github.com/thegdsks/awesome-modern-cli)]
+
+Would you like a template for a **Node.js script replacement** that chains these transformations using `pnpm` packages, or are you looking for a **specific operation** (like AES decryption or Hex conversions)? \[[1](https://www.reddit.com/r/netsec/comments/ij5y44/cyberchef%5Fa%5Fweb%5Fapp%5Ffor%5Fencryption%5Fencoding/)]
+
+- [link](https://github.com/corentinth/it-tools)\
+  CorentinTh/it-tools: Collection of handy online tools ... - GitHub\
+  Oct 22, 2024 — Disable the built-in TypeScript Extension. Run Extensions: Show Built-in Extensions from VSCode's command palette. Find TypeScript...\
+  GitHub
+- [link](https://www.youtube.com/watch?v=KZ5he3paV-A)\
+  Self-Host 100+ Dev Tools in 2 Minutes with IT-Tools!\
+  Jul 4, 2025 — every developer have sets of tools that they rely on from JSON formatter to JWT decoder encoder what if you could have them all se...\
+  12:02\
+  YouTube·Code Voyage with Iman
+- [link](https://github.com/securisec/chepy)\
+  Chepy is a python lib/cli equivalent of the awesome ... - GitHub\
+  Chepy is a python library with a handy cli that is aimed to mirror some of the capabilities of CyberChef. A reasonable amount of e...\
+  GitHub
+
+Show all
+
+## You said: the npm libs you mentioned are too specific and not as comprehensive. the python (uv) one could be good, but it would be better to have a web ui.
+
+If you want a comprehensive, single-dashboard web UI that completely replaces CyberChef without dealing with static HTML downloads or fragmented npm utilities, **[it-tools](https://github.com/corentinth/it-tools)** is the exact solution you are looking for. \[[1](https://github.com/corentinth/it-tools)]
+
+You can clone the repository and run it locally with standard JavaScript/TypeScript package managers (`pnpm`, `npm`, `yarn`) or deploy it with Docker. \[[1](https://github.com/cheesewhe/awesome-repositories-collection)]
+
+### 1. The Best Self-Hosted Choice: IT-Tools
+
+IT-Tools is a comprehensive, modern web app packed with over 80+ daily developer utilities. It features cryptography, encoders, formatters, and network generators wrapped in a highly responsive, clean UI. \[[1](https://github.com/corentinth/it-tools), [2](https://www.reddit.com/r/netsec/comments/rq1e6g/encodingtools%5Falternative%5Fto%5Fcyberchef%5Fand%5Fburp/)]
+
+Unlike CyberChef, you don't download a bloated zip of static HTMLs. Instead, you install it as a native project codebase, meaning you can serve it via a local host port or build/extend your own tools using standard TypeScript and Vue. \[[1](https://github.com/corentinth/it-tools), [2](https://www.youtube.com/watch?v=e%5F3mVy1hP-U)]
+
+### How to run it instantly via `pnpm`:
+
+bash
+
+```
+# Clone the official repository
+git clone https://github.com
+cd it-tools
+
+# Install dependencies and start the local web development server
+pnpm install
+pnpm dev
+```
+
+Use code with caution.
+
+Once executed, the developer interface is served right out of your local port (usually `http://localhost:5173`). If you want to create or inject your own custom tools, it includes a built-in generator script: \[[1](https://github.com/corentinth/it-tools)]
+
+bash
+
+```
+pnpm run script:create:tool my-custom-encoder
+```
+
+Use code with caution.
+
+### Alternative: Running via Docker \[[1](https://github.com/cheesewhe/awesome-repositories-collection)]
+
+If you just want it running continuously in the background without pulling code, spin up its container: \[[1](https://github.com/mikeroyal/self-hosting-guide)]
+
+bash
+
+```
+docker run -d --name it-tools -p 8080:80 corentinth/it-tools:latest
+```
+
+Use code with caution.
+
+***
+
+### What it Includes (Comprehensive Toolset)
+
+Instead of grabbing single-purpose npm libraries, this application serves everything in a unified dashboard: \[[1](https://www.feedbear.com/blog/best-prototyping-tools)]
+
+- **Crypto & Encoders**: AES/DES/TripleDES encryption, Hash generators (MD5, SHA1 to SHA512), HMAC, Base64/Hex/Binary converters, and JWT Parsers.
+- **Formatters & Minifiers**: Instant formatting for JSON, SQL, XML, HTML, and YAML.
+- **Web & Network**: URL Encoders/Decoders, User-Agent Parsers, Slug generators, and Crontab expression creators.
+- **Development Utilities**: Regex testers, Git cheat-sheets, UUID v4/v7 generators, and Color converters.
+
+***
+
+### 2. The Python Option: Textual / NiceGUI (If you want to use `uv`) \[[1](https://anvil.works/articles/top-python-web-app), [2](https://python.plainenglish.io/10-python-libraries-so-powerful-i-stopped-building-uis-bbee1a1335d6), [3](https://medium.com/the-pythonworld/8-python-cli-tools-i-never-knew-i-needed-until-i-used-them-21008ebf5d0b)]
+
+If you decided you'd rather run a fast local Python backend tool via `uv` or `pip` but still want a modern UI layer over it, you can run **NiceGUI** or **[Textual](https://www.reddit.com/r/learnpython/comments/spphji/recommended%5Flibrary%5Ffor%5Fan%5Finteractive%5Fcli/)**. \[[1](https://www.reddit.com/r/learnpython/comments/spphji/recommended%5Flibrary%5Ffor%5Fan%5Finteractive%5Fcli/), [2](https://anvil.works/articles/top-python-web-app)]
+
+- **NiceGUI** allows you to build a local web-browser UI out of standard Python scripts with zero HTML overhead.
+- **Textual** builds an interactive, visual Terminal User Interface (TUI) directly inside your console session that acts just like a desktop application but runs directly inside your shell. \[[1](https://www.reddit.com/r/learnpython/comments/spphji/recommended%5Flibrary%5Ffor%5Fan%5Finteractive%5Fcli/), [2](https://anvil.works/articles/top-python-web-app), [3](https://preettheman.medium.com/make-fast-guis-with-python-03eae5f00c1f), [4](https://preettheman.medium.com/the-fastest-gui-packages-for-python-c14b7838faa3), [5](https://python.plainenglish.io/i-ditched-tkinter-these-5-python-gui-libraries-made-coding-uis-fun-again-052d74ba3c67)]
+
+bash
+
+```
+# Run a quick local script via uv
+uv pip install nicegui
+```
+
+Use code with caution.
+
+Would you like to see how to write a quick **custom tool extension script** for `it-tools`, or do you need the configuration steps to run it via a **Docker-Compose** file alongside your other local services?
+
+- [link](https://www.youtube.com/watch?v=e%5F3mVy1hP-U)\
+  Don't Use CyberChef. Use This Instead.\
+  Mar 14, 2024 — cybersh is one awesome web-based. application where you can do a ton of data manipulations. hey altering the format. doing whateve...\
+  35:28\
+  YouTube·John Hammond
+- [link](https://www.reddit.com/r/learnpython/comments/spphji/recommended%5Flibrary%5Ffor%5Fan%5Finteractive%5Fcli/)\
+  Recommended library for an interactive CLI? : r/learnpython - Reddit\
+  Feb 11, 2022 — Holy crap, Textual is magic! It makes such good-looking TUIs with such little code, it looks better than some GUI libraries, and i...\
+  Reddit·r/learnpython
+- [link](https://anvil.works/articles/top-python-web-app)\
+  The Best Python Web App Frameworks in 2025 - Anvil Works\
+  Streamlit is one such tool that offers a simple, Pythonic approach. However, it suffers from two main weaknesses: the script needs...\
+  anvil.works
+
+Show all
+
+## You said: how popular or proven is cyberchef or it tools
+
+**CyberChef** is an industry-standard, battle-tested legend in cybersecurity, while **IT-Tools** is a highly popular, modern favorite among general software developers and self-hosters. Both projects are exceptionally well-proven, collectively commanding over 70,000 GitHub stars.
+
+A direct breakdown reveals how their trust, adoption, and track records compare:
+
+### CyberChef: The Battle-Tested Titan
+
+CyberChef is an elite utility that is universally trusted across global tech infrastructure. \[[1](https://docs.taegis.secureworks.com/tools/cyberchef/)]
+
+- **The Pedigree**: It was built and open-sourced by **GCHQ** (the Government Communications Headquarters, which is the UK’s equivalent to the NSA). \[[1](https://www.youtube.com/watch?v=RTeGp8hfAAM\&t=1), [2](https://www.gchq.gov.uk/news/cyberchef-cyber-swiss-army-knife), [3](https://hackertarget.com/cyberchef-tutorial-tips/), [4](https://www.eduardorobles.com/posts/cyberchef-infosec-ir-2025/)]
+- **Industry Footprint**: It is arguably the most famous open-source tool in the incident response (DFIR), threat hunting, and malware analysis spaces. It is a foundational tool taught in almost every professional cybersecurity certificate (like SANS, CompTIA, or HackTheBox) and is used daily in enterprise Security Operations Centers (SOCs) globally. \[[1](https://www.youtube.com/watch?v=yJWKbfCmWNw), [2](https://www.linkedin.com/pulse/cooking-up-security-unleashing-cyber-chefs-potential-threat-d-madi-mqfmc), [3](https://betweentwodfirns.blogspot.com/2017/06/cyberchef-example-dfir-use-cases.html)]
+- **Popularity Metric**: It holds over **35,000+ GitHub stars**. \[[1](https://github.com/gchq/cyberchef)]
+- **The Verdict**: It is 100% proven. If your work involves parsing weird malware strings, decoding obfuscated PowerShell scripts, extracting data from network packets, or handling raw byte arrays, nothing matches CyberChef's pipeline complexity. \[[1](https://www.youtube.com/watch?v=VTxSEV2dUM4), [2](https://betweentwodfirns.blogspot.com/2017/06/cyberchef-example-dfir-use-cases.html)]
+
+### IT-Tools: The Modern Self-Hosted Favorite
+
+While it does not have an intelligence agency backing it, IT-Tools has exploded in popularity as the ultimate dashboard for day-to-day web development tasks. \[[1](https://www.youtube.com/watch?v=Mebe5-plYfE)]
+
+- **The Pedigree**: Created by developer Corentin Thomasset, it is heavily maintained by a massive open-source community that rapidly adds new components. \[[1](https://github.com/corentinth/it-tools), [2](https://www.youtube.com/watch?v=Mebe5-plYfE), [3](https://medium.com/lets-code-future/the-top-12-open-source-no-code-tools-with-the-most-github-stars-11697ede83c0)]
+- **Industry Footprint**: It has become a mandatory staple in the self-hosted and home-lab communities (frequently trending on Reddit's `r/selfhosted`). It is heavily integrated into NAS and server ecosystems like Unraid, Cloudron, and TrueNAS. Developers prefer it over CyberChef when they need quick, single-click adjustments (like turning JSON into YAML, modifying a JWT token, or calculating a subnet mask) without setting up multi-stage pipelines. \[[1](https://www.youtube.com/watch?v=Mebe5-plYfE)]
+- **Popularity Metric**: It holds over **38,000+ GitHub stars**, actively surpassing CyberChef's star count due to its modern stack (Vite, Vue 3, TypeScript). \[[1](https://github.com/CorentinTh/it-tools?ref=vluwte.nl)]
+- **The Verdict**: Hugely proven as a local developer dashboard. Its code is clean, lightweight, and modern, making it incredibly safe and efficient to deploy locally or inside a private network. \[[1](https://www.youtube.com/watch?v=Mebe5-plYfE)]
+
+***
+
+### Direct Comparison
+
+| Metric / Feature \[[1](https://github.com/gchq/CyberChef?ref=selfh.st), [2](https://www.youtube.com/watch?v=Mebe5-plYfE), [3](https://www.youtube.com/watch?v=yJWKbfCmWNw), [4](https://www.linkedin.com/pulse/cooking-up-security-unleashing-cyber-chefs-potential-threat-d-madi-mqfmc), [5](https://github.com/gchq/cyberchef), [6](https://github.com/CorentinTh/it-tools?ref=vluwte.nl), [7](https://www.youtube.com/watch?v=VTxSEV2dUM4), [8](https://www.gchq.gov.uk/news/cyberchef-cyber-swiss-army-knife), [9](https://github.com/corentinth/it-tools), [10](https://docs.taegis.secureworks.com/tools/cyberchef/), [11](https://betweentwodfirns.blogspot.com/2017/06/cyberchef-example-dfir-use-cases.html)] | CyberChef                                          | IT-Tools                                            |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- | --------------------------------------------------- |
+| **Primary Audience**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | Cybersecurity Experts, SecOps, Analysts            | Full-Stack Devs, DevOps, Sysadmins                  |
+| **GitHub Stars**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | ~35,100+                                           | ~38,900+                                            |
+| **Core Architecture**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | Chained "Recipes" (Outputs feed into next inputs)  | Isolated, single-purpose dashboard tools            |
+| **Tech Stack**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | Legacy JavaScript/Webpack (Monolithic single page) | Modern TypeScript + Vue 3 + Vite                    |
+| **Best Used For**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | Deobfuscation, Hex/XOR hacking, Malware parsing    | Formatting, Docker converting, Token parsing, RegEx |
+
+If you need a tool that handles data **sequentially** (e.g., _un-Base64 -> decompress Gzip -> regex extraction_), CyberChef is the only tool designed for that architecture. If you want a clean, modern UI for **isolated tasks** (e.g., _minify this CSS, generate an absolute UUID, format this JSON_), IT-Tools is the modern standard. \[[1](https://www.youtube.com/watch?v=Mebe5-plYfE), [2](https://www.youtube.com/watch?v=VTxSEV2dUM4), [3](https://www.gchq.gov.uk/news/cyberchef-cyber-swiss-army-knife), [4](https://www.youtube.com/watch?v=yJWKbfCmWNw)]
+
+Would you like to know how to set up **IT-Tools** via a simple local script, or do you want to explore how to build a custom tool inside it?
+
+- [link](https://www.gchq.gov.uk/news/cyberchef-cyber-swiss-army-knife)\
+  CyberChef - the Cyber "Swiss Army Knife" - GCHQ\
+  Nov 28, 2016 — We have launched an intuitive web app for analysing and decoding data. GCHQ is today launching a simple, intuitive web app for ana...\
+  GCHQ
+- [link](https://www.youtube.com/watch?v=VTxSEV2dUM4)\
+  CyberChef 101: The Must-Know Tool for Cyber ...\
+  Feb 12, 2025 — hello and welcome to another exciting lab uh with me Franuis uh here at Cyber Pros training now today's lab we are going to talk a...\
+  32:22\
+  YouTube·François B. Arthanas
+- [link](https://www.youtube.com/watch?v=yJWKbfCmWNw)\
+  CyberChef Overview\
+  Apr 25, 2021 — welcome to another video today we're going to talk about Cyershe which I kind of have open in front of you right now uh this is on...\
+  22:12\
+  YouTube·Unorthodox Thinking
+
+Show all
+
+# 
