@@ -1333,5 +1333,295 @@ Use code with caution.
 
 Would you like to build upon one of these templates to include a specific complex feature like **Local Storage caching** or an **API fetch integration**?
 
+# todomvc
+
+**[TodoMVC](https://todomvc.com/)** is <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">a highly popular open-source project designed to help web developers <strong>compare JavaScript frameworks</strong> by showing the exact same Todo application implemented across dozens of different programming tools</mark>. Because each version follows the identical functional specification and look, developers can side-by-side evaluate code syntax, structure, and readability to decide which library best fits their workflow. \[[1](https://todomvc.com/), [2](https://github.com/tastejs/todomvc)]
+
+### Key Features of TodoMVC
+
+- **The Rosetta Stone of Frameworks**: It offers standardized implementations for popular tools like [React](https://todomvc.com/examples/react/dist/), [Vue](https://todomvc.com/examples/vue/dist/), [Svelte](https://todomvc.com/examples/svelte/dist/), and [Angular](https://todomvc.com/examples/binding-scala/).
+- **Strict Specification**: Every example must implement core features like adding, editing, deleting, routing (filtering all/active/completed tasks), and persisting items via `localStorage`.
+- **Performance Benchmarking**: The project forms the engine core for the cross-browser [Speedometer benchmark](https://github.com/tastejs/todomvc) used by major browser creators to optimize UI rendering speeds.
+- **No-Build Benchmarks**: It also serves as a baseline comparison for [Modern Vanilla JavaScript](https://github.com/1Marc/modern-todomvc-vanillajs) to show how modern web standards stack up against heavy frameworks. \[[1](https://todomvc.com/examples/react/dist/), [2](https://todomvc.com/examples/vue/dist/), [3](https://data-star.dev/examples/todomvc), [4](https://github.com/evancz/elm-todomvc), [5](https://github.com/tastejs/todomvc/blob/master/app-spec.md), [6](https://github.com/1Marc/modern-todomvc-vanillajs), [7](https://frontendmasters.com/blog/vanilla-javascript-todomvc/), [8](https://github.com/tastejs/todomvc)]
+
+### How to Use the Project
+
+1. **Browse implementations**: Visit the official TodoMVC website to interact with the apps and view their code directly in the browser.
+2. **Review the code**: Head to the TodoMVC GitHub Repository to explore files or download the base styles.
+3. **Build your own**: You can use the official [TodoMVC App Template](https://github.com/tastejs/todomvc-app-template) to test a new framework or practice architectural patterns. \[[1](https://todomvc.com/), [2](https://github.com/tastejs/todomvc), [3](https://github.com/tastejs/todomvc-app-css), [4](https://github.com/tastejs/todomvc-app-template), [5](https://www.wimdeblauwe.com/blog/2021/09/20/todomvc-with-spring-boot-and-thymeleaf-part-1/)]
+
+Are you looking to **compare specific frameworks** (like React vs. Vue), or do you want to **build your own TodoMVC app** using a particular library?
+
+- [link](https://todomvc.com/)\
+  TodoMVC\
+  New = New or updated app. TodoMVC is a godsend for helping developers find what well-developed frameworks match their mental model...\
+  TodoMVC
+- [link](https://github.com/tastejs/todomvc)\
+  tastejs/todomvc: Helping you select a JavaScript framework\
+  Jun 7, 2026 — Website Blog TasteJS. Developers have a number of choices today when it comes to selecting a JavaScript framework or UI library fo...\
+  GitHub
+- [link](https://github.com/evancz/elm-todomvc)\
+  The TodoMVC app written in Elm, nice example for beginners.\
+  TodoMVC in Elm - Try It! All of the Elm code lives in src/Main. elm and relies on the elm/html library. There also is a port handl...\
+  GitHub
+
+Show all
+
+## You said: react code and vanillajs (not web component) code
+
+The core architectural difference between **React** and **Vanilla JS** is state management: React automatically re-renders the UI declaratively when the data state changes, whereas Vanilla JS requires you to manually select, mutate, and sync DOM elements using imperative commands. \[[1](https://www.codetinkerer.com/2024/01/04/forget-virtual-dom-rediscovering-vanilla-dom.html), [2](https://frontendmasters.com/blog/vanilla-javascript-todomvc/), [3](https://distantjob.com/blog/vanillajs-vs-react/), [4](https://www.sitepoint.com/redux-without-react-state-management-vanilla-javascript/), [5](https://medium.com/@mirceagab/integrating-modern-frontend-frameworks-with-aem-fa5a649e1095)]
+
+Below is a side-by-side comparative look at how a simplified version of the core **TodoMVC logic** (adding and toggling a task) is written in both setups, excluding Web Components.
+
+***
+
+### 1. React Implementation (Declarative)
+
+In **React**, you focus entirely on updating a JavaScript data array (`todos`). The framework intercepts state changes via hooks and handles all DOM modifications behind the scenes. \[[1](https://frontendmasters.com/blog/vanilla-javascript-todomvc/), [2](https://javascript.plainenglish.io/a-quickstart-to-reactjs-2021-3bf88eae7719)]
+
+jsx
+
+```
+import React, { useState } from 'react';
+
+export default function TodoApp() {
+  const [todos, setTodos] = useState([]);
+  const [input, setInput] = useState('');
+
+  // 1. Add Todo (Updates state array)
+  const addTodo = (e) => {
+    if (e.key !== 'Enter' || !input.trim()) return;
+    setTodos([...todos, { id: Date.now(), text: input, completed: false }]);
+    setInput('');
+  };
+
+  // 2. Toggle Todo (Updates item property in state)
+  const toggleTodo = (id) => {
+    setTodos(todos.map(todo =>
+      todo.id === id ? { ...todo, completed: !todo.completed } : todo
+    ));
+  };
+
+  // UI mapping is entirely driven by data
+  return (
+    <section className="todoapp">
+      <header className="header">
+        <h1>todos</h1>
+        <input
+          className="new-todo"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          onKeyDown={addTodo}
+          placeholder="What needs to be done?"
+        />
+      </header>
+      <ul className="todo-list">
+        {todos.map(todo => (
+          <li key={todo.id} className={todo.completed ? 'completed' : ''}>
+            <input
+              className="toggle"
+              type="checkbox"
+              checked={todo.completed}
+              onChange={() => toggleTodo(todo.id)}
+            />
+            <label>{todo.text}</label>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+```
+
+Use code with caution.
+
+***
+
+### 2. Modern Vanilla JS Implementation (Imperative)
+
+Without Web Components or templates, **Vanilla JS** requires you to explicitly use DOM methods like `document.createElement`, target individual element properties, and push elements manually into the UI tree. \[[1](https://www.codetinkerer.com/2024/01/04/forget-virtual-dom-rediscovering-vanilla-dom.html)]
+
+javascript
+
+```
+// Target existing static HTML nodes
+const newTodoInput = document.querySelector('.new-todo');
+const todoList = document.querySelector('.todo-list');
+
+// 1. Add Todo (Manual DOM element construction)
+newTodoInput.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter' || !newTodoInput.value.trim()) return;
+
+  const todoText = newTodoInput.value.trim();
+
+  // Create outer list element
+  const li = document.createElement('li');
+
+  // Create checkbox input
+  const checkbox = document.createElement('input');
+  checkbox.type = 'checkbox';
+  checkbox.className = 'toggle';
+
+  // 2. Toggle Todo (Manual DOM event manipulation)
+  checkbox.addEventListener('change', () => {
+    if (checkbox.checked) {
+      li.classList.add('completed');
+    } else {
+      li.classList.remove('completed');
+    }
+  });
+
+  // Create text label
+  const label = document.createElement('label');
+  label.textContent = todoText;
+
+  // Assembly and DOM injection
+  li.appendChild(checkbox);
+  li.appendChild(label);
+  todoList.appendChild(li);
+
+  // Reset input field
+  newTodoInput.value = '';
+});
+```
+
+Use code with caution.
+
+***
+
+### Summary of Differences
+
+| Feature \[[1](https://www.codetinkerer.com/2024/01/04/forget-virtual-dom-rediscovering-vanilla-dom.html), [2](https://github.com/johnfactotum/todomvc), [3](https://frontendmasters.com/blog/vanilla-javascript-todomvc/), [4](https://dev.to/ekeijl/no-build-todo-app-using-htm-preact-209p), [5](https://github.com/1Marc/modern-todomvc-vanillajs)] | React                                      | Vanilla JS                                       |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------ | ------------------------------------------------ |
+| **UI Updates**                                                                                                                                                                                                                                                                                                                                         | Automatic (via virtual DOM adjustments)    | Manual (via direct `appendChild` / `classList`)  |
+| **Data Source**                                                                                                                                                                                                                                                                                                                                        | Pure JS state array (`todos`)              | Scattered between JS scope and the HTML DOM tree |
+| **Code Style**                                                                                                                                                                                                                                                                                                                                         | **Declarative** (Describes _what_ to show) | **Imperative** (Describes _how_ to build it)     |
+| **Build Tools**                                                                                                                                                                                                                                                                                                                                        | Requires transpiling (Babel / JSX)         | Runs completely natively in any modern browser   |
+
+Would you like to see how to implement **routing/filtering** (Active, Completed, All) using either of these approaches? \[[1](https://github.com/johnfactotum/todomvc)]
+
+- [link](https://www.codetinkerer.com/2024/01/04/forget-virtual-dom-rediscovering-vanilla-dom.html)\
+  Maybe you don't need React – Rediscovering the Vanilla DOM\
+  Jan 4, 2024 — Write the same React code you're used to–even with JSX-like syntax thanks to htm–but ditch all the bloat. No build step required! ...\
+  codetinkerer.com
+- [link](https://frontendmasters.com/blog/vanilla-javascript-todomvc/)\
+  Writing a TodoMVC App with Modern Vanilla JavaScript\
+  Sep 8, 2022 — #1: “Frameworks Enable Declarative UI” Modern frameworks like React and Vue don't exist to fill in the gap left by native JS, they...\
+  Frontend Masters
+- [link](https://github.com/johnfactotum/todomvc)\
+  TodoMVC in ~100 lines of vanilla JavaScript - GitHub\
+  The result. To experiment with this approach, I made a TodoMVC implementation. It contains only 101 lines of code in vanilla JavaS...\
+  GitHub
+
+Show all
+
+## You said: write an elegant vanillajs code that feels like react
+
+To make Vanilla JS feel like React, you need to move away from messy, manual DOM manipulation (`appendChild`, `classList`) and embrace a **declarative, state-driven model**.
+
+The code below implements the core TodoMVC logic using a lightweight approach: your UI is an automatic function of your state. Whenever you modify the `state`, a `render()` function automatically updates the DOM.
+
+### The Code Pattern (State → View)
+
+javascript
+
+```
+// 1. Single Source of Truth (The State)
+const state = {
+  todos: [],
+  filter: 'all' // 'all' | 'active' | 'completed'
+};
+
+// 2. State Mutators (Like React actions / setters)
+function setState(newState) {
+  Object.assign(state, newState);
+  render(); // Automatically trigger a UI update on state change
+}
+
+// 3. Declarative Component (Pure function that returns an HTML string)
+function TodoList() {
+  // Filter todos based on current state
+  const filteredTodos = state.todos.filter(todo => {
+    if (state.filter === 'active') return !todo.completed;
+    if (state.filter === 'completed') return todo.completed;
+    return true;
+  });
+
+  // Map state arrays directly to template strings (Identical concept to JSX .map)
+  return filteredTodos.map(todo => `
+    <li class="${todo.completed ? 'completed' : ''}" data-id="${todo.id}">
+      <input class="toggle" type="checkbox" ${todo.completed ? 'checked' : ''}>
+      <label>${escapeHTML(todo.text)}</label>
+      <button class="destroy"></button>
+    </li>
+  `).join('');
+}
+
+// 4. The Render Engine (Updates the DOM container)
+function render() {
+  const todoListContainer = document.querySelector('.todo-list');
+  if (todoListContainer) {
+    todoListContainer.innerHTML = TodoList();
+  }
+
+  // Keep active count updated
+  const activeCount = state.todos.filter(t => !t.completed).length;
+  document.querySelector('.todo-count strong').textContent = activeCount;
+}
+
+// 5. Global Event Delegation (Instead of inline onClick, capture bubbling events)
+document.addEventListener('keydown', (e) => {
+  if (e.target.classList.contains('new-todo') && e.key === 'Enter') {
+    const text = e.target.value.trim();
+    if (!text) return;
+
+    // Push to state and let render handle the UI
+    setState({
+      todos: [...state.todos, { id: Date.now().toString(), text, completed: false }]
+    });
+    e.target.value = '';
+  }
+});
+
+document.addEventListener('change', (e) => {
+  if (e.target.classList.contains('toggle')) {
+    const id = e.target.closest('li').dataset.id;
+    const updatedTodos = state.todos.map(todo =>
+      todo.id === id ? { ...todo, completed: e.target.checked } : todo
+    );
+    setState({ todos: updatedTodos });
+  }
+});
+
+document.addEventListener('click', (e) => {
+  if (e.target.classList.contains('destroy')) {
+    const id = e.target.closest('li').dataset.id;
+    setState({ todos: state.todos.filter(todo => todo.id !== id) });
+  }
+});
+
+// Helper utility to prevent XSS injection in template strings
+function escapeHTML(str) {
+  return str.replace(/[&<>'"]/g,
+    tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+  );
+}
+
+// Initial Bootstrapping
+render();
+```
+
+Use code with caution.
+
+***
+
+### Why This Feels Like React
+
+- **Declarative Templates**: Instead of step-by-step element creation, you describe the HTML structure using standard JavaScript **template strings**.
+- **Unidirectional Data Flow**: Events do not touch the DOM directly. Events modify `state` → `state` calls `render()` → `render()` draws the DOM.
+- **No DOM Queries in Actions**: Notice that inside the checkbox change handler or the delete handler, there is zero code targeting CSS classes or hiding elements. It purely updates the data array.
+
+Would you like to see how to hook up **URL Hash Routing** (`#/active`, `#/completed`) to this code to mirror TodoMVC perfectly?
+
 # 
 
