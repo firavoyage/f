@@ -4,6 +4,10 @@
 
 <!-- google ai mode does not highlight jsx. -->
 
+<!-- baseui is good, but llms dont understand it. docs are even more opinionated. there are examples, but you dont know all apis. and if you have to read the code, it's completely broken. -->
+
+<!-- react might be wise. i guess the tradeoff would work out. but vanilla works exceptionally well for some of my apps. -->
+
 # how is it to use web components wo lit
 
 Using web components without Lit—often called **Vanilla Web Components**—means you rely purely on the browser's native APIs (`CustomElements`, `ShadowDOM`, and ). \[[1](https://utilitybend.com/blog/getting-into-web-components-an-intro/), [2](https://developer.mozilla.org/en-US/docs/Web/API/Web%5Fcomponents), [3](https://www.reddit.com/r/javascript/comments/nhvekt/web%5Fcomponents%5F101%5Fwhy%5Fuse%5Fweb%5Fcomponents/), [4](https://codecamp.ro/masterclasses/pure-javascript-web-components/), [5](https://www.peoplewoo.com/blogs/post/lwc-introduction-lightning-web-components-in-salesforce-peoplewoo-skills)]
