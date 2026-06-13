@@ -197,3 +197,19 @@ jun 2026
 add deps, legacy, and temp to `.hidden`
 
 <!-- vscode does not respect .hidden. but it would make it less noisy when you open it in nautilus. -->
+
+13
+
+20 00 move repo cli out of humility
+
+initially i thought i need a powerful cli to version control as git is flawed on ux.
+
+yet, obviously, ik it's irrelevant and not bounded to humility project.
+
+be simple.
+
+and i might not continue this project. you dont need to make it elegant for commands you never use.
+
+build a better world, rather than changing the world.
+
+this is a kind of declarative over imperative.
