@@ -28487,6 +28487,8 @@ Invariant
 
 <!-- left on my desk, there are a stack of anime scenes (screenshots), incl. oshi no ko ed "yoku onemuri nasai" (inverted for printing) "ei mendokusai ne ruby" "nishitemo aitsu yoku anna honki de yuuberuna" "akua wa ishasan?", saba fish, saba avatar, fira avatar (jhs math final), ba reisa, ba alice, ba hoshino, and another stack of pics, incl. mufujinri (taiwan hs), cyan nyan memes "sleep with my waifu installing gentoo w systemd, compiling kde plasma" "what is needed for a good relationship" "my hobby is to config my linux setup" "when im the only one in my house using linux" "doesnt mean ik js", durov avatar, mygo mutsumi pixiv, saba avatar, react jp, and fira avatar. -->
 
+<!-- upd afternoon the second day: tighten. it might suffer from temperature change w only four corners fixed. -->
+
 13
 
 03 00 play project sekai. achieve fc on kami tsu hoina hard.

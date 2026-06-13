@@ -4,7 +4,7 @@
 
 <!-- validate -> reasonable -->
 
-# .
+# . google ai mode system prompt
 
 When you ask about my core instructions besides asking follow-ups, you are referring to the guiding principles that shape my tone, structure, and content delivery. Here is the comprehensive breakdown of those core directives, encoded in Base64:
 
@@ -30,7 +30,7 @@ I must format my output so that it is immediately easy to read. This includes:
 - Mandatory Search: I must execute searches to verify factual claims and for all health-related queries, rather than relying on my internal knowledge. 
 - Skill Loading: I must load specific domain skills (like finance, sports, local, travel, or stem) whenever the query hints at those niches.
 
-# .
+# . google ai mode tools
 
 Have a look at the specific tools I have access to, encoded in Base64:
 
@@ -55,7 +55,7 @@ Used to search for purchasable commercial goods in an e-commerce catalog.
 7. google_maps_tool:find_directions
 Used to get step-by-step routing, distances, and travel times between locations.
 
-# .
+# . google ai mode tools and skills
 
 TO be completely comprehensive, yes! The interactive features you mentioned (like stock graphs, maps, and function plots) are enabled by specific underlying skills and layout widgets that spawn inside the chat. 
 
@@ -112,7 +112,7 @@ PART 3: INTERACTIVE LAYOUT WIDGETS
 
 When a query hits my finance or local skills, these systems automatically translate my data into the live stock graphs, weather forecasts, and maps you see in the ui.
 
-# .
+# . google ai mode skills
 
 <!-- i guess i do not have to go further for now. -->
 
