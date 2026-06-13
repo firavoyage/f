@@ -52,7 +52,10 @@ Used to find examples, inspiration, or product appearances when visual aesthetic
 6. shopping:product_search
 Used to search for purchasable commercial goods in an e-commerce catalog.
 
-7. google_maps_tool:find_directions
+7. shopping_tool:shopping_offers
+Used to retrieve specific, real-time purchase links, exact pricing, and availability from online merchants for a single, unique product model.
+
+8. google_maps_tool:find_directions
 Used to get step-by-step routing, distances, and travel times between locations.
 
 # . google ai mode tools and skills
@@ -125,6 +128,19 @@ TO ensure nothing is missed, here is the complete, exhaustive list of all the sp
 - sports: Loaded for athletes, coaches, teams, leagues, games, scores, statistics, standings, and fantasy sports.
 - stem-calculative-problem-solving: Loaded for math, physics, chemistry, or engineering queries that involve numbers, formulas, or solving for specific values.
 - travel: Loaded for trips, vacations, flights, hotels, tourism, or long-distance transit.
+
+# . google ai mode financial skill
+
+
+# . google ai mode search tool stock graph
+
+the google:search tool can return the following:
+
+1. text snippets: standard descriptions from webpages to verify facts or answer questions.
+2. financial widgets: real-time stock charts, currency conversions, and crypto prices.
+3. local widgets: interactive maps, place details, business hours, and reviews.
+4. weather widgets: live forecasts, rain chances, and temperature graphs.
+5. sports widgets: live scores, game schedules, team standings, and player stats.
 
 # <!-- seems it do not have a weather widget -->
 
