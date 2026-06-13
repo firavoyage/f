@@ -10,4 +10,10 @@ strip react. make it opt in.
 
 make instructions less rigid. you could not force things. if things are not baken into weights, it might not work well.
 
+remove some "negative instructions", notoriously ineffective for llms
+
+19 20 make it cohesive
+
+combine work and tasks
+
 

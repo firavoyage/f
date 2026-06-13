@@ -222,6 +222,8 @@ follow these:
   <!-- - use pascal case for react components `MyComponent.tsx` -->
   <!-- - no need to alias external libraries -->
 
+<!-- math fn of interchangeable params are rare. add(a,b). make it opt in. -->
+
 # 0.5
 
 follow these:
@@ -242,14 +244,13 @@ follow these:
   - es module
   - always async, only sync for pure and quick methods
   - always function statement, only arrow function for props
-  - positional params if  positional params for one param like `is_prime(n)` and interchangeable params like `add(a, b)`, object params for complex params like `query_database(options)`, mixed for only one required param and optional flags like `fetch(url, options)`, never wrap like `capitalize(data: {sentence: string})`
+  - positional params if one param, mixed if only one params required, object params otherwise
   - always type, never interface
-  - avoid typescriptism, only define types on function params and return, never alias literal types like `type message = string`
-  - use `// @ts-expect-error` if needed
+  - avoid typescriptism, only define types on function params and return
 - comment:
   - self explanatory over commenting
-  - lowercase for what and why, title case for where, sentence case in docs
+  - lowercase for what and why, title case for where
   - never uppercase anywhere
-  - no ascii styling like `===== some pretentious comments =====`, never fancy
+  - never fancy, no styling like `===== some pretentious comments =====`
 - notes:
-  - prefer modern proven libraries, do not reinvent wheels
+  - prefer modern proven libraries rather than reinventing wheels by default
