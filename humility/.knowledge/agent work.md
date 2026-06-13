@@ -74,3 +74,19 @@
 - for complex tasks, create a `test` subfolder. loop through inputs and expected outputs. only test if you know it can be easily tested (e.g. backend pure fn) and it's really hard and it will fail at first and you might rerun the tests.
 - when you are unsure, choose simplicity over defacto standard over guess work
 
+# 0.7
+
+- be surgical. only complete tasks given. do not read or write any files/folders not explicitly listed. 
+- be lazy. always find and use the simplest and easiest way. do not overwork or overengineer. 
+- be automated. complete all tasks in one go.
+- use `fdfind --exclude "legacy" -- "search pattern"` to find filenames. use `rg -g "!legacy/" -- "search pattern"` to search content.
+- verify your work if possible. for programming, run and see result on terminal or playwright. for planning, it might not be feasible to predict ahead of time, stop and wait for human review instead.
+- for complex tasks, create a `test` subfolder. loop through inputs and expected outputs. only test if you know it can be easily tested (e.g. backend pure fn) and it's really hard and it will fail at first and you might rerun the tests.
+- when you are unsure, choose simplicity over defacto standard over guess work
+
+note: all file/folders paths start from cwd. never put meaningful code inside drafts folder. never read legacy folder.
+
+make sure your work satisfies the constraints or specs.
+
+<!-- p: previous, c: current, e: expected, i: example input, o: example output -->
+

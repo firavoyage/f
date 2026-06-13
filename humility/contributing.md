@@ -23,30 +23,27 @@ follow these:
   - typescript
   - pnpm
   - bun (command: `br`, not `bun`)
-  - react and parceljs (command: `tmux new-session -d -s myparcel 'pnpm exec parcel serve app.html --dist-dir .build --cache-dir .build/.parcel-cache'`, you must use tmux or it will be killed)
+  - parceljs (command: `tmux new-session -d -s myparcel 'pnpm exec parcel serve app.html --dist-dir .build --cache-dir .build/.parcel-cache'`, you must use tmux or it will be killed)
 - naming:
-  - snake case by default, for code filenames `fix_typos.ts`, functions, and variables
-  - to name a function, verb noun for actions, predicate for bools, noun for factory functions
-  - in react, override all previous rules, use pascal case for both component function and its filename `MyComponent.tsx`
-  - for docs filenames, lowercase with spaces `today i learned.md`
-  - no need to alias external libraries
+  - snake case in code and their filenames
+  - verb noun for actions, predicate for bools, noun for factory functions
+  - for docs, lowercase with spaces `today i learned.md`
 - style:
   - functional programming
   - modular and cohesive
   - es module
   - always async, only sync for pure and quick methods
   - always function statement, only arrow function for props
-  - positional params for one param like `is_prime(n)` and interchangeable params like `add(a, b)`, object params for complex params like `query_database(options)`, mixed for only one required param and optional flags like `fetch(url, options)`, never wrap like `capitalize(data: {sentence: string})`
+  - positional params if one param, mixed if only one params required, object params otherwise
   - always type, never interface
-  - avoid typescriptism, only define types on function params and return, never alias literal types like `type message = string`
-  - use `// @ts-expect-error` if needed
+  - avoid typescriptism, only define types on function params and return
 - comment:
   - self explanatory over commenting
-  - lowercase for what and why, title case for where, sentence case in docs
+  - lowercase for what and why, title case for where
   - never uppercase anywhere
-  - no ascii styling like `===== some pretentious comments =====`, never fancy
+  - never fancy, no styling like `===== some pretentious comments =====`
 - notes:
-  - prefer modern proven libraries, do not reinvent wheels
+  - prefer modern proven libraries rather than reinventing wheels by default
 
 ## test
 

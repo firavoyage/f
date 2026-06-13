@@ -28503,7 +28503,7 @@ upd: switch to ~~twitch~~ kick with streamlabs.
 
 06 00 fix some typos via cspell.
 
-19 00 work w nc wo music. <!-- maimai is great. -->
+19 00 work w nc wo music. <!-- maimai is great. --> revise contributing. refactor to dep free.
 
 peaceful.
 
