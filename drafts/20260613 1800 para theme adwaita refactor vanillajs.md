@@ -1627,5 +1627,221 @@ Use code with caution.
 
 Would you like to see how to hook up **URL Hash Routing** (`#/active`, `#/completed`) to this code to mirror TodoMVC perfectly?
 
+# does npm libraries lock version by default
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>No, npm does not lock library versions to an exact version by default</strong> when you add a new dependency</mark>. \[[1](https://medium.com/coinmonks/everything-you-wanted-to-know-about-package-lock-json-b81911aa8ab8), [2](https://www.quora.com/Why-doesnt-NPM-enforce-fixed-version-dependencies)]
+
+Instead, it allows for flexible updates using standard semantic versioning (SemVer) ranges. However, npm handles version locking differently depending on whether you are talking about your local development environment or a published library package. \[[1](https://medium.com/@gfaganli/understanding-npm-semantic-versioning-and-package-lock-json-bc0563c66e39), [2](https://medium.com/coinmonks/everything-you-wanted-to-know-about-package-lock-json-b81911aa8ab8), [3](https://github.com/orgs/community/discussions/164417), [4](https://www.twilio.com/en-us/blog/developers/tutorials/building-blocks/lockfiles-nodejs)]
+
+### 1. How npm Saves Direct Dependencies (`package.json`)
+
+When you run , npm automatically prefixes the version number with a **caret (`^`)** in your `package.json` file. \[[1](https://medium.com/coinmonks/everything-you-wanted-to-know-about-package-lock-json-b81911aa8ab8)]
+
+- **The Caret (`^`) Behavior:** If npm installs version `1.2.3`, it saves it as `^1.2.3`. This tells npm that any future installs can safely update to newer minor or patch versions (e.g., `1.3.0` or `1.2.4`), but it will block major breaking changes (like `2.0.0`).
+- **If you want exact locking:** You must explicitly pass a flag by running or configure your global npm settings to always use exact versions. \[[1](https://medium.com/coinmonks/everything-you-wanted-to-know-about-package-lock-json-b81911aa8ab8), [2](https://docs.npmjs.com/cli/v6/using-npm/config/), [3](https://www.reddit.com/r/node/comments/7zd4re/whats%5Fthe%5Fpoint%5Fof%5Fpackagelockjson%5Fwhen%5Fits%5Fnot/), [4](https://www.davidbuckell.com/blogs/software-development/front-end-development/nodejs/update-all-node-dependencies-to-latest-version/), [5](https://graphql.guide/background/node-npm-and-nvm/)]
+
+### 2. How npm Locks Local Projects (`package-lock.json`)
+
+While `package.json` uses a flexible range, npm _does_ generate a **`package-lock.json`** file by default when you run installs. \[[1](https://docs.npmjs.com/cli/v8/configuring-npm/package-lock-json/), [2](https://medium.com/@manojbicte/understanding-npm-versioning-lock-files-and-updates-a-beginners-guide-344cbfcfaf09)]
+
+- This lockfile records the **exact, literal version** of every direct and nested (transitive) dependency installed in your `node_modules`.
+- When a teammate clones your repository and runs `npm install`, npm will read the `package-lock.json` to install those exact identical versions so everyone stays on the same page.
+- _Note:_ Running standard `npm install` can still update your `package-lock.json` if a dependency range in `package.json` is manually changed. To guarantee zero changes to your lockfile during deployment or automated testing, you should always use the [npm ci](https://docs.npmjs.com/cli/v8/commands/npm-ci/) command instead. \[[1](https://stackoverflow.com/questions/45022048/why-does-npm-install-rewrite-package-lock-json), [2](https://medium.com/@manojbicte/understanding-npm-versioning-lock-files-and-updates-a-beginners-guide-344cbfcfaf09), [3](https://medium.com/openclassrooms-product-design-and-engineering/guide-to-managing-your-npm-packages-in-your-package-json-d315fe2ccab0), [4](https://docs.npmjs.com/cli/v8/configuring-npm/package-lock-json/), [5](https://medium.com/@gfaganli/understanding-npm-semantic-versioning-and-package-lock-json-bc0563c66e39), [6](https://news.ycombinator.com/item?id=46027878), [7](https://support.deploybot.com/build-tools/why-developers-should-use-npm-ci-instead-of-npm-install-and-its-benefits), [8](https://docs.npmjs.com/cli/v8/commands/npm-ci/)]
+
+### 3. How Versioning Works for Published Libraries
+
+If you are building an npm package/library that other developers will install, **npm strictly ignores your library's `package-lock.json`**. \[[1](https://dev.to/aman%5Fkumar%5Fbdd40f1b711c15/best-practices-for-public-npm-packages-lock-files-publishing-dependency-management-4mmi), [2](https://www.twilio.com/en-us/blog/developers/tutorials/building-blocks/lockfiles-nodejs)]
+
+- When an end-user installs your library, npm only reads your library's `package.json`.
+- If your library has a dependency listed as `^1.2.3`, your end-user will get the absolute latest compatible version available on the public registry, not the pinned version you had in your local lockfile.
+- If you absolutely must force your library's consumers to use a specific nested package version, you would have to use `npm shrinkwrap` instead of a standard lockfile. \[[1](https://medium.com/coinmonks/everything-you-wanted-to-know-about-package-lock-json-b81911aa8ab8), [2](https://medium.com/@gfaganli/understanding-npm-semantic-versioning-and-package-lock-json-bc0563c66e39), [3](https://www.quora.com/Why-doesnt-NPM-enforce-fixed-version-dependencies), [4](https://docs.npmjs.com/cli/v9/commands/npm-install/)]
+
+If you are setting up a project, I can help you **configure your `.npmrc` file** to enforce exact version pinning automatically, or help you decide **whether to commit your lockfile** based on your project type. Which would you prefer?
+
+- [link](https://stackoverflow.com/questions/45022048/why-does-npm-install-rewrite-package-lock-json)\
+  Why does "npm install" rewrite package-lock.json?\
+  Jul 10, 2017 — Short Answer: npm install honors package-lock. json only if it satisfies the requirements of package. json. If it doesn't satisfy ...\
+  Stack Overflow
+- [link](https://medium.com/coinmonks/everything-you-wanted-to-know-about-package-lock-json-b81911aa8ab8)\
+  Everything You Wanted To Know About package-lock.json\
+  Aug 11, 2017 — When you install a package with npm (and save it), an entry is added to your package. json containing the package name, and the se...\
+  Medium·James Quigley
+- [link](https://news.ycombinator.com/item?id=46027878)\
+  Safe-NPM – only install packages that are +90 days old\
+  Dec 3, 2025 — You are right that 'npm install' can upgrade versions even when a lock file is present, but AFAIK this should only happen it the l...\
+  Hacker News
+
+Show all
+
+## You said: for example, how to make it predictable everywhere when you pnpm add
+
+To make your dependencies perfectly predictable everywhere when using `pnpm add`, you need to configure `pnpm` to save exact versions and strictly enforce the lockfile.
+
+### 1. Save Exact Versions in `package.json` \[[1](https://blog.stackademic.com/my-handy-little-helper-the-npmrc-file-in-my-project-setup-c8d7ec0f0946)]
+
+By default, `pnpm` behaves like `npm` and adds a caret (`^`) prefix. You can change this behavior so `pnpm add` always saves the exact version. \[[1](https://tech-insider.org/pnpm-vs-npm-2026-2/), [2](https://projen.io/docs/quick-starts/typescript/hello-world/), [3](https://github.com/pnpm/pnpm/issues/4940), [4](https://adamcoster.com/blog/pnpm-config)]
+
+- **For a single install:** Run (or `-E`).
+
+- **Globally for all future installs:** Create an `.npmrc` file in the root of your project and add this line:\
+  ini
+
+<!---->
+
+```
+save-exact=true
+```
+
+Use code with caution.
+
+### 2. Lock Transitive Dependencies (`pnpm-lock.yaml`) \[[1](https://dev.to/wilsonwangdev/lock-files-and-package-manager-migration-a-practical-risk-analysis-2ejn)]
+
+Even with exact versions in `package.json`, nested dependencies (the libraries your libraries use) can still shift if they use ranges. `pnpm` automatically creates a `pnpm-lock.yaml` file to pin these exact versions. \[[1](https://medium.com/@raveenpanditha/understanding-dependencies-in-node-js-774e0f1d211c), [2](https://www.coinspect.com/blog/supply-chain-guardrails/), [3](https://betterstack.com/community/guides/scaling-nodejs/pnpm-explained/)]
+
+- Always commit the `pnpm-lock.yaml` file to your Git repository.
+- This ensures that every developer and server installs the identical dependency tree. \[[1](https://www.deployhq.com/blog/choosing-the-right-package-manager-npm-vs-yarn-vs-pnpm-vs-bun), [2](https://dart.dev/tools/pub/versioning), [3](https://betterstack.com/community/guides/scaling-nodejs/pnpm-explained/)]
+
+### 3. Enforce Strict Installs in CI/CD and Production \[[1](https://publishing-project.rivendellweb.net/npm-security-best-practices/)]
+
+When deploying, running automated tests, or onboarding a new developer, you must prevent the lockfile from updating out of nowhere.
+
+- **The Command:** Use **`pnpm install --frozen-lockfile`**.
+- **What it does:** It completely blocks `pnpm` from modifying the lockfile. If someone manually changed `package.json` without updating the lockfile, the build will fail instantly rather than installing unexpected versions. \[[1](https://dev.to/receter/automatically-publish-your-node-package-to-npm-with-pnpm-and-github-actions-22eg)]
+
+Would you like help setting up a **CI/CD pipeline script** (like GitHub Actions) using this command, or do you want to explore how `pnpm` handles **monorepo versioning** across multiple packages?
+
+- [link](https://blog.stackademic.com/my-handy-little-helper-the-npmrc-file-in-my-project-setup-c8d7ec0f0946)\
+  Optimizing Node.js Projects with the .npmrc File: A Beginner’s Guide | by Olgun DUTKAN\
+  Aug 19, 2024 — Exact Versions: By setting save-exact=true , you ensure that your package. json file records the exact versions of your dependenci...\
+  \
+  \
+  Stackademic
+- [link](https://tech-insider.org/pnpm-vs-npm-2026-2/)\
+  pnpm vs npm 2026: 16s vs 28s Install, 79% Less Disk\
+  Jun 11, 2026 — The short version: npm remains the universal default because it ships with Node.js and works everywhere, while pnpm has become the...\
+  \
+  \
+  tech-insider.org
+- [link](https://projen.io/docs/quick-starts/typescript/hello-world/)\
+  Hello World with TypeScript\
+  This will behave similar to pnpm add or npm install in the sense that it will add the module as a dependency to your package. json...\
+  \
+  \
+  projen
+
+Show all
+
+## You said: does it look up parent folders for npmrc
+
+**No, neither npm nor pnpm searches up through arbitrary parent folders** to find a `.npmrc` file. They only look in specific, pre-defined locations. \[[1](https://docs.npmjs.com/cli/v8/configuring-npm/npmrc/), [2](https://cuyl.github.io/pnpm.github.io/pt/npmrc/)]
+
+If you place an `.npmrc` file in a random parent folder (e.g., `/users/projects/.npmrc`), it will be completely ignored when you run a command inside a subfolder (e.g., `/users/projects/my-app/`). \[[1](https://github.com/pnpm/pnpm/issues/7435), [2](https://docs.npmjs.com/cli/v8/configuring-npm/npmrc/)]
+
+Both packet managers look for configuration files in a specific order:
+
+### How `pnpm` Resolves Configurations
+
+For `pnpm`, settings like `save-exact=true` are strictly split between two files: \[[1](https://pnpm.io/settings)]
+
+1. **The Workspace Root (`pnpm-workspace.yaml`):** If you are in a monorepo, `pnpm` will look upward until it finds the root directory containing your `pnpm-workspace.yaml`. This is the closest `pnpm` gets to "parent looking," but it **only** works for monorepos.
+2. **The Current Project Root (`.npmrc`):** It checks the exact folder where you run the command (the sibling of your `package.json`).
+3. **The User Home Directory (`~/.npmrc`):** It checks the global user profile directory.
+4. **The Global Active Config:** System-wide fallback variables. \[[1](https://pnpm.io/settings), [2](https://cuyl.github.io/pnpm.github.io/pt/npmrc/), [3](https://docs.npmjs.com/cli/v8/configuring-npm/npmrc/), [4](https://pnpm.io/cli/config), [5](https://docs.oracle.com/en/cloud/paas/visual-builder/visualbuilder-manage-development-process/configure-your-connection-projects-npm-registry.html)]
+
+_(Note: `pnpm` only looks at `.npmrc` files for authentication tokens and private registry URLs. General settings like dependency behavior must live in the `pnpm-workspace.yaml` if you want them shared across multiple nested projects.)_ \[[1](https://pnpm.io/settings)]
+
+### How `npm` Resolves Configurations
+
+Standard `npm` resolves things similarly, stopping explicitly at the current project level: \[[1](https://docs.npmjs.com/cli/v8/configuring-npm/npmrc/), [2](https://docs.npmjs.com/cli/v8/using-npm/config)]
+
+1. **Per-project:** The `.npmrc` in the root of the active package (`/path/to/project/.npmrc`).
+2. **Per-user:** The `.npmrc` in the user's home directory (`~/.npmrc`).
+3. **Global:** The configuration file at the Node prefix level.
+4. **Built-in:** Stored directly inside the `npm` installation itself. \[[1](https://docs.npmjs.com/cli/v8/configuring-npm/npmrc/), [2](https://docs.npmjs.com/cli/v8/using-npm/config)]
+
+### The Solution for Predictability
+
+To force a configuration rule like `save-exact=true` across multiple apps without copying it to every folder, you have two clear choices:
+
+- **If they belong to the same project (Monorepo):** Group the folders together using a `pnpm-workspace.yaml` file at the parent root. `pnpm` will automatically see it.
+- **If they are completely separate projects:** Run `pnpm config set save-exact true --global` (or `npm config set save-exact true --global`). This writes the behavior directly to your user account profile (`~/.npmrc`) so it applies across your entire computer. \[[1](https://pnpm.io/settings), [2](https://cuyl.github.io/pnpm.github.io/pt/npmrc/), [3](https://docs.npmjs.com/cli/v8/configuring-npm/npmrc/), [4](https://medium.com/codex/npm-config-customizing-your-npm-environment-13e8b965fed5)]
+
+Are you currently setting up a **multi-package monorepo**, or are you trying to share settings across **standalone, unrelated projects**?
+
+- [link](https://pnpm.io/settings)\
+  Settings (pnpm-workspace.yaml)\
+  yaml) pnpm gets its configuration from the command line, environment variables, and pnpm-workspace. yaml . Only auth and registry ...\
+  PNPM
+- [link](https://docs.npmjs.com/cli/v8/configuring-npm/npmrc/)\
+  npmrc - npm Docs\
+  Jan 1, 2016 — per-project config file (/path/to/my/project/. npmrc) per-user config file (~/. npmrc) global config file ($PREFIX/etc/npmrc) npm ...\
+  npm Docs
+- [link](https://github.com/pnpm/pnpm/issues/7435)\
+  pnpm install doesn't read .npmrc of individual packages while ...\
+  Dec 17, 2023 — KSXGitHub commented. KSXGitHub. on Dec 22, 2023. Contributor. .npmrc is a per-project configuration file, not per-package. If by a...\
+  GitHub
+
+Show all
+
+# how easy is it to build a website that needs react wo react
+
+Building a website that feels like a React app without actually using React is <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">highly achievable</mark> today. Modern web standards provide the exact tools needed to replicate React's best features with less complexity. \[[1](https://www.reddit.com/r/reactjs/comments/1fqaxpb/what%5Fframework%5Fshould%5Fi%5Fchoose%5Ffor%5Fa%5Fbasic%5Fwebsite/), [2](https://proxify.io/articles/react-seo), [3](https://codingcops.com/mastering-react-hooks/)]
+
+### Why Choose This Approach
+
+- **Zero Build Steps**: Run your code directly in the browser.
+- **Smaller File Sizes**: Pages load significantly faster for users.
+- **No Dependency Hell**: Avoid constant npm package updates. \[[1](https://dev.to/shrinivasv73/what-is-a-build-process-in-react-or-in-any-framework-for-that-matter--4df5), [2](https://www.edureka.co/blog/what-is-react/), [3](https://dev.to/besworks/so-dont-overreact-but-im-so-over-react-i52)]
+
+### How to Replicate React's Features
+
+### 1. Components (Use Web Components)
+
+React isolates UI elements into components. Modern browsers do this natively using Web Components. You can create reusable HTML tags with built-in styling and logic. \[[1](https://www.icoderzsolutions.com/blog/react-js-benefits/), [2](https://medium.com/@jakemer10/microsofts-shift-from-react-a-deeper-look-at-edge-s-evolution-4d7001bdf834), [3](https://www.netguru.com/blog/migrate-website-to-react), [4](https://massivepixel.io/blog/react-libraries/), [5](https://www.reddit.com/r/javascript/comments/j5raj2/askjs%5Fweb%5Fcomponents%5Flitelement%5For%5Freact/)]
+
+### 2. State Management (Use Signals or Proxy)
+
+React uses `useState` to trigger page updates. In vanilla JavaScript, you can use the `Proxy` object to watch for data changes and automatically update the HTML. Lightweight libraries like Preact Signals also offer this exact functionality without the React runtime. \[[1](https://namastedev.com/blog/how-does-react-work-under-the-hood/), [2](https://msmechatronics.medium.com/tired-of-react-re-renders-meet-signals-5539b844735c), [3](https://www.mgsoftware.nl/en/vergelijking/preact-vs-react)]
+
+### 3. Single Page Routing (Use the Navigation API) \[[1](https://www.hackerrank.com/blog/what-is-react-introduction/), [2](https://www.softlogicsys.in/react-js-online-training/)]
+
+React apps switch pages instantly without a full reload. You can achieve this using the modern browser **Navigation API** or standard **History API** combined with `fetch()` to swap out page content dynamically. \[[1](https://www.codeable.io/blog/node-js-vs-react-js/), [2](https://www.cloudways.com/blog/install-react-js-in-laravel/), [3](https://www.etatvasoft.com/blog/react-seo/), [4](https://www.softlogicsys.in/react-js-online-training/)]
+
+### Lightweight Alternatives
+
+If writing raw JavaScript feels too tedious, use micro-frameworks that mimic React but weigh a fraction of the size:
+
+- **Preact**: Uses the exact same React syntax but is only 3KB.
+- **Alpine.js**: Lets you write reactive logic directly in your HTML tags.
+- **SolidJS**: Looks like React but compiles down to ultra-fast raw JavaScript. \[[1](https://www.zigpoll.com/content/can-you-recommend-lightweight-frontend-libraries-or-frameworks-optimized-for-quick-prototyping-and-realtime-user-feedback-integration), [2](https://news.ycombinator.com/item?id=29517403), [3](https://redskydigital.com/ce/alpine-js-vs-react-navigating-simplicity-in-web-development/), [4](https://dev.to/omher/intro-to-solidjs-how-to-create-fast-reactive-web-apps-15cn)]
+
+To help narrow down the best path forward, tell me:
+
+- What is the **main purpose** of your website?
+- Do you prefer writing **pure vanilla JavaScript** or using a **tiny library**?
+- What **React features** (like hooks or state) are most critical to your project?
+
+I can then provide a tailored code example to get you started.
+
+- [link](https://www.reddit.com/r/reactjs/comments/1fqaxpb/what%5Fframework%5Fshould%5Fi%5Fchoose%5Ffor%5Fa%5Fbasic%5Fwebsite/)\
+  What framework should I choose for a basic website? : r/reactjs\
+  Sep 27, 2024 — I've seen along people commenting that you don't even 'need' react for a simple site. That's true. However, the tooling and infras...\
+  \
+  Reddit
+- [link](https://proxify.io/articles/react-seo)\
+  Will React.js be able to help you rank on Google?\
+  Jul 22, 2020 — It ( React ) makes it ( React framework ) simple to build interactive websites and apps that feel fast. React ( React framework ) ...\
+  \
+  \
+  Proxify
+- [link](https://codingcops.com/mastering-react-hooks/)\
+  Mastering React Hooks: A Detailed Guide \[2024]\
+  Jun 25, 2024 — Testing components that use Hooks requires an environment that mimics React's behavior closely. This mostly involves making sure o...\
+  \
+  \
+  CodingCops
+
+Show all
+
 # 
 
