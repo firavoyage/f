@@ -26,8 +26,6 @@ Watch the official music video to experience the contrast between the cheerful r
 
 [Hai Yorokonde / Kocchi no Kento MV (「はいよろこんで」 ...こっちのけんとYouTube · Jul 30, 2024](https://www.youtube.com/watch?v=WurwBthIO6g)
 
-Would you like me to break down some of the **specific Japanese lyrics** from the song, or are you interested in learning more about the **retro animation style** used in the video?
-
 - [link](https://www.reddit.com/r/japanesemusic/comments/1dyd90x/hai%5Fyorokonde%5Fkocchi%5Fno%5Fkento/)\
   Hai Yorokonde / Kocchi no Kento : r/japanesemusic - Reddit\
   Jul 8, 2024 — bubsimo. • 2y ago. That's super cool. More replies More replies. Yolomastero. • 2y ago. Hey, the song is about fatigue but particu...\

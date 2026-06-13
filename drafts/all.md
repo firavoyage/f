@@ -644,6 +644,7 @@ para:
 
 - research flutter
 - research gnome libadwaita
+- theme adwaita refactor vanillajs
 
 leisure:
 
