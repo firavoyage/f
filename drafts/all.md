@@ -620,6 +620,7 @@ rhetoric:
 - cook meaning slang
 - theory meaning slang
 - created equal
+- the ability to do something to the extent of x
 
 laws:
 
@@ -659,11 +660,11 @@ egg:
 humility:
 
 - research claude code leak insights
-- research google ai mode
+- research google ai mode citing pro model ux
 - research zed highly requested features
 - research opencode undo feature critical accidental code removal issue
 - research opencode <!-- structured output, yaml or json or xml -->
-- research llms follow up google ai mode system prompt tools skills
+- research google ai mode system prompt tools skills llms follow up criticism
 
 legacy:
 
