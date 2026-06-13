@@ -68,3 +68,16 @@ stick to cwd. do not touch anything outside.
 
 - run `fdfind . --maxdepth 2` to know the file structure of cwd.
 - start working
+
+#
+
+<!-- it does not seem to listen. make it more rigid -->
+
+# 0.6
+
+stick to cwd. do not touch anything outside.
+
+1. run `fdfind . --exclude "legacy" --maxdepth 2` to know the file structure of cwd.
+2. start working
+
+you must run the command before doing anything.
