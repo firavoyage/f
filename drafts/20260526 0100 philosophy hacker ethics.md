@@ -1,4 +1,4 @@
-hacker ethics
+# hacker ethics
 
 10:22 AM
 
@@ -225,3 +225,9 @@ When viewed through a philosophical lens, Steven Levy's six original hacker ethi
 ***
 
 If you want to dive deeper into these connections, let me know if I should expand on **how hacker epistemology directly challenges corporate copyright laws**, or explore **the anarchist philosophies that inspired decentralized networks**.
+
+# 
+
+<!-- 2026.06.13 15 00 -->
+
+# 
