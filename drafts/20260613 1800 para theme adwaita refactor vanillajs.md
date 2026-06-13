@@ -8,6 +8,18 @@
 
 <!-- react might be wise. i guess the tradeoff would work out. but vanilla works exceptionally well for some of my apps. -->
 
+<!-- 
+
+whether i use react or not, when they ctrl b or ctrl p, i could either
+
+change the state. the sidebar is on. render. (it will either rerender everything and diff, or see it's already there, and update what's needed.)
+
+or
+
+update directly. open the sidebar, or close it.
+
+ -->
+
 # how is it to use web components wo lit
 
 Using web components without Lit—often called **Vanilla Web Components**—means you rely purely on the browser's native APIs (`CustomElements`, `ShadowDOM`, and ). \[[1](https://utilitybend.com/blog/getting-into-web-components-an-intro/), [2](https://developer.mozilla.org/en-US/docs/Web/API/Web%5Fcomponents), [3](https://www.reddit.com/r/javascript/comments/nhvekt/web%5Fcomponents%5F101%5Fwhy%5Fuse%5Fweb%5Fcomponents/), [4](https://codecamp.ro/masterclasses/pure-javascript-web-components/), [5](https://www.peoplewoo.com/blogs/post/lwc-introduction-lightning-web-components-in-salesforce-peoplewoo-skills)]
