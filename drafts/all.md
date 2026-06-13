@@ -584,6 +584,7 @@ economics:
 - investing strategy long term short term
 - investing index fund growth theory
 - investing alpha beta meaning
+- investing buying the dip strategy buffett indicator
 
 society: <!-- sociology -->
 
