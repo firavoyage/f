@@ -117,11 +117,7 @@ ref:
     success: "#78e9ab"
     warning: "#ffc252" # cd9309?
     error: "#ff938c" # destructive
-
-    slider:
-      track-bg: 
-        value: "..." # define in grayscale instead, then ref in sys
-      
+     
   spacing:
     1: "0.1875rem"
     2: "0.25rem"

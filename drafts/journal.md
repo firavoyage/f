@@ -28495,13 +28495,17 @@ Invariant
 
 04 20 Download YouTube on Android. 
 
-Maybe I can easily live then, and auto preserved for permanency.
+<!-- Maybe I can easily live then, and auto preserved for permanency.
 
-So many ads. Both on play and on YouTube, I've never encountered on web.
+So many ads. Both on play and on YouTube, I've never encountered on web. -->
 
 upd: switch to ~~twitch~~ kick with streamlabs.
 
 06 00 fix some typos via cspell.
+
+19 00 work w nc wo music. <!-- maimai is great. -->
+
+peaceful.
 
 
 
