@@ -1,0 +1,39 @@
+the ability to do something to the extent of x touhou
+
+In the _Touhou Project_ series, the phrasing **"the ability to do \[something] to the extent of \[X]"** (Japanese: ~ 程度の能力, _teido no nouryoku_) is the official, trademark naming convention used by creator ZUN to describe almost every character's supernatural powers. \[[1](https://en.touhouwiki.net/wiki/Characters/Abilities)]
+
+### Why ZUN Phrases Abilities This Way
+
+- **Intentional Ambiguity:** ZUN uses "to the extent of" to avoid making a character’s powers too rigid or completely defined. It keeps the power scaling open-ended and highly flexible.
+- **Conceptual Versatility:** Because powers are framed as an "extent" rather than a strict mechanic, characters can creatively stretch their abilities. For example, an ability described as something simple on paper can often be used to manipulate abstract or universal realities.
+- **Fanon and Lore Fuel:** This phrasing is a cornerstone of the _Touhou_ identity. It is widely used by fans in custom profiles to give new or fan-made characters an authentic _Touhou_ feel. \[[1](https://www.reddit.com/r/touhou/comments/193i871/the%5Fmagic%5Fand%5Fpower%5Fsystem%5Fof%5Ftouhou%5Fisumuh/), [2](https://vsbattles.fandom.com/wiki/Touhou%5FProject), [3](https://en.touhouwiki.net/wiki/Characters/Abilities)]
+
+### Famous Examples of the Phrasing
+
+The scale of "X" in a character's profile can range from incredibly mundane, everyday tasks to absolute, reality-warping concepts: \[[1](https://vsbattles.fandom.com/wiki/Touhou%5FProject)]
+
+| Character \[[1](https://vsbattles.fandom.com/wiki/Touhou%5FProject), [2](https://www.reddit.com/r/touhou/comments/2c1x5z/if%5Fyou%5Fcan%5Fhave%5Fthe%5Fpowers%5Fof%5Fany%5Ftouhou/), [3](https://www.reddit.com/r/touhou/comments/l8kd05/in%5Fterms%5Fof%5Ftouhou%5Fabilities%5Fcan%5Fthese%5Fbe/), [4](https://en.touhouwiki.net/wiki/Yukari%5FYakumo), [5](https://www.reddit.com/r/touhou/comments/ksm7u3/yuyukos%5Fability/), [6](https://www.tiktok.com/@midnightdre/video/7471328899796929823)] | Official Ability Phrasing                                               | Actual Scale / Application                                                                              |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| **Sakuya Izayoi**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Ability to manipulate time **to the extent of** an elegant maid         | Can pause, accelerate, and rewind time, as well as manipulate space.                                    |
+| **Remilia Scarlet**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | Ability to manipulate fate **to the extent of** absolute destiny        | Allows her to subvert outcomes and subtly lean the universe in her favor.                               |
+| **Yukari Yakumo**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Ability to manipulate boundaries **to the extent of** gaps              | A terrifying power that lets her control the boundaries between life/death, truth/fiction, and physics. |
+| **Yuyuko Saigyouji**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | Ability to manipulate death **to the extent of** passing away           | An absolute, irresistible authority to instantly trigger the death of any living soul.                  |
+| **Utsuho Reiuji**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Ability to manipulate nuclear fusion **to the extent of** absolute heat | Grants her the power of a living sun, giving her access to tremendous destructive energy.               |
+| **Kogasa Tatara**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Ability to surprise humans **to the extent of** an umbrella             | A low-stakes ability where she struggles to actually scare people, often resulting in minor tricks.     |
+
+Are you trying to **design a custom power** for a fan character using this template, or would you like to explore the **most overpowered concepts** ZUN has written? Let me know what you want to dive into!
+
+- [link](https://en.touhouwiki.net/wiki/Yukari%5FYakumo)\
+  Yukari Yakumo - Touhou Wiki\
+  May 15, 2026 — Examples of the usage of this ability: \* Neutralized Suika Ibuki's ability by forcing the oni, which was spread as mist over the e...\
+  Touhou Wiki
+- [link](https://en.touhouwiki.net/wiki/Characters/Abilities)\
+  Characters/Abilities - Touhou Wiki\
+  Apr 2, 2026 — The meaning of "程度の能力" In official works, abilities are described with a phrase which translates roughly as "capable of" (程度の能力 Te...\
+  Touhou Wiki
+- [link](https://vsbattles.fandom.com/wiki/Touhou%5FProject)\
+  Touhou Project - VS Battles Wiki\
+  Power of the Verse Despite its outward appearances, Touhou Project is a verse where some characters possess hax such as Soul Absor...\
+  VS Battles Wiki
+
+Show all
