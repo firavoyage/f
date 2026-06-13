@@ -49,6 +49,7 @@ fira:
 - not backed by yc movement
 - version control legacy folder
 - mono no aware the red chamber
+- hacker ethics
 
 life:
 
