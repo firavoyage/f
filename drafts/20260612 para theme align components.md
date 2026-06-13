@@ -664,8 +664,6 @@ Show all
 
 # 
 
-#
-
 # Align components TODO drafts
 
 **Session ID:** ses_1485dbdecffe3JlJM4P925F7zc
