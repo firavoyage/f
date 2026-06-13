@@ -230,6 +230,8 @@ If you want to dive deeper into these connections, let me know if I should expan
 
 <!-- 2026.06.13 15 00 -->
 
+<!-- azalea: aur poisoning. hacks. "if i would have released the hack on the fool's day" "i would not, as i dont not want to enforce security through threatening" "(yuutota) as corporate hacker i will disclose ..." -->
+
 # has the hacker ethics changed in the sense of radical Libertarianism
 
 11:55 PM
