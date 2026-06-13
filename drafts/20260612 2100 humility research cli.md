@@ -1,3 +1,5 @@
+<!-- do not over style a cli. stop at alignment. dont go further into autocomplete or navigation etc. -->
+
 # . cspell
 
 ```sh
@@ -2596,3 +2598,4 @@ Would you like to know how to set up **IT-Tools** via a simple local script, or 
 Show all
 
 # 
+
