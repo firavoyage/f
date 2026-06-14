@@ -250,6 +250,7 @@ desktop:
 - shell timestamp to utc
 - gnome critical notifications stricter dnd attempt
 - shell fdfind rg
+- install librechat
 
 android:
 
