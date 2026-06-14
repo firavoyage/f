@@ -217,6 +217,7 @@ backend:
 - jslinux linux kernel
 - ts node cli template
 - cli standard
+- security cryptography https 
 
 desktop:
 
@@ -497,6 +498,7 @@ math:
 - birthday paradox
 - problem grade 11 summer holidays 1.14 am gm inequality special property dths oi maimai player
 - problem grade 10 dths injectivity function equation
+- zfc system
 
 physics:
 
