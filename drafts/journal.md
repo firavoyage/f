@@ -28507,6 +28507,18 @@ upd: switch to ~~twitch~~ kick with streamlabs.
 
 peaceful.
 
+14
+
+
+
+19 00 have a glove slightly broken.
+
+to cut down the nails further i guess.
+
+19 20 try librechat, inspired by azalea jp advisor extension.
+
+19 20 sync memories (20 20)
+
 
 
 <!-- timebox, plan. -->
