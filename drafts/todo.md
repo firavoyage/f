@@ -382,3 +382,11 @@ traditional blog.
 
 ---
 
+https://linear.app/
+
+feels impressive. code is art.
+
+though... idk if it even beats markdown.
+
+---
+
