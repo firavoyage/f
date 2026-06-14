@@ -217,7 +217,7 @@ backend:
 - jslinux linux kernel
 - ts node cli template
 - cli standard
-- security cryptography https 
+- security cryptography https ca domain registration
 
 desktop:
 
@@ -259,6 +259,7 @@ android:
 - test declarative predictable hello world compilation
 - export apk aab
 - set up one ui
+- security selinux data extraction hardware google app dev
 
 ops: <!-- devops, ci, vcs, ... -->
 
