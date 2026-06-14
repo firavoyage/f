@@ -9428,4 +9428,1590 @@ Are you looking to see how React handles **updating or changing** these handlers
 
 Show all
 
-# 
+# . what does race conditions mean
+
+A **race condition** is <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">an undesirable situation that occurs when a software program or electronic system tries to perform two or more operations at the same time, but the correct outcome depends on the <strong>exact order or timing</strong> of those operations</mark>. \[[1](https://en.wikipedia.org/wiki/Race%5Fcondition), [2](https://www.geeksforgeeks.org/operating-systems/race-condition-in-operating-systems/)]
+
+It gets its name because multiple parts of the program are literally "racing" to modify the same resource. Because the system's execution order is unpredictable—often managed by a computer's operating system scheduler—the program can produce random, incorrect results or trigger unexpected system crashes. \[[1](https://stackoverflow.com/questions/34510/what-is-a-race-condition), [2](https://www.geeksforgeeks.org/java/race-conditions/), [3](https://www.huntress.com/cybersecurity-101/topic/what-is-race-condition), [4](https://www.geeksforgeeks.org/operating-systems/race-condition-in-operating-systems/)]
+
+***
+
+### The Classic Bank Example
+
+Imagine a shared bank account has a balance of **$100**. Two people (Person A and Person B) have debit cards tied to this account and try to withdraw money at the exact same fraction of a second. \[[1](https://stackoverflow.com/questions/34510/what-is-a-race-condition), [2](https://www.geeksforgeeks.org/operating-systems/race-condition-in-operating-systems/), [3](https://medium.com/@danciliakharmon/understanding-multithreading-and-race-conditions-in-swift-cdcb9c1af88e)]
+
+A safe system should perform operations one after the other. However, in a race condition, the steps get mixed up like this: \[[1](https://ericnormand.me/podcast/what-are-race-conditions)]
+
+1. **Person A** requests a withdrawal of $20. The system checks the database: _$100 available. Proceed._
+2. Before the system can subtract the $20, **Person B** requests a withdrawal of $50. The system checks the database: _$100 available. Proceed._
+3. **Person A's** process finishes: $100 - $20 = $80. It saves **$80** to the database.
+4. **Person B's** process finishes: It still thinks the starting balance was $100, so it calculates $100 - $50 = $50. It overwrites the database with **$50**. \[[1](https://stackoverflow.com/questions/34510/what-is-a-race-condition), [2](https://medium.com/@vkekukh/why-they-ask-whats-a-race-condition-and-how-do-you-prevent-it-b794f480a324), [3](https://www.geeksforgeeks.org/java/race-conditions/), [4](https://learn.microsoft.com/en-us/troubleshoot/developer/visualstudio/visual-basic/language-compilers/race-conditions-deadlocks), [5](https://lutfumertceylan.com.tr/posts/race-condition-limit-bypass/)]
+
+**The Result:** The bank just lost $20 because Person A's transaction was completely wiped out by Person B. \[[1](https://ericnormand.me/podcast/what-are-race-conditions), [2](https://www.geeksforgeeks.org/java/race-conditions/)]
+
+***
+
+### Why Do Race Conditions Happen?
+
+Race conditions typically require three ingredients: \[[1](https://ericnormand.me/podcast/what-are-race-conditions), [2](https://www.geeksforgeeks.org/operating-systems/race-condition-in-operating-systems/), [3](https://www.reddit.com/r/skyrim/comments/r52eoq/race%5Fdifferences/)]
+
+- **Concurrency:** Multiple processes, threads, or users are running simultaneously.
+- **Shared Resources:** They are all reading and writing to the exact same variable, file, or database.
+- **Non-Atomic Operations:** The action happens in separate steps (e.g., checking a value, calculating a new one, then saving it) rather than all at once. If a process gets interrupted halfway through, a race condition occurs. \[[1](https://ericnormand.me/podcast/what-are-race-conditions), [2](https://www.geeksforgeeks.org/operating-systems/race-condition-in-operating-systems/), [3](https://medium.com/@vkekukh/why-they-ask-whats-a-race-condition-and-how-do-you-prevent-it-b794f480a324), [4](https://www.techtarget.com/searchstorage/definition/race-condition), [5](https://www.naukri.com/code360/library/what-is-race-condition-in-os)]
+
+***
+
+### Why Are They Dangerous?
+
+- **They are "Heisenbugs":** They are incredibly hard to find and debug. Because they depend entirely on microsecond timing, code might work perfectly 99.9% of the time during testing, only to crash randomly in production under heavy user traffic.
+- **Security Vulnerabilities:** Hackers often exploit race conditions (specifically [Time-of-Check to Time-of-Use or TOCTOU flaws](https://www.akamai.com/glossary/what-is-a-race-condition)). By intentionally spamming requests during that tiny split-second gap, attackers can bypass security checks, double-spend digital currency, or escalate their account privileges. \[[1](https://www.akamai.com/glossary/what-is-a-race-condition), [2](https://dennylesmana.medium.com/what-is-race-condition-d678f87af108), [3](https://apiiro.com/glossary/race-condition/), [4](https://medium.com/@vkekukh/why-they-ask-whats-a-race-condition-and-how-do-you-prevent-it-b794f480a324), [5](https://www.automox.com/blog/vulnerability-definition-race-condition), [6](https://www.geeksforgeeks.org/operating-systems/race-condition-vulnerability/)]
+
+***
+
+### How Developers Prevent Them
+
+To stop race conditions, developers must enforce strict synchronization using specific coding mechanisms: \[[1](https://www.akamai.com/glossary/what-is-a-race-condition), [2](https://www.geeksforgeeks.org/operating-systems/race-condition-in-operating-systems/)]
+
+- **Locks / Mutexes:** Think of this like a bathroom key. When one thread starts modifying a variable, it "locks" it. Other threads must wait in line until the first thread finishes and unlocks it.
+- **Atomic Operations:** Combining the read, modify, and write steps into a single, un-interruptible machine action.
+- **Immutability:** Designing data structures that cannot be changed once created, eliminating the possibility of data modification conflicts altogether. \[[1](https://www.reddit.com/r/csharp/comments/1xfjgz/can%5Fsomeone%5Fplease%5Feli5%5Fwhat%5Fare%5Frace%5Fconditions/), [2](https://www.geeksforgeeks.org/operating-systems/race-condition-vulnerability/), [3](https://stackoverflow.com/questions/34510/what-is-a-race-condition), [4](https://www.geeksforgeeks.org/operating-systems/race-condition-in-operating-systems/), [5](https://www.akamai.com/glossary/what-is-a-race-condition)]
+
+Are you trying to **debug a specific issue** in your code, or are you studying this for a **computer science class or interview**? Let me know, and I can provide tailored code examples or interview tips!
+
+- [link](https://stackoverflow.com/questions/34510/what-is-a-race-condition)\
+  multithreading - What is a race condition? - Stack Overflow\
+  Aug 29, 2008 — A race condition occurs when two or more threads can access shared data and they try to change it at the same time. Because the th...\
+  Stack Overflow
+- [link](https://en.wikipedia.org/wiki/Race%5Fcondition)\
+  Race condition - Wikipedia\
+  A race condition or race hazard is the condition of an electronics, software, or other system where the system's substantive behav...\
+  Wikipedia
+- [link](https://www.geeksforgeeks.org/operating-systems/race-condition-in-operating-systems/)\
+  Race condition - GeeksforGeeks\
+  Apr 24, 2026 — Race condition \* A race condition occurs when two or more processes or threads access and modify the same data at the same time, a...\
+  GeeksforGeeks
+
+Show all
+
+## You said: on web
+
+In web development, a race condition occurs when a web application processes multiple asynchronous network requests or database queries out of order, leading to broken user interfaces or corrupted data. \[[1](https://www.aptive.co.uk/blog/what-is-race-condition/), [2](https://www.akamai.com/glossary/what-is-a-race-condition), [3](https://medium.com/@mshahzebraza/race-condition-in-react-d474c2563094)]
+
+Because the internet is unpredictable, API responses don't always arrive in the order they were sent. \[[1](https://dev.to/shrsv/race-conditions-in-go-a-simple-tutorial-1e1i), [2](https://medium.com/@juliusndegwa2/race-conditions-in-frontend-api-development-8de3dd2f3d26)]
+
+***
+
+### 🔎 Example 1: The UI Search Bar Bug (Frontend)
+
+Imagine a user typing into a live-search bar to find products.
+
+1. The user types "**iPh**". The app fires Request #1 to the server.
+2. The user quickly finishes typing "**iPhone**". The app fires Request #2.
+3. Request #2 is processed quickly by the server and returns results for "iPhone" in 50 milliseconds. The UI updates.
+4. Request #1 got delayed by a network hiccup and arrives late (200 milliseconds).
+5. The UI processes Request #1 last, overwriting the screen.
+
+**The Result:** The user sees "**iPhone**" typed in the search bar, but the product list displays old results for "**iPh**".
+
+***
+
+### 🛒 Example 2: The E-Commerce Inventory Leak (Backend)
+
+Imagine an online store has exactly **1 popular item left** in stock. Two shoppers click "Buy Now" at the exact same millisecond. \[[1](https://medium.com/@kapoorjasdeep/its-the-big-billion-day-sale-on-flipkart-and-the-latest-smartphone-you-ve-been-eyeing-has-just-a9ad5cb30d08)]
+
+1. **Server Thread A** (for Shopper A) checks the database: _Inventory = 1. Proceed to checkout._
+2. Before Thread A can update the database, **Server Thread B** (for Shopper B) checks the database: _Inventory = 1. Proceed to checkout._
+3. Thread A finishes processing, charges the card, and sets Inventory to 0.
+4. Thread B finishes processing, charges the card, and sets Inventory to -1 (or 0). \[[1](https://softwareengineering.stackexchange.com/questions/161231/should-i-take-care-of-race-conditions-which-almost-certainly-has-no-chance-of-oc)]
+
+**The Result:** The store just oversold an item it does not have, forcing a customer support nightmare.
+
+***
+
+### 🛡️ How Web Developers Fix Them
+
+### On the Frontend (UI)
+
+- **Debouncing / Throttling:** Delaying API calls until the user stops typing for a few hundred milliseconds.
+- **Cancellation Tokens:** Using tools like JavaScript's `AbortController`. When Request #2 is fired, the app explicitly cancels Request #1 so its late response is ignored.
+- **State Management Libraries:** Frameworks like React Query or RTK Query automatically manage request lifecycles and discard stale data. \[[1](https://levelup.gitconnected.com/top-10-strategies-to-mitigate-race-condition-errors-in-react-js-0050dc1e2602), [2](https://www.newline.co/@RichardBray/race-conditions-in-react-what-they-are-and-how-to-avoid-them--675702e6)]
+
+### On the Backend & Database
+
+- **Database Transactions (ACID):** Using `SELECT ... FOR UPDATE` or strict isolation levels to lock database rows while they are being read and modified.
+- **Optimistic Locking:** Adding a version number column to database rows. If Thread B tries to save data but notices the version number changed since it checked, the database rejects the update.
+- **Distributed Locks:** Using fast, in-memory stores like Redis to create a global "lock" across multiple server instances. \[[1](https://www.sciencedirect.com/science/article/pii/S0167404825004298), [2](https://medium.com/quintoandar-tech-blog/race-conditions-in-firestore-how-to-solve-it-5d6ff9e69ba7), [3](https://sqlfordevs.com/transaction-locking-prevent-race-condition), [4](https://algocademy.com/blog/why-your-event-driven-architecture-is-causing-race-conditions-and-how-to-fix-it/), [5](https://dzone.com/articles/distributed-locking-and-race-condition-prevention)]
+
+Are you dealing with a **frontend UI glitch** (like mismatched search results or tabs) or a **backend database issue** (like double-posting data)? Let me know the **programming language or framework** you are using, and I can give you a concrete code fix!
+
+- [link](https://www.aptive.co.uk/blog/what-is-race-condition/)\
+  What is a Race Condition? Race Condition Web Vulnerability Explained\
+  Feb 26, 2025 — How a Race Condition Occurs A race condition in a web application can occur when multiple users or processes interact with shared ...\
+  \
+  \
+  www.aptive.co.uk
+- [link](https://www.akamai.com/glossary/what-is-a-race-condition)\
+  What Is a Race Condition?\
+  This occurs when the synchronization and sequencing of these processes or threads are not coordinated. The consequences of race co...\
+  \
+  \
+  Akamai
+- [link](https://medium.com/@mshahzebraza/race-condition-in-react-d474c2563094)\
+  Race Condition in React. Race Condition in React — A Guide for… | by M Shahzeb Raza\
+  Apr 5, 2023 — Asynchronous requests: When multiple requests are made to the same resource simultaneously, it can lead to race conditions and une...\
+  \
+  \
+  Medium
+
+Show all
+
+## You said: do they have to be predicted and handled explicitly whether you use vanillajs (not web component) react solidjs svelte whatever wo specialized libraries
+
+Yes. No matter the framework—Vanilla JS, React, SolidJS, or Svelte—**none of them automatically fix async network race conditions out of the box.**
+
+While UI frameworks excel at updating the DOM when data changes, they cannot know _which_ network request was meant to be the final state. If you do not handle them explicitly in your code, your application will eventually experience bugs. \[[1](https://belitsoft.com/what-do-front-end-frameworks-do), [2](https://codingcops.com/reactjs-vs-plain-javascript/), [3](https://medium.com/@mwandanam/understanding-race-conditions-in-javascript-365f19991a11)]
+
+Here is how race conditions happen across different paradigms without libraries, and how you must explicitly handle them.
+
+***
+
+### The Problem in Every Framework
+
+If you write standard fetch code without explicit handling, every framework breaks the exact same way.
+
+javascript
+
+```
+// ❌ BROKEN IN EVERY FRAMEWORK
+async function fetchUserData(userId) {
+  const response = await fetch(`/api/user/${userId}`);
+  const data = await response.json();
+
+  // Race condition: A slower, older request can overwrite a newer one here
+  userState = data;
+}
+```
+
+Use code with caution.
+
+***
+
+### How to Explicitly Handle Them (Framework-by-Framework)
+
+To fix this without a library like React Query or Svelte Query, you must use one of two vanilla JavaScript strategies: **AbortController** (canceling the request) or a **Local Boolean Flag** (ignoring the stale response).
+
+### 1. Vanilla JS (Using AbortController)
+
+You must explicitly store a reference to the previous request and cancel it before starting a new one. \[[1](https://www.newline.co/courses/react-data-fetching-beyond-the-basics/fixing-race-conditions)]
+
+javascript
+
+```
+let currentController = null;
+
+function searchProducts(query) {
+  // 1. Cancel the previous pending request
+  if (currentController) currentController.abort();
+
+  // 2. Create a new controller for this request
+  currentController = new AbortController();
+
+  fetch(`/api/search?q=${query}`, { signal: currentController.signal })
+    .then(res => res.json())
+    .then(data => {
+      renderDOM(data);
+    })
+    .catch(err => {
+      if (err.name === 'AbortError') return; // Safely ignore intentional cancellations
+      console.error(err);
+    });
+}
+```
+
+Use code with caution.
+
+### 2. React (Using the Clean-up Function)
+
+React triggers `useEffect` clean-up functions when dependencies change. You must explicitly use a boolean flag to track if the specific render cycle is still valid.
+
+javascript
+
+```
+useEffect(() => {
+  let isCurrent = true; // Flag for this specific render
+
+  async function loadData() {
+    const res = await fetch(`/api/data/${id}`);
+    const data = await res.json();
+
+    // Explicit Check: Only update state if a newer id hasn't been requested
+    if (isCurrent) {
+      setData(data);
+    }
+  }
+
+  loadData();
+
+  return () => {
+    isCurrent = false; // Turn off flag when 'id' changes or component unmounts
+  };
+}, [id]);
+```
+
+Use code with caution.
+
+### 3. Svelte (Using Sequential IDs or Scoped Variables)
+
+Svelte reactive statements re-run when variables change, but they don't have built-in cleanup functions like React. You must manage a tracker explicitly. \[[1](https://blog.logrocket.com/exploring-runes-svelte-5/), [2](https://devtrios.com/blog/svelte-vs-react-which-framework-should-you-choose/), [3](https://www.topcoder-dev.com/thrive/articles/about-most-liked-spa-framework-svelte)]
+
+svelte
+
+```
+<script>
+  export let userId;
+  let userData;
+
+  // Re-run whenever userId changes
+  $: {
+    let currentId = userId;
+
+    fetch(`/api/user/${userId}`)
+      .then(res => res.json())
+      .then(data => {
+        // Explicit Check: Ensure the user didn't switch to a new ID while waiting
+        if (currentId === userId) {
+          userData = data;
+        }
+      });
+  }
+</script>
+```
+
+Use code with caution.
+
+### 4. SolidJS (The Exception: Built-in `createResource`) \[[1](https://www.youtube.com/watch?v=bzLtS0hTWCs)]
+
+SolidJS is a rare exception because its core reactivity includes a primitive specifically designed for async data fetching called `createResource`. \[[1](https://javascript.plainenglish.io/digging-deeper-into-solidjss-perfect-fusion-with-remix-and-much-more-8d26b3f98034), [2](https://medium.com/@mehdibafdil/solid-js-the-framework-meta-almost-acquired-8b81253ffc34)]
+
+While standard Solid signals (`createSignal`) will suffer from race conditions, `createResource` **handles race conditions automatically** under the hood by discarding out-of-order responses. \[[1](https://www.zignuts.com/blog/top-5-javascript-frameworks-for-2023)]
+
+javascript
+
+```
+import { createResource } from "solid-js";
+
+// SolidJS automatically ensures 'data' matches the LATEST 'userId',
+// discarding any older requests that resolve out of order.
+const [userId, setUserId] = createSignal(1);
+const [data] = createResource(userId, fetchUserData);
+```
+
+Use code with caution.
+
+***
+
+### Summary Table
+
+| Environment    | Built-in Protection? | How it behaves natively                 | How you fix it without libraries                                          |
+| -------------- | -------------------- | --------------------------------------- | ------------------------------------------------------------------------- |
+| **Vanilla JS** | ❌ No                | Overwrites state randomly               | Keep reference to `AbortController` globally/in scope.                    |
+| **React**      | ❌ No                | Overwrites state randomly               | Use a boolean flag in the `useEffect` cleanup return.                     |
+| **Svelte**     | ❌ No                | Overwrites state randomly               | Capture current variable in reactive `$:` blocks and validate post-fetch. |
+| **SolidJS**    | Partial              | Safe **only if** using `createResource` | Built-in to `createResource`. Standard fetches still need manual fixes.   |
+
+Would you like to see how to implement a reusable **custom hook or helper function** to cleanly solve this across your application, or are you trying to fix a **specific asynchronous feature** right now?
+
+- [link](https://belitsoft.com/what-do-front-end-frameworks-do)\
+  Why use Front-end Frameworks\
+  Dec 14, 2022 — Front-end frameworks provide reactive data binding, which allows the developer to specify how the UI should change in response to ...\
+  \
+  \
+  Belitsoft
+- [link](https://codingcops.com/reactjs-vs-plain-javascript/)\
+  ReactJS VS Plain JavaScript: Ultimate Guide on their Differences\
+  Jun 11, 2024 — Updates to the user interface in plain JavaScript require manual interventions. Developers must specify what changes need to be ma...\
+  \
+  \
+  CodingCops
+- [link](https://medium.com/@mwandanam/understanding-race-conditions-in-javascript-365f19991a11)\
+  Understanding Race Conditions in JavaScript | by Wandana Maddumage\
+  Apr 27, 2025 — Understanding Race Conditions in JavaScript When you start working with asynchronous code — like fetching data from a server or ha...\
+  \
+  \
+  Medium
+
+Show all
+
+## You said: do big tech swes often do these if they dont want opinionated deps
+
+Yes, Senior and Staff Software Engineers at Big Tech companies (like Google, Meta, and Apple) frequently write these custom race-condition handlers themselves when they want to avoid unopinionated dependencies.
+
+In Big Tech engineering, adding a third-party dependency is highly discouraged due to **security risks (supply chain attacks), performance overhead (bundle size), and long-term maintenance costs.** Instead, they lean on raw web standards.
+
+***
+
+### The Big Tech Approach: Custom Primitives
+
+Instead of rewriting raw `AbortController` boilerplate inside every individual component or file, Big Tech SWEs create internal, reusable utility patterns.
+
+Here are the two most common ways they implement this without external libraries.
+
+### Pattern 1: The "Take Latest" Wrapper (Utility Function)
+
+For Vanilla JS or simple frontend architectures, engineers will create a wrapper function that automatically cancels the previous execution of an asynchronous function whenever it is called again.
+
+javascript
+
+```
+// A reusable utility written once in a shared internal codebase
+function takeLatest(asyncFn) {
+  let controller = null;
+
+  return function (...args) {
+    if (controller) {
+      controller.abort(); // Cancel the previous execution
+    }
+    controller = new AbortController();
+
+    // Pass the signal to the underlying async function
+    return asyncFn(...args, controller.signal);
+  };
+}
+
+// --- How a Big Tech SWE uses it in application code ---
+const fetchSearchData = async (query, signal) => {
+  const res = await fetch(`/api/search?q=${query}`, { signal });
+  return res.json();
+};
+
+// This wrapper is now completely immune to race conditions
+const safeSearch = takeLatest(fetchSearchData);
+```
+
+Use code with caution.
+
+### Pattern 2: Custom React Hooks
+
+If working within a React codebase, writing `useEffect` cleanup boilerplate everywhere is considered bad practice. Instead, engineers wrap the logic into an internal custom hook that automatically manages the cancellation token under the hood.
+
+javascript
+
+```
+import { useEffect, useRef } from 'react';
+
+// Custom lightweight hook built natively
+export function useLatestAsync() {
+  const abortControllerRef = useRef(null);
+
+  useEffect(() => {
+    // Cleanup on component unmount
+    return () => abortControllerRef.current?.abort();
+  }, []);
+
+  const execute = async (asyncCallback) => {
+    // 1. Cancel previous pending execution of this hook instance
+    abortControllerRef.current?.abort();
+    abortControllerRef.current = new AbortController();
+
+    try {
+      return await asyncCallback(abortControllerRef.current.signal);
+    } catch (error) {
+      if (error.name === 'AbortError') {
+        // Silently swallow abort errors since they are intentional
+        return new Promise(() => {});
+      }
+      throw error;
+    }
+  };
+
+  return execute;
+}
+```
+
+Use code with caution.
+
+***
+
+### Why Big Tech Prefers This Over Third-Party Libraries
+
+- **Bundle Size Control:** A library like React Query or RxJS (`switchMap`) adds kilobytes of JavaScript that must be downloaded by billions of users, often over slow mobile networks. A custom `AbortController` utility adds practically zero bytes.
+- **Strict Security Audits:** Big Tech infrastructure requires extensive legal and security review for every package in `package.json`. Writing 15 lines of raw JavaScript avoids this entire bureaucracy.
+- **Predictable Upgrades:** When a framework (like React or Svelte) updates its major version, third-party libraries often break, blocking the engineering team from upgrading. Native utilities never break during framework upgrades. \[[1](https://medium.com/@malwarejoe/smashing-the-modern-web-tech-stack-part-1-the-evolving-threat-landscape-in-2022-and-dom-based-324696684239)]
+
+Are you looking to **design a clean utility** like this for your own codebase, or are you preparing for a **system design/frontend architecture interview** where this pattern might come up?
+
+- [link](https://medium.com/@malwarejoe/smashing-the-modern-web-tech-stack-part-1-the-evolving-threat-landscape-in-2022-and-dom-based-324696684239)\
+  Smashing the Modern Web Tech Stack — Part 1: The Evolving Threat Landscape in 2022 and DOM-based…\
+  Apr 21, 2022 — While when React ( React framework ) is being used, this is what it looks like.\
+  \
+  \
+  Medium
+
+## You said: does it mean a simple dep free approach might not be optimal
+
+Exactly. A simple, dependency-free approach is a double-edged sword. While it keeps your bundle size small and avoids third-party risks, rolling your own solution can quickly become sub-optimal as your web application grows.
+
+What starts as a simple 10-line `AbortController` wrapper often spirals into a complex, buggy recreation of an existing library once you encounter real-world edge cases.
+
+***
+
+### Where the "Simple" Approach Falls Short
+
+### 1. The Cache Invalidation Nightmare
+
+A simple `AbortController` or boolean flag handles **cancellation**, but it does not handle **caching**.
+
+- **The Problem:** If a user clicks "Tab A", then "Tab B", and immediately back to "Tab A", a simple approach cancels the first request and forces a brand-new network request for Tab A.
+- **The Library Advantage:** Libraries like React Query or Svelte Query cache the data from Tab A. They instantly show the cached data to the user while silently fetching updates in the background (Stale-While-Revalidate). Doing this dependency-free requires writing a massive, bug-prone custom cache system.
+
+### 2. Deduplication of Identical Requests
+
+- **The Problem:** Imagine three different UI components on the same page all need the current user's profile data at startup. A simple approach will fire three separate network requests to your API.
+- **The Library Advantage:** Smart libraries see three identical requests happening at the exact same millisecond, deduplicate them, send **one** request to the server, and distribute the single response to all three components.
+
+### 3. Focus Refetching and Network Recovery
+
+Real-world apps need to handle shaky user connections.
+
+- **The Problem:** If a user loses Wi-Fi for 5 seconds, a simple fetch script just fails and leaves a broken UI or an error message.
+- **The Library Advantage:** Libraries automatically listen to browser events (like the user regaining internet connection or refocusing the browser tab) and gracefully re-try the failed requests in the background.
+
+### 4. Memory Leaks
+
+- **The Problem:** If you handle requests via global variables or complex React `useRef` setups, it is easy to accidentally keep references to large JSON objects in memory long after the user has closed that page or component.
+
+***
+
+### The Trade-off Matrix
+
+| Feature              | Simple Native Approach (`AbortController`)         | Specialized Library (React/Svelte Query)          |
+| -------------------- | -------------------------------------------------- | ------------------------------------------------- |
+| **Bundle Size**      | **Optimal** (0 KB added)                           | **Sub-optimal** (+5KB to 15KB)                    |
+| **Race Conditions**  | **Optimal** (Fully fixed)                          | **Optimal** (Fully fixed)                         |
+| **Offline Handling** | **Sub-optimal** (Must write manual retry loops)    | **Optimal** (Built-in retry & recovery)           |
+| **UI UX Experience** | **Sub-optimal** (Constant loading spinners)        | **Optimal** (Instant loading from cache)          |
+| **Dev Velocity**     | **Sub-optimal** (Bespoke code for every edge case) | **Optimal** (One line of code handles everything) |
+
+***
+
+### When to Go Dependency-Free vs. Buy a Library
+
+- **Go Dependency-Free If:** You are building a lightweight website, a critical micro-frontend embedded on a third-party site (where bundle size is strictly capped), or a highly specific feature (like _only_ a live-search bar) where caching and retries aren't needed.
+- **Use a Library If:** You are building a complex dashboard, an e-commerce platform, or an app with deeply nested components that share data. The engineering time saved and the vastly superior user experience heavily outweigh the minor cost of the dependency.
+
+Are you evaluating this for a **new project** you are architecting, or are you trying to **refactor an existing application** that is suffering from loading delays or async bugs? Tell me about your app's scale and I can give you a recommendation!
+
+## You said: does it mean you have to predict and review carefully even if it's simple obvious and looks fine
+
+Yes. <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">You must predict and review <strong>every single asynchronous operation</strong> carefully, no matter how simple, obvious, or clean the code looks on the surface.</mark>
+
+In asynchronous programming, "looks fine" is highly deceptive. Code that looks perfectly logical during a code review can easily break under real-world conditions.
+
+***
+
+### The Optical Illusion of "Simple" Code
+
+Consider this seemingly flawless, hyper-obvious chunk of code:
+
+javascript
+
+```
+// ❌ LOOKS PERFECTLY FINE, BUT HAS A RACE CONDITION
+async function handleTabChange(tabId) {
+  showLoadingSpinner();
+
+  const data = await fetch(`/api/tabs/${tabId}`).then(r => r.json());
+
+  renderContent(data);
+  hideLoadingSpinner();
+}
+```
+
+Use code with caution.
+
+**Why it looks fine:** It reads sequentially from top to bottom. It shows a spinner, fetches data, renders it, and hides the spinner.
+
+**Why it fails:** If a user clicks Tab A, and immediately clicks Tab B, two instances of this function run concurrently. If Tab A's network request takes 2.0 seconds and Tab B's takes 0.5 seconds, the user will see Tab B's content briefly, only for it to be overwritten by Tab A's old data a second later. The spinner will also hide prematurely.
+
+***
+
+### Why Async Blindspots Happen
+
+### 1. The "Happy Path" Testing Bias
+
+When developers test their own code locally, they test the "happy path." They click a button, wait for it to load, and click the next thing. Because local development servers have zero network latency (0ms response times), race conditions are physically impossible to trigger during standard manual testing. \[[1](https://www.computerenhance.com/p/performance-excuses-debunked/comments)]
+
+### 2. Network Instability is Unpredictable
+
+In production, your users are on spotty 4G networks, switching between Wi-Fi and cell towers, or riding in subways. Request #1 might get stuck in a queue for 3 seconds, while Request #2 speeds through in 100 milliseconds.
+
+### 3. Human Behavior is Chaotic
+
+Users double-click buttons out of impatience, rapidly toggle filters back and forth, or type furiously into input fields. If your code assumes a user will politely wait for one request to finish before triggering another, it will fail.
+
+***
+
+### The "Async Code Review" Checklist
+
+To prevent these bugs, Senior Engineers train themselves to ask three specific questions whenever they see the `async` or `await` keywords during code reviews:
+
+- **The Multi-Trigger Question:** _"What happens if the user triggers this action three times in rapid succession?"_
+- **The Interruption Question:** _"What happens if the user navigates away from this page or closes this component while this network request is still in mid-air?"_
+- **The Out-of-Order Question:** _"Does the correctness of my application depend on Request A finishing before Request B?"_
+
+If you cannot confidently answer those questions, the code needs an explicit guard mechanism (like an `AbortController` or a boolean flag), even if it adds a few lines of boilerplate.
+
+Are you **reviewing someone else's pull request** right now where you suspect a race condition, or are you **setting up coding standards** for your team to avoid these blindspots?
+
+- [link](https://www.computerenhance.com/p/performance-excuses-debunked/comments)\
+  Comments - Performance Excuses Debunked - by Casey Muratori\
+  Apr 26, 2023 — Every time I click a button, create something, hit next or click the next page I have to wait for the page to load, sometimes it i...\
+  \
+  \
+  Computer, Enhance! | Casey Muratori
+
+## You said: does it mean you have to predict and review carefully even if it's simple obvious and looks fine, i mean in general not just async fetching
+
+Yes. In software engineering, you must predict and review code carefully **in general, across all paradigms**, even when it is simple, obvious, and looks completely fine.
+
+The most dangerous bugs in software rarely come from overly complex code. They come from simple, readable lines where the developer made a logical assumption that does not hold true under stress, edge cases, or concurrent execution.
+
+Here is why "obvious" code fails in general programming, outside of asynchronous network requests.
+
+***
+
+### 1. State Mutation & Reference Sharing (The Object Illusion)
+
+In languages like JavaScript, Python, or Java, objects and arrays are passed by reference, not by value. This leads to hidden side effects in seemingly innocent functions.
+
+javascript
+
+```
+// ❌ LOOKS FINE: A simple function to apply a discount to a product
+function applyDiscount(product) {
+  product.price = product.price * 0.9;
+  return product;
+}
+
+// 💥 THE BUG: This mutates the original object globally.
+// If this product is displayed in a cart, a sidebar, and a checkout page,
+// all of them just had their price changed permanently.
+```
+
+Use code with caution.
+
+**The Lesson:** The code reads cleanly, but because it mutates a shared reference, it creates unintended ripples across the entire application state.
+
+***
+
+### 2. Client-Side Clock Dependency (The Local Time Trap)
+
+Relying on the user's local machine environment for business logic is a classic blindspot.
+
+javascript
+
+```
+// ❌ LOOKS FINE: Check if a flash sale has expired
+const isSaleActive = new Date() < new Date("2026-12-31T23:59:59");
+```
+
+Use code with caution.
+
+**The Bug:** `new Date()` reads the time directly from the user's device clock. If a user manually changes their laptop's system time back to 2020, they can bypass your expiration check entirely.\
+**The Lesson:** Never assume the execution environment is accurate, honest, or under your control.
+
+***
+
+### 3. String Manipulation & Localization (The Character Blindspot)
+
+Simple string methods assume text always behaves like standard English ASCII characters.
+
+javascript
+
+```
+// ❌ LOOKS FINE: Capitalize the first letter of a username
+const formattedName = username.charAt(0).toUpperCase() + username.slice(1);
+```
+
+Use code with caution.
+
+**The Bug:** This completely breaks for many international languages. For example, some languages use composite characters, or emojis (which take up multiple character slots in memory). Truncating or slicing raw strings can slice a character or emoji in half, producing corrupted data or a crash.\
+**The Lesson:** Obvious text manipulation often fails when exposed to global users.
+
+***
+
+### 4. Mathematical Precision (The Floating-Point Glitch) \[[1](https://javascript.plainenglish.io/9-javascript-errors-so-common-they-should-be-illegal-5fa45fc4bd5f)]
+
+Simple arithmetic using decimals does not behave like school math on a computer.
+
+javascript
+
+```
+// ❌ LOOKS FINE: Calculate total cost
+let price = 0.1;
+let tax = 0.2;
+let total = price + tax; // Looks like 0.3, right?
+
+if (total === 0.3) { ... } // 💥 THIS IS FALSE!
+```
+
+Use code with caution.
+
+**The Bug:** Computers use binary floating-point math. `0.1 + 0.2` actually evaluates to `0.30000000000000004`. The conditional check fails entirely.\
+**The Lesson:** Raw decimal math should never be trusted for exact comparisons, especially with currency. \[[1](https://workik.com/top-frontend-interview-question-and-answers-using-ai)]
+
+***
+
+### Why Code Reviews Must Be Skeptical
+
+Senior Engineers do not look at code to see if it _works_. They look at code to see **how it can be broken**. When reviewing any code, even a simple one-liner, you must explicitly look for:
+
+- **Assumptions about Data:** Does this code assume the input is always a valid string/number/object? What if it is `null`, `undefined`, or an empty array?
+- **Assumptions about Environment:** Does this code assume a stable internet connection, a correct system clock, or a massive amount of system memory?
+- **Assumptions about Scale:** Will this simple array loop still run fast if the user has 10,000 items instead of 5?
+
+Are you trying to **establish a better code review process** for your team, or did a specific "simple" bug just slip through into production and cause an issue?
+
+- [link](https://javascript.plainenglish.io/9-javascript-errors-so-common-they-should-be-illegal-5fa45fc4bd5f)\
+  9 JavaScript Errors So Common, They Should Be Illegal\
+  Aug 6, 2025 — 9. Floating Point Precision Lies JavaScript math has quirks. 0.1 + 0.2 ! == 0.3 . This seems minor until your automation script is...\
+  \
+  \
+  JavaScript in Plain English
+- [link](https://workik.com/top-frontend-interview-question-and-answers-using-ai)\
+  AI-Powered Prep For Frontend Developer Interviews | Top Question & Answer\
+  Explanation: JavaScript uses floating-point arithmetic for numbers, which can lead to precision errors. The sum of 0.1 and 0.2 is ...\
+  \
+  \
+  Workik
+
+## You said: do i have to write scalable and future proof code
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">No, you do not always have to write scalable and future-proof code.</span></strong></mark> In fact, trying to make everything perfectly scalable and future-proof from day one is one of the most common mistakes developers make. It is a trap known as **Premature Optimization**. \[[1](https://uibakery.io/blog/what-to-choose-for-rad), [2](https://aws.plainenglish.io/why-i-choose-clarity-over-speed-my-battle-for-maintainable-code-in-the-ai-era-3d0b45a36be3)]
+
+Writing highly scalable code takes more time, increases complexity, and introduces layers of abstraction that you might never actually need. \[[1](https://thecoderegistry.com/how-to-measure-code-quality-8-metrics-every-organization-should-track/), [2](https://www.reddit.com/r/programming/comments/18d2rfk/you%5Fare%5Fnever%5Ftaught%5Fhow%5Fto%5Fbuild%5Fquality%5Fsoftware/), [3](https://caffeinatedcoder.medium.com/why-twitters-move-to-scala-was-a-dead-end-6cfc8d7bc367), [4](https://hackernoon.com/building-a-scalable-architecture-with-mern-stack), [5](https://www.linkedin.com/posts/sbellamkonda%5Fsoftwareengineering-technicaldebt-engineeringleadership-activity-7384732749233954816-XyRg)]
+
+To determine when you should build for the future and when you should write quick, disposable code, you can use the following framework. \[[1](https://news.ycombinator.com/item?id=23121192)]
+
+***
+
+### The Reality: You Cannot Predict the Future
+
+The biggest flaw with "future-proofing" is that **you do not know what the future looks like.**\
+If you spend two weeks building a highly scalable, microservice-ready architecture for a feature, and three months later the product direction changes and the feature is deleted, you have completely wasted that time. Senior engineers often say: _"Write code that is easy to replace, not code that is built to last forever."_ \[[1](https://medium.com/@swatimishra2824/9-clean-code-principles-every-swift-developer-should-follow-6594a8960a68), [2](https://dev.to/adamthedeveloper/write-code-thats-easy-to-delete-the-art-of-impermanent-software-19l1)]
+
+***
+
+### When to Write "Quick and Simple" Code (Not Scalable)
+
+You should deliberately write simple, non-scalable code when: \[[1](https://www.reddit.com/r/gamedev/comments/16eygr6/at%5Fwhat%5Fpoint%5Fa%5Fsystem%5Fis%5Fworth%5Fthe%5Feffort%5Fof/), [2](https://en.wikipedia.org/wiki/Coding%5Fbest%5Fpractices)]
+
+- **Building a Prototype or MVP (Minimum Viable Product):** Your goal is to prove that the feature works or that users want it. Speed to market is more important than architecture. \[[1](https://www.miyagami.com/insights/lovable-not-maintainable-hidden-risks-building-without-code), [2](https://www.okoone.com/spark/product-design-research/why-minimum-viable-architecture-matters-more-than-you-think/), [3](https://www.spec-india.com/blog/mvp-development-strategies)]
+- **Internal Tools:** If a script is only going to be run once a week by three people on your team, it does not need to scale to millions of concurrent users.
+- **Tight Deadlines:** When survival of the business or project depends on shipping _now_, hack it together and pay down the technical debt later. \[[1](https://www.trevorlasn.com/blog/when-should-you-actually-worry-about-tech-debt), [2](https://navanathjadhav.medium.com/from-junior-to-senior-developer-skills-nobody-tells-you-about-01b5c93605b6)]
+- **Low-Traffic Features:** If a page is rarely visited, an unoptimized database query or a heavy UI component won't hurt anything.
+
+***
+
+### When You _Must_ Write Scalable and Future-Proof Code
+
+You must invest the extra time into scalability when:
+
+- **The Core Architecture:** Database schemas and core data models are incredibly hard to change later. If you get these wrong, the foundation of your app is broken. \[[1](https://medium.com/@srinathperera/good-architecture-makes-code-easy-let-code-be-your-guide-to-good-architecture-db1c4286ebe2), [2](https://news.ycombinator.com/item?id=44557115)]
+- **High-Frequency Code paths:** Code that runs hundreds of times per second (like a login endpoint, a landing page, or a search index) must be highly optimized. \[[1](https://usman-ahmad-tech-talks.medium.com/advanced-techniques-in-code-optimization-strategies-for-high-performance-software-11b3b513422a)]
+- **Security and Compliance:** Security protocols, encryption, and data privacy handlers must be future-proof from the start. You cannot patch security architecture easily later.
+
+***
+
+### The Rules of Thumb for Pragmatic Engineering
+
+### 1. YAGNI (You Aren't Gonna Need It)
+
+Do not build features, abstractions, or scaling infrastructure based on a hunch that you _might_ need it next year. Only build what you need to solve today's concrete problem. \[[1](https://blog.lolcorp.co.uk/2025/11/16/9-essential-software-development-best-practices-for-2025-build-better-software-faster/), [2](https://medium.com/@ignatovich.dm/how-to-avoid-overengineering-in-frontend-development-a8ef2a501b44)]
+
+### 2. The Rule of Three
+
+- The **first time** you write something, just get it to work (hack it).
+- The **second time** you do something similar, copy-paste it and wince a little.
+- The **third time** you do it, stop and extract it into a scalable, reusable abstraction. \[[1](https://www.reddit.com/r/learnprogramming/comments/1lipzrz/modularization%5Ffeels%5Fso%5Fhard/), [2](https://andyfry.co/code-review-how-to-brevity-repetition), [3](https://blog.ndepend.com/code-reuse-not-good-goal/)]
+
+### 3. Write "Changeable" Code over "Future-Proof" Code
+
+Instead of trying to guess how your code will need to change in two years, just write **clean, modular code today**. Keep your functions small, avoid global variables, and don't tightly couple your components. If your code is clean and simple, it will be naturally easy to scale or completely rewrite when the time comes. \[[1](https://dev.to/danieldevi/a-simple-guide-to-building-software-projects-from-start-to-finish-2nb1), [2](https://dev.to/yatendra2001/7-rules-to-write-highly-scalable-code-with-practical-examples-573e), [3](https://allianzetechnologies.com/blog/essential-tips-to-avoid-programming-errors), [4](https://www.linkedin.com/posts/tianqi-matt-y-8b180514a%5Fai-claudecode-mcp-activity-7345579497104056320-v5QU)]
+
+Are you working on a **personal project**, a **startup MVP**, or a **large enterprise system**? Tell me what you are building, and I can tell you exactly where you should cut corners and where you should over-engineer!
+
+- [link](https://uibakery.io/blog/what-to-choose-for-rad)\
+  What to Choose for Rapid Application Development: Low-code or No-code?\
+  Dec 21, 2024 — Long-term goals: Short-term projects may benefit from no-code. If scalability and flexibility are priorities, low-code ensures fut...\
+  \
+  \
+  UI Bakery
+- [link](https://aws.plainenglish.io/why-i-choose-clarity-over-speed-my-battle-for-maintainable-code-in-the-ai-era-3d0b45a36be3)\
+  Why I Choose Clarity Over Speed: My Battle for Maintainable Code in the AI Era\
+  Sep 10, 2025 — And then there's the ever-present danger of “premature optimization.” This is the trap of building a super-scalable system for a h...\
+  \
+  \
+  AWS in Plain English
+- [link](https://thecoderegistry.com/how-to-measure-code-quality-8-metrics-every-organization-should-track/)\
+  How to Measure Code Quality: 8 Metrics Every Organization Should Track\
+  Jan 13, 2025 — 7. Increasing Code Complexity Score Maintainability: Highly complex code is more error-prone and requires specialized knowledge. S...\
+  \
+  \
+  The Code Registry
+
+Show all
+
+## You said: do all code have to be robust
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">No, not all code has to be robust.</span></strong></mark> Just like scalability, robustness is a spectrum. Making code truly robust—meaning it can gracefully handle corrupt data, unexpected user inputs, network drops, and extreme edge cases without crashing—requires a massive investment of time, testing, and boilerplate code. \[[1](https://threedots.tech/episode/when-to-write-low-quality-code/), [2](https://realpython.com/python-code-quality/), [3](https://medium.com/@reetesh043/java-robustness-building-strong-and-resilient-applications-d95e4776bf11), [4](https://www.bbc.co.uk/bitesize/guides/z94ymsg/revision/6), [5](https://www.ranorex.com/blog/code-coverage-test-coverage/)]
+
+If you try to make every single line of code in a system 100% robust, you will move too slowly, miss deadlines, and over-engineer simple tasks. \[[1](https://medium.com/@oxm/6-programming-habits-that-are-killing-your-productivity-and-how-to-fix-them-58f7c54f3d55), [2](https://www.reddit.com/r/ExperiencedDevs/comments/ixajhz/if%5Funit%5Ftests%5Fare%5Fexpected%5Fpart%5Fof%5Fsoftware/)]
+
+***
+
+### The Cost of Robustness
+
+To make code robust, you cannot just write the core logic. You have to write:
+
+- Deep input validation (checking for `null`, `undefined`, empty strings, wrong data types).
+- Complex `try/catch` blocks and error-recovery logic.
+- Extensive unit, integration, and end-to-end tests.
+- Fallback user interfaces (like error boundaries and offline alerts). \[[1](https://www.ranger.net/post/common-bugs-ai-generated-code-fixes), [2](https://www.kusari.dev/learning-center/secure-coding-practices), [3](https://medium.com/@sarraghribi.eng/a-systematic-guide-to-reviewing-python-code-for-projects-best-practices-and-tips-03d09327c79b), [4](https://www.thescrummaster.co.uk/book-summaries/clean-code-book-summary/), [5](https://www.parasoft.com/blog/what-is-robustness-testing/)]
+
+If a piece of code is not business-critical, this extra effort is a waste of resources. \[[1](https://news.ycombinator.com/item?id=19190472)]
+
+***
+
+### When Code _Should Not_ Be Robust (Deliberate Fragility)
+
+There are many scenarios where it is perfectly acceptable—and often better—for code to be fragile or simply crash when something goes wrong: \[[1](https://www.reddit.com/r/programming/comments/1bi10k/preconditions%5Fshould%5Fbe%5Fchecked%5Fexplicitly/)]
+
+- **Internal Scripts and Automation:** If you write a Python script to migrate some local files once, you don't need error handling. If it hits an unexpected file format, letting the script crash with a raw error message is fine. You can just look at the terminal, fix the file, and re-run it.
+- **Early-Stage Prototypes:** When validating a product idea, you want to know if users even care about the feature. If a minor edge case causes a crash for 1% of prototype users, that is usually an acceptable risk for the sake of speed. \[[1](https://www.linkedin.com/pulse/testing-context-dependent-learn-test-right-way-frank-kweku-acquah-08yte)]
+- **Internal Admin Tools:** Tools used only by your internal team do not need the bulletproof robustness of customer-facing apps. If an admin enters bad data and gets a blank screen, they can just refresh the page.
+- **The "Crash-Early" Principle (Fail-Fast):** In backend development, it is sometimes safer to let a process crash immediately if it encounters an invalid state, rather than attempting to recover and risk writing corrupted data to a database. \[[1](https://codingdash.com/post/maintainable-code-good-and-bad/), [2](https://news.ycombinator.com/item?id=36708759)]
+
+***
+
+### When Code _Must_ Be Highly Robust
+
+You must invest in maximum robustness when the consequences of a failure are severe: \[[1](https://practicingruby.com/articles/coding-in-the-danger-zone)]
+
+- **Financial Transactions:** Code handling payments, checkout carts, or ledger balances must never enter an undefined state.
+- **Data Ingestion and Storage:** Code that writes to your primary database must be highly robust to prevent data corruption.
+- **Core Infrastructure:** Authentication systems (login/signup), API gateways, and routing systems must be bulletproof, because if they go down, the entire application dies. \[[1](https://aws.plainenglish.io/aws-testing-roadmap-2025-beginner-to-expert-guide-for-test-automation-engineers-7dc79d7a74df), [2](https://news.ycombinator.com/item?id=28337112)]
+- **High-Volume Public UI:** Features used by millions of public users must handle chaotic behavior gracefully to protect the company's reputation and avoid overwhelming customer support.
+
+***
+
+### The Pragmatic Balance: Where to Focus
+
+Instead of trying to make _all_ code robust, focus your energy on the **boundaries of your system**:
+
+1. **Robust at the Gates:** Write strict validation where untrusted data enters your app (e.g., public API endpoints or user form inputs).
+2. **Simple on the Inside:** Once data is validated at the boundary, you can assume it is correct inside your core application logic. This allows you to write simpler, cleaner, and less defensive code in the middle layers. \[[1](https://www.troyhunt.com/owasp-top-10-for-net-developers-part-1/), [2](https://www.reddit.com/r/programming/comments/7xyt5d/overly%5Fdefensive%5Fprogramming/)]
+
+Are you trying to decide how much error handling to add to a **current feature**, or are you debating code quality standards with a **team member**? Tell me what the code does, and we can map out exactly how robust it needs to be!
+
+- [link](https://threedots.tech/episode/when-to-write-low-quality-code/)\
+  When it’s worth to write low-quality code\
+  Apr 3, 2025 — And again, it's important to mention that not all code in your application needs to be bad. Not all code in your application shoul...\
+  \
+  \
+  Three Dots Labs
+- [link](https://realpython.com/python-code-quality/)\
+  Python Code Quality: Best Practices and Tools – Real Python\
+  Mar 24, 2025 — Robust code: Minimizes crashes and produces fewer edge-case issues.\
+  \
+  \
+  Real Python
+- [link](https://medium.com/@reetesh043/java-robustness-building-strong-and-resilient-applications-d95e4776bf11)\
+  Java Robustness: Building Strong and Resilient Applications | by Reetesh Kumar\
+  Feb 22, 2024 — What is Robustness in Software? Fail Gracefully: When something goes wrong, it should handle the error gracefully without crashing...\
+  \
+  \
+  Medium
+
+Show all
+
+# do google apps have bugs
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>Yes, Google apps absolutely have bugs.</strong></mark> Like all software companies, Google writes millions of lines of code, and it is impossible to create software of that scale without introducing errors. \[[1](https://www.quora.com/Do-bugs-exist-even-in-software-released-by-major-corporations-like-Microsoft-and-Google), [2](https://www.quora.com/How-can-a-big-company-like-Google-have-bugs-in-their-products), [3](https://www.shakebugs.com/blog/bug-tracking-software/)]
+
+### Why Google Apps Have Bugs
+
+- **Massive Scale**: Google apps like Gmail, Maps, and YouTube serve billions of users across vastly different devices.
+- **Frequent Updates**: Google constantly pushes out new features, UI redesigns, and background patches, which can accidentally break existing code.
+- **Device Fragmentation**: For Android apps, Google must optimize code for thousands of different phone models with varying screen sizes, processors, and manufacturer skins. \[[1](https://www.quora.com/Are-Android-apps-generally-buggier-than-the-same-apps-on-iOS-or-is-it-just-me), [2](https://www.youtube.com/watch?v=n1kmmdRAM%5FQ), [3](https://www.pcloudy.com/blogs/why-bugs-fail-on-devices/), [4](https://www.quora.com/How-can-a-big-company-like-Google-have-bugs-in-their-products), [5](https://www.appsadmins.com/blog/google-apps-known-issues-for-users)]
+
+### Recent Examples of Notable Google Bugs
+
+- **Pixel Bootloops (2026)**: A March update caused some flagship Pixel phones to get stuck on the "G" logo startup screen.
+- **Play Store Crashes (2025)**: A widespread server-side bug caused the Google Play Store to immediately crash whenever a user tapped the search bar.
+- **App Stability & UI Glitches**: Users frequently document issues like non-clickable links in Gmail, duplicate file uploads in Google Drive, and misaligned interface elements in Google Keep. \[[1](https://www.reddit.com/r/Android/comments/1nix23o/the%5Fui%5Fof%5Fgoogles%5Fandroid%5Fapps%5Fis%5Fridiculous/), [2](https://www.phonearena.com/news/pixel-bootloop-problem-solution%5Fid181022), [3](https://www.phonearena.com/news/a-new-android-bug-is-making-it-impossible-to-install-new-apps.-are-you-affected%5Fid176703), [4](https://www.reddit.com/r/google/comments/1to741n/google%5Fapps%5Ffull%5Fof%5Fserious%5Fbugs%5Flately/)]
+
+### How Google Handles Bugs
+
+Google employs teams of engineers and automated testing frameworks to find issues before they reach the public. When bugs slip through, they use a structured tracking system to prioritize and fix them based on how severely they impact the user. Severe bugs usually receive an emergency patch within a few days, while minor visual glitches might take weeks or months to resolve. \[[1](https://www.quora.com/How-often-are-serious-bugs-committed-to-Piper-at-Google-which-end-up-disrupting-the-daily-work-of-a-large-number-of-Google-developers), [2](https://source.android.com/docs/setup/contribute/report-bugs), [3](https://www.youtube.com/watch?v=n1kmmdRAM%5FQ)]
+
+If you are experiencing a specific issue with a Google app, let me know **which app** you are using and **what device** you are on so I can provide troubleshooting steps or known workarounds.
+
+- [link](https://www.reddit.com/r/Android/comments/1nix23o/the%5Fui%5Fof%5Fgoogles%5Fandroid%5Fapps%5Fis%5Fridiculous/)\
+  The UI of Google's Android apps is ridiculous - Reddit\
+  Sep 16, 2025 — I noticed a few UI bugs within the Keep app lately: \* Long-press on a note and the black top bar doesn't fully extend to the edge ...\
+  Reddit·r/Android
+- [link](https://www.reddit.com/r/google/comments/1to741n/google%5Fapps%5Ffull%5Fof%5Fserious%5Fbugs%5Flately/)\
+  Google apps full of serious bugs lately - Reddit\
+  May 26, 2026 — Anyone notice that since the last iteration of google apps they all have intense levels of bugs? Examples ive noticed so far: •Gma...\
+  Reddit·r/google
+- [link](https://www.quora.com/How-often-are-serious-bugs-committed-to-Piper-at-Google-which-end-up-disrupting-the-daily-work-of-a-large-number-of-Google-developers)\
+  How often are serious bugs committed to Piper at Google ...\
+  Jun 29, 2016 — It needs to be first submitted to a special repo, vetted thoroughly and then released to the trunk as part of a components release...\
+  Quora
+
+Show all
+
+## You said: do they introduce ui glitches
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">Yes, Google frequently introduces UI glitches during updates.</span></strong></mark> These visual bugs occur when app interfaces do not render correctly on your screen. \[[1](https://www.reddit.com/r/GooglePixel/comments/s3dz69/why%5Fis%5Fandroid%5F12%5Fso%5Fbuggy%5Fits%5Fcomplicated/), [2](https://birdeatsbug.com/blog/what-are-visual-bugs)]
+
+### Common Types of Google UI Glitches
+
+- **Overlapping Text**: Words, buttons, or labels stack on top of each other, making them unreadable.
+- **Misaligned Layouts**: Icons and menus shift out of place, leaving empty gaps or cutting off content.
+- **Dark Mode Issues**: Backgrounds change colors, but text stays dark, making the text completely invisible.
+- **Frozen Animations**: Loading circles or transition effects get stuck halfway through an action.
+- **Invisible Buttons**: Functional touch targets remain active but become completely transparent. \[[1](https://www.testdevlab.com/blog/mobile-app-bugs), [2](https://testmatick.com/glossary/ui-bug/), [3](https://kobiton.com/mobile-testing-guide/mobile-testing/visual-testing-detect-ui-bugs-mobile-apps/), [4](https://www.reddit.com/r/userexperience/comments/shu9c3/problematic%5Fux%5Fof%5Fthe%5Fnew%5Ftesla%5Fincar%5Fui/), [5](https://support.google.com/mail/thread/430804020/messages-when-being-opened-won-t-load-nor-display-in-full-issues-with-interface-and-views?hl=en\&gl=us)]
+
+### Why Visual Bugs Happen
+
+- **Dynamic Theming**: Android's "Material You" system changes app colors based on your wallpaper, which occasionally causes text-contrast bugs. \[[1](https://www.xda-developers.com/android-12-google-material-you-discussion/), [2](https://www.xda-developers.com/google-lens-becomes-the-latest-google-app-to-get-material-you-refresh/)]
+- **Screen Scaling**: Apps must stretch to fit thousands of different screen resolutions, aspect ratios, and foldable displays. \[[1](https://eduardocalzado.medium.com/android-16s-resizing-act-is-it-catching-up-to-ios-or-just-adding-developer-friction-3278c3d8f7c9)]
+- **Server-Side Tweaks**: Google often changes app layouts remotely (A/B testing) without pushing a full app store update, which can clash with older app data cached on your phone. \[[1](https://android.gadgethacks.com/news/your-android-file-manager-just-got-an-emotional-makeover-and-its-surprisingly-delightful/)]
+
+If you are dealing with a messed-up layout right now, tell me the **name of the app** and your **phone model** so I can find a specific fix.
+
+- [link](https://www.reddit.com/r/GooglePixel/comments/s3dz69/why%5Fis%5Fandroid%5F12%5Fso%5Fbuggy%5Fits%5Fcomplicated/)\
+  Why is Android 12 so buggy? It’s complicated : r/GooglePixel\
+  Jan 14, 2022 — Google's version of Android 12 is a massive change. They rushed it and ended up with many UI bugs. It will take a few months to po...\
+  \
+  \
+  Reddit
+- [link](https://birdeatsbug.com/blog/what-are-visual-bugs)\
+  What Are Visual Bugs and How to Test for UI Issues | Bug Tracking Blog\
+  Nov 13, 2025 — What Are Visual Bugs? Visual bugs are errors in an application's interface that affect how content is displayed without breaking f...\
+  \
+  \
+  Bird Eats Bug
+- [link](https://www.testdevlab.com/blog/mobile-app-bugs)\
+  Top 5 Mobile App Bugs: How to Avoid Them\
+  Feb 21, 2025 — UI/UX glitches include a variety pool of issues including overlapping UI elements, unresponsive buttons, and improper text wrappin...\
+  \
+  \
+  TestDevLab
+
+Show all
+
+## You said: do they introduce ui glitches on web
+
+**Yes, Google frequently introduces UI glitches on their desktop web applications.** While web apps do not suffer from the exact device fragmentation of Android, they have their own set of triggers like browser updates, browser extensions, and server-side code shifts. \[[1](https://birdeatsbug.com/blog/common-ui-bugs), [2](https://medium.com/@designstudiouiux/micro-interactions-in-web-app-ux-51ad5ec205ad)]
+
+### Common Google Web UI Glitches
+
+- **Blank Panels and Missing Elements**: Google Maps web users regularly experience bugs where the entire left-hand sidebar (like Saved Lists or Directions) goes completely blank, even though the data remains visible as pins on the map. \[[1](https://support.google.com/maps/thread/439028002/google-maps-desktop-ui-bug-report-saved-lists-missing?hl=en\&gl=us)]
+- **Stuck Text Fields**: When typing a location or changing directions on the Google Maps website, the text box can lock up or get "stuck" on a previous destination, ignoring mouse clicks on new locations. \[[1](https://support.google.com/maps/thread/314750050/new-ui-bug-in-maps-editing-directions?hl=en\&gl=us)]
+- **Overlapping CSS Layouts**: On the Google Search home page, minor styling bugs occasionally cause search autocomplete boxes to overlap input fields or cut off text. \[[1](https://birdeatsbug.com/blog/common-ui-bugs)]
+- **Broken Dark Mode Rendering**: When Google pushes background code updates, web interfaces for Gmail or Google Docs can experience color-inverting glitches, rendering text unreadable against the background. \[[1](https://www.reddit.com/r/ExperiencedDevs/comments/1tysnmi/is%5Fit%5Fjust%5Fme%5For%5Fis%5Fanyone%5Felse%5Fnoticing%5Fmore/)]
+- **Infinite Scroll Visual Loops**: In YouTube or Google Images, the page may visually stutter, flicker, or get trapped in an endless loading loop while trying to dynamically render new thumbnails.
+
+### Why Web UI Bugs Happen
+
+- **Cross-Browser Conflicts**: Google optimizes heavily for Chrome, but slight variations in how Apple Safari, Mozilla Firefox, or Microsoft Edge interpret CSS and JavaScript code can cause a layout to render incorrectly.
+- **Extension Interference**: Ad-blockers, password managers, and translation tools inject their own code directly into Google's web interfaces, which frequently clashes with Google’s underlying structure.
+- **Corrupted Browser Cache**: Web browsers store local versions of an app's files to load pages faster. If Google pushes a live code update but your browser keeps using an old, cached file, the mismatch causes severe visual breakage. \[[1](https://www.reddit.com/r/ExperiencedDevs/comments/1tysnmi/is%5Fit%5Fjust%5Fme%5For%5Fis%5Fanyone%5Felse%5Fnoticing%5Fmore/), [2](https://birdeatsbug.com/blog/common-ui-bugs), [3](https://support.google.com/maps/thread/439028002/google-maps-desktop-ui-bug-report-saved-lists-missing?hl=en\&gl=us), [4](https://www.testmuai.com/blog/10-ways-to-avoid-cross-browser-compatibility-issues/), [5](https://www.virtuosoqa.com/post/web-ui-testing)]
+
+If you are currently looking at a broken layout on your browser, tell me **which Google website** you are using and **your browser** (Chrome, Safari, Firefox) so I can help you clear the specific visual glitch.
+
+- [link](https://www.reddit.com/r/ExperiencedDevs/comments/1tysnmi/is%5Fit%5Fjust%5Fme%5For%5Fis%5Fanyone%5Felse%5Fnoticing%5Fmore/)\
+  Is it just me, or is anyone else noticing more bugs across the ...\
+  Jun 6, 2026 — Is it just me, or is anyone else noticing more bugs across the web and in software in general? AI/LLM. Just tried to login to Clou...\
+  Reddit·r/ExperiencedDevs
+- [link](https://birdeatsbug.com/blog/common-ui-bugs)\
+  Common UI Bugs in Web Applications and How to Fix Them\
+  Nov 13, 2025 — Even Google's homepage occasionally exhibits UI glitches in specific browser versions. For instance, overlapping search suggestion...\
+  Bird Eats Bug
+- [link](https://support.google.com/maps/thread/439028002/google-maps-desktop-ui-bug-report-saved-lists-missing?hl=en\&gl=us)\
+  Google Maps Desktop UI Bug Report: Saved Lists Missing\
+  Jun 4, 2026 — On Google Maps for desktop, the left-hand panel under Saved / Your Places appears completely blank—neither default lists (Favorite...\
+  Google Help
+
+Show all
+
+# . is there a real library called vanillajs
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>No, there is no real library or framework called "Vanilla JS"</strong></mark>. Instead, **"Vanilla JS" is a running industry joke** and a slang term used by web developers to refer to **plain, raw JavaScript** written without using any external libraries or frameworks (like React, Vue, or jQuery). \[[1](https://stackoverflow.com/questions/20435653/what-is-vanillajs), [2](https://www.reddit.com/r/javascript/comments/jtm24q/askjs%5Fwhat%5Fis%5Fvanilla%5Fjavascript/), [3](https://www.geeksforgeeks.org/javascript/what-is-vanilla-javascript/)]
+
+The term comes from the flavor analogy: "vanilla" ice cream represents the plain, standard option with no extra toppings or mix-ins. \[[1](https://www.quora.com/What-is-Vanilla-JavaScript-Is-it-different-from-regular-JavaScript), [2](https://ubiqum.com/en/vanilla-javascript-what-is-it/), [3](https://codepunkt.de/writing/what-exactly-is-vanilla-js/), [4](https://accreditly.io/articles/what-does-vanilla-mean-in-web-development)]
+
+### The Famous Parody Website
+
+The confusion usually comes from a famous satire website called [Vanilla JS](http://vanilla-js.com/). The website is a joke that highlights how powerful modern web browsers are without extra bloat. It sets up a humorous narrative: \[[1](https://www.reddit.com/r/webdev/comments/1hx943w/is%5Fthis%5Fthe%5Freal%5Fvanilla%5Fjavascript/), [2](http://vanilla-js.com/), [3](https://www.quora.com/What-is-Vanilla-JavaScript-Is-it-different-from-regular-JavaScript), [4](https://softwareengineering.stackexchange.com/questions/261164/is-vanilla-js-still-considered-a-library)]
+
+- **The Satire**: It markets "Vanilla JS" as a fast, lightweight, cross-platform framework used by massive companies like Netflix, Apple, and Google.
+- **The "Download"**: It includes a custom builder where you can check boxes for features like AJAX, Animations, and DOM routing.
+- **The Punchline**: When you click download, **the file size is 0 bytes**. It gives you a completely blank text file because you already have "Vanilla JS"—it is just the native engine built right into your browser. \[[1](https://softwareengineering.stackexchange.com/questions/261164/is-vanilla-js-still-considered-a-library), [2](https://www.reddit.com/r/webdev/comments/1hx943w/is%5Fthis%5Fthe%5Freal%5Fvanilla%5Fjavascript/), [3](http://vanilla-js.com/)]
+
+### Why Developers Say "Vanilla JS"
+
+Developers use the term seriously in discussions (e.g., "We built this application in vanilla JS") to specify that they are writing pure code using native MDN Web Docs Web APIs like `querySelector()` or `fetch()` rather than importing an NPM package. \[[1](https://www.reddit.com/r/webdev/comments/1hx943w/is%5Fthis%5Fthe%5Freal%5Fvanilla%5Fjavascript/), [2](https://softwareengineering.stackexchange.com/questions/261164/is-vanilla-js-still-considered-a-library), [3](https://www.asynclabs.co/blog/software-development/vanilla-javascript-vs-react-choosing-the-right-tool-for-web-development/), [4](https://medium.com/@zain0324/vanilla-js-vs-next-js-unraveling-the-better-choice-b48c6139e0c2)]
+
+If you are trying to learn web development, being told to **"learn Vanilla JS first"** means you should master the core fundamentals of the language itself before moving on to popular UI libraries. \[[1](https://snipcart.com/blog/learn-vanilla-javascript-before-using-js-frameworks), [2](https://www.reddit.com/r/javascript/comments/jtm24q/askjs%5Fwhat%5Fis%5Fvanilla%5Fjavascript/)]
+
+Are you currently working on a project and trying to decide whether to **write pure JavaScript** or **use a specific framework**? I can help you weigh the pros and cons based on what you are trying to build.
+
+- [link](https://stackoverflow.com/questions/20435653/what-is-vanillajs)\
+  javascript - What is VanillaJS? - Stack Overflow\
+  Dec 6, 2013 — :) The only reason why vanilla JS started coming back in 2016 is that most modern browsers are now much more standards-compliant t...\
+  Stack Overflow
+- [link](https://www.reddit.com/r/javascript/comments/jtm24q/askjs%5Fwhat%5Fis%5Fvanilla%5Fjavascript/)\
+  \[AskJS] What is vanilla Javascript? - Reddit\
+  Nov 13, 2020 — Vanilla JS as it is also referred is not a separate library or a framework. \* r/PinoyProgrammer. • 7mo ago. Using vanilla JS for f...\
+  Reddit·r/javascript
+- [link](https://www.reddit.com/r/webdev/comments/1hx943w/is%5Fthis%5Fthe%5Freal%5Fvanilla%5Fjavascript/)\
+  is this the real vanilla javascript? : r/webdev - Reddit\
+  Jan 9, 2025 — I'm aware this may be posted jokingly, but I'm going to answer as if it's a serious question because it's perfectly possible for p...\
+  Reddit·r/webdev
+
+Show all
+
+## You said: is there a popular library called that, for example, if i just write some framework and name like that
+
+No, there is **no popular or mainstream framework** named "Vanilla JS," because the joke is so universally known that naming a real framework "Vanilla JS" would confuse the entire web development community. \[[1](https://blog.webix.com/vanillajs-vs-framework-when-using-js-libraries/)]
+
+However, if you create a framework and name it something like that, you should know that developers have already created a few things inspired by this joke.
+
+### Existing Projects and Packages
+
+If you check package registries today, you will find a few small, niche projects using the name:
+
+- **NPM Packages**: There are actual packages published on NPM named `vanilla-js` or `vanillajs`. They are almost always blank packages, joke packages that do nothing, or tiny utility libraries created as personal learning projects. None of them are popular or used in production.
+- **Satirical GitHub Repos**: Dozens of developers have created repositories named "VanillaJS" containing just a blank file or a README that redirects to the joke website.
+
+### What Happens If You Name Your Framework That?
+
+If you build a new framework and name it "Vanilla JS" (or something very similar, like _Vanilla Framework_), you will run into a few specific challenges:
+
+- **Massive Confusion**: Developers will assume your project is a meme, a joke, or a trick, making it very hard to get people to take your tool seriously. \[[1](https://www.reddit.com/r/webdev/comments/18l3mug/whats%5Fthe%5Fmost%5Frobust%5Fjavascript%5Fframework%5Fthat/)]
+- **SEO Nightmare**: Your framework will be impossible to find on Google. Searching for "Vanilla JS" will always bring up tutorials for plain JavaScript or the famous parody website, completely burying your actual framework.
+- **Name Collisions**: The name `vanilla` is already used by a few separate tech products. For example, Canonical (the makers of Ubuntu Linux) maintains a CSS framework called **Vanilla Framework**, and there is a popular forum software called **Vanilla Forums**. \[[1](https://www.dreamhost.com/blog/css-frameworks/)]
+
+Are you thinking about **building your own JavaScript framework**, or are you looking for a **lightweight, minimal framework** that feels like writing plain JavaScript? Let me know, and I can guide you on the next steps or suggest some actual minimal tools!
+
+- [link](https://blog.webix.com/vanillajs-vs-framework-when-using-js-libraries/)\
+  Vanilla JavaScript: The Difference Between Plain JS, JavaScript Frameworks, and When to Use Them\
+  Sep 6, 2024 — So if you are wondering “Is Vanilla JS a Framework?”, the answer is “No”.\
+  \
+  \
+  Webix Blog
+- [link](https://www.reddit.com/r/webdev/comments/18l3mug/whats%5Fthe%5Fmost%5Frobust%5Fjavascript%5Fframework%5Fthat/)\
+  Whats the most 'robust' javascript framework that doesnt reinvent the wheel every two weeks? : r/webdev\
+  Dec 18, 2023 — This whole “new framework every few weeks” is a meme. Most web developers simply don't care. We just work on projects based on the...\
+  \
+  \
+  Reddit
+- [link](https://www.dreamhost.com/blog/css-frameworks/)\
+  16 CSS Frameworks to Help You Build Faster & Launch in Style\
+  Jun 22, 2023 — Vanilla Framework or Vanilla CSS (not to be confused with the colloquial term vanilla CSS, referring to base-level or traditional ...\
+  \
+  \
+  DreamHost
+
+## You said: when is the famous parody website
+
+The famous parody website [Vanilla JS](http://vanilla-js.com/) was created in **August 2012**. \[[1](https://softwareengineering.stackexchange.com/questions/298220/history-of-vanillajs)]
+
+It was built by web developer Eric Wastl, who is also widely known for creating the popular annual Advent of Code programming puzzles. \[[1](https://softwareengineering.stackexchange.com/questions/298220/history-of-vanillajs)]
+
+### The Context of 2012
+
+To understand why the joke landed so well back then, you have to look at what web development looked like in 2012:
+
+- **The jQuery Obsession**: Almost every website on the internet relied heavily on jQuery. Developers were loading massive library files just to do simple tasks like changing a text color or hiding a button. \[[1](https://www.reddit.com/r/javascript/comments/8p4ehl/is%5Fthis%5Fvanilla%5Fjs%5Fsite%5Fjust%5Fa%5Fjoke/), [2](https://www.youtube.com/shorts/aXcuz6fn8%5Fw)]
+- **The Rise of Heavy Frameworks**: Early frontend frameworks like AngularJS had just been released, and the community was rapidly shifting toward highly complex, heavy tooling. \[[1](https://www.youtube.com/shorts/aXcuz6fn8%5Fw), [2](https://www.jonoalderson.com/conjecture/javascript-broke-the-web-and-called-it-progress/)]
+- **The Browser Breakthrough**: Around 2012, modern web browsers had finally evolved to the point where they natively supported powerful standard features (like `document.querySelector`). This meant developers no longer _needed_ these heavy frameworks for basic tasks. \[[1](https://stackoverflow.com/questions/20435653/what-is-vanillajs)]
+
+Eric Wastl bought the `vanilla-js.com` domain name to mock the industry's obsession with framework bloat, and the term immediately blew up on Google Trends as developers shared the joke across forums like [Stack Overflow](https://stackoverflow.com/questions/20435653/what-is-vanillajs) and Reddit. \[[1](https://softwareengineering.stackexchange.com/questions/298220/history-of-vanillajs), [2](https://stackoverflow.com/questions/20435653/what-is-vanillajs), [3](https://softwareengineering.stackexchange.com/questions/298220/history-of-vanillajs)]
+
+- [link](https://www.reddit.com/r/javascript/comments/8p4ehl/is%5Fthis%5Fvanilla%5Fjs%5Fsite%5Fjust%5Fa%5Fjoke/)\
+  Is this Vanilla JS site just a joke? : r/javascript - Reddit\
+  Jun 6, 2018 — \* StoneCypher. • 8y ago. This is a high quality example of a nerd art form called ha ha only serious. There are three stages to un...\
+  Reddit·r/javascript
+- [link](https://www.jonoalderson.com/conjecture/javascript-broke-the-web-and-called-it-progress/)\
+  JavaScript broke the web (and called it progress)\
+  Jun 19, 2025 — How we got here. Around 2010, something shifted. The iPhone was ascendant. Native apps were sleek, fast, fluid. Angular, the first...\
+  Jono Alderson
+- [link](https://www.youtube.com/shorts/aXcuz6fn8%5Fw)\
+  the untold history of web development\
+  Dec 20, 2023 — 1990 HTML is invented 94 CSS invented to fix HTML 95 JavaScript invented to fix HTML. and CSS.06 jQuery invented to fix JavaScript...\
+  0:54\
+  YouTube·Fireship
+
+Show all
+
+# compare react and solid in code
+
+While **React** and **SolidJS** look incredibly similar on the surface because they both use JSX syntax, they function completely differently under the hood. <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">React relies on a <strong>Virtual DOM</strong> and re-runs your entire component function on every state update. Solid compiles down to <strong>direct DOM instructions</strong> and runs your component function <strong>only once</strong> to set up subscriptions</mark>. \[[1](https://filipjerga.medium.com/solid-js-vs-react-js-what-is-better-ab25b2338c61), [2](https://www.youtube.com/watch?v=w14cgW9pVkg), [3](https://dev.to/iboro/solidjs-vs-reactjs-part-1-thinking-in-react-thinking-in-signals-1ia2)]
+
+Here is how the two frameworks compare across major coding patterns.
+
+### 1. Basic Component & State Management
+
+In React, state is a raw value; when it changes, the whole component function re-executes. In Solid, state is exposed via a getter function (a signal), meaning you must call it like a function `count()` to read it. \[[1](https://www.youtube.com/watch?v=Xof4ci4%5FnEU), [2](https://filipjerga.medium.com/solid-js-vs-react-js-what-is-better-ab25b2338c61), [3](https://dev.to/iboro/solidjs-vs-reactjs-part-1-thinking-in-react-thinking-in-signals-1ia2), [4](https://www.youtube.com/watch?v=w14cgW9pVkg)]
+
+### React
+
+jsx
+
+```
+import { useState } from 'react';
+
+export default function Counter() {
+  const [count, setCount] = useState(0);
+
+  console.log("Component re-renders!"); // Runs every time count changes
+
+  return (
+    <button onClick={() => setCount(count + 1)}>
+      Count: {count}
+    </button>
+  );
+}
+```
+
+Use code with caution.
+
+### SolidJS
+
+jsx
+
+```
+import { createSignal } from 'solid-js';
+
+export default function Counter() {
+  const [count, setCount] = createSignal(0);
+
+  console.log("Component runs once!"); // Only logs ONCE on initial mount
+
+  return (
+    <button onClick={() => setCount(count() + 1)}>
+      Count: {count()} {/* Notice the parentheses to invoke the getter */}
+    </button>
+  );
+}
+```
+
+Use code with caution.
+
+***
+
+### 2. Effects & Dependency Tracking
+
+React's `useEffect` requires an explicit array of dependencies that you must manage manually. Solid's `createEffect` automatically tracks which signals are called inside it and subscribes to them implicitly. \[[1](https://www.reddit.com/r/reactjs/comments/tsx8hw/solidjs%5Fdevex%5Fcompared%5Fto%5Freact/), [2](https://makersden.io/blog/solidjs-vs-react-pros-and-cons), [3](https://www.youtube.com/watch?v=w14cgW9pVkg)]
+
+### React
+
+jsx
+
+```
+import { useState, useEffect } from 'react';
+
+useEffect(() => {
+  console.log(`Count is now: ${count}`);
+}, [count]); // Manual dependency array required
+```
+
+Use code with caution.
+
+### SolidJS
+
+jsx
+
+```
+import { createSignal, createEffect } from 'solid-js';
+
+createEffect(() => {
+  // Automatically re-runs when count() changes
+  console.log(`Count is now: ${count()}`);
+});
+```
+
+Use code with caution.
+
+***
+
+### 3. Conditional Rendering & Lists
+
+React handles UI logic natively using standard JavaScript features like ternary operators and `.map()`. Solid recommends using built-in, optimized wrapper components ( and ) because standard JS expressions would break or degrade its fine-grained tracking. \[[1](https://www.youtube.com/watch?v=Xof4ci4%5FnEU), [2](https://github.com/tjjfvi/solid-native), [3](https://dev.to/vrite/solidjs-react-and-vue-reactivity-systems-compared-30od), [4](https://dev.to/hexadecimalsoftware/building-fast-and-efficient-web-applications-with-solidjs-and-qwik-mkj)]
+
+### React
+
+jsx
+
+```
+export default function ListComponent({ items, isLoggedIn }) {
+  return (
+    <div>
+      {isLoggedIn ? <p>Welcome back!</p> : <p>Please log in.</p>}
+
+      <ul>
+        {items.map(item => (
+          <li key={item.id}>{item.name}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+```
+
+Use code with caution.
+
+### SolidJS
+
+jsx
+
+```
+import { Show, For } from 'solid-js';
+
+export default function ListComponent(props) {
+  return (
+    <div>
+      <Show when={props.isLoggedIn} fallback={<p>Please log in.</p>}>
+        <p>Welcome back!</p>
+      </Show>
+
+      <ul>
+        <For each={props.items}>
+          {(item) => <li>{item.name}</li>}
+        </For>
+      </ul>
+    </div>
+  );
+}
+```
+
+Use code with caution.
+
+***
+
+### 4. Handling Props (The Destructuring Trap)
+
+In React, you can freely destructure `props` because the entire function executes again with new variables. In Solid, destructuring `props` instantly breaks reactivity because it strips the underlying getters. You must always point to `props.property`. \[[1](https://www.toptal.com/developers/react/solidjs-vs-react), [2](https://www.youtube.com/watch?v=w14cgW9pVkg)]
+
+### React
+
+jsx
+
+```
+// This works perfectly in React
+export default function UserCard({ name, age }) {
+  return <div>{name} ({age})</div>;
+}
+```
+
+Use code with caution.
+
+### SolidJS
+
+jsx
+
+```
+// ❌ DO NOT DO THIS IN SOLID: Reactivity is lost!
+export default function UserCard({ name, age }) {
+  return <div>{name} ({age})</div>;
+}
+
+//  DO THIS IN SOLID: Keeps tracking intact
+export default function UserCard(props) {
+  return <div>{props.name} ({props.age})</div>;
+}
+```
+
+Use code with caution.
+
+***
+
+### Summary of Differences
+
+| Feature \[[1](https://www.youtube.com/watch?v=w14cgW9pVkg), [2](https://filipjerga.medium.com/solid-js-vs-react-js-what-is-better-ab25b2338c61), [3](https://dev.to/iboro/solidjs-vs-reactjs-part-1-thinking-in-react-thinking-in-signals-1ia2), [4](https://www.youtube.com/watch?v=Xof4ci4%5FnEU), [5](https://www.toptal.com/developers/react/solidjs-vs-react)] | React                              | SolidJS                          |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- | -------------------------------- |
+| **Component Execution**                                                                                                                                                                                                                                                                                                                                             | Re-runs on every state change      | Runs exactly once initially      |
+| **DOM Target Method**                                                                                                                                                                                                                                                                                                                                               | Virtual DOM reconciliation         | Direct, fine-grained DOM updates |
+| **State Values**                                                                                                                                                                                                                                                                                                                                                    | Raw values (`count`)               | Getter functions (`count()`)     |
+| **Control Flow**                                                                                                                                                                                                                                                                                                                                                    | JavaScript native (`map`, ternary) | Reactive Components (, )         |
+| **Prop Destructuring**                                                                                                                                                                                                                                                                                                                                              | Standard practice                  | Forbidden (breaks reactivity)    |
+
+If you are thinking about moving a specific component from one to the other, let me know! I can **convert your specific code block** or show you how to write a custom **asynchronous data fetch** in both frameworks.
+
+- [link](https://www.reddit.com/r/reactjs/comments/tsx8hw/solidjs%5Fdevex%5Fcompared%5Fto%5Freact/)\
+  Solid.js DevEx compared to React : r/reactjs - Reddit\
+  Mar 31, 2022 — Solid. js attracted me because it's very similar to React and has first-class support for JSX. The setup with create-solid was ver...\
+  Reddit·r/reactjs
+- [link](https://www.youtube.com/watch?v=Xof4ci4%5FnEU)\
+  React vs Solid - Let's compare!\
+  Mar 20, 2023 — solidjs has enjoyed a lot of growth. recently because it uses a really similar coding style to React whilst being faster than it a...\
+  5:17\
+  YouTube·Niklas Ziermann
+- [link](https://filipjerga.medium.com/solid-js-vs-react-js-what-is-better-ab25b2338c61)\
+  Solid JS vs React JS. What is Better? | by Filip Jerga\
+  Dec 21, 2022 — Main Differences. Both codes look very similar, but their concepts are very different. In React JS, a component is re-rendered(re-\
+  Medium·Filip Jerga
+
+Show all
+
+## You said: complex example
+
+To see the structural differences in a more realistic scenario, here is a **User Dashboard Card**.
+
+This complex example demonstrates:
+
+1. **Asynchronous data fetching** (using hooks/signals).
+2. **Derived state** (computed values that automatically update).
+3. **Sub-components** passing data.
+4. **Cleanups** (handling window resize event listeners).
+
+### The React Version
+
+In React, you have to use a `useEffect` hook to fetch data, handle state for loading/errors manually, and use `useMemo` to ensure computed values do not recalculate unnecessarily on unrelated renders.
+
+jsx
+
+```
+import { useState, useEffect, useMemo } from 'react';
+
+// Sub-component
+function ActivityStatus({ active }) {
+  return <span className={active ? 'text-green' : 'text-gray'}>{active ? '● Online' : '○ Offline'}</span>;
+}
+
+export default function UserDashboard({ userId }) {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  // 1. Async Data Fetching
+  useEffect(() => {
+    let isCurrent = true;
+    setLoading(true);
+
+    fetch(`https://example.com{userId}`)
+      .then(res => res.json())
+      .then(data => {
+        if (isCurrent) {
+          setUser(data);
+          setLoading(false);
+        }
+      });
+
+    return () => { isCurrent = false; }; // Cleanup to prevent race conditions
+  }, [userId]);
+
+  // 2. Window Resize Event Listener
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // 3. Derived/Computed State (Cached via useMemo)
+  const userFullName = useMemo(() => {
+    if (!user) return '';
+    return `${user.firstName} ${user.lastName}`;
+  }, [user]);
+
+  if (loading) return <div>Loading user profile...</div>;
+
+  return (
+    <div className="dashboard-card">
+      <h2>{userFullName}</h2>
+      <ActivityStatus active={user.isOnline} />
+
+      <h3>Recent Orders:</h3>
+      {user.orders.length === 0 ? (
+        <p>No orders found.</p>
+      ) : (
+        <ul>
+          {user.orders.map(order => (
+            <li key={order.id}>Order #{order.id} - ${order.total}</li>
+          ))}
+        </ul>
+      )}
+
+      {windowWidth < 768 && <p className="mobile-tip">Viewing on mobile layout</p>}
+    </div>
+  );
+}
+```
+
+Use code with caution.
+
+***
+
+### The SolidJS Version
+
+In Solid, async data fetching uses a specialized primitive called `createResource`. Derived state is just a standard JavaScript function—no caching hooks needed. Component logic runs only once, so event listeners are never re-registered. \[[1](https://codechips.me/solidjs-first-look/), [2](https://blog.openreplay.com/solidjs-vs-react-comparing-component-models-performance/)]
+
+jsx
+
+```
+import { createResource, createSignal, onCleanup, Show, For } from 'solid-js';
+
+// Sub-component
+function ActivityStatus(props) {
+  // Always access via props pointer to preserve reactivity
+  return <span class={props.active ? 'text-green' : 'text-gray'}>{props.active ? '● Online' : '○ Offline'}</span>;
+}
+
+// Fetcher function defined outside component (cleaner separation)
+const fetchUser = async (id) => {
+  const res = await fetch(`https://example.com{id}`);
+  return res.json();
+};
+
+export default function UserDashboard(props) {
+  // 1. Async Data Fetching (Automatically handles loading states and race conditions)
+  const [user] = createResource(() => props.userId, fetchUser);
+
+  const [windowWidth, setWindowWidth] = createSignal(window.innerWidth);
+
+  // 2. Window Resize Event Listener (Runs once, no dependencies array needed)
+  const handleResize = () => setWindowWidth(window.innerWidth);
+  window.addEventListener('resize', handleResize);
+  onCleanup(() => window.removeEventListener('resize', handleResize));
+
+  // 3. Derived/Computed State (Just a plain function! Updates automatically when user() updates)
+  const userFullName = () => {
+    const u = user();
+    return u ? `${u.firstName} ${u.lastName}` : '';
+  };
+
+  return (
+    // Solid's built-in loading template mechanism for resources
+    <Show when={!user.loading} fallback={<div>Loading user profile...</div>}>
+      <div class="dashboard-card">
+        <h2>{userFullName()}</h2>
+        <ActivityStatus active={user().isOnline} />
+
+        <h3>Recent Orders:</h3>
+        <Show when={user().orders.length > 0} fallback={<p>No orders found.</p>}>
+          <ul>
+            <For each={user().orders}>
+              {(order) => <li>Order #{order.id} - ${order.total}</li>}
+            </For>
+          </ul>
+        </Show>
+
+        <Show when={windowWidth() < 768}>
+          <p class="mobile-tip">Viewing on mobile layout</p>
+        </Show>
+      </div>
+    </Show>
+  );
+}
+```
+
+Use code with caution.
+
+***
+
+### Key Takeaways from the Complex Example
+
+- **Data Fetching:** React requires boilerplate (`useEffect`, local state flags, cleanups) to avoid memory leaks or race conditions if `userId` changes quickly. Solid's `createResource` natively understands signals, cancels outdated requests automatically, and provides a built-in `.loading` boolean.
+- **Performance Overhead:** If the window is resized in React, `setWindowWidth` forces the _entire_ dashboard component, its mapping loops, and its child components to re-render. In Solid, resizing only updates the tiny text node directly in the DOM; the rest of the dashboard remains completely untouched.
+- **Computed Data:** React demands `useMemo` to prevent rebuilding strings or filtering arrays on unrelated renders. Solid updates tracking automatically simply by wrapping the logic inside a standard function execution (`userFullName()`).
+
+Would you like to see how **Global State Management** (like React Context vs. Solid Stores) works next, or do you want to **benchmark the bundle size and speed** differences between them?
+
+- [link](https://codechips.me/solidjs-first-look/)\
+  SolidJS - a first look\
+  Jul 20, 2021 — Solid has a neat function called createResource that help you work with async functions. It's not reactive by default. The way it ...\
+  \
+  \
+  codechips.me
+
+# (d) if solidjs is mature early is it wise for vscode to choose it
+
+Even if SolidJS achieves full maturity, it would **not be wise for the VS Code core team to choose it** to rewrite or power the main editor. \[[1](https://stackoverflow.com/questions/29966093/what-is-the-visual-studio-code-editor-built-on), [2](https://listiak.dev/blog/the-state-of-solid-js-in-2026-signals-performance-and-growing-influence), [3](https://github.com/solidjs/solid/blob/main/CHANGELOG.md), [4](https://medium.com/@iboroinyang01/solidjs-vs-reactjs-part-2-performance-dx-and-tooling-76cd4b10a8f6)]
+
+However, it is an **excellent, highly logical choice for VS Code extension developers** who build heavy user interfaces inside [Webviews](https://code.visualstudio.com/api/extension-guides/webview). \[[1](https://code.visualstudio.com/api/extension-guides/webview)]
+
+The structural reasons behind this distinction clarify why a total migration makes little sense for the application core, while offering massive benefits at the extension level.
+
+***
+
+### Why the Core VS Code Team Won't Choose SolidJS
+
+1. **VS Code Doesn’t Use a Virtual DOM (or any standard UI framework)**\
+   The core editor—specifically the [Monaco Editor](https://stackoverflow.com/questions/29966093/what-is-the-visual-studio-code-editor-built-on) that renders text, line numbers, and decorations—is built using highly optimized, direct DOM manipulation. Introducing SolidJS would mean adding a framework abstraction to a codebase that already operates at the bare-metal level of browser performance.
+2. **Reactivity Is Already Handled Customly**\
+   SolidJS is praised for its elegant, fine-grained reactivity using [Signals](https://dev.to/playfulprogramming/a-decade-of-solidjs-32f4). VS Code already has its own highly mature, ultra-optimized event and state systems (such as `EventEmitter` and `Disposable`). Replacing this deeply woven architectural layer across millions of lines of code would yield negligible performance gains while introducing massive risks.
+3. **The Migration Risk is Prohibitive**\
+   Rewriting a massive application like VS Code to support a new component compilation pipeline is almost never a smart business move. The existing architecture is stable, heavily battle-tested, and serves hundreds of millions of users without fundamental framework bottlenecks. \[[1](https://www.reddit.com/r/solidjs/comments/fh6akh/is%5Fit%5Fpossible%5Fto%5Fgradually%5Fmigrate%5Ffrom%5Freact%5Fto/), [2](https://dev.to/playfulprogramming/a-decade-of-solidjs-32f4), [3](https://www.reddit.com/r/reactjs/comments/ur1z30/do%5Fyou%5Fthink%5Fsolid%5Fis%5Fa%5Fmuch%5Fbetter%5Fversion%5Fof/), [4](https://stackoverflow.com/questions/29966093/what-is-the-visual-studio-code-editor-built-on), [5](https://listiak.dev/blog/the-state-of-solid-js-in-2026-signals-performance-and-growing-influence)]
+
+***
+
+### Why Extension Developers _Should_ Choose SolidJS
+
+While the core app will steer clear, SolidJS is one of the smartest tech choices you can make when building a VS Code Webview Panel. \[[1](https://medium.com/@michaelbenliyan/developers-guide-to-building-vscode-webview-panel-with-react-and-messages-797981f34013)]
+
+| Factor \[[1](https://news.ycombinator.com/item?id=35458075), [2](https://www.quora.com/Which-one-should-I-learn-as-a-beginner-SolidJS-or-ReactJS), [3](https://www.reddit.com/r/reactjs/comments/ur1z30/do%5Fyou%5Fthink%5Fsolid%5Fis%5Fa%5Fmuch%5Fbetter%5Fversion%5Fof/), [4](https://code.visualstudio.com/api/extension-guides/webview), [5](https://listiak.dev/blog/the-state-of-solid-js-in-2026-signals-performance-and-growing-influence), [6](https://www.reddit.com/r/solidjs/comments/1b3a4cs/future%5Fof%5Fsolidjs/), [7](https://github.com/solidjs/solid/discussions/2425), [8](https://medium.com/@abdou16moustakim/everything-you-need-to-know-about-solidjs-1112522bf1f6), [9](https://medium.com/@michaelbenliyan/developers-guide-to-building-vscode-webview-panel-with-react-and-messages-797981f34013), [10](https://stackoverflow.com/questions/63125092/access-vs-code-api-from-webview), [11](https://github.com/stack-spot/vscode-async-webview)] | React in Webviews                                                | SolidJS in Webviews                                                                                                                                                 | Why It Matters for Extensions                                                                   |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| **Performance**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Triggers Virtual DOM re-renders across the tree.                 | Fine-grained, direct updates to the exact DOM element.                                                                                                              | Keeping the UI snappy inside an `iframe` webview minimizes editor lag.                          |
+| **Bundle Size**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Heavy (~40KB+ combined with ReactDOM).                           | Extremely light (~7.6KB gzipped core).                                                                                                                              | Extensions load much faster from cold starts when the webview is opened.                        |
+| **Memory Leak Risk**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | High risk due to strict, long-running hook rule lifecycles.      | Explicit, native JavaScript closures with predictable disposal.                                                                                                     | Webviews often stay open in the background; low memory overhead prevents VS Code from bloating. |
+| **State Bridge**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | Complicated boilerplate to map extension `postMessage` to hooks. | Simple event listeners mapping directly to transparent [Signals](https://listiak.dev/blog/the-state-of-solid-js-in-2026-signals-performance-and-growing-influence). | Drastically cleaner architecture for sending data between the editor context and the UI.        |
+
+### The Verdict
+
+The VS Code team values architecture longevity over the framework trends of the day. They will continue to rely on raw DOM optimization and custom architecture for the core client. \[[1](https://stackoverflow.com/questions/29966093/what-is-the-visual-studio-code-editor-built-on)]
+
+However, if you are designing custom, data-heavy, or highly interactive interfaces inside a **VS Code extension sidebar or editor panel**, choosing SolidJS is an exceptionally wise decision. It delivers React-like developer ergonomics without forcing the editor to pay a steep performance or memory tax. \[[1](https://code.visualstudio.com/api/extension-guides/webview), [2](https://listiak.dev/blog/the-state-of-solid-js-in-2026-signals-performance-and-growing-influence), [3](https://www.quora.com/Which-one-should-I-learn-as-a-beginner-SolidJS-or-ReactJS), [4](https://www.index.dev/skill-vs-skill/frontend-react-vs-preact-vs-solidjs), [5](https://medium.com/@abdou16moustakim/everything-you-need-to-know-about-solidjs-1112522bf1f6)]
+
+***
+
+If you are currently evaluating this stack, tell me:
+
+- Are you looking at this from the perspective of **core editor contribution** or **extension development**?
+- What **specific feature** (e.g., complex dashboards, real-time logs, git graph visualization) are you trying to build?
+
+I can give you concrete implementation steps or point you to boilerplate templates.
+
+- [link](https://www.reddit.com/r/reactjs/comments/ur1z30/do%5Fyou%5Fthink%5Fsolid%5Fis%5Fa%5Fmuch%5Fbetter%5Fversion%5Fof/)\
+  Do you think Solid is a much better version of React? : r/reactjs - Reddit\
+  May 16, 2022 — I don't think anyone ever goes around thinking something is just good enough though. There's always room for improvement and there...\
+  Reddit·r/reactjs
+- [link](https://dev.to/playfulprogramming/a-decade-of-solidjs-32f4)\
+  A Decade of SolidJS - DEV Community\
+  Apr 24, 2025 — Signals Everywhere. In 2015, no one would be caught dead saying "Knockout always had it right." Hell, few people would have said t...\
+  DEV Community
+- [link](https://github.com/solidjs/solid/discussions/2425)\
+  The Road to 2.0 · solidjs solid · Discussion #2425 - GitHub\
+  Dec 22, 2025 — I think you're gonna find that this is true for every framework. It's impossible to be productive with any framework without going...\
+  GitHub
+
+Show all
+
+# if solidjs is mature before vscode is created is it wise for vscode to choose it
+
+Evaluating this choice requires looking at how SolidJS fits VS Code’s unique architecture. VS Code was released in 2015, built on Electron and a custom UI architecture. SolidJS launched in 2021. \[[1](https://www.devclass.com/development/2023/05/04/90-minutes-from-code-to-deployment-vs-code-team-describes-internal-development-process/1624018)]
+
+If SolidJS had existed and been mature in 2015, **yes, it would have been a highly wise choice** for VS Code to adopt it.
+
+### Why SolidJS Fits VS Code Perfectly
+
+- **Maximum Performance**: VS Code requires extreme speed for rendering text editors. SolidJS compiles down to direct DOM manipulation without a Virtual DOM, matching VS Code's strict performance needs.
+- **Low Memory Footprint**: Electron apps are notoriously memory-heavy. SolidJS has a tiny runtime size and uses far less memory than frameworks like React.
+- **Predictable Updates**: SolidJS uses fine-grained reactivity. Only the exact piece of the UI that changes gets updated, preventing laggy editor typing or UI stuttering.
+- **Familiar DX**: Solid's JSX syntax would allow the VS Code team to build complex layouts cleanly, rather than managing manual vanilla DOM manipulation. \[[1](https://blogs.purecode.ai/blogs/solidjs-vs-react), [2](https://medium.com/@sriparno08/qwik-vs-solidjs-vs-astro-9e1d3a4e4f65), [3](https://blog.devgenius.io/the-reasons-why-you-must-use-visual-studio-code-b522f946a849), [4](https://namastedev.com/blog/react-vs-solidjs-whats-better-in-2025-4/), [5](https://blog.openreplay.com/solidjs-vs-react-comparing-component-models-performance/)]
+
+### The Major Trade-off: Custom Control
+
+The only reason VS Code might still decline SolidJS is **architectural control**.
+
+- VS Code relies heavily on a custom canvas and highly specialized buffer rendering for the code editor itself.
+- Frameworks—even high-performance ones like SolidJS—can sometimes get in the way of low-level optimization.
+- VS Code likely would have used SolidJS for the outer shell (sidebar, tabs, settings) while keeping vanilla TypeScript for the core text editor. \[[1](https://dev.to/abdelaziz%5Fmoustakim%5F45a4c/everything-you-need-to-know-about-solidjs-4mg4)]
+
+To explore this scenario further, tell me:
+
+- Are you considering SolidJS for a **similar high-performance desktop application**?
+
+- Do you want to compare SolidJS performance against **Electron's native architecture**?
+
+- Are you interested in how **current VS Code extensions** use modern frameworks?
+
+- [link](https://www.devclass.com/development/2023/05/04/90-minutes-from-code-to-deployment-vs-code-team-describes-internal-development-process/1624018)\
+  90 minutes from code to deployment: VS Code team describes internal development process\
+  May 4, 2023 — VS Code ( Visual Studio Code ) was first released in 2015, but taking into account the early work on the product, Gamma said the b...\
+  \
+  \
+  DevClass
+
+- [link](https://blogs.purecode.ai/blogs/solidjs-vs-react)\
+  SolidJS vs React: The Ultimate Face-Off for Web Development - Blogs\
+  Mar 29, 2024 — SolidJS Fundamentals SolidJS offers the following features: The fine-grained reactivity of SolidJS translates to performance advan...\
+  \
+  \
+  Purecode.AI
+
+- [link](https://medium.com/@sriparno08/qwik-vs-solidjs-vs-astro-9e1d3a4e4f65)\
+  Qwik vs. SolidJS vs. Astro: Which Should You Learn in 2025?\
+  Jul 13, 2025 — 🔑 Key Features of SolidJS No Virtual DOM: By bypassing the virtual DOM, SolidJS achieves blazing-fast performance with direct DOM...\
+  \
+  \
+  Medium
+
+Show all
+
+# . should i write perfect code
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">No, you should not write perfect code</span></mark>. "Perfect code" is a myth that will stall your progress, delay your product launches, and cause unnecessary stress. \[[1](https://blog.tarkalabs.com/perfect-code-is-the-enemy-of-becoming-a-good-developer-ef15968dfc27), [2](https://www.linkedin.com/posts/alexxubyte%5Fsystemdesign-coding-interviewtips-activity-7366133616688414722-wAeu), [3](https://algocademy.com/blog/solving-coding-problems-without-overthinking-how-to-trust-your-instincts/)]
+
+### Why Perfect Code is a Trap
+
+- **Perfect is subjective:** What looks perfect to you today will look messy to another developer—or even to you six months from now.
+- **Requirements always change:** Business goals shift rapidly. If you spend three weeks writing flawless code for a feature, it will hurt twice as much when that feature gets deleted next month. \[[1](https://www.reddit.com/r/programming/comments/8f2lzu/theres%5Fa%5Freason%5Fthat%5Fprogrammers%5Falways%5Fwant%5Fto/)]
+- **Diminishing returns:** Spending 20% of your time gets you 80% of the way there. Spending the remaining 80% of your time to make it "perfect" delays shipping.
+
+### What You Should Aim For Instead
+
+Instead of perfection, aim for **clean, maintainable, and working** code. Your code should follow these three simple rules: \[[1](https://mcuslu.medium.com/clean-code-in-net-writing-maintainable-and-testable-c-applications-500a1c16fdee), [2](https://www.linkedin.com/posts/petarivanovv9%5Fworking-code-beats-perfect-code-almost-every-activity-7465009547267624962-z5e9), [3](https://python.plainenglish.io/the-6-python-clean-code-principles-that-instantly-boosted-my-productivity-1399d710098d), [4](https://medium.com/javarevisited/tips-for-improving-code-quality-in-java-software-development-b89788a76cf2)]
+
+- **Easy to read:** Can another developer (or you, after a long vacation) understand what this code does in 30 seconds?
+- **Easy to change:** If a requirement changes tomorrow, can you modify this code without breaking five other things?
+- **Solves the problem:** Does it successfully fix the user's issue or deliver the required feature right now?
+
+### The "Good Enough" Code Checklist
+
+Before you ship your code, make sure it passes these basic checks rather than chasing perfection: \[[1](https://www.finalroundai.com/blog/vibe-coding-erasing-software-developers-skills)]
+
+- **No obvious bugs:** It handles the core success and failure cases safely.
+- **Good naming:** Variables and functions have clear, descriptive names.
+- **Basic testing:** The most critical paths work as expected.
+- **No over-engineering:** You solved the problem you have _today_, not a problem you _might_ have next year. \[[1](https://www.shadecoder.com/blogs/how-to-pass-the-airbnb-oa-2026-format-questions-proven-prep-strategy), [2](https://medium.com/@sharmapraveen91/code-review-guidelines-for-data-science-projects-dos-don-ts-and-metric-evaluation-65fe732e4846), [3](https://levelup.gitconnected.com/writing-clean-and-readable-python-code-dff39f0ec163), [4](https://www.netguru.com/blog/web-development-checklist)]
+
+### The Standard Industry Rule: Make It, Fake It, Fix It
+
+Follow this three-step process used by top engineering teams:
+
+1. **Make it work:** Write the code quickly, even if it is messy, just to prove the concept.
+2. **Make it right:** Clean up the clutter, fix the naming, and ensure it is easy to read.
+3. **Make it fast:** _Only_ optimize the performance if profiling proves it is actually slow. \[[1](https://www.reddit.com/r/ExperiencedDevs/comments/1ftiez9/where%5Fdo%5Fyou%5Fdraw%5Fthe%5Fline%5Fbetween%5Fboilerplate/), [2](https://blog.cleancoder.com/uncle-bob/2013/09/23/Test-first.html), [3](https://www.mindstudio.ai/blog/build-design-system-claude-design-no-ai-aesthetics), [4](https://www.jalasoft.com/blog/anti-patterns-for-better-outcomes)]
+
+To help you find the right balance for your project, let me know:
+
+- Is this a **personal project** for learning, a **prototype**, or a **production app** for users?
+- Is there a specific piece of code you are **struggling to perfect** right now?
+
+I can help you decide if it is ready to ship or if it needs a quick cleanup.
+
+- [link](https://blog.tarkalabs.com/perfect-code-is-the-enemy-of-becoming-a-good-developer-ef15968dfc27)\
+  Perfect code is the enemy of becoming a good developer\
+  Apr 29, 2018 — The perfect code does(not) exist. And the only way to achieve perfection is to not to write any code. If you take Linux operating ...\
+  \
+  \
+  Tarka Labs
+- [link](https://www.linkedin.com/posts/alexxubyte%5Fsystemdesign-coding-interviewtips-activity-7366133616688414722-wAeu)\
+  Popular versioning strategies for developers: SemVer, CalVer, Sequential, API | Alex Xu posted on the topic\
+  Aug 26, 2025 — Your code doesn't need to be perfect, it needs to evolve. One of the biggest traps teams fall into? Endless planning for the “perf...\
+  \
+  \
+  LinkedIn
+- [link](https://algocademy.com/blog/solving-coding-problems-without-overthinking-how-to-trust-your-instincts/)\
+  Solving Coding Problems Without Overthinking: How to Trust Your Instincts – AlgoCademy Blog\
+  Accept that there's rarely a “perfect” solution in coding. Striving for perfection can lead to overthinking and unnecessary stress...\
+  \
+  \
+  AlgoCademy
+
+Show all
