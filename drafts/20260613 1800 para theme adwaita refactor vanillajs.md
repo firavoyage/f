@@ -10839,6 +10839,681 @@ Would you like to see how **Global State Management** (like React Context vs. So
   \
   codechips.me
 
+# compare react and svelte in code
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">Svelte code is significantly more concise and resembles standard HTML/JS, whereas React code requires explicit hook functions and JavaScript-in-HTML (JSX) syntax.</span></strong></mark> \[[1](https://hygraph.com/blog/svelte-vs-react), [2](https://www.youtube.com/watch?v=%5FvuVy21l2bU\&vl=en-US), [3](https://snipcart.com/blog/svelte-js-framework-tutorial), [4](https://trio.dev/svelte-vs-react/)]
+
+While React 19 uses a Virtual DOM runtime that executes your component function on every state change, Svelte 5 is a compiler that translates your code into surgical, direct DOM updates at build time. \[[1](https://strapi.io/blog/svelte-vs-react-comparison), [2](https://tech-insider.org/svelte-vs-react-2026/)]
+
+The syntax difference between **React 19** and **Svelte 5** across core patterns highlights these architectural choices: \[[1](https://devtrios.com/blog/svelte-vs-react-which-framework-should-you-choose/)]
+
+### 1. State & Reactivity
+
+React uses explicit state setters. Svelte uses **Runes** (`$state`), allowing you to mutate variables directly like standard JavaScript. \[[1](https://strapi.io/blog/svelte-vs-react-comparison), [2](https://tech-insider.org/svelte-vs-react-2026/)]
+
+- **React 19**\
+  jsx
+
+<!---->
+
+```
+import { useState } from 'react';
+
+export default function Counter() {
+  const [count, setCount] = useState(0);
+
+  return <button onClick={() => setCount(count + 1)}>{count}</button>;
+}
+```
+
+Use code with caution.
+
+- **Svelte 5**\
+  html
+
+<!---->
+
+```
+<script>
+  let count = $state(0);
+</script>
+
+<button onclick={() => count++}>{count}</button>
+```
+
+Use code with caution.\
+\[[1](https://www.youtube.com/watch?v=%5FvuVy21l2bU\&vl=en-US), [2](https://www.infoworld.com/article/3962039/what-you-need-to-know-about-angular-react-vue-and-svelte-popular-javascript-frameworks-compared.html), [3](https://www.articsledge.com/post/reactjs), [4](https://www.reddit.com/r/sveltejs/comments/1crpj0r/svelte%5F5%5Fis%5Freact%5Fand%5Fi%5Fwanna%5Fcry/), [5](https://blog.openreplay.com/reactivity-react-vue-angular-svelte/)]
+
+### 2. Derived State (Computed Values) \[[1](https://dev.to/trentbrew/using-svelte-runes-in-react-3g48), [2](https://dev.to/mikehtmlallthethings/understanding-svelte-5-runes-derived-vs-effect-1hh), [3](https://matthewmacfarquhar.medium.com/learning-svelte-part-1-basic-state-7ea76c19d154), [4](https://dev.to/a1guy/svelte-reactivity-explained-how-your-ui-updates-automatically-4l2m)]
+
+React recalculates standard variables on re-render (optimized automatically by the new React Compiler). Svelte uses the `$derived` rune to declare reactive calculations. \[[1](https://strapi.io/blog/svelte-vs-react-comparison), [2](https://www.youtube.com/watch?v=%5FvuVy21l2bU\&vl=en-US), [3](https://component-party.dev/), [4](https://strapi.io/blog/svelte-vs-react-comparison)]
+
+- **React 19**\
+  jsx
+
+<!---->
+
+```
+import { useState } from 'react';
+
+export default function DoubleCounter() {
+  const [count, setCount] = useState(1);
+  const doubled = count * 2; // Handled by React Compiler
+
+  return <button onClick={() => setCount(count + 1)}>{doubled}</button>;
+}
+```
+
+Use code with caution.
+
+- **Svelte 5**\
+  html
+
+<!---->
+
+```
+<script>
+  let count = $state(1);
+  let doubled = $derived(count * 2);
+</script>
+
+<button onclick={() => count++}>{doubled}</button>
+```
+
+Use code with caution.\
+\[[1](https://sreekumarp.medium.com/angular-signals-vs-react-a-deep-dive-into-reactivity-3c6835f92945), [2](https://dev.to/brandonwie/how-reactivity-in-vue-and-svelte-are-different-646), [3](https://svelte.dev/docs/svelte/svelte), [4](https://www.reddit.com/r/sveltejs/comments/1kvx1rh/vuejs%5Fvs%5Freactjs%5Fvs%5Fsveltejs/)]
+
+### 3. Conditional Rendering & Loops
+
+React uses standard JavaScript expressions (`&&`, ternary operators, `.map()`) inside JSX. Svelte uses clean block tags inside its HTML template. \[[1](https://strapi.io/blog/svelte-vs-react-comparison), [2](https://hygraph.com/blog/svelte-vs-react), [3](https://react.dev/learn/conditional-rendering)]
+
+- **React 19**\
+  jsx
+
+<!---->
+
+```
+export default function List({ items, show }) {
+  return (
+    <div>
+      {show && <h1>My List</h1>}
+      <ul>
+        {items.map(item => (
+          <li key={item.id}>{item.name}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+```
+
+Use code with caution.
+
+- **Svelte 5**\
+  html
+
+<!---->
+
+```
+<script>
+  let { items, show } = $props();
+</script>
+
+{#if show}
+  <h1>My List</h1>
+{/if}
+
+<ul>
+  {#each items as item (item.id)}
+    <li>{item.name}</li>
+  {/each}
+</ul>
+```
+
+Use code with caution.\
+\[[1](https://frontendmasters.com/blog/introducing-svelte-5/), [2](https://www.reddit.com/r/sveltejs/comments/1juaepm/svelte%5Fand%5Fai%5Fcoding/)]
+
+### 4. Side Effects
+
+React relies on `useEffect` with manual dependency arrays. Svelte uses `$effect`, which automatically tracks its own dependencies at runtime. \[[1](https://www.reddit.com/r/react/comments/1r1fku5/what%5Fdo%5Fyou%5Fguys%5Fthink%5Fabout%5Fcomparison%5Fbetween/), [2](https://www.youtube.com/watch?v=%5FvuVy21l2bU\&vl=en-US)]
+
+- **React 19**\
+  jsx
+
+<!---->
+
+```
+import { useState, useEffect } from 'react';
+
+export default function Logger() {
+  const [text, setText] = useState('');
+
+  useEffect(() => {
+    console.log(`Text changed to: ${text}`);
+  }, [text]); // Manual dependency declaration
+
+  return <input value={text} onChange={e => setText(e.target.value)} />;
+}
+```
+
+Use code with caution.
+
+- **Svelte 5**\
+  html
+
+<!---->
+
+```
+<script>
+  let text = $state('');
+
+  $effect(() => {
+    console.log(`Text changed to: ${text}`); // Auto-tracks "text"
+  });
+</script>
+
+<input bind:value={text} />
+```
+
+Use code with caution.\
+\[[1](https://www.reddit.com/r/sveltejs/comments/131i2ab/react%5Fsvelte%5Fsimilar%5Fconcepts%5Fcomparison%5Fbeginner/), [2](https://www.reddit.com/r/sveltejs/comments/16uiiqf/how%5Fdoes%5Fsvelte%5F5%5Fw%5Frunes%5Fdifferentiate%5Fitself/), [3](https://khromov.se/how-and-why-i-built-an-mcp-server-for-svelte/), [4](https://component-party.dev/), [5](https://www.infoworld.com/article/2336000/reactive-magic-in-svelte-5-understanding-runes.html)]
+
+***
+
+### Core Conceptual Differences
+
+| Feature \[[1](https://strapi.io/blog/svelte-vs-react-comparison), [2](https://www.geeksforgeeks.org/blogs/react-vs-svelte/), [3](https://tech-insider.org/svelte-vs-react-2026/), [4](https://www.youtube.com/watch?v=%5FvuVy21l2bU\&vl=en-US), [5](https://hygraph.com/blog/svelte-vs-react), [6](https://www.reddit.com/r/sveltejs/comments/1fznpfn/why%5Fdo%5Fpeople%5Fuse%5Freact%5Fand%5Fnot%5Fsvelte/)] | React 19                                 | Svelte 5                               |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------- | -------------------------------------- |
+| **Architecture**                                                                                                                                                                                                                                                                                                                                                                                             | Runtime Library + Virtual DOM            | Build-time Compiler + Direct DOM       |
+| **Syntax Style**                                                                                                                                                                                                                                                                                                                                                                                             | JSX (JavaScript XML)                     | HTML, CSS, & JS Single File Components |
+| **Data Binding**                                                                                                                                                                                                                                                                                                                                                                                             | One-way explicit data flow               | Two-way option (`bind:value`)          |
+| **Scoping Styles**                                                                                                                                                                                                                                                                                                                                                                                           | Needs external libraries (e.g. Tailwind) | Built-in, scoped tags                  |
+
+Would you like to see how **parent-to-child component communication** or **global state management** compares between these two in code?
+
+- [link](https://www.reddit.com/r/react/comments/1r1fku5/what%5Fdo%5Fyou%5Fguys%5Fthink%5Fabout%5Fcomparison%5Fbetween/)\
+  What do you guys think about comparison between React vs ...\
+  Feb 11, 2026 — From what I understand, Svelte now uses the runes model with things like $state and $effect. $effect feels similar to useEffect in...\
+  Reddit·r/react
+- [link](https://www.reddit.com/r/sveltejs/comments/1fznpfn/why%5Fdo%5Fpeople%5Fuse%5Freact%5Fand%5Fnot%5Fsvelte/)\
+  Why do people use React and not Svelte? : r/sveltejs - Reddit\
+  Oct 10, 2024 — Svelte stores used to be a way better solution. However I recently tried the Jotai library which works very similar to svelte stor...\
+  Reddit·r/sveltejs
+- [link](https://strapi.io/blog/svelte-vs-react-comparison)\
+  Svelte vs React in 2026: Performance & DX Compared - Strapi\
+  Apr 19, 2026 — The key difference: Svelte 5 enables direct mutation ( count += 1 ) through proxy-based reactivity. React requires explicit setter...\
+  Strapi
+
+Show all
+
+## You said: complex example
+
+To compare how React 19 and Svelte 5 handle architecture at scale, let's look at a complex, full-featured example: **A dynamic, filterable E-Commerce Inventory Dashboard with asynchronous data fetching, global context state, and a performance-optimized list.** \[[1](https://javascript.plainenglish.io/deep-dive-into-react-19-key-features-practical-examples-repositories-and-boilerplate-templates-94d6a5e134b9), [2](https://www.osedea.com/insight/handling-global-state-in-react-in-2022), [3](https://javascript.plainenglish.io/svelte-5-vs-react-19-performance-myths-vs-production-reality-977a83e59eca)]
+
+Both examples implement:
+
+1. **Global Context** to share cart/settings data deeply through the tree without prop-drilling.
+2. **Asynchronous data fetching** with status states (Loading / Success / Error).
+3. **Local UI state** for active category filters.
+4. **Derived/Computed values** to filter the list on the fly without triggering redundant calculations. \[[1](https://medium.com/@emine.yalman/state-management-in-react-context-api-vs-props-drilling-bc21f8848409)]
+
+***
+
+### The React 19 Implementation
+
+React uses the `use` hook to handle Context consumption and asynchronous promises directly inside the component tree. It relies on standard JSX logic and immutable array modifications. \[[1](https://www.zignuts.com/blog/react-vs-svelte), [2](https://www.freecodecamp.org/news/react-context-for-beginners/)]
+
+### 1. Context & Global State (`AppContext.jsx`)
+
+jsx
+
+```
+import { createContext, useState } from 'react';
+
+export const AppContext = createContext();
+
+export function AppProvider({ children }) {
+  const [cartCount, setCartCount] = useState(0);
+  const [currency, setCurrency] = useState('USD');
+
+  const addToCart = () => setCartCount(prev => prev + 1);
+
+  return (
+    <AppContext.Provider value={{ cartCount, currency, addToCart }}>
+      {children}
+    </AppContext.Provider>
+  );
+}
+```
+
+Use code with caution.
+
+### 2. Main Dashboard Component (`Dashboard.jsx`)
+
+jsx
+
+```
+import { useState, use, useMemo } from 'react';
+import { AppContext } from './AppContext';
+
+// Simple simulated API fetcher
+const fetchProducts = async () => {
+  const res = await fetch('https://example.com');
+  if (!res.ok) throw new Error('Failed to fetch inventory');
+  return res.json();
+};
+
+// Initializing the async promise outside or caching it is required in React 19
+const productsPromise = fetchProducts();
+
+export default function Dashboard() {
+  // 1. Consume Global Context natively using React 19's use()
+  const { cartCount, currency, addToCart } = use(AppContext);
+
+  // 2. Local reactive state
+  const [selectedCategory, setSelectedCategory] = useState('All');
+
+  // 3. Resolve the async promise directly inside rendering via use()
+  // Note: For real-world production, this should be wrapped in a <Suspense> boundary
+  let products = [];
+  try {
+    products = use(productsPromise);
+  } catch (error) {
+    return <p className="error">Error loading inventory: {error.message}</p>;
+  }
+
+  // 4. Derived State (Computed values)
+  const filteredProducts = useMemo(() => {
+    if (selectedCategory === 'All') return products;
+    return products.filter(p => p.category === selectedCategory);
+  }, [products, selectedCategory]);
+
+  const uniqueCategories = useMemo(() => {
+    return ['All', ...new Set(products.map(p => p.category))];
+  }, [products]);
+
+  return (
+    <div className="dashboard-container">
+      <header>
+        <h1>Inventory System</h1>
+        <div className="cart-badge">Cart Items: {cartCount}</div>
+      </header>
+
+      {/* Filter Toolbar */}
+      <div className="toolbar">
+        {uniqueCategories.map(cat => (
+          <button
+            key={cat}
+            className={selectedCategory === cat ? 'active' : ''}
+            onClick={() => setSelectedCategory(cat)}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      {/* Grid Display */}
+      <main className="product-grid">
+        {filteredProducts.map(product => (
+          <div key={product.id} className="card">
+            <h3>{product.name}</h3>
+            <p className="price">{currency === 'USD' ? '$' : '€'}{product.price}</p>
+            <p className="stock">In Stock: {product.stock}</p>
+            <button
+              disabled={product.stock === 0}
+              onClick={addToCart}
+            >
+              {product.stock > 0 ? 'Add to Cart' : 'Out of Stock'}
+            </button>
+          </div>
+        ))}
+      </main>
+    </div>
+  );
+}
+```
+
+Use code with caution.
+
+***
+
+### The Svelte 5 Implementation
+
+Svelte 5 uses **Runes** (`$state`, `$derived`, `$context`) to achieve the exact same reactivity. Notice how it eliminates the need for `useMemo` hooks entirely, natively bindings the markup variables to the actual data values. \[[1](https://www.zignuts.com/blog/react-vs-svelte), [2](https://itnext.io/svelte-or-react-10-key-factors-to-consider-in-2025-436631956efa)]
+
+### 1. Context & Global State (`appState.svelte.js`)
+
+In Svelte 5, global state can be initialized via regular classes using runes, then embedded securely into the application context tree.
+
+javascript
+
+```
+import { setContext, getContext } from 'svelte';
+
+class AppState {
+  cartCount = $state(0);
+  currency = $state('USD');
+
+  addToCart() {
+    this.cartCount++;
+  }
+}
+
+const CONTEXT_KEY = Symbol('app-state');
+
+export function initAppState() {
+  return setContext(CONTEXT_KEY, new AppState());
+}
+
+export function useAppState() {
+  return getContext(CONTEXT_KEY);
+}
+```
+
+Use code with caution.
+
+### 2. Main Dashboard Component (`Dashboard.svelte`)
+
+html
+
+```
+<script>
+  import { useAppState } from './appState.svelte.js';
+
+  // 1. Consume Global Context
+  const appState = useAppState();
+
+  // 2. Local State using Runes
+  let selectedCategory = $state('All');
+
+  // 3. Asynchronous Data Fetching Promise
+  const fetchProducts = async () => {
+    const res = await fetch('https://example.com');
+    if (!res.ok) throw new Error('Failed to fetch inventory');
+    return res.json();
+  };
+
+  let productsPromise = fetchProducts();
+
+  // 4. Svelte auto-resolves promises in markup, but if we need derived data from the resolved payload:
+  let productsList = $state([]);
+  productsPromise.then(data => productsList = data);
+
+  // 5. Derived State (Computed values) automatically tracks dependencies
+  let filteredProducts = $derived(
+    selectedCategory === 'All'
+      ? productsList
+      : productsList.filter(p => p.category === selectedCategory)
+  );
+
+  let uniqueCategories = $derived([
+    'All',
+    ...new Set(productsList.map(p => p.category))
+  ]);
+</script>
+
+<div class="dashboard-container">
+  <header>
+    <h1>Inventory System</h1>
+    <div class="cart-badge">Cart Items: {appState.cartCount}</div>
+  </header>
+
+  <!-- Svelte resolves your asynchronous promise directly inside the HTML block template -->
+  {#await productsPromise}
+    <p>Loading global inventory data...</p>
+  {:then resolvedProducts}
+    <!-- Filter Toolbar -->
+    <div class="toolbar">
+      {#each uniqueCategories as cat}
+        <button
+          class:active={selectedCategory === cat}
+          onclick={() => selectedCategory = cat}
+        >
+          {cat}
+        </button>
+      {/each}
+    </div>
+
+    <!-- Grid Display -->
+    <main className="product-grid">
+      {#each filteredProducts as product (product.id)}
+        <div class="card">
+          <h3>{product.name}</h3>
+          <p class="price">
+            {appState.currency === 'USD' ? '$' : '€'}{product.price}
+          </p>
+          <p class="stock">In Stock: {product.stock}</p>
+          <button
+            disabled={product.stock === 0}
+            onclick={() => appState.addToCart()}
+          >
+            {product.stock > 0 ? 'Add to Cart' : 'Out of Stock'}
+          </button>
+        </div>
+      {/each}
+    </main>
+  {:catch error}
+    <p class="error">Error loading inventory: {error.message}</p>
+  {/await}
+</div>
+
+<style>
+  /* Encapsulated, scoped CSS component styles sit right here */
+  .dashboard-container { padding: 2rem; }
+  .active { background-color: #ff3e00; color: white; }
+  .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .card { border: 1px solid #ccc; padding: 1rem; border-radius: 8px; }
+</style>
+```
+
+Use code with caution.
+
+***
+
+### Structural Analysis & Tradeoffs
+
+- **Asynchronous Flow:** React 19 leans heavily on standard JavaScript variables handling promises combined with its experimental or stable `use(Promise)` token to coordinate layouts. Svelte handles this cleanly directly inside templates via `{#await}` tags, requiring zero structural overhead inside your business logic script block. \[[1](https://itnext.io/frontend-development-beyond-react-svelte-1-3-f47eda22cba5)]
+- **Boilerplate vs Control:** React forces you to think about cache reference stability (`useMemo`, externalizing promises) to avoid catastrophic re-render loops. Svelte’s compiler manages dependencies for you via `$derived()`, completely removing performance tuning logic from your workspace. \[[1](https://www.educative.io/blog/what-is-the-difference-between-function-and-class-in-react), [2](https://dev.to/a1guy/svelte-reactivity-explained-how-your-ui-updates-automatically-4l2m)]
+- **Encapsulation:** Svelte keeps code structural views (`HTML`), style expressions (`CSS`), and business states (`JS`) bundled as single isolated components, whereas React enforces styling to be solved externally via third-party systems like Tailwind or CSS Modules. \[[1](https://medium.com/@rehanhanar.com/angular-vs-react-key-differences-explained-with-code-examples-648ccb2b7eba), [2](https://joyofcode.xyz/learn-svelte), [3](https://www.syncfusion.com/blogs/post/svelte-vs-react-choose-the-right-one)]
+
+If you like, let me know if you want to explore how these two frameworks handle **form validation** or **custom global stores** next!
+
+- [link](https://javascript.plainenglish.io/deep-dive-into-react-19-key-features-practical-examples-repositories-and-boilerplate-templates-94d6a5e134b9)\
+  Deep Dive into React 19: Key Features, Practical Examples, Repositories, and Boilerplate Templates\
+  Jun 18, 2025 — Key Features in React 19 Concurrent Features: Improved concurrent rendering capabilities, providing smoother user interactions. Au...\
+  \
+  \
+  JavaScript in Plain English
+- [link](https://www.osedea.com/insight/handling-global-state-in-react-in-2022)\
+  Handling global state in React in 2022\
+  May 21, 2025 — One way we can see global state in the context of React is essentially persisted, centralized and globally accessible information ...\
+  \
+  \
+  Osedea
+- [link](https://javascript.plainenglish.io/svelte-5-vs-react-19-performance-myths-vs-production-reality-977a83e59eca)\
+  Svelte 5 vs React 19: Performance Myths vs Production Reality | by Ghazi Khan\
+  Jan 14, 2026 — Final Thoughts: Stop Optimizing the Wrong Thing Frontend performance debates often focus on what's easiest to measure, not what's ...\
+  \
+  \
+  JavaScript in Plain English
+
+Show all
+
+# compare solidjs and svelte in code
+
+**SolidJS and Svelte are both ultra-performant, Virtual-DOM-free frontend solutions, but they approach code architecture differently.** SolidJS focuses on React-like JSX paired with explicit functional reactivity (Signals). Svelte uses custom HTML-like files (`.svelte`) featuring highly-readable syntax and compiler-driven state management via "Runes". \[[1](https://www.reddit.com/r/solidjs/comments/11mt02n/solid%5Fjs%5Fcompared%5Fto%5Fsvelte/), [2](https://www.youtube.com/watch?v=A%5FdUsSzxwkI), [3](https://medium.com/@fatomiabdulquadri95/a-niche-comparison-svelte-vs-solidjs-2a76d283e2cf), [4](https://www.youtube.com/watch?v=2tjU3HMDx70\&t=23)]
+
+The examples below utilize modern **Svelte 5** and **SolidJS** syntax to highlight their key differences. \[[1](https://www.reddit.com/r/sveltejs/comments/1olv2f2/why%5Fsvelte%5Fnot%5Fsolid/), [2](https://www.youtube.com/watch?v=2tjU3HMDx70\&t=23)]
+
+### 1. Basic Reactive State & Markup
+
+SolidJS separates state into a getter and setter function. Svelte uses the compiler-native `$state` rune. \[[1](https://www.youtube.com/watch?v=2tjU3HMDx70\&t=23), [2](https://www.youtube.com/watch?v=A%5FdUsSzxwkI), [3](https://marmelab.com/blog/2025/05/28/solidjs-for-react-developper.html), [4](https://www.appslure.com/solidjs-the-reactive-framework/), [5](https://sparkbox.com/foundry/landscape%5Fbeyond%5Freact)]
+
+### SolidJS (`Counter.jsx`) \[[1](https://medium.com/@Zaks0n/comparing-svelte-and-solidjs-niche-frontend-technologies-63c5c9012a04), [2](https://dev.to/ucodes/exploring-frontend-technologies-svelte-vs-solidjs-1gjh)]
+
+jsx
+
+```
+import { createSignal } from "solid-js";
+
+export default function Counter() {
+  // Returns a [getter, setter] tuple
+  const [count, setCount] = createSignal(0);
+
+  // Must call count() as a function to read it
+  return <button onClick={() => setCount(count() + 1)}>Count: {count()}</button>;
+}
+```
+
+Use code with caution.
+
+### Svelte (`Counter.svelte`)
+
+html
+
+```
+<script>
+  // Uses a compiler rune for reactive tracking
+  let count = $state(0);
+</script>
+
+<!-- Modifies and reads the variable directly like standard JavaScript -->
+<button onclick={() => count++}>Count: {count}</button>
+```
+
+Use code with caution.
+
+***
+
+### 2. Derived State & Effects
+
+Derived state is computed automatically when dependencies change. SolidJS tracks evaluations through invoked function signals. Svelte uses the explicit `$derived` and `$inspect`/`$effect` runes. \[[1](https://www.reddit.com/r/sveltejs/comments/11mt0rq/solid%5Fjs%5Fcomapred%5Fto%5Fsvelte/), [2](https://www.youtube.com/watch?v=A%5FdUsSzxwkI), [3](https://www.youtube.com/watch?v=2tjU3HMDx70\&t=23), [4](https://strapi.io/blog/svelte-vs-react-comparison), [5](https://leapcell.io/blog/next-gen-reactivity-rethink-preact-solidjs-signals-vs-svelte-5-runes)]
+
+### SolidJS
+
+jsx
+
+```
+import { createSignal, createMemo, createEffect } from "solid-js";
+
+const [count, setCount] = createSignal(2);
+
+// Cached derived state (Memo)
+const doubleCount = createMemo(() => count() * 2);
+
+// Side effect triggered when count changes
+createEffect(() => {
+  console.log(`Count changed to: ${count()}`);
+});
+```
+
+Use code with caution.
+
+### Svelte
+
+html
+
+```
+<script>
+  let count = $state(2);
+
+  // Cached derived state
+  let doubleCount = $derived(count * 2);
+
+  // Side effect triggered when count changes
+  $effect(() => {
+    console.log(`Count changed to: ${count}`);
+  });
+</script>
+```
+
+Use code with caution.
+
+***
+
+### 3. Conditional Rendering & Loops
+
+SolidJS handles template logic through dedicated JSX components (, ) to preserve its fine-grained DOM tracking. Svelte uses block-based template markup directly in the HTML. \[[1](https://dev.to/ucodes/exploring-frontend-technologies-svelte-vs-solidjs-1gjh)]
+
+### SolidJS
+
+jsx
+
+```
+import { Show, For, createSignal } from "solid-js";
+
+export default function UserList() {
+  const [loggedIn] = createSignal(true);
+  const [users] = createSignal([{ id: 1, name: "Alice" }, { id: 2, name: "Bob" }]);
+
+  return (
+    <div>
+      <Show when={loggedIn()} fallback={<p>Please log in.</p>}>
+        <ul>
+          <For each={users()}>{(user) => <li>{user.name}</li>}</For>
+        </ul>
+      </Show>
+    </div>
+  );
+}
+```
+
+Use code with caution.
+
+### Svelte
+
+html
+
+```
+<script>
+  let loggedIn = $state(true);
+  let users = $state([{ id: 1, name: "Alice" }, { id: 2, name: "Bob" }]);
+</script>
+
+<div>
+  {#if loggedIn}
+    <ul>
+      {#each users as user (user.id)}
+        <li>{user.name}</li>
+      {/each}
+    </ul>
+  {:else}
+    <p>Please log in.</p>
+  {/if}
+</div>
+```
+
+Use code with caution.
+
+***
+
+### Code Architecture Breakdown
+
+| Feature \[[1](https://www.reddit.com/r/webdev/comments/1puhmsk/solidjs%5Fvs%5Fsvelte%5Fcomparison/), [2](https://www.youtube.com/watch?v=A%5FdUsSzxwkI), [3](https://www.youtube.com/watch?v=2tjU3HMDx70\&t=23), [4](https://purelogics.com/solidjs-vs-svelte-comprehensive-comparison-for-developers/), [5](https://medium.com/@oluwoleoluwole82/comparing-svelte-and-solidjs-a-deep-dive-into-modern-frontend-technologies-a61abc4cfd99)] | SolidJS                                            | Svelte                                           |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------- | ------------------------------------------------ |
+| **File Format**                                                                                                                                                                                                                                                                                                                                                                                                                            | Standard `.jsx` or `.tsx`                          | Single-file `.svelte` format                     |
+| **Component Execution**                                                                                                                                                                                                                                                                                                                                                                                                                    | Runs **exactly once** to set up the reactive graph | Runs code sequentially using runtime signals     |
+| **Syntax Style**                                                                                                                                                                                                                                                                                                                                                                                                                           | Pure JavaScript functions returning JSX            | HTML template with and blocks                    |
+| **State Primitives**                                                                                                                                                                                                                                                                                                                                                                                                                       | Explicit getters/setters (`createSignal`)          | Direct assignments via compiler magic (`$state`) |
+| **Scoped CSS**                                                                                                                                                                                                                                                                                                                                                                                                                             | Requires external styling libraries or modules     | Native, out-of-the-box scoped tags               |
+
+Would you like to examine **how components communicate** via props and events, or look at how they handle **global state management** across multiple files?
+
+- [link](https://www.reddit.com/r/solidjs/comments/11mt02n/solid%5Fjs%5Fcompared%5Fto%5Fsvelte/)\
+  Solid JS compared to svelte? : r/solidjs - Reddit\
+  Mar 9, 2023 — I fully expect others from both communities will chime in with their own experiences and opinions but here we go: \* Svelte focuses...\
+  Reddit·r/solidjs
+- [link](https://www.reddit.com/r/webdev/comments/1puhmsk/solidjs%5Fvs%5Fsvelte%5Fcomparison/)\
+  SolidJS vs Svelte Comparison : r/webdev - Reddit\
+  Dec 24, 2025 — \* besthelloworld. • 6mo ago. • Edited 6mo ago. I like Solid because I like understanding the code I'm writing. Solid has quirks, b...\
+  Reddit·r/webdev
+- [link](https://www.reddit.com/r/sveltejs/comments/11mt0rq/solid%5Fjs%5Fcomapred%5Fto%5Fsvelte/)\
+  Solid JS comapred to svelte? : r/sveltejs - Reddit\
+  Mar 9, 2023 — Solid gives you similar fine-grained reactivity as Svelte and has (arguably) better composability (since everything is a function)\
+  Reddit·r/sveltejs
+
+Show all
+
 # (d) if solidjs is mature early is it wise for vscode to choose it
 
 Even if SolidJS achieves full maturity, it would **not be wise for the VS Code core team to choose it** to rewrite or power the main editor. \[[1](https://stackoverflow.com/questions/29966093/what-is-the-visual-studio-code-editor-built-on), [2](https://listiak.dev/blog/the-state-of-solid-js-in-2026-signals-performance-and-growing-influence), [3](https://github.com/solidjs/solid/blob/main/CHANGELOG.md), [4](https://medium.com/@iboroinyang01/solidjs-vs-reactjs-part-2-performance-dx-and-tooling-76cd4b10a8f6)]
@@ -10953,6 +11628,122 @@ To explore this scenario further, tell me:
 
 Show all
 
+# (d) if solidjs are svelte are mature before vscode is it wise for vscode to adopt
+
+**No, it would not be wise for VS Code to adopt SolidJS or Svelte.** Even if these frameworks are considered "mature," VS Code's core architecture is deeply tied to a custom, heavily optimized UI layer and **Electron**, making a complete framework rewrite highly impractical and risky. \[[1](https://news.ycombinator.com/item?id=37380980), [2](https://devtrios.com/blog/svelte-vs-react-which-framework-should-you-choose/)]
+
+### Why Framework Adoption Doesn't Make Sense for VS Code
+
+- **Custom DOM Architecture**: VS Code relies on a highly specialized, hand-optimized DOM manipulation layer rather than generic web frameworks.
+- **Performance Bottlenecks**: Generic framework reactivity structures (even fast ones like SolidJS or Svelte) introduce abstraction overhead that cannot compete with VS Code's direct, low-level browser API manipulations for massive files.
+- **Massive Migration Costs**: Rewriting millions of lines of complex TypeScript code would take years and risk introducing breaking changes to thousands of ecosystem extensions.
+- **Monaco Editor Independence**: The core text editor component (Monaco Editor) is designed to be framework-agnostic so it can be embedded anywhere.
+- **Webview Isolation**: VS Code extensions that use Webviews already allow developers to use _any_ framework they want, including Svelte and SolidJS, without changing the core editor. \[[1](https://www.toptal.com/developers/react/solidjs-vs-react), [2](https://www.linkedin.com/pulse/svelte-solidjs-exlabs-zjgtf)]
+
+### Comparing Core Architectures
+
+| Metric / Feature \[[1](https://www.codemotion.com/magazine/frontend/solidjs-more-than-just-another-react-alternative/), [2](https://dev.to/lissy93/i-built-an-app-in-every-frontend-framework-4a9g), [3](https://byteiota.com/vanjs-lightweight-javascript-frameworks-replacing-react-2025/), [4](https://www.ideamotive.co/blog/solidjs-vs-svelte), [5](https://dev.to/playfulprogramming/a-decade-of-solidjs-32f4)] | VS Code Core                       | SolidJS / Svelte                                 |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- | ------------------------------------------------ |
+| **Rendering Strategy**                                                                                                                                                                                                                                                                                                                                                                                                | Direct DOM / Canvas / WebGL        | Compiled Reactivity / Fine-grained Updates       |
+| **Primary Goal**                                                                                                                                                                                                                                                                                                                                                                                                      | Extreme text rendering performance | Rapid application development                    |
+| **State Management**                                                                                                                                                                                                                                                                                                                                                                                                  | Custom RPC and Event Emitters      | Signals (Solid) / Compiler-driven state (Svelte) |
+
+### Where VS Code _Does_ Use Frameworks
+
+While the core editor avoids them, Microsoft does use frameworks in isolated, less performance-critical UI areas. For example, some built-in extension pages, settings UIs, or web-based dashboards occasionally leverage lightweight libraries, but the primary editor canvas remains strictly custom-built for speed.
+
+If you are thinking about building an extension or a similar app, let me know:
+
+- Are you looking to build a **VS Code extension** UI?
+- Are you choosing a framework for a **large-scale desktop app**?
+- Do you want to compare the **performance overhead** of Svelte vs. SolidJS?
+
+I can provide specific benchmarks or architecture templates based on your goals.
+
+- [link](https://news.ycombinator.com/item?id=37380980)\
+  Svelte is surprisingly easy to learn\
+  Sep 4, 2023 — 1. The developer experience with Svelte just isn't that great. Unfortunately, the Svelte team has (understandably) optimized for V...\
+  \
+  Hacker News
+- [link](https://devtrios.com/blog/svelte-vs-react-which-framework-should-you-choose/)\
+  Svelte vs React 2026: Which Framework Should You Choose?\
+  Jan 1, 2026 — The technical answer is yes, but the practical answer is more complex. While Svelte and React integration is possible, it comes wi...\
+  \
+  \
+  Devtrios
+- [link](https://www.toptal.com/developers/react/solidjs-vs-react)\
+  SolidJS vs. React: The Go-to Guide\
+  May 11, 2026 — SolidJS vs. React: The Go-to Guide SolidJS is a blazing-fast framework that dodges virtual DOM manipulation. Let's see how it comp...\
+  \
+  \
+  Toptal
+
+Show all
+
+# if solidjs are svelte are mature before the creation of vscode is it wise for vscode to adopt
+
+**No, it would likely not be wise for VS Code to adopt SolidJS or Svelte**, even if they had been mature before its creation. \[[1](https://mainmatter.com/blog/2026/02/24/why-choose-svelte/)]
+
+While Svelte and SolidJS offer incredible performance and smaller bundle sizes for web applications, the unique architectural demands of a massive, highly extensible desktop code editor like **Visual Studio Code** make a custom Electron-and-vanilla-DOM architecture vastly superior. \[[1](https://purelogics.com/solidjs-vs-svelte-comprehensive-comparison-for-developers/)]
+
+### Architectural Constraints
+
+Each major reason why a framework adoption fails for VS Code is detailed below:
+
+1. **The Extension Ecosystem Barrier**
+
+- VS Code relies heavily on a decoupled, multi-process architecture where the UI runs in a main thread and extensions run in a separate host process.
+- Forcing a reactive framework like Svelte or SolidJS onto the UI layer would create a strict proprietary component model.
+- Extension developers would be forced to write UI components using that specific framework, destroying the flexibility of the current webview and HTML/CSS-based API.
+
+2. **DOM-Level Performance Control**
+
+- Editors demand pixel-perfect, microsecond-level rendering optimization for things like text cursors, line wrapping, and syntax highlighting.
+- VS Code achieves its blazing fast editor speeds by bypassing frameworks entirely and using a highly specialized custom text buffer and direct DOM manipulation.
+- Introducing any abstraction layer—even a highly efficient virtual DOM-less one like SolidJS or Svelte—adds overhead that limits low-level memory and rendering optimizations.
+
+3. **Monolithic Codebase Maintenance**
+
+- VS Code consists of millions of lines of code meant to last for decades.
+- Third-party frameworks introduce external dependency risks, breaking changes, and deprecation cycles.
+- By sticking to standard TypeScript and raw DOM APIs, Microsoft ensures the core editor remains completely immune to framework churn and future-proof. \[[1](https://medium.com/@chajesse/from-learner-to-contributor-navigating-the-vs-code-extensions-structure-ed150f9897e5), [2](https://www.aalpha.net/blog/solidjs-vs-react-comparison/)]
+
+### Direct Comparison
+
+The table below illustrates why a custom architecture fits VS Code better than modern frameworks:
+
+| Feature             | VS Code Custom Architecture                                 | Svelte / SolidJS Frameworks                                |
+| ------------------- | ----------------------------------------------------------- | ---------------------------------------------------------- |
+| **Primary Focus**   | Maximum raw throughput & extension isolation                | Developer velocity & web app state synchronization         |
+| **UI Manipulation** | Direct, precise canvas and DOM surgical updates             | Reactive state-driven compiler or template rendering       |
+| **API Stability**   | Low dependency footprint, indefinite backward compatibility | Subject to community-driven major version breaking changes |
+| **Extension Model** | Universal (Plain JS/HTML inside isolated environments)      | Framework-locked (Requires component ecosystem alignment)  |
+
+If you want to dive deeper into how VS Code handles its interface, I can explain how the **Monaco Editor core** renders text or how the **Extension Host process** communicates with the UI. What area would you like to explore?
+
+- [link](https://mainmatter.com/blog/2026/02/24/why-choose-svelte/)\
+  Why I choose Svelte\
+  Feb 24, 2026 — # anchor When NOT to use Svelte? You need a big migration : If you already have a big codebase that's written in React/Vue/Solid/A...\
+  \
+  \
+  Mainmatter
+- [link](https://purelogics.com/solidjs-vs-svelte-comprehensive-comparison-for-developers/)\
+  SolidJS vs Svelte: A Comprehensive Comparison for Developers\
+  May 27, 2024 — SolidJS vs Svelte: Top Uses In today's competitive web development times, both SolidJS and Svelte are popular among website develo...\
+  \
+  \
+  PureLogics
+- [link](https://medium.com/@chajesse/from-learner-to-contributor-navigating-the-vs-code-extensions-structure-ed150f9897e5)\
+  From Learner to Contributor: Navigating the VS Code Extensions Structure\
+  Nov 2, 2024 — How extension communicate with main process. In VS Code, extensions run in a separate environment known as the Extension Host to e...\
+  \
+  \
+  Medium
+
+Show all
+
+# . should i write perfect code
+
 # . should i write perfect code
 
 <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">No, you should not write perfect code</span></mark>. "Perfect code" is a myth that will stall your progress, delay your product launches, and cause unnecessary stress. \[[1](https://blog.tarkalabs.com/perfect-code-is-the-enemy-of-becoming-a-good-developer-ef15968dfc27), [2](https://www.linkedin.com/posts/alexxubyte%5Fsystemdesign-coding-interviewtips-activity-7366133616688414722-wAeu), [3](https://algocademy.com/blog/solving-coding-problems-without-overthinking-how-to-trust-your-instincts/)]
@@ -11015,3 +11806,489 @@ I can help you decide if it is ready to ship or if it needs a quick cleanup.
   AlgoCademy
 
 Show all
+
+# react prop or state
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>Props</strong> are like arguments passed to a function, while <strong>state</strong> is like variables declared inside a function</mark>. Both are plain JavaScript objects used to hold data that controls what displays on your screen. \[[1](https://legacy.reactjs.org/docs/faq-state.html)]
+
+### Quick Comparison
+
+| Feature \[[1](https://www.geeksforgeeks.org/reactjs/reactjs-state-vs-props/), [2](https://dev.to/luxdevhq/understanding-state-and-props-in-react-4hfa)] | Props (Properties)                  | State                                           |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------- | ----------------------------------------------- |
+| **Source**                                                                                                                                              | Passed down from a parent component | Created and managed within the component itself |
+| **Mutability**                                                                                                                                          | **Immutable** (Read-only)           | **Mutable** (Can be updated)                    |
+| **Usage**                                                                                                                                               | Configuring a child component       | Tracking data that changes over time            |
+
+***
+
+### When to Use Props
+
+Use props to pass data or configuration settings down the component tree. \[[1](https://medium.com/towardsdev/mastering-react-props-and-state-21516e28ef2b)]
+
+- **Analogy**: A recipe passed down to you. You cannot change the words written on the paper; you just follow them.
+- **Characteristics**: They allow components to be reusable and dynamic. A component must never modify its own props.
+- **Examples**:
+  - Passing a user's name to a component.
+  - Passing a specific color theme to a button component.
+  - Passing a callback function so a child can notify a parent of an event. \[[1](https://stackoverflow.com/questions/27991366/what-is-the-difference-between-state-and-props-in-react), [2](https://react.dev/learn/passing-props-to-a-component), [3](https://dev.to/luxdevhq/understanding-state-and-props-in-react-4hfa), [4](https://www.geeksforgeeks.org/reactjs/reactjs-state-vs-props/), [5](https://daliayan.medium.com/props-for-dummies-dfb03bdd8cd2)]
+
+### When to Use State
+
+Use state when a component needs to remember information that changes due to user interaction, time, or network updates. \[[1](https://www.greatfrontend.com/questions/quiz/what-is-the-difference-between-state-and-props-in-react)]
+
+- **Analogy**: The current ingredients in your mixing bowl. You can add, change, or stir them as you bake.
+- **Characteristics**: State is local and private to the component. When state changes, the component automatically re-renders to update the UI.
+- **Examples**:
+  - Form inputs (what the user types).
+  - Open/closed toggles for modal windows or dropdown menus.
+  - A counter tracking the number of clicks. \[[1](https://www.youtube.com/watch?v=IYvD9oBCuJI), [2](https://dev.to/luxdevhq/understanding-state-and-props-in-react-4hfa), [3](https://www.greatfrontend.com/questions/quiz/what-is-the-difference-between-state-and-props-in-react), [4](https://www.geeksforgeeks.org/reactjs/reactjs-state-vs-props/), [5](https://medium.com/@mabhusubhani001/react-props-vs-state-whats-the-difference-6c317f5fe834)]
+
+***
+
+### How They Work Together
+
+A very common React pattern is to have **state** inside a parent component, which then gets passed down to a child component as a **prop**. \[[1](https://www.reddit.com/r/reactjs/comments/d7ibt0/state%5Fvs%5Fprops%5Fand%5Fhow%5Fto%5Fstop%5Fconfusing%5Fthem/)]
+
+jsx
+
+```
+import { useState } from 'react';
+
+// Parent Component
+function App() {
+  // 1. "count" is state managed inside App
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      {/* 2. Passed down as a prop to CounterDisplay */}
+      <CounterDisplay currentCount={count} />
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
+}
+
+// Child Component
+function CounterDisplay(props) {
+  // 3. Receives "currentCount" as a read-only prop
+  return <h1>The count is: {props.currentCount}</h1>;
+}
+```
+
+Use code with caution.
+
+If you are unsure where a piece of data belongs, check the official documentation on [Sharing State Between Components](https://react.dev/learn/sharing-state-between-components). The general rule is to lift state up to the closest common parent component that needs that data. \[[1](https://react.dev/learn/sharing-state-between-components), [2](https://gopi-it.medium.com/angular-input-output-and-services-for-state-management-d6fec85bcc3f)]
+
+To help you decide what to use for your specific feature, tell me:
+
+- **What kind of data** are you trying to manage?
+
+- Is this data **changing over time** due to user actions?
+
+- Do **multiple components** need access to this exact data?
+
+- [link](https://www.youtube.com/watch?v=IYvD9oBCuJI)\
+  React State Vs Props\
+  Aug 27, 2019 — one of the greatest things about React is its ability to manage your data and properly rerender your application when your data. c...\
+  5:46\
+  YouTube·Web Dev Simplified
+
+- [link](https://stackoverflow.com/questions/27991366/what-is-the-difference-between-state-and-props-in-react)\
+  What is the difference between state and props in React?\
+  Jan 16, 2015 — There are also other patterns like the recently released Relay, from Facebook, and Redux. 2015-11-08T18:26:07.777Z+00:00. 8. Mark.\
+  Stack Overflow
+
+- [link](https://www.reddit.com/r/reactjs/comments/d7ibt0/state%5Fvs%5Fprops%5Fand%5Fhow%5Fto%5Fstop%5Fconfusing%5Fthem/)\
+  State vs. Props and how to stop confusing them? : r/reactjs - Reddit\
+  Sep 21, 2019 — Comments Section \* noxispwn. • 7y ago. • Edited 7y ago. Props are passed to the component, so they are external data that usually ...\
+  Reddit·r/reactjs
+
+Show all
+
+## You said: example
+
+Here is a complete, real-world example of a shopping cart item. It shows how **state** (the changing number) and **props** (the fixed product details) work together in React. \[[1](https://www.propelauth.com/post/state-management-in-react)]
+
+### Code Example
+
+jsx
+
+```
+import { useState } from 'react';
+
+// 1. PARENT COMPONENT: Holds the state
+export default function ShoppingCart() {
+  // State: This changes when the user clicks buttons
+  const [quantity, setQuantity] = useState(1);
+
+  return (
+    <div style={{ border: '2px solid black', padding: '20px', width: '300px' }}>
+      <h2>Your Cart</h2>
+
+      {/* 2. Passing data down as props */}
+      <ProductCard
+        name="Wireless Headphones"
+        price={99}
+        currentQuantity={quantity}
+      />
+
+      {/* Updating the parent state */}
+      <div style={{ marginTop: '10px' }}>
+        <button onClick={() => setQuantity(quantity + 1)}> + Add One </button>
+        <button onClick={() => setQuantity(Math.max(1, quantity - 1))}> - Remove One </button>
+      </div>
+    </div>
+  );
+}
+
+// 3. CHILD COMPONENT: Receives data as props
+function ProductCard(props) {
+  // This component cannot change "props.name" or "props.price" directly.
+  // It just reads them to calculate the layout.
+  const totalPrice = props.price * props.currentQuantity;
+
+  return (
+    <div style={{ background: '#f0f0f0', padding: '10px' }}>
+      <h3>{props.name}</h3>
+      <p>Price per item: ${props.price}</p>
+      <p>Quantity ordered: {props.currentQuantity}</p>
+      <hr />
+      <strong>Total: ${totalPrice}</strong>
+    </div>
+  );
+}
+```
+
+Use code with caution.
+
+***
+
+### How to Breakdown This Example
+
+To understand why each piece of data is placed where it is, look at how the data behaves:
+
+- **The Product Name & Price (`props`)**:
+  - The `ProductCard` needs to display "Wireless Headphones" and "$99".
+  - These values never change based on user clicks inside this view.
+  - They are passed in from above like configuration settings. \[[1](https://www.seanmcp.com/articles/storing-data-in-state-vs-class-variable/)]
+- **The Quantity (`state`)**:
+  - The quantity changes every time a user clicks the plus or minus buttons.
+  - React stores this in `useState`.
+  - Every time `setQuantity` runs, React updates the number, passes the new number down into `ProductCard` as a fresh prop, and updates your screen.
+
+If you are trying to build something similar, I can write a customized code snippet for you if you tell me:
+
+- What **specific UI component** you are building (e.g., a dark mode toggle, a user profile form, a filtered list).
+
+- What **actions** the user will take on that page.
+
+- [link](https://www.propelauth.com/post/state-management-in-react)\
+  Complete Guide to State Management in React\
+  Jul 24, 2024 — Those are more conceptual examples of state. React components themselves will have their own state and will often pass state to th...\
+  \
+  \
+  PropelAuth
+
+- [link](https://www.seanmcp.com/articles/storing-data-in-state-vs-class-variable/)\
+  Storing data in state vs. class variable\
+  Apr 12, 2019 — After writing up this simple example, I thought this code would work. But I was wrong. You can click the button as much as you wan...\
+  \
+  \
+  seanmcp.com
+
+## You said: criticism
+
+While props and state are fundamental to React, their design has faced valid criticisms from developers over the years.
+
+### Criticisms of Props
+
+- **Prop Drilling**: Passing data through deep component trees requires sending props through intermediate components that do not actually use them. This makes code verbose and hard to refactor.
+- **Lack of Strict Types**: By default, vanilla JavaScript props do not enforce data types. If a component expects a number but receives a string, it can cause silent UI bugs. Developers must rely on external tools like TypeScript or the deprecated `prop-types` library to solve this.
+- **Immutability Confusion**: New developers often try to change a prop directly (e.g., `props.name = "New Name"`). React prohibits this, but the JavaScript language itself does not natively block it, leading to runtime errors or unexpected behavior.
+
+### Criticisms of State
+
+- **Stale State Closures**: Because React state updates are asynchronous, reading a state variable immediately after setting it will return the old value. This often trips up developers who expect synchronous behavior.
+- **Component Bloat**: Keeping state local to a component can make it difficult to share with distant cousin or sibling components. This forces developers to "lift state up," making parent components massive and difficult to maintain.
+- **Complex Re-renders**: If you store complex objects or arrays in state, mutating them directly (like `myState.push(item)`) will not trigger a re-render. You must always create a brand-new copy of the object, which can feel tedious.
+
+### Modern Solutions to These Problems
+
+The React ecosystem has evolved specifically to address these criticisms:
+
+- **To fix Prop Drilling**: React introduced the **Context API**, which allows components to teleport data directly to deep child components without passing props manually.
+- **To fix State Bloat**: Global state management libraries like **Zustand**, **Redux Toolkit**, or **Recoil** extract complex state entirely out of the UI components.
+
+To help you avoid these architectural traps, let me know:
+
+- Have you run into a specific issue like **prop drilling** or **stale state** in your current project?
+- Are you deciding whether to use **local state** or pull in a **global state library**?
+
+## You said: for example, you have a counter. one holds a value itself. one is supposed to get a prop as well as its setter from parents. they are the same in math but different in react.
+
+You have hit on one of the most critical architectural distinctions in React. Mathematically, both counters increment a number by 1. Structurally, they create completely different component relationships.
+
+Here is the breakdown of why they are different in React, using your exact scenario.
+
+### 1. The Self-Contained Counter (Local State)
+
+This component is fully independent and autonomous. \[[1](https://medium.com/@ctrlaltmonique/react-props-vs-state-7fe2ced3075f)]
+
+jsx
+
+```
+function LocalCounter() {
+  const [count, setCount] = useState(0); // State lives here
+
+  return <button onClick={() => setCount(count + 1)}>Count: {count}</button>;
+}
+```
+
+Use code with caution.
+
+- **Ownership**: The component owns its data. No outside component can read this number or force it to change.
+- **Encapsulation**: If you place three components on a single page, they will all act independently. Clicking one will **not** affect the other two.
+- **Limitation**: The parent component has zero knowledge of what the current count is. \[[1](https://dev.to/atenajoon/react-state-variables-vs-props-21o7), [2](https://dilipkumar.medium.com/react-js-foundation-a59f66cbd4d5), [3](https://articles.wesionary.team/how-to-update-the-internal-state-of-the-child-component-from-the-parent-component-3975a73c12ba)]
+
+### 2. The Controlled Counter (Lifted State / Props)
+
+This component is a "dumb" or "controlled" component. It does not own anything; it just executes orders. \[[1](https://itnext.io/writing-controllable-components-in-react-c9cccf41b48c)]
+
+jsx
+
+```
+// Child Component
+function ControlledCounter({ count, onIncrement }) {
+  // Receives value and setter as props
+  return <button onClick={onIncrement}>Count: {count}</button>;
+}
+```
+
+Use code with caution.
+
+- **Ownership**: The parent component owns the data and the state. \[[1](https://dev.to/highflyer910/react-props-vs-state-whats-the-difference-4e3i), [2](https://dev.to/atenajoon/react-state-variables-vs-props-21o7)]
+- **Synchronization**: If the parent passes this same state to multiple children, clicking _any_ of them will update the parent, instantly syncing the number across all of them.
+- **Reusability**: This component is highly predictable. It acts exactly like a native HTML tag—it only displays what you tell it to display, and logs actions when clicked. \[[1](https://medium.com/@noransaber685/react-behind-the-scenes-map-props-even-handling-propagation-52cd1d4260c4)]
+
+***
+
+### The React Difference Summary
+
+| Feature \[[1](https://medium.com/@rashmipatil24/react-state-and-props-1049edd9eede), [2](https://www.dhiwise.com/post/best-practices-for-effectively-using-useimperativehandle-in-your-react-applications), [3](https://wsvincent.com/react-counter/), [4](https://medium.com/@patricmanciya/statestate-management-in-react-with-typescript-choosing-the-right-approach-5e64a1b49fd3), [5](https://www.telerik.com/blogs/react-basics-how-when-use-react-context)] | Local State Counter              | Controlled Counter (Props)                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------- | ------------------------------------------- |
+| **Who decides the value?**                                                                                                                                                                                                                                                                                                                                                                                                                                         | The counter itself               | The parent component                        |
+| **Can parents read the math?**                                                                                                                                                                                                                                                                                                                                                                                                                                     | No                               | Yes                                         |
+| **Best used for...**                                                                                                                                                                                                                                                                                                                                                                                                                                               | Isolated, independent UI widgets | Features where other elements need the data |
+
+To see how to apply this to your code, let me know:
+
+- Do you need **other parts of your app** (like a checkout total or a dashboard summary) to know the counter's value?
+
+- Are you trying to sync **multiple counters** together, or should they stay separate?
+
+- [link](https://medium.com/@ctrlaltmonique/react-props-vs-state-7fe2ced3075f)\
+  React Props vs State. So you landed a React interview — lucky… | by Monique McIntyre\
+  Dec 16, 2024 — Both counters can be incremented independently without interfering with each other. The state remains private to each component, j...\
+  \
+  \
+  Medium
+
+- [link](https://dev.to/atenajoon/react-state-variables-vs-props-21o7)\
+  A practical summary of React State variables & Props!\
+  Jun 21, 2024 — State vs props Ownership and Control: Internal data, owned and controlled by the component itself. External data, owned and contro...\
+  \
+  \
+  DEV Community
+
+- [link](https://dilipkumar.medium.com/react-js-foundation-a59f66cbd4d5)\
+  React.js foundation. Chapter 1: Introduction to React &… | by Dilip Kumar | Medium\
+  Apr 12, 2025 — Independent State: If you render multiple times, each instance will have its own independent count state. Clicking increment on on...\
+  \
+  \
+  Medium
+
+Show all
+
+## You said: if ui = f state they should be the same. let's say we ban states. and a count prop is both getter and setter. if not passed the counter owns.
+
+Your mental model aligns perfectly with a foundational concept in computer science: **algebraic effects** and **monads**. If we look at UI purely as a mathematical formula (`UI = f(state)`), you are absolutely correct.
+
+The reason React splits them into a "getter" and a "setter" is a concession to **JavaScript's language limitations** rather than pure mathematical logic.
+
+Here is why your proposed system—banning explicit states and using a unified prop that defaults to local ownership—is both brilliant and different from React.
+
+### 1. The JavaScript Problem: Reference vs. Value
+
+In JavaScript, numbers are passed **by value**, not by reference.
+
+If you pass a pure number as a prop, the child component only gets a copy of that snapshot. It has no mathematical link back to the source variable.
+
+javascript
+
+```
+// What you want conceptually:
+<Counter count={myCount} />
+
+// What JavaScript actually executes if myCount is 5:
+<Counter count={5} /> // The connection to the "setter" is instantly lost.
+```
+
+Use code with caution.
+
+To achieve your vision where a single prop acts as both getter and setter, the prop cannot be a raw primitive number. It must be an **object wrapper** or a **pointer** (often called a "Signal" or an "Atom").
+
+### 2. How Your "Unified Prop" Looks in Code
+
+If we designed a framework based on your rule ("if not passed, the counter owns; if passed, it links upstream"), it would look like this using modern proxy-based reactive objects:
+
+jsx
+
+```
+// Your ideal unified component
+function Counter({ count = signal(0) }) {
+  // If parent doesn't pass 'count', it defaults to a local signal(0)
+
+  return (
+    <button onClick={() => count.value++}>
+      Count: {count.value}
+    </button>
+  );
+}
+```
+
+Use code with caution.
+
+### Why this satisfies your rule:
+
+- **The Math stays pure**: The UI is strictly `f(count)`.
+- **Implicit State**: You successfully banned the dual `[value, setValue]` syntax.
+- **Smart Ownership**: If the parent passes a signal, `.value++` modifies the parent's data. If the parent passes nothing, it modifies its own default local signal.
+
+### 3. Frameworks That Actually Do This
+
+React chose not to do this because it relies on "immutability" and pure re-renders. However, other modern frontend frameworks realized your exact criticism and built exactly what you described: \[[1](https://presumably.de/reagent-mysteries-part-3-manipulating-the-dom.html)]
+
+- **Svelte 5 / Vue 3**: They use **Signals** or **Refs**. You pass a single reactive variable down. The child can read it and mutate it directly, and the framework automatically tracks whether it belongs to the parent or child.
+- **React's Experimental `useFormStatus`**: React is slowly moving this way for specific use cases. Newer hooks automatically look upstream for a parent context, and if they don't find it, they fall back to local tracking.
+
+You have essentially deduced the core architectural shift from **Hooks (React)** to **Signals (Solid/Svelte)**.
+
+Are you looking to implement this "smart fallback" pattern inside standard React today using custom hooks, or are you exploring how other frameworks handle this better?
+
+- [link](https://presumably.de/reagent-mysteries-part-3-manipulating-the-dom.html)\
+  Reagent Mysteries\
+  Jan 3, 2017 — This hierarchy of elements consists entirely of immutable values, which is what gives React's model its simplicity. Still there's ...\
+  \
+  presumably.de
+
+# (d) how does vscode write components in vanillajs
+
+To write components in Vanilla JavaScript using VS Code, you <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">leverage the browser's native <strong>Web Components API</strong></mark>. VS Code assists this workflow natively by providing features like IntelliSense autocomplete, Emmet expansions within JavaScript string literals, and type checking using JSDoc. \[[1](https://www.youtube.com/watch?v=b%5Fx3kzapvcI\&t=154), [2](https://artsy.github.io/blog/2016/08/15/vscode/), [3](https://stackoverflow.com/questions/52041740/vscode-how-can-i-make-intellisense-work-with-a-vanilla-javascript-project), [4](https://suzza.dev/three/code-editor/), [5](https://code.visualstudio.com/docs/languages/javascript)]
+
+### 1. Structure of a Vanilla JS Component
+
+A standard native Web Component requires a JavaScript **Class** extending `HTMLElement` and a call to register it with the browser via `customElements.define()`. \[[1](https://www.youtube.com/watch?v=b%5Fx3kzapvcI\&t=154)]
+
+Create a file named `MyComponent.js` in VS Code:
+
+javascript
+
+```
+class MyComponent extends HTMLElement {
+  constructor() {
+    super();
+    // 1. Attach a shadow DOM for style encapsulation
+    this.attachShadow({ mode: 'open' });
+  }
+
+  // 2. Lifecycle hook called when the element is added to the document
+  connectedCallback() {
+    this.render();
+  }
+
+  // 3. Define HTML markup and component styles
+  render() {
+    this.shadowRoot.innerHTML = `
+      <style>
+        p { color: #007acc; font-family: sans-serif; }
+      </style>
+      <p>Hello from a Vanilla JS Component!</p>
+    `;
+  }
+}
+
+// 4. Register the custom tag (name must contain a hyphen)
+customElements.define('my-component', MyComponent);
+```
+
+Use code with caution.
+
+### 2. Using the Component in HTML
+
+Once defined, include the script as a module and use your custom tag directly in your HTML file:
+
+html
+
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vanilla JS Components</title>
+  <script type="module" src="./MyComponent.js"></script>
+</head>
+<body>
+
+  <!-- Render your custom component -->
+  <my-component></my-component>
+
+</body>
+</html>
+```
+
+Use code with caution.
+
+***
+
+### 3. How to Supercharge VS Code for Vanilla Components
+
+While VS Code handles JavaScript excellently by default, you can configure it to handle raw HTML/CSS strings inside your JavaScript classes elegantly: \[[1](https://javascript.plainenglish.io/my-ultimate-vs-code-setup-with-plugins-and-shortcuts-9fcc5392fe5d)]
+
+### Enable Emmet for Template Literals
+
+By default, VS Code's HTML auto-completion (Emmet) does not trigger inside backticks (\`\`\`\`\`). You can change this behavior in your global configuration: \[[1](https://dev.to/myogeshchavan97/improve-your-productivity-when-working-with-react-by-making-these-changes-in-visual-studio-code-251n)]
+
+1. Open settings in VS Code (`Ctrl + ,` or `Cmd + ,`).
+2. Search for **Emmet: Include Languages**.
+3. Add an entry with `javascript` as the item and `html` as the value. \[[1](https://javascript.plainenglish.io/how-to-enable-props-suggestions-autocomplete-for-jsx-and-tsx-in-vscode-4874cc7ebf9c), [2](https://www.freecodecamp.org/news/vscode-react-setup/), [3](https://stackoverflow.com/questions/39320393/jsx-or-html-autocompletion-in-visual-studio-code)]
+
+### Install Syntax Highlighting Extensions
+
+By default, the HTML inside `this.shadowRoot.innerHTML` looks like a regular string. To get full syntax highlighting and color coding inside your template literals, install the es6-string-html extension or the lit-html extension via the VS Code extensions tab. This forces VS Code to treat the string as actual code. \[[1](https://www.youtube.com/watch?v=aydFCQiUW44\&t=385), [2](https://dev.to/megazear7/the-vanilla-javascript-component-pattern-37la)]
+
+### Use Snippets for Faster Boilerplates \[[1](https://www.youtube.com/watch?v=elNnqoJ1zAY\&t=19)]
+
+Instead of typing the entire class setup manually every time, you can use snippets like the [JS Web Component Extension](https://marketplace.visualstudio.com/items?itemName=srinivasankk.js-web-component) to generate a complete Shadow DOM boilerplate with a single command. \[[1](https://marketplace.visualstudio.com/items?itemName=srinivasankk.js-web-component)]
+
+***
+
+If you would like to expand your setup, tell me if you want to see how to **pass dynamic attributes (props)** into this component, or how to add **reactive state tracking** without using a massive framework. \[[1](https://www.reddit.com/r/Frontend/comments/18wudcw/modern%5Ffrontend%5Fframeworks%5Fvs%5Fvanillajs/), [2](https://mellowdevs.medium.com/web-components-using-vanilla-js-f7af00834caa), [3](https://www.reddit.com/r/javascript/comments/blas6s/approaches%5Ffor%5Fdeclarative%5Fcomponents%5Fin%5Fvanilla/)]
+
+- [link](https://www.reddit.com/r/Frontend/comments/18wudcw/modern%5Ffrontend%5Fframeworks%5Fvs%5Fvanillajs/)\
+  Modern Frontend frameworks vs VanillaJS - Reddit\
+  Jan 2, 2024 — Also check out the mdn docs on web components. \* • 2y ago. React ultimately is just doing what can be done in vanilla js (and is d...\
+  Reddit·r/Frontend
+- [link](https://www.reddit.com/r/javascript/comments/blas6s/approaches%5Ffor%5Fdeclarative%5Fcomponents%5Fin%5Fvanilla/)\
+  Approaches for declarative components in vanilla JS? : r/javascript\
+  May 6, 2019 — Sometimes I make very small apps where I do not want to use any framework (e.g. for load time reasons on slow mobile networks). Ho...\
+  Reddit·r/javascript
+- [link](https://www.youtube.com/watch?v=b%5Fx3kzapvcI\&t=154)\
+  Create a reusable Web Component from scratch\
+  Nov 24, 2025 — and I was like oh you can't do that you know and then I've even had someone in my Discord uh community recently sort of talking ab...\
+  4m\
+  YouTube·Kevin Powell
+
+Show all
+
+# 
+
