@@ -11744,8 +11744,6 @@ Show all
 
 # . should i write perfect code
 
-# . should i write perfect code
-
 <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">No, you should not write perfect code</span></mark>. "Perfect code" is a myth that will stall your progress, delay your product launches, and cause unnecessary stress. \[[1](https://blog.tarkalabs.com/perfect-code-is-the-enemy-of-becoming-a-good-developer-ef15968dfc27), [2](https://www.linkedin.com/posts/alexxubyte%5Fsystemdesign-coding-interviewtips-activity-7366133616688414722-wAeu), [3](https://algocademy.com/blog/solving-coding-problems-without-overthinking-how-to-trust-your-instincts/)]
 
 ### Why Perfect Code is a Trap
@@ -12290,5 +12288,1175 @@ If you would like to expand your setup, tell me if you want to see how to **pass
 
 Show all
 
-# 
+# . how does vscode itself write components in vanillajs
+
+**Visual Studio Code does not use any frontend UI framework** like React, Angular, or Vue. Instead, it uses **strict Object-Oriented Programming (OOP)** written in TypeScript (which transpiles down to vanilla JavaScript) using a **Model-View-Presenter (MVP)** architecture. \[[1](https://www.reddit.com/r/vscode/comments/hpafjq/what%5Fis%5Fthe%5Fframework%5Fbehind%5Fvscode%5Fui/), [2](https://www.linkedin.com/posts/monarchwadia%5Flittle-known-fact-vscode-is-fully-built-activity-7178387571171815425-4CUr), [3](https://blog.logrocket.com/writing-vs-code-extensions-in-javascript/), [4](https://www.youtube.com/watch?v=mZyi8EaH0%5FY)]
+
+Because the team wanted ultimate control over performance, memory consumption, and dependency lifespan, they built their own lightweight, low-level component system from scratch using raw DOM manipulation (`document.createElement`). \[[1](https://www.linkedin.com/posts/monarchwadia%5Flittle-known-fact-vscode-is-fully-built-activity-7178387571171815425-4CUr)]
+
+***
+
+### 1. The Core Lifecycle: The `Widget` and `Disposable` Classes
+
+At the foundation of VS Code’s UI system (located under `src/vs/base/browser/ui/`) is a base class usually called **`Widget`** or **`Disposable`**. Every UI component (buttons, dropdowns, split-views) extends this base class to handle two critical concerns: element creation and memory management. \[[1](https://github.com/microsoft/vscode/issues/38414), [2](https://github.com/microsoft/vscode/issues/315482), [3](https://github.com/Microsoft/vscode/blob/master/src/vs/base/browser/ui/sash/sash.ts), [4](https://github.com/microsoft/vscode/blob/master/src/vs/base/browser/ui/splitview/splitview.ts)]
+
+- **Explicit Mounting:** Unlike React, which uses a declarative virtual DOM, VS Code components require you to pass a container element to a `.render()` or constructor function.
+- **The Disposable Pattern:** Memory leaks are the enemy of a long-running code editor. VS Code wraps event listeners in a custom `Disposable` tracking system. When a component is removed from the UI, its `.dispose()` method is explicitly called, instantly tearing down all listeners, DOM nodes, and timeouts to free up memory. \[[1](https://www.reddit.com/r/vscode/comments/hpafjq/what%5Fis%5Fthe%5Fframework%5Fbehind%5Fvscode%5Fui/), [2](https://medium.com/@stephane.souron/behind-the-hood-of-frontend-libraries-naive-approach-to-components-in-vanilla-typescript-bdd357a4bcde), [4](https://github.com/microsoft/vscode/issues/315482), [5](https://vscode-docs.readthedocs.io/en/stable/extensions/patterns-and-principles/)]
+
+### 2. Manual DOM Construction via Utility Functions
+
+VS Code rarely writes raw HTML strings or uses `innerHTML` due to security (XSS) and performance overhead. Instead, they use a core DOM utility module (`src/vs/base/browser/dom.ts`) containing helper functions to construct standard HTML elements quickly. \[[1](https://github.com/microsoft/vscode/blob/master/src/vs/base/browser/dom.ts), [2](https://www.youtube.com/watch?v=vLkPBj9ZaU0), [3](https://github.com/microsoft/vscode/issues/103454)]
+
+A simplified version of how they conceptually instantiate an element looks like this:
+
+javascript
+
+```
+// A standard abstraction VS Code uses for quick DOM construction
+const myButton = document.createElement('div');
+myButton.classList.add('monaco-button');
+myButton.tabIndex = 0;
+myButton.textContent = 'Save';
+container.appendChild(myButton);
+```
+
+Use code with caution.
+
+_(Note: They use a tiny `$()` helper function in their code that wraps `document.createElement` to assign classes and attributes in a single line.)_ \[[1](https://github.com/microsoft/vscode/issues/130971)]
+
+### 3. State Management & The Presenter Layer
+
+Without a framework, there is no automatic "reactive" state re-rendering. If data changes, the component must be updated manually via JavaScript methods. \[[1](https://www.reddit.com/r/Frontend/comments/18wudcw/modern%5Ffrontend%5Fframeworks%5Fvs%5Fvanillajs/), [2](https://www.youtube.com/watch?v=vLkPBj9ZaU0)]
+
+- **The Presenter** serves as the brains of the component. It holds the state, listens for user interactions from the DOM view, processes them, and then explicitly mutates the DOM elements.
+- **Custom Event Emitters:** To pass data out of the component, VS Code relies heavily on a highly optimized, native Node-style **Event Emitter system** (`src/vs/base/common/event.ts`). Instead of callbacks, components expose public events (like `onDidChange` or `onDidAccept`) that other parts of the editor can subscribe to. \[[1](https://www.reddit.com/r/vscode/comments/hpafjq/what%5Fis%5Fthe%5Fframework%5Fbehind%5Fvscode%5Fui/), [2](https://github.com/FracktalWorks/PenroseControlCenter), [3](https://x.com/ChrisStaud/status/1696887217627574574), [4](https://github.com/microsoft/vscode/issues/314441), [5](https://github.com/microsoft/vscode/issues/38414), [6](https://github.com/microsoft/vscode/issues/213359)]
+
+### 4. Code Example: How a VS Code Input Box Component Works
+
+If you look at the source code for a native UI component like the `InputBox` (`src/vs/base/browser/ui/quickinput/quickInputBox.ts`), its architectural skeleton operates like this: \[[1](https://github.com/microsoft/vscode/issues/267445)]
+
+javascript
+
+```
+import { Disposable } from '../../common/lifecycle.js';
+import { Emitter } from '../../common/event.js';
+
+export class SimpleInputBox extends Disposable {
+    // 1. Define types, elements, and internal state
+    element;
+    inputElement;
+
+    // 2. Define custom events using VS Code's Emitter
+    _onDidChange = this._register(new Emitter());
+    onDidChange = this._onDidChange.event;
+
+    constructor(container) {
+        super();
+
+        // 3. Imperatively build the DOM structure
+        this.element = document.createElement('div');
+        this.element.className = 'monaco-input-box';
+
+        this.inputElement = document.createElement('input');
+        this.inputElement.type = 'text';
+        this.element.appendChild(this.inputElement);
+
+        // 4. Manually bind event listeners and pipe them into custom events
+        this._register(this.inputElement.addEventListener('input', (e) => {
+            // Forward raw DOM events out to VS Code's custom architecture
+            this._onDidChange.fire(this.inputElement.value);
+        }));
+
+        // 5. Append to parent container
+        container.appendChild(this.element);
+    }
+
+    // 6. Provide methods to update the view when the data model changes
+    setValue(newValue) {
+        this.inputElement.value = newValue;
+    }
+
+    getValue() {
+        return this.inputElement.value;
+    }
+}
+```
+
+Use code with caution.
+
+### Why does this approach make VS Code so fast?
+
+By bypassing a framework like React, VS Code avoids virtual DOM diffing, fiber trees, and reconciliation scheduling altogether. When you press a key in the editor, it maps directly to a physical, native DOM update. This zero-abstraction style keeps memory allocations incredibly lean and processing times down to microseconds. \[[1](https://www.reddit.com/r/vscode/comments/hpafjq/what%5Fis%5Fthe%5Fframework%5Fbehind%5Fvscode%5Fui/), [2](https://medium.com/@stephane.souron/behind-the-hood-of-frontend-libraries-naive-approach-to-components-in-vanilla-typescript-bdd357a4bcde), [3](https://www.reddit.com/r/javascript/comments/z9eky1/askjs%5Fdoes%5Fanyone%5Fstill%5Fuse%5Fvanilla%5Fjs/), [5](https://www.linkedin.com/posts/monarchwadia%5Flittle-known-fact-vscode-is-fully-built-activity-7178387571171815425-4CUr)]
+
+***
+
+If you are trying to mirror this architecture in your own project, I can help you set it up. Let me know:
+
+- Are you aiming to build a **fully vanilla framework-less web app**, or just a few reusable components?
+
+- Do you want to see how VS Code implements its **`Disposable` garbage collection** structure to prevent memory leaks?
+
+- [link](https://www.reddit.com/r/vscode/comments/hpafjq/what%5Fis%5Fthe%5Fframework%5Fbehind%5Fvscode%5Fui/)\
+  What is the framework behind VSCode UI? - Reddit\
+  Jul 12, 2020 — Seems like Model-View-Presenter with JS/TS constructed HTMLElement components. The UI components are pretty slim, and have no conc...\
+  \
+  Reddit·r/vscode
+
+- [link](https://www.youtube.com/watch?v=vLkPBj9ZaU0)\
+  How to create a Web Component using Vanilla JS - YouTube\
+  Mar 10, 2020 — In this video we look at creating a Web Component without the help of any framework or libraries! this allows us to dig into the d...\
+  YouTube·A shot of code
+
+- [link](https://medium.com/@stephane.souron/behind-the-hood-of-frontend-libraries-naive-approach-to-components-in-vanilla-typescript-bdd357a4bcde)\
+  Under the hood of frontend libraries: A naive approach to ...\
+  Sep 26, 2019 — Here we redeclared element as HTMLButtonElement (which is OK, because it inherits from HTMLElement). In the constructor, we make t...\
+  Medium·Stephane Souron
+
+Show all
+
+## You said: do they use aliases like hyperscript rather than create element, classname, append child one by one
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">Yes, absolutely.</span></strong></mark> The VS Code team does not manually type out `document.createElement`, `classList.add`, and `appendChild` one by one for every single node. That would lead to immense code bloat across a codebase of this scale. \[[1](https://code.visualstudio.com/api/get-started/extension-anatomy)]
+
+Instead, they built a highly efficient, native **hyperscript helper** directly into their core DOM utility file (`src/vs/base/browser/dom.ts`) simply named **`h`**. \[[1](https://www.codefactor.io/repository/github/mohamedaabdallah/vscode/issues?lang=22\&page=13), [2](https://www.codefactor.io/repository/github/mohamedaabdallah/vscode/issues?category=Complexity\&groupId=3\&lang=22\&page=7)]
+
+***
+
+### 1. The VS Code `h` Helper (Their Hyperscript)
+
+The `h` function allows them to declaratively construct a tree of DOM nodes in a single nested expression, while returning real, native DOM references. \[[1](https://dev.to/solarliner/a-beginners-tutorial-to-preact-part-2-dom-hyperscript-and-jsx-48op)]
+
+It uses a CSS-like selector string for the tag, IDs, and classes, an object for attributes, and an array for children.
+
+A recreation of how they construct a component's UI structure look like this:
+
+typescript
+
+```
+import { h } from 'vs/base/browser/dom';
+
+// Build a structured, deep component layout in one block
+const result = h('div.monaco-input-box#search-input', [
+    h('div.wrapper', [
+        h('input.input-element', { type: 'text', placeholder: 'Search...' }),
+        h('span.validation-message')
+    ]),
+    h('div.button-container')
+]);
+
+// result.root is the native HTMLDivElement
+container.appendChild(result.root);
+```
+
+Use code with caution.
+
+### 2. The Clever Part: Automated Element Referencing
+
+One major pain point of traditional hyperscript is that after you create a big nested tree, you lose references to the inner elements (like the or tags). Usually, you have to query-select them afterward (`root.querySelector('input')`), which is slow.
+
+VS Code solves this by allowing developers to pass a generic type or object shape to `h`. The function automatically queries and maps those specific deep DOM nodes onto an object for you, giving you **type-safe references with zero query overhead**.
+
+typescript
+
+```
+// 1. Define the elements we actually need to manipulate later
+interface InputBoxDOM {
+    root: HTMLElement;
+    myInput: HTMLInputElement;       // Map to the input
+    errorText: HTMLSpanElement;      // Map to the span
+}
+
+// 2. Use the 'h' function with class bindings
+const dom = h<InputBoxDOM>('div.monaco-input-box', [
+    h('div.wrapper', [
+        h('input.input-element@myInput', { type: 'text' }), // '@' acts as a ref tracker
+        h('span.validation-message@errorText')
+    ])
+]);
+
+// 3. Immediately use them cleanly without querySelector
+dom.myInput.value = "Hello World";
+dom.errorText.textContent = "Field required";
+```
+
+Use code with caution.
+
+### 3. Combining `h` with `append` Utilities
+
+When they are not using the full nested structure of `h`, they use a secondary set of imperative fluid wrappers also located in `dom.ts`.
+
+The most heavily used helper is a strict, typed wrapper around `appendChild` that returns the child node itself, allowing them to chain elements together like this: \[[1](https://stackoverflow.com/questions/12577797/how-to-add-class-to-an-element-create-by-appendchild)]
+
+typescript
+
+```
+import { append, $ } from 'vs/base/browser/dom';
+
+// $() is their quick alias for document.createElement
+const parent = $('.container-class');
+
+// append() creates, appends, and passes back the reference in one line
+const title = append(parent, $('h1.title-text'));
+title.textContent = 'Settings';
+
+const description = append(parent, $('p.desc-text'));
+description.textContent = 'Configure your preferences below.';
+```
+
+Use code with caution.
+
+### Summary of their strategy
+
+Instead of adopting an entire VDOM engine like Preact or React, VS Code built **`h`** and **`append`**. This gives them the visual, scannable clean code of a framework template, but produces purely native DOM elements instantly with exact memory markers for garbage collection. \[[1](https://dev.to/solarliner/a-beginners-tutorial-to-preact-part-2-dom-hyperscript-and-jsx-48op), [2](https://www.codefactor.io/repository/github/mohamedaabdallah/vscode/issues?lang=22\&page=13)]
+
+***
+
+Would you like a copy of a production-ready, minimal implementation of VS Code's `h` function to drop into your own Vanilla JS / TypeScript projects?
+
+- [link](https://dev.to/solarliner/a-beginners-tutorial-to-preact-part-2-dom-hyperscript-and-jsx-48op)\
+  A beginners' tutorial to Preact - Part 2: The DOM, and ...\
+  Jun 10, 2019 — What we have created, more or less, is hyperscript. Hyperscript is a small library which does what we've just done: it encapsulate...\
+  DEV Community
+- [link](https://stackoverflow.com/questions/12577797/how-to-add-class-to-an-element-create-by-appendchild)\
+  How to add class to an element create by appendChild\
+  Sep 25, 2012 — You need a variable for the created element. var input = document. createElement("input"); input. className = 'class\_to\_add'; docu...\
+  Stack Overflow
+- [link](https://www.codefactor.io/repository/github/mohamedaabdallah/vscode/issues?lang=22\&page=13)\
+  MohamedAAbdallah/vscode - Issues - CodeFactor\
+  ... src\vs\base\browser\dom.ts:2256-2317 ,. 21542155 ... src\vs\base\browser\dom.ts:2508-2606 ,. 250825092510 ... h(tag: string, .\
+  www.codefactor.io
+
+Show all
+
+## You said: idk classes. write inputbox in fp in the vscode way.
+
+To write this in a pure functional programming (FP) style while keeping the "VS Code way," we replace classes with **Factory Functions** (closures) and use an object-returning hyperscript engine.
+
+Instead of extending a `Disposable` class, we return an explicit `dispose` function that cleans up the exact event listeners created inside the closure.
+
+Here is how you can write the `InputBox` component in clean, modern functional vanilla JavaScript using the VS Code architectural pattern.
+
+### 1. The Setup: The VS Code `h` Helper Simulation
+
+First, we need a small utility helper that acts exactly like VS Code's `h` hyperscript parser. It creates elements and maps labeled elements (using the `@` symbol) into a reference object.
+
+javascript
+
+```
+// A lightweight version of VS Code's 'h' helper
+function h(selector, childrenOrAttrs = [], children = []) {
+    let attrs = {};
+    let actualChildren = childrenOrAttrs;
+
+    // Handle argument overloading if attributes object is passed
+    if (childrenOrAttrs && !Array.isArray(childrenOrAttrs) && typeof childrenOrAttrs === 'object') {
+        attrs = childrenOrAttrs;
+        actualChildren = children;
+    }
+
+    // Parse tag, classes, and references (e.g., 'input.box@myInput')
+    const [tagAndClass, refName] = selector.split('@');
+    const match = tagAndClass.match(/^([a-z0-9]+)?(?:#([a-z0-9_-]+))?(?:\.([a-z0-9._-]+))?$/i) || [];
+
+    const element = document.createElement(match[1] || 'div');
+    if (match[2]) element.id = match[2];
+    if (match[3]) element.className = match[3].replace(/\./g, ' ');
+
+    // Apply attributes
+    Object.entries(attrs).forEach(([key, val]) => element.setAttribute(key, val));
+
+    // Prepare our reference tracking tree
+    const refs = refName ? { [refName]: element } : {};
+
+    // Append children and merge their inner references
+    actualChildren.forEach(child => {
+        if (child.root) {
+            element.appendChild(child.root);
+            Object.assign(refs, child.refs);
+        } else if (child instanceof HTMLElement) {
+            element.appendChild(child);
+        }
+    });
+
+    return { root: element, refs };
+}
+```
+
+Use code with caution.
+
+***
+
+### 2. The Component: Functional `createInputBox`
+
+This factory function takes a parent container, imperatively renders the UI using our helper, scopes its internal state safely inside a closure, and returns a controlled API.
+
+javascript
+
+```
+function createInputBox(container) {
+    // 1. Manage state and event callbacks inside the closure scope
+    let state = { value: '', error: '' };
+    const listeners = [];
+
+    // 2. Build the DOM tree using the hyperscript helper
+    const dom = h('div.monaco-input-box', [
+        h('div.wrapper', [
+            h('input.input-element@inputField', { type: 'text', placeholder: 'Type here...' }),
+            h('span.validation-message@errorText')
+        ])
+    ]);
+
+    // Pull our specific element references out of the tree tracker
+    const { inputField, errorText } = dom.refs;
+
+    // 3. Define event pipe-lining (VS Code Event Emitter emulation)
+    const onDidChangeValueCallbacks = new Set();
+
+    const handleInput = (e) => {
+        state.value = e.target.value;
+        // Fire custom event notifications to all external subscribers
+        onDidChangeValueCallbacks.forEach(callback => callback(state.value));
+    };
+
+    // Track event listeners manually so we can clean them up later
+    inputField.addEventListener('input', handleInput);
+    listeners.push({ element: inputField, type: 'input', handler: handleInput });
+
+    // 4. Mount to the physical DOM
+    container.appendChild(dom.root);
+
+    // 5. Return a strict, functional API surface and a disposal route
+    return {
+        // Expose a subscription method for changes
+        onDidChangeValue: (callback) => {
+            onDidChangeValueCallbacks.add(callback);
+            // Return an individual un-subscribe function
+            return () => onDidChangeValueCallbacks.delete(callback);
+        },
+
+        // Getter / Setter methods to mutate state explicitly
+        setValue: (newValue) => {
+            state.value = newValue;
+            inputField.value = newValue;
+        },
+        getValue: () => state.value,
+
+        setError: (message) => {
+            state.error = message;
+            errorText.textContent = message;
+            dom.root.classList.toggle('has-error', !!message);
+        },
+
+        // The critical VS Code "Disposable" cleanup step
+        dispose: () => {
+            // Tear down DOM events to prevent memory leaks
+            listeners.forEach(({ element, type, handler }) => {
+                element.removeEventListener(type, handler);
+            });
+            // Clear memory hooks
+            onDidChangeValueCallbacks.clear();
+            // Remove from browser layout tree
+            dom.root.remove();
+        }
+    };
+}
+```
+
+Use code with caution.
+
+***
+
+### 3. How to Consume This Component
+
+Using the functional setup is incredibly straightforward. It completely avoids the need for `new` or `this` keywords.
+
+javascript
+
+```
+// Target mount location
+const appContainer = document.getElementById('app');
+
+// Instantiate the input component instance
+const myInput = createInputBox(appContainer);
+
+// Subscribe to typing changes
+const unsubscribe = myInput.onDidChangeValue((currentText) => {
+    console.log("User is typing:", currentText);
+
+    // Simple state-driven validation check
+    if (currentText.length < 3) {
+        myInput.setError("Must be at least 3 characters long");
+    } else {
+        myInput.setError(""); // Clear error
+    }
+});
+
+// Control it programmatically from outside
+myInput.setValue("Hello VS Code!");
+
+// When removing the view entirely from your app layout:
+// myInput.dispose();
+```
+
+Use code with caution.
+
+***
+
+Would you like to see how to scale this into a **parent-child state flow**, or should we look at how to structure a custom **Functional Event Emitter** to clean up the `Set` subscription arrays even more efficiently?
+
+## You said: does it use global event delegation
+
+**No, VS Code does not use a single, massive global event delegation strategy** like React does. \[[1](https://dev.to/thesanjeevsharma/event-delegation-pattern-42m9)]
+
+React hooks a single listener to the root container and forces every `onClick` or `onChange` to bubble all the way to the top. VS Code takes a highly hybrid approach instead: \[[1](https://dev.to/thesanjeevsharma/event-delegation-pattern-42m9), [2](https://rahultomar092.medium.com/event-delegation-in-react-4e0083c6012e), [3](https://javascript.plainenglish.io/mastering-event-delegation-in-javascript-boost-performance-and-simplify-event-handling-6f19221dbbd3)]
+
+1. **Locally Bound Listeners for Standard Controls:** For interactive isolated controls like an `InputBox`, a `Button`, or a `Dropdown`, VS Code binds standard event listeners directly to that specific instance's HTML node. They do this because global delegation for millions of keystrokes across multiple components would create a single, slow CPU bottleneck processing every minor browser movement.
+2. **Targeted Component Delegation for Trees and Lists:** They use localized event delegation on dense container elements—like file explorer lists, code-completion popups, or multi-row menus.
+
+### The Problem With Global Delegation in an IDE
+
+If you type a single letter inside an `InputBox` or scroll a panel, and that event has to bubble all the way up to the element to be processed, the browser has to work harder on highly sensitive, time-critical frames.
+
+Instead, VS Code implements localized architectural abstractions.
+
+***
+
+### The Functional VS Code Approach: "Disposable Event Delegation"
+
+When they need delegation (for instance, a custom sidebar list with thousands of items), they use a helper function directly on the component's container rather than the global `window` or `document`.
+
+Here is how you write a dynamic container component using functional event delegation, while adhering to the strict **Disposable pattern** to avoid memory leaks: \[[1](https://www.greatfrontend.com/questions/quiz/explain-event-delegation)]
+
+javascript
+
+```
+// A localized helper used to assign delegated events cleanly
+function delegateEvent(element, type, selector, handler) {
+    const listener = (event) => {
+        // Find the closest ancestor matching the selector (e.g., .list-item)
+        const target = event.target.closest(selector);
+
+        // Ensure the matching element is actually inside our component
+        if (target && element.contains(target)) {
+            handler(event, target);
+        }
+    };
+
+    element.addEventListener(type, listener);
+
+    // Return a disposal function specifically for this listener hook
+    return () => element.removeEventListener(type, listener);
+}
+
+// -------------------------------------------------------------
+// Component Example: A functional, memory-safe Sidebar List
+// -------------------------------------------------------------
+function createSidebarList(container) {
+    // Single local parent container element
+    const listRoot = document.createElement('div');
+    listRoot.className = 'monaco-list-container';
+
+    // Fill it with raw HTML items (no individual event listeners attached!)
+    listRoot.innerHTML = `
+        <div class="list-item" data-id="file-1.js">index.js</div>
+        <div class="list-item" data-id="file-2.json">package.json</div>
+        <div class="list-item" data-id="file-3.md">README.md</div>
+    `;
+
+    const onDidSelectItemCallbacks = new Set();
+    const activeDisposables = [];
+
+    // Attach ONE delegated click listener to the list root container
+    const removeClickDelegation = delegateEvent(listRoot, 'click', '.list-item', (event, itemElement) => {
+        const itemId = itemElement.getAttribute('data-id');
+
+        // Trigger public component event
+        onDidSelectItemCallbacks.forEach(callback => callback(itemId));
+    });
+
+    // Track the listener removal function in our cleanup array
+    activeDisposables.push(removeClickDelegation);
+
+    container.appendChild(listRoot);
+
+    return {
+        onDidSelectItem: (callback) => {
+            onDidSelectItemCallbacks.add(callback);
+            return () => onDidSelectItemCallbacks.delete(callback);
+        },
+
+        // Total cleanup when the sidebar pane closes
+        dispose: () => {
+            // Execute all collected delegation removal functions
+            activeDisposables.forEach(unregister => unregister());
+            onDidSelectItemCallbacks.clear();
+            listRoot.remove();
+        }
+    };
+}
+```
+
+Use code with caution.
+
+### Why this design works for them
+
+- **Zero Leakage:** By packaging the delegation removal inside the `dispose` process, adding thousands of dynamic items to the list later requires absolutely zero listener re-binding. \[[1](https://medium.com/@rohitkuwar/event-delegation-what-it-is-and-why-its-useful-59e983f87f97), [2](https://www.greatfrontend.com/questions/quiz/explain-event-delegation)]
+- **Encapsulation:** Elements bubbling up from the sidebar don't leak out to pollute or accidentally trigger global event selectors elsewhere in the application window.
+
+***
+
+Would you like to explore how they wire these custom component hooks directly into **keyboard shortcut keybindings**, or look at a functional state pipeline?
+
+- [link](https://medium.com/@rohitkuwar/event-delegation-what-it-is-and-why-its-useful-59e983f87f97)\
+  Event Delegation: What It Is and Why It's Useful | by Rohit Kuwar\
+  Aug 18, 2025 — Dynamic Elements: One of the biggest advantages of event delegation is that it works even if you add new elements to the DOM after...\
+  Medium·Rohit Kuwar
+- [link](https://www.greatfrontend.com/questions/quiz/explain-event-delegation)\
+  Explain event delegation in JavaScript - GreatFrontEnd\
+  Dynamic element support: Event delegation automatically handles events for dynamically added or removed elements within the parent...\
+  GreatFrontEnd
+- [link](https://dev.to/thesanjeevsharma/event-delegation-pattern-42m9)\
+  Event Delegation Pattern - DEV Community\
+  Jan 21, 2025 — React delegates all events to the root node by default. Even if you add multiple onClick handlers to child elements, React does no...\
+  DEV Community
+
+Show all
+
+## You said: how does it handle component lifecycle
+
+In a pure functional architectural pattern—without classes, wrappers like React, or lifecycle hooks like `useEffect`—VS Code manages the entire lifecycle <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">through a strict <strong>Creation-to-Destruction Pipeline</strong></mark>. \[[1](https://www.dhiwise.com/post/mounting-to-unmounting-exploring-react-lifecycle-methods)]
+
+Instead of hiding the lifecycle inside an automated system, it is **explicitly managed** via code sequencing.
+
+***
+
+### The Three Phases of Lifecycle
+
+```
+[Phase 1: Instantiation] ---> [Phase 2: Event Stream / Update] ---> [Phase 3: Disposal]
+  * Create DOM fragments       * Listeners map to local views       * Tear down hooks
+  * Track cleanup tokens       * Expose Event Emitters              * Free memory cache
+```
+
+### Phase 1: Instantiation (The Setup)
+
+When a component is requested, a factory function runs immediately. It allocates internal state closures, builds the physical DOM structure, mounts it to a target parent element, and creates an internal array called `disposables`. \[[1](https://medium.com/@robinviktorsson/understanding-differences-between-classes-factory-functions-object-literals-and-closures-in-eb0eae785627), [2](https://codinghelmet.com/articles/from-dispose-pattern-to-auto-disposable-objects-in-net)]
+
+### Phase 2: The Active Lifecycle (Updates & Streams)
+
+Because there is no automatic re-rendering system, state changes must be passed down manually. The component updates individual elements imperatively via setter methods. External communication is handled purely via custom event objects (Emitters) that bubble notifications _outwards_, rather than using broad DOM events. \[[1](https://www.sfdchub.com/lightning-web-components/lifecycle-flow-and-hooks/), [2](https://upmostly.com/tutorials/react-components-lifecycle-explained)]
+
+### Phase 3: The Disposal Phase (Destruction)
+
+This is the most critical phase in an enterprise desktop application. If you close a sidebar tab or fold a code element, the memory must be instantly recovered. The component returns an explicit `dispose()` function. Calling it triggers a cascade that deletes event listeners, cancels timers, clears state memory arrays, and drops DOM nodes out of the browser tree. \[[1](https://vscode-docs.readthedocs.io/en/stable/extensions/patterns-and-principles/)]
+
+***
+
+### The Code: Complete Lifecycle Management In Pure Functional JavaScript
+
+Here is exactly how a component sets up, tracks, and safely handles its own lifecycle in an isolated closure:
+
+javascript
+
+```
+// Global Utility Helper to track multiple lifecycle events easily
+function createDisposablesCollection() {
+    const trackingList = [];
+    return {
+        // Collect cleanup tokens (functions or objects with a dispose method)
+        track: (disposable) => {
+            trackingList.push(disposable);
+            return disposable;
+        },
+        // Unroll and execute everything sequentially during destruction
+        disposeAll: () => {
+            while (trackingList.length > 0) {
+                const item = trackingList.pop();
+                if (typeof item === 'function') item();
+                else if (item && typeof item.dispose === 'function') item.dispose();
+            }
+        }
+    };
+}
+
+// -------------------------------------------------------------
+// Component Example: Custom Code-Editor Status Bar Item
+// -------------------------------------------------------------
+function createStatusIndicator(parentContainer) {
+    // PHASE 1: INSTANTIATION
+    const disposables = createDisposablesCollection();
+    let state = { text: 'Ready', status: 'idle' };
+
+    // Build standard element layout using our hyperscript setup
+    const dom = document.createElement('div');
+    dom.className = 'monaco-status-bar-item';
+    dom.textContent = state.text;
+
+    parentContainer.appendChild(dom);
+
+    // Setup an internal interval timer (must track it for safe lifecycle cleanup!)
+    const intervalId = setInterval(() => {
+        // Mocking an background telemetry/heartbeat tick
+        console.log("Telemetry ping heartbeat...");
+    }, 5000);
+
+    // Register the interval cleanup function to run upon disposal
+    disposables.track(() => clearInterval(intervalId));
+
+    // Setup a DOM event listener, and register its teardown token immediately
+    const handleMouseOver = () => dom.classList.add('hovered');
+    dom.addEventListener('mouseover', handleMouseOver);
+    disposables.track(() => dom.removeEventListener('mouseover', handleMouseOver));
+
+    // PHASE 2: ACTIVE LIFECYCLE UPDATES
+    return {
+        // Explicit imperative update hook
+        updateStatus: (newText, newStatus) => {
+            state.text = newText;
+            state.status = newStatus;
+
+            // Mutate layout views manually
+            dom.textContent = newText;
+            dom.className = `monaco-status-bar-item status-${newStatus}`;
+        },
+
+        // PHASE 3: THE DISPOSAL ROUTE
+        dispose: () => {
+            console.log("Lifecycle Ended: Tearing down Status Indicator...");
+
+            // Execute all collected event removals and timer cancellations
+            disposables.disposeAll();
+
+            // Remove structural references completely from the DOM layout
+            dom.remove();
+        }
+    };
+}
+```
+
+Use code with caution.
+
+***
+
+### Hierarchical Cascading Lifecycles (Parent-Child Breakdown)
+
+One major strength of this approach is how easy it is to manage child lifecycles inside a parent component. When a parent element gets disposed of, it automatically forwards that action downstream to completely wipe out any active child components inside it.
+
+javascript
+
+```
+function createMainEditorPanel(container) {
+    const disposables = createDisposablesCollection();
+
+    const panelView = document.createElement('div');
+    panelView.className = 'editor-panel-view';
+    container.appendChild(panelView);
+
+    // Instantiating a child component inside the panel scope
+    const statusItem = createStatusIndicator(panelView);
+
+    // Track the child component's own lifecycle inside the parent!
+    disposables.track(statusItem);
+
+    return {
+        updateMessage: (msg) => statusItem.updateStatus(msg, 'running'),
+
+        dispose: () => {
+            // This immediately calls statusItem.dispose(), cleaning up all its intervals and DOM elements
+            disposables.disposeAll();
+            panelView.remove();
+        }
+    };
+}
+```
+
+Use code with caution.
+
+### Why this design avoids common framework bugs
+
+- **Predictability:** There are no background rendering schedulers or hidden re-evaluation passes. If an item changes, it updates instantly; when a panel closes, it is purged from browser memory down to the very last byte.
+- **Simple Debugging:** Since lifecycles are written as simple arrays of functions inside normal JS scopes, you can add a breakpoint or `console.log` directly into your clean-up loops to see exactly what is leaking or breaking.
+
+***
+
+If you'd like to explore how to extend this design, let me know:
+
+- Do you want to see how to connect a **Functional Router** to this lifecycle to swap pages cleanly?
+
+- Should we look at how to hook up an **asynchronous state loader** (like a `fetch` payload) into the Instantiation phase?
+
+- [link](https://www.dhiwise.com/post/mounting-to-unmounting-exploring-react-lifecycle-methods)\
+  Mounting to Unmounting: Exploring React Lifecycle Methods\
+  Oct 30, 2023 — Functional components, on the other hand, don't have lifecycle methods. Instead, they use the useEffect hook, which can mimic the ...\
+  \
+  \
+  DhiWise
+
+- [link](https://medium.com/@robinviktorsson/understanding-differences-between-classes-factory-functions-object-literals-and-closures-in-eb0eae785627)\
+  Understanding the Differences between Classes, Factory Functions, Object Literals, and Closures in…\
+  Jan 8, 2025 — If you are working in a functional programming paradigm, where immutability and side-effect-free functions are the goal, factory f...\
+  \
+  \
+  Medium
+
+- [link](https://codinghelmet.com/articles/from-dispose-pattern-to-auto-disposable-objects-in-net)\
+  From Dispose Pattern to Auto-disposable Objects in .NET\
+  Aug 13, 2019 — Implementing the Auto-Disposable Type Disposable < where T : private Func < get internal Disposable( T this . Factory = factory; }\
+  \
+  \
+  Coding Helmet
+
+Show all
+
+## You said: how does it write conditional rendering
+
+Without a framework tracking dependencies or virtual DOM diffs, VS Code handles conditional rendering using **two explicit techniques**: \[[1](https://legacy.reactjs.org/docs/conditional-rendering.html)]
+
+1. **CSS Toggling (Show/Hide):** They keep the DOM node mounted permanently but toggle a CSS class (like `.monaco-hidden` or `display: none`). This is used for high-frequency toggles like opening menus, error popups, or hover cards. \[[1](https://gist.github.com/bpasero/b0da08097af5db0303a1a203b6330986), [2](https://dev.to/dvalin99/conditional-rendering-v-if-vs-v-show-4n1a), [3](https://dev.to/uicraft%5Fby%5Fpratik/10-conditional-rendering-examples-in-css-and-reactjs-part-1-2eij)]
+2. **Imperative Node Swap (Mount/Unmount):** They manually run a logic condition, instantiate the child element if `true`, append it, and explicitly `.remove()` it if `false`. This is used for structural layout shifts, like swapping entire sidebar views. \[[1](https://legacy.reactjs.org/docs/conditional-rendering.html), [2](https://react.dev/learn/conditional-rendering)]
+
+***
+
+### Technique 1: CSS-Based Conditional Rendering (High Frequency)
+
+This maps closely to Vue's `v-show`. The element is generated once during the instantiation phase, but its visibility is mutated on demand via modern JS. \[[1](https://dev.to/hellodonovan/react-and-vue-conditional-rendering-3mob)]
+
+javascript
+
+```
+function createValidationBadge(parentContainer) {
+    // 1. Element is built and mounted unconditionally
+    const badge = document.createElement('div');
+    badge.className = 'monaco-validation-badge monaco-hidden'; // Hidden by default
+    parentContainer.appendChild(badge);
+
+    return {
+        // 2. React to dynamic state checks
+        renderCondition: (hasErrors, errorMessage) => {
+            badge.textContent = errorMessage || '';
+
+            // Toggle visibility seamlessly without recreating the DOM node
+            badge.classList.toggle('monaco-hidden', !hasErrors);
+        },
+        dispose: () => badge.remove()
+    };
+}
+```
+
+Use code with caution.
+
+***
+
+### Technique 2: Imperative Node Swap (Structural State Changes)
+
+This mirrors React's structure. If a condition is met, the component creates the element and mounts it. When the condition fails, it removes it from the screen and purges the child's memory hooks immediately to avoid memory leaks. \[[1](https://www.reddit.com/r/reactjs/comments/x2gol2/where%5Fdo%5Fyou%5Fimplement%5Fconditional%5Frendering%5Flogic/), [2](https://react.dev/learn/conditional-rendering), [3](https://legacy.reactjs.org/docs/conditional-rendering.html)]
+
+Here is a look at a functional sidebar item switcher that handles complex branch rendering manually:
+
+javascript
+
+```
+function createDynamicSidebarPanel(container) {
+    let currentChildComponent = null;
+
+    // A condition checking helper
+    const updatePanelContent = (activeTabType, dataPayload) => {
+
+        // 1. ALWAYS tear down the existing conditional view first to free memory!
+        if (currentChildComponent) {
+            currentChildComponent.dispose();
+            currentChildComponent = null;
+        }
+
+        // 2. JavaScript structural branching (If / Else or Switch)
+        if (activeTabType === 'FILE_EXPLORER') {
+            // Render the Explorer View conditionally
+            currentChildComponent = createFileTreeComponent(container, dataPayload);
+        }
+        else if (activeTabType === 'EXTENSION_MARKETPLACE') {
+            // Render the Extension View conditionally
+            currentChildComponent = createExtensionListComponent(container, dataPayload);
+        }
+        // If an unknown tab or an empty state occurs, it falls back to rendering nothing
+    };
+
+    return {
+        onStateChange: (newTab, data) => updatePanelContent(newTab, data),
+
+        dispose: () => {
+            if (currentChildComponent) currentChildComponent.dispose();
+        }
+    };
+}
+
+// Mock Child View 1
+function createFileTreeComponent(parent, data) {
+    const el = document.createElement('div');
+    el.className = 'tree-view';
+    el.textContent = `Files: ${data.length}`;
+    parent.appendChild(el);
+
+    return { dispose: () => el.remove() };
+}
+
+// Mock Child View 2
+function createExtensionListComponent(parent, data) {
+    const el = document.createElement('div');
+    el.className = 'extensions-view';
+    el.textContent = 'Marketplace Active';
+    parent.appendChild(el);
+
+    return { dispose: () => el.remove() };
+}
+```
+
+Use code with caution.
+
+***
+
+### VS Code's Optimization Rules for Conditional Layouts
+
+- **The "Weight" Rule:** If a layout block is heavy (like a Git diff window with 5,000 DOM nodes), VS Code will **never** use CSS `display: none`. It completely destroys the panel via `.dispose()` to keep the application's RAM foot-print down. \[[1](https://github.com/microsoft/vscode/pull/154643/files)]
+- **The "Focus" Rule:** If an interactive field loses visibility through conditional logic (like a hidden input field), VS Code explicitly uses focus restoration strategies (`element.blur()`) immediately so the keyboard cursor does not get trapped inside an invisible ghost element.
+
+***
+
+Would you like to see how they wire this structural swap directly into an **Asynchronous Fetch Pipeline** (such as showing a loading spinner conditionally), or look at how they pass data states across these conditions?
+
+- [link](https://www.reddit.com/r/reactjs/comments/x2gol2/where%5Fdo%5Fyou%5Fimplement%5Fconditional%5Frendering%5Flogic/)\
+  Where do \*you\* implement conditional rendering logic? - Reddit\
+  Aug 31, 2022 — Implementation 1: Conditionally render DoSomethingButton in Menu : const Menu = () => { const {isAuthenticated} = useUser() return...\
+  Reddit·r/reactjs
+- [link](https://legacy.reactjs.org/docs/conditional-rendering.html)\
+  Conditional Rendering - React\
+  In React, you can create distinct components that encapsulate behavior you need. Then, you can render only some of them, depending...\
+  React – A JavaScript library for building user interfaces
+- [link](https://dev.to/hellodonovan/react-and-vue-conditional-rendering-3mob)\
+  React and Vue: Conditional Rendering - DEV Community\
+  Sep 14, 2023 — Conditional rendering in React. If you've worked with JavaScript you most likely will be familiar with ternary operators and if st...\
+  DEV Community
+
+Show all
+
+# should i use conditional rendering over display none data attr for high frequency toggles
+
+For high-frequency toggles, you should generally use **CSS (`display: none`) or data attributes** instead of conditional rendering.
+
+Here is the direct breakdown of why and how to choose.
+
+### Why CSS Wins for High-Frequency Toggles
+
+- **No DOM rebuilding:** Conditional rendering completely destroys and recreates DOM nodes.
+- **Lower CPU usage:** Rebuilding DOM nodes repeatedly causes heavy JavaScript execution and layout thrashing.
+- **Instant transitions:** CSS properties allow for smooth animations and transitions.
+- **State preservation:** CSS toggles preserve internal component states, like user text input or scroll positions. \[[1](https://www.reddit.com/r/reactjs/comments/gr66ts/is%5Fit%5Fbad%5Fpractice%5Fto%5Fhide%5Fa%5Fcomponent%5Fusing/), [2](https://blog.logrocket.com/patterns-efficient-dom-manipulation-vanilla-javascript/), [3](https://elementor.com/blog/css-hover-selector/), [4](https://dev.to/rowsanali/10-css-tricks-every-frontend-developer-should-know-4cj4), [5](https://frontendinterviewquestions.medium.com/html-toggle-button-59df06ff5164)]
+
+### Performance Comparison
+
+| Feature \[[1](https://medium.com/@pratik111098/top-10-responsive-design-techniques-in-react-js-3e8d35c53f75), [2](https://github.blog/engineering/architecture-optimization/the-uphill-climb-of-making-diff-lines-performant/), [3](https://medium.com/@dimuthadithya/vue-js-v-if-vs-v-show-9750483497a2), [4](https://w3bits.com/blog/javascript-toggle-display/)] | Conditional Rendering ()                      | CSS Toggling (`display: none` / Data Attr) |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- | ------------------------------------------ |
+| **Initial Load**                                                                                                                                                                                                                                                                                                                                                    | Faster (renders fewer DOM elements initially) | Slower (renders everything upfront)        |
+| **Toggle Speed**                                                                                                                                                                                                                                                                                                                                                    | Slower (heavy JS execution per toggle)        | Faster (lightweight browser paint change)  |
+| **Memory Footprint**                                                                                                                                                                                                                                                                                                                                                | Lower (unused nodes are garbage collected)    | Higher (keeps hidden nodes in memory)      |
+| **Animation Support**                                                                                                                                                                                                                                                                                                                                               | Harder (requires lifecycle management hooks)  | Easier (native CSS transitions/animations) |
+
+### When to Break the Rule
+
+While CSS is better for rapid toggles, use **conditional rendering** if: \[[1](https://www.jitendrazaa.com/blog/salesforce/15-ways-to-improve-performance-of-lightning-components-in-salesforce/)]
+
+- The hidden component performs heavy background logic (like polling APIs).
+- The hidden component contains massive amounts of data or heavy media elements.
+- Security is a concern (hidden elements can still be inspected via browser developer tools).
+
+### Implementation Best Practices
+
+### 1. The Data Attribute Approach (Recommended for Clean CSS) \[[1](https://medium.com/understanding-javascript-developwithmi/light-dark-mode-in-angular-the-most-elegant-implementation-96a1adefa978)]
+
+jsx
+
+```
+// React Example
+<div data-active={isActive}>
+  <HighFrequencyComponent />
+</div>
+
+// Matching CSS
+[data-active="false"] {
+  display: none;
+}
+```
+
+Use code with caution.
+
+### 2. The Inline Style Approach (Fastest for Direct Manipulation)
+
+jsx
+
+```
+// React Example
+<div style={{ display: isActive ? 'block' : 'none' }}>
+  <HighFrequencyComponent />
+</div>
+```
+
+Use code with caution.
+
+To give you the most accurate advice for your specific project, tell me:
+
+- What **framework** are you using? (React, Vue, Vanilla JS?)
+
+- What **type of component** is being toggled? (Dropdown, modal, chart, large list?)
+
+- Approximately **how many times per second** will this toggle occur?
+
+- [link](https://www.reddit.com/r/reactjs/comments/gr66ts/is%5Fit%5Fbad%5Fpractice%5Fto%5Fhide%5Fa%5Fcomponent%5Fusing/)\
+  Is it bad practice to hide a component using 'display: none' inside custom hooks? : r/reactjs\
+  May 26, 2020 — Comments Section To be hard nosed about it, Yes. It's a bad practice. Conditionally rendering will completely remove the nodes fro...\
+  \
+  Reddit
+
+- [link](https://blog.logrocket.com/patterns-efficient-dom-manipulation-vanilla-javascript/)\
+  Patterns for efficient DOM manipulation with vanilla JavaScript\
+  Oct 2, 2024 — Avoiding layout thrashing Performing many DOM operations that trigger reflows in a short period can lead to layout thrashing and r...\
+  \
+  \
+  LogRocket Blog
+
+- [link](https://elementor.com/blog/css-hover-selector/)\
+  CSS :hover Selector 2026 Guide\
+  Jan 2, 2026 — As with other hover effects, always use CSS transitions to create smooth, gradual changes for a polished look and feel.\
+  \
+  \
+  Elementor
+
+Show all
+
+# should i name as dispose or cleanup
+
+Use **`dispose`** if the object is being permanently destroyed and cannot be reused, or **`cleanup`** if you are resetting state, wiping transient data, or intending to reuse the object afterward. \[[1](https://forum.unified-automation.com/viewtopic.php?t=7643), [2](https://www.strathweb.com/2017/03/disposing-resources-at-the-end-of-asp-net-core-request/), [3](https://www.tatvasoft.com/outsourcing/2025/12/garbage-collection-in-c.html), [4](https://www.c-sharpcorner.com/uploadfile/riteshratna/garbage-collection-memory-management-in-net/), [5](https://stackoverflow.com/questions/732864/finalize-vs-dispose)]
+
+Your choice depends heavily on your ecosystem's naming conventions and the lifecycle of the data or object. \[[1](https://www.marktinderholt.com/software%20development/2024/07/02/dispose-done-right.html)]
+
+### When to choose `dispose`
+
+Choose `dispose` when you are permanently tearing down an object or freeing system resources. \[[1](https://medium.com/bytehide/dispose-or-finalize-in-c-discover-which-to-use-f2b0d9c8e2d9), [2](https://forum.unified-automation.com/viewtopic.php?t=7643)]
+
+- **Ecosystem Standards**: Use this if you are working in C#/.NET (`IDisposable`), JavaScript/TypeScript (`Symbol.dispose`), or Flutter/Dart (`dispose()`).
+- **Object Death**: Calling this method means the object is "dead". Trying to use the object after calling `dispose` should typically throw an error.
+- **Resource Release**: Use it for closing database connections, file streams, or unmanaged memory allocations. \[[1](https://piccalil.li/blog/its-about-to-get-a-lot-easier-for-your-javascript-to-clean-up-after-itself/), [2](https://medium.com/swlh/how-to-properly-dispose-of-resources-in-net-core-ffd389097103), [3](https://groups.google.com/g/microsoft.public.dotnet.languages.csharp/c/wFyFLFAMyjA?gl=us), [4](https://stackoverflow.com/questions/33232532/why-using-dispose-as-a-normal-method-is-bad), [5](https://www.reddit.com/r/dotnet/comments/2yx44d/can%5Fsomeone%5Fexplain%5Fdispose/), [6](https://stackoverflow.com/questions/732864/finalize-vs-dispose), [7](https://forum.unified-automation.com/viewtopic.php?t=7643), [8](https://medium.com/bytehide/dispose-or-finalize-in-c-discover-which-to-use-f2b0d9c8e2d9)]
+
+### When to choose `cleanup`
+
+Choose `cleanup` when you are performing maintenance or clearing temporary data without killing the parent context. \[[1](https://forum.unified-automation.com/viewtopic.php?t=7643), [2](https://www.marktinderholt.com/software%20development/2024/07/02/dispose-done-right.html)]
+
+- **Object Reusability**: The object remains alive and usable after the method runs.
+- **Transient Operations**: Use this for clearing caches, resetting UI form fields, removing temporary event listeners, or wiping a local state directory.
+- **Internal Helper**: Developers often use `cleanup` as a private helper method inside a public `dispose` framework to separate different parts of the teardown logic. \[[1](https://dzone.com/articles/how-to-properly-dispose-of-resources-in-net-core), [2](https://devblogs.microsoft.com/oldnewthing/20181126-00/?p=100325), [3](https://stackoverflow.com/questions/16601929/dispose-for-cleaning-up-managed-resources), [4](https://medium.com/@AlexanderObregon/javas-finalize-method-and-its-removal-65129df6cfca)]
+
+### Summary Comparison
+
+| Metric \[[1](https://forum.unified-automation.com/viewtopic.php?t=7643), [2](https://piccalil.li/blog/its-about-to-get-a-lot-easier-for-your-javascript-to-clean-up-after-itself/), [3](https://medium.com/swlh/how-to-properly-dispose-of-resources-in-net-core-ffd389097103), [4](https://stackoverflow.com/questions/33232532/why-using-dispose-as-a-normal-method-is-bad), [5](https://www.linkedin.com/pulse/mastering-dispose-method-flutter-deep-dive-harsh-kumar-khatri-8wyvc)] | `dispose`                               | `cleanup`                            |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- | ------------------------------------ |
+| **Object Lifecycle**                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | Ends the object's life permanently.     | Keeps the object alive for reuse.    |
+| **Industry Standards**                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | Heavily standardized across frameworks. | Custom, context-dependent naming.    |
+| **Expected Behavior**                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | Subsequent calls to the object fail.    | Object resets back to a clean state. |
+
+To help narrow down the best choice, what **programming language** or framework are you using, and what exactly does this method do?
+
+- [link](https://piccalil.li/blog/its-about-to-get-a-lot-easier-for-your-javascript-to-clean-up-after-itself/)\
+  It's about to get a lot easier for your JavaScript to clean up after ...\
+  Feb 10, 2026 — That's not a big change in this one context, but the greater implication is huge: introducing \[Symbol. dispose]\() provides us with...\
+  piccalil.li
+- [link](https://stackoverflow.com/questions/732864/finalize-vs-dispose)\
+  Finalize vs Dispose - Stack Overflow\
+  Apr 9, 2009 — 6 Comments. ... Finalize is the backstop method, called by the garbage collector when it reclaims an object. Dispose is the "deter...\
+  Stack Overflow
+- [link](https://www.reddit.com/r/dotnet/comments/2yx44d/can%5Fsomeone%5Fexplain%5Fdispose/)\
+  Can someone explain Dispose()? : r/dotnet - Reddit\
+  Mar 13, 2015 — ThereKanBOnly1. • 11y ago. There's a chapter in CLR via C# that covers it. More replies. AngularBeginner. • 11y ago. f you want a ...\
+  Reddit·r/dotnet
+
+Show all
+
+# (d) how easy is it to build a fp react web app wo react. how will the code look like if well designed.
+
+Building a functional programming (FP) React web app without the actual React library is <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>highly feasible and moderately easy</strong></mark>, provided you understand core FP concepts like pure functions, immutability, and function composition. You essentially build a custom, lightweight rendering engine using vanilla JavaScript. \[[1](https://medium.com/tyler-mcginnis/building-user-interfaces-with-pure-functions-and-function-composition-in-react-js-34b999ddeaba), [2](https://www.rea-group.com/about-us/news-and-insights/blog/introduction-to-fp-ts-part-1/)]
+
+### How Easy Is It?
+
+- **Easy Core Logic**: Managing state with pure functions and unidirectional data flow is straightforward.
+- **Medium UI Rendering**: Writing the initial render logic to turn state into HTML takes minimal code.
+- **Hard Optimization**: Creating an efficient virtual DOM change-differencing engine (like React's fiber architecture) from scratch is complex. \[[1](https://gauravthakur.com/blog/writing-maintainable-react-useeffects), [2](https://softprodigy.com/what-makes-react-js-a-preferred-choice-for-web-app-development/), [3](https://jamshidbekboynazarov.medium.com/object-oriented-javascript-still-relevant-in-2025-68e5f138343a), [4](https://medium.com/@vishubommoju/what-actually-happens-in-a-react-build-process-do-we-ship-only-vanilla-javascript-9a57e49e0759)]
+
+### How the Code Looks (Well-Designed Structure)
+
+A clean, functional architecture uses standard JavaScript modules to separate **State (Data)**, **Actions (Transformations)**, and **Views (Templates)**. \[[1](https://www.debutinfotech.com/blog/vue-js-vs-react-js), [2](https://blog.openreplay.com/turbocharging-react-with-webassembly/)]
+
+### 1. The Core Engine (The "React" Substitute)
+
+This orchestrates the application loop by freezing state to ensure immutability and re-rendering on every change.
+
+javascript
+
+```
+// store.js
+export const createStore = (initialState, view, mountNode) => {
+  // Freeze state to enforce functional purity
+  let state = Object.freeze({ ...initialState });
+
+  const dispatch = (action, payload) => {
+    state = Object.freeze(action(state, payload));
+    render();
+  };
+
+  const render = () => {
+    mountNode.innerHTML = view(state, dispatch);
+  };
+
+  return { start: render };
+};
+```
+
+Use code with caution.
+
+### 2. State and Declarative Actions (Pure Functions)
+
+Actions never mutate the existing state. They always return a completely new state object. \[[1](https://medium.com/@itsspss/large-scale-react-zustand-nest-js-project-structure-and-best-practices-93397fb473f4)]
+
+javascript
+
+```
+// actions.js
+export const initialState = {
+  count: 0,
+  text: ""
+};
+
+export const increment = (state) => ({
+  ...state,
+  count: state.count + 1
+});
+
+export const decrement = (state) => ({
+  ...state,
+  count: state.count - 1
+});
+
+export const updateText = (state, newText) => ({
+  ...state,
+  text: newText
+});
+```
+
+Use code with caution.
+
+### 3. Declarative Views (Template Literals)
+
+Views are pure functions that accept the current state and a `dispatch` mechanism, returning a declarative UI string. \[[1](https://archive.jlongster.com/First-Impressions-using-React-Native), [2](https://everyday.codes/javascript/10-react-interview-questions-for-2020/)]
+
+javascript
+
+```
+// view.js
+import { increment, decrement, updateText } from './actions.js';
+
+// Global event interceptor to keep HTML strings functional and clean
+window.__dispatchAction = null;
+
+export const mainView = (state, dispatch) => {
+  window.__dispatchAction = dispatch;
+
+  return `
+    <div class="app-container">
+      <h1>Functional Counter</h1>
+      <div class="counter-value">${state.count}</div>
+
+      <button onclick="__dispatchAction(${increment})">+</button>
+      <button onclick="__dispatchAction(${decrement})">-button>
+
+      <div class="input-section">
+        <input
+          type="text"
+          value="${state.text}"
+          oninput="__dispatchAction(${updateText}, this.value)"
+          placeholder="Type something..."
+        />
+        <p>Mirror: ${state.text}</p>
+      </div>
+    </div>
+  `;
+};
+```
+
+Use code with caution.
+
+### 4. The Application Entry Point
+
+This bootstraps the application by binding the store, views, and DOM node together. \[[1](https://dev.to/alekseiberezkin/setting-up-react-typescript-app-without-create-react-app-oph)]
+
+javascript
+
+```
+// main.js
+import { createStore } from './store.js';
+import { initialState } from './actions.js';
+import { mainView } from './view.js';
+
+const app = createStore(
+  initialState,
+  mainView,
+  document.getElementById('root')
+);
+
+// Initial paint
+app.start();
+```
+
+Use code with caution.
+
+### Architectural Benefits
+
+- **No Side Effects**: Testing is trivial because views and actions are mathematically predictable.
+- **Time Travel Debugging**: You can easily store historical state objects in an array to undo/redo changes.
+- **Zero Dependencies**: The entire framework footprint is less than 30 lines of code. \[[1](https://dev.to/a1guy/react-19-usereducer-deep-dive-from-basics-to-complex-state-patterns-3fpi), [2](https://mentorcruise.com/questions/reactjs/)]
+
+### Limitations of this Simple Approach
+
+- **Focus Loss**: Replacing `innerHTML` wipes out document focus, resetting text cursors during typing.
+- **Performance**: Re-rendering the entire DOM tree becomes slow on massive pages.
+
+***
+
+To expand this project, I can help you implement advanced features. Let me know if you want to:
+
+- Add a **Virtual DOM diffing algorithm** to prevent focus loss
+
+- Set up **Middleware / Time-Travel debugging** to trace state changes
+
+- Implement **Function Composition / Piping** for complex action chains
+
+- [link](https://medium.com/tyler-mcginnis/building-user-interfaces-with-pure-functions-and-function-composition-in-react-js-34b999ddeaba)\
+  Building User Interfaces with Pure Functions and Function Composition in React.js\
+  Feb 20, 2016 — Perhaps one of my favorite things about React is it's given me a light introduction to functional programming (FP) and a fundament...\
+  \
+  \
+  Medium
+
+- [link](https://www.rea-group.com/about-us/news-and-insights/blog/introduction-to-fp-ts-part-1/)\
+  Introduction to fp-ts – Part 1\
+  Apr 5, 2023 — Function composition is an important concept in FP. It is the idea that small, simple functions can be composed together to create...\
+  \
+  \
+  REA Group Ltd
+
+- [link](https://gauravthakur.com/blog/writing-maintainable-react-useeffects)\
+  Writing Maintainable React useEffects: Clean Code Patterns\
+  Jan 18, 2026 — React components are easiest to maintain and understand when rendering stays pure and data flows in one direction from props/state...\
+  \
+  \
+  gauravthakur.com
+
+Show all
+
+# (d) 
 
