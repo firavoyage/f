@@ -33461,6 +33461,12 @@ to cut down the nails further i guess.
 
 20 00 dl `Philosophy - Wikipedia` and `Template_Philosophy topics - Wikipedia`
 
+15
+
+02 00 reread `A letter to myself as a fresh software engineer` by florio.
+
+i dont want react <!-- or an elegant react or more performant react -->. i dont want to be conventional. i dont want to have a life dulled.
+
 
 
 <!-- timebox, plan. -->
