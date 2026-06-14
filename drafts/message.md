@@ -1,4 +1,874 @@
+09
+
+14 40 Arrive
+
+<!-- A mtf is just sitting there, with skirts and long white socks, in white and dark blue clothing. -->
+
+<!-- Some students from dths comes after finishing uee. They might go to ecnu if lucky. 
+
+The regional best. -->
+
+17 20 Urge <!-- Advocate --> a dths grade 10 to maimai. He's fat, doesn't speak confidently.
+
+<!-- He joins. A free first game. 
+
+There are shared gloves, even earphones, nearby. 
+
+He is pushed by two of his classmates, having phones controlled automatically. -->
+
+<!-- 18 00 observe.
+
+Download tt voice app to find some real humans over the internet maybe.
+
+Seems I've registered it before, somehow.
+
+Abandon in a few minutes. 
+
+No dark mode, esp when it's an entertaining app. Low class ppl likely. Too much distractions and proactive popups. -->
+
+19 40 Play with a grade 14 boy of 11k from lixin university.
+
+<!-- 你是每天都来吗
+
+羡慕
+
+这小孩六年级吗 看不出来
+
+高了还是低了 -->
+
+Share some vibe coding projects, photos, schooling memories with him.
+
+21 00 converse.
+
+<!-- Find one of 14k who has just graduated whose telegram gets banned wo any contacts.
+
+His name is dev/null and he wants to study CS.
+
+我用的是他的账号
+
+我可以送你一个
+
+你到底有多少账号 -->
+
+<!-- Kafuru says she wants to view some gay porns on pornhub yet severely refuses and threatens me and barks after I show her. 
+
+Share some photos on telegram sns with her, where she gives an adjective in zhcn internet slang for each. -->
+
+22 00 End the day w Believe the Rainbow, Rising on the horizon, KHYMΞXΛ, and ロウワー.
+
+Goodbye 2025 with yahagi, who comes with mizuki on the phone camera.
+
+22 40 wish.
+
+If I keep kept my head down while walking while cycling while thinking and nothing could call on my mind and I have no thoughts I would be as smart as myself in my childhood. 
+
+If I closed my eyes I would be able to reflect on and imagine anything.
+
+<!-- 23 00 Get some envelopes from home.
+
+To buy some blank in batch, I guess.
+
+I guess I could not get them in time easily. To create some myself I guess. -->
+
+10
+
+00 20 Buy 100 brown letter papers of 15x10cm, paired with envelopes
+
+01 40 Watch some vids. Learn envelope origami.
+
+お誕生日おめでとう
+
+Hello 2026
+
+<!-- inspired by codeforces good bye 2023, hello 2026 -->
+
+02 00 Eat maimai qq group
+
+```
+Good bye,Mr.TKJ 17:47:31
+电脑哥又出现了
+
+毛子丷 18:30:36
+我咋又被认成工作人员了
+
+毛子丷 18:31:20
+一个良善老奶突然逮住我问我这个拍拍机十岁小孩能不能玩
+
+毛子丷 18:31:28
+然后我一顿解释
+
+群k6消息转载员 18:31:29
+[不支持的元素类型]俺不中嘞
+
+毛子丷 18:31:35
+最后她发现我不是工作人员
+
+群k6消息转载员 18:31:36
+[不支持的元素类型]最显老的一集
+
+毛子丷 18:31:48
+然后她说让我给她拍个照片
+
+毛子丷 18:31:53
+就她玩两下这个拍拍机
+
+毛子丷 18:31:58
+然后回去拿给他孙子看要不要玩
+
+毛子丷 18:32:05
+然后电脑哥突然很热心的窜出来了
+
+毛子丷 18:32:19
+开始接管这个和老奶社交的工作
+
+群k6消息转载员 18:32:38
+绷
+
+Euphoria 18:43:02
+他刚刚跑来我这边了
+
+Euphoria 18:43:14
+我在单刷电脑哥跑过来问我能不能给老奶开歌邀请游玩
+
+Euphoria 18:43:32
+然后老奶自己玩了
+
+群k6消息转载员 19:02:43
+所以老奶真玩了
+
+群k6消息转载员 19:03:21
+坏了我妈不是打浦桥年纪最大舞萌玩家了
+
+性性的歌 19:04:02
+潮奶
+```
+
+02 20 Exchange for companion ソルト, as the unused tokens might be removed after the update
+
+02 40 chat.
+
+```
+群k6消息转载员 00:01:09
+难忘今宵开始吟唱
+
+毛子丷 00:57:05
+@群k6消息转载员 生日快乐
+
+煤油敏籽 01:24:52
+@群k6消息转载员 生日快乐
+
+性性的歌 01:26:57
+@群k6消息转载员 生日快乐
+
+Stardust（已滚出上海） 01:34:42
+@群k6消息转载员 生日快乐
+
+juruojjl 01:49:21
+@群k6消息转载员 生日快乐
+
+saba 🐟 02:38:55
+Birthday  KAFURU「Happy BIRTHDAY！！2026」
+```
+
+```
+群k6消息转载员 14:53:45
+一小时后+1
+
+群k6消息转载员 14:53:57
+三小时后+我妈一个
+
+鼠片，BR-2 15:02:36
+23小时后烈+1
+
+幽蓝边界，San十Bing 15:04:22
+我也想去烈
+
+幽蓝边界，San十Bing 15:05:07
+烈余币70多！....
+
+Good bye,Mr.TKJ 15:05:31
+烈你们结对包机呀，合算
+
+鼠片，BR-2 15:05:36
+在思考要不要发起包机邀请
+
+群k6消息转载员 15:05:39
+没钱
+
+群k6消息转载员 15:05:46
+而且还远
+
+鼠片，BR-2 15:05:53
+工作日四十块钱一个钟头还行
+
+鼠片，BR-2 15:05:55
+周末算了
+
+鼠片，BR-2 15:06:09
+烈余币293
+
+Good bye,Mr.TKJ 15:06:10
+俩人就是20一小时，疯狂跑图
+
+鼠片，BR-2 15:06:59
+离家太远确实是大问题
+
+鼠片，BR-2 15:07:03
+而且怎么过去都不方便（
+
+Good bye,Mr.TKJ 15:07:58
+黄浦到黄浦怎么样都还好吧
+
+鼠片，BR-2 15:08:13
+2/12南京西路没法骑车，13下来石门一路单行道没法骑车
+
+上下反享受者 15:08:42
+[不支持的元素类型]@鼠片，BR-2 拐进南汇路
+
+鼠片，BR-2 15:08:58
+神tm南汇路
+
+鼠片，BR-2 15:09:01
+我笑飞
+
+Good bye,Mr.TKJ 15:09:04
+我下了班一般自行车骑到陕西南路一路往北，然后奉贤路右转
+
+鼠片，BR-2 15:09:27
+就是得走一小段路才能上自行车
+
+上下反享受者 15:09:48
+[不支持的元素类型]@鼠片，BR-2 你2号线南京西路下来不能骑车的，那条路，但南汇路可以骑
+
+Good bye,Mr.TKJ 15:09:58
+你可以直接从家骑过去
+
+Good bye,Mr.TKJ 15:10:01
+锻炼体力
+
+上下反享受者 15:10:13
+我单位就在烈火门口/捂脸
+
+上下反享受者 15:10:20
+我熟的不能再熟了
+
+鼠片，BR-2 15:10:21
+哦原来真有南汇路
+
+鼠片，BR-2 15:10:34
+我以为在讲奉贤路笑话
+
+上下反享受者 15:10:39
+以前被交警逮补了
+
+上下反享受者 15:10:44
+直接不和你bb
+
+上下反享受者 15:10:45
+-50
+
+上下反享受者 15:10:54
+笑点解析，那天是周四
+
+鼠片，BR-2 15:10:54
+那没办法的
+
+Good bye,Mr.TKJ 15:11:05
+黄浦区交警是这样的，很敬业
+
+上下反享受者 15:11:13
+警告都不带的，直接罚钱
+
+Good bye,Mr.TKJ 15:11:16
+创收靠我们这些不法分子
+
+鼠片，BR-2 15:11:25
+我从马当路过来的，一般13下来要走一小段路直接到奉贤路上车
+
+Good bye,Mr.TKJ 15:11:47
+那你9转12近点
+
+鼠片，BR-2 15:12:17
+去12要多坐出去两大站带个等车了，更得不偿失
+
+鼠片，BR-2 15:12:28
+我共享单车均速18-20的
+
+Good bye,Mr.TKJ 15:12:38
+那还挺快
+
+上下反享受者 15:12:38
+所以为什么要去烈火
+
+Good bye,Mr.TKJ 15:12:47
+我到15就要冒烟了
+
+鼠片，BR-2 15:12:58
+因为我在烈火还有存存币
+
+鼠片，BR-2 15:13:06
+而且烈有包机
+
+上下反享受者 15:13:07
+你们太菜了，我电瓶车随便40
+
+鼠片，BR-2 15:13:11
+主要就图一个包机
+
+上下反享受者 15:13:54
+多少钱包多久来着
+
+鼠片，BR-2 15:14:07
+包机跑图，包机刷门钥匙
+当然这次的门不用嗯刷
+
+鼠片，BR-2 15:14:15
+[不支持的元素类型]工作日40一小时，节假日68
+
+Good bye,Mr.TKJ 15:14:32
+[不支持的元素类型]@上下反享受者 非法改装[续标识]
+
+幽蓝边界，San十Bing 15:16:01
+想玩神秘机台....
+
+空樱 02:39:34
+@群k6消息转载员 生日快乐
+
+saba 🐟 03:03:53
+[不支持的元素类型]@上下反享受者 
+
+自己时而逆行，时而机动车道骑行，时而人行道上骑行，为了不绕路，走大路。心情畅快时几乎无视灯。思考时会时而停车。
+
+遇到过老年的政府人员。耳机一直开降噪。没有理会任何要求。等到绿灯直接过。
+
+很清楚工作人员不会在路中，且只会在大路出没。所以近些索性远处停车，绿灯直接穿。
+
+骑在路中，不必理会后车的灯光或者声音。外部世界与自己无关。
+
+心静。
+```
+
+<!-- (copied from menci berryberry) -->
+
+<!-- Seems wasted too much time eating. qq doesn't show new msgs count clearly. -->
+
+02 40 Make some envelopes w a4 paper.
+
+03 40 Try some variants but pick a solid one and repeat eventually. 
+
+Not all envelopes are as capable.
+
+04 00 Have one birthday letter and ten hello 2026 letters at the end of the day
+
+12 40 eat.
+
+```
+群k6消息转载员 04:32:53
+我喜欢你们😭谢谢
+
+zhizhizhiwang 07:01:00
+堵门来
+
+群k6消息转载员 09:56:31
+玩上舞萌2026了
+
+群k6消息转载员 09:58:49
+搬位置了
+
+群k6消息转载员 09:58:55
+[图片]
+
+群k6消息转载员 10:36:52
+不仅玩上了
+
+群k6消息转载员 10:37:06
+第一pc还AP了红乐意效劳
+```
+
+14 00 Arrive
+
+<!-- The machines are moved again -->
+
+14 00 Send out some envelopes. <!-- Seems I misspelled her id... -->
+
+<!-- The new version has many fatal errors. 
+
+Some ppl get annoyed and leave for lunch. -->
+
+<!-- No queue now, contrast to their expectation -->
+
+15 00 converse.
+
+<!-- Would you like to play maimai deluxe? 
+
+F: Yeah (lol)
+
+Maimai deluxe! (Point)
+
+M: (lol)
+
+Where are you from? 
+
+M: yin gua!
+
+England? 
+
+Yeah
+
+British? 
+
+Yeah! -->
+
+15 20 converse.
+
+<!-- 你觉得他是不是高三的
+
+他问我你是不是准高三
+
+我是准大一
+
+你参加高考了吗
+
+他高考期间在打舞萌
+
+你去哪个大学了
+
+...
+
+你是去哪个大学了
+
+我毕业了
+
+你是零零后吗
+
+是
+
+那就还好
+
+你去了哪个大学
+
+电机。野鸡大学。
+
+在我名单上，虽然最后没有去
+
+我以为你工作了
+
+他是高三的，还没填志愿 -->
+
+15 20 feel.
+
+<!-- 为什么不停地打同一首歌
+
+我也想知道为什么不停地打同一首歌
+
+为了推分
+
+鸟加了吗
+
+哦，已经没有机会鸟加了 -->
+
+17 00 feel.
+
+<!-- Xiaopa
+
+華將了
+
+華將是什么
+
+更好看的牌子
+
+He opens at once and expresses thanks. He really likes the envelope. -->
+
+17 40 feel.
+
+<!-- Yunoko (prev kafuru)
+
+Call her kareshi to come, who hasn't appeared before, to have the birthday cake. 
+
+With 14.7k rating, I guess it's a good guy. -->
+
+18 40 Have some nice birthday cake
+
+<!-- 小孩哥也吃蛋糕
+
+我要工作
+
+（Share with me) 
+
+可以放吗
+
+放可能会坏
+
+我大口嚼吗 (show a funny pose)
+
+叉子！
+
+他也没叉子 -->
+
+18 40 feel.
+
+<!-- 他是你的 kareshi 吗
+
+他是我的 tomodachi
+
+那你的 kareshi 到了吗
+
+没 -->
+
+19 20 Send out envelopes to everyone I know.
+
+<!-- To prepare more I guess, for those not seen today -->
+
+Exchange an envelope for a song badge with the dancer
+
+20 00 feel.
+
+<!-- 我一直坐在那里。你觉得大家认为我在排还是我不打。
+
+可能是不打 -->
+
+20 40 invite.
+
+<!-- 不要再介绍新人入坑了！
+
+指我干嘛
+
+Parents (F): 你刚才问我们要不要玩。她想玩
+
+你玩过舞萌吗
+
+没有
+
+（犹豫）
+
+问那个浅蓝色衣服的大哥哥
+
+upd: she keeps playing and achieves 1.7k after a while -->
+
+20 40 converse.
+
+<!-- Where are you from
+
+我是加拿大人
+
+Canadian
+
+Are you Chinese native
+
+Like, a parent is Chinese, a parent is Canadian
+
+No
+
+I live in Beijing for a while, ...
+
+You speak Chinese so fluently
+
+Is it (a pet) yours or from the shop
+
+No
+
+You borrow it?
+
+Yeah
+
+I've never seen a foreign speaks English so slowly that caters Chinese
+
+(He speaks way slower than me...) -->
+
+21 00 feel.
+
+<!-- (谢谢你的贺卡）
+
+给你个糖
+
+你经常给我糖，（我不要）
+
+我不管我不管你吃
+
+（收纳） -->
+
+21 20 feel.
+
+<!-- Her kareshi is https://github.com/ianyeyz
+
+Grade 10 from cy second hs
+
+羡慕强。有未来的人。
+
+很多竞赛的。
+
+He tells me a story of a schoolmate into zhongkeda shaonianban. 
+
+你可以和他讨论一些cpp之类的
+
+你打算法竞赛吗
+
+Afoier. 
+
+He shows his oierdb, via 信息学 dot com alias, where he gets 114 pts on noip 2025, which is an easy problem and a brute force.
+
+写过签到题，再暴力骗一些分
+
+我第二题写的是正解，被挂分了！想了两个小时
+
+He says he is writing projects now, on personal programming languages and ai.
+
+He opens shadow socket on iOS.
+
+He has wechat and discord which I don't use. 
+
+你看我微信。
+
+朋友真多。
+
+He wants an email but I never check.
+
+Leave my sns id on his bear notes app. -->
+
+<!-- 你终于来了
+
+我不是说你，我是说 （舞萌，十段，...） -->
+
+<!-- 你会参加noi吗
+
+没有希望了。做项目了。
+
+什么项目
+
+编程语言，ai应用，...
+
+(On GitHub profile, pinned projects) 
+
+这个是垃圾
+
+这个是我比较满意的一个
+
+没有介绍啊 (info metadata)
+
+因为我懒 -->
+
+22 00 feel.
+
+<!-- She starts a game even wo enough time. Ten Dan.
+
+She lets one of her friends play her account. A boy, but not the kareshi.
+
+给你三个币。断电了。
+
+Get forced killed eventually. -->
+
+<!-- 你多大
+
+你觉得我多大我就多大
+
+四十
+
+那就四十
+
+你觉得你年轻吗
+
+心态年轻就年轻
+
+那你觉得你 （心态）年轻吗
+
+还好
+
+那很好。
+
+Boss: 打了一天了，不累吗。（10 堵门 to 22 拉闸)
+
+你打吗？
+
+我不喜欢这种游戏。
+
+你是不是一直在偷看。
+
+看惯了。 -->
+
+<!-- 你和刚才 cyehs 的不是同一个人吧
+
+朋友真多啊。真好。
+
+我手机在里面
+
+我手机怎么办啊 我联系不到人了
+
+She calls her father with her friends' phone.
+
+我不知道我爸手机号多少。(Vaguely, actually)
+
+你每天都是这个丢了那个丢了
+
+She is irritated and ends the call.
+
+他给我打电话怎么办。
+
+拉黑！
+
+(Dirty words)
+
+我回不了家明天也来不了！
+
+我可以给你打车。车很便宜的。(Need some efforts actually as I've never configured this) 
+
+我可以把我的交通卡给你。
+
+(She refuses somehow)
+
+The boss opens the door to come out eventually, after I call the police and I cancel.
+
+我听到有人在敲门
+
+They have secret exit -->
+
+22 00 End the day w はいよろこんで, きゅびずむ, Synthesis, and Zitronectar <!-- With sasiover -->
+
+<!-- The page loads slowly, sometimes with protocol http two error... -->
+
+22 40 wish
+
+但是这个世界上没有比我年轻或者年长的人。年轻的人有一天会年长，年长的人有年轻的时候。
+
+23 20 Chat
+
+<!-- Days before, I were about to click the first chat on qq yet it intrusively popups membership ads.
+
+With an accidental click it's activated for free. Yet hard to disable. Damn zhcn guys. -->
+
+```
+子供のYunoko 20:51:25
+https://bzzxq.com/?ref=3454811
+
+saba 🐟 23:03:55
+你平日里使用什么交通工具？
+
+子供のYunoko 23:11:06
+骑老奶奶
+
+子供のYunoko 23:11:18
+我会骑着老奶奶到处乱飞
+
+子供のYunoko 23:11:57
+不过今天很感谢你为我的帮助（尽管可能对你造成了很大的麻烦，因为报了警但立马解决了）
+
+saba 🐟 23:25:28
+[不支持的元素类型]大概没有受到影响，电话另一头似乎什么也还没有说。
+
+可以知道真实的答案吗？
+
+我不明白。自行车？
+
+子供のYunoko 23:26:24
+不清楚
+
+地铁，公交，爸爸的车
+
+都有可能
+```
+
 11
+
+01 00 reminisce.
+
+Origami calms my mind. 
+
+Esp when I know the agent is working. It's cheap. And it's doing real work.
+
+14 40 think.
+
+All ua stylesheets
+
+Reset and style manually is a kind of explicit over implicit
+
+"Better normalize" is a myth. What is normal. What options do you wanna keep or fix.
+
+14 40 Eat acbox group
+
+```
+ref, [6/11/26 2:45 PM]
+
+
+ref, [6/11/26 2:45 PM]
+中国机长
+
+ref, [6/11/26 2:45 PM]
+神人
+
+ref, [6/11/26 2:45 PM]
+智能家居就选米家，手机电脑就用苹果，酒店就用华住会，快递就用顺丰，吹风机就用戴森
+
+ref, [6/11/26 2:45 PM]
+Agent就用Memoh呢
+
+ref, [6/11/26 2:45 PM]
+我顺丰叠到钛金了
+
+ref, [6/11/26 2:45 PM]
+之前在校期间做点小生意，叠到满级，后来转月结不算个人账户积分又掉下去了（
+
+ref, [6/11/26 2:45 PM]
+再后来被异地偏远地区公安逐利性执法差点卒了（已撤案）
+
+ref, [6/11/26 2:45 PM]
+感觉做生意还怪好玩的，维护客户和上游供应商的关系，进出口报关，打打包发发货什么的
+
+ref, [6/11/26 2:45 PM]
+卖药？
+
+ref, [6/11/26 2:45 PM]
+草，你怎么猜到的
+
+ref, [6/11/26 2:45 PM]
+不用猜吧
+
+ref, [6/11/26 2:45 PM]
+利润低的像卖白菜，风险高的像卖白粉
+
+ref, [6/11/26 2:45 PM]
+箱子老师也没想到我们公司有这个福利
+
+ref, [6/11/26 2:45 PM]
+智能家居就选米家，手机电脑就用苹果，酒店就用如家，快递就用京东，吹风机就用徕芬，日用品就用 elmex和花王，电动牙刷就用徕芬， 保健品就用善存， 床就睡宜家，汽车就开丰田。智驾就用openpilot, 键鼠就用罗技， 电脑+显卡就用AMD
+
+ref, [6/11/26 2:45 PM]
+衣服就选优衣库，日用品就用miniso，床上用品就选无印良品，家具就选宜家
+```
+
+15 00 Arrive. Send out more envelopes.
+
+<!-- 她好可爱
+
+她吃雌二醇吗
+
+她是女的
+
+啊 -->
+
+<!-- The mtf I thought I few days ago is actually a cis girl?! -->
+
+<!-- 她是大学生吗
+
+我不知道
+
+你觉得是不是
+
+可能是
+
+右边那两个呢。我不认识那个绿衣服的。
+
+我不知道。你可以去问一下。
+
+我不问
+
+就纯靠猜吗
+
+对
+
+你是吗
+
+我不是
+
+哦，我昨天问过你。我忘记了。 -->
 
 16 20 eat.
 
