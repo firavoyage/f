@@ -666,6 +666,7 @@ humility:
 - research opencode undo feature critical accidental code removal issue
 - research opencode <!-- structured output, yaml or json or xml -->
 - research google ai mode system prompt tools skills llms follow up criticism
+- install librechat
 
 legacy:
 

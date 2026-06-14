@@ -29154,6 +29154,8 @@ to cut down the nails further i guess.
 
 19 20 sync memories (20 20)
 
+20 00 dl `Philosophy - Wikipedia` and `Template_Philosophy topics - Wikipedia`
+
 
 
 <!-- timebox, plan. -->
