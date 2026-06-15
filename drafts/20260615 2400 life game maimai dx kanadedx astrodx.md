@@ -1,4 +1,4 @@
-KanadeDX
+# KanadeDX
 
 8:47 AM
 
@@ -431,3 +431,11 @@ Would you like to know more about **how Unity asset extraction works**, or are y
   nvm - Facebook\
   Dec 2, 2025 — he got access to false amber before official release. alongside playing pirated arcade data. 27w. Bimo Turu. Mura Kwan maimai play...\
   Facebook·maimai Asia
+
+# 
+
+<!-- just as the docs says, zip and unzip on device is quite faster than android mtp. -->
+
+<!-- i could try adb push though... -->
+
+# 
