@@ -33471,7 +33471,7 @@ i dont want react <!-- or an elegant react or more performant react -->. i dont 
 
 17 40 write `values` <!-- blogging --> `ideas` <!-- drafts -->.
 
-<!-- it's quite cold wo a jacket though -->
+<!-- it's quite cold wo a jacket though (nevertheless most ppl just wear one simple shirt) -->
 
 19 20 feel.
 
