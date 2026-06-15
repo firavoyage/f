@@ -147,14 +147,6 @@ git config?
 
 ---
 
-js memory leak
-
-react
-
-wo react
-
----
-
 vscode
 
 figma
@@ -167,4 +159,25 @@ input component
 
 ---
 
+vanillajs. blank gnome builder app.
 
+feels much easier, right?
+
+---
+
+install
+
+- obsidian
+- linear (?)
+
+check out
+
+- memoh
+- arkloop
+- lobe chat
+
+setup
+
+- librechat
+
+---
