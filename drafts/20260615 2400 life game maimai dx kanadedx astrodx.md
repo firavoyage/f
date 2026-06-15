@@ -2499,3 +2499,7 @@ You can adjust game settings by holding the ◀ button on the top right.
 im in!
 
 <!-- crash?! -->
+
+<!-- well, it crashes consistently on music select. "null pointer exception 喵喵 in 喵喵" -->
+
+<!-- documented issue screenshot found inside the tg group media -->
