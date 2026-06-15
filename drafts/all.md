@@ -50,6 +50,7 @@ fira:
 - version control legacy folder
 - mono no aware the red chamber
 - hacker ethics
+- philosophical ideology spectrum
 
 life:
 
