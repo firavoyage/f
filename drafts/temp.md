@@ -4,11 +4,11 @@ cynicism
 
 existentialism
 
-<!-- perfectionism --> extremism
+<!-- perfectionism --> extremism <!-- absolutism? -->
 
 egoism
 
-elitism
+elitism <!-- social -->
 
 pragmaticism
 
