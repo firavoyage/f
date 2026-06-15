@@ -1,3 +1,5 @@
+<!-- The Hacker Critique: Hackers would see rounded edges as a form of paternalistic, infantilizing design. Sharp edges and distinct geometric borders signify a precise, professional tool (like a terminal window or a scientific calculator). Rounding everything off is a visual trick to make a complex computer feel like a harmless toy. They would argue that this aesthetic is intentionally designed to make you forget you are interacting with a powerful machine capable of programming, automation, and rebellion. -->
+
 # hacker ethics
 
 10:22 AM
@@ -2719,3 +2721,5 @@ If you're interested, we can look at:
   InformationWeek
 
 Show all
+
+# 
