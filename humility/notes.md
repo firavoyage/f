@@ -362,3 +362,9 @@ follow ups should be rendered outside the msg.
 
 ---
 
+ia: separation
+
+links and citations are different creatures
+
+---
+
