@@ -147,6 +147,10 @@ https://www.9ui.dev/docs/components/button
 
 https://coss.com/ui/docs/components/button
 
+https://base-ui.com/react/components/slider
+
+
+
 ---
 
 adwaita
