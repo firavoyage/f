@@ -1748,7 +1748,986 @@ If you want to explore this further, I can provide more details. Let me know if 
 
 Show all
 
+# is the world turning right in politics
+
+**Yes, data indicates a significant global shift toward right-wing politics, particularly across the Western world and parts of the Global South.** This trend is characterized by the electoral success of **nationalist, populist, and conservative parties** capitalizing on economic anxiety, immigration concerns, and anti-establishment sentiment. \[[1](https://www.reddit.com/r/geopolitics/comments/182t5ir/why%5Fthe%5Fworld%5Fis%5Fshifting%5Ftowards%5Frightwing/), [2](https://www.youtube.com/watch?v=9%5Fb0eU9BIG4\&t=11), [3](https://politics.stackexchange.com/questions/90177/why-did-the-western-world-shift-right-in-post-covid-elections), [4](https://www.dw.com/en/far-right-populism-nationalism-movement-international-network-v2/a-71530393), [5](https://www.reddit.com/r/PoliticalDiscussion/comments/1dtbkke/why%5Fare%5Fright%5Fwing%5Fparties%5Fon%5Fthe%5Frise%5Fglobally/), [6](https://ardenstrategies.com/services/global-campaign-advisory/global-parliament/)]
+
+However, political analysts emphasize that the global landscape is fragmented, and this shift is as much about "anti-incumbency"—voters punishing whoever is currently in power—as it is a pure ideological realignment. \[[1](https://ardenstrategies.com/services/global-campaign-advisory/global-parliament/), [2](https://nakedpunch.com/voltaires-bastards-strike-again-how-the-tyranny-of-rationalism-lost-americas-vote/), [3](https://pivot.mias.org.au/2025/04/15/the-rise-of-regional-powers-is-multipolarity-the-new-global-order/), [4](https://www.kroll.com/en/publications/elections-impacting-business-strategies)]
+
+### Major Elections Highlighting the Rightward Turn \[[1](https://www.oneducation.net/no-20%5Foctober-2024/editorial-far-right-actors-and-education-the-global-circulation-of-their-ideas-agendas-and-policies/)]
+
+Recent election cycles reveal an interconnected wave of right-wing victories and consolidation: \[[1](https://www.reddit.com/r/geopolitics/comments/182t5ir/why%5Fthe%5Fworld%5Fis%5Fshifting%5Ftowards%5Frightwing/), [2](https://politics.stackexchange.com/questions/90177/why-did-the-western-world-shift-right-in-post-covid-elections), [3](https://ardenstrategies.com/services/global-campaign-advisory/global-parliament/)]
+
+- **The United States**: The Republican Party consolidated power with strong popular vote performances and an "America First" nationalist agenda.
+- **Europe**: Significant gains for the right wing in the European Parliament. Right-leaning and far-right parties have taken power or surged in polls across **Italy, France, Germany (AfD), the Netherlands, and Sweden**.
+- **Latin America**: Argentina’s election of libertarian-conservative Javier Milei marked a sharp rightward pivot in the region's economic and social direction.
+- **Other Democracies**: Countries like **Canada** have seen right-wing opposition parties surging in polls, while **New Zealand** pivoted to a conservative coalition. \[[1](https://www.reddit.com/r/geopolitics/comments/182t5ir/why%5Fthe%5Fworld%5Fis%5Fshifting%5Ftowards%5Frightwing/), [2](https://politics.stackexchange.com/questions/90177/why-did-the-western-world-shift-right-in-post-covid-elections), [3](https://www.dw.com/en/far-right-populism-nationalism-movement-international-network-v2/a-71530393), [4](https://www.reddit.com/r/AmerExit/comments/1byjxd7/are%5Fthere%5Fany%5Fwestern%5Fcountries%5Factually%5Fbucking/), [5](https://www.worldpoliticsreview.com/latin-america-pink-tide-chile-kast/)]
+
+### Core Drivers of the Shift
+
+The global rise of right-wing populism is fueled by several intersecting socioeconomic factors: \[[1](https://www.youtube.com/watch?v=9%5Fb0eU9BIG4\&t=11), [2](https://www.reddit.com/r/AskSocialScience/comments/183ik7b/why%5Fthe%5Fworld%5Fis%5Fshifting%5Ftowards%5Frightwing/), [3](https://en.wikipedia.org/wiki/Right-wing%5Fpopulism), [4](https://www.queensbusinessreview.com/articles/a-political-tug-of-war-right-wing-nationalisms-rise-vs-the-lefts-resurgence)]
+
+- **Economic Anxiety**: Post-pandemic inflation, high fuel prices, and a rising cost of living have alienated working-class voters from center-left and establishment leaders.
+- **Immigration and National Identity**: Right-wing platforms emphasizing strict border enforcement, protectionism, and the preservation of traditional cultural values have resonated strongly.
+- **Anti-Globalism**: Growing numbers of citizens believe that liberal globalization benefits a small elite while leaving local communities vulnerable to technological disruption and manufacturing losses.
+- **Transnational Networking**: Unlike localized nationalist movements of the past, today's right-wing politicians, influencers, and strategists coordinate globally to share tactics and build counter-alliances against international institutions. \[[1](https://www.youtube.com/watch?v=9%5Fb0eU9BIG4\&t=11), [2](https://www.youtube.com/watch?v=T%5FC9lkNwX2Q\&t=1), [3](https://politics.stackexchange.com/questions/90177/why-did-the-western-world-shift-right-in-post-covid-elections), [4](https://ardenstrategies.com/services/global-campaign-advisory/global-parliament/), [5](https://www.dw.com/en/far-right-populism-nationalism-movement-international-network-v2/a-71530393), [6](https://en.wikipedia.org/wiki/Right-wing%5Fpopulism), [7](https://carnegie.org/article/welcome-to-a-world-defined-by-polarization-instability-and-disruption/)]
+
+### Nuances and Counter-Trends
+
+While the rightward momentum is undeniable, the global political map is not uniform: \[[1](https://ardenstrategies.com/services/global-campaign-advisory/global-parliament/), [2](https://qz.com/1774201/the-global-state-of-right-wing-populism-in-2019)]
+
+- **The Power of Anti-Incumbency**: Many voters are simply voting out the ruling party due to economic frustration, regardless of ideology. Left-wing or centrist parties have also won or held ground in regions where right-wing incumbents failed to manage local crises.
+- **Pro-EU Resistance**: In countries like Hungary, voters have displayed a mixed mandate, with strong pro-EU and pro-NATO public sentiments pushing back against isolationist governance.
+- **Deepening Polarization**: Rather than a wholesale conversion to conservatism, society is becoming highly polarized, separating populations into distinct and rigid ideological realities. \[[1](https://www.pewresearch.org/global/2024/12/11/global-elections-in-2024-what-we-learned-in-a-year-of-political-disruption/), [2](https://ardenstrategies.com/services/global-campaign-advisory/global-parliament/), [3](https://www.youtube.com/watch?v=T%5FC9lkNwX2Q\&t=1), [4](https://www.youtube.com/watch?v=QkZ9v7aF5Nw\&t=374)]
+
+AI can make mistakes, so double-check responses
+
+- [link](https://www.youtube.com/watch?v=9%5Fb0eU9BIG4\&t=11)\
+  The Rise of the Radical Right and the Future of World Order\
+  Nov 6, 2025 — welcome to this Carnegie. event on the rise of the radical. right and the future of world. order i'm Stuart Patrick senior fellow ...\
+  2m\
+  YouTube·Carnegie Endowment
+- [link](https://www.dw.com/en/far-right-populism-nationalism-movement-international-network-v2/a-71530393)\
+  How the far right is expanding its international network - DW\
+  Feb 8, 2025 — Radical right-wing movements like Germany's AfD party are on the rise worldwide. They are united by nationalism, populism and the ...\
+  DW
+- [link](https://en.wikipedia.org/wiki/Right-wing%5Fpopulism)\
+  Right-wing populism - Wikipedia\
+  Some right-wing populist parties and movements have associations with elements of authoritarianism, while some far-right populists...\
+  Wikipedia
+
+Show all
+
+## You said: evidences of right turning
+
+**Concrete evidence of a global rightward shift in politics is visible across three main categories: electoral victories, mainstream policy shifts, and systemic changes to international relations.** Over the last several years, right-wing populist, nationalist, and conservative movements have transitioned from fringe opposition groups into dominant governing forces. \[[1](https://carnegieendowment.org/research/2025/09/the-european-radical-right-in-the-age-of-trump-20), [2](https://www.oneducation.net/no-20%5Foctober-2024/editorial-far-right-actors-and-education-the-global-circulation-of-their-ideas-agendas-and-policies/), [3](https://freedomhouse.org/article/secrets-populist-success-europe), [4](https://www.npr.org/2016/06/25/483400958/from-brexit-to-trump-nationalist-movements-gain-momentum-around-world)]
+
+***
+
+### 1. Electoral Victories and Poll Surges
+
+The most direct evidence comes from voter data and election results worldwide, showing right-wing parties capturing historic shares of the vote. \[[1](https://carnegieendowment.org/research/2025/09/the-european-radical-right-in-the-age-of-trump-20), [2](https://www.vox.com/2014/11/6/7163375/ukip-conservative-right-europe), [3](https://www.oneducation.net/no-20%5Foctober-2024/editorial-far-right-actors-and-education-the-global-circulation-of-their-ideas-agendas-and-policies/)]
+
+- **The United States:** The Republican Party consolidated total legislative and executive control. This was supported by measurable "sorting," with a massive [percentage jump in voters explicitly identifying as conservative](https://www.cam.ac.uk/stories/political-division-united-states) or Republican. \[[1](https://ip-quarterly.com/en/rightward-turn), [2](https://www.cam.ac.uk/stories/political-division-united-states), [3](https://cle.ens-lyon.fr/anglais/civilisation/domaine-americain/les-grands-courants-politiques/republican-electoral-strategy-after-realignment-electioneering-and-the-ideological-shift)]
+- **Europe's Far-Right Surge:** National elections have seen radical-right parties regularly exceeding **20% of the vote**. Key evidence includes:
+  - **Germany:** The _Alternative for Germany_ (AfD) rose to become the second-largest party in the Bundestag.
+  - **France:** Marine Le Pen’s _National Rally_ captured a historic 142 seats in the National Assembly.
+  - **Austria & Portugal:** The _Freedom Party of Austria_ (FPÖ) won its parliamentary election, while Portugal's _Chega_ party surged to tie for second place. \[[1](https://carnegieendowment.org/research/2025/09/the-european-radical-right-in-the-age-of-trump-20)]
+- **Canada:** Following the resignation of Justin Trudeau, Canada's political landscape shifted dramatically as the **Conservative Party** maintained a massive [double-digit lead in national polling](https://www.statista.com/topics/13104/global-elections-in-2025/?srsltid=AfmBOopIoPyKFTiA1BcJ362qNmhSZVnSv9dHDhxYj3Fmjv-K-IDA0RqB). \[[1](https://www.statista.com/topics/13104/global-elections-in-2025/?srsltid=AfmBOopIoPyKFTiA1BcJ362qNmhSZVnSv9dHDhxYj3Fmjv-K-IDA0RqB)]
+- **Latin America:** El Salvador’s Nayib Bukele won reelection with over **80% of the vote**, driven by a severe, highly popular law-and-order crackdown. This mirrors Javier Milei's sweeping libertarian-conservative mandate in Argentina. \[[1](https://www.pewresearch.org/global/2024/12/11/global-elections-in-2024-what-we-learned-in-a-year-of-political-disruption/), [2](https://www.securityincontext.com/posts/can-the-far-right-become-popular-javier-milei-ultra-liberalism-argentina)]
+
+***
+
+### 2. Mainstream Policy Realignment
+
+Further evidence is found in how traditional centrist and left-wing parties have been forced to adopt historically right-wing platforms to survive. \[[1](https://www.researchgate.net/publication/405286437%5FWhen%5Feveryone%5Ftalks%5Fabout%5Fmigration%5Fhow%5Fmainstream%5Fparties%5Fshift%5Fto%5Fthe%5Fright%5Fand%5Fstill%5Flose)]
+
+- **Hardline Migration Stances:** Left and center-right parties across Western Europe (such as the Social Democrats in Denmark) have actively shifted right on immigration. They now adopt stricter border controls, native-first welfare, and aggressive deportation rhetorics to prevent voter defection to the radical right. \[[1](https://mixedmigration.org/publications/mmr/2025/far-right-elections-migration-policy/), [2](https://www.researchgate.net/publication/405286437%5FWhen%5Feveryone%5Ftalks%5Fabout%5Fmigration%5Fhow%5Fmainstream%5Fparties%5Fshift%5Fto%5Fthe%5Fright%5Fand%5Fstill%5Flose)]
+- **The Culture Wars:** Right-wing [National Conservatism has successfully driven mainstream debate](https://ip-quarterly.com/en/rightward-turn) toward "wedge politics," centering national policy around anti-globalism, traditional family structures, and anti-woke rhetoric. \[[1](https://ip-quarterly.com/en/rightward-turn), [2](https://www.cam.ac.uk/stories/political-division-united-states)]
+
+***
+
+### 3. De-globalization and Foreign Policy Shift
+
+The rightward shift is fundamentally rewriting international norms, providing structural evidence of a new global order. \[[1](https://www.youtube.com/watch?v=9%5Fb0eU9BIG4\&t=11)]
+
+- **Dismantling Democracy Support:** A major piece of structural evidence is the [abrupt halt of international democracy aid](https://carnegieendowment.org/research/2026/06/post-us-international-democracy-support-aspiration-in-search-of-substance) by the United States. The U.S. pivoted completely to a transactional, "America First" foreign policy that favors immediate domestic economic interests over global human rights advocacy. \[[1](https://www.youtube.com/watch?v=DR-z0cYLhlg\&t=61), [2](https://carnegieendowment.org/research/2026/06/post-us-international-democracy-support-aspiration-in-search-of-substance)]
+- **Transnational Alliances:** Right-wing movements are no longer isolated. Groups like the _Patriots for Europe_ and the _European Conservatives and Reformists_ (ECR) have effectively [collaborated to shape continental policy](https://www.epc.eu/publication/two-years-later-why-europes-far-right-keeps-growing/), bypassing traditional globalist institutions. \[[1](https://www.epc.eu/publication/two-years-later-why-europes-far-right-keeps-growing/), [2](https://www.youtube.com/watch?v=9%5Fb0eU9BIG4\&t=11), [3](https://link.springer.com/chapter/10.1007/978-3-031-10820-4%5F1), [4](https://sabrangindia.in/the-rise-of-the-far-right-in-europe-from-margins-to-mainstream/)]
+
+***
+
+### Summary Table: Evidence by Country
+
+| Country / Region \[[1](https://ip-quarterly.com/en/rightward-turn), [2](https://carnegieendowment.org/research/2026/06/post-us-international-democracy-support-aspiration-in-search-of-substance), [3](https://carnegieendowment.org/research/2025/09/the-european-radical-right-in-the-age-of-trump-20), [4](https://www.pewresearch.org/global/2024/12/11/global-elections-in-2024-what-we-learned-in-a-year-of-political-disruption/), [5](https://www.statista.com/topics/13104/global-elections-in-2025/?srsltid=AfmBOopIoPyKFTiA1BcJ362qNmhSZVnSv9dHDhxYj3Fmjv-K-IDA0RqB)] | Key Right-Wing Entity    | Type of Evidence                                                              |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ | ----------------------------------------------------------------------------- |
+| **United States**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Republican Party / Trump | Federal trifecta control, defunding of global democracy aid.                  |
+| **Germany**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | AfD                      | Surged to the 2nd largest political power in the Bundestag.                   |
+| **France**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | National Rally           | Captured a historic 142 seats in parliament.                                  |
+| **Argentina**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | Javier Milei             | Total overhaul of state spending and social programs.                         |
+| **El Salvador**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | Nayib Bukele             | 80%+ electoral victory validating aggressive anti-crime measures.             |
+| **Canada**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Conservative Party       | Massive polling dominance leading to a collapse of the Liberal establishment. |
+
+***
+
+Would you like to zoom in on a specific region, such as **Western Europe** or **North America**, to look at the exact voter data, or explore the **counter-trends** where the left has pushed back?
+
+- [link](https://ip-quarterly.com/en/rightward-turn)\
+  The Rightward Turn | Internationale Politik Quarterly\
+  Jun 29, 2023 — The traditional center-right is moving towards the New Right, which is characterized by the emergence of National Conservatism. Th...\
+  Internationale Politik Quarterly
+- [link](https://www.cam.ac.uk/stories/political-division-united-states)\
+  Political division in the US surged from 2008 onwards\
+  Feb 4, 2026 — The data covered core political issues ranging from economics to race and inequality. Abortion and traditional family ties showed ...\
+  University of Cambridge
+- [link](https://www.youtube.com/watch?v=9%5Fb0eU9BIG4\&t=11)\
+  The Rise of the Radical Right and the Future of World Order\
+  Nov 6, 2025 — welcome to this Carnegie. event on the rise of the radical. right and the future of world. order i'm Stuart Patrick senior fellow ...\
+  2m\
+  YouTube·Carnegie Endowment
+
+Show all
+
+## You said: evidences of right turning instead of left turning
+
+The evidence of a global political pivot **toward the right instead of the left** is measurable through three distinct lenses: the widespread collapse of center-left coalitions, the major ideological realignments within the working-class electorate, and a systemic shift in financial crisis recovery models. \[[1](https://www.tandfonline.com/doi/full/10.1080/01402382.2025.2591874), [2](https://journals.sagepub.com/doi/10.1177/1077699015606678)]
+
+The specific evidence demonstrates why right-wing populism and conservatism are outstripping progressive or leftist alternatives:
+
+### 1. The Realignment of the Working-Class Vote
+
+Historically, the working class formed the bedrock of left-wing and socialist parties. Data shows this group has steadily migrated to the right. \[[1](https://dissentmagazine.org/article/parties-and-movements/), [2](https://www.digitalhistory.uh.edu/teachers/historyonline/con%5Fsocialism.cfm)]
+
+- **The Educational Divide:** Right-wing parties have captured the majority of non-college-educated and working-class voters. Left-wing parties have transformed primarily into coalitions of urban, highly educated, and white-collar professionals. \[[1](https://www.optimallyirrational.com/p/why-has-the-left-gentrified), [2](https://www.optimallyirrational.com/p/why-has-the-right-become-more-popular)]
+- **Rejection of Progressive Globalism:** Working-class communities have largely rejected left-wing internationalist agendas, viewing green transition policies and open-border humanitarianism as threats to their domestic industrial jobs and local cost of living. \[[1](https://www.youtube.com/watch?v=j2dM1MbrhB8\&t=71), [2](https://onlinelibrary.wiley.com/doi/full/10.1111/ropr.12631), [3](https://en.wikipedia.org/wiki/Far-left%5Fpolitics)]
+
+### 2. Electoral Decoupling: Where the Left Failed to Capitalize
+
+In past decades, severe economic crises (like inflation or austerity) typically triggered a leftward shift toward wealth redistribution. The current era shows the exact opposite:
+
+- **The Post-Inflation Backlash:** Rather than demanding expanded left-wing welfare programs to combat post-pandemic inflation, voters have overwhelmingly elected right-wing leaders promising deregulation, tax cuts, and slashed state spending (e.g., Javier Milei in Argentina or the Republican sweep in the U.S.). \[[1](https://www.youtube.com/watch?v=j2dM1MbrhB8\&t=71), [2](https://www.reddit.com/r/changemyview/comments/3cjime/cmv%5Frightwing%5Fviews%5Fare%5Fbasically%5Fselfish%5Fand/)]
+- **Fragmentation over Identity Politics:** While right-wing parties have successfully united voters around broad national identities, the global left has suffered severe electoral fracturing. In places like France and Germany, left-wing coalitions have fragmented or alienated moderate voters over intensely polarizing issues, such as foreign policy stances and identity politics. \[[1](https://www.cam.ac.uk/stories/political-division-united-states), [2](https://www.politico.eu/newsletter/forecast/a-flashpoint-for-the-global-left/), [3](https://www.amacad.org/publication/daedalus/status-threat-moving-right-further-right)]
+
+### 3. Structural Evidence: Mainstream Left Capitulation
+
+The ultimate proof of a rightward turn "instead" of a leftward one is that **left-wing parties are voluntarily adopting right-wing platforms** to survive politically.
+
+- **Immigration:** Center-left parties across Europe—most notably the Social Democrats in Denmark and Germany—have abandoned traditional progressive immigration stances. They have actively legislated stricter border controls and deportations to prevent losing their remaining voters to the populist right. \[[1](https://www.reddit.com/r/PoliticalDiscussion/comments/r4ra5r/americans%5Fwhy%5Fis%5Fit%5Fthat%5Frural%5Fares%5Ftend%5Fto%5Fvote/)]
+- **Environmental Retraction:** In countries with newly elected right-wing or right-supported governments, like Sweden, state budgets have explicitly rolled back aggressive left-wing green energy mandates and biofuel blending obligations to lower immediate costs for citizens. \[[1](https://onlinelibrary.wiley.com/doi/full/10.1111/ropr.12631)]
+
+### 4. Algorithmic and Media Infrastructure
+
+The digital landscape has fundamentally altered how political viewpoints are consumed, providing a distinct mechanical advantage to the right.
+
+- **Social Media Engineering:** Empirical tracking data from platforms like X (formerly Twitter) shows that modern algorithmic feeds explicitly boost right-leaning content and political activists while demoting traditional, mainstream news sources. Studies show this systemic structural bias actively nudges users toward right-wing follow patterns over time. \[[1](https://theconversation.com/a-few-weeks-of-xs-algorithm-can-make-you-more-right-wing-and-it-doesnt-wear-off-quickly-276153)]
+
+***
+
+### Direct Comparison: Why the Right is Winning Instead of the Left
+
+| Core Political Dimension \[[1](https://onlinelibrary.wiley.com/doi/full/10.1111/ropr.12631), [2](https://www.youtube.com/watch?v=j2dM1MbrhB8\&t=71), [3](https://www.cam.ac.uk/stories/political-division-united-states), [4](https://data.one.org/analysis/scarcity-to-security), [5](https://www.politico.eu/newsletter/forecast/a-flashpoint-for-the-global-left/)] | The Left's Current Vulnerability                                               | The Right's Structural Advantage                                                        |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------- |
+| **Economic Message**                                                                                                                                                                                                                                                                                                                                                  | Perceived as driving inflation via heavy state spending and green regulations. | Focuses on deregulation, tax relief, and lowering immediate consumer costs.             |
+| **Cultural Narrative**                                                                                                                                                                                                                                                                                                                                                | Centered on complex globalist frameworks and progressive social issues.        | Focuses on simple, unifying themes: national sovereignty, law and order, and tradition. |
+| **Voter Base**                                                                                                                                                                                                                                                                                                                                                        | Concentrated heavily among urban, high-income, university-educated citizens.   | Dominates rural, suburban, industrial, and blue-collar electorates.                     |
+| **Foreign Policy**                                                                                                                                                                                                                                                                                                                                                    | Struggling with deep internal division over international conflicts.           | Cohesive, highly transactional "Country-First" isolationist frameworks.                 |
+
+***
+
+Would you like to examine specific **voter polling data** from a particular country to see how these dynamics played out, or look at how **younger demographics** specifically are voting?
+
+- [link](https://www.cam.ac.uk/stories/political-division-united-states)\
+  Political division in the US surged from 2008 onwards\
+  Feb 4, 2026 — The data covered core political issues ranging from economics to race and inequality. Abortion and traditional family ties showed ...\
+  University of Cambridge
+- [link](https://theconversation.com/a-few-weeks-of-xs-algorithm-can-make-you-more-right-wing-and-it-doesnt-wear-off-quickly-276153)\
+  A few weeks of X’s algorithm can make you more right-wing\
+  Feb 18, 2026 — They were also more likely to view the criminal investigation into US President Donald Trump as unacceptable. They also shifted in...\
+  The Conversation
+- [link](https://www.tandfonline.com/doi/full/10.1080/01402382.2025.2591874)\
+  Full article: The rise of populism and the new cleavage\
+  Dec 11, 2025 — Friedman focuses on the US but documents the same phenomenon in Britain, France, and Germany. In line with this sweeping economic ...\
+  Taylor & Francis Online
+
+Show all
+
+## You said: what is left or right on the quad spectrum. evidences of right turning instead of left turning. what reality is so it's right, what would reality have been if it would be considered left
+
+### 1. What is Left or Right on the Political Spectrum?
+
+The "quad spectrum" (often called the Political Compass) maps political beliefs along two distinct axes, moving beyond the simple one-dimensional line. \[[1](https://spreadgreatideas.org/contrasts/classical-liberalism-vs-modern-liberalism/), [2](https://kpu.pressbooks.pub/political-ideologies/chapter/1-3-4-limits-of-the-left-right-spectrum/)]
+
+```
+                  AUTHORITARIAN
+                        ^
+                        |  (Fascism, Nationalism)
+                        |  Right-Authoritarian
+                        |
+LEFT <------------------+------------------> RIGHT
+(Socialism, Marxism)    |    (Free Market Capitalism, Laissez-Faire)
+                        |
+                        |  Right-Libertarian
+                        |  (Anarcho-Capitalism)
+                        v
+                   LIBERTARIAN
+```
+
+### The Horizontal Axis: Economics
+
+- **The Left:** Believes economic equality requires **state intervention or collective ownership**. It prioritizes wealth redistribution, strong social safety nets, public healthcare, and strict regulation of corporations. \[[1](https://www.pubaffairsbruxelles.eu/opinion-analysis/why-views-on-inequality-define-the-left-right-divide/), [2](https://www.mytutor.co.uk/answers/28512/GCSE/History/What-does-far-right-and-far-left-mean-In-the-context-of-the-Weimer-Republic-and-the-popular-modern-Germany-GCSE-module/), [3](https://www.manchesterhive.com/display/9781526137951/9781526137951.00011.xml), [4](https://mises.org/journal-libertarian-studies/theory-political-spectrum), [5](https://onlinelibrary.wiley.com/doi/full/10.1111/pops.12776)]
+- **The Right:** Believes economic freedom drives progress through **free-market capitalism**. It prioritizes private property rights, deregulation, tax cuts, competition, and minimal government interference. \[[1](https://www.reddit.com/r/Socialism%5F101/comments/nlbrhb/many%5Fpolitical%5Fcompasses%5Fput%5Fnazism%5Fanywhere%5Ffrom/), [2](https://mises.org/journal-libertarian-studies/theory-political-spectrum), [3](https://thedecisionlab.com/reference-guide/political-science/political-compass), [4](https://www.reddit.com/r/explainlikeimfive/comments/5jde56/eli5%5Fwhat%5Fis%5Fthe%5Ffarright%5Fand%5Fwhat%5Fis%5Fthe%5Ffarleft/)]
+
+### The Vertical Axis: Social/Authority
+
+- **Authoritarian (Top):** Believes society requires **strong centralized control** to maintain order, tradition, or security.
+- **Libertarian (Bottom):** Believes in **individual liberty**, personal choice, and minimized government control over private life. \[[1](https://quillette.com/2016/07/08/remain-vs-leave-elite-technocracy-vs-liberal-democracy/), [2](https://www.reddit.com/r/PoliticalDiscussion/comments/1g9vstm/what%5Fis%5Fthe%5Fline%5Fbetween%5Fcenterleft%5Fleft%5Fand/), [3](https://www.facebook.com/GlobalNews/videos/is-the-leftright-political-spectrum-outdated/461380707906551/), [4](https://www.perlego.com/index/politics-international-relations/libertarianism)]
+
+***
+
+### 2. Evidence of a Rightward Turn Instead of a Leftward Turn
+
+Historically, periods of high inflation and corporate price gouging caused voters to turn **Left** to demand higher taxes on the rich and expanded social spending. Today, the opposite is happening.
+
+The concrete evidence that the world is turning **Right instead of Left** includes:
+
+- **The Rejection of State Spending:** Following post-pandemic inflation, voters explicitly rejected Left-wing economic spending. Instead, they elected leaders promising to slash the state. For example, Argentina elected Javier Milei, who literally chainsawed government ministries, and the U.S. brought in Elon Musk to lead a government efficiency drive to dismantle federal regulations.
+- **The Blue-Collar Realignment:** The working class was once the bedrock of the Left. Data now shows a massive migration of non-college-educated, industrial, and rural workers to the populist Right. They view Left-wing green energy transitions as a threat to their jobs and Left-wing immigration policies as a threat to their wages. \[[1](https://onlinelibrary.wiley.com/doi/full/10.1111/1467-923X.12639), [2](https://phys.org/news/2022-01-professionals-trending-left-liberal-issues.html)]
+- **The Left’s Capitulation on Immigration:** The ultimate proof of a Rightward turn is that Left-wing parties are abandoning their own principles to survive. Center-left governments across Europe (like Denmark and Germany) have actively adopted Right-wing border restrictions and deportation policies because they are losing too many voters to the populist Right. \[[1](https://raybwilliams.medium.com/the-mainstreaming-of-far-right-politics-a-crisis-across-western-democracies-1ffb1e8542ee)]
+
+***
+
+### 3. Current Reality vs. An Alternate Left Reality
+
+To understand why today's world is classified as "Right," it helps to compare our actual reality with what the world would look like if the "Left" had won the narrative.
+
+### Current Reality (The Rightward World)
+
+- **Economics:** Governments are actively deregulating industries, cutting corporate taxes, and rolling back environmental rules to spur business. National protectionism (tariffs) is used to protect domestic companies rather than global trade agreements.
+- **Immigration:** Borders are tightening globally. The prevailing narrative treats immigration primarily as a threat to national security, public resources, and local cultural identity.
+- **Climate Change:** Climate policies are secondary to immediate energy costs. Governments are cutting subsidies for electric vehicles and green energy while increasing domestic oil, gas, and coal production to lower consumer prices.
+- **Social & Culture:** Mainstream politics centers heavily on "National Conservatism." Public policy focuses on traditional family structures, patriotism, and a fierce legislative pushback against progressive "woke" ideologies.
+
+### The Alternate Reality (If the World Had Turned Left)
+
+- **Economics:** The global response to inflation would have been heavily taxing corporate profits ("windfall taxes") and capping prices on rent, food, and energy. Wealth taxes on billionaires would be funding universal basic income (UBI) or massive expansions of public housing and healthcare.
+- **Immigration:** Borders would be managed through human-rights frameworks. The dominant narrative would view immigrants as a vital economic engine to fix aging labor forces, accompanied by fast-tracked legal pathways to citizenship.
+- **Climate Change:** Governments would be executing a sweeping, mandatory "Green New Deal." Fossil fuels would be rapidly phased out by law, carbon emissions heavily taxed, and massive public funds poured into state-owned green energy infrastructure.
+- **Social & Culture:** Global institutions would prioritize collective, intersectional equity. State policy would focus heavily on expanding protections for marginalized groups, funding multicultural programs, and integrating globalist cooperation over national sovereignty.
+
+***
+
+If you want to explore further, we can look at **polling data among young voters** to see if this shift is generational, or analyze how **social media algorithms** have favored one side over the other. Which direction would you prefer?
+
+AI can make mistakes, so double-check responses
+
+- [link](https://spreadgreatideas.org/contrasts/classical-liberalism-vs-modern-liberalism/)\
+  Comparing Classical Liberalism vs. Modern Liberalism\
+  May 25, 2024 — The chart is divided into four quadrants that list political viewpoints along two axes, which highlight economic and personal free...\
+  \
+  \
+  Spread Great Ideas
+- [link](https://kpu.pressbooks.pub/political-ideologies/chapter/1-3-4-limits-of-the-left-right-spectrum/)
+
+1.3.4 Limits of the Left-Right Spectrum – Political Ideologies and Worldviews: An Introduction\
+Note, however, that those who find a single left-right binary too limiting have developed other options, such as the Political Com...\
+\
+\
+KPU Pressbooks
+
+- [link](https://www.pubaffairsbruxelles.eu/opinion-analysis/why-views-on-inequality-define-the-left-right-divide/)\
+  Why views on inequality define the left-right divide\
+  Apr 17, 2023 — Why views on inequality define the left-right divide The left-right dimension is typically viewed as an economic dimension, with v...\
+  \
+  \
+  PubAffairs Bruxelles
+
+Show all
+
+## You said: when is the world turning left, evidences
+
+**While the global momentum currently favors the right, the world turns left during major systemic crises where free-market systems fail to protect regular citizens, driving a collective demand for state intervention, wealth redistribution, and expanded social safety nets.** \[[1](https://events.ceu.edu/2025-01-20/how-nationalist-far-right-comparative-evidence-europe-and-latin-america), [2](https://www.hamptonthink.org/read/tag/texas)]
+
+Historically and regionally, specific triggers cause the political pendulum to swing hard to the left. The concrete evidence of a leftward turn involves measurable shifts in voter behavior, structural policy changes, and mass social movements. \[[1](https://boz.substack.com/p/mapping-the-regions-ideological-landscape-e28), [2](https://www.versobooks.com/blogs/news/2971-democratic-dilemmas?srsltid=AfmBOooEh2LVMeEVxoeKLPZs-eCwrOkrVtn1fCCMMRAP1unxL67T2P1U), [3](https://globaldialogue.isa-sociology.org/articles/the-strange-return-of-the-interventionist-state), [4](https://www.sciencedirect.com/science/article/abs/pii/S0047272725002208)]
+
+***
+
+### 1. Triggers: When Does the World Turn Left?
+
+The left gains dominant power under specific societal and economic conditions: \[[1](https://www.downtoearth.org.in/economy/when-the-left-meets-the-right), [2](https://www.econlib.org/archives/2015/10/my%5Fsimplistic%5Ft.html)]
+
+- **Unbridled Economic Inequality:** When the gap between the ultra-wealthy and the working class becomes unsustainable, or when corporate monopolies trigger severe price-gouging, voters look to the left to regulate corporations and tax the rich. \[[1](https://eaworldview.com/2024/11/us-election-2024-american-liberalism/)]
+- **Market Failures and Catastrophes:** Massive financial crashes (like the 1929 Great Depression or the 2008 Great Recession) and public health crises historically prove that the free market cannot self-correct, forcing a turn toward state-planned solutions. \[[1](https://www.carnegiecouncil.org/media/series/39/20091209-how-markets-fail-the-logic-of-economic-calamities), [2](https://www.instagram.com/reel/DQ7c7FOiZwU/), [3](https://read.aupress.ca/read/social-democracy-after-the-cold-war/section/03f490ba-8ca8-4d44-8c46-0d9dbe339dc5)]
+- **Rapid Urbanization and Demographic Shifts:** As populations move into dense cities and the electorate becomes more diverse and highly educated, collective demands for public infrastructure, transit, and social progressivism naturally expand. \[[1](https://www.reddit.com/r/AskSocialScience/comments/1e6x99z/why%5Fdo%5Fliberal%5Fplaces%5Foutperform%5Fform/)]
+
+***
+
+### 2. Historical Evidences of Global Left Turns
+
+The most famous historical examples of a synchronized global shift to the left include:
+
+- **The Post-WWII Era (1940s–1950s):** Following the devastation of the Great Depression and World War II, the Western world turned radically leftward. Evidence included the creation of the UK’s National Health Service (NHS), the implementation of the U.S. New Deal policies, and the birth of the robust European welfare states. \[[1](https://www.econlib.org/archives/2017/09/does%5Fprosperity.html), [2](https://engelsbergideas.com/notebook/the-myths-that-built-the-postwar-world/), [3](https://www.irishtimes.com/business/how-trade-cannot-be-made-without-war-nor-war-without-trade-1.904246), [4](https://studycorgi.com/post-war-consensus-in-britain-myth-or-political-reality/), [5](https://platypus1917.org/2017/10/01/millennial-left-dead/)]
+- **The 1960s Cultural Revolution:** A massive leftward shift driven by youth demographics. Evidence included the global Civil Rights Movement, the anti-war movement, the legalization of abortion, and the rapid expansion of environmental regulations. \[[1](https://kirkcenter.org/interviews/after-consensus-ends/), [2](https://firstthings.com/the-death-of-mainline-protestantism/), [3](https://search.proquest.com/openview/460d0adc1612b2f4f00075b59d533f7b/1?pq-origsite=gscholar\&cbl=45949), [4](https://www.cato.org/commentary/liberaltarians), [5](https://www.tandfonline.com/doi/full/10.1080/19460171.2019.1602067)]
+- **The Latin American "Pink Tide" (Early 2000s):** Rejecting U.S.-backed free-market privatization, a massive wave of leftist leaders (such as Hugo Chávez in Venezuela, Lula da Silva in Brazil, and Evo Morales in Bolivia) swept into power simultaneously, using state resource wealth to lift millions out of poverty. \[[1](https://jacobin.com/2020/03/left-populism-political-strategy-class-power), [2](https://hir.harvard.edu/pretty-in-pink-peru-and-latin-americas-resurgent-leftism/), [3](https://www.oerproject.com/OER-Materials/OER-Media/HTML-Articles/AP-World-History/Unit8/Modern-Latin-America), [4](https://www.guardian.co.tt/article/the-pendulum-of-power-6.2.2448439.a6c2ad7d93), [5](https://socialistworker.co.uk/international/historic-defeat-for-bolivias-left/)]
+
+***
+
+### 3. Contemporary Evidence: Where the Left is Winning Today
+
+Even in a predominantly right-leaning global environment, clear evidence of leftward turning exists in specific regions and sectors: \[[1](https://www.routledge.com/The-Global-Rise-of-Authoritarianism-in-the-21st-Century-Crisis-of-Neoliberal-Globalization-and-the-Nationalist-Response/Berberoglu/p/book/9780367426798)]
+
+### The Second "Pink Tide" in Latin America
+
+While parts of the region have recently fluctuated, the early 2020s saw a historic, coordinated leftward shift in Latin America as voters punished right-wing establishments for pandemic mismanagement. \[[1](https://en.wikipedia.org/wiki/Pasokification)]
+
+- **Evidence:** The election of progressive, left-wing presidents in **Mexico** (Claudia Sheinbaum, maintaining the leftist AMLO legacy), **Brazil** (Lula da Silva returning to power), **Colombia** (Gustavo Petro, the country's first-ever leftist president), and **Chile** (Gabriel Boric). \[[1](https://www.worldpoliticsreview.com/pink-tide-south-america-politics-economy/), [2](https://www.theguardian.com/world/2022/jun/20/former-guerrilla-gustavo-petro-wins-colombian-election-to-become-first-leftist-president), [3](https://www.youtube.com/watch?v=%5F5IpE1JRzME), [4](https://www.cnn.com/amanpour-july-september-2025), [5](https://scholarlypublications.universiteitleiden.nl/access/item%3A4170853/download)]
+
+### Youth and Generational Shifts
+
+Long-term polling data shows a sharp ideological divergence between generations, providing evidence of a latent leftward shift among younger cohorts on specific issues.
+
+- **Evidence:** Generation Z and Millennials in Western democracies consistently vote overwhelmingly to the left of older generations on **climate change legislation, LGBTQ+ rights, reproductive freedom, and student debt cancellation**.
+
+### The Growth of Democratic Socialism in Local Politics
+
+While the national stage in places like the US and Europe has favored the right, local municipal governments show a distinct leftward trend. \[[1](https://www.thenewatlantis.com/publications/the-rise-of-localist-politics), [2](https://theintercept.com/2018/09/30/conservatives-capitalism-book-peter-kolozi/)]
+
+- **Evidence:** Major metropolitan cities worldwide have increasingly elected progressive mayors who champion left-wing urban policies, such as rent control, aggressive carbon-neutral goals, the expansion of free public transit, and defunding traditional policing in favor of social workers. \[[1](https://en.wikipedia.org/wiki/Progressive%5FEra), [2](https://www.makingacinephile.com/her-spike-jonzes-vision-of-a-post-capitalist-future-part-2/)]
+
+***
+
+### Summary Table: Signs of a Political Shift
+
+| Indicator \[[1](https://www.tandfonline.com/doi/full/10.1080/01402382.2025.2591874), [2](https://www.policyalternatives.ca/news-research/this-international-womens-day-its-time-to-fight-like-our-lives-depend-on-it-because-they-do/), [3](https://fiveable.me/hs-honors-us-history/unit-13/energy-crisis-economic-stagflation/study-guide/qExg471UAtKjJNws), [4](https://www.illiberalism.org/jean-francois-drolet-on-american-conservatism-new-fusionism-civilizationalism-and-right-wing-gramscianism/), [5](https://fiveable.me/apush/unit-9/reagan-conservatism/study-guide/bhzREq69MW1ktHbBP8hg)] | Evidence of a Right Turn                                             | Evidence of a Left Turn                                                  |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| **Economic Crisis Response**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Tax cuts, deregulation, dismantling of government agencies.          | Windfall taxes on corporations, price controls, universal basic income.  |
+| **Social Policy focus**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | Protection of traditional family values, anti-woke legislation.      | Expanded protections for minorities, indigenous rights, gender equality. |
+| **Climate Action**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Fossil fuel expansion, cutting green subsidies to lower costs.       | Aggressive green energy mandates, heavy taxation on carbon emissions.    |
+| **Global Alignment**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | National protectionism, strict borders, isolationist foreign policy. | Cross-border environmental treaties, human-rights-focused immigration.   |
+
+***
+
+Would you like to look at the **specific economic data** from a period like the 1930s or 2008 to see exactly how a left turn happens, or look at how **demographic projections** might favor a future leftward shift?
+
+AI can make mistakes, so double-check responses
+
+- [link](https://events.ceu.edu/2025-01-20/how-nationalist-far-right-comparative-evidence-europe-and-latin-america)\
+  How Nationalist Is the Far Right? Comparative Evidence from Europe and Latin America\
+  Jan 20, 2025 — Far right parties are garnering momentum across different regions of the globe.\
+  \
+  CEU
+- [link](https://www.hamptonthink.org/read/tag/texas)\
+  texas — Read — Hampton Institute\
+  Aug 3, 2025 — This situation represents the latest in a long and devastating history of the free market failing to protect working class people ...\
+  \
+  \
+  Hampton Institute
+- [link](https://boz.substack.com/p/mapping-the-regions-ideological-landscape-e28)\
+  Mapping the region's ideological landscape - December 2025\
+  Dec 16, 2025 — Timing. One reason for the alleged shift to the right is that there are more leftwing governments facing elections due to a previo...\
+  \
+  \
+  Latin America Risk Report
+
+Show all
+
+## You said: what does the left or the right favor
+
+**The political Left favors collective responsibility and government intervention to ensure equality, while the Right favors individual liberty and free-market capitalism to drive progress.** \[[1](https://www.sciencedirect.com/science/article/pii/S0921800904002678), [2](https://medium.com/@LilyLii/left-vs-right-demystifying-americas-political-spectrum-7fc20d094233), [3](https://helpfulprofessor.com/left-wing-vs-right-wing/), [4](https://testbook.com/question-answer/the-ideology-of-left-in-politics-general--69e4d49fd73af51af1926c25)]
+
+Here is the direct breakdown of what each side favors across key societal pillars:
+
+### 1. The Economy and Taxes
+
+- **The Left Favors:** High taxes on corporations and billionaires, wealth redistribution, strong labor unions, and a robust social safety net (like universal healthcare and public housing) \[rd]. \[[1](https://onlinelibrary.wiley.com/doi/full/10.1111/pops.12776), [2](https://journals.sagepub.com/doi/10.1177/1065912917735176), [3](https://onlinelibrary.wiley.com/doi/full/10.1111/bjir.12665), [4](https://www.bhfs.com/Templates/media/files/insights/Post-Election%20Tax%20Policy%20Scenario%202%20A%20Democratic%20Sweep-Law360.pdf), [5](https://fundamentals-of-global-business.com/variety-of-political-systems-affecting-business/)]
+- **The Right Favors:** Tax cuts for individuals and businesses, deregulation, private property rights, and minimal government spending to stimulate economic growth \[rd]. \[[1](https://www.linkedin.com/pulse/understanding-left-right-political-spectrum-paul-thomas), [2](https://bristoluniversitypressdigital.com/display/book/9781447339410/ch001.xml), [3](https://quizlet.com/gb/1004586251/examine-the-similarities-between-the-policies-of-one-main-us-political-party-and-one-main-political-party-in-the-uk-flash-cards/)]
+
+### 2. Social and Cultural Issues
+
+- **The Left Favors:** Social progressivism, LGBTQ+ rights, systemic racial equity, reproductive freedom, and secularism (separation of church and state). \[[1](https://en.wikipedia.org/wiki/Centre-left%5Fpolitics), [2](https://study.com/learn/lesson/left-wing-vs-right-wing-overview-ideologies-differences.html), [3](https://www.econlib.org/how-socialist-was-national-socialism/), [4](https://helpfulprofessor.com/liberalism-examples/)]
+- **The Right Favors:** Traditional family structures, religious freedom, patriotism, law-and-order policing, and the preservation of national culture. \[[1](https://www.nature.com/articles/s41599-025-05679-x), [2](https://harpers.org/archive/2023/02/is-liberalism-worth-saving-francis-fukuyama-cornel-west-deirdre-mccloskey-patrick-deneen/), [3](https://helpfulprofessor.com/left-wing-vs-right-wing/), [4](https://www.iasgyan.in/daily-current-affairs/right-vs-left)]
+
+### 3. Immigration and Borders
+
+- **The Left Favors:** Humanitarian asylum frameworks, fast-tracked pathways to legal citizenship, and viewing immigrants as valuable economic and cultural contributors. \[[1](https://www.tandfonline.com/doi/full/10.1080/14782804.2021.1990026)]
+- **The Right Favors:** Strict border enforcement, immigration moratoriums or caps, deportation of undocumented individuals, and a "national identity first" policy. \[[1](https://www.yahoo.com/news/articles/does-believe-141539914.html)]
+
+### 4. Climate and Energy
+
+- **The Left Favors:** Aggressive green energy mandates, phasing out fossil fuels by law, carbon taxes, and government subsidies for electric vehicles. \[[1](https://theconversation.com/both-conservatives-and-liberals-want-a-green-energy-future-but-for-different-reasons-134534), [2](https://journals.sagepub.com/doi/10.1177/00207020231179969)]
+- **The Right Favors:** Expanding domestic oil, gas, and coal production ("drill, baby, drill") to ensure cheap energy, and cutting expensive environmental regulations. \[[1](https://www.ipsos.com/en-us/american-voters-are-unhappy-federal-governments-energy-policy), [2](https://www.sciencedirect.com/science/article/abs/pii/S0176268020300963), [3](https://climatecommunication.gmu.edu/all/climate-change-in-the-american-mind-politics-and-policy-fall-2025/), [4](https://www.pewresearch.org/science/2022/03/01/americans-largely-favor-u-s-taking-steps-to-become-carbon-neutral-by-2050/)]
+
+### 5. Foreign Policy and Governance
+
+- **The Left Favors:** International cooperation through bodies like the UN, global human rights advocacy, and collective diplomatic alliances. \[[1](https://www.anbound.com/Section/ArticleView%5F34077%5F14.htm), [2](https://www.cliffsnotes.com/study-notes/26923146)]
+- **The Right Favors:** Transactional isolationism ("America First" or country-specific equivalents), national sovereignty, and strong military deterrence over global treaties. \[[1](https://foreignanalysis.com/the-sustainability-crisis-of-american-foreign-policy/), [2](https://www.irishtimes.com/world/us/2025/08/04/why-so-many-are-shocked-at-marco-rubios-role-in-implementing-new-us-worldview/)]
+
+***
+
+### Summary Checklist
+
+| Topic \[[1](https://civita.no/notat/is-free-market-capitalism-more-climate-friendly-than-egalitarianism/)] | ⬅️ The Left Favors           | ➡️ The Right Favors                |
+| ---------------------------------------------------------------------------------------------------------- | ---------------------------- | ---------------------------------- |
+| **Healthcare**                                                                                             | Public / Universal           | Private / Market-based             |
+| **Market**                                                                                                 | Regulated by state           | Free and unregulated               |
+| **Society**                                                                                                | Diverse and progressive      | Traditional and unified            |
+| **Crime**                                                                                                  | Rehabilitation / Root causes | Strict punishment / Police funding |
+| **Climate**                                                                                                | Rapid green transition       | Fossil fuel independence           |
+
+***
+
+Would you like to see how these preferences translate into **actual laws** passed recently, or explore how **different countries** (like the US vs. Europe) define the Left and Right?
+
+AI can make mistakes, so double-check responses
+
+- [link](https://www.sciencedirect.com/science/article/pii/S0921800904002678)\
+  The environment, left-wing political orientation and ecological economics\
+  Dec 1, 2004 — Left-wing political parties tend to embrace more governmental intervention, are less probusiness and are more concerned about the ...\
+  \
+  ScienceDirect.com
+- [link](https://medium.com/@LilyLii/left-vs-right-demystifying-americas-political-spectrum-7fc20d094233)\
+  Left vs. Right: Demystifying America’s Political Spectrum | by Lily Li\
+  Feb 14, 2024 — The political right believes in limited government intervention in the economy and traditional social values. Right-leaning politi...\
+  \
+  \
+  Medium
+- [link](https://helpfulprofessor.com/left-wing-vs-right-wing/)\
+  Left-Wing vs Right-Wing (10 Key Ideological Differences) (2026)\
+  Jun 8, 2023 — The left-wing ideology typically champions ideals of equality, social justice, and collective responsibility, advocating for gover...\
+  \
+  \
+  Helpful Professor
+
+Show all
+
+## You said: pros and cons of the left or the right
+
+Evaluating the political Left and Right involves looking at how their core philosophies play out in the real world. What one voter considers a benefit, another may see as a drawback. \[[1](https://www.reddit.com/r/PoliticalDebate/comments/1fmwb0m/what%5Fis%5Fthe%5Fleft/)]
+
+***
+
+### The Political Left
+
+The Left operates on the principle of **collective responsibility**. It argues that society thrives when the government actively intervenes to level the playing field and protect vulnerable citizens \[rd]. \[[1](https://www.reddit.com/r/changemyview/comments/jta8kn/cmv%5Fthe%5Fleft%5Fand%5Fright%5Fare%5Fterrible%5Fways%5Fof/), [2](https://www.reddit.com/r/asktransgender/comments/13u69cs/why%5Fdo%5Ftransgender%5Fpeople%5Fprefer%5Fleftwing/), [3](https://www.irishtimes.com/opinion/2025/10/28/fintan-otoole-theres-a-reason-why-ireland-votes-for-leftist-presidents-and-right-of-centre-governments/)]
+
+### Pros of the Left
+
+- **Reduced Inequality:** High corporate taxes and wealth redistribution help fund robust public programs, narrowing the gap between the ultra-rich and the poor \[rd]. \[[1](https://www.gcsehistory.com/faq/politicalleftviews.html), [2](https://medium.com/@gideonmagnus/left-vs-right-whats-it-really-about-e71db41103e4)]
+- **Strong Social Safety Nets:** Universal healthcare, affordable public education, and unemployment protections ensure that citizens rarely face financial ruin from sickness or job loss \[rd]. \[[1](https://www.refugeehelp.nl/en/asylum-seeker/article/100530-left-and-right-how-do-you-understand-dutch-politics)]
+- **Protected Civil Rights:** A strict focus on social progressivism expands legal protections for marginalized communities, LGBTQ+ individuals, and minority groups. \[[1](https://www.tandfonline.com/doi/full/10.1080/23311886.2025.2572347), [2](https://talkingpointsmemo.com/cafe/the-false-equivalence-between-the-far-right-and-the-hard-left)]
+- **Forward-Looking Climate Action:** Aggressive investments in green energy help protect the environment for future generations and reduce the long-term impacts of climate change.
+
+### Cons of the Left
+
+- **High Economic Burden:** Funding massive public programs requires high tax rates on businesses and individual workers, which can reduce personal disposable income \[rd].
+- **Stifled Business Innovation:** Heavy government regulations and strict labor laws can increase corporate overhead, making it harder for startups to grow and compete globally \[rd].
+- **Risk of Government Overreach:** An expansive state apparatus can lead to an inefficient bureaucracy, wasteful public spending, and excessive control over private choice. \[[1](https://bellacaledonia.org.uk/2015/01/13/neoliberalism-vs-the-deep-state/)]
+- **Rapid Cultural Friction:** Pushing progressive social policies too quickly can alienate traditional communities, deepening societal polarization and culture wars. \[[1](https://www.cpsa-acsp.ca/documents/conference/2019/292.Westlake.pdf)]
+
+***
+
+### The Political Right
+
+The Right operates on the principle of **individual liberty and free enterprise**. It argues that society thrives when individuals and businesses are left free to compete, innovate, and enjoy the fruits of their own labor \[rd]. \[[1](https://mises.org/mises-daily/left-and-right-within-libertarianism), [2](https://www.theunpopulist.net/p/what-is-the-glue-binding-the-new)]
+
+### Pros of the Right
+
+- **Economic Dynamism:** Lower taxes, deregulation, and free-market capitalism encourage investment, reward risk-taking, and stimulate rapid business growth \[rd].
+- **Lower Cost of Living (Short-Term):** Prioritizing cheap fossil fuels and cutting expensive environmental regulations helps lower immediate energy, gas, and consumer utility bills.
+- **Social Stability and Order:** A firm stance on law enforcement, strict criminal sentencing, and traditional social values provides communities with a predictable sense of safety and cultural unity.
+- **National Sovereignty:** An isolationist, "country-first" foreign policy prioritizes domestic economic interests and guards tax dollars against wasteful international entanglements. \[[1](https://www.lrb.co.uk/the-paper/v40/n21/william-davies/against-responsibility), [2](https://helpfulprofessor.com/left-wing-vs-right-wing/), [3](https://journals.sagepub.com/doi/10.1177/00027162241227778), [4](https://campaigns.dmu.edu/scholarship/cOWz2S/2AD074/right%5F%5Fand%5F%5Fleft-in%5Fpolitics.pdf), [5](https://www.city-journal.org/article/academia-conservatives-universities-ideological)]
+
+### Cons of the Right
+
+- **Severe Wealth Disparities:** Unregulated capitalism naturally allows wealth to concentrate at the top, leaving working-class citizens vulnerable to corporate exploitation and rising costs of living \[rd].
+- **Fragile Safety Nets:** A market-based approach to essential services means things like healthcare, housing, and higher education become privatized commodities that are unaffordable for low-income families.
+- **Environmental Degradation:** De-prioritizing green mandates and expanding oil and gas drilling can accelerate local pollution and worsen global climate change for immediate economic gain.
+- **Exclusionary Nationalism:** A strict focus on traditional culture and tighter borders can foster systemic hostility toward immigrants and minority groups, fracturing multi-ethnic societies. \[[1](https://www.reddit.com/r/explainlikeimfive/comments/2nf951/eli5%5Fin%5Fpolitics%5Fwhat%5Fdoes%5Ffar%5Fright%5Fand%5Ffar%5Fleft/)]
+
+***
+
+### Comparison Matrix
+
+| Aspect \[[1](https://thehill.com/opinion/international/3878844-how-the-western-hemisphere-became-the-leftist-hemisphere/), [2](https://pureadmin.qub.ac.uk/ws/portalfiles/portal/630964883/update154%5FNI%5FLeft%5For%5FRight.pdf), [3](https://onlinelibrary.wiley.com/doi/10.1111/ssqu.70034), [4](https://www.dash.hrecos.org/guide/019/0AD/tOm1xt/UsaTodayPoliticalLeaning), [5](https://democracyparadox.com/2026/05/13/kenneth-roberts-says-the-left-pays-a-steep-price-for-breaking-with-democracy/)] | ⬅️ Left Impact                                                 | ➡️ Right Impact                                                      |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------- | -------------------------------------------------------------------- |
+| **The Economy**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | High taxes, high public support, slower business growth \[rd]. | Low taxes, rapid corporate innovation, high wealth inequality \[rd]. |
+| **The Citizen**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | Shielded from poverty, but faces higher state control.         | High personal freedom to succeed or fail on individual merit.        |
+| **The Environment**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | Long-term ecological protection at a high immediate cost.      | Cheap energy and raw materials at a high long-term ecological cost.  |
+| **Society**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | Highly diverse, progressive, and rapidly evolving.             | Culturally cohesive, traditional, and resistant to radical change.   |
+
+***
+
+If you want to dive deeper, we can examine **real-world examples** of countries that lean heavily left (like Denmark) versus those that lean heavily right (like Singapore) to see how these pros and cons manifest. Which would you prefer? \[[1](https://www.reddit.com/r/PoliticalDiscussion/comments/196o3yn/is%5Fthe%5Ffar%5Fleftliberalism%5Fin%5Fus%5Fconsidered/)]
+
+AI can make mistakes, so double-check responses
+
+- [link](https://www.reddit.com/r/PoliticalDebate/comments/1fmwb0m/what%5Fis%5Fthe%5Fleft/)\
+  What is "the left"? : r/PoliticalDebate\
+  Sep 22, 2024 — The right will dislike the left because the left requires them to sacrifice some for the benefit of others. The left will dislike ...\
+  \
+  \
+  Reddit
+- [link](https://www.reddit.com/r/changemyview/comments/jta8kn/cmv%5Fthe%5Fleft%5Fand%5Fright%5Fare%5Fterrible%5Fways%5Fof/)\
+  CMV: The Left and Right are terrible ways of classifying political ideas : r/changemyview\
+  Nov 13, 2020 — The left/right spectrum is actually really useful in classifying politics because it defines who you think bares responsibility fo...\
+  \
+  \
+  Reddit
+- [link](https://www.reddit.com/r/asktransgender/comments/13u69cs/why%5Fdo%5Ftransgender%5Fpeople%5Fprefer%5Fleftwing/)\
+  Why do transgender people prefer left-wing economics? : r/asktransgender\
+  May 28, 2023 — Part of leftism is protecting vulnerable people who live in our societies. So the ones running the society, ie the government, nee...\
+  \
+  Reddit
+
+Show all
+
+# political spectrums besides one axis or quad
+
+Political scientists and data analysts have developed several alternative frameworks to move beyond the constraints of a single left-right line or the traditional four-quadrant Political Compass. These models introduce entirely new variables, treat spectrums as multi-dimensional matrices, or map ideologies based on psychological and cultural traits. \[[1](https://en.wikipedia.org/wiki/The%5FPolitical%5FCompass), [2](https://www.quora.com/Is-there-a-third-or-maybe-fourth-political-axis-Axis-1-is-liberal-vs-conservative-Axis-2-is-libertarian-vs-authoritarian-What-if-anything-is-the-third-or-fourth-axis)]
+
+***
+
+### 1. Three-Axis Models (3D Compasses)
+
+Adding a third dimension is the most common way to resolve contradictions found in two-axis models. The most popular variations include: \[[1](https://www.youtube.com/watch?v=pGEWPY3nqHw\&t=82)]
+
+- **The Pournelle Model**: Created by sci-fi author and scientist Jerry Pournelle, this model uses two axes but functions uniquely by focusing on **Attitude toward Progress** (rationalism vs. irrationalism) and **Degree of Control** (state authority vs. individual liberty).
+- **The Cultural/Technology Axis**: Many modern web-based models (like _8values_ or _SapplyValues_) add a **Progressive vs. Traditionalist** (or technological acceleration vs. deceleration) axis. This separates an "economic leftist" who loves technology and social progress from an "economic leftist" who holds deeply conservative, religious, or agrarian social values.
+- **The Foreign Policy Axis**: This adds an **Interventionism/Globalism vs. Isolationism/Nationalism** axis. It explains how two groups with identical domestic economic goals might fundamentally split on foreign wars, international trade, and global organizations. \[[1](https://en.wikipedia.org/wiki/Political%5Fspectrum), [2](https://medium.com/the-outsider-news/the-three-axis-political-compass-73ec7522a7ac), [3](https://www.youtube.com/watch?v=pGEWPY3nqHw\&t=82), [4](https://www.linkedin.com/pulse/political-compass-still-good-todays-landscape-w-gray-qwzae)]
+
+***
+
+### 2. Cultural & Value-Based Matrices
+
+### The Inglehart–Welzel Evolutionary Cultural Map \[[1](https://arxiv.org/html/2502.08045v2)]
+
+Developed by political scientists Ronald Inglehart and Christian Welzel using data from the World Values Survey, this highly regarded academic model maps entire countries rather than just individuals. It relies on two completely non-economic axes: \[[1](https://colinmathers.com/2020/08/03/variations-in-cultural-values-across-105-countries-in-2019/)]
+
+- **Traditional vs. Secular-Rational Values**: Traditional values emphasize religion, parent-child ties, authority, and absolute standards. Secular-rational values place less emphasis on religion, traditional family structures, and authority.
+- **Survival vs. Self-Expression Values**: Survival values prioritize economic and physical security, linked to an ethnocentric outlook and low levels of trust. Self-expression values prioritize environmental protection, tolerance of foreigners, gender equality, and LGBTQ+ rights. \[[1](https://en.wikipedia.org/wiki/Inglehart%E2%80%93Welzel%5Fcultural%5Fmap%5Fof%5Fthe%5Fworld), [2](https://medium.com/discourse/toward-a-better-political-spectrum-chart-725e8942f36c), [3](https://arxiv.org/html/2502.08045v2), [4](https://en.wikipedia.org/wiki/Inglehart%E2%80%93Welzel%5Fcultural%5Fmap%5Fof%5Fthe%5Fworld), [5](https://arxiv.org/html/2502.08045v2)]
+
+### Hans Eysenck’s Personality Spectrum
+
+Psychologist Hans Eysenck designed a model combining politics with psychological traits: \[[1](https://www.britannica.com/topic/political-spectrum)]
+
+- **R-Axis (Radicalism vs. Conservatism)**: Measures your alignment with traditional vs. new social structures.
+- **T-Axis (Tough-Minded vs. Tender-Minded)**: Measures psychological authoritarianism. "Tough-minded" individuals are comfortable using harsh, dictatorial, or aggressive methods to enforce their views (e.g., both Stalinists and Nazis). "Tender-Minded" individuals lean toward democratic, peaceful, or libertarian solutions. \[[1](https://www.britannica.com/topic/political-spectrum), [2](https://en.wikipedia.org/wiki/Political%5Fspectrum)]
+
+***
+
+### 3. Multi-Vector Frameworks (Modern Web Models)
+
+In online political theory communities, complex "vector" tests have largely replaced geometric shapes by scoring users across 4 to 12 independent, linear spectrums simultaneously.
+
+| Model       | Dimensions / Scales Measured                                                                                                                                                                                                                        |
+| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **8values** | Economic (Equality vs. Markets) • Diplomatic (Nation vs. Globe) • Civil (Liberty vs. Authority) • Societal (Tradition vs. Progress)                                                                                                                 |
+| **9Axes**   | Federal vs. Unitary • Democratic vs. Authoritarian • Globalist vs. Nationalist • Pacifist vs. Militarist • Freedom vs. Security • Equality vs. Markets • Secular vs. Religious • Progressive vs. Traditional • Assimilationist vs. Multiculturalist |
+
+***
+
+### 4. Non-Geometric and Typology Models
+
+### Pew Research Center Political Typology \[[1](https://en.wikipedia.org/wiki/Pew%5FResearch%5FCenter%5Fpolitical%5Ftypology), [2](https://www.pewresearch.org/politics/2021/11/09/beyond-red-vs-blue-the-political-typology-2021/)]
+
+Instead of forcing people onto geometric axes, the Pew Research Center groups individuals into distinct "typologies" based on shared values and political behaviors. Rather than a static left-right split, their data divides the electorate into operational coalitions, such as **Faith and Flag Conservatives**, **Populist Right**, **Stressed Sideliners**, and the **Progressive Left**. \[[1](https://www.pewresearch.org/politics/2021/11/09/beyond-red-vs-blue-the-political-typology-2021/), [2](https://www.britannica.com/topic/political-spectrum), [3](https://www.pewresearch.org/politics/2014/06/26/the-political-typology-beyond-red-vs-blue-2014/), [4](https://www.pewresearch.org/topic/politics-policy/political-parties-polarization/political-typology/), [5](https://www.pewresearch.org/politics/2014/06/26/section-1-the-political-typology-identity-and-attitudes/)]
+
+### Linear Alternatives: Horseshoe Theory vs. The Wedge
+
+- **Horseshoe Theory**: Asserted by French writer Jean-Pierre Faye, this theory argues that the political spectrum is not a straight line, but a horseshoe. The far-left and the far-right bend inward toward each other, sharing a mutual reliance on authoritarianism, state control, and anti-establishment populism.
+- **The Wedge**: A concept visualizing a spectrum that starts tight at the center (where political consensus is high) but splits vastly wider as you move outward. This highlights how extremist ideologies branch into wildly fractured, incompatible sub-factions compared to a relatively unified political center. \[[1](https://mereliberty.com/philosophy/political-compass-alternatives/), [2](https://en.wikipedia.org/wiki/Horseshoe%5Ftheory), [3](https://study.com/academy/lesson/horseshoe-theory-meaning-history-examples.html), [4](https://www.linkedin.com/pulse/understanding-left-right-political-spectrum-paul-thomas), [5](https://study.com/academy/lesson/video/criticism-of-the-horseshoe-theory.html)]
+
+AI can make mistakes, so double-check responses
+
+- [link](https://en.wikipedia.org/wiki/Political%5Fspectrum)\
+  Political spectrum - Wikipedia\
+  Politics that rejects the conventional left–right spectrum is often known as syncretic politics. This form of politics has been cr...\
+  Wikipedia
+- [link](https://medium.com/the-outsider-news/the-three-axis-political-compass-73ec7522a7ac)\
+  The Three-Axis Political Compass - Medium\
+  Jun 13, 2017 — Paleoconservatives are mixed in terms of both economics (support of both deregulation and protectionism) and foreign policy (suppo...\
+  Medium·Lew Blank
+- [link](https://en.wikipedia.org/wiki/The%5FPolitical%5FCompass)\
+  The Political Compass - Wikipedia\
+  Political model ... The test's propositions lead the individual taking the test to reflect on issues such as "Is military action t...\
+  Wikipedia
+
+Show all
+
+## You said: nine axes
+
+The **9Axes** model is a popular multi-dimensional political quiz that expands the traditional political compass into nine independent, linear spectrums. Instead of plotting a single point on a grid, it generates a comprehensive profile by scoring a user's beliefs across 45 to 90 nuanced statements.
+
+The model is highly regarded in online political theory communities because it prevents the oversimplification of complex ideologies—such as separating a person's views on military intervention from their views on domestic civil liberties.
+
+***
+
+### The 9 Axes Explained
+
+Each axis represents a distinct political tension, measured from 0% to 100% between two opposing philosophies: \[[1](https://cdn.prod.website-files.com/681b22225e46a01d1d9fdcb0/68621d061b779b7ab374bbca%5Fpikisogitiwifabafakilozep.pdf)]
+
+### 1. Federal vs. Unitary (Geographic Power)
+
+- **Federal**: Favors decentralizing power to local, state, or regional governments.
+- **Unitary**: Favors a strong centralized national government where regional divisions have little autonomous power.
+
+### 2. Democratic vs. Authoritarian (Governance Structure)
+
+- **Democratic**: Emphasizes public participation, voting, transparency, and collective decision-making.
+- **Authoritarian**: Prioritizes executive power, strict hierarchies, social order, and top-down governance.
+
+### 3. Globalist vs. Nationalist (Foreign Policy Focus)
+
+- **Globalist**: Advocates for international cooperation, open borders, global organizations (like the UN), and global citizenship.
+- **Nationalist**: Prioritizes the sovereign interests, culture, security, and independence of one’s own nation-state.
+
+### 4. Pacifist vs. Militarist (Conflict Resolution)
+
+- **Pacifist**: Opposes war and aggressive military action, favoring diplomacy, non-violence, and disarmament.
+- **Militarist**: Believes a strong military is essential for national security, prestige, and projecting power abroad.
+
+### 5. Freedom vs. Security (Civil Liberties)
+
+- **Freedom**: Prioritizes individual liberty, privacy, free speech, and minimal government surveillance.
+- **Security**: Favors state surveillance, policing, and laws designed to protect public safety, even at the cost of personal freedoms.
+
+### 6. Equality vs. Markets (Economics)
+
+- **Equality**: Supports wealth redistribution, public services, welfare, and state intervention to reduce financial disparity.
+- **Markets**: Favors laissez-faire capitalism, deregulation, private property, and free-market competition.
+
+### 7. Secular vs. Religious (Church and State)
+
+- **Secular**: Demands a strict separation of church and state, prioritizing science, reason, and non-religious public policy.
+- **Religious**: Believes laws and public life should be guided by moral, traditional, or faith-based spiritual principles.
+
+### 8. Progressive vs. Traditional (Social Values)
+
+- **Progressive**: Embraces social change, scientific acceleration, and breaking away from historical norms.
+- **Traditional**: Values historical heritage, preservation of cultural norms, family structures, and moral continuity.
+
+### 9. Assimilationist vs. Multiculturalist (Cultural Integration)
+
+- **Assimilationist**: Believes immigrants and minority groups should fully adapt to and adopt the dominant culture of the nation.
+- **Multiculturalist**: Celebrates diverse cultural identities within a single society, advocating for the preservation of distinct heritages.
+
+***
+
+### Comparison: 9Axes vs. 8values
+
+Because 9Axes directly evolved from the older **8values** model, they share a very similar structure, but 9Axes adds three critical layers of distinction:
+
+1. **Splits Geopolitics**: 8values combines diplomacy and culture. 9Axes splits this into separate **Global vs. National** and **Assimilation vs. Multicultural** scales.
+2. **Isolates Military**: 9Axes separates the **Pacifist vs. Militarist** axis from the broader globalism axis, recognizing that someone can be a nationalist who opposes foreign wars (isolationist).
+3. **Refines State Structure**: 9Axes explicitly adds the **Federal vs. Unitary** axis to capture how power should be geographically distributed, an element entirely missing from 8values.
+
+***
+
+If you are interested, we can explore how specific **historical ideologies** (like Anarcho-Capitalism, Juche, or Social Democracy) score across these nine axes, or I can help you find **similar multi-axis tests** to try out. Which direction would you like to take?
+
+AI can make mistakes, so double-check responses
+
+- [link](https://cdn.prod.website-files.com/681b22225e46a01d1d9fdcb0/68621d061b779b7ab374bbca%5Fpikisogitiwifabafakilozep.pdf)\
+  Political tests and quizzes\
+  Choose whichever suits you. The test consists of eight independent axes, each with two opposing values assigned, representing diff...\
+  \
+  cdn.prod.website-files.com
+
+# (d) philosophical spectrums
+
+**Philosophical spectrums** refer to <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">the continuous scales of thought that bridge competing theories across the core dimensions of human existence, knowledge, and reality</mark>. Rather than treating ideas as isolated boxes, viewing philosophy through continuous spectrums allows us to see how different frameworks slide into one another, offering nuanced views on foundational questions. \[[1](https://abjanvanmeerten.medium.com/the-spectrum-of-philosophy-of-mind-a-sketch-a2ed97b9c699), [2](https://www.reddit.com/r/askphilosophy/comments/162ruij/what%5Fare%5Fthe%5Fprimary%5Fspectrums%5For/), [3](https://www.cliffsnotes.com/cliffs-questions/5055748), [4](https://medium.com/@alexfiliakov/the-spectrum-of-truth-bridging-personal-collective-and-universal-understanding-8d1a4b1806e0)]
+
+***
+
+### Metaphysics: The Spectrum of Reality
+
+Metaphysics explores the fundamental nature of reality and what exists. This spectrum slides between what is physically measurable and what is mentally or spiritually constructed. \[[1](https://study.com/academy/lesson/the-branches-of-philosophy.html), [2](https://abjanvanmeerten.medium.com/the-spectrum-of-philosophy-of-mind-a-sketch-a2ed97b9c699), [3](https://www.reddit.com/r/askphilosophy/comments/162ruij/what%5Fare%5Fthe%5Fprimary%5Fspectrums%5For/), [4](https://medium.com/curious/universal-mind-the-thinking-stuff-from-which-all-things-are-made-573adb3cce32)]
+
+- **Physicalism / Materialism**: Reality consists entirely of physical matter, energy, and measurable scientific laws.
+- **Dualism**: Reality is divided cleanly into two distinct elements: the physical body and the non-physical mind or soul.
+- **Idealism**: Reality is ultimately mental, immaterial, or constructed by consciousness, making matter an illusion or byproduct of the mind. \[[1](https://en.wikipedia.org/wiki/List%5Fof%5Fphilosophies), [2](https://en.wikipedia.org/wiki/Outline%5Fof%5Fphilosophy), [3](https://www.reddit.com/r/askphilosophy/comments/162ruij/what%5Fare%5Fthe%5Fprimary%5Fspectrums%5For/), [4](https://abjanvanmeerten.medium.com/the-spectrum-of-philosophy-of-mind-a-sketch-a2ed97b9c699), [5](https://philarchive.org/archive/RAHIIB)]
+
+### Epistemology: The Spectrum of Knowledge
+
+Epistemology deals with the origin, nature, and limits of human knowledge. The core spectrum weighs whether truth is discovered through external observation or internal reasoning. \[[1](https://consc.net/taxonomy.html), [2](https://study.com/academy/lesson/the-branches-of-philosophy.html), [3](https://thebrooklyninstitute.com/items/courses/new-york/philosophical-skepticism-doubt-evidence-justified-belief-2/), [4](https://spires.co/online-philosophy-tutors/undergraduate/philosophy-fundamentals-essential-concepts-and-approaches), [5](https://thirdmill.org/magazine/article.asp/link/gre%5Fbahnsen%5Egre%5Fbahnsen.TA.html/at/Why%20Study%20Transcendental%20Arguments?)]
+
+- **Empiricism**: Knowledge comes purely from sensory experience, observation, and experimental data.
+- **Pragmatism**: Knowledge is an evolving instrument judged entirely by its practical results and real-world usefulness.
+- **Rationalism**: Knowledge is gained through innate intellectual reason, logic, and deduction, independent of the senses. \[[1](https://consc.net/taxonomy.html), [2](https://www.britannica.com/topic/philosophy), [3](https://iep.utm.edu/american-philosophy/), [4](https://spot.colorado.edu/~huemer/papers/rand.htm), [5](https://warwick.ac.uk/fac/soc/philosophy/people/longworth/keyideasrationalismempiricism.pdf)]
+
+### Ethics: The Spectrum of Morality
+
+Ethics investigates how humans determine right from wrong. This scale balances the intrinsic rules of an action against the real-world results that the action produces. \[[1](https://study.com/academy/lesson/the-branches-of-philosophy.html), [2](https://onphilosophy.wordpress.com/2006/12/28/an-ethical-spectrum/), [3](https://www.sweynepark.com/wp-content/uploads/2020/11/Philosophy-and-Ethics-NEW.pdf)]
+
+- **Deontology**: Morality is bound to universal, absolute duties and rules, regardless of the consequences (e.g., lying is always wrong).
+- **Virtue Ethics**: Morality is centered on developing a good moral character and practicing wisdom, rather than following rigid rules.
+- **Consequentialism / Utilitarianism**: Morality is determined solely by the outcomes; the right action is the one that maximizes overall happiness. \[[1](https://www.britannica.com/topic/philosophy), [2](https://onphilosophy.wordpress.com/2006/12/28/an-ethical-spectrum/), [3](https://fiveable.me/intro-philosophy/unit-9/3-deontology/study-guide/BCGoIZ1o4DeSBQ80), [4](https://www.reddit.com/r/philosophy/comments/y6qek/awesome%5Fwebsite%5Fshort%5Fexperiment%5Ftests%5Fthat%5Fmake/), [5](https://fiveable.me/lists/key-philosophical-concepts)]
+
+### Meaning: The Spectrum of Existence
+
+This existential scale measures how much inherent purpose exists in the universe and how humans ought to respond to that reality. \[[1](https://bigthink.com/thinking/10-schools-of-philosophy-and-why-you-should-know-them/), [2](https://www.instagram.com/reel/DHb6%5FQEPiMK/?hl=en)]
+
+- **Nihilism**: Life has no objective, inherent meaning, and trying to find purpose is entirely futile.
+- **Absurdism**: The universe is fundamentally devoid of meaning, but humans should passionately revolt by creating their own joy anyway.
+- **Existentialism**: Life lacks predefined meaning, placing the absolute freedom and responsibility on the individual to forge their own purpose. \[[1](https://en.wikipedia.org/wiki/Continental%5Fphilosophy), [2](https://bigthink.com/thinking/10-schools-of-philosophy-and-why-you-should-know-them/), [3](https://wrotagonist.medium.com/the-isms-of-philosophy-7125184134f7), [4](https://www.instagram.com/reel/DHb6%5FQEPiMK/?hl=en), [5](https://foundationsofeducationcbu.weebly.com/5-philosophical-perspectives.html)]
+
+***
+
+If you would like to explore these concepts further, tell me which **specific spectrum** captures your interest. I can break down its **most famous historical philosophers** or provide **real-world ethical dilemmas** to show how each side approaches a problem.
+
+- [link](https://consc.net/taxonomy.html)\
+  A Taxonomy of Philosophy\
+  Empiricism. Evidentialism. Foundationalism. Foundationalism and Coherentism. Foundationalism, Misc. Sense-Datum Theories of Percep...\
+  Consc.net
+- [link](https://www.britannica.com/topic/philosophy)\
+  Philosophy | Definition, Systems, Fields, Schools, & Biographies\
+  May 28, 2026 — philosophy \* What is the linguistic origin of the word 'philosophy'? The word 'philosophy' originates from ancient Greek, through ...\
+  Britannica
+- [link](https://iep.utm.edu/american-philosophy/)\
+  American Philosophy\
+  Peirce's “pragmatic maxim” captures this stance as follows: “Consider what effects, which might conceivably have practical bearing...\
+  Internet Encyclopedia of Philosophy
+
+Show all
+
+## You said: why are ideas like egoism, elitism, and pragmaticism listed
+
+**Egoism, elitism, and pragmaticism are listed because they represent the operational, practical application of core philosophical ideas to human behavior, social structures, and truth.** While traditional spectrums cover abstract metaphysics, these three concepts map directly onto specific axes of ethics, political philosophy, and epistemology.
+
+Here is exactly where each concept falls on the philosophical spectrum and why it is included:
+
+### 1. Egoism: The Ethics Spectrum
+
+Egoism sits on the **Spectrum of Moral Motivation**, which measures who should benefit from human actions.
+
+- **The Scale:** It stands in direct opposition to **Altruism** (living for the sake of others) and **Utilitarianism** (living for the greatest good of the collective). \[[1](https://www.vaia.com/en-us/explanations/politics/political-ideology/altruism/), [2](https://www.cliffsnotes.com/tutors-problems/Creative-Writing/52531161-For-this-first-part-of-the-project-you-will-be-creating-a-FAQ/)]
+- **Why it is listed:** It provides a necessary framework for the argument that self-interest is either a biological reality (Psychological Egoism) or a moral good (Ethical Egoism). \[[1](https://www.youtube.com/watch?v=umNVvTwHhl8), [2](https://www.cambridge.org/core/journals/economics-and-philosophy/article/philosophical-egoism-its-nature-and-limitations/F668F72CA3F75B98D6B5D90F637A1052), [3](https://plato.stanford.edu/archives/fall2014/entries/egoism/)]
+
+### 2. Elitism: The Political Spectrum
+
+Elitism belongs to the **Spectrum of Governance and Power**, which addresses how society should be organized and who is best suited to lead.
+
+- **The Scale:** It stands opposite to **Egalitarianism** (the belief that all people are inherently equal and deserve equal rights) and **Populism** (prioritizing the voice of the common masses). \[[1](https://www.vaia.com/en-us/explanations/philosophy/philosophy-of-politics/egalitarianism/), [2](https://quizlet.com/gb/208997843/utilitarianism-flash-cards/)]
+- **Why it is listed:** It formalizes the argument that society functions best when a select group of individuals—due to perceived superior intellect, wealth, or capability—holds the decision-making power. \[[1](https://quizlet.com/ph/526099333/art-appreciation-prelim-flash-cards/)]
+
+### 3. Pragmaticism: The Epistemological Spectrum
+
+Pragmaticism (a strict, logical variation of Pragmatism coined by philosopher Charles Sanders Peirce) sits on the **Spectrum of Truth and Meaning**. \[[1](https://philarchive.org/archive/DEAPAS-4)]
+
+- **The Scale:** It acts as a bridge between **Strict Empiricism** (relying purely on raw sensory data) and **Rationalism** (relying on pure abstract logic). \[[1](https://www.thoughtco.com/what-is-rationalism-in-philosophy-2670589), [2](https://www.sciencedirect.com/science/article/pii/S2405883116300326), [3](https://www.artforum.com/features/problems-of-criticism-v-the-politics-of-art-part-ii-210926/), [4](https://www.horizons-2000.org/2023/supporting/philosophy.html)]
+- **Why it is listed:** It offers a unique middle ground, defining the truth of an idea or concept purely by its practical, experimental consequences and real-world utility. \[[1](https://www.slideshare.net/slideshow/difference-between-naturalismidealism-and-pragmatismpptx/254045601), [2](https://fiveable.me/lists/major-philosophical-theories), [3](https://www.pragmatismtoday.com/winter2010/Pihlstrom-Kant%5Fand%5FPragmatism.pdf)]
+
+***
+
+If you are interested in exploring how these interact, let me know if you would like to:
+
+- See a **visual breakdown** of the political spectrum (Elitism vs. Egalitarianism).
+
+- Explore a **real-world dilemma** where Egoism and Altruism clash.
+
+- Learn about the **historical debate** that led to the creation of Pragmaticism. \[[1](https://academic.oup.com/jah/article-pdf/83/1/100/2137487/83-1-100.pdf)]
+
+- [link](https://www.vaia.com/en-us/explanations/politics/political-ideology/altruism/)\
+  Altruism: Definition & Types\
+  Apr 28, 2022 — Altruism is therefore presented as directly opposed to egoism. Egoists argue that altruism does not exist in reality. We, humans, ...\
+  \
+  \
+  www.vaia.com
+
+- [link](https://www.cliffsnotes.com/tutors-problems/Creative-Writing/52531161-For-this-first-part-of-the-project-you-will-be-creating-a-FAQ/)\
+  \[Solved] For this first part of the project you will be creating a FAQ (Frequently Asked Questions) sheet highlighting...\
+  Aug 14, 2023 — Ethical egoism is the counterpoint to utilitarianism, focusing on individual interests. Key characteristics include:\
+  \
+  CliffsNotes
+
+- [link](https://www.youtube.com/watch?v=umNVvTwHhl8)\
+  Egoism: Ethical System or Not?\
+  Nov 26, 2018 — Egoism postulates that what is good for one's survival and personal happiness is moral. Egoism is the ethical system that defines ...\
+  \
+  \
+  YouTube
+
+Show all
+
+
+
+
+# philosophical spectrums
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>Philosophical spectrums are continuous scales of thought used to categorize different answers to life's most fundamental questions.</strong></mark> Instead of viewing philosophy as isolated, rigidly defined schools of thought, these spectrums illustrate how different perspectives blend into, or sharply contrast with, one another across core branches like metaphysics, epistemology, and ethics. \[[1](https://www.reddit.com/r/askphilosophy/comments/15nr2mw/branches%5Fof%5Fphilosophy/), [2](https://www.reddit.com/r/askphilosophy/comments/162ruij/what%5Fare%5Fthe%5Fprimary%5Fspectrums%5For/), [3](https://bigthink.com/thinking/10-schools-of-philosophy-and-why-you-should-know-them/), [4](https://helpfulprofessor.com/belief-systems/), [5](https://unacademy.com/content/upsc/mcqs/philosophy/)]
+
+### Metaphysics: The Nature of Reality
+
+This spectrum addresses what the universe is fundamentally made of, spanning from purely physical matter to purely mental or spiritual constructs. \[[1](https://abjanvanmeerten.medium.com/the-spectrum-of-philosophy-of-mind-a-sketch-a2ed97b9c699), [2](https://www.reddit.com/r/askphilosophy/comments/162ruij/what%5Fare%5Fthe%5Fprimary%5Fspectrums%5For/), [3](https://link.springer.com/chapter/10.1007/978-3-030-84197-3%5F9), [4](https://www.instagram.com/reel/DYU0wrVzDcZ/), [5](https://www.tamucc.edu/liberal-arts/departments/humanities/philosophy/guide/index.php)]
+
+- **Physicalism / Materialism**: The belief that only physical matter and energy exist.
+- **Dualism**: The middle ground stating that both physical matter and non-physical minds/souls coexist independently.
+- **Idealism**: The belief that reality is fundamentally mental, immaterial, or constructed by the mind. \[[1](https://en.wikipedia.org/wiki/List%5Fof%5Fphilosophies), [2](https://en.wikipedia.org/wiki/Outline%5Fof%5Fphilosophy), [3](https://abjanvanmeerten.medium.com/the-spectrum-of-philosophy-of-mind-a-sketch-a2ed97b9c699), [4](https://www.reddit.com/r/askphilosophy/comments/162ruij/what%5Fare%5Fthe%5Fprimary%5Fspectrums%5For/), [5](http://webspace.ship.edu/cgboer/meta.html)]
+
+### Epistemology: The Origin of Knowledge
+
+This scale dictates how humans acquire reliable knowledge and determine what is true. \[[1](https://study.com/academy/lesson/the-branches-of-philosophy.html), [2](https://www.reddit.com/r/askphilosophy/comments/c5eh0d/what%5Fis%5Fthe%5Fpurpose%5Fof%5Fphilosophy%5Fin%5Frelation%5Fto/), [3](https://www.scribd.com/document/904667921/Philosophy-50-Item-Exam-Fixed)]
+
+- **Empiricism**: Knowledge comes purely from sensory experience, observation, and experimentation.
+- **Pragmatism**: The middle ground where truth is judged by its practical consequences and utility, rather than pure theory.
+- **Rationalism**: Knowledge is best gained through intellectual deduction, innate ideas, and pure reason, independent of sensory experience. \[[1](https://consc.net/taxonomy.html), [2](https://www.britannica.com/topic/philosophy), [3](https://iep.utm.edu/american-philosophy/), [4](https://www.qualityresearchinternational.com/socialresearch/empiricism.htm), [5](https://spot.colorado.edu/~huemer/papers/rand.htm)]
+
+### Ethics: The Foundations of Morality \[[1](https://amberstudent.com/blog/post/what-are-the-different-branches-of-philosophy), [2](https://www.mcgill.ca/philosophy/undergraduate-2010/what), [3](https://iphras.ru/uplfile/ethics/biblio/guseinov/Philosophy%5Fas%5Fan%5FEthical%5FProject.html)]
+
+This axis categorizes how we determine right from wrong, shifting from the actor’s internal mind to the external real-world consequences. \[[1](https://onphilosophy.wordpress.com/2006/12/28/an-ethical-spectrum/)]
+
+- **Deontology / Kantianism**: Actions are inherently right or wrong based on strict duties and universal rules, regardless of the consequences.
+- **Virtue Ethics**: Morality centers on the internal character and habits of the individual actor, rather than rules or outcomes.
+- **Consequentialism / Utilitarianism**: The morality of an action is judged solely by its external results and the amount of good or happiness it creates. \[[1](https://www.britannica.com/topic/philosophy), [2](https://en.wikipedia.org/wiki/List%5Fof%5Fphilosophies), [3](https://onphilosophy.wordpress.com/2006/12/28/an-ethical-spectrum/), [4](https://www.planksip.org/the-ethical-dimension-of-war-and-peace-and-war-and-peace-1763659528738/), [5](https://fiveable.me/lists/fundamental-philosophical-questions)]
+
+### Meta-Ethics: The Nature of Moral Values \[[1](https://amberstudent.com/blog/post/what-are-the-different-branches-of-philosophy), [2](https://philosophynow.org/issues/156/Lets%5FGet%5FMeta), [3](https://www.studysmarter.co.uk/explanations/philosophy/ethics-philosophy/)]
+
+This spectrum measures whether moral facts exist objectively in the universe or are entirely fabricated by humans. \[[1](https://www.reddit.com/r/askphilosophy/comments/95bnow/list%5Fof%5Fall%5Fphilosophical%5Fpositions/), [2](https://www.reddit.com/r/askphilosophy/comments/2fm5l9/philosophers%5Fof%5Freddit%5Fwhere%5Fdo%5Fyou%5Ffind%5Fyourself/), [3](https://www.informationphilosopher.com/solutions/philosophers/smith/), [4](https://introductiontoethicsversion2.pressbooks.tru.ca/chapter/moral-relativism/), [5](https://www.catholic.com/magazine/print-edition/philosophy-101-taught-by-pope-john-paul-ii?utm%5Fsource=Catholic%20Answers%20Daily\&utm%5Fcampaign=05ab300c96-CADaily1002219\&utm%5Fmedium=email\&utm%5Fterm=0%5F6b4f9e3af2-05ab300c96-212679249\&mc%5Fcid=05ab300c96\&mc%5Feid=0395903494)]
+
+- **Moral Realism / Objectivism**: Moral values are objective facts about the world that remain true regardless of what anyone thinks.
+- **Relativism**: Morality is completely dependent on cultural context, historical eras, or personal perspectives.
+- **Nihilism**: There are no moral facts whatsoever; right and wrong are complete illusions. \[[1](https://www.reddit.com/r/explainlikeimfive/comments/1jyfa8/eli5%5Fdifferent%5Fschools%5Fof%5Fphilosophy/), [2](https://www.reddit.com/r/askphilosophy/comments/2fm5l9/philosophers%5Fof%5Freddit%5Fwhere%5Fdo%5Fyou%5Ffind%5Fyourself/), [3](https://www.reddit.com/r/askphilosophy/comments/95bnow/list%5Fof%5Fall%5Fphilosophical%5Fpositions/), [4](https://wrotagonist.medium.com/the-isms-of-philosophy-7125184134f7), [5](https://bigthink.com/thinking/10-schools-of-philosophy-and-why-you-should-know-them/)]
+
+### Philosophy of Mind: The Consciousness Scale
+
+This spectrum attempts to solve the "hard problem of consciousness" by evaluating how deeply awareness is embedded into nature. \[[1](https://abjanvanmeerten.medium.com/the-spectrum-of-philosophy-of-mind-a-sketch-a2ed97b9c699), [2](https://philosophersmag.com/neuroexistentialism/)]
+
+- **Reductionism**: Consciousness is merely an accidental byproduct of complex biochemical reactions in the brain.
+- **Emergentism**: Mind is a unique, higher-level property that naturally bubbles up from complex physical systems but cannot be reduced back to simple matter.
+- **Panpsychism**: Consciousness is a fundamental block of the universe, meaning all matter possesses some baseline level of subjective experience. \[[1](https://en.wikipedia.org/wiki/Outline%5Fof%5Fphilosophy), [2](https://en.wikipedia.org/wiki/Solipsism), [3](https://www.reddit.com/r/askphilosophy/comments/162ruij/what%5Fare%5Fthe%5Fprimary%5Fspectrums%5For/), [4](https://psychologyfanatic.com/mind-body-dualism/), [5](https://www.planksip.org/the-philosophical-idea-of-the-body-and-soul-and-philosophy-1760440511796/)]
+
+***
+
+If you would like to explore these spectrums further, please let me know:
+
+- Which **specific branch** (like reality, knowledge, or ethics) interests you most?
+
+- Do you want to see how a **specific historical philosopher** fits onto these scales?
+
+- Are you looking to apply a spectrum to a **modern ethical or technical dilemma** (like AI consciousness)? \[[1](https://www.reddit.com/r/explainlikeimfive/comments/1jyfa8/eli5%5Fdifferent%5Fschools%5Fof%5Fphilosophy/), [2](https://www.reddit.com/r/askphilosophy/comments/15nr2mw/branches%5Fof%5Fphilosophy/), [3](https://www.eventbrite.com/e/1987956008937?aff=ebdiglgoogleliveevents)]
+
+- [link](https://consc.net/taxonomy.html)\
+  A Taxonomy of Philosophy\
+  Empiricism. Evidentialism. Foundationalism. Foundationalism and Coherentism. Foundationalism, Misc. Sense-Datum Theories of Percep...\
+  Consc.net
+
+- [link](https://www.britannica.com/topic/philosophy)\
+  Philosophy | Definition, Systems, Fields, Schools, & Biographies\
+  May 28, 2026 — philosophy \* What is the linguistic origin of the word 'philosophy'? The word 'philosophy' originates from ancient Greek, through ...\
+  Britannica
+
+- [link](https://iep.utm.edu/american-philosophy/)\
+  American Philosophy\
+  Peirce's “pragmatic maxim” captures this stance as follows: “Consider what effects, which might conceivably have practical bearing...\
+  Internet Encyclopedia of Philosophy
+
+Show all
+
+## You said: why are ideas like egoism, elitism, and pragmaticism not listed
+
+**Egoism, elitism, and pragmatism were omitted simply because the previous overview focused on broad, classical spectrums rather than specific subset theories.**
+
+However, these three ideas fit perfectly into philosophical frameworks and expand the original scales into specialized domains of motivation, social structure, and truth.
+
+### Where These Ideas Fit on the Philosophical Spectrums
+
+```
+[Moral/Social Spectrum]
+Egoism (Self-interest) <---------------------> Altruism (Other-focused)
+
+[Political/Social Spectrum]
+Elitism (Rule by the few) <------------------> Egalitarianism (Rule by all)
+
+[Epistemological Spectrum]
+Empiricism <-----------> Pragmatism / Pragmaticism <-----------> Rationalism
+```
+
+### 1. Egoism (The Motivation Axis)
+
+Egoism belongs on the ethical spectrum, specifically looking at **who** should benefit from moral actions. It sits opposite **Altruism**. \[[1](https://quizlet.com/ca/252728095/phil-110-flash-cards/), [2](https://philosophy.stackexchange.com/questions/94707/is-there-a-philosophy-ideology-that-whatever-is-beneficial-to-me-is-the-reason)]
+
+- **Ethical Egoism:** The radical view that individuals have a moral duty to pursue their own self-interest above all else.
+- **Psychological Egoism:** The descriptive claim that humans are inherently incapable of acting out of pure altruism, as every action is secretly self-serving. \[[1](https://pimaopen.pressbooks.pub/introphilosophy/chapter/5-1-moral-philosophy-concepts-and-distinctions/), [2](https://www.cliffsnotes.com/study-notes/13954951), [3](https://www.acsu.buffalo.edu/~degray/E22/module-11.html), [4](https://global.oup.com/us/companion.websites/9780190464509/resources/ch5/outline/), [5](https://quizlet.com/370792347/philosophy-150-exam-1-study-guide-flash-cards/)]
+
+### 2. Elitism (The Social & Political Axis)
+
+Elitism belongs on a political philosophy spectrum, which measures how power, authority, and value should be distributed in a society. It sits opposite **Egalitarianism**. \[[1](https://amberstudent.com/blog/post/what-are-the-different-branches-of-philosophy), [2](https://socraticdictum.com/philosophical-glossary/), [3](https://en.wikipedia.org/wiki/Elitism)]
+
+- **Elitism:** The belief that a society should be led, governed, or guided by a select group of individuals who possess superior intellect, wealth, or specialized skills. \[[1](https://en.wikipedia.org/wiki/Elitism)]
+- **Egalitarianism:** The opposing belief that all people are fundamentally equal and deserve equal rights, opportunities, and governing power. \[[1](https://www.investopedia.com/terms/e/egalitarianism.asp), [2](https://www.wallstreetmojo.com/egalitarianism/)]
+
+### 3. Pragmaticism / Pragmatism (The Meaning & Truth Axis)
+
+Pragmatism actually serves as a vital middle ground on the Epistemological scale, bridging the gap between cold observation and abstract logic.
+
+- **Pragmaticism:** A strict, highly logical variation of pragmatism coined by Charles Sanders Peirce. He wanted to distance his theory from broader interpretations of pragmatism that became popular in psychology. \[[1](https://philarchive.org/archive/DEAPAS-4), [2](https://www.britannica.com/topic/pragmatism-philosophy/History-of-pragmatism)]
+- **The Core Idea:** It states that the true meaning or value of an idea lies entirely in its **practical, testable consequences**. If a belief has no measurable effect on how we interact with the world, the dispute is functionally meaningless. \[[1](https://www.cliffsnotes.com/study-notes/28210665)]
+
+***
+
+To help explore these specific concepts further, let me know:
+
+- Would you like to look at the **political philosophy spectrum** to see how elitism compares to populism or authoritarianism?
+
+- Do you want to see the arguments for and against **ethical egoism**?
+
+- Are you interested in the technical difference between **pragmatism** and Peirce's strict **pragmaticism**?
+
+- [link](https://quizlet.com/ca/252728095/phil-110-flash-cards/)\
+  Phil 110 Flashcards\
+  For example someone who wants to do something good and decides to volunteer, they are only doing it to serve themselves. Ethical E...\
+  \
+  \
+  Quizlet
+
+- [link](https://philosophy.stackexchange.com/questions/94707/is-there-a-philosophy-ideology-that-whatever-is-beneficial-to-me-is-the-reason)\
+  Is there a philosophy ideology that "whatever is beneficial to me, is the reasonable thing"?\
+  Nov 12, 2022 — Egoism seems to fit the bill i.e. in my book it matches the description provided in the OP. The opposite of egoism is altruism. an...\
+  \
+  Philosophy Stack Exchange
+
+- [link](https://pimaopen.pressbooks.pub/introphilosophy/chapter/5-1-moral-philosophy-concepts-and-distinctions/)
+
+5.1 Moral Philosophy – Concepts and Distinctions – Introduction to Philosophy\
+Egoism is the view that by nature we are selfish, that our actions, even our ostensibly generous ones, are motivated by selfish de...\
+\
+\
+Pressbooks.pub
+
+Show all
+
+## You said: do they map onto one of the listed ideologies
+
+**Yes, these concepts map directly onto the listed ideologies as sub-theories, natural outcomes, or foundational components.**
+
+Instead of standing alone, egoism, elitism, and pragmatism operate within the broader metaphysical, epistemological, and ethical categories previously mentioned. \[[1](https://ir.ucc.edu.gh/xmlui/bitstream/handle/123456789/6863/ADEGAH%2C%202020.pdf?sequence=1\&isAllowed=y), [2](https://journals.sagepub.com/doi/10.1177/1558689815575861), [3](https://www.encyclopedia.com/philosophy-and-religion/philosophy/philosophy-terms-and-concepts/egoism)]
+
+### 1. Egoism Maps Onto Consequentialism
+
+Egoism is a specialized, self-centered branch of **Consequentialism**.
+
+- **The Connection:** Consequentialism states that the morality of an action is judged solely by its results. Egoism adopts this exact framework but narrows the target: an action is good if the consequences are good _for the individual actor_. \[[1](https://fiveable.me/intro-philosophy/key-terms/john-stuart-mill), [2](https://www.scribd.com/document/554545849/5-CONSEQUENTIALIST)]
+- **The Contrast:** This directly contrasts with Utilitarianism, which is a _universal_ form of consequentialism aiming for the greatest good for the greatest number of people. \[[1](https://philosophyintrocourse.com/introduction-to-ethics-2020/week-5/), [2](https://www.coursehero.com/file/89009886/Ethics-research-paperdocx/), [3](https://www.researchgate.net/publication/357117307%5FCultural%5FRelativism%5Fvs%5FCultural%5FAbsolutism)]
+
+### 2. Elitism Maps Onto Virtue Ethics and Objectivism
+
+Elitism requires specific philosophical justifications to argue that certain people are superior, anchoring itself in two main areas:
+
+- **Virtue Ethics:** Classical elitism (like Plato’s idea of "Philosopher Kings") stems from Virtue Ethics. It argues that only a select few individuals have successfully cultivated the wisdom, temperance, and moral virtue required to lead.
+- **Moral Realism / Objectivism:** For elitism to function, there must be objective standards of value, intelligence, or capability. It rejects Relativism because it asserts that some people, traits, or ideas are objectively better than others.
+
+### 3. Pragmaticism Maps Onto Empiricism
+
+Charles Sanders Peirce’s **Pragmaticism** is a highly disciplined evolution of **Empiricism**.
+
+- **The Connection:** Empiricism claims that knowledge comes from sensory experience and experimentation. Pragmaticism takes this further by turning it into a rule for logic: the meaning of any concept is defined _entirely_ by the experimental, real-world effects you expect it to have. \[[1](https://www.perlego.com/knowledge/study-guides/what-is-empiricism), [2](https://quizlet.com/study-guides/rationalism-vs-empiricism-in-a-level-philosophy-cd71513b-fb82-42df-a44a-b1b9ad309d11), [3](https://testbook.com/question-answer/pragmatism-is-also-known-asi-instrumentalism--697a2b06bdd02dd0db3f427e), [4](https://open.spotify.com/show/4tenH2ubaWD29kEgrBvgBX)]
+- **The Subversion:** While it relies on empirical testing, pragmaticism rejects pure physicalism/materialism. Peirce actually used pragmaticism to defend a unique form of Idealism, arguing that the physical universe is ultimately governed by a growing, mind-like system of habits and laws. \[[1](https://pmc.ncbi.nlm.nih.gov/articles/PMC10601384/), [2](https://www.coursehero.com/lit/Pragmatism/lecture-2-summary/), [3](https://shs.cairn.info/journal-revue-francaise-d-etudes-americaines-2010-2-page-59?lang=en), [4](https://www.encyclopedia.com/philosophy-and-religion/philosophy/philosophy-terms-and-concepts/pragmatism), [5](https://revistas.pucsp.br/cognitiofilosofia/article/download/12127/9478/31120)]
+
+***
+
+If you want to see how these sub-theories interact in practice, let me know if I should:
+
+- Map out a specific historical debate, like **Plato's elitism** vs. **democratic egalitarianism**.
+- Show how an **egoist** and a **utilitarian** would solve the same modern moral dilemma.
+- Explain how **pragmaticism** changes the way we define truth compared to strict **rationalism**. \[[1](https://web.as.miami.edu/personal/obueno/Site/Online%5FPapers%5Ffiles/ConcepQTruth.pdf), [2](https://www.cambridge.org/core/books/realism-for-realistic-people/truth/23E47D936082FC093946CE76B73FD835)]
+
+AI can make mistakes, so double-check responses
+
+- [link](https://ir.ucc.edu.gh/xmlui/bitstream/handle/123456789/6863/ADEGAH%2C%202020.pdf?sequence=1\&isAllowed=y)\
+  UNIVERSITY OF CAPE COAST A DEFENCE OF AYN RAND‘S RATIONAL EGOISM WISDOM KODZO ADEGAH JANUARY 2020\
+  In light of this, egoism can be said to form part of the many ethical theories such as altruism, hedonism, and utilitarianism sinc...\
+  \
+  UCC IR
+- [link](https://journals.sagepub.com/doi/10.1177/1558689815575861)\
+  Making Paradigms Meaningful in Mixed Methods Research - Peggy Shannon-Baker, 2016\
+  Mar 20, 2015 — Pragmatism Morgan (2007) presents pragmatism as an alternative to positivism and “metaphysical” (based on critical theory, postpos...\
+  \
+  \
+  Sage Journals
+- [link](https://www.encyclopedia.com/philosophy-and-religion/philosophy/philosophy-terms-and-concepts/egoism)\
+  Egoism\
+  Aug 13, 2018 — Egoism refers primarily to a theory of ethics, although in philosophical usage it sometimes also designates a theory of knowledge.\
+  \
+  Encyclopedia.com
+
+Show all
+
 # 
-
-
-
