@@ -149,7 +149,7 @@ https://coss.com/ui/docs/components/button
 
 https://base-ui.com/react/components/slider
 
-
+https://chakra-ui.com/docs/components/slider
 
 ---
 

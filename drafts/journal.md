@@ -33483,7 +33483,9 @@ i dont want react <!-- or an elegant react or more performant react -->. i dont 
 
  -->
 
-see
+seems they play hai yorokonde effortlessly. they know how to play. they know the exact sequence wo heavy tracking and reacting.
+
+maybe i would increate note speed to eight.
 
 
 
