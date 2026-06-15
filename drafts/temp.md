@@ -4,7 +4,7 @@ cynicism
 
 existentialism
 
-<!-- perfectionism --> extremism <!-- absolutism? -->
+<!-- perfectionism --> extremism
 
 egoism
 

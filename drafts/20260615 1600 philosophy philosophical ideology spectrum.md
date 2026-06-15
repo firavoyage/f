@@ -550,8 +550,227 @@ Let me know what aspect you want to look into next.
   \
   New Bloom Magazine
 
-# 
+# all philosophies inside the philosophical spectrum
 
+The philosophical spectrum is organized across **six major fundamental branches**: <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>metaphysics, epistemology, ethics, logic, aesthetics, and political philosophy</strong></mark>. Within these overarching domains, hundreds of distinct movements, frameworks, and "isms" dictate how humans perceive reality, acquire knowledge, and determine moral values. \[[1](https://www.evphil.com/philosophy-101.html), [2](https://amberstudent.com/blog/post/what-are-the-different-branches-of-philosophy), [3](https://en.wikipedia.org/wiki/List%5Fof%5Fphilosophies), [4](https://medium.com/@kooky/philosophical-movements-and-branches-94016c750c91), [5](https://medium.com/the-philosophers-stone/get-serious-about-philosophy-with-these-four-resources-933afb656120)]
+
+***
+
+### 1. Metaphysics: The Spectrum of Reality
+
+Metaphysics explores the fundamental nature of existence, being, and the universe. Positions on this spectrum dictate what is considered "real." \[[1](https://www.facebook.com/PhilosopherGames/videos/a-whirlwind-tour-of-the-main-disciplines-of-philosophy-this-gives-you-the-brief-/1960893338029382/), [2](https://www.evphil.com/philosophy-101.html), [3](https://www.coursehero.com/file/252790728/Doc1-AutoRecovereddocx/)]
+
+- **Materialism / Physicalism**: Only physical matter and energy exist. The mind is entirely a product of brain activity.
+- **Idealism**: Reality is fundamentally mental or immaterial. The physical world is either an illusion or dependent on a perceiving mind.
+- **Dualism**: Reality consists of two distinct substances. Usually, these are the separate realms of the physical body and the non-physical mind.
+- **Monism**: Reality is composed of only one unifying substance. This substance can be entirely physical, entirely mental, or a third neutral substance.
+- **Nihilism (Metaphysical)**: Rejects the idea that objective reality or concrete existence actually exists. \[[1](https://www.reddit.com/r/explainlikeimfive/comments/1jyfa8/eli5%5Fdifferent%5Fschools%5Fof%5Fphilosophy/), [2](https://wrotagonist.medium.com/the-isms-of-philosophy-7125184134f7), [3](https://bigthink.com/thinking/10-schools-of-philosophy-and-why-you-should-know-them/), [4](https://en.wikipedia.org/wiki/List%5Fof%5Fphilosophies), [5](https://medium.com/@kooky/philosophical-movements-and-branches-94016c750c91)]
+
+### 2. Epistemology: The Spectrum of Knowledge
+
+Epistemology examines the nature, origin, and limits of human knowledge. \[[1](https://www.evphil.com/philosophy-101.html), [2](https://www.facebook.com/PhilosopherGames/videos/a-whirlwind-tour-of-the-main-disciplines-of-philosophy-this-gives-you-the-brief-/1960893338029382/)]
+
+- **Empiricism**: Knowledge comes purely from sensory experience. True understanding requires observation, experimentation, and evidence.
+- **Rationalism**: Knowledge is best gained through reason and innate intellect. Sensory information can be deceptive; logic is infallible.
+- **Pragmatism**: Knowledge is a tool for practical action. A proposition is true if it works satisfactorily and has practical value in the real world.
+- **Skepticism**: True knowledge is impossible to achieve. Humans must question all claims and suspend definitive judgment.
+- **Constructivism**: Knowledge is actively constructed by humans. Truth is built through social context and experiences rather than discovered passively. \[[1](https://iep.utm.edu/american-philosophy/), [2](https://medium.com/@kooky/philosophical-movements-and-branches-94016c750c91), [3](https://www.slideshare.net/slideshow/12-common-teaching-philosophies-lastima-anthonettepdf/266197014), [4](https://en.wikipedia.org/wiki/List%5Fof%5Fphilosophies), [5](https://wrotagonist.medium.com/the-isms-of-philosophy-7125184134f7)]
+
+### 3. Ethics: The Spectrum of Morality
+
+Moral philosophy defines what makes actions right or wrong, good or bad. \[[1](https://www.evphil.com/philosophy-101.html), [2](https://www.facebook.com/PhilosopherGames/videos/a-whirlwind-tour-of-the-main-disciplines-of-philosophy-this-gives-you-the-brief-/1960893338029382/)]
+
+- **Deontology**: Morality is bound by absolute duties and rules. An action is inherently right or wrong, regardless of its consequences.
+- **Utilitarianism / Consequentialism**: Morality is determined entirely by outcomes. An action is good if it maximizes overall happiness and minimizes suffering.
+- **Virtue Ethics**: Morality is driven by individual character. Focuses on cultivating traits like courage, justice, and wisdom rather than following strict rules.
+- **Moral Relativism**: Moral truths are not absolute. Right and wrong depend entirely on cultural, societal, or personal contexts.
+- **Moral Nihilism**: Objective moral facts do not exist. Concepts of "good" and "evil" are purely human social fabrications. \[[1](https://wrotagonist.medium.com/the-isms-of-philosophy-7125184134f7), [2](https://en.wikipedia.org/wiki/Outline%5Fof%5Fphilosophy), [3](https://www.youtube.com/watch?v=hlFOlJ%5FqZI0), [4](https://en.wikipedia.org/wiki/List%5Fof%5Fphilosophies), [5](https://medium.com/@kooky/philosophical-movements-and-branches-94016c750c91), [6](https://bigthink.com/thinking/10-schools-of-philosophy-and-why-you-should-know-them/)]
+
+### 4. Meaning & Existence: The Existential Spectrum
+
+This spectrum addresses how humans cope with conscious existence and the search for purpose. \[[1](https://blog.adioma.com/meaning-of-life-according-to-philosophy/), [2](https://www.youtube.com/watch?v=ZuD5CCXjsSU), [3](https://people.bu.edu/wwildman/WeirdWildWeb/courses/wphil/lectures/wphil%5Ftheme20.htm), [4](https://www.worldatlas.com/philosophy/a-closer-look-at-existentialism.html)]
+
+- **Existentialism**: Individuals must forge their own meaning. Existence precedes essence; you define who you are through your choices.
+- **Absurdism**: The human search for meaning is fundamentally futile. The universe is cold and chaotic, but individuals should embrace this absurdity and enjoy life anyway.
+- **Stoicism**: Peace is achieved by accepting what you cannot control. Focus entirely on your own responses, virtues, and inner emotional discipline.
+- **Hedonism**: The ultimate goal of life is to maximize pleasure and minimize pain.
+- **Cynicism**: Conventional desires like wealth, fame, and power should be rejected. True virtue is found by living simply and in harmony with nature. \[[1](https://www.reddit.com/r/explainlikeimfive/comments/1jyfa8/eli5%5Fdifferent%5Fschools%5Fof%5Fphilosophy/), [2](https://www.youtube.com/watch?v=ZuD5CCXjsSU), [3](https://medium.com/@kooky/philosophical-movements-and-branches-94016c750c91), [4](https://www.youtube.com/watch?v=hlFOlJ%5FqZI0), [5](https://philosophyball.miraheze.org/wiki/List%5Fof%5FPhilosophies/Alphabetical%5FList)]
+
+### 5. Political & Social Philosophy: The Spectrum of Governance
+
+This area looks at the justification of state authority and the ideal structure of society. \[[1](https://rafikifoundation.org/blog-detail/philosophy-intro-part-v-the-spectrum-of-philosophy), [2](https://study.com/academy/lesson/the-branches-of-philosophy.html)]
+
+- **Liberalism**: Prioritizes individual liberty, equal rights, and the consent of the governed.
+- **Libertarianism**: Advocates for strictly minimal state intervention. Emphasizes private property and absolute personal autonomy.
+- **Marxism / Socialism**: Focuses on a classless society. Rejects capitalism in favor of public ownership of the means of production.
+- **Anarchism**: Rejects all forms of involuntary, hierarchical government. Advocates for a society organized entirely by voluntary associations.
+- **Authoritarianism / Absolutism**: Centralized control and strict obedience to an absolute governing authority are necessary to maintain social order. \[[1](https://wrotagonist.medium.com/the-isms-of-philosophy-7125184134f7), [2](https://en.wikipedia.org/wiki/List%5Fof%5Fphilosophies), [3](https://www.slideshare.net/slideshow/12-common-teaching-philosophies-lastima-anthonettepdf/266197014), [4](https://medium.com/@kooky/philosophical-movements-and-branches-94016c750c91), [5](https://byjus.com/free-ias-prep/political-ideologies-types-definitions/)]
+
+***
+
+If you want to dive deeper into a specific area, let me know:
+
+- Which **specific branch** (like ethics or metaphysics) interests you most?
+
+- Do you want to see how a **particular philosopher** fits into this map?
+
+- Are you looking for a **comparison** between two competing "isms"?
+
+- [link](https://www.reddit.com/r/explainlikeimfive/comments/1jyfa8/eli5%5Fdifferent%5Fschools%5Fof%5Fphilosophy/)\
+  ELI5: Different Schools of Philosophy : r/explainlikeimfive - Reddit\
+  Aug 8, 2013 — Minor Schools? (Currently a mix of schools and philosophers. Are there major divisions within? What is a more appropriate breakdow...\
+  Reddit·r/explainlikeimfive
+
+- [link](https://iep.utm.edu/american-philosophy/)\
+  American Philosophy\
+  Peirce's “pragmatic maxim” captures this stance as follows: “Consider what effects, which might conceivably have practical bearing...\
+  Internet Encyclopedia of Philosophy
+
+- [link](https://wrotagonist.medium.com/the-isms-of-philosophy-7125184134f7)\
+  The -isms of Philosophy - Rakshita Upadhyay - Medium\
+  Nov 15, 2020 — Nihilism. Nihilism was coined by Friedrich Heinrich Jacobi and popularized by the Russian author Ivan Turgenev. Nihilism emphasize...\
+  Medium·Rakshita Upadhyay
+
+Show all
+
+## You said: aesthetics
+
+Aesthetics is <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">the philosophical study of <strong>beauty, art, and taste</strong></mark>. It examines how we perceive, evaluate, and find value in visual things, sounds, and nature. Positions on this spectrum dictate whether beauty is an objective truth or a personal illusion. \[[1](https://press.rebus.community/intro-to-phil-aesthetics/chapter/what-is-aesthetics/), [2](https://study.com/academy/lesson/video/what-is-aesthetics-in-philosophy-definition-history-quiz.html), [3](https://global.oup.com/ukhe/disciplines/philosophy/aesthetics/), [4](https://openstax.org/books/introduction-philosophy/pages/8-5-aesthetics), [5](https://studycorgi.com/art-criticism-and-aesthetics-philosophy/)]
+
+***
+
+### 1. The Nature of Beauty: Objective vs. Subjective
+
+This core debate explores whether beauty exists out in the world or only in the mind of the observer.
+
+- **Aesthetic Objectivism**: Beauty is an inherent property of things. Objects possess specific traits—like symmetry, proportion, and harmony—that make them universally and factively beautiful. \[[1](https://compass.onlinelibrary.wiley.com/doi/10.1111/j.1747-9991.2011.00468.x), [2](https://erickimphotography.com/ancient-greek-aesthetics-origins-philosophy-and-legacy/), [3](https://pmc.ncbi.nlm.nih.gov/articles/PMC11542096/), [4](https://www.swami-krishnananda.org/life/life%5F10.html)]
+- **Aesthetic Subjectivism**: Beauty is entirely in the eye of the beholder. Judgment rests purely on personal feelings, cultural upbringing, and emotional responses. \[[1](https://philpapers.org/rec/CONBBT), [2](https://lah.elearningontario.ca/CMS/public/exported%5Fcourses/HZT4U/exported/HZT4UU05/HZT4UU05/HZT4UU05A01/%5Fcontent.html), [3](https://theimaginativeconservative.org/2020/05/what-is-beauty-michial-farmer.html), [4](https://link.springer.com/chapter/10.1007/978-3-031-11120-4%5F2), [5](https://quizlet.com/study-guides/art-criticism-and-aesthetic-judgment-principles-57be1db0-1daa-4360-92e6-0c900f04e2fe)]
+- **Aesthetic Relativism**: Standards of beauty are valid only within specific cultures, eras, or social groups. No single culture's taste is objectively superior. \[[1](https://www.harvardmagazine.com/sites/default/files/html/1999/09/beauty.html), [2](https://tracelogan.wordpress.com/2016/02/04/aesthetic-relativism-and-art/)]
+
+### 2. The Purpose of Art
+
+This spectrum questions why art exists and what makes an artwork successful or valuable.
+
+- **Formalism**: The value of art lies entirely in its form and structure. Content, narrative, and historical context do not matter; only line, color, shape, and composition do. \[[1](https://www.britannica.com/topic/philosophy-of-art/Art-as-form), [2](https://webofjournals.com/index.php/12/article/download/4464/4710/9271), [3](https://admisiones.unicah.edu/fulldisplay/wcEWGj/0OK010/what%5F%5Fare%5Fthe-different%5F%5Fbranches%5F%5Fof%5F%5Fphilosophy.pdf), [4](https://www.thinka.ai/en-US/IB-Diploma-Programme-DP-SL-HL/Philosophy/Aesthetics), [5](https://pressbooks.ccconline.org/introtophilosophy/chapter/9-7-contemporary-aesthetics-bell/)]
+- **Representationalism / Mimetic Theory**: The primary goal of art is to accurately copy, imitate, or reflect reality and nature. \[[1](https://www.artway.eu/posts/art-aesthetics-and-beauty), [2](https://www.gutenberg.org/files/46330/46330-h/46330-h.htm), [3](https://advancingartsleadership.com/node/28), [4](https://muse.jhu.edu/article/943252/)]
+- **Expressionism / Emotionalism**: The true purpose of art is to convey, evoke, or communicate deep human emotion. Success is measured by the psychological impact on the viewer. \[[1](https://www.studysmarter.co.uk/explanations/philosophy/aesthetics-in-philosophy/artistic-expression/), [2](https://www.scribd.com/presentation/424010511/AESTHETIC-philosophy-PPT-REAL-pptx), [3](https://www.ebsco.com/research-starters/literature-and-writing/art-and-illusion-e-h-gombrich)]
+- **Instrumentalism / Didacticism**: Art is a tool to serve a social, political, or moral purpose. It exists to instruct, persuade, or critique society, rather than just look pleasant. \[[1](https://advancingartsleadership.com/node/28), [2](https://pmc.ncbi.nlm.nih.gov/articles/PMC12960453/), [3](https://philpapers.org/archive/CARATO-16.pdf), [4](https://longdrawandpaint.weebly.com/l2-art-theory-painting.html)]
+- **Aestheticism ("Art for Art's Sake")**: Art needs no moral, political, or practical justification. It is valuable purely for its own sensory beauty and aesthetic pleasure. \[[1](https://en.wikipedia.org/wiki/Aestheticism), [2](http://www.mapageweb.umontreal.ca/grondinj/pdf/gadamers%5Faesthetic.pdf), [3](https://journals.openedition.org/jsse/3695?lang=en), [4](https://medium.com/@kesilmandavin/academic-aestheticism-surface-level-pseudo-intellectualism-or-something-more-00e21c60ca56), [5](https://en.wikipedia.org/wiki/Aesthetics)]
+
+### 3. Conceptual & Anti-Aesthetic Frameworks
+
+Modern and postmodern philosophies that completely challenge the traditional definitions of art and beauty. \[[1](https://en.wikipedia.org/wiki/Aesthetics), [2](https://www.studysmarter.co.uk/explanations/philosophy/aesthetics-in-philosophy/beauty-theory/), [3](https://www.kubrickslenscap.co.uk/category/aesthetics/), [4](https://www.planksip.org/the-evolution-of-beauty-in-art-and-evolution-1763648276845/), [5](https://medium.com/@alisonam/beauty-autonomy-and-the-making-of-modern-art-from-winckelmann-to-duchamp-aesthetic-philosophy-e8b9bd2177f1)]
+
+- **Conceptualism**: The idea or concept behind the artwork is more important than the physical object itself. The tangible execution is secondary or even irrelevant.
+- **Institutional Theory**: Something is art simply because the art world (galleries, curators, critics, and artists) agrees to label it as art.
+- **Anti-Aesthetics**: Rejects the traditional pursuit of beauty and pleasure. It uses art to shock, disturb, or deconstruct established political and cultural power structures. \[[1](https://avantarte.com/glossary/conceptualism), [2](https://philosophy.institute/aesthetics/aesthetic-experience-perception-appreciation/), [3](https://aestheticsresearch.com/projects/), [4](https://aesthetics-online.org/page/DeanState), [5](https://www.artforum.com/features/recent-esthetics-and-the-criticism-of-art-212331/)]
+
+***
+
+To explore further, let me know:
+
+- Would you like to see how a specific era, like **Modernism or Postmodernism**, changed this spectrum?
+
+- Do you want to explore a specific thinker's view, like **Immanuel Kant** or **Plato**?
+
+- Are you interested in the difference between **high art and low art**?
+
+- [link](https://press.rebus.community/intro-to-phil-aesthetics/chapter/what-is-aesthetics/)\
+  What is Aesthetics? – Introduction to Philosophy: Aesthetic Theory and Practice\
+  Thus aesthetics can be taken to be a philosophical study of beauty (or lack thereof) and our reaction to it— in a word, taste.\
+  \
+  \
+  Rebus Press
+
+- [link](https://study.com/academy/lesson/video/what-is-aesthetics-in-philosophy-definition-history-quiz.html)\
+  Aesthetics in Philosophy | Definition & Theorists - Video\
+  Video Summary for Aesthetics Philosophy Aesthetics philosophy is a branch of philosophy that explores the nature of art and beauty...\
+  \
+  \
+  Study.com
+
+- [link](https://global.oup.com/ukhe/disciplines/philosophy/aesthetics/)\
+  Aesthetics\
+  Aesthetics: A Very Short Introduction Bence Nanay introduces aesthetics, a branch of philosophy that explores the nature of art, b...\
+  \
+  Oxford University Press
+
+Show all
+
+## You said: how does typescriptism map on the philosophical spectrum
+
+While "TypeScriptism" is a playful internet neologism rather than a formal academic philosophy, it perfectly represents the mindset of modern software engineers who treat **TypeScript**—Microsoft's strongly typed extension of JavaScript—as a governing worldview. \[[1](https://www.reddit.com/r/compsci/comments/1irf0sn/whats%5Fthe%5Ftheoretical%5Fwhy%5Fbehind%5Ftypescripts%5Ftype/)]
+
+When mapped onto the traditional philosophical spectrum, TypeScriptism emerges as a highly structured, rigid framework built to contain the chaotic, unpredictable "nihilism" of pure JavaScript. It breaks down across the major branches as follows: \[[1](https://www.reddit.com/r/compsci/comments/1irf0sn/whats%5Fthe%5Ftheoretical%5Fwhy%5Fbehind%5Ftypescripts%5Ftype/)]
+
+***
+
+### 1. Metaphysics: Structural Realism & Determinism \[[1](https://philarchive.org/archive/RODWIM-2), [2](https://en.wikipedia.org/wiki/Perspectivism)]
+
+In metaphysics, TypeScriptism asks: _What is the fundamental nature of the universe (code), and how do things exist?_
+
+- **Structural Realism**: In TypeScript, objects are defined entirely by their shape, not their nominal class or lineage (structural typing). If it looks like a duck and swims like a duck, the compiler treats it as a duck. Realism here dictates that an entity's essence is defined entirely by its internal properties. \[[1](https://www.hacklewayne.com/types-names-and-type-superstition), [2](https://stackoverflow.com/questions/78331025/how-typescript-structurally-defines-primitive-types), [3](https://muse.jhu.edu/article/44431)]
+- **Determinism**: TypeScriptism completely rejects chaos and random chance. It operates under the belief that every action, input, and output must be entirely predictable, strictly bounded, and declared before the universe is allowed to run.
+
+### 2. Epistemology: Radical Rationalism & Anti-Skepticism \[[1](https://www.lingq.com/en/learn-english-online/courses/223438/01a-what-is-philosophy-part-12-681579/)]
+
+In epistemology, TypeScriptism asks: _How do we find truth, and how can we trust what we know?_
+
+- **Rationalism over Empiricism**: Traditional JavaScript is highly empirical—you only find out if code works by running it and observing the outcome. TypeScriptism is radically rationalist. It argues that truth can be determined _a priori_ (before execution) purely through logic, static analysis, and compile-time checks. \[[1](https://wikisocion.github.io/content/philosophy.html), [2](https://www.reddit.com/r/compsci/comments/1irf0sn/whats%5Fthe%5Ftheoretical%5Fwhy%5Fbehind%5Ftypescripts%5Ftype/), [3](https://www.encyclopedia.com/humanities/encyclopedias-almanacs-transcripts-and-maps/metaphysics-history)]
+- **The Elimination of Doubt (Anti-Skepticism)**: TypeScriptism is a direct response to Cartesian skepticism (the fear that everything around you might randomly return `undefined` or `null`). By forcing developers to use strict null checks, it attempts to systematically eliminate existential dread from the environment. \[[1](https://www.youtube.com/watch?v=HvK96neoqqo\&t=149)]
+
+### 3. Ethics: Deontology & Legalism
+
+In ethics, TypeScriptism asks: _What makes an action "good" or "bad"?_
+
+- **Deontology (Duty-Based Ethics)**: TypeScriptism is fiercely deontological. The rules of the compiler are absolute moral imperatives. Writing code that "works perfectly fine in production" but triggers a compiler error is viewed as a moral failure. The consequences do not justify breaking the law; you must obey the types.
+- **The "Compile-Time" Judgment**: Salvation or damnation is decided entirely by the compiler. A successful build is the ultimate proof of virtue.
+
+### 4. Meaning & Existence: Essentialism
+
+In existential philosophy, TypeScriptism asks: _Does existence precede essence?_
+
+- **Essentialism**: TypeScriptism completely flips the existentialist script. In this worldview, **essence precedes existence**. An object or variable cannot simply manifest into the world and decide what it wants to be later; it must have a strictly defined type or interface mapping out its identity before it is ever brought into existence.
+
+***
+
+### The Competing "Isms" of the Tech Spectrum
+
+To fully understand TypeScriptism, it helps to see how it squares off against its rival philosophical factions in the programming world:
+
+| Philosophy / "Ism" \[[1](https://stackoverflow.com/questions/78331025/how-typescript-structurally-defines-primitive-types), [2](https://wikisocion.github.io/content/philosophy.html), [3](https://www.reddit.com/r/compsci/comments/1irf0sn/whats%5Fthe%5Ftheoretical%5Fwhy%5Fbehind%5Ftypescripts%5Ftype/), [4](https://www.pragmatismtoday.eu/winter2018/On-the-Difference-Between-Percepts-and-Concepts-in-William-James-s-Philosophy-of-Experience-Michela-Bella.pdf), [5](https://dailynous.com/2019/03/13/map-correlated-philosophical-positions/)] | Metaphysics                                                                 | Epistemology                                                           | Ethics                                                               |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- | ---------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| **TypeScriptism**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | **Structural Realism** (Entities are defined by their declared shapes)      | **Rationalism** (Truth is found through compile-time logic)            | **Deontology** (Strict adherence to the rules is mandatory)          |
+| **JavaScript Nihilism**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | **Nominal Illusionism** (Nothing is real; everything is mutable at runtime) | **Radical Empiricism** (You only know the truth when the code crashes) | **Hedonism / Pragmatism** (If it runs and makes money, it is good)   |
+| **Rust Absolutism**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | **Materialism & Ownership** (Memory and resources dictate existence)        | **Infallible Rationalism** (The compiler is a supreme god)             | **Asceticism** (Suffering through strict rules leads to pure safety) |
+
+***
+
+If you want to explore the culture of code further, let me know:
+
+- Would you like to map **other programming philosophies** (like Functional Programming or Object-Oriented Programming) onto this spectrum?
+
+- Do you want to dive into the **theological elements** of the "Static vs. Dynamic Typing" holy wars?
+
+- Should we look at how **TypeScriptism handles Postmodernism** (e.g., using the `any` type to deconstruct its own rules)?
+
+- [link](https://www.youtube.com/watch?v=HvK96neoqqo\&t=149)\
+  Cartesian Skepticism (Perception, Other Minds, Meaning)\
+  Jun 26, 2021 — so today we're going to try to as it were keep a form fixed. and vary the content a bit next class we'll start to vary the form. a...\
+  13m\
+  YouTube·Philosophy Overdose
+
+- [link](https://wikisocion.github.io/content/philosophy.html)\
+  Philosophy - Wikisocion\
+  Influence of socionic type on philosophers' views In philosophy, the difference between Ti and Te is mirrored in the analytic-synt...\
+  Wikisocion
+
+- [link](https://www.hacklewayne.com/types-names-and-type-superstition)\
+  Types, names, and type superstition | Hackle's blog\
+  Feb 25, 2019 — Names or types? What really matters is whether code expresses its purpose well. The pitfalls usually falls into two kinds: over-sp...\
+  www.hacklewayne.com
+
+Show all
 
 # does science stand with materialism instead of idealism
 
@@ -603,3 +822,510 @@ If you would like to explore this further, we can look into **how neuroscience a
   Advanced Science News
 
 Show all
+
+# libertarianism or liberalism
+
+While both liberals and libertarians prioritize individual freedom, they diverge sharply on how to protect that freedom and the ideal role of government. \[[1](https://study.com/academy/lesson/libertarian-liberal-overview-history-differences.html)]
+
+**Liberals view government as a tool to protect rights and promote social equity, whereas libertarians see government as the primary threat to individual liberty.** \[[1](https://www.youtube.com/watch?v=PgTnjTm3YhQ), [2](https://www.youtube.com/watch?v=crBi4dPUFQc\&t=11), [3](https://study.com/academy/lesson/libertarian-liberal-overview-history-differences.html)]
+
+***
+
+### Core Ideological Differences
+
+| Issue \[[1](https://english.stackexchange.com/questions/116550/what-are-the-key-differences-between-a-liberal-liberalist-and-a-libertarian), [2](https://www.youtube.com/watch?v=FfxfDLTecWY\&t=26), [3](https://www.reddit.com/r/Ask%5FPolitics/comments/8u6t8s/could%5Fsomeone%5Fplease%5Feli5%5Fthe%5Fdifferences%5Fbetween/), [4](https://blogs.lse.ac.uk/businessreview/2017/02/01/the-contradiction-of-classical-liberalism-and-libertarianism/), [5](https://en.wikipedia.org/wiki/Libertarian%5Fperspectives%5Fon%5FLGBTQ%5Frights), [6](https://www.reddit.com/r/PoliticalPhilosophy/comments/re7rh4/can%5Fanyone%5Fexplain%5Fto%5Fme%5Fwhats%5Fthe%5Fdifference/), [7](https://study.com/academy/lesson/libertarian-liberal-overview-history-differences.html), [8](https://www.youtube.com/watch?v=crBi4dPUFQc\&t=11), [9](https://www.youtube.com/watch?v=PgTnjTm3YhQ)] | Modern Liberal View                                                                                          | Libertarian View                                                                                                             |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------- |
+| **Role of Government**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | Actively regulates the economy and provides social safety nets.                                              | Strictly limited to national defense, courts, and basic policing.                                                            |
+| **Economic Policy**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | Favors progressive taxation, business regulations, and public services.                                      | Advocates for completely free markets (_laissez-faire_), low-to-no taxes, and mass deregulation.                             |
+| **Social Issues**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Strongly supports progressive cultural changes, civil rights protections, and institutional equity.          | Strongly supports total personal autonomy (e.g., drug legalization, alternative marriage setups) based on individual choice. |
+| **The "Social Contract"**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | Believes citizens consent to give up some freedoms to a government in exchange for safety and societal good. | Rejects the social contract if it involves coercive government overreach or wealth redistribution.                           |
+
+***
+
+### The Liberal Perspective
+
+Modern liberalism (often associated with the American Democratic Party or European Social Democracy) believes that true freedom cannot exist if individuals are crushed by poverty, discrimination, or corporate monopolies. \[[1](https://www.reddit.com/r/PoliticalScience/comments/1gtgotq/what%5Fis%5Fthe%5Fdifference%5Fbetween%5Fliberalism%5Fand/), [2](https://www.reddit.com/r/askphilosophy/comments/1dr204z/main%5Fdifference%5Fbeyween%5Fliberal%5Fvs%5Flibertarian/), [3](https://english.stackexchange.com/questions/116550/what-are-the-key-differences-between-a-liberal-liberalist-and-a-libertarian), [4](https://study.com/academy/lesson/libertarian-liberal-overview-history-differences.html), [5](https://www.youtube.com/watch?v=crBi4dPUFQc\&t=11)]
+
+- **Positive Liberty**: Government intervention is necessary to grant people the _capacity_ to act (e.g., public education, universal healthcare, labor laws). \[[1](https://pmc.ncbi.nlm.nih.gov/articles/PMC3424229/), [2](https://study.com/academy/lesson/liberalism-history-ideology-and-influence.html), [3](https://sk.sagepub.com/hnbk/edvol/21stcenturypolisci/chpt/modern-liberalism-conservatism-libertarianism), [4](https://blogs.lse.ac.uk/businessreview/2017/02/01/the-contradiction-of-classical-liberalism-and-libertarianism/), [5](https://www.reddit.com/r/Ask%5FPolitics/comments/8u6t8s/could%5Fsomeone%5Fplease%5Feli5%5Fthe%5Fdifferences%5Fbetween/)]
+- **Regulation**: Laws are required to protect environment standards, mandate consumer safety, and manage the economy to prevent systemic crashes. \[[1](https://www.quora.com/What-is-the-definition-of-a-liberal-conservative-and-libertarian-What-are-the-differences-between-these-political-views), [2](https://www.reddit.com/r/Ask%5FPolitics/comments/8u6t8s/could%5Fsomeone%5Fplease%5Feli5%5Fthe%5Fdifferences%5Fbetween/)]
+- **Social Equality**: The state should proactively pass laws protecting minorities and marginalized groups from systemic bias. \[[1](https://www.reddit.com/r/Ask%5FPolitics/comments/8u6t8s/could%5Fsomeone%5Fplease%5Feli5%5Fthe%5Fdifferences%5Fbetween/), [2](https://www.youtube.com/watch?v=crBi4dPUFQc\&t=11)]
+
+### The Libertarian Perspective
+
+Libertarianism is a radical evolution of 19th-century "classical liberalism," taking the concept of personal autonomy to its absolute limit. \[[1](https://www.libertarianism.org/articles/libertarians-and-liberal-coalition), [2](https://www.youtube.com/watch?v=ScFSce%5FhDfY\&t=6), [3](https://www.econlib.org/jeff-hummel-on-classical-liberals-and-libertarians/)]
+
+- **Negative Liberty**: Freedom is defined strictly as the _absence of obstacles_ or coercion from others, especially the state. \[[1](https://www.manupatracademy.com/notes-for-law-students/first%5Fyear%5Fpolitical-idealogies-political-science), [2](https://www.cambridge.org/core/books/system-of-liberty/liberalism-old-and-new/C57C38BACA386F4C1D81A37ADAAE7101), [3](https://blogs.lse.ac.uk/businessreview/2017/02/01/the-contradiction-of-classical-liberalism-and-libertarianism/), [4](https://www.reddit.com/r/PoliticalPhilosophy/comments/re7rh4/can%5Fanyone%5Fexplain%5Fto%5Fme%5Fwhats%5Fthe%5Fdifference/)]
+- **The Non-Aggression Principle (NAP)**: The ultimate moral rule is that no individual or government has the right to initiate force or fraud against another person or their private property. \[[1](https://reason.com/volokh/2023/04/06/libertarianism-vs-classical-liberalism-is-there-a-difference/), [2](https://www.perlego.com/index/politics-international-relations/libertarianism), [3](https://en.wikipedia.org/wiki/Natural-rights%5Flibertarianism), [4](https://core.ac.uk/download/pdf/576781883.pdf), [5](https://www.reddit.com/r/Ask%5FPolitics/comments/8u6t8s/could%5Fsomeone%5Fplease%5Feli5%5Fthe%5Fdifferences%5Fbetween/)]
+- **Extreme Privatization**: Free markets can handle almost everything better than the state, including schools, infrastructure, and even public amenities. \[[1](https://www.youtube.com/watch?v=6Nys4MmESRk\&t=167), [2](https://en.wikipedia.org/wiki/Libertarianism%5Fin%5Fthe%5FUnited%5FStates), [3](https://www.youtube.com/watch?v=PgTnjTm3YhQ)]
+
+### Where They Agree
+
+Despite their massive economic disagreements, liberals and libertarians often find common ground on specific social and foreign policy issues: \[[1](https://www.cato.org/multimedia/cato-video/differences-among-liberals-conservatives-libertarians), [2](https://www.cato.org/commentary/liberaltarians), [3](https://www.cato.org/commentary/anti-libertarian-presidents), [4](https://helpfulprofessor.com/liberal-vs-libertarian/), [5](https://www.youtube.com/watch?v=PgTnjTm3YhQ)]
+
+- **Free Expression**: Both generally defend freedom of speech, freedom of the press, and freedom of religion.
+- **Criminal Justice**: Both often criticize police overreach, mass incarceration, and foreign military interventions.
+- **Personal Vices**: Both generally support decriminalizing recreational drug use and protecting private, consensual adult relationships. \[[1](https://www.ithaca.edu/sites/default/files/2023-02/Craig%20Duncan%20--%20Libertarianism.pdf), [2](https://helpfulprofessor.com/liberal-vs-libertarian/), [3](https://www.youtube.com/watch?v=PgTnjTm3YhQ), [4](https://english.stackexchange.com/questions/116550/what-are-the-key-differences-between-a-liberal-liberalist-and-a-libertarian), [5](https://www.youtube.com/watch?v=6Nys4MmESRk\&t=167)]
+
+AI can make mistakes, so double-check responses
+
+- [link](https://www.reddit.com/r/PoliticalScience/comments/1gtgotq/what%5Fis%5Fthe%5Fdifference%5Fbetween%5Fliberalism%5Fand/)\
+  What is the difference between liberalism and libertarianism? - Reddit\
+  Thank you for the reply. \* onwardtowaffles. • 2y ago. Libertarianism originally was synonymous with anarcho-communism. Around 1900...\
+  Reddit
+- [link](https://study.com/academy/lesson/libertarian-liberal-overview-history-differences.html)\
+  Liberalism vs. Libertarianism | Beliefs, History & Differences - Study.com\
+  Liberalism: An ideology that promotes the protection of individual rights, equality of opportunity, and autonomy against threats f...\
+  Study.com
+- [link](https://blogs.lse.ac.uk/businessreview/2017/02/01/the-contradiction-of-classical-liberalism-and-libertarianism/)\
+  The contradiction of classical liberalism and libertarianism\
+  5 comments | 31 shares. Estimated reading time: 5 minutes. 31 Shares. A standard assumption in policy analyses and political debat...\
+  The London School of Economics and Political Science
+
+Show all
+
+# can a society work wo taxes
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">A society cannot function effectively without some form of taxes or collective resource pooling</span></mark>. While a completely tax-free society is a popular theoretical concept, history and economic reality show that governance, infrastructure, and public safety require shared funding. \[[1](http://www.eolss.net/sample-chapters/c04/E6-31-02-10.pdf)]
+
+### Why Purely Tax-Free Societies Fail
+
+- **Public Goods Dilemma**: Private companies rarely build non-profitable essentials like streetlights or lighthouses.
+- **The Free Rider Problem**: People utilize public spaces without willingly paying for their upkeep.
+- **Resource Depletion**: Without regulation and funding, shared resources like forests and fisheries face destruction.
+- **Inequality Gaps**: Total privatization leaves low-income citizens without legal protection, education, or healthcare.
+
+### How "Tax-Free" Models Actually Function
+
+Some societies claim to have no income tax, but they fund themselves through alternative methods: \[[1](https://www.brookings.edu/articles/five-myths-about-the-47-percent/)]
+
+- **Resource Wealth**: Countries like Saudi Arabia or Qatar fund public services using state-owned oil revenues.
+- **Consumption Levies**: Governments collect funds via high sales taxes, tariffs, and corporate fees instead of income tax.
+- **Feudal Labor**: Historical societies required citizens to donate physical labor (corvée labor) instead of money.
+- **Privatization Clubs**: Small, private communities fund everything through mandatory homeowner association (HOA) fees, which function exactly like localized taxes. \[[1](https://quizlet.com/890676508/ps-312-test-flash-cards/), [2](https://quaderno.io/blog/excise-tax-vs-sales-tax/)]
+
+### Essential Services Requiring Collective Funding
+
+- **National Defense**: Military protection cannot be efficiently divided into private, paid subscriptions.
+- **Legal Systems**: Courts and police must remain neutral rather than serving the highest bidder.
+- **Infrastructure Networks**: Highways, sewage systems, and power grids require centralized, massive capital.
+- **Emergency Response**: Firefighters and disaster relief must deploy based on need, not upfront payment.
+
+If you are exploring this for a specific project, I can help you investigate further. Would you like to **look at real-world examples** of countries with zero income tax, explore the **philosophy of anarcho-capitalism**, or design a **tax system for a fictional society**?
+
+- [link](http://www.eolss.net/sample-chapters/c04/E6-31-02-10.pdf)\
+  Tax Law\
+  As Oliver Wendell Holmes once noted: “Taxes are what we pay for a civilized society.” It is clear that any legal system must manda...\
+  \
+  ENCYCLOPEDIA OF LIFE SUPPORT SYSTEMS (EOLSS)
+- [link](https://www.brookings.edu/articles/five-myths-about-the-47-percent/)\
+  Five Myths About the 47 Percent | Brookings\
+  Jun 11, 2026 — 3. Many high-income people game the system to pay no income tax.\
+  \
+  \
+  Brookings
+- [link](https://quizlet.com/890676508/ps-312-test-flash-cards/)\
+  Political Science PS 312: Key Terms & Definitions Review Flashcards\
+  Students also studied Non-profit organizations are exempt from paying federal income tax. The single largest source of federal gov...\
+  \
+  Quizlet
+
+Show all
+
+## You said: how does Anarchism work
+
+Anarchism works by replacing mandatory states and top-down hierarchies with voluntary, self-governed cooperation among individuals and communities. It is not a state of chaotic lawlessness, but a highly structured social philosophy based on horizontal organization, direct democracy, and mutual aid. \[[1](https://fiveable.me/intro-philosophy/key-terms/anarchism), [2](https://www.elgaronline.com/display/book/9781803921235/b-9781803921235.chapter3.xml), [3](https://www.reddit.com/r/DnD/comments/178d0ic/how%5Fwould%5Fyou%5Froll%5Fplay%5Fan%5Fanarchist/), [4](https://www.sciencedirect.com/science/article/pii/S0264275125006924), [5](https://journals.sagepub.com/doi/10.1177/14740222241313303)]
+
+### Core Mechanisms of Anarchist Organization
+
+- **Voluntary Association**: Individuals freely join groups or communities based on shared needs and can leave them at any time. \[[1](https://muse.jhu.edu/article/219421/summary), [2](https://fiveable.me/political-philosophy/unit-10)]
+- **Direct Democracy**: Communities make decisions collectively through consensus or voting, rather than electing politicians to make laws for them. \[[1](https://www.elgaronline.com/display/book/9781803921235/b-9781803921235.chapter3.xml), [2](https://monthlyreview.org/articles/anarchism-and-the-anti-globalization-movement/), [3](https://www.cambridge.org/core/books/cambridge-companion-to-civil-disobedience/anarchism-provincializing-civil-disobedience/EFF86F8D36DD8D3E3E03EC74F6FF248C), [4](https://www.philosophizethis.org/transcript/episode-192-transcript)]
+- **Horizontal Structure**: Society uses flat networks, committees, and assemblies where no single person holds permanent institutional power or authority. \[[1](https://instituteforhumanities.com/pse/anarchism?pseId=41), [2](https://iai.tv/video/inside-anarchy-sophie-scott-brown), [3](https://transversal.at/transversal/0805/burnicki/en), [4](https://www.leftvoice.org/four-strategies-for-socialism/), [5](https://theanarchistlibrary.org/library/jeff-shantz-anarchy-and-autonomy-contemporary-social-movements-theory-and-practice)]
+- **Mutual Aid**: Citizens share resources, labor, and skills cooperatively for survival and community well-being, rather than working purely for profit. \[[1](https://www.marxists.org/subject/anarchism/sam-dolgoff/1986/modern-technology-and-anarchism.html), [2](https://onlinelibrary.wiley.com/doi/full/10.1111/nup.12437), [3](https://theanarchistlibrary.org/library/deloggans-let-stalkmutualaid), [4](https://medium.com/@partum/liberty-and-egalitarianism-d865b95b60ea), [5](https://theanarchistlibrary.org/library/anarchist-signal-collective-an-overview-of-anarchism)]
+- **Federation**: Independent local communities link together into larger, loose networks to handle regional tasks like train systems or resource distribution. \[[1](https://www.journals.uchicago.edu/doi/full/10.1086/667621), [2](https://theanarchistlibrary.org/library/jeff-shantz-an-anarchy-of-everyday-life)]
+
+### How Everyday Services Are Managed
+
+- **Safety and Justice**: Communities use voluntary neighborhood watches, restorative justice circles, and social accountability instead of centralized police and prisons. \[[1](https://theanarchistlibrary.org/library/lorenzo-kom-boa-ervin-anarchism-and-the-black-revolution), [2](https://www.maastrichtdiplomat.org/post/longing-for-freedom-the-world-through-anarchist-eyes)]
+- **Infrastructure**: Worker-owned cooperatives and community assemblies design, build, and maintain roads, water systems, and power grids.
+- **Resource Distribution**: Systems vary from marketless networks where goods are free based on need, to decentralized labor registries that track hours worked. \[[1](https://waywardbodhisattva.medium.com/policing-in-a-stateless-society-70acc80dde4e)]
+- **Defense**: Decentralized, voluntary militias or community defense networks protect the population against outside forces without a standing army hierarchy. \[[1](https://mises.org/mises-daily/libertarian-heritage-american-revolution-and-classical-liberalism), [2](https://theanarchistlibrary.org/library/jeff-shantz-an-anarchy-of-everyday-life), [3](https://news.ycombinator.com/item?id=40868094)]
+
+### Major Schools of Anarchist Thought
+
+- **Anarcho-Communism**: Advocates for the total abolition of capitalism, wages, and money, opting for collective ownership of all goods and services.
+- **Anarcho-Syndicalism**: Focuss on industrial labor unions as the primary force to manage the economy and dismantle the state.
+- **Mutualism**: Supports a market system where workers own their tools and trade goods fairly using labor-backed currency, without corporate bosses.
+- **Anarcho-Capitalism**: Replaces the state entirely with private property rights, free markets, and privatized legal and defense services. \[[1](https://en.wikipedia.org/wiki/Anarchism), [2](https://en.wikipedia.org/wiki/Anarchist%5Fcommunism), [3](https://www.studysmarter.co.uk/explanations/politics/political-ideology/collectivist-anarchism/), [4](https://voicesofcapitalism.com/anarcho-capitalism-vs-anarcho-communism/), [5](https://quizlet.com/gb/113238258/anarchism-flash-cards/)]
+
+To explore this concept further, let me know if you would like to **examine historical examples** like Revolutionary Spain, look at **modern horizontal projects** like the Zapatistas, or contrast **left-wing anarchism with right-wing libertarianism**. \[[1](https://study.com/academy/lesson/comparing-anarchism-capitalism-fascism-communism.html), [2](https://www.columbiamissourian.com/opinion/guest%5Fcommentaries/anti-capitalism-is-the-gateway-to-leftism-and-the-key-to-meaningful-change/article%5F043007e8-8c2b-4c8a-8458-b9f978201871.html), [3](https://www.resilience.org/stories/2022-03-08/is-post-capitalism-post-money/)]
+
+- [link](https://fiveable.me/intro-philosophy/key-terms/anarchism)\
+  Anarchism Definition for Intro to Philosophy\
+  Aug 15, 2025 — Anarchists seek to abolish the state and all centralized power structures, replacing them with voluntary associations, worker-owne...\
+  \
+  Fiveable
+- [link](https://www.elgaronline.com/display/book/9781803921235/b-9781803921235.chapter3.xml)\
+  3: Anarchism in: Elgar Encyclopedia of Political Sociology\
+  Dec 28, 2023 — Instead of using large social engineering policies like state social welfare to satisfy needs (or forestall revolutionary agitatio...\
+  \
+  \
+  Elgar Online
+- [link](https://www.reddit.com/r/DnD/comments/178d0ic/how%5Fwould%5Fyou%5Froll%5Fplay%5Fan%5Fanarchist/)\
+  How would you roll play an anarchist? : r/DnD\
+  Oct 15, 2023 — A main thing to note would be that Anarchy isn't just causing chaos for no reason as can sometimes be portrayed. Anarchy is just a...\
+  \
+  \
+  Reddit
+
+Show all
+
+## You said: can it work
+
+Anarchism can work on a small, localized, or temporary scale, but large-scale modern implementation faces massive survival challenges. Historical and modern examples show that communities can successfully self-govern, but they struggle to defend themselves against powerful nation-states or scale up to manage complex global economies. \[[1](https://www.washingtonpost.com/local/public-safety/what-draws-americans-to-anarchy-its-more-than-just-smashing-windows/2017/08/10/030f92e0-2eae-11e7-9534-00e4656c22aa%5Fstory.html), [2](https://research.manchester.ac.uk/files/220273365/FULL%5FTEXT.PDF), [3](https://www.reddit.com/r/Anarchy101/comments/1fmgbj5/never%5Frealised%5Five%5Fheld%5Fanarchist%5Fbeliefs%5Fmy/), [4](https://theanarchistlibrary.org/library/larry-gambone-proudhon-and-anarchism), [5](https://www.thoughtco.com/anarchy-definition-and-examples-5105250)]
+
+### Real-World Successes (Proof of Concept)
+
+- **Revolutionary Spain (1936–1939)**: Millions of workers successfully ran factories, agriculture, and public transit under anarchist principles during the Spanish Civil War. \[[1](https://www.tandfonline.com/doi/full/10.1080/03066150.2020.1755840), [2](https://theanarchistlibrary.org/library/bob-black-anarchy-101), [3](https://www.reddit.com/r/Anarchy101/comments/wp8ep0/why%5Fisnt%5Fthere%5Fsomething%5Flike%5Fa%5Fanarchist/)]
+- **Rojava, Syria (Modern)**: A region of millions uses a system of stateless "democratic confederalism," emphasizing local assemblies, gender equality, and cooperative economics. \[[1](https://study.com/academy/lesson/free-market-anarchism-definition-example.html), [2](https://www.reddit.com/r/Anarchy101/comments/10latw1/anarcho%5Fcommunism%5Fand%5Fadvanced%5Ftechnology/), [3](https://www.reddit.com/r/Anarchy101/comments/1pegx07/is%5For%5Fwas%5Fdemocracy%5Fconfederalism%5Fa%5Fform%5Fof/)]
+- **The Zapatistas, Mexico (Modern)**: Indigenous communities in Chiapas have successfully run autonomous, horizontal healthcare, education, and legal systems since 1994. \[[1](https://www.pbs.org/video/a-world-without-governments-anarchism-explained-skccfs/), [2](https://www.reddit.com/r/Anarchy101/comments/1q6mk6y/would%5Fanarchists%5Fsupport%5Fseparatism/), [3](https://www.reddit.com/r/Anarchy101/comments/rgvb7b/how%5Fcan%5Fi%5Fconvince%5Fpeople%5Ffrom%5Fethnic%5Fminorities/), [4](https://theanarchistlibrary.org/library/jeff-shantz-anarchy-and-autonomy-contemporary-social-movements-theory-and-practice)]
+- **Everyday Anarchism**: Small-scale projects like food banks, community gardens, disaster relief networks, and open-source software (like Linux) operate daily on voluntary, anarchist principles. \[[1](https://plato.stanford.edu/entries/anarchism/), [2](https://www.washingtonpost.com/local/public-safety/what-draws-americans-to-anarchy-its-more-than-just-smashing-windows/2017/08/10/030f92e0-2eae-11e7-9534-00e4656c22aa%5Fstory.html), [3](https://www.pbs.org/video/a-world-without-governments-anarchism-explained-skccfs/), [4](https://www.mdpi.com/2409-9287/8/6/113), [5](https://www.amazon.co.uk/Anarchy-Action-Colin-Ward/dp/0900384204)]
+
+### Major Obstacles to Large-Scale Success
+
+- **External Military Vulnerability**: Stateless societies struggle to defeat heavily centralized, industrialized militaries (e.g., Revolutionary Spain was crushed by fascist and Stalinist forces). \[[1](https://theanarchistlibrary.org/library/peggy-kornegger-anarchism-the-feminist-connection), [2](https://www.reddit.com/r/worldbuilding/comments/vyc4fg/anarchism%5Fin%5Fa%5Ffantasy%5Fworld/), [3](https://www.reddit.com/r/Anarchy101/comments/vz6786/are%5Fanarchists%5Fpro%5For%5Fanti%5Fgun/), [4](https://chinaworker.info/en/2007/08/26/4356/)]
+- **The Scale Problem**: Moving from a tight-knit village of 150 people to managing a global supply chain for medical equipment or microchips requires complex coordination that horizontal assemblies struggle to streamline.
+- **Internal Conflict**: Without a centralized police force, managing violent crime or bad-faith actors relies heavily on social pressure, which can break down in larger, diverse populations.
+- **Counter-Revolutionary Factions**: Free societies are highly vulnerable to internal subversion by organized groups looking to seize power and re-establish a state hierarchy. \[[1](https://www.caymancompass.com/2003/01/28/despite-poor-image-anarchism-is-catching-on), [2](https://www.reddit.com/r/Anarchy101/comments/kaqshc/can%5Fanarchocommunism%5Fbe%5Fachieved%5Falternatively/), [3](https://www.reddit.com/r/explainlikeimfive/comments/70cxys/eli5%5Fwhat%5Fdo%5Fanarchists%5Fwant%5Fa%5Flawless%5Fsociety/)]
+
+If you want to dig deeper into the mechanics of making it work, let me know if you would like to **analyze the economic collapse** of Revolutionary Spain, **study the security structure** of modern Rojava, or **explore how anarchists propose managing** global technology manufacturing.
+
+- [link](https://www.washingtonpost.com/local/public-safety/what-draws-americans-to-anarchy-its-more-than-just-smashing-windows/2017/08/10/030f92e0-2eae-11e7-9534-00e4656c22aa%5Fstory.html)\
+  What draws Americans to anarchy? It’s more than just smashing windows.\
+  Aug 10, 2017 — Democracies, anarchists will argue, can only work on the smallest of scales. That's why anarchists often get involved in local act...\
+  \
+  \
+  The Washington Post
+- [link](https://research.manchester.ac.uk/files/220273365/FULL%5FTEXT.PDF)\
+  WE ARE USING AN ALTERNATIVE: ANARCHISM'S HIDDEN INFLUENCE ON MANAGEMENT INNOVATION A thesis submitted to The University of Manc\
+  Anarchism is these things, and many more, with its various permutations of decentralised, localised, nonviolent expression. The ri...\
+  \
+  Research Explorer The University of Manchester
+- [link](https://www.reddit.com/r/Anarchy101/comments/1fmgbj5/never%5Frealised%5Five%5Fheld%5Fanarchist%5Fbeliefs%5Fmy/)\
+  Never realised I've held anarchist beliefs my whole life : r/Anarchy101\
+  Sep 22, 2024 — This is specifically a form of anarchism which is generally temporary and in direct response to severe misery, so its not somethin...\
+  \
+  Reddit
+
+Show all
+
+# can Fascism work
+
+Whether fascism can "work" depends entirely on how success is defined, but from a long-term, human, and objective standpoint, **fascism does not work because it is inherently unstable, economically unsustainable, and relies on destructive cycles of violence and social division.** While historical fascist regimes achieved brief periods of rapid mobilization and consolidation, they ultimately collapsed under the weight of their own contradictions. \[[1](https://www.reddit.com/r/AskALiberal/comments/15cdf6a/does%5Ffascism%5Fwork/), [2](https://www.reddit.com/r/behindthebastards/comments/1dvnhzs/the%5Fsilver%5Flining%5Ffascism%5Fnever%5Flasts%5Fright/), [3](https://brill.com/display/book/9789004538573/BP000002.xml?srsltid=AfmBOoojCIscVoxJJtZib0nqWtCZUpTLuXoqhRsw9TOCXDf0mlcUCR9Z), [4](https://members.vailvalleypartnership.com/newsroom/Details/capitalism-is-our-superpower-154514), [5](https://critantisemnetwork.wordpress.com/wp-content/uploads/2018/07/lfischer%5Fsage%5Fprint%5Ffascism.pdf)]
+
+Historians and political scientists assess the concept of fascism working through several lenses: \[[1](https://www.quora.com/Could-fascism-unlike-communism-theoretically-work)]
+
+### 1. Short-Term Mobilization vs. Long-Term Collapse
+
+- **Initial Consolidation:** Fascist regimes can achieve rapid short-term goals. By stripping away democratic processes, crushing labor unions, and using state command, they can quickly mobilize resources, build infrastructure, and scale up military production.
+- **The Succession Crisis:** Fascism relies heavily on a cult of personality centered around a single "infallible" leader. Because power is completely centralized, these regimes rarely survive the death or removal of that dictator without collapsing into infighting or democratic transition, as seen in the history of Francoist Spain. \[[1](https://teachdemocracy.org/online-lesson/mussolini-and-the-rise-of-fascism/), [2](https://www.reddit.com/r/TrueAskReddit/comments/1pngwp/what%5Fare%5Fthe%5Fadvantages%5Fof%5Ffascism/), [3](https://www.youtube.com/watch?v=CpCKkWMbmXU\&vl=en), [4](https://www.youtube.com/watch?v=q2gJvnzv8gg\&t=47), [5](https://www.quora.com/Does-fascism-work-economically-How-long-would-a-fascist-economy-last-short-term-or-long-term), [6](https://www.reddit.com/r/AskALiberal/comments/15cdf6a/does%5Ffascism%5Fwork/), [7](https://www.reddit.com/r/behindthebastards/comments/1dvnhzs/the%5Fsilver%5Flining%5Ffascism%5Fnever%5Flasts%5Fright/)]
+
+### 2. Economic Inefficiency and "The Myth of Efficiency"
+
+- **Propaganda vs. Reality:** A common myth is that fascism brings supreme order (e.g., "Mussolini made the trains run on time"). Historical audits show this was largely propaganda; efficiency was routinely faked, and corruption was rampant because there was no independent press or political opposition to hold officials accountable.
+- **The Cannibalistic Economy:** Fascist economics are heavily protectionist and geared toward war preparation (autarky). Because they destroy local working-class organizations and suppress wages to favor elite corporate loyalists, they stifle sustainable, consumer-driven economic growth. \[[1](https://www.reddit.com/r/AskALiberal/comments/15cdf6a/does%5Ffascism%5Fwork/), [2](https://en.wikipedia.org/wiki/Economics%5Fof%5Ffascism), [3](https://www.marxists.org/archive/trotsky/works/1944/1944-fas.htm), [4](https://www.salon.com/2023/02/18/no-dictatorships-are-not-more-efficient-see-how-putin-and-xi-have-wrecked-their-countries/), [5](https://archive.dartmouthalumnimagazine.com/article/1948/1/1/the-nature-of-fascism)]
+
+### 3. Structural Reliance on an In-Group/Out-Group Dynamic
+
+- **Endless Enemies:** Fascism requires a constant state of crisis and a designated "enemy" (an out-group) to maintain social cohesion and justify its authoritarian control.
+- **Self-Destruction:** Once an external or internal enemy is defeated or purged, the ideology forces the regime to define a new enemy to keep the population mobilized. This creates an endless cycle of radicalization, leading inevitably to aggressive foreign expansion, war, and internal societal decay. \[[1](https://www.reddit.com/r/AskALiberal/comments/15cdf6a/does%5Ffascism%5Fwork/), [2](https://www.youtube.com/watch?v=CpCKkWMbmXU\&vl=en), [3](https://www.youtube.com/shorts/1EBFARnVoj8), [4](https://www.reddit.com/r/behindthebastards/comments/1dvnhzs/the%5Fsilver%5Flining%5Ffascism%5Fnever%5Flasts%5Fright/), [5](https://michiganadvance.com/2024/03/17/late-breaking-history-the-f-word/)]
+
+### 4. Human and Societal Costs
+
+- **Destruction of Well-being:** If "working" means fostering a happy, healthy, and stable population, fascism fails completely. It treats individual human rights as obstacles to the state, leading to mass persecution, forced conformity, intellectual stagnation, and genocide. \[[1](https://www.reddit.com/r/AskALiberal/comments/15cdf6a/does%5Ffascism%5Fwork/), [2](https://en.wikipedia.org/wiki/Fascism), [3](https://teachdemocracy.org/online-lesson/mussolini-and-the-rise-of-fascism/), [4](https://encyclopedia.ushmm.org/content/en/article/fascism-1)]
+
+In summary, while fascism can project an illusion of strength and short-term economic or military productivity, it is a volatile political system. Its core mechanisms—constant warfare, suppression of truth, cronyism, and manufacturing internal conflict—make it unsustainable over the long term. \[[1](https://www.reddit.com/r/AskALiberal/comments/15cdf6a/does%5Ffascism%5Fwork/), [2](https://www.reddit.com/r/TrueAskReddit/comments/1pngwp/what%5Fare%5Fthe%5Fadvantages%5Fof%5Ffascism/), [3](https://www.youtube.com/watch?v=CpCKkWMbmXU\&vl=en), [4](https://www.reddit.com/r/behindthebastards/comments/1dvnhzs/the%5Fsilver%5Flining%5Ffascism%5Fnever%5Flasts%5Fright/), [5](https://en.wikipedia.org/wiki/Economics%5Fof%5Ffascism)]
+
+- [link](https://www.youtube.com/watch?v=q2gJvnzv8gg\&t=47)\
+  Can fascism be American?\
+  Oct 26, 2024 — it's it's it's always hard to say because the fascists are the people who tell the big lies the fascists are the people who are in...\
+  1m\
+  YouTube·Timothy Snyder
+- [link](https://www.youtube.com/watch?v=CpCKkWMbmXU\&vl=en)\
+  The 10 tactics of fascism | Jason Stanley | Big Think\
+  Oct 24, 2021 — fascism is a cult of the leader who promises national restoration in the face of supposed humiliation by immigrants leftists liber...\
+  9:51\
+  YouTube·Big Think
+- [link](https://teachdemocracy.org/online-lesson/mussolini-and-the-rise-of-fascism/)\
+  Mussolini and the Rise of Fascism - Teach Democracy\
+  Absolute Power of the State: Fascist regimes have a strong centralized state, or national government. The fascist state seeks tota...\
+  Teach Democracy
+
+Show all
+
+# extremism or absolutism
+
+**Extremism is an ideological stance or action** that sits far outside the mainstream social consensus, often relying on radical methods to achieve its goals, while **absolutism is a foundational mindset or system of governance** that rejects nuance, believing that truth, morals, or political power are total and completely unconditional. \[[1](https://www.ebsco.com/research-starters/religion-and-philosophy/extremism), [2](https://www.youtube.com/watch?v=KQO7VgRPjvA), [3](https://en.wikipedia.org/wiki/Extremism), [4](https://www.ebsco.com/research-starters/law/absolutism), [5](https://www.sciencedirect.com/topics/social-sciences/absolutism)]
+
+While they frequently overlap—absolutist thinking often drives extremist behaviors—they represent different dimensions of thought and action. \[[1](https://poj.peeters-leuven.be/content.php?id=3289540\&url=article), [2](https://www.abc.net.au/religion/how-non-violent-fundamentalism-can-lead-to-violent-extremism/103933206), [3](https://www.ebsco.com/research-starters/religion-and-philosophy/extremism)]
+
+### Key Conceptual Differences
+
+| Feature \[[1](https://www.gov.uk/government/publications/new-definition-of-extremism-2024/new-definition-of-extremism-2024), [2](https://www.tandfonline.com/doi/full/10.1080/14782804.2023.2185594), [3](https://www.dialoguesociety.org/column/violent-extremist-ideology-islam-by-implication-or-absolutism-by-nature/), [4](https://www.researchgate.net/publication/359268977%5FWilliam%5FJames's%5FPluralism%5FAn%5FAntidote%5Ffor%5FContemporary%5FExtremism%5Fand%5FAbsolutism), [5](https://legal-resources.uslegalforms.com/a/absolutism), [6](https://www.youtube.com/watch?v=KQO7VgRPjvA), [7](https://en.wikipedia.org/wiki/Extremism), [8](https://www.ebsco.com/research-starters/law/absolutism), [9](https://www.sciencedirect.com/topics/social-sciences/absolutism), [10](https://www.ebsco.com/research-starters/religion-and-philosophy/extremism)] | Extremism                                                                    | Absolutism                                                              |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| **Primary Domain**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Ideology, behavior, and social positioning.                                  | Epistemology (knowledge), ethics, and governance.                       |
+| **Core Definition**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | Holding beliefs outside mainstream norms, often justifying extreme measures. | Believing principles are universal, unchanging, and free of exceptions. |
+| **Expression**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Radical political, environmental, or religious activism.                     | Moral certainty or political systems with centralized power.            |
+| **Opposite Concept**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Moderation or mainstream political consensus.                                | Relativism, pluralism, or democratic checks and balances.               |
+
+### Understanding Extremism
+
+Extremism refers to the degree of departure from baseline societal norms. \[[1](https://en.wikipedia.org/wiki/Extremism)]
+
+- **Ideological position**: It describes beliefs that are considered radical by a given population.
+- **Methodology**: It is heavily linked to the methods used to push an agenda, such as intolerance, subversion of democratic processes, or violence.
+- **Contextual nature**: What is considered "extremist" can shift over time depending on societal changes and geographical location. \[[1](https://www.tandfonline.com/doi/full/10.1080/14782804.2023.2185594), [2](https://en.wikipedia.org/wiki/Extremism), [3](https://www.youtube.com/watch?v=KQO7VgRPjvA), [4](https://www.gov.uk/government/publications/new-definition-of-extremism-2024/new-definition-of-extremism-2024), [5](https://www.gov.scot/publications/understanding-extremism-scotland-stakeholder-perceptions-views/pages/4/)]
+
+### Understanding Absolutism
+
+Absolutism is the structural rejection of compromise, context, or alternative perspectives. \[[1](https://www.ebsco.com/research-starters/religion-and-philosophy/extremism), [2](https://www.tandfonline.com/doi/full/10.1080/09546553.2024.2379043), [3](https://www.scribd.com/document/684618269/Absolutism-and-Relativism-pdf)]
+
+- **Moral/Philosophical Absolutism**: The conviction that certain actions are inherently right or wrong, completely independent of their context, intentions, or consequences.
+- **Political Absolutism**: A system of rule where a single entity holds absolute, unrestricted sovereign authority, such as an absolute monarchy.
+- **Cognitive Inflexibility**: A rigid "black-and-white" framing of reality where one's own worldview is seen as the singular, universal truth. \[[1](https://www.ebsco.com/research-starters/religion-and-philosophy/extremism), [2](https://www.sciencedirect.com/topics/social-sciences/absolutism), [3](https://www.ebsco.com/research-starters/law/absolutism), [4](https://www.tandfonline.com/doi/full/10.1080/09546553.2024.2379043)]
+
+### How They Intersect
+
+Absolutism acts as a psychological engine for violent extremism. When an individual transitions from holding simple beliefs to adopting an "exclusivist absolutism," they begin to dehumanize opposing viewpoints. This absolute certainty removes the moral barriers against harm, transforming rigid ideals into dangerous extremist actions. \[[1](https://www.ebsco.com/research-starters/religion-and-philosophy/extremism), [2](https://www.abc.net.au/religion/how-non-violent-fundamentalism-can-lead-to-violent-extremism/103933206), [3](https://poj.peeters-leuven.be/content.php?id=3289540\&url=article), [4](https://www.tandfonline.com/doi/full/10.1080/09546553.2024.2379043)]
+
+To explore these psychological dynamics deeper, philosophers point to pluralism as an intellectual antidote, detailed in texts like Wayne Viney's [William James's Pluralism: An Antidote for Contemporary Extremism and Absolutism](https://www.routledge.com/William-Jamess-Pluralism-An-Antidote-for-Contemporary-Extremism-and-Absolutism/Viney/p/book/9781032228464). \[[1](https://www.routledge.com/William-Jamess-Pluralism-An-Antidote-for-Contemporary-Extremism-and-Absolutism/Viney/p/book/9781032228464), [2](https://api.taylorfrancis.com/content/books/mono/download?identifierName=doi\&identifierValue=10.4324/9781003276715\&type=googlepdf), [3](https://www.amazon.co.uk/William-Jamess-Pluralism-Contemporary-Absolutism/dp/1032228466)]
+
+- [link](https://www.researchgate.net/publication/359268977%5FWilliam%5FJames's%5FPluralism%5FAn%5FAntidote%5Ffor%5FContemporary%5FExtremism%5Fand%5FAbsolutism)\
+  William James's Pluralism: An Antidote for Contemporary ...\
+  References (116) ... Pluralism represents a cornerstone of cultural inclusivity, religious tolerance, and democracy, and a source ...\
+  ResearchGate
+- [link](https://www.ebsco.com/research-starters/religion-and-philosophy/extremism)\
+  Extremism | Religion and Philosophy | Research Starters\
+  Overview. Extremism is often based on religion. Extremists commit hurtful, violent, or destructive acts to promote their religious...\
+  EBSCO
+- [link](https://poj.peeters-leuven.be/content.php?id=3289540\&url=article)\
+  PEETERS ONLINE JOURNALS\
+  Religious extremism is an ideologically based phenomenon requiring to be critically understood in order to be resisted and amelior...\
+  PEETERS ONLINE JOURNALS
+
+Show all
+
+# (d) how does the original hacker ethics map on the philosophical spectrum
+
+The original hacker ethic maps onto the philosophical spectrum as a hybrid of **Libertarian-leaning Consequentialism, Virtue Ethics, and Anarcho-Communalism**.
+
+Coined by Steven Levy in his 1984 book _Hackers: Heroes of the Computer Revolution_, this ethos is not a single philosophy. It is a practical framework that blends several distinct philosophical traditions. \[[1](https://learn.onemonth.com/the-hacker-ethic/), [2](https://journals.sagepub.com/doi/pdf/10.1177/1463499608093814), [3](http://opentranscripts.org/transcript/programming-forgetting-new-hacker-ethic/)]
+
+### 1. Consequentialism and Utilitarianism
+
+The core tenet that **"All information should be free"** aligns closely with consequentialist thought.
+
+- **Maximizing Utility**: Hackers argue that free information allows society to solve problems faster.
+- **Social Progress**: Information access is viewed as a tool to improve human well-being and accelerate development.
+- **System Optimization**: Restricting data is seen as an artificial barrier that reduces collective efficiency. \[[1](https://www.funkysi1701.com/posts/2025/the-hacker-ethic/)]
+
+### 2. Virtue Ethics
+
+The belief that **"You can create art and beauty on a computer"** maps directly to virtue ethics.
+
+- **The "Hacker Meritocracy"**: Individuals are judged solely by their technical competence and craftsmanship, not by age, race, or degrees.
+- **Pursuit of Excellence**: Code is treated as an expression of mastery and intellectual honesty.
+- **Intrinsic Value**: The act of hacking is pursued for its own sake, prioritizing personal growth and discovery over financial gain. \[[1](https://en.wikipedia.org/wiki/Hacker%5Fethic), [2](https://www.webasha.com/blog/white-hat-vs-black-hat-hackers-whos-on-the-right-side)]
+
+### 3. Political Philosophy: Libertarianism vs. Anarcho-Communalism
+
+The hacker ethic occupies a unique, often tense space between left-wing and right-wing political spectrums.
+
+| Philosophical Angle \[[1](https://www.dash.hrecos.org/view/206/6AD/ZrHesL/the-secret%5Fhistory-of-hacking), [2](https://journals.sagepub.com/doi/pdf/10.1177/1463499608093814), [3](https://aeon.co/essays/how-yuppies-hacked-the-original-hacker-ethos), [4](https://networkcultures.org/longform/2020/12/02/derives-in-the-digital-avant-garde-ideology-in-hacker-cultures/), [5](https://www.funkysi1701.com/posts/2025/the-hacker-ethic/)] | Core Hacker Tenet                                | Mapping to Traditional Philosophy                                                                                         |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------- |
+| **Anti-Authoritarianism**                                                                                                                                                                                                                                                                                                                                                                                                                      | "Mistrust authority — promote decentralization." | **Libertarianism & Anarchism**: Rejects centralized control, state surveillance, and bureaucratic gatekeepers.            |
+| **Communal Sharing**                                                                                                                                                                                                                                                                                                                                                                                                                           | "Information wants to be free."                  | **Anarcho-Communalism**: Rejects private intellectual property in favor of a digital commons.                             |
+| **Radical Individualism**                                                                                                                                                                                                                                                                                                                                                                                                                      | "Access to computers should be unlimited."       | **Left-Libertarianism**: Prioritizes absolute personal freedom alongside shared access to the means of production (code). |
+
+### 4. Deontology (The Main Conflict)
+
+The original hacker ethic frequently clashes with traditional **Deontological (duty-based) Ethics**, particularly regarding property rights. \[[1](https://www.sciencedirect.com/science/article/abs/pii/S0160791X26001776)]
+
+- **Rule-Breaking**: Hackers prioritize the _consequence_ of free information over the _duty_ to obey corporate intellectual property laws.
+- **Subverting Authority**: Breaking a system's rules is viewed as ethically acceptable if it exposes flaws, improves security, or liberates data. \[[1](https://www.encyclopedia.com/science/encyclopedias-almanacs-transcripts-and-maps/hacker-ethics)]
+
+***
+
+If you would like to explore this further, I can break down **how modern corporate tech ethics differ** from these original 1980s ideals, or look into specific case studies like the **Free Software Movement**. Which direction would you prefer?
+
+- [link](https://learn.onemonth.com/the-hacker-ethic/)\
+  The Hacker Ethic: Understanding Programmer Culture - Learn to code in 30 Days!\
+  Aug 7, 2020 — The Hacker Ethic: Understanding Programmer Culture All hackers (good and evil) share a core belief that information should be free...\
+  \
+  \
+  Learn to code in One Month
+- [link](https://journals.sagepub.com/doi/pdf/10.1177/1463499608093814)\
+  Hacker practice: Moral genres and the cultural articulation of liberalism\
+  In 1984 Steven Levy published what is now considered to be the classic account of the golden age of hacking, Hackers: Heroes of th...\
+  \
+  Sage Journals
+- [link](http://opentranscripts.org/transcript/programming-forgetting-new-hacker-ethic/)\
+  Programming is Forgetting: Toward a New Hacker Ethic - Allison Parrish\
+  Oct 7, 2016 — And his ( Steven Levy ) book is not just a history of hackers but also a celebration of them. Levy ( Steven Levy ) makes his ( Ste...\
+  \
+  \
+  Open Transcripts
+
+Show all
+
+## You said: how has it changed
+
+The original hacker ethic has transformed from an **anti-authoritarian, hobbyist subculture into a highly professionalized, economically stratified, and geopolitically weaponized ecosystem**. \[[1](https://cyber.harvard.edu/events/security-spectacle-invention-gray-hat-hacking-fight-against-microsoft-1990s)]
+
+While the 1980s ethos prioritized decentralized control and the total freedom of information, the modern landscape has split into distinct, often conflicting paradigms driven by corporate capture and state interests. \[[1](https://jmetz.com/2015/03/misunderstanding-cyberculture-martin-rimm-and-the-cyberporn-study/)]
+
+### 1. The Fragmentation of "Free Information"
+
+The original tenet **"All information should be free"** has fractured into radically different modern interpretations:
+
+- **The Corporate Monetization Model**: Silicon Valley tech giants adapted the "free" concept into a monetization strategy. Users receive "free" services in exchange for personal data, giving rise to surveillance capitalism. \[[1](https://collectivefutures.blog/a-short-critical-history-of-artificial-intelligence-from-a-computational-fallacy-to-tech-fascism/)]
+- **The Open-Source Industrial Complex**: The communal sharing model was institutionalized into open-source software (OSS). OSS is no longer just an anti-corporate rebellion; it is the infrastructure for global enterprise, heavily funded and governed by corporations like Microsoft and Google.
+- **Radical Whistleblowing and Hacktivism**: Groups like Anonymous and platforms like WikiLeaks inherited the pure "free information" mandate. They weaponized it into radical transparency, using data leaks to expose state and corporate secrets. \[[1](https://www.group-ib.com/resources/knowledge-hub/hacktivism/)]
+
+### 2. Shift from Anti-Authoritarianism to Institutionalization
+
+The original mandate to **"Mistrust authority — promote decentralization"** has shifted toward professional integration: \[[1](https://www.emerald.com/jices/article-pdf/1/1/31/1494923/14779960380000224.pdf)]
+
+- **The Cybersecurity Industry**: The rogue hacker of the 1980s is now a corporate professional. "Ethical hacking" (White Hat) is a multi-billion dollar mainstream career path governed by certifications, legal non-disclosure agreements, and corporate compliance frameworks. \[[1](https://studyonline.unsw.edu.au/blog/career-ethical-hacking-key-lessons-ethical-hacker), [2](https://www.nucamp.co/blog/coding-bootcamp-cybersecurity-what-is-ethical-hacking-and-how-does-it-differ-from-malicious-hacking), [3](https://smartermsp.com/tech-time-warp-first-ethical-hacker/), [4](https://www.networkershome.com/fundamentals/ethical-hacking/what-is-ethical-hacking-legal-framework/)]
+- **Weaponization by the State**: Nation-states have co-opted hacker methodologies for espionage, critical infrastructure sabotage, and information warfare. Highly bureaucratic government agencies (like the US Cyber Command or state-sponsored Advanced Persistent Threats) now employ hackers to project geopolitical power, directly contradicting the original anti-state, anti-authoritarian stance. \[[1](https://www.linkedin.com/pulse/ethical-hacking-understanding-spectrum-hackers-john-sunday-zcxpf), [2](https://www.mitnicksecurity.com/blog/types-of-hackers)]
+
+### 3. The Professionalization of Craft (Virtue Ethics)
+
+The belief that hacking is a **pure art form pursued for its own sake** has largely been replaced by market-driven specialization:
+
+- **The "Bug Bounty" Economy**: The pursuit of technical excellence is now heavily incentivized by monetary rewards. Platforms like HackerOne commodify the discovery of software vulnerabilities, turning a hobbyist pursuit into a structured gig economy. \[[1](https://www.youtube.com/watch?v=fpJuhMoznWY)]
+- **Specialization Over Generalization**: Early hacking required deep, holistic knowledge of systems. Modern hacking is highly specialized, with distinct roles ranging from automated script operators to exploit developers, shifting the focus from individual artistic mastery to assembly-line efficiency. \[[1](https://www.dash.hrecos.org/view/206/6AD/ZrHesL/the-secret%5Fhistory-of-hacking), [2](https://catalystjournal.org/index.php/catalyst/article/view/29615/24781), [3](https://seclists.org/dataloss/2018/q3/28)]
+
+### 4. Evolution on the Philosophical Spectrum
+
+```
+[1980s Original Ethos]                     [Modern Fractured Ethos]
+----------------------                     ------------------------
+* Pure Anti-Authoritarianism     --->     * Institutionalized Cybersecurity
+* Anti-Property Communalism     --->     * Corporate Open-Source / Data Monetization
+* Hobbyist Virtue Ethics        --->     * Gig-Economy (Bug Bounties) & State Warfare
+```
+
+- **From Left-Libertarianism to Technocracy**: The political spectrum of hacking has drifted. While a subset remains fiercely decentralized (e.g., the web3 and privacy-tech communities), the dominant force is technocratic, aligning hacker skillsets with corporate growth and national defense strategies.
+
+***
+
+To help us narrow this down, let me know if you would like to look closer at:
+
+- The rise of **state-sponsored hacking** and cyber warfare.
+
+- How the **Free Software Movement** fought back against corporate capture.
+
+- The ethics of modern **bug bounty platforms** and vulnerability disclosure. \[[1](https://business.privacybee.com/resource-center/hacktivism-on-the-march-from-cyber-protest-to-cyber-warfare/), [2](https://www.tandfonline.com/doi/full/10.1080/1369118X.2025.2498683), [3](https://www.tandfonline.com/doi/abs/10.1080/1369118X.2025.2498683)]
+
+- [link](https://cyber.harvard.edu/events/security-spectacle-invention-gray-hat-hacking-fight-against-microsoft-1990s)\
+  Security by Spectacle: The Invention of Gray Hat Hacking & The Fight Against Microsoft in the 1990s\
+  May 30, 2024 — Our report examines the transformative period in which many hackers moved from a vilified underground subculture into a domain of ...\
+  \
+  \
+  Berkman Klein Center
+
+- [link](https://jmetz.com/2015/03/misunderstanding-cyberculture-martin-rimm-and-the-cyberporn-study/)\
+  Misunderstanding Cyberculture: Martin Rimm and the 'Cyberporn' Study\
+  Mar 6, 2015 — 52). The notion of paying for information goes directly against the tenets of the purists, who subscribe to the old hacker belief ...\
+  \
+  \
+  Dr J Metz
+
+- [link](https://collectivefutures.blog/a-short-critical-history-of-artificial-intelligence-from-a-computational-fallacy-to-tech-fascism/)\
+  A (short) critical history of artificial intelligence from a computational fallacy to tech fascism\
+  Dec 31, 2025 — This period marks the birth of surveillance capitalism, a new economic version of capitalism that extracts value from human experi...\
+  \
+  \
+  collectivefutures.blog
+
+Show all
+
+## You said: where does it change from and into
+
+The transformation of the hacker ethic is a shift from **Decentralized Romanticism to Institutionalized Pragmatism**.
+
+Philosophically and politically, it moved away from an idealistic, anti-establishment collective and broke apart into three distinct, specialized modern systems.
+
+### 1. The Philosophical Shift
+
+The core philosophical driver shifted from a system based on **Virtue and Common Good** to one based on **Utility and Profit**.
+
+```
+[ FROM ]                                 [ INTO ]
+Radical Deontology & Virtue Ethics       Technocratic Utilitarianism
+* Hacking is an artistic duty.           * Hacking is a tool for optimization.
+* Knowledge has intrinsic value.         * Knowledge has transactional value.
+* Rules are broken to free data.         * Rules are managed to protect capital.
+```
+
+### 2. The Political and Economic Shift
+
+Politically, the movement abandoned its uniform anti-authoritarian stance. It split across the political spectrum into three main modern factions: \[[1](https://www.orangecyberdefense.com/global/blog/research/hacktivism-today-what-three-years-of-research-reveal-about-its-transformation)]
+
+```
+                  ┌──> Corporate/Technocratic Capitalism (White Hat)
+                  │    * Secures infrastructure, monetizes OSS, maximizes profit.
+                  │
+[ FROM ]          ├──> State-Sponsored Cyber Warfare (Government)
+Anarcho-Communal  │    * Projects nation-state power, spies, sabotages.
+& Libertarian     │
+                  └──> Radical Hacktivism & Crypto-Anarchism (Dark/Grey Hat)
+                       * Leaks secrets, builds decentralized web3/privacy tech.
+```
+
+### 3. The Structural Shift (Summary Table)
+
+This table breaks down exactly how the core principles transformed:
+
+| Dimension \[[1](https://www.orangecyberdefense.com/global/blog/research/hacktivism-today-what-three-years-of-research-reveal-about-its-transformation), [2](https://islandinthenet.com/hacker-manifesto/)] | From: The 1980s Ethos                                             | Into: The 2020s Reality \[2026]                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| **Information**                                                                                                                                                                                            | **Free As In Freedom**: Data belongs to the digital commons.      | **Commoditized / Proprietary**: Data is a corporate asset or oil for AI.         |
+| **Authority**                                                                                                                                                                                              | **Defiant / Anti-State**: Deep mistrust of all centralized power. | **Integrated**: Hackers are corporate employees or military officers.            |
+| **Motivation**                                                                                                                                                                                             | **Artistic Mastery**: Driven by curiosity and community prestige. | **Financial & Geopolitical**: Driven by bug bounties, salaries, or state orders. |
+| **Access**                                                                                                                                                                                                 | **Universal & Radical**: Break down gates so anyone can learn.    | **Gatekept & Certified**: Regulated by legal frameworks (NDAs, ISO standards).   |
+
+***
+
+If you want to explore a specific part of this evolution, let me know if we should focus on:
+
+- The **legal battles** that forced this shift (like the Computer Fraud and Abuse Act).
+
+- The split between **Linus Torvalds' pragmatic open-source** and **Richard Stallman's radical free software**.
+
+- How **AI training data disputes** are the newest battleground for "free information." \[[1](https://en.wikipedia.org/wiki/The%5FCathedral%5Fand%5Fthe%5FBazaar)]
+
+- [link](https://www.orangecyberdefense.com/global/blog/research/hacktivism-today-what-three-years-of-research-reveal-about-its-transformation)\
+  Hacktivism today: What three years of research reveal about its transformation\
+  Feb 10, 2026 — Hacktivism has shifted: the days of the idealistic, anti-authoritarian grass-roots movement are over. State-sponsoring and extremi...\
+  \
+  \
+  Orange Cyberdefense
+
+- [link](https://www.orangecyberdefense.com/global/blog/research/hacktivism-today-what-three-years-of-research-reveal-about-its-transformation)\
+  Hacktivism today: What three years of research reveal about its transformation\
+  Feb 10, 2026 — In our 2025 report, we introduce a historical framing of hacktivism as an evolving phenomenon across three distinct eras. The firs...\
+  \
+  \
+  Orange Cyberdefense
+
+- [link](https://islandinthenet.com/hacker-manifesto/)\
+  The Hacker Manifesto – 8 January 1986\
+  Jan 8, 2026 — It ( The Conscience of a Hacker ) articulates the hacker ethos and perspective, beginning with the iconic line “Another one got ca...\
+  \
+  \
+  islandinthenet.com
+
+# 
+
+
+
