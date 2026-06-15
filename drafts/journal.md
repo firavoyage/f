@@ -33469,7 +33469,9 @@ i dont want react <!-- or an elegant react or more performant react -->. i dont 
 
 <!-- moving from a framework is a kind of explicit over implicit. "what does a component have" -->
 
-17 40 write `values` `ideas`.
+17 40 write `values` <!-- blogging --> `ideas` <!-- drafts -->.
+
+<!-- it's quite cold wo a jacket though -->
 
 
 
