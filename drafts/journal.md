@@ -33467,6 +33467,8 @@ to cut down the nails further i guess.
 
 i dont want react <!-- or an elegant react or more performant react -->. i dont want to be conventional. i dont want to have a life dulled.
 
+<!-- moving from a framework is a kind of explicit over implicit. "what does a component have" -->
+
 
 
 <!-- timebox, plan. -->
