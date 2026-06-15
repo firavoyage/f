@@ -147,9 +147,15 @@ https://www.9ui.dev/docs/components/button
 
 https://coss.com/ui/docs/components/button
 
+...
+
 https://base-ui.com/react/components/slider
 
 https://chakra-ui.com/docs/components/slider
+
+https://coss.com/ui/docs/components/slider
+
+https://mui.com/material-ui/react-slider/
 
 ---
 

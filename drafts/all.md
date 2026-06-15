@@ -253,6 +253,7 @@ desktop:
 - gnome critical notifications stricter dnd attempt
 - shell fdfind rg
 - install librechat
+- oom vscode markdown extensions ram
 
 android:
 
@@ -627,6 +628,7 @@ rhetoric:
 - theory meaning slang
 - created equal
 - the ability to do something to the extent of x
+- man fucking eight billion ppl at once
 
 laws:
 
