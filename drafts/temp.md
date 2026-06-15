@@ -8,7 +8,7 @@ existentialism
 
 egoism
 
-elitism <!-- social -->
+elitism <!-- social darwin? score? -->
 
 pragmaticism
 
