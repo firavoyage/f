@@ -471,6 +471,7 @@ philosophy:
 - hacker ethics
 - avoid success at all costs
 - mono no aware the red chamber
+- philosophical ideology spectrum
 
 entertainment:
 
