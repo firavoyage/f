@@ -98,6 +98,7 @@ life:
 - smart spending samsung a series
 - game maimai dx color badges
 - streaming test youtube mobile prism streamerlabs twitch kick
+- game maimai dx kanadedx astrodx
 
 create something:
 
