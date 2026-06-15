@@ -33487,6 +33487,12 @@ seems they play hai yorokonde effortlessly. they know how to play. they know the
 
 maybe i would increate note speed to eight.
 
+16
+
+02 20 remove games to free up space.
+
+they are static. i have backup. and i do not like games right now.
+
 
 
 <!-- timebox, plan. -->
