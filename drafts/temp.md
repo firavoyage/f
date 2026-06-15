@@ -11,4 +11,3 @@ egoism
 elitism <!-- social darwin? score? -->
 
 pragmaticism
-
