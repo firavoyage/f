@@ -51,6 +51,498 @@ I can guide you through linking these folders together correctly!
 
 Show all
 
+## You said: what if i make it a workspace or not
+
+Choosing to use a workspace or keeping them as separate, independent projects changes how pnpm links, updates, and shares code between your folders.
+
+Here is exactly how things change based on your choice.
+
+### If you DO make it a workspace (Recommended)
+
+This turns your project into a **monorepo**. You tell pnpm to manage all folders under a single umbrella. \[[1](https://medium.com/@paulwall%5F21/understand-how-xcode-workspaces-projects-schemes-and-targets-work-together-1832f22863f3)]
+
+- **Single Lockfile:** Everything shares one `pnpm-lock.yaml` file at the root.
+- **Shared Storage:** If the root and the subfolder use the same version of `react`, pnpm downloads it exactly once, saving massive disk space.
+- **Easy Local Linking:** If Subfolder A needs code from Subfolder B, you can install it using `pnpm add folder-b --workspace`. pnpm links them locally instantly without publishing to npm.
+- **One Command for All:** You can run tests or builds across every single subfolder simultaneously using `pnpm -r run build`.
+- **Setup Required:** You must create a `pnpm-workspace.yaml` file at the root to tell pnpm where to look (e.g., `packages/*`). \[[1](https://medium.com/@brianmwambia3/creating-javascript-typescript-modules-libraries-in-a-workspace-setup-e2f5dc9ac74c)]
+
+### If you DO NOT make it a workspace
+
+This keeps the root and the subfolder as completely isolated, independent projects that happen to sit inside one another.
+
+- **Multiple Lockfiles:** The root has a `pnpm-lock.yaml`, and the subfolder has its own separate `pnpm-lock.yaml`.
+- **No Code Sharing:** If Subfolder A needs code from Subfolder B, you cannot easily link them. You have to publish Subfolder B to npm or manually link it via complex paths.
+- **Duplicate Downloads:** If both folders use the same packages, they resolve them independently, creating separate virtual store mappings.
+- **Isolated Scripts:** Running `pnpm test` at the root will completely ignore the subfolder. You must manually `cd` into the subfolder to run its commands. \[[1](https://wasp.sh/blog/2026/03/25/gentle-intro-npm-workspaces)]
+
+To help you choose the best route, tell me:
+
+- Are the root and subfolder **part of the same app** (like a frontend and a backend)?
+- Do you need the subfolder to **import files or code** from the root?
+
+I can provide the exact terminal commands to set up whichever option you pick!
+
+- [link](https://medium.com/@paulwall%5F21/understand-how-xcode-workspaces-projects-schemes-and-targets-work-together-1832f22863f3)\
+  Understand how Xcode workspaces, projects, schemes, and targets work together.\
+  Oct 25, 2022 — Workspaces fit really well with the concept of monorepos. You can have your workspace in a single repository, as opposed to a repo...\
+  \
+  \
+  Medium
+- [link](https://medium.com/@brianmwambia3/creating-javascript-typescript-modules-libraries-in-a-workspace-setup-e2f5dc9ac74c)\
+  Creating JavaScript/TypeScript Modules/Libraries in a Workspace Setup\
+  Oct 21, 2024 — Development speed: Using workspaces like pnpm , npm , or yarn allows you to link packages locally, avoiding the need to publish pa...\
+  \
+  \
+  Medium
+- [link](https://wasp.sh/blog/2026/03/25/gentle-intro-npm-workspaces)\
+  A gentle intro to npm workspaces, with visuals\
+  Mar 25, 2026 — All dependencies are resolved together across the project, as if it ( Each workspace ) were a single package. If two workspaces de...\
+  \
+  \
+  Wasp.sh
+
+## You said: do i have to edit the workspace yaml manually
+
+No, you do not always have to edit it manually, though it is usually the fastest way. \[[1](https://sharonsahadevan.medium.com/understanding-the-difference-between-package-json-and-pnpm-lock-yaml-in-node-js-f9d47a6a2386)]
+
+Here are the ways you can generate or manage the file, including an automated shortcut:
+
+### 1. The Automated Way (Fastest)
+
+You can use a pnpm command to automatically generate a pre-configured `pnpm-workspace.yaml` file for you. \[[1](https://github.com/pnpm/pnpm/issues/2255)]
+
+Run this command in your root directory:
+
+bash
+
+```
+pnpm init --workspace
+```
+
+Use code with caution.
+
+This automatically creates the `pnpm-workspace.yaml` file at your root and populates it with a standard wildcard pattern matching common subfolder names:
+
+yaml
+
+```
+packages:
+  - 'packages/*'
+  - 'components/*'
+  - 'apps/*'
+```
+
+Use code with caution.
+
+If your subfolder sits inside one of those directory names (like `apps/my-subfolder`), you do not need to touch the file at all.
+
+### 2. The Manual Way (Only 3 lines)
+
+If your subfolders are named uniquely (e.g., you just have a folder named `/backend` and `/frontend` directly in the root), you do have to open the file and type them out. Fortunately, the syntax is minimal.
+
+To map specific folders, your `pnpm-workspace.yaml` just needs to look like this: \[[1](https://nx.dev/docs/concepts/typescript-project-linking)]
+
+yaml
+
+```
+packages:
+  - 'frontend'
+  - 'backend'
+```
+
+Use code with caution.
+
+### When do you have to edit it again?
+
+- **Never** if you use a wildcard pattern like `- 'packages/*'` and you keep putting your new subfolders inside that `packages` folder. pnpm will automatically detect any new folders added there.
+- **Only when** you create a brand new, top-level folder outside of your defined patterns that you want pnpm to start tracking.
+
+If you want to see if your folders fit the default setup, tell me:
+
+- What is the **exact folder structure** or names of your subfolders?
+
+- Do you want to **group them** under a folder like `packages/` or leave them in the root?
+
+- [link](https://sharonsahadevan.medium.com/understanding-the-difference-between-package-json-and-pnpm-lock-yaml-in-node-js-f9d47a6a2386)\
+  Understanding the Difference Between package.json and pnpm-lock.yaml in Node.js\
+  Mar 16, 2023 — Another difference is that package. json can be edited manually, while pnpm-lock. yaml should not be edited manually. Editing the ...\
+  \
+  \
+  Medium
+
+- [link](https://github.com/pnpm/pnpm/issues/2255)\
+  Support workspaces from package.json · Issue #2255 · pnpm/pnpm\
+  Jan 6, 2020 — automatically create a pnpm-workspace. yaml file with the necessary configuration.\
+  \
+  \
+  GitHub
+
+- [link](https://nx.dev/docs/concepts/typescript-project-linking)\
+  TypeScript Project Linking\
+  Defining the packages property in the root pnpm-workspaces. yaml file lets pnpm know to look for project package. json files in th...\
+  \
+  \
+  Nx monorepos
+
+## You said: i can init on any subfolder or subfolder or subfolder. what if i do not add to workspace
+
+Yes, you can run `pnpm init` as deeply nested as you want (e.g., `root/folderA/folderB/folderC`).
+
+If you choose **not** to add these nested folders to a workspace, they will operate under a specific hierarchy behavior:
+
+### 1. Independent Packages (Isolated) \[[1](https://blog.prateekjain.dev/you-should-move-to-pnpm-from-npm-now-6e84b6cc7778)]
+
+Each folder with a `package.json` becomes an independent package. They do not automatically share dependencies, scripts, or configurations with their parent folders. \[[1](https://pnpm.io/global-packages), [2](https://infinum.com/handbook/frontend/node/package-managers-guidelines), [3](https://github.com/prisma/prisma/discussions/20149)]
+
+### 2. Upward Dependency Resolution (The Bubble-Up Rule)
+
+When a file inside `folderC` has code like `import express from 'express'`, Node.js and pnpm look for the package using a strict upward search:
+
+- First, it looks in `root/folderA/folderB/folderC/node_modules/`
+- If not found, it bubbles up to `root/folderA/folderB/node_modules/`
+- If still not found, it bubbles up to `root/folderA/node_modules/`
+- Finally, it checks the `root/node_modules/`
+
+### 3. The "Phantom Dependency" Danger
+
+Because of the bubble-up rule, if you install `lodash` in the **root** folder but forget to install it in **folderC**, `folderC` can still import and use it during local development.
+
+- **The Catch**: If you deploy _only_ `folderC` to a server, your app will immediately crash because `lodash` was never explicitly saved in `folderC`'s `package.json`. \[[1](https://medium.com/front-end-world/stop-waiting-on-npm-bun-and-pnpm-are-here-to-fix-your-workflow-88e9a17085af)]
+
+### 4. Lockfile Fragmentation
+
+Every time you run `pnpm install` inside a non-workspace subfolder, pnpm will generate a completely separate `pnpm-lock.yaml` and a separate hidden `.pnpm-store` reference inside that specific subfolder. This leads to duplicate package downloads and slower install times across your machine. \[[1](https://medium.com/@gvelosa/pnpm-the-smarter-more-efficient-node-js-package-manager-3e392a1f7a4a)]
+
+To help you manage this layout, tell me:
+
+- Are you nesting folders this deeply to **organize different services** (like microservices)?
+
+- Do you plan to **deploy these subfolders separately** to different hosting platforms?
+
+- [link](https://blog.prateekjain.dev/you-should-move-to-pnpm-from-npm-now-6e84b6cc7778)\
+  You Should Move to pnpm from npm Now\
+  May 21, 2026 — Isolated global installs. Running pnpm add -g now places each global package in its own isolated directory with its own node\_modul...\
+  \
+  \
+  blog.prateekjain.dev
+
+- [link](https://pnpm.io/global-packages)\
+  Global Packages | pnpm\
+  Each globally installed package (or group of packages installed together) gets its own isolated installation directory with its ow...\
+  \
+  PNPM
+
+- [link](https://infinum.com/handbook/frontend/node/package-managers-guidelines)\
+  Frontend Handbook | Node / Package managers guidelines\
+  Sep 25, 2024 — Unlike npm and yarn, pnpm uses a unique approach where each package has its own isolated node\_modules structure. This prevents pac...\
+  \
+  \
+  Infinum
+
+Show all
+
+## You said: does it matter if i do not use workspace features
+
+Even if you do not use workspace features like code-sharing or multi-project scripts, <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>yes, it still matters.</strong></mark>
+
+Choosing to omit the workspace file completely changes how pnpm manages your disk space, installation speed, and deployment security.
+
+### 1. Speed and Disk Space (The Global Store)
+
+- **Without Workspace:** Every nested subfolder maintains a completely separate internal dependency map. Running installs across 5 subfolders requires 5 separate dependency resolution phases, significantly slowing down your local development setup.
+- **With Workspace:** pnpm processes all packages simultaneously in a single phase. It uses one global virtual store for the entire project tree, ensuring maximum speed and zero duplicated disk space. \[[1](https://www.linkedin.com/pulse/streamline-nodejs-microservices-pnpm-monorepos-srikanth-r-gbmjc), [2](https://pnpm.io/global-virtual-store), [3](https://dev.to/meertanveer/exploring-package-managers-in-web-development-3jj5)]
+
+### 2. Lockfile Drift and Version Chaos
+
+- **Without Workspace:** Each subfolder creates its own isolated `pnpm-lock.yaml` file. Over time, your deeply nested folders will end up using different minor versions of the exact same packages. This creates hard-to-track bugs where code works in one subfolder but breaks in another.
+- **With Workspace:** One single `pnpm-lock.yaml` file locks the versions for every single subfolder, guaranteeing consistency across your entire project. \[[1](https://medium.com/@alonisser/things-i-wish-pip-learned-from-npm-f712fa26f5bc), [2](https://nahidulislam11.medium.com/think-you-dont-need-a-lock-file-think-again-6b849613c356), [3](https://betterstack.com/community/guides/scaling-nodejs/pnpm-explained/), [4](https://sushantgaurav57.medium.com/understanding-node-modules-and-venv-files-in-development-f7c8d27030a5)]
+
+### 3. CI/CD and Production Deployment Risks
+
+- **Without Workspace:** If a nested subfolder accidentally imports a package that belongs to a parent folder, it will work perfectly on your computer. However, when you deploy that subfolder to a cloud provider (like Vercel or AWS), the deployment will crash because the parent folder is missing.
+- **With Workspace:** pnpm strictly validates dependencies. It prevents these accidental "phantom" imports, ensuring that whatever works on your machine will deploy safely to production. \[[1](https://github.com/antfu/skills/blob/main/skills/pnpm/SKILL.md), [2](https://medium.com/@udays2002/npm-vs-yarn-vs-pnpm-the-ultimate-package-manager-showdown-c27deb136d8e), [3](https://blog.openreplay.com/introduction-pnpm-alternative-npm-yarn/)]
+
+### Summary: When is it okay to drop the workspace?
+
+You should **only** skip the workspace if those subfolders are completely unrelated projects that you accidentally grouped into one directory, and you never plan to test, run, or deploy them together.
+
+If you are trying to solve a specific issue, let me know:
+
+- What **specific error or annoyance** are you trying to avoid by skipping the workspace?
+
+- How do you plan to **run or launch** these subfolders?
+
+- [link](https://www.linkedin.com/pulse/streamline-nodejs-microservices-pnpm-monorepos-srikanth-r-gbmjc)\
+  Streamline Node.js Microservices with PNPM Monorepos\
+  Mar 26, 2025 — With PNPM workspaces, you can install, update, and manage dependencies across all packages in one go. Running a single command (li...\
+  \
+  \
+  LinkedIn
+
+- [link](https://pnpm.io/global-virtual-store)\
+  Global Virtual Store | pnpm\
+  The global virtual store ( enableGlobalVirtualStore: true ) changes this. Instead of each project having its own node\_modules/. pn...\
+  \
+  PNPM
+
+- [link](https://dev.to/meertanveer/exploring-package-managers-in-web-development-3jj5)\
+  Exploring Package Managers in Web Development\
+  Apr 5, 2024 — Unlike npm ( Node Package Manager ) and Yarn, which install packages separately in each project, pnpm uses a single global store f...\
+  \
+  \
+  DEV Community
+
+Show all
+
+## You said: i mean it might matter but i do not have to
+
+Exactly. **You do not have to.** pnpm will not stop you, throw errors, or lock you out. It is a completely valid layout that many developers use. \[[1](https://medium.com/@hariharakumar5196/why-pnpm-is-becoming-the-go-to-package-manager-for-monorepos-next-js-and-enterprise-applications-ae4332a7e2e7), [2](https://bordeauxcoders.com/who-is-using-pnpm)]
+
+If you decide to skip the workspace, here is the exact mental checklist you need to keep your project from breaking:
+
+### 1. You must `cd` into every folder to run commands
+
+Because there is no workspace file linking them, your root folder is blind to the subfolders.
+
+- To start a subfolder app: `cd folderA/folderB/folderC && pnpm run dev`
+- To install a package inside a subfolder:
+
+### 2. Double-check your subfolder `package.json` before deploying \[[1](https://github.com/pnpm/pnpm/issues/5972)]
+
+Because of the "bubble-up" rule where subfolders can secretly borrow packages from parent folders, always verify your imports. If your code in `folderC` says `import express`, make absolutely sure `express` is written inside `folderC/package.json`—not just the root.
+
+### 3. Git will track everything just fine
+
+You do not need workspaces for source control. A single Git repository at the root will easily track all `package.json` and `pnpm-lock.yaml` files across all subfolders automatically. \[[1](https://bunworkspaces.com/blog/bun-workspaces-v1)]
+
+### You can change your mind later!
+
+If the manual navigation becomes annoying three months from now, you can just type `pnpm init --workspace` at the root. pnpm will instantly merge all your separate subfolders into a single workspace retroactively without breaking your code.
+
+To help you get started, tell me:
+
+- What **commands** (like `dev`, `start`, or `build`) are you planning to run in these folders?
+
+- Do you need help writing a **`.gitignore`** file so pnpm's local folders don't clutter your Git history? \[[1](https://github.com/orgs/pnpm/discussions/6214)]
+
+- [link](https://medium.com/@hariharakumar5196/why-pnpm-is-becoming-the-go-to-package-manager-for-monorepos-next-js-and-enterprise-applications-ae4332a7e2e7)\
+  Why pnpm Is Becoming the Go-To Package Manager for Monorepos, Next.js, and Enterprise Applications\
+  Jan 14, 2026 — pnpm works with existing npm packages and tooling without lock-in.\
+  \
+  \
+  Medium
+
+- [link](https://bordeauxcoders.com/who-is-using-pnpm)\
+  Who is using pnpm?\
+  Jul 6, 2023 — Now you know that you're not alone in using pnpm; from renowned companies to popular open-source projects, many people are utilizi...\
+  \
+  \
+  bordeauxcoders.com
+
+- [link](https://github.com/pnpm/pnpm/issues/5972)\
+  Workspaces: Read \`pnpm.peerDependencyRules\` from packages' \`package.json\`s too · Issue #5972 · pnpm/pnpm\
+  Jan 22, 2023 — During (un)installation operations in a workspace package, check the package's own package. json for pnpm. peerDependencyRules . I...\
+  \
+  \
+  GitHub
+
+Show all
+
+## You said: i have package json at root and package json at subfolders no workspace. must i cd to run commands?
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">No, </span><strong>you do not have to <code dir="ltr" style="font-size: 14px; margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 1px solid rgb(44, 46, 53);">cd</code> into the subfolders.</strong></mark> You can run commands inside any subfolder directly from the root using specific flags or package scripts. \[[1](https://jpcaparas.medium.com/vs-code-pro-tip-setting-the-right-terminal-starting-directory-for-subdirectory-projects-18db0023e007), [2](https://github.com/oven-sh/bun/issues/16169)]
+
+Here are the two ways to do it without changing directories:
+
+### Option 1: Use the `--dir` or `-C` Flag (Built into pnpm) \[[1](https://github.com/rust-lang/cargo/issues/10098)]
+
+pnpm allows you to target any subfolder by passing its path using the `--dir` (or short `-C`) flag. You can run this from your root folder:
+
+- **To run a script (like dev):**\
+  bash
+
+<!---->
+
+```
+pnpm --dir subfolder run dev
+```
+
+Use code with caution.
+
+- **To install a package:**\
+  bash
+
+<!---->
+
+```
+pnpm --dir subfolder add lodash
+```
+
+Use code with caution.
+
+- **For deeply nested folders:**\
+  bash
+
+<!---->
+
+```
+pnpm --dir folderA/folderB/folderC run build
+```
+
+Use code with caution.
+
+### Option 2: Use Proxy Scripts in your Root `package.json`
+
+If you find yourself running subfolder commands frequently, you can map them inside your **root** `package.json` file.
+
+Open your root `package.json` and add your subfolder commands to the `"scripts"` object like this:
+
+json
+
+```
+{
+  "name": "my-root-project",
+  "scripts": {
+    "dev:sub": "pnpm --dir subfolder run dev",
+    "build:deep": "pnpm --dir folderA/folderB/folderC run build"
+  }
+}
+```
+
+Use code with caution.
+
+Once configured, you can just run this from the root:
+
+bash
+
+```
+pnpm dev:sub
+```
+
+Use code with caution.
+
+### Which method fits your current workflow best?
+
+- Do you want to use the **`--dir` flag** for quick, one-off commands?
+
+- Do you want help setting up **proxy scripts** for a specific folder structure you already have?
+
+- [link](https://jpcaparas.medium.com/vs-code-pro-tip-setting-the-right-terminal-starting-directory-for-subdirectory-projects-18db0023e007)\
+  VS Code pro tip: setting the right terminal starting directory for subdirectory projects\
+  Jan 15, 2025 — No need to \`cd\` every time.\
+  \
+  \
+  Medium
+
+- [link](https://github.com/oven-sh/bun/issues/16169)\
+  Scripts are not run from the root of the project · Issue #16169 · oven-sh/bun\
+  Jan 4, 2025 — What is the expected behavior? The script should be runnable from any subdirectory of the project. From the npm docs: Scripts are ...\
+  \
+  \
+  GitHub
+
+- [link](https://github.com/rust-lang/cargo/issues/10098)\
+  Add \`-C \` flag to \`cargo\` to change directory before invoking · Issue #10098 · rust-lang/cargo\
+  Nov 18, 2021 — Cargo should have a flag -C (or --directory ) that exists at the top level rather than in the subcommands. This flag would cause c...\
+  \
+  \
+  GitHub
+
+## You said: how could workspace omit cd
+
+With a workspace, **pnpm uses filtering flags instead of folder paths** to execute commands instantly from anywhere in the project. \[[1](https://medium.com/front-end-world/stop-waiting-on-npm-bun-and-pnpm-are-here-to-fix-your-workflow-88e9a17085af), [2](https://github.com/pnpm/pnpm/issues/3561)]
+
+Instead of targeting the exact folder directory, you target the project by its unique name declared inside its own `package.json`.
+
+### 1. The `--filter` Flag (The Workspace Superpower) \[[1](https://medium.com/front-end-world/stop-waiting-on-npm-bun-and-pnpm-are-here-to-fix-your-workflow-88e9a17085af)]
+
+If your subfolder has a `package.json` with `{"name": "my-api"}`, you can run its scripts or manage its packages from the root using the `--filter` (or `-F`) flag:
+
+- **Run a script:**\
+  bash
+
+<!---->
+
+```
+pnpm --filter my-api run dev
+```
+
+Use code with caution.
+
+- **Add a package:**\
+  bash
+
+<!---->
+
+```
+pnpm --filter my-api add dotenv
+```
+
+Use code with caution.\
+\[[1](https://egghead.io/lessons/nx-use-pnpm-filter-commands-to-run-app-scripts-from-the-workspace-root)]
+
+### 2. The Recursive Flag (`-r`) \[[1](https://egghead.io/lessons/nx-recursively-run-scripts-in-all-pnpm-workspace-projects)]
+
+If you want to run the same command across **every single subfolder** at the exact same time without naming them individually, you use the recursive flag:
+
+- **Run all builds:**\
+  bash
+
+<!---->
+
+```
+pnpm -r run build
+```
+
+Use code with caution.
+
+- **Install all missing dependencies:**\
+  bash
+
+<!---->
+
+```
+pnpm install
+```
+
+Use code with caution.\
+_(In a workspace, running `pnpm install` at the root automatically updates every nested subfolder at once \[1].)_ \[[1](https://egghead.io/lessons/nx-recursively-run-scripts-in-all-pnpm-workspace-projects)]
+
+### The Difference in a Nutshell
+
+- **Without Workspace:** You must tell pnpm the _exact file path_ using `--dir subfolder/nested/folder`.
+- **With Workspace:** You tell pnpm the _project name_ using `--filter project-name`. It does not matter how deeply nested the folder actually is; pnpm finds it automatically.
+
+If you want to see how this looks in practice, tell me:
+
+- What is the **`"name"`** listed inside your subfolder's `package.json`?
+
+- What **command** do you want to trigger right now?
+
+- [link](https://medium.com/front-end-world/stop-waiting-on-npm-bun-and-pnpm-are-here-to-fix-your-workflow-88e9a17085af)\
+  Stop Waiting on npm. Bun and pnpm Are Here to Fix Your Workflow.\
+  May 15, 2026 — For monorepos, pnpm's advantages multiply. The pnpm-workspace. yaml file is clean and readable, the --filter flag lets you run com...\
+  \
+  \
+  Medium
+
+- [link](https://github.com/pnpm/pnpm/issues/3561)\
+  Cannot install packages for project excluded from workspace · Issue #3561 · pnpm/pnpm\
+  Jun 24, 2021 — When running pnpm install in any examples folder pnpm tries to install packages for all projects in a workspace but not for projec...\
+  \
+  \
+  GitHub
+
+- [link](https://medium.com/front-end-world/stop-waiting-on-npm-bun-and-pnpm-are-here-to-fix-your-workflow-88e9a17085af)\
+  Stop Waiting on npm. Bun and pnpm Are Here to Fix Your Workflow.\
+  May 15, 2026 — For monorepos, pnpm's advantages multiply. The pnpm-workspace. yaml file is clean and readable, the --filter flag lets you run com...\
+  \
+  \
+  Medium
+
+Show all
+
 # material three material you timeline
 
 Google's design language has evolved significantly over more than a decade, with **Material Design 3 (Material You) serving as the current standard, recently updated via the Material 3 Expressive expansion.** \[[1](https://shakilbd.medium.com/material-design-the-revolution-of-android-eco-system-d3cbdb587b97)]
@@ -888,6 +1380,41 @@ A significant chunk of software products are business-to-business tools meant fo
 ***
 
 Are you looking to see how much **revenue is actually generated** by this invisible B2B market, or are you trying to figure out if **your own software idea** should target consumer "Big Tech" styling versus this unglamorous, highly profitable B2B market?
+
+# why does vscode monaco name everything starting with I
+
+In the VS Code and Monaco source code, naming everything starting with a capital **"I"** (such as `IStandaloneCodeEditor`, `ITextModel`, or `IAction`) is a strict adherence to the **C# / TypeScript interface naming convention**.
+
+Because Visual Studio Code and Monaco were originally built by core engineers who transitioned from a heavy C# and Microsoft background (including Eric Gamma, the co-author of Design Patterns), they brought the legacy C# coding standard with them. \[[1](https://news.ycombinator.com/item?id=11939557), [2](https://www.zdnet.com/article/microsofts-browser-based-dev-toolbox-how-monaco-came-to-be/)]
+
+### Why the "I" Prefix is Used
+
+- **Explicit Interface Identification**: In TypeScript, the **"I"** prefix explicitly signals that the entity is a **pure interface** rather than a concrete, instantiable class.
+- **C# Heritage**: Microsoft created TypeScript, and its design was heavily influenced by C#. In C#, prefixing interfaces with "I" is a fundamental, platform-wide standard.
+- **Distinction in Documentation**: Because Monaco exposes a public API via the [Monaco Editor API](https://microsoft.github.io/monaco-editor/), developers consuming the library can instantly see what is an abstract interface (e.g., `IEditorOptions`) versus what is a concrete class or function they can instantiate. \[[1](https://microsoft.github.io/monaco-editor/), [2](https://www.linkedin.com/posts/shivkoirala%5Fc-interface-naming-conventions-starts-with-activity-7135159891807133696-Hbhk)]
+
+### Is This Still Considered Best Practice?
+
+While the TypeScript Deep Dive guide and modern TypeScript style guides generally recommend **against** using the "I" prefix nowadays (preferring descriptive names like `User` for an interface and `UserImpl` or `SqlUser` for classes), major legacy Microsoft projects like VS Code and Monaco keep it for architectural consistency across their multi-million line codebases. \[[1](https://www.linkedin.com/posts/shivkoirala%5Fc-interface-naming-conventions-starts-with-activity-7135159891807133696-Hbhk)]
+
+If you are digging through the codebase or building custom tools, you can explore the interfaces directly via the microsoft/monaco-editor GitHub repository. \[[1](https://github.com/microsoft/monaco-editor/issues/956), [2](https://github.com/microsoft/monaco-editor/issues/856)]
+
+Are you currently **building an application** using the Monaco Editor, or are you **writing an extension** for VS Code? Knowing what you are working on can help me provide relevant code snippets or architectural tips!
+
+- [link](https://microsoft.github.io/monaco-editor/)\
+  Monaco Editor\
+  IntelliSense, Validation. Get completions and errors directly in the browser for supported languages. Or write your own completion...\
+  Microsoft Open Source
+- [link](https://github.com/microsoft/monaco-editor/issues/956)\
+  Why abc symbols? #956 - microsoft/monaco-editor - GitHub\
+  Jul 12, 2018 — @hifall Those are just dictionary/word matches local to the code I think. Code completion is not supported by default for many lan...\
+  github.com
+- [link](https://news.ycombinator.com/item?id=11939557)\
+  The Monaco Code Editor | Hacker News\
+  Jun 20, 2016 — > Inlining: Performed during the graph generation phase. The inlining heuristic is very simple: basically, if the function being c...\
+  Hacker News
+
+Show all
 
 # 
 
