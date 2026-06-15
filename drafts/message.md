@@ -18,4 +18,8 @@ use a fn for states? one way? signal, getter setter? or static state? merge stat
 
 linting. keyword detection. "div.class", <!-- maybe i dont have interval or timeout. and i might use localized events. and i could, i mean i should cleanup explicitly over magically wrapping and attaching the cleanup. -->
 
+---
+
+
+
 
