@@ -292,7 +292,7 @@ Show all
 
 <!-- ref: himself65 js ecosystem economical value analysis -->
 
-# how does mui license non core components
+# (d) how does mui license non core components
 
 MUI licenses its non-core components (collectively known as **[MUI X](https://mui.com/x/introduction/)**) <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">using an <strong>open-core model</strong></mark>. This means foundational features are free and open-source, while advanced, enterprise-grade components require a paid commercial license. \[[1](https://www.reddit.com/r/reactjs/comments/1d7zr1j/buying%5Fthe%5Fpaid%5Fversion%5Fof%5Fmui/), [2](https://mui.com/x/introduction/)]
 
@@ -388,7 +388,7 @@ If you are planning to implement these components, I can guide you on **how to s
 
 Show all
 
-# what if you replicate the code with source available (non legal) code in hand
+# (d) what if you replicate the code with source available (non legal) code in hand
 
 Replicating code while holding a "source-available" (but not legally open-source or freely licensed) codebase creates high technical and legal risks. \[[1](https://publicknowledge.org/do-you-know-if-your-code-is-open-source/), [2](https://docs.debricked.com/opentext-core-sca-blogs/blogs/oss-licenses-part-7-other-licenses), [3](https://voljournals.utk.edu/cgi/viewcontent.cgi?article=9945\&context=utk%5Fgraddiss), [4](https://krebsonsecurity.com/2021/11/trojan-source-bug-threatens-the-security-of-all-code/)]
 
