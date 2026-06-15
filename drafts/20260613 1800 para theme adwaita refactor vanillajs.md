@@ -9428,926 +9428,6 @@ Are you looking to see how React handles **updating or changing** these handlers
 
 Show all
 
-# . what does race conditions mean
-
-A **race condition** is <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">an undesirable situation that occurs when a software program or electronic system tries to perform two or more operations at the same time, but the correct outcome depends on the <strong>exact order or timing</strong> of those operations</mark>. \[[1](https://en.wikipedia.org/wiki/Race%5Fcondition), [2](https://www.geeksforgeeks.org/operating-systems/race-condition-in-operating-systems/)]
-
-It gets its name because multiple parts of the program are literally "racing" to modify the same resource. Because the system's execution order is unpredictable—often managed by a computer's operating system scheduler—the program can produce random, incorrect results or trigger unexpected system crashes. \[[1](https://stackoverflow.com/questions/34510/what-is-a-race-condition), [2](https://www.geeksforgeeks.org/java/race-conditions/), [3](https://www.huntress.com/cybersecurity-101/topic/what-is-race-condition), [4](https://www.geeksforgeeks.org/operating-systems/race-condition-in-operating-systems/)]
-
-***
-
-### The Classic Bank Example
-
-Imagine a shared bank account has a balance of **$100**. Two people (Person A and Person B) have debit cards tied to this account and try to withdraw money at the exact same fraction of a second. \[[1](https://stackoverflow.com/questions/34510/what-is-a-race-condition), [2](https://www.geeksforgeeks.org/operating-systems/race-condition-in-operating-systems/), [3](https://medium.com/@danciliakharmon/understanding-multithreading-and-race-conditions-in-swift-cdcb9c1af88e)]
-
-A safe system should perform operations one after the other. However, in a race condition, the steps get mixed up like this: \[[1](https://ericnormand.me/podcast/what-are-race-conditions)]
-
-1. **Person A** requests a withdrawal of $20. The system checks the database: _$100 available. Proceed._
-2. Before the system can subtract the $20, **Person B** requests a withdrawal of $50. The system checks the database: _$100 available. Proceed._
-3. **Person A's** process finishes: $100 - $20 = $80. It saves **$80** to the database.
-4. **Person B's** process finishes: It still thinks the starting balance was $100, so it calculates $100 - $50 = $50. It overwrites the database with **$50**. \[[1](https://stackoverflow.com/questions/34510/what-is-a-race-condition), [2](https://medium.com/@vkekukh/why-they-ask-whats-a-race-condition-and-how-do-you-prevent-it-b794f480a324), [3](https://www.geeksforgeeks.org/java/race-conditions/), [4](https://learn.microsoft.com/en-us/troubleshoot/developer/visualstudio/visual-basic/language-compilers/race-conditions-deadlocks), [5](https://lutfumertceylan.com.tr/posts/race-condition-limit-bypass/)]
-
-**The Result:** The bank just lost $20 because Person A's transaction was completely wiped out by Person B. \[[1](https://ericnormand.me/podcast/what-are-race-conditions), [2](https://www.geeksforgeeks.org/java/race-conditions/)]
-
-***
-
-### Why Do Race Conditions Happen?
-
-Race conditions typically require three ingredients: \[[1](https://ericnormand.me/podcast/what-are-race-conditions), [2](https://www.geeksforgeeks.org/operating-systems/race-condition-in-operating-systems/), [3](https://www.reddit.com/r/skyrim/comments/r52eoq/race%5Fdifferences/)]
-
-- **Concurrency:** Multiple processes, threads, or users are running simultaneously.
-- **Shared Resources:** They are all reading and writing to the exact same variable, file, or database.
-- **Non-Atomic Operations:** The action happens in separate steps (e.g., checking a value, calculating a new one, then saving it) rather than all at once. If a process gets interrupted halfway through, a race condition occurs. \[[1](https://ericnormand.me/podcast/what-are-race-conditions), [2](https://www.geeksforgeeks.org/operating-systems/race-condition-in-operating-systems/), [3](https://medium.com/@vkekukh/why-they-ask-whats-a-race-condition-and-how-do-you-prevent-it-b794f480a324), [4](https://www.techtarget.com/searchstorage/definition/race-condition), [5](https://www.naukri.com/code360/library/what-is-race-condition-in-os)]
-
-***
-
-### Why Are They Dangerous?
-
-- **They are "Heisenbugs":** They are incredibly hard to find and debug. Because they depend entirely on microsecond timing, code might work perfectly 99.9% of the time during testing, only to crash randomly in production under heavy user traffic.
-- **Security Vulnerabilities:** Hackers often exploit race conditions (specifically [Time-of-Check to Time-of-Use or TOCTOU flaws](https://www.akamai.com/glossary/what-is-a-race-condition)). By intentionally spamming requests during that tiny split-second gap, attackers can bypass security checks, double-spend digital currency, or escalate their account privileges. \[[1](https://www.akamai.com/glossary/what-is-a-race-condition), [2](https://dennylesmana.medium.com/what-is-race-condition-d678f87af108), [3](https://apiiro.com/glossary/race-condition/), [4](https://medium.com/@vkekukh/why-they-ask-whats-a-race-condition-and-how-do-you-prevent-it-b794f480a324), [5](https://www.automox.com/blog/vulnerability-definition-race-condition), [6](https://www.geeksforgeeks.org/operating-systems/race-condition-vulnerability/)]
-
-***
-
-### How Developers Prevent Them
-
-To stop race conditions, developers must enforce strict synchronization using specific coding mechanisms: \[[1](https://www.akamai.com/glossary/what-is-a-race-condition), [2](https://www.geeksforgeeks.org/operating-systems/race-condition-in-operating-systems/)]
-
-- **Locks / Mutexes:** Think of this like a bathroom key. When one thread starts modifying a variable, it "locks" it. Other threads must wait in line until the first thread finishes and unlocks it.
-- **Atomic Operations:** Combining the read, modify, and write steps into a single, un-interruptible machine action.
-- **Immutability:** Designing data structures that cannot be changed once created, eliminating the possibility of data modification conflicts altogether. \[[1](https://www.reddit.com/r/csharp/comments/1xfjgz/can%5Fsomeone%5Fplease%5Feli5%5Fwhat%5Fare%5Frace%5Fconditions/), [2](https://www.geeksforgeeks.org/operating-systems/race-condition-vulnerability/), [3](https://stackoverflow.com/questions/34510/what-is-a-race-condition), [4](https://www.geeksforgeeks.org/operating-systems/race-condition-in-operating-systems/), [5](https://www.akamai.com/glossary/what-is-a-race-condition)]
-
-Are you trying to **debug a specific issue** in your code, or are you studying this for a **computer science class or interview**? Let me know, and I can provide tailored code examples or interview tips!
-
-- [link](https://stackoverflow.com/questions/34510/what-is-a-race-condition)\
-  multithreading - What is a race condition? - Stack Overflow\
-  Aug 29, 2008 — A race condition occurs when two or more threads can access shared data and they try to change it at the same time. Because the th...\
-  Stack Overflow
-- [link](https://en.wikipedia.org/wiki/Race%5Fcondition)\
-  Race condition - Wikipedia\
-  A race condition or race hazard is the condition of an electronics, software, or other system where the system's substantive behav...\
-  Wikipedia
-- [link](https://www.geeksforgeeks.org/operating-systems/race-condition-in-operating-systems/)\
-  Race condition - GeeksforGeeks\
-  Apr 24, 2026 — Race condition \* A race condition occurs when two or more processes or threads access and modify the same data at the same time, a...\
-  GeeksforGeeks
-
-Show all
-
-## You said: on web
-
-In web development, a race condition occurs when a web application processes multiple asynchronous network requests or database queries out of order, leading to broken user interfaces or corrupted data. \[[1](https://www.aptive.co.uk/blog/what-is-race-condition/), [2](https://www.akamai.com/glossary/what-is-a-race-condition), [3](https://medium.com/@mshahzebraza/race-condition-in-react-d474c2563094)]
-
-Because the internet is unpredictable, API responses don't always arrive in the order they were sent. \[[1](https://dev.to/shrsv/race-conditions-in-go-a-simple-tutorial-1e1i), [2](https://medium.com/@juliusndegwa2/race-conditions-in-frontend-api-development-8de3dd2f3d26)]
-
-***
-
-### 🔎 Example 1: The UI Search Bar Bug (Frontend)
-
-Imagine a user typing into a live-search bar to find products.
-
-1. The user types "**iPh**". The app fires Request #1 to the server.
-2. The user quickly finishes typing "**iPhone**". The app fires Request #2.
-3. Request #2 is processed quickly by the server and returns results for "iPhone" in 50 milliseconds. The UI updates.
-4. Request #1 got delayed by a network hiccup and arrives late (200 milliseconds).
-5. The UI processes Request #1 last, overwriting the screen.
-
-**The Result:** The user sees "**iPhone**" typed in the search bar, but the product list displays old results for "**iPh**".
-
-***
-
-### 🛒 Example 2: The E-Commerce Inventory Leak (Backend)
-
-Imagine an online store has exactly **1 popular item left** in stock. Two shoppers click "Buy Now" at the exact same millisecond. \[[1](https://medium.com/@kapoorjasdeep/its-the-big-billion-day-sale-on-flipkart-and-the-latest-smartphone-you-ve-been-eyeing-has-just-a9ad5cb30d08)]
-
-1. **Server Thread A** (for Shopper A) checks the database: _Inventory = 1. Proceed to checkout._
-2. Before Thread A can update the database, **Server Thread B** (for Shopper B) checks the database: _Inventory = 1. Proceed to checkout._
-3. Thread A finishes processing, charges the card, and sets Inventory to 0.
-4. Thread B finishes processing, charges the card, and sets Inventory to -1 (or 0). \[[1](https://softwareengineering.stackexchange.com/questions/161231/should-i-take-care-of-race-conditions-which-almost-certainly-has-no-chance-of-oc)]
-
-**The Result:** The store just oversold an item it does not have, forcing a customer support nightmare.
-
-***
-
-### 🛡️ How Web Developers Fix Them
-
-### On the Frontend (UI)
-
-- **Debouncing / Throttling:** Delaying API calls until the user stops typing for a few hundred milliseconds.
-- **Cancellation Tokens:** Using tools like JavaScript's `AbortController`. When Request #2 is fired, the app explicitly cancels Request #1 so its late response is ignored.
-- **State Management Libraries:** Frameworks like React Query or RTK Query automatically manage request lifecycles and discard stale data. \[[1](https://levelup.gitconnected.com/top-10-strategies-to-mitigate-race-condition-errors-in-react-js-0050dc1e2602), [2](https://www.newline.co/@RichardBray/race-conditions-in-react-what-they-are-and-how-to-avoid-them--675702e6)]
-
-### On the Backend & Database
-
-- **Database Transactions (ACID):** Using `SELECT ... FOR UPDATE` or strict isolation levels to lock database rows while they are being read and modified.
-- **Optimistic Locking:** Adding a version number column to database rows. If Thread B tries to save data but notices the version number changed since it checked, the database rejects the update.
-- **Distributed Locks:** Using fast, in-memory stores like Redis to create a global "lock" across multiple server instances. \[[1](https://www.sciencedirect.com/science/article/pii/S0167404825004298), [2](https://medium.com/quintoandar-tech-blog/race-conditions-in-firestore-how-to-solve-it-5d6ff9e69ba7), [3](https://sqlfordevs.com/transaction-locking-prevent-race-condition), [4](https://algocademy.com/blog/why-your-event-driven-architecture-is-causing-race-conditions-and-how-to-fix-it/), [5](https://dzone.com/articles/distributed-locking-and-race-condition-prevention)]
-
-Are you dealing with a **frontend UI glitch** (like mismatched search results or tabs) or a **backend database issue** (like double-posting data)? Let me know the **programming language or framework** you are using, and I can give you a concrete code fix!
-
-- [link](https://www.aptive.co.uk/blog/what-is-race-condition/)\
-  What is a Race Condition? Race Condition Web Vulnerability Explained\
-  Feb 26, 2025 — How a Race Condition Occurs A race condition in a web application can occur when multiple users or processes interact with shared ...\
-  \
-  \
-  www.aptive.co.uk
-- [link](https://www.akamai.com/glossary/what-is-a-race-condition)\
-  What Is a Race Condition?\
-  This occurs when the synchronization and sequencing of these processes or threads are not coordinated. The consequences of race co...\
-  \
-  \
-  Akamai
-- [link](https://medium.com/@mshahzebraza/race-condition-in-react-d474c2563094)\
-  Race Condition in React. Race Condition in React — A Guide for… | by M Shahzeb Raza\
-  Apr 5, 2023 — Asynchronous requests: When multiple requests are made to the same resource simultaneously, it can lead to race conditions and une...\
-  \
-  \
-  Medium
-
-Show all
-
-## You said: do they have to be predicted and handled explicitly whether you use vanillajs (not web component) react solidjs svelte whatever wo specialized libraries
-
-Yes. No matter the framework—Vanilla JS, React, SolidJS, or Svelte—**none of them automatically fix async network race conditions out of the box.**
-
-While UI frameworks excel at updating the DOM when data changes, they cannot know _which_ network request was meant to be the final state. If you do not handle them explicitly in your code, your application will eventually experience bugs. \[[1](https://belitsoft.com/what-do-front-end-frameworks-do), [2](https://codingcops.com/reactjs-vs-plain-javascript/), [3](https://medium.com/@mwandanam/understanding-race-conditions-in-javascript-365f19991a11)]
-
-Here is how race conditions happen across different paradigms without libraries, and how you must explicitly handle them.
-
-***
-
-### The Problem in Every Framework
-
-If you write standard fetch code without explicit handling, every framework breaks the exact same way.
-
-javascript
-
-```
-// ❌ BROKEN IN EVERY FRAMEWORK
-async function fetchUserData(userId) {
-  const response = await fetch(`/api/user/${userId}`);
-  const data = await response.json();
-
-  // Race condition: A slower, older request can overwrite a newer one here
-  userState = data;
-}
-```
-
-Use code with caution.
-
-***
-
-### How to Explicitly Handle Them (Framework-by-Framework)
-
-To fix this without a library like React Query or Svelte Query, you must use one of two vanilla JavaScript strategies: **AbortController** (canceling the request) or a **Local Boolean Flag** (ignoring the stale response).
-
-### 1. Vanilla JS (Using AbortController)
-
-You must explicitly store a reference to the previous request and cancel it before starting a new one. \[[1](https://www.newline.co/courses/react-data-fetching-beyond-the-basics/fixing-race-conditions)]
-
-javascript
-
-```
-let currentController = null;
-
-function searchProducts(query) {
-  // 1. Cancel the previous pending request
-  if (currentController) currentController.abort();
-
-  // 2. Create a new controller for this request
-  currentController = new AbortController();
-
-  fetch(`/api/search?q=${query}`, { signal: currentController.signal })
-    .then(res => res.json())
-    .then(data => {
-      renderDOM(data);
-    })
-    .catch(err => {
-      if (err.name === 'AbortError') return; // Safely ignore intentional cancellations
-      console.error(err);
-    });
-}
-```
-
-Use code with caution.
-
-### 2. React (Using the Clean-up Function)
-
-React triggers `useEffect` clean-up functions when dependencies change. You must explicitly use a boolean flag to track if the specific render cycle is still valid.
-
-javascript
-
-```
-useEffect(() => {
-  let isCurrent = true; // Flag for this specific render
-
-  async function loadData() {
-    const res = await fetch(`/api/data/${id}`);
-    const data = await res.json();
-
-    // Explicit Check: Only update state if a newer id hasn't been requested
-    if (isCurrent) {
-      setData(data);
-    }
-  }
-
-  loadData();
-
-  return () => {
-    isCurrent = false; // Turn off flag when 'id' changes or component unmounts
-  };
-}, [id]);
-```
-
-Use code with caution.
-
-### 3. Svelte (Using Sequential IDs or Scoped Variables)
-
-Svelte reactive statements re-run when variables change, but they don't have built-in cleanup functions like React. You must manage a tracker explicitly. \[[1](https://blog.logrocket.com/exploring-runes-svelte-5/), [2](https://devtrios.com/blog/svelte-vs-react-which-framework-should-you-choose/), [3](https://www.topcoder-dev.com/thrive/articles/about-most-liked-spa-framework-svelte)]
-
-svelte
-
-```
-<script>
-  export let userId;
-  let userData;
-
-  // Re-run whenever userId changes
-  $: {
-    let currentId = userId;
-
-    fetch(`/api/user/${userId}`)
-      .then(res => res.json())
-      .then(data => {
-        // Explicit Check: Ensure the user didn't switch to a new ID while waiting
-        if (currentId === userId) {
-          userData = data;
-        }
-      });
-  }
-</script>
-```
-
-Use code with caution.
-
-### 4. SolidJS (The Exception: Built-in `createResource`) \[[1](https://www.youtube.com/watch?v=bzLtS0hTWCs)]
-
-SolidJS is a rare exception because its core reactivity includes a primitive specifically designed for async data fetching called `createResource`. \[[1](https://javascript.plainenglish.io/digging-deeper-into-solidjss-perfect-fusion-with-remix-and-much-more-8d26b3f98034), [2](https://medium.com/@mehdibafdil/solid-js-the-framework-meta-almost-acquired-8b81253ffc34)]
-
-While standard Solid signals (`createSignal`) will suffer from race conditions, `createResource` **handles race conditions automatically** under the hood by discarding out-of-order responses. \[[1](https://www.zignuts.com/blog/top-5-javascript-frameworks-for-2023)]
-
-javascript
-
-```
-import { createResource } from "solid-js";
-
-// SolidJS automatically ensures 'data' matches the LATEST 'userId',
-// discarding any older requests that resolve out of order.
-const [userId, setUserId] = createSignal(1);
-const [data] = createResource(userId, fetchUserData);
-```
-
-Use code with caution.
-
-***
-
-### Summary Table
-
-| Environment    | Built-in Protection? | How it behaves natively                 | How you fix it without libraries                                          |
-| -------------- | -------------------- | --------------------------------------- | ------------------------------------------------------------------------- |
-| **Vanilla JS** | ❌ No                | Overwrites state randomly               | Keep reference to `AbortController` globally/in scope.                    |
-| **React**      | ❌ No                | Overwrites state randomly               | Use a boolean flag in the `useEffect` cleanup return.                     |
-| **Svelte**     | ❌ No                | Overwrites state randomly               | Capture current variable in reactive `$:` blocks and validate post-fetch. |
-| **SolidJS**    | Partial              | Safe **only if** using `createResource` | Built-in to `createResource`. Standard fetches still need manual fixes.   |
-
-Would you like to see how to implement a reusable **custom hook or helper function** to cleanly solve this across your application, or are you trying to fix a **specific asynchronous feature** right now?
-
-- [link](https://belitsoft.com/what-do-front-end-frameworks-do)\
-  Why use Front-end Frameworks\
-  Dec 14, 2022 — Front-end frameworks provide reactive data binding, which allows the developer to specify how the UI should change in response to ...\
-  \
-  \
-  Belitsoft
-- [link](https://codingcops.com/reactjs-vs-plain-javascript/)\
-  ReactJS VS Plain JavaScript: Ultimate Guide on their Differences\
-  Jun 11, 2024 — Updates to the user interface in plain JavaScript require manual interventions. Developers must specify what changes need to be ma...\
-  \
-  \
-  CodingCops
-- [link](https://medium.com/@mwandanam/understanding-race-conditions-in-javascript-365f19991a11)\
-  Understanding Race Conditions in JavaScript | by Wandana Maddumage\
-  Apr 27, 2025 — Understanding Race Conditions in JavaScript When you start working with asynchronous code — like fetching data from a server or ha...\
-  \
-  \
-  Medium
-
-Show all
-
-## You said: do big tech swes often do these if they dont want opinionated deps
-
-Yes, Senior and Staff Software Engineers at Big Tech companies (like Google, Meta, and Apple) frequently write these custom race-condition handlers themselves when they want to avoid unopinionated dependencies.
-
-In Big Tech engineering, adding a third-party dependency is highly discouraged due to **security risks (supply chain attacks), performance overhead (bundle size), and long-term maintenance costs.** Instead, they lean on raw web standards.
-
-***
-
-### The Big Tech Approach: Custom Primitives
-
-Instead of rewriting raw `AbortController` boilerplate inside every individual component or file, Big Tech SWEs create internal, reusable utility patterns.
-
-Here are the two most common ways they implement this without external libraries.
-
-### Pattern 1: The "Take Latest" Wrapper (Utility Function)
-
-For Vanilla JS or simple frontend architectures, engineers will create a wrapper function that automatically cancels the previous execution of an asynchronous function whenever it is called again.
-
-javascript
-
-```
-// A reusable utility written once in a shared internal codebase
-function takeLatest(asyncFn) {
-  let controller = null;
-
-  return function (...args) {
-    if (controller) {
-      controller.abort(); // Cancel the previous execution
-    }
-    controller = new AbortController();
-
-    // Pass the signal to the underlying async function
-    return asyncFn(...args, controller.signal);
-  };
-}
-
-// --- How a Big Tech SWE uses it in application code ---
-const fetchSearchData = async (query, signal) => {
-  const res = await fetch(`/api/search?q=${query}`, { signal });
-  return res.json();
-};
-
-// This wrapper is now completely immune to race conditions
-const safeSearch = takeLatest(fetchSearchData);
-```
-
-Use code with caution.
-
-### Pattern 2: Custom React Hooks
-
-If working within a React codebase, writing `useEffect` cleanup boilerplate everywhere is considered bad practice. Instead, engineers wrap the logic into an internal custom hook that automatically manages the cancellation token under the hood.
-
-javascript
-
-```
-import { useEffect, useRef } from 'react';
-
-// Custom lightweight hook built natively
-export function useLatestAsync() {
-  const abortControllerRef = useRef(null);
-
-  useEffect(() => {
-    // Cleanup on component unmount
-    return () => abortControllerRef.current?.abort();
-  }, []);
-
-  const execute = async (asyncCallback) => {
-    // 1. Cancel previous pending execution of this hook instance
-    abortControllerRef.current?.abort();
-    abortControllerRef.current = new AbortController();
-
-    try {
-      return await asyncCallback(abortControllerRef.current.signal);
-    } catch (error) {
-      if (error.name === 'AbortError') {
-        // Silently swallow abort errors since they are intentional
-        return new Promise(() => {});
-      }
-      throw error;
-    }
-  };
-
-  return execute;
-}
-```
-
-Use code with caution.
-
-***
-
-### Why Big Tech Prefers This Over Third-Party Libraries
-
-- **Bundle Size Control:** A library like React Query or RxJS (`switchMap`) adds kilobytes of JavaScript that must be downloaded by billions of users, often over slow mobile networks. A custom `AbortController` utility adds practically zero bytes.
-- **Strict Security Audits:** Big Tech infrastructure requires extensive legal and security review for every package in `package.json`. Writing 15 lines of raw JavaScript avoids this entire bureaucracy.
-- **Predictable Upgrades:** When a framework (like React or Svelte) updates its major version, third-party libraries often break, blocking the engineering team from upgrading. Native utilities never break during framework upgrades. \[[1](https://medium.com/@malwarejoe/smashing-the-modern-web-tech-stack-part-1-the-evolving-threat-landscape-in-2022-and-dom-based-324696684239)]
-
-Are you looking to **design a clean utility** like this for your own codebase, or are you preparing for a **system design/frontend architecture interview** where this pattern might come up?
-
-- [link](https://medium.com/@malwarejoe/smashing-the-modern-web-tech-stack-part-1-the-evolving-threat-landscape-in-2022-and-dom-based-324696684239)\
-  Smashing the Modern Web Tech Stack — Part 1: The Evolving Threat Landscape in 2022 and DOM-based…\
-  Apr 21, 2022 — While when React ( React framework ) is being used, this is what it looks like.\
-  \
-  \
-  Medium
-
-## You said: does it mean a simple dep free approach might not be optimal
-
-Exactly. A simple, dependency-free approach is a double-edged sword. While it keeps your bundle size small and avoids third-party risks, rolling your own solution can quickly become sub-optimal as your web application grows.
-
-What starts as a simple 10-line `AbortController` wrapper often spirals into a complex, buggy recreation of an existing library once you encounter real-world edge cases.
-
-***
-
-### Where the "Simple" Approach Falls Short
-
-### 1. The Cache Invalidation Nightmare
-
-A simple `AbortController` or boolean flag handles **cancellation**, but it does not handle **caching**.
-
-- **The Problem:** If a user clicks "Tab A", then "Tab B", and immediately back to "Tab A", a simple approach cancels the first request and forces a brand-new network request for Tab A.
-- **The Library Advantage:** Libraries like React Query or Svelte Query cache the data from Tab A. They instantly show the cached data to the user while silently fetching updates in the background (Stale-While-Revalidate). Doing this dependency-free requires writing a massive, bug-prone custom cache system.
-
-### 2. Deduplication of Identical Requests
-
-- **The Problem:** Imagine three different UI components on the same page all need the current user's profile data at startup. A simple approach will fire three separate network requests to your API.
-- **The Library Advantage:** Smart libraries see three identical requests happening at the exact same millisecond, deduplicate them, send **one** request to the server, and distribute the single response to all three components.
-
-### 3. Focus Refetching and Network Recovery
-
-Real-world apps need to handle shaky user connections.
-
-- **The Problem:** If a user loses Wi-Fi for 5 seconds, a simple fetch script just fails and leaves a broken UI or an error message.
-- **The Library Advantage:** Libraries automatically listen to browser events (like the user regaining internet connection or refocusing the browser tab) and gracefully re-try the failed requests in the background.
-
-### 4. Memory Leaks
-
-- **The Problem:** If you handle requests via global variables or complex React `useRef` setups, it is easy to accidentally keep references to large JSON objects in memory long after the user has closed that page or component.
-
-***
-
-### The Trade-off Matrix
-
-| Feature              | Simple Native Approach (`AbortController`)         | Specialized Library (React/Svelte Query)          |
-| -------------------- | -------------------------------------------------- | ------------------------------------------------- |
-| **Bundle Size**      | **Optimal** (0 KB added)                           | **Sub-optimal** (+5KB to 15KB)                    |
-| **Race Conditions**  | **Optimal** (Fully fixed)                          | **Optimal** (Fully fixed)                         |
-| **Offline Handling** | **Sub-optimal** (Must write manual retry loops)    | **Optimal** (Built-in retry & recovery)           |
-| **UI UX Experience** | **Sub-optimal** (Constant loading spinners)        | **Optimal** (Instant loading from cache)          |
-| **Dev Velocity**     | **Sub-optimal** (Bespoke code for every edge case) | **Optimal** (One line of code handles everything) |
-
-***
-
-### When to Go Dependency-Free vs. Buy a Library
-
-- **Go Dependency-Free If:** You are building a lightweight website, a critical micro-frontend embedded on a third-party site (where bundle size is strictly capped), or a highly specific feature (like _only_ a live-search bar) where caching and retries aren't needed.
-- **Use a Library If:** You are building a complex dashboard, an e-commerce platform, or an app with deeply nested components that share data. The engineering time saved and the vastly superior user experience heavily outweigh the minor cost of the dependency.
-
-Are you evaluating this for a **new project** you are architecting, or are you trying to **refactor an existing application** that is suffering from loading delays or async bugs? Tell me about your app's scale and I can give you a recommendation!
-
-## You said: does it mean you have to predict and review carefully even if it's simple obvious and looks fine
-
-Yes. <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">You must predict and review <strong>every single asynchronous operation</strong> carefully, no matter how simple, obvious, or clean the code looks on the surface.</mark>
-
-In asynchronous programming, "looks fine" is highly deceptive. Code that looks perfectly logical during a code review can easily break under real-world conditions.
-
-***
-
-### The Optical Illusion of "Simple" Code
-
-Consider this seemingly flawless, hyper-obvious chunk of code:
-
-javascript
-
-```
-// ❌ LOOKS PERFECTLY FINE, BUT HAS A RACE CONDITION
-async function handleTabChange(tabId) {
-  showLoadingSpinner();
-
-  const data = await fetch(`/api/tabs/${tabId}`).then(r => r.json());
-
-  renderContent(data);
-  hideLoadingSpinner();
-}
-```
-
-Use code with caution.
-
-**Why it looks fine:** It reads sequentially from top to bottom. It shows a spinner, fetches data, renders it, and hides the spinner.
-
-**Why it fails:** If a user clicks Tab A, and immediately clicks Tab B, two instances of this function run concurrently. If Tab A's network request takes 2.0 seconds and Tab B's takes 0.5 seconds, the user will see Tab B's content briefly, only for it to be overwritten by Tab A's old data a second later. The spinner will also hide prematurely.
-
-***
-
-### Why Async Blindspots Happen
-
-### 1. The "Happy Path" Testing Bias
-
-When developers test their own code locally, they test the "happy path." They click a button, wait for it to load, and click the next thing. Because local development servers have zero network latency (0ms response times), race conditions are physically impossible to trigger during standard manual testing. \[[1](https://www.computerenhance.com/p/performance-excuses-debunked/comments)]
-
-### 2. Network Instability is Unpredictable
-
-In production, your users are on spotty 4G networks, switching between Wi-Fi and cell towers, or riding in subways. Request #1 might get stuck in a queue for 3 seconds, while Request #2 speeds through in 100 milliseconds.
-
-### 3. Human Behavior is Chaotic
-
-Users double-click buttons out of impatience, rapidly toggle filters back and forth, or type furiously into input fields. If your code assumes a user will politely wait for one request to finish before triggering another, it will fail.
-
-***
-
-### The "Async Code Review" Checklist
-
-To prevent these bugs, Senior Engineers train themselves to ask three specific questions whenever they see the `async` or `await` keywords during code reviews:
-
-- **The Multi-Trigger Question:** _"What happens if the user triggers this action three times in rapid succession?"_
-- **The Interruption Question:** _"What happens if the user navigates away from this page or closes this component while this network request is still in mid-air?"_
-- **The Out-of-Order Question:** _"Does the correctness of my application depend on Request A finishing before Request B?"_
-
-If you cannot confidently answer those questions, the code needs an explicit guard mechanism (like an `AbortController` or a boolean flag), even if it adds a few lines of boilerplate.
-
-Are you **reviewing someone else's pull request** right now where you suspect a race condition, or are you **setting up coding standards** for your team to avoid these blindspots?
-
-- [link](https://www.computerenhance.com/p/performance-excuses-debunked/comments)\
-  Comments - Performance Excuses Debunked - by Casey Muratori\
-  Apr 26, 2023 — Every time I click a button, create something, hit next or click the next page I have to wait for the page to load, sometimes it i...\
-  \
-  \
-  Computer, Enhance! | Casey Muratori
-
-## You said: does it mean you have to predict and review carefully even if it's simple obvious and looks fine, i mean in general not just async fetching
-
-Yes. In software engineering, you must predict and review code carefully **in general, across all paradigms**, even when it is simple, obvious, and looks completely fine.
-
-The most dangerous bugs in software rarely come from overly complex code. They come from simple, readable lines where the developer made a logical assumption that does not hold true under stress, edge cases, or concurrent execution.
-
-Here is why "obvious" code fails in general programming, outside of asynchronous network requests.
-
-***
-
-### 1. State Mutation & Reference Sharing (The Object Illusion)
-
-In languages like JavaScript, Python, or Java, objects and arrays are passed by reference, not by value. This leads to hidden side effects in seemingly innocent functions.
-
-javascript
-
-```
-// ❌ LOOKS FINE: A simple function to apply a discount to a product
-function applyDiscount(product) {
-  product.price = product.price * 0.9;
-  return product;
-}
-
-// 💥 THE BUG: This mutates the original object globally.
-// If this product is displayed in a cart, a sidebar, and a checkout page,
-// all of them just had their price changed permanently.
-```
-
-Use code with caution.
-
-**The Lesson:** The code reads cleanly, but because it mutates a shared reference, it creates unintended ripples across the entire application state.
-
-***
-
-### 2. Client-Side Clock Dependency (The Local Time Trap)
-
-Relying on the user's local machine environment for business logic is a classic blindspot.
-
-javascript
-
-```
-// ❌ LOOKS FINE: Check if a flash sale has expired
-const isSaleActive = new Date() < new Date("2026-12-31T23:59:59");
-```
-
-Use code with caution.
-
-**The Bug:** `new Date()` reads the time directly from the user's device clock. If a user manually changes their laptop's system time back to 2020, they can bypass your expiration check entirely.\
-**The Lesson:** Never assume the execution environment is accurate, honest, or under your control.
-
-***
-
-### 3. String Manipulation & Localization (The Character Blindspot)
-
-Simple string methods assume text always behaves like standard English ASCII characters.
-
-javascript
-
-```
-// ❌ LOOKS FINE: Capitalize the first letter of a username
-const formattedName = username.charAt(0).toUpperCase() + username.slice(1);
-```
-
-Use code with caution.
-
-**The Bug:** This completely breaks for many international languages. For example, some languages use composite characters, or emojis (which take up multiple character slots in memory). Truncating or slicing raw strings can slice a character or emoji in half, producing corrupted data or a crash.\
-**The Lesson:** Obvious text manipulation often fails when exposed to global users.
-
-***
-
-### 4. Mathematical Precision (The Floating-Point Glitch) \[[1](https://javascript.plainenglish.io/9-javascript-errors-so-common-they-should-be-illegal-5fa45fc4bd5f)]
-
-Simple arithmetic using decimals does not behave like school math on a computer.
-
-javascript
-
-```
-// ❌ LOOKS FINE: Calculate total cost
-let price = 0.1;
-let tax = 0.2;
-let total = price + tax; // Looks like 0.3, right?
-
-if (total === 0.3) { ... } // 💥 THIS IS FALSE!
-```
-
-Use code with caution.
-
-**The Bug:** Computers use binary floating-point math. `0.1 + 0.2` actually evaluates to `0.30000000000000004`. The conditional check fails entirely.\
-**The Lesson:** Raw decimal math should never be trusted for exact comparisons, especially with currency. \[[1](https://workik.com/top-frontend-interview-question-and-answers-using-ai)]
-
-***
-
-### Why Code Reviews Must Be Skeptical
-
-Senior Engineers do not look at code to see if it _works_. They look at code to see **how it can be broken**. When reviewing any code, even a simple one-liner, you must explicitly look for:
-
-- **Assumptions about Data:** Does this code assume the input is always a valid string/number/object? What if it is `null`, `undefined`, or an empty array?
-- **Assumptions about Environment:** Does this code assume a stable internet connection, a correct system clock, or a massive amount of system memory?
-- **Assumptions about Scale:** Will this simple array loop still run fast if the user has 10,000 items instead of 5?
-
-Are you trying to **establish a better code review process** for your team, or did a specific "simple" bug just slip through into production and cause an issue?
-
-- [link](https://javascript.plainenglish.io/9-javascript-errors-so-common-they-should-be-illegal-5fa45fc4bd5f)\
-  9 JavaScript Errors So Common, They Should Be Illegal\
-  Aug 6, 2025 — 9. Floating Point Precision Lies JavaScript math has quirks. 0.1 + 0.2 ! == 0.3 . This seems minor until your automation script is...\
-  \
-  \
-  JavaScript in Plain English
-- [link](https://workik.com/top-frontend-interview-question-and-answers-using-ai)\
-  AI-Powered Prep For Frontend Developer Interviews | Top Question & Answer\
-  Explanation: JavaScript uses floating-point arithmetic for numbers, which can lead to precision errors. The sum of 0.1 and 0.2 is ...\
-  \
-  \
-  Workik
-
-## You said: do i have to write scalable and future proof code
-
-<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">No, you do not always have to write scalable and future-proof code.</span></strong></mark> In fact, trying to make everything perfectly scalable and future-proof from day one is one of the most common mistakes developers make. It is a trap known as **Premature Optimization**. \[[1](https://uibakery.io/blog/what-to-choose-for-rad), [2](https://aws.plainenglish.io/why-i-choose-clarity-over-speed-my-battle-for-maintainable-code-in-the-ai-era-3d0b45a36be3)]
-
-Writing highly scalable code takes more time, increases complexity, and introduces layers of abstraction that you might never actually need. \[[1](https://thecoderegistry.com/how-to-measure-code-quality-8-metrics-every-organization-should-track/), [2](https://www.reddit.com/r/programming/comments/18d2rfk/you%5Fare%5Fnever%5Ftaught%5Fhow%5Fto%5Fbuild%5Fquality%5Fsoftware/), [3](https://caffeinatedcoder.medium.com/why-twitters-move-to-scala-was-a-dead-end-6cfc8d7bc367), [4](https://hackernoon.com/building-a-scalable-architecture-with-mern-stack), [5](https://www.linkedin.com/posts/sbellamkonda%5Fsoftwareengineering-technicaldebt-engineeringleadership-activity-7384732749233954816-XyRg)]
-
-To determine when you should build for the future and when you should write quick, disposable code, you can use the following framework. \[[1](https://news.ycombinator.com/item?id=23121192)]
-
-***
-
-### The Reality: You Cannot Predict the Future
-
-The biggest flaw with "future-proofing" is that **you do not know what the future looks like.**\
-If you spend two weeks building a highly scalable, microservice-ready architecture for a feature, and three months later the product direction changes and the feature is deleted, you have completely wasted that time. Senior engineers often say: _"Write code that is easy to replace, not code that is built to last forever."_ \[[1](https://medium.com/@swatimishra2824/9-clean-code-principles-every-swift-developer-should-follow-6594a8960a68), [2](https://dev.to/adamthedeveloper/write-code-thats-easy-to-delete-the-art-of-impermanent-software-19l1)]
-
-***
-
-### When to Write "Quick and Simple" Code (Not Scalable)
-
-You should deliberately write simple, non-scalable code when: \[[1](https://www.reddit.com/r/gamedev/comments/16eygr6/at%5Fwhat%5Fpoint%5Fa%5Fsystem%5Fis%5Fworth%5Fthe%5Feffort%5Fof/), [2](https://en.wikipedia.org/wiki/Coding%5Fbest%5Fpractices)]
-
-- **Building a Prototype or MVP (Minimum Viable Product):** Your goal is to prove that the feature works or that users want it. Speed to market is more important than architecture. \[[1](https://www.miyagami.com/insights/lovable-not-maintainable-hidden-risks-building-without-code), [2](https://www.okoone.com/spark/product-design-research/why-minimum-viable-architecture-matters-more-than-you-think/), [3](https://www.spec-india.com/blog/mvp-development-strategies)]
-- **Internal Tools:** If a script is only going to be run once a week by three people on your team, it does not need to scale to millions of concurrent users.
-- **Tight Deadlines:** When survival of the business or project depends on shipping _now_, hack it together and pay down the technical debt later. \[[1](https://www.trevorlasn.com/blog/when-should-you-actually-worry-about-tech-debt), [2](https://navanathjadhav.medium.com/from-junior-to-senior-developer-skills-nobody-tells-you-about-01b5c93605b6)]
-- **Low-Traffic Features:** If a page is rarely visited, an unoptimized database query or a heavy UI component won't hurt anything.
-
-***
-
-### When You _Must_ Write Scalable and Future-Proof Code
-
-You must invest the extra time into scalability when:
-
-- **The Core Architecture:** Database schemas and core data models are incredibly hard to change later. If you get these wrong, the foundation of your app is broken. \[[1](https://medium.com/@srinathperera/good-architecture-makes-code-easy-let-code-be-your-guide-to-good-architecture-db1c4286ebe2), [2](https://news.ycombinator.com/item?id=44557115)]
-- **High-Frequency Code paths:** Code that runs hundreds of times per second (like a login endpoint, a landing page, or a search index) must be highly optimized. \[[1](https://usman-ahmad-tech-talks.medium.com/advanced-techniques-in-code-optimization-strategies-for-high-performance-software-11b3b513422a)]
-- **Security and Compliance:** Security protocols, encryption, and data privacy handlers must be future-proof from the start. You cannot patch security architecture easily later.
-
-***
-
-### The Rules of Thumb for Pragmatic Engineering
-
-### 1. YAGNI (You Aren't Gonna Need It)
-
-Do not build features, abstractions, or scaling infrastructure based on a hunch that you _might_ need it next year. Only build what you need to solve today's concrete problem. \[[1](https://blog.lolcorp.co.uk/2025/11/16/9-essential-software-development-best-practices-for-2025-build-better-software-faster/), [2](https://medium.com/@ignatovich.dm/how-to-avoid-overengineering-in-frontend-development-a8ef2a501b44)]
-
-### 2. The Rule of Three
-
-- The **first time** you write something, just get it to work (hack it).
-- The **second time** you do something similar, copy-paste it and wince a little.
-- The **third time** you do it, stop and extract it into a scalable, reusable abstraction. \[[1](https://www.reddit.com/r/learnprogramming/comments/1lipzrz/modularization%5Ffeels%5Fso%5Fhard/), [2](https://andyfry.co/code-review-how-to-brevity-repetition), [3](https://blog.ndepend.com/code-reuse-not-good-goal/)]
-
-### 3. Write "Changeable" Code over "Future-Proof" Code
-
-Instead of trying to guess how your code will need to change in two years, just write **clean, modular code today**. Keep your functions small, avoid global variables, and don't tightly couple your components. If your code is clean and simple, it will be naturally easy to scale or completely rewrite when the time comes. \[[1](https://dev.to/danieldevi/a-simple-guide-to-building-software-projects-from-start-to-finish-2nb1), [2](https://dev.to/yatendra2001/7-rules-to-write-highly-scalable-code-with-practical-examples-573e), [3](https://allianzetechnologies.com/blog/essential-tips-to-avoid-programming-errors), [4](https://www.linkedin.com/posts/tianqi-matt-y-8b180514a%5Fai-claudecode-mcp-activity-7345579497104056320-v5QU)]
-
-Are you working on a **personal project**, a **startup MVP**, or a **large enterprise system**? Tell me what you are building, and I can tell you exactly where you should cut corners and where you should over-engineer!
-
-- [link](https://uibakery.io/blog/what-to-choose-for-rad)\
-  What to Choose for Rapid Application Development: Low-code or No-code?\
-  Dec 21, 2024 — Long-term goals: Short-term projects may benefit from no-code. If scalability and flexibility are priorities, low-code ensures fut...\
-  \
-  \
-  UI Bakery
-- [link](https://aws.plainenglish.io/why-i-choose-clarity-over-speed-my-battle-for-maintainable-code-in-the-ai-era-3d0b45a36be3)\
-  Why I Choose Clarity Over Speed: My Battle for Maintainable Code in the AI Era\
-  Sep 10, 2025 — And then there's the ever-present danger of “premature optimization.” This is the trap of building a super-scalable system for a h...\
-  \
-  \
-  AWS in Plain English
-- [link](https://thecoderegistry.com/how-to-measure-code-quality-8-metrics-every-organization-should-track/)\
-  How to Measure Code Quality: 8 Metrics Every Organization Should Track\
-  Jan 13, 2025 — 7. Increasing Code Complexity Score Maintainability: Highly complex code is more error-prone and requires specialized knowledge. S...\
-  \
-  \
-  The Code Registry
-
-Show all
-
-## You said: do all code have to be robust
-
-<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">No, not all code has to be robust.</span></strong></mark> Just like scalability, robustness is a spectrum. Making code truly robust—meaning it can gracefully handle corrupt data, unexpected user inputs, network drops, and extreme edge cases without crashing—requires a massive investment of time, testing, and boilerplate code. \[[1](https://threedots.tech/episode/when-to-write-low-quality-code/), [2](https://realpython.com/python-code-quality/), [3](https://medium.com/@reetesh043/java-robustness-building-strong-and-resilient-applications-d95e4776bf11), [4](https://www.bbc.co.uk/bitesize/guides/z94ymsg/revision/6), [5](https://www.ranorex.com/blog/code-coverage-test-coverage/)]
-
-If you try to make every single line of code in a system 100% robust, you will move too slowly, miss deadlines, and over-engineer simple tasks. \[[1](https://medium.com/@oxm/6-programming-habits-that-are-killing-your-productivity-and-how-to-fix-them-58f7c54f3d55), [2](https://www.reddit.com/r/ExperiencedDevs/comments/ixajhz/if%5Funit%5Ftests%5Fare%5Fexpected%5Fpart%5Fof%5Fsoftware/)]
-
-***
-
-### The Cost of Robustness
-
-To make code robust, you cannot just write the core logic. You have to write:
-
-- Deep input validation (checking for `null`, `undefined`, empty strings, wrong data types).
-- Complex `try/catch` blocks and error-recovery logic.
-- Extensive unit, integration, and end-to-end tests.
-- Fallback user interfaces (like error boundaries and offline alerts). \[[1](https://www.ranger.net/post/common-bugs-ai-generated-code-fixes), [2](https://www.kusari.dev/learning-center/secure-coding-practices), [3](https://medium.com/@sarraghribi.eng/a-systematic-guide-to-reviewing-python-code-for-projects-best-practices-and-tips-03d09327c79b), [4](https://www.thescrummaster.co.uk/book-summaries/clean-code-book-summary/), [5](https://www.parasoft.com/blog/what-is-robustness-testing/)]
-
-If a piece of code is not business-critical, this extra effort is a waste of resources. \[[1](https://news.ycombinator.com/item?id=19190472)]
-
-***
-
-### When Code _Should Not_ Be Robust (Deliberate Fragility)
-
-There are many scenarios where it is perfectly acceptable—and often better—for code to be fragile or simply crash when something goes wrong: \[[1](https://www.reddit.com/r/programming/comments/1bi10k/preconditions%5Fshould%5Fbe%5Fchecked%5Fexplicitly/)]
-
-- **Internal Scripts and Automation:** If you write a Python script to migrate some local files once, you don't need error handling. If it hits an unexpected file format, letting the script crash with a raw error message is fine. You can just look at the terminal, fix the file, and re-run it.
-- **Early-Stage Prototypes:** When validating a product idea, you want to know if users even care about the feature. If a minor edge case causes a crash for 1% of prototype users, that is usually an acceptable risk for the sake of speed. \[[1](https://www.linkedin.com/pulse/testing-context-dependent-learn-test-right-way-frank-kweku-acquah-08yte)]
-- **Internal Admin Tools:** Tools used only by your internal team do not need the bulletproof robustness of customer-facing apps. If an admin enters bad data and gets a blank screen, they can just refresh the page.
-- **The "Crash-Early" Principle (Fail-Fast):** In backend development, it is sometimes safer to let a process crash immediately if it encounters an invalid state, rather than attempting to recover and risk writing corrupted data to a database. \[[1](https://codingdash.com/post/maintainable-code-good-and-bad/), [2](https://news.ycombinator.com/item?id=36708759)]
-
-***
-
-### When Code _Must_ Be Highly Robust
-
-You must invest in maximum robustness when the consequences of a failure are severe: \[[1](https://practicingruby.com/articles/coding-in-the-danger-zone)]
-
-- **Financial Transactions:** Code handling payments, checkout carts, or ledger balances must never enter an undefined state.
-- **Data Ingestion and Storage:** Code that writes to your primary database must be highly robust to prevent data corruption.
-- **Core Infrastructure:** Authentication systems (login/signup), API gateways, and routing systems must be bulletproof, because if they go down, the entire application dies. \[[1](https://aws.plainenglish.io/aws-testing-roadmap-2025-beginner-to-expert-guide-for-test-automation-engineers-7dc79d7a74df), [2](https://news.ycombinator.com/item?id=28337112)]
-- **High-Volume Public UI:** Features used by millions of public users must handle chaotic behavior gracefully to protect the company's reputation and avoid overwhelming customer support.
-
-***
-
-### The Pragmatic Balance: Where to Focus
-
-Instead of trying to make _all_ code robust, focus your energy on the **boundaries of your system**:
-
-1. **Robust at the Gates:** Write strict validation where untrusted data enters your app (e.g., public API endpoints or user form inputs).
-2. **Simple on the Inside:** Once data is validated at the boundary, you can assume it is correct inside your core application logic. This allows you to write simpler, cleaner, and less defensive code in the middle layers. \[[1](https://www.troyhunt.com/owasp-top-10-for-net-developers-part-1/), [2](https://www.reddit.com/r/programming/comments/7xyt5d/overly%5Fdefensive%5Fprogramming/)]
-
-Are you trying to decide how much error handling to add to a **current feature**, or are you debating code quality standards with a **team member**? Tell me what the code does, and we can map out exactly how robust it needs to be!
-
-- [link](https://threedots.tech/episode/when-to-write-low-quality-code/)\
-  When it’s worth to write low-quality code\
-  Apr 3, 2025 — And again, it's important to mention that not all code in your application needs to be bad. Not all code in your application shoul...\
-  \
-  \
-  Three Dots Labs
-- [link](https://realpython.com/python-code-quality/)\
-  Python Code Quality: Best Practices and Tools – Real Python\
-  Mar 24, 2025 — Robust code: Minimizes crashes and produces fewer edge-case issues.\
-  \
-  \
-  Real Python
-- [link](https://medium.com/@reetesh043/java-robustness-building-strong-and-resilient-applications-d95e4776bf11)\
-  Java Robustness: Building Strong and Resilient Applications | by Reetesh Kumar\
-  Feb 22, 2024 — What is Robustness in Software? Fail Gracefully: When something goes wrong, it should handle the error gracefully without crashing...\
-  \
-  \
-  Medium
-
-Show all
-
-# do google apps have bugs
-
-<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>Yes, Google apps absolutely have bugs.</strong></mark> Like all software companies, Google writes millions of lines of code, and it is impossible to create software of that scale without introducing errors. \[[1](https://www.quora.com/Do-bugs-exist-even-in-software-released-by-major-corporations-like-Microsoft-and-Google), [2](https://www.quora.com/How-can-a-big-company-like-Google-have-bugs-in-their-products), [3](https://www.shakebugs.com/blog/bug-tracking-software/)]
-
-### Why Google Apps Have Bugs
-
-- **Massive Scale**: Google apps like Gmail, Maps, and YouTube serve billions of users across vastly different devices.
-- **Frequent Updates**: Google constantly pushes out new features, UI redesigns, and background patches, which can accidentally break existing code.
-- **Device Fragmentation**: For Android apps, Google must optimize code for thousands of different phone models with varying screen sizes, processors, and manufacturer skins. \[[1](https://www.quora.com/Are-Android-apps-generally-buggier-than-the-same-apps-on-iOS-or-is-it-just-me), [2](https://www.youtube.com/watch?v=n1kmmdRAM%5FQ), [3](https://www.pcloudy.com/blogs/why-bugs-fail-on-devices/), [4](https://www.quora.com/How-can-a-big-company-like-Google-have-bugs-in-their-products), [5](https://www.appsadmins.com/blog/google-apps-known-issues-for-users)]
-
-### Recent Examples of Notable Google Bugs
-
-- **Pixel Bootloops (2026)**: A March update caused some flagship Pixel phones to get stuck on the "G" logo startup screen.
-- **Play Store Crashes (2025)**: A widespread server-side bug caused the Google Play Store to immediately crash whenever a user tapped the search bar.
-- **App Stability & UI Glitches**: Users frequently document issues like non-clickable links in Gmail, duplicate file uploads in Google Drive, and misaligned interface elements in Google Keep. \[[1](https://www.reddit.com/r/Android/comments/1nix23o/the%5Fui%5Fof%5Fgoogles%5Fandroid%5Fapps%5Fis%5Fridiculous/), [2](https://www.phonearena.com/news/pixel-bootloop-problem-solution%5Fid181022), [3](https://www.phonearena.com/news/a-new-android-bug-is-making-it-impossible-to-install-new-apps.-are-you-affected%5Fid176703), [4](https://www.reddit.com/r/google/comments/1to741n/google%5Fapps%5Ffull%5Fof%5Fserious%5Fbugs%5Flately/)]
-
-### How Google Handles Bugs
-
-Google employs teams of engineers and automated testing frameworks to find issues before they reach the public. When bugs slip through, they use a structured tracking system to prioritize and fix them based on how severely they impact the user. Severe bugs usually receive an emergency patch within a few days, while minor visual glitches might take weeks or months to resolve. \[[1](https://www.quora.com/How-often-are-serious-bugs-committed-to-Piper-at-Google-which-end-up-disrupting-the-daily-work-of-a-large-number-of-Google-developers), [2](https://source.android.com/docs/setup/contribute/report-bugs), [3](https://www.youtube.com/watch?v=n1kmmdRAM%5FQ)]
-
-If you are experiencing a specific issue with a Google app, let me know **which app** you are using and **what device** you are on so I can provide troubleshooting steps or known workarounds.
-
-- [link](https://www.reddit.com/r/Android/comments/1nix23o/the%5Fui%5Fof%5Fgoogles%5Fandroid%5Fapps%5Fis%5Fridiculous/)\
-  The UI of Google's Android apps is ridiculous - Reddit\
-  Sep 16, 2025 — I noticed a few UI bugs within the Keep app lately: \* Long-press on a note and the black top bar doesn't fully extend to the edge ...\
-  Reddit·r/Android
-- [link](https://www.reddit.com/r/google/comments/1to741n/google%5Fapps%5Ffull%5Fof%5Fserious%5Fbugs%5Flately/)\
-  Google apps full of serious bugs lately - Reddit\
-  May 26, 2026 — Anyone notice that since the last iteration of google apps they all have intense levels of bugs? Examples ive noticed so far: •Gma...\
-  Reddit·r/google
-- [link](https://www.quora.com/How-often-are-serious-bugs-committed-to-Piper-at-Google-which-end-up-disrupting-the-daily-work-of-a-large-number-of-Google-developers)\
-  How often are serious bugs committed to Piper at Google ...\
-  Jun 29, 2016 — It needs to be first submitted to a special repo, vetted thoroughly and then released to the trunk as part of a components release...\
-  Quora
-
-Show all
-
-## You said: do they introduce ui glitches
-
-<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">Yes, Google frequently introduces UI glitches during updates.</span></strong></mark> These visual bugs occur when app interfaces do not render correctly on your screen. \[[1](https://www.reddit.com/r/GooglePixel/comments/s3dz69/why%5Fis%5Fandroid%5F12%5Fso%5Fbuggy%5Fits%5Fcomplicated/), [2](https://birdeatsbug.com/blog/what-are-visual-bugs)]
-
-### Common Types of Google UI Glitches
-
-- **Overlapping Text**: Words, buttons, or labels stack on top of each other, making them unreadable.
-- **Misaligned Layouts**: Icons and menus shift out of place, leaving empty gaps or cutting off content.
-- **Dark Mode Issues**: Backgrounds change colors, but text stays dark, making the text completely invisible.
-- **Frozen Animations**: Loading circles or transition effects get stuck halfway through an action.
-- **Invisible Buttons**: Functional touch targets remain active but become completely transparent. \[[1](https://www.testdevlab.com/blog/mobile-app-bugs), [2](https://testmatick.com/glossary/ui-bug/), [3](https://kobiton.com/mobile-testing-guide/mobile-testing/visual-testing-detect-ui-bugs-mobile-apps/), [4](https://www.reddit.com/r/userexperience/comments/shu9c3/problematic%5Fux%5Fof%5Fthe%5Fnew%5Ftesla%5Fincar%5Fui/), [5](https://support.google.com/mail/thread/430804020/messages-when-being-opened-won-t-load-nor-display-in-full-issues-with-interface-and-views?hl=en\&gl=us)]
-
-### Why Visual Bugs Happen
-
-- **Dynamic Theming**: Android's "Material You" system changes app colors based on your wallpaper, which occasionally causes text-contrast bugs. \[[1](https://www.xda-developers.com/android-12-google-material-you-discussion/), [2](https://www.xda-developers.com/google-lens-becomes-the-latest-google-app-to-get-material-you-refresh/)]
-- **Screen Scaling**: Apps must stretch to fit thousands of different screen resolutions, aspect ratios, and foldable displays. \[[1](https://eduardocalzado.medium.com/android-16s-resizing-act-is-it-catching-up-to-ios-or-just-adding-developer-friction-3278c3d8f7c9)]
-- **Server-Side Tweaks**: Google often changes app layouts remotely (A/B testing) without pushing a full app store update, which can clash with older app data cached on your phone. \[[1](https://android.gadgethacks.com/news/your-android-file-manager-just-got-an-emotional-makeover-and-its-surprisingly-delightful/)]
-
-If you are dealing with a messed-up layout right now, tell me the **name of the app** and your **phone model** so I can find a specific fix.
-
-- [link](https://www.reddit.com/r/GooglePixel/comments/s3dz69/why%5Fis%5Fandroid%5F12%5Fso%5Fbuggy%5Fits%5Fcomplicated/)\
-  Why is Android 12 so buggy? It’s complicated : r/GooglePixel\
-  Jan 14, 2022 — Google's version of Android 12 is a massive change. They rushed it and ended up with many UI bugs. It will take a few months to po...\
-  \
-  \
-  Reddit
-- [link](https://birdeatsbug.com/blog/what-are-visual-bugs)\
-  What Are Visual Bugs and How to Test for UI Issues | Bug Tracking Blog\
-  Nov 13, 2025 — What Are Visual Bugs? Visual bugs are errors in an application's interface that affect how content is displayed without breaking f...\
-  \
-  \
-  Bird Eats Bug
-- [link](https://www.testdevlab.com/blog/mobile-app-bugs)\
-  Top 5 Mobile App Bugs: How to Avoid Them\
-  Feb 21, 2025 — UI/UX glitches include a variety pool of issues including overlapping UI elements, unresponsive buttons, and improper text wrappin...\
-  \
-  \
-  TestDevLab
-
-Show all
-
-## You said: do they introduce ui glitches on web
-
-**Yes, Google frequently introduces UI glitches on their desktop web applications.** While web apps do not suffer from the exact device fragmentation of Android, they have their own set of triggers like browser updates, browser extensions, and server-side code shifts. \[[1](https://birdeatsbug.com/blog/common-ui-bugs), [2](https://medium.com/@designstudiouiux/micro-interactions-in-web-app-ux-51ad5ec205ad)]
-
-### Common Google Web UI Glitches
-
-- **Blank Panels and Missing Elements**: Google Maps web users regularly experience bugs where the entire left-hand sidebar (like Saved Lists or Directions) goes completely blank, even though the data remains visible as pins on the map. \[[1](https://support.google.com/maps/thread/439028002/google-maps-desktop-ui-bug-report-saved-lists-missing?hl=en\&gl=us)]
-- **Stuck Text Fields**: When typing a location or changing directions on the Google Maps website, the text box can lock up or get "stuck" on a previous destination, ignoring mouse clicks on new locations. \[[1](https://support.google.com/maps/thread/314750050/new-ui-bug-in-maps-editing-directions?hl=en\&gl=us)]
-- **Overlapping CSS Layouts**: On the Google Search home page, minor styling bugs occasionally cause search autocomplete boxes to overlap input fields or cut off text. \[[1](https://birdeatsbug.com/blog/common-ui-bugs)]
-- **Broken Dark Mode Rendering**: When Google pushes background code updates, web interfaces for Gmail or Google Docs can experience color-inverting glitches, rendering text unreadable against the background. \[[1](https://www.reddit.com/r/ExperiencedDevs/comments/1tysnmi/is%5Fit%5Fjust%5Fme%5For%5Fis%5Fanyone%5Felse%5Fnoticing%5Fmore/)]
-- **Infinite Scroll Visual Loops**: In YouTube or Google Images, the page may visually stutter, flicker, or get trapped in an endless loading loop while trying to dynamically render new thumbnails.
-
-### Why Web UI Bugs Happen
-
-- **Cross-Browser Conflicts**: Google optimizes heavily for Chrome, but slight variations in how Apple Safari, Mozilla Firefox, or Microsoft Edge interpret CSS and JavaScript code can cause a layout to render incorrectly.
-- **Extension Interference**: Ad-blockers, password managers, and translation tools inject their own code directly into Google's web interfaces, which frequently clashes with Google’s underlying structure.
-- **Corrupted Browser Cache**: Web browsers store local versions of an app's files to load pages faster. If Google pushes a live code update but your browser keeps using an old, cached file, the mismatch causes severe visual breakage. \[[1](https://www.reddit.com/r/ExperiencedDevs/comments/1tysnmi/is%5Fit%5Fjust%5Fme%5For%5Fis%5Fanyone%5Felse%5Fnoticing%5Fmore/), [2](https://birdeatsbug.com/blog/common-ui-bugs), [3](https://support.google.com/maps/thread/439028002/google-maps-desktop-ui-bug-report-saved-lists-missing?hl=en\&gl=us), [4](https://www.testmuai.com/blog/10-ways-to-avoid-cross-browser-compatibility-issues/), [5](https://www.virtuosoqa.com/post/web-ui-testing)]
-
-If you are currently looking at a broken layout on your browser, tell me **which Google website** you are using and **your browser** (Chrome, Safari, Firefox) so I can help you clear the specific visual glitch.
-
-- [link](https://www.reddit.com/r/ExperiencedDevs/comments/1tysnmi/is%5Fit%5Fjust%5Fme%5For%5Fis%5Fanyone%5Felse%5Fnoticing%5Fmore/)\
-  Is it just me, or is anyone else noticing more bugs across the ...\
-  Jun 6, 2026 — Is it just me, or is anyone else noticing more bugs across the web and in software in general? AI/LLM. Just tried to login to Clou...\
-  Reddit·r/ExperiencedDevs
-- [link](https://birdeatsbug.com/blog/common-ui-bugs)\
-  Common UI Bugs in Web Applications and How to Fix Them\
-  Nov 13, 2025 — Even Google's homepage occasionally exhibits UI glitches in specific browser versions. For instance, overlapping search suggestion...\
-  Bird Eats Bug
-- [link](https://support.google.com/maps/thread/439028002/google-maps-desktop-ui-bug-report-saved-lists-missing?hl=en\&gl=us)\
-  Google Maps Desktop UI Bug Report: Saved Lists Missing\
-  Jun 4, 2026 — On Google Maps for desktop, the left-hand panel under Saved / Your Places appears completely blank—neither default lists (Favorite...\
-  Google Help
-
-Show all
-
 # . is there a real library called vanillajs
 
 <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>No, there is no real library or framework called "Vanilla JS"</strong></mark>. Instead, **"Vanilla JS" is a running industry joke** and a slang term used by web developers to refer to **plain, raw JavaScript** written without using any external libraries or frameworks (like React, Vue, or jQuery). \[[1](https://stackoverflow.com/questions/20435653/what-is-vanillajs), [2](https://www.reddit.com/r/javascript/comments/jtm24q/askjs%5Fwhat%5Fis%5Fvanilla%5Fjavascript/), [3](https://www.geeksforgeeks.org/javascript/what-is-vanilla-javascript/)]
@@ -12082,6 +11162,926 @@ I can help you decide if it is ready to ship or if it needs a quick cleanup.
   \
   \
   AlgoCademy
+
+Show all
+
+# . what does race conditions mean
+
+A **race condition** is <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">an undesirable situation that occurs when a software program or electronic system tries to perform two or more operations at the same time, but the correct outcome depends on the <strong>exact order or timing</strong> of those operations</mark>. \[[1](https://en.wikipedia.org/wiki/Race%5Fcondition), [2](https://www.geeksforgeeks.org/operating-systems/race-condition-in-operating-systems/)]
+
+It gets its name because multiple parts of the program are literally "racing" to modify the same resource. Because the system's execution order is unpredictable—often managed by a computer's operating system scheduler—the program can produce random, incorrect results or trigger unexpected system crashes. \[[1](https://stackoverflow.com/questions/34510/what-is-a-race-condition), [2](https://www.geeksforgeeks.org/java/race-conditions/), [3](https://www.huntress.com/cybersecurity-101/topic/what-is-race-condition), [4](https://www.geeksforgeeks.org/operating-systems/race-condition-in-operating-systems/)]
+
+***
+
+### The Classic Bank Example
+
+Imagine a shared bank account has a balance of **$100**. Two people (Person A and Person B) have debit cards tied to this account and try to withdraw money at the exact same fraction of a second. \[[1](https://stackoverflow.com/questions/34510/what-is-a-race-condition), [2](https://www.geeksforgeeks.org/operating-systems/race-condition-in-operating-systems/), [3](https://medium.com/@danciliakharmon/understanding-multithreading-and-race-conditions-in-swift-cdcb9c1af88e)]
+
+A safe system should perform operations one after the other. However, in a race condition, the steps get mixed up like this: \[[1](https://ericnormand.me/podcast/what-are-race-conditions)]
+
+1. **Person A** requests a withdrawal of $20. The system checks the database: _$100 available. Proceed._
+2. Before the system can subtract the $20, **Person B** requests a withdrawal of $50. The system checks the database: _$100 available. Proceed._
+3. **Person A's** process finishes: $100 - $20 = $80. It saves **$80** to the database.
+4. **Person B's** process finishes: It still thinks the starting balance was $100, so it calculates $100 - $50 = $50. It overwrites the database with **$50**. \[[1](https://stackoverflow.com/questions/34510/what-is-a-race-condition), [2](https://medium.com/@vkekukh/why-they-ask-whats-a-race-condition-and-how-do-you-prevent-it-b794f480a324), [3](https://www.geeksforgeeks.org/java/race-conditions/), [4](https://learn.microsoft.com/en-us/troubleshoot/developer/visualstudio/visual-basic/language-compilers/race-conditions-deadlocks), [5](https://lutfumertceylan.com.tr/posts/race-condition-limit-bypass/)]
+
+**The Result:** The bank just lost $20 because Person A's transaction was completely wiped out by Person B. \[[1](https://ericnormand.me/podcast/what-are-race-conditions), [2](https://www.geeksforgeeks.org/java/race-conditions/)]
+
+***
+
+### Why Do Race Conditions Happen?
+
+Race conditions typically require three ingredients: \[[1](https://ericnormand.me/podcast/what-are-race-conditions), [2](https://www.geeksforgeeks.org/operating-systems/race-condition-in-operating-systems/), [3](https://www.reddit.com/r/skyrim/comments/r52eoq/race%5Fdifferences/)]
+
+- **Concurrency:** Multiple processes, threads, or users are running simultaneously.
+- **Shared Resources:** They are all reading and writing to the exact same variable, file, or database.
+- **Non-Atomic Operations:** The action happens in separate steps (e.g., checking a value, calculating a new one, then saving it) rather than all at once. If a process gets interrupted halfway through, a race condition occurs. \[[1](https://ericnormand.me/podcast/what-are-race-conditions), [2](https://www.geeksforgeeks.org/operating-systems/race-condition-in-operating-systems/), [3](https://medium.com/@vkekukh/why-they-ask-whats-a-race-condition-and-how-do-you-prevent-it-b794f480a324), [4](https://www.techtarget.com/searchstorage/definition/race-condition), [5](https://www.naukri.com/code360/library/what-is-race-condition-in-os)]
+
+***
+
+### Why Are They Dangerous?
+
+- **They are "Heisenbugs":** They are incredibly hard to find and debug. Because they depend entirely on microsecond timing, code might work perfectly 99.9% of the time during testing, only to crash randomly in production under heavy user traffic.
+- **Security Vulnerabilities:** Hackers often exploit race conditions (specifically [Time-of-Check to Time-of-Use or TOCTOU flaws](https://www.akamai.com/glossary/what-is-a-race-condition)). By intentionally spamming requests during that tiny split-second gap, attackers can bypass security checks, double-spend digital currency, or escalate their account privileges. \[[1](https://www.akamai.com/glossary/what-is-a-race-condition), [2](https://dennylesmana.medium.com/what-is-race-condition-d678f87af108), [3](https://apiiro.com/glossary/race-condition/), [4](https://medium.com/@vkekukh/why-they-ask-whats-a-race-condition-and-how-do-you-prevent-it-b794f480a324), [5](https://www.automox.com/blog/vulnerability-definition-race-condition), [6](https://www.geeksforgeeks.org/operating-systems/race-condition-vulnerability/)]
+
+***
+
+### How Developers Prevent Them
+
+To stop race conditions, developers must enforce strict synchronization using specific coding mechanisms: \[[1](https://www.akamai.com/glossary/what-is-a-race-condition), [2](https://www.geeksforgeeks.org/operating-systems/race-condition-in-operating-systems/)]
+
+- **Locks / Mutexes:** Think of this like a bathroom key. When one thread starts modifying a variable, it "locks" it. Other threads must wait in line until the first thread finishes and unlocks it.
+- **Atomic Operations:** Combining the read, modify, and write steps into a single, un-interruptible machine action.
+- **Immutability:** Designing data structures that cannot be changed once created, eliminating the possibility of data modification conflicts altogether. \[[1](https://www.reddit.com/r/csharp/comments/1xfjgz/can%5Fsomeone%5Fplease%5Feli5%5Fwhat%5Fare%5Frace%5Fconditions/), [2](https://www.geeksforgeeks.org/operating-systems/race-condition-vulnerability/), [3](https://stackoverflow.com/questions/34510/what-is-a-race-condition), [4](https://www.geeksforgeeks.org/operating-systems/race-condition-in-operating-systems/), [5](https://www.akamai.com/glossary/what-is-a-race-condition)]
+
+Are you trying to **debug a specific issue** in your code, or are you studying this for a **computer science class or interview**? Let me know, and I can provide tailored code examples or interview tips!
+
+- [link](https://stackoverflow.com/questions/34510/what-is-a-race-condition)\
+  multithreading - What is a race condition? - Stack Overflow\
+  Aug 29, 2008 — A race condition occurs when two or more threads can access shared data and they try to change it at the same time. Because the th...\
+  Stack Overflow
+- [link](https://en.wikipedia.org/wiki/Race%5Fcondition)\
+  Race condition - Wikipedia\
+  A race condition or race hazard is the condition of an electronics, software, or other system where the system's substantive behav...\
+  Wikipedia
+- [link](https://www.geeksforgeeks.org/operating-systems/race-condition-in-operating-systems/)\
+  Race condition - GeeksforGeeks\
+  Apr 24, 2026 — Race condition \* A race condition occurs when two or more processes or threads access and modify the same data at the same time, a...\
+  GeeksforGeeks
+
+Show all
+
+## You said: on web
+
+In web development, a race condition occurs when a web application processes multiple asynchronous network requests or database queries out of order, leading to broken user interfaces or corrupted data. \[[1](https://www.aptive.co.uk/blog/what-is-race-condition/), [2](https://www.akamai.com/glossary/what-is-a-race-condition), [3](https://medium.com/@mshahzebraza/race-condition-in-react-d474c2563094)]
+
+Because the internet is unpredictable, API responses don't always arrive in the order they were sent. \[[1](https://dev.to/shrsv/race-conditions-in-go-a-simple-tutorial-1e1i), [2](https://medium.com/@juliusndegwa2/race-conditions-in-frontend-api-development-8de3dd2f3d26)]
+
+***
+
+### 🔎 Example 1: The UI Search Bar Bug (Frontend)
+
+Imagine a user typing into a live-search bar to find products.
+
+1. The user types "**iPh**". The app fires Request #1 to the server.
+2. The user quickly finishes typing "**iPhone**". The app fires Request #2.
+3. Request #2 is processed quickly by the server and returns results for "iPhone" in 50 milliseconds. The UI updates.
+4. Request #1 got delayed by a network hiccup and arrives late (200 milliseconds).
+5. The UI processes Request #1 last, overwriting the screen.
+
+**The Result:** The user sees "**iPhone**" typed in the search bar, but the product list displays old results for "**iPh**".
+
+***
+
+### 🛒 Example 2: The E-Commerce Inventory Leak (Backend)
+
+Imagine an online store has exactly **1 popular item left** in stock. Two shoppers click "Buy Now" at the exact same millisecond. \[[1](https://medium.com/@kapoorjasdeep/its-the-big-billion-day-sale-on-flipkart-and-the-latest-smartphone-you-ve-been-eyeing-has-just-a9ad5cb30d08)]
+
+1. **Server Thread A** (for Shopper A) checks the database: _Inventory = 1. Proceed to checkout._
+2. Before Thread A can update the database, **Server Thread B** (for Shopper B) checks the database: _Inventory = 1. Proceed to checkout._
+3. Thread A finishes processing, charges the card, and sets Inventory to 0.
+4. Thread B finishes processing, charges the card, and sets Inventory to -1 (or 0). \[[1](https://softwareengineering.stackexchange.com/questions/161231/should-i-take-care-of-race-conditions-which-almost-certainly-has-no-chance-of-oc)]
+
+**The Result:** The store just oversold an item it does not have, forcing a customer support nightmare.
+
+***
+
+### 🛡️ How Web Developers Fix Them
+
+### On the Frontend (UI)
+
+- **Debouncing / Throttling:** Delaying API calls until the user stops typing for a few hundred milliseconds.
+- **Cancellation Tokens:** Using tools like JavaScript's `AbortController`. When Request #2 is fired, the app explicitly cancels Request #1 so its late response is ignored.
+- **State Management Libraries:** Frameworks like React Query or RTK Query automatically manage request lifecycles and discard stale data. \[[1](https://levelup.gitconnected.com/top-10-strategies-to-mitigate-race-condition-errors-in-react-js-0050dc1e2602), [2](https://www.newline.co/@RichardBray/race-conditions-in-react-what-they-are-and-how-to-avoid-them--675702e6)]
+
+### On the Backend & Database
+
+- **Database Transactions (ACID):** Using `SELECT ... FOR UPDATE` or strict isolation levels to lock database rows while they are being read and modified.
+- **Optimistic Locking:** Adding a version number column to database rows. If Thread B tries to save data but notices the version number changed since it checked, the database rejects the update.
+- **Distributed Locks:** Using fast, in-memory stores like Redis to create a global "lock" across multiple server instances. \[[1](https://www.sciencedirect.com/science/article/pii/S0167404825004298), [2](https://medium.com/quintoandar-tech-blog/race-conditions-in-firestore-how-to-solve-it-5d6ff9e69ba7), [3](https://sqlfordevs.com/transaction-locking-prevent-race-condition), [4](https://algocademy.com/blog/why-your-event-driven-architecture-is-causing-race-conditions-and-how-to-fix-it/), [5](https://dzone.com/articles/distributed-locking-and-race-condition-prevention)]
+
+Are you dealing with a **frontend UI glitch** (like mismatched search results or tabs) or a **backend database issue** (like double-posting data)? Let me know the **programming language or framework** you are using, and I can give you a concrete code fix!
+
+- [link](https://www.aptive.co.uk/blog/what-is-race-condition/)\
+  What is a Race Condition? Race Condition Web Vulnerability Explained\
+  Feb 26, 2025 — How a Race Condition Occurs A race condition in a web application can occur when multiple users or processes interact with shared ...\
+  \
+  \
+  www.aptive.co.uk
+- [link](https://www.akamai.com/glossary/what-is-a-race-condition)\
+  What Is a Race Condition?\
+  This occurs when the synchronization and sequencing of these processes or threads are not coordinated. The consequences of race co...\
+  \
+  \
+  Akamai
+- [link](https://medium.com/@mshahzebraza/race-condition-in-react-d474c2563094)\
+  Race Condition in React. Race Condition in React — A Guide for… | by M Shahzeb Raza\
+  Apr 5, 2023 — Asynchronous requests: When multiple requests are made to the same resource simultaneously, it can lead to race conditions and une...\
+  \
+  \
+  Medium
+
+Show all
+
+## You said: do they have to be predicted and handled explicitly whether you use vanillajs (not web component) react solidjs svelte whatever wo specialized libraries
+
+Yes. No matter the framework—Vanilla JS, React, SolidJS, or Svelte—**none of them automatically fix async network race conditions out of the box.**
+
+While UI frameworks excel at updating the DOM when data changes, they cannot know _which_ network request was meant to be the final state. If you do not handle them explicitly in your code, your application will eventually experience bugs. \[[1](https://belitsoft.com/what-do-front-end-frameworks-do), [2](https://codingcops.com/reactjs-vs-plain-javascript/), [3](https://medium.com/@mwandanam/understanding-race-conditions-in-javascript-365f19991a11)]
+
+Here is how race conditions happen across different paradigms without libraries, and how you must explicitly handle them.
+
+***
+
+### The Problem in Every Framework
+
+If you write standard fetch code without explicit handling, every framework breaks the exact same way.
+
+javascript
+
+```
+// ❌ BROKEN IN EVERY FRAMEWORK
+async function fetchUserData(userId) {
+  const response = await fetch(`/api/user/${userId}`);
+  const data = await response.json();
+
+  // Race condition: A slower, older request can overwrite a newer one here
+  userState = data;
+}
+```
+
+Use code with caution.
+
+***
+
+### How to Explicitly Handle Them (Framework-by-Framework)
+
+To fix this without a library like React Query or Svelte Query, you must use one of two vanilla JavaScript strategies: **AbortController** (canceling the request) or a **Local Boolean Flag** (ignoring the stale response).
+
+### 1. Vanilla JS (Using AbortController)
+
+You must explicitly store a reference to the previous request and cancel it before starting a new one. \[[1](https://www.newline.co/courses/react-data-fetching-beyond-the-basics/fixing-race-conditions)]
+
+javascript
+
+```
+let currentController = null;
+
+function searchProducts(query) {
+  // 1. Cancel the previous pending request
+  if (currentController) currentController.abort();
+
+  // 2. Create a new controller for this request
+  currentController = new AbortController();
+
+  fetch(`/api/search?q=${query}`, { signal: currentController.signal })
+    .then(res => res.json())
+    .then(data => {
+      renderDOM(data);
+    })
+    .catch(err => {
+      if (err.name === 'AbortError') return; // Safely ignore intentional cancellations
+      console.error(err);
+    });
+}
+```
+
+Use code with caution.
+
+### 2. React (Using the Clean-up Function)
+
+React triggers `useEffect` clean-up functions when dependencies change. You must explicitly use a boolean flag to track if the specific render cycle is still valid.
+
+javascript
+
+```
+useEffect(() => {
+  let isCurrent = true; // Flag for this specific render
+
+  async function loadData() {
+    const res = await fetch(`/api/data/${id}`);
+    const data = await res.json();
+
+    // Explicit Check: Only update state if a newer id hasn't been requested
+    if (isCurrent) {
+      setData(data);
+    }
+  }
+
+  loadData();
+
+  return () => {
+    isCurrent = false; // Turn off flag when 'id' changes or component unmounts
+  };
+}, [id]);
+```
+
+Use code with caution.
+
+### 3. Svelte (Using Sequential IDs or Scoped Variables)
+
+Svelte reactive statements re-run when variables change, but they don't have built-in cleanup functions like React. You must manage a tracker explicitly. \[[1](https://blog.logrocket.com/exploring-runes-svelte-5/), [2](https://devtrios.com/blog/svelte-vs-react-which-framework-should-you-choose/), [3](https://www.topcoder-dev.com/thrive/articles/about-most-liked-spa-framework-svelte)]
+
+svelte
+
+```
+<script>
+  export let userId;
+  let userData;
+
+  // Re-run whenever userId changes
+  $: {
+    let currentId = userId;
+
+    fetch(`/api/user/${userId}`)
+      .then(res => res.json())
+      .then(data => {
+        // Explicit Check: Ensure the user didn't switch to a new ID while waiting
+        if (currentId === userId) {
+          userData = data;
+        }
+      });
+  }
+</script>
+```
+
+Use code with caution.
+
+### 4. SolidJS (The Exception: Built-in `createResource`) \[[1](https://www.youtube.com/watch?v=bzLtS0hTWCs)]
+
+SolidJS is a rare exception because its core reactivity includes a primitive specifically designed for async data fetching called `createResource`. \[[1](https://javascript.plainenglish.io/digging-deeper-into-solidjss-perfect-fusion-with-remix-and-much-more-8d26b3f98034), [2](https://medium.com/@mehdibafdil/solid-js-the-framework-meta-almost-acquired-8b81253ffc34)]
+
+While standard Solid signals (`createSignal`) will suffer from race conditions, `createResource` **handles race conditions automatically** under the hood by discarding out-of-order responses. \[[1](https://www.zignuts.com/blog/top-5-javascript-frameworks-for-2023)]
+
+javascript
+
+```
+import { createResource } from "solid-js";
+
+// SolidJS automatically ensures 'data' matches the LATEST 'userId',
+// discarding any older requests that resolve out of order.
+const [userId, setUserId] = createSignal(1);
+const [data] = createResource(userId, fetchUserData);
+```
+
+Use code with caution.
+
+***
+
+### Summary Table
+
+| Environment    | Built-in Protection? | How it behaves natively                 | How you fix it without libraries                                          |
+| -------------- | -------------------- | --------------------------------------- | ------------------------------------------------------------------------- |
+| **Vanilla JS** | ❌ No                | Overwrites state randomly               | Keep reference to `AbortController` globally/in scope.                    |
+| **React**      | ❌ No                | Overwrites state randomly               | Use a boolean flag in the `useEffect` cleanup return.                     |
+| **Svelte**     | ❌ No                | Overwrites state randomly               | Capture current variable in reactive `$:` blocks and validate post-fetch. |
+| **SolidJS**    | Partial              | Safe **only if** using `createResource` | Built-in to `createResource`. Standard fetches still need manual fixes.   |
+
+Would you like to see how to implement a reusable **custom hook or helper function** to cleanly solve this across your application, or are you trying to fix a **specific asynchronous feature** right now?
+
+- [link](https://belitsoft.com/what-do-front-end-frameworks-do)\
+  Why use Front-end Frameworks\
+  Dec 14, 2022 — Front-end frameworks provide reactive data binding, which allows the developer to specify how the UI should change in response to ...\
+  \
+  \
+  Belitsoft
+- [link](https://codingcops.com/reactjs-vs-plain-javascript/)\
+  ReactJS VS Plain JavaScript: Ultimate Guide on their Differences\
+  Jun 11, 2024 — Updates to the user interface in plain JavaScript require manual interventions. Developers must specify what changes need to be ma...\
+  \
+  \
+  CodingCops
+- [link](https://medium.com/@mwandanam/understanding-race-conditions-in-javascript-365f19991a11)\
+  Understanding Race Conditions in JavaScript | by Wandana Maddumage\
+  Apr 27, 2025 — Understanding Race Conditions in JavaScript When you start working with asynchronous code — like fetching data from a server or ha...\
+  \
+  \
+  Medium
+
+Show all
+
+## You said: do big tech swes often do these if they dont want opinionated deps
+
+Yes, Senior and Staff Software Engineers at Big Tech companies (like Google, Meta, and Apple) frequently write these custom race-condition handlers themselves when they want to avoid unopinionated dependencies.
+
+In Big Tech engineering, adding a third-party dependency is highly discouraged due to **security risks (supply chain attacks), performance overhead (bundle size), and long-term maintenance costs.** Instead, they lean on raw web standards.
+
+***
+
+### The Big Tech Approach: Custom Primitives
+
+Instead of rewriting raw `AbortController` boilerplate inside every individual component or file, Big Tech SWEs create internal, reusable utility patterns.
+
+Here are the two most common ways they implement this without external libraries.
+
+### Pattern 1: The "Take Latest" Wrapper (Utility Function)
+
+For Vanilla JS or simple frontend architectures, engineers will create a wrapper function that automatically cancels the previous execution of an asynchronous function whenever it is called again.
+
+javascript
+
+```
+// A reusable utility written once in a shared internal codebase
+function takeLatest(asyncFn) {
+  let controller = null;
+
+  return function (...args) {
+    if (controller) {
+      controller.abort(); // Cancel the previous execution
+    }
+    controller = new AbortController();
+
+    // Pass the signal to the underlying async function
+    return asyncFn(...args, controller.signal);
+  };
+}
+
+// --- How a Big Tech SWE uses it in application code ---
+const fetchSearchData = async (query, signal) => {
+  const res = await fetch(`/api/search?q=${query}`, { signal });
+  return res.json();
+};
+
+// This wrapper is now completely immune to race conditions
+const safeSearch = takeLatest(fetchSearchData);
+```
+
+Use code with caution.
+
+### Pattern 2: Custom React Hooks
+
+If working within a React codebase, writing `useEffect` cleanup boilerplate everywhere is considered bad practice. Instead, engineers wrap the logic into an internal custom hook that automatically manages the cancellation token under the hood.
+
+javascript
+
+```
+import { useEffect, useRef } from 'react';
+
+// Custom lightweight hook built natively
+export function useLatestAsync() {
+  const abortControllerRef = useRef(null);
+
+  useEffect(() => {
+    // Cleanup on component unmount
+    return () => abortControllerRef.current?.abort();
+  }, []);
+
+  const execute = async (asyncCallback) => {
+    // 1. Cancel previous pending execution of this hook instance
+    abortControllerRef.current?.abort();
+    abortControllerRef.current = new AbortController();
+
+    try {
+      return await asyncCallback(abortControllerRef.current.signal);
+    } catch (error) {
+      if (error.name === 'AbortError') {
+        // Silently swallow abort errors since they are intentional
+        return new Promise(() => {});
+      }
+      throw error;
+    }
+  };
+
+  return execute;
+}
+```
+
+Use code with caution.
+
+***
+
+### Why Big Tech Prefers This Over Third-Party Libraries
+
+- **Bundle Size Control:** A library like React Query or RxJS (`switchMap`) adds kilobytes of JavaScript that must be downloaded by billions of users, often over slow mobile networks. A custom `AbortController` utility adds practically zero bytes.
+- **Strict Security Audits:** Big Tech infrastructure requires extensive legal and security review for every package in `package.json`. Writing 15 lines of raw JavaScript avoids this entire bureaucracy.
+- **Predictable Upgrades:** When a framework (like React or Svelte) updates its major version, third-party libraries often break, blocking the engineering team from upgrading. Native utilities never break during framework upgrades. \[[1](https://medium.com/@malwarejoe/smashing-the-modern-web-tech-stack-part-1-the-evolving-threat-landscape-in-2022-and-dom-based-324696684239)]
+
+Are you looking to **design a clean utility** like this for your own codebase, or are you preparing for a **system design/frontend architecture interview** where this pattern might come up?
+
+- [link](https://medium.com/@malwarejoe/smashing-the-modern-web-tech-stack-part-1-the-evolving-threat-landscape-in-2022-and-dom-based-324696684239)\
+  Smashing the Modern Web Tech Stack — Part 1: The Evolving Threat Landscape in 2022 and DOM-based…\
+  Apr 21, 2022 — While when React ( React framework ) is being used, this is what it looks like.\
+  \
+  \
+  Medium
+
+## You said: does it mean a simple dep free approach might not be optimal
+
+Exactly. A simple, dependency-free approach is a double-edged sword. While it keeps your bundle size small and avoids third-party risks, rolling your own solution can quickly become sub-optimal as your web application grows.
+
+What starts as a simple 10-line `AbortController` wrapper often spirals into a complex, buggy recreation of an existing library once you encounter real-world edge cases.
+
+***
+
+### Where the "Simple" Approach Falls Short
+
+### 1. The Cache Invalidation Nightmare
+
+A simple `AbortController` or boolean flag handles **cancellation**, but it does not handle **caching**.
+
+- **The Problem:** If a user clicks "Tab A", then "Tab B", and immediately back to "Tab A", a simple approach cancels the first request and forces a brand-new network request for Tab A.
+- **The Library Advantage:** Libraries like React Query or Svelte Query cache the data from Tab A. They instantly show the cached data to the user while silently fetching updates in the background (Stale-While-Revalidate). Doing this dependency-free requires writing a massive, bug-prone custom cache system.
+
+### 2. Deduplication of Identical Requests
+
+- **The Problem:** Imagine three different UI components on the same page all need the current user's profile data at startup. A simple approach will fire three separate network requests to your API.
+- **The Library Advantage:** Smart libraries see three identical requests happening at the exact same millisecond, deduplicate them, send **one** request to the server, and distribute the single response to all three components.
+
+### 3. Focus Refetching and Network Recovery
+
+Real-world apps need to handle shaky user connections.
+
+- **The Problem:** If a user loses Wi-Fi for 5 seconds, a simple fetch script just fails and leaves a broken UI or an error message.
+- **The Library Advantage:** Libraries automatically listen to browser events (like the user regaining internet connection or refocusing the browser tab) and gracefully re-try the failed requests in the background.
+
+### 4. Memory Leaks
+
+- **The Problem:** If you handle requests via global variables or complex React `useRef` setups, it is easy to accidentally keep references to large JSON objects in memory long after the user has closed that page or component.
+
+***
+
+### The Trade-off Matrix
+
+| Feature              | Simple Native Approach (`AbortController`)         | Specialized Library (React/Svelte Query)          |
+| -------------------- | -------------------------------------------------- | ------------------------------------------------- |
+| **Bundle Size**      | **Optimal** (0 KB added)                           | **Sub-optimal** (+5KB to 15KB)                    |
+| **Race Conditions**  | **Optimal** (Fully fixed)                          | **Optimal** (Fully fixed)                         |
+| **Offline Handling** | **Sub-optimal** (Must write manual retry loops)    | **Optimal** (Built-in retry & recovery)           |
+| **UI UX Experience** | **Sub-optimal** (Constant loading spinners)        | **Optimal** (Instant loading from cache)          |
+| **Dev Velocity**     | **Sub-optimal** (Bespoke code for every edge case) | **Optimal** (One line of code handles everything) |
+
+***
+
+### When to Go Dependency-Free vs. Buy a Library
+
+- **Go Dependency-Free If:** You are building a lightweight website, a critical micro-frontend embedded on a third-party site (where bundle size is strictly capped), or a highly specific feature (like _only_ a live-search bar) where caching and retries aren't needed.
+- **Use a Library If:** You are building a complex dashboard, an e-commerce platform, or an app with deeply nested components that share data. The engineering time saved and the vastly superior user experience heavily outweigh the minor cost of the dependency.
+
+Are you evaluating this for a **new project** you are architecting, or are you trying to **refactor an existing application** that is suffering from loading delays or async bugs? Tell me about your app's scale and I can give you a recommendation!
+
+## You said: does it mean you have to predict and review carefully even if it's simple obvious and looks fine
+
+Yes. <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">You must predict and review <strong>every single asynchronous operation</strong> carefully, no matter how simple, obvious, or clean the code looks on the surface.</mark>
+
+In asynchronous programming, "looks fine" is highly deceptive. Code that looks perfectly logical during a code review can easily break under real-world conditions.
+
+***
+
+### The Optical Illusion of "Simple" Code
+
+Consider this seemingly flawless, hyper-obvious chunk of code:
+
+javascript
+
+```
+// ❌ LOOKS PERFECTLY FINE, BUT HAS A RACE CONDITION
+async function handleTabChange(tabId) {
+  showLoadingSpinner();
+
+  const data = await fetch(`/api/tabs/${tabId}`).then(r => r.json());
+
+  renderContent(data);
+  hideLoadingSpinner();
+}
+```
+
+Use code with caution.
+
+**Why it looks fine:** It reads sequentially from top to bottom. It shows a spinner, fetches data, renders it, and hides the spinner.
+
+**Why it fails:** If a user clicks Tab A, and immediately clicks Tab B, two instances of this function run concurrently. If Tab A's network request takes 2.0 seconds and Tab B's takes 0.5 seconds, the user will see Tab B's content briefly, only for it to be overwritten by Tab A's old data a second later. The spinner will also hide prematurely.
+
+***
+
+### Why Async Blindspots Happen
+
+### 1. The "Happy Path" Testing Bias
+
+When developers test their own code locally, they test the "happy path." They click a button, wait for it to load, and click the next thing. Because local development servers have zero network latency (0ms response times), race conditions are physically impossible to trigger during standard manual testing. \[[1](https://www.computerenhance.com/p/performance-excuses-debunked/comments)]
+
+### 2. Network Instability is Unpredictable
+
+In production, your users are on spotty 4G networks, switching between Wi-Fi and cell towers, or riding in subways. Request #1 might get stuck in a queue for 3 seconds, while Request #2 speeds through in 100 milliseconds.
+
+### 3. Human Behavior is Chaotic
+
+Users double-click buttons out of impatience, rapidly toggle filters back and forth, or type furiously into input fields. If your code assumes a user will politely wait for one request to finish before triggering another, it will fail.
+
+***
+
+### The "Async Code Review" Checklist
+
+To prevent these bugs, Senior Engineers train themselves to ask three specific questions whenever they see the `async` or `await` keywords during code reviews:
+
+- **The Multi-Trigger Question:** _"What happens if the user triggers this action three times in rapid succession?"_
+- **The Interruption Question:** _"What happens if the user navigates away from this page or closes this component while this network request is still in mid-air?"_
+- **The Out-of-Order Question:** _"Does the correctness of my application depend on Request A finishing before Request B?"_
+
+If you cannot confidently answer those questions, the code needs an explicit guard mechanism (like an `AbortController` or a boolean flag), even if it adds a few lines of boilerplate.
+
+Are you **reviewing someone else's pull request** right now where you suspect a race condition, or are you **setting up coding standards** for your team to avoid these blindspots?
+
+- [link](https://www.computerenhance.com/p/performance-excuses-debunked/comments)\
+  Comments - Performance Excuses Debunked - by Casey Muratori\
+  Apr 26, 2023 — Every time I click a button, create something, hit next or click the next page I have to wait for the page to load, sometimes it i...\
+  \
+  \
+  Computer, Enhance! | Casey Muratori
+
+## You said: does it mean you have to predict and review carefully even if it's simple obvious and looks fine, i mean in general not just async fetching
+
+Yes. In software engineering, you must predict and review code carefully **in general, across all paradigms**, even when it is simple, obvious, and looks completely fine.
+
+The most dangerous bugs in software rarely come from overly complex code. They come from simple, readable lines where the developer made a logical assumption that does not hold true under stress, edge cases, or concurrent execution.
+
+Here is why "obvious" code fails in general programming, outside of asynchronous network requests.
+
+***
+
+### 1. State Mutation & Reference Sharing (The Object Illusion)
+
+In languages like JavaScript, Python, or Java, objects and arrays are passed by reference, not by value. This leads to hidden side effects in seemingly innocent functions.
+
+javascript
+
+```
+// ❌ LOOKS FINE: A simple function to apply a discount to a product
+function applyDiscount(product) {
+  product.price = product.price * 0.9;
+  return product;
+}
+
+// 💥 THE BUG: This mutates the original object globally.
+// If this product is displayed in a cart, a sidebar, and a checkout page,
+// all of them just had their price changed permanently.
+```
+
+Use code with caution.
+
+**The Lesson:** The code reads cleanly, but because it mutates a shared reference, it creates unintended ripples across the entire application state.
+
+***
+
+### 2. Client-Side Clock Dependency (The Local Time Trap)
+
+Relying on the user's local machine environment for business logic is a classic blindspot.
+
+javascript
+
+```
+// ❌ LOOKS FINE: Check if a flash sale has expired
+const isSaleActive = new Date() < new Date("2026-12-31T23:59:59");
+```
+
+Use code with caution.
+
+**The Bug:** `new Date()` reads the time directly from the user's device clock. If a user manually changes their laptop's system time back to 2020, they can bypass your expiration check entirely.\
+**The Lesson:** Never assume the execution environment is accurate, honest, or under your control.
+
+***
+
+### 3. String Manipulation & Localization (The Character Blindspot)
+
+Simple string methods assume text always behaves like standard English ASCII characters.
+
+javascript
+
+```
+// ❌ LOOKS FINE: Capitalize the first letter of a username
+const formattedName = username.charAt(0).toUpperCase() + username.slice(1);
+```
+
+Use code with caution.
+
+**The Bug:** This completely breaks for many international languages. For example, some languages use composite characters, or emojis (which take up multiple character slots in memory). Truncating or slicing raw strings can slice a character or emoji in half, producing corrupted data or a crash.\
+**The Lesson:** Obvious text manipulation often fails when exposed to global users.
+
+***
+
+### 4. Mathematical Precision (The Floating-Point Glitch) \[[1](https://javascript.plainenglish.io/9-javascript-errors-so-common-they-should-be-illegal-5fa45fc4bd5f)]
+
+Simple arithmetic using decimals does not behave like school math on a computer.
+
+javascript
+
+```
+// ❌ LOOKS FINE: Calculate total cost
+let price = 0.1;
+let tax = 0.2;
+let total = price + tax; // Looks like 0.3, right?
+
+if (total === 0.3) { ... } // 💥 THIS IS FALSE!
+```
+
+Use code with caution.
+
+**The Bug:** Computers use binary floating-point math. `0.1 + 0.2` actually evaluates to `0.30000000000000004`. The conditional check fails entirely.\
+**The Lesson:** Raw decimal math should never be trusted for exact comparisons, especially with currency. \[[1](https://workik.com/top-frontend-interview-question-and-answers-using-ai)]
+
+***
+
+### Why Code Reviews Must Be Skeptical
+
+Senior Engineers do not look at code to see if it _works_. They look at code to see **how it can be broken**. When reviewing any code, even a simple one-liner, you must explicitly look for:
+
+- **Assumptions about Data:** Does this code assume the input is always a valid string/number/object? What if it is `null`, `undefined`, or an empty array?
+- **Assumptions about Environment:** Does this code assume a stable internet connection, a correct system clock, or a massive amount of system memory?
+- **Assumptions about Scale:** Will this simple array loop still run fast if the user has 10,000 items instead of 5?
+
+Are you trying to **establish a better code review process** for your team, or did a specific "simple" bug just slip through into production and cause an issue?
+
+- [link](https://javascript.plainenglish.io/9-javascript-errors-so-common-they-should-be-illegal-5fa45fc4bd5f)\
+  9 JavaScript Errors So Common, They Should Be Illegal\
+  Aug 6, 2025 — 9. Floating Point Precision Lies JavaScript math has quirks. 0.1 + 0.2 ! == 0.3 . This seems minor until your automation script is...\
+  \
+  \
+  JavaScript in Plain English
+- [link](https://workik.com/top-frontend-interview-question-and-answers-using-ai)\
+  AI-Powered Prep For Frontend Developer Interviews | Top Question & Answer\
+  Explanation: JavaScript uses floating-point arithmetic for numbers, which can lead to precision errors. The sum of 0.1 and 0.2 is ...\
+  \
+  \
+  Workik
+
+## You said: do i have to write scalable and future proof code
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">No, you do not always have to write scalable and future-proof code.</span></strong></mark> In fact, trying to make everything perfectly scalable and future-proof from day one is one of the most common mistakes developers make. It is a trap known as **Premature Optimization**. \[[1](https://uibakery.io/blog/what-to-choose-for-rad), [2](https://aws.plainenglish.io/why-i-choose-clarity-over-speed-my-battle-for-maintainable-code-in-the-ai-era-3d0b45a36be3)]
+
+Writing highly scalable code takes more time, increases complexity, and introduces layers of abstraction that you might never actually need. \[[1](https://thecoderegistry.com/how-to-measure-code-quality-8-metrics-every-organization-should-track/), [2](https://www.reddit.com/r/programming/comments/18d2rfk/you%5Fare%5Fnever%5Ftaught%5Fhow%5Fto%5Fbuild%5Fquality%5Fsoftware/), [3](https://caffeinatedcoder.medium.com/why-twitters-move-to-scala-was-a-dead-end-6cfc8d7bc367), [4](https://hackernoon.com/building-a-scalable-architecture-with-mern-stack), [5](https://www.linkedin.com/posts/sbellamkonda%5Fsoftwareengineering-technicaldebt-engineeringleadership-activity-7384732749233954816-XyRg)]
+
+To determine when you should build for the future and when you should write quick, disposable code, you can use the following framework. \[[1](https://news.ycombinator.com/item?id=23121192)]
+
+***
+
+### The Reality: You Cannot Predict the Future
+
+The biggest flaw with "future-proofing" is that **you do not know what the future looks like.**\
+If you spend two weeks building a highly scalable, microservice-ready architecture for a feature, and three months later the product direction changes and the feature is deleted, you have completely wasted that time. Senior engineers often say: _"Write code that is easy to replace, not code that is built to last forever."_ \[[1](https://medium.com/@swatimishra2824/9-clean-code-principles-every-swift-developer-should-follow-6594a8960a68), [2](https://dev.to/adamthedeveloper/write-code-thats-easy-to-delete-the-art-of-impermanent-software-19l1)]
+
+***
+
+### When to Write "Quick and Simple" Code (Not Scalable)
+
+You should deliberately write simple, non-scalable code when: \[[1](https://www.reddit.com/r/gamedev/comments/16eygr6/at%5Fwhat%5Fpoint%5Fa%5Fsystem%5Fis%5Fworth%5Fthe%5Feffort%5Fof/), [2](https://en.wikipedia.org/wiki/Coding%5Fbest%5Fpractices)]
+
+- **Building a Prototype or MVP (Minimum Viable Product):** Your goal is to prove that the feature works or that users want it. Speed to market is more important than architecture. \[[1](https://www.miyagami.com/insights/lovable-not-maintainable-hidden-risks-building-without-code), [2](https://www.okoone.com/spark/product-design-research/why-minimum-viable-architecture-matters-more-than-you-think/), [3](https://www.spec-india.com/blog/mvp-development-strategies)]
+- **Internal Tools:** If a script is only going to be run once a week by three people on your team, it does not need to scale to millions of concurrent users.
+- **Tight Deadlines:** When survival of the business or project depends on shipping _now_, hack it together and pay down the technical debt later. \[[1](https://www.trevorlasn.com/blog/when-should-you-actually-worry-about-tech-debt), [2](https://navanathjadhav.medium.com/from-junior-to-senior-developer-skills-nobody-tells-you-about-01b5c93605b6)]
+- **Low-Traffic Features:** If a page is rarely visited, an unoptimized database query or a heavy UI component won't hurt anything.
+
+***
+
+### When You _Must_ Write Scalable and Future-Proof Code
+
+You must invest the extra time into scalability when:
+
+- **The Core Architecture:** Database schemas and core data models are incredibly hard to change later. If you get these wrong, the foundation of your app is broken. \[[1](https://medium.com/@srinathperera/good-architecture-makes-code-easy-let-code-be-your-guide-to-good-architecture-db1c4286ebe2), [2](https://news.ycombinator.com/item?id=44557115)]
+- **High-Frequency Code paths:** Code that runs hundreds of times per second (like a login endpoint, a landing page, or a search index) must be highly optimized. \[[1](https://usman-ahmad-tech-talks.medium.com/advanced-techniques-in-code-optimization-strategies-for-high-performance-software-11b3b513422a)]
+- **Security and Compliance:** Security protocols, encryption, and data privacy handlers must be future-proof from the start. You cannot patch security architecture easily later.
+
+***
+
+### The Rules of Thumb for Pragmatic Engineering
+
+### 1. YAGNI (You Aren't Gonna Need It)
+
+Do not build features, abstractions, or scaling infrastructure based on a hunch that you _might_ need it next year. Only build what you need to solve today's concrete problem. \[[1](https://blog.lolcorp.co.uk/2025/11/16/9-essential-software-development-best-practices-for-2025-build-better-software-faster/), [2](https://medium.com/@ignatovich.dm/how-to-avoid-overengineering-in-frontend-development-a8ef2a501b44)]
+
+### 2. The Rule of Three
+
+- The **first time** you write something, just get it to work (hack it).
+- The **second time** you do something similar, copy-paste it and wince a little.
+- The **third time** you do it, stop and extract it into a scalable, reusable abstraction. \[[1](https://www.reddit.com/r/learnprogramming/comments/1lipzrz/modularization%5Ffeels%5Fso%5Fhard/), [2](https://andyfry.co/code-review-how-to-brevity-repetition), [3](https://blog.ndepend.com/code-reuse-not-good-goal/)]
+
+### 3. Write "Changeable" Code over "Future-Proof" Code
+
+Instead of trying to guess how your code will need to change in two years, just write **clean, modular code today**. Keep your functions small, avoid global variables, and don't tightly couple your components. If your code is clean and simple, it will be naturally easy to scale or completely rewrite when the time comes. \[[1](https://dev.to/danieldevi/a-simple-guide-to-building-software-projects-from-start-to-finish-2nb1), [2](https://dev.to/yatendra2001/7-rules-to-write-highly-scalable-code-with-practical-examples-573e), [3](https://allianzetechnologies.com/blog/essential-tips-to-avoid-programming-errors), [4](https://www.linkedin.com/posts/tianqi-matt-y-8b180514a%5Fai-claudecode-mcp-activity-7345579497104056320-v5QU)]
+
+Are you working on a **personal project**, a **startup MVP**, or a **large enterprise system**? Tell me what you are building, and I can tell you exactly where you should cut corners and where you should over-engineer!
+
+- [link](https://uibakery.io/blog/what-to-choose-for-rad)\
+  What to Choose for Rapid Application Development: Low-code or No-code?\
+  Dec 21, 2024 — Long-term goals: Short-term projects may benefit from no-code. If scalability and flexibility are priorities, low-code ensures fut...\
+  \
+  \
+  UI Bakery
+- [link](https://aws.plainenglish.io/why-i-choose-clarity-over-speed-my-battle-for-maintainable-code-in-the-ai-era-3d0b45a36be3)\
+  Why I Choose Clarity Over Speed: My Battle for Maintainable Code in the AI Era\
+  Sep 10, 2025 — And then there's the ever-present danger of “premature optimization.” This is the trap of building a super-scalable system for a h...\
+  \
+  \
+  AWS in Plain English
+- [link](https://thecoderegistry.com/how-to-measure-code-quality-8-metrics-every-organization-should-track/)\
+  How to Measure Code Quality: 8 Metrics Every Organization Should Track\
+  Jan 13, 2025 — 7. Increasing Code Complexity Score Maintainability: Highly complex code is more error-prone and requires specialized knowledge. S...\
+  \
+  \
+  The Code Registry
+
+Show all
+
+## You said: do all code have to be robust
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">No, not all code has to be robust.</span></strong></mark> Just like scalability, robustness is a spectrum. Making code truly robust—meaning it can gracefully handle corrupt data, unexpected user inputs, network drops, and extreme edge cases without crashing—requires a massive investment of time, testing, and boilerplate code. \[[1](https://threedots.tech/episode/when-to-write-low-quality-code/), [2](https://realpython.com/python-code-quality/), [3](https://medium.com/@reetesh043/java-robustness-building-strong-and-resilient-applications-d95e4776bf11), [4](https://www.bbc.co.uk/bitesize/guides/z94ymsg/revision/6), [5](https://www.ranorex.com/blog/code-coverage-test-coverage/)]
+
+If you try to make every single line of code in a system 100% robust, you will move too slowly, miss deadlines, and over-engineer simple tasks. \[[1](https://medium.com/@oxm/6-programming-habits-that-are-killing-your-productivity-and-how-to-fix-them-58f7c54f3d55), [2](https://www.reddit.com/r/ExperiencedDevs/comments/ixajhz/if%5Funit%5Ftests%5Fare%5Fexpected%5Fpart%5Fof%5Fsoftware/)]
+
+***
+
+### The Cost of Robustness
+
+To make code robust, you cannot just write the core logic. You have to write:
+
+- Deep input validation (checking for `null`, `undefined`, empty strings, wrong data types).
+- Complex `try/catch` blocks and error-recovery logic.
+- Extensive unit, integration, and end-to-end tests.
+- Fallback user interfaces (like error boundaries and offline alerts). \[[1](https://www.ranger.net/post/common-bugs-ai-generated-code-fixes), [2](https://www.kusari.dev/learning-center/secure-coding-practices), [3](https://medium.com/@sarraghribi.eng/a-systematic-guide-to-reviewing-python-code-for-projects-best-practices-and-tips-03d09327c79b), [4](https://www.thescrummaster.co.uk/book-summaries/clean-code-book-summary/), [5](https://www.parasoft.com/blog/what-is-robustness-testing/)]
+
+If a piece of code is not business-critical, this extra effort is a waste of resources. \[[1](https://news.ycombinator.com/item?id=19190472)]
+
+***
+
+### When Code _Should Not_ Be Robust (Deliberate Fragility)
+
+There are many scenarios where it is perfectly acceptable—and often better—for code to be fragile or simply crash when something goes wrong: \[[1](https://www.reddit.com/r/programming/comments/1bi10k/preconditions%5Fshould%5Fbe%5Fchecked%5Fexplicitly/)]
+
+- **Internal Scripts and Automation:** If you write a Python script to migrate some local files once, you don't need error handling. If it hits an unexpected file format, letting the script crash with a raw error message is fine. You can just look at the terminal, fix the file, and re-run it.
+- **Early-Stage Prototypes:** When validating a product idea, you want to know if users even care about the feature. If a minor edge case causes a crash for 1% of prototype users, that is usually an acceptable risk for the sake of speed. \[[1](https://www.linkedin.com/pulse/testing-context-dependent-learn-test-right-way-frank-kweku-acquah-08yte)]
+- **Internal Admin Tools:** Tools used only by your internal team do not need the bulletproof robustness of customer-facing apps. If an admin enters bad data and gets a blank screen, they can just refresh the page.
+- **The "Crash-Early" Principle (Fail-Fast):** In backend development, it is sometimes safer to let a process crash immediately if it encounters an invalid state, rather than attempting to recover and risk writing corrupted data to a database. \[[1](https://codingdash.com/post/maintainable-code-good-and-bad/), [2](https://news.ycombinator.com/item?id=36708759)]
+
+***
+
+### When Code _Must_ Be Highly Robust
+
+You must invest in maximum robustness when the consequences of a failure are severe: \[[1](https://practicingruby.com/articles/coding-in-the-danger-zone)]
+
+- **Financial Transactions:** Code handling payments, checkout carts, or ledger balances must never enter an undefined state.
+- **Data Ingestion and Storage:** Code that writes to your primary database must be highly robust to prevent data corruption.
+- **Core Infrastructure:** Authentication systems (login/signup), API gateways, and routing systems must be bulletproof, because if they go down, the entire application dies. \[[1](https://aws.plainenglish.io/aws-testing-roadmap-2025-beginner-to-expert-guide-for-test-automation-engineers-7dc79d7a74df), [2](https://news.ycombinator.com/item?id=28337112)]
+- **High-Volume Public UI:** Features used by millions of public users must handle chaotic behavior gracefully to protect the company's reputation and avoid overwhelming customer support.
+
+***
+
+### The Pragmatic Balance: Where to Focus
+
+Instead of trying to make _all_ code robust, focus your energy on the **boundaries of your system**:
+
+1. **Robust at the Gates:** Write strict validation where untrusted data enters your app (e.g., public API endpoints or user form inputs).
+2. **Simple on the Inside:** Once data is validated at the boundary, you can assume it is correct inside your core application logic. This allows you to write simpler, cleaner, and less defensive code in the middle layers. \[[1](https://www.troyhunt.com/owasp-top-10-for-net-developers-part-1/), [2](https://www.reddit.com/r/programming/comments/7xyt5d/overly%5Fdefensive%5Fprogramming/)]
+
+Are you trying to decide how much error handling to add to a **current feature**, or are you debating code quality standards with a **team member**? Tell me what the code does, and we can map out exactly how robust it needs to be!
+
+- [link](https://threedots.tech/episode/when-to-write-low-quality-code/)\
+  When it’s worth to write low-quality code\
+  Apr 3, 2025 — And again, it's important to mention that not all code in your application needs to be bad. Not all code in your application shoul...\
+  \
+  \
+  Three Dots Labs
+- [link](https://realpython.com/python-code-quality/)\
+  Python Code Quality: Best Practices and Tools – Real Python\
+  Mar 24, 2025 — Robust code: Minimizes crashes and produces fewer edge-case issues.\
+  \
+  \
+  Real Python
+- [link](https://medium.com/@reetesh043/java-robustness-building-strong-and-resilient-applications-d95e4776bf11)\
+  Java Robustness: Building Strong and Resilient Applications | by Reetesh Kumar\
+  Feb 22, 2024 — What is Robustness in Software? Fail Gracefully: When something goes wrong, it should handle the error gracefully without crashing...\
+  \
+  \
+  Medium
+
+Show all
+
+# do google apps have bugs
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>Yes, Google apps absolutely have bugs.</strong></mark> Like all software companies, Google writes millions of lines of code, and it is impossible to create software of that scale without introducing errors. \[[1](https://www.quora.com/Do-bugs-exist-even-in-software-released-by-major-corporations-like-Microsoft-and-Google), [2](https://www.quora.com/How-can-a-big-company-like-Google-have-bugs-in-their-products), [3](https://www.shakebugs.com/blog/bug-tracking-software/)]
+
+### Why Google Apps Have Bugs
+
+- **Massive Scale**: Google apps like Gmail, Maps, and YouTube serve billions of users across vastly different devices.
+- **Frequent Updates**: Google constantly pushes out new features, UI redesigns, and background patches, which can accidentally break existing code.
+- **Device Fragmentation**: For Android apps, Google must optimize code for thousands of different phone models with varying screen sizes, processors, and manufacturer skins. \[[1](https://www.quora.com/Are-Android-apps-generally-buggier-than-the-same-apps-on-iOS-or-is-it-just-me), [2](https://www.youtube.com/watch?v=n1kmmdRAM%5FQ), [3](https://www.pcloudy.com/blogs/why-bugs-fail-on-devices/), [4](https://www.quora.com/How-can-a-big-company-like-Google-have-bugs-in-their-products), [5](https://www.appsadmins.com/blog/google-apps-known-issues-for-users)]
+
+### Recent Examples of Notable Google Bugs
+
+- **Pixel Bootloops (2026)**: A March update caused some flagship Pixel phones to get stuck on the "G" logo startup screen.
+- **Play Store Crashes (2025)**: A widespread server-side bug caused the Google Play Store to immediately crash whenever a user tapped the search bar.
+- **App Stability & UI Glitches**: Users frequently document issues like non-clickable links in Gmail, duplicate file uploads in Google Drive, and misaligned interface elements in Google Keep. \[[1](https://www.reddit.com/r/Android/comments/1nix23o/the%5Fui%5Fof%5Fgoogles%5Fandroid%5Fapps%5Fis%5Fridiculous/), [2](https://www.phonearena.com/news/pixel-bootloop-problem-solution%5Fid181022), [3](https://www.phonearena.com/news/a-new-android-bug-is-making-it-impossible-to-install-new-apps.-are-you-affected%5Fid176703), [4](https://www.reddit.com/r/google/comments/1to741n/google%5Fapps%5Ffull%5Fof%5Fserious%5Fbugs%5Flately/)]
+
+### How Google Handles Bugs
+
+Google employs teams of engineers and automated testing frameworks to find issues before they reach the public. When bugs slip through, they use a structured tracking system to prioritize and fix them based on how severely they impact the user. Severe bugs usually receive an emergency patch within a few days, while minor visual glitches might take weeks or months to resolve. \[[1](https://www.quora.com/How-often-are-serious-bugs-committed-to-Piper-at-Google-which-end-up-disrupting-the-daily-work-of-a-large-number-of-Google-developers), [2](https://source.android.com/docs/setup/contribute/report-bugs), [3](https://www.youtube.com/watch?v=n1kmmdRAM%5FQ)]
+
+If you are experiencing a specific issue with a Google app, let me know **which app** you are using and **what device** you are on so I can provide troubleshooting steps or known workarounds.
+
+- [link](https://www.reddit.com/r/Android/comments/1nix23o/the%5Fui%5Fof%5Fgoogles%5Fandroid%5Fapps%5Fis%5Fridiculous/)\
+  The UI of Google's Android apps is ridiculous - Reddit\
+  Sep 16, 2025 — I noticed a few UI bugs within the Keep app lately: \* Long-press on a note and the black top bar doesn't fully extend to the edge ...\
+  Reddit·r/Android
+- [link](https://www.reddit.com/r/google/comments/1to741n/google%5Fapps%5Ffull%5Fof%5Fserious%5Fbugs%5Flately/)\
+  Google apps full of serious bugs lately - Reddit\
+  May 26, 2026 — Anyone notice that since the last iteration of google apps they all have intense levels of bugs? Examples ive noticed so far: •Gma...\
+  Reddit·r/google
+- [link](https://www.quora.com/How-often-are-serious-bugs-committed-to-Piper-at-Google-which-end-up-disrupting-the-daily-work-of-a-large-number-of-Google-developers)\
+  How often are serious bugs committed to Piper at Google ...\
+  Jun 29, 2016 — It needs to be first submitted to a special repo, vetted thoroughly and then released to the trunk as part of a components release...\
+  Quora
+
+Show all
+
+## You said: do they introduce ui glitches
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">Yes, Google frequently introduces UI glitches during updates.</span></strong></mark> These visual bugs occur when app interfaces do not render correctly on your screen. \[[1](https://www.reddit.com/r/GooglePixel/comments/s3dz69/why%5Fis%5Fandroid%5F12%5Fso%5Fbuggy%5Fits%5Fcomplicated/), [2](https://birdeatsbug.com/blog/what-are-visual-bugs)]
+
+### Common Types of Google UI Glitches
+
+- **Overlapping Text**: Words, buttons, or labels stack on top of each other, making them unreadable.
+- **Misaligned Layouts**: Icons and menus shift out of place, leaving empty gaps or cutting off content.
+- **Dark Mode Issues**: Backgrounds change colors, but text stays dark, making the text completely invisible.
+- **Frozen Animations**: Loading circles or transition effects get stuck halfway through an action.
+- **Invisible Buttons**: Functional touch targets remain active but become completely transparent. \[[1](https://www.testdevlab.com/blog/mobile-app-bugs), [2](https://testmatick.com/glossary/ui-bug/), [3](https://kobiton.com/mobile-testing-guide/mobile-testing/visual-testing-detect-ui-bugs-mobile-apps/), [4](https://www.reddit.com/r/userexperience/comments/shu9c3/problematic%5Fux%5Fof%5Fthe%5Fnew%5Ftesla%5Fincar%5Fui/), [5](https://support.google.com/mail/thread/430804020/messages-when-being-opened-won-t-load-nor-display-in-full-issues-with-interface-and-views?hl=en\&gl=us)]
+
+### Why Visual Bugs Happen
+
+- **Dynamic Theming**: Android's "Material You" system changes app colors based on your wallpaper, which occasionally causes text-contrast bugs. \[[1](https://www.xda-developers.com/android-12-google-material-you-discussion/), [2](https://www.xda-developers.com/google-lens-becomes-the-latest-google-app-to-get-material-you-refresh/)]
+- **Screen Scaling**: Apps must stretch to fit thousands of different screen resolutions, aspect ratios, and foldable displays. \[[1](https://eduardocalzado.medium.com/android-16s-resizing-act-is-it-catching-up-to-ios-or-just-adding-developer-friction-3278c3d8f7c9)]
+- **Server-Side Tweaks**: Google often changes app layouts remotely (A/B testing) without pushing a full app store update, which can clash with older app data cached on your phone. \[[1](https://android.gadgethacks.com/news/your-android-file-manager-just-got-an-emotional-makeover-and-its-surprisingly-delightful/)]
+
+If you are dealing with a messed-up layout right now, tell me the **name of the app** and your **phone model** so I can find a specific fix.
+
+- [link](https://www.reddit.com/r/GooglePixel/comments/s3dz69/why%5Fis%5Fandroid%5F12%5Fso%5Fbuggy%5Fits%5Fcomplicated/)\
+  Why is Android 12 so buggy? It’s complicated : r/GooglePixel\
+  Jan 14, 2022 — Google's version of Android 12 is a massive change. They rushed it and ended up with many UI bugs. It will take a few months to po...\
+  \
+  \
+  Reddit
+- [link](https://birdeatsbug.com/blog/what-are-visual-bugs)\
+  What Are Visual Bugs and How to Test for UI Issues | Bug Tracking Blog\
+  Nov 13, 2025 — What Are Visual Bugs? Visual bugs are errors in an application's interface that affect how content is displayed without breaking f...\
+  \
+  \
+  Bird Eats Bug
+- [link](https://www.testdevlab.com/blog/mobile-app-bugs)\
+  Top 5 Mobile App Bugs: How to Avoid Them\
+  Feb 21, 2025 — UI/UX glitches include a variety pool of issues including overlapping UI elements, unresponsive buttons, and improper text wrappin...\
+  \
+  \
+  TestDevLab
+
+Show all
+
+## You said: do they introduce ui glitches on web
+
+**Yes, Google frequently introduces UI glitches on their desktop web applications.** While web apps do not suffer from the exact device fragmentation of Android, they have their own set of triggers like browser updates, browser extensions, and server-side code shifts. \[[1](https://birdeatsbug.com/blog/common-ui-bugs), [2](https://medium.com/@designstudiouiux/micro-interactions-in-web-app-ux-51ad5ec205ad)]
+
+### Common Google Web UI Glitches
+
+- **Blank Panels and Missing Elements**: Google Maps web users regularly experience bugs where the entire left-hand sidebar (like Saved Lists or Directions) goes completely blank, even though the data remains visible as pins on the map. \[[1](https://support.google.com/maps/thread/439028002/google-maps-desktop-ui-bug-report-saved-lists-missing?hl=en\&gl=us)]
+- **Stuck Text Fields**: When typing a location or changing directions on the Google Maps website, the text box can lock up or get "stuck" on a previous destination, ignoring mouse clicks on new locations. \[[1](https://support.google.com/maps/thread/314750050/new-ui-bug-in-maps-editing-directions?hl=en\&gl=us)]
+- **Overlapping CSS Layouts**: On the Google Search home page, minor styling bugs occasionally cause search autocomplete boxes to overlap input fields or cut off text. \[[1](https://birdeatsbug.com/blog/common-ui-bugs)]
+- **Broken Dark Mode Rendering**: When Google pushes background code updates, web interfaces for Gmail or Google Docs can experience color-inverting glitches, rendering text unreadable against the background. \[[1](https://www.reddit.com/r/ExperiencedDevs/comments/1tysnmi/is%5Fit%5Fjust%5Fme%5For%5Fis%5Fanyone%5Felse%5Fnoticing%5Fmore/)]
+- **Infinite Scroll Visual Loops**: In YouTube or Google Images, the page may visually stutter, flicker, or get trapped in an endless loading loop while trying to dynamically render new thumbnails.
+
+### Why Web UI Bugs Happen
+
+- **Cross-Browser Conflicts**: Google optimizes heavily for Chrome, but slight variations in how Apple Safari, Mozilla Firefox, or Microsoft Edge interpret CSS and JavaScript code can cause a layout to render incorrectly.
+- **Extension Interference**: Ad-blockers, password managers, and translation tools inject their own code directly into Google's web interfaces, which frequently clashes with Google’s underlying structure.
+- **Corrupted Browser Cache**: Web browsers store local versions of an app's files to load pages faster. If Google pushes a live code update but your browser keeps using an old, cached file, the mismatch causes severe visual breakage. \[[1](https://www.reddit.com/r/ExperiencedDevs/comments/1tysnmi/is%5Fit%5Fjust%5Fme%5For%5Fis%5Fanyone%5Felse%5Fnoticing%5Fmore/), [2](https://birdeatsbug.com/blog/common-ui-bugs), [3](https://support.google.com/maps/thread/439028002/google-maps-desktop-ui-bug-report-saved-lists-missing?hl=en\&gl=us), [4](https://www.testmuai.com/blog/10-ways-to-avoid-cross-browser-compatibility-issues/), [5](https://www.virtuosoqa.com/post/web-ui-testing)]
+
+If you are currently looking at a broken layout on your browser, tell me **which Google website** you are using and **your browser** (Chrome, Safari, Firefox) so I can help you clear the specific visual glitch.
+
+- [link](https://www.reddit.com/r/ExperiencedDevs/comments/1tysnmi/is%5Fit%5Fjust%5Fme%5For%5Fis%5Fanyone%5Felse%5Fnoticing%5Fmore/)\
+  Is it just me, or is anyone else noticing more bugs across the ...\
+  Jun 6, 2026 — Is it just me, or is anyone else noticing more bugs across the web and in software in general? AI/LLM. Just tried to login to Clou...\
+  Reddit·r/ExperiencedDevs
+- [link](https://birdeatsbug.com/blog/common-ui-bugs)\
+  Common UI Bugs in Web Applications and How to Fix Them\
+  Nov 13, 2025 — Even Google's homepage occasionally exhibits UI glitches in specific browser versions. For instance, overlapping search suggestion...\
+  Bird Eats Bug
+- [link](https://support.google.com/maps/thread/439028002/google-maps-desktop-ui-bug-report-saved-lists-missing?hl=en\&gl=us)\
+  Google Maps Desktop UI Bug Report: Saved Lists Missing\
+  Jun 4, 2026 — On Google Maps for desktop, the left-hand panel under Saved / Your Places appears completely blank—neither default lists (Favorite...\
+  Google Help
 
 Show all
 
@@ -17459,4 +17459,367 @@ In modern Single Page Applications (SPAs), data updates dynamically without a pa
 
 If you want to look at how to solve this for power users, we can look at code examples for **implementing the "roving tabindex" pattern** for arrow-key navigation, or how to **properly trap keyboard focus inside a modal window**. Which one would be more useful for your project?
 
+# (d) how does vscode deal with accessibility
+
+**Visual Studio Code prioritizes accessibility as a core product principle**, <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">utilizing a combination of automated optimization modes, keyboard navigation, and multi-sensory feedback</mark> to ensure developers with visual, auditory, or motor disabilities can work effectively. \[[1](https://www.youtube.com/watch?v=9biCDjSSwqw\&t=204), [2](https://www.youtube.com/watch?v=THF85BT8J7c\&t=9), [3](https://vscode-docs1.readthedocs.io/en/latest/editor/accessibility/), [4](https://devblogs.microsoft.com/visualstudio/celebrating-ndeam-vs-code-visual-studio/)]
+
+The software addresses accessibility across several primary areas: \[[1](https://aeldata.com/how-to-shift-left-with-accessibility/)]
+
+### 🦾 Screen Reader & "Accessible View" Optimization \[[1](https://devblogs.microsoft.com/visualstudio/celebrating-ndeam-vs-code-visual-studio/)]
+
+When VS Code detects an active screen reader (such as NVDA or JAWS), it automatically triggers an optimized **Screen Reader Mode**. \[[1](https://code.visualstudio.com/docs/configure/accessibility/accessibility), [2](https://devblogs.microsoft.com/visualstudio/celebrating-ndeam-vs-code-visual-studio/)]
+
+- **UI Adaptation**: Heavily visual elements like code minimizing maps (minimaps) and code folding are automatically disabled to clean up the screen reader's virtual buffer.
+- **Terminal Accessible Buffer**: To bypass the limitations of traditional terminal rendering, VS Code routes terminal output into an internal [Monaco editor instance](https://dl.acm.org/doi/fullHtml/10.1145/3597638.3614550). This allows screen readers to navigate terminal text natively line-by-line using standard arrow keys.
+- **Accessible View**: Users can press `Alt + F2` (or `Shift + Alt + F2`) to open the **Accessible View**, which extracts complex contextual content (like terminal lines or hover details) into a highly readable text block. \[[1](https://www.youtube.com/watch?v=iFPsrvjZ9yo\&t=69), [2](https://dl.acm.org/doi/fullHtml/10.1145/3597638.3614550), [3](https://www.youtube.com/shorts/58NugUrz1fs), [4](https://community.vscodeedu.com/t/accessibility/2389), [5](https://www.youtube.com/shorts/D%5Ff8v7f6q5s), [6](https://code.visualstudio.com/docs/configure/accessibility/accessibility)]
+
+### 🔊 Audio Cues and Signal Announcements
+
+VS Code uses non-visual "Accessibility Signals" to communicate the layout and state of your code without forcing you to read every character. \[[1](https://github.com/microsoft/vscode-docs/blob/main/docs/configure/accessibility/accessibility.md)]
+
+- **Sound Effects**: Distinct audio cues play when your cursor lands on lines containing errors, warnings, breakpoints, or inline code suggestions.
+- **Aria Announcements**: Text alerts explicitly read out linting errors and linker warnings, strategically naming the error _before_ the line number to minimize cognitive load.
+- **Configuration**: You can type `Help: List Signal Sounds` or `Help: List Signal Announcements` in the Command Palette to preview and customize these sounds. \[[1](https://www.youtube.com/watch?v=iFPsrvjZ9yo\&t=69), [2](https://github.com/microsoft/vscode-docs/blob/main/docs/configure/accessibility/accessibility.md)]
+
+### ⌨️ Comprehensive Keyboard Navigation \[[1](https://github.com/microsoft/vscode-docs/blob/main/docs/configure/accessibility/accessibility.md)]
+
+The editor enforces a strict design guide requiring that **every actionable element must be fully keyboard navigable**. \[[1](https://www.youtube.com/watch?v=iFPsrvjZ9yo\&t=69), [2](https://github.com/microsoft/vscode/wiki/Accessibility-Guidelines)]
+
+- **No Mouse Required**: Menus, extensions, and sidebars can be fully focused and navigated using standard keyboard shortcuts (`Tab`, `Shift + Tab`, and arrow keys).
+- **Focus Persistence**: Modals and dropdown configurations are designed to respect standard escape routes, allowing users to press `Escape` to revert selections and return to their original text cursor placement without losing context. \[[1](https://www.youtube.com/watch?v=iFPsrvjZ9yo\&t=69), [2](https://github.com/microsoft/vscode/wiki/Accessibility-Guidelines), [3](https://www.raygervais.ca/articles/2018/02/approaching-accessibility-with-visual-studio-code/), [4](https://vispero.com/resources/event-handling-in-jaws-and-nvda/)]
+
+### 🎨 Visual Tuning
+
+For low-vision users or individuals with specific cognitive preferences, VS Code integrates customizable layout mechanics: \[[1](https://www.youtube.com/watch?v=iFPsrvjZ9yo\&t=69), [2](https://devblogs.microsoft.com/visualstudio/celebrating-ndeam-vs-code-visual-studio/), [3](https://www.nicklitten.com/course/how-can-i-change-the-look-style-and-feel-of-my-vs-code-environment/)]
+
+- **System Zoom**: Using the built-in zoom commands increases or decreases the scale of the entire workbench UI uniformly by 20% increments.
+- **High Contrast Themes**: Native, platform-specific High Contrast dark and light themes adhere to strict WCAG color contrast ratios to isolate code text from the editor background. \[[1](https://www.youtube.com/watch?v=iFPsrvjZ9yo\&t=69), [2](https://vscode-docs1.readthedocs.io/en/latest/editor/accessibility/), [3](https://marketplace.visualstudio.com/items?itemName=michaeljcalkins.wcag-themes), [4](https://www.accessibilitychecker.org/blog/dark-mode-accessibility/)]
+
+### 🎙️ Voice & Copilot Integration
+
+Modern updates natively integrate voice control systems directly into the workspace workflow: \[[1](https://www.youtube.com/watch?v=iFPsrvjZ9yo\&t=69)]
+
+- **Voice Chat**: Pressing `Ctrl + I` triggers an interactive voice session.
+- **Auto-Sumbit & Speech**: The voice prompt automatically submits your query when you pause talking, and can be paired with automated text-to-speech to read responses aloud.
+- **Keyword Activation**: Users can configure keyword detection (e.g., "Hey Code") via the settings to awaken the editor via voice commands. \[[1](https://code.visualstudio.com/docs/configure/accessibility/voice), [2](https://www.youtube.com/shorts/TXbbnVTAGkU)]
+
+All native accessibility variables can be audited instantly in the editor settings by filtering the search query by the **`@tag:accessibility`** tag. \[[1](https://www.youtube.com/watch?v=iFPsrvjZ9yo\&t=69)]
+
+If you are looking to optimize your personal workspace environment, let me know:
+
+- What **assistive technology** (like a specific screen reader or voice software) you rely on?
+- Whether you primarily need to adjust **visual settings** or **keyboard layout shortcuts**?
+
+I can provide the exact JSON configuration snippets to paste into your settings file.
+
+- [link](https://code.visualstudio.com/docs/configure/accessibility/accessibility)\
+  Accessibility - Visual Studio Code\
+  Screen reader mode. When VS Code detects that a screen reader is being used, it goes into an optimized screen reader mode for UI s...\
+  Visual Studio Code
+- [link](https://www.youtube.com/watch?v=9biCDjSSwqw\&t=204)\
+  Accessibility in VS Code\
+  Sep 29, 2022 — give us a a summary of what you're going to be chatting about today. yeah so uh As I said thanks for having me so my name is Sicid...\
+  9m\
+  YouTube·Visual Studio Code
+- [link](https://www.youtube.com/watch?v=THF85BT8J7c\&t=9)\
+  Accessibility in VS Code with Megan Rogge\
+  Nov 17, 2025 — and with me today software engineer on the VS Code team Megan Roi How's it going Megan. it's going great I'm so happy to be here. ...\
+  2m\
+  YouTube·Visual Studio Code
+
+Show all
+
+## You said: does it separate normal ui and accessible ui
+
+**No, VS Code does not create a separate or downgraded "accessible UI" version of the app.** \[[1](https://github.com/Kilo-Org/kilocode/issues/6163)]
+
+Instead, it uses a **single, unified interface** that dynamically adapts its existing elements based on the assistive tools you use. \[[1](https://www.youtube.com/watch?v=YmpjvZ3xkx8), [2](https://dev.to/hafizwaseemmughal1/why-visual-studio-code-is-the-best-ide-for-reactjs-development-32bc)]
+
+### One Core Interface, Adaptive Behaviors
+
+Instead of forcing users into a completely different layout, VS Code layers accessibility directly into the standard user interface: \[[1](https://eclipsesource.com/blogs/2026/03/19/domain-specific-ai-extensions-vs-code/)]
+
+- **Automatic Detection:** When you launch VS Code with a screen reader running (like NVDA, JAWS, or VoiceOver), the editor immediately optimizes its underlying structure without changing the visual look. \[[1](https://github.com/openai/codex/issues/15241)]
+- **Seamless Toggles:** Accessible features (like the Accessible View buffer) overlay directly on top of your current file. Pressing `Escape` instantly drops you right back into your normal editing view without reloading the app.
+- **Shared Ecosystem:** Because there is no separate UI fork, extensions, themes, and settings work identically for everyone. \[[1](https://www.dirigible.io/blogs/2022/01/14/dirigible-vscode-theia-custom-editors/), [2](https://blog.codingbox.io/my-vs-code-setup-for-front-end-web-development-ac3fcc7154d6)]
+
+### Why This Architecture Matters
+
+- **No Feature Lag:** In apps with a separate "accessible mode," new features often break or roll out late for disabled users. In VS Code, every new update is built into the core engine simultaneously.
+- **Identical Collaboration:** If you share your screen with a peer or teammate, the interface looks exactly the same, preventing any friction during pair programming. \[[1](https://medium.com/@riddhikul/code-collaboration-in-the-fast-lane-vs-code-live-share-extension-785e532dec0a)]
+- **Granular Control:** You can use the `@tag:accessibility` filter in your standard settings menu to turn specific adaptations (like audio cues) on or off, tailoring the default UI to your exact needs. \[[1](https://www.gravitee.io/blog/integrated-development-environment-explained)]
+
+If you are trying to configure your editor right now, let me know:
+
+- Do you want to **enable Screen Reader mode manually** via settings?
+- Are you looking for the best **high-contrast themes** that keep the UI clean?
+
+I can give you the exact settings to customize how the UI behaves.
+
+- [link](https://github.com/Kilo-Org/kilocode/issues/6163)\
+  VS Code Extension: Add Custom OpenAI-Compatible Provider UI · Issue #6163 · Kilo-Org/kilocode\
+  Feb 23, 2026 — The VS Code extension currently lacks a UI for adding custom OpenAI-compatible providers, even though this functionality exists in...\
+  \
+  \
+  GitHub
+- [link](https://www.youtube.com/watch?v=YmpjvZ3xkx8)\
+  A Unified Agent Experience\
+  Feb 20, 2026 — VS Code has become the unified interface for all your coding agents. Learn how to manage local, background, and cloud agent sessio...\
+  \
+  \
+  YouTube
+- [link](https://dev.to/hafizwaseemmughal1/why-visual-studio-code-is-the-best-ide-for-reactjs-development-32bc)\
+  Why Visual Studio Code is the Best editor for React.js Development\
+  Mar 25, 2024 — Integrated Version Control: VS Code ( Visual Studio Code ) seamlessly integrates with version control systems like Git, providing ...\
+  \
+  \
+  DEV Community
+
+Show all
+
+# how does vscode deal with accessibility
+
+Visual Studio Code treats **accessibility as a core product principle**, ensuring the editor is optimized for developers with visual, auditory, or motor challenges. It approaches this by <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">prioritizing strict keyboard navigability, deep integration with major screen readers, and multi-sensory feedback</mark>. \[[1](https://code.visualstudio.com/docs/configure/accessibility/accessibility), [2](https://www.youtube.com/watch?v=9biCDjSSwqw\&t=204), [3](https://www.youtube.com/watch?v=THF85BT8J7c\&t=9), [4](https://github.com/microsoft/vscode/wiki/Accessibility-Guidelines), [5](https://devblogs.microsoft.com/visualstudio/celebrating-ndeam-vs-code-visual-studio/)]
+
+You can find and modify all accessibility configurations instantly by opening Settings (`Ctrl+,`) and searching for **`@tag:accessibility`**. \[[1](https://www.youtube.com/watch?v=iFPsrvjZ9yo\&t=69)]
+
+### 1. Screen Reader Optimization
+
+- **Automatic Detection**: VS Code queries your operating system to see if a screen reader is active. It automatically switches into an optimized screen reader mode and displays **"Screen Reader Optimized"** in the status bar.
+- **Platform Compatibility**: The editor natively works with major screen readers including **NVDA, JAWS, VoiceOver, and Narrator**.
+- **Accessible Terminal Buffer**: Traditional terminal interfaces often confuse screen readers. VS Code solves this by automatically routing terminal output into an invisible instance of its native Monaco editor, allowing blind developers to cleanly navigate command lines using standard arrow keys.
+- **Accessible View**: Users can press **`Alt+F2`** to open an item (like code errors, hover descriptions, or GitHub Copilot suggestions) in a specialized "Accessible View" panel to read it sequentially without losing their cursor context. \[[1](https://www.reddit.com/r/vscode/comments/1fn3873/vscode%5Ffor%5Fblind%5Fdevelopers/), [2](https://dl.acm.org/doi/fullHtml/10.1145/3597638.3614550), [3](https://www.youtube.com/shorts/58NugUrz1fs), [4](https://accessibility.github.com/documentation/guide/github-copilot-vsc/), [5](https://www.youtube.com/shorts/D%5Ff8v7f6q5s), [6](https://code.visualstudio.com/docs/configure/accessibility/accessibility), [7](https://devblogs.microsoft.com/visualstudio/celebrating-ndeam-vs-code-visual-studio/), [8](https://www.youtube.com/watch?v=iFPsrvjZ9yo\&t=69)]
+
+### 2. Audio Cues and Signals
+
+- **Accessibility Signals**: For non-visual or low-vision navigation, VS Code relies on unique sound patterns and text-to-speech ARIA announcements.
+- **Event Triggers**: Audio cues will dynamically play as the cursor moves over specific lines containing **errors, warnings, active breakpoints, or folded code sections**.
+- **AI & Inline Suggestions**: Features like GitHub Copilot emit unique chimes when code completions become available, signaling that the user can press `Tab` to accept them. \[[1](https://github.com/microsoft/vscode-docs/blob/main/docs/configure/accessibility/accessibility.md), [2](https://www.youtube.com/watch?v=iFPsrvjZ9yo\&t=69), [3](https://accessibility.github.com/documentation/guide/github-copilot-vsc/)]
+
+### 3. Complete Keyboard Navigation
+
+- **No-Mouse Guarantee**: VS Code guidelines mandate that **every actionable item must be keyboard navigable**. No core functionality is locked behind mouse clicks.
+- **Component Hopping**: Developers can use the **`F6`** and **`Shift+F6`** commands to quickly shift keyboard focus between the primary editor window, the sidebar, the terminal panels, and the status bar.
+- **Tab Stop Management**: The editor includes settings to toggle whether the `Tab` key inserts code indentation or moves focus to the next physical UI container. \[[1](https://github.com/microsoft/vscode/wiki/Accessibility-Guidelines), [2](https://www.reddit.com/r/vscode/comments/1fn3873/vscode%5Ffor%5Fblind%5Fdevelopers/)]
+
+### 4. UI Visibility & Customization
+
+- **Built-in High Contrast**: VS Code provides high-contrast light and dark themes out-of-the-box that explicitly adhere to high color-contrast ratio regulations.
+- **Independent Magnification**: You can scale the entire user interface cleanly using the Zoom In/Out actions. Font sizing, line heights, and layout scales can also be customized independently so that magnification does not break UI text boundaries. \[[1](https://www.youtube.com/watch?v=iFPsrvjZ9yo\&t=69), [2](https://vscode-docs1.readthedocs.io/en/latest/editor/accessibility/), [3](https://devblogs.microsoft.com/visualstudio/celebrating-ndeam-vs-code-visual-studio/)]
+
+### 5. Voice Control Support
+
+- **Voice Chat**: By using the `Chat: Start Voice Chat` command (`Ctrl+I`), you can talk directly to Copilot or search panels. It supports a smart `speechTimeout` mechanism that submits your prompt automatically when you stop speaking.
+- **Keyword Activation**: You can configure keyword detection (e.g., "Hey Code") via the VS Code Speech Extension to invoke editor controls purely by voice command. \[[1](https://code.visualstudio.com/docs/configure/accessibility/voice), [2](https://www.youtube.com/shorts/TXbbnVTAGkU), [3](https://www.infoworld.com/article/2336011/visual-studio-code-adds-hey-code-voice-command.html)]
+
+***
+
+If you are looking to fine-tune your workspace, would you like to know the **best extensions for accessibility linting**, the **exact shortcuts for screen reader users**, or how to **customize audio signal volumes**? \[[1](https://marketplace.visualstudio.com/items?itemName=browserstackcom.browserstack-accessibility-linter), [2](https://dev.to/daniel%5Fmorgan%5F23/do-any-vs-code-extensions-suggest-accessibility-fixes-while-coding-i2i), [3](https://www.reddit.com/r/vscode/comments/1fn3873/vscode%5Ffor%5Fblind%5Fdevelopers/), [4](https://marketplace.visualstudio.com/items?itemName=JeffBishop.accessibility-alert-toggle), [5](https://github.com/microsoft/vscode-docs/blob/main/docs/configure/accessibility/accessibility.md)]
+
+- [link](https://code.visualstudio.com/docs/configure/accessibility/accessibility)\
+  Accessibility - Visual Studio Code\
+  Screen reader mode. When VS Code detects that a screen reader is being used, it goes into an optimized screen reader mode for UI s...\
+  Visual Studio Code
+- [link](https://www.youtube.com/watch?v=9biCDjSSwqw\&t=204)\
+  Accessibility in VS Code\
+  Sep 29, 2022 — give us a a summary of what you're going to be chatting about today. yeah so uh As I said thanks for having me so my name is Sicid...\
+  9m\
+  YouTube·Visual Studio Code
+- [link](https://www.youtube.com/watch?v=THF85BT8J7c\&t=9)\
+  Accessibility in VS Code with Megan Rogge\
+  Nov 17, 2025 — and with me today software engineer on the VS Code team Megan Roi How's it going Megan. it's going great I'm so happy to be here. ...\
+  2m\
+  YouTube·Visual Studio Code
+
+Show all
+
+## You said: unlike other apps, does it disable it when it's not needed
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>Yes, VS Code automatically disables or hides heavy accessibility features when they are not needed</strong></mark>. It handles this dynamically by running a core setting known as **`Editor: Accessibility Support`**, which is set to **`auto`** by default. \[[1](https://stackoverflow.com/questions/54173462/how-to-turn-off-or-on-sounds-from-visual-studio-code), [2](https://code.visualstudio.com/docs/configure/accessibility/accessibility)]
+
+Here is exactly how VS Code manages this to prevent interface clutter and performance lag:
+
+### 1. Dynamic Platform Detection
+
+Unlike applications that force you to manually toggle assistive tech, VS Code continuously queries your operating system's underlying APIs (such as Electron and UI Automation). \[[1](https://github.com/microsoft/vscode/issues/27813)]
+
+- **When a screen reader is active:** The editor activates its screen reader layout, routes terminals into text buffers, and changes the Status Bar to "Screen Reader Optimized".
+- **When a screen reader is closed:** VS Code instantly shuts down those specialized background processes to preserve memory. \[[1](https://github.com/microsoft/vscode/issues/27813), [2](https://code.visualstudio.com/docs/configure/accessibility/accessibility)]
+
+### 2. Selective Feature Trade-Offs
+
+To ensure the app remains fast for everyone, VS Code actively **turns off certain standard visual features** when heavy accessibility modes are running, and vice versa: \[[1](https://code.visualstudio.com/docs/configure/accessibility/accessibility)]
+
+- When screen reader mode is activated, VS Code **disables code folding** and the **minimap** (the sidebar visual code overview) because they cause conflicting telemetry loops for screen readers. \[[1](https://code.visualstudio.com/docs/configure/accessibility/accessibility)]
+- When accessibility mode is off, audio cues, screen reader ARIA loops, and hidden terminal buffers remain completely dormant so they don't consume system resources. \[[1](https://stackoverflow.com/questions/54173462/how-to-turn-off-or-on-sounds-from-visual-studio-code), [2](https://github.com/microsoft/vscode/issues/27813)]
+
+### 3. Smart Audio Cue Gatekeeping
+
+Most audio signals and spoken alerts are mapped to an `auto` state. They remain entirely silent during standard programming. The application will only play error chimes, warning signals, or line alerts if the OS reports that assistive hardware is actively being utilized. \[[1](https://stackoverflow.com/questions/54173462/how-to-turn-off-or-on-sounds-from-visual-studio-code), [2](https://stackoverflow.com/questions/71643619/vs-code-audio-cues-wont-turn-off-in-workspace), [3](https://marketplace.visualstudio.com/items?itemName=JeffBishop.accessibility-alert-toggle)]
+
+### How to Override the Automation
+
+If you use a third-party dictation tool or virtual helper that accidentally triggers VS Code's auto-detection (causing unexpected sounds), you can force it completely off: \[, [2](https://www.reddit.com/r/vscode/comments/1dpu7e6/wtf%5Fis%5Fthis%5Fsound%5Fonly%5Fhappens%5Fwhen%5Fclicking%5Fa/), [3](https://stackoverflow.com/questions/54173462/how-to-turn-off-or-on-sounds-from-visual-studio-code)]
+
+1. Open the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P`).
+2. Type **`Editor: Accessibility Support`**.
+3. Change the value from `auto` to **`off`**. \[[1](https://code.visualstudio.com/docs/configure/accessibility/accessibility), [2](https://bobbyhadz.com/blog/turn-off-sound-vscode)]
+
+***
+
+Are you experiencing issues where **unexpected sounds or modes are turning on by themselves**, or do you want to learn how to **manually lock specific accessibility settings to always stay on**? \[[1](https://stackoverflow.com/questions/54173462/how-to-turn-off-or-on-sounds-from-visual-studio-code), [2](https://www.reddit.com/r/vscode/comments/1dpu7e6/wtf%5Fis%5Fthis%5Fsound%5Fonly%5Fhappens%5Fwhen%5Fclicking%5Fa/)]
+
+- [link](https://stackoverflow.com/questions/54173462/how-to-turn-off-or-on-sounds-from-visual-studio-code)\
+  How to turn off (or on) sounds from Visual Studio Code?\
+  Jan 13, 2019 — VS Code primarily makes sounds as part of it's Accessibility Signals. The default setting for most of these signals is "auto", mea...\
+  Stack Overflow
+- [link](https://code.visualstudio.com/docs/configure/accessibility/accessibility)\
+  Accessibility - Visual Studio Code\
+  Screen reader mode. When VS Code detects that a screen reader is being used, it goes into an optimized screen reader mode for UI s...\
+  Visual Studio Code
+- [link](https://github.com/microsoft/vscode/issues/27813)\
+  Add editor option to forcefully enable/disable accessibility\
+  May 31, 2017 — off => the editor is never screen reader friendly => no content placed in the even if a screen reader is attached. on => the edito...\
+  GitHub
+
+Show all
+
+## You said: how wise is it
+
+**The engineering choice to automate accessibility is incredibly wise** because it perfectly solves the classic conflict between software performance and universal design. \[[1](https://www.reddit.com/r/learnprogramming/comments/1fnat6x/accessibility%5Ffor%5Fblv%5Fin%5Fvisual%5Fstudio%5Fcode/)]
+
+For decades, applications handled assistive tech poorly: they either bloated the software by forcing invisible screen-reading loops to run for everyone, or they hid accessibility features so deeply in menus that disabled users struggled to find them. \[[1](https://www.youtube.com/watch?v=THF85BT8J7c\&t=151), [2](https://www.reddit.com/r/learnprogramming/comments/1fnat6x/accessibility%5Ffor%5Fblv%5Fin%5Fvisual%5Fstudio%5Fcode/)]
+
+VS Code’s smart dynamic toggle balances this setup efficiently based on specific trade-offs:
+
+### 1. Zero Resource Waste
+
+Heavy assistive systems—like maintaining a secondary hidden [Accessible View text buffer](https://code.visualstudio.com/docs/configure/accessibility/accessibility) or broadcasting real-time ARIA updates to the operating system—require processing power. By keeping these processes strictly dormant until a screen reader is active, VS Code remains lightweight and fast for standard hardware users. \[[1](https://www.youtube.com/watch?v=THF85BT8J7c\&t=151)]
+
+### 2. Immediate "Out of the Box" Equality
+
+A blind developer downloading VS Code on a new machine does not need a sighted person to click through settings to make the app usable. The moment the editor launches, it instantly senses the OS screen reader, alerts the user, and optimizes the environment. \[[1](https://code.visualstudio.com/docs/configure/accessibility/accessibility)]
+
+### 3. Smart Prevention of UI Conflicts
+
+The automation prevents overlapping features from breaking the coding experience. For instance: \[[1](https://code.visualstudio.com/docs/configure/accessibility/accessibility)]
+
+- **The Conflict:** Standard visual [Word Wrap](https://stackoverflow.com/questions/31025502/how-can-i-switch-word-wrap-on-and-off-in-visual-studio-code) or visual code folding behaves erratically when screen readers try to calculate exact column locations. \[[1](https://code.visualstudio.com/docs/configure/accessibility/accessibility), [2](https://github.com/microsoft/vscode/issues/106941)]
+- **The Wise Solution:** VS Code’s `auto` mode instantly disables visual code-folding and standard wrapping text blocks the moment a screen reader takes over, forcing the layout into a clean, predictable line-by-line format that assistive engines can read flawlessly. \[[1](https://github.com/microsoft/vscode/issues/95428), [2](https://code.visualstudio.com/docs/configure/accessibility/accessibility)]
+
+***
+
+Would you like to explore **how to customize these automated thresholds via `settings.json`**, or are you looking for the **best ways to test extension accessibility** using these hidden buffers?
+
+AI responses may include mistakes. For financial advice, consult a professional. [Learn more](https://support.google.com/websearch?p=aimode\&gl=us)
+
+- [link](https://www.youtube.com/watch?v=THF85BT8J7c\&t=151)\
+  Accessibility in VS Code with Megan Rogge\
+  Nov 17, 2025 — like aren't even aware of accessibility's. features like what does that look like and how does that show up in the product. yeah a...\
+  2m\
+  YouTube·Visual Studio Code
+- [link](https://code.visualstudio.com/docs/configure/accessibility/accessibility)\
+  Accessibility - Visual Studio Code\
+  You can exit screen reader mode by clicking on the display text or using the Toggle Screen Reader Accessibility Mode command. Some...\
+  Visual Studio Code
+- [link](https://www.reddit.com/r/learnprogramming/comments/1fnat6x/accessibility%5Ffor%5Fblv%5Fin%5Fvisual%5Fstudio%5Fcode/)\
+  Accessibility for BLV in Visual Studio Code : r/learnprogramming\
+  Sep 23, 2024 — Comments Section. dmazzoni. • 2y ago. Top 1% Commenter. I think it's a great idea for a project, but I think it will be challengin...\
+  Reddit·r/learnprogramming
+
+Show all
+
+## You said: does it put arias when not needed
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">No, VS Code strictly avoids firing unnecessary ARIA updates, text-to-speech announcements, or heavy accessibility trees when they are not needed.</span></strong></mark>
+
+Because VS Code is built on Electron (HTML/CSS/JavaScript), its layout is rendered inside a web-based Document Object Model (DOM). In standard web development, having thousands of ARIA attributes constantly changing can cause massive performance lag. \[[1](https://code.visualstudio.com/docs/configure/accessibility/accessibility), [2](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes), [3](https://www.youtube.com/shorts/gnKzJRr-rd0)]
+
+VS Code prevents this by executing a smart DOM separation strategy:
+
+### 1. Dormant ARIA Live Regions
+
+Features like the integrated terminal, auto-complete suggestions, and error popups rely heavily on `aria-live` regions. These tell the operating system to forcefully announce dynamic updates. When VS Code does not detect a screen reader, it leaves these specialized live nodes **completely empty or entirely detached from the active DOM rendering tree**. Since there is no text changing inside those nodes, the underlying machine performs zero processing work on them. \[[1](https://code.visualstudio.com/docs/configure/accessibility/accessibility), [2](https://www.youtube.com/watch?v=iFPsrvjZ9yo\&t=9), [3](https://www.youtube.com/watch?v=A2oCy1zSuAM), [4](https://www.levelaccess.com/blog/wai-aria-explained-a-guide-to-accessible-rich-internet-applications/), [5](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes)]
+
+### 2. Semantic HTML Over Hardcoded ARIA \[[1](https://servicemanual.gov.scot/accessibility-semantics-for-website-developers/aria-role-and-state)]
+
+According to the foundational rules of accessibility, _no ARIA is better than bad or redundant ARIA_. VS Code engineers use semantic layout containers everywhere possible rather than injecting custom ARIA roles into plain boxes. \[[1](https://www.reddit.com/r/Wordpress/comments/1ogu6cb/how%5Fimportant%5Fare%5Fthe%5Faria%5Fattributes/), [2](https://www.sitepoint.com/avoiding-redundancy-wai-aria-html-pages/)]
+
+- **The wrong way:**
+- **The VS Code way:** Native buttons and links that browsers naturally understand without needing heavy, custom ARIA strings attached to them. \[[1](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label), [2](https://medium.com/@askParamSingh/mastering-aria-fixing-common-beginner-mistakes-9a9e51248ca9), [3](https://www.sitepoint.com/avoiding-redundancy-wai-aria-html-pages/), [4](https://help.dubbot.com/en/articles/11706432-elements-must-only-use-permitted-aria-attributes)]
+
+### 3. The "Hidden Buffer" Swap
+
+The main code editor view (the Monaco Editor) does not load invisible screen-reading text blocks for standard users. Instead, it only activates a separate, invisible `textarea` packed with localized ARIA properties **on demand**. If you do not have a screen reader active, that secondary DOM calculation layer is skipped entirely. \[[1](https://code.visualstudio.com/docs/configure/accessibility/accessibility)]
+
+***
+
+If you are developing your own tools or extensions, would you like to know **how to safely pass data to VS Code's status bar without spamming screen readers**, or how to **manually inspect the active accessibility tree** using developer tools?
+
+- [link](https://www.reddit.com/r/Wordpress/comments/1ogu6cb/how%5Fimportant%5Fare%5Fthe%5Faria%5Fattributes/)\
+  How important are the aria attributes? : r/Wordpress - Reddit\
+  Oct 26, 2025 — Can't answer this without seeing the code / design. You use aria when standard html attributes and your code aren't sufficient for...\
+  Reddit·r/Wordpress
+- [link](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label)\
+  aria-label attribute - MDN Web Docs\
+  Sep 19, 2025 — Don't "overuse" aria-label . Remember that it's primarily for assistive technologies. To provide additional instructions or to cla...\
+  MDN Web Docs
+- [link](https://www.sitepoint.com/avoiding-redundancy-wai-aria-html-pages/)\
+  Avoiding Redundancy with WAI-ARIA in HTML Pages - SitePoint\
+  Nov 6, 2024 — Effect of ARIA Roles on Most Elements There are some general cases in which the semantics of an HTML element can be exposed by use...\
+  SitePoint
+
+Show all
+
+## You said: does it define aria attrs everywhere when not needed
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">No, VS Code does not inject static ARIA attributes everywhere if they are not needed.</span></strong></mark>
+
+Because VS Code is built on web technologies (Electron), every single DOM element with an unnecessary attribute takes up valuable memory. If it bloated its codebase by hardcoding `aria-*` tags onto millions of individual code elements, line numbers, and gutter symbols, the editor would experience massive lag. \[[1](https://medium.com/@uiuxwithdiptanshu/vs-code-ricing-customizing-vs-code-at-the-next-level-6a516910dcb6)]
+
+Instead, VS Code follows a strict **"Just-in-Time" (JIT) and semantic approach** to handle ARIA properties: \[[1](https://dev.to/angular/angular-eslint-rules-for-aria-3ba1)]
+
+### 1. Reliance on Native HTML Semantics
+
+The first rule of digital accessibility is to use native elements instead of ARIA. VS Code’s UI relies heavily on native, semantic HTML elements (like , , and ). Because browsers and operating systems inherently understand what these elements do, **VS Code does not need to define `role="..."` or `aria-label="..."` on them.** The accessibility tree is generated naturally by the browser engine without manual code bloat. \[[1](https://dev.to/kedar7/aria-for-developers-roles-states-and-accessible-components-in-react-14p8), [2](https://www.webyes.com/knowledge-base/aria-roles-and-child-elements/), [3](https://216digital.com/why-no-aria-is-better-than-bad-aria/), [4](https://www.boia.org/blog/what-is-an-aria-label), [5](https://documenta11y.com/blog/less-aria-more-accessibility-documenta11ys-guide-to-cleaner-web-content/)]
+
+### 2. The "Single Focused Component" Rule
+
+When you open a massive code file with 10,000 lines of code, VS Code **does not** generate ARIA attributes for all 10,000 lines.
+
+- Instead, it maintains a single, invisible HTML element that acts as the primary bridge to screen readers.
+- As your cursor moves, VS Code dynamically updates the ARIA attributes (like `aria-expanded`, `aria-haspopup`, or text content) **only on that single active element**.
+- The other thousands of lines on your screen remain plain HTML text nodes with zero accessibility tags attached to them. \[[1](https://hostadvice.com/blog/web-hosting/accessibility/what-is-aria-a-beginners-guide-to-aria-for-accessibility/), [2](https://a11y-blog.dev/en/articles/aria-live-regions/)]
+
+### 3. Dynamic Injection on Activation
+
+Many complex ARIA attributes—such as `aria-describedby` for code errors or hover details—are completely absent from the UI when you are simply typing. VS Code only injects these attributes into the DOM at the exact millisecond a user triggers an event (like hovering over a warning or hitting a breakpoint). Once the popup closes or the cursor moves away, those attributes are stripped back out or unlinked. \[[1](https://webaim.org/techniques/aria/)]
+
+***
+
+Would you like to know **how to inspect this live accessibility tree using the built-in Developer Tools**, or are you looking for the **best practices to handle ARIA in your own VS Code extensions**?
+
+- [link](https://medium.com/@uiuxwithdiptanshu/vs-code-ricing-customizing-vs-code-at-the-next-level-6a516910dcb6)\
+  VS code ricing✨ : Customizing your VS code setup. | by Diptanshu Mahish\
+  Aug 17, 2024 — VS code is built with Electron. We all know about it, and also know that it has been a drawback to VS code's performance, as it te...\
+  \
+  \
+  Medium
+- [link](https://dev.to/angular/angular-eslint-rules-for-aria-3ba1)\
+  Cover image for Angular ESLint Rules for ARIA\
+  Nov 14, 2022 — Enforces using semantic DOM elements over the ARIA role property. This rule prevents content or container elements like or\
+  from b...\
+  \
+  \
+  DEV Community
+- [link](https://dev.to/kedar7/aria-for-developers-roles-states-and-accessible-components-in-react-14p8)\
+  ⚙️ ARIA for Developers – Roles, States, and Accessible Components in React\
+  Jul 11, 2025 — ⚠ Before You Use ARIA… 🧠 “If you can use a native HTML element with the built-in behavior you need— use that instead of ARIA ( Ac...\
+  \
+  \
+  DEV Community
+
+Show all
+
 # 
+
