@@ -1,6 +1,7 @@
 import { ChildProcess } from "node:child_process"
 import { vnode } from "./ref/mithril"
 import { resolvePtr } from "node:dns"
+import { on } from "node:cluster"
 
 let app
 let vdom
@@ -91,10 +92,10 @@ export function p(initial_value) {
 
 // signal wo default rerender
 export function ref(initial_value) {
-  const prev_instance = active_instance;
-  active_instance = false; // unbind to prevent binding rerender
+  const prev_vnode = current_vnode;
+  current_vnode = false; // unbind to prevent binding rerender
   const reference = p(initial_value);
-  active_instance = prev_instance; // restore layout context
+  current_vnode = prev_vnode; // restore layout context
   return reference;
 }
 
@@ -115,11 +116,12 @@ function trigger_effects() {
 }
 
 export function render(component, root_selector) {
+  console.log('hi')
   app = component
-  root = document.querySelector(root_selector)
-
   vdom = h(app)
-  node = create_node(vdom)
+  
+  const root = document.querySelector(root_selector)
+  const node = create_node(vdom)
 
   trigger_effects()
 }
@@ -171,28 +173,61 @@ function dispose(vnode: vnode) {
   }
 }
 
-function replace(old_node: Node, new_node: Node) {
+function replace_node(old_node: Node, new_node: Node) {
   dispose(old_node)
   old_node.parentNode?.replaceChild(old_node, new_node)
+}
+
+function append_node(old_node: Node, child: Node) {
+  old_node.parentNode?.appendChild(child)
+}
+
+function remove_node(old_node: Node) {
+  dispose(old_node)
+  old_node.remove()
 }
 
 function has(obj, key) {
   return Object.hasOwn(obj, key)
 }
 
-function remove_prop(old_vnode, prop, value?) {
+function each(n) {
+  return Array.from(Array(n + 1).keys())
+}
+
+function remove_prop(vnode, prop) {
+  const node = vnode.node
   if (is_event(prop)) {
-    node.removeEventListener(to_event_name(prop), value)
+    node.removeEventListener(to_event_name(prop), vnode.props[prop])
+  } else {
+    node.removeAttribute(prop)
+  }
+}
+
+function add_prop(vnode, prop, value) {
+  const node = vnode.node
+  if (is_event(prop)) {
+    node.addEventListener(to_event_name(prop), value)
+  } else {
+    node.setAttribute(prop, value)
+  }
+}
+
+function update_prop(vnode, prop, value) {
+  const node = vnode.node
+  if (is_event(prop)) {
+    node.removeEventListener(to_event_name(prop), vnode.props[prop])
+    node.addEventListener(to_event_name(prop), value)
   } else {
     node.setAttribute(prop, value)
   }
 }
 
 function diff(old_vdom: vnode, new_vdom: vnode) {
-  new_vdom.node = create_node(new_vdom)
+  new_vdom.node = create_node(new_vdom) // all children will also be created
 
   if (old_vdom.tag != new_vdom.tag) {
-    replace(old_vdom.node, new_vdom.node)
+    replace_node(old_vdom.node, new_vdom.node)
     return
   }
 
@@ -202,14 +237,26 @@ function diff(old_vdom: vnode, new_vdom: vnode) {
 
     for (const key of all_keys) {
       if (!has(new_vdom.props, key)) {
-        remove_prop(old_vdom, key, old_vdom[key])
-      } 
-      if (!has(old_vdom.props, key)) {
-
+        remove_prop(old_vdom, key)
+      }
+      else if (!has(old_vdom.props, key)) {
+        add_prop(old_vdom, key, new_vdom.props[key])
+      } else {
+        update_prop(old_vdom, key, new_vdom.props[key])
       }
     }
   }
 
+  // diff children
+  for (const index of each(Math.max(old_vdom.children.length, new_vdom.children.length))) {
+    if (!has(old_vdom.children, index)) {
+      append_node(old_vdom.node, new_vdom.children[index].node)
+    } else if (!has(new_vdom.children, index)) {
+      remove_node(old_vdom.children[index].node)
+    } else {
+      diff(old_vdom.children[index], new_vdom.children[index])
+    }
+  }
 }
 
 export function redraw() {
