@@ -1,7 +1,5 @@
 what does a component have
 
-hyperscript. array or args?
-
 vscode disposable pattern in fp
 
 vanilla js? framework js?
@@ -25,3 +23,8 @@ pros and cons of state setstate, proxy, or signal
 react one way flow meaning
 
 compare state setstate, proxy (obj define prop), or signal function (no arg then getter, arg then setter)
+
+hyperscript, h(tag, props, ...children) or h(tag, props, children array)
+
+hyperscript h(Component, props) or Component(props)
+
