@@ -1,3 +1,17 @@
+<!-- 
+
+vanillajs. no cleanup (you can, if you like).
+
+counter(count){
+  return h("input.Counter", [h(".Counter", [count])])
+}
+
+ -->
+
+<!-- maybe just proceed w react? -->
+
+<!-- think different. limit react features. to proceed. -->
+
 # what if i run pnpm init inside a subfolder
 
 3:39 AM
@@ -3117,6 +3131,694 @@ Use code with caution.
 - **Infinite Scale:** Both arrays and DOM pointer assignments execute instantaneously in modern browser runtimes, leaving your framework feeling lightweight and exceptionally fast.
 
 Since you are actively writing your own framework, how are you handling **DOM updates and patching**? If you tell me whether you are using a **Virtual DOM (Hyperscript)** or **Direct Reactive DOM Nodes (like Signals/Fine-Grained tracking)**, I can show you the exact line where this disposal engine can be integrated seamlessly.
+
+# (d) to write a fp component framework for vanillajs (not web component), what do i need to write, h (hyperscript) for example
+
+To build a Functional Programming (FP) component framework in vanilla JavaScript without using Web Components, you need to create a predictable pipeline: <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>State → View Function → Virtual DOM → Real DOM</strong></mark>.
+
+Here is the breakdown of the essential building blocks you need to write.
+
+### 1. The Hyperscript Function (`h`)
+
+This function creates light JavaScript objects (Virtual DOM nodes) instead of heavy real DOM elements. It enforces purity by turning UI declarations into data.
+
+javascript
+
+```
+export function h(type, props, ...children) {
+  return { type, props: props || {}, children: children.flat() };
+}
+```
+
+Use code with caution.
+
+### 2. The DOM Renderer
+
+You need a function to transform your Virtual DOM object tree into actual browser DOM nodes.
+
+- **Create Node**: A function to turn a single VDOM node into a real element.
+- **Mount**: A function to attach the created elements to a root element in the HTML.
+
+### 3. The Reconciliation Engine (Diff & Patch)
+
+An FP framework avoids direct DOM manipulation. Instead, it computes changes mathematically. \[[1](https://medium.com/@metapgmr/hex-a-no-framework-approach-to-building-modern-web-apps-e43f74190b9c)]
+
+- **Diff Algorithm**: Compares the old VDOM tree with the new VDOM tree.
+- **Patch Function**: Identifies the minimum changes (adds, removes, updates) and applies only those to the real DOM.
+
+### 4. Immutable State Store
+
+In FP, state cannot be mutated directly. You need a centralized store that manages state transitions via pure functions.
+
+- **Action Dispatcher**: Sends events to trigger updates.
+- **Reducer**: A pure function `(oldState, action) => newState` that computes the next state.
+
+### 5. The Application Loop (The Glue)
+
+This coordinates the entire cycle. It listens for state changes, runs the component functions with the new state, diffs the output, and updates the DOM.
+
+javascript
+
+```
+// The core architecture loop
+let currentState = initialStore;
+let currentVDOM = rootComponent(currentState);
+
+function dispatch(action) {
+  currentState = reducer(currentState, action);
+  const newVDOM = rootComponent(currentState);
+  patch(rootDOMElement, currentVDOM, newVDOM);
+  currentVDOM = newVDOM;
+}
+```
+
+Use code with caution.
+
+### 6. Component Composition Utility
+
+Since you are not using Web Components, components are just pure functions: `(props) => VDOM`. You need a way to pass data downward smoothly, often requiring a utility to handle children injection or higher-order functions for state mapping. \[[1](https://eecs485staff.github.io/p3-insta485-clientside/setup%5Freact.html)]
+
+***
+
+To help us get started on the actual code, tell me:
+
+- Do you want to write a **basic render-from-scratch** engine first, or go straight to the **diff/patch algorithm**?
+
+- Should we use the **Redux-style reducer** pattern or a simpler **state updater function**?
+
+- Do you plan to use **JSX** (which requires a build tool like Babel configured for your `h` function) or **pure JS template strings**? \[[1](https://betterprogramming.pub/the-comprehensive-guide-on-fresh-a-new-web-framework-by-deno-b1ebc94007cb)]
+
+- [link](https://medium.com/@metapgmr/hex-a-no-framework-approach-to-building-modern-web-apps-e43f74190b9c)\
+  HEX: a No Framework Approach to Building Modern Web Apps\
+  Oct 1, 2017 — React introduced the concept of virtual-dom which combined with functional HTML removed the need for direct DOM manipulations. Aga...\
+  \
+  \
+  Medium
+
+- [link](https://eecs485staff.github.io/p3-insta485-clientside/setup%5Freact.html)\
+  React Tutorial | p3-insta485-clientside\
+  Props The Post component is a pure function, always returning the same output for the same input. Inputs are passed as props, whic...\
+  \
+  \
+  GitHub Pages documentation
+
+- [link](https://betterprogramming.pub/the-comprehensive-guide-on-fresh-a-new-web-framework-by-deno-b1ebc94007cb)\
+  A Comprehensive Guide on Fresh — JavaScript’s New Web Framework by Deno\
+  Jul 25, 2022 — Lines 1–2 are Preact specific syntaxes. Line 1 tells babel to use h for JSX , which can also be configured globally in babel. The ...\
+  \
+  \
+  Better Programming
+
+## You said: no vdom no diff
+
+To build a Functional Programming (FP) component framework without a Virtual DOM or diffing engine, you must use a **reactive data-driven architecture**. Instead of comparing trees, changes in state must trigger immediate, targeted updates to the specific DOM nodes that depend on them.
+
+Here is exactly what you need to write.
+
+### 1. The Reactive State Engine
+
+Without a VDOM, the framework needs to know exactly _what_ changed and _who_ is listening.
+
+- **State Wrapper**: An object using JavaScript `Proxy` or explicit getters/setters to intercept data mutations.
+- **Subscriber Registry**: A system to track which DOM elements depend on which specific state keys.
+
+### 2. The Hyperscript Function (`h`)
+
+Since there is no VDOM, your `h` function must return **live, real DOM elements** immediately, while automatically wiring up reactivity.
+
+- **Element Creation**: Uses `document.createElement(type)`.
+- **Property/Event Binding**: Loops through properties to attach event listeners (`addEventListener`) and attributes.
+- **Dynamic Children Handling**: Detects if a child is a static element or a dynamic function that needs tracking. \[[1](https://codeburst.io/generating-config-driven-dynamic-forms-using-web-components-7c8d400f7f2e), [2](https://bennypowers.dev/posts/lets-build-web-components/part-7-hybrids/), [3](https://medium.com/@cibilex/exploring-vues-virtual-dom-and-render-functions-55209333287c)]
+
+### 3. The Reactive Binding Utility (`$`)
+
+You need a wrapper function to pass dynamic values into your hyperscript. This function registers the resulting DOM text or attribute as a listener to state changes.
+
+javascript
+
+```
+// Example conceptual usage:
+// h('div', null, [ 'Hello ', $(state, 'name') ])
+```
+
+Use code with caution.
+
+### 4. Component Definition Pattern
+
+Components in this architecture are pure functions that accept state and properties, and return a real DOM node. \[[1](https://medium.com/tyler-mcginnis/building-user-interfaces-with-pure-functions-and-function-composition-in-react-js-34b999ddeaba)]
+
+javascript
+
+```
+// Pure component pattern
+export function CounterComponent({ state, actions }) {
+  return h('div', { class: 'counter' }, [
+    h('h1', null, [ $(state, 'count') ]),
+    h('button', { onclick: actions.increment }, [ '+' ])
+  ]);
+}
+```
+
+Use code with caution.
+
+### 5. Efficient DOM Mappers (For Arrays)
+
+Since you cannot diff a list, rendering arrays efficiently requires a dedicated helper. You must write a list-renderer that maps array items to elements and performs localized updates (like appending or removing a specific row) when the array changes.
+
+***
+
+To start building the actual codebase, let me know:
+
+- Do you want to implement the reactivity using **JavaScript Proxies** or a **Pub/Sub event signal pattern**?
+
+- Should we write the **`h` function first**, or design the **reactive state store**?
+
+- [link](https://codeburst.io/generating-config-driven-dynamic-forms-using-web-components-7c8d400f7f2e)\
+  Generating Config driven Dynamic Forms using Web Components\
+  Mar 8, 2019 — There's a COMPONENTS\_MAPPING that we need to maintain to map the component type to the actual web component tag name. Once, we get...\
+  \
+  \
+  codeburst
+
+- [link](https://bennypowers.dev/posts/lets-build-web-components/part-7-hybrids/)\
+  Lets Build Web Components! Part 7: Hybrids\
+  Oct 28, 2018 — Templating Bindings are primarily to properties, not attributes. More on that in a bit. Event listeners are bound with on\* syntax ...\
+  \
+  \
+  bennypowers.dev
+
+- [link](https://medium.com/@cibilex/exploring-vues-virtual-dom-and-render-functions-55209333287c)\
+  Exploring Vue’s Virtual DOM and Render Functions | by Cibilex\
+  Sep 21, 2023 — Static Hoisting There are two children,one of is static and another is dynamic element. When Vue compile the above code While The ...\
+  \
+  \
+  Medium
+
+Show all
+
+# (d) does obsidian use react
+
+The core <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>Obsidian application does not use React</strong></mark>; it is built using vanilla JavaScript/TypeScript, HTML, and CSS layered on top of the Electron framework for desktop and Capacitor for mobile. \[[1](https://www.reddit.com/r/ObsidianMD/comments/1qj3yx2/has%5Fit%5Fbeen%5Fconsidered%5Fto%5Fmake%5Fnative%5Fobsidian/), [2](https://madewithreactjs.com/obsidian), [3](https://www.reddit.com/r/ObsidianMD/comments/1itab66/which%5Fprogramming%5Flanguage%5Fis%5Fobsidian%5Fwritten%5Fin/), [4](https://forum.obsidian.md/t/how-did-the-devs-implement-the-tiling-windows/36973)]
+
+However, **you can use React within Obsidian** through community add-ons or when building your own custom setups: \[[1](https://docs.obsidian.md/Plugins/Getting+started/Use+React+in+your+plugin), [2](https://medium.com/@ahmed.nums345/a-comprehensive-guide-to-react-building-dynamic-user-interfaces-80ba5b83603c), [3](https://forum.obsidian.md/t/react-components-showcase/30224)]
+
+- **Plugin Development**: Obsidian’s API natively supports integration with UI frameworks. Developers frequently build community plugins using the [Obsidian Developer Documentation for React](https://docs.obsidian.md/Plugins/Getting+started/Use+React+in+your+plugin) to create custom sidebars, views, and settings.
+- **Dynamic Notes**: Community plugins like `Reactive Notes` and `Obsidian React Components` allow you to write and embed interactive React components with JSX directly inside your standard Markdown notes. \[[1](https://www.reddit.com/r/ObsidianMD/comments/1k19yom/obsidian%5Fplugin%5Fdevelopers%5Freact%5Fvs%5Fsvelte/), [2](https://mcpmarket.com/tools/skills/obsidian-react-component-expert), [3](https://www.obsidianstats.com/plugins/reactive-notes), [4](https://www.obsidianstats.com/plugins/obsidian-react-components), [5](https://hypothes.is/a/tjpIQGmsEeyacPefXOe0jw), [6](https://www.obsidianstats.com/tags/components), [7](https://docs.obsidian.md/Plugins/Getting+started/Use+React+in+your+plugin)]
+
+If you are thinking about **building a plugin** or **making your notes interactive**, I can give you a hand. Do you want to see a boilerplate example of mounting a React component inside an Obsidian view, or are you looking for community plugins that already bring React functionality into your vault? \[[1](https://www.obsidianstats.com/plugins/reactive-notes), [2](https://mcpmarket.com/tools/skills/obsidian-react-component-expert)]
+
+- [link](https://docs.obsidian.md/Plugins/Getting+started/Use+React+in+your+plugin)\
+  Use React in your plugin - Developer Documentation\
+  Mount the React component. To use the React component, it needs to be mounted on a HTML element. The following example mounts the ...\
+  Obsidian
+- [link](https://www.reddit.com/r/ObsidianMD/comments/1qj3yx2/has%5Fit%5Fbeen%5Fconsidered%5Fto%5Fmake%5Fnative%5Fobsidian/)\
+  Has it been considered to make native Obsidian apps? - Reddit\
+  Jan 21, 2026 — \* kepano. • 5mo ago. • Edited 5mo ago. Top 1% Poster. As @joethei mentioned, Electron is only used on desktop, on mobile it uses C...\
+  Reddit·r/ObsidianMD
+- [link](https://www.reddit.com/r/ObsidianMD/comments/1k19yom/obsidian%5Fplugin%5Fdevelopers%5Freact%5Fvs%5Fsvelte/)\
+  Obsidian plugin developers: React vs Svelte? : r/ObsidianMD - Reddit\
+  Apr 17, 2025 — Working on my plugin when I realised I needed more complex state management and UI organisation than pure HTML elements. I can see...\
+  Reddit·r/ObsidianMD
+
+Show all
+
+## You said: how does it write components wo frameworks
+
+To build UI elements without a framework, Obsidian relies directly on the browser's **Document Object Model (DOM) API** using vanilla JavaScript or TypeScript. \[[1](https://www.geeksforgeeks.org/javascript/what-is-vanilla-javascript/)]
+
+Obsidian's internal core code and standard plugins manipulate HTML elements directly for maximum speed and minimal memory overhead.
+
+### 1. Direct DOM Manipulation
+
+Instead of a virtual DOM (like React uses), Obsidian creates, configures, and appends HTML elements directly to the active workspace view using standard Web APIs.
+
+- **`document.createElement()`**: Creates the HTML tags.
+- **`element.setText()`**: A helper method provided by Obsidian to safely inject text.
+- **`element.addClass()`**: Adds CSS classes for styling.
+
+### 2. Built-In Helper Utilities
+
+To make UI construction cleaner without React's JSX, Obsidian provides custom utility methods built into its API:
+
+- **`createEl()`**: A global helper to create an element, set its attributes, and append it to a parent in a single line.
+- **`createDiv()`**: A shorthand method specifically for creating elements. \[[1](https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines)]
+
+### 3. Comparison: Vanilla vs. React
+
+Here is how Obsidian creates a simple button with a counter using its native vanilla approach versus how you would write it in React.
+
+### The Obsidian Way (Vanilla)
+
+typescript
+
+```
+// Inside an Obsidian View or Setting Tab
+const container = this.containerEl;
+
+// Create a wrapper div
+const div = container.createDiv({ cls: "my-counter-wrapper" });
+
+let count = 0;
+
+// Create a button and attach a native event listener
+const button = div.createEl("button", { text: `Clicks: ${count}` });
+button.addEventListener("click", () => {
+    count++;
+    button.setText(`Clicks: ${count}`); // Manual DOM update
+});
+```
+
+Use code with caution.
+
+### The React Way
+
+jsx
+
+```
+// React handles the DOM updates automatically when state changes
+function Counter() {
+  const [count, setCount] = useState(0);
+  return (
+    <div className="my-counter-wrapper">
+      <button onClick={() => setCount(count + 1)}>
+        Clicks: {count}
+      </button>
+    </div>
+  );
+}
+```
+
+Use code with caution.
+
+### 4. Setting Controls API
+
+For settings pages, Obsidian provides a specialized `Setting` class. This allows developers to build complex forms (toggles, text inputs, dropdowns) using a readable method-chaining pattern without any HTML boilerplate:
+
+typescript
+
+```
+new Setting(containerEl)
+    .setName("Enable Feature")
+    .setDesc("This turns on the custom feature.")
+    .addToggle(toggle => toggle
+        .setValue(this.plugin.settings.mySetting)
+        .onChange(async (value) => {
+            this.plugin.settings.mySetting = value;
+            await this.plugin.saveSettings();
+        }));
+```
+
+Use code with caution.
+
+If you are planning to build something for Obsidian, I can help you set it up. Would you like to see how to **manage state** across multiple vanilla elements, or do you want a **full boilerplate skeleton** for a native Obsidian plugin?
+
+- [link](https://www.geeksforgeeks.org/javascript/what-is-vanilla-javascript/)\
+  What is Vanilla JavaScript?\
+  Aug 5, 2025 — Key Characteristics of Vanilla JavaScript No Frameworks or Libraries: Unlike React, Angular, Vue, or jQuery, Vanilla JavaScript me...\
+  \
+  GeeksforGeeks
+- [link](https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines)\
+  Plugin guidelines - Developer Documentation\
+  Instead, use the DOM API or the Obsidian helper functions, such as createEl() , createDiv() and createSpan() to build the DOM elem...\
+  \
+  \
+  Obsidian
+
+## You said: i mean how does it actually write. does it use hyperscript.
+
+**No, Obsidian does not use hyperscript.** \[[1](https://www.reddit.com/r/ObsidianMD/comments/16lf208/hyperscript%5Fwould%5Fchange%5Fobsidian%5Fforever/)]
+
+Instead, Obsidian injects a collection of custom prototype extensions directly into the browser's global **`HTMLElement`** and **`Node`** classes when the app boots up. \[[1](https://github.com/obsidianmd/obsidian-api/blob/master/publish.d.ts)]
+
+### How It Works Under the Hood
+
+When you run Obsidian, it modifies the global browser environment. It writes code that attaches custom methods like `createEl`, `createDiv`, `setText`, and `addClass` directly onto the native window prototype. \[[1](https://github.com/obsidianmd/obsidian-api/blob/master/publish.d.ts)]
+
+Because it targets the native prototype, any standard HTML element in the entire application instantly inherits these helper methods. \[[1](https://docs.obsidian.md/Plugins/User+interface/HTML+elements)]
+
+### The Pure Vanilla Implementation
+
+If you were to look at the minified core source code of Obsidian, its custom `createEl` function is essentially a wrapper for native Web APIs. It executes using this logic: \[[1](https://docs.obsidian.md/Plugins/User+interface/HTML+elements)]
+
+javascript
+
+```
+// A conceptual look at how Obsidian extends the native browser API
+HTMLElement.prototype.createEl = function(tagName, options = {}) {
+    // 1. Use the standard browser API to make an element
+    const el = document.createElement(tagName);
+
+    // 2. Parse the helper options object
+    if (options.text) el.textContent = options.text;
+    if (options.cls) el.className = options.cls;
+    if (options.attr) {
+        for (const [key, value] of Object.entries(options.attr)) {
+            el.setAttribute(key, value);
+        }
+    }
+
+    // 3. Append it immediately to the parent element ("this")
+    this.appendChild(el);
+
+    // 4. Return the new element so developers can chain methods
+    return el;
+};
+```
+
+Use code with caution.
+
+### Why they chose this over Hyperscript
+
+- **Zero Dependencies:** Hyperscript (or virtual DOM libraries) requires importing package code. Extending the prototype uses the browser's native engine, keeping the application fast and memory usage minimal. \[[1](https://www.reddit.com/r/ObsidianMD/comments/pdviyq/how%5Fis%5Fthe%5Fobsidian%5Fsoftware%5Fmade/), [2](https://news.ycombinator.com/item?id=45615193)]
+- **No Translation Layer:** Hyperscript evaluates code expressions or text strings at runtime. Obsidian's approach instantly outputs a real DOM node that the Chromium engine renders immediately without any extra parsing step.
+
+If you are writing complex user interfaces, managing a long string of chained `createEl` methods can get messy. If you want, I can show you how to **configure your environment** to use JSX without importing React, or we can look at how to **handle components cleanly** using vanilla TypeScript classes. \[[1](https://docs.obsidian.md/Plugins/User+interface/HTML+elements)]
+
+- [link](https://www.reddit.com/r/ObsidianMD/comments/pdviyq/how%5Fis%5Fthe%5Fobsidian%5Fsoftware%5Fmade/)\
+  How is the obsidian software made ? : r/ObsidianMD - Reddit\
+  Aug 29, 2021 — In case you were unaware “it's an Electron app” means it's built with web technology like HTML and CSS along with some kind of Jav...\
+  Reddit·r/ObsidianMD
+- [link](https://docs.obsidian.md/Plugins/User+interface/HTML+elements)\
+  HTML elements - Developer Documentation\
+  The \`createEl()\` method in every HTMLElement creates an HTMLElement under the original element. For example, you can use \`createEl...\
+  Obsidian
+- [link](https://github.com/obsidianmd/obsidian-api/blob/master/publish.d.ts)\
+  obsidian-api/publish.d.ts at master - GitHub\
+  declare global { interface ObjectConstructor { isEmpty(object: Record): boolean; each(object: { \[key: string]: T; }, callback: (va...\
+  GitHub
+
+Show all
+
+## You said: i mean h is just a simple alias of create element
+
+Yes, you are exactly right. In its simplest form, `h` is just a short wrapper for `document.createElement`.
+
+While standard **Hyperscript** libraries (`h`) return a detached node that you must manually mount later, Obsidian’s `createEl` differs by handling **creation and immediate mounting** in a single function call because it is called directly on the parent node.
+
+### The Syntax Difference
+
+### Classic Hyperscript approach:
+
+javascript
+
+```
+// Returns a detached element. You must append it manually later.
+const el = h('div', { className: 'box' }, 'Hello');
+parent.appendChild(el);
+```
+
+Use code with caution.
+
+### Obsidian's approach:
+
+javascript
+
+```
+// Called directly on the parent. It creates, appends, and returns the child.
+const el = parent.createDiv({ cls: 'box', text: 'Hello' });
+```
+
+Use code with caution.
+
+### Why it feels exactly like Hyperscript
+
+Obsidian's developers essentially built their own mini, localized version of a hyperscript-style factory. They chose to attach it directly to the native `HTMLElement` prototype rather than using a global `h()` function. This gives you the clean, object-driven configuration of hyperscript while maintaining strict, sequential DOM tree nesting.
+
+If you like that specific syntax style, I can show you how to **write a 5-line `h` function wrapper** for Obsidian's API, or we can look at how to **set up type definitions** so your IDE auto-completes your custom element properties. Which would you prefer?
+
+## You said: how does it nest components, manage props and states, or dispose a component
+
+Without a framework, Obsidian manages components by relying on a mix of **native DOM nesting, standard TypeScript classes, and its own built-in `Component` lifecycle class**.
+
+Instead of an automated framework runtime, you must handle state updates and cleanup manually.
+
+***
+
+### 1. Nesting Components
+
+Because `createEl` returns the newly created child element, nesting is achieved by **chaining or saving references** to those elements and calling `createEl` directly on them.
+
+typescript
+
+```
+// Nesting elements explicitly by building down the DOM tree
+const card = parent.createDiv({ cls: "card" });
+const header = card.createDiv({ cls: "card-header" });
+header.createEl("h3", { text: "Card Title" });
+
+const body = card.createDiv({ cls: "card-body", text: "Main content goes here." });
+```
+
+Use code with caution.
+
+***
+
+### 2. Managing Props and State
+
+"Props" are just plain JavaScript parameters passed into a class constructor or function. "State" consists of standard class variables. Because there is no reactivity engine, **you must trigger manual DOM updates** whenever state changes.
+
+### State Management Pattern
+
+typescript
+
+```
+class CustomCounter {
+    private count: number = 0; // State
+    private buttonEl: HTMLButtonElement;
+
+    constructor(parentEl: HTMLElement, props: { initialCount: number }) {
+        this.count = props.initialCount; // Receiving "props"
+
+        // Render UI
+        this.buttonEl = parentEl.createEl("button");
+        this.render(); // Initial render
+
+        // Bind events to mutate state
+        this.buttonEl.addEventListener("click", () => this.setCount(this.count + 1));
+    }
+
+    private setCount(newCount: number) {
+        this.count = newCount;
+        this.render(); // Manual "re-render" step
+    }
+
+    private render() {
+        this.buttonEl.setText(`Clicks: ${this.count}`);
+    }
+}
+```
+
+Use code with caution.
+
+***
+
+### 3. Disposing Components (`Component` Class)
+
+To prevent memory leaks and dangling event listeners, Obsidian provides a built-in base class called **`Component`**. This class tracks child components and registers cleanups that execute automatically when the component is destroyed.
+
+### The Lifecycle Pattern
+
+- **`this.addChild(child)`**: Keeps track of a sub-component. If the parent is destroyed, the child is automatically unloaded.
+- **`this.registerDomEvent(...)`**: Attaches an event listener to the window or document and automatically tears it down during disposal.
+- **`onunload()`**: A lifecycle method you override to handle custom cleanup (e.g., stopping timers).
+
+typescript
+
+```
+import { Component } from "obsidian";
+
+class MyPluginComponent extends Component {
+    private intervalId: number;
+
+    onload() {
+        super.onload();
+
+        // 1. Safe Event Listening (Auto-removed on unload)
+        this.registerDomEvent(document, "keydown", (e) => console.log(e.key));
+
+        // 2. Track custom cleanups
+        this.intervalId = window.setInterval(() => console.log("Tick"), 1000);
+    }
+
+    onunload() {
+        super.onunload();
+        // 3. Manual teardown for non-DOM items
+        clearInterval(this.intervalId);
+        console.log("Component fully disposed.");
+    }
+}
+
+// To destroy it entirely:
+// component.unload();
+```
+
+Use code with caution.
+
+If you are structuring a large UI, manual DOM updates can become tedious. I can show you how to **implement a simple Pub/Sub event emitter** to handle state changes cleanly, or we can look at how Obsidian handles **Workspace Leaves** to mount and unmount views. What sounds most helpful?
+
+## You said: translate to fp
+
+To translate this architectural pattern to Functional Programming (FP), we shift away from mutable objects, class instances, and hidden state (`this`). \[[1](https://medium.com/@helmi.confo/functional-design-patterns-a-paradigm-shift-for-robust-and-expressive-software-ba3e8af35f70), [2](https://scharenbroch.dev/blog/design-patterns/), [3](https://quizlet.com/vn/864994957/nlp301c-flash-cards/)]
+
+In FP, a UI component is a **pure function** that accepts state and properties as inputs and returns an element. State updates are handled via immutable data flows, and disposal is managed by returning explicit, composable cleanup functions (IO effects). \[[1](https://www.scaler.com/topics/react/reactjs-components/), [2](https://dev.to/sidramaqbool/understanding-stateful-and-stateless-components-in-react-22oo), [3](https://medium.com/globant/react-native-functional-and-class-components-9ee9c0d9a03e), [4](https://www.freecodecamp.org/news/functional-setstate-is-the-future-of-react-374f30401b6b/), [5](https://levelup.gitconnected.com/functional-programming-a-declarative-approach-to-software-design-1370b939510a)]
+
+***
+
+### 1. Nesting and Creation (Pure Composition)
+
+Instead of mutating a parent element via prototype methods, an FP component takes its parameters, creates its internal DOM structure, and returns its own root element. The caller is responsible for embedding it.
+
+typescript
+
+```
+type CardProps = { title: string; body: string };
+
+// Pure function: Inputs -> Output element
+const CardComponent = ({ title, body }: CardProps): HTMLElement => {
+    const root = document.createElement("div");
+    root.className = "card";
+
+    const header = document.createElement("h3");
+    header.textContent = title;
+
+    const content = document.createElement("p");
+    content.textContent = body;
+
+    root.append(header, content);
+    return root;
+};
+```
+
+Use code with caution.
+
+***
+
+### 2. State & Props (Immutable State & Unidirectional Data Flow)
+
+Because functions don't hold state natively, we use a simple **State Reducer pattern** (similar to Redux or Elm). The UI triggers actions, a pure function calculates the new state, and a rendering loop replaces the DOM node. \[[1](https://dev.to/ibrahim%5Fsikder/react-design-patterns-best-practices-2bk3), [2](https://vijayanant.com/posts/solid-fp/), [3](https://namastedev.com/blog/reusable-component-design-patterns-2/), [4](https://www.pointfree.co/episodes/ep103-a-tour-of-the-composable-architecture-part-4), [5](https://di-rk.medium.com/how-to-use-functional-programming-in-frontend-web-development-231fca5fe51d)]
+
+typescript
+
+```
+type CounterState = { readonly count: number };
+type CounterProps = { readonly initialCount: number };
+type Action = "INCREMENT" | "DECREMENT";
+
+// Pure State Reducer
+const counterReducer = (state: CounterState, action: Action): CounterState => {
+    switch (action) {
+        case "INCREMENT": return { count: state.count + 1 };
+        case "DECREMENT": return { count: state.count - 1 };
+        default: return state;
+    }
+};
+
+// Component Function
+const CounterComponent = (
+    props: CounterProps,
+    onAction: (action: Action) => void
+): HTMLElement => {
+    const root = document.createElement("button");
+    root.textContent = `Clicks: ${props.initialCount}`;
+
+    // DOM interaction is isolated to the edge of the function
+    root.addEventListener("click", () => onAction("INCREMENT"));
+
+    return root;
+};
+```
+
+Use code with caution.
+
+***
+
+### 3. Management & Disposal (Effect Tracking Loops)
+
+Instead of inheriting from Obsidian's `Component` class, we manage lifetimes using **Disposal Actions (IO Cleansers)**. Functions that cause side effects (like adding event listeners or intervals) must return a parameterless cleanup function.
+
+typescript
+
+```
+type Cleanup = () => void;
+
+// An Effect function that initializes a component and returns a cleanup function
+const initGlobalLogger = (): Cleanup => {
+    const handleKeyDown = (e: KeyboardEvent) => console.log(e.key);
+    document.addEventListener("keydown", handleKeyDown);
+
+    const intervalId = window.setInterval(() => console.log("Tick"), 1000);
+
+    // Return an immutable list of cleanups packaged into a single closure
+    return () => {
+        document.removeEventListener("keydown", handleKeyDown);
+        clearInterval(intervalId);
+        console.log("FP Component fully disposed.");
+    };
+};
+
+// Usage:
+// const dispose = initGlobalLogger();
+// dispose(); // Tears everything down cleanly
+```
+
+Use code with caution.
+
+***
+
+### Putting it All Together (The Functional Run-Loop)
+
+To wire this up cleanly without a framework runtime, you create an application orchestrator function that binds the immutable state updates to the DOM tree replacement:
+
+typescript
+
+```
+const mountCounterApp = (target: HTMLElement) => {
+    let state: CounterState = { count: 0 };
+    let currentElement: HTMLElement | null = null;
+
+    const dispatch = (action: Action) => {
+        state = counterReducer(state, action); // Get next state
+        render();                              // Redraw
+    };
+
+    const render = () => {
+        const nextElement = CounterComponent({ initialCount: state.count }, dispatch);
+
+        if (currentElement) {
+            target.replaceChild(nextElement, currentElement);
+        } else {
+            target.appendChild(nextElement);
+        }
+        currentElement = nextElement;
+    };
+
+    render(); // Bootstraps initial draw
+};
+```
+
+Use code with caution.
+
+If you want to take this functional architecture further, I can show you how to **integrate a Virtual DOM library** like Snabbdom (which works great inside Obsidian plugins) or demonstrate how to create **type-safe lenses** for nested state management. Which path should we explore?
+
+- [link](https://medium.com/@helmi.confo/functional-design-patterns-a-paradigm-shift-for-robust-and-expressive-software-ba3e8af35f70)\
+  Functional Design Patterns: A Paradigm Shift for Robust and Expressive Software\
+  Jun 11, 2025 — The transition to FP involves a shift in mindset, away from mutable state and object hierarchies.\
+  \
+  \
+  Medium
+- [link](https://scharenbroch.dev/blog/design-patterns/)\
+  Design Patterns\
+  May 30, 2024 — This pattern is basically just a factoring-out of functionality from one class structure to another, then using an instance from t...\
+  \
+  Lucas Scharenbroch
+- [link](https://quizlet.com/vn/864994957/nlp301c-flash-cards/)\
+  Thẻ ghi nhớ: NLP301c\
+  The hidden states in an HMM represent the underlying, unobserved states of a system that emit observed symbols or observations. Th...\
+  \
+  \
+  Quizlet
+
+Show all
 
 # 
 
