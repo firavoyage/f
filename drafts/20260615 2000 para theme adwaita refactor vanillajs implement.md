@@ -9608,5 +9608,68 @@ Use code with caution.
 
 Let me know if you would like to explore adding **automatic attribute cleanup** (so old properties disappear on updates) or **custom data-attributes handling** next!
 
+# pros and cons of building a complex web app using react or vanillajs (not web component) besides perf and size
+
+When building a complex web application, choosing between React and Vanilla JavaScript impacts your development workflow far more than it impacts raw performance or bundle size. \[[1](https://namastedev.com/blog/react-vs-vanilla-javascript-when-to-choose-8/), [2](https://namastedev.com/blog/react-vs-vanilla-javascript-when-to-choose-3/), [3](https://www.linkedin.com/posts/felippe-regazio%5Fi-see-it-another-way-people-whose-dont-know-activity-7375891551559954432-Z31j)]
+
+Here is the breakdown of the pros and cons for each approach, focusing on architecture, scaling, and team dynamics.
+
+### React
+
+### Pros
+
+- **Declarative UI**: You describe what the UI should look like based on the current state. React handles the visual updates automatically.
+- **Component Architecture**: Code is naturally split into self-contained, reusable pieces. This simplifies testing and debugging.
+- **Rich Ecosystem**: Access to thousands of pre-built libraries for routing, state management, form validation, and UI styling.
+- **State Management**: Built-in hooks and external tools (like Redux or Zustand) make managing complex, multi-level application states predictable.
+- **Talent Pool**: Finding experienced developers is easy because React is the industry standard for modern web development. \[[1](https://thepermatech.com/why-rectjs-leads-web-and-mobile-dev-in-2025/), [2](https://leanpub.com/effective-react), [3](https://medium.com/@leadnatic/building-dynamic-web-apps-with-react-js-best-practices-and-tips-9990e22a9997), [4](https://minditsystems.com/why-use-react-to-develop-interactive-user-interfaces-top-6-benefits/), [5](https://www.upgrad.com/blog/react-js-architecture/)]
+
+### Cons
+
+- **Tooling Overhead**: Requires a complex build pipeline involving compilers (like Babel), bundlers (like Vite), and dependency management.
+- **Breaking Changes**: Frequent library and framework updates can introduce technical debt and require regular code maintenance.
+- **Opinionated Ecosystem**: Choosing the wrong state management or routing library early on can paralyze a growing project. \[[1](https://daily.dev/blog/htmx-vs-react-when-hypermedia-beats-javascript-frameworks/), [2](https://www.concettolabs.com/blog/react-js-vs-svelte/), [3](https://celestialsys.com/blogs/cra-vs-vite-choosing-the-right-build-tool-for-enterprise-applications/), [4](https://www.dronahq.com/top-frontend-frameworks/), [5](https://molily.de/robust-javascript/)]
+
+### Vanilla JavaScript
+
+### Pros
+
+- **Zero Dependencies**: Total control over the codebase without relying on third-party maintainers or worrying about breaking updates.
+- **No Build Step Needed**: Code can run directly in the browser, eliminating complex compilation and bundler configurations.
+- **Ultimate Flexibility**: You are not restricted by a framework's rules, allowing you to design any custom architecture you want.
+- **Longevity**: Standards-based code written today will still run perfectly in browsers a decade from now without updates. \[[1](https://accreditly.io/articles/what-does-vanilla-mean-in-web-development), [2](https://www.greatfrontend.com/blog/latest), [3](https://unstop.com/blog/difference-between-server-side-scripting-and-client-side-scripting), [4](https://ester.co/blog/what-is-react-js), [5](https://ngssolution.com/blogs/angular-vs-react-which-js-framework-should-you-go-for-in-2025/)]
+
+### Cons
+
+- **Imperative Spaghetti**: You must manually locate elements, update text, and toggle classes. This often leads to messy, tangled code in large apps.
+- **State Syncing Nightmare**: Keeping the user interface perfectly synced with complex underlying data requires writing a massive amount of custom glue code.
+- **Reinventing the Wheel**: You must build your own routing, form handling, and component lifecycle systems from scratch.
+- **Low Onboarding Speed**: New developers must learn your specific, custom-built architecture instead of a universally known framework standard. \[[1](https://medium.com/@muhmdshanoob/feature-driven-modular-architecture-in-react-focusing-on-scalability-reusability-and-atomic-76d9579ac60e), [2](https://dev.to/sencha%5Freext/building-complex-ui-components-in-react-without-rewriting-everything-52je), [3](https://xbsoftware.com/blog/top-5-javascript-frameworks-2022/), [4](https://www.sencha.com/blog/how-a-javascript-ui-framework-reduces-frontend-complexity/), [5](https://www.sitepoint.com/front-end-frameworks-custom-vs-ready-use-solutions/)]
+
+***
+
+To help me give you more specific advice, what **kind of web app** are you building, how many **developers** are on your team, and what is your **timeline**?
+
+- [link](https://namastedev.com/blog/react-vs-vanilla-javascript-when-to-choose-8/)\
+  React vs Vanilla JavaScript: When to Choose\
+  Jul 14, 2025 — In conclusion, the choice between React and Vanilla JavaScript depends significantly on the project requirements, team expertise, ...\
+  \
+  \
+  NamasteDev
+- [link](https://namastedev.com/blog/react-vs-vanilla-javascript-when-to-choose-3/)\
+  React vs Vanilla JavaScript: When to Choose\
+  May 19, 2025 — For complex, interactive applications with large teams, React provides powerful tools and frameworks that can significantly enhanc...\
+  \
+  \
+  NamasteDev
+- [link](https://www.linkedin.com/posts/felippe-regazio%5Fi-see-it-another-way-people-whose-dont-know-activity-7375891551559954432-Z31j)\
+  JS frameworks vs Vanilla JS: A developer's perspective | Felippe Regazio posted on the topic\
+  Sep 22, 2025 — React ( React JS ) is powerful, but we're using it for everything — even when it's not needed. The result is bloated bundles, slow...\
+  \
+  \
+  LinkedIn
+
+Show all
+
 # 
 

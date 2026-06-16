@@ -41,7 +41,7 @@ export function signal(initialValue) {
     if (arguments.length === 0) return value;
     
     if (typeof arg === 'function') {
-      arg(value);
+      value = arg(value);
       // If instance is null, this is acting as a ref signal -> bypass layout re-renders!
       if (instance) instance.update(); 
       return;
@@ -130,6 +130,7 @@ function unmountVNode(vnode) {
 }
 
 export function patch(dom, oldVNode, newVNode) {
+  if (!newVNode && newVNode !== 0 && newVNode !== '') return dom;
   if (typeof newVNode !== 'object') {
     const textStr = String(newVNode);
     if (dom && dom.nodeType === Node.TEXT_NODE) {
@@ -155,13 +156,13 @@ export function patch(dom, oldVNode, newVNode) {
     const childVNode = instance.renderTree();
     instance.vnode = childVNode;
     instance.dom = patch(null, null, childVNode);
-
-    setTimeout(() => instance.mount(), 0);
+    instance.mount();
     return instance.dom;
   }
 
   if (oldVNode && oldVNode.tag !== newVNode.tag) {
     unmountVNode(oldVNode); 
+    dom = null;
   }
 
   let el = dom;
@@ -180,12 +181,18 @@ export function patch(dom, oldVNode, newVNode) {
     }
   }
 
+  const newChildren = newVNode.children || [];
+  const oldChildren = oldVNode?.children || [];
+  const oldDomChildren = Array.from(el.children);
+  
   el.innerHTML = '';
-  if (newVNode.children) {
-    for (let i = 0; i < newVNode.children.length; i++) {
-      const oldChild = oldVNode?.children?.[i];
-      const childDom = patch(null, oldChild, newVNode.children[i]);
-      el.appendChild(childDom);
+  
+  for (let i = 0; i < newChildren.length; i++) {
+    const oldChild = oldChildren[i];
+    const childDom = oldChild ? oldDomChildren[i] : null;
+    const patchedChild = patch(childDom, oldChild, newChildren[i]);
+    if (patchedChild.parentNode !== el) {
+      el.appendChild(patchedChild);
     }
   }
 
