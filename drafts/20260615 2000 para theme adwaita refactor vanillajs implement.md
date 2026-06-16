@@ -23729,7 +23729,6 @@ import 'the-new-css-reset/css/reset.css';
 import { h, p, ref, effect, render } from '../framework';
 
 const input = ref();
-
 function Counter({ count }) {
   effect(() => {
     if (input()) {
@@ -23770,6 +23769,1622 @@ function App() {
 }
 
 render(App, "#app");
+```
+
+# how does mithriljs update or dispose
+
+[Mithril.js](https://mithril.js.org/) updates its user interface through an **automated and manual virtual DOM diffing system**, and disposes of elements using **special lifecycle hooks coupled with DOM recycling**. \[[1](https://dev.to/jesperhoy/my-thoughts-on-mithriljs-319f), [2](https://mithril.js.org/autoredraw.html), [3](https://mithril.js.org/hyperscript.html), [4](https://mithril.js.org/lifecycle-methods.html)]
+
+Unlike reactive frameworks like Vue or React, Mithril does not track variables or use proxy getters/setters to automatically react to variable mutations. Instead, it updates globally or handles disposal through strict lifecycle routines. \[[1](https://mithril.js.org/components.html), [2](https://dev.to/jesperhoy/my-thoughts-on-mithriljs-319f), [3](https://mithril.js.org/autoredraw.html)]
+
+***
+
+### 1. How Mithril.js Updates
+
+Mithril updates the DOM using an [auto-redraw system](https://mithril.js.org/autoredraw.html). When a redraw triggers, Mithril re-runs the component `view()` functions to generate a new virtual DOM tree (`vnode` tree), diffs it against the old one, and surgically patches the real DOM. \[[1](https://mithril.js.org/archive/v0.2.0/mithril.component.html), [2](https://dev.to/jesperhoy/my-thoughts-on-mithriljs-319f), [3](https://mithril.js.org/autoredraw.html)]
+
+### What triggers an automatic update?
+
+- **DOM Event Handlers**: Any standard event handler defined natively within a Mithril view (e.g., `onclick`, `oninput`) will automatically trigger a redraw _after_ the event function executes.
+- **Mithril Router/HTTP Requests**: A redraw triggers automatically when an `m.request()` call successfully completes, or when browser routing navigates through `m.route()`. \[[1](https://mithril.js.org/autoredraw.html), [2](https://mithril.js.org/components.html), [3](https://mtsknn.fi/blog/how-to-debounce-events-in-mithriljs/)]
+
+### How to trigger a manual update?
+
+If data changes outside of Mithril's execution context (such as inside a `setTimeout`, `setInterval`, WebSocket event, or a third-party library callback), Mithril will not know about it. You must call **`m.redraw()`** to force a virtual DOM diff and update the UI. \[[1](https://mithril.js.org/redraw.html), [2](https://mithril.js.org/components.html)]
+
+javascript
 
 ```
+// Example of a manual update
+setInterval(() => {
+    store.counter++;
+    m.redraw(); // Forces Mithril to update the DOM
+}, 1000);
+```
+
+Use code with caution.
+
+### The Update Hook
+
+- **`onupdate(vnode)`**: This lifecycle hook runs every time an existing DOM element is updated during a redraw cycle. It does not fire when the element is first created. \[[1](https://mithril-by-examples.js.org/lifecycle-methods/)]
+
+***
+
+### 2. How Mithril.js Disposes
+
+When data changes and a node is no longer required in the new virtual DOM tree, Mithril initiates a disposal routine using **destruction hooks** before cleaning up the element. \[[1](https://mithril.js.org/lifecycle-methods.html), [2](https://mithril-by-examples.js.org/lifecycle-methods/)]
+
+### The Disposal Hooks
+
+Disposal can be intercepted and delayed via two main lifecycle hooks: \[[1](https://mithril-by-examples.js.org/lifecycle-methods/)]
+
+- **`onbeforeremove(vnode)`**: This executes right before a DOM element is detached from the document.
+  - _Special power:_ If you return a **Promise** from this hook, Mithril will pause the detachment and wait until the promise resolves. This is ideal for triggering exit fade-out animations.
+- **`onremove(vnode)`**: This runs after `onbeforeremove` (and after its promise resolves). It is the absolute final cleanup stage. You use this to manually tear down event listeners, clear intervals, or destroy third-party plugins (like jQuery wrappers or chart instances) to prevent memory leaks. \[[1](https://github.com/MithrilJS/mithril.js/issues/2295), [2](https://mithril-by-examples.js.org/lifecycle-methods/), [3](https://www.jsdelivr.com/package/npm/mithril.exitable), [4](https://mithril.js.org/lifecycle-methods.html), [5](https://mithril.js.org/hyperscript.html)]
+
+javascript
+
+```
+// Example of element disposal
+m("div", {
+    onbeforeremove: function(vnode) {
+        return new Promise((resolve) => {
+            // Wait for a 500ms fadeout animation before removal
+            vnode.dom.classList.add("fade-out");
+            setTimeout(resolve, 500);
+        });
+    },
+    onremove: function(vnode) {
+        // Final cleanup of background resources
+        clearInterval(this.intervalId);
+    }
+})
+```
+
+Use code with caution.
+
+### DOM Recycling
+
+To maintain high performance, Mithril utilizes [DOM recycling](https://mithril.js.org/lifecycle-methods.html). When an element is disposed of and removed from the active document, Mithril may retain that physical DOM element in an internal memory pool. \[[1](https://mithril.js.org/lifecycle-methods.html)]
+
+If a subsequent render cycle needs to create a similar element, Mithril pulls it from the pool and reuses it rather than spending performance overhead to generate a new native DOM node from scratch. \[[1](https://mithril.js.org/lifecycle-methods.html)]
+
+If you are looking to integrate this into a specific project, please let me know:
+
+- What **asynchronous architecture** (WebSockets, Promises, timers) your app relies on?
+
+- Whether you are writing **POJO components** or **Closure components**?
+
+- If you need an example of handling **third-party library cleanups** during disposal?
+
+- [link](https://dev.to/jesperhoy/my-thoughts-on-mithriljs-319f)\
+  My thoughts on Mithril.js - DEV Community\
+  May 3, 2022 — Reactivity / UI updates. Unlike the major frameworks (Reach, Vue, Svelte, etc.) Mithril. js does not update the UI in response to ...\
+  DEV Community
+
+- [link](https://github.com/MithrilJS/mithril.js/issues/2295)\
+  Simplify our component model · Issue #2295 · MithrilJS/mithril.js\
+  Nov 13, 2018 — Mapping. The hooks would be fused into this: ... oninit would become just the first component call. The component would be rendere...\
+  GitHub
+
+- [link](https://mithril.js.org/lifecycle-methods.html)\
+  Lifecycle methods - Mithril.js\
+  The DOM element lifecycle. A DOM element is typically created and appended to the document. It may then have attributes or child n...\
+  JS.ORG
+
+Show all
+
+## You said: does it rerender and diff the whole app
+
+**Yes, by default, Mithril.js re-renders and diffs the entire application** virtual DOM tree from the root down every time a redraw is triggered \[1].
+
+However, because Mithril's virtual DOM engine is highly optimized and written in extremely lightweight JavaScript, a full top-down diff takes only a fraction of a millisecond for most applications. \[[1](https://www.howdy.com/glossary/mithriljs), [2](https://mithril.js.org/archive/v1.1.7/vnodes.html)]
+
+If your application grows very large, you can explicitly prevent Mithril from diffing specific subtrees using the built-in optimization tools below.
+
+***
+
+### How to Prevent Full-Tree Diffing
+
+Mithril provides two primary mechanisms to skip rendering and diffing for performance-heavy components or static sections of your UI.
+
+### 1. Using Subtree Retain (`vnode.state.isRetained`)
+
+You can hook into the **`onbeforeupdate`** lifecycle method to tell Mithril to completely skip diffing a specific component and all of its children. If you return `false`, Mithril leaves that DOM subtree exactly as it is.
+
+javascript
+
+```
+const HeavyComponent = {
+    onbeforeupdate: function(vnode, oldVnode) {
+        // Only diff if the specific data changed
+        return vnode.attrs.importantData !== oldVnode.attrs.importantData;
+    },
+    view: function(vnode) {
+        return m("div", "Lots of complex DOM elements here...");
+    }
+};
+```
+
+Use code with caution.
+
+### 2. Using `m.memo` (For Pure Components)
+
+For functional or stateless components, you can wrap them in **`m.memo`**. This automatically caches the vnode output and skips the diffing process as long as the component's input attributes (`attrs`) haven't changed.
+
+javascript
+
+```
+// This component will skip re-rendering if 'user' stays the same
+const UserProfile = m.memo({
+    view: function(vnode) {
+        return m(".profile", vnode.attrs.user.name);
+    }
+});
+```
+
+Use code with caution.
+
+***
+
+### Key Exceptions to the Full Redraw
+
+While a standard `m.redraw()` targets the whole application root, you can restrict updates in certain scenarios:
+
+- **`m.redraw.sync()`**: This still diffs the entire app, but it forces the changes to apply to the real DOM immediately and synchronously rather than waiting for the browser's next animation frame.
+- **Isolated Rendering (`m.render`)**: If you mount components manually using the low-level `m.render(element, vnodes)` function instead of `m.mount()`, Mithril will only diff and update the specific container element you targeted, ignoring the rest of the application webpage \[4]. \[[1](https://mithril.js.org/render.html)]
+
+If you are experiencing performance bottlenecks, let me know:
+
+- How many **DOM elements or rows** are you rendering simultaneously?
+
+- Are you passing **deeply nested objects** as component attributes?
+
+- Do you need a structural pattern for handling **frequently changing data** like real-time feeds?
+
+- [link](https://www.howdy.com/glossary/mithriljs)\
+  Mithril.js\
+  Mithril. js is a modern client-side JavaScript framework used for building single-page applications. It offers a lightweight and f...\
+  \
+  www.howdy.com
+
+- [link](https://mithril.js.org/archive/v1.1.7/vnodes.html)\
+  Virtual DOM nodes\
+  For that reason, Mithril uses a sophisticated and highly optimized virtual DOM diffing algorithm to minimize the amount of DOM upd...\
+  \
+  JS.ORG
+
+- [link](https://mithril.js.org/render.html)\
+  render(element, vnodes)\
+  mount() and m. route() , a vnode tree rendered via m. render() does not auto-redraw in response to view events, m. redraw() calls ...\
+  \
+  JS.ORG
+
+## You said: how is it compared with react
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">Mithril.js is significantly smaller, faster, and simpler than React</span></strong></mark>, but it lacks React's massive ecosystem, corporate backing, and compiler tooling. \[[1](https://mithril.js.org/framework-comparison.html), [2](https://www.clariontech.com/blog/reactjs-alternatives-for-web-development), [3](https://www.browserstack.com/guide/best-javascript-framework), [4](https://www.reddit.com/r/javascript/comments/83qroe/what%5Fare%5Fthe%5Fmost%5Fwelldesigned%5Fjavascript/)]
+
+While React relies on a complex state tracking architecture and an ecosystem of external libraries, Mithril provides a compact, battery-included micro-framework that runs close to the native DOM. \[[1](https://blog.logrocket.com/solidjs-vs-react/), [2](https://news.ycombinator.com/item?id=37472857), [3](https://daily.dev/blog/htmx-vs-react-when-hypermedia-beats-javascript-frameworks/), [4](https://dev.to/jcs224/why-i-choose-mithril-js-55l9)]
+
+***
+
+### Core Structural Differences
+
+| Feature \[[1](https://mithril.js.org/framework-comparison.html), [2](https://mithril.js.org/framework-comparison.html), [3](https://dev.to/adrianbailador/mithriljs-a-modern-framework-for-javascript-5hke), [4](https://www.mgsoftware.nl/en/vergelijking/preact-vs-react), [5](https://www.fastcomet.com/blog/react-js-alternatives)] | Mithril.js                         | React                                       |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- | ------------------------------------------- |
+| **Library Size**                                                                                                                                                                                                                                                                                                                        | **~10 KB** gzipped                 | **~40+ KB** gzipped (React + ReactDOM)      |
+| **API Footprint**                                                                                                                                                                                                                                                                                                                       | Extremely small (~15 methods)      | Large (Hooks, Context, Concurrent features) |
+| **Render Strategy**                                                                                                                                                                                                                                                                                                                     | Full-app diff by default           | Component-level reactive trigger            |
+| **State Management**                                                                                                                                                                                                                                                                                                                    | Vanilla JavaScript objects (POJOs) | Immutability, `useState`, `useReducer`      |
+| **Built-in Tools**                                                                                                                                                                                                                                                                                                                      | Router, HTTP client (`m.request`)  | None (requires external packages)           |
+| **Syntax**                                                                                                                                                                                                                                                                                                                              | `m()` hyperscript functions or JSX | Strictly JSX                                |
+
+***
+
+### 1. Rendering and Diffing Strategy
+
+- **Mithril.js**: Iterates through the virtual DOM from the root node down upon global triggers (like events or network requests). It bypasses granular tracking. Instead, it relies on lightning-fast execution of vanilla JS to diff the tree. \[[1](https://www.fastcomet.com/blog/react-js-alternatives), [2](https://dev.to/jesperhoy/my-thoughts-on-mithriljs-319f)]
+- **React**: Operates on a highly targeted system. When a component’s local state changes via `useState`, only that specific component and its downward tree are flagged for a re-render. React utilizes complex fiber architectures and lanes to prioritize these updates. \[[1](https://medium.com/@artur.friedrich/react-vs-vue-vs-svelte-in-2026-a-practical-comparison-for-your-next-side-hustle-e57b7f5f37eb), [2](https://jovidecroock.com/blog/state-vs-signals/), [3](https://dev.to/johnschibelli/advanced-state-management-in-react-when-to-use-context-redux-or-zustand-kgo), [4](https://www.greatfrontend.com/questions/quiz/what-is-reconciliation-in-react), [5](https://www.greatfrontend.com/questions/quiz/what-is-react-fiber-and-how-is-it-an-improvement-over-the-previous-approach)]
+
+### 2. State Management and Reactivity
+
+- **Mithril.js**: Has **no state mechanism of its own**. You modify regular JavaScript variables or objects directly. The view updates as long as an auto-redraw event follows the mutation. \[[1](https://www.esparkinfo.com/software-development/technologies/reactjs/react-with-redux)]
+- **React**: Enforces **strict immutability**. You must use designated setter functions (`setState`) to notify the framework that a data change occurred. Directly mutating variables will fail to update the UI. \[[1](https://beyondthecode.medium.com/reactive-programming-in-javascript-beyond-usestate-and-redux-123dfe682ca2), [2](https://www.freecodecamp.org/news/react-best-practices-ever-developer-should-know/), [3](https://www.codeable.io/blog/svelte-vs-react/), [4](https://blog.bitsrc.io/frequently-asked-questions-react-7d54078e58a7)]
+
+### 3. All-in-One vs. Lego Bricks
+
+- **Mithril.js**: Ships as a **monolithic micro-core**. Out of the box, you receive a router (`m.route`) and an XHR/HTTP client (`m.request`) built by the core team. You rarely need external dependencies for routing or data fetching. \[[1](https://todomvc.com/examples/mithril/), [2](https://dev.to/adrianbailador/mithriljs-a-modern-framework-for-javascript-5hke), [3](https://www.browserstack.com/guide/best-javascript-framework)]
+- **React**: Is strictly a **UI rendering library**. To build a production-ready application, you must assemble a stack of decoupled dependencies (e.g., [React Router](https://reactrouter.com/), Axios), or adopt a heavy framework meta-layer like [Next.js](https://nextjs.org/). \[[1](https://flatlogic.com/blog/what-is-react/), [2](https://www.linkedin.com/pulse/nextjs-when-react-evolves-from-ui-library-full-ayman-alheraki-mkkvf)]
+
+### 4. Ecosystem, Jobs, and Tooling
+
+- **Mithril.js**: A niche tool with a small, dedicated community. Third-party UI component libraries (like component kits or data tables) are rare. You often have to build your own or wrap vanilla JS tools using Mithril's `oncreate` lifecycle hook. \[[1](https://dev.to/adrianbailador/mithriljs-a-modern-framework-for-javascript-5hke), [2](https://www.browserstack.com/guide/best-javascript-framework), [3](https://www.browserstack.com/guide/best-javascript-framework), [4](https://xbsoftware.medium.com/react-vs-webix-which-ui-approach-works-best-for-your-next-web-app-5333875ef7f3)]
+- **React**: The **dominant industry standard** for web development. It boasts a massive library of pre-built UI components, extensive educational resources, robust developer tools, and an immense job market. \[[1](https://www.cmarix.com/blog/react-development-trends-fast-scalable-apps/), [2](https://www.cmarix.com/blog/combine-nodejs-with-react-for-web-application-development/), [3](https://medium.com/@rajamails19/modern-javascript-frameworks-compared-svelte-qwik-react-and-solidjs-967face904f1)]
+
+***
+
+### Summary: When to Choose Which
+
+- **Choose Mithril.js** if you need an ultra-lightweight bundle, value zero-dependency architectures, target low-powered devices, or want to write plain JavaScript without complex build configurations. \[[1](https://dev.to/jesperhoy/my-thoughts-on-mithriljs-319f), [2](https://redskydigital.com/us/boost-your-websites-speed-mastering-mithril-js-magic/), [3](https://www.esparkinfo.com/blog/best-javascript-framework)]
+- **Choose React** if you are building an enterprise-grade app with a large team, need a vast library of pre-made UI components, or are aiming to maximize developer hiring availability. \[[1](https://distantjob.com/blog/svelte-vs-react/), [2](https://www.naukri.com/code360/library/react-js-projects), [3](https://www.discretelogix.com/react-vs-angular/), [4](https://mobiosolutions.com/reactjs-in-modern-enterprise-app-development/)]
+
+If you are evaluating these for an upcoming project, let me know:
+
+- What is the **target device profile** (mobile web, embedded systems, desktop browsers)?
+
+- Are you working on a **team** or a **solo development project**?
+
+- Do you prefer writing **standard JSX** or using **pure JavaScript functions**?
+
+- [link](https://mithril.js.org/framework-comparison.html)\
+  Framework comparison\
+  Generally speaking, React's approach to performance is to engineer relatively complex solutions. Mithril. js follows the less-is-m...\
+  \
+  \
+  JS.ORG
+
+- [link](https://www.clariontech.com/blog/reactjs-alternatives-for-web-development)\
+  Best ReactJS Alternatives for Modern Web Development\
+  Aug 14, 2024 — Mithril offers several advantages over React. js, particularly for those seeking a lightweight and efficient framework that ensure...\
+  \
+  \
+  Clarion Technologies
+
+- [link](https://www.browserstack.com/guide/best-javascript-framework)\
+  Best JavaScript Frameworks\
+  Apr 4, 2025 — Active Community: While smaller than React or Angular, Mithril has a dedicated and helpful developer community. Limited Ecosystem:\
+  \
+  BrowserStack
+
+Show all
+
+## You said: how does it diff
+
+Mithril.js diffs the UI using a **highly optimized, synchronous, level-by-level tree traversal algorithm**. It concurrently steps through the old virtual DOM tree and the new virtual DOM tree, strictly comparing nodes that occupy the same structural position. \[[1](https://mithril.js.org/vnodes.html), [2](https://mithril.js.org/render.html), [3](https://www.youtube.com/watch?v=KHQPfvKvE7s)]
+
+Instead of using heavy, generalized abstraction layers, Mithril generates [rigidly shaped internal `vnode` objects](https://mithril.js.org/vnodes.html). Modern JavaScript engine JIT compilers optimize these shapes for near-native structural property access speeds. \[[1](https://mithril.js.org/vnodes.html)]
+
+***
+
+### The 4 Core Diffing Rules
+
+When Mithril compares an old `vnode` to a new `vnode`, it applies a fixed hierarchy of rules to decide whether to update, replace, or move the element. \[[1](https://mithril.js.org/vnodes.html)]
+
+### 1. Node Type Matching
+
+If the node type (HTML tag name or Component identity) changes at the exact same tree coordinates, **Mithril completely destroys the old tree** and all its children. It builds a brand new DOM tree from scratch. \[[1](https://www.youtube.com/watch?v=KHQPfvKvE7s)]
+
+- _Example:_ Changing `m("div")` to `m("span")` causes a complete teardown and rebuild. \[[1](https://www.youtube.com/watch?v=KHQPfvKvE7s), [2](https://cekrem.github.io/posts/react-reconciliation-deep-dive/)]
+
+### 2. Attribute Diffing
+
+If the node type remains identical, Mithril keeps the underlying HTML element intact. It then performs a fast shallow comparison of the node attributes (`attrs` and `props`). \[[1](https://www.youtube.com/watch?v=KHQPfvKvE7s), [2](https://namastedev.com/blog/understanding-react-reconciliation-the-diffing-algorithm-and-performance/)]
+
+- It only applies the exact mutations (like a changed `className` or modified `value`) directly to the native DOM element properties. \[[1](https://www.youtube.com/watch?v=rysTbzKOEO0\&t=813), [2](https://www.youtube.com/watch?v=KHQPfvKvE7s)]
+
+### 3. Content and Text Diffing
+
+For text nodes or single children, Mithril directly compares the string values. If the text string changes, it updates the `nodeValue` property of the browser's native text node without altering the parent container.
+
+### 4. The Keyed List Algorithm (Lists and Arrays)
+
+When matching child arrays, Mithril performs a line-by-line index comparison. If elements are added, removed, or reordered, this can cause unnecessary DOM churn. To prevent this, you can apply a unique `key` attribute to the vnodes. \[[1](https://www.youtube.com/watch?v=rysTbzKOEO0\&t=813), [2](https://www.youtube.com/watch?v=KHQPfvKvE7s)]
+
+- **Without a `key`**: Mithril updates elements purely by their index position. If you remove the first item in a list of 100 rows, Mithril will mutate the other 99 rows step-by-step to match the shifted index states.
+- **With a `key`**: Mithril switches to a map-based lookup. It matches keys across the old and new arrays. It visually repositions the physical DOM nodes using `insertBefore` or `appendChild`, completely bypassing any attribute mutations or re-renders for those moved elements. \[[1](https://blog.logrocket.com/the-virtual-dom-react/)]
+
+***
+
+### Step-by-Step Diffing Lifecycle
+
+During a global update, a single `vnode` travels through these micro-stages:
+
+```
+[Redraw Triggered]
+       │
+       ▼
+1. Run component's view() ──> Generates New vnode Tree
+       │
+       ▼
+2. Check onbeforeupdate() ──(If false)──> Skip diffing this branch entirely
+       │
+ (If true or absent)
+       ▼
+3. Run Diffing Engine
+   ├── Match Node Types? ──(No)──> Destroy old DOM / Build new DOM
+   └── Match Node Types? ──(Yes)─> Update changed attributes & text nodes
+       │
+       ▼
+4. Run Arrays/Lists Diff ──> (Uses 'key' maps to reorder physical nodes)
+       │
+       ▼
+5. Fire onupdate() Hook ──> Diff complete for this element
+```
+
+If you want to optimize how your specific code executes during this diffing loop, let me know:
+
+- Are you rendering dynamic lists where items **change positions, get sorted, or get deleted**?
+
+- Are you experiencing **input focus loss** or animation resetting during updates?
+
+- Do you want to see how to properly pass **keys** inside a nested map loop?
+
+- [link](https://mithril.js.org/vnodes.html)\
+  Virtual DOM nodes - Mithril.js\
+  What is virtual DOM. A virtual DOM tree is a JavaScript data structure that describes a DOM tree. It consists of nested virtual DO...\
+  JS.ORG
+
+- [link](https://mithril.js.org/render.html)\
+  render(element, vnodes) - Mithril\
+  How it works. The m. render(element, vnodes) method takes a virtual DOM tree (typically generated via the m() hyperscript function...\
+  JS.ORG
+
+- [link](https://www.youtube.com/watch?v=rysTbzKOEO0\&t=813)\
+  What are Virtual DOM, Reconciliation, Diffing, and Batch ...\
+  Apr 10, 2022 — so react performs a diffic algorithm. so the diffing algorithm actually makes sure that how to calculate the diff. and what portio...\
+  3m\
+  YouTube·tapaScript by Tapas Adhikary
+
+Show all
+
+## You said: how does it modify dom after diffing and trigger lifecycles
+
+Mithril.js modifies the real DOM and triggers lifecycles using a **strictly synchronous, single-pass batching engine**. \[[1](https://mithril.js.org/render.html)]
+
+Instead of buffering mutations into an abstract queue or deferring lifecycles asynchronously, Mithril applies DOM changes on the spot as it walks down the tree. It then queues up the lifecycle hooks to fire in a predictable, depth-first order immediately after the DOM work is done.
+
+***
+
+### 1. How It Modifies the Real DOM
+
+When the diffing engine detects a discrepancy between the old and new `vnode` trees, it interacts directly with the browser's native DOM API. Mithril targets mutations using three primary vectors: \[[1](https://www.babbel.com/en/magazine/build-your-own-react-episode-iv-reconciliation-and-patching)]
+
+### Node Creation and Replacement
+
+- If a node is completely new, Mithril calls `document.createElement()` or `document.createTextNode()`.
+- It immediately attaches it to its parent using `parent.insertBefore()` (which handles both insertion and appending).
+- If a node type changed, Mithril calls `parent.replaceChild(newEl, oldEl)`. \[[1](https://www.digitalocean.com/community/tutorials/how-to-make-changes-to-the-dom)]
+
+### Property and Attribute Patching
+
+Mithril updates existing elements by writing directly to their native JavaScript DOM properties rather than using slower HTML attributes.
+
+- **Properties:** It modifies properties directly (e.g., `element.className = "new-class"` or `element.value = "new-value"`).
+- **Styles:** Inline styles are patched individually by looping through the style object keys (e.g., `element.style.color = "red"`), bypassing a full string recalculation of `element.style.cssText`.
+- **Events:** It updates event listeners (like `onclick`) by simply overwriting the property reference on the DOM node. \[[1](https://ratfactor.com/mithril1), [2](https://www.upgrad.com/tutorials/software-engineering/javascript-tutorial/dom-model-in-javascript/)]
+
+### Node Removal (Disposal Execution)
+
+When a node is dropped from the tree, Mithril calls `parent.removeChild(element)`. If an `onbeforeremove` hook exists and returns a promise, Mithril pauses this specific `removeChild` call until the promise resolves, allowing animations to finish. \[[1](https://mithril.js.org/animation.html)]
+
+***
+
+### 2. How Lifecycles Are Triggered
+
+Mithril schedules lifecycles based on a **two-phase system**: creation/updates happen immediately during the DOM walk, while completion hooks are execution-deferred until the entire DOM tree is stable.
+
+```
+[DOM Modification Walk (Depth-First)]
+   │
+   ├── Node Created ────> 1. Run oninit() immediately
+   │                      2. Mutate DOM & Create Element
+   │                      3. Queue oncreate() into "Draw Queue"
+   │
+   ├── Node Updated ────> 1. Run onbeforeupdate() (Proceed if true)
+   │                      2. Mutate changed DOM properties
+   │                      3. Queue onupdate() into "Draw Queue"
+   │
+   └── Node Removed ────> 1. Run onbeforeremove() (Wait if Promise)
+                          2. Remove physical DOM node
+                          3. Run onremove() cleanups immediately
+   │
+[DOM Walk Finishes]
+   │
+   ▼
+[Drain "Draw Queue"] ───> Fire all queued oncreate() and onupdate() hooks
+```
+
+### Phase 1: The Active DOM Walk
+
+As Mithril steps through your component tree:
+
+- **`oninit(vnode)`**: Fires **before** the DOM element is actually created. This lets you initialize component state or format incoming arguments.
+- **`onbeforeupdate(vnode, oldVnode)`**: Fires **before** Mithril diffs the node attributes or children. If it returns `false`, Mithril stops walking down this specific branch and retains the old DOM subtree entirely. \[[1](https://mithril.js.org/lifecycle-methods.html), [2](https://mithril.js.org/hyperscript.html), [3](https://mithril.js.org/lifecycle-methods.html)]
+
+### Phase 2: Draining the Draw Queue
+
+Mithril does not fire **`oncreate`** or **`onupdate`** while it is building the DOM, because reading layout properties (like `element.offsetHeight`) midway through would cause severe browser layout thrashing (forced synchronous layouts). \[[1](https://dev.to/alex%5Faslam/optimizing-dom-updates-in-javascript-for-better-performance-90k), [2](https://patrickojeh.substack.com/p/reacts-reconciliation-and-diffing)]
+
+Instead, Mithril pushes these hooks into an internal array called the "draw queue." Once the entire application's DOM updates are complete and the layout is stable:
+
+- **`oncreate(vnode)`**: Fires for all brand-new elements, in depth-first order. The `vnode.dom` property is fully accessible here, making it the perfect spot to initialize third-party charts or map plugins.
+- **`onupdate(vnode)`**: Fires for all updated elements.
+
+### The Cleanup Exception
+
+- **`onremove(vnode)`**: This bypasses the draw queue entirely. The moment a node is severed from the real DOM tree (or after its `onbeforeremove` animation promise resolves), its `onremove` function is called instantly to clear intervals, unbind global event listeners, and prevent memory leaks.
+
+If you are structuring your component lifecycles, let me know:
+
+- Do you need to **measure DOM dimensions** (like heights or widths) inside `oncreate` or `onupdate`?
+
+- Are you trying to integrate a **third-party library** (like D3, Leaflet, or a rich-text editor) that needs direct DOM manipulation?
+
+- Do you want to see how to coordinate a **staggered page exit animation** using `onbeforeremove`? \[[1](https://javascript.plainenglish.io/the-foundation-every-web-developer-must-master-dom-manipulation-explained-5160546851b5)]
+
+- [link](https://mithril.js.org/render.html)\
+  render(element, vnodes)\
+  Documentation on m.render(), which Mithril.js uses to efficiently patch real DOM trees with virtual DOM nodes\
+  \
+  JS.ORG
+
+- [link](https://www.babbel.com/en/magazine/build-your-own-react-episode-iv-reconciliation-and-patching)\
+  Build Your Own React Episode IV — Reconciliation/Patching\
+  Sep 7, 2023 — To achieve this, our React should compare the old and new VDOM trees to find the minimum set of changes needed to bring the actual...\
+  \
+  \
+  Babbel
+
+- [link](https://www.digitalocean.com/community/tutorials/how-to-make-changes-to-the-dom)\
+  How To Make Changes to the DOM\
+  Dec 26, 2017 — Inserting Nodes into the DOM Property/Method Description node. appendChild() Add a node as the last child of a parent element node...\
+  \
+  \
+  DigitalOcean
+
+Show all
+
+## You said: complete type vnode = {
+
+tag: string | Function,\
+props: object,\
+children: Array\
+dispose: undefined | Set\
+} | string
+
+function diff(old\_vnode, new\_vnode, container) {\
+if (!old\_vnode) {\
+container.appendChild(create\_node(new\_vnode))\
+return\
+}
+
+}
+
+To complete the `diff` function based on your custom `vnode` structure, you need to implement the core rules of a virtual DOM engine: handling node replacement (type mismatch), text node updates, property patching, and children diffing.
+
+Because your `vnode` structure contains a `dispose` registry (), we must also implement a teardown step (`cleanup_node`) to execute those cleanup functions when an old node is destroyed or replaced.
+
+Here is the complete implementation of the `diff` function, along with the supporting helper functions (`create_node`, `patch_props`, `diff_children`, and `cleanup_node`):
+
+javascript
+
+```
+/**
+ * Core Diffing Engine
+ * @param {vnode} old_vnode - The previous virtual DOM node
+ * @param {vnode} new_vnode - The current virtual DOM node
+ * @param {HTMLElement} container - The parent DOM element
+ * @param {number} [index=0] - The child index within the container
+ */
+function diff(old_vnode, new_vnode, container, index = 0) {
+  const current_dom = container.childNodes[index];
+
+  // 1. If no new vnode, remove the old DOM node and run disposal cleanups
+  if (!new_vnode) {
+    if (old_vnode) {
+      cleanup_node(old_vnode);
+    }
+    if (current_dom) {
+      container.removeChild(current_dom);
+    }
+    return;
+  }
+
+  // 2. If no old vnode, create and append the brand new DOM node
+  if (!old_vnode) {
+    container.appendChild(create_node(new_vnode));
+    return;
+  }
+
+  // 3. Handle Text/String Nodes
+  if (typeof old_vnode === 'string' || typeof new_vnode === 'string') {
+    if (old_vnode !== new_vnode) {
+      const next_dom = create_node(new_vnode);
+      cleanup_node(old_vnode);
+      container.replaceChild(next_dom, current_dom);
+    }
+    return;
+  }
+
+  // 4. Node Type Mismatch (e.g., 'div' changed to 'span', or Component changed)
+  if (old_vnode.tag !== new_vnode.tag) {
+    const next_dom = create_node(new_vnode);
+    cleanup_node(old_vnode);
+    container.replaceChild(next_dom, current_dom);
+    return;
+  }
+
+  // 5. Same Node Type: Update Properties/Attributes
+  patch_props(current_dom, old_vnode.props || {}, new_vnode.props || {});
+
+  // 6. Same Node Type: Recursively Diff Children Arrays
+  diff_children(old_vnode.children || [], new_vnode.children || [], current_dom);
+}
+
+/**
+ * Creates a real DOM node from a virtual node
+ */
+function create_node(vnode) {
+  if (typeof vnode === 'string') {
+    return document.createTextNode(vnode);
+  }
+
+  // Support for component function tags: tag(props)
+  const isComponent = typeof vnode.tag === 'function';
+  const tag_name = isComponent ? vnode.tag(vnode.props).tag : vnode.tag;
+
+  const el = document.createElement(tag_name);
+
+  // Apply properties
+  patch_props(el, {}, vnode.props || {});
+
+  // Recursively append children
+  if (vnode.children) {
+    vnode.children.forEach(child => {
+      el.appendChild(create_node(child));
+    });
+  }
+
+  return el;
+}
+
+/**
+ * Patches DOM properties by diffing old and new property objects
+ */
+function patch_props(dom, old_props, new_props) {
+  // Remove outdated attributes
+  for (const key in old_props) {
+    if (!(key in new_props)) {
+      if (key.startsWith('on')) {
+        const event_name = key.slice(2).toLowerCase();
+        dom.removeEventListener(event_name, old_props[key]);
+      } else {
+        dom.removeAttribute(key);
+      }
+    }
+  }
+
+  // Add or update attributes
+  for (const key in new_props) {
+    if (old_props[key] !== new_props[key]) {
+      if (key.startsWith('on')) {
+        const event_name = key.slice(2).toLowerCase();
+        if (old_props[key]) {
+          dom.removeEventListener(event_name, old_props[key]);
+        }
+        dom.addEventListener(event_name, new_props[key]);
+      } else if (key === 'className') {
+        dom.className = new_props[key];
+      } else {
+        dom.setAttribute(key, new_props[key]);
+      }
+    }
+  }
+}
+
+/**
+ * Diffs child vnode arrays index-by-index
+ */
+function diff_children(old_children, new_children, parent_dom) {
+  const max_length = Math.max(old_children.length, new_children.length);
+
+  // Walk backwards to safely handle removals without breaking index offsets
+  for (let i = max_length - 1; i >= 0; i--) {
+    diff(old_children[i], new_children[i], parent_dom, i);
+  }
+}
+
+/**
+ * Traverses a dropped vnode tree to trigger all registered dispose functions
+ */
+function cleanup_node(vnode) {
+  if (!vnode || typeof vnode === 'string') return;
+
+  // Run the current node's disposal Set functions
+  if (vnode.dispose instanceof Set) {
+    vnode.dispose.forEach(cleanup_fn => {
+      if (typeof cleanup_fn === 'function') cleanup_fn();
+    });
+    vnode.dispose.clear();
+  }
+
+  // Recursively clean up children trees
+  if (vnode.children) {
+    vnode.children.forEach(cleanup_node);
+  }
+}
+```
+
+Use code with caution.
+
+***
+
+### Architectural Design of this Implementation
+
+- **Disposal Lifecycles First**: The `cleanup_node` routine recursively descends down removed subtrees _before_ the elements drop out of scope. This matches Mithril's behavior, ensuring any active event listeners or timers stored in the `dispose` Set are executed cleanly to avoid memory leaks.
+- **Property Management via Javascript Abstraction**: Event hooks (properties beginning with `on*`) are dynamically parsed out and assigned via `addEventListener` rather than standard element attributes.
+- **Simple Level-Order Re-render**: Following a strict index-by-index children evaluation strategy, it mimics Mithril's default, un-keyed array updates by matching items sequentially according to array placement.
+
+If you plan to scale this implementation, let me know if you would like to:
+
+- Add a **Key-based lookup** system to optimize list reordering?
+- Integrate **State tracking/hooks** into the component functions (`vnode.tag`)?
+- Implement a **Scheduler/Batcher** to prevent multiple rapid changes from triggering immediate updates?
+
+## You said: inline diff children
+
+Here is the complete implementation with `diff_children` folded completely **inline** inside the primary `diff` function to execute everything inside a single, unified function footprint.
+
+javascript
+
+```
+/**
+ * Unified Diffing Engine with Inline Children Processing
+ * @param {vnode} old_vnode - The previous virtual DOM node
+ * @param {vnode} new_vnode - The current virtual DOM node
+ * @param {HTMLElement} container - The parent DOM element
+ * @param {number} [index=0] - The child index within the container
+ */
+function diff(old_vnode, new_vnode, container, index = 0) {
+  const current_dom = container.childNodes[index];
+
+  // 1. Structural Removal: If no new vnode exists, scrub the DOM and dispose resources
+  if (!new_vnode) {
+    if (old_vnode) cleanup_node(old_vnode);
+    if (current_dom) container.removeChild(current_dom);
+    return;
+  }
+
+  // 2. Structural Addition: If no old vnode exists, initialize a new DOM node
+  if (!old_vnode) {
+    container.appendChild(create_node(new_vnode));
+    return;
+  }
+
+  // 3. Leaf Nodes: Compare and update primitive text string data
+  if (typeof old_vnode === 'string' || typeof new_vnode === 'string') {
+    if (old_vnode !== new_vnode) {
+      const next_dom = create_node(new_vnode);
+      cleanup_node(old_vnode);
+      container.replaceChild(next_dom, current_dom);
+    }
+    return;
+  }
+
+  // 4. Element Variance: If HTML tags mismatch, overwrite the branch completely
+  if (old_vnode.tag !== new_vnode.tag) {
+    const next_dom = create_node(new_vnode);
+    cleanup_node(old_vnode);
+    container.replaceChild(next_dom, current_dom);
+    return;
+  }
+
+  // 5. Attribute Synchronization: Sync properties directly onto current element
+  patch_props(current_dom, old_vnode.props || {}, new_vnode.props || {});
+
+  // 6. INLINE CHILDREN DIFFING
+  // Normalize arrays to safeguard empty iterations
+  const old_children = old_vnode.children || [];
+  const new_children = new_vnode.children || [];
+  const max_length = Math.max(old_children.length, new_children.length);
+
+  // Traverse backward to ensure elements drop out securely without shifting index limits
+  for (let i = max_length - 1; i >= 0; i--) {
+    diff(old_children[i], new_children[i], current_dom, i);
+  }
+}
+
+/**
+ * Supporting Factory Hook: Instantiates native DOM nodes
+ */
+function create_node(vnode) {
+  if (typeof vnode === 'string') {
+    return document.createTextNode(vnode);
+  }
+
+  const isComponent = typeof vnode.tag === 'function';
+  const tag_name = isComponent ? vnode.tag(vnode.props).tag : vnode.tag;
+  const el = document.createElement(tag_name);
+
+  patch_props(el, {}, vnode.props || {});
+
+  if (vnode.children) {
+    vnode.children.forEach(child => el.appendChild(create_node(child)));
+  }
+
+  return el;
+}
+
+/**
+ * Supporting Mutation Hook: Maps raw JS properties to actual DOM nodes
+ */
+function patch_props(dom, old_props, new_props) {
+  for (const key in old_props) {
+    if (!(key in new_props)) {
+      if (key.startsWith('on')) {
+        dom.removeEventListener(key.slice(2).toLowerCase(), old_props[key]);
+      } else {
+        dom.removeAttribute(key);
+      }
+    }
+  }
+  for (const key in new_props) {
+    if (old_props[key] !== new_props[key]) {
+      if (key.startsWith('on')) {
+        if (old_props[key]) dom.removeEventListener(key.slice(2).toLowerCase(), old_props[key]);
+        dom.addEventListener(key.slice(2).toLowerCase(), new_props[key]);
+      } else if (key === 'className') {
+        dom.className = new_props[key];
+      } else {
+        dom.setAttribute(key, new_props[key]);
+      }
+    }
+  }
+}
+
+/**
+ * Supporting Cleanup Hook: Processes explicit disposal lifecycle sets
+ */
+function cleanup_node(vnode) {
+  if (!vnode || typeof vnode === 'string') return;
+
+  if (vnode.dispose instanceof Set) {
+    vnode.dispose.forEach(cleanup_fn => {
+      if (typeof cleanup_fn === 'function') cleanup_fn();
+    });
+    vnode.dispose.clear();
+  }
+
+  if (vnode.children) {
+    vnode.children.forEach(cleanup_node);
+  }
+}
+```
+
+Use code with caution.
+
+If you plan to tweak this code block next, let me know:
+
+- Do you want to inline **`patch_props`** or **`cleanup_node`** as well to keep the engine self-contained?
+- Should we add support for handling **keyed child tracking** inline?
+- Do you need to track **lifecycle hooks** like `oncreate` or `onupdate` alongside the `dispose` property?
+
+# all mithriljs methods
+
+The core global methods of the **Mithril.js** framework, organized by functional category, include the following: \[[1](https://mithril.js.org/api.html)]
+
+### Core Rendering & Components
+
+- **`m(selector, attributes, children)`**: Creates virtual DOM nodes (vnodes) using hyperscript.
+- **`m.mount(element, component)`**: Activates a component, rendering it into a DOM element and turning on the auto-redrawing system.
+- **`m.render(element, vnodes)`**: Renders an array of vnodes directly into a DOM element without initializing an active state framework.
+- **`m.redraw()`**: Manually forces a full redraw of all active components on the page. \[[1](https://mithril.js.org/hyperscript.html), [2](https://stackoverflow.com/questions/64829897/mithril-how-to-use-multiple-root-elements), [3](https://mithril.js.org/archive/v1.1.7/), [4](https://mithril.js.org/archive/v0.1.6/getting-started.html), [5](https://mithril.js.org/vnodes.html), [6](https://medium.com/@manassjoshi/mithriljs-an-unfamous-amazing-javascript-spa-framework-ac96337348ba)]
+
+### Routing
+
+- **`m.route(element, defaultRoute, routes)`**: Initializes router configurations for single-page application navigation.
+- **`m.route.set(path, data, options)`**: Navigates programmatically to a specific route path.
+- **`m.route.get()`**: Returns the current active route path string.
+- **`m.route.param(key)`**: Extracts a specific dynamic routing parameter value from the URL.
+- **`m.route.link(vnode)`**: Connects a virtual DOM link element to Mithril's routing mechanism. \[[1](https://mithril.js.org/archive/v0.2.5/mithril.component.html), [2](https://mithril.js.org/archive/v1.1.4/index.html), [3](https://mithril.js.org/route.html), [4](https://mithril.js.org/route.html)]
+
+### Data & Network Utilities
+
+- **`m.request(options)`**: Performs asynchronous XHR/AJAX HTTP requests and auto-redraws upon completion.
+- **`m.jsonp(options)`**: Executes a JSONP network request for cross-domain data scenarios. \[[1](https://mithril.js.org/), [2](https://mithril.js.org/request.html), [3](https://mithril.js.org/archive/v0.1.6/getting-started.html)]
+
+### String & Path Utilities
+
+- **`m.parseQueryString(string)`**: Converts a URL query string into an object.
+- **`m.buildQueryString(object)`**: Serializes an object into a clean URL query string format.
+- **`m.parsePathname(string)`**: Breaks down a path URL into its structural segments.
+- **`m.buildPathname(path, object)`**: Generates a complete path string by combining templates and variables. \[[1](https://mithril.js.org/api.html), [2](https://mithril.js.org/paths.html), [3](https://mithril.js.org/parsePathname.html)]
+
+### Advanced Rendering Utilities
+
+- **`m.trust(htmlString)`**: Marks an HTML string as safe to escape standard text protection rules.
+- **`m.fragment(attributes, children)`**: Groups a list of virtual elements together without introducing a parent wrapper element.
+- **`m.censor(object)`**: Sanitizes an object to safely prevent infinite loops during rendering serialization. \[[1](https://mithril.js.org/api.html)]
+
+***
+
+### Component Lifecycle Methods (Hooks) \[[1](https://mithril.js.org/lifecycle-methods.html)]
+
+In addition to the global API, Mithril exposes the following standard component and vnode lifecycle methods: \[[1](https://mithril.js.org/hyperscript.html), [2](https://mithril.js.org/lifecycle-methods.html), [3](https://mithril.js.org/components.html)]
+
+- **`oninit(vnode)`**: Fires before a vnode is converted into a real DOM node.
+- **`oncreate(vnode)`**: Fires immediately after a DOM element is attached to the webpage.
+- **`onupdate(vnode)`**: Fires after a DOM node is updated during a redraw cycle.
+- **`onbeforeremove(vnode)`**: Fires right before an element is unmounted, allowing you to return a Promise for custom exit animations.
+- **`onremove(vnode)`**: Fires right after an element is completely removed from the document.
+- **`onbeforeupdate(vnode, oldVnode)`**: Fires before structural differences are calculated, allowing you to return `false` to skip re-rendering an element for optimization. \[[1](https://mithril.js.org/hyperscript.html), [2](https://mithril.js.org/lifecycle-methods.html), [3](https://mithril.js.org/lifecycle-methods.html), [4](https://mithril.js.org/hyperscript.html)]
+
+Would you like to see a code example showing **routing setup**, or do you need help implementing specific **lifecycle hooks**?
+
+- [link](https://mithril.js.org/hyperscript.html)\
+  m(selector, attributes, children) - Mithril.js\
+  Vnodes and components can have lifecycle methods (also known as hooks), which are called at various points during the lifetime of ...\
+  JS.ORG
+- [link](https://mithril.js.org/)\
+  Introduction - Mithril.js\
+  Introduction \* Getting Started. Introduction. What is Mithril. js? Getting started. Hello world. DOM elements. Components. Routing...\
+  JS.ORG
+- [link](https://mithril.js.org/archive/v0.2.5/mithril.component.html)\
+  m.component - Mithril\
+  Routing \* m.route(rootElement, defaultRoute, routes) \* m.route(path, params, replaceHistory) \* m.route() \* m.route(element) \* m.ro...\
+  JS.ORG
+
+Show all
+
+## You said: counter example
+
+Here is a simple, reactive click counter component using Mithril.js:
+
+javascript
+
+```
+import m from "mithril";
+
+// Define the component state and view
+const Counter = {
+  count: 0, // State variable
+
+  view: function() {
+    return m("main", [
+      m("h1", "Mithril.js Counter"),
+      m("p", `Current count: ${Counter.count}`),
+      m("button", {
+        onclick: () => Counter.count++
+      }, "Increment")
+    ]);
+  }
+};
+
+// Mount the component to the DOM (replaces the body or a specific element)
+m.mount(document.body, Counter);
+```
+
+Use code with caution.
+
+### Key Features Used
+
+- **`m()`**: Creates the structural layout (, , , and ).
+- **`onclick`**: Binds the native browser click event directly to a state change.
+- **`m.mount()`**: Starts the application and automatically redraws the screen whenever the button is clicked.
+
+Would you like to see how to scale this into a **reusable component** using local state, or should we add **lifecycle hooks** to track the count changes?
+
+## You said: in fp
+
+Here is the exact same counter component refactored using a purely functional programming (FP) approach in Mithril.js.
+
+Instead of mutating a global object, this approach passes state downward, isolates side effects, and uses a pure function for the state transition. \[[1](https://www.miguelfarrajota.com/2021/06/understanding-functional-programming-an-overview-of-the-basics/)]
+
+javascript
+
+```
+import m from "mithril";
+
+// 1. Pure function for state transition
+const increment = count => count + 1;
+
+// 2. Pure visual component (Stateless functional component)
+const Counter = {
+  view: ({ attrs }) =>
+    m("main", [
+      m("h1", "Mithril.js FP Counter"),
+      m("p", `Current count: ${attrs.count}`),
+      m("button", { onclick: attrs.onIncrement }, "Increment")
+    ])
+};
+
+// 3. Application Shell (Manages state container)
+const App = () => {
+  let count = 0; // Isolated closure state
+
+  return {
+    view: () => m(Counter, {
+      count: count,
+      onIncrement: () => { count = increment(count); } // State updates trigger auto-redraw
+    })
+  };
+};
+
+// Mount the root state container
+m.mount(document.body, App);
+```
+
+Use code with caution.
+
+### Functional Programming Patterns Used
+
+- **Stateless View**: `Counter` is a pure visual representation. It does not manipulate data; it only reads from incoming `attrs`.
+- **State Immutability**: The `increment` function is pure. It takes a value and returns a brand-new value without side effects.
+- **Unidirectional Data Flow**: Data flows strictly down into the component via parameters (`attrs`), and events bubble up via callback functions.
+- **Closure-based State**: The `App` component uses a factory function closure to isolate state, preventing external global pollution. \[[1](https://javascript.plainenglish.io/level-up-your-javascript-skills-functional-programming-57a4d2063d3b), [2](https://www.scaler.com/topics/function-overloading-in-cpp/), [3](https://www.cse.chalmers.se/edu/year/2016/course/TDA547%5FObject%5FOriented%5FProgramming/lect02.html), [4](https://javascript.plainenglish.io/understanding-reacts-unidirectional-data-flow-f81238666806)]
+
+Would you like to see how to handle asynchronous data fetching using **Mithril streams** in an FP style, or should we look at **currying event handlers** for multiple buttons?
+
+- [link](https://www.miguelfarrajota.com/2021/06/understanding-functional-programming-an-overview-of-the-basics/)\
+  Understanding Functional Programming: An overview of the basics\
+  Jun 4, 2021 — But the second core principal of functional programming involves around mutating state (and, consequently, side effects). In FP Th...\
+  \
+  \
+  www.miguelfarrajota.com
+- [link](https://javascript.plainenglish.io/level-up-your-javascript-skills-functional-programming-57a4d2063d3b)\
+  Level Up Your JavaScript Skills : Functional Programming | by bektiaw\
+  Nov 14, 2025 — Pure Functions // ❌ Impure - modifies external state const const let incrementImpure incrementPure count = = () => count++; = ( 0 ...\
+  \
+  \
+  JavaScript in Plain English
+- [link](https://www.scaler.com/topics/function-overloading-in-cpp/)\
+  Function Overloading in C++ ​​(With Examples)\
+  May 6, 2024 — Here, the parameter of the first function, increment() is passed by value, and on the other hand, the second function has an integ...\
+  \
+  \
+  Scaler
+
+Show all
+
+# what will happen if you declare some private vars and export vars on a js module
+
+In a JavaScript module (ES module), the visibility and availability of variables depend entirely on whether you use the `export` keyword. \[[1](https://dev.to/victorusese/mastering-variables-and-scope-in-javascript-a-developers-guide-3jf5), [2](https://medium.com/@aayushvlad/javascript-modules-simple-explanation-33ed5d0035e3)]
+
+### Exported Variables
+
+- **Public Access**: Other files can import and use them.
+- **Live Bindings**: Modifying the variable inside the module reflects automatically in the importing file.
+- **Read-Only Outside**: Importing modules cannot reassign the variable directly. \[[1](https://zenn.dev/uhyo/articles/typescript-export-empty?locale=en), [2](https://www.geeksforgeeks.org/javascript/how-to-access-variables-from-another-file-using-javascript/), [3](https://www.geeksforgeeks.org/javascript/modular-scope-in-javascript/), [4](https://medium.com/@AlexanderObregon/what-happens-in-javascript-when-you-reassign-an-imported-binding-220b52eda379), [5](https://mirzaleka.medium.com/javascript-module-system-aaaafe870275)]
+
+### Private Variables
+
+- **Module Scoped**: They are only accessible inside that specific file.
+- **Encapsulation**: Outside files cannot see, modify, or access them directly.
+- **State Maintenance**: They can hold private state that only the exported functions can alter. \[[1](https://blog.webdevsimplified.com/2022-10/js-scoping/), [2](https://medium.com/nerd-for-tech/module-in-nodejs-95eba74e352f), [3](https://rhai.rs/book/language/modules/export.html), [4](https://javascript.plainenglish.io/4-practical-use-cases-for-iifes-in-javascript-6481dcb0ba7d), [5](https://rhai.rs/book/language/modules/export.html)]
+
+### Code Example
+
+javascript
+
+```
+// math.js
+
+// Private variable (hidden from outside)
+let count = 0;
+
+// Exported variable (visible to outside)
+export const doubleCount = () => count * 2;
+
+// Exported function to modify private state
+export function increment() {
+    count++;
+}
+```
+
+Use code with caution.
+
+To help you apply this to your project, could you tell me:
+
+- What **framework or runtime** are you using (Node.js, React, Vanilla JS)?
+
+- Are you trying to **share state** across multiple files?
+
+- Do you need to **prevent external modification** of specific data? \[[1](https://medium.com/@mahadshahib/debugging-swift-using-the-mirror-api-to-observe-private-variables-2345bf264818)]
+
+- [link](https://dev.to/victorusese/mastering-variables-and-scope-in-javascript-a-developers-guide-3jf5)\
+  Mastering Variables and Scope in JavaScript: A Developer's Guide\
+  Aug 19, 2024 — Top comments (3) You're absolutely right! Thanks for pointing that out. Module scope is indeed an important part of JavaScript, es...\
+  \
+  \
+  DEV Community
+
+- [link](https://medium.com/@aayushvlad/javascript-modules-simple-explanation-33ed5d0035e3)\
+  JavaScript Modules: Simple Explanation | by Aayushvlad\
+  Jan 23, 2025 — The export keyword designates code (functions, variables, classes, etc.) within a module that should be accessible from other modu...\
+  \
+  \
+  Medium
+
+- [link](https://zenn.dev/uhyo/articles/typescript-export-empty?locale=en)\
+  TypeScript-Specific Reasons for Using export {};\
+  Aug 4, 2024 — Specifically, variables and types defined within a script have global definitions and can be referenced from other files in the pr...\
+  \
+  \
+  Zenn
+
+Show all
+
+## You said: nodejs handles it well, but how will browsers or bundlers do
+
+Browsers and modern bundlers (like Vite, Webpack, or Rollup) handle private and exported module variables identically to Node.js. They all strictly follow the official ECMAScript Modules (ESM) specification, ensuring consistent behavior across environments. \[[1](https://www.telerik.com/blogs/introduction-esbuild), [2](https://dev.to/izmroen/what-is-a-javascript-bundler-16h2), [3](https://lihautan.com/what-is-module-bundler-and-how-does-it-work), [4](https://www.typescriptlang.org/docs/handbook/modules/reference.html), [5](https://www.aikido.dev/code-quality/rules/why-global-variables-cause-data-leaks-in-node-js-servers)]
+
+### How Browsers Handle It
+
+Browsers manage module variables natively via the tag. \[[1](https://medium.com/@ebojacky/all-you-need-to-know-about-module-importation-for-back-end-and-front-end-development-in-js-bbc51301ffa8), [2](https://medium.com/@kumarashish87998/vites-performance-fast-hmr-and-efficient-bundling-68f3a733a8a2), [3](https://www.luisllamas.es/en/how-to-use-esm-and-commonjs-modules-in-javascript/)]
+
+- **Strict Isolation**: The browser engine wraps each module in its own hidden scope, preventing private variables from polluting the global `window` object. \[[1](http://singlepageappbook.com/maintainability1.html), [2](https://javascript.plainenglish.io/javascript-closures-the-ultimate-guide-with-hands-on-examples-c31e45a68d9e)]
+- **Static Resolution**: The browser parses all `import` and `export` statements before running any code to build a dependency graph. \[[1](https://medium.com/frontend-simplified/javascript-modules-from-spaghetti-code-to-organized-bliss-esm-vs-commonjs-a97f0c5c037b), [2](https://33jsconcepts.com/concepts/es-modules)]
+- **Memory Pointers**: Exported variables are treated as "live bindings," meaning the browser links the import directly to the memory location of the original variable. \[[1](https://blog.appsignal.com/2024/12/11/a-deep-dive-into-commonjs-and-es-modules-in-nodejs.html), [2](https://33jsconcepts.com/concepts/es-modules), [3](https://panlw.github.io/15352957865945.html)]
+
+### How Bundlers Handle It
+
+Bundlers read your separate module files and combine them into fewer, optimized files, but they preserve the private/public boundaries through specific techniques. \[[1](https://www.linkedin.com/pulse/comprehensive-guide-javascript-bundlers-what-why-how-nilesh-farkade-8phjf), [2](https://javascript.plainenglish.io/comparing-javascript-module-bundlers-webpack-vs-rollup-39ddfb8a99ca)]
+
+- **Scope Reshuffling**: Bundlers often rename private variables (e.g., changing a private `count` to `count$1`) to prevent name collisions when merging multiple modules into a single file.
+- **Tree Shaking**: If a bundler detects that an exported variable is never imported anywhere in your application, it safely removes that variable and its unused private dependencies from the final production build. \[[1](https://levelup.gitconnected.com/reducing-bundle-size-in-typescript-projects-effective-strategies-for-a-smaller-build-8e0487cf75f8), [2](https://medium.com/@frontendfoo/tree-shakeable-npm-packages-9e85c27e505)]
+- **Closures**: Bundlers use standard JavaScript closures or internal factory functions to mimic module isolation, keeping private variables inaccessible to the rest of the bundle.
+
+To help optimize your build, let me know:
+
+- Which **specific bundler** (Vite, Webpack, etc.) are you using?
+
+- Are you experiencing **unexpected behavior** or errors in the browser?
+
+- Do you need to minimize your **final bundle size**?
+
+- [link](https://www.telerik.com/blogs/introduction-esbuild)\
+  Introduction to esbuild\
+  Oct 21, 2022 — You might have heard of terms such as webpack, Rollup and Parcel before. They're modern JavaScript bundlers that can be used for b...\
+  \
+  \
+  Telerik.com
+
+- [link](https://dev.to/izmroen/what-is-a-javascript-bundler-16h2)\
+  What is a JavaScript Bundler?\
+  Sep 25, 2025 — Vite is one of the most popular modern bundlers.\
+  \
+  \
+  DEV Community
+
+- [link](https://lihautan.com/what-is-module-bundler-and-how-does-it-work)\
+  What is module bundler and how does it work?\
+  Aug 30, 2019 — Examples of modern module bundlers (in no particular order) are: webpack, rollup, fusebox, parcel, etc.\
+  \
+  \
+  Tan Li Hau
+
+Show all
+
+# when do react effects run
+
+React Effects run <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>after the browser paints the updated screen</strong></mark>. They are specifically designed to execute outside of the main rendering flow so that your side effects do not block the user interface from updating. \[[1](https://react.dev/reference/react/useEffect), [2](https://react.dev/learn/synchronizing-with-effects)]
+
+### The Core Timeline
+
+React separates its work into phases. The exact timeline of an Effect looks like this: \[[1](https://medium.com/@katr.zaks/what-runs-first-understanding-useeffect-order-in-react-fb450f746a7a), [2](https://frontendmasters.com/blog/react-internals-which-useeffect-runs-first/)]
+
+1. **Render Phase**: React calls your component function to determine what the UI should look like.
+2. **Commit Phase**: React updates the actual DOM nodes to match the new UI.
+3. **Paint Phase**: The browser paints the pixels on the screen.
+4. **Effect Phase**: React [runs your `useEffect` function asynchronously](https://react.dev/reference/react/useEffect). \[[1](https://react.dev/learn/you-might-not-need-an-effect), [2](https://stackoverflow.com/questions/76831271/useeffect-hooks-are-running-to-completion-before-rendering-is-completed), [3](https://react.dev/reference/react/useEffect), [4](https://frontendmasters.com/blog/react-internals-which-useeffect-runs-first/), [5](https://medium.com/@katr.zaks/what-runs-first-understanding-useeffect-order-in-react-fb450f746a7a), [6](https://react.dev/learn/synchronizing-with-effects)]
+
+***
+
+### How the Dependency Array Controls Timing
+
+While Effects always run after painting, the **dependency array** (the second argument of `useEffect`) determines _which_ renders trigger them: \[[1](https://www.youtube.com/watch?v=jO1lPbllUz4), [2](https://blog.thesshguy.com/useeffect-executes), [3](https://medium.com/@abhimanranaweera/mastering-performance-optimization-in-react-js-unveiling-the-component-lifecycle-and-hooks-863dceca8c35), [4](https://github.com/reactjs/react.dev/issues/4107), [5](https://dev.to/fatimaola/mastering-reacts-useeffect-hook-a-comprehensive-guide-21kh)]
+
+- **No dependency array**\
+  javascript
+
+<!---->
+
+```
+useEffect(() => { /* Code */ });
+```
+
+Use code with caution.
+
+- **When it runs**: On the initial mount, and **after every single re-render** of the component.
+
+- **Empty dependency array `[]`**\
+  javascript
+
+<!---->
+
+```
+useEffect(() => { /* Code */ }, []);
+```
+
+Use code with caution.
+
+- **When it runs**: **Only once**, right after the component mounts (appears on the screen for the first time).
+
+- **With dependencies `[prop, state]`**\
+  javascript
+
+<!---->
+
+```
+useEffect(() => { /* Code */ }, [userId]);
+```
+
+Use code with caution.
+
+- **When it runs**: On the initial mount, and then **only if a value in the array changes** between renders. React compares values using `Object.is`. \[[1](https://www.w3schools.com/react/react%5Fuseeffect.asp), [2](https://www.reddit.com/r/reactjs/comments/uy0mkw/why%5Fthe%5Fcode%5Fbelow%5Fuseeffect%5Fis%5Frunning%5Fbefore/), [3](https://www.youtube.com/watch?v=jO1lPbllUz4), [4](https://react.dev/reference/react/useEffect)]
+
+***
+
+### When do Cleanup Functions Run?
+
+If your Effect returns a cleanup function, React executes it to prevent memory leaks: \[[1](https://legacy.reactjs.org/docs/hooks-effect.html), [2](https://www.youtube.com/watch?v=stZ39IxNzgs\&t=15), [3](https://www.scaler.com/topics/react/useeffect/), [4](https://caesar-jd-bell.medium.com/how-to-properly-clean-up-effects-in-useeffect-9e6ab497eb02), [5](https://dev.to/joelynn/react-hooks-working-with-useeffect-4-stages-i78)]
+
+- **Before the Effect runs again**: React cleans up the side effect from the _previous_ render before executing the new one.
+- **On Unmount**: When the component completely leaves the screen, the final cleanup runs. \[[1](https://legacy.reactjs.org/docs/hooks-effect.html), [2](https://www.geeksforgeeks.org/reactjs/reactjs-useeffect-hook/), [3](https://www.youtube.com/watch?v=jO1lPbllUz4)]
+
+***
+
+### Exceptions and Edge Cases
+
+- **`useLayoutEffect` vs `useEffect`**: If you need to read layout measurements (like an element's width) and immediately mutate the DOM before the user sees a flicker, use `useLayoutEffect`. It runs **synchronously after DOM mutations but before the browser paints**.
+- **Development Strict Mode**: If you are running React in Development Mode with , React will purposely **run your Effects twice** on mount. This behavior helps you notice missing cleanup functions (e.g., duplicate API requests or dangling event listeners) before they make it to production. \[[1](https://dev.to/cassidoo/when-useeffect-runs-3pf3), [2](https://react.dev/reference/react/useEffect), [3](https://stackoverflow.com/questions/76831271/useeffect-hooks-are-running-to-completion-before-rendering-is-completed), [4](https://www.reddit.com/r/reactjs/comments/1ab8pj7/what%5Fis%5Fthe%5Fbest%5Fway%5Fto%5Fexecute%5Fa%5Fpiece%5Fof%5Fcode/), [5](https://blog.devgenius.io/unit-testing-react-component-when-using-useeffect-vs-uselayouteffect-vs-useinsertioneffect-2e1938c68405)]
+
+If you want to debug a tricky behavior in your app, tell me:
+
+- What **code** is inside your hook?
+
+- What **dependencies** are you passing?
+
+- What **unexpected behavior** or loop are you seeing?
+
+- [link](https://react.dev/reference/react/useEffect)\
+  useEffect - React\
+  If your Effect wasn't caused by an interaction (like a click), React will generally let the browser paint the updated screen first...\
+  React
+
+- [link](https://stackoverflow.com/questions/76831271/useeffect-hooks-are-running-to-completion-before-rendering-is-completed)\
+  useEffect hooks are running to completion BEFORE rendering is ...\
+  Aug 3, 2023 — \* 2 Answers. Sorted by: The useEffect callback runs after React has finished mutating the DOM, but potentially before the browser ...\
+  Stack Overflow
+
+- [link](https://react.dev/learn/you-might-not-need-an-effect)\
+  You Might Not Need an Effect - React\
+  How to remove unnecessary Effects. There are two common cases in which you don't need Effects: You don't need Effects to transform...\
+  React
+
+Show all
+
+# should i use vdom for my declarative framework
+
+**No, you should not automatically default to using a Virtual DOM (VDOM) for a new declarative framework.** \[[1](https://dev.to/lalitkhu/rethinking-the-virtual-dom-a-case-for-direct-dom-manipulation-in-modern-web-development-1nhp), [2](https://dev.to/marzelin/comment/1hecd)]
+
+While a VDOM was once the gold standard for bridging the gap between declarative code and the imperative browser DOM, modern framework design has shifted heavily toward alternative architectures. Today, a VDOM is a specific implementation choice with distinct trade-offs, rather than a architectural necessity. \[[1](https://dev.to/lalitkhu/rethinking-the-virtual-dom-a-case-for-direct-dom-manipulation-in-modern-web-development-1nhp), [2](https://dev.to/marzelin/comment/1hecd), [3](https://dev.to/rajaniraiyn/imagine-svelte-with-virtual-dom-a-vision-for-the-future-of-web-frameworks-247h), [4](https://github.com/neomjs/neo/blob/dev/learn/blog/v10-deep-dive-vdom-revolution.md), [5](https://jbi.sh/reacts-real-legacy-a-follow-up-to-what-is-virtual-dom/)]
+
+The choice to include a VDOM depends on how you want your framework to handle state changes, compile-time optimizations, and cross-thread environments. \[[1](https://ratfactor.com/retrov/why-vdom), [2](https://github.com/neomjs/neo/blob/dev/learn/blog/v10-deep-dive-vdom-revolution.md), [3](https://www.reddit.com/r/react/comments/1fb6f50/a%5Freact%5Fdevelopers%5Fdilemma%5Fvirtual%5Fdom%5Fvs%5Freal/)]
+
+***
+
+### The Three Core Architectural Paths
+
+To build a declarative UI framework, you generally choose between three major rendering strategies:
+
+### 1. Runtime Diffing (Virtual DOM Approach) \[[1](https://blog.logrocket.com/svelte-vs-vue-comparing-framework-internals/), [2](https://www.reddit.com/r/react/comments/1fb6f50/a%5Freact%5Fdevelopers%5Fdilemma%5Fvirtual%5Fdom%5Fvs%5Freal/)]
+
+Your framework executes components to build a lightweight JavaScript object tree (the VDOM), compares it against the previous tree (diffing), and surgically updates the real DOM. \[[1](https://dev.to/efpage/is-vdom-still-faster-g3b), [2](https://www.youtube.com/watch?v=e7vjpEssnII)]
+
+- **Examples**: React, Vue (hybrid), Preact.
+- **When to use it**: If your framework relies on **"render-the-world" pure functions** where components re-run fully on every state change. It is highly dynamic and flexible, making features like dynamic component injection and multi-threaded processing straightforward. \[[1](https://www.reddit.com/r/reactjs/comments/w943ly/why%5Fdid%5Freact%5Fchose%5Fvirtual%5Fdom%5Finstead%5Fof%5Fusing/), [2](https://www.reddit.com/r/learnjavascript/comments/btquxy/planning%5Fto%5Fbe%5Fa%5Ffront%5Fend%5Fdev%5Fhow%5Fimportant%5Fis/), [3](https://dev.to/efpage/is-vdom-still-faster-g3b), [4](https://news.ycombinator.com/item?id=24845703), [5](https://github.com/neomjs/neo/blob/dev/learn/blog/v10-deep-dive-vdom-revolution.md), [6](https://tonsky.me/blog/humble-vdom/)]
+
+### 2. Compile-Time Reactivity (The Ahead-of-Time Approach)
+
+Instead of using a runtime virtual tree, your framework uses a compiler to analyze your declarative code (like HTML templates or JSX) and transform it directly into explicit, micro-targeted imperative updates. \[[1](https://www.reddit.com/r/react/comments/1fb6f50/a%5Freact%5Fdevelopers%5Fdilemma%5Fvirtual%5Fdom%5Fvs%5Freal/), [2](https://dev.to/marzelin/comment/1hecd)]
+
+- **Examples**: Svelte.
+- **When to use it**: If you want to **eliminate runtime framework overhead**. The compiler embeds the "game plan" directly into the output JavaScript, removing the need to compute differences at runtime. \[[1](https://www.reddit.com/r/reactjs/comments/w943ly/why%5Fdid%5Freact%5Fchose%5Fvirtual%5Fdom%5Finstead%5Fof%5Fusing/), [2](https://www.reddit.com/r/react/comments/1fb6f50/a%5Freact%5Fdevelopers%5Fdilemma%5Fvirtual%5Fdom%5Fvs%5Freal/), [3](https://www.greatfrontend.com/questions/quiz/how-does-virtual-dom-in-react-work-what-are-its-benefits-and-downsides)]
+
+### 3. Fine-Grained Reactive Graph (The Signal Approach)
+
+Your components run exactly once to set up the DOM. Primitives called "Signals" track dependencies automatically, updating only the specific text nodes or attributes bound to them when data changes. \[[1](https://dev.to/efpage/is-vdom-still-faster-g3b), [2](https://dev.to/sonaykara/why-virtual-dom-faster-rendering-and-performance-1cjh), [3](https://dev.to/luciano0322/signals-vs-proxy-vs-virtual-dom-what-actually-makes-them-different-4b1o)]
+
+- **Examples**: SolidJS, Lit.
+- **When to use it**: If raw performance and predictable data flow are your top priorities. It avoids both VDOM runtime diffing and heavy compile-time transformation restrictions. \[[1](https://www.reddit.com/r/reactjs/comments/w943ly/why%5Fdid%5Freact%5Fchose%5Fvirtual%5Fdom%5Finstead%5Fof%5Fusing/), [2](https://dev.to/efpage/is-vdom-still-faster-g3b), [3](https://www.smashingmagazine.com/2022/01/web-frameworks-guide-part1/), [4](https://www.youtube.com/watch?v=TRRJ-SjNDUE\&t=7), [5](https://byteofdev.com/posts/when-you-should-and-should-not-use-react/)]
+
+***
+
+### Framework Architectural Comparison
+
+| Feature \[[1](https://dev.to/efpage/is-vdom-still-faster-g3b), [2](https://namastedev.com/blog/virtual-dom-vs-dom-what-really-changes/), [3](https://www.sanity.io/glossary/virtual-dom), [4](https://tonsky.me/blog/humble-vdom/), [5](https://medium.com/@resti.guay/the-great-readability-war-why-object-vdom-is-winning-over-jsx-d0dc06abfe7d), [6](https://www.reddit.com/r/reactjs/comments/w943ly/why%5Fdid%5Freact%5Fchose%5Fvirtual%5Fdom%5Finstead%5Fof%5Fusing/)] | Virtual DOM Framework                         | Fine-Grained / Compiler Framework                 |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- | ------------------------------------------------- |
+| **Component Execution**                                                                                                                                                                                                                                                                                                                                                                                                                                                      | Re-runs on every relevant state change.       | Runs once to setup subscriptions.                 |
+| **Memory Overhead**                                                                                                                                                                                                                                                                                                                                                                                                                                                          | Higher (allocates memory for abstract trees). | Lower (only tracks direct dependencies).          |
+| **Runtime Performance**                                                                                                                                                                                                                                                                                                                                                                                                                                                      | Moderate (has O(N) tree-diffing cost).        | Extremely High (bypasses diffing).                |
+| **Code Flexibility**                                                                                                                                                                                                                                                                                                                                                                                                                                                         | Very High (unrestricted JavaScript/JSX).      | Moderate (requires specific reactivity wrappers). |
+| **Bundle Size**                                                                                                                                                                                                                                                                                                                                                                                                                                                              | Larger (requires runtime engine & scheduler). | Smaller (compiled away or minimal runtime).       |
+
+***
+
+### When You _Should_ Choose a VDOM
+
+A Virtual DOM is the right tool for your framework if your design requires any of the following features: \[[1](https://github.com/neomjs/neo/blob/dev/learn/blog/v10-deep-dive-vdom-revolution.md)]
+
+- **You need an Off-Main-Thread Architecture**: If you intend to run your application logic inside a Web Worker to keep the UI responsive, a VDOM is highly effective. Because workers cannot access the actual DOM, they can generate serializable VDOM objects and stream them across the thread boundary to a minimal main-thread renderer.
+- **Universal/Multi-Platform Rendering**: If you want your framework to target native platforms (like iOS/Android via canvas or native UI widgets) alongside the web, a VDOM serves as an excellent abstract rendering interface. You can swap out the browser-focused reconciliation layer for a native layout engine.
+- **Programming Simplicity (No Compiler)**: If you want a framework built entirely out of pure, runtime JavaScript without requiring a custom build step or compiler (like Svelte needs), a VDOM is the easiest way to translate arbitrary declarative structures into smart browser updates. \[[1](https://www.reddit.com/r/reactjs/comments/w943ly/why%5Fdid%5Freact%5Fchose%5Fvirtual%5Fdom%5Finstead%5Fof%5Fusing/), [2](https://github.com/neomjs/neo/blob/dev/learn/blog/v10-deep-dive-vdom-revolution.md), [3](https://www.reddit.com/r/react/comments/1fb6f50/a%5Freact%5Fdevelopers%5Fdilemma%5Fvirtual%5Fdom%5Fvs%5Freal/), [4](https://dev.to/marzelin/comment/1hecd), [5](https://dev.to/aidenybai/why-is-the-virtual-dom-necesssary-59l2)]
+
+### When You _Should Avoid_ a VDOM
+
+Skip the VDOM and look toward compile-time architectures or reactive signals if: \[[1](https://news.ycombinator.com/item?id=44086235), [2](https://www.reddit.com/r/javascript/comments/jhl8mo/askjs%5Fquestion%5Fabout%5Freact%5Fhaving%5Fa%5Fvirtual%5Fdom/), [3](https://news.ycombinator.com/item?id=35958193)]
+
+- **You are targeting low-power devices**: The memory footprint of keeping a virtual copy of the DOM tree can degrade performance on devices with restricted RAM.
+- **You want minimal bundle sizes**: VDOM frameworks require a heavier shipped runtime to handle the complexity of reconciliation and diffing.
+- **You want straightforward debugging**: Debugging a VDOM framework often requires tracing through complex reconciliation call stacks and framework internals rather than seeing exactly what triggered a specific line of code. \[[1](https://www.reddit.com/r/reactjs/comments/w943ly/why%5Fdid%5Freact%5Fchose%5Fvirtual%5Fdom%5Finstead%5Fof%5Fusing/), [2](https://namastedev.com/blog/virtual-dom-vs-dom-what-really-changes/), [3](https://www.sanity.io/glossary/virtual-dom), [4](https://www.youtube.com/watch?v=e7vjpEssnII), [5](https://xbsoftware.com/blog/declarative-and-imperative-programming/)]
+
+To guide your architecture further, let me know: What is the **primary platform target** for your framework (e.g., standard web, low-power devices, cross-platform mobile)? Will it use a **custom compiler/build step**, or do you want it to run as **pure vanilla JavaScript**?
+
+- [link](https://www.reddit.com/r/reactjs/comments/w943ly/why%5Fdid%5Freact%5Fchose%5Fvirtual%5Fdom%5Finstead%5Fof%5Fusing/)\
+  Why did react chose virtual DOM instead of using real ... - Reddit\
+  Jul 27, 2022 — All of these libraries/frameworks abstract direct DOM manipulation away from the developer so that the developer doesn't have to w...\
+  Reddit·r/reactjs
+- [link](https://dev.to/efpage/is-vdom-still-faster-g3b)\
+  Is VDom still faster? - DEV Community\
+  Aug 23, 2021 — • Aug 23 '21. VDOM has never been faster to execute than tightly hand crafted Javascript, but writing such code is a nightmare, an...\
+  DEV Community
+- [link](https://www.reddit.com/r/react/comments/1fb6f50/a%5Freact%5Fdevelopers%5Fdilemma%5Fvirtual%5Fdom%5Fvs%5Freal/)\
+  A React Developer's Dilemma: Virtual DOM vs Real ... - Reddit\
+  Sep 7, 2024 — Comments Section. billybobjobo. • 2y ago. • Edited 2y ago. 2 by miles if you already know the exact mutation you want and whether ...\
+  Reddit·r/react
+
+Show all
+
+## You said: if i want something like react, should i use vdom or diff with real dom
+
+If you want to build a framework that behaves exactly like React—meaning components are **pure functions that re-run fully on every state change**—<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">you should use a <strong>Virtual DOM (VDOM)</strong> rather than diffing with the real DOM</mark>. \[[1](https://javascript-conference.com/blog/angular-vs-react-modern-frameworks/), [2](https://medium.com/free-code-camp/the-5-things-you-need-to-know-to-understand-react-a1dbd5d114a3), [3](https://cjohansen.no/domain-frontend/), [4](https://dev.to/%5Fndeyefatoudiop/101-react-tips-tricks-for-beginners-to-experts-4m11)]
+
+Diffing directly against the real browser DOM (often called "DOM diffing") introduces severe performance bottlenecks and edge-case bugs that break the React-like programming model. \[[1](https://www.uxpin.com/studio/blog/react-vs-html/), [2](https://www.linkedin.com/pulse/unveiling-magic-dom-virtual-react-hajer-boukhari-spjef)]
+
+***
+
+### Why Real DOM Diffing Fails for React-like Frameworks
+
+If you try to map a React-like model ("state changes → function re-runs → UI updates") directly to real DOM diffing, you will hit three massive roadblocks: \[[1](https://medium.com/@jbbpatel94/refs-in-react-all-you-need-to-know-d68af99bd426)]
+
+### 1. Read/Write Thrashing (Layout Reflows) \[[1](https://codefinity.com/courses/v2/03180f26-4642-4f6a-9925-7d3a5900c031/6e6282ce-da2e-492f-beda-21f4dfc5752a/34a1f8eb-7e75-4dd4-8813-1239deeb04e6)]
+
+- **The Issue:** To diff against the real DOM, your framework must read attributes from a living browser node, compare them to your new data, and then write the changes. \[[1](https://frontendengineering.substack.com/p/building-a-react-like-library-diffing)]
+- **The Consequence:** Alternating between reading DOM state and writing DOM updates forces the browser to repeatedly recalculate layouts (called **layout thrashing** or reflows). This drops your frame rate instantly. A VDOM keeps all reads and comparisons in pure JavaScript memory, performing a single batch of real DOM writes at the very end. \[[1](https://weareadaptive.com/trading-resources/blog/render-performance-optimization-react/), [2](https://dev.to/wizdomtek/mastering-dom-manipulation-10-essential-tips-for-efficient-and-high-performance-web-development-3mke), [3](https://patrickojeh.substack.com/p/reacts-reconciliation-and-diffing), [4](https://www.syncfusion.com/blogs/post/virtual-dom-vs-shadow-dom), [5](https://www.smashingmagazine.com/2015/04/react-to-the-future-with-isomorphic-apps/)]
+
+### 2. Loss of Ephemeral UI State
+
+- **The Issue:** The real DOM holds active state that your framework logic doesn't explicitly track. This includes text cursor positions, text selection ranges, CSS transition states, open dropdowns, and keyboard focus (`document.activeElement`). \[[1](https://www.geeksforgeeks.org/reactjs/reactjs-introduction/), [2](https://css-tricks.com/reactive-uis-vanillajs-part-2-class-based-components/)]
+- **The Consequence:** If you destroy, recreate, or heavily mutate real DOM elements during a direct diffing cycle, the browser resets this ephemeral state. Users will lose their typing focus or text selection mid-keystroke. A VDOM acts as a buffer, ensuring elements are preserved and only individual attributes change. \[[1](https://www.reddit.com/r/reactjs/comments/1bdc4sy/why%5Fis%5Frendering%5Fa%5Fcomponent%5Finside%5Fa%5Fcomponent/), [2](https://www.reddit.com/r/rust/comments/lzytna/introducing%5Fmaple%5Fa%5Fvdomless%5Ffine%5Fgrained/), [3](https://blog.openreplay.com/react-vs-angular-who-wins/), [4](https://blog.objektkultur.de/preventing-dom-based-cross-site-scripting-xss-in-react/)]
+
+### 3. Component Isolation and Event Delays
+
+- **The Issue:** Real DOM operations are asynchronous and heavy.
+- **The Consequence:** In a React-like framework, you often want to compute what the next UI _should_ look like before committing it to the screen (e.g., React's Concurrent Mode or error boundaries). You cannot "preview" or pause a UI tree update halfway through if you are operating directly on the real live DOM, as the user will see a broken, half-rendered interface. \[[1](https://www.reddit.com/r/reactjs/comments/mo4g0t/why%5Fvirtual%5Fdom%5Fis%5Fconsidered%5Ffaster%5Fthat/), [2](https://www.reddit.com/r/javascript/comments/3bdmki/why%5Fis%5Fthe%5Fdom%5Fso%5Fslow%5Fbut%5Fother%5Fmarkup%5Flanguages/), [3](https://stevekinney.com/courses/react-performance/understanding-reconciliation-react-19), [4](https://kentcdodds.com/blog/use-react-error-boundary-to-handle-errors-in-react), [5](https://isocroft.medium.com/introducing-react-busser-designing-for-better-application-data-flow-in-reactjs-part-2-d979870bbea0)]
+
+***
+
+### How Other Frameworks Diff the Real DOM (And Why They Aren't React)
+
+Some highly successful frameworks _do_ diff against the real DOM, but they explicitly **abandon the React model** to do so safely: \[[1](https://emvigotech.com/blog/react-vs-angular-web-development/)]
+
+- **Morphdom / Turbo Frames (HTML-Based):** These libraries diff real DOM elements, but they are designed for Server-Driven UI. They take an incoming string of raw HTML from a server and patch it onto the page. They are not built for highly dynamic, stateful client-side interactive loops. \[[1](https://www.reddit.com/r/reactjs/comments/mo4g0t/why%5Fvirtual%5Fdom%5Fis%5Fconsidered%5Ffaster%5Fthat/)]
+- **Lit (Template-Based):** Lit diffs values directly in the DOM, but it does **not** re-run components like React. It uses tagged template literals (`html`\`) to isolate exactly where variables sit. At runtime, it only diffs the _changing values_ at those specific index points, completely bypassing the need to diff elements or structures. \[[1](https://blog.logrocket.com/lit-vs-react-comparison-guide/), [2](https://medium.com/@everythingwebber/react-vs-lit-part-2-virtual-vs-shadow-dom-cbbdd39857d3), [3](https://blog.logrocket.com/lit-vs-react-comparison-guide/), [4](https://www.reddit.com/r/reactjs/comments/mo4g0t/why%5Fvirtual%5Fdom%5Fis%5Fconsidered%5Ffaster%5Fthat/)]
+
+***
+
+### What You Should Do
+
+If your heart is set on the **React mental model** (Functions that return UI representation on every run):
+
+1. **Use a VDOM:** It is the only way to make the "render-the-world" function approach performant and bug-free.
+2. **Keep it Simple:** You don't need React's massive fiber architecture. Look at **Preact's source code**. Preact implements a fully functional, highly performant React-like VDOM in just a few hundred lines of code by focusing on a straightforward recursive diffing algorithm. \[[1](https://medium.com/@%5FChrisBradshaw/blogdidmount-2018-guide-to-react-component-lifecycle-methods-1614e0bbe80a), [2](https://tigerabrodi.blog/how-reacts-render-effects-and-refs-work-under-the-hood), [3](https://asolove.medium.com/preact-internals-1-the-easy-parts-3a081fa36205), [4](https://frontendmasters.com/guides/front-end-handbook/2018/tools/apps.html), [5](https://namastedev.com/blog/react-reconciliation-algorithm-explained-3/)]
+
+If you are open to exploring further, tell me: Are you building this mostly as a **learning project** to understand internals, or are you trying to optimize for **maximum runtime performance**?
+
+- [link](https://javascript-conference.com/blog/angular-vs-react-modern-frameworks/)\
+  Why Modern Angular Feels Easier Than React\
+  Jan 20, 2026 — React: The “Re-render Everything” Trap In React, a state change triggers a re-execution of the entire component function and, by d...\
+  \
+  \
+  International JavaScript Conference
+- [link](https://medium.com/free-code-camp/the-5-things-you-need-to-know-to-understand-react-a1dbd5d114a3)\
+  React’s Five Fingers of Death. Master these five concepts, then master React.\
+  Jan 5, 2017 — Components can also be written as pure functions.\
+  \
+  \
+  Medium
+- [link](https://cjohansen.no/domain-frontend/)\
+  What's the domain of the frontend?\
+  Jan 11, 2023 — ( vdom is “virtual DOM,” meaning what your components describe. React and similar libraries ensure that the structure is efficient...\
+  \
+  \
+  cjohansen.no
+
+Show all
+
+## You said: what if there are effects that manipute the real dom directly and outsync me
+
+If app developers use `useEffect` or direct references to manipulate the real DOM behind your framework's back, it **will break your Virtual DOM (VDOM) reconciliation engine.**
+
+When the real DOM drifts out of sync with your internal VDOM state, it causes severe bugs. The next time your framework triggers a diffing cycle, it will look at the real DOM, get completely confused by the unexpected elements or attributes, and either crash, duplicate components, or accidentally wipe out the developer's manual changes. \[[1](https://www.theknowledgeacademy.com/blog/virtual-dom-in-react/), [2](https://medium.com/@kanukaharish/a-closer-look-at-dom-and-virtual-dom-ade3303a622f)]
+
+To build a robust, React-like framework, you must implement specific **guardrails and architectural rules** to handle this exact scenario.
+
+***
+
+### How to Protect Your VDOM From Real DOM Desyncs
+
+### 1. Implement Explicit Escapes (Refs)
+
+Never let developers grab a DOM node using generic selectors like `document.getElementById()`. Instead, provide a **Ref mechanism** (like React’s `useRef`). \[[1](https://www.danvega.dev/blog/vue-tips-avoid-direct-dom-manipulation), [2](https://blog.stackademic.com/avoid-re-renders-and-track-dom-elements-like-a-pro-with-react-useref-0ae76eda0e07)]
+
+- **The Guardrail:** When a developer attaches a ref to a VDOM node, your framework hands them the live DOM reference _only after_ the layout/commit phase is completely done.
+- **The Rule:** The framework explicitly warns developers in the documentation: _You may read properties or manipulate styles/classes via refs, but you must never add, remove, or reorder child nodes._
+
+### 2. Read-Only "Bailouts" for Third-Party Plugins
+
+If a developer needs to initialize a heavy, non-reactive third-party library (like D3.js, Leaflet maps, or jQuery plugins) that _must_ manipulate its own DOM tree, you need a way to tell your VDOM engine to look away.
+
+- **The Guardrail:** Create a "black hole" component or attribute (e.g., ).
+- **The Rule:** When your VDOM diffing algorithm encounters this element, it checks if it already exists in the real DOM. If it does, the framework **immediately bails out** and completely skips diffing its children. This freezes that specific branch of the DOM tree, allowing the third-party effect to mutate it freely without your engine ever knowing or caring.
+
+### 3. Single-Source-of-Truth Tracking (`_vdom` Property)
+
+If your framework relies purely on comparing the new VDOM to the old VDOM, you won't notice if an external script changed the actual DOM.
+
+- **The Guardrail:** When your framework creates or updates a real DOM node, attach a hidden property directly to that live browser element containing its matching VDOM node representation (e.g., `domElement.__myFrameworkVNode = vnode`). \[[1](https://dev.to/lyndsiwilliams/real-dom-virtual-dom-shadow-dom-whats-the-difference-32ni)]
+- **The Rule:** Before making an assumption during a diffing cycle, your engine can inspect `domElement.__myFrameworkVNode`. If the real DOM element’s children or attributes don't match what your hidden property says they should be, you know an external effect hijacked the node. You can then choose to violently overwrite it to match your state, or throw a helpful developer warning.
+
+### 4. The "Double-Render" Cleanup Pattern
+
+If a developer updates the DOM inside an effect, they must clean it up when the component unmounts or updates, or your framework will leak memory or try to diff dead nodes.
+
+- **The Guardrail:** Enforce a strict lifecycle where every effect hook can return a cleanup function.
+- **The Rule:** If a developer adds a class or an element in an effect, they _must_ remove it in the cleanup function. In your development build, you can intentionally mount, unmount, and remount components instantly (similar to React 18+ Strict Mode). This forces any poorly written effects that manipulate the DOM without proper cleanup to break immediately, alerting the developer to their mistake before it hits production. \[[1](https://javascript.plainenglish.io/react-lifecycle-methods-a-deep-dive-f97c4553c5c2), [2](https://www.upgradejs.com/blog/javascript/react/updates-to-strict-mode-in-react-18.html)]
+
+***
+
+### Summary Checklist for Your Code
+
+| Scenario                                   | Framework Strategy                                                        |
+| ------------------------------------------ | ------------------------------------------------------------------------- |
+| **Reading DOM dimensions (e.g., width)**   | Perfectly safe via `refs` after the commit phase.                         |
+| **Adding a class or inline style**         | Safe via `refs`, but requires manual cleanup by the developer.            |
+| **Inserting/Deleting child HTML elements** | **Fatal.** Must be blocked by using an explicit "bailout/ignore" wrapper. |
+
+Are you planning to support **third-party libraries** that heavily manipulate the DOM, or will your framework apps be built **exclusively using your own custom components**? \[[1](https://medium.com/@garrettmac/reactjs-how-to-safely-manipulate-the-dom-when-reactjs-cant-the-right-way-8a20928e8a6)]
+
+- [link](https://www.theknowledgeacademy.com/blog/virtual-dom-in-react/)\
+  Virtual DOM in React: Working and Key Benefits\
+  Apr 24, 2026 — 3) Problems with Other Libraries Sometimes developers use other libraries like jQuery or D3 to change the page directly. This can ...\
+  \
+  \
+  The Knowledge Academy
+- [link](https://medium.com/@kanukaharish/a-closer-look-at-dom-and-virtual-dom-ade3303a622f)\
+  A Closer Look at DOM and Virtual-DOM!! | by Harish Kanuka\
+  Jan 22, 2024 — Get Harish Kanuka's stories in your inbox Whenever a component's state or props gets updated, the component gets re-rendered and b...\
+  \
+  \
+  Medium
+- [link](https://www.danvega.dev/blog/vue-tips-avoid-direct-dom-manipulation)\
+  Tips for Vue Developers: Avoid directly manipulating the DOM\
+  Apr 18, 2019 — Tips for Vue Developers: Avoid directly manipulating the DOM Before we could even get to the root of the issue I saw some code tha...\
+  \
+  \
+  Dan Vega
+
+Show all
+
+## You said: how does react do if the real dom outsync
+
+When the real DOM goes out of sync because an external effect or script manipulated it behind React's back, <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>React does not continuously scan or fix the real DOM.</strong></mark> \[[1](https://www.reddit.com/r/learnjavascript/comments/190a4r4/how%5Fdoes%5Freactjs%5Fmanipulate%5Fdom%5Felements/), [2](https://stackoverflow.com/questions/35989106/virtual-dom-and-real-dom-out-of-sync), [3](https://www.youtube.com/watch?v=rysTbzKOEO0\&t=4)]
+
+React treats its internal virtual Fiber tree as the absolute **Single Source of Truth**. It operates under the assumption that the real DOM perfectly matches what React left behind during its last commit phase. When a state change happens, React compares the _new_ VDOM against the _old_ VDOM—**not against the real DOM**. \[[1](https://www.youtube.com/watch?v=8YNeCyQtPo0\&t=7), [2](https://stackoverflow.com/questions/35989106/virtual-dom-and-real-dom-out-of-sync), [3](https://shiftasia.com/community/reactjs-reconciliation-how-it-works/)]
+
+Because of this blind spot, React’s behavior depends heavily on exactly _what_ was modified externally:
+
+***
+
+### Scenario 1: External Script Changes an Attribute (e.g., Class or Style) \[[1](https://www.youtube.com/watch?v=8YNeCyQtPo0\&t=7), [2](https://medium.com/@jjmayank98/how-react-actually-updates-the-dom-vdom-reconciliation-fiber-and-why-signals-are-a-different-b66edf70353b)]
+
+- **What happened:** A developer or a browser extension manually changed to via raw JavaScript.
+- **React's Internal VDOM State:** Thinks the element still has `class="blue"`. \[[1](https://latteandcode.medium.com/react-what-is-a-rerender-i-d6371b9fb36e)]
+- **What React does next:** When a state update occurs, if React's new VDOM _still_ says `class="blue"`, its diffing algorithm concludes: _"Old was blue, new is blue. No change needed."_ React completely skips updating that attribute. \[[1](https://medium.com/@jjmayank98/how-react-actually-updates-the-dom-vdom-reconciliation-fiber-and-why-signals-are-a-different-b66edf70353b), [2](https://legacy.reactjs.org/docs/reconciliation.html), [3](https://javascript.plainenglish.io/inside-reacts-usestate-a-deep-dive-into-the-hook-s-internals-7588d7f97bf0), [4](https://www.youtube.com/watch?v=B7X5vDz3x4g\&vl=en)]
+- **The Result:** The element **permanently stays red** (broken and out of sync) until React naturally forces a rewrite of that specific attribute via a future VDOM state change.
+
+### Scenario 2: External Script Mutates or Inserts Children
+
+- **What happened:** A third-party jQuery plugin or Google Translate injected 3 new elements or changed text inside a managed by React.
+- **React's Internal VDOM State:** Believes the only contains its original React children. \[[1](https://stackoverflow.com/questions/35989106/virtual-dom-and-real-dom-out-of-sync), [2](https://legacy.reactjs.org/docs/integrating-with-other-libraries.html)]
+- **What React does next:** During the next re-render, React steps through the DOM nodes using internal node pointers (`fiber.stateNode`). If React expects to find Child B at a certain pointer, but a script has inserted a random span or deleted a node, React’s reconciliation engine gets misaligned. \[[1](https://shiftasia.com/community/reactjs-reconciliation-how-it-works/), [2](https://www.rocket.new/blog/react-reconciliation-algorithm-build-your-own-dom), [3](https://dev.to/ktmouk/how-does-react-18-work-inside-1c8l), [4](https://www.newline.co/@dmitryrogozhny/how-to-access-dom-nodes-in-react-with-refs--57d97b3d)]
+- **The Result:** **React crashes with a fatal runtime error.** You have likely seen this exact error in your browser console:\
+  `NotFoundError: Failed to execute 'insertBefore' on 'Node': The node before which the new node is to be inserted is not a child of this node.`\
+  React tries to patch a sibling or append a child relative to a node that the browser says no longer exists or isn't in that position.
+
+### Scenario 3: External Script Deletes a React Root Element
+
+- **What happened:** A parent container or malicious browser extension completely deleted a DOM element that React was targeting.
+- **React's Internal VDOM State:** Thinks the element and all its children are perfectly fine.
+- **What React does next:** On the next state update, React attempts to execute an imperative browser command (like `element.setAttribute()` or `parentNode.removeChild()`).
+- **The Result:** **JavaScript throws a crash error.** The application breaks because React tries to execute a method on a DOM node that is now `null` or detached from the window document. \[[1](https://stackoverflow.com/questions/35989106/virtual-dom-and-real-dom-out-of-sync), [2](https://codimite.ai/blog/react-design-patterns/)]
+
+***
+
+### How React Explicitly Warns You (Strict Mode)
+
+React recognizes this fundamental architectural vulnerability. To catch developers accidentally doing this, React implements native warning systems:
+
+1. **The ContentEditable / Children Warning:** If you try to pass children to an element while making it directly editable by the user via the browser, React throws a loud development error:
+
+> _Warning: A component is `contentEditable` and contains `children` managed by React. It is now your responsibility to guarantee that React never faces an out-of-sync DOM._\
+> \[[1](https://stackoverflow.com/questions/49639144/why-does-react-warn-against-an-contenteditable-component-having-children-managed)]
+
+2. **Hydration Mismatch Errors:** If you use Server-Side Rendering (SSR), the HTML generated on the server must perfectly match the initial VDOM generated on the client. If a browser extension modifies the HTML before React attaches to it ("hydrates"), React detects that the real DOM doesn't match its freshly minted VDOM. It immediately throws a **"Hydration Mismatch"** error and, in many cases, will violently wipe out the real DOM and re-render the entire app from scratch to force a sync. \[[1](https://www.epicreact.dev/use-sync-external-store-demystified-for-practical-react-development-w5ac0), [2](https://www.sitepoint.com/react-20-suspense-ssr-updates/), [3](https://medium.com/@jjmayank98/how-react-actually-updates-the-dom-vdom-reconciliation-fiber-and-why-signals-are-a-different-b66edf70353b), [4](https://medium.com/@glorynwaekpe/the-fragile-art-of-hydration-when-react-renders-two-truths-7499007488da), [5](https://dev.to/trunghieu99tt/some-thoughts-about-virtual-dom-40ee)]
+
+### Takeaway for Your Framework
+
+If you build a VDOM framework, **do not write code to constantly read the real DOM to check if it's synced.** It ruins performance. Treat your VDOM/Fiber tree as the truth. If the developer breaks that truth by manually mutating the DOM without an escape hatch (like `refs` or an ignored bailout branch), crashing or failing silently is the industry-standard framework behavior. \[[1](https://react.dev/learn/manipulating-the-dom-with-refs), [2](https://www.reddit.com/r/react/comments/1fb6f50/a%5Freact%5Fdevelopers%5Fdilemma%5Fvirtual%5Fdom%5Fvs%5Freal/), [3](https://medium.com/@angelthivi9/why-react-uses-the-virtual-dom-instead-of-direct-dom-manipulation-014c00be7c59), [4](https://stackoverflow.com/questions/35989106/virtual-dom-and-real-dom-out-of-sync), [5](https://react.dev/learn/manipulating-the-dom-with-refs)]
+
+Are you considering writing **automatic recovery logic** into your framework to fix out-of-sync DOM nodes, or are you comfortable letting it fail like React does?
+
+- [link](https://www.reddit.com/r/react/comments/1fb6f50/a%5Freact%5Fdevelopers%5Fdilemma%5Fvirtual%5Fdom%5Fvs%5Freal/)\
+  A React Developer's Dilemma: Virtual DOM vs Real ... - Reddit\
+  Sep 7, 2024 — Then, changes stabilize and changed elements are updated. Ensuring all components are memo-ized functional components for performa...\
+  Reddit·r/react
+- [link](https://stackoverflow.com/questions/35989106/virtual-dom-and-real-dom-out-of-sync)\
+  virtual DOM and real DOM out of sync - jquery - Stack Overflow\
+  Mar 14, 2016 — While using react, we should never change the DOM directly. Using jQuery or using Document.getElementById() to manipulate the DOM ...\
+  Stack Overflow
+- [link](https://medium.com/@jjmayank98/how-react-actually-updates-the-dom-vdom-reconciliation-fiber-and-why-signals-are-a-different-b66edf70353b)\
+  How React Actually Updates the DOM — VDOM, Reconciliation, ...\
+  Apr 13, 2026 — Does reconciliation skip children of changed nodes? No — and this is the part that trips everyone up. When a DOM node's attribute ...\
+  Medium·Mayank Jhunjhunwala
+
+Show all
+
+## You said: so actually react does not care, it simply errs
+
+Yes, exactly. You hit the nail on the head. **React does not care, it simply errs.**
+
+React makes a strict architectural trade-off: it assumes complete ownership of the DOM nodes it manages. Instead of spending valuable CPU cycles double-checking the browser's reality, it prioritizes speed by blindly trusting its internal virtual tree. If a developer or a third-party script violates that trust, React will happily run straight off a cliff and throw a fatal runtime exception. \[[1](https://medium.com/towardsdev/when-react-meets-the-dom-directly-a-war-story-about-video-js-4dd5f9d35752)]
+
+### Why This Is Actually Good Framework Design
+
+While letting an application crash might sound like a flaw, it is a deliberate and smart engineering choice for your own framework to mimic:
+
+- **Predictable Performance**: Constantly reading the real DOM to verify its state would completely destroy performance. By treating the VDOM as the absolute source of truth, React keeps operations purely in fast JavaScript memory. \[[1](https://www.telerik.com/blogs/what-is-react-used-for)]
+- **Fail-Fast Principle**: In software development, it is vastly better to crash immediately and loudly than to fail silently. If React tried to silently recover or guess how to fix a mutated DOM, it could result in corrupted data, stuck UI states, or phantom event listeners that are incredibly difficult to debug.
+- **Clear Boundaries**: It forces a clear contract between the framework and the developer. The framework says, _"I will handle the DOM efficiently, provided you don't touch it behind my back."_
+
+### How React Shields Itself (ErrorBoundary)
+
+Because React expects to crash when things go out of sync, it provides a feature called **Error Boundaries**. \[[1](https://blog.logrocket.com/react-error-handling-react-error-boundary/), [2](https://medium.com/@suyanshrestha/understanding-error-boundaries-in-react-205cbc28396d)]
+
+An Error Boundary is a special component that catches these fatal rendering and reconciliation crashes before they take down the entire browser tab. Instead of showing a blank white screen when an external script breaks the DOM, the framework catches the error and allows the developer to display a friendly "Something went wrong" fallback UI. \[[1](https://kurtwanger40.medium.com/why-your-react-app-crashes-and-how-error-boundaries-fix-it-307755f93533), [2](https://blog.logrocket.com/react-error-handling-react-error-boundary/), [3](https://medium.com/@jeslurrahman/mastering-error-boundaries-in-react-d6d61a89ce33)]
+
+### What This Means for Your Framework
+
+You do not need to build complex, defensive code to protect your framework from rogue DOM mutations.
+
+1. **Trust your virtual representation** implicitly during the diffing phase.
+2. **Let the browser throw an error** if a node is missing or misplaced.
+3. **Provide an Error Boundary-like mechanism** so developers can catch those crashes and gracefully reset their application state. \[[1](https://namastedev.com/blog/error-boundaries-in-react-explained-6/), [2](https://refine.dev/blog/react-error-boundaries/)]
+
+Would you like to look at a **minimal code example of a VDOM diffing loop** to see exactly where and why these crashes naturally occur when the real DOM is modified?
+
+- [link](https://medium.com/towardsdev/when-react-meets-the-dom-directly-a-war-story-about-video-js-4dd5f9d35752)\
+  When React Meets the DOM Directly: A War Story About Video.js,\
+  Mar 14, 2026 — React ( React app ) 's reconciler operates under one fundamental assumption: it owns every DOM node it ever created. Not “it knows...\
+  \
+  \
+  Medium
+- [link](https://www.telerik.com/blogs/what-is-react-used-for)\
+  What Is React Used For?\
+  Feb 18, 2021 — React works with a feature called virtual DOM, a virtual representation of the real DOM tree. It's just a tree data structure of p...\
+  \
+  \
+  Telerik.com
+- [link](https://blog.logrocket.com/react-error-handling-react-error-boundary/)\
+  React error handling with react-error-boundary\
+  Jul 3, 2024 — In React, one such method is the use of error boundaries. In this article, we'll examine React error handling using react-error-bo...\
+  \
+  \
+  LogRocket Blog
+
+Show all
+
+## You said: should i store the real dom node alongside my vdom
+
+**Yes, you absolutely should store a reference to the real DOM node directly inside your VDOM node.**
+
+In fact, almost every major VDOM framework (including React, Preact, and Vue) does this. In React's Fiber architecture, this reference is stored in a property called `fiber.stateNode`. In simpler VDOM implementations, it is usually just called `vnode.dom` or `vnode.el`. \[[1](https://www.reddit.com/r/reactjs/comments/mo4g0t/why%5Fvirtual%5Fdom%5Fis%5Fconsidered%5Ffaster%5Fthat/), [2](https://jbi.sh/reacts-real-legacy-a-follow-up-to-what-is-virtual-dom/), [3](https://www.reddit.com/r/javascript/comments/jhl8mo/askjs%5Fquestion%5Fabout%5Freact%5Fhaving%5Fa%5Fvirtual%5Fdom/), [4](https://blog.ag-grid.com/inside-fiber-an-in-depth-overview-of-the-new-reconciliation-algorithm-in-react/)]
+
+Storing this reference is the secret to keeping your framework fast and lightweight. Without it, your framework would become incredibly slow. \[[1](https://medium.com/front-end-weekly/react-internals-a-senior-engineers-guide-to-virtual-dom-reconciliation-and-fiber-8f0d8825185d), [2](https://namastedev.com/blog/optimizing-performance-a-deep-dive-into-reacts-virtual-dom-diffing-algorithm/)]
+
+***
+
+### Why You Must Store the Real DOM Node
+
+### 1. It Avoids Expensive DOM Lookups (`O(1)` vs `O(N)`)
+
+When your diffing algorithm decides that an element needs to be updated (for example, changing a button's text from "Click me" to "Loading..."), it needs to execute an imperative browser command: `domNode.textContent = "Loading..."`.
+
+- **If you store the reference:** Your framework can instantly access the node in `O(1)` time via `vnode.dom.textContent = "Loading..."`.
+- **If you don't store it:** Your framework would have to search through the actual browser DOM using expensive queries like `document.getElementById()` or trace down from the root of the page to find the right element. This would utterly destroy your framework's performance. \[[1](https://vuejsdevelopers.com/2017/02/21/vue-js-virtual-dom/), [2](https://medium.com/@hritvikom/react-rendering-explained-virtual-dom-batching-and-fiber-bc2b3613811a)]
+
+### 2. Efficient Node Reordering and Deletion
+
+When sorting a list of items (e.g., shuffling an array of users), your VDOM algorithm needs to physically move real DOM elements around using browser methods like `parentNode.insertBefore()`.\
+To do this, the algorithm must hold the exact live JavaScript reference to the DOM element it wants to move. If you don't map your virtual nodes directly to their corresponding real nodes, you cannot efficiently track and reorder them on the screen. \[[1](https://javascript.plainenglish.io/javascript-dom-manipulation-your-first-step-in-frontend-development-4f1d32b68482)]
+
+### 3. Giving Clean Access to Developers (Refs)
+
+When a developer writes , they expect to get a direct handle on the actual browser input element so they can manually call `.focus()` or `.select()`. Because your VDOM node already holds the real DOM node reference, your framework can effortlessly hand that exact reference over to the developer's ref object during the commit phase. \[[1](https://dev.to/joshi16/understanding-useref-in-react-393c), [2](https://js.devexpress.com/React/Documentation/Guide/React%5FComponents/Optimize%5FPerformance/)]
+
+***
+
+### How to Structure It in Code
+
+When your framework creates a new virtual node, the `dom` property starts as `null`. It only gets populated once the element is physically created and injected into the browser page. \[[1](https://javascript.plainenglish.io/javascript-dom-manipulation-your-first-step-in-frontend-development-4f1d32b68482)]
+
+Here is a structural look at how a basic VDOM node changes across its lifecycle:
+
+javascript
+
+```
+// 1. Initial State: The user writes JSX/Declarative code
+// The VDOM node is created in memory, but it doesn't exist on screen yet.
+const vnode = {
+  type: 'button',
+  props: { className: 'btn', children: 'Submit' },
+  dom: null // Starts as null because it hasn't been rendered yet
+};
+
+// 2. Render/Commit Phase: Your framework creates the real DOM element
+const realDOMNode = document.createElement(vnode.type);
+realDOMNode.className = vnode.props.className;
+realDOMNode.textContent = vnode.props.children;
+
+// 3. The Crucial Step: Link the real DOM node back to the VDOM node
+vnode.dom = realDOMNode;
+
+// Now, the real DOM node is safely stored inside your virtual representation.
+// During the next state update, you can modify `vnode.dom` instantly.
+```
+
+Use code with caution.
+
+***
+
+### The One Big Rule: Keep It Unidirectional
+
+While storing the real DOM node inside your VDOM is highly recommended, **do not do the reverse.** \[[1](https://www.reddit.com/r/learnjavascript/comments/14hwfsg/confused%5Fabout%5Fthe%5Fvirtual%5Fdom/)]
+
+Do not heavily inject virtual state or complex custom properties onto the real browser DOM nodes (e.g., `realDOMNode.myFrameworkState = ...`). Flooding real DOM objects with heavy, custom JavaScript configurations can lead to massive browser memory leaks, as garbage collection becomes confused trying to clean up references between the browser engine and your JavaScript framework runtime. Keep the mapping one-way: **The VDOM points to the DOM.** \[[1](https://www.vuemastery.com/blog/the-future-of-vue-vapor-mode/), [2](https://www.angularminds.com/blog/7-top-reactjs-features-which-makes-it-best-for-development)]
+
+If you are ready, I can show you a **simple code example of a diffing function** that actively uses this `vnode.dom` property to update a page. Would you like to see that next? \[[1](https://asolove.medium.com/preact-internals-2-the-component-model-36a05e32957b), [2](https://yashmahalwal.medium.com/understanding-react-concurrent-mode-part-1-53b36ca56caa)]
+
+- [link](https://www.reddit.com/r/reactjs/comments/mo4g0t/why%5Fvirtual%5Fdom%5Fis%5Fconsidered%5Ffaster%5Fthat/)\
+  Why Virtual DOM is considered faster that directly updating the real DOM. : r/reactjs\
+  Apr 10, 2021 — In react, your changes are made to the vdom, and then react uses the diff between the actual dom and the vdom to make the changes ...\
+  \
+  Reddit
+- [link](https://jbi.sh/reacts-real-legacy-a-follow-up-to-what-is-virtual-dom/)\
+  React's real legacy. A follow-up to: What is Virtual DOM?\
+  Aug 17, 2016 — Today, vdom is a mainstream concept. Implementations similar to or inspired by React's have been incorporated into many popular fr...\
+  \
+  \
+  jbi.sh
+- [link](https://www.reddit.com/r/javascript/comments/jhl8mo/askjs%5Fquestion%5Fabout%5Freact%5Fhaving%5Fa%5Fvirtual%5Fdom/)\
+  \[AskJS] Question about React having a 'Virtual DOM' : r/javascript\
+  Oct 25, 2020 — Only other big player that uses vDOM is Vue, I think.\
+  \
+  Reddit
+
+Show all
+
+# 
+
 
