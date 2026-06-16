@@ -1,35 +1,35 @@
 let activeInstance = false;
 
 export function h(tag, ...args) {
+  if (typeof tag !== 'string') {
+    throw new Error('tag must be a string');
+  }
+
   let props = {};
   let children = [];
 
-  // 1. Parse argument omissions (Check if the first trailing argument is a props object)
-  if (args[0] && typeof args[0] === 'object' && !args[0].tag && !Array.isArray(args[0])) {
-    props = args.shift();
-  }
+  // count the number of . in tag
+  if (tag.split(".").length - 1 > 1) {
+    throw new Error('tag must have at most one dot');
+  } 
 
-  // 2. Normalize children inputs (Handles both flat lists and deep arrays)
-  children = args.flat().filter(c => c !== false);
+  const tag_split = tag.split(".")
+  tag = tag_split[0] || 'div'
+  if (tag_split[1]) {
+    props.class = tag_split
+  } 
 
-  // 3. Resolve Emmet CSS string parsing (e.g., ".Foo" or "input.MyInput")
-  if (typeof tag === 'string') {
-    const dotIndex = tag.indexOf('.');
-
-    if (dotIndex !== -1) {
-      const parsedTag = tag.slice(0, dotIndex);
-      const parsedClass = tag.slice(dotIndex + 1);
-
-      // Fallback to div if tag is omitted (starts with a dot)
-      tag = parsedTag || 'div';
-
-      if (parsedClass) {
-        props.className = props.className ? `${props.className} ${parsedClass}` : parsedClass;
-      }
-    } else if (tag === '') {
-      tag = 'div';
+  for (const arg of args) {
+    if (Array.isArray(arg)) {
+      children.push(...arg);
+    } else if (typeof arg === 'object') {
+      props = arg;
+    } else {
+      children.push(arg);
     }
   }
+
+  children = children.filter(c => c !== false && c !== null && c !== undefined);
 
   return { tag, props, children };
 }
@@ -107,10 +107,10 @@ export function onCleanup(fn) {
   if (activeInstance) activeInstance.cleanupHooks.push(fn);
 }
 
-// --- CORE LIFE-CYCLE ENGINE ---
-function createComponentInstance(ComponentFunc, props) {
+// Life Cycle
+function component(component_fn, props) {
   const instance = {
-    ComponentFunc,
+    ComponentFunc: component_fn,
     props,
     mountHooks: [],
     cleanupHooks: [],
@@ -144,7 +144,7 @@ function createComponentInstance(ComponentFunc, props) {
       instance.mountHooks.forEach(fn => fn());
     },
 
-    destroy() {
+    dispose() {
       instance.cleanupHooks.forEach(fn => fn());
       instance.cleanupHooks = [];
       instance.mountHooks = [];
@@ -155,11 +155,11 @@ function createComponentInstance(ComponentFunc, props) {
   return instance;
 }
 
-// --- VDOM DIFFING & DOM PATCH LAYER ---
+// Diff & Patch
 function unmountVNode(vnode) {
   if (!vnode) return;
   if (vnode.instance) {
-    vnode.instance.destroy();
+    vnode.instance.dispose();
     unmountVNode(vnode.instance.vnode);
   }
   if (vnode.children) {
@@ -188,7 +188,7 @@ export function patch(dom, oldVNode, newVNode) {
 
     if (oldVNode) unmountVNode(oldVNode);
 
-    const instance = createComponentInstance(newVNode.tag, newVNode.props);
+    const instance = component(newVNode.tag, newVNode.props);
     newVNode.instance = instance;
 
     const childVNode = instance.renderTree();
@@ -254,7 +254,7 @@ export function render(vnode, rootElement) {
     instance.update();
     activeInstance = false;
   } else {
-    activeInstance = createComponentInstance(vnode.tag, vnode.props);
+    activeInstance = component(vnode.tag, vnode.props);
     vnode.instance = activeInstance;
     const childVNode = activeInstance.renderTree();
     activeInstance.vnode = childVNode;
