@@ -17,18 +17,22 @@ type vnode = {
 }
 
 function log(...args) {
-  console.log(...args.map(cloneDeep))
+  console.log(...args.map((arg) => typeof arg == 'object' ? cloneDeep(arg) : arg))
   // console.log(...args)
 }
 
+const hyperscript_symbol = Symbol('h')
+
 export function h(tag, ...args) {
-  log('h params', tag, ...args)  
+  log('h params', tag, ...args)
   let props = {};
   let children = [];
 
   for (const arg of args) {
     if (Array.isArray(arg)) {
       children.push(...arg);
+    } else if (has(arg, hyperscript_symbol)) {
+      children.push(arg)
     } else if (typeof arg === 'object') {
       props = arg;
     } else {
@@ -55,8 +59,8 @@ export function h(tag, ...args) {
     children = [] // reserved for the vdom it actually renders
   }
 
-  log('h return', { tag, props, children })  
-  return { tag, props, children };
+  log('h return', { tag, props, children })
+  return { tag, props, children, [hyperscript_symbol]: true };
 }
 
 export function p(initial_value) {
@@ -123,10 +127,11 @@ function trigger_effects() {
 }
 
 export function render(component, root_selector) {
+  log('render component', component, root_selector)
   app = component
   vdom = h(app)
 
-  log('render', vdom)
+  log('render vdom', vdom)
 
   const root = document.querySelector(root_selector)
   const app_node = create_node(vdom)
@@ -145,7 +150,7 @@ function to_event_name(key) {
 };
 
 function create_node(vnode: vnode) {
-  log('create node', vnode)
+  log('create node params', vnode)
   if (typeof vnode.tag == 'function') {
     const prev_vnode = current_vnode
     current_vnode = vnode
@@ -172,6 +177,8 @@ function create_node(vnode: vnode) {
   for (const child of vnode.children) {
     node.appendChild(create_node(vnode.children))
   }
+
+  log('create node return vnode', vnode)
 
   return node
 }
