@@ -52,4 +52,4 @@ state is prop. yet i dont have to pass a magic prop, as it's not supposed to rec
 
 when diffing, if states exist, check "changed". when p or ref is called inside component, bind getter and setter to its states. for p, subscribe to "changed". (expose subscribe)
 
-ワールドワイドワンダー TOKOTOKO meaning
+
