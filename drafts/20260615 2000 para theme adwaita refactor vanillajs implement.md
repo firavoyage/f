@@ -4472,6 +4472,75 @@ Are you experiencing a leak within a specific framework like **React** or **Vue*
 
 Show all
 
+# can a component break its scope and edit some global states under react philosophy
+
+Yes, a component can modify global state under React philosophy, but it must do so **predictably** rather than "breaking" its scope. \[[1](https://www.dhiwise.com/post/tackling-state-management-in-large-react-applications-best-practices-and-testing-strategies)]
+
+In React, data flows down (one-way data binding), and components should ideally be pure functions regarding their props. However, React provides official, architectural patterns to safely update global states without breaking the component model. \[[1](https://medium.com/bb-tutorials-and-thoughts/what-is-called-lifting-state-up-in-react-785d52da940a), [2](https://legacy.reactjs.org/docs/components-and-props.html)]
+
+### 📦 Allowed Architectural Patterns
+
+- **Context API**: Combines `useContext` with `useState` or `useReducer` to pass state updates down the component tree without prop drilling.
+- **State Management Libraries**: Tools like Redux, Zustand, or Recoil use a publish-subscribe pattern to let any component dispatch actions to a global store.
+- **Lifting State Up**: Moving the state to the closest common ancestor and passing down a setter function. \[[1](https://covalensedigital.com/resources/blogs/deep-dive-into-react-states-from-imperative-to-declarative-programming), [2](https://www.dhiwise.com/post/understanding-react-a-comprehensive-guide-to-lifting-state-up), [3](https://cevo.com.au/post/react-state-management-made-easy-basics-essentials-and-best-practices/)]
+
+### 🚫 What Breaks React Philosophy (Anti-Patterns) \[[1](https://www.freecodecamp.org/news/how-to-update-a-components-prop-in-react-js-oh-yes-it-s-possible-f9d26f1c4c6d/)]
+
+- **Direct Mutation**: Modifying `window.myGlobalVar` directly inside a component body.
+- **Side Effects in Render**: Changing any outside state during the execution of the render function (it must happen inside event handlers or `useEffect`). \[[1](https://medium.com/@islamghany3/demystifying-re-rendering-diffing-and-reconciliation-in-react-3a821ebc36c9), [2](https://react.dev/reference/rules/components-and-hooks-must-be-pure)]
+
+### 🛠️ Correct Implementation Example
+
+To safely update a global state, pass a dispatch function or setter down to the component:
+
+javascript
+
+```
+// Using Zustand (Modern Global State)
+import { create } from 'zustand';
+
+const useStore = create((set) => ({
+  theme: 'light',
+  toggleTheme: () => set((state) => ({ theme: state.theme === 'light' ? 'dark' : 'light' })),
+}));
+
+function ThemeButton() {
+  // Component safely triggers a global change via a predefined function
+  const toggleTheme = useStore((state) => state.toggleTheme);
+  return <button onClick={toggleTheme}>Switch Theme</button>;
+}
+```
+
+Use code with caution.
+
+To help find the best approach, let me know:
+
+- What **type of state** are you trying to share (auth, theme, server data)?
+- How **large** is your application?
+- Do you prefer **built-in tools** or **external libraries**?
+
+I can provide a tailored code template for your specific stack.
+
+- [link](https://www.dhiwise.com/post/tackling-state-management-in-large-react-applications-best-practices-and-testing-strategies)\
+  Efficient React State Management in Large Applications\
+  Dec 27, 2024 — In the above example, we use the Context API to create a global state for our count variable. We then use a reducer function to ha...\
+  \
+  \
+  DhiWise
+- [link](https://medium.com/bb-tutorials-and-thoughts/what-is-called-lifting-state-up-in-react-785d52da940a)\
+  What is Called “Lifting State Up” In React\
+  Jan 24, 2020 — A Step by step guide with an example React recommends top-down-data-flow for all the data in the application. Sometimes several co...\
+  \
+  \
+  Medium
+- [link](https://legacy.reactjs.org/docs/components-and-props.html)\
+  Components and Props – React\
+  All React components must act like pure functions with respect to their props.\
+  \
+  React – A JavaScript library for building user interfaces
+
+Show all
+
 # 
 
 

@@ -10,8 +10,6 @@ all keyboard navigation?
 
 what do design tokens not lock in
 
-where is react opinionated
-
 linting. keyword detection. "div.class", <!-- maybe i dont have interval or timeout. and i might use localized events. and i could, i mean i should cleanup explicitly over magically wrapping and attaching the cleanup. -->
 
 ---
@@ -24,5 +22,6 @@ pros and cons of foo.method(...args) or method(foo, ...args)
 
 pros and cons of state setstate, proxy, or signal
 
-use a fn for states? one way? signal, getter setter? or static state? merge states and props? <!-- well, idk, it definitely has to be controlled and exposed, but does it have to own it sometimes? -->
+react one way flow meaning
 
+compare state setstate, proxy (obj define prop), or signal function (no arg then getter, arg then setter)
