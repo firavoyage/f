@@ -23705,3 +23705,71 @@ Would you like to see how this architecture scales up to handle **multiple state
 
 # 
 
+<!-- i guess i could not continue. it's gonna be too complex. -->
+
+<!-- leverage thinking. -->
+
+<!-- solidjs is declarative, but it makes too much tradeoff to fit in js. svelte is about magics, but it's not radical enough. -->
+
+<!-- if i want to be declarative i have to rerun the component. and states could not be memorized. i have to use array index or something, which dictates rules on hooks, like no cond no loop. i have to know what component im doing with. -->
+
+<!-- all states are global variables. -->
+
+<!-- let it leak. -->
+
+<!-- well, even wo components, i still have to know -->
+
+<!-- well, i have to clean up intervals! -->
+
+<!-- create app. vdom. render on dom. when onclick or anything or redraw, rerender the whole app and diff (keep, rp, add) and patch (attrs, dom). render a component: get vnode, attach all dispose on it. -->
+
+```ts
+import 'the-new-css-reset/css/reset.css';
+
+import { h, p, ref, effect, render } from '../framework';
+
+const input = ref();
+
+function Counter({ count }) {
+  effect(() => {
+    if (input()) {
+      input().focus();
+      input().style.border = "2px solid green";
+    }
+
+    const timer = setInterval(() => {
+      count(c => c + 1);
+    }, 1000);
+
+    return () => clearInterval(timer);
+  });
+
+  return (
+    h('.Counter',
+      h('h2', `Count: ${count()}`),
+      h('input.Counter_input', { type: 'text', ref: input })
+    )
+  );
+}
+
+const show = p(true)
+const count = p(0)
+
+function App() {
+  return (
+    h('.App',
+      h('button', { onclick: () => show(!show()) }, 'Toggle Component Visibility'),
+
+      h('div',
+        show()
+          ? h(Counter, { count })
+          : h('p', 'Counter unmounted')
+      )
+    )
+  );
+}
+
+render(App, "#app");
+
+```
+
