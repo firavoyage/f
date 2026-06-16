@@ -5,7 +5,7 @@
 // - akamud.vscode-javascript-snippet-pack
 {
   "function": {
-    "prefix": "f",
+    "prefix": ["f", "fn"],
     "body": [
       "function ${1:name}(${2}) {",
       "  $0",
@@ -153,7 +153,7 @@
     ],
   },
   "if": {
-    "prefix": "i",
+    "prefix": ["i", "if"],
     "body": [
       "if ($1) {",
       "  $2",
@@ -161,7 +161,7 @@
     ],
   },
   "else if": {
-    "prefix": ["el", "ei"],
+    "prefix": ["ei"],
     "body": [
       "else if ($1) {",
       "  $2",
@@ -169,7 +169,7 @@
     ],
   },
   "else": {
-    "prefix": "e",
+    "prefix": ["e", "el"],
     "body": [
       "else {",
       "  $1",
@@ -228,49 +228,49 @@
       "false",
     ],
   },
-  "result": {
-    "prefix": [
-      "resu",
-      "resul",
-      "result"
-    ],
-    "body": [
-      "result<$1> $0",
-    ],
-  },
-  "option": {
-    "prefix": [
-      "o",
-      "op",
-      "opt"
-    ],
-    "body": [
-      "option<$1> $0",
-    ],
-  },
-  "err": {
-    "prefix": [
-      "er",
-      "err"
-    ],
-    "body": [
-      "return err($1)$0",
-    ],
-  },
-  "rescue": {
-    "prefix": [
-      "re",
-      "res",
-      "resc"
-    ],
-    "body": [
-      "if(rescue($1)){",
-      "  $2",
-      "  ",
-      "  return",
-      "} $0"
-    ],
-  },
+  // "result": {
+  //   "prefix": [
+  //     "resu",
+  //     "resul",
+  //     "result"
+  //   ],
+  //   "body": [
+  //     "result<$1> $0",
+  //   ],
+  // },
+  // "option": {
+  //   "prefix": [
+  //     "o",
+  //     "op",
+  //     "opt"
+  //   ],
+  //   "body": [
+  //     "option<$1> $0",
+  //   ],
+  // },
+  // "err": {
+  //   "prefix": [
+  //     "er",
+  //     "err"
+  //   ],
+  //   "body": [
+  //     "return err($1)$0",
+  //   ],
+  // },
+  // "rescue": {
+  //   "prefix": [
+  //     "re",
+  //     "res",
+  //     "resc"
+  //   ],
+  //   "body": [
+  //     "if(rescue($1)){",
+  //     "  $2",
+  //     "  ",
+  //     "  return",
+  //     "} $0"
+  //   ],
+  // },
   "ignore": {
     "prefix": [
       "ig"
