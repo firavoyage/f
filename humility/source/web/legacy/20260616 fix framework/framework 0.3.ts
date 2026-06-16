@@ -1,13 +1,6 @@
 let active_instance = false;
 
-type vnode = {
-  tag: string,
-  // tag: string | Function,
-  props: object,
-  children: Array<vnode>
-} | string
-
-export function h(tag, ...args): vnode {
+export function h(tag, ...args) {
   if (typeof tag != 'string') {
     throw new Error('tag must be a string');
   }
@@ -39,28 +32,6 @@ export function h(tag, ...args): vnode {
   children = children.filter(c => c !== false && c !== null && c !== undefined);
 
   return { tag, props, children };
-}
-
-function create_node(vnode: vnode) {
-  if (typeof vnode === 'string') {
-    return document.createTextNode(vnode);
-  }
-  const element = document.createElement(vnode.tag);
-
-  const isEvent = (key) => key.startsWith('on');
-  const toEventName = (key) => key.toLowerCase().substring(2);
-  for (const [prop, value] of Object.entries(vnode.props)) {
-    if (isEvent(prop)) {
-      element.addEventListener(toEventName(prop), value)
-    } else {
-      element.setAttribute(prop, value)
-    }
-  }
-
-  for (const child of vnode.children) {
-    element.appendChild(create_node(child))
-  }
-  return element;
 }
 
 export function p(initial_value = false) {
@@ -112,7 +83,7 @@ export function ref(initial_value = false) {
   return reference;
 }
 
-export function effect(e, signals) {
+export function effect(e) {
 
 }
 
