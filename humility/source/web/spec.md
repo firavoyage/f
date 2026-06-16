@@ -40,3 +40,12 @@ p, ref: done
 
 h: done? y.
 
+---
+
+wait, how could a component be reused?
+
+child components could not own states? be explicit and global? ok.
+
+but what about node refs? i guess i could just store them in an array on vnode.
+
+
