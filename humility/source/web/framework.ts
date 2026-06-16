@@ -16,7 +16,7 @@ export function h(tag, ...args) {
   const tag_parts = tag.split(".")
   tag = tag_parts[0] || 'div'
   if (tag_parts[1]) {
-    props.class = tag_parts
+    props.class = tag_parts[1]
   }
 
   for (const arg of args) {
