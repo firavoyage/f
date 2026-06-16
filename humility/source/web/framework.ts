@@ -19,6 +19,7 @@ type vnode = {
 }
 
 export function h(tag, ...args) {
+  console.log('h', tag, ...args)
   let props = {};
   let children = [];
 
@@ -45,7 +46,9 @@ export function h(tag, ...args) {
       props.class = tag_parts[1]
     }
   } else if (typeof tag == 'function') {
-    props = { ...props, children }
+    if (children.length > 0) {
+      props = { ...props, children }
+    }
     children = [] // reserved for the vdom it actually renders
   }
 
@@ -116,12 +119,15 @@ function trigger_effects() {
 }
 
 export function render(component, root_selector) {
-  console.log('hi')
   app = component
   vdom = h(app)
-  
+
+  console.log(vdom)
+
   const root = document.querySelector(root_selector)
-  const node = create_node(vdom)
+  const app_node = create_node(vdom)
+
+  append_node(root, app_node)
 
   trigger_effects()
 }
@@ -135,6 +141,7 @@ function to_event_name(key) {
 };
 
 function create_node(vnode: vnode) {
+  console.log('create_node', vnode)
   if (typeof vnode.tag == 'function') {
     const prev_vnode = current_vnode
     current_vnode = vnode

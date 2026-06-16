@@ -33,11 +33,7 @@ function App() {
     h('.App',
       h('button', { onclick: () => show(!show()) }, 'Toggle Component Visibility'),
 
-      h('div',
-        show()
-          ? h(Counter, { count })
-          : h('p', 'Counter unmounted')
-      )
+      show() ? h(Counter, { count }) : h('p', 'Counter unmounted')
     )
   );
 }
