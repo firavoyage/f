@@ -1,6 +1,6 @@
 import 'the-new-css-reset/css/reset.css';
 
-import { h, p, ref, effect, render } from '../../framework';
+import { h, p, ref, effect, render } from '../framework';
 
 function Counter({ count }) {
   const input = ref();
