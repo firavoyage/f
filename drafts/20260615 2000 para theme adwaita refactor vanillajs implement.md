@@ -9671,5 +9671,698 @@ To help me give you more specific advice, what **kind of web app** are you build
 
 Show all
 
+# where is react opinionated
+
+While **React** is historically celebrated as an unopinionated UI library—leaving choices like folder structure, routing, and state management entirely up to you—it is <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>highly opinionated about its own core mechanics, architecture, and programming paradigms</strong></mark>. \[[1](https://www.reddit.com/r/reactjs/comments/rdh7gt/in%5Fwhat%5Fway%5Fis%5Freact%5Fopinionated/), [2](https://dev.to/mikeyglitz/comment/110m9), [3](https://opinionatedreact.com/), [4](https://www.reddit.com/r/reactjs/comments/126uzfo/why%5Fis%5Freact%5Fconsidered%5Fa%5Flibrary%5Fand%5Fnot%5Fa/), [5](https://www.reddit.com/r/webdev/comments/1i65cex/why%5Fis%5Freact%5Fso%5Fpopular/), [6](https://www.reddit.com/r/reactjs/comments/1ak3svj/why%5Fdo%5Fso%5Fmany%5Freact%5Fjs%5Fdevelopers%5Finsist%5Fthat/)]
+
+Over the years, and particularly with modern developments like the React Compiler and Server Components, React has doubled down on specific technical philosophies. The specific areas where React enforces its strong opinions include: \[[1](https://www.reddit.com/r/react/comments/1qhxc46/does%5Freact%5Fstill%5Ffeel%5Ffuture%5Fproof%5Fin%5F2026%5For%5Fis/), [2](https://www.youtube.com/watch?v=MdZqujjpMko)]
+
+### 1. Data Flow and State Immutability \[[1](https://riseuplabs.com/react-development-ultimate-guide/), [2](https://www.angularminds.com/blog/top-state-management-libraries-for-react), [3](https://www.abbacustechnologies.com/why-are-people-moving-away-from-react/)]
+
+React forces a **one-way downward data binding** architecture. Data must flow from parent to child via `props`. Additionally, React is strictly opinionated about how you mutate state: \[[1](https://www.abbacustechnologies.com/why-are-people-moving-away-from-react/), [2](https://joshcollinsworth.com/blog/antiquated-react), [3](https://dev.to/ymir/react-mindset-how-new-react-developers-should-think-2cap)]
+
+- **No Direct Mutations**: You cannot change a variable directly (e.g., `state.value = 5`). You must use updater functions like `setState` to trigger a re-render.
+- **Pure Functions**: Components must act as pure functions regarding their inputs. Passing the same props must always yield the same UI. \[[1](https://medium.com/rpedroni/usestate-diving-deep-into-react-hooks-2021-88ec31d69a5e), [2](https://nareshit.com/blogs/state-in-react-explained-for-developers), [3](https://fbohorqu.medium.com/react-5-minute-refresher-daa1f78f6bdc), [4](https://react.dev/learn/queueing-a-series-of-state-updates), [5](https://medium.com/the-non-traditional-developer/creating-a-stateful-ref-object-in-react-fcd56d9dea58)]
+
+### 2. Functional Programming and Hooks
+
+Since moving away from Class Components, React has heavily bought into a functional execution paradigm via **React Hooks**: \[[1](https://www.reddit.com/r/webdev/comments/1i65cex/why%5Fis%5Freact%5Fso%5Fpopular/), [2](https://www.infoworld.com/article/2338738/8-more-reactjs-hooks-you-need-to-know-about.html), [3](https://blog.bitsrc.io/redux-free-state-management-with-jotai-2c8f34a6a4a), [4](https://www.telerik.com/blogs/react-design-patterns-best-practices)]
+
+- **Rules of Hooks**: You are strictly forbidden from calling hooks inside loops, conditions, or nested functions. They must always be executed at the top level of your component.
+- **Component Lifecycle**: Instead of traditional lifecycle methods (`componentDidMount`), React forces you to think in terms of synchronization and data dependencies using the `useEffect` paradigm. \[[1](https://www.reddit.com/r/webdev/comments/1i65cex/why%5Fis%5Freact%5Fso%5Fpopular/), [2](https://www.robinwieruch.de/react-element-component/), [3](https://www.fullstack.com/labs/resources/blog/behind-the-scenes-react-hooks-api), [4](https://mvineetsharma.medium.com/react-hooks-deep-dive-evolution-7601fc361f58), [5](https://blog.logrocket.com/exploring-react-compiler-detailed-introduction/)]
+
+### 3. The Composition Model over Inheritance
+
+React has an unyielding stance on how code should be reused:
+
+- **Composition Wins**: React rejects class inheritance models for UI elements.
+- **Children Prop**: Instead of extending objects, you are forced to nest components using the built-in `children` prop or specialized component properties to build complex interfaces. \[[1](https://legacy.reactjs.org/docs/react-component.html), [2](https://dev.to/shreyvijayvargiya/understanding-react-a-comprehensive-guide-3dhk)]
+
+### 4. Markup and Logic Co-location (JSX)
+
+React strongly asserts that structural markup and rendering logic belong together. Rather than separating HTML templates from JavaScript (like Angular or Vue), React forces the use of **JSX / TSX**. If you want to use React, you must accept writing your UI declaratively inside your JavaScript code. \[[1](https://www.reddit.com/r/webdev/comments/1i65cex/why%5Fis%5Freact%5Fso%5Fpopular/), [2](https://gist.github.com/jcobb/a510b50dd57235ceac06), [3](https://js2ts.com/jsx-vs-tsx), [4](https://react.dev/learn/writing-markup-with-jsx), [5](https://blog.thoughtstuff.co.uk/2021/08/stop-saying-microsoft-teams-is-being-rewritten-from-electron-to-react/)]
+
+### 5. Server-First Mentality (Modern React)
+
+With the introduction of **React Server Components (RSC)**, the React core team developed an explicit architectural opinion on application data boundaries: \[[1](https://www.reddit.com/r/react/comments/1qhxc46/does%5Freact%5Fstill%5Ffeel%5Ffuture%5Fproof%5Fin%5F2026%5For%5Fis/), [2](https://sparkbox.com/foundry/the-react-rendering-landcape-in-2025), [3](https://medium.com/@muhammadshakir4152/react-server-components-rsc-the-architecture-that-erases-the-lines-between-backend-frontend-73ebf882a12c)]
+
+- **Component-Level Fetching**: React expects components to split naturally between server-driven data fetching and client-driven user interaction.
+- **Framework Dependency**: Because RSCs require deep server orchestration, core React now explicitly directs developers toward using holistic meta-frameworks like Next.js or Remix to build modern apps, rather than assembling raw client-side single-page apps (SPAs). \[[1](https://itnext.io/is-react-becoming-opinionated-da5b99fe2641), [2](https://www.youtube.com/watch?v=wOHqwYtZ%5F90), [3](https://www.reddit.com/r/react/comments/1qhxc46/does%5Freact%5Fstill%5Ffeel%5Ffuture%5Fproof%5Fin%5F2026%5For%5Fis/), [4](https://www.reddit.com/r/nextjs/comments/1h4y5ow/does%5Fany%5Fof%5Fyou%5Ffeel%5Fthat%5Fnextjsreact%5Fits/), [5](https://www.reddit.com/r/reactjs/comments/1ak3svj/why%5Fdo%5Fso%5Fmany%5Freact%5Fjs%5Fdevelopers%5Finsist%5Fthat/)]
+
+### Summary Comparison
+
+| Aspect \[[1](https://www.reddit.com/r/reactjs/comments/rdh7gt/in%5Fwhat%5Fway%5Fis%5Freact%5Fopinionated/), [2](https://opinionatedreact.com/), [3](https://gist.github.com/jcobb/a510b50dd57235ceac06), [4](https://www.youtube.com/watch?v=MdZqujjpMko), [5](https://www.abbacustechnologies.com/why-are-people-moving-away-from-react/), [6](https://mattburgess.medium.com/in-defence-of-opinionation-54b540b4b9f6), [7](https://itnext.io/is-react-becoming-opinionated-da5b99fe2641), [8](https://www.reddit.com/r/webdev/comments/1i65cex/why%5Fis%5Freact%5Fso%5Fpopular/)] | Where React is Unopinionated                                   | Where React is Highly Opinionated                         |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- | --------------------------------------------------------- |
+| **Project Design**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | File structures, naming conventions, CSS strategies            | UI must use declarative JSX syntax                        |
+| **Architecture**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | Global state management (Redux vs. Zustand vs. Context)        | Component data flow must be unidirectional                |
+| **Routing**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | Client-side routing choices (React Router vs. TanStack Router) | Server-side routing structures (Folder/File-based routes) |
+| **Execution**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Async data-fetching mechanisms (Fetch, Axios, Query)           | Hook execution sequencing and pure-rendering rules        |
+
+Are you trying to decide **how to architect a new React project**, or are you hitting a roadblock with a **specific React rule** like `useEffect` or state updates? Let me know, and I can provide targeted code patterns to help.
+
+- [link](https://www.reddit.com/r/reactjs/comments/rdh7gt/in%5Fwhat%5Fway%5Fis%5Freact%5Fopinionated/)\
+  In what way is React “opinionated”? : r/reactjs - Reddit\
+  Dec 10, 2021 — They cherry picked the concepts/libraries developed in the React ecosystem, slapped huge opinionation all over it in the name of s...\
+  Reddit·r/reactjs
+- [link](https://dev.to/mikeyglitz/comment/110m9)\
+  React is an incredibly un-opinionated technology, which ...\
+  Jun 25, 2020 — React is an incredibly un-opinionated technology, which means that developers have to make their own design choices. I don't reall...\
+  DEV Community
+- [link](https://www.reddit.com/r/reactjs/comments/126uzfo/why%5Fis%5Freact%5Fconsidered%5Fa%5Flibrary%5Fand%5Fnot%5Fa/)\
+  Why is React considered a library and not a framework but ... - Reddit\
+  Mar 30, 2023 — i tend to think of frameworks as opinionated libraries that provide a bunch of common tools you'll need to do a whole task.. NextJ...\
+  Reddit·r/reactjs
+
+Show all
+
+## You said: composition or inheritance meaning example
+
+**Composition** and **inheritance** are two different ways to reuse code and create relationships between objects or components. \[[1](https://dev.to/wallacefreitas/understanding-the-composition-pattern-in-react-3dfp), [2](https://realpython.com/inheritance-composition-python/), [3](https://www.infoworld.com/article/2338602/composition-vs-inheritance-in-oop-and-c-sharp.html)]
+
+The core difference lies in how they define relationships: **Inheritance** defines what an object **is**, while **composition** defines what an object **has**. \[[1](https://realpython.com/inheritance-composition-python/), [2](https://dev.to/parthkamal/composition-vs-inheritance-the-practical-guide-every-developer-should-know-3ie)]
+
+***
+
+### 1. Conceptual Meaning
+
+- **Inheritance ("Is-A" relationship)**: A child design copies everything from a parent design and then adds or changes features. It creates a rigid, top-down hierarchy. \[[1](https://train.rse.ox.ac.uk/material/HPCu/software%5Farchitecture%5Fand%5Fdesign/object%5Forientated/inheritance%5Fand%5Fcomposition), [2](https://isaaccomputerscience.org/concepts/prog%5Foop%5Finheritance%5Fpolymorphism), [3](https://www.udacity.com/blog/cpp-inheritance-explained/), [4](https://python-academy.org/en/guide/inheritance), [5](https://er-raj-aryan.medium.com/understanding-css-inheritance-the-hidden-power-behind-your-styles-57e512b6fc37)]
+- **Composition ("Has-A" relationship)**: You build a complex object by combining smaller, independent pieces. It acts like Lego blocks, making it highly flexible. \[[1](https://medium.com/swlh/oo-design-patterns-composition-vs-inheritance-4206a6b018bb), [2](https://www.koderhq.com/tutorial/typescript/composition/), [3](https://every-layout.dev/rudiments/composition/), [4](https://medium.com/@prithvie/building-dynamic-ui-with-react-composition-dc5dbf1fa7a3), [5](https://eidankhan65.medium.com/inheritance-vs-composition-encapsulations-dynamic-duo-22a080973763)]
+
+***
+
+### 2. Code Example: Object-Oriented Programming (OOP)
+
+Imagine you are building a video game with different types of characters.
+
+### The Inheritance Way (Rigid)
+
+A `Mage` **is a** `Character`. It inherits everything from the base class. \[[1](https://train.rse.ox.ac.uk/material/HPCu/software%5Farchitecture%5Fand%5Fdesign/object%5Forientated/inheritance%5Fand%5Fcomposition%5Fcpp), [2](https://medium.com/@sagardhomane/inheritance-and-polymorphism-the-dynamic-duo-of-object-oriented-programming-2b21a4f61f8e), [3](https://www.naukri.com/code360/library/inheritance-in-object-oriented-programming)]
+
+javascript
+
+```
+// Parent Class
+class Character {
+  constructor(name) {
+    this.name = name;
+  }
+  walk() {
+    console.log(`${this.name} walks forward.`);
+  }
+}
+
+// Child Class
+class Mage extends Character {
+  castSpell() {
+    console.log(`${this.name} casts a fireball!`);
+  }
+}
+
+const gandalf = new Mage("Gandalf");
+gandalf.walk();       // Inherited
+gandalf.castSpell();   // Specific to Mage
+```
+
+Use code with caution.
+
+- **The Problem:** What if you want a `Spellsword` character who can cast spells _and_ fight with a sword? If `Warrior` is another branch of inheritance, a class cannot easily inherit from both `Mage` and `Warrior` in most languages.
+
+### The Composition Way (Flexible)
+
+Instead of a rigid tree, you create small, independent functions (abilities) and assemble your character. \[[1](https://utho.com/blog/composition-vs-inheritance/)]
+
+javascript
+
+```
+// Independent pieces of behavior
+const canWalk = (state) => ({
+  walk: () => console.log(`${state.name} walks forward.`)
+});
+
+const canCastSpells = (state) => ({
+  castSpell: () => console.log(`${state.name} casts a fireball!`)
+});
+
+const canFight = (state) => ({
+  fight: () => console.log(`${state.name} swings a sword.`)
+});
+
+// Build any character by combining behaviors
+const CreateSpellsword = (name) => {
+  let state = { name };
+  // Combine all desired features into one object
+  return Object.assign({}, canWalk(state), canCastSpells(state), canFight(state));
+};
+
+const elric = CreateSpellsword("Elric");
+elric.walk();       // Has walking
+elric.castSpell();   // Has spellcasting
+elric.fight();       // Has fighting
+```
+
+Use code with caution.
+
+***
+
+### 3. Code Example: React Components
+
+React completely rejects inheritance for building user interfaces. It uses composition by nesting components inside one another. \[[1](https://dev.to/alisamir/composition-vs-inheritance-in-react-2pho), [2](https://medium.com/@xspaces2011/component-composition-and-reusability-in-react-js-6bd2d2fb0d3)]
+
+### The Composition Way in React
+
+Instead of creating a special `WelcomeDialog` class that extends a base `Dialog` class, you pass children or configurations into a generic `Dialog`.
+
+jsx
+
+```
+// 1. Generic, reusable component (The Wrapper)
+function Dialog(props) {
+  return (
+    <div className="dialog-box">
+      <div className="dialog-header">{props.title}</div>
+      <div className="dialog-body">
+        {props.children} {/* Compasition: Nesting whatever comes in */}
+      </div>
+    </div>
+  );
+}
+
+// 2. Specific component built using composition
+function WelcomeDialog() {
+  return (
+    <Dialog title="Welcome to the App">
+      <p>Thank you for signing up. We are glad to have you!</p>
+      <button>Get Started</button>
+    </Dialog>
+  );
+}
+```
+
+Use code with caution.
+
+***
+
+### Summary Checklist
+
+| Feature \[[1](https://www.scaler.com/topics/inheritance-in-oops/), [2](https://dev.to/ishitajuneja/everything-you-need-to-know-about-inheritance-in-programming-4j3h), [3](https://medium.com/@lycsona/composition-vs-inheritance-laravel-examples-3bbe790cef8f), [4](https://utho.com/blog/composition-vs-inheritance/), [5](https://www.instagram.com/reel/DPx%5FLnfE1%5Fe/)] | Inheritance                           | Composition                      |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------- | -------------------------------- |
+| **Relationship**                                                                                                                                                                                                                                                                                                                                                                | "Is-A" (Cat is an Animal)             | "Has-A" (Cat has Meow ability)   |
+| **Flexibility**                                                                                                                                                                                                                                                                                                                                                                 | Low (Hard to change later)            | High (Easy to swap parts)        |
+| **Coupling**                                                                                                                                                                                                                                                                                                                                                                    | High (Child breaks if Parent changes) | Low (Components are independent) |
+| **React Usage**                                                                                                                                                                                                                                                                                                                                                                 | Practically never used                | The golden rule of React UI      |
+
+Are you trying to refactor a **legacy codebase** away from deep inheritance lines, or are you designing a **new component library** in React? Let me know the specific problem you are tackling.
+
+- [link](https://dev.to/wallacefreitas/understanding-the-composition-pattern-in-react-3dfp)\
+  Understanding the Composition Pattern in React\
+  Sep 26, 2024 — One common technique for code reuse in conventional object-oriented programming is inheritance. Nonetheless, composition is a more...\
+  \
+  \
+  DEV Community
+- [link](https://realpython.com/inheritance-composition-python/)\
+  Inheritance and Composition: A Python OOP Guide – Real Python\
+  In Python, composition is a design principle where a class is composed of one or more objects of other classes, modeling a “has a”...\
+  \
+  \
+  Real Python
+- [link](https://www.infoworld.com/article/2338602/composition-vs-inheritance-in-oop-and-c-sharp.html)\
+  Composition vs. inheritance in OOP and C#\
+  Jun 8, 2023 — While both can help you reuse code, there are key differences between them. Inheritance establishes common behavior and interfaces...\
+  \
+  \
+  InfoWorld
+
+Show all
+
+## You said: what would code look like if they had chosen inheritance
+
+If the React team had chosen **inheritance** instead of composition, you would build your application by extending specific sub-classes to inherit behavior and visuals, rather than nesting them.
+
+Because React was originally built on **ES6 Class Components**, we can see exactly what this would look like.
+
+Here is how the `WelcomeDialog` example from before would look if it were forced into a strict inheritance pattern.
+
+***
+
+### The Base Class (`Dialog`)
+
+Instead of a function that accepts `props.children`, the parent class defines a structured `render` lifecycle and provides internal placeholder methods that sub-classes must override.
+
+jsx
+
+```
+import React from 'react';
+
+// The Parent Class
+class Dialog extends React.Component {
+  // Base rendering logic shared by ALL dialogs
+  render() {
+    return (
+      <div className="dialog-box">
+        <div className="dialog-header">
+          {this.renderTitle()} {/* Hook for sub-classes */}
+        </div>
+        <div className="dialog-body">
+          {this.renderBody()}  {/* Hook for sub-classes */}
+        </div>
+      </div>
+    );
+  }
+
+  // Default placeholders (Children will overwrite these)
+  renderTitle() { return "Generic Dialog"; }
+  renderBody() { return null; }
+}
+```
+
+Use code with caution.
+
+### The Sub-Class (`WelcomeDialog`)
+
+To make a specific dialog, you use `extends` to inherit the container structure from `Dialog`, and then **override** the base methods to inject your custom content.
+
+jsx
+
+```
+// The Child Class inherits from Dialog
+class WelcomeDialog extends Dialog {
+
+  // Overriding the parent's title method
+  renderTitle() {
+    return "Welcome to the App";
+  }
+
+  // Overriding the parent's body method
+  renderBody() {
+    return (
+      <>
+        <p>Thank you for signing up. We are glad to have you!</p>
+        <button>Get Started</button>
+      </>
+    );
+  }
+}
+```
+
+Use code with caution.
+
+***
+
+### Why React Avoided This (The Design Flaw)
+
+If you look closely at the code above, the inheritance model introduces three massive problems that break down in UI development:
+
+1. **Fragile Base Class**: If you decide later that the `Dialog` class needs a footer bar, you have to modify the base `render()` method. This risks breaking _every single_ sub-class in your entire app that inherits from it.
+2. **The "Banana Gorilla" Problem**: If you want a small `ConfirmButton` to inherit a specific loading animation from a `BaseButton` class, but `BaseButton` already inherits from an `InteractiveElement` class, your small button ends up inheriting a massive chain of unnecessary methods, states, and properties.
+3. **Inflexible Hierarchies**: If you have a `NotificationDialog` and a `DraggableWindow`, and you want to make a _Draggable Notification Dialog_, inheritance forces you into a corner. JavaScript does not support multiple inheritance (`class MyWidget extends Notification, Draggable` is illegal). You are stuck.
+
+With composition (), you can combine them instantly.
+
+Are you dealing with an **older codebase** that still uses class components, or are you curious about how **other frameworks** (like Angular or older systems) handle these relationships?
+
+## You said: why did react choose class over fp at first
+
+React did not initially reject functional programming (FP) out of spite; rather, the team was forced into using **ES6 Classes** in 2015 <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">due to the <strong>technical limitations of JavaScript at the time</strong></mark>. \[[1](https://dev.to/colocodes/react-class-components-vs-function-components-23m6), [2](https://medium.com/@marc.lally/the-evolution-of-react-js-from-classes-to-functional-components-e43a08c6e4bf)]
+
+Before React Hooks were introduced in 2019, writing a fully functional web application using _only_ pure functions was practically impossible in JavaScript. The specific historical and technical reasons React initially chose classes include: \[[1](https://www.linkedin.com/pulse/great-pivot-how-react-moved-from-classes-functions-why-jatinder-verma-va33c), [2](https://flatlogic.com/blog/functional-components-vs-class-components-in-react-js/)]
+
+### 1. The Need for State and Time
+
+A pure function is executing a calculation: you pass inputs, and it returns an output. It has no memory. \[[1](https://blog.nashtechglobal.com/reactive-vs-functional-programming-which-is-right-for-you/), [2](https://developer.ibm.com/tutorials/oo-v-functional-programming/), [3](https://ericnormand.me/podcast/is-react-functional-programming)]
+
+- To make a dynamic user interface, components need to **remember things over time** (e.g., _Is this dropdown open? Is the user logged in?_).
+- Before hooks like `useState`, **JavaScript functions had no native way to attach persistent state** to an individual execution instance.
+- Classes, by definition, are blueprints designed to hold an "instance" with its own local memory (`this.state`). \[[1](https://medium.com/@icjoseph/in-react-should-you-use-classes-or-functional-components-1ca50dae3414), [2](https://medium.com/@aravinthanthesha/why-react-now-recommends-function-components-instead-of-class-components-f94d86528a05), [3](https://www.freecodecamp.org/news/hard-parts-of-react/), [4](https://www.reddit.com/r/reactjs/comments/179221w/why%5Ffunctional%5Fcomponenthooks%5Fwere%5Fintroduced%5Fin/), [5](https://www.angularminds.com/blog/key-difference-between-props-and-state-in-react)]
+
+### 2. Managing the Lifecycles of the DOM
+
+Web pages require "side effects," such as fetching data from an API when a component first loads, or cleaning up a timer when a component disappears. \[[1](https://codingsonata.medium.com/book-review-react-key-concepts-c64d608ed747), [2](https://academind.com/articles/react-hooks-introduction)]
+
+- JavaScript functions execute instantly from top to bottom and then disappear from memory. They had no concept of a "lifecycle."
+- Classes provided an elegant vehicle for backing this behavior via **explicit lifecycle methods** (`componentDidMount`, `componentWillUnmount`). This gave the React engine clear hooks to safely set up and tear down browser operations. \[[1](https://www.linkedin.com/pulse/great-pivot-how-react-moved-from-classes-functions-why-jatinder-verma-va33c), [2](https://medium.com/@aozora-med/what-is-the-difference-between-functional-component-and-class-component-in-react-4f8b015ffc3f), [3](https://www.reddit.com/r/reactjs/comments/blad60/why%5Freact%5Fchanged%5Ffrom%5Fclass%5Fcomponent%5Fto/)]
+
+### 3. JavaScript's Evolution (The ES6 Hype)
+
+When Facebook first built React in 2013, JavaScript didn't even have a native `class` keyword. React had to invent its own custom object system called `React.createClass()`. \[[1](https://www.newmediacampaigns.com/blog/refactoring-react-components-to-es6-classes), [2](https://dev.to/colocodes/react-class-components-vs-function-components-23m6), [3](https://rootstack.com/en/blog/reactjs-component), [4](https://www.learningtree.co.uk/blog/making-sense-reacts-different-component-styles/)]
+
+- In 2015, ECMAScript 6 (ES6) launched and introduced the official `class` and `extends` keywords to JavaScript.
+- The tech community heavily pushed for standardization. The React team decided to deprecate `React.createClass()` and **align with the language standard** by utilizing native ES6 classes (`class MyComponent extends React.Component`). \[[1](https://stackoverflow.com/questions/36097965/when-to-use-es6-class-based-react-components-vs-es6-react-function-components), [2](https://dev.to/colocodes/react-class-components-vs-function-components-23m6), [3](https://www.reddit.com/r/javascript/comments/3nopx6/why%5Fes6%5Fhas%5Fclasses/), [4](https://www.middle-engine.com/blog/posts/2018/11/29/a-short-history-of-function-components-in-react), [5](https://www.reddit.com/r/reactjs/comments/179221w/why%5Ffunctional%5Fcomponenthooks%5Fwere%5Fintroduced%5Fin/)]
+
+### 4. Better Tooling and Ecosystem Alignment \[[1](https://www.betasofttechnology.com/reactjs-framework-vs-other-frameworks-which-is-right-for-you/)]
+
+During the mid-2010s, the broader web ecosystem was heavily tailored around Object-Oriented Programming (OOP) paradigms:
+
+- **Compilers** (like Babel) and **Type Systems** (like early TypeScript and Flow) were optimized to parse, autocomplete, and check classes easily. \[[1](https://github.com/bbauska/meta-react-basics)]
+- Attempting to force an advanced functional architecture into JavaScript in 2015 would have required massive amounts of complex boilerplates (like closures or higher-order functions) that would have deeply frustrated mainstream developers. \[[1](https://www.reddit.com/r/reactjs/comments/179221w/why%5Ffunctional%5Fcomponenthooks%5Fwere%5Fintroduced%5Fin/)]
+
+### The Turning Point
+
+The React team always knew that a UI is conceptually just a function converting data into visuals. Classes were simply a vehicle used to bridge the gap. \[[1](https://medium.com/@icjoseph/in-react-should-you-use-classes-or-functional-components-1ca50dae3414), [2](https://news.ycombinator.com/item?id=35187959), [3](https://news.ycombinator.com/item?id=35095115)]
+
+Once the team figured out how to use JavaScript closures to securely persist state across function renders behind the scenes, they engineered **React Hooks**. This allowed them to abandon the verbose syntax and confusing bugs of the `this` keyword, pivoting React back to its functional roots. \[[1](https://medium.com/@icjoseph/in-react-should-you-use-classes-or-functional-components-1ca50dae3414), [2](https://www.facebook.com/groups/ReactJsDevelopersGroup/posts/2532894553551431/), [3](https://medium.com/@aravinthanthesha/why-react-now-recommends-function-components-instead-of-class-components-f94d86528a05)]
+
+Are you currently working on a project where you are **migrating old React class components to modern functional components**, or are you interested in **how JavaScript closures power Hooks** under the hood?
+
+- [link](https://dev.to/colocodes/react-class-components-vs-function-components-23m6)\
+  React: class components vs function components\
+  Dec 1, 2021 — The issue with class based components and the driving reason why the React team went towards functional components was for better ...\
+  DEV Community
+- [link](https://news.ycombinator.com/item?id=35187959)\
+  Why did react (effectively) get rid of class components ...\
+  \> Classes may seem like the ideal thing to hold state since that's what they're designed for. However, React is more written like ...\
+  Hacker News
+- [link](https://medium.com/@aravinthanthesha/why-react-now-recommends-function-components-instead-of-class-components-f94d86528a05)\
+  Why react now recommends function components instead of ...\
+  Dec 31, 2025 — React today strongly recommends function components over class components because they provide a simpler, more modern, and more po...\
+  Medium·Thesha Aravinthan
+
+Show all
+
+## You said: what's the limitation of js that time in code
+
+To understand the limitations of JavaScript in 2015, you have to look at how a function executed. Before Hooks, if you tried to make a component out of a plain JavaScript function, it ran from top to bottom, returned some HTML, and immediately wiped its memory. \[[1](https://medium.com/@bdov%5F/javascript-typescript-execution-vs-lexical-vs-variable-environment-37ff3f264831)]
+
+Here is exactly what the code looked like, why it failed, and why classes were the only viable fix at the time.
+
+***
+
+### Limitation 1: No State (The "Amnesia" Problem)
+
+If you wanted a counter component, you needed a variable that changed when a button was clicked. \[[1](https://medium.com/kedar-naik/why-do-we-have-iifes-in-javascript-d05ccacee641)]
+
+### The Failed Functional Code:
+
+javascript
+
+```
+// JavaScript in 2015
+function Counter() {
+  let count = 0; // Local variable
+
+  function increment() {
+    count = count + 1;
+    // Problem: How do we tell React to re-render?
+    // Problem: Even if we re-render, this function runs again
+    // and resets 'count' back to 0!
+  }
+
+  return `Count is: ${count}`;
+}
+```
+
+Use code with caution.
+
+**The JS Limitation:** Plain JavaScript functions could not hold onto data between execution cycles unless you used complex nested closures or global variables, which ruined component isolation. \[[1](https://medium.com/@rohitkuwar/understanding-closures-in-javascript-the-power-of-function-scope-1a0d40ce0610)]
+
+### The Class Fix:
+
+Classes solved this because creating an instance (`new Counter()`) allocated a persistent block of memory in the browser.
+
+javascript
+
+```
+class Counter extends React.Component {
+  state = { count: 0 }; // Persists in the instance memory
+
+  increment = () => {
+    this.setState({ count: this.state.count + 1 }); // Built-in re-trigger
+  }
+}
+```
+
+Use code with caution.
+
+***
+
+### Limitation 2: No Side-Effect Timings (The Lifecycle Problem)
+
+Imagine you needed to start a timer or fetch data from an API the exact moment a component appeared on the screen, and clear it when the component was deleted.
+
+### The Failed Functional Code:
+
+javascript
+
+```
+function Clock() {
+  // This starts a timer immediately when the function runs
+  const timer = setInterval(() => console.log("Tick"), 1000);
+
+  // Problem: This runs on EVERY single render, creating infinite loops/duplicate timers.
+  // Problem: There is absolutely no way to catch the "destroy" event to clear the timer.
+
+  return `<div>Clock Component</div>`;
+}
+```
+
+Use code with caution.
+
+**The JS Limitation:** A standard JavaScript function had no internal hooks or event listeners to know when it was being mounted to or unmounted from the DOM.
+
+### The Class Fix:
+
+Classes provided dedicated object methods that the React engine could look for and execute at precise moments. \[[1](https://learn.react-js.dev/basics/excursus-es2015+)]
+
+javascript
+
+```
+class Clock extends React.Component {
+  componentDidMount() {
+    // React calls this exactly once when the component hits the screen
+    this.timer = setInterval(() => console.log("Tick"), 1000);
+  }
+
+  componentWillUnmount() {
+    // React calls this exactly once right before the component is deleted
+    clearInterval(this.timer);
+  }
+}
+```
+
+Use code with caution.
+
+***
+
+### How modern JS solved this (The Closure Hack)
+
+In 2019, JavaScript didn't actually change its core behavior to allow Hooks. Instead, the React team figured out a clever architecture using an internal array and **JavaScript closures**. \[[1](https://dev.to/franson33/reacts-component-revolution-how-closures-became-the-foundation-of-modern-ui-components-3nia)]
+
+When you write modern functional code today:
+
+javascript
+
+```
+// Modern React
+function Counter() {
+  const [count, setCount] = useState(0);
+}
+```
+
+Use code with caution.
+
+Behind the scenes, React maintains a global pointer for your component. Every time `useState` runs, React looks up that component's slot in a massive master array, grabs the value, and feeds it back into your function. JavaScript functions are still technically stateless—React is just doing a massive game of sleight-of-hand behind the scenes to make them feel stateful. \[[1](https://www.instagram.com/reel/DSAG0NXidQy/), [2](https://djoech.medium.com/functional-vs-class-components-in-react-231e3fbd7108)]
+
+Would you like to see **how that internal array mechanism works** under the hood, or are you running into a specific issue with **variable scoping or closures** in your current project?
+
+- [link](https://medium.com/@bdov%5F/javascript-typescript-execution-vs-lexical-vs-variable-environment-37ff3f264831)\
+  JavaScript/TypeScript Internals: Execution vs. Lexical vs. Variable Environment | by Brennan D Baraban\
+  May 6, 2019 — When executing a given script, the JavaScript engine reads the code top-to-bottom, in its entirety, first, before running any func...\
+  \
+  \
+  Medium
+- [link](https://medium.com/kedar-naik/why-do-we-have-iifes-in-javascript-d05ccacee641)\
+  Why do we have IIFE’s in JavaScript? | by Kedar Naik | Kedar Naik\
+  Oct 19, 2019 — The variable counter is inaccessible from global scope which makes it safe from being modified. On doing this the variable gets th...\
+  \
+  \
+  Medium
+- [link](https://medium.com/@rohitkuwar/understanding-closures-in-javascript-the-power-of-function-scope-1a0d40ce0610)\
+  Understanding Closures in JavaScript: The Power of Function Scope\
+  Jul 22, 2025 — Why are Closures Important? Closures allow you to create private variables, which is one of the reasons why closures are so useful...\
+  \
+  \
+  Medium
+
+Show all
+
+## You said: is modern hooks actually possible that time
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">Yes, modern Hooks were technically possible in 2015.</span></strong></mark>
+
+The fundamental JavaScript mechanism that powers Hooks—**closures**—has been part of the language since its inception. React _could_ have used the exact same array-backed hook architecture in 2015.
+
+However, they didn't because of **major DX (Developer Experience) friction, architectural roadblocks, and community standards** at that time. Here is why the React team could have built Hooks in 2015, but chose not to.
+
+***
+
+### The Proof: The 2015 Closure "Hack"
+
+To prove it was possible, here is a simplified version of how modern `useState` works under the hood. This code runs perfectly using standard JavaScript functions and closures from 2015:
+
+javascript
+
+```
+// This is 2015-compatible JavaScript
+let stateValues = []; // Master array holding all state
+let currentHookIndex = 0; // Pointer to track which hook is running
+
+function useState(initialValue) {
+  const hookIndex = currentHookIndex;
+
+  // If this is the first render, initialize the state slot
+  if (stateValues[hookIndex] === undefined) {
+    stateValues[hookIndex] = initialValue;
+  }
+
+  // A closure that remembers 'hookIndex' forever
+  const setState = (newValue) => {
+    stateValues[hookIndex] = newValue;
+    triggerReRender(); // Tell React to redraw
+  };
+
+  currentHookIndex++; // Move pointer forward for the next useState call
+  return [stateValues[hookIndex], setState];
+}
+
+function triggerReRender() {
+  currentHookIndex = 0; // Reset pointer for the next render pass
+  MyComponent();
+}
+```
+
+Use code with caution.
+
+***
+
+### Why They Didn't Do It In 2015
+
+Even though the language allowed it, the React team rejected this approach in 2015 for three critical reasons:
+
+### 1. The "Rules of Hooks" Were Deemed Too Unintuitive
+
+Hooks rely entirely on execution order. If you put a Hook inside an `if` statement or a loop, the `currentHookIndex` pointer breaks completely, corrupting the state of every component below it.
+
+- In 2015, developers were used to traditional OOP patterns.
+- Telling developers _"You can use functions, but if you put this function inside an 'if' statement, your whole app explodes"_ was considered an unacceptable API design that would confuse the industry.
+- It wasn't until **ESLint plugins** became highly advanced years later that React could safely enforce these rules automatically at compile time.
+
+### 2. The "Stale Closure" Problem in ES5/ES6
+
+Functional programming heavily relies on variables trapped inside scopes. In 2015, developers frequently ran into "stale closures," where a function accidentally remembered an old version of a variable instead of the current one.\
+Classes solved this cleanly because `this.state.count` always pointed to the absolute latest object reference, bypassing the closure traps that developers frequently fell into. \[[1](https://www.linkedin.com/pulse/react-192s-useeffectevent-hook-finally-solving-stale-closure-raj-2fzoc)]
+
+### 3. The Push for Standardization
+
+In 2015, the JavaScript community was desperate for order. The language was fragmented, and the arrival of ES6 classes was celebrated as a unifying standard. If React had ignored the brand-new native `class` keyword to introduce a highly experimental, array-pointer-based functional paradigm, it likely would have been rejected by enterprise teams who wanted standard object-oriented patterns. \[[1](https://itnext.io/a-couple-of-years-ago-javascript-developers-were-blessed-with-a-new-es6-standard-which-brought-us-51d585382704), [2](https://fireship.dev/why-react-hooks), [3](https://medium.com/@srinivascoder/a-landmark-release-defining-the-future-of-front-end-development-32d17fd13a70)]
+
+### Summary
+
+The code was possible, but the **ecosystem wasn't ready**. React had to wait for developers to get tired of class bloat, for ESLint tooling to mature, and for functional concepts to become mainstream before they could successfully introduce Hooks. \[[1](https://martinfowler.com/articles/codemods-api-refactoring.html)]
+
+Are you trying to wrap your head around **how closures work**, or are you debugging a **stale closure issue** (like a `useEffect` or `setTimeout` capturing old state) in your app right now?
+
+- [link](https://www.linkedin.com/pulse/react-192s-useeffectevent-hook-finally-solving-stale-closure-raj-2fzoc)\
+  React 19.2's useEffectEvent Hook: Finally Solving the Stale Closure Problem\
+  Nov 17, 2025 — That's a stale closure—your function (the guard's memory) is stuck with old information and doesn't know about the new data.\
+  \
+  \
+  LinkedIn
+- [link](https://itnext.io/a-couple-of-years-ago-javascript-developers-were-blessed-with-a-new-es6-standard-which-brought-us-51d585382704)\
+  JavaScript Modules. A shot to figure out how the most… | by Andrii Maglovanyi\
+  Feb 10, 2019 — JavaScript modules were introduced in ES6 in 2015 as a solution to standardize the zoo of module systems on all platforms that alr...\
+  \
+  \
+  itnext.io
+- [link](https://fireship.dev/why-react-hooks)\
+  Why React Hooks?\
+  The reason React initially used the createClass API was because, at the time, JavaScript didn't have a built-in class system. Of c...\
+  \
+  \
+  fireship.dev
+
+Show all
+
+# . css reset
+
+```
+    "the-new-css-reset": "^1.11.3"
+```
+
+```
+import 'the-new-css-reset/css/reset.css';
+```
+
+# pros and cons of foo.method(...args) or method(foo, ...args)
+
+This choice represents a core architectural debate: **Object-Oriented Design** (`foo.method()`) versus **Functional Design** (`method(foo)`).
+
+Here is the direct breakdown of the pros and cons for each approach.
+
+### OOP Style: `foo.method(...args)`
+
+The method belongs directly to the object or its class instance. \[[1](https://www.upgrad.com/blog/difference-between-function-and-method-in-python/), [2](https://www.codecademy.com/article/method-vs-function-difference), [3](https://phoenixnap.com/kb/python-static-method)]
+
+**Pros:**
+
+- **Discoverability:** Auto-complete (IntelliSense) immediately shows available methods after typing `foo.`.
+- **Readability:** Follows a natural subject-verb-object sentence structure.
+- **Polymorphism:** Different objects can implement their own version of `method()` seamlessly.
+- **Chaining:** Enables clean, sequential execution like `foo.filter().map().sort()`. \[[1](https://www.boot.dev/blog/python/python-polymorphism/), [2](https://www.guardsquare.com/blog/behind-the-scenes-of-jvm-method-invocations), [3](https://medium.com/@vikas.pandey4/understanding-function-chaining-in-java-a-comprehensive-guide-f5feda1af52a)]
+
+**Cons:**
+
+- **Tight Coupling:** The method is bound to the object type, making it harder to extract.
+- **Null Pointer Risks:** Throws an error immediately if `foo` is `null` or `undefined`.
+- **Bundle Size:** Tree-shaking is difficult; unused methods on a class prototype often cannot be stripped out by compilers. \[[1](https://www.test-king.com/blog/understanding-the-differences-between-pointers-and-references-in-c/), [2](https://medium.com/@urosnikolic/intro-to-react-hooks-why-how-dos-and-donts-29ea42e038ec)]
+
+### Functional Style: `method(foo, ...args)`
+
+The method is a pure, standalone function that accepts the data as its first argument. \[[1](https://www.dontusethiscode.com/blog/2025-03-05%5Ffuncmethods.html), [2](https://www.reddit.com/r/learnpython/comments/19d3gcx/eli5%5Fwhat%5Fis%5Fthe%5Fdifference%5Fbetween%5Fa%5Ffunction/), [3](https://sidburn.github.io/blog/2016/03/14/immutability-and-pure-functions)]
+
+**Pros:**
+
+- **Tree-Shaking:** Compilers can easily remove unused standalone functions to reduce final code size.
+- **Flexibility:** Functions can easily operate on any data structure that matches the expected shape (duck typing).
+- **Composition:** Simplifies functional programming patterns like currying, piping, and higher-order functions.
+- **Safety:** The function can internally handle `null` or `undefined` states without crashing. \[[1](https://realpython.com/python-vs-cpp/), [2](https://xebia.com/blog/functional-programming-in-python/), [3](https://livebook.manning.com/wiki/categories/java/higher-order), [4](https://mareks-082.medium.com/the-new-c-interceptors-vs-aop-dcbc0d2151a4), [5](https://codewords.recurse.com/issues/one/an-introduction-to-functional-programming)]
+
+**Cons:**
+
+- **Poor Discoverability:** You must know the function name beforehand; auto-complete won't suggest it based on the data variable.
+- **Pyramid of Doom:** Nested operations become deeply nested and hard to read, such as `sort(map(filter(foo)))`.
+- **Namespace Clutter:** Requires importing or defining many individual functions in the global or module scope. \[[1](https://medium.com/@robinviktorsson/understanding-functions-in-typescript-normal-named-and-anonymous-functions-0487081df289), [2](https://thetshaped.dev/p/clean-code-8-practical-tips-to-write-clean-functions), [3](https://gamedevacademy.org/python-why-import-star-is-bad-tutorial-complete-guide/)]
+
+***
+
+To help narrow down the best choice for your project, let me know:
+
+- What **programming language** are you using?
+
+- What is the **scale or performance** constraint of the application?
+
+- Do you prefer **functional programming** or **object-oriented design** paradigms?
+
+- [link](https://www.upgrad.com/blog/difference-between-function-and-method-in-python/)\
+  Difference Between Function and Method in Python: Explained!\
+  Oct 9, 2025 — A method shares the same DNA as a function—it's a block of code defined with def—but it lives inside a class. This placement funda...\
+  \
+  \
+  upGrad
+
+- [link](https://www.codecademy.com/article/method-vs-function-difference)\
+  Function vs Method: Everything You Need to Know\
+  A method is just a function that lives inside an object. It does everything a function does, but it's tied to the object it belong...\
+  \
+  \
+  Codecademy
+
+- [link](https://phoenixnap.com/kb/python-static-method)\
+  What Is a Static Method in Python\
+  Dec 15, 2022 — This method helps define utility methods through a logical connection to a class. The method call happens directly on the class ob...\
+  \
+  \
+  phoenixNAP
+
+Show all
+
 # 
 

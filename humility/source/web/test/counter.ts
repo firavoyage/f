@@ -2,12 +2,6 @@ import 'the-new-css-reset/css/reset.css';
 
 import { h, signal, ref, onMount, onCleanup, render } from '../framework';
 
-function create_store() {
-  return { show: signal(true), count: signal(0) };
-}
-
-let store;
-
 function Counter({ count }) {
   // 1. Initialize a custom un-tracked ref signal
   const myInputRef = ref(); 
@@ -34,9 +28,9 @@ function Counter({ count }) {
 }
 
 function App() {
-  store = store || create_store();
-  const { show, count } = store;
-  
+  const show = signal(true)
+  const count = signal(0)
+
   return h('.app-wrapper', // Defaults to div with class "app-wrapper"
     h('button', { onclick: () => show(!show()) }, 'Toggle Component'),
     
