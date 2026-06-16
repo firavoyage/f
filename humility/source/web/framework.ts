@@ -96,13 +96,76 @@ export function effect(e) {
   effects.add({ effect: e, vnode: current_vnode })
 }
 
-function diff(old_vnode, new_vnode, container) {
+function dispose(vnode) {
+  for (const cleanup of vnode) {
+    cleanup()
+  }
+}
+
+function diff(old_vnode, new_vnode, container, index = 0) {
+  const current_dom = container.childNodes[index];
+
   if (!old_vnode) {
-    container.appendChild(create_node(new_vnode))
-    return
+    container.appendChild(create_node(new_vnode));
+    return;
   }
 
-  
+  if (typeof old_vnode === 'string' || typeof new_vnode === 'string') {
+    if (old_vnode !== new_vnode) {
+      const next_dom = create_node(new_vnode);
+      dispose(old_vnode);
+      container.replaceChild(next_dom, current_dom);
+    }
+    return;
+  }
+
+  if (old_vnode.tag !== new_vnode.tag) {
+    const next_dom = create_node(new_vnode);
+    dispose(old_vnode);
+    container.replaceChild(next_dom, current_dom);
+    return;
+  }
+
+  patch_props(current_dom, old_vnode.props || {}, new_vnode.props || {});
+
+  const old_children = old_vnode.children || [];
+  const new_children = new_vnode.children || [];
+  const max_length = Math.max(old_children.length, new_children.length);
+
+  for (let i = max_length - 1; i >= 0; i--) {
+    diff(old_children[i], new_children[i], current_dom, i);
+  }
+}
+
+function patch_props(dom, old_props, new_props) {
+  // Remove outdated attributes
+  for (const key in old_props) {
+    if (!(key in new_props)) {
+      if (key.startsWith('on')) {
+        const event_name = key.slice(2).toLowerCase();
+        dom.removeEventListener(event_name, old_props[key]);
+      } else {
+        dom.removeAttribute(key);
+      }
+    }
+  }
+
+  // Add or update attributes
+  for (const key in new_props) {
+    if (old_props[key] !== new_props[key]) {
+      // no need to update ref
+
+      if (key.startsWith('on')) {
+        const event_name = key.slice(2).toLowerCase();
+        if (old_props[key]) {
+          dom.removeEventListener(event_name, old_props[key]);
+        }
+        dom.addEventListener(event_name, new_props[key]);
+      } else {
+        dom.setAttribute(key, new_props[key]);
+      }
+    }
+  }
 }
 
 function create_node(vnode: vnode) {
