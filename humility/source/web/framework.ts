@@ -1,6 +1,10 @@
+import { ChildProcess } from "node:child_process"
+
 let app
 let vdom
 let current_vnode
+
+const pending_effects = new Set()
 
 type vnode = {
   tag,
@@ -89,18 +93,81 @@ export function ref(initial_value) {
 }
 
 export function effect(e) {
-  effects.add({ effect: e, vnode: current_vnode })
+  pending_effects.add({ effect: e, vnode: current_vnode })
+}
+
+function trigger_effects() {
+  for (const effect of pending_effects) {
+    const cleanup = effect.effect()
+    if (typeof cleanup == 'function') {
+      if (!effect.vnode.dispose) {
+        effect.vnode.dispose = new Set()
+      }
+      effect.vnode.dispose.add(cleanup)
+    }
+  }
 }
 
 export function render(component, root_selector) {
   app = component
   root = document.querySelector(root_selector)
 
-  vdom = h(component)
+  vdom = h(app)
   node = create_node(vdom)
+
+  trigger_effects()
 }
+
+function is_event(key) {
+  return key.startsWith('on');
+}
+
+function to_event_name(key) {
+  return key.toLowerCase().substring(2)
+};
 
 function create_node(vnode) {
-  
+  if (typeof vnode.tag == 'function') {
+    const prev_vnode = current_vnode
+    current_vnode = vnode
+    const component_vnode = vnode.tag({ ...vnode.props, children: vnode.children })
+    current_vnode = prev_vnode
+
+    return create_node(component_vnode)
+  }
+
+  const node = document.createElement(vnode.tag)
+  vnode.node = node
+
+  for (const [key, value] of Object.entries(vnode.props)) {
+    if (is_event(key)) {
+      node.addEventListener(to_event_name(key), value)
+    } else if (key == 'ref') {
+      value(node)
+    } else {
+      node.setAttribute(key, value)
+    }
+  }
+
+  for (const child of vnode.children) {
+    node.appendChild(create_node(vnode.children))
+  }
+
+  return node
 }
 
+function diff(old_vdom, new_vdom) {
+  const operations = new Set()
+
+  if(old_vdom.tag != new_vdom.tag){
+    
+  }
+}
+
+export function redraw() {
+  const old_vdom = vdom
+  const new_vdom = h(app)
+  vdom = new_vdom
+  
+
+}
