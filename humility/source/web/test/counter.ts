@@ -1,46 +1,46 @@
 import 'the-new-css-reset/css/reset.css';
 
-import { h, signal, ref, onMount, onCleanup, render } from '../framework';
+import { h, p, ref, effect, render } from '../../framework';
 
 function Counter({ count }) {
-  // 1. Initialize a custom un-tracked ref signal
-  const myInputRef = ref(); 
+  const input = ref();
 
-  onMount(() => {
-    // Focus the element imperatively via ref without triggering layout re-renders!
-    if (myInputRef()) {
-      myInputRef().focus();
-      myInputRef().style.border = "2px solid green";
+  effect(() => {
+    if (input()) {
+      input().focus();
+      input().style.border = "2px solid green";
     }
 
     const timer = setInterval(() => {
-      count(c => c + 1); // update counter value
+      count(c => c + 1);
     }, 1000);
 
-    onCleanup(() => clearInterval(timer));
+    return () => clearInterval(timer);
   });
 
-  return h('.counter-layout', 
-    h('h2', `Count: ${count()}`),
-    // Pass the ref attribute straight down
-    h('input.MyInput', { type: 'text', placeholder: 'Auto-focused on mount...', ref: myInputRef })
-  );
-}
-
-function App() {
-  const show = signal(true)
-  const count = signal(0)
-
-  return h('.app-wrapper', // Defaults to div with class "app-wrapper"
-    h('button', { onclick: () => show(!show()) }, 'Toggle Component'),
-    
-    // Testing flexible rest parameters vs nested child arrays
-    h('div', 
-      show() 
-        ? h(Counter, { count }) 
-        : h('p', 'Unmounted safely!')
+  return (
+    h('.Counter',
+      h('h2', `Count: ${count()}`),
+      h('input.Counter_input', { type: 'text', ref: input })
     )
   );
 }
 
-render(h(App), document.getElementById('app'));
+function App() {
+  const show = p(true)
+  const count = p(0)
+
+  return (
+    h('.App',
+      h('button', { onclick: () => show(!show()) }, 'Toggle Component Visibility'),
+
+      h('div',
+        show()
+          ? h(Counter, { count })
+          : h('p', 'Counter unmounted')
+      )
+    )
+  );
+}
+
+render(App, "#app");
