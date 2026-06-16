@@ -1,7 +1,7 @@
-let activeInstance = false;
+let active_instance = false;
 
 export function h(tag, ...args) {
-  if (typeof tag !== 'string') {
+  if (typeof tag != 'string') {
     throw new Error('tag must be a string');
   }
 
@@ -13,10 +13,10 @@ export function h(tag, ...args) {
     throw new Error('tag must have at most one dot');
   }
 
-  const tag_split = tag.split(".")
-  tag = tag_split[0] || 'div'
-  if (tag_split[1]) {
-    props.class = tag_split
+  const tag_parts = tag.split(".")
+  tag = tag_parts[0] || 'div'
+  if (tag_parts[1]) {
+    props.class = tag_parts
   }
 
   for (const arg of args) {
@@ -34,8 +34,8 @@ export function h(tag, ...args) {
   return { tag, props, children };
 }
 
-export function p(initialValue = false) {
-  let value = initialValue;
+export function p(initial_value = false) {
+  let value = initial_value;
   const subscribers = new Set()
 
   const signal = function (...args) {
@@ -66,50 +66,36 @@ export function p(initialValue = false) {
     // return value; // not needed
   };
 
-  if (activeInstance) {
-    const instance = activeInstance
+  if (active_instance) {
+    const instance = active_instance
 
-    subscribers.add(() => {
-      instance.update();
-    })
+    subscribers.add(instance.update)
   }
 
   return signal
 }
 
 // signal wo default rerender
-export function ref(initialValue = false) {
-  const prevInstance = activeInstance;
-  activeInstance = false; // Unbind the active instance to skip layout update cycles
-  const refSignal = signal(initialValue);
-  activeInstance = prevInstance; // Restore layout context
-  return refSignal;
+export function ref(initial_value = false) {
+  const prev_instance = active_instance;
+  active_instance = false; // unbind to prevent binding rerender
+  const reference = p(initial_value);
+  active_instance = prev_instance; // restore layout context
+  return reference;
 }
 
-export function onMount(fn) {
-  if (activeInstance) activeInstance.mountHooks.push(fn);
+export function effect(e) {
+
 }
 
-export function onCleanup(fn) {
-  if (activeInstance) activeInstance.cleanupHooks.push(fn);
-}
-
-// Diff & Patch
 function unmount(vnode) {
-  if (!vnode) return;
-  if (vnode.instance) {
-    vnode.instance.dispose();
-    unmountVNode(vnode.instance.vnode);
-  }
-  if (vnode.children) {
-    vnode.children.forEach(unmountVNode);
-  }
-}
-
-export function patch(dom, oldVNode, newVNode) {
 
 }
 
-export function render(vnode, rootElement) {
+export function patch(dom, old_vnode, new_vnode) {
+
+}
+
+export function render(component, root) {
 
 }
