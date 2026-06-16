@@ -1,11 +1,17 @@
+import { vnode } from "./ref/mithril"
+
 let app: false | vnode = false
 let vdom: false | vnode = false
-let root: any = false
+let root: false | Node = false
+
+let effects = new Set()
+let current_vnode: false | vnode = false
 
 type vnode = {
   tag: string | Function,
   props: object,
   children: Array<vnode>
+  dispose: undefined | Set<Function>
 } | string
 
 export function h(tag, ...args): vnode {
@@ -87,11 +93,16 @@ export function ref(initial_value = false) {
 }
 
 export function effect(e) {
-
+  effects.add({ effect: e, vnode: current_vnode })
 }
 
 function diff(old_vnode, new_vnode, container) {
+  if (!old_vnode) {
+    container.appendChild(create_node(new_vnode))
+    return
+  }
 
+  
 }
 
 function create_node(vnode: vnode) {
@@ -100,7 +111,11 @@ function create_node(vnode: vnode) {
   }
 
   if (typeof vnode.tag === 'function') {
-    vnode = vnode.tag()
+    const prev_vnode = current_vnode
+    current_vnode = vnode
+    const node = create_node(vnode.tag({ ...vnode.props, children: vnode.children }))
+    current_vnode = prev_vnode
+    return node
   }
 
   const element = document.createElement(vnode.tag);
@@ -109,7 +124,9 @@ function create_node(vnode: vnode) {
   const toEventName = (key) => key.toLowerCase().substring(2);
   for (const [prop, value] of Object.entries(vnode.props)) {
     if (isEvent(prop)) {
-      element.addEventListener(toEventName(prop), value)
+      element.addEventListener(toEventName(prop), () => { value(); redraw() })
+    } else if (prop == 'ref') {
+      value(element)
     } else {
       element.setAttribute(prop, value)
     }
@@ -122,10 +139,23 @@ function create_node(vnode: vnode) {
 }
 
 export function redraw() {
+  effects.clear()
+
   const old_vdom = vdom
   const new_vdom = h(app)
 
-  
+  diff(old_vdom, new_vdom, root)
+
+  for (const effect of effects) {
+    const cleanup = effect.effect()
+
+    if (typeof cleanup == 'function') {
+      if (!vnode.dispose) {
+        vnode.dispose = new Set()
+      }
+      vnode.dispose.add(cleanup)
+    }
+  }
 }
 
 export function render(component, root_selector) {
