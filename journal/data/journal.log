@@ -119361,3 +119361,23 @@
 2026-06-16 16:57:11+08:00 code framework.ts - f (Workspace) - Visual Studio Code
 2026-06-16 16:58:11+08:00 ghostty OC | framework.ts h() refactor: tag parsing
 2026-06-16 16:59:11+08:00 code ubuntu.md - f (Workspace) - Visual Studio Code
+2026-06-16 17:00:11+08:00 code ubuntu.md - f (Workspace) - Visual Studio Code
+2026-06-16 17:01:11+08:00 ghostty OpenCode
+2026-06-16 17:02:11+08:00 code framework.ts - f (Workspace) - Visual Studio Code
+2026-06-16 17:03:11+08:00 ghostty OpenCode
+2026-06-16 17:04:11+08:00 code counter.ts - f (Workspace) - Visual Studio Code
+2026-06-16 17:05:11+08:00 code counter.ts - f (Workspace) - Visual Studio Code
+2026-06-16 17:06:11+08:00 code framework.ts - f (Workspace) - Visual Studio Code
+2026-06-16 17:07:11+08:00 code counter.ts - f (Workspace) - Visual Studio Code
+2026-06-16 17:08:11+08:00 code counter.ts - f (Workspace) - Visual Studio Code
+2026-06-16 17:09:11+08:00 code framework.ts - f (Workspace) - Visual Studio Code
+2026-06-16 17:10:11+08:00 chromium refactor. no regex. // Emmet parsing regex to extract standard tags and CSS classes const TAG_PARSE_REGEX = /^([a-z0-9\-]*)(?:\.([a-z0-9\-_]+))?$/i; export function h(tag, ...args) { let props = {}; let children = []; // 1. Parse argument omissions (Check if the first trailing argument is a props object) if (args[0] && typeof args[0] === 'object' && !args[0].tag && !Array.isArray(args[0])) { props = args.shift(); } // 2. Normalize children inputs (Handles both flat lists and deep arrays) children = args.flat().filter(c => c != false); // 3. Resolve Emmet CSS string parsing (e.g., ".Foo" or "input.MyInput") if (typeof tag === 'string') { const match = tag.match(TAG_PARSE_REGEX); if (match) { const parsedTag = match[1] || 'div'; // Fallback to div if tag is omitted const parsedClass = match[2]; tag = parsedTag; if (parsedClass) { props.className = props.className ? `${props.className} ${parsedClass}` : parsedClass; } } } return { tag, props, children }; } - Google Search - Chromium
+2026-06-16 17:11:11+08:00 chromium Intention - Chromium
+2026-06-16 17:12:12+08:00 code framework.ts - f (Workspace) - Visual Studio Code
+2026-06-16 17:13:12+08:00 code framework.ts - f (Workspace) - Visual Studio Code
+2026-06-16 17:14:12+08:00 code counter.ts - f (Workspace) - Visual Studio Code
+2026-06-16 17:15:12+08:00 code counter.ts - f (Workspace) - Visual Studio Code
+2026-06-16 17:16:12+08:00 code counter.ts - f (Workspace) - Visual Studio Code
+2026-06-16 17:17:12+08:00 code counter.ts (File Saved • June 16, 2026 at 5:11 PM) ↔ counter.ts (counter.ts) - f (Workspace) - Visual Studio Code
+2026-06-16 17:18:12+08:00 code counter 0.2.ts - f (Workspace) - Visual Studio Code
+2026-06-16 17:19:12+08:00 code counter.ts - f (Workspace) - Visual Studio Code
