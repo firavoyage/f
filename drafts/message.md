@@ -12,8 +12,6 @@ linting. keyword detection. "div.class", <!-- maybe i dont have interval or time
 
 ---
 
-can a component break its scope and edit some global states under react philosophy
-
 pros and cons of building a complex web app using react or vanillajs (not web component) besides perf and size
 
 pros and cons of foo.method(...args) or method(foo, ...args)
@@ -24,4 +22,6 @@ react one way flow meaning
 
 hyperscript h(Component, props) or Component(props)
 
-pros and cons of declarative auto rerender or imperative
+a conditional rendered app with count. a counter inside gets the getter and setter and increases every sec. 
+
+
