@@ -18070,5 +18070,225 @@ Show all
 
 <!-- try plan mode? -->
 
+# Framework.ts code review
+
+**Session ID:** ses_13035d01dffeymvVUbuEqm4TqI
+**Created:** 6/16/2026, 5:36:34 PM
+**Updated:** 6/16/2026, 5:36:49 PM
+
+---
+
+## User
+
+code review existing parts of framework.ts
+
+---
+
+## Assistant (Plan · MiniMax-M2.5 · 3.7s)
+
+_Thinking:_
+
+The user wants me to code review the existing parts of framework.ts. Since I'm in plan mode (read-only), I can only read and analyze the file. Let me first find and read the framework.ts file.
+
+
+**Tool: glob**
+
+**Input:**
+```json
+{
+  "pattern": "**/framework.ts"
+}
+```
+
+**Output:**
+```
+/home/fira/Documents/f/humility/source/web/framework.ts
+/home/fira/Documents/f/humility/source/web/legacy/20260616 fix framework/framework.ts
+```
+
+---
+
+## Assistant (Plan · MiniMax-M2.5 · 1.8s)
+
+_Thinking:_
+
+Let me read the framework.ts file in the current working directory.
+
+
+**Tool: read**
+
+**Input:**
+```json
+{
+  "filePath": "/home/fira/Documents/f/humility/source/web/framework.ts"
+}
+```
+
+**Output:**
+```
+<path>/home/fira/Documents/f/humility/source/web/framework.ts</path>
+<type>file</type>
+<content>
+1: let active_instance = false;
+2: 
+3: export function h(tag, ...args) {
+4:   if (typeof tag != 'string') {
+5:     throw new Error('tag must be a string');
+6:   }
+7: 
+8:   let props = {};
+9:   let children = [];
+10: 
+11:   // count the number of . in tag
+12:   if (tag.split(".").length - 1 > 1) {
+13:     throw new Error('tag must have at most one dot');
+14:   }
+15: 
+16:   const tag_parts = tag.split(".")
+17:   tag = tag_parts[0] || 'div'
+18:   if (tag_parts[1]) {
+19:     props.class = tag_parts
+20:   }
+21: 
+22:   for (const arg of args) {
+23:     if (Array.isArray(arg)) {
+24:       children.push(...arg);
+25:     } else if (typeof arg === 'object') {
+26:       props = arg;
+27:     } else {
+28:       children.push(arg);
+29:     }
+30:   }
+31: 
+32:   children = children.filter(c => c !== false && c !== null && c !== undefined);
+33: 
+34:   return { tag, props, children };
+35: }
+36: 
+37: export function p(initial_value = false) {
+38:   let value = initial_value;
+39:   const subscribers = new Set()
+40: 
+41:   const signal = function (...args) {
+42:     if (args.length === 0) {
+43:       return value;
+44:     }
+45: 
+46:     const newValue = args[0]
+47: 
+48:     if (typeof newValue === 'function') {
+49:       const result = newValue(value);
+50:       if (result === undefined) {
+51:         // immer pattern
+52:         // example: store(store => {store.foo = 'bar'})
+53:       } else {
+54:         value = result
+55:         // example: count(c => c + 1)
+56:       }
+57: 
+58:       instance.update();
+59:     } else {
+60:       value = newValue;
+61:     }
+62: 
+63:     for (const item of subscribers) {
+64:       item()
+65:     }
+66:     // return value; // not needed
+67:   };
+68: 
+69:   if (active_instance) {
+70:     const instance = active_instance
+71: 
+72:     subscribers.add(instance.update)
+73:   }
+74: 
+75:   return signal
+76: }
+77: 
+78: // signal wo default rerender
+79: export function ref(initial_value = false) {
+80:   const prev_instance = active_instance;
+81:   active_instance = false; // unbind to prevent binding rerender
+82:   const reference = p(initial_value);
+83:   active_instance = prev_instance; // restore layout context
+84:   return reference;
+85: }
+86: 
+87: export function effect(e) {
+88: 
+89: }
+90: 
+91: function unmount(vnode) {
+92: 
+93: }
+94: 
+95: export function patch(dom, old_vnode, new_vnode) {
+96: 
+97: }
+98: 
+99: export function render(component, root) {
+100: 
+101: }
+
+(End of file - total 101 lines)
+</content>
+```
+
+---
+
+## Assistant (Plan · MiniMax-M2.5 · 9.2s)
+
+_Thinking:_
+
+The user wants me to code review this framework.ts file. Let me analyze it:
+
+1. **h function** (lines 3-35): Creates virtual DOM nodes (hyperscript pattern)
+   - Handles tag strings with optional class (e.g., "div.classname")
+   - Accepts props as objects, children as arrays or primitives
+   - Filters out falsy children
+   - Bug: line 19 - `props.class = tag_parts` should be `props.class = tag_parts[1]` or need to join
+
+2. **p function** (lines 37-76): Creates reactive primitives (signals)
+   - Works as getter/setter
+   - Supports function updates (like Preact signals or Immer)
+   - Auto-subscribes to active instance
+   - Bug: line 58 uses `instance` which is not defined in the scope - should be `active_instance`
+
+3. **ref function** (lines 79-85): Creates refs that don't trigger rerender
+   - Temporarily disables active_instance binding
+   - Uses p() internally
+   - Restores previous instance after
+
+4. **effect function** (lines 87-89): Empty stub
+
+5. **unmount, patch, render**: Empty stubs
+
+Let me provide a concise code review.
+
+
+## Code Review: framework.ts
+
+### Issues Found
+
+| Line | Severity | Issue |
+|------|----------|-------|
+| 19 | **Bug** | `props.class = tag_parts` assigns array instead of the class string. Should be `tag_parts[1]` |
+| 58 | **Bug** | `instance` is undefined - should reference `active_instance` |
+| 11-14 | Minor | Comment says "count the number of . in tag" but it's checking the length, not actually counting |
+
+### Observations
+
+- **h()**: Good overall, handles arrays/objects/primitives correctly. Filters falsy children properly.
+- **p()**: Solid signal implementation with function update pattern (immer-like). Auto-subscription works when `active_instance` is set.
+- **ref()**: Correctly temporarily disables instance binding to avoid subscription.
+- **effect(), unmount(), patch(), render()**: Empty stubs - likely todo/incomplete.
+
+### Recommendation
+
+The bugs on lines 19 and 58 will cause runtime errors. Would you like me to prepare a fix plan?
+
+---
+
 # 
 

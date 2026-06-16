@@ -1,6 +1,13 @@
 let active_instance = false;
 
-export function h(tag, ...args) {
+type vnode = {
+  tag: string,
+  // tag: string | Function,
+  props: object,
+  children: Array<vnode>
+} | string
+
+export function h(tag, ...args): vnode {
   if (typeof tag != 'string') {
     throw new Error('tag must be a string');
   }
@@ -34,6 +41,28 @@ export function h(tag, ...args) {
   return { tag, props, children };
 }
 
+function create_node(vnode: vnode) {
+  if (typeof vnode === 'string') {
+    return document.createTextNode(vnode);
+  }
+  const element = document.createElement(vnode.tag);
+
+  const isEvent = (key) => key.startsWith('on');
+  const toEventName = (key) => key.toLowerCase().substring(2);
+  for (const [prop, value] of Object.entries(vnode.props)) {
+    if (isEvent(prop)) {
+      element.addEventListener(toEventName(prop), value)
+    } else {
+      element.setAttribute(prop, value)
+    }
+  }
+
+  for (const child of vnode.children) {
+    element.appendChild(create_node(child))
+  }
+  return element;
+}
+
 export function p(initial_value = false) {
   let value = initial_value;
   const subscribers = new Set()
@@ -43,10 +72,11 @@ export function p(initial_value = false) {
       return value;
     }
 
-    const newValue = args[0]
+    const new_value = args[0]
 
-    if (typeof newValue === 'function') {
-      const result = newValue(value);
+    // update regardless of equality for predictability
+    if (typeof new_value === 'function') {
+      const result = new_value(value);
       if (result === undefined) {
         // immer pattern
         // example: store(store => {store.foo = 'bar'})
@@ -54,10 +84,8 @@ export function p(initial_value = false) {
         value = result
         // example: count(c => c + 1)
       }
-
-      instance.update();
     } else {
-      value = newValue;
+      value = new_value;
     }
 
     for (const item of subscribers) {
@@ -84,7 +112,7 @@ export function ref(initial_value = false) {
   return reference;
 }
 
-export function effect(e) {
+export function effect(e, signals) {
 
 }
 
