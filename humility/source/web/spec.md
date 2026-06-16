@@ -48,4 +48,8 @@ child components could not own states? be explicit and global? ok.
 
 but what about node refs? i guess i could just store them in an array on vnode.
 
+state is prop. yet i dont have to pass a magic prop, as it's not supposed to receive it.
 
+when diffing, if states exist, check "changed". when p or ref is called inside component, bind getter and setter to its states. for p, subscribe to "changed". (expose subscribe)
+
+ワールドワイドワンダー TOKOTOKO meaning
