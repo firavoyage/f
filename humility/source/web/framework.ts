@@ -35,20 +35,27 @@ export function h(tag, ...args) {
 
 export function signal(initialValue) {
   let value = initialValue;
-  let instance = activeInstance; // Scope binding reference
+  const storedInstance = activeInstance;
 
   return function (arg) {
-    if (arguments.length === 0) return value;
+    if (arguments.length === 0) {
+      if (!storedInstance && activeInstance) {
+        return value;
+      }
+      return value;
+    }
+    
+    const instance = storedInstance || activeInstance;
     
     if (typeof arg === 'function') {
       value = arg(value);
-      // If instance is null, this is acting as a ref signal -> bypass layout re-renders!
       if (instance) instance.update(); 
-      return;
+      return value;
     }
 
     value = arg;
     if (instance) instance.update();
+    return value;
   };
 }
 
@@ -183,16 +190,22 @@ export function patch(dom, oldVNode, newVNode) {
 
   const newChildren = newVNode.children || [];
   const oldChildren = oldVNode?.children || [];
-  const oldDomChildren = Array.from(el.children);
   
-  el.innerHTML = '';
+  // Remove extra children
+  while (el.children.length > newChildren.length) {
+    el.removeChild(el.lastChild);
+  }
   
   for (let i = 0; i < newChildren.length; i++) {
     const oldChild = oldChildren[i];
-    const childDom = oldChild ? oldDomChildren[i] : null;
+    const childDom = el.children[i];
     const patchedChild = patch(childDom, oldChild, newChildren[i]);
-    if (patchedChild.parentNode !== el) {
-      el.appendChild(patchedChild);
+    if (patchedChild !== childDom) {
+      if (childDom) {
+        el.replaceChild(patchedChild, childDom);
+      } else {
+        el.appendChild(patchedChild);
+      }
     }
   }
 
@@ -200,5 +213,29 @@ export function patch(dom, oldVNode, newVNode) {
 }
 
 export function render(vnode, rootElement) {
-  rootElement.appendChild(patch(null, null, vnode));
+  const oldVNode = rootElement._vnode;
+  const oldDom = rootElement._dom;
+  const instance = oldVNode?.instance;
+  if (instance) {
+    vnode.instance = instance;
+    activeInstance = instance;
+    instance.props = vnode.props;
+    instance.update();
+    activeInstance = null;
+  } else {
+    activeInstance = createComponentInstance(vnode.tag, vnode.props);
+    vnode.instance = activeInstance;
+    const childVNode = activeInstance.renderTree();
+    activeInstance.vnode = childVNode;
+    activeInstance.dom = patch(oldDom, oldVNode, childVNode);
+    activeInstance.mount();
+    activeInstance = null;
+  }
+  rootElement._vnode = vnode;
+  rootElement._dom = vnode.instance.dom;
+  if (oldDom && oldDom !== vnode.instance.dom && oldDom.parentNode) {
+    oldDom.parentNode.replaceChild(vnode.instance.dom, oldDom);
+  } else if (!oldDom) {
+    rootElement.appendChild(vnode.instance.dom);
+  }
 }
