@@ -1,4 +1,5 @@
 import { ChildProcess } from "node:child_process"
+import { vnode } from "./ref/mithril"
 
 let app
 let vdom
@@ -11,7 +12,8 @@ type vnode = {
   props,
   children,
   node,
-  dispose
+  dispose?,
+  states?
 }
 
 export function h(tag, ...args) {
@@ -40,6 +42,9 @@ export function h(tag, ...args) {
     if (tag_parts[1]) {
       props.class = tag_parts[1]
     }
+  } else if (typeof tag == 'function') {
+    props = { ...props, children }
+    children = [] // reserved for the vdom it actually renders
   }
 
   return { tag, props, children };
@@ -130,10 +135,11 @@ function create_node(vnode) {
   if (typeof vnode.tag == 'function') {
     const prev_vnode = current_vnode
     current_vnode = vnode
-    const component_vnode = vnode.tag({ ...vnode.props, children: vnode.children })
+    vnode.children = [vnode.tag(vnode.props)]
     current_vnode = prev_vnode
+    vnode.node = create_node(vnode.children[0])
 
-    return create_node(component_vnode)
+    return vnode.node
   }
 
   const node = document.createElement(vnode.tag)
@@ -157,10 +163,8 @@ function create_node(vnode) {
 }
 
 function diff(old_vdom, new_vdom) {
-  const operations = new Set()
-
-  if(old_vdom.tag != new_vdom.tag){
-    
+  if (old_vdom.tag != new_vdom.tag) {
+    vnode.node.parent
   }
 }
 
@@ -168,6 +172,6 @@ export function redraw() {
   const old_vdom = vdom
   const new_vdom = h(app)
   vdom = new_vdom
-  
 
+  diff(old_vdom, new_vdom)
 }

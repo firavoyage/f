@@ -20,7 +20,7 @@ create new vdom.
 
 diff. old vdom must exist.
 
-return: a list of op (except keep): update attr (old dom, new dom, attr, newvalue) (set attr then or rm/add listener), rm attr (unset or unbind), ~~remove from (old parent node, first mismatch index)~~ ~~remove (old node), append (new node)~~ replace, append, remove
+<!-- return: a list of op (except keep): update attr (old dom, new dom, attr, newvalue) (set attr then or rm/add listener), rm attr (unset or unbind), ~~remove from (old parent node, first mismatch index)~~ ~~remove (old node), append (new node)~~ replace, append, remove --> commit at the same time.
 
 (be radically simple. consider remove all after the first mismatch.)
 

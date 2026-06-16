@@ -25978,5 +25978,1966 @@ If you are working on a specific piece of code right now, let me know:
 
 Show all
 
+# how does mithriljs diff
+
+8:41 AM
+
+Mithril.js performs UI updates <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">using an efficient <strong>virtual DOM (vnode) diffing engine</strong> that synchronizes a new declarative tree with the previous state</mark>. Unlike frameworks that rely on reactive state-tracking (like Vue or Svelte), Mithril generates a clean slate of virtual DOM nodes on every redraw loop and relies on a fast, structural diffing algorithm to touch the real DOM only where absolutely necessary. \[[1](https://dev.to/jesperhoy/my-thoughts-on-mithriljs-319f), [2](https://medium.com/@DEADLIFTDev/mithril-js-f043c4d1ac5e)]
+
+### The Core Diffing Mechanism
+
+Mithril updates the DOM through a series of structural comparisons: \[[1](https://dev.to/jesperhoy/my-thoughts-on-mithriljs-319f)]
+
+- **Diffing by Type**: The algorithm first checks if the old vnode and new vnode have the same HTML tag or component type. If the node type changes (e.g., a becomes a ), Mithril destroys the old DOM element along with its children and creates a new one from scratch. \[[1](https://www.kenbarbour.com/posts/react-vs-mithril/), [2](https://blog.stackademic.com/understanding-the-tree-diff-algorithm-a-deep-dive-72eba4d26db9), [3](https://medium.com/@LiubomyrKl/decoding-reacts-reconciliation-and-diffing-algorithm-a-brief-overview-26ed5f988347), [4](https://hiremeakashdev.hashnode.dev/reconciliation-virtual-dom-diff-algorithm-in-react), [5](https://medium.com/@DEADLIFTDev/mithril-js-f043c4d1ac5e)]
+- **Attribute and Property Syncing**: If the node type remains the same, Mithril loops through all properties and attributes. It adds new ones, updates changed values, and removes attributes missing from the new vnode. \[[1](https://ratfactor.com/mithril1)]
+- **Child Reconciliation**: To update child lists efficiently, Mithril uses a specialized reconciliation loop. It compares old and new children sequentially from start to finish.
+- **The Key Property**: When handling dynamic lists (like sorted arrays or filtered tables), Mithril relies on a `key` property. Keys map specific vnodes to real DOM nodes, ensuring elements are reordered, moved, or deleted rather than recreated incorrectly. \[[1](https://medium.com/@amitaknkpt/understanding-react-reconciliation-an-in-depth-examination-a86f968bc7e7), [2](https://mithril.js.org/hyperscript.html), [3](https://www.educative.io/answers/what-is-the-concept-of-reconciliation-in-react), [4](https://dev.to/jesperhoy/my-thoughts-on-mithriljs-319f)]
+
+### How Redraws Trigger the Diff
+
+Mithril decouples state tracking from the diffing loop using an **auto-redraw system**: \[[1](https://mithril.js.org/autoredraw.html)]
+
+```
+[UI Event / m.request] ──> [Run Event Handler] ──> [Auto-Trigger Redraw] ──> [Generate New VDOM] ──> [Diff Engines Runs] ──> [Update Real DOM]
+```
+
+Instead of monitoring individual variable mutations, Mithril executes your event handlers or async requests, and automatically schedules a global redraw via `m.redraw()` once the execution context finishes. \[[1](https://dev.to/jesperhoy/my-thoughts-on-mithriljs-319f), [2](https://mithril.js.org/autoredraw.html)]
+
+### Performance Optimizations & Overrides
+
+Mithril provides built-in mechanisms to short-circuit the diff engine for maximum rendering speeds: \[[1](https://mithril.js.org/autoredraw.html)]
+
+- **Vnode Reuse Assumptions**: Mithril's rendering engine assumes that if a vnode object reference is strictly identical to the previous render, it has not changed. Modifying a reused vnode reference inline causes undefined behavior. \[[1](https://mithril.js.org/archive/v1.1.7/vnodes.html)]
+- **The `onbeforeupdate` Hook**: Developers can use the `onbeforeupdate(vnode, old)` lifecycle hook to manually control the diff. If this hook returns `false`, Mithril skips diffing that specific component and all of its nested children entirely, serving as a powerful performance safeguard for deep DOM trees. \[[1](https://mithril.js.org/vnodes.html), [2](https://mithril.js.org/lifecycle-methods.html), [3](https://mithril.js.org/archive/v1.1.7/vnodes.html)]
+- **No Synthetic Events**: Mithril maps event handlers directly to the native browser events. This prevents the overhead of creating wrappers or proxy event ecosystems common in larger libraries. \[[1](https://news.ycombinator.com/item?id=43937492), [2](https://www.reddit.com/r/programming/comments/98b9ck/mithril%5Fjs%5Flightweight%5Fand%5Fsimpler%5Falternative%5Fto/)]
+
+If you want to dive deeper into optimizing your application's render cycle, tell me:
+
+- Are you dealing with **performance lag** in large tables or lists?
+
+- Do you want to see how to implement the **`onbeforeupdate` hook**?
+
+- Are you looking to integrate **third-party DOM libraries** alongside Mithril's diff?
+
+- [link](https://mithril.js.org/vnodes.html)\
+  Virtual DOM nodes - Mithril.js\
+  Avoid anti-patterns ... Vnodes are supposed to represent the state of the DOM at a certain point in time. Mithril. js's rendering ...\
+  JS.ORG
+
+- [link](https://dev.to/jesperhoy/my-thoughts-on-mithriljs-319f)\
+  My thoughts on Mithril.js - DEV Community\
+  Reactivity / UI updates. Unlike the major frameworks (Reach, Vue, Svelte, etc.) Mithril. js does not update the UI in response to ...\
+  DEV Community
+
+- [link](https://news.ycombinator.com/item?id=43937492)\
+  Very interesting. How would you say it compares to mithril.js? - Hacker News\
+  (mithril.js author here). As far as I can tell, the main difference is this uses proxies to trigger side effects as opposed to vir...\
+  Hacker News
+
+Show all
+
+## You said: counter example in fp
+
+8:43 AM
+
+In functional programming (FP), a counters example cannot use mutable state (like `count++`). Instead, you manage the state by passing the updated values explicitly into a new loop or a state management structure.
+
+Here are three universal patterns to implement a counter in functional programming, ranging from pure language concepts to an architectural setup like Elm or Mithril.
+
+### 1. Pure Recursion (Tail Call Optimization)
+
+In pure functional languages, loops do not exist. You count or iterate by passing the incremented value to the next recursive call. \[[1](https://www.modernescpp.com/index.php/the-definition-of-functional-programming/)]
+
+javascript
+
+```
+// Tail-recursive counter function
+const runCounter = (count, limit) => {
+  console.log(`Current count: ${count}`);
+
+  if (count >= limit) {
+    return "Done!";
+  }
+
+  // State is updated by passing a new value to the next function call
+  return runCounter(count + 1, limit);
+};
+
+runCounter(0, 3);
+```
+
+Use code with caution.
+
+### 2. Closures & Pure State Transitions
+
+If you need to maintain the _ability_ to increment a counter over time without mutating global variables, you return a new state transition function every time.
+
+javascript
+
+```
+// A pure state transition function: (State) -> State
+const increment = (state) => ({ count: state.count + 1 });
+const decrement = (state) => ({ count: state.count - 1 });
+
+// Initial State
+let appState = { count: 0 };
+
+// Purely applying the state change
+appState = increment(appState); // appState is now { count: 1 }
+appState = increment(appState); // appState is now { count: 2 }
+```
+
+Use code with caution.
+
+### 3. The Architecture Pattern (Mithril / Elm style)
+
+To bridge FP with a user interface, you use unidirectional data flow. The UI dispatches an action, a pure `update` function returns the new state, and the view functions purely render that state.
+
+javascript
+
+```
+// 1. Immutable Model
+const initialState = { count: 0 };
+
+// 2. Pure Update Actions (State, Action -> New State)
+const update = (state, action) => {
+  switch (action) {
+    case 'INC': return { count: state.count + 1 };
+    case 'DEC': return { count: state.count - 1 };
+    default: return state;
+  }
+};
+
+// 3. Pure View Function (State -> UI Tree)
+const View = (state, dispatch) => {
+  return {
+    tag: "div",
+    children: [
+      { tag: "h1", children: `Count: ${state.count}` },
+      { tag: "button", attrs: { onclick: () => dispatch('INC') }, children: "+" },
+      { tag: "button", attrs: { onclick: () => dispatch('DEC') }, children: "-" }
+    ]
+  };
+};
+```
+
+Use code with caution.
+
+If you want to apply this specifically to your project, tell me:
+
+- Are you trying to map this FP counter directly into a **Mithril.js component**?
+
+- Do you want to see how to handle this cleanly using **JavaScript Closures**?
+
+- Are you looking into a specific FP language like **Haskell, Elm, or Clojure**?
+
+- [link](https://www.modernescpp.com/index.php/the-definition-of-functional-programming/)\
+  The Definition of Functional Programming – MC++ BLOG\
+  They ( Pure functions ) are the reason that Haskell is called a pure functional language. A purely functional language has only im...\
+  \
+  \
+  Modernes C++
+
+## You said: counter example in fp in mithril
+
+8:44 AM
+
+In Mithril.js, implementing a counter following functional programming (FP) principles means treating your **UI as a pure function of your state** (View = f(State)). You must enforce immutable state transitions and avoid inline side effects inside your view tree. \[[1](https://stackoverflow.com/questions/71668621/incrementing-a-counter-with-functional-programming-vs-imperative-programming)]
+
+Here is how to build a complete functional programming counter architecture in Mithril using the **Meiosis / Redux pattern** (State → View → Action → State): \[[1](https://vdsabev.medium.com/exploring-unidirectional-components-in-mithril-part-2-redux-452ed957df70)]
+
+### The FP Counter Implementation
+
+javascript
+
+```
+import m from "mithril";
+
+// 1. Pure State Transitions (No mutations allowed)
+const increment = (state) => ({ ...state, count: state.count + 1 });
+const decrement = (state) => ({ ...state, count: state.count - 1 });
+
+// 2. Pure View Functional Component (State + Actions -> VDOM)
+const CounterView = {
+  view: ({ attrs }) => {
+    const { state, onIncrement, onDecrement } = attrs;
+
+    return m("div.counter", [
+      m("h1", `Count: ${state.count}`),
+      // Event handlers purely dispatch intentions instead of mutating code
+      m("button", { onclick: onIncrement }, "+"),
+      m("button", { onclick: onDecrement }, "-")
+    ]);
+  }
+};
+
+// 3. The Runtime Shell (Manages the immutability container)
+const Application = () => {
+  // Initial state setup
+  let currentRootState = { count: 0 };
+
+  // Helper function to update state immutably and schedule the Mithril diff loop
+  const dispatch = (updateFn) => {
+    currentRootState = updateFn(currentRootState);
+  };
+
+  return {
+    view: () => m(CounterView, {
+      state: currentRootState,
+      onIncrement: () => dispatch(increment),
+      onDecrement: () => dispatch(decrement)
+    })
+  };
+};
+
+// Mount the app shell to the DOM
+m.mount(document.body, Application);
+```
+
+Use code with caution.
+
+### Why this is Functional Programming
+
+- **Immutable Updates**: The `increment` and `decrement` functions never use mutators like `state.count++`. They treat data as read-only and return a brand-new object representation using the object spread operator (`{ ...state }`). \[[1](https://stackoverflow.com/questions/71668621/incrementing-a-counter-with-functional-programming-vs-imperative-programming)]
+- **Pure Functions**: `CounterView` is totally stateless. It does not know where the variables come from or how they change. Given the exact same `attrs` configuration, it will always output the exact same Virtual DOM nodes.
+- **Decoupled Side Effects**: The view handles the user interaction but offloads the state transitions entirely to explicit handler definitions via `dispatch`.
+
+If you would like to scale this functional architecture further, tell me:
+
+- Do you want to add **payload parameters** to your actions (e.g., incrementing by a custom number)?
+
+- Are you interested in using **Mithril Streams** (`mithril/stream`) to manage state reactively using functional reactive programming (FRP)?
+
+- Do you need to track **multiple separate counters** using this design pattern? \[[1](https://arxiv.org/html/2411.03887v4), [2](https://vdsabev.medium.com/exploring-unidirectional-components-in-mithril-part-2-redux-452ed957df70)]
+
+- [link](https://vdsabev.medium.com/exploring-unidirectional-components-in-mithril-part-2-redux-452ed957df70)\
+  Exploring Unidirectional Components in Mithril (part 2— Redux)\
+  Redux architecture. First, we can reduce the boilerplate by avoiding switch statements or explicitly returning state when the redu...\
+  Medium
+
+- [link](https://stackoverflow.com/questions/71668621/incrementing-a-counter-with-functional-programming-vs-imperative-programming)\
+  Incrementing a counter with functional programming vs imperative programming\
+  FP acknowledges that impure actions need to take place. However, a functional architecture minimizes impure actions to their essen...\
+  Stack Overflow
+
+- [link](https://arxiv.org/html/2411.03887v4)\
+  OML: A Primitive for Reconciling Open Access with Owner Control in ...
+
+3.2 OML 1.0: AI–Native Fingerprinting for Accountable Open Distribution. ... We present OML 1.0, an efficient instantiation that a...\
+arXiv
+
+## You said: does it separate states and props
+
+8:46 AM
+
+Yes, this functional architecture strictly separates state from props by assigning distinct roles to each.
+
+### The Separation Breakdown
+
+- **State belongs to the Runtime Shell (`Application`)**: The shell acts as the single source of truth. It owns the raw, mutable pointer (`currentRootState`) and handles the lifecycle of the data.
+- **Props belong to the UI Component (`CounterView`)**: The UI component owns no state of its own. It receives data down the tree as read-only properties (`attrs`).
+
+### Comparative Roles
+
+| Feature \[[1](https://gilbert.ghost.io/mithril-js-tutorial-1/)] | State (The Shell)                                     | Props (The View)                                          |
+| --------------------------------------------------------------- | ----------------------------------------------------- | --------------------------------------------------------- |
+| **Ownership**                                                   | Managed globally by the main execution loop.          | Received passively by the component.                      |
+| **Mutability**                                                  | Can be swapped for a new state object via `dispatch`. | **Strictly immutable.** The component cannot modify them. |
+| **Data flow**                                                   | Flows downward into the render tree.                  | Extracted from the `attrs` argument inside `view`.        |
+| **Purity**                                                      | Contains the side-effect layer (the mutation shell).  | A pure function (`attrs -> VNodes`).                      |
+
+### How It Works Under the Hood
+
+When you pass data into a Mithril component, Mithril bundles those values into an object called `attrs` (Attributes). In Mithril terminology, **`attrs` function exactly like React's `props`**.
+
+Look at how the data morphs from state to props during execution:
+
+javascript
+
+```
+// 1. STATE: Maintained at the root level
+let currentRootState = { count: 0 };
+
+// 2. THE BRIDGE: State is injected into the component as an attribute
+m(CounterView, { state: currentRootState })
+
+// 3. PROPS: CounterView receives it as a read-only parameter
+const CounterView = {
+  view: ({ attrs }) => {
+    // attrs.state is a snapshot clone pointer.
+    // Trying to do: attrs.state.count = 5 will break pure FP patterns!
+    return m("h1", `Count: ${attrs.state.count}`);
+  }
+};
+```
+
+Use code with caution.
+
+By decoupling them this way, your UI components become incredibly easy to test and reuse, because they only care about the **props** fed into them, completely oblivious to how the **state** is stored or calculated.
+
+If you want to explore how Mithril manages this component lifecycle deeper, tell me:
+
+- Would you like to see how to use **destructuring** to make reading props cleaner?
+
+- Do you want to know how Mithril's **`oninit` hook** interacts with incoming props?
+
+- Are you interested in creating a **stateful sub-component** that manages local component state independently from global props?
+
+- [link](https://gilbert.ghost.io/mithril-js-tutorial-1/)\
+  Mithril.js: A Tutorial Introduction (Part 1)\
+  Remember that a Mithril component is a POJO with a view function. Take a look at the EntryList component:\
+  \
+  \
+  gilbert.ghost.io
+
+## You said: I mean does mithril support localized states, not global vars
+
+8:46 AM
+
+Yes, Mithril supports localized, component-level state out of the box without relying on global variables.
+
+In Mithril, components are just objects or closure functions. When a component is mounted, Mithril instantiates a **component instance** internally. You can attach localized state directly to this instance using the component lifecycle hooks, or by using a factory function closure. \[[1](https://vdsabev.medium.com/exploring-unidirectional-components-in-mithril-part-1-hyperapp-e33ce35a224), [2](https://mithril.js.org/archive/v0.2.5/mithril.component.html), [3](https://dev.to/sho%5Fcarter/comment/1dp2f), [4](https://ratfactor.com/mithril1)]
+
+Here are the two ways to write localized state in Mithril, completely decoupled from global variables.
+
+### Method 1: Using the Closure Factory Pattern (Recommended)
+
+If you define your component as a function that returns an object, the outer function executes **only once** when the component is initialized. This creates a secure JavaScript closure scope for localized, private state.
+
+javascript
+
+```
+import m from "mithril";
+
+// This function runs ONCE per instance
+const LocalCounter = () => {
+  // Localized private state—completely isolated from other instances
+  let count = 0;
+
+  return {
+    // The view method runs on EVERY redraw loop
+    view: ({ attrs }) => {
+      // attrs are your incoming PROPS (passed from parent)
+      const label = attrs.label || "Counter";
+
+      return m("div.counter-box", [
+        m("h3", `${label}: ${count}`),
+        m("button", { onclick: () => count++ }, "+")
+      ]);
+    }
+  };
+};
+
+// You can now render multiple instances. Each maintains its own isolated state!
+const App = {
+  view: () => m("div", [
+    m(LocalCounter, { label: "First Counter" }),  // Tracks its own count
+    m(LocalCounter, { label: "Second Counter" })  // Tracks its own count independently
+  ])
+};
+
+m.mount(document.body, App);
+```
+
+Use code with caution.
+
+### Method 2: Using the POJO Hook Pattern (`vnode.state`)
+
+If you define your component as a Plain Old JavaScript Object (POJO), Mithril automatically creates a `state` object on the `vnode` instance. You can initialize properties on it using the `oninit` hook. \[[1](https://mithril.js.org/lifecycle-methods.html)]
+
+javascript
+
+```
+import m from "mithril";
+
+const LocalCounterPOJO = {
+  // Runs once when the component is created
+  oninit: (vnode) => {
+    // Localized state attached directly to this specific instance
+    vnode.state.count = 0;
+  },
+
+  // Runs on every redraw loop
+  view: (vnode) => {
+    // Destructure state and props (attrs) from vnode
+    const { state, attrs } = vnode;
+
+    return m("div", [
+      m("h3", `${attrs.label}: ${state.count}`),
+      m("button", { onclick: () => state.count++ }, "+")
+    ]);
+  }
+};
+```
+
+Use code with caution.
+
+### State vs Props in Localized Mithril Components
+
+When utilizing these localized patterns, the boundary is explicit:
+
+- **Props (`attrs`)**: Passed downward by the parent component on every render cycle. They are read via `attrs` or `vnode.attrs`.
+- **Localized State**: Stored locally in the closure variable (`count`) or on the instance object (`vnode.state`). They persist across redraws but cannot be seen or modified by parent components.
+
+If you want to refine how you manage local variables, tell me:
+
+- Do you want to see how to pass local state **back up to a parent component** using callbacks?
+
+- Are you interested in combining **functional programming purity** with these localized states?
+
+- Do you want to know how to cleanly handle **asynchronous data fetching** within a localized state component?
+
+- [link](https://vdsabev.medium.com/exploring-unidirectional-components-in-mithril-part-1-hyperapp-e33ce35a224)\
+  Exploring Unidirectional Components in Mithril (part 1 — Hyperapp) | by Vlad Sabev | Medium\
+  Fortunately, Mithril also allows us to define components another way — meet the closure component:\
+  \
+  \
+  Medium
+
+- [link](https://mithril.js.org/archive/v0.2.5/mithril.component.html)\
+  m.component\
+  In Mithril, a component is nothing more than an object that has a view function and, optionally, a controller function.\
+  \
+  JS.ORG
+
+- [link](https://dev.to/sho%5Fcarter/comment/1dp2f)\
+  Okay, I get what you mean. I believe React woul... — DEV Community\
+  Mithril does have function components, as seen here in Sho's post. :) But from your comments, I've gathered your issue is these fu...\
+  \
+  \
+  DEV Community
+
+Show all
+
+## You said: does it expand all components when redraw as it has no idea of global vars
+
+8:48 AM
+
+No, Mithril does **not** destroy and recreate ("expand") all components from scratch on a redraw.
+
+Mithril separates **state tracking** from **DOM reconciliation**. Even though Mithril does not track global variables or specific data mutations, it retains the structural memory of your component tree using the previous Virtual DOM.
+
+During a redraw, Mithril executes the `view` functions of your components to see what the _intended_ UI looks like, but it preserves existing component instances and their localized states based on a set of smart optimization rules. \[[1](https://ratfactor.com/mithril1), [2](https://dev.to/sho%5Fcarter/my-thoughts-on-mithril-hed)]
+
+### How Mithril Safely Retains Local State During Redraws
+
+When a global redraw is triggered, Mithril passes the new tree through its diff engine and reconciles it against the previous tree using three core strategies:
+
+- **Structural Position Matching**: If a component appears at the exact same position in the virtual DOM tree as it did during the last render (e.g., it is still the first child of a specific ), Mithril **reuses the existing component instance** and its localized state. It merely calls the `view` function again with the updated props (`attrs`).
+- **The Power of Keys**: If you are rendering dynamic lists where components move, sort, or filter, you provide a `key` attribute. Mithril uses this unique identity to track components across renders. Instead of destroying and recreating them, Mithril physically moves the DOM elements and retains their internal closure states intact.
+- **Diff Short-Circuiting (`onbeforeupdate`)**: If you want to prevent Mithril from even running the `view` loop on a localized component, you can use the `onbeforeupdate` lifecycle hook. If it returns `false`, Mithril skips executing that component's view entirely, instantly preserving its exact state and DOM structure without further evaluation.
+
+### When Does Mithril Actually Destroy and Recreate a Component?
+
+Mithril will only reset a component and erase its localized state under two conditions:
+
+1. **The Structural Type Changes**: If a component at a specific position is replaced by a different tag or component type (e.g., `m(LocalCounter)` is replaced by `m("div")` due to a conditional operator), Mithril tears down the counter, runs `onremove`, and builds the new node from scratch.
+2. **The Key Changes**: If a component has a `key` attribute and that key disappears or changes on the next render, Mithril treats it as a brand-new component instance. \[[1](https://medium.com/@skmanjuralli9/reacts-reconciliation-algorithm-a5a44eb066cc)]
+
+### Summary: Re-render vs. Re-creation
+
+- **What Mithril re-runs**: The `view()` function of your components (to capture the latest structural representation).
+- **What Mithril preserves**: The physical DOM elements, the component instances, and their localized closure state variables. \[[1](https://dev.to/sho%5Fcarter/my-thoughts-on-mithril-hed), [2](https://ratfactor.com/mithril1)]
+
+If you are planning out a highly dynamic UI, tell me:
+
+- Are you designing a **conditional layout** (like tabs or routing) where you _want_ state to reset?
+
+- Do you want to see an example of using **`key` properties** to prevent state mix-ups in dynamic lists?
+
+- Are you concerned about **render performance** with deeply nested components?
+
+- [link](https://ratfactor.com/mithril1)\
+  Dave's Guide to Mithril Part 1 - ratfactor\
+  The answer is that Mithril redraws every mounted component on the page when a redraw is needed. If you think about it, this is an ...\
+  \
+  Ratfactor.com
+
+- [link](https://dev.to/sho%5Fcarter/my-thoughts-on-mithril-hed)\
+  My thoughts on: Mithril\
+  We can see a common thread in the components. The view method serves as function that returns your mithril element. You can either...\
+  \
+  \
+  DEV Community
+
+- [link](https://medium.com/@skmanjuralli9/reacts-reconciliation-algorithm-a5a44eb066cc)\
+  React’s Reconciliation Algorithm. Key Concepts | by Manjur Ali\
+  Why It Works: The key value acts as a unique identifier. When the key changes, React treats the component as a new instance, unmou...\
+  \
+  \
+  Medium
+
+## You said: does it rerun all components when redraw or just stop at type and props when match
+
+8:49 AM
+
+Mithril **runs the `view` function of every component in the tree** during a redraw loop, even if the node type and props (`attrs`) match perfectly. It does not automatically stop evaluating children just because properties look identical. \[[1](https://ratfactor.com/mithril1)]
+
+This behavior occurs because Mithril uses a **shallow, fast-running virtual DOM architecture**. It generates a brand-new tree representation across the board and leaves the filtering process up to the diffing engine or manual shortcuts. \[[1](https://mithril.js.org/autoredraw.html), [2](https://mithril.js.org/archive/v0.1.6/getting-started.html)]
+
+### Why Mithril Reruns the View Function
+
+Mithril does not track mutations or deep-compare incoming properties automatically. It assumes that evaluating a JavaScript function (your `view`) is incredibly lightweight. \[[1](https://gilbert.ghost.io/mithril-js-tutorial-1/)]
+
+```
+[Redraw Triggered]
+       │
+       ▼
+[Rerun ALL Component views] ──> (Generates entire new VDOM tree structure)
+       │
+       ▼
+[Run Diff Engine] ─────────────> (Checks types and props; stops DOM updates if they match)
+```
+
+During a redraw:
+
+1. **The View Runs**: Mithril executes your `view` loop to generate a fresh virtual node (vnode) tree.
+2. **The Diff Optimization Takes Over**: The internal engine checks if the resulting vnode type and props match the previous render. If they do, Mithril **stops and does not touch the real browser DOM**.
+
+The code execution happens, but the heavy browser DOM rendering is skipped.
+
+### How to Force Mithril to Stop at the Component Level
+
+If you have a complex, deeply nested component tree and want to stop Mithril from even executing child `view` functions when props match, you must explicitly use the **`onbeforeupdate`** hook.
+
+This mimics React's `shouldComponentUpdate` or `React.memo()`. \[[1](https://medium.com/skiller-whale/faster-react-ions-4e5cd818cd4a)]
+
+javascript
+
+```
+const ExpensiveChildComponent = {
+  // Mithril checks this BEFORE executing the view function
+  onbeforeupdate: (vnode, oldVnode) => {
+    // Return true to rerun view, return false to skip entirely
+    // Example: Only rerun if the 'id' prop actually changed
+    return vnode.attrs.id !== oldVnode.attrs.id;
+  },
+
+  view: ({ attrs }) => {
+    // If onbeforeupdate returns false, this code never runs during a redraw
+    return m("div", `User ID: ${attrs.id}`);
+  }
+};
+```
+
+Use code with caution.
+
+### Summary of Rules
+
+- **By Default**: Mithril reruns the **JavaScript view calculations** for all components, but skips updating the **real DOM elements** if types and props match.
+- **With `onbeforeupdate`**: Mithril stops completely at the gate. It skips both the **JavaScript view calculations** and the **DOM updates** for that component and its entire nested tree.
+
+If you are structuring a large application and want to optimize it, tell me:
+
+- Would you like a **utility helper function** to automate prop-matching inside `onbeforeupdate`?
+
+- Are you noticing a specific **performance bottleneck** in your current component tree?
+
+- Do you want to see how this behavior changes when using **Mithril Streams**?
+
+- [link](https://ratfactor.com/mithril1)\
+  Dave's Guide to Mithril Part 1 - ratfactor\
+  The answer is that Mithril redraws every mounted component on the page when a redraw is needed. If you think about it, this is an ...\
+  \
+  Ratfactor.com
+
+- [link](https://mithril.js.org/autoredraw.html)\
+  The auto-redraw system\
+  The auto-redraw system Mithril. js implements a virtual DOM diffing system for fast rendering, and in addition, it offers various ...\
+  \
+  JS.ORG
+
+- [link](https://mithril.js.org/archive/v0.1.6/getting-started.html)\
+  Mithril\
+  What is Mithril? Mithril is around 3kb gzipped thanks to its small, focused, API. It provides a templating engine with a virtual D...\
+  \
+  JS.ORG
+
+Show all
+
+## You said: so does it actually diff on what component view evaluates, that is real html tags, not component functions as types
+
+8:50 AM
+
+No, <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>Mithril diffs on the component definitions (functions/objects) first</strong>, not on the evaluated HTML tags</mark>. \[[1](https://mithril.js.org/archive/v1.1.5/components.html), [2](https://mithril.js.org/archive/v0.2.0/mithril.component.html), [3](https://betterprogramming.pub/mithril-js-try-it-in-2022-you-can-start-right-here-5e87a601e700)]
+
+Mithril separates virtual DOM trees into two distinct node structures: **Component vnodes** and **Element vnodes**. The engine checks the component's identity before it ever calls the `view` function to find out what HTML tags are inside. \[[1](https://carlmungazi.github.io/sourcecodeadventures/posts/mithril-vnodes), [2](https://mithril.js.org/archive/v1.1.7/vnodes.html), [3](https://mithril.js.org/archive/v0.2.5/mithril.component.html), [4](https://mithril.js.org/archive/v1.1.5/components.html)]
+
+### Step 1: The Component Identity Check (First Line of Defense)
+
+When you write `m(MyComponent)`, Mithril creates a component vnode where the `tag` property points directly to the component object or closure function. \[[1](https://mithril.js.org/archive/v1.1.7/vnodes.html), [2](https://mithril.js.org/components.html), [3](https://carlmungazi.github.io/sourcecodeadventures/posts/mithril-vnodes)]
+
+During a redraw, Mithril performs a strict reference check (`===`) between the old component and the new component: \[[1](https://mithril.js.org/archive/v1.1.5/components.html)]
+
+- **If the Component Matches**: Mithril knows it can reuse the existing instance and state. It then calls the component's `view()` function to generate the inner HTML tags and proceeds to Step 2. \[[1](https://mithril.js.org/archive/v1.0.1/components.html), [2](https://mithril.js.org/archive/v1.1.7/vnodes.html)]
+- **If the Component Changes**: If you switch from `m(ComponentA)` to `m(ComponentB)`, Mithril instantly blows away the entire DOM subtree. It does **not** evaluate `ComponentB`'s view to see if any underlying HTML tags match `ComponentA`'s old layout; it tears down the old component immediately. \[[1](https://news.ycombinator.com/item?id=36976670), [2](https://mithril.js.org/archive/v1.0.1/components.html)]
+
+### Step 2: The HTML Element Diff (Second Line of Defense)
+
+Only _after_ the component identity is verified does Mithril look at the evaluated output of the `view()` function. \[[1](https://mithril.js.org/archive/v0.2.0/mithril.component.html), [2](https://mithril.js.org/archive/v1.1.7/vnodes.html)]
+
+Inside the view, you return element vnodes (like `m("div")` or `m("span")`). Mithril takes this fresh subtree and diffs it line-by-line against the previous render's HTML subtree: \[[1](https://betterprogramming.pub/mithril-js-try-it-in-2022-you-can-start-right-here-5e87a601e700), [2](https://spin.atomicobject.com/smallest-fastest-spa-framework/), [3](https://stackoverflow.com/questions/31838339/mithril-render-component-on-event-dynamically), [4](https://mithril.js.org/archive/v0.2.0/mithril.component.html), [5](https://mithril.js.org/components.html)]
+
+```
+[Redraw Engine Runs]
+        │
+        ▼
+Is the component object reference the same? (MyComponent === MyComponent)
+        │
+ ┌──────┴──────┐
+YES            NO ──> [Tear down completely] (Erases state, skips inner diffing)
+ │
+ ▼
+[Execute view()] ──> Evaluates internal HTML tags (Element vnodes)
+ │
+ ▼
+[Diff HTML elements] ──> Does <div> match <div>? (Only touches raw DOM if they differ)
+```
+
+### The Ultimate Proof: Why Inline Factories Break State
+
+This exact mechanism is why creating components inline inside a `view` function is an explicit anti-pattern in Mithril: \[[1](https://mithril.js.org/archive/v1.0.1/components.html)]
+
+javascript
+
+```
+// ❌ ANTI-PATTERN: Creates a brand-new closure reference on every single redraw!
+const ParentComponent = {
+  view: () => {
+    const InlineCounter = () => ({ view: () => m("div", "Count") });
+
+    return m(InlineCounter); // Mithril sees a brand-new function pointer every redraw!
+  }
+};
+```
+
+Use code with caution.
+
+Even though `InlineCounter` evaluates to a standard every time, the reference check (`NewInlineCounter === OldInlineCounter`) fails because a new function instance was allocated in memory. Because it checks the **component type reference first**, Mithril assumes it is a totally different component, destroying the entire DOM node and wiping out any local state from scratch. \[[1](https://mithril.js.org/archive/v1.0.1/components.html)]
+
+If you are running into specific behavior with how your structures map out, tell me:
+
+- Are you trying to **conditionally swap components** while trying to preserve the inner HTML elements?
+
+- Do you want to see how to properly extract a **component factory** outside of the view?
+
+- Are you debugging a scenario where **local state is accidentally resetting**?
+
+- [link](https://carlmungazi.github.io/sourcecodeadventures/posts/mithril-vnodes)\
+  Mithril.js: What are vnodes? | Source Code Adventures\
+  The difference between this vnode and the earlier one is that the tag property has a different value. Also, the string has been tu...\
+  GitHub Pages documentation
+
+- [link](https://mithril.js.org/archive/v1.1.5/components.html)\
+  Components - Mithril.js\
+  Define components statically, call them dynamically. Avoid creating component definitions inside views. If you create a component ...\
+  JS.ORG
+
+- [link](https://mithril.js.org/archive/v1.1.7/vnodes.html)\
+  Virtual DOM nodes - Mithril.js\
+  If tag is a Javascript object with a view method, the vnode represents the DOM generated by rendering the component. Everything in...\
+  JS.ORG
+
+Show all
+
+## You said: so does it store the vdom alongside the component, and when diffing, when it matches, it diffs further on the component vdom
+
+8:55 AM
+
+Yes, that is exactly how it works. Mithril stores the resulting virtual DOM (vnode) tree directly on the component’s internal instance object (`vnode.state` or the hidden fiber-like instance data) from the previous render cycle. \[[1](https://mithril.js.org/archive/v1.0.1/components.html)]
+
+When a redraw occurs, Mithril traverses the tree. If it finds that the component type matches, it uses that stored historical vnode tree as the exact baseline blueprint to diff against the newly evaluated vnode tree.
+
+### The Lifecycle of the Stored VDOM \[[1](https://mithril.js.org/archive/v1.1.7/vnodes.html)]
+
+To visualize how Mithril holds onto this data and digs deeper, follow this timeline during a redraw:
+
+1. **The Match**: Mithril encounters `m(MyComponent)` in the new tree. It looks at the same position in the old tree, sees `m(MyComponent)`, and confirms the references match. \[[1](https://mithril.js.org/render.html)]
+2. **The Execution**: Mithril executes `MyComponent.view()`. This function returns a new subtree of HTML tags (e.g., `m("div", [m("p")])`).
+3. **The Stored Lookup**: Mithril fetches the **previously generated HTML subtree** that it saved from the last render of this specific component instance.
+4. **The Subtree Diff**: It runs its fast linear diffing algorithm exclusively between the _old stored HTML subtree_ and the _newly generated HTML subtree_.
+5. **The Cache Update**: Once the real DOM is updated with any differences, Mithril overwrites the old cached subtree with the new subtree, saving it for the next redraw.
+
+### What This Looks Like in Memory
+
+Conceptually, Mithril keeps a backing instance object for your component that maps out like this:
+
+javascript
+
+```
+// Internal representation of a mounted component instance
+const componentInstance = {
+  tag: MyComponent,          // The component definition object/function
+  attrs: { id: 1 },          // The current props passed down
+  state: { count: 0 },       // Your localized component state
+
+  // ──> THIS IS THE STORED VDOM Blueprint ──>
+  children: [
+    { tag: "div", attrs: { class: "box" }, children: [...] }
+  ]
+};
+```
+
+Use code with caution.
+
+When a diff happens, Mithril takes the fresh array of vnodes returned by your current `view()` call and performs a deep structural loop directly against that `componentInstance.children` array.
+
+### Why This Architecture Matters
+
+Because the old vdom tree is stored right alongside the component instance, Mithril can perform highly localized comparisons. It doesn't need a massive, monolithic global tree registry. It simply recursively dives into each component instance, matches the component shell, pulls up its localized vdom history, and reconciles the HTML. \[[1](https://medium.com/@mubeennaeem247/angular-incremental-dom-bcae3db06108), [2](https://mrutunjays.hashnode.dev/understanding-react-virtual-dom-in-5-minutes)]
+
+If you want to look into how this memory layout affects your components, tell me:
+
+- Do you want to see how to access this internal instance cache using **Mithril hooks** (`oncreate`, `onupdate`)?
+
+- Are you curious about how **fragment nodes (`m.fragment`)** affect this child-diffing cache?
+
+- Are you tracking down an unexpected rendering bug where the **cached tree isn't updating**?
+
+- [link](https://mithril.js.org/archive/v1.0.1/components.html)\
+  Components\
+  At initialization The component object is the prototype of each component instance, so any property defined on the component objec...\
+  \
+  JS.ORG
+
+- [link](https://mithril.js.org/archive/v1.1.7/vnodes.html)\
+  Virtual DOM nodes\
+  Typically, virtual DOM trees are then recreated every render cycle, which normally occurs in response to event handlers or to data...\
+  \
+  JS.ORG
+
+- [link](https://mithril.js.org/render.html)\
+  render(element, vnodes)\
+  How it works The m. render(element, vnodes) method takes a virtual DOM tree (typically generated via the m() hyperscript function)\
+  \
+  JS.ORG
+
+Show all
+
+## You said: does it check the props and states of matched components
+
+9:00 AM
+
+**No**, Mithril's internal diff engine does **not** check or compare props (`attrs`) or internal state to decide whether to re-render a matched component.
+
+Unlike React (which can skip rendering via `PureComponent` or `React.memo` if props haven't changed) or Vue/Svelte (which track specific reactive data dependencies), Mithril completely ignores whether props or states have changed when matching components. \[[1](https://medium.com/@amitaknkpt/understanding-react-reconciliation-an-in-depth-examination-a86f968bc7e7)]
+
+### What Mithril Actually Does Instead
+
+When a redraw occurs and Mithril encounters a component that matches a previous one, it operates on a philosophy of "Execute JavaScript first, ask questions later":
+
+1. **It ignores prop differences**: Mithril doesn't check if `newVnode.attrs` deeply or shallowly equals `oldVnode.attrs`. It simply overwrites the old reference with the new props.
+2. **It ignores state mutations**: Mithril has no reactivity system watching variables. It does not know if your local component variables or `vnode.state` properties changed. \[[1](https://news.ycombinator.com/item?id=29392037)]
+3. **It immediately calls `view()`**: It executes the component's `view()` function unconditionally to generate a new Virtual DOM tree. \[[1](https://mithril.js.org/archive/v0.2.5/mithril.component.html)]
+
+### If it doesn't check, why is it so fast?
+
+Mithril relies on the fact that running a JavaScript function to generate a virtual array is incredibly cheap. It shifts the heavy lifting entirely to the **HTML element diffing phase**.
+
+The engine runs your component's code to get the fresh HTML structure, and _then_ it checks the tags, attributes, and text nodes against the stored history. If the properties or variables used inside your `view()` didn't change, the generated Virtual DOM elements will look exactly like the old ones. The diff engine looks at them, sees an exact match, and instantly exits **without touching the real browser DOM**.
+
+### How to Override This (Making Mithril Check Props)
+
+If your component performs heavy calculations inside its `view()` function and you want to stop it from running when props are identical, you must implement the check manually using the `onbeforeupdate` lifecycle hook.
+
+javascript
+
+```
+const UserProfile = {
+  // Mithril fires this BEFORE running view().
+  // This is your opportunity to manually check props!
+  onbeforeupdate: (vnode, oldVnode) => {
+    // Only run view() if the user ID or theme actually changed
+    return vnode.attrs.userId !== oldVnode.attrs.userId ||
+           vnode.attrs.theme !== oldVnode.attrs.theme;
+  },
+
+  view: ({ attrs }) => {
+    // This expensive rendering code is skipped entirely if onbeforeupdate returns false
+    return m(".profile", { class: attrs.theme }, [
+      m("h1", `User: ${attrs.userId}`)
+    ]);
+  }
+};
+```
+
+Use code with caution.
+
+If you are structuring components with performance in mind, tell me:
+
+- Do you have **expensive computation or loops** inside your view that need optimization?
+
+- Would you like a generic **shallow-equality helper** to automate `onbeforeupdate` checks?
+
+- Do you want to see how this impacts child components nested further down?
+
+- [link](https://medium.com/@amitaknkpt/understanding-react-reconciliation-an-in-depth-examination-a86f968bc7e7)\
+  Understanding React Reconciliation: An In-Depth Examination | by WIZARD\
+  Benefit for Reconciliation: If the props haven't changed, React. memo tells React: "Stop! No need to re-render this component." Th...\
+  \
+  \
+  Medium
+
+- [link](https://news.ycombinator.com/item?id=29392037)\
+  Mithril is reasonably fast, but there are plenty of faster options like Solid, I...\
+  https://krausest.github.io/js-framework-benchmark/current.ht... IMO the best thing about Mithril is that it doesn't have reactivit...\
+  \
+  Hacker News
+
+- [link](https://mithril.js.org/archive/v0.2.5/mithril.component.html)\
+  m.component\
+  The return value of the view function is merely a plain Javascript data structure that represents a DOM tree. Internally, Mithril ...\
+  \
+  JS.ORG
+
+## You said: what does the generated dom will look exactly the same mean. does it have to diff children, tags, attrs anyway
+
+9:06 AM
+
+Yes, you hit the nail on the head. Mithril **still has to run the diff algorithm** across the children, HTML tags, and attributes anyway.
+
+When we say "the generated VDOM looks exactly the same," it means that the _JavaScript objects_ created by your `view()` function match the old objects structurally. But Mithril does not know this automatically; it has to step through them and check.
+
+Here is exactly what Mithril does during that HTML element diffing phase to figure out nothing has changed.
+
+### The Element-by-Element Verification Loop
+
+Once `view()` runs and returns the fresh VDOM tree, Mithril iterates through it alongside the old stored VDOM tree. For every single HTML element, it performs a highly optimized loop:
+
+1. **Tag Check**: It checks if `newVnode.tag === oldVnode.tag` (e.g., `"div" === "div"`). If yes, it reuses the DOM element.
+2. **Attributes Diff Loop**: It loops through the `attrs` object. It checks if `newVnode.attrs.class === oldVnode.attrs.class`, `newVnode.attrs.id === oldVnode.attrs.id`, etc. Because your state didn't change, these values match perfectly. Mithril makes the comparison but **skips writing to the real DOM**.
+3. **Children Length Check**: It looks at the array of children. If the old array had 3 elements and the new array has 3 elements, it continues down.
+4. **Text Node Check**: If it encounters a text node, it checks if `newVnode.text === oldVnode.text` (e.g., `"Count: 5" === "Count: 5"`). Since they are identical, it skips updating the browser text node.
+
+### The Catch: JavaScript Overhead vs. Browser DOM Overhead
+
+This reveals Mithril's core design trade-off: **It trades JavaScript computation time for DOM rendering safety.**
+
+- **The JavaScript Work (Cheap)**: Mithril iterates through arrays, reads object properties, and runs `if` statement comparisons. In modern V8/JavaScript engines, doing this for a few hundred nodes takes a fraction of a millisecond.
+- **The Real DOM Work (Expensive)**: Modifying a real browser DOM element (like `element.setAttribute()` or changing inner text) forces the browser to recalculate layouts, styles, and repaint the screen. This is incredibly slow. \[[1](https://medium.com/tech-x-humanity/the-essential-guide-to-the-document-object-model-dom-in-javascript-2-7b6387be760d), [2](https://johnkavanagh.co.uk/articles/reacts-virtual-dom-vs-the-real-dom/), [3](https://www.dhiwise.com/post/the-power-of-react-virtual-dom-revolutionizing-dom-manipulation), [4](https://medium.com/@jjmayank98/how-react-actually-updates-the-dom-vdom-reconciliation-fiber-and-why-signals-are-a-different-b66edf70353b), [5](https://muhammedbasith.medium.com/how-react-really-works-fiber-virtual-dom-and-everything-in-between-a303e8e2020d)]
+
+So, when your component updates with unchanged state, Mithril **does** perform the entire JavaScript diffing process on the children, tags, and attributes. However, because every single comparison evaluates to true, Mithril **never executes a single command to touch the browser's actual DOM grid.**
+
+### Summary
+
+Mithril does not magically skip the diff loop. It runs the diff loop every time, but because your VDOM output is identical, the loop acts as a filter that completely blocks any expensive updates from reaching the browser screen.
+
+If you want to look at how to bypass this entire JavaScript loop overhead for massive lists, tell me:
+
+- Would you like to see how to use **`m.vnode` properties** to cache static subtrees?
+
+- Do you want to see a benchmark of how many **nodes Mithril can diff** per millisecond?
+
+- Are you looking to completely freeze a piece of HTML that **never changes**?
+
+- [link](https://medium.com/tech-x-humanity/the-essential-guide-to-the-document-object-model-dom-in-javascript-2-7b6387be760d)\
+  The Essential Guide to the Document Object Model (DOM) in JavaScript (2)\
+  Directly manipulating the real DOM is costly, as each modification can trigger browser layout recalculations and rendering. The Vi...\
+  \
+  \
+  Medium
+
+- [link](https://johnkavanagh.co.uk/articles/reacts-virtual-dom-vs-the-real-dom/)\
+  React's Virtual DOM vs. the Real DOM\
+  Why the Real DOM Can Be Slow The browser recalculates styles to determine how the change affects the layout. The affected elements...\
+  \
+  \
+  johnkavanagh.co.uk
+
+- [link](https://www.dhiwise.com/post/the-power-of-react-virtual-dom-revolutionizing-dom-manipulation)\
+  Supercharging DOM Manipulation with React Virtual DOM\
+  It ( The Real DOM (Document Object Model) ) allows JavaScript to interact with HTML elements and styles. However, the Real DOM ( D...\
+  \
+  \
+  DhiWise
+
+Show all
+
+## You said: is it actually fast like compared with react
+
+9:07 AM
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>Yes, Mithril.js is faster and lighter than React</strong></mark>**.** \[[1](https://medium.com/@youngfelipe1/mithril-lightweight-frontend-2325675e85a3), [2](https://www.kenbarbour.com/posts/react-vs-mithril/)]
+
+According to standard community measurements like the [Official JS Framework Benchmark](https://krausest.github.io/js-framework-benchmark/) and real-world performance rankings, Mithril consistently outpaces React in pure rendering speed, bundle size, and memory overhead. \[[1](https://news.ycombinator.com/item?id=29392037), [2](https://www.youtube.com/watch?v=E5amN0%5F1XyE), [3](https://www.kenbarbour.com/posts/react-vs-mithril/)]
+
+The structural difference in how Mithril performs its JavaScript checks makes it faster than React in several distinct areas. \[[1](https://huspi.com/blog-open/what-javascript-framework-to-choose-in-2020-a-comparison/)]
+
+***
+
+### 1. The VDOM is Much Lighter \[[1](https://www.howdy.com/glossary/mithriljs), [2](https://medium.com/@youngfelipe1/mithril-lightweight-frontend-2325675e85a3)]
+
+React's Virtual DOM node objects are heavily engineered. React adds fiber metadata, synthetic event wrappers, concurrent scheduling properties, and alternate pointers to support complex fiber trees. \[[1](https://mithril.js.org/framework-comparison.html), [2](https://fullstacktechies.com/react-js-vs-preact-enterprise-comparison/), [3](https://medium.com/@youngfelipe1/mithril-lightweight-frontend-2325675e85a3)]
+
+- **React** allocates a complex, heavy JavaScript object for _every single node_ in your tree.
+- **Mithril** compiles your templates or `m()` calls down into standard, bare-bones JavaScript object shapes containing only structural keys (`tag`, `attrs`, `children`, `text`). \[[1](https://lobste.rs/s/tjgklu/mithril%5Fvs%5Fangular%5Fvs%5Freact)]
+
+Because the objects are physically smaller in memory, the engine can iterate through hundreds of nodes and run the JavaScript comparisons significantly faster than React. \[[1](https://huspi.com/blog-open/what-javascript-framework-to-choose-in-2020-a-comparison/), [2](https://qiita.com/shibukawa/items/890d24874655439932ec)]
+
+### 2. Immediate Diffing vs. Fiber Scheduling Overhead
+
+React uses a highly sophisticated internal scheduler called **Fiber Architecture**. Fiber breaks rendering work into incremental chunks, prioritizes user inputs, and yields back to the browser to prevent frame drops. \[[1](https://www.linkedin.com/pulse/react-fiber-real-reason-behind-reacts-speed-eram-fatima-%D8%A7%D8%B1%D9%85-%D9%81%D8%A7%D8%B7%D9%85%DB%81--9tclc), [2](https://medium.com/@youngfelipe1/mithril-lightweight-frontend-2325675e85a3), [3](https://mithril.js.org/framework-comparison.html)]
+
+- This scheduling structure introduces a massive amount of bookkeeping overhead.
+- **Mithril** skips async scheduling. When a redraw hits, it executes a straightforward, highly synchronous linear loop directly against the old cached array. Because it doesn't calculate prioritized queues, the time between a state change and a DOM paint is often lower in Mithril. \[[1](https://mithril.js.org/archive/v0.1.25/mithril.computation.html), [2](https://medium.com/@youngfelipe1/mithril-lightweight-frontend-2325675e85a3), [3](https://mithril.js.org/framework-comparison.html)]
+
+### 3. Garbage Collection is Minimal
+
+A major hidden performance killer in single-page applications is Garbage Collection (GC) pauses. Generating thousands of heavy Virtual DOM objects on every render forces the browser's JavaScript engine to constantly run garbage collection routines. \[[1](https://auth0.com/blog/more-benchmarks-virtual-dom-vs-angular-12-vs-mithril-js-vs-the-rest/)]
+
+- Mithril's minimal object footprint creates much fewer memory allocations.
+- In JS memory benchmarks, Mithril requires significantly lower heap allocation scales than React, meaning the app remains snappy without micro-stutters during heavy animations. \[[1](https://www.reddit.com/r/javascript/comments/urn2yw/mithriljs%5Frelease%5Fa%5Fnew%5Fversion%5Fafter%5Fnearly%5F3/), [2](https://medium.com/@Bigscal-Technologies/react-js-vs-mithril-which-javascript-framework-to-use-b5e52b8a842d), [3](https://blog.back4app.com/best-react-alternatives/), [4](https://auth0.com/blog/more-benchmarks-virtual-dom-vs-angular-12-vs-mithril-js-vs-the-rest/)]
+
+### 4. No Synthetic Event Layer \[[1](https://www.etatvasoft.com/blog/react-alternatives/)]
+
+When you type into an input field or click a button in React, React catches that event through a global listener proxy, wraps it into a custom `SyntheticEvent` object, and bubbles it up through an internal tracking layer.
+
+- Mithril binds your event handlers directly to the native browser event loop.
+- This removes an extra layer of processing whenever a user interacts with the UI.
+
+***
+
+### Side-by-Side Architectural Summary
+
+| Metric / Feature \[[1](https://news.ycombinator.com/item?id=29392037), [2](https://medium.com/@Bigscal-Technologies/react-js-vs-mithril-which-javascript-framework-to-use-b5e52b8a842d), [3](https://www.kenbarbour.com/posts/react-vs-mithril/), [4](https://medium.com/@youngfelipe1/mithril-lightweight-frontend-2325675e85a3), [5](https://mithril.js.org/framework-comparison.html)] | React                               | Mithril.js                                |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------- | ----------------------------------------- |
+| **Gzipped Library Size**                                                                                                                                                                                                                                                                                                                                                                  | ~42 KB (React + React-DOM)          | **~10 KB** (Includes Core + Router + XHR) |
+| **Object Footprint**                                                                                                                                                                                                                                                                                                                                                                      | Heavy Fiber Node Structures         | **Ultra-lightweight POJO shapes**         |
+| **Event Routing**                                                                                                                                                                                                                                                                                                                                                                         | Synthetic Event Proxy Ecosystem     | **Direct Native Events Only**             |
+| **Update Architecture**                                                                                                                                                                                                                                                                                                                                                                   | Batched & Scheduled via Fiber Queue | **Immediate Synchronous Linear Loop**     |
+
+### The Paradox: Why Mithril Wins
+
+Mithril wins on speed precisely because it is simple. While React engineered an incredibly advanced engine to optimize _how_ and _when_ work is performed, Mithril focuses on making the work itself so tiny that it can just run instantly. \[[1](https://spin.atomicobject.com/smallest-fastest-spa-framework/), [2](https://medium.com/@youngfelipe1/mithril-lightweight-frontend-2325675e85a3), [3](https://mithril.js.org/framework-comparison.html)]
+
+If you want to look at configuring an application for maximum efficiency, let me know:
+
+- Do you want to see how the **Mithril Bundle Size** looks when integrated into a real build system?
+
+- Are you planning to render **millions of rows** of live-updating data?
+
+- Do you want to learn how to completely prevent memory leaks when utilizing **native event hooks**? \[[1](https://www.kenbarbour.com/posts/react-vs-mithril/)]
+
+- [link](https://www.reddit.com/r/javascript/comments/urn2yw/mithriljs%5Frelease%5Fa%5Fnew%5Fversion%5Fafter%5Fnearly%5F3/)\
+  Mithril.js release a new version after nearly 3 years : r/javascript - Reddit\
+  cinnapear. • 4y ago. Wow, this is interesting. We use Mithril here as the frontend framework for a massive internal scheduling too...\
+  Reddit
+
+- [link](https://news.ycombinator.com/item?id=29392037)\
+  Mithril is reasonably fast, but there are plenty of faster options like Solid, I...\
+  Mithril is reasonably fast, but there are plenty of faster options like Solid, Inferno, Preact, or Svelte. https://krausest.github...\
+  Hacker News
+
+- [link](https://lobste.rs/s/tjgklu/mithril%5Fvs%5Fangular%5Fvs%5Freact)\
+  Mithril vs. Angular vs. React | Lobsters\
+  What bugs me is that the kinds of developers who see libraries like Mithril as objectively better are usually quick to make judgem...\
+  Lobste.rs
+
+Show all
+
+## You said: does mithril itself gc explicitly manually
+
+9:08 AM
+
+**No**, Mithril.js cannot manually or explicitly trigger garbage collection (GC). In the browser, the JavaScript engine (like V8 in Chrome or SpiderMonkey in Firefox) handles garbage collection automatically. JavaScript engines **strictly forbid** frameworks from forcing a GC cycle programmatically via code. \[[1](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Memory%5Fmanagement), [2](https://dev.to/brandonwie/understanding-garbage-collection-in-javascript-and-beyond-k3a)]
+
+However, what Mithril _does_ do is design its code layout to make the browser's native **Mark-and-Sweep garbage collection work instantly and effortlessly**. \[[1](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Memory%5Fmanagement), [2](https://dev.to/brandonwie/understanding-garbage-collection-in-javascript-and-beyond-k3a)]
+
+Mithril avoids GC stutters through specific strategies:
+
+### 1. Breaking References Automatically
+
+A browser cannot collect an object if something is still pointing to it in memory. When a component or HTML element is removed from your UI layout, Mithril doesn't just leave it behind; it actively nullifies its internal references. \[[1](https://dev.to/md%5Fisfaruddin%5F65557809e/understanding-garbage-collection-in-javascript-3p1a), [2](https://data-flair.training/blogs/javascript-garbage-collection/)]
+
+- It severs the links between the component instance, its state variables, and its child lists.
+- By detaching these references, the old virtual nodes instantly become **"unreachable"**. The very next time the browser runs its native GC, it reclaims that memory seamlessly. \[[1](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Memory%5Fmanagement)]
+
+### 2. Preventing Object Pooling (Which actually helps modern GC) \[[1](https://medium.com/@brianwill/functional-game-logic-with-truly-pauseless-garbage-collection-cffecc7b96d7), [2](https://news.ycombinator.com/item?id=48077924)]
+
+Some older frameworks use "object pooling" (reusing old JavaScript objects instead of creating new ones) to avoid GC. Mithril purposely avoids this.\
+Modern browser engines are highly optimized for **Generational Garbage Collection**. They group memory into two zones: \[[1](https://medium.com/@cenkozturrk/memory-management-and-the-garbage-collector-fe6f756dd3d4), [2](https://www.oracle.com/technical-resources/articles/java/garbagecollection-in-java-applications-using-jdk141.html), [3](https://dev.to/brandonwie/understanding-garbage-collection-in-javascript-and-beyond-k3a), [4](https://blog.gceasy.io/java-garbage-collection-enemy/), [5](https://dev.to/brandonwie/understanding-garbage-collection-in-javascript-and-beyond-k3a)]
+
+- **The Young Generation**: For objects that are created and discarded quickly. Cleaning this zone takes almost zero time.
+- **The Old Generation**: For objects that stick around for a long time. Cleaning this zone causes lag. \[[1](https://www.azul.com/blog/what-should-i-know-about-garbage-collection-as-a-java-developer/), [2](https://medium.com/@rp99452/understanding-garbage-collection-gc-in-net-a-pros-guide-b7208441a3b2), [3](https://dev.to/brilworks/garbage-collection-in-java-explained-8pg)]
+
+Because Mithril's virtual nodes are small, simple, plain objects, they are created, read by the diff engine, and discarded in less than a millisecond. The browser places them into the Young Generation heap and wipes them out instantly without pausing your application's frame rate. \[[1](https://ratfactor.com/mithril1), [2](https://dev.to/brandonwie/understanding-garbage-collection-in-javascript-and-beyond-k3a)]
+
+### 3. Cleaning Up Lifecycle Hooks
+
+If you attach native event listeners or third-party plugins (like charts or maps) inside a component, they can cause massive memory leaks if left unmanaged. Mithril provides the `onremove` lifecycle hook specifically to let you manually clean up those dangling links before the component vanishes: \[[1](https://mithril.js.org/lifecycle-methods.html), [2](https://dev.to/sho%5Fcarter/comment/1dp2f), [3](https://dev.to/brandonwie/understanding-garbage-collection-in-javascript-and-beyond-k3a)]
+
+javascript
+
+```
+const MapComponent = {
+  oncreate: (vnode) => {
+    // Creating a heavy third-party object attached to the window/DOM
+    vnode.state.mapInstance = new ThirdPartyMap(vnode.dom);
+  },
+  onremove: (vnode) => {
+    // Explicitly destroy it so the browser can collect the memory!
+    vnode.state.mapInstance.destroy();
+    vnode.state.mapInstance = null;
+  },
+  view: () => m("div.map")
+};
+```
+
+Use code with caution.
+
+If you are tracking down memory retention issues in an app, tell me:
+
+- Are you checking for **memory leaks** using Chrome DevTools?
+
+- Do you have **event listeners bound to `window` or `document`** that aren't going away?
+
+- Are you managing large chunks of **asynchronous data** that seem to stick around in cache?
+
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Memory%5Fmanagement)\
+  Memory management - JavaScript - MDN Web Docs\
+  Currently, all modern engines ship a mark-and-sweep garbage collector. All improvements made in the field of JavaScript garbage co...\
+  MDN Web Docs
+
+- [link](https://dev.to/brandonwie/understanding-garbage-collection-in-javascript-and-beyond-k3a)\
+  Understanding Garbage Collection in JavaScript and Beyond\
+  Takeaway Points \* JavaScript uses a tracing garbage collector with a Mark-and-Sweep algorithm to manage memory automatically. \* Ge...\
+  DEV Community
+
+- [link](https://dev.to/md%5Fisfaruddin%5F65557809e/understanding-garbage-collection-in-javascript-3p1a)\
+  Understanding Garbage Collection in JavaScript - DEV Community\
+  ✅ Breaking the Cycle - Solution. Explicitly break circular references before setting objects to null. This guarantees garbage coll...\
+  DEV Community
+
+Show all
+
+## You said: why nullify instead of removing it, making it false or underfunded
+
+9:09 AM
+
+Setting properties to `null` instead of running `delete` (removing it), `false`, or `undefined` is a carefully chosen strategy designed to satisfy the strict performance quirks of modern JavaScript V8 engines. \[[1](https://github.com/dotnet/msbuild/issues/9179)]
+
+Setting values to `false` or `undefined` cuts down semantic bugs, while avoiding `delete` safeguards engine optimization. The design trade-offs dictating this approach involve three primary technical reasons: \[[1](https://www.syncfusion.com/blogs/post/prevent-javascript-memory-leaks-guide), [2](https://medium.com/@bharathofficial05/memory-leaks-in-javascript-how-to-avoid-them-763e788474e1)]
+
+### 1. The `delete` Keyword Destroys V8 "Hidden Classes" (Crucial for Speed)
+
+JavaScript is a dynamically typed language, but behind the scenes, browser engines (like Chrome's V8) compile objects into optimized C++ style structures called **Hidden Classes** (Shapes).
+
+- When you initialize an internal framework object, V8 creates a fast structural blueprint based on the keys it expects (e.g., `{ tag: "div", attrs: null, children: null }`).
+- If Mithril uses `delete object.attrs`, it permanently modifies the shape of that object at runtime.
+- This structural shift forces V8 to drop the object out of its high-speed optimized compiler pipeline and degrade it to a slow, dictionary-style hash table lookup. This slowdown drastically harms structural loops when evaluating thousands of virtual DOM elements.
+
+### 2. Why Not `undefined`?
+
+Setting a property to `undefined` leaves the property key physically present on the object (`"attrs" in vnode` will still return `true`), but sets its contents to an empty evaluation state.
+
+- Culturally and architecturally, JavaScript developers utilize `undefined` to mean **"this value was never provided or initialized yet."**
+- Frameworks avoid forcing properties to `undefined` because it conflicts with standard parameter defaults. If a nested view function checks for defaults using syntax like `function view({ class = "default-box" })`, passing `undefined` will unintentionally trigger that fallback default value, whereas passing `null` will correctly pass an intentional blank payload.
+
+### 3. Why Not `false`?
+
+Using boolean `false` as a deletion placeholder introduces dangerous type-coercion bugs because of how JavaScript checks for truthiness.
+
+- Virtual DOM engines often check for text nodes or numeric attributes using loose evaluations.
+- If Mithril clears a node text value by setting it to `false`, a conditional statement like `if (vnode.text)` behaves safely. However, if the framework needs to output a native attribute value (like a button counter displaying the number `0`), type coercion can cause `0` and `false` to behave identically in dynamic lookups, wiping out real data.
+
+### Summary of What Explicit `null` Achieves
+
+By reassigning disconnected properties to `null`, Mithril satisfies all criteria:
+
+1. It safely breaks the memory pointer reference graph so the browser's **Mark-and-Sweep garbage collector** can instantly destroy the nested memory.
+2. It explicitly indicates **"this structure is intentionally blank"** without triggering fallback defaults.
+3. It **preserves the object shape completely**, keeping V8's hidden compiler tracks supercharged for subsequent loops. \[[1](https://stackoverflow.com/questions/57132878/how-to-not-reference-an-object-when-it-is-not-used-so-it-gets-deleted-by-garbage), [2](https://www.whitman.edu/mathematics/java%5Ftutorial/java/javaOO/garbagecollection.html)]
+
+If you are structuring memory-conscious modules, tell me:
+
+- Would you like to see how **V8 hidden classes** behave with dynamic object factories?
+
+- Are you handling **large JSON datasets** where you need to pick a deletion strategy?
+
+- Do you want to see how to write data handlers that avoid type-coercion bugs with `null`?
+
+- [link](https://stackoverflow.com/questions/57132878/how-to-not-reference-an-object-when-it-is-not-used-so-it-gets-deleted-by-garbage)\
+  How to not reference an Object when it is not used so it gets deleted by GarbageCollection\
+  In Java, an object is eligible for garbage collection if it has no reference to it. You can set a reference to null to "de-referen...\
+  Stack Overflow
+
+- [link](https://www.syncfusion.com/blogs/post/prevent-javascript-memory-leaks-guide)\
+  Fix JavaScript Memory Leaks Instantly and Boost App Performance\
+  Manual garbage collection JavaScript automatically manages memory, but manual actions can sometimes help speed up garbage collecti...\
+  Syncfusion
+
+- [link](https://medium.com/@bharathofficial05/memory-leaks-in-javascript-how-to-avoid-them-763e788474e1)\
+  Memory Leaks in JavaScript & How to Avoid Them | by Bharath\
+  Common Causes of Memory Leaks in JavaScript \* Global Variables (Accidental or Implicit) function createUser() { user = { name: "Bh...\
+  Medium
+
+Show all
+
+## You said: what about using map or something other than object
+
+9:10 AM
+
+Using a native JavaScript `Map` instead of a plain JavaScript object `{}` for Virtual DOM nodes seems like an intuitive way to solve the object-shape problem, but it actually introduces a different set of performance and memory penalties.
+
+While a `Map` allows you to freely add and delete keys without breaking hidden classes, it is significantly slower for the specific use case of a Virtual DOM engine. \[[1](https://medium.com/@catherineisonline/javascript-for-beginners-data-structures-ce8d85bb2d5c)]
+
+Here is why Mithril and other top-tier frameworks (like React and Vue) strictly stick to plain old JavaScript objects (POJOs) instead of `Map`. \[[1](https://gilbert.ghost.io/mithril-js-tutorial-1/)]
+
+### 1. `Map` Property Lookup is Much Slower \[[1](https://richardartoul.github.io/jekyll/update/2015/04/26/hidden-classes.html)]
+
+JavaScript engines (V8, SpiderMonkey) have spent over a decade hyper-optimizing plain object property lookups (`obj.tag` or `obj.attrs`) using inline caching. If the object shape is stable, reading a property takes only a couple of CPU instructions.
+
+A `Map` lookup requires calling a method (`map.get('tag')`). This method call introduces overhead: \[[1](https://www.educative.io/blog/javascript-map-set), [2](https://mitya.uk/articles/javascript-maps-sets-part-1-maps)]
+
+- It has to execute a hash-function lookup inside the map's internal data structure.
+- It cannot benefit from V8's hidden class optimization tracks.
+
+In a framework like Mithril, which loops through thousands of nodes per millisecond during a redraw, replacing `vnode.tag` with `vnode.get('tag')` introduces a massive performance bottleneck.
+
+### 2. High Memory and Garbage Collection Overhead
+
+Plain objects are incredibly lightweight representations in memory. A standard object with a few fixed properties occupies a very small, contiguous block of bytes.
+
+A native `Map` object is a complex structure designed to handle dynamic resizing, collision resolution, and ordered iterations. \[[1](https://medium.com/interesting-coding/advanced-javascript-tips-and-tricks-how-to-use-object-or-map-instead-of-switch-case-b195a745d162), [2](https://www.geeksforgeeks.org/dsa/introduction-to-map-data-structure/)]
+
+- Creating a new `Map` instance allocates significantly more bytes of memory than a small POJO.
+- When you render thousands of virtual nodes per frame, instantiating thousands of `Map` objects generates vast amounts of memory garbage. This triggers the exact browser garbage collection (GC) stutters that Mithril is designed to avoid.
+
+### 3. JavaScript Syntax and Size Penalties
+
+Using `Map` ruins the clean, expressive syntax of writing Virtual DOM structures and increases the code footprint:
+
+javascript
+
+```
+// Plain Object: Compact, readable, easy to destructure
+const { tag, attrs, children } = vnode;
+
+// Map Object: Verbose and harder for compilers to optimize
+const tag = vnode.get('tag');
+const attrs = vnode.get('attrs');
+```
+
+Use code with caution.
+
+Furthermore, minifiers like Terser or Esbuild cannot compress map keys. A property access like `vnode.tag` can be automatically shortened by a compiler down to `vnode.t` if it's an internal framework property. A string map key like `vnode.get('tag')` must remain a string literal, inflating the final gzipped bundle size of the framework.
+
+### Summary: The Ultimate Tool for the Job
+
+| Metric \[[1](https://medium.com/@mehedipy/why-map-lookups-are-slower-than-object-lookups-in-javascript-94ed41b73f4c)] | Plain Object `{}` (With `null` resetting)     | Native `Map`                                     |
+| --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- | ------------------------------------------------ |
+| **Lookup Speed**                                                                                                      | **Ultra-fast** (optimized via inline caching) | **Slower** (hash lookup function overhead)       |
+| **Memory Footprint**                                                                                                  | **Minimal** (a few bytes per instance)        | **Heavy** (built-in overhead for dynamic sizing) |
+| **GC Friendly**                                                                                                       | **Excellent** (allocated and swept instantly) | **Poor** (creates heavier garbage queues)        |
+| **Key Deletion Safely**                                                                                               | Dangerous if using `delete`; safe via `null`. | Perfectly safe using `.delete()`.                |
+
+Mithril chooses plain objects because the framework's entire identity relies on being incredibly small (~10KB) and blindingly fast. By configuring plain objects with stable properties and using `null` to clear references, Mithril achieves the safety of a map with the raw speed of bare-metal JavaScript. \[[1](https://ratfactor.com/mithril1)]
+
+If you want to look further into modern JavaScript performance layouts, tell me:
+
+- Would you like to see how to write an object benchmark comparing **`Map` vs POJO lookup times**?
+
+- Are you designing an application state store where a **`Map` actually makes sense** over an object?
+
+- Do you want to see how **Mithril's source code** initializes a blank vnode object?
+
+- [link](https://medium.com/@catherineisonline/javascript-for-beginners-data-structures-ce8d85bb2d5c)\
+  JavaScript for Beginners: Data Structures | by Ekaterine Mitagvaria\
+  Compared to a regular object, however, maps have a size property. Also, there are no pre-existing keys that might cause a collisio...\
+  \
+  \
+  Medium
+
+- [link](https://gilbert.ghost.io/mithril-js-tutorial-1/)\
+  Mithril.js: A Tutorial Introduction (Part 1)\
+  Note how we're still using plain old JavaScript features. This is a big benefit of using Mithril — no preprocessors or build step ...\
+  \
+  \
+  gilbert.ghost.io
+
+- [link](https://richardartoul.github.io/jekyll/update/2015/04/26/hidden-classes.html)\
+  Javascript Hidden Classes and Inline Caching in V8\
+  In a non-dynamic language like Java, a property's location in memory can often be determined with only a single instruction wherea...\
+  \
+  \
+  GitHub
+
+Show all
+
+## You said: what about setting to false instead of null
+
+9:17 AM
+
+While setting a property to `false` works perfectly fine for your own application state, using it inside a Virtual DOM framework engine like Mithril to clear internal reference pointers creates a critical problem: **It breaks semantic type safety and triggers unintended HTML rendering bugs.**
+
+Using `null` tells the engine, _"This field is explicitly empty."_ Using `false` tells the engine, _"The value here is the boolean false."_
+
+Here is exactly why a framework cannot use `false` instead of `null` to clear internal references.
+
+### 1. `false` is a Valid HTML Attribute Value
+
+In modern web development, `false` is frequently used as a real value for ARIA attributes, form states, and custom components.
+
+- Imagine a toggle button: `m("button", { "aria-expanded": false })`.
+- If Mithril's engine used `false` internally to mean _"this attribute was deleted/cleared"_, it would struggle to tell the difference between an attribute you want to **remove** from the DOM versus an attribute you want to explicitly **set to the string `"false"`**.
+- By using `null`, Mithril maintains an absolute rule: `null` means remove the attribute from the DOM, while `false` means write `attribute="false"` into the HTML.
+
+### 2. Breaking Text Node Layouts
+
+Mithril evaluates text nodes by checking the `text` property of a vnode structure. JavaScript treats both `null` and `false` as "falsy" values, but they behave very differently if they accidentally slip through to the browser:
+
+javascript
+
+```
+// What happens if these escape to the DOM?
+String(null);  // "null" (Clearly an error if printed)
+String(false); // "false"
+```
+
+Use code with caution.
+
+If you are conditionally rendering text like `m("span", isLoaded && "Welcome")`, when `isLoaded` is false, the expression evaluates to `false`. Mithril handles this by checking for booleans explicitly. If Mithril used `false` internally as a generic "empty marker" for its child arrays or text slots, it would risk accidentally stringifying the word `"false"` right onto your user interface.
+
+### 3. Type Coercion Hazards in Fast Comparisons
+
+Mithril’s internal diff engine relies on loose or rapid checks to determine if values have changed. In JavaScript, `false` causes loose type coercion hazards that `null` avoids entirely:
+
+javascript
+
+```
+// Loose equality traps with false:
+false == 0;         // true  (Dangerous! What if your counter equals 0?)
+false == "";        // true  (Dangerous! What if your text input is empty?)
+
+// Safe isolation with null:
+null == 0;          // false
+null == "";         // false
+```
+
+Use code with caution.
+
+If the internal diff engine encounters a counter state of `0` or an empty string `""`, and compares it against an internal placeholder cleared to `false`, a loose check might falsely conclude that nothing has changed. This results in the UI failing to update. `null` is completely isolated from numbers and strings, making it bulletproof for rapid framework diff checks. \[[1](https://dev.to/a1guy/dont-misuse-useref-in-react-the-practical-guide-you-actually-need-5aj6)]
+
+### Summary: The Semantic Intent
+
+- **`undefined`**: Means a value was **never defined** (triggers JavaScript default arguments).
+- **`false`**: Means a value **is defined, and its logical state is false** (renders as an attribute or condition).
+- **`null`**: Means a value **is defined, and it is intentionally empty** (safely severs memory tracking and signals removal).
+
+If you are tracking down a rendering quirk in your views, tell me:
+
+- Are you having trouble getting a **conditional attribute** (like `disabled` or `hidden`) to disappear?
+
+- Do you want to see how to properly handle **falsy short-circuiting** (`&&`) inside a Mithril view?
+
+- Are you writing a custom component that needs to accept **boolean flags** safely?
+
+- [link](https://dev.to/a1guy/dont-misuse-useref-in-react-the-practical-guide-you-actually-need-5aj6)\
+  Don’t Misuse useRef in React: The Practical Guide You Actually Need\
+  Symptom: You update a ref and the UI doesn't update. You wonder why your form input or counter never shows the new value.\
+  \
+  \
+  DEV Community
+
+# can you usestate or useeffect outside
+
+9:19 AM
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong><span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">No, you cannot call </span><code dir="ltr" style="font-size: 14px; margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 1px solid rgb(44, 46, 53);">useState</code> or <code dir="ltr" style="font-size: 14px; margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 1px solid rgb(44, 46, 53);">useEffect</code> outside of a React component or a custom hook.</strong></mark> \[[1](https://react.dev/reference/react/useEffect), [2](https://www.reddit.com/r/reactjs/comments/uxctki/cant%5Fuse%5Fuseeffect%5Finside%5Fa%5Fuseeffect%5Freact%5Fts/), [3](https://dmitripavlutin.com/react-usestate-hook-guide/), [4](https://www.cloudthat.com/resources/blog/reactjs-hooks-implementation-rules-and-uses)]
+
+If you try to execute them in a regular JavaScript function or in the global scope, React will throw a runtime error (typically _"Invalid hook call. Hooks can only be called inside of the body of a function component"_). \[[1](https://levelup.gitconnected.com/top-10-react-js-errors-their-simple-solutions-89e5407fe4e3), [2](https://medium.com/@akhshyganesh/using-react-hooks-outside-components-without-breaking-the-rules-0132a0c40519), [3](https://www.youtube.com/watch?v=1JodudDUx%5F8\&t=1038)]
+
+***
+
+### The Official Rules of Hooks
+
+React enforces two strict rules for using any hook, including `useState` and `useEffect`: \[[1](https://gitnation.com/contents/you-cant-use-hooks-conditionally-or-can-you), [2](https://medium.com/fink-it/react-dependency-array-is-not-to-be-ignored-f9078579cba0), [3](https://medium.com/craft-academy/how-to-restrict-your-routes-and-links-in-react-js-now-with-hooks-12b395c1a2fe)]
+
+1. **Only Call Hooks at the Top Level:** Do not call Hooks inside loops, conditions, or nested functions.
+2. **Only Call Hooks from React Functions:** Call them only from **React Function Components** or **Custom Hooks**. \[[1](https://www.reddit.com/r/reactjs/comments/d6said/question%5Fabout%5Fcalling%5Fusestate%5Ffrom%5Foutside/), [2](https://blog.logrocket.com/usestate-vs-useref/), [3](https://www.dhiwise.com/post/the-complete-roadmap-to-react-hooks-exhaustive-deps), [4](https://dev.to/chris10garcia/an-overview-on-how-to-use-state-in-react-40gk), [5](https://www.codecademy.com/article/how-to-use-hooks-in-react-js-with-examples)]
+
+***
+
+### Valid Ways to Organize Your Code
+
+If you want to move your state or effect logic "outside" a specific component to clean up your file, you have three standard architectural options: \[[1](https://www.reddit.com/r/reactjs/comments/17eh3nm/is%5Fuseeffect%5Freally%5Fthe%5Fbest%5Fway%5Fto%5Fhandle/)]
+
+### 1. Create a Custom Hook (Highly Recommended) \[[1](https://www.reddit.com/r/reactjs/comments/y7ah2e/why%5Fdo%5Fwe%5Fuse%5Fconst%5Ffor%5Fusestate%5Finstead%5Fof%5Flet/)]
+
+If you want to extract `useState` and `useEffect` into a separate file or function to make it reusable, wrap them in a function whose name starts with `use`. This signals to React that the function is allowed to hold hooks. \[[1](https://www.reddit.com/r/reactjs/comments/16mp5on/regarding%5Fnot%5Fbeing%5Fable%5Fto%5Fuse%5Fhooks%5Foutside%5Fof/), [2](https://www.dhiwise.com/post/mastering-state-management-change-props-with-custom-hook), [3](https://stackoverflow.com/questions/61176854/react-hook-usestate-or-react-hook-useeffect-is-called-in-function-which-is-n)]
+
+javascript
+
+```
+// useUserData.js (Custom Hook)
+import { useState, useEffect } from 'react';
+
+export function useUserData(userId) {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    // Fetch data logic here
+    setUser({ id: userId, name: "Alex" });
+  }, [userId]);
+
+  return user;
+}
+
+// ProfileComponent.js (React Component)
+import { useUserData } from './useUserData';
+
+function ProfileComponent({ userId }) {
+  const user = useUserData(userId); // Perfectly valid!
+  return <div>{user?.name}</div>;
+}
+```
+
+Use code with caution.
+
+### 2. Pass State Setters to External Plain Functions \[[1](https://www.reddit.com/r/reactjs/comments/lpkwrh/am%5Fi%5Fthe%5Fonly%5Fone%5Fwho%5Ffinds%5Freact%5Flifecycle%5Fhooks/)]
+
+While you cannot invoke `useState` outside a component, you can call it _inside_ your component and then pass its updater function (`setCount`, `setData`, etc.) into a completely separate, regular JavaScript file. \[[1](https://stackoverflow.com/questions/59361502/react-js-possible-to-assign-usestate-outside-function-component), [2](https://dmitripavlutin.com/react-usestate-hook-guide/), [3](https://dev.to/antdp425/react-hooks-usestate-explained-in-5-minutes-2aea), [4](https://www.reddit.com/r/reactjs/comments/1guay0d/goodbye%5Fuseeffect%5Frunning%5Ffunctions%5Fwhen%5Fthe/), [5](https://www.reddit.com/r/reactjs/comments/d6said/question%5Fabout%5Fcalling%5Fusestate%5Ffrom%5Foutside/)]
+
+javascript
+
+```
+// apiUtils.js (Regular JS file - NO hooks here)
+export function handleLegacyNetworkResponse(response, setStatus) {
+  if (response.ok) {
+    setStatus("Success"); // Mutating React state from the outside
+  }
+}
+
+// Component.js
+import { useState } from 'react';
+import { handleLegacyNetworkResponse } from './apiUtils';
+
+function MyComponent() {
+  const [status, setStatus] = useState("Loading");
+
+  const checkApi = () => {
+    const mockResponse = { ok: true };
+    handleLegacyNetworkResponse(mockResponse, setStatus);
+  };
+
+  return <button onClick={checkApi}>{status}</button>;
+}
+```
+
+Use code with caution.
+
+### 3. Use an External State Management Library \[[1](https://stackoverflow.com/questions/71681230/using-usestate-variable-outside-the-function-in-reactjs)]
+
+If your goal is to manage application state entirely outside the React lifecycle, skip `useState` altogether and utilize global state stores like Zustand, Redux, or MobX. These tools are built specifically to handle data independently and push updates into React smoothly. \[[1](https://stackoverflow.com/questions/62077729/is-it-possible-to-use-react-hooks-outside-of-functional-component-or-i-have-to), [2](https://stackoverflow.com/questions/71681230/using-usestate-variable-outside-the-function-in-reactjs)]
+
+***
+
+What specific **architecture problem** are you trying to solve by moving hooks outside? If you share your **use case** or code snippet, I can show you exactly how to structure it cleanly.
+
+- [link](https://www.reddit.com/r/reactjs/comments/d6said/question%5Fabout%5Fcalling%5Fusestate%5Ffrom%5Foutside/)\
+  Question about calling useState from outside react components\
+  Comments Section \* danielkov. • 7y ago. Since you're using useEffect, make sure you have some way of removing that setState callba...\
+  Reddit
+- [link](https://stackoverflow.com/questions/59361502/react-js-possible-to-assign-usestate-outside-function-component)\
+  React.js: Possible to assign useState() outside function component?\
+  You can use the useState 's update function outside of a component by assigning it to a variable. Just be sure to clear it when th...\
+  Stack Overflow
+- [link](https://stackoverflow.com/questions/62077729/is-it-possible-to-use-react-hooks-outside-of-functional-component-or-i-have-to)\
+  Is it possible to use React Hooks outside of functional component, or ...\
+  Comments. ... Yes, you have to use Redux or MobX to solve this problem. You have to maintain isAuthenticated state in the global s...\
+  Stack Overflow
+
+Show all
+
+# what does mithril do if you outsync and some dom references vanish some go wrong
+
+9:45 AM
+
+If Mithril.js loses synchronization with the real DOM (usually caused by a third-party script, browser extension, or manual vanilla JavaScript modification), **Mithril will blindly execute its Virtual DOM diffing engine based on its internal cache, resulting in broken UIs, silent errors, or application crashes**. \[[1](https://stackoverflow.com/questions/31672967/how-to-not-re-render-the-whole-list-in-mithril), [2](https://stackoverflow.com/questions/61154719/how-to-force-mithril-to-redraw-without-diffing-integrating-dragula-in-mithril)]
+
+Mithril does not read or validate the actual state of the real DOM before rendering; it compares its current internal virtual tree with the _previous_ virtual tree and updates the real elements it _thinks_ are there. \[[1](https://mithril.js.org/archive/v0.2.5/mithril.component.html), [2](https://stackoverflow.com/questions/46215767/does-mithril-js-use-dom-diffing-when-you-use-m-render), [3](https://medium.com/@gethylgeorge/how-virtual-dom-and-diffing-works-in-react-6fc805f9f84e), [4](https://ratfactor.com/mithril1)]
+
+***
+
+### What Happens Internally During a De-sync
+
+### 1. Vanished DOM References (Elements Deleted Externally)
+
+- **The Action**: Mithril attempts to update or remove a node that it expects to exist in a specific position, but a third-party script or extension has deleted it.
+- **The Result**: Mithril's internal reference (`vnode.dom`) points to a detached node or `null`. \[[1](https://github.com/MithrilJS/mithril.js/issues/2295), [2](https://mithril.js.org/lifecycle-methods.html)]
+- **The Consequence**: JavaScript will throw a native runtime error, typically `TypeError: Cannot read properties of null` or `Failed to execute 'insertBefore' on 'Node'`. This unhandled exception will completely halt the current render cycle and freeze the UI. \[[1](https://github.com/MithrilJS/mithril.js/issues/2273)]
+
+### 2. Mismatched or Reordered Elements (Wrong References)
+
+- **The Action**: An external tool (like a drag-and-drop library) swaps the physical DOM positions of elements without updating Mithril's underlying data model. \[[1](https://stackoverflow.com/questions/61154719/how-to-force-mithril-to-redraw-without-diffing-integrating-dragula-in-mithril)]
+- **The Result**: Mithril is unaware of the structural shift and applies its calculated properties to whatever element currently occupies that slot in the physical DOM tree. \[[1](https://github.com/MithrilJS/mithril.js/issues/2135), [2](https://stackoverflow.com/questions/61154719/how-to-force-mithril-to-redraw-without-diffing-integrating-dragula-in-mithril)]
+- **The Consequence**: A "mixed state" bug occurs. For example, text, input values, and event handlers will end up attached to the wrong visual components. Mithril will not automatically correct this because it believes the DOM matches its internal virtual representation. \[[1](https://github.com/MithrilJS/mithril.js/issues/2135), [2](https://stackoverflow.com/questions/61154719/how-to-force-mithril-to-redraw-without-diffing-integrating-dragula-in-mithril)]
+
+### 3. State Inversion and Overwrites
+
+- **The Action**: A third-party script modifies a property (like text content or an attribute) directly on the element.
+- **The Result**: During the next redraw, Mithril determines that its virtual state has not changed.
+- **The Consequence**: Mithril skips updating the attribute entirely. The external script's change will unexpectedly persist until a future data change explicitly forces Mithril to evaluate that specific node differently. \[[1](https://stackoverflow.com/questions/79771446/mithril-js-style-updates-not-working-virtual-dom-diffing-skipped), [2](https://stackoverflow.com/questions/61154719/how-to-force-mithril-to-redraw-without-diffing-integrating-dragula-in-mithril)]
+
+***
+
+### How to Fix or Prevent De-sync Issues
+
+### Use Keys to Protect Elements \[[1](https://github.com/MithrilJS/mithril.js/issues/214)]
+
+Always assign a unique `key` attribute to dynamic, list-based, or moveable elements. Mithril uses keys to map virtual nodes to real DOM nodes by identity rather than index position. This prevents elements from scrambling if they are reordered. \[[1](https://stackoverflow.com/questions/33599597/how-to-retain-a-dom-element-in-mithril-across-redraws), [2](https://github.com/MithrilJS/mithril.js/issues/311), [3](https://dev.to/abhishek%5Fkumar%5Fd9009a7ae6/understanding-reconciliation-and-the-virtual-dom-in-react-4i3n), [4](https://stackoverflow.com/questions/61154719/how-to-force-mithril-to-redraw-without-diffing-integrating-dragula-in-mithril)]
+
+javascript
+
+```
+// Do this for dynamic items
+m("li", { key: item.id }, item.name)
+```
+
+Use code with caution.
+
+### Isolate Third-Party Scripts in Lifecycles \[[1](https://medium.com/@blogs-world/next-js-hydration-errors-in-2026-the-real-causes-fixes-and-prevention-checklist-4a8304d53702)]
+
+If a library must manipulate the DOM, isolate it inside Mithril's `oncreate` and `onremove` lifecycle hooks. Provide a dedicated element (like a blank ) that Mithril never structurally updates, allowing the external library to modify the inside of that node safely. \[[1](https://stackoverflow.com/questions/27139920/how-does-mithril-and-jquery-interact-with-each-other), [2](https://github.com/MithrilJS/mithril.js/issues/1887)]
+
+javascript
+
+```
+m("div", {
+    oncreate: (vnode) => {
+        // Initialize your jquery, map, or chart library strictly inside this element
+        initializeExternalWidget(vnode.dom);
+    }
+})
+```
+
+Use code with caution.
+
+### Force a Clean Re-render (The Nuclear Option)
+
+If the DOM is heavily corrupted and Mithril cannot recover via a normal `m.redraw()`, you must bypass the diffing engine entirely. Wipe out the root container and remount the application from scratch: \[[1](https://github.com/MithrilJS/mithril.js/issues/2231), [2](https://mithril.js.org/archive/v0.2.0/change-log.html), [3](https://stackoverflow.com/questions/61154719/how-to-force-mithril-to-redraw-without-diffing-integrating-dragula-in-mithril)]
+
+javascript
+
+```
+// Unmount the current app to clean up state
+m.mount(document.getElementById("app"), null);
+
+// Force the browser to clear the container's HTML
+document.getElementById("app").innerHTML = "";
+
+// Remount clean
+m.mount(document.getElementById("app"), MyApp);
+```
+
+Use code with caution.
+
+***
+
+If you are dealing with a specific error or library integration, share **which library** or **what type of user action** is triggering this de-sync. I can provide the precise lifecycle hook strategy or key tracking configuration to isolate it.
+
+- [link](https://github.com/MithrilJS/mithril.js/issues/2273)\
+  Error handling and recovery #2273 - MithrilJS/mithril.js - GitHub\
+  There's a few reasons for this: \* It's much easier to capture all the user errors in one location than everywhere external errors ...\
+  GitHub
+- [link](https://stackoverflow.com/questions/33599597/how-to-retain-a-dom-element-in-mithril-across-redraws)\
+  How to retain a DOM element in Mithril, across redraws\
+  2 Answers. ... In your case you can use the key -attribute to preserve the iframe element. It connects the DOM-nodes to the vDOM-n...\
+  Stack Overflow
+- [link](https://stackoverflow.com/questions/31672967/how-to-not-re-render-the-whole-list-in-mithril)\
+  How to not re-render the whole list in Mithril - Stack Overflow\
+  1 Answer. ... Getting animation libraries to work with Mithril can be tricky. When libraries manipulate DOM state the synchronizat...\
+  Stack Overflow
+
+Show all
+
+## You said: does it diff and then commit or diff and commit at the same time
+
+9:47 AM
+
+Mithril.js **diffs and commits at the same time**.
+
+Unlike modern React, which splits execution into a purely computational _Render Phase_ (calculating changes) followed by an independent _Commit Phase_ (writing to the DOM), Mithril utilizes a **single-pass interleaved algorithm**. \[[1](https://www.linkedin.com/posts/alokgoldy%5Freactjs-advancedreact-frontend-activity-7418002544095989760-ZyAK), [2](https://mithril.js.org/archive/v0.2.5/mithril.redraw.html)]
+
+***
+
+### How Mithril's Interleaved Execution Works
+
+When Mithril executes a redraw, it loops through your component tree recursively and performs the following actions in a single pass:
+
+1. **Evaluates** the new Virtual DOM node (`vnode`) for a specific element.
+2. **Compares** (diffs) that new `vnode` against the cache of the old `vnode`.
+3. **Mutates (commits)** the real DOM node _immediately_ if it finds a difference.
+4. **Moves down** to the children of that node and repeats the process. \[[1](https://gilbert.ghost.io/mithril-js-tutorial-1/), [2](https://mithril.js.org/archive/v0.2.5/mithril.redraw.html)]
+
+Because it does not build a full global list of changes before touching the DOM, the "diff" and the "commit" are tightly bound together.
+
+***
+
+### Why This Matters (The Implications)
+
+### 1. Instant DOM State Mutation
+
+If you have a large list of 100 items and item #5 contains a change, Mithril modifies item #5 in the real DOM _before_ it even begins diffing item #6.
+
+### 2. Synchronous and Uninterruptible
+
+Because the DOM is being modified mid-traversal, Mithril's rendering engine **cannot be paused, chunked, or aborted** like React's Concurrent Mode. It must run synchronously from the root element to the leaves in one continuous execution block. \[[1](https://medium.com/@firatatalay/how-rendering-works-the-commit-phase-4114680d7057), [2](https://www.linkedin.com/posts/alokgoldy%5Freactjs-advancedreact-frontend-activity-7418002544095989760-ZyAK)]
+
+### 3. Why De-sync Breaks it Immediately
+
+Because Mithril applies a commit the exact moment its diffing logic encounters a discrepancy, a vanished or reordered DOM reference causes the execution loop to crash mid-traversal. If item #20 is missing from the real DOM but Mithril's internal virtual tree thinks it should be there, Mithril will instantly execute a DOM method (like `vnode.dom.setAttribute` or `insertBefore`) on a non-existent or wrong reference, causing the runtime exception that freezes the app. \[[1](https://mithril.js.org/archive/v0.2.5/mithril.redraw.html)]
+
+***
+
+Are you designing a wrapper for a **third-party library** or trying to optimize a **high-frequency layout update**? Let me know the specific use case, and I can show you how to safely work within Mithril's single-pass rendering model.
+
+- [link](https://www.linkedin.com/posts/alokgoldy%5Freactjs-advancedreact-frontend-activity-7418002544095989760-ZyAK)\
+  React Render vs Commit Phase: Understanding the Difference\
+  Alok Goldy. Software Engineer @ Anchor OS | React.js, TypeScript, Tailwind CSS, GraphQL | Node.js, AWS | Modern Web Development. 4...\
+  LinkedIn
+- [link](https://mithril.js.org/archive/v0.2.5/mithril.redraw.html)\
+  m.redraw - Mithril\
+  After the redraw, Mithril resets the value of the flag to either "all" or "diff", depending on whether the redraw was due to a rou...\
+  JS.ORG
+- [link](https://medium.com/@firatatalay/how-rendering-works-the-commit-phase-4114680d7057)\
+  How Rendering Works: The Commit Phase | by Firat Atalay - Medium\
+  So we say that the commit phase is synchronous unlike the rendering phase, which can be paused. So committing cannot be interrupte...\
+  Medium
+
+Show all
+
+## You said: how is it compared with react approach
+
+9:55 AM
+
+The primary difference is that <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>React separates rendering from committing into two independent phases, whereas Mithril executes them at the exact same time</strong></mark>**.** \[[1](https://www.youtube.com/watch?v=rKk4XJYzSQA\&t=106), [2](https://sunnychopper.medium.com/what-is-react-fiber-and-how-it-helps-you-build-a-high-performing-react-applications-57bceb706ff3)]
+
+React values **interruptibility and predictability** by creating a buffered sandbox, while Mithril values **extreme execution speed and minimal memory footprint** through a lean, single-pass pipeline. \[[1](https://mithril.js.org/framework-comparison.html), [2](https://medium.com/@akashsdas%5Fdev/react-fiber-reconciler-11986b384324), [3](https://javascript-conference.com/blog/angular-vs-react-modern-frameworks/), [4](https://github.com/Automattic/wp-calypso/issues/650), [5](https://www.youtube.com/watch?v=rKk4XJYzSQA\&t=106)]
+
+***
+
+### Architectural Comparison
+
+| Feature \[[1](https://www.youtube.com/watch?v=VPKFC05Q-kg), [2](https://dev.to/yorgie7/demystifying-react-fiber-advanced-guide-to-wip-commit-phase-concurrent-rendering-5bme), [3](https://mithril.js.org/), [4](https://www.youtube.com/watch?v=rKk4XJYzSQA\&t=106), [5](https://mithril.js.org/framework-comparison.html)] | Mithril.js (Interleaved / Single-Pass)                                   | React (Fiber Architecture)                                             |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ | ---------------------------------------------------------------------- |
+| **Phases**                                                                                                                                                                                                                                                                                                                  | **One single phase** (Diff + Commit happen inline)                       | **Two distinct phases** (Render/Reconciliation phase → Commit phase)   |
+| **DOM Execution**                                                                                                                                                                                                                                                                                                           | **Immediate** (Mutates the DOM as it traverses down the tree)            | **Deferred** (Batches all writes to the end of the entire loop)        |
+| **Interruptible?**                                                                                                                                                                                                                                                                                                          | **No** (Synchronous blocking loop; must finish once started)             | **Yes** (Can pause, split into chunks, or discard updates mid-way)     |
+| **Memory Allocation**                                                                                                                                                                                                                                                                                                       | **Extremely Low** (Relies on raw JS call stack and a single cache array) | **High** (Maintains duplicate concurrent fiber node trees in memory)   |
+| **Crash Vulnerability**                                                                                                                                                                                                                                                                                                     | **High** (Crashes instantly if the real DOM doesn't match assumptions)   | **Low** (Calculates logic in memory; handles missing nodes gracefully) |
+
+***
+
+### Phase Blueprint: React vs. Mithril
+
+### The React Approach (Two-Phase Buffer) \[[1](https://www.youtube.com/watch?v=rKk4XJYzSQA\&t=106)]
+
+React utilizes the **Fiber Engine**, which acts like a git branching workflow. \[[1](https://adasci.org/blog/why-react-rebuilt-its-core-an-introduction-to-react-fiber), [2](https://www.youtube.com/watch?v=VPKFC05Q-kg)]
+
+1. **Render Phase (Asynchronous/Interruptible)**: React copies your UI state into a duplicate virtual tree in memory called the `work-in-progress` tree. It runs through your component functions, detects changes, and appends a "list of effects" (e.g., `Placement`, `Update`) onto the virtual nodes. **Crucially, the real DOM is untouched during this phase.** If a user types into an input field or a higher-priority task comes in, React can discard this memory tree entirely and start over. \[[1](https://medium.com/@Sophie%5Fs/react-fiber-architecture-explained-render-commit-phases-ba6f45b92a43), [2](https://www.youtube.com/watch?v=yqf0SykS6eE\&t=39), [3](https://www.youtube.com/watch?v=rKk4XJYzSQA\&t=106), [4](https://www.youtube.com/watch?v=VPKFC05Q-kg), [5](https://dev.to/yorgie7/demystifying-react-fiber-advanced-guide-to-wip-commit-phase-concurrent-rendering-5bme)]
+2. **Commit Phase (Synchronous/Blocking)**: Once the entire virtual tree is built and finalized, React takes the completed list of effects and flushes them to the real browser DOM in one rapid, non-interruptible block. \[[1](https://zenn.dev/porokyu32/articles/960d9d6e45533b), [2](https://dev.to/yorgie7/demystifying-react-fiber-advanced-guide-to-wip-commit-phase-concurrent-rendering-5bme)]
+
+### The Mithril Approach (Immediate In-Place Mutation)
+
+Mithril uses a classic, bare-metal Virtual DOM loop. \[[1](https://mithril.js.org/render.html), [2](https://www.toptal.com/developers/front-end/tips-and-practices), [3](https://mithril.js.org/framework-comparison.html)]
+
+- There is no sandbox tree or staging area. When a redraw occurs, Mithril starts at the root component and evaluates downwards. \[[1](https://www.youtube.com/watch?v=rKk4XJYzSQA\&t=106), [2](https://www.youtube.com/watch?v=VPKFC05Q-kg)]
+- If it evaluates a node and sees that a text attribute changed, it **immediately** executes `element.textContent = newText` right then and there. It then instantly steps into that element's children.
+- Because the real DOM modifications are scattered inline throughout the virtual tree traversal, there is no way to undo or pause a partial render.
+
+***
+
+### What This Means for You
+
+### Why Mithril is Significantly Faster and Smaller
+
+Because Mithril does not manage a complex scheduler, multiple pointer-linked trees, or prioritization queues, its rendering engine is remarkably small (~10KB gzipped). It bypasses massive amounts of JavaScript overhead. For raw updates, it regularly beats React in CPU benchmarks because it spends zero time organizing an abstract "commit queue" and simply writes directly to the glass. \[[1](https://github.com/ClimenteA/react-mithril-comparison), [2](https://slashdot.org/software/comparison/Mithril.js-vs-Preact/), [3](https://www.geeksforgeeks.org/javascript/mithril-js-introduction-and-environment-setup/), [4](https://mithril.js.org/framework-comparison.html), [5](https://mithril.js.org/framework-comparison.html)]
+
+### Why React Handles Third-Party Scripts Better
+
+If a browser extension deletes a DOM element in React, React’s Render Phase won't instantly crash because it calculates updates on its in-memory Fiber nodes. When it finally reaches the Commit Phase and discovers the node is missing, it can throw an error safely or handle the fallback. \[[1](https://javascript.plainenglish.io/how-react-really-works-under-the-hood-virtual-dom-o-n-diffing-and-smart-scheduling-30-days-of-bd097afc7b0f), [2](https://www.youtube.com/watch?v=rKk4XJYzSQA\&t=106)]
+
+Mithril leaves no margin for error. Because it computes and writes at the exact same moment, any unexpected shift in the physical DOM turns an intended update step into a direct JavaScript execution error (`TypeError: Cannot read property...`) that breaks the thread. \[[1](https://medium.com/@Bigscal-Technologies/react-js-vs-mithril-which-javascript-framework-to-use-b5e52b8a842d)]
+
+***
+
+If you are transitioning a codebase from React to Mithril, are there specific hooks or features like **`useEffect` vs Mithril Lifecycles** or **`Suspense`** you need to map over? I can show you how to write the direct equivalents. \[[1](https://dev.to/sho%5Fcarter/comment/1dp2f)]
+
+- [link](https://www.youtube.com/watch?v=rKk4XJYzSQA\&t=106)\
+  React Fiber Reconciliation: How it Works (Part 1)\
+  In this video, we'll be taking a look at how React Fiber Reconciliation works. We'll explore what reconciliation means, why the st...\
+  11m\
+  YouTube·Tejas Kumar
+- [link](https://dev.to/yorgie7/demystifying-react-fiber-advanced-guide-to-wip-commit-phase-concurrent-rendering-5bme)\
+  Demystifying React Fiber: A Guide to Incremental & Concurrent ...\
+  Incremental = split one render into chunks. Concurrent = multiple possible renders at the same time, React decides which to commit...\
+  DEV Community
+- [link](https://zenn.dev/porokyu32/articles/960d9d6e45533b)\
+  React Fiberとは - Zenn\
+  図1. child. それぞれのFiberは、最初のComponentへの参照のみ持ちます。 図1では黒矢印で表されています。 sibling. それぞれのFiberは、次の兄弟への参照を持ちます。 図1では青矢印で表されています。 return. それぞれの...\
+  Zenn
+
+Show all
+
+## You said: will the user see some partial rendered screens
+
+9:57 AM
+
+**No, the user will not see partially rendered screens.**
+
+Even though Mithril.js mutates the real DOM incrementally while it loops down the Virtual DOM tree, the browser’s internal layout engine ensures that a broken or half-updated interface is never painted to the glass.
+
+***
+
+### Why the User Doesn't See It: The Event Loop
+
+The browser operates on a strict JavaScript event loop mechanism. Execution is separated into two clean, alternating steps:
+
+1. **The JavaScript Execution Phase**: JavaScript executes synchronously until the entire call stack is completely empty. The browser completely freezes all visual painting during this phase.
+2. **The Rendering Phase (Layout & Paint)**: Once JavaScript finishes running, the browser takes the final, updated DOM state and draws it onto the screen at the next display refresh interval (e.g., 60Hz or 120Hz).
+
+Because Mithril's single-pass diff-and-commit process runs entirely inside a single synchronous JavaScript macro-task, the browser pauses all layout and painting calculations. The user only sees the final result when Mithril exits the stack. \[[1](https://www.developerway.com/posts/no-more-flickering-ui)]
+
+***
+
+### React vs. Mithril vs. The Browser
+
+Both React and Mithril rely on this identical browser behavior to prevent the user from seeing visual glitches:
+
+- **React's Strategy**: React buffers changes inside its own JavaScript memory (the Fiber tree), and then pushes all mutations to the DOM sequentially at the very end of its render phase.
+- **Mithril's Strategy**: Mithril pushes changes straight to the DOM incrementally as it discovers them.
+- **The Result**: To the browser, it looks identical. The browser queues up Mithril's individual DOM mutations inside an internal buffer. It refuses to repaint the screen until Mithril completes its execution block and surrenders control back to the event loop.
+
+***
+
+### The Exception: Forced Synchronous Layout (Flicker)
+
+While the user won't naturally see a partial screen, you can _force_ a visual glitch if you make a specific mistake in your code: **Forced Synchronous Layout (Layout Thrashing)**.
+
+If you read a layout-dependent visual property directly from the DOM inside your layout rendering logic, you force the browser to execute an emergency paint cycle before JavaScript finishes.
+
+javascript
+
+```
+// AVOID DOING THIS
+m("div", {
+    onupdate: (vnode) => {
+        // BAD: Reading element height mid-render forces the browser
+        // to immediately compute layout on a partially mutated DOM tree!
+        const currentHeight = vnode.dom.offsetHeight;
+
+        vnode.dom.style.marginTop = `${currentHeight / 2}px`;
+    }
+})
+```
+
+Use code with caution.
+
+### How it Causes a Flash
+
+When Mithril is halfway through updating the page and hits `offsetHeight`, the browser is forced to pause the JavaScript thread, calculate layout based on the current half-finished DOM state, and return the height. This can break the event loop pipeline, causing the browser to stutter or display a brief flash of an unstyled layout. \[[1](https://stackoverflow.com/questions/22457200/how-to-get-rid-of-flicker-during-scrolling-for-artificially-fixed-elements)]
+
+***
+
+If your app is experiencing a visual **stutter**, **flash**, or **layout jump**, let me know if it happens during an **async data fetch** or a **routing switch**. I can show you how to properly handle loading states so the UI stays stable. \[[1](https://mithril.js.org/archive/v2.0.0-rc.4/route.html)]
+
+- [link](https://www.developerway.com/posts/no-more-flickering-ui)\
+  Say no to "flickering" UI: useLayoutEffect, painting and browsers story | Developer Way\
+  To fix this, you can: \* Replace your useEffect hook with useLayoutEffect. \* Use useLayoutEffect only when you need to get rid of t...\
+  Developer Way
+- [link](https://mithril.js.org/archive/v2.0.0-rc.4/route.html)\
+  route(root, defaultRoute, routes) - Mithril\
+  Preloading data. Typically, a component can load data upon initialization. Loading data this way renders the component twice. The ...\
+  JS.ORG
+- [link](https://stackoverflow.com/questions/22457200/how-to-get-rid-of-flicker-during-scrolling-for-artificially-fixed-elements)\
+  How to get rid of flicker during scrolling for artificially fixed elements?\
+  1 Answer. ... This way you won't need jQuery to reposition the . fixed div when you scroll, and it won't flicker. ... $('. contain...\
+  Stack Overflow
+
+## You said: what and when are mithril lifecycle methods
+
+9:59 AM
+
+Mithril.js lifecycle methods are special hook functions attached to virtual nodes (`vnodes`). They execute synchronously during specific steps of Mithril’s single-pass diff-and-commit engine. \[[1](https://dev.to/adrianbailador/mithriljs-a-modern-framework-for-javascript-5hke)]
+
+***
+
+### The 5 Core Lifecycle Hooks
+
+Mithril provides five distinct hooks. They are split by **when** they run relative to the real DOM mutation.
+
+### 1. `oninit`
+
+- **When it runs**: **Before** the real DOM element is created or updated. It triggers during the initial diffing pass when Mithril first processes the vnode in memory.
+- **Primary Use**: Initializing component internal state or pre-calculating component data variables.
+- _Note: The DOM element (`vnode.dom`) does not exist yet. Do not read or write layout properties here._ \[[1](https://mithril.js.org/lifecycle-methods.html), [2](https://mithril.js.org/hyperscript.html), [3](https://mithril.js.org/hyperscript.html)]
+
+### 2. `oncreate`
+
+- **When it runs**: **Immediately after** the DOM element is created and appended to the actual page document.
+- **Primary Use**: Initializing third-party DOM libraries (like maps, charts, or video players), setting up canvas elements, or capturing initial element dimensions. \[[1](https://mithril.js.org/lifecycle-methods.html), [2](https://mithril.js.org/hyperscript.html)]
+
+### 3. `onbeforeupdate` \[[1](https://mithril.js.org/lifecycle-methods.html)]
+
+- **When it runs**: At the start of a redraw pass, **before** Mithril compares the old vnode with the new vnode.
+- **Primary Use**: Performance optimization. If you return `false` from this hook, Mithril skips diffing this component and all of its children entirely. It acts exactly like React's `shouldComponentUpdate`. \[[1](https://vmarchesin.medium.com/the-react-lifecycle-step-by-step-47c0db0bfe73)]
+
+### 4. `onupdate`
+
+- **When it runs**: **Immediately after** Mithril has checked a vnode for updates and committed any attribute or structural changes to the real DOM element.
+- **Primary Use**: Reacting to dynamic property changes, recalculating element positions, or re-initializing third-party tools when state properties switch.
+
+### 5. `onremove` \[[1](https://mithril.js.org/hyperscript.html)]
+
+- **When it runs**: **Before** the element is physically stripped from the real DOM tree. If a child element is being removed, the parent's `onremove` runs before the children's hooks.
+- **Primary Use**: Memory cleanup, destroying third-party instances, disconnecting observers, or unsubscribing from event listeners. \[[1](https://mithril.js.org/hyperscript.html), [2](https://mithril.js.org/hyperscript.html), [3](https://mithril.js.org/jsx.html)]
+
+***
+
+### Complete Execution Timeline
+
+The diagram below illustrates exactly where each lifecycle method executes during a component’s existence. \[[1](https://strudel.js.org/guide/lifecycle)]
+
+text
+
+```
+[ INITIAL RENDER ]
+Mithril reads VNode ──> Executes oninit() ──> Creates Real DOM ──> Executes oncreate()
+
+[ SUBSEQUENT REDRAW ]
+Mithril reviews VNode ──> Executes onbeforeupdate()
+                               │
+            ┌──────────────────┴──────────────────┐
+      Returns TRUE                          Returns FALSE
+            │                                     │
+Diffs & Commits to DOM                      Skips Diffing entirely
+            │                                     │
+Executes onupdate()                         Does nothing
+
+[ COMPONENT UNMOUNT ]
+Mithril flags element for removal ──> Executes onremove() ──> Destroys Real DOM
+```
+
+Use code with caution.
+
+***
+
+### How to Use Them
+
+You can attach lifecycle hooks directly to HTML element vnodes or to custom component definitions: \[[1](https://www.c-sharpcorner.com/article/life-cycle-of-angular-components/), [2](https://mithril.js.org/lifecycle-methods.html)]
+
+### Attached to Elements
+
+javascript
+
+```
+m("div", {
+    oninit: (vnode) => console.log("Initializing in memory..."),
+    oncreate: (vnode) => console.log("Element is now real:", vnode.dom),
+    onupdate: (vnode) => console.log("DOM attributes just updated!"),
+    onremove: (vnode) => console.log("Element is about to be deleted.")
+}, "Hello World")
+```
+
+Use code with caution.
+
+### Attached to Components
+
+javascript
+
+```
+const MyComponent = {
+    oninit: (vnode) => {
+        vnode.state.counter = 0;
+    },
+    view: (vnode) => {
+        return m("button", {
+            onclick: () => vnode.state.counter++
+        }, `Clicks: ${vnode.state.counter}`);
+    }
+};
+```
+
+Use code with caution.
+
+***
+
+If you are trying to handle **asynchronous data loading** or integrating a **legacy JavaScript library**, tell me what you are building. I can write the precise component template showing which hooks you need to orchestrate.
+
+- [link](https://dev.to/adrianbailador/mithriljs-a-modern-framework-for-javascript-5hke)\
+  Mithril.js: A Modern Framework for JavaScript\
+  Components and virtual DOM nodes in Mithril. js can have lifecycle methods, also known as hooks, which are called at various point...\
+  \
+  \
+  DEV Community
+- [link](https://mithril.js.org/lifecycle-methods.html)\
+  Lifecycle methods\
+  oninit is guaranteed to run before its DOM element is attached to the document, and it is guaranteed to run on parent vnodes befor...\
+  \
+  JS.ORG
+- [link](https://mithril.js.org/hyperscript.html)\
+  m(selector, attributes, children)\
+  Lifecycle methods Hook Description oninit(vnode) Runs before a vnode is rendered into a real DOM element oncreate(vnode) Runs afte...\
+  \
+  JS.ORG
+
+Show all
+
+## You said: only five?
+
+10:00 AM
+
+I omitted an important one to keep the rendering sequence simple, but **there are actually six core lifecycle hooks in total**. \[[1](https://mithril-by-examples.js.org/lifecycle-methods/)]
+
+The missing sixth hook is **`onbeforeremove`**. It is arguably the most specialized hook in the entire library because it breaks Mithril's default synchronous rendering flow to handle UI animations. \[[1](https://stackoverflow.com/questions/63018514/in-mithril-js-onremove-and-onbeforeremove-events-not-firing-while-oninit-and-o), [2](https://github.com/MithrilJS/mithril.js/issues/2295), [3](https://mithril-by-examples.js.org/lifecycle-methods/)]
+
+***
+
+### The Complete 6 Hooks
+
+| Hook Name \[[1](https://mithril.js.org/lifecycle-methods.html), [2](https://feature-sliced.design/blog/react-lifecycle-vs-hooks), [4](https://stackoverflow.com/questions/63018514/in-mithril-js-onremove-and-onbeforeremove-events-not-firing-while-oninit-and-o), [5](https://mithril-by-examples.js.org/lifecycle-methods/)] | When It Executes                                 | Primary Use Case                                   |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ | -------------------------------------------------- |
+| **`oninit`**                                                                                                                                                                                                                                                                                                                    | Memory phase; before DOM exists.                 | Component data initialization.                     |
+| **`oncreate`**                                                                                                                                                                                                                                                                                                                  | Inline; immediately after DOM insertion.         | Wrapping 3rd-party element libraries.              |
+| **`onbeforeupdate`**                                                                                                                                                                                                                                                                                                            | Memory phase; before diffing starts.             | Performance control (`return false` skips render). |
+| **`onupdate`**                                                                                                                                                                                                                                                                                                                  | Inline; immediately after attribute changes.     | Reacting to data changes on an existing node.      |
+| **`onbeforeremove`**                                                                                                                                                                                                                                                                                                            | Before node removal; **delays DOM destruction**. | **UI exit animations / fade-outs.**                |
+| **`onremove`**                                                                                                                                                                                                                                                                                                                  | Final phase; just before the node is deleted.    | Memory cleanup (unsubscribing listeners).          |
+
+***
+
+### Why `onbeforeremove` is Special
+
+By default, when a node is removed from your layout, Mithril instantly drops it from the physical DOM tree. However, if you need a component to smoothly **fade out or slide away**, you cannot do that if the element disappears immediately.
+
+`onbeforeremove` forces Mithril's single-pass rendering loop to **pause its destruction cycle** for that specific node. The DOM element is left active in the browser until you explicitly give Mithril permission to delete it by resolving a Promise. \[[1](https://github.com/MithrilJS/mithril.js/issues/2295)]
+
+### Example: Handing a Fade-Out Animation
+
+javascript
+
+```
+const FadingComponent = {
+    view: () => m("div", "I will fade away smoothly..."),
+
+    onbeforeremove: function(vnode) {
+        // 1. Add a CSS class to trigger a CSS transition
+        vnode.dom.classList.add("fade-out-animation");
+
+        // 2. Return a Promise. Mithril will wait until this resolves!
+        return new Promise((resolve) => {
+            // After the 500ms animation completes, resolve the promise
+            setTimeout(resolve, 500);
+        });
+    },
+
+    onremove: function(vnode) {
+        console.log("The fade animation finished. Element is safe to destroy.");
+    }
+};
+```
+
+Use code with caution.
+
+### Are there any other hidden hooks?
+
+No. Unlike React or Angular, which feature expansive suites of lifecycle APIs (like constructor, derived states, error catchers, and side-effect trackers), Mithril intentionally stops at these six hooks to keep its core library size under 10KB. Everything else is handled via pure, raw JavaScript functions. \[[1](https://mithril.js.org/)]
+
+***
+
+Are you planning to build **page transitions or slide-out panels** using `onbeforeremove`? I can show you how to structure the CSS classes so Mithril handles the entrance and exit animations smoothly without stuttering.
+
+- [link](https://stackoverflow.com/questions/63018514/in-mithril-js-onremove-and-onbeforeremove-events-not-firing-while-oninit-and-o)\
+  In mithril.js, onremove and onbeforeremove events not firing ...\
+  Is there something like componentWillUnmount of React in mithril.js? javascript · mithril.js · Share. Share a link to this questio...\
+  Stack Overflow
+- [link](https://mithril-by-examples.js.org/lifecycle-methods/)\
+  Lifecycle Methods - Mithril.js by Examples\
+  Lifecycle Methods #. Components and virtual DOM nodes can have lifecycle methods, also known as hooks, which are called at various...\
+  JS.ORG
+- [link](https://mithril.js.org/lifecycle-methods.html)\
+  Lifecycle methods - Mithril.js\
+  Mithril.js lifecycle methods are called at various points during the lifetime of a DOM element. These methods are also known as ho...\
+  JS.ORG
+
+Show all
+
+# does mithriljs store the internal states of a component alongside itself in the vdom
+
+**Yes, Mithril.js stores the internal state of a component directly on its corresponding virtual DOM node (vnode) inside the `vnode.state` property.** \[[1](https://mithril.js.org/archive/v1.1.5/components.html), [2](https://stackoverflow.com/questions/44242023/mithril-difference-between-vnode-attrs-and-vnode-state)]
+
+Whenever Mithril maps a component to the screen, it creates a vnode object representing that component instance. During the virtual DOM diffing process, Mithril persists this state object across redraws, safely mapping it back to the exact same component as long as its position in the tree remains stable or it is uniquely identified with a `key` attribute. \[[1](https://github.com/MithrilJS/mithril.js/issues/2295), [2](https://github.com/MithrilJS/mithril.js/issues/2135), [3](https://stackoverflow.com/questions/33599597/how-to-retain-a-dom-element-in-mithril-across-redraws), [4](https://mithril.js.org/archive/v1.1.5/components.html), [5](https://stackoverflow.com/questions/44242023/mithril-difference-between-vnode-attrs-and-vnode-state)]
+
+The exact mechanism of how state is populated on the vnode depends entirely on the architectural style you use to write your component: \[[1](https://mithril.js.org/archive/v1.1.5/components.html), [2](https://stackoverflow.com/questions/44242023/mithril-difference-between-vnode-attrs-and-vnode-state)]
+
+### 1. Plain Old JavaScript Objects (POJO Components) \[[1](https://mithril.js.org/components.html)]
+
+When you define a component as a standard configuration object, the component object itself serves as the prototype for `vnode.state`. \[[1](https://mithril.js.org/archive/v1.0.1/components.html), [2](https://mithril.js.org/archive/v1.1.5/components.html)]
+
+- **Mechanism:** Mithril creates an internal instance that inherits prototypically from your component blueprint.
+- **Usage:** You access or mutate state properties inside lifecycle hooks or the view using `vnode.state`. \[[1](https://vdsabev.medium.com/exploring-unidirectional-components-in-mithril-part-1-hyperapp-e33ce35a224), [2](https://mithril.js.org/archive/v1.1.5/components.html), [3](https://mithril.js.org/archive/v1.0.1/components.html), [4](https://stackoverflow.com/questions/44242023/mithril-difference-between-vnode-attrs-and-vnode-state)]
+
+javascript
+
+```
+const MyComponent = {
+  text: "Hello", // Prototypical initial state
+  view(vnode) {
+    return m("div", vnode.state.text); // Accesses state directly
+  }
+};
+```
+
+Use code with caution.
+
+### 2. Closure Components (Recommended)
+
+If you define your component as an outer factory function that returns a sub-object containing a `view` function, JavaScript's native lexical scope takes over. \[[1](https://mithril.js.org/components.html), [2](https://james-forbes.com/posts/how-i-use-mithril)]
+
+- **Mechanism:** Mithril executes the outer function exactly once during initialization. The object returned by the closure becomes the `vnode.state` reference.
+- **Usage:** Any variable declared in the outer function acts as completely encapsulated, local state. You do not even need to type `vnode.state` because the `view` function permanently "remembers" the outer variables via JavaScript closures. \[[1](https://mithril.js.org/components.html), [2](https://mithril.js.org/archive/v1.1.5/components.html), [3](https://stackoverflow.com/questions/44242023/mithril-difference-between-vnode-attrs-and-vnode-state), [4](https://james-forbes.com/posts/how-i-use-mithril)]
+
+javascript
+
+```
+function ClosureComponent(initialVnode) {
+  let count = 0; // Local state tucked neatly in the closure scope
+
+  return {
+    view(vnode) {
+      return m("button", { onclick: () => count++ }, `Count: ${count}`);
+    }
+  };
+}
+```
+
+Use code with caution.
+
+### 3. Class Components
+
+If you use modern ECMAScript classes to structure your Mithril components: \[[1](https://mithril.js.org/archive/v1.1.5/components.html)]
+
+- **Mechanism:** Mithril calls `new YourClass(vnode)` behind the scenes.
+- **Usage:** The resulting class instance becomes the exact object bound to `vnode.state`. Inside your class methods, `this` points natively to that instance. \[[1](https://mithril.js.org/archive/v1.1.5/components.html), [2](https://stackoverflow.com/questions/44242023/mithril-difference-between-vnode-attrs-and-vnode-state), [3](https://github.com/MithrilJS/mithril.js/issues/618)]
+
+***
+
+If you are debugging state retention issues, would you like to look into how **the `key` attribute** prevents Mithril from destroying and recreationally wiping your state when elements change order? I can also show you how to structure **unidirectional state management** if you prefer keeping state out of the vnode layer entirely. \[[1](https://vdsabev.medium.com/exploring-unidirectional-components-in-mithril-part-1-hyperapp-e33ce35a224), [2](https://github.com/MithrilJS/mithril.js/issues/2135), [3](https://stackoverflow.com/questions/33599597/how-to-retain-a-dom-element-in-mithril-across-redraws), [4](https://github.com/MithrilJS/mithril.js/issues/2495)]
+
+- [link](https://mithril.js.org/components.html)\
+  Components - Mithril.js\
+  Closure component state. In the above examples, each component is defined as a POJO (Plain Old JavaScript Object), which is used b...\
+  JS.ORG
+- [link](https://github.com/MithrilJS/mithril.js/issues/618)\
+  Components don't work with ES6 classes. · Issue #618 - GitHub\
+  May 12, 2015 — barneycarroll commented. barneycarroll. on May 13, 2015. Member. TL;DR: this isn't how Mithril works. Why would you want it to wor...\
+  GitHub
+- [link](https://vdsabev.medium.com/exploring-unidirectional-components-in-mithril-part-1-hyperapp-e33ce35a224)\
+  Exploring Unidirectional Components in Mithril (part 1\
+  Aug 18, 2017 — 's comment, I realized that lifecycle events like onupdate don't actually have access to the up-to-date state of the component. To...\
+  Medium·Vlad Sabev
+
+Show all
+
 # 
- 
