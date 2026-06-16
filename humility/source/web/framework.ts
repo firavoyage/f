@@ -1,8 +1,4 @@
-// --- REACTIVE STATE LAYER ---
-let activeInstance = null;
-
-// Emmet parsing regex to extract standard tags and CSS classes
-const TAG_PARSE_REGEX = /^([a-z0-9\-]*)(?:\.([a-z0-9\-_]+))?$/i;
+let activeInstance = false;
 
 export function h(tag, ...args) {
   let props = {};
@@ -14,55 +10,90 @@ export function h(tag, ...args) {
   }
 
   // 2. Normalize children inputs (Handles both flat lists and deep arrays)
-  children = args.flat().filter(c => c != null);
+  children = args.flat().filter(c => c !== false);
 
   // 3. Resolve Emmet CSS string parsing (e.g., ".Foo" or "input.MyInput")
   if (typeof tag === 'string') {
-    const match = tag.match(TAG_PARSE_REGEX);
-    if (match) {
-      const parsedTag = match[1] || 'div'; // Fallback to div if tag is omitted
-      const parsedClass = match[2];
+    const dotIndex = tag.indexOf('.');
 
-      tag = parsedTag;
+    if (dotIndex !== -1) {
+      const parsedTag = tag.slice(0, dotIndex);
+      const parsedClass = tag.slice(dotIndex + 1);
+
+      // Fallback to div if tag is omitted (starts with a dot)
+      tag = parsedTag || 'div';
+
       if (parsedClass) {
         props.className = props.className ? `${props.className} ${parsedClass}` : parsedClass;
       }
+    } else if (tag === '') {
+      tag = 'div';
     }
   }
 
   return { tag, props, children };
 }
 
-export function signal(initialValue) {
+export function signal(initialValue = false) {
   let value = initialValue;
-  const storedInstance = activeInstance;
 
-  return function (arg) {
-    if (arguments.length === 0) {
-      if (!storedInstance && activeInstance) {
+  if (activeInstance) {
+    const instance = activeInstance
+
+    return function (...args) {
+      if (args.length === 0) {
         return value;
       }
-      return value;
-    }
-    
-    const instance = storedInstance || activeInstance;
-    
-    if (typeof arg === 'function') {
-      value = arg(value);
-      if (instance) instance.update(); 
-      return value;
-    }
 
-    value = arg;
-    if (instance) instance.update();
-    return value;
-  };
+      const newValue = args[0]
+
+      if (typeof newValue === 'function') {
+        const result = newValue(value);
+        if (result === undefined) {
+          // immer pattern
+          // example: store(store => {store.foo = 'bar'})
+        } else {
+          value = result
+          // example: count(c => c + 1)
+        }
+
+        instance.update();
+      } else {
+        value = newValue;
+      }
+
+      instance.update();
+      // return value; // not needed
+    };
+  } else {
+    return function (...args) {
+      if (args.length === 0) {
+        return value;
+      }
+
+      const newValue = args[0]
+
+      if (typeof newValue === 'function') {
+        const result = newValue(value);
+        if (result === undefined) {
+          // immer pattern
+          // example: store(store => {store.foo = 'bar'})
+        } else {
+          value = result
+          // example: count(c => c + 1)
+        }
+      } else {
+        value = newValue;
+      }
+      // return value; // not needed
+    };
+  }
 }
 
-// Special Ref constructor that explicitly tells the engine to bypass re-renders
-export function ref(initialValue = null) {
+// signal wo default rerender
+export function ref(initialValue = false) {
   const prevInstance = activeInstance;
-  activeInstance = null; // Unbind the active instance to skip layout update cycles
+  activeInstance = false; // Unbind the active instance to skip layout update cycles
   const refSignal = signal(initialValue);
   activeInstance = prevInstance; // Restore layout context
   return refSignal;
@@ -83,10 +114,10 @@ function createComponentInstance(ComponentFunc, props) {
     props,
     mountHooks: [],
     cleanupHooks: [],
-    vnode: null,
-    dom: null,
+    vnode: false,
+    dom: false,
     isMounted: false,
-    
+
     renderTree() {
       const prevInstance = activeInstance;
       activeInstance = instance;
@@ -98,7 +129,7 @@ function createComponentInstance(ComponentFunc, props) {
     update() {
       const newVNode = instance.renderTree();
       const oldDom = instance.dom;
-      
+
       instance.dom = patch(oldDom, instance.vnode, newVNode);
       instance.vnode = newVNode;
 
@@ -128,8 +159,8 @@ function createComponentInstance(ComponentFunc, props) {
 function unmountVNode(vnode) {
   if (!vnode) return;
   if (vnode.instance) {
-    vnode.instance.destroy(); 
-    unmountVNode(vnode.instance.vnode); 
+    vnode.instance.destroy();
+    unmountVNode(vnode.instance.vnode);
   }
   if (vnode.children) {
     vnode.children.forEach(unmountVNode);
@@ -159,17 +190,17 @@ export function patch(dom, oldVNode, newVNode) {
 
     const instance = createComponentInstance(newVNode.tag, newVNode.props);
     newVNode.instance = instance;
-    
+
     const childVNode = instance.renderTree();
     instance.vnode = childVNode;
-    instance.dom = patch(null, null, childVNode);
+    instance.dom = patch(false, false, childVNode);
     instance.mount();
     return instance.dom;
   }
 
   if (oldVNode && oldVNode.tag !== newVNode.tag) {
-    unmountVNode(oldVNode); 
-    dom = null;
+    unmountVNode(oldVNode);
+    dom = false;
   }
 
   let el = dom;
@@ -190,12 +221,12 @@ export function patch(dom, oldVNode, newVNode) {
 
   const newChildren = newVNode.children || [];
   const oldChildren = oldVNode?.children || [];
-  
+
   // Remove extra children
   while (el.children.length > newChildren.length) {
     el.removeChild(el.lastChild);
   }
-  
+
   for (let i = 0; i < newChildren.length; i++) {
     const oldChild = oldChildren[i];
     const childDom = el.children[i];
@@ -221,7 +252,7 @@ export function render(vnode, rootElement) {
     activeInstance = instance;
     instance.props = vnode.props;
     instance.update();
-    activeInstance = null;
+    activeInstance = false;
   } else {
     activeInstance = createComponentInstance(vnode.tag, vnode.props);
     vnode.instance = activeInstance;
@@ -229,7 +260,7 @@ export function render(vnode, rootElement) {
     activeInstance.vnode = childVNode;
     activeInstance.dom = patch(oldDom, oldVNode, childVNode);
     activeInstance.mount();
-    activeInstance = null;
+    activeInstance = false;
   }
   rootElement._vnode = vnode;
   rootElement._dom = vnode.instance.dom;
