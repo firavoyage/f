@@ -2,9 +2,8 @@ import 'the-new-css-reset/css/reset.css';
 
 import { h, p, ref, effect, render } from '../framework';
 
+const input = ref();
 function Counter({ count }) {
-  const input = ref();
-
   effect(() => {
     if (input()) {
       input().focus();
@@ -26,10 +25,10 @@ function Counter({ count }) {
   );
 }
 
-function App() {
-  const show = p(true)
-  const count = p(0)
+const show = p(true)
+const count = p(0)
 
+function App() {
   return (
     h('.App',
       h('button', { onclick: () => show(!show()) }, 'Toggle Component Visibility'),
