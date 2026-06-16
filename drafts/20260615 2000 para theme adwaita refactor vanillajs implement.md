@@ -16,6 +16,8 @@ counter(count){
 
 <!-- graudually, i realize the meaning of "highly challenging but incredibly educational" the hard way. -->
 
+<!-- leverage thinking. plan first. spec driven. do not think while coding. -->
+
 # what if i run pnpm init inside a subfolder
 
 3:39 AM
@@ -25385,6 +25387,343 @@ If you are ready, I can show you a **simple code example of a diffing function**
 
 Show all
 
-# 
+# what results can react diff produce
+
+During the [reconciliation process](https://legacy.reactjs.org/docs/reconciliation.html), React’s diffing algorithm compares a new Virtual DOM tree with the previous one. Based on this structural comparison, the diffing process produces **three primary mutation results** to update the real browser DOM with minimal overhead: \[[1](https://legacy.reactjs.org/docs/reconciliation.html), [2](https://stackoverflow.com/questions/72860122/i-was-studying-internal-working-of-react-and-i-got-really-confused-about-the-dif), [3](https://medium.com/@tharunbalaji110/react-diffing-algorithm-a-deep-dive-e1b6a2238f45), [4](https://vocal.media/journal/a-deep-dive-into-diff-algorithms-in-react-optimizing-virtual-dom-updates), [5](https://namastedev.com/blog/unlocking-reacts-secret-mastering-reconciliation-and-the-diff-algorithm/)]
+
+### 1. Element Destruction and Rebuilding (Full Unmount)
+
+Whenever React finds **different element types** at the same position in the tree (e.g., changing to , or to ), it tears down the old tree completely. \[[1](https://legacy.reactjs.org/docs/reconciliation.html)]
+
+- **The Result**: React destroys the old DOM nodes, unmounts the old components (triggering `componentWillUnmount`), and builds the new tree from scratch.
+- **State Impact**: Any state associated with the old components and their children is entirely lost. \[[1](https://legacy.reactjs.org/docs/reconciliation.html)]
+
+### 2. Component and Element Updates (Preservation)
+
+When comparing **elements of the same type**, React realizes the underlying structure is matching and keeps the existing DOM node or component instance intact. \[[1](https://www.youtube.com/watch?v=1oV9EKhwW5Y), [2](https://namastedev.com/blog/understanding-react-reconciliation-the-diffing-algorithm-and-performance/)]
+
+- **The Result for HTML tags**: React updates only the specific attributes or styles that changed (e.g., changing to updates only the `className` attribute).
+- **The Result for Custom Components**: React keeps the component instance alive to preserve its internal state. It updates the props of the underlying instance and triggers a re-render cycle for that component. \[[1](https://legacy.reactjs.org/docs/reconciliation.html), [2](https://www.youtube.com/watch?v=1oV9EKhwW5Y), [3](https://calendar.perfplanet.com/2013/diff/), [4](https://namastedev.com/blog/react-reconciliation-algorithm-explained-5/), [5](https://medium.com/@amitaknkpt/understanding-react-reconciliation-an-in-depth-examination-a86f968bc7e7)]
+
+### 3. Key-Based Collection Reordering
+
+When dealing with lists or groups of children, React uses the developer-provided `key` prop to match elements across renders. The diff produces one of three outcomes for list items: \[[1](https://stackoverflow.com/questions/56110260/what-is-the-motivation-behind-reacts-diffing-heuristic-algorithm), [2](https://medium.com/@tharunbalaji110/react-diffing-algorithm-a-deep-dive-e1b6a2238f45)]
+
+- **Insertions**: New keys found in the new tree that were missing in the old one are added as fresh DOM nodes.
+- **Removals**: Keys present in the old tree but missing in the new one are cleanly unmounted and destroyed.
+- **Moves**: Items with the same key but different index positions are moved within the DOM layout rather than being destroyed and recreated, successfully preserving their local state and DOM focus. \[[1](https://medium.com/@tharunbalaji110/react-diffing-algorithm-a-deep-dive-e1b6a2238f45), [2](https://github.com/react-native-community/rn-diff-purge)]
+
+### Macro-Level Outcomes
+
+On an application level, these granular diff operations yield major performance benefits: \[[1](https://www.geeksforgeeks.org/reactjs/what-is-diffing-algorithm/)]
+
+- **Batching**: It combines multiple state updates into a single layout paint.
+- **Minimal DOM Updates**: Instead of wiping and replacing the whole page, it modifies only the required nodes, bypassing expensive layout recalculations in the browser. \[[1](https://calendar.perfplanet.com/2013/diff/), [2](https://stackoverflow.com/questions/77575172/how-is-react-diffing-algorithm-faster-than-manual-dom-manipulation), [3](https://www.geeksforgeeks.org/reactjs/what-is-diffing-algorithm/), [4](https://namastedev.com/blog/unlocking-reacts-secret-mastering-reconciliation-and-the-diff-algorithm/), [5](https://levelup.gitconnected.com/react-deep-understanding-of-the-framework-and-its-ecosystem-5888c208315f)]
+
+If you are trying to debug a specific rendering issue, let me know:
+
+- Are you experiencing **unexpected state loss** when components re-render?
+
+- Are you running into **performance lag** with large lists?
+
+- Do you want to see a **code example** of how keys alter diff results? \[[1](https://www.growin.com/blog/react-performance-optimization-2025/)]
+
+- [link](https://legacy.reactjs.org/docs/reconciliation.html)\
+  Reconciliation - React\
+  Elements Of Different Types. Whenever the root elements have different types, React will tear down the old tree and build the new ...\
+  React – A JavaScript library for building user interfaces
+
+- [link](https://calendar.perfplanet.com/2013/diff/)\
+  React's diff algorithm - Web Performance Calendar\
+  Dec 28, 2013 — The browser creates a new event object for each event and each listener. This has the nice property that you can keep a reference ...\
+  Web Performance Calendar
+
+- [link](https://medium.com/@tharunbalaji110/react-diffing-algorithm-a-deep-dive-e1b6a2238f45)\
+  React Diffing Algorithm: A Deep Dive | by Tharunbalaji - Medium\
+  Dec 18, 2024 — This is one of the most sophisticated parts of React's diffing. The algorithm uses keys to track child elements across renders. It...\
+  Medium·Tharunbalaji
+
+Show all
+
+## You said: what operations does diff return for patch
+
+The React diffing algorithm does not output a physical object or file called a patch. Instead, it generates an internal list of instructions. \[[1](https://www.acte.in/role-of-the-dom-in-react)]
+
+React’s reconciler translates these instructions into specific operations for the renderer (like `react-dom`) to apply to the screen. \[[1](https://github.com/facebook/react/issues/13006)]
+
+### Core DOM Patch Operations
+
+When React calculates the difference between trees, it resolves the changes into four primary structural operations:
+
+- **Placement**: Inserts a brand-new DOM node into the tree, or moves an existing node to a new visual position.
+- **Update**: Modifies the properties, attributes, event listeners, or text content of an existing DOM node.
+- **Deletion**: Removes a DOM node from the tree because it is no longer rendered.
+- **Content Reset**: Clears out the text content of a node entirely (often optimized as a single operation before inserting new text). \[[1](https://dev.to/curry/reacts-render-pipeline-a-deep-dive-from-jsx-to-the-screen-e2k), [2](https://medium.com/@yelouafi/react-less-virtual-dom-with-snabbdom-functions-everywhere-53b672cb2fe3), [3](https://www.scribd.com/document/765695519/UNIT4), [4](https://dev.to/curry/reacts-render-pipeline-a-deep-dive-from-jsx-to-the-screen-e2k), [5](https://medium.com/@firatatalay/how-rendering-works-the-render-phase-b37100602ee7)]
+
+### How Fiber Tracks Operations (v16+)
+
+In modern React (the Fiber architecture), the diffing process flags these operations as **Side Effects** using bitwise markers called `Flags` (formerly `EffectTag`). \[[1](https://medium.com/react-in-depth/inside-fiber-in-depth-overview-of-the-new-reconciliation-algorithm-in-react-e1c04700ef6e)]
+
+As React traverses the tree during the diff phase, it appends these flags directly to the Fiber nodes. The most common flags returned for the patch phase include: \[[1](https://www.greatfrontend.com/questions/quiz/how-does-virtual-dom-in-react-work-what-are-its-benefits-and-downsides), [2](https://medium.com/react-in-depth/inside-fiber-in-depth-overview-of-the-new-reconciliation-algorithm-in-react-e1c04700ef6e)]
+
+- `Placement`: Indicates the node needs to be inserted or moved.
+- `Update`: Indicates the node props, text, or hooks changed.
+- `ChildDeletion`: Placed on a parent node to signal that specific children must be removed from the DOM.
+- `Passive`: Triggers `useEffect` hooks associated with the changes.
+- `Layout`: Triggers `useLayoutEffect` hooks right before the browser paints. \[[1](https://maxtsh.medium.com/how-does-the-react-fiber-reconciler-work-77c3650127da), [2](https://playfulprogramming.com/posts/react-refs-complete-story), [3](https://medium.com/@wul55267/beyond-useeffect-specialized-effect-hooks-for-async-deep-comparisons-and-ssr-5dd59ba8c941)]
+
+### Execution: The Commit Phase \[[1](https://dev.to/congar97/the-role-of-fiber-in-react-rendering-part-2-buffers-hooks-lanes-and-the-commit-4jmd)]
+
+Once the diff completes, React takes this list of flagged Fiber nodes and executes them in a single, synchronous **Commit Phase**. \[[1](https://dev.to/congar97/the-role-of-fiber-in-react-rendering-part-2-buffers-hooks-lanes-and-the-commit-4jmd), [2](https://www.linkedin.com/pulse/understanding-react-fiber-how-works-depth-ahmed-hamza-wew8f)]
+
+It iterates through the changes and calls native browser APIs like `appendChild()`, `insertBefore()`, `removeChild()`, and `setAttribute()` to apply the final patch. \[[1](https://laminar.dev/virtual-dom)]
+
+If you are trying to optimize your application's rendering pipeline, I can:
+
+- Show you how to **profile these operations** using React DevTools.
+
+- Explain how **Concurrent Mode** splits up the diffing phase.
+
+- Provide a **code example** showing how props changes trigger an `Update` flag. \[[1](https://www.sharetech.in/articles/507/react-profiler-explained-with-example), [2](https://blog.openreplay.com/concurrent-mode-in-react--an-overview/), [3](https://testing-library.com/docs/example-update-props/)]
+
+- [link](https://www.acte.in/role-of-the-dom-in-react)\
+  Understanding the DOM in React A Quick Guide\
+  Jun 19, 2025 — It ( React JS ) then compares this new tree to the previous Virtual DOM tree to identify what has changed. This comparison process...\
+  \
+  \
+  ACTE Technologies
+
+- [link](https://github.com/facebook/react/issues/13006)\
+  react-reconciler questions · Issue #13006 · facebook/react\
+  Jun 9, 2018 — If there is such an API (such as the case with DOM) then that's what you should use. The whole premise of using the reconciler is ...\
+  \
+  \
+  GitHub
+
+- [link](https://dev.to/curry/reacts-render-pipeline-a-deep-dive-from-jsx-to-the-screen-e2k)\
+  React's Render Pipeline: A Deep Dive From JSX to the Screen\
+  Dec 1, 2025 — \*\*PLACEMENT\*\* : Add a new node to the DOM.\
+  \
+  \
+  DEV Community
+
+Show all
+
+# how to disable eslint and type check temporarily for rapid dev
+
+To speed up your local development, you can bypass ESLint and TypeScript checking in your build tools, commit hooks, or specific code files. \[[1](https://dev.to/dharamgfx/stop-compiling-typescript-run-it-natively-in-nodejs-with-this-one-flag-2bc6)]
+
+Here is how to disable them temporarily based on where you are hitting the bottleneck:
+
+### 1. In Vite (`vite.config.js`)
+
+If you use Vite, remove or comment out the checker plugin.
+
+- **Action**: Comment out `checker` in your configuration file.
+
+javascript
+
+```
+// vite.config.js
+import checker from 'vite-plugin-checker'
+
+export default {
+  plugins: [
+    // checker({ typescript: true, eslint: { lintCommand: 'eslint "./src/**/*.{ts,tsx}"' } })
+  ],
+}
+```
+
+Use code with caution.
+
+### 2. In Next.js (`next.config.js`)
+
+Next.js allows you to ignore production build errors for rapid deployments.
+
+- **Action**: Add `ignoreDuringBuilds` flags to your configuration.
+
+javascript
+
+```
+// next.config.js
+module.exports = {
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+}
+```
+
+Use code with caution.
+
+### 3. In Create React App (`package.json`)
+
+You can pass environment variables directly to the start command.
+
+- **Action**: Update your start script to disable the checkers.
+
+json
+
+```
+"scripts": {
+  "start": "DISABLE_ESLINT_PLUGIN=true TSC_COMPILE_ON_ERROR=true react-scripts start"
+}
+```
+
+Use code with caution.
+
+### 4. Skip Git Commit Hooks
+
+If tools like `husky` or `lint-staged` block your local git commits:
+
+- **Action**: Add the `--no-verify` flag to your commit command. \[[1](https://builtin.com/articles/lint-staged-with-husky-pre-commit)]
+
+bash
+
+```
+git commit -m "fast save" --no-verify
+```
+
+Use code with caution.
+
+### 5. Disable Specific Code Lines \[[1](https://javascript.plainenglish.io/eliminating-the-noise-techniques-for-ignoring-lint-errors-in-javascript-8e1651cd1ab8)]
+
+If you just need to bypass a few stubborn errors in a single file:
+
+- **TypeScript**: Place `// @ts-nocheck` at the very top of the file.
+- **ESLint**: Place `/* eslint-disable */` at the very top of the file. \[[1](https://www.learningtypescript.com/articles/comment-directives), [2](https://natey37.medium.com/eslint-the-key-to-maintaining-consistent-code-in-react-projects-c62c427af492), [3](https://react-japan.dev/articles/eslint-fix-on-save)]
+
+To help narrow down the fastest solution for your setup, let me know:
+
+- What **framework or build tool** are you using? (Vite, Next.js, Webpack, etc.)
+- Is the check slowing down your **hot-reload dev server** or your **git commits**?
+
+I can provide the exact snippet or tool settings for your stack.
+
+- [link](https://dev.to/dharamgfx/stop-compiling-typescript-run-it-natively-in-nodejs-with-this-one-flag-2bc6)\
+  Stop Compiling 🚨TypeScript! Run It Natively in Node.js with This One Flag! 🛑\
+  Sep 4, 2024 — Key Points: Faster Development: Avoid the compile step during development, speeding up your workflow. Simplified Tooling: Fewer to...\
+  \
+  \
+  DEV Community
+- [link](https://builtin.com/articles/lint-staged-with-husky-pre-commit)\
+  Lint-Staged With Husky Pre-Commit: A Guide\
+  Nov 4, 2024 — Sometimes, you may not want to run Husky pre-commit. You can use the Git flag --no-verify in your commit command to ignore any pre...\
+  \
+  \
+  Built In
+- [link](https://javascript.plainenglish.io/eliminating-the-noise-techniques-for-ignoring-lint-errors-in-javascript-8e1651cd1ab8)\
+  Eliminating the Noise: Techniques for Ignoring Lint Errors in JavaScript\
+  Mar 21, 2023 — One of the easiest ways to skip linting errors is to disable them for a particular line or block of code. This can be achieved by ...\
+  \
+  \
+  JavaScript in Plain English
+
+Show all
+
+## You said: in vscode
+
+To temporarily disable ESLint and TypeScript checking directly inside **VS Code** for rapid development, you can toggle your workspace settings.
+
+Here is how to turn them off quickly:
+
+### 1. Disable ESLint in VS Code
+
+You can stop the ESLint extension from highlighting errors in your editor.
+
+- **Open Settings**: Press `Ctrl + ,` (Windows/Linux) or `Cmd + ,` (Mac).
+
+- **Search**: Type `eslint.enable` in the search bar.
+
+- **Toggle**: Uncheck the box for **Eslint: Enable**.
+
+- _Alternative (Workspace Only)_: Add this to your `.vscode/settings.json`:\
+  json
+
+<!---->
+
+```
+"eslint.enable": false
+```
+
+Use code with caution.\
+\[[1](https://daveceddia.com/vscode-use-eslintrc/), [2](https://stackoverflow.com/questions/65897800/vscode-is-not-showing-linting-warnings)]
+
+### 2. Disable TypeScript Type Checking \[[1](https://chromium.googlesource.com/devtools/devtools-frontend/+/main/docs/get%5Fthe%5Fcode.md)]
+
+You can suppress TypeScript errors from cluttering your "Problems" tab.
+
+- **Open Settings**: Press `Ctrl + ,` or `Cmd + ,`.
+
+- **Search**: Type `typescript.validate` in the search bar.
+
+- **Toggle**: Uncheck the box for **TypeScript › Validate: Enable**.
+
+- _Alternative (Workspace Only)_: Add this to your `.vscode/settings.json`:\
+  json
+
+<!---->
+
+```
+"typescript.validate.enable": false
+```
+
+Use code with caution.\
+\[[1](https://stackoverflow.com/questions/74940590/how-to-disable-eslint-type-errors-in-react-app)]
+
+### 3. Quick Toggle via `.vscode/settings.json`
+
+The absolute fastest way to toggle both off for just your current project is to create or edit the `.vscode/settings.json` file at the root of your project:
+
+json
+
+```
+{
+  "eslint.enable": false,
+  "typescript.validate.enable": false,
+  "javascript.validate.enable": false
+}
+```
+
+Use code with caution.
+
+_Note: Delete these lines or change them to `true` when you are ready to fix errors._
+
+### 4. Use "Collapse All" in the Problems Tab
+
+If you don't want to change settings but just need the visual noise gone:
+
+- Press `Ctrl + Shift + M` (Windows/Linux) or `Cmd + Shift + M` (Mac) to open the **Problems View**.
+- Click the **Collapse All** icon (two arrows pointing together) to hide the error lists. \[[1](https://chromium.googlesource.com/chromium/src/+/HEAD/docs/vscode.md), [2](https://ajot.me/posts/quickly-cycling-through-and-fixing-spelling-errors-in-vs-code-markdown-files/)]
+
+To help you get the cleanest setup right now, let me know:
+
+- Do you want to hide the **red squiggly lines** in the code, or just clear the **Problems panel** at the bottom?
+
+- Would you like a shortcut recommendation to **toggle settings with a single keypress**?
+
+- [link](https://daveceddia.com/vscode-use-eslintrc/)\
+  ESLint + VSCode: How to Format Your Code Using .eslintrc\
+  Apr 7, 2021 — 2. Configure VSCode Settings to use ESLint for Formatting Open up VSCode's settings. On a Mac, press Cmd+, or get there through th...\
+  \
+  \
+  Dave Ceddia
+
+- [link](https://stackoverflow.com/questions/65897800/vscode-is-not-showing-linting-warnings)\
+  javascript - vscode is not showing linting warnings\
+  Jan 26, 2021 — 2 Comments ESLint Error Step 1 : Go to VS Code settings Step 2 : Search for "eslint" Step 3 : Look for Eslint:Enable and tick the ...\
+  \
+  \
+  Stack Overflow
+
+- [link](https://chromium.googlesource.com/devtools/devtools-frontend/+/main/docs/get%5Fthe%5Fcode.md)\
+  Chromium DevTools Docs - Get the Code: Checkout and Build Chromium DevTools front-end\
+  You can disable type checking (via TypeScript) by using the devtools\_skip\_typecheck argument in your GN configuration. This uses e...\
+  \
+  Google Open Source
+
+Show all
 
 
