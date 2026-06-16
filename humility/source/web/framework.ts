@@ -1,7 +1,5 @@
 import { ChildProcess } from "node:child_process"
-import { vnode } from "./ref/mithril"
-import { resolvePtr } from "node:dns"
-import { on } from "node:cluster"
+import { cloneDeep } from 'lodash';
 
 let app
 let vdom
@@ -18,8 +16,13 @@ type vnode = {
   states?
 }
 
+function log(...args) {
+  console.log(...args.map(cloneDeep))
+  // console.log(...args)
+}
+
 export function h(tag, ...args) {
-  console.log('h', tag, ...args)
+  log('h params', tag, ...args)  
   let props = {};
   let children = [];
 
@@ -52,6 +55,7 @@ export function h(tag, ...args) {
     children = [] // reserved for the vdom it actually renders
   }
 
+  log('h return', { tag, props, children })  
   return { tag, props, children };
 }
 
@@ -122,14 +126,14 @@ export function render(component, root_selector) {
   app = component
   vdom = h(app)
 
-  console.log(vdom)
+  log('render', vdom)
 
   const root = document.querySelector(root_selector)
   const app_node = create_node(vdom)
 
   append_node(root, app_node)
 
-  trigger_effects()
+  // trigger_effects()
 }
 
 function is_event(key) {
@@ -141,7 +145,7 @@ function to_event_name(key) {
 };
 
 function create_node(vnode: vnode) {
-  console.log('create_node', vnode)
+  log('create node', vnode)
   if (typeof vnode.tag == 'function') {
     const prev_vnode = current_vnode
     current_vnode = vnode
@@ -186,7 +190,7 @@ function replace_node(old_node: Node, new_node: Node) {
 }
 
 function append_node(old_node: Node, child: Node) {
-  old_node.parentNode?.appendChild(child)
+  old_node.appendChild(child)
 }
 
 function remove_node(old_node: Node) {
