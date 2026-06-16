@@ -456,6 +456,7 @@ float: <!-- music -->
 - interpret goodbye declaration
 - interpret godish pinocchiop
 - interpret hai yorokonde kocchi no kento
+- interpret worldwide wander tokotoko
 
 philosophy:
 
