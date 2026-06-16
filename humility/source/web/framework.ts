@@ -1,5 +1,6 @@
 import { ChildProcess } from "node:child_process"
 import { vnode } from "./ref/mithril"
+import { resolvePtr } from "node:dns"
 
 let app
 let vdom
@@ -131,7 +132,7 @@ function to_event_name(key) {
   return key.toLowerCase().substring(2)
 };
 
-function create_node(vnode) {
+function create_node(vnode: vnode) {
   if (typeof vnode.tag == 'function') {
     const prev_vnode = current_vnode
     current_vnode = vnode
@@ -162,10 +163,53 @@ function create_node(vnode) {
   return node
 }
 
-function diff(old_vdom, new_vdom) {
-  if (old_vdom.tag != new_vdom.tag) {
-    vnode.node.parent
+function dispose(vnode: vnode) {
+  if (vnode.dispose) {
+    for (const cleanup of vnode.dispose) {
+      cleanup()
+    }
   }
+}
+
+function replace(old_node: Node, new_node: Node) {
+  dispose(old_node)
+  old_node.parentNode?.replaceChild(old_node, new_node)
+}
+
+function has(obj, key) {
+  return Object.hasOwn(obj, key)
+}
+
+function remove_prop(old_vnode, prop, value?) {
+  if (is_event(prop)) {
+    node.removeEventListener(to_event_name(prop), value)
+  } else {
+    node.setAttribute(prop, value)
+  }
+}
+
+function diff(old_vdom: vnode, new_vdom: vnode) {
+  new_vdom.node = create_node(new_vdom)
+
+  if (old_vdom.tag != new_vdom.tag) {
+    replace(old_vdom.node, new_vdom.node)
+    return
+  }
+
+  // update attrs
+  if (typeof new_vdom.tag != 'function') {
+    const all_keys = new Set([...Object.keys(old_vdom.props), ...Object.keys(new_vdom.props)])
+
+    for (const key of all_keys) {
+      if (!has(new_vdom.props, key)) {
+        remove_prop(old_vdom, key, old_vdom[key])
+      } 
+      if (!has(old_vdom.props, key)) {
+
+      }
+    }
+  }
+
 }
 
 export function redraw() {
