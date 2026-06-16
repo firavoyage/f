@@ -1,30 +1,15 @@
-let active_instance = false;
+let active_instance: object | false = false;
 
 type vnode = {
-  tag: string,
-  // tag: string | Function,
+  // tag: string,
+  tag: string | Function,
   props: object,
   children: Array<vnode>
 } | string
 
 export function h(tag, ...args): vnode {
-  if (typeof tag != 'string') {
-    throw new Error('tag must be a string');
-  }
-
   let props = {};
   let children = [];
-
-  // count the number of . in tag
-  if (tag.split(".").length - 1 > 1) {
-    throw new Error('tag must have at most one dot');
-  }
-
-  const tag_parts = tag.split(".")
-  tag = tag_parts[0] || 'div'
-  if (tag_parts[1]) {
-    props.class = tag_parts[1]
-  }
 
   for (const arg of args) {
     if (Array.isArray(arg)) {
@@ -38,13 +23,51 @@ export function h(tag, ...args): vnode {
 
   children = children.filter(c => c !== false && c !== null && c !== undefined);
 
-  return { tag, props, children };
+  if (typeof tag == 'function') {
+    return create_component(tag, { ...props, children })
+  } else if (typeof tag == 'string') {
+    // count the number of . in tag
+    if (tag.split(".").length - 1 > 1) {
+      throw new Error('tag must have at most one dot');
+    }
+    const tag_parts = tag.split(".")
+    tag = tag_parts[0] || 'div'
+    if (tag_parts[1]) {
+      props.class = tag_parts[1]
+    }
+
+    return { tag, props, children };
+  } else {
+    throw new Error('Tag must be a component or a string')
+  } 
+}
+
+function create_component(component_fn, props): vnode {
+  const prev_instance = active_instance;
+  active_instance = {
+    dispose: new Set(),
+    update() {
+
+    }
+    // ...
+  }
+
+  const component = component_fn(props)
+
+  active_instance = prev_instance; // restore layout context
+
+  return component
 }
 
 function create_node(vnode: vnode) {
   if (typeof vnode === 'string') {
     return document.createTextNode(vnode);
   }
+
+  if (typeof vnode === 'function') {
+
+  }
+
   const element = document.createElement(vnode.tag);
 
   const isEvent = (key) => key.startsWith('on');
@@ -112,15 +135,11 @@ export function ref(initial_value = false) {
   return reference;
 }
 
-export function effect(e, signals) {
+export function effect(e) {
 
 }
 
-function unmount(vnode) {
-
-}
-
-export function patch(dom, old_vnode, new_vnode) {
+function diff(old_vnode, new_vnode, container) {
 
 }
 
