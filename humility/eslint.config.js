@@ -43,25 +43,19 @@ export default defineConfig(
        */
       "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/no-floating-promises": "error",
-      /**
-       * todo
-       *
-       * separate dev and prod
-       */
-      // 'no-console': 'error',
-      "no-restricted-syntax": [
-        "error",
-        {
-          selector: "Identifier[name='undefined']",
-          message:
-            "The use of 'undefined' is forbidden. Use an alternative pattern.",
-        },
-        {
-          selector: "Literal[value=null]",
-          message:
-            "The use of 'null' is forbidden. Use an alternative pattern.",
-        },
-      ],
+      // "no-restricted-syntax": [
+      //   "error",
+      //   {
+      //     selector: "Identifier[name='undefined']",
+      //     message:
+      //       "The use of 'undefined' is forbidden. Use an alternative pattern.",
+      //   },
+      //   {
+      //     selector: "Literal[value=null]",
+      //     message:
+      //       "The use of 'null' is forbidden. Use an alternative pattern.",
+      //   },
+      // ],
     },
   }
 );

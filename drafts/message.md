@@ -12,8 +12,6 @@ linting. keyword detection. "div.class", <!-- maybe i dont have interval or time
 
 ---
 
-pros and cons of building a complex web app using react or vanillajs (not web component) besides perf and size
-
 pros and cons of foo.method(...args) or method(foo, ...args)
 
 pros and cons of state setstate, proxy, or signal
