@@ -1,7 +1,8 @@
-let active_instance: object | false = false;
+let app: false | vnode = false
+let vdom: false | vnode = false
+let root: any = false
 
 type vnode = {
-  // tag: string,
   tag: string | Function,
   props: object,
   children: Array<vnode>
@@ -23,9 +24,7 @@ export function h(tag, ...args): vnode {
 
   children = children.filter(c => c !== false && c !== null && c !== undefined);
 
-  if (typeof tag == 'function') {
-    return create_component(tag, { ...props, children })
-  } else if (typeof tag == 'string') {
+  if (typeof tag == 'string') {
     // count the number of . in tag
     if (tag.split(".").length - 1 > 1) {
       throw new Error('tag must have at most one dot');
@@ -35,28 +34,9 @@ export function h(tag, ...args): vnode {
     if (tag_parts[1]) {
       props.class = tag_parts[1]
     }
-
-    return { tag, props, children };
-  } else {
-    throw new Error('Tag must be a component or a string')
-  } 
-}
-
-function create_component(component_fn, props): vnode {
-  const prev_instance = active_instance;
-  active_instance = {
-    dispose: new Set(),
-    update() {
-
-    }
-    // ...
   }
 
-  const component = component_fn(props)
-
-  active_instance = prev_instance; // restore layout context
-
-  return component
+  return { tag, props, children };
 }
 
 export function p(initial_value = false) {
@@ -90,10 +70,8 @@ export function p(initial_value = false) {
     // return value; // not needed
   };
 
-  if (active_instance) {
-    const instance = active_instance
-
-    subscribers.add(instance.update)
+  if (app) {
+    subscribers.add(redraw)
   }
 
   return signal
@@ -116,6 +94,43 @@ function diff(old_vnode, new_vnode, container) {
 
 }
 
-export function render(component, root) {
+function create_node(vnode: vnode) {
+  if (typeof vnode === 'string') {
+    return document.createTextNode(vnode);
+  }
 
+  if (typeof vnode.tag === 'function') {
+    vnode = vnode.tag()
+  }
+
+  const element = document.createElement(vnode.tag);
+
+  const isEvent = (key) => key.startsWith('on');
+  const toEventName = (key) => key.toLowerCase().substring(2);
+  for (const [prop, value] of Object.entries(vnode.props)) {
+    if (isEvent(prop)) {
+      element.addEventListener(toEventName(prop), value)
+    } else {
+      element.setAttribute(prop, value)
+    }
+  }
+
+  for (const child of vnode.children) {
+    element.appendChild(create_node(child))
+  }
+  return element;
+}
+
+export function redraw() {
+  const old_vdom = vdom
+  const new_vdom = h(app)
+
+  
+}
+
+export function render(component, root_selector) {
+  app = component
+  root = document.querySelector(root_selector)
+
+  redraw()
 }
