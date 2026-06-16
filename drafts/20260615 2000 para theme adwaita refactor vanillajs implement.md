@@ -6137,6 +6137,903 @@ If you'd like, we can look at **how to write an identical complex form with nest
 
 Show all
 
-# 
+# hyperscript, h(tag, props, ...children) or h(tag, props, children array)
 
+10:03 PM
+
+Most modern implementations of the hyperscript `h()` function (such as in **Vue**, **Preact**, **Mithril**, and vanilla `hyperscript` utilities) flex to **support both signatures** seamlessly. They use internal argument checking to figure out what you passed. \[[1](https://github.com/babel/babel/issues/2034), [2](https://github.com/mlmorg/react-hyperscript/issues/7), [3](https://mithril.js.org/hyperscript.html), [4](https://github.com/hyperhype/hyperscript)]
+
+Here is how the two styles compare, how they work under the hood, and how to write a quick wrapper to handle both.
+
+***
+
+### Comparison of Signatures
+
+| Feature \[[1](https://medium.com/@syn228/using-react-with-different-syntax-featuring-jsx-hyperscript-and-hyperscript-helpers-4baaee96043d), [2](https://legacy.reactjs.org/docs/introducing-jsx.html), [3](https://github.com/babel/babel/issues/2034), [4](https://github.com/mlmorg/react-hyperscript/issues/7), [5](https://mithril.js.org/hyperscript.html)] | Rest Parameters: `h(tag, props, ...children)`                                  | Children Array: `h(tag, props, children)`                        |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | ---------------------------------------------------------------- |
+| **Syntax**                                                                                                                                                                                                                                                                                                                                                       | Flat arguments                                                                 | Nested array                                                     |
+| **JSX Translation**                                                                                                                                                                                                                                                                                                                                              | Matches how Babel compiles JSX by default (`React.createElement`).             | Matches how modern frameworks handle tree structures internally. |
+| **Dynamic Lists**                                                                                                                                                                                                                                                                                                                                                | Requires the spread operator if your data is in an array: `...items.map(...)`. | Naturally accepts mapped lists: `items.map(...)`.                |
+
+javascript
+
+```
+// Rest Parameters Style
+h('div', { class: 'container' }, h('h1', null, 'Hello'), h('p', null, 'World'));
+
+// Children Array Style
+h('div', { class: 'container' }, [ h('h1', null, 'Hello'), h('p', null, 'World') ]);
+```
+
+Use code with caution.
+
+***
+
+### How Implementations Handle Both
+
+To avoid forcing developers to choose, most `h` implementations inspect the third argument. \[[1](https://github.com/hyperhype/hyperscript)]
+
+1. If the third argument `Array.isArray(children)` evaluates to `true`, it treats it as an explicit array of children.
+2. If it isn't an array, it uses the remaining function `arguments` (or a rest parameter) to gather all trailing inputs into a flat array. \[[1](https://medium.com/@bhagyabhagya/an-introduction-to-destructuring-in-javascript-f67cb7d32f2c), [2](https://github.com/babel/babel/issues/2034), [3](https://github.com/hyperhype/hyperscript)]
+
+### A Custom Implementation Handling Both Signatures
+
+If you are writing a custom virtual DOM or element factory, you can natively support both patterns with this standard structure: \[[1](https://kyleshevlin.com/how-to-write-your-own-javascript-dom-element-factory/)]
+
+javascript
+
+```
+function h(tag, props, ...children) {
+  // If the first child passed is explicitly an array, assume the array syntax was used
+  const normalizedChildren = Array.isArray(children[0])
+    ? children[0]
+    : children;
+
+  return {
+    tag,
+    props: props || {},
+    children: normalizedChildren.flat(Infinity) // Optional: flattens mixed or nested arrays
+  };
+}
+
+// Both of these yield the exact same tree structure:
+const tree1 = h('div', null, h('span', null, 'A'), h('span', null, 'B'));
+const tree2 = h('div', null, [ h('span', null, 'A'), h('span', null, 'B') ]);
+```
+
+Use code with caution.
+
+### Best Practice Recommendation
+
+- Use **`...children` (Rest)** when manually writing a few static HTML tags. It minimizes extra visual clutter from brackets (`[` and `]`).
+- Use **`[children]` (Array)** when generating children dynamically from data arrays (e.g., looping through API responses using `.map()`). \[[1](https://stackoverflow.com/questions/28329382/understanding-unique-keys-for-array-children-in-react-js), [2](https://medium.com/@ananya0612de/understanding-the-react-child-only-issue-and-its-resolution-5a0845893a35), [3](https://medium.com/@aryanvania03/loop-inside-react-jsx-13baa4634829), [4](https://medium.com/evolve-technology/hide-that-da6264a7e1f), [5](https://github.com/hyperhype/hyperscript)]
+
+Are you integrating this into a specific **framework build step** (like configuring Babel/Vite), or are you writing a **custom framework** from scratch?
+
+- [link](https://stackoverflow.com/questions/28329382/understanding-unique-keys-for-array-children-in-react-js)\
+  Understanding unique keys for array children in React.js\
+  Warning: Each child in an array or iterator should have a unique "key" prop. This is a warning as for array items which we are goi...\
+  Stack Overflow
+- [link](https://github.com/babel/babel/issues/2034)\
+  Use Array for JSX Children #2034 - babel/babel - GitHub\
+  Description. ... Thanks to the jsxPragma option, it should be possible to use Babel's JSX transform with virtual-dom's helper modu...\
+  GitHub
+- [link](https://medium.com/@syn228/using-react-with-different-syntax-featuring-jsx-hyperscript-and-hyperscript-helpers-4baaee96043d)\
+  Using React with different syntax, featuring JSX, Hyperscript ...\
+  Get Aaron Na's stories in your inbox. Subscribe. Here is an example usage: You'll notice that the way we create HTML tags such as ...\
+  Medium
+
+Show all
+
+## You said: how does it show after prettier out of the box compared w jsx
+
+10:03 PM
+
+Out of the box, Prettier handles hyperscript (`h`) like standard JavaScript function calls. It does not treat it as HTML markup, which leads to highly nested, vertical formatting compared to JSX.
+
+Here is how Prettier handles both formats side by side.
+
+### Visual Comparison
+
+### 1. JSX Format
+
+Prettier formats JSX to mirror HTML structure closely. It keeps tags aligned, brackets balanced, and multi-line content highly readable. \[[1](https://glebbahmutov.com/blog/configure-prettier-in-vscode/), [2](https://levelup.gitconnected.com/improve-code-quality-with-the-vscode-prettier-formatter-d43e8d329505)]
+
+jsx
+
+```
+// Prettier JSX output
+const Component = () => (
+  <div className="container">
+    <h1 className="title">Hello World</h1>
+    <p>This is a description paragraph.</p>
+    <ul>
+      {items.map((item) => (
+        <li key={item.id}>{item.name}</li>
+      ))}
+    </ul>
+  </div>
+);
+```
+
+Use code with caution.
+
+### 2. Hyperscript Format (Out of the Box)
+
+Because Prettier treats `h` as a regular function, it applies its standard JavaScript line-wrapping rules. It forces parenthetical breaks, deep indentation, and trailing commas on arguments. \[[1](https://biomejs.dev/formatter/differences-with-prettier/), [2](https://levelup.gitconnected.com/improve-code-quality-with-the-vscode-prettier-formatter-d43e8d329505)]
+
+javascript
+
+```
+// Prettier Hyperscript output
+const Component = () =>
+  h("div", { className: "container" }, [
+    h("h1", { className: "title" }, "Hello World"),
+    h("p", null, "This is a description paragraph."),
+    h(
+      "ul",
+      null,
+      items.map((item) => h("li", { key: item.id }, item.name)),
+    ),
+  ]);
+```
+
+Use code with caution.
+
+***
+
+### Key Formatting Differences
+
+- **Vertical Stretching:** Prettier will aggressively push deep hyperscript arguments onto new lines once the character limit (usually 80) is hit. This creates a deeply indented "staircase" effect.
+- **Property Visual Isolation:** In JSX, props look like HTML attributes. In hyperscript, empty props force you to write `null` or `{}`, which Prettier keeps on the same line as the tag name, cluttering the view. \[[1](https://www.instagram.com/reel/DSAG0NXidQy/)]
+- **Child Arrays vs Rest Parameters:** If you use the array syntax `[h(), h()]`, Prettier treats it as an array literal and applies trailing commas. If you use `h(tag, props, child1, child2)`, Prettier treats them as function parameters and wraps them vertically if they are long.
+
+### How to Fix Hyperscript Formatting
+
+If you want to use hyperscript but hate Prettier's default function formatting, you have a few options:
+
+1. **Use `prettier-plugin-embed`:** This plugin looks for specific template tags or functions (like `h`) and forces Prettier to format the inner code with alternative rule sets.
+2. **Use Tagged Template Literals instead:** Instead of `h()`, use tools like **htm** (`html``). Prettier natively recognizes `html\` tagged templates and formats them exactly like JSX. \[[1](https://prettier.io/docs/next/options)]
+
+Are you looking to format a codebase using **vanilla JS hyperscript**, or are you trying to configure a **compiler toolchain** to avoid JSX altogether?
+
+- [link](https://glebbahmutov.com/blog/configure-prettier-in-vscode/)\
+  How to configure Prettier and VSCode | Better world by better software\
+  Notice the double quotes, semi-colons, etc - Prettier has applied the settings from projectA/. prettierrc. json . It also split lo...\
+  \
+  \
+  Gleb Bahmutov
+- [link](https://levelup.gitconnected.com/improve-code-quality-with-the-vscode-prettier-formatter-d43e8d329505)\
+  Improve Code Quality With the VSCode Prettier Formatter\
+  As you can see, Prettier has added consistent spacing after the selectors and properties, and has aligned the values, making the c...\
+  \
+  \
+  Level Up Coding
+- [link](https://biomejs.dev/formatter/differences-with-prettier/)\
+  Differences with Prettier\
+  Prettier adds a trailing comma to type parameters of arrow functions even when it is not required.\
+  \
+  \
+  biomejs.dev
+
+Show all
+
+## You said: make it like div.Foo, remove null props, compare again
+
+10:05 PM
+
+Using shorthand tag parsing like `div.Foo` and dropping empty or `null` property arguments entirely cuts down code clutter. Most production hyperscript tools (like **Mithril**, **hyperscript**, or custom wrapper libraries) support this style. \[[1](https://mtsknn.fi/blog/hyperscript-hyperior-alternative-to-jsx/)]
+
+However, Prettier still views this as a plain JavaScript function chain, whereas it views JSX as a specialized markup language.
+
+Here is how Prettier handles this cleaner hyperscript style compared to JSX.
+
+***
+
+### Visual Comparison
+
+### 1. JSX Format
+
+JSX requires explicit attribute syntax and always includes properties inside the opening tag. \[[1](https://prettier.io/blog/2018/01/10/1.10.0)]
+
+jsx
+
+```
+// Prettier JSX output
+const Component = () => (
+  <div className="Foo">
+    <h1>Hello World</h1>
+    <p>This is a description paragraph.</p>
+    <ul>
+      {items.map((item) => (
+        <li key={item.id}>{item.name}</li>
+      ))}
+    </ul>
+  </div>
+);
+```
+
+Use code with caution.
+
+### 2. Clean Hyperscript Format (Out of the Box)
+
+Prettier removes optional spaces and wraps the function arguments strictly based on length. If a line is short, Prettier keeps it flat. If a line is long or nested, Prettier forces multi-line breaks. \[[1](https://glebbahmutov.com/blog/configure-prettier-in-vscode/), [2](https://medium.com/@bacongravy/bootstrap-a-vs-code-front-end-web-development-environment-18a899a30289), [3](https://prettier.io/docs/next/rationale)]
+
+javascript
+
+```
+// Prettier Hyperscript output
+const Component = () =>
+  h("div.Foo", [
+    h("h1", "Hello World"),
+    h("p", "This is a description paragraph."),
+    h(
+      "ul",
+      items.map((item) => h("li", { key: item.id }, item.name)),
+    ),
+  ]);
+```
+
+Use code with caution.
+
+***
+
+### Critical Formatting Shifts
+
+- **Short Elements Stay Flat:** By omitting `null`, short tag declarations like `h("h1", "Hello World")` remain on a single line. Prettier does not break them into separate rows.
+- **Deep Nesting Staircase:** Look at the `ul` element above. Because the `.map()` loop stretches past the formatting boundary, Prettier breaks the arguments vertically. This creates an uneven, asymmetrical alignment compared to the uniform structure of JSX.
+- **Property Inconsistency:** When you _do_ need props (like the `key` inside the loop), the signature shifts from `h(tag, children)` back to `h(tag, props, children)`. Prettier simply leaves them inline, making it harder to visually scan where properties end and children begin.
+
+### How to Implement This "Clean" Signature
+
+If you are building your own `h` function to support this precise, Prettier-friendly format, you can use this logic pattern:
+
+javascript
+
+```
+function h(tagAndClass, arg1, arg2) {
+  // 1. Parse tag and classes (e.g., "div.Foo.Bar")
+  const [tag, ...classes] = tagAndClass.split('.');
+  const props = { className: classes.join(' ') || undefined };
+
+  // 2. Determine if arg1 is props or children
+  let children;
+  if (arg1 && typeof arg1 === 'object' && !Array.isArray(arg1)) {
+    Object.assign(props, arg1);
+    children = arg2;
+  } else {
+    children = arg1;
+  }
+
+  return { tag, props, children };
+}
+```
+
+Use code with caution.
+
+Are you looking to optimize your hyperscript code structure for a **production project**, or are you evaluating if hyperscript can match the **readability** of JSX for your team?
+
+- [link](https://mtsknn.fi/blog/hyperscript-hyperior-alternative-to-jsx/)\
+  Hyperscript: hyperior alternative to JSX – Matias Kinnunen\
+  Anyway, Mithril uses hyperscript by default. Mithril's hyperscript flavor has two main extra features compared to react-hyperscrip...\
+  \
+  mtsknn.fi
+- [link](https://prettier.io/blog/2018/01/10/1.10.0)\
+  Prettier 1.10: One Year of Prettier\
+  The JSX spec has a hidden feature that allows passing an element as an attribute to another element and Prettier was adding parens...\
+  \
+  Prettier
+- [link](https://glebbahmutov.com/blog/configure-prettier-in-vscode/)\
+  How to configure Prettier and VSCode | Better world by better software\
+  It takes whatever copy/pasted code snippets you put into your file and makes it look the same as the rest of the code. By using Pr...\
+  \
+  \
+  Gleb Bahmutov
+
+Show all
+
+
+
+# mithriljs
+
+**[Mithril.js](https://mithril.js.org/)**<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong> is a lightweight, high-performance client-side JavaScript framework used for building Single Page Applications (SPAs)</strong></mark>. Weighing in at less than 10 KiB gzipped, it serves as a fast and compact alternative to heavier frameworks like React, Angular, or Vue. Despite its small footprint, it provides routing and XHR (HTTP utility) functionality completely out of the box without requiring external dependencies. \[[1](https://mithril.js.org/), [2](https://dev.to/jesperhoy/my-thoughts-on-mithriljs-319f), [3](https://medium.com/@manassjoshi/mithriljs-an-unfamous-amazing-javascript-spa-framework-ac96337348ba)]
+
+### Core Features
+
+- **Tiny Size**: It requires only around 8.8 KiB of gzipped bandwidth.
+- **Built-in Tools**: It packages its own [router and HTTP request utility](https://mithril.js.org/api.html).
+- **No Build Required**: It can run natively in the browser via CDN without build steps.
+- **Hyperscript Syntax**: It replaces HTML templates with a lean `m()` JavaScript compiled syntax.
+- **Data Agnostic**: It handles the rendering cycle without dictating your data's shape. \[[1](https://mithril.js.org/api.html), [2](https://github.com/MithrilJS/mithril.js/), [3](https://mithril.js.org/hyperscript.html), [4](https://news.ycombinator.com/item?id=43550317), [5](https://mithril.js.org/), [6](https://dev.to/jesperhoy/my-thoughts-on-mithriljs-319f)]
+
+### Code Example
+
+Mithril components are simple JavaScript objects containing a `view` method. Here is a basic counter example using Mithril's default hyperscript: \[[1](https://www.kenbarbour.com/posts/react-vs-mithril/), [2](https://mithril.js.org/api.html)]
+
+javascript
+
+```
+import m from "mithril";
+
+var Counter = {
+    count: 0,
+    view: function() {
+        return m("main", [
+            m("h1", "Counter App"),
+            m("p", this.count),
+            m("button", { onclick: () => this.count++ }, "Increment")
+        ]);
+    }
+};
+
+// Mount the component to the DOM
+m.mount(document.body, Counter);
+```
+
+Use code with caution.
+
+### Framework Comparison
+
+| Feature \[[1](https://mithril.js.org/), [2](https://mithril.js.org/api.html), [3](https://dev.to/jesperhoy/my-thoughts-on-mithriljs-319f), [4](https://mithril.js.org/simple-application.html), [5](https://mithril.js.org/jsx.html)] | Mithril.js                    | React                       | Vue.js / Svelte             |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- | --------------------------- | --------------------------- |
+| **Gzipped Size**                                                                                                                                                                                                                      | ~9 KB                         | ~40+ KB                     | ~30+ KB / Compiled          |
+| **Routing**                                                                                                                                                                                                                           | Built-in                      | Requires external library   | Requires external library   |
+| **HTTP Requests**                                                                                                                                                                                                                     | Built-in (`m.request`)        | Requires `fetch` or `axios` | Requires `fetch` or `axios` |
+| **Template Syntax**                                                                                                                                                                                                                   | Hyperscript (or optional JSX) | JSX                         | HTML Templates / Script     |
+| **Build Tools**                                                                                                                                                                                                                       | Optional                      | Required                    | Required                    |
+
+### Who Uses It?
+
+Mithril.js is used by teams looking for extreme speed and strict budget controls over bundle sizes. Notable production deployments include: \[[1](https://redskydigital.com/us/boost-your-websites-speed-mastering-mithril-js-magic/)]
+
+- **Lichess**: The massive open-source chess server handles millions of users using Mithril for its interface.
+- **Nike & Vimeo**: Both use it globally for performance-sensitive sub-systems.
+- **Google's Perfetto**: Built its open-source system profiling platform using Mithril. \[[1](https://www.reddit.com/r/javascript/comments/urn2yw/mithriljs%5Frelease%5Fa%5Fnew%5Fversion%5Fafter%5Fnearly%5F3/), [2](https://github.com/MithrilJS/mithril.js/)]
+
+Would you like me to show you how to configure **Mithril with JSX and Babel**, or should we look at how to set up **routes using `m.route`**? \[[1](https://mithril.js.org/simple-application.html), [2](https://mithril.js.org/api.html)]
+
+- [link](https://mithril.js.org/)\
+  Introduction - Mithril.js\
+  Mithril. js is a modern client-side JavaScript framework for building Single Page Applications. It's small (8.8 KiB gzip), fast an...\
+  JS.ORG
+- [link](https://www.reddit.com/r/javascript/comments/urn2yw/mithriljs%5Frelease%5Fa%5Fnew%5Fversion%5Fafter%5Fnearly%5F3/)\
+  Mithril.js release a new version after nearly 3 years - Reddit\
+  May 17, 2022 — \* cinnapear. • 4y ago. Wow, this is interesting. We use Mithril here as the frontend framework for a massive internal scheduling t...\
+  Reddit·r/javascript
+- [link](https://github.com/MithrilJS/mithril.js/)\
+  MithrilJS/mithril.js: A JavaScript Framework for ... - GitHub\
+  Nov 7, 2025 — \* What is Mithril. js? A modern client-side JavaScript framework for building Single Page Applications. It's small (8.93 KB gzippe...\
+  GitHub
+
+Show all
+
+## You said: all mithriljs methods
+
+The core [Mithril.js API](https://mithril.js.org/api.html) is exceptionally lean, featuring **only 12 top-level methods and properties**. These tools handle everything from creating virtual DOM elements to routing, state management, and network requests. \[[1](https://mithril.js.org/api.html), [2](https://mithril.js.org/), [3](https://mithril.js.org/archive/v0.1.6/getting-started.html), [4](https://spin.atomicobject.com/smallest-fastest-spa-framework/)]
+
+### 1. Core DOM Generation & Rendering
+
+- **`m(selector, attrs, children)`**: The primary hyperscript engine used to generate Virtual DOM nodes (`vnodes`).
+- **`m.render(element, vnodes)`**: Renders a template directly into a specified DOM node. It does not invoke automatic auto-redrawing.
+- **`m.mount(element, component)`**: Activates a component by rendering it into a DOM element and automatically hooks it into Mithril's auto-redrawing system.
+- **`m.trust(htmlString)`**: Escapes string boundaries to inject raw, unescaped HTML content directly into the DOM (use with caution to prevent XSS).
+- **`m.fragment(attrs, children)`**: Groups a list of elements together without wrapping them inside a structural DOM node (similar to React Fragments). \[[1](https://mithril.js.org/api.html), [2](https://mithril.js.org/hyperscript.html), [3](https://medium.com/@monikajandrevska/mithril-getting-started-33c07a167f4a), [4](https://mithril.js.org/archive/v0.2.5/mithril.component.html)]
+
+### 2. Routing (`m.route`)
+
+- **`m.route(rootElement, defaultRoute, routes)`**: Defines the structural architecture for single-page application routing tables.
+- **`m.route.set(path, data, options)`**: Programmatically navigates to a different URL route path.
+- **`m.route.get()`**: Retrieves the current matched route path string from the active window.
+- **`m.route.param(key)`**: Grabs a specific dynamic property or route variable mapping out of the URL (e.g., `/user/:id`).
+- **`m.route.link(vnode)`**: Converts a traditional HTML structural anchor element link () into an internal routed link.
+- **`m.route.prefix = prefix`**: Configures the URL parsing engine strategy format (e.g., changing hash paths from `#!` to empty history mode paths). \[[1](https://mithril.js.org/api.html), [2](https://mithril.js.org/), [3](https://mithril.js.org/autoredraw.html), [4](https://mithril.js.org/components.html)]
+
+### 3. HTTP Network Utility (`m.request`) \[[1](https://ratfactor.com/mithril1)]
+
+- **`m.request(options)`**: Performs standard asynchronous XHR requests (`GET`, `POST`, etc.). It returns a native promise and triggers an automatic UI redraw upon completion.
+- **`m.jsonp(options)`**: Facilitates cross-origin file streaming or JSONP requests on legacy setups that do not support CORS. \[[1](https://mithril.js.org/api.html), [2](https://mithril.js.org/), [3](https://mithril.js.org/archive/v0.2.5/mithril.component.html), [4](https://mithril.js.org/autoredraw.html)]
+
+### 4. UI Rendering Controls \[[1](https://mithril.js.org/archive/v0.1/getting-started.html)]
+
+- **`m.redraw()`**: Forces an immediate visual redraw of all currently mounted [Mithril components](https://mithril.js.org/components.html) across the active window.
+- **`m.parseQueryString(string)`**: Utility that parses a URL query parameter string directly into a clean JavaScript object layout.
+- **`m.buildQueryString(object)`**: Utility that converts a standard JavaScript object serialization format back into flat URL query parameter strings. \[[1](https://mithril.js.org/archive/v0.1/getting-started.html), [2](https://mithril.js.org/api.html), [3](https://mithril.js.org/components.html)]
+
+***
+
+### Component Lifecycle Hooks (Special Methods)
+
+Mithril also tracks component lifecycles using localized execution hooks defined inside structural component dictionaries: \[[1](https://mithril.js.org/lifecycle-methods.html), [2](https://mithril.js.org/components.html)]
+
+- **`oninit(vnode)`**: Fires before a virtual node is parsed into a real DOM element. Used to prepare internal state variables.
+- **`oncreate(vnode)`**: Fires immediately after a virtual node is successfully attached to the DOM. Used for direct DOM manipulation.
+- **`onbeforeupdate(vnode, oldVnode)`**: Fires before checking for differences. Return `false` to skip re-rendering this element for performance tuning.
+- **`onupdate(vnode)`**: Fires after the DOM element has updated within a redraw cycle.
+- **`onbeforeremove(vnode)`**: Fires right before detaching a DOM element. Useful for handling exit animations before removal.
+- **`onremove(vnode)`**: Fires after a structural element is completely removed from the DOM. Used for memory cleanup. \[[1](https://mithril.js.org/lifecycle-methods.html), [2](https://mithril.js.org/components.html), [3](https://mithril-by-examples.js.org/examples/lifecycle-methods/), [4](https://mithril.js.org/hyperscript.html), [5](https://mithril.js.org/hyperscript.html)]
+
+Do you want to see a practical code implementation for **routing configurations**, or do you need a deep dive into **managing asynchronous data with `m.request`**?
+
+- [link](https://mithril.js.org/hyperscript.html)\
+  m(selector, attributes, children) - Mithril.js\
+  How it works. Mithril. js provides a hyperscript function m() , which allows expressing any HTML structure using JavaScript syntax...\
+  JS.ORG
+- [link](https://mithril.js.org/lifecycle-methods.html)\
+  Lifecycle methods - Mithril.js\
+  Components and virtual DOM nodes can have lifecycle methods, also known as hooks, which are called at various points during the li...\
+  JS.ORG
+- [link](https://mithril.js.org/)\
+  Introduction - Mithril.js\
+  Mithril.js is a modern client-side JavaScript framework for building Single Page Applications. It's small, fast, and provides rout...\
+  JS.ORG
+
+Show all
+
+## You said: does it support fp pattern wo classes or this
+
+Yes, Mithril.js perfectly supports Functional Programming (FP) patterns and can be written entirely without classes, object-oriented programming (OOP), or the `this` keyword.
+
+In fact, Mithril's design naturally favors functional approaches because components are just plain functions or objects, and data flows down via explicit arguments. \[[1](https://www.toptal.com/developers/clojure/clojurescript-tutorial-react-front-end)]
+
+***
+
+### Pure Functional Components (Closure Components)
+
+The cleanest way to avoid `this` and classes in Mithril is by using **Closure Components** (also known as Function Components).
+
+The outer function runs once during initialization to create a private scope for state, and returns an object containing the `view` function. Mithril explicitly passes `vnode` as an argument to the view, completely removing any reliance on the execution context (`this`).
+
+javascript
+
+```
+import m from "mithril";
+
+// A pure functional counter component
+const Counter = () => {
+    // Local, encapsulated state (No classes, no 'this')
+    let count = 0;
+
+    const increment = () => {
+        count++;
+    };
+
+    // Return the component object
+    return {
+        view: (vnode) => m("div", [
+            m("h1", vnode.attrs.title), // Props are read explicitly from vnode
+            m("p", `Current Count: ${count}`),
+            m("button", { onclick: increment }, "Increment")
+        ])
+    };
+};
+
+// Mounting the component
+m.mount(document.body, {
+    view: () => m(Counter, { title: "Functional Counter" })
+});
+```
+
+Use code with caution.
+
+***
+
+### How Mithril Eliminates `this`
+
+Mithril eliminates the need for context binding in three ways:
+
+1. **Explicit Vnodes**: Instead of accessing properties via `this.attrs`, Mithril passes the virtual node (`vnode`) as the first argument to every lifecycle hook and the `view` function. \[[1](https://dev.to/adrianbailador/mithriljs-a-modern-framework-for-javascript-5hke)]
+2. **State References**: The state of a component can be accessed directly via `vnode.state`, which is passed into your functions automatically by the framework. \[[1](https://mithril.js.org/components.html)]
+3. **No Magic Context**: Because handlers like `onclick` are just standard JavaScript functions, closures naturally capture local variables without requiring `.bind(this)` or arrow-function context hacks.
+
+***
+
+### Handling Component Lifecycle Methods in FP Style
+
+If your functional components need lifecycle hooks (like fetching data on load or cleaning up timers), you can define them directly inside the returned object. They all receive the explicit `vnode` argument. \[[1](https://mithril.js.org/lifecycle-methods.html)]
+
+javascript
+
+```
+const DataFetcher = () => {
+    let data = null;
+
+    return {
+        // Runs once when element enters the DOM
+        oninit: (vnode) => {
+            m.request({ method: "GET", url: vnode.attrs.apiUrl })
+                .then(result => { data = result; });
+        },
+
+        // Runs on every redraw cycle
+        view: (vnode) => m("div",
+            data ? m("p", `Loaded: ${data.name}`) : m("p", "Loading...")
+        ),
+
+        // Runs when element leaves the DOM
+        onremove: (vnode) => {
+            console.log("Cleaned up successfully!");
+        }
+    };
+};
+```
+
+Use code with caution.
+
+Would you like to see how to manage **global state using pure functional streams** (like Mithril's `mithril/stream`), or should we look at **passing state down through nested functional components**?
+
+- [link](https://www.toptal.com/developers/clojure/clojurescript-tutorial-react-front-end)\
+  Learn ClojureScript Now: A Quick Tutorial With React\
+  Jan 16, 2026 — A Pattern Emerges Everything is reduced down to the simplest functionality—elements are just lists, and components are just functi...\
+  \
+  \
+  Toptal
+- [link](https://dev.to/adrianbailador/mithriljs-a-modern-framework-for-javascript-5hke)\
+  Mithril.js: A Modern Framework for JavaScript\
+  Apr 25, 2024 — Components and virtual DOM nodes in Mithril. js can have lifecycle methods, also known as hooks, which are called at various point...\
+  \
+  \
+  DEV Community
+- [link](https://mithril.js.org/components.html)\
+  Components\
+  It ( POJO component state ) is generally recommended that you use closures for managing component state. If, however, you have rea...\
+  \
+  JS.ORG
+
+Show all
+
+## You said: how does it update the counter
+
+In the functional example provided, Mithril updates the counter <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">through its <strong>auto-redrawing system</strong></mark>, which acts as an automatic bridge between your state changes and the user interface. \[[1](https://gilbert.ghost.io/mithril-js-tutorial-1/)]
+
+Here is the exact step-by-step process of how that update happens:
+
+### 1. The Event Triggers
+
+When a user clicks the button, the browser triggers the standard `onclick` event handler.
+
+javascript
+
+```
+m("button", { onclick: increment }, "Increment")
+```
+
+Use code with caution.
+
+This executes your local `increment` function, which mutates the local variable: `count++`.
+
+### 2. Automatic Interception
+
+Mithril hooks into standard DOM event listeners (like `onclick`, `oninput`, or `onkeydown`) that are defined inside its `m()` hyperscript. \[[1](https://mithril.js.org/jsx.html)]
+
+- When the `onclick` function finishes executing, Mithril **automatically triggers a redraw cycle** behind the scenes.
+- You do not need to call an explicit setter like `setCount()` or `this.setState()`.
+
+### 3. The Re-Render Cycle
+
+During the redraw cycle, Mithril calls your component's `view` function again. Because `count` is a regular JavaScript variable enclosed in a closure, the `view` function reads the freshly updated value: \[[1](https://mithril.js.org/archive/v0.2.5/mithril.component.html)]
+
+javascript
+
+```
+view: (vnode) => m("div", [
+    m("p", `Current Count: ${count}`), // Reads the new value (e.g., 1)
+    // ...
+])
+```
+
+Use code with caution.
+
+### 4. Virtual DOM Diffing
+
+Mithril generates a new Virtual DOM tree representing how the UI _should_ look. It compares this new tree against the old Virtual DOM tree using a highly optimized diffing algorithm. \[[1](https://ratfactor.com/mithril1), [2](https://mithril.js.org/archive/v0.2.5/mithril.component.html), [3](https://mithril.js.org/archive/v1.1.7/vnodes.html)]
+
+### 5. Surgical DOM Updates
+
+Mithril identifies that only the text node inside the tag changed. It surgically updates that exact text node in the real browser DOM, leaving the rest of the page completely untouched. \[[1](https://ratfactor.com/mithril1)]
+
+***
+
+### What about updates outside of DOM events?
+
+Mithril's auto-redrawing handles almost all user interactions automatically. However, if you update the counter from an external source (like a `setInterval` or a WebSocket event), Mithril won't know about it natively.
+
+In those specific functional asynchronous cases, you simply call **`m.redraw()`** manually after updating your variable: \[[1](https://mithril.js.org/stream.html)]
+
+javascript
+
+```
+const DynamicCounter = () => {
+    let count = 0;
+
+    // Background timer updating state outside a DOM event
+    setInterval(() => {
+        count++;
+        m.redraw(); // Forces Mithril to re-run the view and update the UI
+    }, 1000);
+
+    return {
+        view: () => m("div", `Interval Count: ${count}`)
+    };
+};
+```
+
+Use code with caution.
+
+Would you like to explore how Mithril handles **asynchronous updates using `m.request`** (which also handles redraws automatically), or should we look at how to **optimize redraws using `onbeforeupdate`**?
+
+- [link](https://gilbert.ghost.io/mithril-js-tutorial-1/)\
+  Mithril.js: A Tutorial Introduction (Part 1)\
+  Dec 6, 2018 — After this callback is done running, Mithril redraws – it repeats steps 1-3, updating all views automatically!\
+  \
+  \
+  gilbert.ghost.io
+- [link](https://mithril.js.org/jsx.html)\
+  JSX\
+  DOM events React upper-cases the first character of all event handlers: onClick listens for click events and onSubmit for submit e...\
+  \
+  JS.ORG
+- [link](https://mithril.js.org/archive/v0.2.5/mithril.component.html)\
+  m.component\
+  The controller function is called once when the component is rendered. Subsequently, the view function is called and will be calle...\
+  \
+  JS.ORG
+
+Show all
+
+## You said: what if you dont want it to rerender upon click
+
+If you want to handle a click event but prevent Mithril from automatically triggering a re-render, you can set **`e.redraw = false`** inside your event handler.
+
+Mithril checks this property on the event object (`e`) immediately after the event handler finishes executing. If it is set to `false`, the auto-redraw cycle for that specific event is completely skipped. \[[1](https://mtsknn.fi/blog/how-to-debounce-events-in-mithriljs/)]
+
+### Code Example
+
+javascript
+
+```
+const CustomComponent = () => {
+    let internalCounter = 0;
+
+    const silentClick = (e) => {
+        internalCounter++; // The state changes...
+        e.redraw = false;  // ...but the UI will NOT update!
+    };
+
+    return {
+        view: () => m("div", [
+            m("p", `Visible Count: ${internalCounter}`),
+            m("button", { onclick: silentClick }, "Click silently")
+        ])
+    };
+};
+```
+
+Use code with caution.
+
+### When should you use this?
+
+- **Performance Optimization**: When handling high-frequency events like `onmousemove`, `onscroll`, or rapid key presses where updating the UI on every frame is unnecessary.
+- **Background Tasks**: When clicking a button triggers a background logging service, analytics tracking, or local storage sync that doesn't change what the user sees on the screen.
+- **Third-Party Libraries**: When a click event is intended to pass control over to an external non-Mithril library (like Leaflet maps or D3 charts) that manages its own internal DOM updates.
+
+### Alternative: Pure Vanilla Event Handlers
+
+Another structural way to bypass Mithril's auto-redraw system completely is to hook up your event handler using standard browser APIs inside the **`oncreate`** lifecycle hook, rather than passing it to Mithril's `m()` attributes:
+
+javascript
+
+```
+const ManualComponent = () => {
+    return {
+        oncreate: (vnode) => {
+            // Mithril knows nothing about this listener, so it will never redraw
+            vnode.dom.addEventListener("click", () => {
+                console.log("Clicked without triggering a Mithril redraw.");
+            });
+        },
+        view: () => m("button", "Vanilla Click")
+    };
+};
+```
+
+Use code with caution.
+
+Would you like to see how to throttle high-frequency events like **scroll or resize loops**, or should we look at how to **manually batch redraws** for finer control?
+
+- [link](https://mtsknn.fi/blog/how-to-debounce-events-in-mithriljs/)\
+  How to debounce events in Mithril.js – Matias Kinnunen\
+  Feb 4, 2021 — Mithril automatically redraws after DOM event handlers that are defined in a Mithril view. You can disable an auto-redraw for spec...\
+  \
+  mtsknn.fi
+
+## You said: how does it handle nested components with dispose, like app has count, it passes the getter setter somehow to counter, the counter increases every one sec or increase button
+
+To handle nested components with functional programming patterns in Mithril, you pass data down using **attributes** (props) on the `vnode`.
+
+Because you want to avoid `this` and classes, you can manage state at the top level and pass explicit **getter/setter functions** down to the child. Cleanup is handled gracefully using the **`onremove`** lifecycle hook, which acts as the component's disposer. \[[1](https://mithril.js.org/lifecycle-methods.html)]
+
+Here is a complete, runnable example showing how the `App` maintains the state, passes controllers to the `Counter`, handles a 1-second interval, and cleans up after itself when destroyed.
+
+### Code Implementation
+
+javascript
+
+```
+import m from "mithril";
+
+// 1. CHILD COMPONENT: Counter
+const Counter = () => {
+    let intervalId = null;
+
+    return {
+        // Runs once when the Counter mounts to the DOM
+        oninit: (vnode) => {
+            // Unpack the setter function passed from parent
+            const { changeCount } = vnode.attrs;
+
+            // Start a timer that updates the parent state every 1 second
+            intervalId = setInterval(() => {
+                changeCount(1);
+            }, 1000);
+        },
+
+        // DISPOSE / CLEANUP: Runs automatically when Counter leaves the DOM
+        onremove: () => {
+            clearInterval(intervalId);
+            console.log("Counter disposed! Interval cleared.");
+        },
+
+        // Render the view using values and functions passed via vnode.attrs
+        view: (vnode) => {
+            const { count, changeCount } = vnode.attrs;
+
+            return m(".counter-box", [
+                m("p", `Count: ${count}`),
+                m("button", { onclick: () => changeCount(1) }, "Increase +1")
+            ]);
+        }
+    };
+};
+
+// 2. PARENT COMPONENT: App
+const App = () => {
+    // Top-level state
+    let count = 0;
+    let showCounter = true;
+
+    // Pure functional state modifier (our setter)
+    const changeCount = (amount) => {
+        count += amount;
+        m.redraw(); // Safely force a redraw since setInterval runs outside DOM events
+    };
+
+    return {
+        view: () => m("main", [
+            m("h1", "Functional Nesting & Disposal"),
+
+            m("button", { onclick: () => showCounter = !showCounter },
+                showCounter ? "Destroy Counter" : "Mount Counter"
+            ),
+
+            m("hr"),
+
+            // Conditionally mount the child and pass getters/setters as attributes
+            showCounter
+                ? m(Counter, { count: count, changeCount: changeCount })
+                : m("p", "Counter has been unmounted.")
+        ])
+    };
+};
+
+m.mount(document.body, App);
+```
+
+Use code with caution.
+
+### How the Framework Pieces Work Together
+
+- **The Getter/Setter Pattern**: The `App` doesn't pass a complex reference type. It passes the current primitive value (`count: count`) and a function that knows how to modify it (`changeCount: changeCount`). Whenever `changeCount()` is invoked by the child, it modifies the `App`'s closure variables.
+- **Asynchronous Updates**: Because `setInterval` triggers on a background browser thread, its execution finishes outside of Mithril's event loop. Adding `m.redraw()` inside the `changeCount` setter ensures the UI reflects the timer updates instantly.
+- **The Dispose Hook (`onremove`)**: If a user clicks "Destroy Counter", Mithril's diffing engine notices the `Counter` component should no longer exist. Before extracting it from the DOM, Mithril runs `onremove`, clearing the interval memory leak.
+
+Would you like to see how to replace this manual getter/setter wiring with **Mithril Streams (`mithril/stream`)** for a reactive approach, or should we look at how to **pass down deeply nested data without prop drilling**?
+
+- [link](https://mithril.js.org/lifecycle-methods.html)\
+  Lifecycle methods\
+  The onremove hook is useful for running clean up tasks.\
+  \
+  JS.ORG
+
+## You said: does it redraw everything? does it diff to prevent losing input
+
+### Does it redraw everything?
+
+**Yes and no.** Mithril is extremely fast because it divides the update process into two distinct stages:
+
+1. **The JavaScript Phase (Reruns Everything)**: When a redraw is triggered, Mithril executes the `view` functions of **all** currently active components on the page. It rebuilds the _Virtual DOM_ tree from scratch. Because executing pure JavaScript functions is incredibly cheap, this happens in fractions of a millisecond. \[[1](https://ratfactor.com/mithril1), [2](https://github.com/rohan-paul/Awesome-JavaScript-Interviews/blob/master/React/Virtual-DOM-and-Reconciliation-Algorithm.md)]
+2. **The Browser DOM Phase (Surgically Changes Only Differences)**: Mithril takes that new Virtual DOM tree and runs a highly optimized diffing algorithm against the previous tree. It **does not** wipe out or recreate the real HTML elements. It only updates the specific HTML attributes or text nodes that actually changed. \[[1](https://blog.devgenius.io/dom-shadow-dom-and-virtual-dom-a-complete-guide-for-modern-web-development-fda452ccb496), [2](https://mithril.js.org/), [3](https://ganeshlawand2002.medium.com/3-new-angular-features-you-must-master-in-2026-d2ad2155a596), [4](https://www.educative.io/answers/what-is-the-difference-between-virtual-and-real-dom-react), [5](https://leapcell.io/blog/understanding-virtual-dom-and-why-svelte-solidjs-opt-out)]
+
+***
+
+### Does it diff to prevent losing input?
+
+**Yes.** Because Mithril updates existing DOM elements rather than replacing them, your form inputs, focus states, and text selections are completely safe during a redraw. \[[1](https://dev.to/jesperhoy/my-thoughts-on-mithriljs-319f)]
+
+If a user is typing inside an input field and a background `setInterval` triggers a global redraw, **the user will not lose focus, and their cursor position will not jump.**
+
+### The One Big Exception: The Need for `key`
+
+While Mithril is smart, it can get confused if you structurally reorder, delete, or insert elements dynamically inside a list (like an array of components or inputs). If you don't help it, Mithril might match the wrong virtual node to the wrong real DOM node, causing text inputs or checkboxes to get scrambled. \[[1](https://medium.com/@amitaknkpt/understanding-react-reconciliation-an-in-depth-examination-a86f968bc7e7)]
+
+To guarantee that inputs maintain their exact state when list items change, you must provide a unique **`key` attribute** to the elements: \[[1](https://dev.to/abhishek%5Fkumar%5Fd9009a7ae6/understanding-reconciliation-and-the-virtual-dom-in-react-4i3n)]
+
+javascript
+
+```
+// BAD: Mithril relies on index array positions. Moving items can scramble inputs!
+const BadList = {
+    view: () => m("ul", items.map(item =>
+        m("li", m("input", { type: "text" }))
+    ))
+};
+
+// GOOD: Unique keys tie the virtual element directly to the real DOM element!
+const GoodList = {
+    view: () => m("ul", items.map(item =>
+        m("li", { key: item.id }, [
+            m("span", item.name),
+            m("input", { type: "text" })
+        ])
+    ))
+};
+```
+
+Use code with caution.
+
+***
+
+### Advanced Tool: Skipping the JavaScript Phase entirely
+
+If you have a massive application and don't want Mithril to even _run_ the JavaScript `view` functions of certain sub-trees during a global redraw, you can use the **`onbeforeupdate`** lifecycle hook.
+
+By returning `false`, you tell Mithril: _"This component's data hasn't changed. Skip running its view function and reuse its cached Virtual DOM tree entirely."_
+
+javascript
+
+```
+const ExpensiveComponent = () => {
+    return {
+        onbeforeupdate: (vnode, oldVnode) => {
+            // Only re-run the view if the specific data prop actually changed
+            return vnode.attrs.dataId !== oldVnode.attrs.dataId;
+        },
+        view: (vnode) => m("div", "Tons of heavy elements here...")
+    };
+};
+```
+
+Use code with caution.
+
+Would you like to see a demonstration of **how to handle forms and two-way data binding** cleanly using this functional style, or should we explore **how to write unit tests** for these components without launching a full browser?
+
+- [link](https://ratfactor.com/mithril1)\
+  Dave's Guide to Mithril Part 1 - ratfactor\
+  Feb 10, 2015 — The answer is that Mithril redraws every mounted component on the page when a redraw is needed. If you think about it, this is an ...\
+  \
+  Ratfactor.com
+- [link](https://github.com/rohan-paul/Awesome-JavaScript-Interviews/blob/master/React/Virtual-DOM-and-Reconciliation-Algorithm.md)\
+  Awesome-JavaScript-Interviews/React/Virtual-DOM-and-Reconciliation-Algorithm.md at master · rohan-paul/Awesome-JavaScript-Interviews\
+  Virtual Dom is javascript object as similar to real DOM. On every mutation triggered either through “setState, dispatcher ” react ...\
+  \
+  GitHub
+- [link](https://blog.devgenius.io/dom-shadow-dom-and-virtual-dom-a-complete-guide-for-modern-web-development-fda452ccb496)\
+  DOM, Shadow DOM, and Virtual DOM: A Complete Guide for Modern Web Development\
+  Dec 2, 2025 — When your application state changes, the library creates a new Virtual DOM tree and compares it to the previous one using a diffin...\
+  \
+  \
+  Dev Genius
+
+Show all
+
+# 
 

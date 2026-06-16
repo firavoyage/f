@@ -22,9 +22,6 @@ pros and cons of state setstate, proxy, or signal
 
 react one way flow meaning
 
-compare state setstate, proxy (obj define prop), or signal function (no arg then getter, arg then setter)
-
-hyperscript, h(tag, props, ...children) or h(tag, props, children array)
-
 hyperscript h(Component, props) or Component(props)
 
+pros and cons of declarative auto rerender or imperative
