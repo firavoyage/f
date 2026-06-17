@@ -10,7 +10,8 @@ tmp
 yt-dlp \
   "https://music.youtube.com/watch?v=OArru5OkVKE&list=OLAK5uy_n-lE02j8pQkwGhsL5JLAPvbBAoAmxh9n8" \
   -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
-  -o "_/Iyowa/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
+  --match-filters "view_count > 100000" \
+  -o "_/Hiroji Miyamoto/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
 ```
 
 utata p
