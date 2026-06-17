@@ -33495,7 +33495,7 @@ they are static. i have backup. and i do not like games right now.
 
 17
 
-14 00 chat. <!-- reminisce. --> 04 40
+14 00 chat. <!-- reminisce. --> ~~14 40~~ 15 00
 
 ```md
 没有必要再提醒.
@@ -33516,9 +33516,21 @@ they are static. i have backup. and i do not like games right now.
 
 于是也仅作公开存档了. 这是自己的故事, 和任何人无关. 人们的思想并不是自己能操纵的. 现实世界里, 本就不应对不能完全控制的事物抱有任何期待. 爱的 spoiler 是分手, 人生的 spoiler 是离别. [^2] 现世中没有任何会长存. [^3]
 
-trivialness 的一种判定是伪科学. twitter 上的人, 常对中医, 生育率, 有所pi
+trivialness 的一种判定是伪科学. twitter 上的人, 常对中医, 生育率, (李新野?), 有所批评. [^5]
 
-adhd
+然而其自己却对如 adhd 这样的标签乐此不疲, 即使是很 high profile, 或者传统意义上成功的人.
+
+脑科学并不发达. 心理学一直都很启发式 (heuristic). 从前, 对于热衷与做题的人而不善于社交, 或者喜欢坐定不动, 对一个物件作研究的人, 人们称之为 nerd. [^6] 后来, 人们说阿斯伯格, adhd. 如果强, 就在加上 "高功能" 的标签. 区别在于, 后者使用大量术语, 似乎作为科学的一支. 另一些标签则是 "抑郁" "性别焦虑" 等. 然而这并不是什么仪器扫描的结果, 多是基于观测甚至问卷调查. 少年若被关在校园, 6 到 22 点, 6.5 天, 感到不适是显然的. 相比于这种显然, 传统疾病深刻与复杂得多.
+
+不知从何时其, 自己 sns 就总是时不时看到这个, 或者这些游戏. (自己是喜欢折腾与研究的人, sns 上自然多是 mtf, 开源社群参与者, 学生, 创作/创业者, alt tech, 这些)
+
+但, 因为路程, 也只是羡慕和愿望. 其实现实世界并没有变化, 只是高估了公里数, 低估了现代交通工具的速度.
+
+当时, 想着改变人生的愿望, 参与. 或者说, 这里能带给自己幸福. (人生与希望意义上的幸福, [^7])
+
+大概是, 那些有水平的, 令人羡慕的人都在这里. 自己也要成为这样的人. 引用一下 [雪](chyk.ink) 吧.
+
+
 
 mai life. jealous.
 
@@ -33527,16 +33539,13 @@ chyk
 rather public. antonino
 
 [^1]: cursor team, lex fridman podcast
-
   > there are not so many ppl in the world... that, like, make a difference
-
 [^2]: godish
-
 [^3]: clannad
-
 [^4]: astrodx, kanadedx, ai vid to level, ai first person temoto correction, 7srefcc, piracy hosting, pjsk unity res rev engineering and web porting, etc.
-
-
+[^5]: i mean critique, not necessarily criticism
+[^6]: hackers & painters, chapter 1
+[^7]: 幸せになれる隠しコマンドがあるらしい
 ```
 
 
