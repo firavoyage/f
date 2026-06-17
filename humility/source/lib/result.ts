@@ -1,14 +1,5 @@
 type ok<T> = Exclude<T, err>
-/**
- * no need to readonly, you wont modify it by default
- * 
- * todo
- * 
- * type and message are string?
- */
 type err = { type: any, message: any, [err_symbol]: true } & Partial<err_fs>
-// type err = Readonly<{ type: any, message: any, [err_symbol]: true }> & Partial<err_fs>
-// type err = Readonly<{ type: string | number | symbol, message: string | object, [err_symbol]: true }>
 type err_fs = { code: string, path: string, syscall: string, errno: number }
 
 /**
@@ -216,58 +207,3 @@ export function handle<F extends (...args: any[]) => any>(fn: F): (...args: Para
     }
   }
 }
-
-// function wrapper<F extends (...args: any[]) => any>(fn: F): (...args: Parameters<F>) => ReturnType<F> {
-//   return function(...args: Parameters<F>): ReturnType<F> {
-//     // Add custom wrapper logic here
-//     const result = fn(...args);
-//     // Add custom wrapper logic here
-//     return result;
-//   };
-// }
-
-// export function handle<T, E = err>(fn: Function): () => result<T, E> {
-//   return (...args) => {
-//     try {
-//       return fn(...args);
-//     } catch (error) {
-//       return err({ type: error, message: error });
-//     }
-//   }
-// }
-
-// export function handle_async<T, E = err>(fn: () => Promise<any>): () => Promise<result<T, E>> {
-//   return async (...args) => {
-//     try {
-//       return await fn(...args);
-//     } catch (error) {
-//       return err({ type: error, message: error });
-//     }
-//   }
-// }
-
-// type SyncResult<T, E = Error> = [E, null] | [null, T];
-// type AsyncResult<T, E = Error> = Promise<SyncResult<T, E>>;
-
-// export function safe<Args extends any[], R>(
-//   fn: (...args: Args) => R
-// ): (...args: Args) => R extends Promise<infer U> ? AsyncResult<U> : SyncResult<R> {
-//   return (...args: Args): any => {
-//     try {
-//       const result = fn(...args);
-
-//       // Check if the result is a Promise
-//       if (result instanceof Promise || (result && typeof (result as any).then === 'function')) {
-//         return (result as Promise<any>)
-//           .then((data) => [null, data])
-//           .catch((err) => [err, null]);
-//       }
-
-//       // Synchronous success
-//       return [null, result];
-//     } catch (err) {
-//       // Synchronous error
-//       return [err, null];
-//     }
-//   };
-// }

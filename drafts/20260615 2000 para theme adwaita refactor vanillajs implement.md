@@ -30087,5 +30087,721 @@ If your production files are still looking unminified, I can show you how to **c
 
 Show all
 
-# 
+# how to replace the nth children of a parent node
 
+You can replace the \\(n^{th}\\) child of a parent node in JavaScript by selecting that specific child and using the `replaceWith()` method, or by using the parent's `replaceChild()` method. \[[1](https://attacomsian.com/blog/javascript-dom-replace-an-element)]
+
+Here is how to do it using both approaches.
+
+### Method 1: Using `replaceWith()` (Recommended)
+
+This is the modern, cleanest approach. You target the child directly using `:nth-child` and swap it out. \[[1](https://mimo.org/glossary/css/n-th-child-selector), [2](https://cruip.com/tailwind-css-nth-child-selector-cheat-sheet/)]
+
+javascript
+
+```
+// 1. Create your new element
+const newElement = document.createElement("div");
+newElement.textContent = "I am the new child";
+
+// 2. Find the 3rd child (1-indexed in CSS selectors)
+const targetChild = document.querySelector("#parent-id > :nth-child(3)");
+
+// 3. Replace it
+if (targetChild) {
+  targetChild.replaceWith(newElement);
+}
+```
+
+Use code with caution.
+
+### Method 2: Using `replaceChild()` (Legacy)
+
+This older method requires you to call the function on the parent node and pass both the new node and the old node. Keep in mind that JavaScript child arrays are 0-indexed. \[[1](https://www.youtube.com/watch?v=n0lG2ZCq3Y4), [2](https://www.geeksforgeeks.org/html/html-dom-replacechild-method/), [3](https://dragonwarrior15.github.io/statistical-learning-notes/notes/programming%5Flanguages/cpp/cpp%5Fexercises%5F02.html)]
+
+javascript
+
+```
+const parent = document.getElementById("parent-id");
+
+// 1. Create your new element
+const newElement = document.createElement("div");
+newElement.textContent = "I am the new child";
+
+// 2. Get the 3rd child using 0-based indexing (index 2 = 3rd child)
+const oldChild = parent.children[2];
+
+// 3. Replace the child
+if (oldChild) {
+  parent.replaceChild(newElement, oldChild);
+}
+```
+
+Use code with caution.
+
+### Key Differences to Remember
+
+- **Indexing:** CSS `:nth-child(n)` starts counting at `1`. JavaScript `parent.children[n]` starts counting at `0`.
+- **Node Types:** `parent.children` only counts HTML elements. If you want to include text nodes and comments, use `parent.childNodes[n]` instead. \[[1](https://api.jquery.com/nth-child-selector/), [2](https://www.geeksforgeeks.org/javascript/how-to-get-the-child-element-of-a-parent-using-javascript/)]
+
+To help me write the exact code for your project, could you tell me:
+
+- What **type of element** are you inserting?
+
+- Do you prefer selecting the child by its **index number** or a **CSS class**?
+
+- Should it handle **text nodes** or only **HTML tags**?
+
+- [link](https://attacomsian.com/blog/javascript-dom-replace-an-element)\
+  How to replace an element using JavaScript\
+  Aug 8, 2020 — How to replace an element using JavaScript To replace a DOM element with another element, you can use the replaceChild() method. T...\
+  \
+  attacomsian.com
+
+- [link](https://mimo.org/glossary/css/n-th-child-selector)\
+  Master CSS n-th child selector to style elements dynamically\
+  :nth-child : The selector to target the nth child element of a parent element.\
+  \
+  Mimo
+
+- [link](https://cruip.com/tailwind-css-nth-child-selector-cheat-sheet/)\
+  Tailwind CSS Nth-Child Selector Cheat Sheet\
+  Feb 27, 2024 — Same pattern as the previous one, but starting from the end. It can be achieved replacing :nth-child() with :nth-last-child() .\
+  \
+  \
+  Cruip
+
+Show all
+
+## You said: i have to target textnode
+
+To target and replace a specific text node, you must use the `parent.childNodes` property instead of `children`. The `childNodes` list includes elements, text nodes, and comments. \[[1](https://developer.mozilla.org/en-US/docs/Web/API/Element/children), [2](https://code.tutsplus.com/how-to-find-the-parents-siblings-and-children-of-an-element-using-javascript--cms-106834t), [3](https://dev.to/fpaghar/deep-in-javascript-dom-traversal-2-300g)]
+
+Here is the exact code to replace the \\(n^{th}\\) text node.
+
+### The JavaScript Solution
+
+javascript
+
+```
+function replaceNthTextNode(parentId, n, newTextString) {
+  const parent = document.getElementById(parentId);
+  if (!parent) return;
+
+  // 1. Filter only the text nodes
+  const textNodes = Array.from(parent.childNodes).filter(
+    node => node.nodeType === Node.TEXT_NODE
+  );
+
+  // 2. Target the nth text node (converting 1-based input to 0-based index)
+  const targetNode = textNodes[n - 1];
+
+  // 3. Replace it with a new text node if found
+  if (targetNode) {
+    const newTextNode = document.createTextNode(newTextString);
+    targetNode.replaceWith(newTextNode);
+  }
+}
+
+// Example usage: Replace the 2nd text node inside #my-parent
+replaceNthTextNode("my-parent", 2, "This is the brand new text!");
+```
+
+Use code with caution.
+
+### Why regular methods fail here
+
+- **`parent.children` ignores text:** It only tracks HTML tags like or .
+- **Whitespace counts as text:** HTML enters blank text nodes for line breaks and spaces. Filtering by `nodeType === 3` (or `Node.TEXT_NODE`) ensures you only count actual text. \[[1](https://dev.to/mkday/how-to-find-out-if-an-element-has-children-in-javascript-iel), [2](http://www-db.deis.unibo.it/courses/TW/DOCS/w3schools/jsref/prop%5Fnode%5Fchildnodes.asp.html)]
+
+If your code isn't working as expected, tell me:
+
+- What does your **HTML structure** look like?
+- Are you trying to replace **blank whitespace** or **visible text**?
+
+I can help you debug the exact node structure.
+
+- [link](https://developer.mozilla.org/en-US/docs/Web/API/Element/children)\
+  Element: children property - Web APIs | MDN\
+  Apr 7, 2023 — Element. children includes only element nodes. To get all child nodes, including non-element nodes like text and comment nodes, us...\
+  \
+  MDN Web Docs
+- [link](https://code.tutsplus.com/how-to-find-the-parents-siblings-and-children-of-an-element-using-javascript--cms-106834t)\
+  How to Find the Parents, Siblings, and Children of an Element Using the JavaScript DOM | Envato Tuts+\
+  Apr 20, 2023 — The primary difference between these two is that childNodes will give back elements, text, and comment nodes. On the other hand, c...\
+  \
+  \
+  Envato Tuts+
+- [link](https://dev.to/fpaghar/deep-in-javascript-dom-traversal-2-300g)\
+  2 Deep in Javascript DOM Traversal 2\
+  Mar 1, 2024 — childNodes Property : Returns a NodeList containing all child nodes, including elements, text nodes, and comment nodes.\
+  \
+  \
+  DEV Community
+
+Show all
+
+## You said: the exact method to replace
+
+The exact native DOM method to replace an existing node with a new one is **`replaceWith()`** (for the node itself) or **`replaceChild()`** (called on the parent). \[[1](https://www.youtube.com/watch?v=n0lG2ZCq3Y4), [2](https://coreui.io/answers/how-to-replace-an-element-in-javascript/), [3](https://fa.javascript.info/modifying-document), [4](https://javascript.plainenglish.io/how-to-replace-a-dom-element-in-place-using-javascript-e6aba3f8177f)]
+
+When dealing with a text node, `replaceWith()` is the most direct native method. \[[1](https://coreui.io/answers/how-to-replace-an-element-in-javascript/)]
+
+### 1. Using `targetNode.replaceWith()`
+
+This is the modern native method. You call it directly on the text node you want to destroy. \[[1](https://coreui.io/answers/how-to-replace-an-element-in-javascript/)]
+
+javascript
+
+```
+// Creates the new text piece
+const newTextNode = document.createTextNode("Hello World");
+
+// Replaces the old text node instantly
+oldTextNode.replaceWith(newTextNode);
+```
+
+Use code with caution.
+
+### 2. Using `parent.replaceChild()`
+
+This is the legacy native method. It must be called on the parent element, passing the new node first and the old node second. \[[1](https://javascript.plainenglish.io/how-to-replace-a-dom-element-in-place-using-javascript-e6aba3f8177f), [2](https://gomakethings.com/articles/how-to-replace-an-element-and-its-content-using-vanilla-js/)]
+
+javascript
+
+```
+// Replaces the old node via the parent
+parent.replaceChild(newTextNode, oldTextNode);
+```
+
+Use code with caution.
+
+### 3. Alternative: `nodeValue` (Fastest for Text) \[[1](https://www.geeksforgeeks.org/jquery/how-to-replace-text-after-a-nested-tag-in-jquery/)]
+
+If you only want to change the text content without destroying and recreating the node object, you can update its value directly. This is technically a modification rather than a replacement, but it achieves the same visual result.
+
+javascript
+
+```
+// Changes the text inside the node directly
+oldTextNode.nodeValue = "Hello World";
+```
+
+Use code with caution.
+
+To give you the exact line of code, could you show me:
+
+- How you are currently **finding or storing** the `oldTextNode` variable?
+
+- If the replacement content is **plain text** or **HTML tags**?
+
+- [link](https://www.youtube.com/watch?v=n0lG2ZCq3Y4)\
+  Replace child elements with replaceChild() - JavaScript DOM Tutorial\
+  Feb 13, 2019 — In this video we're going to take a look at the replaceChild() method, part of the JavaScript Document Object Model (DOM). replace...\
+  \
+  \
+  YouTube
+
+- [link](https://coreui.io/answers/how-to-replace-an-element-in-javascript/)\
+  How to replace an element in JavaScript · CoreUI\
+  Nov 25, 2025 — Use the replaceWith() method to replace existing elements with new content or elements in the DOM.\
+  \
+  CoreUI
+
+- [link](https://fa.javascript.info/modifying-document)\
+  Modifying the document\
+  node. replaceWith(... nodes or strings) –- replaces node with the given nodes or strings.\
+  \
+  \
+  The Modern JavaScript Tutorial
+
+Show all
+
+## You said: i do not have children node references. i only have parent and index.
+
+To replace a child node using only the parent reference and an index, use the native **`parent.replaceChild()`** method combined with **`parent.childNodes[index]`**.
+
+Here is the exact line of code to use.
+
+### The Exact Solution
+
+javascript
+
+```
+// 0-based indexing: index 0 is the first child node
+parent.replaceChild(newTextNode, parent.childNodes[index]);
+```
+
+Use code with caution.
+
+### Full Working Example
+
+javascript
+
+```
+// 1. Your existing parent and index
+const parent = document.getElementById("my-parent");
+const index = 2; // Targets the 3rd child node (includes text nodes)
+
+// 2. Create the new text node
+const newTextNode = document.createTextNode("Your new text here");
+
+// 3. Perform the replacement safely
+if (parent.childNodes[index]) {
+  parent.replaceChild(newTextNode, parent.childNodes[index]);
+}
+```
+
+Use code with caution.
+
+### Critical Warning About Indexing
+
+- **`childNodes` includes whitespace:** Every line break or space in your HTML source code creates an invisible text node.
+- **The index shifts:** If your HTML looks like , index `0` is the newline text node, and index `1` is the . \[[1](https://gist.github.com/47b0264932a385a1ecb1)]
+
+If your index is failing to target the right text, let me know:
+
+- Is your index **0-based** (0, 1, 2...) or **1-based** (1, 2, 3...)?
+- Does your index count **all nodes** (including spaces) or **only actual text strings**?
+
+I can adjust the math to make sure it hits the exact node you need.
+
+- [link](https://gist.github.com/47b0264932a385a1ecb1)\
+  DOM Manipulation JavaScript methods and properties · GitHub\
+  'childNodes' contains all nodes, including text nodes consisting entirely of whitespace,\
+  \
+  Gist
+
+## You said: it must be a child. old\_node.parentNode?.replaceChild(old\_node, new\_node)
+
+You have the parameters reversed in your code snippet. The native `replaceChild()` method requires the **new node first** and the **old node second**. \[[1](https://code.tutsplus.com/insert-replace-or-remove-child-elements-in-javascript--cms-106820t)]
+
+Also, if you do not have a reference to `old_node` ahead of time, you must extract it from the parent using the index first.
+
+Here is the exact corrected line of code using your structure:
+
+### The Corrected Code
+
+javascript
+
+```
+// Correct parameter order: (new_node, old_node)
+parent.replaceChild(new_node, parent.childNodes[index]);
+```
+
+Use code with caution.
+
+### Why your exact snippet will fail or throw errors
+
+1. **Wrong Parameter Order:** Passing `(old_node, new_node)` tells the browser to insert the old node and look for the new node to delete. Since the new node is not yet in the DOM, the browser will throw a `NotFoundError` DOM exception. \[[1](https://stackoverflow.com/questions/45516917/how-to-replace-a-dom-element-with-another)]
+2. **Missing `old_node` Reference:** Since you mentioned you only have the parent and the index, `old_node` does not exist yet in your scope. You must grab it via `parent.childNodes[index]`.
+
+If you want to use the optional chaining approach safely, you can write it like this:
+
+javascript
+
+```
+const old_node = parent.childNodes[index];
+
+if (old_node) {
+  parent.replaceChild(new_node, old_node);
+}
+```
+
+Use code with caution.
+
+To make sure this executes perfectly without crashing your script, tell me:
+
+- What **variable name** are you using for your new text content?
+
+- Do you need a safety fallback in case the **index is out of bounds**?
+
+- [link](https://code.tutsplus.com/insert-replace-or-remove-child-elements-in-javascript--cms-106820t)\
+  Insert, Replace, or Remove Child Elements in JavaScript | Envato Tuts+\
+  Apr 28, 2023 — Replace Child Elements You can use the replaceChild() method if you want to replace a child node with a new node within a parent. ...\
+  \
+  \
+  Envato Tuts+
+
+- [link](https://stackoverflow.com/questions/45516917/how-to-replace-a-dom-element-with-another)\
+  How to replace a DOM element with another?\
+  Aug 4, 2017 — 2 Answers 2 newChild is the new node to replace oldChild. If it already exists in the DOM, it is first removed. oldChild is the ex...\
+  \
+  Stack Overflow
+
+# Uncaught DOMException: Failed to execute 'replaceChild' on 'Node': The node to be replaced is not a child of this node.
+
+This error happens because JavaScript is trying to remove a child node from a parent that does not actually contain it. The `parent.replaceChild(newChild, oldChild)` method strictly requires `oldChild` to be a direct offspring of `parent`. \[[1](https://issues.chromium.org/41142431), [2](https://www.javascripttutorial.net/javascript-dom/javascript-removechild/), [3](https://forums.oracle.com/ords/apexds/post/exception-when-delete-node-from-tree-8647), [4](https://doc.qt.io/qt-6/qdomnode.html)]
+
+Here is how to diagnose and fix the issue.
+
+### Common Causes
+
+- **Wrong Parent Referenced:** The target element belongs to a different container.
+- **State Sync Issues:** The DOM changed before the code executed (common in React/Vue).
+- **Double Execution:** The code ran twice, and the node was already replaced.
+
+### Quick Fix (Safest Approach)
+
+Instead of guessing the parent, use the `parentNode` property of the target element itself. This guarantees the relationship is correct.
+
+javascript
+
+```
+// Change this:
+parentElement.replaceChild(newChild, oldChild);
+
+// To this:
+if (oldChild && oldChild.parentNode) {
+    oldChild.parentNode.replaceChild(newChild, oldChild);
+}
+```
+
+Use code with caution.
+
+### Modern Alternative
+
+If you do not need to support ancient browsers (like Internet Explorer), use the modern `replaceWith()` method. It does not require a parent reference at all. \[[1](https://developer.mozilla.org/en-US/docs/Web/API/Element/replaceWith)]
+
+javascript
+
+```
+// Modern, clean approach
+if (oldChild) {
+    oldChild.replaceWith(newChild);
+}
+```
+
+Use code with caution.
+
+### Debugging Steps
+
+If the error persists, place this debug log right before your replacement code to verify the structure:
+
+javascript
+
+```
+console.log("Actual Parent:", oldChild.parentNode);
+console.log("Assumed Parent:", parentElement);
+console.log("Are they equal?:", oldChild.parentNode === parentElement);
+```
+
+Use code with caution.
+
+To help narrow this down, could you share the **code snippet** where this error occurs? If you are using a specific framework like **React, Vue, or vanilla JavaScript**, letting me know will help provide a more tailored fix.
+
+- [link](https://issues.chromium.org/41142431)\
+  \`parentNode\` of DOM node not updated after removing node from DOM \[41142431] - Chromium\
+  You'll notice a JavaScript exception in Chrome: Uncaught NotFoundError: Failed to execute 'removeChild' on 'Node': The node to be ...\
+  \
+  Chromium
+- [link](https://www.javascripttutorial.net/javascript-dom/javascript-removechild/)\
+  JavaScript removeChild() By Practical Examples\
+  The childNode is the child node of the parentNode that you want to remove. If the childNode is not the child node of the parentNod...\
+  \
+  www.javascripttutorial.net
+- [link](https://forums.oracle.com/ords/apexds/post/exception-when-delete-node-from-tree-8647)\
+  exception when delete node from tree\
+  May 17, 2008 — So it looks like you're trying to remove a node that isn't there--or maybe that isn't a child of the parent. I don't do GUIs, so I...\
+  \
+  \
+  Oracle Forums
+
+Show all
+
+# vscode auto save
+
+To turn on Auto Save in **Visual Studio Code**, <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">click <strong>File > Auto Save</strong> from the top menu bar</mark>. \[[1](https://code.visualstudio.com/docs/editing/codebasics), [2](https://medium.com/@codingbeautytutorials/vscode-toggle-autosave-b8f56450b3e3)]
+
+Alternatively, you can customize how and when files save automatically through your editor settings. \[[1](https://code.visualstudio.com/docs/editing/codebasics)]
+
+### Configure Auto Save Options \[[1](https://www.youtube.com/shorts/c545bn5TGew)]
+
+1. Open settings using the shortcut `Ctrl + ,` on Windows/Linux or `Cmd + ,` on macOS.
+2. Search for `Auto Save` in the top search bar.
+3. Locate the **Files: Auto Save** dropdown menu and choose one of the following modes: \[[1](https://stackoverflow.com/questions/53181761/auto-saving-backup-copies-of-files-upon-change-with-visual-studio-code), [2](https://medium.com/@ssjewcw/dev-tips-vscode-auto-save-7ed88d31363e), [3](https://www.reddit.com/r/techtalktutorials/comments/1kf3o6w/how%5Fto%5Fchange%5Fthe%5Fauto%5Fsave%5Fpreferences%5Fin%5Fvs/), [4](https://se-education.org/guides/tutorials/vscUsefulSettings.html), [5](https://www.mongodb.com/docs/mongodb-vscode/settings/)]
+
+- **off**: Disables auto save entirely (default).
+- **afterDelay**: Saves the file automatically after a configured delay period.
+- **onFocusChange**: Saves the file when you click out of the active editor window.
+- **onWindowChange**: Saves the file when you switch to another application completely. \[[1](https://code.visualstudio.com/docs/editing/codebasics), [2](https://www.youtube.com/shorts/c545bn5TGew), [3](https://www.youtube.com/watch?v=OpZEeQk2PC4), [4](https://www.youtube.com/watch?v=Jl97OCvs1ac), [5](https://stackoverflow.com/questions/53181761/auto-saving-backup-copies-of-files-upon-change-with-visual-studio-code), [6](https://www.youtube.com/watch?v=12aRcJZmdtw)]
+
+### Adjusting the Delay Time
+
+If you select **afterDelay**, you can control the exact wait time: \[[1](https://code.visualstudio.com/docs/editing/codebasics), [2](https://stackoverflow.com/questions/53181761/auto-saving-backup-copies-of-files-upon-change-with-visual-studio-code), [3](https://www.youtube.com/watch?v=Jl97OCvs1ac)]
+
+1. Scroll down to the **Files: Auto Save Delay** setting.
+2. Change the value, which is measured in milliseconds.
+3. For example, entering `1000` will save your code exactly 1 second after you stop typing. \[[1](https://stackoverflow.com/questions/53181761/auto-saving-backup-copies-of-files-upon-change-with-visual-studio-code), [2](https://community.intersystems.com/post/comfortable-vscode-auto-save-and-objectscript-compileonsave-settings), [3](https://www.youtube.com/watch?v=12aRcJZmdtw)]
+
+### Direct JSON Editing
+
+If you prefer configuring VS Code via your global `settings.json` file, add these lines: \[[1](https://stackoverflow.com/questions/53181761/auto-saving-backup-copies-of-files-upon-change-with-visual-studio-code), [2](https://docs.rendercv.com/user%5Fguide/how%5Fto/set%5Fup%5Fvs%5Fcode%5Ffor%5Frendercv/)]
+
+json
+
+```
+{
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 1000
+}
+```
+
+Use code with caution.
+
+If you'd like, let me know if your auto-save is **not working** or if it is conflicting with extension tools like **Prettier auto-formatting**. \[[1](https://sapegin.me/blog/vscode-autosave/)]
+
+- [link](https://code.visualstudio.com/docs/editing/codebasics)\
+  Basic editing - Visual Studio Code\
+  The user setting Editor: Column Selection controls this feature. Once this mode is entered, as indicated in the Status bar, the mo...\
+  Visual Studio Code
+- [link](https://stackoverflow.com/questions/53181761/auto-saving-backup-copies-of-files-upon-change-with-visual-studio-code)\
+  Auto-saving backup copies of files upon change with Visual ...\
+  Nov 6, 2018 — Yes, Visual Studio Code can auto-save changes on files as you make changes. It also allows you set a delay for how long to wait be...\
+  Stack Overflow
+- [link](https://www.youtube.com/watch?v=OpZEeQk2PC4)\
+  How To Enable Or Disable Auto Save In VS Code | Visual ...\
+  Apr 30, 2025 — I have VS Code opened up now to enable or disable autosave in VS Code by default autosave is not enabled. if I go up here and I st...\
+  1:21\
+  YouTube·Tech Talk Tutorials
+
+Show all
+
+## You said: will save delay 100ms cause problems on parceljs
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">Yes, setting your auto-save delay to <strong>100ms will highly likely cause development problems</strong> when using <span style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><a rel="noopener" href="https://parceljs.org/" style="margin: 0px; text-decoration-thickness: 1px; text-decoration-style: solid; text-decoration-color: rgb(153, 195, 255); border-bottom: 0px none rgb(153, 195, 255);">ParcelJS</a></span></mark>. \[[1](https://parceljs.org/blog/beta3/)]
+
+While a 100ms delay gives you nearly instant Hot Module Replacement (HMR), it triggers severe side effects because it saves your progress before you finish typing a coherent thought. \[[1](https://blog.bitsrc.io/discovering-modern-javascript-build-tools-comparing-parcel-rollup-and-snowpack-c4a46e22ae06)]
+
+### The Major Problems You Will Face
+
+- **Constant Build Crashes and Console Noise**: 100ms is shorter than the average human typing pause. As you type a variable name or hook, VS Code will save broken, incomplete syntax (e.g., `con`, `const m`). Parcel's watcher will immediately try to compile this invalid code, throwing endless syntax errors in your terminal and browser overlay. \[[1](https://www.linkedin.com/posts/tapasadhikary%5Fdo-you-use-the-auto-save-feature-of-vs-code-activity-7277283175628730368-u5K3), [2](https://github.com/microsoft/vscode/issues/200881)]
+- **Infinite Build Loops**: Parcel 2 builds are fast, but triggering a fresh compilation every 100ms creates a backlog of build tasks. Your CPU usage will spike as Parcel constantly tries to clear its build queue, causing your development server to lag or crash. \[[1](https://github.com/parcel-bundler/parcel/issues/5122), [2](https://learn.microsoft.com/en-us/answers/questions/5820928/visual-studio-code-lag-when-saving-a-file)]
+- **Corrupted State and Broken Fast Refresh**: If you are building a React, Vue, or Svelte app, Parcel uses Fast Refresh to preserve component state during updates. Forcing a build on half-written code can break the runtime tree, forcing the browser to do a full page reload and destroying your local testing state. \[[1](https://blog.bitsrc.io/discovering-modern-javascript-build-tools-comparing-parcel-rollup-and-snowpack-c4a46e22ae06), [2](https://medium.com/@parthchovatiya/parcel-all-you-need-to-know-as-a-software-engineer-8a7f463f15b3)]
+- **Cursor Disruption and Formatter Fights**: If you use code formatters like [Prettier](https://prettier.io/) on save, a 100ms threshold triggers formatting mid-word. This results in your cursor aggressively "jumping" around the screen, overwriting characters, or breaking your formatting flow. \[[1](https://github.com/microsoft/vscode/issues/240521), [2](https://github.com/microsoft/vscode/issues/200881)]
+
+### Recommended Solutions
+
+Instead of 100ms, use one of these alternative configurations to get the same "instant" feel without ruining your pipeline:
+
+### Option 1: The Balanced Delay (Recommended)
+
+Increase the delay to **at least 1000ms (1 second)**. This provides enough padding for you to finish a line of code before a build triggers: \[[1](https://dev.to/rabeehco/simplify-vs-code-ditch-your-auto-save-extension-today-32gk)]
+
+json
+
+```
+"files.autoSave": "afterDelay",
+"files.autoSaveDelay": 1000
+```
+
+Use code with caution.
+
+### Option 2: Focus Change (The Best Alternative)
+
+Set auto-save to `onFocusChange`. Your files will save instantly the exact millisecond you click away from VS Code to check your browser, ensuring Parcel compiles only fully completed thoughts: \[[1](https://www.youtube.com/watch?v=k-nCANoO%5FMs\&t=7)]
+
+json
+
+```
+"files.autoSave": "onFocusChange"
+```
+
+Use code with caution.
+
+Are you currently seeing **terminal errors** or experiencing **high CPU usage** while running your Parcel project? Let me know and we can optimize your setup.
+
+- [link](https://www.linkedin.com/posts/tapasadhikary%5Fdo-you-use-the-auto-save-feature-of-vs-code-activity-7277283175628730368-u5K3)\
+  Do you use the Auto Save feature of VS Code? | Tapas Adhikary\
+  Dec 24, 2024 — ... for one of our devs. turned out that format on save wasn't being triggered from this auto-save feature. something to look into...\
+  LinkedIn·Tapas Adhikary
+- [link](https://github.com/microsoft/vscode/issues/240521)\
+  file.autoSave = afterDelay causes cursor to jump around with ...\
+  Feb 12, 2025 — As of the latest update, the file.autoSave setting causes the cursor to jump around when set to afterDelay with a very low delay t...\
+  GitHub
+- [link](https://www.youtube.com/watch?v=k-nCANoO%5FMs\&t=7)\
+  How To Change The Auto Save Preferences In VS Code\
+  May 4, 2025 — this is going to be a video tutorial on how to change the autosave preferences in VS Code. let me jump over to VS Code. here. I ha...\
+  2m\
+  YouTube·Tech Talk Tutorials
+
+Show all
+
+## You said: will onfocuschange cause problems if vscode oom and crashes
+
+No, `onFocusChange` **will not cause additional data loss problems** if VS Code runs out of memory (OOM) and crashes.
+
+In fact, it is actually safer than relying on manual saving, though it behaves slightly differently than a timed auto-save during a catastrophic crash.
+
+### How VS Code Handles Crashes (Hot Exit)
+
+VS Code has a built-in safety feature called **Hot Exit**, which is active by default. \[[1](https://github.com/microsoft/vscode/issues/104690), [2](https://code.visualstudio.com/docs/editing/codebasics)]
+
+- **The Backup System**: VS Code constantly writes your unsaved changes to a separate, internal backup directory in the background. It does this automatically, completely independent of your Auto Save settings. \[[1](https://code.visualstudio.com/blogs/2016/11/30/hot-exit-in-insiders)]
+- **The Recovery**: If VS Code crashes due to an OOM error, your underlying source files on your hard drive will remain unchanged (reflecting the state of your last intentional focus change).
+- **The Restart**: When you relaunch VS Code after the crash, the Hot Exit system reads the backup cache. It will completely restore all your unsaved edits exactly as they were right before the crash, showing a small dot next to the file name to indicate unsaved changes. \[[1](https://code.visualstudio.com/docs/editing/codebasics)]
+
+### Comparing `onFocusChange` vs `afterDelay` in an OOM Crash
+
+| Feature / Behavior \[[1](https://code.visualstudio.com/docs/editing/codebasics)] | `onFocusChange`                                                    | `afterDelay` (e.g., 1000ms)                                                            |
+| -------------------------------------------------------------------------------- | ------------------------------------------------------------------ | -------------------------------------------------------------------------------------- |
+| **State of your actual files on disk**                                           | Saved up to the last time you left the editor window.              | Saved up to the last 1 second of typing.                                               |
+| **Hot Exit Backup Protection**                                                   | **Active.** Backs up text continuously.                            | **Active.** Backs up text continuously.                                                |
+| **Risk of losing progress**                                                      | **Extremely Low.** Hot Exit recovers your text on reboot.          | **Extremely Low.** Hot Exit recovers your text on reboot.                              |
+| **ParcelJS Build State after crash**                                             | Browser shows the last working state from your last window switch. | Browser might show a broken state if it saved a half-typed word right before crashing. |
+
+### The Only Real Risk: Hard OS Crashes
+
+The only time you would lose work is if VS Code crashes **and** your computer simultaneously loses power or the operating system crashes. In that rare scenario, the Hot Exit backup cache itself could become corrupted. If you work in an environment with unstable power or hardware, a timed delay (`afterDelay`: `1000`) is safer because it updates the actual source file more frequently.
+
+If your VS Code is currently **hitting OOM limits or lagging heavily**, let me know your **project size** or **what plugins you are running** so we can stop the crashes entirely.
+
+- [link](https://github.com/microsoft/vscode/issues/104690)\
+  Missing prompt to save changes when closing VSCode · Issue #104690 · microsoft/vscode\
+  Aug 14, 2020 — Tyriar commented on Sep 9, 2020 We don't plan on making these changes, hot exit is largely modelled after other editors which acts...\
+  \
+  \
+  GitHub
+- [link](https://code.visualstudio.com/docs/editing/codebasics)\
+  Basic editing\
+  By default, VS Code remembers unsaved changes to files when you exit. Hot exit is triggered when the application is closed via Fil...\
+  \
+  \
+  Visual Studio Code
+- [link](https://code.visualstudio.com/blogs/2016/11/30/hot-exit-in-insiders)\
+  Hot Exit Comes to Insiders\
+  Nov 30, 2016 — The way hot exit works is to periodically make backups of unsaved files. If VS Code ( Visual Studio Code ) happens to crash, a bac...\
+  \
+  \
+  Visual Studio Code
+
+## You said: does the hot exit save every type i make
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">No, Hot Exit does not save on literally every keystroke</mark>, but it **saves your text incrementally and silently** a split second after you stop typing. \[[1](https://code.visualstudio.com/docs/editing/codebasics), [2](https://code.visualstudio.com/blogs/2016/11/30/hot-exit-in-insiders), [3](https://developercommunity.visualstudio.com/t/option-to-auto-save-the-editor-pages/371187)]
+
+It manages backups completely in the background without affecting your actual files or triggering [ParcelJS](https://parceljs.org/) builds. \[[1](https://developercommunity.visualstudio.com/t/option-to-auto-save-the-editor-pages/371187)]
+
+### How the Backup Timing Actually Works
+
+- **The Content Watcher**: VS Code monitors your file buffer for changes. When you type, it registers that the document is "dirty" (unsaved). \[[1](https://superuser.com/questions/1225368/visual-studio-code-unsaved-files-location), [2](https://code.visualstudio.com/docs/editing/codebasics), [3](https://code.visualstudio.com/docs/editing/codebasics), [4](https://code.visualstudio.com/blogs/2016/11/30/hot-exit-in-insiders)]
+- **The Idle Delay**: It waits for a very brief pause in typing—usually under a second—to write a snapshot of your text to its dedicated `Backups` system folder. \[[1](https://stackoverflow.com/questions/42635755/how-does-visual-studio-code-recover-data-after-a-crash), [2](https://code.visualstudio.com/blogs/2016/11/30/hot-exit-in-insiders)]
+- **Zero Impact on Tools**: Because Hot Exit writes only to an internal temporary directory (`AppData/Roaming/Code/Backups` on Windows), your project files on disk remain untouched. \[[1](https://developercommunity.visualstudio.com/t/option-to-auto-save-the-editor-pages/371187), [2](https://stackoverflow.com/questions/42635755/how-does-visual-studio-code-recover-data-after-a-crash), [3](https://superuser.com/questions/1225368/visual-studio-code-unsaved-files-location)]
+
+### Why This Pair Perfect with `onFocusChange`
+
+Because Hot Exit acts as an invisible safety net, you can confidently set your real Auto Save to `onFocusChange`.
+
+If you are typing a long function and VS Code suddenly runs out of memory (OOM) and crashes mid-sentence:
+
+1. **Your project file on disk** will safely contain the code from the last time you switched windows.
+2. **ParcelJS** will never have seen or tried to compile your half-written function, keeping your build environment stable.
+3. **The Hot Exit backup** will have captured your latest text changes right before the crash occurred.
+4. **Upon reopening VS Code**, it reads that backup directory and fully restores your half-written function onto your screen. \[[1](https://stackoverflow.com/questions/42635755/how-does-visual-studio-code-recover-data-after-a-crash), [2](https://code.visualstudio.com/blogs/2016/11/30/hot-exit-in-insiders), [3](https://developercommunity.visualstudio.com/t/option-to-auto-save-the-editor-pages/371187)]
+
+Would you like help verifying your **Hot Exit configuration** or checking your settings to ensure your backups are completely active?
+
+- [link](https://code.visualstudio.com/docs/editing/codebasics)\
+  Basic editing - Visual Studio Code\
+  These changes are not yet saved to disk, but VS Code automatically backs them up so they can be restored if the application closes...\
+  Visual Studio Code
+- [link](https://code.visualstudio.com/blogs/2016/11/30/hot-exit-in-insiders)\
+  Hot Exit Comes to Insiders\
+  Nov 30, 2016 — Hot exit is a feature in Visual Studio Code that periodically backs up unsaved files. It's enabled by default in the Insiders buil...\
+  Visual Studio Code
+- [link](https://developercommunity.visualstudio.com/t/option-to-auto-save-the-editor-pages/371187)\
+  Option to Auto Save the editor pages - Developer Community\
+  Feb 1, 2019 — Try this in VS Code to see what I mean: \* Launch VS Code. \* Open Settings (Ctrl + ,) and enable Files: Hot Exit (i.e. not off ). \*\
+  Visual Studio Developer Community
+
+Show all
+
+## You said: where on ubuntu
+
+On Ubuntu, VS Code stores its Hot Exit backup files in the following directory:
+
+`~/.config/Code/Backups/` \[[1](https://superuser.com/questions/1225368/visual-studio-code-unsaved-files-location)]
+
+If you are using the **Insiders** version of VS Code, the path is:
+
+`~/.config/Code - Insiders/Backups/`
+
+### How to Navigate to the Backups Folder
+
+You can jump directly into this directory using your terminal:
+
+bash
+
+```
+cd ~/.config/Code/Backups/
+```
+
+Use code with caution.
+
+### Inside the Backups Folder
+
+Inside this folder, you will not see your original file names. Instead, you will find:
+
+- A `workspaces.json` file that maps your project paths.
+- Subfolders containing folders named with long MD5/SHA hashes.
+- Inside those subfolders, your unsaved code files are stored as raw text files named after internal IDs. \[[1](https://megamorf.gitlab.io/2020/06/30/vs-code-unsaved-files-location/)]
+
+Would you like a quick command to **search for specific text** inside those backup files if you are trying to recover a lost script?
+
+- [link](https://superuser.com/questions/1225368/visual-studio-code-unsaved-files-location)\
+  windows - Visual Studio Code unsaved files location\
+  Jul 3, 2017 — For Linux users they are found at ~/. config/Code/Backups .\
+  \
+  \
+  Super User
+- [link](https://megamorf.gitlab.io/2020/06/30/vs-code-unsaved-files-location/)\
+  VS Code unsaved files location\
+  Jun 30, 2020 — VS Code unsaved files location At that Backups folder location, you can also look at the workspaces. json file; it will list the n...\
+  \
+  GitLab
+
+## You said: my vscode is working normally. backups are empty
+
+That is completely normal and means your system is working exactly as it should.
+
+The `Backups` folder only holds data for **actively unsaved files**.
+
+### Why Your Folder is Empty Right Now
+
+- **All Files are Saved**: Because your files are currently saved on disk, VS Code has no reason to maintain temporary backup copies.
+- **Automatic Cleanup**: The moment you save a file—or when `onFocusChange` triggers a save—VS Code immediately deletes the corresponding backup file from that folder to save space.
+
+### How to Test and Verify it is Working
+
+If you want to see the Hot Exit system actively working, follow these quick steps:
+
+1. Open a project file in VS Code.
+
+2. Type a few random characters so the file becomes "dirty" (shows the unsaved dot indicator). **Do not save it.**
+
+3. Open your Ubuntu terminal and check the folder again:\
+   bash
+
+<!---->
+
+```
+ls ~/.config/Code/Backups/
+```
+
+Use code with caution.
+4\. You will now see a workspace folder appear. Digging into it will reveal a text file containing your unsaved changes.
+5\. Go back to VS Code and press `Ctrl + S` to save. Check the terminal again, and the folder will instantly be empty. \[[1](https://www.coderedcorp.com/blog/using-vs-code-with-a-legacy-net-project/), [2](https://github.com/microsoft/vscode/issues/70433)]
+
+Would you like to know how to adjust your configuration so that VS Code **remembers your unsaved tabs** even when you close the entire window?
+
+- [link](https://www.coderedcorp.com/blog/using-vs-code-with-a-legacy-net-project/)\
+  Using VS Code with a Legacy .NET Project — CodeRed\
+  Jul 2, 2019 — 8. Open Your Project Directory with VS Code This can be done from the windows explorer context menu, or from with VS Code under Fi...\
+  \
+  \
+  www.coderedcorp.com
+- [link](https://github.com/microsoft/vscode/issues/70433)\
+  Crashes on opening large files · Issue #70433 · microsoft/vscode\
+  Mar 13, 2019 — Every time I start Code, it will reopen the 550MB CSV, but show the truncated file contains as unsaved changes.\
+  \
+  \
+  GitHub
