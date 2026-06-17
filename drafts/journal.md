@@ -33495,7 +33495,7 @@ they are static. i have backup. and i do not like games right now.
 
 17
 
-14 00 chat. <!-- reminisce. --> ~~14 40~~ 15 00 <!-- 15 20? -->
+14 00 chat. <!-- reminisce. --> ~~14 40~~ ~~15 00~~ 15 20
 
 ```md
 没有必要再提醒.
@@ -33507,6 +33507,8 @@ they are static. i have backup. and i do not like games right now.
 显然是自私的. 自己相信 psychological egoism, 也不必掩饰什么.
 
 "诉诸管理者封禁" 颇有一种民粹的意味. 当然, 这是属于你们的力量. 如果你们执意, 希望你们能实现愿望.
+
+<!-- 原本在机器质量上立论, 但现在想也完全不必. 总会按照自己的心意游玩, 与自己的强弱无关, 与任何人的意见无关. -->
 
 最初, 一直不作回应. 这个世界上没有那么多人. [^1]
 
@@ -33544,7 +33546,7 @@ trivialness 的一种判定是伪科学. twitter 上的人, 常对中医, 生育
 
 舞萌.
 
-rather public. antonino
+<!-- 索性也不私聊发送了, 毕竟无论如何也可以被不带 consent 地公开 (无效打码), ~~像我一样呢 [^10]~~. -->
 
 [^1]: cursor team, lex fridman podcast
   > there are not so many ppl in the world... that, like, make a difference
@@ -33556,6 +33558,7 @@ rather public. antonino
 [^7]: 幸せになれる隠しコマンドがあるらしい
 [^8]: 我与地坛
 [^9]: 等待戈多
+[^10]: there was an [italian](ntonino.eu) who reached me in a summer vacation from my comment on a github issue. i appreciated him, and archived our messages publicly. everyone on the open internet could access, but no one would know ive published somewhere, as it's not an sns with proactive recommendation (and idk if it could be indexed by google). he self searched maybe and found and talked to me seriously and blocked me. it might be expected, at the end of the day i realized, as it's not easy for him to find my contact (i do not list on the front page of my profile) in the first place so he might be capable of deep browsing.
 ```
 
 
