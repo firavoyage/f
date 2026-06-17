@@ -1,5 +1,7 @@
 import { ChildProcess } from "node:child_process"
 import { cloneDeep } from 'lodash';
+import { invalid_input } from "lib/file";
+import chalk from "chalk";
 
 let app
 let vdom
@@ -8,11 +10,11 @@ let current_vnode
 const pending_effects = new Set()
 
 type vnode = {
-  tag,
-  props,
-  children,
-  node,
-  dispose?,
+  tag: string | Function,
+  props: Object,
+  children: vnode[],
+  node: Node,
+  dispose?: Set<Function>,
   states?
 }
 
@@ -154,7 +156,7 @@ function create_node(vnode: vnode | string) {
 
   if (typeof vnode == 'string') {
     return document.createTextNode(vnode)
-  } 
+  }
 
   if (typeof vnode.tag == 'function') {
     const prev_vnode = current_vnode
@@ -189,6 +191,8 @@ function create_node(vnode: vnode | string) {
 }
 
 function dispose(vnode: vnode) {
+  log('dispose', vnode)
+
   if (vnode.dispose) {
     for (const cleanup of vnode.dispose) {
       cleanup()
@@ -197,6 +201,8 @@ function dispose(vnode: vnode) {
 }
 
 function replace_node(old_node: Node, new_node: Node) {
+  log('replace_node', old_node, new_node)
+
   dispose(old_node)
   old_node.parentNode?.replaceChild(old_node, new_node)
 }
@@ -215,7 +221,8 @@ function has(obj, key) {
 }
 
 function each(n) {
-  return Array.from(Array(n + 1).keys())
+  // 0 .. n - 1
+  return Array.from(Array(n).keys())
 }
 
 function remove_prop(vnode, prop) {
@@ -247,9 +254,13 @@ function update_prop(vnode, prop, value) {
 }
 
 function diff(old_vdom: vnode, new_vdom: vnode) {
+  log('diff', old_vdom, new_vdom)
+
   new_vdom.node = create_node(new_vdom) // all children will also be created
 
   if (old_vdom.tag != new_vdom.tag) {
+    log('diff replace node', old_vdom, new_vdom)
+    // 
     replace_node(old_vdom.node, new_vdom.node)
     return
   }
@@ -271,14 +282,19 @@ function diff(old_vdom: vnode, new_vdom: vnode) {
   }
 
   // diff children
+  log('diff children', old_vdom.children, new_vdom.children)
   for (const index of each(Math.max(old_vdom.children.length, new_vdom.children.length))) {
     if (!has(old_vdom.children, index)) {
       append_node(old_vdom.node, new_vdom.children[index].node)
     } else if (!has(new_vdom.children, index)) {
       remove_node(old_vdom.children[index].node)
     } else if (typeof new_vdom.children[index] == 'string' || typeof old_vdom.children[index] == 'string') {
-      replace_node(old_vdom.children[])
-    }  else {
+      // string could not have props. 'text'.node does not work. Object('foo') is too hacky.      
+      if (new_vdom.children[index] != old_vdom.children[index]) {
+        // standard replace_node has no effect
+        old_vdom.node.replaceChild(document.createTextNode(new_vdom.children[index]), old_vdom.children[index])
+      }
+    } else {
       diff(old_vdom.children[index], new_vdom.children[index])
     }
   }
