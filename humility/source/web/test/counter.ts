@@ -1,6 +1,4 @@
-import 'the-new-css-reset/css/reset.css';
-
-import { h, p, ref, effect, render } from '../framework';
+import { h, p, ref, effect, redraw } from '../framework';
 
 const input = ref();
 function Counter({ count }) {
@@ -28,15 +26,12 @@ function Counter({ count }) {
 const show = p(true)
 const count = p(0)
 
-function App() {
+export function App() {
   return (
     h('.App',
-      h('button', { onclick: () => show(!show()) }, 'Toggle Component Visibility'),
+      h('button', { onclick: () => { show(!show()); redraw(); } }, 'Toggle Component Visibility'),
 
       show() ? h(Counter, { count }) : h('p', 'Counter unmounted')
     )
   );
 }
-
-render(App, "#app");
-
