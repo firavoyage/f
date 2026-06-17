@@ -33574,6 +33574,10 @@ trivialness 的一种判定是伪科学. twitter 上的人, 常对中医, 生育
 诶，他是电脑哥吗
 ```
 
+18
+
+03 20 dl `Hiroji Miyamoto` `Kocchi no Kento` `Miyuki Nakajima`.
+
 
 
 <!-- timebox, plan. -->
