@@ -8,8 +8,9 @@ function Counter({ count }) {
       input().style.border = "2px solid green";
     }
 
-    const timer = setInterval(() => {
+    const timer = setTimeout(() => {
       count(c => c + 1);
+      redraw()
     }, 1000);
 
     return () => clearInterval(timer);
