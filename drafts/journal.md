@@ -33559,6 +33559,19 @@ trivialness 的一种判定是伪科学. twitter 上的人, 常对中医, 生育
 [^8]: 我与地坛
 [^9]: 等待戈多
 [^10]: there was an [italian](ntonino.eu) who reached me in a summer vacation from my comment on a github issue. i appreciated him, and archived our messages publicly. everyone on the open internet could access, but no one would know ive published somewhere, as it's not an sns with proactive recommendation (and idk if it could be indexed by google). he self searched maybe and found and talked to me seriously and blocked me. it might be expected, at the end of the day i realized, as it's not easy for him to find my contact (i do not list on the front page of my profile) in the first place so he might be capable of deep browsing.
+
+<!-- 复制到手机上好像有些长 -->
+```
+
+```
+上下反享受者 15:46:59
+别刷屏
+
+橘子 15:47:30
+这个沙巴鱼是机器人吗？
+
+性性的歌 15:47:42
+诶，他是电脑哥吗
 ```
 
 
