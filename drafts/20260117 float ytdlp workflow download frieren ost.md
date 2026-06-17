@@ -866,3 +866,9 @@ It’s the same idea as in Python’s `"%s %d" % (…”` — the `%s` tells it 
 So you always include a type like `s` when using `%(…)` in your `-o` template. ([GitHub][1])
 
 [1]: https://github.com/yt-dlp/yt-dlp?utm_source=chatgpt.com "GitHub - yt-dlp/yt-dlp: A feature-rich command-line audio/video downloader"
+
+# 
+
+<!-- 20260618 03 00 -->
+
+# 
