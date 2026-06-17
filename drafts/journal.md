@@ -33493,6 +33493,44 @@ maybe i would increate note speed to eight.
 
 they are static. i have backup. and i do not like games right now.
 
+17
+
+14 00 chat
+
+```md
+没有必要再提醒.
+
+见过换键. 设备会在正常游玩中减损, 维修成本在预期之中. 无论是否被认为 "正常游玩", 除非拿锤子砸.
+
+即使从数额上看, 对于附近的居民而言, 想也是不足道的.
+
+显然是自私的. 自己相信 psychological egoism, 也不必掩饰什么.
+
+"诉诸管理者封禁" 颇有一种民粹的意味. 当然, 这是属于你们的力量. 如果你们执意, 希望你们能实现愿望.
+
+最初, 一直不作回应. 这个世界上没有那么多人. [^1]
+
+沟通是双向的. 不断 "+1", 发表情/图片/reaction, 转发聊天记录的人, 其实并不 non trivial. 就像 llm, 对于强 rl (brain washing) 的 llm, 有时并不能改变什么, 无非显式拒绝或强硬切断 (即使), 很多时候, 更优的策略是转向 abliberated llm, 而不是.
+
+initial? later? why? i do not hate them.
+
+adhd
+
+mai life. jealous.
+
+chyk
+
+rather public. antonino
+
+[^1]:
+
+> there are not so many ppl in the world... that, like, make a difference
+> 
+> (cursor team, lex fridman podcast)
+
+
+```
+
 
 
 <!-- timebox, plan. -->
