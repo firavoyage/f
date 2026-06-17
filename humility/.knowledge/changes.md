@@ -16,4 +16,8 @@ remove some "negative instructions", notoriously ineffective for llms
 
 combine work and tasks
 
+17
 
+21 20 enforce no testing by default (?)
+
+<!-- upd: no. -->

@@ -213,6 +213,7 @@ frontend: <!-- web -->
 - eslint no undefined null
 - keyboard lib
 - pnpm predictable lock down save exact frozen lockfile
+- pnpm init break parceljs bun remove main indexjs
 
 backend:
 
@@ -325,6 +326,7 @@ pm:
 - structural problems
 - world solved unsolved
 - the unsolved in possible new personal softwares
+- typescript vscode incentive microsoft
 
 gamedev:
 
