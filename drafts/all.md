@@ -298,7 +298,8 @@ agent: <!-- ai/ml -->
 - claude skills
 - semantic search
 - opencode build mode plan mode
-- spec driven dev
+- spec driven dev 
+- c suite roles flat corp structure <!-- pm? agent, esp. one man company hypes -->
 
 cp: <!-- algorithms -->
 
