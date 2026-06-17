@@ -33495,7 +33495,7 @@ they are static. i have backup. and i do not like games right now.
 
 17
 
-14 00 chat
+14 00 chat. <!-- reminisce. --> 04 40
 
 ```md
 没有必要再提醒.
@@ -33510,9 +33510,13 @@ they are static. i have backup. and i do not like games right now.
 
 最初, 一直不作回应. 这个世界上没有那么多人. [^1]
 
-沟通是双向的. 不断 "+1", 发表情/图片/reaction, 转发聊天记录的人, 其实并不 non trivial. 就像 llm, 对于强 rl (brain washing) 的 llm, 有时并不能改变什么, 无非显式拒绝或强硬切断 (即使), 很多时候, 更优的策略是转向 abliberated llm, 而不是.
+沟通是双向的. 不断 "+1", 发表情/图片/reaction, 转发聊天记录的人, 其实并不 non trivial. (it does not have to be like that. rhythm games could be profound, or sometimes thought provoking. [^4]) 就像 llms, 对于强 rl (brain washing) 的 llms, 有时并不能改变什么, 无非显式拒绝或强硬切断 (即使如 deepseek 可以前端捕捉存档事件流), 很多时候, 更优的策略是转向 abliberated, 而不是试图对固执的人做什么.
 
-initial? later? why? i do not hate them.
+后来想, 自己也根本不恨这些人. 自己年轻的时候也许更容易受鼓动, 更固执. 显然与性格强相关, 那些冲到面前的人, 平日里也并不沉稳, 世故. 沟通真的是双向的吗? 或许, 人之间的交往并不需要沟通. 作家写书, 后人写批注. 选手通过网络日志分享知识. 阮一峰大学期间写网志, 也许甚至不会期待读者来访吧.
+
+于是也仅作公开存档了. 这是自己的故事, 和任何人无关. 人们的思想并不是自己能操纵的. 现实世界里, 本就不应对不能完全控制的事物抱有任何期待. 爱的 spoiler 是分手, 人生的 spoiler 是离别. [^2] 现世中没有任何会长存. [^3]
+
+trivialness 的一种判定是伪科学. twitter 上的人, 常对中医, 生育率, 有所pi
 
 adhd
 
@@ -33522,11 +33526,15 @@ chyk
 
 rather public. antonino
 
-[^1]:
+[^1]: cursor team, lex fridman podcast
 
-> there are not so many ppl in the world... that, like, make a difference
-> 
-> (cursor team, lex fridman podcast)
+  > there are not so many ppl in the world... that, like, make a difference
+
+[^2]: godish
+
+[^3]: clannad
+
+[^4]: astrodx, kanadedx, ai vid to level, ai first person temoto correction, 7srefcc, piracy hosting, pjsk unity res rev engineering and web porting, etc.
 
 
 ```
