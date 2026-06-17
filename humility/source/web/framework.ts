@@ -149,8 +149,13 @@ function to_event_name(key) {
   return key.toLowerCase().substring(2)
 };
 
-function create_node(vnode: vnode) {
+function create_node(vnode: vnode | string) {
   log('create node params', vnode)
+
+  if (typeof vnode == 'string') {
+    return document.createTextNode(vnode)
+  } 
+
   if (typeof vnode.tag == 'function') {
     const prev_vnode = current_vnode
     current_vnode = vnode
@@ -164,7 +169,7 @@ function create_node(vnode: vnode) {
   const node = document.createElement(vnode.tag)
   vnode.node = node
 
-  for (const [key, value] of Object.entries(vnode.props)) {
+  for (const [key, value] of Object.entries(vnode.props ?? {})) {
     if (is_event(key)) {
       node.addEventListener(to_event_name(key), value)
     } else if (key == 'ref') {
@@ -174,8 +179,8 @@ function create_node(vnode: vnode) {
     }
   }
 
-  for (const child of vnode.children) {
-    node.appendChild(create_node(vnode.children))
+  for (const child of vnode.children ?? []) {
+    node.appendChild(create_node(child))
   }
 
   log('create node return vnode', vnode)
