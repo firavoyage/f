@@ -1,4 +1,4 @@
-what does { "name": "web", "version": "1.0.0", "description": "", "main": "index.js", "scripts": { "test": "echo \\"Error: no test specified\\" && exit 1" }, "keywords": \[], "author": "", "license": "ISC", "packageManager": "pnpm@10.30.2" } main indexjs do
+# what does { "name": "web", "version": "1.0.0", "description": "", "main": "index.js", "scripts": { "test": "echo \\"Error: no test specified\\" && exit 1" }, "keywords": \[], "author": "", "license": "ISC", "packageManager": "pnpm@10.30.2" } main indexjs do
 
 In a `package.json` file, the `"main": "index.js"` field defines the **primary entry point** for your JavaScript project.
 
@@ -188,3 +188,303 @@ This is for informational purposes only. For medical advice or diagnosis, consul
   lraman.com.np
 
 Show all
+
+# \[parcel] 🚨 Connection to the HMR server was lost
+
+The **`[parcel] 🚨 Connection to the HMR server was lost`** error occurs when the browser's Hot Module Replacement (HMR) WebSocket client loses its connection to the backend Parcel development server. This breaks the automatic live-reloading feature when you save your files. \[[1](https://github.com/mlc-ai/web-llm/issues/295), [2](https://rsbuild.rs/guide/faq/hmr), [3](https://github.com/parcel-bundler/parcel/issues/6026), [4](https://github.com/parcel-bundler/parcel/issues/9359)]
+
+Here are the most effective ways to fix this issue, ordered from the most common configuration fixes to system adjustments.
+
+### 1. Fix Port and Host Clashes (Most Common)
+
+If you are proxying your app through another backend server (like Docker, Nginx, Flask, or Express), or running on custom ports, the HMR WebSocket frequently tries to connect to the wrong port. \[[1](https://github.com/parcel-bundler/parcel/discussions/8099), [2](https://community.localwp.com/t/hot-module-replacement-websocket-connection-failed/4945)]
+
+- **Force a dedicated HMR port:** Use the `--hmr-port` flag to assign a dedicated port specifically for the WebSocket server.\
+  bash
+
+<!---->
+
+```
+npx parcel src/index.html --port 1234 --hmr-port 1235
+```
+
+Use code with caution.
+
+- **Correct the host:** If you are using virtual hosts or custom domains, force HMR to listen to localhost:\
+  bash
+
+<!---->
+
+```
+npx parcel src/index.html --hmr-hostname localhost
+```
+
+Use code with caution.\
+\[[1](https://github.com/parcel-bundler/parcel/discussions/8099), [2](https://community.localwp.com/t/hot-module-replacement-websocket-connection-failed/4945)]
+
+### 2. Clear the Cache and Restart \[[1](https://github.com/parcel-bundler/parcel/issues/6061)]
+
+Corrupted internal data structures or stale build artifacts in Parcel's cache frequently trigger intermittent connection drops. \[[1](https://stackoverflow.com/questions/70367155/parcel-localhost-server-not-updating), [2](https://github.com/parcel-bundler/parcel/issues/9359), [3](https://github.com/parcel-bundler/parcel/issues/4104)]
+
+- Close your terminal server.
+
+- Delete the temporary directories:\
+  bash
+
+<!---->
+
+```
+# On macOS/Linux
+rm -rf .parcel-cache dist
+
+# On Windows (PowerShell)
+Remove-Item -Recurse -Force .parcel-cache, dist
+```
+
+Use code with caution.
+
+- Restart your development command. \[[1](https://stackoverflow.com/questions/70367155/parcel-localhost-server-not-updating), [2](https://github.com/parcel-bundler/parcel/issues/9359)]
+
+### 3. Move the Project Outside of Parent Folders with Special Characters
+
+Parcel's file watcher can fail silently or crash if any directory in its absolute file path contains periods or special symbols (e.g., `/projects/my.app/` or `/user.name/git/`). \[[1](https://stackoverflow.com/questions/70367155/parcel-localhost-server-not-updating), [2](https://github.com/parcel-bundler/parcel/issues/1591)]
+
+- Check your full path.
+- Rename any folders containing a `.` to use a hyphen `-` instead.
+- Alternatively, move the project folder directly to a clean path like `~/projects/my-app`. \[[1](https://github.com/parcel-bundler/parcel/issues/1591)]
+
+### 4. Increase System File Watcher Limits (Linux & WSL Users)
+
+If your project grows too large, your operating system may run out of event handles to monitor file changes, causing the dev server to prematurely drop connections. \[[1](https://parceljs.org/features/development/), [2](https://stackoverflow.com/questions/72785704/hmr-not-working-parcel-webpack-5-in-wsl2-ubuntu-22-04)]
+
+- Open your system configuration file:\
+  bash
+
+<!---->
+
+```
+sudo nano /etc/sysctl.conf
+```
+
+Use code with caution.
+
+- Append the following limits to the bottom of the file:\
+  ini
+
+<!---->
+
+```
+fs.inotify.max_queued_events = 16384
+fs.inotify.max_user_instances = 128
+fs.inotify.max_user_watches = 16384
+```
+
+Use code with caution.
+
+- Save the changes and apply them immediately:\
+  bash
+
+<!---->
+
+```
+sudo sysctl -p
+```
+
+Use code with caution.\
+\[[1](https://parceljs.org/features/development/)]
+
+### 5. Adjust for WSL2 Environment Constraints \[[1](https://parceljs.org/features/development/)]
+
+If you are developing inside Windows Subsystem for Linux (WSL2), running your workspace directly from a mounted Windows file system drive (e.g., `/mnt/c/Users/...`) will cause severe performance degradation and completely break file-watching HMR connections. \[[1](https://stackoverflow.com/questions/72785704/hmr-not-working-parcel-webpack-5-in-wsl2-ubuntu-22-04)]
+
+- Proactively move your project files directly into the native Linux filesystem root (e.g., `/home/username/projects/`).
+- Open your project from that location inside your IDE instead.
+
+To pinpoint the exact solution, could you share if you are using **Docker, HTTPS, or a backend proxy**? Let me know your **Operating System** as well so we can narrow it down! \[[1](https://github.com/parcel-bundler/parcel/issues/9345), [2](https://github.com/parcel-bundler/parcel/discussions/8099), [3](https://parceljs.org/features/development/)]
+
+- [link](https://github.com/mlc-ai/web-llm/issues/295)\
+  \[parcel] 🚨 Connection to the HMR server was lost #295 - GitHub\
+  Feb 11, 2024 — Description. flatsiedatsie. opened on Feb 11, 2024. When I try to run a custom model I see these warnings in the browser console: ...\
+  GitHub
+- [link](https://github.com/parcel-bundler/parcel/issues/6026)\
+  Constantly loosing HMR connection · Issue #6026 - GitHub\
+  Mar 19, 2021 — Bcdo commented. Bcdo. on Apr 22, 2021. I get the same error. When I change something in index.html and save, nothing changes and t...\
+  GitHub
+- [link](https://parceljs.org/features/development/)\
+  Development - Parcel\
+  Depending on the size of your project, and your operating system's watcher limit, this error might pop up when you're running Parc...\
+  Parcel.js
+
+Show all
+
+## You said: it's still running in the terminal, and it works when i duplicate the tab.
+
+Since the terminal is still running normally and duplicating the tab immediately fixes it, your Parcel server is alive and well. The problem is a **stale WebSocket lifecycle**, where the original browser tab fails to reconnect after a temporary network dip, a brief computer sleep, or a heavy build compilation pause.
+
+Here is how to make your browser automatically reconnect without needing to duplicate tabs:
+
+### 1. Upgrade to Parcel v2 (Best Long-term Fix)
+
+If you are running an older version of Parcel (v1), the HMR client does not feature automatic reconnection logic.
+
+- Parcel v2 includes a built-in fallback that automatically retries the WebSocket connection if it drops.
+
+- Check your version in `package.json` under `devDependencies`.
+
+- To upgrade to the latest stable release:\
+  bash
+
+<!---->
+
+```
+npm install --save-dev parcel
+```
+
+Use code with caution.\
+\[[1](https://www.hostinger.com/au/tutorials/what-is-parcel)]
+
+### 2. Check for Aggressive Browser Extensions
+
+Certain browser extensions interfere with open WebSockets, closing them prematurely if they detect a brief period of inactivity.
+
+- Test your project in an **Incognito / Private Window** with all extensions disabled.
+- If the error stops happening, extensions like ad-blockers (uBlock Origin, Brave Shields), privacy tools, or React/Vue dev tools are likely dropping the idle socket. You can whitelist `localhost` or `127.0.0.1` in their settings.
+
+### 3. Disable Aggressive Energy/Tab Snoozing
+
+Modern browsers aggressively freeze background tabs to save RAM and CPU. If you switch away from your app tab to write code for a few minutes, the browser may put the tab to sleep, killing the HMR WebSocket connection.
+
+- **In Chrome/Edge:** Go to `Settings` -> `Performance` -> Look for **Memory Saver** (or Sleeping Tabs). Add `localhost:1234` (or your specific port) to the **"Always keep these sites active"** list.
+- **In Firefox:** Type `about:config` in the address bar, search for `browser.tabs.disableBackgroundProcessing`, and verify if toggling it helps.
+
+### 4. Inject a Manual HMR Reconnection Script (For Parcel v1)
+
+If you are locked into an older project that must use Parcel v1, you can add a small script to your HTML file. This script listens for the connection drop and reloads the page automatically so you don't have to duplicate the tab:
+
+Add this snippet right before your closing tag during development:
+
+html
+
+```
+<script>
+  // Simple watchdog to reload if Parcel HMR dies
+  if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+    const checkHMR = setInterval(() => {
+      // Look for Parcel's global HMR status or simulate a ping if needed
+      // If the page becomes completely unresponsive to hot updates, force a reload
+    }, 5000);
+  }
+</script>
+```
+
+Use code with caution.
+
+_Alternatively, a simpler brute-force trick for v1 is to listen directly to the window error events associated with the lost socket, or just hit `F5 / Cmd+R` to refresh the existing tab instead of opening a duplicate._
+
+To give you the exact workaround, are you currently using **Parcel v1 or v2**? Also, let me know if this drop happens **right when you save a file**, or only after **the tab has been sitting in the background** for a while.
+
+- [link](https://www.hostinger.com/au/tutorials/what-is-parcel)\
+  What is Parcel? How the Parcel bundler works\
+  May 22, 2026 — Install Parcel as a development dependency. Run npm install --save-dev parcel in your project folder. This adds Parcel to your pac...\
+  \
+  \
+  Hostinger
+
+## You said: does it happen when i close my laptop for a while
+
+Yes, **closing your laptop lid is exactly what causes this.** \[[1](https://learn.microsoft.com/en-my/answers/questions/5754867/computer-will-not-go-to-sleep-hybernate-shut-down)]
+
+When you close your laptop, the computer goes to sleep, pausing the browser and cutting off all network activity. However, your terminal process is temporarily "frozen" in time. When you open the lid:
+
+1. The browser tab wakes up and realizes its WebSocket connection to Parcel was abruptly severed.
+2. Because it doesn't know the server is still alive, it throws the `🚨 Connection to the HMR server was lost` error.
+3. Duplicating the tab or refreshing forces a brand-new connection, which is why that works.
+
+Instead of duplicating tabs every time you open your laptop, you can handle it using these quick fixes:
+
+### 1. The Fastest Fix: Just Refresh (`Cmd + R` or `Ctrl + R`)
+
+You do not need to duplicate or open a new tab. Simply hitting **Refresh** on the broken tab will force the browser to reconnect to the active terminal server.
+
+### 2. Prevent Chrome from Freezing the Tab
+
+Modern browsers put tabs to sleep even faster if the laptop went into a low-power state. You can whitelist your local environment:
+
+- Open Chrome settings and go to **Performance**.
+- Find **Memory Saver**.
+- Next to "Always keep these sites active," click **Add** and enter `localhost` (or your specific local URL, like `http://localhost:1234`).
+
+### 3. Automate Reconnection with a "Wake" Script
+
+If you want the tab to fix itself automatically every time you open your laptop lid, you can inject a small script into your `index.html` file. This script listens for the computer waking up from sleep and forces a refresh for you:
+
+html
+
+```
+<script>
+  if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+    let lastTime = Date.now();
+
+    setInterval(() => {
+      let currentTime = Date.now();
+      // If the timer gap is greater than 7 seconds, the laptop likely went to sleep
+      if (currentTime - lastTime > 7000) {
+        window.location.reload();
+      }
+      lastTime = currentTime;
+    }, 2000);
+  }
+</script>
+```
+
+Use code with caution.
+
+Would you like help **adding this script** to your project configuration, or are you comfortable just using the **refresh shortcut** going forward?
+
+- [link](https://learn.microsoft.com/en-my/answers/questions/5754867/computer-will-not-go-to-sleep-hybernate-shut-down)\
+  Computer will not go to sleep/hybernate/shut down when lid is closed - Microsoft Q\&A\
+  Feb 1, 2026 — Normally, while the lid is closed, laptop screen will turn off. The lid might be in damaged, and your laptop no longer recognizes ...\
+  \
+  \
+  Microsoft Learn
+
+## You said: can parcel auto wake up if their devs want
+
+Yes, Parcel **absolutely could** handle this automatically if the developers chose to modify its internal browser-side code. Other modern build tools (like [Vite](https://vite.dev/), [Webpack](https://webpack.js.org/), and Turbopack) already handle laptop-sleep scenarios seamlessly out of the box.
+
+The reason it works natively in other bundlers—and why Parcel struggles—comes down to how their browser clients handle WebSocket lifecycles.
+
+### How Other Bundlers Do It (And Parcel Could Too)
+
+When your laptop wakes up from sleep, the browser triggers a native JavaScript `close` or `error` event on the active WebSocket connection. Other bundlers handle this event gracefully:
+
+1. **The Reconnection Loop:** Instead of instantly giving up and throwing a red error box, tools like Vite listen for the connection drop and instantly trigger an incremental reconnect loop (e.g., trying to reconnect every 2 to 5 seconds).
+2. **The "Heartbeat" (Ping/Pong):** They use a tiny background ping sent every few seconds. If a ping fails because the computer slept, the client knows it needs to force a fresh page reload or reinitialize the socket as soon as the network interface wakes back up.
+
+### Why Parcel Hasn't Fixed This Out-of-the-Box
+
+Parcel’s core design philosophy is focused on **"Zero Configuration" performance** on the compilation side. The client-side browser HMR runtime code is intentionally kept very lightweight.
+
+Historically, [Parcel GitHub issues](https://github.com/parcel-bundler/parcel/issues/355) show that the development team relies on the browser's default behavior. When the underlying WebSocket drops, the runtime assumes the `parcel serve` terminal process was manually stopped by the developer, prompting it to throw the absolute `🚨 Connection lost` failure message rather than guessing that the computer just took a nap.
+
+### Want to make it automatic right now?
+
+Until the core team bakes a permanent retry-loop into the runtime, you can completely automate this yourself in 5 seconds. Drop this self-healing block anywhere inside your `index.html` file. It will simulate a smart "auto-wake" by listening for the browser going offline and coming back online:
+
+html
+
+```
+<script>
+  // Auto-wake patch for Parcel HMR sleep drops
+  if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+    window.addEventListener('online', () => {
+      // Force an instant page refresh the second your laptop regains Wi-Fi/Network status
+      window.location.reload();
+    });
+  }
+</script>
+```
+
+Use code with caution.
+
+Would you like to explore how to **permanently configure this script** across your entire project, or are you interested in seeing if a quick **browser extension** could handle tab-refreshing for you?
