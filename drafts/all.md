@@ -212,6 +212,7 @@ frontend: <!-- web -->
 - css variables nesting baseline parceljs auto convert
 - eslint no undefined null
 - keyboard lib
+- pnpm predictable lock down save exact frozen lockfile
 
 backend:
 
