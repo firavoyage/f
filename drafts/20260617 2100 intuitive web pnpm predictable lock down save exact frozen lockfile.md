@@ -1515,3 +1515,60 @@ If you'd like, let me know:
   Astral Docs
 
 Show all
+
+# does pnpm add -g read npmrc at home
+
+<mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>Yes, <code dir="ltr" style="font-size: 14px; margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 1px solid rgb(44, 46, 53);">pnpm add -g</code> (or <code dir="ltr" style="font-size: 14px; margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 1px solid rgb(44, 46, 53);">pnpm i -g</code>) definitely reads the <code dir="ltr" style="font-size: 14px; margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 1px solid rgb(44, 46, 53);">.npmrc</code> file located in your user home directory (</strong></mark>**`~/.npmrc`).** \[[1](https://cuyl.github.io/pnpm.github.io/fr/npmrc/), [2](https://github.com/pnpm/pnpm/issues/11025), [3](https://docs.bytesafe.dev/troubleshooting/resolving-access-denied-error/)]
+
+Because global installations are executed outside the context of a specific project directory, `pnpm` bypasses project-level configurations and looks directly for user-level and system-level rules. \[[1](https://cuyl.github.io/pnpm.github.io/fr/npmrc/), [2](https://github.com/pnpm/pnpm/issues/11614), [3](https://medium.com/@ruchivora16/all-about-npm-a3183edabb2), [4](https://pnpm.io/tr/npmrc)]
+
+Here is exactly how `pnpm` handles configuration hierarchy during a global installation:
+
+### The Configuration Order
+
+When you run a global installation command, `pnpm` searches for configuration settings using this priority sequence (from highest to lowest): \[[1](https://cuyl.github.io/pnpm.github.io/fr/npmrc/), [2](https://pnpm.io/fr/next/npmrc)]
+
+1. **CLI Flags**: Arguments passed directly in your command line (e.g., ).
+2. **Environment Variables**: System environment variables prefixed with `npm_config_`.
+3. **User-level Configuration**: The `.npmrc` file located in your **user home directory** (`~/.npmrc` on macOS/Linux or on Windows).
+4. **Global Configuration**: System-wide configuration files (such as `/etc/npmrc` on Unix systems). \[[1](https://cuyl.github.io/pnpm.github.io/fr/npmrc/), [2](https://github.com/npm/npm/issues/10098), [3](https://github.com/npm/npm/issues/4751)]
+
+### What Settings Are Affected?
+
+`pnpm` relies heavily on your home `.npmrc` file during global installations for critical configurations, including:
+
+- **Private Registries & Scopes**: If you host custom global CLI tools on an internal network or private registry, scope definitions like `@mycompany:registry=url` are pulled from here.
+- **Authentication Tokens**: Secret authentication properties (like `_authToken`) required to pull those packages from custom ecosystems.
+- **Network & Proxy Rules**: Configurations routing traffic through enterprise corporate proxies. \[[1](https://pnpm.io/tr/npmrc), [2](https://cuyl.github.io/pnpm.github.io/pt/npmrc/), [3](https://github.com/pnpm/pnpm/issues/11849), [4](https://pnpm.io/ja/npmrc), [5](https://docs.cloud.google.com/dataform/docs/use-packages?gl=us)]
+
+If you ever need to inspect or edit your active home configurations directly from the terminal, you can easily use the [pnpm config CLI utility](https://pnpm.io/fr/npmrc): \[[1](https://cuyl.github.io/pnpm.github.io/fr/npmrc/)]
+
+bash
+
+```
+# View the location and settings of your user config
+pnpm config get --location user
+
+# Edit your home .npmrc file directly from the terminal
+pnpm config edit --location user
+```
+
+Use code with caution.
+
+To ensure your setup is working perfectly, would you like to verify if a **specific setting** in your home `.npmrc` is being correctly applied, or are you running into an **authentication error** during global installs?
+
+- [link](https://pnpm.io/tr/npmrc)\
+  Authentication Settings - PNPM\
+  The same rule applies to registry and proxy URLs in a project . npmrc ( registry , @scope:registry , proxy , https-proxy , http-pr...\
+  PNPM
+- [link](https://github.com/pnpm/pnpm/issues/11849)\
+  pacquet: project + user .npmrc config not merged + scoped registries ...\
+  May 21, 2026 — @foo:registry=https://example.com //example.com/:\_authToken=... This works with pnpm: the project . npmrc is read, the user . npmr...\
+  GitHub
+- [link](https://cuyl.github.io/pnpm.github.io/fr/npmrc/)\
+  .npmrc | pnpm\
+  npmrc. pnpm gets its configuration from the command line, environment variables, and . npmrc files. The pnpm config command can be...\
+  GitHub
+
+Show all
+
