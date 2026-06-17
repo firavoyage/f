@@ -13,7 +13,10 @@ function Counter({ count }) {
       redraw()
     }, 1000);
 
-    // return () => clearInterval(timer);
+    return () => {
+      console.log('component cleanup')
+      // clearInterval(timer)
+    };
   });
 
   return (

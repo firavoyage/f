@@ -121,13 +121,13 @@ export function effect(e) {
 
 function trigger_effects() {
   for (const effect of pending_effects) {
-    log('trigger effects', effect)
     const cleanup = effect.effect()
+    log('trigger effects', effect, cleanup)
     if (typeof cleanup == 'function') {
       if (!effect.vnode.dispose) {
         effect.vnode.dispose = new Set()
       }
-      log('trigger effects', effect)
+      log('trigger effects add dispose', effect.vnode)
       effect.vnode.dispose.add(cleanup)
     }
   }
@@ -266,7 +266,7 @@ function diff(old_vdom: vnode, new_vdom: vnode) {
   log('diff', old_vdom, new_vdom)
 
   if (old_vdom.tag != new_vdom.tag) {
-    log('diff replace node', old_vdom, new_vdom, old_vdom.node, new_vdom.node)
+    log('diff commit replace node', old_vdom, new_vdom, old_vdom.node, new_vdom.node)
 
     dispose(old_vdom)
     replace_node(old_vdom.node, new_vdom.node)
