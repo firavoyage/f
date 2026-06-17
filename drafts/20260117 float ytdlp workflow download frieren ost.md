@@ -8,9 +8,43 @@ tmp
 
 ```sh
 yt-dlp \
-  "https://music.youtube.com/watch?v=OArru5OkVKE&list=OLAK5uy_n-lE02j8pQkwGhsL5JLAPvbBAoAmxh9n8" \
+  "https://music.youtube.com/playlist?list=OLAK5uy_kbVTOPNS3CZAQznMRZqmCqVtMQNbWBnb4" \
   -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
   --match-filters "view_count > 100000" \
+  --match-filters "title !*= 'inst'"\
+  -o "_/Hiroji Miyamoto/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
+```
+
+Miyuki Nakajima
+
+```sh
+yt-dlp \
+  "https://music.youtube.com/playlist?list=OLAK5uy_n2fcBnOmpQSIwAIWmOejxVrZWJR-gtnec" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  --match-filters "view_count > 100000" \
+  --match-filters "title !*= 'inst'"\
+  -o "_/Miyuki Nakajima/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
+```
+
+Kocchi no Kento
+
+```sh
+yt-dlp \
+  "https://music.youtube.com/playlist?list=OLAK5uy_kOUnBDiSsWWxSAKfqA5u6jRTr5loM9QS8" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  --match-filters "view_count > 100000" \
+  --match-filters "title !*= 'inst'"\
+  -o "_/Kocchi no Kento/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
+```
+
+Hiroji Miyamoto
+
+```sh
+yt-dlp \
+  "https://music.youtube.com/playlist?list=OLAK5uy_kbVTOPNS3CZAQznMRZqmCqVtMQNbWBnb4" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  --match-filters "view_count > 100000" \
+  --match-filters "title !*= 'inst'"\
   -o "_/Hiroji Miyamoto/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
 ```
 
