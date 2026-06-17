@@ -173,6 +173,7 @@ archi:
 - version control legacy folder <!-- pm? life. -->
 - hydra infra domain hopping tor z library the pirate bay
 - naming university tlide profile
+- markdown footnotes
 
 frontend: <!-- web -->
 
