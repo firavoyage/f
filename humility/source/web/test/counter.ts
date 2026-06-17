@@ -13,7 +13,7 @@ function Counter({ count }) {
       redraw()
     }, 1000);
 
-    return () => clearInterval(timer);
+    // return () => clearInterval(timer);
   });
 
   return (

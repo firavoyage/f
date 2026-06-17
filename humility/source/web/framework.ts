@@ -121,11 +121,13 @@ export function effect(e) {
 
 function trigger_effects() {
   for (const effect of pending_effects) {
+    log('trigger effects', effect)
     const cleanup = effect.effect()
     if (typeof cleanup == 'function') {
       if (!effect.vnode.dispose) {
         effect.vnode.dispose = new Set()
       }
+      log('trigger effects', effect)
       effect.vnode.dispose.add(cleanup)
     }
   }
@@ -194,17 +196,23 @@ function create_node(vnode: vnode | string) {
 }
 
 function dispose(vnode: vnode) {
-  console.log('dispose', vnode)
+  log('dispose', vnode)
 
   if (vnode.dispose) {
     for (const cleanup of vnode.dispose) {
+      log('dispose cleanup', cleanup)
       cleanup()
     }
+  }
+
+  // dispose children
+  for (const child of vnode.children ?? []) {
+    dispose(child)
   }
 }
 
 function replace_node(old_node: Node, new_node: Node) {
-  console.log('replace_node', old_node, new_node, old_node.parentNode)
+  log('replace_node', old_node, new_node, old_node.parentNode)
   old_node.parentNode?.replaceChild(new_node, old_node)
 }
 
@@ -258,7 +266,7 @@ function diff(old_vdom: vnode, new_vdom: vnode) {
   log('diff', old_vdom, new_vdom)
 
   if (old_vdom.tag != new_vdom.tag) {
-    console.log('diff replace node', old_vdom, new_vdom, old_vdom.node, new_vdom.node)
+    log('diff replace node', old_vdom, new_vdom, old_vdom.node, new_vdom.node)
 
     dispose(old_vdom)
     replace_node(old_vdom.node, new_vdom.node)
@@ -294,8 +302,12 @@ function diff(old_vdom: vnode, new_vdom: vnode) {
     } else if (typeof new_vdom.children[index] == 'string' || typeof old_vdom.children[index] == 'string') {
       // string could not have props. 'text'.node does not work. Object('foo') is too hacky.      
       if (new_vdom.children[index] != old_vdom.children[index]) {
+        const new_node = document.createTextNode(new_vdom.children[index])
+        const old_node = old_vdom.node.childNodes[index]
+        log('diff commit replace text node', new_vdom.children[index], old_vdom.children[index], new_node, old_node)
+
         // standard replace_node has no effect
-        old_vdom.node.replaceChild(document.createTextNode(new_vdom.children[index]), old_vdom.node.childNodes[index])
+        old_vdom.node.replaceChild(new_node, old_node)
       }
     } else {
       diff(old_vdom.children[index], new_vdom.children[index])
@@ -308,8 +320,8 @@ export function redraw() {
 
   const old_vdom = vdom
   const new_vdom = h(app)
-  vdom = new_vdom
   new_vdom.node = create_node(new_vdom) // all children will also be created
-
   diff(old_vdom, new_vdom)
+
+  vdom = new_vdom
 }
