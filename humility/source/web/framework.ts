@@ -150,7 +150,7 @@ function to_event_name(key) {
 };
 
 function create_node(vnode: vnode | string) {
-  log('create node params', vnode)
+  log('create node params', vnode, typeof vnode)
 
   if (typeof vnode == 'string') {
     return document.createTextNode(vnode)
@@ -276,13 +276,17 @@ function diff(old_vdom: vnode, new_vdom: vnode) {
       append_node(old_vdom.node, new_vdom.children[index].node)
     } else if (!has(new_vdom.children, index)) {
       remove_node(old_vdom.children[index].node)
-    } else {
+    } else if (typeof new_vdom.children[index] == 'string' || typeof old_vdom.children[index] == 'string') {
+      replace_node(old_vdom.children[])
+    }  else {
       diff(old_vdom.children[index], new_vdom.children[index])
     }
   }
 }
 
 export function redraw() {
+  log('redraw')
+
   const old_vdom = vdom
   const new_vdom = h(app)
   vdom = new_vdom
