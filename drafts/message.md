@@ -22,4 +22,9 @@ hyperscript h(Component, props) or Component(props)
 
 a conditional rendered app with count. a counter inside gets the getter and setter and increases every sec. 
 
+---
+
+pros and cons of nested or flattened objects
+
+flattening like {key:{key:"foo"}} be {"key.key":"foo"}
 
