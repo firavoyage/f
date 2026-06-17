@@ -19,7 +19,10 @@ type vnode = {
 }
 
 function log(...args) {
-  console.log(...args.map((arg) => typeof arg == 'object' ? cloneDeep(arg) : arg))
+  // clone deep could only process native objects
+  // functions or dom nodes would become {}
+
+  console.log(...args.map((arg) => typeof arg == 'object' && (!arg instanceof Node) ? cloneDeep(arg) : arg))
   // console.log(...args)
 }
 
@@ -140,7 +143,7 @@ export function render(component, root_selector) {
 
   append_node(root, app_node)
 
-  // trigger_effects()
+  trigger_effects()
 }
 
 function is_event(key) {
@@ -191,7 +194,7 @@ function create_node(vnode: vnode | string) {
 }
 
 function dispose(vnode: vnode) {
-  log('dispose', vnode)
+  console.log('dispose', vnode)
 
   if (vnode.dispose) {
     for (const cleanup of vnode.dispose) {
@@ -201,10 +204,8 @@ function dispose(vnode: vnode) {
 }
 
 function replace_node(old_node: Node, new_node: Node) {
-  log('replace_node', old_node, new_node)
-
-  dispose(old_node)
-  old_node.parentNode?.replaceChild(old_node, new_node)
+  console.log('replace_node', old_node, new_node, old_node.parentNode)
+  old_node.parentNode?.replaceChild(new_node, old_node)
 }
 
 function append_node(old_node: Node, child: Node) {
@@ -256,11 +257,10 @@ function update_prop(vnode, prop, value) {
 function diff(old_vdom: vnode, new_vdom: vnode) {
   log('diff', old_vdom, new_vdom)
 
-  new_vdom.node = create_node(new_vdom) // all children will also be created
-
   if (old_vdom.tag != new_vdom.tag) {
-    log('diff replace node', old_vdom, new_vdom)
-    // 
+    console.log('diff replace node', old_vdom, new_vdom, old_vdom.node, new_vdom.node)
+
+    dispose(old_vdom)
     replace_node(old_vdom.node, new_vdom.node)
     return
   }
@@ -285,14 +285,17 @@ function diff(old_vdom: vnode, new_vdom: vnode) {
   log('diff children', old_vdom.children, new_vdom.children)
   for (const index of each(Math.max(old_vdom.children.length, new_vdom.children.length))) {
     if (!has(old_vdom.children, index)) {
+      log('diff commit append node', old_vdom, new_vdom.children[index])
       append_node(old_vdom.node, new_vdom.children[index].node)
     } else if (!has(new_vdom.children, index)) {
-      remove_node(old_vdom.children[index].node)
+      log('diff commit remove node', old_vdom.children[index], old_vdom.node.childNodes[index])
+      remove_node(old_vdom.node.childNodes[index])
+      // remove_node(old_vdom.children[index].node) // prone to text nodes
     } else if (typeof new_vdom.children[index] == 'string' || typeof old_vdom.children[index] == 'string') {
       // string could not have props. 'text'.node does not work. Object('foo') is too hacky.      
       if (new_vdom.children[index] != old_vdom.children[index]) {
         // standard replace_node has no effect
-        old_vdom.node.replaceChild(document.createTextNode(new_vdom.children[index]), old_vdom.children[index])
+        old_vdom.node.replaceChild(document.createTextNode(new_vdom.children[index]), old_vdom.node.childNodes[index])
       }
     } else {
       diff(old_vdom.children[index], new_vdom.children[index])
@@ -306,6 +309,7 @@ export function redraw() {
   const old_vdom = vdom
   const new_vdom = h(app)
   vdom = new_vdom
+  new_vdom.node = create_node(new_vdom) // all children will also be created
 
   diff(old_vdom, new_vdom)
 }

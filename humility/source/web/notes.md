@@ -35,4 +35,10 @@ a.foo = 'bar'
 log(a.foo)
 ```
 
+18 20 replace node needs new node to come first.
+
+```ts
+old_node.parentNode?.replaceChild(new_node, old_node)
+```
+
 
