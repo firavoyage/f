@@ -33588,6 +33588,20 @@ get his github `MiluDeerLu`, which has a maimai avatar.
 
 he works at a startup "world vae", writing the frontend w react and threejs, which is a complex 3d map. he uses mac and claude code (opus). he uses zhcn to vibe.
 
+<!-- 
+
+用什么框架
+
+react 一套嘛 
+
+-->
+
+he holds a huawei phone.
+
+he does not use tg despite kdx group and surprises at my crashing errors.
+
+well, it feels he hits so heavily, even harder than me.
+
 
 
 <!-- timebox, plan. -->

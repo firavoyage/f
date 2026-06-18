@@ -5413,3 +5413,2810 @@ If you are finalizing this architecture for your codebase, do you want to see ho
 # .
 
 <!-- i could have some git aliases for "repo_merge" (repo save + merge to master), "repo_back" (repo save + switch master). -->
+
+```sh
+ ~ % cd Documents/f/humility
+ ...Documents/f/humility % cd apps/copy
+cd: no such file or directory: apps/copy
+ ...Documents/f/humility % cd ..
+ ~/Documents/f % cd apps/copy
+ ...f/apps/copy % git branch
+* master
+  test
+ ...f/apps/copy % git diff master test
+diff --git a/apps/copy/app.html b/apps/copy/app.html
+index aae0782..092103d 100644
+--- a/apps/copy/app.html
++++ b/apps/copy/app.html
+@@ -49,8 +49,7 @@
+       #svg-toggle,
+       #keep-images-toggle,
+diff --git a/apps/copy/app.html b/apps/copy/app.html
+index aae0782..092103d 100644
+--- a/apps/copy/app.html
++++ b/apps/copy/app.html
+@@ -49,8 +49,7 @@
+       #svg-toggle,
+       #keep-images-toggle,
+       #normalize-empty-links-toggle,
+-      #prettier-toggle,
+-      #remove-heading-toggle {
++      #prettier-toggle {
+         position: fixed;
+         left: 50%;
+         transform: translateX(-50%);
+@@ -61,26 +60,22 @@
+       }
+
+       #markdown-toggle {
+-        bottom: 108px;
+-      }
+-
+-      #svg-toggle {
+         bottom: 88px;
+       }
+
+-      #keep-images-toggle {
++      #svg-toggle {
+         bottom: 68px;
+       }
+
+-      #normalize-empty-links-toggle {
++      #keep-images-toggle {
+         bottom: 48px;
+       }
+
+-      #prettier-toggle {
++      #normalize-empty-links-toggle {
+         bottom: 28px;
+       }
+
+-      #remove-heading-toggle {
++      #prettier-toggle {
+         bottom: 8px;
+       }
+     </style>
+@@ -98,10 +93,9 @@
+     ></div>
+
+     <div id="markdown-toggle">markdown: off</div>
+-    <div id="svg-toggle">keep svg: off</div>
++    <div id="svg-toggle">svg: off</div>
+     <div id="keep-images-toggle">keep images: on</div>
+     <div id="normalize-empty-links-toggle">normalize empty links: on</div>
+-    <div id="prettier-toggle">use prettier: on</div>
+-    <div id="remove-heading-toggle">remove heading on the first line: off</div>
++    <div id="prettier-toggle">prettier: on</div>
+   </body>
+ </html>
+\ No newline at end of file
+diff --git a/apps/copy/notes.md b/apps/copy/notes.md
+index 8f8a261..2589541 100644
+--- a/apps/copy/notes.md
++++ b/apps/copy/notes.md
+@@ -105,6 +105,3 @@ these feel fragile.
+
+ ---
+
+-2026.06.03
+-
+-i could remove elements of aria hidden. idk if i have to.
+diff --git a/apps/copy/source/convert_to_md.ts b/apps/copy/source/convert_to_md.ts
+index d73c24f..e142205 100644
+--- a/apps/copy/source/convert_to_md.ts
++++ b/apps/copy/source/convert_to_md.ts
+@@ -27,7 +27,6 @@ type convert_options = {
+   keep_images: boolean;
+   normalize_empty_links: boolean;
+   prettier: boolean;
+
+zsh: suspended  git diff master test
+ ...f/apps/copy % git branch -m test 'useless test branch'
+fatal: 'useless test branch' is not a valid branch name
+ ...f/apps/copy % git branch -m test 'useless_test_branch'
+ ...f/apps/copy % git branch
+* master
+  useless_test_branch
+ ...f/apps/copy % git switch -c temp_copy_intercept
+Switched to a new branch 'temp_copy_intercept'
+ ...f/apps/copy % git branch
+  master
+* temp_copy_intercept
+  useless_test_branch
+ ...f/apps/copy % git branch
+  master
+* temp_copy_intercept
+  useless_test_branch
+ ...f/apps/copy % git switch master
+error: Your local changes to the following files would be overwritten by checkout:
+        drafts/paste.md
+        journal/data/journal.log
+Please commit your changes or stash them before you switch branches.
+Aborting
+ ...f/apps/copy % repo_save
+[temp_copy_intercept 7a5421b] .
+ 6 files changed, 5548 insertions(+), 115 deletions(-)
+ create mode 100644 drafts/20260618 1900 copy intercept paste.md
+ create mode 100644 drafts/20260618 1900 society jp jirai kei monster energy.md
+On branch master
+Your branch is up to date with 'e/master'.
+
+nothing to commit, working tree clean
+On branch master
+Your branch is up to date with 'e/master'.
+
+nothing to commit, working tree clean
+On branch master
+Your branch is ahead of 'l/master' by 8 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+On branch master
+Your branch is up to date with 'e/master'.
+
+nothing to commit, working tree clean
+On branch master
+Your branch is up to date with 'g/master'.
+
+nothing to commit, working tree clean
+On branch master
+Your branch is up to date with 'e/master'.
+
+nothing to commit, working tree clean
+ ~ % cd ~/Documents/f/
+ ~/Documents/f % cd apps/copy
+ ...f/apps/copy % git switch master
+error: Your local changes to the following files would be overwritten by checkout:
+        journal/data/journal.log
+Please commit your changes or stash them before you switch branches.
+Aborting
+ ...f/apps/copy % repo_save
+[temp_copy_intercept 4513508] .
+ 1 file changed, 1 insertion(+)
+On branch master
+Your branch is up to date with 'e/master'.
+
+nothing to commit, working tree clean
+On branch master
+Your branch is up to date with 'e/master'.
+
+nothing to commit, working tree clean
+On branch master
+Your branch is ahead of 'l/master' by 8 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+On branch master
+Your branch is up to date with 'e/master'.
+
+nothing to commit, working tree clean
+On branch master
+Your branch is up to date with 'g/master'.
+
+nothing to commit, working tree clean
+On branch master
+Your branch is up to date with 'e/master'.
+
+nothing to commit, working tree clean
+ ~ % cd ~/Documents/f/
+ ~/Documents/f % cd apps/copy
+ ...f/apps/copy % git switch master
+Switched to branch 'master'
+Your branch is ahead of 'g/master' by 3 commits.
+  (use "git push" to publish your local commits)
+ ...f/apps/copy % git branch
+* master
+  temp_copy_intercept
+  useless_test_branch
+ ...f/apps/copy % git merge temp_copy_intercept
+Updating 105723a..4513508
+Fast-forward
+ apps/copy/app.html                                          |   28 +-
+ apps/copy/source/main.ts                                    |   41 +-
+ drafts/20260618 1900 copy intercept paste.md                | 5413 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ drafts/20260618 1900 society jp jirai kei monster energy.md |  115 ++
+ drafts/all.md                                               |    1 +
+ drafts/journal.md                                           |    6 +
+ journal/data/journal.log                                    |   34 +
+ 7 files changed, 5626 insertions(+), 12 deletions(-)
+ create mode 100644 drafts/20260618 1900 copy intercept paste.md
+ create mode 100644 drafts/20260618 1900 society jp jirai kei monster energy.md
+ ...f/apps/copy %
+```
+
+# what does browser do if you paste something to contenteditable. compare when i intercept paste directly or read from contenteditable. examples.
+
+When you paste text into a `contenteditable` element, the browser automatically converts the clipboard data into HTML to match the destination style. \[[1](https://ux.stackexchange.com/questions/19559/should-users-be-allowed-to-copy-and-paste-rich-text-into-text)]
+
+Interacting with this process directly via JavaScript allows you to either block this default behavior or clean up the data after it happens. \[[1](https://docs.c1.orckestra.com/Console/ConsoleFAQ?q=How+can+I+enable+right-click+copy+and+paste+functions+on+a+website%3F)]
+
+### Default Browser Behavior
+
+When a user pastes into a `contenteditable` container, the browser executes several automated steps:
+
+- **Format Extraction**: It reads multiple formats from the clipboard (HTML, plain text, images).
+- **Sanitization**: It strips harmful tags like but keeps styles like fonts, colors, and margins.
+- **DOM Injection**: It converts the data into DOM nodes and inserts them at the caret position.
+- **Style Splitting**: It often breaks your existing CSS lines to insert inline styles (`style="..."`) from the source. \[[1](https://lucid.co/techblog/2014/12/02/definitive-guide-copying-pasting-javascript), [2](https://www.tiny.cloud/blog/copy-and-paste-from-word-excel/), [3](https://medium.com/naukri-engineering/unlocking-rich-text-editing-with-htmls-contenteditable-attribute-a-developer-s-guide-81a63a0e0b46)]
+
+***
+
+### Comparison: Intercepting vs. Reading Post-Paste
+
+| Feature \[[1](https://superuser.com/questions/858082/how-can-i-selectively-disable-paste-blockers), [2](https://medium.com/geekculture/explore-clipboard-operation-in-javascript-c6399619c0ac)] | Intercepting (`onpaste` event)            | Reading (`input` or `keyup` event)                    |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- | ----------------------------------------------------- |
+| **Control**                                                                                                                                                                                     | Full control before the DOM changes.      | No control; the change already happened.              |
+| **Data Access**                                                                                                                                                                                 | Raw clipboard data via `e.clipboardData`. | Already parsed, messy HTML inside the DOM.            |
+| **Default Action**                                                                                                                                                                              | Can be canceled via `e.preventDefault()`. | Cannot be canceled; requires DOM cleanup.             |
+| **Performance**                                                                                                                                                                                 | Fast; processing happens in memory.       | Slower; forces the browser to layout and paint twice. |
+
+***
+
+### Code Examples
+
+### 1. Intercepting the Paste (Recommended for Plain Text Only) \[[1](https://community.znuny.org/viewtopic.php?t=32997)]
+
+This approach stops the browser from inserting messy HTML by intercepting the event, pulling only the plain text version, and inserting it manually.
+
+javascript
+
+```
+const editor = document.querySelector('[contenteditable]');
+
+editor.addEventListener('paste', (e) => {
+  // 1. Stop the browser from inserting formatted HTML
+  e.preventDefault();
+
+  // 2. Extract only the unformatted plain text
+  const text = e.clipboardData.getData('text/plain');
+
+  // 3. Insert the clean text at the current cursor position
+  document.execCommand('insertText', false, text);
+});
+```
+
+Use code with caution.
+
+### 2. Reading from Contenteditable (Post-Paste)
+
+This approach lets the browser do the work first, then inspects or cleans the resulting HTML inside the container. \[[1](https://ckeditor.com/blog/ContentEditable-The-Good-the-Bad-and-the-Ugly/)]
+
+javascript
+
+```
+const editor = document.querySelector('[contenteditable]');
+
+editor.addEventListener('input', (e) => {
+  // This fires AFTER the browser has broken your DOM with dirty HTML
+  const dirtyHtml = editor.innerHTML;
+
+  console.log('Current HTML in editor:', dirtyHtml);
+
+  // Example cleanup: strips all inline style attributes after they land
+  editor.innerHTML = dirtyHtml.replace(/style="[^"]*"/gi, '');
+});
+```
+
+Use code with caution.
+
+To help me tailor a solution for your project, what **type of content** (e.g., rich text, markdown, plain text) are you trying to support, and are you using any specific **frameworks** like React or Vue?
+
+- [link](https://ux.stackexchange.com/questions/19559/should-users-be-allowed-to-copy-and-paste-rich-text-into-text)\
+  Should users be allowed to copy and paste rich text into text?\
+  Apr 2, 2012 — All that may be overkill, mind you. The simplest issue here is figuring out a way to avoid Word doing its automatic pasteboard stu...\
+  \
+  User Experience Stack Exchange
+- [link](https://docs.c1.orckestra.com/Console/ConsoleFAQ?q=How+can+I+enable+right-click+copy+and+paste+functions+on+a+website%3F)\
+  How can I enable right-click copy and paste functions on a website?\
+  In the Mozilla Firefox rich text editor, JavaScript access to the clipboard (and thus Cut, Copy, and Paste commands) is disabled b...\
+  \
+  Orckestra
+- [link](https://lucid.co/techblog/2014/12/02/definitive-guide-copying-pasting-javascript)\
+  Lucid\
+  Dec 2, 2014 — Step #2 — Get Data in Multiple Formats To and From the Clipboard Chrome and Safari : They support any content type on the clipboar...\
+  \
+  \
+  Lucid Software
+
+Show all
+
+## You said: i mean examples of copied content (as well as directly intercepted), or converted content
+
+Here is what happens to the exact same copied content under both approaches, showing the precise structure of the data inside the clipboard versus how the browser mutates your DOM.
+
+### Example 1: Copying Text from a Webpage or Microsoft Word
+
+**The Source:** A line of text containing a bold word and a link: "Please **read** our guidelines."
+
+### 📋 What the Clipboard Actually Holds
+
+When you copy this, the operating system holds multiple data types simultaneously: \[[1](https://mathematica.stackexchange.com/questions/175601/copy-and-paste-what-is-copied-to-the-clipboard)]
+
+- **`text/plain`**: `Please read our guidelines.`
+- **`text/html`**:
+
+### ✂️ Approach 1: Directly Intercepted (`onpaste`)
+
+If you intercept the event, you get clean, unmutated access to those raw formats.
+
+- **If you request `text/plain`**: You get a pure string with no tags.
+- **If you request `text/html`**: You get the exact string above, allowing you to run a custom parser to strip classes but keep the tags. \[[1](https://stackoverflow.com/questions/7878492/stripping-styles-from-tinymce-copypaste), [2](https://wordpress.stackexchange.com/questions/25622/wordpress-automatically-adds-pre-tags-when-pasting-code-how-to-stop-it)]
+
+### 🔄 Approach 2: Converted by Browser (Default Post-Paste DOM) \[[1](https://learn.microsoft.com/en-us/archive/msdn-magazine/2008/december/cutting-edge-asp-net-presentation-patterns)]
+
+If you let the browser handle it, it merges the source styles with your container. Your `contenteditable` DOM ends up looking like this messy hybrid:
+
+html
+
+```
+<!-- The browser injected vendor classes, unwanted tags, and inline fonts -->
+Please <strong style="font-family: Calibri, sans-serif; font-size: 11pt;">read</strong>
+our <a href="https://example.com" style="color: blue; text-decoration: underline;">guidelines</a>.
+```
+
+Use code with caution.
+
+***
+
+### Example 2: Copying a Cell from Google Sheets or Excel
+
+**The Source:** A single spreadsheet cell with a yellow background containing the number `150`.
+
+### 📋 What the Clipboard Actually Holds
+
+- **`text/plain`**: `150\n`
+
+- **`text/html`**:\
+  html
+
+<!---->
+
+```
+<table><tr><td style="background-color: yellow; border: 1px solid #000;">150</td></tr></table>
+```
+
+Use code with caution.\
+\[[1](https://support.mozilla.org/en-US/questions/959929)]
+
+### ✂️ Approach 1: Directly Intercepted (`onpaste`)
+
+- **`text/plain`**: You extract just the raw number string `"150"`.
+- **`text/html`**: You can detect the tags to programmatically convert the data into a markdown table or a custom grid component.
+
+### 🔄 Approach 2: Converted by Browser (Default Post-Paste DOM)
+
+The browser strictly renders the HTML layout layout literally inside your cursor's line, shattering your text structure:
+
+html
+
+```
+<!-- Your paragraph is broken, and a literal table is forced inside it -->
+<div>
+  <table border="1" style="border-collapse: collapse; background-color: yellow;">
+    <tbody>
+      <tr><td>150</td></tr>
+    </tbody>
+  </table>
+</div>
+```
+
+Use code with caution.
+
+***
+
+### Example 3: Copying a File (Like an Image from Your Desktop)
+
+**The Source:** A screenshot file named `screenshot.png` copied directly from your file manager. \[[1](https://bugbug.io/blog/testing-frameworks/playwright-cheat-sheet/)]
+
+### 📋 What the Clipboard Actually Holds
+
+- **`Files` List**: An array containing a `File` object (MIME type: `image/png`).
+- **`text/plain`**: Empty.
+- **`text/html`**: Empty. \[[1](https://sam-ngu.medium.com/click-to-copy-to-clipboard-copy-and-paste-with-javascript-be7857de83ca), [2](https://tigerabrodi.blog/how-to-handle-pasting-images-to-inputs-in-react), [3](https://blog.filestack.com/html-file-upload-input-guide/)]
+
+### ✂️ Approach 1: Directly Intercepted (`onpaste`)
+
+By intercepting, you can catch the file before anything renders:
+
+javascript
+
+```
+const file = e.clipboardData.files[0]; // You hold the binary file object
+// You can now upload this directly to your server via FormData or an API
+```
+
+Use code with caution.
+
+### 🔄 Approach 2: Converted by Browser (Default Post-Paste DOM)
+
+The browser handles files by converting the binary data into a massive, unoptimized string and rendering a visual element inline: \[[1](https://http.dev/content-disposition)]
+
+html
+
+```
+<!-- The browser forces a giant local image tag into your document -->
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA..." />
+```
+
+Use code with caution.
+
+To help you choose the best implementation path, would you like to see the **JavaScript code for a custom HTML sanitizer** that filters these tags during interception, or are you looking to implement **drag-and-drop file uploads** alongside your paste behavior? \[[1](https://web.dev/articles/datatransfer)]
+
+- [link](https://mathematica.stackexchange.com/questions/175601/copy-and-paste-what-is-copied-to-the-clipboard)\
+  Copy and Paste: what is copied to the clipboard?\
+  Jun 19, 2018 — On some operating systems (definitely on Windows) the clipboard can hold data in multiple formats at the same time.\
+  \
+  \
+  Mathematica Stack Exchange
+- [link](https://stackoverflow.com/questions/7878492/stripping-styles-from-tinymce-copypaste)\
+  javascript - Stripping styles from TinyMCE copy+paste?\
+  Oct 24, 2011 — Comments Listen to the browser's native paste event. Parse the clipboard's text/html string with DOMParser. Make changes in the ge...\
+  \
+  Stack Overflow
+- [link](https://wordpress.stackexchange.com/questions/25622/wordpress-automatically-adds-pre-tags-when-pasting-code-how-to-stop-it)\
+  Wordpress automatically adds
+
+tags when pasting code, how to stop it?\
+Jul 20, 2011 — 3 Answers 3 The only way to keep it the way you paste it is by switching to the HTML tab - this will show you the raw code as you ...\
+\
+WordPress Development Stack Exchange
+
+Show all
+
+## You said: is converted content supset of the original html content
+
+No, the converted content is **not** a strict subset of the original HTML content.
+
+While the browser does strip things out (making a subset), it also actively **mutates, invents, and injects new HTML and CSS** that never existed in the original clipboard data.
+
+Here is why the converted content breaks the rules of a strict subset, along with examples of what the browser adds:
+
+### 1. Injected Inline Styles (The Browser "Guesses")
+
+The original HTML might rely on an external CSS class. Because the browser knows the destination `contenteditable` doesn't have that stylesheet, it computes the visual look at the moment of copying and hardcodes those styles as inline CSS during conversion.
+
+- **Original HTML on Clipboard:**\
+  html
+
+<!---->
+
+```
+<span class="brand-text">Hello</span>
+```
+
+Use code with caution.
+
+- **Converted HTML in DOM:**\
+  html
+
+<!---->
+
+```
+<!-- The browser invented the style attribute and filled it with computed values -->
+<span class="brand-text" style="color: rgb(255, 0, 0); font-weight: 700; font-family: Arial;">Hello</span>
+```
+
+Use code with caution.\
+\[[1](https://www.c-sharpcorner.com/UploadFile/219d4d/html-helpers-in-mvc-part-1/)]
+
+### 2. Wrapper Structural Tags
+
+Browsers will wrap pasted fragments in structural block tags like , , or to make them comply with the internal block rules of your specific `contenteditable` container. \[[1](https://learntube.ai/blog/programming/html/essential-concepts-every-html-developer-should-understand/), [2](https://www.impressivewebs.com/html5-section/), [3](https://pressbooks.library.torontomu.ca/webdesign/chapter/chapter-1/)]
+
+- **Original HTML on Clipboard:**\
+  html
+
+<!---->
+
+```
+Just some text and a <b>bold word</b>
+```
+
+Use code with caution.
+
+- **Converted HTML in DOM (Chrome/Safari):**\
+  html
+
+<!---->
+
+```
+<!-- The browser injected structural wrapper divs that weren't there -->
+<div>Just some text and a <b>bold word</b></div>
+```
+
+Use code with caution.
+
+### 3. Normalization of Non-Standard Tags
+
+If you copy content from apps like Microsoft Word or Google Docs, they use custom, non-standard XML/HTML tags. The browser translates these into completely different, valid HTML tags during conversion. \[[1](https://learntheweb.courses/topics/html-semantics/)]
+
+- **Original HTML on Clipboard (MS Word):**\
+  html
+
+<!---->
+
+```
+<o:p>Paragraph text</o:p>
+```
+
+Use code with caution.
+
+- **Converted HTML in DOM:**\
+  html
+
+<!---->
+
+```
+<!-- The tag changed entirely -->
+<p>Paragraph text</p>
+```
+
+Use code with caution.
+
+### Summary of the Relationship
+
+The conversion process is a **transformation**, not a filtration:
+
+- **The Clipboard Content** contains the raw semantic structure and application-specific classes.
+- **The Converted Content** contains a heavy mix of normalized tags, stripped scripts, structural wraps, and deeply bloated inline CSS layouts calculated on the fly by the browser layout engine.
+
+If you want to see exactly how your target browser handles this transformation, I can provide a **snippet to log and compare the exact string differences** side-by-side. Would that be helpful?
+
+- [link](https://www.c-sharpcorner.com/UploadFile/219d4d/html-helpers-in-mvc-part-1/)\
+  HTML Helpers in MVC: Part 1\
+  Mar 5, 2015 — In the preceding you can see the anonymous type (style) we created is rendered into an attribute of the HTML element.\
+  \
+  \
+  C# Corner
+- [link](https://learntube.ai/blog/programming/html/essential-concepts-every-html-developer-should-understand/)\
+  Essential Concepts Every HTML developer Should Understand\
+  Oct 15, 2022 — Block-level content (that which fills the entire width of its “container” or page) is marked by structural elements such as div> a...\
+  \
+  \
+  LearnTube By CareerNinja
+- [link](https://www.impressivewebs.com/html5-section/)\
+  When to Use the HTML5 "section" Element\
+  Jan 12, 2011 — I can also see using it as “this section of the website has articles”… but usually the block level parent of an article is also us...\
+  \
+  \
+  www.impressivewebs.com
+
+Show all
+
+## You said: i mean is converted content super set of the original html content in terms of infomation representation
+
+No, <mark style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 500; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">the converted content is <strong style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 600; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">neither a subset nor a superset</strong></mark>. It is an entirely different **transformation** that results in an **information loss** compared to the original clipboard HTML. \[[1](https://arxiv.org/pdf/2411.02959)]
+
+In information theory, a superset implies you can reconstruct the original data from the new data. You cannot do this with browser-converted content because the browser destroys critical semantic details while inventing generic visual representations.
+
+Here is a breakdown of why information is lost (not expanded) during the conversion process:
+
+### 1. Semantic Information Loss (Destroyed Metadata)
+
+The original HTML often carries structural meaning and application-specific metadata. The browser flattens this during conversion, replacing semantic meaning with generic visual boxes. \[[1](https://explainers.dev/web-standards-model-2/)]
+
+- **Original Clipboard Content:**\
+  html
+
+<!---->
+
+```
+<!-- Semantic information: This is a task list item, currently checked -->
+<li data-todo-state="done" class="project-task-item">Review Code</li>
+```
+
+Use code with caution.
+
+- **Converted DOM Content:**\
+  html
+
+<!---->
+
+```
+<!-- The semantic state and custom class are completely erased -->
+<li>Review Code</li>
+```
+
+Use code with caution.
+
+- **Why it's not a superset:** You have lost the data indicating whether the task was done, what project it belonged to, and its unique application context.
+
+### 2. Contextual Ambiguity (Resolved Specifics)
+
+When you copy a class name, that class points to an external stylesheet definition. When the browser flattens that class into inline styles, it converts a _relative concept_ into a _fixed value_.
+
+- **Original Clipboard Content:**\
+  html
+
+<!---->
+
+```
+<span class="highlight-warning">Alert</span>
+```
+
+Use code with caution.
+
+- **Converted DOM Content:**\
+  html
+
+<!---->
+
+```
+<span style="color: rgb(255, 165, 0);">Alert</span>
+```
+
+Use code with caution.
+
+- **Why it's not a superset:** The meaning `"warning"` has been lost and replaced by the literal color `"orange"`. If your app switches to a dark mode where warnings should be yellow, you can no longer identify this text as a warning to update it.
+
+### 3. Destruction of Functional Elements
+
+The browser intentionally strips out dynamic information representation for security and performance reasons.
+
+- **Original Clipboard Content:**\
+  html
+
+<!---->
+
+```
+<button onclick="playAudio('alert.mp3')">Listen</button>
+<script>console.log('Tracking paste event');</script>
+```
+
+Use code with caution.
+
+- **Converted DOM Content:**\
+  html
+
+<!---->
+
+```
+<!-- The behavior, logic, and interactivity are completely deleted -->
+<button>Listen</button>
+```
+
+Use code with caution.
+
+***
+
+### The Verdict: It is an Information Bottleneck
+
+```
+[Original HTML] ──> (Browser Layout Engine) ──> [Converted DOM]
+  • Rich Metadata                                 • Hardcoded Layout
+  • Custom Attributes                             • Generic Tags
+  • Strict Semantics                              • Visual Approximation
+```
+
+The browser treats pasting like a translation machine. It drops the "grammar and context" (classes, data-attributes, custom tags) of the source and replaces it with "phonetics" (raw inline inline styles and standard / tags) so it looks roughly the same, even though the deeper data structure is gone. \[[1](http://www.johndeacon.net/john-deacon/books-page/object-oriented-analysis-design/solutions-to-exercises-1/)]
+
+Are you building an editor that needs to **preserve specific metadata** (like tracking origins or retaining custom styles), or are you trying to **prevent the visual bloat** that comes with this transformation? \[[1](https://thetraceabilityhub.com/digital-provenance-why-content-authentication-matters-in-2026/), [2](https://en.wikipedia.org/wiki/Round-trip%5Fformat%5Fconversion)]
+
+- [link](https://arxiv.org/pdf/2411.02959)\
+  HtmlRAG: HTML is Better Than Plain Text for Modeling Retrieved Knowledge in RAG Systems\
+  Feb 7, 2025 — HTML to plain text leads to the loss of structural and semantic information. Figure 1 illustrates that a web page containing tabul...\
+  \
+  \
+  arXiv
+- [link](https://explainers.dev/web-standards-model-2/)\
+  The Web Standards Model: Part 2\
+  Apr 17, 2025 — To this core content, we add the first of our three layers — the structure layer. The HTML provides structure to our document (hen...\
+  \
+  \
+  explainers.dev
+- [link](http://www.johndeacon.net/john-deacon/books-page/object-oriented-analysis-design/solutions-to-exercises-1/)\
+  Solutions to exercises – 1 – John Deacon\
+  At each stage of transformation towards eventual code and compilation, structure and information are lost.\
+  \
+  www.johndeacon.net
+
+Show all
+
+# how to use git to checkpoint a specific subfolder
+
+To capture a snapshot or "checkpoint" of changes made strictly within a specific subfolder without impacting or committing changes in the rest of your project, you can isolate your `git add` and `git commit` commands to that exact path. \[[1](https://www.everythingdevops.dev/blog/how-to-checkout-git-tags), [2](https://www.tddapps.com/2015/06/24/Git-Workflow/)]
+
+Here is the exact step-by-step workflow to safely checkpoint a specific subfolder:
+
+### Step 1: Stage only the specific subfolder \[[1](https://github.com/microsoft/vscode/issues/26764), [2](https://www.geeksforgeeks.org/git/how-to-clone-only-a-subdirectory-of-a-git-repository/)]
+
+Run the `git add` command followed by the path of your subfolder. This tells Git to stage changes, additions, and deletions _only_ inside that directory. \[[1](https://labex.io/tutorials/git-how-to-stage-modified-files-for-a-git-commit-415181), [2](https://graphite.com/guides/add-all-tracked-files)]
+
+bash
+
+```
+git add path/to/subfolder/
+```
+
+Use code with caution.
+
+### Step 2: Verify the staged files
+
+Before committing, verify that only the target files are ready to be checkpointed. \[[1](https://gitbybit.com/gitopedia/concepts/staging-area)]
+
+bash
+
+```
+git status
+```
+
+Use code with caution.
+
+- **What to look for**: Files under your subfolder should be listed in green under "Changes to be committed." Any modified files outside of that subfolder should remain in red under "Changes not staged for commit." \[[1](https://www.theodinproject.com/lessons/foundations-git-basics), [2](https://albert-kuc.medium.com/set-project-environment-git-version-control-and-connect-to-github-from-terminal-prompt-cc51bb53bc1d), [3](https://medium.com/@myself.abdullahasif/getting-started-with-git-1873f8609b95), [4](https://www.geeksforgeeks.org/git/basic-git-commands-with-examples/)]
+
+### Step 3: Commit the subfolder checkpoint \[[1](https://www.geeksforgeeks.org/git/how-to-clone-only-a-subdirectory-of-a-git-repository/)]
+
+Commit your staged changes with a descriptive message. \[[1](https://uchicago-cs.github.io/student-resource-guide/tutorials/git-local.html)]
+
+bash
+
+```
+git commit -m "Checkpoint changes in path/to/subfolder"
+```
+
+Use code with caution.
+
+***
+
+### Alternative: Save a temporary checkpoint via Stash \[[1](https://dev.to/danyson/how-to-temporarily-save-your-uncommitted-changes-using-git-stash-2fho), [2](https://dev.to/manthanank/title-mastering-git-stash-a-guide-to-temporarily-shelving-changes-in-git-3ppl)]
+
+If you have uncommitted clutter across your whole repository and want to safely work _only_ on a specific subfolder, you can isolate it using Git's stashing feature:
+
+1. **Stash everything else**: Keep only the subfolder changes in your working directory while tucking away the rest of the repository's messy work.\
+   bash
+
+<!---->
+
+```
+git stash -- . ':!path/to/subfolder'
+```
+
+Use code with caution.
+2\. **Commit your subfolder**: Now that your workspace is clean, safely add and commit your subfolder.\
+bash
+
+```
+git add path/to/subfolder/
+git commit -m "Subfolder checkpoint"
+```
+
+Use code with caution.
+3\. **Restore the rest of your work**: Bring back the other changes you stashed in step 1.\
+bash
+
+```
+git stash pop
+```
+
+Use code with caution.\
+\[[1](https://refine.dev/blog/git-stash/), [2](https://www.datacamp.com/tutorial/git-pull)]
+
+To help provide the best approach, let me know **what you plan to do next** with this checkpoint. Are you trying to **split this subfolder into its own separate repository**, or do you just need to **revert this specific folder back to an older version**?
+
+- [link](https://www.everythingdevops.dev/blog/how-to-checkout-git-tags)\
+  EverythingDevOps\
+  May 1, 2024 — Isolation of changes: git checkout creates a detached HEAD state when switching to specific commits or tags, allowing developers t...\
+  \
+  \
+  www.everythingdevops.dev
+- [link](https://www.tddapps.com/2015/06/24/Git-Workflow/)\
+  Git Workflow – Tdd Apps\
+  Jun 24, 2015 — git add -A stages all the modified and new files. The Staging Area is a snapshot of what will get committed. Staged changes will n...\
+  \
+  www.tddapps.com
+- [link](https://github.com/microsoft/vscode/issues/26764)\
+  Git: Command to stage all selected files · Issue #26764 · microsoft/vscode\
+  May 16, 2017 — Instead try to invoke keyboard shortcut for command": "git. stage - it only stages the first selected file, not whole selection of...\
+  \
+  \
+  GitHub
+
+Show all
+
+## You said: i mean i want to branch an experimental fork, but i only want it to target a subfolder
+
+To isolate an experimental fork or branch to a single subfolder, you can use **`git sparse-checkout`** or **`git subtree`**. \[[1](https://www.lilbots.io/learn/linux/git/fetching-a-single-folder-from-a-git-repository-with-git-sparse-checkout)]
+
+The best method depends on whether you want to **hide everything else while you work** or **export the folder into its own completely separate repository history**.
+
+***
+
+### Option 1: Limit your workspace using `git sparse-checkout` \[[1](https://medium.com/@quicksilversel/the-30gb-repository-that-taught-me-about-git-sparse-checkout-2a1075d841d8)]
+
+Use this if you want to stay in the same repository but temporarily **hide all other folders** so you can focus completely on experimenting in your target subfolder. \[[1](https://medium.com/@quicksilversel/the-30gb-repository-that-taught-me-about-git-sparse-checkout-2a1075d841d8), [2](https://dev.to/kkibet/the-complete-guide-to-working-with-single-folders-in-multi-project-github-repositories-2ed5)]
+
+1. **Create and switch to your experimental branch**\
+   bash
+
+<!---->
+
+```
+git checkout -b experimental-folder-branch
+```
+
+Use code with caution.
+2\. **Initialize sparse checkout**\
+This configures Git to only track specific directories in your current working directory.\
+bash
+
+```
+git sparse-checkout init --cone
+```
+
+Use code with caution.
+3\. **Set the target subfolder**\
+All other folders will instantly disappear from your local view (but remain safe in Git history). Only your subfolder will remain visible.\
+bash
+
+```
+git sparse-checkout set path/to/subfolder
+```
+
+Use code with caution.
+4\. **Return to normal later**\
+When you switch back to your `main` branch, you can bring all files back into view by running:\
+bash
+
+```
+git sparse-checkout disable
+```
+
+Use code with caution.\
+\[[1](https://publish.obsidian.md/multiversecurriculum/Curriculum/DevOps/Control+Source+Code/Git+Branching), [2](https://train.rse.ox.ac.uk/material/HPCu/software%5Fproject%5Fmanagement/collaboration/refresher), [3](https://github.blog/open-source/git/bring-your-monorepo-down-to-size-with-sparse-checkout/), [4](https://git-scm.com/docs/git-sparse-checkout/2.25.0)]
+
+***
+
+### Option 2: Extract the subfolder into a new branch using `git subtree` \[[1](https://man.archlinux.org/man/git-subtree.1)]
+
+Use this if you want to **strip away the rest of the project history** and turn just that subfolder into its own independent branch. This is the cleanest way to create a true "fork" of a subfolder. \[[1](https://pow123.github.io/Getting-Started-Git/03-create/), [2](https://medium.com/@python-javascript-php-html-css/specific-git-subdirectory-cloning-12e14ac1f809), [3](https://bryantson.medium.com/git-subtree-how-to-extract-some-file-paths-into-a-separate-into-a-separate-branch-in-git-c77d321d1ded)]
+
+1. **Split the subfolder into a new branch**\
+   This command filters your repository history and isolates the subfolder's commits into a brand-new branch.\
+   bash
+
+<!---->
+
+```
+git subtree split --prefix=path/to/subfolder -b experimental-isolated-branch
+```
+
+Use code with caution.\
+\[[1](https://masauve.com/2016/09/04/git-what-to-subtree/)]
+2\. **Switch to your new isolated branch**\
+When you checkout this branch, the contents of the subfolder will now sit at the very root level of the project.\
+bash
+
+```
+git checkout experimental-isolated-branch
+```
+
+Use code with caution.
+3\. **Push it to a new remote repository (Optional Fork)**\
+If you want this to live as its own separate GitHub project, create a blank repository on GitHub and push this isolated branch to it:\
+bash
+
+```
+git remote add experimental-origin https://github.com
+git push experimental-origin experimental-isolated-branch:main
+```
+
+Use code with caution.\
+\[[1](https://docs.jfrog.com/artifactory/docs/go-modules), [2](https://hub.github.com/hub-fork.1.html), [3](https://medium.com/@aleksej.gudkov/how-to-isolate-a-directory-into-its-own-branch-in-git-d020f9166cdc), [4](https://www.gitkraken.com/blog/gitflow)]
+
+***
+
+To help choose the next step, let me know:
+
+- Will you eventually need to **merge these experimental changes back** into the main project?
+
+- Do you want to **share this experimental fork** with other developers as a standalone project?
+
+- [link](https://www.lilbots.io/learn/linux/git/fetching-a-single-folder-from-a-git-repository-with-git-sparse-checkout)\
+  Fetching a Single Folder from a Git Repository with Git Sparse-Checkout | Learn Linux\
+  In this guide, you'll learn how to fetch a single folder (or a subset of folders) from a Git repository using sparse-checkout, exp...\
+  \
+  Lil'bots
+
+- [link](https://medium.com/@quicksilversel/the-30gb-repository-that-taught-me-about-git-sparse-checkout-2a1075d841d8)\
+  Cloning Just What You Need: Sparse Checkout for Large Repositories | by Zoe\
+  Dec 23, 2025 — After cloning, git sparse-checkout set . github tells Git: "Only checkout files in the . github directory." Everything else stays ...\
+  \
+  \
+  Medium
+
+- [link](https://medium.com/@quicksilversel/the-30gb-repository-that-taught-me-about-git-sparse-checkout-2a1075d841d8)\
+  Cloning Just What You Need: Sparse Checkout for Large Repositories | by Zoe\
+  Dec 23, 2025 — After cloning, git sparse-checkout set . github tells Git: "Only checkout files in the . github directory." Everything else stays ...\
+  \
+  \
+  Medium
+
+Show all
+
+# how to use git branches
+
+**Git branches let you isolate your work** to safely develop features, fix bugs, or experiment without affecting the stable, main codebase. \[[1](https://docs.github.com/articles/about-branches), [2](https://www.youtube.com/shorts/NlnIJKdetvE)]
+
+Here is a step-by-step guide to the standard Git branching workflow:
+
+### 1. View Existing Branches
+
+Before creating a branch, see your current location and what else exists. \[[1](https://www.youtube.com/watch?v=3Z7Ng%5F2hrLM)]
+
+- `git branch` (Lists local branches; your current branch has an asterisk `*`)
+- `git branch -a` (Lists all local and remote tracking branches) \[[1](https://www.w3schools.com/git/git%5Fbranch.asp?remote=github), [2](https://support.atlassian.com/bitbucket-cloud/docs/check-out-a-branch/), [3](https://unstop.com/blog/git-branch), [4](https://www.udemy.com/course/git-branching-and-merging/?srsltid=AfmBOooFSxVgqLYGElOkj-3MByq5qra%5FOxuWb8ZJ1Sjayh8aF78twtd5)]
+
+### 2. Create and Switch to a New Branch
+
+Always create a branch from a clean, stable base (usually `main`). \[[1](https://www.reddit.com/r/webdev/comments/1hp1rad/can%5Fsomeone%5Fexplain%5Fto%5Fme%5Fhow%5Fbranching%5Fworks%5Fin/), [2](https://docs.github.com/articles/about-branches)]
+
+- (Creates and switches to the new branch instantly)
+- (Modern Git alternative to achieve the same result) \[[1](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell), [2](https://www.geeksforgeeks.org/git/introduction-to-git-branch/)]
+
+### 3. Work and Save Changes
+
+Once inside your feature branch, you can edit code freely. \[[1](https://www.w3schools.com/git/git%5Fbranch.asp), [2](https://www.youtube.com/watch?v=3Z7Ng%5F2hrLM)]
+
+- `git add .` (Stages your new modifications)
+- `git commit -m "Add feature description"` (Saves changes to this specific branch) \[[1](https://www.reddit.com/r/git/comments/r7ef0k/branching%5Ffor%5Fdummies/), [2](https://www.linkedin.com/posts/brijpandeyji%5Fif-youre-new-to-git-or-need-a-refresher-activity-7256756737767092225-MhgG), [3](https://www.linkedin.com/top-content/project-management/mastering-git-fundamentals/)]
+
+### 4. Share Your Branch Remotely
+
+If working with a team, push your branch to a remote server like GitHub. \[[1](https://www.youtube.com/watch?v=Q8WTlLf8pBo), [2](https://medium.com/@masonbrandi66/how-i-use-multiple-branches-in-git-while-working-on-my-projects-47b71d88da94)]
+
+- (Pushes the branch and pairs it to the remote repository) \[[1](https://git-scm.com/book/be/v2/Git-Branching-Branch-Management), [2](https://unstop.com/blog/git-create-branch), [3](https://gitprotect.io/blog/how-to-create-a-new-branch-in-github/)]
+
+### 5. Merge Changes Back to Main
+
+When your work is complete, tested, and ready to go live, pull it into your primary branch. \[[1](https://www.youtube.com/watch?v=3rxZNlxD9%5FE), [2](https://www.youtube.com/shorts/NlnIJKdetvE)]
+
+- `git checkout main` (Switch back to the main branch)
+- `git pull origin main` (Ensure your local main is up to date)
+- (Combines your feature branch work into main) \[[1](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging), [2](https://medium.com/@isphinxs/how-i-use-git-branches-in-my-projects-4e8ff17fa4a4), [3](https://www.varonis.com/blog/git-branching-and-merging), [4](https://levelup.gitconnected.com/git-for-beginners-basic-terms-essential-commands-how-to-work-platforms-and-git-vs-github-755b55760e62), [5](https://medium.com/@ryassminh/version-control-with-git-a-quick-review-for-all-levels-edf9b54e3b38)]
+
+### 6. Clean Up
+
+Delete the branch after a successful merge to keep the repository uncluttered. \[[1](https://stackoverflow.com/questions/10009175/how-to-properly-use-git-and-branches), [2](https://www.youtube.com/watch?v=3rxZNlxD9%5FE)]
+
+- (Deletes the local branch safely)
+- (Deletes the branch from the remote server) \[[1](https://git-scm.com/book/be/v2/Git-Branching-Branch-Management), [2](https://www.geeksforgeeks.org/git/introduction-to-git-branch/)]
+
+Watch this short visual guide to see these branching commands in action:
+
+8:35
+
+[Git Branches: The ONLY Tutorial You NeedRoger Perkin | Network Automation EngineerYouTube · Feb 4, 2025](https://www.youtube.com/watch?v=3rxZNlxD9%5FE)
+
+If you want to practice your skills safely, you can try an interactive visualization game like [Learn Git Branching](https://learngitbranching.js.org/). \[[1](https://www.reddit.com/r/git/comments/r7ef0k/branching%5Ffor%5Fdummies/), [2](https://learngitbranching.js.org/)]
+
+To help tailor this guide further, let me know:
+
+- Are you working **alone or with a team**?
+
+- Are you currently running into any **merge conflicts**?
+
+- Would you like an explanation of advanced workflows like **rebasing**? \[[1](https://www.youtube.com/watch?v=viAZQjs5lHk), [2](https://www.geeksforgeeks.org/git/introduction-to-git-branch/)]
+
+- [link](https://www.reddit.com/r/git/comments/r7ef0k/branching%5Ffor%5Fdummies/)\
+  Branching for dummies? : r/git - Reddit\
+  Dec 2, 2021 — mrswats. • 5y ago. I would recommend playing with https://learngitbranching.js.org/ christian-mann. • 5y ago. Git tracks content v...\
+  Reddit·r/git
+
+- [link](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell)\
+  Branches in a Nutshell - Git\
+  Let's see why you should do so. Note. Creating a new branch and switching to it at the same time. It's typical to create a new bra...\
+  Git
+
+- [link](https://www.reddit.com/r/webdev/comments/1hp1rad/can%5Fsomeone%5Fexplain%5Fto%5Fme%5Fhow%5Fbranching%5Fworks%5Fin/)\
+  Can someone explain to me how branching works in git/github - Reddit\
+  Dec 29, 2024 — Comments Section \* HashDefTrueFalse. • 1y ago. • Edited 1y ago. Hello, I'll quote and answer. "nobody actually knows how git works...\
+  Reddit·r/webdev
+
+Show all
+
+## You said: how to compare two branches
+
+To compare two Git branches, you use the `git diff` or `git log` commands depending on whether you want to see code changes or commit history. \[[1](https://unfuddle.com/stack/tips-tricks/git-compare-two-branches/), [2](https://git.github.io/git-reference/inspect/), [3](https://jvns.ca/blog/2023/11/01/confusing-git-terminology/), [4](https://www.dolthub.com/blog/2022-11-11-two-and-three-dot-diff-and-log/)]
+
+Here is how to compare your branches effectively:
+
+### 1. Compare Code Changes
+
+This shows the exact line-by-line differences between two branches. \[[1](https://labex.io/tutorials/git-how-to-check-if-a-git-branch-is-synced-with-another-branch-560051), [2](https://www.git-tower.com/free-tools/code-diff)]
+
+- (Shows what is in branch2 that is not in branch1)
+- (Alternative syntax achieving the same result)
+- `git diff main feature-branch` (Common example: compares main to your feature) \[[1](https://dev.to/rajhawaldar/lets-try-to-understand-git-diff-56l6), [2](https://devconnected.com/how-to-compare-two-git-branches/), [3](https://betterstack.com/community/questions/how-to-compare-to-branches/), [4](https://tms-outsource.com/blog/posts/what-is-git-diff/), [5](https://www.geeksforgeeks.org/git/how-to-compare-files-from-two-different-branches-in-git/)]
+
+### 2. Compare Specific Files
+
+If you only care about changes in one specific file across branches.
+
+- (Limits the diff to the specified file) \[[1](https://stackoverflow.com/questions/8131135/git-how-to-diff-two-different-files-in-different-branches)]
+
+### 3. Compare Commit History
+
+This shows the list of commits that exist on one branch but not the other. \[[1](https://github.com/jesseduffield/lazygit/issues/3792), [2](https://developercommunity.visualstudio.com/idea/382989/show-combined-git-branch-history-including-common.html)]
+
+- (Lists commits on branch2 that are missing from branch1)
+- `git log main..feature-branch` (Shows all new commits you made on your feature branch)
+- (Condenses the output to one punchy line per commit) \[[1](https://blog.openreplay.com/how-to-compare-two-branches-in-git/), [2](https://www.theodinproject.com/lessons/foundations-revisiting-rock-paper-scissors), [3](https://www.git-tower.com/blog/investigating-git-history)]
+
+### 4. Find the Common Ancestor \[[1](https://learn.allspice.io/docs/two-dot-diff-vs-three-dot-diff)]
+
+If you want to see where your feature branch originally split off from main.
+
+- (Outputs the commit hash of the shared base) \[[1](https://github.com/mike-rambil/Advanced-Git/blob/main/contents/git-merge-base.md)]
+
+### 5. Preview Changes Before Merging \[[1](https://www.youtube.com/watch?v=j%5FyA4Yv22SI)]
+
+If you are on your feature branch and want to see what will change when you merge it into main. \[[1](https://www.git-tower.com/learn/git/faq/git-compare-two-branches)]
+
+- `git diff main...` (Three dots show changes since the branch split from main) \[[1](https://docs.github.com/articles/about-comparing-branches-in-pull-requests), [2](https://theproductguy.in/blogs/git-diff-guide/)]
+
+If you are using a platform like **GitHub, GitLab, or Bitbucket**, you can also compare branches visually by navigating to the "Pull Requests" page and selecting your target and source branches. \[[1](https://medium.com/git-happy/10-key-best-practices-for-git-branch-management-b0e7ec4148b9), [2](https://blog.hexafoldtech.com/p/git-flow-explained-simplifying-your)]
+
+To help you get the exact command you need, let me know:
+
+- Do you want to see **individual lines of code** or just **commit messages**?
+
+- Are you looking for a **command line solution** or a **visual tool** (like VS Code or GitHub)?
+
+- [link](https://unfuddle.com/stack/tips-tricks/git-compare-two-branches/)\
+  Unfuddle Support | Git - Compare Two Branches\
+  How do I compare two different branches in my Git repository? Using git-diff you can compare two branches by viewing a diff betwee...\
+  \
+  \
+  Unfuddle
+
+- [link](https://git.github.io/git-reference/inspect/)\
+  Git Reference\
+  In a nutshell you can use git log to find specific commits in your project history - by author, date, content or history. You can ...\
+  \
+  GitHub
+
+- [link](https://jvns.ca/blog/2023/11/01/confusing-git-terminology/)\
+  Confusing git terminology\
+  Nov 1, 2023 — None of those are wrong: different commands use commits in all of these ways. For example git show treats a commit as a diff, git ...\
+  \
+  Julia Evans
+
+Show all
+
+## You said: how to rename or delete a branch
+
+To rename or delete a Git branch, you use variations of the `git branch` command. \[[1](https://www.gitkraken.com/learn/git/problems/rename-git-branch), [2](https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/delete-local-git-branch-origin-force-merge-all), [3](https://www.elainewlin.com/writing/software/practical%5Fgit%5Fcheat%5Fsheet.html)]
+
+Here are the exact commands to manage your branches:
+
+### 1. Rename a Branch
+
+You can rename a branch whether you are currently working on it or looking at it from another branch. \[[1](https://unstop.com/blog/git-rename-branch), [2](https://algocademy.com/blog/mastering-git-a-comprehensive-guide-to-rename-branch-with-ease/)]
+
+- (Renames your current active branch)
+- (Renames a branch from anywhere)
+- (Pushes the newly named branch to remote)
+- (Removes the old branch name from remote) \[[1](https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/rename-Git-branch-local-remote-GitHub-GitLab-BitBucket), [2](https://unstop.com/blog/git-rename-branch), [3](https://www.scaler.com/topics/git/git-rename-branch/), [4](https://unstop.com/blog/git-rename-branch), [5](https://elementor.com/blog/git-rename-branch/)]
+
+### 2. Delete a Local Branch \[[1](https://phoenixnap.com/kb/how-to-rename-git-branch-local-remote)]
+
+You cannot delete a branch while you are actively standing inside it. \[[1](https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/delete-local-git-branch-origin-force-merge-all)]
+
+- `git checkout main` (Switch to a different branch first)
+- (Deletes the branch safely; fails if work is unmerged)
+- (Forces deletion, destroying unmerged changes permanently) \[[1](https://flexiple.com/git/git-delete-branch), [2](https://www.datacamp.com/tutorial/git-delete-branch), [3](https://www.codecademy.com/article/git-delete-branch), [4](https://unstop.com/blog/git-delete-branch), [5](https://keploy.io/blog/community/how-to-delete-local-and-remote-branches-in-git-a-complete-guide)]
+
+### 3. Delete a Remote Branch \[[1](https://elementor.com/blog/git-rename-branch/)]
+
+Deleting a local branch does not remove it from servers like GitHub. \[[1](https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/delete-all-branches-except-master-main-local-remote)]
+
+- (Deletes the branch from the remote server)
+- `git remote prune origin` (Cleans up your local list of dead remote tracking branches) \[[1](https://flexiple.com/git/git-delete-branch), [2](https://gist.github.com/schacon/942899)]
+
+If you are using a visual tool like **VS Code**, you can also right-click the branch name in the Git graph or source control side panel to rename or delete it without typing commands.
+
+To help you fix any potential cleanup errors, let me know:
+
+- Did you get a **"branch is not fully merged"** error?
+
+- Are you trying to rename the **default main/master branch**?
+
+- [link](https://www.gitkraken.com/learn/git/problems/rename-git-branch)\
+  How do you rename a Git branch? | Solutions to Git Problems\
+  You can rename a Git branch using the git branch command followed by -m and your desired branch name. Can you can rename a Git bra...\
+  \
+  \
+  GitKraken
+
+- [link](https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/delete-local-git-branch-origin-force-merge-all)\
+  How to delete a local Git branch\
+  Sep 9, 2025 — Detailed steps to delete a single Git branch Open a Git BASH or a command prompt in the root of your Git repository. If necessary,\
+  \
+  \
+  TheServerSide
+
+- [link](https://www.elainewlin.com/writing/software/practical%5Fgit%5Fcheat%5Fsheet.html)\
+  Practical git cheat sheet\
+  Common git commands Command Usage git branch -d \[branch name] Delete the branch with name \[branch name]. git reset --soft \[prev co...\
+  \
+  \
+  www.elainewlin.com
+
+Show all
+
+## You said: how to merge a branch to master
+
+To merge a branch into `master`, you must first switch to the `master` branch and then integrate the changes. \[[1](https://www.pythonhealthdatascience.com/content/03%5Fmgt/01%5Fgit/05%5Fcs%5F3.html), [2](https://www.reddit.com/r/git/comments/nozfbm/new%5Fuser%5Fof%5Fgit%5Fand%5Fintellij%5Fhow%5Fdo%5Fi%5Fupdate%5Fmy/), [3](https://medium.com/@rahuldesharaj92/what-is-the-difference-between-git-merge-and-git-rebase-933927d1e824)]
+
+Here is the standard workflow to merge safely:
+
+### 1. Update Your Local Master Branch \[[1](https://www.udemy.com/course/git-branching-and-merging/?srsltid=AfmBOooORgh7up-aiLFbvi%5FMuAMhGt0nRkkWSyJGtzSiKFSfSpeJTk57)]
+
+Always fetch the latest server updates before merging to prevent outdated conflicts. \[[1](https://graphite.com/guides/git-merge-main-into-another-branch), [2](https://blog.openreplay.com/how-to-merge-main-into-branch-git/), [3](https://srivastavayushmaan1347.medium.com/how-to-create-a-new-branch-make-changes-and-merge-it-into-the-main-branch-without-conflicts-387ddc44cc11)]
+
+- `git checkout master` (Switches your active workspace to the master branch)
+- `git pull origin master` (Downloads and integrates the newest remote changes) \[[1](https://www.linkedin.com/pulse/navigating-branch-management-git-flow-strategies-success-perez-xnpme), [2](https://stackabuse.com/git-merge-branch-into-master/), [3](https://www.git-tower.com/learn/git/faq/git-pull-origin-master), [4](https://www.datacamp.com/tutorial/git-pull)]
+
+### 2. Run the Merge Command \[[1](https://blog.mergify.com/git-merge-branch-into-another/)]
+
+Bring the code modifications from your feature branch into `master`. \[[1](https://companial.com/blog/git-and-dynamics-365-fscm-how-to-use-code-repositories-in-the-most-efficient-way-part-1/)]
+
+- (Combines the specified branch into master) \[[1](https://unstop.com/blog/git-branch)]
+
+### 3. Handle Conflicts (If They Occur) \[[1](https://www.reddit.com/r/git/comments/j38kb1/what%5Fdoes%5Fit%5Fmean%5Fto%5Fmerge%5Fmaster%5Finto%5Ffeature/)]
+
+If the same line of code was changed in both branches, Git will pause. \[[1](https://dev.to/pratik%5Fkale/git-branching-and-merging-mh4)]
+
+- `git status` (Shows which files have conflicting modifications)
+- Open the conflicted files in your editor, choose the correct code, and delete the Git markers (`<<<<<<<`, `=======`, `>>>>>>>`).
+- (Stages the fixed file)
+- `git commit -m "Resolve merge conflict"` (Completes the paused merge process) \[[1](https://www.shells.com/tutorial/How-to-Merge-Two-Branches-in-Git), [2](https://unstop.com/blog/merge-in-git), [3](https://blog.nobledesktop.com/learn/git/merge-conflicts), [4](https://www.linkedin.com/pulse/git-me-some-knowledge-merge-rebase-amend-hawkaiofficial-lx9rf), [5](https://blog.mergify.com/resolve-git-merge-conflicts/)]
+
+### 4. Push the Merged Code to the Server \[[1](https://devops.stackexchange.com/questions/3648/deploy-to-server-after-merge-to-master-branch)]
+
+Share the newly updated master branch with your team or remote repository. \[[1](https://notes.kodekloud.com/docs/GIT-for-Beginners/Initialize-Remote-Repositories/Fetching-and-Pulling/page), [2](https://unstop.com/blog/git-rename-branch)]
+
+- `git push origin master` (Uploads the integrated changes to the remote server) \[[1](https://blog.devgenius.io/git-branch-and-git-merge-best-practices-for-git-basics-876a035fc7a7)]
+
+### 5. Clean Up (Optional) \[[1](https://www.contentstack.com/academy/courses/branches-foundations/merging-branches)]
+
+Delete your local feature branch if it is no longer needed. \[[1](https://www.tilburgsciencehub.com/topics/automation/version-control/advanced-git/git-branching-strategies/)]
+
+- (Deletes the branch locally and safely) \[[1](https://labex.io/tutorials/git-how-to-list-all-local-branches-merged-into-master-in-git-417747), [2](https://dev.to/lofiandcode/git-and-github-merge-3g78)]
+
+To guide you through the next steps, let me know:
+
+- Did your merge trigger any **merge conflicts** that you need help reading?
+
+- Are you using a platform like **GitHub or GitLab** where you should use a **Pull/Merge Request** instead?
+
+- [link](https://www.pythonhealthdatascience.com/content/03%5Fmgt/01%5Fgit/05%5Fcs%5F3.html)\
+  Case study: Branching and merging — Python for health data science.\
+  To complete the merge we need to switch to the master branch and use the merge command.\
+  \
+  Python for health data science.
+
+- [link](https://www.reddit.com/r/git/comments/nozfbm/new%5Fuser%5Fof%5Fgit%5Fand%5Fintellij%5Fhow%5Fdo%5Fi%5Fupdate%5Fmy/)\
+  New user of GIT and IntelliJ how do I update my branch to match master : r/git\
+  May 31, 2021 — To correctly merge into master, you first need to switch yourself over to the master branch. Once you are inside the branch that y...\
+  \
+  Reddit
+
+- [link](https://medium.com/@rahuldesharaj92/what-is-the-difference-between-git-merge-and-git-rebase-933927d1e824)\
+  What is the difference between Git Merge and Git Rebase\
+  Jun 8, 2024 — Merging integrates the changes from the feature branch into the master branch, creating a new commit that reflects the combined hi...\
+  \
+  \
+  Medium
+
+Show all
+
+## You said: make master exactly as the new branch
+
+To make `master` an exact copy of your new feature branch, you need to overwrite `master` entirely.
+
+Here are the two best ways to do this, depending on whether you are working with a shared team repository or working alone.
+
+### Method 1: The Safe Way (Best for Shared Repositories)
+
+This strategy forces the content of `master` to match your new branch exactly, but it keeps the commit history intact. This prevents breaking things for your coworkers. \[[1](https://www.reddit.com/r/git/comments/exk37z/how%5Fdo%5Fyou%5Fadd%5Fthe%5Fdiff%5Fagainst%5Fanother%5Fbranch%5Fas/), [2](https://www.reddit.com/r/webdev/comments/k8ib1k/roll%5Fback%5Fgit%5Fmaster%5Fbut%5Fsave%5Fchanges%5Fas%5Fa%5Fnew/), [3](https://help2.innovyze.com/infoworkswspro/Content/HTML/WS/p%5Fvc%5Fmanaging%5Fversion%5Fcontrolled%5Fobjects.htm), [4](https://dev.to/devactivity/git-merge-vs-git-rebase-crafting-your-teams-software-engineering-efficiency-3486)]
+
+- (Switch to your new branch)
+- `git merge -s ours master` (Perform a merge that keeps your branch's files exactly as they are)
+- `git checkout master` (Switch back to master)
+- (Fast-forward master to match your branch exactly)
+- `git push origin master` (Safely push the updates to the server) \[[1](https://unstop.com/blog/switching-branches-in-git), [2](https://medium.com/towardsdev/youre-merging-git-branches-the-hard-way-here-s-the-smarter-way-d8804dd99f19), [3](https://testautomationu.applitools.com/git-tutorial/chapter5.1.html), [4](https://reemus.dev/article/making-sense-of-git-and-github), [5](https://blog.ocharles.org.uk/posts/2011-07-28-git-in-pg.html)]
+
+### Method 2: The Force Way (Best for Solo Projects)
+
+This resets your local `master` branch pointer directly to the head of your new branch. **Warning:** This erases unique history on `master` and requires a forced push, which can disrupt teammates. \[[1](https://stackoverflow.com/questions/42632538/unable-to-overwrite-git-master-branch-with-dev-branch), [2](https://www.reddit.com/r/git/comments/5ymgl3/sick%5Fof%5Fgetting%5Fupdates%5Frejected%5Fbecause%5Fthe%5Ftip/), [3](https://medium.com/learning-data/git-mishaps-common-mistakes-and-how-to-protect-your-repositories-8a0fbe08c805), [4](https://www.datacamp.com/de/tutorial/git-reset-head-comprehensive-guide)]
+
+- `git checkout master` (Switch to the master branch)
+- (Forces local master to match your new branch exactly)
+- `git push origin master --force` (Overwrites the remote server branch forcefully) \[[1](https://code.tutsplus.com/easy-version-control-with-git--net-7449t), [2](https://dev.to/cicube/how-to-reset-your-local-git-branch-5273), [3](https://medium.com/@elton-martins/to-reset-a-git-branch-to-match-the-master-main-branch-6692c28a36fc), [4](https://ecweb.ecer.com/topic/cn/detail-265366-github%5Fguide%5Fsafely%5Freverting%5Faccidental%5Fcommits.html)]
+
+### Method 3: The Safe Overwrite (Alternative)
+
+If you want to completely replace the file contents of `master` with your branch but create a single, clean commit on `master`: \[[1](https://www.reddit.com/r/git/comments/exk37z/how%5Fdo%5Fyou%5Fadd%5Fthe%5Fdiff%5Fagainst%5Fanother%5Fbranch%5Fas/), [2](https://dev.to/whitep4nth3r/rewrite-your-git-history-in-4-friendly-commands-an9)]
+
+- `git checkout master` (Switch to master)
+- `git rm -rf .` (Delete all current files tracked in master)
+- (Copy every file over from your new branch)
+- `git add -A` (Stage all the new changes)
+- `git commit -m "Overwrite master with new branch content"` (Commit the exact state) \[[1](https://testautomationu.applitools.com/git-tutorial/chapter5.1.html), [2](https://laiyuanyuan-sg.medium.com/streamlining-git-workflows-using-git-switch-and-git-restore-over-git-checkout-6bcd95ac962c), [3](https://docs.yoctoproject.org/4.3.2/contributor-guide/submit-changes.html)]
+
+To make sure you don't lose any critical work, let me know:
+
+- Are you working on this repository **with other developers**?
+
+- Do you need to **keep the old history** that was on `master`, or can it be deleted?
+
+- [link](https://www.reddit.com/r/git/comments/exk37z/how%5Fdo%5Fyou%5Fadd%5Fthe%5Fdiff%5Fagainst%5Fanother%5Fbranch%5Fas/)\
+  How do you add the diff against another branch as a revert commit? : r/git\
+  Feb 2, 2020 — In that case a merge from master accomplishes that. That will create one commit that brings changes done in master to your branch ...\
+  \
+  Reddit
+
+- [link](https://www.reddit.com/r/webdev/comments/k8ib1k/roll%5Fback%5Fgit%5Fmaster%5Fbut%5Fsave%5Fchanges%5Fas%5Fa%5Fnew/)\
+  Roll back Git master but save changes as a new branch? : r/webdev\
+  Dec 7, 2020 — The above commits your stuff to another branch, thus, master is unchanged. Then, when you go back to master, your local copy is si...\
+  \
+  Reddit
+
+- [link](https://help2.innovyze.com/infoworkswspro/Content/HTML/WS/p%5Fvc%5Fmanaging%5Fversion%5Fcontrolled%5Fobjects.htm)\
+  Managing version controlled objects\
+  Every time you commit changes to the master database, the changes you made are recorded permanently. They are not overwritten when...\
+  \
+  help2.innovyze.com
+
+Show all
+
+## You said: i mean just switch to master, and then checkout the newbranch
+
+Ah, got it! If you just want to switch your workspace to `master` and then switch over to your new branch, you use the standard navigation commands.
+
+Here are the exact commands to do that:
+
+### 1. Switch to Master
+
+- `git checkout master` (Switches your active workspace to the master branch)
+- `git switch master` (The modern Git alternative to achieve the same result) \[[1](https://chryswoods.com/beginning%5Fgit/branching.html), [2](https://medium.com/@coadams9/git-flow-for-noobs-ade467a60011), [3](https://gcapes.github.io/git-course/06-branching/index.html), [4](https://codeinstitute.net/blog/git-branches/)]
+
+### 2. Switch to the New Branch
+
+- (Switches your workspace over to your new branch)
+- (The modern Git alternative) \[[1](https://unstop.com/blog/switching-branches-in-git), [2](https://hpc-wiki.info/hpc/Git%5FTutorials/Branching), [3](https://www.datacamp.com/tutorial/git-list-branches)]
+
+### Shortcut Note
+
+If you just want to get to your new branch, you do not actually have to switch to `master` first. You can run from absolutely anywhere, and Git will take you straight there. \[[1](https://stackoverflow.com/questions/68059175/why-do-we-pull-from-remote-master-branch-into-local-master-branch-and-our-workin), [2](https://www.linkedin.com/learning/git-from-scratch/git-checkout-go-to-an-alternate-timeline), [3](https://nyu-dataservices.gitlab.io/rdm-instruction/intro-to-git-and-github.html), [4](https://blog.mergify.com/how-to-create-branch-from-commit-git-expert-guide/)]
+
+To help you with what you are working on next, let me know:
+
+- Are you planning to **view files**, **make changes**, or **merge code** on that new branch?
+
+- Did you hit any **"error: Your local changes would be overwritten"** messages while trying to switch?
+
+- [link](https://chryswoods.com/beginning%5Fgit/branching.html)\
+  chryswoods.com | Branching\
+  Exercise Change between the master and new-branch branches using git checkout and verify that your working directory is indeed mov...\
+  \
+  Chrys Woods
+
+- [link](https://medium.com/@coadams9/git-flow-for-noobs-ade467a60011)\
+  Git Flow for noobs. So you’ve seen it on every application… | by Cory Adams\
+  Oct 16, 2019 — git checkout master - switches you back over to the master copy/branch of your code(things will disappear when you do this because...\
+  \
+  \
+  Medium
+
+- [link](https://gcapes.github.io/git-course/06-branching/index.html)\
+  Branching – Version control with Git\
+  and when we wanted to get back to our most recent version of the repository, we used git switch master .\
+  \
+  \
+  GitHub Pages documentation
+
+Show all
+
+## You said: no. i mean switch to master, then checkout newbranch to completely override master. like, you switch to newbranch, copy all files out, switch to master, rm rf and paste
+
+Got it! You want to completely overwrite the files on `master` with the files from your new branch so they match exactly, using Git instead of manually copying and pasting files. \[[1](https://www.reddit.com/r/learnprogramming/comments/esz9tu/how%5Fcan%5Fi%5Fuse%5Fgit%5Fto%5Foverwrite%5Fmy%5Fcurrent%5Ffile/), [2](https://www.reddit.com/r/webdev/comments/k8ib1k/roll%5Fback%5Fgit%5Fmaster%5Fbut%5Fsave%5Fchanges%5Fas%5Fa%5Fnew/)]
+
+Here is the exact way to do that using the `git checkout` command from `master`:
+
+### The Exact Git Command
+
+Instead of manually deleting and pasting files, you switch to `master` and tell Git to pull all the files directly out of your new branch: \[[1](https://superuser.com/questions/692794/how-can-i-get-all-the-files-from-one-git-branch-and-put-them-into-the-current-b)]
+
+bash
+
+```
+git checkout master
+git checkout <new-branch> -- .
+```
+
+Use code with caution.
+
+### What This Command Does
+
+- **`git checkout master`**: Switches your workspace to the master branch.
+- : The dot `.` means "everything." This command reaches into your new branch, grabs every single file and folder, and overwrites your current `master` workspace with them. It acts exactly like a delete, copy, and paste. \[[1](https://code.tutsplus.com/easy-version-control-with-git--net-7449t), [2](https://fewd.samizdat.co/2021/learn/howto/branching.html), [3](https://unstop.com/blog/switching-branches-in-git)]
+
+### How to Save Your Changes
+
+After running those commands, your files will match the new branch exactly, but Git will show them as modified and staged. You just need to commit and push them: \[[1](https://www.cs.nmsu.edu/~jcook/posts/github-branching-and-merging/), [2](https://education.launchcode.org/liftoff/modules/git/git-refresher.html), [3](https://github.com/ahmedgulabkhan/git-for-noobs), [4](https://www.jetbrains.com/help/webstorm/apply-changes-from-one-branch-to-another.html)]
+
+1. `git commit -m "Replace all master files with new branch content"` (Saves the exact state)
+2. `git push origin master` (Uploads the changes safely to your server) \[[1](https://neu-se.github.io/CS4530-CS5500-Spring-2021/tutorials/week2-git), [2](https://www.youtube.com/watch?v=ruieT3Nkg2M)]
+
+This method is incredibly safe because it leaves your Git history completely intact, meaning you won't break anything for other developers working on the project. \[[1](https://www.baeldung.com/ops/git-move-uncommitted-work-to-new-branch)]
+
+To make sure this goes smoothly, let me know:
+
+- Did you have any **uncommitted changes** on `master` before starting?
+
+- Are there any **ignored files** (like `.env` or `node_modules`) you need to watch out for?
+
+- [link](https://www.reddit.com/r/learnprogramming/comments/esz9tu/how%5Fcan%5Fi%5Fuse%5Fgit%5Fto%5Foverwrite%5Fmy%5Fcurrent%5Ffile/)\
+  How can I use git to overwrite my current file with the most recent commit? : r/learnprogramming\
+  Jan 23, 2020 — It sounds like you only have one branch (master) but if you are working on a separate branch you should add the branch name to the...\
+  \
+  Reddit
+
+- [link](https://www.reddit.com/r/webdev/comments/k8ib1k/roll%5Fback%5Fgit%5Fmaster%5Fbut%5Fsave%5Fchanges%5Fas%5Fa%5Fnew/)\
+  Roll back Git master but save changes as a new branch? : r/webdev\
+  Dec 7, 2020 — The above commits your stuff to another branch, thus, master is unchanged. Then, when you go back to master, your local copy is si...\
+  \
+  Reddit
+
+- [link](https://superuser.com/questions/692794/how-can-i-get-all-the-files-from-one-git-branch-and-put-them-into-the-current-b)\
+  How can I get all the files from one git branch, and put them into the current branch without merging?\
+  Dec 24, 2013 — If you would like simply to bring all files from another branch to your working directory, you can simple check them out by using ...\
+  \
+  \
+  Super User
+
+Show all
+
+## You said: when will git merge conflict
+
+A Git merge conflict happens <mark style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 500; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">when Git <strong style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 600; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">cannot automatically combine</strong> changes from two different branches</mark>. This occurs because the same exact line of code was modified in conflicting ways, and Git needs a human to decide which version to keep. \[[1](https://www.simplilearn.com/tutorials/git-tutorial/merge-conflicts-in-git), [2](https://sos-cer.github.io/projects/git-guide/git-merge.html), [3](https://www.arcadsoftware.com/discover/resources/blog/resolve-git-merge-conflicts-faster-with-artificial-intelligence-ai/), [4](https://dev.to/mohsenkamrani/git-merge-learn-by-example-1lbf)]
+
+Here are the specific scenarios that trigger a merge conflict:
+
+### 1. Same Line, Different Changes \[[1](https://www.deployhq.com/git/faqs/resolve-merge-conflicts-git)]
+
+If you modify a specific line of a file on one branch, and someone else modifies that exact same line on another branch, Git will conflict. \[[1](https://unstop.com/blog/merge-in-git)]
+
+- **Example:** Branch A changes line 5 to `let color = "blue"`. Branch B changes line 5 to `let color = "red"`. Git does not know which color is correct. \[[1](https://www.sesync.org/resources/how-do-i-resolve-merge-conflicts-gitgithubgitlab), [2](https://www.zemith.com/blogs/git-merge-conflict-resolution)]
+
+### 2. One Branch Deletes, One Branch Edits \[[1](https://www.cloudthat.com/resources/blog/git-best-practices-managing-merge-conflicts), [2](https://learn.microsoft.com/en-us/azure/devops/repos/git/merging?view=azure-devops)]
+
+If one person deletes a file entirely, but another person edits the code inside that same file on a different branch, Git gets stuck. \[[1](https://unstop.com/blog/merge-in-git), [2](https://colab.research.google.com/github/AI-Core/Content-Public/blob/main/Content/units/Essentials/1.%20Git%20%26%20GitHub/4.%20Merge%20Conflicts/Notebook.ipynb), [3](https://www.simplilearn.com/tutorials/git-tutorial/git-interview-questions)]
+
+- **Example:** Branch A fixes a typo on line 12 of `app.js`. Branch B deletes `app.js` entirely. Git doesn't know whether to keep the edited file or delete it. \[[1](https://unstop.com/blog/merge-in-git)]
+
+### 3. Simultaneous File Creation (Rare)
+
+If two branches independently create a brand-new file with the exact same name, but put completely different code inside it, a conflict occurs upon merging. \[[1](https://medium.com/@gasrios/the-agony-and-the-ecstasy-of-git-squash-7f91c8da20af)]
+
+***
+
+### What Git Does During a Conflict
+
+When a conflict triggers, Git stops the merge halfway through, modifies your files, and inserts visual **conflict markers** that look like this: \[[1](https://www.cloudthat.com/resources/blog/git-best-practices-managing-merge-conflicts), [2](https://openlab.bmcc.cuny.edu/mmp-350-fall-21/projects/final/git-merge-conflicts/), [3](https://blog.mergify.com/git-merge-branch-into-another/), [4](https://www.linkedin.com/pulse/git-resolve-merge-conflict-step-soutir-sen-lvbkf)]
+
+text
+
+```
+<<<<<<< HEAD
+let color = "blue";   <-- Your current branch's code
+=======
+let color = "red";    <-- The incoming branch's code
+>>>>>>> feature-branch
+```
+
+Use code with caution.
+
+### When Conflicts Will NOT Happen
+
+Git is smart enough to handle merges automatically if: \[[1](https://www.openbankproject.com/blog/how-to-avoid-merge-conflicts-on-git/), [2](https://intersect-training.org/collaborative-git/aio.html)]
+
+- You edited the top of a file, and someone else edited the bottom of the same file.
+- You edited a file that the other branch didn't touch at all.
+- One branch added a new file, and the other branch didn't create anything with that name. \[[1](https://docs.copado.com/articles/copado-ci-cd-publication/merge-conflict-resolution-overview-and-types), [2](https://www.instagram.com/p/DWqKfXLEszW/), [3](https://www.atlassian.com/git/tutorials/using-branches/merge-conflicts), [4](https://madewithlove.com/blog/pointers-and-tips-dispelling-the-magic-of-git-merge/), [5](https://stackoverflow.com/questions/71849805/difference-between-merging-develop-into-master-and-master-into-develop)]
+
+To help you prepare or fix a conflict right now, let me know:
+
+- Are you currently seeing **conflict markers** (`<<<<<<<`) in your files?
+
+- Would you like to know how to **abort the merge** and safely go back to how things were?
+
+- [link](https://www.simplilearn.com/tutorials/git-tutorial/merge-conflicts-in-git)\
+  How to Resolve Merge Conflicts in Git?\
+  Feb 2, 2026 — A git merge conflict is an event that takes place when Git is unable to automatically resolve differences in code between two comm...\
+  \
+  \
+  Simplilearn.com
+
+- [link](https://sos-cer.github.io/projects/git-guide/git-merge.html)\
+  Science of Software\
+  When you are working with a team on a project, you will likely experience merge conflicts. Git does not know which version of the ...\
+  \
+  \
+  GitHub
+
+- [link](https://www.arcadsoftware.com/discover/resources/blog/resolve-git-merge-conflicts-faster-with-artificial-intelligence-ai/)\
+  Resolve Git Merge Conflicts faster with Artificial Intelligence (AI) - DISCOVER\
+  Sep 8, 2025 — A Git merge conflict occurs when two branches modify the same part of a file in incompatible ways. Git doesn't know which version ...\
+  \
+  \
+  ARCAD Software
+
+Show all
+
+## You said: when will not
+
+Git will **not** trigger a merge conflict if your changes are isolated and do not directly overlap on the same lines of code. In these cases, Git automatically and seamlessly combines the branches. \[[1](https://www.youtube.com/watch?v=mSfq1SoMocg), [2](https://stackoverflow.com/questions/67604209/git-does-not-raise-merge-conflict-when-a-branch-with-a-changed-file-is-merged-in), [3](https://www.acte.in/resolve-merge-conflicts-in-git-article)]
+
+Here are the specific scenarios when Git handles the merge automatically without conflicts:
+
+### 1. Different Files Were Modified \[[1](https://blog.devgenius.io/how-to-resolve-git-merge-conflicts-like-a-pro-f81c7017a000)]
+
+If you edit one file and your teammate edits a completely different file, Git merges them instantly. \[[1](https://info2951.infosci.cornell.edu/tutorials/git-collab.html)]
+
+- **Example**: You modify `login.js` on your branch. Your teammate modifies `styles.css` on their branch. Git applies both changes automatically. \[[1](https://pwskills.com/blog/devops/resolving-merge-conflict-devops), [2](https://practicalseries.com/1002-vcs/09-05-github.html), [3](https://labex.io/tutorials/git-git-commit-changes-before-merging-390479)]
+
+### 2. Different Lines Within the Same File Were Modified \[[1](https://www.git-tower.com/learn/git/faq/solve-merge-conflicts)]
+
+Even if you are both working inside the exact same file, Git will not conflict if your changes are physically separated. \[[1](https://www.flsilva.com/blog/git-branching-and-merging)]
+
+- **Example**: You add a function to the top of `app.js` (lines 1–10). Your teammate edits a function at the bottom of `app.js` (lines 90–100). Git automatically weaves both changes together. \[[1](https://www.kenmuse.com/blog/understanding-how-git-merges-work/)]
+
+### 3. Brand New Files Are Added
+
+If you or your teammate create completely new files with unique names, Git will simply add them to the project directory.
+
+- **Example**: You add `dashboard.js`. Your teammate adds `profile.js`. Git accepts both files smoothly. \[[1](https://hackernoon.com/unlocking-iac-part-5-what-is-git-branching)]
+
+### 4. Only One Branch Made Changes \[[1](https://labex.io/tutorials/git-how-to-resolve-conflicts-when-merging-changes-from-a-remote-git-branch-414839), [2](https://discussions.unity.com/t/how-can-i-resolve-github-desktop-unity-merge-conflicts/861586/2)]
+
+If a file was edited on your feature branch, but the `master` branch has not touched that file since you split off, Git will not conflict. It will simply fast-forward the file to match your new version. \[[1](https://labex.io/tutorials/git-how-to-compare-and-merge-git-branches-393027)]
+
+### 5. Files Were Deleted Cleanly \[[1](https://serverfault.com/questions/1142161/git-checking-merge-conflicts-without-actually-doing-the-merge)]
+
+If one branch deletes a file, and the other branch has not made any new edits to that file since the split, Git will just delete the file without asking questions. \[[1](https://medamine-barhoumi.medium.com/demystifying-git-and-understanding-different-workflow-types-c113fce22761)]
+
+***
+
+### Summary Checklist
+
+Your merge will be 100% automatic and conflict-free if: \[[1](https://intersect-training.org/collaborative-git/aio.html), [2](https://medium.com/@lorenzouriel/the-git-week-a-guide-to-branches-3daace9c145d), [3](https://medium.com/@ayush.choudhary9460/git-branching-workflow-creating-modifying-and-merging-a-feature-branch-without-conflicts-4229381b8bc1)]
+
+- The lines of code you changed were **not touched** by the other branch.
+- Your branch is simply **ahead** of the other branch, and the other branch has been sitting still (Fast-Forward merge). \[[1](https://medium.com/@ayush.choudhary9460/git-branching-workflow-creating-modifying-and-merging-a-feature-branch-without-conflicts-4229381b8bc1), [2](https://www.reddit.com/r/git/comments/1btdihc/merge%5Fbut%5Fexclude%5Fcertain%5Fcommits/), [3](https://www.wecreateproblems.com/interview-questions/git-interview-questions), [4](https://developer.ibm.com/tutorials/d-learn-workings-git/)]
+
+To ensure your upcoming merge goes smoothly, let me know:
+
+- Have both branches been **actively updated by different people**, or are you just merging your own clean work?
+
+- Would you like to know how to **preview a merge** before running it to guarantee there are no conflicts? \[[1](https://medium.com/@catalinaturlea/clean-git-history-a-step-by-step-guide-eefc0ad8696d)]
+
+- [link](https://www.youtube.com/watch?v=mSfq1SoMocg)\
+  Resolving Git Merge Conflicts: The Easy Way\
+  Apr 11, 2023 — When you work in a team, you may come across a situation when somebody pushes changes to a file you are currently working on. If t...\
+  \
+  \
+  YouTube
+
+- [link](https://stackoverflow.com/questions/67604209/git-does-not-raise-merge-conflict-when-a-branch-with-a-changed-file-is-merged-in)\
+  Git does not raise merge conflict when a branch with a changed file is merged in the master branch\
+  May 19, 2021 — Git does not raise merge conflict when a branch with a changed file is merged in the master branch I was expecting a merge conflic...\
+  \
+  Stack Overflow
+
+- [link](https://www.acte.in/resolve-merge-conflicts-in-git-article)\
+  Resolve Merge Conflicts in Git: Step-by-Step Guide\
+  Feb 20, 2025 — When Git performs a merge, it tries to combine changes from both Git Branches automatically. If the changes do not overlap, Git su...\
+  \
+  \
+  ACTE Technologies
+
+Show all
+
+# 
+
+# Intercept paste event optimization
+
+**Session ID:** ses_125a4c749ffeLJT2Xk0UcE0DbH
+**Created:** 6/18/2026, 6:51:11 PM
+**Updated:** 6/18/2026, 6:53:25 PM
+
+---
+
+## User
+
+add one option at the bottom, name exactly as "intercept paste". current: it always read from contenteditable, slow for large docs. expected: if on, intercept paste event prevent default and grab html directly, if off, act as current. no testing.
+
+---
+
+## Assistant (Build · MiniMax-M2.5 · 3.2s)
+
+_Thinking:_
+
+The user wants me to add an option called "intercept paste" to some codebase. Let me first explore to understand the project structure and find where options are defined.
+
+
+**Tool: glob**
+
+**Input:**
+```json
+{
+  "pattern": "**/*.{ts,tsx,js,jsx}"
+}
+```
+
+**Output:**
+```
+/home/fira/Documents/f/apps/copy/.build/app.396dc2e9.js
+/home/fira/Documents/f/apps/copy/source/sanitize_html.ts
+/home/fira/Documents/f/apps/copy/source/convert_to_md.ts
+/home/fira/Documents/f/apps/copy/source/main.ts
+/home/fira/Documents/f/apps/copy/source/process_ast.ts
+/home/fira/Documents/f/apps/copy/source/temp.ts
+/home/fira/Documents/f/apps/copy/source/clipboard.ts
+/home/fira/Documents/f/apps/copy/dist/app.52a4e492.js
+/home/fira/Documents/f/apps/copy/dist/app.60a9a049.js
+/home/fira/Documents/f/apps/copy/.build/app.4fe688e8.js
+```
+
+---
+
+## Assistant (Build · MiniMax-M2.5 · 3.6s)
+
+_Thinking:_
+
+Let me look at the main.ts file to understand the project structure and find where options are defined.
+
+
+**Tool: read**
+
+**Input:**
+```json
+{
+  "filePath": "/home/fira/Documents/f/apps/copy/source/main.ts"
+}
+```
+
+**Output:**
+```
+<path>/home/fira/Documents/f/apps/copy/source/main.ts</path>
+<type>file</type>
+<content>
+1: import { copy_html_to_clipboard } from './clipboard';
+2: import { sanitize_html } from './sanitize_html';
+3: import { convert_html_to_md } from './convert_to_md';
+4: 
+5: type boolean_setting_options = {
+6:   key: string;
+7:   default_value: boolean;
+8: };
+9: 
+10: type save_boolean_setting_options = {
+11:   key: string;
+12:   value: boolean;
+13: };
+14: 
+15: type render_toggle_options = {
+16:   node: HTMLElement;
+17:   label: string;
+18:   enabled: boolean;
+19: };
+20: 
+21: type conversion_settings = {
+22:   markdown_enabled: boolean;
+23:   svg_enabled: boolean;
+24:   keep_images_enabled: boolean;
+25:   normalize_empty_links_enabled: boolean;
+26:   prettier_enabled: boolean;
+27:   remove_heading_enabled: boolean;
+28: };
+29: 
+30: const copy_feedback_ms = 1400;
+31: 
+32: const status_node = document.getElementById('status') as HTMLElement;
+33: const paste_node = document.getElementById('paste_area') as HTMLElement;
+34: const markdown_button = document.getElementById('markdown-toggle') as HTMLElement;
+35: const svg_button = document.getElementById('svg-toggle') as HTMLElement;
+36: const keep_images_button = document.getElementById('keep-images-toggle') as HTMLElement;
+37: const normalize_empty_links_button = document.getElementById(
+38:   'normalize-empty-links-toggle',
+39: ) as HTMLElement;
+40: const prettier_button = document.getElementById('prettier-toggle') as HTMLElement;
+41: const remove_heading_button = document.getElementById('remove-heading-toggle') as HTMLElement;
+42: 
+43: const markdown_enabled_key = 'markdown_enabled';
+44: const svg_enabled_key = 'svg_enabled';
+45: const keep_images_enabled_key = 'keep_images_enabled';
+46: const normalize_empty_links_enabled_key = 'normalize_empty_links_enabled';
+47: const prettier_enabled_key = 'prettier_enabled';
+48: const remove_heading_enabled_key = 'remove_heading_enabled';
+49: 
+50: let markdown_enabled = false;
+51: let svg_enabled = false;
+52: let keep_images_enabled = true;
+53: let normalize_empty_links_enabled = true;
+54: let prettier_enabled = true;
+55: let remove_heading_enabled = false;
+56: 
+57: function load_boolean_setting({ key, default_value }: boolean_setting_options): boolean {
+58:   const stored_value = localStorage.getItem(key);
+59: 
+60:   if (stored_value == 'true') return true;
+61:   if (stored_value == 'false') return false;
+62: 
+63:   return default_value;
+64: }
+65: 
+66: function save_boolean_setting({ key, value }: save_boolean_setting_options): void {
+67:   localStorage.setItem(key, value ? 'true' : 'false');
+68: }
+69: 
+70: function set_status({ text }: { text: string }): void {
+71:   status_node.textContent = text;
+72: }
+73: 
+74: function focus_paste_area(): void {
+75:   paste_node.focus();
+76: }
+77: 
+78: function keep_focus(): void {
+79:   if (document.activeElement != paste_node) {
+80:     focus_paste_area();
+81:   }
+82: }
+83: 
+84: function reset_status_to_paste(): void {
+85:   set_status({ text: 'paste' });
+86: }
+87: 
+88: function flash_copied(): void {
+89:   set_status({ text: 'copied' });
+90:   window.setTimeout(reset_status_to_paste, copy_feedback_ms);
+91: }
+92: 
+93: function read_paste_area_html(): { html: string } {
+94:   const html = paste_node.innerHTML || '';
+95:   return { html };
+96: }
+97: 
+98: function clear_paste_area(): void {
+99:   paste_node.innerHTML = '';
+100: }
+101: 
+102: function get_conversion_settings(): conversion_settings {
+103:   return {
+104:     markdown_enabled,
+105:     svg_enabled,
+106:     keep_images_enabled,
+107:     normalize_empty_links_enabled,
+108:     prettier_enabled,
+109:     remove_heading_enabled,
+110:   };
+111: }
+112: 
+113: async function process_paste_area(): Promise<void> {
+114:   const { html } = read_paste_area_html();
+115:   const clean_html = sanitize_html({ dirty_html: html });
+116:   const settings = get_conversion_settings();
+117: 
+118:   try {
+119:     if (settings.markdown_enabled) {
+120:       const markdown = await convert_html_to_md({
+121:         html: clean_html,
+122:         preserve_svg: settings.svg_enabled,
+123:         keep_images: settings.keep_images_enabled,
+124:         normalize_empty_links: settings.normalize_empty_links_enabled,
+125:         prettier: settings.prettier_enabled,
+126:         remove_heading: settings.remove_heading_enabled,
+127:       });
+128: 
+129:       await copy_html_to_clipboard({ html: markdown });
+130:     } else {
+131:       await copy_html_to_clipboard({ html: clean_html });
+132:     }
+133: 
+134:     flash_copied();
+135:     clear_paste_area();
+136:   } catch (error: unknown) {
+137:     console.error({ error });
+138:     set_status({ text: 'paste' });
+139:   }
+140: }
+141: 
+142: function schedule_process_paste_area(): void {
+143:   window.setTimeout(process_paste_area, 0);
+144: }
+145: 
+146: function handle_input(): void {
+147:   schedule_process_paste_area();
+148: }
+149: 
+150: function render_toggle_button({ node, label, enabled }: render_toggle_options): void {
+151:   node.textContent = enabled ? `${label}: on` : `${label}: off`;
+152: }
+153: 
+154: function render_all(): void {
+155:   render_toggle_button({ node: markdown_button, label: 'markdown', enabled: markdown_enabled });
+156:   render_toggle_button({ node: svg_button, label: 'keep svg', enabled: svg_enabled });
+157:   render_toggle_button({ node: keep_images_button, label: 'keep images', enabled: keep_images_enabled });
+158:   render_toggle_button({
+159:     node: normalize_empty_links_button,
+160:     label: 'normalize empty links',
+161:     enabled: normalize_empty_links_enabled,
+162:   });
+163:   render_toggle_button({ node: prettier_button, label: 'use prettier', enabled: prettier_enabled });
+164:   render_toggle_button({ node: remove_heading_button, label: 'remove heading on the first line', enabled: remove_heading_enabled });
+165: }
+166: 
+167: function toggle_boolean({
+168:   current,
+169:   key,
+170: }: {
+171:   current: boolean;
+172:   key: string;
+173: }): boolean {
+174:   const next = !current;
+175:   save_boolean_setting({ key, value: next });
+176:   return next;
+177: }
+178: 
+179: function init_settings(): void {
+180:   markdown_enabled = load_boolean_setting({ key: markdown_enabled_key, default_value: false });
+181:   svg_enabled = load_boolean_setting({ key: svg_enabled_key, default_value: false });
+182:   keep_images_enabled = load_boolean_setting({ key: keep_images_enabled_key, default_value: true });
+183:   normalize_empty_links_enabled = load_boolean_setting({
+184:     key: normalize_empty_links_enabled_key,
+185:     default_value: true,
+186:   });
+187:   prettier_enabled = load_boolean_setting({ key: prettier_enabled_key, default_value: true });
+188:   remove_heading_enabled = load_boolean_setting({ key: remove_heading_enabled_key, default_value: false });
+189: 
+190:   render_all();
+191: }
+192: 
+193: paste_node.addEventListener('input', handle_input);
+194: paste_node.addEventListener('blur', keep_focus);
+195: document.addEventListener('click', keep_focus);
+196: window.addEventListener('focus', keep_focus);
+197: 
+198: markdown_button.addEventListener('click', function () {
+199:   markdown_enabled = toggle_boolean({ current: markdown_enabled, key: markdown_enabled_key });
+200:   render_all();
+201: });
+202: 
+203: svg_button.addEventListener('click', function () {
+204:   svg_enabled = toggle_boolean({ current: svg_enabled, key: svg_enabled_key });
+205:   render_all();
+206: });
+207: 
+208: keep_images_button.addEventListener('click', function () {
+209:   keep_images_enabled = toggle_boolean({
+210:     current: keep_images_enabled,
+211:     key: keep_images_enabled_key,
+212:   });
+213:   render_all();
+214: });
+215: 
+216: normalize_empty_links_button.addEventListener('click', function () {
+217:   normalize_empty_links_enabled = toggle_boolean({
+218:     current: normalize_empty_links_enabled,
+219:     key: normalize_empty_links_enabled_key,
+220:   });
+221:   render_all();
+222: });
+223: 
+224: prettier_button.addEventListener('click', function () {
+225:   prettier_enabled = toggle_boolean({
+226:     current: prettier_enabled,
+227:     key: prettier_enabled_key,
+228:   });
+229:   render_all();
+230: });
+231: 
+232: remove_heading_button.addEventListener('click', function () {
+233:   remove_heading_enabled = toggle_boolean({
+234:     current: remove_heading_enabled,
+235:     key: remove_heading_enabled_key,
+236:   });
+237:   render_all();
+238: });
+239: 
+240: set_status({ text: 'paste' });
+241: 
+242: init_settings();
+243: 
+244: window.setTimeout(focus_paste_area, 0);
+
+(End of file - total 244 lines)
+</content>
+```
+
+---
+
+## Assistant (Build · MiniMax-M2.5 · 10.2s)
+
+_Thinking:_
+
+Now I understand the structure. I need to add a new toggle option called "intercept paste". Let me also check the HTML to see where the buttons are placed.
+
+
+**Tool: glob**
+
+**Input:**
+```json
+{
+  "pattern": "**/*.html"
+}
+```
+
+**Output:**
+```
+/home/fira/Documents/f/apps/copy/.build/app.html
+/home/fira/Documents/f/apps/copy/app.html
+/home/fira/Documents/f/apps/copy/dist/app.html
+```
+
+---
+
+## Assistant (Build · MiniMax-M2.5 · 4.9s)
+
+_Thinking:_
+
+Let me check app.html to see how the buttons are structured so I can add a new one at the bottom.
+
+
+**Tool: read**
+
+**Input:**
+```json
+{
+  "filePath": "/home/fira/Documents/f/apps/copy/app.html"
+}
+```
+
+**Output:**
+```
+<path>/home/fira/Documents/f/apps/copy/app.html</path>
+<type>file</type>
+<content>
+1: <!doctype html>
+2: <html lang="en">
+3:   <head>
+4:     <meta charset="utf-8" />
+5:     <meta name="viewport" content="width=device-width, initial-scale=1" />
+6:     <title>copy</title>
+7:     <style>
+8:       :root {
+9:         color-scheme: dark;
+10:       }
+11: 
+12:       html,
+13:       body {
+14:         width: 100%;
+15:         height: 100%;
+16:         margin: 0;
+17:         background: #000;
+18:         overflow: hidden;
+19:       }
+20: 
+21:       body {
+22:         position: relative;
+23:         font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+24:       }
+25: 
+26:       #status {
+27:         position: fixed;
+28:         inset: 0;
+29:         display: grid;
+30:         place-items: center;
+31:         pointer-events: none;
+32:         user-select: none;
+33:         font-size: 18px;
+34:         letter-spacing: 0.08em;
+35:         text-transform: lowercase;
+36:         color: rgba(255, 255, 255, 0.9);
+37:       }
+38: 
+39:       #paste_area {
+40:         position: fixed;
+41:         inset: 0;
+42:         outline: none;
+43:         overflow: hidden;
+44:         opacity: 0;
+45:         white-space: pre-wrap;
+46:       }
+47: 
+48:       #markdown-toggle,
+49:       #svg-toggle,
+50:       #keep-images-toggle,
+51:       #normalize-empty-links-toggle,
+52:       #prettier-toggle,
+53:       #remove-heading-toggle {
+54:         position: fixed;
+55:         left: 50%;
+56:         transform: translateX(-50%);
+57:         color: #fff;
+58:         font-size: 14px;
+59:         user-select: none;
+60:         cursor: pointer;
+61:       }
+62: 
+63:       #markdown-toggle {
+64:         bottom: 108px;
+65:       }
+66: 
+67:       #svg-toggle {
+68:         bottom: 88px;
+69:       }
+70: 
+71:       #keep-images-toggle {
+72:         bottom: 68px;
+73:       }
+74: 
+75:       #normalize-empty-links-toggle {
+76:         bottom: 48px;
+77:       }
+78: 
+79:       #prettier-toggle {
+80:         bottom: 28px;
+81:       }
+82: 
+83:       #remove-heading-toggle {
+84:         bottom: 8px;
+85:       }
+86:     </style>
+87:     <script type="module" src="./source/main.ts"></script>
+88:   </head>
+89:   <body>
+90:     <div id="status">paste</div>
+91: 
+92:     <div
+93:       id="paste_area"
+94:       contenteditable="true"
+95:       role="textbox"
+96:       aria-label="paste area"
+97:       spellcheck="false"
+98:     ></div>
+99: 
+100:     <div id="markdown-toggle">markdown: off</div>
+101:     <div id="svg-toggle">keep svg: off</div>
+102:     <div id="keep-images-toggle">keep images: on</div>
+103:     <div id="normalize-empty-links-toggle">normalize empty links: on</div>
+104:     <div id="prettier-toggle">use prettier: on</div>
+105:     <div id="remove-heading-toggle">remove heading on the first line: off</div>
+106:   </body>
+107: </html>
+
+(End of file - total 107 lines)
+</content>
+```
+
+---
+
+## Assistant (Build · MiniMax-M2.5 · 20.6s)
+
+_Thinking:_
+
+Now I understand the structure. I need to:
+1. Add a new button in HTML with id "intercept-paste-toggle" at the bottom
+2. Add the CSS for it
+3. Add the JavaScript to handle the toggle and the paste interception logic
+
+Let me add the "intercept paste" option. When enabled:
+- Intercept paste event
+- Prevent default
+- Grab HTML directly from clipboardData
+- Process it
+
+When disabled:
+- Act as current (read from contenteditable)
+
+I'll need to modify:
+1. app.html - add the new toggle button and style
+2. main.ts - add the new option, load/save setting, handle paste event, and modify the process logic
+
+Let me start with the HTML first.
+
+
+**Tool: edit**
+
+**Input:**
+```json
+{
+  "filePath": "/home/fira/Documents/f/apps/copy/app.html",
+  "newString": "#markdown-toggle,\n#svg-toggle,\n#keep-images-toggle,\n#normalize-empty-links-toggle,\n#prettier-toggle,\n#remove-heading-toggle,\n#intercept-paste-toggle {\n        position: fixed;\n        left: 50%;\n        transform: translateX(-50%);\n        color: #fff;\n        font-size: 14px;\n        user-select: none;\n        cursor: pointer;\n      }\n\n      #markdown-toggle {\n        bottom: 128px;\n      }\n\n      #svg-toggle {\n        bottom: 108px;\n      }\n\n      #keep-images-toggle {\n        bottom: 88px;\n      }\n\n      #normalize-empty-links-toggle {\n        bottom: 68px;\n      }\n\n      #prettier-toggle {\n        bottom: 48px;\n      }\n\n      #remove-heading-toggle {\n        bottom: 28px;\n      }\n\n      #intercept-paste-toggle {\n        bottom: 8px;\n      }",
+  "oldString": "#markdown-toggle,\n#svg-toggle,\n#keep-images-toggle,\n#normalize-empty-links-toggle,\n#prettier-toggle,\n#remove-heading-toggle {\n        position: fixed;\n        left: 50%;\n        transform: translateX(-50%);\n        color: #fff;\n        font-size: 14px;\n        user-select: none;\n        cursor: pointer;\n      }\n\n      #markdown-toggle {\n        bottom: 108px;\n      }\n\n      #svg-toggle {\n        bottom: 88px;\n      }\n\n      #keep-images-toggle {\n        bottom: 68px;\n      }\n\n      #normalize-empty-links-toggle {\n        bottom: 48px;\n      }\n\n      #prettier-toggle {\n        bottom: 28px;\n      }\n\n      #remove-heading-toggle {\n        bottom: 8px;\n      }"
+}
+```
+
+**Output:**
+```
+Edit applied successfully.
+```
+
+---
+
+## Assistant (Build · MiniMax-M2.5 · 7.4s)
+
+_Thinking:_
+
+Now add the new toggle button at the bottom in HTML.
+
+
+**Tool: edit**
+
+**Input:**
+```json
+{
+  "filePath": "/home/fira/Documents/f/apps/copy/app.html",
+  "newString": "<div id=\"markdown-toggle\">markdown: off</div>\n    <div id=\"svg-toggle\">keep svg: off</div>\n    <div id=\"keep-images-toggle\">keep images: on</div>\n    <div id=\"normalize-empty-links-toggle\">normalize empty links: on</div>\n    <div id=\"prettier-toggle\">use prettier: on</div>\n    <div id=\"remove-heading-toggle\">remove heading on the first line: off</div>\n    <div id=\"intercept-paste-toggle\">intercept paste: off</div>",
+  "oldString": "<div id=\"markdown-toggle\">markdown: off</div>\n    <div id=\"svg-toggle\">keep svg: off</div>\n    <div id=\"keep-images-toggle\">keep images: on</div>\n    <div id=\"normalize-empty-links-toggle\">normalize empty links: on</div>\n    <div id=\"prettier-toggle\">use prettier: on</div>\n    <div id=\"remove-heading-toggle\">remove heading on the first line: off</div>"
+}
+```
+
+**Output:**
+```
+Edit applied successfully.
+```
+
+---
+
+## Assistant (Build · MiniMax-M2.5 · 7.1s)
+
+_Thinking:_
+
+Now let's update main.ts to add the new option. I need to:
+1. Add the variable and key for intercept_paste_enabled
+2. Add the button element reference
+3. Add loading the setting
+4. Add rendering the toggle
+5. Add click handler
+6. Add paste event handler when intercept is enabled
+7. Modify process_paste_area to handle the intercepted HTML
+
+
+**Tool: edit**
+
+**Input:**
+```json
+{
+  "filePath": "/home/fira/Documents/f/apps/copy/source/main.ts",
+  "newString": "type conversion_settings = {\n  markdown_enabled: boolean;\n  svg_enabled: boolean;\n  keep_images_enabled: boolean;\n  normalize_empty_links_enabled: boolean;\n  prettier_enabled: boolean;\n  remove_heading_enabled: boolean;\n  intercept_paste_enabled: boolean;\n};",
+  "oldString": "type conversion_settings = {\n  markdown_enabled: boolean;\n  svg_enabled: boolean;\n  keep_images_enabled: boolean;\n  normalize_empty_links_enabled: boolean;\n  prettier_enabled: boolean;\n  remove_heading_enabled: boolean;\n};"
+}
+```
+
+**Output:**
+```
+Edit applied successfully.
+```
+
+---
+
+## Assistant (Build · MiniMax-M2.5 · 4.1s)
+
+_Thinking:_
+
+Now let me add the button element reference.
+
+
+**Tool: edit**
+
+**Input:**
+```json
+{
+  "filePath": "/home/fira/Documents/f/apps/copy/source/main.ts",
+  "newString": "const prettier_button = document.getElementById('prettier-toggle') as HTMLElement;\nconst remove_heading_button = document.getElementById('remove-heading-toggle') as HTMLElement;\nconst intercept_paste_button = document.getElementById('intercept-paste-toggle') as HTMLElement;",
+  "oldString": "const prettier_button = document.getElementById('prettier-toggle') as HTMLElement;\nconst remove_heading_button = document.getElementById('remove-heading-toggle') as HTMLElement;"
+}
+```
+
+**Output:**
+```
+Edit applied successfully.
+```
+
+---
+
+## Assistant (Build · MiniMax-M2.5 · 5.2s)
+
+_Thinking:_
+
+Now add the key and variable.
+
+
+**Tool: edit**
+
+**Input:**
+```json
+{
+  "filePath": "/home/fira/Documents/f/apps/copy/source/main.ts",
+  "newString": "const prettier_enabled_key = 'prettier_enabled';\nconst remove_heading_enabled_key = 'remove_heading_enabled';\nconst intercept_paste_enabled_key = 'intercept_paste_enabled';\n\nlet markdown_enabled = false;\nlet svg_enabled = false;\nlet keep_images_enabled = true;\nlet normalize_empty_links_enabled = true;\nlet prettier_enabled = true;\nlet remove_heading_enabled = false;\nlet intercept_paste_enabled = false;",
+  "oldString": "const prettier_enabled_key = 'prettier_enabled';\nconst remove_heading_enabled_key = 'remove_heading_enabled';\n\nlet markdown_enabled = false;\nlet svg_enabled = false;\nlet keep_images_enabled = true;\nlet normalize_empty_links_enabled = true;\nlet prettier_enabled = true;\nlet remove_heading_enabled = false;"
+}
+```
+
+**Output:**
+```
+Edit applied successfully.
+```
+
+---
+
+## Assistant (Build · MiniMax-M2.5 · 5.7s)
+
+_Thinking:_
+
+Now add intercept_paste_enabled to get_conversion_settings.
+
+
+**Tool: edit**
+
+**Input:**
+```json
+{
+  "filePath": "/home/fira/Documents/f/apps/copy/source/main.ts",
+  "newString": "function get_conversion_settings(): conversion_settings {\n  return {\n    markdown_enabled,\n    svg_enabled,\n    keep_images_enabled,\n    normalize_empty_links_enabled,\n    prettier_enabled,\n    remove_heading_enabled,\n    intercept_paste_enabled,\n  };\n}",
+  "oldString": "function get_conversion_settings(): conversion_settings {\n  return {\n    markdown_enabled,\n    svg_enabled,\n    keep_images_enabled,\n    normalize_empty_links_enabled,\n    prettier_enabled,\n    remove_heading_enabled,\n  };\n}"
+}
+```
+
+**Output:**
+```
+Edit applied successfully.
+```
+
+---
+
+## Assistant (Build · MiniMax-M2.5 · 5.5s)
+
+_Thinking:_
+
+Now I need to add a function to process HTML directly (when intercepting paste) and modify the paste handling. Let me first add a variable to store the intercepted HTML.
+
+
+**Tool: edit**
+
+**Input:**
+```json
+{
+  "filePath": "/home/fira/Documents/f/apps/copy/source/main.ts",
+  "newString": "let remove_heading_enabled = false;\nlet intercept_paste_enabled = false;\nlet intercepted_html: string | null = null;",
+  "oldString": "let remove_heading_enabled = false;\nlet intercept_paste_enabled = false;"
+}
+```
+
+**Output:**
+```
+Edit applied successfully.
+```
+
+---
+
+## Assistant (Build · MiniMax-M2.5 · 5.2s)
+
+_Thinking:_
+
+Now I need to modify the process_paste_area function to check if there's intercepted HTML, and also add a function to handle intercepted pastes.
+
+
+**Tool: edit**
+
+**Input:**
+```json
+{
+  "filePath": "/home/fira/Documents/f/apps/copy/source/main.ts",
+  "newString": "async function process_paste_area(): Promise<void> {\n  let html: string;\n\n  if (intercept_paste_enabled && intercepted_html !== null) {\n    html = intercepted_html;\n    intercepted_html = null;\n  } else {\n    const result = read_paste_area_html();\n    html = result.html;\n  }\n\n  const clean_html = sanitize_html({ dirty_html: html });",
+  "oldString": "async function process_paste_area(): Promise<void> {\n  const { html } = read_paste_area_html();\n  const clean_html = sanitize_html({ dirty_html: html });"
+}
+```
+
+**Output:**
+```
+Edit applied successfully.
+```
+
+---
+
+## Assistant (Build · MiniMax-M2.5 · 9.6s)
+
+_Thinking:_
+
+Now I need to add:
+1. The render toggle for the new button
+2. Load the setting in init_settings
+3. Add click handler
+4. Add paste event listener that intercepts when enabled
+
+
+**Tool: edit**
+
+**Input:**
+```json
+{
+  "filePath": "/home/fira/Documents/f/apps/copy/source/main.ts",
+  "newString": "function render_all(): void {\n  render_toggle_button({ node: markdown_button, label: 'markdown', enabled: markdown_enabled });\n  render_toggle_button({ node: svg_button, label: 'keep svg', enabled: svg_enabled });\n  render_toggle_button({ node: keep_images_button, label: 'keep images', enabled: keep_images_enabled });\n  render_toggle_button({\n    node: normalize_empty_links_button,\n    label: 'normalize empty links',\n    enabled: normalize_empty_links_enabled,\n  });\n  render_toggle_button({ node: prettier_button, label: 'use prettier', enabled: prettier_enabled });\n  render_toggle_button({ node: remove_heading_button, label: 'remove heading on the first line', enabled: remove_heading_enabled });\n  render_toggle_button({ node: intercept_paste_button, label: 'intercept paste', enabled: intercept_paste_enabled });\n}",
+  "oldString": "function render_all(): void {\n  render_toggle_button({ node: markdown_button, label: 'markdown', enabled: markdown_enabled });\n  render_toggle_button({ node: svg_button, label: 'keep svg', enabled: svg_enabled });\n  render_toggle_button({ node: keep_images_button, label: 'keep images', enabled: keep_images_enabled });\n  render_toggle_button({\n    node: normalize_empty_links_button,\n    label: 'normalize empty links',\n    enabled: normalize_empty_links_enabled,\n  });\n  render_toggle_button({ node: prettier_button, label: 'use prettier', enabled: prettier_enabled });\n  render_toggle_button({ node: remove_heading_button, label: 'remove heading on the first line', enabled: remove_heading_enabled });\n}"
+}
+```
+
+**Output:**
+```
+Edit applied successfully.
+```
+
+---
+
+## Assistant (Build · MiniMax-M2.5 · 8.4s)
+
+_Thinking:_
+
+Now add to init_settings.
+
+
+**Tool: edit**
+
+**Input:**
+```json
+{
+  "filePath": "/home/fira/Documents/f/apps/copy/source/main.ts",
+  "newString": "function init_settings(): void {\n  markdown_enabled = load_boolean_setting({ key: markdown_enabled_key, default_value: false });\n  svg_enabled = load_boolean_setting({ key: svg_enabled_key, default_value: false });\n  keep_images_enabled = load_boolean_setting({ key: keep_images_enabled_key, default_value: true });\n  normalize_empty_links_enabled = load_boolean_setting({\n    key: normalize_empty_links_enabled_key,\n    default_value: true,\n  });\n  prettier_enabled = load_boolean_setting({ key: prettier_enabled_key, default_value: true });\n  remove_heading_enabled = load_boolean_setting({ key: remove_heading_enabled_key, default_value: false });\n  intercept_paste_enabled = load_boolean_setting({ key: intercept_paste_enabled_key, default_value: false });\n\n  render_all();\n}",
+  "oldString": "function init_settings(): void {\n  markdown_enabled = load_boolean_setting({ key: markdown_enabled_key, default_value: false });\n  svg_enabled = load_boolean_setting({ key: svg_enabled_key, default_value: false });\n  keep_images_enabled = load_boolean_setting({ key: keep_images_enabled_key, default_value: true });\n  normalize_empty_links_enabled = load_boolean_setting({\n    key: normalize_empty_links_enabled_key,\n    default_value: true,\n  });\n  prettier_enabled = load_boolean_setting({ key: prettier_enabled_key, default_value: true });\n  remove_heading_enabled = load_boolean_setting({ key: remove_heading_enabled_key, default_value: false });\n\n  render_all();\n}"
+}
+```
+
+**Output:**
+```
+Edit applied successfully.
+```
+
+---
+
+## Assistant (Build · MiniMax-M2.5 · 5.1s)
+
+_Thinking:_
+
+Now add the click handler for intercept_paste_button.
+
+
+**Tool: edit**
+
+**Input:**
+```json
+{
+  "filePath": "/home/fira/Documents/f/apps/copy/source/main.ts",
+  "newString": "remove_heading_button.addEventListener('click', function () {\n  remove_heading_enabled = toggle_boolean({\n    current: remove_heading_enabled,\n    key: remove_heading_enabled_key,\n  });\n  render_all();\n});\n\nintercept_paste_button.addEventListener('click', function () {\n  intercept_paste_enabled = toggle_boolean({\n    current: intercept_paste_enabled,\n    key: intercept_paste_enabled_key,\n  });\n  render_all();\n});",
+  "oldString": "remove_heading_button.addEventListener('click', function () {\n  remove_heading_enabled = toggle_boolean({\n    current: remove_heading_enabled,\n    key: remove_heading_enabled_key,\n  });\n  render_all();\n});"
+}
+```
+
+**Output:**
+```
+Edit applied successfully.
+```
+
+---
+
+## Assistant (Build · MiniMax-M2.5 · 5.4s)
+
+_Thinking:_
+
+Now I need to add the paste event handler that intercepts the paste when enabled. Let me add this after the existing event listeners.
+
+
+**Tool: edit**
+
+**Input:**
+```json
+{
+  "filePath": "/home/fira/Documents/f/apps/copy/source/main.ts",
+  "newString": "paste_node.addEventListener('input', handle_input);\npaste_node.addEventListener('blur', keep_focus);\npaste_node.addEventListener('paste', function (event: ClipboardEvent) {\n  if (!intercept_paste_enabled) return;\n\n  event.preventDefault();\n\n  const clipboard_data = event.clipboardData;\n  if (!clipboard_data) return;\n\n  const html = clipboard_data.getData('text/html');\n  if (html) {\n    intercepted_html = html;\n    schedule_process_paste_area();\n  }\n});\ndocument.addEventListener('click', keep_focus);",
+  "oldString": "paste_node.addEventListener('input', handle_input);\npaste_node.addEventListener('blur', keep_focus);\ndocument.addEventListener('click', keep_focus);"
+}
+```
+
+**Output:**
+```
+Edit applied successfully.
+```
+
+---
+
+## Assistant (Build · MiniMax-M2.5 · 2.3s)
+
+_Thinking:_
+
+The implementation is complete. Let me verify the file is correct by reading it.
+
+
+**Tool: read**
+
+**Input:**
+```json
+{
+  "filePath": "/home/fira/Documents/f/apps/copy/source/main.ts"
+}
+```
+
+**Output:**
+```
+<path>/home/fira/Documents/f/apps/copy/source/main.ts</path>
+<type>file</type>
+<content>
+1: import { copy_html_to_clipboard } from './clipboard';
+2: import { sanitize_html } from './sanitize_html';
+3: import { convert_html_to_md } from './convert_to_md';
+4: 
+5: type boolean_setting_options = {
+6:   key: string;
+7:   default_value: boolean;
+8: };
+9: 
+10: type save_boolean_setting_options = {
+11:   key: string;
+12:   value: boolean;
+13: };
+14: 
+15: type render_toggle_options = {
+16:   node: HTMLElement;
+17:   label: string;
+18:   enabled: boolean;
+19: };
+20: 
+21: type conversion_settings = {
+22:   markdown_enabled: boolean;
+23:   svg_enabled: boolean;
+24:   keep_images_enabled: boolean;
+25:   normalize_empty_links_enabled: boolean;
+26:   prettier_enabled: boolean;
+27:   remove_heading_enabled: boolean;
+28:   intercept_paste_enabled: boolean;
+29: };
+30: 
+31: const copy_feedback_ms = 1400;
+32: 
+33: const status_node = document.getElementById('status') as HTMLElement;
+34: const paste_node = document.getElementById('paste_area') as HTMLElement;
+35: const markdown_button = document.getElementById('markdown-toggle') as HTMLElement;
+36: const svg_button = document.getElementById('svg-toggle') as HTMLElement;
+37: const keep_images_button = document.getElementById('keep-images-toggle') as HTMLElement;
+38: const normalize_empty_links_button = document.getElementById(
+39:   'normalize-empty-links-toggle',
+40: ) as HTMLElement;
+41: const prettier_button = document.getElementById('prettier-toggle') as HTMLElement;
+42: const remove_heading_button = document.getElementById('remove-heading-toggle') as HTMLElement;
+43: const intercept_paste_button = document.getElementById('intercept-paste-toggle') as HTMLElement;
+44: 
+45: const markdown_enabled_key = 'markdown_enabled';
+46: const svg_enabled_key = 'svg_enabled';
+47: const keep_images_enabled_key = 'keep_images_enabled';
+48: const normalize_empty_links_enabled_key = 'normalize_empty_links_enabled';
+49: const prettier_enabled_key = 'prettier_enabled';
+50: const remove_heading_enabled_key = 'remove_heading_enabled';
+51: const intercept_paste_enabled_key = 'intercept_paste_enabled';
+52: 
+53: let markdown_enabled = false;
+54: let svg_enabled = false;
+55: let keep_images_enabled = true;
+56: let normalize_empty_links_enabled = true;
+57: let prettier_enabled = true;
+58: let remove_heading_enabled = false;
+59: let intercept_paste_enabled = false;
+60: let intercepted_html: string | null = null;
+61: 
+62: function load_boolean_setting({ key, default_value }: boolean_setting_options): boolean {
+63:   const stored_value = localStorage.getItem(key);
+64: 
+65:   if (stored_value == 'true') return true;
+66:   if (stored_value == 'false') return false;
+67: 
+68:   return default_value;
+69: }
+70: 
+71: function save_boolean_setting({ key, value }: save_boolean_setting_options): void {
+72:   localStorage.setItem(key, value ? 'true' : 'false');
+73: }
+74: 
+75: function set_status({ text }: { text: string }): void {
+76:   status_node.textContent = text;
+77: }
+78: 
+79: function focus_paste_area(): void {
+80:   paste_node.focus();
+81: }
+82: 
+83: function keep_focus(): void {
+84:   if (document.activeElement != paste_node) {
+85:     focus_paste_area();
+86:   }
+87: }
+88: 
+89: function reset_status_to_paste(): void {
+90:   set_status({ text: 'paste' });
+91: }
+92: 
+93: function flash_copied(): void {
+94:   set_status({ text: 'copied' });
+95:   window.setTimeout(reset_status_to_paste, copy_feedback_ms);
+96: }
+97: 
+98: function read_paste_area_html(): { html: string } {
+99:   const html = paste_node.innerHTML || '';
+100:   return { html };
+101: }
+102: 
+103: function clear_paste_area(): void {
+104:   paste_node.innerHTML = '';
+105: }
+106: 
+107: function get_conversion_settings(): conversion_settings {
+108:   return {
+109:     markdown_enabled,
+110:     svg_enabled,
+111:     keep_images_enabled,
+112:     normalize_empty_links_enabled,
+113:     prettier_enabled,
+114:     remove_heading_enabled,
+115:     intercept_paste_enabled,
+116:   };
+117: }
+118: 
+119: async function process_paste_area(): Promise<void> {
+120:   let html: string;
+121: 
+122:   if (intercept_paste_enabled && intercepted_html !== null) {
+123:     html = intercepted_html;
+124:     intercepted_html = null;
+125:   } else {
+126:     const result = read_paste_area_html();
+127:     html = result.html;
+128:   }
+129: 
+130:   const clean_html = sanitize_html({ dirty_html: html });
+131:   const settings = get_conversion_settings();
+132: 
+133:   try {
+134:     if (settings.markdown_enabled) {
+135:       const markdown = await convert_html_to_md({
+136:         html: clean_html,
+137:         preserve_svg: settings.svg_enabled,
+138:         keep_images: settings.keep_images_enabled,
+139:         normalize_empty_links: settings.normalize_empty_links_enabled,
+140:         prettier: settings.prettier_enabled,
+141:         remove_heading: settings.remove_heading_enabled,
+142:       });
+143: 
+144:       await copy_html_to_clipboard({ html: markdown });
+145:     } else {
+146:       await copy_html_to_clipboard({ html: clean_html });
+147:     }
+148: 
+149:     flash_copied();
+150:     clear_paste_area();
+151:   } catch (error: unknown) {
+152:     console.error({ error });
+153:     set_status({ text: 'paste' });
+154:   }
+155: }
+156: 
+157: function schedule_process_paste_area(): void {
+158:   window.setTimeout(process_paste_area, 0);
+159: }
+160: 
+161: function handle_input(): void {
+162:   schedule_process_paste_area();
+163: }
+164: 
+165: function render_toggle_button({ node, label, enabled }: render_toggle_options): void {
+166:   node.textContent = enabled ? `${label}: on` : `${label}: off`;
+167: }
+168: 
+169: function render_all(): void {
+170:   render_toggle_button({ node: markdown_button, label: 'markdown', enabled: markdown_enabled });
+171:   render_toggle_button({ node: svg_button, label: 'keep svg', enabled: svg_enabled });
+172:   render_toggle_button({ node: keep_images_button, label: 'keep images', enabled: keep_images_enabled });
+173:   render_toggle_button({
+174:     node: normalize_empty_links_button,
+175:     label: 'normalize empty links',
+176:     enabled: normalize_empty_links_enabled,
+177:   });
+178:   render_toggle_button({ node: prettier_button, label: 'use prettier', enabled: prettier_enabled });
+179:   render_toggle_button({ node: remove_heading_button, label: 'remove heading on the first line', enabled: remove_heading_enabled });
+180:   render_toggle_button({ node: intercept_paste_button, label: 'intercept paste', enabled: intercept_paste_enabled });
+181: }
+182: 
+183: function toggle_boolean({
+184:   current,
+185:   key,
+186: }: {
+187:   current: boolean;
+188:   key: string;
+189: }): boolean {
+190:   const next = !current;
+191:   save_boolean_setting({ key, value: next });
+192:   return next;
+193: }
+194: 
+195: function init_settings(): void {
+196:   markdown_enabled = load_boolean_setting({ key: markdown_enabled_key, default_value: false });
+197:   svg_enabled = load_boolean_setting({ key: svg_enabled_key, default_value: false });
+198:   keep_images_enabled = load_boolean_setting({ key: keep_images_enabled_key, default_value: true });
+199:   normalize_empty_links_enabled = load_boolean_setting({
+200:     key: normalize_empty_links_enabled_key,
+201:     default_value: true,
+202:   });
+203:   prettier_enabled = load_boolean_setting({ key: prettier_enabled_key, default_value: true });
+204:   remove_heading_enabled = load_boolean_setting({ key: remove_heading_enabled_key, default_value: false });
+205:   intercept_paste_enabled = load_boolean_setting({ key: intercept_paste_enabled_key, default_value: false });
+206: 
+207:   render_all();
+208: }
+209: 
+210: paste_node.addEventListener('input', handle_input);
+211: paste_node.addEventListener('blur', keep_focus);
+212: paste_node.addEventListener('paste', function (event: ClipboardEvent) {
+213:   if (!intercept_paste_enabled) return;
+214: 
+215:   event.preventDefault();
+216: 
+217:   const clipboard_data = event.clipboardData;
+218:   if (!clipboard_data) return;
+219: 
+220:   const html = clipboard_data.getData('text/html');
+221:   if (html) {
+222:     intercepted_html = html;
+223:     schedule_process_paste_area();
+224:   }
+225: });
+226: document.addEventListener('click', keep_focus);
+227: window.addEventListener('focus', keep_focus);
+228: 
+229: markdown_button.addEventListener('click', function () {
+230:   markdown_enabled = toggle_boolean({ current: markdown_enabled, key: markdown_enabled_key });
+231:   render_all();
+232: });
+233: 
+234: svg_button.addEventListener('click', function () {
+235:   svg_enabled = toggle_boolean({ current: svg_enabled, key: svg_enabled_key });
+236:   render_all();
+237: });
+238: 
+239: keep_images_button.addEventListener('click', function () {
+240:   keep_images_enabled = toggle_boolean({
+241:     current: keep_images_enabled,
+242:     key: keep_images_enabled_key,
+243:   });
+244:   render_all();
+245: });
+246: 
+247: normalize_empty_links_button.addEventListener('click', function () {
+248:   normalize_empty_links_enabled = toggle_boolean({
+249:     current: normalize_empty_links_enabled,
+250:     key: normalize_empty_links_enabled_key,
+251:   });
+252:   render_all();
+253: });
+254: 
+255: prettier_button.addEventListener('click', function () {
+256:   prettier_enabled = toggle_boolean({
+257:     current: prettier_enabled,
+258:     key: prettier_enabled_key,
+259:   });
+260:   render_all();
+261: });
+262: 
+263: remove_heading_button.addEventListener('click', function () {
+264:   remove_heading_enabled = toggle_boolean({
+265:     current: remove_heading_enabled,
+266:     key: remove_heading_enabled_key,
+267:   });
+268:   render_all();
+269: });
+270: 
+271: intercept_paste_button.addEventListener('click', function () {
+272:   intercept_paste_enabled = toggle_boolean({
+273:     current: intercept_paste_enabled,
+274:     key: intercept_paste_enabled_key,
+275:   });
+276:   render_all();
+277: });
+278: 
+279: set_status({ text: 'paste' });
+280: 
+281: init_settings();
+282: 
+283: window.setTimeout(focus_paste_area, 0);
+
+(End of file - total 283 lines)
+</content>
+```
+
+---
+
+## Assistant (Build · MiniMax-M2.5 · 2.2s)
+
+_Thinking:_
+
+The code looks good. Let me also verify the HTML is correct.
+
+
+**Tool: read**
+
+**Input:**
+```json
+{
+  "filePath": "/home/fira/Documents/f/apps/copy/app.html"
+}
+```
+
+**Output:**
+```
+<path>/home/fira/Documents/f/apps/copy/app.html</path>
+<type>file</type>
+<content>
+1: <!doctype html>
+2: <html lang="en">
+3:   <head>
+4:     <meta charset="utf-8" />
+5:     <meta name="viewport" content="width=device-width, initial-scale=1" />
+6:     <title>copy</title>
+7:     <style>
+8:       :root {
+9:         color-scheme: dark;
+10:       }
+11: 
+12:       html,
+13:       body {
+14:         width: 100%;
+15:         height: 100%;
+16:         margin: 0;
+17:         background: #000;
+18:         overflow: hidden;
+19:       }
+20: 
+21:       body {
+22:         position: relative;
+23:         font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+24:       }
+25: 
+26:       #status {
+27:         position: fixed;
+28:         inset: 0;
+29:         display: grid;
+30:         place-items: center;
+31:         pointer-events: none;
+32:         user-select: none;
+33:         font-size: 18px;
+34:         letter-spacing: 0.08em;
+35:         text-transform: lowercase;
+36:         color: rgba(255, 255, 255, 0.9);
+37:       }
+38: 
+39:       #paste_area {
+40:         position: fixed;
+41:         inset: 0;
+42:         outline: none;
+43:         overflow: hidden;
+44:         opacity: 0;
+45:         white-space: pre-wrap;
+46:       }
+47: 
+48: #markdown-toggle,
+49: #svg-toggle,
+50: #keep-images-toggle,
+51: #normalize-empty-links-toggle,
+52: #prettier-toggle,
+53: #remove-heading-toggle,
+54: #intercept-paste-toggle {
+55:         position: fixed;
+56:         left: 50%;
+57:         transform: translateX(-50%);
+58:         color: #fff;
+59:         font-size: 14px;
+60:         user-select: none;
+61:         cursor: pointer;
+62:       }
+63: 
+64:       #markdown-toggle {
+65:         bottom: 128px;
+66:       }
+67: 
+68:       #svg-toggle {
+69:         bottom: 108px;
+70:       }
+71: 
+72:       #keep-images-toggle {
+73:         bottom: 88px;
+74:       }
+75: 
+76:       #normalize-empty-links-toggle {
+77:         bottom: 68px;
+78:       }
+79: 
+80:       #prettier-toggle {
+81:         bottom: 48px;
+82:       }
+83: 
+84:       #remove-heading-toggle {
+85:         bottom: 28px;
+86:       }
+87: 
+88:       #intercept-paste-toggle {
+89:         bottom: 8px;
+90:       }
+91:     </style>
+92:     <script type="module" src="./source/main.ts"></script>
+93:   </head>
+94:   <body>
+95:     <div id="status">paste</div>
+96: 
+97:     <div
+98:       id="paste_area"
+99:       contenteditable="true"
+100:       role="textbox"
+101:       aria-label="paste area"
+102:       spellcheck="false"
+103:     ></div>
+104: 
+105:     <div id="markdown-toggle">markdown: off</div>
+106:     <div id="svg-toggle">keep svg: off</div>
+107:     <div id="keep-images-toggle">keep images: on</div>
+108:     <div id="normalize-empty-links-toggle">normalize empty links: on</div>
+109:     <div id="prettier-toggle">use prettier: on</div>
+110:     <div id="remove-heading-toggle">remove heading on the first line: off</div>
+111:     <div id="intercept-paste-toggle">intercept paste: off</div>
+112:   </body>
+113: </html>
+
+(End of file - total 113 lines)
+</content>
+```
+
+---
+
+## Assistant (Build · MiniMax-M2.5 · 17.7s)
+
+_Thinking:_
+
+Everything looks good. The implementation is complete. The "intercept paste" option has been added:
+
+1. In HTML: Added the new toggle button at the bottom with proper styling
+2. In main.ts:
+   - Added `intercept_paste_enabled` variable and key
+   - Added the button element reference
+   - Added loading/saving the setting
+   - Added render toggle for the new button
+   - Added click handler
+   - Added paste event listener that intercepts paste when enabled:
+     - Prevents default behavior
+     - Gets HTML directly from clipboardData
+     - Stores it and schedules processing
+   - Modified process_paste_area to check for intercepted HTML first
+
+When "intercept paste" is on:
+- Paste event is intercepted
+- Prevents default
+- Grabs HTML directly from clipboardData (text/html)
+- Processes it directly
+
+When off:
+- Acts as current behavior (reads from contenteditable)
+
+
+Done. Added "intercept paste" toggle at the bottom. When enabled, it intercepts the paste event, prevents default, and grabs HTML directly from clipboard data instead of reading from the contenteditable element.
+
+---
+
+
