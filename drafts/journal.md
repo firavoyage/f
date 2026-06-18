@@ -33628,6 +33628,11 @@ browser pow and qq group captcha <!-- it's much more permissive for bots now -->
 
 <!-- 8.54×1024÷1.8 ~= 4858, not much (a player might dl all maimai versions) -->
 
+<!-- 所有的服务离不开各位的支持！所有赞助过的名单都在这里展示。
+我们目前已经收到了103 CNY 的赞助。
+
+维持服务稳定运行需要 1650.00 CNY。 -->
+
 00 40 finish dl `circle`.
 
 well structured. a list of song folders, a thumbnail, a vid, a song, and a track data text. <!-- idk if they should zip inside zip -->
