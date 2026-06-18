@@ -1,8 +1,8 @@
+type Optional<Type, Keys extends keyof Type> = Omit<Type, Keys> & Partial<Pick<Type, Keys>>
+
 type ok<T> = Exclude<T, error>
 type error = { type: any, message: any, [error_symbol]: true } & Partial<error_fs>
 type error_fs = { code: string, path: string, syscall: string, errno: number }
-
-type Optional<Type, Keys extends keyof Type> = Omit<Type, Keys> & Partial<Pick<Type, Keys>>
 
 type err = typeof err
 type is_error = typeof is_error
@@ -78,6 +78,5 @@ export function err(error: Optional<error, typeof error_symbol | 'message'> | nu
 }
 
 export function is_error<T>(result: result<T>): result is error {
-  return result?.[error_symbol]
-  // return (result as any)?.[err_symbol]
+  return has(result, error_symbol)
 }

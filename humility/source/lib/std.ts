@@ -8,18 +8,15 @@ declare global {
 /**
  * merge objects
  * 
- * pure
- * 
- * shallow
- * 
- * for conflicts, the right overwrites the left
+ * pure, shallow, right > left when conflicting
  * 
  * break prototype chain
  */
-export function merge(...args) {
+export function merge(...args: object[]) {
   return Object.assign({}, ...args)
 }
 
-export function has<K>(obj, key: K): key is K & PropertyKey {
-  return (key ?? false) !== false && Object.hasOwn(obj, key as PropertyKey)
+export function has<K>(obj: object, key: K): key is K & PropertyKey {
+  return key !== null && key !== undefined && Object.hasOwn(obj, key as PropertyKey);
 }
+
