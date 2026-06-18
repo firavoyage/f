@@ -25,6 +25,7 @@ type conversion_settings = {
   normalize_empty_links_enabled: boolean;
   prettier_enabled: boolean;
   remove_heading_enabled: boolean;
+  intercept_paste_enabled: boolean;
 };
 
 const copy_feedback_ms = 1400;
@@ -39,6 +40,7 @@ const normalize_empty_links_button = document.getElementById(
 ) as HTMLElement;
 const prettier_button = document.getElementById('prettier-toggle') as HTMLElement;
 const remove_heading_button = document.getElementById('remove-heading-toggle') as HTMLElement;
+const intercept_paste_button = document.getElementById('intercept-paste-toggle') as HTMLElement;
 
 const markdown_enabled_key = 'markdown_enabled';
 const svg_enabled_key = 'svg_enabled';
@@ -46,6 +48,7 @@ const keep_images_enabled_key = 'keep_images_enabled';
 const normalize_empty_links_enabled_key = 'normalize_empty_links_enabled';
 const prettier_enabled_key = 'prettier_enabled';
 const remove_heading_enabled_key = 'remove_heading_enabled';
+const intercept_paste_enabled_key = 'intercept_paste_enabled';
 
 let markdown_enabled = false;
 let svg_enabled = false;
@@ -53,6 +56,8 @@ let keep_images_enabled = true;
 let normalize_empty_links_enabled = true;
 let prettier_enabled = true;
 let remove_heading_enabled = false;
+let intercept_paste_enabled = false;
+let intercepted_html: string | null = null;
 
 function load_boolean_setting({ key, default_value }: boolean_setting_options): boolean {
   const stored_value = localStorage.getItem(key);
@@ -107,11 +112,21 @@ function get_conversion_settings(): conversion_settings {
     normalize_empty_links_enabled,
     prettier_enabled,
     remove_heading_enabled,
+    intercept_paste_enabled,
   };
 }
 
 async function process_paste_area(): Promise<void> {
-  const { html } = read_paste_area_html();
+  let html: string;
+
+  if (intercept_paste_enabled && intercepted_html !== null) {
+    html = intercepted_html;
+    intercepted_html = null;
+  } else {
+    const result = read_paste_area_html();
+    html = result.html;
+  }
+
   const clean_html = sanitize_html({ dirty_html: html });
   const settings = get_conversion_settings();
 
@@ -162,6 +177,7 @@ function render_all(): void {
   });
   render_toggle_button({ node: prettier_button, label: 'use prettier', enabled: prettier_enabled });
   render_toggle_button({ node: remove_heading_button, label: 'remove heading on the first line', enabled: remove_heading_enabled });
+  render_toggle_button({ node: intercept_paste_button, label: 'intercept paste', enabled: intercept_paste_enabled });
 }
 
 function toggle_boolean({
@@ -186,12 +202,27 @@ function init_settings(): void {
   });
   prettier_enabled = load_boolean_setting({ key: prettier_enabled_key, default_value: true });
   remove_heading_enabled = load_boolean_setting({ key: remove_heading_enabled_key, default_value: false });
+  intercept_paste_enabled = load_boolean_setting({ key: intercept_paste_enabled_key, default_value: false });
 
   render_all();
 }
 
 paste_node.addEventListener('input', handle_input);
 paste_node.addEventListener('blur', keep_focus);
+paste_node.addEventListener('paste', function (event: ClipboardEvent) {
+  if (!intercept_paste_enabled) return;
+
+  event.preventDefault();
+
+  const clipboard_data = event.clipboardData;
+  if (!clipboard_data) return;
+
+  const html = clipboard_data.getData('text/html');
+  if (html) {
+    intercepted_html = html;
+    schedule_process_paste_area();
+  }
+});
 document.addEventListener('click', keep_focus);
 window.addEventListener('focus', keep_focus);
 
@@ -233,6 +264,14 @@ remove_heading_button.addEventListener('click', function () {
   remove_heading_enabled = toggle_boolean({
     current: remove_heading_enabled,
     key: remove_heading_enabled_key,
+  });
+  render_all();
+});
+
+intercept_paste_button.addEventListener('click', function () {
+  intercept_paste_enabled = toggle_boolean({
+    current: intercept_paste_enabled,
+    key: intercept_paste_enabled_key,
   });
   render_all();
 });

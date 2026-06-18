@@ -45,12 +45,13 @@
         white-space: pre-wrap;
       }
 
-      #markdown-toggle,
-      #svg-toggle,
-      #keep-images-toggle,
-      #normalize-empty-links-toggle,
-      #prettier-toggle,
-      #remove-heading-toggle {
+#markdown-toggle,
+#svg-toggle,
+#keep-images-toggle,
+#normalize-empty-links-toggle,
+#prettier-toggle,
+#remove-heading-toggle,
+#intercept-paste-toggle {
         position: fixed;
         left: 50%;
         transform: translateX(-50%);
@@ -61,26 +62,30 @@
       }
 
       #markdown-toggle {
-        bottom: 108px;
+        bottom: 128px;
       }
 
       #svg-toggle {
-        bottom: 88px;
+        bottom: 108px;
       }
 
       #keep-images-toggle {
-        bottom: 68px;
+        bottom: 88px;
       }
 
       #normalize-empty-links-toggle {
-        bottom: 48px;
+        bottom: 68px;
       }
 
       #prettier-toggle {
-        bottom: 28px;
+        bottom: 48px;
       }
 
       #remove-heading-toggle {
+        bottom: 28px;
+      }
+
+      #intercept-paste-toggle {
         bottom: 8px;
       }
     </style>
@@ -103,5 +108,6 @@
     <div id="normalize-empty-links-toggle">normalize empty links: on</div>
     <div id="prettier-toggle">use prettier: on</div>
     <div id="remove-heading-toggle">remove heading on the first line: off</div>
+    <div id="intercept-paste-toggle">intercept paste: off</div>
   </body>
 </html>
