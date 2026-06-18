@@ -33582,6 +33582,12 @@ trivialness 的一种判定是伪科学. twitter 上的人, 常对中医, 生育
 
 vivid.
 
+19 00 meet a vibe coder.
+
+get his github `MiluDeerLu`, which has a maimai avatar.
+
+he works at a startup "world vae", writing the frontend w react and threejs, which is a complex 3d map. he uses mac and claude code (opus). he uses zhcn to vibe.
+
 
 
 <!-- timebox, plan. -->

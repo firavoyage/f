@@ -614,6 +614,7 @@ society: <!-- sociology -->
 - jewish social class
 - mtf hrt meaning
 - asians calm western black laugh
+- jp jirai kei monster energy
 
 rhetoric:
 
