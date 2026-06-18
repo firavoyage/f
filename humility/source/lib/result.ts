@@ -1,46 +1,23 @@
 type ok<T> = Exclude<T, error>
-type error = { type: any, message: any, [err_symbol]: true } & Partial<err_fs>
-type err_fs = { code: string, path: string, syscall: string, errno: number }
+type error = { type: any, message: any, [error_symbol]: true } & Partial<error_fs>
+type error_fs = { code: string, path: string, syscall: string, errno: number }
 
-/**
- * todo: dry?
- * 
- * (impossible in ts)
- */
-// type err = typeof err
-type rescue = typeof is_error
-type handle = typeof handle
+type Optional<Type, Keys extends keyof Type> = Omit<Type, Keys> & Partial<Pick<Type, Keys>>
+
+type err = typeof err
+type is_error = typeof is_error
 declare global {
-  type Optional<Type, Keys extends keyof Type> = Omit<Type, Keys> & Partial<Pick<Type, Keys>>
-  // type Optional<Type, Keys extends keyof any> = Omit<Type, Keys> & Partial<Pick<Type, Keys>>
-
-  /**
-   * todo: E should be subset of err
-   */
-  type result<T, E = error> = ok<T> | E;
-
-  /**
-   * if needed
-   */
-  type option<T> = T | undefined;
+  type result<T, E extends error = error> = ok<T> | E;
 
   var err: typeof err
-  var rescue: rescue
-  var handle: handle
+  var is_error: is_error
 }
 
-type foo = typeof foo
-declare global {
-  var foo: foo
-}
-
-const err_symbol = Symbol("err");
-// const err_symbol = "__err";
-// const err_symbol = "d9eb253e06987fa74a5d3189f73d9f7a8104cca786fafbb52bc9555972f5477f"; // sha256 of "err"
+const error_symbol = Symbol("error");
 
 // no `ok(data)` needed, just return `data` directly
 
-export function err(error: Optional<error, typeof err_symbol | 'message'> | number | string | symbol | Error): error {
+export function err(error: Optional<error, typeof error_symbol | 'message'> | number | string | symbol | Error): error {
   if (error instanceof Error) {
     /**
      * it's simpler to say
@@ -53,7 +30,7 @@ export function err(error: Optional<error, typeof err_symbol | 'message'> | numb
      * 
      * you dont need nested error types on the prototype chain. separate them.
      */
-    return merge(error, { type: error.constructor, message: error.stack ?? error.message, [err_symbol]: true })
+    return merge(error, { type: error.constructor, message: error.stack ?? error.message, [error_symbol]: true })
 
     // return Object.defineProperty({
     //   /**
@@ -72,7 +49,7 @@ export function err(error: Optional<error, typeof err_symbol | 'message'> | numb
     //   message: error.stack ?? error.message,
     // }, err_symbol, { value: true }) as err
   } else if (typeof error == 'object' && Object.hasOwn(error, 'type')) {
-    return merge(error, { [err_symbol]: true })
+    return merge(error, { [error_symbol]: true })
     // return Object.defineProperty(error, err_symbol, { value: true }) as err
     // return Object.defineProperty({
     //   // it must have a type. you should not throw anything.
@@ -89,7 +66,7 @@ export function err(error: Optional<error, typeof err_symbol | 'message'> | numb
        * type => message
        */
       message: error,
-      [err_symbol]: true
+      [error_symbol]: true
     }
     // // why not be more flexible
     // return Object.defineProperty({
@@ -101,6 +78,6 @@ export function err(error: Optional<error, typeof err_symbol | 'message'> | numb
 }
 
 export function is_error<T>(result: result<T>): result is error {
-  return result?.[err_symbol]
+  return result?.[error_symbol]
   // return (result as any)?.[err_symbol]
 }

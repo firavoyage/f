@@ -15,7 +15,7 @@ export async function run({ command }) {
   // @ts-expect-error fine, as handle could not preserve fn overloads
   const exec_result = await exec(command);
 
-  if (rescue(exec_result)) {
+  if (is_error(exec_result)) {
     return err({ type: non_zero_exit, message: exec_result.message })
   }
 
