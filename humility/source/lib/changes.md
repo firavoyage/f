@@ -270,6 +270,12 @@ type ok<T> = Exclude<T, error>
 c
 
 ```ts
-type ok<T> = Exclude<T, error>
+type all = string | number | boolean | bigint | symbol | null | undefined | any[] | { [key: PropertyKey]: any };
+type ok<T = all> = T extends object ? (Omit<T, typeof error_symbol> & { [error_symbol]?: never }) : T;
+dg{
+  type result<T = all, E extends error = error> = (0 extends 1 & T ? ok : ok<T>) | E;
+}
+const error_symbol: unique symbol = Symbol("error");
 ```
+
 
