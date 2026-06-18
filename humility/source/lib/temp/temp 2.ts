@@ -25,7 +25,7 @@ async function fetch_data(a: any) {
 function test() {
   let bar = foo()
 
-  if (rescue(bar)) {
+  if (is_error(bar)) {
     if (bar.type == bad_luck) {
       console.log(bar.message);
     } else if (bar.type == extreme_bad_luck) {
@@ -56,7 +56,7 @@ const a = join('.foo/quux/');
 
 console.log(complexPath)
 
-if (rescue(complexPath)) {
+if (is_error(complexPath)) {
   console.log(complexPath.type == TypeError);
 }
 

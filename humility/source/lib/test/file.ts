@@ -16,6 +16,6 @@ log(await read({ path: data('test') }))
 
 let foo = await remove({ path: data('nonexisting') })
 
-if(rescue(foo)){
+if(is_error(foo)){
   log(foo)
 } 

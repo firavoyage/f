@@ -171,23 +171,12 @@ export function err(error: Optional<error, typeof error_symbol> | PropertyKey | 
   } else if (typeof error == 'object' && has(error, 'type')) {
     return merge(error, { [error_symbol]: true })
   } else {
-    /**
-     * more flexible
-     */
+    // flexible
     return {
       type: error,
-      /**
-       * type => message
-       */
       message: error,
       [error_symbol]: true
     }
-    // // why not be more flexible
-    // return Object.defineProperty({
-    //   type: error,
-    //   // message is implied by the type
-    //   message: error,
-    // }, err_symbol, { value: true }) as err
   }
 }
 ```
@@ -264,4 +253,8 @@ export function has<K>(obj: object, key: K): key is K & PropertyKey {
 }
 ```
 
+17 20 separate temp (various poc) and test.
 
+rename for humans. "space case".
+
+apply `is_error` rename. for handle... i might reconsider. like, just deprecate prev code.

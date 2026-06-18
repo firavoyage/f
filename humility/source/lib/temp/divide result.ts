@@ -10,7 +10,7 @@ export function divide(a: number, b: number): result<number> {
 function test() {
   let foo = divide(1, Math.floor(Math.random() * 5))
 
-  if (rescue(foo)) {
+  if (is_error(foo)) {
     if(foo.type == zero_division){
       // handle
       console.log(foo);
