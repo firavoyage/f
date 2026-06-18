@@ -202,14 +202,14 @@ export async function write({ path, content }): Promise<result<void>> {
    * create path if needed
    */
   const make_dir_result = await make_dir(dir(path), { recursive: true });
-  if (rescue(make_dir_result)) {
+  if (is_error(make_dir_result)) {
     if (has(map, make_dir_result.code)) {
       return err({ type: map[make_dir_result.code], message: make_dir_result })
     }
   }
 
   const write_file_result = await write_file(path, content, 'utf8');
-  if (rescue(write_file_result)) {
+  if (is_error(write_file_result)) {
     if (has(map, write_file_result.code)) {
       return err({ type: map[write_file_result.code], message: write_file_result })
     }
@@ -235,7 +235,7 @@ export async function read({ path }) {
 
   const content = await read_file(path, 'utf8');
 
-  if (rescue(content)) {
+  if (is_error(content)) {
     /**
      * todo
      * 
@@ -294,7 +294,7 @@ export async function edit({ path, find, replace }) {
 export async function remove({ path }): Promise<result<void>> {
   const _ = await delete_file(path)
 
-  if (rescue(_)) {
+  if (is_error(_)) {
     if (has(map, _.code)) {
       return err({ type: map[_.code], message: _ })
     }

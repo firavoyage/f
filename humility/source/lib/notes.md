@@ -50,3 +50,67 @@ be clear and explicit. avoid magic. it works, but it might return undefined inst
  * it adds visual noise right?
  */
 ```
+
+p
+
+```ts
+const error_symbol = Symbol("error");
+// const error_symbol = "__error";
+// const error_symbol = "d9eb253e06987fa74a5d3189f73d9f7a8104cca786fafbb52bc9555972f5477f"; // sha256 of "err"
+```
+
+c
+
+<!-- symbol is the defacto standard for symbol like stuff. (it might not be well serialized, but it's not a current concern.) -->
+
+```ts
+const error_symbol = Symbol("error");
+```
+
+<!-- i might give llms the full `result` code rather than docs (guide or reference). -->
+
+p
+
+```ts
+type Optional<Type, Keys extends keyof Type> = Omit<Type, Keys> & Partial<Pick<Type, Keys>>
+// type Optional<Type, Keys extends keyof any> = Omit<Type, Keys> & Partial<Pick<Type, Keys>>
+```
+
+c
+
+```ts
+type Optional<Type, Keys extends keyof Type> = Omit<Type, Keys> & Partial<Pick<Type, Keys>>
+```
+
+16 40 remove `option`
+
+another rust mimic
+
+```ts
+/**
+ * if needed
+ */
+type option<T> = T | undefined;
+```
+
+seems ts has a simpler `value?` alias.
+
+also, some types do not have to be global.
+
+17 00 complete some todos. secure result error type.
+
+p
+
+```ts
+/**
+ * todo: E should be subset of err
+ */
+type result<T, E = error> = ok<T> | E;
+```
+
+c
+
+```ts
+type result<T, E extends error = error> = ok<T> | E;
+```
+
