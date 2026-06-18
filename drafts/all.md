@@ -178,7 +178,7 @@ archi:
 - markdown footnotes
 - nested flattened objects
 - t3 stack
-- piracy hosting crypto vps
+- piracy hosting crypto vps maimai charts awmc astrodx
 
 frontend: <!-- web -->
 
