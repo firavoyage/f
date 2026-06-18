@@ -1,5 +1,5 @@
-type ok<T> = Exclude<T, err>
-type err = { type: any, message: any, [err_symbol]: true } & Partial<err_fs>
+type ok<T> = Exclude<T, error>
+type error = { type: any, message: any, [err_symbol]: true } & Partial<err_fs>
 type err_fs = { code: string, path: string, syscall: string, errno: number }
 
 /**
@@ -7,8 +7,8 @@ type err_fs = { code: string, path: string, syscall: string, errno: number }
  * 
  * (impossible in ts)
  */
-type err_fn = typeof err
-type rescue = typeof rescue
+// type err = typeof err
+type rescue = typeof is_error
 type handle = typeof handle
 declare global {
   type Optional<Type, Keys extends keyof Type> = Omit<Type, Keys> & Partial<Pick<Type, Keys>>
@@ -17,33 +17,30 @@ declare global {
   /**
    * todo: E should be subset of err
    */
-  type result<T, E = err> = ok<T> | E;
+  type result<T, E = error> = ok<T> | E;
 
   /**
    * if needed
    */
   type option<T> = T | undefined;
 
-  var err: err_fn
+  var err: typeof err
   var rescue: rescue
   var handle: handle
+}
+
+type foo = typeof foo
+declare global {
+  var foo: foo
 }
 
 const err_symbol = Symbol("err");
 // const err_symbol = "__err";
 // const err_symbol = "d9eb253e06987fa74a5d3189f73d9f7a8104cca786fafbb52bc9555972f5477f"; // sha256 of "err"
 
-/**
- * not needed.
- * 
- * just return value directly.
- */
+// no `ok(data)` needed, just return `data` directly
 
-// export function ok<T>(value: ok<T>): ok<T> {
-//   return value
-// }
-
-export function err(error: Optional<err, typeof err_symbol | 'message'> | number | string | symbol | Error): err {
+export function err(error: Optional<error, typeof err_symbol | 'message'> | number | string | symbol | Error): error {
   if (error instanceof Error) {
     /**
      * it's simpler to say
@@ -103,107 +100,7 @@ export function err(error: Optional<err, typeof err_symbol | 'message'> | number
   }
 }
 
-export function rescue<T>(result: result<T>): result is err {
+export function is_error<T>(result: result<T>): result is error {
   return result?.[err_symbol]
   // return (result as any)?.[err_symbol]
-}
-
-// /**
-//  * deprecated.
-//  *
-//  * you often want to process the data, which need to be unwrapped.
-//  *
-//  * while ts does not allow
-//  * 
-//  * - change the type halfway in the same scope `data = data.value`
-//  * - shadow the type with the same name even with indentation `const data = data.value`
-//  * 
-//  * as a result, you will have `data_result` and `data`.
-//  * 
-//  * or, you could build heavier oop chaining, which is completely unnecessary.
-//  *
-//  */
-
-// type ok<T> = { err: false; value?: T, unwrap(): T }
-// type err = { err: true; error?: string | object}
-
-// // or error {type, message}? 
-
-// /**
-//  * you either
-//  * 
-//  * - err, panics
-//  * - err, logs
-//  * - err, handle each error types
-//  */
-
-// declare global {
-//   type result<T> = ok<T> | err;
-// }
-
-// export function ok<T>(value: T): ok<T> {
-//   return {
-//     err: false, value, unwrap() {
-//       return value
-//     }
-//   }
-// }
-
-// export function err(error: any): err {
-//   return {
-//     err: true, error, unwrap() {
-//       throw error;
-//     }
-//   }
-// }
-
-// /**
-//  * hacky (js feature: truthy/falsy).
-//  */
-
-// type ok = { err: false; value?: any }
-// type err = { err: object }
-// export type result = ok | err
-
-// /**
-//  * verbose `if (type==="err")`
-//  *
-//  * most time we only check if err and early return (avoid nesting hells)
-//  *
-//  * we dont check ok
-//  */
-
-// type ok = { type: 'ok'; value?: any }
-// type err = { type: 'err'; error: string }
-// export type result = ok | err
-
-/**
- * handle possible errors
- * 
- * just use the word handle ("i will wrap it to handle the errors gracefully"),
- * not attempt (i attempt to do this even if it might fail.).
- * 
- * it does not preserve fn overloads as ts does not support it.
- * 
- * ref: https://gist.github.com/t3dotgg/a486c4ae66d32bf17c09c73609dacc5b
- */
-export function handle<F extends (...args: any[]) => any>(fn: F): (...args: Parameters<F>) => result<ReturnType<F>> {
-  return (...args) => {
-    try {
-      const result = fn(...args);
-
-      if (result instanceof Promise || typeof result?.then == 'function') {
-        return (result as Promise<result<any>>)
-          // async ok
-          .then((data) => data)
-          // async err
-          .catch((e) => err(e));
-      }
-
-      // sync ok
-      return result;
-    } catch (error) {
-      return err(error);
-    }
-  }
 }
