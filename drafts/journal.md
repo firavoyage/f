@@ -33614,6 +33614,18 @@ there are many ppl. a fierce boy is surfing douyin. the cute girl is sleeping on
 
 23 20 write some envelopes.
 
+19
+
+00 00 batch dl some songs from download.awmc.cc <!-- download.awmc.team -->.
+
+browser pow and qq group captcha <!-- it's much more permissive for bots now -->. 8m/s.
+
+<!-- well, it might not be wise having captcha noises and messages in the same group. -->
+
+<!-- the captcha does not auto refresh when expired. failed to fetch? native browser alert? sudden high server load? 30k searches, 700k dl, 8.53t outbound (idk the timeframe, all time? does not quite impressive). it does not cache, zipping everytime? -->
+
+<!-- it has cn gov site compliance? -->
+
 
 
 <!-- timebox, plan. -->

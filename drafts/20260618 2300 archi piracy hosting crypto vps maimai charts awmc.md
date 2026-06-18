@@ -2,7 +2,7 @@
 
 <!-- though, astrodx does not feel so polished. yet kdx, or the original csharp unity code are not dedicatedly engineered either. -->
 
-how do russian piracy sites host
+# how do russian piracy sites host
 
 Russian piracy sites maintain their operations through a complex combination of specialized tech architecture, international loopholes, and targeted funding mechanisms. They utilize <mark style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 500; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">bulletproof hosting providers, decentralized storage networks, automated mirror domains, and ad-heavy revenue models</mark> to bypass law enforcement and copyright claims. \[[1](https://meduza.io/en/feature/2024/12/19/return-of-the-pirates)]
 
@@ -527,3 +527,100 @@ If you would like to explore how this economic model operates in practice, let m
   MarTech
 
 Show all
+
+#
+
+<!-- failed, network error -->
+
+<!-- idk if they could hold 1.8gb in browser memory -->
+
+<!-- wget -c -O maimai_circle https://download.awmc.cc/api/download-result/0b2b24ee2737c9b0bdaf701663bc65fc -->
+
+<!-- wget -c -O maimai_circle https://download.awmc.cc/api/download-result/e5743838b029b9c53dadf21ddfdc1046 -->
+
+<!-- wget -c -O maimai_circle https://download.awmc.team/api/download-result/8a2a39e16e9f745df536aaaf44cc8461 --user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36" --no-check-certificate --no-hsts -->
+
+# does chrome show mbyte per s or mbit pers
+
+Google Chrome displays download speeds in **Megabytes per second (MB/s)**, not megabits per second (Mbps). \[[1](https://www.reddit.com/r/HomeNetworking/comments/9r9s67/chrome%5Fdownload%5Fspeed/)]
+
+Because browsers track how much of a file's physical size has been written to your drive, they use **bytes** (capital **B**) as the standard unit of measurement. \[[1](https://www.ionos.com/digitalguide/hosting/technical-matters/megabytes-per-second/), [2](https://support.google.com/chrome/thread/178593831/how-to-change-download-speeds-to-bits-rather-than-bytes?hl=en)]
+
+### The Difference Explained
+
+This setup often causes confusion because Internet Service Providers (ISPs) and network speed tests exclusively advertise internet packages in **megabits per second (Mbps)**. \[[1](https://www.tiktok.com/@zachstechturf/video/7373774488699211050?lang=en), [2](https://www.reddit.com/r/HomeNetworking/comments/9r9s67/chrome%5Fdownload%5Fspeed/)]
+
+- **1 Byte = 8 Bits**
+- **Megabits (Mbps or Mb/s)**: Measures data in transit (network speed).
+- **Megabytes (MB/s or MBps)**: Measures data volume (file sizes). \[[1](https://www.ionos.co.uk/digitalguide/hosting/technical-matters/megabytes-per-second/), [2](https://www.confused.com/broadband/guides/internet-speeds-and-data-sizes-explained), [3](https://www.reddit.com/r/HomeNetworking/comments/9r9s67/chrome%5Fdownload%5Fspeed/)]
+
+### Fast Conversion Rule
+
+To understand why Chrome's download number looks much lower than your speed test result, simply **divide your internet speed by 8**: \[[1](https://www.reddit.com/r/HomeNetworking/comments/9r9s67/chrome%5Fdownload%5Fspeed/), [2](https://www.facebook.com/groups/652178389264909/posts/1027661168383294/)]
+
+- A **100 Mbps** internet connection converts to a maximum theoretical speed of **12.5 MB/s** in Chrome.
+- A **400 Mbps** connection caps out at roughly **50 MB/s** in Chrome. \[[1](https://www.facebook.com/groups/1073126727485389/posts/1546901040107953/)]
+
+If you want to see how this math scales to your current connection, let me know your **advertised internet speed** or **how long a download is taking**, and I can calculate your real-world transfer efficiency!
+
+- [link](https://www.facebook.com/groups/652178389264909/posts/1027661168383294/)\
+  How do I get it to show in mbps instead of Mbit/s - Facebook\
+  Sep 27, 2023 — Just knew i can do this right in google/chrome Explanation: Usually most internet providers will measure the internet speed in Mbp...\
+  Facebook·Home Assistant Ideas, Projects and Solutions
+- [link](https://www.tiktok.com/@zachstechturf/video/7373774488699211050?lang=en)\
+  Understanding Internet Download Speeds: Bits vs Bytes\
+  May 27, 2024 — what's the difference between megabits. and megabytes when it comes to your internet speed. and downloading. it's surprising how m...\
+  [1:15](https://www.tiktok.com/@zachstechturf/video/7373774488699211050?lang=en)\
+  TikTok·zachstechturf
+- [link](https://www.ionos.com/digitalguide/hosting/technical-matters/megabytes-per-second/)\
+  What does megabytes per second (MBps) mean? - IONOS\
+  Jun 27, 2023 — The unit MBps is used to describe the speed at which data is transferred to and from storage devices. This could, for example, be ...\
+  IONOS
+
+Show all
+
+## You said: is it weird when / means per, and p is alias of per, and mb/s is mbyte per s and mbps is mbit per s
+
+It is completely natural to find that weird! You are spotting a major inconsistency in how the tech world writes abbreviations.
+
+The confusion happens because the industry uses two entirely different naming systems at the same time.
+
+### The Conflict in the Letters
+
+- **The Slash (`/`)**: This represents the mathematical division symbol for "per" (Bytes **/** second).
+- **The letter `p`**: This is just an English shorthand abbreviation for the spoken word "per". \[[1](https://techterms.com/definition/bps), [2](https://guardian.ng/technology/understanding-mbps-vs-mbps/), [3](https://www.reddit.com/r/AskProgramming/comments/xy8wye/why%5Fdo%5Fpeople%5Fuse%5Fa%5Fp%5Ffor%5Fmbps%5Fbut%5Fa%5Fslash%5Ffor%5Fmbs/)]
+
+When you mix them together, the naming conventions break down:
+
+- **MB/s** = Mega**B**ytes / second (capital **B** = Bytes)
+- **Mbps** = Mega**b**its per second (lowercase **b** = bits) \[[1](https://cside.com/learning/what-is-the-different-between-mbps-mb-s-and-mb-s), [2](https://www.howtogeek.com/685454/whats-the-difference-between-a-megabit-and-a-megabyte/), [3](https://www.fibermall.com/blog/how-many-mbps-in-a-gbps.htm?srsltid=AfmBOooE-iNToePQIqx67pUvziDFY20caAH4p9NBRf6UQaDqMranoEJe), [4](https://www.facebook.com/PLDTHome/posts/what-is-mbps-and-what-does-it-mean-read-more-from-nextupgrade-%EF%B8%8F/5547824618637909/), [5](http://download.nust.na/pub6/mysql/doc/mysqldoc-guide/en/sg-spelling.html)]
+
+### Why it feels so broken
+
+The real "weirdness" is that the letter **B** changes its meaning based on whether a slash or a `p` is used.
+
+If the industry were consistent, `MBps` would mean Megabytes per second, and `Mbps` would mean Megabits per second. In fact, some technical text _does_ use `MBps` with a capital B. Because human eyes easily misread a capital **B** and a lowercase **b** in the middle of a word, the tech industry adopted the slash (`MB/s`) specifically to create a visual distinction and prevent people from confusing the two units. \[[1](https://asianetbroadband.in/understand-difference-mbps-mbps/), [2](https://www.facebook.com/PLDTHome/posts/what-is-mbps-and-what-does-it-mean-read-more-from-nextupgrade-%EF%B8%8F/5547824618637909/), [3](https://www.reddit.com/r/explainlikeimfive/comments/35ze9z/eli5why%5Fis%5Fmy%5Finternet%5Fspeed%5F40%5Fmbps%5Fbut%5Ffiles/), [4](https://www.fibermall.com/blog/how-many-mbps-in-a-gbps.htm?srsltid=AfmBOopqPb4jh-oGIgqOI9UJ0UbpbJDXGG8MaoLVR9HyWbqxr3CBMluQ)]
+
+If you have a specific **file download size** or **network package** you are trying to figure out, I can help you **translate the shorthand** so you know exactly what speed you are getting!
+
+- [link](https://techterms.com/definition/bps)\
+  bps Definition - What does bits per second (bps) measure?\
+  Feb 20, 2014 — The lowercase "b" signifies bits rather than bytes. Since a byte is eight bits, 100 Bps is equal to 800 bps. Variations of Bps, su...\
+  \
+  TechTerms.com
+- [link](https://guardian.ng/technology/understanding-mbps-vs-mbps/)\
+  Understanding Mbps vs MBps\
+  Jun 21, 2017 — Mbps and MBps sound similar and can seem confusing to understand. It is easy to see those 'ps' in both abbreviations means per sec...\
+  \
+  \
+  The Guardian Nigeria News
+- [link](https://www.reddit.com/r/AskProgramming/comments/xy8wye/why%5Fdo%5Fpeople%5Fuse%5Fa%5Fp%5Ffor%5Fmbps%5Fbut%5Fa%5Fslash%5Ffor%5Fmbs/)\
+  Why do people use a "p" for "Mbps" but a slash for "MB/s"? : r/AskProgramming\
+  Oct 7, 2022 — The reason I assumed was that the US and the British empire were both English ( English languages ) speaking, so they have the wor...\
+  \
+  \
+  Reddit
+
+Show all
+
+# 
