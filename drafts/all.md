@@ -688,6 +688,8 @@ humility:
 - research opencode <!-- structured output, yaml or json or xml -->
 - research google ai mode system prompt tools skills llms follow up criticism
 - install librechat
+- research librechat
+- research dify
 
 legacy:
 
