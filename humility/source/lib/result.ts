@@ -1,6 +1,8 @@
 type Optional<Type, Keys extends keyof Type> = Omit<Type, Keys> & Partial<Pick<Type, Keys>>
 
-type ok<T> = Exclude<T, error>
+type all = string | number | boolean | bigint | symbol | null | undefined | any[] | { [key: PropertyKey]: any };
+
+type ok<T = all> = T extends object ? (Omit<T, typeof error_symbol> & { [K in typeof error_symbol]?: never }) : T;
 type error = { type: any, message: any, [error_symbol]: true } & Partial<error_fs>
 type error_fs = { code: string, path: string, syscall: string, errno: number }
 
@@ -13,7 +15,7 @@ declare global {
   var is_error: is_error
 }
 
-const error_symbol = Symbol("error");
+const error_symbol: unique symbol = Symbol("error");
 
 // no `ok(data)` needed, just return `data` directly
 
