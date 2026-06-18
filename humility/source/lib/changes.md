@@ -258,3 +258,18 @@ export function has<K>(obj: object, key: K): key is K & PropertyKey {
 rename for humans. "space case".
 
 apply `is_error` rename. for handle... i might reconsider. like, just deprecate prev code.
+
+18 00 research. fix `ok`.
+
+p
+
+```ts
+type ok<T> = Exclude<T, error>
+```
+
+c
+
+```ts
+type ok<T> = Exclude<T, error>
+```
+
