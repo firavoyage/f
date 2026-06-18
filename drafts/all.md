@@ -363,6 +363,7 @@ ux: <!-- ui/ux design, ia, information architecture -->
 - weber law of perception
 - ia context menu design
 - parceljs vite webpack error overlay design
+- cursor hand link button context menu
 
 typography:
 
@@ -384,6 +385,7 @@ linguistics: <!-- grammar, etymology -->
 - name fira etymology
 - rem acu tetigisti roman history latin greek
 - infer or imply asymmetric
+- might could world should must past tense
 
 literature:
 
