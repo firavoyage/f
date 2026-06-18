@@ -5,11 +5,7 @@ const ErrSymbol: unique symbol = Symbol("parse_error");
 type BroadObject = { [key: string | number | symbol]: any };
 
 // 3. Create the direct type using Omit and a Mapped Type loop
-type AnyExceptErr = 
-
-  | string | number | boolean | bigint | symbol | null | undefined
-  | any[]
-  | (Omit<BroadObject, typeof ErrSymbol> & { [K in typeof ErrSymbol]?: never });
+type AnyExceptErr = string | number | boolean | bigint | symbol | null | undefined | any[] | (Omit<BroadObject, typeof ErrSymbol> & { [K in typeof ErrSymbol]?: never });
 
 // --- HOW TO USE IT ---
 
