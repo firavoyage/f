@@ -33637,6 +33637,12 @@ browser pow and qq group captcha <!-- it's much more permissive for bots now -->
 
 well structured. a list of song folders, a thumbnail, a vid, a song, and a track data text. <!-- idk if they should zip inside zip -->
 
+03 40 have 16 envelopes. draw some maimai arts on some.
+
+> 端午節おめでとう
+>
+> 2026.06.19
+
 
 
 <!-- timebox, plan. -->
