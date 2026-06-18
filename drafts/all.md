@@ -99,6 +99,7 @@ life:
 - game maimai dx color badges
 - streaming test youtube mobile prism streamerlabs twitch kick
 - game maimai dx kanadedx astrodx
+- game maimai dx note speed
 
 create something:
 
