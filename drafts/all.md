@@ -300,6 +300,7 @@ agent: <!-- ai/ml -->
 - opencode build mode plan mode
 - spec driven dev 
 - c suite roles flat corp structure <!-- pm? agent, esp. one man company hypes -->
+- llms yes no as the first token
 
 cp: <!-- algorithms -->
 
