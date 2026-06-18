@@ -176,6 +176,7 @@ archi:
 - fp oop method
 - markdown footnotes
 - nested flattened objects
+- t3 stack
 
 frontend: <!-- web -->
 

@@ -10,7 +10,7 @@ type is_error = typeof is_error
 declare global {
   type result<T = all, E extends error = error> = (0 extends 1 & T ? ok : ok<T>) | E;
 
-  var err: typeof err
+  var err: err
   var is_error: is_error
 }
 

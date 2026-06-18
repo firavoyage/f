@@ -33600,7 +33600,17 @@ he holds a huawei phone.
 
 he does not use tg despite kdx group and surprises at my crashing errors.
 
-well, it feels he hits so heavily, even harder than me.
+well, it feels he hits so heavily, even harder than me. he plays well, sometimes sss plus at lv14.
+
+he studies abroad at cornell <!-- no wonder he is so calm and confident -->, currently quits <!-- 休学 --> and works. his home is in sh, and he returns for the duanwu festival tomorrow.
+
+the startup at peking has about 8 to 9 ppl, to b (e.g. meituan), providing large models for sociology simulation and various base models.
+
+he does not social much on twitter or tg, so i could not have him.
+
+19 40 feel.
+
+there are many ppl. a fierce boy is surfing douyin. the cute girl is sleeping on the sofa.
 
 
 
