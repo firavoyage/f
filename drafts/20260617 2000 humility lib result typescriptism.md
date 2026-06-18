@@ -4895,3 +4895,7 @@ If `extends` had higher priority, the expression would split into `(0 extends 1)
 
 If you are working on complex conditional types, I can show you how **union distribution** interacts with these operators, or we can look at how **parentheses** change the evaluation order. Which would you prefer?
 
+
+#
+
+
