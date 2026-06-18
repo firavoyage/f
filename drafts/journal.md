@@ -33626,6 +33626,12 @@ browser pow and qq group captcha <!-- it's much more permissive for bots now -->
 
 <!-- it has cn gov site compliance? -->
 
+<!-- 8.54×1024÷1.8 ~= 4858, not much (a player might dl all maimai versions) -->
+
+00 40 finish dl `circle`.
+
+well structured. a list of song folders, a thumbnail, a vid, a song, and a track data text. <!-- idk if they should zip inside zip -->
+
 
 
 <!-- timebox, plan. -->

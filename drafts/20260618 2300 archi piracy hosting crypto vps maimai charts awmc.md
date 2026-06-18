@@ -538,7 +538,12 @@ Show all
 
 <!-- wget -c -O maimai_circle https://download.awmc.cc/api/download-result/e5743838b029b9c53dadf21ddfdc1046 -->
 
-<!-- wget -c -O maimai_circle https://download.awmc.team/api/download-result/8a2a39e16e9f745df536aaaf44cc8461 --user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36" --no-check-certificate --no-hsts -->
+<!-- wget -c -O maimai_circle https://download.awmc.team/api/download-result/8a2a39e16e9f745df536aaaf44cc8461 --user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" \
+     --header="Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8" \
+     --header="Accept-Language: en-US,en;q=0.9" \
+     --header="Connection: keep-alive" \
+     --trust-server-names \
+     --content-disposition \ -->
 
 # does chrome show mbyte per s or mbit pers
 
@@ -624,3 +629,10 @@ If you have a specific **file download size** or **network package** you are try
 Show all
 
 # 
+
+<!-- "thinking a little longer" (i) -->
+
+# 
+
+
+
