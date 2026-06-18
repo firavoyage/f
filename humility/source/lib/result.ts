@@ -1,15 +1,14 @@
 type Optional<Type, Keys extends keyof Type> = Omit<Type, Keys> & Partial<Pick<Type, Keys>>
 
 type all = string | number | boolean | bigint | symbol | null | undefined | any[] | { [key: PropertyKey]: any };
-
-type ok<T = all> = T extends object ? (Omit<T, typeof error_symbol> & { [K in typeof error_symbol]?: never }) : T;
+type ok<T = all> = T extends object ? (Omit<T, typeof error_symbol> & { [error_symbol]?: never }) : T;
 type error = { type: any, message: any, [error_symbol]: true } & Partial<error_fs>
 type error_fs = { code: string, path: string, syscall: string, errno: number }
 
 type err = typeof err
 type is_error = typeof is_error
 declare global {
-  type result<T, E extends error = error> = ok<T> | E;
+  type result<T = all, E extends error = error> = (0 extends 1 & T ? ok : ok<T>) | E;
 
   var err: typeof err
   var is_error: is_error
