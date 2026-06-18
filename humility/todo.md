@@ -72,12 +72,6 @@ it's easy to standardize later.
 
 ---
 
-research memoh and arkloop i guess
-
-stop after use.
-
----
-
 finalize adwaita.yaml
 
 states.
@@ -85,14 +79,6 @@ states.
 hover, pressed, ...
 
 research, copy to ref, map.
-
----
-
-align components
-
----
-
-check typos.
 
 ---
 
@@ -125,12 +111,6 @@ chat exit
 
 ---
 
-how popular
-
-open webui purpose features
-
----
-
 gnome apps
 
 flatpak
@@ -144,18 +124,6 @@ how would
 stateful cli? stateless cli?
 
 git config?
-
----
-
-vscode
-
-figma
-
-component?
-
-input component
-
-<!-- styling is easy -->
 
 ---
 
@@ -182,6 +150,16 @@ setup
 
 ---
 
-simplify results
+adwaita web ui template.
+
+---
+
+humility 
+
+- methods (stateless)
+- actions (stateful)
+
+---
+
 
 
