@@ -178,6 +178,7 @@ archi:
 - markdown footnotes
 - nested flattened objects
 - t3 stack
+- piracy hosting crypto vps
 
 frontend: <!-- web -->
 
