@@ -280,4 +280,12 @@ const error_symbol: unique symbol = Symbol("error");
 
 19 40 i guess i would add back handle anyway as file (inside prelude) currently depends on it.
 
+20 40 code review.
+
+rename `ok` to `success` to be clearer.
+
+simplify (iff reduction).
+
+merge might break prototype. rather define directly.
+
 

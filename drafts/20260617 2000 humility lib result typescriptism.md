@@ -4895,7 +4895,745 @@ If `extends` had higher priority, the expression would split into `(0 extends 1)
 
 If you are working on complex conditional types, I can show you how **union distribution** interacts with these operators, or we can look at how **parentheses** change the evaluation order. Which would you prefer?
 
-
 #
 
+# Result.ts code review
+
+**Session ID:** ses_12545beb5ffeWgUo4i9gY6AxDM
+**Created:** 6/18/2026, 8:35:00 PM
+**Updated:** 6/18/2026, 8:50:00 PM
+
+---
+
+## User
+
+code review result.ts
+
+---
+
+## Assistant (Plan · MiniMax-M2.5 · 3.1s)
+
+_Thinking:_
+
+The user wants me to code review a file called `result.ts`. Let me first find this file in the current working directory.
+
+
+**Tool: glob**
+
+**Input:**
+```json
+{
+  "pattern": "**/result.ts"
+}
+```
+
+**Output:**
+```
+/home/fira/Documents/f/humility/source/lib/result.ts
+```
+
+---
+
+## Assistant (Plan · MiniMax-M2.5 · 2.3s)
+
+_Thinking:_
+
+Found the file. Let me read it to understand its contents.
+
+
+**Tool: read**
+
+**Input:**
+```json
+{
+  "filePath": "/home/fira/Documents/f/humility/source/lib/result.ts"
+}
+```
+
+**Output:**
+```
+<path>/home/fira/Documents/f/humility/source/lib/result.ts</path>
+<type>file</type>
+<content>
+1: type Optional<Type, Keys extends keyof Type> = Omit<Type, Keys> & Partial<Pick<Type, Keys>>
+2: 
+3: type all = string | number | boolean | bigint | symbol | null | undefined | any[] | { [key: PropertyKey]: any };
+4: type ok<T = all> = T extends object ? (Omit<T, typeof error_symbol> & { [error_symbol]?: never }) : T;
+5: type error = { type: any, message: any, [error_symbol]: true } & Partial<error_fs>
+6: type error_fs = { code: string, path: string, syscall: string, errno: number }
+7: 
+8: type err = typeof err
+9: type is_error = typeof is_error
+10: declare global {
+11:   type result<T = all, E extends error = error> = (0 extends 1 & T ? ok : ok<T>) | E;
+12: 
+13:   var err: err
+14:   var is_error: is_error
+15: }
+16: 
+17: const error_symbol: unique symbol = Symbol("error");
+18: 
+19: // no `ok(data)` needed, just return `data` directly
+20: 
+21: export function err(error: Optional<error, typeof error_symbol> | PropertyKey | Error): error {
+22:   if (error instanceof Error) {
+23:     return merge(error, { type: error.constructor, message: error.stack ?? error.message, [error_symbol]: true })
+24:   } else if (typeof error == 'object' && has(error, 'type')) {
+25:     return merge(error, { [error_symbol]: true })
+26:   } else {
+27:     // flexible
+28:     return {
+29:       type: error,
+30:       message: error,
+31:       [error_symbol]: true
+32:     }
+33:   }
+34: }
+35: 
+36: export function is_error<T>(result: result<T>): result is error {
+37:   return has(result, error_symbol)
+38: }
+
+(End of file - total 38 lines)
+</content>
+```
+
+---
+
+## Assistant (Plan · MiniMax-M2.5 · 5.5s)
+
+_Thinking:_
+
+Now let me analyze this file for code review. This appears to be a Result type implementation in TypeScript.
+
+Let me identify issues:
+
+1. **Type declarations are not properly exported** - The global type declarations (lines 10-15) declare `result`, `err`, and `is_error` globally but they're not exported. The types `ok`, `error`, `error_fs`, `all` are also not exported.
+
+2. **Confusing type definitions** - Lines 8-9 declare `type err = typeof err` and `type is_error = typeof is_error` which are circular/tautological and don't make sense as type definitions. They seem incomplete.
+
+3. **The `error_symbol` is used inconsistently** - It's declared as a const (line 17) but also used in type definitions (line 4-5).
+
+4. **Missing export of core types** - Users can't import `ok`, `error`, `error_fs`, `all` types if they need them.
+
+5. **The global declaration is problematic** - Declaring global types inside a module that exports functions is unusual and can cause issues.
+
+6. **Line 11 has a clever but confusing type trick** - `(0 extends 1 & T ? ok : ok<T>)` is checking if T is `never` (or `any`), but this is very opaque.
+
+7. **`Optional` type is defined but unused** - The `Optional` type at line 1 is used in line 21 but could be more general.
+
+8. **No error handling utilities** - No `map`, `map_err`, `and_then`, `unwrap`, `unwrap_or` etc. common in Result types.
+
+9. **The `all` type is too broad** - Using `any` defeats the purpose of TypeScript's type safety.
+
+10. **Missing JSDoc comments** - For a library file, especially one dealing with errors, documentation would help.
+
+11. 
+
+The `merge` and `has` functions on lines 23 and 24 are imported but never declared anywhere in this file—that's a critical gap. The error handler accepts flexible input (line 21) but the type signatures don't clearly reflect what's actually accepted versus what's rejected.
+
+
+**Tool: grep**
+
+**Input:**
+```json
+{
+  "path": "/home/fira/Documents/f/humility/source/lib",
+  "pattern": "merge|has"
+}
+```
+
+**Output:**
+```
+Found 42 matches
+/home/fira/Documents/f/humility/source/lib/changes.md:
+  Line 15: gradually, as i adopt react. react has state and setstate.
+
+  Line 48:   return Object.hasOwn(result, error_symbol)
+
+  Line 113:     return merge(error, { type: error.constructor, message: error.stack ?? error.message, [error_symbol]: true })
+
+  Line 131:   } else if (typeof error == 'object' && Object.hasOwn(error, 'type')) {
+
+  Line 132:     return merge(error, { [error_symbol]: true })
+
+  Line 170:     return merge(error, { type: error.constructor, message: error.stack ?? error.message, [error_symbol]: true })
+
+  Line 171:   } else if (typeof error == 'object' && has(error, 'type')) {
+
+  Line 172:     return merge(error, { [error_symbol]: true })
+
+  Line 195: seems ts has a simpler `value?` alias.
+
+  Line 221: export function has<K>(obj, key: K): key is K & PropertyKey {
+
+  Line 222:   return (key ?? false) !== false && Object.hasOwn(obj, key as PropertyKey)
+
+  Line 229: export function has<K>(obj, key: K): key is K & PropertyKey {
+
+  Line 230:   return key != null && Object.hasOwn(obj, key as PropertyKey)
+
+  Line 241: export function has(obj, key): key is PropertyKey {
+
+  Line 242:   return key !== null && key !== undefined && Object.hasOwn(obj, key as PropertyKey)
+
+  Line 251: export function has<K>(obj: object, key: K): key is K & PropertyKey {
+
+  Line 252:   return key !== null && key !== undefined && Object.hasOwn(obj, key as PropertyKey);
+
+
+/home/fira/Documents/f/humility/source/lib/result.ts:
+  Line 23:     return merge(error, { type: error.constructor, message: error.stack ?? error.message, [error_symbol]: true })
+
+  Line 24:   } else if (typeof error == 'object' && has(error, 'type')) {
+
+  Line 25:     return merge(error, { [error_symbol]: true })
+
+  Line 37:   return has(result, error_symbol)
+
+
+/home/fira/Documents/f/humility/source/lib/std.ts:
+  Line 1: type merge = typeof merge
+
+  Line 2: type has = typeof has
+
+  Line 4:   var merge: merge
+
+  Line 5:   var has: has
+
+  Line 9:  * merge objects
+
+  Line 15: export function merge(...args: object[]) {
+
+  Line 19: export function has<K>(obj: object, key: K): key is K & PropertyKey {
+
+  Line 20:   return key !== null && key !== undefined && Object.hasOwn(obj, key as PropertyKey);
+
+
+/home/fira/Documents/f/humility/source/lib/file.ts:
+  Line 206:     if (has(map, make_dir_result.code)) {
+
+  Line 213:     if (has(map, write_file_result.code)) {
+
+  Line 245:     if (has(map, content.code)) {
+
+  Line 298:     if (has(map, _.code)) {
+
+
+/home/fira/Documents/f/humility/source/lib/legacy/result 0.0.ts:
+  Line 68:     return merge(error, { type: error.constructor, message: error.stack ?? error.message, [err_symbol]: true })
+
+  Line 86:   } else if (typeof error == 'object' && Object.hasOwn(error, 'type')) {
+
+  Line 87:     return merge(error, { [err_symbol]: true })
+
+
+/home/fira/Documents/f/humility/source/lib/log.ts:
+  Line 18:   if (seen.has(obj)) {
+
+
+/home/fira/Documents/f/humility/source/lib/spec_file.md:
+  Line 50: symlink hash?
+
+  Line 56: - calc the hash
+
+  Line 90: Db/hash symlink might be overkill.
+
+
+/home/fira/Documents/f/humility/source/lib/readme.md:
+  Line 6: - std: methods like has, merge
+
+
+/home/fira/Documents/f/humility/source/lib/test/log.ts:
+  Line 41:   if (seen.has(obj)) {
+
+```
+
+---
+
+## Assistant (Plan · MiniMax-M2.5 · 4.6s)
+
+_Thinking:_
+
+So `merge` and `has` are imported from `std.ts`. This file expects them to be globally available. Let me also check for any imports in result.ts to understand what's being used.
+
+Looking at the code more carefully:
+
+1. The `merge` and `has` functions are expected to be globally available (from std.ts)
+2. The type declarations at lines 8-9 are odd: `type err = typeof err` and `type is_error = typeof is_error` - these are essentially no-ops
+
+Let me provide my review now.
+
+
+## Code Review: `result.ts`
+
+### Issues
+
+**Critical:**
+1. **Missing imports** - Uses `merge` and `has` without importing them. They exist in `std.ts` but aren't imported, meaning this file won't compile standalone.
+
+2. **Lines 8-9 are meaningless** - `type err = typeof err` and `type is_error = typeof is_error` are circular tautologies that don't define anything useful. Should either be removed or replaced with proper type exports.
+
+**Medium:**
+3. **Types not exported** - `ok`, `error`, `error_fs`, `all`, `Optional` types aren't exported, limiting usability. The global declaration pattern (lines 10-15) is unusual for a module that also exports functions.
+
+4. **Line 11 - opaque type trick** - `(0 extends 1 & T ? ok : ok<T>)` checks if T is `never`/`any`, but it's hard to read. Consider a named type guard like `IsNever<T>`.
+
+5. **No Result methods** - Missing standard utilities: `map`, `map_err`, `and_then`, `unwrap`, `unwrap_or`, `is_ok`, etc.
+
+6. **`all` type uses `any`** - Defeats TypeScript's type safety. Consider a proper discriminated union or stricter constraint.
+
+**Minor:**
+7. **No JSDoc** - For a library dealing with errors, documentation would help users understand the API.
+
+8. **Inconsistent error handling** - `err()` accepts `PropertyKey | Error | object`, but the return type is always `error`. The type doesn't reflect the flexible input.
+
+---
+
+Would you like me to propose fixes for any of these issues?
+
+---
+
+## User
+
+missing imports are inside global prelude and guaranteed to be there. type typeof are not meaningless but essential due to typescript limitations. code review again.
+
+---
+
+## Assistant (Plan · MiniMax-M2.5 · 3.6s)
+
+_Thinking:_
+
+The user is clarifying some points about their code:
+1. Missing imports are in a global prelude - so they're not actually missing
+2. The `typeof` types are essential due to TypeScript limitations
+
+Let me re-review the code with this understanding and look for other issues.
+
+The user wants me to code review again, so I should re-examine the file more carefully now that I understand the context better.
+
+
+**Tool: read**
+
+**Input:**
+```json
+{
+  "filePath": "/home/fira/Documents/f/humility/source/lib/result.ts"
+}
+```
+
+**Output:**
+```
+<path>/home/fira/Documents/f/humility/source/lib/result.ts</path>
+<type>file</type>
+<content>
+1: type Optional<Type, Keys extends keyof Type> = Omit<Type, Keys> & Partial<Pick<Type, Keys>>
+2: 
+3: type all = string | number | boolean | bigint | symbol | null | undefined | any[] | { [key: PropertyKey]: any };
+4: type ok<T = all> = T extends object ? (Omit<T, typeof error_symbol> & { [error_symbol]?: never }) : T;
+5: type error = { type: any, message: any, [error_symbol]: true } & Partial<error_fs>
+6: type error_fs = { code: string, path: string, syscall: string, errno: number }
+7: 
+8: type err = typeof err
+9: type is_error = typeof is_error
+10: declare global {
+11:   type result<T = all, E extends error = error> = (0 extends 1 & T ? ok : ok<T>) | E;
+12: 
+13:   var err: err
+14:   var is_error: is_error
+15: }
+16: 
+17: const error_symbol: unique symbol = Symbol("error");
+18: 
+19: // no `ok(data)` needed, just return `data` directly
+20: 
+21: export function err(error: Optional<error, typeof error_symbol> | PropertyKey | Error): error {
+22:   if (error instanceof Error) {
+23:     return merge(error, { type: error.constructor, message: error.stack ?? error.message, [error_symbol]: true })
+24:   } else if (typeof error == 'object' && has(error, 'type')) {
+25:     return merge(error, { [error_symbol]: true })
+26:   } else {
+27:     // flexible
+28:     return {
+29:       type: error,
+30:       message: error,
+31:       [error_symbol]: true
+32:     }
+33:   }
+34: }
+35: 
+36: export function is_error<T>(result: result<T>): result is error {
+37:   return has(result, error_symbol)
+38: }
+
+(End of file - total 38 lines)
+</content>
+```
+
+---
+
+## Assistant (Plan · MiniMax-M2.5 · 13.0s)
+
+_Thinking:_
+
+Now let me re-review with the user's clarifications in mind:
+
+1. The `typeof` patterns on lines 8-9 are intentional - they're likely for making the global declarations work properly with TypeScript's module augmentation.
+
+2. `merge` and `has` come from a global prelude.
+
+Let me look for actual issues:
+
+1. **Line 4 - `ok` type**: The `typeof error_symbol` reference may not work inside a type definition since `error_symbol` is a `const`. This could be a type error.
+
+2. **Line 11 - global type**: The `result` type is declared globally but the exports are functions. This is fine for module augmentation but unusual.
+
+3. **`all` type (line 3)**: Uses `{ [key: PropertyKey]: any }` which is essentially `Record<PropertyKey, any>`, but this overlaps with `any[]` since arrays are also objects with numeric keys. This could cause issues.
+
+4. **`error_fs` partial (line 5)**: The `error` type uses `Partial<error_fs>` which means all those fields are optional. This makes sense for Node.js fs errors which may have varying fields.
+
+5. **Line 21 - return type**: Returns `error` but input can be `PropertyKey` or `Error`. The type doesn't reflect that `PropertyKey` becomes `{type, message}`.
+
+6. **No exported types**: The types like `ok`, `error`, `error_fs` aren't exported, limiting external use.
+
+7. **Line 22-23**: The merge of an Error object with the error structure - this could be problematic because Error instances don't have own properties that `merge` would pick up. The `type: error.constructor` is also suspicious - constructor is a function, not a type value.
+
+8. **`is_error` type guard (line 36)**: The generic parameter `T` isn't used in the return type - the predicate always returns `error` regardless of what T is. This is fine but could be misleading.
+
+9. **Missing utilities**: No `ok()` helper, no `map`, `and_then`, `unwrap` etc.
+ 
+The most significant concern is that `error.constructor` being a function gets assigned to a field expecting `any` type, which works but loses meaningful type information about what kind of error occurred. The `all` union also has redundancy since object types capture arrays, making the `any[]` redundant.
+
+
+## Code Review: `result.ts` (revisited)
+
+Given the global prelude context, here are remaining issues:
+
+**Medium:**
+1. **Line 3 - `all` type redundancy**: `{ [key: PropertyKey]: any }` already includes arrays (they're objects). `any[]` is redundant.
+
+2. **Line 22-23 - loses error info**: Merging `Error` instance with object discards Error's prototype chain. Consider `Object.assign(Object.create(Error.prototype), { type: error.constructor, message: error.stack ?? error.message })` to preserve stack trace behavior.
+
+3. **No utility functions**: Missing `ok()` (comment says not needed but `ok<T>` type helper exists), `unwrap`, `map`, `and_then`, etc. Users get no help handling results.
+
+4. **Line 11 - complex ternary**: `(0 extends 1 & T ? ok : ok<T>)` is clever but opaque. Consider extracting to `type IsNever<T>` for readability.
+
+5. **No type exports**: `ok`, `error`, `error_fs`, `all` types can't be imported by consumers who need to construct or match against them.
+
+**Minor:**
+6. **Line 5 - `message: any`**: Could be `string` since errors always have string messages.
+
+7. **Line 36 - unused generic**: `T` in `is_error<T>` isn't used in the predicate; always returns `error` regardless of T.
+
+---
+
+The core design is solid. Main gaps are ergonomic (missing utilities) and minor type refinements.
+
+---
+
+## User
+
+review result.ts again
+
+---
+
+## Assistant (Plan · MiniMax-M2.5 · 6.7s)
+
+_Thinking:_
+
+The user wants me to review result.ts again. I'm in plan mode, read-only. Let me re-read the file and provide a more thorough review focusing on things I might have missed or things that could be improved.
+
+
+**Tool: read**
+
+**Input:**
+```json
+{
+  "filePath": "/home/fira/Documents/f/humility/source/lib/result.ts"
+}
+```
+
+**Output:**
+```
+<path>/home/fira/Documents/f/humility/source/lib/result.ts</path>
+<type>file</type>
+<content>
+1: type Optional<Type, Keys extends keyof Type> = Omit<Type, Keys> & Partial<Pick<Type, Keys>>
+2: 
+3: type all = string | number | boolean | bigint | symbol | null | undefined | { [key: PropertyKey]: any };
+4: type success<T = all> = T extends object ? (Omit<T, typeof error_symbol> & { [error_symbol]?: never }) : T;
+5: type error = { type: any, message: any, [error_symbol]: true } & Partial<error_fs>
+6: type error_fs = { code: string, path: string, syscall: string, errno: number }
+7: 
+8: type err = typeof err
+9: type is_error = typeof is_error
+10: declare global {
+11:   type result<T = all, E extends error = error> = (0 extends 1 & T ? success : success<T>) | E;
+12: 
+13:   var err: err
+14:   var is_error: is_error
+15: }
+16: 
+17: const error_symbol: unique symbol = Symbol("error");
+18: 
+19: // no `ok(data)` needed, just return `data` directly
+20: 
+21: export function err(error: Optional<error, typeof error_symbol> | PropertyKey | Error): error {
+22:   if (error instanceof Error) {
+23:     error.type = error.constructor
+24:     error.message = error.stack ?? error.message
+25:     error[error_symbol] = true
+26:     return error
+27:   } else if (typeof error == 'object' && has(error, 'type')) {
+28:     return merge(error, { [error_symbol]: true })
+29:   } else {
+30:     // flexible
+31:     return {
+32:       type: error,
+33:       message: error,
+34:       [error_symbol]: true
+35:     }
+36:   }
+37: }
+38: 
+39: export function is_error(result: result): result is error {
+40:   return has(result, error_symbol)
+41: }
+
+(End of file - total 41 lines)
+</content>
+```
+
+---
+
+## Assistant (Plan · MiniMax-M2.5 · 29.3s)
+
+_Thinking:_
+
+The user wants me to review again. The file has been updated - `ok` is now `success`. Let me do a more thorough review.
+
+Looking at the current code:
+
+1. Line 3: `all` type now excludes `any[]` - good catch from my previous review, they fixed it.
+
+2. Line 4: `success<T = all>` - the logic handles objects vs primitives correctly. Good.
+
+3. Lines 22-26: The error handling has changed - now mutates the Error directly instead of creating new object. This is a significant change. Let's analyze:
+   - It sets `error.type = error.constructor` - this is weird, `type` should be a string or something descriptive, not the constructor function itself.
+   - It sets `error.message = error.stack ?? error.message` - this replaces message with stack, which loses the original message.
+   - It mutates the original error object, which could have side effects if the same error is used elsewhere.
+
+4. Line 27: `typeof error == 'object' && has(error, 'type')` - This will fail for null since `typeof null == 'object'`. Should be `error && typeof error == 'object'`.
+
+5. Line 39: The generic `<T>` was removed from `is_error`, which is cleaner now.
+
+6. Line 11: Still using the clever ternary trick.
+
+Let me think more carefully about bugs and issues:
+
+**Bugs:**
+- Line 27: null check missing - will crash on null
+- Lines 23-24: Mutates original Error, losing original type/message info
+- Line 33: When error is PropertyKey, `message: error` will set message to a number/symbol/string which is inconsistent
+
+**Design issues:**
+- `type` should be string, not constructor function
+- The mutation approach is problematic for error handling
+- No utilities for handling success cases
+
+Let me provide a more targeted review.
+
+
+## Code Review: `result.ts` (v2)
+
+### Bugs
+
+1. **Line 27 - null crash**: `typeof error == 'object'` is true for `null`. Should be `error && typeof error == 'object'`.
+
+2. **Lines 23-24 - destructive mutation**: Mutates the original `Error` object directly:
+   - `error.type = error.constructor` - stores the constructor function, not a useful type string
+   - `error.message = error.stack ?? error.message` - overwrites original message, losing both message and stack context if stack is undefined
+
+3. **Line 30-35 - inconsistent message**: When `error` is a `PropertyKey` (string/number/symbol), it becomes both `type` and `message`, but `message` should be a string.
+
+### Minor Issues
+
+4. **Line 4 - unnecessary ternary**: `T extends object` check is redundant for the `success` type since `{ [key: PropertyKey]: any }` in `all` already covers objects.
+
+5. **No null check utility**: The pattern `has(error, 'type')` doesn't guard against null. Consider handling null explicitly or documenting this constraint.
+
+6. **Line 39 - type param unused**: `result: result` is fine; the generic doesn't add value here since `result` already defaults to `result<all>`.
+
+---
+
+The null handling bug (line 27) is the most critical - it will throw at runtime if `err(null)` is called.
+
+---
+
+## User
+
+review result.ts again
+
+---
+
+## Assistant (Plan · MiniMax-M2.5 · 3.1s)
+
+_Thinking:_
+
+The user wants me to review result.ts again. Let me re-read it - they may have made changes since my last review.
+
+
+**Tool: read**
+
+**Input:**
+```json
+{
+  "filePath": "/home/fira/Documents/f/humility/source/lib/result.ts"
+}
+```
+
+**Output:**
+```
+<path>/home/fira/Documents/f/humility/source/lib/result.ts</path>
+<type>file</type>
+<content>
+1: type Optional<Type, Keys extends keyof Type> = Omit<Type, Keys> & Partial<Pick<Type, Keys>>
+2: 
+3: type all = string | number | boolean | bigint | symbol | null | undefined | { [key: PropertyKey]: any };
+4: type success<T = all> = T extends object ? (Omit<T, typeof error_symbol> & { [error_symbol]?: never }) : T;
+5: type error = { type: any, message: any, [error_symbol]: true } & Partial<error_fs>
+6: type error_fs = { code: string, path: string, syscall: string, errno: number }
+7: 
+8: type err = typeof err
+9: type is_error = typeof is_error
+10: declare global {
+11:   type result<T = all, E extends error = error> = (0 extends 1 & T ? success : success<T>) | E;
+12: 
+13:   var err: err
+14:   var is_error: is_error
+15: }
+16: 
+17: const error_symbol: unique symbol = Symbol("error");
+18: 
+19: // no `ok(data)` needed, just return `data` directly
+20: 
+21: export function err(error: Optional<error, typeof error_symbol> | PropertyKey | Error): error {
+22:   if (error instanceof Error) {
+23:     error.type = error.constructor
+24:     error.message = error.stack ?? error.message
+25:     error[error_symbol] = true
+26:     return error
+27:   } else if (error && typeof error == 'object' && has(error, 'type')) {
+28:     return merge(error, { [error_symbol]: true })
+29:   } else {
+30:     // flexible
+31:     return {
+32:       type: error,
+33:       message: error,
+34:       [error_symbol]: true
+35:     }
+36:   }
+37: }
+38: 
+39: export function is_error(result: result): result is error {
+40:   return has(result, error_symbol)
+41: }
+
+(End of file - total 41 lines)
+</content>
+```
+
+---
+
+## Assistant (Plan · MiniMax-M2.5 · 9.3s)
+
+_Thinking:_
+
+Good - they fixed line 27 with the null check: `error && typeof error == 'object'`. Let me review again for remaining issues.
+
+
+## Code Review: `result.ts` (v3)
+
+### Remaining Issues
+
+1. **Lines 23-24 - destructive mutation**: Mutates the original Error object directly, which can cause unexpected side effects if the same Error is used elsewhere. Also stores the constructor function itself as `type`, not a useful string.
+
+2. **Line 30-35 - type coercion**: When `error` is a `PropertyKey`, it becomes both `type` and `message` without converting to string - could cause type issues downstream since `message: any` allows it but consumers may expect string.
+
+3. **Line 4 - unnecessary ternary**: `T extends object` check in `success` type is redundant since `all` already includes all objects via `{ [key: PropertyKey]: any }`.
+
+4. **Line 27 - inconsistent null handling**: Line 27 checks `error && typeof error == 'object'` but line 21's param type doesn't include null, so this guard is dead code or hints at undocumented flexibility.
+
+5. **No utility exports**: Missing `success` type, `unwrap`, `map`, `and_then` for consumers who need to work with results.
+
+6. **Line 14 - unused global var**: `is_error` declared as global var but the function export shadows it, making the declaration pointless unless intended for ambient concatenation.
+
+---
+
+The core logic is sound now. Main concerns are the Error mutation (line 23-24) and missing utilities.
+
+---
+
+# in typescript any\[] | { \[key: PropertyKey]: any } is any\[] redundant
+
+\*\***Yes, `any[]` is redundant** in this union type.
+
+In TypeScript, arrays are objects. The key type `PropertyKey` is a built-in alias for `string | number | symbol`. Because array indices are treated as numeric and string keys, the index signature `{ [key: PropertyKey]: any }` already matches arrays. \[[1](https://www.scaler.com/topics/typescript/index-signatures-in-typescript/), [2](https://dev.to/mapleleaf/indexing-objects-in-typescript-1cgi), [3](https://www.codu.co/niall/propertykey-in-typescript-k5ntmx16), [4](https://betterstack.com/community/guides/scaling-nodejs/typescript-index-signatures/)]
+
+### Why It Is Redundant
+
+- **Arrays are objects**: An array type like `any[]` satisfies the shape of an object with dynamic keys.
+- **PropertyKey covers everything**: `PropertyKey` includes `number` and `string`, which matches array structures and indices.
+- **Total absorption**: The object index signature is wider and completely absorbs the narrower `any[]` type. \[[1](https://www.totaltypescript.com/an-unknown-cant-always-fix-an-any), [2](https://github.com/microsoft/TypeScript/issues/21983), [3](https://www.linkedin.com/posts/gezielelyon%5Ftypescript-coding-tip-activity-7360610959922466817-l73S), [4](https://github.com/microsoft/TypeScript/issues/31153)]
+
+### Visual Proof
+
+typescript
+
+```
+// This type simplifies automatically
+type Simplified = any[] | { [key: PropertyKey]: any };
+
+// Hovering over 'Simplified' in your IDE shows:
+// type Simplified = { [x: string]: any; [x: number]: any; [x: symbol]: any; }
+```
+
+Use code with caution.
+
+### Key Exception
+
+The only time `any[]` behaves differently from a generic object is when you check specific array properties like `.length` or array methods like `.map()`. However, because the union uses `any` as the value type, the object signature already allows you to access _any_ property name anyway, making the explicit array declaration unnecessary. \[[1](https://dev.to/ponikar/typescript-any-unknown-never-1idc)]
+
+To clean up your code, you can safely remove `any[] |` and keep just the index signature.
+
+***
+
+To help refine this, let me know:
+
+- Are you trying to **restrict** the type to only arrays and plain objects?
+- Do you need to preserve specific **array methods** in your type checks?
+
+I can show you how to write a strict helper type like if you want to avoid using `any`.
+
+- [link](https://www.scaler.com/topics/typescript/index-signatures-in-typescript/)\
+  Index Signatures in TypeScript\
+  May 4, 2023 — Every non-primitive value, including arrays, is considered an object, and this is what the object type in TypeScript represents. U...\
+  \
+  \
+  Scaler
+- [link](https://dev.to/mapleleaf/indexing-objects-in-typescript-1cgi)\
+  Cover image for Indexing objects in TypeScript\
+  Jan 30, 2018 — Indexing objects in TypeScript // an object defining how to display specific user statuses in the UI // \`PropertyKey\` is short for...\
+  \
+  \
+  DEV Community
+- [link](https://www.codu.co/niall/propertykey-in-typescript-k5ntmx16)\
+  PropertyKey in TypeScript | by Niall Maher\
+  Jul 22, 2023 — PropertyKey in TypeScript The PropertyKey is a global alias type in TypeScript that can be a string , number , or symbol . It was ...\
+  \
+  Codú
+
+Show all
+
+# 
 
