@@ -120,4 +120,3 @@ the content is gone even pasting to a blank contenteditable.
 i could try to intercept it though.
 
 ---
-

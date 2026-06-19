@@ -37,3 +37,20 @@ align remark with prettier defaults
 27
 
 clean unused fn and unused vars like get_plain_text plain_text
+
+jun 2026
+
+18 
+
+implement paste interception
+
+much faster with almost no tradeoff (you can turn it off!)
+
+> optimize for complex pastes
+> 
+> i could add an option to choose
+> 
+> - get innerhtml from contenteditable
+> - intercept paste and prevent default
+> 
+> though, from an experiment, whether intercepted or not, it's already full of var in inline styles. it's just perf.
