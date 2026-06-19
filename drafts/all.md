@@ -52,6 +52,8 @@ fira:
 - hacker ethics
 - philosophical ideology spectrum
 - information architecture
+- foss failure patterns
+- settings progressive disclosure over advanced kde hig vlc chromium firefox samsung one ui vscode
 
 life:
 
@@ -333,7 +335,7 @@ pm:
 - world solved unsolved
 - the unsolved in possible new personal softwares
 - typescript vscode incentive microsoft
-- alt tech failure patterns
+- foss failure patterns
 
 gamedev:
 
@@ -370,6 +372,7 @@ ux: <!-- ui/ux design, ia -->
 - ia context menu design
 - parceljs vite webpack error overlay design
 - cursor hand link button context menu
+- settings progressive disclosure over advanced kde hig vlc chromium firefox samsung one ui vscode
 
 typography:
 
