@@ -51,6 +51,7 @@ fira:
 - mono no aware the red chamber
 - hacker ethics
 - philosophical ideology spectrum
+- information architecture
 
 life:
 
@@ -332,6 +333,7 @@ pm:
 - world solved unsolved
 - the unsolved in possible new personal softwares
 - typescript vscode incentive microsoft
+- alt tech failure patterns
 
 gamedev:
 
@@ -341,7 +343,7 @@ gamedev:
 - game design framework
 - indie game ideas
 
-ux: <!-- ui/ux design, ia, information architecture -->
+ux: <!-- ui/ux design, ia -->
 
 - design ui principles intuition attention
 - information architecture
@@ -470,6 +472,7 @@ float: <!-- music -->
 - interpret godish pinocchiop
 - interpret hai yorokonde kocchi no kento
 - interpret worldwide wander tokotoko
+- interpret cubism
 
 philosophy:
 
