@@ -676,6 +676,7 @@ leisure:
 - jp books jlpt levels
 - jp traditional self study
 - fsi lang ranking
+- research duolingo
 
 egg:
 
