@@ -111,25 +111,9 @@ chat exit
 
 ---
 
-gnome apps
-
-flatpak
-
-screenshots
-
-how would
-
----
-
 stateful cli? stateless cli?
 
 git config?
-
----
-
-vanillajs. blank gnome builder app.
-
-feels much easier, right?
 
 ---
 
@@ -150,9 +134,23 @@ setup
 
 ---
 
+<!-- the foundation of all guis -->
+
 adwaita web ui template.
 
+<!-- gnome apps
+
+flatpak
+
+screenshots
+
+how would -->
+
+react animation?
+
 ---
+
+<!-- the foundation of all devs -->
 
 humility 
 
@@ -160,6 +158,3 @@ humility
 - actions (stateful)
 
 ---
-
-
-
