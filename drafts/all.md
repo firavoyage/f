@@ -103,6 +103,7 @@ life:
 - streaming test youtube mobile prism streamerlabs twitch kick
 - game maimai dx kanadedx astrodx
 - game maimai dx note speed
+- sports fifa worldcup
 
 create something:
 
@@ -691,6 +692,7 @@ egg:
 have: <!-- eat, grow -->
 
 - research activity pub
+- research gemini protocol lagrange
 
 humility:
 
