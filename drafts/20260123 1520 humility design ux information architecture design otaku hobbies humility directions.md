@@ -10,7 +10,7 @@ on anyway now
 
  -->
 
-# .
+# . principles
 
 **1. Clarity before cleverness**
 Information should be easy to understand, not impressive.
@@ -61,7 +61,7 @@ But what a person is truly trying to do in that moment.
 When these principles are honored, information feels calm.
 People move forward without friction, doubt, or fatigue.
 
-# .
+# . best prac
 
 **1. Design for misunderstanding, not ideal behavior**
 People arrive distracted, emotional, and impatient.
