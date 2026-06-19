@@ -368,3 +368,11 @@ links and citations are different creatures
 
 ---
 
+ux: options
+
+i guess you could decide where the messages align (middle? slightly left?) and the width.
+
+on humility and para <!-- eat, have, grow... -->.
+
+---
+
