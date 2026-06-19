@@ -697,6 +697,7 @@ humility:
 - install librechat
 - research librechat
 - research dify
+- research manus
 
 legacy:
 
