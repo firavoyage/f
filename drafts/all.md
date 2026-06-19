@@ -682,6 +682,10 @@ egg:
 
 - twitter third party clients
 
+have: <!-- eat, grow -->
+
+- research activity pub
+
 humility:
 
 - research claude code leak insights
