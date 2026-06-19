@@ -1934,5 +1934,255 @@ Are you looking to use Gitea.com to host a project and want to ensure it won't b
 
 Show all
 
+# can a company be under eu laws but almost every devs and controllers are in us
+
+11:40 PM
+
+\*\***Yes, a company can be fully subject to EU laws even if all its developers and data controllers are located in the United States.** \[[1](https://www.belfercenter.org/publication/sovereignty-and-data-localization)]
+
+Legal jurisdiction is determined by where a business operates and whose data it handles, not just where its employees sit. \[[1](https://medium.com/@biytelum/europe-is-gradually-replacing-us-tech-what-that-means-for-global-small-businesses-3e1490c15621), [2](https://www.digitalsamba.com/blog/navigating-data-sovereignty)]
+
+***
+
+### Key Triggers for EU Jurisdiction
+
+- **Targeting EU Markets:** Offering goods or services to individuals inside the EU.
+- **Monitoring EU Citizens:** Tracking behaviors, profiling, or analyzing users located within the EU.
+- **Having an EU Subsidiary:** Operating a legally registered corporate entity or branch inside any EU member state.
+- **Processing EU Data:** Handling personal data belonging to EU residents, regardless of server or staff location. \[[1](https://www.cookieyes.com/blog/who-does-gdpr-apply-to/), [2](https://www.cookiebot.com/en/does-gdpr-apply-in-the-us/), [3](https://www.cookiebot.com/en/does-gdpr-apply-in-the-us/), [4](https://prighter.com/resources/does-the-gdpr-apply-to-me/), [5](https://gdprlocal.com/who-does-gdpr-apply-to-2025-guide-for-compliance/)]
+
+***
+
+### Major Frameworks That Apply Internationally
+
+| EU Regulation \[[1](https://trustarc.com/resource/does-gdpr-apply-to-us/), [2](https://www.schellman.com/hubfs/whitepapers/gdpr-what-it-means-for-us-based-companies.pdf), [3](https://xenoss.io/blog/ai-regulations-european-union), [4](https://medium.com/@jankammerath/you-cant-regulate-programming-how-the-eu-ai-act-may-kill-software-9914ab61df00), [5](https://legalvision.co.uk/data-privacy-it/uk-osa-eu-digital-services/)] | Impact on US-Based Teams                                                             |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| **GDPR** (Data Protection)                                                                                                                                                                                                                                                                                                                                                                                                              | Forces US data controllers to apply strict EU privacy standards to EU resident data. |
+| **EU AI Act** (Artificial Intelligence)                                                                                                                                                                                                                                                                                                                                                                                                 | Regulates any AI model or software system made available to users in the EU market.  |
+| **Digital Services Act** (DSA)                                                                                                                                                                                                                                                                                                                                                                                                          | Imposes content moderation and transparency rules on platforms accessible in the EU. |
+
+***
+
+### Critical Operational Impacts
+
+- **Appointing Representatives:** US companies without an EU office must often appoint a legal representative inside the EU.
+- **Enforcement Risks:** EU authorities can issue global fines (e.g., up to 4% of global turnover for GDPR violations).
+- **Data Transfer Mechanisms:** US teams must use legal frameworks like the EU-US Data Privacy Framework or Standard Contractual Clauses (SCCs) to move EU data to US servers. \[[1](https://ec.europa.eu/commission/presscorner/detail/en/QANDA%5F20%5F2348), [2](https://www.mjilonline.org/fines-under-eu-gdpr-in-non-eu-jurisdictions-enforceable-or-mere-reputation-risk/), [3](https://www.lathropgpm.com/insights/new-doj-limits-on-cross-border-data-transfers-prompt-assessment-by-businesses/), [4](https://www.bclplaw.com/en-US/events-insights-news/the-eu-us-data-privacy-framework-survives-an-annulment-challenge.html), [5](https://www.instagram.com/reel/DNlUWrFIz3Z/)]
+
+***
+
+If you are navigating this setup, tell me:
+
+- What **industry** or **type of software** is your company building?
+- Do you have a **legal entity registered in the EU**, or is it entirely US-based?
+
+I can provide specific compliance requirements for your tech stack.
+
+AI responses may include mistakes. For legal advice, consult a professional. [Learn more](https://support.google.com/websearch?p=aimode\&gl=us)
+
+- [link](https://www.belfercenter.org/publication/sovereignty-and-data-localization)\
+  Sovereignty and Data Localization | The Belfer Center for Science and International Affairs\
+  Further, the US CLOUD Act has clarified that US tech companies are subject to US laws no matter where in the world they are operat...\
+  \
+  \
+  HARVARD Kennedy School - Belfer Center
+- [link](https://medium.com/@biytelum/europe-is-gradually-replacing-us-tech-what-that-means-for-global-small-businesses-3e1490c15621)\
+  Europe Is Gradually Replacing US Tech — What That Means for Global Small Businesses\
+  Still, from Europe's perspective, jurisdiction follows company ownership, not server location. Meaning sensitive public-sector or ...\
+  \
+  \
+  Medium
+- [link](https://www.digitalsamba.com/blog/navigating-data-sovereignty)\
+  Data Sovereignty: Compliance, Jurisdiction, and Business Implications\
+  Data jurisdiction pertains to the legal authority that a country exercises over data, determining which regulations apply to data ...\
+  \
+  \
+  Digital Samba
+
+Show all
+
+## You said: I mean like if they are immune to us laws
+
+11:40 PM
+
+\*\***No, a company operating this way is not immune to US laws.**
+
+If a company employs developers and controllers in the US, or uses US-based infrastructure, it remains fully bound by US federal and state jurisdictions.
+
+***
+
+### Why the Company Must Follow US Laws
+
+- **Physical Presence:** Having employees, contractors, or offices in the US creates a physical nexus.
+- **Corporate Registration:** If the entity is incorporated in a US state (like Delaware), US corporate law governs it.
+- **US Infrastructure:** Using US cloud providers (like AWS, Azure, or Google Cloud) subjects data to US data access laws.
+
+***
+
+### How Concurrently Facing Both Legal Systems Works
+
+| Legal Area \[[1](https://www.pbs.org/newshour/show/how-a-tiktok-ban-in-the-u-s-could-violate-1st-amendment-rights)] | Which Law Applies?                           | The Operational Reality                                                                                      |
+| ------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| **Data Privacy**                                                                                                    | Both EU (GDPR) and US (State laws like CCPA) | You must meet the strictest standard of both frameworks for overlapping users.                               |
+| **Surveillance / Subpoenas**                                                                                        | US Law (FISA / CLOUD Act)                    | US authorities can legally compel US-based controllers to hand over data, even if it belongs to EU citizens. |
+| **Employment & Taxes**                                                                                              | US Law                                       | US labor laws and IRS tax regulations apply to all US-based developers and staff.                            |
+
+***
+
+### The "Conflict of Laws" Dilemma
+
+This exact setup creates severe legal friction. For example, the **US CLOUD Act** allows US law enforcement to demand data stored by US companies anywhere in the world. However, complying with that US demand can directly violate the **EU GDPR**, leaving the company stuck between a US court order and massive EU fines.
+
+***
+
+To help navigate this, let me know:
+
+- Is the company **incorporated in the US**, or is it an EU company hiring US remote workers?
+- Are you concerned about a specific issue, like **government data requests** or **intellectual property rights**?
+
+I can explain how courts resolve that exact legal conflict.
+
+AI responses may include mistakes. For legal advice, consult a professional. [Learn more](https://support.google.com/websearch?p=aimode\&gl=us)
+
+- [link](https://www.pbs.org/newshour/show/how-a-tiktok-ban-in-the-u-s-could-violate-1st-amendment-rights)\
+  How a TikTok ban in the U.S. could violate 1st Amendment rights\
+  But you address privacy concerns by passing privacy laws. What we do not have in the U.S. is comprehensive data privacy regulation...\
+  \
+  \
+  PBS
+
+## You said: remote working
+
+11:41 PM
+
+\*\***No, utilizing remote workers does not grant a company immunity from US laws.**
+
+If an EU-registered company hires remote developers and managers located inside the US, that company instantly becomes subject to US jurisdiction.
+
+***
+
+### Triggering US Employment Laws
+
+- **State Tax Nexus:** Hiring a remote worker in a US state establishes a tax presence in that specific state.
+- **Mandatory US Benefits:** The company must comply with state-level workers' compensation and disability insurance rules.
+- **Labor Compliance:** US federal laws, like the Fair Labor Standards Act (FLSA), govern worker classification and overtime.
+- **Payroll Tax Obligations:** The employer must withhold federal, state, and local income taxes using IRS Form W-2. \[[1](https://www.atlassian.com/blog/development/working-from-home-tips), [2](https://www.key.com/personal/financial-wellness/articles/remote-work-tax-implications.html), [3](https://www.jibble.io/article/challenges-and-solutions-for-remote-work-and-payroll), [4](https://www.teamed.global/blog/remote-work-regulations-global-employer-guide-2026), [5](https://www.jibble.io/article/challenges-and-solutions-for-remote-work-and-payroll)]
+
+***
+
+### Legal Frameworks for US Remote Workers
+
+An EU company typically structures US remote work in one of three ways, each carrying distinct legal responsibilities: \[[1](https://remoteworkeurope.eu/insights/work-from-home-europe/), [2](https://www.rigganlawfirm.com/blog/the-evolving-landscape-of-remote-work-laws-what-employers-and-employees-need-to-know/)]
+
+1. **Independent Contractors (W-8BEN):** The company hires workers as freelancers. They face strict IRS audit risks if the workers function like full-time employees. \[[1](https://www.rippling.com/blog/work-remotely-for-a-us-company)]
+2. **Employer of Record (EOR):** The company uses a third-party global payroll provider. This third party acts as the legal US employer to handle compliance. \[[1](https://www.rippling.com/blog/remote-competitors), [2](https://www.linkedin.com/pulse/false-promise-remote-why-country-restricted-jobs-limit-bertelson-dyjwf), [3](https://www.teamed.global/blog/employer-obligations-for-remote-employees-full-guide)]
+3. **US Subsidiary:** The company sets up a US corporate entity (e.g., a Delaware LLC) to legally employ the staff directly under US law.
+
+***
+
+### Impact on Intellectual Property (IP)
+
+- **Automatic Transfer:** Under US law, an employee's work is automatically a "work-made-for-hire" owned by the company.
+- **Contractor Risk:** For independent contractors, IP does not transfer automatically. The company must use explicit written assignments.
+
+***
+
+If you want to look at how to set this up safely, tell me:
+
+- Are these workers hired as **independent contractors** or **full-time employees**?
+- Which **US states** are the remote developers located in?
+
+I can map out the exact payroll and legal structures required.
+
+- [link](https://www.atlassian.com/blog/development/working-from-home-tips)\
+  Working from home: 6 tips and a few surprises\
+  Supporting remote employees is not trivial from an HR and tax perspective. In the U.S., a company must have a tax entity set up in...\
+  \
+  \
+  Atlassian
+- [link](https://www.key.com/personal/financial-wellness/articles/remote-work-tax-implications.html)\
+  8 Tax Implications of Remote Work: What You Need to Know\
+  5\. State nexus for employers A nexus is a connection between an employer and a state that requires them to collect and remit sales...\
+  \
+  \
+  KeyBank
+- [link](https://www.jibble.io/article/challenges-and-solutions-for-remote-work-and-payroll)\
+  US Remote Work and Payroll: 10 Challenges & Solutions\
+  \#1: Compensation Compliance with Labor Laws Employers with remote workers in multiple states must navigate a web of state-specific...\
+  \
+  \
+  Jibble
+
+Show all
+
+## You said: crypto based lawless anonymous
+
+11:41 PM
+
+\*\***No entity can achieve true legal immunity, but a decentralized, crypto-based network utilizing anonymous remote workers creates unique jurisdictional evasion that is incredibly difficult for governments to prosecute.**
+
+When code operates autonomously on a blockchain, it shifts the legal battlefield from traditional corporate structures to individual liability.
+
+***
+
+### The Reality of "Lawless" Crypto Architecture
+
+- **No Legal Entity:** These projects often avoid registering as a corporation entirely, operating strictly through code, smart contracts, and decentralized governance. \[[1](https://link.springer.com/chapter/10.1007/978-3-031-85936-6%5F5), [2](https://www.binance.com/en/square/post/727478), [3](https://decentralizedlegalsystem.com/law/corporation-dao/), [4](https://www.americanbar.org/groups/criminal%5Fjustice/resources/magazine/archive/cryptocurrency-anti-money-laundering-enforcement-regulation/)]
+- **Pseudonymous Personnel:** Developers and controllers use cryptographic identities (e.g., ENS names) and communicate via end-to-end encrypted networks, leaving no paper trail of who is based in the US or EU.
+- **Autonomous Execution:** Once deployed to a public blockchain, the software runs automatically. No centralized server exists for authorities to seize or shut down. \[[1](https://www.theregister.com/special-features/2025/10/16/norks-abuse-blockchains-to-scam-job-seekers-steal-wallets/1095626)]
+
+***
+
+### How the Law Catches Up: The Reality Check
+
+While the network itself may feel lawless, the individuals building and funding it remain bound by the physical laws of where their bodies reside. \[[1](https://www.sciencedirect.com/science/article/pii/S1359178922000908)]
+
+| Vulnerability \[[1](https://openexo.com/l/53278b21), [2](https://www.zyphe.com/industry/kyc-for-dao), [3](https://coincub.com/blog/wyoming-dao-llc/), [4](https://corpgov.law.harvard.edu/2025/05/29/crypto-associations/), [5](https://kancelaria-skarbiec.pl/en/global-legal-frameworks-for-decentralized-autonomous-organizations/)] | How Regulators Intervene                                                                                                                               | Real-World Precedents                    |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------- |
+| **Fiat Gateways**                                                                                                                                                                                                                                                                                                                       | Governments choke off the project by banning traditional banks and centralized exchanges from interacting with the token.                              | Tornado Cash sanctions                   |
+| **Governance Tokens**                                                                                                                                                                                                                                                                                                                   | Holding or voting with governance tokens can legally classify anonymous participants as a "General Partnership," making individuals personally liable. | CFTC v. Ooki DAO                         |
+| **Code as Crime**                                                                                                                                                                                                                                                                                                                       | Writing or maintaining code that facilitates money laundering can lead to criminal charges against developers, regardless of anonymity.                | Tornado Cash developer convictions       |
+| **Operational Security (OpSec)**                                                                                                                                                                                                                                                                                                        | IP leaks, GitHub commits, and metadata eventually expose physical locations, allowing US or EU law enforcement to execute physical arrests.            | Silk Road and subsequent DeFi crackdowns |
+
+***
+
+### The Ultimate Jurisdictional Clash
+
+If a developer sits in the US and pushes code to an anonymous crypto project targeting EU users, **both jurisdictions will claim authority.**
+
+The US will use agencies like the DOJ, SEC, and CFTC to pursue the developer for financial crimes or unlicensed securities offerings. Simultaneously, the EU will enforce the **Markets in Crypto-Assets (MiCA)** regulation, punishing any un-backed or non-compliant crypto-asset activity affecting EU citizens. \[[1](https://www.fintechanddigitalassets.com/2025/09/doj-official-addresses-defi-platform-developer-liability-under-money-transmission-statute/), [2](https://www.elliptic.co/blog/analysis/crypto-regulatory-affairs-uae-and-hong-kong-to-partner-on-crypto-regs)]
+
+***
+
+To explore how these dynamics play out, tell me:
+
+- Are you looking at this from the perspective of a **developer protecting their personal liability**, or an **investor assessing regulatory risk**?
+- Is the project structured as a **Decentralized Autonomous Organization (DAO)** or a pure **peer-to-peer protocol**? \[[1](https://medium.com/kybernetwork/wbtc-a-community-effort-to-bring-bitcoin-to-ethereum-b9b63e3b86e6), [2](https://medium.com/vandal-press/to-understand-blockchains-you-should-understand-cryptographic-hashes-first-for-normies-93bc7645e816), [3](https://www.tandfonline.com/doi/pdf/10.1080/25741292.2023.2270220)]
+
+I can detail the specific legal precedents safety measures for that exact scenario.
+
+AI responses may include mistakes. For financial advice, consult a professional. [Learn more](https://support.google.com/websearch?p=aimode\&gl=us)
+
+- [link](https://link.springer.com/chapter/10.1007/978-3-031-85936-6%5F5)\
+  Model for a Blockchain-Based National Digital Jurisdiction\
+  As we've seen, these tools, which will most likely exist as decentralized applications, will operate within a strict legal framewo...\
+  \
+  \
+  Springer Nature Link
+- [link](https://www.binance.com/en/square/post/727478)\
+  Playing by the rules: today’s cryptocurrency compliance framework\
+  Another major difference lies in the very nature of digital assets. Most cryptocurrencies were designed to operate on decentralize...\
+  \
+  \
+  Binance
+- [link](https://decentralizedlegalsystem.com/law/corporation-dao/)\
+  Decentralized Corporations and DAOs | What is Need to Fix Them?\
+  The odds of getting a completely decentralized corporation without a place of registration to be recognized as a legal person seem...\
+  \
+  \
+  decentralizedlegalsystem.com
+
+Show all
+
 # 
 
