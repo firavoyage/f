@@ -2102,5 +2102,1260 @@ Are you looking at these limitations to **build your own application**, or are y
 
 AI responses may include mistakes. For legal advice, consult a professional. [Learn more](https://support.google.com/websearch?p=aimode\&gl=us)
 
-# . 
+# . failure patterns of foss apps
+
+Free and Open-Source Software (FOSS) applications frequently suffer from structural, social, and technical vulnerabilities that lead to abandonment, security failures, or lack of adoption. Unlike proprietary software, which fails primarily due to lack of profitability or market fit, FOSS apps typically fail due to structural flaws in community dynamics, resource allocation, and developer bias. \[[1](https://www.faegredrinker.com/en/insights/publications/2022/3/open-source-vulnerabilities-the-newest-vector-of-attack), [2](https://www.diversido.io/blog/7-reasons-most-apps-fail-and-how-to-avoid-them), [3](https://www.reddit.com/r/linuxsucks/comments/1cm9fcu/foss%5Fapps%5Fhave%5Fterrible%5Fuiux%5Fthey%5Flook%5Flike%5Fthey/)]
+
+The most common failure patterns of FOSS apps can be broken down into five core pillars:
+
+### 1. The Human & Community Failure Patterns
+
+Because FOSS projects rely primarily on voluntary or loosely structured contributions, human dynamics are the leading cause of project death. \[[1](https://sdo-rs.medium.com/why-would-i-pick-up-a-dead-open-source-project-f6a72de2b0dd), [2](https://mariolaul.medium.com/foss-governance-and-blockchain-networks-f32dbbc0d5dd)]
+
+- **The "Bus Factor" of One**: A single developer maintains the entire codebase. If they lose interest, face major life changes, or experience burnout, the project instantly stalls or dies.
+- **Maintainer Burnout**: Developers often face entitlement from the community, dealing with endless influxes of poorly written bug reports and demanding feature requests without financial compensation.
+- **Bifurcation and "Forking Wars"**: Disagreements over technical vision or project governance often lead to a project splitting ("forking"). This divides a limited developer pool and can result in toxic community fracturing.
+- **The "Scratch Your Own Itch" Trait**: FOSS apps are often created to solve a specific problem for the developer. Once the developer's personal need is satisfied, their motivation to maintain the app for the wider public drops significantly. \[[1](https://news.ycombinator.com/item?id=46743328), [2](https://www.facebook.com/visionontv/posts/the-issue-with-foss-tech-developmentthe-failure-of-many-foss-projects-is-a-failu/10160613563337294/), [3](https://sdo-rs.medium.com/why-would-i-pick-up-a-dead-open-source-project-f6a72de2b0dd), [4](https://f-droid.org/2026/04/20/exploring-sustainable-funding.html)]
+
+### 2. Design & Product Flaws (The "Geek Problem")
+
+Many open-source applications are highly functional under the hood but fail to achieve mainstream adoption due to an architectural detachment from regular users. \[[1](https://www.reddit.com/r/opensource/comments/1qgfyyp/why%5Fdo%5Fmany%5Ffoss%5Fapps%5Fstruggle%5Fwith%5Fvisibility/), [2](https://www.facebook.com/visionontv/posts/the-issue-with-foss-tech-developmentthe-failure-of-many-foss-projects-is-a-failu/10160613563337294/)]
+
+- **Developer-Centric UX/UI**: Apps are designed by developers, for developers. This results in complex, intimidating navigation, crowded interfaces, and a lack of intuitive visual design.
+- **Lack of Accessibility**: Modern UX considerations like screen readers, text scaling, and high-contrast color choices are frequently ignored by volunteer coders.
+- **The Documentation Abyss**: Writing clear documentation is notoriously deprioritized. Outdated installation guides and cryptic command-line requirements alienate the general public.
+- **Theoretical Perfectionism**: Teams often get trapped in abstract debates about software architecture or formatting standards rather than releasing functional, real-world updates. \[[1](https://www.reddit.com/r/opensource/comments/1qgfyyp/why%5Fdo%5Fmany%5Ffoss%5Fapps%5Fstruggle%5Fwith%5Fvisibility/), [2](https://www.reddit.com/r/linuxsucks/comments/1cm9fcu/foss%5Fapps%5Fhave%5Fterrible%5Fuiux%5Fthey%5Flook%5Flike%5Fthey/), [3](https://www.youtube.com/watch?v=you9jhZGKkU), [4](https://tildes.net/~tech/16el/why%5Fdoes%5Fit%5Fseem%5Fthat%5Ffoss%5Fusers%5Fdont%5Fvalue%5Fuser%5Ffriendliness%5Fvery%5Fmuch), [5](https://sdo-rs.medium.com/why-would-i-pick-up-a-dead-open-source-project-f6a72de2b0dd), [6](https://www.reddit.com/r/archlinux/comments/itpk73/what%5Fare%5Fthe%5Fbiggest%5Fnegatives%5Fof%5Ffoss%5Fdevelopment/), [7](https://www.facebook.com/visionontv/posts/the-issue-with-foss-tech-developmentthe-failure-of-many-foss-projects-is-a-failu/10160613563337294/)]
+
+### 3. Engineering & Maintenance Degradation
+
+Even successful FOSS apps can fall into technical decay due to a lack of automated infrastructure and formal quality control.
+
+- [link](https://www.youtube.com/watch?v=you9jhZGKkU)\
+  Major reasons for mobile app failure and how to avoid them\
+  Jun 13, 2025 — what are the major reasons for mobile app failure. and how can they be avoided introduction mobile app failures can stem from vari...\
+  4:23\
+  YouTube·QA Unlocked
+- [link](https://tildes.net/~tech/16el/why%5Fdoes%5Fit%5Fseem%5Fthat%5Ffoss%5Fusers%5Fdont%5Fvalue%5Fuser%5Ffriendliness%5Fvery%5Fmuch)\
+  Why does it seem that FOSS users don't value user ... - Tildes\
+  Jun 16, 2023 — So, an FOSS project is basically an anti-Apple environment where the powerful people (the anti-Steve Jobses) much more often than ...\
+  Tildes
+- [link](https://news.ycombinator.com/item?id=46743328)\
+  FOSS "just fork it" delusion - Hacker News\
+  Feb 10, 2026 — In my experience, forking a semi-active project can often be viewed as hostile by the maintainers. Some of those maintainers may t...\
+  Hacker News
+
+Show all
+
+- **Dependency Paralysis**: FOSS apps rely heavily on third-party libraries. Without a **robust, automated testing suite**, developers become afraid to update dependencies out of fear that backward-incompatible changes will break the app. This leaves the software permanently stuck in the past.
+- **Configuration Drift**: Over time, changes in operating systems, runtimes, and hardware environments render unmaintained apps completely broken on newer devices.
+- **Lack of Telemetry and Analytics**: Many FOSS projects reject telemetry out of respect for user privacy. However, without crash-reporting analytics, developers are blind to real-world performance issues, bug loops, and user drop-off points. \[[1](https://www.reddit.com/r/archlinux/comments/itpk73/what%5Fare%5Fthe%5Fbiggest%5Fnegatives%5Fof%5Ffoss%5Fdevelopment/), [2](https://www.techtarget.com/searchsecurity/news/366616699/FOSS-security-concerns-increase-amid-widespread-adoption), [3](https://www.youtube.com/watch?v=you9jhZGKkU), [4](https://forum.f-droid.org/t/reality-of-foss-projects-a-conspiracy/15199)]
+
+### 4. Financial & Resource Depletion
+
+Passion can initiate a project, but long-term maintenance requires structural support. \[[1](https://sdo-rs.medium.com/why-would-i-pick-up-a-dead-open-source-project-f6a72de2b0dd), [2](https://www.researchgate.net/publication/41023533%5FTragedy%5Fof%5Fthe%5FFOSS%5FCommons%5FInvestigating%5Fthe%5FInstitutional%5FDesigns%5Fof%5FFreeLibre%5Fand%5FOpen%5FSource%5FSoftware%5FProjects)]
+
+- **The Tragedy of the FOSS Commons**: Millions of users—including profitable enterprises—freely use a tool, but only a fraction contribute back financially or through code contributions.
+- **Inadequate Operational Funding**: Basic infrastructure costs (such as domain names, build servers, and security certificate renewals) become unsustainable if a project relies solely on fluctuating public donations.
+- **Infrastructure Obsolescence**: Ecosystems like F-Droid sometimes struggle to build modern mobile apps because updating legacy build server hardware requires capital that volunteer organizations lack. \[[1](https://news.ycombinator.com/item?id=44884709), [2](https://sdo-rs.medium.com/why-would-i-pick-up-a-dead-open-source-project-f6a72de2b0dd)]
+
+### 5. Ecosystem & Security Vulnerabilities
+
+Open-source code provides complete transparency, but it also creates specific failure surfaces that malicious actors or platform owners can exploit. \[[1](https://www.vioffice.de/blog/open-source-security)]
+
+- **Supply Chain Attacks**: Malicious actors aggressively target FOSS apps by attempting to buy out abandoned repositories, tricking maintainers into approving compromised pull requests, or introducing malicious code into downstream dependencies.
+- **The Transparency Exploitation Loop**: While open code allows for public auditing, it also allows malicious entities to scan for zero-day vulnerabilities and exploit them before the unpaid maintainer has the time to deploy a patch.
+- **Platform Lock-in and Gatekeeping**: Centralized operating systems (such as iOS and Android) increasingly restrict sideloading under the guise of "runtime integrity" or API attestation. FOSS apps that do not or cannot comply with restrictive platform guidelines find themselves locked out of mainstream distribution channels. \[[1](https://www.reddit.com/r/macapps/comments/1qv84rb/foss%5Fdevelopers%5Fdeserve%5Fbetter%5Ffrom%5Fthis%5Fcommunity/), [2](https://www.reddit.com/r/fossdroid/comments/1smqgck/ive%5Fgotten%5Freally%5Fconcerned%5Fabout%5Fcapitalist/), [3](https://www.reddit.com/r/linuxquestions/comments/12enwae/what%5Fare%5Fsome%5Fbrutally%5Fhonest%5Freflections%5Fabout/), [4](https://www.reddit.com/r/foss/comments/10uq8ur/the%5Fproblems%5Fwith%5Ffoss/), [5](https://www.reddit.com/r/androidapps/comments/1ng7olv/is%5Fthis%5Fthe%5Ffate%5Fof%5Ffoss%5Fandroid%5Fapps/), [6](https://news.ycombinator.com/item?id=46785050), [7](https://www.youtube.com/watch?v=you9jhZGKkU), [8](https://news.ycombinator.com/item?id=45050502)]
+
+Are you analyzing a **specific FOSS project** that is struggling, or are you looking to design a governance structure to **prevent these failure patterns** in your own project?
+
+## You said: limitations
+
+While failure patterns describe **how** FOSS apps break or die, limitations describe **what** they inherently cannot do efficiently—even when they are running successfully. These structural constraints emerge directly from the decentralized, volunteer-driven nature of open-source development.
+
+### 1. Development & Delivery Bottlenecks
+
+- **No Fixed Release Schedules**: Development depends on volunteer availability. Critical bug fixes or major features can be delayed for months because no one is available to code them.
+- **Feature Creep Without Polish**: Volunteers prefer writing new features over fixing bugs. This leads to apps with massive feature lists but poor stability.
+- **Slow Customer Support**: There are no service-level agreements (SLAs). Users must rely on forums, Discord servers, or GitHub issues for help, which can take days or never arrive.
+
+### 2. Marketing & Distribution Gaps
+
+- **Zero Marketing Budgets**: Exceptional FOSS apps often remain unknown because they lack the funds for advertising, search engine optimization (SEO), or public relations.
+- **Discovery Hurdles**: Many apps are not hosted on mainstream storefronts like the Apple App Store or Google Play Store due to high developer fees or strict rules. Users must manually find them on GitHub or F-Droid.
+- **Poor Brand Recognition**: FOSS apps rarely have dedicated branding or marketing teams, making it difficult to build trust with mainstream, non-technical audiences.
+
+### 3. Enterprise & Legal Barriers
+
+- **Indemnity & Liability Risks**: Most FOSS licenses state the software is provided "as is" without warranty. Enterprises often reject them because no company assumes legal liability if data is lost.
+- **Complex License Compliance**: Mixing different open-source licenses (like GPL, MIT, and Apache) within one app can create legal contradictions that block commercial use.
+- **Lack of Centralized Procurement**: Large organizations prefer buying software through official vendor channels with unified billing, which informal FOSS projects cannot provide.
+
+### 4. Technical & Platform Constraints
+
+- **Limited Cloud Infrastructure**: FOSS apps struggle to offer seamless, free cloud syncing or server-side AI processing because hosting infrastructure requires continuous cash flow.
+- **Delayed Platform Adoption**: When Apple or Google releases a new OS feature or API, proprietary apps adopt it instantly. FOSS apps lag behind because developers must wait for open-source tools to catch up.
+- **Fragmented Ecosystems**: A single FOSS app might require multiple external plugins or configurations to work properly, creating a fragile setup that easily breaks during updates.
+
+Are you looking at these limitations from the perspective of an **individual user** trying to replace proprietary software, or as an **enterprise business** evaluating FOSS for production use?
+
+AI responses may include mistakes. For legal advice, consult a professional. [Learn more](https://support.google.com/websearch?p=aimode\&gl=us)
+
+## You said: examples
+
+Real-world events provide clear proof of how these abstract failure patterns and limitations impact the tech ecosystem. The following historical and modern examples demonstrate exactly how these structural issues unfold in practice.
+
+### Examples of Human & Community Failure Patterns
+
+- **Maintainer Burnout & The "Bus Factor" (OpenSSL / Heartbleed)**: In 2014, a critical security vulnerability called Heartbleed was discovered in OpenSSL, a cryptographic software library that secured two-thirds of the world's web servers. At the time, the project was managed by just **one full-time volunteer maintainer** and a handful of part-timers, operating on a donation budget of less than $2,000 a year. The massive workload led to oversight, exposing billions of users to data theft.
+- **Toxic Forking Wars (Audacity vs. Tenacity / MuseScore)**: When the corporate entity Muse Group acquired the popular audio editing tool [Audacity](https://www.audacityteam.org/), they attempted to introduce basic telemetry and data collection. The FOSS community perceived this as a violation of privacy. The ensuing public backlash and toxic arguments on GitHub fractured the contributor base, leading to several short-lived community forks like Tenacity and Audium, which split development energy and confused users.
+
+### Examples of Technical & Security Vulnerabilities
+
+- **The Long-Game Supply Chain Attack (The XZ Utils Backdoor)**: In early 2024, a malicious actor using the pseudonym "Jia Tan" spent over two years executing a highly sophisticated social engineering campaign. They built trust within the [XZ Utils](https://en.wikipedia.org/wiki/XZ%5FUtils%5Fbackdoor) data compression project by submitting legitimate code fixes. Eventually, exploiting the primary maintainer's loneliness and severe burnout, Jia Tan was granted repository access and quietly injected a backdoor into Linux distributions (including Fedora and Debian) that could have allowed remote code execution across millions of servers globally. \[[1](https://www.akamai.com/blog/security-research/critical-linux-backdoor-xz-utils-discovered-what-to-know), [2](https://www.reversinglabs.com/blog/a-software-supply-chain-meltdown-what-we-know-about-xz-trojan), [3](https://arxiv.org/html/2504.17473v1), [4](https://en.wikipedia.org/wiki/XZ%5FUtils%5Fbackdoor), [5](https://www.blackduck.com/blog/xz-utils-backdoor-supply-chain-attack.html)]
+- **The Tragedy of the FOSS Commons (Log4Shell / Log4j)**: In late 2021, the [Log4Shell vulnerability](https://en.wikipedia.org/wiki/Log4Shell) (CVE-2021-44228) broke the internet. Log4j, a Java logging framework, was embedded in millions of enterprise systems, cloud infrastructures, and video games (like Minecraft). Despite multi-billion-dollar tech giants relying on the tool, it was maintained by a tiny team of **unpaid volunteers working in their spare time**. When the crisis hit, these volunteers had to work sleepless nights to patch global infrastructure while receiving demanding corporate emails but zero financial support. \[[1](https://css.csail.mit.edu/6.5660/2026/readings/supply-chain.pdf), [2](https://www.youtube.com/watch?v=IPW5zAnX9Ao), [3](https://en.wikipedia.org/wiki/Log4Shell), [4](https://www.ncsc.gov.uk/information/log4j-vulnerability-what-everyone-needs-to-know), [5](https://www.youtube.com/watch?v=t74ClffSUW0\&vl=en\&t=1143)]
+
+### Examples of Product & UX Design Flaws
+
+- **Developer-Centric Clutter (GIMP)**: The GNU Image Manipulation Program (GIMP) is structurally incredibly powerful, but it has historically struggled to capture the mainstream creative market dominated by Adobe Photoshop. For years, its multi-window interface, steep learning curve, and highly non-standard terminology alienated casual users. It serves as a classic textbook example of an app built by engineers who prioritize technical capabilities over standard user experience.
+- **The Mobile Build Server Bottleneck (F-Droid)**: F-Droid is a popular alternative app repository for Android. Unlike Google Play, F-Droid insists on compiling every application from source code on its own servers to guarantee transparency. However, due to limited hardware budgets and a reliance on a small cluster of build servers, it can take days or even weeks for an app update submitted by a developer to actually reach end-users. \[[1](https://www.reddit.com/r/opensource/comments/1qgfyyp/why%5Fdo%5Fmany%5Ffoss%5Fapps%5Fstruggle%5Fwith%5Fvisibility/), [2](https://www.youtube.com/watch?v=BpmAFwZy0Gg\&t=3)]
+
+### Examples of Financial & Cloud Constraints
+
+- **The High Cost of Syncing (Signal vs. Matrix/Standard Notes)**: Signal Messenger uses server-side infrastructure to securely route encrypted messages. Because central routing servers cost millions of dollars annually, Signal must rely on aggressive public donation drives and substantial wealthy tech grants to stay operational. Other FOSS apps, like Standard Notes, are forced to limit their free versions to local-only storage, charging a premium subscription for cloud sync strictly to cover server costs.
+
+Are you looking to see how a specific **category of software** (e.g., password managers, operating systems, office suites) handles these real-world challenges, or do you want to look into **how modern funding foundations** are trying to fix them?
+
+- [link](https://en.wikipedia.org/wiki/XZ%5FUtils%5Fbackdoor)\
+  XZ Utils backdoor - Wikipedia\
+  The malicious mechanism consists of two compressed files that contain the malicious binary code. These files are available in the ...\
+  Wikipedia
+- [link](https://www.ncsc.gov.uk/information/log4j-vulnerability-what-everyone-needs-to-know)\
+  What the Log4j vulnerability is, who is affected\
+  Dec 14, 2021 — Log4j is a critical vulnerability in the open-source logging library that is used by millions of computers worldwide. The vulnerab...\
+  National Cyber Security Centre
+- [link](https://www.youtube.com/watch?v=t74ClffSUW0\&vl=en\&t=1143)\
+  The Untold Story of Log4j and Log4Shell - GitHub\
+  Oct 20, 2025 — by the White House or maybe European governments that was very funny because we heard that the White House wanted to talk to us. i...\
+  7m\
+  YouTube·GitHub
+
+Show all
+
+## You said: examples of foss apps that are still alive
+
+Despite the high failure rates and structural limitations inherent to open-source development, many Free and Open-Source Software (FOSS) applications are thriving. The projects that survive usually do so by adopting formal governance, secure corporate backing, or a business model that bypasses the "Tragedy of the FOSS Commons." \[[1](https://fossid.com/articles/unlock-the-full-potential-of-open-source-with-fossid/), [2](https://en.wikipedia.org/wiki/Free%5Fand%5Fopen-source%5Fsoftware)]
+
+Successful FOSS applications that remain highly active are structured across several strategic funding models:
+
+### 1. The Corporate-Backed Powerhouses
+
+These projects avoid resource depletion because massive tech conglomerates rely on them for their own corporate survival.
+
+- **The Linux Kernel**: **The largest collaborative software project in human history** is highly active. In early 2026, the community officially moved into the [Linux 7.0 era](https://linux.slashdot.org/story/26/02/09/2034222/linux-70-kernel-confirmed-by-linus-torvalds-expected-in-mid-april-2026), driven by a staggering **2,100+ active developers** per release. It survives because giants like Intel, Google, and IBM fund dedicated engineers to work on its source code full-time. \[[1](https://commandlinux.com/statistics/linux-kernel-contributors-lines-of-code-statistics/), [2](https://linux.slashdot.org/story/26/02/09/2034222/linux-70-kernel-confirmed-by-linus-torvalds-expected-in-mid-april-2026), [3](https://commandlinux.com/statistics/linux-kernel-release-frequency-statistics/), [4](https://www.instagram.com/reel/DWT9PHRjHws/), [5](https://anvilmag.in/archives/748)]
+- **Blender**: This 3D suite completely bypassed UX and financial failure patterns. It operates under the structured [Blender Foundation](https://fund.blender.org/). Corporations like Netflix Animation Studios contribute large annual donations (e.g., [€240,000/year](https://www.cgchannel.com/2026/01/netflix-donates-e240000year-to-the-blender-development-fund/)) alongside a massive public €5-per-user funding model. This reliable cash flow funds an in-house core development team, guaranteeing highly professional UX and predictable [Long-Term Support (LTS) release schedules extending out to 2028](https://www.blender.org/development/projects-to-look-forward-to-in-2026/). \[[1](https://www.reddit.com/r/blender/comments/1ox7tsd/blender%5Ffoundation%5Finitiates%5F2026%5Ffunding%5Fdrive/), [2](https://www.cgchannel.com/2026/01/netflix-donates-e240000year-to-the-blender-development-fund/), [3](https://www.blender.org/news/give-back-to-blender-fundraiser-for-2026/), [4](https://www.blender.org/development/projects-to-look-forward-to-in-2026/)]
+
+### 2. The Open-Core / Commercial Hosting Model
+
+These apps avoid financial depletion by offering the code completely free, while charging for cloud hosting or advanced enterprise management.
+
+- **Bitwarden**: As a top open-source password manager, it operates under a highly stable hybrid model. The core software and browser extensions are completely transparent and open-source, but they generate revenue by charging for a cloud-hosted version and specialized enterprise features. \[[1](https://forum.endeavouros.com/t/what-are-your-favorite-android-apps-preferably-foss/19444), [2](https://www.optimize.sg/blog-post/top-six-open-source-password-managers)]
+- **Joplin**: This cross-platform, markdown-based note-taking app bypasses the high infrastructure cost of cloud syncing by remaining strictly free for local use or personal cloud setups (like OneDrive or Dropbox). They fund active, continuous development by selling "Joplin Cloud"—a premium, out-of-the-box syncing service for users who do not want to configure their own servers. \[[1](https://aarronlee.com/2025-09-29-awesome-fdroid-apps/), [2](https://tomaszs2.medium.com/20-awesome-open-source-end-user-apps-ep-3-b07de3227dac)]
+
+### 3. The Non-Profit Foundation Guard
+
+These apps are protected by heavily structured non-profit foundations that act as shields against maintainer burnout and legal liabilities.
+
+- **VLC Media Player**: Developed by the [VideoLAN non-profit organization](https://www.videolan.org/), VLC remains the default multimedia player for hundreds of millions of devices. Because the project is managed by a structured organization rather than a single burned-out developer, it has consistently survived major OS architecture updates for over two decades.
+- **Mozilla Firefox**: Despite intense browser competition, Firefox remains highly active and updated due to the backing of the Mozilla Foundation. This corporate/non-profit shield provides the engineering infrastructure needed to deploy rapid security patches, keeping it relevant against browsers backed by trillion-dollar tech companies. \[[1](https://ethical.net/technology/what-is-open-source-software-a-definition-history-of-oss/), [2](https://www.opensourceforu.com/2012/05/best-open-source-apps-for-daily-use/)]
+
+### 4. Community-Driven Utilities (The "Pure FOSS" Survivors)
+
+These applications succeed through highly active communities that successfully hand off maintenance to new generations of developers, avoiding the "Bus Factor". \[[1](https://newsletter.fosscell.org/post/alternatives/)]
+
+- **LocalSend**: A highly popular cross-platform tool for wireless file transfers over local networks. It solves the cloud constraint issue by explicitly operating entirely over LAN—meaning it has zero server hosting bills, allowing it to thrive strictly on direct community code contributions and minor donations. \[[1](https://www.reddit.com/r/fossdroid/comments/1hm10zk/what%5Fare%5Fthe%5Ffoss%5Fapps%5Fyall%5Fcurrently%5Fhave%5Fand/), [2](https://aarronlee.com/2025-09-29-awesome-fdroid-apps/)]
+- **NewPipe**: A privacy-focused Android client that allows users to stream video and audio without using a platform's proprietary APIs or encountering forced ads. It bypasses platform gatekeeping by bypassing the official Google Play store entirely, distributing its continuous app updates directly to users via independent repositories like [F-Droid](https://f-droid.org/). \[[1](https://www.howtogeek.com/overlooked-free-and-open-source-foss-apps-i-use-every-day/), [2](https://forum.level1techs.com/t/a-curated-list-of-amazing-open-source-software-you-may-have-not-heard-of/196389)]
+
+Do you want to look deeper into the **governance models** that allowed projects like Blender or Bitwarden to transition from struggling apps into highly stable operations?
+
+- [link](https://forum.endeavouros.com/t/what-are-your-favorite-android-apps-preferably-foss/19444)\
+  What are your favorite Android apps? (preferably FOSS) - EndeavourOS pub - EndeavourOS\
+  Nov 2, 2021 — Here are some of the favorite Android apps of one user, all FOSS except for one: \* \*\*Firewall\*\* Netguard and Orbot \* \*\*Messaging a...\
+  EndeavourOS
+- [link](https://www.reddit.com/r/fossdroid/comments/1hm10zk/what%5Fare%5Fthe%5Ffoss%5Fapps%5Fyall%5Fcurrently%5Fhave%5Fand/)\
+  What are the FOSS apps y'all currently have and love? - Reddit\
+  Dec 25, 2024 — Amaze - File manager. Aves libre - gallery. Canta - to uninstall stock apps. Colorblendr - material theme your phone color. FFshar...\
+  Reddit·r/fossdroid
+- [link](https://forum.level1techs.com/t/a-curated-list-of-amazing-open-source-software-you-may-have-not-heard-of/196389)\
+  A curated list of amazing open source software you may have ...\
+  Apr 24, 2023 — Notepad++ - Powerful text/source code editor. WinNUT-Client - Easy to use Windows client for Network UPS Tools. Remote App Tool - ...\
+  Level1Techs Forums
+
+Show all
+
+## You said: examples of popular foss apps that are still alive while vulnerable to the failure patterns due to the structural limitations
+
+Many of the tech world’s most celebrated Free and Open-Source Software (FOSS) apps exist in a state of **perpetual fragility**. They are heavily used and loved, yet they remain deeply vulnerable to failure patterns because their underlying engineering relies on structures that foster these exact flaws. \[[1](https://www.library.hbs.edu/working-knowledge/the-hidden-vulnerabilities-of-open-source-software), [2](https://www.linuxfoundation.org/resources/publications/foss-contributor-2020)]
+
+The most prominent examples of popular, thriving FOSS applications that live on the edge of these structural limitations include:
+
+***
+
+### 1. Logseq
+
+- **The App**: A highly popular, local-first [knowledge management and outliner tool](https://github.com/logseq/logseq) built as an open-source competitor to Obsidian.
+- **The Limitation**: **Theoretical Perfectionism & Feature Creep**.
+- **Why it is Vulnerable**: The core team recognized that parsing thousands of raw Markdown text files was killing app performance. To fix this, they embarked on a massive, multi-year architectural rewrite to transition Logseq to a localized SQL database model. Because this restructuring absorbed almost all development energy, [stable public releases stalled for months](https://www.reddit.com/r/logseq/comments/1pstos9/what%5Fare%5Fyou%5Fplanning%5Fto%5Freplace%5Flogseq%5Fwith/), leaving users trapped using unfinished "nightly builds". This massive delay caused a noticeable portion of their community to abandon the app for more stable alternatives. \[[1](https://preslav.me/2025/10/13/how-to-install-logseq-db-version-on-your-computer-sqlite/), [2](https://github.com/logseq/logseq), [3](https://www.youtube.com/watch?v=7To5RjCXlhE), [4](https://www.atlasworkspace.ai/blog/obsidian-vs-logseq), [5](https://buildin.ai/blog/top-10-obsidian-alternatives), [6](https://discuss.logseq.com/t/why-the-database-version-and-how-its-going/26744), [7](https://www.reddit.com/r/logseq/comments/1pt7953/handson%5Fwith%5Fthe%5Fnew%5Flogseq%5Fdb%5Fon%5Fios%5Ffull/), [8](https://www.reddit.com/r/logseq/comments/1pstos9/what%5Fare%5Fyou%5Fplanning%5Fto%5Freplace%5Flogseq%5Fwith/), [9](https://www.gitclear.com/open%5Frepos/logseq/logseq/releases), [10](https://www.reddit.com/r/logseq/comments/1s4d4eq/update%5Fon%5Fdatabase%5Fversion/), [11](https://get-alfred.ai/blog/best-logseq-alternatives)]
+
+### 2. Nextcloud
+
+- **The App**: The undisputed king of self-hosted cloud storage and productivity, serving as a decentralized alternative to Google Drive.
+- **The Limitation**: **Configuration Drift & Ecosystem Fragmentation**.
+- **Why it is Vulnerable**: [Nextcloud](https://nextcloud.com/) attempts to be everything to everyone, supporting text documents, video calling, calendars, and file syncing. However, it is built on a legacy PHP framework. Because it relies on thousands of different user-configured server environments (different Linux distros, PHP versions, and hardware specs), its ecosystem is incredibly fragile. Minor version updates frequently crash or break third-party app integrations, requiring manual, highly technical server intervention by the user to fix.
+
+### 3. F-Droid
+
+- **The App**: The primary independent, privacy-focused application store for Android devices.
+- **The Limitation**: **Infrastructure Bottlenecks & Platform Gatekeeping**.
+- **Why it is Vulnerable**: F-Droid refuses to host pre-compiled app packages provided by developers; instead, they insist on compiling every single app from source code on their own build servers to guarantee user safety. Because they are a non-profit operating with a tiny budget and limited hardware, this creates a major [Build Server Bottleneck](https://forum.f-droid.org/t/newpipe-clipious-or-libretube-which-is-better-and-why/26244). Critical security patches or app updates submitted by developers routinely take **days or weeks to actually drop** for end-users. Furthermore, Android’s tightening security restrictions on third-party app installations constantly threaten F-Droid’s ability to smoothly auto-update apps in the background. \[[1](https://www.thesslstore.com/blog/the-ultimate-guide-to-zero-day-attacks-exploits/), [2](https://www.comparitech.com/blog/information-security/cybersecurity-vulnerability-statistics/)]
+
+### 4. Syncthing
+
+- **The App**: A highly popular peer-to-peer file synchronization tool that bypasses the cloud by securely connecting devices directly to one another. \[[1](https://forum.endeavouros.com/t/what-are-your-favorite-android-apps-preferably-foss/19444)]
+- **The Limitation**: **Developer-Centric UX & Lack of Crash Telemetry**.
+- **Why it is Vulnerable**: Syncthing is mathematically brilliant and highly reliable under the hood, but its user interface is notoriously complex and engineering-heavy. If a conflict occurs between files, the app expects the user to understand concepts like "stale locks" or cryptographic device IDs to resolve it. Furthermore, because Syncthing firmly rejects telemetry out of respect for user privacy, the developers have zero automated visibility into how often casual users encounter cascading sync failures or setup loops in the wild.
+
+### 5. GIMP (GNU Image Manipulation Program)
+
+- **The App**: The historic, multi-decade open-source alternative to Adobe Photoshop.
+- **The Limitation**: **The "Scratch Your Own Itch" Trait & Maintainer Burnout**.
+- **Why it is Vulnerable**: GIMP is maintained by a small, rotating group of volunteer academics and engineers who code in their spare time. Because these contributors typically use the app for specialized engineering or scientific tasks rather than mainstream graphic design, the project has historically suffered from extreme developer bias. Basic, industry-standard design tools (like non-destructive layer editing or modern CMYK color profiles) were deprioritized for decades simply because the volunteers building the app didn't personally need them for their own workflows. \[[1](https://forum.level1techs.com/t/a-curated-list-of-amazing-open-source-software-you-may-have-not-heard-of/196389)]
+
+***
+
+### How These Survivors Avoid Complete Collapse
+
+Despite these structural flaws, these specific apps avoid dying because they rely on **The Fanatic Contributor Loop**. When a FOSS app provides a vital utility that has no true free alternative (like Syncthing or F-Droid), the community will actively tolerate broken updates, complex interfaces, and delayed features because the alternative—returning to closed-source, corporate surveillance software—is unacceptable to them.
+
+Are you attempting to build a workflow around one of these specific apps and want to know how to **protect your data against their structural risks**, or are you researching **better governance models**?
+
+- [link](https://preslav.me/2025/10/13/how-to-install-logseq-db-version-on-your-computer-sqlite/)\
+  How to Install Logseq’s DB Version on Your Computer · Preslav Rachev\
+  Oct 13, 2025 — However, being an unofficial demo, it would change quite significantly from time to time, and required me to frequently export cop...\
+  Preslav Rachev
+- [link](https://github.com/logseq/logseq)\
+  GitHub - logseq/logseq: A privacy-first, open-source platform for knowledge management and collaboration. Download link: http://github.com/logseq/logseq/releases. roadmap: https://logseq.io/p/NX4mc\_ggEV · GitHub\
+  Dec 1, 2025 — Logseq is a privacy-first, open-source platform for knowledge management and collaboration. It offers tools for: \* Knowledge manag...\
+  GitHub
+- [link](https://www.reddit.com/r/logseq/comments/1s4d4eq/update%5Fon%5Fdatabase%5Fversion/)\
+  Update on Database Version? : r/logseq - Reddit\
+  Mar 26, 2026 — searayman. • 2mo ago. where can you download it? All the builds ahve expired from what I can tell? Maria\_de\_la\_Rosa. • 2mo ago. ht...\
+  Reddit·r/logseq
+
+Show all
+
+## You said: examples of ux flaws
+
+User experience (UX) flaws in Free and Open-Source Software (FOSS) typically happen because developers build the software for themselves. They prioritize mathematical logic and feature depth over visual intuition and user comfort. \[[1](https://frankspillers.com/understanding-context-of-use-possibly-the-most-important-thing-you-do-in-ux/)]
+
+Here are the most common examples of real-world UX flaws found in popular FOSS applications:
+
+### 1. The "Kitchen Sink" Interface Clutter
+
+Developers often treat every single configuration option as equally important, leading to overwhelmingly crowded screens.
+
+- **The Flaw**: Packing hundreds of nested menus, microscopic icons, and cryptic text labels onto the main dashboard instead of hiding advanced settings under an "Advanced" tab.
+- **Real-World Example**: **Audacity** and **GIMP** historically suffered from this. Opening the apps greeted users with multi-window layouts, floating tool docks that could accidentally be closed and lost forever, and rows of dense, gray buttons with no text explanation.
+
+### 2. Jargon-Heavy Error Messages
+
+When something breaks, FOSS apps frequently display raw system errors rather than explaining what went wrong in universal language.
+
+- **The Flaw**: Exposing raw code traces, database exceptions, or network protocols to a regular user who just wanted to save a file.
+- **Real-World Example**: **Syncthing**. If a file synchronization fails due to a permission issue on a phone, instead of saying _"Please grant storage access in your settings,"_ the app might display a red banner reading: `folder "default" error: path/to/file: open /storage/emulated/0/... permission denied (os error 13)`.
+
+### 3. High-Friction "Initial Setup" Loops
+
+Many FOSS apps lack a seamless, out-of-the-box welcoming experience, requiring massive configuration before the app is even usable.
+
+- **The Flaw**: Forcing the user to manually configure IP addresses, set up encryption keys, or choose data storage paths upon the very first launch.
+- **Real-World Example**: **FreeCAD**. Unlike commercial 3D modeling tools that guide you through an intuitive template picker, FreeCAD opens to a blank start page. To do anything, a new user must manually choose a "Workbench" from a cryptic drop-down list (such as _PartDesign_ vs. _Mesh Design_), with zero visual guidance on which one they actually need to build a simple shape. \[[1](https://www.ondsel.com/blog/freecad-breaking-open-source-ux-curse/)]
+
+### 4. Fragmented Navigation & Muscle Memory Violation
+
+FOSS apps often invent their own custom user interface rules, ignoring the standard navigation patterns that people use every day on Windows, macOS, iOS, or Android.
+
+- **The Flaw**: Changing what right-clicking does, creating custom non-standard window frames, or using confusing icons that mean something entirely different in other apps. \[[1](https://uxdesign.cc/principles-for-better-ux-1eb3e03d23f3)]
+- **Real-World Example**: **Blender (Pre-2.80 era)**. Before its massive UX redesign, Blender famously used a _right-click_ to select objects and a _left-click_ to move the 3D cursor. This single design choice completely broke standard computer muscle memory and created an incredibly steep learning curve that alienated millions of artists for over a decade.
+
+### 5. Hidden Core Features
+
+Because FOSS projects rarely hire professional UX designers, critical features are often buried deep inside illogical menu trees.
+
+- **The Flaw**: Hiding a daily-use feature (like "Export to PDF" or "Search") three layers deep inside an unrelated menu because that was the easiest place for the developer to hook the code.
+- **Real-World Example**: **Kdenlive** (Open-source video editor). While incredibly powerful, basic tasks like adding a simple fade-in transition or adjusting audio levels often require navigating obscure context menus or right-clicking on specific pixel-perfect edges of a video clip, rather than providing obvious on-screen drag handles.
+
+***
+
+### Why These Flaws Persist
+
+In a corporate environment, a Product Manager or UX Designer has the power to veto a developer's messy interface. In FOSS, **the person writing the code has total control**. If a volunteer developer thinks a feature is easy to use, it often gets pushed to production without ever being tested on a non-technical user. \[[1](https://worldusabilitycongress.com/wp-content/uploads/2023/03/UX-Trend-Report-web.pdf)]
+
+Are you experiencing a specific UX roadblock in a **FOSS app you are currently using**, or are you looking for **best practices to design a cleaner interface** for your own project?
+
+- [link](https://frankspillers.com/understanding-context-of-use-possibly-the-most-important-thing-you-do-in-ux/)\
+  Understanding Context of Use-Possibly the most Important - ED\
+  Nov 18, 2020 — Understanding user needs and gathering user insights requires deep-diving into user pain points, workflows, values, and expectatio...\
+  \
+  \
+  Frank Spillers
+- [link](https://www.ondsel.com/blog/freecad-breaking-open-source-ux-curse/)\
+  Open Source UX/UI is notoriously bad. How FreeCAD is breaking the curse\
+  Nov 15, 2025 — Open Source UX/UI is notoriously bad. How FreeCAD is breaking the curse Free and Open-Source Software has a reputation for poor us...\
+  \
+  \
+  Ondsel
+- [link](https://uxdesign.cc/principles-for-better-ux-1eb3e03d23f3)\
+  12 Principles for better UX. Delighting your users does not come… | by Mallory Kim\
+  May 2, 2020 — Using an icon to mean one thing in one place, and then using it again in another place to mean something totally different is a re...\
+  \
+  \
+  UX Collective
+
+Show all
+
+## You said: all ux principles
+
+To prevent these engineering biases and create intuitive software, designers and developers rely on **UX Principles**. These are foundational psychological rules and design guidelines that ensure technology is accessible, predictable, and easy to use. \[[1](https://www.linkedin.com/pulse/106-cognitive-biases-principles-affect-your-ux-design-muhammad-yasir), [2](https://reliasoftware.com/blog/ux-design-process), [3](https://www.uxtweak.com/ux-design/principles/), [4](https://reloadux.com/blog/21-laws-of-ux/), [5](https://www.zignuts.com/blog/ux-design-principles-and-importance)]
+
+The complete spectrum of UX principles can be broken down into three major frameworks: **The Core Psychological Laws**, **The Fundamental Design Pillars**, and **The Golden Interaction Heuristics**. \[[1](https://blog.uxtweak.com/ux-metrics-for-measuring-user-experience/)]
+
+***
+
+### 1. The Core Psychological Laws (How the Human Brain Works)
+
+These principles dictate how users perceive information and anticipate how a system will react. \[[1](https://www.uxdesigninstitute.com/blog/laws-of-ux/), [2](https://www.ramotion.com/blog/predictive-ux-design/), [3](https://webdesign.tutsplus.com/ux-laws-for-more-effective-website-design--cms-108616a)]
+
+- **Jakob’s Law**: Users spend most of their time on _other_ apps. They expect your app to work exactly like the ones they already know. (e.g., placing the shopping cart icon in the top right corner). \[[1](https://blog.uxtweak.com/ux-laws-and-principles/), [2](https://medium.com/@designstudiouiux/6-design-principles-in-ui-ux-that-separate-good-from-great-d345b6b3cb45), [3](https://www.linkedin.com/pulse/jakobs-law-familiarity-key-ux-design-piotechindia-uqilc)]
+- **Hick’s Law**: The time it takes to make a decision increases with the number and complexity of choices. To reduce cognitive overload, minimize options or break long processes into step-by-step phases. \[[1](https://pageflows.com/resources/hicks-law-simplifying-your-designs/), [2](https://www.fyresite.com/hicks-law-the-psychology-behind-faster-ux/), [3](https://uxplanet.org/boost-mobile-ux-with-ux-design-principles-and-best-practices-a1e492ab6ff3), [4](https://andra-cimpan.medium.com/10-laws-of-ux-87ee1c48368c), [5](https://blog.uxtweak.com/removing-unnecessary-distractions-for-good-user-experience/)]
+- **Fitts’s Law**: The time to acquire a target is a function of the distance to and size of the target. Critical action buttons (like "Save" or "Submit") should be large and placed in easy-to-reach locations. \[[1](https://medium.com/journey-into-product-management/ux-laws-for-product-managers-a-simple-guide-50c814818005), [2](https://medium.com/design-bootcamp/the-heuristic-laws-of-ux-with-examples-bdfd9dcba283), [3](https://medium.com/@shakindikithmini/understanding-fittss-law-a-key-principle-of-ux-design-7ed78c7bb36c), [4](https://www.linkedin.com/pulse/10-ux-design-laws-every-researcher-designer-should-know-burgess-tahpe), [5](https://medium.muz.li/let-fitts-law-guide-your-ui-ux-design-8f4817570cc6)]
+- **Miller’s Law**: The average person can only keep about 7 (plus or minus 2) items in their working memory. Group content into small, digestible chunks instead of dumping text all at once. \[[1](https://www.uxdesigninstitute.com/blog/laws-of-ux/), [2](https://codetheorem.co/blogs/laws-of-ux/), [3](https://www.aufaitux.com/blog/ux-design-psychological-principles/), [4](https://www.kaarwan.com/blog/ui-ux-design/10-essential-ux-laws-every-ui-ux-designer-should-know?id=834), [5](https://forcoda.com/blog/5-key-elements-of-delightful-user-interfaces)]
+- **The Von Restorff Effect**: Also known as the Isolation Effect, this predicts that when multiple similar objects are present, the one that differs from the rest is most likely to be remembered. Use this to highlight call-to-action buttons. \[[1](https://lawsofux.com/), [2](https://www.looppanel.com/blog/laws-of-ux), [3](https://www.visily.ai/blog/laws-of-ux-design/), [4](https://www.greenbook.org/insights/insights-industry-news/seven-principles-of-ux-design-for-market-researchers)]
+- **Zeigarnik Effect**: People remember uncompleted or interrupted tasks better than completed ones. Showing a visual progress bar encourages users to finish setting up an account. \[[1](https://medium.com/uxness/12-laws-of-ux-designing-with-principles-for-user-delight-23166f687704), [2](https://qualaroo.com/blog/rules-for-ux-beginners/), [3](https://uxplanet.org/psychological-principles-behind-effective-ux-design-bd7d9b547123), [4](https://www.visily.ai/blog/laws-of-ux-design/)]
+- **Aesthetic-Usability Effect**: Users often perceive aesthetically pleasing design as design that is more usable, and they are more forgiving of minor usability hiccups if the interface looks beautiful. \[[1](https://medium.com/uxness/12-laws-of-ux-designing-with-principles-for-user-delight-23166f687704), [2](https://www.heurio.co/laws-of-ux-yablonski), [3](https://www.linkedin.com/pulse/10-ux-design-laws-every-researcher-designer-should-know-burgess-tahpe)]
+
+***
+
+### 2. The Fundamental Design Pillars (Visual Structure)
+
+These visual design guidelines dictate how an interface should be structured on a screen. \[[1](https://simonwebdesign.com/the-ultimate-guide-to-design-systems-everything-you-need-to-know/)]
+
+- **Visual Hierarchy**: Arrange elements in order of visual importance. Use size, bold typography, and contrasting colors to guide the user's eye to the most critical information first.
+- **Consistency**: Keep design elements uniform. A primary action button should use the exact same color, shape, and font style across every single page of the application.
+- **Proximity (Gestalt Principle)**: Elements that are placed close to each other are perceived as a single, related group. Keep labels close to their respective input fields.
+- **Negative Space (White Space)**: Leave intentional blank areas around text and buttons. This gives the interface breathing room and prevents it from looking cluttered.
+- **Accessibility (WCAG Compliance)**: Design for everyone. Ensure high color contrast for text readability, provide text alternatives for images, and make sure the entire app can be navigated using only a keyboard or screen reader. \[[1](https://ixdf.org/literature/topics/visual-hierarchy), [2](https://www.ronins.co.uk/hub/visual-hierarchy-principles-in-web-design/), [3](https://www.shopify.com/ng/partners/blog/interaction-design), [4](https://www.fourmeta.com/blog/ux-design-principles), [5](https://medium.com/design-bootcamp/the-dos-and-donts-of-ui-ux-design-best-practices-to-follow-6972f8be4795)]
+
+***
+
+### 3. The Golden Interaction Heuristics (System Behavior)
+
+First popularized by Jakob Nielsen, these ten rules evaluate whether a system provides a safe, transparent user experience. \[[1](https://www.linkedin.com/learning/performing-user-experience-audits/heuristic-evaluation-to-uncover-existing-problems), [2](https://princepaluiux.substack.com/p/ux-audit-vs-heuristic-evaluation), [3](https://clay.global/blog/ux-guide/heuristic-evaluations)]
+
+- **Visibility of System Status**: The app must always keep users informed about what is happening through timely feedback (e.g., loading spinners or success badges).
+- **Match Between System and Real World**: Speak the user's language. Use universal words, phrases, and concepts rather than internal engineering jargon or code terms.
+- **User Control and Freedom**: Provide a clear "emergency exit." Users often click things by mistake, so always offer an obvious "Undo," "Redo," or "Cancel" option.
+- **Error Prevention**: Design the system to prevent mistakes before they happen. For example, gray out a "Submit" button until all required fields are filled out correctly.
+- **Recognition Rather Than Recall**: Do not make the user memorize information from one screen to use on another. Keep instructions visible or easily retrievable.
+- **Flexibility and Efficiency of Use**: Create accelerators (like keyboard shortcuts or macros) that allow expert users to move quickly, while keeping the interface simple for beginners.
+- **Help Users Recognize, Diagnose, and Recover from Errors**: Error messages must be written in plain text, precisely pinpoint the exact problem, and constructively suggest a solution. \[[1](https://uxdesign.cc/10-usability-heuristics-for-ui-design-c60c10e795aa), [2](https://opentutordesignschool.com/10-usability-heuristics-every-ux-designer-should-know/), [3](https://uxcel.com/lessons/usability-heuristics-270), [4](https://www.pencilandpaper.io/articles/user-control-and-freedom), [5](https://usmanaeem.medium.com/what-are-the-4-golden-rules-of-ui-design-11e898e9a8e4)]
+
+***
+
+Are you looking to apply these principles to **audit an existing app** that is struggling with retention, or are you creating a **design system from scratch**?
+
+- [link](https://www.linkedin.com/pulse/106-cognitive-biases-principles-affect-your-ux-design-muhammad-yasir)\
+  106 Cognitive Biases & Principles That Affect Your UX Design\
+  Sep 19, 2023 — User experience (UX) is significantly influenced by cognitive biases and principles. One can create a digital interface that is mo...\
+  \
+  \
+  LinkedIn
+- [link](https://reliasoftware.com/blog/ux-design-process)\
+  The UX Design Process: 7 Steps for UX Designers\
+  Nov 7, 2023 — The Importance of UX Design Makes sure that projects meet standards for quality and consistency Guarantee that designers come up w...\
+  \
+  \
+  Relia Software
+- [link](https://www.uxtweak.com/ux-design/principles/)\
+  UX Design Principles\
+  May 31, 2024 — UX design principles are fundamentals that every UX designer needs to know and follow throughout the design process. They help to ...\
+  \
+  \
+  UXtweak
+
+Show all
+
+## You said: all ux best practices
+
+While UX principles explain the _theory_ of how humans interact with software, **UX best practices** are the practical, real-world execution steps used to build highly successful products. \[[1](https://trymata.com/blog/ux-laws-and-principles/), [2](https://www.ics-digital.com/blog/ux-design-how-ux-impacts-seo-and-the-importance-of-user-centred-design)]
+
+Applying these practices directly fixes the "geek problems" found in FOSS apps by shifting the focus from code logic to human behavior. \[[1](https://medium.com/@purvashobhit/ux-2-0-agent-experience-experience-design-in-the-age-of-ai-agents-a32230569449)]
+
+***
+
+### 1. Research & Strategy Best Practices
+
+Never design based on guesswork or developer bias. \[[1](https://uxcam.com/blog/ux-design-best-practices/), [2](https://www.experiencedesign.ee/post/how-to-design-an-ai-chatbot-with-great-ux), [3](https://www.boldare.com/blog/cognitive-biases-in-ux-design/)]
+
+- **Conduct User Interviews**: Speak directly to your target audience to discover their true pain points before writing code. \[[1](https://usability.yale.edu/ux/common-ux-questions), [2](https://procreator.design/blog/ux-audit-steps-checklist-and-ai-tools/), [3](https://www.originux.com/resources/blog/holistic-design-the-future-of-ux-or-a-buzzword/)]
+- **Build Minimal Viable Products (MVPs)**: Release the smallest functional version of a feature first to see how users interact with it before over-engineering it.
+- **Map User Journeys**: Document every click a user must make from opening the app to achieving their goal to identify and eliminate friction points.
+- **Analyze Competitors**: Look at mainstream industry standards (like Jakob's Law) so you don't accidentally reinvent the wheel. \[[1](https://www.justinmind.com/blog/ux-strategy-v-ux-design-the-ideal-ux-process/), [2](https://uxplanet.org/6-laws-of-ux-that-greatly-improve-your-designs-97634563e9b9), [3](https://bluecube.com.sg/blogs/the-importance-of-target-audience-research-for-ui-and-ux-success/), [4](https://medium.com/design-bootcamp/ux-notes-understanding-the-fundamentals-of-user-experience-design-for-beginners-e57dbc9837f6), [5](https://ixdf.org/literature/topics/ux-maturity)]
+
+### 2. Layout, Navigation & Architecture Best Practices
+
+Structure your application so users can find what they need intuitively. \[[1](https://www.anoda.mobi/ux-blog/mastering-mobile-app-design-principles)]
+
+- **Enforce the 3-Click Rule**: A user should be able to find any piece of information or core feature within three clicks or taps. \[[1](https://cadabra.studio/blog/insurance-user-experience/), [2](https://thegray.company/blog/ux-design-seo)]
+- **Prioritize Above-the-Fold Content**: Place the most critical information and primary actions at the top of the page so users see them without scrolling. \[[1](https://www.wix.com/blog/web-design-best-practices), [2](https://www.rapidnative.com/blogs/mobile-app-design-best-practices), [3](https://medium.com/startup-grind/how-to-not-suck-at-design-a-5-minute-guide-for-the-non-designer-291efac43037), [4](https://www.socialspace.com.au/ux-does-it-matter-what-you-should-have-above-the-fold), [5](https://www.crazyegg.com/blog/best-website-layouts/)]
+- **Stick to Standard Navigation Bars**: Use familiar patterns like top menus for desktop or bottom tab bars for mobile. Do not hide primary navigation inside obscure gestures. \[[1](https://uxdesign.cc/boost-ux-with-mobile-ux-design-principles-and-best-practices-907e4f9fdd5d), [2](https://onenine.com/best-practices-for-web-design/), [3](https://milda.style/top-10-ux-rules-for-designing-the-best-websites/), [4](https://eseospace.com/blog/ux-best-practices-for-healthcare/), [5](https://www.uxpin.com/studio/blog/guide-mobile-app-design-best-practices-2018-beyond/)]
+- **Implement a Search Bar with Auto-Suggest**: If your app contains a lot of content or settings, provide an easily accessible search function that corrects typos and predicts user intent. \[[1](https://www.coveo.com/blog/search-box-ux-examples/), [2](https://www.designstudiouiux.com/blog/search-ux-best-practices/), [3](https://services.google.com/fh/files/events/pdf%5Fretail%5Fux%5Fplaybook.pdf)]
+
+### 3. Visual & UI Component Best Practices
+
+Ensure the visual presentation is clean, legible, and highly scannable. \[[1](https://medium.com/design-bootcamp/information-architecture-in-ui-effective-data-presentation-752cf74b90a4), [2](https://www.linkedin.com/pulse/uiux-kirti-trivedi-ssanf)]
+
+- **Maintain a Strict Visual Hierarchy**: Use a standard type scale (e.g., Header 1 = 32px, Body = 16px) and bold font weights to guide the eye to what matters first.
+- **Target Minimum Touch Sizes**: Ensure all interactive buttons on mobile are at least **44x44 pixels** to prevent accidental clicks.
+- **Group Form Fields Logically**: Break long forms into small sections with clear headings, and always place labels _above_ the input fields so they remain visible when typing.
+- **Use Functional Color Coding**: Use globally understood colors for feedback: **Green** for success, **Red** for critical errors, and **Yellow** for warnings. Never rely _only_ on color; always include an icon or text label for colorblind users. \[[1](https://www.toptal.com/designers/ux/the-ultimate-ux-guide), [2](https://www.justinmind.com/ux-design/visual-storytelling), [3](https://medium.com/fruto/ui-design-plays-a-fundamental-role-in-the-overall-quality-of-your-end-product-c405c52682d6), [4](https://www.itpathsolutions.com/frontend-performance-best-practices), [5](https://www.strikingly.com/blog/posts/7-essential-elements-great-mobile-navigation-design)]
+
+### 4. Interaction & Feedback Best Practices
+
+Always keep the user informed and in complete control of the application.
+
+- **Show Immediate Micro-Feedback**: Provide instant confirmation when an action occurs, such as a button changing color when pressed or a loading spinner appearing during data fetches.
+- **Write Plain-Language Error Messages**: Never show raw code or database errors. State exactly what went wrong and give a clear button to fix it (e.g., _"No internet connection. \[Try Again]"_).
+- **Design Fail-Safe Emergency Exits**: Always offer a clear **Undo** button for destructive actions like deleting a file or clearing a canvas.
+- **Create Frictionless Onboarding**: Let users explore the app or see its value _before_ forcing them to create an account, configure a server, or sit through a long tutorial. \[[1](https://codewave.com/insights/app-ux-best-practices/), [2](https://bird.marketing/blog/digital-marketing/guide/ux-design-principles/use-feedback-loops-ux-design/), [3](https://userpilot.com/blog/micro-interaction-examples/), [4](https://uxcam.com/blog/mobile-ux/), [5](https://uitop.design/blog/design/ux-optimization/)]
+
+### 5. Accessibility (a11y) Best Practices
+
+Ensure your software can be used by everyone, including people with structural or temporary disabilities. \[[1](https://lollypop.design/blog/2024/august/ui-ux-design-principles-for-mobile-app-development/), [2](https://uxdesign.cc/a-comprehensive-list-of-human-computer-interactions-d72eaca2c0df), [3](https://webpresspro.co/the-complete-guide-to-website-accessibility-and-ada-compliance/)]
+
+- **Meet WCAG Contrast Standards**: Ensure text has a contrast ratio of at least **4.5:1** against its background so it is legible in low light or for visually impaired users.
+- **Enable Full Keyboard Navigation**: Users should be able to navigate every single menu, button, and input field using only the `Tab`, `Arrow`, and `Enter` keys.
+- **Write Descriptive Alt Text**: Provide clear screen-reader descriptions for all functional icons and images so blind or low-vision users understand the interface layout. \[[1](https://www.designstudiouiux.com/blog/ux-design-for-startups-importance/), [2](https://www.inspiringapps.com/blog/digital-accessibility-guide), [3](https://www.continualengine.com/blog/wcag-2-0-compliance/), [4](https://www.sliderrevolution.com/design/ux-button-best-practices/), [5](https://www.webability.io/blog/website-accessibility-best-practices)]
+
+***
+
+Are you looking to implement these best practices by creating a **shared Figma design system**, or are you planning an **agile sprint** to fix an existing app's interface?
+
+- [link](https://trymata.com/blog/ux-laws-and-principles/)\
+  10 Common UX Laws and Principles for Usability Testing\
+  10 Common UX Laws and Principles for Usability Testing Every click, scroll, and interaction a user makes follows specific patterns...\
+  \
+  \
+  Trymata
+- [link](https://www.ics-digital.com/blog/ux-design-how-ux-impacts-seo-and-the-importance-of-user-centred-design)\
+  How UX Design Impacts SEO | ICS-digital\
+  Jun 14, 2023 — The foundation of success in digital products is the well-thought implementation of UX best practices.\
+  \
+  \
+  ICS-digital
+- [link](https://medium.com/@purvashobhit/ux-2-0-agent-experience-experience-design-in-the-age-of-ai-agents-a32230569449)\
+  UX 2.0 (Agent Experience): Experience Design in the Age of AI Agents\
+  Jun 13, 2025 — We're no longer just designing for people. We're planning for systems that act on their behalf, interpret their ( AI agents ) inte...\
+  \
+  \
+  Medium
+
+Show all
+
+## You said: all ux principles on Layout, Navigation & Architectur
+
+When designing the structural layout, navigation systems, and information architecture (IA) of an application, specific psychological and structural UX principles ensure that users can orient themselves and find information effortlessly. \[[1](https://bricxlabs.com/blogs/information-architecture-in-ux)]
+
+The essential UX principles that govern **Layout, Navigation, and Information Architecture** are organized below by their primary focus. \[[1](https://appinventiv.com/blog/11-principles-of-ux-design-for-startups/)]
+
+***
+
+### 1. Information Architecture & Mental Model Principles
+
+These principles dictate how data, content, and menus should be grouped and organized based on human cognitive patterns.
+
+- **Jakob’s Law**: Users spend most of their time on other applications. They expect your layout and navigation to mirror standard industry conventions (e.g., a logo that links to the homepage, a search bar at the top, or a shopping cart in the top right). \[[1](https://medium.com/@ux.rurik/design-principles-and-practices-for-a-good-user-experience-992cc14f1579), [2](https://www.nngroup.com/articles/usability-heuristics-complex-applications/), [3](https://www.cap3.de/en/insights/the-psychology-behind-good-design-seven-laws-in-ux-design), [4](https://elementor.com/blog/web-design-principles-for-a-user-friendly-website/), [5](https://www.testdevlab.com/blog/nielsens-usability-heuristics-10-principles)]
+- **The Principle of Objects**: Treat content as a living, breathing object with its own distinct behaviors, attributes, and relationships to other content, rather than just static text on a page. \[[1](https://medium.com/@mattholla/the-eight-principles-of-information-architecture-6feff11f907a), [2](https://medium.com/@Flowmapp/8-principles-of-information-architecture-every-web-designer-should-know-cc429ff32f4e), [3](https://revelry.co/insights/design/information-architecture-principles/), [4](https://adamfard.com/blog/10-principles-information-architecture), [5](https://fullclarity.co.uk/insights/information-architecture-design-in-ux-complete-guide-2025/)]
+- **The Principle of Choices**: Keep choices to a minimum. According to **Hick’s Law**, offering too many parallel navigation categories or layout choices paraylzes the user and drastically increases the time it takes to make a decision. \[[1](https://adamfard.com/blog/10-principles-information-architecture), [2](https://abhi-chatterjee.medium.com/10-ux-laws-to-follow-to-become-a-great-ux-designer-c48584acb22e), [3](https://www.designstudiouiux.com/blog/what-is-cognitive-load-in-ux/), [4](https://developer.mescius.com/blogs/guide-to-hicks-law-javascript-ui-ux-design), [5](https://medium.com/design-bootcamp/when-applying-hicks-law-in-mobile-app-design-balancing-with-gestalt-principles-for-a-well-rounded-9eadf72829c9)]
+- **The Principle of Exemplars**: Use clear, concrete examples to explain abstract navigation categories. Show a preview of what a user will find inside a deeply nested menu before they click it. \[[1](https://adamfard.com/blog/information-architecture)]
+- **The Principle of Front Doors**: Assume that at least half of your users will arrive at your application via a deep link or sub-page rather than the homepage. Every layout must immediately answer: _Where am I? What can I do here? Where can I go next?_ \[[1](https://www.onething.design/post/information-architecture-its-8-principles), [2](https://www.lyssna.com/blog/information-architecture-in-ux/)]
+- **The Principle of Multiple Classifications**: Recognize that different users look for the same information using different methods. Provide multiple pathways to the same destination, such as combining a structured top menu, an internal search engine, and a footer sitemap. \[[1](https://medium.com/@Flowmapp/8-principles-of-information-architecture-every-web-designer-should-know-cc429ff32f4e), [2](https://www.andacademy.com/resources/blog/ui-ux-design/information-architecture/), [3](https://www.onething.design/post/information-architecture-its-8-principles)]
+- **The Principle of Focused Navigation**: Keep navigation menus separate based on their functional purpose. Do not mix account management links (e.g., "Change Password") with structural core features (e.g., "Export Data") in the exact same top-level menu bar. \[[1](https://medium.com/@mattholla/the-eight-principles-of-information-architecture-6feff11f907a), [2](https://dl.acm.org/doi/fullHtml/10.1145/238386.238592)]
+
+***
+
+### 2. Layout & Spatial Distribution Principles
+
+These principles govern how elements are arranged on a screen to maximize readability and reduce visual chaos. \[[1](https://www.abbacustechnologies.com/the-ultimate-guide-to-ui-ux-design-costs-for-your-app-in-2026/)]
+
+- **Law of Proximity (Gestalt Psychology)**: Elements that are placed close to one another are perceived as a single, related group. In forms or layouts, related input fields and their labels must be clustered tightly together, separated from other groups by clear margins.
+- **Law of Common Region**: Elements are perceived as part of a distinct group if they are clearly enclosed within a visible boundary or container box. Use card layouts, borders, and varying background colors to separate different structural sections of a webpage.
+- **Fitts’s Law**: The time required to click or tap an element depends heavily on its size and its distance from the user's current cursor or thumb position. Core navigation nodes and major action items must be large enough to target easily and placed in highly accessible screen zones.
+- **Miller’s Law**: The average human brain can only hold approximately 7 ± 2 chunks of information in its active working memory. Layout architectures should chunk dense information into small, scannable steps or columns rather than overwhelming users with a wall of data.
+- **Aesthetic-Usability Effect**: A clean, balanced layout structure is perceived by users as inherently easier to use. Users are far more forgiving of minor navigation errors or slow load times if the layout structure feels visually beautiful and polished. \[[1](https://www.fifteendesign.co.uk/blog/the-10-principle-laws-of-ux/), [2](https://www.kaarwan.com/blog/ui-ux-design/10-essential-ux-laws-every-ui-ux-designer-should-know?id=834), [3](https://cxl.com/blog/universal-web-design-principles/), [4](https://www.uxdesigninstitute.com/blog/laws-of-ux/), [5](https://userq.com/how-to-apply-gestalt-principles-to-web-and-mobile-ui-design/)]
+
+***
+
+### 3. Visual Path & Hierarchy Principles
+
+These principles leverage natural human eye-tracking behaviors to guide users through a screen in a predictable sequence. \[[1](https://upnorthmedia.co/blog/user-interface-design-best-practices), [2](https://www.ramotion.com/blog/visual-hierarchy/)]
+
+- **Visual Hierarchy**: Arrange layout components in order of immediate importance. Use dramatic variations in font size, weight, and color value to instantly signal to the user's eye which heading to read first, second, and third.
+- **The Gutenberg Diagram**: Users from left-to-right reading cultures naturally scan heavy, text-based pages in a series of four quadrants from the top-left to the bottom-right. Place primary branding in the top-left and terminal action buttons (like "Next" or "Submit") in the bottom-right.
+- **The F-Shaped Scanning Pattern**: When interacting with highly dense text or search result layouts, users scan the screen in a shape resembling the letter F—reading across the top, down the left edge, and across a shorter middle row. Crucial navigational landmarks must be placed along this left-hand vertical anchor point.
+- **The Z-Pattern Scanning Route**: On visually light landing pages or promotional dashboards, the human eye tracks across the top, down diagonally to the bottom-left, and across to the bottom-right. Place your primary value statement at the top-left, secondary navigation along the top bar, and the primary Call to Action (CTA) at the terminal bottom-right point.
+- **The Von Restorff (Isolation) Effect**: When multiple identical or similar layout elements are placed together, the single item that looks noticeably different will attract the most attention. Use a distinct, highly contrasting accent color exclusively for the primary navigation button to make it pop out from global utility links. \[[1](https://blog.hubspot.com/website/ux-principles), [2](https://www.figma.com/resource-library/graphic-design-principles/), [3](https://medium.com/alex-couch-s-portfolio/designing-for-multiple-layers-in-search-fcc8942b6e9a), [4](https://www.smashingmagazine.com/2020/07/information-architecture-big-picture/), [5](https://blog.logrocket.com/ux-design/designing-landing-page-ux-rule-thirds/)]
+
+***
+
+Are you using these layout and architecture principles to **wireframe a completely new digital product**, or are you planning a **card sorting exercise** with real users to restructure a messy existing navigation menu?
+
+- [link](https://bricxlabs.com/blogs/information-architecture-in-ux)\
+  Information Architecture in UX: Key Principles to Know\
+  Sep 25, 2025 — Information Architecture in UX: Key Principles to Know Organization schemes and structures – How information is categorized and st...\
+  \
+  \
+  Bricx Labs
+- [link](https://appinventiv.com/blog/11-principles-of-ux-design-for-startups/)\
+  Top 11 UX Design Principles for Startups\
+  Dec 2, 2024 — Have a clear hierarchy The principles of UX design ensures implementation of smooth navigation through hierarchy in the design. Th...\
+  \
+  \
+  Appinventiv
+- [link](https://medium.com/@ux.rurik/design-principles-and-practices-for-a-good-user-experience-992cc14f1579)\
+  Design principles and practices for a good user experience\
+  Feb 19, 2024 — Ensuring that user interface functionality and elements work the same way in different contexts to facilitate learning and memoriz...\
+  \
+  \
+  Medium
+
+Show all
+
+## You said: The Golden Interaction Heuristics ten rules
+
+The **10 Usability Heuristics for User Interface Design** were developed by Jakob Nielsen and Rolf Molich. They are called "heuristics" because they are broad rules of thumb, not rigid usability laws. \[[1](https://www.teacuplab.com/blog/nielsen-10-heuristics-explained-examples/), [2](https://www.uxtigers.com/post/usability-heuristics-history), [3](https://thestory.is/en/journal/usability-heuristics-jakob-nielsen-part-1/), [4](https://medium.com/@ryankojansow092/jakobs-nielsen-10-usability-heuristics-for-user-interface-design-evaluation-6bde91886149), [5](https://uxplanet.org/golden-rules-of-user-interface-design-19282aeb06b)]
+
+These ten rules ensure that software behaves in a predictable, safe, and transparent way for the human using it. \[[1](https://techskillbrew.medium.com/heuristic-evaluation-h4-consistency-and-standards-c3b6cc1a48a6)]
+
+***
+
+### 1. Visibility of System Status
+
+The system should always keep users informed about what is happening, through appropriate feedback within a reasonable time. \[[1](https://aguayo.co/en/blog-aguayo-user-experience/10-nielsen-heuristic-rules-usability-user-experience/), [2](https://pageflows.com/resources/usability-heuristics-10-principles-to-guide-design/), [3](https://www.looppanel.com/blog/heuristic-evaluation-in-ux-a-comprehensive-guide), [4](https://medium.com/ui-ux-journey/the-relevance-of-usability-heuristics-for-user-interface-design-8d29ee63b5c5)]
+
+- **The Goal**: Eliminate guesswork. If an app is working in the background, the user must know.
+- **Examples**: A loading progress bar, a spinner, a "Saved successfully" toast notification, or a changing status icon (e.g., cloud sync icon). \[[1](https://uxplanet.org/principles-for-micro-interactions-77c23f88413a)]
+
+### 2. Match Between System and the Real World
+
+The system should speak the users' language. Use words, phrases, and concepts familiar to the user, rather than internal jargon. Follow real-world conventions, making information appear in a natural and logical order. \[[1](https://uxcel.com/lessons/usability-heuristics-270), [2](https://www.testdevlab.com/blog/nielsens-usability-heuristics-10-principles), [3](https://blog.adobe.com/en/publish/2017/05/05/do-the-10-usability-heuristics-still-hold-up-over-a-decade-later), [4](https://capian.co/academy/nielsen-10-usability-heuristics-email-course), [5](https://uxcel.com/lessons/usability-heuristics-553)]
+
+- **The Goal**: Align the software with the user's existing mental model.
+- **Examples**: Using a trash can icon for deleting items, or writing "Account Settings" instead of `UserConfig_v2`. \[[1](https://improvement.stanford.edu/resources/usability-principles), [2](https://medium.com/@mahtabrazmara/usability-heuristics-for-user-interface-design-737268a11374), [3](https://lollypop.design/blog/2024/december/usability-heuristics/), [4](https://medium.com/design-bootcamp/nielsens-10-usability-heuristics-explained-with-modern-app-examples-66eac14648a0)]
+
+### 3. User Control and Freedom
+
+Users often choose system functions by mistake and will need a clearly marked "emergency exit" to leave the unwanted state without having to go through an extended dialogue. Support undo and redo. \[[1](https://uxcel.com/lessons/usability-heuristics-270), [2](https://thestory.is/en/journal/usability-heuristics-jakob-nielsen-part-1/), [3](https://www.nngroup.com/articles/user-control-and-freedom/)]
+
+- **The Goal**: Give the user a sense of safety and control. They shouldn't be afraid to click buttons.
+- **Examples**: An obvious "Cancel" button on forms, an "Undo delete" banner, or a simple step-back arrow in a multi-step wizard. \[[1](https://daily.dev/blog/10-usability-heuristics-checklist-for-ui-design/), [2](https://medium.com/@yogeshmithoon%5F72537/a-better-way-to-remember-the-usability-heuristics-is-df780196ec33), [3](https://dev.to/taqwah/10-ui-ux-principles-that-will-transform-your-design-process-4pa)]
+
+### 4. Consistency and Standards
+
+Users should not have to wonder whether different words, situations, or actions mean the same thing. Follow platform conventions. \[[1](https://uxplanet.org/golden-rules-of-user-interface-design-19282aeb06b), [2](https://sis.binus.ac.id/2020/11/12/the-eight-golden-rules-strive-for-consistency/)]
+
+- **The Goal**: Maintain predictability by adhering to **Jakob's Law** (users expect your app to work like other apps).
+- **Examples**: Keeping primary action buttons the exact same color throughout the app, or placing the search bar at the top of the interface. \[[1](https://www.uxtigers.com/post/heuristics-cartoons), [2](https://www.bitcot.com/ios-human-interface-guidelines/), [3](https://myuxacademy.com/mastering-ux-ui-design/), [4](https://usabilitygeek.com/10-usability-guidelines-for-the-search-interface/)]
+
+### 5. Error Prevention
+
+Even better than good error messages is a careful design which prevents a problem from occurring in the first place. Either eliminate error-prone conditions or check for them and present users with a confirmation option before they commit to the action. \[[1](https://daily.dev/blog/10-usability-heuristics-checklist-for-ui-design/), [2](https://ixdf.org/literature/topics/heuristics), [3](https://www.nngroup.com/articles/usability-heuristics-applied-video-games/), [4](https://www.uxstudioteam.com/ux-blog/10-usability-principles-for-ai), [5](https://baharbingol.medium.com/sezgisel-tasar%C4%B1m-nielsenin-10-i%CC%87lkesi-73b3724d7b92)]
+
+- **The Goal**: Proactively protect the user from making mistakes.
+- **Examples**: Graying out a "Submit" button until all form fields are filled correctly, or a date picker that blocks out past dates when booking a hotel room. \[[1](https://daily.dev/blog/10-usability-heuristics-checklist-for-ui-design/), [2](https://www.awa-digital.com/blog/ten-usability-heuristics/), [3](https://medium.com/@designstudiouiux/6-design-principles-in-ui-ux-that-separate-good-from-great-d345b6b3cb45)]
+
+### 6. Recognition Rather Than Recall \[[1](https://piazza.com/class%5Fprofile/get%5Fresource/i63knmzdmp91ft/i8k52tew80m140), [2](https://www.koruux.com/blog/golden-rules-of-ui-design/)]
+
+Minimize the user's memory load by making objects, actions, and options visible. The user should not have to remember information from one part of the dialogue to another. Instructions for use of the system should be visible or easily retrievable whenever appropriate. \[[1](https://www.nngroup.com/articles/usability-heuristics-applied-video-games/), [2](https://shiftasia.com/community/applying-jakob-nielsens-10-usability-heuristics-for-better-ux-design/), [3](https://www.informaticathomas.nl/heuristicsNielsen.pdf), [4](https://blog.adobe.com/en/publish/2017/05/05/do-the-10-usability-heuristics-still-hold-up-over-a-decade-later), [5](https://dev.to/fajarriv/creating-user-friendly-interfaces-nielsens-10-usability-heuristics-3e7c)]
+
+- **The Goal**: Reduce cognitive load. Humans are much better at recognizing options on a screen than recalling them from memory.
+- **Examples**: Showing a history of "Recently Viewed Items," or maintaining a visible shopping cart summary on a checkout page. \[[1](https://www.heurio.co/laws-of-ux-yablonski), [2](https://dl.acm.org/doi/10.1145/3772318.3791504), [3](https://uxcel.com/lessons/usability-heuristics-270), [4](https://medium.com/design-bootcamp/design-for-the-human-mind-how-cognitive-science-shapes-ux-design-f0b83e3da6b6)]
+
+### 7. Flexibility and Efficiency of Use
+
+Accelerators—unseen by the novice user—may often speed up the interaction for the expert user so that the system can cater to both inexperienced and experienced users. Allow users to tailor frequent actions. \[[1](https://yellowchalk.com/blog/8-golden-rules-of-interface-design/), [2](https://www.linkedin.com/pulse/design-thinks-like-user-mastering-jakob-nielsens-10-miguel-valenzuela-maibe), [3](https://figr.design/blog/design-heuristics-interface-principles), [4](https://uxplanet.org/10-usability-heuristics-and-how-to-apply-them-to-product-design-dd4a4a06d78c), [5](https://www.linkedin.com/pulse/jakob-nelson-10-heuristics-better-design-manan-shah)]
+
+- **The Goal**: Make the app efficient for power users without intimidating beginners.
+- **Examples**: Implementing standard keyboard shortcuts (`Ctrl+C`, `Ctrl+V`), allowing drag-and-drop actions, or letting users customize their main dashboard layout. \[[1](https://bricxlabs.com/blogs/heuristic-evaluation), [2](https://dev.to/taqwah/10-ui-ux-principles-that-will-transform-your-design-process-4pa), [3](https://uizard.io/blog/10-usability-heuristics-for-ui-design/), [4](https://sites.pitt.edu/~is2470pb/Fall08/UAR/IS2470%5FUAR%5FGroupA%5FCourseNavigator.pdf)]
+
+### 8. Aesthetic and Minimalist Design \[[1](https://www.awa-digital.com/blog/ten-usability-heuristics/), [2](https://ixdf.org/literature/article/how-to-conduct-a-heuristic-evaluation-for-usability-in-hci-and-information-visualization)]
+
+Dialogues should not contain information which is irrelevant or rarely needed. Every extra unit of information in a dialogue competes with the relevant units of information and diminishes their relative visibility. \[[1](https://blog.adobe.com/en/publish/2017/05/05/do-the-10-usability-heuristics-still-hold-up-over-a-decade-later), [2](https://www.linkedin.com/pulse/jakob-nielsens-10-heuristics-user-interface-design-practical-rahdan)]
+
+- **The Goal**: Keep screens focused, scannable, and clean (**Hick's Law**).
+- **Examples**: Using white space intentionally, hiding advanced configurations behind an "Advanced Settings" dropdown, and prioritizing above-the-fold actions. \[[1](https://medium.com/@anamariaerascu/nielsen-and-molichs-10-user-interface-design-heuristics-a-duolingo-study-case-27828d4848c9), [2](https://ixdf.org/literature/article/hick-s-law-making-the-choice-easier-for-users), [3](https://figr.design/blog/design-heuristics-interface-principles), [4](https://maze.co/guides/usability-testing/heuristic-evaluation/)]
+
+### 9. Help Users Recognize, Diagnose, and Recover from Errors \[[1](https://www.teacuplab.com/blog/nielsen-10-heuristics-explained-examples/), [2](https://www.designmonks.co/blog/10-usability-heuristics-for-user-interface-design)]
+
+Error messages should be expressed in plain language (no codes), precisely indicate the problem, and constructively suggest a solution. \[[1](https://medium.com/@hazlazuardi/how-my-team-uses-nielsens-10-usability-heuristics-in-our-application-865fef19220d), [2](https://www.ilink-digital.com/insights/blog/10-timeless-usability-heuristics-for-user-interface-design-creating-intuitive-and-user-centric-experiences), [3](https://www.nngroup.com/articles/usability-heuristics-complex-applications/), [4](https://medium.com/design-bootcamp/the-10-heuristics-for-designing-a-user-friendly-and-intuitive-ui-38a7bfeda7ce)]
+
+- **The Goal**: Turn a frustrating error into an actionable roadmap for the user.
+- **Examples**: Instead of writing `Error 404: Not Found`, write: _"We couldn't find that page. \[Return to Home]"_. Instead of `Invalid Input`, write: _"Password must contain at least one number."_
+
+### 10. Help and Documentation \[[1](https://capian.co/nielsen-10-usability-heuristics-user-interface-design)]
+
+Even though it is better if the system can be used without documentation, it may be necessary to provide help and documentation. Any such information should be easy to search, focused on the user's task, list concrete steps to be carried out, and not be too large. \[[1](https://shiftasia.com/community/applying-jakob-nielsens-10-usability-heuristics-for-better-ux-design/)]
+
+- **The Goal**: Provide an easily accessible safety net when intuition fails.
+- **Examples**: A searchable "Help Center" sidebar, contextual tooltips (tooltips that appear when hovering over a complex icon), or a quick introductory onboarding tour.
+
+***
+
+If you want, let me know:
+
+- Are you planning to use these rules to **audit a specific application**?
+- Do you want to see an example of how a **FOSS app specifically violates** one of these heuristics?
+
+I can help you break down exactly how to apply these rules to your current workflow.
+
+- [link](https://www.teacuplab.com/blog/nielsen-10-heuristics-explained-examples/)\
+  Nielsen's 10 heuristic principles explained with examples\
+  Jul 18, 2022 — The 10 heuristics defined by Jakob Nielsen and Rolf Molich are good practices that can be applied to interface design to evaluate ...\
+  \
+  \
+  TeaCup Lab
+- [link](https://www.uxtigers.com/post/usability-heuristics-history)\
+  How I Developed the 10 Usability Heuristics\
+  Feb 15, 2024 — They ( 10 usability heuristics ) were developed in 1989 when I taught the first user interface course at the Technical University ...\
+  \
+  \
+  UX Tigers
+- [link](https://thestory.is/en/journal/usability-heuristics-jakob-nielsen-part-1/)\
+  UX and Usability heuristics by Jakob Nielsen - part 1\
+  Jan 13, 2023 — Heuristic analysis is a method of assessing user interfaces that aims to identify usability problems. Jakob Nielsen has developed ...\
+  \
+  \
+  thestory.is
+
+Show all
+
+# . what does kde hig say on advanced settings
+
+The \*\***[KDE Human Interface Guidelines (HIG)](https://develop.kde.org/hig/)** explicitly state that developers should **avoid hiding settings on pages or views named "Advanced"**. \[[1](https://develop.kde.org/hig/powerful%5Fwhen%5Fneeded/)]
+
+The guideline, structured under KDE’s core "Powerful when needed" design mantra, outlines a specific approach to managing complex configurations without relying on a generic "Advanced" tab: \[[1](https://blogs.kde.org/2016/02/08/hig-about-simple-vs-advanced-settings/), [2](https://develop.kde.org/hig/powerful%5Fwhen%5Fneeded/)]
+
+### 1. The Word "Advanced" is Meaningless
+
+The HIG notes that the distinction between a "basic" and an "advanced" setting depends entirely on an individual user's needs and workflow. Labeling a category as "Advanced" communicates nothing concrete to the user about what configuration options are actually contained inside. \[[1](https://develop.kde.org/hig/powerful%5Fwhen%5Fneeded/)]
+
+### 2. Use Progressive Disclosure Instead
+
+Rather than segmenting the interface into strict "Basic vs. Advanced" pages, the guidelines mandate a **progressive disclosure model**. \[[1](https://develop.kde.org/hig/powerful%5Fwhen%5Fneeded/)]
+
+- **Simplified Presentation**: A view should first present data or settings in a highly simplified form.
+- **Contextual Access**: Optional, non-critical, or complex details should be tucked into a **sub-page, separate window, or a collapsed view** tied directly to the relevant item. \[[1](https://develop.kde.org/hig/powerful%5Fwhen%5Fneeded/)]
+
+### Example of the Right Approach
+
+The HIG points to the **System Settings' Colors page** as the gold standard for this practice: \[[1](https://develop.kde.org/hig/powerful%5Fwhen%5Fneeded/)]
+
+- **The Simplified View**: The user is presented with a simple accent color feature and a grid of installed color schemes.
+- **The Hidden Power View**: To access deeper customization, the user clicks an explicit action button ("Edit" on a specific scheme), which opens a separate window where the color scheme can be fully configured. \[[1](https://develop.kde.org/hig/powerful%5Fwhen%5Fneeded/)]
+
+This method ensures that the user understands exactly what contents they are about to modify before they interact with the deeper layer of the interface. \[[1](https://develop.kde.org/hig/powerful%5Fwhen%5Fneeded/)]
+
+If you are developing a specific application, would you like advice on **how to structure a particular settings page** using Kirigami layouts, or do you want to look at examples of **progressive disclosure** in other system modules? \[[1](https://pointieststick.com/category/user-interface-design/), [2](https://community.kde.org/KDE%5FVisual%5FDesign%5FGroup/System%5FSettings%5FApplication)]
+
+- [link](https://blogs.kde.org/2016/02/08/hig-about-simple-vs-advanced-settings/)\
+  HIG about Simple vs. Advanced Settings - KDE Blogs\
+  Feb 8, 2016 — Purpose. The settings dialog provides user-customizable options how an application or plasma (KCM) should behave. The dialog is in...\
+  KDE Blogs
+- [link](https://pointieststick.com/category/user-interface-design/)\
+  Category: User Interface Design - Adventures in Linux and KDE\
+  Jul 25, 2024 — The new HIG had the following design goals: \* Make 100% of the content actionable. No filler text, no rambling philosophy, no redu...\
+  Adventures in Linux and KDE
+- [link](https://community.kde.org/KDE%5FVisual%5FDesign%5FGroup/System%5FSettings%5FApplication)\
+  KDE Visual Design Group/System Settings Application\
+  Mar 15, 2016 — UI Patterns A simple menu button or toolbar + menu button command pattern was chosen. The navigation pattern chosen for the overvi...\
+  KDE
+
+Show all
+
+## You said: example how currently advanced settings would become if they had adopted kde philosophy
+
+To transform a traditional, messy "Advanced" settings panel into the clean KDE style, you must replace the generic "Advanced" tab with **progressive disclosure** and **contextual actions**.
+
+Here is a practical example of how a standard network settings page transforms when adopting the KDE philosophy.
+
+### 1. The Traditional "Before" Design (Anti-Pattern)
+
+In a traditional setup, you have a tabbed interface. The first tab is labeled "General" and the second is labeled "Advanced."
+
+- **General Tab:**
+  - Wi-Fi Name (SSID)
+  - Password field
+  - "Connect Automatically" checkbox
+- **Advanced Tab (The generic bucket):**
+  - IPv4 / IPv6 manual configuration
+  - DNS Server IP fields
+  - Proxy configuration toggle and URL
+  - MAC Address Cloning setting
+
+**Why KDE rejects this:** A user looking to change their DNS server has to guess that DNS falls under "Advanced," which is a meaningless bucket term.
+
+***
+
+### 2. The KDE Philosophy "After" Design
+
+KDE eliminates the "Advanced" tab entirely. Instead, everything is grouped by **topic**, and complex features are hidden behind **contextual inline actions**.
+
+- **Main Connection View (Simple & Focused):**
+  - Wi-Fi Name (SSID)
+  - Password field
+  - "Connect Automatically" checkbox
+  - _Visual Break / Section Header:_ **IP & DNS Routing**
+  - A simple dropdown: "IP Address: \[ Automatic (DHCP) v ]"
+- **The Progressive Disclosure Step:**
+  - If the user changes the dropdown from "Automatic" to "**Manual**", the UI smoothly expands inline (or opens a sub-page) to reveal the specific IP, Gateway, and DNS fields.
+  - _Visual Break / Section Header:_ **Proxy & Security**
+  - A single, clear button: **"Configure Proxy Settings..."** or **"Spoof MAC Address..."** Clicking these opens a dedicated modal dialog or sub-view.
+
+***
+
+### Key Takeaways of the Transformation
+
+- **No Guesswork:** Settings are grouped by function (IP, Proxy, MAC), not by how "hard" they are.
+- **Clean by Default:** The page looks incredibly simple when you first open it.
+- **Revealed on Demand:** Deep configuration options only appear when the user actively selects an action that requires them.
+
+Would you like to see how to implement this using **Kirigami code components** (like `FormLayout`), or do you want to redesign a **specific settings page** you are currently working on?
+
+## You said: example how currently advanced settings in vlc would become if they had adopted kde philosophy
+
+If VLC completely adopted the **KDE Human Interface Guidelines (HIG)**, its famous **"Simple vs. All" radio button toggle** at the bottom of the preferences window would be entirely removed.
+
+Instead of a massive, overwhelming tree view containing thousands of variables labeled as "Advanced", VLC would use **Progressive Disclosure** to surface technical features contextually.
+
+***
+
+### The Current Anti-Pattern in VLC
+
+Currently, if a user wants to fix an audio syncing delay or change network streaming lag, they have to click **"All"** under Show Settings. They are immediately confronted with a daunting, unfiltered Linux-style configuration tree containing raw code components, plugin modules, and variables like `file-caching`, `network-caching`, and `clock-synchro`.
+
+***
+
+### The KDE Redesign: Subtitles & Audio Delay
+
+Here is how two specific settings would transform if redesigned according to KDE philosophy:
+
+### 1. Audio Synchronization Settings
+
+- **VLC's Current Way:** In the "All" tree, the user must navigate down through _Audio_ → _Output modules_ → _Filters_ to find millisecond offset inputs.
+- **The KDE Redesign:**
+  - The user goes to the main, friendly **Audio** tab.
+  - They see a standard slider for volume and a dropdown for the audio device.
+  - Directly below the device picker, there is a section header labeled **"Timing & Sync"** with a single contextual link button: **"Adjust Audio/Video Alignment..."**.
+  - Clicking this button reveals a small inline expanding tray with a slider to shift audio milliseconds forward or backward. The option is kept next to the basic audio controls because that is what it modifies.
+
+### 2. Network Stream Caching (Buffer Size)
+
+- **VLC's Current Way:** The user must open "All" settings, click _Input / Codecs_, scroll to the bottom, and manually type a number into a box labeled `Network caching (ms)`.
+- **The KDE Redesign:**
+  - The user goes to the main **Input & Codecs** tab.
+  - They see a clean dropdown menu: `"Connection Speed Optimization: [ Normal Default v ]"`.
+  - If they change it to `"Custom Buffer"`, a sub-option instantly slides open smoothly beneath it, allowing them to type in the exact caching milliseconds or choose presets (e.g., "Slow Wi-Fi", "Local Network").
+
+***
+
+### Comparison of Layout Philosophies
+
+| Feature             | Current VLC "Advanced" Mode                              | KDE Philosophy Redesign                                       |
+| ------------------- | -------------------------------------------------------- | ------------------------------------------------------------- |
+| **Access Method**   | A global radio button changes the entire program layout. | Options stay exactly where their basic counterparts live.     |
+| **Categorization**  | Arbitrary bucket based on developer difficulty.          | Functional grouping based on the task (Audio, Subtitles).     |
+| **Interface Style** | Giant, raw text tree view listing developer variables.   | Visual sub-menus, expanding forms, and modal dialogs.         |
+| **Discoverability** | Blind searching through deep sub-folders.                | Natural discovery via contextual "Configure..." action links. |
+
+By eliminating the generic "Advanced" categorization, the app becomes **"Powerful when needed"** without scaring away casual users with a literal command-line configuration tree embedded inside a settings window.
+
+Are there other heavy utility media features in VLC you would like to map out, or should we look at how **Kirigami layouts handle this** using expanders and contextual buttons?
+
+- [link](https://ixdf.org/literature/topics/progressive-disclosure)\
+  What is Progressive Disclosure? — updated 2026 | IxDF\
+  Feb 22, 2023 — Progressive disclosure's goal is to improve usability for novice and experienced users. Progressive disclosure aims to show users ...\
+  IxDF
+- [link](https://www.sciencedirect.com/topics/computer-science/progressive-disclosure)\
+  Progressive Disclosure - an overview | ScienceDirect Topics\
+  Progressive Disclosure, in the context of Computer Science, refers to a dynamic method of grouping and simplifying content by disp...\
+  ScienceDirect.com
+- [link](https://medium.com/@mahfuzbd86/understanding-the-4-key-variants-of-progressive-disclosure-in-ux-design-7513c5360cb4)\
+  Understanding the 4 Key Variants of Progressive Disclosure in UX Design | by Mahfuzur Rahman | Medium\
+  Feb 25, 2026 — There are four types of progressive disclosure: \* \*\*Contextual disclosure\*\* Supporting details or explanations are presented exact...\
+  Medium
+
+Show all
+
+## You said: how does chromium or firefox embrace this philosophy
+
+Both **Google Chromium** and **Mozilla Firefox** fully embrace the KDE philosophy of progressive disclosure and functional grouping. Neither browser uses a generic, all-encompassing "Advanced" settings tab anymore. \[[1](https://acorn.firefox.com/latest/desktop/patterns/browser-settings-txAMsYCR)]
+
+They achieve a "simple by default, powerful when needed" layout through three primary interface patterns. \[[1](https://medium.com/@akshataa1004/progressive-disclosure-unveiling-information-at-the-right-time-for-optimal-user-experience-98757ccd8ff2)]
+
+***
+
+### 1. The Death of the "Advanced" Menu
+
+Historically, both browsers had dedicated advanced buckets (Chrome used a dropdown at the very bottom of the page, and Firefox had an "Advanced" gear tab). Today, both have eliminated them completely. \[[1](https://acorn.firefox.com/latest/desktop/patterns/browser-settings-txAMsYCR)]
+
+Settings are organized strictly by **topic** (e.g., Performance, Privacy, Downloads) rather than difficulty. A casual user changing their download folder and a developer tweaking hardware acceleration will find their respective tools under the same "General" or "System" categories, differentiated only by visual hierarchy. \[[1](https://acorn.firefox.com/latest/desktop/patterns/browser-settings-txAMsYCR)]
+
+***
+
+### 2. Chromium's Approach: Inline Expanders and Sub-pages
+
+Chromium (Google Chrome) leans heavily into **inline progressive disclosure** and deep-linking to hide technical details until requested. \[[1](https://acorn.firefox.com/latest/desktop/patterns/browser-settings-txAMsYCR), [2](https://www.newsletter.swirlai.com/p/agent-skills-progressive-disclosure)]
+
+- **The Simplified View:** Under _Privacy and Security_ → _Clear Browsing Data_, Chromium presents a clean modal with just three basic checkboxes: Browsing history, Cookies, and Cached images. \[[1](https://www.aaronline.com/2021/01/08/how-to-control-and-delete-cookies-on-your-browser/)]
+- **Contextual Elevation:** Right next to the tab title "Basic", there is a tab labeled "Advanced". However, this isn't a global advanced bucket; it is _strictly advanced options for clearing data_ (like clearing autofill form data or site settings). The complexity is confined exactly to the tool the user is interacting with.
+- **The Sub-page Pattern:** Under _Performance_, Chromium shows a simple toggle for "Memory Saver". The deep, technical configuration—adding specific web domains to an exclusion list—is hidden entirely until the user clicks an explicit action button: **"Add"**.
+
+***
+
+### 3. Firefox's Approach: Section Toggles and Search Injection
+
+Firefox handles complex features by embedding them directly below basic settings, utilizing subtle section headings and smart search behavior. \[[1](https://acorn.firefox.com/latest/desktop/patterns/browser-settings-txAMsYCR)]
+
+- **The Simplified View:** In Firefox Settings, under the _General_ tab, you will find a simple _Network Settings_ header showing whether you are connected. \[[1](https://acorn.firefox.com/latest/desktop/patterns/browser-settings-txAMsYCR), [2](https://au.pcmag.com/system-performance/65735/mozilla-just-made-firefox-more-private-and-secure-for-us-users)]
+- **Contextual Revelation:** There are no proxy settings cluttering the screen. Instead, there is a single, contextual action button at the bottom of the section: **"Settings..."**. Clicking this opens a dedicated modal window exclusively for proxy, DNS over HTTPS, and connection configurations. \[[1](https://acorn.firefox.com/latest/desktop/patterns/browser-settings-txAMsYCR)]
+- **The "Search to Disclose" Pattern:** Firefox relies heavily on its global settings search bar. If you scroll through the UI naturally, highly technical features like "FIPS security modules" or raw TLS settings are entirely hidden to keep the interface clean. However, if a power user types "TLS" or "Certificates" into the search bar, the UI dynamically injects those hidden, hyper-specific sub-panels right into view. \[[1](https://acorn.firefox.com/latest/desktop/patterns/browser-settings-txAMsYCR)]
+
+***
+
+### Summary of Browser Implementation
+
+| Design Tactic \[[1](https://acorn.firefox.com/latest/desktop/patterns/browser-settings-txAMsYCR), [2](https://www.aaronline.com/2021/01/08/how-to-control-and-delete-cookies-on-your-browser/), [3](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2009/EECS-2009-139.pdf), [4](https://medium.com/@johnphamous/customizing-firefox-quantums-about-config-8cbc6950bca4), [5](https://medium.com/@michaelswengel/this-firefox-replacement-actually-respects-your-privacy-e2ecbf3a4e98)] | Chromium Implementation                                                  | Firefox Implementation                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------ | --------------------------------------------------------------------------------------- |
+| **Complex Networking**                                                                                                                                                                                                                                                                                                                                                                                                                                                               | Tucked into a nested **"System"** sub-page.                              | Isolated behind a dedicated **"Settings..." button** inline.                            |
+| **Experimental/Raw Tweaks**                                                                                                                                                                                                                                                                                                                                                                                                                                                          | Isolated completely outside normal settings in `chrome://flags`.         | Isolated completely outside normal settings in `about:config`.                          |
+| **Privacy Configurations**                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Simple toggles that reveal domain-specific exception lists when clicked. | Quick presets ("Standard" vs "Strict") that expand to show individual blocking details. |
+
+By using these boundaries, both browsers prevent regular users from suffering from cognitive overload while ensuring that power users don't lose the fine-grained control they require. \[[1](https://medium.com/@akshataa1004/progressive-disclosure-unveiling-information-at-the-right-time-for-optimal-user-experience-98757ccd8ff2)]
+
+Would you like to explore **how Chromium and Firefox handle their hidden power-user environments** (`about:config` and `chrome://flags`), or should we look at how to design an open-source settings app using these exact patterns?
+
+- [link](https://medium.com/@akshataa1004/progressive-disclosure-unveiling-information-at-the-right-time-for-optimal-user-experience-98757ccd8ff2)\
+  Progressive Disclosure: Unveiling Information at the Right ...\
+  Jun 10, 2024 — ... upfront can lead to cognitive overload and decision paralysis. Instead, it advocates for a more nuanced approach, where inform...\
+  Medium·Akshataa
+- [link](https://acorn.firefox.com/latest/desktop/patterns/browser-settings-txAMsYCR)\
+  Browser settings - Acorn Design System - Firefox\
+  The majority of customization for overarching browsing features (e.g., Translations, Startup, Permissions) will then tend to live ...\
+  Acorn Design System
+- [link](https://www.newsletter.swirlai.com/p/agent-skills-progressive-disclosure)\
+  Agent Skills: Progressive Disclosure as a System Design Pattern\
+  Mar 11, 2026 — Progressive disclosure is a well-established design pattern, formalized by the Nielsen Norman Group for user interface design. The...\
+  SwirlAI Newsletter
+
+Show all
+
+## You said: how does samsung one ui settings embrace this philosophy
+
+**Samsung One UI** heavily embraces the KDE philosophy of progressive disclosure by organizing settings strictly by **functional topic** and shifting the screen layout to lower visual weight. \[[1](https://medium.com/design-bootcamp/progressive-disclosure-showing-information-gradually-9f47bbd92f24), [2](https://design.samsung.com/global/contents/one-ui/)]
+
+Historically, Samsung’s older skin (TouchWiz) was notorious for the exact anti-pattern KDE fights against: a chaotic maze of nested tabs and checkboxes. One UI completely inverted this. While Samsung _does_ have a root folder titled "Advanced Features," it is used exclusively for platform integrations (like Android Auto, Link to Windows, and Multi-window tools) rather than technical variables. \[[1](https://www.youtube.com/watch?v=qm51IlrCjNo\&t=280), [2](https://design.samsung.com/global/contents/one-ui/)]
+
+To handle raw technical depth without generic buckets, One UI utilizes four specific layout behaviors:
+
+### 1. The Reachability Division (Visual Separation)
+
+One UI splits menus into two distinct spatial zones to focus the user’s mind:
+
+- **The Viewing Zone (Top)**: The upper 30–40% of the display shows giant, human-readable titles, massive status icons, or simple toggle summaries. \[[1](https://news.samsung.com/global/interview-how-designers-have-made-one-uis-usability-even-better-for-galaxy-users)]
+- **The Action Zone (Bottom)**: All interactable settings live in the bottom half of the screen, grouped closely together so the thumb can reach them easily. \[[1](https://news.samsung.com/za/samsungs-one-ui-a-singular-smartphone-experience)]
+
+By pushing actual configuration options further down the screen, casual users can read what a menu does before interacting with any individual inputs.
+
+### 2. Contextual Expansion and Radio Summaries
+
+Instead of giving a technical option its own page, One UI collapses highly complex configurations underneath broad toggle components. \[[1](https://medium.com/@liana.ghazaryan1995/progressive-disclosure-in-saas-ux-designing-for-clarity-and-control-672643fccfbd), [2](https://medium.com/design-bootcamp/progressive-disclosure-showing-information-gradually-9f47bbd92f24)]
+
+- **Example (Battery Care)**: In the **Device Care** module, a user sees a straightforward menu option for "Battery Protection".
+- **The Disclosure**: Instead of checking a basic on/off box, tapping the option smoothly opens a sub-menu showing visual cards explaining different charging limit profiles (Basic, Adaptive, or Maximum). The complex logic of background automation is wrapped in user-friendly terminology right where battery health is handled. \[[1](https://www.youtube.com/watch?v=WMKOMRaCvJY\&t=5), [2](https://medium.com/design-bootcamp/progressive-disclosure-showing-information-gradually-9f47bbd92f24), [3](https://www.xda-developers.com/one-ui-4-beta-features-overview/), [4](https://android.gadgethacks.com/how-to/all-new-features-changes-samsungs-one-ui-2-for-galaxy-devices-0213686/)]
+
+### 3. "Looking For Something Else?" (Smart Links)
+
+To avoid burying cross-functional features into arbitrary folders, Samsung embeds a dynamic section at the very bottom of almost every single setting menu.
+
+- If you are under **Display**, you might be trying to adjust the touch sensitivity of a screen protector.
+- Instead of digging through a nested system menu, the bottom of the Display page features a contextual recommendation block that reads: _"Looking for something else? -> Touch Sensitivity."_ Clicking it teleports the user directly to the relevant toggle, preserving functional grouping. \[[1](https://ixdf.org/literature/topics/progressive-disclosure), [2](https://www.cnet.com/tech/mobile/galaxy-s9-settings-to-change-right-away/)]
+
+### 4. Hyper-Advanced "Sandbox" Modules
+
+For extreme customization and raw variables that would instantly fail KDE's simplicity guidelines, Samsung isolates the configurations cleanly outside the standard settings app:
+
+- **Developer Options**: To prevent accidental changes, the raw Android system tree is completely invisible. It requires the deliberate, secret action of tapping the OS Build Number 7 times to reveal itself at the absolute bottom of the app directory. \[[1](https://www.samsung.com/us/support/answer/ANS10003430/), [2](https://www.nngroup.com/articles/progressive-disclosure/), [3](https://www.youtube.com/watch?v=LXRGvheSWqA\&t=17)]
+- **Good Lock & Labs**: Instead of bloating the core setting menus with granular experimental UI choices, Samsung ships standalone apps like **Good Lock**. Within core apps like the photo gallery, power users can uncover **"Gallery Labs"** by repeatedly tapping the app version code. This creates a hard wall: the core settings stay completely pristine and human-friendly, while enthusiasts get direct access to micro-adjustments. \[[1](https://www.youtube.com/watch?v=goLKLbJpJX4), [2](https://www.nngroup.com/articles/progressive-disclosure/), [3](https://www.instagram.com/reel/DZpSLE3yzL1/), [4](https://www.instagram.com/reel/DOb6EN-Da0p/), [5](https://www.slashgear.com/1623030/samsung-galaxy-gallery-apps-features/)]
+
+Would you like to design a mobile application layout that mirrors **One UI’s top-viewing/bottom-acting reachability model**, or should we break down how another major operating system structures its menus?
+
+- [link](https://medium.com/@liana.ghazaryan1995/progressive-disclosure-in-saas-ux-designing-for-clarity-and-control-672643fccfbd)\
+  Progressive Disclosure in SaaS UX: Designing for Clarity and Control\
+  Jun 25, 2025 — We used progressive disclosure in several ways: \* Tabbed Navigation by Category. We grouped settings into logical categories like ...\
+  Medium·Liana Ghazaryan
+- [link](https://design.samsung.com/global/contents/one-ui/)\
+  One Thought, One UI\
+  Mar 8, 2018 — One UI's design principles include: \* \*\*One keeps consistency\*\* One UI brings all smart device experiences together into a uniform...\
+  Design Samsung
+- [link](https://www.youtube.com/watch?v=goLKLbJpJX4)\
+  How to customize One UI 8.5!\
+  Jun 1, 2026 — so you've had 1 UI 8.5 installed on your device for a while now You want to know what to do with it Well I'm going to show you som...\
+  11:51\
+  YouTube·SamMobile
+
+Show all
+
+## You said: how does vscode embrace this philosophy
+
+\*\***VS Code** is arguably the ultimate realization of the KDE philosophy at a massive scale. It handles an incredibly complex environment—thousands of settings for programming languages, compilers, and extensions—without using a generic "Advanced" tab. \[[1](https://socfortress.medium.com/visual-studio-code-vs-code-secure-installation-cis-hardening-guide-part-i-9843e1571ffb), [2](https://artoonsolutions.com/glossary/visual-studio-code/), [3](https://pullflow.com/blog/cursor-vs-code-fragmentation/)]
+
+Instead, VS Code achieves a "simple by default, powerful when needed" layout using **deep progressive disclosure**, a **split GUI/JSON interface**, and **dynamic search scoping**. \[[1](https://javascript.plainenglish.io/my-ultimate-vs-code-setup-with-plugins-and-shortcuts-9fcc5392fe5d)]
+
+***
+
+### 1. Unified Functional Hierarchy (No "Advanced" Bucket)
+
+If you open VS Code’s Settings UI (`Ctrl+,` or `Cmd+,`), you will not find an "Advanced" tab in the sidebar. Instead, every single configuration option is sorted strictly by **where it applies in your workflow**: \[[1](https://www.sitepoint.com/visual-studio-code-power-user-guide/), [2](https://blog.devgenius.io/change-to-vs-code-an-overview-with-a-minimal-setup-for-data-science-a67ba2e42571)]
+
+- **User vs. Workspace**: Grouped by scope (global settings vs. project-specific settings).
+- **Functional Categories**: _Text Editor, Workbench, Window, Features, Application, and Extensions._ \[[1](https://code.visualstudio.com/docs/getstarted/personalize-vscode), [2](https://vscode-docs.readthedocs.io/en/stable/customization/userandworkspace/), [3](https://developer.salesforce.com/blogs/2020/05/productive-development-with-visual-studio-code)]
+
+Whether you are changing a simple font size or configuring a hyper-technical regex pattern for file exclusions, both options live together under the **Text Editor** tree.
+
+***
+
+### 2. Dual-Layer Progressive Disclosure (GUI to JSON)
+
+VS Code natively handles the gap between casual users and core power users by maintaining two parallel representations of the exact same settings configuration.
+
+### Layer 1: The Clean GUI (Simple Form Layouts)
+
+By default, settings are rendered as a clean web form. Technical variables are hidden behind descriptive, human-readable labels.
+
+- **The Simplified View**: Under _Text Editor_ → _Files_, you see a simple checkbox for "Auto Save."
+- **Contextual Action Expansion**: For more complex settings like file formatting rules, VS Code provides a clean dropdown menu. If you need to edit complex object mappings, it doesn't clutter the UI with text boxes. Instead, it shows a single link button: **"Edit in settings.json"**.
+
+### Layer 2: The Raw Sandbox (`settings.json`) \[[1](https://tms-outsource.com/blog/posts/what-is-vscode/)]
+
+Clicking that contextual link bypasses the visual UI entirely and opens the underlying code file (`settings.json`). This is the equivalent of Firefox's `about:config`.
+
+- The GUI keeps the interface approachable for quick tweaks.
+- The JSON file gives developers direct, unbound access to raw variables, key-value pairs, and structural arrays without bloating the visual menus.
+
+***
+
+### 3. Dynamic Search Scoping
+
+Because a developer can install dozens of extensions (each adding their own configuration options), navigating a manual tree folder would be impossible. VS Code relies heavily on **Search Injection**. \[[1](https://medium.com/analytics-vidhya/visual-studio-v-s-vs-code-ide-or-editor-find-out-what-you-need-make-an-informed-choice-5bb2a4f48ec2)]
+
+- When you type a keyword like "Format" or "Git" into the settings search bar, VS Code instantly flattens the entire folder hierarchy.
+- It dynamically surfaces only the precise inputs related to your query, complete with their extension origins. Highly niche, deeply technical options are invisible during normal navigation but appear instantly the exact second you explicitly ask for them. \[[1](https://code.visualstudio.com/docs/agent-customization/overview)]
+
+***
+
+### 4. Extensions Isolation \[[1](https://vscode-docs1.readthedocs.io/en/latest/extensionAPI/patterns-and-principles/)]
+
+Rather than creating a global "Extension Settings" dumping ground, VS Code forces extension developers to map their custom configurations directly into the main sidebar tree.
+
+- If you install a Git extension, its complex configurations don't hidden under an advanced plugin tab.
+- They smoothly inject themselves directly into the core **Features** or **Extensions** categories, adopting the exact same visual hierarchy and layout rules as the native text editor settings.
+
+Would you like to explore **how to structure extension settings in a manifest file** to match this philosophy, or do you want to look at how another heavy desktop application manages its configuration layout?
+
+- [link](https://socfortress.medium.com/visual-studio-code-vs-code-secure-installation-cis-hardening-guide-part-i-9843e1571ffb)\
+  Visual Studio Code (VS Code) — Secure Installation & CIS Hardening Guide — Part I\
+  Jan 25, 2026 — Extremely Rich Extension Ecosystem The VS Code Marketplace contains tens of thousands of extensions, including: This allows organi...\
+  \
+  \
+  SOCFortress – Medium
+- [link](https://artoonsolutions.com/glossary/visual-studio-code/)\
+  What is Visual Studio Code? Code Editor for Developers\
+  VS Code ( Visual Studio Code ) supports a wide range of extensions that add functionality, such as language support, debuggers, li...\
+  \
+  Artoon Solutions
+- [link](https://pullflow.com/blog/cursor-vs-code-fragmentation/)\
+  The VS Code Fork Dilemma: Innovation at the Cost of Fragmentation?\
+  Jul 24, 2025 — VS Code ( Visual Studio Code ) didn't just win; it won by empowering its community. And that's what makes the current situation so...\
+  \
+  \
+  PullFlow
+
+Show all
+
+## You said: what do you think of vscode offering commonly used instead of advanced
+
+The choice by VS Code to feature a **"Commonly Used"** section at the very top of its settings sidebar is a brilliant, highly effective design pattern that perfectly aligns with the spirit of the KDE Human Interface Guidelines.
+
+By replacing an "Advanced" tab with a "Commonly Used" shortcut, VS Code flips the psychology of the interface from **exclusion to inclusion**.
+
+Here is a breakdown of why this approach works so well and how it solves the core problems of settings design:
+
+### 1. It Uses Positive Selection, Not Negative Labels
+
+Labeling something as "Advanced" is inherently negative: it creates a psychological barrier telling the user, _"You might not be smart or experienced enough to touch this."_\
+Conversely, **"Commonly Used"** is welcoming. It says, _"Here is what 90% of people come here to do."_ It doesn't gatekeep the rest of the settings; it simply highlights a shortcut gallery of high-traffic items (like Font Size, Tab Size, and Auto Save).
+
+### 2. It Preserves a Single, Flattened Hierarchy
+
+In a traditional "Basic vs. Advanced" split, a setting is forced into one bucket or the other. This creates a massive discovery problem: if a user wants to change their cursor blinking style, is that basic or advanced?\
+VS Code solves this by keeping the cursor settings exactly where they belong logically (_Text Editor → Cursor_). The "Commonly Used" section doesn't pull the setting out of its natural home; it merely creates a **visual mirror** or pointer to it at the top of the page. The core tree structure remains completely uncompromised and organized strictly by function.
+
+### 3. It Scales Dynamically with the Product
+
+An "Advanced" tab is static and highly subjective—what a developer considers advanced today might be standard tomorrow. "Commonly Used," however, can be entirely data-driven. Telemetry can dictate exactly which settings appear in that list based on actual user behavior across the global ecosystem. If a new feature suddenly becomes a critical part of modern workflows, it can seamlessly float into the "Commonly Used" section without a designer needing to debate whether it is "advanced enough."
+
+### 4. It Accelerates the "Time-to-Task"
+
+Most users open a settings panel to fix a minor friction point, not to browse. By placing a punchy list of the top 6 or 7 most adjusted variables right at the landing zone, VS Code ensures that the vast majority of users never have to scroll, expand a tree, or type a single keyword into the search bar. They get in, fix their font or indentation, and get right back to writing code.
+
+### The Summary Verdict
+
+Featuring "Commonly Used" instead of "Advanced" is the gold standard of **progressive disclosure**. It respects the user's time by surfacing immediate answers to common problems, while keeping 100% of the application's deepest power completely accessible just one click below.
+
+If you were to implement a similar shortcut section in your own project, do you want to look at **how to determine what qualifies as "commonly used"** without relying on intrusive tracking, or should we discuss **how to visually style a shortcut section** so it doesn't clutter the main menu?
+
+## You said: what do you think from the ux perspective
+
+From a strict **User Experience (UX) perspective**, <mark style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 500; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">substituting "Commonly Used" for "Advanced" is a masterclass in reducing <strong style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 600; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">cognitive load</strong> and optimizing <strong style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 600; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">user workflows</strong></mark>. \[[1](https://www.creative-blend.co.uk/the-psychological-theories-behind-effective-ux-design/)]
+
+Here is how this design choice maps directly to core UX principles, behavioral psychology, and usability heuristics:
+
+### 1. It Drastically Reduces Interaction Cost \[[1](https://medium.com/design-bootcamp/70-ways-to-get-started-in-ux-and-product-design-d1b5939dd384)]
+
+According to Hick’s Law, the time it takes to make a decision increases with the number and complexity of choices. \[[1](https://medium.com/design-bootcamp/understanding-users-a-psychology-driven-approach-to-ux-design-e45400275bcc), [2](https://medium.com/design-bootcamp/design-for-the-human-mind-how-cognitive-science-shapes-ux-design-f0b83e3da6b6)]
+
+- **The Problem:** VS Code has thousands of settings. Forcing a user to hunt through folders to fix something simple like a font size creates immense friction.
+- **The Solution:** The "Commonly Used" section acts as a UX shortcut. By putting the most high-traffic toggles on the initial landing screen, the application satisfies the **80/20 rule** (80% of users only ever touch 20% of the settings). It drops the interaction cost to nearly zero for the majority of visits. \[[1](https://outwitly.com/resources/ux-design-when-not-to-go-mobile-first/)]
+
+### 2. It Leverages "Recognition over Recall" \[[1](https://ux247.com/usability-principles/)]
+
+One of Jakob Nielsen’s core usability heuristics is _Recognition Rather Than Recall_.\
+When a user opens settings, they might not remember the exact technical term for what they want to fix (e.g., they might not recall the phrase "Tab Size" or "Insert Spaces"). When they see a clean list of "Commonly Used" items right in front of them, their brain instantly recognizes the visual option: _"Ah, yes, there is 'Tab Size' right there."_ They don't have to strain their memory or guess what folder it lives in. \[[1](https://uxdesign.cc/the-subtle-difference-between-ui-ux-design-809749afcb89)]
+
+### 3. It Prevents the "Anxiety of the Unknown" \[[1](https://riseuplabs.com/ux-design-examples/)]
+
+In UX design, labeling a button "Advanced" triggers a psychological phenomenon known as **action anxiety**. Users worry that entering that space might allow them to permanently break the application or change a setting they don't understand.\
+"Commonly Used" acts as a psychological safety blanket. It signals to the user that everything on this screen is safe, standard, and heavily tested by peers. It builds confidence and encourages exploration. \[[1](https://uxdesign.cc/12-tips-for-better-product-usability-48a7889a38db)]
+
+### 4. It Maintains "Information Architecture" Integrity \[[1](https://technicalwriterhq.com/career/ux-writer-vs-technical-writer/)]
+
+Good UX relies on a predictable system of classification. A major flaw of an "Advanced" tab is that it destroys your Information Architecture (IA) by grouping things by _difficulty_ rather than _functionality_. \[[1](https://www.linkedin.com/posts/bgsmartin%5Fim-now-two-months-into-a-role-thats-more-activity-7466140722631569408-mNOc)]
+
+- **The Advanced Flaw:** Splitting settings into basic and advanced forces a user to maintain a fragmented mental map of the app.
+- **The Shortcut Success:** A "Commonly Used" section is an overlay, not a structural folder. It acts like a "Favorites" bar in a web browser. The underlying architecture remains pure and organized logically by system components, while the user gets a frictionless fast-lane.
+
+### 5. It Avoids the "Expert Bias" Trap
+
+Product developers often suffer from the "Curse of Knowledge"—they assume users know the system as well as they do. What a developer thinks is a "basic" setting might feel incredibly advanced to a beginner.\
+By shifting the metric from **Skill Level (Basic vs. Advanced)** to **Frequency of Use (Common vs. Niche)**, the UX becomes completely objective and user-centric, stripping away developer bias entirely. \[[1](https://uxpsychology.substack.com/p/bridging-the-gap-navigating-the-curse), [2](https://www.useberry.com/blog/challenging-assumptions-in-ux-design/), [3](https://blog.prototypr.io/5-tips-to-start-practicing-ux-design-92e39919040a), [4](https://supercharge.design/blog/29-ui-ux-design-skills-you-need-to-have), [5](https://academic.oup.com/iwc/article/23/5/473/660020)]
+
+If you are designing an interface, would you like to map out **how to implement a "Commonly Used" shortcut layer** for your specific layout, or should we look at **how to handle the visual transition** when a user decides to move past the common settings into the deeper menus?
+
+- [link](https://www.creative-blend.co.uk/the-psychological-theories-behind-effective-ux-design/)\
+  The psychological theories behind effective UX design\
+  How it this relevant to UX? According to a 2020 study: Reducing cognitive load leads to all-around better user experience (UX), le...\
+  \
+  \
+  www.creative-blend.co.uk
+- [link](https://medium.com/design-bootcamp/70-ways-to-get-started-in-ux-and-product-design-d1b5939dd384)\
+  70 ways to get started in UX and product design\
+  Apr 18, 2021 — The sum of these is called interaction costs. We want to keep interaction costs low by making our UX flows as easy as possible to ...\
+  \
+  \
+  Medium
+- [link](https://medium.com/design-bootcamp/understanding-users-a-psychology-driven-approach-to-ux-design-e45400275bcc)\
+  Understanding Users: A Psychology-Driven Approach to UX Design\
+  Jul 7, 2024 — Hick's Law states that the time it takes to make a decision increases with the number of choices presented. Simplifying choices an...\
+  \
+  \
+  Medium
+
+Show all
+
+## You said: what do you think of vscode not having fuzzy search in settings and commands, unlike gnome apps search or one ui
+
+From a UX and architectural perspective, VS Code’s decision to limit aggressive fuzzy matching in its Settings UI and Command Palette—while mobile platforms like Samsung One UI and desktop shells like GNOME prioritize it—is a deliberate choice dictated by **user intent** and **muscle memory**. \[[1](https://github.com/microsoft/vscode/issues/1964)]
+
+VS Code actually _does_ use fuzzy matching when you are searching for filenames (`Ctrl+P`) or code symbols (`Ctrl+T`), but it deliberately scales it back for settings and commands. \[[1](https://levelup.gitconnected.com/fuzzy-searches-in-vs-code-tips-to-increase-developer-focus-and-productivity-6809c0f3ce9a)]
+
+The structural divide reveals key insights into how different environments handle search.
+
+***
+
+### 1. The Muscle Memory Problem (Command Palette vs. GNOME)
+
+The VS Code development team noted that the primary issue with fuzzy matching is that it requires **dynamic fuzzy sorting**—shifting the most "relevant" results to the top based on a changing algorithm. \[[1](https://github.com/microsoft/vscode/issues/1964)]
+
+- **VS Code's Goal**: The Command Palette relies entirely on muscle memory. Developers expect that typing `g i r` will _always_ pull up "Git: Rebase" in the exact same list position every time. True fuzzy search constantly shifts the index of the result list depending on what extensions are installed, destroying predictable, rapid keystroke habits. \[[1](https://github.com/microsoft/vscode/issues/1964)]
+- **GNOME's Goal**: A desktop environment search is built for discovery and fault tolerance. If a user types `chrom`, GNOME needs to guess whether they want Google Chrome, Chromium, or a file named "chromebook\_receipt.pdf". It favors high recall (finding anything close) over precision. \[[1](https://news.ycombinator.com/item?id=33856544)]
+
+### 2. High Density Precision vs. "Fat-Finger" Tolerance
+
+The physical nature of the device drastically changes what constitutes "good UX."
+
+- **Samsung One UI**: Designed for touchscreens and one-handed mobile use. Users frequently mistype letters due to keyboard sizes or walking while texting. Mobile searches _must_ use aggressive fuzzy logic (e.g., matching "btery" to "Battery") to counteract human input errors.
+- **VS Code**: Tailored for power users sitting at a physical QWERTY keyboard. The cost of a typo is low, but the cost of noise is high. If a developer types `editor.tabSize`, they want options that strictly match that specific token string. Dropping in dozens of fuzzy adjacent matches (like `editor.fontSize`) creates cognitive clutter on a high-density screen. \[[1](https://bitfieldconsulting.com/posts/vs-code-go), [2](https://marketplace.visualstudio.com/items?itemName=rbaumier.go-to-fuzzy), [3](https://www.youtube.com/watch?v=5J01Qsc9Bjg)]
+
+### 3. The Structural Nature of JSON Keys
+
+VS Code settings are fundamentally code properties inside an underlying `settings.json` file.\
+Because these targets are namespaces (`workbench.activityBar.location`), search behaves like a text filter rather than a natural language engine. If you use deep fuzzy matching on a namespace string, almost every single setting in the app would match a 4-letter query, rendering the search bar completely useless. Instead, VS Code uses **sub-string filtering and keyword mapping**, which keeps results isolated and accurate. \[[1](https://marketplace.visualstudio.com/items?itemName=zaidalsaheb.search-preview), [2](https://code.visualstudio.com/docs/configure/settings), [3](https://medium.com/towardsdev/visual-studio-code-settings-for-python-development-025b3d5ff4fe)]
+
+***
+
+### Summary Architectural Contrast
+
+| Feature \[[1](https://github.com/microsoft/vscode/issues/1964), [2](https://www.turing.com/blog/vs-code-shortcuts-and-productivity-hacks), [3](https://marketplace.visualstudio.com/items?itemName=rbaumier.go-to-fuzzy)] | VS Code (Commands / Settings)                                      | GNOME Shell / One UI                                                         |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ | ---------------------------------------------------------------------------- |
+| **Primary Input**                                                                                                                                                                                                         | Physical Keyboard (High Speed)                                     | Touchscreen / Global Hotkey (Variable Speed)                                 |
+| **UX Metric**                                                                                                                                                                                                             | **Predictability**: List index must stay stable for muscle memory. | **Serendipity**: Finding the target even with major typos or partial memory. |
+| **Result Type**                                                                                                                                                                                                           | Strict, functional text filters matching specific namespaces.      | Aggressive, broad database sweeps handling natural language.                 |
+
+If you are building an interface, would you like to explore **how to code a prefix-matching algorithm** that protects muscle memory, or should we look at **how to design custom keyboard shortcuts** in VS Code to bypass searching altogether?
+
+- [link](https://levelup.gitconnected.com/fuzzy-searches-in-vs-code-tips-to-increase-developer-focus-and-productivity-6809c0f3ce9a)\
+  Fuzzy Searches in VS Code: Tips to increase developer focus and productivity | by Thomaz Moura\
+  Feb 19, 2020 — You can use fuzzy search by: \* \*\*Filename search\*\* Use the native key binding \`ctrl+P\` \* \*\*Symbol search\*\* Use the native key bind...\
+  Level Up Coding
+- [link](https://github.com/microsoft/vscode/issues/1964)\
+  Add fuzzy search to commands in palette · Issue #1964 - GitHub\
+  Jan 12, 2016 — The issue with fuzzy matching is that you also need to do fuzzy sorting: more relevant results to the top. However for the command...\
+  GitHub
+- [link](https://marketplace.visualstudio.com/items?itemName=zaidalsaheb.search-preview)\
+  Search Preview - Visual Studio Marketplace\
+  Jul 8, 2025 — How to Use. Quick Open with Preview. Search Search Preview: Quick Open with Preview in the command pallete to open the enhanced qu...\
+  Visual Studio Marketplace
+
+Show all
+
+## You said: what do you think of vscode not having fuzzy search in settings and commands, unlike gnome apps search or one ui. i mean fuzzy search like music to elisa, image to inkscape, convert to lowercase to transform to lowercase, prettier to format document
+
+The examples provided highlight **semantic/synonym search** rather than basic character-level fuzzy search (like matching "btery" to "Battery"). What is being described is a **conceptual map**—the ability to type a generic category like "music" and have the system understand you mean a specific program like Elisa, or typing a functional intent like "convert to lowercase" and having it match "transform to lowercase."
+
+From a UX perspective, VS Code's lack of this semantic synonym search in its Command Palette and settings is a **massive missed opportunity for user onboarding**, but a **deliberate engineering boundary** to maintain raw speed and control.
+
+This layout choice creates specific pros and cons:
+
+### 1. The Onboarding Tax (The Downside)
+
+For a new user or someone switching from an ecosystem like Neovim or JetBrains, VS Code's search can feel incredibly rigid.
+
+- **The Intent Gap**: If you type "prettier," you want the editor to run your formatting command. VS Code expects you to know that the engine-level command is actually titled **"Format Document"**. \[[1](https://www.reddit.com/r/vscode/comments/1jfqiyz/i%5Fmade%5Fan%5Fextension%5Fto%5Flet%5Fyou%5Ffuzzy%5Ffind%5Ffiles/)]
+- **Cognitive Load**: Forcing the user to recall the _exact developer terminology_ used by the core team or an extension author violates the fundamental UX rule of prioritizing **Recognition over Recall**. It turns a tool meant for fast actions into a barrier where you have to pause your workflow to Google the correct phrase.
+
+### 2. Why GNOME and One UI Can Do It (Scope and Scale)
+
+Desktop environments and mobile operating systems handle a much narrower, predictable scope.
+
+- **Limited Mapping**: A system designer can easily create a manual alias file mapping "music" to Elisa, or "image/drawing" to Inkscape because the app roster is relatively fixed.
+- **System Indexing**: Mobile OS shells use heavyweight semantic indexing backends that can handle natural language queries without noticeably hurting system speed.
+
+### 3. The Technical Hard Wall in VS Code
+
+VS Code doesn't implement this type of semantic mapping for three critical reasons:
+
+- **The Extension Explosion**: VS Code has tens of thousands of community extensions. If the core engine tried to guess synonyms for every custom command injected by third-party developers, the search index would become completely polluted with conflicting guesses. \[[1](https://medium.com/@siamsoftlab/the-dawn-of-a-new-era-google-antigravity-and-the-question-of-visual-studio-codes-future-51fcb0a6d190)]
+- **Performance overhead**: In a massive workspace, the Command Palette must open and filter _instantly_ (under 10-20 milliseconds) with every keystroke. Running a natural-language semantic model or cross-checking a massive dictionary of synonyms with every letter typed would introduce noticeable latency.
+- **The Command Palette's Secret Filter**: VS Code actually expects extension developers to add these aliases manually in their configuration manifests using keywords. For example, if a developer builds a formatting extension, they are supposed to tag it under the "Format" category so it appears when you search that keyword. When extensions fail to do this, the experience breaks down for the user.
+
+### How VS Code is Bridging the Gap
+
+The VS Code team recognizes this exact limitation. Instead of bloating the core offline search input with localized dictionaries, recent updates have started integrating **semantic AI search tools** directly into the interface. The global search bar now features a hybrid mode where power users can leverage localized Large Language Models (LLMs) via Github Copilot to handle natural language intents like "make this file a list of lowercase items". \[[1](https://stackoverflow.com/questions/35184509/make-selected-block-of-text-uppercase), [2](https://code.visualstudio.com/updates/), [3](https://github.com/BeaconBay/ck)]
+
+If you are building an application registry, would you like to see **how to manually implement alias keywords** into an app's manifest file to fix this, or do you want to look at **how to structure extension categories** so they are easy to find?
+
+- [link](https://github.com/BeaconBay/ck)\
+  BeaconBay/ck: Local first semantic and hybrid BM25 grep / search ...\
+  Features: Multiple Search Modes: Toggle between Semantic, Regex, and Hybrid search with Tab. Preview Modes: Switch between Heatmap...\
+  GitHub
+- [link](https://code.visualstudio.com/updates/)\
+  October 2023 (version 1.84) - Visual Studio Code\
+  Like the Command Palette, the Settings editor now runs a similar settings search to gather more relevant results for a given query...\
+  Visual Studio Code
+- [link](https://stackoverflow.com/questions/35184509/make-selected-block-of-text-uppercase)\
+  visual studio code - Make selected block of text uppercase\
+  Feb 3, 2016 — Now CTRL + SHIFT + U will capitalise selected text, even if multi line. In the same way, CTRL + SHIFT + L will make selected text ...\
+  Stack Overflow
+
+Show all
+
+## You said: what do you think from the ux perspective
+
+From a strict **User Experience (UX) perspective**, <mark style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 500; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">the absence of semantic and synonym search creates a sharp divide between <strong style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 600; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">novice learnability</strong> and <strong style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 600; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">expert efficiency</strong></mark>.
+
+By forcing users to match the exact string of a command rather than their mental model of the task, VS Code prioritizes predictable automation at the cost of intuition.
+
+***
+
+### 1. The Clash of Mental Models
+
+In UX design, a **mental model** is what the user _believes_ a system does, while the **system model** is how the system _actually_ works. \[[1](https://www.devinterface.com/en/blog/ux-design-for-outstanding-user-experiences), [2](https://developerrelations.com/talks/how-to-apply-ux-principles-and-methods-to-api-usability/), [3](https://www.softwareevaluation.de/en/foundations/mental-models-in-hci/)]
+
+- **The UX Failure:** When a user types "convert to lowercase," their mental model is focused on the _outcome_. VS Code’s system model, however, requires the user to know the exact developer-defined label: `"Transform to Lowercase"`.
+- **The Cognitive Friction:** This forces the user to pause, translate their human intent into developer jargon, and guess synonyms until a result appears. This breaks the state of "flow" that is critical for programmers. \[[1](https://www.uxpin.com/studio/blog/cognitive-friction-good-or-bad/)]
+
+### 2. Violation of the "Fault Tolerance" Principle
+
+Good UX dictates that a system should be resilient to human variation. A user shouldn't be penalized for thinking of a tool as a "beautifier" or "prettier" instead of a "formatter." \[[1](https://medium.com/design-bootcamp/how-ux-design-plays-a-major-role-in-our-daily-life-8a56f3eb144c)]
+
+- **Mobile/Desktop (One UI & GNOME):** Embrace fault tolerance. They act as helpful concierges. If you type a generic category ("music"), they gracefully bridge the gap to the specific tool ("Elisa").
+- **VS Code:** Operates with zero fault tolerance in this context. It acts like a strict terminal interface disguised as a modern GUI. If you don't know the exact keyword, the system effectively tells you that the command does not exist.
+
+### 3. The Power-User Justification: Speed & Determinism
+
+Despite these clear usability flaws for beginners, this strictness serves a highly specific UX goal for advanced professionals: **deterministic behavior**.
+
+- For an expert developer, the Command Palette is an extension of their keyboard shortcuts. They type at blistering speeds using muscle memory (e.g., hitting `Ctrl+P`, typing `low`, and hitting `Enter` to lowercase text).
+- If VS Code introduced a fluid, semantic search engine, typing `low` might suddenly surface a "Lower Audio volume" extension command or a "Low-contrast theme" toggle depending on a changing semantic algorithm.
+- By keeping the search strictly string-based, the UX remains **100% predictable**. The same sequence of keystrokes will yield the exact same result every single day, which is the ultimate goal for professional productivity tools.
+
+***
+
+### The Verdict: A Missing "Onboarding" Layer
+
+The ideal UX compromise—which VS Code currently lacks in its core search bar—is a **layered alias system**.
+
+A perfect implementation would preserve strict string-matching for speed, but include a lightweight, static synonym dictionary under the hood. Typing "prettier" shouldn't trigger a complex AI calculation; it should simply look at a hardcoded list of tags and say: `prettier -> see: Format Document`. This would instantly rescue the onboarding experience for newer users without degrading performance or predictability for experts.
+
+If you were designing a search interface for a complex app, would you like to map out **how to structure a static alias dictionary** to solve this issue, or should we look at **how to design visual search hints** that teach users the correct terminology while they type?
+
+- [link](https://www.devinterface.com/en/blog/ux-design-for-outstanding-user-experiences)\
+  UX Design for outstanding user experiences\
+  Sep 2, 2024 — 7. Respect users' mental models First of all, a menta model is " what the user believes about the system (web, application, or oth...\
+  \
+  \
+  DevInterface
+- [link](https://developerrelations.com/talks/how-to-apply-ux-principles-and-methods-to-api-usability/)\
+  How to apply UX principles and methods to API usability\
+  So, a mental model is a user's understanding of how a system works; which can be wrong sometimes. In contrast, you might also have...\
+  \
+  \
+  developerrelations.com
+- [link](https://www.softwareevaluation.de/en/foundations/mental-models-in-hci/)\
+  Mental Models in HCI | UX & Usability Toolkit\
+  Nov 27, 2025 — system model - how the system actually works technically\
+  \
+  \
+  www.softwareevaluation.de
+
+Show all
 
