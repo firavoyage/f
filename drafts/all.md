@@ -692,15 +692,16 @@ have: <!-- eat, grow -->
 humility:
 
 - research claude code leak insights
-- research google ai mode citing pro model ux
+- research google ai mode citing pro model ux <!-- improper citing by llms -->
 - research zed highly requested features
 - research opencode undo feature critical accidental code removal issue
 - research opencode <!-- structured output, yaml or json or xml -->
-- research google ai mode system prompt tools skills llms follow up criticism
+- research google ai mode system prompt tools skills llms follow up criticism <!-- interview mode -->
 - install librechat
 - research librechat
 - research dify
 - research manus
+- research google ai mode inline citations change <!-- limitations compared with wikipedia source references, fe glitches -->
 
 legacy:
 
