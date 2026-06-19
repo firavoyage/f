@@ -376,3 +376,22 @@ on humility and para <!-- eat, have, grow... -->.
 
 ---
 
+ux: cache common best prac
+
+> Google’s Knowledge Graph
+
+This response was generated with the help of AI. It’s supported by info from across the web and Google’s Knowledge Graph, a collection of info about people, places, and things. Generative AI is a work in progress and info quality may vary. For help evaluating content, you can visit the provided links. Learn more about how AI Mode works and how data helps Google develop AI in Search.
+
+> there are not so many ppl in the world
+
+---
+
+ux: user centric, immune to all external arguments
+
+google ai mode moves the link panel inside the response.
+
+<!-- i guess it's a forced move by angry web masters, not anything user centric. -->
+
+how many user would actually click them, meaningfully, if they could already be summarized
+
+---
