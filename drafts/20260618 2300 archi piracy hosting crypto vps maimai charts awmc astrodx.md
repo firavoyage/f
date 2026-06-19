@@ -1700,5 +1700,239 @@ If you want to make sure your collection stays fully hidden, I can explain how t
 
 Show all
 
+# how does github gitlab gitea codeberg handle piracy
+
+\*\***GitHub, GitLab, Gitea, and Codeberg** handle piracy—which in the context of Git forges usually means hosting leaked proprietary source code, cracked software, or reverse-engineered DRM tools—differently based on whether they are **centralized corporations** or **open-source software tools**. \[[1](https://godotforums.org/d/40641-codeberg-and-github)]
+
+The fundamental divide comes down to legal jurisdiction and whether you are using a hosted cloud platform (SaaS) or hosting the server software yourself.
+
+***
+
+### 1. GitHub & GitLab (The Corporate Cloud Model)
+
+Both [GitHub](https://docs.github.com/en/site-policy/content-removal-policies/dmca-takedown-policy) and [GitLab](https://gitlab.com/gitlab-com/content-sites/handbook/-/blob/4b9229d4b34b8ba78be4a0980d445f66f42c61b4/content/handbook/legal/dmca.md) are centralized commercial platforms incorporated in the United States. They handle piracy aggressively via strict legal frameworks. \[[1](https://docs.github.com/en/site-policy/content-removal-policies/dmca-takedown-policy), [2](https://gitlab.com/gitlab-com/content-sites/handbook/-/blob/4b9229d4b34b8ba78be4a0980d445f66f42c61b4/content/handbook/legal/dmca.md)]
+
+- **DMCA Takedown Process**: As US-based entities, they heavily rely on the **Digital Millennium Copyright Act (DMCA) Safe Harbor** provisions. If a copyright owner finds pirated material, they submit a formal DMCA notice. GitHub or GitLab will quickly remove or disable the repository to protect themselves from liability.
+- **Automated Scanning**: GitHub actively scans for leaked keys, tokens, and certain types of content to prevent security breaches and intellectual property theft before it can spread.
+- **Counter-Notices**: Users can file a counter-notice if they believe the takedown was a mistake (e.g., fair use or clean-room reverse engineering). The platform will then reinstate the code after 10–14 days unless the copyright holder files an actual lawsuit.
+- **The "Tooling" Grey Area**: Under Section 1201 of the DMCA, tools designed specifically to bypass copyright controls (like DRM bypasses) are illegal. GitHub famously took down and later reinstated `youtube-dl` after intense developer backlash and legal review from the [Electronic Frontier Foundation](https://www.eff.org/deeplinks/2020/11/github-reinstates-youtube-dl-after-riaas-abuse-dmca), establishing that a tool must explicitly violate DRM to be banned. \[[1](https://www.eff.org/issues/dmca), [2](https://gitlab.com/gitlab-com/content-sites/handbook/-/blob/30a81d3af79026e77ec095506a3094277e9270bf/content/handbook/security/security-operations/trustandsafety/intellectual-property-on-gitlab-com.md), [3](https://www.reddit.com/r/programming/comments/fb64d/github%5Fnow%5Fpublishing%5Fdmca%5Ftakedown%5Fnotices%5Fit/), [4](https://docs.github.com/en/site-policy/content-removal-policies/guide-to-submitting-a-dmca-takedown-notice), [5](https://www.eff.org/deeplinks/2020/11/github-reinstates-youtube-dl-after-riaas-abuse-dmca), [6](https://nyulawreview.org/issues/volume-90-number-1/yes-its-illegal-to-cheat-a-paywall/), [7](https://docs.github.com/en/site-policy/content-removal-policies/dmca-takedown-policy), [8](https://gitlab.com/gitlab-com/content-sites/handbook/-/blob/4b9229d4b34b8ba78be4a0980d445f66f42c61b4/content/handbook/legal/dmca.md)]
+
+### 2. Gitea (The Software vs. The Hosted Platform)
+
+- [link](https://github.com/go-gitea/gitea/issues/12875)\
+  Why create gitea hosted gitea when codeberg already has the ...\
+  Sep 16, 2020 — Gitea.com came first, as well it allows for the project to be in control of the infrastructure and allows us to upgrade as we plea...\
+  GitHub
+- [link](https://about.gitea.com/products/gitea)\
+  The Best Open Source Self-Hosted Git Service - Gitea\
+  Gitea is a painless self-hosted all-in-one software development service, including Git hosting, code review, team collaboration, p...\
+  Gitea
+- [link](https://docs.github.com/en/site-policy/content-removal-policies/dmca-takedown-policy)\
+  DMCA Takedown Policy - GitHub Docs\
+  The DMCA provides two simple, straightforward procedures that all GitHub users should know about: (i) a takedown-notice procedure ...\
+  GitHub Docs
+
+Show all
+
+Gitea must be viewed as two different things: the software itself and the cloud service `Gitea.com`. \[[1](https://github.com/go-gitea/gitea/issues/12875), [2](https://about.gitea.com/products/gitea)]
+
+- **Self-Hosted Software**: Gitea is an open-source, lightweight Git engine. If someone downloads Gitea and runs it on their own private server, **Gitea the organization cannot touch or delete that content**. They have zero technical or administrative control over self-hosted instances.
+- **The Infrastructure Provider's Problem**: If a pirate hosts a self-hosted Gitea instance loaded with cracked games, copyright holders cannot send a DMCA notice to Gitea. Instead, they must issue the takedown notice to the **VPS provider or web host** (e.g., DigitalOcean, Hetzner, AWS) hosting that server.
+- **Gitea.com**: The official cloud-hosted version managed by Gitea's corporate entity. Like GitHub, it operates under standard Terms of Service that strictly prohibit hosting infringing material, and it complies with international copyright takedown demands. \[[1](https://github.com/go-gitea/gitea/issues/12875), [2](https://www.youtube.com/watch?v=rPiLt%5FgfXNM\&t=17), [3](https://about.gitea.com/products/gitea), [4](https://news.ycombinator.com/item?id=25078794), [5](https://www.reddit.com/r/BuyFromEU/comments/1s4ds3i/moving%5Ffrom%5Fgithub%5Fto%5Fcodeberg%5Ffor%5Flazy%5Fpeople/), [6](https://www.reddit.com/r/linux/comments/znaeab/codeberg%5Fa%5Fnon%5Fprofit%5Fcode%5Fhosting%5Fplatform/), [7](https://forum.gitea.com/tos)]
+
+### 3. Codeberg (The European Non-Profit Model) \[[1](https://refine.dev/blog/github-alternatives/), [2](https://news.ycombinator.com/item?id=47791346)]
+
+[Codeberg](https://codeberg.org/) is a unique, community-driven non-profit platform based in Germany running on **Forgejo** (a fork of Gitea). It handles intellectual property fundamentally differently due to its ideology and geographic jurisdiction. \[[1](https://docs.codeberg.org/getting-started/what-is-codeberg/), [2](https://codeberg.org/), [3](https://docs.codeberg.org/getting-started/faq/), [4](https://www.wearedevelopers.com/en/magazine/298/top-github-alternatives), [5](https://refine.dev/blog/github-alternatives/)]
+
+- **German/EU Law Jurisdiction**: Because Codeberg is based in the European Union, it is **not subject to US DMCA takedowns**. A US corporate entity cannot simply send a standard automated DMCA form letter to instantly wipe a repository.
+- **Strict FOSS Mandate**: Codeberg's Terms of Service state that all public repositories **must have a Free and Open Source Software (FOSS) license**. Because private repositories are heavily discouraged or not offered to the general public, it is almost impossible to use Codeberg as a "secret locker" for pirated goods.
+- **How They Handle Takedowns**: Instead of DMCA, Codeberg operates under German copyright law (such as the _UrhG_). If Codeberg receives a verified notice that a repository contains illegal copyrighted content (like a cracked video game or proprietary source code), **they will take it down manually** to comply with local German law.
+- **Safe Haven for Scrapers/Emulators**: Codeberg has become a popular alternative for software tools (like media scrapers or emulation tools) that are frequently targeted by aggressive or bad-faith corporate DMCA claims in the US, as Codeberg evaluates these claims strictly under the more permissive European legal definitions of interoperability. \[[1](https://www.reddit.com/r/opensource/comments/1qmiv56/for%5Fthose%5Fwho%5Fuse%5Fgithub%5Fto%5Fhost%5Ftheir%5Fprojects/), [2](https://gitlearn.io/blog/what-is-codeberg-github-alternative), [3](https://codeberg.org/Codeberg/Community/issues/630), [4](https://docs.codeberg.org/getting-started/faq/), [5](https://codeberg.org/Codeberg/Community/issues/314), [6](https://www.reddit.com/r/linux/comments/1sdnl9k/media%5Fscraper%5Fgallerydl%5Fis%5Fmoving%5Fto%5Fcodeberg/)]
+
+***
+
+### Scannable Overview
+
+| Platform \[[1](https://docs.github.com/en/site-policy/content-removal-policies/dmca-takedown-policy), [2](https://www.eff.org/issues/dmca), [3](https://gitlab.com/gitlab-com/content-sites/handbook/-/blob/4b9229d4b34b8ba78be4a0980d445f66f42c61b4/content/handbook/legal/dmca.md), [4](https://gitlab.com/gitlab-com/content-sites/handbook/-/blob/30a81d3af79026e77ec095506a3094277e9270bf/content/handbook/security/security-operations/trustandsafety/intellectual-property-on-gitlab-com.md), [5](https://news.ycombinator.com/item?id=25078794), [6](https://gitlearn.io/blog/what-is-codeberg-github-alternative), [7](https://codeberg.org/Codeberg/Community/issues/314)] | Legal Jurisdiction        | Takedown Mechanism                         | Target Resistance                                                |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------- | ------------------------------------------ | ---------------------------------------------------------------- |
+| **GitHub**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | United States (Corporate) | **DMCA** (Automated & Manual)              | **Low**; rapid compliance to maintain safe harbor.               |
+| **GitLab.com**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | United States (Corporate) | **DMCA** (Manual Review)                   | **Low**; standard US corporate legal compliance.                 |
+| **Gitea (Self-Hosted)**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | None (Decentralized)      | None; must target the underlying web host. | **High**; entirely dependent on where the server is plugged in.  |
+| **Codeberg**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | Germany (EU Non-Profit)   | **German Copyright Law** (_UrhG_)          | **Medium-High**; immune to US DMCA, requires human legal review. |
+
+If you are looking at this from a development perspective, are you trying to **protect your own source code** from being pirated, or are you looking into the **legal safety of hosting open-source tools** that interface with copyrighted platforms? Let me know and I can provide more specific advice.
+
+## You said: i mean how active is each
+
+When looking at the **actual, daily volume of piracy** (leaked code, cracked software, bypass scripts, and keygens) hosted on these platforms, the activity levels vary wildly.
+
+The volume correlates directly with how many users each platform has and how aggressively they are policed.
+
+***
+
+### 1. GitHub: Extremely High Activity (The Whack-A-Mole Capital)
+
+Despite strict rules, GitHub sees an **overwhelming, constant influx of pirated material** simply because it is where 100+ million developers and users are. \[[1](https://transparencycenter.github.com/)]
+
+- **The Scope**: According to [GitHub’s Transparency Center](https://transparencycenter.github.com/), the platform processed thousands of DMCA notices, resulting in **over 47,000 projects being taken down in a single year**. \[[1](https://transparencycenter.github.com/)]
+- **The Content**: It is incredibly active with cracked software installation scripts, Windows activation bypasses, private API scrapers, game emulators, and massive repositories of leaked corporate source code. \[[1](https://www.reddit.com/r/selfhosted/comments/1timhsb/leaving%5Fgithub%5Ffor%5Fprivate%5Frepos/)]
+- **How it feels**: It is a perpetual game of "whack-a-mole." A repository containing pirated material will go viral, get thousands of stars, get taken down by a copyright lawyer within 48 hours, and immediately be re-uploaded (forked or cloned) by twenty other accounts within minutes.
+
+### 2. GitLab: Low to Moderate Activity
+
+GitLab is highly active as a software development platform, but it is **not popular for public piracy hosting**.
+
+- **The Target Audience**: GitLab’s user base is predominantly enterprise companies and professional dev teams focused on private DevOps pipelines. It lacks the massive, casual "social media" network effect of GitHub where people browse for cool free tools.
+- **The Content**: While you will occasionally find leaked source code or an automated scraping script on GitLab.com, pirates rarely choose it as their primary public distribution hub. Takedown requests happen, but they are a tiny fraction compared to GitHub's volume.
+
+### 3. Codeberg: Highly Active (Specifically for "Grey Area" Software)
+
+For its size, Codeberg has become **intensely active in a very specific niche of copyright-disputed software**. \[[1](https://www.youtube.com/watch?v=pAQqkI0xMu4\&t=16)]
+
+- **The "DMCA Refugee" Hub**: Because Codeberg does not answer to US DMCA law, it is incredibly active with software that has been banned or chased off GitHub. \[[1](https://www.helpnetsecurity.com/2026/04/16/github-copyright-liability-update/)]
+- **The Content**: It is a massive hotspot for Nintendo/console emulators, media scraping tools, torrenting clients, and software designed to interface with heavily locked-down APIs.
+- **Strict Anti-Piracy Limits**: While it is highly active for _tools_ that anger large corporations, it is **dead silent for raw piracy** (like posting an actual cracked video game or a stolen movie). Because Codeberg strictly requires public projects to have a Free and Open Source (FOSS) license, their small community moderation team manually bans raw file-sharing piracy very quickly. \[[1](https://www.reddit.com/r/opensource/comments/1qmiv56/for%5Fthose%5Fwho%5Fuse%5Fgithub%5Fto%5Fhost%5Ftheir%5Fprojects/)]
+
+### 4. Gitea (Self-Hosted): Moderate to High (Hidden Activity)
+
+By definition, you cannot track a single global activity metric for self-hosted Gitea (or its fork, Forgejo) because these instances are private servers. However, from an infrastructure perspective, it is **highly active in the dedicated piracy community**. \[[1](https://www.youtube.com/watch?v=pAQqkI0xMu4\&t=16), [2](https://news.ycombinator.com/item?id=45439955)]
+
+- **The Private Archive**: Gitea is the standard engine used by private groups, data hoarders, and underground software-cracking groups. They use it to run internal, invite-only Git servers to collaborate on reverse-engineering projects, store cracked binaries, and mirror code safely out of reach of corporate lawyers.
+- **The Content**: Everything from cracked games to closed-source corporate software. Because the public can't see these servers, they remain 100% active until a copyright holder manages to track down the underlying IP address and issue a takedown to their web hosting company.
+
+***
+
+### Activity Summary
+
+- **GitHub**: **Maximal activity**. The primary destination for public piracy, leaks, and bypasses, leading to tens of thousands of automated takedowns annually.
+- **Codeberg**: **High specialized activity**. The go-to safe haven for developers building controversial scrapers, emulators, and DRM-adjacent tools trying to avoid US laws.
+- **Gitea**: **High hidden activity**. Actively used behind closed doors as private infrastructure for piracy groups who want to own their data.
+- **GitLab**: **Low activity**. Mostly clean, professional, and corporate-facing; rarely used by the digital piracy community. \[[1](https://transparencycenter.github.com/), [2](https://www.youtube.com/watch?v=pAQqkI0xMu4\&t=16)]
+
+If you are researching this, are you looking into **where a specific type of open-source project can safely live** without being taken down, or are you studying how **intellectual property leaks** propagate across the web? Let me know and we can dive deeper!
+
+- [link](https://www.youtube.com/watch?v=pAQqkI0xMu4\&t=16)\
+  Smart Engineers Are Moving Away From Github, Here's ...\
+  Mar 3, 2026 — and everything that's needed to run this blog is also being run on that same Kubernetes cluster And in this video I'm going to sho...\
+  16m\
+  YouTube·Mischa van den Burg
+- [link](https://transparencycenter.github.com/)\
+  GitHub Transparency Center\
+  Latest stats. Requests for user information. 2025. 650 total requests processed. 516 information disclosures. 2,249 accounts affec...\
+  GitHub Transparency Center
+- [link](https://www.helpnetsecurity.com/2026/04/16/github-copyright-liability-update/)\
+  GitHub lays out copyright liability changes and upcoming ...\
+  Apr 16, 2026 — The decision preserves the legal environment that allows code hosting platforms, package managers, and similar infrastructure to o...\
+  Help Net Security
+
+Show all
+
+## You said: i mean how active are the providers handling piracy, not uploading
+
+When measuring how **proactively and aggressively the platform operators themselves act** to handle copyright complaints, the differences are stark. They range from fully automated legal machines to hands-off neutrality.
+
+***
+
+### 1. GitHub: The Highly Aggressive Legal Machine
+
+GitHub is by far the **most active and automated** provider in enforcing copyright claims. Because of its massive corporate backing by Microsoft, it operates with strict adherence to U.S. copyright law to maintain its legal safe harbor.
+
+- **Automated Takedown Processing**: GitHub leverages highly automated internal pipelines. When a major company issues a DMCA notice, GitHub's automated systems can instantly disable access to the primary repository and automatically scan and delete thousands of its public forks. \[[1](https://transparencycenter.github.com/), [2](https://cryptorank.io/news/feed/7f7e2-anthropic-github-takedown-accident-repositories)]
+- **Scale of Action**: To understand their activity level, GitHub's [Transparency Center](https://transparencycenter.github.com/) reports processing thousands of formal DMCA notices annually, actively shutting down **over 47,000 projects in a single year**. \[[1](https://transparencycenter.github.com/)]
+- **Account Banning**: If a user is a repeat offender, GitHub's legal team is very quick to enforce their "three-strikes" policy, completely scrubbing or restricting the offending user accounts. \[[1](https://transparencycenter.github.com/)]
+
+### 2. GitLab: Highly Responsive but Passive
+
+GitLab is **fully compliant but completely passive**. They do not actively hunt down piracy, nor do they automate it on the scale GitHub does, primarily because they do not face the same volume of complaints.
+
+- **Human Legal Review**: GitLab handles copyright enforcement through standard, manual legal queues. When they receive a notice, a human compliance team member reviews it against their Terms of Service and manually disables the repository. \[[1](https://docs.gitlab.com/user/report%5Fabuse/)]
+- **Enterprise Over Public Focus**: Because GitLab.com caters to enterprise businesses rather than viral public social networking, their enforcement team spends far more time on enterprise compliance audits than handling external media or code piracy complaints. If a corporate entity reports a leak, GitLab acts quickly, but they do not use sweeping automated search-and-destroy scripts for piracy across their public site. \[[1](https://docs.gitlab.com/user/compliance/compliance%5Fcenter/compliance%5Fviolations%5Freport/)]
+
+### 3. Codeberg: Deliberate, Protective, and Slower
+
+Codeberg is **intentionally resistant** to typical corporate copyright trolling, but they are absolutely active when actual German/EU law is broken. They act as a legal shield for developers until proven otherwise. \[[1](https://blog.codeberg.org/on-the-youtube-dl-dmca-takedown.html)]
+
+- **Refusal of US Automated Requests**: Codeberg's core team actively rejects automated US DMCA forms. If a lawyer sends a robotically generated DMCA notice, Codeberg's administrators will ignore it and demand a claim formatted under German law. \[[1](https://blog.codeberg.org/on-the-youtube-dl-dmca-takedown.html)]
+- **Case-by-Case Legal Evaluation**: Because Codeberg is run by a community non-profit (`Codeberg e.V.`), their moderation team evaluates copyright complaints by hand. If a project like a media scraper (`gallery-dl`) or an emulator gets banned from GitHub, Codeberg will intentionally host it, assessing whether the tool has legal "interoperability" functions under European digital rights frameworks. \[[1](https://codeberg.org/Codeberg/Community/issues/314), [2](https://blog.codeberg.org/on-the-youtube-dl-dmca-takedown.html), [3](https://www.reddit.com/r/linux/comments/1sdnl9k/media%5Fscraper%5Fgallerydl%5Fis%5Fmoving%5Fto%5Fcodeberg/)]
+- **Active Against Raw Piracy**: If an uploader hosts raw stolen commercial code or files (cracked games, ripped videos), Codeberg is very active at taking it down manually. They do this to protect their non-profit status from being sued out of existence by German authorities. \[[1](https://blog.codeberg.org/on-the-youtube-dl-dmca-takedown.html)]
+
+### 4. Gitea: The Software Team is Completely Untouchable
+
+As a software organization, Gitea has **zero activity** in policing piracy because they are technically unable to do so.
+
+- **The Corporate Entity (Gitea.com)**: The corporate-managed cloud service (`Gitea.com`) operates similarly to GitLab, using a small administrative team to manually process and pull down copyrighted content if notified.
+- **The Open-Source Software**: For the actual Git engine software that people download, Gitea's creators have **no backdoor access, no master switch, and no administrative control** over what people host. They cannot view, block, or delete a single file on a self-hosted server.
+- **Who actually handles it?** The activity of handling piracy on a self-hosted Gitea server completely shifts to **commercial web hosting companies** (like Hetzner, AWS, or DigitalOcean). If a copyright holder wants code taken down, they must file an abuse report with the host provider, who will then actively threaten to shut down the server owner's entire internet connection if the Gitea repository isn't deleted.
+
+***
+
+### Enforcement Activity Comparison
+
+| Provider \[[1](https://cryptorank.io/news/feed/7f7e2-anthropic-github-takedown-accident-repositories), [2](https://transparencycenter.github.com/), [3](https://docs.gitlab.com/user/report%5Fabuse/), [4](https://blog.codeberg.org/on-the-youtube-dl-dmca-takedown.html), [5](https://codeberg.org/Codeberg/Community/issues/314), [6](https://www.reddit.com/r/linux/comments/1sdnl9k/media%5Fscraper%5Fgallerydl%5Fis%5Fmoving%5Fto%5Fcodeberg/)] | Proactivity        | Method of Action                                             | Reaction to Grey-Area Tools (Emulators/Scrapers)                                        |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ | ------------------------------------------------------------ | --------------------------------------------------------------------------------------- |
+| **GitHub**                                                                                                                                                                                                                                                                                                                                                                                                                                            | **Extremely High** | Sweeping automated scripts & fork-deletion networks.         | Fast to pull down under Section 1201 (DRM circumvention).                               |
+| **GitLab**                                                                                                                                                                                                                                                                                                                                                                                                                                            | **Moderate**       | Manual compliance review queue by corporate lawyers.         | Complies quickly with corporate takedown notices.                                       |
+| **Codeberg**                                                                                                                                                                                                                                                                                                                                                                                                                                          | **Low-Deliberate** | Strict human-vetted legal review under German Law.           | **Highly protective**; allows tools to stay if they meet EU interoperability standards. |
+| **Gitea (Self-Hosted)**                                                                                                                                                                                                                                                                                                                                                                                                                               | **Zero**           | Technically impossible; passed off entirely to server hosts. | Completely immune from the software organization's side.                                |
+
+Are you trying to gauge how **safe a repository is from being suddenly wiped**, or are you looking at the **legal liability** of building a tool that interacts with corporate software? Let me know and we can focus on those specific legal details.
+
+- [link](https://transparencycenter.github.com/)\
+  GitHub Transparency Center\
+  Here are some of the latest stats from the Transparency Center: \* \*\*DMCA takedowns\*\* 2,461 notices processed in 2025, with 645 cir...\
+  GitHub Transparency Center
+- [link](https://blog.codeberg.org/on-the-youtube-dl-dmca-takedown.html)\
+  On the youtube-dl DMCA Takedown\
+  Oct 25, 2020 — On October 23, 2020, the RIAA (Recording Industry Association of America) issued a DMCA (Digital Millenium Copyright Act) takedown...\
+  Codeberg News
+- [link](https://docs.gitlab.com/user/compliance/compliance%5Fcenter/compliance%5Fviolations%5Freport/)\
+  Compliance violations report - GitLab Docs\
+  Compliance violations report \* Renamed to compliance violations report in GitLab 15.9. \* Ability to create and edit compliance fra...\
+  GitLab Docs
+
+Show all
+
+## You said: gitea dot com
+
+Focusing strictly on **Gitea.com**—the official, cloud-hosted platform managed by the commercial entity Gitea Ltd.—the activity level regarding piracy is **extremely low in volume, but highly strict and manual in execution.** \[[1](https://codeberg.org/forgejo/discussions/issues/67), [2](https://www.reddit.com/r/linux/comments/ygnrt0/the%5Fgitea%5Fcommunity%5Fis%5Fasking%5Fgitea%5Fowners%5Fto/)]
+
+It is critical not to confuse Gitea.com with the self-hosted software. While millions of people use the open-source software code privately, the actual hosted website Gitea.com is a centralized commercial platform. \[[1](https://about.gitea.com/terms-of-service/), [2](https://codeberg.org/forgejo/discussions/issues/67), [3](https://www.linode.com/docs/marketplace-docs/guides/gitea/)]
+
+### 1. The Piracy Volume: Virtually Non-Existent
+
+Gitea.com is **not** an active hub for piracy, leaked code, or grey-area tools. \[[1](https://www.reddit.com/r/homelab/comments/1moo6v3/time%5Fto%5Finstall%5Fgitea/)]
+
+- **Lack of Mass Appeal for Pirates:** Pirates look for network effects. They post on GitHub because that is where the audience is, or Codeberg because of its unique legal shield. Gitea.com has a relatively small public user base, making it an unpopular choice for distributing pirated files or malware. \[[1](https://grh.am/2018/a-look-at-the-compromised-gitea-release/), [2](https://en.wikipedia.org/wiki/Gitea)]
+- **Corporate Client Focus:** Gitea Ltd. uses Gitea.com largely as a showcase for their product and to support the core developer ecosystem. It is treated as a professional corporate environment, not a casual social network.
+
+### 2. How Gitea.com Handles Complaints: Low Activity, High Compliance
+
+Because they receive very few copyright complaints, Gitea.com doesn't need massive, sweeping automation like GitHub. However, their management style is highly compliant with standard intellectual property laws. \[[1](https://hoop.dev/blog/the-simplest-way-to-make-azure-devops-gitea-work-like-it-should)]
+
+- **Standard Corporate Terms:** Gitea.com operates under a standard corporate [Terms of Service](https://about.gitea.com/terms-of-service/) that strictly forbids hosting copyrighted or infringing material. \[[1](https://about.gitea.com/terms-of-service/)]
+- **Manual Legal Review:** If a company tracks a leaked repository or a cracked tool to Gitea.com, they submit a takedown notice. Because the volume is small, Gitea Ltd.'s administrative team handles these **entirely by hand**.
+- **Zero Resistance to Takedowns:** Unlike Codeberg, Gitea.com is a commercial business. They have no ideological interest in protecting "grey-area" tools (like emulators or scrapers) if a legal threat is made. If they receive a valid copyright complaint, they will delete or disable the repository immediately to avoid corporate liability.
+
+### Summary
+
+If you look at **Gitea.com**, it is a quiet, corporate-managed garden. It is **inactive as a piracy hub**, and the providers handle the occasional copyright notice through **swift, standard manual compliance** to ensure they face zero legal risk.
+
+Are you looking to use Gitea.com to host a project and want to ensure it won't be taken down, or are you comparing the commercial platform against self-hosting your own instance?
+
+- [link](https://about.gitea.com/terms-of-service/)\
+  Terms Of Service - Gitea\
+  Feb 15, 2023 — These Website Terms of Use (the “Agreement”) govern all use of the gitea.com website, or other website(s) owned and operated by gi...\
+  Gitea
+- [link](https://codeberg.org/forgejo/discussions/issues/67)\
+  \#67 - Gitea requires a copyright assignment for MIT licensed ...\
+  It complies with the \[contributions guidelines]\(https://github.com/go-gitea/gitea/blob/main/CONTRIBUTING.md) and in particular: \* ...\
+  Codeberg.org
+- [link](https://www.reddit.com/r/linux/comments/ygnrt0/the%5Fgitea%5Fcommunity%5Fis%5Fasking%5Fgitea%5Fowners%5Fto/)\
+  The Gitea Community is asking Gitea Owners to correct ...\
+  Oct 29, 2022 — Each year the Gitea Community elects three owners, who promise to pass on ownership after their year has passed. This time the own...\
+  Reddit·r/linux
+
+Show all
+
 # 
 
