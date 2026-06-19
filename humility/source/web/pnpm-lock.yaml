@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      mousetrap:
+        specifier: 1.6.5
+        version: 1.6.5
       react:
         specifier: 19.2.7
         version: 19.2.7
@@ -38,6 +41,9 @@ packages:
   csstype@3.2.3:
     resolution: {integrity: sha512-z1HGKcYy2xA8AGQfwrn0PAy+PB7X/GSj3UVJW9qKyn43xWa+gl5nXmU4qqLMRzWVLFC8KusUX8T/0kCiOYpAIQ==}
 
+  mousetrap@1.6.5:
+    resolution: {integrity: sha512-QNo4kEepaIBwiT8CDhP98umTetp+JNfQYBWvC1pc6/OAibuXtRcxZ58Qz8skvEHYvURne/7R8T5VoOI7rDsEUA==}
+
   react-dom@19.2.7:
     resolution: {integrity: sha512-t0BRVXvbiE/o20Hfw669rLbMCDWtYZLvmJigy2f0MxsXF+71pxhR3xOkspmsO8h3ZlNzyibAmtCa3l4lYKk6gQ==}
     peerDependencies:
@@ -64,6 +70,8 @@ snapshots:
       csstype: 3.2.3
 
   csstype@3.2.3: {}
+
+  mousetrap@1.6.5: {}
 
   react-dom@19.2.7(react@19.2.7):
     dependencies:

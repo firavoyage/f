@@ -74,7 +74,7 @@
     ],
   },
   "return": {
-    "prefix": "r",
+    "prefix": ["r", "re"],
     "body": [
       "return "
     ],
@@ -226,6 +226,39 @@
     "prefix": "fa",
     "body": [
       "false",
+    ],
+  },
+  "result": {
+    "prefix": [
+      "res",
+      "resu",
+    ],
+    "body": [
+      "result<$1> $0",
+    ],
+  },
+  "err": {
+    "prefix": [
+      "er",
+      "err"
+    ],
+    "body": [
+      "return err($1)$0",
+    ],
+  },
+  "is_error": {
+    "prefix": [
+      "is",
+      "ise",
+      "iser",
+      "iserr",
+    ],
+    "body": [
+      "if(is_error($1)){",
+      "  $2",
+      "  ",
+      "  return",
+      "} $0"
     ],
   },
   // "result": {
