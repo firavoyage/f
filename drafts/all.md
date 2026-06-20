@@ -268,6 +268,7 @@ desktop:
 - shell fdfind rg
 - install librechat
 - oom vscode markdown extensions ram
+- install nextcloud
 
 android:
 
