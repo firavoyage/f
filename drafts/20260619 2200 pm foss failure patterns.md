@@ -3359,3 +3359,137 @@ If you were designing a search interface for a complex app, would you like to ma
 
 Show all
 
+
+# where does crypto live in politics spectrum
+
+9:31 PM
+
+\*\***Cryptocurrency does not fit neatly on a single political spectrum, shifting from an anarcho-libertarian origin to a deeply partisan divide where the political right generally embraces it and the political left pushes for strict regulation.** \[[1](https://indodax.com/academy/en/donald-trump-and-crypto-profile/), [2](https://craigdangar.com.au/countries-around-the-world-where-cryptocurrency-is-banned.html), [3](https://www.instagram.com/p/DZWBANukw5F/)]
+
+***
+
+### Understanding the Ideological Roots
+
+- **Libertarian Origins:** Early crypto development aligned with anti-statist, free-market ideals.
+- **Financial Sovereignty:** Users sought systems free from government oversight and central bank inflation.
+- **Cypherpunk Ethics:** Early adopters prioritized individual privacy through open-source cryptography. \[[1](https://ciaps.org/the-awkward-intimacy-between-cryptocurrency-and-hatred/), [2](https://www.hashkey.com/en-US/news/industry-insights/202602051057)]
+
+***
+
+### Analyzing the Modern Partisan Split
+
+```
+Left (Progressive) ◄───────────────► Right (Conservative)
+  [Strict Regulation]               [Pro-Growth & Innovation]
+  [Consumer Protection]             [Financial Freedom]
+```
+
+### The Political Right (Generally Pro-Crypto)
+
+- **Economic Freedom:** Promotes crypto as a tool for free-market capitalism.
+- **Alternative Asset:** Views Bitcoin as a hedge against government spending and inflation.
+- **Deregulatory Focus:** Advocates for minimal government oversight to spur domestic tech innovation. \[[1](https://socialism.com/fs-article/a-marxist-look-at-cryptocurrency/), [2](https://www.aljazeera.com/news/2025/3/4/trump-announces-us-crypto-reserve-what-it-is-and-why-it-matters), [3](https://bisi.org.uk/reports/cryptocurrency-risks-to-democracy)]
+
+### The Political Left (Generally Crypto-Skeptical)
+
+- **Consumer Protection:** Focuses heavily on preventing retail investor fraud and market manipulation.
+- **Environmental Impact:** Criticizes the heavy energy consumption of proof-of-work mining networks.
+- **Systemic Risk:** Expresses concern over illicit finance, tax evasion, and threats to fiat stability. \[[1](https://lawrange.net/en/top-crypto-friendly-countries/)]
+
+***
+
+### Mapping Four Political Quadrants
+
+- **Left-Authoritarian:** Advocates for total state control, favoring Central Bank Digital Currencies (CBDCs) while banning private crypto.
+- **Left-Libertarian:** Embraces decentralized finance (DeFi) for grass-roots mutual aid, cooperative funding, and banking the unbanked.
+- **Right-Authoritarian:** Views crypto as a geopolitical tool for state treasury reserves and bypassing international sanctions.
+- **Right-Libertarian:** Champions pure peer-to-peer cash, self-custody, and the total separation of money and state. \[[1](https://erickimphotography.com/bitcoins-role-in-privacy-and-property-rights-a-multi-dimensional-analysis/), [2](https://pmc.ncbi.nlm.nih.gov/articles/PMC12999464/)]
+
+***
+
+### Evaluating Practical Policy Drivers
+
+- **Geopolitical Strategy:** Cross-party lawmakers increasingly view crypto dominance as vital for national security and maintaining tech leadership.
+- **Lobbying Power:** Massive campaign contributions from crypto political action committees (PACs) heavily influence politicians across all parties. \[[1](https://www.theblock.co/post/384810/senate-crypto-bill-do-or-die-moment-stablecoins-trump-issues-threaten-essential-votes)]
+- **Demographic Shift:** Younger, tech-literate voters span all political affiliations, forcing parties to moderate extreme anti-crypto stances to win elections.
+
+AI responses may include mistakes. For financial advice, consult a professional. [Learn more](https://support.google.com/websearch?p=aimode\&gl=us)
+
+- [link](https://indodax.com/academy/en/donald-trump-and-crypto-profile/)\
+  Donald Trump and Crypto: Profile & Impact\
+  Does the future of crypto depend on a specific political figure? No. The crypto industry is evolving as a global system influenced...\
+  \
+  \
+  INDODAX
+- [link](https://craigdangar.com.au/countries-around-the-world-where-cryptocurrency-is-banned.html)\
+  Countries Around The World Where Cryptocurrency Is Banned\
+  Cryptocurrency has been praised and criticised for a number of different reasons, thus making digital currency an extremely polari...\
+  \
+  \
+  Craig Dangar
+- [link](https://www.instagram.com/p/DZWBANukw5F/)\
+  For the first time ever, there is a clear political divide in who uses cryptocurrency in the U.S. -- and Republicans are leading. ⁠ ⁠ A new Pew Research Center survey found that 22% of Republicans say they have invested in, traded or used crypto, compared to 17% of Democrats. Five years ago, both parties were tied. What changed? A president who made crypto a policy priority, an online culture that had been building this identity for years, and a platform, X, that amplified all of it. ⁠ ⁠ 🔗The full breakdown at the link in bio.\
+  For the first time ever, there is a clear political divide in who uses cryptocurrency in the U.S. ( the United States ) -- and Rep...\
+  \
+  \
+  Instagram
+
+Show all
+
+# does the original hacker ethics favor left or right
+
+9:32 PM
+
+The original hacker ethic **does not cleanly favor the traditional political left or right**. Instead, it is an **anti-authoritarian, techno-libertarian philosophy** that contains distinct elements appealing to both sides of the modern political spectrum. \[[1](https://dev.to/funkysi1701/the-hacker-ethic-4ikh), [2](https://grokipedia.com/page/Hacker%5Fethic), [3](https://www.encyclopedia.com/science/encyclopedias-almanacs-transcripts-and-maps/hacker-ethics), [4](https://grin.hu/text/hackethic.html), [5](https://www.societyandspace.org/articles/the-hacker-ethic-digital-infrastructures-as-the-battleground-of-conflicting-liberalism)]
+
+Codified by author Steven Levy in his 1984 book _[Hackers: Heroes of the Computer Revolution](https://www.goodreads.com/book/show/8260364-hackers)_, the code was born out of a desire for open exploration and a fierce resistance to bureaucratic obstacles at MIT and Stanford in the 1950s and 60s. \[[1](https://www.goodreads.com/book/show/8260364-hackers), [2](https://theconversation.com/principles-of-hacktivism-and-hackers-ignorance-and-prejudices-96514), [3](https://learn.onemonth.com/the-hacker-ethic/), [4](https://grin.hu/text/hackethic.html)]
+
+***
+
+### 🤝 Where It Aligns With the Left
+
+The original hacker ethic champions collectivism, equality, and anti-corporate sharing. \[[1](https://theconversation.com/principles-of-hacktivism-and-hackers-ignorance-and-prejudices-96514), [2](https://www.encyclopedia.com/science/encyclopedias-almanacs-transcripts-and-maps/hacker-ethics)]
+
+- **"All Information Wants to Be Free":** This direct challenge to intellectual property rights and corporate ownership aligns heavily with left-wing critiques of capitalism. It later birthed the Open Source and Free Software movements championed by figures like Richard Stallman. \[[1](https://nissenbaum.tech.cornell.edu/papers/Hackers%20and%20Contested%20Ontology%20of%20Cyberspace.pdf), [2](https://www.tandfonline.com/doi/full/10.1080/13563467.2020.1806223), [3](https://en.wikipedia.org/wiki/Hacker%5Fethic), [4](https://dev.to/funkysi1701/the-hacker-ethic-4ikh), [5](https://www.goodreads.com/book/show/8260364-hackers)]
+- **Anti-Hierarchical:** The ethic fundamentally opposes corporate or government monopolies over data and computing power. \[[1](https://nissenbaum.tech.cornell.edu/papers/Hackers%20and%20Contested%20Ontology%20of%20Cyberspace.pdf), [2](https://grokipedia.com/page/Hacker%5Fethic)]
+- **The Commons:** It views knowledge as a communal resource for the public good, directly laying the framework for egalitarian public projects like Wikipedia. \[[1](https://www.scribd.com/document/427708446/hackers-reflection), [2](https://dev.to/funkysi1701/the-hacker-ethic-4ikh)]
+
+### 🤝 Where It Aligns With the Right
+
+The ethic also highlights hyper-individualism, radical skepticism of government, and pure meritocracy. \[[1](https://en.wikipedia.org/wiki/Hacker%5Fethic), [2](https://dev.to/funkysi1701/the-hacker-ethic-4ikh)]
+
+- **Radical Meritocracy:** The principle that _"Hackers should be judged by their hacking, not bogus criteria such as degrees, age, race, or position"_ focuses purely on individual competence. It deliberately rejects institutional credentialing and identity-focused equity. \[, [2](https://en.wikipedia.org/wiki/Hacker%5Fethic), [3](https://dev.to/funkysi1701/the-hacker-ethic-4ikh)]
+- **"Mistrust Authority—Promote Decentralization":** This deep-seated suspicion of centralized systems directly mirrors right-libertarian, anti-bureaucratic, and anti-statist views. \[[1](https://thesimonscenter.org/wp-content/uploads/2018/05/Ethics-Symp-pg143-148.pdf), [2](https://www.societyandspace.org/articles/the-hacker-ethic-digital-infrastructures-as-the-battleground-of-conflicting-liberalism), [3](https://grokipedia.com/page/Hacker%5Fethic)]
+- **The "Hands-On Imperative":** The drive to bypass administrative gatekeepers to directly tinker, build, and optimize systems scales seamlessly into free-market entrepreneurialism. This mindset heavily influenced the Silicon Valley boom. \[[1](https://agentpalmer.com/8238/media/the-written-word/hackers-heroes-of-the-computer-revolution-by-steven-levy-a-defense-of-the-unconventional-hero/), [2](https://news.ycombinator.com/item?id=13204464), [3](https://pepa.holla.cz/wp-content/uploads/2016/08/Hackers.pdf), [4](https://dev.to/funkysi1701/the-hacker-ethic-4ikh)]
+
+***
+
+### Summary Table
+
+| Hacker Principle \[[1](https://www.ccc.de/en/hackerethik), [2](https://sobrief.com/books/hackers), [3](https://nissenbaum.tech.cornell.edu/papers/Hackers%20and%20Contested%20Ontology%20of%20Cyberspace.pdf), [5](https://www.societyandspace.org/articles/the-hacker-ethic-digital-infrastructures-as-the-battleground-of-conflicting-liberalism), [6](https://en.wikipedia.org/wiki/Hacker%5Fethic), [7](https://theconversation.com/principles-of-hacktivism-and-hackers-ignorance-and-prejudices-96514)] | Left-Leaning Alignment          | Right-Leaning Alignment                 |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- | --------------------------------------- |
+| **Free Information**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | Rejection of corporate property | Anti-regulation / open access           |
+| **Decentralization**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | Community-driven collectivism   | Small government / individual autonomy  |
+| **Pure Meritocracy**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | Disregard for social hierarchy  | Reward based solely on individual skill |
+
+Ultimately, the original hacker ethic bypasses standard party lines by focusing on a **technological axis** rather than a social or economic one. It views technology as a liberating force to empower the individual and the community against _any_ centralized authority, whether that authority is a government bureaucracy or a trillion-dollar corporation. \[[1](https://aeon.co/essays/how-yuppies-hacked-the-original-hacker-ethos), [2](https://grin.hu/text/hackethic.html), [3](https://nissenbaum.tech.cornell.edu/papers/Hackers%20and%20Contested%20Ontology%20of%20Cyberspace.pdf)]
+
+Would you like to look closer into **how specific figures** (like Bill Gates vs. Richard Stallman) clashed over these ethics, or how this framework influenced modern technologies like **blockchain and open-source AI**?
+
+- [link](https://theconversation.com/principles-of-hacktivism-and-hackers-ignorance-and-prejudices-96514)\
+  Principles of hacktivism and hackers: ignorance and prejudices!\
+  The book Hackers: Heroes of the Computer Revolution was published in 1984 by Steven Levy. It was the first to really focus on hack...\
+  The Conversation
+- [link](https://dev.to/funkysi1701/the-hacker-ethic-4ikh)\
+  The Hacker Ethic - DEV Community\
+  1\. Access to Computers Should Be Unlimited and Total. Hackers believe that information and tools for learning should be open to al...\
+  DEV Community
+- [link](https://www.goodreads.com/book/show/8260364-hackers)\
+  Hackers: Heroes of the Computer Revolution - Goodreads\
+  This didn't sit well with Bill Gates, who wrote what was to become a famous “Letter to Hobbyists,” basically accusing them of stea...\
+  Goodreads
+
+Show all
+
+# 
+
