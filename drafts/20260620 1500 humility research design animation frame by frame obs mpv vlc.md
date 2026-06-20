@@ -6,6 +6,12 @@ mpv:
 - next frame `.`
 - prev frame `,`
 
+vlc: <!-- seems much more reliable, though less geeky or feature rich -->
+
+- pause `space`
+- next frame `e`
+- prev frame `(none)`
+
 obs:
 
 - vid resolution = screen
