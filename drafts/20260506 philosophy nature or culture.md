@@ -1,4 +1,4 @@
-nature or culture philosophy
+# nature or culture philosophy
 
 The philosophy of nature and culture <mark style="margin: 0px; text-decoration-style: solid; text-decoration-color: rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">explores the complex, often shifting boundary between the "natural" world and human-made "culture."</mark> Traditionally, Western thought has viewed these two as a strict **dichotomy**, though contemporary philosophy increasingly treats them as deeply intertwined or even identical. \[[1](https://www.scirp.org/journal/paperinformation?paperid=109249), [2](https://fiveable.me/world-literature-ii/key-terms/nature-vs-civilization), [3](https://link.springer.com/article/10.1023/A:1006625830102), [4](https://www.reddit.com/r/askphilosophy/comments/kc4rzb/does%5Fhuman%5Fnature%5Fexist%5Fwhy%5For%5Fwhy%5Fnot/)]
 
@@ -40,3 +40,5 @@ Would you like to explore how **specific philosophers** like Bruno Latour or Phi
   ThoughtCo
 
 Show all
+
+# 
