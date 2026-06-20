@@ -1,12 +1,12 @@
 # .
 
-mpv:
+mpv: <!-- use space to reset when it gets stuck in long press -->
 
 - pause `space`
 - next frame `.`
 - prev frame `,`
 
-vlc: <!-- seems much more reliable, though less geeky or feature rich -->
+vlc: <!-- seems much more reliable when long press, though less geeky or feature rich -->
 
 - pause `space`
 - next frame `e`
@@ -333,3 +333,51 @@ Would you like help **setting up a second Profile in OBS** so you can switch bet
   \
   \
   LinuxCapable
+
+# how to let obs record the cursor or not
+
+To let OBS record your cursor or not, you must <mark style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 500; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">toggle the <strong style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 600; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">Capture Cursor</strong> option located inside the properties of your specific capture source</mark>. \[[1](https://obsproject.com/forum/threads/record-cursor.152657/)]
+
+### How to Toggle Cursor Recording
+
+1. Locate the **Sources** dock at the bottom of your OBS window.
+2. Right-click your capture source (such as **Display Capture**, **Window Capture**, or **Game Capture**).
+3. Click **Properties** from the context menu.
+4. Look for the **Capture Cursor** checkbox:
+
+- **To record the cursor**: Check the box.
+- **To hide the cursor**: Uncheck the box.
+
+5. Click **OK** to save your changes. \[[1](https://obsproject.com/forum/threads/how-to-hide-cursor-in-window-capture.117351/), [2](https://www.youtube.com/shorts/zAMhOEQIV8k), [3](https://focusee.imobie.com/record-tips/how-to-hide-cursor-when-screen-recording.htm), [4](https://www.youtube.com/shorts/Tcpty7ez7F4?vl=en), [5](https://www.youtube.com/watch?v=o1pcUbezgM4), [6](https://obsproject.com/forum/threads/record-cursor.152657/)]
+
+### Troubleshooting Missing Cursors
+
+If you have checked the box but the cursor is still not showing up in your recordings or preview, try these fixes:
+
+- **Change the Capture Method**: In the same **Properties** window, look for the **Capture Method** dropdown menu. Change it from _Automatic_ to **Windows 10 (1903 and up)** or **Windows Graphics Capture**.
+- **Interact with the Window**: For _Window Capture_, OBS sometimes stops recording the cursor if that window is running in the background. Click on the target window to make it active. \[[1](https://obsproject.com/forum/threads/mouse-is-not-captured-window-capture-with-capture-cursor-selected.179900/), [2](https://obsproject.com/forum/threads/record-mouse-cursor-over-video-source.141645/), [3](https://www.youtube.com/watch?v=o1pcUbezgM4), [4](https://dev.to/jasonstcyr/how-to-add-your-powerpoint-presentation-to-your-camera-with-obs-3noo), [5](https://obsproject.com/forum/threads/game-capture-not-working-on-valorant-black-screen.124987/)]
+
+If your cursor is completely disappearing in OBS despite checking the settings, this video guide demonstrates how to fix the capture method to bring it back:
+
+59s
+
+[How to show the cursor movements on a browser in OBS Dr ...NNN MEDIAYouTube · Jul 28, 2022](https://www.youtube.com/watch?v=Et1rJCWzdUg\&t=32)
+
+If you are trying to make your mouse more noticeable for tutorials, let me know if you would like to learn how to **highlight mouse clicks** or make the **OBS camera track your cursor**. \[[1](https://www.youtube.com/watch?v=w-QQeQzCPWs), [2](https://superuser.com/questions/1915743/how-can-i-visually-show-mouse-clicks-in-obs-studio-on-windows-11)]
+
+- [link](https://obsproject.com/forum/threads/how-to-hide-cursor-in-window-capture.117351/)\
+  Question / Help - How to hide cursor in window capture | OBS Forums\
+  Mar 26, 2020 — New Member ... Right-click your capture source > Properties > uncheck Capture Cursor. Ignore me... I should be sleeping instead.\
+  OBS Studio
+- [link](https://obsproject.com/forum/threads/record-cursor.152657/)\
+  Record Cursor | OBS Forums\
+  Jan 24, 2022 — You can Right-click >> properties >> capture cursor. If that options is available under the source, turn the cursor capture on and...\
+  OBS Studio
+- [link](https://obsproject.com/forum/threads/mouse-is-not-captured-window-capture-with-capture-cursor-selected.179900/)\
+  Mouse is not captured (Window Capture with "Capture cursor" ...\
+  Sep 19, 2024 — New Member ... OK, I can reproduce the bug: When the window is the active window, the cursor is captured AOK. Bug 1: If the window...\
+  OBS Studio
+
+Show all
+
+# 
