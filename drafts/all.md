@@ -479,6 +479,7 @@ float: <!-- music -->
 - interpret hai yorokonde kocchi no kento
 - interpret worldwide wander tokotoko
 - interpret cubism
+- research navidrome
 
 philosophy:
 
