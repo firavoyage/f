@@ -1,13 +1,5 @@
 # .
 
-gnome
-
-obsidian
-
-logseq
-
-# .
-
 mpv:
 
 - pause `space`
