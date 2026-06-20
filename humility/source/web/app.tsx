@@ -1,10 +1,10 @@
-import mousetrap from 'mousetrap';
 import { useState, useEffect } from "react"
 
+import { bind } from './keyboard';
+
 export function App() {
-  console.log(mousetrap)
   useEffect(()=>{
-    mousetrap.bind('ctrl+shift+/', (e)=>{
+    bind('ctrl+shift+/', (e)=>{
       console.log(e)
       console.log('open shortcuts help')
     })
@@ -12,7 +12,7 @@ export function App() {
     //   console.log(e)
     //   console.log('open shortcuts help')
     // })
-    mousetrap.bind('ctrl+,', (e)=>{
+    bind('ctrl+,', (e)=>{
       console.log(e)
       console.log('open settings')
     })
