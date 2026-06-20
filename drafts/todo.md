@@ -408,3 +408,11 @@ Literature analysis
 
 ---
 
+para.
+
+host: gnome hig, kde hig
+
+(humility: convert to md)
+
+---
+

@@ -33651,6 +33651,10 @@ well structured. a list of song folders, a thumbnail, a vid, a song, and a track
 
 16 00 <!-- with loud music and headphone nc, i could, regardless of the surrounding, --> think aloud, wo hearing a word from myself
 
+17 20 read gnome hig. (18 00)
+
+feels comfortable. <!-- it would be better if it does not show scrollbar on sidebar wo hover -->
+
 
 
 <!-- timebox, plan. -->
