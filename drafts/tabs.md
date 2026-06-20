@@ -10,7 +10,9 @@ nextcloud (stop after use)
 
 navidrome (?)
 
-http://localhost:3080/c/new
+linear (?)
+
+librechat http://localhost:3080/c/new
 
 gnome
 

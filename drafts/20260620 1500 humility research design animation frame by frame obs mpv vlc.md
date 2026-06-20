@@ -380,4 +380,80 @@ If you are trying to make your mouse more noticeable for tutorials, let me know 
 
 Show all
 
+# how to connect two vids via ffmpeg cli
+
+To connect (concatenate) two videos using the FFmpeg CLI, the easiest and fastest method is <mark style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 500; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">using the <strong style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 600; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><code dir="ltr" style="font-family: monospace; font-size: 14px; font-weight: 600; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 1px solid rgb(44, 46, 53);">concat</code> demuxer</strong></mark>. This method works **without re-encoding** the videos, meaning it takes only a few seconds and preserves the exact original video quality. \[[1](https://www.youtube.com/watch?v=mjyfP-ONsm4), [2](https://www.mux.com/articles/stitch-multiple-videos-together-with-ffmpeg), [3](https://wavespeed.ai/blog/posts/blog-how-to-merge-concatenate-videos-ffmpeg/), [4](https://cloudinary.com/guides/front-end-development/ffmpeg-copy-video)]
+
+### Method 1: The Fast Way (No Re-encoding)
+
+Use this method if both videos have the exact **same resolution, frame rate, and codecs**. \[[1](https://superuser.com/questions/1039678/merge-multiple-video-with-ffmpeg-single-command-line-in-specific-time-without-cu), [2](https://wavespeed.ai/blog/posts/blog-how-to-merge-concatenate-videos-ffmpeg/)]
+
+1. **Create a text file** named `inputs.txt` in the same directory as your videos.
+
+2. List your video files in the exact order you want them connected, formatting them like this:\
+   text
+
+<!---->
+
+```
+file 'video1.mp4'
+file 'video2.mp4'
+```
+
+Use code with caution.
+3\. Run the following command in your terminal:\
+bash
+
+```
+ffmpeg -f concat -safe 0 -i inputs.txt -c copy output.mp4
+```
+
+Use code with caution.
+
+- _`-f concat`_: Tells FFmpeg to use the concatenation format.
+- _`-safe 0`_: Prevents file path errors if you use absolute or complex paths.
+- _`-c copy`_: Streams and copies the original audio/video tracks without rendering them again. \[[1](https://stackoverflow.com/questions/7333232/how-to-concatenate-two-mp4-files-using-ffmpeg), [2](https://cloudinary.com/guides/video-effects/ffmpeg-concat), [3](https://medium.com/@3valuedlogic/how-to-concatenate-video-clips-with-ffmpeg-db77ac797913), [4](https://stackoverflow.com/questions/5415006/ffmpeg-combine-merge-multiple-mp4-videos-not-working-output-only-contains-the), [5](https://www.youtube.com/watch?v=mjyfP-ONsm4), [6](https://www.mux.com/articles/stitch-multiple-videos-together-with-ffmpeg), [7](https://wavespeed.ai/blog/posts/blog-how-to-merge-concatenate-videos-ffmpeg/)]
+
+For a step-by-step visual demonstration on setting up this text file and executing the concat demuxer command, watch this guide:
+
+1m
+
+[FFMPEG Tutorial: Combine Videos using FFMPEGMagicPencilTechYouTube · May 5, 2023](https://www.youtube.com/watch?v=yrxCMvdrfY8\&t=220)
+
+### Method 2: The Flexible Way (With Re-encoding)
+
+Use this method if your videos have **different sizes, formats, or frame rates**. This forces FFmpeg to decode both files and re-render them into a uniform layout. \[[1](https://stackoverflow.com/questions/49371422/how-to-merge-two-videos-without-re-encoding), [2](https://www.youtube.com/watch?v=wpNBxwAMqAU), [3](https://www.bannerbear.com/blog/how-to-merge-video-files-using-ffmpeg/), [4](https://www.mux.com/articles/stitch-multiple-videos-together-with-ffmpeg), [5](https://cloudinary.com/guides/video-effects/ffmpeg-concat)]
+
+Run this single command directly without creating a text file: \[[1](https://superuser.com/questions/1039678/merge-multiple-video-with-ffmpeg-single-command-line-in-specific-time-without-cu), [2](https://www.youtube.com/watch?v=mjyfP-ONsm4)]
+
+bash
+
+```
+ffmpeg -i video1.mp4 -i video2.mp4 -filter_complex "[0:v][0:a][1:v][1:a]concat=n=2:v=1:a=1[outv][outa]" -map "[outv]" -map "[outa]" output.mp4
+```
+
+Use code with caution.
+
+- _`-i video1.mp4 -i video2.mp4`_: Loads both video files as separate inputs.
+- _`-filter_complex`_: Combines the video `[0:v]` and audio `[0:a]` from the first file with the video `[1:v]` and audio `[1:a]` of the second file.
+- _`n=2:v=1:a=1`_: Specifies that there are **2** input segments, resulting in **1** output video track and **1** output audio track. \[[1](https://unix.stackexchange.com/questions/233832/merge-two-video-clips-into-one-placing-them-next-to-each-other), [2](https://www.ffmpeg-micro.com/blog/ffmpeg-merge-audio-video), [3](https://www.bannerbear.com/blog/how-to-merge-video-files-using-ffmpeg/)]
+
+If you plan to use these files frequently, let me know if you need help **automating the text file creation** with a script, or if you need to **resize the videos** to make them match perfectly.
+
+- [link](https://stackoverflow.com/questions/7333232/how-to-concatenate-two-mp4-files-using-ffmpeg)\
+  How to concatenate two MP4 files using FFmpeg? \[closed]\
+  Sep 7, 2011 — Details and full example of combining Wyze security camera footage \* Create a file named inputs.txt , containing a list of all fil...\
+  Stack Overflow
+- [link](https://superuser.com/questions/1039678/merge-multiple-video-with-ffmpeg-single-command-line-in-specific-time-without-cu)\
+  Merge multiple video with ffmpeg single command line in ...\
+  Feb 14, 2016 — 2 Answers. Sorted by: 15. Use the concat demuxer. First, create a text file with the filenames. file '1.mp4' file '2.mp4' file '3.\
+  Super User
+- [link](https://www.youtube.com/watch?v=mjyfP-ONsm4)\
+  Merge Videos Using FFmpeg in Windows\
+  Nov 1, 2025 — hello friends uh now today I'm going to show you amazing feature uh to merge the two videos using one of the software. called FFMP...\
+  6:03\
+  YouTube·v11tv
+
+Show all
+
 # 

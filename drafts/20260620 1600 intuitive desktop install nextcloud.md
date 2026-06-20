@@ -321,6 +321,39 @@ tcp   LISTEN 0      511                 *:62286            *:*
  ~ % ss -tuln | grep 62282
 ```
 
+# . stop
+
+<!-- it takes a few secs to stop -->
+
+```sh
+ ~ % sudo snap services nextcloud # iff systemd status
+Service                    Startup  Current   Notes
+nextcloud.apache           enabled  active    -
+nextcloud.logrotate        enabled  inactive  timer-activated
+nextcloud.mysql            enabled  active    -
+nextcloud.nextcloud-cron   enabled  active    -
+nextcloud.nextcloud-fixer  enabled  inactive  -
+nextcloud.php-fpm          enabled  active    -
+nextcloud.redis-server     enabled  active    -
+nextcloud.renew-certs      enabled  active    -
+ ~ % snap stop nextcloud && snap disable nextcloud # iff systemd disable --now, though snap does not support such flag
+
+2026-06-20T20:15:42+08:00 INFO Waiting for "snap.nextcloud.mysql.service" to stop.
+Stopped.
+nextcloud disabled
+ ~ % sudo snap services nextcloud # iff systemd status
+
+Service                    Startup   Current   Notes
+nextcloud.apache           disabled  inactive  -
+nextcloud.logrotate        disabled  inactive  -
+nextcloud.mysql            disabled  inactive  -
+nextcloud.nextcloud-cron   disabled  inactive  -
+nextcloud.nextcloud-fixer  disabled  inactive  -
+nextcloud.php-fpm          disabled  inactive  -
+nextcloud.redis-server     disabled  inactive  -
+nextcloud.renew-certs      disabled  inactive  -
+```
+
 # how easy is it to install nextcloud on ubuntu
 
 Installing Nextcloud on Ubuntu can be <mark style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 500; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 600; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">incredibly easy or moderately challenging</strong></mark>, depending entirely on the installation method you choose. \[[1](https://www.reddit.com/r/NextCloud/comments/12u25o6/best%5Fway%5Fto%5Finstall%5Fnextcloud%5Fon%5Flinux/), [2](https://www.ionos.co.uk/digitalguide/server/configuration/nextcloud-ubuntu-2204/), [3](https://help.nextcloud.com/t/looking-to-install-nextcloud-using-what/139537), [4](https://medium.com/hackernoon/administrating-nextcloud-as-a-snap-4eb43ca6d095)]
