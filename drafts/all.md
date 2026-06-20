@@ -232,6 +232,7 @@ backend:
 - ts node cli template
 - cli standard
 - security cryptography https ca domain registration
+- security script kiddies
 
 desktop:
 
