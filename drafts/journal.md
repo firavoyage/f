@@ -33647,6 +33647,10 @@ well structured. a list of song folders, a thumbnail, a vid, a song, and a track
 
 04 00 test astrodx. <!-- it could be better. docs. ux (e.g. import tracks). but it works anyway. -->
 
+20
+
+16 00 <!-- with loud music and headphone nc, i could, regardless of the surrounding, --> think aloud, wo hearing a word from myself
+
 
 
 <!-- timebox, plan. -->
