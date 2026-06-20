@@ -1,7 +1,7 @@
 import mousetrap from 'mousetrap';
 
 let shortcutid = 0
-let actions = {}
+let actions = new Map()
 let shortcuts = {}
 let bindings = {}
 
@@ -16,7 +16,7 @@ function call(shortcut) {
 }
 
 export function bind(shortcut, action) {
-  actions[shortcutid] = action
+  actions.set(shortcutid, action)
   shortcuts[shortcut] = shortcuts[shortcut] || new Set()
   shortcuts[shortcut].add(shortcutid)
   bindings[shortcutid] = { shortcut }
@@ -27,5 +27,7 @@ export function bind(shortcut, action) {
 }
 
 export function unbind(shortcutid) {
-  shortcuts[shortcutid]
+  const shortcut = bindings[shortcutid]
+  shortcuts[shortcut].delete(shortcutid)
+  actions.delete(shortcutid)
 }
