@@ -1,3 +1,118 @@
+# .
+
+```sh
+ ~ % flatpak install -y flathub org.gnome.Adwaita1.Demo
+
+Looking for matches…
+error: Nothing matches org.gnome.Adwaita1.Demo in remote flathub
+ ~ % flatpak remote-add --if-not-exists gnome-nightly https://gnome.org
+
+Warning: Could not update extra metadata for 'gnome-nightly': GPG verification enabled, but no summary found (check that the configured URL in remote config is correct)
+ ~ % flatpak remote-add --if-not-exists gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo
+
+ ~ % flatpak install -y flathub org.gnome.Adwaita1.Demo
+
+Looking for matches…
+error: Nothing matches org.gnome.Adwaita1.Demo in remote flathub
+ ~ % flatpak install -y gnome-nightly org.gnome.Adwaita1.Demo
+
+Looking for matches…
+error: Unable to load summary from remote gnome-nightly: GPG verification enabled, but no summary found (check that the configured URL in remote config is correct)
+ ~ % flatpak remote-delete gnome-nightly
+
+ ~ % sudo flatpak remote-add --if-not-exists gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo
+
+ ~ % flatpak install -y gnome-nightly org.gnome.Adwaita1.Demo
+
+Looking for matches…
+Required runtime for org.gnome.Adwaita1.Demo/x86_64/master (runtime/org.gnome.Platform/x86_64/master) found in remote gnome-nightly
+
+org.gnome.Adwaita1.Demo permissions:
+    ipc    fallback-x11    wayland   x11   dri
+
+
+
+        ID                                        Branch            Op           Remote                  Download
+ 1. [✓] org.gnome.Adwaita1.Demo.Locale            master            i            gnome-nightly             5.2 kB / 244.5 kB
+ 2. [✓] org.gnome.Platform.Locale                 master            i            gnome-nightly            18.4 kB / 385.5 MB
+ 3. [✓] org.gnome.Platform                        master            i            gnome-nightly           320.4 MB / 407.9 MB
+ 4. [✓] org.gnome.Adwaita1.Demo                   master            i            gnome-nightly             2.1 MB / 2.3 MB
+
+Installation complete.
+ ~ % flatpak install -y flathub org.gnome.design.IconLibrary
+flatpak install -y flathub org.gnome.design.Typography
+flatpak install -y flathub org.gnome.design.AppIconPreview
+flatpak install -y flathub org.gnome.design.SymbolicPreview
+flatpak install -y flathub org.gnome.design.Palette
+
+Looking for matches…
+
+org.gnome.design.IconLibrary permissions:
+    ipc    fallback-x11    wayland   x11   dri
+
+
+
+        ID                                             Branch            Op           Remote            Download
+ 1. [✓] org.gnome.Platform.Locale                      50                u            flathub           18.5 kB / 386.1 MB
+ 2. [✓] org.gnome.design.IconLibrary.Locale            stable            i            flathub            4.2 kB / 107.2 kB
+ 3. [✓] org.gnome.Platform                             50                u            flathub           84.0 MB / 408.4 MB
+ 4. [✓] org.gnome.design.IconLibrary                   stable            i            flathub            2.5 MB / 2.5 MB
+
+Changes complete.
+Looking for matches…
+
+org.gnome.design.Typography permissions:
+    ipc    fallback-x11    wayland   x11   dri
+
+
+
+        ID                                            Branch           Op           Remote            Download
+ 1. [✓] org.gnome.design.Typography.Locale            stable           i            flathub            3.1 kB / 19.7 kB
+ 2. [✓] org.gnome.design.Typography                   stable           i            flathub           56.9 kB / 68.6 kB
+
+Installation complete.
+Looking for matches…
+
+org.gnome.design.AppIconPreview permissions:
+    ipc     fallback-x11     wayland     x11     dri     file access [1]
+
+    [1] xdg-pictures
+
+
+        ID                                                Branch            Op            Remote            Download
+ 1. [✓] org.gnome.design.AppIconPreview.Locale            stable            i             flathub           4.2 kB / 69.5 kB
+ 2. [✓] org.gnome.design.AppIconPreview                   stable            i             flathub           4.1 MB / 4.2 MB
+
+Installation complete.
+Looking for matches…
+
+org.gnome.design.SymbolicPreview permissions:
+    ipc     fallback-x11     wayland     x11     dri     file access [1]
+
+    [1] home
+
+
+        ID                                                 Branch            Op            Remote             Download
+ 1. [✓] org.gnome.Platform.Locale                          49                u             flathub             18.5 kB / 385.9 MB
+ 2. [✓] org.gnome.design.SymbolicPreview.Locale            stable            i             flathub              3.6 kB / 57.9 kB
+ 3. [✓] org.gnome.Platform                                 49                u             flathub            102.3 MB / 408.1 MB
+ 4. [✓] org.gnome.design.SymbolicPreview                   stable            i             flathub              3.7 MB / 3.8 MB
+
+Changes complete.
+Looking for matches…
+
+org.gnome.design.Palette permissions:
+    ipc    fallback-x11    wayland   x11   dri
+
+
+
+        ID                                        Branch           Op           Remote            Download
+ 1. [✓] org.gnome.design.Palette.Locale           stable           i            flathub            4.0 kB / 35.0 kB
+ 2. [✓] org.gnome.design.Palette                  stable           i            flathub           74.3 kB / 90.1 kB
+
+Installation complete.
+```
+
 # how to install org.gnome.Adwaita1.Demo.flatpakref
 
 To install **`org.gnome.Adwaita1.Demo`** using a `.flatpakref` file or reference name, you can use the Flatpak command-line interface. \[[1](https://docs.flatpak.org/en/latest/flatpak-command-reference.html), [2](https://man7.org/linux/man-pages/man5/flatpak-flatpakref.5.html)]
@@ -282,3 +397,4 @@ If you are still hitting roadblocks, let me know **which Linux distribution** yo
 Show all
 
 # 
+
