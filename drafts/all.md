@@ -507,6 +507,10 @@ entertainment:
 
 pure:
 
+- research writing style first person narrative internal thoughts author conversation textbook
+
+<!-- 
+
 - chinese
 - math
 - english
@@ -514,7 +518,9 @@ pure:
 - chemistry
 - history
 - geography
-- ...
+- ... 
+
+-->
 
 english:
 
