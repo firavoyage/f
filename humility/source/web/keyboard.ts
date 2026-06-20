@@ -5,12 +5,13 @@ let actions = new Map()
 let shortcuts = {}
 let bindings = {}
 
-function call(shortcut) {
+function call(shortcut, event) {
   if (shortcuts[shortcut]) {
-    for (const actionid of shortcuts[shortcut]) {
-      if (actions[actionid]) {
-        actions[actionid]()
-      }
+    for (const shortcutid of shortcuts[shortcut]) {
+      const action = actions.get(shortcutid)
+      if (action) {
+        action(event)
+      } 
     }
   }
 }
@@ -21,7 +22,10 @@ export function bind(shortcut, action) {
   shortcuts[shortcut].add(shortcutid)
   bindings[shortcutid] = { shortcut }
 
-  mousetrap.bind(shortcut, () => call(shortcut))
+  // it will work whether it overrides or not
+  mousetrap.bind(shortcut, (event) => {
+    call(shortcut, event)
+  })
 
   return shortcutid++
 }
@@ -30,4 +34,15 @@ export function unbind(shortcutid) {
   const shortcut = bindings[shortcutid]
   shortcuts[shortcut].delete(shortcutid)
   actions.delete(shortcutid)
+
+  if (shortcuts[shortcut].size == 0) {
+    mousetrap.unbind(shortcut)
+  } 
 }
+
+/**
+ * todo
+ * 
+ * - err invalid shortcut
+ * - normalize ctrl ?
+ */
