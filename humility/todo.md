@@ -117,23 +117,6 @@ git config?
 
 ---
 
-install
-
-- obsidian
-- linear (?)
-
-check out
-
-- memoh
-- arkloop
-- lobe chat
-
-setup
-
-- librechat
-
----
-
 <!-- the foundation of all guis -->
 
 adwaita web ui template.
@@ -158,3 +141,11 @@ humility
 - actions (stateful)
 
 ---
+
+i guess i would research vscode settings.
+
+only toggle, pick or input (type)?
+
+no more cfg file?
+
+

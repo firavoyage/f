@@ -718,6 +718,7 @@ humility:
 - research google ai mode inline citations change <!-- limitations compared with wikipedia source references, fe glitches -->
 - research design animation frame by frame obs mpv vlc
 - research gnome hig adwaita toolkit
+- research openai api
 
 legacy:
 
