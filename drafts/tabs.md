@@ -4,6 +4,26 @@ message/paste · todo · tabs/things · scratch pad · weekly/projects · notes
 
 ---
 
+todo:
+
+http://localhost:3080/c/new
+
+gnome
+
+obsidian
+
+logseq
+
+https://github.com/qqqqqf-q/arkloop
+
+https://github.com/lobehub/lobehub
+
+https://github.com/memohai/Memoh
+
+https://cloud.dify.ai/apps
+
+---
+
 eat:
 
 twitter https://x.com/i/lists/2004814679450009818
