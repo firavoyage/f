@@ -5,7 +5,8 @@
     "moduleResolution": "bundler",
 
     "paths": {
-      "lib/*": ["./source/lib/*"]
+      "lib/*": ["./source/lib/*"],
+      "web/*": ["./source/web/*"],
     },
 
     "allowJs": true,

@@ -1,6 +1,6 @@
-type ThemeMode = "system" | "light" | "dark";
+type theme = "system" | "light" | "dark";
 
-export async function sync_theme(theme: ThemeMode): Promise<void> {
+export async function sync_theme(theme: theme): Promise<void> {
   if (theme == "light" || theme == "dark") {
     document.documentElement.setAttribute("data-theme", theme);
     return;
