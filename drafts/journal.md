@@ -33736,6 +33736,10 @@ he does not social much on twitter or tg, so i could not have him.
 
 there are many ppl. a fierce boy is surfing douyin. the cute girl is sleeping on the sofa.
 
+22 00 End the day w メズマライザー, オーバーライド, and きゅびずむ.
+
+Achieve s on きゅびずむ level master. It feels good at note speed seven.
+
 23 20 write some envelopes.
 
 19
@@ -33972,6 +33976,68 @@ juruojjl 19:39:24
 
 20
 
+02 00 Watch xuegao cs2 major live.
+
+<!-- A student prefer cs2 major over hsee
+
+Just like me in grade 9, obsessing with world cup -->
+
+14 20 wish.
+
+I guess it's better to keep these envelopes. People might feel warm but they generally do not celebrate it.
+
+14 20 have lunch.
+
+KFC taco?
+
+14 20 observe.
+
+Duolingo uses energy over hearts. More profitable to pros. More forgivable to Stupids.
+
+14 40 think.
+
+Humans inherently do not think in long term. 
+
+Make a plan. Learn pm.
+
+I have a whole summer holidays I guess. I could go fast, but I think I would take it.
+
+<!-- Well, if there is an inevitable step, I don't actually need to think ahead. -->
+
+15 20 converse.
+
+<!-- 你上学吗
+
+你九月份会去学校吗
+
+上几年级
+
+高一
+
+可以直接去高二吗
+
+学校允许她去高二吗
+
+Her mom: （嘘）
+
+对不起
+
+Her mom: 她不想继续这个话题 -->
+
+<!-- 这个你玩过吗
+
+玩过，kdx
+
+在手机上运行会很卡，在台式机上运行 -->
+
+16 00 play maimai.
+
+Too late! 
+
+Like, 5 fast 50 late, consistent across four songs. 
+
+I'm gonna speed up.
+
 16 00 <!-- with loud music and headphone nc, i could, regardless of the surrounding, --> think aloud, wo hearing a word from myself
 
 17 20 read gnome hig. (18 00)
@@ -33991,6 +34057,102 @@ yunoko and a boy are panic clicking to get a bw <!-- berryberry world --> ticket
 Her mom: 没有
 
  -->
+
+22 00 End the day w もういいよ, ももいろの鍵, and メズマライザー
+
+<!-- Increase! -->
+
+23 00 observe.
+
+You can hover an undo toast, it will reset counter and stop counting temporarily (and hide it if the number shows).
+
+Telegram has a five sec undo leave channel. It's more predictable to let me exit directly, it has no joining requirements, and I already have a confirmation. You could have undo, but the counter makes me stressed.
+
+23 00 Eat kdx group. 
+
+Fun. Ik this guy.
+
+```
+sns, [6/20/26 11:04 PM]
+Dose anyone know how to fix this
+
+sns, [6/20/26 11:04 PM]
+You only installed the game itself, however it also requires corresponding data assets (the A000 thing) to run
+
+sns, [6/20/26 11:04 PM]
+Either add/host a server to download the files from or manually transfer the files to the game directly through adb/SSH
+
+sns, [6/20/26 11:04 PM]
+I have download both
+
+sns, [6/20/26 11:04 PM]
+where did you put them
+
+sns, [6/20/26 11:04 PM]
+
+
+sns, [6/20/26 11:04 PM]
+okay open the _full thing
+
+sns, [6/20/26 11:04 PM]
+and show me what's inside
+
+sns, [6/20/26 11:04 PM]
+谁有dc链接
+
+sns, [6/20/26 11:04 PM]
+discord.com
+
+sns, [6/20/26 11:04 PM]
+哎wc问错了，对不起，群链接有吗
+
+sns, [6/20/26 11:04 PM]
+why is bro trolling
+
+sns, [6/20/26 11:04 PM]
+because funni
+
+sns, [6/20/26 11:04 PM]
+haha
+
+sns, [6/20/26 11:04 PM]
+邀请现在不开放哦
+
+sns, [6/20/26 11:04 PM]
+I quit selling noone buy from me
+
+sns, [6/20/26 11:04 PM]
+The proof i showed is ai generated
+
+sns, [6/20/26 11:04 PM]
+Bruh
+
+sns, [6/20/26 11:04 PM]
+ok
+
+sns, [6/20/26 11:04 PM]
+那么什么时候才会开放
+
+sns, [6/20/26 11:04 PM]
+短时间内不会吧应该，前一段时间就有一个投票，大家都说保持当前的严格邀请制
+
+sns, [6/20/26 11:04 PM]
+maimai HDD太难找了，我顶多也只找到chunithmHDD
+
+sns, [6/20/26 11:04 PM]
+sinmai.app
+
+sns, [6/20/26 11:04 PM]
+oh mai gah it's project fragrance
+
+sns, [6/20/26 11:04 PM]
+Anyone in the discord server pls dm me the link
+
+sns, [6/20/26 11:04 PM]
+All invites have been closed months ago, so currently it's basically impossible
+```
+
+Checkout project fragrance
 
 23 40 Eat
 
