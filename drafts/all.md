@@ -677,6 +677,7 @@ laws:
 repo:
 
 - research git criticism conservative lack features better cli ux piper scalar
+- research git monorepo sparse checkout <!-- partial checkout -->
 
 glaze:
 
