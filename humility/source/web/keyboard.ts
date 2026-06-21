@@ -29,7 +29,7 @@ let actions = new Map()
 let shortcuts = {}
 let bindings = {}
 
-function call(shortcut, event) {
+function call(shortcut: string, event) {
   if (shortcuts[shortcut]) {
     for (const shortcutid of shortcuts[shortcut]) {
       const action = actions.get(shortcutid)
@@ -40,7 +40,7 @@ function call(shortcut, event) {
   }
 }
 
-function normalize(shortcut) {
+function normalize(shortcut: string) {
   let normalized_shortcut = shortcut
   for (const [key, shift_key] of Object.entries(shift_keys)) {
     normalized_shortcut = normalized_shortcut.replaceAll(key, shift_key)
@@ -48,7 +48,7 @@ function normalize(shortcut) {
   return normalized_shortcut
 }
 
-export function bind(shortcut, action) {
+export function bind(shortcut: string, action: Function): number {
   shortcut = normalize(shortcut)
 
   actions.set(shortcutid, action)
@@ -64,7 +64,7 @@ export function bind(shortcut, action) {
   return shortcutid++
 }
 
-export function unbind(shortcutid) {
+export function unbind(shortcutid: number) {
   const shortcut = bindings[shortcutid]
   shortcuts[shortcut].delete(shortcutid)
   actions.delete(shortcutid)
@@ -73,9 +73,3 @@ export function unbind(shortcutid) {
     mousetrap.unbind(shortcut)
   }
 }
-
-/**
- * todo
- * 
- * - err invalid shortcut
- */
