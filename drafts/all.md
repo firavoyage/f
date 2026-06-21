@@ -221,6 +221,7 @@ frontend: <!-- web -->
 - keyboard lib
 - pnpm predictable lock down save exact frozen lockfile
 - pnpm init break parceljs bun remove main indexjs
+- tsconfig extend parent
 
 backend:
 
