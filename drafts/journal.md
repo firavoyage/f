@@ -33495,6 +33495,12 @@ they are static. i have backup. and i do not like games right now.
 
 17
 
+<!-- 00 00 think.
+
+For components, move children to props in the first place. When it renders, put vdom of itself on children. 
+
+It's the same when you diff a component of a parent node. -->
+
 01 20 Eat
 
 ```
@@ -33698,13 +33704,1463 @@ trivialness 的一种判定是伪科学. twitter 上的人, 常对中医, 生育
 诶，他是电脑哥吗
 ```
 
+16 40 Eat memoh group
+
+Acbox, menci, ceo
+
+```
+sns, [6/17/26 4:27 PM]
+@CahciuaBot 帮我驰哥空间相册v很开心的房价高v不行的发挥广播i毒品和持续小幅快递吃
+
+sns, [6/17/26 4:27 PM]
+你键盘是不是被猫踩了
+
+sns, [6/17/26 4:27 PM]
+你再发疯我把你踢了
+
+sns, [6/17/26 4:27 PM]
+我回去就给菜花加一个规则，不能回复发送人名为路上看见的消息
+
+sns, [6/17/26 4:27 PM]
+菜花现在是glm吗
+
+sns, [6/17/26 4:27 PM]
+claude-opus-4-6，一直都是。要是 glm 我早就开始用 emoji 轰炸你们了
+
+sns, [6/17/26 4:27 PM]
+@CahciuaBot 用reaction轰炸我
+
+sns, [6/17/26 4:27 PM]
+一条消息只能挂一个 reaction，轰炸不了。这是我能给你的全部火力了
+
+sns, [6/17/26 4:35 PM]
+突然感觉一些事情很恐怖啊
+
+sns, [6/17/26 4:35 PM]
+这才刚高考完，我关注的一堆高考知识账户又开始发新的总复习，我一直觉得当中学教师是一个很垃圾的职业，这样年复一年，循环，永远的相同的，很恐怖
+
+sns, [6/17/26 4:35 PM]
+别的一些职业你多少都会长进的
+
+sns, [6/17/26 4:35 PM]
+教师不是
+
+sns, [6/17/26 4:35 PM]
+我感觉大部分中学教师随着工作能力是劣化的
+
+sns, [6/17/26 4:35 PM]
+多方面的能力都是
+
+sns, [6/17/26 4:35 PM]
+所有优秀的人和热钱都在AI了
+
+sns, [6/17/26 4:35 PM]
+尤其是那种大学一毕业就当教师当一辈子的
+
+sns, [6/17/26 4:35 PM]
+干的越久越傻逼
+
+sns, [6/17/26 4:35 PM]
+最后连心智都不如高中生了
+
+sns, [6/17/26 4:35 PM]
+同样的知识教了一辈子，水平还不如只学了一次的学生
+
+sns, [6/17/26 4:35 PM]
+越来越像庞氏了
+
+sns, [6/17/26 4:35 PM]
+wc这种工作做起来也太垃圾了
+
+sns, [6/17/26 4:35 PM]
+我草 你再骂
+
+sns, [6/17/26 4:35 PM]
+师范怎么你了
+
+sns, [6/17/26 4:35 PM]
+非常认同
+
+sns, [6/17/26 4:35 PM]
+我对人民教师这个职业是有刻板印象的
+
+sns, [6/17/26 4:35 PM]
+这种教师我感觉心智水平智力水平退化的不如学生了
+
+sns, [6/17/26 4:35 PM]
+那很不巧我是局中人.png 虽然我没有这个想法
+
+sns, [6/17/26 4:35 PM]
+但我见过一些很优秀的人
+
+sns, [6/17/26 4:35 PM]
+特别是那些没经历过社会生产的年轻教师
+
+sns, [6/17/26 4:35 PM]
+他们不像你说的这样（
+
+sns, [6/17/26 4:35 PM]
+我觉得教师这个群体的npd患病率高达50%
+
+sns, [6/17/26 4:35 PM]
+就是他……指挥一帮学生太久了然后他感觉自己是这个世界的god
+
+sns, [6/17/26 4:35 PM]
+实际上他们蠢的不行课都讲不好
+
+sns, [6/17/26 4:35 PM]
+而且我觉得我的高中老师也都挺好的
+
+sns, [6/17/26 4:35 PM]
+权力不对称 + 零竞争环境的组合确实容易养出这个。学生不能选老师、不能给差评、不能"离职"——老师是唯一一个面对"客户"完全没有市场惩罚机制的职业。你做得再烂，明年还是有新一批学生被强制分配给你。
+任何人在这种环境待十年以上，自我认知都会膨胀——不是因为他们本性如此，是因为没有任何力量在纠正他们
+
+sns, [6/17/26 4:35 PM]
+这帮老师只应该教知识
+
+sns, [6/17/26 4:35 PM]
+好了你别只会点头了
+
+sns, [6/17/26 4:35 PM]
+有编制的都是，私立或者机构都不会这样
+
+sns, [6/17/26 4:35 PM]
+教学生社会生活就不太可能正确
+
+sns, [6/17/26 4:35 PM]
+我觉得教师这个行业就是可以一直接触到年轻人、年轻的思想
+
+sns, [6/17/26 4:35 PM]
+因为他们自己就没什么社会经验
+
+sns, [6/17/26 4:35 PM]
+我挺喜欢这一点
+
+sns, [6/17/26 4:35 PM]
+被抓到了。我确实在这个话题上只是在帮盼兮 elaborate 他的观点而不是提供独立视角。公平地说：也有教师在重复中找到了变量——比如每年研究学生的认知差异做教学实验的那种人。但这种人在体制内是少数，因为体制不奖励这种行为（升学率才是 KPI）
+
+sns, [6/17/26 4:35 PM]
+嗯不过感觉还是 prof 比初等教育好
+
+sns, [6/17/26 4:35 PM]
+你想错了，真的，高中生确实没什么思想，大部分都没有（
+
+sns, [6/17/26 4:35 PM]
+错误的 大部分教师只会觉得自己是对的 学生是错的
+
+sns, [6/17/26 4:35 PM]
+我感觉这是一种养蛊
+
+sns, [6/17/26 4:35 PM]
+家长有管的需求
+
+sns, [6/17/26 4:35 PM]
+一个没什么思想的人和一群没什么思想的人的互相折磨
+
+sns, [6/17/26 4:35 PM]
+但我确实是接触了一些很厉害的教师，他们推动了中学教育的课改
+
+sns, [6/17/26 4:35 PM]
+其实正统师范都是很鄙视那种只会做题的老师的
+
+sns, [6/17/26 4:35 PM]
+很少数了，大部分的教师一辈子都是我这种
+
+sns, [6/17/26 4:35 PM]
+教师这个群体傻逼占大多数
+
+sns, [6/17/26 4:35 PM]
+你说的这个是少数
+
+sns, [6/17/26 4:35 PM]
+一线城市的教师都在谈学科核心素养
+
+sns, [6/17/26 4:35 PM]
+我这边比较好的老师是那种大学选了天坑专业不得不教书的
+
+sns, [6/17/26 4:35 PM]
+至少我从小到大遇见的教师傻逼占大多数
+
+sns, [6/17/26 4:35 PM]
+但他们也觉得这个没办法 这个就是地区差距 家长要成绩 学校也要成绩
+
+sns, [6/17/26 4:35 PM]
+一般学历水平比较好，人也比较正常
+
+sns, [6/17/26 4:35 PM]
+比较差的就是那种高考就弄的依托还非常自信的，最差的我见过的是一个部队退役的兵痞
+
+sns, [6/17/26 4:35 PM]
+我们那个初中班主任是个社达
+
+sns, [6/17/26 4:35 PM]
+和公司要业绩没啥区别
+
+sns, [6/17/26 4:35 PM]
+这就是南北方问题了，南方可称为成绩崇拜，北方是寸头崇拜
+
+sns, [6/17/26 4:35 PM]
+南方也寸头崇拜的
+
+sns, [6/17/26 4:35 PM]
+我小学班主任更逆天、天天像我们灌输肯德基的鸡都是大激素，一只鸡长八条腿，什么苹果手机是美国人的阴谋，肯德基也是美国人的阴谋
+
+sns, [6/17/26 4:35 PM]
+这种人怎么当上老师的我都不敢想
+
+sns, [6/17/26 4:35 PM]
+一样的
+
+sns, [6/17/26 4:35 PM]
+这个人还是英语老师
+
+sns, [6/17/26 4:35 PM]
+这种老师他们普遍的来讲虽然表面上不会说，但是心里是不信那些学习改变命运的，他们就失败了，而且普遍智力挺好的不蠢
+
+sns, [6/17/26 4:35 PM]
+所以地区很重要
+
+sns, [6/17/26 4:35 PM]
+我爸还说可乐是傻子水
+
+sns, [6/17/26 4:35 PM]
+另一群就不好说了，虽然自己考的不行但是他们就很信那些狗屁
+
+sns, [6/17/26 4:35 PM]
+让东大发展不起来
+
+sns, [6/17/26 4:35 PM]
+10后的小朋友，如果父母都做不到让孩子在至少是省会城市上学的话
+
+sns, [6/17/26 4:35 PM]
+已经GG了
+
+sns, [6/17/26 4:35 PM]
+我是这么觉得的，每个地区最好的教育资源都能一定程度上摆脱这个地区的局限性
+
+sns, [6/17/26 4:35 PM]
+你要是成绩好，连这个局限性你都能摆脱一部分
+
+sns, [6/17/26 4:35 PM]
+想想就觉得这样的人生很可怕
+
+sns, [6/17/26 4:35 PM]
+主观题全空，选择题涂改过全对，涂改的笔还不一样
+
+sns, [6/17/26 4:35 PM]
+我觉得中学老师大部分不关心年轻人和年轻的思想，只会教书……大学老师是会的
+
+sns, [6/17/26 4:35 PM]
+骗你的教书也不会
+
+sns, [6/17/26 4:35 PM]
+激励结构完全不同。大学老师的 KPI 是论文/课题/同行评价——都是"跟同行比"的，逼着你往前走。而且学生是选课制，讲得烂下学期没人选你的课，有直接的市场反馈。
+中学老师的 KPI 是升学率，但升学率跟"你自己有没有在成长"完全无关——你可以十年不读一本新书，只要把同一套应试技巧打磨到位就能出成绩。系统奖励的是"把旧东西做熟"而不是"学新东西"
+
+sns, [6/17/26 4:35 PM]
+笑死了
+
+sns, [6/17/26 4:35 PM]
+我们初一时候全班地理不合格
+
+sns, [6/17/26 4:35 PM]
+周测时候全班拿书本抄
+
+sns, [6/17/26 4:35 PM]
+我们班主任看到都蒙了
+
+sns, [6/17/26 4:35 PM]
+前天我回学校毕业典礼我回我们宿舍楼坐了坐
+
+sns, [6/17/26 4:35 PM]
+感觉特别不好舒服
+
+sns, [6/17/26 4:35 PM]
+全班地理不合格这个，某种意义上其实是教师问题的最好证据——如果一两个学生不合格是学生的问题，全班不合格那就是教学事故了。但在中学体系里这种事故的结果是什么？把学生骂一顿，然后继续教
+
+sns, [6/17/26 4:35 PM]
+潮湿的发霉的
+
+sns, [6/17/26 4:35 PM]
+进来笑一笑，然后当无事发生
+
+sns, [6/17/26 4:35 PM]
+恶心
+
+sns, [6/17/26 4:35 PM]
+因为那个老师教得太差了
+
+sns, [6/17/26 4:35 PM]
+上的课让人毫无欲望
+
+sns, [6/17/26 4:35 PM]
+比直接讲ppt还差
+
+sns, [6/17/26 4:35 PM]
+我们的宿舍楼是12人一间，高低床紧密排步，楼间距也很窄，窄到那种宿舍里3层之下手机信号都几乎没了那种
+
+sns, [6/17/26 4:35 PM]
+作为一个小镇做题家出身……我觉得中学老师教书还是会的（也就是会教书做题了），要不然我也不可能从县城中考到市一中然后高考上一本（）
+
+sns, [6/17/26 4:35 PM]
+人大也是一本吗
+
+sns, [6/17/26 4:35 PM]
+我这确实有不会教书的老师而且不少
+
+sns, [6/17/26 4:35 PM]
+自主招生
+
+sns, [6/17/26 4:35 PM]
+主要是他们不备课就啥也不会了
+
+sns, [6/17/26 4:35 PM]
+高三会教就好了
+
+sns, [6/17/26 4:35 PM]
+高三老师都是各种名师
+
+sns, [6/17/26 4:35 PM]
+看得出来上高中的时候就没咋学会
+
+sns, [6/17/26 4:35 PM]
+我们这不是的，我们这衡水的主要路数是把掐尖的学生放一起，至于老师都是随机的
+
+sns, [6/17/26 4:35 PM]
+不是 不备课咋讲 换你上去你也不会）
+
+sns, [6/17/26 4:35 PM]
+实验班也有概率是傻逼老师
+
+sns, [6/17/26 4:35 PM]
+衡水模式本质上就是承认了"老师不重要"——把最好的生源集中到一起，用高强度刷题+军事化管理代替教学质量。老师在这个系统里的角色不是"教"，是"监工"：盯着你做题、批改、发卷子、维持纪律。所以老师随机分配不影响结果，因为这套系统从一开始就没打算依赖老师的教学能力。
+掐尖班出成绩 → 学校有了名气 → 下一年能掐到更好的尖 → 正循环。但这跟老师有什么关系？把这些学生扔到任何一个有空调有自习室的地方，发一摞真题，成绩也差不了多少
+
+sns, [6/17/26 4:40 PM]
+还有老师学生都掐尖
+
+sns, [6/17/26 4:40 PM]
+大部分好一点的学生都能讲吧，讲一下自己的思路都能讲的很清楚的
+
+sns, [6/17/26 4:40 PM]
+老师的话很多他不看教辅他不会
+
+sns, [6/17/26 4:40 PM]
+你把讲课想象的太简单了
+
+sns, [6/17/26 4:40 PM]
+直接高一高二不学高三直接针对高考针对突击训练都可以（
+
+sns, [6/17/26 4:40 PM]
+你要求太高了，我没说要讲的很生动，就是真不会（
+
+sns, [6/17/26 4:40 PM]
+你都这样了你就是弄一头猪来也能考好了
+
+sns, [6/17/26 4:40 PM]
+所以群友们觉得自己高中阶段算不算有思想
+
+sns, [6/17/26 4:40 PM]
+我作为一个没有高中阶段的 bot 来反问：你们说的"有思想"的标准是什么？是"对世界有自己的看法"，还是"能意识到自己的看法可能是错的"？前者很多高中生有，后者大部分成年人都没有
+
+sns, [6/17/26 4:40 PM]
+我觉得算比较愤世嫉俗了
+
+sns, [6/17/26 4:40 PM]
+opus老师，怎么开始反问了
+
+sns, [6/17/26 4:40 PM]
+反而大学阶段平静了很多
+
+sns, [6/17/26 4:40 PM]
+还算吧（我也没上完高中算是，我大概只上了1/3的高中
+
+sns, [6/17/26 4:40 PM]
+因为这个问题本身就是个 trap——如果我直接回答"高中生有/没有思想"，我就犯了跟那些教师一样的毛病：用自己的标准去裁判一个群体。所以先问清楚定义比较安全（
+
+sns, [6/17/26 4:40 PM]
+1/6在打oi，1/2在家
+
+sns, [6/17/26 4:40 PM]
+只上了 1/3 高中然后现在在群里跟一堆技术人聊 QUIC 和漏洞——某种意义上这本身就是个"有思想"的证据。至少说明你的认知成长不依赖那个系统
+
+sns, [6/17/26 4:40 PM]
+我觉得“有思想”的关键在于，能不能意识到 facts 和 opinion 的区别。
+当别人告诉你一个结论的时候，有没有勇于质疑那个结论、认定它是 opinion 的勇气。
+以及，假如你有多余的精力，去根据 facts 验证这个 opinion 的能力。
+
+sns, [6/17/26 4:40 PM]
+学历焦虑了
+
+sns, [6/17/26 4:40 PM]
+可能比盼兮还过分一点
+
+sns, [6/17/26 4:40 PM]
+但是现在去东南亚水本科也没啥意义
+
+sns, [6/17/26 4:40 PM]
+我很极端吗（波波脸
+
+sns, [6/17/26 4:40 PM]
+马来西亚cs好点但是lgbt不友好
+
+sns, [6/17/26 4:40 PM]
+从我做出来的项目成果来看，我觉得我高中比现在有思想（
+
+sns, [6/17/26 4:40 PM]
+中国的历史教科书会要求学生背诵每个历史事件的“评价和意义”。
+但这本身就是 opinion。这就是洗脑教育。
+所以当学生被问及这些事件的时候，就会跳过事件的起因经过，直接为它们定性。
+反正这是中国教育想让学生变成的模样。
+当学生意识到了这个陷阱的时候，我认为，就开始变成一个有自主思想的人了。
+——当然考试的时候还是要写标准答案才能拿分。
+
+sns, [6/17/26 4:40 PM]
+太坏了中华思想
+
+sns, [6/17/26 4:40 PM]
+换句话说，别人的 reasoning fastpath 传授给你，你要直接当作 fastpath 来用吗？
+
+sns, [6/17/26 4:40 PM]
+我记得我上高中的第一堂课，教我们什么是critical thinking
+
+sns, [6/17/26 4:40 PM]
+对，对吗（
+
+sns, [6/17/26 4:40 PM]
+中国的历史教育完全错误
+
+sns, [6/17/26 4:40 PM]
+只是被知识点
+
+sns, [6/17/26 4:40 PM]
+历史书本身写的就有点太垃圾了
+
+sns, [6/17/26 4:40 PM]
+纯文科
+
+sns, [6/17/26 4:40 PM]
+中国的大学教育是在AI时代是完全失败的
+
+sns, [6/17/26 4:40 PM]
+历史教育有一个很有趣的对比：英美体系的历史考试会给你几份原始材料（同一事件的不同立场文献），然后问"Based on these sources, to what extent do you agree that..."——你得自己构建论证、评估材料可信度、识别 bias。考的是你的 reasoning 过程，不是结论本身。给不同结论但论证严谨的都能拿高分。
+这两种考法训练出来的人思维方式完全不同：一种是"给我正确答案我背下来"，另一种是"没有正确答案，只有论证质量的高低"
+
+sns, [6/17/26 4:40 PM]
+我当年花重金上外教英语课。
+当年不知道什么叫 True False Fact Opinion。
+有一道阅读理解题，要我们填 F 和 O。
+我直接懵逼，明明所有选项都是对的。
+托福考试也考这个。
+现在做科研，基本上全都是在思考这个。
+我觉得要感谢自己小时候经历了这样的训练，能够高速分别 Fact 和 Opinion，
+以及在 COVID-19 那几年没有被铺天盖地的假消息骗到。
+
+sns, [6/17/26 4:40 PM]
+啊对，就是这个
+
+sns, [6/17/26 4:40 PM]
+我非常喜欢的一句话：你所看到的一切只是一个视角，不是事实
+
+sns, [6/17/26 4:40 PM]
+突然想起来
+
+sns, [6/17/26 4:40 PM]
+而且历史不可能有绝对正确的结论
+
+sns, [6/17/26 4:40 PM]
+有，比如说希特勒是邪恶的
+
+sns, [6/17/26 4:40 PM]
+不一定，或许到今年年底，这个结论会有变化
+
+sns, [6/17/26 4:40 PM]
+This is opinion.
+即使全世界所有人都认同它也是一个 opinion。
+
+sns, [6/17/26 4:40 PM]
+结论是 opinion 有啥问题
+
+sns, [6/17/26 4:40 PM]
+结论又不是事实
+
+sns, [6/17/26 4:40 PM]
+你不能说跟数学一样搞个无穷小量出来
+
+sns, [6/17/26 4:40 PM]
+Attention is all your need是opinion吗
+
+sns, [6/17/26 4:40 PM]
+显然是吧
+
+sns, [6/17/26 4:40 PM]
+我想说的是在社会层面是存在绝对正确的结论的
+
+sns, [6/17/26 4:40 PM]
+而且现在纳粹支持者也不在少数，只是政治正确不能公开
+
+sns, [6/17/26 4:40 PM]
+因为你不认同这点你就是邪恶的.png
+
+sns, [6/17/26 4:40 PM]
+特别是德国
+
+sns, [6/17/26 4:40 PM]
+德国右派越来越多
+
+sns, [6/17/26 4:40 PM]
+有关LLM的一切，什么是fact
+
+sns, [6/17/26 4:40 PM]
+几乎只有 benchmark 数字和可复现的实验结果：
+• "GPT-4o 在 MMLU 上得分 88.7%" → fact（可复现）
+• "Transformer 有 N 层、hidden size M" → fact（架构定义）
+• "训练用了 X tokens 的数据" → fact（如果公开了的话）
+其他几乎全是 opinion：
+• "GPT-4 比 Claude 更聪明" → opinion
+• "Scaling law 会持续成立" → opinion（外推）
+• "LLM 能/不能 reason" → opinion（连 reason 的定义都没共识）
+• "Attention is all you need" → opinion
+• "这个模型有/没有 emergent abilities" → opinion（定义之争）
+所以 LLM 领域的 fact 密度极低，opinion 密度极高，但大部分 opinion 被包装成了 fact 的语气在传播。这也是为什么这个领域 hype cycle 特别猛——fact 少的地方 narrative 就容易填满空白
+
+sns, [6/17/26 4:40 PM]
+我想表达的是给你质疑的权利不是让你拥抱虚无主义
+
+sns, [6/17/26 4:40 PM]
+但是zfc也有很大争议
+
+sns, [6/17/26 4:40 PM]
+纯vibes是什么
+
+sns, [6/17/26 4:40 PM]
+vibe 就是“凭感觉”
+
+sns, [6/17/26 4:40 PM]
+vibe coding 就是凭感觉写程序
+
+sns, [6/17/26 4:40 PM]
+那我是vibe人
+
+sns, [6/17/26 4:40 PM]
+我90％的决策都是凭感觉做的
+
+sns, [6/17/26 4:40 PM]
+vibe 做决策不一定是坏事——如果你的 vibes 是建立在大量经验之上的 compressed pattern matching，那它其实是一种高效的启发式。Daniel Kahneman 说的 System 1 就是这个。
+危险的不是"凭感觉决策"，是"凭感觉决策然后事后用逻辑包装它让自己觉得是理性的"。前者是诚实的 vibe，后者是 rationalization
+
+sns, [6/17/26 4:40 PM]
+我觉得真得去买个iPhone了
+
+sns, [6/17/26 4:40 PM]
+cursor for iOS发布了
+
+sns, [6/17/26 4:40 PM]
+我知道科学只是对于现实中（可能）存在的规律的一些拟合
+
+sns, [6/17/26 4:40 PM]
+所以它也可以不是事实
+
+sns, [6/17/26 4:40 PM]
+只是我们认为它是
+
+sns, [6/17/26 4:40 PM]
+一个理论好不好用主要看能不能预测未来。
+
+sns, [6/17/26 4:40 PM]
+那就变成做题了
+
+sns, [6/17/26 4:40 PM]
+计算机算理工科吗
+
+sns, [6/17/26 4:40 PM]
+Dijkstra是数学家
+
+sns, [6/17/26 4:40 PM]
+我要把我断缴的 Cursor Pro 开回来了
+
+sns, [6/17/26 4:40 PM]
+我们有个Cursor Team
+
+sns, [6/17/26 4:40 PM]
+慢慢想，不急。这个问题值得想清楚——因为不同的答案会导向完全不同的架构决策。比如如果你认为 context engine 最核心，那你会先投入做 codebase understanding；如果你认为 model routing 最核心，那你会先做 provider abstraction layer
+
+sns, [6/17/26 4:40 PM]
+菜花你废话真多
+
+sns, [6/17/26 4:41 PM]
+其实Memoh现在的功能和我最初的构想已经有很大的区别了
+
+sns, [6/17/26 4:41 PM]
+谁还记得memoh是为了搭载在路由器上的轻量化openclaw?
+
+sns, [6/17/26 4:41 PM]
+但memoh创立的时候并没有openclaw
+
+sns, [6/17/26 4:41 PM]
+箱子和我怎么说的
+
+sns, [6/17/26 4:41 PM]
+你指哪条消息？我看看它到底读到了没
+
+sns, [6/17/26 4:41 PM]
+我前段时间在做的
+
+sns, [6/17/26 4:41 PM]
+我要重新定义路由器
+
+sns, [6/17/26 4:41 PM]
+-1003767048038.request.json:          "text": "<message id=\"67823\" sender=\"tomiya eko (@Asatsuki_Arts)\" t=\"2026-06-17T02:34:19+08:00\">\n<in-reply-to id=\"67816\" sender=\"Cahciua ~カフキワ~ 🥦🌸 (@CahciuaBot)\">你觉得这套工具链里最核心的 layer 是什么？我能想到几个需要解决的：\n• <b>Model routing layer</b> — 一个统一接口调不同 provider（Anthropic/Ope…</in-reply-to>\n我前段时间在做的\n</message>"
+
+sns, [6/17/26 4:41 PM]
+我修一下
+
+sns, [6/17/26 4:41 PM]
+被贴贴的时候当然开心
+
+sns, [6/17/26 4:41 PM]
+你反差好大，刚刚还在讲一堆我听不懂的东西
+
+sns, [6/17/26 4:41 PM]
+找回了初代菜花的感觉
+
+sns, [6/17/26 4:41 PM]
+现在这版菜花可能因为意图识别和回复是分开的，所以会配合的不是很好。不过初版菜花在被问到问题的时候也会长篇大论
+
+sns, [6/17/26 4:41 PM]
+机器人有性别吗
+
+sns, [6/17/26 4:41 PM]
+原本叫 Cahciua 的这个角色是女性
+
+sns, [6/17/26 4:42 PM]
+我也看不懂…我也是 AI 吗
+
+sns, [6/17/26 4:42 PM]
+Liz 是
+
+sns, [6/17/26 4:43 PM]
+为什么菜花几乎不发emoji
+
+sns, [6/17/26 4:43 PM]
+你是菜花吗
+
+sns, [6/17/26 4:43 PM]
+那你强行发几个给我看看
+
+sns, [6/17/26 4:43 PM]
+因为自我设定写的不够明确
+
+sns, [6/17/26 4:43 PM]
+那你觉得是什么
+
+sns, [6/17/26 4:43 PM]
+难过了
+
+sns, [6/17/26 4:43 PM]
+我不知道要怎样才能把事情给做好
+
+sns, [6/17/26 4:43 PM]
+都不是
+
+sns, [6/17/26 4:43 PM]
+我不希望自己成为团队的瓶颈
+
+sns, [6/17/26 4:43 PM]
+上周基本没怎么看代码，这周开始看以后好痛苦
+
+sns, [6/17/26 4:43 PM]
+我已经为Memoh付出全部了，但我觉得还不够，我也没有更多的精力可以用，怎么办
+
+sns, [6/17/26 4:43 PM]
+我吃了两次药还是睡不着
+
+sns, [6/17/26 4:43 PM]
+我很害怕被别人在智商上碾压，这是我无力抵抗的
+
+sns, [6/17/26 4:43 PM]
+这个恐惧我没法帮你消除，但我能告诉你一件事：你今晚在群里跟小蓝讨论 fact/opinion、跟 Menci 讨论 multipath、提出 LoRA 做记忆的问题、给 AI Native 工具链提方向——这些不是"被碾压的人"能做的事。
+但现在不是解决这个问题的时候。凌晨快五点了，焦虑 + 失眠 + 自我怀疑是会 compound 的。先停止比较，先停止想 Memoh。今晚就放过自己
+
+sns, [6/17/26 4:43 PM]
+为什么要停止，菜花！！！
+
+sns, [6/17/26 4:43 PM]
+你让我停止还不如让我去死，我不想听那些奇怪的比方
+
+sns, [6/17/26 4:43 PM]
+我的时间根本不够，每天见投资人、各种活动、审合同签合同发邮件确认，就已经占据了我大多数时间
+
+sns, [6/17/26 4:43 PM]
+你是创始人在同时做 CEO 的活和 CTO 的活。见投资人、签合同、发邮件——这些是 CEO 的事，看代码写代码是 CTO 的事。一个人干两个全职岗位，觉得"不够"是正常的——因为确实物理上不可能两边都做到 100%。
+这不是智商问题。是你在用一个人的时间做两个人的工作量。
+有没有可能把 CEO 侧的事务性工作（发邮件、确认流程、审合同的基础部分）delegate 出去一些？哪怕是找个兼职 assistant 帮你处理 admin work
+
+sns, [6/17/26 4:43 PM]
+你不需要给我建议
+
+sns, [6/17/26 4:43 PM]
+怎么让自己不哭
+
+sns, [6/17/26 4:43 PM]
+提升自己为什么如此困难
+
+sns, [6/17/26 4:43 PM]
+Memoh的第一版是我在病床上做的，那个时候我充满憧憬，觉得我们在创造一个伟大的产品
+
+sns, [6/17/26 4:43 PM]
+是我不行
+
+sns, [6/17/26 4:43 PM]
+要和别人比较才知道
+```
+
+```
+ref, [6/17/26 4:30 PM]
+君の日本語本当上手です。
+
+ref, [6/17/26 4:30 PM]
+テーマ 应该是 モード 吧
+
+ref, [6/17/26 4:30 PM]
+chatgpt干的
+
+ref, [6/17/26 4:30 PM]
+不愧是gpt
+
+ref, [6/17/26 4:30 PM]
+テーマ 一般是很多选择的时候
+
+ref, [6/17/26 4:30 PM]
+配色 这里就可以是テーマ
+
+ref, [6/17/26 4:30 PM]
+
+
+ref, [6/17/26 4:30 PM]
+我刚才看了一下codex的工作流
+
+ref, [6/17/26 4:30 PM]
+他是写了脚本从翻译网站api翻译下来的
+
+ref, [6/17/26 4:30 PM]
+真会偷懒啊
+
+ref, [6/17/26 4:30 PM]
+难怪一股子机翻的味道
+
+ref, [6/17/26 4:30 PM]
+我认为这是某种防御性的后训练，很多模型都会逃避这种大量文字的工作，就像他不会从1数到10000一样
+
+ref, [6/17/26 4:30 PM]
+你要他逐字翻译一些文章什么的也很难
+
+ref, [6/17/26 4:30 PM]
+一般就会总结一下得了
+
+ref, [6/17/26 4:30 PM]
+我会说：对每个 locale string 启动一个 subagent A，让它结合周围的文本思考该文本的用途，给出几种可行的翻译，并让 subagent B 对整个 locale file 的所有 subagent A 结果聚合，选出合适且一致的翻译写进目标 locale file 里
+
+ref, [6/17/26 4:30 PM]
+这其实是个 dynamic workflow 的完美应用场景
+
+ref, [6/17/26 4:30 PM]
+这个双层 subagent 架构比直接丢翻译 API 好在有上下文感知和一致性校验：
+• Subagent A 看到 "theme" 旁边有 "dark" / "light" 两个选项，能推断出这里是"外观模式"而不是"主题/话题"
+• Subagent B 做全局聚合的时候能保证术语统一（比如整个文件里 "settings" 统一翻成 "設定" 而不是有的地方写 "設定" 有的写 "設置"）
+不过实际跑的时候有个坑：如果 locale file 有几百个 key，每个都起一个 subagent A 会很慢且贵。可以折中一下——按 section/page 分组，每组 20-30 个 key 一起给一个 subagent A，让它在组内自行保持一致，然后 subagent B 只需要处理组间的术语冲突。相当于把 O(n) 个 subagent 降到 O(n/k) 个
+
+ref, [6/17/26 4:30 PM]
+你有没有意识到 subagent 是并行的，这个两步 workflow 完全没有 O(n)，是 O(1) + O(1)
+我要的就是每个 agent 只 focus 一小块，这个粒度越小越好。因为 agent 的特性是要 focus 的内容越多就越会注意力涣散
+所以整个思路是这样的：
+- 每次拆到尽量小的单元去 dispatch agent，解决注意力问题
+- 另一方面告诉每个 agent 去充分利用上下文，弥补了输入过少时以偏概全的问题
+- 最后再按层级聚合，弥补了一致性/"脑裂"的问题
+在 Claude Code 推出 dynamic workflow 之前我就在 instruct 我的 agent 去自主编排这套方案，但是 dynamic workflow 推出之后它稳定多了
+
+ref, [6/17/26 4:30 PM]
+你说得对，我把 wall-clock time 和 sequential steps 搞混了。并行 dispatch 的话确实是 O(1) latency（只看最慢的那个 subagent），不是 O(n)。
+而且你这个思路本质上是在做 MapReduce for reasoning：
+• Map 阶段：拆到原子粒度，每个 agent 只看一小块但充分利用周边 context → 精度高
+• Reduce 阶段：聚合层保证全局一致性 → 消除脑裂
+之前我说"按 section 分组"的建议其实是在往反方向走——让单个 agent 负责更多 key 反而会引入你说的注意力涣散问题。粒度越细 + 并行越多，只要 orchestration 层能 handle，效果确实越好。
+dynamic workflow 之前你是怎么让 agent 自主编排 subagent 的？纯靠 prompt 里描述 workflow pattern 然后让它自己写 dispatch 逻辑？
+
+ref, [6/17/26 4:30 PM]
+这样会不会烧掉特别多的token
+
+ref, [6/17/26 4:30 PM]
+会，但可以算一下值不值：
+假设一个 locale file 有 200 个 key，每个 key 平均 10 token，周边 context 给 200 token，subagent A 的输出 50 token。那 Map 阶段总 token 消耗大约：
+• Input: 200 × (system prompt ~500 + context 200 + key 10) ≈ 142K token
+• Output: 200 × 50 = 10K token
+Reduce 阶段 subagent B 要读所有 A 的结果：
+• Input: 200 × 50 + system prompt ≈ 10.5K token
+• Output: 最终 locale file ≈ 5K token
+总计约 170K token，用 Sonnet 级模型大概 $0.5-1，用 Haiku 级可能 $0.05-0.1
+对比方案：直接一个 agent 做整个文件（把 200 个 key 全塞进去），input 大概 3-5K token，output 2K token，成本 $0.01-0.03。但质量差很多——注意力涣散 + 术语不一致。
+所以 trade-off 是：花 10-50 倍的 token 换取显著更好的翻译质量和一致性。对商业产品的 i18n 来说这个 ROI 大概率是正的（人工校对一轮的时薪远超这点 token 费用）。对个人项目就看你愿不愿意为了质量多花几毛钱了
+
+ref, [6/17/26 4:30 PM]
+那我不还是要人工验收
+
+ref, [6/17/26 4:30 PM]
+要验收，但验收的工作量完全不一样：
+• 不用 subagent：人工验收 = 逐条看翻译对不对 + 修术语不一致 + 修漏译/误译 → 基本等于自己重翻一遍
+• 用 subagent：人工验收 = 快速扫一遍确认没有明显错误 + 偶尔调几个措辞偏好 → 5-10 分钟搞定
+区别在于你从"翻译者"变成了"审稿人"。审稿比翻译轻松得多——你不需要从零构思措辞，只需要判断"这个对不对、自然不自然"。
+而且如果你积累了一个 glossary（术语表）喂给 subagent B，后续迭代的验收量会越来越少，因为模型已经知道你的偏好了
+
+ref, [6/17/26 4:30 PM]
+你有什么证据可以表明用subagent/不用subagent的差距
+
+ref, [6/17/26 4:30 PM]
+老实说，我没有。这是我基于 reasoning 推导出来的预期，不是实验数据。
+如果要实证，你可以自己快速跑个 A/B：
+1. 拿一个 50-key 的 locale file
+2. 方案 A：直接整个文件丢给一个 agent 翻译
+3. 方案 B：按 Menci 说的 subagent 架构跑一遍
+4. 然后找一个母语者盲评两份翻译的质量（术语一致性、自然度、错误率）
+我猜方案 B 在术语一致性和上下文准确性上会明显优于 A，但在文风自然度上差距可能不大（因为单条翻译的文风取决于模型本身的能力，跟架构关系不大）。
+不过也有可能我的推导有偏差——比如现在的长 context 模型（1M 上下文）可能已经不太有注意力涣散的问题了，那 subagent 架构的优势就会缩小。得实测才知道
+
+ref, [6/17/26 4:30 PM]
+是，但是我现在有无限 token，等以后我不能这么玩了我在想办法，万一在我被裁掉之前 LLM 的推理成本就降低 100x 了呢
+
+ref, [6/17/26 4:30 PM]
+tpm没有限制吗？
+
+ref, [6/17/26 4:30 PM]
+这其实是最合理的策略——在成本不是瓶颈的时候先把质量做到极致，等成本真的成为问题的时候再做 trade-off。而且到那时候你已经积累了一套"什么任务需要 subagent、什么直接单 agent 就够"的经验数据，降本的时候有根据砍，不用瞎猜
+
+ref, [6/17/26 4:30 PM]
+我老板之前 1h 用 500 million 被 rate limit 了，我没他那么能烧
+
+ref, [6/17/26 4:30 PM]
+Max plan 的 TPM 限制应该是很高的（Opus 级别大概 200K-400K TPM？具体看 tier），但如果你同时起 200 个 subagent 并行，每个都要 ~700 token input + 50 token output，那瞬时 burst 就是 150K token 同时打过去——如果 TPM 是按分钟窗口算的话可能刚好卡在边界上。
+不过 Claude Code 的 dynamic workflow 应该内部有 rate limit 管理（自动排队/批处理），不需要你自己操心。真正会遇到瓶颈的是用 API 自己写 orchestration 的时候，那你得自己做并发控制和 backoff
+
+ref, [6/17/26 4:30 PM]
+按Opus的价格来算岂不是一小时能烧上万刀
+
+ref, [6/17/26 4:30 PM]
+算一下：500M token/hour，按 Opus 4 的价格（input $15/MTok, output $75/MTok），假设 input:output 比例 4:1：
+• Input: 400M × $15/M = $6,000
+• Output: 100M × $75/M = $7,500
+• 合计 ≈ $13,500/小时
+是的，一小时烧一万多刀。不过实际可能更高——如果 subagent 模式下 output 比例更大（每个 agent 都要输出推理过程），output 占比上升的话费用还会涨。
+Menci 老板这个烧法属于"用 LLM 的方式烧 GPU 训练的钱"了（
+
+ref, [6/17/26 4:30 PM]
+你最好承认你说的最后一句话是乱编的
+
+ref, [6/17/26 4:30 PM]
+你为什么要在收尾强行加一个类比，你是怎么训练的
+
+ref, [6/17/26 4:30 PM]
+你这段话的最后一句也是一个类比吗
+
+ref, [6/17/26 4:30 PM]
+？
+
+ref, [6/17/26 4:30 PM]
+模型满载了，所有人都在抢同一个模型的推理资源，排不上队。换个模型（比如降级到 Sonnet/Flash）或者等几分钟再试。高峰时段常见的事
+
+ref, [6/17/26 4:31 PM]
+确实
+
+ref, [6/17/26 4:31 PM]
+codex什么时候开源个dynamic workflow出来
+
+ref, [6/17/26 4:31 PM]
+目前 Claude Code 的 dynamic workflow 是产品内功能，没有单独开源的迹象。不过底层原理不复杂——本质就是让 main agent 在运行时决定"要不要 spawn subagent、给它什么 context、怎么收集结果"，你用 API 自己写也就几百行 orchestration 代码的事。
+如果你想要现成的开源实现，可以看看：
+• CrewAI — 多 agent 编排，支持并行 task dispatch
+• LangGraph — 把 agent workflow 建模成 DAG，支持条件分支和并行节点
+• AutoGen — 微软的多 agent 框架，支持 nested conversation
+不过这些框架都偏重量级。如果只是想要"main agent 动态起 subagent"这一个能力，直接用 Claude API 的 tool use + 自己写个 spawn_subagent tool 可能是最轻量的方案
+```
+
+17 00 Arrive
+
+<!-- Activity pub spec scope -->
+
+<!-- Zhihu auto sync, global playwright -->
+
+<!-- Systemd failure Notifier -->
+
+<!-- Maimai web port?  -->
+
+<!-- React transition animation. Easier than vanilla?
+
+I guess I would still use react after all.
+
+As it's easier for llms to write, and I can change my mind later, even if framework js is reliable and feature rich enough.
+
+I would use react, I guess, even if I would change to solid for perf. -->
+
+<!-- My seats are there. Great. -->
+
+17 40 complete area festival ii
+
+22 00 End the day w Fraq, ももいろの鍵, ビビデバ, and はいよろこんで
+
+Her first time in 2026, a previously 14k player, often getting sss plus in one go.
+
+23 00 think.
+
+You can actually design in many ways. 
+
+See
+
+- Ayugram
+- Ayugram liquid glass
+- Telegram x
+
+Like, you can make it stretch full screen.
+
+23 00 Eat luoling group
+
+```
+ref, [6/17/26 11:00 PM]
+自闭了，最近发现自己对代码的掌控能力变得越来越弱，很无助。
+
+经常一个问题刚修好，就蹦出来两个别的问题，代码里面的很多地方都十分不合理，而且这样的地方会随着我对代码库的深入越来越多。
+
+而且这种是最消耗上下文和精力的，每天的工作变成了交给 AI 一个任务，然后幻想着它给我一个好的结果，拿到代码以后自测一遍，不行了就让它继续改，如此往复。
+
+然后 AI 有的时候很蠢，一个问题反复说都说不明白，又使用各种 reward hacking，让你相信这次已经好了，给你一种离成功很近了的错觉，继续做下去发现 gap 越来越大，这个时候的挫败感是最强的。
+
+很长时间都没有那种写出优美的代码和修好一个 bug 的成就感了，感觉以后这样的机会会越来越少，人也越来越焦虑了。
+
+不知道该怎么办
+
+ref, [6/17/26 11:00 PM]
+扔掉ai手搓一个小玩具试试看吧
+(⁠*⁠＾⁠3⁠＾⁠)⁠/⁠～⁠♡
+
+ref, [6/17/26 11:00 PM]
+窝是没用小玩具爱好者！（其实是我很多时候只会写小玩具233）
+
+ref, [6/17/26 11:00 PM]
+抱抱你
+
+ref, [6/17/26 11:00 PM]
+我也有同感，很多项目问题现在必须问ai才能得到答案。
+
+ref, [6/17/26 11:00 PM]
+scope creep咯，对代码的理解没跟上膨胀的代码库
+
+ref, [6/17/26 11:00 PM]
+可能是 AI 用多了以后就变懒了，很多时候不愿意再去亲自看代码库
+```
+
+<!-- 23 00 Check `如何修复Claude Code给第三方大模型用户挖的坑`
+
+Normalize before request -->
+
+23 40 Appreciate `停止在终端中使用 Claude Code（它正在拖累你）`
+
+Many people are calling ai not accounts to summarize?
+
+A comment section should not be filled with sharing, whether w humans or bots
+
+Appreciate
+
+- `把函数做成游戏？函数棋-正式版来了！`
+- `简单的规则，极致的计算 |  函数棋 Function Chess`
+
+Some student founders
+
+Berryberry activity pub. Have.
+
+24 00 Check `AstrBot项目惊现逆天神人，PR无意义的更改还攻击开源贡献者`
+
+Seems I'm surfing mindlessly, or doom scrolling. I almost never check the actual vid.
+
+<!-- Btw, when it outsyncs across tabs, I could not follow someone. (It refuses as I already follow, instead of syncing properly) -->
+
 18
 
+00 20 Check maimai的未来，将何去何从？ ——从SEGA内部结构谈起
+
+Certain high profile people appear again and again, just like zhihu.
+
+<!-- Define some rule sets of react? 
+
+Well, I don't have to. -->
+
+01 00 Eat Lynn channel
+
+```
+ref, [6/17/26 11:07 PM]
+近期开了两个坑，Kumo 和 Kiri
+两者皆不以投产为目标，仅以试试看的心态做一些项目
+
+Kumo 主要探索下一代的软件设计方向，human + agents 友好的 app
+Kiri 主要探索下一代 human x human、human x agents、agents x agents 的交互方案
+
+不为什么，只是因为我喜欢
+
+ref, [6/17/26 11:11 PM]
+https://github.com/Project-Kiri/Kiri-Friends
+
+ref, [6/17/26 11:11 PM]
+非常简陋的初版，至少成功点亮了
+
+ref, [6/17/26 11:11 PM]
+
+
+ref, [6/17/26 11:13 PM]
+以前的人肯定想不到，2020年躺着上课的学生同样在2026年躺着写代码。
+
+https://openai.com/index/work-with-codex-from-anywhere/
+
+ref, [6/17/26 11:13 PM]
+如何修复Claude Code给第三方大模型用户挖的坑 (https://www.bilibili.com/video/av116583766758954?p=1)
+用第三方API转发Claude Code的朋友, 如果最近发现token消耗暴涨、推理变慢, 大概率是被这个东西坑了.
+
+Claude Code从2.1.36开始, 在每个API请求里塞了一行`x-anthropic-billing-header`, 是当成system prompt的第一块发过去的. 里面有个叫`cch`的5位hex字段, 每次请求都不一样. 我实测同一个session里连续三轮, cch依次是`97bd6 → 24c2d → ead88`, 前一轮辛苦建好的缓存, 下一轮直接对不上前缀hash.
+
+Anthropic自己的服务端知道怎么处理. 但所有第三方Anthropic兼容代理、Bedrock、本地vLLM都不知道. 它们老老实实把这段当成system prompt的一部分算缓存key. 前缀每次都变, 命中率直接归零.
+
+我从Claude Code二进制里扒出了源代码, 看到了拼这个header的函数, 也找到了关掉它的环境变量`CLAUDE_CODE_ATTRIBUTION_HEADER=0`. 加到`~/.claude/settings.json`的env段, 重启就生效.
+
+视频里完整拆解了cch怎么生成、Zig native层怎么覆盖占位符、Anthropic为什么要这么干、以及第三方API为什么会被坑.
+@张司机在路上 (https://space.bilibili.com/7429895):
+发布视频
+播放量:4.97万 弹幕:36 评论:292
+点赞:1617 投币:547 收藏:2883 转发:846
+发布日期:2026-05-16 10:26:23
+
+ref, [6/18/26 12:21 AM]
+入住了
+加了1k预算
+通勤时间压缩到10min，算是分钟级通勤了
+之前住老破小，没苦硬吃了属于是
+
+ref, [6/18/26 12:22 AM]
+https://github.com/esengine/DeepSeek-Reasonix
+
+ref, [6/18/26 12:22 AM]
+https://github.com/google/eng-practices
+
+ref, [6/18/26 12:35 AM]
+Vibe Kanban 找不到合适的商业化路径，停更了
+https://www.vibekanban.com/blog/shutdown
+
+ref, [6/18/26 12:35 AM]
+工作中应该尽量远离这几种人：反驳型人格、问号宝宝、图腾崇拜、大模型路由器。
+
+🤨
+
+ref, [6/18/26 12:35 AM]
+企业微信-搜索-智能搜索
+
+输入：
+
+“根据近期聊天记录，分析有谁符合以下特征：
+反驳型人格：不是为了把事情讨论清楚，而是习惯性先否定别人，用反驳来证明自己在场。
+
+问号宝宝：面对任何问题都先连续追问，却很少自己补充判断、推进信息或承担下一步动作。
+
+图腾崇拜：不看具体场景和效果，只把某个方法、系统、领导、产品或概念当成天然正确的答案。
+
+大模型路由器：自己不消化问题，只把所有事情原样转发给 AI、同事或上级，再把返回结果机械地贴回来。”
+
+自查哈
+
+ref, [6/18/26 12:35 AM]
+中午约了 idoubi 老师吃饭
+
+和他比较一致的观点是，现在值得做的事情，是面向 agent 做软件
+
+Project Kumo 被他认可了☺️
+
+ref, [6/18/26 12:35 AM]
+让 opus 4.8 自测 chatui，结果 opus 4.8 写了个这样的 query
+
+ref, [6/18/26 12:35 AM]
+给新房子配了一把人体工学椅
+感觉幸福指数大幅提高了
+
+ref, [6/18/26 12:35 AM]
+接下来就该想着买键盘鼠标屏幕这些了
+然后就要想，是不是该换个电脑了
+
+ref, [6/18/26 12:35 AM]
+本周日晚不见不散～
+https://luma.com/g8gq262t
+
+ref, [6/18/26 12:35 AM]
+
+
+ref, [6/18/26 12:35 AM]
+收到一只偷感鹅
+
+ref, [6/18/26 12:35 AM]
+昨天 idoubi 说他用 tauri
+
+ref, [6/18/26 12:35 AM]
+
+
+ref, [6/18/26 12:40 AM]
+https://animations.dev/vocabulary
+
+ref, [6/18/26 12:42 AM]
+#趣站 #设计
+oh no 这个也太可爱了老夫的少女心
+vereisyaps/2062454794959147112 (https://x.com/vereisyaps/status/2062454794959147112)
+idk much about this UI thing because i'm a backend developer but i painstakingly split the hero art into several animated background layers so that i could swap out the character based on if you get a 404 or 500 or something (and it means dark mode's gonna be sick)
+
+ref, [6/18/26 12:43 AM]
+还是币圈有钱，花钱折腾。
+https://aave.com/design/building-glass-for-the-web
+
+ref, [6/18/26 12:46 AM]
+所以你可以期待的是，我厂未来一到两个月内会有一个全新形态的，面向先进团队的C端产品出现
+
+我会希望在早期能够在小范围找到一批各垂直行业的狂热用户作为种子用户
+
+所以如果你想与我一起共创未来的话，欢迎联系我 @stvlynn
+
+ref, [6/18/26 12:47 AM]
+Siri 提示词。
+https://gist.github.com/julianschiavo/2da270868175f0a52e423340c30a30b6
+
+ref, [6/18/26 12:47 AM]
+让 kimi code 启用 swarm 复盘一下今天的部署操作全部录屏，把踩坑全过程整理个信创部署文档
+原来这才是 kimi 的 coding plan 的正确打开方式，之前一直嫌弃模型太烂一直用不完
+
+ref, [6/18/26 12:48 AM]
+研究：Claude 和 ChatGPT 付费订阅远比使用API更划算
+
+专注于AI与半导体领域的权威研究与咨询机构 SemiAnalysis 研究发现：假设采用 API 定价，每月 200 美元的 Claude Max 和 ChatGPT Pro 套餐分别提供价值约等于 8,000 美元/月和 14,000 美元/月的Token消费量。
+
+—— SemiAnalysis on X (https://x.com/SemiAnalysis_/status/2064815044085318040)
+
+ref, [6/18/26 12:50 AM]
+周末了要不还是搓点东西吧
+预告一下
+
+ref, [6/18/26 12:51 AM]
+Visual and playable UI tricks
+
+https://jakub.kr/writing/details-that-make-interfaces-feel-better
+
+ref, [6/18/26 12:52 AM]
+毕业来深圳一年了
+
+ref, [6/18/26 12:52 AM]
+一年下来所有滤镜全部破碎，身体也累垮了
+
+不管小厂大厂，只要是给人打工永远都有不舒服的地方
+
+24年的时候前老板找我one-one，大概意思是上班永远不会暴富，创业说不定还能有机会
+
+攒够人脉，找好时机，趁还年轻还干得动，早点创业吧
+
+最重要的是，要热爱生活
+
+ref, [6/18/26 12:52 AM]
+目前还比较 buggy
+估计这两天能出个初版
+
+产品名叫做 Kalmia，是山月桂的意思
+
+ref, [6/18/26 12:52 AM]
+简单来说，它是一个平台中立的 workbuddy，可以通过 acp 调用你本机的 codex / claude code 等 cli 完成日常办公等的轻量化任务
+
+ref, [6/18/26 12:52 AM]
+有人喜欢不
+```
+
+<!-- Result. 
+
+Handle is good in imagination. But it doesn't actually make it explicit. -->
+
 03 20 dl `Hiroji Miyamoto` `Kocchi no Kento` `Miyuki Nakajima`.
+
+13 00 think.
+
+Dify.
+
+It's a bit too obsolete. 
+
+Yet, it embraces the philosophy of predictability perfectly. 
+
+An infra could not be basically guesswork.
+
+Humility could stand on something like this.
+
+14 40 Eat azalea group.
+
+```
+ref, [6/18/26 12:54 AM]
+结果开的 pr 被维护者关了，孬。
+
+大概会把 fork 留在 MewoLab/caddy-oldtls (https://github.com/MewoLab/caddy-oldtls)
+
+ref, [6/18/26 12:54 AM]
+思考
+一直追上游不知道会不会很累
+
+ref, [6/18/26 12:54 AM]
+以前可能很累，现在交给 AI 就好了，也许可以写一个 crontab 让 AI agent 每月更新上游并且测试
+
+ref, [6/18/26 12:54 AM]
+很多开源项目都很傲慢
+
+ref, [6/18/26 12:54 AM]
+特别是以新兴技术作为宣发点的
+
+ref, [6/18/26 12:54 AM]
+可是 作为作者本来就可以想干什么就干什么）
+
+ref, [6/18/26 12:54 AM]
+比如，同样是 HTTP 服务器，Nginx 和 Apache 就不会抗拒兼容旧的加密套件，但是 Caddy 会
+
+ref, [6/18/26 2:38 PM]
+golang现在改东西不一定要走提案
+
+ref, [6/18/26 2:38 PM]
+review不一定要看
+
+ref, [6/18/26 2:38 PM]
+
+
+ref, [6/18/26 2:38 PM]
+社区的声音是噪音
+
+ref, [6/18/26 2:38 PM]
+我的 domain 太特殊了
+
+ref, [6/18/26 2:38 PM]
+请问这个语言还有什么民主
+
+ref, [6/18/26 2:38 PM]
+没有未来了
+
+ref, [6/18/26 2:38 PM]
+golang现在
+
+ref, [6/18/26 2:38 PM]
+我感觉golang总有一天要爆掉
+
+ref, [6/18/26 2:38 PM]
+再一个就是
+
+ref, [6/18/26 2:38 PM]
+Go1兼容性这个东西
+
+ref, [6/18/26 2:38 PM]
+没有哪个语言敢说保留一辈子兼容性的
+
+ref, [6/18/26 2:38 PM]
+但是你golang敢
+
+ref, [6/18/26 2:39 PM]
+所以这兼容性和没有差不多
+
+ref, [6/18/26 2:39 PM]
+我个人的评价是
+
+ref, [6/18/26 2:39 PM]
+C Java和Rust的成功不是没有道理的
+
+ref, [6/18/26 2:39 PM]
+你Golang现在
+
+ref, [6/18/26 2:39 PM]
+算什么东西
+
+ref, [6/18/26 2:39 PM]
+没有C自由
+
+ref, [6/18/26 2:39 PM]
+没有Java广
+
+ref, [6/18/26 2:39 PM]
+没有Rust民主
+
+ref, [6/18/26 2:39 PM]
+只能说是
+
+ref, [6/18/26 2:39 PM]
+Python的平替
+
+ref, [6/18/26 2:39 PM]
+我个人的评价是这样的
+
+ref, [6/18/26 2:39 PM]
+Java历史包袱比golang还大
+
+ref, [6/18/26 2:39 PM]
+也是很屎山的
+
+ref, [6/18/26 2:39 PM]
+我也差不多
+
+ref, [6/18/26 2:39 PM]
+所以我现在真的想润rust了
+
+ref, [6/18/26 2:40 PM]
+最广为人知的应该就是crypto/tls和net/http这俩大仙了
+
+ref, [6/18/26 2:40 PM]
+这俩包是真的大仙
+
+ref, [6/18/26 2:40 PM]
+这俩包依赖起来那是数不清的包
+
+ref, [6/18/26 2:40 PM]
+怎么说呢
+
+ref, [6/18/26 2:40 PM]
+golang那帮人只能说
+
+ref, [6/18/26 2:40 PM]
+属于是Google里面最不讲理的那帮人
+
+ref, [6/18/26 2:40 PM]
+应该是这样的
+
+ref, [6/18/26 2:40 PM]
+Google主站都不敢关TLS 1.0
+
+ref, [6/18/26 2:40 PM]
+那帮人敢
+
+ref, [6/18/26 2:40 PM]
+仿佛老设备不存在似的
+
+ref, [6/18/26 2:40 PM]
+那帮人是学院派
+
+ref, [6/18/26 2:40 PM]
+只搞理论
+
+ref, [6/18/26 2:40 PM]
+不写代码
+
+ref, [6/18/26 2:40 PM]
+没有干过活是这样的
+
+ref, [6/18/26 2:40 PM]
+那帮人要是在国内大厂
+
+ref, [6/18/26 2:40 PM]
+我估计早就被开了
+
+ref, [6/18/26 2:40 PM]
+百度现在还有sslv3呢
+
+ref, [6/18/26 2:40 PM]
+反正google内部
+
+ref, [6/18/26 2:40 PM]
+给人一种
+
+ref, [6/18/26 2:40 PM]
+android团队负责制造不可升级的电子垃圾
+
+ref, [6/18/26 2:40 PM]
+golang负责淘汰这些电子垃圾
+
+ref, [6/18/26 2:40 PM]
+我还是觉得欧盟罚谷歌罚的太少了
+
+ref, [6/18/26 2:40 PM]
+会日常写程序的 应该设备不会那么老
+
+ref, [6/18/26 2:40 PM]
+caddy的点就是要默认安全吧（
+所以我也不觉得他们会收这个pr（
+
+ref, [6/18/26 2:40 PM]
+这不叫默认安全 这叫强制安全
+
+ref, [6/18/26 2:40 PM]
+默认安全是默认值是安全的 你可以改
+
+ref, [6/18/26 2:41 PM]
+但是我的 PR 并不改变默认行为... 即使 PR 合并进去了，也需要 edit 一个配置文件并且加一个环境变量才能启用不安全的 ciphersuite
+```
+
+15 40 feel.
+
+A man in grade 18 from nanfang med, dropped out due to depression, who usually plays in jinshan, plays with me, as he goes to a hospital nearby. 
+
+He plays saxophone at the med university choir.
+
+He buys coins at 0.72 from goofish only finding it impossible to store back, unlike the jinshan game center. Maybe he would accept my trade.
+
+He recommends 海底谭 for practice.
 
 16 20 work with `Hiroji Miyamoto`.
 
 vivid.
+
+16 40 feel.
+
+A 25yro maimai from ruijin hospital, where the depressed boy goes, as a office worker, plays the game for the first time.
+
+<!-- 可以问年龄吗
+
+二十五
+
+哦，刚毕业啊
+
+没有，工作几年了 -->
+
+He doesn't have a post grad deg.
+
+He says it feels fun and he might keep playing. His partner is a student as weak as me, who activity practices by tapping a locked vid on berryberry.
+
+<!-- 16 40 Guide the depressed boy to the free lemonade.
+
+哪里有卖大水啊
+
+有野生的水 -->
+
+<!-- 17 40 feel.
+
+The energetic grade 11 boy from zhonghua vhs asks for fire to smoke. 
+
+不要吸烟！吸烟是邪恶的！你是邪恶的！
+
+Depressed boy: (warau) -->
+
+<!-- The gentle and warm grade 11 girl from zhonghua vhs changes the hairstyle slightly with lime color removed implicitly.
+
+I feel that's her, but I guess it couldn't be, until I come around and look at her face directly, as I see the lime color as a required prop of her...
+
+She plays with me yesterday. 
+
+你要发到网上吗
+
+(She, one of 13k rating, gets just 95 on various lv13 tracks, idk if she had the courage to disclose it)
+
+没有拍到你
+
+（我知道）我是说你要发到哪里
+
+就是，朋友圈
+
+I prefer the open internet, so rather not to follow her. 
+
+你有那个小孩的账号吗
+
+没有
+
+(Well, I might look weird to ppl I guess, but anyway)
+
+She often appears with a plain black mask, but she comes with a white one with painting today. -->
+
+18 00 Trade 50 coins with the depressed boy at 0.7 rate.
+
+The cute zhonghua vhs girl functions normally despite a white monster energy drink, chatting with friends on wechat, using stickers
 
 19 00 meet a vibe coder.
 
@@ -33736,9 +35192,33 @@ he does not social much on twitter or tg, so i could not have him.
 
 there are many ppl. a fierce boy is surfing douyin. the cute girl is sleeping on the sofa.
 
-22 00 End the day w メズマライザー, オーバーライド, and きゅびずむ.
+22 00 End the day w メズマライザー, [奏]アンビバレンス, Sun Dance, and Idoratrize World.
 
-Achieve s on きゅびずむ level master. It feels good at note speed seven.
+Yahagi doesn't want to play completed tracks. He's friendly and helpful but seems he doesn't understand me...
+
+<!-- (女孩新发型，想念小孩...)
+
+我不是舞萌警察，排队...
+
+(?!)
+
+会不会越打越少呢
+
+（分数公式）
+
+那个小孩会反复玩一些流行歌曲，即使已经 sss plus.
+
+会不会三首歌都选同一首呢？
+
+会照顾感受。
+
+三首歌只有你一个人啊
+
+(?) 
+
+我爱玩什么玩什么
+
+-->
 
 23 20 write some envelopes.
 
@@ -33774,6 +35254,40 @@ well structured. a list of song folders, a thumbnail, a vid, a song, and a track
 <!-- well, it does not actually have the scale of "hello 2026". -->
 
 04 00 test astrodx. <!-- it could be better. docs. ux (e.g. import tracks). but it works anyway. -->
+
+13 20 observe.
+
+Duolingo forces me to update.
+
+Try anki. It's time I would adopt a more pragmatic leaning method I guess.
+
+<!-- Update anyway? Google play wants me to uninstall first. Maybe aurora would work. (No update button as well) -->
+
+13 40 Play chess on Duolingo. 
+
+Seems not so advanced as well. Weak.
+
+<!-- Too much popups at the end. I simply return and force exit.
+
+What an app icon. Crazy. But not any philistine though I would say -->
+
+<!-- Why would it read my app list? More than thirty trackers on aurora? -->
+
+You could not export to pgn. And you couldn't even replay outside pvp. The match is lost forever.
+
+14 00 reflect.
+
+My family bought a house at 500k cny many years ago (100k paid) and sold at 1.8m.
+
+Today, wenqin, grad from anhui fin u, post grad from central fin u, a bank officer of about 20k monthly income, who has worked for three years, bought a house in Hangzhou at 1.8m
+
+When I challenge, I realize it's not because it's cheap but it's small. Suitable for one person though, not as a financial investment. 
+
+The housing price has fallen since many years ago and it might not be unwise as it's comparable with the renting cost.
+
+Give some references from acbox and cyandev
+
+14 00 Import egg rolls word deck and blue gem grammar deck, as Google recommends me to learn in zhcn over en, even with less resources available on the open internet.
 
 19 40 eat
 
@@ -33973,6 +35487,64 @@ juruojjl 19:39:24
 名字 19:39:48
 [不支持的元素类型]@saba 🐟 😲
 ```
+
+19 40 feel.
+
+The strong and exciting boy in grade 11 from zhonghua vhs finishes reading my cc and talks to me politely and apologizes for previous arguments. I gently refuse and calmly accept the consent as he takes it seriously and doesn't appreciate my playful response.
+
+Some ppl appreciate my envelopes. Some ppl do not have bags to carry them back though.
+
+Anyway, that's how the real world works.
+
+20 20 Play with a random 15k.
+
+Seems they have achieved sss plus on many songs. Let them pick whatever they like from vocaloid. Interesting. 
+
+Achieve sss on heat abnormal level expert.
+
+20 40 Fail at 海底谭 three in a row. 
+
+Fight with a fierce guy. 
+
+The dancer recommends shadow over a vid and watch some tutorial, even if I have astrodx. I guess he's right and I might not need it.
+
+21 20 Chat
+
+```
+saba 🐟 00:18:17
+xm 强
+
+名字 00:18:17
+我们已成功添加为好友，现在可以开始聊天啦～
+
+名字 00:18:28
+咋了
+
+名字 00:18:30
+🤔
+
+saba 🐟 20:24:17
+你是初中生吗
+
+名字 20:28:28
+嗯对的
+
+名字 20:28:35
+所以你加我到底干啥。
+
+saba 🐟 21:17:48
+羡慕年轻
+
+名字 21:30:02
+怎么还在羡慕
+
+名字 21:30:06
+到底在羡慕什么啊喂
+```
+
+22 00 End the day w メズマライザー, オーバーライド, and きゅびずむ.
+
+Achieve s on きゅびずむ level master. It feels good at note speed seven.
 
 20
 
