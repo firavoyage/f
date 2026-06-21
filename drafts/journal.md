@@ -37973,15 +37973,15 @@ Well, she has taken 1v1 course two years ago so she knows what the problems are 
 
 18 20 Set anki daily to 10 <!-- the wisest choice taking an underground i guess, calm, and meaningful -->
 
-19 00 sync memories ~~(19 40)~~ 20 00
-
-<!-- seems i played a pc meanwhile -->
+19 00 sync memories ~~(19 40)~~ 20 00 <!-- seems i played a pc meanwhile -->
 
 
 
 <!-- timebox, plan. -->
 
 <!-- organize. -->
+
+<!-- solve your problem. -->
 
 <!--
 
