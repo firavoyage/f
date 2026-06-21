@@ -6,12 +6,6 @@ message/paste · todo · tabs/things · scratch pad · weekly/projects · notes
 
 todo:
 
-nextcloud (stop after use)
-
-navidrome (?)
-
-linear (?)
-
 librechat http://localhost:3080/c/new
 
 gnome
@@ -27,6 +21,8 @@ https://github.com/lobehub/lobehub
 https://github.com/memohai/Memoh
 
 https://cloud.dify.ai/apps
+
+linear (?)
 
 ---
 
