@@ -183,6 +183,7 @@ archi:
 - nested flattened objects
 - t3 stack
 - piracy hosting crypto vps maimai charts awmc astrodx
+- naming markdown multiple heading one no title
 
 frontend: <!-- web -->
 
@@ -222,6 +223,8 @@ frontend: <!-- web -->
 - pnpm predictable lock down save exact frozen lockfile
 - pnpm init break parceljs bun remove main indexjs
 - tsconfig extend parent
+- tsconfig baseurl
+- react custom jsx compiler component override
 
 backend:
 
