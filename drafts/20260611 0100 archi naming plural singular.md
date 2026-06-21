@@ -1,4 +1,4 @@
-would i name a function like check\_typos or check\_typo
+# (d?) would i name a function like check\_typos or check\_typo
 
 You should choose **`check_typos`** (plural) if the function scans a body of text and can find multiple mistakes, or **`check_typo`** (singular) if it evaluates a single word or input for a solitary mistake. \[[1](https://www.youtube.com/watch?v=Pkd3ud8b9%5F4), [2](https://www.reddit.com/r/AskProgramming/comments/19283vb/function%5Fnaming%5Fbest%5Fpractices/)]
 
@@ -51,3 +51,10 @@ To give you the most accurate suggestion, what **programming language** are you 
   dmitripavlutin.com
 
 Show all
+
+# 
+
+<!-- 2026.06.22 -->
+
+# 
+

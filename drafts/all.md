@@ -174,7 +174,7 @@ archi:
 - orthogonal meaning
 - naming vscode seti theme material icons theme filenames folder names
 - naming broader or more specific first
-- naming plural singular
+- naming plural singular <!-- action, actions -->
 - version control legacy folder <!-- pm? life. -->
 - hydra infra domain hopping tor z library the pirate bay
 - naming university tlide profile
@@ -503,6 +503,7 @@ philosophy:
 - avoid success at all costs
 - mono no aware the red chamber
 - philosophical ideology spectrum
+- solutionism
 
 entertainment:
 
