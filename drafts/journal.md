@@ -15440,7 +15440,7 @@ Go backup something. From the yard drive wo redundancy.
 
 Seems pretty straight forward on map. Just north and then west.
 
-<!-- upd 14 20 --> Well, seems I go to far.
+<!-- upd 16 20 --> Well, seems I go too far.
 
 Xujiahui Rd is lujiabang Rd at first. I have to reverse.
 
