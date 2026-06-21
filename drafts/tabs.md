@@ -4,8 +4,6 @@ message/paste · todo · tabs/things · scratch pad · weekly/projects · notes
 
 ---
 
-todo:
-
 librechat http://localhost:3080/c/new
 
 gnome
