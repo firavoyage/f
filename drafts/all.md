@@ -174,7 +174,7 @@ archi:
 - orthogonal meaning
 - naming vscode seti theme material icons theme filenames folder names
 - naming broader or more specific first
-- naming plural singular <!-- action, actions -->
+- naming plural singular <!-- d? -->
 - version control legacy folder <!-- pm? life. -->
 - hydra infra domain hopping tor z library the pirate bay
 - naming university tlide profile
@@ -184,6 +184,7 @@ archi:
 - t3 stack
 - piracy hosting crypto vps maimai charts awmc astrodx
 - naming markdown multiple heading one no title
+- naming prefer singular <!-- action, actions -->
 
 frontend: <!-- web -->
 
