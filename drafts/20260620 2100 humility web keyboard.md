@@ -608,3 +608,295 @@ Show all
 
 # 
 
+<!-- 2026.06.21 -->
+
+# all possible keys of mousetrap
+
+9:43 PM
+
+In the \*\*\*\*[Mousetrap.js keyboard shortcuts library](https://craig.is/killing/mice)\*\*, you can bind to **virtually any key on a standard keyboard**. The library accepts standard alphanumeric characters, punctuation symbols, explicitly named special keys, and modifier combinations. \[[1](https://craig.is/killing/mice)]
+
+Here is the complete breakdown of all supported keys categorized by their syntax wrapper. \[[1](https://medium.com/@345490675/mousetrap-a-javascript-library-for-creating-an-efficient-keyboard-shortcut-experience-dfe2dbcd3a56)]
+
+### Modifier Keys
+
+These can be used standalone or combined with other keys using a `+` symbol (e.g., `ctrl+s`). \[[1](https://craig.is/killing/mice)]
+
+- `shift`
+- `ctrl`
+- `alt` (Can be substituted with `option` on macOS)
+- `meta` (Can be substituted with `command` on macOS or `windows` on Windows) \[[1](https://github.com/ccampbell/mousetrap/issues/81), [2](https://craig.is/killing/mice)]
+
+### Explicitly Named Special Keys
+
+These specific non-alphanumeric keys must be referenced using their exact lowercase name strings: \[[1](https://craig.is/killing/mice)]
+
+- `backspace`
+- `tab`
+- `enter` / `return`
+- `capslock`
+- `esc` / `escape`
+- `space`
+- `pageup`
+- `pagedown`
+- `end`
+- `home`
+- `left` / `up` / `right` / `down` (Arrow keys)
+- `ins` (Insert)
+- `del` (Delete)
+- `plus` \[[1](https://crypt-of-the-necrodancer.fandom.com/wiki/Gameplay), [2](https://craig.is/killing/mice)]
+
+### Standard Keys (Referenced by Direct Character) \[[1](https://craig.is/killing/mice)]
+
+Any standard character present on your keyboard can be bound by passing its exact literal string character. You do not need to figure out shifting combinations (e.g., you can bind directly to `?` instead of typing `shift+/`). \[[1](https://github.com/ccampbell/mousetrap), [2](https://craig.is/killing/mice)]
+
+- **Alphanumeric**: `a` through `z`, and `0` through `9`
+- **Symbols and Punctuation**: `/`, `$`, `*`, `=`, `-`, `.`, `,`, `;`, `[`, `]`, etc. \[[1](https://craig.is/killing/mice)]
+
+### Key Sequences
+
+Mousetrap also supports sequential, space-separated string sequences (frequently called Gmail-style shortcuts or Konami codes): \[[1](https://koaning.io/posts/mousetrap/), [2](https://craig.is/killing/mice), [3](https://github.com/ccampbell/mousetrap)]
+
+- For example, binding to `'g a'` or `'up up down down left right left right b a enter'` works natively out of the box. \[[1](https://koaning.io/posts/mousetrap/)]
+
+If you need to support a rare custom key missing from the default mapping, you can map your own custom JavaScript keycodes globally using the `Mousetrap.addKeycodes` method. \[[1](https://craig.is/killing/mice), [2](https://craig.is/killing/mice)]
+
+If you are working on a **specific shortcut feature**, tell me **what action you want to bind** or **which key combination** you are trying to use. I can write the exact Javascript snippet for you!
+
+- [link](https://github.com/ccampbell/mousetrap/issues/81)\
+  Trapping the 'Windows' key · Issue #81 · ccampbell/mousetrap - GitHub\
+  ccampbell commented ... Hey, could you be a little more specific? What keyboard command are you trying to listen for? Mousetrap su...\
+  GitHub
+- [link](https://craig.is/killing/mice)\
+  Mousetrap - Keyboard shortcuts in Javascript - Craig Campbell\
+  Internet Explorer 6+ Safari. Firefox. Chrome. Supported Keys. For modifier keys you can use shift , ctrl , alt , or meta . You can...\
+  craig.is
+- [link](https://github.com/ccampbell/mousetrap)\
+  ccampbell/mousetrap: Simple library for handling keyboard ... - GitHub\
+  Why Mousetrap? \* There are no external dependencies, no framework is required. \* You are not limited to keydown events (You can sp...\
+  GitHub
+
+Show all
+
+## You said: write a json object. key is all valid impossible keys, values are their equilvalent. for example, ? to "shift+/"
+
+json
+
+```
+{
+  "!": "shift+1",
+  "@": "shift+2",
+  "#": "shift+3",
+  "$": "shift+4",
+  "%": "shift+5",
+  "^": "shift+6",
+  "&": "shift+7",
+  "*": "shift+8",
+  "(": "shift+9",
+  ")": "shift+0",
+  "_": "shift+-",
+  "+": "shift+=",
+  "~": "shift+`",
+  ":": "shift+;",
+  "\"": "shift+'",
+  "<": "shift+,",
+  ">": "shift+.",
+  "?": "shift+/",
+  "{": "shift+[",
+  "}": "shift+]",
+  "|": "shift+\\"
+}
+```
+
+Use code with caution.
+
+If you need a code snippet to **dynamically bind** these or need to add **custom keyboard layouts** (like AZERTY or Dvorak), let me know!
+
+## You said: is it comprehensive
+
+\*\***No, it is not 100% comprehensive**, though it covers the vast majority of standard QWERTY keys.
+
+To be fully comprehensive for all possible "impossible" keys (keys that inherently require the `shift` modifier to be typed but can be bound standalone in Mousetrap), a few structural additions are missing: \[[1](https://github.com/ccampbell/mousetrap)]
+
+### 1. Missing Standard QWERTY Shift-Keys
+
+The previous object missed a few keys from the standard QWERTY layout, specifically the backtick/tilde and some standard symbol pairings:
+
+- **`~`** evaluates to **`shift+`** (The previous object mapped it incorrectly to \`shift+\`\`)
+
+### 2. Missing Non-US Keyboard Layouts (e.g., European Layouts)
+
+If your app is used globally, layouts like AZERTY (French) or QWERTZ (German) introduce entirely different "impossible keys" that require shift on those specific keyboards:
+
+- **`°`** evaluates to **`shift+2`** (On standard German QWERTZ)
+- **`§`** evaluates to **`shift+3`** (On standard German QWERTZ)
+- **`µ`** evaluates to **`shift+*`** (On standard French AZERTY)
+
+***
+
+### The Truly Comprehensive QWERTY JSON Object
+
+If you are strictly mapping a standard **US QWERTY Keyboard**, this updated JSON object is fully comprehensive and fixes the syntax pairing for the backtick/tilde key:
+
+json
+
+```
+{
+  "!": "shift+1",
+  "@": "shift+2",
+  "#": "shift+3",
+  "$": "shift+4",
+  "%": "shift+5",
+  "^": "shift+6",
+  "&": "shift+7",
+  "*": "shift+8",
+  "(": "shift+9",
+  ")": "shift+0",
+  "_": "shift+-",
+  "+": "shift+=",
+  "~": "shift+`",
+  ":": "shift+;",
+  "\"": "shift+'",
+  "<": "shift+,",
+  ">": "shift+.",
+  "?": "shift+/",
+  "{": "shift+[",
+  "}": "shift+]",
+  "|": "shift+\\"
+}
+```
+
+Use code with caution.
+
+### ⚠️ A Critical Mousetrap Exception: Capital Letters
+
+It is worth noting that **capital letters (`A` through `Z`)** are technically "impossible keys" without shift. However, Mousetrap handles them uniquely:
+
+- Binding `Mousetrap.bind('G', ...)` specifically listens for `shift+g`.
+- If you want to include capital letters in your equivalent object, you would need to add all 26 letters like this: `"A": "shift+a"`, `"B": "shift+b"`, etc. \[[1](https://github.com/ccampbell/mousetrap)]
+
+If you want to auto-generate bindings for **capital letters** programmatically or need to detect **international keyboard layouts** dynamically, let me know and I can write a script for you!
+
+AI responses may include mistakes. For financial advice, consult a professional. [Learn more](https://support.google.com/websearch?p=aimode\&gl=us)
+
+- [link](https://github.com/ccampbell/mousetrap)\
+  ccampbell/mousetrap: Simple library for handling ... - GitHub\
+  Jan 23, 2020 — Mousetrap is a simple library for handling keyboard shortcuts in Javascript. It is licensed under the Apache 2.0 license. It is ar...\
+  GitHub
+
+# why is mousetrap (npm lib) called
+
+The **Mousetrap** npm library is called that <mark style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 500; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">because it is a playful, literal play on words for <strong style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 600; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">"killing" or getting rid of your computer mouse</strong></mark>. \[[1](https://craig.is/killing/mice)]
+
+Because the library's entire purpose is to help developers handle complex keyboard shortcuts in JavaScript, it enables users to navigate a web application using only their keyboard. \[[1](https://www.npmjs.com/package/mousetrap), [2](https://medium.com/@345490675/mousetrap-a-javascript-library-for-creating-an-efficient-keyboard-shortcut-experience-dfe2dbcd3a56)]
+
+The intentional humor behind the name is explicitly outlined by its creator, Craig Campbell:
+
+- **The Slogan**: The tagline featured on the library's [official documentation website](https://craig.is/killing/mice) is literally: _"What are you waiting for? Throw away your mouse and download it now."_
+- **The URL**: The creator hosted the website at the custom URL path `/killing/mice`. \[[1](https://craig.is/killing/mice)]
+
+Essentially, by creating a "trap" for the mouse, the library frees the user's hands to stay entirely on the keyboard.
+
+If you are currently setting up shortcuts for an app, I can show you how to **bind complex key sequences** (like Gmail style combos) or **integrate it with modern frameworks** like React and Vue. Which one are you working on?
+
+- [link](https://craig.is/killing/mice)\
+  Mousetrap - Keyboard shortcuts in Javascript - Craig Campbell\
+  Introduction. Mousetrap is a standalone library with no external dependencies. It weighs in at around 2kb minified and gzipped and...\
+  craig.is
+- [link](https://www.npmjs.com/package/mousetrap)\
+  mousetrap - NPM\
+  Jan 23, 2020 — Mousetrap is a simple library for handling keyboard shortcuts in Javascript. It is licensed under the Apache 2.0 license. It is ar...\
+  NPM
+- [link](https://medium.com/@345490675/mousetrap-a-javascript-library-for-creating-an-efficient-keyboard-shortcut-experience-dfe2dbcd3a56)\
+  Mousetrap: A JavaScript Library for Creating an Efficient Keyboard Shortcut Experience\
+  Jan 17, 2025 — It involves complex key event listening, handling browser differences, and many other issues. Mousetrap, this lightweight JavaScri...\
+  \
+  \
+  Medium
+
+# all string methods in js
+
+**JavaScript strings are immutable**, which means string methods never modify the original string; they always return a brand new string or a different data type. \[[1](https://www.youtube.com/watch?v=4RHPbSpEpbw\&t=9), [2](https://www.freecodecamp.org/news/javascript-string-tutorial-string-methods-in-js/), [3](https://talent500.com/blog/20-javascript-essential-string-methods-to-ace-your-next-interview/), [4](https://blog.devgenius.io/a-visual-beginners-guide-to-strings-in-javascript-4fb0abc923dd)]
+
+Below is the complete, categorized list of modern JavaScript string methods available in the standard [MDN String Reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/String). \[[1](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/String/includes)]
+
+### Extracting Characters
+
+- `at(index)`: Returns the character at a given index, supporting negative integers to count backward from the end.
+- `charAt(index)`: Returns the character at the specified index.
+- `charCodeAt(index)`: Returns the UTF-16 code unit (integer between 0 and 65535) at the index.
+- `codePointAt(index)`: Returns a non-negative integer that is the Unicode code point value of the character. \[[1](https://www.geeksforgeeks.org/javascript/javascript-string-methods/), [2](https://www.youtube.com/watch?v=Vd5UDBaWnlI), [3](https://www.w3schools.com/js/js%5Fstring%5Freference.asp), [4](https://www.youtube.com/watch?v=4RHPbSpEpbw\&t=9), [5](https://medium.com/@catherineisonline/34-javascript-string-methods-cheatsheet-f0a04a984946)]
+
+### Extracting Substrings
+
+- `slice(start, end)`: Extracts a section of a string from `start` up to (but not including) `end` and returns it.
+- `substring(start, end)`: Similar to `slice`, but treats negative index numbers as `0`.
+- `split(separator, limit)`: Divides a string into an array of substrings based on a specified pattern. \[[1](https://javascript.info/string), [2](https://www.edureka.co/blog/javascript-string-functions/), [3](https://www.youtube.com/watch?v=4RHPbSpEpbw\&t=9), [4](https://www.geeksforgeeks.org/javascript/javascript-string-methods/), [5](https://www.youtube.com/watch?v=Vd5UDBaWnlI)]
+
+### Finding & Matching Substrings
+
+- `includes(searchString, position)`: Checks whether one string can be found inside another, returning `true` or `false`.
+- `startsWith(searchString, position)`: Determines whether a string begins with the specified characters.
+- `endsWith(searchString, length)`: Determines whether a string ends with the specified characters.
+- `indexOf(searchString, position)`: Returns the index of the first occurrence of a specified value, or `-1` if not found.
+- `lastIndexOf(searchString, position)`: Returns the index of the last occurrence of a specified value, or `-1` if not found.
+- `match(regex)`: Matches a regular expression against the string and returns an array of matches.
+- `matchAll(regex)`: Returns an iterator of all results matching a string against a regular expression.
+- `search(regex)`: Executes a search for a match between a regular expression and the string, returning the index position. \[[1](https://www.youtube.com/watch?v=4RHPbSpEpbw\&t=9), [2](https://medium.com/@catherineisonline/34-javascript-string-methods-cheatsheet-f0a04a984946), [3](https://www.edureka.co/blog/javascript-string-functions/), [4](https://dev.to/a%5Framesh/complete-list-of-javascript-string-methods-12b9), [5](https://www.geeksforgeeks.org/javascript/javascript-string-methods/)]
+
+### Modifying Text & Padding
+
+- `replace(searchFor, replaceWith)`: Replaces the first match of a substring or regex with a replacement string.
+- `replaceAll(searchFor, replaceWith)`: Replaces all matches of a substring or regex with a replacement string.
+- `toUpperCase()`: Converts the entire string to uppercase.
+- `toLowerCase()`: Converts the entire string to lowercase.
+- `toLocaleUpperCase(locale)`: Converts the string to uppercase according to any local specific rules.
+- `toLocaleLowerCase(locale)`: Converts the string to lowercase according to any local specific rules.
+- `concat(str1, str2, ...)`: Combines the text of two or more strings and returns a new combined string.
+- `repeat(count)`: Returns a new string containing the specified number of copies of the string.
+- `padStart(targetLength, padString)`: Pads the current string from the start with a given string until it reaches the target length.
+- `padEnd(targetLength, padString)`: Pads the current string from the end with a given string until it reaches the target length. \[[1](https://www.youtube.com/watch?v=4RHPbSpEpbw\&t=9), [2](https://www.youtube.com/watch?v=Vd5UDBaWnlI), [3](https://www.edureka.co/blog/javascript-string-functions/), [4](https://www.geeksforgeeks.org/javascript/javascript-string-methods/), [5](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/String/includes), [6](https://www.w3schools.com/js/js%5Fstring%5Freference.asp)]
+
+### Trimming Whitespace
+
+- `trim()`: Removes whitespace from both the beginning and end of a string.
+- `trimStart()` / `trimLeft()`: Removes whitespace from the beginning of a string.
+- `trimEnd()` / `trimRight()`: Removes whitespace from the end of a string. \[[1](https://www.youtube.com/watch?v=4RHPbSpEpbw\&t=9), [2](https://www.youtube.com/watch?v=Vd5UDBaWnlI), [3](https://javascript.plainenglish.io/6-essential-javascript-string-methods-for-everyday-use-3bd0a0a2f06e), [4](https://www.geeksforgeeks.org/javascript/javascript-string-methods/)]
+
+### Utility & Formatting
+
+- `localeCompare(compareString)`: Returns a number indicating whether the reference string comes before, after, or is the same as the given string in sort order.
+- `normalize(form)`: Returns the Unicode Normalization Form of the string.
+- `toString()`: Returns a string representing the specified object.
+- `valueOf()`: Returns the primitive value of a string object.
+- `isWellFormed()`: Returns a boolean indicating whether the string contains any lone surrogates.
+- `toWellFormed()`: Returns a string where all lone surrogates are replaced by the Unicode replacement character. \[[1](https://www.freecodecamp.org/news/javascript-string-handbook/), [2](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/String/includes), [3](https://www.edureka.co/blog/javascript-string-functions/), [4](https://brainstation.io/learn/javascript/string), [5](https://docs.sencha.com/ext/6.2.1/classic/String.html)]
+
+### Static Methods
+
+- `String.fromCharCode(num1, num2, ...)`: Returns a string created from the specified sequence of UTF-16 code units.
+- `String.fromCodePoint(num1, num2, ...)`: Returns a string created from the specified sequence of Unicode code points.
+- `String.raw(strings, ...substitutions)`: A template literal tag function used to get the raw string form of template literals. \[[1](https://www.freecodecamp.org/news/javascript-string-handbook/), [2](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/String/includes), [3](https://www.youtube.com/watch?v=dW3KTXfuSFw), [4](https://www.codecademy.com/resources/docs/javascript/strings/fromCodePoint), [5](https://www.scaler.com/topics/javascript/javascript-string/)]
+
+_(Note: Legacy HTML wrapper methods like `anchor()`, `big()`, `blink()`, `bold()`, `fixed()`, `fontcolor()`, `fontsize()`, `italics()`, `link()`, `small()`, `strike()`, `sub()`, `substr()`, and `sup()` are **deprecated** and should no longer be used in modern production code.)_ \[[1](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/String/includes), [2](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/String)]
+
+Would you like a code **example** of how to use any of these specific methods, or are you trying to solve a **particular string manipulation problem** right now?
+
+- [link](https://www.youtube.com/watch?v=4RHPbSpEpbw\&t=9)\
+  \#37 - Most Important String Methods In JavaScript\
+  Oct 9, 2023 — so today we are going to talk a very simple concept that is uh different string manipulation. or string methods. so for example le...\
+  26m\
+  YouTube·Naveen AutomationLabs
+- [link](https://www.geeksforgeeks.org/javascript/javascript-string-methods/)\
+  JavaScript String Methods - GeeksforGeeks\
+  Jun 1, 2026 — JavaScript String Methods \* slice() slice() extracts a part of the string based on the given stating-index and ending-index and re...\
+  GeeksforGeeks
+- [link](https://www.youtube.com/watch?v=Vd5UDBaWnlI)\
+  String Methods - Javascript Programming 25\
+  Apr 15, 2024 — in this video we're going to look at string Methods for JavaScript. hey guys John Elder from cod.com. and JavaScript has all kinds...\
+  11:30\
+  YouTube·John Elder
+
+Show all
+
+# 
