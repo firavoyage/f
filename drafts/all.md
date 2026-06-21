@@ -184,7 +184,8 @@ archi:
 - t3 stack
 - piracy hosting crypto vps maimai charts awmc astrodx
 - naming markdown multiple heading one no title
-- naming prefer singular <!-- action, actions -->
+- naming prefer singular <!-- action, actions --> 
+- react vs vue hypes decision fatigue <!-- grow? rhetoric? politics/philosophy? -->
 
 frontend: <!-- web -->
 
