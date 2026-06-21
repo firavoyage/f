@@ -1,5 +1,29 @@
 import mousetrap from 'mousetrap';
 
+const shift_keys = {
+  "!": "shift+1",
+  "@": "shift+2",
+  "#": "shift+3",
+  "$": "shift+4",
+  "%": "shift+5",
+  "^": "shift+6",
+  "&": "shift+7",
+  "*": "shift+8",
+  "(": "shift+9",
+  ")": "shift+0",
+  "_": "shift+-",
+  // "+": "shift+=", // could not work, use shift+= instead
+  "~": "shift+`",
+  ":": "shift+;",
+  "\"": "shift+'",
+  "<": "shift+,",
+  ">": "shift+.",
+  "?": "shift+/",
+  "{": "shift+[",
+  "}": "shift+]",
+  "|": "shift+\\"
+}
+
 let shortcutid = 0
 let actions = new Map()
 let shortcuts = {}
@@ -11,12 +35,22 @@ function call(shortcut, event) {
       const action = actions.get(shortcutid)
       if (action) {
         action(event)
-      } 
+      }
     }
   }
 }
 
+function normalize(shortcut) {
+  let normalized_shortcut = shortcut
+  for (const [key, shift_key] of Object.entries(shift_keys)) {
+    normalized_shortcut = normalized_shortcut.replaceAll(key, shift_key)
+  }
+  return normalized_shortcut
+}
+
 export function bind(shortcut, action) {
+  shortcut = normalize(shortcut)
+
   actions.set(shortcutid, action)
   shortcuts[shortcut] = shortcuts[shortcut] || new Set()
   shortcuts[shortcut].add(shortcutid)
@@ -37,12 +71,11 @@ export function unbind(shortcutid) {
 
   if (shortcuts[shortcut].size == 0) {
     mousetrap.unbind(shortcut)
-  } 
+  }
 }
 
 /**
  * todo
  * 
  * - err invalid shortcut
- * - normalize ctrl ?
  */

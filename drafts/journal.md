@@ -33461,13 +33461,47 @@ to cut down the nails further i guess.
 
 20 00 dl `Philosophy - Wikipedia` and `Template_Philosophy topics - Wikipedia`
 
+22 00 End the day w Tricolor⁂circuS, 神っぽいな, and きゅびびびびずむ
+
+There are some Asians speaking English, likely Indians. They can play expert songs.
+
+<!-- Burn out. Exciting though.
+
+I guess I could arrive at ten tomorrow. -->
+
+<!-- 22 40 wish.
+
+Simplelive.
+
+Extract. 
+
+Platform compatibility. 
+
+Replay.
+
+Twitch title preview. -->
+
+<!-- Vscode component library
+
+Chromium devtools components library -->
+
 15
+
+00 20 surf zhihu.
+
+<!-- 浏览知乎学界，屏息凝神的感觉。 -->
 
 02 00 reread `A letter to myself as a fresh software engineer` by florio.
 
 i dont want react <!-- or an elegant react or more performant react -->. i dont want to be conventional. i dont want to have a life dulled.
 
 <!-- moving from a framework is a kind of explicit over implicit. "what does a component have" -->
+
+15 40 Arrive
+
+<!-- Spent a few hours chatting though. -->
+
+<!-- Wow. No one on either machine. -->
 
 17 40 write `values` <!-- blogging --> `ideas` <!-- drafts -->.
 
@@ -33487,11 +33521,372 @@ seems they play hai yorokonde effortlessly. they know how to play. they know the
 
 maybe i would increate note speed to eight.
 
+22 00 End the day w 病み垢ステロイド, きゅびずむ, and ワールドワイドワンダー
+
+24 00 Try KanadeDX.
+
+Astro dx doesn't have the original UI. Yet sega seems to careless to make it leaked and compatible.
+
+Well, I guess it will work after I plug in the data... I guess it would be fast on magnet from it's popularity. But it takes 50gb. Wow.
+
+Maybe I could opt out video data?
+
+<!-- Qbittorrent doesn't keep all download logs like where they are from. Yet it just finishes, peak 6m/s.
+
+Launch. Get into main page. Crash consistently on song selection, as null pointer exception, which is reported a few times in the group. -->
+
 16
+
+01 00 reflect.
+
+I'm wasting thoughts. 
+
+> I'm so weak
+
+I don't have to think all the time. Usually I'm thinking the same abstract concept wo making any progress. You could not imagine your way. You have to build your way. 
+
+Leverage todos and notes as progressive disclosure. 
+
+Either think something novel or meditate for a while. No concurrency.
+
+The world is simple. The world is solved.
+
+02 00 Check `「实测」怒砸800大洋！测试Claude“神话”Fable 5 模型，4个任务把额度干爆了...`.
 
 02 20 remove games to free up space.
 
 they are static. i have backup. and i do not like games right now.
+
+05 20 Eat acbox group. 
+
+```
+sns, [6/16/26 5:17 AM]
+
+
+sns, [6/16/26 5:17 AM]
+感觉自己的脸型是非常完美的
+
+sns, [6/16/26 5:17 AM]
+
+
+sns, [6/16/26 5:17 AM]
+头发长了想扎这种
+
+sns, [6/16/26 5:17 AM]
+发型 感觉好可爱
+
+sns, [6/16/26 5:17 AM]
+很多可爱的漫画女主都是这种脸型
+
+sns, [6/16/26 5:17 AM]
+宽圆脸小刘海双马尾
+
+sns, [6/16/26 5:17 AM]
+很羡慕了
+
+sns, [6/16/26 5:17 AM]
+小胸好，可以随便打 mai
+
+sns, [6/16/26 5:19 AM]
+和我差不多长度（ 我之前过肩比较多后来嫌麻烦和掉毛剪了
+
+sns, [6/16/26 5:19 AM]
+羡慕
+
+sns, [6/16/26 5:19 AM]
+我是哪条
+
+sns, [6/16/26 5:19 AM]
+xm群友们天赋好
+
+sns, [6/16/26 5:19 AM]
+我不信，除非让我捏捏
+
+sns, [6/16/26 5:19 AM]
+唉，我也天残了，以前明明...
+
+sns, [6/16/26 5:19 AM]
+天残是什么意思
+
+sns, [6/16/26 5:19 AM]
+天赋党的反义词
+
+sns, [6/16/26 11:52 AM]
+为什么你们都这么萌而我只能舞萌
+
+sns, [6/16/26 11:52 AM]
+awmc
+
+sns, [6/16/26 11:52 AM]
+awmc
+
+sns, [6/16/26 11:52 AM]
+打舞萌打的。
+
+sns, [6/16/26 11:52 AM]
+awmc
+```
+
+14 40 Eat tcdw group.
+
+```
+ref, [6/16/26 2:30 PM]
+已严肃对 Qwen 破大防。
+
+ref, [6/16/26 2:30 PM]
+已严肃嘲笑 tcdw（x）
+
+ref, [6/16/26 2:33 PM]
+qwen 还是本地的神
+
+ref, [6/16/26 2:33 PM]
+云端选择太多了
+
+ref, [6/16/26 2:33 PM]
+排不上号
+
+ref, [6/16/26 2:33 PM]
+本地的 qwen 我会当 sonnet 用……不过目前确实没怎么遇到必须使用本地离线模型的情况
+
+ref, [6/16/26 2:33 PM]
+破限（）
+
+ref, [6/16/26 2:33 PM]
+不过我这次考虑 qwen 的一大原因是，qwen 多款模型有视觉支持
+DeepSeek V4 Pro 拿来 Vibe Coding 我觉得不错，但遗憾在它是纯文字模型
+（虽然我发现是我看走眼了，qwen 3.7 max 不多模态
+
+ref, [6/16/26 2:33 PM]
+abliterated Qwen 启动！
+
+ref, [6/16/26 2:33 PM]
+
+
+ref, [6/16/26 2:33 PM]
+这就是 abliterated 的魅力吗，真可怕（
+
+ref, [6/16/26 2:33 PM]
+😋一直破解一直爽（
+
+ref, [6/16/26 2:33 PM]
+还可以自制毒药和麻醉用品
+
+ref, [6/16/26 2:33 PM]
+这东西我做过
+
+ref, [6/16/26 2:33 PM]
+看看成果
+
+ref, [6/16/26 2:33 PM]
+好多年了
+
+ref, [6/16/26 2:34 PM]
+唉，我突然发现我不是真的要一个功能丰富的 AI Gateway。
+我其实只想要：
+GPT -> OpenAI
+Gemini -> Google
+DeepSeek -> DeepSeek
+Kimi -> Moonshot
+Qwen -> Aliyun
+Random Models -> OpenRouter
+...
+压根不需要复杂的策略设计，只要做一个很浅的路由机制就行，连管理面板都不要。其中 OpenRouter 还负责提供模型的标准元数据。
+那为什么不都放到 OpenRouter？这是为了解决使用国产模型造成的汇率损失问题。
+
+ref, [6/16/26 2:34 PM]
+决定再给 Qwen 3.7 Max 一次机会。
+把我的地雷妹风 System Prompt 关掉了，因为看起来国产模型在编程 Agent 任务中并不太擅长语言和行动分开。
+
+ref, [6/16/26 2:34 PM]
+开始大刀阔斧的改造！
+
+ref, [6/16/26 2:34 PM]
+突然有点想 sunset 我的 OC 企划了。
+Sunset 的原因：突然感觉真人画的画更有灵性。我的 OC 现状导致没有办法找真人画师约稿。而且我有好多朋友和喜欢的人是真人画师，我不想让他们看我喜欢谁都能生成的东西而感到难过。
+*这里的 sunset 是软件工程用法，特指：官网和 Sticker Pack 会留着，也会适当根据想表达的感情增加需要的贴纸，但不再继续发展。
+
+ref, [6/16/26 2:34 PM]
+当然会有人觉得，这 tcdw 为什么还会乐此不疲的 Vibe Coding，而不立刻切换到古法开发呢？
+因为我从来不认为代码本身是艺术品。
+
+ref, [6/16/26 2:36 PM]
+Vibe Coding 日常：我没救了，开始对 Agent 发猫猫头了
+
+ref, [6/16/26 2:36 PM]
+
+
+ref, [6/16/26 2:36 PM]
+和我现状一模一样
+
+ref, [6/16/26 2:36 PM]
+最喜欢 tcdw 了……！
+
+ref, [6/16/26 2:36 PM]
+土豆为什么总是纠结那些对自己又没多大帮助的事（
+
+ref, [6/16/26 2:36 PM]
+不太懂，但是你说是就是吧，我懒得管那么多，我开心就好
+
+ref, [6/16/26 2:36 PM]
+很可爱
+
+ref, [6/16/26 2:36 PM]
+是好久没见过的dalao（
+
+ref, [6/16/26 2:36 PM]
+我的 Agent 在喵喵叫😋
+
+ref, [6/16/26 2:38 PM]
+突然感觉需要给自己做一些 PPT 了，介绍我亮闪闪的一些东西
+
+ref, [6/16/26 2:38 PM]
+Vibe Coding 日常：激动的 Claude Opus 4.6
+
+ref, [6/16/26 2:38 PM]
+我还是投奔 OpenCode Go 吧（摊手
+*实验对象：https://github.com/bilisound/bilisound 。没有起夜级项目受到伤害
+
+ref, [6/16/26 2:39 PM]
+和 Ayanami 聊了很多表达方面的东西。
+这里是一些碎碎念，包括不少我以前没意识到的东西：
+- 我常常会感觉有些东西难以表达，但是无关紧要，从而彻底放弃观点输出
+- 我的想法经常是无法用语言描述的一团浆糊，但是我按照我的那团浆糊做事情的时候，却能做的像模像样
+- 跟 Agent 对话的时候，我反而不会有很大的心理负担，而且经常汉语字符、拼音、英语单词或句子一起上，而且语序乱七八糟的，但是 LLM 可以理解
+- 我跟别人商量面基日程的时候，我会把自己化身东道主的角色，考虑一大堆东西，导致脑袋宕机。比如今天甚至直接摆出了需求研讨会的姿态
+- 我的班味比其它比我多上了几年的班的人重，跟我司的沟通方式、对业务理解准确度的要求、需要时刻预防产品漏掉的需求有关
+- 未完待续……
+
+ref, [6/16/26 2:39 PM]
+Vibe Coding 日常
+```
+
+14 40 Eat memoh group. 
+
+```
+ref, [6/16/26 2:40 PM]
+你们 compact 一次要花多久
+
+ref, [6/16/26 2:40 PM]
+我记得菜花 compact 也很慢（但菜花我设计的是留有余量的异步 compact，不阻塞聊天，也正因如此后来我没有关心过菜花 compact 要多久）
+
+ref, [6/16/26 2:40 PM]
+可能 Opus 这个级别的模型在 prefill 和 decode 的速度上的差距真的很悬殊
+
+ref, [6/16/26 2:40 PM]
+要很久
+
+ref, [6/16/26 2:40 PM]
+3-4min？
+
+ref, [6/16/26 2:40 PM]
+我每次 compact 都要坐着等
+
+ref, [6/16/26 2:43 PM]
+mac 原来系统没有一键卸载的功能的吗）
+
+ref, [6/16/26 2:43 PM]
+move to trash
+
+ref, [6/16/26 2:43 PM]
+没有
+
+ref, [6/16/26 2:43 PM]
+我之前不理解 mole 是怎么这么火的
+
+ref, [6/16/26 2:43 PM]
+现在理解了
+
+ref, [6/16/26 2:43 PM]
+app store 的可以卸载
+
+ref, [6/16/26 2:43 PM]
+自己装的只能删掉 .app 删不掉数据
+
+ref, [6/16/26 2:43 PM]
+嗯，我在测试我自己打的包 然后又有改动 我需要再打一个新的包 然后把现在这个删掉
+
+ref, [6/16/26 2:43 PM]
+https://mole.fit 这个
+
+ref, [6/16/26 2:43 PM]
+虽然但是情绪价值确实给足了
+
+ref, [6/16/26 2:43 PM]
+MTF能进洗浴中心吗
+
+ref, [6/16/26 2:43 PM]
+可以的吧
+
+ref, [6/16/26 2:43 PM]
+进过
+
+ref, [6/16/26 2:43 PM]
+把更衣室的人全都吓哭了
+
+ref, [6/16/26 2:43 PM]
+我之前还不完全女的时候和几个MTF进过一次，在澡堂里对面三大爷一直盯着我们看
+
+ref, [6/16/26 2:43 PM]
+我感觉用了 mac 之后我就学坏了喜欢把一堆窗口叠一起
+
+ref, [6/16/26 2:43 PM]
+因为 mac 的最小化逻辑和 windows 不一样
+
+ref, [6/16/26 2:43 PM]
+这是syncless吗
+
+ref, [6/16/26 2:43 PM]
+要用哪个就点哪个，不用了就点空白放到最底下
+
+ref, [6/16/26 2:43 PM]
+对
+
+ref, [6/16/26 2:43 PM]
+好像和我之前装的不太一样
+
+ref, [6/16/26 2:43 PM]
+可能你装的比我晚
+
+ref, [6/16/26 2:43 PM]
+我没更新
+
+ref, [6/16/26 2:43 PM]
+你买新电脑啦
+
+ref, [6/16/26 2:43 PM]
+草？
+
+ref, [6/16/26 2:43 PM]
+你忘啦）
+
+ref, [6/16/26 2:43 PM]
+我是上个月前装的
+
+ref, [6/16/26 2:43 PM]
+
+
+ref, [6/16/26 2:43 PM]
+这页面是啥情况
+
+ref, [6/16/26 2:43 PM]
+可能是移动端适配的问题
+
+ref, [6/16/26 2:43 PM]
+我不知道）
+
+ref, [6/16/26 2:43 PM]
+电脑上很正常
+
+ref, [6/16/26 2:43 PM]
+（即使是 safari
+
+ref, [6/16/26 2:43 PM]
+用两天 Gnome 之后你会喜欢一个窗口一个工作区（
+```
+
+Filter out menci, acbox. Quite affordable.
+
+22 00 End the day w [X], 太陽系デスコ, and ロキ
 
 17
 
@@ -37578,7 +37973,9 @@ Well, she has taken 1v1 course two years ago so she knows what the problems are 
 
 18 20 Set anki daily to 10 <!-- the wisest choice taking an underground i guess, calm, and meaningful -->
 
-19 00 sync memories (19 40)
+19 00 sync memories ~~(19 40)~~ 20 00
+
+<!-- seems i played a pc meanwhile -->
 
 
 
