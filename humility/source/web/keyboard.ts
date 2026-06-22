@@ -29,7 +29,7 @@ let actions = new Map()
 let shortcuts = {}
 let bindings = {}
 
-function call(shortcut: string, event) {
+function call(shortcut: string, event: KeyboardEvent) {
   if (shortcuts[shortcut]) {
     for (const shortcutid of shortcuts[shortcut]) {
       const action = actions.get(shortcutid)
@@ -48,7 +48,7 @@ function normalize(shortcut: string) {
   return normalized_shortcut
 }
 
-export function bind(shortcut: string, action: Function): number {
+export function bind(shortcut: string, action: (event: KeyboardEvent) => void): number {
   shortcut = normalize(shortcut)
 
   actions.set(shortcutid, action)
