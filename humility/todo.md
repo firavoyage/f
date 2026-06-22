@@ -148,4 +148,14 @@ only toggle, pick or input (type)?
 
 no more cfg file?
 
+---
+
+setup and research librechat
+
+list actions. simple.
+
+i guess it would be an aha moment w shell access.
+
+yaml could fix inherent tool call sp token issue.
+
 

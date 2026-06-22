@@ -2,6 +2,8 @@
 
 <!-- why not markdown and git? you can extend it and compose it. -->
 
+<!-- overkill. -->
+
 # (d) all features of linear
 
 Because "Linear" can refer to either the popular software development project management tool or the algebraic concepts in mathematics, the full capabilities and features for both definitions are outlined below. \[[1](https://pangea.app/glossary/linear), [2](https://genesis-lab.dev/book/chapter-1/rudiments-of-linear-algebra/)]
