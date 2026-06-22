@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, ReactNode, ReactComponentElement, Component } from "react"
 import { use_bind } from 'web/keyboard.use';
 import { sync_theme } from 'web/sync_theme';
 
@@ -6,6 +6,10 @@ import 'web/adwaita.css'
 import 'web/app.css'
 
 export function App() {
+  useEffect(()=>{
+    console.log('app mounts')
+  })
+
   use_bind('ctrl+p', (e) => {
     e.preventDefault() // print
     console.log(e)

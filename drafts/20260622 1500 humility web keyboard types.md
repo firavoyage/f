@@ -2476,5 +2476,1647 @@ If your team agrees on snake\_case, you can make this a highly viable strategy b
 
 Would you like help writing a **short team style guide** to ensure everyone uses snake\_case consistently across components and hooks?
 
-# 
+# all typescript builtin types
 
+TypeScript provides several categories of built-in types, ranging from standard JavaScript primitives to unique types used exclusively for type-checking and code structure. \[[1](https://medium.com/nerdjacking/mastering-typescript-data-types-the-complete-guide-with-performance-hacks-30097eb3367a)]
+
+### 1. Primitive Types
+
+These map directly to the foundational data types available in JavaScript. \[[1](https://medium.com/nerdjacking/mastering-typescript-data-types-the-complete-guide-with-performance-hacks-30097eb3367a)]
+
+- **`string`**: Textual data like `"hello"`.
+- **`number`**: Floating-point numeric values, including integers, decimals, and `NaN`.
+- **`bigint`**: Whole numbers of arbitrary precision, denoted with an `n` suffix (e.g., `100n`).
+- **`boolean`**: True or false values.
+- **`symbol`**: Unique, immutable identifiers typically used as object keys.
+- **`null`**: Explicitly represents an empty or absent value.
+- **`undefined`**: Variables that have been declared but not yet assigned a value. \[[1](https://www.geeksforgeeks.org/typescript/data-types-in-typescript/), [2](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html), [3](https://dev.to/joyontokumar/the-string-type-in-typescript-2916), [4](https://intellipaat.com/blog/javascript-data-types/), [5](https://medium.com/jspoint/typescript-working-with-types-f1829384851f)]
+
+### 2. Special and Top/Bottom Types
+
+These are specialized tools used to handle variable flexibility or strict constraints. \[[1](https://medium.com/nerdjacking/mastering-typescript-data-types-the-complete-guide-with-performance-hacks-30097eb3367a)]
+
+- **`any`**: Turns off type-checking entirely, allowing a variable to act exactly like standard JavaScript.
+- **`unknown`**: The type-safe counterpart to `any`; forces you to perform a type check before interacting with the value.
+- **`void`**: Indicates the absence of a return value, commonly used for functions that don't return anything.
+- **`never`**: Represents a value or state that should logically never occur, such as a function that throws an error or runs infinitely. \[[1](https://www.typescriptlang.org/docs/handbook/basic-types.html), [2](https://medium.com/@hrishikesh.pandey9955/all-about-types-in-typescript-c2da772b6339), [3](https://www.totaltypescript.com/concepts/any-type), [4](https://www.youtube.com/watch?v=bz0Onkw2MPo\&t=3), [5](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-0.html)]
+
+### 3. Object and Structural Types
+
+These represent more complex data shapes and native JavaScript constructors. \[[1](https://medium.com/nerdjacking/mastering-typescript-data-types-the-complete-guide-with-performance-hacks-30097eb3367a)]
+
+- **`object`**: Represents any value that is not a primitive (anything except number, string, boolean, etc.).
+- **`Array`** (or `type[]`): A collection of elements sharing a specific type structure.
+- **`Tuple`**: An array with a fixed number of elements where each position has a specific type assigned to it.
+- **Function**: Defines standard execution blocks with strongly-typed parameters and return values. \[[1](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes-func.html), [2](https://www.geeksforgeeks.org/typescript/data-types-in-typescript/), [3](https://www.freecodecamp.org/news/learn-typescript-data-types-from-zero-to-hero/), [4](https://www.youtube.com/watch?v=RHgPgdhqpUw), [5](https://data-flair.training/blogs/typescript-syntax-for-programming/)]
+
+### 4. Code Structuring Types
+
+These are TypeScript-specific structures that compile down to structural objects or values at runtime. \[[1](https://mimo.org/glossary/typescript/data-types), [2](https://blog.logrocket.com/exploring-typescript-5-features-smaller-simpler-faster/), [3](https://news.ycombinator.com/item?id=36637221)]
+
+- **`enum`**: A set of named constants, enabling readable numeric or string-based code groupings. \[[1](https://www.geeksforgeeks.org/typescript/data-types-in-typescript/)]
+
+***
+
+### 5. Built-in Utility Types
+
+TypeScript includes a set of global [Utility Types](https://www.typescriptlang.org/docs/handbook/utility-types.html) to quickly transform existing object structures: \[[1](https://www.typescriptlang.org/docs/handbook/utility-types.html), [2](https://www.wisdomgeek.com/development/web-development/typescript/)]
+
+| Utility Type \[[1](https://www.typescriptlang.org/play/typescript/type-primitives/built-in-utility-types.ts.html), [2](https://www.convex.dev/typescript/advanced/utility-types-mapped-types/typescript-utility-types), [3](https://mimo.org/glossary/typescript/utility-types), [4](https://www.w3schools.com/typescript/typescript%5Futility%5Ftypes.php), [5](https://www.typescriptlang.org/docs/handbook/utility-types.html)] | Action |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
+| Converts all properties of an object type to optional.                                                                                                                                                                                                                                                                                                                                                                             |        |
+| Converts all optional properties of an object type to required.                                                                                                                                                                                                                                                                                                                                                                    |        |
+| Marks all properties as immutable, blocking reassignment.                                                                                                                                                                                                                                                                                                                                                                          |        |
+| Maps keys `K` to values of type `T` to build dictionaries.                                                                                                                                                                                                                                                                                                                                                                         |        |
+| Creates a new type choosing only specific keys `K` from `T`.                                                                                                                                                                                                                                                                                                                                                                       |        |
+| Creates a new type removing specific keys `K` from `T`.                                                                                                                                                                                                                                                                                                                                                                            |        |
+| Excludes types from a union that match type `U`.                                                                                                                                                                                                                                                                                                                                                                                   |        |
+| Extracts types from a union that match type `U`.                                                                                                                                                                                                                                                                                                                                                                                   |        |
+| Drops `null` and `undefined` options from a type union.                                                                                                                                                                                                                                                                                                                                                                            |        |
+| Extracts a function's parameters into a tuple type.                                                                                                                                                                                                                                                                                                                                                                                |        |
+| Extracts the returned type of a function signature.                                                                                                                                                                                                                                                                                                                                                                                |        |
+| Recursively unwraps promises to find their resolution value.                                                                                                                                                                                                                                                                                                                                                                       |        |
+
+If you are trying to solve a specific problem, tell me **what kind of data structure** you are building or **which type error** you are encountering so I can provide a targeted solution.
+
+- [link](https://www.typescriptlang.org/docs/handbook/utility-types.html)\
+  Documentation - Utility Types - TypeScript\
+  Jun 19, 2026 — Utility Types. Utility Types. TypeScript provides several utility types to facilitate common type transformations. These utilities...\
+  TypeScript
+- [link](https://www.typescriptlang.org/docs/handbook/basic-types.html)\
+  Handbook - Basic Types - TypeScript\
+  Jun 15, 2026 — About Number , String , Boolean , Symbol and Object. It can be tempting to think that the types Number , String , Boolean , Symbol...\
+  TypeScript
+- [link](https://mimo.org/glossary/typescript/data-types)\
+  TypeScript Data Types: Syntax, Usage, and Examples - Mimo\
+  What Are TypeScript Data Types? TypeScript data types define the kind of values a variable can hold. This system includes primitiv...\
+  Mimo
+
+Show all
+
+## You said: all typescript builtin utility types
+
+TypeScript provides a wide array of globally available \*\***[built-in Utility Types](https://www.typescriptlang.org/docs/handbook/utility-types.html)** that allow you to transform and manipulate existing types. \[[1](https://www.typescriptlang.org/docs/handbook/utility-types.html), [2](https://generalistprogrammer.com/tutorials/typescript-utility-types-complete-guide)]
+
+Here is the complete, comprehensive list categorized by their core functionality. \[[1](https://blog.logrocket.com/using-built-in-utility-types-typescript/)]
+
+### Object Modification Types
+
+These types manipulate the properties and modifiers (like `?` or `readonly`) of an existing object shape. \[[1](https://blog.logrocket.com/using-built-in-utility-types-typescript/), [2](https://generalistprogrammer.com/tutorials/typescript-utility-types-complete-guide)]
+
+- : Makes all properties of an object type optional.
+- : Makes all optional properties of an object type mandatory.
+- : Adds a `readonly` modifier to all properties, preventing reassignment.
+- : Constructs an object type with keys `K` mapped to values of type `T`.
+- : Creates a new type by choosing a specific set of keys `K` from object `T`.
+- : Creates a new type by removing a specific set of keys `K` from object `T`. \[[1](https://www.convex.dev/typescript/advanced/utility-types-mapped-types/typescript-utility-types), [2](https://generalistprogrammer.com/tutorials/typescript-utility-types-complete-guide), [3](https://www.codecademy.com/resources/docs/typescript/utility-types), [4](https://www.scaler.com/topics/typescript/typescript-utility-types/)]
+
+### Union Manipulation Types
+
+These types are used to filter, isolate, or clean up specific members within a type union. \[[1](https://blog.logrocket.com/using-built-in-utility-types-typescript/), [2](https://generalistprogrammer.com/tutorials/typescript-utility-types-complete-guide), [3](https://mimo.org/glossary/typescript/utility-types), [4](https://www.convex.dev/typescript/advanced/utility-types-mapped-types/typescript-utility-types), [5](https://www.convex.dev/typescript/advanced/utility-types-mapped-types/typescript-exclude)]
+
+- : Excludes all union members from `T` that are assignable to type `U`.
+- : Extracts all union members from `T` that are assignable to type `U`.
+- : Removes `null` and `undefined` variants from a type union. \[[1](https://www.convex.dev/typescript/advanced/utility-types-mapped-types/typescript-utility-types)]
+
+### Function and Class Types
+
+These types inspect and extract information directly out of function or class constructor definitions. \[[1](https://blog.logrocket.com/using-built-in-utility-types-typescript/), [2](https://generalistprogrammer.com/tutorials/typescript-utility-types-complete-guide)]
+
+- : Extracts the argument types of a function into a tuple array.
+- : Grabs the underlying return type of a function signature.
+- : Extracts the parameter types of a class constructor into a tuple array.
+- : Evaluates the instance type returned by a class constructor function. \[[1](https://www.convex.dev/typescript/advanced/utility-types-mapped-types/typescript-utility-types)]
+
+### Async and Execution Context Types
+
+These types manage asynchronous resolutions or tweak the evaluation rules of the execution context. \[[1](https://www.convex.dev/typescript/advanced/utility-types-mapped-types/typescript-utility-types), [2](https://generalistprogrammer.com/tutorials/typescript-utility-types-complete-guide)]
+
+- : Recursively unwraps `Promise` chains to find their final resolved value type.
+- : Extracts the type of the `this` parameter from a function signature.
+- : Removes the explicit `this` parameter requirement from a function signature.
+- : Acts as a marker type to explicitly declare the type of `this` inside an object literal. \[[1](https://www.convex.dev/typescript/advanced/utility-types-mapped-types/typescript-utility-types), [2](https://blog.logrocket.com/using-built-in-utility-types-typescript/), [3](https://blog.logrocket.com/using-built-in-utility-types-typescript/), [4](https://flow.org/en/docs/types/utilities/), [5](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-5.html)]
+
+### String Literal Manipulation Types
+
+These types alter the casing rules of string literal values during compile-time type-checking. \[[1](https://www.convex.dev/typescript/advanced/utility-types-mapped-types/typescript-utility-types), [2](https://blog.webdevsimplified.com/2025-10/typescript-utility-types/)]
+
+- : Converts a string literal type completely to uppercase.
+- : Converts a string literal type completely to lowercase.
+- : Converts the first character of a string literal type to uppercase.
+- : Converts the first character of a string literal type to lowercase. \[[1](https://www.convex.dev/typescript/advanced/utility-types-mapped-types/typescript-utility-types)]
+
+***
+
+### Reference Code Examples
+
+typescript
+
+```
+// Base definition
+interface User {
+  id: string;
+  name: string;
+  email?: string;
+}
+
+// 1. Partial & Required
+type OptionalUser = Partial<User>;   // { id?: string; name?: string; email?: string; }
+type StrictUser = Required<User>;     // { id: string; name: string; email: string; }
+
+// 2. Pick & Omit
+type UserContact = Pick<User, "name" | "email">; // { name: string; email?: string; }
+type UserWithoutId = Omit<User, "id">;           // { name: string; email?: string; }
+
+// 3. Union Filtering
+type Status = "active" | "inactive" | "pending";
+type ActiveOnly = Exclude<Status, "inactive" | "pending">; // "active"
+
+// 4. Function Inspection
+function saveUser(id: string, data: User) { return true; }
+type SaveArgs = Parameters<typeof saveUser>; // [id: string, data: User]
+type SaveReturn = ReturnType<typeof saveUser>; // boolean
+```
+
+Use code with caution.
+
+If you are debugging a complex type layout, tell me **which built-in type** you are trying to implement or **paste your current error** so we can solve it.
+
+- [link](https://www.typescriptlang.org/docs/handbook/utility-types.html)\
+  Documentation - Utility Types - TypeScript\
+  Jun 19, 2026 — Example. ts. declare function f1 (): { a : number; b : string }; type T0 = ReturnType <() => string>; type T0 = string. type T1 = ...\
+  TypeScript
+- [link](https://www.convex.dev/typescript/advanced/utility-types-mapped-types/typescript-utility-types)\
+  Utility Types | TypeScript Guide by Convex\
+  Table\_title: Understanding TypeScript utility types Table\_content: | Utility Type | Description | | --- | --- | | Partial | Constr...\
+  Convex
+- [link](https://blog.logrocket.com/using-built-in-utility-types-typescript/)\
+  Using built-in utility types in TypeScript - LogRocket Blog\
+  May 29, 2023 — Exploring built-in utility type functions in TypeScript. Value transformation types. Awaited Object manipulation types. Partial Re...\
+  LogRocket Blog
+
+Show all
+
+## You said: all typescript builtin js types
+
+<mark style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 500; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 600; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">TypeScript natively supports all standard JavaScript types</strong></mark> and supplies ambient globally-declared type definitions (`lib.d.ts`) matching every runtime API found in modern ECMAScript standard environments. \[[1](https://basarat.gitbook.io/typescript/type-system/lib.d.ts), [2](https://www.typescriptlang.org/docs/handbook/2/type-declarations.html)]
+
+The complete map of TypeScript's built-in definitions for native JavaScript types is categorized below.
+
+### 1. Primitives (Lower-case)
+
+These types directly mirror the behavior of the `typeof` operator for native JavaScript primitives. \[[1](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html)]
+
+- **`string`**: Textual data lines or template literals (e.g., `"hello"`).
+- **`number`**: Floating-point values including integers, decimals, `NaN`, and `Infinity`.
+- **`bigint`**: Arbitrary precision integers, marked with an `n` suffix (e.g., `100n`).
+- **`boolean`**: Conditional logical operators `true` or `false`.
+- **`symbol`**: Unique memory-reference identifiers initialized via `Symbol()`.
+- **`null`**: An intentional absence of object identification.
+- **`undefined`**: Variables initialized without any bound assignment. \[[1](https://www.typescriptlang.org/docs/handbook/basic-types.html), [2](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html), [3](https://www.w3schools.com/typescript/typescript%5Fsimple%5Ftypes.php), [4](https://js2ts.com/typescript-types-guide), [6](https://medium.com/@itsayu/built-in-types-in-typescript-4250af50ef4a)]
+
+### 2. Standard Structural Objects
+
+These match global JavaScript constructor instances and execution objects. \[[1](https://basarat.gitbook.io/typescript/type-system/lib.d.ts)]
+
+- **`object`**: Represents any non-primitive data structure (anything not a string, number, etc.).
+- (or `T[]`): Indexed arrays containing matching type records.
+- **`Function`**: The base signature blueprint describing JavaScript executable function structures.
+- **`Date`**: Handles native date stamps, epoch clocks, and calendar parsing.
+- **`RegExp`**: Pattern matching expressions instantiated by `/regex/` blocks. \[[1](https://www.typescriptlang.org/docs/handbook/basic-types.html), [2](https://medium.com/jspoint/typescript-working-with-types-f1829384851f), [3](https://graphite.com/guides/typescript-types), [4](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects), [5](https://basarat.gitbook.io/typescript/type-system/lib.d.ts), [6](https://mimo.org/glossary/typescript/object-type)]
+
+### 3. Collection Objects (ES6+) \[[1](https://itechcraft.com/blog/typescript-vs-javascript/)]
+
+Built-in hash, key, and sequence arrays introduced across modern ECMAScript revisions. \[[1](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects)]
+
+- : Key-value collections capable of accepting arbitrary object types as lookups.
+- : Ordered arrays configured to keep unique entries.
+- / : Garbage-collection safe maps/sets restricted exclusively to object keys. \[[1](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects)]
+
+### 4. Advanced Asynchronous & Runtime Objects
+
+Structural wrappers mapping out JavaScript asynchronous behaviors and memory abstractions. \[[1](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects)]
+
+- : Represents asynchronous execution values pending deferred fulfillment.
+- **`ArrayBuffer`** / **`DataView`**: Low-level binary memory buffers and reader layouts.
+- **`Int8Array`** / **`Float64Array`** (etc.): Specialized TypedArrays parsing explicitly structured raw bytes.
+- **`Error`** / **`TypeError`** / **`SyntaxError`**: Error schemas thrown during runtime failures.
+- **`JSON`**: Globally exposed namespace checking static `parse()` and `stringify()` calls. \[[1](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects), [2](https://www.wecreateproblems.com/interview-questions/typescript-interview-questions), [3](https://www.reddit.com/r/typescript/comments/7vwl84/does%5Fanybody%5Felse%5Fwish%5Ffor%5F81632big%5Finteger%5Ftypes/), [4](https://github.com/ericelliott/rtype)]
+
+### 5. Global Boxed Objects (Avoid Using)
+
+JavaScript possesses capital-letter object wrappers for primitive types, which TypeScript mirrors. **Avoid using these as type annotations** because they map to wrapper objects instead of literals. \[[1](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html), [2](https://www.linode.com/docs/guides/typescript-types-get-started/), [3](https://refine.dev/blog/javascript-vs-typescript/)]
+
+- **`String`**, **`Number`**, **`Boolean`**, **`Symbol`**, **`Object`** \[[1](https://www.typescriptlang.org/docs/handbook/basic-types.html), [2](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html)]
+
+***
+
+### Comparison Matrix: `typeof` Runtime vs. TypeScript Compilation \[[1](https://en.wikipedia.org/wiki/TypeScript), [2](https://sumeetpanchal-21.medium.com/typescript-beyond-the-basics-mastering-typeof-keyof-and-indexed-access-types-e291b307fd30)]
+
+| JavaScript Runtime Value \[[1](https://www.simplilearn.com/tutorials/javascript-tutorial/types-in-javascript), [2](https://medium.com/@pranayrah108/understanding-primitive-data-types-in-typescript-boolean-719f2ac09674), [3](https://dev.to/barinbritva/typescript-spelling-out-tsconfig-part-1-3nak), [4](https://luigicavalieri.com/blog/typescript-intro-for-react-developers/), [5](https://www.edureka.co/blog/data-types-in-javascript/)] | JavaScript `typeof` Output | Standard TypeScript Annotation |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- | ------------------------------ |
+| `"text"`                                                                                                                                                                                                                                                                                                                                                                                                                                           | `"string"`                 | **`string`**                   |
+| `42`                                                                                                                                                                                                                                                                                                                                                                                                                                               | `"number"`                 | **`number`**                   |
+| `true`                                                                                                                                                                                                                                                                                                                                                                                                                                             | `"boolean"`                | **`boolean`**                  |
+| `Symbol('id')`                                                                                                                                                                                                                                                                                                                                                                                                                                     | `"symbol"`                 | **`symbol`**                   |
+| `() => {}`                                                                                                                                                                                                                                                                                                                                                                                                                                         | `"function"`               | **`Function`** or `() => void` |
+| `[]`                                                                                                                                                                                                                                                                                                                                                                                                                                               | `"object"`                 | **`any[]`** or                 |
+| `{}`                                                                                                                                                                                                                                                                                                                                                                                                                                               | `"object"`                 | **`object`** or                |
+| `null`                                                                                                                                                                                                                                                                                                                                                                                                                                             | `"object"`                 | **`null`**                     |
+
+If you are seeing an implicit typing issue, tell me **which JavaScript API** (like `fetch`, a `Map`, or a `Timeout`) you are configuring so I can provide the exact type declaration syntax.
+
+- [link](https://www.typescriptlang.org/docs/handbook/basic-types.html)\
+  Handbook - Basic Types - TypeScript\
+  Jun 15, 2026 — On this page \* Boolean. \* Number. \* String. \* Array. \* Tuple. \* Enum. \* Unknown. \* Any. \* Void. \* Null and Undefined. \* Never. \* O...\
+  TypeScript
+- [link](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html)\
+  Documentation - Everyday Types - TypeScript\
+  Jun 15, 2026 — JavaScript has three very commonly used primitives: string , number , and boolean . Each has a corresponding type in TypeScript. A...\
+  TypeScript
+- [link](https://www.typescriptlang.org/docs/handbook/2/type-declarations.html)\
+  TypeScript: Documentation - Type Declarations\
+  Jun 1, 2026 — Built-in Type Definitions TypeScript includes declaration files for all of the standardized built-in APIs available in JavaScript ...\
+  TypeScript
+
+Show all
+
+# does the latest react run effect twice during dev
+
+<mark style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 500; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 600; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">Yes, the latest versions of React (including React 18 and React 19) intentionally run effects twice during development</strong></mark>**.** This behavior occurs specifically when [React Strict Mode](https://react.dev/reference/react/StrictMode) is enabled, which is the default setup for almost all modern React project templates. \[[1](https://react.dev/reference/react/StrictMode), [2](https://dev.to/pockit%5Ftools/why-is-useeffect-running-twice-the-complete-guide-to-react-19-strict-mode-and-effect-cleanup-1n60), [3](https://stackoverflow.com/questions/62631053/useeffect-being-called-multiple-times), [4](https://sentry.io/answers/react-useeffect-running-twice/)]
+
+### Why React Does This
+
+The React team introduced this to **stress-test your components** and help you catch bugs early. In development, React will immediately execute a cycle of: \[[1](https://www.linkedin.com/posts/hrithikagarwal%5Freact-strict-mode-why-does-my-component-activity-7372523746827436032-t-o4), [2](https://dev.to/pockit%5Ftools/why-is-useeffect-running-twice-the-complete-guide-to-react-19-strict-mode-and-effect-cleanup-1n60), [3](https://medium.com/@evansosei0707/why-is-useeffect-running-twice-in-react-18-the-real-reason-behind-it-and-how-to-handle-it-c31aa96fe383)]
+
+1. `mount` (runs your effect setup)
+2. `unmount` (runs your effect cleanup)
+3. `remount` (runs your effect setup a second time) \[[1](https://taig.medium.com/prevent-react-from-triggering-useeffect-twice-307a475714d7), [2](https://www.scichart.com/blog/what-is-react-strict-mode-and-why-is-my-application-double-re-rendering/)]
+
+This ensures your effects are **idempotent** and resilient to being created and destroyed. It uncovers memory leaks, missing cleanup functions, or issues that would otherwise break when users navigate back and forth in production. \[[1](https://www.youtube.com/watch?v=xlyitEaN2ac), [2](https://taig.medium.com/prevent-react-from-triggering-useeffect-twice-307a475714d7), [3](https://www.linkedin.com/posts/hrithikagarwal%5Freact-strict-mode-why-does-my-component-activity-7372523746827436032-t-o4), [4](https://dev.to/pockit%5Ftools/why-is-useeffect-running-twice-the-complete-guide-to-react-19-strict-mode-and-effect-cleanup-1n60), [5](https://sentry.io/answers/react-useeffect-running-twice/)]
+
+***
+
+### How to Deal With It Correctly
+
+Instead of trying to force the effect to run once, the correct mindset is to ensure that running it twice does not break your application. \[[1](https://www.reddit.com/r/reactjs/comments/1epir3s/why%5Fis%5Fmy%5Fuseeffect%5Fbeing%5Fcalled%5Ftwice%5Feven/), [2](https://medium.com/@evansosei0707/why-is-useeffect-running-twice-in-react-18-the-real-reason-behind-it-and-how-to-handle-it-c31aa96fe383)]
+
+### 1. Always Write a Cleanup Function
+
+If your effect connects to something, your cleanup function must disconnect from it. \[[1](https://itspatricku.medium.com/react-18-and-my-useeffects-run-twice-45a9f5c5b313)]
+
+javascript
+
+```
+useEffect(() => {
+  const dialog = dialogRef.current;
+  dialog.showModal();
+
+  // Cleanup function fixes the double-trigger issue safely
+  return () => dialog.close();
+}, []);
+```
+
+Use code with caution.
+
+### 2. Cancel or Ignore API Fetches \[[1](https://www.dhiwise.com/post/solving-the-error-can't-perform-a-react-state-update)]
+
+If you are fetching data inside an effect, use an `AbortController` to cancel the first request, or use a local boolean flag to ignore the result. \[[1](https://www.reddit.com/r/reactjs/comments/wa7371/useeffect%5Fempty%5Fdependencies%5Ftriggers%5Ftwice%5Fand/), [2](https://itspatricku.medium.com/react-18-and-my-useeffects-run-twice-45a9f5c5b313)]
+
+javascript
+
+```
+useEffect(() => {
+  let ignore = false;
+
+  fetch('/api/data')
+    .then(res => res.json())
+    .then(data => {
+      if (!ignore) setData(data);
+    });
+
+  return () => {
+    ignore = true; // Prevents updating state on an unmounted component
+  };
+}, []);
+```
+
+Use code with caution.
+
+### 3. Use Modern Alternatives
+
+In modern React development, you should generally try to avoid using useEffect for data fetching. \[[1](https://www.reddit.com/r/reactjs/comments/1epir3s/why%5Fis%5Fmy%5Fuseeffect%5Fbeing%5Fcalled%5Ftwice%5Feven/), [2](https://dev.to/parsajiravand/react-in-2026-start-from-scratch-the-right-way-cheat-sheet-2j9f)]
+
+- For fetching data, use frameworks like Next.js/Remix, or libraries like TanStack Query (React Query) which handle caching and deduplicate requests automatically.
+- For form submissions or user events, handle the logic inside **event handlers** or React 19 Actions rather than tracking them via state-driven effects. \[[1](https://www.reddit.com/r/reactjs/comments/1f1hdom/how%5Fdo%5Fyou%5Fdeal%5Fwith%5Fstrict%5Fmode%5Fdouble%5Fuseeffect/), [2](https://dev.to/parsajiravand/react-in-2026-start-from-scratch-the-right-way-cheat-sheet-2j9f), [3](https://medium.com/@sudhisudhi0834/react-18-vs-react-19-whats-new-and-why-it-matters-fad12a33b4d4), [4](https://www.moravio.com/blog/react-18-new-features-in-real-working-projects-the-good-and-the-issues), [5](https://www.reddit.com/r/reactjs/comments/1pnkm1c/common%5Fuseeffect%5Fantipatterns%5Fi%5Fsee%5Fin%5Fcode/)]
+
+***
+
+### How to Turn It Off (Not Recommended)
+
+If you have a specific reason to disable this behavior, you can remove the tags wrapping your application component tree (usually located in your `main.jsx` or `index.js` file). However, keeping it enabled is highly recommended to protect your production app from hidden bugs. \[[1](https://www.reddit.com/r/reactjs/comments/13s4sz4/anyone%5Felse%5Fsick%5Fof%5Fhooks%5Frunning%5Ftwice%5Fin/), [2](https://www.reddit.com/r/reactjs/comments/wa7371/useeffect%5Fempty%5Fdependencies%5Ftriggers%5Ftwice%5Fand/), [3](https://www.reddit.com/r/reactjs/comments/1epir3s/why%5Fis%5Fmy%5Fuseeffect%5Fbeing%5Fcalled%5Ftwice%5Feven/)]
+
+Would you like help rewriting a **specific effect** that is giving you trouble, or do you want to see how to handle **event-driven logic** without an effect?
+
+- [link](https://taig.medium.com/prevent-react-from-triggering-useeffect-twice-307a475714d7)\
+  Prevent React from triggering useEffect twice | Medium\
+  Jan 14, 2023 — What is actually happening? When you have the Strict Mode enabled (which you should), React performs additional runtime checks in ...\
+  Medium·Niklas Klein
+- [link](https://www.reddit.com/r/reactjs/comments/1epir3s/why%5Fis%5Fmy%5Fuseeffect%5Fbeing%5Fcalled%5Ftwice%5Feven/)\
+  Why is my useEffect being called twice, even though im not on ...\
+  Aug 11, 2024 — React also does this if you're in dev mode, so if you're running your app in dev mode, you'll also be exhibiting this behaviour. A...\
+  Reddit·r/reactjs
+- [link](https://www.youtube.com/watch?v=xlyitEaN2ac)\
+  Why Does React Render Components Twice? #reactjs # ...\
+  Sep 3, 2023 — have you ever wondered why React renders your components twice. when you open them this happens because of React's strict mode whi...\
+  1:01\
+  YouTube·Coding in Flow
+
+Show all
+
+## You said: why does the error disappear when i reload the page. i use parceljs.
+
+<mark style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 500; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 600; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>The error disappears on reload because refreshing the page completely resets your application's state, whereas Parcel’s Fast Refresh retains your state between file saves.</strong></strong></mark>
+
+When you save a file, [Parcel's Hot Module Replacement (HMR)](https://parceljs.org/features/development/) patches your updated code into the running browser tab without forcing a full refresh. This creates a specific side effect: **it keeps your old application state alive.** \[[1](https://parceljs.org/features/development/)]
+
+Here is exactly why this combo causes an error that vanishes on reload:
+
+### 1. The Fast Refresh "Stale State" Bug
+
+If you write a bug (like mutating an array directly or making an incorrect API call), that corrupted state gets stored in your active browser tab.
+
+- **When you save a fix:** Parcel injects your new code, but React tries to re-render using that _already-corrupted_ state still sitting in memory. The error persists.
+- **When you reload:** The entire browser memory is wiped. React starts with a completely clean, fresh state, so the error disappears. \[[1](https://parceljs.org/features/development/)]
+
+### 2. Effects Duplicating via HMR
+
+Because [React Strict Mode](https://react.dev/reference/react/StrictMode) mounts, unmounts, and remounts your components, using it alongside a hot-reloader like Parcel can sometimes compound setup logic if you don't clean it up. \[[1](https://parceljs.org/features/development/), [2](https://www.youtube.com/watch?v=3JyRV3ZiIss)]
+
+- If your `useEffect` attaches a global event listener, instantiates a WebSocket, or appends a DOM element **without a cleanup function**, saving a file in Parcel can cause those items to pile up in memory.
+- Eventually, the browser crashes or throws a duplicate key/event error.
+- Reloading the page clears the duplicated listeners or DOM elements entirely, making the app work normally again. \[[1](https://parceljs.org/features/development/), [2](https://www.youtube.com/watch?v=3JyRV3ZiIss)]
+
+***
+
+### How to Fix It
+
+To stop this from breaking your development flow, apply these three habits:
+
+- **Always write a cleanup return:** Ensure every `useEffect` that establishes a connection or listener destroys it on unmount. \[[1](https://www.youtube.com/watch?v=3JyRV3ZiIss)]
+- **Look at the console right after a hard refresh:** A full reload reveals the _true_ state of your app. If the error doesn't happen on a clean reload, your code logic is likely correct, and you were just seeing cached HMR artifacts. \[[1](https://parceljs.org/features/development/)]
+- **Separate non-React exports:** If a file exports both a React Component and a plain JavaScript object/variable, Parcel's Fast Refresh can fail and behave unpredictably. Move plain variables or configurations into their own separate utility files. \[[1](https://www.reddit.com/r/nextjs/comments/14th212/how%5Fto%5Fdiagnose%5Ffast%5Frefresh%5Fhad%5Fto%5Fperform%5Fa/), [2](https://github.com/parcel-bundler/parcel/issues/4146)]
+
+Are you seeing a specific error message (like a **duplicate key**, **null pointer**, or **network error**) when you save your files? If you share the error message or the code inside your component, I can point out exactly what is leaking or getting stuck in your state.
+
+- [link](https://www.youtube.com/watch?v=3JyRV3ZiIss)\
+  Why useEffect running twice and how to handle it well in ...\
+  Dec 10, 2024 — hey there welcome back to IAST. today we are diving into a common rack challenge that many developers face the use effect hook run...\
+  10:09\
+  YouTube·AyyazTech
+- [link](https://parceljs.org/features/development/)\
+  Development - Parcel\
+  As you make changes to your code, Parcel automatically rebuilds the changed files and updates your app in the browser. By default,\
+  Parcel.js
+- [link](https://www.reddit.com/r/nextjs/comments/14th212/how%5Fto%5Fdiagnose%5Ffast%5Frefresh%5Fhad%5Fto%5Fperform%5Fa/)\
+  How to Diagnose "Fast Refresh had to perform a full reload"?\
+  Jul 7, 2023 — According to a Reddit user, you might be getting "Fast Refresh had to perform a full reload" warnings in your dev logs because: \* ...\
+  Reddit
+
+Show all
+
+## You said: i mean i guess my cleanup might be flawed. but i do nothing and reload. it's fixed.
+
+That is exactly the hallmark of a **state leak or event leak** in development! Doing absolutely nothing to the code and just hitting reload fixes it because a browser refresh wipes away the "ghosts" created by the combination of React Strict Mode and Parcel.
+
+When you edit code, Parcel injects the changes without refreshing. This means your component **unmounts and remounts** behind the scenes. If your cleanup function has even a tiny gap, the old code's effects are left running in the background alongside the new code's effects.
+
+Here are the three most common "invisible leaks" that pile up during development and vanish instantly on a reload:
+
+### 1. Global Event Listeners (`window` or `document`)
+
+If you attach an event listener to the global `window` object, it stays there forever until the tab is closed or reloaded.
+
+javascript
+
+```
+useEffect(() => {
+  // If this runs 5 times due to Parcel updates, you now have 5 listeners
+  window.addEventListener('resize', handleResize);
+
+  // FLAW: If you forget this, the old listeners keep firing old code!
+  return () => window.removeEventListener('resize', handleResize);
+}, []);
+```
+
+Use code with caution.
+
+On a reload, the browser destroys the `window` object and builds a fresh one, deleting all the duplicate listeners you accidentally accumulated.
+
+### 2. Double timers (`setInterval` or `setTimeout`)
+
+If your effect kicks off an interval, every single time Parcel hot-reloads your file, a _new_ background timer is spawned.
+
+- The old timers don't stop; they keep ticking and trying to trigger state updates on components that technically don't exist anymore.
+- This leads to chaotic state updates and console errors. A page reload kills all background timers instantly.
+
+### 3. Non-React DOM Mutations
+
+If your effect manually pushes elements into the DOM (like mounting a third-party chart, a Leaflet map, or appending a modal div to `document.body`), that element sticks around.
+
+- When Parcel reloads, the effect runs again and appends _another_ copy of the element.
+- Suddenly, your layout breaks or libraries throw "Node already exists" errors. Reloading gives you a clean HTML file again.
+
+***
+
+### How to verify your cleanup is the issue
+
+You can prove if your cleanup is the culprit with a quick test. Add a console log to both your setup and cleanup:
+
+javascript
+
+```
+useEffect(() => {
+  console.log("🟢 EFFECT SETUP RUNNING");
+
+  return () => {
+    console.log("🔴 EFFECT CLEANUP RUNNING");
+  };
+}, []);
+```
+
+Use code with caution.
+
+If you save a file in Parcel and see **🟢 SETUP** print in your console, but you **do not** see **🔴 CLEANUP** right before it, your cleanup logic is being bypassed or is failing.
+
+Would you like to drop the code for your `useEffect` here? We can check it together to see if there is an accidental leak hiding in it!
+
+## You said: now it's fixed, and i see my cleanup \*is\* flawed
+
+It is a great feeling when you catch the root cause! Finding out that the cleanup is flawed is a huge win because it explains exactly why those "ghost bugs" were haunting your Parcel development server.
+
+Since you confirmed the cleanup isn't working quite right, here is a quick checklist of the most common reasons a cleanup function fails or gets bypassed:
+
+### 1. The Variable Reference Changed
+
+This is the number one trap in React. If you reference something in your cleanup that changed during the render, you might be trying to clean up the wrong thing.
+
+javascript
+
+```
+// ❌ FLAWED: The ref value might change before cleanup runs
+useEffect(() => {
+  myRef.current.addEventListener('scroll', handleScroll);
+  return () => myRef.current.removeEventListener('scroll', handleScroll);
+}, []);
+
+//  FIX: Capture the element in a local variable inside the effect
+useEffect(() => {
+  const element = myRef.current;
+  element.addEventListener('scroll', handleScroll);
+  return () => element.removeEventListener('scroll', handleScroll);
+}, []);
+```
+
+Use code with caution.
+
+### 2. Missing Dependencies
+
+If your cleanup relies on a specific state or prop variable, but you left that variable out of the dependency array `[]`, the cleanup function gets trapped in a closure with stale data. It might try to remove a listener or clear an ID that doesn't match reality anymore.
+
+### 3. Asynchronous Code Finished Too Late
+
+If you start a promise or an API fetch, you cannot stop the network request itself from completing natively without an `AbortController`. If the request finishes after the component has already unmounted, it will try to touch state or DOM that is no longer there. \[[1](https://dev.to/otamnitram/react-useeffect-cleanup-how-and-when-to-use-it-2hbm)]
+
+***
+
+If you want to paste the code for that specific `useEffect` block, we can spot exactly where the leak is happening and rewrite it so it survives both React Strict Mode and Parcel's hot-reloading perfectly! **What does the effect do?**
+
+- [link](https://dev.to/otamnitram/react-useeffect-cleanup-how-and-when-to-use-it-2hbm)\
+  React useEffect cleanup: How and when to use it\
+  May 14, 2020 — Don't update the state on an unmounted component One common implementation is to update the component state once an async function...\
+  \
+  \
+  DEV Community
+
+## You said: i forget to define some types, and it's within ts's reach
+
+That makes total sense! When TypeScript types are missing or set to implicit `any`, it creates a silent blind spot right where React and Parcel interact.
+
+In a `useEffect`, missing types usually break your cleanup in one of two ways:
+
+### 1. The `any` Reference Trap
+
+If TypeScript doesn't know the exact type of a variable or a ref object, it can't warn you if your cleanup method is slightly misspelled or mismatched.
+
+- For example, typing something as `any` allows you to call `.off()` instead of `.removeEventListener()`, or `.disconnect()` instead of `.clear()`.
+- TypeScript won't flag it as an error during compilation, but the browser will quietly fail to execute the cleanup at runtime. \[[1](https://betterstack.com/community/guides/scaling-nodejs/typescript-interfaces/)]
+
+### 2. Event Listener Signature Mismatches
+
+If your handler functions don't have explicit parameter types, TypeScript can't verify if the function you are passing to `removeEventListener` exactly matches the one you passed to `addEventListener`. If the signatures don't align, the browser treats them as two completely different functions and refuses to remove the old listener.
+
+***
+
+### Quick Fix: Explicitly Type Your Refs and Timers
+
+To bring this back within TypeScript's safety net, make sure your React refs and background handles are explicitly typed:
+
+**For DOM Elements:**
+
+typescript
+
+```
+// Explicitly type the HTML element so TS knows exactly what methods exist
+const elementRef = useRef<HTMLDivElement | null>(null);
+```
+
+Use code with caution.
+
+**For Timers (`setTimeout` / `setInterval`):**
+
+typescript
+
+```
+// In a browser environment, use ReturnType<typeof setTimeout>
+const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+```
+
+Use code with caution.
+
+**For Event Handlers:**
+
+typescript
+
+```
+// Explicitly type your event object to prevent signature mismatches
+const handleScroll = (event: Event) => {
+  // logic here
+};
+```
+
+Use code with caution.
+
+Once those types are explicitly declared, TypeScript will immediately highlight any broken paths or typos in your cleanup function right inside your editor, preventing Parcel from getting stuck.
+
+What kind of object or API were you working with inside the effect? If you want, we can write out the **exact TypeScript interface or ref definition** for it so you don't have to worry about it leaking again.
+
+- [link](https://betterstack.com/community/guides/scaling-nodejs/typescript-interfaces/)\
+  Interfaces in TypeScript\
+  Nov 21, 2025 — TypeScript compiles successfully without errors because the function parameter has implicit any type. The compiler treats the para...\
+  \
+  \
+  Better Stack
+
+## You said: i mean why it's false positive when reload
+
+The reason TypeScript’s missing types caused a "false positive" (working perfectly on reload, but throwing errors during hot-reloads) is due to how **JavaScript closures** and **module caching** behave when Parcel patches your code in real-time.
+
+When you don't define your types, TypeScript cannot guide you, leaving JavaScript to fall into one of two silent runtime traps during development:
+
+### 1. The Retained Closure Trap (Stale Code)
+
+Without explicit types, it is incredibly easy to accidentally create a closure that captures an old version of a variable or function.
+
+- **During a Hot-Reload:** Parcel injects your new code, but because your cleanup function was flawed, the _old, implicitly typed function_ is still actively running in the browser's memory. It attempts to read variables or call methods that no longer exist in the new version of your code, triggering a runtime error.
+- **During a Reload:** The browser flings away the old code and memory entirely. The app starts fresh, executes your latest code _once_, and because there is no older code running concurrently to clash with it, no error is triggered.
+
+### 2. The Shared Module State Trap
+
+If you initialize a variable outside of your component (at the top of the file) without proper typing, it becomes a global variable within that module's scope.
+
+typescript
+
+```
+// If this is untyped/implicitly handled outside the component:
+let connection;
+
+export const MyComponent = () => {
+  useEffect(() => {
+    connection = connectToService(); // Sets the module-level variable
+  });
+};
+```
+
+Use code with caution.
+
+- **During a Hot-Reload:** Parcel swaps the component code, but it **caches and preserves** that module-level `connection` variable in the background. Your new code tries to re-assign or read from a connection that was instantiated by dead code, crashing your app.
+- **During a Reload:** The module is re-evaluated from scratch. `let connection` starts as `undefined`, preventing the collision.
+
+***
+
+### Summary
+
+The error wasn't a fake bug—it was a **real memory leak** that only exposed itself when the app was updated alive. Reloading simply swept the leak under the rug by resetting the clock.
+
+By defining your types, TypeScript forced you to align your references properly, which naturally fixed the memory leak and made your code resilient to hot-reloading!
+
+Now that the types are locked in, is your project building cleanly in production mode as well, or are you running into any other TypeScript strictness warnings with Parcel?
+
+## You said: i mean it's actually "read from undefined" as i accidentally wrapped an object one layer further. only cleanup triggers this. why reload fixes.
+
+Ah! That makes perfect sense. The classic `Cannot read property of undefined` error because an object was nested one layer deeper than expected (like `data.user.name` instead of `data.name`). \[[1](https://github.com/nexus-mods/vortex/issues/19148)]
+
+The reason this exploded **only during cleanup** and was **instantly fixed by a reload** comes down to how React handles unmounting during a Parcel Hot-Reload versus a fresh page refresh.
+
+Here is exactly what happened step-by-step:
+
+### 1. During a Hot-Reload (Why it crashes)
+
+When you edit a file and save it, Parcel triggers a "Fast Refresh." React wants to replace the old component with your new one, so it must **unmount the old component first**.
+
+1. React triggers the **cleanup function of the old code**.
+2. Because your object was accidentally wrapped one layer deeper, your cleanup code tries to read a property from `undefined` (e.g., trying to call `cleanupRef.current.destroy()`, but `current` is `undefined`).
+3. **Boom!** The app crashes right there in the browser. \[[1](https://github.com/woocommerce/woocommerce/issues/64537)]
+
+Because it crashed _during_ the hot-reload process, the screen freezes, showing you the error. \[[1](https://github.com/ChilliCream/graphql-platform/issues/5803)]
+
+### 2. During a Reload (Why it "fixes" itself)
+
+When you hit the refresh button in your browser, you are doing a **hard reset** on the entire environment.
+
+1. The browser completely destroys the JavaScript runtime, the memory, and the DOM.
+2. Because the browser is violently tearing down the whole tab, **React does not run component cleanup functions.**
+3. The page loads completely fresh with your latest, corrected code.
+4. Since the old, broken cleanup function never gets a chance to execute, the error never triggers, and everything looks perfectly fixed! \[[1](https://medium.com/@ashishjadhav28999/fixing-popup-state-loss-in-vue-js-after-hard-refresh-a-real-world-mobile-ui-challenge-979a7469fdd8), [2](https://stackoverflow.com/questions/79737518/will-calling-window-location-reload-trigger-the-clean-up-function-inside-a-use)]
+
+### Summary
+
+The error was sitting like a landmine inside the old cleanup code. A hot-reload stepped right on the landmine by forcing the old cleanup to run. A page reload bypassed the landmine completely by wiping out the whole map and starting over.
+
+It is a classic React development trap, but now you know exactly why it happens! Are your types and nesting all lined up correctly now, or is there any other part of that object structure giving you trouble? \[[1](https://medium.com/beingcoders/how-to-fix-ng-ps1-cannot-be-loaded-error-in-angular-on-windows-15b9cf71408e)]
+
+- [link](https://github.com/nexus-mods/vortex/issues/19148)\
+  error: Cannot read properties of undefined (reading 'isFileInUse') Affected dependencies: input\_loader\_v0.2.3.zip-4575-0-2-3-1752939429, redscript-1511-0-5-31-1757113888, BrowserExtensionFramework-10038-0-9-6-1757050385, CET 1.37.0 - Patch 2.31-107-1-37- · Issue #19148 · Nexus-Mods/Vortex\
+  Dec 25, 2025 — Activity BinToss IDCs IDCs mentioned this mentioned this closed this as completed in #19228 on Dec 26, 2025 on Jan 5 on Jan 8 erro...\
+  \
+  GitHub
+- [link](https://github.com/woocommerce/woocommerce/issues/64537)\
+  Checkout broken when global \`wc\` is shadowed: \`wc.customPlaceOrderButton.\_\_cleanup is undefined\` regression in 10.7.0 · Issue #64537 · woocommerce/woocommerce\
+  May 1, 2026 — Console: TypeError: Cannot read properties of undefined (reading '\_\_cleanup') from checkout. min. js:1:1092 , originating at the i...\
+  \
+  \
+  GitHub
+- [link](https://github.com/ChilliCream/graphql-platform/issues/5803)\
+  Hot Reload -- Operation is not valid due to the current state of the object · Issue #5803 · ChilliCream/graphql-platform\
+  Feb 7, 2023 — The only way this exception @glen-84 mentions Operation is not valid due to the current state of the object. could be triggered is...\
+  \
+  \
+  GitHub
+
+Show all
+
+## You said: does it actually run twice
+
+\*\***No, the cleanup function does not run during a full page reload.**
+
+When you hit refresh, the browser immediately destroys the entire JavaScript memory heap and tears down the page. It does not wait for React to gracefully unmount components, so your cleanup functions are completely skipped.
+
+The "running twice" behavior only happens during **active development inside the running page** in two specific scenarios:
+
+### 1. The Strict Mode Double-Run (On Mount)
+
+When your page first loads (or reloads), React Strict Mode intentionally runs your effect cycle twice **forward** to test it: \[[1](https://unwiredlearning.com/blog/react-strict-mode)]
+
+1. Mount (Setup)
+2. Unmount (**Cleanup runs here**)
+3. Remount (Setup)
+
+During this initial page load, your cleanup _did_ run, but it didn't crash your app because your state and refs were freshly initialized and valid.
+
+### 2. The Parcel Hot-Reload (On Save)
+
+When you edited your code and saved the file, Parcel forced a live swap. To do this, React had to tear down the old component:
+
+1. Unmount (**Old Cleanup runs here**) ❌ _CRASH_
+
+Because your object structure was broken in that specific version of the code, stepping on this cleanup step caused the crash.
+
+### Why the Reload "Fixed" It
+
+When you clicked reload after it crashed, the browser wiped the memory, skipped the broken cleanup entirely, and loaded your newly corrected code from scratch.
+
+Are you all set with this component now, or would you like to double-check how to **safely guard** your cleanup functions against `undefined` errors in the future?
+
+- [link](https://unwiredlearning.com/blog/react-strict-mode)\
+  React Strict Mode: Why useEffect Runs Twice in Dev\
+  Feb 10, 2026 — This confirms React is testing your cleanup logic. Key Takeaways React Strict Mode is a development helper, not a bug. It intentio...\
+  \
+  \
+  Unwired Learning
+
+## You said: how to make it strict
+
+To make TypeScript or React "strict" and catch these nested object and `undefined` errors before they ever hit the browser, you need to enable strict settings in two places: <mark style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 500; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 600; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">TypeScript (<code dir="ltr" style="font-family: monospace; font-size: 14px; font-weight: 600; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 1px solid rgb(44, 46, 53);">tsconfig.json</code>)</strong> and <strong style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 600; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">React (<code dir="ltr" style="font-family: monospace; font-size: 14px; font-weight: 600; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 1px solid rgb(44, 46, 53);">main.tsx</code> / <code dir="ltr" style="font-family: monospace; font-size: 14px; font-weight: 600; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 1px solid rgb(44, 46, 53);">index.tsx</code>)</strong></mark>.
+
+Here is exactly how to lock both down.
+
+***
+
+### 1. Make TypeScript Strict (Catch Nested Typos)
+
+To force TypeScript to error out when you try to read properties from an object that might be `undefined` (like your nested object issue), you must enable **`strictNullChecks`** and **`strict`** mode.
+
+Open your `tsconfig.json` file in the root of your Parcel project and update your `compilerOptions`:
+
+json
+
+```
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "lib": ["DOM", "DOM.Iterable", "ES2022"],
+
+    /* 🔴 THE STRICTION CONTROLS */
+    "strict": true,                  // Enables a broad suite of type-checking behaviors
+    "strictNullChecks": true,        // Disallows reading properties of undefined/null
+    "noImplicitAny": true,           // Forces you to type variables instead of letting them slide as 'any'
+    "noUnusedLocals": true,          // Errors if you declare a variable but don't use it
+
+    "moduleResolution": "NodeNext",
+    "jsx": "react-jsx"
+  }
+}
+```
+
+Use code with caution.
+
+### What this does to your code:
+
+If you accidentally wrap an object one layer too deep, TypeScript will immediately highlight the code in red in your IDE and **Parcel will refuse to build**, showing this error in your terminal:
+
+> `Object is possibly 'undefined'.`
+
+***
+
+### 2. Make React Strict (Force the Double-Run)
+
+To guarantee that React stress-tests your cleanups by running them twice in development, ensure your root component is wrapped in . \[[1](https://www.upgrad.com/blog/react-strict-mode/), [2](https://blogs.purecode.ai/blogs/react-strict-mode)]
+
+Open your entry file (usually `index.tsx` or `main.tsx`) and check your setup:
+
+typescript
+
+```
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import App from './App';
+
+const rootElement = document.getElementById('root');
+
+if (rootElement) {
+  createRoot(rootElement).render(
+    <StrictMode>
+      <App />
+    </StrictMode>
+  </StrictMode>
+);
+}
+```
+
+Use code with caution.
+
+***
+
+### 💡 Pro-Tip: Defend Your Cleanup Logic
+
+Even with strict mode on, cleanup functions run during unmounting when state might already be clearing out. To completely immunize your cleanup blocks against `Cannot read property of undefined`, use JavaScript's **optional chaining (`?.`)**:
+
+typescript
+
+```
+useEffect(() => {
+  const channel = apiRef.current?.connection;
+  channel?.subscribe();
+
+  return () => {
+    // 🛡️ The '?.' safely aborts if channel or unsubscribe is undefined
+    channel?.unsubscribe?.();
+  };
+}, []);
+```
+
+Use code with caution.
+
+Would you like help setting up a **linter (ESLint)** to automatically catch unhandled promises or missing dependencies in your effects as well?
+
+- [link](https://www.upgrad.com/blog/react-strict-mode/)\
+  React Strict Mode: Key Benefits and How to Use It Right\
+  Aug 29, 2025 — Explanation: This React code demonstrates how Strict Mode intentionally runs the useEffect cleanup and setup twice during developm...\
+  \
+  \
+  upGrad
+- [link](https://blogs.purecode.ai/blogs/react-strict-mode)\
+  How React Strict Mode Works For Great Development - Blogs\
+  Feb 19, 2024 — Enable at the Top Level: Wrap your entire application or the root component with to apply the Strict Mode checks throughout the co...\
+  \
+  \
+  Purecode.AI
+
+## You said: does react take the strict prop from tsconfig and run twice by default
+
+<mark style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 500; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 600; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">No, React does not read your <code dir="ltr" style="font-family: monospace; font-size: 14px; font-weight: 600; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 1px solid rgb(44, 46, 53);">tsconfig.json</code> at all.</strong></mark> They are completely independent tools. \[[1](https://stackoverflow.com/questions/76598366/is-there-any-way-to-check-if-react-strict-mode-is-enforced-in-typescript), [2](https://js2ts.com/typescript-strict-mode)]
+
+The `"strict": true` setting in your `tsconfig.json` is **strictly for type-checking at compile time**. TypeScript strips away all type rules when your code compiles, so it cannot change how React runs in the browser. \[[1](https://oneuptime.com/blog/post/2026-01-15-strict-typescript-configuration-react/view), [2](https://www.typescriptlang.org/tsconfig/strict.html), [3](https://js2ts.com/typescript-strict-mode)]
+
+### The True Defaults
+
+React runs effects twice _solely_ because modern project templates (like Vite, Next.js, or Create React App) automatically generate a `main.tsx` or `index.js` file that explicitly wraps your application inside code tags: \[[1](https://unwiredlearning.com/blog/react-strict-mode), [2](https://stackoverflow.com/questions/53183362/what-is-strictmode-in-react)]
+
+tsx
+
+```
+// This HTML-like component tag is what actually forces the double-run
+<React.StrictMode>
+  <App />
+</React.StrictMode>
+```
+
+Use code with caution.
+
+If you delete from your layout, your components will immediately stop running twice in development, **even if `"strict": true` is enabled in your TypeScript configuration**. \[[1](https://sentry.io/answers/react-useeffect-running-twice/), [2](https://chanduthedev.medium.com/why-react-app-rendering-twice-e31339ed9461)]
+
+### How the Two "Stricts" Compare
+
+| Tool \[[1](https://www.typescriptlang.org/tsconfig/strict.html), [2](https://dev.to/krunalkanojiya/how-to-enable-strict-mode-and-why-you-should-always-use-it-4fc1), [3](https://oneuptime.com/blog/post/2026-01-15-strict-typescript-configuration-react/view), [4](https://js2ts.com/typescript-strict-mode), [5](https://www.scichart.com/blog/what-is-react-strict-mode-and-why-is-my-application-double-re-rendering/), [6](https://unwiredlearning.com/blog/react-strict-mode), [7](https://taig.medium.com/prevent-react-from-triggering-useeffect-twice-307a475714d7)] | Trigger                             | Primary Purpose                                                               | Impact on Browser Runtime                                                 |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| **TypeScript Strict**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | `"strict": true` in `tsconfig.json` | Catches typos, unhandled `undefined` data, and type gaps in your code editor. | **None.** The browser never sees this configuration.                      |
+| **React Strict Mode**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | wrapper in your entry JSX file      | Exposes hidden memory leaks, uncleaned intervals, and flawed effects.         | **High (Dev only).** Intentionally forces code components to mount twice. |
+
+Now that your TypeScript configurations are solid, do you want to ensure your layout correctly includes the tags, or are you ready to jump back into debugging your application features? \[[1](https://unwiredlearning.com/blog/react-strict-mode)]
+
+- [link](https://taig.medium.com/prevent-react-from-triggering-useeffect-twice-307a475714d7)\
+  Prevent React from triggering useEffect twice | Medium\
+  Jan 14, 2023 — React 18.0 introduced a new development-only check to Strict Mode. This check automatically unmounts and remounts every component ...\
+  Medium
+- [link](https://sentry.io/answers/react-useeffect-running-twice/)\
+  React useEffect running twice - Sentry\
+  Feb 15, 2024 — Although it is not recommended, in React 18 you can disable Strict Mode by removing the tag from the return statement in your root...\
+  Sentry
+- [link](https://www.scichart.com/blog/what-is-react-strict-mode-and-why-is-my-application-double-re-rendering/)\
+  What is React Strict Mode, and why is my Application Double Re-Rendering?\
+  Jun 19, 2024 — React StrictMode is a development tool that helps identify potential issues in React applications. It applies a set of behaviors a...\
+  SciChart
+
+Show all
+
+## You said: what? does react run twice if i just write code normally
+
+<mark style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 500; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 600; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>Yes, React will run your effects twice if you just write code normally.</strong></strong></mark> \[[1](https://dev.to/jahid6597/why-useeffect-is-running-twice-in-react-18c6)]
+
+The reason it feels like it happens "by default" is because almost every tool you use to start a project automatically turns it on for you.
+
+Here is exactly how it works:
+
+### 1. The React Code Itself
+
+If you create a component file and write a normal `useEffect` block, React's core library doesn't inherently know whether it is in development or production.
+
+javascript
+
+```
+// This is just normal code
+useEffect(() => {
+  console.log("Hello!");
+}, []);
+```
+
+Use code with caution.
+
+### 2. The Invisible "Helper" (Why it runs twice)
+
+When you start a modern project using a template or tool (like Vite, Next.js, or Create React App), the generator secretly creates a root file for you (usually called `index.js`, `main.tsx`, or `app.js`).
+
+Inside that file, it wraps your entire application inside a component tag called . \[[1](https://unwiredlearning.com/blog/react-strict-mode)]
+
+jsx
+
+```
+// This wrapper is added automatically by project templates
+<StrictMode>
+  <App />
+</StrictMode>
+```
+
+Use code with caution.
+
+Because that tag is sitting at the very top of your project, **every single component you write normally underneath it will run its effects twice during development.** It acts as a blanket rule for your whole codebase. \[[1](https://news.ycombinator.com/item?id=42331207)]
+
+### How to Check Your Project
+
+Since you are using **Parcel**, look inside your project's main entry file (the one that hooks into your `index.html`). \[[1](https://ramajha.medium.com/the-5-minute-guide-to-starting-a-react-project-fa68b4e79126)]
+
+- If you see or wrapped around your , your code will run twice.
+- If you delete those tags and just render by itself, your code will instantly drop down to running only once. \[[1](https://dev.to/dristy03/using-useeffect-hook-avoiding-excessive-re-rendering-3khm)]
+
+If you want, you can check that root entry file right now. Does your Parcel project have the tags wrapping your app components?
+
+- [link](https://dev.to/jahid6597/why-useeffect-is-running-twice-in-react-18c6)\
+  Why useeffect is running twice in react\
+  Feb 11, 2023 — Yes, when using React ( react, javascript ) . StrictMode in development, your components will be rendered twice, causing useEffect...\
+  \
+  \
+  DEV Community
+- [link](https://unwiredlearning.com/blog/react-strict-mode)\
+  React Strict Mode: Why useEffect Runs Twice in Dev\
+  Feb 10, 2026 — These checks are completely removed in production builds, so they don't affect performance for your users. Everything wrapped insi...\
+  \
+  \
+  Unwired Learning
+- [link](https://news.ycombinator.com/item?id=42331207)\
+  React 19\
+  Dec 5, 2024 — StrictMode unmounts and remounts every component causing every useEffect to fire at least twice. Which means a useEffect with an e...\
+  \
+  Hacker News
+
+Show all
+
+## You said: well, only one run in console. export function App() {
+
+useEffect(()=>{\
+console.log('run')\
+})
+
+No. If your snippet only prints `'run'` **exactly once** in the console on a fresh page load, then **React Strict Mode is not active in your project.**
+
+Unlike frameworks like Next.js or Vite (which build Strict Mode in by default), a plain **Parcel setup is 100% zero-config.** It does not generate or inject for you. If you just write standard React code and mount it to the DOM, React will defaults to running your effects exactly **once**. \[[1](https://www.linkedin.com/posts/priyanshu-mishra-27613b1b6%5Freact-parcel-frontend-activity-7370873549265362944-GlJo)]
+
+tsx
+
+```
+// Your code:
+export function App() {
+  useEffect(() => {
+    console.log('run'); // Only runs ONCE because StrictMode is missing
+  });
+}
+```
+
+Use code with caution.
+
+### Why it crashed during the hot-reload anyway
+
+Even without Strict Mode forcing a double-run on page load, **Parcel's Hot Module Replacement (HMR)** forces an unmount when you edit your file.
+
+1. You saved your code changes.
+2. Parcel tore down the old component tree, which **forced the broken cleanup function to run**.
+3. The app crashed because of the nesting issue (`undefined` error).
+4. You hit refresh. The page loaded clean, ran your effect _once_, and bypassed the cleanup entirely because you didn't trigger another hot-reload. \[[1](https://www.scichart.com/blog/what-is-react-strict-mode-and-why-is-my-application-double-re-rendering/)]
+
+### How to turn on the double-run check
+
+If you _want_ React to catch these cleanup errors automatically the moment the page loads, you have to manually wrap your entry file in : \[[1](https://www.scichart.com/blog/what-is-react-strict-mode-and-why-is-my-application-double-re-rendering/)]
+
+tsx
+
+```
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { App } from './App';
+
+// Manually wrap it here to get the double-run benefit
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <App />
+  </StrictMode>
+);
+```
+
+Use code with caution.
+
+Once you add those tags, that console log will instantly switch to printing **twice** every time you refresh the page! \[[1](https://www.reddit.com/r/reactjs/comments/1as97tw/console%5Flogging%5Ftwice%5Feven%5Fthough%5Fi%5Flog%5Fit%5Fonly/), [2](https://www.scichart.com/blog/what-is-react-strict-mode-and-why-is-my-application-double-re-rendering/)]
+
+Are you planning to add `StrictMode` to keep stress-testing your cleanups, or are you happy keeping it at a single run for now? \[[1](https://www.reddit.com/r/reactjs/comments/1as97tw/console%5Flogging%5Ftwice%5Feven%5Fthough%5Fi%5Flog%5Fit%5Fonly/)]
+
+- [link](https://www.reddit.com/r/reactjs/comments/1as97tw/console%5Flogging%5Ftwice%5Feven%5Fthough%5Fi%5Flog%5Fit%5Fonly/)\
+  Console Logging twice even though I log it only once?\
+  Feb 16, 2024 — According to a Reddit user, console logging twice even though you only log it once is due to React's Strict Mode: \* \*\*Multiple run...\
+  Reddit
+- [link](https://www.scichart.com/blog/what-is-react-strict-mode-and-why-is-my-application-double-re-rendering/)\
+  What is React Strict Mode and why is my App Double Re ...\
+  Jun 19, 2024 — What is Strict Mode in React? React StrictMode applies a set of behaviours and warnings that can help spotting different kinds of ...\
+  SciChart
+- [link](https://www.linkedin.com/posts/priyanshu-mishra-27613b1b6%5Freact-parcel-frontend-activity-7370873549265362944-GlJo)\
+  Seamless React project with Parcel: Zero config, fast builds\
+  Sep 8, 2025 — ✨ Key Highlights of Parcel: Zero configuration setup Native support for React, TypeScript, CSS, and images Hot module replacement ...\
+  LinkedIn·Priyanshu Mishra
+
+## You said: can it toggle it on parcel
+
+Because Parcel is designed to be zero-configuration, **there is no configuration setting or feature flag in Parcel to toggle React Strict Mode.** \[[1](https://cravencode.com/post/javascript/react-with-parcel-bundler/), [2](https://medium.com/@robinviktorsson/setting-up-a-modern-typescript-project-with-parcel-as-bundler-no-framework-b56055890eff)]
+
+Since Parcel only acts as a compiler for your files, it has no direct control over React's runtime behavior. To toggle it dynamically without manually editing the JSX tags every time, you can implement a toggle yourself directly inside your codebase. \[[1](https://parceljs.org/recipes/react/)]
+
+### Method 1: The Dev Environment Toggle (Most Popular)
+
+You can use an environment variable to automatically enable Strict Mode in development, while keeping it off elsewhere.
+
+Parcel automatically exposes `process.env.NODE_ENV`. Update your main entry file (like `index.tsx`) to conditionally apply the wrapper: \[[1](https://parceljs.org/recipes/react/)]
+
+tsx
+
+```
+import { StrictMode, Fragment } from 'react';
+import { createRoot } from 'react-dom/client';
+import { App } from './App';
+
+// If in dev mode, use StrictMode. Otherwise, use an empty Fragment.
+const Wrapper = process.env.NODE_ENV === 'development' ? StrictMode : Fragment;
+
+createRoot(document.getElementById('root')!).render(
+  <Wrapper>
+    <App />
+  </Wrapper>
+);
+```
+
+Use code with caution.
+
+### Method 2: The Browser Console Toggle (On-The-Fly)
+
+If you want to manually flip a switch directly inside your browser tab without restarting Parcel or rebuilding your code, you can use `localStorage`. \[[1](https://www.abtasty.com/blog/feature-flags-react-app/)]
+
+Update your entry file to read a flag from the browser's storage: \[[1](https://www.abtasty.com/blog/feature-flags-react-app/)]
+
+tsx
+
+```
+import { StrictMode, Fragment } from 'react';
+import { createRoot } from 'react-dom/client';
+import { App } from './App';
+
+// Checks if 'useStrict' is set to 'true' in your browser's localStorage
+const useStrict = localStorage.getItem('useStrict') === 'true';
+const Wrapper = useStrict ? StrictMode : Fragment;
+
+createRoot(document.getElementById('root')!).render(
+  <Wrapper>
+    <App />
+  </Wrapper>
+);
+```
+
+Use code with caution.
+
+### How to toggle it on-the-fly:
+
+1. Open your browser developer tools (F12) to the **Console** tab.
+2. To turn double-running **ON**, type: `localStorage.setItem('useStrict', 'true')` and reload the page.
+3. To turn double-running **OFF**, type: `localStorage.removeItem('useStrict')` and reload the page. \[[1](https://www.abtasty.com/blog/feature-flags-react-app/)]
+
+Would you like to try setting up the **environment variable approach** so it dynamically handles itself based on your Parcel run commands (`parcel src/index.html` vs `parcel build`), or does the browser `localStorage` toggle work better for your workflow?
+
+- [link](https://parceljs.org/recipes/react/)\
+  React\
+  Parcel is a tool for building single or multi-page React applications. It includes support for: \* \*\*JSX\*\* Automatic support when R...\
+  Parcel.js
+- [link](https://cravencode.com/post/javascript/react-with-parcel-bundler/)\
+  Bundling React applications with minimal configuration and full control\
+  Jan 16, 2019 — For my team, replacing Webpack with something that requires less work, complexity, and attention is extremely desirable (so I don'\
+  cravencode.com
+- [link](https://www.abtasty.com/blog/feature-flags-react-app/)\
+  Set up Feature Flags in a React JS App - abtasty\
+  Jun 10, 2021 — The first step is to get the feature from localStorage and see if it is set to active or not. If the feature is active, we can ren...\
+  AB Tasty
+
+Show all
+
+## You said: what does react run twice
+
+When [React Strict Mode](https://react.dev/reference/react/StrictMode) is active during development, React does not just run your `useEffect` blocks twice—it intentionally **double-invokes almost all functions that are supposed to be pure**. \[[1](https://react.dev/reference/react/StrictMode)]
+
+This behavior helps you spot unexpected side effects, memory leaks, and state bugs before shipping code to production. According to the official React documentation, here is the exact list of what React executes twice in development: \[[1](https://react.dev/reference/react/StrictMode), [2](https://javascript.plainenglish.io/react-strict-mode-explained-for-2026-5fca1c3fa786), [3](https://www.youtube.com/watch?v=xlyitEaN2ac), [4](https://unwiredlearning.com/blog/react-strict-mode)]
+
+### 1. The Component Function Itself (The Render)
+
+React runs the actual body of your function component twice. \[[1](https://www.scichart.com/blog/what-is-react-strict-mode-and-why-is-my-application-double-re-rendering/)]
+
+- **The Reason:** Rendering must be a pure calculation. If you are accidentally mutating global variables or modifying external data inside the component body, the double-render will immediately expose the resulting UI glitch or state mismatch. \[[1](https://react.dev/reference/react/StrictMode), [2](https://react.dev/learn/queueing-a-series-of-state-updates), [3](https://react.dev/learn/render-and-commit)]
+
+### 2. Side Effect Hooks
+
+React runs both parts of your lifecycle hooks twice by executing a rapid sequence: \[[1](https://www.scichart.com/blog/what-is-react-strict-mode-and-why-is-my-application-double-re-rendering/), [2](https://unwiredlearning.com/blog/react-strict-mode), [3](https://www.upgrad.com/blog/react-strict-mode/)]
+
+- **`useEffect`** (Setup → Cleanup → Setup)
+- **`useLayoutEffect`** (Setup → Cleanup → Setup)
+- **`useInsertionEffect`** (Setup → Cleanup → Setup) \[[1](https://unwiredlearning.com/blog/react-strict-mode), [2](https://chudovo.com/react-useeffect-common-mistakes-and-how-to-avoid-them/), [3](https://dev.to/somshekhar/understanding-the-flow-of-react-s-effect-hook-ej7), [4](https://hygraph.com/blog/react-useeffect-a-complete-guide), [5](https://codingcops.com/react-interview-questions-and-answers/)]
+
+### 3. State Initializer Functions
+
+If you pass a function to initialize a state hook to avoid calculating a heavy value on every single render, React will execute that initializer function twice. \[]
+
+- **Example:** `useState(() => getHeavyData())`
+
+### 4. Reducer and State Updater Functions
+
+The functions you pass to modify state are required to be pure. React will call them twice to ensure they do not produce different results on subsequent calculations: \[[1](https://react.dev/reference/react/StrictMode), [2](https://react.dev/reference/react/useRef), [3](https://github.com/facebook/react/issues/12856)]
+
+- The **`useReducer`** reducer function.
+- The functional updates passed to state setters (e.g., `setCount(prev => prev + 1)`). \[[1](https://react.dev/reference/react/useActionState), [2](https://www.freecodecamp.org/news/shared-state-complexity-in-react-handbook/), [3](https://www.credosystemz.com/blog/react-hooks/), [4](https://www.ignek.com/blog/react-batching-for-performance-optimization), [5](https://docureacten.github.io/State/2-8-Understanding%20the%20Asynchronous%20Nature%20of%20State%20Update%20Functions,%20Utilizing%20Previous%20States,%20and%20State%20Resetting)]
+
+***
+
+### What React does _NOT_ run twice
+
+To avoid completely breaking the operational logic of your application, React excludes certain blocks from the double-execution rule:
+
+- **Event Handlers:** Code inside button clicks (`onClick`), form submissions (`onSubmit`), or text inputs (`onChange`) only fires **once** per actual user action.
+- **Cleanup on Final Unmount:** When you naturally navigate away from a page or close a component, the `useEffect` cleanup function runs exactly **once** to gracefully close the connection. \[[1](https://stackoverflow.com/questions/63127173/react-how-to-run-a-function-only-once-after-page-enter-or-refresh), [2](https://javascript.plainenglish.io/why-does-useeffect-run-twice-in-react-de871c303735)]
+
+Are you seeing console logs or operations from one of these other areas (like a state updater or reducer) firing twice, or does everything make sense now that you know what React is testing under the hood?
+
+- [link](https://unwiredlearning.com/blog/react-strict-mode)\
+  React Strict Mode: Why useEffect Runs Twice in Dev\
+  Feb 10, 2026 — Why Effects Run Twice in Development. This is the behavior that confuses most beginners. When Strict Mode is enabled, React intent...\
+  Unwired Learning
+- [link](https://react.dev/reference/react/StrictMode)\
+  – React\
+  In this example, Strict Mode checks will not run against the Header and Footer components. However, they will run on Sidebar and C...\
+  React
+- [link](https://www.scichart.com/blog/what-is-react-strict-mode-and-why-is-my-application-double-re-rendering/)\
+  What is React Strict Mode, and why is my Application Double Re-Rendering?\
+  Jun 19, 2024 — React StrictMode is a development tool that helps identify potential issues in React applications. It applies a set of behaviors a...\
+  SciChart
+
+Show all
+
+## You said: Error: Cannot find module 'react'
+
+i do have react installed and vscode shows perfectly.
+
+\*\***This discrepancy happens because VSCode and Parcel use two completely different algorithms to locate your `node_modules`.**
+
+VSCode reads your local file path starting directly from the workspace folder you have open. Parcel, however, starts searching from the location of the **entry file you passed to it** (e.g., your `index.html` or `src/index.tsx`) and travels _upward_ through parent directories. \[[1](https://oneuptime.com/blog/post/2026-01-24-typescript-cannot-find-module/view)]
+
+If VSCode sees `react` perfectly but Parcel throws a `Cannot find module 'react'` error, your project structure likely has a directory mismatch. Here is how to fix the three most common causes in a Parcel setup:
+
+### 1. The Entry Point Path Mismatch
+
+If your `index.html` is in a subdirectory (like a `/src` folder), and you started Parcel pointing straight to it, Parcel might be looking for `node_modules` _inside_ the `/src` folder instead of your project root.
+
+- **The Broken Command:** `npx parcel src/index.html` (If Parcel gets confused by local directory boundaries)
+
+- **The Fix:** Move your `index.html` to the project root directory (right next to your `package.json` and `node_modules`), then run:\
+  bash
+
+<!---->
+
+```
+npx parcel index.html
+```
+
+Use code with caution.
+
+### 2. A Stale Parcel Cache File \[[1](https://reactnavigation.org/docs/5.x/troubleshooting/)]
+
+Parcel caches everything aggressively to make builds fast. If you recently ran an installation command, updated your `tsconfig.json`, or restructured folders, Parcel's hidden internal cache database can get out of sync and fail to map the module correctly. \[[1](https://github.com/parcel-bundler/parcel/issues/1904)]
+
+Wipe the internal development cache entirely and restart the compilation process:
+
+bash
+
+```
+# Delete the hidden cache directory and local build distribution folders
+rm -rf .parcel-cache dist
+
+# Start the dev server again fresh
+npx parcel index.html
+```
+
+Use code with caution.
+
+### 3. Your `tsconfig.json` is Overriding Module Resolution \[[1](https://stackoverflow.com/questions/67047525/cannot-find-module-fortawesome-react-fontawesome)]
+
+If you modified your `tsconfig.json` to make your TypeScript strict earlier, you might have inadvertently altered how modules resolve globally. If `moduleResolution` isn't configured for modern bundlers, TypeScript forces Parcel to look in the wrong directory structures. \[[1](https://github.com/parcel-bundler/parcel/issues/1904), [2](https://oneuptime.com/blog/post/2026-01-24-typescript-cannot-find-module/view)]
+
+Open your `tsconfig.json` file and make sure your **`moduleResolution`** setting is updated to **`bundler`** or **`NodeNext`**: \[[1](https://github.com/parcel-bundler/parcel/issues/1904)]
+
+json
+
+```
+{
+  "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "bundler", /* 👈 Tells TS to let your bundler (Parcel) handle node_modules */
+    "jsx": "react-jsx"
+  }
+}
+```
+
+Use code with caution.
+
+### 💡 Quick Test to Confirm
+
+Run `ls node_modules/react` in your project terminal. If the terminal screams that the directory doesn't exist, you are simply running your Parcel terminal commands from the wrong parent directory level! \[[1](https://www.reddit.com/r/react/comments/1eyi8h2/i%5Fcant%5Fstart%5Freact%5Fin%5Fvisual%5Fcode%5Fstudio%5Fcant/), [2](https://oneuptime.com/blog/post/2026-01-24-typescript-cannot-find-module/view)]
+
+Which folder directory is your `index.html` located in right now, and what **exact terminal command** are you running to start Parcel?
+
+- [link](https://github.com/parcel-bundler/parcel/issues/1904)\
+  My tsconfig.json somehow causes "Error: Cannot find module 'react'" · Issue #1904 · parcel-bundler/parcel\
+  Aug 16, 2018 — You might get an error message like "Cannot find module 'react'" in the browser console if you're having trouble importing React f...\
+  GitHub
+- [link](https://www.reddit.com/r/react/comments/1eyi8h2/i%5Fcant%5Fstart%5Freact%5Fin%5Fvisual%5Fcode%5Fstudio%5Fcant/)\
+  I can't start REACT in Visual Code Studio - "Can't find package.json"\
+  Aug 22, 2024 — If you're getting an error that npm can't find package.json when trying to start React with \`npm start\`, you can try these steps: ...\
+  Reddit
+- [link](https://oneuptime.com/blog/post/2026-01-24-typescript-cannot-find-module/view)\
+  How to Fix 'Cannot Find Module' Declaration Errors\
+  Jan 24, 2026 — Is it installed? npm install package-name. Has built-in types? Check moduleResolution. @types available? npm install @types/packag...\
+  OneUptime
+
+Show all
+
+## You said: what the hell? i commented import { StrictMode } from 'react';, it's now reference error. and i uncommented it. it now works! i did nothing.
+
+You just ran directly into a classic **Parcel Cache Corruption glitch**! You actually _did_ do something by editing that file: you forced Parcel to completely re-parse the import statement, which cleared out a corrupted cache entry.
+
+Here is exactly what went on behind the scenes to cause that chaotic behavior:
+
+### Why commenting it out broke it (The Reference Error)
+
+When you commented out `import { StrictMode }`, you removed the definition for `StrictMode`. However, your code was still trying to use lower down in the file. JavaScript instantly threw a `ReferenceError: StrictMode is not defined` because it was trying to render a tag that no longer existed in memory.
+
+### Why uncommenting it magically "fixed" everything
+
+When you uncommented the line and hit save, two things happened at the exact same moment:
+
+1. **File Watcher Trigger:** Parcel noticed the file timestamp changed and forced a brand-new compilation pass for that specific file.
+2. **Cache Busting:** Re-writing the import statement forced Parcel to throw out its old, broken cached version of your `node_modules` map and re-look for `'react'` from scratch.
+
+Suddenly, it found React perfectly, and the `Cannot find module 'react'` error vanished. \[[1](https://github.com/parcel-bundler/parcel/issues/1904)]
+
+### The Takeaway
+
+Your project files, types, and paths are completely correct. Parcel's internal `.parcel-cache` directory simply got stuck on an old snapshot of your folder structure while you were rearranging code and configurations earlier.
+
+If this weird behavior happens again, you don't have to fiddle with your code to fix it. Just stop your terminal server and run this command to blow away the broken cache manually:
+
+bash
+
+```
+rm -rf .parcel-cache dist && npx parcel index.html
+```
+
+Use code with caution.
+
+Now that the cache is clear and your imports are working smoothly, are your console logs finally back to printing **exactly twice** on load like you wanted, or is the app behaving itself with a single run?
+
+- [link](https://github.com/parcel-bundler/parcel/issues/1904)\
+  My tsconfig.json somehow causes "Error: Cannot find module 'react'" · Issue #1904 · parcel-bundler/parcel\
+  Aug 16, 2018 — 🐛 bug report Previously I have used React with Parcel without any problems. But for some reason a new, small project isn't workin...\
+  \
+  \
+  GitHub
+
+## You said: well, how helpful is strictmode. now i see console log "run" twice. a bit weird, lol.
+
+It definitely looks and feels weird at first! Seeing your logs duplicate can make you feel like your app is broken, but it is actually the best insurance policy you have against shipping slow, buggy code to production.
+
+React Strict Mode is incredibly helpful because it exposes severe bugs that are otherwise invisible until real users start clicking around your site. Here is exactly why that weird double-log is worth keeping: \[[1](https://www.upgrad.com/blog/react-strict-mode/), [2](https://dev.to/codeofrelevancy/what-is-strict-mode-in-react-3p5b)]
+
+### 1. It Kills Memory Leaks
+
+If you set up a global event listener, a WebSocket, or a `setInterval` timer in your `useEffect`, it works fine the first time. But what happens if the user leaves the page and comes back?
+
+- **Without Strict Mode:** You might not notice that every visit creates a _new_ listener, slowly draining the user's phone battery and crashing their browser.
+- **With Strict Mode:** Because it mounts, unmounts, and remounts instantly, a broken effect will immediately spawn **two active listeners** on page load. You will catch the bug in 5 seconds instead of 5 weeks. \[[1](https://www.upgrad.com/blog/react-strict-mode/)]
+
+### 2. It Prepares You for Future React Features \[[1](https://www.upgrad.com/blog/react-strict-mode/)]
+
+The React team is actively building features like **Concurrent Rendering** and **Server-Side Suspense**. In future versions of React, components will routinely unmount and remount in the background to preserve performance or swap layouts seamlessly. Strict Mode guarantees your current code is resilient enough to handle these upgrades without rewriting everything later. \[[1](https://refine.dev/blog/react-strict-mode-in-react-18/)]
+
+### 3. It Catches "Impure" Renders
+
+If you do something illegal inside your component body—like mutating a global variable or modifying a state object directly—the double-run will cause your UI to glitch or display completely different values on the second pass. It forces you to write pure, predictable functions. \[[1](https://www.scaler.com/topics/react/react-strict-mode/), [2](https://refine.dev/blog/react-strict-mode-in-react-18/)]
+
+***
+
+### Pro-Tip: How to Clean Up Your Console
+
+If the double `console.log('run')` is driving you crazy while debugging layout changes, you can filter your browser console to clean things up without turning Strict Mode off:
+
+1. Open your Browser DevTools Console.
+
+2. In the Filter box, type `-react` or look for the "Create Component Tree" source tags.
+
+3. Alternatively, add a tiny bit of context to your logs so you know _why_ it's firing:\
+   javascript
+
+<!---->
+
+```
+useEffect(() => {
+  console.log("🚀 Component Mounted / Updated");
+  return () => console.log("🧹 Component Cleaned Up");
+}, []);
+```
+
+Use code with caution.\
+\[[1](https://www.linkedin.com/posts/hrithikagarwal%5Freact-strict-mode-why-does-my-component-activity-7372523746827436032-t-o4)]
+
+Now that you can see the lifecycle firing completely in order (`🚀` → `🧹` → `🚀`), does the structure of how your component mounts and unmounts make a bit more sense?
+
+- [link](https://www.upgrad.com/blog/react-strict-mode/)\
+  React Strict Mode: Key Benefits and How to Use It Right\
+  Aug 29, 2025 — It's especially useful when starting a project with modern React practices in mind. However, be aware that Strict Mode can cause e...\
+  \
+  \
+  upGrad
+- [link](https://dev.to/codeofrelevancy/what-is-strict-mode-in-react-3p5b)\
+  What is Strict Mode in React?\
+  Mar 24, 2023 — Strict mode can help you catch subtle bugs Sometimes bugs in React ( react, javascript ) applications can be difficult to track do...\
+  \
+  \
+  DEV Community
+- [link](https://www.upgrad.com/blog/react-strict-mode/)\
+  React Strict Mode: Key Benefits and How to Use It Right\
+  Aug 29, 2025 — Yes, React Strict Mode helps expose memory leaks by simulating component mount and unmount cycles more than once. This repeated mo...\
+  \
+  \
+  upGrad
+
+Show all
+
+## You said: how to import a collocated json file of dev or prod flag
+
+To import a collocated JSON file containing your environment configurations, you can take advantage of **Parcel's native JSON support** and JavaScript's **conditional logic**.
+
+Because Parcel automatically parses JSON files into standard JavaScript objects, you don't need any special loaders or plugins. \[[1](https://webpack.js.org/migrate/3/)]
+
+Here is the cleanest way to set this up right next to your component.
+
+### 1. Create Your Collocated JSON File
+
+Create a file named `config.json` in the exact same folder as your `App.tsx` or component file: \[[1](https://ajimbong.medium.com/a-simple-guide-to-configuring-express-applications-4ccb50a088d9)]
+
+json
+
+```
+{
+  "development": {
+    "apiUrl": "http://localhost:4000",
+    "enableStrictLogs": true
+  },
+  "production": {
+    "apiUrl": "https://productionapp.com",
+    "enableStrictLogs": false
+  }
+}
+```
+
+Use code with caution.
+
+### 2. Import and Select the Environment Dynamic Flag
+
+Inside your component file, import the JSON file directly. Then, use Parcel’s built-in `process.env.NODE_ENV` variable as a dynamic key to pick the correct configuration: \[[1](https://www.reddit.com/r/nextjs/comments/rpxpli/correct%5Fway%5Fto%5Fimport%5Fa%5Fstatic%5Fjson%5Ffile%5Fpublic/)]
+
+tsx
+
+```
+import { useEffect } from 'react';
+// 1. Import the collocated JSON file normally
+import envConfig from './config.json';
+
+// 2. Safely determine the environment string ('development' or 'production')
+const currentEnv = process.env.NODE_ENV === 'production' ? 'production' : 'development';
+
+// 3. Extract the active configuration block
+const config = envConfig[currentEnv];
+
+export function App() {
+  useEffect(() => {
+    // Now you can safely use your environment-specific flags!
+    console.log(`[${currentEnv.toUpperCase()}] App API URL is:`, config.apiUrl);
+  }, []);
+
+  return (
+    <div>
+      <h1>Environment: {currentEnv}</h1>
+    </div>
+  );
+}
+```
+
+Use code with caution.
+
+***
+
+### Why this works perfectly in Parcel
+
+- **Automatic Dead-Code Elimination:** When you run `parcel build` for production, Parcel notices that `process.env.NODE_ENV` evaluates strictly to `"production"`. It will automatically strip out the `"development"` block of the JSON entirely from your final bundled file to keep it tiny. \[[1](https://developers.cloudflare.com/workers/wrangler/bundling/)]
+- **Type Safety:** If you are using TypeScript, it will automatically look at `config.json` and provide full autocomplete for `config.apiUrl` and `config.enableStrictLogs` right inside your editor.
+
+If you want, you can use these settings to dynamically toggle your component too! Would you like to see how to wire this JSON configuration directly into your **Strict Mode layout wrapper**?
+
+- [link](https://webpack.js.org/migrate/3/)\
+  To v2 or v3 from v1\
+  json-loader is not required anymore When no loader has been configured for a JSON file, webpack will automatically try to load the...\
+  \
+  \
+  webpack
+- [link](https://ajimbong.medium.com/a-simple-guide-to-configuring-express-applications-4ccb50a088d9)\
+  A simple guide for configuring Express applications | by AJIM | Medium\
+  Feb 11, 2023 — Setup Then create a folder called config in that same directory. This is where all your config files will be saved. All the common...\
+  \
+  \
+  Medium
+- [link](https://www.reddit.com/r/nextjs/comments/rpxpli/correct%5Fway%5Fto%5Fimport%5Fa%5Fstatic%5Fjson%5Ffile%5Fpublic/)\
+  Correct way to import a static json file (public folder or api folder) : r/nextjs\
+  Dec 27, 2021 — Put it anywhere you want and just import it into your component or page file. Then it's accessible anywhere in the file. No need f...\
+  \
+  Reddit
+
+Show all
+
+## You said: why can browser console show the second log slightly dimmer
+
+The reason the second log appears slightly dimmer in your browser console is because **React intentionally hacks the browser's console logging methods to visually de-emphasize the second strict mode execution.** \[[1](https://github.com/reactwg/react-18/discussions/96)]
+
+When React Strict Mode runs your component functions twice, it wants you to see the log to spot bugs, but it doesn't want the secondary log to distract you from the true application flow.
+
+Here is exactly how and why this happens:
+
+### 1. The Console Override Mechanism
+
+When `StrictMode` is active, React temporarily intercepts the global `console.log` (along with `console.info`, `console.warn`, and `console.error`) during the second rendering pass.
+
+- On the **first run**, your code uses the browser's native, normal `console.log`.
+- On the **second run**, React wraps the log, applying a CSS opacity style or a muted color string (like `%c`) behind the scenes before forwarding it to the browser. This forces the browser to render the text in a light gray or semi-transparent color. \[[1](https://github.com/reactwg/react-18/discussions/96)]
+
+### 2. The Browser's Native Feature Interaction
+
+Depending on which browser you are using, you might also be seeing a native developer tools feature called **Console Grouping / Deduplication**:
+
+- When a console log outputs the _exact same text_ from the _exact same file and line number_ in immediate succession, browsers like Chrome, Edge, and Safari try to save space.
+- Instead of creating a brand new line, they often bundle them together, incrementing a number badge next to the text and dimming the previous log line to indicate it is a repeated, cached trace.
+
+### How to Check It
+
+You can prove React is doing this by looking at your log output. If you expand the log details or right-click it, you will notice that the second log is marked with a subtle gray styling tag or grouped directly underneath the first one.
+
+Are your double logs appearing stacked on top of each other, or are they showing up as a single log line with a small number counter next to it?
+
+- [link](https://github.com/reactwg/react-18/discussions/96)\
+  Update to React Strict Mode Double Rendering · reactwg react-18 · Discussion #96\
+  Sep 8, 2021 — In Strict Mode, React double invokes render methods in order to flush out potential side effects. During the second render, React ...\
+  \
+  \
+  GitHub
+- [link](https://github.com/reactwg/react-18/discussions/96)\
+  Update to React Strict Mode Double Rendering · reactwg react-18 · Discussion #96\
+  Sep 8, 2021 — Going forward, React will no longer suppress logs during the second render by default. If you have React DevTools > 4.18. 0 instal...\
+  \
+  \
+  GitHub
+
+# how to eliminate Comments are not permitted in JSON.(521) in vscode
+
+To eliminate the **"Comments are not permitted in JSON.(521)"** error in Visual Studio Code, you must <mark style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 500; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">change the file's language mode to <strong style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 600; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">JSON with Comments (JSONC)</strong></mark>. Standard JSON syntax strictly prohibits comments, but VS Code includes a built-in `jsonc` mode to bypass this restriction. \[[1](https://stackoverflow.com/questions/47834825/in-vs-code-disable-error-comments-are-not-permitted-in-json), [2](https://www.reddit.com/r/vscode/comments/pt0a8j/how%5Fcan%5Fi%5Fenable%5Fjson%5Fwith%5Fcomments/), [3](https://formatarc.com/en/blog/json-comments/), [4](https://www.reddit.com/r/learnjavascript/comments/18hqjfr/json%5Fdoes%5Fnot%5Fsupport%5Fhaving%5Fcomments%5Fin%5Fit%5Fthen/)]
+
+You can apply this fix using any of the methods outlined below.
+
+### Method 1: Fix for the Current File Only
+
+Use this method if you only want to clear the error from the active tab without affecting other JSON files. \[[1](https://stackoverflow.com/questions/47834825/in-vs-code-disable-error-comments-are-not-permitted-in-json)]
+
+1. Look at the bottom-right corner of the VS Code status bar and **click on the word JSON**.
+2. A dropdown command menu will open at the top of your screen.
+3. Type **`jsonc`** into the search bar.
+4. Select **JSON with Comments** from the list. \[[1](https://zaiste.net/editors/vscode/howtos/enable-json-comments/), [2](https://stackoverflow.com/questions/47834825/in-vs-code-disable-error-comments-are-not-permitted-in-json), [3](https://www.reddit.com/r/vscode/comments/pt0a8j/how%5Fcan%5Fi%5Fenable%5Fjson%5Fwith%5Fcomments/)]
+
+### Method 2: Fix Globally for All JSON Files
+
+Use this method if you want VS Code to permanently allow comments in every single `.json` file you open. \[[1](https://www.eliostruyf.com/ignoring-json-comment-errors-spfx-solutions/)]
+
+1. Open your global settings file by pressing `Ctrl + Shift + P` (Windows/Linux) or `Cmd + Shift + P` (Mac).
+
+2. Search for and select **Preferences: Open User Settings (JSON)**.
+
+3. Paste the following configuration inside the root of your JSON object:\
+   json
+
+<!---->
+
+```
+"files.associations": {
+  "*.json": "jsonc"
+}
+```
+
+Use code with caution.
+4\. Save the file. \[[1](https://stackoverflow.com/questions/69379869/how-to-set-json-with-comment-in-vscode)]
+
+### Method 3: Fix for Specific Project Folders or Files
+
+If you are worried that global activation might accidentally hide errors in strict production files (like `package.json`), you can isolate the rule to specific configuration names or directories. \[[1](https://www.eliostruyf.com/ignoring-json-comment-errors-spfx-solutions/), [2](https://builtin.com/articles/json-with-comments)]
+
+1. Open your global **User Settings (JSON)** file as described in Method 2.
+2. Use targeting rules inside your `"files.associations"` object:
+
+- **To target only specific filenames** (e.g., app manifests or custom scripts):\
+  json
+
+<!---->
+
+```
+"files.associations": {
+  "*.manifest.json": "jsonc"
+}
+```
+
+Use code with caution.
+
+- **To target only a specific workspace folder** (like a `.devcontainer` or snippet directory):\
+  json
+
+<!---->
+
+```
+"files.associations": {
+  "**/.devcontainer/*.json": "jsonc"
+}
+```
+
+Use code with caution.\
+\[[1](https://github.com/microsoft/vscode/issues/215446), [2](https://stackoverflow.com/questions/69379869/how-to-set-json-with-comment-in-vscode), [3](https://www.eliostruyf.com/ignoring-json-comment-errors-spfx-solutions/), [4](https://builtin.com/articles/json-with-comments), [5](https://github.com/microsoft/vscode/issues/139599)]
+
+### Method 4: Fix via the Graphical UI
+
+If you prefer not to edit configuration text blocks manually, you can use the built-in settings panel. \[[1](https://tahoeninja.blog/posts/getting-rid-of-json-validation-errors-on-comments/)]
+
+1. Open the UI settings panel by pressing `Ctrl + ,` (Windows/Linux) or `Cmd + ,` (Mac).
+2. Type **`Associations`** into the settings search bar.
+3. Locate the **Files: Associations** section and click the **Add Item** button.
+4. In the **Item** column, type `*.json`.
+5. In the **Value** column, type `jsonc`.
+6. Click **OK** to apply the changes. \[[1](https://tahoeninja.blog/posts/getting-rid-of-json-validation-errors-on-comments/), [2](https://glitteringkatie.com/posts/katies-vscode-cheatsheet), [3](https://tms-outsource.com/blog/posts/how-to-open-settings-json-in-vscode/), [4](https://superuser.com/questions/1228596/visual-studio-code-disable-sidebar-code-slider-thing)]
+
+If you'd like to tailor this setup further, feel free to tell me:
+
+- What **specific filename** or project folder is causing this error?
+- Do you need these comments to work inside a **production package** or a **personal configuration** tool?
+
+I can help you build the exact workspace rule to keep your environments clean.
+
+- [link](https://stackoverflow.com/questions/47834825/in-vs-code-disable-error-comments-are-not-permitted-in-json)\
+  In VS Code, disable error "Comments are not permitted in JSON"\
+  Dec 15, 2017 — 4 Answers. Sorted by: 483. Follow these steps: Click on the letters JSON in the bottom right corner. (A drop-down will appear to "\
+  Stack Overflow
+- [link](https://github.com/microsoft/vscode/issues/215446)\
+  Silence the "Comments are not permitted in JSON." error for ...\
+  Jun 13, 2024 — turbotimon commented. turbotimon. on May 7, 2025. Last edited by turbotimon. More actions. I can confirm this with Version: 1.99.1...\
+  GitHub
+- [link](https://www.reddit.com/r/learnjavascript/comments/18hqjfr/json%5Fdoes%5Fnot%5Fsupport%5Fhaving%5Fcomments%5Fin%5Fit%5Fthen/)\
+  JSON does not support having // comments in it. Then ... - Reddit\
+  Dec 13, 2023 — How is that possible? Thanks. Upvote 4 Downvote 7 Go to comments Share. Comments Section. senocular. • 3y ago. VSCode has its own ...\
+  Reddit·r/learnjavascript
+
+Show all
+
+## You said: will it cause problems in ci
+
+<mark style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 500; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><span style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 500; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">Yes, changing this setting in VS Code </span><strong style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 600; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">can cause hidden failures in your CI (Continuous Integration) pipeline.</strong></mark> \[[1](https://www.sciencedirect.com/topics/computer-science/continuous-integration)]
+
+VS Code's `jsonc` mode only hides the error _inside your local editor_. It does not change how external tools read the file.
+
+### Why CI Pipelines Break
+
+Most standard build tools, servers, and runtimes use strict JSON parsers. If a file containing comments passes through your CI pipeline, the pipeline will likely crash.
+
+Common environments that will fail include:
+
+- **Node.js / npm**: Running `npm install` will crash if your `package.json` contains comments.
+- **Python**: Standard `json.load()` scripts will throw a `JSONDecodeError`.
+- **GitHub Actions / GitLab CI**: Built-in YAML or JSON linters will flag the file and fail the build.
+
+### Safe Files vs. Unsafe Files
+
+Whether comments are safe depends entirely on what tool reads the file:
+
+- **🟢 Safe for CI:** Configurations explicitly designed for Microsoft/VS Code tools (e.g., `.vscode/settings.json`, `tsconfig.json`, `jsconfig.json`). These ecosystems natively support comments.
+- **🔴 Unsafe for CI:** Standard ecosystem files (e.g., `package.json`, `composer.json`, `turbo.json`, or any custom data payloads processed by your backend API).
+
+### How to Fix It Safely for CI
+
+If you absolutely need comments in a file that goes through CI, choose one of these three solutions:
+
+1. **Switch to a Comment-Friendly Format:** Rename the file from `.json` to `.json5` or `.yaml`. Both formats naturally support comments, and most modern CI tools parse them natively.
+2. **Use Native JSON Strippers in Your Build:** If your CI pipeline executes a custom build step, configure it to strip comments before processing. For example, in a Node.js pipeline, use packages like `strip-json-comments` or `jsonc-parser`.
+3. **Use Configuration Tools That Support It:** For TypeScript projects, ensure your CI tool leverages `tsconfig.json` parsers rather than strict standard JSON engines.
+
+To help you prevent a pipeline failure, let me know:
+
+- What **exact file** (e.g., `package.json`, a custom data file) has the comments?
+
+- What **language or build tool** (Node, Python, Docker, etc.) processes this file in your CI?
+
+- [link](https://www.sciencedirect.com/topics/computer-science/continuous-integration)\
+  Continuous Integration - an overview
+
+2.1. 1 Continuous Integration (CI)\
+\
+\
+ScienceDirect.com
+
+# 
