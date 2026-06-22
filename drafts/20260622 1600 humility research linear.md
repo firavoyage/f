@@ -2087,4 +2087,10 @@ Possible next steps:
 3. Ask me how to structure a workflow in Linear.
 4. Give me a real example, and I’ll handle it.
 
-# 
+# . backlog
+
+**Backlog issues**
+
+The backlog is a place for new issues and ideas that haven’t been prioritized yet.When your team is ready to work on these issues, you can move them out of the backlog by updating their status or adding them to a Cycle.
+
+
