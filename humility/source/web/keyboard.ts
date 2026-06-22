@@ -65,6 +65,8 @@ export function bind(shortcut: string, action: (event: KeyboardEvent) => void): 
 }
 
 export function unbind(shortcutid: number) {
+  console.log(bindings)
+// 
   const shortcut = bindings[shortcutid]
   shortcuts[shortcut].delete(shortcutid)
   actions.delete(shortcutid)
@@ -72,21 +74,4 @@ export function unbind(shortcutid: number) {
   if (shortcuts[shortcut].size == 0) {
     mousetrap.unbind(shortcut)
   }
-}
-
-export function use_bind(shortcut: string, action: (event: KeyboardEvent) => void): number {
-  // todo
-  shortcut = normalize(shortcut)
-
-  actions.set(shortcutid, action)
-  shortcuts[shortcut] = shortcuts[shortcut] || new Set()
-  shortcuts[shortcut].add(shortcutid)
-  bindings[shortcutid] = { shortcut }
-
-  // it will work whether it overrides or not
-  mousetrap.bind(shortcut, (event) => {
-    call(shortcut, event)
-  })
-
-  return shortcutid++
 }
