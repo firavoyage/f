@@ -40,7 +40,7 @@ follow these:
   - always function statement, only arrow function for props
   - positional params if one param, mixed if only one params required, object params otherwise
   - always type, never interface
-  - avoid typescriptism, only define types on function params and return
+  - avoid typescriptism, only define types on functions and global variables in your own code
 - comment:
   - self explanatory over commenting
   - lowercase for what and why, title case for where
