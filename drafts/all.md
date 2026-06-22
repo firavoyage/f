@@ -727,6 +727,7 @@ humility:
 - research design animation frame by frame obs mpv vlc
 - research gnome hig adwaita toolkit
 - research openai api
+- research vllm alternatives <!-- menci: feed wandering cats -->
 
 legacy:
 
