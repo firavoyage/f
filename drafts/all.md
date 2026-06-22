@@ -227,6 +227,7 @@ frontend: <!-- web -->
 - tsconfig extend parent
 - tsconfig baseurl
 - react custom jsx compiler component override
+- css transition animation react loading state
 
 backend:
 
