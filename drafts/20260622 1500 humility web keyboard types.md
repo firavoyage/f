@@ -1,3 +1,35 @@
+<!-- the auto pair does not feel right. i guess you should Set<...> when i "set" -->
+
+# . fix
+
+p
+
+```ts
+bindings[shortcutid] = { shortcut }
+```
+
+c
+
+```ts
+bindings[shortcutid] = shortcut
+```
+
+well, i should type it.
+
+p
+
+```ts
+let bindings = {}
+```
+
+c
+
+```ts
+let bindings: Record<number, string> = {}
+```
+
+ts is great!
+
 # cleanup interval in react useeffect and vue
 
 To clean up an interval and prevent memory leaks, you must explicitly clear it using **`clearInterval()`** when the component unmounts or before the effect re-runs. \[[1](https://stackoverflow.com/questions/76700653/is-cleanup-clearinterval-really-needed-in-this-useeffect-scenario), [2](https://www.youtube.com/watch?v=KnKXHcsde5A)]

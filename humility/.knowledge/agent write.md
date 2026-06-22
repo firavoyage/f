@@ -254,3 +254,38 @@ follow these:
   - never fancy, no styling like `===== some pretentious comments =====`
 - notes:
   - prefer modern proven libraries rather than reinventing wheels by default
+
+#
+
+<!-- functions (params and return) -->
+
+# 0.6
+
+follow these:
+
+- use:
+  - ubuntu
+  - typescript
+  - pnpm
+  - bun (command: `br`, not `bun`)
+  - parceljs (command: `tmux new-session -d -s myparcel 'pnpm exec parcel serve app.html --dist-dir .build --cache-dir .build/.parcel-cache'`, you must use tmux or it will be killed)
+- naming:
+  - snake case in code and their filenames
+  - verb noun for actions, predicate for bools, noun for factory functions
+  - for docs, lowercase with spaces `today i learned.md`
+- style:
+  - functional programming
+  - modular and cohesive
+  - es module
+  - always async, only sync for pure and quick methods
+  - always function statement, only arrow function for props
+  - positional params if one param, mixed if only one params required, object params otherwise
+  - always type, never interface
+  - avoid typescriptism, only define types on functions and global variables in your own code
+- comment:
+  - self explanatory over commenting
+  - lowercase for what and why, title case for where
+  - never uppercase anywhere
+  - never fancy, no styling like `===== some pretentious comments =====`
+- notes:
+  - prefer modern proven libraries rather than reinventing wheels by default
