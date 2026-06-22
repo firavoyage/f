@@ -228,6 +228,7 @@ frontend: <!-- web -->
 - tsconfig baseurl
 - react custom jsx compiler component override
 - css transition animation react loading state
+- routing history api auto correct typos link like hover info
 
 backend:
 
