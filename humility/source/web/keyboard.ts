@@ -73,3 +73,19 @@ export function unbind(shortcutid: number) {
     mousetrap.unbind(shortcut)
   }
 }
+
+export function use_bind(shortcut: string, action: (event: KeyboardEvent) => void): number {
+  shortcut = normalize(shortcut)
+
+  actions.set(shortcutid, action)
+  shortcuts[shortcut] = shortcuts[shortcut] || new Set()
+  shortcuts[shortcut].add(shortcutid)
+  bindings[shortcutid] = { shortcut }
+
+  // it will work whether it overrides or not
+  mousetrap.bind(shortcut, (event) => {
+    call(shortcut, event)
+  })
+
+  return shortcutid++
+}
