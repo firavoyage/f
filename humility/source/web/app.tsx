@@ -9,6 +9,15 @@ export function App() {
   useEffect(()=>{
     sync_theme('system')
 
+    bind('ctrl+p', (e)=>{
+      e?.preventDefault()
+      console.log(e)
+      console.log('search recent items')
+    })
+    bind('ctrl+shift+p', (e)=>{
+      console.log(e)
+      console.log('search commands')
+    })
     bind('ctrl+?', (e)=>{
       console.log(e)
       console.log('open shortcuts help')
