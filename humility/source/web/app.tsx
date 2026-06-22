@@ -10,11 +10,12 @@ export function App() {
     sync_theme('system')
 
     bind('ctrl+p', (e)=>{
-      e?.preventDefault()
+      e.preventDefault() // print
       console.log(e)
       console.log('search recent items')
     })
     bind('ctrl+shift+p', (e)=>{
+      e.preventDefault() // browser console command panel?
       console.log(e)
       console.log('search commands')
     })
