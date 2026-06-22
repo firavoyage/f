@@ -727,7 +727,9 @@ If you want to dive deeper into optimizing this interaction, let me know if you 
 
 Show all
 
-# . config
+# . config (d)
+
+<!-- read offical guide instead -->
 
 ```yaml
 version: 1.1.5
@@ -969,6 +971,1229 @@ CONFIG_BYPASS_VALIDATION=true
 `CONFIG_BYPASS_VALIDATION=true` causes the server to skip validation and use default configuration. Always fix the validation errors instead.
 
 </Callout>
+
+# . setup
+
+```sh
+ ~ % cd Documents/.storage
+ ~/Documents/.storage % cd librechat
+ ~/Documents/.storage/librechat
+ % open .
+ ~/Documents/.storage/librechat
+ % touch librechat.yaml
+ ~/Documents/.storage/librechat
+ % open librechat.yaml
+ ~/Documents/.storage/librechat
+ % docker compose down && docker compose up -d
+
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+[+] down 6/6
+ ✔ Container LibreChat        Removed                                                                                             0.6s
+ ✔ Container chat-meilisearch Removed                                                                                             0.4s
+ ✔ Container chat-mongodb     Removed                                                                                             0.2s
+ ✔ Container rag_api          Removed                                                                                             2.1s
+ ✔ Container vectordb         Removed                                                                                             0.2s
+ ✔ Network librechat_default  Removed                                                                                             0.1s
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+[+] up 6/6
+ ✔ Network librechat_default  Created                                                                                             0.0s
+ ✔ Container vectordb         Started                                                                                             0.3s
+ ✔ Container chat-mongodb     Started                                                                                             0.3s
+ ✔ Container chat-meilisearch Started                                                                                             0.3s
+ ✔ Container rag_api          Started                                                                                             0.4s
+ ✔ Container LibreChat        Started                                                                                             0.5s
+ ~/Documents/.storage/librechat
+ % docker compose down && docker compose up -d
+
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+[+] down 6/6
+ ✔ Container LibreChat        Removed                                                                                             0.3s
+ ✔ Container chat-meilisearch Removed                                                                                             0.1s
+ ✔ Container rag_api          Removed                                                                                             0.7s
+ ✔ Container chat-mongodb     Removed                                                                                             0.1s
+ ✔ Container vectordb         Removed                                                                                             0.1s
+ ✔ Network librechat_default  Removed                                                                                             0.1s
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+[+] up 6/6
+ ✔ Network librechat_default  Created                                                                                             0.0s
+ ✔ Container chat-mongodb     Started                                                                                             0.3s
+ ✔ Container chat-meilisearch Started                                                                                             0.2s
+ ✔ Container vectordb         Started                                                                                             0.3s
+ ✔ Container rag_api          Started                                                                                             0.3s
+ ✔ Container LibreChat        Started                                                                                             0.4s
+ ~/Documents/.storage/librechat
+ % docker compose down && docker compose up -d
+
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+[+] down 6/6
+ ✔ Container chat-meilisearch Removed                                                                                             0.1s
+ ✔ Container LibreChat        Removed                                                                                             0.3s
+ ✔ Container rag_api          Removed                                                                                             0.7s
+ ✔ Container chat-mongodb     Removed                                                                                             0.1s
+ ✔ Container vectordb         Removed                                                                                             0.1s
+ ✔ Network librechat_default  Removed                                                                                             0.1s
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+[+] up 6/6
+ ✔ Network librechat_default  Created                                                                                             0.0s
+ ✔ Container vectordb         Started                                                                                             0.3s
+ ✔ Container chat-meilisearch Started                                                                                             0.3s
+ ✔ Container chat-mongodb     Started                                                                                             0.3s
+ ✔ Container rag_api          Started                                                                                             0.3s
+ ✔ Container LibreChat        Started                                                                                             0.4s
+ ~/Documents/.storage/librechat
+ % docker compose down && docker compose up -d
+
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+[+] down 6/6
+ ✔ Container chat-meilisearch Removed                                                                                             0.2s
+ ✔ Container LibreChat        Removed                                                                                             0.3s
+ ✔ Container chat-mongodb     Removed                                                                                             0.1s
+ ✔ Container rag_api          Removed                                                                                             0.8s
+ ✔ Container vectordb         Removed                                                                                             0.1s
+ ✔ Network librechat_default  Removed                                                                                             0.1s
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+[+] up 6/6
+ ✔ Network librechat_default  Created                                                                                             0.0s
+ ✔ Container vectordb         Started                                                                                             0.3s
+ ✔ Container chat-mongodb     Started                                                                                             0.3s
+ ✔ Container chat-meilisearch Started                                                                                             0.2s
+ ✔ Container rag_api          Started                                                                                             0.3s
+ ✔ Container LibreChat        Started                                                                                             0.4s
+ ~/Documents/.storage/librechat
+ % docker compose down && docker compose up -d
+
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+[+] down 6/6
+ ✔ Container chat-meilisearch Removed                                                                                             0.1s
+ ✔ Container LibreChat        Removed                                                                                             0.3s
+ ✔ Container chat-mongodb     Removed                                                                                             0.1s
+ ✔ Container rag_api          Removed                                                                                             0.7s
+ ✔ Container vectordb         Removed                                                                                             0.1s
+ ✔ Network librechat_default  Removed                                                                                             0.1s
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+[+] up 6/6
+ ✔ Network librechat_default  Created                                                                                             0.0s
+ ✔ Container chat-mongodb     Started                                                                                             0.3s
+ ✔ Container vectordb         Started                                                                                             0.3s
+ ✔ Container chat-meilisearch Started                                                                                             0.3s
+ ✔ Container rag_api          Started                                                                                             0.3s
+ ✔ Container LibreChat        Started                                                                                             0.4s
+ ~/Documents/.storage/librechat
+ % docker compose down && docker compose up -d
+
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+[+] down 6/6
+ ✔ Container LibreChat        Removed                                                                                             0.3s
+ ✔ Container chat-meilisearch Removed                                                                                             0.1s
+ ✔ Container chat-mongodb     Removed                                                                                             0.1s
+ ✔ Container rag_api          Removed                                                                                             0.7s
+ ✔ Container vectordb         Removed                                                                                             0.1s
+ ✔ Network librechat_default  Removed                                                                                             0.1s
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+[+] up 6/6
+ ✔ Network librechat_default  Created                                                                                             0.0s
+ ✔ Container chat-meilisearch Started                                                                                             0.3s
+ ✔ Container vectordb         Started                                                                                             0.2s
+ ✔ Container chat-mongodb     Started                                                                                             0.3s
+ ✔ Container rag_api          Started                                                                                             0.3s
+ ✔ Container LibreChat        Started                                                                                             0.4s
+ ~/Documents/.storage/librechat
+ % cp docker-compose.override.yml.example docker-compose.override.yml
+ ~/Documents/.storage/librechat
+ % open docker-compose.override.yml
+ ~/Documents/.storage/librechat
+ % open docker-compose.override.yml
+ ~/Documents/.storage/librechat
+ % docker compose down && docker compose up -d
+
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+[+] down 6/6
+ ✔ Container LibreChat        Removed                                                                                             0.3s
+ ✔ Container chat-meilisearch Removed                                                                                             0.1s
+ ✔ Container chat-mongodb     Removed                                                                                             0.1s
+ ✔ Container rag_api          Removed                                                                                             0.7s
+ ✔ Container vectordb         Removed                                                                                             0.1s
+ ✔ Network librechat_default  Removed                                                                                             0.1s
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+[+] up 6/6
+ ✔ Network librechat_default  Created                                                                                             0.0s
+ ✔ Container chat-mongodb     Started                                                                                             0.3s
+ ✔ Container chat-meilisearch Started                                                                                             0.3s
+ ✔ Container vectordb         Started                                                                                             0.3s
+ ✔ Container rag_api          Started                                                                                             0.3s
+ ✔ Container LibreChat        Started                                                                                             0.4s
+```
+
+# how to setup librechat
+
+6:39 AM
+
+To set up **LibreChat** locally, the recommended and fastest method is <mark style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 500; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">using <strong style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 600; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">Docker Desktop</strong></mark>. This approach configures LibreChat along with its required database (MongoDB) and search engine (Meilisearch) in under five minutes. \[[1](https://www.librechat.ai/docs/quick%5Fstart/local%5Fsetup), [2](https://www.youtube.com/watch?v=naUHHqpyOo4\&t=3), [3](https://www.librechat.ai/docs)]
+
+### Prerequisites
+
+Before starting, ensure you have the following software installed on your computer: \[[1](https://www.tecmint.com/librechat-linux/)]
+
+- Docker Desktop (Keep it running in the background)
+- Git \[[1](https://www.librechat.ai/docs/quick%5Fstart/local%5Fsetup), [2](https://www.youtube.com/watch?v=naUHHqpyOo4\&t=3)]
+
+***
+
+### Step-by-Step Installation
+
+### 1. Clone the Repository \[[1](https://www.librechat.ai/docs/quick%5Fstart)]
+
+Open your terminal (macOS/Linux) or Command Prompt/PowerShell (Windows) and download the LibreChat source code: \[[1](https://github.com/fuegovic/Libre-Chat/blob/main/docs/install/mac%5Finstall.md), [2](https://www.librechat.ai/docs/quick%5Fstart/local%5Fsetup), [3](https://www.youtube.com/watch?v=naUHHqpyOo4\&t=3)]
+
+bash
+
+```
+git clone https://github.com/danny-avila/LibreChat.git
+cd LibreChat
+```
+
+Use code with caution.
+
+### 2. Create the Configuration File
+
+LibreChat uses an environment file (`.env`) to securely handle credentials and endpoints. Duplicate the provided template: \[[1](https://www.librechat.ai/docs/configuration/dotenv), [2](https://www.librechat.ai/docs/development/get%5Fstarted), [3](https://www.librechat.ai/docs/quick%5Fstart), [4](https://www.librechat.ai/docs/remote/huggingface), [5](https://www.librechat.ai/docs/quick%5Fstart/local%5Fsetup)]
+
+- **Linux/macOS:**\
+  bash
+
+<!---->
+
+```
+cp .env.example .env
+```
+
+Use code with caution.
+
+- **Windows (PowerShell):**\
+  powershell
+
+<!---->
+
+```
+cp .env.example .env
+```
+
+Use code with caution.
+
+### 3. Add Your API Keys \[[1](https://generativeai.pub/building-an-agentic-ai-workforce-with-librechat-220244b215d3)]
+
+Open the newly created `.env` file in any text editor (like VS Code or Notepad). Find the sections for the AI providers you want to use and add your keys: \[[1](https://www.youtube.com/watch?v=7pBmvksRHv8\&t=16), [2](https://laimis.medium.com/running-librechat-and-staying-current-with-new-ai-models-49b40e7879dd), [3](https://www.librechat.ai/docs/development/get%5Fstarted)]
+
+env
+
+```
+OPENAI_API_KEY=your_actual_openai_api_key_here
+ANTHROPIC_API_KEY=your_actual_anthropic_api_key_here
+```
+
+Use code with caution.
+
+_(You can also configure local models like Ollama or other endpoints later inside this file)._ \[[1](https://www.youtube.com/watch?v=d9ZV3-YkX-8\&t=54), [2](https://www.librechat.ai/docs)]
+
+### 4. Launch the App
+
+Run the following Docker command from your `LibreChat` directory to download the images and spin up the containers: \[[1](https://laimis.medium.com/running-librechat-and-staying-current-with-new-ai-models-49b40e7879dd), [2](https://www.librechat.ai/docs/quick%5Fstart/local%5Fsetup), [3](https://www.youtube.com/watch?v=7pBmvksRHv8\&t=16)]
+
+bash
+
+```
+docker compose up -d
+```
+
+Use code with caution.
+
+_Note: The initial setup will take a few minutes to download the required components. Subsequent startups will take seconds._ \[[1](https://www.youtube.com/watch?v=naUHHqpyOo4\&t=3)]
+
+### 5. Create Your Account
+
+1. Open your web browser and navigate to `http://localhost:3080`.
+2. Click **Sign Up** or **Register**.
+3. The **very first account** created on your local setup automatically receives Admin privileges. \[[1](https://www.librechat.ai/docs/local/docker), [2](https://www.youtube.com/watch?v=naUHHqpyOo4\&t=3)]
+
+***
+
+### Basic Management Commands
+
+Run these commands from inside your `LibreChat` project folder:
+
+- **Stop the application:** `docker compose down`
+- **Restart after updating `.env`:** `docker compose down && docker compose up -d`
+- **View error logs:** `docker compose logs api` \[[1](https://www.librechat.ai/docs/configuration), [2](https://www.librechat.ai/docs/configuration/librechat%5Fyaml), [3](https://laimis.medium.com/running-librechat-and-staying-current-with-new-ai-models-49b40e7879dd)]
+
+If you prefer following a visual, over-the-shoulder walkthrough of the local installation process, check out this guide:
+
+9m
+
+[Install LibreChat LocallyFahd MirzaYouTube · May 10, 2024](https://www.youtube.com/watch?v=7pBmvksRHv8\&t=16)
+
+If you want to customize your setup further, let me know if you would like to **integrate local models (like Ollama)**, set up **custom UI branding**, or deploy LibreChat to a **remote cloud server**.
+
+- [link](https://www.librechat.ai/docs/quick%5Fstart/local%5Fsetup)\
+  Local Setup Guide - LibreChat\
+  Step 1. Download the Project. Manual Download. Go to the Project Page: Visit https://github.com/danny-avila/LibreChat. Download th...\
+  LibreChat
+- [link](https://www.librechat.ai/docs/quick%5Fstart)\
+  Quick Start - LibreChat\
+  1Clone the repository. 2Copy .env.example to .env. 3Run docker compose up.\
+  LibreChat
+- [link](https://www.youtube.com/watch?v=7pBmvksRHv8\&t=16)\
+  Install LibreChat Locally\
+  This video will demonstrate how to install LibreChat locally and integrate it with an OpenAI API key. While LibreChat aims to offe...\
+  9m\
+  YouTube·Fahd Mirza
+
+Show all
+
+## You said: how to setup my models from openrouter
+
+6:40 AM
+
+To set up OpenRouter models in LibreChat, you need to add your API key and configure the model list in your files. \[[1](https://openrouter.ai/works-with-openrouter/librechat), [2](https://simplelocalize.io/blog/posts/introducing-openrouter/)]
+
+### 1. Add Your OpenRouter API Key \[[1](https://github.com/centminmod/nextjs-chatgpt-app/blob/main/docs/config-openrouter.md)]
+
+Open your `.env` file located in the main `LibreChat` directory. Add your OpenRouter API key to the bottom of the file:
+
+env
+
+```
+OPENEROUTER_API_KEY=your_openrouter_api_key_here
+```
+
+Use code with caution.
+
+### 2. Configure the Custom Endpoint \[[1](https://github.com/microsoft/vscode/issues/319968)]
+
+LibreChat requires a `librechat.yaml` file to safely pull and map third-party endpoints.
+
+1. Check your main `LibreChat` directory for a file named `librechat.yaml`. If it does not exist, create it.
+2. Open `librechat.yaml` in a text editor and add the following configuration:
+
+yaml
+
+```
+version: 1.1.5
+
+endpoints:
+  custom:
+    - name: "OpenRouter"
+      apiKey: "${OPENEROUTER_API_KEY}"
+      baseURL: "https://openrouter.ai"
+      models:
+        default: ["meta-llama/llama-3-70b-instruct", "mistralai/mixtral-8x7b-instruct"]
+        fetch: true
+      titleConvo: true
+      titleModel: "meta-llama/llama-3-70b-instruct"
+      summarize: true
+      summaryModel: "meta-llama/llama-3-70b-instruct"
+```
+
+Use code with caution.
+
+### 3. Update Your `.env` to Read the YAML File
+
+For LibreChat to read your new configuration file, ensure this line is active in your `.env` file:
+
+env
+
+```
+CONFIG_PATH=librechat.yaml
+```
+
+Use code with caution.
+
+### 4. Restart LibreChat
+
+Apply the new settings by restarting your Docker containers. Run these commands in your terminal:
+
+bash
+
+```
+docker compose down
+docker compose up -d
+```
+
+Use code with caution.
+
+### How the Setup Works
+
+- **Automatic Fetching**: Setting `fetch: true` allows LibreChat to automatically pull your available OpenRouter models.
+- **Model Formats**: When choosing models in the UI dropdown, they will appear exactly as they are named on OpenRouter (e.g., `openai/gpt-4o` or `anthropic/claude-3-opus`). \[[1](https://www.librechat.ai/docs/configuration/librechat%5Fyaml/ai%5Fendpoints/openrouter), [2](https://www.typingmind.com/guide/openrouter/magnum-v4-72b)]
+
+Would you like to know how to **hide specific models** you do not use, or do you need help **setting up spend limits** for your users?
+
+- [link](https://openrouter.ai/works-with-openrouter/librechat)\
+  LibreChat with OpenRouter\
+  Getting Started with OpenRouter for LibreChat Create an account at openrouter.ai Add credits and generate an API key at openrouter...\
+  \
+  \
+  OpenRouter
+- [link](https://simplelocalize.io/blog/posts/introducing-openrouter/)\
+  Introducing: OpenRouter for auto-translation\
+  Configuration Enter API Key: Input your OpenRouter API key to establish the connection. Select Models: Enter the AI model you want...\
+  \
+  \
+  SimpleLocalize
+- [link](https://github.com/centminmod/nextjs-chatgpt-app/blob/main/docs/config-openrouter.md)\
+  nextjs-chatgpt-app/docs/config-openrouter.md at main · centminmod/nextjs-chatgpt-app\
+  2\. Integrating OpenRouter with big-AGI Add a Vendor, and select OpenRouter. Input the API key into the OpenRouter API Key field, a...\
+  \
+  \
+  GitHub
+
+Show all
+
+## You said: can it hot load
+
+12:45 PM
+
+No, LibreChat **cannot hot load** configuration changes out of the box. Whenever you edit `librechat.yaml` or your `.env` file, you must restart the backend for the changes to take effect. \[[1](https://www.librechat.ai/docs/configuration/librechat%5Fyaml), [2](https://www.librechat.ai/docs/configuration), [3](https://github.com/danny-avila/LibreChat/issues/4674)]
+
+### The Quickest Way to Restart
+
+To apply your OpenRouter changes with minimal downtime, run this command in your project folder: \[[1](https://www.librechat.ai/docs/configuration/librechat%5Fyaml), [2](https://www.librechat.ai/docs/configuration)]
+
+bash
+
+```
+docker compose down && docker compose up -d
+```
+
+Use code with caution.
+
+Your local chat history and user accounts are safely stored in a persistent MongoDB volume, so **you will not lose any data** by restarting. \[[1](https://github.com/Fritsl/LibreChatConfigurator), [2](https://laimis.medium.com/running-librechat-and-staying-current-with-new-ai-models-49b40e7879dd)]
+
+### Important Redis Gotcha ⚠️
+
+If you have **Redis caching enabled** (`USE_REDIS=true` in your `.env`), LibreChat permanently caches the `librechat.yaml` configuration. \[[1](https://github.com/danny-avila/LibreChat/discussions/11176)]
+
+If Redis is active, a standard container restart will _not_ pull in your new OpenRouter models. You must clear the Redis cache manually using this command: \[[1](https://github.com/danny-avila/LibreChat/discussions/11176)]
+
+bash
+
+```
+docker exec -it <your-redis-container-name> redis-cli FLUSHALL
+```
+
+Use code with caution.
+
+### Hot Reload for Code Developers Only
+
+If you are modifying the actual source code of LibreChat rather than just settings, you can run it in development mode for live interface reloading using `npm run frontend-dev`. However, this is for code debugging and is not meant for standard model setups. \[[1](https://github.com/danny-avila/LibreChat/discussions/475), [2](https://github.com/dotnet/maui/wiki/Diagnosing-Hot-Reload)]
+
+Would you like help checking your **Docker container names** to ensure your restart command runs smoothly?
+
+- [link](https://github.com/danny-avila/LibreChat/discussions/475)\
+  Developing on docker with live reload · danny-avila LibreChat ...\
+  The best way to is to install locally, which will depend on your environment but in general it goes like this, provided you have e...\
+  GitHub
+- [link](https://www.librechat.ai/docs/configuration/librechat%5Fyaml)\
+  Custom Config - LibreChat\
+  Confirm the file is in the LibreChat project root unless you set CONFIG\_PATH . For Docker, confirm the file is mounted in docker-c...\
+  LibreChat
+- [link](https://www.librechat.ai/docs/configuration)\
+  Overview | LibreChat\
+  Applying Changes. Restart Required. After editing any configuration file, you must restart LibreChat for changes to take effect. D...\
+  LibreChat
+
+Show all
+
+## You said: can i omit the model list
+
+No, you **cannot entirely omit** the `models` block, but <mark style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 500; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">you <strong style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 600; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">can omit individual model names</strong></mark>. \[[1](https://www.librechat.ai/docs/configuration/librechat%5Fyaml/ai%5Fendpoints/openrouter), [2](https://github.com/danny-avila/LibreChat/blob/main/librechat.example.yaml), [3](https://www.reddit.com/r/Porsche/comments/157tmey/porsche%5Fturbo%5Fis%5Fit%5Fa%5Fthing%5Fto%5Fremove%5Fthe%5Fmodel/)]
+
+The [LibreChat configuration schema](https://www.librechat.ai/docs/configuration/librechat%5Fyaml/object%5Fstructure/custom%5Fendpoint) strictly requires the `models.default` array to have at least one valid fallback string. If you remove the `models:` lines entirely, the backend server will throw a validation error during boot and crash. \[[1](https://github.com/danny-avila/LibreChat/blob/main/librechat.example.yaml), [2](https://github.com/danny-avila/LibreChat/issues/10496)]
+
+Instead of writing out OpenRouter's massive catalog of hundreds of models, use a **minimalist placeholder config**: \[[1](https://github.com/danny-avila/LibreChat/issues/1028)]
+
+yaml
+
+```
+version: 1.1.5
+
+endpoints:
+  custom:
+    - name: "OpenRouter"
+      apiKey: "${OPENEROUTER_API_KEY}"
+      baseURL: "https://openrouter.ai"
+      models:
+        default: ["openrouter/auto"] # Only include one fallback model
+        fetch: true                 # This pulls the entire list automatically
+      titleConvo: true
+      titleModel: "openrouter/auto"
+```
+
+Use code with caution.
+
+### Why this works:
+
+- **The Fallback**: `openrouter/auto` serves as a safe placeholder to satisfy LibreChat's startup logic.
+- **The Dynamic Fetch**: Because `fetch: true` is enabled, LibreChat immediately calls OpenRouter's `/v1/models` endpoint right after booting. It bypasses your short list and populates your UI dropdown with every available model. \[[1](https://github.com/danny-avila/LibreChat/blob/main/librechat.example.yaml), [2](https://github.com/danny-avila/LibreChat/issues/12894), [3](https://github.com/danny-avila/LibreChat/issues/1028)]
+
+Are you hoping to **limit which models your users can see** from OpenRouter, or would you like to know how to change the **default model** that opens up for new chats?
+
+- [link](https://www.librechat.ai/docs/configuration/librechat%5Fyaml/ai%5Fendpoints/openrouter)\
+  OpenRouter - LibreChat\
+  Instead of fetching all models, you can specify a fixed list: models: default: \["anthropic/claude-3.5-sonnet", "openai/gpt-4o", "m...\
+  LibreChat
+- [link](https://github.com/danny-avila/LibreChat/blob/main/librechat.example.yaml)\
+  librechat.example.yaml - GitHub\
+  baseURL: 'https://api.mistral.ai/v1'. # Models configuration. models: # List of default models to use. At least one value is requi...\
+  GitHub
+- [link](https://github.com/danny-avila/LibreChat/issues/12894)\
+  Fetch:true doesn't work as expected when user\_provided apiKey is ...\
+  Apr 30, 2026 — Actual Behavior \* /v1/models returns a valid list of models. \* LibreChat UI does not display or update the model list. \* In some c...\
+  GitHub
+
+Show all
+
+## You said: is openrouter/auto a real model
+
+<mark style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 500; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">Yes, <strong style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 600; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><code dir="ltr" style="font-family: monospace; font-size: 14px; font-weight: 600; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 1px solid rgb(44, 46, 53);">openrouter/auto</code> is a real, valid model ID</strong></mark>, but it is not a standalone large language model. \[[1](https://sidsaladi.substack.com/p/openrouter-101-the-complete-guide), [2](https://github.com/openclaw/openclaw/issues/5395), [3](https://medium.com/@milesk%5F33/a-practical-guide-to-openrouter-unified-llm-apis-model-routing-and-real-world-use-d3c4c07ed170), [4](https://github.com/openclaw/openclaw/issues/2373)]
+
+Instead, it is OpenRouter's **dynamic Auto Router feature** packaged inside a single model slug. \[[1](https://openrouter.ai/docs/guides/routing/routers/auto-router), [2](https://openrouter.ai/openrouter/auto)]
+
+### How it Works
+
+When you send a message to `openrouter/auto`, OpenRouter does not process the text itself. Instead, a specialized meta-model quickly analyzes your prompt's complexity and requirements. It then routes your request on the fly to the best suited model (such as a Claude, GPT, Gemini, or DeepSeek variant). \[[1](https://openrouter.ai/openrouter/auto), [2](https://aicollab.app/blog/openrouter-auto/), [3](https://www.linkedin.com/posts/keanankoppenhaver%5Fi-just-showcased-openrouters-auto-model-activity-7308149884698693632-KaDU)]
+
+### Pros and Cons of Using It
+
+While it is an easy way to bypass writing a rigid list in your LibreChat configuration, consider how it impacts daily use: \[[1](https://openrouter.ai/blog/tutorials/hermes-agent/)]
+
+- **The Pro (Convenience)**: Simple prompts get sent to cheap or free models automatically, while hard math or coding prompts get routed to smarter premium models. You only pay the base rate of whichever model it chooses. \[[1](https://www.linkedin.com/posts/keanankoppenhaver%5Fi-just-showcased-openrouters-auto-model-activity-7308149884698693632-KaDU), [2](https://sidsaladi.substack.com/p/openrouter-101-the-complete-guide), [3](https://aicollab.app/blog/openrouter-auto/)]
+- **The Con (Cost Traps)**: Because the selection is automated, you lose exact control. A complex or lengthy prompt might prompt the router to select a highly expensive frontier model when a cheaper model would have sufficed, leading to unexpected credit usage. \[[1](https://www.reddit.com/r/AskClaw/comments/1t4h505/openrouter%5Fautomode%5Fis%5Fa%5Ftrap%5Fit%5Fpicks%5Fopus%5Fwhen/), [2](https://www.linkedin.com/posts/keanankoppenhaver%5Fi-just-showcased-openrouters-auto-model-activity-7308149884698693632-KaDU)]
+
+If you prefer explicit control over your wallet, you can swap `openrouter/auto` out for a fixed, highly capable fallback model ID like `meta-llama/llama-3-70b-instruct` or `google/gemini-flash-1.5` in your `librechat.yaml` file. \[[1](https://www.linkedin.com/posts/keanankoppenhaver%5Fi-just-showcased-openrouters-auto-model-activity-7308149884698693632-KaDU)]
+
+Would you like to know how to **filter your OpenRouter list** so that LibreChat only displays completely **free models** to your users? \[[1](https://www.youtube.com/watch?v=VZuVX9nrLaM\&t=14)]
+
+- [link](https://openrouter.ai/docs/guides/routing/routers/auto-router)\
+  Auto Router | Smart AI Model Selection | Documentation\
+  The Auto Router ( openrouter/auto ) automatically selects the best model for your prompt, powered by NotDiamond . Overview. Instea...\
+  OpenRouter
+- [link](https://openrouter.ai/openrouter/auto)\
+  Auto Router - API Pricing & Providers - OpenRouter\
+  openrouter/auto. Compare Playground. Your prompt will be processed by a meta-model and routed to one of dozens of models (see belo...\
+  OpenRouter
+- [link](https://www.linkedin.com/posts/keanankoppenhaver%5Fi-just-showcased-openrouters-auto-model-activity-7308149884698693632-KaDU)\
+  I just showcased OpenRouter's auto-model selection feature during Retool's "Model Mix and Match" webinar, and it's a perfect example of how AI is getting smarter about using AI efficiently. I asked… | Keanan Koppenhaver\
+  Mar 19, 2025 — OpenRouter's auto-model selection feature uses AI to automatically pick models for you. This can save you money by using cheaper m...\
+  LinkedIn
+
+Show all
+
+## You said: can it be a non existent model
+
+Yes, **it can absolutely be a completely non-existent model name**, provided that you keep `fetch: true` enabled. \[[1](https://www.librechat.ai/docs/configuration/librechat%5Fyaml/ai%5Fendpoints/openrouter), [2](https://agentgateway.dev/docs/standalone/latest/integrations/web-uis/librechat/)]
+
+You could type `["make-believe-model"]` into the `models.default` array, and LibreChat will still boot up perfectly fine. \[[1](https://github.com/danny-avila/LibreChat/issues/10847)]
+
+### How LibreChat Handles Fake Models
+
+1. **Boot Phase**: LibreChat checks the `librechat.yaml` file to ensure the structure is correct. Because it sees a string inside an array, it passes the format validation check and starts up successfully. \[[1](https://www.librechat.ai/docs/configuration/librechat%5Fyaml), [2](https://github.com/danny-avila/LibreChat/issues/10496)]
+2. **API Fetch Phase**: Because `fetch: true` is enabled, LibreChat instantly queries OpenRouter's real server to pull the actual model list. \[[1](https://www.librechat.ai/docs/configuration/librechat%5Fyaml/ai%5Fendpoints/openrouter)]
+3. **UI Display**: The application completely overwrites your fake placeholder text with the actual, active model catalog sent over by OpenRouter. Your fake model will never even show up in the dropdown menu.
+
+### One Small Warning ⚠️
+
+While the placeholder text can be entirely made up, you must make sure it is **not** referenced by your other title settings. If you use a fake name, update the rest of your block to use the `"current_model"` tag so it doesn't crash trying to generate chat titles: \[[1](https://www.librechat.ai/docs/configuration/librechat%5Fyaml/object%5Fstructure/shared%5Fendpoint%5Fsettings)]
+
+yaml
+
+```
+      models:
+        default: ["fake-model-name-here"]
+        fetch: true
+      titleConvo: true
+      titleModel: "current_model"    # Dynamically uses whatever real model you chat with
+      summarize: true
+      summaryModel: "current_model"  # Dynamically uses whatever real model you chat with
+```
+
+Use code with caution.
+
+Would you like to know how to set up **system prompts (instructions)** that automatically apply to every OpenRouter model you use?
+
+- [link](https://www.librechat.ai/docs/configuration/librechat%5Fyaml)\
+  Custom Config - LibreChat\
+  Confirm the file is in the LibreChat project root unless you set CONFIG\_PATH . For Docker, confirm the file is mounted in docker-c...\
+  LibreChat
+- [link](https://github.com/danny-avila/LibreChat/issues/10847)\
+  \[Bug]: Endpoint should allow empty default models list #10847\
+  Dec 8, 2025 — What happened? Following the discussion #10627 regarding having a fully aliased models name. When defining an empty default model ...\
+  GitHub
+- [link](https://www.librechat.ai/docs/configuration/librechat%5Fyaml/ai%5Fendpoints/openrouter)\
+  OpenRouter - LibreChat\
+  Table\_title: Add the Endpoint to librechat. yaml Table\_content: | Field | Purpose | | --- | --- | | apiKey: "${OPENROUTER\_KEY}" | ...\
+  LibreChat
+
+Show all
+
+## You said: give me the config
+
+Here is the complete, production-ready `librechat.yaml` configuration using a fake model placeholder safely paired with dynamic title generation.
+
+yaml
+
+```
+version: 1.1.5
+
+endpoints:
+  custom:
+    - name: "OpenRouter"
+      apiKey: "${OPENEROUTER_API_KEY}"
+      baseURL: "https://openrouter.ai"
+      models:
+        default: ["placeholder-model-name"]
+        fetch: true
+      titleConvo: true
+      titleModel: "current_model"
+      summarize: true
+      summaryModel: "current_model"
+```
+
+Use code with caution.
+
+### Setup Reminder
+
+Ensure your `.env` file contains these matching lines to supply the API key and read this file:
+
+env
+
+```
+OPENEROUTER_API_KEY=your_actual_openrouter_key_here
+CONFIG_PATH=librechat.yaml
+```
+
+Use code with caution.
+
+Would you like to know how to add **custom icons** for OpenRouter in the UI, or do you need the exact **Docker restart command** to apply this configuration?
+
+## You said: will it work
+
+\*\***Yes, it will work perfectly.**
+
+LibreChat explicitly supports setting `titleModel: "current_model"` and `summaryModel: "current_model"` for custom endpoints. This configuration successfully passes structural validation at boot phase, triggers the external API fetch, and avoids crashing when generating conversation titles. \[[1](https://www.librechat.ai/docs/configuration/librechat%5Fyaml/object%5Fstructure/custom%5Fendpoint), [2](https://www.librechat.ai/docs/configuration/librechat%5Fyaml/object%5Fstructure/shared%5Fendpoint%5Fsettings), [3](https://www.librechat.ai/docs/configuration/librechat%5Fyaml/ai%5Fendpoints/vllm)]
+
+### Verify It is Working properly
+
+Once you save the file and run `docker compose down && docker compose up -d`, check for these visual signs in the UI: \[[1](https://www.librechat.ai/docs/quick%5Fstart/custom%5Fendpoints)]
+
+1. **The Selector:** Click the model dropdown in the top-left corner. You should see "OpenRouter" listed as an endpoint. \[[1](https://www.librechat.ai/docs/configuration/librechat%5Fyaml/ai%5Fendpoints/openrouter)]
+2. **The Catalog:** Open the list of models under OpenRouter. If you see dozens of real models (like `meta-llama/...`, `google/...`, or `anthropic/...`) instead of your fake placeholder, the dynamic fetch succeeded. \[[1](https://www.librechat.ai/docs/configuration/librechat%5Fyaml/object%5Fstructure/shared%5Fendpoint%5Fsettings), [2](https://openrouter.ai/works-with-openrouter/librechat)]
+3. **The Chats:** Start a new chat session. After your first message and the AI's response, the sidebar title should change from _"New Chat"_ to a summarized title relevant to your topic. \[[1](https://www.librechat.ai/docs/configuration/librechat%5Fyaml/object%5Fstructure/custom%5Fendpoint), [2](https://www.librechat.ai/docs/configuration/librechat%5Fyaml/object%5Fstructure/shared%5Fendpoint%5Fsettings)]
+
+### Troubleshooting
+
+If OpenRouter does not appear in your UI dropdown, it means your Docker container isn't reading the YAML file correctly. You can instantly verify if there is a mapping error by looking at your container's system logs: \[[1](https://www.librechat.ai/docs/quick%5Fstart/custom%5Fendpoints), [2](https://www.librechat.ai/docs/configuration/librechat%5Fyaml/ai%5Fendpoints/openrouter)]
+
+bash
+
+```
+docker compose logs api | grep -i "error"
+```
+
+Use code with caution.
+
+If you see a file path error in the logs, let me know your **Operating System** (Windows, macOS, or Linux) so we can ensure Docker has the right file access permissions. \[[1](https://www.librechat.ai/docs/quick%5Fstart/custom%5Fendpoints)]
+
+- [link](https://www.librechat.ai/docs/configuration/librechat%5Fyaml/object%5Fstructure/custom%5Fendpoint)\
+  Custom Endpoint Object Structure - LibreChat\
+  Jun 1, 2023 — An array of strings indicating the default models to use. If fetching models fails, these defaults are used as a fallback. Require...\
+  LibreChat
+- [link](https://www.librechat.ai/docs/configuration/librechat%5Fyaml/ai%5Fendpoints/openrouter)\
+  OpenRouter - LibreChat\
+  Verify It Works. Open LibreChat in your browser. You should see OpenRouter in the endpoint selector dropdown. Select it to see the...\
+  LibreChat
+- [link](https://www.librechat.ai/docs/configuration/librechat%5Fyaml/object%5Fstructure/shared%5Fendpoint%5Fsettings)\
+  Shared Endpoint Settings - LibreChat\
+  Enables automatic conversation title generation for this endpoint. titleConvo: true. Default: false. Notes: When enabled, titles w...\
+  LibreChat
+
+Show all
+
+## You said: not seen
+
+If OpenRouter is not showing up in your UI dropdown, the root cause is almost always that **the Docker container isn't actually reading your `librechat.yaml` file**. \[[1](https://www.librechat.ai/docs/quick%5Fstart/custom%5Fendpoints)]
+
+By default, Docker doesn't look at the project root for configuration files unless you explicitly map it. Follow these quick diagnostic steps to resolve the issue: \[[1](https://github.com/danny-avila/LibreChat/discussions/2650)]
+
+### 1. Fix the Docker Mapping (Most Likely Cause)
+
+If you are using the standard LibreChat repository setup, your Docker container doesn't automatically mount files from your local folders. You need to use the built-in [Docker Override configuration](https://www.librechat.ai/docs/configuration/docker%5Foverride). \[[1](https://github.com/danny-avila/LibreChat/discussions/2650), [2](https://www.librechat.ai/docs/configuration/librechat%5Fyaml)]
+
+1. Look in your `LibreChat` project root directory for a file named `docker-compose.override.yml`.
+2. If it isn't there, create it.
+3. Open it and paste the following content to map your local `librechat.yaml` inside the container: \[[1](https://github.com/danny-avila/LibreChat/discussions/2650)]
+
+yaml
+
+```
+version: '3.4'
+
+services:
+  api:
+    volumes:
+      - ./librechat.yaml:/app/librechat.yaml
+```
+
+Use code with caution.
+
+### 2. Update Your `.env` Path
+
+Ensure that your `.env` file explicitly references this local container path: \[[1](https://huggingface.co/spaces/LibreChat/template/discussions/5)]
+
+env
+
+```
+CONFIG_PATH=/app/librechat.yaml
+```
+
+Use code with caution.
+
+_(Make sure to use `/app/librechat.yaml` as the value, not just `librechat.yaml`, so the server looks exactly where Docker mounted it)._ \[[1](https://github.com/danny-avila/LibreChat/issues/2649)]
+
+### 3. Check for YAML Schema Errors
+
+LibreChat has a "fail-fast" policy. If you have a single formatting or unrecognized field error in your file, the backend will silently fail to parse it or crash. \[[1](https://github.com/danny-avila/LibreChat/discussions/6779), [2](https://www.librechat.ai/docs/configuration/librechat%5Fyaml)]
+
+Run this command in your terminal to see exactly why it isn't appearing: \[[1](https://www.librechat.ai/docs/quick%5Fstart/custom%5Fendpoints), [2](https://www.librechat.ai/docs/configuration/librechat%5Fyaml)]
+
+bash
+
+```
+docker compose logs api
+```
+
+Use code with caution.
+
+Look for lines saying `error: Invalid custom config file...` or `ENOENT: no such file or directory`. If you see errors about "unrecognized keys," wrap your custom block entirely inside the `endpoints:` property as shown in the previous configuration. \[[1](https://github.com/danny-avila/LibreChat/discussions/6779), [2](https://github.com/danny-avila/LibreChat/issues/2649)]
+
+### 4. Force a Full Container Rebuild
+
+Apply the updated Docker override file mapping by forcefully stopping, tearing down, and spinning back up the environment:
+
+bash
+
+```
+docker compose down
+docker compose up -d --build
+```
+
+Use code with caution.
+
+Did running `docker compose logs api` surface a specific **YAML syntax/path error**, or are your containers starting up completely clean?
+
+- [link](https://github.com/danny-avila/LibreChat/discussions/6779)\
+  Ollama Endpoint Not Showing in LibreChat UI Despite Correct ...\
+  Apr 8, 2025 — Troubleshooting Process \* 1. Issue: Ollama Endpoint Configuration Not Applied. Symptom: Modifying the . env file to add Ollama set...\
+  GitHub
+- [link](https://www.librechat.ai/docs/quick%5Fstart/custom%5Fendpoints)\
+  Custom Endpoints | LibreChat\
+  Jun 1, 2023 — Step 4. Restart and Verify. After editing configuration files, you must restart LibreChat for changes to take effect. Docker Local...\
+  LibreChat
+- [link](https://www.librechat.ai/docs/configuration/librechat%5Fyaml)\
+  Custom Config - LibreChat\
+  Confirm the file is in the LibreChat project root unless you set CONFIG\_PATH . For Docker, confirm the file is mounted in docker-c...\
+  LibreChat
+
+Show all
+
+OpenRouter
+
+## You said: .env CONFIG\_PATH=/app/librechat.yamlOPENEROUTER\_API\_KEY= yaml version: 1.1.5endpoints: custom: - name: "OpenRouter" apiKey: "${OPENEROUTER\_API\_KEY}" baseURL: "https://openrouter.ai" models: default: \["none"] fetch: true titleConvo: true titleModel: "current\_model" summarize: true summaryModel: "current\_model"
+
+The issue is your **`baseURL`** entry in your YAML configuration.
+
+You have it set to `https://openrouter.ai`. When LibreChat appends `/v1/models` or `/chat/completions` to that path, it hits the wrong URL and completely fails to load.
+
+### The Fix
+
+1. Open your `librechat.yaml` file.
+2. Change the `baseURL` line to explicitly include `/api/v1`.
+3. Correct the typos in your `.env` mapping snippet.
+
+Here is exactly how your files should look:
+
+### Updated `librechat.yaml`
+
+yaml
+
+```
+version: 1.1.5
+
+endpoints:
+  custom:
+    - name: "OpenRouter"
+      apiKey: "${OPENEROUTER_API_KEY}"
+      baseURL: "https://openrouter.ai" # Must end with /api/v1
+      models:
+        default: ["none"]
+        fetch: true
+      titleConvo: true
+      titleModel: "current_model"
+      summarize: true
+      summaryModel: "current_model"
+```
+
+Use code with caution.
+
+### Updated `.env`
+
+Ensure your variables are on separate, clean lines without mixing the YAML syntax into it:
+
+env
+
+```
+CONFIG_PATH=/app/librechat.yaml
+OPENEROUTER_API_KEY=sk-or-v1-your-actual-key-here
+```
+
+Use code with caution.
+
+### Apply Changes
+
+Force Docker to recreate the container and fetch the fresh configuration:
+
+bash
+
+```
+docker compose down
+docker compose up -d
+```
+
+Use code with caution.
+
+Are you seeing the **OpenRouter** option in your dropdown now, or should we check the **Docker container logs** to see if it is throwing a specific API network error?
+
+## You said: give me the official guide
+
+According to the official [LibreChat Custom Config Guide](https://www.librechat.ai/docs/configuration/librechat%5Fyaml), there is a critical rule regarding OpenRouter:
+
+⚠️ **Do not use `OPENROUTER_API_KEY` in your `.env` file.** Using that exact phrase triggers a known conflict inside the application that can inadvertently override native OpenAI endpoint configurations. The documentation instructs you to use **`OPENROUTER_KEY`** instead. \[[1](https://www.librechat.ai/docs/configuration/librechat%5Fyaml), [2](https://github.com/danny-avila/LibreChat/discussions/4676)]
+
+The official configuration steps are detailed below: \[[1](https://www.librechat.ai/docs/quick%5Fstart/custom%5Fendpoints), [2](https://www.librechat.ai/docs/configuration)]
+
+### Step 1: Update Your `.env` File
+
+Ensure your variables match the official naming convention. Open your `.env` file and verify these exact strings: \[[1](https://www.librechat.ai/docs/configuration/librechat%5Fyaml)]
+
+env
+
+```
+CONFIG_PATH=/app/librechat.yaml
+OPENROUTER_KEY=sk-or-v1-your-actual-key-here
+```
+
+Use code with caution.
+
+### Step 2: Configure `librechat.yaml`
+
+Note how the variable maps precisely to `${OPENROUTER_KEY}`. \[[1](https://www.librechat.ai/docs/configuration/librechat%5Fyaml)]
+
+yaml
+
+```
+version: 1.1.5
+
+endpoints:
+  custom:
+    - name: "OpenRouter"
+      apiKey: "${OPENROUTER_KEY}"
+      baseURL: "https://openrouter.ai/api/v1"
+      models:
+        default: ["meta-llama/llama-3-70b-instruct"]
+        fetch: true
+      titleConvo: true
+      titleModel: "current_model"
+      summarize: true
+      summaryModel: "current_model"
+```
+
+Use code with caution.
+
+### Step 3: Mount the File via `docker-compose.override.yml`
+
+Docker deployments must map the local file to the `/app/` directory inside the container for LibreChat to successfully read it. Create or edit a file named `docker-compose.override.yml` in your project root: \[, [2](https://www.librechat.ai/docs/configuration), [3](https://github.com/LibreChat-AI/librechat.ai/blob/main/content/docs/quick%5Fstart/custom%5Fendpoints.mdx)]
+
+yaml
+
+```
+version: '3.4'
+
+services:
+  api:
+    volumes:
+      - ./librechat.yaml:/app/librechat.yaml
+```
+
+Use code with caution.
+
+### Step 4: Full Hard Restart
+
+To clear any active or persistent configuration caches, drop your containers and bring them back up freshly compiled: \[[1](https://www.librechat.ai/docs/configuration)]
+
+bash
+
+```
+docker compose down
+docker compose up -d --build
+```
+
+Use code with caution.
+
+You can review the full deployment specifications directly on the official [LibreChat OpenRouter Documentation](https://www.librechat.ai/docs/configuration/librechat%5Fyaml/ai%5Fendpoints/openrouter). \[[1](https://www.librechat.ai/docs/configuration/librechat%5Fyaml/ai%5Fendpoints/openrouter)]
+
+If OpenRouter is still not appearing, would you like to run **`docker compose logs api`** and share any **error codes** or **parsing messages** you find there? \[[1](https://www.librechat.ai/docs/configuration)]
+
+- [link](https://www.librechat.ai/docs/configuration/librechat%5Fyaml)\
+  Custom Config - LibreChat\
+  This example walks through adding OpenRouter as a custom endpoint -- one of the most popular configurations. 1. Get an API key fro...\
+  LibreChat
+- [link](https://www.librechat.ai/docs/configuration/librechat%5Fyaml/ai%5Fendpoints/openrouter)\
+  OpenRouter - LibreChat\
+  OpenRouter. Complete setup guide for using OpenRouter as a custom endpoint in LibreChat. Copy Markdown Open. OpenRouter provides a...\
+  LibreChat
+- [link](https://github.com/danny-avila/LibreChat/discussions/4676)\
+  OpenRouter doesn't show up in the list of providers #4676\
+  Nov 9, 2024 — I'm trying to add openrouter to my digital ocean deployment of librechat, but it doesn't show up in the list for some reason. Step...\
+  GitHub
+
+Show all
+
+# . debug, fix typo
+
+```sh
+ ~ % cd Documents/.storage
+ ~/Documents/.storage % cd librechat
+ ~/Documents/.storage/librechat
+ % docker compose logs api
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+LibreChat  |
+LibreChat  | > LibreChat@v0.8.6 backend
+LibreChat  | > cross-env NODE_ENV=production node api/server/index.js
+LibreChat  |
+LibreChat  | 2026-06-22 13:17:59 warn: [metrics] METRICS_SECRET is not set - /metrics will return 401 for all requests
+LibreChat  | 2026-06-22 13:17:59 info: Mongo Connection options
+LibreChat  | 2026-06-22 13:17:59 info: {
+LibreChat  |   "bufferCommands": false,
+LibreChat  |   "autoIndex": false,
+LibreChat  |   "autoCreate": false
+LibreChat  | }
+LibreChat  | 2026-06-22 13:17:59 info: Connected to MongoDB
+LibreChat  | 2026-06-22 13:17:59 info: [indexSync] Starting index synchronization check...
+LibreChat  | 2026-06-22 13:17:59 info: [ensureBaseConfig] Loading base configuration...
+LibreChat  | 2026-06-22 13:17:59 info: Custom config file loaded:
+LibreChat  | 2026-06-22 13:17:59 info: {
+LibreChat  |   "version": "1.3.5",
+LibreChat  |   "cache": true,
+LibreChat  |   "endpoints": {
+LibreChat  |     "custom": [
+LibreChat  |       {
+LibreChat  |         "name": "OpenRouter",
+LibreChat  |         "apiKey": "${OPENROUTER_KEY}",
+LibreChat  |         "baseURL": "https://openrouter.ai/api/v1",
+LibreChat  |         "models": {
+LibreChat  |           "default": [
+LibreChat  |             "meta-llama/llama-3-70b-instruct"
+LibreChat  |           ],
+LibreChat  |           "fetch": true
+LibreChat  |         },
+LibreChat  |         "titleConvo": true,
+LibreChat  |         "titleModel": "meta-llama/llama-3-70b-instruct",
+LibreChat  |         "dropParams": [
+LibreChat  |           "stop"
+LibreChat  |         ],
+LibreChat  |         "modelDisplayLabel": "OpenRouter"
+LibreChat  |       }
+LibreChat  |     ]
+LibreChat  |   }
+LibreChat  | }
+LibreChat  | 2026-06-22 13:17:59 warn: Default value for CREDS_KEY is being used.
+LibreChat  | 2026-06-22 13:17:59 warn: Default value for CREDS_IV is being used.
+LibreChat  | 2026-06-22 13:17:59 warn: Default value for JWT_SECRET is being used.
+LibreChat  | 2026-06-22 13:17:59 warn: Default value for JWT_REFRESH_SECRET is being used.
+LibreChat  | 2026-06-22 13:17:59 info: Please replace any default secret values.
+LibreChat  | 2026-06-22 13:17:59 info:
+LibreChat  |
+LibreChat  |     For your convenience, use this tool to generate your own secret values:
+LibreChat  |     https://www.librechat.ai/toolkit/creds_generator
+LibreChat  |
+LibreChat  |
+LibreChat  | 2026-06-22 13:17:59 info:
+LibreChat  | Outdated Config version: 1.3.5
+LibreChat  | Latest version: 1.3.12
+LibreChat  |
+LibreChat  |       Check out the Config changelogs for the latest options and features added.
+LibreChat  |
+LibreChat  |       https://www.librechat.ai/changelog
+LibreChat  |
+LibreChat  |
+LibreChat  | 2026-06-22 13:17:59 info: RAG API is running and reachable at http://rag_api:8000.
+LibreChat  | 2026-06-22 13:17:59 info: [StreamServices] Created in-memory stream services
+LibreChat  | 2026-06-22 13:17:59 info: [GenerationJobManager] Configured with in-memory stores
+LibreChat  | 2026-06-22 13:17:59 info: Server listening on all interfaces at port 3080. Use http://localhost:3080 to access it
+LibreChat  | 2026-06-22 13:17:59 info: [MCPServersRegistry] Creating new instance
+LibreChat  | 2026-06-22 13:17:59 info: OAuth reconnect manager initialized successfully.
+LibreChat  | 2026-06-22 13:17:59 info: Server readiness checks passing.
+LibreChat  | 2026-06-22 13:17:59 info: [indexSync] Requesting message sync progress...
+LibreChat  | 2026-06-22 13:17:59 info: [indexSync] Messages are fully synced: 0/0
+LibreChat  | 2026-06-22 13:17:59 info: [indexSync] Conversations are fully synced: 0/0
+LibreChat  | 2026-06-22 13:17:59 warn: [FlowStateManager] completeFlow: flow not found — key=[REDACTED] Possible causes: flow TTL expired before callback arrived, flow was never created, or the callback is routing to a different instance without shared Keyv storage.
+LibreChat  | 2026-06-22 13:22:52 error: [ResumableAgentController] Initialization error: {"type":"no_user_key"} {"userId":"6a33f296c7344cc5393569a6"}
+LibreChat  | 2026-06-22 13:23:05 error: [ResumableAgentController] Initialization error: {"type":"no_user_key"} {"userId":"6a33f296c7344cc5393569a6"}
+LibreChat  | 2026-06-22 13:23:12 error: [ResumableAgentController] Initialization error: {"type":"no_user_key"} {"userId":"6a33f296c7344cc5393569a6"}
+LibreChat  | 2026-06-22 13:23:14 error: [ResumableAgentController] Initialization error: {"type":"no_user_key"} {"userId":"6a33f296c7344cc5393569a6"}
+LibreChat  | 2026-06-22 13:26:09 error: [ResumableAgentController] Initialization error: Missing API Key for OpenRouter. {"userId":"6a33f296c7344cc5393569a6"}
+LibreChat  | 2026-06-22 13:26:16 error: [ResumableAgentController] Initialization error: Missing API Key for OpenRouter. {"userId":"6a33f296c7344cc5393569a6"}
+ ~/Documents/.storage/librechat
+ % docker compose down && docker compose up -d
+
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+[+] down 6/6
+ ✔ Container LibreChat        Removed                                                                                             0.3s
+ ✔ Container chat-meilisearch Removed                                                                                             0.1s
+ ✔ Container rag_api          Removed                                                                                             0.7s
+ ✔ Container chat-mongodb     Removed                                                                                             0.1s
+ ✔ Container vectordb         Removed                                                                                             0.1s
+ ✔ Network librechat_default  Removed                                                                                             0.1s
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "UID" variable is not set. Defaulting to a blank string.
+WARN[0000] The "GID" variable is not set. Defaulting to a blank string.
+[+] up 6/6
+ ✔ Network librechat_default  Created                                                                                             0.0s
+ ✔ Container vectordb         Started                                                                                             0.3s
+ ✔ Container chat-mongodb     Started                                                                                             0.2s
+ ✔ Container chat-meilisearch Started                                                                                             0.3s
+ ✔ Container rag_api          Started                                                                                             0.3s
+ ✔ Container LibreChat        Started                                                                                             0.4s
+```
+
+<!-- fix typo -->
+
+# setup openrouter on librechat. i followed the official guide. Something went wrong. Here's the specific error message we encountered: Missing API Key for OpenRouter.
+
+The "**Missing API Key for OpenRouter**" error typically means LibreChat cannot access the environment variable containing your key, often due to a naming mismatch or a Docker mounting issue. \[[1](https://www.librechat.ai/docs/quick%5Fstart/custom%5Fendpoints), [2](https://www.librechat.ai/docs/configuration/librechat%5Fyaml)]
+
+Follow these steps to resolve the issue:
+
+### 1. Fix the Naming Mismatch in `.env` \[[1](https://www.reddit.com/r/JanitorAI%5FOfficial/comments/1m7r5ti/openrouter%5Ferror%5Fguide%5Fso%5Fyou%5Fdont%5Fhave%5Fto%5Fscroll/)]
+
+LibreChat requires you to use **`OPENROUTER_KEY`**, not `OPENROUTER_API_KEY`. \[[1](https://www.librechat.ai/docs/configuration/librechat%5Fyaml/ai%5Fendpoints/openrouter)]
+
+- Open your `.env` file in your root folder.
+- Ensure your key is defined exactly like this: \[[1](https://www.librechat.ai/docs/configuration/librechat%5Fyaml/ai%5Fendpoints/openrouter), [2](https://community.n8n.io/t/openrouter-model-node-suddenly-failing-with-incorrect-api-key-provided/166239)]
+
+env
+
+```
+OPENROUTER_KEY=sk-or-v1-your-actual-api-key-here
+```
+
+Use code with caution.
+
+_(Do not use quotes unless your key has special characters, and make sure there are no trailing spaces)._ \[[1](https://community.n8n.io/t/openrouter-model-node-suddenly-failing-with-incorrect-api-key-provided/166239), [2](https://www.librechat.ai/docs/configuration/librechat%5Fyaml/ai%5Fendpoints/openrouter)]
+
+### 2. Match the Reference in `librechat.yaml` \[[1](https://www.librechat.ai/docs/configuration/librechat%5Fyaml/ai%5Fendpoints/openrouter)]
+
+LibreChat looks for a custom endpoint variable matching your `.env` file. Open your `librechat.yaml` file and confirm your OpenRouter configuration blocks exactly match this syntax: \[[1](https://www.librechat.ai/docs/configuration/librechat%5Fyaml/ai%5Fendpoints/openrouter), [2](https://www.librechat.ai/docs/quick%5Fstart/custom%5Fendpoints), [3](https://docs.portkey.ai/docs/integrations/mcp-clients/librechat), [4](https://www.reddit.com/r/openclaw/comments/1say8lw/404%5Ferror%5Fopen%5Frouter%5Fqwen%5F36%5Ffree/), [5](https://www.librechat.ai/docs/configuration/librechat%5Fyaml)]
+
+yaml
+
+```
+endpoints:
+  custom:
+    - name: "OpenRouter"
+      apiKey: "${OPENROUTER_KEY}"
+      baseURL: "https://openrouter.ai/api/v1"
+      # ... other config options
+```
+
+Use code with caution.
+
+- Ensure the `apiKey` field uses the **`${OPENROUTER_KEY}`** variable to read from your `.env` file. \[[1](https://www.librechat.ai/docs/configuration/librechat%5Fyaml/ai%5Fendpoints/openrouter)]
+
+### 3. Verify Docker Volume Mounts \[[1](https://www.librechat.ai/docs/configuration/librechat%5Fyaml)]
+
+If using Docker, modifications to `librechat.yaml` require mounting it into the container. \[[1](https://www.librechat.ai/docs/quick%5Fstart/custom%5Fendpoints)]
+
+1. Check `docker-compose.override.yml` in your root folder.
+2. Ensure the volume mapping is present, directing `./librechat.yaml` to `/app/librechat.yaml` within the container. \[[1](https://www.librechat.ai/docs/configuration), [2](https://github.com/LibreChat-AI/librechat.ai/blob/main/content/docs/quick%5Fstart/custom%5Fendpoints.mdx)]
+
+### 4. Restart and Verify
+
+Apply changes by restarting Docker with: \[[1](https://www.librechat.ai/docs/quick%5Fstart/custom%5Fendpoints)]
+
+bash
+
+```
+docker compose down && docker compose up -d
+```
+
+Use code with caution.
+
+If errors persist, check logs with `docker compose logs api | grep -i "openrouter"`. \[[1](https://www.librechat.ai/docs/configuration/librechat%5Fyaml)]
+
+- [link](https://www.librechat.ai/docs/configuration/librechat%5Fyaml/ai%5Fendpoints/openrouter)\
+  OpenRouter - LibreChat\
+  Get an API Key. Create an account at openrouter.ai and generate an API key from the Keys page. Copy the key -- it starts with sk-o...\
+  LibreChat
+- [link](https://community.n8n.io/t/openrouter-model-node-suddenly-failing-with-incorrect-api-key-provided/166239)\
+  OpenRouter Model Node Suddenly Failing with “Incorrect API ...\
+  Aug 12, 2025 — It could be because the credential you switch to has no base URL set or is using the wrong type (OpenAI instead of OpenRouter). Pl...\
+  n8n Community
+- [link](https://www.librechat.ai/docs/quick%5Fstart/custom%5Fendpoints)\
+  Custom Endpoints | LibreChat\
+  Jun 1, 2023 — Validate your YAML with the YAML Validator. OpenRouter Still Does Not Show Up. For OpenRouter specifically, verify the three-file ...\
+  LibreChat
+
+Show all
+
+OpenRouter
+
+## You said: i do have OPENEROUTER\_KEY=sk-or-v1-... on .env and yaml copied from official guide version: 1.3.5cache: trueendpoints: custom: - name: "OpenRouter" apiKey: "${OPENROUTER\_KEY}" baseURL: "https://openrouter.ai/api/v1" models: default: \["meta-llama/llama-3-70b-instruct"] fetch: true titleConvo: true titleModel: "meta-llama/llama-3-70b-instruct" dropParams: \["stop"] modelDisplayLabel: "OpenRouter"
+
+The primary issue causing the "**The model api/v1 is not available**" error is a subtle typo in your `.env` file configuration.
+
+### 1. Fix the Typo in `.env`
+
+In your message, you wrote: `OPENEROUTER_KEY=sk-or-v1-...`.\
+Notice the extra **`E`** in the name.
+
+Your `librechat.yaml` file is looking for `${OPENROUTER_KEY}`, which means it is attempting to pull a variable that does not exist because of the typo. This leaves the API key blank, causing OpenRouter to reject the request with that specific model error page. \[[1](https://www.librechat.ai/docs/configuration/librechat%5Fyaml), [2](https://www.librechat.ai/docs/configuration/librechat%5Fyaml/ai%5Fendpoints/openrouter)]
+
+- Open your `.env` file.
+
+- Correct the spelling exactly to this:\
+  env
+
+<!---->
+
+```
+OPENROUTER_KEY=sk-or-v1-your-actual-api-key-here
+```
+
+Use code with caution.
+
+### 2. Verify Your Docker Env File (If applicable)
+
+If you are running LibreChat in a Docker container, you must completely reset the container environment for `.env` changes to pass through:
+
+bash
+
+```
+docker compose down
+docker compose up -d
+```
+
+Use code with caution.
+
+### 3. Check for Hidden Line Breaks
+
+If fixing the spelling doesn't work right away, ensure your `.env` file didn't copy-paste any strange formatting.
+
+- Make sure there are no spaces before or after the `=` sign.
+- Ensure the key is entirely on one line. \[[1](https://www.librechat.ai/docs/configuration/librechat%5Fyaml), [2](https://www.librechat.ai/docs/configuration/librechat%5Fyaml/ai%5Fendpoints/openrouter)]
+
+If you fix the spelling and it still gives you trouble, let me know if you are running it via **Docker** or a **local Node.js install**, and we can check your server logs!
+
+- [link](https://www.librechat.ai/docs/configuration/librechat%5Fyaml)\
+  Custom Config - LibreChat\
+  1\. Get an API key from openrouter.ai/keys. 2. Add the key to your .env file: OPENROUTER\_KEY=sk-or-v1-your-key-here. Environment Va...\
+  LibreChat
+- [link](https://www.librechat.ai/docs/configuration/librechat%5Fyaml/ai%5Fendpoints/openrouter)\
+  OpenRouter - LibreChat\
+  Get an API Key. Create an account at openrouter.ai and generate an API key from the Keys page. Copy the key -- it starts with sk-o...\
+  LibreChat
 
 # 
 
