@@ -75,6 +75,7 @@ export function unbind(shortcutid: number) {
 }
 
 export function use_bind(shortcut: string, action: (event: KeyboardEvent) => void): number {
+  // todo
   shortcut = normalize(shortcut)
 
   actions.set(shortcutid, action)
