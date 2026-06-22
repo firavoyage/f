@@ -728,6 +728,9 @@ humility:
 - research gnome hig adwaita toolkit
 - research openai api
 - research vllm alternatives <!-- menci: feed wandering cats -->
+- research linear <!-- or markdown for pm? -->
+
+
 
 legacy:
 
