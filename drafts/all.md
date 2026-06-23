@@ -242,6 +242,7 @@ backend:
 - cli standard
 - security cryptography https ca domain registration
 - security script kiddies
+- nodejs childprocess spawn stateful stateless cli declarative imperative explicit implicit
 
 desktop:
 

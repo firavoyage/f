@@ -37993,6 +37993,32 @@ basically, export all claude and codex sessions, instruct them how to search, an
 
 <!-- you cant do much unless the problem itself is complex. and however you do it, you could do it directly somehow, and you are just automating at the tradeoff of being probabilistic. you could not have a crazy dramatic project when it could be done easily directly. -->
 
+19 00 feel.
+
+<!--
+
+(no sim card... the mother wants to leave and sends the maimai qr to the child)
+
+你怎么搞到美版 iphone 的. 专门问吗?
+
+他在美国上学.
+
+哇. 有背景.
+
+你家里有外国人吗.
+
+没有
+
+润出去了...
+
+你有绿卡吗
+
+我是公民
+
+你有绿卡吗
+
+我妈有绿卡. 我和我妈是公民. -->
+
 
 
 <!-- timebox, plan. -->
