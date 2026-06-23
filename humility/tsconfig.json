@@ -25,7 +25,7 @@
   },
   "include": ["**/*"],
   "exclude": [
-    "**/temp",
+    // "**/temp",
     "**/.dist",
     "**/dist",
     "**/.build",
