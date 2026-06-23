@@ -670,7 +670,677 @@ to do so with:
 HEAD is now at 2307467 .
 ```
 
+```sh
+ ~/Projects/temp % git inti
+git: 'inti' is not a git command. See 'git --help'.
+
+The most similar command is
+        init
+ ~/Projects/temp % git init
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint:
+hint:   git config --global init.defaultBranch <name>
+hint:
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint:
+hint:   git branch -m <name>
+Initialized empty Git repository in /home/fira/Projects/temp/.git/
+ ~/Projects/temp % echo 'foo' > foo.txt
+ ~/Projects/temp % git add . && git commit -m '.'
+[master (root-commit) c5f81d1] .
+ 1 file changed, 1 insertion(+)
+ create mode 100644 foo.txt
+ ~/Projects/temp % echo 'bar' > bar.txt
+ ~/Projects/temp % git add . && git commit -m '.'
+[master ffd062f] .
+ 1 file changed, 1 insertion(+)
+ create mode 100644 bar.txt
+ ~/Projects/temp % git checkout c5f81d1 -- .
+ ~/Projects/temp % git status
+On branch master
+nothing to commit, working tree clean
+ ~/Projects/temp % git clean -fd
+
+ ~/Projects/temp % git restore --source=c5f81d1 --staged --worktree .
+
+ ~/Projects/temp % git add . && git commit -m '.'
+[master af12fc5] .
+ 1 file changed, 1 deletion(-)
+ delete mode 100644 bar.txt
+ ~/Projects/temp % git log
+commit af12fc588513aabfc8b0c90a85814636a994b40a (HEAD -> master)
+Author: Fira <xoyage@gmail.com>
+Date:   Tue Jun 23 21:21:33 2026 +0800
+
+    .
+
+commit ffd062f2e66209391c1b17d691d11e6846ae1e05
+Author: Fira <xoyage@gmail.com>
+Date:   Tue Jun 23 21:18:58 2026 +0800
+
+    .
+
+commit c5f81d1d656ffc6ba3c32dd43ec2666065ec0745
+Author: Fira <xoyage@gmail.com>
+Date:   Tue Jun 23 21:18:41 2026 +0800
+
+    .
 ```
 
+# how to git checkout to a subdir
+
+To check out only a specific subdirectory from a Git repository without downloading or viewing everything else, <mark style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 500; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">use <strong style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 600; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">Git's sparse-checkout feature</strong></mark>. This configuration limits your local working tree to exactly the folders you specify. \[[1](https://medium.com/@judyess/how-to-clone-specific-subdirectory-branch-with-git-3fb02fd35b68), [2](https://www.youtube.com/shorts/UKbAn46yOz0), [3](https://git-scm.com/docs/git-sparse-checkout), [4](https://dev.to/ritek/sparse-checkout-without-command-402h), [5](https://www.atlassian.com/blog/development/handle-big-repositories-git)]
+
+### Method 1: If you have already cloned the repository
+
+If you already have the repository on your machine, navigate to your project root folder in your terminal and run: \[[1](https://stackoverflow.com/questions/600079/how-do-i-clone-a-subdirectory-only-of-a-git-repository), [2](https://komodor.com/blog/solving-fatal-not-a-git-repository-error/)]
+
+bash
+
+```
+# Enable the sparse-checkout feature
+git sparse-checkout init
+
+# Define the exact subdirectory path you want to keep
+git sparse-checkout set path/to/subdirectory
+
+# Verify your files update (only the subdir will remain visible)
+git checkout
 ```
 
+Use code with caution.
+
+### Method 2: If you are cloning a fresh repository (Saves time & bandwidth)
+
+If the repository is large and you want to download _only_ that subfolder, combine a blobless, non-checkout clone with sparse-checkout: \[[1](https://stackoverflow.com/questions/600079/how-do-i-clone-a-subdirectory-only-of-a-git-repository), [2](https://www.youtube.com/shorts/UKbAn46yOz0)]
+
+bash
+
+```
+# 1. Clone the repo structure without downloading files yet
+git clone --filter=blob:none --no-checkout <repository-URL>
+cd <repository-folder>
+
+# 2. Tell Git to target only your desired subfolder
+git sparse-checkout set path/to/subdirectory
+
+# 3. Complete the checkout for your current branch (e.g., main)
+git checkout main
+```
+
+Use code with caution.
+
+### Method 3: Restore a subdirectory to a specific commit or branch \[[1](https://laiyuanyuan-sg.medium.com/streamlining-git-workflows-using-git-switch-and-git-restore-over-git-checkout-6bcd95ac962c)]
+
+If you already have a full repository but want to discard your local changes in a subfolder and revert it to a specific branch or commit hash, pass the folder path at the end of your command: \[[1](https://stackoverflow.com/questions/72807519/how-git-checkout-old-branch-within-a-subdirectory-work), [2](https://www.git-tower.com/learn/git/commands/git-checkout)]
+
+bash
+
+```
+git checkout <branch-or-commit-hash> -- path/to/subdirectory
+```
+
+Use code with caution.
+
+_(Note: If you are using a newer version of Git, you can safely use as a cleaner alternative)._ \[[1](https://www.vervecopilot.com/hot-blogs/git-checkout-file-from-branch)]
+
+If you would like, let me know:
+
+- Are you trying to **save disk space** on a massive repository?
+- Do you want to **permanently split** this subdirectory into its own separate repository?
+- What **Git version** are you currently running? \[[1](https://stackoverflow.com/questions/35820630/how-do-i-checkout-a-sub-directory-in-a-huge-git-repo-with-specified-branch-and-w), [2](https://www.youtube.com/watch?v=HV8hfmwDlPY)]
+
+I can give you the exact optimized script for your specific case.
+
+- [link](https://stackoverflow.com/questions/600079/how-do-i-clone-a-subdirectory-only-of-a-git-repository)\
+  How do I clone a subdirectory only of a Git repository? - Stack Overflow\
+  Mar 1, 2009 — \* 2022 Answer. I'm not sure why there are so many complicated answers to this question. It can be done easily by doing a sparse cl...\
+  Stack Overflow
+- [link](https://stackoverflow.com/questions/72807519/how-git-checkout-old-branch-within-a-subdirectory-work)\
+  How git checkout old\_branch \* within a subdirectory work?\
+  Jun 29, 2022 — 2 Answers. ... Why git branch new\_branch will copy the current release\_branch? git branch new\_branch is short for git branch new\_b...\
+  Stack Overflow
+- [link](https://medium.com/@judyess/how-to-clone-specific-subdirectory-branch-with-git-3fb02fd35b68)\
+  How To Clone Specific Subdirectory/Branch with Git - Medium\
+  Jul 23, 2023 — Git doesn't directly support cloning subdirectories. Use “ — depth”, “sparse-checkout”, and “checkout” commands to do a partial pu...\
+  Medium·JVDY
+
+Show all
+
+## You said: git detached head meaning
+
+A **detached HEAD** means <mark style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 500; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">your Git repository is pointing directly to a specific <strong style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 600; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">commit</strong>, rather than to a named branch pointer</mark> (like `main` or `dev`). \[[1](https://www.deployhq.com/git/faqs/what-is-git-detached-head), [2](https://imagej.net/develop/git/workshop)]
+
+In normal operations, HEAD points to a branch, and the branch points to the latest commit. When you commit, the branch pointer automatically moves forward with you. In a detached HEAD state, any new commits you make will not belong to any branch and can easily be lost. \[[1](https://www.deployhq.com/git/faqs/what-is-git-detached-head), [2](https://labex.io/tutorials/git-how-to-check-if-a-git-repository-is-in-a-detached-head-state-560097), [3](https://www1.se.cuhk.edu.hk/~seem3460/lecture/git-intro-branching-merging.pdf), [4](https://oneuptime.com/blog/post/2026-01-24-git-detached-head-state/view), [5](https://algomaster.io/learn/git/detached-head)]
+
+### Why It Happens
+
+You usually enter this state by explicitly checking out a specific point in time instead of a branch: \[[1](https://www.git-tower.com/learn/git/faq/detached-head-when-checkout-commit), [2](https://careerkarma.com/blog/what-is-a-git-head/)]
+
+- **Checking out a commit hash**: `git checkout 1a2b3c4`
+- **Checking out a remote branch**: `git checkout origin/main` (instead of the local `main`)
+- **Checking out a tag**: `git checkout v1.0.0`
+- **Interactive rebasing**: Git pauses on a specific commit during a `git rebase -i`. \[[1](https://kodekloud.com/blog/git-detached-head/), [2](https://codesignal.com/learn/courses/undoing-changes-and-time-traveling/lessons/navigating-commits-and-detached-heads), [3](https://blog.devgenius.io/what-are-git-refs-the-invisible-threads-of-version-control-3200d8f594c8), [4](https://www.deployhq.com/git/faqs/what-is-git-detached-head), [5](https://circleci.com/blog/git-detached-head-state/)]
+
+### How to Fix It
+
+### Case 1: You just want to go back and undo it (Discard changes) \[[1](https://medium.com/databites/mastering-the-git-workflow-understanding-the-lifecycle-of-your-changes-6c8d1a6ac8f3), [2](https://gitprotect.io/blog/git-undo-13-ways-to-undo-mistakes-in-git/), [3](https://odongo.pl/blog/separation-of-concerns-git/)]
+
+If you just want to get back to safety and you do not care about any experimental changes you made while detached, simply check out your normal branch: \[[1](https://blog.stackademic.com/understanding-git-checkout-the-basics-every-developer-needs-42043ef22728)]
+
+bash
+
+```
+git checkout main
+```
+
+Use code with caution.
+
+_(Or `git switch main` in newer Git versions)._ \[[1](https://tms-outsource.com/blog/posts/what-is-a-git-branch/)]
+
+### Case 2: You made changes and want to keep them \[[1](https://stackoverflow.com/questions/30983500/how-to-save-changes-when-in-detached-head-state)]
+
+If you made new commits while detached and want to save your work, save them into a brand new branch before switching away: \[[1](https://circleci.com/blog/git-detached-head-state/), [2](https://www.linkedin.com/posts/full-stack-ai-engineer-madhukar-anand%5Fwhat-does-head-detached-mean-in-git-activity-7368496172287598592-r3tc)]
+
+bash
+
+```
+# Create and switch to a new branch containing your work
+git checkout -b my-saved-work
+```
+
+Use code with caution.
+
+If you'd like, let me know:
+
+- Did you **make important commits** while in this state?
+- Are you currently stuck in the middle of a **git rebase** or **merge**?
+- What **command** did you run right before this happened?
+
+I can provide the exact commands to get your repository back to a clean state.
+
+- [link](https://www.deployhq.com/git/faqs/what-is-git-detached-head)\
+  What is a "detached HEAD" in a Git repository?\
+  A detached HEAD means HEAD is pointing directly at a specific commit instead of a branch. You're looking at the repository at a pa...\
+  \
+  \
+  DeployHQ
+- [link](https://imagej.net/develop/git/workshop)\
+  Git workshop\
+  Aug 3, 2011 — A branch is a named pointer into the commit graph. The main branch is called 'main' (Subversion's trunk, Mercurial's default). Sin...\
+  \
+  ImageJ Wiki
+- [link](https://www.deployhq.com/git/faqs/what-is-git-detached-head)\
+  What is a "detached HEAD" in a Git repository?\
+  What is a "detached HEAD" in a Git repository? In Git, HEAD is a pointer that tells you which commit your working directory is cur...\
+  \
+  \
+  DeployHQ
+
+Show all
+
+## You said: how to simply let git overwrite as if i edited all files to match a commit state
+
+To make your local files exactly match a specific commit state and discard all local edits, use **`git reset --hard`**. This command instantly overwrites your current working directory and index to match the target commit. \[[1](https://flexiple.com/git/git-revert-to-previous-commit), [2](https://www.boot.dev/blog/devops/git-reset/), [3](https://medium.com/git-happy/mastering-git-reset-a-brief-guide-for-professional-developers-1ac352448d5a), [4](https://www.lineserve.net/blog/how-to-force-git-pull-to-overwrite-local-files-complete-step-by-step-guide)]
+
+### The Direct Fix
+
+Run the following command in your terminal, replacing with your target commit, branch name (like `main`), or tag: \[[1](https://codefinity.com/courses/v2/7533d91f-0a23-44a3-afc7-c84d5072e189/b9a4a4e8-3d95-4d5d-bf29-f87c3fd673a4/c3bcd665-926a-44bf-adf1-d1f97167d536), [2](https://betterstack.com/community/questions/how-to-selectively-merge-or-pick-changes-from-another-branch-in-git/)]
+
+bash
+
+```
+git reset --hard <commit-hash>
+```
+
+Use code with caution.
+
+### Safety Checklist
+
+- **Destructive Action:** This permanently deletes all uncommitted changes.
+
+- **Untracked Files:** It will not delete completely new, untracked files.
+
+- **Clean Untracked Files:** To also erase new, untracked files and folders, run:\
+  bash
+
+<!---->
+
+```
+git clean -fd
+```
+
+Use code with caution.\
+\[[1](https://labex.io/tutorials/git-how-to-discard-unwanted-git-commits-393041), [2](https://blog.mergify.com/git-overwrite-local-branch-with-remote/), [3](https://runcloud.io/blog/git-reset-to-revert-previous-commit)]
+
+If you'd like, let me know:
+
+- Do you need to find the **commit hash** you want to revert to?
+- Are there **specific files** you actually wanted to save?
+- Is this target commit on your **local machine** or a **remote server**?
+
+I can provide the exact steps to locate your commit or safely stash your work first.
+
+- [link](https://flexiple.com/git/git-revert-to-previous-commit)\
+  Git Revert to Previous Commit – How to Revert to Last Commit\
+  Mar 21, 2024 — Hard Reset ( git reset --hard ): This mode is the most drastic. It not only moves the HEAD back to the specified commit but also m...\
+  \
+  \
+  Flexiple
+- [link](https://www.boot.dev/blog/devops/git-reset/)\
+  Git Reset: Undo Commits With --Soft and --Hard\
+  Apr 1, 2026 — git reset --hard moves HEAD and also forces your index and working directory to match the target commit, discarding local changes.\
+  \
+  \
+  Boot.dev
+- [link](https://medium.com/git-happy/mastering-git-reset-a-brief-guide-for-professional-developers-1ac352448d5a)\
+  Mastering git reset To Undo Commits and Rewind Git Repos | by Dr. Derek Austin 🥳 | git happy\
+  Oct 15, 2023 — This command is as firm as it sounds. It ( Hard Git Reset ) resets the HEAD, index, and working directory to match the specified c...\
+  \
+  \
+  Medium
+
+Show all
+
+## You said: can i reset hard on a subdir
+
+<mark style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 500; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 600; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>No, you cannot run </strong><code dir="ltr" style="font-family: monospace; font-size: 14px; font-weight: 600; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 1px solid rgb(44, 46, 53);">git reset --hard</code> on a specific subdirectory.</strong></mark> The `git reset` command only operates on the entire repository at once; it does not accept a directory path as an argument. \[[1](https://deepdocs.dev/git-reset-hard-origin/), [2](https://phoenixnap.com/kb/git-reset-hard)]
+
+If you try to run `git reset --hard path/to/dir`, Git will throw an error. \[[1](https://deepdocs.dev/git-reset-hard-origin/)]
+
+### How to achieve the exact same result for one subdirectory
+
+To overwrite a specific subdirectory so it perfectly matches a target commit state, use **`git checkout`** (or **`git restore`**) followed by **`git clean`**.
+
+### Step 1: Overwrite tracked files to match the commit \[[1](https://phoenixnap.com/kb/git-reset-hard), [2](https://www.humankode.com/git/how-to-reset-to-a-commit-in-git/)]
+
+Run this command to force all tracked files in that subfolder to match your target commit, branch, or tag: \[[1](https://www.devzery.com/post/guide-to-git-reset-hard), [2](https://graphite.com/guides/how-to-use-git-reset-hard-head)]
+
+bash
+
+```
+git checkout <commit-hash> -- path/to/subdirectory
+```
+
+Use code with caution.
+
+_(If you use a newer Git version, you can alternatively run: )._
+
+### Step 2: Delete new, untracked files in that folder
+
+The checkout command will not delete new files you created locally in that folder. To completely wipe them out so the directory is perfectly clean, run:
+
+bash
+
+```
+git clean -fd path/to/subdirectory
+```
+
+Use code with caution.
+
+### Summary of the difference
+
+- **`git reset --hard`**: Wipes out changes across your **entire repository**.
+- : Wipes out changes only inside the **specified path**. \[[1](https://www.devzery.com/post/guide-to-git-reset-hard), [2](https://medium.com/@burakscha/recovering-from-a-hard-reset-in-git-a-comprehensive-guide-be29bd8004df)]
+
+If you'd like, let me know:
+
+- Do you want to match the folder to **`HEAD` (your current branch's latest commit)** or an **older commit**?
+- Are you trying to undo a **mistaken file deletion** or a **bad code edit**?
+- Do you need to **preview what will be deleted** before you run the destructive clean command?
+
+I can give you a safe dry-run command to test your changes first.
+
+- [link](https://deepdocs.dev/git-reset-hard-origin/)\
+  A Developer's Guide to Git Reset Hard Origin\
+  Feb 10, 2026 — If you used git reset --hard and wiped out uncommitted changes in your working directory or staging area, Git itself cannot bring ...\
+  \
+  \
+  DeepDocs
+- [link](https://phoenixnap.com/kb/git-reset-hard)\
+  git reset --hard Explained\
+  Feb 4, 2026 — A hard reset updates multiple internal Git components simultaneously. Instead of only moving the branch pointer, it forces your en...\
+  \
+  \
+  phoenixNAP
+- [link](https://deepdocs.dev/git-reset-hard-origin/)\
+  A Developer's Guide to Git Reset Hard Origin\
+  Feb 10, 2026 — If you used git reset --hard and wiped out uncommitted changes in your working directory or staging area, Git itself cannot bring ...\
+  \
+  \
+  DeepDocs
+
+Show all
+
+## You said: how to git checkout wo letting git know. as if i manually reverted everything. keep all commit history linear on master. no new branch.
+
+To make your local files exactly match an older commit state without creating a detached HEAD, changing branches, or altering your current commit history, you need to update the working directory files and then create a new commit on your current branch. \[[1](https://blog.sasworkshops.com/navigating-a-git-repository/), [2](https://stackoverflow.com/questions/9529078/how-do-i-use-git-reset-hard-head-to-revert-to-a-previous-commit), [3](https://blog.webhostmost.com/git-commands-cheat-sheet/), [4](https://github.com/git-cola/git-cola/issues/890), [5](https://nulab.com/learn/software-development/git-tutorial/git-collaboration/switching-branches/)]
+
+The strategy is to use **`git checkout` on the root directory (`.`)** targeted at your desired commit. Git treats this as a massive manual file edit, keeping you safely on the `master` branch. \[[1](https://wiki.gnucash.org/wiki/Git), [2](https://missing.csail.mit.edu/2019/version-control/)]
+
+### The Step-by-Step Solution
+
+Run these commands from the root of your Git repository: \[[1](https://www.grantholtes.com/assets/documents/Github%5Fnotes.pdf)]
+
+bash
+
+```
+# 1. Overwrite all tracked files to match the target commit state
+git checkout <target-commit-hash> -- .
+
+# 2. (Optional) Remove any new untracked files created since that commit
+git clean -fd
+
+# 3. Stage all the changes
+git add -A
+
+# 4. Commit the changes to master
+git commit -m "Revert all files to match commit <target-commit-hash>"
+```
+
+Use code with caution.
+
+### Why This Works Perfectly For Your Case
+
+- **No Detached HEAD:** Running updates the files in place rather than moving the `HEAD` pointer. You stay on `master`.
+- **Linear History:** This creates a standard, forward-moving commit on `master`. Your history remains completely linear.
+- **No New Branches:** You do not need to create or merge any temporary branches.
+- **Looks Manual:** To Git and your coworkers, it looks exactly as if you opened every file and manually changed the code back to the old version. \[[1](https://medium.com/a-lady-dev/lets-pretend-this-never-happened-undoing-changes-in-git-de49a68d7ce4), [2](https://www.atlassian.com/git/tutorials/resetting-checking-out-and-reverting), [3](https://www.reddit.com/r/git/comments/hzo01w/help%5Fgit%5Fcheckout%5Foriginmaster%5Fdeleted%5Fall%5Fmy/), [4](https://community.appsmith.com/tutorial/hands-guide-git-rebase-resolving-conflicts), [5](https://codingcraftsman.wordpress.com/2021/01/11/the-linear-git-history/)]
+
+If you'd like, let me know:
+
+- Do you need help **finding the exact commit hash** of that older state?
+- Do you want to **preview the file changes** before making the final commit?
+- Are you planning to **push this change to a shared remote server** right away?
+
+I can provide the exact logging or diff commands to verify your files before saving them.
+
+- [link](https://blog.sasworkshops.com/navigating-a-git-repository/)\
+  Navigating a git repository\
+  Jun 22, 2020 — if HEAD was pointing at a branch, that branch ref stays put. Once the HEAD is moved, the working copy and index are updated to mat...\
+  \
+  \
+  SAS Workshops
+- [link](https://stackoverflow.com/questions/9529078/how-do-i-use-git-reset-hard-head-to-revert-to-a-previous-commit)\
+  How do I use 'git reset --hard HEAD' to revert to a previous commit?\
+  Mar 2, 2012 — 2 Answers 2 Change your current branch to point to the older commit instead. You could do that with git reset --hard f414f31 . Cre...\
+  \
+  \
+  Stack Overflow
+- [link](https://blog.webhostmost.com/git-commands-cheat-sheet/)\
+  Git Commands Cheat Sheet 2026: 30 Essential Commands Every Developer Needs\
+  Feb 19, 2026 — When you switch branches, Git updates your working directory to match the target branch's files. Changes from your previous branch...\
+  \
+  \
+  WebHostMost
+
+Show all
+
+## You said: git checkout -- . no effect
+
+If had no effect, it means **your local working directory already matches that target commit perfectly.** Git looked at the files, saw zero differences, and changed nothing. \[[1](https://labex.io/tutorials/git-how-to-exit-git-detached-head-mode-452169), [2](https://www.thedataschool.co.uk/charles-yi/wheres-your-head-at-a-guide-to-reverting-in-git/), [3](https://tms-outsource.com/blog/posts/what-is-a-commit-hash/), [4](https://medium.com/sysf/become-a-git-pro-in-just-one-blog-a-thorough-guide-to-git-architecture-and-command-line-interface-93fbe9bdb395), [5](https://www.reddit.com/r/gitlab/comments/x83hxb/git%5Fcommands%5Fdo%5Fnothing%5Fno%5Ferrors%5Feither/)]
+
+Here are the reasons why this happens and how to get the result you actually want:
+
+### Reason 1: You are targeting the wrong commit
+
+If you targeted your **most recent commit** (e.g., `HEAD`), checking it out will change nothing because your files already match it. \[[1](https://phoenixnap.com/kb/git-switch-vs-checkout)]
+
+- **The Fix:** Run `git log --oneline` to find the hash of the older, past commit you actually want to revert to. \[[1](https://unstop.com/blog/git-cherry-pick), [2](https://deyunarusmiland.medium.com/how-i-would-learn-a-git-commands-if-i-could-start-over-85db38bc88ff), [3](https://tms-outsource.com/blog/posts/how-to-revert-to-a-previous-commit-in-github/)]
+
+### Reason 2: Git thinks your files are unchanged due to cached index \[[1](https://stackoverflow.com/questions/68137193/how-do-i-force-git-to-detect-changed-files-due-to-working-tree-encoding)]
+
+Sometimes Git's internal tracking cache gets out of sync, or you have uncommitted changes that are confusing the command. \[[1](https://www.sglavoie.com/posts/git-the-gist-of-it-common-commands-for-a-working-workflow/)]
+
+- **The Force Fix (Using `git restore`):** In modern Git, use the cleaner `restore` command which bypasses old checkout quirks:\
+  bash
+
+<!---->
+
+```
+git restore --source=<target-commit-hash> .
+```
+
+Use code with caution.\
+\[[1](https://unwiredlearning.com/blog/git-restore-checkout)]
+
+### Reason 3: The changes are in untracked files \[[1](https://www.reddit.com/r/git/comments/1fdespe/git%5Fcheckout%5Fdiffers%5Ffrom%5Fcommit/)]
+
+If you see extra files or folders that shouldn't be there, `git checkout` will ignore them because Git isn't tracking them yet.
+
+- **The Fix:** Force-remove all untracked files and folders to match the clean state of that past commit:\
+  bash
+
+<!---->
+
+```
+git clean -fd
+```
+
+Use code with caution.\
+\[[1](https://www.geeksforgeeks.org/git/git-interview-questions-and-answers/)]
+
+### Alternative: The "Hard Reset + Soft Reset" Trick \[[1](https://docs.vultr.com/how-to-remove-commits-from-a-git-commit-history)]
+
+If you want to absolutely force your files to match a target commit while keeping your history linear on `master`, you can use this bulletproof alternative. It guarantees a visible change in your staging area: \[[1](https://blog.mergify.com/git-reset-to-remote-head/), [2](https://bindushrestha.medium.com/git-commands-to-undo-changes-58fd7a068367)]
+
+bash
+
+```
+# 1. Force your local files and HEAD to the old commit
+git reset --hard <target-commit-hash>
+
+# 2. Stretch HEAD back to where master used to be (without changing the files)
+git reset --soft ORIG_HEAD
+
+# 3. Commit the differences
+git commit -m "Force overwrite files to match <target-commit-hash>"
+```
+
+Use code with caution.
+
+If you'd like, let me know:
+
+- What is the output when you run **`git status`** right now?
+- Is the target commit an **older commit** in your history, or a **different branch**?
+- Are you trying to get rid of **uncommitted changes**, or go back to an **old version of the project**?
+
+I can pinpoint exactly why Git is sitting idle.
+
+- [link](https://labex.io/tutorials/git-how-to-exit-git-detached-head-mode-452169)\
+  How to exit git detached HEAD mode\
+  When Detached HEAD Happens Checking out a specific commit using git checkout Checking out a tag Checking out a remote branch witho...\
+  \
+  LabEx
+- [link](https://www.thedataschool.co.uk/charles-yi/wheres-your-head-at-a-guide-to-reverting-in-git/)\
+  Where's Your HEAD at? A Guide to Reverting in Git\
+  The key is the third command: git checkout –-. With the previous command in step two, I remove all files in the revert-master bran...\
+  \
+  \
+  The Data School
+- [link](https://tms-outsource.com/blog/posts/what-is-a-commit-hash/)\
+  What Is a Commit Hash? Why It Matters in Git\
+  Jan 15, 2026 — Yes. Running git checkout puts your working directory into a detached HEAD state at that exact commit. This lets you inspect, test...\
+  \
+  \
+  tms-outsource.com
+
+Show all
+
+## You said: still two files. ~/Projects/temp % echo 'foo' > foo.txt
+
+\~/Projects/temp % git add . && git commit -m '.'\
+\[master (root-commit) c5f81d1] .\
+1 file changed, 1 insertion(+)\
+create mode 100644 foo.txt\
+\~/Projects/temp % echo 'bar' > bar.txt\
+\~/Projects/temp % git add . && git commit -m '.'\
+\[master ffd062f] .\
+1 file changed, 1 insertion(+)\
+create mode 100644 bar.txt\
+\~/Projects/temp % git checkout c5f81d1 -- .
+
+Ah, that explains it perfectly!
+
+The reason `git checkout c5f81d1 -- .` left `bar.txt` untouched is because of how works. It **overwrites or restores** files that existed in the target commit, but it **does not delete files** that were introduced _after_ that commit. Because `bar.txt` didn't exist in `c5f81d1`, Git simply ignored it and left it in your folder.
+
+To get rid of `bar.txt` and truly match the state where only `foo.txt` exists, you have two options.
+
+### Option 1: The `git clean` command (Recommended)
+
+`git checkout` leaves the newer files in your directory as "untracked" files. To delete them immediately after your checkout, run:
+
+bash
+
+```
+git clean -fd
+```
+
+Use code with caution.
+
+- `f` means force delete.
+- `d` means include directories.
+- This will instantly delete `bar.txt` from your disk.
+
+### Option 2: The Reset Trick (Bulletproof)
+
+If you want a single command path that handles both modifying files and deleting newer files automatically, use the hard/soft reset method:
+
+bash
+
+```
+# 1. Force the files and directory to exactly match the old commit (deletes bar.txt)
+git reset --hard c5f81d1
+
+# 2. Point master back to the top commit (ffd062f) without touching your files
+git reset --soft ffd062f
+
+# 3. Commit the deletion of bar.txt safely to master
+git commit -m "Remove bar.txt to match c5f81d1 state"
+```
+
+Use code with caution.
+
+If you'd like, let me know:
+
+- Do you want to see a **preview** of what `git clean` will delete before it happens?
+- Are there any **uncommitted changes** in your folder you need to save first?
+- Are you planning to run this sequence on a **much larger repository**?
+
+I can help you adjust the commands to make sure no critical data is accidentally lost.
+
+## You said: still two files. you must not reset. ~/Projects/temp % echo 'foo' > foo.txt
+
+\~/Projects/temp % git add . && git commit -m '.'\
+\[master (root-commit) c5f81d1] .\
+1 file changed, 1 insertion(+)\
+create mode 100644 foo.txt\
+\~/Projects/temp % echo 'bar' > bar.txt\
+\~/Projects/temp % git add . && git commit -m '.'\
+\[master ffd062f] .\
+1 file changed, 1 insertion(+)\
+create mode 100644 bar.txt\
+\~/Projects/temp % git checkout c5f81d1 -- .\
+\~/Projects/temp % git status\
+On branch master\
+nothing to commit, working tree clean\
+\~/Projects/temp % git clean -fd
+
+Understood. Because updates your working directory but leaves newly introduced files untouched, Git sees those files (`bar.txt`) as tracked files matching your current `HEAD` commit (`ffd062f`). As a result, `git status` shows a clean working tree, and `git clean -fd` does absolutely nothing because `bar.txt` is not considered "untracked."
+
+If you **must not use reset**, you can use **`git rm`** or **`git restore`** to tell Git to explicitly delete the files introduced after your target commit.
+
+### Solution 1: Use `git rm` (The Safest Way)
+
+Instead of checking out the files, tell Git to delete everything in the directory first, then restore only the files from your target commit. This forces Git to stage the deletion of `bar.txt`.
+
+bash
+
+```
+# 1. Delete all tracked files from the working tree
+git rm -r .
+
+# 2. Restore all files exactly as they were in your target commit
+git checkout c5f81d1 -- .
+```
+
+Use code with caution.
+
+### Solution 2: Use Modern `git restore`
+
+If you are on a modern version of Git, you can use the `--staged` and `--worktree` flags with `git restore`. This forces both your index and working tree to match the target commit, automatically staging the deletion of `bar.txt`.
+
+bash
+
+```
+git restore --source=c5f81d1 --staged --worktree .
+```
+
+Use code with caution.
+
+### Why these work without `git reset`
+
+- **`git rm -r .`** stages the deletion of every file in the repository (including `bar.txt`).
+- When you follow up with **`git checkout c5f81d1 -- .`**, Git brings back `foo.txt` because it existed in that commit, but it leaves `bar.txt` deleted.
+- Your history stays linear, you stay on `master`, and `git status` will now correctly show `deleted: bar.txt` ready to be committed.
+
+If you'd like, let me know:
+
+- What does your **`git status`** show after running the `git rm` step?
+- Do you want to **automate this into a single bash alias** for future use?
+- Are you dealing with any **submodules** in this repository that might affect the deletion?
+
+I can help you wrap this into a clean command you can reuse safely.
+
+## You said: git restore works. can i change . to a subdir wo config.
+
+<mark style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 500; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 600; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong>Yes, you can change </strong><code dir="ltr" style="font-family: monospace; font-size: 14px; font-weight: 600; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 1px solid rgb(44, 46, 53);">.</code> to a subdirectory path.</strong></mark> The `git restore` command accepts specific paths and handles them perfectly without any extra configuration. \[[1](https://dpericich.medium.com/how-to-revert-local-changes-with-git-restore-4925e5e4cfd4), [2](https://phoenixnap.com/kb/git-checkout-file-from-another-branch)]
+
+To overwrite a specific subdirectory so it matches a target commit state (including deleting any files created after that commit), run:
+
+bash
+
+```
+git restore --source=c5f81d1 --staged --worktree path/to/subdir
+```
+
+Use code with caution.
+
+### How it behaves on a subdirectory
+
+- **Modifies existing files:** Overwrites tracked files in that subfolder to match the target commit.
+- **Deletes newer files:** Automatically removes and stages the deletion of any files inside that subfolder that did not exist in the target commit.
+- **Leaves everything else alone:** Files and folders outside of `path/to/subdir` remain completely untouched. \[[1](https://git-scm.com/docs/git-reset), [2](https://deepdocs.dev/git-reset-hard-origin/), [3](https://www.reddit.com/r/git/comments/16pqw7j/git%5Frestore%5Fall%5Ffiles%5Fwith%5Fspecific%5Fextension/), [4](https://graphite.com/guides/git-restore), [5](https://www.git-tower.com/learn/git/commands/git-restore)]
+
+If you'd like, let me know:
+
+- Do you want to verify **which files will change** before running the restore?
+- Are you targeting an **absolute path** or a **relative path** from your current shell location?
+- Are there any **nested subdirectories** inside that folder you want to exclude?
+
+I can provide the exact command or diff flags to help you double-check.
+
+- [link](https://dpericich.medium.com/how-to-revert-local-changes-with-git-restore-4925e5e4cfd4)\
+  How to Revert Local Changes with Git Restore\
+  Jan 26, 2022 — The git restore command lets you accomplish a number of different functions. Git restore 'restores specified paths in the working ...\
+  \
+  \
+  Medium
+- [link](https://phoenixnap.com/kb/git-checkout-file-from-another-branch)\
+  Git: Checkout a File from Another Branch\
+  Apr 6, 2023 — Another way to check out a file in Git is to use the git restore command. The command restores a specified path in the working tre...\
+  \
+  \
+  phoenixNAP
+- [link](https://git-scm.com/docs/git-reset)\
+  git-reset Documentation\
+  Overwrite all files and directories with the version from , and may overwrite untracked files. Tracked files not in are removed so...\
+  \
+  Git
+
+Show all
+
+# 

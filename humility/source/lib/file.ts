@@ -163,6 +163,11 @@ export function init({ name, xdg = true }: { name: non_empty_string, xdg?: boole
   }
 }
 
+export function home() {
+  return homedir()
+}
+
+// todo: handle ~
 export function path(...args) {
   return join(...args)
 }
