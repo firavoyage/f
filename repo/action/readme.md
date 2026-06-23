@@ -1,5 +1,6 @@
 actions
 
-- save: checkpoint
-- sync: push to all remotes (pull?)
-- give 
+- save
+- sync
+- restore prev commit, name, or hash
+
