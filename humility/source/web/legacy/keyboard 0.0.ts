@@ -24,18 +24,20 @@ const shift_keys = {
   "|": "shift+\\"
 }
 
-type shortcutid = number
 type action = (event: KeyboardEvent) => void
 
-let shortcutid: shortcutid = 0
-// const actions: Map<number, action> = new Map()
-const bindings: Map<shortcutid, { shortcut: string, action: action }> = new Map()
-const shortcuts: Map<string, Set<shortcutid>> = new Map()
+let shortcutid = 0
+const actions: Map<number, action> = new Map()
+const bindings: Record<number, string> = {}
+const shortcuts: Record<string, Set<number>> = {}
 
 function call(shortcut: string, event: KeyboardEvent) {
-  if (shortcuts.has(shortcut)) {
+  if (shortcuts[shortcut]) {
     for (const shortcutid of shortcuts[shortcut]) {
-      bindings.get(shortcutid)?.action(event)
+      const action = actions.get(shortcutid)
+      if (action) {
+        action(event)
+      }
     }
   }
 }
@@ -51,9 +53,10 @@ function normalize(shortcut: string) {
 export function bind(shortcut: string, action: action): number {
   shortcut = normalize(shortcut)
 
+  actions.set(shortcutid, action)
   shortcuts[shortcut] = shortcuts[shortcut] || new Set()
   shortcuts[shortcut].add(shortcutid)
-  bindings[shortcutid] = { shortcut, action }
+  bindings[shortcutid] = shortcut
 
   // it will work whether it overrides or not
   mousetrap.bind(shortcut, (event) => {
@@ -67,7 +70,7 @@ export function unbind(shortcutid: number) {
   const shortcut = bindings[shortcutid]
 
   shortcuts[shortcut].delete(shortcutid)
-  bindings.delete(shortcutid)
+  actions.delete(shortcutid)
 
   if (shortcuts[shortcut].size == 0) {
     // @ts-expect-error

@@ -39,6 +39,7 @@ export default defineConfig(
       // do not over engineer for maximum robustness
       "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/no-floating-promises": "error",
+      "@typescript-eslint/ban-ts-comment": "off",
       // "no-restricted-syntax": [
       //   "error",
       //   {

@@ -19,6 +19,7 @@
 
     "strict": true,
     "noImplicitAny": false, // override strict
+    "noImplicitAny": false, // override strict
     "strictNullChecks": true,
     "skipLibCheck": true,
     "types": ["node"] // not to auto-scan the disk for hidden @types packages
