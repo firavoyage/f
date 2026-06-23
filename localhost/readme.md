@@ -6,13 +6,13 @@ install deps <!-- (e.g. ubuntu) -->
 
 ```sh
 sudo apt install -y caddy jq yq
-sudo caddy trust
+# sudo caddy trust
 ```
 
 install
 
 ```sh
-chmod +x install.sh
+# chmod +x install.sh
 ./install.sh
 ```
 
@@ -31,5 +31,5 @@ journalctl -u localhost -n 10 --no-pager
 
 note
 
-- command must be a binary. it could not be cd. wrap with `zsh -ic`.
-- it's in sudo. point to the binary directly if it's in userspace.
+- command must be a binary. it could not be cd. wrap inside `zsh -ic` if needed.
+- it works in sudo. point to the binary directly if in userspace.

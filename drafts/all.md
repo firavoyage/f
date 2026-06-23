@@ -277,6 +277,7 @@ desktop:
 - install librechat
 - oom vscode markdown extensions ram
 - install nextcloud
+- shell chmod x command history
 
 android:
 
