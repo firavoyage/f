@@ -1,8 +1,6 @@
 import { exec as callback_exec } from 'node:child_process';
 import { promisify } from 'node:util';
 
-
-
 /**
  * execa does not do much. just write it myself.
  * 
@@ -11,9 +9,10 @@ import { promisify } from 'node:util';
 const exec = handle(promisify(callback_exec));
 
 const non_zero_exit = 'non_zero_exit'
-const non_empty_stderr = 'non_empty_stderr'
+const non_empty_stderr = 'stderr'
+// const non_empty_stderr = 'non_empty_stderr'
 
-export async function run(command: string, options: options) {
+export async function run(command: string, options?) {
   const exec_result = await exec(command, options);
 
   if (is_error(exec_result)) {
