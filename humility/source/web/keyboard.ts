@@ -28,15 +28,12 @@ type shortcutid = number
 type action = (event: KeyboardEvent) => void
 
 let shortcutid: shortcutid = 0
-// const actions: Map<number, action> = new Map()
 const bindings: Map<shortcutid, { shortcut: string, action: action }> = new Map()
 const shortcuts: Map<string, Set<shortcutid>> = new Map()
 
 function call(shortcut: string, event: KeyboardEvent) {
-  if (shortcuts.has(shortcut)) {
-    for (const shortcutid of shortcuts[shortcut]) {
-      bindings.get(shortcutid)?.action(event)
-    }
+  for (const shortcutid of shortcuts.get(shortcut) ?? []) {
+    bindings.get(shortcutid)?.action(event)
   }
 }
 
@@ -51,12 +48,14 @@ function normalize(shortcut: string) {
 export function bind(shortcut: string, action: action): number {
   shortcut = normalize(shortcut)
 
-  shortcuts[shortcut] = shortcuts[shortcut] || new Set()
-  shortcuts[shortcut].add(shortcutid)
-  bindings[shortcutid] = { shortcut, action }
+  if (!shortcuts.has(shortcut)) {
+    shortcuts.set(shortcut, new Set())
+  }
+  shortcuts.get(shortcut)?.add(shortcutid)
+  bindings.set(shortcutid, { shortcut, action })
 
   // it will work whether it overrides or not
-  mousetrap.bind(shortcut, (event) => {
+  mousetrap.bind(shortcut, (event: KeyboardEvent) => {
     call(shortcut, event)
   })
 
@@ -64,12 +63,12 @@ export function bind(shortcut: string, action: action): number {
 }
 
 export function unbind(shortcutid: number) {
-  const shortcut = bindings[shortcutid]
+  const { shortcut } = bindings.get(shortcutid)!
 
-  shortcuts[shortcut].delete(shortcutid)
+  shortcuts.get(shortcut)?.delete(shortcutid)
   bindings.delete(shortcutid)
 
-  if (shortcuts[shortcut].size == 0) {
+  if (shortcuts.get(shortcut)?.size == 0) {
     // @ts-expect-error
     mousetrap.unbind(shortcut)
   }
