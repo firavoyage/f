@@ -37983,6 +37983,16 @@ Well, she has taken 1v1 course two years ago so she knows what the problems are 
 
 11 40 add professionalism to values.
 
+16 20 check https://github.com/tommy0103/obelisk https://github.com/tommy0103/kairos-runtime. 
+
+questionable internationalization. no cross plat compatibility.
+
+basically, export all claude and codex sessions, instruct them how to search, and show a vibe ui.
+
+<!-- i guess the more fundamental things is, it might not be how well the agent does, but what you do w or wo agents that matters. -->
+
+<!-- you cant do much unless the problem itself is complex. and however you do it, you could do it directly somehow, and you are just automating at the tradeoff of being probabilistic. you could not have a crazy dramatic project when it could be done easily directly. -->
+
 
 
 <!-- timebox, plan. -->
