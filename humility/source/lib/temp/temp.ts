@@ -1,5 +1,13 @@
-type IsAnyExceptErr<T> = (0 extends 1 & T ? never : T) extends object
-  ? (typeof ErrSymbol extends keyof T ? never : T)
-  : T;
+function temp(): result<string>  {
+  if (Math.random()) {
+    return err('err')
+  } 
 
-type ExceptErr<T> = (0 extends 1 & T ? never : T) & { [K in typeof ErrSymbol]?: never };
+  return 'ok'
+}
+
+let a = temp()
+
+function math() {
+  
+}

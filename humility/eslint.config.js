@@ -25,7 +25,7 @@ export default defineConfig(
     ignores: [
       "**/legacy/**",
       "**/ref/**", // readonly references from other repos w .git removed
-      // "**/temp/**",
+      "**/temp/**",
     ],
   },
 
