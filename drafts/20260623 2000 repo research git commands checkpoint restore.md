@@ -1,43 +1,47 @@
+<!-- google ai mode is weird, removing some content upon paste. fixed via mhtml. -->
+
 # all git commands
 
-The official [Git Documentation](https://git-scm.com/docs) tracks well over 150 unique plumbing and porcelain commands. However, daily development relies heavily on a core subset of about 30 essential commands. \[[1](https://git-scm.com/docs), [2](https://www.linkedin.com/posts/nk-systemdesign-one%5Fgit-has-152-commands-but-many-people-dont-activity-7263905174476222464-Y%5FCc), [3](https://www.netcomlearning.com/blog/top-github-commands-cheat-sheet)]
+1:04 AM
 
-Below is a comprehensive categorization of Git commands sorted by function, ranging from basic setup to advanced history rewriting. \[[1](https://www.slideshare.net/slideshow/github-gitcheatsheet/32794568), [2](https://gitprotect.io/blog/git-commands-list-with-examples/)]
+The official [Git Documentation](https://git-scm.com/docs) tracks well over 150 unique plumbing and porcelain commands. However, daily development relies heavily on a core subset of about 30 essential commands. [link](https://git-scm.com/docs)
+
+Below is a comprehensive categorization of Git commands sorted by function, ranging from basic setup to advanced history rewriting.
 
 ### Setup and Initialization
 
 - `git init`: Initializes a brand new local Git repository in the current folder.
-- : Copies an existing remote repository to your local system, downloading all history and branches.
+- `git clone <url>`: Copies an existing remote repository to your local system, downloading all history and branches.
 - `git config --global user.name "Name"`: Sets the author name configuration globally across your machine.
-- `git config --global user.email "email@example.com"`: Sets the author email configuration globally across your machine. \[[1](https://www.geeksforgeeks.org/git/useful-github-commands/), [2](https://docs.github.com/en/get-started/using-git/about-git), [3](https://lokalise.com/blog/10-git-commands-for-day-to-day-work/), [4](https://www.geeksforgeeks.org/git/top-12-most-used-git-commands-for-developers/), [5](https://www.youtube.com/watch?v=8JJ101D3knE), [6](https://www.netcomlearning.com/blog/top-github-commands-cheat-sheet)]
+- `git config --global user.email "email@example.com"`: Sets the author email configuration globally across your machine. [link](https://www.geeksforgeeks.org/git/useful-github-commands/)
 
-### The Core Staging and Committing Workflow \[[1](https://coddy.tech/landing/git)]
+### The Core Staging and Committing Workflow
 
 - `git status`: Displays the status of your working tree, listing files that are modified, staged, or untracked.
-- : Moves changes from your working directory to the staging area.
+- `git add <file>`: Moves changes from your working directory to the staging area.
 - `git add .`: Stages all modified and untracked file changes in the current directory.
 - `git commit -m "message"`: Permanently saves your staged changes as a snapshot in the local version history.
-- `git commit -am "message"`: Shortcuts the staging (`git add`) and committing process for already tracked files. \[[1](https://www.youtube.com/watch?v=2ldhr1vQtoI), [2](https://www.atlassian.com/git/glossary), [3](https://dzone.com/articles/top-20-git-commands-with-examples), [4](https://docs.github.com/en/get-started/using-git/about-git), [5](https://www.geeksforgeeks.org/git/useful-github-commands/), [6](https://lokalise.com/blog/10-git-commands-for-day-to-day-work/), [7](https://www.geeksforgeeks.org/git/top-12-most-used-git-commands-for-developers/)]
+- `git commit -am "message"`: Shortcuts the staging (`git add`) and committing process for already tracked files. [link](https://www.youtube.com/watch?v=2ldhr1vQtoI)
 
 ### Branching and Merging
 
 - `git branch`: Lists all the local branches available in your current repository.
 - `git branch -a`: Lists all local and remote-tracking branches together.
-- : Creates a new parallel timeline branch referencing your current HEAD.
-- : Deletes a local branch, but only if it has already been safely merged.
-- : Forces the deletion of a local branch even if it contains unmerged changes.
-- : Switches your working directory to an existing branch.
-- : Simultaneously creates a new branch and switches your active working directory to it.
-- : A modern, safer alternative specifically dedicated to switching branches.
-- : Joins the historical timeline of a specified branch into your current active branch. \[[1](https://docs.gitlab.com/topics/git/commands/), [2](https://www.gitkraken.com/learn/git/commands), [3](https://about.gitlab.com/images/press/git-cheat-sheet.pdf), [4](https://github.blog/developer-skills/github/top-12-git-commands-every-developer-must-know/), [5](https://www.youtube.com/watch?v=rE2zRhZdjFU), [6](https://dzone.com/articles/top-20-git-commands-with-examples), [7](https://www.netcomlearning.com/blog/top-github-commands-cheat-sheet), [8](https://docs.github.com/en/get-started/using-git/about-git)]
+- `git branch <branch-name>`: Creates a new parallel timeline branch referencing your current HEAD.
+- `git branch -d <branch-name>`: Deletes a local branch, but only if it has already been safely merged.
+- `git branch -D <branch-name>`: Forces the deletion of a local branch even if it contains unmerged changes.
+- `git checkout <branch>`: Switches your working directory to an existing branch.
+- `git checkout -b <branch>`: Simultaneously creates a new branch and switches your active working directory to it.
+- `git switch <branch>`: A modern, safer alternative specifically dedicated to switching branches.
+- `git merge <branch>`: Joins the historical timeline of a specified branch into your current active branch. [link](https://docs.gitlab.com/topics/git/commands/)
 
 ### Sharing and Syncing with Remote Repositories
 
-- : Connects your local repository to a remote repository URL.
+- `git remote add <name> <url>`: Connects your local repository to a remote repository URL.
 - `git remote -v`: Lists all linked remote connections along with their fetch and push URLs.
-- : Downloads all branches, tags, and history from the remote repository without altering your local files.
+- `git fetch <remote>`: Downloads all branches, tags, and history from the remote repository without altering your local files.
 - `git pull`: Downloads updates from the tracking remote branch and immediately merges them into your active branch.
-- : Uploads your local branch commits up to the remote repository. \[[1](https://education.github.com/git-cheat-sheet-education.pdf), [2](https://git-scm.com/cheat-sheet.pdf), [3](https://www.geeksforgeeks.org/git/useful-github-commands/), [4](https://docs.github.com/en/get-started/using-git/about-git), [5](https://www.geeksforgeeks.org/git/top-12-most-used-git-commands-for-developers/)]
+- `git push <remote> <branch>`: Uploads your local branch commits up to the remote repository. [link](https://education.github.com/git-cheat-sheet-education.pdf)
 
 ### Inspection, Comparison, and History Exploration
 
@@ -45,43 +49,45 @@ Below is a comprehensive categorization of Git commands sorted by function, rang
 - `git log --oneline`: Simplifies the history view, printing each commit on a single line with a short hash and message.
 - `git diff`: Shows the exact line-by-line differences of unstaged modifications in your working tree.
 - `git diff --staged`: Shows line-by-line changes between your staged area and the last commit.
-- : Annotates every single line of a file with information on who last changed it and when.
-- : Displays the author details, timestamp, and specific code changes introduced by a single commit. \[[1](https://git-scm.com/cheat-sheet), [2](https://www.geeksforgeeks.org/git/top-12-most-used-git-commands-for-developers/), [3](https://dzone.com/articles/top-20-git-commands-with-examples), [4](https://www.geeksforgeeks.org/git/useful-github-commands/), [5](https://docs.gitlab.com/topics/git/commands/), [6](https://git-scm.com/cheat-sheet.pdf)]
+- `git blame <file>`: Annotates every single line of a file with information on who last changed it and when.
+- `git show <commit>`: Displays the author details, timestamp, and specific code changes introduced by a single commit. [link](https://git-scm.com/cheat-sheet)
 
 ### Undoing and Repairing Mistakes
 
-- : Discards unstaged modifications in your working directory, resetting the file to the last commit.
+- `git restore <file>`: Discards unstaged modifications in your working directory, resetting the file to the last commit.
 - `git commit --amend`: Modifies your absolute most recent commit, letting you append new files or fix a typo in the commit message.
 - `git reset --soft HEAD~1`: Undoes the last commit but leaves your actual code changes intact and staged in the staging area.
 - `git reset --hard HEAD~1`: Destroys the most recent commit, unstages the files, and completely deletes all associated code modifications.
-- : Creates a completely new commit that applies the exact opposite changes of a specified historical commit.
-- `git clean -fd`: Forces the deletion of all untracked files and untracked directories from your local directory workspace. \[[1](https://www.tricentis.com/learn/10-common-git-commands-everyone-should-know), [2](https://git-scm.com/docs/git), [3](https://www.atlassian.com/git/glossary), [4](https://git-scm.com/cheat-sheet), [5](https://git-scm.com/cheat-sheet.pdf), [6](https://www.geeksforgeeks.org/git/useful-github-commands/)]
+- `git revert <commit-hash>`: Creates a completely new commit that applies the exact opposite changes of a specified historical commit.
+- `git clean -fd`: Forces the deletion of all untracked files and untracked directories from your local directory workspace. [link](https://www.atlassian.com/git/glossary)
 
 ### Advanced and History Rewriting
 
 - `git stash`: Temporarily shelves your current uncommitted changes so you can work on a clean directory without committing.
 - `git stash pop`: Restores the changes stored at the top of your stash stack and clears it out.
-- : Applies the commits of your current branch directly on top of another branch to form a perfectly linear timeline.
-- : Extracts a single specific commit from another branch and applies it directly to your current branch.
-- `git reflog`: Keeps a local log of every single movement your HEAD pointer has made, letting you recover deleted branches or broken rebases. \[[1](https://education.github.com/git-cheat-sheet-education.pdf), [2](https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet), [3](https://git-scm.com/cheat-sheet), [4](https://about.gitlab.com/images/press/git-cheat-sheet.pdf), [5](https://www.tricentis.com/learn/10-common-git-commands-everyone-should-know)]
+- `git rebase <branch>`: Applies the commits of your current branch directly on top of another branch to form a perfectly linear timeline.
+- `git cherry-pick <commit-hash>`: Extracts a single specific commit from another branch and applies it directly to your current branch.
+- `git reflog`: Keeps a local log of every single movement your HEAD pointer has made, letting you recover deleted branches or broken rebases. [link](https://education.github.com/git-cheat-sheet-education.pdf)
 
 To help me tailor this guide further, let me know:
 
 - Are you looking for the syntax of a **specific command**?
-- Do you need help solving a **particular issue** (like a merge conflict or accidental commit)?
-- Would you like an explanation of a specific **Git workflow** (like Git Flow or Trunk-Based Development)?
 
-AI can make mistakes, so double-check responses
+- Do you need help solving a **particular issue** (like a merge conflict or accidental commit)?
+
+- Would you like an explanation of a specific **Git workflow** (like Git Flow or Trunk-Based Development)?
 
 - [link](https://git-scm.com/docs)\
   Reference - Git\
-  Plumbing Commands \* cat-file. \* check-ignore. \* checkout-index. \* commit-tree. \* count-objects. \* diff-index. \* for-each-ref. \* ha...\
+  Plumbing Commands \* cat-file. \* check-ignore. \* checkout-index. \* commit-tree. \* count-objects. \* diff-index. \* for-each-ref.\
   Git
+
 - [link](https://www.youtube.com/watch?v=2ldhr1vQtoI)\
   How To Use git (basic commands for beginners)\
-  Dec 1, 2022 — and now if we do a get status you'll see that we are on the main branch. we don't have any commits yet and there is this one unttr...\
+  and now if we do a get status you'll see that we are on the main branch. we don't have any commits yet and there is this one unttr...\
   9:36\
   YouTube·Tony Teaches Tech
+
 - [link](https://www.atlassian.com/git/glossary)\
   Basic Git Commands | Atlassian Git Tutorial\
   Commands · Git add. Moves changes from the working directory to the staging area. This gives you the opportunity to prepare a snap...\
@@ -500,5 +506,171 @@ Are you looking to use this commit hash **inside a script/automation flow**, or 
 
 Show all
 
-# 
+# .
+
+```sh
+ ~ % cd Projects
+ ~/Projects % cd temp
+ ~/Projects/temp % git init
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint:
+hint:   git config --global init.defaultBranch <name>
+hint:
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint:
+hint:   git branch -m <name>
+Initialized empty Git repository in /home/fira/Projects/temp/.git/
+ ~/Projects/temp % git status
+On branch master
+
+No commits yet
+
+nothing to commit (create/copy files and use "git add" to track)
+ ~/Projects/temp % echo 'hello world' > temp.txt
+ ~/Projects/temp % git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        temp.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+ ~/Projects/temp % git add . && git commit -m '.'
+[master (root-commit) eacf137] .
+ 1 file changed, 1 insertion(+)
+ create mode 100644 temp.txt
+ ~/Projects/temp % git rev-parse HEAD
+eacf1378005382ec8acf52509595c766360f8ff8
+ ~/Projects/temp % echo 'foo' > bar.txt
+ ~/Projects/temp % git add . && git commit -m '.'
+[master dd535b3] .
+ 1 file changed, 1 insertion(+)
+ create mode 100644 bar.txt
+ ~/Projects/temp % git rev-parse HEAD
+dd535b318529ee5762bbb64cac64796bde125c34
+ ~/Projects/temp % git checkout eacf1378005382ec8acf52509595c766360f8ff8 -- .
+ ~/Projects/temp % git checkout eacf1378005382ec8acf52509595c766360f8ff8 -- .
+ ~/Projects/temp % git checkout eacf1378005382ec8acf52509595c766360f8ff8
+Note: switching to 'eacf1378005382ec8acf52509595c766360f8ff8'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at eacf137 .
+ ~/Projects/temp % git status
+HEAD detached at eacf137
+nothing to commit, working tree clean
+ ~/Projects/temp % git checkout master
+Previous HEAD position was eacf137 .
+Switched to branch 'master'
+ ~/Projects/temp % git checkout eacf1378005382ec8acf52509595c766360f8ff8
+Note: switching to 'eacf1378005382ec8acf52509595c766360f8ff8'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at eacf137 .
+ ~/Projects/temp % git add . && git commit -m '.'
+HEAD detached at eacf137
+nothing to commit, working tree clean
+ ~/Projects/temp % git checkout master
+Previous HEAD position was eacf137 .
+Switched to branch 'master'
+ ~/Projects/temp % git reset --hard eacf1378005382ec8acf52509595c766360f8ff8
+HEAD is now at eacf137 .
+ ~/Projects/temp % git add . && git commit -m '.'
+On branch master
+nothing to commit, working tree clean
+ ~/Projects/temp % git ls
+git: 'ls' is not a git command. See 'git --help'.
+
+The most similar command is
+        log
+ ~/Projects/temp % echo 'foo' > bar.txt
+ ~/Projects/temp % git add . && git commit -m '.'
+[master 2307467] .
+ 1 file changed, 1 insertion(+)
+ create mode 100644 bar.txt
+ ~/Projects/temp % git checkout eacf1378005382ec8acf52509595c766360f8ff8
+Note: switching to 'eacf1378005382ec8acf52509595c766360f8ff8'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at eacf137 .
+ ~/Projects/temp % echo 'bar' > foo.txt
+ ~/Projects/temp % git add . && git commit -m '.'
+[detached HEAD d188b8d] .
+ 1 file changed, 1 insertion(+)
+ create mode 100644 foo.txt
+ ~/Projects/temp % git log
+commit d188b8ddcca2e46d5a958927cc7b046cc366f7ac (HEAD)
+Author: Fira <xoyage@gmail.com>
+Date:   Tue Jun 23 21:15:38 2026 +0800
+
+    .
+
+commit eacf1378005382ec8acf52509595c766360f8ff8
+Author: Fira <xoyage@gmail.com>
+Date:   Tue Jun 23 21:02:47 2026 +0800
+
+    .
+ ~/Projects/temp % git checkout 2307467
+Warning: you are leaving 1 commit behind, not connected to
+any of your branches:
+
+  d188b8d .
+
+If you want to keep it by creating a new branch, this may be a good time
+to do so with:
+
+ git branch <new-branch-name> d188b8d
+
+HEAD is now at 2307467 .
+```
+
+```
+
+```
 
