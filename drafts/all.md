@@ -187,7 +187,7 @@ archi:
 - naming prefer singular <!-- action, actions --> 
 - react vs vue hypes decision fatigue <!-- grow? rhetoric? politics/philosophy? -->
 
-frontend: <!-- web -->
+frontend: <!-- web, ts/js -->
 
 - explicit implicit
 - js memory leak
