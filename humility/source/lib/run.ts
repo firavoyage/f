@@ -12,7 +12,8 @@ const non_zero_exit = 'non_zero_exit'
 const non_empty_stderr = 'stderr'
 // const non_empty_stderr = 'non_empty_stderr'
 
-export async function run(command: string, options?) {
+// todo: ?
+export async function run(command: string, options?: any): Promise<result<string>> {
   const exec_result = await exec(command, options);
 
   if (is_error(exec_result)) {
@@ -25,5 +26,6 @@ export async function run(command: string, options?) {
     return err({ type: non_empty_stderr, message: stderr })
   }
 
-  return stdout
+  // todo: ?
+  return stdout as string
 }
