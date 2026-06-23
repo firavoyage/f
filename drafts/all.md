@@ -735,6 +735,7 @@ humility:
 - research openai api
 - research vllm alternatives <!-- menci: feed wandering cats -->
 - research linear <!-- or markdown for pm? -->
+- research codex gui
 
 legacy:
 
