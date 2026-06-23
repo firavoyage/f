@@ -30,3 +30,8 @@ remove all attrs, e.g. style, when elements like "mark" are preserved.
 
 ---
 
+- keep aria hidden?
+- cli
+- convert legacy drafts
+
+---
