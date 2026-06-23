@@ -8,7 +8,7 @@ sync
 
 checkpoint name
 
-restore name
+restore name (subdir)
 
 you will put a checkpoint before and after every tool call. (chat would not impact fs)
 
