@@ -37979,6 +37979,10 @@ Well, she has taken 1v1 course two years ago so she knows what the problems are 
 
 03 40 separate <!-- en and zh --> mantras and memes from print. reread. rearrange. 04 40
 
+23
+
+11 40 add professionalism to values.
+
 
 
 <!-- timebox, plan. -->
