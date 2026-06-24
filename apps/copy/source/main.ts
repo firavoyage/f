@@ -161,7 +161,7 @@ async function process_paste_area(): Promise<void> {
       let final_output = markdown;
 
       if (settings.remove_html_attrs_enabled) {
-        final_output = remove_html_attrs({ html: final_output });
+        final_output = await remove_html_attrs({ html: final_output });
       }
 
       await copy_html_to_clipboard({ html: final_output });
@@ -169,7 +169,7 @@ async function process_paste_area(): Promise<void> {
       let final_output = processed_html;
 
       if (settings.remove_html_attrs_enabled) {
-        final_output = remove_html_attrs({ html: final_output });
+        final_output = await remove_html_attrs({ html: final_output });
       }
 
       await copy_html_to_clipboard({ html: final_output });
