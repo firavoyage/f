@@ -738,6 +738,7 @@ humility:
 - research vllm alternatives <!-- menci: feed wandering cats -->
 - research linear <!-- or markdown for pm? -->
 - research codex gui
+- lib result pascalcase for types
 
 legacy:
 
