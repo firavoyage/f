@@ -13,6 +13,10 @@ export async function save({ cwd }: { cwd: string }): Promise<hash> {
   return hash.trim()
 }
 
+// make sure only restore cwd, or a few specific file touched. 
+// you might not be willing to restore everything across the repo to a prev state
+// esp in a monorepo
+// alternatively, you can restore states wo git (you might not know the effect of a command)
 export async function restore({ hash, cwd }: { hash: hash, cwd: string }) {
   await run(`git restore --source=${hash} --staged --worktree .`, { cwd })
 }
