@@ -51,7 +51,9 @@
 #normalize-empty-links-toggle,
 #prettier-toggle,
 #remove-heading-toggle,
-#intercept-paste-toggle {
+#intercept-paste-toggle,
+#remove-html-attrs-toggle,
+#remove-you-said-toggle {
         position: fixed;
         left: 50%;
         transform: translateX(-50%);
@@ -88,6 +90,14 @@
       #intercept-paste-toggle {
         bottom: 8px;
       }
+
+      #remove-html-attrs-toggle {
+        bottom: 148px;
+      }
+
+      #remove-you-said-toggle {
+        bottom: 168px;
+      }
     </style>
     <script type="module" src="./source/main.ts"></script>
   </head>
@@ -103,6 +113,8 @@
     ></div>
 
     <div id="markdown-toggle">markdown: off</div>
+    <div id="remove-you-said-toggle">remove you said: on</div>
+    <div id="remove-html-attrs-toggle">remove html attrs: on</div>
     <div id="svg-toggle">keep svg: off</div>
     <div id="keep-images-toggle">keep images: on</div>
     <div id="normalize-empty-links-toggle">normalize empty links: on</div>
