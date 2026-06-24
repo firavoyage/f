@@ -13,7 +13,7 @@ const non_empty_stderr = 'stderr'
 // const non_empty_stderr = 'non_empty_stderr'
 
 // todo: ?
-export async function run(command: string, options?: any): Promise<result<string>> {
+export async function run(command: string, options?: any): Promise<Result<string>> {
   const exec_result = await exec(command, options);
 
   if (is_error(exec_result)) {

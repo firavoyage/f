@@ -18,6 +18,8 @@ R -> Result<>
 
 that's the single only reason. -->
 
+<!-- well, will i migrate all the types? idk. -->
+
 # what about using lowercase for types in typescript
 
 Using lowercase for types in TypeScript can mean two completely different things depending on context: <mark style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 500; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><strong style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 700; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">naming your primitive types</strong> or <strong style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 700; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">naming your custom types/interfaces</strong></mark>.
@@ -379,5 +381,156 @@ Here is the honest, bottom-line assessment of making the strategic choice to hav
 
 Since you are prioritizing speed, would you like to see the fastest way to **export these matching types globally** so you don't have to redefine them in every file?
 
-# 
+# how does snake case or pascal case feel
+
+In the programming world, choosing between `snake_case` and `PascalCase` significantly shifts the visual ergonomics and reading rhythm of your code. Studies and developer consensus highlight that each convention provides a distinct cognitive experience. \[[1](https://www.reddit.com/r/godot/comments/1cw9u0r/snake%5Fcase%5Fthoughts/), [2](https://www.youtube.com/watch?v=VW1%5FPkLwL4Y)]
+
+### How `snake_case` Feels
+
+- **Highly Readable**: Splitting words with an underscore mimics standard sentence spacing, making it the closest thing to reading normal text.
+- **Visually Grounded**: Scientific tracking shows the consistent lowercase height and clear gaps offer excellent visual contrast, allowing your eyes to scan long terms effortlessly.
+- **Relaxed and Flowing**: Reading `this_is_a_variable` feels grounded and expansive, though it takes up more horizontal screen real estate.
+- **Typing Friction**: It can feel physically clunky to type because it requires repeatedly hitting the `Shift` + `Minus` keys to get the underscore. \[[1](https://www.reddit.com/r/ProgrammingLanguages/comments/10twqkt/do%5Fyou%5Fprefer%5Fcamelcase%5For%5Fsnake%5Fcase%5Ffor/), [2](https://www.quora.com/Which-is-better-snake-case-or-camel-case-pascal-case), [3](https://en.wikipedia.org/wiki/Snake%5Fcase), [4](https://www.youtube.com/watch?v=VW1%5FPkLwL4Y), [5](https://www.reddit.com/r/godot/comments/1cw9u0r/snake%5Fcase%5Fthoughts/)]
+
+### How `PascalCase` Feels
+
+- **Structured and Rigid**: Merging words and capitalizing every first letter (`ThisIsAVariable`) gives the text a compact, architectural look.
+- **Aggressive and Dense**: Because there are no spaces or underscores, long names can start to blur together or feel like an imposing wall of text.
+- **Fast to Type**: Many developers find it feels faster to type since you only need a quick tap of the `Shift` key for capital letters without hunting for special characters.
+- **Acroynm Confusion**: Handling acronyms can feel awkward and break your mental flow; you have to choose between the clunky `UserXMLData` or the inconsistent `UserXmlData`. \[[1](https://community.dataquest.io/t/pascal-vs-snake-case/301223), [2](https://khalilstemmler.com/blogs/camel-case-snake-case-pascal-case/), [3](https://www.pluralsight.com/resources/blog/software-development/programming-naming-conventions-explained), [4](https://www.boot.dev/blog/computer-science/casings-in-coding), [5](https://www.reddit.com/r/javascript/comments/bfavm7/i%5Fswitched%5Fto%5Fall%5Flowercase%5Ffile%5Fnames%5Fand%5Fi%5Flove/), [6](https://www.reddit.com/r/Python/comments/13dzvi1/lowercase%5Funderscores%5Fversus%5Fcamelcase/)]
+
+### The Emotional "Vibe" in Practice
+
+Developers rarely use just one; instead, they use the contrast between them to map out the hierarchy of a project. \[[1](https://www.reddit.com/r/C%5FProgramming/comments/1nl3kzp/do%5Fyou%5Fprefer%5Fpascalcase%5For%5Fsnake%5Fcase%5For/), [2](https://www.youtube.com/watch?v=pQLJdjdr2MI)]
+
+- **`PascalCase` feels like a Blueprint**: Because languages like C# and Java use it for high-level structures, it feels formal, heavy, and grand—perfect for defining a `Class` or a `Component`.
+- **`snake_case` feels like Execution**: Because it is common in Python scripts and databases, it feels functional, nimble, and direct—ideal for the actual math, variables, and moving parts of your logic. \[[1](https://www.reddit.com/r/C%5FProgramming/comments/1nl3kzp/do%5Fyou%5Fprefer%5Fpascalcase%5For%5Fsnake%5Fcase%5For/), [2](https://www.youtube.com/watch?v=pQLJdjdr2MI), [3](https://builtin.com/articles/pascal-case-vs-camel-case), [4](https://medium.com/@bhuvaneshcj/snake-case-vs-camel-case-vs-pascal-case-vs-kebab-case-understanding-code-naming-conventions-6f500676e3fd), [5](https://www.reddit.com/r/learnpython/comments/1k0vjvd/snake%5Fcase%5Fvs%5Fcamel%5Fcase/)]
+
+Are you trying to decide on a **naming convention** for a specific programming language, or are you looking to configure **formatting tools** for your team?
+
+- [link](https://community.dataquest.io/t/pascal-vs-snake-case/301223)\
+  Pascal vs Snake Case - DQ Courses - Dataquest Community\
+  Feb 27, 2020 — burnsdillion February 27, 2020, 3:17pm 1. Current Course: Learn data science with Python and R projects. I was going through the a...\
+  Dataquest Community
+- [link](https://www.reddit.com/r/ProgrammingLanguages/comments/10twqkt/do%5Fyou%5Fprefer%5Fcamelcase%5For%5Fsnake%5Fcase%5Ffor/)\
+  Do you prefer camelCase or snake\_case for variables and functions?\
+  Feb 5, 2023 — \* stylewarning. • 3y ago. I like the kebab-case-of-lisp-languages the most. scottmcmrust. ... \* stomah. • 3y ago. snake\_case. it's...\
+  Reddit·r/ProgrammingLanguages
+- [link](https://www.reddit.com/r/javascript/comments/bfavm7/i%5Fswitched%5Fto%5Fall%5Flowercase%5Ffile%5Fnames%5Fand%5Fi%5Flove/)\
+  I switched to all lower-case file names and I love it. Do you see a ...\
+  Apr 20, 2019 — Generally speaking, it soothes my OCD when the file that exports MyComponent is called MyComponent . \* knyg. • 7y ago. Whatever wo...\
+  Reddit·r/javascript
+
+Show all
+
+## You said: in ts
+
+In TypeScript (TS), choosing between these styles changes how "idiomatic" and native your code feels. TypeScript has a very strict, deeply embedded community standard that heavily favors **`PascalCase`** alongside **`camelCase`**, while making **`snake_case`** feel like an outsider. \[[1](https://www.site24x7.com/learn/typescript-vs-javascript.html), [2](https://javascript.plainenglish.io/stop-fighting-typescript-35-lessons-that-actually-work-2fd0a3232171), [3](https://hexaware.com/blogs/jsdoc-vs-typescript/), [4](https://itsit.in/typescript/), [5](https://code.tutsplus.com/9-confusing-naming-conventions-for-beginners--net-15584a)]
+
+### How `PascalCase` Feels in TypeScript
+
+- **Native and Correct**: It feels like the natural law of the ecosystem.
+- **Authoritative**: You use it for high-level structural blueprints like `interfaces`, `types`, `classes`, and `enums`.
+- **Component-Driven**: In TS-heavy frontend frameworks like React, it denotes a reusable UI element (e.g., ).
+- **Visual Anchor**: Seeing a `PascalCase` word instantly tells your brain: _"This is a type definition, not an active variable."_
+
+### How `snake_case` Feels in TypeScript
+
+- **Foreign and Intrusive**: It feels like code imported from another language (like Python or Ruby).
+- **Frictional**: TS linting tools (like ESLint) will often trigger warnings against it by default, making it feel "wrong."
+- **The "Database Bridge"**: It usually only appears when handling raw SQL database payloads or API responses.
+- **Boundary-Marker**: Seeing `user_id` in TS serves as a visual reminder that you are dealing with external, unformatted data. \[[1](https://news.ycombinator.com/item?id=42766729), [2](https://dyte.io/blog/linting-at-dyte/)]
+
+### The Idiomatic TypeScript Compromise
+
+To keep the code feeling smooth, TS developers rarely use `snake_case` directly in their logic. Instead, they use a pattern that balances these feelings:
+
+- **Types & Classes (`PascalCase`)**: Used for the abstract structures (e.g., `interface UserAccount {}`).
+- **Variables & Functions (`camelCase`)**: Used instead of snake\_case for the actual working logic (e.g., `const userData = ...`).
+- **Data Ingestion**: Developers often use utility libraries to instantly convert incoming `snake_case` API data into `camelCase` the moment it enters the TypeScript environment.
+
+Are you setting up **ESLint rules** for a new TypeScript project, or are you looking for a clean way to **convert API payloads** between these two styles?
+
+- [link](https://www.site24x7.com/learn/typescript-vs-javascript.html)\
+  Difference Between TypeScript and JavaScript\
+  More concise code Developers with extensive experience in writing JavaScript might feel that TypeScript slows them down. While bot...\
+  \
+  \
+  Site24x7
+- [link](https://javascript.plainenglish.io/stop-fighting-typescript-35-lessons-that-actually-work-2fd0a3232171)\
+  Stop Fighting TypeScript: 35 Lessons That Actually Work | by Ahmad Bilal\
+  Nov 9, 2025 — TypeScript doesn't just infer once — it widens types as your code evolves. This can silently change what your variable represents ...\
+  \
+  \
+  JavaScript in Plain English
+- [link](https://hexaware.com/blogs/jsdoc-vs-typescript/)\
+  TypeScript: the Go-To Choice for Modern JavaScript Projects\
+  Sep 30, 2025 — TypeScript is a mature language with a large community, first-class integration with many popular frameworks, libraries, and platf...\
+  \
+  \
+  Hexaware Technologies
+
+Show all
+
+## You said: in ts. my team prefer snake case and have done all the config already.
+
+Since your team has already handled the configuration, writing `snake_case` in TypeScript will feel cohesive and unified within your specific codebase. While it breaks from standard web conventions, leaning into it fully brings its own distinct advantages.
+
+### How it Feels in a Custom `snake_case` TS Setup
+
+- **Ultra-Consistent**: It feels highly satisfying because your backend, database queries, and frontend TypeScript code all speak the exact same visual language.
+- **Frictionless API Integration**: You never have to manually map or convert JSON network payloads; what comes from the server fits perfectly into your types.
+- **Distinct Type Separators**: Because your variables use underscores (e.g., `user_profile`), the standard `PascalCase` used for types and interfaces (e.g., `UserProfile`) stands out even more sharply. \[[1](https://dev.to/srini%5Fk/typescript-best-practices-in-large-codebases-58kc)]
+- **The "External Library" Clash**: The only time it will feel awkward is when you import third-party npm packages, which will still force you to write `camelCase` for their specific methods.
+
+### Quick Mental Adjustments for Your Workflow
+
+- **Keep Types Pascal**: Even in `snake_case` teams, interfaces and types almost always stay `PascalCase` (`interface User_Data` looks incredibly messy and is universally avoided).
+
+- **Destructuring Visuals**: Extracting variables from objects will look highly uniform:\
+  typescript
+
+<!---->
+
+```
+const { user_id, auth_token } = response;
+```
+
+Use code with caution.
+
+- **Property Access**: Typing object properties feels very deliberate and grounded: `account.billing_address.postal_code`. \[[1](https://medium.com/@shahriarhasan0%5F57376/7-essential-typescript-best-practices-to-elevate-your-code-bb25b03924be)]
+
+Would you like some tips on how to handle **third-party library mismatches**, or are you looking for the best way to document this convention for **new team onboarding**?
+
+- [link](https://dev.to/srini%5Fk/typescript-best-practices-in-large-codebases-58kc)\
+  TypeScript Best Practices in Large Codebases\
+  Sep 2, 2025 — Use PascalCase for types and interfaces.\
+  \
+  \
+  DEV Community
+- [link](https://medium.com/@shahriarhasan0%5F57376/7-essential-typescript-best-practices-to-elevate-your-code-bb25b03924be)\
+  7 Essential TypeScript Best Practices to Elevate Your Code\
+  Mar 8, 2025 — 6. Consistent Naming Conventions Interfaces: PascalCase (e.g., UserProfile ) Types: PascalCase (e.g., ApiResponse ) Variables & Fu...\
+  \
+  \
+  Medium
+
+# .
+
+```ts
+type all = string | number | boolean | bigint | symbol | null | undefined | { [key: PropertyKey]: any };
+type Success<T = all> = T extends object ? (Omit<T, typeof error_symbol> & { [error_symbol]?: never }) : T;
+type Error = { type: any, message: any, [error_symbol]: true } & Partial<FileError>
+type FileError = { code: string, path: string, syscall: string, errno: number }
+
+type err = typeof err
+type is_error = typeof is_error
+declare global {
+  type Result<T = all, E extends Error = Error> = (0 extends 1 & T ? Success : Success<T>) | E;
+
+  var err: err
+  var is_error: is_error
+}
+```
+
 
