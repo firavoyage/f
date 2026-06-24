@@ -8,13 +8,6 @@ obviously it would stand on top of `file`. i think it deserves a refactor.
 
 ---
 
-copy:
-
-- remove aria hidden
-- remove all attrs
-
-clean.ts
-
-be <!-- modular --> composable. do not overwrite.
+remove handle. use try catch
 
 
