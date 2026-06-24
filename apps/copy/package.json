@@ -11,6 +11,7 @@
     "@types/mdast": "^4.0.4",
     "@types/unist": "^3.0.3",
     "cheerio": "^1.2.0",
+    "devlop": "1.1.0",
     "dompurify": "^3.3.3",
     "markdown": "link:prettier/plugins/markdown",
     "node-html-markdown": "^2.0.0",
@@ -26,9 +27,13 @@
     "unist-util-visit": "^4.1.2"
   },
   "devDependencies": {
+    "@parcel/config-default": "2.16.4",
     "@types/node": "^25.6.0",
     "buffer": "^6.0.3",
     "parcel": "^2.13.3",
     "typescript": "^5.8.3"
+  },
+  "@parcel/resolver-default": {
+    "packageExports": true
   }
 }
