@@ -1,7 +1,7 @@
 import { copy_html_to_clipboard } from './clipboard';
 import { sanitize_html } from './sanitize_html';
 import { convert_html_to_md } from './convert_to_md';
-import { remove_html_attrs, remove_you_said } from './clean';
+import { remove_you_said } from './clean';
 
 type boolean_setting_options = {
   key: string;
@@ -138,8 +138,12 @@ async function process_paste_area(): Promise<void> {
     html = result.html;
   }
 
-  const clean_html = sanitize_html({ dirty_html: html });
   const settings = get_conversion_settings();
+
+  const clean_html = sanitize_html({
+    dirty_html: html,
+    remove_html_attrs: settings.remove_html_attrs_enabled,
+  });
 
   let processed_html = clean_html;
 
@@ -160,17 +164,9 @@ async function process_paste_area(): Promise<void> {
 
       let final_output = markdown;
 
-      if (settings.remove_html_attrs_enabled) {
-        final_output = await remove_html_attrs({ html: final_output });
-      }
-
       await copy_html_to_clipboard({ html: final_output });
     } else {
       let final_output = processed_html;
-
-      if (settings.remove_html_attrs_enabled) {
-        final_output = await remove_html_attrs({ html: final_output });
-      }
 
       await copy_html_to_clipboard({ html: final_output });
     }

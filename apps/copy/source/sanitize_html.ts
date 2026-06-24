@@ -1,6 +1,8 @@
 import * as cheerio from 'cheerio';
 import DOMPurify from 'dompurify';
 
+const base_forbidden_attrs = ['class', 'id'];
+
 const sanitize_config = {
   USE_PROFILES: {
     html: true,
@@ -10,7 +12,7 @@ const sanitize_config = {
   },
   ALLOW_DATA_ATTR: false,
   ALLOW_ARIA_ATTR: true,
-  FORBID_ATTR: ['class', 'id'],
+  FORBID_ATTR: base_forbidden_attrs,
   FORBID_TAGS: [
     'script',
     'style',
@@ -125,8 +127,39 @@ if (!has_added_sanitize_attribute_hook) {
   has_added_sanitize_attribute_hook = true;
 }
 
-export const sanitize_html = ({ dirty_html }: { dirty_html: string }): string => {
-  const sanitized_html = DOMPurify.sanitize(dirty_html, sanitize_config);
+const default_forbidden_attrs = [
+  'style',
+  'onclick',
+  'onload',
+  'onerror',
+  'onmouseover',
+  'onmouseout',
+  'onkeydown',
+  'onkeyup',
+  'onkeypress',
+  'onfocus',
+  'onblur',
+  'onsubmit',
+  'onchange',
+];
+
+export const sanitize_html = ({
+  dirty_html,
+  remove_html_attrs = false,
+}: {
+  dirty_html: string;
+  remove_html_attrs?: boolean;
+}): string => {
+  const forbidden_attrs = remove_html_attrs
+    ? [...base_forbidden_attrs, ...default_forbidden_attrs]
+    : base_forbidden_attrs;
+
+  const config = {
+    ...sanitize_config,
+    FORBID_ATTR: forbidden_attrs,
+  };
+
+  const sanitized_html = DOMPurify.sanitize(dirty_html, config);
   const final_html = remove_empty_media_elements({ html: sanitized_html });
 
   console.log({
