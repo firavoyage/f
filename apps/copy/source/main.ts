@@ -1,6 +1,7 @@
 import { copy_html_to_clipboard } from './clipboard';
 import { sanitize_html } from './sanitize_html';
 import { convert_html_to_md } from './convert_to_md';
+import { remove_html_attrs, remove_you_said } from './clean';
 
 type boolean_setting_options = {
   key: string;
@@ -26,6 +27,8 @@ type conversion_settings = {
   prettier_enabled: boolean;
   remove_heading_enabled: boolean;
   intercept_paste_enabled: boolean;
+  remove_html_attrs_enabled: boolean;
+  remove_you_said_enabled: boolean;
 };
 
 const copy_feedback_ms = 1400;
@@ -41,6 +44,8 @@ const normalize_empty_links_button = document.getElementById(
 const prettier_button = document.getElementById('prettier-toggle') as HTMLElement;
 const remove_heading_button = document.getElementById('remove-heading-toggle') as HTMLElement;
 const intercept_paste_button = document.getElementById('intercept-paste-toggle') as HTMLElement;
+const remove_html_attrs_button = document.getElementById('remove-html-attrs-toggle') as HTMLElement;
+const remove_you_said_button = document.getElementById('remove-you-said-toggle') as HTMLElement;
 
 const markdown_enabled_key = 'markdown_enabled';
 const svg_enabled_key = 'svg_enabled';
@@ -49,6 +54,8 @@ const normalize_empty_links_enabled_key = 'normalize_empty_links_enabled';
 const prettier_enabled_key = 'prettier_enabled';
 const remove_heading_enabled_key = 'remove_heading_enabled';
 const intercept_paste_enabled_key = 'intercept_paste_enabled';
+const remove_html_attrs_enabled_key = 'remove_html_attrs_enabled';
+const remove_you_said_enabled_key = 'remove_you_said_enabled';
 
 let markdown_enabled = false;
 let svg_enabled = false;
@@ -57,6 +64,8 @@ let normalize_empty_links_enabled = true;
 let prettier_enabled = true;
 let remove_heading_enabled = false;
 let intercept_paste_enabled = false;
+let remove_html_attrs_enabled = true;
+let remove_you_said_enabled = true;
 let intercepted_html: string | null = null;
 
 function load_boolean_setting({ key, default_value }: boolean_setting_options): boolean {
@@ -113,6 +122,8 @@ function get_conversion_settings(): conversion_settings {
     prettier_enabled,
     remove_heading_enabled,
     intercept_paste_enabled,
+    remove_html_attrs_enabled,
+    remove_you_said_enabled,
   };
 }
 
@@ -130,10 +141,16 @@ async function process_paste_area(): Promise<void> {
   const clean_html = sanitize_html({ dirty_html: html });
   const settings = get_conversion_settings();
 
+  let processed_html = clean_html;
+
+  if (settings.markdown_enabled && settings.remove_you_said_enabled) {
+    processed_html = remove_you_said({ html: processed_html });
+  }
+
   try {
     if (settings.markdown_enabled) {
       const markdown = await convert_html_to_md({
-        html: clean_html,
+        html: processed_html,
         preserve_svg: settings.svg_enabled,
         keep_images: settings.keep_images_enabled,
         normalize_empty_links: settings.normalize_empty_links_enabled,
@@ -141,9 +158,21 @@ async function process_paste_area(): Promise<void> {
         remove_heading: settings.remove_heading_enabled,
       });
 
-      await copy_html_to_clipboard({ html: markdown });
+      let final_output = markdown;
+
+      if (settings.remove_html_attrs_enabled) {
+        final_output = remove_html_attrs({ html: final_output });
+      }
+
+      await copy_html_to_clipboard({ html: final_output });
     } else {
-      await copy_html_to_clipboard({ html: clean_html });
+      let final_output = processed_html;
+
+      if (settings.remove_html_attrs_enabled) {
+        final_output = remove_html_attrs({ html: final_output });
+      }
+
+      await copy_html_to_clipboard({ html: final_output });
     }
 
     flash_copied();
@@ -168,6 +197,8 @@ function render_toggle_button({ node, label, enabled }: render_toggle_options): 
 
 function render_all(): void {
   render_toggle_button({ node: markdown_button, label: 'markdown', enabled: markdown_enabled });
+  render_toggle_button({ node: remove_you_said_button, label: 'remove you said', enabled: remove_you_said_enabled });
+  render_toggle_button({ node: remove_html_attrs_button, label: 'remove html attrs', enabled: remove_html_attrs_enabled });
   render_toggle_button({ node: svg_button, label: 'keep svg', enabled: svg_enabled });
   render_toggle_button({ node: keep_images_button, label: 'keep images', enabled: keep_images_enabled });
   render_toggle_button({
@@ -203,6 +234,8 @@ function init_settings(): void {
   prettier_enabled = load_boolean_setting({ key: prettier_enabled_key, default_value: true });
   remove_heading_enabled = load_boolean_setting({ key: remove_heading_enabled_key, default_value: false });
   intercept_paste_enabled = load_boolean_setting({ key: intercept_paste_enabled_key, default_value: false });
+  remove_html_attrs_enabled = load_boolean_setting({ key: remove_html_attrs_enabled_key, default_value: true });
+  remove_you_said_enabled = load_boolean_setting({ key: remove_you_said_enabled_key, default_value: true });
 
   render_all();
 }
@@ -272,6 +305,22 @@ intercept_paste_button.addEventListener('click', function () {
   intercept_paste_enabled = toggle_boolean({
     current: intercept_paste_enabled,
     key: intercept_paste_enabled_key,
+  });
+  render_all();
+});
+
+remove_html_attrs_button.addEventListener('click', function () {
+  remove_html_attrs_enabled = toggle_boolean({
+    current: remove_html_attrs_enabled,
+    key: remove_html_attrs_enabled_key,
+  });
+  render_all();
+});
+
+remove_you_said_button.addEventListener('click', function () {
+  remove_you_said_enabled = toggle_boolean({
+    current: remove_you_said_enabled,
+    key: remove_you_said_enabled_key,
   });
   render_all();
 });
