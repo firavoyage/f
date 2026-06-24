@@ -1,14 +1,14 @@
 type Optional<Type, Keys extends keyof Type> = Omit<Type, Keys> & Partial<Pick<Type, Keys>>
 
 type all = string | number | boolean | bigint | symbol | null | undefined | { [key: PropertyKey]: any };
-type success<T = all> = T extends object ? (Omit<T, typeof error_symbol> & { [error_symbol]?: never }) : T;
-type error = { type: any, message: any, [error_symbol]: true } & Partial<error_fs>
-type error_fs = { code: string, path: string, syscall: string, errno: number }
+type Success<T = all> = T extends object ? (Omit<T, typeof error_symbol> & { [error_symbol]?: never }) : T;
+type Error = { type: any, message: any, [error_symbol]: true } & Partial<FileError>
+type FileError = { code: string, path: string, syscall: string, errno: number }
 
 type err = typeof err
 type is_error = typeof is_error
 declare global {
-  type result<T = all, E extends error = error> = (0 extends 1 & T ? success : success<T>) | E;
+  type Result<T = all, E extends Error = Error> = (0 extends 1 & T ? Success : Success<T>) | E;
 
   var err: err
   var is_error: is_error
@@ -18,7 +18,7 @@ const error_symbol: unique symbol = Symbol("error");
 
 // no `ok(data)` needed, just return `data` directly
 
-export function err(error: Optional<error, typeof error_symbol> | PropertyKey | Error): error {
+export function err(error: Optional<Error, typeof error_symbol> | PropertyKey | Error): Error {
   if (error instanceof Error) {
     error.type = error.constructor
     error.message = error.stack ?? error.message
@@ -36,6 +36,6 @@ export function err(error: Optional<error, typeof error_symbol> | PropertyKey | 
   }
 }
 
-export function is_error(result: result): result is error {
+export function is_error(result: Result): result is Error {
   return has(result, error_symbol)
 }

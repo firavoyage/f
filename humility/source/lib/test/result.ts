@@ -1,4 +1,4 @@
-function temp(): result<string> {
+function temp(): Result<string> {
   if (Math.random() > 0.5) {
     return err('err')
   }

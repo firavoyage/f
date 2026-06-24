@@ -1,6 +1,6 @@
 export const zero_division = Symbol("zero_division");
 
-export function divide(a: number, b: number): result<number> {
+export function divide(a: number, b: number): Result<number> {
   if (b == 0) {
     return err({ type: zero_division, message: "attempt to divide by zero" })
   }

@@ -196,7 +196,7 @@ export function cache(...args) {
 /**
  * (over) write a file
  */
-export async function write({ path, content }): Promise<result<void>> {
+export async function write({ path, content }): Promise<Result<void>> {
   /**
    * todo: handle errors
    * 
@@ -296,7 +296,7 @@ export async function edit({ path, find, replace }) {
  * 
  * do i { path, options } or path, { options }? others?
  */
-export async function remove({ path }): Promise<result<void>> {
+export async function remove({ path }): Promise<Result<void>> {
   const _ = await delete_file(path)
 
   if (is_error(_)) {
