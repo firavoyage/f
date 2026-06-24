@@ -42,3 +42,12 @@ delete
 
 change a flag
 
+read thread
+
+iterate the tree on current focus.
+
+shift focus
+
+change focus prop. refresh thread. (react would handle it well)
+
+
