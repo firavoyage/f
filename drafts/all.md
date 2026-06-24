@@ -552,6 +552,7 @@ math:
 physics:
 
 - mi power bank charging time
+- microwave mechanics radiowave sound light engineering
 
 biology:
 
