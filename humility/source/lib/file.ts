@@ -1,16 +1,9 @@
-/**
- * xdg is in js. no types. and no need to have types.
- * 
- * config maxNodeModuleJsDepth in tsconfig to normalize it
- */
 import desktop from '@folder/xdg';
 import { homedir } from 'node:os';
 import { join, dirname as dir } from 'node:path';
 import { writeFile, readFile, appendFile, mkdir, unlink } from 'node:fs/promises';
 
-/**
- * errors
- */
+// Errors
 export const already_initialized = "already_initialized"
 export const not_initialized = "not_initialized"
 
@@ -44,22 +37,22 @@ export const invalid_input = "invalid_input"
 export const stale_network_file_handle = "stale_network_file_handle"
 
 const map = {
-  // --- File & Directory Existence ---
+  // File & Directory Existence
   ENOENT: not_found,
   EEXIST: already_exists,
 
-  // --- Permissions & Ownership ---
+  // Permissions & Ownership
   EACCES: permission_denied,
   EPERM: permission_denied,
   EROFS: read_only_filesystem,
 
-  // --- Path & Filename Formats ---
+  // Path & Filename Formats
   ENOTDIR: not_a_directory,
   EISDIR: is_a_directory,
   ENAMETOOLONG: invalid_filename,
   EINVAL: invalid_filename,
 
-  // --- Resource Exhaustion & Limits ---
+  // Resource Exhaustion & Limits
   ENOSPC: storage_full,
   EDQUOT: quota_exceeded,
   EFBIG: file_too_large,
@@ -67,42 +60,39 @@ const map = {
   ENFILE: other,
   ENOMEM: out_of_memory,
 
-  // --- State, Locks, & Concurrent Blocks ---
+  // State, Locks, & Concurrent Blocks
   EBUSY: resource_busy,
   ETXTBSY: executable_file_busy,
   EDEADLK: deadlock,
   EAGAIN: would_block,
   EWOULDBLOCK: would_block,
 
-  // --- Structural Directory Rules ---
+  // Structural Directory Rules
   ENOTEMPTY: directory_not_empty,
   EXDEV: other,
   ELOOP: filesystem_loop,
 
-  // --- Hard Drives & Physical Operations ---
+  // Hard Drives & Physical Operations
   EIO: other,
   ENODEV: not_found,
   ENXIO: not_found,
   ESPIPE: not_seekable,
 
-  // --- Streams, Pipes, & Buffers ---
+  // Streams, Pipes, & Buffers
   EPIPE: broken_pipe,
   EINTR: interrupted,
   ENOTCONN: not_connected,
   ESHUTDOWN: broken_pipe,
   ECONNRESET: connection_reset,
 
-  // --- Fallbacks ---
+  // Fallbacks
   ENOSYS: unsupported,
   ENOTSUP: unsupported,
   EFAULT: invalid_input,
   ESTALE: stale_network_file_handle
 }
 
-/**
- * state
- */
-
+// state
 let is_initialized = false;
 let data_folder = ''
 let config_folder = ''
@@ -130,11 +120,6 @@ type non_empty_string = `${string}${any}`;
 //   var read: read
 // }
 
-/**
- * init paths
- * 
- * do not care whether it's valid
- */
 export function init({ name, xdg = true }: { name: non_empty_string, xdg?: boolean }) {
   if (is_initialized) {
     return err(already_initialized)
