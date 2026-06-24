@@ -228,13 +228,45 @@
       "false",
     ],
   },
-  "result": {
+  "Set": {
     "prefix": [
-      "res",
-      "resu",
+      "S",
+      "Se",
+      "Set",
     ],
     "body": [
-      "result<$1> $0",
+      "Set<$1> $0",
+    ],
+  },
+  "Map": {
+    "prefix": [
+      "M",
+      "Ma",
+      "Map",
+    ],
+    "body": [
+      "Map<$1, $2> $0",
+    ],
+  },
+  "Record": {
+    "prefix": [
+      "Rec",
+      "Reco",
+      "Recor",
+      "Record",
+    ],
+    "body": [
+      "Record<$1, $2> $0",
+    ],
+  },
+  "Result": {
+    "prefix": [
+      "R",
+      "Re",
+      "Res",
+    ],
+    "body": [
+      "Result<$1> $0",
     ],
   },
   "err": {
