@@ -1,9 +1,44 @@
-what does a component have
+why. pros and cons.
 
-all keyboard navigation? <!-- away from baseui radixui -->
+approach 1 (all global methods and vars are available)
 
-what do design tokens not lock in
+```ts
+export function handle<F extends (...args: any[]) => any>(fn: F): (...args: Parameters<F>) => result<ReturnType<F>> {
+  return (...args) => {
+    try {
+      const result = fn(...args);
 
-linting. keyword detection. <!-- use cases? -->
+      if (result instanceof Promise || typeof result?.then == 'function') {
+        return (result as Promise<result<any>>)
+          // async ok
+          .then((data) => data)
+          // async err
+          .catch((e) => err(e));
+      }
 
-app: state count, toggle visibility, conditional render counter, show a button to increase count whether it's visible or not. counter: increase every sec if shown, show an input of count.
+      // sync ok
+      return result;
+    } catch (error) {
+      return err(error);
+    }
+  }
+}
+
+const read_file = handle(readFile)
+
+export async function read({ path }) {
+  const content = await read_file(path, 'utf8');
+
+  if (is_error(content)) {
+    if (has(map, content.code)) {
+      return err({ type: map[content.code], message: content })
+    }
+  }
+
+  return content
+}
+```
+
+approach 2
+
+deprecate handle. no wrapping. use try catch directly in read.

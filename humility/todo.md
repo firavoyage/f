@@ -158,4 +158,12 @@ i guess it would be an aha moment w shell access.
 
 yaml could fix inherent tool call sp token issue.
 
+---
 
+all keyboard navigation? <!-- away from baseui radixui -->
+
+what do design tokens not lock in
+
+linting. keyword detection. <!-- use cases? -->
+
+---
