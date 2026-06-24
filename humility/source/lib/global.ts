@@ -1,7 +1,6 @@
 import * as std from 'lib/std';
 import * as log from 'lib/log';
 import * as result from 'lib/result';
-import * as handle from 'lib/handle';
 
 type use = typeof use
 declare global {
@@ -12,17 +11,14 @@ export function use(lib) {
   Object.assign(globalThis, lib)
 }
 
-// prelude
-
+// Prelude
 use(result)
-use(handle)
 use(log)
 use(std)
 
 globalThis.use = use
 
-// init
-
+// Init
 const { app_name, xdg } = await import('lib/app_info')
 const { init } = await import('lib/file')
 
