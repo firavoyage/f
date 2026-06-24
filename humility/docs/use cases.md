@@ -1,2 +1,2 @@
 - download all maimai songs, use ytdlp, write all info in yaml
-- write a visual novel based on "the gun that "
+- write a visual novel based on "the gunshot that changes the time (of japan)"
