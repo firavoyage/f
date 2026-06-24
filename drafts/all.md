@@ -741,6 +741,7 @@ humility:
 - research linear <!-- or markdown for pm? -->
 - research codex gui
 - lib result pascalcase for types
+- research database or flat file system searching algorithms
 
 legacy:
 
