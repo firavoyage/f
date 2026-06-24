@@ -2,6 +2,8 @@
 
 <!-- vscode timeline saves my life. -->
 
+<!-- i could use the build html instead, and spin up a simple html server. but it might not help a lot. -->
+
 # how to parse markdown to ast in nodejs
 
 The most robust and industry-standard way to parse Markdown into an Abstract Syntax Tree (AST) in Node.js is <mark style="color: var(--jINu6c); font-weight: 500; border-radius: 4px; background-image: ; background-position-x: ; background-position-y: ; background-size: 200% 100%; background-repeat: ; background-attachment: ; background-origin: ; background-clip: ; background-color: ; padding: 0px 2px; animation: 0.75s cubic-bezier(0.05, 0.7, 0.1, 1) 0.25s 1 normal forwards running highlight-animation;">using the<span> </span><strong style="font-weight: 700;"><span style="overflow-wrap: break-word;">remark</span></strong><span> </span>ecosystem</mark>. It conforms to the standardized **[mdast (Markdown Abstract Syntax Tree) format](https://github.com/syntax-tree/mdast)**.
@@ -9772,3 +9774,306 @@ I can give you the exact tool configurations to prevent false positives for your
   Stack Overflow
 
 Show all
+
+# how to parcel build an html
+
+To build an HTML file using **Parcel**, you point the bundler directly at your `index.html` file, and it automatically processes all linked CSS, JavaScript, and asset dependencies. [link](https://parceljs.org/getting-started/webapp/)
+
+Here is the step-by-step process to set up and run a production build: [link](https://parceljs.org/getting-started/webapp/)
+
+### 1. Initialize Project and Install Parcel
+
+Open your terminal inside your project folder and run the following commands to initialize an [npm project](https://dev.to/craigaholliday/building-a-basic-website-with-parcel-1e4g) and save Parcel as a development dependency: [link](https://www.youtube.com/watch?v=DblzpCoPakw\&t=105)
+
+bash
+
+```
+npm init -y
+npm install --save-dev parcel
+```
+
+Use code with caution.
+
+### 2. Create Your Source Files
+
+Create a source folder (e.g., `src/`) and place your `index.html` file inside it. Link your stylesheets and scripts normally inside your HTML; Parcel will automatically find and bundle them. [link](https://parceljs.org/getting-started/webapp/)
+
+**`src/index.html`**
+
+html
+
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My First Parcel App</title>
+  <!-- Parcel will bundle this CSS (or SCSS) automatically -->
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <h1>Hello, World!</h1>
+  <!-- Parcel will bundle and optimize this JavaScript module -->
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
+```
+
+Use code with caution.
+
+### 3. Add Scripts to package.json
+
+Open your `package.json` file and map out the [Parcel commands](https://parceljs.org/features/cli/) under the `scripts` object: [link](https://parceljs.org/features/cli/)
+
+json
+
+```
+{
+  "name": "my-parcel-app",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html"
+  },
+  "devDependencies": {
+    "parcel": "^2.0.0"
+  }
+}
+```
+
+Use code with caution.
+
+_(Note: If you have a `"main": "index.js"` line automatically generated in your `package.json`, remove it to avoid build target conflicts with your HTML entry point)._
+
+### 4. Run the Production Build
+
+To compress, minify, and generate your production-ready files, execute the following command in your terminal: [link](https://parceljs.org/features/cli/)
+
+bash
+
+```
+npm run build
+```
+
+Use code with caution.
+
+### Build Outputs
+
+- **`dist/` directory**: Parcel compiles and optimizes your entire website into a folder named `dist` located at the root of your project.
+- **Optimizations**: The files in the `dist` folder will automatically feature minified code, hashed filenames for cache busting, and compiled assets. You can upload this folder directly to static hosting platforms.
+- **Development Flow**: During active coding, use `npm start` instead. This spins up a local development server at `http://localhost:1234` with hot module replacement (HMR), which refreshes your browser instantly as you save files. [link](https://parceljs.org/features/targets/)
+
+If you run into any compilation snags, feel free to tell me what **plugins** you are using or share the **terminal error message**, and I can help you debug it!
+
+- [link](https://parceljs.org/getting-started/webapp/)\
+  Building a web app with Parcel\
+  Now that Parcel is installed, let's create some source files for our app. Parcel accepts any type of file as an entry point, but a...\
+  Parcel.js
+- [link](https://parceljs.org/features/cli/)\
+  CLI - Parcel\
+  CLI \* parcel \[serve] # The serve command starts a development server, which will automatically rebuild your app as you change file...\
+  Parcel.js
+- [link](https://parceljs.org/features/targets/)\
+  Targets - Parcel\
+  Parcel follows the dependencies in each resolved entry to build your source code for one or more targets. Targets specify the outp...\
+  Parcel.js
+
+Show all
+
+## the command of parcel cli
+
+Here are the primary commands for the **Parcel CLI** used to develop and build your application.
+
+### Development Command
+
+Spins up a local development server with Hot Module Replacement (HMR).
+
+bash
+
+```
+npx parcel <entry-file>
+```
+
+Use code with caution.
+
+- **Example:** `npx parcel src/index.html`
+- **Default Port:** `http://localhost:1234`
+
+### Production Build Command
+
+Minifies assets, hashes filenames, and optimizes code for production deployment.
+
+bash
+
+```
+npx parcel build <entry-file>
+```
+
+Use code with caution.
+
+- **Example:** `npx parcel build src/index.html`
+- **Output Folder:** `dist/`
+
+***
+
+### Common CLI Options & Flags
+
+You can append these flags to customize how the commands run:
+
+### Change Port
+
+Sets a custom port for the local development server.
+
+bash
+
+```
+npx parcel src/index.html --port 3000
+```
+
+Use code with caution.
+
+### Change Output Directory
+
+Redirects built assets to a folder other than `dist`.
+
+bash
+
+```
+npx parcel build src/index.html --dist-dir ./public
+```
+
+Use code with caution.
+
+### Disable Source Maps
+
+Prevents the creation of `.map` files during a production build.
+
+bash
+
+```
+npx parcel build src/index.html --no-source-maps
+```
+
+Use code with caution.
+
+### Disable Content Hashing
+
+Keeps original filenames instead of adding a content hash (useful for debugging builds).
+
+bash
+
+```
+npx parcel build src/index.html --no-content-hash
+```
+
+Use code with caution.
+
+### Clear Cache
+
+Forces Parcel to ignore its `.parcel-cache` directory and rebuild everything from scratch.
+
+bash
+
+```
+npx parcel src/index.html --clear-cache
+```
+
+Use code with caution.
+
+***
+
+If you are trying to customize a specific part of your build process, let me know:
+
+- What **framework** you are using (React, Vue, vanilla JS?)
+- Whether you need to configure **HTTPS** for local development
+- If you need to set up **environment variables**
+
+I can give you the exact command or configuration you need!
+
+- [link](https://medium.com/@robinviktorsson/setting-up-a-modern-typescript-project-with-parcel-as-bundler-no-framework-b56055890eff)\
+  Setting Up a Modern TypeScript Project with Parcel as Bundler (No Framework)\
+  Apr 18, 2025 — Parcel's development server makes it easy to launch your app locally and instantly see changes thanks to hot module reloading (HMR...\
+  \
+  \
+  Medium
+- [link](https://github.com/parcel-bundler/parcel/issues/7574)\
+  The built in development server does not start when running the npx parcel src/index.html command · Issue #7574 · parcel-bundler/parcel\
+  Jan 18, 2022 — I have installed parcel 2.2.1 to my project and I am trying to load the development server by running the npx parcel src/index.htm...\
+  \
+  \
+  GitHub
+- [link](https://www.digitalocean.com/community/tutorials/how-to-bundle-a-web-app-with-parcel-js)\
+  How to Bundle a Web App with Parcel.js\
+  Sep 28, 2022 — Parcel's built-in development server is now running. The npx parcel command takes your entry point of src/index. html and builds y...\
+  \
+  \
+  DigitalOcean
+
+Show all
+
+## can i pass --open
+
+<mark>Yes,<span> </span><strong>you can absolutely pass the<span> </span><code dir="ltr">--open</code><span> </span>flag</strong>, but it only works with the<span> </span><strong>development/server</strong><span> </span>command</mark>. It will not work with `parcel build` because production builds do not spin up a live server. [link](https://parceljs.org/features/cli/)
+
+Here is how you can use it:
+
+### 1. Open in Your Default Browser
+
+To automatically launch your app in your default browser immediately after the development server starts, run: [link](https://parceljs.org/features/development/)
+
+bash
+
+```
+npx parcel src/index.html --open
+```
+
+Use code with caution.
+
+### 2. Open in a Specific Browser
+
+You can optionally pass a browser name right after the flag to launch a specific browser instead of your system default: [link](https://parceljs.org/features/development/)
+
+bash
+
+```
+npx parcel src/index.html --open chrome
+```
+
+Use code with caution.
+
+_(You can swap `chrome` for other browser keywords like `firefox`, `safari`, or `edge` depending on your OS)._ [link](https://parceljs.org/features/development/)
+
+### 3. Add It to `package.json`
+
+If you want this to happen every time you run your startup script, save it inside your `package.json` file like this: [link](https://stackoverflow.com/questions/69514292/how-do-you-get-parcel-to-open-in-a-specific-browser-of-my-choice)
+
+json
+
+```
+"scripts": {
+  "start": "parcel src/index.html --open",
+  "build": "parcel build src/index.html"
+}
+```
+
+Use code with caution.
+
+Now, you can just run `npm start` and your browser will pop up automatically.
+
+Would you like to know how to combine this with other network flags, like setting up a **custom domain host** or enabling **HTTPS** for local testing? [link](https://parceljs.org/)
+
+- [link](https://parceljs.org/features/development/)\
+  Development - Parcel\
+  Parcel's builtin dev server is automatically started when you run the default parcel command, which is a shortcut for parcel serve...\
+  Parcel.js
+- [link](https://parceljs.org/features/cli/)\
+  CLI - Parcel\
+  \--cert , Path to a certificate to use. See HTTPS. --key , Path to a private key to use. See HTTPS. --no-hmr, Disables hot reloadin...\
+  Parcel.js
+- [link](https://parceljs.org/)\
+  Parcel\
+  Dev server. Parcel includes a development server out of the box. Just run parcel index.html to get started. http://localhost:1234.\
+  Parcel.js
+
+Show all
+
