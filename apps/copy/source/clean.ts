@@ -44,7 +44,17 @@ export function remove_html_attrs({ html }: { html: string }): string {
     }
   });
 
-  return $.html();
+  let result = $.html();
+
+  if (result.startsWith('<html><head></head><body>')) {
+    result = result.slice('<html><head></head><body>'.length);
+  }
+
+  if (result.endsWith('</body></html>')) {
+    result = result.slice(0, -'</body></html>'.length);
+  }
+
+  return result;
 }
 
 export function remove_you_said({ html }: { html: string }): string {

@@ -45,58 +45,22 @@
         white-space: pre-wrap;
       }
 
-#markdown-toggle,
-#svg-toggle,
-#keep-images-toggle,
-#normalize-empty-links-toggle,
-#prettier-toggle,
-#remove-heading-toggle,
-#intercept-paste-toggle,
-#remove-html-attrs-toggle,
-#remove-you-said-toggle {
+      #options {
         position: fixed;
-        left: 50%;
-        transform: translateX(-50%);
+        bottom: 8px;
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+      }
+
+      #options > div {
         color: #fff;
         font-size: 14px;
         user-select: none;
         cursor: pointer;
-      }
-
-      #markdown-toggle {
-        bottom: 128px;
-      }
-
-      #svg-toggle {
-        bottom: 108px;
-      }
-
-      #keep-images-toggle {
-        bottom: 88px;
-      }
-
-      #normalize-empty-links-toggle {
-        bottom: 68px;
-      }
-
-      #prettier-toggle {
-        bottom: 48px;
-      }
-
-      #remove-heading-toggle {
-        bottom: 28px;
-      }
-
-      #intercept-paste-toggle {
-        bottom: 8px;
-      }
-
-      #remove-html-attrs-toggle {
-        bottom: 148px;
-      }
-
-      #remove-you-said-toggle {
-        bottom: 168px;
       }
     </style>
     <script type="module" src="./source/main.ts"></script>
@@ -112,14 +76,16 @@
       spellcheck="false"
     ></div>
 
-    <div id="markdown-toggle">markdown: off</div>
-    <div id="remove-you-said-toggle">remove you said: on</div>
-    <div id="remove-html-attrs-toggle">remove html attrs: on</div>
-    <div id="svg-toggle">keep svg: off</div>
-    <div id="keep-images-toggle">keep images: on</div>
-    <div id="normalize-empty-links-toggle">normalize empty links: on</div>
-    <div id="prettier-toggle">use prettier: on</div>
-    <div id="remove-heading-toggle">remove heading on the first line: off</div>
-    <div id="intercept-paste-toggle">intercept paste: off</div>
+    <div id="options">
+      <div id="markdown-toggle">markdown: off</div>
+      <div id="svg-toggle">keep svg: off</div>
+      <div id="keep-images-toggle">keep images: on</div>
+      <div id="normalize-empty-links-toggle">normalize empty links: on</div>
+      <div id="prettier-toggle">use prettier: on</div>
+      <div id="remove-heading-toggle">remove heading on the first line: off</div>
+      <div id="intercept-paste-toggle">intercept paste: off</div>
+      <div id="remove-you-said-toggle">remove you said: on</div>
+      <div id="remove-html-attrs-toggle">remove html attrs: on</div>
+    </div>
   </body>
 </html>
