@@ -19,9 +19,7 @@ There is no known song titled "Maukurain" in the maimai DX rhythm game series, a
 
 Show all
 
-#
-
-きゅうくらりん meaning
+# きゅうくらりん meaning
 
 **"Kyu-kurarin" (きゅうくらりん)** is a highly popular Vocaloid song created by the producer **Iyowa** featuring the voice synthesizer **KAFU**. While the track sounds upbeat and cheerful, its title and lyrics carry a very dark, dual meaning. \[[1](https://www.youtube.com/watch?v=g8o-O2R5MzQ), [2](https://ticketjam.jp/magazine/music/youtuber-music/vocaloid/118524/2), [3](https://ja.wikipedia.org/wiki/%E3%81%8D%E3%82%85%E3%81%86%E3%81%8F%E3%82%89%E3%82%8A%E3%82%93), [4](https://www.youtube.com/watch?v=-DfBLgmC0Jw)]
 
