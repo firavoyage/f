@@ -1364,4 +1364,268 @@ I can provide a targeted code sample for any of these scenarios.
 
 Show all
 
-# 
+# nodejs child process exec cwd
+
+To change the working directory of a Node.js child process, <mark style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 500; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">pass the <strong style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 600; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);"><code dir="ltr" style="font-family: monospace; font-size: 14px; font-weight: 600; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 1px solid rgb(44, 46, 53);">cwd</code> (Current Working Directory) property</strong> inside the options object as the second argument to</mark> `exec()`. \[[1](https://stackoverflow.com/questions/69311218/how-do-you-spawn-a-child-process-in-an-external-folder)]
+
+### Asynchronous Example (`exec`) \[[1](https://www.youtube.com/watch?v=BT2t1dck-IM\&t=6)]
+
+By default, `exec()` inherits the `process.cwd()` of your main script. To run a command somewhere else, structure your call like this: \[[1](https://nodejs.org/download/release/v4.4.2/docs/api/child%5Fprocess.html), [2](https://stackoverflow.com/questions/69311218/how-do-you-spawn-a-child-process-in-an-external-folder)]
+
+javascript
+
+```
+const { exec } = require('child_process');
+
+// Define the directory where you want the command to run
+const targetDirectory = '/path/to/target/folder';
+
+exec('ls -la', { cwd: targetDirectory }, (error, stdout, stderr) => {
+  if (error) {
+    console.error(`Error executing command: ${error.message}`);
+    return;
+  }
+  if (stderr) {
+    console.error(`Standard Error: ${stderr}`);
+    return;
+  }
+  console.log(`Output:\n${stdout}`);
+});
+```
+
+Use code with caution.
+
+### Synchronous Example (`execSync`)
+
+If you need to block the event loop and wait for the output sequentially, use `execSync`: \[[1](https://nodejs.org/api/child%5Fprocess.html), [2](https://bun.com/reference/node/child%5Fprocess/execSync), [3](https://gili842.medium.com/reducing-cloud-run-time-and-costs-with-execsync-and-spawn-999b24c33493)]
+
+javascript
+
+```
+const { execSync } = require('child_process');
+
+try {
+  const output = execSync('pwd', { cwd: '/path/to/target/folder', encoding: 'utf8' });
+  console.log(output);
+} catch (error) {
+  console.error(`Execution failed: ${error.message}`);
+}
+```
+
+Use code with caution.
+
+### Critical Things to Know
+
+- **Independent Environments**: Each call to `exec()` spins up a brand-new shell environment. Running `exec('cd /some/path')` will **not** change the directory for subsequent `exec()` blocks. You must provide the `cwd` option to every call that requires it.
+- **Relative Paths**: The `cwd` string can be an absolute path or a relative path calculated from the root location where your Node app was launched.
+- **Environment Variables Pitfall**: If you are also overriding the environment variables by passing an `env` object alongside `cwd`, make sure you spread the existing environment variables (e.g., `env: { ...process.env, MY_VAR: 'value' }`) so system paths like `PATH` do not get wiped out, which breaks terminal utilities. \[[1](https://nodejs.org/api/child%5Fprocess.html), [2](https://stackoverflow.com/questions/45618855/how-to-follow-the-cwd-path-of-a-exec-child-process-mac-windows), [3](https://github.com/nodejs/node-v0.x-archive/issues/7721), [4](https://stackoverflow.com/questions/15939380/how-to-get-the-cwd-current-working-directory-from-a-nodejs-child-process-in-b), [5](https://stackoverflow.com/questions/49644022/child-process-exec-cwd-is-not-setting-current-working-directory)]
+
+If you are encountering errors running your command, tell me **what command** you are attempting to execute and the **operating system** you are on so we can debug it together.
+
+- [link](https://nodejs.org/api/child%5Fprocess.html)\
+  Child process | Node.js v26.3.1 Documentation\
+  The child\_process. spawn() method spawns the child process asynchronously, without blocking the Node. js event loop. The child\_pro...\
+  Node.js
+- [link](https://stackoverflow.com/questions/49644022/child-process-exec-cwd-is-not-setting-current-working-directory)\
+  child-process exec cwd, is not setting current working directory\
+  Apr 4, 2018 — 3 Answers. ... the code snippet you pasted should work and CWD should change current directory as per your value. though i am susp...\
+  Stack Overflow
+- [link](https://stackoverflow.com/questions/15939380/how-to-get-the-cwd-current-working-directory-from-a-nodejs-child-process-in-b)\
+  How to get the cwd (current working directory) from a nodejs child ...\
+  Apr 11, 2013 — \* 4 Answers. Sorted by: to start child with parent dir as cwd: var exec = require('child\_process'). exec; var path = require('path...\
+  Stack Overflow
+
+Show all
+
+## You said: can it take ~
+
+No, the `cwd` option **cannot natively resolve the tilde (`~`) character** to represent the home directory.
+
+Passing a path like `cwd: '~/projects'` will result in an `ENOENT` (Error No Entity) crash because Node.js passes the directory string directly to system-level system calls (like `chdir`), which do not understand shell-specific shortcuts.
+
+### How to Fix It
+
+To use the home directory, resolve the path manually before passing it to `cwd`.
+
+### Option 1: Use `os.homedir()` (Recommended)
+
+The safest, cross-platform method is to combine Node's built-in `os` and `path` modules:
+
+javascript
+
+```
+const { exec } = require('child_process');
+const path = require('path');
+const os = require('os');
+
+// Resolves to /Users/username/projects or C:\Users\username\projects
+const targetDirectory = path.join(os.homedir(), 'projects');
+
+exec('ls -la', { cwd: targetDirectory }, (error, stdout, stderr) => {
+  // Handle results
+});
+```
+
+Use code with caution.
+
+### Option 2: Use Environment Variables
+
+Alternatively, you can pull the home directory path directly from Node's `process.env` wrapper:
+
+javascript
+
+```
+const path = require('path');
+
+// Works on macOS/Linux (HOME) and Windows (USERPROFILE)
+const home = process.env.HOME || process.env.USERPROFILE;
+const targetDirectory = path.join(home, 'projects');
+```
+
+Use code with caution.
+
+If you are dealing with a path string dynamic input that users type in, I can show you how to write a quick **regex replacement function** to automatically swap `~` for the home path. Would that be helpful?
+
+## You said: use es module
+
+To use ES Modules (`import`/`export`), change your Node.js file extension to `.mjs` or set `"type": "module"` in your `package.json` file. \[[1](https://blog.devgenius.io/beginners-guide-understanding-es-modules-in-javascript-import-vs-require-7f290c64850f), [2](https://dev.to/kda/enhancing-javascript-code-with-es-modules-export-import-and-beyond-1d5), [3](https://blog.logrocket.com/commonjs-vs-es-modules-node-js/), [4](https://dev.to/srishtikprasad/es-module-50a)]
+
+### Asynchronous Example (`exec`)
+
+Import modules using the `import` keyword. Use the `node:` prefix for built-in modules to follow modern Node.js best practices: \[[1](https://www.sitepoint.com/using-es-modules/), [2](https://www.youtube.com/watch?v=h-VMZ6DqSYw), [3](https://github.com/nodejs/node/issues/38343)]
+
+javascript
+
+```
+import { exec } from 'node:child_process';
+import path from 'node:path';
+import os from 'node:os';
+
+const targetDirectory = path.join(os.homedir(), 'projects');
+
+exec('ls -la', { cwd: targetDirectory }, (error, stdout, stderr) => {
+  if (error) {
+    console.error(`Error: ${error.message}`);
+    return;
+  }
+  console.log(stdout);
+});
+```
+
+Use code with caution.
+
+### Synchronous Example (`execSync`)
+
+For synchronous execution, import `execSync` directly:
+
+javascript
+
+```
+import { execSync } from 'node:child_process';
+import path from 'node:path';
+import os from 'node:os';
+
+const targetDirectory = path.join(os.homedir(), 'projects');
+
+try {
+  const output = execSync('pwd', { cwd: targetDirectory, encoding: 'utf8' });
+  console.log(output);
+} catch (error) {
+  console.error(`Failed: ${error.message}`);
+}
+```
+
+Use code with caution.
+
+### Key Differences from CommonJS
+
+- **No `__dirname` or `__filename`**: These global variables do not exist in ES Modules. If you need relative paths based on the current file's location, use `import.meta.url` with `fileURLToPath`.
+- **Explicit Extensions**: When importing your own local files (e.g., `import helper from './helper.js'`), you must explicitly include the file extension. \[[1](https://github.com/electron/forge/issues/3439), [2](https://oneuptime.com/blog/post/2026-01-25-fix-syntaxerror-cannot-use-import-statement/view), [3](https://typescript.tv/new-features/dirname-is-not-defined-in-es-module-scope/), [4](https://coreui.io/answers/how-to-use-esm-modules-in-nodejs/), [5](https://electerious.medium.com/from-commonjs-to-es-modules-how-to-modernize-your-node-js-app-ad8cdd4fb662)]
+
+If you need to calculate paths relative to your **current script file** using ES Modules, let me know and I can show you the boilerplate for replacing `__dirname`.
+
+- [link](https://blog.devgenius.io/beginners-guide-understanding-es-modules-in-javascript-import-vs-require-7f290c64850f)\
+  Beginner’s Guide: Understanding ES Modules in JavaScript: Import vs. Require\
+  May 10, 2024 — They ( ES modules ) allow you to split your code into separate files, each containing a specific set of functionality, and then im...\
+  \
+  \
+  Dev Genius
+- [link](https://dev.to/kda/enhancing-javascript-code-with-es-modules-export-import-and-beyond-1d5)\
+  Enhancing JavaScript Code with ES Modules: Export, Import, and Beyond\
+  Jul 20, 2024 — To use ES Modules in Node. js, you can use the . mjs file extension or set "type": "module" in the package. json file.\
+  \
+  \
+  DEV Community
+- [link](https://blog.logrocket.com/commonjs-vs-es-modules-node-js/)\
+  CommonJS vs. ES modules in Node.js\
+  Jun 6, 2024 — However, it's important to remember that for Node. js to treat a module as an ES module, one of the following must happen: either ...\
+  \
+  \
+  LogRocket Blog
+
+Show all
+
+## You said: how to let it use the default shell
+
+To force `exec` to use your operating system's default user shell instead of the Node.js fallback, pass the **`shell` property** inside the options object alongside `cwd`.
+
+By default, Node.js runs commands using `/bin/sh` on Unix/Linux/macOS and `cmd.exe` on Windows. \[[1](https://www.nushell.sh/cookbook/foreign%5Fshell%5Fscripts.html)]
+
+### Example Configuration
+
+javascript
+
+```
+import { exec } from 'node:child_process';
+import path from 'node:path';
+import os from 'node:os';
+
+const targetDirectory = path.join(os.homedir(), 'projects');
+
+// Read the default shell path from the system environment variables
+const defaultShell = process.env.SHELL || (process.platform === 'win32' ? 'powershell.exe' : '/bin/bash');
+
+const options = {
+  cwd: targetDirectory,
+  shell: defaultShell // Forces Node to use this specific shell binary
+};
+
+exec('echo $SHELL && tilde_shortcut_or_alias', options, (error, stdout, stderr) => {
+  if (error) {
+    console.error(`Error: ${error.message}`);
+    return;
+  }
+  console.log(stdout);
+});
+```
+
+Use code with caution.
+
+### Critical Things to Know
+
+- **Tilde (`~`) Behavior Changes**: If you set `shell: true`, Node uses the default system tool hook, but it still does not automatically expand `~` inside the `cwd` string itself. However, you _can_ use `~` safely inside the command string (e.g., `exec('cd ~/projects && ls')`).
+- **`shell: true` Shortcut**: Passing `shell: true` tells Node to use the default system shell (`/bin/sh` or `cmd.exe`). To get user-customized shells like `zsh` or `bash`, you must pass the exact string path as shown in the example above. \[[1](https://github.com/LazyVim/LazyVim/issues/2151), [2](https://docs.redhat.com/en/documentation/red%5Fhat%5Fenterprise%5Flinux/6/html/identity%5Fmanagement%5Fguide/user-schema), [3](https://www.dedicatedcore.com/blog/install-zsh-ubuntu/)]
+- **Shell Aliases Pitfall**: Interactive configurations like `.bashrc` or `.zshrc` aliases are often skipped because Node spawns non-interactive shells. \[[1](https://effective-shell.com/part-5-building-your-toolkit/configuring-the-shell/)]
+
+Are you trying to run an **alias**, a **custom shell script**, or use a specific shell feature like **piping**? Let me know so I can tailor the configuration setup for you.
+
+- [link](https://www.nushell.sh/cookbook/foreign%5Fshell%5Fscripts.html)\
+  Working With Foreign Shell Scripts\
+  The shell is set to /bin/sh by default, because this is often considered the "default" POSIX-compatible shell of UNIX-like systems...\
+  \
+  Nushell
+- [link](https://github.com/LazyVim/LazyVim/issues/2151)\
+  feature: Change the default terminal in Windows from cmd to Windows Powershell · Issue #2151 · LazyVim/LazyVim\
+  Dec 7, 2023 — There's also the option shell in Neovim which by default on Windows is set to cmd.exe . Maybe you could try changing this to repre...\
+  \
+  \
+  GitHub
+- [link](https://docs.redhat.com/en/documentation/red%5Fhat%5Fenterprise%5Flinux/6/html/identity%5Fmanagement%5Fguide/user-schema)
+
+9.10. Managing User and Group Schema | Identity Management Guide | Red Hat Enterprise Linux | 6\
+Sets the default shell to use for users. The default value is /bin/sh .\
+\
+\
+Red Hat Documentation
+
+Show all
