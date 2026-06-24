@@ -8,12 +8,6 @@ import { homedir } from 'node:os';
 import { join, dirname as dir } from 'node:path';
 import { writeFile, readFile, appendFile, mkdir, unlink } from 'node:fs/promises';
 
-const make_dir = handle(mkdir)
-const write_file = handle(writeFile)
-const read_file = handle(readFile)
-const append_file = handle(appendFile)
-const delete_file = handle(unlink)
-
 /**
  * errors
  */
@@ -197,30 +191,29 @@ export function cache(...args) {
  * (over) write a file
  */
 export async function write({ path, content }): Promise<Result<void>> {
-  /**
-   * todo: handle errors
-   * 
-   * e.g. illegal character, path too long, etc.
-   */
-
-  /**
-   * create path if needed
-   */
-  const make_dir_result = await make_dir(dir(path), { recursive: true });
-  if (is_error(make_dir_result)) {
-    if (has(map, make_dir_result.code)) {
-      return err({ type: map[make_dir_result.code], message: make_dir_result })
-    }
+  try {
+    await dir(path)
+  } catch {
+    return err(invalid_input)
   }
 
-  const write_file_result = await write_file(path, content, 'utf8');
-  if (is_error(write_file_result)) {
-    if (has(map, write_file_result.code)) {
-      return err({ type: map[write_file_result.code], message: write_file_result })
+  try {
+    await mkdir(dir(path), { recursive: true })
+  } catch (e) {
+    if (has(map, e.code)) {
+      return err({ type: map[e.code], message: e })
     }
+    return err(other)
   }
 
-  return write_file_result
+  try {
+    await writeFile(path, content, 'utf8')
+  } catch (e) {
+    if (has(map, e.code)) {
+      return err({ type: map[e.code], message: e })
+    }
+    return err(other)
+  }
 }
 
 /**
@@ -230,33 +223,25 @@ export async function write({ path, content }): Promise<Result<void>> {
  * even though there is only one param currently
  */
 export async function read({ path }) {
-  /**
-   * todo: handle errors
-   * 
-   * e.g. not_found
-   * 
-   * handle non string files (?)
-   */
-
-  const content = await read_file(path, 'utf8');
-
-  if (is_error(content)) {
-    /**
-     * todo
-     * 
-     * - invalid filename does not work well, whether node or sys. rather check in ts.
-     * - fact check the mappings, rather resolve to others than having an incorrect mapping
-     */
-    if (has(map, content.code)) {
-      return err({ type: map[content.code], message: content })
+  try {
+    return await readFile(path, 'utf8')
+  } catch (e) {
+    if (has(map, e.code)) {
+      return err({ type: map[e.code], message: e })
     }
+    return err(other)
   }
-
-  return content
 }
 
 export async function append({ path, content }) {
-  await append_file(path, content)
+  try {
+    await appendFile(path, content)
+  } catch (e) {
+    if (has(map, e.code)) {
+      return err({ type: map[e.code], message: e })
+    }
+    return err(other)
+  }
 }
 
 export async function edit({ path, find, replace }) {
@@ -297,14 +282,12 @@ export async function edit({ path, find, replace }) {
  * do i { path, options } or path, { options }? others?
  */
 export async function remove({ path }): Promise<Result<void>> {
-  const _ = await delete_file(path)
-
-  if (is_error(_)) {
-    if (has(map, _.code)) {
-      return err({ type: map[_.code], message: _ })
+  try {
+    await unlink(path)
+  } catch (e) {
+    if (has(map, e.code)) {
+      return err({ type: map[e.code], message: e })
     }
+    return err(other)
   }
-
-  return _
 }
-

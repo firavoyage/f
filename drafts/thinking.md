@@ -6,6 +6,8 @@ file based key value.
 
 obviously it would stand on top of `file`. i think it deserves a refactor.
 
+<!-- i could impl the actions then (i should save every result, like api calls.) -->
+
 ---
 
 remove handle. use try catch
