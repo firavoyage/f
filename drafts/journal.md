@@ -38019,6 +38019,12 @@ basically, export all claude and codex sessions, instruct them how to search, an
 
 我妈有绿卡. 我和我妈是公民. -->
 
+24
+
+14 20 create `thinking.md`. <!-- not "thoughts" -->
+
+more specific and relevant than todo. more meaningful than temp.
+
 
 
 <!-- timebox, plan. -->
