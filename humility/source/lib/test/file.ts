@@ -1,7 +1,6 @@
+import { write, read, data, append, edit, remove } from 'lib/file';
 // import * as file from 'lib/file';
 // use(file)
-
-import { write, read, data, append, edit, remove } from 'lib/file';
 
 // console.log(write, read)
 
