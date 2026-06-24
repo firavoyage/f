@@ -197,8 +197,6 @@ function render_toggle_button({ node, label, enabled }: render_toggle_options): 
 
 function render_all(): void {
   render_toggle_button({ node: markdown_button, label: 'markdown', enabled: markdown_enabled });
-  render_toggle_button({ node: remove_you_said_button, label: 'remove you said', enabled: remove_you_said_enabled });
-  render_toggle_button({ node: remove_html_attrs_button, label: 'remove html attrs', enabled: remove_html_attrs_enabled });
   render_toggle_button({ node: svg_button, label: 'keep svg', enabled: svg_enabled });
   render_toggle_button({ node: keep_images_button, label: 'keep images', enabled: keep_images_enabled });
   render_toggle_button({
@@ -209,6 +207,8 @@ function render_all(): void {
   render_toggle_button({ node: prettier_button, label: 'use prettier', enabled: prettier_enabled });
   render_toggle_button({ node: remove_heading_button, label: 'remove heading on the first line', enabled: remove_heading_enabled });
   render_toggle_button({ node: intercept_paste_button, label: 'intercept paste', enabled: intercept_paste_enabled });
+  render_toggle_button({ node: remove_you_said_button, label: 'remove you said', enabled: remove_you_said_enabled });
+  render_toggle_button({ node: remove_html_attrs_button, label: 'remove html attrs', enabled: remove_html_attrs_enabled });
 }
 
 function toggle_boolean({
