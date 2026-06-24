@@ -744,6 +744,7 @@ humility:
 - lib result pascalcase for types
 - research database or flat file system searching algorithms
 - research google ai mode frontend engineering chatgpt lag
+- research agent use cases
 
 legacy:
 

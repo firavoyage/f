@@ -38025,6 +38025,10 @@ basically, export all claude and codex sessions, instruct them how to search, an
 
 more specific and relevant than todo. more meaningful than temp.
 
+25
+
+04 20 check out `置身钉内`. add to readlist.
+
 
 
 <!-- timebox, plan. -->

@@ -193,6 +193,8 @@ https://developer.gnome.org/hig/patterns/feedback.html
 
 https://www.figma.com/community/file/1467967362512102193
 
+https://developer.gnome.org/hig/guidelines/typography.html
+
 ---
 
 breeze
