@@ -1,7 +1,7 @@
 import desktop from '@folder/xdg';
 import { homedir } from 'node:os';
 import { join, dirname } from 'node:path';
-import { rm, writeFile, readFile, appendFile, mkdir, unlink } from 'node:fs/promises';
+import { rm, writeFile, readFile, appendFile, mkdir, unlink, access } from 'node:fs/promises';
 import trash_lib from 'trash';
 
 import { app_name, xdg } from 'lib/env';
@@ -222,6 +222,15 @@ export async function remove(path, { can_non_exist = false }: { can_non_exist?: 
       return err({ type: map[e.code], message: e })
     }
     return err(other)
+  }
+}
+
+export async function does_exist(path: string) {
+  try {
+    await access(path);
+    return true
+  } catch {
+    return false
   }
 }
 
