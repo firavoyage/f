@@ -351,6 +351,7 @@ pm:
 - the unsolved in possible new personal softwares
 - typescript vscode incentive microsoft
 - foss failure patterns
+- over engineering hacker ethics aesthetics
 
 gamedev:
 
