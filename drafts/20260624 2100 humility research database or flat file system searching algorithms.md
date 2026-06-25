@@ -8,6 +8,10 @@
 
 > How it Works: Writing data directly to the disk tables is slow. Instead, the database immediately writes the changes to a sequential, append-only WAL on non-volatile disk. Once the WAL is safely on the disk, the transaction is marked as committed. If the system crashes, the database reads the WAL during reboot to replay and recover the lost memory data.  -->
 
+<!-- i do not need an operation to "get all nodes below the parent". (or not? i can simply declare whatever i want.) open thread: get all msgs. switch: already inside localstorage. -->
+
+<!-- well no need to overthink it. you do not have such scale. you could over engineer, but you should not over engineer wo a purpose. -->
+
 # how does claude code store data
 
 <mark><strong>Claude Code stores data using a multi-layered local architecture</strong><span> </span>combined with a cloud-based client-server model</mark>. It segregates information by project directory, appends data to plaintext files on disk immediately to prevent data loss, and tracks histories to enable robust version rollbacks. [link](https://milvus.io/blog/why-claude-code-feels-so-stable-a-developers-deep-dive-into-its-local-storage-design.md)
