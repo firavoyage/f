@@ -16,7 +16,17 @@ async function thread_count() {
 
 // todo: more message types
 export async function chat({ message, thread = thread_count() }: { message: string, thread?: number }) {
+  // init the thread if non existing
+
+  // read and parse the thread, iterate the focus path to the bottom
+
+  // append children (the index)
+
+  // append array (at the index) as the id
+
   // request
+  
+  // set nodeid content
 
   
 }
