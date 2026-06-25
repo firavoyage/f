@@ -120,7 +120,7 @@ export function cache(...args) {
 /**
  * (over) write a file
  */
-export async function write({ path, content }): Promise<Result<void>> {
+export async function write(path, content): Promise<Result<void>> {
   try {
     await dirname(path)
   } catch {
@@ -152,7 +152,7 @@ export async function write({ path, content }): Promise<Result<void>> {
  * use object params anyway for consistency, 
  * even though there is only one param currently
  */
-export async function read({ path }) {
+export async function read(path) {
   try {
     return await readFile(path, 'utf8')
   } catch (e) {
@@ -163,7 +163,7 @@ export async function read({ path }) {
   }
 }
 
-export async function append({ path, content }) {
+export async function append(path, content) {
   try {
     await appendFile(path, content)
   } catch (e) {
@@ -174,7 +174,7 @@ export async function append({ path, content }) {
   }
 }
 
-export async function edit({ path, find, replace }) {
+export async function edit(path, search, replace) {
   /**
    * todo
    * 
@@ -193,7 +193,7 @@ export async function edit({ path, find, replace }) {
     return err(non_string_content)
   }
 
-  const updated_content = content.replaceAll(find, replace)
+  const updated_content = content.replaceAll(search, replace)
 
   return await write({ path, content: updated_content })
 }
@@ -209,7 +209,7 @@ export async function edit({ path, find, replace }) {
  * 
  * do i { path, options } or path, { options }? others?
  */
-export async function remove({ path, can_non_exist = false }): Promise<Result<void>> {
+export async function remove(path, { can_non_exist = false }): Promise<Result<void>> {
   // must_exist = true // implicit true is somewhat inconsistent
   try {
     await unlink(path)
@@ -224,11 +224,11 @@ export async function remove({ path, can_non_exist = false }): Promise<Result<vo
   }
 }
 
-export async function clear({ path }) {
+export async function clear(path) {
   await rm(path, { recursive: true, force: true });
 }
 
-export async function trash({ path, can_non_exist = false }) {
+export async function trash(path, { can_non_exist = false }) {
   try {
     await trash_lib(path, { glob: false });
   } catch (e) {

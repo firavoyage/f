@@ -294,4 +294,32 @@ merge might break prototype. rather define directly.
 
 make it simpler. reduce unnecessary layers.
 
+20 40 refactor params on file and repo
+
+p
+
+```ts
+write({ path, content })
+```
+
+c
+
+```ts
+write(path, content)
+```
+
+i do not benefit from obj param tbh
+
+```ts
+export async function restore(cwd: string, hash: hash) {
+```
+
+for this case, i might benefit, (i would not swap cwd and hash anymore, though they are all required)
+
+rationale: you will not encounter issues like `fn(foo, null, bar)`, and it's clear you should always `cd` or set cwd first. (also, you have autocomplete hints)
+
+but i would refactor as well.
+
+<!-- e.g. dom replace node (first is new, second is old). i really get stuck wo an llm. -->
+
 
