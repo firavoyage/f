@@ -231,6 +231,7 @@ frontend: <!-- web, ts/js -->
 - routing history api auto correct typos link like hover info
 - css centering popup overlay grid flex
 - ts builtin types utility js browser nodejs
+- js truthy falsy
 
 backend:
 

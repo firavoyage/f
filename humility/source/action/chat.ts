@@ -1,10 +1,23 @@
-import { get, set } from 'backend/store';
+import { has, get, set } from 'backend/store';
 
+const thread_count_key = 'thread_count'
+
+// always unique
 async function thread_count() {
-  
+  if (await has(thread_count_key)) {
+    const count = get(thread_count_key)
+    set(thread_count_key, count + 1)
+    return count
+  }
+
+  set(thread_count_key, 1)
+  return 1
 }
 
 // todo: more message types
-export async function chat({message, thread}: {message: string, thread?: number}) {
+export async function chat({ message, thread = thread_count() }: { message: string, thread?: number }) {
+  // request
+
   
 }
+
