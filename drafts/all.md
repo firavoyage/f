@@ -745,6 +745,7 @@ humility:
 - research database or flat file system searching algorithms
 - research google ai mode frontend engineering chatgpt lag
 - research agent use cases
+- research design polish vibe coding <!-- d? -->
 
 legacy:
 
