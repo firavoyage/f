@@ -18,3 +18,9 @@ const foo = await remove({ path: data('nonexisting') })
 if(is_error(foo)){
   log('removing a nonexisting file errs as expected')
 } 
+
+const bar = await remove({ path: data('nonexisting'), can_non_exist: true })
+
+if(!is_error(bar)){
+  log('can non exist flag works')
+} 

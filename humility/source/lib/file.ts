@@ -2,6 +2,7 @@ import desktop from '@folder/xdg';
 import { homedir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { rm, writeFile, readFile, appendFile, mkdir, unlink } from 'node:fs/promises';
+import trash_lib from 'trash';
 
 import { app_name, xdg } from 'lib/env';
 
@@ -208,11 +209,15 @@ export async function edit({ path, find, replace }) {
  * 
  * do i { path, options } or path, { options }? others?
  */
-export async function remove({ path }): Promise<Result<void>> {
+export async function remove({ path, can_non_exist = false }): Promise<Result<void>> {
+  // must_exist = true // implicit true is somewhat inconsistent
   try {
     await unlink(path)
   } catch (e) {
     if (has(map, e.code)) {
+      if (map[e.code] == not_found && can_non_exist) {
+        return;
+      }
       return err({ type: map[e.code], message: e })
     }
     return err(other)
@@ -221,4 +226,18 @@ export async function remove({ path }): Promise<Result<void>> {
 
 export async function clear({ path }) {
   await rm(path, { recursive: true, force: true });
+}
+
+export async function trash({ path, can_non_exist = false }) {
+  try {
+    await trash_lib(path, { glob: false });
+  } catch (e) {
+    if (has(map, e.code)) {
+      if (map[e.code] == not_found && can_non_exist) {
+        return;
+      }
+      return err({ type: map[e.code], message: e })
+    }
+    return err(other)
+  }
 }
