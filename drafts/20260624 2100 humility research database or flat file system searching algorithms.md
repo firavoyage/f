@@ -1,5 +1,7 @@
 <!-- seems i overestimated the time... almost all algorithms take at least log n, but hash table does not. -->
 
+<!-- complete is normal. no need to have an extra metadata for that. crashes? (common, like app oom or network instability) like, have a flag of "incomplete node". that's it. -->
+
 # how does claude code store data
 
 <mark><strong>Claude Code stores data using a multi-layered local architecture</strong><span> </span>combined with a cloud-based client-server model</mark>. It segregates information by project directory, appends data to plaintext files on disk immediately to prevent data loss, and tracks histories to enable robust version rollbacks. [link](https://milvus.io/blog/why-claude-code-feels-so-stable-a-developers-deep-dive-into-its-local-storage-design.md)
