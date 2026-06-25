@@ -92,27 +92,28 @@ const map = {
   ESTALE: stale_network_file_handle
 }
 
-export const home = homedir()
+export function home(...args) {
+  return join(homedir(), ...args)
+}
 
-// todo: handle ~
 export function path(...args) {
   return join(...args)
 }
 
 export function data(...args) {
-  const data_folder = xdg ? desktop({ subdir: app_name }).data : join(home, `.${app_name}`, 'data')
+  const data_folder = xdg ? desktop({ subdir: app_name }).data : home(`.${app_name}`, 'data')
 
   return join(data_folder, ...args)
 }
 
 export function config(...args) {
-  const config_folder = xdg ? desktop({ subdir: app_name }).config : join(home, `.${app_name}`, 'config')
+  const config_folder = xdg ? desktop({ subdir: app_name }).config : home(`.${app_name}`, 'config')
 
   return join(config_folder, ...args)
 }
 
 export function cache(...args) {
-  const cache_folder = xdg ? desktop({ subdir: app_name }).cache : join(home, `.${app_name}`, 'cache')
+  const cache_folder = xdg ? desktop({ subdir: app_name }).cache : home(`.${app_name}`, 'cache')
 
   return join(cache_folder, ...args)
 }
@@ -209,7 +210,7 @@ export async function edit(path, search, replace) {
  * 
  * do i { path, options } or path, { options }? others?
  */
-export async function remove(path, { can_non_exist = false }): Promise<Result<void>> {
+export async function remove(path, { can_non_exist = false }: { can_non_exist?: boolean } = {}): Promise<Result<void>> {
   // must_exist = true // implicit true is somewhat inconsistent
   try {
     await unlink(path)
@@ -224,7 +225,7 @@ export async function remove(path, { can_non_exist = false }): Promise<Result<vo
   }
 }
 
-export async function clear(path) {
+export async function clear(path: string) {
   await rm(path, { recursive: true, force: true });
 }
 
