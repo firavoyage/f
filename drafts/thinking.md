@@ -46,4 +46,14 @@ how to store a tree?
 
 how to parse yaml in nodejs
 
+---
+
+```yaml
+# first item is root
+- value: "root"
+  children: [1, 2]
+- value: "first message key"
+- value: "modified first message key"
+```
+
 
