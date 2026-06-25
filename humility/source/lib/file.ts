@@ -92,33 +92,13 @@ const map = {
   ESTALE: stale_network_file_handle
 }
 
-// state
+// States
 let is_initialized = false;
 let data_folder = ''
 let config_folder = ''
 let cache_folder = ''
 
 type non_empty_string = `${string}${any}`;
-
-// /**
-//  * todo: dry?
-//  */
-// type init = typeof init
-// type path = typeof path
-// type data = typeof data
-// type config = typeof config
-// type cache = typeof cache
-// type write = typeof write
-// type read = typeof read
-// declare global {
-//   var init: init
-//   var path: path
-//   var data: data
-//   var config: config
-//   var cache: cache
-//   var write: write
-//   var read: read
-// }
 
 export function init({ name, xdg = true }: { name: non_empty_string, xdg?: boolean }) {
   if (is_initialized) {
