@@ -1,7 +1,7 @@
 type Optional<Type, Keys extends keyof Type> = Omit<Type, Keys> & Partial<Pick<Type, Keys>>
 
 // any, normalized
-type all = string | number | boolean | bigint | symbol | null | undefined | { [key: PropertyKey]: any };
+type all = void | string | number | boolean | bigint | symbol | null | undefined | { [key: PropertyKey]: any };
 type Ok<T = all> = T extends object ? (Omit<T, typeof error_symbol> & { [error_symbol]?: never }) : T;
 type Err = { type: any, message: any, [error_symbol]: true } & Partial<FileError>
 type FileError = { code: string, path: string, syscall: string, errno: number }

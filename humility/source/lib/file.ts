@@ -1,12 +1,12 @@
 import desktop from '@folder/xdg';
 import { homedir } from 'node:os';
 import { join, dirname } from 'node:path';
-import { writeFile, readFile, appendFile, mkdir, unlink } from 'node:fs/promises';
+import { rm, writeFile, readFile, appendFile, mkdir, unlink } from 'node:fs/promises';
 
 import { app_name, xdg } from 'lib/env';
 
 // Errors
-export const not_string = "not_string"
+export const non_string_content = "non string content"
 
 export const not_found = "not_found"
 export const permission_denied = "permission_denied"
@@ -91,37 +91,7 @@ const map = {
   ESTALE: stale_network_file_handle
 }
 
-// States
-let is_initialized = false;
-let data_folder = ''
-let config_folder = ''
-let cache_folder = ''
-
-export function init({ name, xdg = true }: { name: string, xdg?: boolean }) {
-  if (is_initialized) {
-    return err(already_initialized)
-  }
-
-  is_initialized = true
-
-  if (xdg) {
-    const { data, config, cache } = desktop({ subdir: name })
-
-    data_folder = data
-    config_folder = config
-    cache_folder = cache
-  } else {
-    const home = homedir()
-
-    data_folder = join(home, `.${name}`, 'data')
-    config_folder = join(home, `.${name}`, 'config')
-    cache_folder = join(home, `.${name}`, 'cache')
-  }
-}
-
-export function home() {
-  return homedir()
-}
+export const home = homedir()
 
 // todo: handle ~
 export function path(...args) {
@@ -129,23 +99,20 @@ export function path(...args) {
 }
 
 export function data(...args) {
-  if (!is_initialized) {
-    return err(not_initialized)
-  }
+  const data_folder = xdg ? desktop({ subdir: app_name }).data : join(home, `.${app_name}`, 'data')
+
   return join(data_folder, ...args)
 }
 
 export function config(...args) {
-  if (!is_initialized) {
-    return err(not_initialized)
-  }
+  const config_folder = xdg ? desktop({ subdir: app_name }).config : join(home, `.${app_name}`, 'config')
+
   return join(config_folder, ...args)
 }
 
 export function cache(...args) {
-  if (!is_initialized) {
-    return err(not_initialized)
-  }
+  const cache_folder = xdg ? desktop({ subdir: app_name }).cache : join(home, `.${app_name}`, 'cache')
+
   return join(cache_folder, ...args)
 }
 
@@ -222,8 +189,8 @@ export async function edit({ path, find, replace }) {
   const content = await read({ path })
 
   if (typeof content != 'string') {
-    return err(not_string)
-  } 
+    return err(non_string_content)
+  }
 
   const updated_content = content.replaceAll(find, replace)
 
@@ -252,4 +219,6 @@ export async function remove({ path }): Promise<Result<void>> {
   }
 }
 
-
+export async function clear({ path }) {
+  await rm(path, { recursive: true, force: true });
+}

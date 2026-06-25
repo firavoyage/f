@@ -1,8 +1,8 @@
-import { write, read, data, append, edit, remove } from 'lib/file';
+import { write, read, data, append, edit, remove, clear } from 'lib/file';
 // import * as file from 'lib/file';
 // use(file)
 
-// console.log(write, read)
+await clear({path: data()})
 
 await write({ path: data('test'), content: 'foo \n' })
 
@@ -13,8 +13,8 @@ await edit({ path: data('test'), find: 'foo', replace: 'hello' })
 // await remove({ path: data('test') })
 log(await read({ path: data('test') }))
 
-let foo = await remove({ path: data('nonexisting') })
+const foo = await remove({ path: data('nonexisting') })
 
 if(is_error(foo)){
-  log(foo)
+  log('removing a nonexisting file errs as expected')
 } 

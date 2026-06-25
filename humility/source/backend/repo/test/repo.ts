@@ -2,7 +2,7 @@ import { init, save, restore } from 'backend/repo/repo';
 import { home, path, write } from 'lib/file';
 
 // mkdir, rmrf
-const cwd = path(home(), 'temp')
+const cwd = path(home, 'temp')
 
 await init({ cwd })
 
