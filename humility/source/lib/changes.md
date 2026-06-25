@@ -322,4 +322,31 @@ but i would refactor as well.
 
 <!-- e.g. dom replace node (first is new, second is old). i really get stuck wo an llm. -->
 
+20 40 refactor `home` in file
+
+p
+
+```ts
+// todo: make it home(..args) instead?
+// yes. you always path(home, ...), home first if home appears. why not just home(...). 
+// and you never just home().
+export const home = homedir()
+
+// todo: handle ~
+export function path(...args) {
+  return join(...args)
+}
+```
+
+c
+
+```ts
+export function home(...args) {
+  return join(homedir(), ...args)
+}
+
+export function path(...args) {
+  return join(...args)
+}
+```
 
