@@ -18,6 +18,7 @@ the real world is less hard but way more complex, which llms do not handle well.
 
 - action/chat
   - new thread? (no empty threads)
+    - thread count
     - backend/store
       - lib/file
   - append to thread tree
