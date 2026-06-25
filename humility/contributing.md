@@ -12,7 +12,7 @@ you must run the command before doing anything.
 - be surgical. only complete tasks given. do not read or write any files/folders not explicitly listed. 
 - be lazy. always find and use the simplest and easiest way. do not overwork or overengineer. 
 - be automated. complete all tasks in one go.
-- when you are unsure, choose simplicity. sometimes a defacto standard library is simpler. sometimes a diy approach is simpler, as best prac can be designed for large corp.
+- when you are unsure, choose simplicity. sometimes a defacto standard library is simpler. sometimes a diy approach is simpler, as best practices might not fit outside big corps.
 
 note: all file/folders paths start from cwd. never put meaningful code inside drafts folder. never read legacy folder.
 
