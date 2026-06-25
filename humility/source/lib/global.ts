@@ -17,9 +17,3 @@ use(log)
 use(std)
 
 globalThis.use = use
-
-// Init
-const { app_name, xdg } = await import('lib/app_info')
-const { init } = await import('lib/file')
-
-init({ name: app_name, xdg })

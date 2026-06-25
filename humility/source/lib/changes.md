@@ -288,4 +288,10 @@ simplify (iff reduction).
 
 merge might break prototype. rather define directly.
 
+25
+
+18 20 remove file `init`.
+
+make it simpler. reduce unnecessary layers.
+
 
