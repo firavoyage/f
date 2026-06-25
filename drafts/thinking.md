@@ -30,9 +30,6 @@ the real world is less hard but way more complex, which llms do not handle well.
   - get the node tree
   - declare all the nodes i want
     - web/storage <!-- localstorage/idb/... abstraction, currently i guess local is enough? i can change my mind later -->
-    - 
-
-
 
 hooks are easy. they come later.
 

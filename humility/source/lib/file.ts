@@ -1,12 +1,11 @@
 import desktop from '@folder/xdg';
 import { homedir } from 'node:os';
-import { join, dirname as dir } from 'node:path';
+import { join, dirname } from 'node:path';
 import { writeFile, readFile, appendFile, mkdir, unlink } from 'node:fs/promises';
 
-// Errors
-export const already_initialized = "already_initialized"
-export const not_initialized = "not_initialized"
+import { app_name, xdg } from 'lib/env';
 
+// Errors
 export const not_string = "not_string"
 
 export const not_found = "not_found"
@@ -98,9 +97,7 @@ let data_folder = ''
 let config_folder = ''
 let cache_folder = ''
 
-type non_empty_string = `${string}${any}`;
-
-export function init({ name, xdg = true }: { name: non_empty_string, xdg?: boolean }) {
+export function init({ name, xdg = true }: { name: string, xdg?: boolean }) {
   if (is_initialized) {
     return err(already_initialized)
   }
@@ -157,13 +154,13 @@ export function cache(...args) {
  */
 export async function write({ path, content }): Promise<Result<void>> {
   try {
-    await dir(path)
+    await dirname(path)
   } catch {
     return err(invalid_input)
   }
 
   try {
-    await mkdir(dir(path), { recursive: true })
+    await mkdir(dirname(path), { recursive: true })
   } catch (e) {
     if (has(map, e.code)) {
       return err({ type: map[e.code], message: e })
@@ -236,8 +233,6 @@ export async function edit({ path, find, replace }) {
 /**
  * remove a file
  * 
- * delete is reserved by ts
- * 
  * todo
  * 
  * add an option (dont err for non existence)
@@ -256,3 +251,5 @@ export async function remove({ path }): Promise<Result<void>> {
     return err(other)
   }
 }
+
+
