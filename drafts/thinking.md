@@ -10,8 +10,17 @@ obviously it would stand on top of `file`. i think it deserves a refactor.
 
 ---
 
-it's wise to research more.
+<!-- it's wise to research more.
 
-the real world is less hard but way more complex, which llms do not handle well.
+the real world is less hard but way more complex, which llms do not handle well. -->
 
+---
+
+- action/chat
+  - backend/request
+    - (fetch)
+  - backend/store
+    - lib/file
+
+hooks are easy. they come later.
 

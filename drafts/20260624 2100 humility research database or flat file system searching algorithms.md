@@ -2,6 +2,12 @@
 
 <!-- complete is normal. no need to have an extra metadata for that. crashes? (common, like app oom or network instability) like, have a flag of "incomplete node". that's it. -->
 
+<!-- no need to be all or nothing. partial is better than nothing. best effort. -->
+
+<!-- the "slow db writing" constraint does not even exist.
+
+> How it Works: Writing data directly to the disk tables is slow. Instead, the database immediately writes the changes to a sequential, append-only WAL on non-volatile disk. Once the WAL is safely on the disk, the transaction is marked as committed. If the system crashes, the database reads the WAL during reboot to replay and recover the lost memory data.  -->
+
 # how does claude code store data
 
 <mark><strong>Claude Code stores data using a multi-layered local architecture</strong><span> </span>combined with a cloud-based client-server model</mark>. It segregates information by project directory, appends data to plaintext files on disk immediately to prevent data loss, and tracks histories to enable robust version rollbacks. [link](https://milvus.io/blog/why-claude-code-feels-so-stable-a-developers-deep-dive-into-its-local-storage-design.md)
@@ -3825,6 +3831,163 @@ To help you structure the code safely, could you share:
   May 18, 2020 — To avoid this problem, it is common practice (and advisable) to write the updated data to a temporary file, ensure that it is safe...\
   \
   The Rust Programming Language Forum
+
+Show all
+
+# how does db give acid
+
+A database (DB) ensures **ACID** properties <mark>by using a combination of transaction logs, validation checks, and data locking mechanism design patterns</mark>. ACID stands for **Atomicity, Consistency, Isolation, and Durability**. [link](https://motherduck.com/learn/acid-transactions-sql/)
+
+Here is exactly how a database management system (DBMS) delivers each property:
+
+### 1. Atomicity (All or Nothing)
+
+- **What it means**: Every query in a transaction must succeed, or the entire transaction fails and resets.
+- **How the DB does it**: The DB tracks uncommitted changes inside a **rollback log (or undo log)**. If an unexpected error or power outage occurs mid-transaction, the DB executes a `ROLLBACK` command. This reads the log backwards and restores the data to its original, pre-transaction state. [link](https://www.mongodb.com/resources/basics/databases/acid-transactions)
+
+### 2. Consistency (Rule Enforcement)
+
+- **What it means**: Data must always follow preset database rules and invariants.
+- **How the DB does it**: The DB automatically runs validation checks during modifications. It will instantly reject and block any transaction that violates schemas, unique constraints, **primary keys, or foreign keys**. [link](https://mariadb.com/resources/blog/acid-compliance-what-it-means-and-why-you-should-care/)
+
+### 3. Isolation (No Interference)
+
+- **What it means**: Concurrent transactions running at the same time cannot corrupt or see each other's uncommitted data.
+- **How the DB does it**: Databases primarily use two distinct strategies:
+  - **Locking Mechanisms**: The DB locks rows or tables being modified so other queries must wait until the transaction finishes.
+  - **Multi-Version Concurrency Control (MVCC)**: Instead of locking, the DB takes a temporary "snapshot" of the data. Old transactions read from the snapshot, while new changes are safely written to a separate, private version. [link](https://www.databricks.com/blog/what-are-acid-transactions)
+
+### 4. Durability (Permanent Storage)
+
+- **What it means**: Once a transaction is successfully completed (`COMMIT`), the data cannot be lost, even during a total crash.
+- **How the DB does it**: The DB uses a **Write-Ahead Log (WAL)**. Before modifying the actual database file on disk, it writes the intended change sequentially to a fast, non-volatile log file. If the system crashes before updating the main database file, it reads the WAL upon rebooting to reapply (redo) the safe data. [link](https://www.youtube.com/watch?v=pomxJOFVcQs)
+
+If you are working on a specific project, let me know **which database engine** you are using (like PostgreSQL, MySQL, or MongoDB). I can give you the exact **isolation levels** or configurations it uses to maintain these features. [link](https://www.cockroachlabs.com/glossary/distributed-db/acid-database/)
+
+- [link](https://www.mongodb.com/resources/basics/databases/acid-transactions)\
+  ACID Transactions in DBMS Explained - MongoDB\
+  ACID is an acronym that stands for atomicity, consistency, isolation, and durability. Together, ACID properties ensure that a set ...\
+  MongoDB
+- [link](https://www.databricks.com/blog/what-are-acid-transactions)\
+  What are ACID Transactions? - Databricks\
+  Jul 27, 2021 — ACID is an acronym that refers to the set of 4 key properties that define a transaction: Atomicity, Consistency, Isolation, and Du...\
+  Databricks
+- [link](https://motherduck.com/learn/acid-transactions-sql/)\
+  Understanding ACID Transactions and Database Compliance\
+  What Exactly Are ACID Transactions? At its core, ACID stands for Atomicity, Consistency, Isolation, and Durability – four properti...\
+  MotherDuck
+
+Show all
+
+## how does db survive crashes
+
+A database survives crashes <mark>by using<span> </span><strong>Write-Ahead Logging (WAL)</strong><span> </span>and a structured<span> </span><strong>recovery process</strong><span> </span>during system reboot</mark>. This process ensures that completed transactions are safely written to disk, while incomplete transactions are completely erased.
+
+### 1. Write Changes to Log First
+
+- **Log priority**: The database never alters data on the physical disk first.
+- **Sequential writing**: It writes the change to an append-only **Write-Ahead Log (WAL)**.
+- **Disk flushing**: This log entry is forcibly flushed to non-volatile storage before a transaction confirms success (`COMMIT`).
+- **RAM buffer**: Actual data pages are modified in temporary RAM memory (buffer pool) to keep operations fast.
+
+### 2. Identify the Crash Point
+
+- **System reboot**: The database engine automatically triggers a recovery mode immediately upon restarting.
+- **Checkpoint reading**: The engine looks for the most recent **checkpoint record** in the log.
+- **Redundant scanning**: Checkpoints mark the exact time when RAM data was successfully synchronized with the permanent disk.
+- **Log analysis**: The database scans the log forward from that checkpoint to identify active transactions during the crash.
+
+### 3. Replay Valid Changes (Redo Phase)
+
+- **Roll-forward action**: The engine reads the WAL forward from the checkpoint.
+- **Data restoration**: It reapplies all changes to the data pages, including transactions that were committed but not yet saved to the main disk.
+- **State alignment**: This brings the entire database cache back to the exact physical state it was in at the millisecond of the crash.
+
+### 4. Remove Partial Changes (Undo Phase)
+
+- **Rollback action**: The engine scans the log backward to find transactions that were active but never received a `COMMIT` command.
+- **Data reversal**: It utilizes the log to reverse any partial changes written to disk by those uncommitted transactions.
+- **Atomicity enforcement**: This guarantees that halfway-completed data transfers or updates do not corrupt the system.
+
+### 5. Open for Traffic
+
+- **Lock release**: The database releases internal system locks held during the recovery phase.
+- **Log truncation**: Old log entries prior to the new checkpoint are safely marked for deletion.
+- **Normal operations**: The database engine begins accepting brand new client connections and queries.
+
+If you are setting up a system right now, let me know **which specific database** (e.g., PostgreSQL, MySQL InnoDB, or SQL Server) you are configuring. I can explain its specific **checkpoint tuning parameters** to help you balance crash recovery speed with daily performance.
+
+- [link](https://medium.com/@vinodbokare0588/how-write-ahead-logging-makes-databases-crash-safe-7d420a03fca5)\
+  How Write-Ahead Logging Makes Databases Crash-Safe\
+  Nov 29, 2025 — What Makes Database Servers Crash-Safe: The WAL Architecture Write-Ahead Logging provides crash safety through a carefully orchest...\
+  \
+  \
+  Medium
+- [link](https://medium.com/databases-in-simple-words/learning-databases-dont-overlook-acid-principles-durability-4c510b364e07)\
+  Database Durability as ACID Principle | Databases\
+  Jan 31, 2025 — 1. Write-Ahead Logging (WAL) Most relational databases (e.g., PostgreSQL, MySQL, SQL Server) use Write-Ahead Logging (WAL) to ensu...\
+  \
+  \
+  Medium
+- [link](https://www.sqlservercentral.com/articles/what-is-delayed-durability-in-sql-server-and-should-you-turn-it-on)\
+  What is Delayed Durability in SQL Server — And Should You Turn It On? – SQLServerCentral\
+  Aug 29, 2025 — Normally, when a transaction commits, SQL Server writes its log entry to disk before telling the client it's done. This makes the ...\
+  \
+  \
+  SQLServerCentral
+
+Show all
+
+# does db give Atomicity and Durability the same way
+
+<mark><span>No, databases do not achieve<span> </span></span><strong>Atomicity</strong><span> </span>and<span> </span><strong>Durability</strong><span> </span>the same way</mark>. While they both ensure data integrity, they solve completely different problems using different architectural mechanisms.
+
+Here is a direct breakdown of how databases handle each concept uniquely.
+
+### 🔄 Atomicity: The "All or Nothing" Rule
+
+Atomicity guarantees that a transaction completely succeeds or completely fails. If one part of a transaction fails, the entire transaction is aborted, and the database is rolled back to its original state.
+
+- **The Core Problem:** Preventing partial data updates during an application error or crash.
+- **The Mechanism:** Databases use an **Undo Log** (or rollback segment) and **In-Memory Buffers**.
+- **How it Works:** Before modifying data, the database records the _original_ values in the undo log. If the transaction fails, the database reads this log to reverse the partial changes.
+
+### 💾 Durability: The "Never Forget" Rule
+
+Durability guarantees that once a transaction commits, its changes survive permanently, even during a sudden power loss, OS crash, or hardware failure.
+
+- **The Core Problem:** Preventing data loss due to volatile RAM clearing during a system crash.
+- **The Mechanism:** Databases use a **Write-Ahead Log (WAL)** (or Redo Log) and the `fsync()` system call.
+- **How it Works:** Writing data directly to the disk tables is slow. Instead, the database immediately writes the _changes_ to a sequential, append-only WAL on non-volatile disk. Once the WAL is safely on the disk, the transaction is marked as committed. If the system crashes, the database reads the WAL during reboot to replay and recover the lost memory data.
+
+### 📊 Quick Comparison
+
+| Feature               | Atomicity                           | Durability                               |
+| --------------------- | ----------------------------------- | ---------------------------------------- |
+| **Primary Goal**      | Prevent partial updates.            | Prevent data loss from crashes.          |
+| **Key Log Used**      | Undo Log / Rollback Segment.        | Redo Log / Write-Ahead Log (WAL).        |
+| **Action on Failure** | **Rolls back** uncommitted changes. | **Replays** committed changes.           |
+| **Storage Target**    | Tracks memory and logical state.    | Forces immediate write to physical disk. |
+
+To help me give you more specific details, are you looking at a particular database like **PostgreSQL**, **MySQL**, or a **NoSQL** system? I can also explain how the **WAL protocol** coordinates both concepts together if you want to dive deeper.
+
+- [link](https://ravendb.net/articles/a-fully-acid-nosql-database-system)\
+  A Fully ACID NoSQL Database System\
+  Mar 3, 2022 — To meet the world's changing data needs, most database designers sacrificed the Atomicity, Consistency, Integrity, and Durability ...\
+  \
+  \
+  RavenDB
+- [link](https://www.phoenixdata.ai/glossary/acid)\
+  ACID | PhoenixAI Glossary\
+  Ensuring data integrity ACID (Atomicity, Consistency, Isolation, Durability) properties ensure data integrity in database systems.\
+  \
+  www.phoenixdata.ai
+- [link](https://dev.to/thectogeneral/choose-the-right-database-for-your-needs-base-vs-acid-model-n80)\
+  Choose the right database for your needs: BASE vs ACID model\
+  May 15, 2024 — Atomicity: Transactions in ACID ( Atomicity, Consistency, Isolation, and Durability ) databases are atomic, meaning they either su...\
+  \
+  \
+  DEV Community
 
 Show all
 
