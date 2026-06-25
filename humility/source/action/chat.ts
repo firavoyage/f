@@ -1,3 +1,5 @@
+import { get, set } from 'backend/store';
+
 async function thread_count() {
   
 }
