@@ -261,7 +261,7 @@
   },
   "Result": {
     "prefix": [
-      "R",
+      // "R", // quirky for single letter, r matches both r and R while R only matches R
       "Re",
       "Res",
     ],
