@@ -36,6 +36,12 @@ hooks are easy. they come later.
 
 ---
 
+- backend/tree
+  - append tree child to new tree
+  - edit tree parent child
+
+---
+
 how to call llm?
 
 how to store keys? whereever.
