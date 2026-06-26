@@ -5,10 +5,6 @@
     "moduleResolution": "bundler",
 
     "baseUrl": "./source",
-    // "paths": {
-    //   "lib/*": ["./source/lib/*"],
-    //   "web/*": ["./source/web/*"],
-    // },
 
     "allowJs": true,
     "checkJs": false,
@@ -18,7 +14,7 @@
     "jsx": "react-jsx",
 
     "strict": true,
-    // "noImplicitAny": false, // override strict
+    // "noImplicitAny": false,
     // "strictNullChecks": false,
     "skipLibCheck": true,
     "types": ["node"] // not to auto-scan the disk for hidden @types packages

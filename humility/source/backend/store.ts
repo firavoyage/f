@@ -17,9 +17,13 @@ export async function has(key: string) {
 export async function get(key: string) {
   const value = await read(data(database_folder, key))
   if (is_error(value)) {
-    if (value.type == not_found) {
-      return
-    }
+    // do not catch on low level, let it propagate by default
+    // at least it should be a flag
+    // unlike js, you will not just get(key) || fallback
+
+    // if (value.type == not_found) {
+    //   return
+    // }
 
     return value
   }
@@ -31,6 +35,6 @@ export async function set(key: string, value: string) {
   return write(data(database_folder, key), value)
 }
 
-export async function del(key: string, value: string) {
+export async function del(key: string) {
   return remove(data(database_folder, key))
 }

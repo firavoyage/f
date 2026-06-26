@@ -47,6 +47,15 @@ hooks are easy. they come later.
 
 ---
 
+- backend/node
+  - get id
+  - set id value
+  - (inc only)
+
+upd: no. it will conflict w get, set from store. and it does not worth the tradeoff. (import node to remove node key)
+
+---
+
 how to call llm?
 
 how to store keys? whereever.
