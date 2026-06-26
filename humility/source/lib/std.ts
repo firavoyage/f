@@ -16,6 +16,7 @@ export function merge(...args: object[]) {
   return Object.assign({}, ...args)
 }
 
+// todo: ?
 export function has<K>(obj: object, key: K): key is K & PropertyKey {
   return obj && typeof obj == 'object' && key !== null && key !== undefined && Object.hasOwn(obj, key as PropertyKey);
 }
