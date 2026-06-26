@@ -1,4 +1,4 @@
-import { data, write, read, does_exist } from 'lib/file';
+import { data, write, read, does_exist, remove } from 'lib/file';
 import { not_found } from 'lib/file';
 
 const database_folder = 'data'
@@ -31,4 +31,6 @@ export async function set(key: string, value: string) {
   return write(data(database_folder, key), value)
 }
 
-// delete?
+export async function del(key: string, value: string) {
+  return remove(data(database_folder, key))
+}
