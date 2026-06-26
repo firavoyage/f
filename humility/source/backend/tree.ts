@@ -35,7 +35,7 @@ export async function append(tree: key, child: id) {
   tree_array.push({ value: child })
 
   // serialize and set back
-  await set(tree, stringify(tree_array))
+  return await set(tree, stringify(tree_array))
 }
 
 export async function edit(tree: key, index: number, child: id) {
@@ -47,7 +47,6 @@ export async function edit(tree: key, index: number, child: id) {
 
   const tree_array = parse(tree_content)
 
-  // get the first item, traverse focus path to leave
   const node = tree_array[index]
 
   // it must exist or you could not edit
@@ -57,10 +56,36 @@ export async function edit(tree: key, index: number, child: id) {
   tree_array.push({ value: child })
 
   // serialize and set back
-  await set(tree, stringify(tree_array))
+  return await set(tree, stringify(tree_array))
 }
 
+// new children can be anything
 export async function rearrange(tree: key, index: number, new_children: id[], new_focus?: id) {
+
+  const tree_content = await get(tree)
+
+  if (is_error(tree_content)) {
+    return tree_content
+  }
+
+  const tree_array = parse(tree_content)
+
+  const node = tree_array[index]
+
+  node.children = new_children
+  node.focus ??= new_focus
+
+  if (!new_children.includes(node.focus)) {
+    // err? yes. explicit > implicit
+
+    return err(no_focused_item)
+  }
+
+  // serialize and set back
+  return await set(tree, stringify(tree_array))
+}
+
+export async function focus(tree: key, index: number, new_focus: number) {
   const tree_content = await get(tree)
 
   if (is_error(tree_content)) {
@@ -71,20 +96,28 @@ export async function rearrange(tree: key, index: number, new_children: id[], ne
 
   // get the first item, traverse focus path to leave
   const node = tree_array[index]
+  node.focus = new_focus
 
-  node.children = new_children
-  node.focus ??= new_focus
-
-  if (!new_children.includes(node.focus)) {
+  if (!node.children.includes(node.focus)) {
     // err? yes. explicit > implicit
-    
+
     return err(no_focused_item)
   }
 
   // serialize and set back
-  await set(tree, stringify(tree_array))
+  return await set(tree, stringify(tree_array))
 }
 
-export async function focus() {
-  
+export async function read(tree: key) {
+  const tree_content = await get(tree)
+
+  if (is_error(tree_content)) {
+    return tree_content
+  }
+
+  const tree_array = parse(tree_content)
+
+  return tree_array
 }
+
+

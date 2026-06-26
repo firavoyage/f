@@ -354,4 +354,10 @@ export function path(...args) {
 
 15 40 add `each` util
 
+20 00 for `log` do not process non native object.
+
+<!-- clone to keep state? i guess i would. one day when i need. -->
+
+<!-- keep in mind, lodash clone effectively only support objects as well. -->
+
 

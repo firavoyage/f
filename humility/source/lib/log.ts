@@ -14,6 +14,11 @@ function clean_non_enum(obj: any, seen = new WeakSet()): any {
     return obj;
   }
 
+  // do not process non native object
+  if (Object.getPrototypeOf(obj).constructor != Object) {
+    return obj
+  } 
+
   // Prevent infinite loops from circular references
   if (seen.has(obj)) {
     return '[Circular]';
@@ -43,6 +48,8 @@ function clean_non_enum(obj: any, seen = new WeakSet()): any {
 
 /**
  * log into console w non enum filtered
+ * 
+ * todo: capure state of an object?
  */
 export function log(...args): void {
   const processedArgs = args.map(arg => clean_non_enum(arg));
