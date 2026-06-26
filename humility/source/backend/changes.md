@@ -10,5 +10,5 @@ jun 2026
 node.focus ??= new_focus
 ```
 
-
+21 20 change `store.has` to `store.lacks`
 
