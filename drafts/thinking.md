@@ -39,6 +39,7 @@ hooks are easy. they come later.
 ---
 
 - backend/tree
+  - init
   - append tree child to new tree
   - edit tree level (start from 1, 0 is root, not a message) child
   - del level index
