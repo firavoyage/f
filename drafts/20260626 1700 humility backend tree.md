@@ -144,4 +144,65 @@ Would you like to see how to load a **JSON configuration** natively, or do you n
 
 Show all
 
+# array has item in js
+
+To check if an array contains an item in JavaScript, use the **`includes()`** method. [link](https://sentry.io/answers/how-do-i-check-if-an-array-includes-a-value-in-javascript/)
+
+### 1. Simple Values (Strings, Numbers)
+
+The [MDN Web Docs Array.prototype.includes()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Array/includes) method returns `true` if a simple value exists in the array, and `false` if it does not. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Array/includes)
+
+javascript
+
+```
+const fruits = ['apple', 'banana', 'orange'];
+
+console.log(fruits.includes('banana')); // true
+console.log(fruits.includes('grape'));  // false
+```
+
+Use code with caution.
+
+### 2. Objects or Specific Conditions
+
+If you are checking an array of objects or searching based on a condition, use the [MDN Web Docs Array.prototype.some()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Array/some) method. It returns `true` if at least one element passes your custom test function. [link](https://stackoverflow.com/questions/22844560/check-if-object-value-exists-within-a-javascript-array-of-objects-and-if-not-add)
+
+javascript
+
+```
+const users = [
+  { id: 1, name: 'Alice' },
+  { id: 2, name: 'Bob' }
+];
+
+// Check if a user with the name 'Bob' exists
+const hasBob = users.some(user => user.name === 'Bob');
+console.log(hasBob); // true
+```
+
+Use code with caution.
+
+### Alternative Methods
+
+- **`indexOf()`**: Returns the position index of the item, or `-1` if it is missing. Use this if you need to know _where_ the item is.
+- **`find()`**: Returns the actual element if found, or `undefined` if missing. [link](https://stackoverflow.com/questions/6116474/how-to-find-if-an-array-contains-a-specific-string-in-javascript-jquery)
+
+If you need help using these methods in a specific scenario, tell me **what type of data** is inside your array and **what condition** you are trying to match!
+
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Array/includes)\
+  Array.prototype.includes() - JavaScript - MDN Web Docs\
+  May 29, 2026 — includes() Baseline Widely available. This feature is well established and works across many devices and browser versions. It's be...\
+  MDN Web Docs
+- [link](https://stackoverflow.com/questions/6116474/how-to-find-if-an-array-contains-a-specific-string-in-javascript-jquery)\
+  How to find if an array contains a specific string in JavaScript/jQuery?\
+  May 24, 2011 — Comments. ... we can use includes option (which is js built-in function), which will return true if the value is found else it wil...\
+  Stack Overflow
+- [link](https://stackoverflow.com/questions/22844560/check-if-object-value-exists-within-a-javascript-array-of-objects-and-if-not-add)\
+  Check if object value exists within a Javascript array of ...\
+  Apr 3, 2014 — 1 Comment \* find: It searches for an element in an array and if it finds out then it returns that element else return undefined. I...\
+  Stack Overflow
+
+Show all
+
 # 
+

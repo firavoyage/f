@@ -41,10 +41,10 @@ hooks are easy. they come later.
 - backend/tree
   - init
   - append tree child to new tree
-  - edit tree level (start from 1, 0 is root, not a message) child
-  - del level index
+  - edit tree ~~level (start from 1, 0 is root, not a message)~~ index child <!-- there could be many nodes on the same level -->
+  - ~~del level item~~ <!-- merge into rearrange? -->
   - focus level index
-  - read (you do need the children) ~~traverse to current focused array (first root)~~
+  - read (you do need the children) ~~traverse to current focused array (first root)~~ <!-- wrap get? yes. why not. it's clear to have them together. -->
   - rearrange index new children
 
 ---
