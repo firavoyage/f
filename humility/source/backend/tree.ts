@@ -102,7 +102,6 @@ export async function focus(tree: key, index: number, new_focus: number) {
 
   const tree_array = parse(tree_content)
 
-  // get the first item, traverse focus path to leave
   const node = tree_array[index]
   node.focus = new_focus
 
@@ -128,6 +127,15 @@ export async function read(tree: key) {
   return tree_array
 }
 
-export async function traverse(tree_array) {
-  
+export function traverse(tree_array) {
+  const focused = []
+
+  let node = tree_array[0]
+  focused.push(node)
+  while (has(node, 'focus')) {
+    node = tree_array[node.focus]
+    focused.push(node)
+  }
+
+  return focused
 }

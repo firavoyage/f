@@ -204,5 +204,281 @@ If you need help using these methods in a specific scenario, tell me **what type
 
 Show all
 
+# Cannot find module 'yaml' or its corresponding type declarations.ts(2307)
+
+To fix this error, you need to <mark>install the<span> </span><strong><code dir="ltr">yaml</code><span> </span>package</strong><span> </span>in your project dependencies</mark>. TypeScript raises the `ts(2307)` error because it cannot find either the JavaScript package or its associated type declarations in your `node_modules` folder. [link](https://sentry.io/answers/how-do-i-resolve-cannot-find-module-error-using-node-js/)
+
+### Step 1: Install the Package
+
+Run the appropriate command in your project terminal based on the package manager you use:
+
+- **npm**: `npm install yaml`
+- **Yarn**: `yarn add yaml`
+- **pnpm**: `pnpm add yaml`
+
+_(Note: The `yaml` npm package comes with **built-in TypeScript types**, so you do not need to install a separate `@types/yaml` package.)_
+
+### Step 2: Restart Your IDE / TypeScript Server
+
+Sometimes your code editor (like VS Code) will still show the red squiggly line even after installing the package. You need to force TypeScript to re-scan the files: [link](https://stackoverflow.com/questions/73190800/cannot-find-module-or-its-corresponding-type-declarations-js2307-when-im)
+
+1. Open your command palette (**Ctrl + Shift + P** on Windows/Linux or **Cmd + Shift + P** on Mac).
+2. Type and select **TypeScript: Restart TS Server**.
+
+### Alternative: Are you using `js-yaml`?
+
+If you intended to use the popular alternative package `js-yaml` instead of `yaml`, you must install both the library and its community-maintained type definitions: [link](https://stackoverflow.com/questions/71823045/getting-error-cannot-find-module-js-yaml)
+
+bash
+
+```
+# For npm
+npm install js-yaml
+npm install --save-dev @types/js-yaml
+
+# For Yarn
+yarn add js-yaml
+yarn add -D @types/js-yaml
+```
+
+Use code with caution.
+
+If you continue to see this error after installing, could you let me know **which package manager** you are using, or if this issue is happening inside a **monorepo or Docker container**? [link](https://stackoverflow.com/questions/73190800/cannot-find-module-or-its-corresponding-type-declarations-js2307-when-im)
+
+- [link](https://stackoverflow.com/questions/71823045/getting-error-cannot-find-module-js-yaml)\
+  Getting Error: Cannot find module 'js-yaml' - Stack Overflow\
+  Apr 11, 2022 — 1 Answer 1. Sorted by: Reset to default. 5. The @types/js-yaml contains only type definitions used by TypeScript compiler to verif...\
+  Stack Overflow
+- [link](https://stackoverflow.com/questions/71945853/error-ts2307-cannot-find-module-marked-or-its-corresponding-type-declarations)\
+  error TS2307: Cannot find module 'marked' or its corresponding type ...\
+  Apr 20, 2022 — \* 4 Answers. Sorted by: First, add types for for the marked package. npm install --save @types/marked. Inside the index.d.ts file ...\
+  Stack Overflow
+- [link](https://stackoverflow.com/questions/73190800/cannot-find-module-or-its-corresponding-type-declarations-js2307-when-im)\
+  Cannot find module \[...] or its corresponding type declarations ( ...\
+  Aug 1, 2022 — \* 5 Answers. Sorted by: This is how I usually solve these errors: Run npm run check to help the compiler figure out where things a...\
+  Stack Overflow
+
+Show all
+
+## well... why does it work and run even if i do not see yaml in package json and there is redline
+
+It runs because your runtime environment (like Node.js or a bundler) is finding the `yaml` package somewhere else on your machine, even though TypeScript cannot see it in your current project.
+
+Here is exactly why this happens and why it is dangerous.
+
+### Why it still runs
+
+- **Global Node Modules:** You likely installed `yaml` globally on your computer in the past. Node.js looks at global folders if it cannot find a package locally.
+- **Parent Directories:** Node.js searches upward. If you have a `node_modules` folder in a desktop or user directory above your current project folder, Node will use that.
+- **Bundler Magic:** Tools like Vite, Webpack, or Next.js sometimes cache packages or resolve them automatically behind the scenes.
+
+### Why TypeScript shows a red line
+
+TypeScript is strict. It only looks inside your project's specific `package.json` and its immediate local `node_modules` folder. Because `yaml` is missing from your `package.json`, TypeScript blocks it and triggers the `ts(2307)` error, warning you that the project configuration is broken.
+
+### Why you must fix it anyway
+
+The code works for you, but **it will instantly crash** the moment you:
+
+- Push the code to GitHub.
+- Deploy it to a server (like Vercel, Netlify, or AWS).
+- Share it with a teammate.
+
+On a server or a teammate's computer, those hidden global files do not exist. The deployment will fail because `npm install` will completely ignore the `yaml` package.
+
+To fix this properly for everyone, just run **`npm install yaml`** (or your preferred manager's command) inside your project root folder to safely add it to your `package.json`.
+
+If you run `npm install` and it still fails, let me know if you are using a **monorepo** or running this inside a **monorepo workspace**, as that requires a slightly different install command.
+
+# get the constructor in js
+
+To get the constructor function of an object or class in JavaScript, you can <mark>use the built-in<span> </span><strong><code dir="ltr">constructor</code><span> </span>property</strong><span> </span>or the newer<span> </span><strong><code dir="ltr">class</code><span> </span>syntax</strong><span> </span>depending on your exact goal</mark>. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/constructor)
+
+Here is how to find, access, and use constructors across different scenarios.
+
+### 1. Get the Constructor of an Instance
+
+Every object instance inherits a `.constructor` property from its prototype, which references the function or class that created it. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/constructor)
+
+javascript
+
+```
+const text = "Hello";
+const array = [1, 2, 3];
+const regularObject = { name: "Alice" };
+
+console.log(text.constructor);          // [Function: String]
+console.log(array.constructor);         // [Function: Array]
+console.log(regularObject.constructor); // [Function: Object]
+```
+
+Use code with caution.
+
+### 2. Get the Name of the Constructor
+
+If you want the name as a string rather than the actual function reference, chain the `.name` property to your lookup. [link](https://stackoverflow.com/questions/3905144/how-to-retrieve-the-constructors-name-in-javascript)
+
+javascript
+
+```
+class Car {}
+const myCar = new Car();
+
+console.log(myCar.constructor.name); // "Car"
+```
+
+Use code with caution.
+
+### 3. Create a Constructor Inside a Class
+
+If you are writing a class and need to implement a constructor function to initialize your object properties, use the explicit `constructor` keyword. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor)
+
+javascript
+
+```
+class User {
+  // The constructor runs automatically when calling "new User()"
+  constructor(name, role) {
+    this.name = name;
+    this.role = role;
+  }
+}
+
+const admin = new User("Alex", "Admin");
+console.log(admin.name); // "Alex"
+```
+
+Use code with caution.
+
+### 4. Traditional Constructor Function Syntax
+
+Before modern classes were introduced, developers created constructors using standard capitalized functions combined with the `new` keyword. [link](https://www.youtube.com/watch?v=WPmAu26LZKo)
+
+javascript
+
+```
+function Player(name, score) {
+  this.name = name;
+  this.score = score;
+}
+
+const player1 = new Player("Dan", 100);
+console.log(player1.constructor); // [Function: Player]
+```
+
+Use code with caution.
+
+If you are debugging a specific issue with constructor retrieval, let me know:
+
+- Are you trying to **verify the type** of a specific object instance?
+
+- Do you need to extract constructors dynamically within an **inheritance chain**?
+
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/constructor)\
+  Object.prototype.constructor - JavaScript - MDN Web Docs\
+  Jul 10, 2025 — Description. Any object (with the exception of null prototype objects) will have a constructor property on its \[\[Prototype]] . Obj...\
+  MDN Web Docs
+
+- [link](https://stackoverflow.com/questions/3905144/how-to-retrieve-the-constructors-name-in-javascript)\
+  How to retrieve the constructor's name in JavaScript?\
+  Oct 11, 2010 — Some browsers would also support x.constructor.name. https://developer.mozilla.org/en/JavaScript/Reference/Global\_Objects/Function...\
+  Stack Overflow
+
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor)\
+  constructor - JavaScript - MDN Web Docs - Mozilla\
+  Jul 20, 2025 — Description. A constructor enables you to provide any custom initialization that must be done before any other methods can be call...\
+  MDN Web Docs
+
+Show all
+
+## can i use a method on Object, non objects might not have constructor
+
+Yes, you can use **`Object.getPrototypeOf()`** to safely get the prototype and its constructor.
+
+This method works safely on primitives (like strings or numbers) because JavaScript automatically wraps them into objects behind the scenes.
+
+### Recommended Approach
+
+To safely get the constructor of any variable, pass it into `Object.getPrototypeOf()` and access `.constructor`.
+
+javascript
+
+```
+const value1 = "Hello";
+const value2 = 42;
+
+console.log(Object.getPrototypeOf(value1).constructor.name); // "String"
+console.log(Object.getPrototypeOf(value2).constructor.name); // "Number"
+```
+
+Use code with caution.
+
+### The Null and Undefined Exception
+
+The only values that will still throw an error are `null` and `undefined`. They have no prototype and cannot be wrapped into objects.
+
+To make your code completely crash-proof, add a simple check first:
+
+javascript
+
+```
+function getSafeConstructor(value) {
+  // Handle null and undefined immediately
+  if (value === null) return "Null";
+  if (value === undefined) return "Undefined";
+
+  // Safely get the constructor name for everything else
+  return Object.getPrototypeOf(value).constructor.name;
+}
+
+console.log(getSafeConstructor("text")); // "String"
+console.log(getSafeConstructor(null));   // "Null"
+```
+
+Use code with caution.
+
+### Alternative: The `typeof` Operator
+
+If you only need to check basic data types rather than exact class constructors, the `typeof` operator is built-in, fast, and never throws an error.
+
+javascript
+
+```
+console.log(typeof "Hello");   // "string"
+console.log(typeof 42);        // "number"
+console.log(typeof undefined); // "undefined"
+console.log(typeof null);      // "object" (A known JS quirk)
+```
+
+Use code with caution.
+
+If you want to tailor this further, tell me:
+
+- What **specific data types** are you expecting to check?
+
+- Are you looking to **filter out invalid types** before running a function?
+
+- [link](https://www.digitalocean.com/community/tutorials/how-to-use-object-methods-in-javascript)\
+  How To Use Object Methods in JavaScript\
+  Aug 26, 2021 — Object. getPrototypeOf() Object. getPrototypeOf() is used to get the internal hidden \[\[Prototype]] of an object, also accessible t...\
+  \
+  \
+  DigitalOcean
+
+- [link](https://exercism.org/tracks/javascript/concepts/classes)\
+  Prototypes & Classes in JavaScript on Exercism\
+  Since 2015, \[\[prototype]] can be accessed via Object. getPrototypeOf() . Before that, it was accessible via the key \_\_proto\_\_ in m...\
+  \
+  Exercism
+
+- [link](https://medium.com/@deepak-sde/how-javascript-makes-primitives-act-like-objects-without-you-knowing-a7ae48eb5fba)\
+  “How JavaScript Makes Primitives Act Like Objects (Without You Knowing)”\
+  May 25, 2025 — Autoboxing is a JavaScript mechanism where primitive values (like strings, numbers, booleans, etc.) are automatically wrapped into...\
+  \
+  \
+  Medium
+
+Show all
+
 # 
 

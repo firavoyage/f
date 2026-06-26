@@ -9,8 +9,18 @@ const database_folder = 'data'
 // you can change your mind later!
 
 // it would override globalThis.has (check obj key) i guess
-export async function has(key: string) {
-  return does_exist(data(database_folder, key))
+// i would not overload with the std lib has
+/**
+ * wait! 
+ * 
+ * in std lib, i might has or !has
+ * 
+ * but for this, i guess i would always if lacks early return
+ * 
+ * if has... and i stop... what can i do?
+ */
+export async function lacks(key: string) {
+  return !does_exist(data(database_folder, key))
 }
 
 // todo: ensure valid key
