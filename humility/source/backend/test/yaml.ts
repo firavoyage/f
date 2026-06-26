@@ -1,16 +1,16 @@
-import yaml from 'yaml';
+import { parse, stringify } from 'yaml';
 
-const a = yaml.stringify({foo: 'bar', bar: 123, baz: true})
+const a = stringify({ foo: 'bar', bar: 123, baz: true })
 
-const b = yaml.stringify(['bar', 123, false])
+const b = stringify(['bar', 123, false])
 
 log(a)
 
 log(b)
 
-const obj = yaml.parse(a)
+const obj = parse(a)
 
-const arr = yaml.parse(b)
+const arr = parse(b)
 
 log(obj)
 log(arr)

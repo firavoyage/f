@@ -200,6 +200,20 @@
       "}"
     ],
   },
+  "while": {
+    "prefix": [
+      "w",
+      "wh",
+      "whi",
+      "whil",
+      "while",
+    ],
+    "body": [
+      "while (${1:cond}) {",
+      "  $0",
+      "}"
+    ],
+  },
   "set interval": {
     "prefix": "si",
     "body": [
@@ -230,7 +244,7 @@
   },
   "Set": {
     "prefix": [
-      "S",
+      // "S",
       "Se",
       "Set",
     ],
