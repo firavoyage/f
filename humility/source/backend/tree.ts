@@ -85,6 +85,14 @@ export async function rearrange(tree: key, index: number, new_children: id[], ne
   return await set(tree, stringify(tree_array))
 }
 
+/**
+ * you can either
+ * 
+ * - shift focus, refresh (new tree, fetch nodes needed if not cached)
+ * - shift focus on frontend, sync (best effort, keep in localstorage to retry if not changed again later)
+ * 
+ * keep it simple. you can optimize later.
+ */
 export async function focus(tree: key, index: number, new_focus: number) {
   const tree_content = await get(tree)
 
@@ -120,4 +128,6 @@ export async function read(tree: key) {
   return tree_array
 }
 
-
+export async function traverse(tree_array) {
+  
+}
