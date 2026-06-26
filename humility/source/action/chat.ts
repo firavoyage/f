@@ -1,39 +1,48 @@
+import { request } from 'backend/request';
 import { lacks, get, set } from 'backend/store';
 import { append, init } from 'backend/tree';
+import { stringify } from 'yaml';
 
 const thread_count_key = 'thread.count'
 const node_count_key = 'node.count'
 
 // always unique
-async function count(key) {
+async function count(key: string) {
   if (await lacks(key)) {
-    set(key, 1)
-    return 1
+    await set(key, '1')
+    return '1'
   }
 
-  const count = get(key)
-  set(key, count + 1)
+  const count = await get(key)
+  if (is_error(count)) {
+    return count
+  }
+
+  await set(key, `${+count + 1}`)
   return count
 }
 
 // todo: more message types
-export async function chat({ message, thread = `thread.${count(thread_count_key)}` }: { message: string, thread?: number }) {
+export async function chat({ message, thread }: { message: string, thread?: string }) {
+  thread ??= `thread.${await count(thread_count_key)}`
+
   // init the thread if non existing
-  if (lacks(thread)) {
-    init(thread)
+  if (await lacks(thread)) {
+    await init(thread)
   }
 
   // have a unique nodeid
-  const node = count(node_count_key)
+  const node = `node.${await count(node_count_key)}`
 
   // append 
-  append(thread, node)
+  await append(thread, node)
 
   // request
-  
+  // ?
+  const response = { response: await request(message) }
 
   // set nodeid content
-
-
+  return await set(node, stringify(response))
 }
+
 

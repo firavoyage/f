@@ -20,7 +20,7 @@ const database_folder = 'data'
  * if has... and i stop... what can i do?
  */
 export async function lacks(key: string) {
-  return !does_exist(data(database_folder, key))
+  return !(await does_exist(data(database_folder, key)))
 }
 
 // todo: ensure valid key

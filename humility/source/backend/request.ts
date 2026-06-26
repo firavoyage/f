@@ -1,8 +1,8 @@
 /**
  * request models
  */
-
-// one 
 export async function request(message: string) {
-  return mess
+  // one param, no need to have obj params. no future proof.
+
+  return `response: ${message.toLocaleLowerCase()}`
 }
