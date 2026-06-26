@@ -1,37 +1,36 @@
 import { lacks, get, set } from 'backend/store';
-import { init } from 'backend/tree';
+import { append, init } from 'backend/tree';
 
-const thread_count_key = 'thread_count'
+const thread_count_key = 'thread.count'
+const node_count_key = 'node.count'
 
 // always unique
-async function thread_count() {
-  if (await lacks(thread_count_key)) {
-    set(thread_count_key, 1)
+async function count(key) {
+  if (await lacks(key)) {
+    set(key, 1)
     return 1
   }
 
-  const count = get(thread_count_key)
-  set(thread_count_key, count + 1)
+  const count = get(key)
+  set(key, count + 1)
   return count
 }
 
 // todo: more message types
-export async function chat({ message, thread = thread_count() }: { message: string, thread?: number }) {
-  const thread_key = `thread.${thread}`
-
+export async function chat({ message, thread = `thread.${count(thread_count_key)}` }: { message: string, thread?: number }) {
   // init the thread if non existing
   if (lacks(thread)) {
-    init(thread_key)
+    init(thread)
   }
 
-  
-  // read and parse the thread, iterate the focus path to the bottom
+  // have a unique nodeid
+  const node = count(node_count_key)
 
-  // append children (the index)
-
-  // append array (at the index) as the id
+  // append 
+  append(thread, node)
 
   // request
+  
 
   // set nodeid content
 
