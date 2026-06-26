@@ -43,7 +43,8 @@ hooks are easy. they come later.
   - edit tree level (start from 1, 0 is root, not a message) child
   - del level index
   - focus level index
-  - traverse to current focused array (first root)
+  - read (you do need the children) ~~traverse to current focused array (first root)~~
+  - rearrange index new children
 
 ---
 
@@ -97,6 +98,21 @@ after edit
   focus: 3
 - value: "first message key"
 - value: "modified first message key"
+- value: node id
+```
+
+normal
+
+```yaml
+- value: "root"
+  children: [1]
+  focus: 1
+- value: "first message key"
+  children: [2]
+  focus: 2
+- value: "modified first message key"
+  children: [3]
+  focus: 3
 - value: node id
 ```
 
