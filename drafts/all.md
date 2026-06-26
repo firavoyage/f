@@ -626,6 +626,7 @@ politics:
 - dictatorship criticism
 - google pixel for degoogled os irony
 - developed country standard
+- bill gates home address security celebrity harassment stochastic terrorism
 
 economics:
 
