@@ -382,7 +382,8 @@
       "ig"
     ],
     "body": [
-      "// @ts-expect-error ",
+      "/* eslint-disable-next-line */ // @ts-expect-error ",
+      // "/* eslint-disable-next-line */ // @ts-ignore",
     ],
   },
 }

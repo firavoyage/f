@@ -1,4 +1,5 @@
 import { ESLintUtils } from '@typescript-eslint/utils';
+import ts from 'typescript';
 
 const createRule = ESLintUtils.RuleCreator(
   (name) => `https://yourdomain.com{name}`
@@ -17,33 +18,31 @@ export default {
         messages: {
           missingAwait: 'Async function call result assigned to a variable must use "await".',
         },
-        schema: [], // No options needed
+        schema: [],
       },
       defaultOptions: [],
       create(context) {
-        // 1. Grab the TypeScript type checker services from ESLint
         const services = ESLintUtils.getParserServices(context);
         const checker = services.program.getTypeChecker();
 
         return {
-          // 2. Target Variable Declarators (e.g., const foo = ...)
           VariableDeclarator(node) {
-            // Only look at it if the initialization side is a function call
+            // Target variable assignments that are direct function calls
             if (node.init && node.init.type === 'CallExpression') {
               
-              // Skip if it is already wrapped in an AwaitExpression (e.g., await myasyncfn())
+              // Skip if it is already wrapped inside an `await` statement
               if (node.init.parent && node.init.parent.type === 'AwaitExpression') {
                 return;
               }
 
-              // 3. Convert the ESLint AST node to a TypeScript node
+              // Map the ESLint node to a genuine TypeScript Node
               const tsNode = services.esTreeNodeToTSNodeMap.get(node.init);
-              
-              // 4. Ask TypeScript for the type of the function's returned value
               const type = checker.getTypeAtLocation(tsNode);
 
-              // 5. Inspect the type properties to see if it is a Promise object
-              if (type && type.symbol && type.symbol.name === 'Promise') {
+              // 🧠 Check if the type is "Thenable" (meaning it has a .then method, like a Promise)
+              const thenProperty = checker.getPropertyOfType(type, 'then');
+
+              if (thenProperty) {
                 context.report({
                   node: node.init,
                   messageId: 'missingAwait',
