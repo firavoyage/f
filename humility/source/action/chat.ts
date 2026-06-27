@@ -13,7 +13,7 @@ const node_count_key = 'node.count'
 async function count(key: key): Promise<Result<number>> {
   if (await lacks(key)) {
     await set(key, '2')
-    return '1'
+    return 1
   }
 
   let count = await get(key, { must_exist: true }) as unknown as number
@@ -37,7 +37,6 @@ async function append_node(thread: key): Promise<Result<key>> {
   if (is_error(node_id)) {
     return node_id
   }
-  const node_key = `node.${node_id}`
 
   // append 
   const append_result =  await append(thread, node_id)
@@ -45,6 +44,7 @@ async function append_node(thread: key): Promise<Result<key>> {
     return append_result
   } 
 
+  const node_key = `node.${node_id}`
   return node_key
 }
 
@@ -60,22 +60,19 @@ export async function chat({ message, thread }: { message: string, thread?: Resu
     return thread
   }
 
-  // have a unique nodeid
-  const node_id = await count(node_count_key)
-  if (is_error(node_id)) {
-    return node_id
-  }
-  const node_key = `node.${node_id}`
+  append_node(thread)
 
-  // append 
-  await append(thread, node_id)
+  const prompt_node_key = await append_node(thread)
+  if(is_error(prompt_node_key)){
+    return prompt_node_key
+  } 
 
   // request
   // ?
   const response = await request(message)
 
   // set nodeid content
-  return await set(node_key, stringify(response))
+  return await set(prompt_node_key, stringify(response))
 }
 
 
