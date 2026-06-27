@@ -38029,6 +38029,12 @@ more specific and relevant than todo. more meaningful than temp.
 
 04 20 check out `置身钉内`. add to readlist.
 
+27
+
+16 40 try maimai b50 sync bots.
+
+too hacky. it might work <!-- ca, proxy (mitm, like diving fish or lx) or qr login (impersonalization of a real machine, like awmc bot) -->, but the ux is always poor.
+
 
 
 <!-- timebox, plan. -->
