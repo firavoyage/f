@@ -68,7 +68,10 @@
   },
   // no dl or el
   "await": {
-    "prefix": "a",
+    "prefix": [
+      "a",
+      "aw",
+    ],
     "body": [
       "await "
     ],
@@ -109,21 +112,24 @@
       "const { ${2:name} } = await import('${1:module}');$0"
     ],
   },
-  "declare global": {
-    "prefix": "dg",
+  "declare global type": {
+    "prefix": [
+      "dg",
+      "dgt"
+    ],
     "body": [
-      "type $1 = typeof $1",
       "declare global {",
-      "  var $1: $1",
+      "  type ${1:name} = $2",
       "  $0",
       "}",
     ],
   },
-  "declare global type": {
-    "prefix": "dgt",
+  "declare global function": {
+    "prefix": "dgf",
     "body": [
+      "type $1 = typeof $1",
       "declare global {",
-      "  type ${1:name} = $2",
+      "  var $1: $1",
       "  $0",
       "}",
     ],
@@ -301,9 +307,7 @@
     ],
     "body": [
       "if(is_error($1)){",
-      "  $2",
-      "  ",
-      "  return",
+      "  return $2",
       "} $0"
     ],
   },
