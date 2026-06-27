@@ -35620,6 +35620,16 @@ Yahagi doesn't want to play completed tracks. He's friendly and helpful but seem
 
 (?!)
 
+...
+
+不要键政 ("習" ウミユリ海底譚)
+
+warau
+
+好吧, 这首歌我已经打过了
+
+...
+
 会不会越打越少呢
 
 （分数公式）
