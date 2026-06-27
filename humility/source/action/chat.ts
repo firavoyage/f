@@ -7,7 +7,7 @@ const thread_count_key = 'thread.count'
 const node_count_key = 'node.count'
 
 // always unique
-async function count(key: string) {
+async function count(key: key) {
   if (await lacks(key)) {
     await set(key, '2')
     return '1'
@@ -23,7 +23,7 @@ async function count(key: string) {
 }
 
 // todo: more message types
-export async function chat({ message, thread }: { message: string, thread?: string }) {
+export async function chat({ message, thread }: { message: string, thread?: key }) {
   thread ??= `thread.${await count(thread_count_key)}`
   console.log(thread)
 
