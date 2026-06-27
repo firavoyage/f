@@ -17,8 +17,7 @@ export async function init(tree: key) {
 }
 
 export async function append(tree: key, child: id) {
-  const tree_content = await get(tree)
-
+  const tree_content = await get(tree, {must_exist: true}) as string
   if (is_error(tree_content)) {
     return tree_content
   }

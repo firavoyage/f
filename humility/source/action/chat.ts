@@ -2,7 +2,7 @@ import { request } from 'backend/request';
 import { lacks, get, set } from 'backend/store';
 import { append } from 'backend/tree';
 import { stringify } from 'yaml';
-import { new_thread } from './new_thread';
+import { new_thread } from 'action/new_thread';
 
 export const not_a_number = 'not a number'
 
@@ -12,7 +12,7 @@ const node_count_key = 'node.count'
 // always unique
 async function count(key: key): Promise<Result<number>> {
   if (await lacks(key)) {
-    await set(key, '2')
+    await set(key, '1')
     return 1
   }
 
@@ -27,7 +27,7 @@ async function count(key: key): Promise<Result<number>> {
   }
 
   await set(key, `${count + 1}`)
-  return count
+  return count + 1
 }
 
 // separate append node and set node content
@@ -49,18 +49,22 @@ async function append_node(thread: key): Promise<Result<key>> {
 }
 
 // todo: more message types
-export async function chat({ message, thread }: { message: string, thread?: Result<key> }) {
-  const thread_id = await count(thread_count_key)
-  if (is_error(thread_id)) {
-    return thread_id
+export async function chat({ message, thread }: { message: string, thread?: key }) {
+  if (is_missing(thread)) {
+    // do not count if exists
+    const thread_id = await count(thread_count_key)
+    if (is_error(thread_id)) {
+      return thread_id
+    }
+    thread = await new_thread(thread_id) as key
+    // thread ??= await new_thread(thread_id)
+
+    if (is_error(thread)) {
+      return thread
+    }
   }
 
-  thread ??= await new_thread(thread_id)
-  if (is_error(thread)) {
-    return thread
-  }
-
-  const prompt_node_key = await append_node(thread)
+  const prompt_node_key = await append_node(thread as key)
   if (is_error(prompt_node_key)) {
     return prompt_node_key
   }
@@ -69,14 +73,20 @@ export async function chat({ message, thread }: { message: string, thread?: Resu
     return _
   }
 
+  const response_node_key = await append_node(thread as key)
+  // const answer_node_key = await append_node(thread as key)
+  if (is_error(response_node_key)) {
+    return response_node_key
+  }
+
   // ?
   // todo: support models, more params. not just a mock. (support mock as well!)
   const response = await request(message)
-  if(is_error(response)){
+  if (is_error(response)) {
     return response
-  } 
+  }
 
   // set nodeid content
-  return await set(prompt_node_key, stringify({ role: 'assistant', content: response }))
+  return await set(response_node_key, stringify({ role: 'assistant', content: response }))
 }
 
