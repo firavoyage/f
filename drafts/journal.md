@@ -9910,6 +9910,29 @@ no idea why phantom warns me.
 
 <!-- i completely underest the time needed to manually reflect on each, even fetch, and group. -->
 
+04 00 open an issue on arkloop.
+
+```md
+Fix github pages routing #25
+
+firavoyage opened on May 1
+
+https://arkloop.cn/
+
+view-source:https://arkloop.cn/
+
+<!-- view-source content -->
+
+---
+
+qqqqqf-q on May 1 <!-- May 1, 2026, 7:34 AM GMT+8 -->
+
+谢谢提醒！刚才犯了个蠢事...
+我把arkloop.cn换成了arkloop.io后，我在本地codebase替换了这些链接，却忘记push了
+并且忘记在dns解析层面把.cn指向.io了
+现在全都修好了！io和cn均为可用状态
+```
+
 04 40 research binance. reg n submit kyc.
 
 <!-- browse from: print, (i wanna fetch one tweet, ik it's from acbox, which is an emotional compliant on the real world), acbox twitter, recent rt, https://github.com/qqqqqf-q/Arkloop, author, author's org, https://github.com/Arkilo-Labs/Arkanis, binance api key on readme -->
