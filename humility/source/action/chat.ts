@@ -30,6 +30,24 @@ async function count(key: key): Promise<Result<number>> {
   return count
 }
 
+// separate append node and set node content
+async function append_node(thread: key): Promise<Result<key>> {
+  // have a unique nodeid
+  const node_id = await count(node_count_key)
+  if (is_error(node_id)) {
+    return node_id
+  }
+  const node_key = `node.${node_id}`
+
+  // append 
+  const append_result =  await append(thread, node_id)
+  if(is_error(append_result)){
+    return append_result
+  } 
+
+  return node_key
+}
+
 // todo: more message types
 export async function chat({ message, thread }: { message: string, thread?: Result<key> }) {
   const thread_id = await count(thread_count_key)
@@ -47,7 +65,6 @@ export async function chat({ message, thread }: { message: string, thread?: Resu
   if (is_error(node_id)) {
     return node_id
   }
-
   const node_key = `node.${node_id}`
 
   // append 
@@ -55,7 +72,7 @@ export async function chat({ message, thread }: { message: string, thread?: Resu
 
   // request
   // ?
-  const response = { response: await request(message) }
+  const response = await request(message)
 
   // set nodeid content
   return await set(node_key, stringify(response))
