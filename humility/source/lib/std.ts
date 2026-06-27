@@ -1,8 +1,10 @@
 type merge = typeof merge
 type has = typeof has
+type _ = typeof _
 declare global {
   var merge: merge
   var has: has
+  var _: _
 }
 
 /**
@@ -17,7 +19,19 @@ export function merge(...args: object[]) {
 }
 
 // todo: ?
+// weird types
 export function has<K>(obj: object, key: K): key is K & PropertyKey {
   return obj && typeof obj == 'object' && key !== null && key !== undefined && Object.hasOwn(obj, key as PropertyKey);
 }
+
+
+export let _: any = '' 
+/**
+ * usage:
+ * 
+ * _ = await void result fn
+ * ise _ early return
+ * 
+ * (iff result? in rustk)
+ */
 

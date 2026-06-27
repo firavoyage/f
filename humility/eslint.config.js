@@ -3,8 +3,6 @@ import tseslint from "typescript-eslint";
 import tsParser from "@typescript-eslint/parser";
 import { defineConfig } from "eslint/config";
 
-import localStrictAwaitPlugin from "./eslint-plugin-strict-await.js";
-
 export default defineConfig(
   // Config
   {
@@ -37,15 +35,10 @@ export default defineConfig(
 
   // Custom rules
   {
-    plugins: {
-      "@typescript-eslint": tsPlugin,
-      "local-rules": localStrictAwaitPlugin,
-    },
     rules: {
       // do not over engineer for maximum robustness
       "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/no-floating-promises": "error",
-      "local-rules/must-await-async-assignment": "error", // make no floating promises strict
       "@typescript-eslint/ban-ts-comment": "off",
       // "no-restricted-syntax": [
       //   "error",

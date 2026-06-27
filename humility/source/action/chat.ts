@@ -39,10 +39,10 @@ async function append_node(thread: key): Promise<Result<key>> {
   }
 
   // append 
-  const append_result =  await append(thread, node_id)
-  if(is_error(append_result)){
+  const append_result = await append(thread, node_id)
+  if (is_error(append_result)) {
     return append_result
-  } 
+  }
 
   const node_key = `node.${node_id}`
   return node_key
@@ -60,19 +60,23 @@ export async function chat({ message, thread }: { message: string, thread?: Resu
     return thread
   }
 
-  append_node(thread)
-
   const prompt_node_key = await append_node(thread)
-  if(is_error(prompt_node_key)){
+  if (is_error(prompt_node_key)) {
     return prompt_node_key
+  }
+  _ = await set(prompt_node_key, stringify({ role: 'user', content: message }))
+  if (is_error(_)) {
+    return _
+  }
+
+  // ?
+  // todo: support models, more params. not just a mock. (support mock as well!)
+  const response = await request(message)
+  if(is_error(response)){
+    return response
   } 
 
-  // request
-  // ?
-  const response = await request(message)
-
   // set nodeid content
-  return await set(prompt_node_key, stringify(response))
+  return await set(prompt_node_key, stringify({ role: 'assistant', content: response }))
 }
-
 
