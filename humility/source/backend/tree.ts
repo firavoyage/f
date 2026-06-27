@@ -4,8 +4,10 @@ import { get, set } from 'backend/store';
 export const no_focused_item = 'no focused item'
 // export const no_focused_item = Symbol('no focused item')
 
-type key = string
-type id = PropertyKey
+declare global {
+  type key = string // store, e.g. thread.1
+  type id = PropertyKey // nodeid, e.g. node.[nodeid]
+}
 // type id = number
 
 export async function init(tree: key) {
