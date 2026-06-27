@@ -5,6 +5,7 @@ import { stringify } from 'yaml';
 import { new_thread } from 'action/new_thread';
 
 export const not_a_number = 'not a number'
+export const non_existing = 'non existing'
 
 const thread_count_key = 'thread.count'
 const node_count_key = 'node.count'
@@ -64,7 +65,12 @@ export async function chat({ message, thread }: { message: string, thread?: key 
     }
   }
 
-  const prompt_node_key = await append_node(thread as key)
+  if (await lacks(thread as key)) {
+    // todo: test
+    return err(non_existing)
+  } 
+
+  const prompt_node_key = await append_node(thread)
   if (is_error(prompt_node_key)) {
     return prompt_node_key
   }
