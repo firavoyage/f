@@ -65,8 +65,7 @@ export async function chat({ message, thread }: { message: string, thread?: key 
     }
   }
 
-  if (await lacks(thread as key)) {
-    // todo: test
+  if (await lacks(thread)) {
     return err(non_existing)
   } 
 
@@ -79,8 +78,8 @@ export async function chat({ message, thread }: { message: string, thread?: key 
     return _
   }
 
-  const response_node_key = await append_node(thread as key)
-  // const answer_node_key = await append_node(thread as key)
+  const response_node_key = await append_node(thread)
+  // const answer_node_key = await append_node(thread)
   if (is_error(response_node_key)) {
     return response_node_key
   }

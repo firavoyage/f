@@ -29,7 +29,7 @@ export function has<K>(obj: object, key: K): key is K & PropertyKey {
 
 const missing_symbol = Symbol('missing')
 
-export function is_missing(foo: any) {
+export function is_missing(foo: any): foo is undefined | null {
   if ((foo ?? missing_symbol) == missing_symbol) {
     return true
   } 
