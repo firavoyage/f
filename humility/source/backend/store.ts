@@ -48,3 +48,13 @@ export async function set(key: string, value: string) {
 export async function del(key: string) {
   return remove(data(database_folder, key))
 }
+
+/**
+ * key(...args) = args.join('.')?
+ * 
+ * just template string i guess
+ * 
+ * thread_key = 'thread' is weird. esp when it's clear, not any prone, 
+ * and not widely reused (even so, it might not be wise to import everywhere)
+ */
+
