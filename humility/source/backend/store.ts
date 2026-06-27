@@ -24,16 +24,20 @@ export async function lacks(key: string) {
 }
 
 // todo: ensure valid key
-export async function get(key: string) {
+export async function get(key: string, { must_exist = false }: { must_exist?: boolean } = {}) {
   const value = await read(data(database_folder, key))
   if (is_error(value)) {
     // do not catch on low level, let it propagate by default
     // at least it should be a flag
     // unlike js, you will not just get(key) || fallback
 
-    // if (value.type == not_found) {
-    //   return
-    // }
+    // no. you will have get(key) || fallback
+    // you can check not_found by lacks. 
+    // if you call get, you already know what you are doing
+
+    if (!must_exist && value.type == not_found) {
+      return
+    }
 
     return value
   }

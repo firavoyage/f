@@ -6,7 +6,7 @@ export const no_focused_item = 'no focused item'
 
 declare global {
   type key = string // store, e.g. thread.1
-  type id = PropertyKey // nodeid, e.g. node.[nodeid]
+  type id = string | number // nodeid, e.g. node.[nodeid]
 }
 // type id = number
 

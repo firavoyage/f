@@ -248,6 +248,18 @@
       "false",
     ],
   },
+  "Promise": {
+    "prefix": [
+      // "S",
+      "P",
+      "Pr",
+      "Pro",
+      "Prom",
+    ],
+    "body": [
+      "Promise<$1> $0",
+    ],
+  },
   "Set": {
     "prefix": [
       // "S",
@@ -298,7 +310,7 @@
       "return err($1)$0",
     ],
   },
-  "is_error": {
+  "is_error propagate": {
     "prefix": [
       "is",
       "ise",
@@ -307,7 +319,18 @@
     ],
     "body": [
       "if(is_error($1)){",
-      "  return $2",
+      "  return $1",
+      "} $0"
+    ],
+  },
+  "is_error handle": {
+    "prefix": [
+      "iseh",
+    ],
+    "body": [
+      "if(is_error($1)){",
+      "  $2",
+      "  return ",
       "} $0"
     ],
   },

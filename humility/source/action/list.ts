@@ -1,11 +1,17 @@
-import { parse } from 'yaml';
-import { get } from 'backend/store';
+import { parse, stringify } from 'yaml';
+import { get, set } from 'backend/store';
 
-export async function list() {
-  const threads = await get('thread.list')
-  if(is_error(threads)){
+const thread_list_key = 'thread.list'
+
+export async function list(): Promise<Result<id[]>> {
+  const threads = await get(thread_list_key)
+  if (is_error(threads)) {
     return threads
-  } 
+  }
 
-  return parse(threads)
+  return threads ? parse(threads) : []
+}
+
+export async function set_list(threads: id[]) {
+  return set(thread_list_key, stringify(threads))
 }
