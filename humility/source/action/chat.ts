@@ -49,8 +49,10 @@ async function append_node(thread: key): Promise<Result<key>> {
   return node_key
 }
 
+type chat_params = { message: string, thread?: key }
+
 // todo: more message types
-export async function chat({ message, thread }: { message: string, thread?: key }) {
+export async function chat({ message, thread, model }: any) {
   if (is_missing(thread)) {
     // do not count if exists
     const thread_id = await count(thread_count_key)
@@ -67,7 +69,7 @@ export async function chat({ message, thread }: { message: string, thread?: key 
 
   if (await lacks(thread)) {
     return err(non_existing)
-  } 
+  }
 
   const prompt_node_key = await append_node(thread)
   if (is_error(prompt_node_key)) {
@@ -86,7 +88,7 @@ export async function chat({ message, thread }: { message: string, thread?: key 
 
   // ?
   // todo: support models, more params. not just a mock. (support mock as well!)
-  const response = await request(message)
+  const response = await request({ message })
   if (is_error(response)) {
     return response
   }
