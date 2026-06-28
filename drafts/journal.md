@@ -43128,13 +43128,15 @@ chess puzzles. seems fun.
 
 29
 
-00 00 read `置身钉内`
+00 00 read `置身钉内` `读《置身钉内》后的一些感受`. self talk <!-- wish -->. 01 20
 
 importance and priority might be perp? <!-- they absolutely have strong statistical correlation, but you can really change the priority as you like. -->
 
 one is like the mass of an object (contextual invariant though)
 
 another is a point on the roadmap
+
+<!-- "dream" carries negative meaning, i would definitely not use it. imagine might be accurate, but it feels a bit boring compared w wish, and i could not always tell the difference, if i decide to adopt both for some reason. -->
 
 
 
