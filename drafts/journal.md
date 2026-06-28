@@ -43054,6 +43054,8 @@ I see the issues. On it!
 
 <!-- she joins the channel at 23 51 -->
 
+<!-- it might feel a bit too effortless to open an issue like that. but if anyone could open an issue easily, does it imply sth. i could not really open an issue on vscode, for example. perf is a deliberate tradeoff. features could be extensions. -->
+
 01 00 think.
 
 Workflow: void.
