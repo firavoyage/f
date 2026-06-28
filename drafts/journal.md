@@ -38068,6 +38068,105 @@ more specific and relevant than todo. more meaningful than temp.
 
 too hacky. it might work <!-- ca, proxy (mitm, like diving fish or lx) or qr login (impersonalization of a real machine, like awmc bot) -->, but the ux is always poor.
 
+28
+
+00 00 Chat
+
+```
+f 19:20:56
+arkloop
+
+戚风小蛋糕 19:20:56
+我们已成功添加为好友，现在可以开始聊天啦～
+
+戚风小蛋糕 19:21:03
+[图片]
+
+f 23:37:50
+arkloop 状态如何
+
+最近一次更新似乎是上个月...
+
+ 23:38:16
+被 Memoh 拉去卖命了,实在是没有时间开发 Arkloop
+
+ 23:38:23
+这段时间太忙,也没人能帮我维护
+
+f 23:47:35
+arkloop.io mobile version qa
+
+- routing to zh when browser ua  en
+- horizontal scrolling 
+- weird line breaking
+- weird white space on top sometimes
+
+f 23:50:23
+well, qq is too slow at vid uploading 
+
+t.me/fira_tmp
+
+ 23:53:14
+i can't chat with this channel
+
+
+ 23:53:23
+不过我看到问题了,我马上去修
+
+ 23:53:47
+I see the issues. On it!
+```
+
+<!-- she joins the channel at 23 51 -->
+
+01 00 think.
+
+Workflow: void.
+
+Fire and discard. 
+
+Example: use skill hook. After msg, check if skills are needed, then discard (edit, as you do not need the rationale of a skill). If called, context is preserved.
+
+You might not remove a skill due to prompt caching.
+
+<!-- upd: just pre response, post response hooks. no need to fit them into msg edit abstraction (well you can). for example, you have skills (branch, append sth to main branch and continue from there. the main branch can be the second branch or comes later). you can have queue some prompts (post resp hooks w metadata for dedicated rendering.) you can set the state, if incomplete (req) or exited halfway (workflow), you can continue. -->
+
+01 40 think.
+
+Hide model info in three dot progressive disclosure. You can toggle it on if supported officially, download theming extensions, or write custom app override.
+
+Fade in a complete line like Google by default. Typing is noisy, esp when markdown is half finished. Just like vscode cursor style.
+
+02 40 <!-- surf zhihu --> Solve uee 2026 nationwide paper 1 math last problem. 
+
+Not hard it seems. But it takes time. Maybe my proof is flawed?
+
+Solution of sub p4: 
+
+If you have anything above x axis, looking back you will see f0 above, and if you apply that to -inf, it doesn't have anything above looking backward. Boom. 
+
+So you must be <= 0
+
+And from -inf, you will see everything from zero to inf is above. Apply. 
+
+For each point, everything on the right must be above. 
+
+That's the textbook definition of strict inc.
+
+<!-- I did not divide by x axis at first. I discuss like negative, 0 to 1, above 1. 0 to 1 are easy to kill. But only after I realize there is a constraint did I kill 1 and above. I did not consider the edges like exact 0 or exact 1 and static fn as well, but they are trivial -->
+
+<!-- idk how to formalize it. On spring uee I were stuck as well, even though I could describe in plain text, with terms like "the closest point of somewhere unreachable, approaching as close as possible" -->
+
+03 40 think.
+
+Typescript nominal typing.
+
+Key. Id.
+
+Obviously I don't wanna see key.123 when it should be an id. Even if they are just strings, even if I might not have runtime type check.
+
+15 40 sync memories.
+
 
 
 <!-- timebox, plan. -->
