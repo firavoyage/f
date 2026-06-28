@@ -38182,6 +38182,8 @@ But clearly one of them feels right.
 
 too hacky. it might work <!-- ca, proxy (mitm, like diving fish or lx) or qr login (impersonalization of a real machine, like awmc bot) -->, but the ux is always poor.
 
+
+
 27
 
 19 00 reminisce.
@@ -38391,7 +38393,9 @@ Key. Id.
 
 Obviously I don't wanna see key.123 when it should be an id. Even if they are just strings, even if I might not have runtime type check.
 
-15 40 sync memories.
+15 40 sync memories. 16 20
+
+19 00 sync memories. (19 20) <!-- sync a day at a time -->
 
 
 
