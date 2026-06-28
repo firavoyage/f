@@ -38064,9 +38064,235 @@ more specific and relevant than todo. more meaningful than temp.
 
 27
 
+00 20 wish.
+
+The conclusion is...
+
+I would sit nearby, facing the opposite to maimais. 
+
+Loneliness results in distractions.
+
+01 00 Read memories of 某麒です！
+
+01 40 reminisce.
+
+舞萌是改变人生的游戏。
+
+舞萌并没有给自己带来什么。人是特别 (<!-- stereo --> typical) 的人。但说到底是琐碎 (trivial) 的人。
+
+见到一些人。和一些人交谈。浏览群聊。聊天。获得一些访问权限。获得一些记忆与印象。获得一些认知。
+
+不一定的。
+
+开放互联网上也可以找到他们。可爱。珍贵。我知道这个世界上有哪些人。
+
+舞萌没有读过的任何重。
+
+但舞萌能让自己感受到世界的真切。
+
+没有这份真切是做不成任何事的。
+
+01 40 observe.
+
+I don't feel I could reduce telegram further. 
+
+But it's clear I should not have three hacker news on the front page, which I never read.
+
+<!-- yahnc
+
+hacker_news_feed
+
+hacker_news_zh -->
+
+03 20 wish.
+
+Days matter abliberated abliterated liberated?
+
+04 20 Reg humilityhq@pm.me
+
+Lots of ads and popups. Email verification.
+
+12 00 daydream.
+
+Phone screen with propagating colorful straight lines, pixelated. No capability of buying a new one. 
+
+Friends saying incomprehensible words. Distant. Yet warm. 
+
+It feels like reality. But they are dreams anyway. And I'm not too late.
+
+<!-- I would take ielts lessons and exams a few in a row. Let's see what happens. -->
+
+13 00 Launch group?: MAi Deluxe
+
+<!-- Count every ten min  -->
+
+Wiki. Resources. Liberation.
+
+Our existence is resistance.
+
+Be warm. Be strong. Be resilient.
+
+Find a pic of mai <!-- microsoft ai -->
+
+13 20 think <!-- wish -->.
+
+Humility:
+
+Quick patterns. Translate. Citation ext.
+
+Project leisure. Dict.
+
+Gnome ctrl c ctrl c poc?
+
+How well do libre gen dicts do
+
+14 20 Finish image processing and printing. 14 20 Buy six bottles of liquid glue, deli, rect output.
+
+I do have some, but they do not work well.
+
+14 40 wish.
+
+I guess I would take off the northface coat today. 
+
+Just take it easy.
+
+15 00 think.
+
+Instead of readme and readme jp.
+
+Create readme en, readme jp, and symlink.
+
+15 40 Prepare a sticker. 
+
+It fits, it seems.
+
+<!-- The law student (confirms it's telegram link and) reminds me that a telegram group might not be accessible to everyone.
+
+(I guess he knows clearly what it is. Just some argumentation tricks) 
+
+I hold. Many ppl ik do not join the qq group as well. Maybe they don't like it. Just give people another option. -->
+
+16 20 feel.
+
+The gloves might not differ from left or right. 
+
+But clearly one of them feels right.
+
 16 40 try maimai b50 sync bots.
 
 too hacky. it might work <!-- ca, proxy (mitm, like diving fish or lx) or qr login (impersonalization of a real machine, like awmc bot) -->, but the ux is always poor.
+
+27
+
+19 00 reminisce.
+
+Seems humans' needs are fulfilled much faster than created...
+
+Well, that is a problem. 
+
+I think human beings transcend time. 
+
+So one doesn't have to suicide due to the constraints of one's time.
+
+19 00 converse.
+
+Young couple and their frnds. 
+
+<!-- 要玩吗。
+
+一个人玩，另一个人就玩不了了。
+
+现在没人排队。他玩完你就能玩了。
+
+他三首第一。他四首第三。
+
+那我们先玩那个吧。 -->
+
+19 20 feel.
+
+Some classmates from dtjhs just have hsee finished.
+
+Kids are dangerous...
+
+21 00 think.
+
+Google ai mode (search!): 
+
+最新最热 舞萌 meaning
+
+<!-- 21 00 dream.
+
+Can you profit if you know a stock will not change? Will decrease over time but very slowly? 
+
+Libre polymarket. -->
+
+21 20 converse.
+
+<!-- Two 3k girls
+
+你们是初中生吗
+
+A: （对...）
+
+B (from here): 应该是
+
+应该是。那就是初三？
+
+（笑）（捂嘴）...
+
+我们过完暑假...
+
+哦！那就是五年级！
+
+（笑）对...
+
+哦。那不问了。
+
+（笑）（好...）
+
+...
+
+要开始了
+
+(Programming) 没事。时间够！
+
+要没时间了！
+
+没事。这个可以自动选。
+
+(Warau, Goodbye)
+
+(Excited, goodbye) -->
+
+22 00 converse.
+
+<!-- 这家店有好多个店长诶
+
+只有我一个
+
+有一个老的，一个年轻的，还有一个你
+
+他们都是干活的
+
+东西拿好
+
+只有一个包
+
+你不是每天都来吧
+
+要休息的呀
+
+拜拜
+
+拜拜喵 -->
+
+22 00 End the day w 腐れ外道とチョコレゐト, ゴーゴー幽霊船, 乙女解剖, デッドマンズバラッド, 乙女解剖, and だれかの心臓になれたなら
+
+23 00 Read memories of chiffoncha on qzone.
+
+<!-- Not much. The timeline leads to 2019, yet inaccessible. Seems she sends a few posts in a year, with some visibility control.
+
+Qzone doesn't differ no content or unaccessible content sometimes, idk. Classic zhcn engineering. -->
 
 28
 
