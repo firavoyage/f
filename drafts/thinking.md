@@ -143,6 +143,55 @@ how would i store models and keys?
 
 the file can be anywhere. 
 
-config folder. gitignored env. 
+config folder. gitignored env. or a flag pointing anywhere.
+
+you might have openrouter or any gateway supporting models.
+
+you give key, i get (cache) the models. 
+
+this is kind i. 
+
+you have a key, they have many models. but they do not support model list.
+
+so you list what you want. (keep the key dry).
+
+this is kind ii.
+
+you have a local model wo the need of api key, so i omit or mock it.
+
+this is kind iv.
+
+sometimes you just wanna test a model. you pair the model and a key.
+
+this is kind iii.
+
+you might have many providers of the same model. ~~the model name would be `model - provider`.~~ you can define the provider for a model.
+
+i guess it would be
+
+providers
+
+```yaml
+mock:
+  # type: fn (you should export default? y. no. export request. default is not any concise, and by naming explicitly you have extensibility and future proof at no cost.)
+  file: somewhere
+local:
+  url: some url, like localhost
+  key: no need to have key # or omit the line at all
+myprovider i: 
+  url: some url
+  key: some key
+myprovider ii: 
+  url: some url
+  key: some key
+  model: 
+    - some model foo
+    - some model bar
+    - some model baz
+myprovider iii: 
+  url: some url
+  key: some key
+  model: some model foo
+```
 
 
