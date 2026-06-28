@@ -194,4 +194,20 @@ myprovider iii:
   model: some model foo
 ```
 
+---
 
+incomplete?
+
+```yaml
+is incomplete: true
+type: response # or stream response (where you might pick up and prefill from "wal")
+idem key: some key
+```
+
+---
+
+you might log. like, network failure, no api key.
+
+<!-- low prio -->
+
+---
