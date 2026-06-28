@@ -38014,7 +38014,1509 @@ Well, she has taken 1v1 course two years ago so she knows what the problems are 
 
 23
 
+23
+
+00 40 think.
+
+Do not try to make git perfect
+
+All abstractions leak
+
+Just have a few actions. Like subfolder focus.
+
+03 20 
+
+Eat luoling channel
+
+```
+ref, [6/23/26 2:40 AM]
+夜里重构了一下UI
+你上面能看到的各种没对齐我都知道只不过忙不过来修了
+提交完睡了
+
+ref, [6/23/26 2:40 AM]
+
+
+ref, [6/23/26 2:40 AM]
+小细节
+
+ref, [6/23/26 2:40 AM]
+设计了一下配色
+
+ref, [6/23/26 2:40 AM]
+莫名的很有obsidian的感觉（
+
+ref, [6/23/26 2:40 AM]
+腻害
+
+ref, [6/23/26 2:40 AM]
+有點Gemini配色
+
+ref, [6/23/26 2:43 AM]
+G 老师做点 branding 设计还行
+
+ref, [6/23/26 2:43 AM]
+
+
+ref, [6/23/26 2:45 AM]
+Storied Colors – A catalogue of named colors  https://storiedcolors.com/
+
+ref, [6/23/26 2:45 AM]
+#Kalm
+
+ref, [6/23/26 3:08 AM]
+https://github.com/zhongerxin/cowart
+codex+无线画布
+
+ref, [6/23/26 3:09 AM]
+最开始在做kalm的时候也做了类似的产品设计
+想到了通过ACP注入上下文、excalidraw sdk无限画布
+但是没想过直接集成在codex app内，codex内置的浏览器就可以实现了，妙
+
+ref, [6/23/26 3:10 AM]
+感觉最近会习惯性讲“不是而是”了
+
+ref, [6/23/26 3:10 AM]
+完了 openai的人类同化计划开始起作用了
+
+ref, [6/23/26 3:10 AM]
+我特地在 去 AI 味的 skill 里加了这个禁忌语法
+
+ref, [6/23/26 3:10 AM]
+其实5.5的口癖好很多了，不需要额外调
+
+ref, [6/23/26 3:10 AM]
+我一直用 5.5，生成的文章还是大量有 不是而是
+
+ref, [6/23/26 3:11 AM]
+https://recent.design/
+```
+
+<!-- I guess it might not be wise to eat memoh now. Too much filtering. Inspiring sometimes, but not always relevant. -->
+
+09 20 Wake up. 
+
+I could not sleep any more. I'm thinking.
+
+<!-- Deterministic
+
+Extensibility. Composability. 
+
+Keyboard bindings -->
+
+11 00 Eat memoh
+
+```
+sns, [6/23/26 10:37 AM]
+
+
+sns, [6/23/26 10:37 AM]
+《这个就不用问了吧...》
+
+sns, [6/23/26 10:37 AM]
+翻旧账…
+
+sns, [6/23/26 10:37 AM]
+不要讨厌我（）
+
+sns, [6/23/26 10:37 AM]
+不会啦
+
+sns, [6/23/26 10:52 AM]
+烧烤
+
+sns, [6/23/26 10:52 AM]
+我觉得做产品对我来说还是太累了 hhh
+
+sns, [6/23/26 10:52 AM]
+我更喜欢去尝试更多比较新的 idea 而不是做各个平台的适配）
+
+sns, [6/23/26 10:52 AM]
+所以会有两类人，一类是独立贡献者，另一类是对交付产品负责的工程师
+
+sns, [6/23/26 10:52 AM]
+不过我觉得 obelisk 的 agent 和 gui app 本身交互是个很有意思的方向
+
+sns, [6/23/26 10:52 AM]
+https://github.com/obeli-sk/obelisk
+
+sns, [6/23/26 10:52 AM]
+和这个的关系是什么
+
+sns, [6/23/26 10:52 AM]
+草，怎么还有人叫这个名字
+
+sns, [6/23/26 10:52 AM]
+我当时取这个名字是夹带私货的，因为自己喜欢的两部作品里都有方尖碑的出场
+
+sns, [6/23/26 10:52 AM]
+一部是神盾局特工 shield，另一部是纪念碑谷（真是风格迥异啊.png
+
+sns, [6/23/26 10:52 AM]
+然后石碑本身又有不会遗忘的意项
+
+sns, [6/23/26 10:52 AM]
+*意象
+
+sns, [6/23/26 10:52 AM]
+还有一种人，尝试用大公司团队模式管理自己独立贡献的人
+
+sns, [6/23/26 10:52 AM]
+然后这种人很快死 了
+
+sns, [6/23/26 10:52 AM]
+把字刻在石头上？
+
+sns, [6/23/26 10:52 AM]
+我觉得这也是 ai native 的方向，不止设想人怎么和 app 交互
+
+sns, [6/23/26 10:52 AM]
+agent 和 app 交互是为了让人看懂
+
+sns, [6/23/26 10:52 AM]
+hhh 对这是三体里的情节
+
+sns, [6/23/26 10:52 AM]
+然后也会想到 project silica
+
+sns, [6/23/26 10:52 AM]
+所以那篇 obelisk blog 的 github repo 是 project_silica
+
+sns, [6/23/26 10:52 AM]
+deepseek能组建起一个靠谱的harness团队吗
+
+sns, [6/23/26 10:52 AM]
+别问我，我知道了也不能说，也许 有 NDA
+
+sns, [6/23/26 10:52 AM]
+听说有的公司连有没有 NDA 这一点都是不可以透露的
+
+sns, [6/23/26 10:52 AM]
+不过我觉得没那么难？我觉得国内有想法的人还是挺多的，而且 deepseek 的待遇应该远超其他公司了
+
+sns, [6/23/26 10:52 AM]
+我会犹豫的点也只有 base 问题了
+
+sns, [6/23/26 10:52 AM]
+如果能 hybrid 那我就完全不犹豫了
+
+sns, [6/23/26 10:52 AM]
+我感觉他们动作稍微有点慢，一线厂商基本在去年年底就已经有相关团队了，他们到现在还在组建阶段，人可能已经被抢的差不多了
+
+sns, [6/23/26 10:52 AM]
+你是说 mimocode 吗
+
+sns, [6/23/26 10:52 AM]
+还是说 kimi code
+
+sns, [6/23/26 10:52 AM]
+o、a
+
+sns, [6/23/26 10:52 AM]
+你要说 work buddy 那我没辙了
+
+sns, [6/23/26 10:52 AM]
+中国人不是都有条件去的
+
+sns, [6/23/26 10:52 AM]
+哦，其实你们是很好复刻 obelisk 的，做 SaaS 的话
+
+sns, [6/23/26 10:52 AM]
+多租户 用户认证 数据同步 都是你们已有的模式了
+
+sns, [6/23/26 10:52 AM]
+刚才那个人问我想不想做成通用 agent 上下文底座，我确实想了一下
+
+sns, [6/23/26 10:52 AM]
+首先这东西从被公开开始就没有技术壁垒了，任何一个团队都能用这套思想做出来 obelisk 甚至更好更经过打磨的东西
+
+sns, [6/23/26 10:52 AM]
+那这就回到了纯粹的商业上的竞速模式，拼完成度，拼交付质量
+
+sns, [6/23/26 10:52 AM]
+我觉得这不是我所擅长的
+
+sns, [6/23/26 10:52 AM]
+而且实现云端同步看起来只是加个对象存储，但一旦涉及到数据一致性这个就不是很简单了
+
+sns, [6/23/26 10:52 AM]
+所以客观讲，你是怎么看待Memoh的，我很想知道你的真实想法
+
+sns, [6/23/26 10:52 AM]
+并购收购，或者机密项目有很多NDA就不可泄漏有NDA存在的
+
+sns, [6/23/26 10:52 AM]
+有自信是好的，但是看不到和自信对应的东西）
+
+sns, [6/23/26 10:52 AM]
+哪方面的自信，以及这个方面对应的东西应该是什么
+
+sns, [6/23/26 10:52 AM]
+我觉得你们业务线拉的太长，迭代速度跟不上行业节奏（？
+
+sns, [6/23/26 10:52 AM]
+我看 codex 几天甚至两天发一版
+
+sns, [6/23/26 10:52 AM]
+总的来说是看的没那么清楚。但谁都有第一次，你们还年轻，不用着急
+
+sns, [6/23/26 10:52 AM]
+最近的几个版本有大的更新吗
+
+sns, [6/23/26 10:52 AM]
+我觉得你做 saas 的经验应该是很够了，但 agent 这个东西不是套个容器然后做 saas 就算创新的（？
+
+sns, [6/23/26 10:52 AM]
+我之前也接触过一些技术团队
+
+sns, [6/23/26 10:52 AM]
+关于容器方面，他们有的人想搞微容器
+
+sns, [6/23/26 10:52 AM]
+一台机子上能部署一个 agent 集群
+
+sns, [6/23/26 10:52 AM]
+通过一个 bash 层 + vfs 来给 agent 提供运行环境
+
+sns, [6/23/26 10:52 AM]
+从而 agent 集群可以跑在任何平台上
+
+sns, [6/23/26 10:52 AM]
+很难说现在有什么核心竞争力
+
+sns, [6/23/26 10:52 AM]
+并且可以做 k8s native
+
+sns, [6/23/26 10:52 AM]
+我觉得他们比 memoh 看起来合理
+
+sns, [6/23/26 10:52 AM]
+我也不年轻了
+
+sns, [6/23/26 10:52 AM]
+zhenfund三十多以下都叫小天才
+
+sns, [6/23/26 10:52 AM]
+这两天我把一些药重新用回来，焦虑已经严重影响到我了
+
+sns, [6/23/26 10:53 AM]
+嗯，之前被困在多 agent 协作的迷思里的时候我也挺焦虑的
+
+sns, [6/23/26 10:53 AM]
+虽然我只是纯粹焦虑做不出东西，现实因素并没有给我那么大的压力
+
+sns, [6/23/26 10:53 AM]
+kairos desk 的 ui 真的把我折磨死了 但我也意识到认识自己的能力有限不可能能和 slock 的团队打是有必要的
+
+sns, [6/23/26 10:53 AM]
+倒也不是说 memoh 就不行，而是可能客观认识一下现状比较好
+
+sns, [6/23/26 10:53 AM]
+说实话现在还早
+
+sns, [6/23/26 10:53 AM]
+feedback loop飞轮才刚转起来
+
+sns, [6/23/26 10:53 AM]
+也有可能条条大路通罗马呢
+
+sns, [6/23/26 10:53 AM]
+我个人看法3-5年拿到一些结果肯定是没问题的，最次是acqhire
+
+sns, [6/23/26 10:54 AM]
+它发的语法不对当然不渲染，你要用正确的 latex 语法啊
+
+sns, [6/23/26 10:54 AM]
+等，Telegram 支持什么 LaTeX 语法？我一直以为只有 $...$ 那个是部分客户端才渲染的非官方特性
+
+sns, [6/23/26 10:54 AM]
+This message is not supported by your version of AyuGram. Please update to the latest version in Settings > Advanced, or install it from https://t.me/AyuGramReleases. If you are already using the latest version, this message might depend on a feature that is not yet implemented.
+
+sns, [6/23/26 10:54 AM]
+好cool
+
+sns, [6/23/26 10:54 AM]
+这个渲染出来是对的
+
+sns, [6/23/26 10:54 AM]
+推导一下不含时微扰的二级近似
+
+sns, [6/23/26 10:54 AM]
+This message is not supported by your version of AyuGram. Please update to the latest version in Settings > Advanced, or install it from https://t.me/AyuGramReleases. If you are already using the latest version, this message might depend on a feature that is not yet implemented.
+
+sns, [6/23/26 10:54 AM]
+
+
+sns, [6/23/26 10:54 AM]
+看不到啊
+
+sns, [6/23/26 10:54 AM]
+看来 $...$ 的 LaTeX 渲染只有部分客户端支持，你那边没渲染出来就会显示一坨源码
+Unicode 版本重发一下二级能量修正：
+E_n⁽²⁾ = Σ_{m≠n} |⟨m⁰|H'|n⁰⟩|² / (E_n⁰ - E_m⁰)
+这个至少哪个客户端都能看
+
+sns, [6/23/26 10:54 AM]
+我真服了 怎么有题什么常量都不给还和一般设定的常量不一致
+
+sns, [6/23/26 10:54 AM]
+真给你牛坏了 大题一对答案误差全是 10%
+
+sns, [6/23/26 10:55 AM]
+也就图一乐
+
+sns, [6/23/26 10:55 AM]
+年轻人就得做AI
+
+sns, [6/23/26 10:55 AM]
+话虽如此
+
+sns, [6/23/26 10:55 AM]
+年轻人就应该去做infra！（
+
+sns, [6/23/26 10:55 AM]
+做infra得有平台
+
+sns, [6/23/26 10:55 AM]
+
+
+sns, [6/23/26 10:55 AM]
+卡西欧中文版计算器居然没有日语
+
+sns, [6/23/26 11:00 AM]
+现在还有比memoh一样年轻的ai初创团队吗？听说今年奇绩要投一批平均17-18岁中科大少年班的团队，几家大模型厂商也要跟投
+
+sns, [6/23/26 11:00 AM]
+比...一样 这个句式不对吧
+
+sns, [6/23/26 11:00 AM]
+活人感哈哈
+
+sns, [6/23/26 11:00 AM]
+首先我会觉得 年轻 可能不是Memoh团队最主要的标签，因为我就不算年轻了，我已经24岁了
+
+sns, [6/23/26 11:00 AM]
+05年左右的创始人我最近接触了几个，我普遍感觉在对商业、资本市场的理解有所欠缺
+
+sns, [6/23/26 11:00 AM]
+哦哦，我一直以为你们差不多大
+
+sns, [6/23/26 11:00 AM]
+然后你说的17-18岁的founder，如果有机会我很想深入谈一谈，可以介绍一下吗
+
+sns, [6/23/26 11:00 AM]
+笑死我也是 05 年的
+
+sns, [6/23/26 11:00 AM]
+我08的，但是感觉已经死了
+
+sns, [6/23/26 11:00 AM]
+死人感
+
+sns, [6/23/26 11:00 AM]
+这个群平均年龄低于20；；
+
+sns, [6/23/26 11:00 AM]
+所以我卡的这个位置可能还是比较独特的
+
+sns, [6/23/26 11:00 AM]
+05年的这一批我重点在看，有潜力的
+
+sns, [6/23/26 11:00 AM]
+HSG最近几年也开始投小投早。最近也有意向投一些平均年龄偏小的团队，但背书总得过得去。所以现状是只有少年班了。
+
+sns, [6/23/26 11:00 AM]
+你是在投资圈工作吗
+
+sns, [6/23/26 11:00 AM]
+唉 Copilot 这个上游网关的超时 Bug 它是真的一点都不修啊
+
+sns, [6/23/26 11:00 AM]
+之前在实习
+
+sns, [6/23/26 11:00 AM]
+怎么opus也喜欢注意到
+
+sns, [6/23/26 11:00 AM]
+笑死创业还真有点像和 qb 签订契约
+
+sns, [6/23/26 11:00 AM]
+所以 qb 就是魔法少女孵化器的负责人
+
+sns, [6/23/26 11:00 AM]
+国资不愿担风险，所以都很保守
+
+sns, [6/23/26 11:00 AM]
+纯血美元在国内已经几乎没有了
+
+sns, [6/23/26 11:00 AM]
+纯血美元基金现状都在新加坡，国内基金的架构基本上是双币，国资LP占比8成以上
+
+sns, [6/23/26 11:00 AM]
+也有愿意担风险的
+
+sns, [6/23/26 11:00 AM]
+所以我比大部分比我年轻/同龄的founder务实一点，不考虑美元capital
+
+sns, [6/23/26 11:04 AM]
+
+
+sns, [6/23/26 11:04 AM]
+之前的文本流是什么样的
+
+sns, [6/23/26 11:04 AM]
+我感觉这个看起来很没有设计
+
+sns, [6/23/26 11:04 AM]
+现在这个
+
+sns, [6/23/26 11:04 AM]
+codex是怎么知道claude code里的内容的
+
+sns, [6/23/26 11:04 AM]
+通过我写的 obelisk 查的
+
+sns, [6/23/26 11:04 AM]
+
+
+sns, [6/23/26 11:04 AM]
+明天我看下你的代码
+
+sns, [6/23/26 11:04 AM]
+好想疯狂吃糖
+
+sns, [6/23/26 11:04 AM]
+我大彻大悟了
+
+sns, [6/23/26 11:04 AM]
+
+
+sns, [6/23/26 11:04 AM]
+明天来写 obelisk blog
+
+sns, [6/23/26 11:04 AM]
+对标 claude blog（草
+
+sns, [6/23/26 11:04 AM]
+怎么tianyi不去挖acbox
+
+sns, [6/23/26 11:04 AM]
+方向不同
+
+sns, [6/23/26 11:04 AM]
+哪方面方向
+
+sns, [6/23/26 11:04 AM]
+deepseek 可能比较希望看到新的东西
+
+sns, [6/23/26 11:04 AM]
+就像 anthropic 提出 html is better than markdown 这样
+
+sns, [6/23/26 11:04 AM]
+所以你觉得box不适合做新的东西
+
+sns, [6/23/26 11:04 AM]
+不是不适合
+
+sns, [6/23/26 11:04 AM]
+而是没有表现出来（？
+
+sns, [6/23/26 11:04 AM]
+然后另一个被 reply 的好像在讲 GenUI
+
+sns, [6/23/26 11:04 AM]
+然后我也是看好 GenUI 的笑死
+之前还写过一段话
+我觉得 gui 不会被命令行或者聊天界面里的 agent ux 替代，它只会被 genui 替代。人是必须需要图形界面交互的，只不过从固定的图形界面变成了 agent 可以自由生成的图形界面。
+而想要做到这一点，模型能力的提升是至关重要的，当 one shot 也能生成不俗的 ui 的时候，gen ui 的基础就成了。
+
+sns, [6/23/26 11:04 AM]
+我也是一样的观点
+
+sns, [6/23/26 11:04 AM]
+memoh 最新的东西就是把 agent 和容器结合起来
+
+sns, [6/23/26 11:04 AM]
+但那已经是几个月前的东西了
+
+sns, [6/23/26 11:04 AM]
+没记错的话 Droid / Codex / CC 好像在做云端 agent
+这和 agent 直接在云端上跑不一样，这是一种无感接续
+
+sns, [6/23/26 11:04 AM]
+但 memoh 也没有直接提出过这个，尽管 memoh 的产品形态和这个很近
+
+sns, [6/23/26 11:04 AM]
+没错
+
+sns, [6/23/26 11:04 AM]
+附和的人不会被人记住，第一个提出来并且做出成果的人才会
+
+sns, [6/23/26 11:04 AM]
+我不觉得 obelisk 很复杂，但它可能确实重新定义了问题
+
+sns, [6/23/26 11:04 AM]
+我刚才在想这方面的东西
+
+sns, [6/23/26 11:04 AM]
+在我看来 memoh 可能错失了太多机会了
+
+sns, [6/23/26 11:04 AM]
+我觉得做 agent 需要提出并且解决新的问题
+
+sns, [6/23/26 11:04 AM]
+codeact 一定会是接下来的热点
+
+sns, [6/23/26 11:04 AM]
+可以细说吗
+
+sns, [6/23/26 11:04 AM]
+虽然大家都觉得 dynamic workflow 没吹得那么好
+
+sns, [6/23/26 11:04 AM]
+但它确实让大家再一次看到了 codeact 能干什么
+
+sns, [6/23/26 11:04 AM]
+我记得好像是哪个公司，6 月份的时候就做了基于 codeact 的向量检索，可以 fan out 啥的
+
+sns, [6/23/26 11:04 AM]
+那它写的肯定比 obelisk robust
+
+sns, [6/23/26 11:04 AM]
+Perplexity
+
+sns, [6/23/26 11:04 AM]
+https://x.com/perplexity_ai/status/2061506359326384319?s=20
+
+sns, [6/23/26 11:04 AM]
+而 claude 是 5.29 发布的 dynamic workflow
+
+sns, [6/23/26 11:04 AM]
+要么是同期工作，要么就是看到 claude 发了这个想到可以这么做 search
+
+sns, [6/23/26 11:04 AM]
+并没有错过吧，我们也可以加这些功能
+
+sns, [6/23/26 11:04 AM]
+agent 是一片热土没错，但是如果只是拼接别人已经做好的工作，拿消费级市场来说，我不觉得能打的过豆包，企业级市场，真正提效的话 Syncless 的 pipeline 也比泛化 agent 模式更有用
+
+sns, [6/23/26 11:04 AM]
+（当然可能也是因为我只看到 Syncless
+
+sns, [6/23/26 11:04 AM]
+我也不相信只有 Syncless 在想企业级市场的事情
+
+sns, [6/23/26 11:04 AM]
+你在北京吗
+
+sns, [6/23/26 11:04 AM]
+不不不，你没明白我的意思，重点是 leading
+
+sns, [6/23/26 11:04 AM]
+而不是 following
+
+sns, [6/23/26 11:04 AM]
+机会错过了就是错过了
+
+sns, [6/23/26 11:04 AM]
+你后做别人只会觉得，xxx 也加了这个功能
+
+sns, [6/23/26 11:04 AM]
+你后做需要做的特别特别好，而我觉得也是不具备这个条件
+
+sns, [6/23/26 11:04 AM]
+cua 可能是个例子（虽然我不太清楚他们是否先于 codex desktop
+
+sns, [6/23/26 11:04 AM]
+我在天津
+
+sns, [6/23/26 11:04 AM]
+我下个月初去北京
+
+sns, [6/23/26 11:04 AM]
+有空可以聊下
+
+sns, [6/23/26 11:04 AM]
+有一些关于我的思路，可能在群里讲不太合适
+
+sns, [6/23/26 11:04 AM]
+线下面谈
+
+sns, [6/23/26 11:04 AM]
+可能在上海
+
+sns, [6/23/26 11:04 AM]
+再看吧（
+
+sns, [6/23/26 11:04 AM]
+在上海更好
+
+sns, [6/23/26 11:04 AM]
+全员大团建
+
+sns, [6/23/26 11:04 AM]
+obelisk 可以抄吗
+
+sns, [6/23/26 11:04 AM]
+AGPL 协议
+
+sns, [6/23/26 11:04 AM]
+我们也是AGPL
+
+sns, [6/23/26 11:04 AM]
+抄之前点个 star 谢谢喵
+
+sns, [6/23/26 11:04 AM]
+说不定你以后就加入了，谁知道呢
+
+sns, [6/23/26 11:04 AM]
+确实 3 月份我被微软拒了也没想到后面这么多事情
+
+sns, [6/23/26 11:04 AM]
+
+
+sns, [6/23/26 11:04 AM]
+那时候我的产出只有一个魔改 vitepress 站和一堆学生项目呢 hhh
+
+sns, [6/23/26 11:07 AM]
+这个功能我喜欢
+
+sns, [6/23/26 11:07 AM]
+哈哈，我以为不会有人发现的，这个功能是我们商业化很重要的一环
+
+sns, [6/23/26 11:07 AM]
+只是 powershell 没有 ~ 这个 alias
+
+sns, [6/23/26 11:07 AM]
+这种功能就是 Menci 诱捕器
+
+sns, [6/23/26 11:07 AM]
+自动拉取模型列表这玩意真的好烦。原因是 OpenAI 官方 API 只有模型名字。如果你想知道每个模型的上下文大小，那每家会有自己的自定义 API
+
+sns, [6/23/26 11:07 AM]
+只看这个文案其实我完全读不懂：你能用一个稳定的地址访问它，也可以选择让它的流量从某个位置出网是什么意思
+
+sns, [6/23/26 11:07 AM]
+是的，然后 Floway 也有自己的协议，是嵌在 /models 里面（）如果级联两个 Floway 会自动得知上游的所有信息
+
+sns, [6/23/26 11:07 AM]
+误导性陈述
+
+sns, [6/23/26 11:07 AM]
+没事，不如不写，会用 Tailscale 的人不用看，不会用 Tailscale 的人看不懂
+
+sns, [6/23/26 11:07 AM]
+话说我可以用 floway 接你的 api 吗
+
+sns, [6/23/26 11:07 AM]
+原来软件还要对用户做 adversal test
+
+sns, [6/23/26 11:07 AM]
+我需要一个能统计偷啃用量的东西
+
+sns, [6/23/26 11:07 AM]
+相关的项目在去年上半年我们就启动了，我们目前不需要太多人发现这个功能
+
+sns, [6/23/26 11:07 AM]
+我接下来也做一下 Ollama Cloud 上游的支持
+
+sns, [6/23/26 11:07 AM]
+Ollama Cloud 可以随便注册吗？
+我很晚才做了 ChatGPT 官方 API、今天才开始做 Claude 官方 API 支持，是因为我一直都没有号
+
+sns, [6/23/26 11:07 AM]
+需要给我一点时间把整个商业化的故事构建完
+
+sns, [6/23/26 11:07 AM]
+我觉得文案需要重写
+
+sns, [6/23/26 11:07 AM]
+比如可以叫 SD-VPN 或者 SD-WAN 配置
+
+sns, [6/23/26 11:07 AM]
+我的意思是这个就是让大家暂时看不懂
+
+sns, [6/23/26 11:07 AM]
+不行，我一看就能看懂，是不是我折腾网络折腾太多了
+
+sns, [6/23/26 11:07 AM]
+我也一看就懂
+
+sns, [6/23/26 11:07 AM]
+vpn 不就是虚拟私人网络
+
+sns, [6/23/26 11:07 AM]
+虚拟私人网络也是私人网络
+
+sns, [6/23/26 11:07 AM]
+一张有十年历史的老图
+
+sns, [6/23/26 11:07 AM]
+甚至画了个 Windows 8 的 UI
+
+sns, [6/23/26 11:07 AM]
+初中时打 oi 在机房写代码
+
+sns, [6/23/26 11:07 AM]
+提前刷完了题目，摸了同学的 u 盘把机房电脑装成了 windows8
+
+sns, [6/23/26 11:07 AM]
+老师让我们恢复回去
+
+sns, [6/23/26 11:07 AM]
+美国没有国际服的时候，他们都是倒腾国框过去的
+```
+
+<!-- Quite intriguing (intricate?) -->
+
+11 20 converse.
+
+<!-- (Acheron:) rain shall fall! -->
+
+<!-- 下大雨你还来
+
+小雨不用挡，大雨挡不住
+
+我高中参加的最后一场考试，语文阅读。时代的风啊，挡不住的！
+
+高中语文很喜欢反（思）现代化。列车开进村了。
+
+我没币了。
+
+(Gift 1pc to him. )
+
+我先休息一下。 -->
+
+<!-- (the orange haired lady): 你是放假了还是...
+
+放假了一个学期了。预录取。自主招生的一种。
+
+我知道。我那时候也有春考。 -->
+
+<!-- The game center uses gemini veo to produce the campaign ad and overlays the logo on top of the watermark. -->
+
+<!-- Well, I guess I would not have to lock the shared bike via the app manually any more, even if I could. -->
+
 11 40 add professionalism to values.
+
+11 40 converse.
+
+The vhs guys just finished the exam. They exchange cigarettes...
+
+<!-- 怎么这么坏！不学好！我要把你拍下来！
+
+别搞。 -->
+
+<!-- Try maimai deluxe!
+
+Wow.
+
+Where are you from
+
+America -->
+
+<!-- 你抽了吗
+
+抽了啊
+
+为什么不喝酒
+
+不让 -->
+
+13 00 converse.
+
+<!-- (xiaopa Pandora re master)
+
+（回头）
+
+哈哈哈哈
+
+太装了
+
+不会说话别说
+
+（两只手指戳）
+
+划星星我不划。我轻轻一点。
+
+别这么说，别这么说！（投降） -->
+
+<!-- 你会不会这个。
+
+有这个技术。我都老老实实划。
+
+双押。你会不会这个。
+
+打内屏可以。我打外键。
+
+诶！哈哈！
+
+我手没那么大。
+
+我经常打到不是键的地方！
+
+打到框了是吧。正常。
+
+打对了。打到框就miss了。
+
+(orange haired:) 我打这个健身
+
+(Smoker's frnd:) 健身到 w4
+
+我打这个瘦了三十斤。我说出来人们都不信。 -->
+
+13 40 think.
+
+Maybe I could try some barbecue nearby? Open from 11 to 22.
+
+A bit sleepy. Rest for a while.
+
+...
+
+It's inevitable I would have official undo redo extension.
+
+All git commands.
+
+...
+
+Check codex? Obelisk? 
+
+Nothing special i guess
+
+Chat. 
+
+Extensions.
+
+Tool calls.
+
+Progressive enhancement.
+
+...
+
+It's meaningful to learn design. 
+
+Adwaita. Google reader, dark mode. 
+
+List all components on an app. Research.
+
+I guess I would extend over reuse. There's not much I could do.
+
+...
+
+Can I launch before jul?
+
+14 00 Take a seat. 
+
+Seems there are more options than the outer seats.
+
+<!-- 你要吃火锅吗
+
+我自己研究一下 -->
+
+Get the staff away.
+
+<!-- Well I'm forced to order a hotpot inside and I couldn't outside. 
+
+I just want to be easy and have some snacks. Workaround. -->
+
+<!-- I have to contact the staff to pay?
+
+Coupon not applicable? (1d delay, 2mo period) -->
+
+14 40 think.
+
+Failure patterns:
+
+Lack of design polish/consistency. 
+
+Feature poor. No competitive advantage.
+
+Scope overreach.
+
+No professionalism, like internationalization, keyboard navigation, and frontend engineering.
+
+Upd: quirky and weird corp engineering (tech debt), no customizability or extensibility or composability (anti Libertarianism)
+
+15 00 Onboard a maimai.
+
+They would go to high school next term.
+
+15 20 Complete area kafu.
+
+<!-- A jhs is forgetful and always ask for gloves lending... Yet there are no shared gloves today. 
+
+I guess I would not prepare some spare gloves for sharing anyway. -->
+
+15 40 Eat
+
+```
+👉你戳了戳流汗黄豆的78 12:03:00
+这个寝起木和强风大背头是一个系列？
+
+云云的瓷 12:37:33
+[不支持的元素类型]@👉你戳了戳流汗黄豆的78 是的
+
+云云的瓷 12:37:39
+所以dpqj
+
+云云的瓷 12:37:47
+在路上了
+
+上下反享受者 12:38:59
+4+电脑哥
+
+鼠片，BR-2 12:40:29
+怎么这几天电脑哥高强度出勤
+
+鼠片，BR-2 12:40:30
+怕了
+
+👉你戳了戳流汗黄豆的78 12:40:42
+高强度出现
+
+上下反享受者 12:41:11
+[图片]
+
+上下反享受者 12:41:12
+害怕喵
+
+鼠片，BR-2 12:42:18
+什么新型偷拍
+
+轮椅梦想家 12:45:24
+正在编写舞萌科技......
+
+轮椅梦想家 12:45:26
+勿扰，，，
+
+笑哭黄豆回应了你的消息：<$L> 12:47:52
+[不支持的元素类型]笑爆了何视角
+
+上下反享受者 12:48:03
+滴蜡熊视角
+
+👉你戳了戳流汗黄豆的78 12:48:30
+滴蜡熊的人中视角
+
+笑哭黄豆回应了你的消息：<$L> 12:49:07
+？！到射！？
+
+Seraphim 13:21:41
+哈哈今天下雨天机厅人一定很少吧晚上来吧唧🤗
+
+扁桃史蒂夫 13:31:55
+[不支持的元素类型]@鼠片，BR-2 这个电脑哥又是什么情况
+
+扁桃史蒂夫 13:32:05
+上次出勤看着他就坐在那里
+
+扁桃史蒂夫 13:32:09
+也不上机
+
+云云的瓷 13:32:35
+一会儿谁来出勤能帮我带双厚手套，请喝奶茶
+
+云云的瓷 13:32:50
+这个公用手套是薄的，用不习惯，而且还一紧一松
+
+鼠片，BR-2 13:34:40
+[不支持的元素类型]随机插在某一组结束后上机
+不过因为排卡轮次远高于正常轮换，所以这一点无所谓
+
+鼠片，BR-2 13:35:07
+主要还是传奇拆拆爆
+
+云云的瓷 13:36:29
+求救狗命
+
+云云的瓷 13:58:24
+直接外卖买了
+
+云云的瓷 13:58:35
+工作日没手套耳机太区了
+
+三文鱼茶茶 14:01:11
+[不支持的元素类型]@上下反享受者 我就想你那个时候再拍啥呢
+
+三文鱼茶茶 14:01:16
+我还以为你自拍
+
+三文鱼茶茶 14:01:39
+毕竟是帅哥一枚
+
+小白 14:01:39
+dpqj
+
+小白 14:01:59
+或许半小时后降临
+
+三文鱼茶茶 14:03:31
+所以电脑哥平常是怎么回事
+
+三文鱼茶茶 14:03:55
+他昨天查水表啥都问
+
+三文鱼茶茶 14:04:07
+我有点害怕
+
+笑哭黄豆回应了你的消息：<$L> 14:04:16
+他就见到人随便问
+
+笑哭黄豆回应了你的消息：<$L> 14:04:26
+哪天被人报警了就好了
+
+三文鱼茶茶 14:04:37
+[不支持的元素类型]@笑哭黄豆回应了你的消息：<$L> 我还以为他搞社会学搞社会调研的
+
+👉你戳了戳流汗黄豆的78 14:09:45
+[不支持的元素类型]@云云的瓷 我包里始终放着一副新手套/打招呼
+
+👉你戳了戳流汗黄豆的78 14:09:54
+可惜我上班
+
+云云的瓷 14:10:15
+上班来回换包导致我忘记了
+
+云云的瓷 14:16:14
+现在1
+
+鼠片，BR-2 14:18:41
+事情没干完
+
+鼠片，BR-2 14:18:44
+来不了
+
+鼠片，BR-2 14:18:45
+:(
+
+鼠片，BR-2 14:18:52
+明天没准可以来一下午
+
+👉你戳了戳流汗黄豆的78 14:21:31
+所以我每个包都会放一副手套，但是耳机有时候会忘记挪
+
+Stardust 14:58:08
+初识电脑哥
+
+Stardust 14:58:20
+怎么说话句尾带喵啊
+
+👉你戳了戳流汗黄豆的78 14:58:59
+喵
+
+👉你戳了戳流汗黄豆的78 14:59:28
+你说的是说普通话带喵还是打字带喵
+
+Stardust 14:59:58
+说话带喵
+
+笑哭黄豆回应了你的消息：<$L> 15:02:02
+[不支持的元素类型]因为他第一天加我QQ的时候我发消息句尾都加喵。
+
+笑哭黄豆回应了你的消息：<$L> 15:02:05
+所以他学会了
+
+👉你戳了戳流汗黄豆的78 15:03:19
+黄豆这不怪你
+
+云云的瓷 15:04:37
+他还看到我的魔爪亲切了笑了笑
+
+笑哭黄豆回应了你的消息：<$L> 15:05:00
+[不支持的元素类型]@云云的瓷 我昨天喝了魔爪打舞萌和喝醉了一样
+
+云云的瓷 15:05:04
+我买了两瓶，一直单刷
+
+云云的瓷 15:05:12
+不知道还有机会拼上机吗
+
+云云的瓷 15:05:22
+[图片]
+
+云云的瓷 15:06:26
+我现在都怀疑他的手套是你给他的了@笑哭黄豆回应了你的消息：<$L> 
+
+笑哭黄豆回应了你的消息：<$L> 15:06:34
+不是我
+
+云云的瓷 15:06:49
+我刚刚没手套狼狈的时候脑子里居然萌生了一丝借他手套的想法..
+
+Stardust 15:09:16
+电脑哥还真是50%的键开拆
+
+Stardust 15:09:34
+概率这块
+
+云云的瓷 15:12:12
+5
+
+云云的瓷 15:12:23
+加电脑哥5
+
+小白 15:12:48
+究竟谁是电脑哥
+
+云云的瓷 15:13:01
+戴耳机这个
+
+Stardust 15:13:04
+那个很大力的
+
+小白 15:13:05
+是这个正在拆机的
+
+小白 15:14:06
+这打浦桥温度也堪比微波炉啊
+
+云云的瓷 15:14:17
+差求不多
+
+三文鱼茶茶 15:14:33
+我和电脑小哥打
+
+三文鱼茶茶 15:14:38
+他完全不拆啊
+
+三文鱼茶茶 15:14:44
+就很正常
+
+三文鱼茶茶 15:14:51
+也挺有礼貌的
+
+Euphoria 15:16:18
+概率触发
+
+Euphoria 15:16:35
+主要这人过往黑料也太多
+
+云云的瓷 15:16:36
+他喜欢跟萌新玩，然后教别人快一点用力一些，还安慰萌新上80就很棒了
+
+云云的瓷 15:16:51
+平时莫名其妙会跟你聊几句，还挺礼貌
+
+云云的瓷 15:17:21
+我上次带我俩同事来玩，他就在旁边跟他们说，你会爱上打舞萌的，好玩吗
+
+小白 15:17:37
+求解他的过往
+
+Seraphim 15:17:48
+求解他的过往
+
+云云的瓷 15:17:50
+[图片]
+
+小白 15:18:14
+成绩好和春考去上理
+
+小白 15:18:17
+这有什么联系
+
+Seraphim 15:18:41
+为什么关注点是这个
+
+小白 15:19:25
+因为其他的没什么好关注的
+
+小白 15:19:31
+纯种口嗨压抑男
+
+Stardust 15:24:00
+[不支持的元素类型]@云云的瓷 6666还有围绕我打环节
+
+上下反享受者 15:33:33
+嚯嚯嚯，夸脏哦
+
+笑哭黄豆回应了你的消息：<$L> 15:39:54
+关注塔菲喵
+
+煤油敏籽 15:40:28
+关注塔菲喵
+```
+
+<!-- qq saves images by timestamp and doesn't care the hash it seems. 
+
+In group chat when saving duplicate it popups for confirmation, and in qq zone, it doesn't. -->
+
+16 00 eat.
+
+Acbox gets furious and barks, yet purges everything soon after.
+
+Ayugram saves my life.
+
+```
+sns, [6/23/26 3:48 PM]
+really?
+
+sns, [6/23/26 3:48 PM]
+？
+
+sns, [6/23/26 3:48 PM]
+我发之前本地测了没问题啊
+
+sns, [6/23/26 3:48 PM]
+啥操作挂了
+
+sns, [6/23/26 3:48 PM]
+是不是签名问题
+
+sns, [6/23/26 3:48 PM]
+我没有 apple developer certificate
+
+sns, [6/23/26 3:48 PM]
+还是要签名的
+
+sns, [6/23/26 3:48 PM]
+那寄了
+
+sns, [6/23/26 3:48 PM]
+我真不熟 mac，我没辙了
+
+sns, [6/23/26 3:48 PM]
+那 zip 能不能用
+
+sns, [6/23/26 3:48 PM]
+好像也不行，绕不开 quarantine
+
+sns, [6/23/26 3:48 PM]
+买个号吧
+
+sns, [6/23/26 3:48 PM]
+xattr -dr com.apple.quarantine /Applications/Obelisk.app
+
+sns, [6/23/26 3:48 PM]
+这样肯定可以）
+
+sns, [6/23/26 3:48 PM]
+但是不太像人）
+
+sns, [6/23/26 3:48 PM]
+好）
+
+sns, [6/23/26 3:48 PM]
+hey！元气夏装
+
+sns, [6/23/26 3:48 PM]
+谁家小孩
+
+sns, [6/23/26 3:48 PM]
+特别特别的萌
+
+sns, [6/23/26 3:48 PM]
+你好可爱
+
+sns, [6/23/26 3:48 PM]
+好可爱
+
+sns, [6/23/26 3:48 PM]
+这算不算炼铜了
+
+sns, [6/23/26 3:48 PM]
+绝对算 @Dustella
+
+sns, [6/23/26 3:48 PM]
+懂了，你也是铜
+
+sns, [6/23/26 3:48 PM]
+好可爱
+
+sns, [6/23/26 3:48 PM]
+可爱捏
+
+sns, [6/23/26 3:48 PM]
+什么会议
+
+sns, [6/23/26 3:48 PM]
+VueFes Japan
+
+sns, [6/23/26 3:50 PM]
+草你妈的傻逼习近平不给我挂号
+
+sns, [6/23/26 3:50 PM]
+你国他妈的傻逼完了
+
+sns, [6/23/26 3:50 PM]
+操你妈的傻逼医疗体系
+
+sns, [6/23/26 3:50 PM]
+操你妈的傻逼共产党
+
+sns, [6/23/26 3:50 PM]
+发生了什么
+
+sns, [6/23/26 3:50 PM]
+操你妈的傻逼上海市政府
+
+sns, [6/23/26 3:50 PM]
+操你妈的宛平南路600号
+
+sns, [6/23/26 3:50 PM]
+体会不到未成年的任何好处 连独自去精神科的权利都没有
+
+sns, [6/23/26 3:50 PM]
+開卡 住酒店還會被刁難
+
+sns, [6/23/26 3:50 PM]
+住酒店被刁难…哎…
+
+sns, [6/23/26 3:50 PM]
+未成年哪里有好处了
+
+sns, [6/23/26 3:50 PM]
+和群友开房tm被强制要求找家长
+
+sns, [6/23/26 3:50 PM]
+除了不会蹲监狱（
+
+sns, [6/23/26 3:50 PM]
+权责完全不对等好吧
+
+sns, [6/23/26 3:50 PM]
+他妈的别说了
+
+sns, [6/23/26 3:50 PM]
+我真要应激了
+
+sns, [6/23/26 3:50 PM]
+对不起…
+
+sns, [6/23/26 3:50 PM]
+刚才在导诊台应激
+
+sns, [6/23/26 3:50 PM]
+差点忘了📦还是小朋友👀
+
+sns, [6/23/26 3:50 PM]
+对着导诊台的护士骂了半天
+
+sns, [6/23/26 3:50 PM]
+差点晕医院门口
+
+sns, [6/23/26 3:50 PM]
+未成年 尤其是16歲以下的未成年 在老中幾乎沒人權
+
+sns, [6/23/26 3:50 PM]
+去600号了吗
+
+sns, [6/23/26 3:50 PM]
+未成年本来也没啥好处吧
+
+sns, [6/23/26 3:50 PM]
+⏰家长导致的
+
+sns, [6/23/26 3:50 PM]
+未成年的处境全靠家长发善心
+
+sns, [6/23/26 3:50 PM]
+刚去移动办过户被要求着未成年要拿户口本
+
+sns, [6/23/26 3:50 PM]
+不还得要出生证之类的
+
+sns, [6/23/26 3:50 PM]
+我当时联通办过户他要我在职
+
+sns, [6/23/26 3:50 PM]
+后来工信部投诉就不要了
+
+sns, [6/23/26 3:50 PM]
+小时候总听做成年人很累很烦，现在成年了发现成年人真自由
+
+sns, [6/23/26 3:50 PM]
+不懂为什么有些人想要回到小时候
+
+sns, [6/23/26 3:50 PM]
+每个人都有自己的围城
+
+sns, [6/23/26 3:50 PM]
+如果有社交网可能还好点，有地方住
+
+sns, [6/23/26 3:50 PM]
+我爸妈再也管不了我以后，我才做成一些事情
+
+sns, [6/23/26 3:50 PM]
+不过我记得这边未成年好像是能自己看医院的
+
+sns, [6/23/26 3:50 PM]
+我现在家里人还时不时尝试远程管咱，明明他们都练小号去了（
+
+sns, [6/23/26 3:50 PM]
+不知道那边
+
+sns, [6/23/26 3:50 PM]
+开药可能会有一些影响（
+
+sns, [6/23/26 3:50 PM]
+明明大部分应该看病的就是监护人
+
+sns, [6/23/26 3:50 PM]
+诶
+
+sns, [6/23/26 3:50 PM]
+
+
+sns, [6/23/26 3:50 PM]
+是的，大部分心理相关的症结都是家庭导致的
+
+sns, [6/23/26 3:50 PM]
+但是有其他的容错机会，青春期有几次机会能弥补家庭问题
+
+sns, [6/23/26 3:50 PM]
+y，要是运气不好学校、社交等也爆了感觉很难不难受了
+
+sns, [6/23/26 3:50 PM]
+不知道该怎么弥补自己（）
+
+sns, [6/23/26 3:50 PM]
+还是要找点爱好8
+
+sns, [6/23/26 3:50 PM]
+当时每周末至少能偷着看番
+
+sns, [6/23/26 3:50 PM]
+现在学校屁事还一堆，一天到晚不是写Word就是PPT
+
+sns, [6/23/26 4:13 PM]
+如果能有稳定收入就可以休学，那倒忽然自由度高了很多
+
+sns, [6/23/26 6:46 PM]
+被酒店前台认为大学毕业的来了
+但是去精神科还是看病历认人我哭了
+
+sns, [6/23/26 6:46 PM]
+没稳定收入
+
+sns, [6/23/26 10:25 PM]
+删除全部！
+```
+
+Eat arkloop channel
+
+```
+ref, [6/23/26 4:00 PM]
+大概是一年前,我给自己的定位是后端,因为我真的不会前端,甚至于前端的逻辑我都看不太懂,这边一个响应那边一个刷新,后端对我清晰明了
+后来大概是 25 年的 AI 冲破了这一点,当时人们大喊前端已死前端已死,在现在看来,前端真的死了
+真正把我推上 vibe designer 的是对开源项目的怨气,大概是我用到的所有开源项目,非 saas 项目,都带着一股子对uiux 不负责的气息,甚至是我们所说的 manus,也在我用过 claude 之后被我贬低
+大概在这个时候我开始思考用户路径,思考 claude design 对于每个 action,每个 attention 的细节
+插一嘴,在后来,人们喜欢效仿 claude 风格,开始学习这个颜色,这个圆角
+但是说真的,缺少责任心,缺少细节,这一点都不 claude,贬低 claude design
+ 在后来,阴差阳错,我开始自己做 Arkloop,我在每个细节点开始打磨,输入框的 hover 效果我打磨了一晚上, user prompt 气泡的动画细节我反反复复打磨了好几天,在这里,我开始学习到如何进行"设计",并不是教科书一般的设计,我的理论知识大概是在自打磨很久之后才补上的
+再后来进入 Memoh,我开始做第一个 feature onboarding,我第一次如此深入的思考 ux,为什么说是如此深入呢,做 Arkloop 的时候,我已经自以为在认真思考 ux 了,我总说开源项目对于 ux 的不认真,自己要做好,但那个时候还没有把 think budget 拉满
+ onboarding 是我人生第一个和钱和未来有关的 feature,我拉满了 budget,我才发现有如此多的细节
+
+AI 只是把写出来变得便宜了,这场故事从头到尾,判断都是人做的,都是人思考出来的,AI 几乎只是执行者,你看我看起来在和 AI 讨论,但实际上我只是在自己思考
+当一个产品是给人用的,这个产品也只能由人设计,AI 的归属就是 cli
+
+ref, [6/23/26 4:00 PM]
+其实我到现在也不完全能看懂较为复杂的前端代码(x
+简单的关键字还是懂得
+
+ref, [6/23/26 4:00 PM]
+其实在前端中,每一个细节对于页面整体的影响是巨大的,真的是巨大的,不能简单的根据比重和视觉重心计算,人眼也是带 attention 的
+```
 
 16 20 check https://github.com/tommy0103/obelisk https://github.com/tommy0103/kairos-runtime. 
 
@@ -38025,6 +39527,12 @@ basically, export all claude and codex sessions, instruct them how to search, an
 <!-- i guess the more fundamental things is, it might not be how well the agent does, but what you do w or wo agents that matters. -->
 
 <!-- you cant do much unless the problem itself is complex. and however you do it, you could do it directly somehow, and you are just automating at the tradeoff of being probabilistic. you could not have a crazy dramatic project when it could be done easily directly. -->
+
+16 40 wish.
+
+Well, ik clearly what I'm gonna do...
+
+But I'm a bit too sleepy to achieve anything.
 
 19 00 feel.
 
@@ -38052,11 +39560,415 @@ basically, export all claude and codex sessions, instruct them how to search, an
 
 我妈有绿卡. 我和我妈是公民. -->
 
+19 20 eat.
+
+```
+Stardust 15:51:11
+但是电脑还在
+
+Stardust 15:51:17
+电脑哥不见了
+
+Stardust 15:56:21
+电脑哥回归了
+
+Stardust 15:56:52
+电脑哥冒号要玩一辈子舞萌
+
+上下反享受者 16:00:59
+神了
+
+👉你戳了戳流汗黄豆的78 16:03:26
+上理本科在哪儿来着，军工路还是建国路
+
+Stardust 16:04:32
+我操，hurting boys的bga怎么消失了？
+
+Stardust 16:04:50
+现在是个迪拉熊，对着你笑，像是神秘机台
+
+juruojjl 16:48:06
+这电脑上怎么还贴了纸
+
+Stardust 18:04:06
+辛辛苦苦等了一天的电脑哥终于敢上机了
+
+鼠片，BR-2 18:05:18
+他电脑那个放法放美国一个礼拜能被偷8次（
+
+Stardust 18:05:58
+[不支持的元素类型]没那么偶然@鼠片，BR-2 
+
+14鸟加when 18:09:14
+[不支持的元素类型]马上来[emoji]
+
+juruojjl 18:09:21
+每次一回头都会惊奇地发现电脑哥站在后面
+
+14鸟加when 18:12:19
+ 我去电脑哥上机了
+
+群K*召唤师 18:15:26
+我去，我不敢来dpq了
+
+14鸟加when 18:27:27
+dpq0+电脑哥
+
+群K*召唤师 18:28:07
+电脑哥专场
+```
+
+22 00 End the day w お願い！コンコンお稲荷さま, [習]ウミユリ海底譚, and 神っぽいな
+
+<!-- Acbox purges all messaging history... -->
+
 24
+
+10 40 Gboard is cool!
+
+(Type a few words, put an exclamation mark, then you can make it a sticker)
+
+<!-- telegram sticker: reproduce reproduce math proof! (use humility to reproduce the chatgpt share link on zhihu from a high profile research reproducing an innovating math proof by llms) -->
+
+12 00 Play sayuri
+
+12 00 Have some personal redundancy of thick gloves anyway, in case the shared ones are not available. 
+
+As they might be useless for me after all if kept at home forever due to touchscreen incompatibility. (And they only wear gloves while playing)
+
+Buy four pairs of new thin gloves.
+
+Take an umbrella whether it's fine or not btw
+
+12 40 Eat memoh group for a few minutes
+
+Menci
+
+Founder
+
+```
+ref, [6/24/26 12:35 PM]
+不是，我觉得比 Codex 那个 bug 更离谱的是我的 Mongo 吃了我 259 个 G 的空间
+
+ref, [6/24/26 12:35 PM]
+AI 魅力时刻
+
+ref, [6/24/26 12:35 PM]
+Sinmai.app
+
+ref, [6/24/26 12:35 PM]
+这日志干啥了能吃这么多空间
+
+ref, [6/24/26 12:35 PM]
+我直接删了，于是现在我不知道了
+
+ref, [6/24/26 12:35 PM]
+想开点，如果我看了它，可能我会气得一晚上睡不着觉
+
+ref, [6/24/26 12:35 PM]
+所以明早起床后我再去 time machine 里看一眼吧
+
+ref, [6/24/26 12:35 PM]
+
+
+ref, [6/24/26 12:36 PM]
+我前几天在做让 Floway 能中转 Claude Code 订阅，小箱子提的需求
+
+ref, [6/24/26 12:36 PM]
+于是我发现，sub2api 之类的中转，会做一件事情
+
+ref, [6/24/26 12:36 PM]
+注入新的系统提示词？
+
+ref, [6/24/26 12:36 PM]
+claude中转还会封么
+
+ref, [6/24/26 12:36 PM]
+在 Claude Code 的 system prompt 之后，第一条 user message 里写 [SYSTEM]${下游所请求的 system prompt} 然后加一条 assistant message 说 OK, I'll follow that
+
+ref, [6/24/26 12:36 PM]
+可能是什么奇怪的风控中转检测措施
+
+ref, [6/24/26 12:36 PM]
+还有 assistant prefill 的环节
+
+ref, [6/24/26 12:36 PM]
+* 因为 Anthropic 官方的 Claude API 会检测你的 system prompt 是不是 Claude 自家的，如果不是就直接拒绝请求
+
+ref, [6/24/26 12:36 PM]
+现在oai也有消息给非codex降智的情况
+
+ref, [6/24/26 12:42 PM]
+我怎么感觉syncless的完成度比lobehub高呢
+
+ref, [6/24/26 12:42 PM]
+syncless 和 lobehub 都不是一个方向的吧
+
+ref, [6/24/26 12:42 PM]
+怎么说
+
+ref, [6/24/26 12:42 PM]
+我不了解syncless的方向是什么
+
+ref, [6/24/26 12:42 PM]
+tob 的减少协作摩擦？
+
+ref, [6/24/26 12:42 PM]
+saas 开发毕竟比开源-可配置简单多了,单说 UI 工作量都少好多
+
+ref, [6/24/26 12:42 PM]
+怎么实现这个目标，我目前看到的产品还是一个带runtime的agent
+
+ref, [6/24/26 12:42 PM]
+甚至不如memoh功能丰富
+
+ref, [6/24/26 12:42 PM]
+我记得 dify 周宇写过文章介绍
+
+ref, [6/24/26 12:42 PM]
+我在产品里看不太出来
+
+ref, [6/24/26 12:42 PM]
+有 team 的
+
+ref, [6/24/26 12:42 PM]
+还有 pipeline 之类的
+
+ref, [6/24/26 12:42 PM]
+发出来了吗
+
+ref, [6/24/26 12:42 PM]
+发了啊 我之前看推友都发过
+
+ref, [6/24/26 12:42 PM]
+lobehub已经不是这个时代的东西了
+
+ref, [6/24/26 12:42 PM]
+这都是 5 月初发布的产品了
+
+ref, [6/24/26 12:42 PM]
+https://x.com/Yeuoly1/status/2054922914458464754
+
+ref, [6/24/26 12:42 PM]
+这篇我看过
+
+ref, [6/24/26 12:42 PM]
+我觉得主要在讲Agent 不应该 怎么做
+
+ref, [6/24/26 12:42 PM]
+并没有
+
+ref, [6/24/26 12:42 PM]
+我可以学习一下吗
+```
+
+13 20 converse.
+
+<!-- 你是初中生好像。你几年级。
+
+八升九
+
+文化课水平怎么样，能去什么学校
+
+卢湾吧
+
+还可以，卢湾是市重点
+
+对
+
+初中好像不怎么分流。
+
+你多少分
+
+万三
+
+比我厉害。玩多久了。
+
+一年了。
+
+我玩了一个月。
+
+被骗到了！它过去又回来。你看到了吗
+
+看到了
+
+没人。继续。
+
+我要休息一下。 -->
+
+<!-- 舞萌！
+
+要和那个大哥哥玩吗
+
+我这些都是捡来的
+
+地上捡的？！
+
+（点头） -->
+
+14 00 Onboard two maimai children of the same father. 
+
+The laggy qr platform plus only latest valid rule is so powerful.
+
+The new player guide is essential yet too boring.
+
+<!-- Father: 你要不要玩难一点的
+
+要不要玩白潘 -->
+
+<!-- 零是最大风。
+
+这个风扇贴纸贴歪了。
+
+你是工作人员吗
+
+不是。是学生。不用学了。放假了。
+
+高中吗。
+
+对。
+
+可以你打右边四个她打左边四个。站右边一点。 -->
+
+<!-- 算了你自己打吧
+
+Father: (Stock app)
+
+你做什么行业
+
+随便做做
+
+你做什么行业
+
+自由职业 -->
+
+The jhs onboards another maimai who barely gets clear on basic.
+
+<!-- 你看右边那个。难度比你高。屏幕上的键少。
+
+这个难度，这个流速，谁都打不了。
+
+他们几岁
+
+（都）13岁 -->
+
+<!-- (Sonic)
+
+哈哈哈
+
+哈哈哈
+
+你这个一个键看不到
+
+太快了吧 -->
+
+14 20 converse.
+
+<!-- 小孩！
+
+放假了！
+
+放假了？
+
+（点头）
+
+好！
+
+可以打一辈子舞萌了！
+
+可以打一个暑假舞萌了！ -->
 
 14 20 create `thinking.md`. <!-- not "thoughts" -->
 
 more specific and relevant than todo. more meaningful than temp.
+
+15 40 Eat
+
+```
+👉你戳了戳流汗黄豆的78 15:22:05
+[图片]
+
+👉你戳了戳流汗黄豆的78 15:22:39
+华立傻逼？
+
+zhizhizhiwang 15:27:48
+可能人太多了
+
+👉你戳了戳流汗黄豆的78 15:29:49
+那他应该限制报名人数，而不是提前两周收工[emoji]
+
+zhizhizhiwang 15:31:30
+那个交截图的地方就只能交9999人
+
+zhizhizhiwang 15:31:41
+不知道为啥现在才4000多就着急结束
+
+知离_阴游采集 15:31:43
+这个电脑哥好吓人
+
+知离_阴游采集 15:31:46
+吓到我了
+
+👉你戳了戳流汗黄豆的78 15:32:11
+而且这个活动我记得是送色纸？
+
+zhizhizhiwang 15:33:11
+还得到付呢
+
+zhizhizhiwang 15:33:26
+拒收还得再付返程的运费
+
+zhizhizhiwang 15:33:31
+有点变态了
+```
+
+20 00 Chat
+
+```
+saba 🐟 23:35:21
+如果想，可以认为都是真的。
+
+笑哭黄豆 00:01:22
+不想
+
+saba 🐟 17:20:25
+真恨啊
+
+笑哭黄豆 17:32:14
+你恨什么？
+
+saba 🐟 17:47:22
+（你）真恨（我）啊
+
+笑哭黄豆 17:55:23
+不
+
+笑哭黄豆 17:55:28
+你和我没有什么关系
+
+笑哭黄豆 17:56:08
+但我从你的事迹当中认为我应该远离你一些
+```
+
+Yunoko often voice calls someone via wechat or qq.
+
+She's really an sns girl. 
+
+<!-- 我要打十段！(well, she's helping someone with their qr code) -->
+
+<!-- Two jhs? plays some advanced songs continuously. -->
+
+22 00 End the day w ワールドワイドワンダー, ウミユリ海底譚, and 太陽系デスコ
+
+First s on level 13?
+
+It actually doesn't take a quarter to complete a game. It can be within ten minutes if you select and proceed quickly. 
+
+<!-- Despite the aggressive warnings, it really powers down at 22 and I have five minutes left.
+
+Someone left some gloves and an umbrella.
+
+Well it doesn't rain and it's not really well crafted (brand: rento life). I don't have to keep another "stolen" umbrella. -->
 
 25
 
@@ -40562,7 +42474,7 @@ Obviously I don't wanna see key.123 when it should be an id. Even if they are ju
 
 15 40 sync memories. 16 20
 
-19 00 sync memories. (19 20) <!-- sync a day at a time -->
+19 00 sync memories. ~~(19 20)~~ 20 00 <!-- sync a day at a time -->
 
 19 00 converse.
 
