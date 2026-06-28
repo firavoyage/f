@@ -212,5 +212,36 @@ you might log. like, network failure, no api key.
 
 ---
 
+workflow:
+
+```yaml
+name: research project (company)
+- get company name as x
+- x history
+- x philosohpy
+- all features of x
+- all highly requested features of x
+- all limitations of x
+- situation of x
+- future of x
+- ...
+```
+
+it's easy to formalize. 
+
+just add some metadata, like the method to use. 
+
+- ask
+- parallel or sequential
+
+you can also research a person, or research an english word.
+
+you should also add metadata about what it is (how to render it)
+
+- prompt (yeah you could indicate by role specifically for this, but you do not have to)
+- response
+- parallel (you do not have to show like `< 1/5 >` like normal edit. you have options. but as it's automated, you could differ it, and then you could render as you like.)
+
+all nodes can be referenced directly. you can copy its id.
 
 
