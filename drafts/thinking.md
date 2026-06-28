@@ -136,3 +136,13 @@ tree: no info <!-- ofc focus is different, a thing you want before reading a nod
 node: incomplete, mark what it is, a step in workflow or a chat
 
 <!-- it might err (network drop or oom crash), but very unlikely at writing -->
+
+---
+
+how would i store models and keys?
+
+the file can be anywhere. 
+
+config folder. gitignored env. 
+
+
