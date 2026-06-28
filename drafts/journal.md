@@ -38060,7 +38060,443 @@ more specific and relevant than todo. more meaningful than temp.
 
 25
 
+00 20 Chat
+
+```
+笑哭黄豆 17:55:23
+不
+
+笑哭黄豆 17:55:28
+你和我没有什么关系
+
+笑哭黄豆 17:56:08
+但我从你的事迹当中认为我应该远离你一些
+
+saba 🐟 00:28:13
+（那个人）真恨（我）啊，将往事以夸张离奇的合订本语言取乐。
+
+说到底只是游戏中随机遇到的人，但年轻人终究是容易受到鼓动的
+
+也不必矜持或世故什么
+
+真好啊
+
+笑哭黄豆 00:28:58
+很难说
+```
+
 04 20 check out `置身钉内`. add to readlist.
+
+14 00 Buy some transparent zipped folders to store mantras
+
+It would replace the clamps
+
+<!-- Hongkongdoll... Melancholic atmosphere. Piano. Well done! -->
+
+14 40 Eat acbox group
+
+```
+Acbox Neko, [6/23/26 9:05 PM]
+删除全部！
+
+Fodesu, [6/23/26 9:05 PM]
+我还以为我被踢了
+
+pluie, [6/23/26 9:06 PM]
+不愉快的都删掉 删掉
+
+Terminal at Fangcun, [6/23/26 9:06 PM]
+ALL CLEAR!
+
+Gary です, [6/23/26 9:10 PM]
+大记忆消失术
+
+狸狸亚 咔帕噗, [6/23/26 9:24 PM]
+忘记看上文了
+
+狸狸亚 咔帕噗, [6/23/26 9:24 PM]
+闭嘴了
+
+狸狸亚 咔帕噗, [6/23/26 9:24 PM]
+不聊了
+
+f, [6/23/26 11:24 PM]
+...
+
+混柠土, [6/23/26 11:26 PM]
+箱子猫，贴贴
+
+Joestar Ding, [6/24/26 10:34 AM]
+哎呦 这不是 锂电池吗
+
+Lee, [6/24/26 10:52 AM]
+ww
+
+妄冬君, [6/24/26 8:25 PM]
+发生什么了（）
+
+Acbox Neko, [6/25/26 1:01 PM]
+我把channel删了
+
+混柠土, [6/25/26 1:13 PM]
+箱箱猫，贴贴
+
+pluie, [6/25/26 1:14 PM]
+猫贴贴
+
+Rosmontis, [6/25/26 1:32 PM]
+贴贴猫
+
+Gary です, [6/25/26 1:32 PM]
+发生啥了
+
+f, [6/25/26 2:35 PM]
+Does anyone have a backup? 
+
+I guess, acbox, at least, must have preserved her memories soundly somewhere.
+
+Acbox Neko, [6/25/26 2:36 PM]
+No any backup
+
+Acbox Neko, [6/25/26 2:36 PM]
+I hate these memories
+
+f, [6/25/26 2:40 PM]
+I do have! I would like to archive them permanently, host on GitHub pages, and save forever on wayback machine.
+
+Acbox Neko, [6/25/26 2:41 PM]
+No
+
+🥭芒果刀, [6/25/26 2:42 PM]
+N0
+
+Acbox Neko, [6/25/26 2:42 PM]
+I don’t wanna my new friend would lookup my bad experience
+
+Cherry Zhu, [6/25/26 3:43 PM]
+捏捏
+
+沒天鋰了, [6/27/26 4:13 PM]
+那我还挺幸运，前几天加进来了
+```
+
+<!-- Project have: export -->
+
+15 00 Eat azalea, menci memoh
+
+```
+sns, [6/25/26 2:45 PM]
+
+
+sns, [6/25/26 2:45 PM]
+例常买裸板然后自己打印外壳 qwq
+
+外壳模型发布到这里了: https://www.thingiverse.com/thing:7374322
+
+sns, [6/25/26 2:45 PM]
+强大！
+
+sns, [6/25/26 2:45 PM]
+小桂桂平时用哪个CAD软件
+
+sns, [6/25/26 2:45 PM]
+OnShape
+
+sns, [6/25/26 2:49 PM]
+写功能十小时，玩Git一小时
+
+sns, [6/25/26 2:49 PM]
+现在能不能在规定时间交任务全看AI什么时候玩好Git
+
+sns, [6/25/26 2:51 PM]
+一个半小时骑了 18km
+
+sns, [6/25/26 2:51 PM]
+美团车真的不好骑……
+
+sns, [6/25/26 2:51 PM]
+认同
+
+sns, [6/25/26 2:51 PM]
+小黄小蓝也就是2-3km代代步，那车弄的屁股疼
+
+sns, [6/25/26 2:51 PM]
+为啥要骑这么远的车
+
+sns, [6/25/26 2:51 PM]
+活动活动身子
+
+sns, [6/25/26 2:51 PM]
+要不要自己买一辆自行车（
+
+sns, [6/25/26 2:51 PM]
+我自行车最远只骑过 8km，哦往返 16km（
+
+sns, [6/25/26 2:51 PM]
+那就失去了自行车的意义了
+
+sns, [6/25/26 2:51 PM]
+自行车的意义就是想什么时候骑就能骑
+
+sns, [6/25/26 2:51 PM]
+我不可能随身携带自行车
+
+sns, [6/25/26 2:51 PM]
+也对
+
+sns, [6/25/26 2:51 PM]
+要什么自行车
+
+sns, [6/25/26 2:51 PM]
+我没法带着自行车乘坐其他交通工具
+
+sns, [6/25/26 2:51 PM]
+不过日常通勤用还是不错，速度会快一点
+
+sns, [6/25/26 2:51 PM]
+我感觉美团的车比较抽卡
+
+sns, [6/25/26 2:51 PM]
+有的车坐垫调不了骑着很累
+
+sns, [6/25/26 2:51 PM]
+有的车蹬一脚不怎么动
+
+sns, [6/25/26 2:51 PM]
+我现在都挑那种有手机支架的新车骑，一般比较能骑
+
+sns, [6/25/26 2:51 PM]
+旧车维护确实不太行
+
+sns, [6/25/26 2:51 PM]
+还有的车坐垫调上去了能在骑车的时候掉下来！！！
+
+sns, [6/25/26 2:51 PM]
+这玩意就是个公共基础设施，铁亏钱的
+
+sns, [6/25/26 2:51 PM]
+有的骑算是福利了
+
+sns, [6/25/26 2:51 PM]
+别骑下雨天之后海绵座的就行
+```
+
+16 40 Achieve s on [習]ウミユリ海底譚
+
+17 40 feel.
+
+Two theoretical rating are playing a level 11 song. 
+
+16357. 5cena. Aoi. 
+
+The left one gets two 101 in a row while the right one doesn't.
+
+They discuss competitions.
+
+(5cena plays alone then, got in the way by qr code as well, lol)
+
+18 00 converse.
+
+He is a fdu student on swe. 
+
+<!-- 可以要一下你的 github id 吗
+
+He doesn't have a github presence as he's quite fresh.
+
+几年级
+
+准大一
+
+He will become grade 13 on Sept.
+
+你玩这个游戏几年了
+
+四到五年吧 -->
+
+Well, I guess I could see many maimai pros with strong real life performance even if they are completely unrelated... 
+
+It's just a correlation factor after all, not a black or white answer which humans inherently love.
+
+19 00 converse.
+
+<!-- 他也是 fdu swe 吗
+
+你是大学生吗
+
+高中生
+
+可以问几年级在哪个学校吗
+
+（使劲摇头）
+
+强吗
+
+还行吧
+
+语文...
+
+至少和八大一个水平
+
+ ...
+
+前程似锦 -->
+
+They play all levels for titles
+
+19 20 Eat
+
+```
+Stardust 16:39:09
+电脑哥正在采访小朋友
+
+Stardust 16:39:26
+莅临指导小朋友打舞萌
+
+Stardust 16:41:15
+小朋友不知道上不上
+
+群K*召唤师 16:41:27
+电脑哥什么时候w5
+
+Stardust 16:41:29
+电脑哥不知道敢不敢上
+
+Stardust 16:41:55
+上次来电脑哥硬生生等到没人了才上机
+
+笑哭黄豆回应了你的消息：<$L> 16:42:02
+\😭/
+
+群K*召唤师 16:42:12
+电脑哥是好人啊
+
+幽蓝边界，San十Bing 16:42:17
+电脑哥只有看没人了才会上一下
+
+幽蓝边界，San十Bing 16:42:25
+有空机就打两把
+
+Stardust 16:43:42
+电脑哥不拆就是好人
+
+幽蓝边界，San十Bing 16:43:59
+那拆电脑
+
+Stardust 16:44:35
+感觉电脑哥和一般情况成反比，他打密度低的谱猛拆，密度高了就力度正常了
+
+群K*召唤师 16:44:50
+[不支持的元素类型]@幽蓝边界，San十Bing 也许他真的会拆
+
+群K*召唤师 16:45:43
+[不支持的元素类型]密度高的没力气拆了（bushi）
+
+Stardust 16:46:32
+还真是
+
+Stardust 16:46:53
+来个内屏高手 推荐他转内
+
+14鸟加when 16:46:54
+还真是
+
+鼠片，BR-2 16:47:42
+我是内屏低手
+
+14鸟加when 16:48:34
+我是内屏绿手
+
+juruojjl 16:58:18
+看起来电脑哥正在和小孩交谈
+
+群K*召唤师 16:59:25
+电脑哥在传授自己的电脑知识吗
+
+群K*召唤师 16:59:34
+下个电脑哥即将诞生……（bushi）
+
+👉你戳了戳流汗黄豆的78 17:00:10
+电脑弟
+
+锦烨念酬 17:00:17
+传授拆机知识
+```
+
+<!-- Niko, Is today the day -->
+
+21 40 End the day w ダーリンダンス, ももいろの鍵, and 妄想感傷代償連盟
+
+22 40 reminisce.
+
+I overestimated. 
+
+You do not have to eat a lot to get full. For example, sushis, kebabs.
+
+And snacks! I mean like the lunch today. A cup of red bean thick soup and some little steamed buns.
+
+23 00 Appreciate `一台被遗忘的iPhone。`.
+
+Again. There are not so many ppl in the world.
+
+(It has many interpretations. Like elitism. Or politics. Here it means the recurring appearance of certain ppl in the community) <!-- Ame Akari on berryberry, grammar and echo on zhihu -->
+
+23 40 Eat
+
+```
+云云的瓷 19:16:55
+djq
+
+锦烨念酬 19:17:12
+我猜>10
+
+14鸟加when 19:27:18
+让我看看到底有几个
+
+鼠片，BR-2 19:30:26
+没人说的话一般是＜3的
+
+14鸟加when 19:30:52
+最好是
+
+14鸟加when 19:31:38
+很好的6+电脑哥
+
+锦烨念酬 19:33:41
+[不支持的元素类型]那就是6
+
+鼠片，BR-2 19:34:24
+路人不算（
+
+上下反享受者 19:35:24
+哟
+
+上下反享受者 19:35:40
+大手子来了
+
+juruojjl 19:36:29
+大手子来了
+
+某麒です！ 19:36:54
+你打了吗
+
+Xy. 19:38:48
+哪个
+
+某麒です！ 19:39:32
+那个idoratize world
+
+Xy. 19:39:52
+没
+
+Xy. 19:40:00
+紫的打了
+
+笑哭黄豆回应了你的消息：<$L> 19:57:46
+有人有迪拉熊拼豆图纸吗
+
+云云的瓷 20:23:24
+[图片]
+```
 
 26
 
