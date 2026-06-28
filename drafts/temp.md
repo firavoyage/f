@@ -1,127 +1,273 @@
-26
+25
 
-precious, [6/26/26 4:17 PM]
-I have no tools or gadgets in hand. 
+00 20 Chat
 
-They would come on Monday
+```
+笑哭黄豆 17:55:23
+不
 
-precious, [6/26/26 4:47 PM]
-I guess it would be futile if I try to borrow or steal something from restaurants or shops nearby. Stationery wouldn't help.
+笑哭黄豆 17:55:28
+你和我没有什么关系
 
-Buy some toolkit on alipay eleme.
+笑哭黄豆 17:56:08
+但我从你的事迹当中认为我应该远离你一些
 
-Maybe it would help, if it's not completely broken.
+saba 🐟 00:28:13
+（那个人）真恨（我）啊，将往事以夸张离奇的合订本语言取乐。
 
-Buy a nail cut kit to satisfy the the minimum delivery threshold btw.
+说到底只是游戏中随机遇到的人，但年轻人终究是容易受到鼓动的
 
-precious, [6/26/26 4:49 PM]
-Code. 6h is plenty I suppose.
+也不必矜持或世故什么
 
-precious, [6/26/26 5:20 PM]
-I have DND on so I do not get phone calls. 
+真好啊
 
-But it turns out to be fine as he leaves a photo.
+笑哭黄豆 00:28:58
+很难说
+```
 
-precious, [6/26/26 5:34 PM]
-My toolkit could theoretically open it. 
+14 00 Buy some transparent zipped folders to store mantras
 
-But it lacks enough friction or leverage.
+It would replace the clamps
 
-precious, [6/26/26 5:37 PM]
-It's easily fixed then they come and open. 
+<!-- Hongkongdoll... Melancholic atmosphere. Piano. Well done! -->
 
-It simply gets stuck, so it gives the forced reversed. 
+14 40 Eat acbox group
 
-Though, the underlying mechanics of that specific key could never be fixed.
+```
+Acbox Neko, [6/23/26 9:05 PM]
+删除全部！
 
-precious, [6/26/26 5:38 PM]
-They also apply some maintenance routine on other keys for "weird noise".
+Fodesu, [6/23/26 9:05 PM]
+我还以为我被踢了
 
-precious, [6/26/26 6:04 PM]
-https://t.me/fira_paste/8
+pluie, [6/23/26 9:06 PM]
+不愉快的都删掉 删掉
 
-precious, [6/26/26 6:06 PM]
-https://t.me/fira_paste/9
+Terminal at Fangcun, [6/23/26 9:06 PM]
+ALL CLEAR!
 
-https://t.me/fira_paste/10
+Gary です, [6/23/26 9:10 PM]
+大记忆消失术
 
-precious, [6/26/26 6:10 PM]
-https://t.me/fira_paste/11
+狸狸亚 咔帕噗, [6/23/26 9:24 PM]
+忘记看上文了
 
-https://t.me/fira_paste/12
+狸狸亚 咔帕噗, [6/23/26 9:24 PM]
+闭嘴了
 
-precious, [6/26/26 6:29 PM]
-https://t.me/fira_paste/13
+狸狸亚 咔帕噗, [6/23/26 9:24 PM]
+不聊了
 
-precious, [6/26/26 7:10 PM]
-The child cubercxm plays with his dad.
+f, [6/23/26 11:24 PM]
+...
 
-His father wants to home to work.
+混柠土, [6/23/26 11:26 PM]
+箱子猫，贴贴
 
-precious, [6/26/26 7:23 PM]
-https://t.me/fira_paste/14
+Joestar Ding, [6/24/26 10:34 AM]
+哎呦 这不是 锂电池吗
 
-https://t.me/fira_paste/15
+Lee, [6/24/26 10:52 AM]
+ww
 
-(Offline after joining)
+妄冬君, [6/24/26 8:25 PM]
+发生什么了（）
 
-precious, [6/26/26 7:25 PM]
-qq prevents me to copy when I'm out? 
+Acbox Neko, [6/25/26 1:01 PM]
+我把channel删了
 
-And seems it auto removes the item or something.
+混柠土, [6/25/26 1:13 PM]
+箱箱猫，贴贴
 
-And, seems I could read some prev msgs.
+pluie, [6/25/26 1:14 PM]
+猫贴贴
 
-I guess I could think out of the box.
+Rosmontis, [6/25/26 1:32 PM]
+贴贴猫
 
-precious, [6/26/26 7:29 PM]
-Why would I spend time on these...
+Gary です, [6/25/26 1:32 PM]
+发生啥了
 
-Would it be a better path for me?
+f, [6/25/26 2:35 PM]
+Does anyone have a backup? 
 
-precious, [6/26/26 7:32 PM]
-Eat acbox group
+I guess, acbox, at least, must have preserved her memories soundly somewhere.
+
+Acbox Neko, [6/25/26 2:36 PM]
+No any backup
+
+Acbox Neko, [6/25/26 2:36 PM]
+I hate these memories
+
+f, [6/25/26 2:40 PM]
+I do have! I would like to archive them permanently, host on GitHub pages, and save forever on wayback machine.
+
+Acbox Neko, [6/25/26 2:41 PM]
+No
+
+🥭芒果刀, [6/25/26 2:42 PM]
+N0
+
+Acbox Neko, [6/25/26 2:42 PM]
+I don’t wanna my new friend would lookup my bad experience
+
+Cherry Zhu, [6/25/26 3:43 PM]
+捏捏
+
+沒天鋰了, [6/27/26 4:13 PM]
+那我还挺幸运，前几天加进来了
+```
+
+<!-- Project have: export -->
+
+15 00 Eat azalea, menci memoh
 
 ```
 
 ```
 
-20 00 converse. <!-- warau -->
+precious, [6/25/26 5:51 PM]
+Two theoretical rating are playing a level 11 song. 
 
-<!-- Dths grade 10: 依旧码农 (笑)
+16357. 5cena. Aoi. 
 
-(! ...)
+They left one gets two 101 in a row while the right one doesn't.
 
-（将屏幕轻轻向内推...）
+They discuss competitions.
 
-不是。没啥。 -->
+(5cena plays alone then, got in the way by qr code as well, lol)
 
-20 20 feel.
+precious, [6/25/26 6:04 PM]
+He is a fdu student on swe. 
 
-The dths one achieves 101 at level 10 so does his partner.
+可以要一下你的 github id 吗
 
-Unlock door.
+He doesn't have a github presence as he's quite fresh.
 
-<!-- 哇，都理论了
+几年级
 
-太简单了
+准大一
 
-要抓绝赞
+He will become grade 13 on Sept.
 
-我就差一个门了
+你玩这个游戏几年了
 
-我就解锁了一个 -->
+四到五年吧
 
-20 40 Complete area nanahira
+precious, [6/25/26 6:50 PM]
+Well, I guess I could see many maimai pros with strong real life performance even if they are completely unrelated... 
 
-21 00 feel.
+It's just a correlation factor after all, not a black or white answer which humans inherently love.
 
-Dths player discusses chemistry with his friend from lwjhs
+precious, [6/25/26 6:52 PM]
+他也是 fdu swe 吗
 
-A problem on wechat vid platform on the dths player's phone
+你是大学生吗
 
-Can caco3 turn into caoh2 in one step
+高中生
 
-<!-- 但也没说是单选题啊 -->
+可以问几年级在哪个学校吗
 
-22 00 End the day w ももいろの鍵, ベノム, and はいよろこんで.
+（使劲摇头）
+
+强吗
+
+还行吧
+
+语文...
+
+至少和八大一个水平
+
+ ...
+
+前程似锦
+
+precious, [6/25/26 6:56 PM]
+They play all levels for titles
+
+precious, [6/25/26 7:29 PM]
+Eat
+
+precious, [6/25/26 7:30 PM]
+https://t.me/fira_paste/6
+
+precious, [6/25/26 8:58 PM]
+Niko, Is today the day
+
+precious, [6/25/26 9:52 PM]
+21 40 End the day w ダーリンダンス, ももいろの鍵, and 妄想感傷代償連盟
+
+16 40 Achieve s on [習]ウミユリ海底譚
+
+precious, [6/25/26 10:45 PM]
+I overestimated. 
+
+You do not have to eat a lot to get full. For example, sushis, kebabs.
+
+And snacks! I mean like the lunch today. A cup of red bean thick soup and some little steamed buns.
+
+precious, [6/25/26 10:55 PM]
+Appreciate 一台被遗忘的iPhone。
+
+precious, [6/25/26 11:27 PM]
+Again. There are not so many ppl in the world.
+
+(It has many interpretations. Like elitism. Or politics. Here it means the recurring appearance of certain ppl in the community)
+
+precious, [6/25/26 11:32 PM]
+Eat
+
+precious, [6/25/26 11:32 PM]
+云云的瓷 19:16:55
+djq
+
+锦烨念酬 19:17:12
+我猜>10
+
+14鸟加when 19:27:18
+让我看看到底有几个
+
+鼠片，BR-2 19:30:26
+没人说的话一般是＜3的
+
+14鸟加when 19:30:52
+最好是
+
+14鸟加when 19:31:38
+很好的6+电脑哥
+
+锦烨念酬 19:33:41
+[不支持的元素类型]那就是6
+
+鼠片，BR-2 19:34:24
+路人不算（
+
+上下反享受者 19:35:24
+哟
+
+上下反享受者 19:35:40
+大手子来了
+
+juruojjl 19:36:29
+大手子来了
+
+某麒です！ 19:36:54
+你打了吗
+
+Xy. 19:38:48
+哪个
+
+某麒です！ 19:39:32
+那个idoratize world
+
+Xy. 19:39:52
+没
+
+Xy. 19:40:00
+紫的打了
+
+笑哭黄豆回应了你的消息：<$L> 19:57:46
+有人有迪拉熊拼豆图纸吗
+
+云云的瓷 20:23:24
+[图片]
