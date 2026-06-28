@@ -43122,6 +43122,10 @@ cubibibibibism!
 
  -->
 
+23 40 watch `GMBenjaminBok` on twitch for a while.
+
+chess puzzles. seems fun.
+
 
 
 <!-- timebox, plan. -->

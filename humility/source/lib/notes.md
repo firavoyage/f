@@ -18,6 +18,11 @@ res = call fn
 ise
   return res
 
+// propagate void (define _ as global var in prelude)
+_ = call async void fn
+ise
+  return _
+
 // handle
 res = call fn
 ise 
@@ -25,9 +30,11 @@ ise
   return
 ```
 
-pros: baseline result pattern 
+pros: baseline result pattern, explicit, typed
 
-cons:
+cons: boilerplate when propagating (extremely common), err does fit in any (parse, stringify, send, etc.), hidden danger in void (fire and forget) <!-- unlike rust, which would warn fire and forget result -->
+
+i would stay w it for now, but clearly pattern ii might be a good choice
 
 i (variation)
 
@@ -56,6 +63,10 @@ ise
   return
 ```
 
+pros: less boilerplate when propagate, no hidden danger in fire and forget, no uncatched errors
+
+cons: implicit, not typed, you dont know if a fn could err, more boilerplate to handle (and inconsistent)
+
 iii
 
 ```ts
@@ -63,7 +74,20 @@ fn
   ok return
   err throw
 
+// propagate
+res = call fn
 
+// handle
+try 
+  res = call fn
+catch e
+  // do something
+
+  return
 ```
 
+a variation of ii
 
+pros: native js, no design pattern (or barebone/vanilla)
+
+cons: try catch indentation hell (you should early return instead)
