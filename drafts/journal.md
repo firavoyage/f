@@ -43130,6 +43130,12 @@ chess puzzles. seems fun.
 
 00 00 read `置身钉内`
 
+importance and priority might be perp? <!-- they absolutely have strong statistical correlation, but you can really change the priority as you like. -->
+
+one is like the mass of an object (contextual invariant though)
+
+another is a point on the roadmap
+
 
 
 <!-- timebox, plan. -->
