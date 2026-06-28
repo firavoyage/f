@@ -117,4 +117,22 @@ normal
 - value: node id
 ```
 
+---
 
+what
+
+req
+
+chatbot
+
+dify <!-- it has no moat. visual ui is nothing. unlike agents, mcp, skills, tool calls, extensions, hooks, quick unclear. -->
+
+---
+
+how
+
+tree: no info <!-- ofc focus is different, a thing you want before reading a node -->
+
+node: incomplete, mark what it is, a step in workflow or a chat
+
+<!-- it might err (network drop or oom crash), but very unlikely at writing -->
