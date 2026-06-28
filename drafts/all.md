@@ -699,6 +699,7 @@ repo: <!-- init, clone, save/checkpoint, sync, restore -->
 - research git criticism conservative lack features better cli ux piper scalar
 - research git monorepo sparse checkout <!-- partial checkout -->
 - research git commands checkpoint restore
+- research git symlink cross platform compatibility
 
 glaze:
 
