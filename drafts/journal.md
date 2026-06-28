@@ -37984,13 +37984,61 @@ Estelle（已爬去国际服） 20:53:55
 
 She really wants to trace me that way? I guess I've told her. -->
 
-21
-
 00 40 observe
 
 Duolingo is so weird. Rather remove on both home and app drawer.
 
 Replace with Claude. Looks fine
+
+03 00 think.
+
+Complete keyboard todos
+
+Backend comes first. Actions. 
+
+You can extend adwaita. 
+
+Google like home page. Fully rounded input. You can rm bg like Gboard. But you will need for consistency in chat page.
+
+No need to overthink shortcuts.
+
+Settings page. 
+
+Observability
+
+Url. Resilience. Parse to state and route. 
+
+Cookies. Local storage. (Needed?)
+
+Humility.Localhost (let it work on my machine and document)
+
+Fuzzy deterministic semantic search.
+
+Well, it's useless to imagine I guess. Be progressive and bottom up.
+
+...
+
+Read tabs. Complete research. Take notes and have screen records.
+
+13 00 think.
+
+Example of value enforcement
+
+Absolutism: user centric
+
+Lawless. No cookie popups. No tos or privacy. Tech and math, and nothing else, can protect you. No a single word of legal text. No exception or compromise to pragmatism.
+
+Non profit. No attention economy. Utilitarian. 
+
+You hold the power. You can reshape anything to your pref.
+
+It's not a toy. It's for learning, and for rebellion.
+
+Elitism 
+
+We never mention a word on the bar actors.
+
+For example, if one sells our foss code, the buyer deserves. If they save time somehow, they pay for a premium.
 
 13 40 Research 海底谭
 
@@ -38006,13 +38054,593 @@ Well, she has taken 1v1 course two years ago so she knows what the problems are 
 
 18 20 Set anki daily to 10 <!-- the wisest choice taking an underground i guess, calm, and meaningful -->
 
+18 40 feel.
+
+Yunoko keeps playing to prevent me from playing?
+
+Her frnd has 7k rating.
+
+Interesting.
+
 19 00 sync memories ~~(19 40)~~ 20 00 <!-- seems i played a pc meanwhile -->
+
+19 20 Help two maimai onboard. 
+
+One has two braids with some lime color. Another wears a random school uniform.
+
+Help them skip cd with the invisible button. A maimai doesn't know what skipping cd means and almost blocks her partner from login.
+
+<!-- Thanks. -->
+
+20 40 Complete area colorful
+
+A yellow gate. Idk.
+
+20 40 Invite a boy to play. Guide.
+
+His mother doesn't understand digital apps well.
+
+His mother is highly motivated when I say it's free.
+
+<!-- 这比手机好玩吧
+
+豆包：珠海有哪些舞萌 -->
+
+The boy, a fifth grader, hardly clears a song even at basic level. Maybe 4.5 is to fast for him? And they are travelers.
+
+A bit sorrowful...
+
+22 00 End the day w ゆりかご, ザムザ, and ヒバナ
+
+23 00 Chat
+
+```
+笑哭黄豆 13:35:56
+得到了一些很偏执的传闻
+
+你似乎在学校里被同学欺凌过
+
+但同时也得知了一些似乎是你在高中时做的事情
+
+saba 🐟 22:58:28
+何谓偏执？
+
+saba 🐟 23:05:25
+这个软件不能删除发送两分钟后的消息。
+
+saba 🐟 23:07:10
+（原本想说用词不当的。但想，还是不钻牛角尖了，不必那样认真。或者说较真。）
+
+笑哭黄豆 23:09:37
+[图片]
+
+saba 🐟 23:14:46
+nothing special
+```
+
+24 00 Eat
+
+```
+笑哭黄豆回应了你的消息：<$L> 18:43:16
+没让电脑哥上机
+
+枝荔 19:07:45
+电脑哥又在拆
+
+枝荔 19:07:51
+我能上去把他耳机拔了不？
+
+枝荔 19:07:55
+司马了
+
+上下反享受者 19:12:34
+可以
+
+上下反享受者 19:12:38
+ 支持
+
+枝荔 19:12:46
+现在又不拆了变成正常力度了
+
+枝荔 19:12:50
+我先去吃个饭
+
+枝荔 19:12:51
+饿死了
+
+上下反享受者 19:14:55
+ 还在拉扯
+
+…… 19:29:18
+失踪人口回归
+
+笑哭黄豆回应了你的消息：<$L> 19:30:50
+[不支持的元素类型]我去你还活着啊
+
+…… 20:31:53
+[图片]
+
+…… 20:32:05
+在滨寿司听k6电话录音
+
+笑哭黄豆回应了你的消息：<$L> 20:32:22
+挑战在滨听k6借钱录音绷住
+
+枝荔 20:32:32
+轻松绷住。
+
+笑哭黄豆回应了你的消息：<$L> 20:32:39
+自在绷住。
+
+性性的歌 20:32:53
+k6你竟然还活着
+
+笑哭黄豆回应了你的消息：<$L> 20:32:59
+这不是去年的吗
+
+上下反享受者 20:34:29
+还在k6
+
+上下反享受者 20:34:33
+现在已经是电脑哥的时代了
+
+👉你戳了戳流汗黄豆的78 20:35:38
+这个有点违和
+
+笑哭黄豆回应了你的消息：<$L> 20:35:50
+盯着一个键打可以。
+
+打得快，打得爽肯定整个手直接拍。
+
+一般人想做得优雅，想灵巧些时会主动慢。大概就是粉。
+
+反应到，直接拍倒是有眼疾手快的感觉。很刺激。
+
+14鸟加when 20:36:30
+表达能力堪比两颗搞完
+
+枝荔 20:37:07
+[不支持的元素类型]台下机厅wmc欣喜若狂
+
+笑哭黄豆回应了你的消息：<$L> 20:37:12
+两颗搞完
+
+👉你戳了戳流汗黄豆的78 20:44:27
+我看完沉默了
+
+14鸟加when 20:45:17
+我是A3.258 看完受益匪浅
+
+14鸟加when 20:48:12
+[不支持的元素类型]找个bot入典）
+
+枝荔 21:05:14
+电脑哥不会开智了吧卧槽
+
+枝荔 21:05:23
+现在50%是不拆的
+
+w@ 21:05:31
+那也挺好
+
+鼠片，BR-2 21:05:42
+不也挺好吗
+
+枝荔 21:06:25
+这是好事啊
+
+👉你戳了戳流汗黄豆的78 21:06:36
+顿悟了可能
+
+枝荔 21:09:59
+现在发力方式也改善了
+
+枝荔 21:10:12
+至少不是用掌根指根打了
+
+枝荔 21:10:15
+什么情况
+
+👉你戳了戳流汗黄豆的78 21:10:39
+要上分了
+
+CGGG 22:10:31
+k6和电脑哥是谁啊
+
+CGGG 22:10:36
+新来的不懂
+
+上下反享受者 22:12:04
+没事，不懂最好，俩神人
+
+你怎么知道我堇将了 22:16:18
+祝你不用碰到他们
+```
 
 22
 
+00 40 think.
+
+Solve your own problem.
+
+You do not like opencode right, nor Google ai mode.
+
+<!-- Patchright. All legacy chrome? 
+
+Parceljs component override? Interesting. 
+
+Ts compiler level decorator? Log, perf. -->
+
+02 20 Chat
+
+```
+笑哭黄豆 23:28:17
+我对别的不感兴趣说实在我只想知道是不是真的
+
+saba 🐟 02:23:59
+充满倾向，观点，不确定性，甚至事实性错误。很多词语没有良定义，如精神状态，言语攻击性，行为立场，学科水平，故不作辨析。
+
+看里番是真的。斗殴是存在的但不是无处不在的。
+
+但如果想，可以认为都是真的。
+
+太琐碎了。不及任何一则新闻。就像校园中的闲谈一般，聒噪。不令人震撼，不使人思索，不予人启发。也不知道几年后他们会如何谈起，或遗忘。
+
+有许多关心自己的人。会欣慰于人们的热情。从远处看，不认识自己的人总是多数，简明地复述成绩单，交流技巧性，轻巧地了解自己，或是符合预期地逃避不易回答的问题。但，无论支持（或者反讽而取乐于）自己的，攻击甚至争执的，也没有什么感触，或许心里觉得，人们只是年轻。现实世界。
+
+为了完整性作回复。
+```
+
 03 40 separate <!-- en and zh --> mantras and memes from print. reread. rearrange. 04 40
 
-23
+13 00 Eat
+
+```
+鼠片，BR-2 12:19:36
+下大雨了
+
+三文鱼茶茶 12:20:01
+想买手台
+
+鼠片，BR-2 12:20:07
+想买手台
+
+三文鱼茶茶 12:20:11
+家里有条件放
+
+三文鱼茶茶 12:20:17
+钱也够
+
+三文鱼茶茶 12:20:21
+然后我爸妈不允许
+
+鼠片，BR-2 12:20:39
+家里没地方放了（
+
+三文鱼茶茶 12:20:39
+给我的理由是玩这个得出去玩，一边玩一边社交
+
+三文鱼茶茶 12:20:46
+说什么老闷在家里不好
+
+👉你戳了戳流汗黄豆的78 12:20:59
+还有强制社交
+
+三文鱼茶茶 12:21:03
+我：有没有可能买手台是为了辅助练习
+
+三文鱼茶茶 12:21:14
+我爸妈：不允许！
+
+鼠片，BR-2 12:21:19
+有没有可能是人真的太多了
+
+鼠片，BR-2 12:21:26
+出去玩玩一把排两把
+
+三文鱼茶茶 12:21:41
+也有这个道理
+
+上下反享受者 12:21:51
+[不支持的元素类型]@三文鱼茶茶 这个简单，自己买一套房，直接购入就好了，不用问爸妈
+
+👉你戳了戳流汗黄豆的78 12:22:03
+等上班了赚钱自己买
+
+三文鱼茶茶 12:22:17
+上海买房太难了呀
+
+三文鱼茶茶 12:22:22
+我这破工资
+```
+
+13 20 Take an umbrella, w an empty KitKat pack along
+
+Maybe it would help
+
+Also have a northface outwear.
+
+14 00 Set 10 new cards for n5 n4 words and 5 example sentences on n5. 
+
+Spend no budget (well the UI is quite utilitarian) for other decks, such as grammar.
+
+14 40 think.
+
+Research librechat. List actions. 
+
+Complete adwaita yaml. Google reader yaml.
+
+Settings shortcuts popup or page? It could be page I guess.
+
+...
+
+Naming knowledge
+
+15 00 converse.
+
+<!-- 你们多少分
+
+F: 万五
+
+好厉害
+
+你多少分
+
+M: 我是挂件
+
+你多少分
+
+F: 不记得了，一千吧 -->
+
+17 00 converse.
+
+<!-- (The smoker): 你还不走 （上）吗，都没人了
+
+我不能有心事。一定要完成。如果打的时候一直想着要写什么，完全打不了。
+
+He lacks an igniter.
+
+这是棒棒糖！
+
+（追）
+
+（逃） -->
+
+18 40 Play with a warm orange haired lady who majors in zh en translation and works in completely unrelated field.
+
+<!-- 你是学生吗
+
+你在做社会调研吗
+
+我每个人都会问年级这样。然后是行业或者专业。 -->
+
+She reaches 14k solely by sss plus level 12 songs. Mind blowing. 
+
+She often caters to my level and looks at my achievement rate and comforts me. 
+
+She hits hard sometimes, but nothing special. One thing is she really plays low level songs even when alone.
+
+She says she often comes at noon though I've never seen before. 
+
+Many maimai and anonymous today. The pros leave for dinner? Idk.
+
+...
+
+Two anonymous from shu micro electronics plays for the first time. One plays an expert songs with default flow speed and even wearing a backpack (with a shu text badge)
+
+No pros (those I see often) here currently...
+
+18 40 converse.
+
+The two shu anonymous gifts two coins to me. 
+
+They are already in grade 16 and they will continue study for post grad.
+
+<!-- 你们有暑假吗
+
+马上没有了。老东西了。 -->
+
+20 40 converse.
+
+<!-- 能借手套吗
+
+不能。那里有野生的。
+
+走远了！ -->
+
+22 00 End the day w 転生林檎, [習]ウミユリ海底譚, and ラビットホール.
+
+Grab a bucket of 12 free coins left on the sofa.
+
+23 20 Eat
+
+```
+锦烨念酬 19:25:31
+今天我检查孩子的手机，发现他一直跟一个头像是一只熊和一只企鹅站在一起的人聊天，我孩子也不主动说话，那人就一直发一些二维码，点进去说让用二维码扫什么台机，这是什么东西，我孩子这是怎么了，有知道的吗？我孩子该不会染上什么不好的东西了吧
+
+上下反享受者 19:26:52
+这是舞萌，比吸毒还可怕
+
+上下反享受者 19:26:59
+你小孩没救了
+
+三文鱼茶茶 19:28:04
+天呐，那怎么办
+
+余念安 19:28:40
+删号重开
+
+juruojjl 19:28:42
+重开新号吧/捂脸
+
+锦烨念酬 19:31:16
+万一是中二呢
+
+云云的瓷 19:32:45
+一旦沾上舞萌的人，一辈子都在回味，脑海里全是我要出勤
+
+三文鱼茶茶 19:33:03
+阿姨知道了，谢谢各位年轻人
+
+三文鱼茶茶 19:33:23
+原来是错怪我家孩子了
+
+锦烨念酬 19:33:33
+[不支持的元素类型]英语考试的时候看到各种单词脑子里自动播放音乐
+
+锦烨念酬 19:33:36
+有没有懂的
+
+锦烨念酬 19:34:02
+也有可能播放谱面
+```
+
+```
+👉你戳了戳流汗黄豆的78 18:58:52
+中考满分多少啊现在
+
+性性的歌 19:05:47
+我记得我中考后没几年 满分就改到750了
+
+性性的歌 19:05:59
+我那时候还是630
+
+疯狂射绳 19:07:28
+我也
+
+疯狂射绳 19:07:33
+怀念
+
+w@ 19:14:10
+今天毕业典礼
+
+w@ 19:14:15
+我现在穿着西装准备打舞萌
+
+14鸟加when 19:14:58
+一位西装革履的男士前来游玩超上级
+
+w@ 20:45:06
+在毕业典礼的这天鸟了终点
+
+w@ 20:45:07
+我看哭了。
+
+w@ 20:49:38
+好舒服
+
+w@ 21:09:01
+还被外国人观战了
+
+w@ 21:09:07
+被友善外国人夸赞了
+
+w@ 21:09:10
+我开心了
+
+幽蓝边界，San十Bing 21:09:19
+[不支持的元素类型]@w@ dpq神秘景点之
+
+幽蓝边界，San十Bing 21:09:31
+歪果仁观战舞萌大神
+
+w@ 21:09:31
+不是我在南京东路
+
+WORSTACCuracy 21:38:47
+[不支持的元素类型]那很多老外了
+
+余念安 21:43:15
+我在打浦桥也被老外观战过
+
+幽蓝边界，San十Bing 21:46:59
+njdl是街机烈火还是
+
+WORSTACCuracy 21:47:00
+我只被老头观战过
+
+WORSTACCuracy 21:47:18
+zx的akibago吧
+
+幽蓝边界，San十Bing 21:47:21
+我和40岁大妈拼过机
+
+幽蓝边界，San十Bing 21:47:32
+我给她开了白潘
+
+幽蓝边界，San十Bing 21:48:01
+然后她看了看憋笑的我
+
+幽蓝边界，San十Bing 21:48:08
+选了绿的
+
+幽蓝边界，San十Bing 21:48:18
+然后被打爆了
+
+Seraphim 21:50:05
+倡议建立拼机不首先开潘原则
+
+举起手柄捞鱼 21:52:52
+去年w53的时候在打浦桥被老外围观当场鸟加宫下游
+
+14鸟加when 21:53:36
+被老外盗摄过[emoji]
+
+举起手柄捞鱼 21:53:46
+我当时也被拍了（
+
+举起手柄捞鱼 21:53:50
+不过我没管
+
+14鸟加when 21:53:57
+在dpq只有一台机子的时候）
+
+举起手柄捞鱼 21:54:26
+我们不会说的是同一个人吧
+
+余念安 21:56:12
+打浦桥还有常驻老外
+
+举起手柄捞鱼 21:56:22
+[不支持的元素类型]我打完他俩还给我鼓掌
+
+名字 21:57:00
+我觉得被盗摄除非发抖音或者微信都没啥事
+
+名字 21:57:06
+所以外国人我不管。
+
+幽蓝边界，San十Bing 22:01:13
+[不支持的元素类型]@Seraphim 没有没有
+
+幽蓝边界，San十Bing 22:01:42
+其实是我上轮打白乐意效劳
+
+幽蓝边界，San十Bing 22:01:53
+然后想打潘了
+
+幽蓝边界，San十Bing 22:02:02
+直接开白的进的（
+
+幽蓝边界，San十Bing 22:02:27
+这可不是开白潘
+
+幽蓝边界，San十Bing 22:02:52
+你就说是不是白潘界面进的吧
+
+👉你戳了戳流汗黄豆的78 22:02:56
+阿姨：我不认识潘多拉，我还不认识削除吗？
+```
+
+```
+笑哭黄豆 22:01:35
+所以我可以认为你承认了一部分对吗
+
+saba 🐟 23:35:21
+如果想，可以认为都是真的。
+```
+
+23 40 Browse menci qq zone
 
 23
 
