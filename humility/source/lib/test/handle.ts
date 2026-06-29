@@ -5,7 +5,7 @@ log(handle(() => {
 }))
 
 log(await handle(async () => {
-  await fetch()
+  await fetch('')
 }))
 
 
