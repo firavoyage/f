@@ -516,6 +516,7 @@ philosophy:
 - mono no aware the red chamber
 - philosophical ideology spectrum
 - solutionism
+  - piracy
 
 entertainment:
 
