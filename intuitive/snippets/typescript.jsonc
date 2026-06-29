@@ -130,8 +130,7 @@
       "type $1 = typeof $1",
       "declare global {",
       "  var $1: $1",
-      "  $0",
-      "}",
+      "}$0",
     ],
   },
   // you can shift enter to new line
@@ -307,9 +306,18 @@
       "err"
     ],
     "body": [
-      "return err($1)$0",
+      "throw err($1)$0",
     ],
   },
+  // "err": {
+  //   "prefix": [
+  //     "er",
+  //     "err"
+  //   ],
+  //   "body": [
+  //     "return err($1)$0",
+  //   ],
+  // },
   "is_error propagate": {
     "prefix": [
       "is",
@@ -384,6 +392,14 @@
     "body": [
       "/* eslint-disable-next-line */ // @ts-expect-error ",
       // "/* eslint-disable-next-line */ // @ts-ignore",
+    ],
+  },
+  "ignore all": {
+    "prefix": [
+      "iga"
+    ],
+    "body": [
+      "// @ts-nocheck",
     ],
   },
 }

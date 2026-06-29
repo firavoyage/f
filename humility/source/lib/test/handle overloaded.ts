@@ -1,27 +1,39 @@
 import { handle } from 'lib/handle';
 
-async function foo() {
+function foo() {
   throw 'foo'
+}
+
+async function bar() {
+  throw 'bar'
 
   return 'ok'
 }
 
-function bar() {
-  throw 'bar'
+function baz() {
+  
 }
 
-log(handle(bar))
+async function main() {
+  const a = handle(foo)
+  log(a)
 
-log(await handle(() => foo()))
-              
-log(await handle(async () => await foo()))
+  const b = await handle(() => bar())
+  log(b)
 
-log(await handle(() => fetch()))
+  const c = await handle(async () => await bar())
+  log(c)
 
-// await handle(() => fetch(''))
-// log((await handle(() => fetch(''))).message) 
-// log(await handle(async () => await fetch('')))
+  const d = await handle(() => fetch(''))
+  log(d)
 
-// bar()
+  // await handle(() => fetch(''))
+  // log((await handle(() => fetch(''))).message) 
+  // log(await handle(async () => await fetch('')))
+
+  // bar()  
+}
+
+await main()
 
 log('reaches the end')
