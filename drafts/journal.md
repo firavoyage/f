@@ -43176,6 +43176,48 @@ yunoko continues to play, and skips timer for the empty partner. so she can cont
 
 one <!-- who rarely comes --> claims to be the group admin and speaks fiercely to me and pulls off my headphone when i identify him (w his gf) as wmc and silently laugh to them.
 
+<!-- 
+
+你笑什么.
+
+你是 wmc.
+
+我不是 wmc. sbwmc.
+
+(warau) 你打 wm 吗.
+
+我打. ...
+
+(warau)
+
+我是群主. 我和你说...
+
+我 ...
+
+不要解释!
+
+我怀疑你不是群主.
+
+那你说谁! 谁是群主.
+
+你的名字和他对不上.
+
+(戴上耳机)
+
+耳机摘下来!
+
+(戴上耳机)
+
+ -->
+
+<!-- 
+
+HARU (star) 15k LOWE (star) 16k
+
+ -->
+
+quite strong. impressive!
+
 
 
 <!-- timebox, plan. -->
