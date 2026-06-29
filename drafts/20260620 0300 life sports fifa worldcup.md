@@ -1,4 +1,4 @@
-2026 world cup
+# 2026 world cup
 
 11:34 AM
 
@@ -107,3 +107,9 @@ Would you like the specific **kickoff times** for today's slate, or do you want 
   ESPN Singapore
 
 Show all
+
+# <!-- 29 jun 2026 -->
+
+<!-- it shows a "how satisfied are you" -->
+
+# 

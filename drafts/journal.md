@@ -43152,6 +43152,22 @@ mind blowing.
 
 <!-- the pro kid arrives! -->
 
+19 00 converse.
+
+<!-- 
+
+你是 cyehs 的吗?
+
+不是.
+
+yunoko: 不要和我哥讲话. 滚!
+
+(crowd:) frightened
+
+(yunoko selects a few chat history on wechat, searches and sends to her brother it seems)
+
+ -->
+
 
 
 <!-- timebox, plan. -->
