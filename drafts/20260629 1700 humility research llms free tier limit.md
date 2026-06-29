@@ -402,5 +402,327 @@ What **specific project or task** are you trying to accomplish using the free ti
 
 Show all
 
-# (?) 
+# (?) how much can one maximize claude free usage
+
+You can maximize Claude's free usage tier by <mark><strong>optimizing prompt efficiency, utilizing strategic chat resets, and leveraging alternative platforms</strong><span> </span>that offer free access to Anthropic's models</mark>. Because the web-based free tier of Claude operates on a rolling 5-hour window and scales down your message allowance as chat history grows, strict token management is necessary to avoid being throttled. [link](https://www.reddit.com/r/ClaudeAI/comments/1s7fcjf/claude%5Fusage%5Flimits%5Fdiscussion%5Fmegathread%5Fongoing/)
+
+### Master token-saving chat behaviors
+
+Every time you send a message, Claude re-reads the **entire chat history**. A long thread can quickly reduce your message allowance from roughly 10–15 prompts per window to just 3 or 4. [link](https://www.reddit.com/r/ClaudeAI/comments/1b73ipu/claude%5Fusage%5Flimit/)
+
+- **Start fresh chats frequently**: Do not use a single chat thread for an ongoing, multi-step project. Break your task into independent chunks and open a new chat every 4 to 5 messages.
+- **Batch your questions**: Instead of sending rapid-fire, single-line questions, group related prompts into a single, structured message.
+- **Edit your last prompt instead of replying**: If Claude makes a mistake or your code fails, do not reply with a correction. Click the **"Edit" button** on your previous prompt, adjust the text, and resubmit it. This overwrites the failed attempt and prevents the chat history from ballooning.
+- **Trim attached files aggressively**: While you can upload up to 20 files per conversation on the free tier, massive codebases or bloated PDFs will deplete your quota instantly. Paste only the exact snippet or data section Claude needs to see. [link](https://www.youtube.com/shorts/OJZzQPCVuAI)
+
+### Use built-in features strategically
+
+- **Maximize Free Projects**: Free accounts can create up to **5 Projects**. Anything uploaded to a project folder utilizes automatic prompt caching. Claude only reads the data once, allowing you to ask multiple questions about the same core documents without burning tokens.
+- **Type the "compact" command**: When a conversation is getting long but you must stay in the same thread, type "compact" or request a context summary. Claude will compress thousands of previous tokens into a concise summary, freeing up your context window.
+- **Space out your sessions**: Claude's limit is a rolling 5-hour window, not a midnight reset. If you burn all your prompts at 9:00 AM, you are locked out until 2:00 PM. Split your work into shorter morning, afternoon, and evening blocks so your limits gradually cycle out. [link](https://www.youtube.com/shorts/OJZzQPCVuAI)
+
+### Use alternative free access points
+
+When you inevitably hit the wall on the main web interface, you can bypass the bottleneck entirely by sourcing Claude through other platforms:
+
+- **DuckDuckGo AI Chat**: By visiting DuckDuckGo AI Chat, you can access Claude Haiku completely free, anonymously, and with highly permissive daily limits. This is ideal for quick, routine tasks that do not require the heavyweight reasoning of Sonnet.
+- **Claim Free Developer Credits**: Registering an account on the Anthropic Console yields $5 in free API credits. These credits do not expire on a 5-hour window and can be paired with open-source desktop clients to query Claude models directly.
+- **The Open Source Maintainer Loophole**: If you maintain or heavily contribute to a public open-source repository with over 5,000 GitHub stars, you can apply directly to Anthropic's Open Source Program. Approved maintainers receive **6 months of Claude Max free**, a tier worth $1,200. [link](https://www.verdent.ai/guides/how-to-use-claude-ai-for-free-2026)
+
+What **specific tasks** are you trying to accomplish with Claude (e.g., coding, writing, data analysis)? I can give you a targeted prompting template designed to minimize token usage for that exact workflow.
+
+- [link](https://www.reddit.com/r/ClaudeAI/comments/1s7fcjf/claude%5Fusage%5Flimits%5Fdiscussion%5Fmegathread%5Fongoing/)\
+  Claude Usage Limits Discussion Megathread Ongoing (sort this by ...\
+  Mar 30, 2026 — Updated : April 26, 2026. The problem: Since March-April 2026, Claude usage limits got brutal across all plans. Single prompts eat...\
+  Reddit·r/ClaudeAI
+- [link](https://www.reddit.com/r/ClaudeAI/comments/1b73ipu/claude%5Fusage%5Flimit/)\
+  Claude usage limit : r/ClaudeAI - Reddit\
+  Mar 5, 2024 — Yeah i agree claude sonnet which is the one in the website is supposed to be their gpt 3.5 competitor, shame it has so many limita...\
+  Reddit·r/ClaudeAI
+- [link](https://www.youtube.com/shorts/OJZzQPCVuAI)\
+  5 Ways to Fix 'Usage Limit Reached' in Claude\
+  Apr 9, 2026 — if you use clawed. and you keep hitting the usage limit you need to do these in things now that will help you save 80% of your cla...\
+  0:54\
+  YouTube·Ishan Sharma
+
+Show all
+
+# how much is gemini free tier usage limit
+
+The exact usage limits for the Gemini free tier <mark>depend entirely on whether you are using the consumer<span> </span><strong>Gemini Web/Mobile App</strong>, or building apps through the<span> </span><strong>Google AI Studio / Developer API</strong></mark>. [link](https://support.google.com/gemini/answer/16275805?hl=en\&gl=us)
+
+***
+
+### 1. Gemini Consumer App (`gemini.google.com`)
+
+If you use the main chat interface or mobile app, Google employs a dynamic, **compute-based usage system**. Your allowance drops faster if you submit highly complex prompts or utilize long conversations. [link](https://support.google.com/gemini/answer/16275805?hl=en\&gl=us)
+
+- **General Text Prompts**: Up to **30 prompts per day**.
+- **Advanced Models**: Free users get strict, capped access to higher-tier models (e.g., up to **5 prompts per day** for specialized reasoning models like Gemini Pro).
+- **Image Generation**: Up to **20 images per day** (or up to 100 on standard models depending on server load).
+- **Specialized Tools**: Up to **20 Audio Overviews** per day and **5 Deep Research reports** per month.
+- **Refresh Cycle**: The app uses a rolling **5-hour and weekly refresh system**. If you hit a wall, you will be locked out for 5 hours. [link](https://www.reddit.com/r/GeminiAI/comments/1tiklmr/i%5Ftested%5Fthe%5Fnew%5Fgemini%5Fusage%5Flimits%5Fon%5Fa%5Ffree/)
+
+***
+
+### 2. Google AI Studio & Developer API
+
+For developers generating an API key, the free tier limits are measured by Requests Per Minute (**RPM**), Tokens Per Minute (**TPM**), and Requests Per Day (**RPD**). Quotas are applied **per project**, meaning creating multiple API keys will not give you more free limits. [link](https://blog.laozhang.ai/en/posts/gemini-api-free-tier)
+
+The limits vary by model: [link](https://www.aifreeapi.com/en/posts/gemini-api-free-tier-complete-guide)
+
+| Model                 | Requests Per Minute (RPM) | Tokens Per Minute (TPM) | Requests Per Day (RPD) |
+| --------------------- | ------------------------- | ----------------------- | ---------------------- |
+| **Gemini Flash-Lite** | 15 RPM                    | 250,000 TPM             | 1,000 RPD              |
+| **Gemini Flash**      | 10 RPM                    | 250,000 TPM             | 250 RPD                |
+| **Gemini Pro**        | 5 RPM                     | 250,000 TPM             | 50 to 100 RPD          |
+
+- **Context Window**: Free API tiers retain access to the massive **1-million token context window**.
+- **Data Privacy Catch**: On the free developer tier, Google may **use your prompts and responses to train and improve its products**. If you handle sensitive data, you must upgrade to the Pay-As-You-Go tier (Tier 1) to turn off data sharing. [link](https://ai.google.dev/gemini-api/docs/pricing?gl=us)
+
+***
+
+Are you looking to use Gemini for **personal daily tasks**, or are you planning to **build an application** with the API? If you're building an app, let me know your expected traffic so I can help you determine if the free tier will bottleneck your project. [link](https://www.aifreeapi.com/en/posts/gemini-api-rate-limits-per-tier)
+
+- [link](https://www.reddit.com/r/GeminiAI/comments/1tiklmr/i%5Ftested%5Fthe%5Fnew%5Fgemini%5Fusage%5Flimits%5Fon%5Fa%5Ffree/)\
+  I Tested the New Gemini Usage Limits on a Free Account\
+  May 21, 2026 — Discussion. I wondered how bad the new Gemini usage limits really are, so I asked ChatGPT to write a bunch of prompts for a single...\
+  Reddit·r/GeminiAI
+- [link](https://support.google.com/gemini/answer/16275805?hl=en\&gl=us)\
+  Gemini Apps limits & upgrades for Google AI subscribers\
+  Starting on May 17, 2026 there will be changes to usage limits for Gemini Apps. Learn more about these changes. Gemini Apps have c...\
+  Google Help
+- [link](https://www.revolgy.com/insights/blog/gemini-plans-change-with-new-usage-limits-across-tiers)\
+  Gemini plans change with new usage limits across tiers\
+  Sep 15, 2025 — Free tier with specific usage limits. The free Gemini tier has strict, relatively low usage limits. This tier works for basic need...\
+  Revolgy
+
+Show all
+
+## has the gemini limit changed. i remember gemini flash is virtually unlimited if you do not automate
+
+<mark><strong>Yes, the Gemini limits have changed significantly</strong></mark>, and that "virtually unlimited" memory you have no longer applies. [link](https://viblo.asia/p/is-free-gemini-25-pro-api-fried-changes-to-the-free-quota-in-2025-yZJZlwK8Vjm)
+
+Google rolled out an aggressive overhaul to Gemini's usage policies. The changes impact both the chat interface and the developer sandbox: [link](https://support.google.com/gemini/answer/16275805?hl=en-JM\&gl=us)
+
+### 1. The Consumer App (`gemini.google.com`)
+
+Previously, using Gemini Flash in the web app felt unlimited because limits were strictly based on a massive daily prompt count. However, Google transitioned to **compute-based usage limits**. [link](https://support.google.com/gemini/answer/16275805?hl=en-JM\&gl=us)
+
+- **How it works now:** Instead of counting prompts, Google calculates how much total processing power you consume. [link](https://support.google.com/gemini/answer/16275805?hl=en\&gl=us)
+- **The penalty:** If you submit a massive PDF, ask for highly complex coding reasoning, or build a very long conversation history, **you will burn through your quota much faster**. [link](https://support.google.com/gemini/answer/16275805?hl=en\&gl=us)
+- **The lock-out:** Once you hit this compute threshold, you are locked out on a **rolling 5-hour window**, or pinned to a heavily restricted fallback model. [link](https://support.google.com/gemini/answer/16275805?hl=en\&gl=us)
+
+### 2. Google AI Studio & API (The Developer Tier)
+
+If you were using Gemini Flash via Google AI Studio for manual, non-automated testing, that loophole has closed too. [link](https://ai.google.dev/gemini-api/docs/pricing?gl=us)
+
+- **The Gemini Pro Removal:** Google completely **removed Gemini Pro models from the free tier**.
+- **The Flash Squeeze:** Because Pro went paid-only, a massive wave of users shifted to the Flash models. To combat the heavy server load, Google added hard daily limits to the free API tier—capping Gemini Flash at **10 requests per minute (RPM) and 250 requests per day (RPD)**.
+- For the lighter **Gemini Flash-Lite**, you get up to 1,000 to 1,500 requests per day. [link](https://www.reddit.com/r/GeminiAI/comments/1pg4et5/google%5Freduces%5Fapi%5Frate%5Flimits%5Ffor%5Ffree%5Ftier/)
+
+If you are getting blocked, you can check your exact real-time API quotas inside the Google AI Studio Rate Limits Dashboard. [link](https://ai.google.dev/gemini-api/docs/rate-limits?gl=us)
+
+Are you encountering rate limits right now on **the website** or inside **AI Studio**? I can give you a few quick optimization tricks to trim down your prompt "compute weight" and keep you under the free radar.
+
+- [link](https://support.google.com/gemini/answer/16275805?hl=en\&gl=us)\
+  Gemini Apps limits & upgrades for Google AI subscribers\
+  Learn more about these changes. Gemini Apps have compute-based usage limits that determine how much you can interact with Gemini t...\
+  Google Help
+- [link](https://support.google.com/gemini/answer/16275805?hl=en-JM\&gl=us)\
+  Gemini Apps limits and upgrades for Google AI subscribers\
+  Starting on 17 May 2026, there will be changes to usage limits for Gemini Apps. Learn more about these changes. Gemini Apps have c...\
+  Google Help
+- [link](https://9to5google.com/2026/05/28/gemini-new-usage-limits/)\
+  Google adjusts Gemini's new usage limits in response to ...\
+  May 28, 2026 — Heavy tasks like Deep Research “require more compute,” so Google is going to provide “more detailed usage breakdowns and notificat...\
+  9to5Google
+
+Show all
+
+## how much is it
+
+The paid pricing for Gemini scales directly based on whether you want a **consumer monthly subscription** for personal use or a **Pay-As-You-Go plan** for the developer API.
+
+***
+
+### 1. Consumer Subscriptions (Personal / Web App Use)
+
+Google organizes its paid consumer plans under its **Google AI** membership. These plans remove strict rate limits, grant access to larger context windows, and include extra Google One cloud storage. [link](https://pricepertoken.com/subscriptions/gemini)
+
+- **Google AI Plus**: **$4.99 per month**. It provides higher usage limits than the free tier and bundles 400 GB of cloud storage. [link](https://www.pcmag.com/how-to/should-you-pay-for-google-gemini-pro-or-plus-5-features-make-it-worth-it)
+- **Google AI Pro** _(formerly Gemini Advanced)_: **$19.99 per month**. This unlocks the flagship **Gemini 3.1 Pro model**, a 1-million-token context window, deep reasoning tools, and 2 TB of storage. [link](https://pricepertoken.com/subscriptions/gemini)
+- **Google AI Ultra**: **$99.99 to $199.99 per month**. Built for extreme power-users, this tier grants up to 20x higher usage limits than the Pro plan and up to 20 TB of storage. [link](https://gemini.google/subscriptions/)
+
+***
+
+### 2. Developer API Pricing (Pay-As-You-Go)
+
+If you switch from the free sandbox to a paid Google AI Studio production tier, you pay based on the **exact number of tokens processed** (roughly $1 per 750,000 words). A major advantage of switching to any paid API tier is that Google **stops using your prompts and data to train their models**. [link](https://ai.google.dev/gemini-api/docs/pricing?gl=us)
+
+The standard paid token pricing varies significantly by model tier:
+
+| Model Tier                                | Input Price (Per 1 Million Tokens) | Output Price (Per 1 Million Tokens) |
+| ----------------------------------------- | ---------------------------------- | ----------------------------------- |
+| **Gemini 3.1 Flash-Lite**                 | **$0.45**                          | **$2.70**                           |
+| **Gemini 3.5 Flash**                      | **$1.50**                          | **$9.00**                           |
+| **Gemini 3.1 Pro** _(Under 200k context)_ | **$3.60**                          | **$21.60**                          |
+| **Gemini 3.1 Pro** _(Over 200k context)_  | **$7.20**                          | **$32.40**                          |
+
+- **Context Caching Discount**: If you pass large, recurring instructions or documents (like an entire codebase or book) into your prompt, you can use context caching to reduce your ongoing read costs by up to 90%. [link](https://www.metacto.com/blogs/the-true-cost-of-google-gemini-a-guide-to-api-pricing-and-integration)
+- **Prepaid Spend Caps**: When setting up an API billing account, Google automatically places you into **Tier 1**, which enforces a hard **$250 monthly spend cap** to protect you against accidental billing overages. As you successfully pay your bills, you unlock higher tiers with larger monthly allowances. [link](https://ai.google.dev/gemini-api/docs/billing?gl=us)
+
+***
+
+Which of these tracks fits your workflow best? If you are going the developer route, I can show you how to set up **context caching** to dramatically lower your per-token costs.
+
+- [link](https://gemini.google/subscriptions/)\
+  Google AI Pro & Ultra — get access to Gemini 3.1 Pro & more\
+  Unlock the highest level of access to the best of Google AI and exclusive features. Starting at: $99.99 / month. $99.99 / month: 5...\
+  Google Gemini
+- [link](https://ai.google.dev/gemini-api/docs/pricing?gl=us)\
+  Gemini Developer API pricing\
+  Jun 24, 2026 — Table\_title: Gemini 3.5 Flash Table\_content: | | Free Tier | Paid Tier, per 1M tokens in USD | | --- | --- | --- | | Input price |\
+  Google AI for Developers
+- [link](https://www.pcmag.com/how-to/should-you-pay-for-google-gemini-pro-or-plus-5-features-make-it-worth-it)\
+  Should You Pay for Google Gemini Pro or Plus? These 5 ...\
+  Jun 9, 2026 — If you're a Google user, the company offers a free Gemini tier and four paid subscriptions for power users. After debuting in Janu...\
+  PCMag
+
+Show all
+
+## i mean how much is gemini free tier usage limit
+
+The Gemini free tier usage limit is <mark><strong>completely free of cost ($0)</strong></mark>. [link](https://ai.google.dev/gemini-api/docs/pricing?gl=us)
+
+However, instead of a monetary cost, you pay in **strict performance and rate restrictions**. Google tracks your usage using different metrics depending on whether you are using the consumer app or the developer API:
+
+### 1. Consumer App (`gemini.google.com`)
+
+You do not pay anything out of pocket, but your usage is capped by a dynamic, **compute-based capacity system**:
+
+- **Standard Prompts**: Up to **30 text prompts per day**.
+- **Advanced/Reasoning Models**: Up to **5 prompts per day**.
+- **Image Generation**: Up to **100 images per day**.
+- **Deep Research**: Up to **5 reports per month**.
+- **The "Cost"**: Instead of cash, if you type long prompts or submit large documents, your hidden compute quota drains rapidly, triggering a **5-hour lockout**. [link](https://www.reddit.com/r/GeminiAI/comments/1tiklmr/i%5Ftested%5Fthe%5Fnew%5Fgemini%5Fusage%5Flimits%5Fon%5Fa%5Ffree/)
+
+### 2. Google AI Studio & API (Developer Sandbox)
+
+You do not need a credit card to generate a free API key, but your free project is throttled by the following [rate limits](https://ai.google.dev/gemini-api/docs/rate-limits?gl=us):
+
+- **Gemini Flash**: **10 requests per minute (RPM)**, 250,000 tokens per minute (TPM), and **250 requests per day (RPD)**.
+- **Gemini Flash-Lite**: **15 requests per minute (RPM)** and **1,000 requests per day (RPD)**.
+- **The "Cost"**: Google requires you to agree that **they can use your free API prompts and responses to train their AI models**. [link](https://ai.google.dev/gemini-api/docs/pricing?gl=us)
+
+If you are planning to run an application or automate tasks, would you like help calculating how many users your app can support before you hit these daily request limits?
+
+- [link](https://www.reddit.com/r/GeminiAI/comments/1tiklmr/i%5Ftested%5Fthe%5Fnew%5Fgemini%5Fusage%5Flimits%5Fon%5Fa%5Ffree/)\
+  I Tested the New Gemini Usage Limits on a Free Account\
+  May 21, 2026 — I Tested the New Gemini Usage Limits on a Free Account. Discussion. I wondered how bad the new Gemini usage limits really are, so ...\
+  Reddit·r/GeminiAI
+- [link](https://ai.google.dev/gemini-api/docs/pricing?gl=us)\
+  Gemini Developer API pricing\
+  Jun 24, 2026 — Table\_title: Gemini 3.5 Flash Table\_content: | | Free Tier | Paid Tier, per 1M tokens in USD | | --- | --- | --- | | Input price |\
+  Google AI for Developers
+- [link](https://www.revolgy.com/insights/blog/gemini-plans-change-with-new-usage-limits-across-tiers)\
+  Gemini plans change with new usage limits across tiers\
+  Sep 15, 2025 — Google has restructured Gemini AI with defined usage limits across free, Pro, and Ultra plans. Each tier has different daily and m...\
+  Revolgy
+
+Show all
+
+## only 30 prompts per day?
+
+<mark><strong>No, you can actually type significantly more than 30 prompts per day</strong><span> </span>if you stick to the standard model</mark>. The confusion comes from Google's complex, multi-model structure for the consumer app:
+
+### 1. The "Fast" Model (Gemini Flash)
+
+This is your baseline chatbot. For standard, quick questions, **you have "General Access" with no hard daily prompt count**. You can easily send 100+ simple messages a day. [link](https://www.reddit.com/r/GeminiAI/comments/1thkj1v/the%5Fnew%5Flimits%5Fare%5Fan%5Fabsolute%5Fscam/)
+
+### 2. The "Thinking" & "Pro" Models (Where the limits hide)
+
+The moment you ask Gemini to do complex programming, analyze an entire PDF, or turn on the "Thinking" mode, it switches to heavier processing. [link](https://www.youtube.com/watch?v=MWgYzT5V0pc)
+
+- **The "Handful" Limit:** Google restricts free users to a very small pool (roughly 5 to 30 prompts per day) for these advanced models.
+- **The Compute Catch:** Google does not just count the number of times you hit enter. They measure **"Compute Weight"**. [link](https://support.google.com/gemini/answer/16275805?hl=en\&gl=us)
+
+### How "Compute Weight" Trashes Your Limit
+
+According to the official [Gemini App Limits Policy](https://support.google.com/gemini/answer/16275805?hl=en\&gl=us), usage limits are dynamically calculated based on:
+
+1. **Prompt Complexity:** Writing a script takes more server power than asking for a recipe.
+2. **Chat Length:** Gemini re-reads your entire conversation history every time you reply. A chat that is 20 messages deep burns your allowance drastically faster than starting a fresh chat.
+3. **File Attachments:** Uploading a large document or image spikes your compute usage instantly.
+
+Once your invisible compute bucket hits 100%, Google locks you out of the advanced tools on a **rolling 5-hour window**. [link](https://support.google.com/gemini/answer/16275805?hl=en\&gl=us)
+
+### How to Bypass the Squeeze
+
+- **Keep chats short:** Do not let a single chat thread run forever. Click "New Chat" frequently to stop Gemini from re-reading a massive backlog of text.
+- **Watch your Settings:** Click the gear icon in the Gemini web app to view your live **"Usage Limits"** meter to see exactly how close you are to a lockout. [link](https://www.youtube.com/watch?v=MWgYzT5V0pc)
+
+If you are running into roadblocks, let me know what kinds of tasks you are throwing at it (like coding or long reading). I can show you how to structure your prompts so they consume less compute juice.
+
+- [link](https://www.reddit.com/r/GeminiAI/comments/1thkj1v/the%5Fnew%5Flimits%5Fare%5Fan%5Fabsolute%5Fscam/)\
+  The new limits are an absolute scam : r/GeminiAI - Reddit\
+  May 20, 2026 — The new limits are an absolute scam. Discussion. r/GeminiAI - The new limits are an absolute scam. One single prompt with Pro subs...\
+  Reddit·r/GeminiAI
+- [link](https://support.google.com/gemini/answer/16275805?hl=en\&gl=us)\
+  Gemini Apps limits & upgrades for Google AI subscribers\
+  Starting on May 17, 2026 there will be changes to usage limits for Gemini Apps. Learn more about these changes. Gemini Apps have c...\
+  Google Help
+- [link](https://www.youtube.com/watch?v=MWgYzT5V0pc)\
+  Gemini Usage Limits Explained : Never Run Out Again\
+  May 24, 2026 — have you ever received this message from Gemini telling you that you've hit your usage limits even though you only sent a few mess...\
+  16:16\
+  YouTube·Paul J Lipsky
+
+Show all
+
+## how much is gemini free tier usage limit on flash
+
+The free tier usage limit for the standard **Gemini Flash** model is capped at <mark><strong>10 requests per minute (RPM)</strong>,<span> </span><strong>250,000 tokens per minute (TPM)</strong>, and<span> </span><strong>250 requests per day (RPD)</strong></mark>. [link](https://www.youtube.com/watch?v=prrb0hsfI60)
+
+Because Google changed its API policies to limit free-tier access exclusively to the Flash and Flash-Lite model families, these are the exact limits applied per project: [link](https://usagebox.com/articles/gemini-api-billing-free-tier-confusion)
+
+### 💻 Developer API & AI Studio Limits
+
+If you are using a free API key inside Google AI Studio, the limits for the Flash variants break down as follows: [link](https://ai.google.dev/gemini-api/docs/rate-limits?gl=us)
+
+- **Gemini Flash**:
+  - **10 Requests** Per Minute (RPM)
+  - **250,000 Tokens** Per Minute (TPM)
+  - **250 Requests** Per Day (RPD) [link](https://geminicli.com/docs/resources/quota-and-pricing/)
+- **Gemini Flash-Lite** (Lighter, faster variant):
+  - **15 Requests** Per Minute (RPM)
+  - **1,000 to 1,500 Requests** Per Day (RPD) [link](https://www.reddit.com/r/GeminiAI/comments/1pg4et5/google%5Freduces%5Fapi%5Frate%5Flimits%5Ffor%5Ffree%5Ftier/)
+- **Context Window**: You still get access to the full **1-million token context window** even on the free tier. [link](https://yingtu.ai/en/blog/gemini-api-rate-limits-explained)
+
+### 🌐 Consumer Web App (`://google.com`)
+
+If you are using the consumer-facing chat interface instead of the API, Google does not enforce a rigid "request per day" number for standard Flash. Instead, it uses **dynamic compute-capacity throttling**: [link](https://www.reddit.com/r/GeminiAI/comments/1tiklmr/i%5Ftested%5Fthe%5Fnew%5Fgemini%5Fusage%5Flimits%5Fon%5Fa%5Ffree/)
+
+- You have general access to Flash for basic, short queries throughout the day.
+- If you paste massive documents, ask for heavy code-generation tasks, or let a single chat window grow excessively long, your "compute usage" spikes.
+- Once your compute threshold is maxed out, Google will temporarily downgrade you or lock you out on a **rolling 5-hour window**. [link](https://www.reddit.com/r/GeminiAI/comments/1tiklmr/i%5Ftested%5Fthe%5Fnew%5Fgemini%5Fusage%5Flimits%5Fon%5Fa%5Ffree/)
+
+If you are building an application, I can help you calculate how much traffic your app can sustain under a **250 daily request cap**. Would you like to map out a rate-limiting strategy? [link](https://pecollective.com/tools/gemini-free-tier-guide/)
+
+- [link](https://ai.google.dev/gemini-api/docs/rate-limits?gl=us)\
+  Rate limits | Gemini API - Google AI for Developers\
+  Jun 25, 2026 — Gemini 3 Pro Image Preview 🍌 1,000,000,000. Embedding models. Gemini Embedding. 10,000,000. How to upgrade to the next tier. To t...\
+  Google AI for Developers
+- [link](https://www.reddit.com/r/GeminiAI/comments/1tiklmr/i%5Ftested%5Fthe%5Fnew%5Fgemini%5Fusage%5Flimits%5Fon%5Fa%5Ffree/)\
+  I Tested the New Gemini Usage Limits on a Free Account\
+  May 21, 2026 — I Tested the New Gemini Usage Limits on a Free Account. Discussion. I wondered how bad the new Gemini usage limits really are, so ...\
+  Reddit·r/GeminiAI
+- [link](https://geminicli.com/docs/resources/quota-and-pricing/)\
+  Gemini CLI: Quotas and pricing\
+  Jun 18, 2026 — Table\_title: Overview Table\_content: | Authentication method | Tier / Subscription | Maximum requests per user per day | | --- | -\
+  Gemini CLI
+
+Show all
+
+# 
 
