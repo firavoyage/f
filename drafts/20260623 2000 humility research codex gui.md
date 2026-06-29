@@ -1879,3 +1879,314 @@ make[2]: Leaving directory '/home/fira/Projects/codex-desktop-linux'
 make[1]: Leaving directory '/home/fira/Projects/codex-desktop-linux'
 ```
 
+
+# <!-- 29 jun 2026 -->
+
+# codex database issue
+
+4:37 AM
+
+To fix the **"Codex cannot access its local database"** or high disk activity issue, you need to <mark><strong>update the app to the latest version or clear the corrupted local SQLite files</strong></mark>. A widespread bug in OpenAI's Codex local database (`logs_2.sqlite` and `state_5.sqlite`) causes massive write spikes, startup crashes, and checksum migration mismatches. [link](https://github.com/openai/codex/issues/23824)
+
+Follow these steps based on the exact issue you are facing:
+
+### Fix 1: App Fails to Launch ("Cannot Access Local Database")
+
+This error usually happens after an auto-update or when using WSL integration because of database checksum mismatches. [link](https://github.com/openai/codex/issues/24030)
+
+1. Close Codex completely.
+2. Navigate to your local Codex directory:
+
+- **Windows**: `C:\Users\<YourUsername>\.codex\`
+- **macOS/Linux**: `~/.codex/`
+
+3. Find the `state_5.sqlite` and `logs_2.sqlite` files.
+4. Rename them to `state_5.sqlite.bak` and `logs_2.sqlite.bak`.
+5. Relaunch Codex. The app will automatically rebuild a healthy database. [link](https://github.com/openai/codex/issues/24006)
+
+### Fix 2: Extreme SSD Usage & Performance Lag (640 TB/Year Bug)
+
+A notorious logging bug dumps heavy TRACE details into your drive, ballooning the `logs_2.sqlite` file to gigabytes and thrashing your hardware. [link](https://www.reddit.com/r/OpenAI/comments/1ucf4px/openai%5Fcodex%5Fhas%5Fa%5Fbug%5Fthat%5Fcould%5Fkill%5Fyour%5Fssd/)
+
+1. **Update Codex**: OpenAI released patches that eliminate roughly 85% of this logging overhead. Check the app settings and force an update.
+
+2. **Delete the bloated log**: Go to your `~/.codex/` folder and delete `logs_2.sqlite`. Codex will recreate a clean, drastically smaller file (often dropping from GBs to just a few MBs).
+
+3. **RAM Redirect Workaround (Linux/macOS)**: If you cannot update yet, open your terminal and run the following command to point the database writes to your RAM instead of your physical disk:\
+   bash
+
+<!---->
+
+```
+ln -s /tmp/logs_2.sqlite ~/.codex/logs_2.sqlite
+```
+
+Use code with caution.\
+[link](https://github.com/openai/codex/issues/24030)
+
+### Fix 3: "Database is Locked" Error in WSL Mode
+
+If you are running Codex Desktop on Windows with the runtime set to WSL, a locking conflict often triggers a crash. [link](https://github.com/openai/codex/issues/23927)
+
+1. Open the OpenAI Codex repository to check the open issues for community tools like the third-party **Codex Repair Toolkit**.
+2. If the tool is unavailable, temporarily **disable WSL mode** in your Codex Desktop settings and switch back to **PowerShell** to restore access. [link](https://github.com/openai/codex/issues/28666)
+
+If you are experiencing a different type of error, please let me know:
+
+- What is the **exact error message** or modal showing up?
+
+- What **Operating System** (Windows, macOS, or WSL) are you running?
+
+- Did this start happening immediately after an **app update**? [link](https://github.com/openai/codex/issues/23780)
+
+- [link](https://github.com/openai/codex/issues/24006)\
+  Codex cannot access its local database. · Issue #24006 - GitHub\
+  Find all . sqlite files under any . codex directory. Rename those . sqlite files to keep them as backups, for example: file.sqlite...\
+  GitHub
+
+- [link](https://github.com/openai/codex/issues/24030)\
+  Codex App fails to launch after update on macOS: state ... - GitHub\
+  What steps can reproduce the bug? \* Use the Codex App on macOS normally for some time (regular use over several weeks; sqlite file...\
+  GitHub
+
+- [link](https://github.com/openai/codex/issues/23824)\
+  Codex Desktop fails to start with \`migration 1 was previously applied ...\
+  Description \* What version of the Codex App are you using (From “About Codex” dialog)? 26.520.11634. \* What subscription do you ha...\
+  GitHub
+
+Show all
+
+# codex log bloat issue
+
+4:37 AM
+
+The **OpenAI Codex log bloat issue** is <mark>a critical software bug where the Codex Desktop application and CLI silently flood host storage with massive amounts of data</mark>. The core of the problem lies in Codex's internal application server, which defaults to an incredibly noisy **`TRACE` logging level** that bypasses standard user configuration flags (like `RUST_LOG`). In extreme scenarios, users have documented Codex writing **up to 37 TB of data over 21 days**, equating to an annualized write rate of nearly **640 TB/year**. Because a standard 1 TB consumer solid-state drive (SSD) is usually rated for a lifetime of 600 Terabytes Written (TBW), leaving Codex running in the background can **completely exhaust your SSD's operational lifespan in under a year**. [link](https://www.reddit.com/r/OpenAI/comments/1ucf4px/openai%5Fcodex%5Fhas%5Fa%5Fbug%5Fthat%5Fcould%5Fkill%5Fyour%5Fssd/)
+
+### Why the Logs Bloat So Quickly
+
+- **The Noisy DB:** Codex channels background operations, WebSocket payloads, and Server-Sent Events (SSE) directly into a local SQLite file named **`~/.codex/logs_2.sqlite`**.
+- **Write Amplification:** The tool executes tens of thousands of simultaneous insert and delete operations per minute. Even if the physical file size stays relatively low, the relentless background disk churn hammers the SSD hardware.
+- **Uncompacted WAL Files:** The companion Write-Ahead Log (**`logs_2.sqlite-wal`**) often blooms uncontrollably into tens of gigabytes. This happens because long-lived Codex sessions keep open read-transactions, completely blocking SQLite from checkpointing or clearing out old log space.
+- **Memory and UI Freezes:** This data storm causes the Codex app-server and Electron renderers to spike CPU usage, leaking gigabytes of memory and rendering active project threads completely sluggish. [link](https://www.reddit.com/r/OpenAI/comments/1ucf4px/openai%5Fcodex%5Fhas%5Fa%5Fbug%5Fthat%5Fcould%5Fkill%5Fyour%5Fssd/)
+
+***
+
+### Step-by-Step Workarounds to Protect Your SSD
+
+Because this remains an active issue on the official [OpenAI Codex GitHub Repository](https://github.com/openai/codex/issues/21134), developers have created highly effective local mitigation strategies: [link](https://www.reddit.com/r/OpenAI/comments/1ucf4px/openai%5Fcodex%5Fhas%5Fa%5Fbug%5Fthat%5Fcould%5Fkill%5Fyour%5Fssd/)
+
+### Option 1: Redirect Logs to RAM (Linux & macOS)
+
+The safest approach is to prevent Codex from writing these temporary `TRACE` logs to your physical drive by symlinking the database to your system's volatile memory (`/tmp`). Since these files contain telemetry rather than your prompt history, losing them on reboot is perfectly harmless. [link](https://www.reddit.com/r/OpenAI/comments/1ucf4px/openai%5Fcodex%5Fhas%5Fa%5Fbug%5Fthat%5Fcould%5Fkill%5Fyour%5Fssd/)
+
+1. Completely quit the Codex Desktop application.
+
+2. Open your terminal and purge the bloated log files:\
+   bash
+
+<!---->
+
+```
+rm -f ~/.codex/logs_2.sqlite ~/.codex/logs_2.sqlite-wal ~/.codex/logs_2.sqlite-shm
+```
+
+Use code with caution.
+3\. Link the target log database directly to your temporary RAM drive:\
+bash
+
+```
+ln -s /tmp/logs_2.sqlite ~/.codex/logs_2.sqlite
+```
+
+Use code with caution.\
+[link](https://github.com/openai/codex/issues/29589)
+
+### Option 2: Deploy a SQLite Blackhole Trigger (Windows, Linux, macOS)
+
+If you are on Windows or prefer not to use symlinks, you can write an internal database rule (a trigger) that instantly intercepts and drops incoming `TRACE` rows before they hit the disk.
+
+1. Ensure Codex is entirely closed.
+
+2. Open the database using your command-line SQLite client:\
+   bash
+
+<!---->
+
+```
+sqlite3 ~/.codex/logs_2.sqlite
+```
+
+Use code with caution.
+3\. Inject an `BEFORE INSERT` trigger to discard the incoming `TRACE` telemetry:\
+sql
+
+```
+CREATE TRIGGER IF NOT EXISTS blackhole_trace
+BEFORE INSERT ON logs
+WHEN NEW.level = 'TRACE'
+BEGIN
+    SELECT RAISE(IGNORE);
+END;
+```
+
+Use code with caution.
+4\. Clear out the lingering write-ahead log data and exit:\
+sql
+
+```
+PRAGMA wal_checkpoint(TRUNCATE);
+.exit
+```
+
+Use code with caution.\
+[link](https://github.com/openai/codex/issues/29589)
+
+### Option 3: Clean Large Context Stalls
+
+If your machine is suffering from severe UI lag rather than just raw disk writes, the agent is likely getting trapped in a context processing loop. [link](https://github.com/openai/codex/issues/28345)
+
+- **Prune Project Files**: Turn off heavy, unused background plugins (like Chrome, Outlook, or complex Model Context Protocol integrations) inside your configurations.
+- **Rotate Chat Windows**: Once an active thread passes **100 turns**, manually start a fresh session window. This drops the massive accumulated background tool outputs and intermediate agent calculations that trigger the app-server logging loops. [link](https://github.com/openai/codex/issues/25779)
+
+If you would like, I can help you write an **automated bash or PowerShell script** to wipe these logs automatically on startup, or help you check your **current log file sizes** using terminal commands. Turn to whichever option fits your current environment!
+
+- [link](https://www.reddit.com/r/OpenAI/comments/1ucf4px/openai%5Fcodex%5Fhas%5Fa%5Fbug%5Fthat%5Fcould%5Fkill%5Fyour%5Fssd/)\
+  OpenAI Codex has a bug that could kill your SSD in under a ...\
+  OpenAI's Codex CLI has a logging bug that's quietly thrashing SSDs . A debug logging sink writes to a local SQLite database ( ~/.c...\
+  Reddit
+- [link](https://github.com/openai/codex/issues/25779)\
+  Codex Desktop meta-bug: unbounded session/turn state causes ...\
+  Reported sizes include 506.8 MB , 786.7 MB , 963.5 MB , 1050 MB , and 1601 MB . Related comments report an 825 MB rollout producin...\
+  GitHub
+- [link](https://community.openai.com/t/codex-ui-extremly-slow-freezing-for-minutes-at-a-time/1381784/4)\
+  Codex UI extremly slow, freezing for minutes at a time - #4 by Rotto\
+  I don't think this is related to hardware or the operating system. There seems to be only one possible explanation: when the conte...\
+  OpenAI Developer Community
+
+Show all
+
+## what does it write there
+
+5:07 AM
+
+The data flood inside **`~/.codex/logs_2.sqlite`** is not caused by your personal source code or prompts. Instead, it is packed with **low-level, high-frequency infrastructure telemetry** and [raw protocol network data](https://github.com/openai/codex/issues/28224).
+
+Because Codex's internal database sink is stuck at a global `TRACE` logging level, it writes everything the app does, thinks, or communicates in absolute, granular detail. The logged data typically consists of four main categories: [link](https://github.com/openai/codex/issues/28224)
+
+### 1. Raw Network Framing & Payloads
+
+Every single character sent or received by the app is logged verbatim. [link](https://medium.com/coding-nexus/is-codex-cli-secretly-killing-your-ssd-the-sqlite-logging-bug-that-could-write-640tb-every-year-52b8ddb877e2)
+
+- **WebSocket Streams:** Every WebSocket frame managing real-time states between your desktop client and the backend server.
+- **Server-Sent Events (SSE):** The raw text chunks streamed back during code generation or agent reasoning cycles. If a response contains a massive context window or base64 images, Codex [writes the entire raw payload directly to disk](https://github.com/openai/codex/issues/21134).
+
+### 2. OpenTelemetry & Microservice Tracing
+
+Codex tracks its internal distributed microservices using massive OpenTelemetry SDK mirror events. [link](https://www.reddit.com/r/codex/comments/1ucnaim/top%5Fon%5Fhacker%5Fnews%5Ftoday%5Fcodex%5Fdropped%5F37%5Ftb%5Fof/)
+
+- Every time a tool is invoked, an agent takes a turn, or a function behaves in a certain way, a diagnostic timestamp and execution span are created.
+- It logs deep asynchronous execution metadata, tracking the behavior of rust-based runtime tasks managed by frameworks like Tokio. [link](https://medium.com/coding-nexus/is-codex-cli-secretly-killing-your-ssd-the-sqlite-logging-bug-that-could-write-640tb-every-year-52b8ddb877e2)
+
+### 3. High-Frequency Dependency "Noise"
+
+A significant portion of the write amplification comes from underlying network libraries talking to themselves. The logs are cluttered with continuous internal events from: [link](https://github.com/openai/codex/issues/28224)
+
+- **Network utilities** (`hyper_util`, `tokio-tungstenite`) tracking raw TCP handshake details and socket health.
+- **File watchers** (`inotify`) continuously pinging the system to check if project files have changed, firing off thousands of log rows a minute. [link](https://github.com/openai/codex/issues/28224)
+
+### 4. Background History & Failed Compaction State
+
+When you run a long-lived project, Codex periodically tries to compress your thread history via background API commands. [link](https://github.com/openai/codex/issues/24544)
+
+- If these history compactions fail (often throwing network timeout errors), Codex enters an [aggressive retry-and-fail loop](https://github.com/openai/codex/issues/24544).
+- It continuously logs hundreds of thousands of rows containing [entire turn history metrics](https://github.com/openai/codex/issues/25779), token calculations, and error tracebacks over and over again. [link](https://github.com/openai/codex/issues/25779)
+
+Ultimately, roughly **71% of this data is completely useless diagnostic noise** that provides no value to the user. This is why purging or blocking the database table entirely using a SQL trigger does not disrupt your actual saved coding projects or history. [link](https://www.reddit.com/r/OpenAI/comments/1ucf4px/openai%5Fcodex%5Fhas%5Fa%5Fbug%5Fthat%5Fcould%5Fkill%5Fyour%5Fssd/)
+
+Would you like to know how to **query the database yourself** using your terminal to see exactly what rows are chewing up your specific disk space?
+
+- [link](https://www.reddit.com/r/OpenAI/comments/1ucf4px/openai%5Fcodex%5Fhas%5Fa%5Fbug%5Fthat%5Fcould%5Fkill%5Fyour%5Fssd/)\
+  OpenAI Codex has a bug that could kill your SSD in under a ...\
+  Since a typical 1 TB consumer SSD is rated for ~600 TBW lifetime, leaving Codex running could chew through your drive's entire war...\
+  Reddit
+- [link](https://github.com/openai/codex/issues/28224)\
+  Codex SQLite feedback logs can write ~640 TB/year ... - GitHub\
+  About 36,211 rows were inserted in 15 seconds, while retained row count stayed flat. This suggests continuous insert-and-prune wri...\
+  GitHub
+- [link](https://github.com/openai/codex/issues/29674)\
+  Excessive TRACE logging causes logs\_2.sqlite/WAL growth ...\
+  Please consider a product-level fix so users do not need to patch the SQLite database manually: \* Do not persist TRACE logs by def...\
+  GitHub
+
+Show all
+
+## example
+
+10:15 PM
+
+Here are realistic structural examples of what those noisy `TRACE` rows actually look like inside the `logs` table of **`~/.codex/logs_2.sqlite`**.
+
+If you query the database using `SELECT * FROM logs ORDER BY timestamp DESC LIMIT 3;`, you will see entries structured exactly like this:
+
+### 1. The Network Payload Bloat (WebSocket/SSE)
+
+This log fires for **every single byte cluster** streamed down from the server. If an agent is outputting a massive response, it dumps the raw text chunk directly into the database.
+
+| Column          | Value                                                                                                                                                                                                                                     |
+| --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`timestamp`** | `2026-06-28T22:15:02.194827Z`                                                                                                                                                                                                             |
+| **`level`**     | `TRACE`                                                                                                                                                                                                                                   |
+| **`target`**    | `codex_app::server::ws::incoming`                                                                                                                                                                                                         |
+| **`message`**   | `Received raw WebSocket binary frame. Length: 4096 bytes.`                                                                                                                                                                                |
+| **`payload`**   | `{"event":"agent_stream_chunk","data":{"chunk_id":"ch_92k","content":"import os\nimport sys\nfrom datetime import datetime\n\ndef init_logger():\n # ... [repeats entire file context or code history chunk here] ..."},"seq_num":10485}` |
+
+***
+
+### 2. The OpenTelemetry Engine "Noise"
+
+This records internal micro-decisions. Every time Codex calculates token count, initializes an internal plugin, or moves an asynchronous code task to a new thread, it drops a line.
+
+| Column          | Value                                                                                                                                                                                                                      |
+| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`timestamp`** | `2026-06-28T22:15:02.195104Z`                                                                                                                                                                                              |
+| **`level`**     | `TRACE`                                                                                                                                                                                                                    |
+| **`target`**    | `opentelemetry::sdk::trace::span`                                                                                                                                                                                          |
+| **`message`**   | `Exporting diagnostic span data to local state buffer.`                                                                                                                                                                    |
+| **`payload`**   | `{"span_name":"tokio::task::spawn::codex_agent_eval","trace_id":"4f2a9c8b7e6d1f0a","parent_span_id":"0f1e2d3c4b5a6978","attributes":{"service.name":"codex-desktop-backend","thread.id":14,"runtime.execution_ms":1.042}}` |
+
+***
+
+### 3. The Failed Background Compaction Loop
+
+This occurs when Codex runs into a network bottleneck. If it fails to sync your active workspace history to the cloud, it loops relentlessly—writing thousands of error frames per minute.
+
+| Column          | Value                                                                                                                                                                                                   |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`timestamp`** | `2026-06-28T22:15:02.196331Z`                                                                                                                                                                           |
+| **`level`**     | `TRACE`                                                                                                                                                                                                 |
+| **`target`**    | `codex_app::agent::history::compact`                                                                                                                                                                    |
+| **`message`**   | `Remote session compaction payload generated. Remote server dropped connection, retrying task immediately.`                                                                                             |
+| **`payload`**   | `{"session_id":"sess_abc123xyz","turn_count":104,"error":"HyperError(ConnectTimeout)","metadata":{"total_tokens_evaluated":128442,"stalled_buffers":["file_watcher_cache","terminal_history_mirror"]}}` |
+
+***
+
+### How to Check Your Own Logs Live
+
+If you want to view these raw events streaming onto your machine in real-time, open your command terminal and execute:
+
+bash
+
+```
+# For Linux or macOS:
+sqlite3 ~/.codex/logs_2.sqlite "SELECT timestamp, level, target, message FROM logs ORDER BY timestamp DESC LIMIT 5;"
+
+# To watch them populate actively:
+watch -n 1 'sqlite3 ~/.codex/logs_2.sqlite "SELECT COUNT(*) FROM logs;"'
+```
+
+Use code with caution.
+
+If you notice that count metric surging by hundreds of rows every few seconds, your system is actively suffering from the write-amplification bug.
+
+Would you like me to help you **set up the SQL blackhole trigger** to instantly wipe out these specific `TRACE` rows?
+
