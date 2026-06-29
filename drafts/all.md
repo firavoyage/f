@@ -754,6 +754,7 @@ humility:
 - research agent use cases
 - research design polish vibe coding <!-- d? -->
 - research zed agent
+- research llms free tier limit
 
 legacy:
 
