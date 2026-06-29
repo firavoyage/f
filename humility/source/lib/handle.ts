@@ -1,26 +1,9 @@
-// export function handle(fn) {
-//   try {
-//     const result = fn()
-//     if (result instanceof Promise || typeof result?.then == 'function') {
-//       return (result as Promise<Result<any>>)
-//         // async ok
-//         .then((data) => data)
-//         // async err
-//         .catch((e) => err(e));
-//     }
-
-//     return result
-//   } catch (e) {
-//     return err(e)
-//   }
-// }
-
 export function handle<F extends (...args: any[]) => any>(fn: F): Result<ReturnType<F>> {
   try {
     const result = fn();
 
     if (result instanceof Promise || typeof result?.then == 'function') {
-      return (result as Promise<Result<any>>)
+      return (result as Promise<Result<ReturnType<F>>>)
         // async ok
         .then((data) => data)
         // async err
@@ -29,7 +12,7 @@ export function handle<F extends (...args: any[]) => any>(fn: F): Result<ReturnT
 
     // sync ok
     return result;
-  } catch (error) {
-    return err(error);
+  } catch (e) {
+    return err(e);
   }
 }
