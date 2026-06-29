@@ -43140,6 +43140,12 @@ another is a point on the roadmap
 
 <!-- "dream" carries negative meaning, i would definitely not use it. imagine might be accurate, but it feels a bit boring compared w wish, and i could not always tell the difference, if i decide to adopt both for some reason. -->
 
+18 00 watch `South Africa v Canada | Round of 32 | FIFA World Cup 2026™ | Highlights` <!-- reminded by google doodles. -->
+
+it's on! 
+
+<!-- well, a bit weird. 144p opening screen, 1080p match. -->
+
 
 
 <!-- timebox, plan. -->
