@@ -8,11 +8,7 @@ error_with_trace[Symbol('a symbol')] = true
 
 log(error_with_trace)
 
-log(merge(error_with_trace, {
-  type: 'error',
-  message: 'error',
-  ['foo']: true
-}))
+log(merge(error_with_trace, {}))
 
 log(merge(error_with_trace, {
   type: 'error',

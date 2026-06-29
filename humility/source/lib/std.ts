@@ -22,8 +22,8 @@ export function merge(target: object, ...sources: object[]) {
       target[key] = source[key]
     }
   }
-  // return target
-  return Object.assign({}, ...sources)
+  return target
+  // return Object.assign({}, ...sources)
 }
 
 export function has<K extends PropertyKey>(obj: any, key: K): obj is Record<K, unknown> {
