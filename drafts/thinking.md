@@ -174,7 +174,8 @@ providers
 ```yaml
 mock:
   # type: fn (you should export default? y. no. export request. default is not any concise, and by naming explicitly you have extensibility and future proof at no cost.)
-  file: somewhere
+  is_module: true
+  file: somewhere.ts # await import 
 local:
   url: some url, like localhost
   key: no need to have key # or omit the line at all

@@ -144,6 +144,370 @@ Would you like to see how to load a **JSON configuration** natively, or do you n
 
 Show all
 
+# nodejs yaml or jsyaml
+
+4:33 AM
+
+When deciding between the `yaml` and `js-yaml` packages for <mark>Node.js,<span> </span><strong><code dir="ltr">yaml</code><span> </span>is the best choice for modern applications</strong><span> </span>because it offers comprehensive YAML 1.2 support, preserves comments, and has full TypeScript integration out of the box</mark>. While `js-yaml` remains a very fast, reliable, and historically popular option, it is best reserved for legacy codebases or simple workloads where raw reading speed is the single most critical factor. [link](https://github.com/nodeca/js-yaml)
+
+### Direct Comparison
+
+| Feature                | `yaml` (recommended)                                       | `js-yaml`                                              |
+| ---------------------- | ---------------------------------------------------------- | ------------------------------------------------------ |
+| **Primary Use Case**   | Reading, editing, and writing modern YAML structures.      | Quick, read-heavy data parsing and dumping.            |
+| **Comments & Layout**  | Preserves comments, spacing, and blank lines.              | Strips comments entirely when parsing or stringifying. |
+| **TypeScript Support** | Native, built-in types included.                           | Requires third-party `@types/js-yaml`.                 |
+| **Performance**        | Slower read speeds, but significantly faster write speeds. | Blazing fast read speeds, but slower write speeds.     |
+| **YAML Specification** | Full YAML 1.1 and 1.2 compliance.                          | Comprehensive YAML 1.2 compliance.                     |
+
+***
+
+### Deep Dive: `yaml`
+
+- **Comment Preservation:** Unlike most parsers, it loads documents into an Abstract Syntax Tree (AST), allowing you to safely read, modify, and rewrite a configuration file while keeping user comments exactly where they were.
+- **Modern Development:** It has zero external dependencies, features native TypeScript definitions, and provides deep APIs for advanced AST manipulation.
+- **When to use:** Use this for configuration managers, CLI tools that modify user files, or any modern TypeScript project. [link](https://www.npmjs.com/package/yaml)
+
+### Deep Dive: `js-yaml`
+
+- **Raw Performance:** If you need to read massive YAML files quickly into plain JavaScript objects, `js-yaml` is highly optimized for performance.
+- **Simplified API:** It focuses on straightforward `load()` and `dump()` methods that work securely by default without unexpected script execution issues.
+- **When to use:** Use this if you are working inside an established legacy ecosystem, or if you only need a quick data parser where file comments do not matter. [link](https://www.npmjs.com/package/js-yaml)
+
+***
+
+### Code Examples
+
+### 1. Using `yaml` (The modern way)
+
+javascript
+
+```
+import YAML from 'yaml';
+import fs from 'fs';
+
+// Parsing data
+const file = fs.readFileSync('./config.yml', 'utf8');
+const config = YAML.parse(file);
+
+// Stringifying data
+const yamlString = YAML.stringify({ name: 'NodeApp', version: 1.0 });
+fs.writeFileSync('./config.yml', yamlString);
+```
+
+Use code with caution.
+
+### 2. Using `js-yaml` (The legacy/fast-read way)
+
+javascript
+
+```
+import yaml from 'js-yaml';
+import fs from 'fs';
+
+// Parsing data
+const config = yaml.load(fs.readFileSync('./config.yml', 'utf8'));
+
+// Stringifying data
+const yamlString = yaml.dump({ name: 'NodeApp', version: 1.0 });
+fs.writeFileSync('./config.yml', yamlString);
+```
+
+Use code with caution.
+
+If you want to choose the right package for your architecture, tell me:
+
+- Are you writing a tool that needs to **update files without deleting user comments**?
+
+- Is this for a **TypeScript** or standard JavaScript project?
+
+- How large are the files you expect to **parse at runtime**?
+
+- [link](https://www.npmjs.com/package/js-yaml)\
+  js-yaml - NPM\
+  The default mapTag is {} -object based and does not allow complex keys (objects, arrays and so on). That's an intentional choice f...\
+  NPM
+
+- [link](https://github.com/nodeca/js-yaml)\
+  nodeca/js-yaml: JavaScript YAML parser and dumper. Very fast.\
+  JS-YAML - YAML 1.2 parser / writer for JavaScript. ... A fast and complete YAML parser and writer for JavaScript. Supports both th...\
+  GitHub
+
+- [link](https://www.reddit.com/r/node/comments/1dmpwcz/how%5Fto%5Favoid%5Fthird%5Fparty%5Flibraries%5Fasking%5Ffor/)\
+  How to avoid third party libraries asking for @types/js-yaml? - Reddit\
+  To me, it seems like js-yaml is a transitive dependency in your project, as one of your direct dependencies uses it for internal f...\
+  Reddit
+
+Show all
+
+## all methods of yaml
+
+4:33 AM
+
+The `yaml` package uses a modern architecture structured around **Top-Level Convenience Methods**, an **Abstract Syntax Tree (AST) Document API**, and **Node/Collection Methods**.
+
+Here is every method available in the library grouped by how you use them.
+
+***
+
+### 1. Top-Level Convenience Methods
+
+These methods are the most common entry points. They convert directly between raw strings and native JavaScript objects.
+
+- **`YAML.parse(str, options)`**: Parses a YAML string into a plain JavaScript object or array.
+- **`YAML.stringify(value, replacer, options)`**: Serializes a JavaScript object, array, or primitive into a valid YAML string.
+
+***
+
+### 2. Document Construction Methods
+
+These methods create or load a `YAML.Document` instance. This instance allows you to inspect metadata, manipulate comments, and work with the AST before generating a string.
+
+- **`YAML.parseDocument(str, options)`**: Parses a string into a single, editable `YAML.Document` instance.
+- **`YAML.parseAllDocuments(str, options)`**: Parses multi-document strings (separated by `---`) into an array of editable `YAML.Document` objects.
+- **`new YAML.Document(value, replacer, options)`**: Manually creates a brand new, empty, or pre-populated YAML Document object.
+
+***
+
+### 3. `YAML.Document` Instance Methods & Properties
+
+Once you have a `Document` instance (e.g., `doc`), you can use these methods to inspect or mutate it.
+
+- **`doc.toJS(options)`**: Converts the internal AST nodes into a plain, native JavaScript object.
+- **`doc.toString(options)`**: Serializes the document and its structural metadata (like comments) into a final YAML string.
+- **`doc.add(value)`**: Appends a new value to the root collection of the document.
+- **`doc.get(key, keepScalar)`**: Retrieves a value or node at the specified root key.
+- **`doc.getIn(path, keepScalar)`**: Traverses a path array (e.g., `['server', 'port']`) to find a deeply nested value or node.
+- **`doc.has(key)`**: Returns a boolean indicating if the root collection contains the specified key.
+- **`doc.hasIn(path)`**: Returns a boolean indicating if a deeply nested path exists.
+- **`doc.set(key, value)`**: Sets or replaces a value at the root level.
+- **`doc.setIn(path, value)`**: Sets, creates, or replaces a value at a deeply nested path.
+- **`doc.delete(key)`**: Removes a key and its value from the root level.
+- **`doc.deleteIn(path)`**: Removes a key and value at a deeply nested path.
+
+***
+
+### 4. Collection Node Methods (Maps and Sequences)
+
+When you fetch a node from a document that represents an object (Map) or an array (Sequence), it inherits these specific CRUD operations.
+
+- **`node.add(value)`**: Appends a value to the sequence or map.
+- **`node.get(key, keepScalar)`**: Resolves the value matching the key or index.
+- **`node.has(key)`**: Checks if the key or index exists in this collection.
+- **`node.set(key, value)`**: Sets the value for a given key or index.
+- **`node.delete(key)`**: Deletes the item at the specified key or index.
+
+***
+
+### 5. Visitor and Lifecycle Methods
+
+Advanced APIs used for deep file parsing, programmatic linting, or custom transforms.
+
+- **`YAML.visit(node, visitor)`**: Recursively traverses the entire AST starting from any node, applying a custom callback function to matched types.
+- **`YAML.isCollection(node)`**: Type-guard helper that returns true if the node is a Map or a Sequence.
+- **`YAML.isScalar(node)`**: Type-guard helper that returns true if the node is a primitive value (string, number, boolean, null).
+- **`YAML.isNode(node)`**: Type-guard helper that checks if an item is a valid AST Node.
+
+***
+
+To help you implement these effectively, let me know:
+
+- Do you need an example of **how to edit nested values while preserving comments**?
+
+- Are you dealing with **multi-document files** separated by `---`?
+
+- Do you need to implement **custom tags or data types**?
+
+- [link](https://github.com/kavon/yaml-ast)\
+  kavon/yaml-ast: visualize an AST serialized as YAML · GitHub\
+  yaml-ast Since the structure of YAML is whitespace-oriented, this tool allows you to visualize the structure of a YAML document as...\
+  \
+  \
+  GitHub
+
+- [link](https://www.redhat.com/en/blog/yaml-explained-for-rosa-users)\
+  YAML explained for Red Hat OpenShift Service on AWS (ROSA) users\
+  The language of Red Hat OpenShift, containers, Red Hat Ansible Automation Platform, and many more modern tools is YAML. Related to...\
+  \
+  Red Hat
+
+- [link](https://eemeli.org/yaml/)\
+  YAML – YAML\
+  YAML. stringify(value, replacer?, options = {}): string value can be of any type. The returned string will always include \n as th...\
+  \
+  \
+  eemeli.org
+
+Show all
+
+## yaml parse stringify params return
+
+4:34 AM
+
+Here is the exact API breakdown for `YAML.parse()` and `YAML.stringify()`, including every parameter and return value.
+
+***
+
+### 1. `YAML.parse(str, reviver, options)`
+
+Converts a raw YAML string into native JavaScript objects (objects, arrays, primitives).
+
+### Parameters
+
+- **`str`** _(String)_: Required. The valid YAML text you want to parse.
+- **`reviver`** _(Function)_: Optional. A custom transformer function `(key, value) => any` that runs on every property. It allows you to mutate values before they are returned.
+- **`options`** _(Object)_: Optional. Configures parsing behavior:
+  - **`intAsBigInt`**: _(Boolean)_ If `true`, large integers are parsed as JavaScript `BigInt` instead of numbers.
+  - **`keepBlobsInJS`**: _(Boolean)_ If `false`, binary `!!binary` types convert to `Uint8Array`.
+  - **`mapAsMap`**: _(Boolean)_ If `true`, YAML maps parse into native JavaScript `Map` objects instead of standard literal objects.
+  - **`merge`**: _(Boolean)_ If `true`, supports the YAML 1.1 `<<` merge key extension.
+  - **`schema`**: _(String)_ Specifies the YAML type schema ruleset (`'core'`, `'json'`, `'failsafe'`, or `'yaml-1.1'`).
+
+### Return Value
+
+- **`any`**: Returns a native JavaScript object, array, string, number, boolean, or null matching the contents of the parsed root node.
+
+***
+
+### 2. `YAML.stringify(value, replacer, options)`
+
+Converts JavaScript variables back into a formatted YAML string.
+
+### Parameters
+
+- **`value`** _(any)_: Required. The data object, array, or primitive you want to convert to YAML.
+- **`replacer`** _(Function or Array)_: Optional.
+  - If a **Function** `(key, value) => any`, it alters the stringification process property-by-property.
+  - If an **Array** of strings/numbers, it acts as a whitelist—only including keys matching those names.
+- **`options`** _(Object)_: Optional. Configures formatting and style outputs:
+  - **`blockQuote`**: _(String/Boolean)_ Controls literal (`|`) or folded (`>`) block styling options for multi-line text strings.
+  - **`defaultKeyType`** / **`defaultScalarType`**: _(String)_ Enforces specific quoting styles like `'PLAIN'`, `'QUOTE_SINGLE'`, or `'QUOTE_DOUBLE'`.
+  - **`indent`**: _(Number)_ The number of spaces to use for indentation. Default is `2`.
+  - **`indentSeq`**: _(Boolean)_ If `true`, prefixes sequence items (hyphens `-`) with an extra indent relative to their parent keys.
+  - **`lineWidth`**: _(Number)_ Maximum line length before auto-wrapping long strings. Set to `0` to disable wrapping.
+  - **`nullStr`**: _(String)_ What string to output for a `null` value (e.g., `~`, `null`, or empty `''`).
+
+### Return Value
+
+- **`String`**: Returns a fully formatted, valid YAML document string.
+
+***
+
+If you want to see these options in action, I can provide a code example showing how to **force double quotes on all strings** or how to use a **reviver function to format dates**. Which one would help more?
+
+- [link](https://eemeli.org/yaml/v1/)\
+  YAML – YAML\
+  YAML. parse(str, options = {}): any str should be a string with YAML formatting. See Options for more information on the second pa...\
+  \
+  \
+  eemeli.org
+- [link](https://mokapi.io/docs/javascript-api/mokapi-yaml/parse)\
+  parse( text ) - JavaScript API\
+  parse( text ) Parses a YAML string, constructing the JavaScript value or object described by the string.\
+  \
+  mokapi.io
+- [link](https://www.freecodecamp.org/news/json-stringify-method-explained/)\
+  JSON Object Examples: Stringify and Parse Methods Explained\
+  Parameters: reviver (Optional) The function will receive key and value as arguments. This function can be used to transform the re...\
+  \
+  \
+  freeCodeCamp
+
+Show all
+
+## possible errors of parse
+
+4:38 AM
+
+When using `YAML.parse()`, errors generally fall into two categories: **Syntax Errors** (malformed YAML structure) and **Runtime Errors** (engine limits or type handling).
+
+Because the `yaml` package is fully compliant with specifications, it throws highly descriptive error objects containing explicit line, column, and character positioning data.
+
+***
+
+### 1. Syntax & Structural Errors (Most Common)
+
+These errors occur when the string contains text that violates YAML formatting rules.
+
+- **`YAMLParseError: Block sequence entries are not allowed in this context`**
+  - _Cause:_ Mixing indentation styles or incorrectly nesting a dash (`-`) inside a map without proper line breaks or spacing.
+- **`YAMLParseError: Implicit map keys need to be on a single line`**
+  - _Cause:_ Missing a colon (`:`) or forgetting to quote a multi-line string that is being interpreted as an object key.
+- **`YAMLParseError: Map keys must be unique`**
+  - _Cause:_ Duplicating a key name within the exact same object level. The `yaml` library enforces uniqueness strictly by default.
+- **`YAMLParseError: Bad indentation of a mapping entry`**
+  - _Cause:_ Mixing tabs and spaces, or misaligning nested object keys. YAML strictly forbids tab characters for structural indentation.
+- **`YAMLParseError: Multi-line scalar cannot be open-ended`**
+  - _Cause:_ Using a literal block indicator (`|` or `>`) but forgetting to indent the multi-line text beneath it.
+
+***
+
+### 2. Reference & Specification Errors
+
+These errors occur when you use advanced YAML features incorrectly.
+
+- **`YAMLParseError: Aliases are not allowed to find undefined anchors`**
+  - _Cause:_ You used an alias (e.g., `*myAnchor`) before defining the anchor point (e.g., `&myAnchor`), or you misspelled the anchor name.
+- **`YAMLParseError: Tag <...> not resolved`**
+  - _Cause:_ The document uses a custom explicit data tag (e.g., `!!myCustomType`) that your parser configuration's `schema` option does not know how to handle.
+
+***
+
+### 3. JavaScript Runtime Errors
+
+These errors are thrown by the JavaScript V8 engine itself rather than the parser's internal syntax checker.
+
+- **`TypeError: The "string" argument must be of type string`**
+  - _Cause:_ Passing a `Buffer`, an Object, `undefined`, or `null` into `YAML.parse()`. It strictly demands a text string.
+- **`RangeError: Maximum call stack size exceeded`**
+  - _Cause:_ The YAML file contains circular references using anchors and aliases that create an infinite loop when evaluated into a plain JavaScript object.
+
+***
+
+### Handling Errors Safely
+
+To prevent your Node.js application from crashing when handling untrusted user input, wrap the parser in a standard `try/catch` block. You can inspect the error's `linePos` property to see exactly where it failed:
+
+javascript
+
+```
+import YAML from 'yaml';
+
+try {
+  const data = YAML.parse(untrustedYamlString);
+} catch (error) {
+  console.error(`Parsing failed: ${error.message}`);
+
+  // The 'yaml' library attaches explicit error coordinates
+  if (error.linePos) {
+    console.error(`Error located at Line: ${error.linePos[0].line}, Column: ${error.linePos[0].col}`);
+  }
+}
+```
+
+Use code with caution.
+
+Would you like an example of how to configure options to safely ignore **duplicate keys**, or do you need help debugging a **specific error message** you are seeing right now?
+
+- [link](https://learn.microsoft.com/en-us/azure/machine-learning/how-to-troubleshoot-validation-for-schema-failed-error?view=azureml-api-2)\
+  Troubleshoot Validation For Schema Failed Error - Azure Machine Learning\
+  Error - Cannot Parse The submitted YAML file can't be read, because either the syntax is wrong, formatting is wrong, or there are ...\
+  \
+  Microsoft Learn
+- [link](https://www.codecademy.com/resources/docs/sql/errors)\
+  SQL | SQL Errors\
+  Runtime errors happen during query execution and are often caused by issues like data type mismatches, division by zero operations...\
+  \
+  \
+  Codecademy
+- [link](https://ssojet.com/escaping/yaml-escaping-in-javascript-in-browser)\
+  YAML Escaping in JavaScript in Browser | Escaping Techniques in Programming\
+  YAML Escaping in JavaScript in Browser Handling YAML data in JavaScript within a browser environment can quickly become tricky whe...\
+  \
+  SSOJet
+
+Show all
+
 # array has item in js
 
 To check if an array contains an item in JavaScript, use the **`includes()`** method. [link](https://sentry.io/answers/how-do-i-check-if-an-array-includes-a-value-in-javascript/)
