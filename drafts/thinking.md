@@ -252,4 +252,10 @@ you should also add metadata about what it is (how to render it)
 
 all nodes can be referenced directly. you can copy its id.
 
+---
+
+i guess i would let request handle model routing. (get keys from yaml)
+
+openai just takes url, key, message. 
+
 
