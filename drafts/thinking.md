@@ -287,4 +287,8 @@ request will handle all the observability. like timing.
 
 i will simply throw when yaml fails to parse. network drop is expected. i will have custom errs. but they are also thrown.
 
+you have absolutely define a default model on config. but it's also basically ux. you will still pass both model and provider.
+
+i guess timestamp is enough. no timezone needed.
+
 
