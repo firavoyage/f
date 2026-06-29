@@ -5,9 +5,6 @@ const thread_list_key = 'thread.list'
 
 export async function list(): Promise<Result<id[]>> {
   const threads = await get(thread_list_key)
-  if (is_error(threads)) {
-    return threads
-  }
 
   return threads ? parse(threads) : []
 }

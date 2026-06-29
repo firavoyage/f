@@ -125,25 +125,25 @@ export async function write(path, content): Promise<Result<void>> {
   try {
     await dirname(path)
   } catch {
-    return err(invalid_input)
+    throw err(invalid_input)
   }
 
   try {
     await mkdir(dirname(path), { recursive: true })
   } catch (e) {
     if (has(map, e.code)) {
-      return err({ type: map[e.code], message: e })
+      throw err({ type: map[e.code], message: e })
     }
-    return err(other)
+    throw err(other)
   }
 
   try {
     await writeFile(path, content, 'utf8')
   } catch (e) {
     if (has(map, e.code)) {
-      return err({ type: map[e.code], message: e })
+      throw err({ type: map[e.code], message: e })
     }
-    return err(other)
+    throw err(other)
   }
 }
 
@@ -155,9 +155,9 @@ export async function read(path) {
     return await readFile(path, 'utf8')
   } catch (e) {
     if (has(map, e.code)) {
-      return err({ type: map[e.code], message: e })
+      throw err({ type: map[e.code], message: e })
     }
-    return err(other)
+    throw err(other)
   }
 }
 
@@ -166,9 +166,9 @@ export async function append(path, content) {
     await appendFile(path, content)
   } catch (e) {
     if (has(map, e.code)) {
-      return err({ type: map[e.code], message: e })
+      throw err({ type: map[e.code], message: e })
     }
-    return err(other)
+    throw err(other)
   }
 }
 
@@ -185,15 +185,15 @@ export async function edit(path, search, replace) {
    * replace or replace all
    */
 
-  const content = await read({ path })
+  const content = await read(path)
 
   if (typeof content != 'string') {
-    return err(non_string_content)
+    throw err(non_string_content)
   }
 
   const updated_content = content.replaceAll(search, replace)
 
-  return await write({ path, content: updated_content })
+  return await write(path, updated_content)
 }
 
 /**
@@ -216,9 +216,9 @@ export async function remove(path, { can_non_exist = false }: { can_non_exist?: 
       if (map[e.code] == not_found && can_non_exist) {
         return;
       }
-      return err({ type: map[e.code], message: e })
+      throw err({ type: map[e.code], message: e })
     }
-    return err(other)
+    throw err(other)
   }
 }
 
@@ -243,8 +243,8 @@ export async function trash(path, { can_non_exist = false }) {
       if (map[e.code] == not_found && can_non_exist) {
         return;
       }
-      return err({ type: map[e.code], message: e })
+      throw err({ type: map[e.code], message: e })
     }
-    return err(other)
+    throw err(other)
   }
 }

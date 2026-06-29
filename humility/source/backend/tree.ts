@@ -17,10 +17,7 @@ export async function init(tree: key) {
 }
 
 export async function append(tree: key, child: id) {
-  const tree_content = await get(tree, {must_exist: true}) as string
-  if (is_error(tree_content)) {
-    return tree_content
-  }
+  const tree_content = await get(tree, { must_exist: true }) as string
 
   const tree_array = parse(tree_content)
 
@@ -42,10 +39,6 @@ export async function append(tree: key, child: id) {
 export async function edit(tree: key, index: number, child: id) {
   const tree_content = await get(tree)
 
-  if (is_error(tree_content)) {
-    return tree_content
-  }
-
   const tree_array = parse(tree_content)
 
   const node = tree_array[index]
@@ -65,9 +58,7 @@ export async function rearrange(tree: key, index: number, new_children: id[], ne
 
   const tree_content = await get(tree)
 
-  if (is_error(tree_content)) {
-    return tree_content
-  }
+
 
   const tree_array = parse(tree_content)
 
@@ -79,7 +70,7 @@ export async function rearrange(tree: key, index: number, new_children: id[], ne
   if (!new_children.includes(node.focus)) {
     // err? yes. explicit > implicit
 
-    return err(no_focused_item)
+    throw err(no_focused_item)
   }
 
   // serialize and set back
@@ -97,9 +88,7 @@ export async function rearrange(tree: key, index: number, new_children: id[], ne
 export async function focus(tree: key, index: number, new_focus: number) {
   const tree_content = await get(tree)
 
-  if (is_error(tree_content)) {
-    return tree_content
-  }
+
 
   const tree_array = parse(tree_content)
 
@@ -109,7 +98,7 @@ export async function focus(tree: key, index: number, new_focus: number) {
   if (!node.children.includes(node.focus)) {
     // err? yes. explicit > implicit
 
-    return err(no_focused_item)
+    throw err(no_focused_item)
   }
 
   // serialize and set back
@@ -119,9 +108,7 @@ export async function focus(tree: key, index: number, new_focus: number) {
 export async function read(tree: key) {
   const tree_content = await get(tree)
 
-  if (is_error(tree_content)) {
-    return tree_content
-  }
+
 
   const tree_array = parse(tree_content)
 
