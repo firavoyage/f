@@ -124678,3 +124678,14 @@
 2026-06-30 00:31:15+08:00 code file.ts - f (Workspace) - Visual Studio Code
 2026-06-30 00:32:15+08:00 code file.ts - f (Workspace) - Visual Studio Code
 2026-06-30 00:33:15+08:00 code file.ts - f (Workspace) - Visual Studio Code
+2026-06-30 00:49:16+08:00 chromium fix type export function handle<F extends (...args: any[]) => any>(fn: F): Result<ReturnType<F>> { try { const result = fn(); if (result instanceof Promise || typeof result?.then == 'function') { return (result as Promise<Result<ReturnType<F>>>) // async ok .then((data) => data) // async err .catch((e) => err(e)); } // sync ok return result; } catch (e) { return err(e); } } - Google Search - Chromium
+2026-06-30 00:50:16+08:00 code handle.ts - f (Workspace) - Visual Studio Code
+2026-06-30 00:51:15+08:00 code handle.ts - f (Workspace) - Visual Studio Code
+2026-06-30 00:52:15+08:00 code handle.ts - f (Workspace) - Visual Studio Code
+2026-06-30 00:53:15+08:00 code handle overloaded.ts - f (Workspace) - Visual Studio Code
+2026-06-30 00:54:15+08:00 code handle overloaded.ts - f (Workspace) - Visual Studio Code
+2026-06-30 00:55:15+08:00 code handle overloaded.ts - f (Workspace) - Visual Studio Code
+2026-06-30 00:56:15+08:00 code handle overloaded.ts - f (Workspace) - Visual Studio Code
+2026-06-30 00:57:15+08:00 code global.ts - f (Workspace) - Visual Studio Code
+2026-06-30 00:58:15+08:00 code handle.ts - f (Workspace) - Visual Studio Code
+2026-06-30 00:59:15+08:00 code typescript.jsonc - f (Workspace) - Visual Studio Code
