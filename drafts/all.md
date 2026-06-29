@@ -755,7 +755,7 @@ humility:
 - research agent use cases
 - research design polish vibe coding <!-- d? -->
 - research zed agent
-- research llms free tier limit
+- research llms free tier limit subscription model cost price margin self hosting
 - research git two separate tracking folders init bare gitdir worktree <!-- for humility -->
 
 legacy:
