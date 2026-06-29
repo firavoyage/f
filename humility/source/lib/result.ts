@@ -31,12 +31,16 @@ export function err(error: Optional<Err, typeof error_symbol> | PropertyKey | Er
     // already wrapped, propagate
     return error
   } else if (error && typeof error == 'object' && has(error, 'type')) {
-    error[error_symbol] = true
     // keep stack trace
-    return new Error(error)
+    const error_with_trace = new Error(error.type)
+    error_with_trace[error_symbol] = true
+
+    return merge(error_with_trace, error)
   } else {
     // flexible
-    return new Error({
+    const error_with_trace = new Error(error)
+
+    return merge(error_with_trace, {
       type: error,
       message: error,
       [error_symbol]: true

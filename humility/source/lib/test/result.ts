@@ -19,3 +19,5 @@ function main() {
 }
 
 main()
+
+log('reaches the end')
