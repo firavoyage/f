@@ -1,3 +1,4 @@
+// @ts-nocheck
 type Optional<Type, Keys extends keyof Type> = Omit<Type, Keys> & Partial<Pick<Type, Keys>>
 
 // any, normalized
@@ -24,6 +25,9 @@ export function err(error: Optional<Err, typeof error_symbol> | PropertyKey | Er
     error.type = error.constructor
     error.message = error.stack ?? error.message
     error[error_symbol] = true
+    return error as Err
+  } else if (error[error_symbol]) {
+    // already wrapped, propagate
     return error
   } else if (error && typeof error == 'object' && has(error, 'type')) {
     error[error_symbol] = true

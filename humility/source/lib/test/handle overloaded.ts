@@ -13,7 +13,7 @@ function bar() {
 log(handle(bar))
 
 log(await handle(() => foo()))
-
+              
 log(await handle(async () => await foo()))
 
 log(await handle(() => fetch()))

@@ -21,10 +21,8 @@ export function merge(...args: object[]) {
   return Object.assign({}, ...args)
 }
 
-// todo: ?
-// weird types
-export function has<K>(obj: object, key: K): key is K & PropertyKey {
-  return obj && typeof obj == 'object' && key !== null && key !== undefined && Object.hasOwn(obj, key as PropertyKey);
+export function has<K extends PropertyKey>(obj: any, key: K): obj is Record<K, unknown> {
+  return obj && typeof obj == 'object' && Object.hasOwn(obj, key);
 }
 
 const missing_symbol = Symbol('missing')
@@ -32,12 +30,12 @@ const missing_symbol = Symbol('missing')
 export function is_missing(foo: any): foo is undefined | null {
   if ((foo ?? missing_symbol) == missing_symbol) {
     return true
-  } 
+  }
 
   return false
 }
 
-export let _: any = '' 
+export let _: any = ''
 /**
  * usage:
  * 
