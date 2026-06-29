@@ -22,14 +22,14 @@ const error_symbol: unique symbol = Symbol("error");
 // no `ok(data)` needed, just return `data` directly
 
 export function err(error: Optional<Err, typeof error_symbol> | PropertyKey | Err): Err {
-  if (error instanceof Error) {
+  if (error[error_symbol]) {
+    // already wrapped, propagate
+    return error
+  } else if (error instanceof Error) {
     error.type = error.constructor
     error.message = error.stack ?? error.message
     error[error_symbol] = true
     return error as Err
-  } else if (error[error_symbol]) {
-    // already wrapped, propagate
-    return error
   } else if (error && typeof error == 'object' && has(error, 'type')) {
     // keep stack trace
     const error_with_trace = new Error(error.type)

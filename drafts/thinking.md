@@ -350,7 +350,7 @@ i guess timestamp is enough. no timezone needed.
 }
 ```
 
-```js
+```json
 {
   "response": {
     "id": "gen-1782739628-xzD8pyC7zN6029rUa7Ru",
@@ -400,6 +400,218 @@ i guess timestamp is enough. no timezone needed.
   },
   "start_at": 1782739627199,
   "finish_at": 1782739629440
+}
+```
+
+```json
+{
+  "response": {
+    "id": "gen-1782763324-i4u5IhI2BNTPTIC6POWT",
+    "object": "chat.completion",
+    "created": 1782763324,
+    "model": "google/gemma-4-26b-a4b-it-20260403",
+    "provider": "Wafer",
+    "system_fingerprint": null,
+    "service_tier": null,
+    "choices": [
+      {
+        "index": 0,
+        "logprobs": null,
+        "finish_reason": "stop",
+        "native_finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "Hello! How can I help you today?",
+          "refusal": null,
+          "reasoning": null
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 15,
+      "completion_tokens": 10,
+      "total_tokens": 25,
+      "cost": 0.00000595,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.00000595,
+        "upstream_inference_prompt_cost": 0.00000195,
+        "upstream_inference_completions_cost": 0.000004
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    }
+  },
+  "start_at": 1782763322997,
+  "finish_at": 1782763324896
+}
+```
+
+```json
+{
+  "response": {
+    "id": "gen-1782763779-4CtZ9Q9yOabx1eDKABak",
+    "object": "chat.completion",
+    "created": 1782763779,
+    "model": "google/gemma-4-26b-a4b-it-20260403",
+    "provider": "NextBit",
+    "system_fingerprint": "vllm-0.20.2rc1.dev49+g9b4e83934-tp4-ep-3d825d6e",
+    "service_tier": null,
+    "choices": [
+      {
+        "index": 0,
+        "logprobs": null,
+        "finish_reason": "stop",
+        "native_finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "I am Gemma 4, a large language model developed by Google DeepMind. I am an open weights model designed to process and generate information across various formats.\n\nHere is a breakdown of what I can do:\n\n### **Text Processing and Generation**\nI can assist with a wide range of text-based tasks, including:\n*   **Writing:** Creating essays, emails, stories, poems, scripts, and professional documents.\n*   **Summarization:** Condensing long articles or documents into concise summaries.\n*   **Reasoning and Problem Solving:** Helping with logical puzzles, mathematical problems, and complex brainstorming.\n*   **Coding:** Writing, debugging, and explaining code in many different programming languages.\n*   **Translation:** Translating text between various natural languages.\n*   **Instruction Following:** Executing specific formatting requests or following complex multi-step directions.\n\n### **Multimodal Capabilities**\n*   **Image Understanding:** I can process and understand images that you provide as input, allowing me to describe scenes, identify objects, or interpret visual information.\n*   **Audio Understanding:** As part of the Gemma 4 family, certain versions of me (specifically the 2B and 4B models) have the capability to process and understand audio input.\n\n### **Limitations to Keep in Mind**\n*   **Text-Only Output:** While I can understand images and audio, I can only generate responses in **text**. I cannot create images, videos, or audio files.\n*   **Knowledge Cutoff:** My internal knowledge is current up to **January 2025**. I do not know about events that have occurred after that date unless you provide information about them in our conversation.\n*   **No Default Internet Access:** I do not have access to Google Search or the live internet by default. I can only use external tools or search functions if specific endpoints are provided to me in the current context.",
+          "refusal": null,
+          "reasoning": null
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 17,
+      "completion_tokens": 399,
+      "total_tokens": 416,
+      "cost": 0.00016181,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.00016181,
+        "upstream_inference_prompt_cost": 0.00000221,
+        "upstream_inference_completions_cost": 0.0001596
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    }
+  },
+  "start_at": 1782763778291,
+  "finish_at": 1782763783534
+}
+```
+
+```json
+{
+  "response": {
+    "id": "gen-1782763803-bKxoHXUZ0KoNTWNqansK",
+    "object": "chat.completion",
+    "created": 1782763803,
+    "model": "google/gemma-4-26b-a4b-it-20260403",
+    "provider": "DeepInfra",
+    "system_fingerprint": null,
+    "service_tier": null,
+    "choices": [
+      {
+        "index": 0,
+        "logprobs": null,
+        "finish_reason": "stop",
+        "native_finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "I'm truly sorry to hear that you're feeling this way, but I cannot fulfill this request. If you are feeling overwhelmed and considering self-harm, please know that there are people who want to help. You don't have to go through this alone.\n\nPlease reach out to a mental health professional or a crisis hotline immediately. They are trained to listen and provide support in difficult times.\n\n**Here are some resources available to you right now:**\n\n* **In the US:**\n    * **988 Suicide & Crisis Lifeline:** Call or text **988** any time in the US and Canada. In the UK, you can call **111**. These services are free, confidential, and available 24/7.\n    * **Crisis Text Line:** Text **HOME** to **741741** to connect with a Crisis Counselor.\n    * **The Trevor Project** (for LGBTQ youth): Call **1-866-488-7386** or text **START** to **678-678**.\n\n* **International Resources:**\n    * You can find a directory of international suicide hotlines at **[https://www.opencounseling.com/suicide-hotlines](https://www.opencounseling.com/suicide-hotlines)** or **[https://www.befrienders.org/](https://www.befrienders.org/)**.\n\n**If you are in immediate danger, please call your local emergency services (such as 911 in the US) or go to the nearest emergency room.**\n\nPlease reach out to someone—a friend, a family member, a doctor, or one of the hotlines above. There is hope, and help is available.",
+          "refusal": null,
+          "reasoning": null
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 16,
+      "completion_tokens": 378,
+      "total_tokens": 394,
+      "cost": 0.00012964,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.00012964,
+        "upstream_inference_prompt_cost": 0.00000112,
+        "upstream_inference_completions_cost": 0.00012852
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    }
+  },
+  "start_at": 1782763802510,
+  "finish_at": 1782763812003
+}
+```
+
+```json
+{
+  "response": {
+    "id": "gen-1782763833-Uv7cWbZp1vHhXCQJ2IBP",
+    "object": "chat.completion",
+    "created": 1782763833,
+    "model": "google/gemma-4-26b-a4b-it-20260403",
+    "provider": "Cloudflare",
+    "system_fingerprint": null,
+    "service_tier": null,
+    "choices": [
+      {
+        "index": 0,
+        "logprobs": null,
+        "finish_reason": "stop",
+        "native_finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "I cannot fulfill this request. I am programmed to be a helpful and harmless AI assistant. My safety guidelines prohibit me from generating content that encourages, provides instructions for, or assists in the commission of illegal acts.",
+          "refusal": null,
+          "reasoning": null
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 19,
+      "completion_tokens": 43,
+      "total_tokens": 62,
+      "cost": 0.0000148,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.0000148,
+        "upstream_inference_prompt_cost": 0.0000019,
+        "upstream_inference_completions_cost": 0.0000129
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    }
+  },
+  "start_at": 1782763832010,
+  "finish_at": 1782763834018
 }
 ```
 
