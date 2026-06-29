@@ -8,27 +8,52 @@
  * 
  */
 
+import { does_exist, read, config } from 'lib/file';
+import { parse } from 'yaml';
 
 type request_params = { message: string }
 
-export async function mock({ message }: any) {
+async function mock({ message }: any) {
   // one param, no need to have obj params. no future proof.
 
   return `Respond to ${message.toLocaleLowerCase()}`
 }
 
-export async function openai_compatible({ message, url, api_key }) {
+export async function openai_compatible({ message, model, url, key }) {
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${key}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      model: "openai/gpt-4o-mini", // Specify any valid OpenRouter model ID
+      messages: [
+        { role: "user", content: "Say hello!" }
+      ]
+    })
+  });
 
+  return response
 }
 
 /**
  * request models
  */
 export async function request({ message, model, provider }: any) {
+  // must exist. you should point to a mock file even if you wanna mock.
+  const config_content = parse(await read(config('config.yaml')))
+  // const config_content = await does_exist(config('config.yaml')) ? await read(config('config.yaml')) : {}
+
+  const { url, key } = config_content[provider]
+
   const start_at = Date.now()
-  // one param, no need to have obj params. no future proof.
+
+  const response = await openai_compatible({ message, model, url, key })
 
   const finish_at = Date.now()
 
-  return { response: mock({ message }), start_at, finish_at }
+  return { response: { message }, start_at, finish_at }
 }
+
+

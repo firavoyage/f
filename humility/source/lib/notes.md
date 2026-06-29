@@ -209,4 +209,28 @@ whatever approach you choose, you could not know what low level apis or 3p libs 
 
 <!-- i guess the err() wrapper is completely flawed. complete implicitness with simplicity is way better than partial explicitness. -->
 
+### note
+
+there is a significant change in `handle`.
+
+p
+
+```ts
+fn alias = handle(fn)
+call fn alias params
+
+// iife
+handle(fn)(params)
+```
+
+c
+
+```ts
+handle(fn)
+
+handle(() => fn(params))
+
+// you might also have options ~~or oop styled chains!~~
+```
+
 
