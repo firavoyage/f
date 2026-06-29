@@ -27,14 +27,15 @@ export async function openai_compatible({ message, model, url, key }) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      model: "openai/gpt-4o-mini", // Specify any valid OpenRouter model ID
+      model,
       messages: [
-        { role: "user", content: "Say hello!" }
+        { role: "user", content: message }
       ]
     })
   });
 
-  return response
+  // consider parse the response wrapper and convert to errors and discard
+  return response.json()
 }
 
 /**
@@ -53,7 +54,7 @@ export async function request({ message, model, provider }: any) {
 
   const finish_at = Date.now()
 
-  return { response: { message }, start_at, finish_at }
+  return { response, start_at, finish_at }
 }
 
 

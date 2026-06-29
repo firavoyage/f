@@ -141,15 +141,15 @@ node: incomplete, mark what it is, a step in workflow or a chat
 
 how would i store models and keys?
 
-the file can be anywhere. 
+the file can be anywhere.
 
 config folder. gitignored env. or a flag pointing anywhere.
 
 you might have openrouter or any gateway supporting models.
 
-you give key, i get (cache) the models. 
+you give key, i get (cache) the models.
 
-this is kind i. 
+this is kind i.
 
 you have a key, they have many models. but they do not support model list.
 
@@ -175,21 +175,21 @@ providers
 mock:
   # type: fn (you should export default? y. no. export request. default is not any concise, and by naming explicitly you have extensibility and future proof at no cost.)
   is_module: true
-  file: somewhere.ts # await import 
+  file: somewhere.ts # await import
 local:
   url: some url, like localhost
   key: no need to have key # or omit the line at all
-myprovider i: 
+myprovider i:
   url: some url
   key: some key
-myprovider ii: 
+myprovider ii:
   url: some url
   key: some key
-  model: 
+  model:
     - some model foo
     - some model bar
     - some model baz
-myprovider iii: 
+myprovider iii:
   url: some url
   key: some key
   model: some model foo
@@ -211,7 +211,7 @@ you might log. like, network failure, no api key.
 
 <!-- low prio -->
 
-only 
+only
 
 - info <!-- be aware. -->
 - warn <!-- be careful. reconsider if needed. -->
@@ -236,9 +236,9 @@ name: research project (company)
 - ...
 ```
 
-it's easy to formalize. 
+it's easy to formalize.
 
-just add some metadata, like the method to use. 
+just add some metadata, like the method to use.
 
 - ask
 - parallel or sequential
@@ -257,7 +257,7 @@ all nodes can be referenced directly. you can copy its id.
 
 i guess i would let request handle model routing. (get keys from yaml)
 
-openai just takes url, key, message. 
+openai just takes url, key, message.
 
 ---
 
@@ -283,7 +283,7 @@ if you just want a model, and you will go anywhere with quota left, or sort them
 
 <!-- support localhost first. js module could become a daemon, though await import seems easy. (handle relative path?) -->
 
-request will handle all the observability. like timing. 
+request will handle all the observability. like timing.
 
 i will simply throw when yaml fails to parse. network drop is expected. i will have custom errs. but they are also thrown.
 
@@ -291,4 +291,114 @@ you have absolutely define a default model on config. but it's also basically ux
 
 i guess timestamp is enough. no timezone needed.
 
+```js
+{
+  response: Response (0 KB) {
+    ok: true,
+    url: "https://openrouter.ai/api/v1/chat/completions",
+    status: 200,
+    statusText: "OK",
+    headers: Headers {
+      "date": "Mon, 29 Jun 2026 13:22:07 GMT",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "connection": "keep-alive",
+      "access-control-allow-origin": "*",
+      "access-control-expose-headers": "X-Generation-Id,cf-ray",
+      "referrer-policy": "no-referrer, strict-origin-when-cross-origin",
+      "x-content-type-options": "nosniff",
+      "content-encoding": "gzip",
+      "x-generation-id": "gen-1782739327-H6FHrD4E0KzJIl0zGA8A",
+      "permissions-policy": "payment=(self \"https://checkout.stripe.com\" \"https://connect-js.stripe.com\" \"https://js.stripe.com\" \"https://*.js.stripe.com\" \"https://hooks.stripe.com\")",
+      "server": "cloudflare",
+      "cf-ray": "a1353cfb0cf1e38e-NRT",
+    },
+    redirected: false,
+    bodyUsed: false
+  },
+  start_at: 1782739326346,
+  finish_at: 1782739328577,
+}
+```
 
+```js
+{
+  response: {
+    id: "gen-1782739580-q0zCvJfThSzA2HxufFTU",
+    object: "chat.completion",
+    created: 1782739580,
+    model: "google/gemma-4-26b-a4b-it-20260403",
+    provider: "DeepInfra",
+    system_fingerprint: null,
+    service_tier: null,
+    choices: [
+      [Object ...]
+    ],
+    usage: {
+      prompt_tokens: 15,
+      completion_tokens: 10,
+      total_tokens: 25,
+      cost: 0.00000445,
+      is_byok: false,
+      prompt_tokens_details: [Object ...],
+      cost_details: [Object ...],
+      completion_tokens_details: [Object ...],
+    },
+  },
+  start_at: 1782739579954,
+  finish_at: 1782739582248,
+}
+```
+
+```js
+{
+  "response": {
+    "id": "gen-1782739628-xzD8pyC7zN6029rUa7Ru",
+    "object": "chat.completion",
+    "created": 1782739628,
+    "model": "google/gemma-4-26b-a4b-it-20260403",
+    "provider": "Parasail",
+    "system_fingerprint": null,
+    "service_tier": null,
+    "choices": [
+      {
+        "index": 0,
+        "logprobs": null,
+        "finish_reason": "stop",
+        "native_finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "Hello! How can I help you today?",
+          "refusal": null,
+          "reasoning": null
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 15,
+      "completion_tokens": 10,
+      "total_tokens": 25,
+      "cost": 0.00000595,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.00000595,
+        "upstream_inference_prompt_cost": 0.00000195,
+        "upstream_inference_completions_cost": 0.000004
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    }
+  },
+  "start_at": 1782739627199,
+  "finish_at": 1782739629440
+}
+```
