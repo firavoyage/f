@@ -17,7 +17,9 @@ export async function mock({ message }: any) {
   return `Respond to ${message.toLocaleLowerCase()}`
 }
 
-
+export async function openai_compatible({message, url, api_key = 'no key'}) {
+  
+}
 
 /**
  * request models

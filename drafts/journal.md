@@ -43168,6 +43168,10 @@ yunoko: 不要和我哥讲话. 滚!
 
  -->
 
+20 00 feel.
+
+yunoko continues to play, and skips timer for the empty partner. so she can continue as single player. what a trick.
+
 
 
 <!-- timebox, plan. -->

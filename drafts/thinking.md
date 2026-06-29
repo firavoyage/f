@@ -268,4 +268,22 @@ openai request poc.
 
 result pattern refactor
 
+---
+
+i will put api key directly inside config.yaml in config
+
+it's easy to support env or more locations (via a cli flag or something) in the future.
+
+<!-- yk, env is old fashioned. no syntax highlighting, prone to typos, no flexibility (spaces around =). and i guess you do not have to override a key via a flag everytime in runtime. (you can config them properly if you do have many keys.) -->
+
+both model and provider are required. you definitely know it. it's just some ux tricks on frontend.
+
+if you just want a model, and you will go anywhere with quota left, or sort them based on price... have your own extension. it's easy. it can coop with js module or localhost.
+
+<!-- support localhost first. js module could become a daemon, though await import seems easy. (handle relative path?) -->
+
+request will handle all the observability. like timing. 
+
+i will simply throw when yaml fails to parse. network drop is expected. i will have custom errs. but they are also thrown.
+
 
