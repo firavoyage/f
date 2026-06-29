@@ -43146,6 +43146,12 @@ it's on!
 
 <!-- well, a bit weird. 144p opening screen, 1080p match. -->
 
+18 40 listen to `the battle of evermore (remaster)` by led zeppelin.
+
+mind blowing.
+
+<!-- the pro kid arrives! -->
+
 
 
 <!-- timebox, plan. -->
