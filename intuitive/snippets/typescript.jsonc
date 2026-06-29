@@ -4,6 +4,23 @@
 // - xabikos.javascriptsnippets
 // - akamud.vscode-javascript-snippet-pack
 {
+  "ignore": {
+    "prefix": [
+      "ig"
+    ],
+    "body": [
+      "/* eslint-disable-next-line */ // @ts-expect-error ",
+      // "/* eslint-disable-next-line */ // @ts-ignore",
+    ],
+  },
+  "ignore all": {
+    "prefix": [
+      "iga"
+    ],
+    "body": [
+      "// @ts-nocheck",
+    ],
+  },
   "function": {
     "prefix": ["f", "fn"],
     "body": [
@@ -300,48 +317,6 @@
       "Result<$1> $0",
     ],
   },
-  "err": {
-    "prefix": [
-      "er",
-      "err"
-    ],
-    "body": [
-      "throw err($1)$0",
-    ],
-  },
-  // "err": {
-  //   "prefix": [
-  //     "er",
-  //     "err"
-  //   ],
-  //   "body": [
-  //     "return err($1)$0",
-  //   ],
-  // },
-  "is_error propagate": {
-    "prefix": [
-      "is",
-      "ise",
-      "iser",
-      "iserr",
-    ],
-    "body": [
-      "if(is_error($1)){",
-      "  return $1",
-      "} $0"
-    ],
-  },
-  "is_error handle": {
-    "prefix": [
-      "iseh",
-    ],
-    "body": [
-      "if(is_error($1)){",
-      "  $2",
-      "  return ",
-      "} $0"
-    ],
-  },
   // "result": {
   //   "prefix": [
   //     "resu",
@@ -362,6 +337,15 @@
   //     "option<$1> $0",
   //   ],
   // },
+  "err": {
+    "prefix": [
+      "er",
+      "err"
+    ],
+    "body": [
+      "throw err($1)$0",
+    ],
+  },
   // "err": {
   //   "prefix": [
   //     "er",
@@ -369,6 +353,57 @@
   //   ],
   //   "body": [
   //     "return err($1)$0",
+  //   ],
+  // },
+  "handle": {
+    "prefix": [
+      "h",
+      "ha",
+      "han",
+      "hand",
+    ],
+    "body": [
+      "handle(() => $0)",
+      // "handle(() => $1)",
+    ],
+  },
+  "is_error": {
+    "prefix": [
+      "is",
+      "ise",
+      "iser",
+      "iserr",
+    ],
+    "body": [
+      "if(is_error($1)){",
+      "  $0",
+      "  ",
+      "  return $1",
+      "}"
+    ],
+  },
+  // "is_error propagate": {
+  //   "prefix": [
+  //     "is",
+  //     "ise",
+  //     "iser",
+  //     "iserr",
+  //   ],
+  //   "body": [
+  //     "if(is_error($1)){",
+  //     "  return $1",
+  //     "} $0"
+  //   ],
+  // },
+  // "is_error handle": {
+  //   "prefix": [
+  //     "iseh",
+  //   ],
+  //   "body": [
+  //     "if(is_error($1)){",
+  //     "  $2",
+  //     "  return ",
+  //     "} $0"
   //   ],
   // },
   // "rescue": {
@@ -385,21 +420,4 @@
   //     "} $0"
   //   ],
   // },
-  "ignore": {
-    "prefix": [
-      "ig"
-    ],
-    "body": [
-      "/* eslint-disable-next-line */ // @ts-expect-error ",
-      // "/* eslint-disable-next-line */ // @ts-ignore",
-    ],
-  },
-  "ignore all": {
-    "prefix": [
-      "iga"
-    ],
-    "body": [
-      "// @ts-nocheck",
-    ],
-  },
 }
