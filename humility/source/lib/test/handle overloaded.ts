@@ -11,7 +11,21 @@ async function bar() {
 }
 
 function baz() {
-  
+  const luck = Math.random()
+  if (luck < 0.5) {
+    throw err('unlucky')
+  }
+
+  return { ok: true }
+}
+
+function asdf() {
+  const luck = Math.random()
+  if (luck < 0.5) {
+    throw err('unlucky')
+  }
+
+  return 'lucky'
 }
 
 async function main() {
@@ -30,6 +44,24 @@ async function main() {
   // await handle(() => fetch(''))
   // log((await handle(() => fetch(''))).message) 
   // log(await handle(async () => await fetch('')))
+
+  const e = handle(baz)
+  log('baz', e)
+  _ = () => {
+    if (is_error(e)) {
+      return e
+    }
+    const temp = e
+  }
+
+  const f = handle(asdf)
+  log('asdf', f)
+  _ = () => {
+    if (is_error(f)) {
+      return f
+    }
+    const temp2 = f
+  }
 
   // bar()  
 }
