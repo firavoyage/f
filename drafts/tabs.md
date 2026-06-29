@@ -14,6 +14,8 @@ logseq
 
 https://github.com/qqqqqf-q/arkloop
 
+https://lody.ai/download
+
 https://github.com/lobehub/lobehub
 
 https://github.com/memohai/Memoh

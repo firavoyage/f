@@ -407,3 +407,18 @@ and you can visually see the scrollbar moving and becoming shorter
 ref: https://www.google.com/search?udm=50&atvm=2&mstk=AUtExfC4o610-n0Cr41ZpVikGiygvePeWo0QIzqDgj4UuznFl6nwwvWhigR68ZQs0VagU28De28FYgfw4nFdtoQi67W0p6QbxvrJ-ODgM2yO2RpQE_GVYRpdnjBkbq5vc59t8hCrmh-ALSKuKm39yCTiwXTkfn9XCZUTepipwvla7ijRbUakIR7JnqySZWy7Msxl1n7yDTtueJ3TPVA2uTb53l3_Zba6wwaB4PkYups0SdVVCHfASNhYkuHT4ZX3VLPDHtH64LappwjR8g&mtid=zfE7ar6vBd-x2roP5OiooAU&csuir=1&aep=26&q=what+will+happen+if+you+put+a+book+and+a+bowl+of+water+into+a+microwave+oven&ved=0CAAQ2_wOahcKEwj46uWCpqCVAxUAAAAAHQAAAAAQGg
 
 ---
+
+ux: as lazy as possible
+
+auto commit hook
+
+Menci 💖 @lcMenci
+
+> 用 agent 全自动 autopilot 做东西的时候一定要及时 commit 而且不要让 agent 到处在 repo 之外做复现不了的脏乱修改
+> 不过就算你的 agent 这么做了也没关系，让新的 agent 去 .claude/projects 里读几百 MiB 的 session jsonl 里的 tool call 操作然后一点一点重建也可以…就是…有……亿点…………慢
+
+4:12 AM · Jun 27, 2026 · Twitter Web App · 1,379  Views
+
+---
+ 
+ 
