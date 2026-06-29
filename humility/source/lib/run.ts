@@ -6,20 +6,20 @@ const non_empty_stderr = 'stderr'
 // const non_empty_stderr = 'non_empty_stderr'
 
 // todo: ?
-export async function run(command: string, options?: any): Promise<Result<string>> {
+export async function run(command: string, options?: any): Promise<string> {
   let exec_result;
   try {
     exec_result = await promisify(callback_exec)(command, options)
   } catch (e) {
-    return err({ type: non_zero_exit, message: e.message })
+    throw err({ type: non_zero_exit, message: e.message })
   }
 
   const { stdout, stderr } = exec_result
 
   if (stderr) {
-    return err({ type: non_empty_stderr, message: stderr })
+    throw err({ type: non_empty_stderr, message: stderr })
   }
 
   // todo: ?
-  return stdout as string
+  return stdout as unknown as string
 }

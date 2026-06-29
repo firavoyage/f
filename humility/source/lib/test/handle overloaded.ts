@@ -35,6 +35,8 @@ async function main() {
   const b = await handle(() => bar())
   log(b)
 
+  // log(await handle(() => await bar()))
+
   const c = await handle(async () => await bar())
   log(c)
 

@@ -32,14 +32,15 @@ export function err(error: Optional<Err, typeof error_symbol> | PropertyKey | Er
     return error
   } else if (error && typeof error == 'object' && has(error, 'type')) {
     error[error_symbol] = true
-    return error
+    // keep stack trace
+    return new Error(error)
   } else {
     // flexible
-    return {
+    return new Error({
       type: error,
       message: error,
       [error_symbol]: true
-    }
+    })
   }
 }
 

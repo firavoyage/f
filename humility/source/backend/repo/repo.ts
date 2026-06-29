@@ -6,10 +6,6 @@ export async function save(cwd: string): Promise<hash> {
   await run("git add . && git commit -m '.'", { cwd })
   const hash = await run("git rev-parse HEAD", { cwd })
 
-  if(is_error(hash)){
-    throw 'impossible'
-  } 
-
   return hash.trim()
 }
 

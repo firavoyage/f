@@ -25,7 +25,7 @@ export async function lacks(key: string) {
 
 // todo: ensure valid key
 export async function get(key: string, { must_exist = false }: { must_exist?: boolean } = {}) {
-  const value = await read(data(database_folder, key))
+  const value = await handle(() => read(data(database_folder, key)))
   if (is_error(value)) {
     // do not catch on low level, let it propagate by default
     // at least it should be a flag
@@ -39,7 +39,7 @@ export async function get(key: string, { must_exist = false }: { must_exist?: bo
       return
     }
 
-    return value
+    throw value
   }
 
   return value

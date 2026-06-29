@@ -1,6 +1,6 @@
 function temp(): Result<string> {
   if (Math.random() > 0.5) {
-    return err('err')
+    throw err('err')
   }
 
   return 'ok'

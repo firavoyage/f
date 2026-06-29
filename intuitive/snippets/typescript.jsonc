@@ -366,6 +366,17 @@
       "handle(() => $0)",
       // "handle(() => $1)",
     ],
+  },  
+  "await handle": {
+    "prefix": [
+      "ah",
+      "aha",
+      "ahan",
+      "ahand",
+    ],
+    "body": [
+      "await handle(() => $0)", // no await in $0
+    ],
   },
   "is_error": {
     "prefix": [
