@@ -258,4 +258,14 @@ i guess i would let request handle model routing. (get keys from yaml)
 
 openai just takes url, key, message. 
 
+---
+
+today:
+
+openai request poc.
+
+<!-- possible errors of fetch? -->
+
+result pattern refactor
+
 
