@@ -207,4 +207,6 @@ cons: try catch indentation hell (you should early return instead)
 
 whatever approach you choose, you could not know what low level apis or 3p libs are throwable wo sufficient research anyway.
 
+<!-- i guess the err() wrapper is completely flawed. complete implicitness with simplicity is way better than partial explicitness. -->
+
 
