@@ -14,11 +14,16 @@ declare global {
  * merge objects
  * 
  * pure, shallow, right > left when conflicting
- * 
- * break prototype chain
  */
-export function merge(...args: object[]) {
-  return Object.assign({}, ...args)
+export function merge(target: object, ...sources: object[]) {
+  for (const source of sources) {
+    for (const key of Object.keys(source)) {
+      /* eslint-disable-next-line */ // @ts-expect-error 
+      target[key] = source[key]
+    }
+  }
+  // return target
+  return Object.assign({}, ...sources)
 }
 
 export function has<K extends PropertyKey>(obj: any, key: K): obj is Record<K, unknown> {
