@@ -701,6 +701,7 @@ repo: <!-- init, clone, save/checkpoint, sync, restore -->
 - research git monorepo sparse checkout <!-- partial checkout -->
 - research git commands checkpoint restore
 - research git symlink cross platform compatibility
+- research git two separate tracking folders init bare gitdir worktree <!-- for humility -->
 
 glaze:
 
@@ -755,6 +756,7 @@ humility:
 - research design polish vibe coding <!-- d? -->
 - research zed agent
 - research llms free tier limit
+- research git two separate tracking folders init bare gitdir worktree <!-- for humility -->
 
 legacy:
 
