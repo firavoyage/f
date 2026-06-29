@@ -26,7 +26,8 @@ export function err(error: Optional<Err, typeof error_symbol> | PropertyKey | Er
     error[error_symbol] = true
     return error
   } else if (error && typeof error == 'object' && has(error, 'type')) {
-    return merge(error, { [error_symbol]: true })
+    error[error_symbol] = true
+    return error
   } else {
     // flexible
     return {

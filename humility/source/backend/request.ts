@@ -17,10 +17,12 @@ export async function mock({ message }: any) {
   return `Respond to ${message.toLocaleLowerCase()}`
 }
 
+
+
 /**
  * request models
  */
-export async function request({ message }: any) {
+export async function request({ message, model, provider }: any) {
   // one param, no need to have obj params. no future proof.
 
   return mock({ message })
