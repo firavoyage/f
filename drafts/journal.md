@@ -43172,6 +43172,10 @@ yunoko: 不要和我哥讲话. 滚!
 
 yunoko continues to play, and skips timer for the empty partner. so she can continue as single player. what a trick.
 
+21 00 converse.
+
+one <!-- who rarely comes --> claims to be the group admin and speaks fiercely to me and pulls off my headphone when i identify him (w his gf) as wmc and silently laugh to them.
+
 
 
 <!-- timebox, plan. -->

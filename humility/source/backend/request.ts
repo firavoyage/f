@@ -17,15 +17,18 @@ export async function mock({ message }: any) {
   return `Respond to ${message.toLocaleLowerCase()}`
 }
 
-export async function openai_compatible({message, url, api_key}) {
-  
+export async function openai_compatible({ message, url, api_key }) {
+
 }
 
 /**
  * request models
  */
 export async function request({ message, model, provider }: any) {
+  const start_at = Date.now()
   // one param, no need to have obj params. no future proof.
 
-  return mock({ message })
+  const finish_at = Date.now()
+
+  return { response: mock({ message }), start_at, finish_at }
 }

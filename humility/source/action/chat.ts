@@ -88,7 +88,7 @@ export async function chat({ message, thread, model }: any) {
 
   // ?
   // todo: support models, more params. not just a mock. (support mock as well!)
-  const response = await request({ message })
+  const { response } = await request({ message })
   if (is_error(response)) {
     return response
   }
