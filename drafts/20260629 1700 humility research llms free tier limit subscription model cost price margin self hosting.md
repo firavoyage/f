@@ -3665,3 +3665,167 @@ What specific **simple tasks** are you planning to offload to this agent first (
   Particle41
 
 Show all
+
+# are there abliterated models on openrouter
+
+<mark><strong>Yes, OpenRouter hosts abliterated and heavily uncensored models</strong></mark>, primarily made accessible through specialized open-source providers. Rather than using the term "abliterated" directly in every model name, OpenRouter lists these models under categories like **"Uncensored"** or routes them via providers that specialize in removing alignment safety layers. [link](https://openrouter.ai/cognitivecomputations/dolphin-mistral-24b-venice-edition:free)
+
+### Top Abliterated & Uncensored Models on OpenRouter
+
+You can find highly unrestricted models on the platform through specific creators and providers:
+
+- **[Venice Uncensored (Dolphin Mistral 24B)](https://openrouter.ai/cognitivecomputations/dolphin-mistral-24b-venice-edition:free)**: Hosted via Venice.ai, this model is built specifically to completely bypass default safety and alignment refusal layers. It has a documented refusal rate of just 2.2%.
+- **Cognitive Computations Models**: OpenRouter lists classic uncensored models from this group, including **[Dolphin 2.9.2 Mixtral 8x22B](https://openrouter.ai/cognitivecomputations/dolphin-mixtral-8x22b)** and **[Dolphin 2.6 Mixtral 8x7B](https://openrouter.ai/cognitivecomputations/dolphin-mixtral-8x7b)**. These use orthogonalization/abliteration mechanics to prevent "I can't answer that" responses.
+- **[NeverSleep Lumimaid Series](https://openrouter.ai/neversleep/llama-3-lumimaid-8b)**: Available in both 8B and 70B sizes, these models are deeply finetuned on custom roleplay data to be entirely uncensored when handling sensitive, taboo, or creative writing topics.
+- **Perplexity Sonar Reasoning**: An advanced reasoning model based on DeepSeek R1 that includes long chain-of-thought processing and built-in web searching while maintaining an uncensored status. [link](https://www.reddit.com/r/SillyTavernAI/comments/1dsgadm/are%5Fthere%5Fany%5Fmodels%5Fon%5Fopenrouter%5Fthat%5Fdoesnt/)
+
+### How to Find Them on OpenRouter
+
+1. **Use the Search Filter**: Navigate to the [OpenRouter Models Directory](https://openrouter.ai/models) and type `uncensored` or `dolphin` into the search bar.
+2. **Check the Roleplay Collection**: Many abliterated and raw fine-tunes are grouped under the official [OpenRouter Roleplay & Creative Writing Collection](https://openrouter.ai/collections/roleplay).
+3. **Toggle System Refusals**: Ensure your local frontend software (like SillyTavern or Chatbox AI) is not adding its own system safety prompts, allowing the abliterated model to output completely raw data. [link](https://www.reddit.com/r/SillyTavernAI/comments/1dsgadm/are%5Fthere%5Fany%5Fmodels%5Fon%5Fopenrouter%5Fthat%5Fdoesnt/)
+
+Would you like a recommendation for a specific model size based on whether you are doing **creative writing** or **complex coding tasks**?
+
+- [link](https://www.reddit.com/r/SillyTavernAI/comments/1dsgadm/are%5Fthere%5Fany%5Fmodels%5Fon%5Fopenrouter%5Fthat%5Fdoesnt/)\
+  Are there any models on OpenRouter that doesn't have such a ...\
+  Jul 1, 2024 — Comments Section. thesun\_alsorises. • 2y ago. OpenRouter is beta testing an abliterated or uncensored version of Wizard 8x22b. If ...\
+  Reddit·r/SillyTavernAI
+- [link](https://openrouter.ai/cognitivecomputations/dolphin-mistral-24b-venice-edition:free)\
+  Uncensored (free) - API Pricing & Providers - OpenRouter\
+  Venice Uncensored Dolphin Mistral 24B Venice Edition is a fine-tuned variant of Mistral-Small-24B-Instruct-2501, developed by dphn...\
+  OpenRouter
+- [link](https://www.reddit.com/r/openrouter/comments/1u9rrfb/finding%5Funcensoredabliterated%5Fmodels%5Fon/)\
+  Finding uncensored/abliterated models on OpenRouter via Chatbox AI\
+  Jun 18, 2026 — Finding uncensored/abliterated models on OpenRouter via Chatbox AI : r/openrouter. ... A community for users, developers, and enth...\
+  Reddit·r/openrouter
+
+Show all
+
+## no endpoint
+
+If you are seeing a **"No endpoints found"**, **"No allowed providers available"**, or **404** error when trying to use an abliterated or uncensored model on OpenRouter, it is a configuration issue with your chat app (like SillyTavern, JanitorAI, Chatbox AI, or TypingMind). [link](https://help.janitorai.com/en/article/openrouter-error-guide-10ear52/)
+
+OpenRouter uses **one single global endpoint** for all models. There are no specific or hidden endpoints for abliterated models. [link](https://openrouter.ai/blog/insights/model-routing/)
+
+### 1. Fix Your Base API URL
+
+Ensure your software is sending requests to the universal [OpenRouter Quickstart API Endpoint](https://openrouter.ai/docs/quickstart):
+
+- **Base URL:** [`https://openrouter.ai/api/v1`](https://openrouter.ai/)
+- **Chat Completions Path:** [`https://openrouter.ai/api/v1/chat/completions`](https://openrouter.ai/docs/api/api-reference/chat/send-chat-completion-request)
+
+### 2. Reset Data Policy & Provider Settings (Most Common Fix)
+
+Abliterated and uncensored models are often hosted by solo or niche third-party providers (like Venice or Cognitive Computations). If your privacy filters are too strict, OpenRouter blocks those endpoints. [link](https://www.reddit.com/r/LocalLLaMA/comments/1nv1spp/uncensored%5Fmodels%5Fproviders/)
+
+1. Go to your [OpenRouter Privacy Settings](https://openrouter.ai/settings/privacy).
+2. Change your **Data Policy** to allow prompt/data publication if you are using a free tier model (some providers require this to route free traffic). [link](https://www.answeroverflow.com/m/1471158008448028823)
+3. Go to your routing/provider preferences on OpenRouter. **Clear all "Allowed Providers"** and **unblock all "Ignored Providers"**. Saving a restriction here will completely break niche model routing. [link](https://help.janitorai.com/en/article/openrouter-error-guide-10ear52/)
+
+### 3. Check for Model Name Changes (404 Error)
+
+Free or niche uncensored models on OpenRouter change slugs frequently. If you typed the model name manually, it will throw a "no endpoint" error if the name is outdated. [link](https://help.janitorai.com/en/article/openrouter-error-guide-10ear52/)
+
+- **Fix:** Check the [OpenRouter Models Catalog](https://openrouter.ai/models) to copy the exact, current model string (e.g., `cognitivecomputations/dolphin-mistral-24b-venice-edition:free`). [link](https://openrouter.ai/cognitivecomputations/dolphin-mistral-24b-venice-edition:free)
+
+### 4. Turn Off Tool Use / Function Calling
+
+If your frontend application (like Continuation or TypingMind) is forcing "Tools" or "Plugins" on, you will see `No endpoints found that support tool use`. [link](https://github.com/continuedev/continue/issues/3378)
+
+- **Fix:** Abliterated and raw roleplay models **do not support function calling/tools**. Turn off web search, image generation plugins, or agentic tools in your chat app's settings before sending a message. [link](https://github.com/continuedev/continue/issues/3378)
+
+Which **chat frontend application** are you currently using to connect to OpenRouter? If you share it, I can give you the exact settings to toggle.
+
+- [link](https://www.answeroverflow.com/m/1471158008448028823)\
+  Help with openrouter free models - Friends of the Crustacean ...\
+  Feb 11, 2026 — Anyone using openrouter free models gets this error? 404 No endpoints found matching your data policy (Free model publication). Co...\
+  Answer Overflow
+- [link](https://help.janitorai.com/en/article/openrouter-error-guide-10ear52/)\
+  OpenRouter Error Guide - janitorai\
+  Apr 8, 2025 — “No allowed providers are available for the selected model” (404). You've restricted your provider settings too much. Fix: In Open...\
+  Janitor AI
+- [link](https://www.reddit.com/r/openrouter/comments/1lqkhhq/auto%5Fmodel%5Fgiving%5Fno%5Fendpoints%5Ffound%5Ferror/)\
+  Auto model giving no endpoints found error : r/openrouter\
+  Jul 3, 2025 — Recently I have been encountering this error message when I fire up TypingMind connected to OpenRouter: "Sorry, openrouter/auto ha...\
+  Reddit·r/openrouter
+
+Show all
+
+## no. the free one is rate limited. and all other models have no provider at all on openrouter. alternatives.
+
+**If the free abliterated models are heavily rate-limited and the paid versions show "no provider" or fail to route**<mark><strong>, you need dedicated alternative aggregators and platforms</strong><span> </span>that handle uncensored, open-weight models without strict compliance blocking or fragile endpoint routing</mark>.
+
+### 1. Alternative AI Aggregators (Direct OpenRouter Competitors)
+
+If you want the convenience of a single multi-model API but with reliable endpoints and better performance, use these platforms:
+
+- **NanoGPT**: One of the absolute best alternatives for uncensored and creative writing models. It hosts a massive catalog of models (including fully uncensored variations like _TheDrummer/Cydonia_). There is no monthly subscription fee; it uses a strict pay-as-you-go model with zero safety blocking. [link](https://www.reddit.com/r/LocalLLaMA/comments/1nv1spp/uncensored%5Fmodels%5Fproviders/)
+- **Together AI**: A highly reliable, production-grade alternative. They host dozens of open-source models (including raw Llama 3 and Mistral base variants) with blistering speed and completely open endpoints. They give new accounts free credits to start out. [link](https://www.morphllm.com/openrouter-alternative)
+- **DeepInfra**: A highly cost-effective provider that focuses heavily on raw, unaligned, and open-source models. They do not force safety alignment wrappers on top of the base open-weight models they host. [link](https://www.morphllm.com/openrouter-alternative)
+
+### 2. Direct Specialized Uncensored Providers
+
+If you want completely unmetered, zero-refusal access, bypass the aggregators entirely and go directly to the platforms hosting these specific models:
+
+- **Venice.ai**: This platform is explicitly built to be entirely uncensored and private. It hosts massive, completely unaligned top-tier models (like _Qwen 3 235B_ and specialized _Dolphin_ variants). It is highly reliable and does not suffer from OpenRouter's proxy disconnect errors. [link](https://www.reddit.com/r/LocalLLaMA/comments/1nv1spp/uncensored%5Fmodels%5Fproviders/)
+- **Infermatic.ai**: A niche provider designed specifically for the AI roleplay and creative writing communities. For a flat monthly subscription, they give you an API key with completely unlimited, unmetered access to the newest abliterated and uncensored models (like _Lumimaid_, _Cydonia_, and _Dolphin_) without token caps. [link](https://www.reddit.com/r/LocalLLaMA/comments/1nv1spp/uncensored%5Fmodels%5Fproviders/)
+
+### 3. Open-Source Infrastructure Gateways
+
+If you are an engineer trying to prevent "no provider available" errors for a team or application, stop using a managed third-party proxy. Use a self-hosted open-source gateway instead: [link](https://www.truefoundry.com/blog/openrouter-alternatives)
+
+- **[LiteLLM](https://github.com/BerriAI/litellm)**: An open-source Python SDK and proxy that acts as a localized gateway. It allows you to plug in your own API keys from independent raw hosters and creates a single unified, OpenAI-compatible API on your own machine. [link](https://www.getmaxim.ai/articles/5-best-openrouter-alternatives-in-2026/)
+- **Bifrost AI Gateway**: A blazing-fast open-source gateway written in Go. It handles failovers and routes between multiple open-source providers directly with zero added platform latency or arbitrary middleware errors. [link](https://www.getmaxim.ai/articles/5-best-openrouter-alternatives-in-2026/)
+
+Are you looking for an alternative to use inside a **personal chat interface (like SillyTavern or TypingMind)**, or are you looking to plug a reliable API into a **coding project**?
+
+- [link](https://www.morphllm.com/openrouter-alternative)\
+  OpenRouter Alternatives (2026): 10 Providers Compared on Price, ...\
+  Jun 9, 2026 — Which OpenRouter alternative has a free tier? Fireworks gives new accounts $1 in credits, Modal gives $30/month on Starter, Groq h...\
+  www.morphllm.com
+- [link](https://www.reddit.com/r/SillyTavernAI/comments/1rgdd52/what%5Fare%5Fthe%5Fbest%5Ffree%5Fopenrouter%5Fmodels/)\
+  What are the best free openrouter models : r/SillyTavernAI\
+  Feb 27, 2026 — yeah the free tier models get rate limited pretty fast especially during peak hours. honestly the best free ones ive had luck with...\
+  Reddit·r/SillyTavernAI
+- [link](https://www.edenai.co/post/best-alternatives-to-openrouter)\
+  10 Best OpenRouter Alternatives in 2026 (Free & Paid)\
+  Jun 27, 2026 — Table\_title: 10 Best OpenRouter Alternatives in 2026 (Free & Paid) Table\_content: | Platform | Best For | Free Tier | Models | Sel...\
+  Eden AI
+
+Show all
+
+## choose one
+
+The single best choice for zero-refusal, abliterated, and uncensored models is **NanoGPT**. [link](https://www.edenai.co/post/best-alternatives-to-openrouter)
+
+### Why Choose NanoGPT?
+
+- **No Server Errors**: Unlike OpenRouter, it does not rely on fragile third-party proxy endpoints that constantly drop connections or throw "no provider available" errors.
+- **Massive Uncensored Catalog**: It hosts a large variety of raw open-weight models, fully abliterated _Dolphin_ variants, and specialized community roleplay finetunes (like _TheDrummer/Cydonia_). [link](https://www.reddit.com/r/SillyTavernAI/comments/1uiikr5/alternatives%5Fto%5Fopenrouter/)
+- **Strict Pay-As-You-Go**: There is no subscription wall or token rate limits. You deposit a dollar or two via crypto or card, and you only pay for the exact tokens you consume. [link](https://www.edenai.co/post/best-alternatives-to-openrouter)
+- **Full Context**: It supports the maximum context windows for top models without cutting off text halfway through your chat. [link](https://www.reddit.com/r/SillyTavernAI/comments/1nu0u3v/any%5Falternatives%5Fto%5Ffeatherless%5Fnow%5Fa%5Fdays/)
+
+### How to use it:
+
+1. Grab an API key from the NanoGPT Dashboard.
+2. Paste the key and their endpoint URL into your frontend app (like SillyTavern or Chatbox AI).
+3. Select any abliterated or uncensored model from their list and start chatting with zero blocks. [link](https://www.reddit.com/r/SillyTavernAI/comments/1uiikr5/alternatives%5Fto%5Fopenrouter/)
+
+What **chat interface** are you using so I can show you exactly how to drop the key in?
+
+- [link](https://www.edenai.co/post/best-alternatives-to-openrouter)\
+  10 Best OpenRouter Alternatives in 2026 (Free & Paid)\
+  Jun 27, 2026 — Table\_title: 10 Best OpenRouter Alternatives in 2026 (Free & Paid) Table\_content: | Platform | Best For | Free Tier | Models | Sel...\
+  Eden AI
+
+- [link](https://www.reddit.com/r/SillyTavernAI/comments/1uiikr5/alternatives%5Fto%5Fopenrouter/)\
+  Alternatives to OpenRouter? : r/SillyTavernAI - Reddit\
+  Jun 28, 2026 — Alternatives to OpenRouter? : r/SillyTavernAI. ... SillyTavern (or ST for short) is a locally installed user interface that allows...\
+  Reddit·r/SillyTavernAI
+
+- [link](https://www.reddit.com/r/SillyTavernAI/comments/1nu0u3v/any%5Falternatives%5Fto%5Ffeatherless%5Fnow%5Fa%5Fdays/)\
+  Any alternatives to Featherless now a days? : r/SillyTavernAI\
+  Sep 30, 2025 — SouthernSkin1255. • 9mo ago. Maybe Nanogpt? It has several models and a monthly subscription. There isn't a huge variety, but ther...\
+  Reddit·r/SillyTavernAI
+
