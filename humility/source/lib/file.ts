@@ -92,6 +92,22 @@ const map = {
   ESTALE: stale_network_file_handle
 }
 
+/**
+ * standardize_errors
+ */
+export async function normalize<F extends (...args: any[]) => any>(fn: F) {
+  const _ = await handle(fn)
+  if (is_error(_)) {
+    if (has(map, _.code)) {
+      throw err({ type: map[_.code], message: _ })
+    }
+
+    throw _
+  }
+
+  return _
+}
+
 export function home(...args: string[]) {
   return join(homedir(), ...args)
 }
@@ -122,75 +138,43 @@ export function cache(...args: string[]) {
  * (over) write a file
  */
 export async function write(path: string, content: string) {
-  let _ = await handle(() => mkdir(dirname(path), { recursive: true }))
-  if (is_error(_)) {
-    if (has(map, _.code)) {
-      throw err({ type: map[_.code], message: _ })
-    }
-
-    throw _
-  }
-
-  _ = await handle(() => writeFile(path, content, 'utf8'))
-  if (is_error(_)) {
-    if (has(map, _.code)) {
-      throw err({ type: map[_.code], message: _ })
-    }
-
-    throw _
-  }
+  await normalize(() => mkdir(dirname(path), { recursive: true }))
+  await normalize(() => writeFile(path, content, 'utf8'))
 }
 
 /**
  * read a file
  */
 export async function read(path: string) {
-  let _ = await handle(() => readFile(path, 'utf8'))
+  const content = await normalize(() => readFile(path, 'utf8'))
 
-  if (is_error(_)) {
-    if (has(map, _.code)) {
-      throw err({ type: map[_.code], message: _ })
-    }
-
-    throw _
-  }
-
-  return _
+  return content
 }
 
-export async function append(path, content) {
-  try {
-    await appendFile(path, content)
-  } catch (e) {
-    if (has(map, _.code)) {
-      throw err({ type: map[_.code], message: _ })
-    }
-    throw err(other)
-  }
+export async function append(path: string, content: string) {
+  await normalize(() => appendFile(path, content))
 }
 
-export async function edit(path, search, replace) {
-  /**
-   * todo
-   * 
-   * perf: positional replace, memory efficient.
-   * 
-   * more edit modes
-   * 
-   * regex
-   * 
-   * replace or replace all
-   */
-
+/**
+ * todo
+ * 
+ * perf: positional replace, memory efficient.
+ * 
+ * more edit modes
+ * 
+ * regex
+ * 
+ * replace or replace all
+ */
+export async function edit(path: string, search: string, replace: string) {
   const content = await read(path)
-
   if (typeof content != 'string') {
     throw err(non_string_content)
   }
 
   const updated_content = content.replaceAll(search, replace)
 
-  return await write(path, updated_content)
+  await write(path, updated_content)
 }
 
 /**
@@ -204,44 +188,44 @@ export async function edit(path, search, replace) {
  * 
  * do i { path, options } or path, { options }? others?
  */
-export async function remove(path, { can_non_exist = false }: { can_non_exist?: boolean } = {}): Promise<Result<void>> {
+export async function remove(path: string, { can_non_exist = false }: { can_non_exist?: boolean } = {}): Promise<Result<void>> {
   // must_exist = true // implicit true is somewhat inconsistent
-  try {
-    await unlink(path)
-  } catch (e) {
-    if (has(map, e.code)) {
-      if (map[e.code] == not_found && can_non_exist) {
+  _ = await handle(() => unlink(path))
+  if (is_error(_)) {
+    if (has(map, _.code)) {
+      if (map[_.code] == not_found && can_non_exist) {
         return;
       }
-      throw err({ type: map[e.code], message: e })
+      throw err({ type: map[_.code], message: _ })
     }
-    throw err(other)
+
+    throw _
   }
 }
 
 export async function does_exist(path: string) {
-  try {
-    await access(path);
-    return true
-  } catch {
+  _ = await handle(() => access(path))
+  if (is_error(_)) {
     return false
   }
+  return true
 }
 
 export async function clear(path: string) {
-  await rm(path, { recursive: true, force: true });
+  await normalize(() => rm(path, { recursive: true, force: true }))
 }
 
-export async function trash(path, { can_non_exist = false }) {
-  try {
-    await trash_lib(path, { glob: false });
-  } catch (e) {
-    if (has(map, e.code)) {
-      if (map[e.code] == not_found && can_non_exist) {
+export async function trash(path: string, { can_non_exist = false }) {
+  _ = await handle(() => trash_lib(path, { glob: false }))
+  if(is_error(_)){
+    if (has(map, _.code)) {
+      if (map[_.code] == not_found && can_non_exist) {
         return;
       }
-      throw err({ type: map[e.code], message: e })
+
+      throw err({ type: map[_.code], message: _ })
     }
-    throw err(other)
+        
+    throw _
   }
 }

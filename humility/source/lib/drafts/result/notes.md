@@ -237,4 +237,33 @@ never return an error. throw it.
 
 return only if you have handled it.
 
+---
+
+just write like this.
+
+```ts
+  _ = await handle(() => readFile(path, 'utf8'))
+```
+
+yes, _ is any. so you should specify the return type explicitly.
+
+there is no way for ts to say "a type can change. just use the latest type".
+
+wait! _ is for void fn.
+
+i could write `const content`!.
+
+```ts
+  _ = await handle(() => mkdir(dirname(path), { recursive: true }))
+  if (is_error(_)) {
+    if (has(map, _.code)) {
+      throw err({ type: map[_.code], message: _ })
+    }
+
+    throw _
+  }
+```
+
+here is where _`` is supposed to be.
+
 
