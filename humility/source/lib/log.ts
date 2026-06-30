@@ -19,7 +19,7 @@ declare global {
  */
 function clean_non_enum(obj: any, seen = new WeakSet()): any {
   // Return primitives, functions, and null immediately
-  if (typeof obj !== 'object' || obj === null) { // eslint-disable-line
+  if (typeof obj !== 'object' || obj === null) {
     return obj;
   }
 
