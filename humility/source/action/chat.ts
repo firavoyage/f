@@ -11,15 +11,13 @@ const thread_count_key = 'thread.count'
 const node_count_key = 'node.count'
 
 // always unique
-async function count(key: key): Promise<Result<number>> {
+async function count(key: key): Promise<number> {
   if (await lacks(key)) {
     await set(key, '1')
     return 1
   }
 
-  let count = await get(key, { must_exist: true }) as unknown as number
-
-  count = Number(count)
+  const count = Number(await get(key, { must_exist: true }))
   if (isNaN(count)) {
     throw err(not_a_number)
   }
@@ -29,7 +27,7 @@ async function count(key: key): Promise<Result<number>> {
 }
 
 // separate append node and set node content
-async function append_node(thread: key): Promise<Result<key>> {
+async function append_node(thread: key): Promise<key> {
   // have a unique nodeid
   const node_id = await count(node_count_key)
 
