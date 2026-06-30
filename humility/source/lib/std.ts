@@ -2,12 +2,12 @@ type merge = typeof merge
 type has = typeof has
 /* eslint-disable-next-line */
 type _ = typeof _
-type is_missing = typeof is_missing
+// type is_missing = typeof is_missing
 declare global {
   var merge: merge
   var has: has
   var _: _
-  var is_missing: is_missing
+  // var is_missing: is_missing
 }
 
 /**
@@ -31,15 +31,15 @@ export function has<K extends PropertyKey>(obj: any, key: K): obj is Record<K, u
   return obj && typeof obj == 'object' && Object.hasOwn(obj, key);
 }
 
-const missing_symbol = Symbol('missing')
+// export function is_missing(foo: any): foo is undefined | null {
+//   const missing_symbol = Symbol('missing')
 
-export function is_missing(foo: any): foo is undefined | null {
-  if ((foo ?? missing_symbol) == missing_symbol) {
-    return true
-  }
+//   if ((foo ?? missing_symbol) == missing_symbol) {
+//     return true
+//   }
 
-  return false
-}
+//   return false
+// }
 
 export let _: any = ''
 /**

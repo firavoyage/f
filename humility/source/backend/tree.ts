@@ -115,7 +115,7 @@ export async function read(tree: key) {
   return tree_array
 }
 
-export function traverse(tree_array) {
+export function traverse(tree_array: any[]) {
   const focused = []
 
   let node = tree_array[0]
