@@ -1,5 +1,5 @@
 import fs from "node:fs/promises";
-import yaml from "yaml";
+import { parse } from "yaml";
 
 type TokenValue = Record<string, unknown>;
 type TokenTree = Record<string, unknown>;
@@ -104,7 +104,7 @@ function generateVariantSysCss(
 
 async function main() {
   const input = await fs.readFile("/dev/stdin", "utf-8");
-  const data = yaml.parse(input) as TokenTree;
+  const data = parse(input) as TokenTree;
 
   const modes = data.modes as Record<string, string[]> | null;
   const ref = data.ref as TokenTree;
@@ -127,7 +127,7 @@ async function main() {
     output.push(`:root {`);
     output.push(generateSysCss(sysTokens));
     output.push(`}`);
-await fs.writeFile("/dev/stdout", output.join("\n"));
+    await fs.writeFile("/dev/stdout", output.join("\n"));
     return;
   }
 

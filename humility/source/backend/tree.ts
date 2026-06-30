@@ -1,4 +1,3 @@
-import { parse, stringify } from 'yaml';
 import { get, set } from 'backend/store';
 
 export const no_focused_item = 'no focused item'
@@ -13,13 +12,11 @@ declare global {
 export async function init(tree: key) {
   const tree_array = [{ value: 'root' }]
 
-  return await set(tree, stringify(tree_array))
+  return await set(tree, tree_array)
 }
 
 export async function append(tree: key, child: id) {
-  const tree_content = await get(tree, { must_exist: true }) as string
-
-  const tree_array = parse(tree_content)
+  const tree_array = await get(tree, { must_exist: true })
 
   // get the first item, traverse focus path to leave
   let leaf = tree_array[0]
@@ -33,13 +30,11 @@ export async function append(tree: key, child: id) {
   tree_array.push({ value: child })
 
   // serialize and set back
-  return await set(tree, stringify(tree_array))
+  return await set(tree, tree_array)
 }
 
 export async function edit(tree: key, index: number, child: id) {
-  const tree_content = await get(tree)
-
-  const tree_array = parse(tree_content)
+  const tree_array = await get(tree)
 
   const node = tree_array[index]
 
@@ -50,17 +45,12 @@ export async function edit(tree: key, index: number, child: id) {
   tree_array.push({ value: child })
 
   // serialize and set back
-  return await set(tree, stringify(tree_array))
+  return await set(tree, tree_array)
 }
 
 // new children can be anything
 export async function rearrange(tree: key, index: number, new_children: id[], new_focus?: id) {
-
-  const tree_content = await get(tree)
-
-
-
-  const tree_array = parse(tree_content)
+  const tree_array = await get(tree)
 
   const node = tree_array[index]
 
@@ -74,7 +64,7 @@ export async function rearrange(tree: key, index: number, new_children: id[], ne
   }
 
   // serialize and set back
-  return await set(tree, stringify(tree_array))
+  return await set(tree, tree_array)
 }
 
 /**
@@ -86,11 +76,7 @@ export async function rearrange(tree: key, index: number, new_children: id[], ne
  * keep it simple. you can optimize later.
  */
 export async function focus(tree: key, index: number, new_focus: number) {
-  const tree_content = await get(tree)
-
-
-
-  const tree_array = parse(tree_content)
+  const tree_array = await get(tree)
 
   const node = tree_array[index]
   node.focus = new_focus
@@ -102,13 +88,11 @@ export async function focus(tree: key, index: number, new_focus: number) {
   }
 
   // serialize and set back
-  return await set(tree, stringify(tree_array))
+  return await set(tree, tree_array)
 }
 
 export async function read(tree: key) {
-  const tree_array = parse(await get(tree))
-
-  return tree_array
+  return await get(tree)
 }
 
 export function traverse(tree_array: any[]) {

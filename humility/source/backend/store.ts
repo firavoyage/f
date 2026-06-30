@@ -1,3 +1,4 @@
+import { parse, stringify } from 'yaml';
 import { data, write, read, does_exist, remove } from 'lib/file';
 import { not_found } from 'lib/file';
 
@@ -30,7 +31,7 @@ export async function lacks(key: string) {
  * 
  */
 
-export async function get(key: string, { must_exist = false }: { must_exist?: boolean } = {}) {
+export async function get(key: string, { must_exist = false, plain = false }: { must_exist?: boolean, plain?: boolean } = {}) {
   const value = await handle(() => read(data(database_folder, key)))
   if (is_error(value)) {
     // do not catch on low level, let it propagate by default
@@ -48,11 +49,11 @@ export async function get(key: string, { must_exist = false }: { must_exist?: bo
     throw value
   }
 
-  return value
+  return plain ? value : parse(value)
 }
 
-export async function set(key: string, value: string) {
-  return write(data(database_folder, key), value)
+export async function set(key: string, value: any, { plain = false }: { plain?: boolean } = {}) {
+  return write(data(database_folder, key), plain ? value : stringify(value))
 }
 
 export async function del(key: string) {
