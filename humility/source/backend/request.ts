@@ -9,7 +9,7 @@
  */
 
 import { read, config } from 'lib/file';
-import { parse, stringify } from 'yaml';
+import { stringify } from 'yaml';
 
 /**
  * todo: specify
@@ -44,7 +44,7 @@ export async function openai_compatible({ context, model, url, key }) {
  */
 export async function request({ context, model, provider }: request_params) {
   // must exist. you should point to a mock file even if you wanna mock.
-  const config_content = parse(await read(config('config.yaml')))
+  const config_content = await read(config('config.yaml'))
   // const config_content = await does_exist(config('config.yaml')) ? await read(config('config.yaml')) : {}
   const { url, key } = config_content[provider]
 
