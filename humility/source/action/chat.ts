@@ -1,7 +1,6 @@
 import { request } from 'backend/request';
 import { lacks, get, set } from 'backend/store';
 import { append, read, traverse } from 'backend/tree';
-import { parse, stringify } from 'yaml';
 import { new_thread } from 'action/new_thread';
 
 export const not_a_number = 'not a number'
@@ -47,7 +46,7 @@ async function build_context(thread: key) {
       continue
     }
 
-    const node_content = parse(await get(`node.${node.value}`, { must_exist: true }))
+    const node_content = await get(`node.${node.value}`, { must_exist: true })
 
     const { type } = node_content
 
@@ -79,7 +78,7 @@ export async function chat({ message, thread, model, provider }: any) {
   const prompt_node_key = await append_node(thread)
   const prompt_node = { type: 'prompt', role: 'user', content: message }
 
-  await set(prompt_node_key, stringify(prompt_node))
+  await set(prompt_node_key, prompt_node)
 
   const response_node_key = await append_node(thread)
 
@@ -91,6 +90,6 @@ export async function chat({ message, thread, model, provider }: any) {
   const response_node = { type: 'response', role: 'assistant', content: response }
 
   // set nodeid content
-  await set(response_node_key, stringify(response_node))
+  await set(response_node_key, response_node)
 }
 
