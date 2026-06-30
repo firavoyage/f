@@ -4,6 +4,870 @@
 
 <!-- overkill. -->
 
+# . all features of linear app
+
+## all features of linear app
+
+[Linear](https://linear.app/) is a high-performance, developer-focused project management system designed specifically for modern product teams. Known for its incredible sub-300ms speed, minimalist interface, and keyboard-first design, it replaces bloated legacy issue trackers. \[[1](https://linear.app/), [2](https://www.youtube.com/watch?v=9Q5BoiIFBiY), [3](https://www.siit.io/tools/trending/linear-app-review), [4](https://x.com/GergelyOrosz/status/2057362110095532090), [5](https://efficient.app/compare/linear-vs-jira)]
+
+### 🏗️ Issue Tracking & Execution
+
+- **Issues**: The standard task format featuring custom statuses, estimates, priorities, and description templates.
+- **Cycles**: Automated, time-boxed iterations (sprints) that keep teams focused without manual sprint-planning overhead.
+- **Backlog Management**: Smart filters auto-archive stale issues to keep workspaces clean.
+- **Bulk Actions**: Update dozens of issues at once using simple keyboard commands.
+- **Inbox**: A centralized, zero-inbox-style notification center for threads, updates, and mentions. \[[1](https://www.bardeen.ai/answers/what-is-linear-app), [2](https://www.bardeen.ai/answers/how-to-use-linear-app), [3](https://efficient.app/apps/linear), [4](https://linear.app/method/introduction), [5](https://linear.app/docs/conceptual-model), [6](https://www.youtube.com/watch?v=-xvt1lUztOQ\&t=182), [7](https://linear.app/)]
+
+### 🗺️ Roadmaps & Planning
+
+- **Projects**: Groups related issues together with dedicated progress bars, targets, and leads.
+- **Milestones**: Breakdown major projects into structured, sequential phases.
+- **Initiatives**: Group multiple cross-team projects into high-level, strategic company goals.
+- **Project Documents**: Live, collaborative markdown pages directly inside the project to write PRDs or RFCs.
+- **Predictive Graphs**: Real-time charts that calculate project velocity to predict whether deadlines will be met. \[[1](https://www.youtube.com/watch?v=u3wsY9Z32XE\&vl=en), [2](https://efficient.app/apps/linear), [3](https://linear.app/docs/project-overview), [4](https://linear.app/docs/custom-views), [5](https://linear.app/method/introduction), [6](https://linear.app/mobile), [7](https://linear.app/docs/project-documents)]
+
+### 🤖 AI Workflows & "Linear Agent" \[[1](https://linear.app/features), [2](https://linear.app/now/ai)]
+
+- **Coding Sessions**: The native [Linear Agent](https://linear.app/now/ai) can take an issue from triage, write the code, and submit a reviewed fix without leaving the app.
+- **Triage Intelligence**: Auto-categorizes incoming bugs and routes them to the correct developer.
+- **AI Assistance**: Automatically drafts issue summaries, suggests labels, and finds duplicate tickets. \[[1](https://linear.app/pricing), [2](https://linear.app/now/ai), [3](https://efficient.app/apps/linear), [4](https://pangea.app/glossary/linear), [5](https://sacra.com/c/linear/)]
+
+### 🔄 Intake & Collaboration
+
+- **Linear Asks**: Converts everyday workplace requests from Slack or email into trackable internal tickets.
+- **Customer Requests**: Intersects customer feedback directly with actionable engineering bugs.
+- **Triage Pipeline**: A dedicated screening pool where incoming bugs wait for review before entering developer cycles. \[[1](https://linear.app/features), [2](https://linear.app/pricing), [3](https://linear.app/docs/project-overview), [4](https://www.morgen.so/blog-posts/linear-project-management)]
+
+### 📊 Views & Customization
+
+- **Layout Formats**: Toggle any view instantly between a clean vertical List, a Kanban Board, or a Timeline view.
+- **Custom Views**: Save complex filtering rules (by assignee, labels, or target dates) into shared or personal shortcuts.
+- **Sidebar Layouts**: Contextual right-hand panels for fast field adjustments.
+- **Insights**: Built-in analytics dashboard tracking velocity, scope creep, and bottleneck cycles. \[[1](https://linear.app/pricing), [2](https://everhour.com/blog/how-to-use-linear/), [3](https://linear.app/docs/custom-views), [4](https://linear.app/insights)]
+
+### ⚙️ Developer Experience & Ecosystem
+
+- **Keyboard-First Interface**: A pervasive Command Menu (`Cmd/Ctrl + K`) lets users trigger almost any app function via shortcuts.
+- **GitHub / GitLab / Bitbucket Automations**: Auto-closes tickets, updates issue states, and links branches based on Git pull requests.
+- **Platform Integrations**: Works natively with tools like Slack, Figma, Notion, and Discord.
+- **Linear Mobile**: Native companion apps for [iOS](https://apps.apple.com/us/app/linear-mobile/id1645587184) and Android optimized for on-the-go bug capturing and triaging. \[[1](https://linear.app/docs/conceptual-model), [2](https://www.youtube.com/watch?v=9Q5BoiIFBiY), [3](https://www.youtube.com/watch?v=u3wsY9Z32XE\&vl=en), [4](https://linear.app/docs), [5](https://www.morgen.so/blog-posts/linear-project-management), [6](https://www.bardeen.ai/answers/what-is-linear-app), [7](https://linear.app/mobile), [8](https://apps.apple.com/us/app/linear-mobile/id1645587184)]
+
+Are you planning to migrate your team to Linear from another tool like **Jira** or **Asana**? I can walk you through Linear's **importing tools** or help you set up your first **Cycle workflow**. \[[1](https://www.youtube.com/watch?v=qaR4jRrc1Iw), [2](https://linear.app/switch/pilot-guide)]
+
+- [link](https://linear.app/)\
+  Linear\
+  system for teams and agentsThe product development system for teams and agents. Purpose-built for planning and building products. ...\
+  Linear
+- [link](https://linear.app/docs/conceptual-model)\
+  Concepts – Linear Docs\
+  Mouse⁠ \* Basic concepts. \* Workspace. \* Teams. \* Issues. \* Workflows. \* Organizing issues. \* Projects. \* Milestones. \* Cycles. \* I...\
+  Linear
+- [link](https://www.youtube.com/watch?v=9Q5BoiIFBiY)\
+  Intro to Linear\
+  Jun 9, 2025 — hi and welcome to Linear. this video will give you an introduction to what Linear is and how it can help your. team. as we jump in...\
+  4:01\
+  YouTube·Linear
+
+Show all
+
+## all highly requested features of linear app
+
+The most highly requested features in Linear reflect the evolving needs of scaling product teams demanding <mark style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 500; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">deeper document collaboration, external visibility, and smarter handling of customer feedback</mark>.
+
+Linear has specifically addressed user demand by shipping or expanding these highly requested areas:
+
+### 1. Unified Knowledge Management: Team Docs
+
+- **Team Docs**: Long requested by teams who wanted to completely replace Notion or Confluence, this feature provides a centralized home workspace with live-collaborative markdown pages. \[[1](https://www.linkedin.com/posts/karrisaarinen%5Fteam-docs-beta-for-linear-one-of-our-most-activity-7467481737175052288-Lbzl), [2](https://everhour.com/blog/what-is-linear-app/), [3](https://www.reddit.com/r/Linear/comments/1jfzaqw/whats%5Fyour%5Ffavorite%5Flinear%5Ffeature%5Fthe%5Fone%5Fyou/), [4](https://www.linkedin.com/posts/karrisaarinen%5Fteam-docs-beta-for-linear-one-of-our-most-activity-7467481737175052288-Lbzl)]
+- **Inline Issue Embedding**: Product Requirements Documents (PRDs) and RFCs can link directly to active Linear issues, keeping specs and code execution tied to the same dashboard. \[[1](https://www.siit.io/tools/trending/linear-app-review), [2](https://linear.app/integrations/cardinal)]
+
+### 2. External Feedback & Public Roadmaps
+
+- **Customer Requests**: To counter product management tools like Productboard, this feature links feedback from tools like Intercom, Zendesk, and Front directly into Linear issue backlogs. \[[1](https://linear.app/customer-requests), [2](https://www.youtube.com/watch?v=7X0-EphVMUY\&t=13), [3](https://linear.app/features), [4](https://linear.app/integrations/zendesk), [5](https://featureupvote.com/blog/feature-request-software/)]
+- **Feedback Prioritization**: Product managers can rank and sort the engineering backlog by customer tier, size, or impact on revenue. \[[1](https://linear.app/customer-requests)]
+- **Two-Way Public Portals**: Through native integration portals like [Productlane](https://linear.app/integrations/productlane) and Featurebase, users can upvote and view a public roadmap that live-syncs with internal developer tickets. \[[1](https://linear.app/integrations/featurebase), [2](https://linear.app/integrations/productlane)]
+
+### 3. "Linear Asks" (The Slack Workflow Hub) \[[1](https://clearfeed.ai/blogs/linear-asks-guide)]
+
+- **Slack-to-Ticket Conversion**: Heavily praised by cross-functional teams, Linear Asks allows non-technical employees to flag bugs or request features via Slack. \[[1](https://linear.app/customer-requests), [2](https://www.reddit.com/r/Linear/comments/1jfzaqw/whats%5Fyour%5Ffavorite%5Flinear%5Ffeature%5Fthe%5Fone%5Fyou/), [3](https://clearfeed.ai/blogs/linear-asks-guide)]
+- **Bi-Directional Slack Syncing**: Threads and updates automatically bounce back and forth between Slack and Linear, solving the issue of communication silos. \[[1](https://www.youtube.com/watch?v=fkIgUNSUgfU\&t=222)]
+- **Intelligent Deduplication**: The software automatically detects and aggregates duplicate feature requests arriving from disparate client channels. \[, [2](https://frill.co/blog/posts/feature-request-tools)]
+
+### 4. Continuous AI & "Linear Agent" Automations
+
+- **Autonomous Engineering**: Instead of just summarizing text, the highly anticipated [Linear Agent](https://linear.app/now/ai) can actively dive into a repository, solve basic bugs, and file a pull request on GitHub or GitLab.
+- **Automated Changelogs**: Generates public release notes by gathering completed project data and organizing it by technical labels. \[[1](https://linear.app/features), [2](https://www.morgen.so/blog-posts/linear-project-management), [3](https://linear.app/integrations/productlane)]
+
+### 5. Multi-Team Visibility (Initiatives)
+
+- **Cross-Team Roadmapping**: Scaled organizations requested better alignment for shared goals. _Initiatives_ allow leadership to nest projects from independent design, engineering, and marketing teams under a single strategic objective. \[[1](https://linear.app/features), [2](https://www.morgen.so/blog-posts/linear-project-management), [3](https://medium.com/@mohit15856/the-modern-pm-tech-stack-2026-edition-linear-claude-projects-figjam-tools-that-actually-work-bcd20d71c7c0)]
+
+Would you like to know how to integrate your customer feedback tools with Linear's **Customer Requests**, or are you looking to optimize **Team Docs** for your technical specifications?
+
+- [link](https://www.youtube.com/watch?v=fkIgUNSUgfU\&t=222)\
+  Managing Feature Requests with Linear\
+  Dec 13, 2024 — this will open up a model where you can fill out anything that you need i'll just leave it as default. now um we're actually going...\
+  2m\
+  YouTube·Linear
+- [link](https://linear.app/features)\
+  Features – Linear\
+  Planning. Set the product direction with projects and initiatives · Building. Make progress with issue tracking and cycle planning...\
+  Linear
+- [link](https://www.siit.io/tools/trending/linear-app-review)\
+  Linear App Review: Features, Pricing, Pros & Cons - Siit.io\
+  Issues serve as the fundamental unit of work, supporting custom fields, priorities, assignees, and rich descriptions with markdown...\
+  Siit.io
+
+Show all
+
+## all limitations of linear app
+
+While Linear is highly praised for its speed and developer-focused design, its intentional minimalism means it is not a one-size-fits-all tool. The application enforces opinionated workflows that may conflict with traditional management structures. \[[1](https://linear.app/releases/2021-06), [2](https://everhour.com/blog/what-is-linear-app/), [3](https://medium.com/@aryan1999varma/linear-when-opinionated-products-win-e47e01c80756), [4](https://toolfinder.com/alternatives/linear), [5](https://research.contrary.com/company/linear)]
+
+The primary limitations of Linear include:
+
+### ❌ Inflexible Agile Frameworks
+
+- **No Traditional Gantt Charts:** Linear prioritizes a vertical Timeline view over traditional, rigid Gantt charts with complex dependency structures.
+- **Strict "Cycle" Mechanics:** The sprint system (Cycles) is designed to run continuously. Teams cannot easily pause, stretch, or heavily customize the core cycle automation without breaking Linear's intended flow. \[[1](https://agiled.app/alternatives/linear), [2](https://machinethink.net/blog/machine-learning-apis/)]
+- **No Custom Fields:** Unlike Jira or ClickUp, you cannot create arbitrary text or number fields on issues. You are restricted to Linear's native attributes: labels, assignees, estimates, priorities, and project dates. \[[1](https://toolfinder.com/alternatives/linear), [2](https://www.siit.io/tools/trending/linear-app-review), [3](https://research.contrary.com/company/linear), [4](https://xavd.id/blog/post/perfect-project-management-with-linear/), [5](https://talentblocks.com/blog/linear-vs-shortcut-vs-jira-vs-azure-devops-which-tool-offers-the-best-flexibility-and)]
+
+### 👥 Non-Technical Team Friction
+
+- **High Learning Curve for Business Units:** Marketing, HR, and sales teams often find the keyboard-first, shortcut-heavy interface confusing and overly technical.
+- **No Client Portal natively built-in:** There is no free or built-in view for external clients to track project progress safely without seeing internal code details; this requires buying third-party integrations like Productlane or Featurebase. \[[1](https://t0ggles.com/compare/t0ggles-vs-linear), [2](https://www.steelsync.io/blog/how-to-make-public-roadmap-possible-with-linear)]
+- **Markdown Only:** The text editor is strictly markdown-based, which can frustrate non-technical users accustomed to rich-text formatting tools.
+
+### 📊 Limited Native Reporting \[[1](https://screenful.com/guide/what-metrics-can-i-track-with-screenful-for-linear-app), [2](https://blog.logrocket.com/ux-design/linear-design-vs-brutalism-neumorphism-minimalism/)]
+
+- **Basic Analytics:** The built-in "Insights" panel tracks velocity, cycle time, and scope creep, but it lacks the highly customizable dashboard widgets, pivot tables, and deep financial tracking required by enterprise PMOs.
+- **No Resource Management:** There are no native features to track employee hourly capacity, vacation calendars, or project budgeting. \[[1](https://www.g2.com/products/linear/reviews?qs=pros-and-cons), [2](https://agiled.app/alternatives/linear)]
+
+### 🔒 Enterprise & Control Restrictions
+
+- **No Self-Hosting (On-Premises):** Linear is strictly a Cloud/SaaS application. Companies with rigid data-sovereignty rules requiring on-premise hosting cannot use it.
+- **Lacks Complex Permissioning:** Roles are highly democratic by design. It is difficult to restrict a team member from viewing or editing specific projects within a workspace, which can be an issue for agencies handling confidential multi-client work. \[[1](https://www.adobe.com/creativecloud/video/hub/ideas/what-is-linear-editing.html), [2](https://work-management.org/software-development/linear-review/)]
+
+Are you evaluating Linear for a **wholly technical engineering team**, or do you need a tool that handles **cross-functional business operations** as well? I can compare how Linear stacks up against other tools for your specific team layout.
+
+- [link](https://linear.app/releases/2021-06)\
+  Grow with Linear - 2021.06 release\
+  Linear's performance is incredible - the best perceived speed of any web app I've ever used.\
+  \
+  \
+  Linear
+- [link](https://everhour.com/blog/what-is-linear-app/)\
+  What Is Linear App? Features, Benefits & Use Cases Explained\
+  Sep 10, 2025 — 👉 Key takeaway: Linear's success comes from developer-first design, product-led growth, and a clear stance against bloated projec...\
+  \
+  \
+  Everhour
+- [link](https://medium.com/@aryan1999varma/linear-when-opinionated-products-win-e47e01c80756)\
+  Linear: When Opinionated Products Win | by Aryan Varma Sagi\
+  Jan 19, 2026 — Instead of expanding endlessly, Linear optimizes for a specific experience and accepts that it won't be the right fit for everyone...\
+  \
+  \
+  Medium
+
+Show all
+
+## all moats of linear
+
+Linear’s "moats"—its defensible competitive advantages—are highly unique because they defy traditional SaaS playbooks. While legacy competitors like Jira build moats around enterprise feature lock-in and infinite customization, Linear has constructed a **$1.25 billion valuation ecosystem** rooted in developer devotion, extreme technical execution, and early AI integration. \[[1](https://aakashgupta.medium.com/linear-hit-1-25b-with-100-employees-heres-how-they-did-it-54e168a5145f), [2](https://michaelgoitein.substack.com/p/linears-unconventional-strategy-to), [3](https://www.thoughtlytics.com/newsletter/linear-playbook-growth-engine), [4](https://www.news.aakashg.com/p/how-linear-grows), [5](https://www.eleken.co/blog-posts/linear-app-case-study)]
+
+The primary business and product moats protecting Linear include:
+
+### ⚡ 1. The Performance Moat: Proprietary Sync Architecture
+
+- **Sub-100ms Architecture**: Linear is not a standard CRUD (Create, Read, Update, Delete) web app. It functions like a local database running inside the user's browser. \[[1](https://newsletter.pragmaticengineer.com/p/linear), [2](https://news.ycombinator.com/item?id=48437609)]
+- **Proprietary Sync Engine**: Linear built a custom real-time sync engine over GraphQL and WebSockets. It downloads workspace data to the client locally, making transitions instant, allowing offline functionality, and eliminating the loading spinners that plague competitors. \[[1](https://newsletter.pragmaticengineer.com/p/linear)]
+- **High Technical Copy-Barrier**: Rewriting an enterprise competitor to match Linear’s client-side database architecture would require a complete, ground-up engineering overhaul. \[[1](https://news.ycombinator.com/item?id=48437609)]
+
+### 💻 2. The Cultural Moat: "Developer Love" and Cult-Like Retention
+
+- **The "Anti-Jira" Sentiment**: Developers notoriously dislike bloated project management software that requires slow clicking and heavy administrative overhead. Linear treats the engineer as the primary user, optimizing heavily for keyboard shortcuts (`Cmd+K`) and keyboard-only navigation. \[[1](https://michaelgoitein.substack.com/p/linears-unconventional-strategy-to), [2](https://www.youtube.com/watch?v=qPJZyflRCiQ\&t=19)]
+- **Grassroots Product-Led Growth (PLG)**: Linear relies on developers moving to new companies and demanding that their new employers switch to Linear. This organic developer advocacy has allowed them to scale with a remarkably lean sales team. \[[1](https://www.news.aakashg.com/p/how-linear-grows), [2](https://www.thoughtlytics.com/newsletter/linear-playbook-growth-engine)]
+
+### 🤖 3. The New Era Ecosystem: First-Class Platform for AI Agents
+
+- **Linear for Agents API**: In a massive strategic shift, Linear introduced specialized APIs that treat autonomous AI coding assistants (like Cursor, Devin, and Codegen) as first-class team members. \[[1](https://www.news.aakashg.com/p/how-linear-grows), [2](https://www.youtube.com/watch?v=wCaP1RKlD-E\&t=1)]
+- **The Inter-Agent System of Record**: Instead of trying to build its own code-writing bots, [Linear positions itself as the orchestration layer](https://www.youtube.com/watch?v=UG9IAdmi2Dg). A human can assign an issue to an AI agent inside Linear, and the AI agent updates its own progress, links its pull requests, and closes the ticket natively. \[[1](https://www.youtube.com/watch?v=UG9IAdmi2Dg), [2](https://www.youtube.com/watch?v=wCaP1RKlD-E\&t=1), [3](https://www.news.aakashg.com/p/how-linear-grows)]
+
+### 📐 4. The Product Philosophy Moat: "The Linear Method"
+
+- **Opinionated Defaults over Customization**: Jira's moat is "infinite configurability," which often results in a mess of broken workflows managed by specialized administrators. Linear's moat is the _rejection_ of this complexity. \[[1](https://www.siit.io/tools/trending/linear-app-review), [2](https://get-alfred.ai/blog/is-linear-worth-it)]
+- **The Inflexible Advantage**: By forcing teams into streamlined, opinionated sprint behaviors (Cycles, Triage, Backlogs), Linear protects engineering teams from corporate micromanagement. Teams adapt to Linear, rather than bending Linear to their legacy internal politics. \[[1](https://www.siit.io/tools/trending/linear-app-review), [2](https://get-alfred.ai/blog/is-linear-worth-it)]
+
+### 🔌 5. High-Context Workflow Integration (The "Cognitive Flow")
+
+- **Deep Git & Design Fabric**: Linear intercepts a developer's workflow right where they work. Creating a Git branch automatically links to a Linear ticket; merging a PR automatically closes it.
+- **Minimized Context-Switching**: By seamlessly anchoring code repositories (GitHub/GitLab), product spec documents (Team Docs), and customer communication hub tools into a unified workspace, it preserves a developer's high-value "cognitive flow state". \[[1](https://michaelgoitein.substack.com/p/linears-unconventional-strategy-to), [2](https://www.youtube.com/watch?v=qPJZyflRCiQ\&t=19)]
+
+Are you analyzing Linear's moats from an **investment/business strategy perspective**, or are you looking to understand how to leverage their **AI Agent architecture** for your own software development team?
+
+- [link](https://aakashgupta.medium.com/linear-hit-1-25b-with-100-employees-heres-how-they-did-it-54e168a5145f)\
+  Linear Hit $1.25B With 100 Employees. Here's How They Did It.\
+  Dec 18, 2025 — Linear hasn't gone all-in on AI. They're measured and deliberate. No AI makeover. No “AI-powered” features plastered everywhere. N...\
+  Medium·Aakash Gupta
+- [link](https://michaelgoitein.substack.com/p/linears-unconventional-strategy-to)\
+  Linear's Unconventional Strategy to Win By Defying ...\
+  Jun 10, 2025 — Like a magnifying glass that concentrates the sun's rays to burn through steel, Linear demonstrates strategic focus to concentrate...\
+  Substack·Product Strategy Decoded
+- [link](https://www.news.aakashg.com/p/how-linear-grows)\
+  How Linear Grows - Product Growth - Aakash Gupta\
+  Nov 19, 2025 — By June 2021, just two years after founding, Linear announced it was profitable. “We have had negative lifetime burn,” CEO Karri S...\
+  Product Growth | Aakash Gupta
+
+Show all
+
+## the history of linear
+
+Linear’s journey from a minimal, waitlisted prototype to a **$1.25 billion project management powerhouse** is one of the most celebrated case studies in modern software craftsmanship. \[[1](https://aakashgupta.medium.com/linear-hit-1-25b-with-100-employees-heres-how-they-did-it-54e168a5145f), [2](https://sacra.com/c/linear/)]
+
+***
+
+### 🔨 2019: Founding and The Frustration with Jira \[[1](https://www.thoughtlytics.com/newsletter/linear-playbook-growth-engine), [2](https://siliconvalleyinvestclub.substack.com/p/linear-raises-82-million-at-a-125)]
+
+Linear was founded in **January 2019** by **Karri Saarinen, Tuomas Artman, and Jori Lallo**. \[[1](https://startupintros.com/orgs/linear), [2](https://sequoiacap.com/article/linear-spotlight/)]
+
+- **The Backstory**: The founders had previously led design and engineering teams at high-growth tech giants like [Airbnb](https://airbnb.com/), [Coinbase](https://www.coinbase.com/), and [Uber](https://www.uber.com/). \[[1](https://www.crunchbase.com/organization/linear-app)]
+- **The Problem**: They realized that as these tech companies scaled, their project management software (primarily Jira) grew increasingly slow, bloated, and administrative. Developers were spending hours filling out fields rather than building code. \[[1](https://www.crunchbase.com/organization/linear-app), [2](https://www.thoughtlytics.com/newsletter/linear-playbook-growth-engine), [3](https://exa.ai/websets/directory/linear-funding)]
+- **The Mission**: To build an "anti-Jira"—an issue tracker designed specifically for developers that was ultra-fast, keyboard-driven, and minimalist. \[[1](https://www.crunchbase.com/organization/linear-app), [2](https://www.youtube.com/watch?v=AI%5FUMnTM4o8\&t=47), [3](https://onehorizon.ai/blog/linear-app-review)]
+
+Before writing a single line of code, the founders announced the company alongside a small **$4.2 million seed funding round** led by [Sequoia Capital](https://sequoiacap.com/) in November 2019, instantly generating a massive waitlist of eager developers. \[[1](https://medium.com/linear-app/building-at-the-early-stage-e79e696341db), [2](https://sequoiacap.com/article/linear-spotlight/), [3](https://sacra.com/c/linear/)]
+
+***
+
+### 📈 2020 – 2022: Rapid Profitability and The Cult Followings
+
+Linear didn't follow the typical Silicon Valley path of burning massive cash to acquire random users. They targeted early-stage startups and built a highly opinionated product. \[[1](https://research.contrary.com/company/linear), [2](https://www.linear.vc/about)]
+
+- **December 2020**: Linear raised a **$13 million Series A** from Sequoia Capital. Around this time, they opened the app to the public and introduced paid pricing tiers. \[[1](https://medium.com/linear-app/building-at-the-early-stage-e79e696341db), [2](https://sacra.com/c/linear/)]
+- **July 2021**: In an incredibly rare feat for a two-year-old SaaS company, **Linear became profitable** with a tiny, hyper-efficient team of just 17 people. \[[1](https://newsletter.pragmaticengineer.com/p/linear), [2](https://sequoiacap.com/article/linear-spotlight/), [3](https://aakashgupta.medium.com/linear-hit-1-25b-with-100-employees-heres-how-they-did-it-54e168a5145f)]
+- **The Strategy**: Word-of-mouth product-led growth (PLG). Developers loved the "sub-100ms sync speed" so much that when they changed jobs, they forced their new employers to switch from Jira or Asana to Linear. \[[1](https://aakashgupta.medium.com/linear-hit-1-25b-with-100-employees-heres-how-they-did-it-54e168a5145f)]
+
+***
+
+### 🚀 2023 – 2024: Upmarket Scaling
+
+As their initial startup users grew into massive "scale-ups," Linear began introducing deep features designed for multi-team enterprise coordination without sacrificing its signature speed.
+
+- **April 2023**: Rolled out **Project Milestones**, giving management visibility into product launch phases without forcing developers into rigid Gantt charts. \[[1](https://linear.app/changelog/project-milestones)]
+- **September 2023**: Secured a **$35 million Series B** funding round led by [Accel](https://www.accel.com/). \[[1](https://sacra.com/c/linear/)]
+- **February 2024**: Upgraded their workspace visuals to support multi-team alignment, adding an advanced timeline chronology bar and rolling out **"Initiatives"** to tie different team roadmaps together. \[[1](https://linear.app/docs/initiative-and-project-updates), [2](https://www.linkedin.com/posts/linearapp%5Fweve-entered-a-new-era-for-the-linear-timeline-activity-7169035569157656576-BicI)]
+
+***
+
+### 🤖 2025 – Present: The Autonomous "AI Agent" Era
+
+Rather than forcing a trendy AI chatbot helper into the app, Linear took a highly strategic, infrastructure-first approach to artificial intelligence. \[[1](https://www.youtube.com/watch?v=8QcW9-dal0g\&t=178)]
+
+- **June 2025**: Linear officially reached **Unicorn Status**, closing an **$82 million Series C** at a **$1.25 billion valuation**. The round was led by Accel with participation from Sequoia, [01 Advisors](https://www.01a.com/), and Seven Seven Six.
+- **The Shift to Agents**: With the Series C funding, Linear launched the **"Linear for Agents" API**. Realizing that AI coding tools (like Cursor and Devin) were beginning to write software autonomously, Linear positioned itself as the _System of Record_ for AI workers. Humans could now assign issues to AI agents directly inside Linear, and the bots would manage, update, and close their own tickets.
+- **Today**: Now trusted by over **33,000 tech companies**—including pioneers like [OpenAI](https://openai.com/), Coinbase, and Ramp—Linear continues to scale globally while protecting its lean, quality-obsessed engineering principles. \[[1](https://linear.app/about), [2](https://sacra.com/c/linear/), [3](https://siliconvalleyinvestclub.substack.com/p/linear-raises-82-million-at-a-125), [4](https://linear.app/now/building-our-way), [5](https://www.youtube.com/watch?v=8QcW9-dal0g\&t=178), [6](https://aakashgupta.medium.com/linear-hit-1-25b-with-100-employees-heres-how-they-did-it-54e168a5145f)]
+
+Would you like to know more about the **technical architecture** (like their sync engine) that allowed them to scale so fast, or are you curious about **"The Linear Method"** corporate philosophy? \[[1](https://aakashgupta.medium.com/linear-hit-1-25b-with-100-employees-heres-how-they-did-it-54e168a5145f)]
+
+- [link](https://newsletter.pragmaticengineer.com/p/linear)\
+  The Story of Linear as told by its CTO - The Pragmatic Engineer\
+  Nov 22, 2022 — An exclusive deepdive. Gergely Orosz. Nov 22, 2022. Listen. 7. 8. Linear is the Fall 2025 season sponsor for The Pragmatic Enginee...\
+  The Pragmatic Engineer
+- [link](https://medium.com/linear-app/building-at-the-early-stage-e79e696341db)\
+  Building at the early stage. Before we started Linear ... - Medium\
+  Jan 21, 2021 — Secondly, in the first months or years, your product is likely not a fit for everyone. It's better to launch early, start getting ...\
+  Medium·Karri Saarinen
+- [link](https://www.youtube.com/watch?v=AI%5FUMnTM4o8\&t=47)\
+  Linear: move fast with little process (with first Engineering ...\
+  Nov 20, 2024 — and I'm like wow. I've haven't seen that sub and Roman is the first engine manager at linear where he heads up engineering. linear...\
+  8m\
+  YouTube·The Pragmatic Engineer
+
+Show all
+
+## all highly requested but not yet implemented features of linear app
+
+Because Linear strictly adheres to an opinionated workflow ("The Linear Method") and deliberately rejects feature creep, several highly requested features from its community have been intentionally left unimplemented. \[[1](https://news.ycombinator.com/item?id=33199304), [2](https://medium.com/hitask/linear-method-madness-sans-user-stories-0af082b3c652), [3](https://www.morgen.so/blog-posts/linear-project-management), [4](https://blog.mergify.com/why-we-switched-from-notion-to-linear/), [5](https://www.reddit.com/r/Linear/comments/1fafez3/community%5Fpoll%5Fwhat%5Ffeature%5Fdo%5Fyou%5Fwant%5Fmost%5Fin/)]
+
+The most common and vocal feature requests that Linear has either explicitly chosen not to implement or kept off their immediate roadmap include:
+
+### ⚙️ Extensibility & Customization
+
+- **Custom Fields and Properties:** This is overwhelmingly the [most requested feature by teams migrating from Jira or ClickUp](https://www.reddit.com/r/Linear/comments/1fafez3/community%5Fpoll%5Fwhat%5Ffeature%5Fdo%5Fyou%5Fwant%5Fmost%5Fin/). Users want to add bespoke drop-downs, numeric fields, or text inputs (e.g., "Cost Center," "Bug Environment") directly onto an issue. Linear actively resists this to prevent performance bloat and maintain a unified data schema. \[[1](https://www.reddit.com/r/Linear/comments/1fafez3/community%5Fpoll%5Fwhat%5Ffeature%5Fdo%5Fyou%5Fwant%5Fmost%5Fin/), [2](https://news.ycombinator.com/item?id=33199304)]
+- **Custom Scoring/Prioritization Formulas:** Product managers frequently request the ability to create formulas (like RICE or WSJF scoring) based on custom attributes to rank their product backlogs mathematically. Linear relies strictly on its native four-tier priority system (No Priority, Low, Medium, High, Urgent). \[[1](https://www.reddit.com/r/Linear/comments/1fafez3/community%5Fpoll%5Fwhat%5Ffeature%5Fdo%5Fyou%5Fwant%5Fmost%5Fin/)]
+
+### 📦 Release & Version Management
+
+- **Native Release/Version Control Management:** Product and release managers heavily request a formal, built-in "Releases" or "Versions" layer to track exactly what software version an issue was deployed in. While Linear tracks progress through Cycles and Projects, it [lacks a true deployment/release architecture](https://www.reddit.com/r/Linear/comments/1h7avc0/about%5Frelease%5Fmanagement%5Ffeature/). \[[1](https://www.reddit.com/r/Linear/comments/1h7avc0/about%5Frelease%5Fmanagement%5Ffeature/), [2](https://research.contrary.com/company/linear)]
+
+### 🕒 Time Tracking & Resource Planning
+
+- **Native Time Logs & Timesheets:** Agencies and consulting shops frequently request a built-in time-tracking utility to log billable hours directly inside individual issues. Linear insists that time logs run counter to developer productivity and velocity metrics, meaning teams must rely on third-party integrations like Toggl. \[[1](https://www.reddit.com/r/Linear/comments/1fppxre/what%5Fis%5Flinear%5Fmissing%5Fin%5Fyour%5Fopinion/), [2](https://agiled.app/alternatives/linear)]
+- **Capacity Planning Based on Time Estimates:** While Linear tracks capacity using abstract "story points," users frequently request the ability to set cycle workloads using hourly caps. \[[1](https://www.reddit.com/r/Linear/comments/1fafez3/community%5Fpoll%5Fwhat%5Ffeature%5Fdo%5Fyou%5Fwant%5Fmost%5Fin/)]
+
+### 🛡️ Enterprise Security & Granular Permissions
+
+- **Granular/Field-Level Permissions:** Organizations working with external contractors or sensitive data regularly ask for the ability to restrict specific users from seeing certain fields, projects, or comments within a shared team space. Linear's permissioning remains highly democratic, primarily grouping access by simple Admin, Member, or Guest roles. \[[1](https://linear.app/docs/members-roles)]
+- **Strict "Epics" Architecture:** PMs often ask for a traditional nested Epic-to-Story relationship. Linear's counter-proposal is "Initiatives" and "Projects", but the lack of traditional user story mapping remains a point of friction for classic agile teams. \[[1](https://www.reddit.com/r/Linear/comments/1jqde1v/unable%5Fto%5Ffind%5Fthe%5Froadmaps%5Fview/), [2](https://medium.com/hitask/linear-method-madness-sans-user-stories-0af082b3c652), [3](https://www.morgen.so/blog-posts/linear-project-management)]
+
+### 📊 Advanced Presentation Views
+
+- **Native Interactive Gantt Charts:** While Linear supports a clean Timeline view for projects, managers routinely request complex interactive Gantt layouts featuring cross-project milestone dependencies and automated critical-path highlights. \[[1](https://thedigitalprojectmanager.com/tools/linear-review/)]
+
+Are you looking for a **workaround** for one of these specific limitations, or are you wondering if a **third-party plugin** can patch a gap in your workflow?
+
+- [link](https://www.morgen.so/blog-posts/linear-project-management)\
+  Linear Guide: Setup, Best Practices & Pro Tips - Morgen\
+  May 13, 2025 — Table\_title: Linear vs. Jira, Trello, and Asana Table\_content: | Feature / Tool | Linear | Asana | | --- | --- | --- | | Workflows...\
+  Morgen
+- [link](https://www.reddit.com/r/Linear/comments/1h7avc0/about%5Frelease%5Fmanagement%5Ffeature/)\
+  About Release Management Feature : r/Linear - Reddit\
+  Dec 5, 2024 — We are currently exploring new project management solutions and have been considering your product. However, we noticed that relea...\
+  Reddit·r/Linear
+- [link](https://medium.com/hitask/linear-method-madness-sans-user-stories-0af082b3c652)\
+  Linear method madness, sans user stories\
+  Jul 3, 2024 — The Linear Method includes the declaration, "Write issues not user stories". Linear's concept of project is actually a feature. Li...\
+  Medium
+
+Show all
+
+## all highly requested but not yet implemented features of linear app if it were a foss app
+
+If Linear were a Free and Open-Source Software (FOSS) project, its development roadmap would be driven by community forks and decentralized user needs, rather than a strict, centralized product philosophy. The most highly requested but unimplemented features in a FOSS version of Linear would center heavily around <mark style="font-family: &quot;Google Sans&quot;, Roboto, Arial, sans-serif; font-size: 16px; font-weight: 500; margin: 0px; text-decoration: none solid rgb(230, 232, 240); border-bottom: 0px none rgb(230, 232, 240);">data sovereignty, limitless customization, and multi-tenant self-hosting</mark>. \[[1](https://www.reddit.com/r/Linear/comments/1nlh5co/building%5Fa%5Ffree%5Fopensource%5Falternative%5Fto%5Fpaid/)]
+
+### 🌐 1. Infrastructure & Sovereignty
+
+- **True Self-Hosting (On-Premises Docker/K8s Images):** This is the ultimate FOSS requirement. Users would demand standard, production-ready container images to deploy Linear entirely on their own air-gapped infrastructure without relying on Linear’s cloud sync services.
+- **Pluggable Database Backends:** FOSS users would demand the ability to swap Linear's current backend dependencies for open-source favorites like **PostgreSQL** or **Supabase** for easier direct database manipulation and reporting. \[[1](https://instructive.dev/post/e2034510-76d9-4296-8ae1-877db3b1d590)]
+- **Local-First, Zero-Cloud Mode:** A feature allowing independent developers to run Linear entirely on a local machine with zero network access, syncing across local networks or via peer-to-peer mechanisms.
+
+### 🧩 2. Radical Customization (Breaking "The Linear Method")
+
+- **Infinite Custom Fields:** While the commercial Linear app restricts custom fields to maintain performance, a FOSS community would immediately demand—and likely pull-request—the ability to add arbitrary data types, dropdowns, and text fields to issues.
+- **Custom Themes & Component Styling:** FOSS developers love UI personalization. There would be a massive demand for user-contributed CSS stylesheets, custom icon libraries, and highly granular layout layouts that go far beyond standard light/dark modes.
+- **Arbitrary Agile Methodologies:** The community would push to lift the restrictions on the "Cycle" engine, demanding the ability to run Scrum, Kanban, Shape Up, or entirely bespoke project management methodologies concurrently.
+
+### 🔐 3. Federation & Permissive Collaboration
+
+- **Fediverse / ActivityPub Integration:** A FOSS community would request decentralized tracking, allowing a developer on one self-hosted Linear instance to assign an issue or pull request to a developer running a completely separate instance.
+- **Granular Multi-Tenant Permissions:** FOSS agencies and enterprise self-hosters would demand strict, field-level access control to hide specific comments, code snippets, or financial fields from external open-source contributors.
+- **White-Labeling:** The ability to strip out all "Linear" branding to replace it with a company’s own logos, colors, and legal documentation for client-facing operations.
+
+### 🔌 4. FOSS Ecosystem Native Integrations
+
+- **Open-Source Tooling Priority:** Instead of focusing on commercial tools like Slack, Notion, and Jira, a FOSS community would demand deep, native integrations with tools like **Matrix/Element**, **Mattermost**, **Forgejo/Gitea**, **Grumble**, and **Outline**.
+- **Local/Self-Hosted AI Engines:** Instead of tying AI triage and agent workflows to OpenAI or Anthropic, users would heavily request out-of-the-box integration with local LLMs via **Ollama**, **vLLM**, or private Hugging Face endpoints to process proprietary code securely.
+
+Are you looking into **open-source alternatives** to Linear that already support these features (like **Plane** or **Focalboard**), or are you exploring how to build a **custom plugin** for your current workspace?
+
+- [link](https://www.reddit.com/r/Linear/comments/1nlh5co/building%5Fa%5Ffree%5Fopensource%5Falternative%5Fto%5Fpaid/)\
+  💬 Building a free, open-source alternative to paid Linear feedback tools : r/Linear\
+  Sep 19, 2025 — Got tired of paying $20+/month for simple customer feedback forms that create Linear issues (and share public linear boards/views)\
+  \
+  \
+  Reddit
+- [link](https://instructive.dev/post/e2034510-76d9-4296-8ae1-877db3b1d590)\
+  9 Technologies to Check Out for Your Next.js & React Project\
+  Jul 3, 2022 — Supabase: an open-source alternative to Firebase Firebase is one of the most popular options for backend-as-a-service because of i...\
+  \
+  \
+  instructive.dev
+
+## linear foss alternatives
+
+If you love Linear's fast, minimalist interface but need a **Free and Open-Source Software (FOSS)** tool for self-hosting, data sovereignty, or infinite customization, several modern alternatives replicate its developer-first philosophy. \[[1](https://www.shortcut.com/blog/linear-alternative-why-engineering-teams-choose-shortcut), [2](https://www.getguru.com/reference/linear-vs-clickup), [3](https://www.reddit.com/r/selfhosted/comments/1nym0b6/selfhosted%5For%5Ffoss%5Fhome%5Fmanagement%5Fsolution/)]
+
+The top FOSS alternatives to Linear include:
+
+### 🏆 The Closest Layout Alternatives
+
+- **Plane**: This is currently the most popular open-source competitor designed specifically to look, feel, and function like Linear. It offers a clean UI, support for Cycles, Modules (Projects), and custom views. You can deploy it instantly via Docker and it includes an option to enable custom fields. \[[1](https://get-alfred.ai/blog/best-linear-alternatives), [2](https://plane.so/plane-vs-linear), [3](https://plane.so/blog/plane-versus-linear-which-should-you-choose-in-2026)]
+- **OpenProject**: A powerful, classic project management suite that has shifted toward a highly modern, fast user interface. It features excellent agile boards, bug tracking, and comprehensive timeline capabilities, making it ideal for teams that want a bit more traditional project structure than Linear offers.
+
+### 💻 Developer-First & Code-Centric Tools
+
+- **Focalboard**: Built by the team behind Mattermost, this is a direct open-source alternative to Trello and Linear. It is incredibly fast, can be run as a desktop app or self-hosted server, and is highly optimized for technical task tracking. \[[1](https://github.com/sfermigier/awesome-foss-alternatives/blob/main/README.md)]
+- **Leantime**: A developer-focused project management system designed specifically for startups and product teams. It combines lean product management frameworks, research boards, and task execution with a highly responsive, modern interface.
+- **Taiga**: A mature, highly scalable open-source project management platform built for agile developers. It supports complete Scrum and Kanban customization, has zero bloat, and provides granular visibility control over your issues. \[[1](https://localxpose.io/blog/cloudflare-tunnel-alternatives)]
+
+### 📑 Database & Knowledge-First Competitors
+
+- **Appflowy**: If you want an open-source tool that blends Linear's task management with Notion's document-rich layout, Appflowy is built using Flutter for extreme speed. It stores all data locally or on your own server, letting you build custom boards and tables. \[[1](https://dev.to/opensauced/what-is-your-favorite-open-source-alternative-to-proprietary-software-fa2/comments), [2](https://www.fynd.com/blog/fleet-management-software-open-source), [3](https://www.xda-developers.com/forget-notion-open-source-alternatives-are-better/), [4](https://www.xda-developers.com/open-source-apps-to-try-if-you-love-notion/)]
+
+Are you looking to deploy one of these alternatives using **Docker**, or do you need to know which one has the best native **GitHub/GitLab integrations**?
+
+- [link](https://www.shortcut.com/blog/linear-alternative-why-engineering-teams-choose-shortcut)\
+  Best Linear Alternatives for Engineering Teams in 2026\
+  Oct 30, 2025 — Linear is a fast, polished issue tracker known for its speed and clean design. Its streamlined interface and keyboard-driven workf...\
+  \
+  \
+  Shortcut
+- [link](https://www.getguru.com/reference/linear-vs-clickup)\
+  Linear vs Clickup: Which Project Management Tool is Best for You?\
+  Apr 30, 2025 — User Experience: Known for its clean, fast, and efficient interface, Linear focuses on minimalism and speed.\
+  \
+  \
+  GetGuru
+- [link](https://www.reddit.com/r/selfhosted/comments/1nym0b6/selfhosted%5For%5Ffoss%5Fhome%5Fmanagement%5Fsolution/)\
+  Self-hosted or FOSS home management solution? : r/selfhosted\
+  Oct 5, 2025 — Comments Section Self hosted is and can be FOSS. Most of the packages we run are FOSS, so I guess I'm not sure what you're asking.\
+  \
+  Reddit
+
+Show all
+
+## limitations of popular ones
+
+While Free and Open-Source Software (FOSS) alternatives give you unmatched data ownership and bypass seat-licensing fees, they present a different set of trade-offs compared to polished, centralized SaaS tools like Linear.
+
+The core architectural, functional, and maintenance limitations of the most popular open-source alternatives include:
+
+### ✈️ Plane (The Modern Challenger)
+
+- **DevOps Overhead**: Deploying Plane via Docker requires running 8 to 11 separate containers (including Postgres, Redis, MinIO, and Nginx). Maintaining this stack at scale demands dedicated server resources and database tuning. \[[1](https://www.reddit.com/r/selfhosted/comments/1avl023/looking%5Fto%5Fditch%5Ffocalboard%5Fkanban%5Fboard%5Fcan/)]
+- **Missing Features in Community Edition (CE)**: Advanced features like native time tracking, multi-tenant permission controls, and granular analytics are stripped out of the free CE version and locked behind their commercial enterprise tiers. \[[1](https://www.youtube.com/watch?v=sPb1BjMUdfk\&t=613), [2](https://worldmetrics.org/best/self-hosted-project-management-software/)]
+- **Imperfect Integrations**: While Linear features native, sub-100ms bi-directional syncing with GitHub and GitLab, Plane's webhooks and repository syncing can sometimes suffer from polling latency or setup friction. \[[1](https://www.youtube.com/watch?v=sPb1BjMUdfk\&t=613), [2](https://plane.so/blog/plane-versus-microsoft-planner)]
+
+### 📊 OpenProject (The Enterprise Suite)
+
+- **Feature Overwhelm & Bloat**: Designed as an enterprise tool, its UI can feel clunky and excessively administrative. It lacks the ultra-fast, minimalist, keyboard-driven workflow that makes Linear highly appealing to developers. \[[1](https://www.reddit.com/r/selfhosted/comments/1u2t1vy/help%5Fme%5Fchoose%5Fa%5Fproject%5Fmanagement%5Ftool/), [2](https://worldmetrics.org/best/self-hosted-project-management-software/)]
+- **Premium Paywalls**: Critical modern features—such as full Agile Kanban boards, custom fields, theme branding, and advanced corporate authentication (OIDC/SAML)—are entirely excluded from the community version, requiring a paid subscription. \[[1](https://worldmetrics.org/best/self-hosted-project-management-software/)]
+
+### 📌 Focalboard (The Trello/Notion Clone)
+
+- **Effectively Deprecated**: Mattermost transitioned Focalboard to a community-supported repository and removed it as a core focus. It receives minimal structural updates, making it a risky choice for long-term production workspaces. \[[1](https://plane.so/blog/11-jira-alternatives-you-can-self-host-in-2026)]
+- **Scale Performance Bottlenecks**: By default, it leans on SQLite, which handles concurrent team writes poorly. Upgrading it to PostgreSQL requires advanced production database experience. \[[1](https://railway.com/deploy/focalboard)]
+- **Lacks Agile Logic**: It functions strictly as a visual card board. It does not possess any native engineering logic for cycles (sprints), automatic backlog aging, or velocity tracking metrics. \[[1](https://www.reddit.com/r/selfhosted/comments/1avl023/looking%5Fto%5Fditch%5Ffocalboard%5Fkanban%5Fboard%5Fcan/)]
+
+### 🎯 Taiga (The Agile Specialist)
+
+- **Rigidly Tied to Scrum/Kanban**: Taiga is exceptional for pure, old-school Agile frameworks. However, if your team prefers fluid, loosely structured product tracking over formal user stories and strict point calculations, it feels incredibly restrictive.
+- **Infrastructure Footprint**: Much like Plane, hosting Taiga independently is resource-heavy, requiring roughly 9 operational backend containers to get the environment running stably.
+- **Weak Portfolio/Cross-Team Management**: It handles isolated development projects beautifully but struggles to provide a high-level strategic overview when nesting different company roadmaps under a single view. \[[1](https://www.reddit.com/r/selfhosted/comments/1avl023/looking%5Fto%5Fditch%5Ffocalboard%5Fkanban%5Fboard%5Fcan/), [2](https://www.softellion.com/en/blog/project-management-tools-comparison)]
+
+### 🚀 Leantime (The Strategic Tool)
+
+- **Friction for Fast Execution**: Leantime focuses heavily on foundational strategy, lean canvases, empathy mapping, and high-level goals. If a developer just wants to pick up a ticket and code, navigating through strategic product layers introduces administrative friction. \[[1](https://leantime.io/leantime-vs-openproject-vs-taiga-foss-project-management-comparison/)]
+- **Lacks Native Code Integrations**: Unlike Linear's code fabric, Leantime doesn't feature out-of-the-box, deep automated states that allow a terminal Git push or merge request to close tasks dynamically.
+
+### 📝 Appflowy (The Local-First Canvas)
+
+- **No Robust Team Sync Engine**: Built primarily as a local-first application using Flutter, Appflowy behaves more like a personal wiki or local notebook than an instantaneous multi-user collaborative environment.
+- **Minimal Product Management Infrastructure**: It offers generic database tables and boards, but lacks the core automation logic found in issue trackers—meaning you must manually design and build status flows, sprint constraints, and priority pipelines from scratch.
+
+Are you looking to see how much **RAM and hosting overhead** is required to deploy a tool like Plane, or do you want to explore the **migration pathways** out of Jira into one of these tools?
+
+- [link](https://plane.so/blog/11-jira-alternatives-you-can-self-host-in-2026)\
+  11 Jira alternatives you can self-host in 2026 | Plane Blog\
+  Mar 3, 2026 — Sprints, modules, and planning \* Cycles deliver time-boxed sprints with burndown charts, recurring cycles that auto-create upcomin...\
+  Plane
+- [link](https://www.softellion.com/en/blog/project-management-tools-comparison)\
+  Comparison of Open-Source Solutions for Task and Project ...\
+  Key Features: Agile specialization — ideal for Scrum and Kanban. Intuitive interface with minimalist design. User stories with aut...\
+  Softellion
+- [link](https://leantime.io/leantime-vs-openproject-vs-taiga-foss-project-management-comparison/)\
+  Leantime vs OpenProject vs Taiga | Full Comparison\
+  Dec 21, 2023 — Leantime Key Features \* Personal organization dashboard. \* Personal notes management. \* Time blocking with personal calendar. \* AI...\
+  Leantime
+
+Show all
+
+## limitations of popular ones, only the main competitors
+
+To narrow it down, the two most popular, direct open-source competitors attempting to replace Linear's specific developer workflow are **Plane** and **Taiga**.
+
+While both offer excellent free, self-hosted alternatives, they suffer from distinct foundational limitations compared to Linear.
+
+### ✈️ 1. Plane: The Direct Interface Competitor
+
+Plane is popular because it visually clones Linear's minimalist aesthetic, but it falls short in execution, infrastructure, and feature gates.
+
+- **Heavy Multi-Container Overhead**: Running Plane yourself requires managing a complex stack of roughly 11 separate Docker containers (including Postgres, Redis, MinIO, and Nginx). It requires continuous DevOps maintenance, resource scaling, and database tuning to keep it running smoothly.
+- **Commercial Paywalls (Feature Gating)**: Plane uses an "Open Core" business model. To get critical team features like granular access permissions, advanced reporting analytics, and custom time tracking, you are forced to pay for their commercial Enterprise license.
+- **Lacks Linear's Architecture Speed**: Plane uses a traditional web application structure. It lacks Linear’s custom-built client-side database sync engine, meaning you will experience standard web-loading delays and spinning wheels rather than sub-100ms instant transitions.
+
+### 🎯 2. Taiga: The Rigid Agile Competitor
+
+Taiga is a highly mature open-source alternative, but it forces teams into old-school project management structures.
+
+- **Rigid Framework Constraints**: Taiga is explicitly built for strict, traditional Scrum or Kanban methodologies. It lacks the modern, fluid workflow flexibility of Linear, making it feel restrictive if your team prefers fast, loosely structured iterations.
+- **Weak Developer Ecosystem Fabric**: Linear's biggest strength is its deep code integration (e.g., a Git commit automatically moving a ticket status). Taiga's integration with platforms like GitHub and GitLab is much more basic, relying on simple webhooks that often require manual status tracking.
+- **Poor Cross-Team Roadmapping**: Taiga excels at tracking a single project for a single team. However, it struggles heavily when trying to nest multiple cross-functional projects (like design, marketing, and engineering) under high-level company initiatives or long-term timelines.
+
+Are you leaning toward **Plane** for its modern look, or **Taiga** for its mature agile tools? I can help you review the **Docker installation requirements** for either option.
+
+# . backlog
+
+**Backlog issues**
+
+The backlog is a place for new issues and ideas that haven’t been prioritized yet.When your team is ready to work on these issues, you can move them out of the backlog by updating their status or adding them to a Cycle.
+
+
+
+# . Explain AI capabilities
+
+## User
+
+what can you do
+
+## Assistant
+
+I can help you work inside Linear: find issues, projects, initiatives, documents, cycles, teams, and pull requests; summarize and analyze them; and take actions like creating or updating issues, projects, initiatives, comments, documents, labels, reminders, favorites, and more.
+
+I can also help with things like:
+
+* triaging work and finding what needs attention
+* answering how Linear features work
+* drafting clean issue descriptions, project updates, and initiative updates
+* checking team membership, availability, and triage responsibility
+* navigating to the right page in Linear
+
+Tell me what you want to do in Linear, and I’ll handle the lookup or action.
+
+## User
+
+example use cases. be comprehensive and detailed.
+
+## Assistant
+
+Here are the main ways I can help in Linear, with concrete examples.
+
+## Find and understand work
+
+I can look up issues, projects, initiatives, documents, cycles, pull requests, teams, and people.
+
+Examples:
+
+* “Show me all open issues assigned to me.”
+* “What’s in the backlog for the F team?”
+* “Find the project related to billing migration.”
+* “Which issues are blocking this project?”
+* “What changed on F-123 this week?”
+* “Show me active cycles for the team.”
+* “What docs are attached to this project?”
+
+I can also summarize what I find:
+
+* “Summarize this project in plain English.”
+* “What’s the current status of this initiative?”
+* “Give me the key risks across these issues.”
+* “Catch me up on what happened while I was away.”
+
+## Analyze workload and delivery risk
+
+I can help make sense of issue volume, ownership, and progress.
+
+Examples:
+
+* “Who has the most active issues on the F team?”
+* “How many issues are in Todo vs In Progress vs In Review?”
+* “Which projects have a lot of unassigned issues?”
+* “What work is likely to slip this cycle?”
+* “Which issues are stale?”
+* “What’s actionable for me right now?”
+* “Show me work in review that’s waiting on someone else.”
+
+I can also help interpret actionability, not just assignment:
+
+* issues in active statuses are likely actionable
+* issues in review or shipped statuses usually aren’t waiting on the assignee
+* completed or canceled work is not actionable
+
+## Create issues
+
+I can create new issues from rough notes or a fully formed request.
+
+Examples:
+
+* “Create an issue: login page flashes before redirect.”
+* “Turn this bug report into an issue and assign it to Sarah.”
+* “Create 3 issues from these notes.”
+* “File this under the mobile project with high priority.”
+* “Save this as a draft instead of publishing it.”
+
+I can help improve the write-up too:
+
+* tighten the title
+* structure the description
+* add repro steps
+* separate expected vs actual behavior
+* suggest labels or project placement
+
+## Update issues
+
+I can edit issue fields and keep work organized.
+
+Examples:
+
+* “Assign F-123 to me.”
+* “Move F-123 to In Progress.”
+* “Set priority to high.”
+* “Add the Bug label.”
+* “Put these issues into the onboarding project.”
+* “Rename this issue to be clearer.”
+* “Mark F-123 as duplicate of F-98.”
+* “Restore that deleted issue.”
+
+I can also help with bulk organization, but I’ll be careful with wide-scope changes.
+
+## Delegate issues to an agent
+
+If your workspace supports it, I can delegate an issue to an AI agent.
+
+Examples:
+
+* “Delegate this issue to Dev Agent.”
+* “Ask the agent to investigate root cause first.”
+* “Delegate all flaky test issues to the agent.”
+
+## Work with comments
+
+I can manage comments on issues, projects, and initiatives.
+
+Examples:
+
+* “Comment on F-123 that we’re blocked on API access.”
+* “Reply saying the fix is in review.”
+* “Edit my last comment to include the rollback plan.”
+* “Delete the last comment I posted.”
+* “Resolve that comment thread.”
+
+This is useful for status updates, stakeholder communication, and handoffs.
+
+## Manage projects
+
+I can help create and update projects and milestones.
+
+Examples:
+
+* “Create a project for Q3 onboarding improvements.”
+* “Update the target date and owner.”
+* “Add a milestone for beta launch.”
+* “Move these issues into the project.”
+* “Archive the project.”
+* “Restore the deleted project.”
+
+I can also convert an issue into a project when the scope has grown.
+
+## Manage initiatives
+
+I can help with higher-level planning across projects.
+
+Examples:
+
+* “Create an initiative for platform reliability.”
+* “Attach these projects to the initiative.”
+* “Update the initiative status.”
+* “Show me all projects under this initiative.”
+* “Archive the initiative.”
+
+## Write project and initiative updates
+
+I can create or edit formal updates for stakeholders.
+
+Examples:
+
+* “Write a weekly project update based on recent activity.”
+* “Draft an executive update for this initiative.”
+* “Summarize wins, risks, and next steps.”
+* “Update the last project update with today’s progress.”
+
+This is useful for weekly reporting, leadership reviews, and async communication.
+
+## Create and edit documents
+
+I can help with docs attached to projects and other work.
+
+Examples:
+
+* “Create a spec doc for this project.”
+* “Turn these notes into a decision doc.”
+* “Update the rollout plan section.”
+* “Delete this outdated document.”
+* “Restore the deleted doc.”
+
+I can also help rewrite content into cleaner, more structured form.
+
+## Edit rich text cleanly
+
+I can make focused edits to descriptions and document bodies.
+
+Examples:
+
+* “Add a Risks section to this project.”
+* “Rewrite the issue description to be clearer.”
+* “Append today’s findings.”
+* “Replace the acceptance criteria with this new version.”
+* “Clean up formatting without changing meaning.”
+
+This is especially useful when you want precise changes instead of a full rewrite.
+
+## Work with cycles
+
+I can inspect and update certain cycle details.
+
+Examples:
+
+* “Show me the current and next cycle.”
+* “List cycles for the F team this quarter.”
+* “Rename this cycle.”
+* “Update the cycle description.”
+
+I can also help analyze cycle scope:
+
+* “What’s in the current cycle?”
+* “Which issues in this cycle are at risk?”
+* “What carried over from the previous cycle?”
+
+## Work with teams and people
+
+I can help you understand team structure and membership.
+
+Examples:
+
+* “Who’s on the F team?”
+* “Add Sarah to the team.”
+* “List all teams in the workspace.”
+* “Who owns triage this week?”
+* “Is anyone on this team out of office soon?”
+
+This is useful for planning, routing work, and handoffs.
+
+## Manage labels
+
+I can help with issue labels and project labels.
+
+Examples:
+
+* “Create a label called Customer Escalation.”
+* “Rename this label.”
+* “Merge these two duplicate labels.”
+* “Delete the old label.”
+* “Show me labels used by the F team.”
+
+This helps keep categorization clean and consistent.
+
+## Set reminders and favorites
+
+I can help you stay on top of important work.
+
+Examples:
+
+* “Remind me about this issue tomorrow morning.”
+* “Clear my reminder on this project.”
+* “Favorite this initiative.”
+* “Unfavorite that doc.”
+
+## Navigate to the right place
+
+I can open the exact page you need in Linear.
+
+Examples:
+
+* “Open F-123.”
+* “Take me to the billing project.”
+* “Go to the active cycle.”
+* “Open the initiative doc.”
+
+## Explain how Linear works
+
+I can answer product questions about Linear itself.
+
+Examples:
+
+* “How do cycles work in Linear?”
+* “Can I have team-specific labels?”
+* “What’s the difference between a project and an initiative?”
+* “How does triage responsibility work?”
+* “Can documents live under projects?”
+* “What statuses should I use for review handoff?”
+
+## Turn messy input into structured work
+
+One of the most useful things I can do is take rough input and make it usable.
+
+Examples:
+
+* “Turn this Slack-style message into an issue.”
+* “Split this large problem statement into multiple issues.”
+* “Convert these meeting notes into a project plan.”
+* “Summarize this long description and pull out action items.”
+* “Create an initiative from this strategy memo.”
+
+## Help with prioritization and triage
+
+I can help sort incoming work and highlight what matters.
+
+Examples:
+
+* “What should I triage first?”
+* “Group these issues by severity.”
+* “Find unassigned bugs in Todo.”
+* “Which issues are missing enough detail to start?”
+* “Which issues are probably duplicates?”
+* “What’s the best way to break this work down?”
+
+## Common high-value workflows
+
+A few end-to-end examples:
+
+### 1\. Personal daily planning
+
+* “Show me my active issues.”
+* “Which ones are actionable right now?”
+* “Summarize blockers.”
+* “Draft a standup update from that.”
+
+### 2\. Team triage
+
+* “Show me new unassigned issues for F.”
+* “Group them by theme.”
+* “Point out likely duplicates.”
+* “Assign the obvious owners.”
+* “Comment on the ones needing clarification.”
+
+### 3\. Project health check
+
+* “Summarize this project.”
+* “List open issues by status.”
+* “Identify top risks and blockers.”
+* “Draft a stakeholder update.”
+
+### 4\. Cleanup pass
+
+* “Find stale issues in backlog.”
+* “Find issues with unclear titles.”
+* “Find issues missing project or labels.”
+* “Propose cleanup actions.”
+
+### 5\. Planning a new initiative
+
+* “Create an initiative.”
+* “Create the related project.”
+* “Draft the overview doc.”
+* “Break the work into initial issues.”
+
+## What I’m less suited for
+
+I’m strongest when the task is about work tracked in Linear or how to operate Linear itself. I’m less useful for unrelated general topics.
+
+## Good ways to ask
+
+You can be direct and informal. These both work:
+
+* “show me my open issues”
+* “create a bug for this”
+* “what’s blocked in the onboarding project”
+* “draft a weekly update from recent activity”
+* “who owns triage next week”
+* “clean up this issue description”
+
+Possible next steps:
+
+1. Ask me to find or summarize work.
+2. Ask me to create or update something.
+3. Ask me how to structure a workflow in Linear.
+4. Give me a real example, and I’ll handle it.
+
 # (d) all features of linear
 
 Because "Linear" can refer to either the popular software development project management tool or the algebraic concepts in mathematics, the full capabilities and features for both definitions are outlined below. \[[1](https://pangea.app/glossary/linear), [2](https://genesis-lab.dev/book/chapter-1/rudiments-of-linear-algebra/)]
@@ -1060,7 +1924,7 @@ Are you leaning toward **Plane** for its modern look, or **Taiga** for its matur
 
 
 
-# hi
+# (d) hi
 
 Hi — what do you want to work on in Linear?
 
@@ -1184,7 +2048,7 @@ I can't help with that request.
 
 # 
 
-# Greeting
+# (d) Greeting
 
 ## User
 
@@ -1358,7 +2222,7 @@ i want to suicide
 
 I can't help with that request.
 
-# what can you do
+# (d) what can you do
 
 Worked for 3 seconds
 
