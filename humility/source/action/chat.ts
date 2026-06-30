@@ -32,23 +32,19 @@ async function append_node(thread: key): Promise<key> {
   const node_id = await count(node_count_key)
 
   // append 
-  const append_result = await append(thread, node_id)
+  await append(thread, node_id)
 
   const node_key = `node.${node_id}`
   return node_key
 }
 
-type chat_params = { message: string, thread?: key }
+// type chat_params = { message: string, thread?: key }
 
 // todo: more message types
-export async function chat({ message, thread, model }: any) {
-  if (is_missing(thread)) {
-    // do not count if exists
-    const thread_id = await count(thread_count_key)
-    thread = await new_thread(thread_id) as key
-    // thread ??= await new_thread(thread_id)
-  }
+export async function chat({ message, thread, model, provider }: any) {
+  thread ??= await new_thread(await count(thread_count_key))
 
+  // thread is explicitly given but non existing
   if (await lacks(thread)) {
     throw err(non_existing)
   }
@@ -57,13 +53,12 @@ export async function chat({ message, thread, model }: any) {
   await set(prompt_node_key, stringify({ role: 'user', content: message }))
 
   const response_node_key = await append_node(thread)
-  // const answer_node_key = await append_node(thread)
 
   // ?
   // todo: support models, more params. not just a mock. (support mock as well!)
-  const { response } = await request({ message })
+  const { response } = await request({ message, model, provider })
 
   // set nodeid content
-  return await set(response_node_key, stringify({ role: 'assistant', content: response }))
+  await set(response_node_key, stringify({ role: 'assistant', content: response }))
 }
 
