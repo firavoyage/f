@@ -92,27 +92,27 @@ const map = {
   ESTALE: stale_network_file_handle
 }
 
-export function home(...args) {
+export function home(...args: string[]) {
   return join(homedir(), ...args)
 }
 
-export function path(...args) {
+export function path(...args: string[]) {
   return join(...args)
 }
 
-export function data(...args) {
+export function data(...args: string[]) {
   const data_folder = xdg ? desktop({ subdir: app_name }).data : home(`.${app_name}`, 'data')
 
   return join(data_folder, ...args)
 }
 
-export function config(...args) {
+export function config(...args: string[]) {
   const config_folder = xdg ? desktop({ subdir: app_name }).config : home(`.${app_name}`, 'config')
 
   return join(config_folder, ...args)
 }
 
-export function cache(...args) {
+export function cache(...args: string[]) {
   const cache_folder = xdg ? desktop({ subdir: app_name }).cache : home(`.${app_name}`, 'cache')
 
   return join(cache_folder, ...args)
@@ -121,52 +121,49 @@ export function cache(...args) {
 /**
  * (over) write a file
  */
-export async function write(path, content): Promise<Result<void>> {
-  try {
-    await dirname(path)
-  } catch {
-    throw err(invalid_input)
+export async function write(path: string, content: string) {
+  let _ = await handle(() => mkdir(dirname(path), { recursive: true }))
+  if (is_error(_)) {
+    if (has(map, _.code)) {
+      throw err({ type: map[_.code], message: _ })
+    }
+
+    throw _
   }
 
-  try {
-    await mkdir(dirname(path), { recursive: true })
-  } catch (e) {
-    if (has(map, e.code)) {
-      throw err({ type: map[e.code], message: e })
+  _ = await handle(() => writeFile(path, content, 'utf8'))
+  if (is_error(_)) {
+    if (has(map, _.code)) {
+      throw err({ type: map[_.code], message: _ })
     }
-    throw err(other)
-  }
 
-  try {
-    await writeFile(path, content, 'utf8')
-  } catch (e) {
-    if (has(map, e.code)) {
-      throw err({ type: map[e.code], message: e })
-    }
-    throw err(other)
+    throw _
   }
 }
 
 /**
  * read a file
  */
-export async function read(path) {
-  try {
-    return await readFile(path, 'utf8')
-  } catch (e) {
-    if (has(map, e.code)) {
-      throw err({ type: map[e.code], message: e })
+export async function read(path: string) {
+  let _ = await handle(() => readFile(path, 'utf8'))
+
+  if (is_error(_)) {
+    if (has(map, _.code)) {
+      throw err({ type: map[_.code], message: _ })
     }
-    throw err(other)
+
+    throw _
   }
+
+  return _
 }
 
 export async function append(path, content) {
   try {
     await appendFile(path, content)
   } catch (e) {
-    if (has(map, e.code)) {
-      throw err({ type: map[e.code], message: e })
+    if (has(map, _.code)) {
+      throw err({ type: map[_.code], message: _ })
     }
     throw err(other)
   }
