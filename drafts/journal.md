@@ -43242,6 +43242,8 @@ jul 2026
 
 update headings. sync zhihu. export telegram.
 
+02 40 watch `Brazil v Japan | Round of 32 | FIFA World Cup 2026™ | Highlights` `Germany v Paraguay | Round of 32 | FIFA World Cup 2026™ | Highlights`.
+
 
 
 <!-- timebox, plan. -->
