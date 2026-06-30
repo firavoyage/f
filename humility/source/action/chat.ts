@@ -50,15 +50,18 @@ export async function chat({ message, thread, model, provider }: any) {
   }
 
   const prompt_node_key = await append_node(thread)
-  await set(prompt_node_key, stringify({ role: 'user', content: message }))
+  const prompt_node = { role: 'user', content: message }
+  
+  await set(prompt_node_key, stringify(prompt_node))
 
   const response_node_key = await append_node(thread)
 
-  // ?
   // todo: support models, more params. not just a mock. (support mock as well!)
   const { response } = await request({ message, model, provider })
 
+  const response_node = { type: 'response', role: 'assistant', content: response }
+
   // set nodeid content
-  await set(response_node_key, stringify({ role: 'assistant', content: response }))
+  await set(response_node_key, stringify(response_node))
 }
 
