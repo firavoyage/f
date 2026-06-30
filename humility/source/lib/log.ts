@@ -1,6 +1,10 @@
+import { stringify } from 'yaml';
+import { append, cache } from 'lib/file';
+import { app_name } from './env';
+
 type log = typeof log
 declare global {
-  var log: log  
+  var log: log
 }
 
 /**
@@ -17,7 +21,7 @@ function clean_non_enum(obj: any, seen = new WeakSet()): any {
   // do not process non native object
   if (Object.getPrototypeOf(obj).constructor != Object) {
     return obj
-  } 
+  }
 
   // Prevent infinite loops from circular references
   if (seen.has(obj)) {
@@ -56,4 +60,14 @@ export function log(...args): void {
   console.log(...processedArgs);
 }
 
+const log_file = cache('log.log')
 
+/**
+ * log into log file
+ */
+export async function log_info(message: string, ...payloads: object[]) {
+  await append(log_file, `${new Date().toISOString()} INFO ${message}\n`)
+  for (const payload of payloads) {
+    await append(log_file, )
+  }
+}
