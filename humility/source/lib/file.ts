@@ -136,8 +136,10 @@ export function cache(...args: string[]) {
 
 /**
  * (over) write a file
+ * 
+ * no content = touch
  */
-export async function write(path: string, content: string) {
+export async function write(path: string, content: string = '') {
   await normalize(() => mkdir(dirname(path), { recursive: true }))
   await normalize(() => writeFile(path, content, 'utf8'))
 }
