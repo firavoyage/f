@@ -15,4 +15,11 @@ import { parse, stringify } from 'yaml';
 // log(obj)
 // log(arr)
 
+// log('')
+
+log(stringify({}))
+
+log(stringify(1))
+
+log('hi')
 
