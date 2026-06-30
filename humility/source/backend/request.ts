@@ -45,14 +45,23 @@ export async function request({ message, model, provider }: any) {
   // must exist. you should point to a mock file even if you wanna mock.
   const config_content = parse(await read(config('config.yaml')))
   // const config_content = await does_exist(config('config.yaml')) ? await read(config('config.yaml')) : {}
-
   const { url, key } = config_content[provider]
+
+  await log_info('request started', { message, model, provider })
 
   const start_at = Date.now()
 
-  const response = await openai_compatible({ message, model, url, key })
+  const response = await handle(() => openai_compatible({ message, model, url, key }))
 
   const finish_at = Date.now()
+
+  if(is_error(response)){
+    await log_error('request failed', { response, start_at, finish_at })
+    
+    throw response
+  }
+
+  await log_info('request finished', { response, start_at, finish_at })
 
   return { response, start_at, finish_at }
 }
