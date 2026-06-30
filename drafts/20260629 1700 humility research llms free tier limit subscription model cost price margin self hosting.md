@@ -3829,3 +3829,193 @@ What **chat interface** are you using so I can show you exactly how to drop the 
   Sep 30, 2025 — SouthernSkin1255. • 9mo ago. Maybe Nanogpt? It has several models and a monthly subscription. There isn't a huge variety, but ther...\
   Reddit·r/SillyTavernAI
 
+# how does google/gemma-4-26b-a4b-it get video input
+
+The **`google/gemma-4-26b-a4b-it`** model processes video input by <mark><strong>sampling the video into a sequential series of static image frames</strong></mark>. It does not natively stream a continuous video container file directly into its neural layers. Instead, a specialized multi-modal preprocessing pipeline strips away the audio track and extracts the visual data frame-by-frame. [link](https://docs.vllm.ai/projects/recipes/en/latest/Google/Gemma4.html)
+
+### Frame Extraction and Temporal Processing
+
+- **Sampling Rate:** When you feed a video into the framework, the [AutoProcessor](https://huggingface.co/google/gemma-4-26B-A4B-it) or backend pipeline extracts frames at a configurable rate (typically around 1 frame per second for up to 60 seconds).
+- **Vision Encoder Handling:** Each extracted frame is treated as an image and sent through Gemma 4’s **550-million parameter vision encoder**.
+- **Grid Patching & Embedding:** The vision encoder breaks each frame into 16 × 16 pixel patches, aggregates them via a 3 × 3 grid pooling process, and projects them into visual token embeddings based on your chosen token budget.
+- **Sequence Alignment:** Because the frames are fed into the model’s 256K token context window sequentially, the model tracks motion and context across time natively using its attention mechanism. [link](https://catalog.ngc.nvidia.com/orgs/nim/teams/google/models/gemma-4-26b-a4b-it)
+
+### Python Implementation Example
+
+To feed a video to the model locally, you must use the `AutoModelForMultimodalLM` class along with its corresponding `AutoProcessor` from the Hugging Face `transformers` library. You will also need to install dependencies like `torchcodec` or `torchvision` to handle the backend frame extraction. [link](https://huggingface.co/google/gemma-4-26B-A4B-it)
+
+python
+
+```
+from transformers import AutoProcessor, AutoModelForMultimodalLM
+import torch
+
+MODEL_ID = "google/gemma-4-26b-a4b-it"
+
+# Initialize processor and multimodal model
+processor = AutoProcessor.from_pretrained(MODEL_ID)
+model = AutoModelForMultimodalLM.from_pretrained(
+    MODEL_ID,
+    torch_dtype=torch.bfloat16,
+    device_map="auto"
+)
+
+# Structure the prompt with the video block placed before the text
+messages = [
+    {
+        "role": "user",
+        "content": [
+            {"type": "video", "video": "path/to/your/video.mp4"},
+            {"type": "text", "text": "Describe the actions taking place in this video step-by-step."}
+        ]
+    }
+]
+
+# The processor automatically extracts the frames and converts them to tokens
+inputs = processor(text=messages, return_tensors="pt").to("cuda")
+
+# Generate response
+outputs = model.generate(**inputs, max_new_tokens=500)
+print(processor.decode(outputs[0], skip_special_tokens=True))
+```
+
+Use code with caution.
+
+### Important Modality Limitations
+
+- **No Audio Track Support:** Unlike the smaller `E2B` and `E4B` variants, the larger 26B and 31B models **do not contain an audio encoder**. If your `.mp4` video contains an embedded audio track, passing it directly through certain API endpoints may throw an error unless the audio track is stripped or ignored by the framework.
+- **Prompt Ordering:** Gemma 4 is optimized to look for interleaved multimodal inputs in a strict order: visual content (images/video frames) should always be defined **before** the accompanying text in the prompt array. [link](https://huggingface.co/google/gemma-4-26B-A4B-it)
+
+Would you like help setting up a **vLLM pipeline** to accelerate video token throughput, or do you need assistance adjusting the **visual token budget** to parse higher-resolution videos? [link](https://docs.vllm.ai/projects/recipes/en/latest/Google/Gemma4.html)
+
+- [link](https://huggingface.co/google/gemma-4-26B-A4B-it)\
+  google/gemma-4-26B-A4B-it - Hugging Face\
+  Jun 10, 2026 — Below, you will also find snippets for processing audio (E2B and E4B only), images, and video alongside text: \* Code for processin...\
+  Hugging Face
+- [link](https://catalog.ngc.nvidia.com/orgs/nim/teams/google/models/gemma-4-26b-a4b-it)\
+  Gemma 4 26B A4B IT - NGC Catalog - NVIDIA\
+  Jun 1, 2026 — Description. gemma-4-26B-A4B-it is a Google-developed multimodal instruction-tuned Mixture-of-Experts model for text, image, and v...\
+  NVIDIA
+- [link](https://openrouter.ai/google/gemma-4-26b-a4b-it:free)\
+  Gemma 4 26B A4B (free) - API Pricing & Benchmarks - OpenRouter\
+  google/gemma-4-26b-a4b-it:free ... Gemma 4 26B A4B IT is an instruction-tuned Mixture-of-Experts (MoE) model from Google DeepMind.\
+  OpenRouter
+
+Show all
+
+## can it input audio
+
+**No, the `google/gemma-4-26b-a4b-it` model cannot accept audio input**. [link](https://dev.to/pulkitgovrani/gemma-4s-audio-and-video-inputs-a-hands-on-guide-nobody-has-written-yet-2m2c)
+
+While certain models in the [Gemma 4 family](https://huggingface.co/google/gemma-4-26B-A4B-it) feature native audio understanding, this specific 26B parameter variant completely lacks an audio encoder block. [link](https://huggingface.co/google/gemma-4-26B-A4B-it)
+
+### Modality Distribution in Gemma 4
+
+Google split the capabilities across different sizes in the model family: [link](https://huggingface.co/google/gemma-4-26B-A4B-it)
+
+- **Supported on Gemma 4 E2B and E4B:** These smaller on-device models (~2B and ~4B parameters) feature a dedicated **~300M parameter audio encoder**. They natively handle audio files (like `.mp3` or `.wav`) for automatic speech recognition and translation. [link](https://huggingface.co/google/gemma-4-26B-A4B-it)
+- **Supported on Gemma 4 26B (A4B) and 31B:** These larger models only possess the 550M parameter vision encoder. Their multimodal capabilities are strictly limited to **text, images, and sampled video frames**. [link](https://huggingface.co/google/gemma-4-26B-A4B-it)
+
+### What Happens If You Try?
+
+If you attempt to pass an audio file or an `.mp4` video containing an active audio track into a framework hosting Gemma 4 26B, you will encounter structural issues: [link](https://github.com/BerriAI/litellm/issues/25291)
+
+1. **API Rejection:** Serving endpoints (such as Google AI Studio or LiteLLM wrappers) will throw a `400 BadRequestError` stating `“Audio input modality is not enabled for this model”`.
+2. **Hugging Face Framework Failures:** Local pipelines using `AutoProcessor` will either ignore the audio component completely or crash during tokenization because the model's vocabulary and config mapping do not contain audio projection layer weights. [link](https://github.com/BerriAI/litellm/issues/25291)
+
+### Workarounds
+
+If your application requires speech processing alongside the intelligence of the 26B model, you must use a **cascaded pipeline**:
+
+1. Run a lightweight, local Automatic Speech Recognition (ASR) model—such as OpenAI's Whisper—to convert the audio file into a raw text transcript.
+2. Feed that text transcript directly into the text block of your `google/gemma-4-26b-a4b-it` prompt.
+
+Would you like a Python snippet demonstrating how to **interleave a text transcript** alongside a video frame pipeline, or would you like to see how to run the audio-native **Gemma 4 E4B model** locally instead? [link](https://www.youtube.com/shorts/KLuPOeF6yPM)
+
+- [link](https://huggingface.co/google/gemma-4-26B-A4B-it)\
+  google/gemma-4-26B-A4B-it - Hugging Face\
+  Jun 10, 2026 — Native System Prompt Support – Gemma 4 introduces native support for the system role, enabling more structured and controllable co...\
+  Hugging Face
+- [link](https://github.com/BerriAI/litellm/issues/25291)\
+  \[Bug]: Gemma 4 (26B/31B) via Google AI Studio rejects video ...\
+  Apr 7, 2026 — What happened? When sending video content to Gemma 4 models (gemma-4-26b-a4b-it, gemma-4-31b-it) via gemini/ provider, the Google ...\
+  GitHub
+- [link](https://ai.google.dev/gemma/docs/capabilities/audio?gl=us)\
+  Audio understanding | Gemma | Google AI for Developers\
+  Jun 3, 2026 — Audio data. Digital audio data can come in many formats and levels of resolution. The actual audio formats you can use with Gemma,\
+  Google AI for Developers
+
+Show all
+
+## does it convert audio to text first if it supports
+
+<mark><strong><span>No, it does not convert audio to text first.</span></strong></mark>
+
+For the specific variants in the family that _do_ support speech—such as **Gemma 4 E2B, E4B, and 12B Unified**—the audio processing is completely **native**. The framework does not rely on a hidden, separate Automatic Speech Recognition (ASR) step to transcribe the words into text before feeding them to the LLM core. [link](https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemma-4-12b/)
+
+### How Gemma 4's Native Audio Input Works
+
+Instead of cascading a separate transcriber tool, Google processes the audio signal natively down at the neural network layer: [link](https://dev.to/pulkitgovrani/gemma-4s-audio-and-video-inputs-a-hands-on-guide-nobody-has-written-yet-2m2c)
+
+- **Raw Waveform Projection:** Raw audio files (converted to 16kHz float32 waveforms) are fed into the network. [link](https://ai.google.dev/gemma/docs/capabilities/audio?gl=us)
+- **Direct Vector Mapping:** On the E2B and E4B edge models, a dedicated ~300M parameter audio encoder maps the audio waves directly into continuous vector embeddings. On the newer [Gemma 4 12B Unified model](https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemma-4-12b/), the audio encoder is entirely removed; raw sound waves are sliced and projected directly into the exact same dimensional space as text tokens. [link](https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemma-4-12b/)
+- **Multimodal Tokens:** The language model architecture views these acoustic vectors as "audio tokens" (consuming roughly **25 tokens per second** of audio). [link](https://ai.google.dev/gemma/docs/capabilities/audio?gl=us)
+
+### Why Native is Superior to "Audio-to-Text First"
+
+Because it skips an intermediary text transcription phase, the model doesn't just read the verbal words. Processing the raw waveform allows the network to natively understand and reason about audio characteristics like **tone, pitch, pacing, background noise, and audio quality**. [link](https://dev.to/pulkitgovrani/gemma-4s-audio-and-video-inputs-a-hands-on-guide-nobody-has-written-yet-2m2c)
+
+For example, if you ask a native audio model to "translate this audio but mimic the emotional tone," it can evaluate the acoustic data to identify if the speaker sounds angry or excited—something a raw text transcript completely strips away.
+
+If you are writing an application for the audio-capable sizes, would you like to see the **Python processing code** used to slice and normalize a `.wav` file into the correct float32 waveform array format, or would you like to explore how to frame **voice-editing prompts**? [link](https://ai.google.dev/gemma/docs/capabilities/audio?gl=us)
+
+- [link](https://ai.google.dev/gemma/docs/capabilities/audio?gl=us)\
+  Audio understanding | Gemma | Google AI for Developers\
+  Jun 3, 2026 — Speech to text. Gemma 4 E2B, E4B, and 12B Unified are trained for multilingual speech recognition, allowing you to transcribe audi...\
+  Google AI for Developers
+- [link](https://dev.to/pulkitgovrani/gemma-4s-audio-and-video-inputs-a-hands-on-guide-nobody-has-written-yet-2m2c)\
+  Gemma 4's Audio and Video Inputs: A Hands-On Guide ...\
+  May 24, 2026 — ... trained separately and connected to the language model via a projection layer. This is not "transcribe the audio then feed the...\
+  DEV Community
+- [link](https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemma-4-12b/)\
+  Introducing Gemma 4 12B: a unified, encoder-free multimodal ...\
+  Jun 3, 2026 — Vision: We replaced Gemma 4's vision encoder with a lightweight embedding module consisting of a single matrix multiplication, pos...\
+  blog.google
+
+Show all
+
+## does gemma on openrouter support audio
+
+<mark><strong><span>No, OpenRouter does not support audio input for any of the Gemma models listed on its platform.</span></strong></mark>
+
+While older, specialized mobile-edge checkpoints like `Gemma 3n 4B` theoretically supported native audio natively at the weights level, the API providers on [OpenRouter](https://openrouter.ai/) have **disabled or omitted audio ingestion pipelines** for the entire Gemma family. [link](https://openrouter.ai/google/gemma-3n-e4b-it)
+
+### Model-by-Model Breakdown on OpenRouter
+
+- **`google/gemma-4-26b-a4b-it`:** As established, this large Mixture-of-Experts variant completely lacks an audio encoder block. The [OpenRouter Gemma 4 26B API Endpoint](https://openrouter.ai/google/gemma-4-26b-a4b-it) officially supports only **text, images, and sampled video files** (up to 60 seconds at 1 frame per second). [link](https://openrouter.ai/google/gemma-4-26b-a4b-it)
+- **`google/gemma-4-31b-it`:** Like the 26B version, the dense [OpenRouter Gemma 4 31B Endpoint](https://openrouter.ai/google/gemma-4-31b-it:free) does not support audio. Its listed capabilities are strictly limited to text and vision input. [link](https://openrouter.ai/google/gemma-4-31b-it:free)
+- **`google/gemma-3-27b-it`:** The [OpenRouter Gemma 3 27B Endpoint](https://openrouter.ai/google/gemma-3-27b-it) is a vision-language model, capped exclusively at **text and image** handling. [link](https://openrouter.ai/google/gemma-3-27b-it)
+
+### Why Isn't Audio Working?
+
+OpenRouter is an API aggregator. The underlying infrastructure providers hosting these models (such as Lepton, Together AI, or DeepInfra) configure their serving stacks using frameworks like vLLM. Because configuring a live audio preprocessing pipeline over an API introduces complex latency and formatting challenges, third-party providers rarely implement audio support for open-weights models unless there is massive demand.
+
+If you strictly need a model on OpenRouter that can dynamically accept native audio input, you will have to use proprietary models like **`openai/gpt-4o-audio-preview`**.
+
+Would you like help rewriting your OpenRouter API payload to format **video frames or images** properly, or do you want to explore the specific format required to pass audio files to **OpenAI's audio models** on OpenRouter instead?
+
+- [link](https://openrouter.ai/google/gemma-4-31b-it:free)\
+  Gemma 4 31B (free) - API Pricing & Benchmarks | OpenRouter\
+  google/gemma-4-31b-it:free. Model weights · Compare Playground Quick Start. Gemma 4 31B Instruct is Google DeepMind's 30.7B dense ...\
+  OpenRouter
+
+- [link](https://openrouter.ai/google/gemma-3-27b-it)\
+  Gemma 3 27B - API Pricing & Benchmarks | OpenRouter\
+  Gemma 3 27B - API Pricing & Benchmarks | OpenRouter. Search ⌘ K. Google: Gemma 3 27B. google/gemma-3-27b-it. Model weights. Compar...\
+  OpenRouter
+
+- [link](https://openrouter.ai/google/gemma-4-26b-a4b-it)\
+  Gemma 4 26B A4B - API Pricing & Benchmarks - OpenRouter\
+  google/gemma-4-26b-a4b-it ... Gemma 4 26B A4B IT is an instruction-tuned Mixture-of-Experts (MoE) model from Google DeepMind. Desp...\
+  OpenRouter
+
