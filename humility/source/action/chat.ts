@@ -1,7 +1,7 @@
 import { request } from 'backend/request';
 import { lacks, get, set } from 'backend/store';
 import { append, read, traverse } from 'backend/tree';
-import { stringify } from 'yaml';
+import { parse, stringify } from 'yaml';
 import { new_thread } from 'action/new_thread';
 
 export const not_a_number = 'not a number'
@@ -39,7 +39,32 @@ async function append_node(thread: key): Promise<key> {
 }
 
 async function build_context(thread: key) {
-  const nodes = traverse(await read(thread))
+  const nodes = (await traverse(await read(thread))).slice(1)
+  const context = []
+
+  for (const node of nodes) {
+    if (await lacks(`node.${node.value}`)) {
+      continue
+    }
+
+    const node_content = parse(await get(`node.${node.value}`, { must_exist: true }))
+    log(node_content)
+
+    const { type } = node_content
+
+    /**
+     * todo: (convert) tool calls?
+     */
+    if (type == 'prompt' || type == 'response' || type == 'system_prompt') {
+      const { role, content } = node_content
+      context.push({ role, content })
+    }
+
+    // ignore everything else
+  }
+  log(context)
+
+  return context
 }
 
 // type chat_params = { message: string, thread?: key }
@@ -54,14 +79,16 @@ export async function chat({ message, thread, model, provider }: any) {
   }
 
   const prompt_node_key = await append_node(thread)
-  const prompt_node = { role: 'user', content: message }
-  
+  const prompt_node = { type: 'prompt', role: 'user', content: message }
+
   await set(prompt_node_key, stringify(prompt_node))
 
   const response_node_key = await append_node(thread)
 
+  const context = build_context(thread)
+
   // todo: support models, more params. not just a mock. (support mock as well!)
-  const { response } = await request({ message, model, provider })
+  const { response } = await request({ context, model, provider })
 
   const response_node = { type: 'response', role: 'assistant', content: response }
 

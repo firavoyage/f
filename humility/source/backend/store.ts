@@ -23,7 +23,13 @@ export async function lacks(key: string) {
   return !(await does_exist(data(database_folder, key)))
 }
 
-// todo: ensure valid key
+/**
+ * todo: 
+ * - ensure valid key
+ * - type guard (overload must exist)
+ * 
+ */
+
 export async function get(key: string, { must_exist = false }: { must_exist?: boolean } = {}) {
   const value = await handle(() => read(data(database_folder, key)))
   if (is_error(value)) {

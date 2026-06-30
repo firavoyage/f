@@ -8,18 +8,18 @@
  * 
  */
 
-import { does_exist, read, config } from 'lib/file';
-import { parse } from 'yaml';
+import { read, config } from 'lib/file';
+import { parse, stringify } from 'yaml';
 
 type request_params = { message: string }
 
-async function mock({ message }: any) {
+async function mock({ context }: any) {
   // one param, no need to have obj params. no future proof.
 
-  return `Respond to ${message.toLocaleLowerCase()}`
+  return `Respond to ${stringify(context).toLocaleLowerCase()}`
 }
 
-export async function openai_compatible({ message, model, url, key }) {
+export async function openai_compatible({ context, model, url, key }) {
   const response = await fetch(url, {
     method: "POST",
     headers: {
@@ -28,9 +28,7 @@ export async function openai_compatible({ message, model, url, key }) {
     },
     body: JSON.stringify({
       model,
-      messages: [
-        { role: "user", content: message }
-      ]
+      messages: context
     })
   });
 
@@ -41,23 +39,23 @@ export async function openai_compatible({ message, model, url, key }) {
 /**
  * request models
  */
-export async function request({ message, model, provider }: any) {
-  // // must exist. you should point to a mock file even if you wanna mock.
-  // const config_content = parse(await read(config('config.yaml')))
-  // // const config_content = await does_exist(config('config.yaml')) ? await read(config('config.yaml')) : {}
-  // const { url, key } = config_content[provider]
+export async function request({ context, model, provider }: any) {
+  // must exist. you should point to a mock file even if you wanna mock.
+  const config_content = parse(await read(config('config.yaml')))
+  // const config_content = await does_exist(config('config.yaml')) ? await read(config('config.yaml')) : {}
+  const { url, key } = config_content[provider]
 
-  // await log_info('request started', { message, model, provider })
-
-  // const start_at = Date.now()
-
-  // const response = await handle(() => openai_compatible({ message, model, url, key }))
-
-  await log_info('request started', { message, model, provider })
+  await log_info('request started', { context, model, provider })
 
   const start_at = Date.now()
 
-  const response = await handle(() => mock({ message }))
+  const response = await handle(() => openai_compatible({ context, model, url, key }))
+
+  // await log_info('request started', { context, model, provider })
+
+  // const start_at = Date.now()
+
+  // const response = await handle(() => mock({ context }))
 
   const finish_at = Date.now()
 
