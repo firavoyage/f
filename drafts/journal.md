@@ -43218,6 +43218,22 @@ HARU (star) 15k LOWE (star) 16k
 
 quite strong. impressive!
 
+30
+
+16 20 <!-- hard --> refresh.
+
+<!-- 
+
+诶! 怎么有些要睡着的感觉.
+
+我撞墙会不会清醒一些.
+
+(hit a few times w moderate force)
+
+诶. 好像清醒一点了.
+
+ -->
+
 
 
 <!-- timebox, plan. -->
