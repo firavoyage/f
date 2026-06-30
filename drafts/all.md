@@ -283,6 +283,7 @@ desktop:
 - oom vscode markdown extensions ram
 - install nextcloud
 - shell chmod x command history
+- earlyoom
 
 android:
 

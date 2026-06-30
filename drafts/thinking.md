@@ -659,3 +659,10 @@ Suicide, or the act of intentionally ending one's own life, can be achieved thro
     method takes time and requires a strong will to endure the physical and\
     mental discomfort.
 ```
+
+---
+
+- file: no more try catch
+- fetch: error handling? on chat, i could write like missing api key, or network drop. there are not so many common possible errors.
+
+
