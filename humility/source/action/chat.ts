@@ -1,6 +1,6 @@
 import { request } from 'backend/request';
 import { lacks, get, set } from 'backend/store';
-import { append } from 'backend/tree';
+import { append, read, traverse } from 'backend/tree';
 import { stringify } from 'yaml';
 import { new_thread } from 'action/new_thread';
 
@@ -11,7 +11,7 @@ const thread_count_key = 'thread.count'
 const node_count_key = 'node.count'
 
 // always unique
-async function count(key: key): Promise<number> {
+async function count(key: key) {
   if (await lacks(key)) {
     await set(key, '1')
     return 1
@@ -36,6 +36,10 @@ async function append_node(thread: key): Promise<key> {
 
   const node_key = `node.${node_id}`
   return node_key
+}
+
+async function build_context(thread: key) {
+  const nodes = traverse(await read(thread))
 }
 
 // type chat_params = { message: string, thread?: key }

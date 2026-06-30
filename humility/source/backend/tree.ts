@@ -106,11 +106,7 @@ export async function focus(tree: key, index: number, new_focus: number) {
 }
 
 export async function read(tree: key) {
-  const tree_content = await get(tree)
-
-
-
-  const tree_array = parse(tree_content)
+  const tree_array = parse(await get(tree))
 
   return tree_array
 }
