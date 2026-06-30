@@ -48,7 +48,6 @@ async function build_context(thread: key) {
     }
 
     const node_content = parse(await get(`node.${node.value}`, { must_exist: true }))
-    log(node_content)
 
     const { type } = node_content
 
@@ -62,7 +61,6 @@ async function build_context(thread: key) {
 
     // ignore everything else
   }
-  log(context)
 
   return context
 }
@@ -85,7 +83,7 @@ export async function chat({ message, thread, model, provider }: any) {
 
   const response_node_key = await append_node(thread)
 
-  const context = build_context(thread)
+  const context = await build_context(thread)
 
   // todo: support models, more params. not just a mock. (support mock as well!)
   const { response } = await request({ context, model, provider })

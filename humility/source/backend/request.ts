@@ -11,7 +11,10 @@
 import { read, config } from 'lib/file';
 import { parse, stringify } from 'yaml';
 
-type request_params = { message: string }
+/**
+ * todo: specify
+ */
+type request_params = { context: any[], model: string, provider: string}
 
 async function mock({ context }: any) {
   // one param, no need to have obj params. no future proof.
@@ -39,7 +42,7 @@ export async function openai_compatible({ context, model, url, key }) {
 /**
  * request models
  */
-export async function request({ context, model, provider }: any) {
+export async function request({ context, model, provider }: request_params) {
   // must exist. you should point to a mock file even if you wanna mock.
   const config_content = parse(await read(config('config.yaml')))
   // const config_content = await does_exist(config('config.yaml')) ? await read(config('config.yaml')) : {}
@@ -67,7 +70,10 @@ export async function request({ context, model, provider }: any) {
 
   await log_info('request finished', { response, start_at, finish_at })
 
-  return { response, start_at, finish_at }
+  /**
+   * todo: separate response content and metadata cleanly
+   */
+  return { response: response.choices[0].message.content, start_at, finish_at }
 }
 
 
