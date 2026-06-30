@@ -360,4 +360,8 @@ export function path(...args) {
 
 <!-- keep in mind, lodash clone effectively only support objects as well. -->
 
+30 
 
+16 40 refactor `file` to new error handling pattern standard.
+
+slop does not worth archival.

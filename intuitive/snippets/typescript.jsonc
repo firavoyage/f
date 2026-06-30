@@ -9,7 +9,8 @@
       "ig"
     ],
     "body": [
-      "/* eslint-disable-next-line */ // @ts-expect-error ",
+      "// @ts-expect-error ",
+      // "/* eslint-disable-next-line */ // @ts-expect-error ",
       // "/* eslint-disable-next-line */ // @ts-ignore",
     ],
   },
@@ -389,7 +390,7 @@
       "if(is_error($1)){",
       "  $0",
       "  ",
-      "  return $1",
+      "  throw $1",
       "}"
     ],
   },
