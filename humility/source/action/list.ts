@@ -2,7 +2,7 @@ import { get, set } from 'backend/store';
 
 const thread_list_key = 'thread.list'
 
-export async function list(): Promise<Result<id[]>> {
+export async function list(): Promise<id[]> {
   return await get(thread_list_key) ?? []
 }
 
