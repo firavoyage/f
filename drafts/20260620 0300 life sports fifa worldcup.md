@@ -478,3 +478,196 @@ Feedback
 
 ### Profiles
 ``````
+
+# <!-- 01 jul 2026 -->
+
+# world cup in china standard time
+
+Matches for the **2026 FIFA World Cup** in Canada, Mexico, and the United States broadcast live in **China Standard Time (CST, UTC+8)** primarily kick off anywhere from <mark><strong>12:00 AM (midnight) through 12:00 PM (noon)</strong></mark>.
+
+Because the tournament is hosted across North American time zones, Chinese football fans face a mix of late-night, early-morning, and lunchtime viewing windows.
+
+### Typical Match Windows in China Standard Time (CST)
+
+While exact times vary by group and venue, standard kickoff times convert to the following CST slots: [link](https://www.aljazeera.com/sports/2026/6/8/what-time-are-world-cup-2026-matches-in-my-time-zone)
+
+- **Late Night / Early Morning:** 12:00 AM, 1:00 AM, 2:00 AM, 3:00 AM, 4:00 AM, and 5:00 AM CST
+- **Morning / Lunchtime:** 8:00 AM, 9:00 AM, 10:00 AM, and 11:00 AM CST [link](https://www.aljazeera.com/sports/2026/6/8/what-time-are-world-cup-2026-matches-in-my-time-zone)
+
+### Major Tournament Milestones (CST)
+
+- **Semifinals:** Both marquee semifinal matches will kick off at **3:00 AM CST** (scheduled for Wednesday, July 15, and Thursday, July 16).
+- **World Cup Final:** The final match at MetLife Stadium will broadcast live in China at **3:00 AM CST on Monday, July 20, 2026**. [link](https://sports.yahoo.com/soccer/article/2026-fifa-world-cup-daily-schedule-every-match-date-kickoff-time-and-venue-for-all-48-teams-234515087.html)
+
+Digital platforms like [Al Jazeera's Timezone Guide](https://www.aljazeera.com/sports/2026/6/8/what-time-are-world-cup-2026-matches-in-my-time-zone) offer complete interactive tools to track your favorite national teams. You can also download dedicated calendar files to automatically sync the remaining knockout fixtures directly into your phone on China Standard Time through platforms like [Yahoo Sports](https://uk.sports.yahoo.com/news/world-cup-2026-calendar-download-103743128.html).
+
+Are you looking for the exact kickoff time for a **specific matchup** in the current knockout round, or would you like help finding a **downloadable wall chart** configured for Beijing time? [link](https://uk.sports.yahoo.com/news/world-cup-2026-wall-chart-160305916.html)
+
+- [link](https://www.aljazeera.com/sports/2026/6/8/what-time-are-world-cup-2026-matches-in-my-time-zone)\
+  What time are World Cup 2026 matches in my time zone?\
+  Jun 8, 2026 — New Delhi (GMT+5:30) Kathmandu (GMT+5:45) Dhaka (GMT+6) Yangon (GMT+6:30) Bangkok (GMT+7) Jakarta (GMT+7) Beijing (GMT+8) Perth (G...\
+  Al Jazeera
+- [link](https://uk.sports.yahoo.com/news/world-cup-2026-wall-chart-160305916.html)\
+  World Cup 2026 wall chart: Download yours for China ...\
+  Apr 2, 2026 — ➕ 84-page supplement previewing all 48 nations. Printing out as eight A4 sheets to create an A1-sized poster, our wall chart is al...\
+  Yahoo Sports UK
+- [link](https://www.reddit.com/r/worldcup/comments/1imopvd/what%5Fcould%5Fbe%5Fthe%5Fpossible%5Fmatch%5Ftimes%5Ffor%5Fthe/)\
+  What Could Be the Possible Match Times for the Next World Cup, ...\
+  Feb 11, 2025 — I'm sure they'll also be on board. \* GaurdianoftheGalaxys. • 1y ago. Here's what FIFA should do. All kickoffs are in Eastern Time.\
+  Reddit·r/worldcup
+
+Show all
+
+## matches
+
+The **Round of 32 matches** scheduled for today, **Wednesday, July 1, 2026**, convert to late-night and early-morning viewing slots for **China Standard Time (CST)**: [link](https://www.livenowfox.com/news/how-watch-todays-world-cup-matches-wednesday-july-1)
+
+### Today's Match Schedule (CST)
+
+- **England vs. DR Congo**
+  - **CST Kickoff:** Thursday, July 2 at **12:00 AM (Midnight)**
+  - **Venue:** Atlanta Stadium [link](https://www.livenowfox.com/news/how-watch-todays-world-cup-matches-wednesday-july-1)
+- **Belgium vs. Senegal**
+  - **CST Kickoff:** Thursday, July 2 at **4:00 AM**
+  - **Venue:** Seattle Stadium [link](https://www.livenowfox.com/news/how-watch-todays-world-cup-matches-wednesday-july-1)
+- **United States vs. Bosnia & Herzegovina**
+  - **CST Kickoff:** Thursday, July 2 at **8:00 AM**
+  - **Venue:** San Francisco Bay Area Stadium [link](https://www.livenowfox.com/news/how-watch-todays-world-cup-matches-wednesday-july-1)
+
+### Upcoming Matches Tomorrow (CST)
+
+The remaining Round of 32 matches continuing on July 2 local time will broadcast at these times in China: [link](https://sports.yahoo.com/soccer/article/2026-world-cup-how-to-watch-all-of-todays-games-wednesday-july-1-match-schedule-free-streaming-info-and-more-100500954.html)
+
+- **Spain vs. Austria:** Friday, July 3 at **3:00 AM CST**
+- **Portugal vs. Croatia:** Friday, July 3 at **7:00 AM CST**
+- **Switzerland vs. Algeria:** Friday, July 3 at **11:00 AM CST** [link](https://sports.yahoo.com/soccer/article/2026-world-cup-how-to-watch-all-of-todays-games-wednesday-july-1-match-schedule-free-streaming-info-and-more-100500954.html)
+
+You can check live bracket progress through the official [FIFA Tournament Portal](https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures) or review complete broadcast grids via [ESPN's World Cup Center](https://www.espn.com/soccer/schedule/%5F/league/fifa.world).
+
+Would you like the **full CST schedule** for the upcoming **Round of 16 matches** starting this weekend? [link](https://www.olympics.com/en/news/fifa-world-cup-2026-bracket-round-16-full-schedule-live-updates)
+
+- [link](https://support.google.com/knowledgepanel/answer/9787176?gl=us)\
+  Google Sports Data\
+  This response uses data provided by Google Sports\
+  Google
+- [link](https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures)\
+  Matches | FIFA World Cup 2026™\
+  BEL. Belgium. 19:00. EGY. Egypt. First Stage· Group G· Seattle Stadium(Seattle) KSA. Saudi Arabia. 22:00. URU. Uruguay. First Stag...\
+  FIFA
+- [link](https://www.espn.com/soccer/schedule/%5F/league/fifa.world)\
+  2026 FIFA World Cup Schedule - ESPN\
+  Malaysian Super League. Singaporean Premier League. Arabian Gulf Cup. Thai League 1. Bangabandhu Cup. COSAFA Cup. CAF Champions Le...\
+  ESPN
+
+Show all
+
+## what timezone is it if england and dr congo kick at 9am today
+
+The matchup between England and DR Congo kicks off at 9:00 AM in the <mark><strong>Pacific Time Zone (PT / PDT, UTC-7)</strong></mark>.
+
+The game is hosted at Atlanta Stadium, where the local kickoff time is **12:00 PM Eastern Time (ET)**. Because Pacific Time is exactly three hours behind Eastern Time, a noon ET kickoff translates directly to 9:00 AM PDT. This time zone includes major North American West Coast hubs like **Los Angeles, San Francisco, Vancouver, and Seattle**. [link](https://www.nytimes.com/athletic/7411899/2026/07/01/how-and-where-to-watch-dr-congo-vs-england-2026-world-cup-match-tv-channel-streaming-options/)
+
+Are you looking to stream the match live on the West Coast, or do you need a broadcast schedule for **other games** playing in the Pacific time slot today?
+
+- [link](https://www.usatoday.com/story/sports/soccer/worldcup/2026/07/01/england-dr-congo-time-channel-streaming-schedule/90763399007/)\
+  England-DR Congo channel, time, TV schedule for World Cup\
+  Jul 1, 2026 — Watch England vs DR Congo World Cup knockout match: Start time, TV channel, streaming. Blake Schuster. USA TODAY. July 1, 2026, 7:\
+  USA Today
+- [link](https://www.nytimes.com/athletic/7411899/2026/07/01/how-and-where-to-watch-dr-congo-vs-england-2026-world-cup-match-tv-channel-streaming-options/)\
+  How and where to watch DR Congo vs. England 2026 World ...\
+  Jul 1, 2026 — How and where to watch DR Congo vs. England 2026 World Cup match: TV channel, streaming options. By Data Skrive. July 1, 2026 Upda...\
+  The New York Times
+- [link](https://www.cbssports.com/soccer/news/2026-fifa-world-cup-time-zones-heres-what-to-know/)\
+  2026 FIFA World Cup time zones - CBS Sports\
+  Jun 7, 2026 — Eastern Time Zone (UTC-4). Atlanta (USA); Boston (USA); Miami (USA); New York/New Jersey (USA); Philadelphia (USA); Toronto (CAN) ...\
+  CBS Sports
+
+Show all
+
+## why google uses pt instead of utc
+
+Google relies heavily on **Pacific Time (PT)** as its baseline default because **the company is headquartered in Silicon Valley (Mountain View, California)**, which operates entirely within the Pacific Time Zone. [link](https://digitalmarketingdan.com/google-ads-account-time-zone-settings-pacific-time-pst-or-pdt-explained/)
+
+While Google's under-the-hood global servers use UTC to process and store data, it defaults user-facing platforms to PT for several operational and historical reasons: [link](https://support.google.com/calendar/thread/188760084/utc-based-time-zones-to-avoid-daylight-savings-time-transitions?hl=en\&gl=us)
+
+### 1. Corporate HQ and Engineering Alignment
+
+Because Google’s main campus, executive leadership, and primary core engineering teams are based in California, internal company schedules naturally revolve around Pacific Time. When engineers roll out systemic platform updates, maintenance windows, or developer documentation, they default to their local working hours (PT) to ensure maximum engineering support is awake and available. [link](https://coderslink.com/employers/blog/how-time-zone-affects-it-outsourcing-teams)
+
+### 2. Product Defaults for Google Ads and Analytics
+
+When a business creates an enterprise account like [Google Ads](https://ads.google.com/ups/routing?subid=xs-ip-aimode\&source=208\&gl=us) and forgets to manually select a local time zone, the account automatically defaults to Pacific Time. This standardizes daily ad-budget resets, data reporting cycles, and transaction billing windows to match Google's financial and corporate calendars. [link](https://digitalmarketingdan.com/google-ads-account-time-zone-settings-pacific-time-pst-or-pdt-explained/)
+
+### 3. Silicon Valley Tech Culture ("Google Standard Time")
+
+Historically, early internet giants like Google, Apple, and Yahoo, alongside early Microsoft operating systems, built their software baselines around West Coast business hours. This established Pacific Time as the unofficial "Standard Time" of global tech culture. [link](https://stackoverflow.com/questions/36294466/google-bigquery-seems-to-run-in-the-pacific-time-zone-not-utc-is-there-any-good)
+
+### How Google Actually Handles UTC
+
+Even though user platforms show PT, Google does not ignore UTC:
+
+- **The Server Core:** Databases and back-end network operations (such as [Google Calendar syncing](https://support.google.com/calendar/answer/37064?hl=en\&gl=us) and server logging) run strictly on Coordinated Universal Time (UTC) to eliminate daylight saving time errors across continents. [link](https://support.google.com/calendar/thread/188760084/utc-based-time-zones-to-avoid-daylight-savings-time-transitions?hl=en\&gl=us)
+- **Localization:** For consumer products like Google Search, Maps, or Gmail, Google reads your device's GPS or network IP address to override the PT default and display your strict, local time zone seamlessly. [link](https://www.reddit.com/r/GMail/comments/1hc8clq/i%5Fgot%5Fan%5Femail%5Fthat%5Fused%5Fuct%5Ftime%5Finstead%5Fof%5Fpst/)
+
+Would you like to know how to permanently change the **default reporting time zone** in a specific platform like Google Analytics or your personal calendar?
+
+- [link](https://support.google.com/calendar/thread/188760084/utc-based-time-zones-to-avoid-daylight-savings-time-transitions?hl=en\&gl=us)\
+  UTC-based time zones to avoid Daylight Savings Time transitions\
+  Nov 15, 2022 — Google Calendar uses Coordinated Universal Time (UTC) to avoid issues with daylight saving time. When events are created, they're ...\
+  Google Help
+- [link](https://support.google.com/calendar/thread/334138388/timezone-on-invitation-is-shown-in-utc-time-instead-of-correct-time-zone?hl=en\&gl=us)\
+  TImezone on invitation is shown in UTC time, instead of correct ...\
+  Mar 27, 2025 — TImezone on invitation is shown in UTC time, instead of correct time zone. I created a calendar invite from Outlook in central tim...\
+  Google Help
+- [link](https://support.google.com/google-ads/answer/18896?hl=en\&gl=us)\
+  Pacific Time (PST or PDT) - Google Ads Help\
+  PDT is one hour apart from Pacific Standard Time (PST). The time zone for your account is set when you create it. If you didn't se...\
+  Google Help
+
+Show all
+
+## where is utc
+
+**Coordinated Universal Time (UTC)** is <mark>not a physical place with geographical coordinates</mark>. It is a **global time standard** used to keep clocks synchronized across the entire planet.
+
+However, UTC is deeply tied to a specific location on the map:
+
+### The Geographical Center: Greenwich, London
+
+UTC is measured directly along the **Prime Meridian** (0° longitude), which physically runs through the **Royal Observatory in Greenwich, London, England**.
+
+- **The Historical Link:** UTC is the modern, high-precision successor to **Greenwich Mean Time (GMT)**.
+- **The Difference:** While GMT is a time zone based strictly on the Earth's rotation, UTC is a highly accurate scientific standard regulated by atomic clocks.
+
+### Where is UTC the "Local Time"?
+
+Because it is a standard rather than a localized law, no country officially claims UTC as its national time zone name, but several regions live in the **UTC+0** offset year-round. You are experiencing UTC as local time if you are in:
+
+- **Iceland** (all year)
+- **The United Kingdom and Ireland** (only during the winter months, when they drop daylight saving time)
+- **West African Nations** like Ghana, Senegal, Mali, and Iceland (all year)
+- **The High Seas** and the International Space Station (ISS)
+
+Would you like help **converting UTC** to your own local time zone, or are you trying to set up a specific **software program** to run on UTC?
+
+- [link](https://www.polymer.co/blog/utc-is-the-timezone-of-the-future)\
+  UTC is the Timezone of the Future\
+  Jan 26, 2022 — Benefits of UTC ( Coordinated Universal Time ) With UTC ( Coordinated Universal Time ) , you have a way to concisely reference spe...\
+  \
+  \
+  Polymer: Hiring made simple
+- [link](https://sites.google.com/site/worldfactsinc/lines-of-longtitude?gl=us)\
+  worldfactsinc - Lines Of longtitude & The World's Time Zones\
+  One country which uses UTC ( Co-ordinated Universal Time ) , but is not physically / geographically situated on UTC ( Co-ordinated...\
+  \
+  Google Sites
+- [link](https://www.space.com/world-clock)\
+  World clock: What is it and how does it work?\
+  Aug 26, 2022 — Have you ever wondered how the world clock works to keep everyone in sync? We live in different time zones, but from New York to M...\
+  \
+  \
+  Space
+
+Show all
+
+# 
