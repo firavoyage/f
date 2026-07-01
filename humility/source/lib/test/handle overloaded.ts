@@ -10,6 +10,10 @@ async function bar() {
   return 'ok'
 }
 
+async function barbar() {
+  throw err('barbar')
+}
+
 function baz() {
   const luck = Math.random()
   if (luck < 0.5) {
@@ -69,5 +73,7 @@ async function main() {
 }
 
 await main()
+
+log(await handle(() => barbar()))
 
 log('reaches the end')
