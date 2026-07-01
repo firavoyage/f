@@ -1,6 +1,6 @@
 import { request } from 'backend/request';
 import { lacks, get, set, count } from 'backend/store';
-import { append, read, traverse } from 'backend/tree';
+import { append, traverse } from 'backend/tree';
 import { new_thread } from 'action/new_thread';
 
 export const non_existing = 'non existing'
@@ -20,7 +20,7 @@ async function append_node(thread: key): Promise<key> {
 }
 
 async function build_context(thread: key) {
-  const nodes = (await traverse(await read(thread))).slice(1)
+  const nodes = (await traverse(await get(thread))).slice(1)
   const context = []
 
   for (const node of nodes) {

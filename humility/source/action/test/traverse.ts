@@ -1,7 +1,7 @@
 import { get } from "backend/store";
-import { read, traverse } from "backend/tree";
+import { traverse } from "backend/tree";
 
-const nodes = (await traverse(await read('thread.1'))).slice(1)
+const nodes = (await traverse(await get('thread.1'))).slice(1)
 
 log(nodes)
 
