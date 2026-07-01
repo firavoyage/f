@@ -43252,11 +43252,13 @@ clear, native, and exciting en narrative. professional!
 
 02
 
-00 20 test world cup stream.
+00 20 test world cup stream. (02 00)
 
 the real players have a break? <!-- well they do. they have a quater between the two halves. -->
 
 the hydration break plays out!
+
+the stats show up!
 
 
 
