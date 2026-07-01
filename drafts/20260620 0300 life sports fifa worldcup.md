@@ -1295,4 +1295,87 @@ If your stream is lagging heavily behind live updates, you can use a few tricks 
 
 Show all
 
+# are there ads in world cup physically
+
+<mark><strong><span><span>Yes, there are physical advertisements inside the stadiums during<span> </span></span><div><div>World Cup</div></div><span> </span>matches, but they are heavily restricted to official FIFA partners</span></strong></mark>**.** [link](https://www.instagram.com/reel/DaD%5FM9KxCsb/)
+
+The physical ad presence inside the venue is highly engineered and strictly controlled through specific formats and rules.
+
+### Perimeter LED Boards
+
+The most prominent physical ads are the **electronic LED digital boards** wrapped around the boundaries of the pitch. [link](https://www.plugtalk.media/post/types-of-stadium-advertising)
+
+- **The Rotation:** These boards cycle through dynamic, animated graphics showcasing official FIFA tournament sponsors like Adidas, Coca-Cola, Hyundai, and Verizon.
+- **Virtual Overlay Technology:** While fans physically sitting in the stadium see one specific sponsor on the boards, broadcasters frequently use **Virtual Replacement Technology (VRT)**. This AI-powered camera tech digitally overlays different regional sponsors onto the television feed. A viewer in the US might see an ad for a local brand on their TV, while a viewer in Asia sees a completely different company, even though both are broadcast from the exact same physical board. [link](https://www.forbes.com/sites/robertkidd/2018/08/24/how-virtual-advertising-is-helping-brands-reach-international-soccer-fans/)
+
+### Aggressive "De-Branding" of Stadiums
+
+FIFA enforces strict "clean stadium" guidelines to protect its multi-million dollar official partnerships. This creates a unique situation where non-FIFA ads are forcibly removed or covered up physically: [link](https://www.instagram.com/reel/DaD%5FM9KxCsb/)
+
+- **Stadium Renaming:** If a host venue normally carries a corporate sponsor name (such as SoFi Stadium or Levi's Stadium), the stadium is stripped of that identity. It operates under a completely neutral, FIFA-approved name (like the "San Francisco Bay Area Stadium").
+- **Physical Cover-Ups:** Stadium operators spend months covering up existing stadium branding. Any non-sponsor logos on seats, walls, concessions, and even rooftop branding visible from aerial cameras are physically hidden using tarps, wraps, or heavy tape. [link](https://www.instagram.com/reel/DaD%5FM9KxCsb/)
+
+### Mid-Game Commercial Breaks (The Hydration Rule)
+
+While not "physical" on the pitch itself, FIFA introduced a massive shift in match-day advertising format by mandating **three-minute hydration breaks** midway through each half. While these take place live on the pitch, TV broadcasters use this physical downtime to cut away to standard commercial breaks or display split-screen picture-in-picture advertisements. [link](https://sports.yahoo.com/articles/ads-during-world-cup-matches-200503145.html)
+
+If you are looking into how brands navigate these strict limits, I can explain the concept of **ambush marketing**—where companies like Levi's successfully bypassed FIFA's cover-up rules to gain viral publicity. [link](https://www.instagram.com/reel/DZqpJGxjvOe/?hl=en)
+
+- [link](https://www.instagram.com/reel/DaD%5FM9KxCsb/)\
+  Anti-marketing is all the rage for these \[redacted] FIFA ...\
+  Jun 26, 2026\
+  [1:40](https://www.instagram.com/reel/DaD%5FM9KxCsb/)\
+  Instagram·CBC Sports
+- [link](https://www.forbes.com/sites/robertkidd/2018/08/24/how-virtual-advertising-is-helping-brands-reach-international-soccer-fans/)\
+  How 'Virtual' Advertising Is Helping Brands Reach ... - Forbes\
+  Aug 24, 2018 — The Bundesliga, which begins today, has become the first of Europe's 'big five' leagues to fully test and approve the latest versi...\
+  Forbes
+- [link](https://www.sportsvideo.org/2018/06/13/fa-deploys-supponor-virtual-replacement-technology-for-world-cup-warm-up-match/)\
+  FA Deploys Supponor Virtual-Replacement Technology for ...\
+  Jun 13, 2018 — The Football Association (FA) delivered a world first by deploying virtual-replacement bechnology on the LED perimeter signage to ...\
+  Sports Video Group
+
+Show all
+
+## are the ads around the field added or physically there
+
+**The ads around the field are physically there, but what you see on television may be digitally added or replaced depending on where you are watching.** [link](https://www.instagram.com/p/DVYNQlzCBCB/)
+
+If you are sitting in the stadium seats, you will see real, **physical LED digital screens** flashing advertisements. However, for the billions of viewers watching at home, broadcasters blend physical hardware with digital overlays using two primary methods: [link](https://www.reddit.com/r/explainlikeimfive/comments/ioe4j0/eli5%5Fin%5Finternational%5Ffootball%5Fgames%5Fon%5Flive%5Ftv/)
+
+### 1. Virtual Replacement Technology (Software Overlay)
+
+In many international soccer matches, a technology called **Virtual Replacement Technology (VRT)** is used. [link](https://coffeebeans-brewinginnovations.medium.com/virtual-replacement-perimeter-overlay-technology-82a321a14972)
+
+- **How it works:** The cameras tracking the match use AI and spatial coordinates to recognize the physical pitch-side boards.
+- **The result:** The broadcasting software completely covers up the physical ad with a digital graphic. A viewer in Europe might see an ad for a local bank, while a viewer in South America sees a local food brand on the exact same board at the exact same moment. [link](https://en.wikipedia.org/wiki/Virtual%5Fadvertising)
+
+### 2. "Parallel Ads" Technology (Hardware Trickery)
+
+Major sports tournaments have increasingly transitioned to hardware-based solutions known as **Parallel Ads** or multi-frequency LED boards. [link](https://invidis.com/news/2024/07/euro-2024-review-the-future-of-led-boards/)
+
+- **How it works:** The physical LED boards in the stadium are specially engineered to flash up to four different advertisements sequentially at an extremely high refresh rate. [link](https://invidis.com/news/2024/07/euro-2024-review-the-future-of-led-boards/)
+- **The result:** Human eyes in the stadium can only process one of the images seamlessly. However, the broadcast cameras are perfectly synchronized to specific frame frequencies. Camera A captures Ad 1 for the local feed, while Camera B captures Ad 2 for the international feed. In this scenario, multiple ads are physically present on the board simultaneously, but invisible to the naked human eye. [link](https://invidis.com/news/2024/07/euro-2024-review-the-future-of-led-boards/)
+
+### Non-Board Virtual Ads
+
+Broadcasters also add purely digital ads to spaces that are completely empty in real life. If you see a giant sponsor logo flat on the grass next to the goals, or a floating graphic above the center circle before kickoff, those are **100% virtual overlays**. The players are running on empty grass, and only the TV audience can see the branding. [link](https://www.plugtalk.media/post/types-of-stadium-advertising)
+
+Would you like to know more about how **broadcasters track the players** so they don't accidentally cover them up with these digital ads?
+
+- [link](https://www.reddit.com/r/explainlikeimfive/comments/ioe4j0/eli5%5Fin%5Finternational%5Ffootball%5Fgames%5Fon%5Flive%5Ftv/)\
+  ELI5: In international football games on live tv, every country sees local ads on the billboard screens surrounding the field. How does this work?\
+  Sep 7, 2020 — The billboards around the field of international football games on live TV are physical screens. The home team or Fifa/Uefa holds ...\
+  Reddit
+- [link](https://www.plugtalk.media/post/types-of-stadium-advertising)\
+  Types of Stadium Advertising - Plug Talk Media\
+  Jan 25, 2026 — Stadium Exterior and Wrap Advertising. Exterior advertising includes branding placed outside the stadium. This may include wall wr...\
+  Plug Talk Media
+- [link](https://madg.com/blog/virtual-overlay-advertising-can-it-work/)\
+  Virtual Overlay Advertising: Can It Work? | Mad Genius\
+  Sep 17, 2025 — What is Virtual Overlay Advertising? There are a few different names for it, such as virtual superimposed advertising, virtual rep...\
+  Mad Genius
+
+Show all
+
 # 
