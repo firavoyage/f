@@ -1,4 +1,5 @@
-import { append, edit, focus, init, get, rearrange, traverse } from 'backend/tree';
+import { get } from 'backend/store';
+import { append, edit, focus, init, rearrange, traverse } from 'backend/tree';
 
 await init('thread.test')
 await append('thread.test', 'node.123')

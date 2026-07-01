@@ -91,10 +91,6 @@ export async function focus(tree: key, index: number, new_focus: number) {
   return await set(tree, tree_array)
 }
 
-export async function get(tree: key) {
-  return await get(tree)
-}
-
 export function traverse(tree_array: any[]) {
   const focused = []
 
