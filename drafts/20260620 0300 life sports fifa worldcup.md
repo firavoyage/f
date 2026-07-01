@@ -670,4 +670,289 @@ Would you like help **converting UTC** to your own local time zone, or are you t
 
 Show all
 
+# <!-- 02 jul -->
+
+# world cup stream free
+
+In the United States, you can stream the 2026 FIFA World Cup matches for free <mark><span>by utilizing<span> </span></span><strong>free trials from live TV streaming services</strong><span> </span>or through<span> </span><strong>limited free tier apps</strong></mark>. Because the official US English broadcast rights are split between FOX and FS1, complete free access requires services that carry these channels. [link](https://www.cbsnews.com/news/world-cup-2026-schedule-how-to-watch/)
+
+### Official Free Streaming Options in the US
+
+- **Live TV Free Trials**: You can access every match in English or Spanish by cycling through trial periods on major live TV platforms. This includes a 5-day free trial on [Fubo](https://www.fubo.tv/welcome/world-cup?ftv%5Fcampaign=OneBox%5FFIFAWorldCup\&utm%5Fsource=onebox\&utm%5Fmedium=organic%5Fsearch\&utm%5Fcampaign=us-fifaworldcupwatchlive), a generous 21-day free trial on [YouTube TV](https://tv.youtube.com/browse/UCyYSfestxB1Vvzaz1qdh%5FtA?utm%5Fsource=onebox\&utm%5Fcampaign=ob%5Ffifa%5Fworld%5Fcup), a 3-day trial on [Hulu + Live TV](https://www.hulu.com/fifa-world-cup?utm%5Fsource=onebox\&utm%5Fmedium=organic%5Fsearch\&utm%5Fcampaign=live%5Ftv%5Ffifa%5F2026), and a 3-day free trial on [FOX One](https://foxone.onelink.me/RkoT/google-one-box-fwc-united-states-bosnia-and-herzeg).
+- **Tubi**: The free, ad-supported app [Tubi](https://tubitv.com/live/400000295/always-on-alt-feeds-fifa-world-cup-26) features the "World Cup NOW" channel, which hosts free match previews, highlights, and select specific full matches.
+- **FIFA+ & YouTube**: The official [FIFA+](https://www.pcmag.com/how-to/how-to-watch-2026-fifa-world-cup-games-live-stream-for-free-july-1) platform streams select matches at no cost. Additionally, a partnership allows rights holders to stream the first 10 minutes of games for free on YouTube.
+- **Peacock (Spanish)**: If you qualify for a free tier (such as through a third-party bundle like Walmart+), Peacock streams Telemundo's Spanish-language match broadcasts. [link](https://www.reddit.com/r/usmnt/comments/1u2swfo/whats%5Fthe%5Fbest%5Fway%5Fto%5Fwatch%5Fthe%5Ffifa%5Fworld%5Fcup/)
+
+### Current World Cup Match Streaming Schedule
+
+| Date & Time (PDT) | Matchup                      | Free Stream/Trial Option | TV Channel      | Status          |
+| ----------------- | ---------------------------- | ------------------------ | --------------- | --------------- |
+| July 1, 9:00 AM   | England vs. DR Congo         | FOX One Free Trial       | FOX / Telemundo | **In Progress** |
+| July 1, 1:00 PM   | Belgium vs. Senegal          | Fubo Free Trial          | FS1 / Telemundo | Not Started     |
+| July 1, 5:00 PM   | USA vs. Bosnia & Herzegovina | FOX One Free Trial       | FOX / Telemundo | Not Started     |
+| July 2, 12:00 PM  | Spain vs. Austria            | Fubo Free Trial          | FOX / Telemundo | Upcoming        |
+| July 2, 4:00 PM   | Portugal vs. Croatia         | FOX One Free Trial       | FOX / Telemundo | Upcoming        |
+
+### Completely Free International Broadcasters (via VPN)
+
+If you use a virtual private network (VPN) to route your internet connection to other countries, you can bypass subscription walls and stream matches on completely free national platforms that do not require credit card details: [link](https://www.cnet.com/tech/services-and-software/how-to-watch-fifa-2026-world-cup-with-vpn/)
+
+- **United Kingdom**: BBC iPlayer and ITVX stream all 104 matches for free.
+- **Australia**: [SBS On Demand](https://www.reddit.com/r/Cordcutting/comments/1u1zw4c/how%5Fto%5Fwatch%5Fthe%5Fworld%5Ffootball%5Fcup%5F2026/) offers free streaming of the entire tournament.
+- **Ireland**: [RTÉ Player](https://www.cnet.com/tech/services-and-software/how-to-watch-fifa-2026-world-cup-with-vpn/) provides free English-language coverage. [link](https://www.reddit.com/r/Cordcutting/comments/1u1zw4c/how%5Fto%5Fwatch%5Fthe%5Fworld%5Ffootball%5Fcup%5F2026/)
+
+Watch these video tutorials to learn how to access free World Cup streams legally:
+
+1 min
+
+[How to Watch the 2026 FIFA World Cup for FREE! 🌎🏆279K views · 19 days agoYouTube · Triple M](https://www.youtube.com/watch?v=myWfn5%5FSna0\&t=29\&t=29s)
+
+2 min
+
+[How to watch the World Cup 2026 (for FREE!)59K views · 23 days agoYouTube · TechRadar](https://www.youtube.com/watch?v=X6BHQpcZMZg\&t=4\&t=4s)
+
+03:29
+
+[HOW TO WATCH THE 2026 FIFA WORLD CUP LIVE AND ...233K views · 14 days agoYouTube · Imack Studios](https://www.youtube.com/watch?v=6HHtx8TzwVI\&t=0s)
+
+If you want to plan your viewing, let me know **which team you support** or **which upcoming match** you want to catch, and I can give you the exact kickoff time and direct streaming link!
+
+- [link](https://sports.yahoo.com/soccer/article/2026-world-cup-how-to-watch-all-of-todays-games-wednesday-july-1-match-schedule-free-streaming-info-and-more-100500954.html)\
+  2026 World Cup: How to watch all of today's games ...\
+  Jul 1, 2026 — All times Eastern. Wednesday, July 1. England vs. Congo DR, 12 p.m. (FOX/Telemundo) – Mercedes-Benz Stadium, Atlanta. Belgium vs. ...\
+  Yahoo Sports
+- [link](https://tubitv.com/live/400000295/always-on-alt-feeds-fifa-world-cup-26)\
+  Watch Always On: Alt Feeds | FIFA World Cup™ '26 - Free ...\
+  Jul 1, 2026 — The home of World Cup NOW — featuring in-stadium coverage, star player cams, highlights, behind-the-scenes access, and free match ...\
+  Tubi
+- [link](https://sports.yahoo.com/soccer/article/watch-the-2026-world-cup-free-where-to-stream-every-match-today-184500795.html)\
+  Watch the 2026 World Cup free: Where to stream every match today\
+  Jun 27, 2026 — If you buy something through a link in this article, we may earn commission. ... All 104 matches of the 2026 FIFA World Cup will b...\
+  Yahoo Sports
+
+Show all
+
+## i have all ip.
+
+Great! Since you have your VPN ready with all IP options, you can bypass local US paywalls or trials completely.
+
+Here are the best completely free international platforms you can access right now by switching your VPN location:
+
+### Best Free International Options (Via VPN)
+
+- **United Kingdom (Set VPN to UK)**: Stream the current **England vs. DR Congo** match for free right now on BBC iPlayer or ITVX. They share the UK broadcast rights and require only a free account with a UK postal code (e.g., SW1A 1AA).
+- **Australia (Set VPN to Australia)**: Watch the full tournament with English commentary on [SBS On Demand](https://www.reddit.com/r/Cordcutting/comments/1u1zw4c/how%5Fto%5Fwatch%5Fthe%5Fworld%5Ffootball%5Fcup%5F2026/). It is 104 matches entirely free.
+- **Ireland (Set VPN to Ireland)**: Stream matches live in English via the [RTÉ Player](https://www.cnet.com/tech/services-and-software/how-to-watch-fifa-2026-world-cup-with-vpn/).
+
+### Quick VPN Streaming Tips
+
+- **Clear Cookies**: Clear your browser cache or use an Incognito/Private window after changing your IP address.
+- **Match Kickoffs**: Keep an eye on timezone differences when looking at foreign schedules.
+
+If you want to map out your viewing schedule for the rest of the day, tell me **which country's server** you plan to connect to, and I can give you their exact broadcast schedule!
+
+## iptv
+
+[IPTV (Internet Protocol Television)](https://sports.yahoo.com/soccer/article/watch-the-2026-world-cup-free-where-to-stream-every-match-today-184500795.html) can be used to stream the World Cup, but you must choose between **legal subscription providers** and **third-party services** which carry different risks.
+
+### Legal IPTV Providers (US & International)
+
+These official apps stream live TV over the internet and work seamlessly with your VPN:
+
+- **Sling TV / [Fubo](https://www.fubo.tv/)**: These are premium US IPTV services. You can use their free trials to access FOX and FS1.
+- **EE TV / Sky Go (UK)**: Official UK IPTV apps. If you connect your VPN to a UK server, you can integrate them or stick to the free BBC iPlayer and ITVX IPTV feeds.
+- **Tivify (Spain)**: A legal IPTV platform in Spain. Connect your VPN to Spain to stream matches broadcast on RTVE for free.
+
+### Unofficial Third-Party IPTV Services
+
+Many users look for cheap or free "IPTV playlists" (M3U links) to load into players like IPTV Smarters, [Tivimate](https://tivimate.com/), or VLC. If you use these, keep the following in mind:
+
+- **Security Risks**: Free or unverified IPTV streams are primary targets for malware, phishing, and data theft.
+- **Buffering & Drops**: Free IPTV links often crash or lag heavily during major live events like the World Cup due to massive server strain.
+- **VPN is Mandatory**: If you attempt to use unofficial streams, keeping your VPN turned **ON** is essential to hide your traffic from your Internet Service Provider (ISP).
+
+Would you like help finding a **legal IPTV app** for your specific device (like Firestick, [Apple TV](https://tv.apple.com/), or Android), or do you need a **direct schedule link** for the upcoming matches?
+
+- [link](https://elementor.com/blog/what-is-iptv/)\
+  What is IPTV: A Comprehensive Guide to Internet Protocol Television\
+  Oct 15, 2025 — The Risks of Using Illegal IPTV Security Vulnerabilities: To use these services, you often have to download third-party apps or in...\
+  \
+  \
+  Elementor
+- [link](https://massbayedunew.s3.amazonaws.com/video/world-cup-iptv-1w0ofh.html)\
+  World Cup IPTV: What It Means & The Legal Risks\
+  Jun 30, 2026 — Thinking about 'World Cup IPTV' streams? Learn what these services actually are, the legal risks involved, and safer ways to watch...\
+  \
+  \
+  Amazon Web Services (AWS)
+- [link](https://nfcr.raiselysite.com/iptv-service/posts/best-iptv-service-in-uk-for-2026-top-providers-features-how-to-choose)\
+  Best IPTV Service in UK for 2026: Top Providers, Features & How to Choose\
+  May 29, 2026 — IPTV services in the UK fall into two main categories: legal, mainstream streaming platforms and third-party subscription provider...\
+  \
+  \
+  nfcr.raiselysite.com
+
+Show all
+
+## the video element is selected as $0. console command to force it fullscreen.
+
+To force the currently selected video element (`$0`) into fullscreen mode, paste the following command into your browser's console and press **Enter**:
+
+javascript
+
+```
+$0.requestFullscreen().catch(err => console.error(`Error: ${err.message}`));
+```
+
+Use code with caution.
+
+### Alternative Controls
+
+If the video is wrapped inside a custom player container (where the play/pause buttons live), running the command on the video itself might hide the controls. If that happens, use this command to find and fullscreen the container instead:
+
+javascript
+
+```
+$0.parentElement.requestFullscreen();
+```
+
+Use code with caution.
+
+To exit fullscreen mode at any time via the console, use:
+
+javascript
+
+```
+document.exitFullscreen();
+```
+
+Use code with caution.
+
+_Note: Browsers usually require a user interaction (like a click) to trigger fullscreen. If the command fails, click anywhere on the webpage video area first, then immediately press Enter on the command in your console._
+
+If the stream is nested inside an **iframe** and won't go fullscreen, let me know so I can give you the script to **break the video out** of the frame!
+
+- [link](https://www.reddit.com/r/mpv/comments/1oxsf1p/how%5Fcan%5Fi%5Fopen%5Fa%5Fvideo%5Ffile%5Fon%5Ffullscreen%5Fon%5Fmy/)\
+  How can I open a video file on fullscreen on my secondary monitor but also allow it to fullscreen on others if moved? If I use fs-screen=1 and move it to another monitor and press F it goes back to FS on the secondary monitor (as intended I guess). How can I change this? : r/mpv\
+  Nov 15, 2025 — Comments Section Open video with fs-screen=1 (should open on the intended screen) Manually input into the OSD console this command...\
+  \
+  Reddit
+- [link](https://github.com/vimeo/player.js/issues/52)\
+  Full screen method? · Issue #52 · vimeo/player.js\
+  Sep 8, 2016 — @bdougherty has more knowledge about this and he is currently on vacation, but the browser fullscreen API requires a user interact...\
+  \
+  \
+  GitHub
+- [link](https://github.com/code-lts/jquery-fullscreen-plugin)\
+  GitHub - code-lts/jquery-fullscreen-plugin: This jQuery plugin provides a simple to use mechanism to control the new fullscreen mode of modern browsers\
+  May 29, 2020 — This only works when the code was triggered by a user interaction (For example a onclick event on a button). Browsers don't allow ...\
+  \
+  \
+  GitHub
+
+Show all
+
+## no effect
+
+If the basic command had no effect, the stream is likely trapped inside a secured **iframe** or blocked by browser security policies.
+
+Try this advanced command. It bypasses iframe restrictions by extracting the video's source URL and opening it directly in a clean, full-screen tab:
+
+javascript
+
+```
+window.open($0.src || $0.querySelector('source')?.src, '_blank');
+```
+
+Use code with caution.
+
+### If that fails, try these workarounds in order:
+
+- **Force Browser-Native Controls:** Sometimes the website's custom interface blocks the fullscreen request. Run this to force the browser's native fullscreen button to appear directly on the video:\
+  javascript
+
+<!---->
+
+```
+$0.controls = true; $0.setAttribute('controls', 'controls');
+```
+
+Use code with caution.
+
+- **Simulate a Direct Click:** If the browser rejected the command because it wasn't triggered by a "user gesture," use this to trick it:\
+  javascript
+
+<!---->
+
+```
+document.body.addEventListener('click', () => $0.requestFullscreen(), {once: true});
+```
+
+Use code with caution.\
+_Note: After pasting this line, you must click anywhere on the web page to trigger it._
+
+- **The "Fake" Fullscreen (CSS Maximize):** If browser security completely blocks the native fullscreen API, copy and paste this entire block to stretch the video to fill 100% of your current browser window:\
+  javascript
+
+<!---->
+
+```
+Object.assign($0.style, {position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: 999999});
+```
+
+Use code with caution.
+
+If the video canvas turns completely black or disappears after trying these, let me know if you see any **red error messages** in the console so I can pinpoint the exact security block!
+
+## it's blob
+
+Since the video source is a `blob:` URL, it means the site is using encrypted streaming (like HLS or DASH), so you cannot just open it in a new tab.
+
+Because it is a blob, the **CSS Maximize (Fake Fullscreen)** method is your best option. It bypasses all browser security and iframe blocks by forcing the video element to stretch over the entire page.
+
+Paste this complete block into your console and press **Enter**:
+
+javascript
+
+```
+(function() {
+    let target = $0;
+    // If the video is inside a container, maximize the container instead
+    if ($0.parentElement && $0.parentElement.tagName !== 'BODY') {
+        target = $0.parentElement;
+    }
+    Object.assign(target.style, {
+        position: 'fixed',
+        top: '0px',
+        left: '0px',
+        width: '100vw',
+        height: '100vh',
+        zIndex: '999999',
+        backgroundColor: 'black'
+    });
+})();
+```
+
+Use code with caution.
+
+### How to undo it if needed
+
+If you need to return the page to normal later, refresh the page or paste this command:
+
+javascript
+
+```
+location.reload();
+```
+
+Use code with caution.
+
+If the video stretched but left a white border or other website elements blocking your view, let me know if there are **other elements layered on top** so we can hide them!
+
+- [link](https://www.servicenow.com/community/community-central-forum/blob-url-not-displaying-in-iframe-on-servicenow-service-portal/m-p/3204299)\
+  Blob URL not displaying in iframe on ServiceNow Service Portal\
+  Dec 3, 2025 — For example, if you're watching a video on a webpage, the video might not come from a traditional URL (like www.example.com/video.\
+  \
+  ServiceNow
+
 # 
