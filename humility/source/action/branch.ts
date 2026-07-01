@@ -10,7 +10,7 @@
 import { get, set } from "backend/store";
 import { new_thread } from "./new_thread";
 
-const non_existing_index = 'non existing index'
+export const non_existing_index = 'non existing index'
 
 /**
  * you can branch below a response
@@ -31,11 +31,11 @@ export async function branch(thread: key, index?: number) {
   const thread_array = await get(thread)
 
   if (is_given(index)) {
-    if (has(thread_array, index)) {
-      thread_array[index].children = []
+    if (!has(thread_array, index)) {
+      throw err(non_existing_index)
     }
-
-    throw err(non_existing_index)
+    
+    thread_array[index].children = []
   }
 
   const new_thread_key = await new_thread()

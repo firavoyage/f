@@ -76,4 +76,10 @@ await main()
 
 log(await handle(() => barbar()))
 
+import { branch } from 'action/branch';
+
+log(await handle(() => branch()))
+
+log(await handle(() => branch('thread.12', 100)))
+
 log('reaches the end')
