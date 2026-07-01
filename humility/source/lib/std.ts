@@ -41,6 +41,16 @@ export function has<K extends PropertyKey>(obj: any, key: K): obj is Record<K, u
 //   return false
 // }
 
+// export function is_missing(foo: any): foo is undefined | null {
+//   const missing_symbol = Symbol('missing')
+
+//   if ((foo ?? missing_symbol) == missing_symbol) {
+//     return true
+//   }
+
+//   return false
+// }
+
 export let _: any = ''
 /**
  * usage:

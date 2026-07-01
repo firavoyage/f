@@ -190,7 +190,7 @@ export async function edit(path: string, search: string, replace: string) {
  * 
  * do i { path, options } or path, { options }? others?
  */
-export async function remove(path: string, { can_non_exist = false }: { can_non_exist?: boolean } = {}): Promise<Result<void>> {
+export async function remove(path: string, { can_non_exist = false }: { can_non_exist?: boolean } = {}) {
   // must_exist = true // implicit true is somewhat inconsistent
   _ = await handle(() => unlink(path))
   if (is_error(_)) {

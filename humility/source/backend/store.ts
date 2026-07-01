@@ -69,3 +69,22 @@ export async function del(key: string) {
  * and not widely reused (even so, it might not be wise to import everywhere)
  */
 
+export const not_a_number = 'not a number'
+
+// always unique
+export async function count(key: key) {
+  if (await lacks(key)) {
+    await set(key, '1')
+    return 1
+  }
+
+  const count = Number(await get(key, { must_exist: true }))
+  if (isNaN(count)) {
+    throw err(not_a_number)
+  }
+
+  await set(key, `${count + 1}`)
+  return count + 1
+}
+
+
