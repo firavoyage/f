@@ -33,6 +33,14 @@ async function export_to_markdown(thread_array) {
  * todo: 
  * 
  * option: export everything, not just current focus
+ * 
+ * support export override (new export formats, overriding existing ones)
+ * 
+ * by default you have two ways
+ * 
+ * - app.tsx override (the nuclear option)
+ * - extension (new buttons on bars, new commands on ctrl p, new keybindings, etc.)
+ * 
  */
 export async function export_to(thread: key, format: format) {
   const thread_array = traverse(await get(thread))
