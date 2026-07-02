@@ -3200,4 +3200,1160 @@ Which area fits your project best?
 
 Show all
 
-# 
+# (?) fetch axios code example
+
+Here are the standard code examples for fetching data using Axios. [link](https://github.com/sgammon/axios-fetch)
+
+### 1. Modern Async/Await Example (Recommended)
+
+This approach provides clean, readable code and handles both successful responses and errors smoothly. [link](https://dev.to/devcorner/how-to-fetch-api-using-axios-in-javascript-with-code-examples-369c)
+
+javascript
+
+```
+import axios from 'axios';
+
+const fetchData = async () => {
+  try {
+    // Axios automatically transforms the incoming data into JSON
+    const response = await axios.get('https://typicode.com');
+
+    // Access the response body using .data
+    console.log(response.data);
+    console.log(`Status: ${response.status}`);
+  } catch (error) {
+    // Unlike fetch(), Axios automatically throws an error for 4xx/5xx responses
+    console.error('Error fetching data:', error.message);
+  }
+};
+
+fetchData();
+```
+
+Use code with caution.
+
+### 2. Traditional Promises Example (.then / .catch)
+
+If you prefer not to use `async/await`, you can chain promises instead. [link](https://dev.to/devcorner/how-to-fetch-api-using-axios-in-javascript-with-code-examples-369c)
+
+javascript
+
+```
+import axios from 'axios';
+
+axios.get('https://typicode.com')
+  .then(response => {
+    // The target payload lives directly inside response.data
+    console.log(response.data);
+  })
+  .catch(error => {
+    console.error('An error occurred:', error);
+  });
+```
+
+Use code with caution.
+
+### 3. GET Request with Headers or Parameters
+
+To add query configurations, pass an options object as the second argument. [link](https://dev.to/edriso/axios-a-simple-practical-guide-with-examples-2eo8)
+
+javascript
+
+```
+import axios from 'axios';
+
+const fetchWithConfig = async () => {
+  try {
+    const response = await axios.get('https://example.com', {
+      params: { id: 123 }, // Appends ?id=123 to the URL
+      headers: { Authorization: 'Bearer YOUR_TOKEN' } // Custom headers
+    });
+    console.log(response.data);
+  } catch (error) {
+    console.error(error);
+  }
+};
+```
+
+Use code with caution.
+
+### Key Differences: Axios vs. Native Fetch
+
+- **JSON Parsing**: Native `fetch()` requires an explicit `.json()` conversion step, while Axios does it automatically.
+- **Error Handling**: `fetch()` considers HTTP error statuses (like `404` or `500`) a success; Axios treats them as rejections and triggers the `catch` block automatically. [link](https://dev.to/darkmavis1980/some-practical-examples-why-i-prefer-axios-over-fetch-lkd)
+
+Would you like me to show you how to use this inside a framework like a **React useEffect hook**, or do you need a code snippet for a **POST request**?
+
+- [link](https://dev.to/darkmavis1980/some-practical-examples-why-i-prefer-axios-over-fetch-lkd)\
+  Some practical examples on why I prefer Axios over Fetch\
+  Feb 6, 2024 — const axios = require('axios'); const TEST\_ENDPOINT = 'https://somedomain.com/api/someendpoint'; (async () => { try { await fetch(\
+  DEV Community
+- [link](https://medium.com/@mehmet.r.river/fetching-data-with-axios-in-react-42f79490a97b)\
+  FETCHING DATA WITH AXIOS IN REACT - Medium\
+  May 8, 2023 — Step 1: Installing the Library. Firstly, we need to install the Axios library in our project. This can be done using the npm or ya...\
+  Medium·Mehmet R. IRMAK
+- [link](https://dev.to/devcorner/how-to-fetch-api-using-axios-in-javascript-with-code-examples-369c)\
+  🚀 How to Fetch API Using Axios in JavaScript (With Code Examples)\
+  Apr 5, 2025 — 🧪 Making API Requests with Axios \* ✅ 1. Basic GET Request. import axios from 'axios'; axios. get('https://jsonplaceholder.typicod...\
+  DEV Community
+
+Show all
+
+# how to call multimodel capabilities to google/gemma-4-26b-a4b-it on openrouter via nodejs
+
+June 30, 2026
+
+To call the multimodal capabilities of **`google/gemma-4-26b-a4b-it`** on OpenRouter using Node.js, you should leverage the official OpenRouter SDK. This Mixture-of-Experts model supports complex multimodal inputs including both **images** and **videos** (up to 60 seconds at 1fps). [link](https://openrouter.ai/google/gemma-4-26b-a4b-it)
+
+### Prerequisites
+
+Initialize a Node.js project as an ES Module (set `"type": "module"` in your `package.json`), then install the required packages: [link](https://www.youtube.com/watch?v=lSwoy6ZHIWw)
+
+bash
+
+```
+npm install @openrouter/sdk
+```
+
+Use code with caution.
+
+***
+
+### Node.js Implementation Example
+
+The example below demonstrates how to send an image (passed via a Base64-encoded string) and a video (passed via a hosted URL) simultaneously to the model: [link](https://openrouter.ai/docs/guides/overview/multimodal/image-understanding)
+
+javascript
+
+```
+import { OpenRouter } from '@openrouter/sdk';
+import fs from 'fs';
+import path from 'path';
+
+// 1. Initialize the OpenRouter client
+const client = new OpenRouter({
+  apiKey: process.env.OPENROUTER_API_KEY, // Ensure your key is set in your environment
+  httpReferer: 'https://your-app-domain.com', // Optional: Helps with OpenRouter ranking
+  appTitle: 'My Multimodal App',               // Optional
+});
+
+// Helper function to convert a local file to a base64-encoded Data URL
+function fileToDataUrl(filePath, mimeType) {
+  const fileBuffer = fs.readFileSync(filePath);
+  const base64Data = fileBuffer.toString('base64');
+  return `data:${mimeType};base64,${base64Data}`;
+}
+
+async function analyzeMultimodalInput() {
+  try {
+    // 2. Prepare your media assets
+    // For images, local files via base64 or public URLs are supported
+    const base64Image = fileToDataUrl(path.resolve('./sample.jpg'), 'image/jpeg');
+
+    // For larger video assets, passing a publicly accessible URL is highly recommended
+    const videoUrl = "https://example.com";
+
+    // 3. Make the API call using the standard chat completions payload
+    const completion = await client.chat.send({
+      model: 'google/gemma-4-26b-a4b-it', // Use ':free' suffix if using the free endpoint variant
+      messages: [
+        {
+          role: 'user',
+          content: [
+            {
+              type: 'text',
+              text: 'Compare the contents of this image and this short video clip. What actions are repeating?'
+            },
+            {
+              type: 'image_url',
+              image_url: {
+                url: base64Image
+              }
+            },
+            {
+              type: 'video_url',
+              video_url: {
+                url: videoUrl
+              }
+            }
+          ]
+        }
+      ],
+      // Optional: Gemma 4 supports explicit reasoning steps.
+      // You can extract reasoning tokens if enabled by your application workflow.
+      provider: {
+        reasoning: true
+      }
+    });
+
+    // 4. Output the result
+    console.log('--- Model Response ---');
+    console.log(completion.choices[0].message.content);
+
+  } catch (error) {
+    console.error('Error executing multimodal request:', error);
+  }
+}
+
+analyzeMultimodalInput();
+```
+
+Use code with caution.
+
+***
+
+### Critical Constraints & Integration Details
+
+- **Model Slug Variants**: If you are using the rate-limited free variant provided by OpenRouter, change your model parameter string to exactly `google/gemma-4-26b-a4b-it:free`.
+- **Video Limitations**: The Gemma 4 architecture limits native video processing to a **maximum of 60 seconds at a rate of 1 frame per second (fps)**.
+- **Array-based Content**: When dealing with multimodal inputs, the standard text string for `content` must be replaced with an **array of objects**, where each object explicitly declares its type (`text`, `image_url`, or `video_url`).
+- **Reasoning Capabilities**: Gemma 4 26B A4B features a native reasoning/thinking mode. If you enable reasoning in your payload configurations, you can pull the intermediate step-by-step thinking process alongside the final output array. [link](https://openrouter.ai/google/gemma-4-26b-a4b-it)
+
+Would you like help setting up a streaming loop for real-time text delivery, or do you need assistance structuring a **JSON schema output** using Gemma 4's native tool-calling properties? [link](https://openrouter.ai/google/gemma-4-26b-a4b-it)
+
+- [link](https://openrouter.ai/google/gemma-4-26b-a4b-it)\
+  Gemma 4 26B A4B - API Pricing & Benchmarks | OpenRouter\
+  google/gemma-4-26b-a4b-it. ... Gemma 4 26B A4B IT is an instruction-tuned Mixture-of-Experts (MoE) model from Google DeepMind. Des...\
+  OpenRouter
+- [link](https://openrouter.ai/google/gemma-4-26b-a4b-it:free)\
+  Google: Gemma 4 26B A4B (free) - OpenRouter\
+  Quick Start. Drop-in code to call this model. OpenRouter's API is OpenAI-compatible — most SDKs work by just swapping the base URL...\
+  OpenRouter
+- [link](https://openrouter.ai/docs/quickstart)\
+  OpenRouter Quickstart Guide | Developer Documentation\
+  npm yarn pnpm pip. $ npm install @openrouter/sdk. Then use it in your code: TypeScript Python. 1. import { OpenRouter } from '@ope...\
+  OpenRouter
+
+Show all
+
+## You said: use fetch
+
+use fetch
+
+June 30, 2026
+
+Here is the pure **Node.js implementation using the native `fetch` API** (available globally in Node.js 18+). This method removes the dependency on the OpenRouter SDK.
+
+### Node.js Native Fetch Implementation
+
+javascript
+
+```
+import fs from 'fs';
+import path from 'path';
+
+// Helper function to convert a local file to a base64-encoded Data URL
+function fileToDataUrl(filePath, mimeType) {
+  const fileBuffer = fs.readFileSync(filePath);
+  const base64Data = fileBuffer.toString('base64');
+  return `data:${mimeType};base64,${base64Data}`;
+}
+
+async function analyzeMultimodalInput() {
+  const apiKey = process.env.OPENROUTER_API_KEY;
+  const url = '
+```
+
+Use code with caution.
+
+\[javascript
+
+```
+https://openrouter.ai
+```
+
+Use code with caution.]\(https://openrouter.ai/)
+
+javascript
+
+```
+';
+
+  // 1. Prepare your media assets
+  const base64Image = fileToDataUrl(path.resolve('./sample.jpg'), 'image/jpeg');
+  const videoUrl = "https://example.com";
+
+  // 2. Build the payload matching OpenRouter requirements
+  const payload = {
+    model: 'google/gemma-4-26b-a4b-it', // Use ':free' suffix if using the free endpoint variant
+    messages: [
+      {
+        role: 'user',
+        content: [
+          {
+            type: 'text',
+            text: 'Compare the contents of this image and this short video clip. What actions are repeating?'
+          },
+          {
+            type: 'image_url',
+            image_url: {
+              url: base64Image
+            }
+          },
+          {
+            type: 'video_url',
+            video_url: {
+              url: videoUrl
+            }
+          }
+        ]
+      }
+    ]
+  };
+
+  try {
+    // 3. Execute the HTTP POST request using native fetch
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+        'HTTP-Referer': 'https://your-app-domain.com', // Optional: OpenRouter tracking
+        'X-Title': 'My Multimodal App'                 // Optional: OpenRouter tracking
+      },
+      body: JSON.stringify(payload)
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`HTTP error! Status: ${response.status} - ${errorText}`);
+    }
+
+    // 4. Parse and display the response
+    const data = await response.json();
+    console.log('--- Model Response ---');
+    console.log(data.choices[0].message.content);
+
+  } catch (error) {
+    console.error('Error executing native fetch request:', error);
+  }
+}
+
+analyzeMultimodalInput();
+```
+
+Use code with caution.
+
+***
+
+### Key Reminders for `fetch` API
+
+- **Node.js Version**: Ensure you are running **Node.js v18.0.0 or higher** to use global `fetch` without third-party libraries like `node-fetch`.
+- **Headers**: OpenRouter requires the `Authorization` header format to be `Bearer YOUR_API_KEY`.
+- **Error Handling**: Unlike some HTTP libraries, `fetch` will not throw an error on 4xx or 5xx status codes. You must explicitly evaluate `response.ok` or `response.status` to catch API failures.
+
+Would you like to modify this code to handle **Server-Sent Events (SSE) streaming** using fetch to parse the response pieces in real-time, or do you need help **optimizing your video frames** before sending them over the network?
+
+- [link](https://iproyal.com/blog/how-to-make-http-requests-in-nodejs-using-fetch-api/)\
+  How to Make HTTP Requests in Node.js Using Fetch API\
+  To use the Fetch API natively in Node. js, you need a version of Node ( Node.js ) that's 18 or higher.\
+  \
+  \
+  IPRoyal.com
+- [link](https://blog.logrocket.com/5-ways-make-http-requests-node-js/)\
+  5 ways to make HTTP requests in Node.js\
+  The built-in Fetch API Node. js shipped an experimental version of the browser-compatible implementation of the Fetch API in v16. ...\
+  \
+  \
+  LogRocket Blog
+- [link](https://nodejs.org/en/blog/migrations/axios-to-fetch)\
+  Node.js — Axios to WHATWG Fetch\
+  Node. js Version Requirements Node. js v18. 0.0 or later (Fetch API is available but marked experimental) Node. js v21. 0.0 or lat...\
+  \
+  \
+  Node.js
+
+Show all
+
+# how to dynamic import in nodejs
+
+4:11 AM
+
+To dynamically import modules in Node.js, <mark>use the<span> </span><strong><code dir="ltr">import()</code><span> </span>function expression</strong></mark>, which returns a `Promise` resolving to the module object. [link](https://stackoverflow.com/questions/58858782/using-the-dynamic-import-function-on-node-js)
+
+This syntax works natively in both ECMAScript Modules (ESM) and CommonJS (`require`) environments, allowing you to load both `.js`, `.mjs`, and third-party npm packages conditionally or on demand. [link](https://nodejs.org/api/esm.html)
+
+***
+
+### Method 1: Using `async/await` (Recommended)
+
+The cleanest way to handle the returned `Promise` is using `async/await` inside an asynchronous function or via top-level await. [link](https://v8.dev/features/dynamic-import)
+
+javascript
+
+```
+async function loadTools() {
+  try {
+    // Dynamically import the module
+    const mathUtils = await import('./math.js');
+
+    // Access standard named exports directly
+    const result = mathUtils.add(5, 10);
+    console.log(result);
+  } catch (error) {
+    console.error("Failed to load the module:", error);
+  }
+}
+
+loadTools();
+```
+
+Use code with caution.
+
+### Method 2: Handling the Default Export
+
+If the module you are importing uses `export default`, you must explicitly reference the `.default` property on the resolved module object. [link](https://stackoverflow.com/questions/58858782/using-the-dynamic-import-function-on-node-js)
+
+javascript
+
+```
+async function loadLogger() {
+  // Destructuring and renaming the default export
+  const { default: myCustomLogger } = await import('./logger.js');
+
+  myCustomLogger("Log message from a dynamic module!");
+}
+```
+
+Use code with caution.
+
+### Method 3: Promise `.then()` Syntax
+
+If you are inside a traditional CommonJS file (`.js` or `.cjs`) without an `async` context, you can use promise chaining: [link](https://v8.dev/features/dynamic-import)
+
+javascript
+
+```
+import('./math.js')
+  .then((mathUtils) => {
+    console.log(mathUtils.add(2, 3));
+  })
+  .catch((err) => {
+    console.error("Error loading module", err);
+  });
+```
+
+Use code with caution.
+
+***
+
+### Important Things to Remember
+
+- **Dynamic Paths:** Unlike static imports, you can pass variables or string interpolations into `import()`, which is ideal for conditional loading or looping through files.\
+  javascript
+
+<!---->
+
+```
+const format = 'json';
+const parser = await import(`./parsers/${format}-parser.js`);
+```
+
+Use code with caution.
+
+- **Caching:** Node.js caches modules after the first `import()` call. Subsquent calls to the same path will not re-execute the file; they will return the cached module object.
+- **File Extensions:** When using dynamic imports within native Node.js ESM, you **must** include the file extension (e.g., `./utils.js`, not just `./utils`), unless you are importing a packaged npm dependency. [link](https://stackoverflow.com/questions/77316036/is-dynamic-import-useful-in-node-js)
+
+***
+
+To help give you the most accurate advice for your setup, let me know:
+
+- Are you writing your project in **CommonJS (`require`)** or **ES Modules (`import`)**?
+
+- Are you using **TypeScript** or build tools like **Webpack/Vite**?
+
+- What specific **use case** are you trying to solve with dynamic imports (e.g., localized plugins, conditionally loading heavy libraries)?
+
+- [link](https://nodejs.org/api/esm.html)\
+  ECMAScript modules | Node.js v26.4.0 Documentation\
+  getBuiltinModule() , where the module exports object is evaluated immediately, but some of its properties may only be initialized ...\
+  Node.js
+
+- [link](https://stackoverflow.com/questions/58858782/using-the-dynamic-import-function-on-node-js)\
+  Using the dynamic import() function on Node.js - Stack Overflow\
+  Sorted by: 177. The dynamic import() loads the module and return a module object that contains all its exports. In order to access...\
+  Stack Overflow
+
+- [link](https://stackoverflow.com/questions/77316036/is-dynamic-import-useful-in-node-js)\
+  Is dynamic import useful in node.js? - javascript - Stack Overflow\
+  2 Answers. ... ... i start asking myself if dynamic import are any useful in this case? ... import {getMenuRoute} from "./routes/g...\
+  Stack Overflow
+
+Show all
+
+## You said: can it work with tsconfig baseurl
+
+can it work with tsconfig baseurl
+
+4:11 AM
+
+<mark><strong>No, TypeScript’s<span> </span><code dir="ltr">baseUrl</code><span> </span>does not work natively with Node.js dynamic imports at runtime.</strong></mark> [link](https://stackoverflow.com/questions/42582807/typescript-baseurl-with-node-js)
+
+`baseUrl` is purely a compilation feature. While TypeScript and your IDE will understand the clean paths during development, the TypeScript compiler (`tsc`) **does not rewrite** those paths to relative paths when converting code to JavaScript. When Node.js tries to execute the generated `import("my-folder/file.js")`, it will look inside `node_modules`, fail to find it, and throw a `MODULE_NOT_FOUND` error. [link](https://stackoverflow.com/questions/53472784/use-non-relative-imports-using-typescripts-baseurl-property-without-webpack)
+
+To make dynamic imports respect `baseUrl` or path aliases at runtime, choose one of the following production-ready workarounds:
+
+### Solution 1: Use Native Node.js Subpath Imports (Recommended for ESM)
+
+Modern Node.js projects running native ECMAScript Modules (ESM) should bypass `baseUrl` entirely and use Node's native `imports` field in `package.json`. It is supported natively by both TypeScript and Node.js without third-party tools.
+
+1. Configure your `package.json`:\
+   json
+
+<!---->
+
+```
+{
+  "name": "my-app",
+  "type": "module",
+  "imports": {
+    "#utils/*": "./dist/utils/*.js"
+  }
+}
+```
+
+Use code with caution.
+2\. Configure your `tsconfig.json` to mirror it:\
+json
+
+```
+{
+  "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "paths": {
+      "#utils/*": ["./src/utils/*"]
+    }
+  }
+}
+```
+
+Use code with caution.
+3\. Use it in your dynamic import using the `#` prefix:\
+javascript
+
+```
+const math = await import('#utils/math.js');
+```
+
+Use code with caution.
+
+### Solution 2: For `ts-node` Development
+
+If you execute your `.ts` files directly using `ts-node` during development, you can inject the tsconfig-paths package into the runtime. This intercepts Node's resolution logic and hooks it up to your `tsconfig.json` mappings. [link](https://stackoverflow.com/questions/42582807/typescript-baseurl-with-node-js)
+
+1. Install the tool:\
+   bash
+
+<!---->
+
+```
+npm install --save-dev tsconfig-paths
+```
+
+Use code with caution.
+2\. Run your application by registering the path resolver:\
+bash
+
+```
+ts-node -r tsconfig-paths/register src/index.ts
+```
+
+Use code with caution.\
+[link](https://stackoverflow.com/questions/42582807/typescript-baseurl-with-node-js)
+
+### Solution 3: Rewrite Paths Post-Build (For `tsc` production setups)
+
+If you compile your code using `tsc` for production deployment, use a build-step plugin to permanently convert the `baseUrl` paths into standard relative paths before shipping. [link](https://stackoverflow.com/questions/53472784/use-non-relative-imports-using-typescripts-baseurl-property-without-webpack)
+
+1. Install [tsc-alias](https://www.npmjs.com/package/tsc-alias):\
+   bash
+
+<!---->
+
+```
+npm install --save-dev tsc-alias
+```
+
+Use code with caution.
+2\. Adjust your build command in `package.json`:\
+json
+
+```
+{
+  "scripts": {
+    "build": "tsc && tsc-alias"
+  }
+}
+```
+
+Use code with caution.\
+_When you run `npm run build`, `tsc-alias` sweeps through your compiled `dist/` directory and swaps placeholders like `import('services/api')` into standard relative imports like `import('../../services/api.js')`._ [link](https://www.reddit.com/r/typescript/comments/ppk084/tsconfigjson%5Ffor%5Fusing%5Fbaseurl%5Fand%5Fimporting%5Fjson/)
+
+***
+
+To help drill down to the cleanest option, let me know:
+
+- Are you aiming to deploy this as **compiled JavaScript** (using `tsc`), or are you using a bundler like **Vite, Webpack, or Esbuild**?
+
+- Are your target output files structured as **CommonJS** or native **ES Modules (ESM)**? [link](https://stackoverflow.com/questions/53472784/use-non-relative-imports-using-typescripts-baseurl-property-without-webpack)
+
+- [link](https://stackoverflow.com/questions/53472784/use-non-relative-imports-using-typescripts-baseurl-property-without-webpack)\
+  Use non-relative imports using TypeScript's baseurl property ...\
+  Sorted by: 0. So the way to do it is to transform back the non-relative imports to relative imports after build so that commonjs w...\
+  Stack Overflow
+
+- [link](https://stackoverflow.com/questions/42582807/typescript-baseurl-with-node-js)\
+  Typescript baseUrl with Node.js - Stack Overflow\
+  Comments. ... TypeScript's baseUrl helps with imports only during compilation, but Node. js doesn't understand this by default whe...\
+  Stack Overflow
+
+- [link](https://www.reddit.com/r/typescript/comments/ppk084/tsconfigjson%5Ffor%5Fusing%5Fbaseurl%5Fand%5Fimporting%5Fjson/)\
+  tsconfig.json for using baseUrl and importing json : r/typescript - Reddit\
+  You need "baseUrl": "./src" and "resolveJsonModule": true . Sandbox. ... Yes, but still not there. I was able to use tsnd and it f...\
+  Reddit
+
+Show all
+
+## You said: can it import ts
+
+can it import ts
+
+4:45 AM
+
+<mark><strong><span>Yes, it can import<span> </span></span><code dir="ltr">.ts</code><span><span> </span>files, but<span> </span><span><a rel="noopener" href="https://nodejs.org/learn/typescript/run-natively">Node.js</a></span><span> </span>cannot read raw TypeScript code out of the box.</span></strong></mark>
+
+At runtime, Node.js is a JavaScript engine. If you pass an uncompiled file path like `import('./utils.ts')` directly to standard Node.js, it will throw a syntax or module execution error.
+
+How you handle dynamic TypeScript imports depends on whether you are running the files via a **runtime runner** (development) or deploying **compiled JavaScript** (production).
+
+***
+
+### Option 1: Modern Node.js (Native Support)
+
+Recent versions of Node.js include **experimental native support for TypeScript via type-stripping**. This means Node.js can execute `.ts` files directly without an external compiler. [link](https://nodejs.org/learn/typescript/run-natively)
+
+When doing this, you **must include the explicit `.ts` extension** in your dynamic import string: [link](https://nodejs.org/api/typescript.html)
+
+typescript
+
+```
+// index.ts
+async function loadModule() {
+  // Explicitly reference the .ts file extension
+  const module = await import('./math.ts');
+  console.log(module.add(5, 5));
+}
+loadModule();
+```
+
+Use code with caution.
+
+To run this file natively, execute Node with the experimental flag:
+
+bash
+
+```
+node --experimental-strip-types index.ts
+```
+
+Use code with caution.
+
+***
+
+### Option 2: Using a Runner (tsx or ts-node)
+
+If you are developing locally and want a seamless workflow that executes TypeScript files on the fly, use a runtime runner like `tsx` (highly recommended for modern ESM) or `ts-node`. [link](https://github.com/wclr/ts-node-dev/issues/95)
+
+1. Install **tsx** (a fast, modern alternative to `ts-node` built on esbuild):\
+   bash
+
+<!---->
+
+```
+npm install --save-dev tsx
+```
+
+Use code with caution.
+2\. Write your code referencing the `.ts` file directly:\
+typescript
+
+```
+const myTools = await import('./tools.ts');
+```
+
+Use code with caution.
+3\. Run it instantly via your terminal:\
+bash
+
+```
+npx tsx index.ts
+```
+
+Use code with caution.
+
+***
+
+### Option 3: Production Deployment (`tsc` Compilation)
+
+If you compile your TypeScript into JavaScript using the standard TypeScript compiler (`tsc`) for your production build, you have to be careful with file extensions.
+
+Historically, TypeScript required you to write the final compiled extension (`.js`) inside your code, even though the file on your disk was `.ts`. [link](https://dev.to/pockit%5Ftools/nodejs-native-typescript-the-complete-guide-to-running-ts-files-without-a-compiler-mpa)
+
+### The Modern Way (`moduleResolution: "NodeNext"`)
+
+If your `tsconfig.json` is set up with modern defaults (`"moduleResolution": "NodeNext"`), you can use the `allowImportingTsExtensions` flag. This allows you to write `.ts` in your source code, but you **must** use a bundler (like Vite or Esbuild) or an extension rewriter to emit the code, because `tsc` will not emit files when this flag is active. [link](https://nodejs.org/api/typescript.html)
+
+### The Traditional Way
+
+If you are strictly compiling `.ts` to `.js` files via `tsc` to run directly in production, you must reference the **target** extension (`.js`) in your dynamic import string: [link](https://dev.to/pockit%5Ftools/nodejs-native-typescript-the-complete-guide-to-running-ts-files-without-a-compiler-mpa)
+
+typescript
+
+```
+// Inside your src/index.ts file:
+// Even though the file is 'math.ts' on your hard drive, you write '.js'
+const math = await import('./math.js');
+```
+
+Use code with caution.
+
+_Why?_ Because when `tsc` builds your project into a `dist/` folder, `index.ts` becomes `index.js`, and `math.ts` becomes `math.js`. At runtime, Node.js will look in the `dist/` directory and find `math.js` perfectly.
+
+***
+
+Which approach matches your current setup? Let me know if you are looking to **run raw `.ts` files locally** or if you need to configure your **production build script** to resolve these paths.
+
+- [link](https://github.com/wclr/ts-node-dev/issues/95)\
+  paths option(tsconfig.json) is ignored · Issue #95 · wclr/ts-node-dev\
+  Ts-node-dev doesn't seem to respect paths in tsconfig.json. Here are some workarounds: \* Create a src/aliases.ts file \* Add this a...\
+  GitHub
+- [link](https://nodejs.org/learn/typescript/run-natively)\
+  Running TypeScript Natively | Node.js Learn\
+  You can run TypeScript code directly in Node.js without transpiling it first. Node.js uses a process called type stripping to run ...\
+  Node.js
+- [link](https://nodejs.org/api/typescript.html)\
+  Modules: TypeScript | Node.js v26.4.0 Documentation\
+  As in JavaScript files, file extensions are mandatory in import statements and import() expressions: import './file. ts' , not imp...\
+  Node.js
+
+Show all
+
+## You said: can i import foo.ts by import foo
+
+can i import foo.ts by import foo
+
+4:46 AM
+
+<mark><strong>No, you cannot use an extensionless import like<span> </span><code dir="ltr">import "./foo"</code><span> </span>or<span> </span><code dir="ltr">import("./foo")</code><span> </span>natively in Node.js when working with modern ES Modules (ESM).</strong></mark> [link](https://nodejs.org/api/typescript.html)
+
+Node.js strictly adheres to the ECMAScript standard for its module system (`"type": "module"`). Unlike the old CommonJS `require()` system, Node's native ESM resolver does not perform automatic file guessing or directory probing. If you omit the extension, Node.js will throw a `ERR_MODULE_NOT_FOUND` error. [link](https://nodejs.org/api/typescript.html)
+
+However, depending on your development environment and build tools, you can achieve extensionless imports using specific configurations or runtime runners. [link](https://www.reddit.com/r/typescript/comments/1n3al9m/using%5Frelative%5Fimports%5Fwithout%5Fextension%5Fand%5Falso/)
+
+***
+
+### Scenario 1: Using a Bundler or Dev Runner (Vite, Webpack, `tsx`)
+
+If you don't run raw Node.js directly and instead rely on local development tools, extensionless imports are supported because the tool resolves the extensions for you. [link](https://stackoverflow.com/questions/77406510/how-to-import-an-es-module-in-node-without-an-extension)
+
+To make this work without TypeScript errors, configure your `tsconfig.json` to use a bundler-compatible resolution mode: [link](https://www.reddit.com/r/typescript/comments/1n3al9m/using%5Frelative%5Fimports%5Fwithout%5Fextension%5Fand%5Falso/)
+
+json
+
+```
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "Bundler" // 👈 Tells TS that your bundler handles the extensions
+  }
+}
+```
+
+Use code with caution.
+
+**How to execute:**
+
+bash
+
+```
+npx tsx index.ts # Works perfectly with extensionless imports!
+```
+
+Use code with caution.
+
+### Scenario 2: Native Node.js TypeScript Support (Node 22+)
+
+If you are using Node's new experimental native TypeScript execution (`node --experimental-strip-types`), you **cannot use extensionless imports** for local files. [link](https://nodejs.org/api/typescript.html)
+
+Because there is no compilation step to generate a `.js` file, you must explicitly include the `.ts` extension: [link](https://www.reddit.com/r/typescript/comments/1n3al9m/using%5Frelative%5Fimports%5Fwithout%5Fextension%5Fand%5Falso/)
+
+typescript
+
+```
+// ❌ Fails at runtime in Node.js
+import { myFunc } from "./foo";
+
+//  Works natively in Node.js
+import { myFunc } from "./foo.ts";
+```
+
+Use code with caution.
+
+### Scenario 3: Compiling to Standard JavaScript (`tsc`)
+
+If you use the official TypeScript compiler (`tsc`) to build files into a production `dist/` directory, the TypeScript team strictly mandates that you use the extension of the **compiled output**. [link](https://www.linkedin.com/posts/mapocock%5Fwhy-does-typescript-make-us-use-foojs-activity-7117464196794994688-rDyX)
+
+You must target the code using modern rules (`"moduleResolution": "NodeNext"`) and reference a `.js` extension, even though your physical source file on disk ends in `.ts`: [link](https://www.linkedin.com/posts/mapocock%5Fwhy-does-typescript-make-us-use-foojs-activity-7117464196794994688-rDyX)
+
+typescript
+
+```
+// Inside your src/index.ts file:
+import { myFunc } from "./foo.js"; // 👈 TS knows this maps to your local 'foo.ts'
+```
+
+Use code with caution.
+
+***
+
+### Summary Checklist
+
+| If your runtime environment is...        | Can you use `import "./foo"`? | Required Extension | Required `tsconfig.json`         |
+| ---------------------------------------- | ----------------------------- | ------------------ | -------------------------------- |
+| **`node --experimental-strip-types`**    | **No**                        | `.ts`              | `"moduleResolution": "NodeNext"` |
+| **`npx tsx` or Bundlers (Vite/Webpack)** | **Yes**                       | _None_             | `"moduleResolution": "Bundler"`  |
+| **Production Production Build (`tsc`)**  | **No**                        | `.js`              | `"moduleResolution": "NodeNext"` |
+
+***
+
+If you want to keep your project fully extensionless, tell me if you are open to using **Vite** or **`tsx`** as a runtime runner, or if you must deploy using standard, zero-dependency **Node.js binaries** in production.
+
+- [link](https://www.linkedin.com/posts/mapocock%5Fwhy-does-typescript-make-us-use-foojs-activity-7117464196794994688-rDyX)\
+  Why does TypeScript make us use "./foo.js" extensions when ...\
+  So you think. See how on earth do I get around that? So you add because you're importing from a TypeScript file, you're going to a...\
+  [3:15](https://www.linkedin.com/posts/mapocock%5Fwhy-does-typescript-make-us-use-foojs-activity-7117464196794994688-rDyX)\
+  LinkedIn·Matt Pocock
+- [link](https://github.com/evanw/esbuild/issues/2435)\
+  Rewriting .ts module specifiers to .js without a plugin #2435\
+  The TypeScript team seems set on making a decision I think is going to lead to a lot of pain for beginners: they are categorically...\
+  GitHub
+- [link](https://stackoverflow.com/questions/77406510/how-to-import-an-es-module-in-node-without-an-extension)\
+  How to import an es module in Node without an extension\
+  Add a comment. Sergei Lobanov. Sergei Lobanov Over a year ago. Is there a way to use extension-less relative imports in typescript...\
+  Stack Overflow
+
+Show all
+
+## You said: bun
+
+bun
+
+4:46 AM
+
+**Yes, Bun completely solves this.**
+
+Unlike Node.js, Bun features an integrated, highly optimized runtime resolver that natively understands TypeScript, `tsconfig.json`, path aliases, and extensionless imports out of the box with zero third-party dependencies.
+
+***
+
+### How Bun Handles Extensionless Imports
+
+Bun explicitly mimics the old CommonJS flexibility while executing modern ES Modules. It automatically searches for file extensions (`.ts`, `.tsx`, `.js`, `.jsx`) and directory index files.
+
+You can write this exact code and it will work perfectly:
+
+typescript
+
+```
+// index.ts
+async function loadFoo() {
+  // Bun automatically resolves this to ./foo.ts or ./foo.js
+  const foo = await import('./foo');
+  foo.hello();
+}
+
+loadFoo();
+```
+
+Use code with caution.
+
+To run it, you don't need flags, transpilers, or wrappers:
+
+bash
+
+```
+bun run index.ts
+```
+
+Use code with caution.
+
+***
+
+### How Bun Handles `tsconfig.json` `baseUrl` and `paths`
+
+Bun natively reads your `tsconfig.json` at startup. If you have a `baseUrl` or path aliases defined, Bun's runtime resolver respects them automatically without requiring tools like `tsc-alias` or `tsconfig-paths`.
+
+### 1. Configure your `tsconfig.json`:
+
+json
+
+```
+{
+  "compilerOptions": {
+    "moduleResolution": "Bundler", // 👈 Tells TS that Bun handles extensions
+    "baseUrl": "./src",
+    "paths": {
+      "@components/*": ["components/*"]
+    }
+  }
+}
+```
+
+Use code with caution.
+
+### 2. Import using your aliases and no extensions:
+
+typescript
+
+```
+// src/index.ts
+
+// Bun resolves this via your path alias AND finds the .ts extension automatically!
+const buttonModule = await import('@components/Button');
+```
+
+Use code with caution.
+
+***
+
+### Bun vs. Node.js Comparison Summary
+
+| Feature                         | Node.js (Native ESM)                           | Bun                                 |
+| ------------------------------- | ---------------------------------------------- | ----------------------------------- |
+| **`import('./foo')`**           | ❌ Fails (Requires explicit extensions)        | **Works flawlessly** \[2]           |
+| **Reads `tsconfig.json` paths** | ❌ Ignored at runtime                          | **Supported natively** \[1, 4]      |
+| **Executes `.ts` directly**     | ⚠️ Experimental (`--experimental-strip-types`) | **Native & extremely fast** \[1, 3] |
+
+***
+
+Are you migrating an **existing Node.js project** over to Bun, or are you starting a **fresh project**? Let me know if you need help mapping out a specific routing or folder structure!
+
+This is for informational purposes only. For medical advice or diagnosis, consult a professional. AI responses may include mistakes. [Learn more](https://support.google.com/websearch?p=aimode\&gl=us)
+
+- [link](https://blog.stackademic.com/anthropic-acquired-bun-heres-what-just-changed-in-software-development-baff75d5761e)\
+  Anthropic Acquired Bun: Here’s What Just Changed in Software Development\
+  Bun collapses all of that into a single tool.\
+  \
+  \
+  Stackademic
+- [link](https://betterstack.com/community/guides/scaling-nodejs/introduction-to-bun-for-nodejs-users/)\
+  Introduction to Bun for Node.js Users\
+  Bun also provides a default tsconfig. json when initializing projects with bun init , which is configured with best practices like...\
+  \
+  \
+  Better Stack
+- [link](https://www.squareshift.co/post/choosing-the-right-backend-framework-bun)\
+  Choosing the Right Backend Framework: Bun\
+  High Performance and Speed: Bun is designed to run exceptionally fast, thanks to its optimized runtime and the integration of mult...\
+  \
+  \
+  SquareShift
+
+Show all
+
+## You said: how to let bun import hard path then
+
+how to let bun import hard path then
+
+5:01 AM
+
+To import using absolute paths (hard paths) from the root of your project or system filesystem in Bun, you have two primary native options depending on what you mean by a "hard path."
+
+### Option 1: File System Absolute Paths (System Hard Paths)
+
+If you want to load a file using an absolute path directly from your operating system's root (e.g., `/Users/name/...` or `C:\...`), Bun supports the standard `file://` protocol URL format inside dynamic imports.
+
+typescript
+
+```
+// On macOS / Linux
+const module = await import('file:///Users/username/projects/my-app/src/foo.ts');
+
+// On Windows
+const module = await import('file:///C:/projects/my-app/src/foo.ts');
+```
+
+Use code with caution.
+
+_Note: Plain string absolute paths like `import('/Users/name/foo')` without the `file://` prefix are often treated by JS runtimes as relative to the project root or web server root, so explicitly adding `file://` guarantees it targets your hard drive._
+
+***
+
+### Option 2: Project Root Paths (Recommended)
+
+If by "hard path" you mean an absolute path relative to your **project folder root** (avoiding messy relative paths like `../../../../foo`), Bun handles this natively using its built-in macro variable `import.meta.dir` combined with standard path resolution.
+
+### The `import.meta.dir` Method
+
+`import.meta.dir` contains the absolute string path to the directory containing the current file. You can pass it directly into Bun's native path resolution utilities:
+
+typescript
+
+```
+import { join } from "path";
+
+// Resolves a hard path starting exactly from your current directory
+const targetPath = join(import.meta.dir, "foo");
+const foo = await import(targetPath);
+```
+
+Use code with caution.
+
+### The Path Aliasing Method (The Cleanest Code)
+
+If you want your code to look completely flat and absolute without importing utility functions, configure a single character wildcard mapping in your `tsconfig.json` to act as your project's root "hard path":
+
+1. **Update `tsconfig.json`**:\
+   json
+
+<!---->
+
+```
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "/*": ["src/*"]
+    }
+  }
+}
+```
+
+Use code with caution.
+2\. **Import from anywhere in your project**:\
+typescript
+
+```
+// Bun evaluates this hard path directly from your /src folder
+const foo = await import('/components/foo');
+```
+
+Use code with caution.
+
+***
+
+Which style of hard path fits your pipeline best? Let me know if you are attempting to **load plugins dynamically outside of your project directory**, or if you just want to **clean up internal project imports**.
+
+- [link](https://cirrus.twiddles.com/blog/2024/08/20/fixing-node-js-paths-on-windows/)\
+  Fixing a Node.js path gotcha on Windows | Cirrus's Realm\
+  Unfortunately, \_\_dirname is not available within ES Modules. Instead, we can use import. meta. url , which gives us the absolute p...\
+  \
+  cirrus.twiddles.com
+
+- [link](https://medium.com/@robinviktorsson/mastering-path-aliases-simplify-your-typescript-imports-0954f4c810a4)\
+  Mastering Path Aliases: Simplify Your TypeScript Imports | by Robin Viktorsson\
+  Mastering Path Aliases: Simplify Your TypeScript Imports Step 1: Setting Up tsconfig. json To use path aliases, you need to modify...\
+  \
+  \
+  Medium
+
+# (?) how do ppl do before async await is supported in js
+
+Before `async/await` was introduced, JavaScript developers handled asynchronous operations using **Callbacks** and **Promises**.
+
+Here is how developers managed asynchronous code in the past.
+
+### 1. Callbacks
+
+The original way to handle async actions was passing a function as an argument to another function. This function executed once the task finished.
+
+- **The Code:**
+
+javascript
+
+```
+function fetchData(callback) {
+  setTimeout(() => {
+    callback("Data received");
+  }, 1000);
+}
+
+fetchData((result) => {
+  console.log(result);
+});
+```
+
+Use code with caution.
+
+- **The Problem:** Leading to "Callback Hell" (nested, unreadable pyramid code).
+- **The Problem:** Error handling was difficult and repetitive.
+
+### 2. Promises (ES6 / 2015)
+
+Promises were introduced to clean up callback hell by allowing code chaining.
+
+- **The Code:**
+
+javascript
+
+```
+function fetchData() {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve("Data received"), 1000);
+  });
+}
+
+fetchData()
+  catch(error => console.error(error));
+  .then(result => console.log(result))
+```
+
+Use code with caution.
+
+- **The Benefit:** Flattened the code structure.
+- **The Benefit:** Unified error handling with a single `.catch()` block.
+
+### 3. Generators and Co (The Bridge)
+
+Just before `async/await`, developers combined ES6 **Generators** (`function*` and `yield`) with libraries like `co` to mimic synchronous-looking code.
+
+- **The Code:**
+
+javascript
+
+```
+co(function* () {
+  const data = yield fetchData();
+  console.log(data);
+});
+```
+
+Use code with caution.
+
+- **The Benefit:** Directly inspired the modern `async/await` syntax.
+
+To help explore this further, I can show you how to **convert an old callback function into a Promise**, or we can look at **how error handling changed** across these versions. Which would you prefer to see?
+
+- [link](https://dev.to/alisamir/mastering-asynchronous-javascript-a-guide-to-asyncawait-and-promises-ebk)\
+  Mastering Asynchronous JavaScript: A Guide to async/await and Promises ⌛️\
+  Jul 27, 2024 — Before the advent of Promises and async/await, JavaScript developers relied heavily on callbacks to handle asynchronous operations...\
+  \
+  \
+  DEV Community
+- [link](https://medium.com/@swagatika07/async-await-in-javascript-629f50400135)\
+  Async/Await in JavaScript. Writing Cleaner Asynchronous Code | by Swagatika Sahoo | Apr, 2026\
+  Apr 17, 2026 — 1. Why Async/Await Was Introduced Before async/await , JavaScript developers mostly worked with callbacks and then Promises. Callb...\
+  \
+  \
+  Medium
+- [link](https://scalac.io/blog/async-await-how-it-works/)\
+  Async/await - How It Works & How To Use It With Premises\
+  Mar 25, 2019 — Async/await – how it works JavaScript async/await is a relatively new way to handle asynchronous operations in JavaScript. It give...\
+  \
+  \
+  Scalac
+
+Show all
+
+
