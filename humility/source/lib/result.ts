@@ -33,12 +33,33 @@ export function err(error: Optional<Err, typeof error_symbol> | PropertyKey | Er
   } else if (error && typeof error == 'object' && has(error, 'type')) {
     // keep stack trace
     const error_with_trace = new Error(error.type)
+    if (typeof Error.captureStackTrace == 'function') {
+      Error.captureStackTrace(error, err);
+    } else {
+      const lines = error.stack?.split('\n');
+      if (lines && lines.length > 1) {
+        lines.splice(1, 1);
+        error.stack = lines.join('\n');
+      }
+    }
+
     error_with_trace[error_symbol] = true
 
     return merge(error_with_trace, error)
   } else {
     // flexible
-    const error_with_trace = new Error(error)
+    const error_with_trace = new Error(error.type)
+    Error.captureStackTrace(error, err);
+
+    // log(typeof Error.captureStackTrace)
+    // if (typeof Error.captureStackTrace == 'function') {
+    // } else {
+    //   const lines = error.stack?.split('\n');
+    //   if (lines && lines.length > 1) {
+    //     lines.splice(1, 1);
+    //     error.stack = lines.join('\n');
+    //   }
+    // }
 
     return merge(error_with_trace, {
       type: error,
