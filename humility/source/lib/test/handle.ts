@@ -1,25 +1,75 @@
-import { handle, handle_async, handle_sync } from 'lib/handle';
+import { handle, handle_best_effort } from 'lib/handle';
 
-async function foo() {
+function foo() {
   throw 'foo'
 }
 
-function bar() {
+async function bar() {
   throw 'bar'
+
+  return 'ok'
 }
 
-log(handle(bar))
+function baz() {
+  const luck = Math.random()
+  if (luck < 0.5) {
+    throw err('unlucky')
+  }
 
-log(handle_sync(bar))
+  return { ok: true }
+}
 
-log(await handle(() => foo()))
+function asdf() {
+  const luck = Math.random()
+  if (luck < 0.5) {
+    throw err('unlucky')
+  }
 
-log(await handle_async(() => fetch()))
+  return 'lucky'
+}
 
-// await handle(() => fetch(''))
-// log((await handle(() => fetch(''))).message) 
-// log(await handle(async () => await fetch('')))
+async function main() {
+  const a = handle(foo)
+  log(a)
 
-// bar()
+  const b = await handle(() => bar())
+  log(b)
+
+  // log(await handle(() => await bar()))
+
+  const c = await handle(async () => await bar())
+  log(c)
+
+  const d = await handle(() => fetch(''))
+  log(d)
+
+  // await handle(() => fetch(''))
+  // log((await handle(() => fetch(''))).message) 
+  // log(await handle(async () => await fetch('')))
+
+  const e = handle(baz)
+  log('baz', e)
+  _ = () => {
+    if (is_error(e)) {
+      return e
+    }
+    const temp = e
+  }
+
+  const f = handle(asdf)
+  log('asdf', f)
+  _ = () => {
+    if (is_error(f)) {
+      return f
+    }
+    const temp2 = f
+  }
+
+  // bar()  
+}
+
+await main()
+
+log(await handle_best_effort(() => bar()))
 
 log('reaches the end')

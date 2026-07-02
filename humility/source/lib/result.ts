@@ -5,7 +5,7 @@ type Optional<Type, Keys extends keyof Type> = Omit<Type, Keys> & Partial<Pick<T
 type all = void | string | number | boolean | bigint | symbol | null | undefined | { [key: PropertyKey]: any };
 type Ok<T = all> = T
 // type Ok<T = all> = T extends object ? (Omit<T, typeof error_symbol> & { [error_symbol]?: never }) : T;
-type Err = { type: any, message: any, [error_symbol]: true } & Partial<FileError>
+type Err = { type: any, [error_symbol]: true, message?: any } & Partial<FileError>
 type FileError = { code: string, path: string, syscall: string, errno: number }
 
 type err = typeof err
@@ -34,12 +34,12 @@ export function err(error: Optional<Err, typeof error_symbol> | PropertyKey | Er
     // keep stack trace
     const error_with_trace = new Error(error.type)
     if (typeof Error.captureStackTrace == 'function') {
-      Error.captureStackTrace(error, err);
+      Error.captureStackTrace(error_with_trace, err);
     } else {
-      const lines = error.stack?.split('\n');
+      const lines = error_with_trace.stack?.split('\n');
       if (lines && lines.length > 1) {
         lines.splice(1, 1);
-        error.stack = lines.join('\n');
+        error_with_trace.stack = lines.join('\n');
       }
     }
 
@@ -48,18 +48,16 @@ export function err(error: Optional<Err, typeof error_symbol> | PropertyKey | Er
     return merge(error_with_trace, error)
   } else {
     // flexible
-    const error_with_trace = new Error(error.type)
-    Error.captureStackTrace(error, err);
-
-    // log(typeof Error.captureStackTrace)
-    // if (typeof Error.captureStackTrace == 'function') {
-    // } else {
-    //   const lines = error.stack?.split('\n');
-    //   if (lines && lines.length > 1) {
-    //     lines.splice(1, 1);
-    //     error.stack = lines.join('\n');
-    //   }
-    // }
+    const error_with_trace = new Error(error)
+    if (typeof Error.captureStackTrace == 'function') {
+      Error.captureStackTrace(error_with_trace, err);
+    } else {
+      const lines = error_with_trace.stack?.split('\n');
+      if (lines && lines.length > 1) {
+        lines.splice(1, 1);
+        error_with_trace.stack = lines.join('\n');
+      }
+    }
 
     return merge(error_with_trace, {
       type: error,

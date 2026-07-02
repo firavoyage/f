@@ -372,4 +372,5 @@ jul 2026
 
 19 20 remove the error wrapper layer from stack trace.
 
+19 40 write `handle_best_effort`. return undefined if err.
 
