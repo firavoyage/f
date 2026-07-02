@@ -73,5 +73,7 @@ export async function chat({ message, thread, model, provider }: any) {
 
   // set nodeid content
   await set(response_node_key, response_node)
+
+  return thread
 }
 
