@@ -9,8 +9,7 @@
  */
 
 import { read, config } from 'lib/file';
-import { fail } from 'node:assert';
-import { stringify } from 'yaml';
+import { parse } from 'yaml';
 
 /**
  * todo: specify
@@ -50,10 +49,9 @@ async function dynamic_import(module: string) {
  */
 export async function request({ context, model, provider }: request_params) {
   // must exist. you should point to a mock file even if you wanna mock.
-  const config_content = await read(config('config.yaml'))
+  const config_content = parse(await read(config('config.yaml')))
   // const config_content = await does_exist(config('config.yaml')) ? await read(config('config.yaml')) : {}
 
-  log(config_content)
   const { url, key, is_module } = config_content[provider]
 
   await log_info('request started', { context, model, provider })
