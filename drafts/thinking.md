@@ -295,4 +295,20 @@ you have absolutely define a default model on config. but it's also basically ux
 
 context. type.
 
+---
+
+how to serve the page and the api on the same port
+
+how to serve on localhost w nodejs
+
+all css props
+
+all categories of css props <!-- how to categorize -->
+
+all css layout props <!-- layout, style, animation, ... -->
+
+how does vscode handle color themes
+
+<!-- utilitarian: color, spacing, nothing else. -->
+
 
