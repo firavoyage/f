@@ -339,6 +339,6 @@ just one ref layer for fixed tokens, like border radius. sys is contextual.
 
 e.g. pallette. color. typography. font. spacing. margin/padding.
 
-also, i would reconsider if `{ref.palette.success}` is needed. maybe `"ref.palette.success` is enough. it cant be ambiguous. ref if existing, otherwise raw.
+also, i would reconsider if `{ref.palette.success}` is needed. maybe `ref.palette.success` is enough. it cant be ambiguous. ref if existing, otherwise raw. i guess it should be explicit over implicit. but i would support both and choose the simpler anyway.
 
 
