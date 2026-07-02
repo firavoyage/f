@@ -9,18 +9,13 @@
  */
 
 import { read, config } from 'lib/file';
+import { fail } from 'node:assert';
 import { stringify } from 'yaml';
 
 /**
  * todo: specify
  */
-type request_params = { context: any[], model: string, provider: string}
-
-async function mock({ context }: any) {
-  // one param, no need to have obj params. no future proof.
-
-  return `Respond to ${stringify(context).toLocaleLowerCase()}`
-}
+type request_params = { context: any[], model: string, provider: string }
 
 export async function openai_compatible({ context, model, url, key }) {
   const response = await fetch(url, {
@@ -39,8 +34,15 @@ export async function openai_compatible({ context, model, url, key }) {
   return response.json()
 }
 
-async function dynamic_import(file) {
-  
+export const failed_to_import = 'failed_to_import'
+
+async function dynamic_import(module: string) {
+  const { request } = await handle_best_effort(() => import(config(module))) ??
+    await handle_best_effort(() => import(module)) ??
+    await handle_best_effort(() => import(`file://${module}`)) ??
+    (() => { throw err({ type: failed_to_import, message: `failed to import ${module}` }) })()
+
+  return request
 }
 
 /**
@@ -50,13 +52,17 @@ export async function request({ context, model, provider }: request_params) {
   // must exist. you should point to a mock file even if you wanna mock.
   const config_content = await read(config('config.yaml'))
   // const config_content = await does_exist(config('config.yaml')) ? await read(config('config.yaml')) : {}
-  const { url, key } = config_content[provider]
+
+  log(config_content)
+  const { url, key, is_module } = config_content[provider]
 
   await log_info('request started', { context, model, provider })
 
   const start_at = Date.now()
 
-  const response = await handle(() => openai_compatible({ context, model, url, key }))
+  const response = is_module ?
+    await handle(async () => (await dynamic_import(url))({ context })) :
+    await handle(() => openai_compatible({ context, model, url, key }))
 
   // await log_info('request started', { context, model, provider })
 
@@ -66,9 +72,9 @@ export async function request({ context, model, provider }: request_params) {
 
   const finish_at = Date.now()
 
-  if(is_error(response)){
+  if (is_error(response)) {
     await log_error('request failed', { response, start_at, finish_at })
-    
+
     throw response
   }
 
