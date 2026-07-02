@@ -39,6 +39,10 @@ export async function openai_compatible({ context, model, url, key }) {
   return response.json()
 }
 
+async function dynamic_import(file) {
+  
+}
+
 /**
  * request models
  */
