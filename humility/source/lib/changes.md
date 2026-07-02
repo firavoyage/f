@@ -366,4 +366,10 @@ export function path(...args) {
 
 slop does not worth archival.
 
+jul 2026
+
+02
+
+19 20 remove the error wrapper layer from stack trace.
+
 
