@@ -34,22 +34,6 @@ We are often not even asking the right questions
 
 ---
 
-The cultural prohibition on micromanagement is harmful
-
-Great individuals should be fully empowered to exercise their judgment
-The goal is not to avoid mistakes; the goal is to achieve uncorrelated levels of excellence in some dimension
-The downsides are worth it
-
-Smaller teams are better
-
-Faster decisions, fewer meetings, more fun
-No need to chop up work for political reasons
-No room for mediocre people (can pay more, too!)
-Large-scale engineering projects are more soluble in IQ than they appear
-Many tech companies are 2-10x overstaffed
-
----
-
 Where do you get your dopamine?
 
 The answer is predictive of your behavior
@@ -90,5 +74,19 @@ Invariant
 
 ---
 
+The cultural prohibition on micromanagement is harmful
 
+Great individuals should be fully empowered to exercise their judgment
+The goal is not to avoid mistakes; the goal is to achieve uncorrelated levels of excellence in some dimension
+The downsides are worth it
+
+Smaller teams are better
+
+Faster decisions, fewer meetings, more fun
+No need to chop up work for political reasons
+No room for mediocre people (can pay more, too!)
+Large-scale engineering projects are more soluble in IQ than they appear
+Many tech companies are 2-10x overstaffed
+
+---
 
