@@ -420,5 +420,3 @@ Menci 💖 @lcMenci
 4:12 AM · Jun 27, 2026 · Twitter Web App · 1,379  Views
 
 ---
- 
- 
