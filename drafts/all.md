@@ -764,6 +764,8 @@ humility:
 - research ai slop design
 - web archi design
 - web
+- research ai agent problems features capabilities
+- research ai agent search
 
 legacy:
 
