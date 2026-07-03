@@ -34,5 +34,8 @@ hono. bun. that's it.
 
 ---
 
-it seems wiser to 
+it seems wiser to pnpm init --bare inside backend.
+
+i might not need pnpm workspace though.
+
 
