@@ -4,6 +4,15 @@ import { cors } from 'hono/cors';
 import { serveStatic } from '@hono/node-server/serve-static';
 import fs from 'node:fs'
 
+/**
+ * get port from env.json on project root or flag
+ * 
+ * for 0, generate one.
+ * 
+ * set to backend/port.json
+ */
+const port = 3000;
+
 // 1. Initialize the Hono application instance
 const app = new Hono();
 
@@ -78,7 +87,6 @@ app.notFound((c) => {
 });
 
 // 7. Start the native Node.js HTTP server
-const port = 3000;
 console.log(`Server is running on http://localhost:${port}`);
 
 serve({
