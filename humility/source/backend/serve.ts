@@ -12,6 +12,7 @@ import fs from 'node:fs'
  * set to backend/port.json
  */
 const port = 3000;
+fs.writeFileSync('port.json', `{"port":${port}}`)
 
 // 1. Initialize the Hono application instance
 const app = new Hono();
@@ -37,7 +38,7 @@ app.get('/', (c) => {
 // 4. JSON Route with Dynamic Path Parameters
 app.get('/api/users/:id', (c) => {
   const userId = c.req.param('id');
-  
+
   return c.json({
     success: true,
     data: {
@@ -52,7 +53,7 @@ app.get('/api/users/:id', (c) => {
 app.post('/api/users', async (c) => {
   // Parses application/json request bodies seamlessly
   const body = await c.req.json();
-  
+
   if (!body.name) {
     return c.json({ success: false, error: 'Name is required' }, 400);
   }

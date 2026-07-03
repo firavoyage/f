@@ -19,6 +19,9 @@
     "skipLibCheck": true,
     "types": ["node"] // not to auto-scan the disk for hidden @types packages
   },
+  "paths": {
+    "backend/*": ["./source/backend/*"]
+  },
   "include": ["**/*"],
   "exclude": [
     "**/temp",
@@ -27,6 +30,6 @@
     "**/.build",
     "**/build",
     "**/legacy",
-    "**/node_modules",
+    "**/node_modules"
   ]
 }

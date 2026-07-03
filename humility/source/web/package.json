@@ -1,13 +1,4 @@
 {
-  "name": "web",
-  "version": "1.0.0",
-  "description": "",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "packageManager": "pnpm@10.30.2",
   "dependencies": {
     "mousetrap": "1.6.5",
@@ -22,5 +13,8 @@
     "os-browserify": "^0.3.0",
     "path-browserify": "^1.0.1",
     "process": "^0.11.10"
+  },
+  "alias": {
+    "backend": "../backend"
   }
 }
