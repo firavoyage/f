@@ -420,3 +420,11 @@ Menci 💖 @lcMenci
 4:12 AM · Jun 27, 2026 · Twitter Web App · 1,379  Views
 
 ---
+
+google ai mode img gen tool
+
+(py plot? how powerful it is.)
+
+https://www.google.com/search?aep=11&q=use+cases+of+flex+or+grid&mstk=AUtExfBB35gHmgUNmPaHUM3My80ZKakMdY_hqjw9k6mHmJn4MAI6EkqWvP8-R18dO-qjHVDv3H-0dJToYicbQ2eBaBTTHHuSCwydHTALGgBwfXrWoZc4zMKrBTcO6Kblf7EfNWHmVWV9jnUXmGpZfk5fqyf58S_tGqRZTqbEOnHOWYuS2uUPHwU05jdUMDXeD3PQXbhjxW3376ZO5ybcRMAT4Ko7uQOkAHH9D59B8o0htNWHyuRehqgvMMs4Jw50EK9bi37XJmd_YeXrmQ&csuir=1&mtid=mbRHapGCFdSx2roP_6q98Q4&udm=50
+
+---

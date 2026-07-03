@@ -763,6 +763,7 @@ humility:
 - research git two separate tracking folders init bare gitdir worktree <!-- for humility -->
 - research ai slop design
 - web archi design
+- web
 
 legacy:
 

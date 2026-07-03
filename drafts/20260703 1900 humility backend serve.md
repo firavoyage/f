@@ -6418,4 +6418,6 @@ do not forget to copy tsconfig.
 }
 ```
 
+<!-- it might be good if i could have some config (--bare by default). but there is nothing wrong to just be explicit. -->
+
 # 
