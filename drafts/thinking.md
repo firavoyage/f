@@ -92,5 +92,5 @@ also, i would reconsider if `{ref.palette.success}` is needed. maybe `ref.palett
 ---
 
 - utilitarian.yaml
-- web (sidebar, shortcuts, settings)
+- web (chat, thread, sidebar, shortcuts, settings)
 
