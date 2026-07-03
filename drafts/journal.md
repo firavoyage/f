@@ -43268,6 +43268,8 @@ the stats show up!
 
 https://nyaa.si/view/1785308
 
+<!-- wow. 5mb/s avg, 7.5mb/s peek. finishing within a quarter it seems. -->
+
 
 
 <!-- timebox, plan. -->
