@@ -91,6 +91,15 @@ also, i would reconsider if `{ref.palette.success}` is needed. maybe `ref.palett
 
 ---
 
+utilitarian.yaml
+
+vscode. adwaita. 
+
+bg, fg, outline, selection, accent, ...
+
+---
+
 - utilitarian.yaml
 - web (chat, thread, sidebar, shortcuts, settings)
+
 
