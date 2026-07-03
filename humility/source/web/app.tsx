@@ -9,7 +9,7 @@ import 'web/app.css'
 
 export function App() {
   useEffect(() => {
-    console.log(port)
+    // console.log(port)
 
     console.log('app mounts')
   })
