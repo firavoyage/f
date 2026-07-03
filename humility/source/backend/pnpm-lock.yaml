@@ -14,6 +14,9 @@ importers:
       hono:
         specifier: 4.12.27
         version: 4.12.27
+      serve-static:
+        specifier: link:@hono/node-server/serve-static
+        version: link:@hono/node-server/serve-static
 
 packages:
 
