@@ -12,7 +12,7 @@ import fs from 'node:fs'
  * set to backend/port.json
  */
 const port = 3000;
-fs.writeFileSync('port.json', `{"port":${port}}`)
+fs.writeFileSync('../web/port.json', `{"port":${port}}`)
 
 // 1. Initialize the Hono application instance
 const app = new Hono();
