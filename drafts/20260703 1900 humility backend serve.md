@@ -8177,4 +8177,150 @@ If you are looking to install OpenClaw or build a specific integration, let me k
 
 Show all
 
+# all npm deps of openclaw
+
+9:52 AM
+
+The exact list of dependencies for [OpenClaw](https://openclaw.ai/) changes depending on your installed version and which bundled plugins you enable. Because OpenClaw uses a monorepo structure managed by `pnpm`, it separates its core system from its extension packages. [link](https://docs.openclaw.ai/plugins/dependency-resolution)
+
+The primary packages that make up OpenClaw's npm dependency tree include the following core utilities and extension-specific libraries:
+
+### Core Tooling & Internal Dependencies
+
+- **`tar`**: Handles package extraction.
+- **`glob`**: Locates files matching patterns.
+- **`inflight`**: Coordinates simultaneous requests.
+- **`npmlog`**: Handles standard logging patterns. [link](https://github.com/openclaw/openclaw/issues/26816)
+
+### Bundled Extension & Plugin Dependencies
+
+OpenClaw dynamically loads external dependencies based on the core features or plugins activated in your environment: [link](https://github.com/openclaw/openclaw/issues/62749)
+
+- **`@lancedb/lancedb`**: Powers the `memory-lancedb` extension.
+- **`@vector-im/matrix-bot-sdk`**: Required if you use the `matrix` chat plugin.
+- **`@larksuiteoapi/node-sdk`**: Handles integrations for Lark/Feishu workflows.
+- **`playwright`**: Drives the headless browser actions plugin. [link](https://github.com/openclaw/openclaw/issues/9100)
+
+***
+
+### How to Check the Full Dependency Tree
+
+To see the complete, real-time list of direct and transitive dependencies for your specific version, run the following commands in your terminal:
+
+- **For the published package registry:**\
+  bash
+
+<!---->
+
+```
+npm view openclaw dependencies --json
+```
+
+Use code with caution.
+
+- **For a local clone of the repository:**\
+  bash
+
+<!---->
+
+```
+# Inside the cloned openclaw directory
+pnpm list --depth=1
+```
+
+Use code with caution.
+
+If you are running into issues with missing dependencies after installing globally, you can force OpenClaw to rebuild and audit its local plugin tree by running `openclaw doctor --fix`. [link](https://docs.openclaw.ai/ja-JP/cli/plugins)
+
+Would you like help looking up the specific dependencies for a **particular version** of OpenClaw, or are you trying to troubleshoot an **installation error**? [link](https://www.stack-junkie.com/blog/fix-openclaw-installation-errors)
+
+- [link](https://docs.openclaw.ai/plugins/dependency-resolution)\
+  Plugin dependency resolution - OpenClaw Docs\
+  npm uses that publishable lockfile during install, and OpenClaw's managed npm project root supports it through the normal npm inst...\
+  OpenClaw AI
+- [link](https://github.com/openclaw/openclaw/issues/62749)\
+  bug: npm install -g openclaw crashes - stageRuntimeDependencies ...\
+  json ) shows what's actually supposed to handle this: \* Walk every dist/extensions/\*/package. json. \* Collect their dependencies +\
+  GitHub
+- [link](https://github.com/openclaw/openclaw/issues/9100)\
+  \[Bug]: npm global update can drop bundled plugin deps (@lancedb/ ...\
+  Summary. After updating OpenClaw via npm global update, some bundled extension plugins can fail to load because their runtime npm ...\
+  GitHub
+
+Show all
+
+## You said: { ws: '8.21.0', tar: '7.5.16', zod: '4.4.3', diff: '9.0.0', glob: '13.0.6', jiti: '2.7.0', yaml: '2.9.0', chalk: '5.6.2', json5: '2.2.3', jszip: '3.10.1', tslog: '4.10.2', croner: '10.0.1', dotenv: '17.4.2', grammy: '1.43.0', ignore: '7.0.5', kysely: '0.29.2', openai: '6.39.1', qrcode: '1.5.4', undici: '8.5.0', clawpdf: '0.3.0', express: '5.2.1', typebox: '1.1.39', chokidar: '5.0.0', linkedom: '0.18.12', 'web-push': '3.6.7', commander: '14.0.3', 'file-type': '22.0.1', minimatch: '10.2.5', rastermill: '0.3.1', typescript: '6.0.3', '@clack/core': '1.3.1', 'highlight.js': '11.11.1', 'partial-json': '0.1.7', 'quickjs-wasi': '3.0.0', '@google/genai': '2.7.0', 'node-edge-tts': '1.2.10', '@clack/prompts': '1.4.0', 'hosted-git-info': '10.1.1', 'playwright-core': '1.60.0', 'proper-lockfile': '4.1.2', 'web-tree-sitter': '0.26.9', '@grammyjs/runner': '2.0.3', '@homebridge/ciao': '1.3.9', '@lydell/node-pty': '1.2.0-beta.12', 'tree-sitter-bash': '0.25.1', '@anthropic-ai/sdk': '0.100.1', '@openclaw/fs-safe': '0.3.0', '@openclaw/proxyline': '0.3.3', '@mistralai/mistralai': '2.2.5', '@mozilla/readability': '0.6.0', '@earendil-works/pi-tui': '0.78.0', '@agentclientprotocol/sdk': '0.22.1', '@modelcontextprotocol/sdk': '1.29.0', '@grammyjs/transformer-throttler': '1.2.1'}
+
+{ ws: '8.21.0', tar: '7.5.16', zod: '4.4.3', diff: '9.0.0', glob: '13.0.6', jiti: '2.7.0', yaml: '2.9.0', chalk: '5.6.2', json5: '2.2.3', jszip: '3.10.1', tslog: '4.10.2', croner: '10.0.1', dotenv: '17.4.2', grammy: '1.43.0', ignore: '7.0.5', kysely: '0.29.2', openai: '6.39.1', qrcode: '1.5.4', undici: '8.5.0', clawpdf: '0.3.0', express: '5.2.1', typebox: '1.1.39', chokidar: '5.0.0', linkedom: '0.18.12', 'web-push': '3.6.7', commander: '14.0.3', 'file-type': '22.0.1', minimatch: '10.2.5', rastermill: '0.3.1', typescript: '6.0.3', '@clack/core': '1.3.1', 'highlight.js': '11.11.1', 'partial-json': '0.1.7', 'quickjs-wasi': '3.0.0', '@google/genai': '2.7.0', 'node-edge-tts': '1.2.10', '@clack/prompts': '1.4.0', 'hosted-git-info': '10.1.1', 'playwright-core': '1.60.0', 'proper-lockfile': '4.1.2', 'web-tree-sitter': '0.26.9', '@grammyjs/runner': '2.0.3', '@homebridge/ciao': '1.3.9', '@lydell/node-pty': '1.2.0-beta.12', 'tree-sitter-bash': '0.25.1', '@anthropic-ai/sdk': '0.100.1', '@openclaw/fs-safe': '0.3.0', '@openclaw/proxyline': '0.3.3', '@mistralai/mistralai': '2.2.5', '@mozilla/readability': '0.6.0', '@earendil-works/pi-tui': '0.78.0', '@agentclientprotocol/sdk': '0.22.1', '@modelcontextprotocol/sdk': '1.29.0', '@grammyjs/transformer-throttler': '1.2.1'}
+
+10:04 AM
+
+### OpenClaw Architecture Overview
+
+This dependency list highlights OpenClaw's architecture as a local, multi-model AI assistant and agentic runtime. The stack is built to prioritize privacy, system tool access, local file processing, and decentralized communication.
+
+***
+
+### Core Structural Categories
+
+### 🤖 AI Engine & Model Clients
+
+These libraries connect OpenClaw to major LLM providers and open protocols.
+
+- **`@modelcontextprotocol/sdk`**: Implements Anthropic's Model Context Protocol (MCP) to plug in secure external tools.
+- **`@agentclientprotocol/sdk`**: Implements the Agent Client Protocol for cross-platform agent communications.
+- **`@anthropic-ai/sdk`**: Direct client for Anthropic's Claude models.
+- **`@google/genai`**: Client library for Google Gemini models.
+- **`@mistralai/mistralai`**: Client library for Mistral AI models.
+- **`openai`**: Integrates OpenAI's API and compatible local endpoints like Ollama or LM Studio.
+
+### 🛠️ OS Interaction, Terminals & Execution
+
+These packages allow the AI to directly control, read, and interact with your local operating system.
+
+- **`@lydell/node-pty`**: Spawns pseudoterminals. This lets the AI safely execute bash/powershell scripts and read real-time terminal output.
+- **`tree-sitter-bash` & `web-tree-sitter`**: Parses terminal commands and scripts into syntax trees, helping the AI validate or understand code blocks before execution.
+- **`proper-lockfile`**: Prevents concurrent system scripts or files from modifying the same data simultaneously.
+
+### 🌐 Networking, API & Web Scrapers
+
+These dependencies empower the assistant to search the web, scrape information, and run local integration hooks.
+
+- **`express`**: Serves a local HTTP server for APIs, webhooks, or localized user interfaces.
+- **`playwright-core`**: A headless browser engine. This gives the AI the power to navigate websites, click buttons, and scrape modern JavaScript-heavy web apps.
+- **`@mozilla/readability`**: Strips out ads, sidebars, and clutter from HTML pages, serving clean markdown/text to the AI context window.
+- **`linkedom`**: A lightweight, fast XML/HTML DOM parser used for parsing web content without a heavy browser overhead.
+- **`undici`**: A high-performance, modern HTTP/1.1 client for native Node.js fetch operations.
+- **`ws`**: Manages WebSockets for real-time, bi-directional communication channels.
+
+### 💬 Chat Bots & Push Notifications
+
+These libraries manage user interfaces across external communication networks.
+
+- **`grammy`**, **`@grammyjs/runner`**, & **`@grammyjs/transformer-throttler`**: A framework suite for running a custom Telegram bot interface for OpenClaw.
+- **`web-push`**: Dispatches native push notifications to your desktop or mobile devices.
+- **`qrcode`**: Generates QR codes in the terminal or UI, typically used to link mobile devices or authenticate sessions.
+
+### 🧳 Utilities, Data Parsing & File System
+
+Standard runtime libraries used to manipulate data, read configs, and format text.
+
+- **`clawpdf`** & **`rastermill`**: Custom internal sub-packages for handling PDF rendering, generation, or text extraction.
+- **`zod`** & **`typebox`**: Runtime data validation libraries that force LLMs to output strictly structured JSON object schemas.
+- **`jiti`**: Enables runtime execution of TypeScript configuration files without a pre-compilation step.
+- **`yaml`**, **`json5`**, & **`dotenv`**: Config parsers that read dynamic environmental parameters and system settings.
+- **`jszip`** & **`tar`**: Compresses, decompresses, and manages internal backup files or plugins.
+- **`croner`**: Executes scheduled cron jobs for automated agent behaviors.
+- **`kysely`**: A type-safe SQL query builder used to interact with local databases (like SQLite) for chat memory storage.
+
+### 🖥️ CLI Layouts & UX
+
+- **`@clack/prompts`** & **`@clack/core`**: Renders terminal prompts, select menus, spinners, and interactive onboarding tutorials.
+- **`@earendil-works/pi-tui`**: A specialized text-user-interface framework tailored for embedded environments or small displays.
+- **`chalk`**: Formats terminal text logs with readable colors.
+
+***
+
+Would you like me to explain how any **specific package** on this list handles your data security, or are you trying to adapt this dependency stack for a **custom installation target**?
+
 # 
