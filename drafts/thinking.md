@@ -17,12 +17,6 @@ hooks are easy. they come later.
 
 ---
 
-chatbot
-
-dify <!-- it has no moat. visual ui is nothing. unlike agents, mcp, skills, tool calls, extensions, hooks, quick unclear. -->
-
----
-
 workflow:
 
 ```yaml
@@ -99,7 +93,14 @@ bg, fg, outline, selection, accent, ...
 
 ---
 
-- utilitarian.yaml
-- web (chat, thread, sidebar, shortcuts, settings)
+web (chat, thread, sidebar, shortcuts, settings)
 
+chatbot
 
+---
+
+dify <!-- it has no moat. visual ui is nothing. unlike agents, mcp, skills, tool calls, extensions, hooks, quick unclear. -->
+
+(research dify. record.)
+
+---
