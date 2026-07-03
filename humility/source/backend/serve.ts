@@ -1,8 +1,16 @@
 import { Hono } from 'hono';
 import { serve } from '@hono/node-server';
+import { cors } from 'hono/cors';
+import { serveStatic } from '@hono/node-server/serve-static';
+import fs from 'node:fs'
 
 // 1. Initialize the Hono application instance
 const app = new Hono();
+
+/**
+ * todo: specify
+ */
+app.use('*', cors());
 
 // 2. Custom Application-Level Middleware (Logger)
 app.use('*', async (c, next) => {
@@ -45,6 +53,23 @@ app.post('/api/users', async (c) => {
     message: 'User created successfully',
     receivedData: body
   }, 201);
+});
+
+app.use('*', serveStatic({ root: '../web/build' }));
+
+app.get('*', (c) => {
+  // Prevent API requests from falling back to HTML if a route is misspelled
+  if (c.req.path.startsWith('/api')) {
+    return c.json({ success: false, message: 'API endpoint not found' }, 404);
+  }
+
+  try {
+    // Read and serve the index.html file across Node, Bun, and Deno
+    const html = fs.readFileSync('../web/build/index.html', 'utf-8');
+    return c.html(html);
+  } catch {
+    return c.text('build/index.html missing. Run your frontend build first.', 500);
+  }
 });
 
 // 6. Global 404 Error Handler
