@@ -15,5 +15,6 @@ export function remove_you_said({ html }: { html: string }): string {
     }
   });
 
-  return $.html();
+  return $.html().replaceAll('<span>You said:</span>', '');
+  // return $.html();
 }
