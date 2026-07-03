@@ -761,6 +761,7 @@ humility:
 - research llms free tier limit subscription model cost price margin self hosting
 - research git two separate tracking folders init bare gitdir worktree <!-- for humility -->
 - research ai slop design
+- web archi design
 
 legacy:
 
