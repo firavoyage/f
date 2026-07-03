@@ -732,6 +732,7 @@ have: <!-- eat, grow -->
 - research activity pub
 - research gemini protocol lagrange
 - research zlibrary anna archive copyright
+- research tor <!-- ? -->
 
 humility:
 
