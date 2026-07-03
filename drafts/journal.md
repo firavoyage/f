@@ -43262,6 +43262,12 @@ hurricane!
 
 the stats show up!
 
+04
+
+00 20 dl `Onimai (2023)`.
+
+https://nyaa.si/view/1785308
+
 
 
 <!-- timebox, plan. -->
