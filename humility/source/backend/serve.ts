@@ -11,6 +11,7 @@ import fs from 'node:fs'
  * 
  * set to backend/port.json
  */
+// const port_given = 0;
 const port = 3000;
 fs.writeFileSync('../web/port.json', `{"port":${port}}`)
 
