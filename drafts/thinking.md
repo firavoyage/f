@@ -106,6 +106,7 @@ dify <!-- it has no moat. visual ui is nothing. unlike agents, mcp, skills, tool
 ---
 
 - atom components
+- utilitarian.yaml
 - pattern? (shortcuts, settings)
 - page, chatbot functionality
 - page routing (auto correct), page to url mapping
@@ -114,5 +115,9 @@ dify <!-- it has no moat. visual ui is nothing. unlike agents, mcp, skills, tool
 - browse (patchright)?
 - operate (x11 computer use)?
 - dify research
+
+it's to create more useful components next i guess.
+
+style in utilitarian. (both yaml tokens and css)
 
 
