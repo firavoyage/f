@@ -1038,4 +1038,768 @@ Would you like to know **which hook** from a specific category would best solve 
 
 Show all
 
+# all hooks in react-use
+
+The popular utility library [streamich/react-use](https://github.com/streamich/react-use) contains over 100 custom React hooks grouped into **six main functional categories**. [link](https://github.com/streamich/react-use)
+
+***
+
+### 1. Sensors
+
+Hooks that track device, hardware, user movement, and network states. [link](https://github.com/streamich/react-use)
+
+- **`useBattery`**: Tracks the device's battery charging and level status.
+- **`useGeolocation`**: Tracks the geographic location coordinates of the user's device.
+- **`useHover` & `useHoverDirty`**: Tracks whether the mouse cursor is hovering over an element.
+- **`useHash`**: Tracks and updates the browser navigation bar location hash value.
+- **`useIdle`**: Tracks user inactivity based on mouse movements, typing, and scrolling.
+- **`useIntersection`**: Tracks an HTML element's intersection viewport status using the Intersection Observer API.
+- **`useKey`**, **`useKeyPress`**, **`useKeyboardJs`**, & **`useKeyPressEvent`**: Track physical key presses and global keyboard event shortcuts.
+- **`useLocation` & `useSearchParam`**: Tracks the browser's window location state and URL query string parameters.
+- **`useLongPress`**: Tracks long-press click gestures on specified elements.
+- **`useMedia`**: Evaluates and tracks whether the current window matches a CSS media query.
+- **`useMediaDevices`**: Polls and tracks lists of connected media hardware devices like cameras and microphones.
+- **`useMotion`**: Tracks data from a device's acceleration and rotation sensors.
+- **`useMouse` & `useMouseHovered`**: Tracks real-time mouse position relative to the viewport or a target element.
+- **`useMouseWheel`**: Tracks scrolling intensity (`deltaY`) of a mouse wheel.
+- **`useNetworkState`**: Monitors whether the browser's network connection is online or offline.
+- **`useOrientation`**: Tracks screen orientation state (landscape or portrait angle).
+- **`usePageLeave`**: Emits an alert when the mouse cursor leaves the boundary of the HTML page document.
+- **`useScratch`**: Tracks mouse-clicking and scrubbing/dragging actions across an axis.
+- **`useScroll`**: Tracks the current horizontal and vertical scroll position pixels of an element.
+- **`useScrolling`**: Returns a boolean indicating whether an HTML element is actively scrolling.
+- **`useSize`**: Monitors the bounding width and height measurements of a targeted HTML element.
+- **`useStartTyping`**: Detects when a user begins typing printable characters anywhere on the web page.
+- **`useWindowScroll`**: Tracks the global scroll coordinate positioning of the main window viewport.
+- **`useWindowSize`**: Monitors live updates to the interior layout width and height of the browser window. [link](https://github.com/streamich/react-use)
+
+***
+
+### 2. Animations
+
+Hooks designed to handle recurring frame updates, timed intervals, and physical motion physics. [link](https://github.com/streamich/react-use/packages/51672)
+
+- **`useRaf`**: Forces a component to re-render on every browser `requestAnimationFrame` tick.
+- **`useInterval` & `useHarmonicIntervalFn`**: Re-renders components safely at timed intervals using `setInterval`.
+- **`useSpring`**: Smoothly interpolates number transitions using physical spring dynamics simulation.
+- **`useTimeout` & `useTimeoutFn`**: Triggers a re-render or callback function cleanly after a designated period.
+- **`useTween`**: Outputs an incremental animation value changing over time according to specific easing formulas. [link](https://github.com/streamich/react-use/packages/51672)
+
+***
+
+### 3. Side-Effects
+
+Hooks that streamline interactions with asynchronous tasks, storage, and standard browser features. [link](https://github.com/streamich/react-use/packages/51672)
+
+- **`useAsync`**, **`useAsyncFn`**, & **`useAsyncRetry`**: Execute and trace states for promises, tracking loading indicators, errors, and manual retries.
+- **`useBeforeUnload`**: Standardizes confirmation dialog prompts displayed before an unexpected page refresh or exit.
+- **`useCookie`**: Reads, writes, and removes client browser HTTP cookie files.
+- **`useCopyToClipboard`**: Adds text values directly into the operating system's clipboard storage.
+- **`useDebounce`**: Postpones side-effect execution until a specified timeout duration passes without activity.
+- **`useFavicon`**: Programmatically swaps out the application icon image displayed in the browser tab.
+- **`useLocalStorage`**: Reads and syncs component state variables directly with browser local storage keys.
+- **`useLockBodyScroll`**: Temporarily stops scrolling on the body element, ideal for preventing background scroll behind modals.
+- **`usePermission`**: Checks API permissions for browser features like geolocation or notification access.
+- **`useSessionStorage`**: Persists values across single session views using the browser's session storage.
+- **`useSpeech`**: Uses the Web Speech API to provide text-to-speech synthesize functionality.
+- **`useThrottle` & `useThrottleFn`**: Caps maximum execution rates for highly recurring operations.
+- **`useVibrate`**: Controls the physical vibration hardware patterns built into mobile client devices.
+- **`useVideo` & `useAudio`**: Render element tag controls and abstract play, pause, or seek tracking operations into React state elements. [link](https://github.com/streamich/react-use)
+
+***
+
+### 4. Lifecycles
+
+Hooks providing simplified equivalents to class-based runtime mounting and event listener unbinding paradigms. [link](https://github.com/streamich/react-use/packages/51672)
+
+- **`useEffectOnce`**: Executes a React functional component side-effect exactly once upon initialization.
+- **`useEvent`**: Encapsulates setting up and tearing down traditional native `addEventListener` binds.
+- **`useLifecycles`**: Aggregates component execution logic matching old `componentDidMount` and `componentWillUnmount` blocks.
+- **`useMountedState`**: Exposes a callback function checking if a component remains safely attached to the DOM structure.
+- **`useLogger`**: Logs incoming property adjustments straight to the web console on render actions.
+- **`usePromise`**: Prevents updating state on unmounted components by resolving promises safely.
+- **`useCustomCompareEffect`**, **`useDeepCompareEffect`**, & **`useShallowCompareEffect`**: Standardize custom evaluation loops checking dependency inputs for changes.
+- **`useUpdate`**: Supplies an internal function to forcibly trigger an immediate component update routine.
+- **`useUpdateEffect`**: Skips running effect calculations altogether during the initial load mount cycle. [link](https://github.com/streamich/react-use/packages/51672)
+
+***
+
+### 5. State Management
+
+Hooks created to manipulate specific data structures or encapsulate state logic factories. [link](https://github.com/streamich/react-use/packages/51672)
+
+- **`createMemo`**: Establishes custom execution hooks utilizing memoized results across identical function args.
+- **`createReducer`**: Generates a standard state reducer workflow outfitted with custom middleware hook points.
+- **`useAccessorState`**: Creates state managers accessible by a getter/setter approach.
+- **`useCounter`**: Manages numerical limits, containing functions for programmatic increments, decrements, and resets.
+- **`useDefault`**: Configures fallback default parameters returned whenever state evaluates strictly to null instances.
+- **`useGetSet` & `useGetSetState`**: Exposes functional getters to read values within deep async execution trees.
+- **`useList`**: Wraps native JavaScript array structures with specific functional mutators like push, filter, or sort.
+- **`useMap`**: Standardizes tracking key-value structural entries through dictionary mapping operations.
+- **`useMediatedState`**: Passes updating states through custom validation or formatting middleware layers first.
+- **`useMultiStateValidator`**: Runs validation checks across multiple state dependencies at once.
+- **`useObservable`**: Subscribes components directly to RxJS Observable streams.
+- **`usePrevious`**: Retrieves variable data states captured during the immediately preceding rendering cycle.
+- **`usePreviousDistinct`**: Keeps historical records of a variable's last state, ignoring redundant re-renders where nothing changed.
+- **`useQueue`**: Evaluates sequential state data objects using standard first-in, first-out queues.
+- **`useRethrow`**: Throws asynchronous errors into the React render loop so they can be caught by Error Boundaries.
+- **`useSet`**: Tracks unique collections of items using the native ES6 Set data structure.
+- **`useStateList`**: Iterates through fixed arrays of value states, providing next/previous navigation controls.
+- **`useStateValidator`**: Validates a state value automatically whenever it changes.
+- **`useStateWithHistory`**: Implements an automatic state time-machine tracking full undo and redo histories.
+- **`useToggle` & `useBoolean`**: Toggles a boolean value between true and false states with built-in helper functions. [link](https://github.com/streamich/react-use)
+
+***
+
+### 6. Miscellaneous
+
+UI structural helpers, reference abstractions, and other cross-functional single tools. [link](https://github.com/streamich/react-use/packages/51672)
+
+- **`useClickAway`**: Dispatches click handling routines when selections occur strictly outside target component elements.
+- **`useCss`**: Evaluates styles dynamically, creating clean CSS class strings injected straight into head templates.
+- **`useEnsuredForwardedRef`**: Provides a safe fallback when standard `React.forwardRef` references evaluate to null elements.
+- **`usePageLeave`**: Tracks when the user's cursor leaves the application page boundary. [link](https://github.com/streamich/react-use/packages/51672)
+
+***
+
+If you are working on a specific feature, let me know. I can give you a **code example** for the hook that fits your use case best, or help you set up **performance optimization** for asynchronous tasks.
+
+- [link](https://github.com/streamich/react-use)\
+  streamich/react-use: React Hooks - GitHub\
+  More. 👍 react-use. Collection of essential React Hooks. Port of libreact . Translations: 🇨🇳 汉语 npm i react-use. Sensors. useBat...\
+  GitHub
+- [link](https://github.com/streamich/react-use/blob/master/docs/useList.md)\
+  react-use/docs/useList.md at master - GitHub\
+  Tracks an array and provides methods to modify it. To cause component re-render you have to use these methods instead of direct in...\
+  GitHub
+- [link](https://github.com/siberiacancode/reactuse)\
+  reactuse the largest and most useful hook library · GitHub\
+  npx useverse@latest init. npx useverse@latest add \[hook] You will be presented with a list of hooks to choose from: Which hooks wo...\
+  GitHub
+
+Show all
+
+## examples
+
+Here are code examples for four of the most popular and practical hooks in `react-use` to show you how they simplify standard React code.
+
+### 1. `useLocalStorage` (State Sync)
+
+Automatically synchronizes a component's state with the browser's local storage so data persists across page refreshes.
+
+tsx
+
+```
+import React from 'react';
+import { useLocalStorage } from 'react-use';
+
+export const LocalStorageExample = () => {
+  // Key: 'user-theme', Default value: 'light'
+  const [theme, setTheme] = useLocalStorage('user-theme', 'light');
+
+  const toggleTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light');
+  };
+
+  return (
+    <div style={{ background: theme === 'dark' ? '#333' : '#fff', color: theme === 'dark' ? '#fff' : '#333', padding: '20px' }}>
+      <p>Current Theme: {theme}</p>
+      <button onClick={toggleTheme}>Toggle Theme</button>
+    </div>
+  );
+};
+```
+
+Use code with caution.
+
+### 2. `useClickAway` (UI Interactions)
+
+Detects clicks outside of a target element. This is ideal for closing dropdowns, modals, or popovers.
+
+tsx
+
+```
+import React, { useRef, useState } from 'react';
+import { useClickAway } from 'react-use';
+
+export const ClickAwayExample = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Closes the dropdown if you click anywhere outside the dropdownRef element
+  useClickAway(dropdownRef, () => {
+    setIsOpen(false);
+  });
+
+  return (
+    <div style={{ position: 'relative', padding: '20px' }}>
+      <button onClick={() => setIsOpen(!isOpen)}>Toggle Dropdown</button>
+
+      {isOpen && (
+        <div ref={dropdownRef} style={{ position: 'absolute', top: '50px', background: '#ccc', padding: '15px', border: '1px solid black' }}>
+          <p>Click outside this box to close it!</p>
+        </div>
+      )}
+    </div>
+  );
+};
+```
+
+Use code with caution.
+
+### 3. `useAsyncRetry` (Data Fetching)
+
+Handles promises, tracks loading/error states, and provides a built-in `retry` function to fetch data again.
+
+tsx
+
+```
+import React from 'react';
+import { useAsyncRetry } from 'react-use';
+
+export const AsyncRetryExample = () => {
+  const state = useAsyncRetry(async () => {
+    const response = await fetch('https://github.com');
+    if (!response.ok) throw new Error('Failed to fetch');
+    return response.json();
+  }, []); // Empty dependency array means it runs once on mount
+
+  if (state.loading) return <div>Loading data...</div>;
+  if (state.error) return <div>Error: {state.error.message} <button onClick={state.retry}>Retry</button></div>;
+
+  return (
+    <div>
+      <h3>Fetched Data:</h3>
+      <pre>{JSON.stringify(state.value, null, 2)}</pre>
+      <button onClick={state.retry}>Refresh Data</button>
+    </div>
+  );
+};
+```
+
+Use code with caution.
+
+### 4. `useDebounce` (Performance Optimization)
+
+Delays executing a side-effect (like an API search request) until the user stops typing for a designated amount of time.
+
+tsx
+
+```
+import React, { useState } from 'react';
+import { useDebounce } from 'react-use';
+
+export const DebounceExample = () => {
+  const [search, setSearch] = useState('');
+  const [debouncedSearch, setDebouncedSearch] = useState('');
+
+  // Wait 500ms after the last keystroke before updating debouncedSearch
+  useDebounce(
+    () => {
+      setDebouncedSearch(search);
+    },
+    500,
+    [search]
+  );
+
+  return (
+    <div style={{ padding: '20px' }}>
+      <input
+        type="text"
+        value={search}
+        placeholder="Type to search..."
+        onChange={(e) => setSearch(e.target.value)}
+      />
+      <p>Immediate state: {search}</p>
+      <p style={{ color: 'green', fontWeight: 'bold' }}>
+        Debounced state (Triggers API call): {debouncedSearch}
+      </p>
+    </div>
+  );
+};
+```
+
+Use code with caution.
+
+If you want to dive deeper, let me know:
+
+- Which **specific hook** from the library you are trying to implement
+
+- The **exact feature** you are building (e.g., a modal, a form, window tracking)
+
+- If you need help converting a **custom native hook** into a `react-use` alternative
+
+# all most useful hooks in react-use
+
+The popular utility library **`react-use`** provides over 100 custom hooks. While many solve niche edge cases, a core set of hooks stands out as universally helpful for managing everyday state, browser APIs, lifecycles, and side effects. [link](https://github.com/streamich/react-use)
+
+### 🌟 State Management
+
+- **`useToggle`**: Switches a boolean value back and forth. It eliminates writing `setValue(prev => !prev)` and is perfect for modals or side menus.
+- **`useLocalStorage`**: Syncs a React state variable directly to the browser's local storage. It reads the stored value on initialization and automatically updates storage whenever state changes.
+- **`useList`**: Simplifies array manipulation. It exposes clean methods like `push`, `updateAt`, `removeAt`, and `clear` so you can avoid verbose immutable filter/map logic.
+- **`usePrevious`**: Remembers the exact value a variable held during the immediately preceding render cycle. It is vital for comparing current props or state against historical values. [link](https://medium.com/@deval93/10-react-hooks-explained-with-real-examples-2025-edition-the-guide-i-wish-i-had-3-years-ago-e0b086f761a4)
+
+### 🌐 UI & Browser Sensors
+
+- **`useClickAway`**: Triggers a callback function when a user clicks outside a specified target DOM element. This provides an easy way to close dropdown menus or modal overlays automatically.
+- **`useMedia`**: Tracks the real-time match status of any CSS media query. It is highly useful for executing JavaScript-driven layouts conditionally across variable mobile or desktop breakpoints.
+- **`useWindowSize`**: Returns the absolute pixel width and height of the browser viewport. It dynamically forces a re-render when the user resizes their screen.
+- **`useCopyToClipboard`**: Copies any string directly to the user's system clipboard. It provides the current clipboard status alongside a command function. [link](https://usehooks.com/)
+
+### ⏱️ Side Effects & Timers
+
+- **`useDebounce`**: Postpones execution of a function until a specified delay window passes without a new call. It reduces server load during live search input queries.
+- **`useInterval`**: Runs a callback function on a recurring loop at fixed, programmatic intervals. It safely handles teardown and setup logic automatically when component dependencies change.
+- **`useTimeoutFn`**: Triggers a single callback function once a specified duration passes. It automatically cancels the timer if the hosting component unmounts before execution. [link](https://usehooks.com/)
+
+### 🔄 Component Lifecycles
+
+- **`useMount`**: Executes a function exactly one time immediately after a component attaches to the DOM. This eliminates empty `useEffect` dependency arrays (`[]`).
+- **`useUnmount`**: Triggers a callback cleanup function right before a component detaches and destroys itself.
+- **`useUpdateEffect`**: Mimics standard `useEffect` behavior, but explicitly skips the initial mount execution phase. It only fires on subsequent dependency updates. [link](https://www.npmjs.com/package/react-use)
+
+If you are dealing with a specific development hurdle, let me know:
+
+- Are you building a complex UI layout, working with forms, or managing heavy async data?
+- Do you need help writing a custom version of any of these hooks from scratch to avoid adding an entire library dependency?
+
+I can provide concrete code examples or help optimize your implementation strategy.
+
+- [link](https://medium.com/@deval93/10-react-hooks-explained-with-real-examples-2025-edition-the-guide-i-wish-i-had-3-years-ago-e0b086f761a4)\
+  10 React Hooks Explained with Real Examples (2025 Edition)\
+  Jun 27, 2025 — The real power of hooks comes from creating your own. Here's a custom hook I use in every project: function useLocalStorage(key, i...\
+  Medium·Deval Kasundra
+- [link](https://dev.to/arafat4693/15-useful-react-custom-hooks-that-you-can-use-in-any-project-2ll8)\
+  15 Useful React Custom Hooks That You Can Use In Any Project\
+  Jan 15, 2023 — 8. useStorage. ... useLocalStorage and useSessionStorage is a custom React hook that allows a component to store a value in the br...\
+  DEV Community
+- [link](https://usehooks.com/)\
+  useHooks – The React Hooks Library\
+  A collection of modern, server-safe React hooks – from the ui. dev team \* useBattery. \* useClickAway. \* useContinuousRetry. \* useC...\
+  useHooks
+
+Show all
+
+## examples
+
+Here are practical code examples for the most useful hooks in `react-use`, categorized by their use case.
+
+### 🌟 State Management
+
+### `useToggle` (Modals & Menus)
+
+tsx
+
+```
+import { useToggle } from 'react-use';
+
+function ToggleComponent() {
+  const [on, toggle] = useToggle(false);
+
+  return (
+    <div>
+      <button onClick={toggle}>Toggle Modal</button>
+      <button onClick={() => toggle(true)}>Open</button>
+      <button onClick={() => toggle(false)}>Close</button>
+      {on && <p>Modal is open!</p>}
+    </div>
+  );
+}
+```
+
+Use code with caution.
+
+### `useLocalStorage` (Persistent State)
+
+tsx
+
+```
+import { useLocalStorage } from 'react-use';
+
+function ThemeComponent() {
+  // Key: 'theme', Default Value: 'light'
+  const [theme, setTheme] = useLocalStorage('theme', 'light');
+
+  return (
+    <button onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
+      Current Theme: {theme}
+    </button>
+  );
+}
+```
+
+Use code with caution.
+
+### `useList` (Array Operations)
+
+tsx
+
+```
+import { useList } from 'react-use';
+
+function TodoComponent() {
+  const [list, { push, removeAt, clear }] = useList(['Buy Milk', 'Walk Dog']);
+
+  return (
+    <div>
+      <button onClick={() => push('New Task')}>Add Task</button>
+      <button onClick={clear}>Clear All</button>
+      <ul>
+        {list.map((item, index) => (
+          <li key={index}>
+            {item} <button onClick={() => removeAt(index)}>X</button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+```
+
+Use code with caution.
+
+***
+
+### 🌐 UI & Browser Sensors
+
+### `useClickAway` (Dropdown Overlay Close)
+
+tsx
+
+```
+import { useRef } from 'react';
+import { useClickAway, useToggle } from 'react-use';
+
+function Dropdown() {
+  const [isOpen, toggleOpen] = useToggle(false);
+  const ref = useRef(null);
+
+  // Closes dropdown when clicking anywhere outside the ref element
+  useClickAway(ref, () => toggleOpen(false));
+
+  return (
+    <div ref={ref}>
+      <button onClick={toggleOpen}>Open Menu</button>
+      {isOpen && <ul><li>Option 1</li><li>Option 2</li></ul>}
+    </div>
+  );
+}
+```
+
+Use code with caution.
+
+### `useCopyToClipboard` (Copy to Clipboard)
+
+tsx
+
+```
+import { useCopyToClipboard } from 'react-use';
+
+function CopyButton({ textToCopy }) {
+  const [state, copyToClipboard] = useCopyToClipboard();
+
+  return (
+    <button onClick={() => copyToClipboard(textToCopy)}>
+      {state.error ? 'Error copying' : state.value ? 'Copied!' : 'Copy Text'}
+    </button>
+  );
+}
+```
+
+Use code with caution.
+
+***
+
+### ⏱️ Side Effects & Timers
+
+### `useDebounce` (Search Input Optimization)
+
+tsx
+
+```
+import { useState } from 'react';
+import { useDebounce } from 'react-use';
+
+function SearchInput() {
+  const [search, setSearch] = useState('');
+  const [debouncedSearch, setDebouncedSearch] = useState('');
+
+  // Runs only after the user stops typing for 500ms
+  useDebounce(() => { setDebouncedSearch(search); }, 500, [search]);
+
+  return (
+    <div>
+      <input value={search} onChange={(e) => setSearch(e.target.value)} />
+      <p>Searching API for: {debouncedSearch}</p>
+    </div>
+  );
+}
+```
+
+Use code with caution.
+
+***
+
+### 🔄 Component Lifecycles
+
+### `useUpdateEffect` (Skip Initial Mount Execution)
+
+tsx
+
+```
+import { useState } from 'react';
+import { useUpdateEffect } from 'react-use';
+
+function FilterComponent() {
+  const [filter, setFilter] = useState('all');
+
+  // This will NOT run when the component first loads.
+  // It only runs when 'filter' actually changes.
+  useUpdateEffect(() => {
+    console.log('Filter updated to:', filter);
+  }, [filter]);
+
+  return <button onClick={() => setFilter('active')}>Change Filter</button>;
+}
+```
+
+Use code with caution.
+
+Which of these patterns fits best into your current project? If you want to dive deeper, let me know:
+
+- Do you need to see how to use **multiple hooks together** (like combining debounce with local storage)?
+
+- Are you encountering a specific bug with one of these hooks in **React 18 or React 19**?
+
+# all most popular hooks in react-use
+
+The most popular hooks in the **[streamich/react-use](https://github.com/streamich/react-use)** library are highly valued because they abstract complex browser APIs, hardware sensors, and frequent side-effect patterns into clean, reusable functions. [link](https://github.com/streamich/react-use)
+
+The most widely used hooks from the library are categorized below by their functionality:
+
+### 🌐 Browser & Sensor Hooks
+
+These hooks are the primary reason developers install `react-use`, as they drastically simplify interaction with browser events and hardware. [link](https://reactuse.com/)
+
+- **`useLocalStorage`**: Automatically synchronizes a component's state with the browser's local storage.
+- **`useMedia`**: Tracks the state of a CSS media query dynamically, which is crucial for building responsive layout checks directly in JavaScript.
+- **`useClickAway`**: Triggers a callback function when a user clicks outside a targeted target element (ideal for closing dropdowns and modals).
+- **`useMeasure`**: Uses the `ResizeObserver` API to track the precise, real-time width, height, and coordinates of an HTML element.
+- **`useWindowSize`**: Tracks the inner width and height of the browser window as it changes.
+- **`useGeolocation`**: Tracks the latitude, longitude, and accuracy of the user's device location. [link](https://github.com/streamich/react-use)
+
+### ⚡ Side-Effects & Performance Hooks
+
+These hooks refine standard React behaviors, making it easier to manage asynchronous actions and timing events without introducing memory leaks. [link](https://reactuse.com/)
+
+- **`useDebounce`**: Delays executing a function or updating state until a specified amount of time has elapsed since the last trigger (heavily used for search inputs).
+- **`useThrottle`**: Limits the execution of a fast-moving action to a maximum of once per specified time interval (ideal for tracking fast scrolling or resizing).
+- **`useAsync`**: Resolves an asynchronous function (like an API fetch request) and returns `loading`, `error`, and `value` states automatically.
+- **`useLatest`**: Returns a ref pointing to the absolute latest value of a prop or state, safely preventing stale closures in asynchronous callbacks. [link](https://github.com/streamich/react-use/blob/master/docs/useDebounce.md)
+
+### 🔄 Lifecycle Hooks
+
+While React components rely heavily on tracking dependency updates, these hooks provide alternative, explicit syntax for developers looking for clean lifecycle wrappers. [link](https://www.reddit.com/r/reactjs/comments/eiz7ru/a%5Fcollection%5Fof%5Fbeautiful%5Fand%5Fhopefully%5Fuseful/)
+
+- **`useMount`**: Explicitly runs a side effect only once when the component mounts onto the screen.
+- **`useUnmount`**: Explicitly runs a cleanup function only once when the component is removed from the screen.
+- **`useUpdateEffect`**: Runs an effect exactly like `useEffect`, but completely skips the initial render on mount. [link](https://github.com/react-hookz/web)
+
+### 🎛️ State Management Helpers
+
+These hooks add utility to standard states, handling complex structures or basic toggles without writing manual logic. [link](https://www.geeksforgeeks.org/reactjs/reactjs-hooks/)
+
+- **`useToggle`**: Manages a boolean state and provides a simple function to switch between true and false without writing boilerplate code.
+- **`useList`**: Simplifies working with array states by providing out-of-the-box methods like `push`, `filter`, `sort`, and `clear`. [link](https://dev.to/ravics1721/top-10-awesome-react-hooks-libraries-1924)
+
+***
+
+Are you looking to implement a **specific feature** (like a tracking sensor or search optimization), or would you like to see a **code example** of how to combine a couple of these hooks together?
+
+- [link](https://www.reddit.com/r/reactjs/comments/eiz7ru/a%5Fcollection%5Fof%5Fbeautiful%5Fand%5Fhopefully%5Fuseful/)\
+  A collection of beautiful and (hopefully) useful React hooks to ...\
+  Jan 2, 2020 — Hooks don't follow the lifecycles exactly. They rerun to keep in sync with their dependencies. By using the lifecycle hooks you re...\
+  Reddit·r/reactjs
+- [link](https://www.geeksforgeeks.org/reactjs/reactjs-hooks/)\
+  React Hooks - GeeksforGeeks\
+  Jun 29, 2026 — Types of React Hooks \* state: The current state value. \* dispatch: A function used to dispatch actions that will update the state.\
+  GeeksforGeeks
+- [link](https://dev.to/arafat4693/15-useful-react-custom-hooks-that-you-can-use-in-any-project-2ll8)\
+  15 Useful React Custom Hooks That You Can Use In Any Project\
+  Jan 15, 2023 — 8. useStorage. ... useLocalStorage and useSessionStorage is a custom React hook that allows a component to store a value in the br...\
+  DEV Community
+
+Show all
+
+## examples
+
+Here are practical code examples for the most frequently used hooks in `react-use`, showing exactly how they simplify real-world development.
+
+### 💾 1. useLocalStorage & useWindowSize
+
+This example shows how to automatically persist a user's theme choice to the browser and responsively adjust layout logic based on the screen width.
+
+tsx
+
+```
+import React from 'react';
+import { useLocalStorage, useWindowSize } from 'react-use';
+
+export default function App() {
+  // Automatically syncs state with localStorage['theme']
+  const [theme, setTheme] = useLocalStorage('theme', 'light');
+
+  // Tracks screen dimensions dynamically
+  const { width } = useWindowSize();
+
+  const toggleTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light');
+  };
+
+  return (
+    <div style={{
+      background: theme === 'dark' ? '#333' : '#fff',
+      color: theme === 'dark' ? '#fff' : '#333',
+      padding: '20px'
+    }}>
+      <p>Current Theme: {theme}</p>
+      <button onClick={toggleTheme}>Toggle Theme</button>
+
+      <p style={{ marginTop: '20px' }}>
+        {width < 768 ? '📱 Mobile Layout Active' : '💻 Desktop Layout Active'}
+      </p>
+    </div>
+  );
+}
+```
+
+Use code with caution.
+
+### 🔍 2. useDebounce (Search Optimization)
+
+This example prevents an API search request from firing on every single keystroke. It waits until the user stops typing for 500 milliseconds before updating the debounced state.
+
+tsx
+
+```
+import React, { useState } from 'react';
+import { useDebounce } from 'react-use';
+
+export default function SearchComponent() {
+  const [typedText, setTypedText] = useState('');
+  const [debouncedSearch, setDebouncedSearch] = useState('');
+
+  // Runs only after the user stops typing for 500ms
+  useDebounce(
+    () => {
+      setDebouncedSearch(typedText);
+    },
+    500,
+    [typedText]
+  );
+
+  return (
+    <div>
+      <input
+        type="text"
+        value={typedText}
+        placeholder="Type to search..."
+        onChange={(e) => setTypedText(e.target.value)}
+      />
+      <p>Immediate state: {typedText}</p>
+      <p style={{ color: 'green', fontWeight: 'bold' }}>
+        API Search Query: {debouncedSearch}
+      </p>
+    </div>
+  );
+}
+```
+
+Use code with caution.
+
+### 🚪 3. useClickAway (Modals & Dropdowns)
+
+This example detects when a user clicks outside a designated element, which is the standard way to dismiss a dropdown menu or modal popup.
+
+tsx
+
+```
+import React, { useRef, useState } from 'react';
+import { useClickAway } from 'react-use';
+
+export default function Dropdown() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  // Create a ref and attach it to the container element
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Closes the menu if a click happens outside the dropdownRef element
+  useClickAway(dropdownRef, () => {
+    setIsOpen(false);
+  });
+
+  return (
+    <div ref={dropdownRef} style={{ position: 'relative', display: 'inline-block' }}>
+      <button onClick={() => setIsOpen(!isOpen)}>
+        {isOpen ? 'Close Menu' : 'Open Menu'}
+      </button>
+
+      {isOpen && (
+        <ul style={{
+          position: 'absolute',
+          border: '1px solid #ccc',
+          background: '#fff',
+          padding: '10px',
+          listStyle: 'none'
+        }}>
+          <li>Profile Setting</li>
+          <li>Account Details</li>
+          <li>Logout</li>
+        </ul>
+      )}
+    </div>
+  );
+}
+```
+
+Use code with caution.
+
+### 🔄 4. useAsync (Handling API Fetches)
+
+This example handles the loading, error, and data states of an asynchronous `fetch` function automatically without requiring three separate `useState` variables.
+
+tsx
+
+```
+import React from 'react';
+import { useAsync } from 'react-use';
+
+export default function UserProfile() {
+  // Automatically executes the function on mount and tracks its lifecycle
+  const state = useAsync(async () => {
+    const response = await fetch('https://typicode.com');
+    if (!response.ok) throw new Error('Failed to fetch user');
+    return response.json();
+  }, []); // Empty array means it runs once on mount
+
+  if (state.loading) return <div>⏳ Loading user profile...</div>;
+  if (state.error) return <div>❌ Error: {state.error.message}</div>;
+
+  return (
+    <div>
+      <h3>User Data Fetched Successfully:</h3>
+      <pre>{JSON.stringify(state.value, null, 2)}</pre>
+    </div>
+  );
+}
+```
+
+Use code with caution.
+
+***
+
+Would you like help combining any of these hooks with a **specific UI framework** (like Tailwind CSS or Material UI), or would you like to see how to use one of the **sensor hooks** (like tracking mouse positioning or geolocation)?
+
 # 
+
