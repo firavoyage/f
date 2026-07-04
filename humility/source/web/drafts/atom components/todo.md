@@ -1,6 +1,6 @@
 read
 
-- knowledge/web styling
+- source/web/knowledge/name component classname.md
 
 write
 
@@ -9,11 +9,13 @@ write
 - component/index.tsx
 - component/app.tsx
 
+you must not write any css or files not listed.
+
 no subfolder in `component/`.
 
 be simple. no variants.
 
-you must not write any css or files not listed.
+showcase the components on index. no styling.
 
 component list
 
