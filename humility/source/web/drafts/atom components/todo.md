@@ -9,7 +9,9 @@ write
 - component/index.tsx
 - component/app.tsx
 
-be simple. no css. no variants.
+showcase the components on index.
+
+be simple. no installation. no css. no variants.
 
 no testing.
 
@@ -21,12 +23,8 @@ component list
 - select
 - input
 - number field
-- progress
 - scroll area
 - slider
 - switch
-- toast
 - toggle
 - tooltip
-
-
