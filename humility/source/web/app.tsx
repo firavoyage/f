@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
-import { use_bind } from 'web/keyboard.use';
-import { sync_theme } from 'web/sync_theme';
+import { use_bind } from 'web/lib/keyboard.use';
+import { sync_theme } from 'web/lib/sync_theme';
 
 import { port } from 'web/port.json';
 

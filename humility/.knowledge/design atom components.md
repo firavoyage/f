@@ -69,5 +69,20 @@ states
 
 atoms patterns pages
 
+# 0.2
 
+atom components list
 
+- button
+- checkbox
+- context menu
+- select
+- input
+- number field
+- progress
+- scroll area
+- slider
+- switch
+- toast
+- toggle
+- tooltip
