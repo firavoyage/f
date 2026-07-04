@@ -54,3 +54,9 @@ much faster with almost no tradeoff (you can turn it off!)
 > - intercept paste and prevent default
 > 
 > though, from an experiment, whether intercepted or not, it's already full of var in inline styles. it's just perf.
+
+jul 2026
+
+04
+
+harden "remove you said". both preprocess and postprocess, as the pattern is highly predictible.

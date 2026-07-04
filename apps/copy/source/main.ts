@@ -164,6 +164,10 @@ async function process_paste_area(): Promise<void> {
 
       let final_output = markdown;
 
+      if (settings.markdown_enabled && settings.remove_you_said_enabled) {
+        final_output = final_output.replaceAll(`## You said: `, `## `)
+      }
+
       await copy_html_to_clipboard({ html: final_output });
     } else {
       let final_output = processed_html;
