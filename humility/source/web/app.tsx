@@ -4,7 +4,7 @@ import { sync_theme } from 'web/sync_theme';
 
 import { port } from 'web/port.json';
 
-import 'web/adwaita.css'
+import 'web/design/adwaita/adwaita.css'
 import 'web/app.css'
 
 export function App() {
