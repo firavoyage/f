@@ -140,7 +140,7 @@ swe:
 - ux design qualities
 - solid principles
 - unix philosophy
-- modular use import export instead of chaining
+- modular use import export instead of chaining pros cons
 - pure fn
 - complexity classes p np
 - shell syntax
