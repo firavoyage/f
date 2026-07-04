@@ -687,6 +687,7 @@ rhetoric:
 - created equal
 - the ability to do something to the extent of x
 - man fucking eight billion ppl at once
+- texting acronyms wdyt wdym wyd tbh imo lmk idk iykyk
 
 laws:
 
