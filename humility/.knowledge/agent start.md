@@ -81,3 +81,7 @@ stick to cwd. do not touch anything outside.
 2. start working
 
 you must run the command before doing anything.
+
+# 0.7
+
+<!-- removed and merged into work -->

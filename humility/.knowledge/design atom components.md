@@ -71,7 +71,7 @@ atoms patterns pages
 
 # 0.2
 
-atom components list
+component list
 
 - button
 - checkbox
@@ -79,10 +79,8 @@ atom components list
 - select
 - input
 - number field
-- progress
 - scroll area
 - slider
 - switch
-- toast
 - toggle
 - tooltip

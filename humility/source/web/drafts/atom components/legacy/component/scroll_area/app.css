@@ -1,0 +1,29 @@
+.ScrollArea {
+  overflow: auto;
+  background: var(--sys-color-bg-secondary);
+  border: 1px solid var(--sys-color-border);
+  border-radius: var(--sys-radius-sm);
+}
+
+.ScrollArea_content {
+  padding: var(--ref-spacing-3);
+}
+
+.item {
+  padding: var(--ref-spacing-2) var(--ref-spacing-3);
+  font-family: var(--ref-font-family-sans);
+  font-size: var(--ref-font-size-sm);
+  color: var(--sys-color-text-primary);
+  background: var(--sys-color-bg-primary);
+  border-radius: var(--ref-radius-xs);
+  margin-bottom: var(--ref-spacing-2);
+}
+
+.item:last-child {
+  margin-bottom: 0;
+}
+
+.showcase {
+  padding: var(--ref-spacing-6);
+  max-width: 200px;
+}
