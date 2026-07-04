@@ -624,6 +624,7 @@ history:
 - android powerful enough at lowest security ubuntu touch
 - iran nuclear case studies lessons
 - onp4
+- v2ex
 
 politics:
 
