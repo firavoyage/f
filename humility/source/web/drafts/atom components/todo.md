@@ -4,16 +4,16 @@ read
 
 write
 
-- component/[component].tsx
+- component/[MyComponent].tsx (e.g. `component/Checkbox.tsx`, `component/Checkbox.tsx`)
 - component/index.html
 - component/index.tsx
 - component/app.tsx
 
-showcase the components on index.
+no subfolder in `component/`.
 
-be simple. no installation. no css. no variants.
+be simple. no variants.
 
-no testing.
+you must not write any css or files not listed.
 
 component list
 

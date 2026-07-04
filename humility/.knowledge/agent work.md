@@ -111,18 +111,12 @@ note: all file/folders paths start from cwd. never put meaningful code inside dr
 
 # 0.9
 
-stick to cwd. do not touch anything outside.
-
-1. run `fdfind . --exclude "legacy" --maxdepth 2` to know the file structure of cwd.
-2. start working
-
-you must run the command before doing anything.
-
+- you must run `fdfind . --exclude "legacy" --maxdepth 2` before doing anything
+- stick to cwd. do not touch anything outside.
 - be surgical. only complete tasks given. do not read or write any files/folders not explicitly listed. 
 - be lazy. always find and use the simplest and easiest way. do not overwork or overengineer. 
-- be automated. complete all tasks in one go.
-- when you are unsure, choose simplicity. sometimes a defacto standard library is simpler. sometimes a diy approach is simpler, as best practices might not fit outside big corps.
+- prefer simplicity over big tech best practices
 
-note: all file/folders paths start from cwd. never put meaningful code inside drafts folder. never read legacy folder.
+all file/folder paths start from cwd. never put meaningful code inside drafts folder. never read legacy folder. never look into deps or build.
 
 <!-- p: previous, c: current, e: expected, i: example input, o: example output -->
