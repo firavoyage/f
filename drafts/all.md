@@ -284,6 +284,7 @@ desktop:
 - install nextcloud
 - shell chmod x command history
 - earlyoom
+- trash
 
 android:
 

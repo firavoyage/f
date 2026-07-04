@@ -1,4 +1,4 @@
-import { bind, unbind } from 'web/keyboard';
+import { bind, unbind } from 'web/lib/keyboard';
 import { useEffect } from 'react';
 
 export function use_bind(shortcut: string, action: (event: KeyboardEvent) => void) {
