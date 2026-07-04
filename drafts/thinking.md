@@ -104,3 +104,15 @@ dify <!-- it has no moat. visual ui is nothing. unlike agents, mcp, skills, tool
 (research dify. record.)
 
 ---
+
+- atom components
+- pattern? (shortcuts, settings)
+- page, chatbot functionality
+- page routing (auto correct), page to url mapping
+- backend serve, method to endpoint mapping
+- search?
+- browse (patchright)?
+- operate (x11 computer use)?
+- dify research
+
+

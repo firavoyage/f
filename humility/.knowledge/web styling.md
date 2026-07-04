@@ -252,15 +252,13 @@ convert if any other units are used
 
 ## class naming
 
-every element should have one class at most. name classes like `MyComponent_child_element`. start with pascal case as the component name and always connect with only one single underscore after that.
+every element must have exact one class. name like `MyComponent_child_element`.
 
 use data attr for variant, size, style, state, etc. use native css nesting.
 
 only use class selector and attr selector.
 
 never write any aria attr.
-
-reference the value from predefined design tokens on the global css file of the design system. 
 
 example:
 
@@ -318,3 +316,7 @@ example:
   }
 }
 ```
+
+# 0.5
+
+<!-- deprecate. separate into design token unit and component classname -->
