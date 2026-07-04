@@ -120,8 +120,4 @@ it's to create more useful components next i guess.
 
 style in utilitarian. (both yaml tokens and css)
 
----
-
-archive photos.
-
 
