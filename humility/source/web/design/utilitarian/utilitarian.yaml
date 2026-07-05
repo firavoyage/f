@@ -131,16 +131,16 @@ color:
       dark: "palette.gray.900"
     secondary:
       value: "palette.gray.200"
-      dark: "palette.gray.30"
+      dark: "palette.gray.800"
     tertiary:
-      value: "palette.gray.88"
-      dark: "palette.gray.38"
+      value: "palette.gray.300"
+      dark: "palette.gray.700"
     hover:
-      value: "palette.gray.93"
-      dark: "palette.gray.30"
+      value: "palette.gray.200"
+      dark: "palette.gray.800"
     pressed:
-      value: "palette.gray.93"
-      dark: "palette.gray.30"
+      value: "palette.gray.200"
+      dark: "palette.gray.800"
     accent:
       value: "palette.accent.blue"
       teal: "palette.accent.teal"
@@ -148,34 +148,20 @@ color:
       yellow: "palette.accent.yellow"
       orange: "palette.accent.orange"
       red: "palette.accent.red"
-      pink: "palette.accent-pink"
-      purple: "palette.accent-purple"
-      slate: "palette.accent-slate"
-    destructive:
-      value: "palette.red.3"
-      dark: "palette.red.4"
-    success: "palette.success"
-    warning: "palette.warning"
-    error: "palette.error"
+      pink: "palette.accent.pink"
+      purple: "palette.accent.purple"
+      slate: "palette.accent.slate"
 
   fg:
     primary:
-      value: "palette.gray.30"
-      dark: "palette.white"
+      value: "palette.gray.800"
+      dark: "white"
     secondary:
-      value: "palette.gray.30"
-      dark: "palette.white"
+      value: "palette.gray.800"
+      dark: "white"
     tertiary:
-      value: "palette.gray.30"
-      dark: "palette.white"
-
-  border:
-    subtle:
-      value: "rgb(0 0 6 / 7%)"
-      dark: "rgb(0 0 6 / 25%)"
-    default:
-      value: "color-mix(in srgb, currentColor ref.opacity.border, transparent)"
-      dark: "color-mix(in srgb, currentColor 50%, transparent)"
+      value: "palette.gray.800"
+      dark: "white"
 
 spacing:
   1: "0.1875rem"
@@ -219,18 +205,6 @@ radius:
   xl: "24px"
   xxl: "32px"
   full: "9999px"
-
-transition:
-  fast: "150ms cubic-bezier(0.25, 0.46, 0.45, 0.94)"
-  normal: "200ms ease-out"
-  slow: "300ms ease-out"
-  backdrop: "200ms ease-out"
-
-shadow:
-  sm: "0 1px 2px rgb(0 0 0 / 10%)"
-  md: "0 4px 6px rgb(0 0 0 / 10%)"
-  lg: "0 10px 15px rgb(0 0 0 / 10%)"
-  xl: "0 20px 25px rgb(0 0 0 / 10%)"
 
 size: # icon-size
   small: "14px"
