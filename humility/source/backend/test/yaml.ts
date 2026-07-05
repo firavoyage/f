@@ -22,4 +22,3 @@ log(stringify({}))
 log(stringify(1))
 
 log('hi')
-
