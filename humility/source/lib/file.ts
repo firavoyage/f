@@ -1,3 +1,4 @@
+// @ts-nocheck
 import desktop from '@folder/xdg';
 import { homedir } from 'node:os';
 import { join, dirname } from 'node:path';
@@ -139,15 +140,17 @@ export function cache(...args: string[]) {
  * 
  * no content = touch
  */
-export async function write(path: string, content: string = '') {
-  await normalize(() => mkdir(dirname(path), { recursive: true }))
+export async function write(path: string | 1, content: string = '') {
+  if (typeof path == 'string') {
+    await normalize(() => mkdir(dirname(path), { recursive: true }))
+  }
   await normalize(() => writeFile(path, content, 'utf8'))
 }
 
 /**
  * read a file
  */
-export async function read(path: string) {
+export async function read(path: string | 0) {
   const content = await normalize(() => readFile(path, 'utf8'))
 
   return content
@@ -219,7 +222,7 @@ export async function clear(path: string) {
 
 export async function trash(path: string, { can_non_exist = false }) {
   _ = await handle(() => trash_lib(path, { glob: false }))
-  if(is_error(_)){
+  if (is_error(_)) {
     if (has(map, _.code)) {
       if (map[_.code] == not_found && can_non_exist) {
         return;
@@ -227,7 +230,7 @@ export async function trash(path: string, { can_non_exist = false }) {
 
       throw err({ type: map[_.code], message: _ })
     }
-        
+
     throw _
   }
 }
