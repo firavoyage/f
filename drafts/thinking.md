@@ -136,5 +136,13 @@ collapsible sidebar. routing.
 
 just vibe, after completing the design system.
 
+---
+
+intention
+
+---
+
+i should be able to view resources in a pie chart. and i guess sometimes it does not add up to the mem. idk.
+
 
 
