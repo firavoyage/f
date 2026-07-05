@@ -439,7 +439,14 @@ big tech could easily create wonderful things. but in the real world they wont.
 
 they suffer from tech debt. they put profit and compliance before the user.
 
-what if you could take control?
+everything lives in their servers. 
+
+no control. you could literally do nothing if they publish flawed code or enforce opinionated changes (e.g. chromium refresh 2023). you could not fix it or even revert it.
+
+no resilience. github suffers from instability. llms often get outage.
+
+no permanence. no real predictability. google sunsets reader. msft sunsets atom.
+
+what if you could have it?
 
 ---
-
