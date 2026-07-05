@@ -93,16 +93,14 @@ classname: tailwind classes # eliminate noise
 maybe like this
 
 ```yaml
+ProductCard_content: flex flex-column # baseline
 ProductCard: 
   .: grid gap-4
-  - status featured:
-    - border-4
+  status featured: border-4
 ProductCard_image:
-  width: 100%
+  .: full-width
   aspect-ratio: 16 / 9
-ProductCard_content:
-  - flex
-  - flex-direction: column
-ProductCard_content: flex flex-column
+  status featured: border-4 # data-attr: value always contain a space, while css props never do
 ```
+
 
