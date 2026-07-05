@@ -19,6 +19,7 @@ modes:
     - compact
     - cozy
 
+# rm
 ref:
   palette:
     # currently not used anywhere, kept for future proof
@@ -205,6 +206,7 @@ ref:
 
   window-radius: "15px"
 
+# rm
 sys:
   radius:
     sm: "{ref.radius.sm}"
