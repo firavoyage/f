@@ -102,16 +102,20 @@ palette:
     purple: "#9141ac"
     slate: "#6f8396"
 
+  # no need to overthink, 1% difference is trivial
+  # prefer standard over adwaita
   gray:
-    # 15: "oklch(15% 0 286)"
-    25: "oklch(25% 0 286)"
-    30: "oklch(30% 0 286)"
-    34: "oklch(34% 0 286)"
-    38: "oklch(38% 0 286)"
-    # ...
-    88: "oklch(88% 0 286)"
-    93: "oklch(93% 0 286)"
-    99: "oklch(99% 0 286)"
+    50: oklch(99% 0 0)
+    100: oklch(97% 0 0)
+    200: oklch(93% 0 0)
+    300: oklch(86% 0 0)
+    400: oklch(77% 0 0)
+    500: oklch(67% 0 0)
+    600: oklch(57% 0 0)
+    700: oklch(45% 0 0)
+    800: oklch(33% 0 0)
+    900: oklch(20% 0 0)
+    950: oklch(13% 0 0)
 
   success: "#78e9ab"
   warning: "#ffc252" # cd9309?
