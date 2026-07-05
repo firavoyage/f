@@ -428,3 +428,18 @@ google ai mode img gen tool
 https://www.google.com/search?aep=11&q=use+cases+of+flex+or+grid&mstk=AUtExfAVFb5t87H74FexloRjAKNvPIulhDHPPOkA1xEusICRNyHZsta294XjshZFMwHEQUSAGyzNcT8t9rI2Wfo-SthH7b_r0CIkxqrhuFd3bSBIeAC5CWPhKO2qnp5mJrYZXzRUEeplpq4TWP3H5A72MaVxCJyWfNPFHh0&csuir=1&mtid=mbRHapGCFdSx2roP_6q98Q4&udm=50
 
 ---
+
+i do not really wanna "make it elegant".
+
+it's not so exciting to just polish the ui. i might take it as a daily hobby (psychological, a sense of achievement or progress) rather than a project to be built. 
+
+but it's not.
+
+big tech could easily create wonderful things. but in the real world they wont.
+
+they suffer from tech debt. they put profit and compliance before the user.
+
+what if you could take control?
+
+---
+

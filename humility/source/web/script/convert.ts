@@ -1,4 +1,5 @@
 // @ts-nocheck
+import { read, write } from "lib/file";
 import { parse } from "yaml";
 
 const non_existing_mode = 'non_existing_mode'
@@ -90,7 +91,9 @@ function convert(design) {
   return styles
 }
 
-export function main(yaml: string) {
+export async function main(yaml: string) {
+  yaml ??= await read(0)
+
   // convert yaml to obj
   const design = parse(yaml)
 
@@ -111,6 +114,9 @@ export function main(yaml: string) {
 
     css += '}\n\n'
   }
+
+  // just be explicit (you could log. a newline does not matter.)
+  await write(1, css)
 
   return css
 }

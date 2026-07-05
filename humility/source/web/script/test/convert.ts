@@ -26,4 +26,4 @@ const design = {
   }
 }
 
-log(main(stringify(design)))
+await main(stringify(design))

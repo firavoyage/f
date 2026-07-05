@@ -7,4 +7,3 @@ jul 2026
 i dont really like the vibe coded convert.ts
 
 let me cook.
-
