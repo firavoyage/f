@@ -1,33 +1,9 @@
+// @ts-nocheck
 import { parse } from "yaml";
 
 const non_existing_mode = 'non_existing_mode'
 
-const design = {
-  modes: {
-    theme: ["light", "dark"],
-    density: ["comfortable", "compact", "cozy"],
-  },
-  palette: {
-    blue: {
-      1: "#123",
-      2: {
-        value: "#456",
-        dark: "#789"
-      }
-    }
-  },
-  color: {
-    primary: "palette.blue.1",
-    secondary: "{palette.blue.2}",
-    teriary: {
-      value: 'foo.bar',
-      // comfortable: 'barbar', // will err
-      cozy: 'hello'
-    }
-  }
-}
-
-export function convert(design) {
+function convert(design) {
   // parse modes
   const modes = {
     default: ":root"
@@ -43,9 +19,7 @@ export function convert(design) {
     }
   }
 
-  const styles = {
-
-  }
+  const styles = {}
 
   for (const selector of Object.values(modes)) {
     styles[selector] = {}
@@ -54,6 +28,7 @@ export function convert(design) {
   delete design.modes
 
   const existing_keys = {}
+
   // recursive
   function flatten(design, prefix = []) {
     if (typeof design != 'object') {
@@ -74,7 +49,7 @@ export function convert(design) {
 
   function set(design, prefix, mode = "default") {
     if (!has(modes, mode)) {
-      throw err({type: non_existing_mode, message: `non existing mode: ${mode}`})
+      throw err({ type: non_existing_mode, message: `non existing mode: ${mode}` })
     }
 
     if (typeof design == 'string') {
@@ -120,8 +95,22 @@ export function main(yaml: string) {
   const design = parse(yaml)
 
   // convert
+  const styles = convert(design)
 
+  let css = ''
   // convert to css
-}
+  for (const [selector, variables] of Object.entries(styles)) {
+    if (Object.keys(variables).length == 0) {
+      continue
+    }
+    css += `${selector} {\n`
 
-convert(design)
+    for (const [prop, value] of Object.entries(variables)) {
+      css += `  ${prop}: ${value};\n`
+    }
+
+    css += '}\n\n'
+  }
+
+  return css
+}
