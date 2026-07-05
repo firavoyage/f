@@ -28,10 +28,10 @@ expect only class selector and attr selector (native nesting) usage in css.
 ```css
 .ProductCard {
   display: grid;
-  gap: var(...);
+  gap: var();
 
   &[data-status="featured"] {
-    border: var(...);
+    border: var();
   }
 }
 
@@ -46,21 +46,21 @@ expect only class selector and attr selector (native nesting) usage in css.
 }
 
 .ProductCard_main_title {
-  font-size: var(...);
-  font-weight: var(...);
+  font-size: var();
+  font-weight: var();
 }
 
 .ProductCard_sub_title {
-  font-size: var(...);
-  color: var(...);
+  font-size: var();
+  color: var();
 }
 
 .ProductCard_buy_button {
-  padding: var(...);
+  padding: var();
 
   &[data-variant="primary"] {
-    background: var(...);
-    color: var(...);
+    background: var();
+    color: var();
   }
 }
 ```

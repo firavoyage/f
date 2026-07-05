@@ -1,0 +1,37 @@
+.ProductCard {
+  display: grid;
+  gap: var();
+
+  &[data-status="featured"] {
+    border: var();
+  }
+}
+
+.ProductCard_image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.ProductCard_content {
+  display: flex;
+  flex-direction: column;
+}
+
+.ProductCard_main_title {
+  font-size: var();
+  font-weight: var();
+}
+
+.ProductCard_sub_title {
+  font-size: var();
+  color: var();
+}
+
+.ProductCard_buy_button {
+  padding: var();
+
+  &[data-variant="primary"] {
+    background: var();
+    color: var();
+  }
+}
