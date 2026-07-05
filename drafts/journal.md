@@ -43272,7 +43272,13 @@ https://nyaa.si/view/1785308
 
 05
 
-02 00 archive photos. 02 40
+02 00 archive photos. ~~02 40~~ 03 00
+
+<!-- rather not post them online anyway. i mean i really want, for some ppl meaningful to me. but it would be a bit awkward as i could not take it gracefully. and maybe i would not have to limit my memories to a few specific ppl, preserved as some immutable states. -->
+
+<!-- i guess... text would trigger memories. -->
+
+<!-- [KAngel] yyTAT☆ · ☆XIAOPA☆ [華將] -->
 
 
 
