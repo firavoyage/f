@@ -105,6 +105,7 @@ life:
 - game maimai dx note speed
 - sports fifa worldcup
 - game maimai dx telegram mai deluxe group player count
+- game maimai dx music theory
 
 create something:
 
