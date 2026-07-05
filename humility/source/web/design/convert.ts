@@ -1,5 +1,6 @@
-import { existsSync } from "node:fs";
 import { parse } from "yaml";
+
+const non_existing_mode = 'non_existing_mode'
 
 const design = {
   modes: {
@@ -17,7 +18,12 @@ const design = {
   },
   color: {
     primary: "palette.blue.1",
-    secondary: "{palette.blue.2}"
+    secondary: "{palette.blue.2}",
+    teriary: {
+      value: 'foo.bar',
+      // comfortable: 'barbar', // will err
+      cozy: 'hello'
+    }
   }
 }
 
@@ -58,7 +64,7 @@ export function convert(design) {
       for (const [key, value] of Object.entries(design)) {
         flatten(value, [...prefix, key])
       }
-    } 
+    }
   }
   flatten(design)
 
@@ -66,28 +72,47 @@ export function convert(design) {
     return `--${prefix.join('-')}`
   }
 
+  function set(design, prefix, mode = "default") {
+    if (!has(modes, mode)) {
+      throw err({type: non_existing_mode, message: `non existing mode: ${mode}`})
+    }
+
+    if (typeof design == 'string') {
+      if (has(existing_keys, design)) {
+        styles[modes[mode]][css_var(prefix)] = `var(--${design.replaceAll('.', '-')})`
+        return
+      } else if (has(existing_keys, design.startsWith('{') && design.endsWith('}') && design.slice(1, -1)
+      )) {
+        design = design.slice(1, -1)
+        styles[modes[mode]][css_var(prefix)] = `var(--${design.replaceAll('.', '-')})`
+        return
+      }
+    }
+
+    styles[modes[mode]][css_var(prefix)] = design
+  }
+
   function traverse(design, prefix = []) {
     if (typeof design != 'object') {
-      if (typeof design == 'string' && has(existing_keys, design)) {
-        styles[modes.default][css_var(prefix)] = `var(--${design.replaceAll('.', '-')})`
-      } else {
-        
-      } 
+      set(design, prefix)
     } else if (has(design, 'value')) {
-      existing_keys[prefix.join(".")] = true
+      for (const [key, value] of Object.entries(design)) {
+        if (key == 'value') {
+          set(value, prefix)
+        } else {
+          set(value, prefix, key)
+        }
+      }
     } else {
       for (const [key, value] of Object.entries(design)) {
         traverse(value, [...prefix, key])
       }
-    } 
-  }
-  
-
-  return {
-    "[data-accent=\"green\"]": {
-      "--sys-color-bg-accent": "var(--ref-palette-accent-green)"
     }
   }
+
+  traverse(design)
+
+  return styles
 }
 
 export function main(yaml: string) {

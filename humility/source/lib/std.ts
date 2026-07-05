@@ -27,8 +27,9 @@ export function merge(target: object, ...sources: object[]) {
 }
 
 export function has<K extends PropertyKey>(obj: any, key: K): obj is Record<K, any> {
-// export function has<K extends PropertyKey>(obj: any, key: K): obj is Record<K, unknown> {
-  return obj && typeof obj == 'object' && Object.hasOwn(obj, key);
+  // export function has<K extends PropertyKey>(obj: any, key: K): obj is Record<K, unknown> {
+  return (typeof key == 'string' || typeof key == 'number' || typeof key == 'symbol') &&
+    obj && typeof obj == 'object' && Object.hasOwn(obj, key);
 }
 
 // export function is_missing(foo: any): foo is undefined | null {
