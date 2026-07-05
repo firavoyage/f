@@ -1,9 +1,9 @@
 import { generateOklchScale } from "../oklch";
 
 // Generate a vivid P3-capable Blue scale with a subtle warm-to-cool natural hue shift
-const modernBlueScale = generateOklchScale(250, 0.25, 6);
+const modern_blue_scale = generateOklchScale(250, 0.25, 6);
 
-console.log(modernBlueScale);
+console.log(modern_blue_scale);
 /* 
 Outputs:
 {
@@ -14,3 +14,7 @@ Outputs:
   950: "oklch(0.1400 0.0250 253.00)"
 }
 */
+
+for (const [key, value] of Object.entries(modern_blue_scale)) {
+  log(`<div style="width:50px;height:50px;background: ${value}">${key}</div>`)
+}
