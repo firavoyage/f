@@ -92,30 +92,30 @@ palette:
   black: "#000"
 
   accent:
-    blue: "#3584e4"
-    teal: "#2190a4"
-    green: "#3a944a"
-    yellow: "#c88800"
-    orange: "#ed5b00"
-    red: "#e62d42"
-    pink: "#d56199"
-    purple: "#9141ac"
-    slate: "#6f8396"
+    blue: oklch(61.4% 0.164 255)
+    teal: oklch(60.3% 0.098 213)
+    green: oklch(59.4% 0.139 147)
+    yellow: oklch(67.4% 0.142 76)
+    orange: oklch(65.4% 0.196 42)
+    red: oklch(60.3% 0.217 22)
+    pink: oklch(65.1% 0.158 352)
+    purple: oklch(52.5% 0.175 317)
+    slate: oklch(60.1% 0.037 247)
 
   # no need to overthink, 1% difference is trivial
   # prefer standard over adwaita
   gray:
-    50: oklch(99% 0 0)
-    100: oklch(97% 0 0)
-    200: oklch(93% 0 0)
-    300: oklch(86% 0 0)
-    400: oklch(77% 0 0)
-    500: oklch(67% 0 0)
-    600: oklch(57% 0 0)
-    700: oklch(45% 0 0)
-    800: oklch(33% 0 0)
-    900: oklch(20% 0 0)
-    950: oklch(13% 0 0)
+    50: oklch(99.0% 0 0)
+    100: oklch(97.7% 0 0)
+    200: oklch(92.6% 0 0)
+    300: oklch(85.6% 0 0)
+    400: oklch(77.1% 0 0)
+    500: oklch(67.5% 0 0)
+    600: oklch(56.9% 0 0)
+    700: oklch(45.3% 0 0)
+    800: oklch(33.0% 0 0)
+    900: oklch(19.8% 0 0)
+    950: oklch(13.0% 0 0)
 
   success: "#78e9ab"
   warning: "#ffc252" # cd9309?
