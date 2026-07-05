@@ -20,6 +20,37 @@ modes:
     - cozy
 
 palette:
+  accent:
+    blue: oklch(61.4% 0.164 255)
+    teal: oklch(60.3% 0.098 213)
+    green: oklch(59.4% 0.139 147)
+    yellow: oklch(67.4% 0.142 76)
+    orange: oklch(65.4% 0.196 42)
+    red: oklch(60.3% 0.217 22)
+    pink: oklch(65.1% 0.158 352)
+    purple: oklch(52.5% 0.175 317)
+    slate: oklch(60.1% 0.037 247)
+
+  # no need to overthink, 1% difference is trivial
+  # prefer standard over adwaita
+  gray:
+    50: oklch(99.0% 0 0)
+    100: oklch(97.7% 0 0)
+    200: oklch(92.6% 0 0)
+    300: oklch(85.6% 0 0)
+    400: oklch(77.1% 0 0)
+    500: oklch(67.5% 0 0)
+    600: oklch(56.9% 0 0)
+    700: oklch(45.3% 0 0)
+    800: oklch(33.0% 0 0)
+    900: oklch(19.8% 0 0)
+    950: oklch(13.0% 0 0)
+
+  # todo: think
+  success: "#78e9ab"
+  warning: "#ffc252" # cd9309?
+  error: "#ff938c" # destructive
+
   # not used anywhere, kept for future proof
 
   # blue:
@@ -87,91 +118,63 @@ palette:
   #   4: "#241f31"
   #   5: "#000000"
 
-  white: "#fff"
+  # just use white and black directly in css
+  # it's never meant to be changed, or any contextual
 
-  black: "#000"
-
-  accent:
-    blue: oklch(61.4% 0.164 255)
-    teal: oklch(60.3% 0.098 213)
-    green: oklch(59.4% 0.139 147)
-    yellow: oklch(67.4% 0.142 76)
-    orange: oklch(65.4% 0.196 42)
-    red: oklch(60.3% 0.217 22)
-    pink: oklch(65.1% 0.158 352)
-    purple: oklch(52.5% 0.175 317)
-    slate: oklch(60.1% 0.037 247)
-
-  # no need to overthink, 1% difference is trivial
-  # prefer standard over adwaita
-  gray:
-    50: oklch(99.0% 0 0)
-    100: oklch(97.7% 0 0)
-    200: oklch(92.6% 0 0)
-    300: oklch(85.6% 0 0)
-    400: oklch(77.1% 0 0)
-    500: oklch(67.5% 0 0)
-    600: oklch(56.9% 0 0)
-    700: oklch(45.3% 0 0)
-    800: oklch(33.0% 0 0)
-    900: oklch(19.8% 0 0)
-    950: oklch(13.0% 0 0)
-
-  success: "#78e9ab"
-  warning: "#ffc252" # cd9309?
-  error: "#ff938c" # destructive
+  # white: "#fff"
+  # black: "#000"
 
 color:
   bg:
     primary:
-      value: "{ref.palette.gray.99}"
-      dark: "{ref.palette.gray.25}"
+      value: "palette.gray.50"
+      dark: "palette.gray.900"
     secondary:
-      value: "{ref.palette.gray.93}"
-      dark: "{ref.palette.gray.30}"
+      value: "palette.gray.200"
+      dark: "palette.gray.30"
     tertiary:
-      value: "{ref.palette.gray.88}"
-      dark: "{ref.palette.gray.38}"
+      value: "palette.gray.88"
+      dark: "palette.gray.38"
     hover:
-      value: "{ref.palette.gray.93}"
-      dark: "{ref.palette.gray.30}"
+      value: "palette.gray.93"
+      dark: "palette.gray.30"
     pressed:
-      value: "{ref.palette.gray.93}"
-      dark: "{ref.palette.gray.30}"
+      value: "palette.gray.93"
+      dark: "palette.gray.30"
     accent:
-      value: "{ref.palette.accent.blue}"
-      teal: "{ref.palette.accent.teal}"
-      green: "{ref.palette.accent.green}"
-      yellow: "{ref.palette.accent.yellow}"
-      orange: "{ref.palette.accent.orange}"
-      red: "{ref.palette.accent.red}"
-      pink: "{ref.palette.accent-pink}"
-      purple: "{ref.palette.accent-purple}"
-      slate: "{ref.palette.accent-slate}"
+      value: "palette.accent.blue"
+      teal: "palette.accent.teal"
+      green: "palette.accent.green"
+      yellow: "palette.accent.yellow"
+      orange: "palette.accent.orange"
+      red: "palette.accent.red"
+      pink: "palette.accent-pink"
+      purple: "palette.accent-purple"
+      slate: "palette.accent-slate"
     destructive:
-      value: "{ref.palette.red.3}"
-      dark: "{ref.palette.red.4}"
-    success: "{ref.palette.success}"
-    warning: "{ref.palette.warning}"
-    error: "{ref.palette.error}"
+      value: "palette.red.3"
+      dark: "palette.red.4"
+    success: "palette.success"
+    warning: "palette.warning"
+    error: "palette.error"
 
   fg:
     primary:
-      value: "{ref.palette.gray.30}"
-      dark: "{ref.palette.white}"
+      value: "palette.gray.30"
+      dark: "palette.white"
     secondary:
-      value: "{ref.palette.gray.30}"
-      dark: "{ref.palette.white}"
+      value: "palette.gray.30"
+      dark: "palette.white"
     tertiary:
-      value: "{ref.palette.gray.30}"
-      dark: "{ref.palette.white}"
+      value: "palette.gray.30"
+      dark: "palette.white"
 
   border:
     subtle:
       value: "rgb(0 0 6 / 7%)"
       dark: "rgb(0 0 6 / 25%)"
     default:
-      value: "color-mix(in srgb, currentColor {ref.opacity.border}, transparent)"
+      value: "color-mix(in srgb, currentColor ref.opacity.border, transparent)"
       dark: "color-mix(in srgb, currentColor 50%, transparent)"
 
 spacing:
@@ -246,8 +249,8 @@ focus-ring:
   offset: "-2px"
 
 radius:
-  sm: "{ref.radius.sm}"
-  md: "{ref.radius.md}"
-  lg: "{ref.radius.lg}"
-  xl: "{ref.radius.xl}"
+  sm: "ref.radius.sm"
+  md: "ref.radius.md"
+  lg: "ref.radius.lg"
+  xl: "ref.radius.xl"
 

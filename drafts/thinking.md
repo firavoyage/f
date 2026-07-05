@@ -126,5 +126,15 @@ fix run.
 
 non empty stderr is not an error. the only indicator is the exit code.
 
+---
+
+app: convert
+
+(string to string, or more params)
+
+collapsible sidebar. routing.
+
+just vibe, after completing the design system.
+
 
 
