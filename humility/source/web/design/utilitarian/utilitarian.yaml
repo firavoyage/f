@@ -204,26 +204,42 @@ spacing:
   80: 20rem
   96: 24rem
 
+# use weight directly. it's not changeable or contextual. 
+
 font:
-  size:
-    xs: "0.75rem"
-    sm: "0.875rem"
-    md: "1rem"
-    lg: "1.125rem"
-    xl: "1.25rem"
-    2xl: "1.5rem"
-    3xl: "1.875rem"
-    4xl: "2.25rem"
-  line-height:
-    tight: "1.25"
-    normal: "1.5"
-    relaxed: "1.75"
+  sans: '"Adwaita Sans", sans-serif'
+  monospace: '"Adwaita Mono", monospace'
 
-  # use weight directly. it's not changeable or contextual. 
+text:
+  xs: 
+    size: "0.75rem"
+    height: "1rem"
+  sm: 
+    size: "0.875rem"
+    height: "1.25rem"
+  base: 
+    size: "1rem"
+    height: "1.5rem"
+  lg: 
+    size: "1.125rem"
+    height: "1.75rem"
+  xl: 
+    size: "1.25rem"
+    height: "1.75rem"
+  2xl: 
+    size: "1.5rem"
+    height: "2rem"
+  3xl: 
+    size: "1.875rem"
+    height: "2.25rem"
+  4xl: 
+    size: "2.25rem"
+    height: "2.5rem"
 
-  family:
-    sans: '"Adwaita Sans", sans-serif'
-    monospace: '"Adwaita Mono", monospace'
+# size: # icon-size
+#   sm: "14px"
+#   md: "16px"
+#   lg: "32px"
 
 radius:
   xs: "4px"
@@ -233,11 +249,6 @@ radius:
   xl: "24px"
   2xl: "32px"
   full: "9999px"
-
-size: # icon-size
-  sm: "14px"
-  md: "16px"
-  lg: "32px"
 
 # todo
 scrollbar:

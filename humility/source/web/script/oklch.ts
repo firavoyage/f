@@ -103,7 +103,7 @@ export function generateOklchScale(hue: number, peakChroma: number = 0.22, hueSh
     const H_val = Math.round(currentHue).toString()
 
     // Formatting string outputs to match standard browser native tokens
-    result[w] = `oklch(${L_pct} ${C_val} ${H_val})`;
+    result[w] = `oklch(${L_pct}% ${C_val} ${H_val})`;
   });
 
   return result;
