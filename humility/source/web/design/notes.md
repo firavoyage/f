@@ -103,4 +103,12 @@ ProductCard_image:
   status featured: border-4 # data-attr: value always contain a space, while css props never do
 ```
 
+...
+
+well, dont invent terms yk.
+
+im way more familiar w css props than tailwind. and im not a pro fe dev.
+
+you have auto complete and snippets!
+
 
