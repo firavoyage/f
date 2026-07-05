@@ -26,7 +26,7 @@ export function generateOklchScale(hue: number, peakChroma: number = 0.22, hueSh
   // 1. Big-Tech Anchor Pins: Defining explicit, functional targets for Lightness and Chroma
   // Index matches control points along the scale from light (0) to dark (1)
   const controlPoints = [
-    { t: 0.00, weight: 50,  L: 0.975, C: 0.015 },  // App background / Neutral tint
+    { t: 0.00, weight: 50, L: 0.975, C: 0.015 },  // App background / Neutral tint
     { t: 0.05, weight: 100, L: 0.945, C: 0.035 },  // Component background / Border
     { t: 0.16, weight: 200, L: 0.885, C: 0.075 },  // Subtle interactive hover
     { t: 0.27, weight: 300, L: 0.810, C: 0.130 },  // Decorative accents
@@ -52,7 +52,7 @@ export function generateOklchScale(hue: number, peakChroma: number = 0.22, hueSh
 
     const p1 = controlPoints[i];
     const p2 = controlPoints[i + 1];
-    
+
     // Extrapolate imaginary boundary points for the spline edges
     const p0 = i > 0 ? controlPoints[i - 1] : { t: p1.t - 0.1, L: p1.L + 0.05, C: p1.C };
     const p3 = i < controlPoints.length - 2 ? controlPoints[i + 2] : { t: p2.t + 0.1, L: p2.L - 0.05, C: p2.C };
@@ -98,8 +98,12 @@ export function generateOklchScale(hue: number, peakChroma: number = 0.22, hueSh
     // e.g., making light blues slightly warmer/cyan and deep blues cooler/indigo
     const currentHue = (hue + (t - 0.5) * hueShift + 360) % 360;
 
+    const L_pct = (L * 100).toFixed(1);
+    const C_val = C.toFixed(3);
+    const H_val = Math.round(currentHue).toString()
+
     // Formatting string outputs to match standard browser native tokens
-    result[w] = `oklch(${L.toFixed(4)} ${C.toFixed(4)} ${currentHue.toFixed(2)})`;
+    result[w] = `oklch(${L_pct} ${C_val} ${H_val})`;
   });
 
   return result;
@@ -145,18 +149,16 @@ export function generateOklchGrayScale(options: ScaleOptions): OklchColor[] {
     const chroma = maxChroma * chromaTaper;
 
     // 4. Format values cleanly for consistent CSS engine parsing
-    const formattedL = parseFloat(lightness.toFixed(3));
-    const formattedC = parseFloat(chroma.toFixed(4));
-    const formattedH = parseFloat(hue.toFixed(1));
+    const formattedL = (lightness * 100).toFixed(1);
+    const formattedC = chroma.toFixed(3);
+    const formattedH = Math.round(hue).toString();
 
     return {
       token,
       lightness: formattedL,
       chroma: formattedC,
       hue: formattedH,
-      css: `oklch(${formattedL * 100}% ${formattedC} ${formattedH})`
+      css: `oklch(${formattedL}% ${formattedC} ${formattedH})`
     };
   });
 }
-
-

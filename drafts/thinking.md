@@ -120,4 +120,11 @@ it's to create more useful components next i guess.
 
 style in utilitarian. (both yaml tokens and css)
 
+---
+
+fix run.
+
+non empty stderr is not an error. the only indicator is the exit code.
+
+
 
