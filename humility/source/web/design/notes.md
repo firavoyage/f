@@ -119,4 +119,27 @@ flex and grid carry unambiguous meaning themselves.
 
 but what if you put display before them. it's clearer, right? and yk they are related.
 
+...
+
+conclusion.
+
+(w the yaml css approach...)
+
+you dont know what are there in yaml.
+
+no auto complete. no ide warnings (spellcheck/correction). 
+
+it's extremely hard to set up lsp.
+
+and it's easy to have some snippets.
+
+e.g.
+
+- var to `var(--$0)`
+- `text-sm` to `font-size: var(--text-sm-size);\nline-height: var(--text-sm-height)`
+
+in css, `;` and `:` are also auto completed when you say what prop you want (just the first few letters is enough) and enter. you can shift enter to newline.
+
+btw, the pro of the yaml approach is on best cases you get simplest and dry syntax (w magic and aliases set up previously).
+
 
