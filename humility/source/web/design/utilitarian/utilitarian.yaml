@@ -1,5 +1,3 @@
-# adwaita design tokens
-
 modes:
   theme:
     - light
@@ -242,12 +240,23 @@ text:
 #   lg: "32px"
 
 radius:
-  xs: "4px"
-  sm: "8px"
-  md: "12px"
-  lg: "16px"
-  xl: "24px"
-  2xl: "32px"
+  xs: "2px"
+  sm: "4px"
+  base: "6px"
+  md: "8px"
+  lg: "12px"
+  xl: "16px"
+  2xl: "24px"
+  3xl: "32px"
+  
+  # just go standard as it's a superset
+
+  # xs: "4px"
+  # sm: "8px"
+  # md: "12px"
+  # lg: "16px"
+  # xl: "24px"
+  # 2xl: "32px"
   full: "9999px"
 
 # todo
