@@ -43280,6 +43280,24 @@ https://nyaa.si/view/1785308
 
 <!-- [KAngel] yyTAT☆ · ☆XIAOPA☆ [華將] -->
 
+07
+
+01 20 think.
+
+actually i feel i could predict what i would do and the time needed (i.e. timeboxing).
+
+when ive finished thinking, and ik what im doing.
+
+i could practice it. <!-- it's been a long time since i wrote journal manually... -->
+
+<!-- stay up early. you could do things tomorrow. it's almost always a good tradeoff. -->
+
+01 40 think.
+
+i guess zod is irrelevant. it's all about types, not logics. 
+
+you have total type safety within one env. and it's unbreakable if all env are typed the same way. users might input data, but they could not input a complex payload.
+
 
 
 <!-- timebox, plan. -->
