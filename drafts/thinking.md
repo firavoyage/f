@@ -144,5 +144,14 @@ intention
 
 i should be able to view resources in a pie chart. and i guess sometimes it does not add up to the mem. idk.
 
+---
+
+actually i feel i could predict what i would do and the time needed (i.e. timeboxing).
+
+when ive finished thinking, and ik what im doing.
+
+i could practice it.
+
+<!-- stay up early. you could do things tomorrow. it's almost always a good tradeoff. -->
 
 
