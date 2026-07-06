@@ -1,4 +1,4 @@
-:root {
+:root,[data-theme="light"],[data-accent="blue"],[data-density="comfortable"] {
   --ref-palette-white: #fff;
   --ref-palette-black: #000;
   --ref-palette-gray-25: oklch(25% 0 286);
@@ -82,9 +82,6 @@
   --ref-opacity-dim: 55%;
   --ref-opacity-disabled: 50%;
   --ref-window-radius: 15px;
-}
-
-:root, [data-theme="light"], [data-accent="blue"], [data-density="comfortable"] {
   --sys-radius-sm: var(--ref-radius-sm);
   --sys-radius-md: var(--ref-radius-md);
   --sys-radius-lg: var(--ref-radius-lg);
@@ -95,7 +92,7 @@
   --sys-color-bg-hover: var(--ref-palette-gray-93);
   --sys-color-bg-pressed: var(--ref-palette-gray-93);
   --sys-color-bg-accent: var(--ref-palette-accent-blue);
-  --sys-color-bg-destructive: var(--ref-palette-red-3);
+  --sys-color-bg-destructive: {ref.palette.red.3};
   --sys-color-bg-success: var(--ref-palette-success);
   --sys-color-bg-warning: var(--ref-palette-warning);
   --sys-color-bg-error: var(--ref-palette-error);
@@ -103,7 +100,7 @@
   --sys-color-fg-secondary: var(--ref-palette-gray-30);
   --sys-color-fg-tertiary: var(--ref-palette-gray-30);
   --sys-color-border-subtle: rgb(0 0 6 / 7%);
-  --sys-color-border-default: color-mix(in srgb, currentColor var(--ref-opacity-border), transparent);
+  --sys-color-border-default: color-mix(in srgb, currentColor {ref.opacity.border}, transparent);
 }
 
 [data-theme="dark"] {
@@ -112,7 +109,7 @@
   --sys-color-bg-tertiary: var(--ref-palette-gray-38);
   --sys-color-bg-hover: var(--ref-palette-gray-30);
   --sys-color-bg-pressed: var(--ref-palette-gray-30);
-  --sys-color-bg-destructive: var(--ref-palette-red-4);
+  --sys-color-bg-destructive: {ref.palette.red.4};
   --sys-color-fg-primary: var(--ref-palette-white);
   --sys-color-fg-secondary: var(--ref-palette-white);
   --sys-color-fg-tertiary: var(--ref-palette-white);
@@ -141,13 +138,14 @@
 }
 
 [data-accent="pink"] {
-  --sys-color-bg-accent: var(--ref-palette-accent-pink);
+  --sys-color-bg-accent: {ref.palette.accent-pink};
 }
 
 [data-accent="purple"] {
-  --sys-color-bg-accent: var(--ref-palette-accent-purple);
+  --sys-color-bg-accent: {ref.palette.accent-purple};
 }
 
 [data-accent="slate"] {
-  --sys-color-bg-accent: var(--ref-palette-accent-slate);
+  --sys-color-bg-accent: {ref.palette.accent-slate};
 }
+
