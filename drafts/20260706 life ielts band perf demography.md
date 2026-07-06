@@ -332,4 +332,328 @@ I can recommend the best child-friendly alternative tests or provide a simplifie
 
 Show all
 
-# 
+# ielts format
+
+The **IELTS (International English Language Testing System)** exam takes a total of <mark><strong>2 hours and 45 minutes</strong><span> </span>to complete and evaluates four core language skills:<span> </span><strong>Listening, Reading, Writing, and Speaking</strong></mark>. [link](https://ielts.org/take-a-test/test-types/ielts-academic-test)
+
+You can take either the **IELTS Academic** (for higher education or professional registration) or **IELTS General Training** (for migration, secondary education, or work). While the **Listening and Speaking modules are exactly the same** for both versions, the **Reading and Writing modules differ** in content and focus. [link](https://ielts.org/take-a-test/test-types/ielts-academic-test)
+
+***
+
+### 🗺️ IELTS Test Overview
+
+The Listening, Reading, and Writing sections are completed on the same day in one sitting with **no breaks between them**. The Speaking test is an interactive interview conducted with a live examiner, which may take place on the same day or up to seven days before or after the other sections. [link](https://ielts.org/cdn/ielts-guides/ielts-guide-for-test-takers.pdf)
+
+| Test Section     | Duration                                       | Number of Questions / Tasks | Core Focus                                        |
+| ---------------- | ---------------------------------------------- | --------------------------- | ------------------------------------------------- |
+| **🎧 Listening** | 30 minutes _(+10 mins transfer time on paper)_ | 40 questions                | Social and educational audio contexts             |
+| **📖 Reading**   | 60 minutes                                     | 40 questions                | Academic texts or workplace/everyday documents    |
+| **✍️ Writing**   | 60 minutes                                     | 2 tasks                     | Data analysis/letter writing and an opinion essay |
+| **🗣️ Speaking**  | 11–14 minutes                                  | 3 parts                     | Face-to-face conversational proficiency           |
+
+***
+
+### 🔍 Section-by-Section Breakdown
+
+### 1. Listening (30 Minutes)
+
+You will listen to **four recorded monologues and conversations** featuring native English speakers. You only hear the audio **once**. [link](https://caribbean.britishcouncil.org/exam/ielts/prepare/ielts-test-format)
+
+- **Part 1**: A conversation between two people in an everyday social context (e.g., booking a hotel room).
+- **Part 2**: A monologue set in an everyday social context (e.g., a speech about local park facilities).
+- **Part 3**: A conversation between up to four people in an educational or training context (e.g., students discussing an assignment).
+- **Part 4**: A monologue on an academic subject (e.g., a university lecture).
+- _Question Types:_ Multiple choice, matching, form completion, map/diagram labeling, and sentence completion. [link](https://caribbean.britishcouncil.org/exam/ielts/prepare/ielts-test-format)
+
+### 2. Reading (60 Minutes)
+
+This section contains **three separate passages** with a total of 40 questions. _Note: Unlike the listening section, no extra transfer time is given at the end._ [link](https://ielts.org/take-a-test/test-types/ielts-general-training-test/ielts-general-training-format-reading)
+
+- **IELTS Academic:** Texts are drawn from journals, books, magazines, and newspapers. They are analytical, academic, and suitable for students entering university.
+- **IELTS General Training:** Texts are gathered from workplace handbooks, advertisements, and notices.
+  - _Section 1:_ Everyday "social survival" texts.
+  - _Section 2:_ "Workplace survival" texts (contracts, job descriptions).
+  - _Section 3:_ General interest narrative or descriptive texts.
+- _Question Types:_ Heading matching, True/False/Not Given, multiple choice, and sentence completion. [link](https://ielts.org/take-a-test/test-types/ielts-general-training-test/ielts-general-training-format-reading)
+
+### 3. Writing (60 Minutes)
+
+You must complete two distinct writing tasks using full sentences (bullet points or notes are penalized). **Task 2 is worth twice as many marks as Task 1**. [link](https://takeielts.britishcouncil.org/take-ielts/test-format)
+
+- **Task 1 (20 minutes | Minimum 150 words):**
+  - _Academic:_ Summarize and describe visual data, such as a chart, graph, table, process diagram, or map.
+  - _General Training:_ Write a formal, semi-formal, or personal letter responding to a specific situation (e.g., complaining to a landlord or inviting a friend).
+- **Task 2 (40 minutes | Minimum 250 words):**
+  - _Both Versions:_ Write a formal, structured discursive essay responding to a point of view, argument, or social problem. [link](https://takeielts.britishcouncil.org/take-ielts/test-format)
+
+### 4. Speaking (11–14 Minutes)
+
+A live, interactive interview with an official examiner that is fully recorded. [link](https://ielts.org/take-a-test/test-types/ielts-general-training-test/ielts-general-training-format-speaking)
+
+- **Part 1 (Introduction & Interview):** The examiner asks general personal questions regarding your home, work, studies, or hobbies (4–5 minutes).
+- **Part 2 (Long Turn / Cue Card):** You are given a card with a specific topic. You get **1 minute to prepare notes** and must speak continuously for **1 to 2 minutes**.
+- **Part 3 (Discussion):** A deeper, abstract conversation with the examiner exploring the broader themes from your Part 2 topic (4–5 minutes). [link](https://ielts.org/take-a-test/test-types/ielts-academic-test/ielts-academic-format-speaking)
+
+***
+
+### 📊 Scoring System
+
+IELTS results are graded on a scale from **0 to 9 ("Band Scores")**. You receive individual band scores for each section, which are averaged and rounded to the nearest half or whole band to determine your **Overall Band Score**. [link](https://www.youtube.com/watch?v=tOFm-zoI6-w)
+
+To explore official preparation guides or register for an upcoming exam date, visit the [British Council Take IELTS Portal](https://takeielts.britishcouncil.org/take-ielts/test-format) or the global IDP IELTS Platform.
+
+Would you like to narrow down your preparation? Let me know:
+
+- Are you planning to take the **Academic** or **General Training** version?
+
+- Will you be sitting the exam **on a computer** or **on paper**?
+
+- Are there specific **question strategies** (like Writing Task 2 essays or True/False/Not Given reading questions) you would like to practice?
+
+- [link](https://takeielts.britishcouncil.org/take-ielts/test-format)\
+  IELTS test format explained | Take IELTS - British Council IELTS\
+  The IELTS Writing test takes 60 minutes. Spend 20 minutes on Task 1, and 40 minutes on Task 2. You will need to manage your own ti...\
+  British Council IELTS
+
+- [link](https://ielts.org/take-a-test/test-types/ielts-academic-test)\
+  IELTS Academic Test\
+  IELTS Academic is your key to studying abroad. You can take the IELTS Academic at a test centre or remotely online. The test time ...\
+  IELTS
+
+- [link](https://www.youtube.com/watch?v=tOFm-zoI6-w)\
+  Understand the IELTS test format: The ultimate guide\
+  Aug 8, 2024 — get ready to succeed in your ISELS. test with our ultimate overview. and how you will be scored. before we start let's quickly tak...\
+  12:13\
+  YouTube·TakeIELTS Official
+
+Show all
+
+## in a day
+
+**Yes, you can take all four sections of the IELTS exam in a single day.**
+
+However, scheduling depends heavily on whether you choose the **Computer-Delivered** or **Paper-Based** test.
+
+***
+
+### 💻 Computer-Delivered IELTS (Most Common for Same-Day)
+
+This format offers the highest chance of completing everything in one day.
+
+- **The Main Sitting**: You take **Listening, Reading, and Writing** sequentially in one block (2 hours and 45 minutes).
+- **The Speaking Test**: You select your exact Speaking slot when booking online. It is usually scheduled **1 to 2 hours before or after** your main exam block.
+- **Total Time**: You will spend about **4 to 5 hours** at the test center.
+
+***
+
+### 📝 Paper-Based IELTS (May Require Two Days)
+
+This format is highly subject to test center capacity.
+
+- **The Main Sitting**: Listening, Reading, and Writing are taken in a large hall with all other candidates on a fixed morning or afternoon schedule.
+- **The Speaking Test**: Because the examiner must interview students one-by-one, your Speaking test might be scheduled later that afternoon, or it could be assigned on a **different day** up to 7 days before or after the written exam.
+
+***
+
+### ⚠️ Important Test Day Exceptions
+
+- **No Breaks**: You cannot leave the room during the 2 hour and 45 minute written block. If you use the restroom, the test timer **does not stop**.
+- **ID Requirements**: You must bring the **exact same physical passport or national ID card** you used during online registration to both the written session and the Speaking interview. Digital copies are not accepted.
+
+If you are planning your test day, let me know:
+
+- Have you already registered, or are you **looking for a test center**?
+- Do you want tips on **managing fatigue** during the long 3-hour exam block?
+
+## what does it look like on computer
+
+The computer-delivered IELTS interface is **highly standardized, functional, and minimal**, designed to minimize distractions. The background is a clean grey and white layout with black text.
+
+Here is what the interface looks like across the sections:
+
+***
+
+### 🏛️ Persistent Universal Features (On Every Screen)
+
+- **The Top Navigation Bar:** Displays your name, candidate number, a help icon, and a **Live Countdown Clock**. The clock turns red and flashes when you have 10 and 5 minutes remaining.
+- **The Bottom Navigation Bar:** Shows a numbered row of **all 40 questions**.
+  - A **line underneath a number** means you have answered it.
+  - You can click the **"Review" flag button** to turn a question number into a circle, reminding you to look back at it later.
+  - Forward and backward arrows let you flip through pages.
+- **Text Tools:** You can select any text on the screen, right-click, and choose to **Highlight text** in yellow or **Add an on-screen Note**.
+
+***
+
+### 📊 Layout by Exam Module
+
+### 🎧 Listening Interface
+
+- **Layout:** Single-page view. Questions appear sequentially from top to bottom on the screen.
+- **Interaction:** You listen through headphones and type answers directly into blank text blocks, click multiple-choice checkboxes, or drag and drop labels into charts/diagrams.
+- _Note:_ There is no separate screen to transfer answers. You type as you listen.
+
+### 📖 Reading Interface
+
+- **Layout:** A **Split-Screen View**.
+  - **Left Side:** The reading passage. You can scroll up and down independently.
+  - **Right Side:** The 13–14 questions for that specific passage.
+- **Interaction:** You do not need to flip back and forth between pages since the text stays visible next to your questions.
+
+### ✍️ Writing Interface
+
+- **Layout:** A **Split-Screen View**.
+  - **Left Side:** The prompt instructions and any accompanying data, charts, or diagrams.
+  - **Right Side:** A blank text editor area where you type your essay.
+- **Built-In Word Counter:** A live word counter sits automatically at the bottom of your text box. Copy-paste (`Ctrl+C` / `Ctrl+V`) and undo options work natively.
+
+***
+
+### 🛠️ Official Practice Portals
+
+To interact with the software directly, you should try the official practice platforms. They offer free simulation tests that look exactly like the real exam:
+
+- Try the [British Council On-Computer Familiarization Tests](https://takeielts.britishcouncil.org/take-ielts/prepare/free-ielts-english-practice-tests/ielts-on-computer/how-it-works) to test your typing and highlighting.
+- Use the [IDP Computer IELTS Mock Environment](https://ielts.idp.com/brazil/prepare/article-how-computer-delivered-ielts-works) to practice with the live countdown clock.
+
+Would you like to know about:
+
+- The **keyboard shortcuts** available on the official system?
+- How to adjust screen **font sizes or color contrasts** for accessibility?
+- Whether the computer version has **spellcheck**?
+
+## can you navigate and edit anything within the main block
+
+<mark><strong><span>Yes, you can freely navigate and edit your answers within each individual section, but you cannot jump between different sections.</span></strong></mark>
+
+The exam environment enforces strict boundaries between modules to maintain testing integrity.
+
+***
+
+### 🟢 What You CAN Navigate and Edit
+
+Within a single, active section (such as the 60-minute Reading block), you have total control over your layout and inputs:
+
+- **Jump to Any Question:** You can click any question number (1 through 40) on the bottom navigation bar to jump directly to it. You do not have to answer them in chronological order.
+- **Change or Erase Answers:** You can overwrite typed text, select a different multiple-choice bubble, or clear a selection entirely at any point before the timer hits zero.
+- **Flag for Review:** You can click the "Review" button on any question. This changes the icon's shape on your bottom bar, serving as a visual reminder to return to it later.
+- **Editing Text (Writing Section):** In the Writing module, you can freely copy, paste, delete, or rewrite sections of your essays using standard keyboard shortcuts (`Ctrl+C` and `Ctrl+V`).
+
+***
+
+### 🔴 What You CANNOT Navigate or Edit
+
+Once a section is locked or completed, your boundaries are absolute:
+
+- **No Cross-Section Moving:** You cannot look at the Reading section while the Listening section is active. Each module must be completed one at a time.
+- **Past Sections Are Locked:** When the timer for a section expires (e.g., when the 30-minute Listening block ends), the screen automatically locks. You cannot go back to check or edit those answers later in the day.
+- **No Previewing Future Sections:** You cannot skip ahead to check the Writing prompts while you are still working through your Reading passages.
+
+***
+
+### ⏳ How the Listening Section is Unique
+
+While you can navigate back and forth in Reading and Writing, the Listening section has a very specific flow:
+
+- The audio plays continuously and **cannot be paused or rewound**.
+- Because the audio dictates the pace, you must answer the questions on your screen as you hear them.
+- At the very end of the Listening audio, the system gives you **2 minutes of silence**. During these 2 minutes, you _can_ use the bottom navigation bar to go back, check your spelling, and edit any answers you flagged earlier.
+
+Would you like to know more about:
+
+- The **exact keyboard shortcuts** (like `Tab` navigation or changing font sizes) built into the system?
+
+- How the **automatic submission process** works when your timer hit zero?
+
+- [link](https://support.cornershopcreative.com/support/solutions/articles/43000585419-block-editor-wordpress-core-editor)\
+  Your Guide to the WordPress Block Editor/Gutenberg\
+  Jan 7, 2025 — At the very center of the editor you'll see your main content area. As you mouse over each section, you'll notice a faint outline ...\
+  \
+  \
+  Cornershop Creative
+
+- [link](https://elementor.com/blog/introducing-navigator/)\
+  Introducing Navigator: Manage Your Entire Layout From One Place\
+  Dec 5, 2025 — Manage Your Entire Layout From One Place Navigator displays a condensed view of your entire page. All sections, columns, and widge...\
+  \
+  \
+  Elementor
+
+## can you submit sooner
+
+**No, you cannot skip ahead, banking saved time or submitting sections early to leave early.**
+
+The computer-delivered IELTS environment operates on an absolute global timeline enforced by the test center. [link](https://ielts.idp.com/prepare/article-how-computer-delivered-ielts-works)
+
+### 🛑 Strict Timing Protocols
+
+- **No Section Stacking:** If you complete the Reading section in 45 minutes instead of the allotted 60 minutes, you cannot hit "Submit" to gain an extra 15 minutes for the Writing module.
+- **The Wait Screen:** If you choose to stop early, you must simply wait at your desk. Your computer screen will remain active on that specific section until the live countdown timer reaches zero. [link](https://ielts.idp.com/prepare/article-how-computer-delivered-ielts-works)
+- **Locked to Your Seat:** For security and to prevent distractions to other test-takers, you cannot leave the exam room early if you finish your work ahead of schedule. Everyone in the session is dismissed at the exact same time. [link](https://www.e2language.com/blogs/ielts/9-most-important-ielts-test-day-tips-that-you-need-to-remember)
+
+### 💡 The Best Way to Use Leftover Time
+
+Instead of rushing, if you find yourself with extra time on Reading or Writing, maximize your score by using the on-screen tools: [link](https://wilwin.in/blog/how-does-the-ielts-computer-delivered-test-work/)
+
+- **Scan Your Flags:** Click through the bottom navigation bar to review questions you previously marked with the circle "Review" flag.
+- **Proofread Content:** Double-check your spelling, verb tenses, and plural endings.
+- **Verify the Word Count:** In the Writing section, check the live word counter at the bottom of your text editor to ensure you hit the minimum requirements (150 words for Task 1; 250 words for Task 2). [link](https://www.youtube.com/watch?v=Nh660qszwiE\&t=19)
+
+Are you worried about **running out of time** on a specific module, or do you generally finish practice tests **very quickly**? Knowing your current pacing can help me share tailored strategies.
+
+- [link](https://www.youtube.com/watch?v=Nh660qszwiE\&t=19)\
+  How to practise for IELTS on computer\
+  Nov 19, 2025 — and in this British Council IELTS preparation video we're going to show you how to practice effectively for IELTS on computer. so ...\
+  3m\
+  YouTube·TakeIELTS Official
+- [link](https://www.reddit.com/r/IELTS/comments/u67cjg/if%5Fi%5Ffinish%5Fone%5Fielts%5Fsection%5Fbefore%5Fthe%5Ftime/)\
+  If I finish one IELTS section before the time given, can I move to the ...\
+  Apr 18, 2022 — If I finish one IELTS section before the time given, can I move to the next section to get extra time? The timings of the sections...\
+  Reddit·r/IELTS
+- [link](https://ielts.idp.com/prepare/article-how-computer-delivered-ielts-works)\
+  How IELTS on computer works?\
+  Dec 23, 2021 — How IELTS on computer works? Sections. Test sections are the same for both IELTS on paper and IELTS on computer . Listening, Readi...\
+  idp ielts
+
+Show all
+
+## does it submit automatically
+
+**Yes, the system submits your work automatically the exact second the countdown timer hits zero.**
+
+You do not need to click a "Submit" or "Save" button at the end of a section.
+
+### ⚙️ How the Automatic System Works
+
+- **Constant Auto-Saving:** The software saves your inputs in real-time. Every letter you type, box you click, or item you drag is instantly uploaded to the local test server.
+- **Instant Screen Lock:** When the clock reaches `00:00`, your screen instantly changes to a locked transition window. You cannot type any more characters or change any selections.
+- **Zero Data Loss:** Even if you are mid-sentence in Writing Task 2 when the time expires, every single word you typed up to that final millisecond is securely saved and submitted to the examiners.
+
+### ⚠️ What This Means for Your Strategy
+
+Because submission is instant and automatic, you must adjust how you manage your final minutes:
+
+- **No Grace Period:** There is no extra minute given to double-check your spelling or read over your last paragraph.
+- **Watch the Flash:** The clock in the top navigation bar will turn red and flash when you have **10 minutes** and **5 minutes** remaining. Treat the 5-minute warning as your cue to stop writing new text and begin final proofreading.
+- **Fill Every Blank:** Because there is **no negative marking** (you do not lose points for wrong answers), make sure you guess an answer for every single multiple-choice or fill-in-the-blank question before the clock hits zero.
+
+Are you practicing with a **live timer** right now, or would you like to know how the **system transitions** from the end of one section into the start of the next?
+
+- [link](https://guides.gradescope.com/hc/en-us/articles/21864811508749-Submitting-an-Online-Assignment)\
+  Submitting an Online Assignment – Gradescope Guides\
+  Aug 19, 2025 — Timed: Your answers will be autosaved as you complete them. You will not have a button to submit each one.\
+  \
+  \
+  Gradescope
+
+- [link](https://www.getharvest.com/time-tracking/legal-time-tracking-software)\
+  Legal Time Tracking Software - Try Free\
+  Software prevents lost billable hours by automating time capture and providing real-time tracking. This ensures every minute is re...\
+  \
+  Harvest
+
+- [link](https://www.jotform.com/google-forms/create-auto-submit-quiz-in-google-forms/)\
+  How to create an auto-submit quiz in Google Forms\
+  Feb 26, 2026 — Quiz takers will see a countdown timer at the top indicating how much time they have left. When the time is up, the quiz auto-subm...\
+  \
+  \
+  Jotform
