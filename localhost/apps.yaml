@@ -2,6 +2,6 @@ apps:
   copy:
     command: zsh -lc "cd '/home/fira/Documents/f/apps/copy/' && /home/fira/.local/bin/parcel serve 'app.html' --dist-dir .build --cache-dir .build/.parcel-cache --port $port"
   token:
-    command: zsh -lc "cd '/home/fira/Documents/f/apps/' && /home/fira/.local/bin/parcel serve 'token.html' --open --dist-dir .build --cache-dir .build/.parcel-cache --port $port"
+    command: su - fira -s /bin/zsh -c "source /home/fira/.zshrc && cd '/home/fira/Documents/f/apps/token' && http-server -i 'token.html' -p $port"
   # bar:
   #   command: npm run dev
