@@ -2873,4 +2873,894 @@ Show all
 
 # <!-- 06 jul -->
 
-# 
+# ubuntu shell command to get all yaml in a folder or its subfolder, pass to a command as stdin, and make the stdout as css of the same name for each
+
+bash
+
+```
+find . -type f -name "*.yaml" -o -name "*.yml" | while read -r file; do YourCommand < "$file" > "${file%.*}.css"; done
+```
+
+Use code with caution.
+
+### How It Works
+
+- `find . -type f -name "*.yaml" -o -name "*.yml"`: Finds all `.yaml` and `.yml` files in the current folder and subfolders.
+- `while read -r file; do ... done`: Loops through each found file one by one.
+- `YourCommand < "$file"`: Redirects the contents of the current YAML file into your command as standard input (`stdin`).
+- `> "${file%.*}.css"`: Truncates the original extension and saves the standard output (`stdout`) to a `.css` file with the exact same name and path.
+
+To adapt this to your project, what **command** are you processing the YAML files with? If you run into errors, sharing the **structure of your YAML files** can help me refine the script.
+
+## use rg
+
+bash
+
+```
+rg --files -g "*.yaml" -g "*.yml" | while read -r file; do YourCommand < "$file" > "${file%.*}.css"; done
+```
+
+Use code with caution.
+
+### How It Works
+
+- `rg --files`: Instructs `ripgrep` to list files instead of searching inside them.
+- `-g "*.yaml" -g "*.yml"`: Filters the output to include only files with `.yaml` or `.yml` extensions.
+- `YourCommand < "$file"`: Feeds the file contents directly into your command's standard input.
+- `> "${file%.*}.css"`: Strips the existing extension and redirects the output to a `.css` file in the same directory.
+
+If you are dealing with **spaces in file names** or want to run this **in parallel** for faster processing, let me know. I can show you how to combine `rg` with `xargs` or `parallel`.
+
+- [link](https://dev.to/joaovitor/rg-instead-of-grep-1hji)\
+  rg instead of grep\
+  Dec 6, 2019 — linux-tools (4 Part Series) ripgrep aka rg provides great defaults to search inside files. It automatically skip . git directories...\
+  \
+  \
+  DEV Community
+- [link](https://andre.arko.net/note/)\
+  Notes\
+  Jun 15, 2026 — rg --files is how you ask ripgrep to list all files in the current directory, recursively (like find . -type f , but also respecti...\
+  \
+  André Arko
+
+## limit to a subfolder
+
+bash
+
+```
+rg --files -g "*.yaml" -g "*.yml" target_folder/ | while read -r file; do YourCommand < "$file" > "${file%.*}.css"; done
+```
+
+Use code with caution.
+
+### How It Works
+
+- `target_folder/`: Restricts `ripgrep` to search only inside this specific directory and its subdirectories. Replace `target_folder/` with your actual folder path.
+- `--files -g "*.yaml" -g "*.yml"`: Finds all matching files within that specific folder path.
+- `YourCommand < "$file" > "${file%.*}.css"`: Standard input and output handling remains identical, creating the `.css` file right next to the original YAML file inside that folder.
+
+If you need to **exclude certain nested folders** inside that subfolder, or if you want to **flatten the output** into a single destination directory instead of keeping them in the same place, let me know!
+
+- [link](https://www.softaken.com/guide/how-to-change-file-extension-of-folders-and-subfolders/)\
+  How to Change File Extension of Folders and Subfolders? | How to Guide\
+  Feb 23, 2022 — Use given command to go to the folder where your files are located. Replace with actual folder path. Given command will rename tar...\
+  \
+  \
+  Softaken
+
+## print out filename
+
+bash
+
+```
+rg --files -g "*.yaml" -g "*.yml" target_folder/ | while read -r file; do echo "Processing: $file"; YourCommand < "$file" > "${file%.*}.css"; done
+```
+
+Use code with caution.
+
+### How It Works
+
+- `echo "Processing: $file"`: Prints the path and filename to the terminal before the tool processes it.
+- `YourCommand`: Executes your processing logic exactly as before.
+
+If you prefer to see the filenames **after** a successful conversion, or if you want to log **errors** separately, let me know!
+
+## it works. but failed to parse package json. > | ^ JSON5: invalid character '$' at 5:95
+
+The error happens because `ripgrep` respects your `.gitignore` file by default. It is trying to read files inside your `node_modules/` folder, but it is hitting a `package.json` file (or a temporary/lock file containing a `$` character) that it cannot parse.
+
+To fix this, you need to tell `ripgrep` to ignore the `node_modules/` directory and any hidden files using the `--no-ignore` and `--hidden` flags carefully, or explicitly exclude directories using the `-g` flag.
+
+Here is the updated command to fix the parsing issue:
+
+bash
+
+```
+rg --files --no-ignore -g "!node_modules/" -g "*.yaml" -g "*.yml" target_folder/ | while read -r file; do echo "Processing: $file"; YourCommand < "$file" > "${file%.*}.css"; done
+```
+
+Use code with caution.
+
+### What Changed
+
+- `-g "!node_modules/"`: Explicitly tells `ripgrep` to skip the `node_modules` folder entirely, preventing it from touching `package.json` files.
+- `--no-ignore`: Forces `ripgrep` to look inside your target subfolder even if that subfolder is normally ignored by your `.gitignore` file.
+
+If you are still getting parsing errors after running this, let me know:
+
+- What **command** (`YourCommand`) are you running the YAML files through?
+
+- Are there other **generated folders** (like `dist/`, `.next/`, or `build/`) in that subfolder that we should exclude too?
+
+- [link](https://github.com/webpack/webpack/issues/13292)\
+  Webpack 5: "Module parse failed: Unexpected token" when importing JSON file · Issue #13292 · webpack/webpack\
+  May 2, 2021 — What is the current behavior? When I try to compile my application webpack throws an error saying that it can't parse the json fil...\
+  \
+  GitHub
+
+## your prev command works. i mean it's parceljs that errs.
+
+Ah, got it! **ParcelJS is failing because it does not read from standard input (`stdin`) natively.**
+
+When you pass a file via `< "$file"`, Parcel doesn't receive a file path. Instead, it tries to read the raw input stream, defaults to its JavaScript/JSON engine, and crashes when it hits your config variables (like a `$` symbol in your YAML files or your `package.json` configurations).
+
+To fix this, **pass the file path directly as an argument** to Parcel instead of using redirection, and specify your output path using Parcel's `--dist-dir` flag: [link](https://parceljs.org/features/targets/)
+
+bash
+
+```
+rg --files -g "*.yaml" -g "*.yml" target_folder/ | while read -r file; do echo "Processing: $file"; npx parcel build "$file" --dist-dir "$(dirname "$file")" --no-optimize; done
+```
+
+Use code with caution.
+
+### Why This Fixes It
+
+- **No `stdin` Redirection**: By using `npx parcel build "$file"`, Parcel treats the entry point as a true YAML/CSS asset rather than raw text.
+- `$(dirname "$file")`: This extracts the exact subdirectory the YAML file lives in, forcing Parcel to dump the compiled `.css` file right next to its original `.yaml` file.
+- `--no-optimize`: Prevents Parcel from minifying the output or hashing the file names, keeping your output readable and accurately named. [link](https://parceljs.org/features/targets/)
+
+### Alternative: If you just want to strip the compilation completely
+
+If you are using a custom Parcel transformer plugin that actually _requires_ you to output a uniquely named file on the fly, use standard `cat` to pipeline the data cleanly:
+
+bash
+
+```
+rg --files -g "*.yaml" -g "*.yml" target_folder/ | while read -r file; do echo "Processing: $file"; cat "$file" | npx parcel build --entries-stub-if-needed-or-similar > "${file%.*}.css"; done
+```
+
+Use code with caution.
+
+_(Note: The first argument-based approach is highly recommended for stability with Parcel)._
+
+If Parcel throws a different bundler error now, do your YAML files rely on a specific **Parcel plugin** (like a custom `.parcelrc` transformer) to turn them into CSS? Let me know so we can tweak the flags! [link](https://github.com/parcel-bundler/parcel/discussions/5561)
+
+- [link](https://parceljs.org/features/targets/)\
+  Targets - Parcel\
+  Parcel follows the dependencies in each resolved entry to build your source code for one or more targets. Targets specify the outp...\
+  Parcel.js
+- [link](https://github.com/parcel-bundler/parcel/discussions/5561)\
+  Using a separate config file to programmatically run the parcel, it ...\
+  Jan 1, 2021 — on Jan 1, 2021. ... So basically, I got that separate script to run parcel using node parcel. js to bundle all of my assets but th...\
+  GitHub
+- [link](https://github.com/parcel-bundler/parcel/issues/7736)\
+  parcel build skips CSS packaging, but parcel serve does not #7736\
+  Feb 18, 2022 — \* heycn commented. heycn. on Aug 19, 2022. More actions. Do you mean that HTML does not introduce CSS after build. You can do this...\
+  GitHub
+
+Show all
+
+## no. parceljs fails because it sees $ in my package json. > 5 | d < "$file" > "${file%.\*}.css"; done
+
+\> | ^ JSON5: invalid character '$' at 5:95\
+6 | "\
+7 | },
+
+Ah, that makes total sense now!
+
+The `$` character Parcel is choking on isn't inside your real `package.json`. Parcel is crashing because it looks for its configuration by reading your **shell script** strings or **npm scripts** from `package.json` where it detects your bash variables like `$file`. Parcel's JSON5 parser tries to read the `package.json` file as a regular object, hits the bash code you saved inside an `npm script`, and throws a syntax error.
+
+To bypass Parcel reading `package.json` configurations or treating your loop logic as a configuration file, **isolate the logic into a separate executable shell script file**. This keeps the bash symbols out of your `package.json`.
+
+Follow these quick steps to get it running safely:
+
+### 1. Create a Standalone Script File
+
+Create a new file named `build-yaml.sh` in your project root and paste the loop inside it:
+
+bash
+
+```
+#!/bin/bash
+rg --files -g "*.yaml" -g "*.yml" target_folder/ | while read -r file; do
+    echo "Processing: $file"
+    YourCommand < "$file" > "${file%.*}.css"
+done
+```
+
+Use code with caution.
+
+### 2. Make the Script Executable
+
+Run this command in your Ubuntu terminal to give the script execution permissions:
+
+bash
+
+```
+chmod +x build-yaml.sh
+```
+
+Use code with caution.
+
+### 3. Update your `package.json`
+
+Now, instead of putting the entire loop directly into your `package.json` scripts array, just point npm/yarn to your script file:
+
+json
+
+```
+"scripts": {
+  "build:yaml": "./build-yaml.sh"
+}
+```
+
+Use code with caution.
+
+Now you can safely run `npm run build:yaml` or `yarn build:yaml`. Parcel will read your `package.json` perfectly because it only sees clean, valid JSON strings rather than raw bash control characters like `$file` or `${file%.*}`.
+
+If your standalone script needs to pass dynamic environment variables or configuration down to `YourCommand`, let me know how you want to configure them!
+
+- [link](https://github.com/parcel-bundler/parcel/issues/4863)\
+  SyntaxError: JSON5: invalid character when running parcel ...\
+  Jul 8, 2020 — SyntaxError: JSON5: invalid character when running parcel serve #4863. New issue. Copy link. New issue. Copy link. Closed. Closed.\
+  \
+  \
+  GitHub
+
+# does scripts in package json run on cwd or where packagejson is
+
+`npm` scripts always run in the directory where the `package.json` file is located, not your current working directory (`cwd`).
+
+### Why This Matters
+
+- **Consistency**: Running a script from a subfolder yields the same result.
+- **Relative Paths**: Paths inside scripts (like `./src`) resolve relative to `package.json`.
+
+### How to Run in the Actual CWD
+
+If you need a script to use your terminal's current directory instead, use the `$INIT_CWD` environment variable provided by npm.
+
+json
+
+```
+"scripts": {
+  "build": "echo $INIT_CWD"
+}
+```
+
+Use code with caution.
+
+To advance your project setup, would you like to know how to **change directories inside a script** or how to **handle cross-platform path differences** between Windows and Mac/Linux?
+
+- [link](https://docs.npmjs.com/cli/v8/using-npm/scripts/)\
+  scripts\
+  Oct 25, 2022 — Scripts are run from the root of the package folder, regardless of what the current working directory is when npm is invoked. If y...\
+  \
+  npm Docs
+- [link](https://github.com/yarnpkg/yarn/issues/2459)\
+  yarn run in project subdirectories · Issue #2459 · yarnpkg/yarn\
+  Jan 16, 2017 — What is the expected behavior? npm run\
+  \
+  \
+  GitHub
+- [link](https://learn.microsoft.com/en-gb/answers/questions/1814108/during-npm-start-facing-issue-shows-error)\
+  during npm start, facing issue. Shows error - Microsoft Q\&A\
+  Jul 13, 2024 — To ensure npm start works correctly, always run it from the directory where the corresponding package. json file resides and inclu...\
+  \
+  \
+  Microsoft Learn
+
+Show all
+
+# css variable naming rules
+
+<mark><strong>CSS variables must begin with two hyphens (<code dir="ltr">--</code>) followed by a valid custom property name.</strong></mark> Beyond this foundational syntax, strict specification requirements dictate what characters can be used, alongside community standards that ensure maintainable code bases.
+
+***
+
+### 1. Strict Syntax Rules
+
+These rules are enforced by the browser's CSS parser. Breaking them will cause the variable to be ignored: [link](https://ishadeed.com/article/css-vars-101/)
+
+- **Double Hyphen Prefix**: Every variable name must start with `--` (e.g., `--main-color`).
+- **Case Sensitivity**: Names are strictly case-sensitive. `--theme-color` and `--Theme-Color` are treated as two completely distinct variables.
+- **Allowed Characters**: Names can contain alphanumeric characters (`a-z`, `A-Z`, `0-9`), hyphens (`-`), and underscores (`_`).
+- **No Spaces**: Spaces are completely illegal. For example, `--font size` will break your layout.
+- **Numbers are Allowed**: Unlike many programming languages, CSS variable names **can** start with a number after the prefix (e.g., `--12px-spacing` is valid). [link](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascading%5Fvariables/Using%5Fcustom%5Fproperties)
+
+***
+
+### 2. Best Practice Naming Conventions
+
+While the browser only cares about the syntax above, development teams rely on structural conventions to keep code clean and scalable. [link](https://www.youtube.com/watch?v=G8GP3S3t0XU)
+
+### Use Kebab-Case
+
+The universal standard for writing multi-word CSS variables is **kebab-case** (lowercase words separated by dashes). [link](https://area51.phpbb.com/docs/dev/master/development/css/css%5Fnaming.html)
+
+- ❌ `--headingFontSize` _(CamelCase is rare in native CSS)_
+- ✅ `--heading-font-size` _(Clean and native feeling)_ [link](https://lism-css.com/en/docs/naming/)
+
+### Prioritize Semantic Meaning over Values
+
+Name variables based on their **purpose or role**, not the specific value they hold. This ensures that if your brand style changes later, your variable names still make sense. [link](https://medium.com/digio-australia/a-scalable-naming-convention-for-style-variables-6363b916432a)
+
+- ❌ `--red-color` _(Confusing if your brand changes the primary color to blue)_
+- ✅ `--color-primary`
+- ❌ `--text-14px` _(Restricts changes to font scaling)_
+- ✅ `--font-size-body` [link](https://medium.com/digio-australia/a-scalable-naming-convention-for-style-variables-6363b916432a)
+
+### Adopt a Structured Tier Hierarchy
+
+Large applications scale better when utilizing a structured tier hierarchy. A popular framework is the **Triptych or Category Notation**: `--[category]-[property]-[modifier/state]`. [link](https://jwdallas.com/posts/namingcssvariables/)
+
+| Component                | Purpose                                              | Examples                           |
+| ------------------------ | ---------------------------------------------------- | ---------------------------------- |
+| **Category / Namespace** | Defines the global theme, component, or system area. | `color`, `spacing`, `font`, `card` |
+| **Property / Element**   | The specific property or sub-element being modified. | `primary`, `bg`, `size`, `header`  |
+| **Modifier / State**     | The variation, scale number, or active state.        | `hover`, `lg`, `400`, `active`     |
+
+_Examples of this hierarchy in practice:_
+
+- `--color-bg-primary`
+- `--spacing-layout-lg`
+- `--font-weight-bold`
+- `--button-color-hover`
+
+***
+
+### 3. Valid vs. Invalid Quick Reference
+
+css
+
+```
+:root {
+  /* ✅ VALID NAMES */
+  --primary-color: #333;       /* Standard hyphenated */
+  --_local-padding: 1rem;      /* Leading underscore often indicates a private variable */
+  --100-percent: 100%;         /* Starts with a digit */
+  --MainColor: red;            /* CamelCase is valid, though less common */
+
+  /* ❌ INVALID NAMES */
+  --primary color: blue;       /* Contains a space */
+  --bg$color: green;           /* Contains invalid special character ($) */
+  primary-color: black;        /* Missing the double hyphen prefix */
+}
+```
+
+Use code with caution.
+
+If you are currently setting up a design system, would you like to see how to structure a **two-tier system that separates global palette tokens from functional component variables**?
+
+- [link](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascading%5Fvariables/Using%5Fcustom%5Fproperties)\
+  Using CSS custom properties (variables) - MDN Web Docs\
+  Dec 16, 2025 — Declaring custom properties. In CSS, you can declare a custom property using two dashes as a prefix for the property name, or by u...\
+  MDN Web Docs
+- [link](https://medium.com/digio-australia/a-scalable-naming-convention-for-style-variables-6363b916432a)\
+  A scalable naming convention for style-variables - Medium\
+  Sep 12, 2021 — It should scale well for small-to-large themes. The variable names should make sense regardless of the number of variables in the ...\
+  Medium·Brett Uglow
+- [link](https://www.reddit.com/r/css/comments/1cx92ry/root%5Fvariable%5Fnaming%5Fconventions/)\
+  Root variable naming conventions. : r/css - Reddit\
+  May 21, 2024 — Comments Section \* pookage. • 2y ago. While BEM isn't needed so much now that we can scope styles to adopted stylesheets and creat...\
+  Reddit·r/css
+
+Show all
+
+## how to escape
+
+To escape special characters in CSS variable names, <mark>use a<span> </span><strong>backslash (<code dir="ltr">\</code>)</strong><span> </span>followed by the character or its hexadecimal Unicode value</mark>.
+
+While avoiding special characters is best practice, escaping allows you to use spaces, symbols, or commas when integrating with third-party tools or legacy systems.
+
+***
+
+### 1. Escaping Special Symbols and Spaces
+
+To use symbols like `$`, `@`, `.`, or empty spaces, place a backslash directly before the character.
+
+css
+
+```
+:root {
+  /* Escaping a space */
+  --header\ space: 2rem;
+
+  /* Escaping a dollar sign */
+  --total\$amount: #222;
+
+  /* Escaping a period (commonly used for matching class syntax) */
+  --alert\.error: red;
+}
+
+/* Usage: */
+.card {
+  padding: var(--header\ space);
+}
+```
+
+Use code with caution.
+
+***
+
+### 2. Escaping via Hexadecimal Unicode
+
+For highly unusual symbols or complex punctuation, use a backslash followed by the character's **hexadecimal Unicode value**, followed by a space.
+
+css
+
+```
+:root {
+  /* Unicode for an exclamation mark (!) is 21 */
+  --caution\21 : #ff0000;
+
+  /* Unicode for a percentage sign (%) is 25 */
+  --width\25 : 100%;
+}
+
+/* Usage: */
+.banner {
+  background-color: var(--caution\21 );
+}
+```
+
+Use code with caution.
+
+_Note: The space after the hex code tells the CSS browser parser that the Unicode sequence has ended, and it will not be rendered as part of the variable name._
+
+***
+
+### 3. JavaScript Interaction (Edge Case)
+
+If you need to read or write these escaped CSS variables using JavaScript (`setProperty`), you must use a **double backslash (`\\`)** because JavaScript uses the first backslash to escape the string itself.
+
+javascript
+
+```
+// Accessing a variable named "--header space" in JavaScript
+document.documentElement.style.setProperty('--header\\ space', '3rem');
+```
+
+Use code with caution.
+
+If you are debugging a specific variable that isn't working, let me know **what characters you are trying to include** or **which build tool you are using** so I can provide the exact syntax.
+
+- [link](https://www.w3.org/International/questions/qa-escapes.en.html)\
+  Using character escapes in markup and CSS\
+  Aug 12, 2010 — CSS escapes CSS represents escaped characters in a different way. Escapes start with a backslash followed by the hexadecimal numbe...\
+  \
+  W3C
+
+## esacpe in js
+
+To escape characters in JavaScript, <mark>use a<span> </span><strong>backslash (<code dir="ltr">\</code>)</strong><span> </span>before the special character</mark>. This transforms it from a code-breaking character into a literal string character.
+
+***
+
+### 1. Escaping Quotes in Strings
+
+If your string is wrapped in single quotes, you must escape single quotes inside it. If wrapped in double quotes, escape double quotes.
+
+javascript
+
+```
+// Escaping single quotes
+let phrase1 = 'It\'s a beautiful day.';
+
+// Escaping double quotes
+let phrase2 = "He said, \"Hello world.\"";
+```
+
+Use code with caution.
+
+_Tip: You can avoid escaping completely by wrapping your string in **backticks (\`)**, which support single quotes, double quotes, and multi-line text without escaping._
+
+***
+
+### 2. Common Special Character Escapes
+
+The backslash combined with specific letters creates control characters like newlines or tabs:
+
+| Code | Result                                               | Example                  |
+| ---- | ---------------------------------------------------- | ------------------------ |
+| `\n` | **New Line** (breaks text to the next line)          | `"Line 1\nLine 2"`       |
+| `\t` | **Tab** (inserts horizontal whitespace)              | `"Name:\tJohn"`          |
+| `\\` | **Literal Backslash** (escapes the escape character) | `"C:\\Folder\\File.txt"` |
+| `\r` | **Carriage Return** (moves cursor to start of line)  | `"Hello\rWorld"`         |
+
+***
+
+### 3. Escaping Template Literal Backticks
+
+If you are using template literals (backticks), you must escape any literal backtick characters or the dollar-brace (`${}`) syntax if you do not want it to evaluate as code.
+
+javascript
+
+```
+let normalText = `This is a backtick: \``;
+let rawCode = `Do not evaluate this: \${variableName}`;
+```
+
+Use code with caution.
+
+***
+
+### 4. Escaping Variables for Regular Expressions (RegEx)
+
+If you dynamically pass a user string into a Regular Expression, special regex characters (like `.`, `*`, `+`, `?`, `$`, `^`, `(`, `)`) must be escaped.
+
+The universal function to safely escape strings for a Regex looks like this:
+
+javascript
+
+```
+function escapeRegExp(string) {
+  // Finds all special regex symbols and adds a backslash before them
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+let userSearch = "apple.jpg"; // The dot is a regex wild card
+let safeRegex = new RegExp(escapeRegExp(userSearch));
+```
+
+Use code with caution.
+
+Are you looking to escape **HTML characters** to prevent security issues (like XSS), or are you trying to format a **JSON string** properly? Let me know your specific use case.
+
+- [link](https://ssojet.com/escaping/javascript-string-escaping-in-javascript-in-browser)\
+  JavaScript String Escaping in JavaScript in Browser | Escaping Techniques in Programming\
+  Nov 6, 2025 — Escaping with Backslashes The backslash ( \ ) serves as JavaScript's primary escape character, allowing you to represent special c...\
+  \
+  \
+  SSOJet
+- [link](https://support.smartbear.com/testcomplete/docs/scripting/working-with/strings/javascript.html)\
+  JavaScript - Working With Strings | TestComplete Documentation\
+  Oct 5, 2025 — Special characters There are several pairs of symbols that are used to represent special characters in JavaScript strings. They al...\
+  \
+  SmartBear
+- [link](https://mojoauth.com/compare-escaping/json-escaping-vs-javascript-string-escaping)\
+  JSON Escaping vs JavaScript String Escaping | Compare Data Escaping Methods\
+  Jul 13, 2025 — JavaScript String Escaping is the method of using escape sequences to insert special characters into string literals in JavaScript...\
+  \
+  \
+  MojoAuth
+
+Show all
+
+## i mean method to escape css variable name in js
+
+To escape a CSS variable name dynamically in JavaScript, use the built-in **`CSS.escape()`** method.
+
+This method automatically adds the necessary escape characters (`\`) so the browser can read unusual names safely when using the DOM styling API.
+
+***
+
+### 1. Using `CSS.escape()` for Custom Properties
+
+If your CSS variable has spaces or special characters, wrap the variable string inside `CSS.escape()`.
+
+javascript
+
+```
+// A CSS variable containing an illegal space: "--theme color"
+const rawVariableName = '--theme color';
+
+// ❌ THIS FAILS (Browser rejects invalid token)
+document.documentElement.style.getPropertyValue(rawVariableName);
+
+// ✅ THIS WORKS
+const safeName = CSS.escape(rawVariableName);
+document.documentElement.style.setProperty(safeName, 'blue');
+```
+
+Use code with caution.
+
+***
+
+### 2. Manual String Escaping (The Alternative)
+
+If you prefer not to use the `CSS.escape` utility, you must use a **double backslash (`\\`)** in your raw JavaScript string.
+
+The first backslash escapes the string wrapper in JavaScript, and the second backslash is passed directly down into the CSS engine.
+
+javascript
+
+```
+// Writing a variable with a space
+document.documentElement.style.setProperty('--main\\ space', '20px');
+
+// Reading a variable with a period
+const value = getComputedStyle(document.documentElement)
+  .getPropertyValue('--alert\\.\\.error');
+```
+
+Use code with caution.
+
+***
+
+### 3. Escaping Variables inside `querySelector`
+
+If you are passing a CSS variable selector inside a query function, combine `CSS.escape()` with the variable fallback syntax to protect the string:
+
+javascript
+
+```
+// Finding an element using a complex variable fallback selector
+const variableSelector = `[style*="${CSS.escape('--my-$special-var')}"]`;
+const element = document.querySelector(variableSelector);
+```
+
+Use code with caution.
+
+Are you running into an error trying to **read (`getPropertyValue`)** an existing variable, or are you trying to dynamically **generate names** for a design system? Let me know so I can help you debug it.
+
+- [link](https://mojoauth.com/escaping/css-escaping-in-javascript-in-browser)\
+  CSS Escaping in JavaScript in Browser | Escaping Methods in Programming Languages\
+  Oct 27, 2025 — Implementing CSS escaping in JavaScript requires careful handling of strings that will be used as selectors. When creating or modi...\
+  \
+  \
+  MojoAuth
+- [link](https://ssojet.com/escaping/css-escaping-in-javascript-in-browser)\
+  CSS Escaping in JavaScript in Browser | Escaping Techniques in Programming\
+  Nov 19, 2025 — Using CSS. escape() for Reliable Escaping Leverage the built-in CSS. escape() method for a robust and standardized way to escape s...\
+  \
+  \
+  SSOJet
+- [link](https://dev.to/kupumaru21/jsx-curly-braces-got-your-back-behind-the-scenes-ap1)\
+  JSX Curly Braces {} Got Your Back Behind the Scenes\
+  May 10, 2025 — JSX Escapes by Default 🛡 React automatically escapes any content inside JSX curly braces before rendering it to the DOM. That mea...\
+  \
+  \
+  DEV Community
+
+Show all
+
+## examples of css escape behavior
+
+Below is a breakdown of how `CSS.escape()` transforms strings, demonstrating how it handles identifiers like leading numbers, spaces, and special symbols according to the CSS specification.
+
+***
+
+### 1. Handling Leading Numbers
+
+CSS identifiers (like class names or custom properties) cannot normally begin with a number unless it is properly escaped. `CSS.escape()` converts the first digit into its hexadecimal Unicode representation to make it valid.
+
+javascript
+
+```
+// A class name or variable fragment starting with a number
+console.log(CSS.escape('123abc'));
+// Output: "\31 23abc"
+// (\31 is the hex code for the character '1', followed by a space)
+
+// Applying it to a query selector
+document.querySelector('.' + CSS.escape('123abc'));
+// Selects: .[class="123abc"]
+```
+
+Use code with caution.
+
+***
+
+### 2. Handling Spaces and Control Characters
+
+Spaces are completely illegal in raw CSS variable names and class names. `CSS.escape()` prefixes spaces with a single literal backslash.
+
+javascript
+
+```
+// String with a space
+console.log(CSS.escape('my variable'));
+// Output: "my\ variable"
+
+// String with multiple spaces
+console.log(CSS.escape('--theme color primary'));
+// Output: "--theme\ color\ primary"
+```
+
+Use code with caution.
+
+***
+
+### 3. Handling Special Punctuation Symbols
+
+Characters used by CSS syntax itself (like `.`, `#`, `:`, `$`, or `[`) will break selectors or properties if left unescaped. `CSS.escape()` targets these instantly.
+
+javascript
+
+```
+// Common symbols used in utility-first frameworks (like
+```
+
+Use code with caution.
+
+\[javascript
+
+```
+Tailwind
+```
+
+Use code with caution.]\(https://tailwindcss.com/)
+
+javascript
+
+```
+)
+console.log(CSS.escape('w-1/2'));   // Output: "w-1\/2"
+console.log(CSS.escape('bg-blue.500')); // Output: "bg-blue\.500"
+console.log(CSS.escape('hover:text-red')); // Output: "hover\:text-red"
+
+// Variable with a dollar sign
+console.log(CSS.escape('--price-$')); // Output: "--price-\$"
+```
+
+Use code with caution.
+
+***
+
+### 4. Handling Non-ASCII & Emoji Characters
+
+Most non-ASCII characters and emojis are inherently valid in CSS identifiers, so `CSS.escape()` leaves them untouched.
+
+javascript
+
+```
+// Emojis and international characters
+console.log(CSS.escape('🚀'));       // Output: "🚀" (No change required)
+console.log(CSS.escape('--café'));  // Output: "--café" (No change required)
+```
+
+Use code with caution.
+
+***
+
+### Summary Chart
+
+| Input String | `CSS.escape()` Output | Why?                                                      |
+| ------------ | --------------------- | --------------------------------------------------------- |
+| `foo-bar`    | `"foo-bar"`           | Already valid CSS.                                        |
+| `.foo`       | `"\.foo"`             | Escapes the dot so it isn't treated as a class indicator. |
+| `5stars`     | `"\35 stars"`         | Converts the leading `5` to hex unicode sequence `\35 `.  |
+| `--my var`   | `"--my\ var"`         | Adds a backslash to protect the illegal whitespace.       |
+
+Are you trying to use `CSS.escape()` to **dynamically generate class names** for elements, or are you parsing a **JSON configuration** into CSS custom properties?
+
+- [link](https://www.w3.org/International/questions/qa-escapes.en.html)\
+  Using character escapes in markup and CSS\
+  Aug 12, 2010 — A trailing space is treated as part of the escape, so use 2 spaces if you actually want to follow the escaped character with a spa...\
+  \
+  W3C
+- [link](https://shopify.github.io/liquid/filters/escape/)\
+  escape – Liquid template language\
+  escape Escapes a string by replacing characters with escape sequences (so that the string can be used in a URL, for example). It d...\
+  \
+  Shopify Open Source
+- [link](https://mojoauth.com/compare-escaping/css-escaping-vs-regex-escaping)\
+  CSS Escaping vs Regex Escaping | Compare Data Escaping Methods\
+  Dec 19, 2025 — What is CSS Escaping CSS escaping is a technique used to safely include special characters within CSS selectors and properties. In...\
+  \
+  \
+  MojoAuth
+
+Show all
+
+## in nodejs
+
+**Because Node.js does not have a native `window` or `CSS` DOM object, running `CSS.escape()` will throw a `ReferenceError`.** To escape CSS variables or selectors in a backend Node environment, you must use a dedicated utility library or implement a lightweight manual function.
+
+***
+
+### 1. Option A: Using the `cssesc` Library (Recommended)
+
+The [cssesc package on npm](https://github.com/mathiasbynens/cssesc) is the gold standard for backend CSS escaping. It is highly optimized and provides flexible options for formatting identifiers. [link](https://github.com/mathiasbynens/cssesc)
+
+**Installation:**
+
+bash
+
+```
+npm install cssesc
+```
+
+Use code with caution.
+
+**Implementation:**
+
+javascript
+
+```
+const cssesc = require('cssesc');
+
+// Escaping a problematic CSS variable name snippet
+const rawVariableName = 'primary color';
+const safeVariable = `--${cssesc(rawVariableName, { isIdentifier: true })}`;
+
+console.log(safeVariable);
+// Output: --primary\ color
+```
+
+Use code with caution.
+
+***
+
+### 2. Option B: Using the Native `CSS.escape` Polyfill
+
+If you prefer exact feature parity with the browser's `CSS.escape()` specification, use the [css.escape polyfill package](https://www.npmjs.com/package/css.escape).
+
+**Installation:**
+
+bash
+
+```
+npm install css.escape
+```
+
+Use code with caution.
+
+**Implementation:**
+
+javascript
+
+```
+// This injects "CSS.escape" into the global node environment scope
+require('css.escape');
+
+const rawSelector = 'w-1/2';
+const escapedSelector = global.CSS.escape(rawSelector);
+
+console.log(escapedSelector);
+// Output: w-1\/2
+```
+
+Use code with caution.
+
+***
+
+### 3. Option C: Pure JavaScript Manual Function
+
+If you want to avoid external `npm` package overhead entirely, you can use a lightweight regex function that matches common illegal characters and escapes them with a double backslash. [link](https://mathiasbynens.be/notes/css-escapes)
+
+javascript
+
+```
+function manualCSSEscape(string) {
+  // Escapes spaces, periods, hashes, colons, dollars, and slashes
+  return string.replace(/[ .#:$]/g, '\\$&');
+}
+
+const variableName = 'theme.dark spacing';
+const cleanVar = `--${manualCSSEscape(variableName)}`;
+
+console.log(cleanVar);
+// Output: --theme\.dark\ spacing
+```
+
+Use code with caution.
+
+If you are generating a dynamic file, are you outputting this text directly to a static **`.css` style sheet file** or injecting it into an **HTML string** template?
+
+- [link](https://www.npmjs.com/package/css.escape)\
+  css.escape - NPM\
+  Aug 23, 2016 — escape polyfill. A robust polyfill for the CSS. escape utility method as defined in CSSOM. For a more powerful alternative, consid...\
+  NPM
+- [link](https://github.com/mathiasbynens/cssesc)\
+  mathiasbynens/cssesc: A JavaScript library for escaping CSS ...\
+  Sep 28, 2016 — A JavaScript library for escaping CSS strings and identifiers while generating the shortest possible ASCII-only output. This is a ...\
+  GitHub
+- [link](https://mathiasbynens.be/notes/css-escapes)\
+  CSS character escape sequences - Mathias Bynens\
+  Jul 12, 2010 — On the other hand, if you were to use these selectors with the Selectors API (i.e. document.querySelector() and document.querySele...\
+  Mathias Bynens
+
+Show all

@@ -1,1 +1,1 @@
-cd .. && rg --files -g "*.yaml" -g "*.yml" design/ | while read -r file; do echo "converting $file to css"; br 'script/convert.ts' < "$file" > "${file%.*}.css"; done
+rg --files -g "*.yaml" -g "*.yml" design/ | while read -r file; do echo "converting $file to css"; br 'script/convert.ts' < "$file" > "${file%.*}.css"; done

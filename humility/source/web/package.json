@@ -1,10 +1,10 @@
 {
   "packageManager": "pnpm@10.30.2",
   "scripts": {
-    // convert design
-    "convert": "rg --files -g \"*.yaml\" -g \"*.yml\" design/ | while read -r file; do echo \"converting $file to css\"; br 'script/convert.ts' < \"$file\" > \"${file%.*}.css\"; done"
+    "convert": "./script/convert.sh"
   },
   "dependencies": {
+    "css.escape": "1.5.1",
     "mousetrap": "1.6.5",
     "react": "19.2.7",
     "react-dom": "19.2.7",

@@ -1,6 +1,7 @@
 // @ts-nocheck
 import { read, write } from "lib/file";
 import { parse } from "yaml";
+import 'css.escape'
 
 const non_existing_mode = 'non_existing_mode'
 
@@ -109,7 +110,7 @@ export async function main(yaml: string) {
     css += `${selector} {\n`
 
     for (const [prop, value] of Object.entries(variables)) {
-      css += `  ${prop}: ${value};\n`
+      css += `  ${CSS.escape(prop)}: ${value};\n`
     }
 
     css += '}\n\n'
