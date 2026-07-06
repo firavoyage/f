@@ -43298,6 +43298,12 @@ i guess zod is irrelevant. it's all about types, not logics.
 
 you have total type safety within one env. and it's unbreakable if all env are typed the same way. users might input data, but they could not input a complex payload.
 
+backend validation? sec <!-- or permission --> and type are different things.
+
+you should not handle human errors for geeks.
+
+you should not work w third parties that could even mess up types.
+
 
 
 <!-- timebox, plan. -->
