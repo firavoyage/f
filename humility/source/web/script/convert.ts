@@ -93,7 +93,7 @@ function convert(design) {
 
 export async function main(yaml: string) {
   yaml ??= await read(0)
-
+  
   // convert yaml to obj
   const design = parse(yaml)
 
@@ -120,3 +120,5 @@ export async function main(yaml: string) {
 
   return css
 }
+
+main()
