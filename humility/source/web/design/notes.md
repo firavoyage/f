@@ -111,4 +111,12 @@ im way more familiar w css props than tailwind. and im not a pro fe dev.
 
 you have auto complete and snippets!
 
+...
+
+one things is... just be explicit.
+
+flex and grid carry unambiguous meaning themselves.
+
+but what if you put display before them. it's clearer, right? and yk they are related.
+
 
