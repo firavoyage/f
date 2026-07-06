@@ -13,6 +13,15 @@ import fs from 'node:fs'
  */
 // const port_given = 0;
 const port = 3000;
+/**
+ * there is nothing wrong to write the json after starting the server
+ * 
+ * you have nothing to do when it's not running.
+ * 
+ * actually it's better to run ui after starting the server. 
+ * 
+ * (wait... in prod the it serves both web and api. actually i does not need to do anything.)
+ */
 fs.writeFileSync('../web/port.json', `{"port":${port}}`)
 
 // 1. Initialize the Hono application instance
