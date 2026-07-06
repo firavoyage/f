@@ -450,3 +450,13 @@ no permanence. no real predictability. google sunsets reader. msft sunsets atom.
 what if you could have it?
 
 ---
+
+intelligent workflow.
+
+- "first few numbers in the nature"
+- "project info"
+
+divide and conquer.
+
+---
+
