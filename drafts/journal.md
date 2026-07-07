@@ -43374,7 +43374,7 @@ i guess i already made it within ten minutes.
 
 ...
 
-on frontend, 
+on frontend, <!-- to call, --> get baseurl <!-- that is the same domain by default --> and port <!-- in a json file -->, append api prefix, and that's it.
 
 
 
