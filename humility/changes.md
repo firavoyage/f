@@ -213,3 +213,6 @@ and i might not continue this project. you dont need to make it elegant for comm
 build a better world, rather than changing the world.
 
 this is a kind of declarative over imperative.
+
+jul 2026
+
