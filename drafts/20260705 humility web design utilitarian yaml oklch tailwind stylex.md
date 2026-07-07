@@ -3260,7 +3260,7 @@ Show all
 
 ## how to escape
 
-To escape special characters in CSS variable names, <mark>use a<span> </span><strong>backslash (<code dir="ltr">\</code>)</strong><span> </span>followed by the character or its hexadecimal Unicode value</mark>.
+To escape special characters in CSS variable names, <mark>use a<span> </span><strong>backslash (<code dir="ltr">\\</code>)</strong><span> </span>followed by the character or its hexadecimal Unicode value</mark>.
 
 While avoiding special characters is best practice, escaping allows you to use spaces, symbols, or commas when integrating with third-party tools or legacy systems.
 
@@ -3344,7 +3344,7 @@ If you are debugging a specific variable that isn't working, let me know **what 
 
 ## esacpe in js
 
-To escape characters in JavaScript, <mark>use a<span> </span><strong>backslash (<code dir="ltr">\</code>)</strong><span> </span>before the special character</mark>. This transforms it from a code-breaking character into a literal string character.
+To escape characters in JavaScript, <mark>use a<span> </span><strong>backslash (<code dir="ltr">\\</code>)</strong><span> </span>before the special character</mark>. This transforms it from a code-breaking character into a literal string character.
 
 ***
 

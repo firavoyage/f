@@ -111,3 +111,20 @@ i could remove elements of aria hidden. idk if i have to.
 
 ---
 
+jul 2026
+
+07
+
+this does not work in md.
+
+```
+To escape special characters in CSS variable names, <mark>use a<span> </span><strong>backslash (<code dir="ltr">\</code>)</strong><span> </span>followed by the character or its hexadecimal Unicode value</mark>.
+```
+
+it should be
+
+```
+To escape special characters in CSS variable names, <mark>use a<span> </span><strong>backslash (<code dir="ltr">\\</code>)</strong><span> </span>followed by the character or its hexadecimal Unicode value</mark>.
+```
+
+(rare scenario. i could ignore.)

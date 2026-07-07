@@ -43304,7 +43304,7 @@ you should not handle human errors for geeks.
 
 you should not work w third parties that could even mess up types.
 
-20 00 learn css layout props. create a humility web design prototype. (20 20)
+20 00 learn css layout props. create a humility web design prototype. ~~(20 20)~~
 
 i could start from big tech design, and normalize the flawed or overly complex parts.
 
@@ -43326,11 +43326,35 @@ think about pure gray or tinted (cool/warm) gray.
 
 ...
 
-(gray bg colors) google ai mode has 28 on <!-- whether expanded or not --> sidebar, 26 primary, 30 for msg and source panel, and 34 for input.
+(gray bg colors) google ai mode has 28 on <!-- whether expanded or not --> sidebar, 26 primary, 30 for msg and source panel, 34 for input, and 43 for attach. 93 for text and accent for send btw.
 
 well, let me see...
 
-(20 20) map backend actions to endpoints. test. (20 40)
+~~(20 20) map backend actions to endpoints. test. (20 40)~~
+
+21 00 feel.
+
+<!-- 
+
+grandma: 今天不打了啊?
+
+不一直打.
+
+grandma: 做功课啊?
+
+已经没有功课了.
+
+(graduation and higher education discussion)
+
+i can see the machines looking backward. empty/1p/2p are different.
+
+那里有一台空机器. 可以邀请游玩.
+
+grandma: 宝宝, ...
+
+well, i notice she is the one who comes w a bird yesterday (or a few days before), helped by yahagi. she does know how to play!
+
+ -->
 
 
 
