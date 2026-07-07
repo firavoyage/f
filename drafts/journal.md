@@ -43310,6 +43310,14 @@ i could start from big tech design, and normalize the flawed or overly complex p
 
 but my design might work as well. <!-- no hierarchy? -->
 
+...
+
+for the zen mode, i guess, just make the input box cover the full page (no msg), and center the input on upper golden ratio. no need to move the buttons, just hide them when typing.
+
+...
+
+i think google ai mode 26% l gray bg feels good. decide to introduce it.
+
 (20 20) map backend actions to endpoints. test. (20 40)
 
 
