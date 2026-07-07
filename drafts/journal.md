@@ -43288,7 +43288,7 @@ actually i feel i could predict what i would do and the time needed (i.e. timebo
 
 when ive finished thinking, and ik what im doing.
 
-i could practice it. <!-- it's been a long time since i wrote journal manually... -->
+i could practice it. <!-- it's been a long time since i wrote journal manually... (upd: or project specific changes?) -->
 
 <!-- stay up early. you could do things tomorrow. it's almost always a good tradeoff. -->
 
@@ -43303,6 +43303,14 @@ backend validation? sec <!-- or permission --> and type are different things.
 you should not handle human errors for geeks.
 
 you should not work w third parties that could even mess up types.
+
+20 00 learn css layout props. create a humility web design prototype. (20 20)
+
+i could start from big tech design, and normalize the flawed or overly complex parts.
+
+but my design might work as well. <!-- no hierarchy? -->
+
+(20 20) map backend actions to endpoints. test. (20 40)
 
 
 
