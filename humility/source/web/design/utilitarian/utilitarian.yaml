@@ -136,13 +136,13 @@ palette:
 
 color:
   bg:
-    primary:
+    primary: # core canvas
       value: "palette.gray.50"
       dark: "palette.gray.900"
-    secondary:
+    secondary: # panel
       value: "palette.gray.200"
       dark: "palette.gray.800"
-    tertiary:
+    tertiary: # button on panel
       value: "palette.gray.300"
       dark: "palette.gray.700"
     hover:
