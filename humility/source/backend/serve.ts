@@ -71,16 +71,24 @@ const endpoints = {
 
 for (const [endpoint, endpoint_fn] of Object.entries(endpoints)) {
   app.post(`/api/${endpoint}`, async (c) => {
-    // Parses application/json request bodies seamlessly
-    const body = await c.req.json();
+    const args = await c.req.json();
 
-    
+    const result = Array.isArray(args) ?
+      await handle(() => endpoint_fn(...args)) :
+      await handle(() => endpoint_fn(args))
 
-    return c.json({
-      success: true,
-      message: 'User created successfully',
-      receivedData: body
-    }, 201);
+    const json = JSON.stringify(result,
+      /**
+       * you would not have a key named error i guess
+       * 
+       * (can make it a hash for robustness if needed)
+       */
+      (key, value) => typeof value == 'symbol' ? value.description : value
+    );
+
+    return c.body(json, 200, {
+      'Content-Type': 'application/json'
+    });
   });
 }
 

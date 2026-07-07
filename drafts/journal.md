@@ -43370,6 +43370,8 @@ well, i notice she is the one who comes w a bird yesterday (or a few days before
 
 easy and predictable i guess.
 
+i guess i already made it within ten minutes.
+
 
 
 <!-- timebox, plan. -->
