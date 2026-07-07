@@ -774,6 +774,7 @@ humility:
 - research ai agent search
 - research old reddit
 - web design utilitarian yaml
+- serve endpoints
 
 legacy:
 
