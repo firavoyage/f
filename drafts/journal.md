@@ -43372,6 +43372,10 @@ easy and predictable i guess.
 
 i guess i already made it within ten minutes.
 
+...
+
+on frontend, 
+
 
 
 <!-- timebox, plan. -->
