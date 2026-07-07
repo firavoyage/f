@@ -43316,7 +43316,19 @@ for the zen mode, i guess, just make the input box cover the full page (no msg),
 
 ...
 
-i think google ai mode 26% l gray bg feels good. decide to introduce it.
+i think google ai mode 26% l gray bg feels good. validate my idea. decide to introduce it.
+
+<!-- vscode does not preview colors in yaml. -->
+
+...
+
+think about pure gray or tinted (cool/warm) gray.
+
+...
+
+(gray bg colors) google ai mode has 28 on <!-- whether expanded or not --> sidebar, 26 primary, 30 for msg and source panel, and 34 for input.
+
+well, let me see...
 
 (20 20) map backend actions to endpoints. test. (20 40)
 
