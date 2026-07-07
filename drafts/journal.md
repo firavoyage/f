@@ -43326,9 +43326,15 @@ think about pure gray or tinted (cool/warm) gray.
 
 ...
 
-(gray bg colors) google ai mode has 28 on <!-- whether expanded or not --> sidebar, 26 primary, 30 for msg and source panel, 34 for input, and 43 for attach. 93 for text and accent for send btw.
+(gray bg colors) google ai mode has 28 on <!-- whether expanded or not --> sidebar, 26 primary, 30 for msg and source panel, 34 for input, and 43 for attach. 93 for text/icon and accent for send btw.
 
 well, let me see...
+
+...
+
+it might not be wise to rush. <!-- likely to reverse later -->
+
+just leave it there.
 
 ~~(20 20) map backend actions to endpoints. test. (20 40)~~
 
@@ -43350,11 +43356,19 @@ i can see the machines looking backward. empty/1p/2p are different.
 
 那里有一台空机器. 可以邀请游玩.
 
+grandma: 他们不会邀请
+
+他们会.
+
 grandma: 宝宝, ...
 
 well, i notice she is the one who comes w a bird yesterday (or a few days before), helped by yahagi. she does know how to play!
 
  -->
+
+21 20 map backend actions to endpoints.
+
+easy and predictable i guess.
 
 
 

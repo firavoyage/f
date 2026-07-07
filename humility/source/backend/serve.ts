@@ -4,6 +4,12 @@ import { cors } from 'hono/cors';
 import { serveStatic } from '@hono/node-server/serve-static';
 import fs from 'node:fs'
 
+import { chat } from 'action/chat';
+import { branch } from 'action/branch';
+import { export_to } from 'action/export';
+import { list } from 'action/list';
+import { new_thread } from 'action/new_thread';
+
 /**
  * get port from env.json on project root or flag
  * 
@@ -59,21 +65,24 @@ app.get('/api/users/:id', (c) => {
   });
 });
 
-// 5. POST Route with JSON Body Parsing
-app.post('/api/users', async (c) => {
-  // Parses application/json request bodies seamlessly
-  const body = await c.req.json();
+const endpoints = {
+  chat, branch, export: export_to, list, new_thread
+}
 
-  if (!body.name) {
-    return c.json({ success: false, error: 'Name is required' }, 400);
-  }
+for (const [endpoint, endpoint_fn] of Object.entries(endpoints)) {
+  app.post(`/api/${endpoint}`, async (c) => {
+    // Parses application/json request bodies seamlessly
+    const body = await c.req.json();
 
-  return c.json({
-    success: true,
-    message: 'User created successfully',
-    receivedData: body
-  }, 201);
-});
+    
+
+    return c.json({
+      success: true,
+      message: 'User created successfully',
+      receivedData: body
+    }, 201);
+  });
+}
 
 app.use('*', serveStatic({ root: '../web/build' }));
 
