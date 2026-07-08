@@ -43728,6 +43728,166 @@ Default: source name (like Wikipedia), no icon
 
 You can hold to see title icon name copy or visit link. But you can't view what the link is.
 
+18 40 converse.
+
+The pro kid is playing taiko.
+
+There's only one taiko machine operational. Though there were two a month ago. 
+
+The staff are impatient and claiming not their responsibility. 
+
+Discuss with the shop owner.
+
+<!-- 你不是只玩舞萌的吗。没人的机器就玩吗？
+
+都会玩。也玩过赛车。
+
+Higher executives often decide to move the machines. Some might even be gone forever due to low business perf, unlike the stability of other game centers.
+
+可以找外面的白衣服。不必来找我。
+
+外面的人很懒惰。（不理我）
+
+可以和我说。
+
+The shop owner lets me sit for a while and remind me about the relationship between players, affirming people's worries and his awareness of incidents by watching vod, encouraging good behavior for both sides while criticizing the aggressive moves personally.
+
+(Upd: seems he is much more concerned about players getting disrupted or interrupted rather than machine usability issues which can be usually fixed solely with a screwdriver by himself or any assignee)
+
+Professionalism. -->
+
+<!-- 你觉得那个人的水平和你比怎么样
+
+(Kid pro:) 比我强
+
+一个人玩和两个人玩有什么区别
+
+一个人玩可以玩三首。两个人玩可以玩四首。
+
+哦。和舞萌一样。
+
+要四个币？
+
+对。
+
+哦。一个人两个人都是四个币吗。
+
+对。 -->
+
+<!-- 这个我要撕掉。
+
+(Adult:) 它是买来时候就在那里的，（别...）
+
+舞萌的我已经撕掉了。这个我也要。赛车的我也要。
+
+疫情时代的...
+
+这个能点吗
+
+不能 -->
+
+I think the kid pro is a real player. 
+
+<!-- Unlike the ones playing the same song for hours -->
+
+<!-- Weirdly, only the table I sit aside has no qr code on top (instead of two on opposite sides), which is basically a circular desk with promotional stuff or paying to sit reminders put away.
+
+Upd: the restaurant wifi works fine -->
+
+19 20 Try taiko for the first time w a grade 3 girl.
+
+Get anonymous for entering to fast.
+
+No headphone needed
+
+Only three songs available for anonymity.
+
+Let her pick.
+
+<!-- (God like)
+
+不要选一样的歌
+
+我想尝试中等难度
+
+(Godlike advanced)
+
+我可以选千本樱吗
+
+你选。
+
+你听千本樱吗
+
+我知道这首歌。
+
+... -->
+
+<!-- (Kid pro) 你好
+
+你好
+
+你可以拍得轻一点吗，我看你拍得有点重了
+
+我觉得我拍得不重 -->
+
+21 40 Invite play on a (ps?jhs?) girl who achieves 35 on basic level 6. Achieve 12k.
+
+They feel she is not capable and hesitate even if they can play for free with qr. I enter anyway as they are not willing to join, keeping them out.
+
+She can reach the top two keys easily.
+
+Yahagi reminds me I can invite play. 
+
+<!-- 你知道怎么邀请游玩吗
+
+知道
+
+一天一局怎么还能开
+
+Yahagi: 可以一直邀请，但只有一局...票
+
+啊，不行了...
+
+(Same!)
+
+Grandma: 打到闭店
+
+他不打我们也不打 -->
+
+She achieves 70 at the second and the third song.
+
+<!-- Upd: max 3 in a day... -->
+
+No more invite play.
+
+<!-- Grandma: 你明天什么时候来
+
+我不追踪你们
+
+你们暑假有空吗
+
+我这个点肯定在!
+
+你们最好自己买币！
+
+我晚上肯定在！ -->
+
+They gifts me a bottle of nongfu water. I refuse as I do have mine.
+
+22 00 End the day w 裏表ラバーズ, バカ通信, ナンセンス文学, 過去を喰らう, KING, and ヴィラン.
+
+Get really exhausted and sweat completely after some level 13 songs. 
+
+Second s on 13 on kaf.
+
+23 00 Chat w @chiffoncha. observe.
+
+Well, she's always online, and read instantly after sent... <!-- ?! -->
+
+<!-- Telegram saves your draft. 
+
+But only when you are drafting, not editing. -->
+
 23 20 try voice tools
 
 02
@@ -43741,6 +43901,44 @@ the hydration break plays out!
 hurricane!
 
 the stats show up!
+
+04 00 Eat nickel angel group 05 20
+
+1k msgs one by one
+
+```
+
+```
+
+05 20 think.
+
+Thread list can be anything. 
+
+Each can be a link or a file. You can organize in a tree of folders, categorize with tags, or reference in docs. 
+
+Ofc they have titles. First msg by default.
+
+Auto title gen... Sync w fs... Hooks and extensions.
+
+...
+
+Well I might copy to markdown anyway. Just copy the full thread w a shortcut for example.
+
+I would give it a time, not necessarily current, maybe inside a prev thread. I would name it concisely and precisely. And reference in all maybe.
+
+...
+
+Google reader is calm. But it's a bit too sophisticated. And it lacks a dark theme. 
+
+Utilitarian by default I guess. Color and spacing. Nothing else. 
+
+Learn from vscode.
+
+
+
+03
+
+
 
 04
 
