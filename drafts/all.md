@@ -711,7 +711,7 @@ repo: <!-- init, clone, save/checkpoint, sync, restore -->
 - research git monorepo sparse checkout <!-- partial checkout -->
 - research git commands checkpoint restore
 - research git symlink cross platform compatibility
-- research git two separate tracking folders init bare gitdir worktree <!-- for humility -->
+- research git two separate tracking folders init bare gitdir worktree <!-- for agentic auto checkpoint before and after each tool call -->
 
 glaze:
 
@@ -776,6 +776,7 @@ humility:
 - research old reddit
 - web design utilitarian yaml
 - serve endpoints
+- research claude
 
 legacy:
 

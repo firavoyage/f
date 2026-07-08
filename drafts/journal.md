@@ -43156,13 +43156,8 @@ Again, the power of sns bfs.
 
 03 20 Appreciate `初中生，还配用苹果全家桶？` `「17岁生日作」平均w61的十个人接力究竟能有多唐？` `为什么我喜欢半夜出勤`
 
-18 00 watch `South Africa v Canada | Round of 32 | FIFA World Cup 2026™ | Highlights` <!-- reminded by google doodles. -->
+15 00 think.
 
-it's on! 
-
-<!-- well, a bit weird. 144p opening screen, 1080p match. -->
-
-precious, [6/29/26 2:59 PM]
 Math.
 
 It's likely to be consistent across models. 
@@ -43177,13 +43172,15 @@ How many msgs.
 
 How much maximum usage.
 
-precious, [6/29/26 3:08 PM]
+...
+
 Handle is no longer a decorator.
 
 I would not mess up with overloads and get weird in iife like syntax pattern.
 
-precious, [6/29/26 3:38 PM]
-Random 7k
+15 40 converse.
+
+<!-- Random 7k
 
 你是不是高考考完入坑舞萌
 
@@ -43195,19 +43192,17 @@ Random 7k
 
 你玩多久了
 
-平时不咋玩。记不清了。 不到一年。
+平时不咋玩。记不清了。 不到一年。 -->
 
-precious, [6/29/26 3:39 PM]
-(a naive yet energetic kid)
+<!-- (a naive yet energetic kid)
 
 要不要拼
 
 刚来不打
 
-(去洗手间）
+(去洗手间） -->
 
-precious, [6/29/26 3:57 PM]
-（to staff:）你没有权力这么对顾客说话！
+<!-- （to staff:）你没有权力这么对顾客说话！
 
 我去找店长。
 
@@ -43235,22 +43230,21 @@ precious, [6/29/26 3:57 PM]
 
 应该没有断裂。螺丝刀开，调整位置即可。
 
-(One plays and breaks. Another plays on another machine while I wait.)
+(One plays and breaks. Another plays on another machine while I wait.) -->
 
-precious, [6/29/26 4:04 PM]
-Ver upd?!
+<!-- Ver upd?! -->
 
-precious, [6/29/26 4:26 PM]
-(to an anonymous 13k first time in 2026, pointing at the 7k grade 7 kid, cubercxm:) 他是不是 b15 没满
+<!-- (to an anonymous 13k first time in 2026, pointing at the 7k grade 7 kid, cubercxm:) 他是不是 b15 没满
 
 他估计是b15一首都没有
 
 （Confirmed) 
 
-We don't know why no level 13 esm run, yet we don't know how to switch. We end up having not enough time and picking a random level 10 song.
+We don't know why no level 13 esm run, yet we don't know how to switch. We end up having not enough time and picking a random level 10 song. -->
 
-precious, [6/29/26 4:29 PM]
-Yunoko: 帮我打 w5！
+16 20 feel.
+
+<!-- Yunoko: 帮我打 w5！
 
 ... (?!)
 
@@ -43260,15 +43254,19 @@ Yunoko: 我现在 w482x
 
 Yunoko: 别打扰通天代帮我推分。退后！
 
-Warau.
+Warau. -->
 
-precious, [6/29/26 5:24 PM]
+upd: a week later she gets 15k, and broadcasts in a sns meme like template.
+
+17 20 reflect.
+
 Well, just...
 
 I could not just spend the glue all over the back of the paper. It looks scrambled and ugly, yet never gets dry.
 
-precious, [6/29/26 6:22 PM]
-这就是内屏的好处。虽然准度不行。
+18 20 feel.
+
+<!-- 这就是内屏的好处。虽然准度不行。
 
 dt音游社完蛋了。
 
@@ -43278,9 +43276,10 @@ dt音游社完蛋了。
 
 好多都是竞赛的。
 
-(a tailwind feel vibe coded wechat mini app)
+(they open a tailwind feel vibe coded wechat mini app for maimai) -->
 
-precious, [6/29/26 6:34 PM]
+18 40 think.
+
 Things to do when you have some free tokens 
 
 - libre dictionaries
@@ -43288,6 +43287,12 @@ Things to do when you have some free tokens
 - there are many libs online. Document. The Devin one is not ideal, not any concise, and intimidating.
 - there are many impressive works in public domain. Arts and literature. History. Stem history. Aesthetics. Maybe you can batch process.
 - bfs the web. Zhihu. Berryberry. Organize. Open. And preserve.
+
+18 00 watch `South Africa v Canada | Round of 32 | FIFA World Cup 2026™ | Highlights` <!-- reminded by google doodles. -->
+
+it's on! 
+
+<!-- well, a bit weird. 144p opening screen, 1080p match. -->
 
 18 40 listen to `the battle of evermore (remaster)` by led zeppelin.
 
@@ -43361,7 +43366,253 @@ HARU (star) 15k LOWE (star) 16k
 
 quite strong. impressive!
 
+21 40 converse.
+
+<!-- 你是不是每天都在里面偷偷坐着
+
+什么叫偷偷坐着
+
+（Repeat) 有时候见不到你
+
+也会休息
+
+反正都线上。机器故障也可以联系。 -->
+
+22 00 End the day w きゅうくらりん, INTERNET YAMERO, and メズマライザー
+
 30
+
+02 20 Eat
+
+San bing. 13k.
+
+A fat boy with extremely small eyes.
+
+```
+（来自账号查找）
+
+你的幽蓝边界 23:23:58
+请求添加你为好友
+
+f 02:16:21
+我们已成功添加为好友，现在可以开始聊天啦～
+
+f 02:17:20
+我要让每一个认识的人都变成舞萌痴！
+
+f 02:21:45
+喜欢大家。
+
+f 02:22:05
+诶！
+
+你怎么找到我的id的？
+
+f 04:30:10
+(删除上一条消息）
+
+f 14:59:43
+nya
+
+f 15:00:29
+可以发送一条讯息或者一个表情吗
+
+自己七月一号后一周可能不常来。
+
+你的幽蓝边界 15:59:21
+1
+
+你的幽蓝边界 16:00:31
+能不能这个月不常来
+
+f 00:56:52
+你会在什么时候来？
+
+也许我可以跟踪你，在你之前到达，如果有空
+
+今天有些失落的。最后，机器冷清，只有一个 16k 一直一直打。很震撼的歌。
+
+喜欢有很多人在身边的感觉。
+
+你的幽蓝边界 01:17:38
+我应该不来了
+
+你的幽蓝边界 19:28:01
+爸爸你在哪
+
+f 00:49:53
+[不支持的元素类型]我没有看消息。
+
+二零二六年七月一日十七点，我在。
+
+但显然不在舞萌附近。
+
+也许在太鼓。也许在外面的座椅上编码。
+
+哦。我检查了一下游玩记录。
+
+f 00:49:57
+[图片]
+
+你的幽蓝边界 18:45:03
+好厉害
+
+你的幽蓝边界 18:45:20
+教教我
+```
+
+Lowe declines my frnd req and blocks. (qq doesn't show the status clearly upfront. You have to test. But since tests can be dry)
+
+03 00 think.
+
+It's too dangerous to let user edit yaml. 
+
+A typo or a missing indentation can break everything.
+
+Yaml is meant to be read and edited, though.
+
+I will always parse and serialize anyway, no chance of breaking.
+
+12 40 think.
+
+Tree would be specifically for edit and branch.
+
+You can absolutely have some nodes outside the context. Tree, focus, these are for whether a node is needed. If you want to render it somehow you definitely need that
+
+13 00 chat w @chiffoncha
+
+```
+f, [6/30/26 1:10 PM]
+身份：提交 arkloop landing page 手机版网页质量检测报告的
+
+观察：
+- 理论上，拥有shell能力的agent可以做任何事。但实际使用场景显然永远是能力范围的子集。
+- arkloop 固有诸多设计用意或竞争优势，但自己并没有看到实际使用。作者自己似乎也倾向于使用专门的 coding agent (e.g. codex gui)，而非让 arkloop self host，即使其有能力编辑其自身的代码。
+- 如果作为 "yet another chatbot of simplicity, with better ux"，这似乎太轻了。总觉得 agent 并不是这样。git，momentjs 固然可以长久地站在一些架构或者功能设计（及其抽象）之上，chromium, zed 不行。
+- memoh 已经有实际场景。project memoh 上 menci 运行的机器人很活跃。也有许多其他机器人，和fork。但总想着，群聊机器人很偏娱乐，也不见得有未来。创始人心中固然有愿景，但每个创业者都可以讲出一些愿景（尤其对于能力边界几乎无限的 llm agent），也没有意义。
+
+想知道：
+- arkloop 下一个真实用例可能是？
+- memoh 下一个真实用例可能是？
+
+（可以预想到像电子商务客服，但并不期待这样的答案。总觉得这种市场会被重营销轻研发，有权力背景的产品主导。）
+
+清凤, [6/30/26 1:13 PM]
+humm,从实际心底来讲,Arkloop 和 Memoh 并不是同一类产品,Arkloop 是我的个人项目,Memoh 事实上在现在是一个商业项目,我也正在 Memoh 工作,这也导致我没时间去开发 Arkloop 并研究出 Arkloop 特有的功能,如果你有一些愿景,你可以和我说说,我会和团队沟通,Memoh 当然也不会将视线局限于群聊 bot
+
+清凤, [6/30/26 1:15 PM]
+应该来说 Arkloop 对我来讲有点像 openclaw 的生态位,但是我自己也很少用
+
+f, [6/30/26 1:15 PM]
+想知道：
+- arkloop 下一个真实用例可能是？
+- memoh 下一个真实用例可能是？
+
+（下 *一* 个）
+
+清凤, [6/30/26 1:16 PM]
+everyone don't know
+
+f, [6/30/26 2:23 PM]
+原本想问的是，你个人预期最有可能的新方向，即使这不是可以明确推断的。后来想也不必问了。
+
+> everyone don't know
+
+adoption 不会凭空产生。由功能，默认值，宣传决定。
+
+即使作为开发者或许不清楚，但是可以推测的。
+
+coding agents would have git integration, diffing UI, ide extensions, etc.
+
+Manus says it's a general purpose agent. So it builds Ubuntu sandbox, wide research (parallel tasks in different contexts, synthesized later), and integration to some professional tools.
+
+Openclaw is a remote coding agent with im integration.
+
+A writing agent might provide table of contents, outline, characters.
+
+Arkloop is incomplete. Basically a  poc with some dedicated ux design. 
+
+What does memoh have? "Multi member, containerized, ..." Look at these words, I could almost feel they are engineered for group chat. 
+
+What you have determines who you are. 
+
+Tbh I guess arkloop would not have any real adoption as it's designed for no use case, and it's too feature poor and unpolished even as a chat bot. And it's unlikely that some enthusiastic devs would fork and extend it. 
+
+About memoh (currently a customizable group chat bot), it's all about where its founder decide to pivot into. 
+
+It's not about how much capability you theoretically have. It's about the documented official use cases (see Manus as an example) and real world adoption.
+
+清凤, [6/30/26 2:31 PM]
+事实上,我一直在和 Memoh团队说这件事,我希望他们有一个方向,like manus,like youmind,or lovart,every we can learn,但是从大概一个多月前我第一次和 Memoh 团队聊天加入 Memoh 获得工资,后来 readme/landing 都由我编写,但是我也不知我们到底"在做什么",我有我的经验,我确信在未来 Memoh 是一个 ux 极为优秀的产品(notnow,正在打磨),但是 Memoh 的未来,我也一直在催促团队上层的沟通
+在过去的一个月里,我无时不刻不在想这个问题,应该来说 Arkloop 的方向对我并不是很重要,因为他没法支持我生存,Memoh 有点像下一个 Arkloop,我们需要一个真正的方向
+
+f, [6/30/26 7:43 PM]
+How do the memoh team do project management? 
+
+I suppose there is an app like linear slack or something, or like a small group chat including core (paid) maintainers or some markdown docs.
+
+For example, you have a Todo list. The leader file some tickets. Devs get assigned and start working on certain tasks. 
+
+Idk if it exists, if it's public or where it is. 
+
+Currently I can see a roadmap pinned by acbox on GitHub issues, but it's quite concise and high level.
+
+External contributors are a lot. But most just fix the problems they meet themselves or request some features or fork for customization. 
+
+I guess it would help if people can know what others are working on, where the team is pivoting into, and what they might be able to help (it could be non trivial, like new features and ideas, as the founder doesn't really open GitHub issues for these), and you would be able to predict some future commits, if things were open to the public and information was shared.
+
+f, [7/1/26 12:08 AM]
+How do the memoh team do project management? 
+
+如何计划，安排任务？Linear? Slack? 开发群？
+
+外部研究者可以知道正在发生什么吗？
+
+路线图。任务列表。重要度。优先级。开发进度。
+
+清凤, [7/1/26 12:09 AM]
+notion with telegram group,有 kanban,但是优先级和重要度和 roadmap管理较为稀疏
+
+清凤, [7/1/26 12:14 AM]
+外部研究者一般不会获取到核心信息,因为我们需要高精尖的开发,我们更希望外来者只提供 issue
+
+f, [7/1/26 10:44 PM]
+Do you think she is making real progress with such a massive swarm of agents?
+
+Do you think it's wise to work like that?
+
+清凤, [7/1/26 10:47 PM]
+我们的后端代码即将转向人工 review
+
+f, [7/1/26 11:15 PM]
+I'm not about the code quality...
+
+Just, I feel it's hard to believe something does need 75 agents working at the same time to accomplish, if they are all doing real work and it's not openai bloating for hypes.
+
+Mind blowing.
+```
+
+15 20 converse w a black guy.
+
+<!--
+
+Maimai deluxe! 
+
+(!)
+
+You can try it! 
+
+(Warau) Yeah, it's good, ... 
+
+-->
+
+16 00 Play with cubercxm.
+
+Explain why he lacks b15. See he progressing by hundreds.
+
+Increase by one.
+
+He has played 6pc since 10am and got exhausted <!-- , just like me -->.
 
 16 20 <!-- hard --> refresh.
 
@@ -43377,6 +43628,66 @@ quite strong. impressive!
 
  -->
 
+18 00 feel. <!-- Meiyou mz 15k, single player vibrant pink -->
+
+<!-- (宴 oshama scramble)
+
+你这个 nb 啊，舞萌就得这么玩！
+
+Well, actually... He, a student from dths, plays the same song for hours to break the 100.8 record maybe and record a vid. -->
+
+19 00 Move to the outer seats if the restaurant. 
+
+Maimais are not really popular currently. People I don't know are playing songs too overwhelming for me. 
+
+It's serene here, sitting on seats with backs.
+
+Maimai is fun. I don't really make progress recently though.
+
+<!-- Seems my family didn't send me allowance.
+
+Maybe they think I have much not withdrawn?
+
+Barbecues look delicious. But I don't feel any hungry right now...
+
+Sushi shops and KFC are some distance away and I don't wanna walk there or takeout. -->
+
+20 00 Order some barbecue. 
+
+The app is not really polished, it partially remembers my choices when I exit <!-- and enter later --> or the network fluctuates. I could not pay in app either.
+
+The coupon can apply now. Good.
+
+21 40 End the day w 終点, 春嵐, and 熱異常
+
+Lonely machines. Idk.
+
+The 16k boy playing amidst four machines is so tireless and crazy.
+
+<!-- 你要干嘛
+
+看你打。研究一下。
+
+...
+
+(Warau) 不要命了...
+
+...
+
+哇。还打。
+
+-->
+
+21 40 feel.
+
+Nickel angel lives pvz2 (on windows) on telegram?!
+
+I have to go!
+
+23 00 Appreciate `从五子棋、六子棋到N子棋：先手必胜与和棋的分界在哪里？` <!-- (?) --> `当大一新生搓出来的mathmate已超越老旧的作业帮` <!-- Trivial?  --> `我发现Claude在用户消息里偷偷塞了"隐藏指令"，官方从未告知` `一旦被Claude判定"危险"，你之后说的每句话都会被动手脚——实测曝光` `“妍酱QAQw”事件回应` `刀妹太帅了喵`
+
+The society is noisy. Raw capability could transcend all moral judgements.
+
 jul 2026
 
 01
@@ -43390,6 +43701,32 @@ update headings. sync zhihu. export telegram.
 clear, native, and exciting en narrative. professional!
 
 03 20 surf twitter.
+
+15 40 think.
+
+Chatbot. 
+
+Complete. Edit. Branch. 
+
+The classic theme seems easy. Just hand code one. Google reader. Gmail classic.
+
+It would take some time to figure out the exact shadows and gradients (oh I can copy it no need to rev engineer) but it would be worth it.
+
+Yaml tool call.
+
+What if the user toggles a tool halfway? 
+
+Dify workflow. Example? Loop over a list? Decision (like classification pipeline)? Sns analysis maybe.
+
+18 20 observe.
+
+On Claude app...
+
+You can tap a citation directly to the default browser (not as overlay)
+
+Default: source name (like Wikipedia), no icon
+
+You can hold to see title icon name copy or visit link. But you can't view what the link is.
 
 23 20 try voice tools
 
@@ -43529,7 +43866,7 @@ seems there's sth left yesterday to be done. i guess i would
 - watch world cup highlights
 - work (predictable foundational things first)
 
-19 00 sync memories
+19 00 sync memories (19 40)
 
 
 
