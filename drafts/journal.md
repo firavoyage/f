@@ -43146,7 +43146,7 @@ another is a point on the roadmap
 
 Anyway you do not live in a vacuum.
 
-You will have landing page (it should definitely not be vitepress), repo page, pm page (issues roadmap todo whatever), discussion, and docs.
+You will have landing page (it should definitely not be vitepress), repo page, pm page (issues roadmap todo whatever) <!-- Purpose -->, discussion, and docs.
 
 You have your design. You should hold the definitive power in your hands.
 
@@ -43907,7 +43907,610 @@ the stats show up!
 1k msgs one by one
 
 ```
+ref, [7/2/26 4:17 AM]
+买了个 24寸 1K 的显示屏，本来觉得毕竟是桌子放不下多大的屏幕就买个小的，然后看小屏 1K 也够用就买了……感觉看上去还是有点锯齿（
 
+ref, [7/2/26 4:17 AM]
+感觉用惯了高分屏就很难回1080P了
+
+ref, [7/2/26 4:17 AM]
+感觉在公司用 27 寸 2K 好像也还好x
+
+ref, [7/2/26 4:50 AM]
+在公司 Windows 电脑上装了个 codex gui 版
+
+ref, [7/2/26 4:50 AM]
+原来 codex 还自带桌宠吗
+
+ref, [7/2/26 4:50 AM]
+看看（？
+
+ref, [7/2/26 4:50 AM]
+
+
+ref, [7/2/26 4:50 AM]
+在这里打开，然后就有了
+
+ref, [7/2/26 4:50 AM]
+本来觉得这个三个方块摞起来的宠物看着挺特别的，但是一看名字叫  Stacky，这下不奇怪了
+
+ref, [7/2/26 4:50 AM]
+虽然感觉细节什么也就图一乐，感觉动作什么还不如 Windows XP 的那个哈士奇和 Office 2003 的那个小曲别针复杂（
+
+ref, [7/2/26 4:50 AM]
+建议你别用，我觉得会影响你正常使用 agent 的性能）
+
+ref, [7/2/26 4:50 AM]
+诶？这个无所谓吧（agent 不都是云端大模型吗
+
+ref, [7/2/26 4:50 AM]
+这个顶多就是在本地播放几个动画吧
+
+ref, [7/2/26 4:50 AM]
+codex 漏内存
+
+ref, [7/2/26 4:50 AM]
+？
+
+ref, [7/2/26 4:50 AM]
+我 16g 开三个就 80% 了
+
+ref, [7/2/26 4:50 AM]
+我记得其他这种 pet 都会往你的 context window 里加东西
+
+ref, [7/2/26 4:50 AM]
+公司电脑还好，32 g 内存（不是
+
+ref, [7/2/26 4:50 AM]
+那也太邪恶了
+
+ref, [7/2/26 4:50 AM]
+我也想要大大内存
+
+ref, [7/2/26 4:50 AM]
+我感觉人类只是需要一个 ai 干没干完活的指示灯
+
+ref, [7/2/26 4:50 AM]
+反正我公司发的 Windows 本也就工作轻度用用
+
+ref, [7/2/26 4:50 AM]
+说到这个，昨天刚修了一下我们团队那个 ai 提示弹窗的 bug
+
+ref, [7/2/26 4:50 AM]
+codex 是 mac native 的
+
+ref, [7/2/26 4:50 AM]
+如果开 goal 的话，我们自己做的 hook 会疯狂弹任务已完成的提示（
+
+ref, [7/2/26 4:50 AM]
+在 mac 上跑几个都没事
+
+ref, [7/2/26 4:50 AM]
+羡慕mac
+
+ref, [7/2/26 4:50 AM]
+但云云电脑不就是 mac
+
+ref, [7/2/26 4:50 AM]
+有没有128g内存的
+
+ref, [7/2/26 4:50 AM]
+思考（我才反应过来，这里是说的 ai 对话的 context window，不是系统界面的 context window（
+
+ref, [7/2/26 4:50 AM]
+我还以为 tomiya 在说桌宠在前台吃内存很卡
+
+ref, [7/2/26 4:50 AM]
+我还以为 tomiya 在说桌宠在前台吃内存很卡
+
+ref, [7/2/26 4:50 AM]
+这个功能还会加 context 吗（
+
+ref, [7/2/26 4:50 AM]
+去看看 codex 源码（我用了一下还以为就是一个简单的桌宠，然后 ai 的回复过来之后它会有个小对话框显示，这样 codex 界面就不需要在前台了（
+
+ref, [7/2/26 4:50 AM]
+我记得很多 pet 实现都加了
+
+ref, [7/2/26 4:50 AM]
+以及 codex 不是完全开源的
+
+ref, [7/2/26 4:50 AM]
+gui 部分不开源
+
+ref, [7/2/26 4:50 AM]
+codex 带不带 gui 是两个完全不同的软件。。
+
+ref, [7/2/26 4:50 AM]
+后者不开源
+
+ref, [7/2/26 4:50 AM]
+只是宣传上混为一谈了
+
+ref, [7/2/26 4:50 AM]
+就像华为在各个设备上的固件都叫鸿蒙 os 那样
+
+ref, [7/2/26 4:50 AM]
+你在想啥
+
+ref, [7/2/26 4:50 AM]
+gui 版独有的功能太多了
+
+ref, [7/2/26 4:50 AM]
+没用过gui 有什么好用的吗（
+
+ref, [7/2/26 4:50 AM]
+我只是下载安装然后感觉electron巨额卡顿 然后就放弃了
+
+ref, [7/2/26 4:50 AM]
+这样（之前看 gui 和 cli 配置都一样就感觉主要功能都差不多（？）
+
+ref, [7/2/26 4:50 AM]
+对 所以我 all in cli 了
+
+ref, [7/2/26 4:50 AM]
+gui 版我开两个就很卡了
+
+ref, [7/2/26 4:50 AM]
+我也不需要那些花里胡哨的功能
+
+ref, [7/2/26 4:50 AM]
+只让他给我吐代码就够了
+
+ref, [7/2/26 4:50 AM]
+看起来 gui 确实也想做一些面向非开发人员的功能（？）
+
+ref, [7/2/26 4:50 AM]
+gui 有很多很多面向非开发者的功能
+
+ref, [7/2/26 4:50 AM]
+但我觉得 cc 更好用
+
+ref, [7/2/26 4:50 AM]
+cc 有 subagent，dynamic workflow 之类的
+
+ref, [7/2/26 4:50 AM]
+codex 只是 有 GPT 模型
+
+ref, [7/2/26 4:50 AM]
+我当专家号用
+
+ref, [7/2/26 4:50 AM]
+我觉得 gui 还是更好的 至于这两个我觉得 cli 是 app 的底座肯定没啥问题
+
+ref, [7/2/26 4:50 AM]
+怪不得我看我们公司内部的 router 问题反馈群里有好多非开发岗在用 codex gui
+
+ref, [7/2/26 4:50 AM]
+写 obelisk 的时候看过 codex jsonl 的结构
+
+ref, [7/2/26 4:50 AM]
+这个结构是通用的，昨天给别人分发了 linux version，cli 也 available
+
+ref, [7/2/26 4:50 AM]
+反正 agent 核心功能在 cli 里
+
+ref, [7/2/26 4:50 AM]
+不想给cc花钱（
+
+ref, [7/2/26 4:50 AM]
+但 gui 有一大堆花里胡哨的
+
+ref, [7/2/26 4:50 AM]
+cil 导出了一大堆 codex- 开头的 crate
+
+ref, [7/2/26 4:50 AM]
+核心逻辑全在那里面
+
+ref, [7/2/26 4:50 AM]
+gui 是直接用的
+
+ref, [7/2/26 4:50 AM]
+是不是有openclaw那种浏览器访问操作的
+
+ref, [7/2/26 4:50 AM]
+那东西要编译五个小时
+
+ref, [7/2/26 4:50 AM]
+隐私爆炸功能
+
+ref, [7/2/26 4:50 AM]
+所以没有什么这是两个不同软件的说法吧，这只是层次不同，用了不同的 adapter
+
+ref, [7/2/26 4:50 AM]
+对。。。
+
+ref, [7/2/26 4:50 AM]
+cli 没有
+
+ref, [7/2/26 4:50 AM]
+我看还有什么电脑操控，可以操控任意应用什么的
+
+ref, [7/2/26 4:50 AM]
+这么可怕
+
+ref, [7/2/26 4:50 AM]
+我感觉差异已经足够大了就是
+
+ref, [7/2/26 4:50 AM]
+感觉不够可用
+
+ref, [7/2/26 4:50 AM]
+但已经是还可以的了
+
+ref, [7/2/26 4:50 AM]
+之前跟线下同学唠嗑的时候，就感觉他们口中的 codex 不是我印象里的 codex
+
+ref, [7/2/26 4:50 AM]
+这样（还没用过x
+
+ref, [7/2/26 4:50 AM]
+他们更多是当作通用自动化工具
+
+ref, [7/2/26 4:50 AM]
+还能做 ppt 什么的
+
+ref, [7/2/26 4:50 AM]
+你给 chrome 加了一堆扩展那 chrome 不还是 chrome
+
+ref, [7/2/26 4:50 AM]
+有道理
+
+ref, [7/2/26 4:50 AM]
+我认可你了
+
+ref, [7/2/26 4:50 AM]
+底座做好了做各种可插拔的东西都很容易
+
+ref, [7/2/26 4:50 AM]
+amend 一下我的说法。
+
+ref, [7/2/26 4:50 AM]
+不一定，也可以是 edge
+
+ref, [7/2/26 4:50 AM]
+那是 chromium
+
+ref, [7/2/26 4:50 AM]
+
+
+ref, [7/2/26 4:50 AM]
+
+
+ref, [7/2/26 4:50 AM]
+
+
+ref, [7/2/26 4:50 AM]
+catfooding
+
+ref, [7/2/26 4:50 AM]
+和 codex cli 都是可以认为是「内核」级别的，chromium 不也是 chorme 的主要功能x
+
+ref, [7/2/26 4:50 AM]
+codex cli 也有一堆多余东西
+
+ref, [7/2/26 4:50 AM]
+一个叫 codex-cloud-什么什么 task 的 crate 编译了一个多小时
+
+ref, [7/2/26 4:50 AM]
+我都不知道是啥
+
+ref, [7/2/26 4:50 AM]
+懒得看
+
+ref, [7/2/26 4:50 AM]
+何意味）
+
+ref, [7/2/26 4:50 AM]
+草，这么做是在干什么，试图把责任和具体模型绑定吗（逃
+
+ref, [7/2/26 4:50 AM]
+Claude Code 会把模型本身加入 git 提交的共同作者，但它总是写错自己是什么模型
+
+ref, [7/2/26 4:50 AM]
+opus 4.6 爱把自己当成 opus 4
+
+ref, [7/2/26 4:50 AM]
+所以我让他弄一个 hook 来检测
+
+ref, [7/2/26 4:50 AM]
+但它自己在提交这个 hook 的时候，也中招了
+
+ref, [7/2/26 4:52 AM]
+我现在才意识到上周我去参加了个 MWC，结果回来组内两个外包员工和一个和我去年同期入职的应届生员工都离职了（？）
+昨天除了我们组以外的其他组的外包员工也都集体走了，今天才发现请了周一周二两天假的去年的应届生也走了（？）
+
+ref, [7/2/26 4:52 AM]
+集体走了是被打包送走了吗
+
+ref, [7/2/26 4:52 AM]
+呜呜，祝你好运...
+
+ref, [7/2/26 4:52 AM]
+上次听到别人说集体走了还是有个在北京的朋友在微软实习，然后他们组被全打包送走了
+
+ref, [7/2/26 4:52 AM]
+据说小米外包一般就一年（不知道
+
+ref, [7/2/26 4:52 AM]
+猜猜哪个组
+
+ref, [7/2/26 4:52 AM]
+是 azure 组，一层楼全空了
+
+ref, [7/2/26 4:52 AM]
+你应该听过这个事情
+
+ref, [7/2/26 4:52 AM]
+但是我听他讲才意识到这个事情原来没那么遥远
+
+ref, [7/2/26 4:52 AM]
+这样
+
+ref, [7/2/26 4:52 AM]
+其实感觉这么说我们也差点
+
+ref, [7/2/26 4:52 AM]
+就今年春天吧（似乎是我们维护的服务 crash 率统计的不准，上面的人看到的真实数据比我们统计的高好多
+
+ref, [7/2/26 4:52 AM]
+而且下周就来新的应届生了
+
+ref, [7/2/26 4:52 AM]
+（思考
+
+ref, [7/2/26 4:52 AM]
+看看新的
+
+ref, [7/2/26 4:52 AM]
+暮暮
+
+ref, [7/2/26 4:52 AM]
+已经一年了（
+
+ref, [7/2/26 4:52 AM]
+时间好快
+
+ref, [7/2/26 4:52 AM]
+是的……而且不知道怎么说，我去年好像听我们 leader 和负责面试新人的员工开会的时候说我们南京这边可能不需要这么多人什么什么的
+
+ref, [7/2/26 4:52 AM]
+不知道怎么说（
+
+ref, [7/2/26 4:52 AM]
+有可能需要做好找下家的准备了（不是
+
+ref, [7/2/26 4:52 AM]
+但你们工资并不比新人高很多吧
+
+ref, [7/2/26 4:52 AM]
+哦对了 obelisk 有 linux 版本的 app 了
+
+ref, [7/2/26 4:52 AM]
+你可以试试看
+
+ref, [7/2/26 4:52 AM]
+
+
+ref, [7/2/26 4:52 AM]
+需要注意一下 no-sandbox
+
+ref, [7/2/26 4:52 AM]
+electron app 本身的问题）
+
+ref, [7/2/26 4:52 AM]
+总之本身没有升职什么的，所以工资是没变的……
+不过从我们小米汽车南京虽然作为一个比较新的部门，去年就说之后不招除应届生外的低职级的员工，感觉跳槽还是有一定难度的
+
+ref, [7/2/26 4:55 AM]
+倒也不是说直接跳槽而是考虑一下之后的发展方向（？
+
+ref, [7/2/26 4:55 AM]
+群里昨天有个做 java 传统后端的我也是这么觉得的）
+
+ref, [7/2/26 4:55 AM]
+嗯这个本身也是在考虑（只是说一下现在都就业现状（
+
+ref, [7/2/26 4:55 AM]
+我还没想好如果能过 deepseek 面试到底去不去
+
+ref, [7/2/26 4:55 AM]
+这也使得我没办法完全把心思放在准备这个上面（我是说考试完
+
+ref, [7/2/26 4:55 AM]
+也许我只能认为是因为汽车确实不需要那么多软件（？）
+（听说我们南京的产业园未来还要建二期，我其实也很好奇他们怎么安排的
+
+ref, [7/2/26 4:55 AM]
+对 对吗 但是福特公司似乎对程序员需求也不小
+
+ref, [7/2/26 4:55 AM]
+难道福特不止做汽车吗）
+
+ref, [7/2/26 4:55 AM]
+那也有可能是应届生还是太多了
+
+ref, [7/2/26 4:55 AM]
+需要供给侧结构性改革了
+
+ref, [7/2/26 4:55 AM]
+主要我们南京这边现有的三栋楼，最近第三栋才开始启用，还要建二期
+
+ref, [7/2/26 4:55 AM]
+这么多新员工都是应届生
+
+ref, [7/2/26 4:55 AM]
+其实我听隔壁做应用的组有 90% 都是应届生
+
+ref, [7/2/26 4:55 AM]
+似乎有经验的老员工都在北京，来了没有什么人带只能自己干
+
+ref, [7/2/26 4:55 AM]
+https://x.com/ImKrisYan
+
+ref, [7/2/26 4:55 AM]
+其实会想到这个人
+
+ref, [7/2/26 4:55 AM]
+家长总期望下一代能实现阶级跃迁，但其实最大的阻力往往是他们自己
+
+ref, [7/2/26 4:55 AM]
+用自己的经验来给下一代铺路，只能是把自己的子女限制在同样的眼界之下
+
+ref, [7/2/26 4:55 AM]
+选择可比努力重要太多了
+
+ref, [7/2/26 4:55 AM]
+
+
+ref, [7/2/26 4:55 AM]
+然后我想到箱归一法（笑死
+
+ref, [7/2/26 4:55 AM]
+今天周会听说我们南京这边整个智能座舱部走了差不多大于 1/3 的人
+
+ref, [7/2/26 4:55 AM]
+感觉做车机的还是可以活久一点
+
+ref, [7/2/26 4:55 AM]
+听小道消息说裁员的规则是外包全走，然后组内如果有两个应届生走一个
+
+ref, [7/2/26 4:55 AM]
+只要不是一次性产品就
+
+ref, [7/2/26 4:55 AM]
+我们整个智能座舱部都是做车机的
+
+ref, [7/2/26 4:55 AM]
+应该车机上的除了智能驾驶的系统，app 都是我们这个大部门负责
+
+ref, [7/2/26 4:55 AM]
+那我感觉还是需要迭代的
+```
+
+```
+sns, [7/1/26 2:00 AM]
+近30个小时 我睡了26个小时 💤
+
+sns, [7/1/26 2:00 AM]
+我抑郁症好了👏
+
+sns, [7/1/26 2:04 AM]
+这三天比较忙都没空打理自己了，为什么学校要在期末周布置大实训，两眼一睁就是女娲补天，学习完干活干到现在
+
+sns, [7/1/26 2:04 AM]
+仍旧保持着两天一洗头的习惯，但是不知道洗完头给谁看，衣服同理
+
+sns, [7/1/26 2:04 AM]
+即，出去玩脏了会洗，出汗会洗，天天家里躺着就拖着
+有点像耐久度，超过一个阈值会去修补
+
+sns, [7/1/26 2:04 AM]
+猫不舒服了会自己洗
+
+sns, [7/1/26 2:04 AM]
+大学生活是每天学习18小时，每周学习7天，每年学习两周吗
+
+sns, [7/1/26 2:04 AM]
+舔毛）
+
+sns, [7/1/26 2:04 AM]
+护肤品也懒得抹了，药也懒得抹了，任由湿疹发作；六月份还一件衣服也没买
+为什么会变成这个样子
+
+sns, [7/1/26 2:04 AM]
+这几天因为 ddl 太紧才尝试了手脚并用同时派遣好几个 agent 的模式，一边派遣一边测，测完派遣另外一个
+感觉比手写代码累多了。但是。ddl 应该能赶上。
+
+sns, [7/1/26 2:04 AM]
+连续手写代码有一种很爽的心流体验，而这么手脚并用地蹬 ai 没有。一想到以后工作要天天这样，就感觉好难受
+与我当初选择这个专业的初心背离了
+
+sns, [7/1/26 2:04 AM]
+累，莫名其妙地累
+我需要睡觉
+
+sns, [7/1/26 2:04 AM]
+* Let me 睡觉。
+Crunched for 6h 34min
+
+sns, [7/1/26 2:04 AM]
+所以我也一直觉得把爱好与饭碗分开也许会更好，把不那么讨厌的东西当成工作，而最喜欢的东西可以不计回报地纯粹去做。工作和生活也要划清界限，尽可能切换到另一种状态去享受生活。感觉在大学阶段这个界限有点模糊，毕竟生活本身就在学校内，我上班后反而对自由时间的划分更明确了。
+
+sns, [7/1/26 2:05 AM]
+想买新衣服
+
+sns, [7/1/26 2:05 AM]
+但挑衣服很费时间
+
+sns, [7/1/26 2:05 AM]
+所以这个活动不适合在期末周进行
+
+sns, [7/1/26 2:05 AM]
+暑假呢
+
+sns, [7/1/26 2:05 AM]
+我这次没有暑假了！
+
+sns, [7/1/26 2:05 AM]
+暑假直接在频道更新实习牛马生活
+
+sns, [7/1/26 2:05 AM]
+学院强制实习？
+
+sns, [7/1/26 2:05 AM]
+我自己找的
+
+sns, [7/1/26 2:05 AM]
+原来这样
+
+sns, [7/1/26 2:05 AM]
+我想起了那时候去东软上课
+
+sns, [7/1/26 2:05 AM]
+暑假完还要翘两个月的课
+
+sns, [7/1/26 2:05 AM]
+干满三个月
+
+sns, [7/1/26 2:05 AM]
+您也是软院的嘛
+
+sns, [7/1/26 2:05 AM]
+是
+
+sns, [7/1/26 2:05 AM]
+草。
+
+sns, [7/1/26 2:05 AM]
+企业开发实训
+
+sns, [7/1/26 2:05 AM]
+不过是很多届前了
+
+sns, [7/1/26 2:05 AM]
+现在据说那个很混
+
+sns, [7/1/26 2:05 AM]
+当时也很混
+
+sns, [7/1/26 2:05 AM]
+有技术的都是自己找
+
+sns, [7/1/26 2:05 AM]
+但是我焦虑
+
+sns, [7/1/26 2:05 AM]
+所以我提前找
+
+sns, [7/1/26 2:05 AM]
+这个大环境很难不焦虑.jpg
+
+sns, [7/1/26 2:05 AM]
+
+
+sns, [7/1/26 2:05 AM]
+感觉 AI 冲击最大的就是软件开发（不是软件工程！）和信息安全
 ```
 
 05 20 think.
@@ -43934,11 +44537,169 @@ Utilitarian by default I guess. Color and spacing. Nothing else.
 
 Learn from vscode.
 
+18 00 Take a faster track of no backpack inspection required where only a brief electronics scan exists <!-- despiting carrying a backpack -->
 
+18 20 think.
+
+> So actually it is not true?
+
+No, it isn't true. 
+
+<!-- Instead of yes, it's not true -->
+
+Well, that's impressive. 
+
+Fact over affirmation
+
+18 20 Arrive within a quarter.
+
+<!-- 这个...学生卡免费玩舞萌说的是啥啊
+
+(Sub manager in white:) 还没开始
+
+(Staff in blue, an enthusiastic boy:) 今天怎么迟到了啊
+
+没有迟到的说法。不一定固定时间来。 -->
+
+20 20 Try taiko w my account for the first time
+
+<!-- A bit weird. Idk if I'm in.
+
+I don't quite understand its ia... -->
+
+20 40 feel.
+
+The girl I invited yesterday comes as expected. 
+
+The grandma is delighted and grateful.
+
+They even play w a maimai from another family. 
+
+<!-- 你来啦！（喜）
+
+我不来。人太多了。没人我会来。
+
+她也是新手。
+
+我不知道她是不是新手，她... (Guidance on qr login maybe?)
+
+她是新手。她没有分数。你看他，15k。
+
+你什么时候来？你每天都这个时候来吗？
+
+我什么时候都可能来。这几天晚上会来。
+
+我不玩。像他要玩的。她我不认识。他一直玩的。
+
+（Stardust: nod?)
+
+他很好的！（喜）
+
+（笑）（离开）
+
+...
+
+她几年级啊
+
+三年级！（慈祥地笑） -->
+
+22 00 End the day w Fraq, 脳漿炸裂ガール, and 踊
 
 03
 
+00 20 Listen to `限りなく灰色へ`
 
+jp/rom/en on yt
+
+15 40 converse.
+
+<!-- T: 是太鼓吗
+
+完全不是一个东西！
+
+T: 我知道这个。有时候路过会看到。别的可能没人。舞萌永远人很满。好像有一群人。... 舞萌有什么好玩的
+
+有很多神人。
+
+T: 你自己是神人吧！
+
+你放学有空吗
+
+Grade 7 girl: 我喜欢女的！
+
+舞萌有很多女的。我认识很多女的。很可爱。有的衣服粉粉的黑黑的。有的头发绿绿的。有的生理男，但实际是女的。包上有mizuki。
+
+Grade 7: (warau)
+
+Grade 12 boy: 啥是 mizuki
+
+晓山瑞希。
+
+Grade 7: 你是二次元吗
+
+不是 -->
+
+15 40 Try to grab one bottle of chips out of a pack of two. 
+
+Let's see if it could determine. It's clear no camera inside. Idk if it could figure out the weight loss I guess.
+
+It fails! After five minutes.
+
+upd: well, it actually costs both for one...
+
+16 00 Appreciate and browse `4K高清看游戏圣地：街机烈火游戏厅`
+
+20 00 converse.
+
+<!-- 暑假。学生去哪了？
+
+今天暴雨。没人来。
+
+暴雨？！（呵。）暴雨我淋着雨来。学生也来。 -->
+
+21 00 converse.
+
+<!-- （warau) 你打舞萌吗
+
+我不打。(Point) 他打。
+
+哦。他 (8k maimai) 是你孩子。
+
+...
+
+五段过了...
+
+他几年级。
+
+六年级。
+
+哦。那还早。中考还早。 -->
+
+A 8k (seven) and an anonymous leave before 3/4.
+
+Idk.
+
+22 00 take a mizuki badge.
+
+Someone left a mizuki badge on the sofa. 
+
+For days it's still there on lost and found, or the shelf of shared gloves/earphone cables.
+
+Take it.
+
+Grab a coin on the floor as well.
+
+22 00 observe.
+
+Claude couldn't confirm that's mizuki. 
+
+Google image search works.
+
+<!-- it's not auto saved to gallery when your shot a photo for an app -->
+
+22 00 End the day w TEmPTaTiON, ザムザ, and 命ばっかり
+
+sweating wholely after three 12+ songs... Not quite clear really.
 
 04
 
@@ -43948,7 +44709,151 @@ https://nyaa.si/view/1785308
 
 <!-- wow. 5mb/s avg, 7.5mb/s peek. finishing within a quarter it seems. -->
 
+00 40 Buy a Nekoha Shizuku life-size pillow of 50 160 two way and a kangel satin pillow of 40 60.
+
+I do have another option for Nekoha Shizuku.
+
+Quite novel actually, but it might be a bit unnatural to have a life size pillow in horizontal direction, esp when it's of huge eyes looking at you.
+
+I were initially about to find some new life-size pillows and I would like kangel, as I do not typically favor a specific anime game or bangumi character. But later I guess it would be too shiny on bed and Nekoha Shizuku looks cute and serene, just like ksora.
+
+The pic of kangel is herself in the air, flying and approaching to hug ame chan.
+
+Another option is velvet pillow, it doesn't quite fit though.
+
+02 00 think.
+
+It's simple. None of current popular apps could be styled easily. Some corp apps are messing up w corp specific problems. 
+
+It doesn't have to be crazy comprehensive. Just be extensible. 
+
+A feature rich chatbot is enough. 
+
+Look at the tools and skills Google ai mode has. (And many others)
+
+Agentic swe is easy as well. Just continuous tool calls. It's not suitable for all tasks *anyway*.
+
+> Simple by default, powerful when needed 
+
+> An elegant human machine interface for a more civilized age
+
+13 00 Appreciate YURIxANcouple on ph...
+
+13 20 pick an easier coat from some stacked storage boxes.
+
+13 40 think.
+
+Intention.
+
+Synthesize everything into a config json. 
+
+Alias g to Google ai. Omnibox auto complete is easy. Just predict ahead set value and shift selection.
+
+Tab shortcut. Shift between ai mode and normal Google.
+
+History?
+
+<!-- inspired by the align center input -->
+
+15 40 Apply a trick.
+
+I were about to break a few packs and see if it's robust enough. 
+
+Yet, it fails to open when I wait for a few secs. And it's now locked, detecting a non change.
+
+<!-- Quick. Actually. -->
+
+This time it proceeds in secs. Seems it's basically a weight sensor. It only panics if the weight delta is ambiguous.
+
+<!-- 18 20 observe.
+
+The phone screen is accidentally on. It opens a chat on telegram that is project memoh, records a voice of 1 min 43 s, wo sending.
+
+It pauses my music two times. Maybe it taps the screen twice... And swipes... When running. -->
+
+18 20 think.
+
+All: snacks. 
+
+Buy some bottles of chips I guess.
+
+...
+
+Shortcut. 
+
+"What do ppl say for each popular llm provider"
+
+"The first few natural numbers in the nature"
+
+Divide and conquer. 
+
+It can be an agent. It can be as simple as an ask (you can have hooks btw!).
+
+18 40 Try to tell a girl to invite play her father. 
+
+Well, unavailable in anonymous, as expected. 
+
+Teach some basics, like tapping with palm instead of clicking the middle. 
+
+Weirdly, still no students.
+
+19 00 Let her father in! 
+
+He plays well, achieving 90 on the first game.
+
+<!-- Two purple rarely seen here. Some maimai and anonymous. Fun. -->
+
+<!-- 可以让他玩个难的！
+
+不用了不用了。就让她自己玩吧。 -->
+
+19 20 Buy some packs and bottles of lays chips. 
+
+Classic. Tomato. Barbecue. Red meat.
+
+21 20 feel.
+
+Father with a boy. Two anonymous.
+
+<!-- 啊。没力气了...
+
+要不要玩最难的。
+
+F: 不要。我第一次玩
+
+这个游戏最难的。白潘。
+
+你几年级？
+
+刚毕业九年级。
+
+暑假后九年级？
+
+暑假后十年级。 -->
+
+<!-- Wechat official account "quick news" jumps out from time to time yet hard to dismantle easily -->
+
+21 40 End the day w ウミユリ海底譚, はいよろこんで, INTERNET OVERDOSE, ラグトレイン, インドア系ならトラックメイカー, and フォニイ
+
 05
+
+00 00 reflect.
+
+A post by thoughts memo on top uee student wo background into thu med is taken after the one day fastest ever re upload.
+
+Comment threads are still accessible given the id.
+
+I guess I wouldn't archive or auto sync them. Basically society irl. It's known that anything could happen in the country of a thousand realities.
+
+00 40 Pick a film to watch. 
+
+"Keep real" doesn't have a rating. Proceed with my calc. Result: 6.8, lower than 7 baseline.
+
+> Toy story
+
+A solid choice.
+
+<!-- Choose the one at ten in the morning -->
 
 02 00 archive photos. ~~02 40~~ 03 00
 
@@ -43957,6 +44862,154 @@ https://nyaa.si/view/1785308
 <!-- i guess... text would trigger memories. -->
 
 <!-- [KAngel] yyTAT☆ · ☆XIAOPA☆ [華將] -->
+
+09 40 Dream. 
+
+A green insect, or bug, with clean and dry body, of integrity, comes out from the bottom of my wardrobe. I kill it anyway wo thinking. 
+
+Buy a new phone. Enjoy it. Only find I were still using the legacy phone that fits in my palm, of non full stretching screen and obsolete stats, later. 
+
+Sleep on the subway. Go to some stations never known before. Or non existing. Find myself on a public board of death. See some enthusiastic police rushing at me. Escape and return.
+
+12 20 think.
+
+Not willing to make it to weird. 
+
+It would left align out of the box. 
+
+If you move your mouse around you will see add (ctrl o) and microphone/send as if there is a box. It's a rounded text area btw, not a fully rounded input.
+
+Status indicators next to upload, rather than a dedicated status bar. When upload is hidden, they take its space. 
+
+For center align (the sane as left align if multi lines)... Well that's cool. It will assume a minimal width for empty input, and show button before and after like Google search. You can choose to let it be in the bottom left right like left aligned text area as well. Though I assume you might not move your mouse then.
+
+Enter to send is the default, making things expected. Ctrl enter is the pro config default. You will have more line breaks in the prompt. And you should think a bit before sending.
+
+All links are ctrl clickable. Not just links. Icon or text buttons w tooltips I mean. They are all about navigation yk.
+
+13 20 Discuss uee math problem. 
+
+Remove wechat restriction by kyc and proof from the family. 
+
+Send a msg, then rm frnd and hide chat.
+
+...
+
+I can add back the frnd indefinitely as long as they approve once, as expected. 
+
+Poor internationalization btw. "Do not see their channel"
+
+13 40 Meet and chat w a djhs grade 11 who comes w his mother in Uniqlo.
+
+14 00 Pick two out wears, a light blue one and a dark blue one.
+
+14 40 Play w a grade 1 girl, maimai rating 0, who comes w her kind mother.
+
+They accidentally pay 1 coin. Only 2 needed for me.
+
+Onboard w the new player guide. Teach accuracy basics.
+
+15 00 Guide to invite play her mother.
+
+<!-- 快点打！
+
+年纪大了反应不动。
+
+...
+
+(Show a vid) 老人也能玩的。
+
+预防老年痴呆是吧
+
+多玩就反应得动了 -->
+
+15 40 eat.
+
+```
+你的幽蓝边界 14:22:02
+我想玩舞萌
+
+你的幽蓝边界 14:22:11
+我什么时候可以看见你
+
+f 15:29:41
+在。
+
+暑假了。设想学生许多。但并不是这样。
+
+实际上是许多游客和 maimai。也很喜欢大家。但平日里常见的学生反而不见，或许在其他机厅？
+
+游客有强的，但多一轮游。刚 onboard 一对游客，大人反应慢，孩子够不到，勉强 clear basic。昨天有会玩的游客，大人和初中生都知道怎么玩，不知道会不会再见到。
+
+只有 stardust 永远能看到，打一些 14。
+
+有些空机器。
+
+你的幽蓝边界 19:24:03
+今天感觉到了我的物品，他看着不在我的家。
+
+我认为可能是昨天尝试游玩舞萌红色的嗦时，失落在了座椅上。我好像遗忘。
+
+希望织物还在巨大的房子里。我会尝试取回。如果我有空，在下一周。
+
+你的幽蓝边界 20:49:45
+观察良久，贵方力气极大，按键声音震天！
+
+此虽气势十足，然长久以往可致机器毁伤，维修尤其困难。周围的人难耐噪音，多数不满。
+
+可尝试用平日敲击电脑键盘的力度，在任何打maimai的时候。
+
+推荐难度9+～10+，红色expert谱面，以达成率97%为目标，同时力度保持在敲击电脑键盘的状态
+```
+
+precious, [7/5/26 4:09 PM]
+Eat Steven Lynn channel, nickel angel group
+
+precious, [7/5/26 4:10 PM]
+Thinking about a better convert.ts and utilitarian yaml.
+
+precious, [7/5/26 4:10 PM]
+I'm a bit sick these days...
+
+precious, [7/5/26 4:36 PM]
+终于看到你了！群友都去哪了。
+
+Xiaopa: 放假了。不来这边勤了。去环球港。我环球港那边有六七百个币。
+
+本来以为放假学生会多... 还不如平时。
+
+烈火人多不多。
+
+还好吧。
+
+环球港在哪。在浦西吗。
+
+xiaopa：苏州河你知道吗。
+
+就过没过江！有没有穿隧道！
+
+xiaopa：我坐地铁我咋知道啊
+
+precious, [7/5/26 4:39 PM]
+拍你。
+
+（挡）
+
+后面有老外在拍你。
+
+(Likely Samsung s series?)
+
+Xiaopa：不要对着我的脸拍。
+
+precious, [7/5/26 10:04 PM]
+End the day w ライアーダンサー, からくりピエロ, and フォニイ.
+
+precious, [7/5/26 10:05 PM]
+Achieve 98 on level 13.
+
+Well it's a challenge for me to tap at a fixed interval while reacting to everywhere else.
+
+Upd: well, just a few overrated songs
 
 07
 
