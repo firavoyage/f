@@ -28,7 +28,6 @@ const port = 3000;
  * 
  * (wait... in prod the it serves both web and api. actually i does not need to do anything.)
  */
-fs.writeFileSync('../web/port.json', `{"port":${port}}`)
 
 // 1. Initialize the Hono application instance
 const app = new Hono();
@@ -119,5 +118,7 @@ console.log(`Server is running on http://localhost:${port}`);
 
 serve({
   fetch: app.fetch,
-  port: port
+  port
+}, (info) => {
+  fs.writeFileSync('../web/port.json', `{"port":${info.port}}`)
 });
