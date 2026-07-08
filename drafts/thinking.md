@@ -154,5 +154,6 @@ You have your design. You should hold the definitive power in your hands.
 
 ---
 
+on frontend, <!-- to call, --> get baseurl <!-- that is the same domain by default --> and port <!-- in a json file -->, append api prefix, and that's it.
 
 
