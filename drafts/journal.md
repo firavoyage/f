@@ -44962,17 +44962,15 @@ f 15:29:41
 推荐难度9+～10+，红色expert谱面，以达成率97%为目标，同时力度保持在敲击电脑键盘的状态
 ```
 
-precious, [7/5/26 4:09 PM]
-Eat Steven Lynn channel, nickel angel group
+16 00 Eat Steven Lynn channel, nickel angel group
 
-precious, [7/5/26 4:10 PM]
-Thinking about a better convert.ts and utilitarian yaml.
+<!-- Thinking about a better convert.ts and utilitarian yaml. -->
 
-precious, [7/5/26 4:10 PM]
 I'm a bit sick these days...
 
-precious, [7/5/26 4:36 PM]
-终于看到你了！群友都去哪了。
+16 40 converse.
+
+<!-- 终于看到你了！群友都去哪了。
 
 Xiaopa: 放假了。不来这边勤了。去环球港。我环球港那边有六七百个币。
 
@@ -44990,7 +44988,8 @@ xiaopa：苏州河你知道吗。
 
 xiaopa：我坐地铁我咋知道啊
 
-precious, [7/5/26 4:39 PM]
+...
+
 拍你。
 
 （挡）
@@ -44999,17 +44998,215 @@ precious, [7/5/26 4:39 PM]
 
 (Likely Samsung s series?)
 
-Xiaopa：不要对着我的脸拍。
+Xiaopa：不要对着我的脸拍。 -->
 
-precious, [7/5/26 10:04 PM]
-End the day w ライアーダンサー, からくりピエロ, and フォニイ.
+22 00 End the day w ライアーダンサー, からくりピエロ, and フォニイ.
 
-precious, [7/5/26 10:05 PM]
 Achieve 98 on level 13.
 
 Well it's a challenge for me to tap at a fixed interval while reacting to everywhere else.
 
-Upd: well, just a few overrated songs
+<!-- Upd: well, just a few overrated songs -->
+
+06
+
+18 40 Arrive. 
+
+Two empty machines in the evening?!
+
+18 40 Achieve sss on arrow level expert. Complete area arcaea.
+
+19 00 Onboard two grade 12 graduate maimai. Jianping. Jingcai.
+
+One has 1k rating with many settings modified as a pro (speed 5 out of the box. Decreasing achievement rate. Achievement rate in the middle. Upper panel)
+
+Tell them to increase flow speed to expert and use palm to tap on the screen. 
+
+<!-- 这是他给我调的。我不知道。
+
+感觉舒服很多了。
+
+哇，兄弟厉害兄弟！
+
+我第一次打到这个速度！我从来没有打到过75。 -->
+
+One suggests Pandora re master to the other. 
+
+He accepts and surprises.
+
+<!-- 玩累了，换别的吧。
+
+感谢指导！...
+
+没有。所有人都要先调流速。 -->
+
+21 00 feel.
+
+Lowe. Haru.
+
+Lowe gets 镜神
+
+Sometimes haru rests and watch aside. Lowe comes first and plays alone.
+
+...
+
+An anonymous girl plays w stardust.
+
+<!-- stardust。（15k）
+
+他每天都来。
+
+Mom: 那他很厉害。
+
+不厉害。没有左边 （lowe 16k）的厉害。
+
+Mom: 上次是那个哥哥带你玩的吗
+
+(Nod)
+
+I don't quite remember.
+
+不要这样点。舞萌不是这样玩的。看准的点。没来不要点...
+
+啊！看得我好难受啊... -->
+
+She taps as hard as possible, many times before a note arrives, and... Well so awkward.
+
+Yahagi comes and teaches warmly.
+
+Suggest account reg, her mom implies a gentle refusal saying she is unskilled.
+
+<!-- 她几年级啊。
+
+你看她像几年级。
+
+（hand：2）
+
+三年级，开学升四年级了。
+
+感觉她没有她的同龄人玩得好。。。 -->
+
+Her mom felt I was young among the players. I was surprised. Looking around... I was.
+
+Stardust gets 100.9 on momoiro no key. Yahagi appraises.
+
+<!-- Mom: 你要注意节奏。它没到的时候不要乱拍。 -->
+
+21 20 feel.
+
+Yahagi plays w haru who has Lowe recording a vid behind
+
+The girl comes w a pet bird who stands on her hand. Take some photos.
+
+...
+
+Pros keep playing. 
+
+(No more awkward anony pupil!)
+
+Doesn't seem enough time left for me.
+
+Maybe I would leave earlier today.
+
+Simple.
+
+> Less impulse, more intention.
+
+<!-- playing Hatsune Miku -->
+
+<!-- taking a new uniqlo outwear w me, the lightblue one -->
+
+The wind is warm and somewhat gentle in the air.
+
+...
+
+AC is on at home. Cozy. <!-- childhood summer vacation memories... -->
+
+22 20 Chat
+
+```
+archived 17:41:06
+请求添加你为好友
+
+笑哭绿豆 17:41:06
+我们已成功添加为好友，现在可以开始聊天啦～
+
+笑哭绿豆 17:45:50
+泥嚎
+
+笑哭绿豆 17:45:52
+有什么事吗
+
+笑哭绿豆 18:42:16
+如果没有事就删除了
+
+archived 21:34:11
+请求添加你为好友
+
+笑哭绿豆 21:34:11
+我们已成功添加为好友，现在可以开始聊天啦～
+
+笑哭绿豆 21:34:17
+你谁
+
+笑哭绿豆 21:34:23
+哦原来是电脑哥
+
+笑哭绿豆 21:34:25
+删了
+```
+
+```
+f 23:35:24
+太刻意了。繁冗。或者流浪猫生成。
+
+如果每一句话能承载不同的，无法预测的信息，会更好，我想。
+
+关于丢失的东西 （手套？），也许在共享架上。
+
+关于玩法，自己是绝对自私的人，不受制于人。最近常玩 12 或者 13，有一些可以 97，但似乎大家普遍认为定数过高（水/吃分推荐）。今天打一个 12 到 100。9，10 难度是很无聊的，而且也不一定能 100。不过有时似乎可以解锁高难度，没有票或者拼且没有默认解锁的情况。
+
+电脑是很理性与安静的，自然不同。
+
+intellectual pleasure. 
+
+喜欢大家。暑假，许多平日里常见的人不在了，失落。自己可以去汇银广场，烈，南京路，人民广场，但不能同时在各处出现或去浦东或郊区。想知道这些人的情况：
+
+- xiaopa (zhonghua vhs grade 11, smoker, often showing off his skill over his classmates, getting defeated by mistakes easy, direct) & yyTAT (zhonghua vhs grade 11, of lime highlights. She speaks gently and sometimes invites me to play together while I'm programming. Cute, but only 13k. A bit naive. Her father seems to be a businessman w minimal hair.) & an 8k (often comes w yyTAT, doesn't play well despite extensive and friendly help from yyTAT)
+- yunoko/kafuru (lwhs grade 10 dropout of depression, highly energetic and curious, direct and emotional, cheater) & her frnds (e.g. owo from djhs)
+- mouxie65 (from dtjhs to jyhs, 12k, wild and easy-going) & an oier in dths (prev dtjhs)
+- the grade 7 boy pro from lwjhs.
+
+I appreciate some other players but they would be omitted in the list as I see them often. For example: 
+
+- sasiover (two mizuki fans) and yahagi (sociable and helpful)
+- Lowe and haru (couple of 16k and 15k. They can feel old at least it seems, even if they might not be over thirty biologically, even for the gf that could feel slightly younger but still quite aged but I genuinely admire their skill and determination. I wish the younger generation, the maimai addicts, would follow their path and play forever in the next decades, and beyond.) 
+- stardust 
+
+Some players play everywhere and ik I would not see them often and some can hold unhuman skill. (e.g. aoi & 5cena, two of theoretical rating)
+
+There are some players on the internet I'm curious about. I couldn't list them all, but please take a photo from behind (both them and their partner if exists), even if they might be in different cities from mine, if you see any below
+
+- Acbox (founder, core dev, hs dropout, mtf)
+- Menci (prev oier, msft swe)
+- Chiyuki (unixporn tinkerer)
+```
+
+23 40 decide. 24 40
+
+Well I guess it's better not to broadcast this everywhere myself.
+
+...
+
+Actually ik where they are. 
+
+But why not? 
+
+But where. It's quite hard for them to curate a response that makes sense.
+
+Sometimes it's better to be a bit more reserved when you couldn't expect anything ideal. I guess that's it.
+
+> Better to improve your ideas than having them validated. It's ok to "make things happen".
 
 07
 
@@ -45034,6 +45231,444 @@ backend validation? sec <!-- or permission --> and type are different things.
 you should not handle human errors for geeks.
 
 you should not work w third parties that could even mess up types.
+
+12 20 Dream
+
+I feel I've dreamed it a few times. But it must be a dream as in the real world she, w long hair, lives apart from me.
+
+See someone, wearing a shift w her large avatar painted in front.
+
+She has some frnds idk.
+
+<!-- A, 你的小迷弟来了。 -->
+
+She must be still a student when I see her...
+
+12 20 observe.
+
+One ui could not generate a long screenshot for my own msgs on telegram, with shifting gradient
+
+<!-- ntonino posts a tg story... -->
+
+```
+antonino, [2/23/26 12:30 AM]
+please, make me the favor to not publish content from my personal channel and other on https://github.com/firavoyage/memories and other repositories. i do not like archival of my personal messages in public places.
+
+antonino, [2/23/26 1:02 AM]
+i have noticed that you have created a persona of everyone who interacts with you, which is disturbing and violates privacy of many, especially considering it has been done with zero consent:
+ - https://github.com/search?q=owner%3Afiravoyage%20antoninoscordino&type=code
+ - https://github.com/search?q=owner%3Afiravoyage+ntonino&type=code
+ - https://github.com/search?q=owner%3Afiravoyage+antonino&type=code
+this has creeped me out and i am totally, severely against it. i have banned you from my channel to prevent you'd archive furhter of it.
+there is nothing wrong of archiving for your own needs, but there is a limit to everything:
+ 1. why are you doing this for everyone? why are you even spreading information about others, and even yourself?
+ 2. why are you doing this on github?
+ 3. even if you'd like to continue doing it on github, why are you doing it on public repositories?
+
+antonino, [2/23/26 1:14 AM]
+please, if you really want to archive everything you do in a daily life, don't do it under under public domain. there are way many different ways to do so, and it's always best to do it offline. 
+
+you've not only been indirectly doxxing others, but you've also doxxed yourself, publishing personal data, and i still cannot understand why you continue with this.
+
+i believe you are going to continue doing this anyway, creating a new repository on a different site or similar, but just know what you're doing is not welcomed by many and you might get in trouble for it.
+
+f, [2/23/26 5:48 AM]
+Personas is like an awesome list. 
+
+If you search, you will see most ppl there have many followers. Some telegram channels even exist in other indexers. 
+
+I learn from them. I see them as the information I consume, when I imagine I reflect on my memories a decade later. 
+
+Some are private channels or protected Twitter acc. I keep them. I don't ask for permission. I agree that's a moral failure, even illegal. 
+
+But why I do that is I value information more than privacy. 
+
+The world is the world itself. The internet is open and free. Once I find something valuable, cute, or beautiful, I won't hide it from others even if the author is not intended to. 
+
+Decades later we would all cease to exist. What we hold would be given back to the world. Privacy feels like hiding. It can be safe and relief. But I don't really think it. Years before I even share my passwords and 2fa online. I think it might be interesting if someone finds it.
+
+About being public. GitHub as well as other git instances don't have recommendation. Yet it could be indexed by search engines. Which is what I want. No one will see it. But for comers who are curious, they can appreciate. 
+
+I imagine there would be future self, comers throughout the history, and ai agents. Twitter will cease to exist one day. As I export everything, maybe one day with advancement with nlp and aiml things could happen, as theoretically languages imply a lot. 
+
+I'm a bit sad as you hide the channel from me. But anyway, since it's yours.
+
+About getting into troubles. I think I will. Thanks for your advice anyway. 
+
+I will take the risk and accept the result. And I won't escape or cheat like switching sites or using reversible encryptions. 
+
+I will be there.
+
+antonino, [2/23/26 6:12 AM]
+okay, this only made things more weird, whatever. but, can you further remove my data from your "archive"?
+
+f, [2/23/26 3:51 PM]
+I won't. 
+
+And maybe it's technically infeasible. As at least on one of the public git instances, gitlab, my acc has already been suspended, while the repo is still indexable by search engines. The internet archive and (maybe, since your channel has permalink) telegram trackers will also remember.
+
+Data safety is about accessibility. 
+
+Once you give your acc email password to a company, they can share it, or unintentionally leak it, without letting you know, whatever it says on privacy claim. 
+
+Once I can see something, I can share it. If I like, I can distribute it anonymously, via dht manget ipfs whatever. 
+
+First, I like your posts and messages. If I curate something like interesting things to see online for my friends or ppl curious about me I would like to put it. 
+
+Second, I can see all your deleted msgs and previous posts and I have exported it. For now it's just dump, nonsense. One day if I could analyze and organize in batch I might use it. 
+
+It's like Internet archive. When I see a post online I might save page now. Years later when the blog owner wanna hide their past maybe, or the site is rotted, I could still have it. Actually I've done and would be continue working on some tiny projects on preservation. 
+
+Third, I would feel glad if you create an acc on mastodon or Twitter and share your thoughts for everyone in the world. 
+
+But there's nothing wrong with having a secret diary and trying to keep it safe by restricting access and manually verifying the identity of all viewers.
+```
+
+13 40 think.
+
+Get or post is nothing but a word. 
+
+All backend API are post. Array payload is args. Obj is first arg. 
+
+I might normalize to serialize.
+
+18 40 Chat
+
+```md
+pupupu|云苔☁️, [7/7/26 2:50 PM]
+好多雨雨
+
+Nickel Angel✨, [7/7/26 2:54 PM]
+北京也有梅雨季吗（不是
+
+Nickel Angel✨, [7/7/26 4:02 PM]
+似乎遇到了有个测试写的程序在程序关闭了之后，程序创建的后台进程不会自动关掉，还在占用设备
+
+Nickel Angel✨, [7/7/26 4:02 PM]
+我找了半天这个进程在哪（
+
+Nickel Angel✨, [7/7/26 4:09 PM]
+https://github.com/QuantumNous/new-api
+看了一下我们公司做的新的 api router 是基于什么开发的，发现是这个项目，然后发现 README 中有 🍥
+
+Nickel Angel✨, [7/7/26 4:15 PM]
+看起来主要维护者是跨（？
+而且她还关注了许多熟人（没想到这么近
+
+Nickel Angel✨, [7/7/26 4:20 PM]
+然后看了一下这个项目的开源协议是 AGPL（我好像没看到小米自己改的代码在哪里开源，看起来这个小项目违反开源协议了（感觉确实 router 这个小项目只面向内部业务就没人考虑这方面，我记得我们文档里强调过业务代码在用开源项目的时候说过需要避免用 GPL 的代码
+
+澪, [7/7/26 4:20 PM]
+obelisk 也是 agpl
+
+f, [7/7/26 6:37 PM]
+使用 agpl 代码在内部工具并不违反协议，但或许违反公司规范。
+
+因为一些离奇搞笑的传闻，知道这个项目。但一直不知道使用场景。
+
+将各种各样的 llm api 都变成 oai compatible, 然后对公司多用户分发并分别限额？似乎不复杂。
+
+如果自己实现这个需求大概绝对不会使用这个项目，因为 both landing page and web UI are ai slop design (which is annoying!) and I guess I can easily create a simpler version that gets the job done.
+
+f, [7/7/26 7:41 PM]
+<!-- maimai: 海底谭 97 -->
+变强。
+
+<!-- reactions: nickel (whale) 19:43:56, omikerong (thumb up) 19:59:14, chyk (heart) (the next day) 10:59:12 -->
+
+Nickel Angel✨, [7/8/26 8:30 PM]
+今天回家看到门口多了份外卖
+
+Nickel Angel✨, [7/8/26 8:30 PM]
+（然而我并没有点，并且外卖单上的地址还被隐藏了
+
+Nickel Angel✨, [7/8/26 8:31 PM]
+这太诡异了
+```
+
+18 40 reminisce.
+
+<!-- (introduce maimai mtf and nerd culture to everyone.)
+
+Ielts speaking prac.
+
+Pros and cons of social media.
+
+Backed by for profit companies. Doom scrolling. Attention grabbing. Meaninglessness. Mental health. Depression.
+
+Trap in echo chambers. Hate speech. Radical politics...
+
+Wdym by radical politics.
+
+Radical political ideologies, extremism.
+
+Classmate: is that you? 
+
+T: I think you are one of the victims! -->
+
+19 20 Play w Rain, a random 13k (hs?) girl. Achieve s on some 12+ and 13 songs incl ウミユリ海底譚.
+
+20 00 Chat
+
+```
+Nickel Angel✨, [2/3/26 5:40 PM]
+你好呀
+
+Nickel Angel✨, [2/3/26 5:40 PM]
+看你想加我频道于是就来认识一下
+
+Nickel Angel✨, [2/3/26 5:41 PM]
+这里是 nickel，怎么称呼呢
+
+Nickel Angel✨, [2/3/26 5:41 PM]
+以及因为什么注意到我的呢
+
+f, [2/3/26 5:58 PM]
+你无处不在。
+
+Nickel Angel✨, [2/3/26 6:50 PM]
+那请问你是（？）
+
+f, [2/3/26 11:12 PM]
+twitter: firahq
+
+Nickel Angel✨, [2/3/26 11:18 PM]
+唔……
+
+Nickel Angel✨, [2/3/26 11:18 PM]
+你不会是前几天来见芋头那位（？）
+
+Nickel Angel✨, [2/3/26 11:31 PM]
+总之你确实是个有趣的人，先让你加频道了w
+
+Nickel Angel✨, [2/13/26 3:51 PM]
+其实会好奇 fira 这个标记是什么意思
+
+Nickel Angel✨, [2/13/26 3:52 PM]
+对哦
+
+Nickel Angel✨, [2/13/26 3:52 PM]
+你在哪里啊，其实过年这个假期想面面人
+
+Nickel Angel✨, [2/13/26 3:52 PM]
+我不知道有没有机会x
+
+f, [2/13/26 10:48 PM]
+It's markdown emoji. https://gist.github.com/rxaviers/7360908
+
+I personally don't use emojis a lot. 
+
+Emojis are loud. It grabs too much attention, esp in somewhere text dominant.
+
+:heart: is quiet.
+
+For me, tranquility is elegance. We already have too much hypes.
+
+> The mind is sharper and keener in seclusion and uninterrupted solitude. No big laboratory is needed in which to think. Originality thrives in seclusion free of outside influences beating upon us to cripple the creative mind
+
+Btw, seems I've typed one more colon on each side.
+
+You know, sometimes you follow someone online, leave a comment, join a channel, or put some memories online without polishing for sns, maybe just out of curiosity.
+
+And something interesting happens.
+
+Some people assume you are a real human. They assume you would reply so they send a few messages in a row. Warau.
+
+Some follow back immediately. Actually they follow everyone back. Trivial.
+
+You remember when you comment on a github issue and forget it. Not something technical. Just another compliant on an opinionated irreversible change. Big companies often do that. Months later someone dm you on this. Maybe he dm everyone. Maybe your comment is slightly more eye catching than others. idk.
+
+Some find you through search engines and start browsing on you. But even you dont know how to find you through search engines without explicitly entering your name. Surprising. Even a bit suspicious.
+
+Although you appreciate the vibrant energy of young people, you are not a social person. Maybe you are a cat. Or an llm.
+
+Actually you have not met anyone from the internet before.
+
+I could recall the moment when I were looking up the following list on zhihu to find someone (I failed and searched her name directly in the end) and share her profile. I suddenly saw this avatar. wow. When did I follow her? idk. You browsed through her posts without finding any clue (maybe zhihu should provide a method to sort posts by popularity). And you found a picture on 2021 when she were 18. Warau.
+
+And in the afternoon you receive an outing invitation from her.
+
+Nickel Angel✨, [2/14/26 1:10 PM]
+我觉得确实比较现在社会确实比较浮躁，感觉人们确实虽然会关注许多人，但是好像关注的人多了就开始漫无目的地接受信息……
+所以我觉得可能重点关注某些东西很重要，将自己的注意力集中x
+
+Nickel Angel✨, [2/14/26 1:10 PM]
+btw, i don't know if you can understand Chinese
+
+Nickel Angel✨, [2/14/26 1:15 PM]
+i don't know if it's ok i speak Chinese when i talk to you
+
+f, [2/15/26 1:54 PM]
+我可以理解中文。
+
+btw 你是不是语音输入的。
+
+我可以感觉到画面感，犹豫不决，含蓄，试探。
+
+warau
+
+Nickel Angel✨, [2/15/26 1:55 PM]
+并不是（也许是我说话就这样x
+
+f, [2/16/26 6:53 PM]
+New year 💖
+
+Nickel Angel✨, [2/16/26 6:55 PM]
+新年好啊w
+
+f, [3/20/26 4:19 PM]
+看到很多以x结尾的行。
+
+这个语言是什么意思。
+
+我不明白。
+
+虽然，问过 llm，但我并不认可之，至少不感觉好。
+
+Nickel Angel✨, [3/20/26 4:28 PM]
+我的打字习惯吧
+
+Nickel Angel✨, [3/20/26 4:28 PM]
+就是和结尾带括号一样
+
+f, [3/20/26 4:29 PM]
+不。应该是有意思的。
+
+Nickel Angel✨, [3/20/26 4:29 PM]
+如果觉得这句话我要用不太确定的语气说的话，就会带 x
+
+Nickel Angel✨, [3/20/26 4:29 PM]
+然后括号的话
+
+Nickel Angel✨, [3/20/26 4:30 PM]
+句子开头有括号大概就是希望表达小声的说（？）
+
+Nickel Angel✨, [3/20/26 4:31 PM]
+然后句子末尾有左括号的话就是不情愿地说（？）
+
+Nickel Angel✨, [3/20/26 4:31 PM]
+至于末尾 x 和（？）的区别就是
+
+Nickel Angel✨, [3/20/26 4:32 PM]
+x 可能偏向「我随便瞎说一下，不要太当真」
+（？）可能偏向「我不是特别清楚，但是我感觉是这样」
+
+f, [3/20/26 5:40 PM]
+在一些时候使用。
+
+另一些时候不使用。
+
+我能感觉到。
+
+（收到新讯息）
+
+我知道了。（虽然如果让我直接描述，我会说这是自谦。不过应该是相似的实指，大概。犹豫。略自嘲。谨慎。就是退后一步，微微低头的感觉。reserved。）
+
+w 应该就是 warau，笑。这点我认可 llm。
+
+x。我再次询问了 llm。自重，“不言说，自体会”，“社交防卫”。感觉 llm 说得好重，用心理学词而不是日常感受。虽然我算是接受了。猜是 x 本义表禁止的衍生。
+
+半括号。当然是句末左半括号。从来没有见过句首的。这个我可以明显感受到与 x 不同。半括号是故意有话不说。可以引起niche社群的共鸣，会心之乐。
+
+> 这个项目由初中生，辍学，使用 rust 语言，花费 200 小时作。（
+
+原本以为你想说句末左括号。读，感觉可能在说 “（？）”。
+
+括号内问号。常用。
+
+一般表事实性的猜想，但暂时不想实证。
+
+> 我会用 yaml，比 json 更易于理解，即使 json pretty printed（？）
+
+> 越简短的单词越好。convert 而不是 converter。决定，而不是作决定。git commit 和 changelog 都用一般现在时，无论任何情况，任何一句话。（？）
+
+> 标准答案 （？）
+
+> 出处 （？）
+
+（我用 vscode search 检查了一下。我越来越少用括号内问号了。而是用了 maybe，might，think 这些词。）
+
+x 完全不同。内心感受。能感觉到几乎不互换。虽然其实我从来没有使用过x。（或者改用了省略号）
+
+表试探，不决，礼。我大概会用 ... （几乎都是三点而不是六点，可能因为字体连字）
+
+用括弧内问号代替 “...” 可能会干脆利落些。
+
+（我好像明白了你说的行初括弧。那种情况我一般会使括弧成对。如果可以，成对总会优雅一些。不过我应该忘记这种用法了，至于完全感受不到“我正在小声说话”，因为补充说明是括弧的本义，大概。）
+
+Nickel Angel✨, [3/20/26 5:44 PM]
+好的，我好像有点理解不了你说的了，这个原文是英文吗（思考
+
+f, [3/20/26 6:04 PM]
+除了和母语者闲谈，似乎平时也少有使用中文了。为了简练我似乎少用了许多必要的关联词和解释。我能感觉到我使用的词会比较少，反复使用几个词语。很多词语其实是作为定型文的。比如 "我知道了". (就像 "大家辛苦了" "多谢惠顾" "祝顺时祺" 一样). 句末的 "大概", 应该可以直接映射日语的 "たぶん" 或者 "maybe".
+
+f, [3/20/26 6:05 PM]
+不过当然不是翻译的， 也不是摘抄的。
+
+Nickel Angel✨, [3/20/26 6:10 PM]
+诶？所以你母语是日语吗
+
+Nickel Angel✨, [3/20/26 6:10 PM]
+好哦w
+
+Nickel Angel✨, [3/20/26 6:11 PM]
+想起 YOASOBI 的那首歌www
+
+f, [3/20/26 8:27 PM]
+> 除了和母语者闲谈，似乎平时也少有使用中文了
+
+显然，我是中文母语者。
+
+（似乎这个软件没有很好地渲染我的markdown。有时就可以，在有些版本和平台。当然，我可以手动选取然后添加风格。）
+
+我自己写字（有时），和 llm 聊天（总是），人机交互界面，和世界友人交谈，会使用英文。如是尔。
+
+Nickel Angel✨, [3/20/26 8:29 PM]
+主要 fira 有些词确实好像和我们平时交谈不那么一样，但是很有趣
+
+Nickel Angel✨, [3/20/26 8:29 PM]
+比如这个我们常教「样式」不是风格
+
+Nickel Angel✨, [3/20/26 8:30 PM]
+虽然英文都是 style
+
+f, [3/20/26 8:32 PM]
+是的。
+
+今天我联想到了，于是使用 ytdlp 将其歌曲都拉取了下来。
+
+大概是 19 点左右。
+
+keyword: float ytdlp workflow.
+
+f, [7/7/26 7:48 PM]
+agpl 并不要求内部工具开源。但避免 gpl 是明智的。
+
+其实想问...
+
+好奇为什么要使用 new API.
+
+只是为了转化为 openai compatible 并分发，就引入了这么一个充满 vibe design 的庞然大物吗...
+
+（后来想，其实你大概没有参与决定。所以大概是得不到答案的。但还是发送吧。）
+
+想来中转也不是什么漂亮的需求，根植于不断变化充满意外的接口，服务于很多奇怪的网站，开源社区没有优雅的方案也可以理解。
+
+f, [7/7/26 7:48 PM]
+https://github.com/QuantumNous/new-api
+看了一下我们公司做的新的 api router 是基于什么开发的，发现是这个项目，然后发现 README 中有 🍥
+
+Nickel Angel✨, [7/7/26 7:51 PM]
+我猜就是给内部的人就随便用了
+```
+
+<!-- Telegram: 
+
+To protect privacy, read time are stored for a week. 
+
+(Well, inconsistent UI though.) -->
+
+Sometimes idk who reads at when, and no reason shown.
 
 20 00 learn css layout props. create a humility web design prototype. ~~(20 20)~~
 
@@ -45107,7 +45742,88 @@ i guess i already made it within ten minutes.
 
 on frontend, <!-- to call, --> get baseurl <!-- that is the same domain by default --> and port <!-- in a json file -->, append api prefix, and that's it.
 
+21 40 feel.
+
+Despite empty machines in 20, some pros keep playing. 
+
+Idk who they are, but it looks fun. They seem to be two adults, maybe over thirties...
+
 08
+
+18 00 converse.
+
+<!-- (stories of studying abroad in Edinburgh u)
+
+T: 我现在还得回去开家长会。
+
+你有小孩？
+
+对。 -->
+
+**owatta!** <!-- Kawataa! -->
+
+18 20 Eat memoh group. 
+
+<!-- See a msg from menci in the list... -->
+
+```
+
+```
+
+<!-- well menci chats a lot recently, rather save the last msgs and read other stuff later. there are trivial msgs like "what's your model". -->
+
+precious, [7/8/26 6:28 PM]
+Sync folders: 
+
+Dcim
+
+Pics
+
+Dl
+
+Recordings
+
+precious, [7/8/26 6:45 PM]
+yunoko: 你说谁是欺骗者？
+
+是不是有谁把我的消息乱转
+
+你的消息在群里都传疯了 (well, as expected! Actually I do not have to broadcast myself.)
+
+我警告你不要对我有不好的评价不然我会揍你。
+
+那你现在能揍我吗
+
+可以但我现在不想
+
+没说错啊，代打
+
+代打就是欺骗者吗
+
+别人代打你的号
+
+我也代打别人的号。所以呢
+
+我看到了。我就记录下来。
+
+(Invite her to beat me) 
+
+She puts her right leg over my left shoulder. What a strength. I push forward to make it more weird... And yunoko pushes s219 back, toward the noise cancelling board.
+
+好色情啊 （笑）
+
+...
+
+哦对了那个词 （cheater）不是欺骗者，你可以查词典
+
+precious, [7/8/26 7:04 PM]
+Eat
+
+https://t.me/fira_paste/23
+
+https://t.me/fira_paste/24
+
+For some reasons, date is not preserved when copying msgs as plain text on qq. I guess it doesn't matter much anyway so I wouldn't export them myself.
 
 19 00 think.
 
