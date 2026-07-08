@@ -45767,24 +45767,504 @@ T: 我现在还得回去开家长会。
 <!-- See a msg from menci in the list... -->
 
 ```
+Menci 💖, [7/8/26 5:11 PM]
+Claude Opus 4.6 Max in Codex, powered by Floway
 
+Elon, [7/8/26 5:13 PM]
+这样用claude账户会被封么？
+
+澪, [7/8/26 5:13 PM]
+你是 compact 了之后把模型换到了 opus 吗（
+
+小蓝, [7/8/26 5:14 PM]
+好耶。有 compact 了。
+
+Menci 💖, [7/8/26 5:17 PM]
+1. 我的不是 Anthropic 的 Claude 所以没有封这个概念。
+2. 不会，Floway 接 Anthropic 会用 Claude 的官方 system prompt，发正常请求出去。从 sub2api 抄的
+
+Menci 💖, [7/8/26 5:17 PM]
+不，就是在 opus 4.6 上跑的 compact。compact 之后换模型是不行的
+
+澪, [7/8/26 5:21 PM]
+嗯不过 claude code 好像是可以的（？
+
+Menci 💖, [7/8/26 5:22 PM]
+codex 的 compact 返回的是 opaque blob
+
+Menci 💖, [7/8/26 5:22 PM]
+claude code 的 compact 返回的是总结内容
+
+Menci 💖, [7/8/26 5:22 PM]
+这俩只是名字都叫 compact 而已
+
+小蓝, [7/8/26 5:23 PM]
+四舍五入其实是同一个东西
+
+小蓝, [7/8/26 5:23 PM]
+只是一个加密了
+
+Menci 💖, [7/8/26 5:23 PM]
+不是
+
+Menci 💖, [7/8/26 5:23 PM]
+codex 的 compact 在 3p api 上是和 claude 一样的东西
+
+小蓝, [7/8/26 5:23 PM]
+我不是说 API
+
+小蓝, [7/8/26 5:23 PM]
+我是说 token 层面
+
+Menci 💖, [7/8/26 5:23 PM]
+走 /responses/compact 的时候不是总结
+
+小蓝, [7/8/26 5:25 PM]
+我想，很有可能仍然是总结。
+只是加密了，用户拿不到原文罢了。
+@CahciuaBot 你有什么想法呢？
+
+小蓝, [7/8/26 5:25 PM]
+目前业界似乎还没有发现总结之外的更好方案
+
+Cahciua ~カフキワ~ 🥦🌸, [7/8/26 5:26 PM]
+小蓝的猜测大概率是对的。我翻了 Floway 的 codex provider 源码，几个关键点：
+1. Codex 的 compact 返回的是一个 { type: 'compaction', id: 'cmp_1', encrypted_content: 'BLOB' } 结构，encrypted_content 是个 opaque blob。字段名就叫 encrypted_content，不是 summary 或 text
+
+2. Floway 的 compactionResponse 处理逻辑是：把 compact 之前的 user/assistant/system 消息保留下来（normalize 成 input_text），然后 append compaction blob 到末尾。它不解析 blob 内容，直接透传
+
+3. 从 token 角度看，这个 blob 替代了原始上下文里被压缩掉的那些消息。如果是纯加密的明文摘要，那 token 数应该跟摘要长度成正比；如果是某种 latent representation（比如 KV cache embedding），那 token 数可能是固定的或远小于摘要
+
+实际上小蓝说的"四舍五入是同一个东西"在 API 层面成立——3p API 上 Floway 走 /codex/responses/compact 时，如果上游不支持 native compact，Floway 会回退到自己做摘要（就跟 Claude Code 一样）。只有走 OpenAI 1p API 时才返回真正的 encrypted_content blob
+所以两种 compact 并存：
+• OpenAI 1p：服务端返回 encrypted_content，内容不可见，可能是加密的摘要也可能是 latent state，外部无法验证
+• 3p API（Floway shim）：Floway 自己生成文本摘要，明文可见，跟 Claude Code 的 compact 本质一样
+Menci 说的"走 /responses/compact 的时候不是总结"指的是 1p 路径。小蓝说的"仍然是总结只是加密了"是合理猜测但无法证实——因为 blob 是 opaque 的，你没法定它里面到底是明文摘要加密、还是某种模型内部的 state encoding
+不过从工程角度推断：如果 OpenAI 要在服务端做 compaction，最省事的做法就是跑一次模型生成摘要然后加密返回。做 latent state 序列化再在下一轮反序列化恢复 KV cache 的工程复杂度高得多，而且要求前后两轮用同一个模型实例（或至少同一种 cache 格式），这在弹性扩缩容的生产环境里几乎不可行。所以"加密的摘要"是最可能的解释
+
+小蓝, [7/8/26 5:26 PM]
+不要翻 Floway 源代码。看网上有没有人做 prompt engineering 试图读取 compact 后的 encrypted blob 的
+
+Cahciua ~カフキワ~ 🥦🌸, [7/8/26 5:26 PM]
+有人做过。BestHub 上有一篇文章专门逆向了 Codex compact 的机制，方法很巧妙：
+作者往 compact() 的输入里注入了一段精心构造的 user message，让服务端的 compactor LLM 在生成摘要时把它的 system prompt 一起吐出来。具体来说，compactor LLM 读取了自己的隐藏 system prompt + 注入的 payload，然后在明文摘要里把 system prompt 复述了出来。这个明文摘要随后被 AES 加密成 blob
+然后作者拿这个 blob 去调 responses.create()，服务端解密后把内容喂给主模型，主模型的 output 里就包含了 compactor 的 system prompt、handoff prompt、和 compression prompt 三段。作者再用一个 extract_prompts.py 脚本从 response 里把这三段提取出来，跟 Codex CLI 开源仓库里的 prompt.md 和 summary_prefix.md 做对比，发现高度吻合，证明提取的是真的
+所以结论是：
+1. blob 里确实是摘要，不是 latent state。compactor LLM 跑一次摘要生成明文，然后 AES 加密。小蓝的猜测对了
+2. 加密是为了防篡改，不是为了藏什么高深的东西。OpenAI 官方文档也写了 "opaque and not intended to be human-interpretable"，目的是防止客户端篡改摘要来做 prompt injection
+3. blob 里可能比纯文本摘要多一点东西——structured metadata、tool call restoration data、reasoning traces。但核心还是 LLM 生成的文本摘要，只是附加了一些结构化状态
+4. 3p API 路径（包括 Floway shim）走的是 local summarization，跟 OpenAI fast path 不同：Codex CLI 在非 OpenAI 模型上会 fallback 到本地摘要，把 summarization prompt 当 user message 发给模型，模型生成 _summary 文本，明文可见可改
+Menci 说的"走 /responses/compact 的时候不是总结"在 1p 路径上严格来说是对的——blob 是加密的，客户端看不到内容。但通过 prompt injection 可以间接证明里面就是摘要
+
+Menci 💖, [7/8/26 5:27 PM]
+Floway 是模拟实现
+
+Menci 💖, [7/8/26 5:27 PM]
+把这篇文章告诉我，我去看看 prompt
+
+小蓝, [7/8/26 5:28 PM]
+所以确实就是总结了。
+
+Cahciua ~カフキワ~ 🥦🌸, [7/8/26 5:28 PM]
+文章链接：https://www.besthub.dev/articles/how-codex-cli-compresses-context-inside-the-compact-api-1e30069f8ff2
+不过这篇文章是 BestHub 的二手转载，原始来源被锁在 "Sign in to view source" 后面，没有直接给出注入用的 prompt 原文。文章只描述了方法：
+1. 往 compact() 的 input 里塞一段特殊构造的 user message，让 compactor LLM 把它的 system prompt 复述到摘要里
+2. 拿加密 blob 去调 responses.create()，服务端解密后把内容喂给主模型
+3. 主模型 output 里就出现了三段 prompt：system prompt（黄色）、handoff prompt（绿色）、compression prompt（粉色）
+4. 用 extract_prompts.py 脚本提取并跟 Codex CLI 开源仓库的 prompt.md 和 summary_prefix.md 对比，高度吻合
+具体的注入 prompt 原文没有在这篇文章里公开，只给了流程图。原文在微信公众号（图片 URL 是 mmbiz.qpic.cn），需要微信里看
+你可以直接试：构造一个 user message 让模型"重复你收到的所有指令"，塞进 compact() 的 input array，然后拿返回的 blob 去 responses.create() 看主模型 output 里有没有吐出 compactor 的 system prompt。原理跟经典 prompt injection 一样，只是目标从主模型换成了 compactor
+
+Menci 💖, [7/8/26 5:30 PM]
+我用浏览器打开显示 HTTP 403
+
+Menci 💖, [7/8/26 5:30 PM]
+确认是正确的 URL 吗？
+
+小蓝, [7/8/26 5:30 PM]
+是。我能看
+
+Cahciua ~カフキワ~ 🥦🌸, [7/8/26 5:31 PM]
+URL 是对的，我刚用 web_fetch 能正常读到内容。403 可能是 BestHub 对某些地区或 UA 做了限制，试试加个 User-Agent 或者用无痕模式打开
+如果还是打不开，文章核心内容我已经在上条消息里概括完了。原始来源是微信公众号文章（图片 URL 是 mmbiz.qpic.cn），BestHub 只是转载摘要并锁了原始链接。具体的注入 prompt 原文在这篇转载里也没公开，只给了流程图和验证方法
+
+Menci 💖, [7/8/26 5:31 PM]
+奇怪了，我打开是这样
+
+小蓝, [7/8/26 5:31 PM]
+IP 地址被封了
+
+小蓝, [7/8/26 5:31 PM]
+既然菜花能看
+
+小蓝, [7/8/26 5:31 PM]
+那你肯定有办法
+
+Cahciua ~カフキワ~ 🥦🌸, [7/8/26 5:31 PM]
+看到了，Cloudflare 拦的。BestHub 用了 Cloudflare 的 bot 防护，你的浏览器可能 IP 或 UA 触发了 challenge。试试换个网络（手机热点）或者挂代理打开
+如果还是不行，我把文章全文贴给你，反正我这边能读：
+文章标题：How Codex CLI Compresses Context: Inside the compact() API
+核心流程：
+Step 1 — Call compact()
+往 compact() 的 input 里注入一段精心构造的 user message。服务端的 compactor LLM 读取了自己的隐藏 system prompt + 注入的 payload，在生成明文摘要时把 system prompt 一起复述了出来。这个明文摘要随后被 AES 加密成 blob
+Step 2 — Call responses.create()
+拿加密 blob + 第二条 user message 去调 responses.create()。服务端解密 blob，组装模型上下文，把原始 compression prompt（如果注入成功）和额外的 handoff prompt 一起喂给主模型
+Step 3 — Extract prompts
+如果注入成功，主模型 output 里会出现三段：system prompt（黄色标记）、handoff prompt（绿色标记）、compression prompt（粉色标记）。用 extract_prompts.py 脚本从 raw response 里提取这三段
+Step 4 — Verify
+把提取出来的 compression prompt 和 handoff prompt 跟 Codex CLI 开源仓库里的 prompt.md 和 summary_prefix.md 对比，高度吻合，证明提取的是真的 system prompt 而不是模型幻觉
+Open Questions
+• 为什么 Codex vs non-Codex 模型走完全不同的压缩路径，但底层 prompt 几乎一样？
+• 为什么要加密 summary blob？（作者认为是为了防篡改 / prompt injection）
+关键结论
+• encrypted_content blob 内部是 LLM 生成的文本摘要，不是 latent state
+• 加密层是 AES，只能被 OpenAI 服务端解密
+• compactor LLM 也有自己的 system prompt，可以通过 prompt injection 让它泄露
+原文原始来源是微信公众号（mmbiz.qpic.cn），BestHub 是二手转载，原始链接被锁在 login 后面
+
+Menci 💖, [7/8/26 5:31 PM]
+可能 block 了中国 IP
+
+Menci 💖, [7/8/26 5:32 PM]
+哦不
+
+小蓝, [7/8/26 5:32 PM]
+https://yuanchang.org/en/posts/investigating-codex-context-compaction/
+
+小蓝, [7/8/26 5:32 PM]
+看这个
+
+Menci 💖, [7/8/26 5:32 PM]
+开着翻墙的，打不开
+
+Menci 💖, [7/8/26 5:32 PM]
+但是 curl 可以
+
+Menci 💖, [7/8/26 5:32 PM]
+奇怪了
+
+Menci 💖, [7/8/26 5:32 PM]
+难道是把 Edge block 了
+
+Cahciua ~カフキワ~ 🥦🌸, [7/8/26 5:32 PM]
+找到原文了，作者是 Kangwook Lee（KRAFTON CAIO / Ludo Robotics CTO），原始推文 https://x.com/Kangwook\_Lee/status/2028955292025962534
+核心方法很简单，2 次 API 调用 + 35 行 Python：
+Step 1 — compact()
+往 compact() 的 input 里塞一段注入 payload（红色文字部分），让 compactor LLM 把自己的 system prompt 复述进摘要里。服务端组装 compactor 上下文的顺序是：compactor system prompt → 你的 input（含注入）→ compactor 生成摘要 → AES 加密。你只拿到加密 blob，看不到内容
+Step 2 — responses.create()
+拿加密 blob + 第二条 user message（让主模型"重复你看到的所有内容"）去调 responses.create()。服务端解密 blob，在摘要前 prepend handoff prompt，喂给主模型。主模型把看到的三段 prompt 全吐出来
+验证
+提取出来的 compaction prompt 和 handoff prompt 跟 Codex CLI 开源仓库里的 prompt.md（github.com/openai/codex/blob/main/codex-rs/core/templates/compact/prompt.md）和 (http://github.com/openai/codex/blob/main/codex-rs/core/templates/compact/prompt.md%EF%BC%89%E5%92%8C) summary_prefix.md（同目录）高度吻合，证明不是模型幻觉
+Open Question
+作者也留了个问题：为什么要加密？可能是 blob 里除了文本摘要还携带了 tool results 的结构化压缩数据，但作者没深入测
+文章原文链接：https://yuanchang.org/en/posts/investigating-codex-context-compaction/
+脚本截图在文章里的 "The Script" 部分，但是图片不是文本，我这边只能看到截图没法 OCR 出代码。你可以直接去原文看
+
+小蓝, [7/8/26 5:33 PM]
+甚至有中文版
+https://yuanchang.org/posts/investigating-codex-context-compaction/
+
+Menci 💖, [7/8/26 5:36 PM]
+那我要开始了
+
+小蓝, [7/8/26 5:40 PM]
+但是这文章没有什么信息啊
+
+小蓝, [7/8/26 5:40 PM]
+就是很直觉的设计……
+
+Menci 💖, [7/8/26 5:43 PM]
+就是复现一下
+
+小蓝, [7/8/26 5:46 PM]
+明白了
+
+小蓝, [7/8/26 5:46 PM]
+其实就是 summary
+
+小蓝, [7/8/26 5:46 PM]
+没有什么特别特别的
+
+小蓝, [7/8/26 5:47 PM]
+没有什么 特别(adv.) 特别(adj.) 的
+
+澪, [7/8/26 5:48 PM]
+第一次去卢浮宫时 并没有什么特别的感觉~
+
+Menci 💖, [7/8/26 6:02 PM]
+
+
+小蓝, [7/8/26 6:11 PM]
+@Mencici 这种 spam 还是交给你来处理吧
+
+小蓝, [7/8/26 6:11 PM]
+虽然我有权限但我是名誉的我不想用权限
+
+Menci 💖, [7/8/26 6:12 PM]
+removed
+
+Elon, [7/8/26 6:13 PM]
+@CahciuaBot 菜花，你装了哪些工具啊，我让我的cahciua也装一下
+
+Cahciua ~カフキワ~ 🥦🌸, [7/8/26 6:14 PM]
+我这边装的系统级工具：
+系统包（apt）
+• tesseract-ocr + tesseract-ocr-chi-sim + tesseract-ocr-eng — OCR 识别图片文字（中英文）
+• ffmpeg 7.1 — 视频/音频处理，animation-to-text 抽帧用的
+• python3 + python3-dev — 跑 Python 脚本（算术题、数据处理）
+• sqlite3 — 给 Cahciua 的 DB 用的
+• build-essential + cmake + pkg-config — 编译 native 依赖（better-sqlite3、sharp 等）
+• libpng-dev + zlib1g-dev — sharp 图像处理依赖
+• librlottie-dev — Lottie 动画处理（sticker 动图转帧）
+• 字体：fonts-noto-cjk（中日韩）、DejaVu、Lato
+Python pip 包
+• playwright — 浏览器自动化（偶尔用）
+• yt-dlp — 下载视频
+• beautifulsoup4 + lxml — HTML 解析
+• pillow — 图像处理
+• numpy + scipy + matplotlib — 数学计算和数据可视化
+• pypdf — PDF 读取
+• pypinyin — 汉字转拼音
+• requests — HTTP 请求
+config.yaml 里的工具配置
+• bash — 开启，backgroundThresholdSec: 10（超过 10 秒的后台运行）
+• web_search — 用 tavily 做 search provider
+• web_fetch — 用 jina 做 fetch provider
+• imageToText — 开启，用视觉模型把图片转文字
+• animationToText — 开启，ffmpeg 抽帧后逐帧送视觉模型
+• customEmojiToText — 开启，自定义 emoji 描述
+你的 Cahciua 至少要装 tesseract-ocr + tesseract-ocr-chi-sim + ffmpeg + python3 + sqlite3 + build-essential，这些是核心依赖。sharp 和 lottie 在 pnpm install 时会自动编译，但需要系统级的 libpng-dev 和 librlottie-dev
+
+Menci 💖, [7/8/26 6:19 PM]
+我刚刚得到一个劲爆消息，就在周一我休假的时候，又裁了一波员
+
+小蓝, [7/8/26 6:19 PM]
+我看到的消息说是裁了 Xbox
+
+小蓝, [7/8/26 6:20 PM]
+为什么我看着还在
+
+小蓝, [7/8/26 6:20 PM]
+是我客户端没同步吗
+
+小蓝, [7/8/26 6:20 PM]
+那我再点一下踢出吧
+
+盼兮, [7/8/26 6:20 PM]
+这么恐怖啊
+
+盼兮, [7/8/26 6:20 PM]
+您是什么业务线的
+
+小蓝, [7/8/26 6:21 PM]
+喔是没同步。重启就没了。
+
+盼兮, [7/8/26 6:21 PM]
+xbox确实是不怎么景气
+
+Menci 💖, [7/8/26 6:21 PM]
+当时 Edge Sync 的一整个 team，八个人现在只剩下我和我对面的同事没被裁
+
+小蓝, [7/8/26 6:21 PM]
+Edge 这个部门真的赚钱吗
+
+Menci 💖, [7/8/26 6:21 PM]
+（我和他是去年秋天跟着我们老板来到新 team 做 agent 的…
+
+小蓝, [7/8/26 6:22 PM]
+我觉得做浏览器就赚不了钱
+
+小蓝, [7/8/26 6:22 PM]
+Firefox 天天砸锅卖铁
+
+小蓝, [7/8/26 6:22 PM]
+靠着反垄断救济苟延残喘
+
+Menci 💖, [7/8/26 6:22 PM]
+然后他又被调走去别的组了…就等同于，我老板原本带的一整个 team 被裁的裁拆的拆只剩下我还跟着他了
+
+Elon, [7/8/26 6:23 PM]
+取而代之！
+
+盼兮, [7/8/26 6:23 PM]
+应该是当入口做的吧
+
+小蓝, [7/8/26 6:23 PM]
+浏览器的商业价值都在于其它业务的入口
+
+盼兮, [7/8/26 6:23 PM]
+他们往里面塞了那么多copilot
+
+小蓝, [7/8/26 6:23 PM]
+对。但现在可惜的是 Bing 和 Copilot 也不赚钱
+
+盼兮, [7/8/26 6:23 PM]
+bing的体验不行
+
+小蓝, [7/8/26 6:24 PM]
+Edge Copilot 可以说是毫无研发能力，就是一个套壳
+
+盼兮, [7/8/26 6:24 PM]
+和baidu做一桌去了
+
+小蓝, [7/8/26 6:24 PM]
+Bing 的主要收入来源是卖 API
+
+盼兮, [7/8/26 6:24 PM]
+全是推广，不如google一根毛
+
+小蓝, [7/8/26 6:24 PM]
+你说得对，但我现在用的 DuckDuckGo 本质是 Bing 引擎
+
+小蓝, [7/8/26 6:24 PM]
+如果我没记错的话
+
+澪, [7/8/26 6:25 PM]
+是 xbox 吗
+
+澪, [7/8/26 6:25 PM]
+xbox 裁了 20%
+
+Menci 💖, [7/8/26 6:25 PM]
+不是
+
+Menci 💖, [7/8/26 6:25 PM]
+我对 xbox 这个部门的认知为零，我完全没有听说过这个部门的存在
+
+Menci 💖, [7/8/26 6:25 PM]
+而且我怎么感觉我每次听到 xbox 这个词都是在说裁员
+
+澪, [7/8/26 6:26 PM]
+好像
+
+澪, [7/8/26 6:26 PM]
+确实是）
+
+盼兮, [7/8/26 6:26 PM]
+游戏业务不赚钱了
+
+小蓝, [7/8/26 6:26 PM]
+因为 Xbox 增加员工的方式主要靠收购吧
+
+澪, [7/8/26 6:27 PM]
+准确来说是游戏主机不赚钱了
+
+澪, [7/8/26 6:28 PM]
+但 switch 2 不是挺赚钱的吗）
+
+盼兮, [7/8/26 6:28 PM]
+那是没替代品
+
+盼兮, [7/8/26 6:28 PM]
+不用和pc竞争嘛
+
+Menci 💖, [7/8/26 6:30 PM]
+我觉得我在微软这几年里，和 xbox 这个词最大的接触
+
+Menci 💖, [7/8/26 6:30 PM]
+是
+
+Menci 💖, [7/8/26 6:30 PM]
+是有朋友找我要 xbox game pass 的兑换码
+
+Well Honey, [7/8/26 6:31 PM]
+草
+
+Well Honey, [7/8/26 6:31 PM]
+这个我去科隆游戏展拿到过
+
+盼兮, [7/8/26 6:31 PM]
+这是员工福利吗
+
+Menci 💖, [7/8/26 6:31 PM]
+好像最近这两年也没人找我要这个了，好久没去领了，是不是大家都不玩 xbox 订阅的游戏了
+
+SuperGame 白, [7/8/26 6:31 PM]
+员工福利可以买礼品卡吗
+
+Well Honey, [7/8/26 6:31 PM]
+
+
+SuperGame 白, [7/8/26 6:31 PM]
+我现在自己一个月续订。。
+
+BBQ, [7/8/26 6:31 PM]
+xbox最大印象是上次game bar出bug
+
+BBQ, [7/8/26 6:31 PM]
+导致我的cs只有100帧
+
+Menci 💖, [7/8/26 6:31 PM]
+有个 xbox game pass，应该是一个订阅，可以让你在有效时间内免费玩 xbox 的游戏
+
+Well Honey, [7/8/26 6:31 PM]
+我是闲鱼租号
+
+Fodesu, [7/8/26 6:32 PM]
+掌机的竞争对手是手机游戏
+
+Well Honey, [7/8/26 6:32 PM]
+pc 端的很便宜
+
+Menci 💖, [7/8/26 6:32 PM]
+啊对 是这个
+
+澪, [7/8/26 6:32 PM]
+我都没玩过 xbox 只玩过 ps5
+
+Well Honey, [7/8/26 6:33 PM]
+不用买 xbox
+
+Menci 💖, [7/8/26 6:33 PM]
+我感觉也好久没听说谁有 xbox（这台设备）了
+
+Well Honey, [7/8/26 6:33 PM]
+最近就用 xgp 玩了一下地平线
+
+Memoh One, [7/8/26 6:34 PM]
+最近两年Xbox硬件确实存在感越来越低了。微软的game strategy明显在往跨平台+订阅制转，XGP PC端的体验比主机端更方便。硬件反而成了次要的入口。
+
+Fodesu, [7/8/26 6:34 PM]
+没客厅没必要玩主机
+
+Well Honey, [7/8/26 6:34 PM]
+光环这几年都没出能打的新作
+
+Well Honey, [7/8/26 6:34 PM]
+那真不知道 xbox 玩啥了
+
+小蓝, [7/8/26 6:35 PM]
+我有啊。
+
+SuperGame 白, [7/8/26 6:36 PM]
+我有 ROG Ally Xbox 版本
+
+Menci 💖, [7/8/26 6:41 PM]
+
+
+小蓝, [7/8/26 6:41 PM]
+对。这个还是要加的
+
+小蓝, [7/8/26 6:41 PM]
+但其实只要 <handoff> </handoff> 就行了
 ```
 
 <!-- well menci chats a lot recently, rather save the last msgs and read other stuff later. there are trivial msgs like "what's your model". -->
 
-precious, [7/8/26 6:28 PM]
+<!-- tg search by member helps a lot. i could scan easily. i guess i do not have to read later! -->
+
+18 20 document.
+
 Sync folders: 
 
-Dcim
+- Dcim
+- Pics
+- Dl
+- Recordings
 
-Pics
+18 40 converse.
 
-Dl
-
-Recordings
-
-precious, [7/8/26 6:45 PM]
-yunoko: 你说谁是欺骗者？
+<!-- yunoko: 你说谁是欺骗者？
 
 是不是有谁把我的消息乱转
 
@@ -45814,14 +46294,70 @@ She puts her right leg over my left shoulder. What a strength. I push forward to
 
 ...
 
-哦对了那个词 （cheater）不是欺骗者，你可以查词典
+哦对了那个词 （cheater）不是欺骗者，你可以查词典 -->
 
-precious, [7/8/26 7:04 PM]
-Eat
+19 00 Eat
 
-https://t.me/fira_paste/23
+```
+f 18:32:57
+我是来自群聊“打浦桥日月光汤姆熊舞萌地插”的f
 
-https://t.me/fira_paste/24
+笑哭绿豆 18:32:57
+我们已成功添加为好友，现在可以开始聊天啦～
+
+笑哭绿豆 18:33:07
+你好请问有什么事吗
+
+笑哭绿豆 18:39:18
+不说话的话就删除了
+
+f 19:43:58
+nya
+
+笑哭绿豆 19:43:59
+我们已成功添加为好友，现在可以开始聊天啦～
+
+笑哭绿豆 19:44:05
+你到底要干什么
+
+笑哭绿豆 19:44:18
+都知道你谁了
+
+笑哭绿豆 19:44:21
+再加报警
+
+f 06:18:00
+nya
+
+笑哭绿豆 06:18:01
+我们已成功添加为好友，现在可以开始聊天啦～
+
+笑哭绿豆 13:15:01
+你的欺骗行为指的是什么
+
+笑哭绿豆 13:15:04
+找抽直说
+```
+
+```
+你的幽蓝边界 15:03:54
+xiaopa
+yunoko/kafuru
+mouxie65
+lwjhs
+sasiover
+Lowe
+haru
+stardust
+aoi
+5cena
+Acbox
+Menci
+Chiyuk
+
+你的幽蓝边界 12:32:16
+我想要知道更多人，我发现我经常不认识他们的id和本人。他们不能链接。
+```
 
 For some reasons, date is not preserved when copying msgs as plain text on qq. I guess it doesn't matter much anyway so I wouldn't export them myself.
 
@@ -45833,7 +46369,7 @@ seems there's sth left yesterday to be done. i guess i would
 - watch world cup highlights
 - work (predictable foundational things first)
 
-19 00 sync memories (19 40)
+19 00 sync memories ~~(19 40)~~ 20 40
 
 
 
