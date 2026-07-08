@@ -43124,6 +43124,8 @@ cubibibibibism!
 
  -->
 
+22 00 End the day w Zitronectar, はいよろこんで, and INTERNET YAMERO
+
 23 40 watch `GMBenjaminBok` on twitch for a while.
 
 chess puzzles. seems fun.
@@ -43140,11 +43142,152 @@ another is a point on the roadmap
 
 <!-- "dream" carries negative meaning, i would definitely not use it. imagine might be accurate, but it feels a bit boring compared w wish, and i could not always tell the difference, if i decide to adopt both for some reason. -->
 
+01 40 plan.
+
+Anyway you do not live in a vacuum.
+
+You will have landing page (it should definitely not be vitepress), repo page, pm page (issues roadmap todo whatever), discussion, and docs.
+
+You have your design. You should hold the definitive power in your hands.
+
+02 40 Appreciate `《舞萌特有的巨型小学生》`
+
+Again, the power of sns bfs.
+
+03 20 Appreciate `初中生，还配用苹果全家桶？` `「17岁生日作」平均w61的十个人接力究竟能有多唐？` `为什么我喜欢半夜出勤`
+
 18 00 watch `South Africa v Canada | Round of 32 | FIFA World Cup 2026™ | Highlights` <!-- reminded by google doodles. -->
 
 it's on! 
 
 <!-- well, a bit weird. 144p opening screen, 1080p match. -->
+
+precious, [6/29/26 2:59 PM]
+Math.
+
+It's likely to be consistent across models. 
+
+(A word a token)
+
+Input is trivial for humans.
+
+How much a message about. 500w?
+
+How many msgs.
+
+How much maximum usage.
+
+precious, [6/29/26 3:08 PM]
+Handle is no longer a decorator.
+
+I would not mess up with overloads and get weird in iife like syntax pattern.
+
+precious, [6/29/26 3:38 PM]
+Random 7k
+
+你是不是高考考完入坑舞萌
+
+不是。我高一
+
+哦，那就是中考考完入坑舞萌！
+
+... 我高一升高二
+
+你玩多久了
+
+平时不咋玩。记不清了。 不到一年。
+
+precious, [6/29/26 3:39 PM]
+(a naive yet energetic kid)
+
+要不要拼
+
+刚来不打
+
+(去洗手间）
+
+precious, [6/29/26 3:57 PM]
+（to staff:）你没有权力这么对顾客说话！
+
+我去找店长。
+
+(To a sub manager:) 我不是店长。店长在里面。
+
+...
+
+上次，周五，（店长）说机修周一来。但是当天就来了。
+
+最右一台。五号键。弹片不起，和上次一样。
+
+（确认数数方式）
+
+上次是右数第二台，4号键对吧。
+
+对。
+
+（和善的店长：）一会我去看一下
+
+所以那天是你对吧
+
+对。
+
+（The sub manager does the job with just a decent screwdriver within 1pc)
+
+应该没有断裂。螺丝刀开，调整位置即可。
+
+(One plays and breaks. Another plays on another machine while I wait.)
+
+precious, [6/29/26 4:04 PM]
+Ver upd?!
+
+precious, [6/29/26 4:26 PM]
+(to an anonymous 13k first time in 2026, pointing at the 7k grade 7 kid, cubercxm:) 他是不是 b15 没满
+
+他估计是b15一首都没有
+
+（Confirmed) 
+
+We don't know why no level 13 esm run, yet we don't know how to switch. We end up having not enough time and picking a random level 10 song.
+
+precious, [6/29/26 4:29 PM]
+Yunoko: 帮我打 w5！
+
+... (?!)
+
+Yunoko: 我现在 w482x
+
+...
+
+Yunoko: 别打扰通天代帮我推分。退后！
+
+Warau.
+
+precious, [6/29/26 5:24 PM]
+Well, just...
+
+I could not just spend the glue all over the back of the paper. It looks scrambled and ugly, yet never gets dry.
+
+precious, [6/29/26 6:22 PM]
+这就是内屏的好处。虽然准度不行。
+
+dt音游社完蛋了。
+
+我是竞赛的。
+
+我也是竞赛的。
+
+好多都是竞赛的。
+
+(a tailwind feel vibe coded wechat mini app)
+
+precious, [6/29/26 6:34 PM]
+Things to do when you have some free tokens 
+
+- libre dictionaries
+- there are many content online. Ruanyf. M67. Categorize. Analyze. 
+- there are many libs online. Document. The Devin one is not ideal, not any concise, and intimidating.
+- there are many impressive works in public domain. Arts and literature. History. Stem history. Aesthetics. Maybe you can batch process.
+- bfs the web. Zhihu. Berryberry. Organize. Open. And preserve.
 
 18 40 listen to `the battle of evermore (remaster)` by led zeppelin.
 
@@ -43375,6 +43518,18 @@ i guess i already made it within ten minutes.
 ...
 
 on frontend, <!-- to call, --> get baseurl <!-- that is the same domain by default --> and port <!-- in a json file -->, append api prefix, and that's it.
+
+08
+
+19 00 think.
+
+seems there's sth left yesterday to be done. i guess i would 
+
+- sync memories
+- watch world cup highlights
+- work (predictable foundational things first)
+
+19 00 sync memories
 
 
 

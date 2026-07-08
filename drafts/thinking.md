@@ -144,5 +144,15 @@ intention
 
 i should be able to view resources in a pie chart. and i guess sometimes it does not add up to the mem. idk.
 
+---
+
+Anyway you do not live in a vacuum.
+
+You will have landing page (it should definitely not be vitepress), repo page, pm page (issues roadmap todo whatever), discussion, and docs.
+
+You have your design. You should hold the definitive power in your hands.
+
+---
+
 
 
