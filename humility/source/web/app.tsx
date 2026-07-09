@@ -2,35 +2,34 @@ import { useState, useEffect } from "react"
 import { use_bind } from 'web/lib/keyboard.use';
 import { sync_theme } from 'web/lib/sync_theme';
 
-import { port } from 'web/port.json';
-
 import 'web/design/utilitarian/utilitarian.css'
 import 'web/app.css'
+import { call } from "web/lib/call";
 
 export function App() {
   useEffect(() => {
-    // console.log(port)
+    log('app mounts')
 
-    console.log('app mounts')
+    // await call('hello', {hi:true})
   })
 
   use_bind('ctrl+p', (e) => {
     e.preventDefault() // print
-    console.log(e)
-    console.log('search recent items')
+    log(e)
+    log('search recent items')
   })
   use_bind('ctrl+shift+p', (e) => {
     e.preventDefault() // browser console command panel?
-    console.log(e)
-    console.log('search commands')
+    log(e)
+    log('search commands')
   })
   use_bind('ctrl+?', (e) => {
-    console.log(e)
-    console.log('open shortcuts help')
+    log(e)
+    log('open shortcuts help')
   })
   use_bind('ctrl+,', (e) => {
-    console.log(e)
-    console.log('open settings')
+    log(e)
+    log('open settings')
   })
 
   useEffect(() => {

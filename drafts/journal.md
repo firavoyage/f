@@ -46375,6 +46375,8 @@ seems there's sth left yesterday to be done. i guess i would
 
 14 00 listen to _suzume_ by hayato sumino.
 
+14 40 write global prelude for web.
+
 
 
 <!-- timebox, plan. -->
