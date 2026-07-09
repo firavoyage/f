@@ -30,12 +30,24 @@
       "}"
     ],
   },
+  "arrow function": {
+    "prefix": ["arf", "arfn"],
+    "body": [
+      "(${1}) => $0",
+    ],
+  },
   "async function": {
     "prefix": "af",
     "body": [
       "async function ${1:name}(${2}) {",
       "  $0",
       "}"
+    ],
+  },
+  "async arrow function": {
+    "prefix": ["aarf", "aaf", "araf"],
+    "body": [
+      "async (${1}) => $0",
     ],
   },
   "export function": {

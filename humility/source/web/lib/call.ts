@@ -14,4 +14,6 @@ export async function call(method: string, payload: object) {
   const endpoint = `${base.protocol}//${base.hostname}:${port}/api/${method}`
 
   log(endpoint)
+
+  return endpoint
 }
