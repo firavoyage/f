@@ -10,7 +10,7 @@ export function App() {
   useEffect(() => {
     log('app mounts')
 
-    // await call('hello', {hi:true})
+    call('hello', {hi:true})
   })
 
   use_bind('ctrl+p', (e) => {
