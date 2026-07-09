@@ -271,7 +271,6 @@ desktop:
 - set up coding agent search web use browser
 - shell symlink command
 - set up coding agent skills
-- shell tmux
 - try mac os via docker
 - fix laptop keyboard key
 - mac os x docker
@@ -287,6 +286,7 @@ desktop:
 - shell chmod x command history
 - earlyoom
 - trash
+- shell tmux abstraction
 
 android:
 

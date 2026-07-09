@@ -46377,7 +46377,9 @@ seems there's sth left yesterday to be done. i guess i would
 
 14 40 write global prelude for web.
 
-16 00 learn tmux. write some abstractions.
+16 00 learn tmux and shell syntax. write some abstractions.
+
+16 20 learn responsive web design.
 
 
 
