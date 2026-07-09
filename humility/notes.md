@@ -460,3 +460,15 @@ divide and conquer.
 
 ---
 
+> If They Aliased the Backslash? (Spoiler: They Can't)
+
+gemini is much more fun when speaking natively and casually, w slangs.
+
+it does not even has to be role playing, like "speak like a pirate"
+
+(ref: chatgpt personas)
+
+maybe a community would work. just give it a command/api. i could have a builtin extension leveraging it.
+
+---
+
