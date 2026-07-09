@@ -555,4 +555,119 @@ Would you like to see how to **parse these strings back into symbols** on the cl
 
 Show all
 
+# are get post and status codes basically strings and numbers and you can define at your will if you do not care conventions
+
+Yes, from a purely technical standpoint, HTTP methods and status codes are just text strings and integers sent over a network connection, and you can define custom ones if you ignore conventions.
+
+### The Technical Reality
+
+At the lowest network level (TCP/IP), an HTTP request and response are just plain text streams.
+
+- **HTTP Methods (GET, POST):** These are simply text strings. Your server reads the string and decides what code to execute.
+- **Status Codes (200, 404):** These are three-digit integers sent in the response header line.
+
+### Creating Custom Codes
+
+If you control both the client (e.g., a mobile app) and the server, you can create your own protocol rules:
+
+- You can invent a method called `FLY` instead of `GET`.
+- You can return a status code of `799` to mean "Database is busy."
+- Your backend code just needs an `if/else` statement to handle these custom values.
+
+### Why This Breaks in Practice
+
+While the computer hardware does not care, ignoring the established HTTP conventions will break standard web infrastructure.
+
+- **Browser Behavior:** Web browsers will not know how to handle a `799` status code and may treat it as a generic network failure.
+- **Network Caching:** Proxies, Content Delivery Networks (CDNs), and browsers automatically cache `GET` requests but do not cache `POST` requests. If you mix them up, you will break internet caching.
+- **Security Software:** Firewalls and load balancers often block unknown HTTP methods like `FLY` to prevent cyber attacks.
+- **Developer Tools:** Standard API documentation tools (like Swagger/OpenAPI) and testing tools (like Postman) are built around the standard conventions.
+
+To keep learning about network protocols, would you like to explore **how browsers handle caching** for different methods, or see **how a server parses plain text** into an HTTP request?
+
+- [link](https://blog.stackademic.com/http-mechanics-methods-headers-and-codes-23da48764c2b)\
+  HTTP Mechanics: Methods, Headers, and Codes | by Sameer Ahmed\
+  Jan 25, 2026 — The Anatomy of a Transaction Unlike TCP, which is a stream of bytes, HTTP is structured into discrete Messages. There are only two...\
+  \
+  \
+  Stackademic
+- [link](https://www.freecodecamp.org/news/http-full-course/)\
+  HTTP Networking in JavaScript – Handbook for Beginners\
+  Feb 14, 2023 — At the end of the day, an HTTP method is just a string, like GET , POST , PUT , or DELETE . But by convention, backend developers ...\
+  \
+  \
+  freeCodeCamp
+- [link](https://www.reddit.com/r/learnprogramming/comments/vnfclq/when%5Fworking%5Fwith%5Fhttp%5Frequests%5Fare%5Fyou%5Fsupposed/)\
+  When working with HTTP requests, are you supposed to set the status/error codes yourself? Or is it an automatic response? : r/learnprogramming\
+  Jun 29, 2022 — It's up to the person writing the code on the server side to decide what the status codes returned are. For some status codes the ...\
+  \
+  Reddit
+
+Show all
+
+## can you post when you should get, and respond 200 when it errs (decide error by payload)
+
+Yes, you can technically design your API to use `POST` for fetching data and return a `200 OK` status code even when an error occurs. In fact, this is exactly how **GraphQL** and **SOAP** web services operate by design.
+
+However, doing this in a traditional REST API violates standard design principles.
+
+### Why People Do This
+
+Developers often choose this approach for specific architectural reasons:
+
+- **JSON Payloads:** `GET` requests cannot easily include a complex JSON body, whereas `POST` requests handle them naturally.
+- **Unified Error Handling:** Parsing every single response as a success at the network level allows the application client to handle errors entirely within the data payload.
+- **Security Auditing:** URL parameters in a `GET` request are often logged by servers and proxies, while `POST` bodies are typically encrypted in transit via HTTPS.
+
+### The Consequences to Consider
+
+If you adopt this pattern, you must build custom solutions for behaviors that the internet usually handles automatically:
+
+- **No Automatic Caching:** Browsers and Content Delivery Networks (CDNs) will never cache a `POST` request, drastically increasing your server load for data fetches.
+- **Client-Side Overhead:** Your frontend code cannot rely on standard HTTP network interceptors to catch errors. Every single request must be parsed to check the payload for an internal error flag.
+- **Monitoring Blindspots:** Application Performance Monitoring (APM) tools like Datadog or New Relic track API health by monitoring `4xx` and `5xx` status codes. If you return `200`, your dashboard will show 100% uptime even if every request is failing.
+
+### Example: A Custom Payload Error
+
+If you use this pattern, your response structure will typically look like this:
+
+json
+
+```
+{
+  "success": false,
+  "data": null,
+  "error": {
+    "code": "USER_NOT_FOUND",
+    "message": "The requested user profile does not exist."
+  }
+}
+```
+
+Use code with caution.
+
+Would you like to see **how to configure client-side error interceptors** for this pattern, or should we look at **how GraphQL handles queries and errors** using this exact method?
+
+- [link](https://www.linkedin.com/pulse/why-we-use-post-instead-get-fetch-data-modern-web-deepika-naik-8mo2c)\
+  Why We Use POST Instead of GET to Fetch Data in Modern Web Applications\
+  Sep 7, 2024 — Using POST gives you more flexibility to design custom APIs that handle specific data manipulation operations. For instance:\
+  \
+  \
+  LinkedIn
+- [link](https://dev.to/agbagbarao/returning-correct-statuscodes-in-azure-function-apps-17fb)\
+  Returning Correct StatusCodes in Azure Function Apps\
+  Sep 13, 2024 — Using this statement results in the response status code always being 200 OK. Gone are the days when developers would return a 200...\
+  \
+  \
+  DEV Community
+- [link](https://www.linkedin.com/posts/emmanuelparaskakis%5Fwith-some-apis-everything-is-always-200-activity-7426654162534404096-K0-w)\
+  API Design Pitfall: Misleading 200 OK Status Codes | Emmanuel Paraskakis posted on the topic\
+  Feb 9, 2026 — More Relevant Posts With some APIs, everything is always 200 OK. That design decision is costing them. Here's a typical pattern I ...\
+  \
+  \
+  LinkedIn
+
+Show all
+
 # 
+
