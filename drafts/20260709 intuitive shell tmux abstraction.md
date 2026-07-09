@@ -1,4 +1,4 @@
-# . test
+# . learn
 
 ```sh
  ~ % tmux -h
@@ -128,6 +128,42 @@ hello: 1 windows (created Thu Jul  9 14:36:28 2026)
 backend: 1 windows (created Thu Jul  9 14:36:28 2026)
  ~ % tmux rename-session -t 9 web
  ~ % tmux ls
+backend: 1 windows (created Thu Jul  9 14:36:28 2026)
+web: 1 windows (created Sat Jul  4 20:13:52 2026)
+```
+
+# . test
+
+```sh
+ ~ % tmux_ls
+backend: 1 windows (created Thu Jul  9 14:36:28 2026)
+web: 1 windows (created Sat Jul  4 20:13:52 2026)
+ ~ % tmux test
+[detached (from session test)]
+ ~ % tmux_ls
+backend: 1 windows (created Thu Jul  9 14:36:28 2026)
+test: 1 windows (created Thu Jul  9 16:53:35 2026)
+web: 1 windows (created Sat Jul  4 20:13:52 2026)
+ ~ % tmux_kill test
+ ~ % tmux_ls
+backend: 1 windows (created Thu Jul  9 14:36:28 2026)
+web: 1 windows (created Sat Jul  4 20:13:52 2026)
+```
+
+```sh
+ ~ % tmuxls
+backend: 1 windows (created Thu Jul  9 14:36:28 2026)
+web: 1 windows (created Sat Jul  4 20:13:52 2026)
+ ~ % tmux test
+[detached (from session test)]
+ ~ % tmuxls
+backend: 1 windows (created Thu Jul  9 14:36:28 2026)
+test: 1 windows (created Thu Jul  9 16:55:02 2026)
+web: 1 windows (created Sat Jul  4 20:13:52 2026)
+ ~ % tmuxclear
+ ~ % tmuxl
+zsh: command not found: tmuxl
+ ~ % tmuxls
 backend: 1 windows (created Thu Jul  9 14:36:28 2026)
 web: 1 windows (created Sat Jul  4 20:13:52 2026)
 ```
