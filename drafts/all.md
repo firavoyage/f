@@ -744,6 +744,10 @@ have: <!-- eat, grow -->
 - research zlibrary anna archive copyright
 - research tor <!-- ? -->
 
+grow:
+
+- politics ice criticism
+
 humility:
 
 - research claude code leak insights
