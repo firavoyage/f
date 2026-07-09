@@ -49,21 +49,17 @@ async function main() {
 
   const e = handle(baz)
   log('baz', e)
-  _ = () => {
-    if (is_error(e)) {
-      return e
-    }
-    const temp = e
-  }
+  // if (is_error(e)) {
+  //   return e
+  // }
+  // const temp = e
 
   const f = handle(asdf)
   log('asdf', f)
-  _ = () => {
-    if (is_error(f)) {
-      return f
-    }
-    const temp2 = f
-  }
+  // if (is_error(f)) {
+  //   return f
+  // }
+  // const temp2 = f
 
   // bar()  
 }

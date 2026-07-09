@@ -6,6 +6,8 @@ import { App } from "./app"
 
 import 'the-new-css-reset/css/reset.css';
 
+import 'web/global';
+
 createRoot(document.getElementById("root")!).render(
   env.dev ?
     <StrictMode>
