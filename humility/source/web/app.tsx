@@ -5,12 +5,15 @@ import { sync_theme } from 'web/lib/sync_theme';
 import 'web/design/utilitarian/utilitarian.css'
 import 'web/app.css'
 import { call } from "web/lib/call";
+import { useAsync } from "react-use";
 
 export function App() {
+  const { value } = useAsync(async () => await call('hello', {hi:true}))
+
   useEffect(() => {
     log('app mounts')
 
-    call('hello', {hi:true})
+    log('value', value)
   })
 
   use_bind('ctrl+p', (e) => {
