@@ -170,7 +170,7 @@ backend: 1 windows (created Thu Jul  9 14:36:28 2026)
 web: 1 windows (created Sat Jul  4 20:13:52 2026)
 ```
 
-# . help
+# . learn help
 
 ```sh
  ~ % tmux -h
@@ -767,6 +767,135 @@ Commands:
 Options:
       --config <PATH>
   -h, --help           Print help
+```
+
+```sh
+ ~ % rustc -h
+Usage: rustc [OPTIONS] INPUT
+
+Options:
+    -h, --help          Display this message
+        --cfg <SPEC>    Configure the compilation environment.
+                        SPEC supports the syntax `<NAME>[="<VALUE>"]`.
+        --check-cfg <SPEC>
+                        Provide list of expected cfgs for checking
+    -L [<KIND>=]<PATH>  Add a directory to the library search path. The
+                        optional KIND can be one of
+                        <dependency|crate|native|framework|all> (default:
+                        all).
+    -l [<KIND>[:<MODIFIERS>]=]<NAME>[:<RENAME>]
+                        Link the generated crate(s) to the specified native
+                        library NAME. The optional KIND can be one of
+                        <static|framework|dylib> (default: dylib).
+                        Optional comma separated MODIFIERS
+                        <bundle|verbatim|whole-archive|as-needed>
+                        may be specified each with a prefix of either '+' to
+                        enable or '-' to disable.
+        --crate-type <bin|lib|rlib|dylib|cdylib|staticlib|proc-macro>
+                        Comma separated list of types of crates
+                        for the compiler to emit
+        --crate-name <NAME>
+                        Specify the name of the crate being built
+        --edition <2015|2018|2021|2024|future>
+                        Specify which edition of the compiler to use when
+                        compiling code. The default is 2015 and the latest
+                        stable edition is 2024.
+        --emit <TYPE>[=<FILE>]
+                        Comma separated list of types of output for the
+                        compiler to emit.
+                        Each TYPE has the default FILE name:
+                        * asm - CRATE_NAME.s
+                        * llvm-bc - CRATE_NAME.bc
+                        * dep-info - CRATE_NAME.d
+                        * link - (platform and crate-type dependent)
+                        * llvm-ir - CRATE_NAME.ll
+                        * metadata - libCRATE_NAME.rmeta
+                        * mir - CRATE_NAME.mir
+                        * obj - CRATE_NAME.o
+                        * thin-link-bitcode - CRATE_NAME.indexing.o
+        --print <INFO>[=<FILE>]
+                        Compiler information to print on stdout (or to a file)
+                        INFO may be one of
+                        <all-target-specs-json|backend-has-zstd|calling-conventions|cfg|check-cfg|code-models|crate-name|crate-root-lint-levels|deployment-target|file-names|host-tuple|link-args|native-static-libs|relocation-models|split-debuginfo|stack-protector-strategies|supported-crate-types|sysroot|target-cpus|target-features|target-libdir|target-list|target-spec-json|target-spec-json-schema|tls-models>.
+    -g                  Equivalent to -C debuginfo=2
+    -O                  Equivalent to -C opt-level=3
+    -o <FILENAME>       Write output to FILENAME
+        --out-dir <DIR> Write output to compiler-chosen filename in DIR
+        --explain <OPT> Provide a detailed explanation of an error message
+        --test          Build a test harness
+        --target <TARGET>
+                        Target tuple for which the code is compiled
+    -A, --allow <LINT>  Set lint allowed
+    -W, --warn <LINT>   Set lint warnings
+        --force-warn <LINT>
+                        Set lint force-warn
+    -D, --deny <LINT>   Set lint denied
+    -F, --forbid <LINT> Set lint forbidden
+        --cap-lints <LEVEL>
+                        Set the most restrictive lint level. More restrictive
+                        lints are capped at this level
+    -C, --codegen <OPT>[=<VALUE>]
+                        Set a codegen option
+    -V, --version       Print version info and exit
+    -v, --verbose       Use verbose output
+
+Additional help:
+    -C help             Print codegen options
+    -W help             Print 'lint' options and default settings
+    --help -v           Print the full set of options rustc accepts
+```
+
+```sh
+ ~ % cargo -h
+Rust's package manager
+
+Usage: cargo [+toolchain] [OPTIONS] [COMMAND]
+       cargo [+toolchain] [OPTIONS] -Zscript <MANIFEST_RS> [ARGS]...
+
+Options:
+  -V, --version                  Print version info and exit
+      --list                     List installed commands
+      --explain <CODE>           Provide a detailed explanation of a rustc error message
+  -v, --verbose...               Use verbose output (-vv very verbose/build.rs output)
+  -q, --quiet                    Do not print cargo log messages
+      --color <WHEN>             Coloring [possible values: auto, always, never]
+  -C <DIRECTORY>                 Change to DIRECTORY before doing anything (nightly-only)
+      --locked                   Assert that `Cargo.lock` will remain unchanged
+      --offline                  Run without accessing the network
+      --frozen                   Equivalent to specifying both --locked and --offline
+      --config <KEY=VALUE|PATH>  Override a configuration value
+  -Z <FLAG>                      Unstable (nightly-only) flags to Cargo, see 'cargo -Z help' for details
+  -h, --help                     Print help
+
+Commands:
+    build, b    Compile the current package
+    check, c    Analyze the current package and report errors, but don't build object files
+    clean       Remove the target directory
+    doc, d      Build this package's and its dependencies' documentation
+    new         Create a new cargo package
+    init        Create a new cargo package in an existing directory
+    add         Add dependencies to a manifest file
+    remove      Remove dependencies from a manifest file
+    run, r      Run a binary or example of the local package
+    test, t     Run the tests
+    bench       Run the benchmarks
+    update      Update dependencies listed in Cargo.lock
+    search      Search registry for crates
+    publish     Package and upload this package to the registry
+    install     Install a Rust binary
+    uninstall   Uninstall a Rust binary
+    ...         See all commands with --list
+
+See 'cargo help <command>' for more information on a specific command.
+```
+
+version
+
+```sh
+ ~ % rustc --version
+rustc 1.96.0 (ac68faa20 2026-05-25)
+ ~ % cargo --version
+cargo 1.96.0 (30a34c682 2026-05-25)
 ```
 
 # . tmux manpage
@@ -4429,6 +4558,135 @@ BUGS
 2.12.0							    2023-09-23							    MAN(1)
 ```
 
+# . riptmux source
+
+```sh
+riptmux(){
+  local reset=$(tput sgr0)
+  local bold=$(tput bold)
+  
+  if test $# -eq 0; then
+    command tmux
+  elif test $# -eq 1; then
+    if test $1 = "ls"; then
+      command tmux ls
+    elif test $1 = "a"; then
+      command tmux a
+    elif test $1 = "clear"; then
+      tmux_clear
+    elif test $1 = "--help" -o $1 = "-h"; then
+      # just have a linebreak after usage
+      cat << EOF
+Run and manage background daemons
+
+Usage:
+  ${bold}tmux${reset}                  Start a terminal
+  ${bold}tmux <name>${reset}           Start a named terminal
+  ${bold}tmux <command>${reset}        Perform an action
+
+Commands:
+  ${bold}ls${reset}                    List all sessions
+  ${bold}a${reset}                     Back to the last session
+  ${bold}a <name>${reset}              Back to a named session
+  ${bold}clear${reset}                 Clear inactive sessions of last command finished
+  ${bold}kill <name>${reset}           Kill a session
+  ${bold}rename <old> <new>${reset}    Rename a session
+
+Options:
+  ${bold}-h, --help${reset}            Print this help
+  ${bold}-v, --version${reset}         Print version
+
+Use ctrl+b d to detach in a terminal, exit to remove the session
+EOF
+    elif test $1 = "--version" -o $1 = "-v"; then
+      echo 'tmux 0.0.0 (2026.07.09)'
+      # echo 'riptmux 0.0.0 (2026.07.09)'
+    else
+      # named
+      command tmux new -s $1
+    fi
+  elif test $# -eq 2 -a $1 = "a"; then
+    command tmux a -t $2
+  elif test $# -eq 2 -a $1 = "kill"; then
+    tmux_kill $2
+  elif test $# -eq 3 -a $1 = "rename"; then
+    tmux_rename $2 $3
+  else
+    echo "no arg to tmux, one arg to have a named tmux session"
+  fi
+}
+
+alias tmux='riptmux'
+
+tmux_ls(){
+  command tmux ls
+}
+
+tmux_a(){
+  command tmux a
+}
+
+tmux_rename(){
+  if test $# -eq 2; then
+    command tmux rename-session -t $1 $2
+  else 
+    echo "args: old name, new name"
+  fi
+}
+
+tmux_kill(){
+  if test $# -eq 1; then
+    command tmux kill-session -t $1
+  else 
+    echo "arg: session name to be killed"
+  fi
+}
+
+tmux_clear(){
+  # Loop through all active tmux session names
+  for s in $(command tmux ls -F '#{session_name}' 2>/dev/null); do
+      # Count the number of active child processes running in this session
+      child_process_count=$(command tmux list-panes -t "$s" -F '#{pane_pid}' | xargs -I {} pgrep -P {} | wc -l)
+
+      # If the count is 0, nothing is running except the idle shell prompt
+      if [ "$child_process_count" -eq 0 ]; then
+          # echo "Killing idle session: $s"
+          command tmux kill-session -t "$s"
+      else
+          # echo "Keeping active session: $s"
+      fi
+  done
+}
+```
+
+# . riptmux version and help
+
+```
+ ~ % tmux -v
+tmux 0.0.0 (2026.07.09)
+ ~ % tmux -h
+Run and manage background daemons
+
+Usage:
+  tmux                  Start a terminal
+  tmux <name>           Start a named terminal
+  tmux <command>        Perform an action
+
+Commands:
+  ls                    List all sessions
+  a                     Back to the last session
+  a <name>              Back to a named session
+  clear                 Clear inactive sessions of last command finished
+  kill <name>           Kill a session
+  rename <old> <new>    Rename a session
+
+Options:
+  -h, --help            Print this help
+  -v, --version         Print version
+
+Use ctrl+b d to detach in a terminal, exit to remove the session
+```
+
 # tmux commands
 
 12:53 AM
@@ -6220,5 +6478,263 @@ If you ever find yourself logged into a terminal that is completely broken due t
 - **Call the absolute binary path**: Call `/bin/bash` or `/bin/sh` directly to drop into a pristine shell execution environment.
 
 Do you want to see how to write a script that **safely locks down its environment** so user aliases can't break it, or are you curious about other **shell security restrictions**?
+
+# how to write a help for a cli
+
+2:24 AM
+
+<mark><strong>To write effective help text for a Command Line Interface (CLI), you must follow established POSIX standards and structural conventions so it remains easily scannable for humans and parsable by AI agents</strong></mark>**.** [link](https://stackoverflow.com/questions/9725675/is-there-a-standard-format-for-command-line-shell-help-text)
+
+A great CLI help page follows a predictable, highly structured visual template. [link](https://www.reddit.com/r/programming/comments/k8jal6/a%5Fguide%5Fto%5Fhelp%5Fyou%5Fwrite%5Fbetter%5Fcli/)
+
+### 1. Standard CLI Help Template
+
+Your screen output should be ordered exactly like this: [link](https://fuchsia.dev/fuchsia-src/development/api/cli%5Fhelp)
+
+text
+
+```
+NAME:
+    myapp - A one-sentence description of what the app does.
+
+USAGE:
+    myapp [global options] <command> [command options] [arguments...]
+
+VERSION:
+    1.2.0
+
+COMMANDS:
+    deploy    Deploy a service to the target environment.
+    status    Check the status of a running service.
+    help, h   Shows a list of commands or help for one command.
+
+GLOBAL OPTIONS:
+    --config FILE, -c FILE    Load configuration from FILE.
+    --verbose, -v             Produce verbose output.
+    --help, -h                Show help.
+    --version, -V             Print the version.
+```
+
+Use code with caution.
+
+### 2. Standard Syntax Notation (Grammar)
+
+When defining your `USAGE` line, use POSIX standard brackets and formatting to explain how data should be structured: [link](https://stackoverflow.com/questions/9725675/is-there-a-standard-format-for-command-line-shell-help-text)
+
+- **Square Brackets `[ ]`**: Means the item is **optional**. E.g., `[options]`.
+- **Angle Brackets `< >`**: Means the item is **required**. E.g., `<command>` or `<file>`.
+- **Ellipsis `...`**: Means the item can be **repeated**. E.g., `[files...]`.
+- **Vertical Bar `|`**: Means an **exclusive choice** between values. E.g., `--env dev|prod`. [link](https://stackoverflow.com/questions/9725675/is-there-a-standard-format-for-command-line-shell-help-text)
+
+### 3. Structural Design Best Practices
+
+To deliver the best user experience, your CLI help text should adhere to these key technical guidelines:
+
+- **Implement both `-h` and `--help`**: Ensure these flags trigger the exact same help text globally and for all subcommands.
+- **Use two-column formatting**: Place your options/commands on the left and align all descriptions evenly on the right using tabs or spaces.
+- **Keep long descriptions readable**: Use a max width of 80 characters for text wrapping so descriptions do not bleed over terminal windows.
+- **Document defaults**: Explicitly state the default value of an option if one exists (e.g., `--port INT (default: 8080)`).
+- **Provide practical examples**: Include a small section of copy-pasteable real-world examples at the very bottom for complex subcommands.
+- **Handle empty inputs natively**: If a user runs your app with zero arguments and it requires them, do not throw an ugly code traceback; automatically print the short usage guide to `stderr` and exit with an error code. [link](https://stackoverflow.com/questions/9725675/is-there-a-standard-format-for-command-line-shell-help-text)
+
+### 4. Leverage Language Frameworks
+
+Do not write help text parsers manually from scratch. Modern ecosystems feature robust libraries that generate perfectly formatted POSIX-compliant help text automatically using your code comments, decorators, or structures: [link](https://clig.dev/)
+
+| Language    | Recommended Library / Framework                     |
+| ----------- | --------------------------------------------------- |
+| **Go**      | Cobra (Industry standard used by Kubernetes/Docker) |
+| **Rust**    | Clap (Derive-based, extremely fast and compliant)   |
+| **Python**  | Click or Typer (FastAPI creator)                    |
+| **Node.js** | Commander.js or oclif                               |
+
+For further reading on optimal interface layouts, consult the comprehensive community [Command Line Interface Guidelines](https://clig.dev/).
+
+If you would like to go deeper, let me know:
+
+- What **programming language** you are using
+- If your tool uses **subcommands** (like `git clone`, `git push`)
+- What **framework** you are currently working with
+
+I can provide a concrete, copy-pasteable code snippet to build out your help framework.
+
+- [link](https://www.reddit.com/r/programming/comments/k8jal6/a%5Fguide%5Fto%5Fhelp%5Fyou%5Fwrite%5Fbetter%5Fcli/)\
+  A guide to help you write better CLI : r/programming - Reddit\
+  Always have a help with descriptions of how to use stuff and why. Logically group commands and be consistent in naming and flag fo...\
+  Reddit
+- [link](https://stackoverflow.com/questions/9725675/is-there-a-standard-format-for-command-line-shell-help-text)\
+  Is there a "standard" format for command line/shell help text?\
+  Typically, your help output should include: Description of what the app does; Usage syntax, which: Uses \[options] to indicate wher...\
+  Stack Overflow
+- [link](https://bettercli.org/design/cli-help-page/)\
+  CLI Help pages - Better CLI\
+  Provide a one-liner description. A sales pitch to explain why your application exists. A longer description of goals or capabiliti...\
+  Better CLI
+
+Show all
+
+## it can run as foo, foo command, or foo arg (anything other than a real command)
+
+it can run as foo, foo command, or foo arg (anything other than a real command)
+
+2:25 AM
+
+**To structure your CLI help text to handle a dynamic syntax that accepts an optional command or fallback positional arguments, you must explicitly separate these workflows in your `USAGE` section.**
+
+Because your tool treats any non-command string as a generic positional argument, standard POSIX parser libraries can easily become confused. You must document this clearly so users know what to expect.
+
+### 1. Updated CLI Help Template
+
+Your main help screen should structure its `USAGE` section with explicit, separate line entries for each structural path:
+
+text
+
+```
+NAME:
+    foo - A dynamic CLI tool handling commands and fallback arguments.
+
+USAGE:
+    foo [global options]                 Run with default behavior
+    foo [global options] <command>       Execute a specific command
+    foo [global options] <argument>      Process a fallback argument string
+
+GLOBAL OPTIONS:
+    -h, --help       Show this help screen
+    -v, --version    Print the version
+
+COMMANDS:
+    build            Compile the current workspace.
+    test             Run automated test suites.
+
+EXAMPLES:
+    foo              (Runs default behavior)
+    foo build        (Executes the build command)
+    foo my-file.txt  (Treats 'my-file.txt' as a fallback argument)
+```
+
+Use code with caution.
+
+### 2. Layout & Parsing Rules
+
+When your binary handles inputs this way, you must follow strict architectural rules to prevent unexpected errors:
+
+- **List Explicit Options First**: Your parser must evaluate flags (like `-h` or `--verbose`) before evaluating positional text strings.
+- **Use Exact Matching for Commands**: Maintain a strict internal array of exact valid commands (e.g., `['build', 'test']`).
+- **Evaluate the First Positional Element**: Check `args[0]`. If it matches your command list, route execution to that command block.
+- **Catch-All Route for Fallbacks**: If `args[0]` is present but is _not_ in your command list, route the string directly to your generic argument handler.
+- **Explicit End-Of-Options Indicator**: Support the POSIX standard double-dash delimiter `--`. This ensures that if a user wants to pass a fallback argument that looks like a flag (e.g., passing `-myfile` as an argument), running `foo -- -myfile` tells the parser to stop looking for flags.
+
+### 3. Framework Implementation Strategies
+
+Most native framework parsers do not support "command or random string fallback" out of the box because they expect a strict schema. Here is how to achieve it across popular ecosystems:
+
+- **Python ([Click](https://click.palletsprojects.com/))**: Use a custom `click.Group` subclass and override the `resolve_command` method. If the incoming token is not a registered command, manually inject your fallback command or argument into the stream.
+- **Go ([Cobra](https://github.com/spf13/cobra))**: Use the `Args: cobra.ArbitraryArgs` setting on your root command. Inside the root's `Run` block, manually check if `args[0]` matches a sub-command name. If it does not, execute your argument logic.
+- **Rust ([Clap](https://docs.rs/clap/latest/clap/))**: Avoid structural subcommands. Instead, define an optional enum or a raw `String` positional argument field. Parse the raw string inside your main block, and use a `match` statement to either route it to command functions or fallback logic.
+
+To help write the exact parsing engine, let me know:
+
+- What **programming language** you are using for this CLI tool
+
+- The **exact default behavior** when running `foo` with zero arguments
+
+- What **framework** you would prefer to use (or if you want a zero-dependency implementation)
+
+- [link](https://privx.docs.ssh.com/v36/docs/advanced-configuration/ssh-command-restrictions/)\
+  SSH Command Restrictions | PrivX Documentation\
+  You should always verify that the patterns match only the required commands, and do not accidentally match any unwanted commands.\
+  \
+  SSH Communications
+
+- [link](https://mywiki.wooledge.org/BashGuide/TestsAndConditionals)\
+  BashGuide/TestsAndConditionals\
+  There are some commands designed specifically to test things and return an exit status based on what they find. The first such com...\
+  \
+  Greg's Wiki
+
+- [link](https://uncodemy.com/blog/python-kwargs-explained-with-examples)\
+  Python Kwargs Explained with Examples\
+  It is important to remember the order of parameters: the standard arguments should be in the first place, then the args and finall...\
+  \
+  \
+  Uncodemy
+
+Show all
+
+## how many spaces after the longest line
+
+**You should use exactly 2 or 4 spaces of padding after the longest line in your left column before starting your description text.**
+
+In CLI help menu typography, there is no official POSIX law dictating a precise number, but professional parsers and style guides uniformly follow specific conventions.
+
+### 1. The Dynamic Padding Rule
+
+Your columns must be aligned visually into a single vertical gutter. To calculate this:
+
+1. Scan all of your commands or options in that section.
+2. Identify the **longest string** on the left side.
+3. Add **2 to 4 spaces** to that length to establish your description column's starting index.
+4. Align every other description in that section to that exact same starting column index.
+
+### 2. Industry Standard Behavior
+
+Major ecosystems standardize this spacing calculation automatically:
+
+- **[Cobra (Go)](https://github.com/spf13/cobra)** and **[Clap (Rust)](https://docs.rs/clap/latest/clap/)**: These engines dynamically measure the longest command or option flag, add a **3-space padding safety margin**, and then align all descriptions to that line.
+- **[Python (Argparse / Click)](https://click.palletsprojects.com/)**: Typically uses a fixed indentation for descriptions (often starting at column 22 or 24). However, if an option is longer than that target index, it pushes that specific description to a new line entirely, indented by 4 spaces under the flag, rather than letting them merge together. [link](https://fuchsia.dev/fuchsia-src/development/api/cli%5Fhelp)
+
+### 3. Practical Example (3-Space Padding)
+
+If your longest string is `--config FILE, -c FILE` (24 characters), you would add 3 spaces to fix your description gutter at column 27:
+
+text
+
+```
+GLOBAL OPTIONS:
+    --verbose, -v              Produce verbose output.
+    --config FILE, -c FILE    Load configuration from FILE.
+                              ^--- Gutter starts here (3 spaces after longest line)
+```
+
+Use code with caution.
+
+If you are writing a manual string formatter, do you want a **quick code snippet** to calculate this dynamic layout offset automatically?
+
+- [link](https://fuchsia.dev/fuchsia-src/development/api/cli%5Fhelp)\
+  CLI tool help requirements - Fuchsia.dev\
+  Feb 28, 2025 — Several sections call for English prose. This means writing in proper sentences using English grammar with US English spelling (as...\
+  fuchsia.dev
+
+## how many do you recommend
+
+I recommend exactly **4 spaces** after your longest line.
+
+While 2 or 3 spaces are common, 4 spaces provides the safest structural buffer for your layout.
+
+### Why 4 Spaces is Best
+
+- **Improves Scannability:** It creates a distinct visual gutter. This helps the human eye separate commands from descriptions instantly.
+- **Prevents Line Bleeding:** If you add a new flag later that is 1 or 2 characters longer, your layout will not break or look cramped.
+- **Matches Tab Widths:** Terminal users often set tab displays to 4 spaces. Aligning your gutter to a multiple of 4 keeps the output visually balanced with standard paragraph indentations.
+
+### The 4-Space Padding Blueprint
+
+Identify your longest element, add your 4 spaces, and lock that vertical line for everything else in that section:
+
+text
+
+```
+COMMANDS:
+    build       Compile the current workspace.
+    deploy      Deploy a service to the target environment.
+    status-all  Check the health of all running clusters.
+               ^---- Longest line (10 characters)
+                     ^--- 4 spaces of padding
+                         ^--- Descriptions start uniformly at index 14
+```
+
+Use code with caution.
+
+Would you like a quick script to **automatically compute and apply** this 4-space alignment for your CLI text array?
 
 # 
