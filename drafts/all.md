@@ -286,7 +286,9 @@ desktop:
 - shell chmod x command history
 - earlyoom
 - trash
+- chromium firefox legacy versions build archive snap flatpak
 - shell tmux abstraction
+- power bank quirks bios low wattage screen
 
 android:
 

@@ -17,8 +17,8 @@ import { new_thread } from 'action/new_thread';
  * 
  * set to backend/port.json
  */
-// const port_given = 0;
-const port = 3000;
+const port = 0;
+// const port = 3000;
 /**
  * there is nothing wrong to write the json after starting the server
  * 
@@ -116,12 +116,11 @@ app.notFound((c) => {
   return c.json({ success: false, message: 'Resource not found' }, 404);
 });
 
-// 7. Start the native Node.js HTTP server
-console.log(`Server is running on http://localhost:${port}`);
-
 serve({
   fetch: app.fetch,
   port
 }, (info) => {
+  console.log(`Server is running on http://localhost:${port}`);
+  
   fs.writeFileSync('../web/port.json', `{"port":${info.port}}`)
 });
