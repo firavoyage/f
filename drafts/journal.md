@@ -46371,6 +46371,10 @@ seems there's sth left yesterday to be done. i guess i would
 
 19 00 sync memories ~~(19 40)~~ 20 40
 
+09
+
+14 00 listen to _suzume_ by hayato sumino.
+
 
 
 <!-- timebox, plan. -->
