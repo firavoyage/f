@@ -8,7 +8,7 @@ import { call } from "web/lib/call";
 import { useAsync } from "react-use";
 
 export function App() {
-  const { value } = useAsync(async () => await call('hello', {hi:true}))
+  const { value } = useAsync(async () => await call('mock', {hi:true}))
 
   useEffect(() => {
     log('app mounts')

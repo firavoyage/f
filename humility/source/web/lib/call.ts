@@ -8,6 +8,9 @@ import { port } from 'web/port.json';
  * a network request is quite different and much more complex to handle robustly.
  * 
  * no need to have options. you can extend easily later if needed.
+ * 
+ * i guess i can convert error symbol to hash back and forth while transferring. 
+ * but i might not have to.
  */
 export async function call(method: string, payload: object) {
   const base = new URL(window.location.href)
@@ -15,5 +18,13 @@ export async function call(method: string, payload: object) {
 
   log(endpoint)
 
-  return endpoint
+  const response = await fetch(endpoint, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
+
+  return response.json()
 }
