@@ -65,7 +65,10 @@ app.get('/api/users/:id', (c) => {
 });
 
 const endpoints = {
-  chat, branch, export: export_to, list, new_thread
+  chat, branch, export: export_to, list, new_thread,
+  mock(payload: any){
+    return {response: payload}
+  }
 }
 
 for (const [endpoint, endpoint_fn] of Object.entries(endpoints)) {
