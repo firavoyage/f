@@ -9728,6 +9728,996 @@ If you want to see how this works in practice, let me know if you want to explor
 
 Show all
 
+# shell tput
+
+2:26 AM
+
+The **`tput` command** is a standard Unix/Linux utility used to interact with the terminal screen and control properties like text colors, text styles, and cursor movements. It queries the [terminfo database](https://man7.org/linux/man-pages/man1/tput.1.html) to dynamically look up the appropriate escape sequences for your current terminal type (`$TERM`), making your shell scripts completely portable across different operating systems and console environments. [link](https://man7.org/linux/man-pages/man1/tput.1.html)
+
+### Common `tput` Capabilities
+
+### Text Styling
+
+- **`tput bold`**: Makes text **bold**.
+- **`tput smul`**: Starts underlining text.
+- **`tput rmul`**: Stops underlining text.
+- **`tput rev`**: Reverses the background and foreground colors.
+- **`tput sgr0`**: Resets all styling and colors back to default. [link](https://www.youtube.com/watch?v=9WisxGxVzgM)
+
+### Text Colors
+
+- **`tput setaf <num>`**: Sets the foreground (text) color using a standard ANSI color ID.
+- **`tput setab <num>`**: Sets the background color. [link](https://www.youtube.com/watch?v=Qj0FMHlrsqo)
+
+_Standard 8-color IDs: 0=Black, 1=Red, 2=Green, 3=Yellow, 4=Blue, 5=Magenta, 6=Cyan, 7=White_. [link](https://rednafi.com/misc/terminal-text-formatting-with-tput/)
+
+### Screen & Cursor Control
+
+- **`tput clear`**: Clears the terminal screen.
+- **`tput cup <row> <col>`**: Moves the cursor to a specific coordinate (0-indexed).
+- **`tput cols`**: Prints the total width (columns) of the active window.
+- **`tput lines`**: Prints the total height (rows) of the active window. [link](https://linuxcommand.org/lc3%5Fadv%5Ftput.php)
+
+***
+
+### Implementation Example
+
+The best practice when writing shell scripts is to save `tput` sequences into variables. This technique prevents your script from repeatedly calling a sub-process every time a line prints, optimizing speed and efficiency. [link](https://www.oreilly.com/library/view/linux-and-unix/0201674726/0201674726%5Fch21lev1sec2.html)
+
+bash
+
+```
+#!/bin/bash
+
+# Store the escape sequences in variables
+RED=$(tput setaf 1)
+GREEN=$(tput setaf 2)
+BOLD=$(tput bold)
+RESET=$(tput sgr0)
+
+# Clear the terminal screen
+tput clear
+
+# Print localized styled text
+echo "${BOLD}System Status Report:${RESET}"
+echo "${GREEN}SUCCESS:${RESET} Backup completed successfully."
+echo "${RED}ERROR:${RESET} Failed to connect to the database server."
+```
+
+Use code with caution.
+
+If you are looking to do something specific with `tput`, let me know if you want to **design an interactive menu**, **create a stylized progress bar**, or **build a colorful custom terminal prompt ($PS1)**.
+
+- [link](https://linuxcommand.org/lc3%5Fadv%5Ftput.php)\
+  Linux Command Line Adventure: tput - LinuxCommand.org\
+  The tput command can be used to test for a particular capability or to output the assigned value. Here are some examples: tput lon...\
+  Linux Command.org
+- [link](https://man7.org/linux/man-pages/man1/tput.1.html)\
+  tput(1) - Linux manual page - man7.org\
+  tput(1) — Linux manual page \* tput - initialize a terminal, exercise its capabilities, or query terminfo database. \* tput \[-v] \[-T...\
+  man7.org
+- [link](https://www.youtube.com/watch?v=9WisxGxVzgM)\
+  Shell Scripting Tutorial-27: Do Cool Things With 'tput'\
+  is equal to / c. and uh tput space calls isn't that simple so tput space lines will return the number of rows and taput space call...\
+  6:58\
+  YouTube·The Bad Tutorials
+
+Show all
+
+## italic
+
+italic
+
+2:27 AM
+
+To make text **italic** using `tput`, you use the `sitm` and `ritm` capabilities.
+
+### Commands
+
+- **`tput sitm`**: Starts italic mode (Set Italic Mode).
+- **`tput ritm`**: Stops italic mode (Reset Italic Mode).
+- **`tput sgr0`**: Resets all formatting (including italics).
+
+### Quick Example
+
+bash
+
+```
+echo "$(tput sitm)This text is italicized.$(tput ritm)"
+```
+
+Use code with caution.
+
+### Script Implementation
+
+bash
+
+```
+#!/bin/bash
+
+ITALIC=$(tput sitm)
+RESET=$(tput sgr0)
+
+echo "This is ${ITALIC}italicized text${RESET} inside a normal sentence."
+```
+
+Use code with caution.
+
+_(Note: If the text does not appear italicized, your specific terminal emulator or chosen font family might not support italic rendering.)_
+
+If you are setting up a script, let me know if you want to **combine italics with colors** or **check if your terminal supports** specific styles.
+
+- [link](https://community.adobe.com/questions-671/retaining-italic-type-style-when-importing-from-a-word-doc-878823)\
+  Retaining italic type style when importing from a Word doc | Community\
+  I think your lack of italics might be that you are using a font that doesn't have an italic variant, or has a naming error. If you...\
+  \
+  Adobe
+
+- [link](https://www.reddit.com/r/vim/comments/24g8r8/italics%5Fin%5Fterminal%5Fvim%5Fand%5Ftmux/)\
+  Italics in terminal vim (and tmux) : r/vim\
+  Check that your terminal type supports italics. Even if your terminal can actually display italics, the xterm type says it cannot.\
+  \
+  \
+  Reddit
+
+# all methods of shell tput
+
+2:30 AM
+
+The `tput` command controls terminal characteristics and queries the `terminfo` database to interact with your terminal emulator. Instead of using hardcoded ANSI escape sequences, `tput` dynamically fetches the correct codes for your active `$TERM` environment. [link](https://manpages.ubuntu.com/manpages/jammy/man1/tput.1.html)
+
+The primary capabilities and built-in methods of `tput` are organized below by function.
+
+### Text Formatting & Styling
+
+- **`tput bold`**: Sets text to high-intensity bold mode.
+- **`tput dim`**: Sets text to half-bright/dim mode.
+- **`tput smul`**: Starts underlining text.
+- **`tput rmul`**: Exits underline mode.
+- **`tput smso`**: Enters "stand-out" mode, which usually reverses the text foreground and background.
+- **`tput rmso`**: Exits stand-out mode.
+- **`tput blink`**: Makes the text flash/blink (if supported by your terminal).
+- **`tput sitm`**: Begins italics mode.
+- **`tput ritm`**: Exits italics mode.
+- **`tput rev`**: Turns on reverse video mode.
+- **`tput sgr0`**: Resets all tracking attributes, colors, and styles back to terminal defaults. [link](https://man7.org/linux/man-pages/man1/tput.1.html)
+
+### Color Control
+
+- **`tput setaf [0-255]`**: Sets the standard ANSI foreground (text) color.
+- **`tput setab [0-255]`**: Sets the standard ANSI background color.
+- **`tput setf [0-7]`**: Sets legacy foreground color (historical standard, prefer `setaf`).
+- **`tput setb [0-7]`**: Sets legacy background color (historical standard, prefer `setab`). [link](https://rednafi.com/misc/terminal-text-formatting-with-tput/)
+
+_Note: Colors 0–7 map universally to Black (0), Red (1), Green (2), Yellow (3), Blue (4), Magenta (5), Cyan (6), and White (7)._ [link](https://linuxcommandlibrary.com/man/tput)
+
+### Cursor Manipulation
+
+- **`tput cup [row] [col]`**: Moves the cursor to a specific coordinate position (0,0 is top-left).
+- **`tput home`**: Moves the cursor to row 0, column 0.
+- **`tput civis`**: Hides the blinking terminal cursor completely.
+- **`tput cnorm`**: Restores the cursor to normal visibility.
+- **`tput sc`**: Saves the current cursor position.
+- **`tput rc`**: Restores the cursor back to the last saved position.
+- **`tput cuu [n]`**: Moves the cursor up by `n` rows.
+- **`tput cud [n]`**: Moves the cursor down by `n` rows.
+- **`tput cuf [n]`**: Moves the cursor forward (right) by `n` columns.
+- **`tput cub [n]`**: Moves the cursor backward (left) by `n` columns. [link](https://unix.stackexchange.com/questions/232315/full-list-of-tput-options)
+
+### Clearing and Erasing
+
+- **`tput clear`**: Clears the entire terminal window screen and resets the cursor to home position.
+- **`tput ed`**: Clears text from the current cursor position all the way to the end of the screen.
+- **`tput el`**: Clears text from the current cursor position to the end of the current line. [link](https://man7.org/linux/man-pages/man1/tput.1.html)
+
+### Terminal Diagnostics & Information
+
+- **`tput cols`**: Returns the absolute number of horizontal columns in the current window.
+- **`tput lines`**: Returns the absolute number of vertical rows/lines in the current window.
+- **`tput colors`**: Outputs the total number of colors supported by the active terminal profile.
+- **`tput longname`**: Prints the long, detailed definition name of the active terminal emulator. [link](https://www.youtube.com/watch?v=9WisxGxVzgM)
+
+### System Commands & Utility Flags
+
+- **`tput init`**: Re-initializes the active terminal settings from the terminfo profile data.
+- **`tput reset`**: Performs a hard reset on the terminal window if it becomes glitched or unresponsive.
+- **`tput -T [type] [method]`**: Temporarily forces `tput` to process a capability for a specified terminal type override.
+- **`tput -S`**: Allows `tput` to accept multiple method arguments sequentially from standard input or a heredoc string.
+- **`tput -V`**: Outputs the active version information of the `ncurses` software package hosting `tput`. [link](https://man7.org/linux/man-pages/man1/tput.1.html)
+
+If you want to build a script, I can show you how to **combine these methods into variables** or build a **dynamic menu layout**. Which route should we take?
+
+- [link](https://man7.org/linux/man-pages/man1/tput.1.html)\
+  tput(1) - Linux manual page - man7.org\
+  tput(1) — Linux manual page \* tput - initialize a terminal, exercise its capabilities, or query terminfo database. \* tput \[-v] \[-T...\
+  man7.org
+- [link](https://www.codequoi.com/en/coloring-terminal-text-tput-and-ansi-escape-sequences/)\
+  Coloring Terminal Text: tput and ANSI Escape Sequences - codequoi\
+  This command uses the terminal's terminfo to automatically find the correct escape sequence for a certain text effect. Terminfo is...\
+  codequoi
+- [link](https://rednafi.com/misc/terminal-text-formatting-with-tput/)\
+  Simple terminal text formatting with tput | Redowan's Reflections\
+  The \`tput setaf\` command sets the foreground color to a specific color. For example, \`setaf 1\` sets the color to red, while \`setaf...\
+  rednafi
+
+Show all
+
+# can i indent a multi line string somehow in a shell function
+
+4:50 AM
+
+<mark><span>Yes, you can indent multi-line strings in a shell function using<span> </span></span><strong>heredocs with a minus sign (<code dir="ltr"><<-</code>)</strong><span> </span>or by using</mark> **`sed`**.
+
+Here are the best methods to achieve this:
+
+### Method 1: The Stripped Heredoc (`<<-`)
+
+Using `<<-` instead of `<<` deletes leading **tab characters** (not spaces) from every line. This allows you to indent the string source code cleanly.
+
+bash
+
+```
+print_message() {
+	cat <<- EOF
+	This is line one.
+	This is line two.
+	This is line three.
+	EOF
+}
+```
+
+Use code with caution.
+
+- **Result:** The output will print completely flush against the left margin.
+- **Warning:** This _only_ works with literal tab characters, not spaces.
+
+### Method 2: Indented Output Using `sed`
+
+If you want the printed output itself to remain indented on the screen, pipe a standard heredoc into `sed`.
+
+bash
+
+```
+print_indented() {
+    cat << EOF | sed 's/^/    /'
+This is line one.
+This is line two.
+This is line three.
+EOF
+}
+```
+
+Use code with caution.
+
+- **Result:** Every line prints with four spaces of indentation.
+
+### Method 3: Standard `printf` (For Short Strings)
+
+For shorter strings, use `printf` with newline characters `\n` to control the indentation of each line explicitly.
+
+bash
+
+```
+print_short() {
+    printf "    Line one\n    Line two\n    Line three\n"
+}
+```
+
+Use code with caution.
+
+To narrow down the best approach, let me know:
+
+- Do you want the indentation only in your **source code** or also in the **terminal output**?
+
+- Are you restricted to using **spaces**, or can you use **tabs** in your script?
+
+- [link](https://flagzeta.org/til/terraform-can-automatically-dedent-multiline-strings/)\
+  TIL Terraform can automatically dedent multiline strings – Federico Marani\
+  You can use heredoc markers to define strings in HCL that span multiple lines. There is also a way to automatically strip out all ...\
+  \
+  flagzeta.org
+
+- [link](https://docs.vultr.com/javascript/examples/create-multiline-strings)\
+  JavaScript Program to Create Multiline Strings\
+  This function detects the smallest indent for all lines and removes it, making it possible to maintain a clean and readable alignm...\
+  \
+  \
+  Vultr Docs
+
+## i want to indent in source but not on screen
+
+i want to indent in source but not on screen
+
+4:50 AM
+
+To indent your source code for readability while keeping the terminal output completely flush left, use the **`<<-`** operator.
+
+Here are the two ways to handle this, depending on whether your code editor uses tabs or spaces.
+
+### Option 1: Literal Tabs (The Native Shell Way)
+
+The `<<-` operator automatically deletes all leading **tab characters** from the text and the closing delimiter.
+
+bash
+
+```
+my_function() {
+	cat <<- EOF
+	This line is indented with tabs in source.
+	It will print flush against the screen.
+	EOF
+}
+```
+
+Use code with caution.
+
+- **Rule:** The lines inside and the final `EOF` **must** be indented with real tab characters, not spaces.
+
+### Option 2: Spaces (The Modern Editor Way)
+
+Most modern editors convert tabs to spaces automatically, which breaks `<<-`. If your script uses spaces, use `sed` to strip the leading spaces before printing.
+
+bash
+
+```
+my_function() {
+    cat << EOF | sed 's/^    //'
+    This line is indented with four spaces.
+    It will print flush against the screen.
+EOF
+}
+```
+
+Use code with caution.
+
+- **Rule:** The closing `EOF` must be flush left, but the text lines can be safely indented with spaces.
+
+To give you the exact snippet, let me know:
+
+- What **text editor** are you using?
+
+- Does your project use **spaces** or **tabs** for indentation?
+
+- [link](https://www.naukri.com/code360/library/how-to-indent-in-html)\
+  How to indent in HTML?\
+  Some developers use tabs instead of spaces. Most code editors allow you to convert tabs to spaces automatically.\
+  \
+  \
+  Naukri.com
+
+## set to a variable
+
+set to a variable
+
+4:50 AM
+
+To save the indented multi-line string into a variable instead of printing it, use **command substitution `$(...)`** wrapped around the heredoc.
+
+Here is how to do it for both tabs and spaces.
+
+### Option 1: Using Tabs (`<<-`)
+
+If your editor uses literal tabs, this keeps your source code and closing tag perfectly indented.
+
+bash
+
+```
+my_function() {
+	# Captures the text and strips leading tabs
+	local my_var=$(cat <<- EOF
+		This line is indented with tabs.
+		It will be flush left inside the variable.
+	EOF
+	)
+
+	# Use the variable
+	echo "$my_var"
+}
+```
+
+Use code with caution.
+
+### Option 2: Using Spaces (`sed`)
+
+If your editor converts tabs to spaces, use `sed` inside the command substitution to strip the leading spaces before saving to the variable.
+
+bash
+
+```
+my_function() {
+    # Captures the text and strips 8 leading spaces
+    local my_var=$(cat << EOF | sed 's/^        //'
+        This line is indented with spaces.
+        It will be flush left inside the variable.
+EOF
+    )
+
+    # Use the variable
+    echo "$my_var"
+}
+```
+
+Use code with caution.
+
+- **Note:** Notice that `EOF` must remain flush left in this space-based method to end the heredoc properly.
+- **Warning:** Always wrap `"$my_var"` in double quotes when using it, or the shell will lose the line breaks.
+
+If you are running into issues, let me know:
+
+- Which **shell** are you using (e.g., `bash`, `zsh`, or `sh`)?
+- Do you need to **pass variables** into the multi-line string itself?
+
+## not working
+
+not working
+
+4:52 AM
+
+To help you fix this immediately, we need to find out why it is breaking. Heredocs are very strict about hidden characters like spaces and tabs.
+
+Here are the two most common reasons it fails and how to fix them:
+
+### 1. The "Spaces vs. Tabs" Trap (For Option 1)
+
+If you copied the `<<- EOF` example but your text editor automatically converts tabs to spaces, the shell will throw a syntax error like `warning: here-document at line ... delimited by end-of-file`.
+
+**The Fix:**\
+Run this command in your terminal to replace the spaces with real tabs in your function:
+
+bash
+
+```
+# In Bash, press 'Ctrl+V' then 'Tab' to type a literal tab inside the quotes
+sed -i 's/        /\t/g' your_script.sh
+```
+
+Use code with caution.
+
+### 2. The Trailing Space Trap
+
+If there is even _one_ invisible space after your closing `EOF` tag (like `EOF `instead of `EOF`), the script will crash.
+
+**The Fix:**\
+Make sure the closing `EOF` is on its own line with absolutely nothing after it.
+
+***
+
+### The Bulletproof Alternative (No Tabs or Heredocs Needed)
+
+If you don't want to fight with invisible tabs and spaces, you can use a **standard array** (in Bash/Zsh) to cleanly format your multi-line string with spaces in your source code:
+
+bash
+
+```
+my_function() {
+    # Indent with spaces completely safely
+    local lines=(
+        "This is line one."
+        "This is line two."
+        "This is line three."
+    )
+
+    # Joins the array elements with newlines into a single variable
+    local my_var=$(printf "%s\n" "${lines[@]}")
+
+    # Use the variable
+    echo "$my_var"
+}
+```
+
+Use code with caution.
+
+To get this working for you right away, could you tell me:
+
+- What **error message** or unexpected behavior are you seeing?
+- Can you paste the **exact code snippet** you are trying to run?
+
+## i use two spaces indentation for the function. and i do not want the string to indent.
+
+i use two spaces indentation for the function. and i do not want the string to indent.
+
+4:53 AM
+
+The best solution for **two-space indentation** is to use a standard heredoc (`<< EOF`) combined with `sed` to strip exactly four leading spaces (two for the function indentation, and two for the string indentation).
+
+This keeps your source code perfectly aligned while keeping the variable's text completely flush left.
+
+### The Code
+
+bash
+
+```
+my_function() {
+  # Strips 4 leading spaces from the source code
+  local my_var=$(cat << EOF | sed 's/^    //'
+    This line is indented in source.
+    It will not be indented inside the variable.
+EOF
+  )
+
+  # Verify the output has no indentation
+  echo "$my_var"
+}
+```
+
+Use code with caution.
+
+### Why This Works Setup-by-Step
+
+1. **The Function Indentation:** The `local my_var...` line is indented with **2 spaces**.
+2. **The String Indentation:** The string lines are indented with **4 spaces** (2 for the function level, plus 2 more to visually nest the string).
+3. **The `sed` Strip:** The `sed 's/^ //'` command actively cuts exactly 4 spaces from the start of every line before it reaches the variable.
+4. **The `EOF` Rule:** The closing `EOF` tag **must** stay completely flush left against the margin, or the shell will fail to find it.
+
+To help you polish this script, let me know:
+
+- Are you embedding other **shell variables** inside this multi-line string?
+
+- Do you need to preserve any **intentional blank lines** within the text?
+
+- [link](https://www.twilio.com/en-us/blog/developers/java-14-new-features-for-developers-graded)\
+  Java 14 New Features for Developers Graded\
+  Note that leading spaces on each line of the string are stripped so that the text is as far left as possible - the same number of ...\
+  \
+  \
+  Twilio
+
+- [link](https://michaelcurrin.github.io/dev-cheatsheets/cheatsheets/data/yaml/strings.html)\
+  Strings | Dev Cheatsheets\
+  All lines of the value must be indented - usually by 2 spaces, but this is inferred so you can actually indent by another count. T...\
+  \
+  GitHub
+
+- [link](https://openjdk.org/groups/build/doc/code-conventions.html)\
+  Code Conventions for the Build System\
+  The basic level of indentation is two spaces. Use this for "logical" indentation (if blocks, function definitions etc).\
+  \
+  OpenJDK
+
+Show all
+
+## explain <<- or <<
+
+explain <<- or <<
+
+4:55 AM
+
+Here is the difference between `<<` and `<<-` explained simply.
+
+Both are used to create **here-documents** (multi-line strings), but they handle indentation in the source code differently.
+
+### 1. The Standard Heredoc (`<<`)
+
+The standard `<<` operator reads every single character exactly as you typed it, including all spaces and tabs.
+
+- **The Rule:** The closing delimiter (like `EOF`) **must** be completely flush left against the margin.
+- **The Problem:** It forces your source code to look messy because you cannot indent the string or the closing tag inside a function.
+
+bash
+
+```
+my_function() {
+  # You can indent this line...
+  cat << EOF
+Everything here must be flush left to avoid spaces in the output.
+The closing tag below CANNOT be indented.
+EOF
+}
+```
+
+Use code with caution.
+
+### 2. The Stripped Heredoc (`<<-`)
+
+The `<<-` operator tells the shell to **automatically delete all leading tab characters** from both the text lines and the closing delimiter.
+
+- **The Benefit:** It allows you to indent your source code beautifully inside functions using tabs.
+- **The Catch:** It **only** ignores literal tab characters (`\t`). It completely ignores spaces.
+
+bash
+
+```
+my_function() {
+	# Every line below is indented with literal TABS
+	cat <<- EOF
+	This code looks clean and indented in my script.
+	The output on the screen will have ZERO tabs/spaces.
+	EOF
+}
+```
+
+Use code with caution.
+
+### Summary Comparison
+
+| Feature                       | `<<` (Standard)            | `<<-` (Stripped)      |
+| ----------------------------- | -------------------------- | --------------------- |
+| **Ignores Leading Spaces?**   | ❌ No                      | ❌ No                 |
+| **Ignores Leading Tabs?**     | ❌ No                      | Yes                   |
+| **Can indent closing `EOF`?** | ❌ No (Must be flush left) | Yes (Using tabs only) |
+
+### Why it failed your 2-space setup
+
+Because your editor is set to use **two spaces** for indentation instead of tabs, `<<-` treated those spaces as actual text. This is why you had to use the `sed` method to manually cut the spaces out instead.
+
+If you want to experiment with this, let me know:
+
+- Do you want to see how to force your editor to insert a **literal tab**?
+
+- Would you like to know how to **prevent variables from expanding** inside the heredoc?
+
+- [link](https://en.wikipedia.org/wiki/Here%5Fdocument)\
+  Here document\
+  In computing, a here document ( here-document, here-text, heredoc, hereis, here-string or here-script) is a file literal or input ...\
+  \
+  Wikipedia
+
+- [link](https://www.lynnbright.com/how-to-define-a-multiline-string-in-ruby/)\
+  How to define a multiline string in Ruby\
+  What's the difference between <<- and <<~ ? <<- will maintain the original indentation. Ruby 2.3 introduce d the s quiggly heredoc...\
+  \
+  \
+  www.lynnbright.com
+
+- [link](https://www.oreilly.com/library/view/bash-cookbook/0596526784/ch03s04.html)
+
+3.4. Indenting Here-Documents - bash Cookbook \[Book]\
+Just as trailing whitespace of any kind on your closing EOF delimiter prevents it from being recognized as the closing delimiter (\
+\
+\
+O'Reilly Media
+
+Show all
+
+## explain the sed command
+
+explain the sed command
+
+4:56 AM
+
+The `sed` command stands for <mark><strong>Stream Editor</strong></mark>. In your script, it is used to modify the multi-line text line-by-line as it flows from the heredoc into your variable.
+
+Here is the exact breakdown of how `sed 's/^ //'` works piece-by-piece:
+
+### The Anatomy of the Command
+
+text
+
+```
+       Search Pattern (4 spaces)
+          |
+  sed 's/^    //'
+
+       | |     |
+  Stream |     Replacement (Empty/Nothing)
+  Editor |
+     Substitute Command
+```
+
+Use code with caution.
+
+### Piece-by-Piece Breakdown
+
+- **`sed`**: The command that reads text, transforms it, and outputs the result.
+- **`'s/.../.../'`**: The `s` stands for **substitute**. It tells `sed` to find a pattern and replace it with something else, using the syntax `s/find/replace/`.
+- **`^`**: This is a regular expression anchor that means **"the very beginning of the line."** This ensures `sed` only deletes spaces at the start of a line and does not touch spaces inside your sentences.
+- **\`\`(Four Spaces)**: This is what `sed` is searching for right at the start of the line.
+- **`//`**: Because there is nothing between these two slashes, it means **"replace with nothing"** (effectively deleting the four spaces).
+
+### Visualizing the Transformation
+
+As the text passes through the pipe (`|`), `sed` evaluates it line-by-line:
+
+text
+
+```
+Source Line:    "    This line is indented in source."
+                 ^^^^
+                 sed finds these 4 spaces at the start (^)
+
+Output Line:    "This line is indented in source."
+```
+
+Use code with caution.
+
+If a line has fewer than 4 spaces (or no spaces at all), the pattern doesn't match, and `sed` leaves that line completely untouched.
+
+To make sure your automation is fully optimized, let me know:
+
+- Do you have **blank lines** in your string that you want to make sure stay blank?
+
+- Would you like to see how to use `sed` to **add a prefix** (like a bullet point) to every line instead of deleting spaces?
+
+- [link](https://www.facebook.com/geeksforgeeks.org/posts/sed-command-in-unix-is-stands-for-stream-editor-and-it-can-perform-lots-of-funct/10155124277904023/)\
+  http://www.geeksforgeeks.org/sed-command-in-unix/ SED command in UNIX is stands for stream editor and it can perform lot’s of function on file like, searching, find and replace, insertion or deletion. Though most common use of SED command in UNIX is for substitution or for find and replace. By using SED you can edit files even without opening it, which is much quicker way to find and replace something in file, than first opening that file in VI Editor and then changing it.\
+  http://www.geeksforgeeks.org/sed-command-in-unix/ SED command in UNIX is stands for stream editor and it can perform lot's of func...\
+  \
+  \
+  Facebook
+
+- [link](https://oneuptime.com/blog/post/2026-03-02-how-to-use-sed-for-text-processing-in-bash-on-ubuntu/view)\
+  How to Use sed for Text Processing in Bash on Ubuntu\
+  On this page sed (stream editor) processes text line by line, applying editing commands to each line as it passes through. It's on...\
+  \
+  \
+  OneUptime
+
+- [link](https://man7.org/linux/man-pages/man1/sed.1p.html)\
+  sed(1p) - Linux manual page\
+  DESCRIPTION top The sed utility is a stream editor that shall read one or more text files, make editing changes according to a scr...\
+  \
+  man7.org
+
+Show all
+
+# shell sed
+
+4:56 AM
+
+The **`sed` command** (short for stream editor) is a non-interactive text editor used to perform basic text transformations on an input stream. It processes text line by line, making it highly effective for searching, replacing, inserting, and deleting text within a command-line environment. [link](https://www.geeksforgeeks.org/linux-unix/sed-command-in-linux-unix-with-examples/)
+
+### Core Syntax
+
+bash
+
+```
+sed [options] 'command' file_name
+```
+
+Use code with caution.
+
+- **`options`**: Modifies `sed` behavior (e.g., `-i` for in-place file modifications).
+- **`command`**: The editing instructions enclosed in quotes.
+- **`file_name`**: The target file (can also accept input piped from other commands). [link](https://unix.stackexchange.com/questions/159367/using-sed-to-find-and-replace)
+
+***
+
+### Common Use Cases
+
+### 1. Substituting (Find & Replace)
+
+Substitution is the most frequent use case for `sed`. [link](https://www.geeksforgeeks.org/linux-unix/sed-command-in-linux-unix-with-examples/)
+
+- **Replace the first occurrence per line:**\
+  bash
+
+<!---->
+
+```
+sed 's/apple/orange/' text.txt
+```
+
+Use code with caution.
+
+- **Replace all occurrences per line (Global):**\
+  Add the `g` flag to modify every match on a line instead of just the first.\
+  bash
+
+<!---->
+
+```
+sed 's/apple/orange/g' text.txt
+```
+
+Use code with caution.
+
+- **Modify the file directly (In-Place):**\
+  By default, `sed` prints changes to the terminal window without altering the original file. Use the `-i` flag to save the changes directly to the file.\
+  bash
+
+<!---->
+
+```
+sed -i 's/apple/orange/g' text.txt
+```
+
+Use code with caution.\
+[link](https://unix.stackexchange.com/questions/159367/using-sed-to-find-and-replace)
+
+### 2. Deleting Lines
+
+The `d` command instructs `sed` to remove specific text or lines. [link](https://tldp.org/LDP/abs/html/x23170.html)
+
+- **Delete a specific line (e.g., Line 5):**\
+  bash
+
+<!---->
+
+```
+sed '5d' text.txt
+```
+
+Use code with caution.
+
+- **Delete lines matching a pattern:**\
+  bash
+
+<!---->
+
+```
+sed '/error/d' text.txt
+```
+
+Use code with caution.
+
+- **Delete a range of lines (e.g., Lines 1 through 4):**\
+  bash
+
+<!---->
+
+```
+sed '1,4d' text.txt
+```
+
+Use code with caution.
+
+### 3. Printing Specific Lines
+
+The `p` command duplicates lines. Combine it with the `-n` option to suppress normal output and print only lines matching your criteria. [link](https://www.geeksforgeeks.org/linux-unix/sed-command-in-linux-unix-with-examples/)
+
+- **Print only a specific range (e.g., Lines 10 through 15):**\
+  bash
+
+<!---->
+
+```
+sed -n '10,15p' text.txt
+```
+
+Use code with caution.
+
+- **Print only lines matching a pattern:**\
+  bash
+
+<!---->
+
+```
+sed -n '/critical/p' text.txt
+```
+
+Use code with caution.
+
+***
+
+### Working with Shell Variables
+
+When using `sed` inside shell scripts, use **double quotes** instead of single quotes so the shell can expand your variables. [link](https://stackoverflow.com/questions/7006910/shell-variables-in-sed-script)
+
+bash
+
+```
+find_word="apple"
+replace_word="orange"
+
+sed "s/$find_word/$replace_word/g" text.txt
+```
+
+Use code with caution.
+
+If you want to refine a specific `sed` script, let me know **what text transformation you want to achieve** or **provide an example input file** so I can write the exact command for you!
+
+- [link](https://unix.stackexchange.com/questions/159367/using-sed-to-find-and-replace)\
+  Using 'sed' to find and replace \[duplicate]\
+  You can use the \`sed\` command to find and replace strings in a file. Here's an example of using \`sed\` to replace the phrase "few" ...\
+  Unix & Linux Stack Exchange
+- [link](https://stackoverflow.com/questions/3984824/sed-command-in-bash)\
+  "sed" command in bash - Stack Overflow\
+  \* 4 Answers. Sorted by: sed is the Stream EDitor. It can do a whole pile of really cool things, but the most common is text replac...\
+  Stack Overflow
+- [link](https://www.geeksforgeeks.org/linux-unix/sed-command-in-linux-unix-with-examples/)\
+  Sed Command in Linux/Unix With Examples - GeeksforGeeks\
+  Sed Command in Linux/Unix With Examples. ... The sed command in Linux, short for stream editor, is a non-interactive text editor u...\
+  GeeksforGeeks
+
+Show all
+
 # . tmux 0.1
+
+```sh
+riptmux(){
+  local reset=$(tput sgr0)
+  local bold=$(tput bold)
+  local italic=$(tput sitm)
+  local underline=$(tput smul)
+  # indentation already gives hierarchy, no style/color needed
+  local heading=""
+  # local heading=$italic
+  # local heading=$underline
+  local version="tmux 0.1 (2026.07.10)"
+  local help=$(cat <<- EOF | sed 's/^  //'
+  Run and manage background daemons
+
+  ${bold}${heading}Usage:${reset} ${bold}tmux${reset}             Start a terminal
+         ${bold}tmux${reset} <name>       Start a named terminal
+         ${bold}tmux${reset} <command>    Perform an action
+         ${bold}tmux${reset} [flag]       Check version or help
+
+  ${bold}${heading}Commands:${reset}
+    ${bold}ls${reset}                    List all sessions
+    ${bold}a${reset}                     Back to the last session
+    ${bold}a${reset} <name>              Back to a named session
+    ${bold}clear${reset}                 Clear inactive sessions of last command finished
+    ${bold}kill${reset} <name>           Kill a session
+    ${bold}rename${reset} <old> <new>    Rename a session
+
+  ${bold}${heading}Options:${reset}
+    ${bold}-v, --version${reset}         Print version
+    ${bold}-h, --help${reset}            Print help
+
+  Use ctrl+b d to detach in a terminal, exit to remove the session
+	EOF
+	)
+
+  if test $# -eq 0; then
+    command tmux
+  elif test $# -eq 1; then
+    if test $1 = "ls"; then
+      command tmux ls
+    elif test $1 = "a"; then
+      command tmux a
+    elif test $1 = "clear"; then
+      tmux_clear
+    elif test $1 = "--help" -o $1 = "-h"; then
+      echo $help
+    elif test $1 = "--version" -o $1 = "-v"; then
+      echo $version
+    else
+      # named
+      command tmux new -s $1
+    fi
+  elif test $# -eq 2 -a $1 = "a"; then
+    command tmux a -t $2
+  elif test $# -eq 2 -a $1 = "kill"; then
+    tmux_kill $2
+  elif test $# -eq 3 -a $1 = "rename"; then
+    tmux_rename $2 $3
+  else
+    echo $help
+    # echo "no arg to tmux, one arg to have a named tmux session"
+  fi
+}
+
+alias tmux='riptmux'
+
+tmux_ls(){
+  command tmux ls
+}
+
+tmux_a(){
+  command tmux a
+}
+
+tmux_rename(){
+  if test $# -eq 2; then
+    command tmux rename-session -t $1 $2
+  else 
+    echo "args: old name, new name"
+  fi
+}
+
+tmux_kill(){
+  if test $# -eq 1; then
+    command tmux kill-session -t $1
+  else 
+    echo "arg: session name to be killed"
+  fi
+}
+
+tmux_clear(){
+  # Loop through all active tmux session names
+  for s in $(command tmux ls -F '#{session_name}' 2>/dev/null); do
+      # Count the number of active child processes running in this session
+      child_process_count=$(command tmux list-panes -t "$s" -F '#{pane_pid}' | xargs -I {} pgrep -P {} | wc -l)
+
+      # If the count is 0, nothing is running except the idle shell prompt
+      if [ "$child_process_count" -eq 0 ]; then
+          # echo "Killing idle session: $s"
+          command tmux kill-session -t "$s"
+      else
+          # echo "Keeping active session: $s"
+      fi
+  done
+}
+```
 
 
