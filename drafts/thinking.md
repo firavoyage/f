@@ -120,6 +120,27 @@ it's to create more useful components next i guess.
 
 style in utilitarian. (both yaml tokens and css)
 
+... <!-- upd -->
+
+generally
+
+- dev
+- research
+
+currently ik what to do. 
+
+- chatbot
+  - test fetch
+  - layout
+    - test sidebar
+    - resp design
+  - network (over fetching/under fetching)
+    - have rest api over graphql
+  - streaming
+  - theming
+
+<!-- at the end of the day, you will have some  -->
+
 ---
 
 fix run.
