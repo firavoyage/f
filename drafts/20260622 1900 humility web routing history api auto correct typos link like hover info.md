@@ -1,3 +1,5 @@
+<!-- upd 10 jul: actually, claude use link for "new chat", "chats", "projects", "artifacts" (all nav links). the claude logo is the same as "new chat". -->
+
 # all browser history api for routing
 
 June 20, 2026

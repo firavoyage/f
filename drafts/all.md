@@ -231,7 +231,6 @@ frontend: <!-- web, ts/js -->
 - tsconfig baseurl
 - react custom jsx compiler component override
 - css transition animation react loading state
-- routing history api auto correct typos link like hover info
 - css centering popup overlay grid flex
 - ts builtin types utility js browser nodejs
 - js truthy falsy
@@ -768,6 +767,7 @@ humility:
 - research openai api
 - research vllm alternatives <!-- menci: feed wandering cats -->
 - research linear <!-- or markdown for pm? -->
+- web routing history api auto correct typos link like hover info
 - research codex gui
 - lib result pascalcase for types
 - research database or flat file system searching algorithms
@@ -779,7 +779,7 @@ humility:
 - research git two separate tracking folders init bare gitdir worktree <!-- for humility -->
 - research ai slop design
 - web archi design
-- web
+- web <!-- ? -->
 - research ai agent problems features capabilities tools
 - research ai agent search
 - research old reddit
