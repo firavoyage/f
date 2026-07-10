@@ -46415,6 +46415,8 @@ well, it might be good to have. but not necessarily a priority i guess.
 
 17 40 (re)organize things. review hs first exam papers.
 
+project pure?
+
 
 
 <!-- timebox, plan. -->
