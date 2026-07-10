@@ -135,11 +135,15 @@ currently ik what to do.
     - test sidebar
     - resp design
   - network (over fetching/under fetching)
-    - have rest api over graphql
+    - have rest api over graphql <!-- at the end of the day, you will have a few specific requests. it's backend's resp. you may store as you like, but the state only change or requests only fire upon certain user actions. -->
   - streaming
   - theming
 
-<!-- at the end of the day, you will have some  -->
+watch a film tomorrow evening.
+
+i may read some books.
+
+
 
 ---
 
