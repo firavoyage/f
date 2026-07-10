@@ -408,7 +408,7 @@ ref: https://www.google.com/search?udm=50&atvm=2&mstk=AUtExfC4o610-n0Cr41ZpVikGi
 
 ---
 
-ux: as lazy as possible
+ux: as lazy as possible (agent: checkpoints)
 
 auto commit hook
 
@@ -451,6 +451,8 @@ what if you could have it?
 
 ---
 
+agent: workflow
+
 intelligent workflow.
 
 - "first few numbers in the nature"
@@ -459,6 +461,8 @@ intelligent workflow.
 divide and conquer.
 
 ---
+
+ux: personalization
 
 > If They Aliased the Backslash? (Spoiler: They Can't)
 
@@ -472,3 +476,22 @@ maybe a community would work. just give it a command/api. i could have a builtin
 
 ---
 
+ux: more useful info first
+
+google ai mode system prompt works well.
+
+"prefer direct answers"
+
+then, it does not say "good question".
+
+for yes/no, yes/no directly if possible. yes when no when if it depends. (no need to say "it depends" upfront)
+
+for or, "you should choose x".
+
+"examples"
+
+sometimes it starts examples directly. sometimes w a brief intro.
+
+(trailing question/interview mode is basically for monetization)
+
+---
