@@ -46381,6 +46381,12 @@ seems there's sth left yesterday to be done. i guess i would
 
 16 20 learn responsive web design.
 
+10
+
+15 20 play `Glenn Gould & Johann Sebastian Bach`.
+
+15 40 kill a little spider on the balcony w boiled water splashing.
+
 
 
 <!-- timebox, plan. -->
