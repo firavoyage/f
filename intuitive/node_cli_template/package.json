@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "bin": {
-    "template_cli": "./index.js"
+    "template_cli": "./index.js",
+    "template_foo": "./index.js",
+    "template_bar": "./index.js",
+    "template_bar_alias": "./index.js"
   }
 }
