@@ -4558,7 +4558,7 @@ BUGS
 2.12.0							    2023-09-23							    MAN(1)
 ```
 
-# . riptmux source
+# . riptmux source 0.0.0
 
 ```sh
 riptmux(){
@@ -8882,3 +8882,7 @@ Are you looking to install `ripgrep` on your system, or would you like to see ex
   Reddit·r/rust
 
 Show all
+
+# <!-- 10 jul -->
+
+# 

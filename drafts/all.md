@@ -391,7 +391,7 @@ ux: <!-- ui/ux design, ia -->
 - navigation esc dismiss toast
 - navigation esc close window gnome image viewer
 - navigation compare space enter
-- core laws the law of least effort the law of least surprise parkinson law
+- ux laws the law of least effort the law of least surprise parkinson law
 - weber law of perception
 - ia context menu design
 - parceljs vite webpack error overlay design
