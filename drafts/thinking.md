@@ -73,7 +73,7 @@ save metadata. <!-- support thread title -->
 
 design tokens.
 
-ref and sys are repetitive. 
+ref and sys are repetitive.
 
 rather reduce it. as simple as possible. as you like.
 
@@ -87,7 +87,7 @@ also, i would reconsider if `{ref.palette.success}` is needed. maybe `ref.palett
 
 utilitarian.yaml
 
-vscode. adwaita. 
+vscode. adwaita.
 
 bg, fg, outline, selection, accent, ...
 
@@ -127,7 +127,7 @@ generally
 - dev
 - research
 
-currently ik what to do. 
+currently ik what to do.
 
 - chatbot
   - test fetch
@@ -139,56 +139,23 @@ currently ik what to do.
   - streaming
   - theming
 
-watch a film tomorrow evening.
-
-i may read some books.
-
-i guess if i have time in the morning i *could* make something happen somehow <!-- do something somehow -->
-
-
-
 ---
 
-fix run.
+p
 
-non empty stderr is not an error. the only indicator is the exit code.
+- todo
+- things
 
----
+c
 
-app: convert
+- thinking
+- todo
+- things
 
-(string to string, or more params)
+recent todos are moved to thinking.
 
-collapsible sidebar. routing.
+todo and things are not much different. just "backlog". try to merge.
 
-just vibe, after completing the design system.
-
----
-
-intention
-
----
-
-i should be able to view resources in a pie chart. and i guess sometimes it does not add up to the mem. idk.
-
----
-
-Anyway you do not live in a vacuum.
-
-You will have landing page (it should definitely not be vitepress), repo page, pm page (issues roadmap todo whatever), discussion, and docs.
-
-You have your design. You should hold the definitive power in your hands.
-
----
-
-on frontend, <!-- to call, --> get baseurl <!-- that is the same domain by default --> and port <!-- in a json file -->, append api prefix, and that's it.
-
----
-
-app: tools
-
-constrast calc
-
-(i guess bun help does not work well)
+prefer to deprecate things. (store crazy and very unlikely to be implemented ideas. e.g. deterministic image gen)
 
 
