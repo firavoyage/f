@@ -46407,7 +46407,9 @@ idk if it's needed or it's the solution. it seems to be interesting to parse ast
 
 i guess natural language (actually pseudo code) would be optimal. it's like js. you have contextual eq. you have spaces, commas, periods, and linebreaks over bracket symbols. you may use indentation.
 
-it does not have to be fancy. no need to be agentic. sytle
+it does not have to be fancy. no need to be agentic. about styleguide, i guess, two spaces indentation, test over brackets, that's it. snake case is preferred by default in shell.
+
+well, it might be good to have. but not neccessarily a priority i guess.
 
 
 
