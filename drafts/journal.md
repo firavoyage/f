@@ -46383,9 +46383,31 @@ seems there's sth left yesterday to be done. i guess i would
 
 10
 
-15 20 play `Glenn Gould & Johann Sebastian Bach`.
+15 20 play `Glenn Gould & Johann Sebastian Bach`. prepare some green tea.
 
 15 40 kill a little spider on the balcony w boiled water splashing.
+
+16 00 think.
+
+how is an app created (in big tech). how are taskes arranged. what comes first or later. what's the priority.
+
+i guess at the end of the day it's about decision making, design/dev. you cant predict the future. and you dont have to know the full picture as long as yk what to do.
+
+...
+
+it seems some easy todos are stuck for days.
+
+how to do project management. i guess i could divide tasks into sub tasks, so ik im making progress, even if it turns out to be not that easy and it does not get completed. i may leverage timeboxing.
+
+...
+
+repo
+
+idk if it's needed or it's the solution. it seems to be interesting to parse ast of js (or ts, converted), and translate to shell.
+
+i guess natural language (actually pseudo code) would be optimal. it's like js. you have contextual eq. you have spaces, commas, periods, and linebreaks over bracket symbols. you may use indentation.
+
+it does not have to be fancy. no need to be agentic. sytle
 
 
 
