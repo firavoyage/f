@@ -748,6 +748,7 @@ have: <!-- eat, grow -->
 grow:
 
 - politics ice criticism
+- politics elon changes
 
 humility:
 
