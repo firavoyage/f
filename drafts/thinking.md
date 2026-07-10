@@ -143,6 +143,8 @@ watch a film tomorrow evening.
 
 i may read some books.
 
+i guess if i have time in the morning i *could* make something happen somehow <!-- do something somehow -->
+
 
 
 ---
