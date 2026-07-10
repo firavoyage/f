@@ -46413,6 +46413,8 @@ well, it might be good to have. but not necessarily a priority i guess.
 
 16 20 refactor tmux abstraction.
 
+17 40 (re)organize things. review hs first exam papers.
+
 
 
 <!-- timebox, plan. -->
