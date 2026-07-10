@@ -46411,6 +46411,8 @@ it does not have to be fancy. no need to be agentic. about styleguide, i guess, 
 
 well, it might be good to have. but not necessarily a priority i guess.
 
+<!-- seems easy. all abstractions are easy. better to implement when i have use cases. -->
+
 16 20 refactor tmux abstraction.
 
 17 40 (re)organize things. review hs first exam papers.
