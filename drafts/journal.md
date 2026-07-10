@@ -46403,13 +46403,15 @@ how to do project management. i guess i could divide tasks into sub tasks, so ik
 
 repo
 
-idk if it's needed or it's the solution. it seems to be interesting to parse ast of js (or ts, converted), and translate to shell.
+idk if it's needed or it's the solution. it seems to be interesting to parse ast of js (or ts, converted), and translate to shell. <!-- as js might introduce unnecessary bloat, e.g. package.json, pnpm add -g (remote pkg) or link -g (local), index.js, child process spawn cwd -->
 
 i guess natural language (actually pseudo code) would be optimal. it's like js. you have contextual eq. you have spaces, commas, periods, and linebreaks over bracket symbols. you may use indentation.
 
 it does not have to be fancy. no need to be agentic. about styleguide, i guess, two spaces indentation, test over brackets, that's it. snake case is preferred by default in shell.
 
-well, it might be good to have. but not neccessarily a priority i guess.
+well, it might be good to have. but not necessarily a priority i guess.
+
+16 20 refactor tmux abstraction.
 
 
 
