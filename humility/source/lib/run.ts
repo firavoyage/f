@@ -1,3 +1,7 @@
+/**
+ * idk if it could work well 
+ */
+
 import { exec } from 'node:child_process';
 import { promisify } from 'node:util';
 
@@ -7,7 +11,7 @@ import { promisify } from 'node:util';
 
 // todo: ?
 export async function run(command: string, options?: any) {
-  const { stdout, stderr } = await handle(() => promisify(exec)(command, options));
+  const { stdout, stderr } = promisify(exec)(command, options);
 
   /**
    * todo: combine both, as if inside a normal terminal

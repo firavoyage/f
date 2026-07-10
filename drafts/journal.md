@@ -46417,6 +46417,20 @@ well, it might be good to have. but not necessarily a priority i guess.
 
 project pure?
 
+11
+
+00 20 reflect.
+
+it does not seem ive made progress. i was actually leveraging first principles somehow. like, in ux, "how does it feel" "examples" "adoption". but it can be changed. what will generally last is the backend. e.g. workflow. whether easy or not, it could be designed and engineered, and it does have complexity of choices and tradeoffs.
+
+the efforts would pay off anyway. as a sane default matters, it absolutely could not work well to be ai slop. <!-- it absolutely could not be ai slop to work well. -->
+
+<!-- i do not wanna repeat "as", so i dropped "work well as ai slop" -->
+
+sleep early. learn new things. make progress.
+
+> "Be curious. Read widely. Try new things. What people call intelligence just boils down to curiosity." 
+
 
 
 <!-- timebox, plan. -->
