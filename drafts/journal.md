@@ -46417,6 +46417,12 @@ well, it might be good to have. but not necessarily a priority i guess.
 
 project pure?
 
+(23 00) feel.
+
+seems the family cooked a dish for me, as i want vegatables, not just meats.
+
+it was cauliflower. not water spinach or cabbage.
+
 11
 
 00 20 reflect.
