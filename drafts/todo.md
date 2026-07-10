@@ -431,3 +431,39 @@ host: gnome hig, kde hig
 all: funshiki films index.
 
 ---
+
+i should be able to view resources in a pie chart. and i guess sometimes it does not add up to the mem. idk.
+
+---
+
+---
+
+app: convert
+
+(string to string, or more params)
+
+collapsible sidebar. routing.
+
+just vibe, after completing the design system.
+
+---
+
+intention
+
+---
+
+Anyway you do not live in a vacuum.
+
+You will have landing page (it should definitely not be vitepress), repo page, pm page (issues roadmap todo whatever), discussion, and docs.
+
+You have your design. You should hold the definitive power in your hands.
+
+---
+
+app: tools
+
+constrast calc
+
+(i guess bun help does not work well)
+
+---

@@ -46431,6 +46431,14 @@ sleep early. learn new things. make progress.
 
 > "Be curious. Read widely. Try new things. What people call intelligence just boils down to curiosity." 
 
+...
+
+watch a film tomorrow evening.
+
+i may read some books.
+
+i guess if i have time in the morning i _could_ make something happen somehow <!-- do something somehow -->
+
 
 
 <!-- timebox, plan. -->
