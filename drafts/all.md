@@ -189,6 +189,7 @@ archi:
 - naming markdown multiple heading one no title
 - naming prefer singular <!-- action, actions --> 
 - react vs vue hypes decision fatigue <!-- grow? rhetoric? politics/philosophy? -->
+- first principles
 
 frontend: <!-- web, ts/js -->
 
@@ -359,6 +360,7 @@ pm:
 - typescript vscode incentive microsoft
 - foss failure patterns
 - over engineering hacker ethics aesthetics
+- stable or volatile workload feeling
 
 gamedev:
 
