@@ -172,17 +172,7 @@ web: 1 windows (created Sat Jul  4 20:13:52 2026)
 
 # . learn help
 
-```sh
- ~ % tmux -h
-=======================================
-            SYSTEM METRICS
-=======================================
-
-  Current Status:
-  Database Link:
-
-=======================================
-```
+rg
 
 ```sh
  ~ % rg -h
@@ -322,6 +312,8 @@ OTHER BEHAVIORS:
   --type-list                     Show all supported file types.
   -V, --version                   Print ripgrep's version.
 ```
+
+fd
 
 ```sh
  ~ % fd --help
@@ -670,6 +662,8 @@ Options:
 Bugs can be reported on GitHub: https://github.com/sharkdp/fd/issues
 ```
 
+bun
+
 ```sh
  ~ % bun
 Bun is a fast JavaScript runtime, package manager, bundler, and test runner. (1.3.14+0d9b296af)
@@ -711,8 +705,10 @@ Learn more about Bun:            https://bun.com/docs
 Join our Discord community:      https://bun.com/discord
 ```
 
+pnpm
+
 ```sh
- ~ % npm
+ ~ % pnpm -h
 Version 10.30.2
 Usage: pnpm [command] [flags]
        pnpm [ -h | --help | -v | --version ]
@@ -749,7 +745,96 @@ Other:
 
 Options:
   -r, --recursive          Run the command for each project in the workspace.
+ ~ % pnpm add -h
+Version 10.30.2
+Usage: pnpm add <name>
+       pnpm add <name>@<tag>
+       pnpm add <name>@<version>
+       pnpm add <name>@<version range>
+       pnpm add <git host>:<git user>/<repo name>
+       pnpm add <git repo url>
+       pnpm add <tarball file>
+       pnpm add <tarball url>
+       pnpm add <dir>
+
+Installs a package and any packages that it depends on.
+
+Options:
+      --[no-]color                    Controls colors in the output. By default, output is always colored when it goes directly to a
+                                      terminal
+  -E, --[no-]save-exact               Install exact version
+      --[no-]save-workspace-protocol  Save packages from the workspace with a "workspace:" protocol. True by default
+      --aggregate-output              Aggregate output from child processes that are run in parallel, and only print output when child
+                                      process is finished. It makes reading large logs after running `pnpm recursive` with
+                                      `--parallel` or with `--workspace-concurrency` much easier (especially on CI). Only
+                                      `--reporter=append-only` is supported.
+      --allow-build                   A list of package names that are allowed to run postinstall scripts during installation
+      --config                        Save the dependency to configurational dependencies
+  -C, --dir <dir>                     Change to directory <dir> (default: /home/fira)
+  -g, --global                        Install as a global package
+      --global-dir                    Specify a custom directory to store global packages
+  -h, --help                          Output usage information
+      --ignore-scripts                Don't run lifecycle scripts
+      --loglevel <level>              What level of logs to report. Any logs at or higher than the given level will be shown. Levels
+                                      (lowest to highest): debug, info, warn, error. Or use "--silent" to turn off all logging.
+      --offline                       Trigger an error if any required dependencies are not available in local store
+      --prefer-offline                Skip staleness checks for cached data, but request missing data from the server
+  -r, --recursive                     Run installation recursively in every package found in subdirectories or in every workspace
+                                      package, when executed inside a workspace. For options that may be used with `-r`, see "pnpm
+                                      help recursive"
+      --save-catalog                  Save package to the default catalog
+      --save-catalog-name=<name>      Save package to the specified catalog
+  -D, --save-dev                      Save package to your `devDependencies`
+  -O, --save-optional                 Save package to your `optionalDependencies`
+      --save-peer                     Save package to your `peerDependencies` and `devDependencies`
+  -P, --save-prod                     Save package to your `dependencies`. The default behavior
+      --store-dir <dir>               The directory in which all the packages are saved on the disk
+      --stream                        Stream output from child processes immediately, prefixed with the originating package directory.
+                                      This allows output from different packages to be interleaved.
+      --use-stderr                    Divert all output to stderr
+      --virtual-store-dir <dir>       The directory with links to the store (default is node_modules/.pnpm). All direct and indirect
+                                      dependencies of the project are linked into this directory
+      --workspace                     Only adds the new dependency if it is found in the workspace
+  -w, --workspace-root                Run the command on the root workspace project
+
+Filtering options (run the command only on packages that satisfy at least one of the selectors):
+      --changed-files-ignore-pattern <pattern>  Defines files to ignore when filtering for changed projects since the specified
+                                                commit/branch. Usage example: pnpm --filter="...[origin/master]"
+                                                --changed-files-ignore-pattern="**/README.md" build
+      --fail-if-no-match                        If no projects are matched by the command, exit with exit code 1 (fail)
+      --filter !<selector>                      If a selector starts with ! (or \! in zsh), it means the packages matching the
+                                                selector must be excluded. E.g., "pnpm --filter !foo" selects all packages except
+                                                "foo"
+      --filter .                                Includes all packages that are under the current working directory
+      --filter ...^<pattern>                    Includes only the direct and indirect dependents of the matched packages without
+                                                including the matched packages themselves. ^ must be doubled at the Windows Command
+                                                Prompt. E.g.: ...^foo (...^^foo in Command Prompt)
+      --filter ...<pattern>                     Includes all direct and indirect dependents of the matched packages. E.g.: ...foo,
+                                                "...@bar/*"
+      --filter ./<dir>                          Includes all packages that are inside a given subdirectory. E.g.: ./components
+      --filter "[<since>]"                      Includes all packages changed since the specified commit/branch. E.g.: "[master]",
+                                                "[HEAD~2]". It may be used together with "...". So, for instance, "...[HEAD~1]"
+                                                selects all packages changed in the last commit and their dependents
+      --filter {<dir>}                          Includes all projects that are under the specified directory. It may be used with
+                                                "..." to select dependents/dependencies as well. It also may be combined with
+                                                "[<since>]". For instance, all changed projects inside a directory:
+                                                "{packages}[origin/master]"
+      --filter <pattern>                        Restricts the scope to package names matching the given pattern. E.g.: foo, "@bar/*"
+      --filter <pattern>...                     Includes all direct and indirect dependencies of the matched packages. E.g.: foo...
+      --filter <pattern>^...                    Includes only the direct and indirect dependencies of the matched packages without
+                                                including the matched packages themselves. ^ must be doubled at the Windows Command
+                                                Prompt. E.g.: foo^... (foo^^... in Command Prompt)
+      --filter-prod <pattern>                   Restricts the scope to package names matching the given pattern similar to --filter,
+                                                but it ignores devDependencies when searching for dependencies and dependents.
+      --test-pattern <pattern>                  Defines files related to tests. Useful with the changed since filter. When selecting
+                                                only changed packages and their dependent packages, the dependent packages will be
+                                                ignored in case a package has changes only in tests. Usage example: pnpm
+                                                --filter="...[origin/master]" --test-pattern="test/*" test
+
+Visit https://pnpm.io/10.x/cli/add for documentation about this command.
 ```
+
+refray <!-- clap -->
 
 ```sh
  ~ % refray -h
@@ -768,6 +853,8 @@ Options:
       --config <PATH>
   -h, --help           Print help
 ```
+
+rustc
 
 ```sh
  ~ % rustc -h
@@ -845,6 +932,8 @@ Additional help:
     --help -v           Print the full set of options rustc accepts
 ```
 
+cargo
+
 ```sh
  ~ % cargo -h
 Rust's package manager
@@ -889,7 +978,77 @@ Commands:
 See 'cargo help <command>' for more information on a specific command.
 ```
 
-version
+jq
+
+```sh
+ ~ % jq -h
+jq - commandline JSON processor [version 1.7]
+
+Usage:  jq [options] <jq filter> [file...]
+        jq [options] --args <jq filter> [strings...]
+        jq [options] --jsonargs <jq filter> [JSON_TEXTS...]
+
+jq is a tool for processing JSON inputs, applying the given filter to
+its JSON text inputs and producing the filter's results as JSON on
+standard output.
+
+The simplest filter is ., which copies jq's input to its output
+unmodified except for formatting. For more advanced filters see
+the jq(1) manpage ("man jq") and/or https://jqlang.github.io/jq/.
+
+Example:
+
+        $ echo '{"foo": 0}' | jq .
+        {
+          "foo": 0
+        }
+
+Command options:
+  -n, --null-input          use `null` as the single input value;
+  -R, --raw-input           read each line as string instead of JSON;
+  -s, --slurp               read all inputs into an array and use it as
+                            the single input value;
+  -c, --compact-output      compact instead of pretty-printed output;
+  -r, --raw-output          output strings without escapes and quotes;
+      --raw-output0         implies -r and output NUL after each output;
+  -j, --join-output         implies -r and output without newline after
+                            each output;
+  -a, --ascii-output        output strings by only ASCII characters
+                            using escape sequences;
+  -S, --sort-keys           sort keys of each object on output;
+  -C, --color-output        colorize JSON output;
+  -M, --monochrome-output   disable colored output;
+      --tab                 use tabs for indentation;
+      --indent n            use n spaces for indentation (max 7 spaces);
+      --unbuffered          flush output stream after each output;
+      --stream              parse the input value in streaming fashion;
+      --stream-errors       implies --stream and report parse error as
+                            an array;
+      --seq                 parse input/output as application/json-seq;
+  -f, --from-file file      load filter from the file;
+  -L directory              search modules from the directory;
+      --arg name value      set $name to the string value;
+      --argjson name value  set $name to the JSON value;
+      --slurpfile name file set $name to an array of JSON values read
+                            from the file;
+      --rawfile name file   set $name to string contents of file;
+      --args                consume remaining arguments as positional
+                            string values;
+      --jsonargs            consume remaining arguments as positional
+                            JSON values;
+  -e, --exit-status         set exit status code based on the output;
+  -V, --version             show the version;
+  --build-configuration     show jq's build configuration;
+  -h, --help                show the help;
+  --                        terminates argument processing;
+
+Named arguments are also available as $ARGS.named[], while
+positional arguments are available as $ARGS.positional[].
+```
+
+# . learn version
+
+rustc, cargo
 
 ```sh
  ~ % rustc --version
