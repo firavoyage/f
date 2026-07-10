@@ -2166,5 +2166,1049 @@ Are you **refactoring an older codebase** that uses `url.parse()`, or did you ru
 
 Show all
 
+# can a react component be async
+
+July 8, 2026
+
+<mark><span>Yes,<span> </span></span><strong>React Server Components (RSC) can be async</strong></mark>, but **Client Components cannot**. [link](https://react.dev/reference/rsc/server-components)
+
+### React Server Components (Allowed)
+
+If your component runs exclusively on the server, you can mark it with the `async` keyword and use `await` directly in the body to fetch data. [link](https://react.dev/reference/rsc/server-components)
+
+tsx
+
+```
+// This works perfectly in Server Components
+async function ServerComponent() {
+  const response = await fetch('https://example.com');
+  const data = await response.json();
+
+  return <div>{data.message}</div>;
+}
+```
+
+Use code with caution.
+
+### Client Components (Not Allowed)
+
+If a component runs on the client-side, **you cannot declare it as an `async` function**. If you do, it will return a Promise instead of JSX, causing React to throw an error: _"Objects are not valid as a React child (found: \[object Promise])"_. [link](https://stackoverflow.com/questions/78877621/why-shouldnt-react-components-be-declared-as-async-functions-in-client-side-ren)
+
+To handle asynchronous logic in Client Components, use one of the following standard patterns:
+
+- **The Modern Way (`use` Hook)**: In React 19+, pass a promise directly into the component and unpack it with the `use()` hook inside a `<Suspense>` boundary.
+- **The Traditional Way (`useEffect`)**: Keep the component synchronous and run the asynchronous code inside a `useEffect` hook.
+- **Data Fetching Libraries**: Utilize third-party libraries like TanStack Query or SWR to automatically manage async states. [link](https://react.dev/reference/rsc/server-components)
+
+### Summary of Differences
+
+| Feature                   | Server Components       | Client Components           |
+| ------------------------- | ----------------------- | --------------------------- |
+| **`async/await` syntax**  | Directly supported      | Throws a runtime error      |
+| **Primary Use Case**      | Direct database queries | User interaction & state    |
+| **Data Fetching Pattern** | Direct `await`          | `use()` hook or `useEffect` |
+
+Are you trying to fetch data during the **initial page load**, or are you handling a **user action** like a button click? Turn me onto your specific use case so I can provide the exact code structure you need.
+
+- [link](https://react.dev/reference/rsc/server-components)\
+  Server Components - React\
+  Async components with Server Components. Server Components introduce a new way to write Components using async/await. When you awa...\
+  React
+- [link](https://stackoverflow.com/questions/78877621/why-shouldnt-react-components-be-declared-as-async-functions-in-client-side-ren)\
+  Why Shouldn't React Components Be Declared as Async Functions in Client-Side Rendering?\
+  It's not recommended to declare React components as async functions in client-side rendering because: \* \*\*React expects components...\
+  Stack Overflow
+- [link](https://stackoverflow.com/questions/75689775/react-js-async-component)\
+  React JS async component - Stack Overflow\
+  Then I get this error: Error: Objects are not valid as a React child (found: \[object Promise]). If you meant to render a collectio...\
+  Stack Overflow
+
+Show all
+
+## how to fetch
+
+how to fetch
+
+July 8, 2026
+
+How you fetch data in React depends entirely on whether your component is a **Server Component** or a **Client Component**.
+
+Here are the three standard ways to do it.
+
+### 1. The Modern Server Way (React Server Components)
+
+If you are using Next.js or another framework supporting Server Components, you fetch data directly in the component body using `async/await`.
+
+tsx
+
+```
+// app/page.tsx (Server Component by default)
+export default async function ProductList() {
+  const res = await fetch('https://example.com');
+  const products = await res.json();
+
+  return (
+    <ul>
+      {products.map((p: any) => <li key={p.id}>{p.name}</li>)}
+    </ul>
+  );
+}
+```
+
+Use code with caution.
+
+### 2. The Modern Client Way (React 19+ `use` Hook)
+
+If you are on the client side and want to load data during the initial render, pass a promise from a parent component and unwrap it using the `use` hook.
+
+tsx
+
+```
+'use client';
+import { use } from 'react';
+
+// 1. Initiate the promise outside the component or pass it down
+const productsPromise = fetch('https://example.com').then(res => res.json());
+
+export default function ClientComponent() {
+  // 2. Read the promise directly in the render logic
+  const products = use(productsPromise);
+
+  return (
+    <ul>
+      {products.map((p: any) => <li key={p.id}>{p.name}</li>)}
+    </ul>
+  );
+}
+```
+
+Use code with caution.
+
+_Note: Wrap this component in a `<Suspense fallback={<p>Loading...</p>}>` boundary in your parent file to show a loading state._
+
+### 3. The Traditional Client Way (`useEffect`)
+
+If you are building a standard Single Page App (like Vite + React) without Server Components, use `useEffect` and local state.
+
+tsx
+
+```
+'use client';
+import { useState, useEffect } from 'react';
+
+export default function ClassicFetch() {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch('https://example.com')
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data);
+        setLoading(false);
+      });
+  }, []); // Empty array ensures this runs once on mount
+
+  if (loading) return <p>Loading...</p>;
+  return <div>Success! Data loaded.</div>;
+}
+```
+
+Use code with caution.
+
+### Summary Checklist
+
+- **Use Server Components** if you want fast page loads and SEO.
+- **Use the `use` hook** if you want native client-side streaming.
+- **Use `useEffect`** if you are updating state based on user interaction later.
+
+Which framework are you currently using (e.g., **Next.js**, **Vite**, **Remix**, or **Create React App**)? Tell me what you are building so we can pick the cleanest architecture.
+
+- [link](https://www.robinwieruch.de/react-fetching-data/)\
+  How to fetch data in React \[2024]\
+  So what's the recommended way for data fetching in React? It depends on your tech stack. If you are using a framework that support...\
+  \
+  \
+  Robin Wieruch
+- [link](https://www.codecademy.com/learn/learn-next-js/modules/next-js-data-fetching/cheatsheet)\
+  Learn Next.js: Next.js Data Fetching Cheatsheet\
+  Fetch Calls in Server Components In Next. js applications, fetch calls can be directly used within server components, enabling sea...\
+  \
+  \
+  Codecademy
+- [link](https://vercel.com/blog/nextjs-app-router-data-fetching)\
+  Less code, better UX: Fetching data faster with the Next.js 13 App Router\
+  The new data fetching in Next. js 13 is built on top of the fetch() Web API and makes use of async / await in Server Components.\
+  \
+  \
+  Vercel
+
+Show all
+
+## for spa
+
+for spa
+
+July 8, 2026
+
+For a Single Page Application (SPA) built with tools like Vite, Create React App, or Expo, you do not have Server Components. Everything runs in the browser.
+
+While you _can_ use `useEffect` for fetching, modern React development favors **Data Fetching Libraries** because they handle caching, loading states, error states, and automatic revalidation for you.
+
+Here are the two best ways to fetch data in a React SPA.
+
+***
+
+### Method 1: The Professional Way (TanStack Query / SWR)
+
+Libraries like **TanStack Query** (formerly React Query) or Vercel's **SWR** are the industry standard. They replace messy boilerplate with clean hooks.
+
+bash
+
+```
+npm install @tanstack/react-query
+```
+
+Use code with caution.
+
+### Step 1: Set up the Provider (Wrap your app)
+
+tsx
+
+```
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+const queryClient = new QueryClient();
+
+export default function App() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <YourComponent />
+    </QueryClientProvider>
+  );
+}
+```
+
+Use code with caution.
+
+### Step 2: Use the Hook in Your Component
+
+tsx
+
+```
+import { useQuery } from '@tanstack/react-query';
+
+// A pure JavaScript function that fetches the data
+const fetchProducts = () =>
+  fetch('https://example.com').then(res => res.json());
+
+export default function ProductList() {
+  // UseQuery automatically manages loading, error, data, and caching
+  const { data, isLoading, error } = useQuery({
+    queryKey: ['products'],
+    queryFn: fetchProducts
+  });
+
+  if (isLoading) return <div>Loading products...</div>;
+  if (error) return <div>Error loading data: {error.message}</div>;
+
+  return (
+    <ul>
+      {data.map((product: any) => (
+        <li key={product.id}>{product.name}</li>
+      ))}
+    </ul>
+  );
+}
+```
+
+Use code with caution.
+
+***
+
+### Method 2: The Core React Way (`useEffect`)
+
+If you don't want to install external libraries, you must use `useEffect`. When fetching inside an SPA, you **must handle the cleanup function** to prevent race conditions (errors that happen if a user leaves the page before the fetch finishes).
+
+tsx
+
+```
+import { useState, useEffect } from 'react';
+
+export default function ProductListClassic() {
+  const [data, setData] = useState<any[] | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    // 1. Create an AbortController to cancel the request if the component unmounts
+    const controller = new AbortController();
+
+    async function startFetch() {
+      try {
+        setLoading(true);
+        const res = await fetch('https://example.com', { signal: controller.signal });
+
+        if (!res.ok) throw new Error('Network response failed');
+
+        const result = await res.json();
+        setData(result);
+      } catch (err: any) {
+        if (err.name !== 'AbortError') {
+          setError(err.message);
+        }
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    startFetch();
+
+    // 2. Cleanup function runs if the user navigates away mid-fetch
+    return () => controller.abort();
+  }, []); // Empty dependency array means this runs once when the page loads
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+
+  return (
+    <ul>
+      {data?.map((product) => (
+        <li key={product.id}>{product.name}</li>
+      ))}
+    </ul>
+  );
+}
+```
+
+Use code with caution.
+
+***
+
+### Which should you choose?
+
+- Use **TanStack Query** if your app has multiple pages, needs data updated in the background, or handles complex mutations (POST/PUT requests).
+- Use **`useEffect`** only for tiny, simple projects or learning purposes where adding extra dependencies isn't worth it.
+
+If you are using a state manager like **Redux Toolkit** or **Zustand**, let me know. I can show you how to link your fetch logic directly into your global store.
+
+## how to fetch dynamically since hooks have rules
+
+how to fetch dynamically since hooks have rules
+
+July 8, 2026
+
+To fetch data dynamically—such as when a user types in a search bar, clicks a "Load More" button, or selects a category—you cannot wrap hooks like `useEffect` or `useQuery` inside `if` statements or loops.
+
+Instead, you change the **dependencies** or **arguments** passed into those hooks, or trigger fetches inside standard **event handlers**.
+
+Here are the two best ways to handle dynamic fetching in an SPA.
+
+### Method 1: The Reactive Way (Using Dependencies)
+
+If the fetch needs to happen automatically whenever a state variable changes (like a search query or page number), pass that state into your hook's dependency array or query key.
+
+### With TanStack Query (Recommended)
+
+TanStack Query automatically refetches the data whenever the keys in the `queryKey` array change.
+
+tsx
+
+```
+import { useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+
+export default function SearchProducts() {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const { data, isLoading } = useQuery({
+    // 1. Put the state inside the queryKey
+    queryKey: ['products', searchTerm],
+    queryFn: () => fetch(`https://example.com{searchTerm}`).then(res => res.json()),
+    // 2. Optional: Don't run the fetch if the search term is empty
+    enabled: searchTerm.length > 0
+  });
+
+  return (
+    <div>
+      <input
+        type="text"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        placeholder="Type to search..."
+      />
+      {isLoading && <div>Searching...</div>}
+      <ul>
+        {data?.map((item: any) => <li key={item.id}>{item.name}</li>)}
+      </ul>
+    </div>
+  );
+}
+```
+
+Use code with caution.
+
+### With Native `useEffect`
+
+If you aren't using a library, add the state variable to the `useEffect` dependency array. The hook stays at the top level, but it triggers again every time the dependency changes.
+
+tsx
+
+```
+import { useState, useEffect } from 'react';
+
+export default function CategoryFilter() {
+  const [category, setCategory] = useState('electronics');
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    // This effect runs on mount, AND every time 'category' changes
+    fetch(`https://example.com{category}`)
+      .then(res => res.json())
+      .then(data => setData(data));
+  }, [category]); // <-- Hook rule satisfied: declared at top level, tracks changes here
+
+  return (
+    <div>
+      <button onClick={() => setCategory('electronics')}>Electronics</button>
+      <button onClick={() => setCategory('clothing')}>Clothing</button>
+      {/* Render data here */}
+    </div>
+  );
+}
+```
+
+Use code with caution.
+
+***
+
+### Method 2: The Imperative Way (Using Event Handlers)
+
+If you want to fetch data strictly when a user takes a specific action—like clicking a "Submit" or "Buy Now" button—**do not use hooks or effects at all**.
+
+Standard asynchronous functions inside click or submit event handlers do not follow React hook rules. You can call them dynamically anywhere.
+
+tsx
+
+```
+import { useState } from 'react';
+
+export default function OrderButton() {
+  const [status, setStatus] = useState('idle');
+
+  // A standard async function, NOT a hook. No rules apply here!
+  async function handleCheckout() {
+    setStatus('loading');
+
+    try {
+      const res = await fetch('https://example.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ cartId: 123 })
+      });
+
+      if (res.ok) setStatus('success');
+      else setStatus('error');
+    } catch {
+      setStatus('error');
+    }
+  }
+
+  return (
+    <div>
+      <button onClick={handleCheckout} disabled={status === 'loading'}>
+        {status === 'loading' ? 'Processing...' : 'Place Order'}
+      </button>
+      {status === 'success' && <p>Order placed successfully!</p>}
+    </div>
+  );
+}
+```
+
+Use code with caution.
+
+### Summary Checklist
+
+- **Use dependencies (`[state]`)** if your UI needs to continuously sync with a changing value (like filters, search inputs, pagination).
+- **Use event handlers (`onClick`, `onSubmit`)** if the fetch is a direct result of a singular user confirmation (like saving a form or deleting an item).
+
+What kind of dynamic behavior are you trying to build? Let me know if you are implementing a **search bar**, **pagination**, or a **form submission** so I can tailor the code block perfectly for you.
+
+- [link](https://medium.com/@stheodorejohn/implementing-dynamic-search-functionality-in-react-2d30e8971e0e)\
+  Implementing Dynamic Search Functionality in React | by Theodore John.S\
+  Summary In this article, we have explored how to implement dynamic search functionality in a React application. By utilizing the u...\
+  \
+  \
+  Medium
+- [link](https://www.codewithseb.com/blog/advanced-react-hooks-best-practices-in-react-with-nextjs-and-remix)\
+  Advanced React Hooks: Best Practices in React with Next.js and Remix\
+  For example, if you have useSearch(query) that fetches when query changes, the hook internally uses useEffect on query. The consum...\
+  \
+  \
+  www.codewithseb.com
+- [link](https://dev.to/srishtikprasad/handbook-you-need-to-understand-the-useeffect-react-hook-1aj3)\
+  Understanding the React hook-UseEffect()\
+  If we want to execute useEffect after a specific event or state change we will pass our variables in array of dependency . Every t...\
+  \
+  \
+  DEV Community
+
+Show all
+
+## how to wrap to use an async fn in a component
+
+how to wrap to use an async fn in a component
+
+July 8, 2026
+
+To safely wrap and call an asynchronous function directly inside a client-side component without breaking React's hook rules, you have two primary options depending on your React version.
+
+### Method 1: The Modern Way (React 19+ `use` Hook)
+
+If you are using React 19 or newer, you can wrap your async function in a Promise _outside_ the component or store it in state, then unwrap it dynamically using the `use()` hook.
+
+Unlike traditional hooks, **`use()` can be called conditionally** inside `if` statements and loops.
+
+tsx
+
+```
+import { use, useState } from 'react';
+
+// 1. Define your async function
+async function fetchUserDetail(id: string) {
+  const res = await fetch(`https://example.com{id}`);
+  return res.json();
+}
+
+export default function ProfileViewer() {
+  const [userId, setUserId] = useState<string | null>(null);
+
+  return (
+    <div>
+      <button onClick={() => setUserId('123')}>Load Profile 123</button>
+
+      {/* 2. Call the async function and unwrap it conditionally */}
+      {userId && <ProfileCard userPromise={fetchUserDetail(userId)} />}
+    </div>
+  );
+}
+
+function ProfileCard({ userPromise }: { userPromise: Promise<any> }) {
+  // 3. React 19 'use' hook can read the promise inline
+  const user = use(userPromise);
+  return <p>Hello, {user.name}!</p>;
+}
+```
+
+Use code with caution.
+
+_Note: The parent component containing `<ProfileCard />` should be wrapped in a `<Suspense fallback={<p>Loading...</p>}>` block._
+
+***
+
+### Method 2: The Custom Hook Wrapper (React 16.8 to 18)
+
+If you are on an older version of React where you cannot use `async/await` or `use()`, the cleanest approach is to wrap your async function inside a reusable custom hook. This isolates the `useEffect` and state logic entirely.
+
+tsx
+
+```
+import { useState, useEffect } from 'react';
+
+// 1. Create a generic, reusable hook for ANY async function
+function useAsync<T>(asyncFn: () => Promise<T>, dependencies: any[] = []) {
+  const [data, setData] = useState<T | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<Error | null>(null);
+
+  useEffect(() => {
+    let isMounted = true;
+    setLoading(true);
+
+    asyncFn()
+      .then((result) => {
+        if (isMounted) setData(result);
+      })
+      .catch((err) => {
+        if (isMounted) setError(err);
+      })
+      .finally(() => {
+        if (isMounted) setLoading(false);
+      });
+
+    return () => {
+      isMounted = false; // Prevents state updates if component unmounts mid-fetch
+    };
+  }, dependencies); // Retriggers whenever dependencies change
+
+  return { data, loading, error };
+}
+
+// 2. Use the wrapper cleanly inside your component
+export default function Dashboard() {
+  const [category, setCategory] = useState('news');
+
+  // Define the inline async call wrapped by the hook
+  const { data, loading } = useAsync(async () => {
+    const res = await fetch(`https://example.com{category}`);
+    return res.json();
+  }, [category]); // Triggers the async fn dynamically when category changes
+
+  if (loading) return <p>Loading...</p>;
+
+  return (
+    <div>
+      <button onClick={() => setCategory('sports')}>Switch to Sports</button>
+      <pre>{JSON.stringify(data)}</pre>
+    </div>
+  );
+}
+```
+
+Use code with caution.
+
+### Summary of the Strategy
+
+- Use **Method 1 (`use`)** if your project runs on React 19+. It is the cleanest way to natively evaluate a promise inside JSX blocks.
+- Use **Method 2 (`useAsync`)** if you need a clean abstraction in older React apps to avoid writing tedious `useState` and `useEffect` blocks every time you want to execute an async task.
+
+Are you trying to wrap an existing **third-party SDK function** (like Firebase, Supabase, or Axios), or are you writing a custom native **`fetch` request**? Let me know so I can match your exact implementation.
+
+- [link](https://www.syncfusion.com/blogs/post/react-19-suspense-for-data-fetching)\
+  React 19 Suspense for Data Fetching: A New Model for Async UI\
+  React 19 treats the use() hook as a first‑class, framework‑agnostic primitive for reading asynchronous values. You can pass a plai...\
+  \
+  \
+  Syncfusion
+- [link](https://hasunnilupul.medium.com/%EF%B8%8F-react-19s-use-hook-a-practical-guide-with-examples-a9f1a19ef964)\
+  React 19’s use() Hook Explained: How to Handle Async Data in Components\
+  React 19 just dropped a game-changing hook: use() . If you've ever wrestled with async data inside components, this is the update ...\
+  \
+  \
+  Medium
+- [link](https://mittalkartik1.medium.com/susexploring-react-19-the-new-use-api-with-suspense-4be658cf7ee2)\
+  Exploring React 19: The New use API with Suspense\
+  Points to remember — Unlike React Hooks, use can be called within loops and conditional statements like if. Like React Hooks, the ...\
+  \
+  \
+  Medium
+
+Show all
+
+## react-use lib
+
+react-use lib
+
+July 8, 2026
+
+The popular [streamich/react-use](https://github.com/streamich/react-use) library provides two fantastic hooks to wrap async functions, depending on how you want to trigger them: **`useAsync`** (triggers automatically) and **`useAsyncFn`** (triggers imperatively).
+
+Both hooks return a uniform `state` object containing three properties:
+
+- `loading`: A boolean indicating if the promise is unresolved.
+- `value`: The successfully returned data (or `undefined`).
+- `error`: The caught error object (or `undefined`).
+
+***
+
+### Hook 1: `useAsync` (Automatic Execution)
+
+Use [useAsync](https://github.com/streamich/react-use/blob/master/docs/useAsync.md) if you want the asynchronous function to execute **automatically** when the component mounts, or whenever a specific dependency changes. [link](https://github.com/streamich/react-use/blob/master/docs/useAsync.md)
+
+tsx
+
+```
+import { useAsync } from 'react-use';
+
+interface Props {
+  userId: string;
+}
+
+export default function UserProfile({ userId }: Props) {
+  // 1. Hook wraps the async fn and runs automatically when 'userId' changes
+  const state = useAsync(async () => {
+    const res = await fetch(`https://example.com{userId}`);
+    if (!res.ok) throw new Error('Failed to fetch user');
+    return res.json();
+  }, [userId]); // Dependency array
+
+  // 2. Safely destructure or read state properties
+  if (state.loading) return <div>Loading profile...</div>;
+  if (state.error) return <div>Error: {state.error.message}</div>;
+
+  return (
+    <div>
+      <h1>Welcome, {state.value?.name}!</h1>
+    </div>
+  );
+}
+```
+
+Use code with caution.
+
+***
+
+### Hook 2: `useAsyncFn` (Manual / Imperative Trigger)
+
+Use [useAsyncFn](https://github.com/streamich/react-use/blob/master/docs/useAsyncFn.md) if you want to wrap an async function but **wait for a user action** (like a button click or form submission) to actually execute it. [link](https://github.com/streamich/react-use/blob/master/docs/useAsyncFn.md)
+
+This hook returns a tuple: the standard state object, and a trigger callback function. [link](https://github.com/streamich/react-use/blob/master/docs/useAsyncFn.md)
+
+tsx
+
+```
+import { useAsyncFn } from 'react-use';
+
+export default function DeleteAccountButton() {
+  // 1. Hook returns a state object and a trigger function
+  const [state, deleteAccount] = useAsyncFn(async (accountId: string) => {
+    const res = await fetch(`https://example.com{accountId}`, {
+      method: 'DELETE',
+    });
+    return res.json();
+  }, []); // Dependencies go here
+
+  return (
+    <div>
+      {/* 2. State evaluates dynamically based on when the function is triggered */}
+      {state.error && <p className="error">Error: {state.error.message}</p>}
+      {state.value && <p className="success">Account deleted successfully.</p>}
+
+      <button
+        onClick={() => deleteAccount('acc_123')}
+        disabled={state.loading}
+      >
+        {state.loading ? 'Deleting...' : 'Delete Account'}
+      </button>
+    </div>
+  );
+}
+```
+
+Use code with caution.
+
+***
+
+### Quick Comparison
+
+| Hook             | When it runs                                 | Best Used For                                   |
+| ---------------- | -------------------------------------------- | ----------------------------------------------- |
+| **`useAsync`**   | Automatically on mount & dependency changes  | Fetching initial page data, search-as-you-type. |
+| **`useAsyncFn`** | Manually when you call the returned function | Button clicks, form updates, deletes, actions.  |
+
+Are you using this to handle a **GET request** on page load, or are you executing a **POST/PUT mutation**? Tell me what your async function does so I can help you implement the correct hook parameters!
+
+- [link](https://github.com/streamich/react-use/blob/master/docs/useAsyncFn.md)\
+  react-use/docs/useAsyncFn.md at master - GitHub\
+  File metadata and controls. Preview. 36 lines (29 loc) · 807 Bytes. Outline. useAsyncFn. React hook that returns state and a callb...\
+  GitHub
+- [link](https://github.com/streamich/react-use/blob/master/docs/useAsync.md)\
+  react-use/docs/useAsync.md at master - GitHub\
+  Copy path. Top. File metadata and controls. Preview. Code. Blame. 35 lines (28 loc) · 606 Bytes. Raw. Copy raw file. Download raw ...\
+  GitHub
+- [link](https://hooks-guide.netlify.app/react-use/useAsync)\
+  useAsync - Hooks.guide\
+  useAsync. https://github.com/streamich/react-use/blob/master/docs/useAsync.md. React hook that resolves an async function or a fun...\
+  Netlify
+
+Show all
+
+## can event listeners be async
+
+can event listeners be async
+
+July 8, 2026
+
+<mark><span>Yes,<span> </span></span><strong>event listeners can be completely async</strong></mark>.
+
+When you make an event listener `async`, it returns a Promise. Since browser event loops do not wait for promises to resolve before moving to the next task, the event listener will fire, pause at your `await` keywords, and let the rest of your application run concurrently without blocking the UI.
+
+However, writing async event listeners introduces **three critical architectural catch-22s** you must watch out for:
+
+### 1. `event.preventDefault()` Must Be Synchronous
+
+If you need to stop a default browser behavior (like preventing a form from submitting or a link from navigating), you **must** call `e.preventDefault()` at the very top of your function _before_ the first `await`.
+
+Once code hits an `await` statement, the execution yields back to the browser event loop, and calling `preventDefault()` later will have absolutely no effect.
+
+tsx
+
+```
+// ❌ WRONG
+async function handleSubmit(e) {
+  const verified = await checkToken(); // UI yields here
+  e.preventDefault(); // Too late! Form already submitted and page reloaded
+}
+
+//  RIGHT
+async function handleSubmit(e) {
+  e.preventDefault(); // Stops the form immediately and synchronously
+
+  const verified = await checkToken();
+  if (verified) {
+    // Proceed with submission logic manually
+  }
+}
+```
+
+Use code with caution.
+
+### 2. React Batching and State "Race Conditions"
+
+In older versions of React, updating state after an `await` statement would skip React's automatic optimization batching, causing multiple unneeded re-renders.
+
+While React 18+ fixes batching, you still face **stale closure state issues**. If a user clicks a button twice rapidly, the second click might execute using older state values because the first click's `await` is still loading.
+
+tsx
+
+```
+async function handleLikeClick() {
+  setLoading(true);
+
+  // If the user clicks this 5 times fast, 'likes' will be stale
+  // because it refers to the value when the click originally happened.
+  const total = await saveLikeToDatabase(likes);
+
+  // Use functional updates to prevent stale state bugs:
+  setLikes(currentLikes => currentLikes + 1);
+  setLoading(false);
+}
+```
+
+Use code with caution.
+
+### 3. Missing `event.stopPropagation()`
+
+Just like preventing defaults, if you intend to stop an event from bubbling up to parent components via `e.stopPropagation()`, execute it synchronously at the top of the async wrapper.
+
+tsx
+
+```
+async function handleChildClick(e) {
+  e.stopPropagation(); // Stop bubbling immediately
+
+  await logClickMetrics();
+  // Parent handlers will not be triggered
+}
+```
+
+Use code with caution.
+
+### Summary Rule of Thumb
+
+Make your event listeners `async` whenever you need to talk to network APIs, local databases, or timers, but **always handle event object configurations (`preventDefault`, `stopPropagation`) on line 1.**
+
+Are you handling a **form submission**, a **file upload**, or a **button toggle**? Tell me what your event handler is doing so I can show you how to securely guard against double-clicks or stale states.
+
+- [link](https://www.lenovo.com/au/en/glossary/event-listener/)\
+  Event Listener: What It Is & How to Use It\
+  Can event listeners be asynchronous? Yes, event listeners can be asynchronous. You can use asynchronous functions or utilize async...\
+  \
+  \
+  Lenovo
+- [link](https://github.com/jasmine/jasmine/issues/1893)\
+  Continued support for async tests with done callbacks · Issue #1893 · jasmine/jasmine\
+  Making the spec async always "returns a Promise" and thus hits this warning.\
+  \
+  \
+  GitHub
+- [link](https://www.reddit.com/r/learnjavascript/comments/18d5kn3/eventloop%5Fdoesnt%5Fcare%5Fabout%5Fcallback%5Ftill%5Fthe/)\
+  EventLoop doesnt care about callback till the very end of whole stack? : r/learnjavascript\
+  Comments Section The entire stack is in a single task. The callback gets scheduled in the next task. The event loop doesn't pause ...\
+  \
+  Reddit
+
+Show all
+
+# react-use useAsync
+
+July 9, 2026
+
+Quick results from the web:
+
+[link](https://github.com/streamich/react-use/blob/master/docs/useAsync.md)
+
+**react**-**use**/docs/**useAsync**.md at master - GitHub
+
+Edit and raw actions useAsync **React hook that resolves an async function** or a returns a promise;
+
+GitHub·https://github.com
+
+[link](https://react-use-custom-hooks.vercel.app/docs/useAsync)
+
+**useAsync** - React use custom hooks
+
+A hook to manage state of any asynchronous operation. This hook can be **used** to manage loading, data and error states of an asynchronous operation.
+
+Vercel·https://react-use-custom-hooks.vercel.app
+
+The `useAsync` hook from the popular [react-use GitHub library](https://github.com/streamich/react-use) is <mark>a custom React hook that<span> </span><strong>automatically executes and tracks the state of an asynchronous function</strong><span> </span>or a Promise</mark>. It eliminates repetitive boilerplate code by natively managing `loading`, `error`, and `value` states. [link](https://github.com/streamich/react-use/blob/master/docs/useAsync.md)
+
+### Basic Usage
+
+The hook accepts an asynchronous function and a dependency array. It automatically triggers the function when the component mounts and whenever any value in the dependency array changes. [link](https://github.com/streamich/react-use/blob/master/docs/useAsync.md)
+
+jsx
+
+```
+import { useAsync } from 'react-use';
+
+const UserProfile = ({ userId }) => {
+  const state = useAsync(async () => {
+    const response = await fetch(`https://example.com{userId}`);
+    if (!response.ok) throw new Error('Failed to fetch user data');
+    return response.json();
+  }, [userId]); // Triggers refetch whenever userId changes
+
+  return (
+    <div>
+      {state.loading && <p>Loading user profile...</p>}
+      {state.error && <p>Error: {state.error.message}</p>}
+      {state.value && (
+        <div>
+          <h1>{state.value.name}</h1>
+          <p>Email: {state.value.email}</p>
+        </div>
+      )}
+    </div>
+  );
+};
+```
+
+Use code with caution.
+
+***
+
+### Returned State Object
+
+The hook returns a single object containing the following keys: [link](https://github.com/streamich/react-use/blob/master/docs/useAsync.md)
+
+- **`loading`**: A boolean that is `true` while the promise is unresolved and flips to `false` once completed or rejected.
+- **`value`**: The resolved data returned by your asynchronous function (defaults to `undefined`).
+- **`error`**: The error object caught if the promise rejects (defaults to `undefined`). [link](https://github.com/streamich/react-use/blob/master/docs/useAsync.md)
+
+***
+
+### Important Alternatives in `react-use`
+
+If `useAsync` doesn't perfectly fit your workflow, the library provides two closely related variants: [link](https://github.com/streamich/react-use)
+
+- **`useAsyncFn`**: Unlike `useAsync`, this variant **does not run automatically** on mount. Instead, it returns a state object and a trigger callback function, which is perfect for manual triggers like button clicks or form submissions.
+- **`useAsyncRetry`**: This works identically to `useAsync`, but its returned object includes a `retry()` function. This allows you to manually force the async operation to run again without mutating the dependency array. [link](https://github.com/streamich/react-use)
+
+***
+
+### Key Advantages
+
+- **Prevents Race Conditions**: The hook natively ensures that only the most recently triggered promise resolves into your state, protecting your UI from out-of-order API responses.
+- **Memory Leak Protection**: If the component unmounts while the async operation is still processing, the hook automatically ignores the resolved response, avoiding state updates on unmounted components. [link](https://react-use-custom-hooks.vercel.app/docs/useAsync)
+
+If you would like to explore further, tell me if you want to see **how to handle manual button clicks** using `useAsyncFn` or how to **implement manual retries** using `useAsyncRetry`!
+
+- [link](https://github.com/streamich/react-use/blob/master/docs/useAsync.md)\
+  react-use/docs/useAsync.md at master - GitHub\
+  Copy path. Top. File metadata and controls. Preview. Code. Blame. 35 lines (28 loc) · 606 Bytes. Raw. Copy raw file. Download raw ...\
+  GitHub
+- [link](https://github.com/streamich/react-use)\
+  streamich/react-use: React Hooks - GitHub\
+  useAsync , useAsyncFn , and useAsyncRetry — resolves an async function. useBeforeUnload — shows browser alert when user try to rel...\
+  GitHub
+- [link](https://react-use-custom-hooks.vercel.app/docs/useAsync)\
+  useAsync - React use custom hooks\
+  useAsync. A hook to manage state of any asynchronous operation. This hook can be used to manage loading , data and error states of...\
+  Vercel
+
+Show all
+
+## useAsyncFn
+
+The `useAsyncFn` hook from the `react-use` library is a variant of `useAsync` that **does not execute automatically**. Instead, it returns a trigger function, making it the ideal choice for manual events like button clicks, form submissions, or delete actions.
+
+### Basic Usage
+
+The hook returns a tuple (an array) containing the **current execution state** and the **callback function** used to trigger the operation.
+
+jsx
+
+```
+import { useAsyncFn } from 'react-use';
+
+const DeleteButton = ({ itemId }) => {
+  // Returns [state, callback]
+  const [state, deleteItem] = useAsyncFn(async () => {
+    const response = await fetch(`https://example.com{itemId}`, {
+      method: 'DELETE',
+    });
+    if (!response.ok) throw new Error('Delete failed');
+    return await response.json();
+  }, [itemId]); // Re-creates callback only if itemId changes
+
+  return (
+    <div>
+      <button onClick={deleteItem} disabled={state.loading}>
+        {state.loading ? 'Deleting...' : 'Delete Item'}
+      </button>
+
+      {state.error && <p style={{ color: 'red' }}>Error: {state.error.message}</p>}
+      {state.value && <p style={{ color: 'green' }}>Item deleted successfully!</p>}
+    </div>
+  );
+};
+```
+
+Use code with caution.
+
+***
+
+### Passing Arguments to the Callback
+
+Unlike `useAsync`, you can pass arguments directly into the trigger function at runtime. These arguments are forwarded straight to your async function.
+
+jsx
+
+```
+const [state, updateProfile] = useAsyncFn(async (username, bio) => {
+  const response = await fetch('/api/profile', {
+    method: 'POST',
+    body: JSON.stringify({ username, bio }),
+  });
+  return response.json();
+}, []);
+
+// Trigger it inside a form submit handler:
+// updateProfile('john_doe', 'Software Engineer');
+```
+
+Use code with caution.
+
+***
+
+### Returned Value Structure
+
+The hook returns an array with exactly two elements:
+
+1. **`state` (Object)**:
+
+- **`loading`**: Boolean indicating if the async function is currently running.
+- **`value`**: The data returned by the most recent successful execution.
+- **`error`**: The error caught during the most recent failed execution.
+
+2. **`callback` (Function)**:
+
+- The trigger function that returns a Promise resolving to the value (or throwing the error).
+
+***
+
+### Comparison: `useAsync` vs `useAsyncFn`
+
+| Feature           | `useAsync`                                      | `useAsyncFn`                                        |
+| ----------------- | ----------------------------------------------- | --------------------------------------------------- |
+| **Execution**     | Automatically runs on mount / dependency change | Manually runs via explicit function call            |
+| **Return Type**   | Object (`{ loading, value, error }`)            | Array (`[state, callback]`)                         |
+| **Best Used For** | Fetching initial page data, syncing filters     | Form submission, delete buttons, search-as-you-type |
+| **Arguments**     | Cannot pass runtime arguments                   | Accepts dynamic runtime arguments                   |
+
+If you want to continue optimizing your async workflows, let me know if you would like to see **how to handle input debounce** with async functions or how to **handle complex error feedback** in your UI!
+
 # 
 
