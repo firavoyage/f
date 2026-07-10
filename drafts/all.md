@@ -360,7 +360,7 @@ pm:
 - typescript vscode incentive microsoft
 - foss failure patterns
 - over engineering hacker ethics aesthetics
-- stable or volatile workload feeling vibe coding efficiency paradox translation
+- stable or volatile workload feeling vibe coding efficiency paradox translation theory
 
 gamedev:
 
