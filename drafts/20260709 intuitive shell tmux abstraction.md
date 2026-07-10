@@ -9044,4 +9044,690 @@ Show all
 
 # <!-- 10 jul -->
 
-# 
+# shell variable multi line string
+
+To assign and use a multi-line string in a shell variable (like Bash or Zsh), you can use standard quotes, a Heredoc, or ANSI-C quoting.
+
+**CRITICAL RULE**: You must **always wrap the variable in double quotes** when printing it (e.g., `"$MY_VAR"`), otherwise the shell will strip the newlines and compress everything into a single line. [link](https://stackoverflow.com/questions/23929235/multi-line-string-with-extra-space-preserved-indentation)
+
+Here are the three best ways to do it:
+
+### 1. Literal Assignment (Quotes)
+
+The simplest approach is to open a quote, press `Enter` to create new lines, and close the quote. [link](https://stackoverflow.com/questions/38090646/how-to-assign-a-multiple-line-value-to-a-bash-variable)
+
+bash
+
+```
+my_var="Line 1
+Line 2
+Line 3"
+
+echo "$my_var"
+```
+
+Use code with caution.
+
+### 2. Heredoc with `read` (Best for large blocks)
+
+Using a Here-Document combined with `read` lets you write clean text blocks without worrying about escaping embedded quotes. [link](https://serverfault.com/questions/72476/clean-way-to-write-complex-multi-line-string-to-a-variable)
+
+bash
+
+```
+read -r -d '' my_var << 'EOF'
+Line 1 with "quotes"
+Line 2
+Line 3
+EOF
+
+echo "$my_var"
+```
+
+Use code with caution.
+
+- **Note:** The `-d ''` flag tells `read` to continue reading until it reaches a null byte, capturing all newlines. Quoting `'EOF'` prevents variable expansion inside the block. [link](https://serverfault.com/questions/72476/clean-way-to-write-complex-multi-line-string-to-a-variable)
+
+### 3. ANSI-C Quoting (Best for inline `\n` characters)
+
+If you prefer keeping your code on fewer lines, you can use `$'...'` syntax. The shell automatically converts literal `\n` characters inside it into actual line breaks. [link](https://stackoverflow.com/questions/38090646/how-to-assign-a-multiple-line-value-to-a-bash-variable)
+
+bash
+
+```
+my_var=$'Line 1\nLine 2\nLine 3'
+
+echo "$my_var"
+```
+
+Use code with caution.
+
+***
+
+Would you like to know how to **strip indentation** from these lines, or do you need help **iterating over each line** using a loop? [link](https://unix.stackexchange.com/questions/275794/iterating-over-multiple-line-string-stored-in-variable)
+
+- [link](https://stackoverflow.com/questions/23929235/multi-line-string-with-extra-space-preserved-indentation)\
+  bash - Multi-line string with extra space (preserved indentation)\
+  May 29, 2014 — This answer is not useful. Save this answer. Loading when this answer was accepted… Show activity on this post. If you're trying t...\
+  Stack Overflow
+- [link](https://serverfault.com/questions/72476/clean-way-to-write-complex-multi-line-string-to-a-variable)\
+  Clean way to write complex multi-line string to a variable\
+  Oct 8, 2009 — Here's some information about writing complex multi-line strings to variables in Bash: \* \*\*Use the \`EOF\` sentinel\*\* This puts your...\
+  Server Fault
+- [link](https://www.reddit.com/r/bash/comments/10r85hb/how%5Fto%5Fstore%5Fmultiline%5Fstring%5Fin%5Fvariable/)\
+  How to store multiline string in variable preserving indents and ...\
+  Feb 1, 2023 — len1315. How to store multiline string in variable preserving indents and newlines? help. Hi, How do I store a multiline hardcoded...\
+  Reddit·r/bash
+
+Show all
+
+## echo or cat
+
+Use **`echo`** to print the variable. Use **`cat`** to print raw text directly without saving it to a variable first.
+
+While both can output text, they serve completely different purposes when handling multi-line strings.
+
+### Use `echo` for Variables
+
+If you have already saved your multi-line string into a variable, use `echo`. Always wrap the variable in double quotes to preserve the newlines.
+
+bash
+
+```
+# Save to variable
+my_var="Line 1
+Line 2"
+
+# Print the variable
+echo "$my_var"
+```
+
+Use code with caution.
+
+### Use `cat` for Direct Output (Heredocs)
+
+If you just want to output a large block of text directly to the screen or a file—without creating a variable—use `cat` with a Here-Document.
+
+bash
+
+```
+# Print directly to terminal
+cat << 'EOF'
+Line 1
+Line 2
+EOF
+
+# Save directly to a file
+cat << 'EOF' > output.txt
+Line 1
+Line 2
+EOF
+```
+
+Use code with caution.
+
+### Key Differences At a Glance
+
+| Feature          | `echo "$my_var"`               | `cat << 'EOF'`                      |
+| ---------------- | ------------------------------ | ----------------------------------- |
+| **Primary Goal** | Prints data stored in memory   | Streams text blocks or files        |
+| **Performance**  | Faster (shell builtin)         | Slower (spawns an external process) |
+| **Readability**  | Messy for raw, unassigned text | Cleanest for multi-line templates   |
+
+***
+
+Would you like to see how to **pass these strings into a file**, or do you need help **appending** text to an existing document?
+
+- [link](https://adamtheautomator.com/echo-command-in-bash/)\
+  Echo Command in Bash Shell : Discover the Many Uses\
+  Nov 18, 2022 — Printing Variable Values When writing a script, you typically temporarily store a value to a variable, which you can print with th...\
+  \
+  \
+  ATA Learning
+- [link](https://www.hostinger.com/ca/tutorials/echo-command-linux)\
+  The echo command in Linux with examples\
+  Dec 2, 2025 — What is the difference between echo and cat commands? While the echo command prints text or variables, the cat command is used to ...\
+  \
+  \
+  Hostinger
+- [link](https://labex.io/questions/what-is-the-difference-between-echo-and-cat-commands-in-linux-271273)\
+  What is the difference between echo and cat commands in Linux\
+  Jul 25, 2024 — In summary, the echo command is primarily used for printing text or displaying variable values, while the cat command is used for ...\
+  \
+  LabEx
+
+Show all
+
+## heredoc or quotes
+
+Use **quotes** for short, simple multi-line strings. <mark>Use a<span> </span><strong>Heredoc</strong><span> </span>for large blocks of text, scripts, or when your text contains a lot of internal quotes</mark>.
+
+Here is how to choose between them:
+
+### Use Quotes When...
+
+- The text is relatively short (a few lines).
+- You want a quick, inline assignment.
+- The text does not contain the same quote character you used to open it.
+
+bash
+
+```
+# Simple and quick
+msg="Hello,
+This is a short message.
+Goodbye!"
+```
+
+Use code with caution.
+
+### Use Heredoc When...
+
+- The text is large (paragraphs, configurations, or code blocks).
+- The text contains both single (`'`) and double (`"`) quotes, as Heredoc avoids escaping nightmares.
+- You want to preserve exact indentation or indent the code cleanly.
+
+bash
+
+```
+# Clean, readable, and handles quotes automatically
+read -r -d '' config << 'EOF'
+{
+  "user": "admin",
+  "path": '/var/www',
+  "message": "Welcome to 'the' server"
+}
+EOF
+```
+
+Use code with caution.
+
+### Key Differences At a Glance
+
+| Feature                | Quotes (`"..."`)            | Heredoc (`<< 'EOF'`)                  |
+| ---------------------- | --------------------------- | ------------------------------------- |
+| **Best For**           | Short strings               | Templates, files, and code            |
+| **Quote Escaping**     | Must escape internal quotes | No escaping needed                    |
+| **Indentation**        | Messes up code formatting   | Can be indented cleanly using `<<-`   |
+| **Variable Expansion** | Always active in `""`       | Optional (disable by quoting `'EOF'`) |
+
+***
+
+Would you like to see how to use **`<<-` to strip tabs** for clean code indentation, or do you need to **pass variables** inside the multi-line block?
+
+- [link](https://opensource.com/article/20/12/heredoc)\
+  How to use heredoc as a text editor\
+  Dec 25, 2020 — Use heredoc for quick notes and for shell scripts, and never puzzle over how to dynamically generate configuration files again.\
+  \
+  \
+  Opensource.com
+- [link](https://www.reddit.com/r/PHPhelp/comments/rc3mwh/what%5Fis%5Fthe%5Fpoint%5Fof%5Fusing%5Fa%5Fheredoc%5Fand%5Fnowdoc/)\
+  What is the point of using a Heredoc and Nowdoc while actually coding? : r/PHPhelp\
+  Dec 9, 2021 — They're good for large blocks of text, especially where you have both single and double quotes or other characters that you would ...\
+  \
+  Reddit
+- [link](https://nickjanetakis.com/blog/output-assign-pipe-and-redirect-a-heredoc-in-a-shell-script)\
+  Output, Assign, Pipe and Redirect a Heredoc in a Shell Script — Nick Janetakis\
+  Apr 23, 2024 — If our multi-line string had single ' or double " quotes inside of it everything will just work without needing to escape them. Th...\
+  \
+  \
+  Nick Janetakis
+
+Show all
+
+## why heredoc does not work like a string and need special support
+
+A Here-Document (Heredoc) does not work like a normal string because <mark>it is not a data type</mark>; it is a **stream redirection feature**.
+
+When you use a string like `"hello"`, you are passing a piece of data to the shell. When you use a Heredoc, you are instructing the shell to redirect the standard input (stdin) of a command.
+
+Here is why it needs special support and behaves differently:
+
+### 1. It Uses File Descriptors, Not Memory
+
+- **Strings** are evaluated by the shell parser and stored directly in your computer's RAM as a variable.
+- **Heredocs** create a temporary file or an anonymous pipe behind the scenes. The shell feeds the text into that pipe, sending it to a command’s standard input just like reading from a text file.
+
+### 2. It Requires a Command to Consume It
+
+A string can exist on its own in a variable assignment (e.g., `var="text"`). A Heredoc **cannot exist without a command** attached to it.
+
+bash
+
+```
+# This throws a syntax error because there is no command to receive the data:
+<< 'EOF'
+my text
+EOF
+
+# This works because 'cat' or 'read' is there to receive the stream:
+cat << 'EOF'
+my text
+EOF
+```
+
+Use code with caution.
+
+### 3. The Syntax is Evaluated Line-by-Line
+
+A quoted string tells the shell parser, "Ignore everything until you see the closing quote."
+
+A Heredoc tells the shell parser, "Keep processing lines normally, but send them to the command until you find a line that matches the delimiter exactly". Because the shell reads it line-by-line, it allows unique control features that regular strings cannot handle:
+
+- **Literal vs. Expanded:** Quoting the delimiter (`'EOF'`) completely changes how the shell parses the entire block (disabling variable expansion).
+- **Indentation Stripping:** The `<<-` operator tells the shell to strip leading tab characters from every line, which is impossible with standard string literal syntax.
+
+***
+
+Would you like to see how the shell uses **anonymous pipes** under the hood for Heredocs, or do you want to see how a **Here-string (`<<<`)** bridges the gap between strings and Heredocs?
+
+- [link](https://discuss.hashicorp.com/t/heredoc-with-a-conditional-statement-in-terraform/46857)\
+  Heredoc with a conditional statement in terraform - Terraform\
+  Nov 14, 2022 — HOWEVER, heredocs are strings - but what you're trying to put inside your heredoc is not a string - it's another piece of Terrafor...\
+  \
+  HashiCorp Discuss
+- [link](https://linuxize.com/post/bash-heredoc/)\
+  Bash Heredoc: Complete Guide with Examples\
+  Apr 19, 2026 — In Bash and other shells like Zsh, a Here document (Heredoc ( Here document ) ) is a type of redirection that allows you to pass m...\
+  \
+  \
+  Linuxize
+- [link](https://en.wikipedia.org/wiki/Here%5Fdocument)\
+  Here document\
+  This syntax is because here documents are formally stream literals, and the content of the here document is often redirected to st...\
+  \
+  Wikipedia
+
+Show all
+
+## is it a good design
+
+Yes, it is considered a **brilliant, Unix-native design**, but only when used for its intended purpose.
+
+Whether it is a "good" design depends entirely on what you are trying to accomplish.
+
+### Why it is a GOOD design
+
+- **The "Everything is a File" Philosophy:** Unix treats text streams and files exactly the same. Heredoc perfectly aligns with this by turning inline text into a file-like stream (`stdin`). This allows any command that reads files to seamlessly read inline text.
+- **Solves the "Escaping Hell" Problem:** In standard strings, nesting single quotes inside double quotes (or vice versa) quickly becomes unreadable due to backslashes (`\`). Heredoc completely bypasses this by treating everything as raw text until it hits the delimiter.
+- **Enormous Automation Power:** It allows developers to write entire configurations, scripts, or multi-line payloads directly inside a automation script without needing external assets.
+
+### Why it is a BAD design (The Trade-offs)
+
+- **High Cognitive Load:** For beginners, the syntax is confusing. It requires understanding file redirection (`<`, `>`), delimiters, and how processes handle input.
+- **Not a True Primitive:** Because it is a stream and not a data type, you cannot natively assign a Heredoc straight to a variable (e.g., `VAR=<<EOF` fails). You must hack around it using the `read` command.
+- **Indentation Issues:** Unless you use `<<-` (which strictly requires hard Tab characters, not spaces), formatting a Heredoc breaks the visual indentation of your source code.
+
+### Summary Verdict
+
+For **data storage and variable manipulation**, it is a clunky design. Use standard or ANSI-C strings instead.
+
+For **feeding multi-line text into utilities or generating files** (like `cat`, `ssh`, `ftp`, or `sqlite3`), it is an elegant, world-class design that has survived for over 50 years.
+
+***
+
+Would you like to see the **cleanest alternative architectures** used in modern languages (like Python's triple quotes or Node's template literals), or should we look at how to **safely pass variables** through a shell Heredoc?
+
+## is it a good design when it behaves like a string but does not work like a string
+
+From a modern programming perspective, <mark><strong>no, this is considered a poor design.</strong></mark> It violates a fundamental principle of software engineering: **Least Astonishment (POLA).**
+
+If something looks like a multi-line string literal, it should act like one. Having a feature that visually mimics a block of text but secretly behaves like a file-handling stream creates confusion.
+
+Here is a breakdown of why this hybrid behavior is fundamentally flawed by modern standards, and why it exists anyway.
+
+### Why it is a Poor Design (The Modern View)
+
+- **Syntax Duplicity (Looks like X, acts like Y):** It tricks the programmer into thinking they are writing data, but they are actually configuring process communication.
+- **State and Side Effects:** A true string literal is a stateless piece of data. A Heredoc introduces state—it opens a stream, creates a temporary file descriptor, and feeds data sequentially. This makes debugging much harder when things go wrong.
+- **Leaky Abstraction:** You cannot use a Heredoc anywhere you would use a regular string. For example, you cannot pass it directly as an argument to a function or assign it to a variable without a wrapper command.
+
+### Why the Design Exists (The Historical Context)
+
+To be fair to the creators of the Unix shell in the 1970s, **they never intended Heredoc to be a string.**
+
+- **The Shell is a Command Launcher, Not a General Language:** In the 1970s, the shell was just a macro processor to glue separate programs together. It didn't even have complex data types.
+- **It was built for Redirection, not Assignment:** The goal of Heredoc was to simulate a user typing into a terminal keyboard (`stdin`) from inside a script. The fact that we now try to use it as a "multi-line string variable" is a hack forced by programmers who want the shell to behave like Python or JavaScript.
+
+### How Modern Languages Fixed This Design
+
+Modern languages kept the _visual cleanliness_ of the Heredoc but turned it into a _true string primitive_. They completely decoupled the text block from file streams.
+
+python
+
+```
+# Python Triple Quotes: A true, stateless string literal. No streams required.
+query = """
+SELECT *
+FROM users
+WHERE id = 1;
+"""
+```
+
+Use code with caution.
+
+### Summary Verdict
+
+If you judge it as a **string feature**, it is an **awful design** full of traps. If you judge it as an **I/O stream automation feature**, it is a **brilliant design** that was simply stretched past its original purpose.
+
+***
+
+Would you like to explore **how modern shells (like Fish or Elvish)** handle this better, or do you want to look at the **exact syntax errors** that happen when you treat a Heredoc like a normal string?
+
+- [link](https://medium.com/@Masoncoding/the-principle-of-least-surprise-principle-of-least-astonishment-pola-3937e8ee051d)\
+  The Principle of Least Surprise (Principle of Least Astonishment, POLA) | by MasonCoding\
+  Oct 28, 2024 — The Principle of Least Surprise (Principle of Least Astonishment, POLA) Software design is not only about writing functional code ...\
+  \
+  \
+  Medium
+- [link](https://medium.com/@theody85/programming-principles-ii-going-beyond-the-basics-a171f346c2b6)\
+  Programming Principles II: Going Beyond the Basics | by Theodora Gyambrah\
+  Oct 29, 2023 — The Law of Least Astonishment (LoLA), also referred to as the Principle of Least Astonishment (POLA), is a fundamental design prin...\
+  \
+  \
+  Medium
+
+## is it a good design to have inconsistent both stdin and args for input
+
+No, it is **generally considered a flawed or complex design** because it creates inconsistency, duplicate code paths, and steep learning curves.
+
+However, in the world of Command Line Interfaces (CLIs) and UNIX utilities, this duality is an intentional trade-off. It provides massive flexibility for both interactive users and automated scripts.
+
+Here is an analysis of why this split personality hurts software design, alongside why it remains highly useful.
+
+***
+
+### The Problems: Why It Is Bad Design
+
+### 1. Violates "One Way to Do It" (The Principle of Least Surprise)
+
+Good API and language design dictates that there should ideally be one obvious way to pass data. Forcing a developer to constantly ask, _"Does this tool expect an argument, or do I need to pipe data into it?"_ creates friction and mistakes.
+
+### 2. Code Complexity and Bloat
+
+When a tool accepts both, the underlying code must implement two entirely separate input parsing mechanisms:
+
+- **Arguments:** Handled by scanning the memory stack (`argv[]`).
+- **Stdin:** Handled by opening a file descriptor stream (`fd/0`), managing buffers, and reading until an `EOF` (End of File) marker.\
+  This increases the surface area for bugs, memory leaks, and security vulnerabilities.
+
+### 3. Inconsistent Behavior (The Trap)
+
+Many UNIX utilities behave completely differently depending on which input method you use. For example:
+
+- `grep pattern file.txt` (Argument) searches the specific file.
+- `cat file.txt | grep pattern` (Stdin) searches a stream, losing file metadata like the filename in the output.
+
+***
+
+### The Defense: Why It Is Good Design for UNIX
+
+Despite the inconsistency, this pattern survived for over 50 years because it enables the **UNIX Philosophy**: _Write programs that do one thing well, and work together via text streams._
+
+### 1. It Supports Piping and Composition
+
+Without `stdin`, you could not chain programs together.
+
+bash
+
+```
+# Beautiful pipeline flow made possible by stdin support:
+curl -s https://example.com | jq .name | tr 'a-z' 'A-Z'
+```
+
+Use code with caution.
+
+If `jq` or `tr` only accepted arguments, you would have to constantly save intermediate data to temporary variables or files, ruining the speed of the terminal.
+
+### 2. The Solution: The `-` Convention
+
+To fix the design inconsistency, UNIX developers created a bridge: **the hyphen (`-`) argument.** Many modern tools use a single dash to explicitly tell an argument-based parameter to pull from `stdin` instead.
+
+bash
+
+```
+# Tells tar to read the archive from stdin instead of a file path
+curl -s http://example.com | tar -xzf -
+```
+
+Use code with caution.
+
+***
+
+### How Modern Systems Fix This
+
+Modern application CLI frameworks (like Go's `Cobra` or Rust's `Clap`) solve this architectural mess by forcing consistency. They establish a clear hierarchy:
+
+1. **Explicit Flags:** Used strictly for metadata, configurations, or targets (e.g., `--verbose`, `--file`).
+2. **Unified Data Input:** The framework automatically checks if an argument was provided; if not, it seamlessly falls back to reading `stdin` without the developer having to write custom streaming logic.
+
+***
+
+Would you like to see how to write a script in **Bash, Python, or Go** that cleanly accepts both inputs without messing up your code structure, or should we look at how **`xargs`** bridges the gap when a tool stubbornly refuses to accept `stdin`?
+
+- [link](https://medium.com/@chaitanyalakhchaura12/things-i-learned-about-stdin-and-stdout-in-linux-39d004c1385e)\
+  Things I learned about STDIN and STDOUT in Linux\
+  Jan 24, 2024 — File descriptors are integer values starting from 0. There are 3 special FD's which are opened as soon as the process starts. Thes...\
+  \
+  \
+  Medium
+- [link](https://retrocomputing.stackexchange.com/questions/26641/why-does-cat-with-no-argument-read-from-standard-input)\
+  Why does cat with no argument read from standard input?\
+  Mar 14, 2023 — Imagine you want to type or cut\&paste text and save it to a file, without starting an editor. A simple cat > file. txt can run in ...\
+  \
+  \
+  Retrocomputing Stack Exchange
+- [link](https://stackoverflow.com/questions/7966077/are-there-any-standard-command-line-conventions-for-dashes-and-arguments)\
+  Are there any standard Command line conventions for dashes and arguments?\
+  Nov 1, 2011 — Are there any standard Command line conventions for dashes and arguments? \[duplicate] many times, single dash is shortcut of a sim...\
+  \
+  Stack Overflow
+
+Show all
+
+# what does shell pass to a command in a line
+
+When you run a command, the shell passes <mark>an<span> </span><strong>array of strings</strong></mark> to the program.
+
+Here is exactly what the shell passes and how it processes the line before doing so:
+
+### The Argument Array (`argv`)
+
+The shell breaks your command line into distinct pieces called arguments. It passes these to the operating system's execution system as a numbered list (often called `argv` in programming):
+
+- **`argv[0]`**: The name or path of the command itself.
+- **`argv[1]`**: The first argument/flag.
+- **`argv[2]`**: The second argument, and so on.
+
+For example, if you type `ls -l /home`, the shell passes:
+
+- `argv[0]` = `"ls"`
+- `argv[1]` = `"-l"`
+- `argv[2]` = `"/home"`
+
+### What the Shell Expands Before Passing
+
+Before the command ever sees the text, the shell modifies the line based on specific rules:
+
+- **Spaces:** Used as separators to divide arguments.
+- **Quotes:** Groups words together into a single argument (e.g., `"my file.txt"` becomes one argument instead of two).
+- **Wildcards:** Expands characters like `*` into a full list of matching filenames.
+- **Variables:** Replaces terms like `$USER` with the actual value (e.g., `"john"`).
+
+### What the Shell Does NOT Pass
+
+The command never sees structural shell operators. The shell intercepts and handles these directly:
+
+- **Redirection symbols:** `<` or `>`
+- **Pipe symbols:** `|`
+- **Background operators:** `&`
+- **Sequential separators:** `;` or `&&`
+
+To help narrow this down, let me know if you want to see:
+
+- How a **specific programming language** (like Python or C) reads these arguments.
+
+- How to use **quotes or escapes** to stop the shell from changing your text.
+
+- Examples of how **wildcards change** what the command receives.
+
+- [link](https://shazaali.substack.com/p/whiteboarding-simple-shell-a-no-code)\
+  Whiteboarding Simple Shell: A Guide for ALX SE Community ❥ | Beta Version\
+  May 17, 2023 — By constructing an array of strings containing the command and its arguments, the shell program can pass any number of arguments t...\
+  \
+  \
+  Substack
+
+- [link](https://www.webasha.com/blog/linux-command-line)\
+  What is Command in Linux OS and How Does it Works?\
+  Jan 19, 2024 — The shell parses the command, breaking it down into components like the command name, options (flags), and arguments.\
+  \
+  \
+  WebAsha
+
+- [link](https://www.reddit.com/r/commandline/comments/yplty5/help%5Fme%5Funderstand%5Fcommand%5Fline%5Fapplications/)\
+  Help me understand command line applications : r/commandline\
+  Nov 8, 2022 — A shell takes this commandline and analyzes it. It tries to figure out what a command and what options and arguments are. After it...\
+  \
+  Reddit
+
+Show all
+
+## where does shell cut off
+
+The shell cuts off (splits) a command line based on specific **delimiter characters** and **structural tokens**.
+
+Here is exactly where and how those cut-offs happen:
+
+### 1. Argument Splitting (Whitespaces)
+
+The shell cuts words into separate arguments using **IFS** (Internal Field Separator) characters. By default, these are:
+
+- **Spaces**
+- **Tabs**
+- **Newlines**
+
+Any sequence of these characters ends the current argument and begins the next one, unless they are escaped or quoted.
+
+### 2. Command Termination (The Hard Cut-Offs)
+
+The shell completely stops parsing the current command when it hits structural operators. These characters tell the shell to execute what it has read so far:
+
+- **`;` (Semicolon):** Cuts off the command and runs the next one sequentially.
+- **`|` (Pipe):** Cuts off the command and passes its output to the next command.
+- **`&` (Background):** Cuts off the command and runs it in the background.
+- **`&&` or `||` (Logical AND/OR):** Cuts off the command and conditionally runs the next.
+- **Newline (Enter key):** Cuts off the line and executes the command.
+
+### 3. Redirection Cut-Offs
+
+When the shell sees `<`, `>`, or `>>`, it cuts off the command arguments. Everything after these symbols is treated as a file target for input/output, not as arguments for the program.
+
+### 4. Preventing the Cut-Off
+
+You can force the shell _not_ to cut off at a space by using:
+
+- **Single Quotes (`' '`):** Treats everything inside as a literal, single argument.
+- **Double Quotes (`" "`):** Treats everything as a single argument but still allows variable expansion.
+- **Backslash (`\`):** Escapes the very next character (e.g., `\ `treats the space as literal text).
+
+If you want to dive deeper into this behavior, tell me if you'd like to see:
+
+- How to change the **IFS variable** to cut words at commas or colons.
+
+- Examples of how **nested quotes** affect where the shell splits.
+
+- How the shell handles **multiline commands** using the backslash (`\`) at the end of a line.
+
+- [link](https://se.ifmo.ru/~ad/Documentation/Shells%5Fby%5FExample/ch01lev1sec3.html)
+
+1.3. History of the Shell\
+The shell parses the command line, breaking it into words (called tokens) separated by whitespace, which consists of tabs, spaces,\
+\
+Университет ИТМО
+
+- [link](https://www.linkedin.com/pulse/how-shell-works-internally-victor-ohachor)\
+  HOW THE SHELL WORKS INTERNALLY\
+  Aug 27, 2021 — In this case the newline is overwritten with null character - \0 - to show the end of the line. The shell separates the command li...\
+  \
+  \
+  LinkedIn
+- [link](https://rute.gerdesas.com/node23.html)\
+  20\. Advanced Shell Scripting\
+  The last modifications to the command-line are the splitting of the command-line into words according to the white space between t...\
+  \
+  rute.gerdesas.com
+
+Show all
+
+## what does shell modify before passing
+
+Before passing arguments to a command, the shell performs **word expansions** and **substitutions**. The command only receives the final, modified results, completely unaware of the original text you typed.
+
+Here is exactly what the shell modifies, in the precise order it processes them:
+
+### 1. Alias Substitution
+
+- **What it does:** Replaces a shortcut word with its defined full command.
+- **Example:** If `ll` is aliased to `ls -l`, typing `ll` is instantly changed to `ls -l`.
+
+### 2. Parameter and Variable Expansion
+
+- **What it does:** Replaces variable names starting with `$` with their actual values.
+- **Example:** `echo $USER` becomes `echo john`.
+
+### 3. Command Substitution
+
+- **What it does:** Runs a command inside `$(...)` or backticks `...`, captures the text output, and pastes it directly into the line.
+- **Example:** `vi $(which python)` becomes `vi /usr/bin/python`.
+
+### 4. Arithmetic Expansion
+
+- **What it does:** Calculates mathematical equations inside `$((...))`.
+- **Example:** `echo $((2 + 3))` becomes `echo 5`.
+
+### 5. Pathname Expansion (Globbing)
+
+- **What it does:** Scans directories for matching files whenever it sees wildcards like `*`, `?`, or `[...]`.
+- **Example:** `rm *.txt` becomes `rm notes.txt draft.txt todo.txt`.
+
+### 6. Quote Removal
+
+- **What it does:** Strips away the outer layers of `'`, `"`, and `\` characters after they have done their job protecting spaces.
+- **Example:** `mysql -p"secret"` becomes `mysql -psecret`.
+
+### What it Never Modifies
+
+The shell **never modifies literal text** wrapped in single quotes (`'...'`). Everything inside single quotes is passed to the command exactly as written.
+
+If you want to see how this works in practice, let me know if you want to explore:
+
+- How to use **single vs. double quotes** to control these modifications.
+
+- How to **debug and print** exactly what the shell modified before running it (like using `set -x`).
+
+- What happens when a modification results in **empty arguments** or no matches.
+
+- [link](https://pubs.opengroup.org/onlinepubs/9799919799/utilities/V3%5Fchap02.html)\
+  2\. Shell Command Language\
+  When expanding words for a command about to be executed, and the word will be the command name or an argument to the command, the ...\
+  \
+  www.opengroup.org
+
+- [link](https://www.ibm.com/docs/en/aix/7.1.0?topic=shell-command-substitution-in-korn-posix)\
+  Command substitution in the Korn shell or POSIX shell\
+  The shell expands the command substitution by executing command in a subshell environment and replacing the command substitution (\
+  \
+  IBM
+
+- [link](https://www.ibm.com/docs/en/aix/7.2.0?topic=shell-input-output-redirection-in-c)\
+  Input and output redirection in the C shell\
+  Thus, unlike some previous shells, commands that run from a shell script do not have access to the text of the commands by default...\
+  \
+  IBM
+
+Show all
+
+# . tmux 0.1
+
+
