@@ -46495,6 +46495,18 @@ fun.
 
 now i have some pics and a recording of her.
 
+23 00 reflect.
+
+well... idk if it's really what i expected to be anonymous...
+
+...
+
+oh my github and have <!-- acbox public archive --> feel interesting.
+
+it's always better to have more ways and gain more power <!-- esp when it fits your mind -->.
+
+but i might not have to automate when it's not to be scaled.
+
 
 
 <!-- timebox, plan. -->
