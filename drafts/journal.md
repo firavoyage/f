@@ -46447,6 +46447,10 @@ i may read some books.
 
 i guess if i have time in the morning i _could_ make something happen somehow <!-- do something somehow -->
 
+02 20 dl `Raw Thought` <!-- `Raw Thought, Raw Nerve: Inside The Mind Of Aaron Swartz` -->.
+
+<!-- the one on ia does not format well. zlib works. -->
+
 
 
 <!-- timebox, plan. -->
