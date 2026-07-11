@@ -46469,6 +46469,16 @@ fun.
 
 <!-- i was thinking about i could put a changelog on memoh. i might copy and synthesize based on github releases. i did not have time to discuss w her. she, along w three other frnds (wo her boss when i asked), had left before 20. -->
 
+<!-- 
+
+(browsing github ios app, memohai/memoh contributors)
+
+"我知道你是谁了!"
+
+
+
+ -->
+
 19 40 rename telegram account to `Adwaita`. ping her.
 
 > Got you!
