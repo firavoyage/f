@@ -1,6 +1,10 @@
 <!-- at liehuo game center. groupmates found: mio. acbox. (and some others) -->
 
-# . git pull
+<!-- would things change much? anyway let's see. -->
+
+<!-- just one liner i guess. as long as ik where things are stored (to be purged if needed) and which docker container could be stopped it would be fine. -->
+
+# (?) . git pull
 
 ```sh
  ~ % cd /home/fira/Projects/Memoh
@@ -125,7 +129,7 @@ git: 'pullgit' is not a git command. See 'git --help'.
 HEAD is now at d62a4221d chore(sdk): upgrade Hey API to 0.99.0 (#769)
 ```
 
-# git pull fatal: Need to specify how to reconcile divergent branches.
+# (?) git pull fatal: Need to specify how to reconcile divergent branches.
 
 This error happens because your local branch and the remote branch have diverged, and Git does not know whether to merge or rebase the changes.
 
@@ -284,3 +288,4 @@ Would you like help **recovering any uncommitted files** before running this, or
 Show all
 
 # 
+
