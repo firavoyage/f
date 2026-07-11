@@ -778,7 +778,7 @@ humility:
 - research design polish vibe coding <!-- d? -->
 - research zed agent
 - research llms free tier limit subscription model cost price margin self hosting
-- research git two separate tracking folders init bare gitdir worktree <!-- for humility -->
+- research git two separate tracking folders init bare gitdir worktree <!-- for agentic swe -->
 - research ai slop design
 - web archi design
 - web <!-- ? -->
@@ -788,6 +788,7 @@ humility:
 - web design utilitarian yaml
 - serve endpoints
 - research claude
+- research memoh
 
 legacy:
 
