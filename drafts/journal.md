@@ -46451,6 +46451,24 @@ i guess if i have time in the morning i _could_ make something happen somehow <!
 
 <!-- the one on ia does not format well. zlib works. -->
 
+19 20 feel.
+
+acbox is curious how i found her. idk. i was not even intended to capture her. i did not even recognize her. <!-- she came w a laptop (macbook) as well but did not do things there. -->
+
+just, maimai players, yk. <!-- people of the time, they will converge. -->
+
+she has a phone number of +852 on tg.
+
+she chatted w frnds on tg and qq and browsed some feed on wechat (?) while waiting. sometimes she showed some msgs to mio. she was a bit anonyed as she could not figure out who im among memoh contributors. she guessed, but i did not answer.
+
+fun.
+
+19 40 rename telegram account to `Adwaita`. ping her.
+
+> Got you!
+
+now i have some pics and a recording of her.
+
 
 
 <!-- timebox, plan. -->
