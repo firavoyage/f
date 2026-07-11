@@ -789,6 +789,7 @@ humility:
 - serve endpoints
 - research claude
 - research memoh
+- research claude code
 
 legacy:
 
