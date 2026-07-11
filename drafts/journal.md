@@ -46507,6 +46507,18 @@ it's always better to have more ways and gain more power <!-- esp when it fits y
 
 but i might not have to automate when it's not to be scaled.
 
+02 00 think.
+
+> 灵感易逝。
+> 
+> 如果想到一件让自己激动的事情，却没有马上去开始做。
+> 
+> 那第二天可能就没有那么激动，也没有机会去做完了。
+
+no. it's never too late. it's definitely exciting <!-- and meaningful --> to me, and i do not have to act at impulses.
+
+sleep.
+
 
 
 <!-- timebox, plan. -->
