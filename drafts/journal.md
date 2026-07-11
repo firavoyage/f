@@ -46461,7 +46461,13 @@ she has a phone number of +852 on tg.
 
 she chatted w frnds on tg and qq and browsed some feed on wechat (?) while waiting. sometimes she showed some msgs to mio. she was a bit anonyed as she could not figure out who im among memoh contributors. she guessed, but i did not answer.
 
+she said she did not put content on her personal blog acbox.lol. she tried to hide my laptop screen w her hands when i opened her 15yro resume. idk what she was thinking when i said *i* am the first google search result of her name.
+
+<!-- i did reveal who im a few times (e.g. maimai player name), but she did not spy me. -->
+
 fun.
+
+<!-- i was thinking about i could put a changelog on memoh. i might copy and synthesize based on github releases. i did not have time to discuss w her. she, along w three other frnds (wo her boss when i asked), had left before 20. -->
 
 19 40 rename telegram account to `Adwaita`. ping her.
 

@@ -2,7 +2,7 @@
 
 # . git pull
 
-```
+```sh
  ~ % cd /home/fira/Projects/Memoh
  ~/Projects/Memoh % git pull
 remote: Enumerating objects: 13144, done.
@@ -117,5 +117,170 @@ hint: preference for all repositories. You can also pass --rebase, --no-rebase,
 hint: or --ff-only on the command line to override the configured default per
 hint: invocation.
 fatal: Need to specify how to reconcile divergent branches.
+ ~/Projects/Memoh % git pullgit fetch origin && git reset --hard origin/main
+
+git: 'pullgit' is not a git command. See 'git --help'.
+ ~/Projects/Memoh % git fetch origin && git reset --hard origin/main
+
+HEAD is now at d62a4221d chore(sdk): upgrade Hey API to 0.99.0 (#769)
 ```
 
+# git pull fatal: Need to specify how to reconcile divergent branches.
+
+This error happens because your local branch and the remote branch have diverged, and Git does not know whether to merge or rebase the changes.
+
+### Quick Fixes
+
+Run **one** of the following commands to tell Git how to handle the split:
+
+- **Option 1: Merge (Standard)**\
+  Combines histories and creates a merge commit.\
+  bash
+
+<!---->
+
+```
+git config pull.rebase false
+```
+
+Use code with caution.
+
+- **Option 2: Rebase (Cleaner History)**\
+  Places your local commits on top of the remote commits.\
+  bash
+
+<!---->
+
+```
+git config pull.rebase true
+```
+
+Use code with caution.
+
+- **Option 3: Fast-Forward Only**\
+  Only pulls if no local commits exist. Fails otherwise.\
+  bash
+
+<!---->
+
+```
+git config pull.ff only
+```
+
+Use code with caution.
+
+### Apply Globally or Per-Command
+
+- To apply your choice to **all repositories** on your machine, add `--global` right after `git config`.
+
+- To apply your choice **just for this single pull**, run:\
+  bash
+
+<!---->
+
+```
+git pull --rebase
+```
+
+Use code with caution.\
+_(Swap `--rebase` with `--no-rebase` or `--ff-only` depending on your choice)._
+
+### What to do next?
+
+To help you get back to work smoothly, let me know:
+
+- Are you **working with a team** on this branch? (Merging is usually safer for teams).
+- Do you want to **keep your local commit history** looking perfectly linear? (Rebasing is best for this).
+
+I can help you choose the best workflow for your project.
+
+- [link](https://medium.com/@rajlaxmii/git-error-you-have-divergent-branches-and-need-to-specify-how-to-reconcile-them-75e97bd8abd2)\
+  Git Error: You have divergent branches and need to specify how to reconcile them.\
+  Aug 14, 2023 — Git Error: You have divergent branches and need to specify how to reconcile them. The message you're seeing indicates that you're ...\
+  \
+  \
+  Medium
+- [link](https://bobcares.com/blog/git-error-fatal-refusing-to-merge-unrelated-histories/)\
+  Fix the “fatal: refusing to merge unrelated histories” Git Error\
+  May 19, 2025 — This error occurs when merging two Git repositories or branches that don't share a common commit history. Git sees them as entirel...\
+  \
+  \
+  Bobcares
+- [link](https://gitlab.com/kicad/code/kicad/-/issues/5023)\
+  "cannot pull with rebase: You have unstaged changes" on "git pull" (#5023) · Issues · KiCad / KiCad Source Code / kicad · GitLab\
+  Jul 31, 2020 — Description on the command "git pull" to get latest sources the answer is: error: cannot pull with rebase: You have unstaged chang...\
+  \
+  GitLab
+
+Show all
+
+## force as if i deleted and cloned the repo again
+
+To completely overwrite your local branch with the exact state of the remote branch—mimicking a fresh clone without deleting the folder—run these two commands in your terminal:
+
+bash
+
+```
+git fetch origin
+git reset --hard origin/<branch-name>
+```
+
+Use code with caution.
+
+### ⚠️ Warning
+
+The `git reset --hard` command is destructive. It will permanently delete:
+
+- All uncommitted local changes (tracked and untracked files).
+- Any local commits that you have not pushed to the remote repository.
+
+### Quick Shortcuts
+
+- **If you are on the `main` branch:**\
+  bash
+
+<!---->
+
+```
+git fetch origin && git reset --hard origin/main
+```
+
+Use code with caution.
+
+- **If you are on the `master` branch:**\
+  bash
+
+<!---->
+
+```
+git fetch origin && git reset --hard origin/master
+```
+
+Use code with caution.
+
+If you are unsure of your current branch name, type `git branch --show-current` first to check.
+
+Would you like help **recovering any uncommitted files** before running this, or are you ready to completely wipe the local history?
+
+- [link](https://medium.com/@vishalbarvaliya/resetting-your-git-branch-to-a-previous-commit-a-complete-guide-96cc314a172e)\
+  Resetting Your Git Branch to a Previous Commit: A Complete Guide\
+  Jul 30, 2024 — When to Use \` git reset --hard\` When you need to completely discard changes and reset both your working directory and staging area...\
+  \
+  \
+  Medium
+- [link](https://blog.openreplay.com/git-force-pull/)\
+  Git Force Pull: How to Safely Overwrite Local Changes and Sync with Remote\
+  Feb 10, 2025 — :warning: Warning: git reset --hard will permanently delete all uncommitted local changes. Make sure you really want to discard yo...\
+  \
+  \
+  OpenReplay Blog
+- [link](https://blog.openreplay.com/git-force-pull/)\
+  Git Force Pull: How to Safely Overwrite Local Changes and Sync with Remote\
+  Feb 10, 2025 — :warning: Warning: git reset --hard will permanently delete all uncommitted local changes. Make sure you really want to discard yo...\
+  \
+  \
+  OpenReplay Blog
+
+Show all
+
+# 
