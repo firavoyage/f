@@ -108,6 +108,7 @@ life:
 - game maimai dx music theory
 - ielts band perf demography
 - coffee
+- dark chocolate black chocolate
 
 create something:
 
@@ -793,6 +794,7 @@ humility:
 - research claude
 - research memoh
 - research claude code
+- research gpt sol ultra
 
 legacy:
 
