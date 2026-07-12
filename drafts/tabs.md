@@ -4,6 +4,14 @@ message/paste · todo · tabs/things · scratch pad · weekly/projects · notes
 
 ---
 
+https://github.com/ohmygit-hub/ohmygithub
+
+https://oh-my-github.app/
+
+https://github.com/ohmygit-hub/ohmygithub/graphs/contributors
+
+---
+
 librechat http://localhost:3080/c/new
 
 gnome

@@ -289,6 +289,7 @@ desktop:
 - chromium firefox legacy versions build archive snap flatpak
 - shell tmux abstraction
 - power bank quirks bios low wattage screen
+- shell symlink abstraction
 
 android:
 
