@@ -1,3 +1,9 @@
+background
+
+...
+
+(? rather rm. seems it comes out of defensive instinct rather than logical reason. not all points given are equal)
+
 personally i have no feeling on the world
 
 im not
