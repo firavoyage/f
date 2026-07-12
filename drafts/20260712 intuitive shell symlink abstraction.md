@@ -781,3 +781,49 @@ link(){
   fi
 }
 ```
+
+# . test
+
+```sh
+ ~ % link -h
+Create and check symlinks
+
+Usage:
+  link <source> <target>    Create symlink
+  link <target>             Check symlink
+  link [flag]               Check version or help
+
+Options:
+  -v, --version             Print version
+  -h, --help                Print help
+ ~ % link -v
+link 0.0 (2026.07.12)
+ ~ % echo "foo" > foo
+ ~ % link bar foo
+ ~ % echo "foo" > foo
+ ~ % link foo bar
+ln: 'foo' and 'bar' are the same file
+ ~ % rm foo bar
+ ~ % echo "foo" > foo
+ ~ % link foo bar
+ ~ % cat foo
+foo hello
+ ~ % link foo
+-rw-rw-r-- 1 fira fira 10 Jul 12 13:47 foo
+ ~ % link bar
+lrwxrwxrwx 1 fira fira 3 Jul 12 13:47 bar -> foo
+ ~ % link bar foo
+ln: 'bar' and 'foo' are the same file
+ ~ % link bar bar
+ ~ % link foo foo
+ln: 'foo' and 'foo' are the same file
+ ~ % cat bar
+cat: bar: Too many levels of symbolic links
+ ~ % link bar foo
+ ~ % echo "foo" > foo
+zsh: too many levels of symbolic links: foo
+ ~ % rm foo
+ ~ % echo "foo" > foo
+ ~ % link foo bar
+ ~ % rm foo bar
+```
