@@ -46507,6 +46507,47 @@ it's always better to have more ways and gain more power <!-- esp when it fits y
 
 but i might not have to automate when it's not to be scaled.
 
+...
+
+> if you have nothing to do w it, a better one wouldnt help at all
+
+llms are at its best 
+
+when there are many good ways to do it
+
+- document a large codebase
+- explain a theory
+- summarize articles
+
+when it's complex but clear
+
+- maintain a native app w identical look across platforms
+- debug a backend testing failure
+- solve a math problem
+
+when it's massive but easy
+
+- research throughout the internet
+- generate alt text of images
+
+when it itself is the value
+
+- chat w ppl
+- act as a companion <!-- role play -->
+
+it's not wise
+
+when there are many reasonable ways to do it but only a few that make sense
+
+- design ui
+- create abstractions
+- evaluate products
+
+when it doesnt know how to do at all
+
+- find inspirations
+- engage proactively
+
 02 00 think.
 
 > 灵感易逝。
