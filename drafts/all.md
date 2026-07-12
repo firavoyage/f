@@ -795,6 +795,7 @@ humility:
 - research memoh
 - research claude code
 - research gpt sol ultra
+- research ai industry financial sustainability
 
 legacy:
 
