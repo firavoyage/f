@@ -46560,6 +46560,8 @@ no. it's never too late. it's definitely exciting <!-- and meaningful --> to me,
 
 sleep.
 
+15 40 pick films to watch <!-- isnt it already too late? -->. discuss world cup prob. watch highlights.
+
 
 
 <!-- timebox, plan. -->
