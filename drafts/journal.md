@@ -46564,11 +46564,11 @@ sleep.
 
 17 20 try coffee w a pour over drip bag. play `Mitsuko Uchida - Mozart`.
 
-17 40 dl `Mitsuko Uchida Mozart Sonatas`.
+17 40 dl `Mitsuko Uchida Mozart Sonatas` `Mitsuko Uchida Mozart Sonatas Violin`.
 
 sonata works much better as bg work music.
 
-
+  
 
 <!-- timebox, plan. -->
 
