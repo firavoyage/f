@@ -15,6 +15,26 @@ yt-dlp \
   -o "_/Hiroji Miyamoto/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
 ```
 
+Mitsuko Uchida Mozart Sonatas for Piano & Violin
+
+```sh
+yt-dlp \
+  "https://music.youtube.com/playlist?list=OLAK5uy_mI0LnJVMYTujHybyLPKWXhKwT2tnmYc-4" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  --reject-title "(?i)inst" \
+  -o "_/Mitsuko Uchida Mozart Sonatas Violin/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
+```
+
+Mitsuko Uchida Mozart Sonatas
+
+```sh
+yt-dlp \
+  "https://music.youtube.com/playlist?list=OLAK5uy_mG1QZncEhwYBJFX89htEe9Fwp-Bj0WJP4" \
+  -x --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail \
+  --reject-title "(?i)inst" \
+  -o "_/Mitsuko Uchida Mozart Sonatas/%(title).100B - %(album,playlist_title).50B - %(artist).50B.%(ext)s";
+```
+
 <!-- seems "inst" filter does not work well. i got some on `/home/fira/Music/Hiroji Miyamoto`. -->
 
 Miyuki Nakajima

@@ -46560,7 +46560,9 @@ no. it's never too late. it's definitely exciting <!-- and meaningful --> to me,
 
 sleep.
 
-15 40 pick films to watch <!-- isnt it already too late? -->. discuss world cup prob. watch highlights.
+15 40 pick films to watch <!-- isnt it already too late? -->. discuss world cup prob. watch highlights. 16 40
+
+17 20 try coffee w a pour over drip bag. play `Mitsuko Uchida - Mozart`.
 
 
 
