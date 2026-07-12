@@ -141,6 +141,14 @@ currently ik what to do.
 
 ---
 
+i guess it's better to be a drop in replacement of github.
+
+identical ui. faster as you serve locally if possible.
+
+assumption: you usually work on a repo yk rather than new ones all over the internet.
+
+---
+
 p
 
 - todo
