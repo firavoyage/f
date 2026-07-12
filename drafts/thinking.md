@@ -151,6 +151,7 @@ c
 - thinking
 - todo
 - things
+- tabs <!-- ?! -->
 
 recent todos are moved to thinking.
 
