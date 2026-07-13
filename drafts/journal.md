@@ -46685,7 +46685,7 @@ currently im completely unaware of the progress (i would not check git diff of t
 
 c: thinking, todo <!-- reduced -->, tabs.
 
-21 00 create new repo template.
+21 00 create new repo template. revise docs of bun root cli.
 
 para? 
 
@@ -46694,6 +46694,10 @@ para?
 no need to symlink docs/readme.en.md to readme.
 
 i chose this special structure as i might change the symlink. it's not true for most repos.
+
+...
+
+tbh i dont even know what "repo" even is. why it sits on `humility/source/backend`. it should be a script, or a standalone tool.
 
 
 
