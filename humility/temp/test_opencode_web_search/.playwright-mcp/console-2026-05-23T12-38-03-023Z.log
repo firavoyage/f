@@ -1,6 +1,0 @@
-[    6511ms] [LOG] Data Prefixing Patch Active: Requests will include /gfg-assets @ https://assets.geeksforgeeks.org/gfg-assets/_next/static/chunks/pages/_app-231588070080a26f.js:5
-[   10009ms] [LOG] Acceptable Ads: false @ https://assets.geeksforgeeks.org/gfg-assets/_next/static/chunks/pages/_app-231588070080a26f.js:5
-[   10037ms] [LOG] Acceptable Ads: false @ https://assets.geeksforgeeks.org/gfg-assets/_next/static/chunks/pages/_app-231588070080a26f.js:5
-[   10790ms] [LOG] Not enough<p>tags found.Expected:5,Found:0 @ https://cdnads.geeksforgeeks.org/gfg_ads.min.js?ver=0.1:67
-[   10790ms] [LOG] Not enough<p>tags found.Expected:10,Found:0 @ https://cdnads.geeksforgeeks.org/gfg_ads.min.js?ver=0.1:67
-[   11004ms] [ERROR] Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID @ https://api.rlcdn.com/api/identity/envelope?pid=1258:0

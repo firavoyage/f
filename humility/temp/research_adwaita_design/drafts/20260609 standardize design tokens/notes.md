@@ -1,1 +1,0 @@
-idk, maybe i could enforce "no raw value on sys" at the converter?

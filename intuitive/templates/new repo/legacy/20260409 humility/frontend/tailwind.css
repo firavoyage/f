@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Design tokens */
+
+:root {
+  --bg: 255 255 255;
+  --surface: 246 247 248;
+  --border: 226 228 231;
+  --text: 31 31 31;
+  --muted: 95 99 104;
+  --accent: 26 115 232;
+}
+
+.dark {
+  --bg: 18 18 18;
+  --surface: 26 26 26;
+  --border: 42 42 42;
+  --text: 230 230 230;
+  --muted: 154 160 166;
+  --accent: 138 180 248;
+}
+
+body {
+  font-size: 14px;
+}

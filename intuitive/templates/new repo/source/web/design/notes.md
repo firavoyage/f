@@ -1,0 +1,145 @@
+notes
+
+jun 2026
+
+23
+
+css might be powerful enough for theming. one page. all themes.
+
+you could ofc create a dedicated app in material you along all of its pages.
+
+jul 2026
+
+05
+
+tailwindcss...
+
+it could save some keystrokes. well, you should not try to save keystrokes.
+
+better to be strategic than tactical. dx > ergonomics
+
+i could alias a word to one or more prop value pairs. and parse the "word" magically, making it asap.
+
+well why not?
+
+```css
+.ProductCard {
+  display: grid;
+  gap: var();
+
+  &[data-status="featured"] {
+    border: var();
+  }
+}
+
+.ProductCard_image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.ProductCard_content {
+  display: flex;
+  flex-direction: column;
+}
+
+.ProductCard_main_title {
+  font-size: var();
+  font-weight: var();
+}
+
+.ProductCard_sub_title {
+  font-size: var();
+  color: var();
+}
+
+.ProductCard_buy_button {
+  padding: var();
+
+  &[data-variant="primary"] {
+    background: var();
+    color: var();
+  }
+}
+```
+
+```yaml
+ProductCard:
+  - grid
+  - gap-4
+  - display: flex
+  - status featured:
+    - border-4
+ProductCard_image:
+  width: 100%
+  aspect-ratio: 16 / 9
+ProductCard_content:
+  - flex
+  - flex-direction: column
+ProductCard_content: flex flex-column
+ProductCard_content flex flex-column:
+  flex-direction: column
+```
+
+does not seem easy. i could not mix list and obj.
+
+dsl? maybe too much.
+
+the easiest approach is
+
+```yaml
+classname: tailwind classes # eliminate noise
+```
+
+maybe like this
+
+```yaml
+ProductCard_content: flex flex-column # baseline
+ProductCard: 
+  .: grid gap-4
+  status featured: border-4
+ProductCard_image:
+  .: full-width
+  aspect-ratio: 16 / 9
+  status featured: border-4 # data-attr: value always contain a space, while css props never do
+```
+
+...
+
+well, dont invent terms yk.
+
+im way more familiar w css props than tailwind. and im not a pro fe dev.
+
+you have auto complete and snippets!
+
+...
+
+one things is... just be explicit.
+
+flex and grid carry unambiguous meaning themselves.
+
+but what if you put display before them. it's clearer, right? and yk they are related.
+
+...
+
+conclusion.
+
+(w the yaml css approach...)
+
+you dont know what are there in yaml.
+
+no auto complete. no ide warnings (spellcheck/correction). 
+
+it's extremely hard to set up lsp.
+
+and it's easy to have some snippets.
+
+e.g.
+
+- var to `var(--$0)`
+- `text-sm` to `font-size: var(--text-sm-size);\nline-height: var(--text-sm-height)`
+
+in css, `;` and `:` are also auto completed when you say what prop you want (just the first few letters is enough) and enter. you can shift enter to newline.
+
+btw, the pro of the yaml approach is on best cases you get simplest and dry syntax (w magic and aliases set up previously).
+
+

@@ -1,7 +1,0 @@
-[    2070ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://www.udemy.com/course/material-ui-the-complete-guide/:0
-[    7065ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://frontends.udemycdn.com/frontends-course-landing-page/staticx/udemy/images/v7/site-manifest.json:0
-[    7065ms] [ERROR] Manifest fetch from https://frontends.udemycdn.com/frontends-course-landing-page/staticx/udemy/images/v7/site-manifest.json failed, code 404 @ https://www.udemy.com/course/material-ui-the-complete-guide/:0
-[    8018ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://frontends.udemycdn.com/frontends-course-landing-page/staticx/udemy/images/v7/site-manifest.json:0
-[    8019ms] [ERROR] Manifest fetch from https://frontends.udemycdn.com/frontends-course-landing-page/staticx/udemy/images/v7/site-manifest.json failed, code 404 @ https://www.udemy.com/course/material-ui-the-complete-guide/:0
-[    8019ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://www.udemy.com/favicon.ico?favicon.0b562e08.ico:0
-[   10630ms] [WARNING] The resource https://frontends.udemycdn.com/frontends-course-landing-page/_next/static/chunks/b377463a83cfaaf6.css was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://www.udemy.com/course/material-ui-the-complete-guide/:0

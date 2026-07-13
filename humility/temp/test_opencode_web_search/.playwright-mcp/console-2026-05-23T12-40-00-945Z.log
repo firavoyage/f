@@ -1,9 +1,0 @@
-[     360ms] [LOG] Data Prefixing Patch Active: Requests will include /gfg-assets @ https://assets.geeksforgeeks.org/gfg-assets/_next/static/chunks/pages/_app-231588070080a26f.js:5
-[    1468ms] [LOG] Not enough<p>tags found.Expected:5,Found:0 @ https://cdnads.geeksforgeeks.org/gfg_ads.min.js?ver=0.1:67
-[    1468ms] [LOG] Not enough<p>tags found.Expected:10,Found:0 @ https://cdnads.geeksforgeeks.org/gfg_ads.min.js?ver=0.1:67
-[    1469ms] [WARNING] [GPT] PubAdsService.disableInitialLoad is deprecated, use googletag.setConfig({disableInitialLoad: ...}) instead.
-https://goo.gle/gpt-message#170 @ https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202605200101/pubads_impl.js?cb=31098705:18
-[    1856ms] [LOG] Acceptable Ads: false @ https://assets.geeksforgeeks.org/gfg-assets/_next/static/chunks/pages/_app-231588070080a26f.js:5
-[    1885ms] [LOG] Acceptable Ads: false @ https://assets.geeksforgeeks.org/gfg-assets/_next/static/chunks/pages/_app-231588070080a26f.js:5
-[    3954ms] [INFO] Slow network is detected. See https://www.chromestatus.com/feature/5636954674692096 for more details. Fallback font will be used while loading: https://fonts.gstatic.com/s/roboto/v48/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3yUBA.woff2 @ https://www.gstatic.com/recaptcha/releases/Br0hYqpfWeFzYCAXLD4UuCIV/recaptcha__en.js:701
-[    5365ms] [INFO] Slow network is detected. See https://www.chromestatus.com/feature/5636954674692096 for more details. Fallback font will be used while loading: https://fonts.gstatic.com/s/roboto/v48/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3yUBA.woff2 @ https://www.gstatic.com/recaptcha/releases/Br0hYqpfWeFzYCAXLD4UuCIV/recaptcha__en.js:701
