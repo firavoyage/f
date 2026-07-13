@@ -46667,7 +46667,7 @@ btw, seems codex does not even queue at all for concurrency. interesting. it doe
 
 <!-- upd: a "purple robot" emoji after 20min. i could ask "like, wdyt. could it be better". but i guess the answer is yes, and the answer itself would -->
 
-18 00 simplify pm kanban. create new repo template. 19 40
+18 00 simplify pm kanban. 19 40
 
 p: message/paste, thinking, todo, things/tabs, scratch pad.
 
@@ -46684,6 +46684,10 @@ currently im completely unaware of the progress (i would not check git diff of t
 ...
 
 c: thinking, todo <!-- reduced -->, tabs.
+
+21 00 create new repo template.
+
+para? 
 
 
 
