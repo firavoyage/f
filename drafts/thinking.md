@@ -149,10 +149,6 @@ assumption: you usually work on a repo yk rather than new ones all over the inte
 
 ---
 
-export memoh. 
-
-for acbox new, i could test copy paste? yeah. text itself does a lot.
-
 all (highly requested) features of github desktop
 
 all (highly requested) features of github mobile app
@@ -166,7 +162,5 @@ all (highly requested) features of forgejo (compare) <!-- gitlab is closed. gite
 scope. <!-- i might not need grill me. i could think myself. -->
 
 ---
-
-edit merge backend/serve manually.
 
 
