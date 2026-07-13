@@ -193,6 +193,7 @@ archi:
 - naming prefer singular <!-- action, actions --> 
 - react vs vue hypes decision fatigue <!-- grow? rhetoric? politics/philosophy? -->
 - first principles
+- template new repo
 
 frontend: <!-- web, ts/js -->
 
