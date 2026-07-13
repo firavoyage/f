@@ -46572,9 +46572,38 @@ sonata works much better as bg work music.
 
 02 40 watch `puella magi madoka magica the movie part iii: rebellion (2013)` 04 40
 
-13 20 discuss.
+13 20 discuss. 14 20
 
 ```md
+Nickel Angel✨, [7/11/26 11:59 PM]
+
+
+f, [7/12/26 11:53 AM]
+Nya
+
+Nickel Angel✨, [7/12/26 11:59 AM]
+其实还是想问 f 是在上高中吗
+
+f, [7/12/26 2:41 PM]
+年龄保密！ 
+
+三次元状态不显式公开哦...
+
+> 永远 20 岁
+
+Nickel Angel✨, [7/12/26 2:41 PM]
+
+
+f, [7/12/26 2:41 PM]
+Nya
+
+Nickel Angel✨, [7/12/26 9:42 PM]
+对了我问个问题，听说昨天你遇到了箱子她们吗，感觉你好像很喜欢关注别人的动态（？）
+
+Nickel Angel✨, [7/12/26 9:43 PM]
+听她们是这么说的x
+
+f, [7/13/26 2:22 PM]
 i made mistakes.
 
 - i should have done more research before challenging ppl. (i do not read llm news. i supposed gpt sol ultra might be more aggressive on sub agent spawning, but i implicitly assumed it was just another reasoning mode alongside xhigh/max throughout the discussion, and i had never expected it would be a feature of gpt sol)
@@ -46595,7 +46624,7 @@ and the number of concurrency should be based on allocated ram (e.g. you say, i 
 
 and my theory is throttling is easy. an (sub) agent is basically a state machine where you push forward one step by applying the tool calls and call llms again w the results, until it completes (no more tool calls), or it misformats a tool call (a common false positive of "complete"). if ram is not enough, just queue it. (but not "max already has concurrency limit" as she said [^3])
 
-[^1]: you do not need sol ultra.
+[^1]: you do not need sol ultra generally.
 
 > search. how much is the technical necessity of gpt sol ultra besides business incentives as codex spawns sub agents regardless and network lag is trivial for most use cases and it caches exactly the same as long as you do not change prev context
 > 
@@ -46603,7 +46632,7 @@ and my theory is throttling is easy. an (sub) agent is basically a state machine
 > 
 > ...
 > 
-> 
+> For 95% of software engineering tasks, keeping your Codex default on GPT-5.6 Sol (Medium or High effort) or upgrading to a manual ChatGPT Pro architecture review loop yields better, more predictable token usage. Ultra is currently a "token furnace" due to a known bug in Codex that forces all spawned agents into maximum burn mode, making it technically inefficient unless you are chasing the absolute Pareto frontier of difficult logic. 
 
 [^2]: it does not change reasoning effort by task complexity.
 
@@ -46631,6 +46660,9 @@ and my theory is throttling is easy. an (sub) agent is basically a state machine
 
 btw, seems codex does not even queue at all for concurrency. interesting. it does not stack as well. it does by "wave"?!
 ```
+
+<!-- well, i did not mention my take on acbox "70 sub agents". i guess maybe it could be reasonable or effective sometimes. it might be true as acbox seems to be surprised when the fan coolers on her mac spin up. so let's not overthink it. thankfully i did not include that... (wtf they do proxy their req on my identity through nickel angel. i supposed they could, as mio seems to have figured out which im at the first place, while acbox made some guesses, but i didnt expect that.) -->
+
 
 
 <!-- timebox, plan. -->
