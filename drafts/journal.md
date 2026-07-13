@@ -46583,7 +46583,7 @@ i made mistakes.
 
 nevertheless, i did not feel right. i thought i might have missed sth.
 
-from a practical standpoint, they are right. if their computer could not handle it, just have less parallel agents.
+from a practical standpoint, they are right. if their computer could not handle it, just have less parallel agents [^1]. (and there are many engineering flaws around ultra. [^2])
 
 but conceptually, tasks could either run in parallel or must be sequential. for example, when you want to translate to ten localizations or research what ppl say on a product on the internet, it could be simultaneous. when you want to test your backend, it must come after implementation.
 
@@ -46593,9 +46593,43 @@ no matter where you are working on (as long as it has enough ram to run *one or 
 
 and the number of concurrency should be based on allocated ram (e.g. you say, i have 4gb ram, and codex must take 2gb at most), rather than a reasoning effort option. 
 
+and my theory is throttling is easy. an (sub) agent is basically a state machine where you push forward one step by applying the tool calls and call llms again w the results, until it completes (no more tool calls), or it misformats a tool call (a common false positive of "complete"). if ram is not enough, just queue it. (but not "max already has concurrency limit" as she said [^3])
 
+[^1]: you do not need sol ultra.
 
+> search. how much is the technical necessity of gpt sol ultra besides business incentives as codex spawns sub agents regardless and network lag is trivial for most use cases and it caches exactly the same as long as you do not change prev context
+> 
+> From a strict technical standpoint, GPT-5.6 Sol Ultra is not a necessity for most standard development workflows, as it functions less as an intelligence upgrade and more as an aggressive parallel orchestration layer. Your assessment is spot-on: because Codex natively handles multi-agent spawning and prefix caching behaviors similarly across tiers, you are technically paying a steep cost premium primarily to automate concurrent subagent coordination. 
+> 
+> ...
+> 
+> 
 
+[^2]: it does not change reasoning effort by task complexity.
+
+> engineering flaws of codex on gpt sol ultra
+> 
+> The Flaw: When Codex is set to "Ultra," the spawn_agent tool strictly mirrors the parent model’s reasoning profile. It lacks a built-in routing mechanism to dynamically downgrade child agents. 
+
+[^3]: it should be based on ram, rather than the number/depth of concurrent sub agents. parallel webfetch is fundamentally different than parallel compilation.
+
+> can codex handle concurrency smartly by ram usage
+> 
+> No, OpenAI's Codex app and CLI do not currently handle concurrency smartly based on RAM usage, and unbounded memory consumption during parallel tasks remains a documented issue. 
+> 
+> how does codex handle concurrency currently
+> 
+> Hardcoded Thread Caps: Codex limits multi-agent fan-out through explicit workspace configuration variables. By default, concurrency is throttled via agents.max_threads (capped at 6) and agents.max_depth (capped at 1) to prevent infinite recursive loops.
+> 
+> why is hardcoded thread caps flawed
+> 
+> The Flaw: If Codex needs to process 12 tasks under a cap of 6, it launches the first wave of 6 tasks and halts. It will wait for every single one of those 6 tasks to finish before launching the next wave. 
+> 
+> is the "wave" behavior real
+> 
+> Yes, the "wave" execution behavior is entirely real and is one of the most heavily discussed design limitations in the Codex application. 
+
+btw, seems codex does not even queue at all for concurrency. interesting. it does not stack as well. it does by "wave"?!
 ```
 
 
