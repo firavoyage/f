@@ -1,3 +1,0 @@
-- generic [active] [ref=e1]:
-  - heading "Hello from Parcel" [level=1] [ref=e2]
-  - paragraph [ref=e3]: Testing Playwright
