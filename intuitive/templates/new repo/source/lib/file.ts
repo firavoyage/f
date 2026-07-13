@@ -94,7 +94,7 @@ const map = {
 }
 
 /**
- * standardize_errors
+ * standardize errors
  */
 export async function normalize<F extends (...args: any[]) => any>(fn: F) {
   const _ = await handle(fn)
@@ -103,7 +103,7 @@ export async function normalize<F extends (...args: any[]) => any>(fn: F) {
       throw err({ type: map[_.code], message: _ })
     }
 
-    throw _
+    throw err(_)
   }
 
   return _
@@ -195,7 +195,7 @@ export async function edit(path: string, search: string, replace: string) {
  */
 export async function remove(path: string, { can_non_exist = false }: { can_non_exist?: boolean } = {}) {
   // must_exist = true // implicit true is somewhat inconsistent
-  _ = await handle(() => unlink(path))
+  const _ = await handle(() => unlink(path))
   if (is_error(_)) {
     if (has(map, _.code)) {
       if (map[_.code] == not_found && can_non_exist) {
@@ -204,7 +204,7 @@ export async function remove(path: string, { can_non_exist = false }: { can_non_
       throw err({ type: map[_.code], message: _ })
     }
 
-    throw _
+    throw err(_)
   }
 }
 
@@ -221,7 +221,7 @@ export async function clear(path: string) {
 }
 
 export async function trash(path: string, { can_non_exist = false }) {
-  _ = await handle(() => trash_lib(path, { glob: false }))
+  const _ = await handle(() => trash_lib(path, { glob: false }))
   if (is_error(_)) {
     if (has(map, _.code)) {
       if (map[_.code] == not_found && can_non_exist) {
@@ -231,6 +231,6 @@ export async function trash(path: string, { can_non_exist = false }) {
       throw err({ type: map[_.code], message: _ })
     }
 
-    throw _
+    throw err(_)
   }
 }
