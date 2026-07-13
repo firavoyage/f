@@ -46572,6 +46572,21 @@ sonata works much better as bg work music.
 
 02 40 watch `puella magi madoka magica the movie part iii: rebellion (2013)` 04 40
 
+13 20 discuss.
+
+```md
+i made mistakes.
+
+- i should have done more research before challenging ppl. (i do not read llm news. i supposed gpt sol ultra might be more aggressive on sub agent spawning, but i implicitly assumed it was just another reasoning mode alongside xhigh/max throughout the discussion, and i had never expected it would be a feature of gpt sol)
+- im not an "agent engineer", maybe not even a real "agentic swe" tbh. i may argue ppl's capabilities vary on different fields, but i did waste their time i guess.
+- i was arguing, wo enough thinking. it might result from the environment (it's slow for me to type zhcn on phone, and i thought they might be waiting behind the im, but i dont even know how to explain my theory or give example clearly in zhcn), but i could have written a sophisticated argument as if it were on github issues, hacker news, or a personal blog.
+
+nevertheless, i did not feel right. i thought i might have missed sth.
+
+from a practical standpoint, they are right. if their computer could not handle it, 
+
+
+```
 
 
 <!-- timebox, plan. -->
