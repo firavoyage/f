@@ -46673,6 +46673,8 @@ im not really clear how to do...
 
 when would i need them. how would i read them. 
 
+an observation is, when an idea is not fulfilled, it could repeat in my mind, so as in the backlog.
+
 
 
 <!-- timebox, plan. -->

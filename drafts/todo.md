@@ -66,29 +66,7 @@ para. (supporting grow, and humility code)
 
 ---
 
-design a better regex.
-
----
-
-create a tool to analyze code base.
-
-line numbers. not file sizes.
-
----
-
-pick my code style.
-
-e.g. snake case
-
----
-
-text embedding.
-
-(figure out the context under 1 sec and ask with the right prompt)
-
----
-
-on producthunt history. in the recent year.
+pm: research producthunt history in recent years.
 
 what succeeded? what failed?
 
@@ -96,59 +74,11 @@ how to determine?
 
 ---
 
-learn agent.md from openclaw.
+Pdf to yaml, and then html
 
 ---
 
-know about diffusion and transformer
-
----
-
-have a complex yet well defined coding task.
-
-~~telegram copy~~ ~~snake game~~ ~~shoe brand~~
-
-(just my projects?)
-
----
-
-long running.
-
-(mirage. not pragmatic.)
-
----
-
-default:
-
-- jsconfig.
-- pnpm workspaces
-- ...
-
----
-
-bird:
-
-the spec for messaging apps.
-
----
-
-bird/telegram:
-
-export everything.
-
-find relationship.
-
-(inspired by: why evil on various groups. seems the world, telegram's userbase on sc, is so small.)
-
----
-
-Pdf to html
-
----
-
-Html alternatives. Cross platform declarative frontend language.
-
----
+research social relationships on the internet
 
 Research: relationship of vtubers. When you sub someone you are likely to sub these. Relationship of internet bloggers. Menci's friends.
 
@@ -168,51 +98,7 @@ Gather everyone. Organize and analyze. Archive.
 
 Stand on the shoulder of giants. Github tg indexers. Telemetrio. Libs. Etc.
 
----
-
-Ideas in Chinese textbook. Tags. Meta. Essence.
-
----
-
-laptop as a server.
-
-sync: github, matrix, etc.
-
----
-
-create my eslint rule set.
-
-see all. categorize.
-
-imagine. create my own rules.
-
----
-
-what are the folder names widely used across git repos
-
-example
-
-my pref
-
----
-
-what makes an app non trivial.
-
----
-
-reddit onboarding: interests.
-
----
-
-see through epubs and pdfs.
-
-find a new way.
-
-read in your way. consistent. clear.
-
-"an elegant bookshelf for a more civilized age."
-
----
+...
 
 if you can get the following list of ppl you follow, then you could analyze.
 
@@ -222,17 +108,25 @@ on zhihu, i see about 100/500 of my following follows jiang zijun.
 
 on berryberry i think i could do the similar thing. (although i should study the basics first and dev my infra.)
 
+...
+
+travellings are good.
+
+there are about 1k blogs. not very much. but we can broaden with frnd links.
+
+we can build an afo on it.
+
+(ref: eat.)
+
+also, it's more neutral (safer) than using menci/chyk/leohearts as the first starting node. (though, i could pick some foregin chinese to make sure they are safe after citing.)
+
 ---
 
-Research. Pdf to json.
+Ideas in Chinese textbook. Tags. Meta. Essence.
 
 ---
 
-Research cron job
-
----
-
-learn on rust-lang/rustlings
+learn rust-lang/rustlings
 
 interactive. fun.
 
@@ -240,33 +134,7 @@ inspired by chyk.
 
 ---
 
-art movements. (learn from manus)
-
----
-
-cross framework compilers
-
-(a simplier and more abstract react)
-
-framework f.
-
-js ast, compiler? svelte?
-
-react sucks for its backward comp.
-
-it could be a much smaller subset at its core.
-
-it could change things to elegant.
-
-it could stay above abstraction. you declare. you dont touch the messy world.
-
----
-
-runtime type check.
-
----
-
-js/ts ast (trans) compiler
+art movements. (test manus)
 
 ---
 
@@ -274,35 +142,7 @@ gnome design system.
 
 ---
 
-playwright mcp in cli?
-
----
-
-paper.design
-
----
-
-watch films and bangumis.
-
----
-
-i remember i have some "legacy" music downloaded in "misc".
-
-i think... i would love some of them... and they ve been in readme for a while.
-
-"手鸟葵"
-
-"鏡音レン"
-
-"群丁"
-
-"I.SHINJI"
-
-"Les Choristes"
-
-most are singles. not albums/artists.
-
-idk.
+playwright mcp as cli
 
 ---
 
@@ -320,47 +160,13 @@ cli & ui (gnome)
 
 ---
 
-健脑房.
-
-(pure?)
-
----
-
 what will pure project be at the end of the day. i mean at the end of hs.
 
 i hold the dream since grade 10.
 
 ---
 
-self host (localhost)
-
-lichess?
-
-i wish foxwq could have the ui of chess dot com...
-
-(although lichess is also decent. simple. functional.)
-
----
-
-opensource:
-
-arcaea-builder
-
-forked from menci, 2021.
-
-see how menci write code. (i like the way she replies. she speaks fluent and styled english.)
-
----
-
-game: reigns.
-
----
-
-the audio quality of my obs sucks now.
-
-config this.
-
----
+test llm vid transcription
 
 nickle angel made some courses with ppt in her 20s.
 
@@ -372,95 +178,33 @@ transcription? test.
 
 ---
 
-elysiajs > express?
+learn on google fonts.
 
-let's beat this.
+find all fonts i love. organize. install.
 
-what a character.
+...
 
----
+font.
 
-check this out
+google fonts list the font.
 
-https://github.com/moeru-ai/xsai
+i help choose the font.
 
-what is the abstraction about.
+and organize my favorite fonts. view them.
 
-is it doing anything?
+...
 
-(will i end up having something like this? well i think i can learn something whatever.)
+research fonts.
 
----
+learn and categorize them.
 
-pure math.
+group the similar ones, e.g. helvetica copies.
 
-contest 2026 editorial.
-
-(playthrough)
-
-/home/fira/Documents/\_/pages/2026 mar math contest
+it's likely the sophisticated fonts on like claude, google (google sans), duolingo have good foss equivalents.
 
 ---
 
-github exploitation.
-
-github has strict tos. "one human could only own one free account."
-
-idk how it could impl it. like codeforces?
-
-seems it bans ppl in their own way without explanation, maybe even randomly as it feels.
-
-but some other projects like chinese textbooks are not banned.
-
-let's try it.
-
-- reg a new github acc with proxy ip, disposable email, and default browser fingerprint.
-- design a way to separate these:
-  - download (foss, "neutral")
-  - split and upload (foss, "neutral")
-  - files (random, like zips with passwords. no need to make it look like real like normal data like v2ray.)
-  - metadata (file tree, map)
-- upload the clannad vids on github.
-
----
-
-learn on google fonts. find all fonts i love. organize. install.
-
----
-
-research ts to native compiler.
-
-design my own. (subset of "good parts of js").
-
-although seems i dont need that perf...
-
----
-
-install mac on gnome boxes
-
-https://github.com/kholia/OSX-KVM
-
-have a legacy version. the time were steve jobs there.
-
-(also install arch. it simply works. but it does not have a gui by default! holyshit. well, it is what simplicity is, nevermind.)
-
----
-
-bitmagnet.
-
-i think it's gonna ever evolving.
-
-try to make it storage efficient. not stupid.
-
-i mean keep the best.
-
----
-
-write tg bot.
-
----
-
-find all fcitx dicts and convert using agent.
+write a tg bot.
 
 ---
 
@@ -480,11 +224,9 @@ view twitter in mastodon.
 
 ---
 
-49 up.
+project pre
 
----
-
-pre > slidev.
+no more slidev.
 
 ---
 
@@ -493,10 +235,6 @@ pure project.
 i could easily outperform the textbooks in mainland china.
 
 research the best textbooks.
-
----
-
-app: copy.
 
 ---
 
@@ -530,13 +268,13 @@ make readme personas clearer.
 
 ---
 
-ink terminal.
-
----
+generate dicts
 
 i did not found good llms generated dicts by google.
 
 ---
+
+read books
 
 61.life shelf.
 
@@ -546,115 +284,15 @@ https://61.life/2024/books
 
 https://61.life/2023/1230
 
-https://share.google/aimode/z3GvGGlSsEZYqusZY
-
 ---
 
-try memoh (?, i could wait for it to release stable and publish to flatpak for example)
-
-https://github.com/memohai/Memoh?tab=readme-ov-file
-
-docs might be great, even before publishing.
-
-https://docs.memoh.ai/
-
----
-
-claude code leak.
-
-https://www.latent.space/p/ainews-the-claude-code-source-leak
-
-https://deepwiki.com/instructkr/claude-code
-
-(?) https://github.com/luongnv89/claude-howto
-
----
-
-people i hate. (e.g. evan you, hsn?, menci?, elon, durov?, innei)
-
-people i appreciate. (e.g. funshiki, dhh?, lr0, ruanyf, bellard)
-
----
-
-computer piano?
-
-computers could not play the piano well.
-
----
-
-precious, [3/30/26 8:11 PM]
-I definitely have to abstract fs.
-
-There is forbidden characters.
-
-Auto mkdir.
-
-Warning of dotfile, leading trailing spaces.
-
-Just like vscode. Research.
-
-precious, [3/31/26 4:41 PM]
-Astrbot.
-
-precious, [3/31/26 4:51 PM]
-Not backed by yc.
-
-precious, [3/31/26 4:54 PM]
-Xhtml 2.0 complaint. Web is unreliable. Don't go so far. Don't go there.
-
-precious, [3/31/26 9:34 PM]
-Menci has hanjuku mygo daikazoku, needle.
-
-I couldn't lose to her.
-
-Let's have starfish or lucky star.
-
-Well, the default white 3d ball is good. No icon is even better.
-
-precious, [4/2/26 10:14 PM]
-Why two weeks ago on blogging repo
-
----
-
-style.
+research readme writing style.
 
 see linux. (what is it writing? who are you. if you are... you can.)
 
 similar to fira's (I want to ... headings)
 
 see mootools.
-
----
-
-https://github.com/ruanyf/ai-test-case
-
----
-
-try zed. evaluate zed.
-
-> the editor for what's next.
-
-(?) is that lit. fomo?
-
-i appreciate its ui!
-
----
-
-(check float)
-
-heavy metal rock.
-
-electro rock. (electro guitar)
-
-magia is good... the lyrics...
-
----
-
-https://www.zhihu.com/people/saeziae
-
-following follow.
-
-a great feature.
 
 ---
 
@@ -666,112 +304,15 @@ gemini://estela.moe
 
 ---
 
+archive wanqu daily
+
 https://github.com/NiceLabs/wanqu-daily-dump
 
 https://nicelabs.github.io/wanqu-daily-dump/
 
 ---
 
-check
-
-https://mtf.wiki/zh-cn
-
-interesting.
-
-btw, en has no content.
-
-also, check out suicide wiki and
-
-https://github.com/Bluse-liu50/DIY-Estradiol-Gel-Guide/blob/main/README.md
-
-https://groups.io/g/MTFHRT/wiki/30843
-
----
-
-travellings are good.
-
-there are about 1k blogs. not very much. but we can broaden with frnd links.
-
-we can build an afo on it.
-
-(ref: eat.)
-
-also, it's more neutral (safer) than using menci/chyk/leohearts as the first starting node. (though, i could pick some foregin chinese to make sure they are safe after citing.)
-
----
-
-jp language learning.
-
-common. highly requested.
-
-the trend of 21st chinese modern internet users.
-
----
-
-jp city pop.
-
-playlist
-
----
-
-glaze lang.
-
----
-
-funshiki index.
-
----
-
-proxy self hosting
-
-and guide.
-
----
-
-movies
-
-硅谷.
-
-摩登家庭.
-
----
-
-research css filter prop.
-
-ref: https://bridge.surf/
-
----
-
-find some bangumis.
-
-watch films.
-
----
-
-install
-
-- windows (already proven, just reproduce)
-- mac (vid sites? search? grok for no censorship?)
-
----
-
-font.
-
-google fonts list the font.
-
-i help choose the font.
-
-and organize my favorite fonts. view them.
-
-...
-
-research fonts.
-
-learn and categorize them.
-
-group the similar ones, e.g. helvetica copies.
-
-it's likely the sophisticated fonts on like claude, google (google sans), duolingo have good foss equivalents.
+proxy self hosting guide.
 
 ---
 
@@ -779,17 +320,9 @@ project euler
 
 editorial euler
 
-健脑房
-
 ---
 
-tg userbot x11
-
----
-
-comment before or after code examples
-
----
+track good new films/bangumis
 
 异国日记
 
@@ -799,35 +332,13 @@ btw, i think i should host a tracker:
 - is inside top rated now
 - is published within 1y (or, is not inside top rated 1y ago, though it requires caching)
 
----
+...
 
 steins gate?
 
----
-
-(well, i already have some hand picked stalled films/bangumis here.)
-
----
+...
 
 your lie in apr
-
----
-
-research projects on
-
-https://nat.org/
-
-https://danielgross.com/
-
----
-
-Cli.
-
-Beautiful print. Tui.
-
-Commands. Options.
-
-Version. Help.
 
 ---
 
