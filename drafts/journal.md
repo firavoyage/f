@@ -46665,7 +46665,7 @@ btw, seems codex does not even queue at all for concurrency. interesting. it doe
 
 <!-- upd: impressive. yuu has post maimai results, real pfp, and even the game center on twitter, but never her player name (the photo just cuts off below the name). another example is azalea, who cares, and sometimes warns about sec on tg. -->
 
-18 00 simplify pm kanban.
+18 00 simplify pm kanban. create new repo template.
 
 p: message/paste, thinking, todo, things/tabs, scratch pad.
 
