@@ -4,6 +4,10 @@ message/paste · todo · tabs/things · scratch pad · weekly/projects · notes
 
 ---
 
+research openai api
+
+research fetch api
+
 fetch llm api
 
 https://github.com/moeru-ai/xsai
