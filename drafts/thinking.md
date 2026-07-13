@@ -167,4 +167,22 @@ todo and things are not much different. just "backlog". try to merge.
 
 prefer to deprecate things. (store crazy and very unlikely to be implemented ideas. e.g. deterministic image gen)
 
+---
+
+organize
+
+export nickel angel, acbox new, arkloop, memoh (?, already done maybe).
+
+all (highly requested) features of github desktop
+
+all (highly requested) features of github mobile app
+
+all (highly requested) features of github 3p ui
+
+all (highly requested) features of github
+
+all (highly requested) features of forgejo (compare) <!-- gitlab is closed. gitea is obsolete. codeberg is based on forgejo. -->
+
+scope. <!-- i might not need grill me. i could think myself. -->
+
 
