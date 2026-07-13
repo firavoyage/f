@@ -46663,6 +46663,8 @@ btw, seems codex does not even queue at all for concurrency. interesting. it doe
 
 <!-- well, i did not mention my take on acbox "70 sub agents". i guess maybe it could be reasonable or effective sometimes. it might be true as acbox seems to be surprised when the fan coolers on her mac spin up. so let's not overthink it. thankfully i did not include that... (wtf they do proxy their req on my identity through nickel angel. i supposed they could, as mio seems to have figured out which im at the first place, while acbox made some guesses, but i didnt expect that.) -->
 
+<!-- upd: impressive. yuu has post maimai results, real pfp, and even the game center on twitter, but never her player name (the photo just cuts off below the name). another example is azalea, who cares, and sometimes warns about sec on tg. -->
+
 
 
 <!-- timebox, plan. -->

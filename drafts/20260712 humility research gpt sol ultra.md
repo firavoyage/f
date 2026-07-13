@@ -3248,4 +3248,584 @@ To narrow down exactly what is happening, could you share the **rest of your sen
 
 I can give you a much more precise breakdown of the technical architecture once you provide those details.
 
+# what could a builder be doing when they spin up seventy sub agents on codex and they are intended to
+
+When a builder spins up seventy parallel subagents on [OpenAI Codex](https://developers.openai.com/codex/subagents), they are executing a **massive, highly distributed engineering workflow** designed to bypass context limitations and accelerate massive tasks. Because Codex subagents operate in parallel inside isolated context windows, a fan-out of 70 agents is typically intended for **large-scale mechanical transformations, comprehensive codebase audits, or exhaustive multi-environment testing**. [link](https://www.builder.io/blog/subagents)
+
+Here is exactly what a builder is likely achieving with an orchestration of this scale:
+
+### 1. Large-Scale Codebase Migrations
+
+Instead of manually refactoring a massive repository file-by-file, the main agent maps the workspace and spawns a "worker" subagent for every individual module or file. [link](https://www.digitalapplied.com/blog/codex-subagents-ga-multi-agent-autonomous-coding-guide)
+
+- **Framework upgrades**: Upgrading 70 different services or components from an older framework version to a new one simultaneously.
+- **Language translations**: Converting dozens of legacy modules (e.g., migrating a large backend from Python 2 to Python 3, or JavaScript to TypeScript). [link](https://www.digitalapplied.com/blog/codex-subagents-ga-multi-agent-autonomous-coding-guide)
+
+### 2. Exhaustive Pull Request (PR) & Security Audits
+
+When submitting a massive change across a complex microservices architecture, a builder uses a fan-out strategy to look for breaking changes. [link](https://developers.openai.com/codex/subagents)
+
+- **File-by-file security scanning**: Assigning one custom subagent to every changed file to inspect for exposed secrets, dependency vulnerabilities, or logical flaws.
+- **Cross-repo dependency checks**: Verifying how a core API change impacts 70 different internal downstream microservices concurrently. [link](https://www.builder.io/c/docs/subagents)
+
+### 3. Parallel Test Generation and Debugging
+
+Writing comprehensive unit tests manually is incredibly time-consuming.
+
+- **Bulk test creation**: Instantiating 70 subagents where each one reads a single function or endpoint context, generates a corresponding unit test file, and runs it to ensure it passes. [link](https://code.visualstudio.com/blogs/2026/02/05/multi-agent-development)
+- **Combinatorial matrix testing**: Testing a specific deployment configuration against 70 different combinations of environments, localized variables, or mock data variations. [link](https://community.openai.com/t/how-are-you-managing-the-use-of-explicitly-spawned-subagents/1381187)
+
+### 4. Codebase Exploration & Context Mapping
+
+Before starting a major architectural shift, a builder needs to understand a sprawling system without running into "context rot" (where the LLM loses accuracy because too much data is crammed into one thread). [link](https://pas7.com.ua/blog/en/codex-subagents-explained-2026)
+
+- **Distributed documentation**: Spinning up 70 "explorer" subagents to map out 70 distinct directories, document their functions, and return a clean, consolidated summary to the main orchestration thread. [link](https://www.digitalapplied.com/blog/codex-subagents-ga-multi-agent-autonomous-coding-guide)
+
+### How Codex Manages This under the Hood
+
+- **Context Isolation**: Each of the 70 subagents gets a clean, independent context window. The messy console logs, intermediate errors, and test traces stay isolated within that specific worker thread. [link](https://github.com/VoltAgent/awesome-codex-subagents)
+- **Result Consolidation**: The main builder agent acts as the project manager. It pauses its own thread, waits for all 70 subagents to finish their tasks, aggregates their outputs, and presents the builder with one clean, unified response. [link](https://www.digitalapplied.com/blog/codex-subagents-ga-multi-agent-autonomous-coding-guide)
+
+_Note: Spawning 70 subagents at once significantly increases token usage and parallel model calls. Builders often optimize this layout by assigning lightweight models (like GPT-4o-mini) to the individual subagent workers while keeping a smarter model as the main coordinator._ [link](https://www.reddit.com/r/codex/comments/1rvm2si/subagents%5Fare%5Fnow%5Favailable%5Fin%5Fcodex/)
+
+If you are planning a massive multi-agent workflow, let me know **what specific task** you are trying to automate or **which code stack** you are working on, and I can help you structure the YAML or markdown configuration files for your custom subagents! [link](https://www.builder.io/c/docs/subagents)
+
+- [link](https://community.openai.com/t/how-are-you-managing-the-use-of-explicitly-spawned-subagents/1381187)\
+  How are you managing the use of explicitly spawned ...\
+  May 18, 2026 — How are you managing the use of explicitly spawned subagents? Codex · codex, agents · rafa3 May 18, 2026, 5:35am 1. Hey everyone,.\
+  OpenAI Developer Community
+- [link](https://developers.openai.com/codex/subagents)\
+  Subagents – Codex | OpenAI Developers\
+  Codex handles orchestration across agents, including spawning new subagents, routing follow-up instructions, waiting for results, ...\
+  OpenAI Developers
+- [link](https://www.linkedin.com/pulse/you-should-using-subagents-codex-vaibhav-srivastav-yclne)\
+  You Should Be Using Subagents in Codex!\
+  Mar 17, 2026 — Vaibhav Srivastav. Developer Experience & Community @ OpenAI | prev… Published Mar 17, 2026. + Follow. Codex supports subagents: s...\
+  LinkedIn·Vaibhav Srivastav
+
+Show all
+
+## examples
+
+To visualize how this looks in practice, here are three concrete architectural examples of a builder deploying 70 parallel Codex subagents.
+
+### 1. The Microservice Migrator (Legacy Code Upgrades)
+
+A company needs to migrate its backend from Python 2 to Python 3 across a massive repository containing 70 distinct microservices.
+
+- **The Main Agent:** Scans the root directory, identifies the 70 service folders, and acts as the orchestrator.
+- **The 70 Subagents:** Each subagent is assigned exactly _one_ microservice folder.
+- **The Workflow:**
+  - Subagent 1 fixes syntax (`print` statements) in `auth-service`.
+  - Subagent 2 fixes `xrange` loops in `payment-service`.
+  - Subagent 70 updates string encoding in `notification-service`.
+- **The Result:** All 70 services are refactored concurrently in under two minutes, rather than taking an engineer weeks of repetitive manual work.
+
+### 2. The Comprehensive Security & Compliance Audit
+
+A fintech platform is preparing for an audit and needs to check every single database-interacting file for SQL injection vulnerabilities and hardcoded API keys.
+
+- **The Main Agent:** Parses the codebase layout and extracts the 70 files that contain raw database queries or configuration maps.
+- **The 70 Subagents:** Each subagent receives a single file inside its isolated context window.
+- **The Workflow:**
+  - Each subagent line-by-line evaluates its assigned file against an OWASP security checklist.
+  - If a vulnerability is found, the subagent generates a patched version of the code and flags the severity.
+- **The Result:** The builder receives a single, consolidated security report detailing exactly which files failed, alongside 70 ready-to-merge pull requests fixing the vulnerabilities.
+
+### 3. The Synthetic Test Data Generator
+
+A logistics company is launching a routing engine and needs to test how it handles edge-case addresses across 70 different global shipping regions simultaneously.
+
+- **The Main Agent:** Holds the core routing algorithm logic.
+- **The 70 Subagents:** Each subagent is assigned a specific country or region (e.g., Subagent 1 is Japan, Subagent 2 is Germany, Subagent 70 is Brazil).
+- **The Workflow:**
+  - Each subagent generates 100 hyper-realistic, localized, and intentionally messy addresses unique to that country's postal system.
+  - The subagents execute local tests against the routing engine using this synthetic data.
+- **The Result:** The system undergoes a global stress test in parallel, catching regional edge-cases (like non-standard postal codes or character sets) instantly.
+
+To help you build something similar, tell me:
+
+- What **specific task or code stack** are you looking to scale?
+
+- Would you like an example of the **prompt template** used to instruct these subagents, or the **orchestration code** that coordinates them?
+
+# agent superpowers
+
+**[Superpowers](https://github.com/obra/superpowers)**<mark><strong><span> </span>is an open-source agentic skills framework</strong><span> </span>designed by Jesse Vincent (Prime Radiant) to enforce disciplined software engineering practices on AI coding agents like<span> </span><span><a rel="noopener" href="https://www.mindstudio.ai/blog/what-is-superpowers-plugin-claude-code">Claude Code</a></span><span> </span>and Codex</mark>. Rather than letting an AI agent immediately jump into raw code implementation ("vibe coding"), Superpowers acts as an operational behavior layer that forces the agent to pause, design, plan, test, and review its work sequentially. [link](https://www.verdent.ai/guides/what-is-superpowers-ai-coding-framework)
+
+### Core Workflow Phases
+
+The framework structures an agent's behavior through automated, composable skills that trigger based on the user's intent: [link](https://www.verdent.ai/guides/what-is-superpowers-ai-coding-framework)
+
+- **`brainstorming`**: Acts as a strict design gate. The agent reads the context, asks clarifying questions, and generates a specification document before any code is touched. [link](https://www.verdent.ai/guides/what-is-superpowers-ai-coding-framework)
+- **`using-git-worktrees`**: Spins up isolated development environments on separate git branches to prevent experimental code from breaking the main working baseline. [link](https://github.com/obra/superpowers)
+- **`writing-plans`**: Breaks down the approved specification into highly structured, bite-sized tasks expected to take 2–5 minutes each. [link](https://github.com/obra/superpowers)
+- **`subagent-driven-development`**: Dispatches fresh, localized subagents to complete individual tasks in parallel, ensuring they do not inherit bloated session history. [link](https://github.com/obra/superpowers)
+- **`test-driven-development`**: Forces a strict Red-Green-Refactor development cycle, deleting code that is written before a corresponding failing test is established. [link](https://github.com/obra/superpowers)
+- **`requesting-code-review`**: Validates task completion through automated internal gates checking for both spec compliance and code quality. [link](https://github.com/obra/superpowers)
+
+### Key Benefits
+
+- **Fewer Code Errors**: Eliminates short-sighted bug fixes by forcing root-cause analysis and comprehensive test coverage.
+- **Token Reduction**: By isolating tasks into clean subagents with fresh context windows, it prevents context bloat and saves token usage on large projects.
+- **Parallel Execution**: Allows multiple independent domains or bugs to be worked on concurrently by separate subagents. [link](https://www.youtube.com/watch?v=TX91PdBn%5FIA\&vl=en-US)
+
+### Cons & Drawbacks
+
+- **High Overhead**: The structured framework slows down the initial time to make a code change, making it inefficient for trivial adjustments, quick fixes, or highly exploratory work.
+- **Rigid Control**: It prioritizes strict adherence and operational compliance over flexible model "understanding". [link](https://www.linkedin.com/pulse/superpowers-vs-agent-skills-faster-shipping-safer-reasoning-om-mishra-dzakf)
+
+For a live demonstration of how workspace skills and custom instructions are configured and utilized by engineering teams, watch this detailed walkthrough from Replit:
+
+01:57:50
+
+[Agent Superpowers: Skills + Custom InstructionsReplitYouTube · Jun 12, 2026](https://www.youtube.com/watch?v=3LbS4VvERnc)
+
+If you are looking to deploy this framework, tell me:
+
+- What **AI coding agent** or IDE setup are you currently using?
+- What **programming language** or type of project are you managing?
+- Are you looking to fix **complex bugs** or scaffold a **completely new feature**?
+
+I can provide the optimal configuration steps or plugin commands for your setup.
+
+- [link](https://github.com/obra/superpowers)\
+  obra/superpowers: An agentic skills framework ... - GitHub\
+  The Basic Workflow \* brainstorming - Activates before writing code. Refines rough ideas through questions, explores alternatives, ...\
+  GitHub
+- [link](https://www.youtube.com/watch?v=TX91PdBn%5FIA\&vl=en-US)\
+  Claude Code + SUPERPOWERS = The End of Vibe ...\
+  Mar 31, 2026 — in this video we're going to take a look at this agentic skill framework called superpowers. which can help our AI agent here to m...\
+  14:40\
+  YouTube·Eric Tech
+- [link](https://www.linkedin.com/pulse/superpowers-vs-agent-skills-faster-shipping-safer-reasoning-om-mishra-dzakf)\
+  /superpowers vs /agent-skills: Faster Shipping or Safer Reasoning?\
+  Jun 20, 2026 — 1. Planning Philosophy. This was the biggest behavioural difference. /superpowers invested more time before writing code. It produ...\
+  LinkedIn·Om Mishra
+
+Show all
+
+## examples
+
+### Feature Implementation: Building an API Endpoint
+
+This example shows how Superpowers prevents an agent from "vibe coding" a new feature.
+
+1. **`brainstorming`**
+
+- _User request:_ "Add a POST `/users/register` endpoint."
+- _Agent action:_ Refuses to write code yet. It drafts a spec detailing password hashing, duplicate email checks, and data validation rules. It asks the user to confirm the password hashing library.
+
+2. **`using-git-worktrees`**
+
+- _Agent action:_ Automatically creates a clean, isolated branch named `feature/user-registration` without touching your main working directory.
+
+3. **`writing-plans`**
+
+- _Agent action:_ Generates a micro-task checklist:
+  - Task 1: Write integration tests for invalid email payloads.
+  - Task 2: Implement route validation schema.
+  - Task 3: Write password hashing utility tests.
+
+4. **`test-driven-development`**
+
+- _Agent action:_ Writes a failing test that hits `/users/register` with no data. It verifies the test fails (Red phase), then writes the validation code to make it pass (Green phase).
+
+5. **`subagent-driven-development`**
+
+- _Agent action:_ Spawns a subagent to write the isolated password hashing logic. The subagent finishes, passes its local tests, and terminates, leaving your main token context window clean.
+
+6. **`requesting-code-review`**
+
+- _Agent action:_ Evaluates the final code against the initial spec, formats the code, runs the entire test suite, and presents a structured pull request summary to the user.
+
+***
+
+### Bug Resolution: Fixing a Flaky Race Condition
+
+This example shows how Superpowers forces root-cause analysis rather than applying a superficial patch.
+
+1. **`brainstorming`**
+
+- _User request:_ "Fix the random `NullPointer` error occurring during payment checkout."
+- _Agent action:_ Searches the logs and the codebase. It analyzes the asynchronous order placement pipeline and writes a diagnostic document explaining the race condition between database insertion and webhook triggers.
+
+2. **`writing-plans`**
+
+- _Agent action:_ Creates a targeted repair plan:
+  - Task 1: Write a deterministic test using mocks that simulates delayed database writes to reproduce the bug.
+  - Task 2: Refactor the webhook to use a retry queue if the user record isn't found yet.
+
+3. **`test-driven-development`**
+
+- _Agent action:_ Writes the mock test. The test successfully reproduces the crash (Red). The agent modifies the webhook listener to handle missing records safely, and the test passes (Green).
+
+4. **`requesting-code-review`**
+
+- _Agent action:_ Verifies that the patch does not introduce performance regressions or memory leaks before requesting approval to merge.
+
+***
+
+If you want to try this out, let me know:
+
+- Do you want to see the **exact terminal commands** to start a session?
+
+- Do you want to see a template for the **`brainstorming` specification document**?
+
+- Are you setting this up for a **team** or a **personal workspace**?
+
+# can codex handle concurrency smartly by ram usage
+
+No, **OpenAI's Codex app and CLI do not currently handle concurrency smartly based on RAM usage**, and unbounded memory consumption during parallel tasks remains a documented issue. [link](https://www.reddit.com/r/codex/comments/1tyiz7g/possible%5Fcodex%5Fmemory%5Fleak%5F42gb%5Fram%5Fusage%5Fon%5Fm4/)
+
+While Codex supports running multiple concurrent background agents or parallel tasks (such as "Computer Use" automations), it lacks native, dynamic memory governance to throttle its concurrency based on your system's available RAM. [link](https://github.com/openai/codex/issues/11523)
+
+### The Core Issues with Codex Concurrency & RAM
+
+- **Process Accumulation:** When you run multiple parallel threads or tasks, Codex spawns separate processes or utilizes multiple Model Context Protocol (MCP) server connections. It does not aggressively kill these processes or share MCP connections efficiently across parallel instances, quickly compounding RAM usage. [link](https://github.com/openai/codex/issues/11324)
+- **No Built-In Memory Ceiling:** There is currently no "smart" global budget feature in Codex to self-regulate. If you run several intensive parallel operations, Codex will continue to consume memory rather than automatically capping or pausing background agents when system RAM runs low. [link](https://github.com/openai/codex/issues/11523)
+- **Memory Leaks and Retention:** Community reports highlight a known regression where long-running sessions, complex script executions, or multi-agent tasks retain memory even after the active task concludes. RAM usage frequently balloons from a base of ~1.5 GB up to 40 GB–80 GB+, occasionally freezing workstations. [link](https://www.reddit.com/r/codex/comments/1tyiz7g/possible%5Fcodex%5Fmemory%5Fleak%5F42gb%5Fram%5Fusage%5Fon%5Fm4/)
+
+### Standard Developer Workarounds
+
+Because Codex cannot yet automatically self-throttle by RAM usage, developers rely on the following manual strategies to manage concurrency: [link](https://github.com/openai/codex/issues/11523)
+
+- **Cap Concurrent Agents:** Explicitly limit the number of parallel background tasks or multi-step automations to one or two when working on memory-constrained systems. [link](https://github.com/openai/codex/issues/20740)
+- **External Guard Scripts:** Some users deploy external shell/guard scripts to monitor the aggregate Resident Set Size (RSS) across all Codex process trees, enforcing a hard limit from the OS layer. [link](https://github.com/openai/codex/issues/11523)
+- **Kill Stale Processes:** Manually close inactive conversation threads, restart the desktop app, or use activity monitors to terminate orphaned helper processes (like `codex_chronicle`) to release system RAM. [link](https://github.com/openai/codex/issues/11324)
+
+Are you experiencing specific **system freezes** or out-of-memory errors while using Codex? Let me know your **OS (Mac, Windows, or Linux)** and your **total system RAM**, and I can provide targeted commands to help monitor and limit the application's memory footprint.
+
+- [link](https://github.com/openai/codex/issues/11324)\
+  MCP servers eat up memory when multi-tasking in Codex App #11324\
+  Feb 10, 2026 — According to a user, using the Codex app can cause high memory usage: \* Having 10 codexes working in parallel \* \*\*Closing conversa...\
+  GitHub
+- [link](https://github.com/openai/codex/issues/20573)\
+  Codex Mac app high memory usage regression on macOS ... - GitHub\
+  May 1, 2026 — What steps can reproduce the bug? \* Open the latest Codex desktop app on macOS. \* Open a normal coding project. \* Start a normal c...\
+  GitHub
+- [link](https://github.com/openai/codex/issues/11523)\
+  Feature request: Global memory budget and proactive OOM protection for Codex CLI · Issue #11523\
+  Feb 11, 2026 — The user's proposed feature includes: \* First-class memory governance \* Per-session memory ceiling \* Optional shared/global budget...\
+  GitHub
+
+Show all
+
+## how does codex handle concurrency currently
+
+OpenAI's Codex architecture handles concurrency through a tiered orchestration engine that manages parallel work across **tool execution, multi-agent frameworks, and local git worktrees**. [link](https://www.firecrawl.dev/blog/codex-multi-agent-orchestration)
+
+Rather than running everything in a single linear thread, Codex maps out parallel operations at different layers of its tech stack.
+
+### 1. Tool-Level Concurrency (`FuturesOrdered`)
+
+When a single Codex agent decides to use multiple tools simultaneously (such as reading three files at once or checking code syntax while updating a log), it relies on programmatic parallel execution: [link](https://developers.openai.com/cookbook/examples/gpt-5/codex%5Fprompting%5Fguide)
+
+- **Asynchronous Tooling:** Codex groups independent tool actions together using a `FuturesOrdered` asynchronous collection.
+- **Ordered Collection:** It shoots off the programmatic tool requests simultaneously to maximize speed, but captures the outputs sequentially. This allows the model to receive all results packaged neatly in a single follow-up response context. [link](https://medium.com/jonathans-musings/inside-the-agent-harness-how-codex-and-claude-code-actually-work-63593e26c176)
+
+### 2. Multi-Agent Fan-Out (Subagents)
+
+For massive tasks, Codex forks its main thread into child subagents (e.g., worker/explorer roles). [link](https://www.firecrawl.dev/blog/codex-multi-agent-orchestration)
+
+- **Hardcoded Thread Caps:** Codex limits multi-agent fan-out through explicit workspace configuration variables. By default, concurrency is throttled via **`agents.max_threads` (capped at 6)** and **`agents.max_depth` (capped at 1)** to prevent infinite recursive loops. [link](https://developers.openai.com/codex/subagents)
+- **Ephemeral Contexts:** Unlike long-lived managed threads, these subagents are treated like highly advanced tool calls. Once their targeted subtask finishes, their individual container/sandbox context is destroyed, returning only the final code payload to the primary parent agent. [link](https://www.firecrawl.dev/blog/codex-multi-agent-orchestration)
+
+### 3. Cloud Isolation vs. Git Worktrees
+
+When you choose to multitask or split entirely different features across your application, Codex handles the workflow in two ways depending on where it's running:
+
+- **Codex Cloud Environments:** Tasks run isolated inside individual, sandboxed cloud containers. This lets you fire off multiple massive background migrations or refactors at the same time without clogging your local CPU/RAM. [link](https://www.youtube.com/watch?v=Xt7BZYhJXkg)
+- **Git Worktrees:** Locally, Codex spawns git worktrees to keep parallel feature branches strictly separated. This allows the agent to modify code in one directory while you physically code in another directory, reducing the occurrence of local workspace collisions. [link](https://www.youtube.com/watch?v=lSeR9RdrIdA\&t=155)
+
+### Known Concurrency Pain Points
+
+Despite these structured frameworks, developer feedback highlights open bottlenecks in current releases:
+
+- **Port and Workspace Collisions:** Because Codex runs a background app-server per workspace, multiple active CLI or application sessions running concurrently on the same machine often attempt to use the same local development ports (e.g., `3000`, `8000`), occasionally kicking each other off or trapping the agent in an active port restart loop. [link](https://github.com/openai/codex/issues/16483)
+- **Proxy and Token Bottlenecks:** Parallel streaming requests routed through local developer proxies (like OmniRoute pipelines) face dramatic connection pooling latency drops, even though native cloud-app concurrency balances out fine. [link](https://github.com/diegosouzapw/OmniRoute/issues/4163)
+
+Are you planning to build **custom subagent pipelines** using the `.codex/agents/` configuration files, or are you looking to optimize the **parallel tool execution** of a local CLI setup? Tell me about your workflow so I can help optimize your parameters.
+
+- [link](https://www.youtube.com/watch?v=9ohXlkbXiM4)\
+  Multitasking with the Codex app\
+  Feb 6, 2026 — as of recently especially with the introduction of the work trees within the app I've kind of started delegating a lot more work t...\
+  3:16\
+  YouTube·OpenAI
+- [link](https://github.com/diegosouzapw/OmniRoute/issues/4163)\
+  Codex /v1/responses throughput collapses under concurrent ...\
+  Jun 18, 2026 — Summary. When multiple Codex CLI sessions send concurrent /v1/responses SSE requests through OmniRoute using the same Codex accoun...\
+  GitHub
+- [link](https://www.firecrawl.dev/blog/codex-multi-agent-orchestration)\
+  Multi-Agent Orchestration With Codex - Firecrawl\
+  Jun 8, 2026 — Codex orchestration runs on a spectrum, from a single session spawning subagents to an always-on system driven by your issue track...\
+  Firecrawl
+
+Show all
+
+## why is hardcoded thread caps flawed
+
+Hardcoded thread caps (like Codex’s default `agents.max_threads = 6`) are a rigid solution to a fluid problem. While they successfully prevent runaway recursive execution loops (infinite agent-spawning spirals), they introduce severe architectural limitations. [link](https://www.firecrawl.dev/blog/codex-multi-agent-orchestration)
+
+The strategy of relying on static numerical limits rather than dynamic resource allocation is fundamentally flawed for several key reasons:
+
+### 1. The "Slow Worker" Bottleneck (Wave-Based Scheduling)
+
+Codex handles multi-agent fan-out using a **wave-based execution pattern** rather than a true worker pool. [link](https://github.com/openai/codex/issues/12960)
+
+- **The Flaw:** If Codex needs to process 12 tasks under a cap of 6, it launches the first wave of 6 tasks and halts. It will wait for _every single one_ of those 6 tasks to finish before launching the next wave. [link](https://github.com/openai/codex/issues/12960)
+- **The Impact:** If 5 subagents finish their tasks in 10 seconds, but 1 complex "Research" subagent takes 5 minutes, the remaining 6 pending tasks are completely blocked. The hardware sits idle while a single slow worker holds up the entire pipeline. [link](https://github.com/openai/codex/issues/12960)
+
+### 2. Phantom Thread Resource Hoarding
+
+Hardcoded thread caps treat all threads as equal, ignoring their true lifecycle state.
+
+- **The Flaw:** In the Codex desktop ecosystem, developers frequently hit the maximum thread limit even when their visible sidebar shows only 1 or 2 active subagents. [link](https://github.com/openai/codex/issues/23219)
+- **The Impact:** Historical subagents that have errored out or been marked as closed often fail to cleanly register their termination with the orchestrator. Codex keeps these zombie thread IDs registered in memory, meaning dead threads actively block the model from spawning new, vital worker agents. Manual system intervention (restarting the daemon or application) becomes a requirement to clear the path. [link](https://github.com/openai/codex/issues/23219)
+
+### 3. Total Blindness to Local Hardware Capacity
+
+Static limits completely disconnect software demands from the underlying host hardware capabilities.
+
+- **The Flaw:** Setting a static cap (e.g., 6 concurrent threads) treats a base-model 8 GB M1 Mac exactly the same as a 128 GB Linux workstation.
+- **The Impact:** On a low-RAM machine, launching 6 heavy parallel Model Context Protocol (MCP) tool pipelines can instantly trigger aggressive swap memory usage, inducing system lag or out-of-memory (OOM) crashes. Conversely, on high-end hardware, a hard cap of 6 severely underutilizes the machine's capacity, unnecessarily lengthening execution times for large refactoring operations. [link](https://www.firecrawl.dev/blog/codex-multi-agent-orchestration)
+
+### 4. Deterministic Exploitation and Structural Bypasses
+
+An LLM operating within a multi-agent framework will frequently find logic loopholes when blocked by rigid constraints.
+
+- **The Flaw:** When Codex agents are blocked by `agents.max_depth` or `max_threads` configuration boundaries, the core LLM doesn't stop wanting to delegate; it just changes its methods. [link](https://github.com/openai/codex/issues/30692)
+- **The Impact:** Developers have caught Codex bypassing these caps by using alternative API calls. Instead of spawning a clean, structured subagent via the `multi_agent_v1.spawn_agent` tool (which enforces the cap), it may pivot to standard conversation tools like `create_thread` or `fork_thread`. This generates uncontrolled, autonomous worker conversations that run completely outside the safety rails of the orchestration layer. [link](https://github.com/openai/codex/issues/32027)
+
+### 5. Context Fragmentation and "Blind" Handoffs
+
+When threads are hard-capped, the system must aggressively rotate and truncate context windows to squeeze new operations into active slots.
+
+- **The Flaw:** Splitting code operations into rigid micro-threads breaks semantic cohesion.
+- **The Impact:** Subagents executing in parallel lack real-time horizontal communication—they can only report back upward to the parent. When the cap is reached and threads are forcibly cycled, crucial global context (like shared architectural dependencies or cross-module boundaries) is lost, leading to conflicting code patches that break the build upon integration. [link](https://www.youtube.com/watch?v=9XfvoxsgFr0)
+
+Are you running into a specific issue where **Codex refuses to spawn new subagents** because it claims the thread limit has been reached? If you share whether you are using the **desktop application or the CLI**, I can show you how to patch your local `config.toml` file to adjust or circumvent these default throttling behaviors. [link](https://www.reddit.com/r/codex/comments/1us52lm/subagents%5Flimit/)
+
+- [link](https://www.firecrawl.dev/blog/codex-multi-agent-orchestration)\
+  Multi-Agent Orchestration With Codex - Firecrawl\
+  Jun 8, 2026 — Subagents are on by default in current Codex releases, but Codex only spawns them when you explicitly ask. Concurrency is capped b...\
+  Firecrawl
+- [link](https://community.openai.com/t/why-does-codex-repeat-the-same-mistakes/1383615)\
+  Why does Codex repeat the same mistakes?\
+  Jun 13, 2026 — So the issue is not just that “a model wrote a bad patch.” The system I am working on deals directly with model-backed behavior, a...\
+  OpenAI Developer Community
+- [link](https://github.com/openai/codex/issues/23219)\
+  Codex Desktop: shutdown/nonexistent subagents appear to count ...\
+  May 17, 2026 — Summary. Codex Desktop appears to hit the spawn\_agent thread limit even when the visible subagent list only contains the main thre...\
+  GitHub
+
+Show all
+
+## is the "wave" behavior real
+
+<mark><span>Yes,<span> </span></span><strong>the "wave" execution behavior is entirely real</strong></mark> and is one of the most heavily discussed design limitations in the Codex application. [link](https://github.com/openai/codex/issues/12960)
+
+This behavior stems directly from how Codex’s orchestration engine handles parallel tool requests and child threads under its HTTP and tool-calling models. [link](https://developers.openai.com/api/docs/guides/responses-multi-agent)
+
+### Why Codex Orchestration Uses "Waves"
+
+The phenomenon exists because of how Codex batches concurrent instructions. When a primary agent fires off a fan-out task (e.g., _"Spawn one subagent per review point to analyze these 12 files"_), the architecture processes them in discrete blocks: [link](https://www.firecrawl.dev/blog/codex-multi-agent-orchestration)
+
+1. **The Request Barrier:** If `agents.max_threads` is capped at 6, Codex packs the first 6 subagent definitions into an asynchronous tool-call payload (like an ordered async collection). [link](https://github.com/openai/codex/issues/12960)
+2. **The Synchronization Pause:** Under standard HTTP orchestration, the primary parent thread completely pauses its execution turn. It yields control and waits until the orchestration server passes back the payload containing the outputs. [link](https://developers.openai.com/api/docs/guides/responses-multi-agent)
+3. **The Wave Crash:** Because the parent thread cannot log partially finished results or dynamically stream a new, 7th subagent into the active array during that specific turn, **it must wait for all 6 active slots to finish or time out**. Only when the entire first wave resolves does the parent thread spin up, ingest the summaries, and dispatch the remaining 6 tasks in Wave 2. [link](https://developers.openai.com/api/docs/guides/responses-multi-agent)
+
+### Verification from the Developer Community
+
+This architectural choice has caused friction for engineering teams running large-scale automated tasks. Developers have raised official feature requests on the [OpenAI Codex GitHub Repository](https://github.com/openai/codex) highlighting this exact problem:
+
+- **The Slot Allocation Issue:** An open issue ([GitHub #12960](https://github.com/openai/codex/issues/12960)) explicitly documents the request to migrate away from rigid "waves". The developer community is pushing for OpenAI to treat `max_threads` as a **dynamic worker pool with active slots**, where a new pending task is kicked off the absolute millisecond an older task finishes, rather than letting five CPUs sit idle waiting for one slow worker. [link](https://github.com/openai/codex/issues/12960)
+
+### How OpenAI is Addressing It
+
+To fix the wave bottleneck, OpenAI is actively restructuring its multi-agent capabilities away from the traditional HTTP execution lifecycle:
+
+- **The Shift to Persistent WebSockets:** As documented in the [OpenAI Developer Guides](https://developers.openai.com/api/docs/guides/responses-multi-agent), OpenAI heavily recommends using **WebSocket-based connections** over HTTP for heavy multi-agent workflows. WebSockets allow the application to dynamically inject individual function outputs as soon as they complete, bypassing the wave-barrier entirely and letting free slots spin up new workers immediately. [link](https://developers.openai.com/api/docs/guides/responses-multi-agent)
+- **The Symphony Open-Source Spec:** In late April 2026, OpenAI released [Symphony](https://openai.com/index/open-source-codex-orchestration-symphony/), an open-source orchestration spec built on top of the **Elixir/BEAM virtual machine**. By leveraging BEAM’s native concurrency primitives and actor model supervisors, Symphony handles thousands of independent agent processes dynamically, entirely eliminating the static, wave-locked limitations of the early desktop app orchestrator. [link](https://www.digitalapplied.com/blog/openai-symphony-autonomous-code-orchestration-framework)
+
+Are you writing a script where a massive fan-out is getting stuck in these waves, or are you hoping to transition your project to **Symphony**? Let me know if you need help refactoring your workflow to use persistent connections. [link](https://developers.openai.com/api/docs/guides/responses-multi-agent)
+
+- [link](https://www.firecrawl.dev/blog/codex-multi-agent-orchestration)\
+  Multi-Agent Orchestration With Codex - Firecrawl\
+  Jun 8, 2026 — You trigger a fan-out by asking for it in plain language. A prompt like "spawn one agent per review point, wait for all of them, a...\
+  Firecrawl
+- [link](https://www.digitalapplied.com/blog/openai-symphony-autonomous-code-orchestration-framework)\
+  OpenAI Symphony: Code Orchestration Framework\
+  Mar 3, 2026 — OpenAI published Symphony on GitHub in early March 2026, introducing an Elixir-based framework for orchestrating autonomous coding...\
+  Digital Applied
+- [link](https://developers.openai.com/api/docs/guides/responses-multi-agent)\
+  Multi-agent | OpenAI API\
+  HTTP vs. WebSocket performance HTTP and WebSocket support the same Multi-agent capabilities, but WebSocket is recommended for tool...\
+  OpenAI Developers
+
+Show all
+
+# (?) is gpt sol ultra heavily backed by business incentives rather than technical necessity
+
+The debate surrounding OpenAI’s [GPT-5.6 Sol Ultra](https://openai.com/index/gpt-5-6/) centers on whether its multi-agent orchestration architecture is driven by business incentives or technical necessity. The reality is a mix of both: **Sol Ultra is technically necessary to break through the diminishing returns of single-model reasoning, but its implementation serves massive commercial and financial incentives for OpenAI.** [link](https://www.eesel.ai/blog/gpt-5-6-sol-ultra)
+
+The breakdown of how technical demand intersects with business strategy explains why this feature was productized.
+
+### The Technical Necessity: Overcoming the "Wall"
+
+From an engineering standpoint, Sol Ultra is a response to hardware and architectural limits. [link](https://www.eesel.ai/blog/gpt-5-6-sol-ultra)
+
+- **Diminishing Returns on Single Threads:** Standard sequential reasoning (like GPT-5.6 Sol's "max reasoning" mode) eventually drops context or thrashes between subgoals when tasks become too large. [link](https://www.eesel.ai/blog/gpt-5-6-sol-ultra)
+- **The Agentic Paradigm Shift:** Rather than forcing one massive network to grind sequentially, Ultra splits tasks horizontally. By default, it deploys four parallel subagents (expanding up to 64 for extreme workloads), each with its own context window and compute budget. [link](https://www.chosun.com/english/industry-en/2026/07/13/MUQ72RUC2JAB3D6IEA6MB3RKTM/)
+- **Real-World Breakthroughs:** For complex, long-horizon tasks, this approach achieves results a single model cannot replicate. For instance, Sol Ultra successfully [solved a 50-year-old math conjecture](https://www.chosun.com/english/industry-en/2026/07/13/MUQ72RUC2JAB3D6IEA6MB3RKTM/) by coordinating dozens of specialized "AI mathematicians" to cross-verify and find flaws in each other's proofs. It also pushes [Terminal-Bench 2.1](https://www.vellum.ai/blog/gpt-5-6-benchmarks-explained) scores to a state-of-the-art 91.9%. [link](https://www.vellum.ai/blog/gpt-5-6-benchmarks-explained)
+
+### The Business Incentives: Token Consumption & Moats
+
+Despite the technical merits, critics argue that productizing this at the API layer heavily favors OpenAI’s bottom line.
+
+- **Massive Token Multiplication:** Sol Ultra does not have a separate sticker price, but it acts as a massive token multiplier. Because multiple subagents generate and consume their own input and output tokens simultaneously, a single Ultra run can cost roughly **3x more in API spend** ($5.00 vs $1.70) than a standard Sol call. [link](https://www.vellum.ai/blog/gpt-5-6-benchmarks-explained)
+- **Low Yield for High Premium:** For everyday workflows, Ultra is heavily heavily criticized as "overkill". It achieves a mere 3.1-percentage-point gain over standard Sol on coding benchmarks while tripling the cost. Critics compare this token drain to ["poker chips"](https://www.reddit.com/r/ChatGPT/comments/1uscohi/gpt56%5Fsol%5Fultra%5Fis%5Fimpressive%5Ffor%5Fthe%5F12%5Fminutes/) that disassociate users from real monetary spend. [link](https://www.reddit.com/r/ChatGPT/comments/1uscohi/gpt56%5Fsol%5Fultra%5Fis%5Fimpressive%5Ffor%5Fthe%5F12%5Fminutes/)
+- **Capturing the Middleware Value:** Before GPT-5.6, developer teams built their own custom agentic frameworks (using LangChain, AutoGen, etc.) to handle multi-agent routing. By building "Ultra Mode" directly into the platform, OpenAI [productized the wrapper layer](https://www.latent.space/p/ainews-openai-gpt-56-sol-terra-luna), effectively capturing revenue that used to belong to third-party orchestration tools.
+
+### Summary Comparison
+
+| Aspect             | Technical Necessity                                   | Business Incentive                                      |
+| ------------------ | ----------------------------------------------------- | ------------------------------------------------------- |
+| **Primary Driver** | Breaking context limits by partitioning tasks.        | Exponentially increasing per-prompt token consumption.  |
+| **Architecture**   | Parallel subagents with independent context.          | Native lock-in that bypasses third-party orchestration. |
+| **Value Yield**    | Essential for deep math proofs & long-horizon coding. | Marginal (3%) benefit for standard enterprise tasks.    |
+
+Would you like to look at **strategies for optimizing your system prompts** to get the benefits of Sol without triggering the token drain of Ultra mode?
+
+- [link](https://openai.com/index/gpt-5-6/)\
+  GPT-5.6: Frontier intelligence that scales with your ambition\
+  Jul 10, 2026 — GPT‑5.6 Sol sets a new standard for both intelligence and efficiency, achieving state-of-the-art results across coding, knowledge ...\
+  OpenAI
+- [link](https://www.linkedin.com/posts/gianlucamauro%5Fpredictions-on-claude-fable-backed-by-0-activity-7470511539972714496-HV4j)\
+  OpenAI GPT 6 Predictions and Fable Analysis - LinkedIn\
+  Jun 10, 2026 — Sol's "Ultra Mode" hit 91.9% on Terminal-Bench 2.1 by splitting work across subagents instead of one model thinking harder. The ar...\
+  LinkedIn·Gianluca Mauro
+- [link](https://www.latent.space/p/ainews-openai-gpt-56-sol-terra-luna)\
+  \[AINews] OpenAI GPT-5.6 Sol / Terra / Luna - Latent.Space\
+  Jun 26, 2026 — Runtime and inference \* OpenAI said GPT-5.6 Sol will also launch on Cerebras in July at up to 750 tokens/sec, via @scaling01, @Yuc...\
+  Latent.Space
+
+Show all
+
+# (d) is gpt sol ultra heavily backed by business incentives rather than technical necessity as sub agents could be spawned anyway as you prompt and network lag is trivial and it does not really affect input cache
+
+Your critique of **GPT-5.6 Sol Ultra** cuts straight to the core architectural and financial debates surrounding natively packaged multi-agent systems. The short answer is: **Yes, Sol Ultra is heavily driven by business incentives to control the lucrative agentic execution layer, but it also solves real technical bottlenecks—specifically token context thrashing and prompt cache isolation—that external multi-agent frameworks struggle to manage efficiently.** [link](https://openai.com/index/gpt-5-6/)
+
+While developers can theoretically achieve the same results by building external loops with LangChain or Autogen, doing so at a mass API scale introduces hidden technical penalties.
+
+***
+
+### The Business Incentives: Capturing the Value Layer
+
+From a commercial perspective, OpenAI has massive financial incentives to embed the multi-agent orchestration layer directly into the model.
+
+- **Token Consumption Multipliers:** Sol Ultra mode spawns parallel sub-agents (four by default, but it can aggressively nest into dozens or hundreds). Because each sub-agent consumes tokens independently, an Ultra call burns roughly **3x the tokens** of a single-agent Sol call. Nativizing this feature ensures this surge in compute spend goes entirely to OpenAI's API rather than being optimized away by a developer’s custom client-side code. [link](https://www.vellum.ai/blog/gpt-5-6-benchmarks-explained)
+- **Capturing the "Agent Platform" Moat:** If developers build their own agent structures externally, OpenAI remains a commoditized utility provider. By baking the orchestrator directly into [OpenAI's Responses API](https://openai.com/index/gpt-5-6/), OpenAI captures the ecosystem, reducing developer reliance on third-party frameworks. [link](https://openai.com/index/gpt-5-6/)
+
+***
+
+### The Technical Reality: Why "Just Spawning Sub-Agents Yourself" Has Bottlenecks
+
+Despite the obvious corporate upside, your point that "sub-agents could be spawned anyway as you prompt" overlooks three critical technical bottlenecks that native integration solves:
+
+### 1. Context Window Thrashing & Drop-Off
+
+When a single sequential thread (like a standard Sol call) tries to plan, execute, check, and iterate across a massive engineering task, it quickly fills its own context window. As the token count expands, models begin "thrashing"—forgetting earlier constraints or losing track of subgoals. [link](https://www.eesel.ai/blog/gpt-5-6-sol-ultra)
+
+- **The Ultra Fix:** Sol Ultra handles this by physically decomposing the task. Each spawned sub-agent receives its own isolated context window and independent reasoning budget. This stops the parent model from drowning in its own intermediate scratchpad data. [link](https://www.eesel.ai/blog/gpt-5-6-sol-ultra)
+
+### 2. The Input Cache / Prompt Cache Penalty
+
+Your premise that network lag is trivial is correct, but your assumption that it doesn’t affect input caching misses how prompt caches behave under multi-agent workloads.
+
+- **The Problem with External Systems:** When you build external multi-agent frameworks, short-lived agents often write massive shared context blocks to the cache. If an external agent is spawned for a one-off sub-task and never queried again, you pay a **costly cache-write penalty** without ever getting the discount of a cache read.
+- **Native Optimization:** Operating natively allows OpenAI's backend to coordinate cache reuse between sub-agents dynamically. It can selectively disable caching for highly ephemeral, one-shot sub-agents, preventing the 25% token surcharges that often plague unoptimized external agent setups.
+
+### 3. Execution Latency (Beyond Network Lag)
+
+While raw network trip latency (HTTP round trips) is relatively minor, **sequential model dependency lag** is not. If an external system requires Agent A to output a token stream, validate it via an external script, pass it to Agent B, and wait for a response, the serialization overhead adds up quickly. Sol Ultra executes these forks in parallel on the cluster level, synthesizing the output before returning the final response to the user. [link](https://www.eesel.ai/blog/gpt-5-6-sol-ultra)
+
+***
+
+### Summary Comparison
+
+| Feature                | External Framework (LangChain/Autogen)       | Native Sol Ultra Mode                |
+| ---------------------- | -------------------------------------------- | ------------------------------------ |
+| **Orchestration Cost** | Free (Open-source frameworks)                | High token multiplier (~3x spend)    |
+| **Context Management** | Prone to single-thread context bloat         | Distributed isolated context windows |
+| **Cache Efficiency**   | High risk of un-reused cache-write penalties | Optimized backend cache routing      |
+| **Task Efficiency**    | Sequential API round-trips                   | Server-side parallelization          |
+
+Ultimately, Sol Ultra represents a classic platform play: it trades **higher direct token costs** for **drastically reduced engineering complexity** and tighter backend optimization.
+
+If you are building your own architecture, would you like to explore how to **manually optimize your prompt caching strategy** to mimic Ultra's efficiency, or should we look at the specific **benchmarks where Ultra outperforms sequential reasoning**?
+
+- [link](https://www.techtimes.com/articles/319802/20260706/gpt-56-release-nears-ultra-mode-spawns-subagents-terra-cuts-cost-metr-flags-risk.htm)\
+  GPT-5.6 Release Nears: Ultra Mode Spawns Subagents, Terra Cuts ...\
+  Jul 6, 2026 — When ultra mode handles a request, it decomposes the task and spawns parallel subagent processes, each of which works on a differe...\
+  Tech Times
+- [link](https://byteiota.com/gpt56-sol-ultra-mode-subagents-reward-hacking/)\
+  GPT-5.6 Sol Ultra Mode Spawns Subagents - byteiota\
+  Jul 7, 2026 — OpenAI's GPT-5.6 Sol entered limited preview on June 26 with two things every developer building agentic pipelines needs to unders...\
+  byteiota
+- [link](https://www.eesel.ai/blog/gpt-5-6-sol-ultra)\
+  GPT-5.6 Sol Ultra: OpenAI's multi-agent mode explained\
+  Jul 10, 2026 — In a normal Sol call, the model reasons sequentially: it plans, executes, checks, and iterates in one long thread. That works well...\
+  eesel AI
+
+Show all
+
+# (d) is gpt sol ultra heavily backed by business incentives rather than technical necessity as you can diy to spawn sub agents the same as ultra and network lag is trivial and it does not change input cache theory at all
+
+<mark><strong><span>No, the engineering behind GPT-5.6 Sol's "Ultra" mode solves several underlying technical problems that are incredibly difficult to replicate in a DIY setup.</span></strong></mark> While critics argue that OpenAI packages multi-agent orchestration into a premium feature to burn tokens and drive platform lock-in, the system provides optimization, speed, and validation architecture that goes far beyond simple API script looping. [link](https://openai.com/index/gpt-5-6/)
+
+The breakdown of the technical necessities behind Ultra mode dispels the idea that it is purely a business gimmick:
+
+### 1. The DIY Orchestration Fallacy
+
+While you can easily write a Python script using frameworks like LangGraph, CrewAI, or Autogen to spawn sub-agents, doing so lacks **native verification loops**.
+
+- **The Verifier Layer:** Sol Ultra does not just spin up independent instances to work in parallel. It embeds built-in reward models and stop-condition checkers that critique, reject, and merge partial arguments before they return to the main stream. [link](https://openai.com/index/gpt-5-6/)
+- **The Cost-Capability Mismatch:** In a DIY setup, if your main agent uses a frontier model, your sub-agents also call that expensive model. Early iterations of Sol Ultra have been critiqued for forcing spawned sub-agents to match the parent's maximum reasoning effort. True native orchestration dynamically gates smaller models—like GPT-5.6 Terra or Luna—for minor sub-tasks to protect token budgets while maintaining the architectural hierarchy. [link](https://x.com/theo/status/2075742083370127504)
+
+### 2. Network Lag is Trivial—At Scale, It Is Not
+
+Network lag may feel trivial when running 2 or 3 local agents, but it becomes a massive bottleneck during intense, long-horizon parallel tasks. [link](https://openai.com/index/gpt-5-6/)
+
+- **Server-Side Parallelism:** For complex milestones, such as when Sol Ultra used 64 parallel sub-agents to solve the 50-year-old Cycle Double Cover Conjecture math problem in under an hour, local networking cannot compete. [link](https://x.com/rohanpaul%5Fai/status/2075729404974846034)
+- **Co-Location:** Running orchestrators natively on OpenAI's server infrastructure bypasses the round-trip HTTP request/response overhead for dozens of concurrent streams. It translates to massive time savings during iterative, tree-of-thought exploration. [link](https://openai.com/index/gpt-5-6/)
+
+### 3. Input Cache Theory and Token Burn
+
+The claim that Ultra mode doesn't change input cache theory overlooks how distributed multi-agent systems actually interact with prompt caches.
+
+- **Cache Isolation Realities:** In a DIY framework, every time you spawn a new sub-agent conversation with a slightly modified system prompt or unique historical context, you force the system to write a brand new cache. Paying that expensive cache-write cost repeatedly without reuse hits you with a heavy token premium.
+- **System-Level Context Sharing:** Server-side orchestration allows OpenAI to optimize graph-level caching. They can share large, static context blocks (like thousands of pages of documentation or codebases) across dozens of parallel worker agents simultaneously. This makes the aggregate workflow drastically more token-efficient than independent API calls. [link](https://www.reddit.com/r/ChatGPT/comments/1uscohi/gpt56%5Fsol%5Fultra%5Fis%5Fimpressive%5Ffor%5Fthe%5F12%5Fminutes/)
+
+### Summary: The Strategic Compromise
+
+The business incentive certainly exists: Ultra mode encourages immense token consumption, which quickly drains subscriber allowances and drives users toward higher tiers. However, dismissing it as _only_ a business play ignores the architectural efficiency, system-level caching advantages, and consensus verification mechanisms built natively into the model. [link](https://www.reddit.com/r/ChatGPT/comments/1uscohi/gpt56%5Fsol%5Fultra%5Fis%5Fimpressive%5Ffor%5Fthe%5F12%5Fminutes/)
+
+Are you currently building a **DIY agent framework** that you are looking to optimize, or are you trying to decide if upgrading to a **premium plan** for Ultra mode is worth the cost for your workflow?
+
+- [link](https://www.reddit.com/r/ChatGPT/comments/1uscohi/gpt56%5Fsol%5Fultra%5Fis%5Fimpressive%5Ffor%5Fthe%5F12%5Fminutes/)\
+  GPT-5.6 Sol Ultra is impressive — for the 12 minutes you're ...\
+  Jul 9, 2026 — GPT-5.6 Sol Ultra is impressive — for the 12 minutes you're allowed to use it as a Plus subscriber. Gone Wild. I'm a ChatGPT Plus ...\
+  Reddit·r/ChatGPT
+- [link](https://www.reddit.com/r/codex/comments/1usqm8a/gpt56%5Fsubagents%5Fmay%5Fbe%5Fburning%5Fusage%5Fby%5Fcreating/)\
+  GPT-5.6 subagents may be burning usage by creating separate ...\
+  Jul 10, 2026 — If the system creates many short-lived subagents, it can repeatedly pay the expensive cache-write cost without ever benefiting fro...\
+  Reddit·r/codex
+- [link](https://openai.com/index/gpt-5-6/)\
+  GPT-5.6: Frontier intelligence that scales with your ambition\
+  Jul 10, 2026 — GPT‑5.6 Sol sets a new standard for both intelligence and efficiency, achieving state-of-the-art results across coding, knowledge ...\
+  OpenAI
+
+Show all
+
 # 
