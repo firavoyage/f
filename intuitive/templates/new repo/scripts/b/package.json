@@ -1,7 +1,7 @@
 {
   "name": "@tool/bun-root-cli",
-  "version": "1.0.1",
-  "description": "Locates the nearest upstream bunfig.toml and executes Bun.",
+  "version": "0.0",
+  "description": "Bun with the nearest upstream bunfig.toml",
   "main": "index.js",
   "bin": {
     "b": "./index.js",
