@@ -46669,6 +46669,10 @@ btw, seems codex does not even queue at all for concurrency. interesting. it doe
 
 p: message/paste, thinking, todo, things/tabs, scratch pad.
 
+im not really clear how to do...
+
+when would i need them. how would i read them. 
+
 
 
 <!-- timebox, plan. -->
