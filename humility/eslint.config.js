@@ -3,6 +3,28 @@ import tseslint from "typescript-eslint";
 import tsParser from "@typescript-eslint/parser";
 import { defineConfig } from "eslint/config";
 
+const throw_err = {
+  meta: {
+    type: "suggestion",
+    docs: {
+      description: "Enforce that 'throw' is followed by a function call named 'err'.",
+    },
+    messages: {
+      mustUseErrFunction: "You must throw using the 'err()' function. Example: throw err('Message')",
+    },
+  },
+  create(context) {
+    return {
+      // Targets 'throw' statements where the argument is NOT a CallExpression named 'err'
+      "ThrowStatement:not(ThrowStatement[argument.type='CallExpression'][argument.callee.name='err'])"(node) {
+        context.report({
+          node,
+          messageId: "mustUseErrFunction",
+        });
+      },
+    };
+  },
+};
 export default defineConfig(
   // Config
   {
@@ -24,9 +46,22 @@ export default defineConfig(
   {
     ignores: [
       "**/legacy/**",
-      "**/ref/**", // readonly references from other repos w .git removed
+      "**/ref/**", // readonly references
       "**/temp/**",
+      "**/build/**",
+      "**/.build/**",
     ],
+  },
+
+  // Plugins
+  {
+    plugins: {
+      local: {
+        rules: {
+          "throw-err": throw_err,
+        },
+      },
+    },
   },
 
   // Base eslint and ts rules
@@ -36,23 +71,13 @@ export default defineConfig(
   // Custom rules
   {
     rules: {
-      // do not over engineer for maximum robustness
+      // do not over engineer
       "@typescript-eslint/no-explicit-any": "off",
-      "@typescript-eslint/no-floating-promises": "error",
       "@typescript-eslint/ban-ts-comment": "off",
-      // "no-restricted-syntax": [
-      //   "error",
-      //   {
-      //     selector: "Identifier[name='undefined']",
-      //     message:
-      //       "The use of 'undefined' is forbidden. Use an alternative pattern.",
-      //   },
-      //   {
-      //     selector: "Literal[value=null]",
-      //     message:
-      //       "The use of 'null' is forbidden. Use an alternative pattern.",
-      //   },
-      // ],
+      "@typescript-eslint/no-floating-promises": "error",
+
+      // throw 'foo' has no stack trace
+      "local/throw-err": "warn",
     },
   }
 );

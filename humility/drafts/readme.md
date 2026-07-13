@@ -1,1 +1,1 @@
-researches, experiments, templates
+research, experiments, and templates
