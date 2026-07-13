@@ -287,5 +287,31 @@ Would you like help **recovering any uncommitted files** before running this, or
 
 Show all
 
-# 
+# <!-- 14 jul -->
+
+# . sh
+
+```sh
+ ~ % cd /home/fira/Projects/memoh docker
+cd: string not in pwd: /home/fira/Projects/memoh
+ ~ % cd '/home/fira/Projects/memoh docker'
+ ~/Projects/memoh docker % cp conf/app.docker.toml config.toml
+ ~/Projects/memoh docker % open config.toml
+ ~/Projects/memoh docker % docker compose up -d
+[+] up 24/24
+ ✔ Image pgvector/pgvector:pg18 Pulled                                                                                          150.5s
+ ✔ Network memoh_memoh-network  Created                                                                                         0.0s
+ ✔ Volume memoh_pgvector_data   Created                                                                                         0.0s
+ ✔ Container memoh-pgvector     Healthy                                                                                         11.6s
+ ✔ Container memoh-postgres     Healthy                                                                                         11.0s
+ ✔ Container memoh-migrate      Exited                                                                                          11.4s
+ ✔ Container memoh-server       Started                                                                                         15.4s
+ ✔ Container memoh-web          Started                                                                                         15.5s
+```
+
+seems it's much easier to deploy memoh now wo the one liner.
+
+you can copy a config and docker up. no need to edit and place files step by step. (prone to human errors. complex and unnecessary.)
+
+
 
