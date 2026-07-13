@@ -149,9 +149,9 @@ assumption: you usually work on a repo yk rather than new ones all over the inte
 
 ---
 
-organize
+export memoh. 
 
-export nickel angel, acbox new, arkloop, memoh (?, already done maybe).
+for acbox new, i could test copy paste? yeah. text itself does a lot.
 
 all (highly requested) features of github desktop
 
