@@ -1,5 +1,3 @@
-# it would make it cleaner and clearer on files, while having everything shown on code
-
 # deprecated
 legacy
 
@@ -16,8 +14,8 @@ bunfig.toml
 tsconfig.json
 
 # build
-# build should be hidden on code, not files
+# build should be hidden in ide but not files
 
-# alias
+# aliases
 AGENTS.md
 CLAUDE.md

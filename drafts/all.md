@@ -293,6 +293,7 @@ desktop:
 - shell tmux abstraction
 - power bank quirks bios low wattage screen
 - shell symlink abstraction
+- shell chmod x abstraction
 
 android:
 

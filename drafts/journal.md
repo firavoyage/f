@@ -46689,6 +46689,12 @@ c: thinking, todo <!-- reduced -->, tabs.
 
 para? 
 
+...
+
+no need to symlink docs/readme.en.md to readme.
+
+i chose this special structure as i might change the symlink. it's not true for most repos.
+
 
 
 <!-- timebox, plan. -->
