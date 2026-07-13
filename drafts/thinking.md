@@ -149,30 +149,6 @@ assumption: you usually work on a repo yk rather than new ones all over the inte
 
 ---
 
-
-
----
-
-p
-
-- todo
-- things
-
-c
-
-- thinking
-- todo
-- things
-- tabs <!-- ?! -->
-
-recent todos are moved to thinking.
-
-todo and things are not much different. just "backlog". try to merge.
-
-prefer to deprecate things. (store crazy and very unlikely to be implemented ideas. e.g. deterministic image gen)
-
----
-
 organize
 
 export nickel angel, acbox new, arkloop, memoh (?, already done maybe).

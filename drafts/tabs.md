@@ -10,6 +10,8 @@ https://github.com/moeru-ai/xsai
 
 ---
 
+github 3p ui
+
 https://github.com/ohmygit-hub/ohmygithub
 
 https://oh-my-github.app/
