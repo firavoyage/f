@@ -16,16 +16,17 @@
     "strict": true,
     // "noImplicitAny": false,
     // "strictNullChecks": false,
+
     "skipLibCheck": true,
     "types": ["node"] // not to auto-scan the disk for hidden @types packages
   },
   "include": ["**/*"],
   "exclude": [
     "**/temp",
-    "**/.dist",
-    "**/dist",
-    "**/.build",
     "**/build",
+    "**/.build",
+    "**/dist",
+    "**/.dist",
     "**/legacy",
     "**/node_modules"
   ]
