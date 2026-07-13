@@ -46665,6 +46665,8 @@ btw, seems codex does not even queue at all for concurrency. interesting. it doe
 
 <!-- upd: impressive. yuu has post maimai results, real pfp, and even the game center on twitter, but never her player name (the photo just cuts off below the name). another example is azalea, who cares, and sometimes warns about sec on tg. -->
 
+<!-- upd: a "" i could ask "like, wdyt. could it be better". but i guess the answer is yes, and the answer itself would -->
+
 18 00 simplify pm kanban. create new repo template.
 
 p: message/paste, thinking, todo, things/tabs, scratch pad.
@@ -46674,6 +46676,10 @@ im not really clear how to do...
 when would i need them. how would i read them. 
 
 an observation is, when an idea is not fulfilled, it could repeat in my mind, so as in the backlog.
+
+...
+
+currently im completely unaware of the progress (i would not check git diff of the todo history). it has pros. plain text is simple and predictable. idk if it would be better to enforce structure like todo, desc of todo, comments of a todo, and metadata like time, status, and ppl.
 
 
 
