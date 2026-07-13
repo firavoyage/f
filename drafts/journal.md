@@ -46583,7 +46583,17 @@ i made mistakes.
 
 nevertheless, i did not feel right. i thought i might have missed sth.
 
-from a practical standpoint, they are right. if their computer could not handle it, 
+from a practical standpoint, they are right. if their computer could not handle it, just have less parallel agents.
+
+but conceptually, tasks could either run in parallel or must be sequential. for example, when you want to translate to ten localizations or research what ppl say on a product on the internet, it could be simultaneous. when you want to test your backend, it must come after implementation.
+
+> 削足适履
+
+no matter where you are working on (as long as it has enough ram to run *one or a few* agents), regardless of the model or reasoning effort, it should be parallel if possible.
+
+and the number of concurrency should be based on allocated ram (e.g. you say, i have 4gb ram, and codex must take 2gb at most), rather than a reasoning effort option. 
+
+
 
 
 ```
