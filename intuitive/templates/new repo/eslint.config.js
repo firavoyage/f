@@ -48,6 +48,8 @@ export default defineConfig(
       "**/legacy/**",
       "**/ref/**", // readonly references
       "**/temp/**",
+      "**/build/**",
+      "**/.build/**",
     ],
   },
 
