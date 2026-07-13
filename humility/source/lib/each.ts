@@ -23,7 +23,7 @@ export function each(...args: number[]): IterableIterator<number> {
     end = args[1]
     step = args[2]
   } else {
-    throw invalid_args
+    throw err(invalid_args)
   }
 
   const iterate = (begin: number, end: number, step: number) => {
