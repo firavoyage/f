@@ -122,4 +122,4 @@ export async function main(yaml: string) {
   return css
 }
 
-main()
+await main()
