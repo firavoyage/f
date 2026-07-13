@@ -593,20 +593,6 @@ research terminal bench
 
 ---
 
-have. tg.
-
-(export. standardized activity pub.)
-
-https://github.com/one-among-us/tg-blog
-
-https://github.com/one-among-us/TelegramBackup
-
-https://test-tg.one-among.us/test
-
-https://aza.moe/life
-
----
-
 dl maimai dx songs.
 
 touhou. vocaloid. etc. (agent?)
@@ -647,39 +633,9 @@ any app on any design system.
 
 ---
 
-zhihu to activity pub.
+test Literature analysis
 
-comments.
-
-categories.
-
-traditional blog.
-
----
-
-https://linear.app/
-
-feels impressive. code is art.
-
-though... idk if it even beats markdown.
-
----
-
-Tools.
-
-Color contrast.
-
-Base 64.
-
-Adwaita
-
----
-
-Naval 
-
-Get rich wo getting lucky
-
-Literature analysis
+Naval: Get rich wo getting lucky
 
 ---
 
@@ -691,13 +647,39 @@ host: gnome hig, kde hig
 
 ---
 
-<!-- Activity pub spec scope -->
+have: Activity pub spec scope
 
-<!-- Zhihu auto sync, global playwright -->
+tg export. standardized activity pub.
 
-<!-- Systemd failure Notifier -->
+https://github.com/one-among-us/tg-blog
 
-<!-- Maimai web port?  -->
+https://github.com/one-among-us/TelegramBackup
+
+https://test-tg.one-among.us/test
+
+https://aza.moe/life
+
+...
+
+zhihu to activity pub.
+
+comments.
+
+categories.
+
+traditional blog.
+
+---
+
+Zhihu auto sync, global playwright
+
+---
+
+Systemd failure Notifier
+
+---
+
+Maimai web port? 
 
 ---
 
@@ -735,8 +717,10 @@ You have your design. You should hold the definitive power in your hands.
 
 app: tools
 
-constrast calc
+Color contrast.
 
-(i guess bun help does not work well)
+Base 64.
+
+Adwaita
 
 ---
