@@ -1,11 +1,13 @@
 {
-  "name": "foo_template_cli",
-  "version": "1.0.0",
+  "name": "foo",
+  "version": "0.0",
   "main": "index.js",
   "bin": {
-    "template_cli": "./index.js",
-    "template_foo": "./index.js",
-    "template_bar": "./index.js",
-    "template_bar_alias": "./index.js"
+    "foo": "./index.js",
+    "foo_alias": "./index.js"
+  },
+  "dependencies": {
+    "chalk": "^5.6.2",
+    "commander": "^14.0.3"
   }
 }

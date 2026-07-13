@@ -1,3 +1,6 @@
+// @ts-nocheck
+/* eslint-disable */
+
 import { handle, handle_best_effort } from 'lib/handle';
 
 function foo() {
