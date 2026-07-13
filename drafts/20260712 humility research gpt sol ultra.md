@@ -3098,3 +3098,154 @@ I can help you build custom code configurations to safeguard your environment ar
 
 Show all
 
+
+# <!-- 13 jul -->
+
+# (d) is it common for codex swes to spin up tens of sub agents
+
+No, it is **not common** for [OpenAI Codex](https://openai.com/index/introducing-codex/) SWE agents to spin up "tens" of sub-agents. In fact, under normal conditions, the system architecture natively restricts this behavior. [link](https://www.infoq.com/news/2025/05/openai-codex/)
+
+While Codex utilizes a parallel multi-agent orchestration architecture to handle complex developer workflows, spinning up dozens of child threads simultaneously is prevented by built-in safeguards, token economy, and strict software limits. [link](https://www.linkedin.com/pulse/you-should-using-subagents-codex-vaibhav-srivastav-yclne)
+
+### Hard Orchestration Limits
+
+Codex explicitly restricts how wide and deep its multi-agent "fan-out" can go: [link](https://www.firecrawl.dev/blog/codex-multi-agent-orchestration)
+
+- **Concurrency Capped:** By default, the system limits parallel sub-agent orchestration via the `agents.max_threads` parameter, which is **set to a default of 6**. [link](https://www.firecrawl.dev/blog/codex-multi-agent-orchestration)
+- **Nesting Blocked:** The maximum depth an agent can spawn child workflows (`agents.max_depth`) **defaults to 1**. Furthermore, sub-agents cannot spawn additional sub-agents. [link](https://www.firecrawl.dev/blog/codex-multi-agent-orchestration)
+- **Deliberate Invocation:** Codex rarely forces massive automation pipelines on its own; it typically spins up sub-agents **only when you explicitly request them** to tackle highly multi-threaded code tasks. [link](https://developers.openai.com/codex/subagents)
+
+### Why "Tens" of Sub-Agents Are Avoided
+
+Even if a developer manually adjusts the system parameters to force a massive fan-out, doing so is highly impractical for standard software engineering workflows due to several major constraints:
+
+| Constraint Factor                  | The Impact on Codex Workflows                                                                                                                                                                                                                                              |
+| ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Token Exhaustion**               | Each sub-agent functions with its own model instructions and unique tool context. Running dozens of agents concurrently will **instantly drain a Pro plan usage quota** or consume hours of compute limits in mere minutes.                                                |
+| **Context Clutter & Verification** | While sub-agents keep individual threads clean, the parent agent still has to synthesize all final output data. Managing too many moving parts frequently leads to **poor quality prompting** and high review overhead for the human engineer.                             |
+| **Diminishing Returns**            | Most real-world development tasks naturally break down into just **3 to 6 distinct roles** (e.g., an _explorer_ to read the repo, a _worker_ to write features, and a _scout_ or reviewer to test security/CI). Pushing beyond that offers little architectural advantage. |
+
+If you are looking to optimize how your engineering agent delegates tasks, I can help you **configure custom sub-agents via TOML files** or show you how to **structure parallel prompts to max out the default 6-thread limit**. Let me know what you'd like to explore next! [link](https://simonwillison.net/2026/Mar/16/codex-subagents/)
+
+- [link](https://developers.openai.com/codex/subagents)\
+  Subagents – Codex | OpenAI Developers\
+  Availability. Current Codex releases enable subagent workflows by default. Subagent activity is currently surfaced in the Codex ap...\
+  OpenAI Developers
+- [link](https://x.com/code%5Frams/status/2033702731693650088)\
+  Codex now has subagents. You can spin up multiple agents ...\
+  Mar 17, 2026 — Codex now has subagents. You can spin up multiple agents inside one Codex session, each focused on a different part of the task. O...\
+  X·code\_rams
+- [link](https://www.linkedin.com/pulse/you-should-using-subagents-codex-vaibhav-srivastav-yclne)\
+  You Should Be Using Subagents in Codex!\
+  Mar 17, 2026 — Vaibhav Srivastav. Developer Experience & Community @ OpenAI | prev… Published Mar 17, 2026. + Follow. Codex supports subagents: s...\
+  LinkedIn·Vaibhav Srivastav
+
+Show all
+
+# (d) what could they be doing when they spin up seventy sub agents on codex
+
+When a user or a model spins up **70 sub-agents simultaneously on OpenAI Codex**, they are executing a massive, highly parallel agentic workflow. This is typical when utilizing the multi-agent capabilities of [GPT-5.6 Sol](https://developers.openai.com/api/docs/guides/responses-multi-agent) to tackle massive codebases or complex tasks. [link](https://developers.openai.com/api/docs/guides/responses-multi-agent)
+
+However, seeing a number as high as 70 usually points to either **recursive workflow loops (accidental "footguns")** or **massive, distributed codebase operations**. [link](https://www.reddit.com/r/ClaudeAI/comments/1u5d02w/til%5Fclaude%5Fcode%5Fspawned%5F339%5Fsubagents%5Ffrom%5Fa/)
+
+Here is exactly what those 70 sub-agents are likely doing:
+
+### 1. High-Scale Parallel Code Operations
+
+In normal use cases, Codex coordinates specialized sub-agents (such as _workers_ and _explorers_) to perform massive, simultaneous actions across a large project: [link](https://developers.openai.com/api/docs/guides/responses-multi-agent)
+
+- **Massive Codebase Inventorying:** Mapping out thousands of files, finding shared components, and scanning for dead code or stray logs all at once. [link](https://www.youtube.com/watch?v=1XB22Jx2YXI\&t=70)
+- **Parallel Feature Testing & QA:** Simulating 70 different user interactions, writing individual unit tests for dozens of endpoints, or scanning for security vulnerabilities simultaneously. [link](https://www.newline.co/@Dipen/using-codex-subagents-to-skip-feature-testing--f449f7a7)
+- **Multi-File Refactoring:** Systematically upgrading syntax, changing variable naming conventions, or migrating packages across 70 distinct modules at the same time.
+
+### 2. A "Footgun" Recursive Agent Loop (Most Likely)
+
+If the user did not explicitly ask for 70 agents, they have likely triggered an unintended **recursive spawning chain**, which is a known hazard with GPT-5.6 models on Codex. [link](https://youmind.com/landing/x-viral-articles/gpt-5-6-sol-limits-guide)
+
+- **The Default Agent Trap:** When using a default, general-purpose agent, the parent model has access to the "Agent" spawning tool.
+- **Infinite Fan-Out:** If given a vague or massive research/coding task, the parent instance spawns sub-agents. Because sub-agents inherit the same reasoning level, tools, and parent model configurations by default, those sub-agents will autonomously spawn _their own_ sub-agents. This quickly cascades up to 5 levels deep, easily hitting 70+ running instances. [link](https://www.reddit.com/r/ClaudeAI/comments/1u5d02w/til%5Fclaude%5Fcode%5Fspawned%5F339%5Fsubagents%5Ffrom%5Fa/)
+
+### 3. Asynchronous Process Monitoring
+
+Codex uses background "supervisor" sub-agents to handle long-running, persistent processes. If a developer is running massive test suites, spinning up multiple local microservices (like `pnpm dev`), or deploying extensive infrastructure, Codex will spin up individual sub-agents to monitor each process log asynchronously so the main agent thread doesn't freeze. [link](https://medium.com/@jacobrothfield/advancing-openai-codex-from-fixing-fundamentals-to-pushing-new-frontiers-da880041d4f2)
+
+### What is the Consequence?
+
+- **Token Burn:** Running 70 sub-agents will drastically drain your token allocation or consume your daily/hourly usage limits within minutes, as each sub-agent executes its own reasoning steps. [link](https://www.reddit.com/r/OpenAI/comments/1uu2gc5/one%5Fcodex%5Ftask%5Fused%5Fover%5F70%5Fof%5Fmy%5F5hour%5Flimit%5Fin/)
+- **Context Management:** While it keeps the main thread clean of "context pollution" (like raw console logs), having 70 agents return summaries at the same time can occasionally overwhelm the master plan. [link](https://www.linkedin.com/pulse/codex-sub-agents-could-codexs-biggest-workflow-shift-julian-goldie-b5u2f)
+
+### How to Stop It (If it's Unintentional)
+
+If this was an accident and you want to prevent Codex from spiraling into dozens of agents next time, you can [Master GPT-5.6-Sol Codex Limits](https://youmind.com/landing/x-viral-articles/gpt-5-6-sol-limits-guide) by trying these fixes:
+
+1. **Restrict in AGENTS.md:** Add `only spawn subagents when I explicitly ask you to` to your global configuration file.
+2. **Lower Reasoning Levels:** Drop the model's reasoning level from "High" to "Medium" or "Low" to curb over-eager agent spawning.
+3. **Use Specific Agent Types:** Use targeted agent roles (like _Explore_ or _Plan_) instead of the general-purpose default, as they often have the sub-agent creation tool stripped out. [link](https://www.reddit.com/r/ClaudeAI/comments/1u5d02w/til%5Fclaude%5Fcode%5Fspawned%5F339%5Fsubagents%5Ffrom%5Fa/)
+
+Are you currently **building a complex multi-agent application**, or did you notice Codex **unexpectedly burning through your usage limits**? Let me know so I can provide the right optimization prompts or architecture adjustments!
+
+- [link](https://developers.openai.com/codex/subagents)\
+  Subagents – Codex | OpenAI Developers\
+  Subagent activity is currently surfaced in the Codex app and CLI. Visibility in the IDE Extension is coming soon. Codex only spawn...\
+  OpenAI Developers
+- [link](https://www.newline.co/@Dipen/using-codex-subagents-to-skip-feature-testing--f449f7a7)\
+  Using Codex Subagents to Skip Feature Testing - newline\
+  Apr 1, 2026 — Codex subagents are transforming how development teams approach feature testing by automating repetitive, time-intensive tasks. Tr...\
+  www.newline.co
+- [link](https://medium.com/@jacobrothfield/advancing-openai-codex-from-fixing-fundamentals-to-pushing-new-frontiers-da880041d4f2)\
+  Advancing OpenAI Codex: From Fixing Fundamentals to ...\
+  Sep 18, 2025 — When Codex needs to run something like pnpm dev (which doesn't exit on its own), it should spin up a “supervisor” sub-agent to han...\
+  Medium·Jacob Rothfield
+
+Show all
+
+# (d) what could they be doing when they spin up seventy sub agents on codex and they are intended to
+
+When someone spins up 70 sub-agents on OpenAI's Codex (or a similar LLM-driven multi-agent framework like AutoGen, CrewAI, or LangGraph), they are likely <mark>executing a<span> </span><strong>massively parallel multi-agent simulation or specialized task decomposition</strong></mark>.
+
+Here is what they are likely trying to accomplish:
+
+### 1. Complex Software Architecture & Engineering
+
+Instead of asking one AI to write a massive codebase, they divide the project among 70 micro-agents.
+
+- **Component-driven development**: Each agent is assigned to write, test, and document a single, highly specific API endpoint, UI component, or database schema.
+- **Specialized pipelines**: Some agents act as product managers (writing specs), some as frontend devs, some as backend devs, and others as QA testers.
+
+### 2. Large-Scale Code Auditing and Security Patching
+
+Running 70 agents simultaneously allows for rapid processing of massive repositories.
+
+- **Vulnerability scanning**: Each agent reviews a different file or module for security flaws (e.g., SQL injections, leaked API keys).
+- **Automated refactoring**: Agents can concurrently update deprecated syntax or migrate an entire legacy codebase to a modern framework.
+
+### 3. Comprehensive Competitive Analysis & Data Scraping
+
+If the agents are intended to interact with the web, they are likely gathering intelligence.
+
+- **Parallel scraping**: 70 agents can scrape 70 different documentation sites, forums, or repositories at the same time to feed a local knowledge base.
+- **Synthetic data generation**: Generating massive datasets of code examples, edge-case tests, or documentation variations.
+
+### 4. Evolutionary AI Coding (Self-Healing Code)
+
+They might be running a competitive or evolutionary simulation.
+
+- **Survival of the fittest**: 70 agents are given the exact same coding prompt. They generate 70 different solutions, run tests, and the system discards the failures while keeping the code that optimizes for execution speed and low memory usage.
+
+### 5. Multi-Agent Game or Market Simulations
+
+If the agents are "intended to" interact with each other, they are building an environment.
+
+- **Economic modeling**: Simulating how 70 different automated trading algorithms interact in a closed stock market.
+- **Social/Wargaming simulations**: Observing how 70 autonomous entities negotiate, share code resources, or solve a collaborative puzzle.
+
+***
+
+To narrow down exactly what is happening, could you share the **rest of your sentence**? Let me know:
+
+- What were they **intended to** do? (e.g., hack, build, test, simulate?)
+- What **specific framework** or project is this for?
+
+I can give you a much more precise breakdown of the technical architecture once you provide those details.
+
+# 
