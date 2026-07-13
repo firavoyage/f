@@ -24,7 +24,7 @@ export default defineConfig(
   {
     ignores: [
       "**/legacy/**",
-      "**/ref/**", // readonly references from other repos w .git removed
+      "**/ref/**", // readonly references
       "**/temp/**",
     ],
   },
@@ -36,23 +36,10 @@ export default defineConfig(
   // Custom rules
   {
     rules: {
-      // do not over engineer for maximum robustness
+      // do not over engineer
       "@typescript-eslint/no-explicit-any": "off",
-      "@typescript-eslint/no-floating-promises": "error",
       "@typescript-eslint/ban-ts-comment": "off",
-      // "no-restricted-syntax": [
-      //   "error",
-      //   {
-      //     selector: "Identifier[name='undefined']",
-      //     message:
-      //       "The use of 'undefined' is forbidden. Use an alternative pattern.",
-      //   },
-      //   {
-      //     selector: "Literal[value=null]",
-      //     message:
-      //       "The use of 'null' is forbidden. Use an alternative pattern.",
-      //   },
-      // ],
+      "@typescript-eslint/no-floating-promises": "error",
     },
   }
 );
