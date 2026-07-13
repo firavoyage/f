@@ -352,14 +352,6 @@ integrate repo w agent?
 
 ---
 
-latin.
-
----
-
-samsung galaxy ai?
-
----
-
 leisure en
 
 how to describe food in english
@@ -368,19 +360,13 @@ how to describe food in english
 
 misc
 
-sunrising and sunsetting in the real world ::heart:: the gradients in the sky be anytime anythere (proj. all)
+sunrising and sunsetting in the real world :heart: the gradients in the sky be anytime anythere (proj. all)
 
 ---
 
 grow
 
 organize sub for intentional surfing.
-
----
-
-carte:
-
-what about using grayscale colors everywhere and vivid colors only on anime characters. (what's the methodology in animation.)
 
 ---
 
@@ -413,16 +399,6 @@ research manus use cases.
 
 ---
 
-ask.
-
-...
-
-provider abstraction design.
-
-ux. (add a provider)
-
----
-
 uninteractive widgets.
 
 - math graph
@@ -437,6 +413,8 @@ research types. (maybe py lib plus google sans)
 
 ---
 
+build a pm app
+
 linear foss ui.
 
 (?)
@@ -447,20 +425,9 @@ well... i could proxy it. somehow. w a format i like.
 
 ---
 
+build a repo app
+
 github 3p ui.
-
----
-
-humility: export, reproduce, copy and paste the prompt & result, proxy.
-
----
-
-precious, [5/2/26 3:16 PM]
-Manus?
-
-(Interactive) Components.
-
-Separate style from functionality?
 
 ---
 
@@ -620,23 +587,9 @@ just
 
 ---
 
-learn jp
-
----
-
-terminal bench
+research terminal bench
 
 <!-- inadequate and incomprehensive tasks, seems -->
-
----
-
-app copy.
-
-test if intercepting would help.
-
-ref https://claude.ai/chat/90cbc5db-3e86-4509-8ef2-e09f006791b5
-
-also, style hr to `---` instead of `***`
 
 ---
 
@@ -654,12 +607,6 @@ https://aza.moe/life
 
 ---
 
-project float.
-
-"library"
-
----
-
 dl maimai dx songs.
 
 touhou. vocaloid. etc. (agent?)
@@ -674,63 +621,14 @@ crawl the web.
 
 ---
 
-alert
-
-systemd abstraction
-
-git failure
-
-repo
-
-no cli, no gui. a config. a command. that's it.
-
----
-
-repo cli
-
-repo gui.
-
-connnect the world.
-
-menci. memoh. moeditor.
-
----
-
-cli. (yet again).
-
-```
-command:
-  - method: fn # fn handles refusal and has default value
-  - options: [{flag: "-v, --version", desc}]
-  - arguments
-  - desc: string
-command command:
-  - ...
-```
-
-parse into command, args, options.
-
-call it from the map.
-
-you can create and style the help yourself. it's not always the most helpful when auto generated.
-
-you can handle the refusal yourself. a failure must be paired w an action.
-
-it's easy to take terminal width into consideration.
-
----
-
-- cli (a general template, under intuitive)
 - git (azaneko?)
 - systemd abstraction?
-- vector search
+- semantic vector search
 - tg export to knowledge
 - tg userbot x11
 - patchright (e.g. deepseek)
-- keyboard
 - nameless (mihomo by fira). <!-- web ui. btw, the backend and the frontend are two things -->
 - have (crawl the web, e.g. matrix67) <!-- the most crucial step is network. be pragmatic. like handling a few big ones like twitter, tg export. ssg (hexo, astro, etc.). for general ones fallback to, like mhtml. menci has oi.menci on github, just clone. no need to crawl. ruanyf has ruanyf weekly on github, but no idea if all articles are foss. -->
-- revise files (think and complete todo)
 - projects, other todos <!-- e.g. blog abstraction -->.
 
 ---
@@ -738,12 +636,6 @@ it's easy to take terminal width into consideration.
 tg to activitypub
 
 activitypub to something.
-
-(para)
-
----
-
-semantic search
 
 ---
 

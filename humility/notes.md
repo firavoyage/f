@@ -495,3 +495,10 @@ sometimes it starts examples directly. sometimes w a brief intro.
 (trailing question/interview mode is basically for monetization)
 
 ---
+
+ux: some possible actions
+
+humility: export, reproduce, copy and paste the prompt & result, proxy.
+
+---
+
