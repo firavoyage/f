@@ -4,6 +4,12 @@ message/paste · todo · tabs/things · scratch pad · weekly/projects · notes
 
 ---
 
+fetch llm api
+
+https://github.com/moeru-ai/xsai
+
+---
+
 https://github.com/ohmygit-hub/ohmygithub
 
 https://oh-my-github.app/
