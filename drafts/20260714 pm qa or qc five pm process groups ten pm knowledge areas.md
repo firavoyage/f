@@ -1,3 +1,47 @@
+## . pm
+
+<mark><strong><span>Project Management (PM) includes the entire lifecycle of a project, organized into 5 core process groups and 10 distinct knowledge areas</span></strong></mark> according to the Project Management Institute (PMI). It is the structural engine that takes an abstract business idea and turns it into a concrete, high-quality reality.
+
+Here is the complete blueprint of everything included in comprehensive project management:
+
+### The 5 PM Process Groups (The Project Timeline)
+
+Every project moves through these five sequential stages:
+
+1. **Initiating**: Defining the project at a high level, creating the Project Charter, identifying key stakeholders, and securing authorization to begin.
+2. **Planning**: Creating the roadmap, defining the scope, setting deadlines, estimating costs, and establishing the communication plan.
+3. **Executing**: Coordinating the team, assigning tasks, managing stakeholder expectations, and actively building the product.
+4. **Monitoring & Controlling**: Tracking progress against the plan, measuring performance metrics, managing risks, and handling quality control.
+5. **Closing**: Handing over the final product, archiving project documents, releasing team resources, and conducting a post-mortem review.
+
+***
+
+### The 10 PM Knowledge Areas (What a PM Actually Manages)
+
+To successfully run those five stages, a PM must constantly manage ten distinct moving parts:
+
+- **Scope Management**: Defining exactly what work is required—and what is not—to prevent scope creep.
+- **Schedule Management**: Estimating task durations, mapping dependencies, and managing the project calendar.
+- **Cost Management**: Budgeting, forecasting expenditures, and tracking resource costs to keep the project profitable.
+- **Quality Management**: Establishing quality standards (**QA**) and inspecting deliverables (**QC**) to prevent defects.
+- **Resource Management**: Hiring, organizing, and managing the team members, hardware, software, and physical assets needed.
+- **Communications Management**: Planning who gets what information, when they get it, and through what channel.
+- **Risk Management**: Identifying potential threats early, calculating their impact, and creating mitigation strategies.
+- **Procurement Management**: Ordering external tools, managing third-party vendor contracts, and purchasing materials.
+- **Stakeholder Management**: Aligning expectations among clients, executives, users, and internal teams.
+- **Integration Management**: Balancing all nine previous areas so they work together seamlessly as a cohesive whole.
+
+***
+
+### The Daily Toolkit: PM Artifacts & Meetings
+
+On a day-to-day level, managing these areas requires specific tools and meetings:
+
+- **Visual Timelines**: Managing Gantt charts, Kanban boards, or product roadmaps.
+- **Agile Rituals**: Running daily stand-ups, sprint planning sessions, and team retrospectives.
+- **Performance Tracking**: Reviewing burn-down charts, project dashboards, and budget trackers.
+- **Core Documentation**: Updating the Risk Register, Change Logs, and the central Project Plan.
+
 ## qa or qc
 
 <mark><strong>Quality Assurance (QA) focuses on preventing defects by improving processes, while Quality Control (QC) focuses on identifying defects in the final product through testing and inspection</strong></mark>**.** In short, QA ensures you are building the product the right way, whereas QC verifies that the finished product itself is correct. Both are critical, overlapping subparts of an organization's overall [Quality Management System (QMS)](https://www.scilife.io/blog/qa-vs-qc-top-differences).
