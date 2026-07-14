@@ -309,9 +309,373 @@ cd: string not in pwd: /home/fira/Projects/memoh
  ✔ Container memoh-web          Started                                                                                         15.5s
 ```
 
+# . evaluation
+
 seems it's much easier to deploy memoh now wo the one liner.
 
 you can copy a config and docker up. no need to edit and place files step by step. (prone to human errors. complex and unnecessary.)
 
+---
+
+well... still, idk where it's running. i dont have a --help cli or a status command.
+
+maybe it's running on the port on config.toml.
+
+8080? no. 8082.
+
+```toml
+## Service configuration
+[log]
+level = "info"
+format = "text"
+
+[server]
+addr = "server:8080"
+
+[webhook_tunnel]
+mode = "disabled"
+public_base_url = ""
+listen_addr = ":18734"
+cloudflared_path = ""
+target_url = ""
+metrics_addr = "127.0.0.1:18735"
+metrics_url = ""
+
+## Admin
+[admin]
+username = "admin"
+password = "admin123"
+email = "admin@memoh.local"
+
+## Auth configuration
+[auth]
+jwt_secret = "YZq8kXrW5dFpNt9mLxQvHbRjKsMnOePw"
+jwt_expires_in = "168h"
+
+timezone = "UTC"
+
+[database]
+# Memoh now supports PostgreSQL only.
+driver = "postgres"
+
+[container]
+# Docker Compose deployment uses the server image's embedded containerd. Do not
+# change this to "docker" inside Compose unless you also provide host-valid
+# runtime bind mounts and Docker socket access.
+backend = "containerd"
+# registry = "memoh.cn"  # Uncomment for China mainland mirror
+default_image = "memohai/workspace:debian"
+image_pull_policy = "if_not_present"
+# containerd snapshotter and CNI settings for bot workspace containers.
+snapshotter = "overlayfs"
+data_root = "/opt/memoh/data"
+runtime_dir = "/opt/memoh/runtime"
+
+## Workspace containerd configuration
+[containerd]
+# Embedded containerd socket inside the memoh-server container.
+socket_path = "/run/containerd/containerd.sock"
+namespace = "default"
+# Set to "io.containerd.kata.v2" only when the host provides Kata and KVM.
+runtime_type = "io.containerd.runc.v2"
+
+[docker]
+# Used only when [container].backend = "docker"; the official Compose stack
+# uses containerd above.
+host = ""
+
+[local]
+# Local workspaces are intended for trusted desktop builds, not the default
+# Docker Compose deployment. Keep disabled here because local commands run as
+# the server process user without container isolation.
+enabled = false
+default_workspace_parent = "~/.memoh/workspaces"
+metadata_root = ""
+allow_absolute_paths = false
+
+## Postgres configuration.
+[postgres]
+host = "postgres"
+port = 5432
+user = "memoh"
+password = "memoh123"
+database = "memoh"
+sslmode = "disable"
+
+## pgvector auxiliary index database. The main Postgres service remains the
+## relational source of truth; this separate service stores semantic seed vectors.
+[pgvector]
+enabled = true
+host = "pgvector"
+port = 5432
+user = "memoh"
+password = "memoh123"
+database = "memoh_vector"
+sslmode = "disable"
+
+[registry]
+providers_dir = "conf/providers"
+
+[supermarket]
+base_url = "https://supermarket.memoh.ai"
+
+[oauth_clients]
+config_path = "conf/oauth-clients.toml"
+
+## Web
+[web]
+host = "127.0.0.1"
+port = 8082
+```
+
+wow. impressive. how confusing it is.
+
+---
+
+admin, admin123. a bit childish.
+
+---
+
+idk why my data are kept intact. 
+
+---
+
+Version
+vv0.6.3
+49e5f3d
+
+it's definitely weird. (why two consecutive `v`)
+
+on github releases it's 0.16.0. maybe desktop rel are different.
+
+---
+
+btw, the ui hasnt changed much.
+
+selection is default. focus ring is not consistent.
+
+light mode scrollbar on dark mode.
+
+# all docker commands
+
+The **[official Docker CLI Docs](https://docs.docker.com/reference/cli/docker/)** organizes its interface into **management commands** (such as `docker container`, `docker image`) alongside traditional, direct shortcuts (like `docker run`, `docker ps`). [link](https://docs.docker.com/reference/cli/docker/)
+
+Here is the complete categorized reference guide for Docker commands. [link](https://buddy.works/tutorials/docker-commands-cheat-sheet)
+
+### Container Management
+
+- **`docker run <image>`**: Creates and starts a container from an image.
+- **`docker run -d <image>`**: Runs a container in detached background mode.
+- **`docker run -it <image> /bin/bash`**: Starts a container in interactive mode with a terminal.
+- **`docker ps`**: Lists all currently running containers.
+- **`docker ps -a`**: Lists all containers, including stopped ones.
+- **`docker stop <container>`**: Gracefully halts a running container.
+- **`docker start <container>`**: Initiates a previously stopped container.
+- **`docker restart <container>`**: Stops and immediately restarts a container.
+- **`docker kill <container>`**: Ungracefully forces a container to stop immediately.
+- **`docker rm <container>`**: Removes a stopped container from the host system.
+- **`docker rm -f <container>`**: Forces the removal of a running container.
+- **`docker pause <container>`**: Temporarily suspends all processes within a container.
+- **`docker unpause <container>`**: Resumes processes in a paused container.
+- **`docker rename <old_name> <new_name>`**: Changes the name of a container. [link](https://docs.docker.com/get-started/docker%5Fcheatsheet.pdf)
+
+### Interacting with Containers
+
+- **`docker exec -it <container> <command>`**: Runs a command inside an active container.
+- **`docker logs <container>`**: Fetches the logs of a container.
+- **`docker logs -f <container>`**: Streams live, real-time log updates.
+- **`docker cp <host_path> <container>:<path>`**: Copies files between the host and a container.
+- **`docker top <container>`**: Displays the running processes inside a container.
+- **`docker port <container>`**: Lists the port mappings for a container.
+- **`docker attach <container>`**: Attaches local standard input/output streams to a container. [link](https://www.reddit.com/r/selfhosted/comments/g3p37k/25%5Fbasic%5Fdocker%5Fcommands%5Ffor%5Fbeginners/)
+
+### Image Management
+
+- **`docker images`**: Lists all locally stored images.
+- **`docker build -t <name>:<tag> .`**: Builds an image from a Dockerfile in the current directory.
+- **`docker build --no-cache -t <name> .`**: Builds an image without utilizing cached layers.
+- **`docker pull <image>`**: Downloads an image from Docker Hub or another registry.
+- **`docker push <image>`**: Uploads a local image to a specified registry.
+- **`docker rmi <image>`**: Deletes a specific local image.
+- **`docker tag <image> <new_name>:<tag>`**: Assigns a new tag name to an existing image.
+- **`docker history <image>`**: Displays the history and build layers of an image.
+- **`docker commit <container> <new_image>`**: Creates a new image from a container's current state.
+- **`docker save -o <file.tar> <image>`**: Exports an image to a tarball archive.
+- **`docker load -i <file.tar>`**: Imports an image from a saved tarball archive. [link](https://docs.docker.com/get-started/docker%5Fcheatsheet.pdf)
+
+### Volume & Network Configuration
+
+- **`docker volume ls`**: Lists all active volumes.
+- **`docker volume create <name>`**: Creates a new persistent storage volume.
+- **`docker volume rm <name>`**: Deletes a specified storage volume.
+- **`docker network ls`**: Lists all networks configured by Docker.
+- **`docker network create <name>`**: Creates a new software-defined network.
+- **`docker network connect <network> <container>`**: Connects a running container to a network.
+- **`docker network disconnect <network> <container>`**: Disconnects a container from a specific network. [link](https://www.reddit.com/r/selfhosted/comments/g3p37k/25%5Fbasic%5Fdocker%5Fcommands%5Ffor%5Fbeginners/)
+
+### Inspection & Monitoring
+
+- **`docker inspect <name_or_id>`**: Returns detailed, low-level JSON info on any Docker object.
+- **`docker stats`**: Displays a live streaming feed of resource usage metrics.
+- **`docker diff <container>`**: Inspects changes made to files or directories on the filesystem.
+- **`docker events`**: Streams real-time events occurring on the Docker daemon engine. [link](https://buddy.works/tutorials/docker-commands-cheat-sheet)
+
+### System Clean Up
+
+- **`docker system df`**: Displays total disk space used by images, containers, and volumes.
+- **`docker image prune`**: Removes all dangling, unreferenced images.
+- **`docker system prune`**: Cleans up all unused containers, networks, images, and caches.
+- **`docker system prune -a --volumes`**: Aggressively wipes all stopped containers, unused images, and unused volumes. [link](https://docs.docker.com/get-started/docker%5Fcheatsheet.pdf)
+
+### Global & Info Commands
+
+- **`docker version`**: Displays version data for the client and server components.
+- **`docker info`**: Displays system-wide configuration information.
+- **`docker login`**: Authenticates your command line to a remote Docker registry.
+- **`docker logout`**: Log out from a designated Docker registry backend. [link](https://docs.docker.com/get-started/docker%5Fcheatsheet.pdf)
+
+***
+
+Are you attempting to troubleshoot a **specific application bug**, or would you like a customized **Docker Compose configuration example** for your environment?
+
+- [link](https://docs.docker.com/get-started/docker%5Fcheatsheet.pdf)\
+  CLI Cheat Sheet - Docker Docs\
+  Page 1. CLI Cheat Sheet. Build an Image from a Dockerfile. Build an Image from a Dockerfile without the cache. docker build -t . –...\
+  Docker Docs
+- [link](https://docs.docker.com/reference/cli/docker/)\
+  Docker Docs\
+  By default, the Docker command line stores its configuration files in a directory called .docker within your $HOME directory. Dock...\
+  Docker Docs
+- [link](https://buddy.works/tutorials/docker-commands-cheat-sheet)\
+  Docker Commands Cheat Sheet: Complete Reference\
+  Mar 2, 2026 — Table\_title: Docker Cheatsheet: Quick Command Reference Table\_content: | Command | What it does | | --- | --- | | docker ps | List...\
+  buddy.works
+
+Show all
+
+## all docker compose commands
+
+The **[official Docker Compose CLI Docs](https://docs.docker.com/reference/cli/docker/)** outline commands managed through the plugin syntax (`docker compose <command>`). Older setups might still use the legacy, hyphenated version (`docker-compose <command>`).
+
+Here is the complete categorized reference guide for Docker Compose commands.
+
+### Environment Lifecycle
+
+- **`docker compose up`**: Builds, creates, and starts all services in the foreground.
+- **`docker compose up -d`**: Starts all services in detached background mode.
+- **`docker compose up --build`**: Forces a rebuild of images before starting containers.
+- **`docker compose down`**: Stops and removes containers, networks, and images created by `up`.
+- **`docker compose down -v`**: Stops services and completely wipes associated named volumes.
+- **`docker compose start`**: Starts existing, stopped containers for the services.
+- **`docker compose stop`**: Halts running containers without removing them or their networks.
+- **`docker compose restart`**: Restarts all active or stopped services.
+- **`docker compose pause`**: Pauses all running processes within the service containers.
+- **`docker compose unpause`**: Unpauses all processes within the service containers.
+
+### Monitoring & Status
+
+- **`docker compose ps`**: Lists the status of containers related to the project.
+- **`docker compose ps -a`**: Lists all project containers, including stopped ones.
+- **`docker compose logs`**: Displays log output from all services.
+- **`docker compose logs -f <service>`**: Streams real-time, live logs for a specific service.
+- **`docker compose top`**: Displays the running processes within each service container.
+- **`docker compose images`**: Lists the local images used by the current services.
+- **`docker compose port <service> <private_port>`**: Prints the public port mapping for a service binding.
+- **`docker compose ls`**: Lists all running compose projects on the host system.
+
+### Management & Execution
+
+- **`docker compose exec <service> <command>`**: Runs an interactive command inside a running service container.
+- **`docker compose run <service> <command>`**: Spawns a one-off container to run a specific command.
+- **`docker compose build`**: Builds or rebuilds services defined with a `build` block.
+- **`docker compose build --no-cache`**: Rebuilds the service images entirely from scratch.
+- **`docker compose pull`**: Downloads the external images specified in the configuration file.
+- **`docker compose push`**: Uploads locally built images for your services to registries.
+- **`docker compose rm`**: Removes stopped service containers from the host.
+- **`docker compose kill`**: Forces running service containers to stop using a SIGKILL signal.
+
+### Validation & Utility
+
+- **`docker compose config`**: Validates and renders the final, merged `docker-compose.yml` text.
+- **`docker compose version`**: Prints the installed Compose software version information.
+- **`docker compose cp <service>:<path> <host_path>`**: Copies files between a service container and the host file system.
+- **`docker compose watch`**: Automatically monitors the host system for file changes to sync into containers.
+
+***
+
+Would you like help writing a specific **`docker-compose.yml` template** for a specific stack (like Node.js, Python, or a database setup), or are you trying to troubleshoot a **network configuration** issue?
+
+- [link](https://forums.unraid.net/topic/114415-plugin-docker-compose-manager/page/17/)\
+  \[Plugin] Docker Compose Manager - Page 17 - Plugin Support - Unraid\
+  Oct 3, 2021 — mrpops2ko Members Beta Release! This plugin installs docker compose and compose switch. Use "docker compose" or "docker-compose" f...\
+  \
+  \
+  Unraid
+- [link](https://docs.docker.com/compose/intro/compose-application-model/)\
+  How Compose works\
+  The Docker CLI lets you interact with your Docker Compose applications through the docker compose command and its subcommands. If ...\
+  \
+  \
+  Docker Docs
+- [link](https://reintech.io/blog/setting-up-docker-docker-compose-debian-12)\
+  Setting Up Docker and Docker Compose on Debian 12\
+  Jan 17, 2024 — Note the command syntax: docker compose (two words) instead of the legacy docker-compose (hyphenated). The plugin integrates direc...\
+  \
+  Reintech.io
+
+Show all
+
+# . test version quirk
+
+```sh
+ ~ % cd /home/fira/Projects/memoh docker
+cd: string not in pwd: /home/fira/Projects/memoh
+ ~ % cd '/home/fira/Projects/memoh docker'
+ ~/Projects/memoh docker % cp conf/app.docker.toml config.toml
+ ~/Projects/memoh docker % open config.toml
+ ~/Projects/memoh docker % docker compose up -d
+[+] up 24/24
+ ✔ Image pgvector/pgvector:pg18 Pulled                                                                                          150.5s
+ ✔ Network memoh_memoh-network  Created                                                                                         0.0s
+ ✔ Volume memoh_pgvector_data   Created                                                                                         0.0s
+ ✔ Container memoh-pgvector     Healthy                                                                                         11.6s
+ ✔ Container memoh-postgres     Healthy                                                                                         11.0s
+ ✔ Container memoh-migrate      Exited                                                                                          11.4s
+ ✔ Container memoh-server       Started                                                                                         15.4s
+ ✔ Container memoh-web          Started                                                                                         15.5s
+ ~/Projects/memoh docker % docker compose up -d
+[+] up 5/5
+ ✔ Container memoh-pgvector Healthy                                                                                               1.2s
+ ✔ Container memoh-postgres Healthy                                                                                               0.5s
+ ✔ Container memoh-server   Running                                                                                               0.0s
+ ✔ Container memoh-web      Running                                                                                               0.0s
+ ✔ Container memoh-migrate  Exited                                                                                                0.6s
+ ~/Projects/memoh docker % docker compose down
+[+] down 6/6
+ ✔ Container memoh-web         Removed                                                                                           10.2s
+ ✔ Container memoh-server      Removed                                                                                           13.7s
+ ✔ Container memoh-pgvector    Removed                                                                                           0.1s
+ ✔ Container memoh-migrate     Removed                                                                                           0.0s
+ ✔ Container memoh-postgres    Removed                                                                                           0.1s
+ ✔ Network memoh_memoh-network Removed                                                                                           0.1s
+```
+
+# . result
+
+wow. 10s docker default. hope you enjoy it.
+
+---
+
+This site can’t be reachedlocalhost refused to connect.
+
+yes. it is this docker that is running. 
+
+test done. 
+
+---
+
+i guess i could test comprehensively tomorrow w screen recording.
+
+(and note taking)
 
 
