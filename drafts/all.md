@@ -728,6 +728,7 @@ repo: <!-- init, clone, save/checkpoint, sync, restore -->
 - research git commands checkpoint restore
 - research git symlink cross platform compatibility
 - research git two separate tracking folders init bare gitdir worktree <!-- for agentic auto checkpoint before and after each tool call -->
+- plan
 
 glaze:
 
