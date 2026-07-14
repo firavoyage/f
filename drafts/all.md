@@ -54,6 +54,7 @@ fira:
 - information architecture
 - foss failure patterns
 - settings progressive disclosure over advanced kde hig vlc chromium firefox samsung one ui vscode
+- qa or qc five pm process groups ten pm knowledge areas
 
 life:
 
@@ -368,6 +369,7 @@ pm:
 - over engineering hacker ethics aesthetics
 - stable or volatile workload feeling vibe coding efficiency paradox translation theory
 - grill me
+- qa or qc five pm process groups ten pm knowledge areas
 
 gamedev:
 

@@ -46683,7 +46683,7 @@ currently im completely unaware of the progress (i would not check git diff of t
 
 ...
 
-c: thinking, todo <!-- reduced -->, tabs.
+c: thinking <!-- sometimes in journal for permanency -->, todo <!-- reduced -->, tabs.
 
 21 00 create new repo template. revise docs of bun root cli.
 
