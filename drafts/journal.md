@@ -46850,9 +46850,17 @@ you plan. you create tickets. you build things and make progress.
 
 let's see what strategies i could adopt, rather than methodologies. <!-- ive already known (some of) them i guess. but i could have more confidence to have them applied. -->
 
-plan, focus, and timebox. 
+be organized. have p
 
-03 20 watch world cup stream, fr v es.
+focus and timebox.
+
+<!-- record, organize, and priorize.
+
+plan, focus, and timebox.  -->
+
+03 20 watch world cup stream, fr v es. 05 00
+
+<!-- control and possess -->
 
 04 00 think.
 

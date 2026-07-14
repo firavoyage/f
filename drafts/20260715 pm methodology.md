@@ -572,5 +572,219 @@ If you are trying to benchmark your own organization, tell me:
 
 Show all
 
+# (?) is scrumban a merge of pm methodology scrum and kanban
+
+<mark><strong><span>Yes</span></strong>, Scrumban is a hybrid project management framework that merges Scrum and Kanban</mark>. It was originally designed as a transition tool to help teams move from Scrum to Kanban, but it evolved into its own distinct methodology.
+
+### Core Elements of the Hybrid
+
+Scrumban blends the structure of Scrum with the flexibility and continuous flow of Kanban.
+
+- **From Scrum**: It retains meetings (planning, daily standups, retrospectives), defined roles (though often relaxed), and the focus on a clean product backlog.
+- **From Kanban**: It adopts continuous workflow (no rigid sprints), visual boards, and **Work-In-Progress (WIP) limits** to prevent team burnout.
+
+### Key Differences at a Glance
+
+- **Scheduling**: Scrum uses fixed 1-4 week sprints. Kanban is fully continuous. **Scrumban uses pull-based planning**, triggering a planning session only when the task board runs low.
+- **Metrics**: Scrum measures Velocity (story points per sprint). Kanban and Scrumban measure **Cycle Time** (how long a single task takes from start to finish).
+- **Roles**: Scrum requires strict roles (Scrum Master, Product Owner). **Scrumban makes roles optional**, allowing the team to self-organize based on demand.
+
+### Best Used For
+
+Scrumban is ideal for fast-paced environments like **product maintenance, help desks, or creative agencies** where priorities shift daily, making fixed Scrum sprints impossible to maintain.
+
+If you are considering implementing this framework, let me know:
+
+- What **type of project** your team is managing?
+- What **pain points** you are currently facing with Scrum or Kanban?
+
+I can help you build a custom **Scrumban board layout** or planning strategy for your team.
+
+- [link](https://www.atlassian.com/agile/project-management/scrumban)\
+  Scrumban\
+  In this guide, we'll explain what Scrumban is, the types of projects it's suitable for, and who can make the most of its hybrid ap...\
+  \
+  Atlassian
+- [link](https://clickup.com/blog/scrumban/)\
+  Scrumban Methodology: How to Implement (Examples & Templates)\
+  Oct 3, 2024 — Scrumban is a project management framework that combines the best principles and tools of Scrum and Kanban. It retains Kanban's vi...\
+  \
+  \
+  ClickUp
+- [link](https://www.proofhub.com/articles/kanban-vs-scrum)\
+  Kanban vs Scrum: The Real Differences You Need to Know\
+  Jul 4, 2025 — Scrumban is the conjunction of both Kanban and Scrum.\
+  \
+  \
+  ProofHub
+
+Show all
+
+## why sprints
+
+Teams choose to use sprints because <mark>they break large, complex projects into manageable blocks of time</mark>. This structure provides predictability, focus, and frequent opportunities to course-correct.
+
+### Why Teams Use Sprints
+
+- **Frequent Feedback**: Shipping working software every 1 to 4 weeks allows stakeholders to see progress and request changes early, reducing the risk of building the wrong thing.
+- **Maintained Focus**: The team commits to a fixed set of tasks and blocks out external distractions for the duration of the sprint.
+- **Predictable Velocity**: Running regular timeboxes helps teams measure exactly how much work they can complete, making future release dates easier to forecast.
+- **Regular Improvement**: Every sprint ends with a retrospective meeting, allowing the team to quickly identify and fix process bottlenecks.
+- **Risk Reduction**: If a sprint fails or priorities completely shift, the maximum wasted effort is limited to just that single timebox.
+
+### When to Skip Sprints (and Choose Scrumban/Kanban)
+
+While sprints work well for product development, they fail when work is unpredictable. You should avoid sprints if:
+
+- **Interrupt-driven work**: Help desks, IT support, or emergency bug-fixing teams cannot commit to a 2-week plan because new emergencies arrive daily.
+- **Uneven task sizes**: If tasks cannot be easily broken down into pieces that fit inside a single sprint, the timebox becomes an administrative hurdle.
+
+If you are trying to decide if sprints are right for your team, let me know:
+
+- What is the **nature of your incoming work** (planned projects or random requests)?
+- How often do your **stakeholders change their minds**?
+
+I can help you determine if a **sprint-based** or **flow-based** model fits your workflow best.
+
+- [link](https://www.teamwork.com/glossary/agile-sprint/)\
+  What is an Agile sprint?\
+  Aug 31, 2023 — An Agile ( Agile methodologies ) sprint, within the context of the Agile ( Agile methodologies ) framework, is a short, time-boxed...\
+  \
+  \
+  Teamwork.com
+- [link](https://medium.com/@concisesoftware/everything-you-need-to-know-about-sprints-in-project-management-4b378a7eb83f)\
+  Everything you need to know about Sprints in project management\
+  Sep 10, 2019 — What are Sprints? Teams that follow the Scrum framework build products in a series of iterations that break down large and complic...\
+  \
+  \
+  Medium
+- [link](https://superthread.com/features/sprints/)\
+  Sprints Feature for Teams\
+  Sprints are turned on per-team. Teams that don't need sprints never need to see them. Even within a team, some people can use spri...\
+  \
+  \
+  Superthread
+
+Show all
+
+## what is a sprint. what is a sprint for. what if wo sprints
+
+### What Is a Sprint?
+
+A sprint is <mark>a<span> </span><strong>fixed period of time</strong>—typically 1 to 4 weeks—during which a team completes a specific set of work</mark>. It is the core building block of the Scrum framework. Once a sprint begins, its duration is locked, and a new sprint starts immediately after the previous one ends.
+
+### What Is a Sprint For?
+
+A sprint acts as a **forcing function for focus and delivery**. Its main purposes are to:
+
+- **Create a Deadline**: Short timeboxes prevent procrastination and keep the team moving forward.
+- **Deliver Working Value**: The goal is always to finish a usable, potentially shippable product increment by the end of the sprint.
+- **Stabilize Priorities**: It protects the team from outside distractions by locking in the goal for those few weeks.
+
+### What If You Go Without Sprints? (No Sprints)
+
+If you remove sprints, you transition to a **continuous flow model** (like pure Kanban). Here is what changes:
+
+- **The Good**: You gain maximum flexibility. You can change priorities at any moment, pull in new tasks immediately, and ship code as soon as it is ready rather than waiting for a sprint review.
+- **The Bad**: You risk losing structure. Without the boundaries of a sprint, projects can suffer from "scope creep," deadlines can blur, and teams can burn out because there is no clear "finish line" or pause for reflection.
+
+If you want to try working without sprints, let me know:
+
+- How do you **measure team success** right now?
+- How do you currently **communicate release dates** to stakeholders?
+
+I can show you how to set up **Work-In-Progress (WIP) limits** to keep your team focused without using sprints.
+
+- [link](https://worldofagile.com/blog/what-is-a-sprint/)\
+  What is a Sprint?\
+  What is a Sprint? The sprint is a “timeboxed” effort; that is, it is restricted to a specific duration. Once agreed, the timelines...\
+  \
+  \
+  World Of Agile
+- [link](https://www.lagosdataschool.com/what-is-a-sprint-in-scrum-everything-you-need-to-know/)\
+  What Is a Sprint in Scrum? Everything You Need to Know\
+  Jun 5, 2026 — Furthermore, it ( A sprint ) lasts between one and four weeks. Also, the team commits to a specific goal at the start of every spr...\
+  \
+  \
+  Lagos Data School
+- [link](https://vibe.us/blog/sprint-planning-meetings/?srsltid=AfmBOoqy9fEtEUAav0novzrIOR05CysedFfx%5FnsUckfsEvFogfQGyB%5F4)\
+  Sprint Planning: What It Is, How to Run It, and Best Practices (2026)\
+  Jun 22, 2026 — Think of it ( A sprint ) as a focused, time-bounded unit of work: the team commits to a specific goal, executes against it, and th...\
+  \
+  \
+  Vibe Inc
+
+Show all
+
+## how to sprint
+
+To run an effective sprint, you need to follow a structured loop of five repeatable steps.
+
+### 1. Establish Your Infrastructure
+
+Before starting, you must set up the foundation for your team.
+
+- **Determine Sprint Length**: Choose a fixed timeframe, usually 2 weeks. Never change this mid-sprint.
+- **Build a Backlog**: Create a centralized, prioritized list of all project tasks and user stories.
+- **Define "Done"**: Establish a strict checklist (e.g., coded, tested, reviewed) that a task must meet to be considered complete.
+
+### 2. Plan the Sprint (Sprint Planning)
+
+Hold a meeting on day one of the sprint to align the team on the upcoming workload.
+
+- **Set a Sprint Goal**: Write a single sentence explaining the overarching value you will deliver.
+- **Forecast Capacity**: Calculate how many hours or story points the team can realistically complete.
+- **Pull and Commit**: Move the highest-priority tasks from the backlog into the sprint until capacity is full.
+
+### 3. Execute and Align (Daily Standups)
+
+Keep the team synchronized through daily, 15-minute sync meetings.
+
+- **Track the Board**: Use a visual board with columns like _To Do_, _In Progress_, and _Done_.
+- **Answer Three Questions**: Each member shares what they did yesterday, what they will do today, and any roadblocks.
+- **Protect the Scope**: Deny any new feature requests from outside stakeholders until the next sprint planning session.
+
+### 4. Demonstrate Value (Sprint Review)
+
+Gather stakeholders on the final day of the sprint to show real progress.
+
+- **Live Demo**: Show off only the working, fully completed product increments. Do not show unfinished work.
+- **Gather Feedback**: Collect immediate user and stakeholder reactions to inform future sprint planning.
+
+### 5. Inspect and Adapt (Sprint Retrospective)
+
+Before starting the next sprint, hold a private team meeting to improve your processes.
+
+- **Analyze the Cycle**: Discuss what went well, what went wrong, and why certain tasks were not finished.
+- **Commit to Action**: Pick one or two concrete workflow improvements to implement immediately in the next sprint.
+
+If you are ready to kick off your first sprint, let me know:
+
+- What **software tool** are you using (Jira, Trello, Asana, etc.)?
+- How many **team members** are participating?
+
+I can give you a **step-by-step agenda** with exact time limits for your very first Sprint Planning meeting.
+
+- [link](https://dovetail.com/product-development/sprint-planning/)\
+  Sprint Planning 101: Overview, Examples, & FAQs\
+  Mar 22, 2023 — Each sprint encompasses five steps that are important to current and future sprints.\
+  \
+  \
+  Dovetail
+- [link](https://staragile.com/blog/zero-sprint-in-agile)\
+  What is Zero Sprint in Agile? Why Do you Use Scrum Sprint 0\
+  Dec 1, 2021 — Enter the Zero Sprint – a concept that may sound unusual but plays a crucial role in setting the stage for success. This sprint is...\
+  \
+  \
+  StarAgile
+- [link](https://www.shakebugs.com/blog/sprint-planning-guide/)\
+  Sprint planning: what, who, when, and how\
+  Aug 31, 2022 — That's why it ( Sprint planning ) 's important to build a strong foundation for your team's sprint at the outset.\
+  \
+  \
+  www.shakebugs.com
+
+Show all
+
 # 
 
