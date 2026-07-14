@@ -68,6 +68,8 @@ solutionism? not necessarily.
 
 as simple as a tendency to appear cute and as easy as "flipping" on a whim <!-- once you get the med -->
 
+<!-- you dont transition. you flip. -->
+
 personal pref
 
 ...
