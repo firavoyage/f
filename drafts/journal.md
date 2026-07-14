@@ -46701,7 +46701,7 @@ tbh i dont even know what "repo" even is. why it sits on `humility/source/backen
 
 14
 
-18 00 code review `sheepbox8646/page`. open an issue.
+18 00 code review `sheepbox8646/page`. open an issue. 18 40
 
 ``````md
 Fix broken tests
@@ -46710,7 +46710,7 @@ glad youve updated your personal site, from a blog wo content, to a sns landing 
 
 i found this update when i were about to do something related to github (inspired by refray, and eventually, oh my github), and as an example, your profile came to my mind.
 
-the codebase is simple. ive done a brief code review to all your commits and all file states (except the generated pnpm lock).
+the codebase is simple. ive done a brief code review to all your commits and all files (except the generated pnpm lock).
 
 current:
 
@@ -46781,10 +46781,13 @@ one thing is,
   })
 ```
 
-"own brand color" is ambiguous. it's clear that they are not *their* brand colors. instead it means "unique" or "dedicated". as an amateur ui designer idk how they are generated or if they fit, but ik hex is deprecated and oklch should take over.
+"own brand color" is ambiguous. it's clear that they are not *their* brand colors. instead it means "unique" or "dedicated". as an amateur ui designer idk how they are generated or if they fit, but ik hex is deprecated and oklch should take over. and, were i you, i would prefer the twitter icon over x.
 
 btw, it's always in light mode regardless of browser theme. idk if it's intended.
 ``````
+
+idk github badges are good. checkout some early achievements of acbox.
+
 
 
 <!-- timebox, plan. -->
