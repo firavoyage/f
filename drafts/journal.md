@@ -46820,6 +46820,10 @@ another thing is, i would need a page like that. and i would adopt it. and human
 
 <!-- see berryberry as an example. piliplus is popular, which ports user badges, platform specific decorations, and algorithmic recommendation natively. i use bilimiao anyway. an infomation consumption app should be platform agnostic, and flutter (or md3), while popular in foss android community, ironically, is not ideal for power users. -->
 
+...
+
+it's meant to be customized. i would definitely pivot into "merge requests", though "pr" would still be the default.
+
 15
 
 02 00 check world cup time.
@@ -46866,7 +46870,9 @@ you absolutely have priority however you do. you will think and plan. you will k
 
 it _would_ be project specific.
 
-<!-- i would generally write journal and thinking. but while working, i would have project specific todo/changes. -->
+<!-- i would generally write journal and thinking. but while working, i would have project specific todo/changes. as a solo dev wip limit is one, the item of top priority. importance/urgency doesnt matter, it's either in scope or out of scope. -->
+
+<!-- btw, it's inspiring how azalea writes commit msgs. -->
 
 03 20 watch world cup stream, fr v es. 05 00
 
