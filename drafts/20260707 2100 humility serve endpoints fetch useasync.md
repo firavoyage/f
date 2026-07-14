@@ -3813,3 +3813,16 @@ If you are looking to secure your own server against unexpected traffic spikes, 
 
 # 
 
+# . thinking
+
+to be simple and serverless, i would not dynamic load.
+
+i would have one file to dl (or let user upload). and i would cache in idb.
+
+i do not have to parse in idb later. it's fast and key value based.
+
+indexing algorithms are proven.
+
+network time could not be reduced. native js, binary stream, sqlite, jsonl, they are basically parsing methods. they do not matter. just choose the simplest method of minimal parsing time. (they could be achieved at the same time with ease)
+
+
