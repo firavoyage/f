@@ -709,6 +709,7 @@ rhetoric:
 - man fucking eight billion ppl at once
 - texting acronyms wdyt wdym wyd tbh imo lmk idk iykyk
 - catch twenty two
+- kids are dangerous
 
 laws:
 
