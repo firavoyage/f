@@ -46850,13 +46850,23 @@ you plan. you create tickets. you build things and make progress.
 
 let's see what strategies i could adopt, rather than methodologies. <!-- ive already known (some of) them i guess. but i could have more confidence to have them applied. -->
 
-be organized. have p
+**be explicit and organized. focus and timebox.**
 
-focus and timebox.
+<!-- 
 
-<!-- record, organize, and priorize.
+record, organize, and priorize.
 
-plan, focus, and timebox.  -->
+plan, focus, and timebox. 
+
+...
+
+you absolutely have priority however you do. you will think and plan. you will know the details.
+
+-->
+
+it _would_ be project specific.
+
+<!-- i would generally write journal and thinking. but while working, i would have project specific todo/changes. -->
 
 03 20 watch world cup stream, fr v es. 05 00
 
