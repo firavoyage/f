@@ -24,6 +24,8 @@ https://github.com/ohmygit-hub/ohmygithub/graphs/contributors
 
 https://www.producthunt.com/products/oh-my-github
 
+/home/fira/Projects/ohmygithub/packages/ui
+
 ---
 
 have

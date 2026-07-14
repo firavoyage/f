@@ -46792,6 +46792,16 @@ idk github badges are good. checkout some early achievements of acbox.
 
 well... at the end of the day i dont quite feel i like kids. precious... but a bit boring <!-- yet another typical mtf swe -->. and kids, i mean, are reckless, easily gravitated by impulses, like candies and new frnds.
 
+<!-- maybe i would not have to say if i hate or appreciate someone. ppl are nuanced, so is my impression. and there are not really so many ppl in the world, at the end of the day, and i would cherish them. -->
+
+20 20 think.
+
+how you would call it.
+
+what is it
+
+how is it <!-- adjectives -->
+
 
 
 <!-- timebox, plan. -->
