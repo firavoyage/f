@@ -46790,7 +46790,7 @@ idk github badges are good. checkout some early achievements of acbox.
 
 19 00 read acbox memories. 19 40
 
-well... at the end of the day i dont quite feel i like kids. 
+well... at the end of the day i dont quite feel i like kids. precious... but a bit boring <!-- yet another typical mtf swe -->. and kids, i mean, are reckless, easily gravitated by impulses, like candies and new frnds.
 
 
 

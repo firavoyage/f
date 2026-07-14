@@ -28,7 +28,17 @@ https://www.producthunt.com/products/oh-my-github
 
 have
 
+/home/fira/Projects/have acbox
 
+file:///home/fira/Downloads/AyuGram%20Desktop/ChatExport_2026-05-11%20daylily/messages.html
+
+file:///home/fira/Downloads/AyuGram%20Desktop/ChatExport_2026-04-01%20acbox/messages.html
+
+file:///home/fira/Downloads/AyuGram%20Desktop/ChatExport_2026-05-04%20acbox%20apr/messages.html#go_to_message7530
+
+file:///home/fira/Downloads/AyuGram%20Desktop/ChatExport_2026-04-01%20acbox%20channel/messages.html
+
+file:///home/fira/Downloads/AyuGram%20Desktop/ChatExport_2026-06-23%20acbox%20channel%20may%20jun/messages.html
 
 ---
 
