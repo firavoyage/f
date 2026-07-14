@@ -46699,6 +46699,49 @@ i chose this special structure as i might change the symlink. it's not true for 
 
 tbh i dont even know what "repo" even is. why it sits on `humility/source/backend`. it should be a script, or a standalone tool.
 
+14
+
+18 00 code review `sheepbox8646/page`. open an issue.
+
+``````md
+Fix broken tests
+
+glad youve updated your personal site, from a blog wo content, to a sns landing page.
+
+i found this update when i were about to do something related to github (inspired by refray, and eventually, oh my github), and as an example, your profile came to my mind.
+
+the codebase is simple. ive done a brief code review to all your commits and all file states (except the generated pnpm lock).
+
+current:
+
+on `src/App.test.ts`
+
+```ts
+  it('introduces Acbox with the requested description', () => {
+    const wrapper = mount(App)
+
+    expect(wrapper.get('h1').text()).toBe('Acbox')
+    expect(wrapper.text()).toContain(
+      '📦神秘纸箱 · Developer · 希望能成为一个幸福的孩子',
+    )
+  })
+```
+
+on `src/App.vue`
+
+```html
+      <div class="intro">
+        <h1 id="profile-name">Acbox</h1>
+        <p>Developer · Open Source · 小箱子</p>
+      </div>
+```
+
+obviously the test could not pass.
+
+
+
+btw, it's always in light mode regardless of browser theme. idk if it's intended.
+``````
 
 
 <!-- timebox, plan. -->
