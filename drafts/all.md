@@ -681,6 +681,7 @@ society: <!-- sociology -->
 - asians calm western black laugh
 - jp jirai kei monster energy
 - trans neko association
+- non binary wo med or surgery
 
 rhetoric:
 

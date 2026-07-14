@@ -46810,6 +46810,16 @@ how you would do
 
 ...
 
+would it be identical and purely perf optimization.
+
+<!-- it's definitely specific, not easily reduced to or derived from "all scope decisions" or "all approaches". -->
+
+i guess no. it would be a challenge. and challenges are exciting to humans, esp young ppl. and as a drop in replacement it would have no friction. but it would be tedious, for both fe rev engineering (identical) and perf engineering.
+
+another thing is, i would need a page like that. and i would adopt it. and humans are inherently opinionated.
+
+see berryberry as an example. piliplus is popular, which ports user badges, platform specific decorations, and algorithmic recommendation natively. i use bilimiao anyway. an infomation consumption app should be platform agnostic, and flutter (or md3), while popular in foss android community, ironically, is not ideal for power users.
+
 
 
 <!-- timebox, plan. -->
