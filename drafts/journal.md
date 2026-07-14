@@ -46824,6 +46824,26 @@ another thing is, i would need a page like that. and i would adopt it. and human
 
 02 00 check world cup stream time, fr v es.
 
+02 40 think.
+
+profile.
+
+repo.
+
+commits.
+
+contributors.
+
+file.
+
+diff.
+
+...
+
+methodology doesnt matter. <!-- esp for solo swe -->
+
+you plan. you create tickets. you build things and make progress.
+
 
 
 <!-- timebox, plan. -->
