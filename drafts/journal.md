@@ -46846,6 +46846,12 @@ you plan. you create tickets. you build things and make progress.
 
 03 20 watch world cup stream, fr v es.
 
+04 00 think.
+
+i could research more.
+
+the purpose of refray is clear. multi remote, dual way syncing, not just code <!-- ? -->.
+
 
 
 <!-- timebox, plan. -->
