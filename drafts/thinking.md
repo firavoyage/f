@@ -163,4 +163,12 @@ scope. <!-- i might not need grill me. i could think myself. -->
 
 ---
 
+memoh qa first.
+
+oh my github uses its ui.
+
+and it's predictable time.
+
+<!-- in math problem solving, you should write it first if you know a case is to be disposed briefly, and dedicate full focus to the rest of the problem. -->
+
 
