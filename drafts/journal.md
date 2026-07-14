@@ -46798,9 +46798,17 @@ well... at the end of the day i dont quite feel i like kids. precious... but a b
 
 how you would call it.
 
-what is it
+what is it <!-- why would i create it -->
 
 how is it <!-- complement -->
+
+what you would do
+
+how you would do
+
+<!-- it sounds simple. but at first i was thinking about words like features usage. thanks to question words, it's now orthogonal and complete -->
+
+...
 
 
 
