@@ -46844,6 +46844,14 @@ methodology doesnt matter. <!-- esp for solo swe -->
 
 you plan. you create tickets. you build things and make progress.
 
+<!-- not that simple. you can leverage thinking. there is sth you can do. -->
+
+...
+
+let's see what strategies i could adopt, rather than methodologies. <!-- ive already known (some of) them i guess. but i could have more confidence to have them applied. -->
+
+plan, focus, and timebox. 
+
 03 20 watch world cup stream, fr v es.
 
 04 00 think.
@@ -46851,6 +46859,16 @@ you plan. you create tickets. you build things and make progress.
 i could research more.
 
 the purpose of refray is clear. multi remote, dual way syncing, not just code <!-- ? -->.
+
+04 00 open a pr on refray to fix a typo.
+
+```
+fix typo "becasue"
+
+> Created becasue github is so unusable and [unreliable](https://red-squares.cian.lol/) and I want to leave, but I don't want to leave the community behind.
+
+Created because github is so unusable and [unreliable](https://red-squares.cian.lol/) and I want to leave, but I don't want to leave the community behind.
+```
 
 
 
