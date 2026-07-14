@@ -46736,9 +46736,52 @@ on `src/App.vue`
       </div>
 ```
 
-obviously the test could not pass.
+obviously the test would not pass.
 
+expected:
 
+be consistent
+
+observation:
+
+Commit 9904152 has msg `update` instead of conventional commit, so it's likely human written.
+
+it can be wise <!-- to change `📦神秘纸箱 · Developer · 希望能成为一个幸福的孩子` to `Developer · Open Source · 小箱子` --> as `希望` might imply some unpleasant rle and `幸福的孩子` might feel naive and a bit too optimistic or anime <!-- fantasy --> styled. the updated text feels more professional.
+
+proposal:
+
+either make the testing consistent or just <!-- abolish acbox --> abolish testing.
+
+you could also safely ignore it. frontend testing is fundamentally flawed imho, as frontend code is already self explanatory, and there is no any hidden logic for testing to make sense.
+
+rationale for abolishing testing:
+
+not only it can be meaningless, it reveals vibe coding patterns, e.g. `with the requested description`, `to the requested address`.
+
+one thing is, 
+
+```ts
+  it('gives every platform icon its own brand color', () => {
+    const wrapper = mount(App)
+
+    expect(wrapper.get('[aria-label="GitHub"]').classes()).toContain(
+      'social-github',
+    )
+    expect(wrapper.get('[aria-label="X"]').classes()).toContain('social-x')
+    expect(wrapper.get('[aria-label="Telegram"]').classes()).toContain(
+      'social-telegram',
+    )
+    expect(wrapper.get('[aria-label="Email"]').classes()).toContain(
+      'social-email',
+    )
+    expect(styles).toContain('color: #64727e;')
+    expect(styles).toContain('color: #5b6873;')
+    expect(styles).toContain('color: #6c9fb3;')
+    expect(styles).toContain('color: #83939f;')
+  })
+```
+
+"own brand color" is ambiguous. it's clear that they are not *their* brand colors. instead it means "unique" or "dedicated". as an amateur ui designer idk how they are generated or if they fit, but ik hex is deprecated and oklch should take over.
 
 btw, it's always in light mode regardless of browser theme. idk if it's intended.
 ``````
