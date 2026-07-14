@@ -46818,7 +46818,7 @@ i guess no. it would be a challenge. and challenges are exciting to humans, esp 
 
 another thing is, i would need a page like that. and i would adopt it. and humans are inherently opinionated.
 
-see berryberry as an example. piliplus is popular, which ports user badges, platform specific decorations, and algorithmic recommendation natively. i use bilimiao anyway. an infomation consumption app should be platform agnostic, and flutter (or md3), while popular in foss android community, ironically, is not ideal for power users.
+<!-- see berryberry as an example. piliplus is popular, which ports user badges, platform specific decorations, and algorithmic recommendation natively. i use bilimiao anyway. an infomation consumption app should be platform agnostic, and flutter (or md3), while popular in foss android community, ironically, is not ideal for power users. -->
 
 
 
