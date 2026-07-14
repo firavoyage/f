@@ -429,6 +429,7 @@ linguistics: <!-- grammar, etymology -->
 - rem acu tetigisti roman history latin greek
 - infer or imply asymmetric
 - might could world should must past tense
+- syntactic functions part of speech
 
 literature:
 
