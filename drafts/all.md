@@ -371,6 +371,7 @@ pm:
 - stable or volatile workload feeling vibe coding efficiency paradox translation theory
 - grill me
 - qa or qc five pm process groups ten pm knowledge areas
+- pm methodology
 
 gamedev:
 
