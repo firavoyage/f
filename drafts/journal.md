@@ -46920,6 +46920,16 @@ anyway just keep it simple <!-- take the easy way out -->.
 
 now it's updated, one click pow based dl of all versions <!-- w or wo vid, cached (it seems) --> <!-- upd: yes. it's on cdn, and resumes perfectly. though the vibed frontend is still quirky (native alert when state change upon captcha refresh, inherently inconsistent ui) and philistine. -->, no captcha or qq group bot verification required.
 
+16
+
+01 40 think.
+
+just call it purpose. what you does reflects 
+
+<!-- i might have purpose.yaml in the future. -->
+
+not journal or timeline. not changes.
+
 
 
 <!-- timebox, plan. -->
