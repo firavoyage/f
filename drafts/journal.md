@@ -46918,7 +46918,7 @@ anyway just keep it simple <!-- take the easy way out -->.
 
 20 20 download all songs for astro dx from awmc.cc. format and import. 21 20
 
-now it's updated, one click pow based dl of all versions <!-- w or wo vid, cached (it seems) -->, no captcha or qq group bot verification required.
+now it's updated, one click pow based dl of all versions <!-- w or wo vid, cached (it seems) --> <!-- upd: yes. it's on cdn, and resumes perfectly. though the vibed frontend is still quirky (native alert when state change upon captcha refresh, inherently inconsistent ui) and philistine. -->, no captcha or qq group bot verification required.
 
 
 
