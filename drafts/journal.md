@@ -46938,7 +46938,7 @@ for free, on bbc iplayer. <!-- the proxy is effectively hk though on google -->
 
 it's not login free, but the ux is sophisticated, colorful and stylish images, helpful messages.
 
-"age" "non binary" "do you have a license? it's the law." <!-- i did not expect a proof less pass through. -->
+"age" "non binary" "postcode" "do you have a tv license? it's the law." <!-- i did not expect a proof less pass through. i was about to click "i do not have one", but i guess it would be free (the geq optimal transition function) if i just say i do have and close the tab if anything gets in my way. -->
 
 the player is also meticulously designed. look at the icons, the ixd, and the colors.
 
@@ -46946,11 +46946,17 @@ the player is also meticulously designed. look at the icons, the ixd, and the co
 
 it can fullscreen as expected when it's already fullscreen.
 
-the narrative is calm and clinical <!-- as well as the ui widgets. low chroma colors (23 off black and 95 off white, desaturated lime accent of oklch(57% 0.08 189.42)), skeumophic light from above, no country flags. low opacity bbc watermark. -->. less dramatic than fox. seems more .
+the narrative is calm and clinical <!-- as well as the ui widgets. low chroma colors (23 off black (arg) and 95 off white (eng and the score), desaturated lime accent of oklch(57% 0.08 189.42)) for time, skeumophic light from above, no country flags. low opacity bbc watermark. nothing but the progress bar dot is rounded/circular. -->. less dramatic than fox. seems more premium.
 
 <!-- first in history. not a single shot on target in the first half. it has been tough. isnt it. -->
 
-they are analyzing and making commentary in the break, instead of playing ads. and it's free.
+they are analyzing and making commentary in the break, instead of playing ads. and it's free. <!-- it does have ads, only a bit. of the bbc iplayer itself... -->
+
+i could understand most time. it's like ielts listening... rather than casual conversation (or sport fans screaming). <!-- idk if it's true. is the energy an illusion of lexical range -->
+
+fluid playback. no loading or network instability.
+
+wow fierce. yellow cards. gathering. protesting. body fighting. <!-- cards are shown as filled diamonds above the progress bar, separated by . -->
 
 
 
