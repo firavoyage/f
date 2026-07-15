@@ -46962,6 +46962,10 @@ wow fierce. yellow cards. gathering. protesting. body fighting. <!-- cards are s
 
 "qr: get the tv license" "qr: player rater" <!-- football player or stream player? -->
 
+<!-- sth in science. english resistance broken. what a strike indeed. that power, in that direction, that's a sensational strike. there's a huge mood change in the whole atlanta right now. just completely switched. the direction. really really impressive. -->
+
+<!-- ar have done it again. and it's happening to eng all over again. and no one was in three or four yards on mtnz. full firepower on the field. -->
+
 
 
 <!-- timebox, plan. -->
