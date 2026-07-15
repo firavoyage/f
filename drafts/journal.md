@@ -46906,6 +46906,14 @@ https://zimuku.org/detail/107815.html
 
 <!-- 24m/s avg, 48 peak -->
 
+19 40 simplify thinking.
+
+some thoughts are used and irrelevant now. it's clear i would never retrieve them from git history. it doesnt matter much. but if i could have an easy way to attach and organize them somewhere, i would take it, i guess.
+
+thoughts are inherently <!-- by nature --> centralized. i might not navigate to some files. i might have some tags instead. but it would be too much, maybe, to build opinionated ui and abstraction on top of files (md or yaml).
+
+anyway just keep it simple <!-- take the easy way out -->.
+
 
 
 <!-- timebox, plan. -->

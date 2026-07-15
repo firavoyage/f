@@ -1,4 +1,6 @@
-<!-- it's wise to research more.
+<!-- leverage thinking
+
+it's wise to research more.
 
 the real world is less hard but way more complex, which llms do not handle well. -->
 
@@ -48,12 +50,6 @@ you should also add metadata about what it is (how to render it)
 - parallel (you do not have to show like `< 1/5 >` like normal edit. you have options. but as it's automated, you could differ it, and then you could render as you like.)
 
 all nodes can be referenced directly. you can copy its id.
-
----
-
-- fetch: error handling? on chat, i could write like missing api key, or network drop. there are not so many common possible errors.
-
-context. type.
 
 ---
 
@@ -141,4 +137,11 @@ have a converter. like yaml to shell fn.
 
 use ts.
 
+---
+
+call.
+
+`call(method, payload)` is not easily typed.
+
+fetch
 
