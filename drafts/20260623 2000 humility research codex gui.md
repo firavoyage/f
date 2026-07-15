@@ -1879,7 +1879,6 @@ make[2]: Leaving directory '/home/fira/Projects/codex-desktop-linux'
 make[1]: Leaving directory '/home/fira/Projects/codex-desktop-linux'
 ```
 
-
 # <!-- 29 jun 2026 -->
 
 # codex database issue
@@ -2598,4 +2597,274 @@ If you are looking to get started, would you like a list of the **essential keyb
 
 Show all
 
+
+
+# <!-- 15 jul -->
+
+# list file size or folder size alongside fd . --maxdepth 2
+
+The standard `fd` tool does not have a built-in option to display file or folder sizes directly. To see sizes alongside your `fd` results, you must pipe the output into another command like `du` (for folders) or `ls` / `numfmt` (for files).
+
+Here are the best ways to achieve this based on what you are searching for:
+
+### For Files and Folders (Using `ls` or `du`)
+
+You can use the `-X` (or `--exec-batch`) flag in `fd` to pass the results to `ls` or `du`.
+
+- **View file sizes:**\
+  bash
+
+<!---->
+
+```
+fd . --maxdepth 2 -X ls -lh
+```
+
+Use code with caution.
+
+- **View folder and file sizes combined:**\
+  bash
+
+<!---->
+
+```
+fd . --maxdepth 2 -X du -sh
+```
+
+Use code with caution.
+
+### For Folders Only (Using `du`)
+
+If you only want to see directories and their total sizes, restrict the search to directories using the `-t d` flag.
+
+bash
+
+```
+fd . --maxdepth 2 -t d -X du -sh
+```
+
+Use code with caution.
+
+### The Modern Alternative: `dua` or `dust`
+
+If you frequently need to list file sizes with speed and depth control, consider using developer-friendly alternatives designed for this exact purpose:
+
+- **Using `dust`:**\
+  bash
+
+<!---->
+
+```
+dust -d 2
+```
+
+Use code with caution.
+
+- **Using `ncdu`:**\
+  bash
+
+<!---->
+
+```
+ncdu
+```
+
+Use code with caution.
+
+To help narrow this down, let me know:
+
+- Are you looking for a **specific file type** (like `.mp4` or `.log`)?
+- Do you need to **sort the output** by size?
+
+I can provide the exact command or alias to make your workflow faster.
+
+- [link](https://learn.microsoft.com/en-us/answers/questions/2442710/how-to-view-folder-size-within-my-computer-or-wind)\
+  How to view folder size within My Computer or Windows Explorer? - Microsoft Q\&A\
+  Apr 4, 2010 — Windows Explorer has never included the ability to display folder sizes.\
+  \
+  \
+  Microsoft Learn
+- [link](https://www.webhosting.uk.com/kb/how-to-monitor-disk-usage-with-the-du-and-df-commands/)\
+  Monitor Disk Usage in Linux with du and df - WHUK\
+  Nov 18, 2025 — Use du when you need to find which folder is consuming space.\
+  \
+  \
+  Webhosting UK
+- [link](https://docs.rs/crate/fd-find/latest/source/README.md)\
+  fd-find 10.4.2\
+  To see details like file permissions, owners, file sizes etc., you can tell \`fd\` to show them by running \`ls\` for each result: \`\`\`\
+  \
+  Docs.rs
+
+Show all
+
+## just have a command. fd . --maxdepth 2. append filesize to file. append sum of all filesize to folder.
+
+To get this exact layout in a single command, you can use `fd` to pass the items to a custom `bash` loop. This loop checks if an item is a file or a folder, calculates the correct size, and prints it alongside the path.
+
+Run this command in your terminal:
+
+bash
+
+```
+fd . --maxdepth 2 -X bash -c 'for f; do if [ -d "$f" ]; then echo -e "$(du -sh "$f" | cut -f1)\t$f/"; else echo -e "$(numfmt --to=iec $(stat -c%s "$f"))\t$f"; fi; done' _ {}
+```
+
+Use code with caution.
+
+### How It Works
+
+- `fd . --maxdepth 2 -X`: Finds all items up to 2 levels deep and passes them to the bash loop in batches for speed.
+- `if [ -d "$f" ]`: Checks if the item is a folder.
+- `du -sh ...`: Calculates the sum of all file sizes inside that folder and formats it cleanly (e.g., `4.0K`, `12M`).
+- `stat -c%s ... | numfmt`: Grabs the exact byte size of a file and converts it into a human-readable format.
+- `\t`: Formats the output with tabs so the sizes and paths line up cleanly.
+
+If you plan to use this frequently, I can show you how to **save it as a permanent alias** or a custom function in your `.bashrc` or `.zshrc` file. Would you like the steps to set that up?
+
+- [link](https://labex.io/questions/how-to-iterate-through-directories-and-files-using-loops-and-arrays-18305)\
+  How to Iterate Through Directories and Files in Bash\
+  Sep 6, 2024 — In this example, the for loop iterates through each item in the /path/to/directory/ directory. The if statement checks if the curr...\
+  \
+  LabEx
+- [link](https://healeycodes.com/maybe-the-fastest-disk-usage-program-on-macos)\
+  Maybe the Fastest Disk Usage Program on macOS\
+  Jul 31, 2025 — du -sh (disk usage, summarize, human-readable) works out the total size of a directory by traversing all the files and subdirector...\
+  \
+  \
+  healeycodes.com
+- [link](https://medium.com/@linuxrootroom/methods-that-measure-the-size-of-a-file-in-linux-e0ef863daec3)\
+  Methods That Measure The Size Of A File In Linux\
+  Jan 26, 2024 — The stat command is being used with the -c %s option. The -c option allows for custom formatting of the output, and %s is a format...\
+  \
+  \
+  Medium
+
+## keep the original order of fd
+
+To keep the exact output order of `fd`, you must use `-x` (lowercase) instead of `-X`. This executes the size check for each item individually, one by one, preserving `fd`'s natural traversal order.
+
+Run this command in your terminal:
+
+bash
+
+```
+fd . --maxdepth 2 -x bash -c 'if [ -d "$1" ]; then echo -e "$(du -sh "$1" | cut -f1)\t$1/"; else echo -e "$(numfmt --to=iec $(stat -c%s "$1"))\t$1"; fi' _ {}
+```
+
+Use code with caution.
+
+### Why This Fixes It
+
+- **`-x` (Executes Individually):** Forces `fd` to process and print each line sequentially as it finds them.
+- **`-X` (Executes in Batch):** Grouped everything into a single final execution, which inadvertently forced `ls` or `du` to resort the list alphabetically.
+
+If you find this command too long to type out every time, I can give you a quick copy-paste snippet to **turn it into a short keyword shortcut** (like `fds`) in your terminal settings. Would you like to do that?
+
+## not working. just sort the final result instead.
+
+Sorting the final output directly avoids the ordering bugs caused by individual item lookups. You can achieve this by piping the raw `fd` paths into an `awk` processing script, and then sorting the final list by the human-readable size column.
+
+Run this command in your terminal to list everything, append sizes, and sort the final result from **smallest to largest**:
+
+bash
+
+```
+fd . --maxdepth 2 | awk '{ if (system("[ -d \"" $0 "\" ]") == 0) { printf "%s/\n", $0 } else { print } }' | xargs -I {} sh -c 'if [ -d "{}" ]; then echo "$(du -sh "{}" | cut -f1) {}"; else echo "$(numfmt --to=iec $(stat -c%s "{}")) {}"; fi' | sort -h
+```
+
+Use code with caution.
+
+### Key Variations
+
+- **Sort Largest to Smallest:** Append `-r` to the end of the command:\
+  bash
+
+<!---->
+
+```
+... | sort -hr
+```
+
+Use code with caution.
+
+- **Keep Hidden Files Included:** Add the `-H` flag to `fd` if you need to calculate hidden configuration files:\
+  bash
+
+<!---->
+
+```
+fd . --maxdepth 2 -H | ...
+```
+
+Use code with caution.
+
+To help optimize this further, would you prefer the output sorted by **file size** or alphabetically by **folder name**? I can adjust the `sort` flags to match your exact preference.
+
+## sort by name
+
+To sort the final result alphabetically by name (the file or folder path), you can pipe the final formatted output directly into the standard `sort` command.
+
+Run this command in your terminal:
+
+bash
+
+```
+fd . --maxdepth 2 | awk '{ if (system("[ -d \"" $0 "\" ]") == 0) { printf "%s/\n", $0 } else { print } }' | xargs -I {} sh -c 'if [ -d "{}" ]; then printf "%s\t%s\n" "$(du -sh "{}" | cut -f1)" "{}"; else printf "%s\t%s\n" "$(numfmt --to=iec $(stat -c%s "{}"))" "{}"; fi' | sort -k2
+```
+
+Use code with caution.
+
+### How It Works
+
+- **`printf "%s\t%s\n"`**: Outputs the human-readable size, a tab separator, and then the path.
+- **`sort -k2`**: Tells the system to completely ignore the size column and sort the list alphabetically starting from the second column (the path name).
+
+If you want to reverse the order (from Z to A), you can change the very end of the command to `sort -k2 -r`.
+
+Would you like to **hide the file size prefixes** and only use them for the folders, or is this side-by-side layout exactly what you need?
+
+- [link](https://www.tecmint.com/linux-sort-command-examples/)\
+  7 Interesting Linux 'sort' Command Examples - Part 2\
+  Nov 6, 2023 — 16. Sorting Output by File Size in Human-Readable Format\
+  \
+  \
+  Tecmint
+- [link](https://www.reddit.com/r/unix/comments/13344wy/someone%5Fplease%5Fexplain%5Fthe%5Fsort%5Ffunction%5Fto%5Fme/)\
+  Someone please explain the sort function to me like im 5 : r/unix\
+  Apr 29, 2023 — Try 'sort -k2 file' and it'll sort by the 2nd column, which does seem to do comparison on consecutive characters as well.\
+  \
+  \
+  Reddit
+
+## do not add a weird / after folders
+
+Here is the updated command. It strips out that extra trailing slash and sorts everything cleanly by the name column.
+
+Run this command in your terminal:
+
+bash
+
+```
+fd . --maxdepth 2 | xargs -I {} sh -c 'if [ -d "{}" ]; then printf "%s\t%s\n" "$(du -sh "{}" | cut -f1)" "{}"; else printf "%s\t%s\n" "$(numfmt --to=iec $(stat -c%s "{}"))" "{}"; fi' | sort -k2
+```
+
+Use code with caution.
+
+### What Changed
+
+- **Removed the `awk` filter:** The script no longer forces a `/` onto directory names.
+- **`printf "%s\t%s\n"`**: Outputs the clean size, a tab, and the exact path just as `fd` found it.
+- **`sort -k2`**: Safely sorts alphabetically by the path column, ignoring the size column completely.
+
+If you notice certain folders or files are missing, would you like to **include hidden items** (like `.git` or `.env`) in the sorting, or is this standard view working for you?
+
+- [link](https://wordpress.stackexchange.com/questions/198391/problem-requiring-including-plugin-files-with-plugin-dir-path-file)\
+  Problem requiring/including plugin files with plugin\_dir\_path( \_\_FILE\_\_ )\
+  Aug 12, 2015 — So it adds a trailing slash, because as the documentation states:\
+  \
+  \
+  Stack Exchange
+
+# . 
 
