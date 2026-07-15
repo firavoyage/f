@@ -412,6 +412,7 @@ ux: <!-- ui/ux design, ia -->
 - parceljs vite webpack error overlay design
 - cursor hand link button context menu
 - settings progressive disclosure over advanced kde hig vlc chromium firefox samsung one ui vscode
+- ux four pillars design process
 
 typography:
 
