@@ -46900,6 +46900,8 @@ https://nyaa.si/view/1582135
 
 https://zimuku.org/detail/107815.html
 
+<!-- 24m/s avg, 48 peak -->
+
 
 
 <!-- timebox, plan. -->

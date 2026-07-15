@@ -2866,5 +2866,489 @@ If you notice certain folders or files are missing, would you like to **include 
   \
   Stack Exchange
 
-# . 
+# can i delete ~/.cache on ubuntu
 
+<mark><strong><span>Yes, you can safely delete the<span> </span></span><code dir="ltr">~/.cache</code><span> </span>directory on Ubuntu.</strong></mark> According to XDG Base Directory Specifications, this folder is strictly meant for non-essential, temporary user data. Applications will automatically recreate the folder and any missing files they need the next time they run. [link](https://askubuntu.com/questions/102046/is-it-okay-to-delete-the-cache-folder)
+
+However, deleting it completely can cause minor, temporary performance slowdowns while apps rebuild their caches. [link](https://unix.stackexchange.com/questions/208908/is-it-safe-to-remove-cache)
+
+### Crucial Safety Precautions
+
+- **Close open apps**: Shut down heavy applications like your web browser (Chrome, Firefox) before cleaning.
+- **Do not touch `.config`**: Ensure you do not accidentally touch `~/.config` or `~/.local`, which store your permanent settings, save states, and login data.
+- **Log out after**: It is best practice to reboot or log out and back into Ubuntu right after deleting the cache to prevent running background processes from throwing errors. [link](https://askubuntu.com/questions/102046/is-it-okay-to-delete-the-cache-folder)
+
+### How to Safely Clean `~/.cache`
+
+You can use the terminal to target specific large folders, or empty everything safely.
+
+#### Option 1: Clean specific heavy folders (Recommended)
+
+Instead of wiping everything, target the directories that traditionally eat up the most space:
+
+- **Thumbnails Cache**: Clears file manager thumbnail previews.\
+  bash
+
+<!---->
+
+```
+rm -rf ~/.cache/thumbnails/*
+```
+
+Use code with caution.
+
+- **Browser Caches**: Clears large browser histories and temporary web files.\
+  bash
+
+<!---->
+
+```
+rm -rf ~/.cache/google-chrome/*
+rm -rf ~/.cache/mozilla/*
+```
+
+Use code with caution.\
+[link](https://askubuntu.com/questions/1121070/is-it-safe-to-remove-files-folders-from-cache)
+
+#### Option 2: Delete everything inside the folder
+
+If you want to clear the entire directory, delete its _contents_ rather than the top-level directory itself. This keeps the main path intact for active applications: [link](https://oneuptime.com/blog/post/2026-01-15-clear-apt-cache-free-disk-space-ubuntu/view)
+
+bash
+
+```
+rm -rf ~/.cache/*
+```
+
+Use code with caution.
+
+### Alternative: Automated Graphic Cleaning
+
+If you prefer a visual interface to see what you are deleting, install BleachBit via the Ubuntu Software Center or the terminal: [link](https://www.interserver.net/tips/kb/clear-browser-cache-application-data-ubuntu/)
+
+bash
+
+```
+sudo apt install bleachbit
+```
+
+Use code with caution.
+
+Launch the non-root version of BleachBit to check boxes for system/application caches and securely wipe them out with a click. [link](https://www.interserver.net/tips/kb/clear-browser-cache-application-data-ubuntu/)
+
+If you are trying to free up disk space, let me know:
+
+- **How much storage** you need to clear?
+
+- If you want to check for other safe areas like **old APT packages** or **journal logs**?
+
+- If you prefer **terminal commands** or a **graphical app** tool?
+
+- [link](https://askubuntu.com/questions/102046/is-it-okay-to-delete-the-cache-folder)\
+  Is it okay to delete the ~/.cache folder?\
+  Feb 6, 2012 — \* 1. If you're going to wipe ~/.cache, best to wipe it all at once (so you don't confuse any application with an inconsistent/part...\
+  Ask Ubuntu
+
+- [link](https://unix.stackexchange.com/questions/208908/is-it-safe-to-remove-cache)\
+  Is it safe to remove ~/.cache? - Unix & Linux Stack Exchange\
+  Jun 11, 2015 — 4 Answers. ... In my case I would most likely be fine with just closing Firefox before removal. ... Yes it is safe, but before you...\
+  Unix & Linux Stack Exchange
+
+- [link](https://askubuntu.com/questions/1121070/is-it-safe-to-remove-files-folders-from-cache)\
+  Is it safe to remove files/folders from .cache? - Ask Ubuntu\
+  Feb 25, 2019 — 2 Answers. ... According to XDG specifications: $XDG\_CACHE\_HOME defines the base directory relative to which user specific non-ess...\
+  Ask Ubuntu
+
+Show all
+
+# . massive initial cache
+
+```sh
+ ~/.cache/_ % fd . --maxdepth 6 | xargs -I {} sh -c 'if [ -d "{}" ]; then printf "%s\t%s\n" "$(du -sh "{}" | cut -f1)" "{}"; else printf "%s\t%s\n" "$(numfmt --to=iec $(stat -c%s "{}"))" "{}"; fi' | sort -k2
+
+338M    codex-desktop/
+194M    codex-desktop/browser-use/
+194M    codex-desktop/browser-use/codex-primary-runtime-linux-x64-26.426.12240.tar.xz
+114M    codex-desktop/electron/
+114M    codex-desktop/electron/electron-v42.1.0-linux-x64.zip
+953K    codex-desktop/launcher.log
+30M     codex-desktop/node-runtime/
+30M     codex-desktop/node-runtime/node-v22.22.2-linux-x64.tar.xz
+1.8G    codex-runtimes/
+1.7G    codex-runtimes/codex-primary-runtime/
+1.7G    codex-runtimes/codex-primary-runtime/dependencies/
+32K     codex-runtimes/codex-primary-runtime/dependencies/bin/
+563     codex-runtimes/codex-primary-runtime/dependencies/bin/git
+166     codex-runtimes/codex-primary-runtime/dependencies/bin/heif-convert
+161     codex-runtimes/codex-primary-runtime/dependencies/bin/JxrDecApp
+153     codex-runtimes/codex-primary-runtime/dependencies/bin/pdfinfo
+154     codex-runtimes/codex-primary-runtime/dependencies/bin/pdftoppm
+232     codex-runtimes/codex-primary-runtime/dependencies/bin/pnpm
+182     codex-runtimes/codex-primary-runtime/dependencies/bin/soffice
+731M    codex-runtimes/codex-primary-runtime/dependencies/native/
+140M    codex-runtimes/codex-primary-runtime/dependencies/native/git/
+6.2M    codex-runtimes/codex-primary-runtime/dependencies/native/git/bin/
+8.0K    codex-runtimes/codex-primary-runtime/dependencies/native/git/etc/
+121M    codex-runtimes/codex-primary-runtime/dependencies/native/git/libexec/
+13M     codex-runtimes/codex-primary-runtime/dependencies/native/git/share/
+228K    codex-runtimes/codex-primary-runtime/dependencies/native/git/ssl/
+532K    codex-runtimes/codex-primary-runtime/dependencies/native/jxrlib/
+524K    codex-runtimes/codex-primary-runtime/dependencies/native/jxrlib/jxrlib/
+137     codex-runtimes/codex-primary-runtime/dependencies/native/jxrlib/manifest.json
+27M     codex-runtimes/codex-primary-runtime/dependencies/native/libheif/
+27M     codex-runtimes/codex-primary-runtime/dependencies/native/libheif/libheif/
+483     codex-runtimes/codex-primary-runtime/dependencies/native/libheif/manifest.json
+516M    codex-runtimes/codex-primary-runtime/dependencies/native/libreoffice-headless/
+516M    codex-runtimes/codex-primary-runtime/dependencies/native/libreoffice-headless/libreoffice/
+483     codex-runtimes/codex-primary-runtime/dependencies/native/libreoffice-headless/manifest.json
+50M     codex-runtimes/codex-primary-runtime/dependencies/native/poppler/
+12K     codex-runtimes/codex-primary-runtime/dependencies/native/poppler/bin/
+625     codex-runtimes/codex-primary-runtime/dependencies/native/poppler/manifest.json
+50M     codex-runtimes/codex-primary-runtime/dependencies/native/poppler/poppler/
+423M    codex-runtimes/codex-primary-runtime/dependencies/node/
+117M    codex-runtimes/codex-primary-runtime/dependencies/node/bin/
+117M    codex-runtimes/codex-primary-runtime/dependencies/node/bin/node
+306M    codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/
+0       codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/docx
+0       codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/jpeg-js
+0       codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/lucide
+0       codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/marked
+8.0K    codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@napi-rs/
+8.0K    codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/
+0       codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/pdfjs-dist
+0       codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/pdf-lib
+0       codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/pixelmatch
+0       codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright
+0       codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/pngjs
+0       codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/pnpm
+0       codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/pptxgenjs
+0       codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/sharp
+0       codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/tesseract.js
+4.0K    codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@viz-js/
+556M    codex-runtimes/codex-primary-runtime/dependencies/python/
+27M     codex-runtimes/codex-primary-runtime/dependencies/python/bin/
+9       codex-runtimes/codex-primary-runtime/dependencies/python/bin/2to3
+158     codex-runtimes/codex-primary-runtime/dependencies/python/bin/2to3-3.12
+15K     codex-runtimes/codex-primary-runtime/dependencies/python/bin/dumppdf.py
+249     codex-runtimes/codex-primary-runtime/dependencies/python/bin/f2py
+8       codex-runtimes/codex-primary-runtime/dependencies/python/bin/idle3
+156     codex-runtimes/codex-primary-runtime/dependencies/python/bin/idle3.12
+266     codex-runtimes/codex-primary-runtime/dependencies/python/bin/normalizer
+249     codex-runtimes/codex-primary-runtime/dependencies/python/bin/numpy-config
+9.9K    codex-runtimes/codex-primary-runtime/dependencies/python/bin/pdf2txt.py
+246     codex-runtimes/codex-primary-runtime/dependencies/python/bin/pdfplumber
+234     codex-runtimes/codex-primary-runtime/dependencies/python/bin/pip
+234     codex-runtimes/codex-primary-runtime/dependencies/python/bin/pip3
+234     codex-runtimes/codex-primary-runtime/dependencies/python/bin/pip3.12
+40K     codex-runtimes/codex-primary-runtime/dependencies/python/bin/__pycache__/
+9       codex-runtimes/codex-primary-runtime/dependencies/python/bin/pydoc3
+141     codex-runtimes/codex-primary-runtime/dependencies/python/bin/pydoc3.12
+262     codex-runtimes/codex-primary-runtime/dependencies/python/bin/pypdfium2
+10      codex-runtimes/codex-primary-runtime/dependencies/python/bin/python
+10      codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3
+27M     codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12
+3.1K    codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12-config
+17      codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3-config
+2.4K    codex-runtimes/codex-primary-runtime/dependencies/python/bin/vba_extract.py
+247     codex-runtimes/codex-primary-runtime/dependencies/python/bin/wheel
+1.8M    codex-runtimes/codex-primary-runtime/dependencies/python/include/
+1.8M    codex-runtimes/codex-primary-runtime/dependencies/python/include/python3.12/
+516M    codex-runtimes/codex-primary-runtime/dependencies/python/lib/
+360K    codex-runtimes/codex-primary-runtime/dependencies/python/lib/itcl4.3.5/
+81      codex-runtimes/codex-primary-runtime/dependencies/python/lib/libpython3.12.so
+31M     codex-runtimes/codex-primary-runtime/dependencies/python/lib/libpython3.12.so.1.0
+21K     codex-runtimes/codex-primary-runtime/dependencies/python/lib/libpython3.so
+2.3M    codex-runtimes/codex-primary-runtime/dependencies/python/lib/libtcl9.0.so
+3.0M    codex-runtimes/codex-primary-runtime/dependencies/python/lib/libtcl9tk9.0.so
+20K     codex-runtimes/codex-primary-runtime/dependencies/python/lib/pkgconfig/
+475M    codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/
+356K    codex-runtimes/codex-primary-runtime/dependencies/python/lib/tcl9/
+2.6M    codex-runtimes/codex-primary-runtime/dependencies/python/lib/tcl9.0/
+140K    codex-runtimes/codex-primary-runtime/dependencies/python/lib/thread3.0.4/
+2.2M    codex-runtimes/codex-primary-runtime/dependencies/python/lib/tk9.0/
+12M     codex-runtimes/codex-primary-runtime/dependencies/python/share/
+32K     codex-runtimes/codex-primary-runtime/dependencies/python/share/man/
+12M     codex-runtimes/codex-primary-runtime/dependencies/python/share/terminfo/
+2.4M    codex-runtimes/codex-primary-runtime/plugins/
+2.4M    codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime/
+2.4M    codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime/plugins/
+872K    codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime/plugins/documents/
+72K     codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime/plugins/pdf/
+956K    codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime/plugins/presentations/
+408K    codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime/plugins/spreadsheets/
+64K     codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime/plugins/template-creator/
+552     codex-runtimes/codex-primary-runtime/runtime.json
+176K    codex-runtimes/codex-runtime-install-KDEvy0/
+165K    codex-runtimes/codex-runtime-install-KDEvy0/node-runtime.tar.xz
+4.0K    codex-runtimes/codex-runtime-install-KDEvy0/payload/
+27M     codex-runtimes/codex-runtime-install-m4wcGM/
+27M     codex-runtimes/codex-runtime-install-m4wcGM/node-runtime.tar.xz
+4.0K    codex-runtimes/codex-runtime-install-m4wcGM/payload/
+3.6M    codex-runtimes/codex-runtime-install-Taw62c/
+3.5M    codex-runtimes/codex-runtime-install-Taw62c/node-runtime.tar.xz
+4.0K    codex-runtimes/codex-runtime-install-Taw62c/payload/
+4.0G    codex-update-manager/
+588M    codex-update-manager/downloads/
+588M    codex-update-manager/downloads/Codex.dmg
+3.4G    codex-update-manager/workspaces/
+3.2G    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/
+2.1G    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/
+20K     codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/assets/
+14K     codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/assets/codex.png
+94K     codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/Cargo.lock
+91      codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/Cargo.toml
+27K     codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/CHANGELOG.md
+556K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/computer-use-linux/
+1.1K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/computer-use-linux/Cargo.toml
+16K     codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/computer-use-linux/gnome-shell-extension/
+532K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/computer-use-linux/src/
+1.2G    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/dist/
+1.2G    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/dist/deb-root/
+5.2K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/install.sh
+104K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/launcher/
+94K     codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/launcher/start.sh.template
+1.8K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/launcher/webview-server.py
+1.4M    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/linux-features/
+240K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/linux-features/agent-workspace/
+76K     codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/linux-features/appshots/
+72K     codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/linux-features/codex-wrapper-updater/
+140K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/linux-features/conversation-mode/
+32K     codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/linux-features/copilot-reasoning-effort/
+40K     codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/linux-features/example-feature/
+20      codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/linux-features/features.example.json
+32K     codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/linux-features/frameless-titlebar/
+40K     codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/linux-features/node-repl-reaper/
+116K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/linux-features/open-target-discovery/
+164K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/linux-features/read-aloud/
+36K     codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/linux-features/read-aloud-mcp/
+5.3K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/linux-features/README.md
+32K     codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/linux-features/remote-control-ui/
+248K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/linux-features/remote-mobile-control/
+52K     codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/linux-features/thorium-chrome-plugin/
+40K     codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/linux-features/x11-ewmh-computer-use/
+24K     codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/linux-features/zed-opener/
+68K     codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/packaging/
+64K     codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/packaging/linux/
+92K     codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/plugins/
+88K     codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/plugins/openai-bundled/
+44K     codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/read-aloud-linux/
+413     codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/read-aloud-linux/Cargo.toml
+36K     codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/read-aloud-linux/src/
+1.2M    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/scripts/
+5.2K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/scripts/build-deb.sh
+6.4K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/scripts/build-pacman.sh
+5.8K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/scripts/build-rpm.sh
+284K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/scripts/lib/
+828K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/scripts/patches/
+9.2K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/scripts/patch-linux-window-ui.js
+4.7K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/scripts/rebuild-candidate.sh
+929M    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/target/
+177     codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/target/CACHEDIR.TAG
+929M    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/target/release/
+468K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/updater/
+783     codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/updater/Cargo.toml
+460K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/builder/updater/src/
+921M    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/
+118K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/chrome_100_percent.pak
+194K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/chrome_200_percent.pak
+1.5M    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/chrome_crashpad_handler
+15K     codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/chrome-sandbox
+140M    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/content/
+140M    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/content/webview/
+201M    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/electron
+11M     codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/icudtl.dat
+280K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/libEGL.so
+2.7M    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/libffmpeg.so
+6.2M    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/libGLESv2.so
+4.3M    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/libvk_swiftshader.so
+2.5M    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/libvulkan.so.1
+1.1K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/LICENSE
+20M     codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/LICENSES.chromium.html
+47M     codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/
+597K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/af.pak
+969K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/am.pak
+1.1M    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/ar.pak
+1.1M    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/bg.pak
+1.4M    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/bn.pak
+673K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/ca.pak
+699K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/cs.pak
+628K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/da.pak
+674K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/de.pak
+1.2M    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/el.pak
+544K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/en-GB.pak
+550K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/en-US.pak
+665K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/es-419.pak
+661K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/es.pak
+603K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/et.pak
+999K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/fa.pak
+697K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/fil.pak
+614K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/fi.pak
+718K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/fr.pak
+1.4M    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/gu.pak
+876K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/he.pak
+1.5M    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/hi.pak
+673K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/hr.pak
+719K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/hu.pak
+595K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/id.pak
+650K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/it.pak
+792K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/ja.pak
+1.6M    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/kn.pak
+674K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/ko.pak
+732K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/lt.pak
+729K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/lv.pak
+1.7M    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/ml.pak
+1.4M    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/mr.pak
+627K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/ms.pak
+599K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/nb.pak
+625K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/nl.pak
+698K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/pl.pak
+655K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/pt-BR.pak
+658K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/pt-PT.pak
+683K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/ro.pak
+1.2M    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/ru.pak
+711K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/sk.pak
+681K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/sl.pak
+1.1M    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/sr.pak
+607K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/sv.pak
+642K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/sw.pak
+1.7M    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/ta.pak
+1.5M    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/te.pak
+1.3M    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/th.pak
+654K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/tr.pak
+1.2M    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/uk.pak
+982K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/ur.pak
+778K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/vi.pak
+557K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/zh-CN.pak
+549K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/locales/zh-TW.pak
+480M    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/resources/
+223M    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/resources/app.asar
+11M     codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/resources/app.asar.unpacked/
+1.7K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/resources/codex-linux-build-info.json
+109K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/resources/default_app.asar
+10M     codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/resources/node_repl
+203M    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/resources/node-runtime/
+6.8M    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/resources.pak
+33M     codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/resources/plugins/
+339K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/snapshot_blob.bin
+94K     codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/start.sh
+705K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/v8_context_snapshot.bin
+6       codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/version
+107     codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/codex-app/vk_swiftshader_icd.json
+266M    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/dist/
+266M    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/dist/codex-desktop_2026.06.24.075925+4bb552bf_amd64.deb
+24K     codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/logs/
+5.4K    codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/logs/build-package.log
+11K     codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/logs/install.log
+36K     codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/reports/
+16K     codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/reports/patch-report.json
+16K     codex-update-manager/workspaces/2026.06.24.075925+4bb552bf/reports/rebuild-report.json
+44K     codex-update-manager/workspaces/2026.07.09.105714+30a2fe99/
+12K     codex-update-manager/workspaces/2026.07.09.105714+30a2fe99/logs/
+5.5K    codex-update-manager/workspaces/2026.07.09.105714+30a2fe99/logs/install.log
+28K     codex-update-manager/workspaces/2026.07.09.105714+30a2fe99/reports/
+22K     codex-update-manager/workspaces/2026.07.09.105714+30a2fe99/reports/patch-report.json
+44K     codex-update-manager/workspaces/2026.07.10.105225+6f67af7e/
+12K     codex-update-manager/workspaces/2026.07.10.105225+6f67af7e/logs/
+5.6K    codex-update-manager/workspaces/2026.07.10.105225+6f67af7e/logs/install.log
+28K     codex-update-manager/workspaces/2026.07.10.105225+6f67af7e/reports/
+22K     codex-update-manager/workspaces/2026.07.10.105225+6f67af7e/reports/patch-report.json
+44K     codex-update-manager/workspaces/2026.07.10.164930+6f67af7e/
+12K     codex-update-manager/workspaces/2026.07.10.164930+6f67af7e/logs/
+5.6K    codex-update-manager/workspaces/2026.07.10.164930+6f67af7e/logs/install.log
+28K     codex-update-manager/workspaces/2026.07.10.164930+6f67af7e/reports/
+22K     codex-update-manager/workspaces/2026.07.10.164930+6f67af7e/reports/patch-report.json
+44K     codex-update-manager/workspaces/2026.07.12.043153+467a2538/
+12K     codex-update-manager/workspaces/2026.07.12.043153+467a2538/logs/
+5.6K    codex-update-manager/workspaces/2026.07.12.043153+467a2538/logs/install.log
+28K     codex-update-manager/workspaces/2026.07.12.043153+467a2538/reports/
+22K     codex-update-manager/workspaces/2026.07.12.043153+467a2538/reports/patch-report.json
+44K     codex-update-manager/workspaces/2026.07.12.125037+a66a0645/
+12K     codex-update-manager/workspaces/2026.07.12.125037+a66a0645/logs/
+5.6K    codex-update-manager/workspaces/2026.07.12.125037+a66a0645/logs/install.log
+28K     codex-update-manager/workspaces/2026.07.12.125037+a66a0645/reports/
+22K     codex-update-manager/workspaces/2026.07.12.125037+a66a0645/reports/patch-report.json
+44K     codex-update-manager/workspaces/2026.07.12.185038+a66a0645/
+12K     codex-update-manager/workspaces/2026.07.12.185038+a66a0645/logs/
+5.6K    codex-update-manager/workspaces/2026.07.12.185038+a66a0645/logs/install.log
+28K     codex-update-manager/workspaces/2026.07.12.185038+a66a0645/reports/
+22K     codex-update-manager/workspaces/2026.07.12.185038+a66a0645/reports/patch-report.json
+44K     codex-update-manager/workspaces/2026.07.13.093333+c243c94f/
+12K     codex-update-manager/workspaces/2026.07.13.093333+c243c94f/logs/
+5.6K    codex-update-manager/workspaces/2026.07.13.093333+c243c94f/logs/install.log
+28K     codex-update-manager/workspaces/2026.07.13.093333+c243c94f/reports/
+22K     codex-update-manager/workspaces/2026.07.13.093333+c243c94f/reports/patch-report.json
+44K     codex-update-manager/workspaces/2026.07.13.153332+c243c94f/
+12K     codex-update-manager/workspaces/2026.07.13.153332+c243c94f/logs/
+5.6K    codex-update-manager/workspaces/2026.07.13.153332+c243c94f/logs/install.log
+28K     codex-update-manager/workspaces/2026.07.13.153332+c243c94f/reports/
+22K     codex-update-manager/workspaces/2026.07.13.153332+c243c94f/reports/patch-report.json
+44K     codex-update-manager/workspaces/2026.07.14.074201+361b8a54/
+12K     codex-update-manager/workspaces/2026.07.14.074201+361b8a54/logs/
+5.6K    codex-update-manager/workspaces/2026.07.14.074201+361b8a54/logs/install.log
+28K     codex-update-manager/workspaces/2026.07.14.074201+361b8a54/reports/
+22K     codex-update-manager/workspaces/2026.07.14.074201+361b8a54/reports/patch-report.json
+44K     codex-update-manager/workspaces/2026.07.14.145748+40e34814/
+12K     codex-update-manager/workspaces/2026.07.14.145748+40e34814/logs/
+5.6K    codex-update-manager/workspaces/2026.07.14.145748+40e34814/logs/install.log
+28K     codex-update-manager/workspaces/2026.07.14.145748+40e34814/reports/
+22K     codex-update-manager/workspaces/2026.07.14.145748+40e34814/reports/patch-report.json
+207M    codex-update-manager/workspaces/2026.07.14.205747+40e34814/
+4.0M    codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/
+20K     codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/assets/
+14K     codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/assets/codex.png
+94K     codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/Cargo.lock
+91      codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/Cargo.toml
+27K     codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/CHANGELOG.md
+556K    codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/computer-use-linux/
+1.1K    codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/computer-use-linux/Cargo.toml
+16K     codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/computer-use-linux/gnome-shell-extension/
+532K    codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/computer-use-linux/src/
+5.2K    codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/install.sh
+104K    codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/launcher/
+94K     codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/launcher/start.sh.template
+1.8K    codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/launcher/webview-server.py
+1.4M    codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/linux-features/
+240K    codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/linux-features/agent-workspace/
+76K     codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/linux-features/appshots/
+72K     codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/linux-features/codex-wrapper-updater/
+140K    codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/linux-features/conversation-mode/
+32K     codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/linux-features/copilot-reasoning-effort/
+40K     codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/linux-features/example-feature/
+20      codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/linux-features/features.example.json
+32K     codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/linux-features/frameless-titlebar/
+40K     codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/linux-features/node-repl-reaper/
+116K    codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/linux-features/open-target-discovery/
+164K    codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/linux-features/read-aloud/
+36K     codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/linux-features/read-aloud-mcp/
+5.3K    codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/linux-features/README.md
+32K     codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/linux-features/remote-control-ui/
+248K    codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/linux-features/remote-mobile-control/
+52K     codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/linux-features/thorium-chrome-plugin/
+40K     codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/linux-features/x11-ewmh-computer-use/
+24K     codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/linux-features/zed-opener/
+68K     codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/packaging/
+64K     codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/packaging/linux/
+92K     codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/plugins/
+88K     codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/plugins/openai-bundled/
+44K     codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/read-aloud-linux/
+413     codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/read-aloud-linux/Cargo.toml
+36K     codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/read-aloud-linux/src/
+1.2M    codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/scripts/
+5.2K    codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/scripts/build-deb.sh
+6.4K    codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/scripts/build-pacman.sh
+5.8K    codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/scripts/build-rpm.sh
+284K    codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/scripts/lib/
+828K    codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/scripts/patches/
+9.2K    codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/scripts/patch-linux-window-ui.js
+4.7K    codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/scripts/rebuild-candidate.sh
+468K    codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/updater/
+783     codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/updater/Cargo.toml
+460K    codex-update-manager/workspaces/2026.07.14.205747+40e34814/builder/updater/src/
+203M    codex-update-manager/workspaces/2026.07.14.205747+40e34814/codex-app/
+203M    codex-update-manager/workspaces/2026.07.14.205747+40e34814/codex-app/resources/
+203M    codex-update-manager/workspaces/2026.07.14.205747+40e34814/codex-app/resources/node-runtime/
+12K     codex-update-manager/workspaces/2026.07.14.205747+40e34814/logs/
+5.6K    codex-update-manager/workspaces/2026.07.14.205747+40e34814/logs/install.log
+28K     codex-update-manager/workspaces/2026.07.14.205747+40e34814/reports/
+22K     codex-update-manager/workspaces/2026.07.14.205747+40e34814/reports/patch-report.json
+```
