@@ -46936,7 +46936,21 @@ not journal or timeline. not changes.
 
 for free, on bbc iplayer. <!-- the proxy is effectively hk though on google -->
 
-it's not login free, but the ux is sophisticated.
+it's not login free, but the ux is sophisticated, colorful and stylish images, helpful messages.
+
+"age" "non binary" "do you have a license? it's the law." <!-- i did not expect a proof less pass through. -->
+
+the player is also meticulously designed. look at the icons, the ixd, and the colors.
+
+<!-- vibrant pink accent (progress bar and enabled switch), gray unrounded options/context menu. -->
+
+it can fullscreen as expected when it's already fullscreen.
+
+the narrative is calm and clinical <!-- as well as the ui widgets. low chroma colors (23 off black and 95 off white, desaturated lime accent of oklch(57% 0.08 189.42)), skeumophic light from above, no country flags. low opacity bbc watermark. -->. less dramatic than fox. seems more .
+
+<!-- first in history. not a single shot on target in the first half. it has been tough. isnt it. -->
+
+they are analyzing and making commentary in the break, instead of playing ads. and it's free.
 
 
 
