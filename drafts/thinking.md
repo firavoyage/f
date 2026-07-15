@@ -57,34 +57,6 @@ context. type.
 
 ---
 
-all css props
-
-all categories of css props <!-- how to categorize -->
-
-all css layout props <!-- layout, style, animation, ... -->
-
-how does vscode handle color themes
-
-<!-- utilitarian: color, spacing, nothing else. -->
-
-save metadata. <!-- support thread title -->
-
----
-
-design tokens.
-
-ref and sys are repetitive.
-
-rather reduce it. as simple as possible. as you like.
-
-just one ref layer for fixed tokens, like border radius. sys is contextual.
-
-e.g. pallette. color. typography. font. spacing. margin/padding.
-
-also, i would reconsider if `{ref.palette.success}` is needed. maybe `ref.palette.success` is enough. it cant be ambiguous. ref if existing, otherwise raw. i guess it should be explicit over implicit. but i would support both and choose the simpler anyway.
-
----
-
 utilitarian.yaml
 
 vscode. adwaita.
@@ -163,12 +135,10 @@ scope. <!-- i might not need grill me. i could think myself. -->
 
 ---
 
-memoh qa first.
+seems i write shell fn often.
 
-oh my github uses its ui.
+have a converter. like yaml to shell fn.
 
-and it's predictable time.
-
-<!-- in math problem solving, you should write it first if you know a case is to be disposed briefly, and dedicate full focus to the rest of the problem. -->
+use ts.
 
 
