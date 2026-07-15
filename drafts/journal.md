@@ -46924,7 +46924,7 @@ now it's updated, one click pow based dl of all versions <!-- w or wo vid, cache
 
 01 40 think.
 
-just call it purpose. what you does reflects 
+just call it purpose. what you does iff what you want <!-- who you are -->.
 
 <!-- i might have purpose.yaml in the future. -->
 
