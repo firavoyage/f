@@ -298,7 +298,7 @@ desktop:
 - shell symlink abstraction
 - shell chmod x abstraction
 - vscode clear search query when esc
-- shell ffmpeg abstraction
+- shell ffmpeg abstraction tput colors
 
 android:
 
