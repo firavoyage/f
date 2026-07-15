@@ -46932,7 +46932,7 @@ not journal or timeline. not changes.
 
 02 00 fix pragmaticism in values to pragmatism.
 
-03 00 watch world cup stream, ar v uk.
+03 00 watch world cup stream, ar v uk. 05 40
 
 for free, on bbc iplayer. <!-- the proxy is effectively hk though on google -->
 
@@ -46954,9 +46954,9 @@ they are analyzing and making commentary in the break, instead of playing ads. a
 
 i could understand most time. it's like ielts listening... rather than casual conversation (or sport fans screaming). <!-- idk if it's true. is the energy an illusion of lexical range -->
 
-fluid playback. no loading or network instability.
+fluid playback. no loading or network instability. <!-- you can navigate back while in a stream. only a few live platforms could achieve this (e.g. youtube, who else?). -->
 
-wow fierce. yellow cards. gathering. protesting. body fighting. <!-- cards are shown as filled diamonds above the progress bar, separated by . -->
+wow fierce. yellow cards. gathering. protesting. body fighting. <!-- cards are shown as filled diamonds above the progress bar, separated by stages. (goals are shown this way asw) -->
 
 <!-- ar fully switched on here. -->
 
@@ -46965,6 +46965,12 @@ wow fierce. yellow cards. gathering. protesting. body fighting. <!-- cards are s
 <!-- sth in science. english resistance broken. what a strike indeed. that power, in that direction, that's a sensational strike. there's a huge mood change in the whole atlanta right now. just completely switched. the direction. really really impressive. -->
 
 <!-- ar have done it again. and it's happening to eng all over again. and no one was in three or four yards on mtnz. full firepower on the field. -->
+
+<!-- the black guy narrator feels fun btw. typical black guy voice. one stands out among four. (upd: the feel: a smart and reckless student. he wants to express himself. he wants. and everyone around looks at him, like judges. there has to be, it seems, some praise or awkwardness. while white ppl just talk freely. they can talk, they dont have to, and they are always right.) -->
+
+<!-- brilliant strike. brilliant goal. he is absolute genius and he is composure of the moment. he is the lead, of all his strategies. -->
+
+wait... i could just watch on a jp ip?
 
 
 
