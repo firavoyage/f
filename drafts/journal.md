@@ -46912,6 +46912,8 @@ some thoughts are used and irrelevant now. it's clear i would never retrieve the
 
 thoughts are inherently <!-- by nature --> centralized. i might not navigate to some files. i might have some tags instead. but it would be too much, maybe, to build opinionated ui and abstraction on top of files (md or yaml).
 
+<!-- no. it can be graceful. see project purpose (pm). i would have random thoughts. i would revise or trim or simplify as i like. (it does not have to be structured, and it does not have to track when.) but when i attach to a todo, start it, or finish it, things would be explicit. -->
+
 anyway just keep it simple <!-- take the easy way out -->.
 
 
