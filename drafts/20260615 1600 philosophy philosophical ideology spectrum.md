@@ -2730,4 +2730,501 @@ AI can make mistakes, so double-check responses
 
 Show all
 
+# <!-- 16 jul -->
+
+# "what one does is who they are" in philosophy
+
+In philosophy, the idea that **"what one does is who they are"** means <mark>human identity is not fixed by an inner essence, soul, or DNA, but is entirely constructed through actions and choices</mark>. [link](https://en.wikipedia.org/wiki/Existentialism)
+
+This concept serves as a pillar for several philosophical frameworks, each viewing the relationship between action and identity through a slightly different lens.
+
+### Existentialism: Existence Precedes Essence
+
+The most direct match for this idea is **Existentialism**, popularized by French philosopher [Jean-Paul Sartre](https://en.wikipedia.org/wiki/Existentialism%5FIs%5Fa%5FHumanism).
+
+- **No Pre-written Blueprint**: Sartre famously argued that for humans, **"existence precedes essence"**. Objects like a paperknife are designed with a specific purpose (essence) before they are built. Humans, however, are born first (exist) and must define who they are later through their choices.
+- **You Are the Sum of Your Actions**: In Sartre's view, you cannot claim to be a "genius writer at heart" if you never write. You are exactly what you have done, nothing more and nothing less.
+- **Radical Responsibility**: This removes all excuses. You cannot blame your nature, temperament, or past for your current identity; you actively choose who you are with every subsequent move. [link](https://daily-philosophy.com/gregory-harms-sartes-existentialism/)
+
+### Virtue Ethics: We Are What We Habitually Do
+
+Long before the existentialists, ancient Greek philosophy linked identity tightly to behavior through **Virtue Ethics**, championed by **Aristotle**. [link](https://johndavidmann.com/2014/06/03/you-are-not-what-you-do/)
+
+- **Character as a Muscle**: Aristotle argued that virtues (like courage or honesty) are not innate traits, but skills developed through practice.
+- **The Habit Loop**: As famously summarized by historian Will Durant when capturing Aristotle's essence: _"We are what we repeatedly do. Excellence, then, is not an act, but a habit."_ One generous act does not make you a generous person; a lifetime of continuous generous acts does. [link](https://johndavidmann.com/2014/06/03/you-are-not-what-you-do/)
+
+### Pragmatism: Truth Found in Effects
+
+In the late 19th and 20th centuries, American **Pragmatism** (led by thinkers like William James and John Dewey) argued that the value or meaning of any idea is found entirely in its practical consequences.
+
+- Applied to human identity, a pragmatist would argue that internal beliefs, hidden feelings, or unspoken values are functionally meaningless until they interact with the physical world. Who you "truly" are is visible only by observing the real-world impact of your behavior.
+
+### Psychological Parallel: Carl Jung
+
+Though from the field of psychoanalysis rather than pure philosophy, **Carl Jung** famously bridged this gap by stating, _"You are what you do, not what you say you'll do."_ Jung emphasized that people often project an idealized version of themselves using words, but their actual behavior reveals the true state of their psyche and shadow. [link](https://www.facebook.com/JohnMorganESQ/posts/you-are-what-you-do-not-what-you-say-you-will-do-carl-jung/5602142553162236/)
+
+***
+
+If you are exploring this concept for a specific project or paper, let me know:
+
+- Are you focusing on a **specific philosopher** (like Sartre or Aristotle)?
+- Do you want to look at the **counterarguments** (e.g., philosophies that argue intentions or inner souls matter more)?
+- Are you applying this to an **ethical dilemma** or character study? [link](https://en.wikipedia.org/wiki/Existentialism)
+
+I can tailor the depth of the philosophical breakdown to match exactly what you need.
+
+- [link](https://johndavidmann.com/2014/06/03/you-are-not-what-you-do/)\
+  You Are Not What You Do - John David Mann\
+  Jun 3, 2014 — You've probably read this quote before: “You are what you repeatedly do. Excellence, then, is not an act, but a habit.” Wise words...\
+  John David Mann
+- [link](https://daily-philosophy.com/gregory-harms-sartes-existentialism/)\
+  Sartre's Existentialism | Daily Philosophy\
+  May 19, 2023 — The first can be considered one of the key concepts in Sartre's existentialism. He is saying that humans — individuals and the spe...\
+  Daily Philosophy
+- [link](https://www.facebook.com/JohnMorganESQ/posts/you-are-what-you-do-not-what-you-say-you-will-do-carl-jung/5602142553162236/)\
+  "You are what you do, not what you say you will do." - Carl Jung\
+  Sep 23, 2022 — “You are what you do, not what you say you'll do.”— Carl Jung•Carl Gustav Jung (1875–1961) was a Swiss psychiatrist and psychoanal...\
+  Facebook·John Morgan
+
+Show all
+
+## the opposite philosophy
+
+The exact opposite philosophy is that <mark><strong>your identity is defined by an unchanging inner essence</strong>, regardless of your outward actions or circumstances</mark>. In philosophy, this broad perspective is known as **Essentia precedes existence** (the inverse of existentialism) or **Essentialism**.
+
+Here is how different philosophical frameworks argue that who you are is _not_ determined by what you do.
+
+### Essentialism: Nature Over Action
+
+Essentialism argues that every entity has a set of attributes that are necessary to its identity and function.
+
+- **Pre-Determined Blueprint**: You are born with a fixed core—a soul, a destiny, a genetic code, or a fundamental human nature.
+- **Actions as Mere Symptoms**: Your actions do not create your identity; they are simply expressions or side effects of the essence you already possess. If you do something good, it is because you are inherently good, not the other way around.
+
+### Rationalism and Idealism: The Internal Mind
+
+Philosophers like **René Descartes** and **Plato** argued that the true self exists entirely in the realm of thought, mind, or soul, independent of the physical world.
+
+- **"I Think, Therefore I Sum"**: Descartes famously isolated his identity to his thinking mind (_Cogito, ergo sum_). Even if his physical actions were completely stripped away or deceived by a demon, his core identity as a thinking thing remained fully intact.
+- **The Imperfect Physical World**: For idealists, physical actions are messy, flawed, and temporary. The true self is the perfect, eternal soul or intellect that contemplates truth internally.
+
+### Kantian Ethics: Deontology and Good Will
+
+The German philosopher **Immanuel Kant** shifted the focus of morality and identity away from the real-world results of your actions, placing it entirely on your **internal intent**.
+
+- **The Good Will**: Kant argued that the only thing that is good without qualification is a "good will."
+- **Motives Matter, Not Outcomes**: If you try your hardest to save someone from a burning building but accidentally cause the roof to collapse on them, your _action_ looks terrible from the outside. However, Kant argues your _identity_ remains that of a moral person because your internal maxim (intent) was pure.
+
+### Religious Philosophy: Divine Spark
+
+In most theological philosophies (such as Christian, Islamic, or Hindu philosophy), a person's core identity is given by a higher power.
+
+- **Imago Dei**: In Western theology, humans are created in the image of God. This divine spark gives you inherent worth and identity before you ever take your first breath or commit your first act.
+- **Inherent Worth**: Your value and identity are anchored in this spiritual reality. While bad actions are considered sins, they can be forgiven, because they do not permanently rewrite your fundamental, God-given soul.
+
+***
+
+If you want to dive deeper into this contrast, let me know:
+
+- Do you want to compare how these two sides view **guilt and redemption**?
+
+- Are you interested in the **scientific debate** (e.g., genetic determinism vs. neuroplasticity)?
+
+- Would you like to see how a **specific historical debate** (like Sartre vs. traditional religion) played out?
+
+- [link](https://intertheory.org/rock.htm)\
+  A Metaphysics and Ontology for the Age of Dynamic Entanglement\
+  What constitutes my personal identity is then some immutable fundament, some essence constituting the core of my identity; whateve...\
+  \
+  \
+  intertheory.org
+
+- [link](https://socialsci.libretexts.org/Bookshelves/Early%5FChildhood%5FEducation/Foundations%5Fof%5FEducation%5F%28SUNY%5FOneonta%29/05%3A%5FEducational%5FPhilosophies/5.02%3A%5FOntological%5FFrameworks%5Fof%5FPhilosophy)
+
+5.2: Ontological Frameworks of Philosophy\
+Nov 26, 2023 — Jean Paul Sarte posited that “existence precedes essence”, which means one's existence comes before the nature, or fact, of a thin...\
+\
+\
+Social Sci LibreTexts
+
+- [link](https://www.thegospelcoalition.org/article/responding-to-the-transgender-revolution/)\
+  Responding to the Transgender Revolution\
+  Oct 12, 2017 — 8. In philosophical terms, this speaks of the triumph of existentialism over essentialism. For in essentialism, essence precedes e...\
+  \
+  \
+  The Gospel Coalition
+
+Show all
+
+# "what one does is who they are" in philosophy, and the opposite idea
+
+In philosophy, the idea that **"what one does is who they are"** is <mark>a core principle of<span> </span><strong>Existentialism</strong></mark>.
+
+The opposite idea—that your identity exists before and independent of your actions—is known as **Essentialism**.
+
+***
+
+### 1. What One Does Is Who They Are: Existentialism
+
+Existentialism argues that humans are not born with a predefined purpose or nature. You define yourself entirely through your choices and actions.
+
+- **Key Concept:** "Existence precedes essence." You exist first, and then you define your identity.
+- **The View on Self:** There is no hidden, "true" self waiting to be discovered.
+- **Key Thinker:** Jean-Paul Sartre. He argued that if you act cowardly, you _are_ a coward. If you act bravely, you _are_ brave.
+- **Implication:** You bear total responsibility for your identity because your actions create it.
+
+### 2. The Opposite Idea: Essentialism
+
+Essentialism argues that things, including human beings, have a set of innate characteristics or an "essence" that makes them what they are.
+
+- **Key Concept:** "Essence precedes existence." Your core identity exists before you do.
+- **The View on Self:** You have an inner nature, soul, or genetic blueprint. Your actions might reflect or distort this inner self, but they do not create it.
+- **Key Thinkers:** Plato and Aristotle. They believed everything has an inherent purpose or ideal form.
+- **Implication:** Who you are is predetermined by nature, biology, God, or the universe. Your task is to discover this essence, not invent it.
+
+### Comparison Summary
+
+- **Existentialism:** Action → Identity (You are what you do).
+- **Essentialism:** Identity → Action (You do what you are).
+
+***
+
+If you want to explore this further, I can provide **historical examples** of how these ideas changed society, or explain how **modern psychology** views the debate between behavior and identity. Which direction would you like to take?
+
+- [link](https://eprints.ums.ac.id/25109/19/02.%5FPublication%5FArticle.pdf)\
+  MAKING A MORAL CHOICE IN ARTHUR MILLER’S THE DEATH OF A SALESMAN DRAMA (1949): AN EXISTENTIALIST APPROACH SCHOOL OF TEACHER\
+  It ( existentialism ) is that every one of us, as an individual, is responsible – responsible for what we do, responsible for who ...\
+  \
+  \
+  Universitas Muhammadiyah Surakarta
+- [link](https://www.philosophizethis.org/transcript/episode-086-transcript)\
+  Episode #086 - Transcript — Philosophize This!\
+  Jun 28, 2026 — When Plato says that essence precedes existence, that is known as essentialism. When Sartre says that existence precedes essence, ...\
+  \
+  \
+  Philosophize This!
+- [link](https://thephenomenologicalsociety.substack.com/p/the-living-existential-lexicon-part)\
+  The Living Existential Lexicon: Part 1\
+  Oct 26, 2023 — It ( Existence ) is the implementation of our will. Existentialist literature emphasizes that existence precedes essence, meaning ...\
+  \
+  \
+  The Phenomenological Society
+
+Show all
+
+## can they be equivalent
+
+Yes, they can be equivalent under specific philosophical conditions.
+
+When your inner essence and your outer actions perfectly align, **Existentialism** and **Essentialism** collapse into the same reality.
+
+Here is how philosophers bridge the gap to make them equivalent.
+
+### 1. The Concept of Virtue Ethics (Aristotle)
+
+Aristotle bridged this gap by arguing that you cannot separate character from behavior.
+
+- **The Idea:** A good person (essence) is simply someone who consistently does good things (action).
+- **The Equivalence:** You develop a virtuous character _by doing_ virtuous deeds until it becomes second nature. Eventually, what you do and who you are become identical.
+
+### 2. The Determinism Loop
+
+In determinism, your inner nature (genes, psychology) completely dictates your outer choices.
+
+- **The Idea:** You only act because of who you are.
+- **The Equivalence:** Because your actions are a 100% accurate reflection of your inner blueprint, observing your actions is exactly the same as observing your essence. They are two sides of the same coin.
+
+### 3. The Divine Perspective (Theology)
+
+In many religious philosophies, God sees a person's true essence and their lifetime of actions as a single, completed timeline.
+
+- **The Idea:** To an eternal being, your potential (who you are) and your ultimate choices (what you do) are completely fused.
+- **The Equivalence:** Your essence is perfectly expressed through the sum total of your life's actions.
+
+### 4. Sartrean "Bad Faith" (The Negative Equivalence)
+
+Jean-Paul Sartre actually warned that people try to make these ideas equivalent to escape responsibility. He called this **Bad Faith**.
+
+- **The Idea:** A waiter acts exactly like a "waiter robot" because he wants his action to define his entire essence, hiding his freedom to be anything else.
+- **The Equivalence:** By strictly playing a role, a person tries to turn their temporary action into their permanent, unchangeable identity.
+
+***
+
+If you want to explore this deeper, I can show you how this applies to **modern AI and machines**, or look at how this equivalence plays out in **famous fictional characters** or literature. Which would you prefer?
+
+- [link](https://philarchive.org/archive/LEEIAG-2)\
+  Intertranslatability and Ground-equivalence \*\
+  The upshot of this dilemma in both philosophy of logic and metaphysics is considered. Some intuitions suggest that a pair of logic...\
+  \
+  PhilArchive
+
+## what's the philosophical idea when they are equivalent or not
+
+The relationship between whether essence and action are equivalent or separate depends on the specific branch of philosophy you look at.
+
+Here are the exact philosophical ideas and movements that classify them as equivalent or non-equivalent.
+
+***
+
+### When They Are NOT Equivalent: Dualism and Voluntarism
+
+When a philosophy insists that who you are and what you do are different, it is usually operating under these frameworks:
+
+- **Mind-Body Dualism (Cartesianism):** René Descartes argued that the mind (the thinking self/essence) is entirely separate from the physical body (the thing doing the actions). Under dualism, your inner thoughts and outer behaviors belong to two completely different realms.
+- **Voluntarism (Kierkegaard / Sartre):** This idea prioritizes human will and freedom above all else. Because you always have the freedom to change your behavior tomorrow, your current actions can never fully capture or lock in your true "essence." You are always more than what you do.
+- **Theological Grace:** In many religious philosophies, humans are viewed as inherently flawed in action (sinful), but they hold a divine essence or soul that remains loved by God. Action and identity are strictly kept apart.
+
+### When They ARE Equivalent: Monism and Functionalism
+
+When a philosophy merges identity and action into a single concept, it falls under these categories:
+
+- **Philosophical Monism:** Unlike dualism, monism states that reality is made of only one substance. There is no hidden "inner soul" separate from the physical world. Who you are is entirely visible in what you do.
+- **Behaviorism (Gilbert Ryle):** In the philosophy of mind, behaviorism rejects the idea of a "ghost in the machine." Ryle argued that "mind" is just a word we use to describe a pattern of actions. To _be_ angry is simply to _act_ angry; there is no hidden feeling separate from the behavior.
+- **Functionalism:** This modern philosophy defines something entirely by its function or role. For example, a heart is a heart because it pumps blood. If a machine acts exactly like a human, it _is_ a human. Identity is identical to function.
+- **Pragmatism (William James):** This American philosophy judges the truth of an idea or the nature of a person purely by its practical, observable consequences. If an inner essence cannot be measured through outer action, it effectively does not exist.
+
+***
+
+If you'd like to trace this further, I can explain how this distinction shapes **legal and moral philosophy** (how we punish actions vs. intent) or how it applies to **existential dread and identity crises**. Which angle interests you?
+
+- [link](https://www.ebsco.com/research-starters/religion-and-philosophy/dualism-philosophy-mind)\
+  Dualism (philosophy of mind) | Religion and Philosophy | Research Starters\
+  Additionally, Descartes ( René Descartes ) posed the argument: Because a person can imagine the mind separate from the body, the t...\
+  \
+  EBSCO
+- [link](https://www.iasexpress.net/modules/2-3-substance-aristotle-descartes-spinoza-leibniz/)
+
+2.3 Substance (Aristotle, Descartes, Spinoza, Leibniz) – IAS EXPRESS\
+Descartes ( Descartes' Philosophy ) ' mind-body distinction is often referred to as “Cartesian dualism.”\
+\
+IAS EXPRESS
+
+- [link](https://underthewraps.medium.com/the-dualism-of-mind-and-body-what-you-need-to-know-cf33e9f9bb82)\
+  The Dualism Of Mind And Body! What You Need To Know\
+  Feb 9, 2025 — He ( René Descartes ) argued that the mind is a non-material entity, separate from the body, that is made of physical matter. This...\
+  \
+  \
+  Medium
+
+Show all
+
+# Existentialism Essentialism philosophy
+
+**Existentialism and essentialism** are two fundamentally opposing philosophical worldviews that disagree on whether things have a predetermined nature or purpose. The core conflict centers on the sequence of birth, identity, and meaning: <mark><strong>existentialism argues that "existence precedes essence," while essentialism claims that "essence precedes existence"</strong></mark>. [link](https://jeetjani22.medium.com/existentialism-vs-essentialism-5f472b4bbc7f)
+
+***
+
+### The Core Conflict: Essence vs. Existence
+
+Understanding the primary difference comes down to how these two concepts view identity and purpose:
+
+```
+Essentialism:    [ Essence / Purpose ]  ───►  [ Birth / Existence ]
+Existentialism:   [ Birth / Existence ]  ───►  [ Choice / Essence ]
+```
+
+- **Essentialism ("Essence precedes existence")**: This view asserts that everything, including humans, has a set of core attributes (an "essence") that is necessary to its identity and purpose. This essence exists _before_ the physical thing does. For example, a knife is designed with the predetermined essence to cut; if it can't cut, it fails its purpose. Applied to humans, it suggests you are born with a hardwired purpose, destiny, or natural soul.
+- **Existentialism ("Existence precedes essence")**: Popularized by modern philosophers like Jean-Paul Sartre, this school argues that humans are not born with any predefined blueprint or moral coding. You exist first as a blank canvas. Only through your conscious choices, actions, and personal responsibilities do you actively construct your own "essence" and meaning. [link](https://www.reddit.com/r/askphilosophy/comments/sy2so8/is%5Fmy%5Funderstanding%5Fof%5Fessentialismexistentialism/)
+
+***
+
+### Comparison Matrix
+
+| Philosophical Aspect  | Essentialism                                | Existentialism                               |
+| --------------------- | ------------------------------------------- | -------------------------------------------- |
+| **Primary Maxim**     | Essence precedes existence                  | Existence precedes essence                   |
+| **Origin of Meaning** | Discovered internally or externally         | Created actively through choice              |
+| **Human Nature**      | Fixed, natural, or biologically driven      | Fluid, self-authored, and unbound            |
+| **Morality**          | Absolute, natural laws, or objective truths | Subjective, constructed by individual agency |
+| **Key Proponents**    | Aristotle, Plato                            | Jean-Paul Sartre, Simone de Beauvoir         |
+
+***
+
+### Key Concepts in Essentialism
+
+- **Fixed Realities**: Biological essentialism might argue that your DNA or evolutionary traits dictate your destiny and behavior. Social essentialism might claim categories like gender or social roles are natural and unchangeable.
+- **Objective Truth**: There is an ultimate, structured way the universe operates, and humans must introspectively find where they fit into that order.
+- **Educational View**: In the [Stanford Encyclopedia of Philosophy](https://plato.stanford.edu/entries/existentialism/) contexts of learning, educational essentialism emphasizes a "back-to-basics" approach focusing on fixed traditional academic disciplines, rigor, and cultural literacy. [link](https://jeetjani22.medium.com/existentialism-vs-essentialism-5f472b4bbc7f)
+
+### Key Concepts in Existentialism
+
+- **Radical Freedom**: Because there is no cosmic script, you are entirely free to choose your path.
+- **The Absurd**: Human beings have a desperate desire for meaning in a chaotic universe that offers none inherently. Meaning must be forged anyway.
+- **Bad Faith**: Sartre’s term for when individuals pretend they do not have free choices, instead mindlessly conforming to societal expectations or roles assigned to them by others.
+- **Angst and Responsibility**: Radical freedom means you have no one else to blame for your life. You carry the heavy burden of your own choices. [link](https://www.youtube.com/watch?v=YaDvRdLMkHs\&t=146)
+
+***
+
+Would you like to explore how **specific philosophers** like Aristotle or Jean-Paul Sartre argued these points, or should we examine how these two ideas apply to **modern psychology and ethics**? [link](https://jeetjani22.medium.com/existentialism-vs-essentialism-5f472b4bbc7f)
+
+- [link](https://www.reddit.com/r/askphilosophy/comments/sy2so8/is%5Fmy%5Funderstanding%5Fof%5Fessentialismexistentialism/)\
+  Is my understanding of essentialism/existentialism correct?\
+  Feb 21, 2022 — Some say that existentialism is more like: \* A person does not have an inbuilt set of values that they are inherently structured t...\
+  Reddit
+- [link](https://jeetjani22.medium.com/existentialism-vs-essentialism-5f472b4bbc7f)\
+  Existentialism vs Essentialism - Jeet Jani - Medium\
+  Aug 14, 2021 — The existentialist view proposes that life has no predefined purpose, we just exist and we can mould ourselves in whatever way we ...\
+  Medium·Jeet Jani
+- [link](https://www.sacap.edu.za/blog/applied-psychology/essentialism/)\
+  Existentialism Vs Essentialism: The Psychology Of Existence\
+  Feb 28, 2020 — The existentialist worldview proposes that our life has no predefined purpose; we merely exist. The upside of this take is that we...\
+  SACAP | South African College Of Applied Psychology
+
+Show all
+
+# (d) philosophy ontology spectrum
+
+In philosophy and social science research, the **ontological spectrum** represents <mark>a continuum of views regarding the nature of reality, ranging from a singular, completely objective reality to multiple, highly subjective realities shaped entirely by human perception</mark>. [link](https://phdcentre.com/phd-thesis-ontology-guide/)
+
+Alternatively, in information science—a field heavily adapted from philosophical ontology—the "ontology spectrum" refers to a continuum of data frameworks arranged by their level of semantic precision and expressiveness. [link](https://en.wikipedia.org/wiki/Semantic%5Fspectrum)
+
+***
+
+### 1. The Philosophical and Research Spectrum
+
+When used to define a research philosophy or an overarching worldview, the ontological spectrum dictates how an inquirer views existence. It is generally broken down into four core positions: [link](https://phdcentre.com/phd-thesis-ontology-guide/)
+
+```
+Objectivism ─────────────────────────────────────────────────────────────► Subjectivism
+[Naïve Realism]      [Critical Realism]       [Bounded/Subtle Realism]    [Relativism]
+```
+
+- **Naïve Realism (Extreme Objectivism)**: The belief that **one objective reality** exists completely independent of human thoughts or perceptions. What we observe is exactly how reality functions; truths are universal and context-free.
+- **Critical Realism**: Acknowledges that a single independent reality exists, but asserts that **human senses and biases** limit our ability to experience or measure it perfectly.
+- **Bounded / Subtle Realism**: Holds that while an independent reality may exist, it can only be understood through localized, community-shared cognitive frameworks and human language.
+- **Relativism (Extreme Subjectivism)**: The view that **multiple realities exist** because reality is a fluid social construction. It is entirely dependent on language, culture, individual interpretations, and context. [link](https://phdcentre.com/phd-thesis-ontology-guide/)
+
+***
+
+### 2. The Computer and Information Science Spectrum
+
+In computer science, ontology moves from abstract philosophy to practical data models. The **semantic spectrum** or **ontology spectrum** maps how complex a system's structure is, progressing from weak semantics (simple lists) to strong semantics (rigorous logic): [link](https://jessicatalisman.substack.com/p/ontology)
+
+- **Weak Semantics**:
+  - _Glossaries / Catalogs_: Simple lists of terms or items with minimal definitions.
+  - _Taxonomies_: Structured hierarchies showing parent-child relationships (e.g., "A dog is a type of mammal").
+- **Strong Semantics**:
+  - _Thesauri & Conceptual Models_: Systems that add associative relationships (e.g., "Hot is antonym to Cold").
+  - _Formal Ontologies (OWL)_: Rich systems containing distinct classes, strict properties, rules, and restrictions that let machines autonomously infer new knowledge. [link](https://www.isko.org/cyclo/ontologies)
+
+***
+
+To explore this further, let me know if you want to look at this from a specific angle:
+
+- Are you applying this to a **PhD thesis or research methodology**?
+
+- Are you looking at it from an **information systems/computer science** perspective?
+
+- Would you like a deeper breakdown of **realism vs. relativism**? [link](https://phdcentre.com/phd-thesis-ontology-guide/)
+
+- [link](https://phdcentre.com/phd-thesis-ontology-guide/)\
+  An Ultimate Guide to Ontology for Your PhD Thesis\
+  Jan 25, 2023 — At one end of the ontological spectrum is naïve realism, a philosophical stance, according to which there is only one reality that...\
+  PhD Centre
+
+- [link](https://i2insights.org/2017/05/02/philosophy-for-interdisciplinarity/)\
+  A guide to ontology, epistemology, and philosophical perspectives for interdisciplinary researchers\
+  May 2, 2017 — \*A Guide to Understanding Social Science Research for Natural Scientists\* by Katie Moon and Deborah Blackman presents a philosophi...\
+  Integration and Implementation Insights
+
+- [link](https://en.wikipedia.org/wiki/Semantic%5Fspectrum)\
+  Semantic spectrum - Wikipedia\
+  The semantic spectrum, sometimes referred to as the ontology spectrum, the smart data continuum, or semantic precision, is in ling...\
+  Wikipedia
+
+Show all
+
+# (?) philosophy ontology
+
+<mark><strong>Ontology is the branch of philosophy that studies the nature of being, existence, and reality.</strong></mark> As a primary subfield of metaphysics, it provides a framework for defining what entities exist and how they are classified into fundamental categories. [link](https://en.wikipedia.org/wiki/Ontology)
+
+### Core Questions of Ontology
+
+Ontologists seek to unravel the basic building blocks of the universe by asking foundational questions: [link](https://en.wikipedia.org/wiki/Ontology)
+
+- **What exists?** (e.g., Do abstract concepts like numbers exist, or only physical objects?)
+- **What does it mean "to be"?** (e.g., Is existence a property that things possess, or is it a prerequisite for properties?)
+- **How do entities relate?** (e.g., What is the relationship between an object, like a red apple, and its properties, like the color redness?) [link](https://en.wikipedia.org/wiki/Ontology)
+
+### Key Ontological Positions
+
+Philosophers split into different camps based on what they believe truly exists: [link](https://www.britannica.com/topic/ontology-metaphysics)
+
+- **Realism**: The belief that a single, objective reality exists entirely independent of human perception or minds.
+- **Idealism**: The stance that reality is fundamentally mentally constructed or immaterial, heavily shaped by human consciousness.
+- **Materialism**: The view that only physical matter and energy exist, and that mental states are simply products of physical processes.
+- **Relativism / Subjectivism**: The perspective that multiple realities exist because reality is constructed locally by individuals, cultures, or contexts. [link](https://philosophynow.org/issues/16/Ontology%5Ffor%5FBeginners)
+
+### Ontology vs. Epistemology
+
+It is highly common to encounter these two foundational concepts together in academic research. They address separate parts of the philosophical puzzle: [link](https://www.youtube.com/watch?v=AhdZOsBps5o)
+
+- **Ontology**: Focuses on **what is real** and what exists.
+- **Epistemology**: Focuses on **how we know** what is real, exploring the nature and limits of human knowledge. [link](https://www.open.edu/openlearn/health-sports-psychology/critically-exploring-psychology/content-section-3)
+
+### Contemporary Applications
+
+Beyond abstract philosophy, ontology acts as a framework for practical fields:
+
+- **Information Science & AI**: Computer scientists build [formal ontologies](https://plato.stanford.edu/entries/ontology-is/) to create structured, standardized taxonomies that allow AI systems to understand relationships between data points.
+- **Scientific Research**: A researcher’s specific ontological stance dictates how they design experiments and interpret findings, particularly in social sciences. [link](https://www.youtube.com/watch?v=0q0huTd3B8Q\&vl=en)
+
+If you are exploring this for a specific project, let me know if you want to look into **famous ontological arguments** (like those for the existence of God), study how ontology applies to **academic research design**, or see how **computer science** uses the term. [link](https://www.youtube.com/watch?v=0q0huTd3B8Q\&vl=en)
+
+- [link](https://en.wikipedia.org/wiki/Ontology)\
+  Ontology - Wikipedia\
+  Definition. Ontology is the study of being. It is the branch of philosophy that investigates the nature of existence, the features...\
+  Wikipedia
+- [link](https://www.reddit.com/r/askphilosophy/comments/10jwhd4/please%5Fexplain%5Flike%5Fim%5F10%5Fyears%5Fold%5Fwhat%5Fexactly/)\
+  Please, explain like I'm 10 years old; what exactly is “Ontology”?\
+  Jan 24, 2023 — The study of the Being of beings, the overarching concept of what it means to be, what kind of Being there is, this is Ontology. T...\
+  Reddit·r/askphilosophy
+- [link](https://philosophynow.org/issues/16/Ontology%5Ffor%5FBeginners)\
+  Ontology for Beginners | Issue 16 | Philosophy Now\
+  Ontology is the branch of metaphysics that examines the nature and categories of existence. It asks questions like: \* What is the ...\
+  Philosophy Now
+
+Show all
+
+# (?) pragmaticism or pragmatism
+
+The choice between **pragmatism** and **pragmaticism** depends on whether you are speaking generally or referencing a specific, strict philosophical theory. <mark><strong>Pragmatism</strong><span> </span>is the universally recognized term for a practical approach to life, politics, and philosophy.<span> </span><strong>Pragmaticism</strong><span> </span>is a highly specific, niche term coined by philosopher Charles Sanders Peirce in 1905 to differentiate his rigid mathematical and logical ideas from the broader movement</mark>. [link](https://en.wikipedia.org/wiki/Pragmaticism)
+
+### The Breakdown
+
+- **Pragmatism (General & Philosophical Use)**
+  - **Meaning**: Dealing with problems in a practical, realistic way rather than relying on abstract theories or ideals.
+  - **Context**: This is the correct word for 99% of situations. It applies to everyday decision-making, political compromise, and the broad American philosophical school popularized by William James and John Dewey.
+  - _Example_: "The committee chose a path of political **pragmatism** to ensure the bill would pass."
+- **Pragmaticism (Strict Philosophical Use)**
+  - **Meaning**: A precise branch of logic and semiotics that views the meaning of a concept through its strictly testable, scientific, and experimental consequences.
+  - **Context**: Charles Sanders Peirce originally coined the word "pragmatism" in the 1870s. However, when popular writers and fellow philosophers modified it into a more flexible, literary outlook that he disliked, he renamed his specific version **pragmaticism**. He famously stated the new word was "ugly enough to be safe from kidnappers."
+  - _Example_: "To understand Peirce's strict focus on scientific logic, you must study his **pragmaticism**, not just general pragmatism." [link](https://en.wikipedia.org/wiki/Pragmaticism)
+
+### Comparison
+
+| Feature          | Pragmatism                                              | Pragmaticism                                                        |
+| ---------------- | ------------------------------------------------------- | ------------------------------------------------------------------- |
+| **Commonality**  | Ubiquitous (found in standard dictionaries)             | Rare (found mostly in philosophy textbooks)                         |
+| **Scope**        | Broad: life, politics, ethics, education, and truth     | Narrow: mathematical logic and scientific inquiry                   |
+| **Key Thinkers** | William James, John Dewey, Richard Rorty                | Strictly Charles Sanders Peirce                                     |
+| **Core Belief**  | An idea is true if it works satisfactorily in practice. | Meaning comes from the precise, predictable habits an idea creates. |
+
+Are you writing a **philosophical paper** on Charles Sanders Peirce, or looking to describe a **practical approach** to a real-world problem? Let me know the context so I can help you pick the perfect word!
+
+- [link](https://en.wikipedia.org/wiki/Pragmaticism)\
+  Pragmaticism - Wikipedia\
+  "Pragmaticism" is a term used by Charles Sanders Peirce for his pragmatic philosophy starting in 1905, in order to distance himsel...\
+  Wikipedia
+- [link](https://plato.stanford.edu/entries/pragmatism/)\
+  Pragmatism - Stanford Encyclopedia of Philosophy\
+  Aug 16, 2008 — Both James and Peirce used 'pragmatism' as the name of a method, principle, or 'maxim' for clarifying concepts and hypotheses and ...\
+  Stanford Encyclopedia of Philosophy
+- [link](https://iep.utm.edu/pragmati/)\
+  Pragmatism | Internet Encyclopedia of Philosophy\
+  Pragmatism is a philosophical movement that includes those who claim that an ideology or proposition is true if it works satisfact...\
+  Internet Encyclopedia of Philosophy
+
+Show all
+
 # 
