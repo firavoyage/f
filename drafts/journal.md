@@ -46916,7 +46916,7 @@ thoughts are inherently <!-- by nature --> centralized. i might not navigate to 
 
 anyway just keep it simple <!-- take the easy way out -->.
 
-20 20 download all songs for astro dx from awmc.cc.
+20 20 download all songs for astro dx from awmc.cc. format and import. 21 20
 
 now it's updated, one click pow based dl of all versions <!-- w or wo vid, cached (it seems) -->, no captcha or qq group bot verification required.
 
