@@ -143,5 +143,9 @@ call.
 
 `call(method, payload)` is not easily typed.
 
-fetch
+check fetch api.
+
+it can be simple. either network drop or non 200 at the end of the day.
+
+
 
