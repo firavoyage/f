@@ -46974,6 +46974,12 @@ wait... i could just watch on a jp ip?
 
 bbc home... fully unrounded entertainment page can work, it seems... it works! well designed.
 
+06 00 research bbc ux, walkthrough. 06 20
+
+i could watch Oppenheimer for free. no ads (despite a 20s instantly skippable trailer of a drama). no recommended vids.
+
+<!-- though i guess it might not beat the local one. well, assuming perfect network stability and vid quality, bbc implements different colored subs for different ppl (very high chroma, distinct hue), w yt like gray bg, and moves it left for "crowd". idk if it's worth the tradeoff of distraction. -->
+
 
 
 <!-- timebox, plan. -->

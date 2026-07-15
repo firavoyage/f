@@ -149,6 +149,16 @@ it can be simple. either network drop or non 200 at the end of the day.
 
 ---
 
-sync google.ai
+pm
+
+learn some fundamentals. just have some template questions <!-- divide and conquer -->. it builds confidence.
+
+"pm knowledge"
+
+---
+
+repo. <!-- start by copying the template -->
+
+purpose.
 
 
