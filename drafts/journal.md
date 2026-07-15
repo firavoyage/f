@@ -46958,6 +46958,10 @@ fluid playback. no loading or network instability.
 
 wow fierce. yellow cards. gathering. protesting. body fighting. <!-- cards are shown as filled diamonds above the progress bar, separated by . -->
 
+<!-- ar fully switched on here. -->
+
+"qr: get the tv license" "qr: player rater" <!-- football player or stream player? -->
+
 
 
 <!-- timebox, plan. -->
