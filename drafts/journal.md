@@ -46944,7 +46944,7 @@ the player is also meticulously designed. look at the icons, the ixd, and the co
 
 <!-- vibrant pink accent (progress bar and enabled switch), gray unrounded options/context menu. -->
 
-it can fullscreen as expected when it's already fullscreen.
+it can fullscreen as expected when it's already fullscreen. <!-- shortcut f works as expected -->
 
 the narrative is calm and clinical <!-- as well as the ui widgets. low chroma colors (23 off black (arg) and 95 off white (eng and the score), desaturated lime accent of oklch(57% 0.08 189.42)) for time (oklch(87% 0.15 88.38) when finished ft), skeumophic light from above, no country flags. low opacity bbc watermark. nothing but the progress bar dot is rounded/circular. -->. less dramatic than fox. seems more premium.
 
@@ -46971,6 +46971,8 @@ wow fierce. yellow cards. gathering. protesting. body fighting. <!-- cards are s
 <!-- brilliant strike. brilliant goal. he is absolute genius and he is composure of the moment. he is the lead, of all his strategies. -->
 
 wait... i could just watch on a jp ip?
+
+bbc home... fully unrounded entertainment page can work, it seems... it works! well designed.
 
 
 
