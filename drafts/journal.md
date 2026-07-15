@@ -46946,7 +46946,7 @@ the player is also meticulously designed. look at the icons, the ixd, and the co
 
 it can fullscreen as expected when it's already fullscreen.
 
-the narrative is calm and clinical <!-- as well as the ui widgets. low chroma colors (23 off black (arg) and 95 off white (eng and the score), desaturated lime accent of oklch(57% 0.08 189.42)) for time, skeumophic light from above, no country flags. low opacity bbc watermark. nothing but the progress bar dot is rounded/circular. -->. less dramatic than fox. seems more premium.
+the narrative is calm and clinical <!-- as well as the ui widgets. low chroma colors (23 off black (arg) and 95 off white (eng and the score), desaturated lime accent of oklch(57% 0.08 189.42)) for time (oklch(87% 0.15 88.38) when finished ft), skeumophic light from above, no country flags. low opacity bbc watermark. nothing but the progress bar dot is rounded/circular. -->. less dramatic than fox. seems more premium.
 
 <!-- first in history. not a single shot on target in the first half. it has been tough. isnt it. -->
 
