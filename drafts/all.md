@@ -299,6 +299,7 @@ desktop:
 - shell chmod x abstraction
 - vscode clear search query when esc
 - shell ffmpeg abstraction tput colors
+- obs restream multi platform simultaneous streaming
 
 android:
 
