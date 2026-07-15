@@ -46894,6 +46894,10 @@ fix typo "becasue"
 Created because github is so unusable and [unreliable](https://red-squares.cian.lol/) and I want to leave, but I don't want to leave the community behind.
 ```
 
+17 00 dl `Bakemonogatari (2009)`
+
+https://nyaa.si/view/1582135
+
 
 
 <!-- timebox, plan. -->
