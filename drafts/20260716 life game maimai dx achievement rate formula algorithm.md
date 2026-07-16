@@ -6630,4 +6630,36 @@ current: `[]`
 
 expected: break 5 hp, 2 lp
 
+# . observation
+
+```yaml
+# b = base = 100/total points = 100/(1*tap/touch number+2*hold/touch hold number+3*slide number+5*break number)
+# bb = break base = 1/break number
+# loss for each
+
+# to calc n, m, make take gcd of b and bb
+# _b = 0.1 b
+# _bb = 0.05 bb
+tap/touch:
+  great: 0.2 base
+  good: 0.5 base
+  miss: 1 base
+hold:
+  great: 2*0.2*base = 0.4 base
+  good: 2*0.5*base = 1 base
+  miss: 2*1*base = 2 base
+slide:
+  great: 3*0.2*base = 0.6 base
+  good: 3*0.5*base = 1.5 base
+  miss: 3*1*base = 3 base
+break:
+  high perfect: 0.25*break base = 0.25 bb
+  low perfect: 0.5*break base = 0.5 bb
+  high great: 5*0.2*base+0.6*break base = 1 b + 0.6 bb
+  mid great: 5*0.4*base+0.6*break base = 2 b + 0.6 bb
+  low great: 5*0.5*base+0.6*break base = 2.5 b + 0.6 bb
+  good: 5*0.6*base+0.7*break base = 3 b + 0.7 bb
+  miss: 5*1*base+1*break base = 5 b + 1 bb
+```
+
 
