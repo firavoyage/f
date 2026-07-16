@@ -440,6 +440,8 @@ seems break is different on base.
 - good 0.4
 
 ```yaml
+# b = base = 100/total points = 100/(1*tap/touch number+2*hold/touch hold number+3*slide number+5*break number)
+# bb = break base = 1/break number
 # loss for each
 tap/touch:
   great: 0.2 base
@@ -462,5 +464,22 @@ break:
   good: 5*0.6*base+0.7*break base = 3 b + 0.7 bb
   miss: 5*1*base+1*break base = 5 b + 1 bb
 ```
+
+q: can a great tap iff several lp breaks?
+
+a:
+
+```precious
+int tp, bn, n
+
+0.2 b = n * 0.5 bb
+0.2 * 100/tp = n * 0.5 * 1/bn
+20 bn = 0.5 n * tp
+40 bn = n * tp
+```
+
+yes.
+
+possible solution: 20 bn, 800 tp, then 1 great tap = 1 lp break.
 
 
