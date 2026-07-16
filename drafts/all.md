@@ -376,6 +376,7 @@ pm:
 - grill me
 - qa or qc five pm process groups ten pm knowledge areas
 - pm methodology
+- pm knowledge
 
 gamedev:
 
