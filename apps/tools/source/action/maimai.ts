@@ -76,6 +76,32 @@ function solve_change(target: number, factors: number[]): number[][] {
   return solutions_table[target];
 }
 
+function stars_and_bars(n: number, m: number): number[][] {
+  const results: number[][] = [];
+  const current_combination: number[] = [];
+
+  function distribute(remaining_stars: number, remaining_boxes: number): void {
+    if (remaining_boxes === 1) {
+      current_combination.push(remaining_stars);
+      results.push([...current_combination]);
+      current_combination.pop();
+      return;
+    }
+
+    for (let i = 0; i <= remaining_stars; i++) {
+      current_combination.push(i);
+      distribute(remaining_stars - i, remaining_boxes - 1);
+      current_combination.pop();
+    }
+  }
+
+  if (m > 0 && n >= 0) {
+    distribute(n, m);
+  }
+
+  return results;
+}
+
 function base(tap: number, hold: number, slide: number, break_number: number) {
   return 100 / (1 * tap + 2 * hold + 3 * slide + 5 * break_number)
 }
@@ -101,7 +127,7 @@ log(find_n_m(_b, _bb, 101 - 100.9166))
  */
 
 const _b_factors = [1, 2, 4, 5, 6, 10, 15, 20, 25, 30, 50]
-const _bb_factors =  [5, 10, 12, 14, 20]
+const _bb_factors = [5, 10, 12, 14, 20]
 
 log(solve_change(45, _bb_factors))
 log(solve_change(34, _bb_factors))
