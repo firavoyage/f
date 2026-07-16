@@ -112,6 +112,7 @@ life:
 - coffee
 - dark chocolate black chocolate
 - twitter access permanency
+- game maimai dx achievement rate formula
 
 create something:
 
