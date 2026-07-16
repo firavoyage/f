@@ -46982,6 +46982,10 @@ i could watch Oppenheimer for free. no ads (despite a 20s instantly skippable tr
 
 <!-- though i guess it might not beat the local one. well, assuming perfect network stability and vid quality, bbc implements different colored subs for different ppl (very high chroma, distinct hue), w yt like gray bg, and moves it left for "crowd". idk if it's worth the tradeoff of distraction. -->
 
+17
+
+05 20 complete maimai achievement rate to stats algorithm.
+
 
 
 <!-- timebox, plan. -->
