@@ -125,8 +125,10 @@ export function maimai(achievement: number,
 
   log(find_n_m(_b, _bb, loss))
 
-  // 
-  const _b_factors = [2, 4, 5, 6, 10, 15, 20, 25, 30, 50]
+  // great tap, great hold, good tap, great slide, 
+  const _b_factors = [2, 4, 5, 6, 10, 15, 20, 30]
+  // const _b_factors = [2, 4, 5, 6, 10, 15, 20, 25, 30, 50]
+  
   // 
   const _bb_factors = [5, 10, 12, 14, 20]
 
