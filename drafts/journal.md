@@ -46920,6 +46920,8 @@ anyway just keep it simple <!-- take the easy way out -->.
 
 now it's updated, one click pow based dl of all versions <!-- w or wo vid, cached (it seems) --> <!-- upd: yes. it's on cdn, and resumes perfectly. though the vibed frontend is still quirky (native alert when state change upon captcha refresh, inherently inconsistent ui) and philistine. -->, no captcha or qq group bot verification required.
 
+it takes filename as song name it seems? i see the same song twice, one w `[DX] ` prefix.
+
 16
 
 01 40 think.
