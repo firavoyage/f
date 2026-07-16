@@ -110,27 +110,31 @@ function break_base(break_number: number) {
   return 1 / break_number
 }
 
-const b = base(285 + 113, 62, 107, 27)
-const bb = break_base(27)
+export function maimai(achievement: number,
+  tap: number, hold: number, slide: number, break_number: number) {
 
-log(b, bb)
+  const b = base(tap, hold, slide, break_number)
+  const bb = break_base(break_number)
 
-const _b = 0.1 * b
-const _bb = 0.05 * bb
+  log({ b, bb })
 
-log(101 - 100.9166)
+  const _b = 0.1 * b
+  const _bb = 0.05 * bb
 
-log(find_n_m(_b, _bb, 101 - 100.9166))
+  const loss = 101 - achievement
 
-/**
- * since 1 exists in _b factors, n is guaranteed to be solvable
- */
+  log(find_n_m(_b, _bb, loss))
 
-const _b_factors = [1, 2, 4, 5, 6, 10, 15, 20, 25, 30, 50]
-const _bb_factors = [5, 10, 12, 14, 20]
+  // 
+  const _b_factors = [2, 4, 5, 6, 10, 15, 20, 25, 30, 50]
+  // 
+  const _bb_factors = [5, 10, 12, 14, 20]
 
-log(solve_change(45, _bb_factors))
-log(solve_change(34, _bb_factors))
-log(solve_change(23, _bb_factors))
+  log(solve_change(45, _bb_factors))
+  log(solve_change(34, _bb_factors))
+  log(solve_change(23, _bb_factors))
 
 
+}
+
+log(maimai(100.9166, 285 + 113, 62, 107, 27))
