@@ -1,518 +1,368 @@
-type tap_like_counts = [number, number, number, number];
-type break_counts = [number, number, number, number, number, number, number];
-
-type solution = {
-  tap: tap_like_counts;
-  hold: tap_like_counts;
-  slide: tap_like_counts;
-  break: break_counts;
+type NoteJudgments = {
+  taps: { great: number; good: number; miss: number };
+  holds: { great: number; good: number; miss: number };
+  slides: { great: number; good: number; miss: number };
+  breaks: {
+    highPerfect: number;
+    lowPerfect: number;
+    highGreat: number;
+    midGreat: number;
+    lowGreat: number;
+    good: number;
+    miss: number;
+    perfect: number;
+  };
 };
 
-type partial_solution = {
-  loss: number;
-  counts: number[];
-};
+type Solution = NoteJudgments;
 
-type search_state = {
-  loss: number;
-  solution: solution;
-};
+interface LossContribution {
+  b: number;
+  bb: number;
+}
 
-type category_name = "tap" | "hold" | "slide" | "break";
+const TAP_LOSSES: LossContribution[] = [
+  { b: 0, bb: 0 },   // perfect
+  { b: 0.2, bb: 0 }, // great
+  { b: 0.5, bb: 0 }, // good
+  { b: 1.0, bb: 0 }, // miss
+];
 
-type category_spec = {
-  name: category_name;
-  partials: partial_solution[];
-};
+const HOLD_LOSSES: LossContribution[] = [
+  { b: 0, bb: 0 },   // perfect
+  { b: 0.4, bb: 0 }, // great
+  { b: 1.0, bb: 0 }, // good
+  { b: 2.0, bb: 0 }, // miss
+];
 
-function solve_achievement_rate_breakdown(params: {
-  achievement_rate: number;
-  tap: number;
-  hold: number;
-  slide: number;
-  break_count: number;
-}): solution[] {
-  const unit = 1000000;
-  const tolerance = 1000;
+const SLIDE_LOSSES: LossContribution[] = [
+  { b: 0, bb: 0 },   // perfect
+  { b: 0.6, bb: 0 }, // great
+  { b: 1.5, bb: 0 }, // good
+  { b: 3.0, bb: 0 }, // miss
+];
 
-  const total_weight =
-    params.tap + params.hold * 2 + params.slide * 3 + params.break_count * 5;
+const BREAK_LOSSES: LossContribution[] = [
+  { b: 0, bb: 0.25 },  // highPerfect
+  { b: 0, bb: 0.5 },   // lowPerfect
+  { b: 1.0, bb: 0.6 }, // highGreat
+  { b: 2.0, bb: 0.6 }, // midGreat
+  { b: 2.5, bb: 0.6 }, // lowGreat
+  { b: 3.0, bb: 0.7 }, // good
+  { b: 5.0, bb: 1.0 }, // miss
+  { b: 0, bb: 0 },     // perfect
+];
 
-  const target_loss = Math.round((101 - params.achievement_rate) * unit);
-  if (target_loss < -tolerance) return [];
+function calculateTotalPoints(tap: number, hold: number, slide: number, brk: number): number {
+  return 1 * tap + 2 * hold + 3 * slide + 5 * brk;
+}
 
-  if (total_weight === 0) {
-    return Math.abs(target_loss) <= tolerance ? [create_empty_solution()] : [];
+function findSolutions(
+  achRate: number,
+  tapNum: number,
+  holdNum: number,
+  slideNum: number,
+  breakNum: number
+): Solution[] {
+  const targetLoss = 101 - achRate;
+  const totalPoints = calculateTotalPoints(tapNum, holdNum, slideNum, breakNum);
+  if (totalPoints === 0) return [];
+  
+  const bCoeff = 100 / totalPoints;
+  const bbCoeff = breakNum > 0 ? 1 / breakNum : 0;
+  const solutions: Solution[] = [];
+
+  // Generate lightweight maps containing configurations indexed by their exact b-loss values
+  // Key: b-loss multiplied by 10 (as an integer to preserve Map matching keys without floating errors)
+  function getBLossMap(num: number, losses: LossContribution[]) {
+    let current = new Map<number, number[][]>();
+    current.set(0, [[0, 0, 0]]); // Each entry: [great, good, miss]
+
+    for (let i = 0; i < num; i++) {
+      const next = new Map<number, number[][]>();
+      for (const [currB, configs] of current) {
+        for (let j = 0; j < losses.length; j++) {
+          const nextB = Math.round((currB + losses[j].b) * 10);
+          for (const config of configs) {
+            const newConfig = [...config];
+            if (j > 0) {
+              newConfig[j - 1]++;
+            }
+            if (!next.has(nextB)) {
+              next.set(nextB, []);
+            }
+            // Max out variations per specific loss signature to protect heap size
+            if (next.get(nextB)!.length < 10) {
+              next.get(nextB)!.push(newConfig);
+            }
+          }
+        }
+      }
+      current = next;
+    }
+    return current;
   }
 
-  const base = 100 / total_weight;
-  const break_base = params.break_count === 0 ? 0 : 1 / params.break_count;
+  const tapMap = getBLossMap(tapNum, TAP_LOSSES);
+  const holdMap = getBLossMap(holdNum, HOLD_LOSSES);
+  const slideMap = getBLossMap(slideNum, SLIDE_LOSSES);
 
-  const tap_losses: tap_like_counts = [
-    0,
-    round_to_unit(0.2 * base, unit),
-    round_to_unit(0.5 * base, unit),
-    round_to_unit(1 * base, unit),
-  ];
-
-  const hold_losses: tap_like_counts = [
-    0,
-    round_to_unit(0.4 * base, unit),
-    round_to_unit(1 * base, unit),
-    round_to_unit(2 * base, unit),
-  ];
-
-  const slide_losses: tap_like_counts = [
-    0,
-    round_to_unit(0.6 * base, unit),
-    round_to_unit(1.5 * base, unit),
-    round_to_unit(3 * base, unit),
-  ];
-
-  const break_losses: break_counts =
-    params.break_count === 0
-      ? [0, 0, 0, 0, 0, 0, 0]
-      : [
-          round_to_unit(0.25 * break_base, unit),
-          round_to_unit(0.5 * break_base, unit),
-          round_to_unit(1 * base + 0.6 * break_base, unit),
-          round_to_unit(2 * base + 0.6 * break_base, unit),
-          round_to_unit(2.5 * base + 0.6 * break_base, unit),
-          round_to_unit(3 * base + 0.7 * break_base, unit),
-          round_to_unit(5 * base + 1 * break_base, unit),
-        ];
-
-  const limit = target_loss + tolerance;
-
-  const category_specs: category_spec[] = [
-    {
-      name: "tap",
-      partials: enumerate_tap_like(params.tap, tap_losses, limit),
-    },
-    {
-      name: "hold",
-      partials: enumerate_tap_like(params.hold, hold_losses, limit),
-    },
-    {
-      name: "slide",
-      partials: enumerate_tap_like(params.slide, slide_losses, limit),
-    },
-    {
-      name: "break",
-      partials: enumerate_break(params.break_count, break_losses, limit),
-    },
-  ];
-
-  category_specs.sort(compare_category_spec);
-
-  let states: search_state[] = [
-    {
-      loss: 0,
-      solution: create_empty_solution(),
-    },
-  ];
-
-  for (let i = 0; i < category_specs.length; i++) {
-    states = combine_states(states, category_specs[i], limit);
-    if (states.length === 0) return [];
-  }
-
-  const result_map = new Map<string, solution>();
-
-  for (let i = 0; i < states.length; i++) {
-    const state = states[i];
-    if (Math.abs(state.loss - target_loss) <= tolerance) {
-      const key = solution_key(state.solution);
-      if (!result_map.has(key)) {
-        result_map.set(key, state.solution);
+  // Pre-combine tap, hold, and slide memory spaces into an aggregated collection
+  const thsMap = new Map<number, Array<{ t: number[]; h: number[]; s: number[] }>>();
+  for (const [tB, tConfigs] of tapMap) {
+    for (const [hB, hConfigs] of holdMap) {
+      for (const [sB, sConfigs] of slideMap) {
+        const combinedB = tB + hB + sB;
+        if (!thsMap.has(combinedB)) {
+          thsMap.set(combinedB, []);
+        }
+        for (const tC of tConfigs) {
+          for (const hC of hConfigs) {
+            for (const sC of sConfigs) {
+              if (thsMap.get(combinedB)!.length < 20) {
+                thsMap.get(combinedB)!.push({ t: tC, h: hC, s: sC });
+              }
+            }
+          }
+        }
       }
     }
   }
 
-  return Array.from(result_map.entries())
-    .sort(function (a, b) {
-      if (a[0] < b[0]) return -1;
-      if (a[0] > b[0]) return 1;
-      return 0;
-    })
-    .map(function (entry) {
-      return entry[1];
-    });
-}
+  // Branch and Bound search through break notes with mathematical performance pruning
+  function searchBreaks(
+    index: number,
+    brB: number,
+    brBB: number,
+    counts: number[]
+  ) {
+    const currentMinLoss = brB * bCoeff + brBB * bbCoeff;
+    if (currentMinLoss > targetLoss + 0.001) return; // Cut the tree branch early if it overshoots target
 
-function round_to_unit(value: number, unit: number): number {
-  return Math.round(value * unit);
-}
+    if (index === breakNum) {
+      // Look for a matching base score configuration remainder
+      for (const [thsBKey, baseConfigs] of thsMap) {
+        const realThsB = thsBKey / 10;
+        const totalB = realThsB + brB;
+        const calcLoss = totalB * bCoeff + brBB * bbCoeff;
 
-function create_empty_solution(): solution {
-  return {
-    tap: [0, 0, 0, 0],
-    hold: [0, 0, 0, 0],
-    slide: [0, 0, 0, 0],
-    break: [0, 0, 0, 0, 0, 0, 0],
-  };
-}
-
-function clone_solution(src: solution): solution {
-  return {
-    tap: [src.tap[0], src.tap[1], src.tap[2], src.tap[3]],
-    hold: [src.hold[0], src.hold[1], src.hold[2], src.hold[3]],
-    slide: [src.slide[0], src.slide[1], src.slide[2], src.slide[3]],
-    break: [
-      src.break[0],
-      src.break[1],
-      src.break[2],
-      src.break[3],
-      src.break[4],
-      src.break[5],
-      src.break[6],
-    ],
-  };
-}
-
-function make_tap_like_counts(counts: number[]): tap_like_counts {
-  return [counts[0], counts[1], counts[2], counts[3]];
-}
-
-function make_break_counts(counts: number[]): break_counts {
-  return [
-    counts[0],
-    counts[1],
-    counts[2],
-    counts[3],
-    counts[4],
-    counts[5],
-    counts[6],
-  ];
-}
-
-function solution_key(sol: solution): string {
-  return (
-    sol.tap.join(",") +
-    "|" +
-    sol.hold.join(",") +
-    "|" +
-    sol.slide.join(",") +
-    "|" +
-    sol.break.join(",")
-  );
-}
-
-function compare_category_spec(a: category_spec, b: category_spec): number {
-  return a.partials.length - b.partials.length;
-}
-
-function combine_states(
-  states: search_state[],
-  spec: category_spec,
-  limit: number
-): search_state[] {
-  const next: search_state[] = [];
-
-  for (let i = 0; i < states.length; i++) {
-    const state = states[i];
-
-    for (let j = 0; j < spec.partials.length; j++) {
-      const partial = spec.partials[j];
-      const total_loss = state.loss + partial.loss;
-      if (total_loss > limit) continue;
-
-      const solution = clone_solution(state.solution);
-      set_category_counts(solution, spec.name, partial.counts);
-
-      next.push({
-        loss: total_loss,
-        solution: solution,
-      });
-    }
-  }
-
-  return next;
-}
-
-function set_category_counts(
-  sol: solution,
-  name: category_name,
-  counts: number[]
-): void {
-  if (name === "tap") {
-    sol.tap = make_tap_like_counts(counts);
-    return;
-  }
-
-  if (name === "hold") {
-    sol.hold = make_tap_like_counts(counts);
-    return;
-  }
-
-  if (name === "slide") {
-    sol.slide = make_tap_like_counts(counts);
-    return;
-  }
-
-  sol.break = make_break_counts(counts);
-}
-
-function enumerate_tap_like(
-  count: number,
-  losses: tap_like_counts,
-  limit: number
-): partial_solution[] {
-  if (count === 0) {
-    return [
-      {
-        loss: 0,
-        counts: [0, 0, 0, 0],
-      },
-    ];
-  }
-
-  const results: partial_solution[] = [];
-  const counts = [0, 0, 0, 0];
-
-  function dfs(state_index: number, remaining: number, loss: number): void {
-    if (loss > limit) return;
-
-    if (state_index === 4) {
-      counts[0] = remaining;
-      results.push({
-        loss: loss,
-        counts: make_tap_like_counts(counts),
-      });
-      return;
-    }
-
-    const value = losses[state_index];
-
-    for (let used = 0; used <= remaining; used++) {
-      counts[state_index] = used;
-      dfs(state_index + 1, remaining - used, loss + used * value);
-    }
-
-    counts[state_index] = 0;
-  }
-
-  dfs(1, count, 0);
-  return results;
-}
-
-function enumerate_break(
-  count: number,
-  losses: break_counts,
-  limit: number
-): partial_solution[] {
-  if (count === 0) {
-    return [
-      {
-        loss: 0,
-        counts: [0, 0, 0, 0, 0, 0, 0],
-      },
-    ];
-  }
-
-  const results: partial_solution[] = [];
-  const counts = [0, 0, 0, 0, 0, 0, 0];
-  const order = [1, 2, 3, 4, 5, 6];
-
-  order.sort(function (a, b) {
-    return losses[b] - losses[a];
-  });
-
-  function dfs(order_index: number, remaining: number, loss: number): void {
-    if (loss + remaining * losses[0] > limit) return;
-
-    if (order_index === order.length) {
-      counts[0] = remaining;
-      const total_loss = loss + remaining * losses[0];
-      if (total_loss <= limit) {
-        results.push({
-          loss: total_loss,
-          counts: make_break_counts(counts),
-        });
+        if (Math.abs(calcLoss - targetLoss) < 0.001) {
+          for (const base of baseConfigs) {
+            solutions.push({
+              taps: { great: base.t[0], good: base.t[1], miss: base.t[2] },
+              holds: { great: base.h[0], good: base.h[1], miss: base.h[2] },
+              slides: { great: base.s[0], good: base.s[1], miss: base.s[2] },
+              breaks: {
+                highPerfect: counts[0],
+                lowPerfect: counts[1],
+                highGreat: counts[2],
+                midGreat: counts[3],
+                lowGreat: counts[4],
+                good: counts[5],
+                miss: counts[6],
+                perfect: counts[7],
+              },
+            });
+            if (solutions.length >= 10) return; // Keep memory bounded
+          }
+        }
       }
       return;
     }
 
-    const idx = order[order_index];
-    const value = losses[idx];
-
-    for (let used = 0; used <= remaining; used++) {
-      counts[idx] = used;
-      dfs(order_index + 1, remaining - used, loss + used * value);
+    // Iterate through choices from lowest to highest loss contribution profiles
+    const searchOrder = [7, 0, 1, 2, 3, 4, 5, 6];
+    for (const j of searchOrder) {
+      const loss = BREAK_LOSSES[j];
+      counts[j]++;
+      searchBreaks(index + 1, brB + loss.b, brBB + loss.bb, counts);
+      counts[j]--;
+      if (solutions.length >= 10) return;
     }
-
-    counts[idx] = 0;
   }
 
-  dfs(0, count, 0);
-  return results;
+  searchBreaks(0, 0, 0, new Array(8).fill(0));
+  return solutions;
 }
 
-const test = (...args) => log(solve_achievement_rate_breakdown(...args))
+console.time("Execution Time");
+const sols = findSolutions(100.9166, 285 + 113, 62, 107, 27);
+console.timeEnd("Execution Time");
 
-// example 1
-test({
-  achievement_rate: 100.75,
-  tap: 10,
-  hold: 0,
-  slide: 0,
-  break_count: 1,
-});
+console.log("Solutions found:", sols.length);
+if (sols.length > 0) {
+  console.dir(sols, { depth: null });
+}
 
-// expected
-// [
-//   {
-//     tap:   [10, 0, 0, 0],
-//     hold:  [0, 0, 0, 0],
-//     slide: [0, 0, 0, 0],
-//     break: [1, 0, 0, 0, 0, 0, 0], // 1 high perfect
+
+// type NoteJudgments = {
+//   taps: { great: number; good: number; miss: number };
+//   holds: { great: number; good: number; miss: number };
+//   slides: { great: number; good: number; miss: number };
+//   breaks: {
+//     highPerfect: number;
+//     lowPerfect: number;
+//     highGreat: number;
+//     midGreat: number;
+//     lowGreat: number;
+//     good: number;
+//     miss: number;
+//     perfect: number;
+//   };
+// };
+
+// type Solution = NoteJudgments;
+
+// interface LossContribution {
+//   b: number;
+//   bb: number;
+// }
+
+// const TAP_LOSSES: LossContribution[] = [
+//   { b: 0, bb: 0 }, // perfect
+//   { b: 0.2, bb: 0 }, // great
+//   { b: 0.5, bb: 0 }, // good
+//   { b: 1.0, bb: 0 }, // miss
+// ];
+
+// const HOLD_LOSSES: LossContribution[] = [
+//   { b: 0, bb: 0 }, // perfect
+//   { b: 0.4, bb: 0 },
+//   { b: 1.0, bb: 0 },
+//   { b: 2.0, bb: 0 },
+// ];
+
+// const SLIDE_LOSSES: LossContribution[] = [
+//   { b: 0, bb: 0 }, // perfect
+//   { b: 0.6, bb: 0 },
+//   { b: 1.5, bb: 0 },
+//   { b: 3.0, bb: 0 },
+// ];
+
+// const BREAK_LOSSES: LossContribution[] = [
+//   { b: 0, bb: 0.25 }, // high perfect
+//   { b: 0, bb: 0.5 },  // low perfect
+//   { b: 1, bb: 0.6 },  // high great
+//   { b: 2, bb: 0.6 },  // mid great
+//   { b: 2.5, bb: 0.6 }, // low great
+//   { b: 3, bb: 0.7 },  // good
+//   { b: 5, bb: 1.0 },  // miss
+//   { b: 0, bb: 0 },    // perfect
+// ];
+
+// function calculateTotalPoints(tap: number, hold: number, slide: number, brk: number): number {
+//   return 1 * tap + 2 * hold + 3 * slide + 5 * brk;
+// }
+
+// function findSolutions(
+//   achRate: number,
+//   tapNum: number,
+//   holdNum: number,
+//   slideNum: number,
+//   breakNum: number
+// ): Solution[] {
+//   const targetLoss = 101 - achRate;
+//   const totalPoints = calculateTotalPoints(tapNum, holdNum, slideNum, breakNum);
+//   if (totalPoints === 0) return [];
+//   const b = 100 / totalPoints;
+//   const bb = breakNum > 0 ? 1 / breakNum : 0;
+
+//   const solutions: Solution[] = [];
+
+//   // break possibles via recursion (breaks usually fewer)
+//   const breakPossibles: Array<{counts: Partial<NoteJudgments['breaks']>, bLoss: number, bbLoss: number}> = [];
+
+//   function recurseBreaks(index: number, currentCounts: Partial<NoteJudgments['breaks']>, currentBL: number, currentBBL: number) {
+//     if (index === breakNum) {
+//       breakPossibles.push({
+//         counts: { ...currentCounts },
+//         bLoss: currentBL,
+//         bbLoss: currentBBL
+//       });
+//       return;
+//     }
+//     for (let j = 0; j < BREAK_LOSSES.length; j++) {
+//       const loss = BREAK_LOSSES[j];
+//       const newCounts = { ...currentCounts };
+//       const keys = ['highPerfect', 'lowPerfect', 'highGreat', 'midGreat', 'lowGreat', 'good', 'miss', 'perfect'] as const;
+//       const key = keys[j];
+//       newCounts[key] = (newCounts[key] || 0) + 1;
+//       recurseBreaks(index + 1, newCounts, currentBL + loss.b, currentBBL + loss.bb);
+//     }
 //   }
-// ]
 
+//   recurseBreaks(0, {}, 0, 0);
 
-// example 2
-test({
-  achievement_rate: 100.5,
-  tap: 10,
-  hold: 0,
-  slide: 0,
-  break_count: 1,
-});
+//   // dp for non-break b loss coeffs (stores one valid count config per possible b total)
+//   type BCounts = {
+//     great: number;
+//     good: number;
+//     miss: number;
+//   };
 
-// expected
-// [
-//   {
-//     tap:   [10, 0, 0, 0],
-//     hold:  [0, 0, 0, 0],
-//     slide: [0, 0, 0, 0],
-//     break: [0, 1, 0, 0, 0, 0, 0], // 1 low perfect
+//   function getBCountsMap(num: number, losses: LossContribution[]): Map<number, BCounts> {
+//     const map = new Map<number, BCounts>();
+//     map.set(0, { great: 0, good: 0, miss: 0 });
+
+//     for (let i = 0; i < num; i++) {
+//       const newMap = new Map<number, BCounts>();
+//       for (const [currB, currCounts] of map) {
+//         for (let j = 0; j < losses.length; j++) {
+//           const l = losses[j];
+//           const newB = currB + l.b;
+//           const newC = { ...currCounts };
+//           if (j !== 0) { // 0 = perfect
+//             const keyIdx = j - 1;
+//             const key = ['great', 'good', 'miss'][keyIdx] as keyof BCounts;
+//             newC[key] = (newC[key] || 0) + 1;
+//           }
+//           newMap.set(newB, newC);
+//         }
+//       }
+//       map.clear();
+//       for (const [k, v] of newMap) map.set(k, v);
+//     }
+//     return map;
 //   }
-// ]
 
+//   const tapMap = getBCountsMap(tapNum, TAP_LOSSES);
+//   const holdMap = getBCountsMap(holdNum, HOLD_LOSSES);
+//   const slideMap = getBCountsMap(slideNum, SLIDE_LOSSES);
 
-// example 3
-test({
-  achievement_rate: 100,
-  tap: 1,
-  hold: 0,
-  slide: 0,
-  break_count: 0,
-});
-
-// base = 100
-// loss = 1
-// tap great = 20
-// tap good = 50
-// tap miss = 100
-// expected
-// []
-
-
-// example 4
-test({
-  achievement_rate: 80,
-  tap: 1,
-  hold: 0,
-  slide: 0,
-  break_count: 0,
-});
-
-// base = 100
-// loss = 21
-// tap great = 20
-// expected
-// []
-//
-//
-// example 5
-test({
-  achievement_rate: 81,
-  tap: 1,
-  hold: 0,
-  slide: 0,
-  break_count: 0,
-});
-
-// base = 100
-// loss = 20
-// expected
-// [
-//   {
-//     tap:   [0, 1, 0, 0], // 1 great
-//     hold:  [0, 0, 0, 0],
-//     slide: [0, 0, 0, 0],
-//     break: [0, 0, 0, 0, 0, 0, 0],
+//   // combine
+//   for (const br of breakPossibles) {
+//     const brB = br.bLoss;
+//     const brBB = br.bbLoss;
+//     for (const [tB, tCounts] of tapMap) {
+//       for (const [hB, hCounts] of holdMap) {
+//         for (const [sB, sCounts] of slideMap) {
+//           const totalB = tB + hB + sB + brB;
+//           const totalBB = brBB;
+//           const calcLoss = totalB * b + totalBB * bb;
+//           if (Math.abs(calcLoss - targetLoss) < 0.001) {
+//             const sol: Solution = {
+//               taps: { ...tCounts },
+//               holds: { ...hCounts },
+//               slides: { ...sCounts },
+//               breaks: { ...(br.counts as any) }
+//             };
+//             // ensure all break keys
+//             const breakKeys = ['highPerfect', 'lowPerfect', 'highGreat', 'midGreat', 'lowGreat', 'good', 'miss', 'perfect'] as const;
+//             for (const k of breakKeys) {
+//               if (!(k in sol.breaks)) {
+//                 (sol.breaks as any)[k] = 0;
+//               }
+//             }
+//             solutions.push(sol);
+//           }
+//         }
+//       }
+//     }
 //   }
-// ]
 
+//   return solutions;
+// }
 
-// example 6
-test({
-  achievement_rate: 99,
-  tap: 2,
-  hold: 0,
-  slide: 0,
-  break_count: 0,
-});
-
-// base = 50
-// total loss = 2
-// expected
-// [
-//   {
-//     tap:   [1, 1, 0, 0], // 1 perfect, 1 great
-//     hold:  [0, 0, 0, 0],
-//     slide: [0, 0, 0, 0],
-//     break: [0, 0, 0, 0, 0, 0, 0],
-//   }
-// ]
-
-
-// example 7
-test({
-  achievement_rate: 100,
-  tap: 0,
-  hold: 1,
-  slide: 0,
-  break_count: 0,
-});
-
-// base = 50
-// hold great loss = 20
-// hold good loss = 50
-// hold miss loss = 100
-// total loss = 1
-// expected
-// []
-
-
-// example 8
-test({
-  achievement_rate: 100.4,
-  tap: 0,
-  hold: 0,
-  slide: 0,
-  break_count: 2,
-});
-
-// break base = 0.5
-// total loss = 0.6
-// expected
-// [
-//   {
-//     tap:   [0, 0, 0, 0],
-//     hold:  [0, 0, 0, 0],
-//     slide: [0, 0, 0, 0],
-//     break: [0, 0, 1, 0, 0, 0, 1], // 1 high great + 1 miss? (depending on exact base, likely no solution)
-//   }
-// ]
-// note: this example is primarily useful for exercising multiple break states.
-
-test({
-  achievement_rate: 100.9166,
-  tap: 285+113,
-  hold: 62,
-  slide: 107,
-  break_count: 27,
-});
-
+// const sols = findSolutions(100.9166, 285+113, 62, 107, 27);
+// // const sols = findSolutions(100.75, 10, 0, 0, 1);
+// console.log(sols); // will include the matching break config
