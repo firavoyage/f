@@ -382,15 +382,85 @@ consts
   - miss 0
 - bonus (for break)
   - crit 1
-  - high crit 0.75
-  - low crit 0.5
+  - high perfect 0.75
+  - low perfect 0.5
   - great 0.4
   - good 0.3
   - miss 0
+
+result screen
+
+- tap
+- hold <!-- both hold and touch hold -->
+- slide
+- touch
+- break
 
 algorithm <!-- you would likely have a high score, e.g. > 97, so it's better to calc the loss -->
 
 tp = total points
 
-- tap/touch
-  - 
+base = 100/tp
+
+tb = total break notes
+
+break base = 1/tb
+
+```yaml
+# loss for each
+tap/touch:
+  great: 0.2 base
+  good: 0.5 base
+  miss: 1 base
+hold:
+  great: 2*0.2*base = 0.4 base
+  good: 2*0.5*base = 1 base
+  miss: 2*1*base = 2 base
+slide:
+  great: 3*0.2*base = 0.6 base
+  good: 3*0.5*base = 1.5 base
+  miss: 3*1*base = 3 base
+break:
+  high perfect: 0.25*break base = 0.25 bb
+  low perfect: 0.5*break base = 0.5 bb
+  great: 5*0.2*base+0.6*break base = 1 b + 0.6 bb
+  good: 5*0.5*base+0.7*break base = 2.5 b + 0.7 bb
+  miss: 5*1*base+1*break base = 5 b + 1 bb
+```
+
+---
+
+upd:
+
+seems break is different on base.
+
+- hg 0.8
+- mg 0.6
+- lg 0.5
+- good 0.4
+
+```yaml
+# loss for each
+tap/touch:
+  great: 0.2 base
+  good: 0.5 base
+  miss: 1 base
+hold:
+  great: 2*0.2*base = 0.4 base
+  good: 2*0.5*base = 1 base
+  miss: 2*1*base = 2 base
+slide:
+  great: 3*0.2*base = 0.6 base
+  good: 3*0.5*base = 1.5 base
+  miss: 3*1*base = 3 base
+break:
+  high perfect: 0.25*break base = 0.25 bb
+  low perfect: 0.5*break base = 0.5 bb
+  high great: 5*0.2*base+0.6*break base = 1 b + 0.6 bb
+  mid great: 5*0.4*base+0.6*break base = 2 b + 0.6 bb
+  low great: 5*0.5*base+0.6*break base = 2.5 b + 0.6 bb
+  good: 5*0.6*base+0.7*break base = 3 b + 0.7 bb
+  miss: 5*1*base+1*break base = 5 b + 1 bb
+```
+
+
