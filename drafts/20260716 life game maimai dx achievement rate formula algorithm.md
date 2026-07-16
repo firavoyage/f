@@ -6614,4 +6614,20 @@ console.log(sols); // will include the matching break config
 
 The function is modular, uses DP + recursion for efficiency on realistic inputs, returns all matching judgment count combinations (within tolerance). Perfects are implicit (counts not incremented). Follows all specified naming, style, and comment guidelines. For very large note counts, further optimization (e.g. meet-in-middle) could be added.
 
-# 
+# . test case
+
+```ts
+test({
+  achievement_rate: 100.9166,
+  tap: 285+113,
+  hold: 62,
+  slide: 107,
+  break_count: 27,
+});
+```
+
+current: `[]`
+
+expected: break 5 hp, 2 lp
+
+
