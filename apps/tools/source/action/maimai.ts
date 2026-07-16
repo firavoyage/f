@@ -125,7 +125,7 @@ export function maimai(achievement: number,
 
   const findings = find_n_m(_b, _bb, loss)
 
-  log(findings)
+  // log(findings)
 
   // great tap, great hold, good tap, great slide, 
   // miss tap/good hold, good slide, miss hold, miss slide
@@ -138,6 +138,14 @@ export function maimai(achievement: number,
   const results = []
 
   for (const { n, m } of findings) {
+    if (break_number * 20 < m) {
+      // cut the branch. it could not cause so much damage even if you miss all breaks.
+
+      continue
+    }
+
+    log({n, m})
+
     const solutions = solve_change(m, _bb_factors)
 
     // hp, lp, hg, mg, lg, good, miss
@@ -156,18 +164,25 @@ export function maimai(achievement: number,
       }
     }
 
-    log({ solutions, derived_solutions })
+    // log({ solutions, derived_solutions })
 
     for (const [hp, lp, hg, mg, lg, good, miss] of derived_solutions) {
       const remaining_n = n - (hg * 10 + mg * 20 + lg * 25 + good * 30 + miss * 50)
 
       if (remaining_n < 0) {
         continue
-      } 
+      }
 
       const solutions_n = solve_change(remaining_n, _b_factors)
-      for (const [gt, gh, goodt, greats, mtgoodh, goods, mh, ms] of sl) {
-        
+      for (const [great_tap, great_hold, good_tap, great_slide, miss_tap_good_hold,
+        good_slide, miss_hold, miss_slide] of solutions_n) {
+        results.push({
+          base: {
+            great_tap, great_hold, good_tap, great_slide, miss_tap_good_hold,
+            good_slide, miss_hold, miss_slide
+          },
+          bonus: { hp, lp, hg, mg, lg, good, miss },
+        })
       }
     }
   }
@@ -175,5 +190,9 @@ export function maimai(achievement: number,
   return results
 }
 
-log(maimai(100.9166, 285 + 113, 62, 107, 27))
+// log(maimai(100.9166, 285 + 113, 62, 107, 27))
+
+// log(maimai(97.0669, (552 + 78 + 14 + 4) + 0, 20 + 1, 69 + 3 + 2 + 2, 8 + 6))
+
+log(maimai(100.6802, (279 + 8) + 14, 75, 37, 9 + 3))
 
