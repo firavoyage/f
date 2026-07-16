@@ -177,10 +177,12 @@ export function maimai(achievement: number,
       for (const [great_tap, great_hold, good_tap, great_slide, miss_tap_good_hold,
         good_slide, miss_hold, miss_slide] of solutions_n) {
         results.push({
+          // tap/touch, hold, slide
           base: {
             great_tap, great_hold, good_tap, great_slide, miss_tap_good_hold,
             good_slide, miss_hold, miss_slide
           },
+          // break
           bonus: { hp, lp, hg, mg, lg, good, miss },
         })
       }
@@ -194,5 +196,9 @@ export function maimai(achievement: number,
 
 // log(maimai(97.0669, (552 + 78 + 14 + 4) + 0, 20 + 1, 69 + 3 + 2 + 2, 8 + 6))
 
-log(maimai(100.6802, (279 + 8) + 14, 75, 37, 9 + 3))
+// log(maimai(100.6802, (279 + 8) + 14, 75, 37, 9 + 3))
+
+maimai(100.0445, (364 + 18 + 3), 70 + 4, 44, 12 + 3)
+
+// log(maimai(100.0445, (364 + 18 + 3), 70 + 4, 44, 12 + 3))
 
