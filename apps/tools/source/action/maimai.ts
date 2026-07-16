@@ -1,4 +1,4 @@
-function find_n_m(a: number, b: number, c: number, tolerance = 0.001) {
+function find_n_m(a: number, b: number, c: number, tolerance = 0.0001) {
   const solutions = [];
 
   // handle case where both a and b are close to zero
@@ -38,14 +38,13 @@ function find_n_m(a: number, b: number, c: number, tolerance = 0.001) {
 
       // check if the combination satisfies the floating point tolerance
       if (Math.abs(current_c - c) < tolerance) {
-        solutions.push({ n, m: m_round, result: a*n+b*m_round, delta: a*n+b*m_round-c });
+        solutions.push({ n, m: m_round, result: a*n+b*m_round, result_: 101 - (a*n+b*m_round), delta: a*n+b*m_round-c });
       }
     }
   }
 
   return solutions;
 }
-
 
 function base(tap: number, hold: number, slide: number, break_number: number) {
   return 100 / (1 * tap + 2 * hold + 3 * slide + 5 * break_number)

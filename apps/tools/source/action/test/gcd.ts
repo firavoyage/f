@@ -1,4 +1,4 @@
-import { calculate_gcd } from "backend/gcd"
+import { calculate_gcd } from "action/gcd"
 
 // // Example 1: Pure integers (no multiplier needed)
 // const result_1 = calculate_gcd([12, 18, 24]);
@@ -23,3 +23,7 @@ import { calculate_gcd } from "backend/gcd"
 log(calculate_gcd([0.2, 0.5, 1, 0.4, 1, 2, 0.6, 1.5, 3, 1, 2, 2.5, 3, 5]))
 
 log(calculate_gcd([0.25, 0.5, 0.6, 0.7, 1]))
+
+log(calculate_gcd([2, 5, 1, 4, 6, 15, 30, 10, 20, 25, 30, 50]))
+
+log(calculate_gcd([5, 10, 12, 14, 20]))
