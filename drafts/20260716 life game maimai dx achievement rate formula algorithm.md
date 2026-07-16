@@ -1327,6 +1327,8 @@ This is fundamentally a combinatorial search problem.
 
 <!-- openrouter: i do not want to use its interface. -->
 
+<!-- chatgpt says "wont fit in a single response" and it does not proceed anyway. damn. -->
+
 # 
 
 # . prompt (fixed)
