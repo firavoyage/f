@@ -1319,4 +1319,82 @@ So the achievement rate is calculated as 101 minus the sum of all losses across 
 
 This is fundamentally a combinatorial search problem.
 
+<!-- chatgpt: seems simple. just toggle on thinking after a slash. no more options (e.g. model switching) seen for free plan. -->
+
+<!-- gemini: 3.1 pro, extended thinking -->
+
+<!-- grok: seems only fast available, supergrok trial needs a credit card. but fast can think. -->
+
+<!-- openrouter: i do not want to use its interface. -->
+
+# 
+
+# . prompt (fixed)
+
+follow these:
+
+- naming:
+  - snake case by default
+  - verb noun for actions, predicate for bools, noun for factory functions (`date`, not `create_date`)
+  - for react components, you must use pascal case (`ScrollArea.tsx`, not `scroll_area`)
+- style:
+  - functional programming
+  - modular and cohesive
+  - es module
+  - always async, only sync for pure and quick methods
+  - always function statement, only arrow function for props
+  - positional params if one param, mixed if only one param required, object params otherwise
+  - always type, never interface
+  - avoid typescriptism, only define types on functions and global variables in your own code
+- comment:
+  - self explanatory over commenting
+  - lowercase for what and why, title case for where
+  - never fancy, never uppercase anywhere, no styling like `===== some pretentious comments =====`
+- notes:
+  - prefer modern proven libraries when needed
+
+write a ts fn to solve this problem.
+
+```yaml
+# b = base = 100/total points = 100/(1*tap/touch number+2*hold/touch hold number+3*slide number+5*break number)
+# bb = break base = 1/break number
+# loss for each
+tap/touch:
+  great: 0.2 base
+  good: 0.5 base
+  miss: 1 base
+hold:
+  great: 2*0.2*base = 0.4 base
+  good: 2*0.5*base = 1 base
+  miss: 2*1*base = 2 base
+slide:
+  great: 3*0.2*base = 0.6 base
+  good: 3*0.5*base = 1.5 base
+  miss: 3*1*base = 3 base
+break:
+  high perfect: 0.25*break base = 0.25 bb
+  low perfect: 0.5*break base = 0.5 bb
+  high great: 5*0.2*base+0.6*break base = 1 b + 0.6 bb
+  mid great: 5*0.4*base+0.6*break base = 2 b + 0.6 bb
+  low great: 5*0.5*base+0.6*break base = 2.5 b + 0.6 bb
+  good: 5*0.6*base+0.7*break base = 3 b + 0.7 bb
+  miss: 5*1*base+1*break base = 5 b + 1 bb
+```
+
+param: achivement rate (a float), number of tap/touch, hold/touch hold, slide, break
+
+each note is either crit perfect, or has some loss against 101 (theoretical).
+
+consider it a solution if difference < 0.001
+
+return: an array of possible solutions.
+
+example:
+
+achivement rate 100.7500, tap/touch: 10, hold/touch hold: 0, slide: 0, break: 1
+
+subtract 100.75 from 101. the total loss is 0.25. a high perfect break fits.
+
+then the solution is one hp break.
+
 # 
