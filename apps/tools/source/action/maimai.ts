@@ -38,12 +38,42 @@ function find_n_m(a: number, b: number, c: number, tolerance = 0.0001) {
 
       // check if the combination satisfies the floating point tolerance
       if (Math.abs(current_c - c) < tolerance) {
-        solutions.push({ n, m: m_round, result: a*n+b*m_round, result_: 101 - (a*n+b*m_round), delta: a*n+b*m_round-c });
+        solutions.push({ n, m: m_round, result: a * n + b * m_round, result_: 101 - (a * n + b * m_round), delta: a * n + b * m_round - c });
       }
     }
   }
 
   return solutions;
+}
+
+function solve_change(target: number, factors: number[]): number[][] {
+  const total_factors = factors.length;
+  const solutions_table: number[][][] = [];
+
+  for (let index = 0; index <= target; index++) {
+    solutions_table.push([]);
+  }
+
+  const base_combination = new Array(total_factors).fill(0);
+  solutions_table[0].push(base_combination);
+
+  for (let factor_idx = 0; factor_idx < total_factors; factor_idx++) {
+    const factor_value = factors[factor_idx];
+
+    for (let current_sum = factor_value; current_sum <= target; current_sum++) {
+      const complement = current_sum - factor_value;
+      const existing_combinations = solutions_table[complement];
+      const existing_count = existing_combinations.length;
+
+      for (let combo_idx = 0; combo_idx < existing_count; combo_idx++) {
+        const updated_combination = [...existing_combinations[combo_idx]];
+        updated_combination[factor_idx] += 1;
+        solutions_table[current_sum].push(updated_combination);
+      }
+    }
+  }
+
+  return solutions_table[target];
 }
 
 function base(tap: number, hold: number, slide: number, break_number: number) {
@@ -59,8 +89,22 @@ const bb = break_base(27)
 
 log(b, bb)
 
+const _b = 0.1 * b
+const _bb = 0.05 * bb
+
 log(101 - 100.9166)
 
-log(find_n_m(0.1 * b, 0.05 * bb, 101 - 100.9166))
+log(find_n_m(_b, _bb, 101 - 100.9166))
+
+/**
+ * since 1 exists in _b factors, n is guaranteed to be solvable
+ */
+
+const _b_factors = [1, 2, 4, 5, 6, 10, 15, 20, 25, 30, 50]
+const _bb_factors =  [5, 10, 12, 14, 20]
+
+log(solve_change(45, _bb_factors))
+log(solve_change(34, _bb_factors))
+log(solve_change(23, _bb_factors))
 
 
