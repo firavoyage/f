@@ -197,6 +197,7 @@ archi:
 - react vs vue hypes decision fatigue <!-- grow? rhetoric? politics/philosophy? -->
 - first principles
 - template new repo
+- docstring inline comment feeling
 
 frontend: <!-- web, ts/js -->
 
