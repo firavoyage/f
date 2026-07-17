@@ -256,12 +256,32 @@ export function maimai(achievement: number,
 
 // const results = maimai(100.9166, 285 + 113, 62, 107, 27)
 
-const results = maimai(97.0669, (552 + 78 + 14 + 4) + 0, 20 + 1, 69 + 3 + 2 + 2, 8 + 6)
+// const results = maimai(97.0669, (552 + 78 + 14 + 4) + 0, 20 + 1, 69 + 3 + 2 + 2, 8 + 6)
 
 // const results = maimai(100.6802, (279 + 8) + 14, 75, 37, 9 + 3)
 
 // const results = maimai(100.0445, (364 + 18 + 3), 70 + 4, 44, 12 + 3)
 
-log({results: results.length})
+// log({results: results.length})
 
 // log(results)
+
+function count_valid_sets(n: number): number {
+    const dp: number[] = [];
+    for (let i = 0; i <= n; i++) {
+        dp.push(0);
+    }
+    dp[0] = 1;
+    
+    const weights = [1, 2, 3, 4, 6];
+    for (let i = 0; i < weights.length; i++) {
+        const w = weights[i];
+        for (let j = w; j <= n; j++) {
+            dp[j] += dp[j - w];
+        }
+    }
+    
+    return dp[n];
+}
+
+
