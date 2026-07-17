@@ -47027,6 +47027,10 @@ c
 
 what about ====? well, doesnt feel right, though it should be h1.
 
+the problem is through prettier it becomes ##. in terms of scannability, it wins, but i would use the prev one anyway as it does not need to grab attention. see how it's rendered. <!-- besides font size, --> isnt it a horizontal line at the end of the day?
+
+<!-- it does not render well actually. the gray hr becomes closer to the text below rather than in the middle or underline the heading. the rationale is i live most of my time in raw md, and by making the title paragraph, i could give one #, the simplest form, to all (sub) headings, much more scannable and clean. -->
+
 ---
 
 i do not have to separate thoughts by "...", yeah that's literary and more introspective, but hr is clearly clearer when rendered.
