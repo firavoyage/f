@@ -47035,6 +47035,10 @@ the problem is through prettier it becomes ##. in terms of scannability, it wins
 
 i do not have to separate thoughts by "...", yeah that's literary and more introspective, but hr is clearly clearer when rendered.
 
+02 00 play astrodx. 03 00
+
+it doesnt seem too wise to try to beat a song by playing consecutively.
+
 
 
 <!-- timebox, plan. -->
