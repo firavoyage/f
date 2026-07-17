@@ -512,3 +512,9 @@ but it's smart.
 
 ---
 
+ia: proactive navigation
+
+when a script logs a lot, vscode defaults to a sticker header of the line that runs it.
+
+---
+
