@@ -47000,6 +47000,37 @@ i could watch Oppenheimer for free. no ads (despite a 20s instantly skippable tr
 
 <!-- competitive ux analysis -->
 
+01 40 think.
+
+research.md could be inside drafts instead.
+
+yeah, that's much better.
+
+---
+
+i might move the hr below purpose a line higher.
+
+<!-- 
+
+p
+
+> purpose
+> 
+> ---
+
+c
+
+> purpose
+> ---
+
+ -->
+
+what about ====? well, doesnt feel right, though it should be h1.
+
+---
+
+i do not have to separate thoughts by "...", yeah that's literary and more introspective, but hr is clearly clearer when rendered.
+
 
 
 <!-- timebox, plan. -->

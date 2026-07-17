@@ -6,6 +6,16 @@ preprocess all non standard tag to div, rather than removing them in preprocess.
 
 wo it, any page using web component would fail to export.
 
+<!-- 
+
+wow it was already in todo
+
+> ~~(!)~~ preprocess custom elements (web components, or non standard elements) to div.
+> 
+> fix: gemini web (current: custom elements are filtered, resulting in an empty output)
+
+ -->
+
 high priority.
 
 ---
@@ -14,13 +24,9 @@ handle img if on. size. render.
 
 ---
 
-identify implicit line breaks. inline divs (via inline style).
+normalize inline divs as span
 
----
-
-~~(!)~~ preprocess custom elements (web components, or non standard elements) to div.
-
-fix: gemini web (current: custom elements are filtered, resulting in an empty output)
+<!-- (?) identify implicit line breaks. inline divs (via inline style). -->
 
 ---
 
@@ -28,18 +34,14 @@ add an option: keep images with base64.
 
 ---
 
-normalize inline divs as span
-
-(ref: change me mind js new boolean rhetoric subject)
+add option: keep aria hidden
 
 ---
 
-remove all attrs, e.g. style, when elements like "mark" are preserved.
+make it a cli
 
 ---
 
-- keep aria hidden?
-- cli
-- convert legacy drafts
+convert legacy drafts
 
 ---

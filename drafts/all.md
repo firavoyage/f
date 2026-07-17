@@ -378,6 +378,7 @@ pm:
 - qa or qc five pm process groups ten pm knowledge areas
 - pm methodology
 - pm knowledge
+- research or analysis
 
 gamedev:
 
@@ -582,6 +583,7 @@ math:
 - problem grade 11 summer holidays 1.14 am gm inequality special property dths oi maimai player
 - problem grade 10 dths injectivity function equation
 - zfc system
+- problem gx divide fx grouping patching
 
 physics:
 
