@@ -1,3 +1,6 @@
+import { home, write } from "lib/file";
+import { stringify } from 'yaml';
+
 function find_n_m(a: number, b: number, c: number, tolerance = 0.0001) {
   const solutions = [];
 
@@ -138,19 +141,25 @@ export function maimai(achievement: number,
   const results = []
 
   for (const { n, m } of findings) {
+    const current_results = []
+
     if (break_number * 20 < m) {
       // cut the branch. it could not cause so much damage even if you miss all breaks.
 
       continue
     }
 
-    log({n, m})
-
     const solutions = solve_change(m, _bb_factors)
 
     // hp, lp, hg, mg, lg, good, miss
     const derived_solutions = []
     for (const [hp, lp, great, good, miss] of solutions) {
+      if (hp + lp + great + good + miss > break_number) {
+        // impossible, no so many notes to miss
+
+        continue
+      } 
+
       if (great == 0) {
         derived_solutions.push([hp, lp, 0, 0, 0, good, miss])
         continue
@@ -176,7 +185,7 @@ export function maimai(achievement: number,
       const solutions_n = solve_change(remaining_n, _b_factors)
       for (const [great_tap, great_hold, good_tap, great_slide, miss_tap_good_hold,
         good_slide, miss_hold, miss_slide] of solutions_n) {
-        results.push({
+        current_results.push({
           // tap/touch, hold, slide
           base: {
             great_tap, great_hold, good_tap, great_slide, miss_tap_good_hold,
@@ -187,6 +196,12 @@ export function maimai(achievement: number,
         })
       }
     }
+
+    results.push(...current_results)
+
+    log({n, m, result_count: current_results.length})
+
+    write(home(`result_${n}_${m}.yaml`), stringify({current_results, derived_solutions}))
   }
 
   return results
