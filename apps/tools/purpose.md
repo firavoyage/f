@@ -16,7 +16,7 @@ e.g. large m (e.g. miss break), low n (base loss), obviously impossible yet curr
 
 <!-- i would like to write into a log, but it's async, and i fire and forget. ask if it matters. -->
 
-~~19 00~~ 19 40 optimize maimai furtherer ~~(19 40)~~ (20 00)
+~~19 00~~ 19 40 optimize maimai furtherer ~~(19 40)~~ ~~(20 00)~~ 21 00
 
 seems ive done what i can do on branch cutting.
 
@@ -36,4 +36,4 @@ i guess i can remove 4, 10, and 15, for example.
 
 they are basically a combination.
 
-
+<!-- i drifted a bit. but i would be fine. -->
