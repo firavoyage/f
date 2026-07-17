@@ -2,6 +2,14 @@ todo
 
 ---
 
+preprocess all non standard tag to div, rather than removing them in preprocess.
+
+wo it, any page using web component would fail to export.
+
+high priority.
+
+---
+
 handle img if on. size. render.
 
 ---
