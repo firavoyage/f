@@ -119,7 +119,7 @@ export function maimai(achievement: number,
   const b = base(tap, hold, slide, break_number)
   const bb = break_base(break_number)
 
-  log({ b, bb })
+  log({ achievement, b, bb })
 
   const _b = 0.1 * b
   const _bb = 0.05 * bb
@@ -160,15 +160,11 @@ export function maimai(achievement: number,
       continue
     }
 
-    log({ n, m })
-
-    const solutions = solve_change(m, _bb_factors)
-
-    log('solutions', solutions.length)
+    const solutions_m = solve_change(m, _bb_factors)
 
     // hp, lp, hg, mg, lg, good, miss
-    const derived_solutions = []
-    for (const [hp, lp, great, good, miss] of solutions) {
+    const derived_solutions_m = []
+    for (const [hp, lp, great, good, miss] of solutions_m) {
       if (hp + lp + great + good + miss > break_number) {
         // impossible, no so many notes to lose
 
@@ -176,7 +172,15 @@ export function maimai(achievement: number,
       }
 
       if (great == 0) {
-        derived_solutions.push([hp, lp, 0, 0, 0, good, miss])
+        const [hg, mg, lg] = [0, 0, 0]
+
+        const remaining_n = n - (hg * 10 + mg * 20 + lg * 25 + good * 30 + miss * 50)
+
+        if (remaining_n < 0) {
+          continue
+        }
+
+        derived_solutions_m.push([hp, lp, hg, mg, lg, good, miss])
         continue
       }
 
@@ -190,26 +194,22 @@ export function maimai(achievement: number,
           continue
         }
 
-        derived_solutions.push([hp, lp, hg, mg, lg, good, miss])
+        derived_solutions_m.push([hp, lp, hg, mg, lg, good, miss])
       }
     }
 
-    log('derived solutions', derived_solutions.length)
-
     // log({ solutions, derived_solutions })
 
-    for (const [hp, lp, hg, mg, lg, good, miss] of derived_solutions) {
+    for (const [hp, lp, hg, mg, lg, good, miss] of derived_solutions_m) {
       const remaining_n = n - (hg * 10 + mg * 20 + lg * 25 + good * 30 + miss * 50)
 
       // if (remaining_n < 0) {
       //   continue
       // }
 
-      log('remaining_n', remaining_n)
-
       const solutions_n = solve_change(remaining_n, _b_factors)
 
-      log({ solutions_n: solutions_n.length })
+      // log({ remaining_n, solutions_n: solutions_n.length })
 
       for (const [base_2, base_5] of solutions_n) {
         current_results.push({
@@ -238,26 +238,30 @@ export function maimai(achievement: number,
 
     results.push(...current_results)
 
-    const result_count = current_results.length
-
-    if (result_count == 0) {
+    if (current_results.length == 0) {
       continue
     }
 
-    log({ n, m, result_count })
+    log({ n, m, solutions_m: solutions_m.length, derived_solutions_m: derived_solutions_m.length, current_results: current_results.length })
 
-    write(home(`result_${n}_${m}.yaml`), stringify({ current_results, derived_solutions }))
+    // if (result_count == 0) {
+    //   continue
+    // }
+
+    write(home(`result_${n}_${m}.yaml`), stringify({ current_results, derived_solutions_m }))
   }
 
   return results
 }
 
-const results = maimai(100.9166, 285 + 113, 62, 107, 27)
+// const results = maimai(100.9166, 285 + 113, 62, 107, 27)
 
-// const results = maimai(97.0669, (552 + 78 + 14 + 4) + 0, 20 + 1, 69 + 3 + 2 + 2, 8 + 6)
+const results = maimai(97.0669, (552 + 78 + 14 + 4) + 0, 20 + 1, 69 + 3 + 2 + 2, 8 + 6)
 
 // const results = maimai(100.6802, (279 + 8) + 14, 75, 37, 9 + 3)
 
 // const results = maimai(100.0445, (364 + 18 + 3), 70 + 4, 44, 12 + 3)
 
-log(results)
+log({results: results.length})
+
+// log(results)
