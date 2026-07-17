@@ -161,4 +161,10 @@ repo. <!-- start by copying the template -->
 
 purpose.
 
+---
+
+tools. sidebar. shortcuts. settings. quick panel.
+
+that can be. but that's not simple. better to generate, test, and align.
+
 

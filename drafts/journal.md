@@ -46986,7 +46986,11 @@ i could watch Oppenheimer for free. no ads (despite a 20s instantly skippable tr
 
 05 20 complete maimai achievement rate to stats algorithm.
 
-17 20 work on app tool. play animenz.
+17 20 work on maimai <!-- ~~app tool~~ app tools -->. play animenz. 
+
+<!-- ~~both physically and digitally~~ digitally -->
+
+21 20 learn pm.
 
 
 

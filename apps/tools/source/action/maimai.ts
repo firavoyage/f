@@ -105,15 +105,15 @@ function stars_and_bars(n: number, m: number): number[][] {
   return results;
 }
 
-function solutions_number(n: number, weights = [1, 2, 3, 4, 6]): number {
+function count_solutions(n: number, factors = [1, 2, 3, 4, 6]): number {
   const dp: number[] = [];
   for (let i = 0; i <= n; i++) {
     dp.push(0);
   }
   dp[0] = 1;
 
-  for (let i = 0; i < weights.length; i++) {
-    const w = weights[i];
+  for (let i = 0; i < factors.length; i++) {
+    const w = factors[i];
     for (let j = w; j <= n; j++) {
       dp[j] += dp[j - w];
     }
@@ -121,6 +121,45 @@ function solutions_number(n: number, weights = [1, 2, 3, 4, 6]): number {
 
   return dp[n];
 }
+
+function find_solutions_base_2(n: number): number[][] {
+    const results: number[][] = [];
+    const max_c = Math.floor(n / 3);
+
+    for (let c = 0; c <= max_c; c++) {
+        const remainder = n - (3 * c);
+        const max_b = Math.floor(remainder / 2);
+
+        for (let b = 0; b <= max_b; b++) {
+            const a = remainder - (2 * b);
+            results.push([a, b, c]);
+        }
+    }
+
+    return results;
+}
+
+function find_solutions_base_5(n: number): number[][] {
+  const results: number[][] = [];
+
+  for (let e = 0; e <= Math.floor(n / 6); e++) {
+    const rem_e = n - 6 * e;
+    for (let d = 0; d <= Math.floor(rem_e / 4); d++) {
+      const rem_d = rem_e - 4 * d;
+      for (let c = 0; c <= Math.floor(rem_d / 3); c++) {
+        const rem_c = rem_d - 3 * c;
+        for (let b = 0; b <= Math.floor(rem_c / 2); b++) {
+          const a = rem_c - 2 * b;
+          results.push([a, b, c, d, e]);
+        }
+      }
+    }
+  }
+
+  return results;
+}
+
+// log(find_solutions(6))
 
 function base(tap: number, hold: number, slide: number, break_number: number) {
   return 100 / (1 * tap + 2 * hold + 3 * slide + 5 * break_number)
@@ -243,8 +282,8 @@ export function maimai(achievement: number,
         })
 
         expanded_current_results_number +=
-          solutions_number(base_2, _b_factors_base_2)
-          * solutions_number(base_5, _b_factors_base_5)
+          count_solutions(base_2, _b_factors_base_2)
+          * count_solutions(base_5, _b_factors_base_5)
       }
 
       // for (const [great_tap, great_hold, good_tap, great_slide, miss_tap_good_hold,
@@ -288,6 +327,7 @@ export function maimai(achievement: number,
   return results
 }
 
+// todo
 export function expand_maimai(results: ReturnType<typeof maimai>) {
   log(results)
 }
@@ -300,8 +340,10 @@ const results = maimai(100.9166, 285 + 113, 62, 107, 27)
 
 // const results = maimai(100.0445, (364 + 18 + 3), 70 + 4, 44, 12 + 3)
 
-log({ results: results.length })
+// log({ results: results.length })
 
 // log(results)
 
+// log(find_solutions_base_2(5))
 
+// log(find_solutions_base_5(6))
