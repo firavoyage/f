@@ -502,3 +502,13 @@ humility: export, reproduce, copy and paste the prompt & result, proxy.
 
 ---
 
+ux: proactive
+
+when i select sth on google ai mode, an "ask about" pops up.
+
+it might not be meaningful for power users as i want to copy paste to keep control anyway (i dont want to use the google way of implicit prompting)
+
+but it's smart.
+
+---
+

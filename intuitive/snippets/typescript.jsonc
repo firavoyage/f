@@ -250,6 +250,29 @@
       "}"
     ],
   },
+  "break": {
+    "prefix": [
+      "b",
+      "br",
+      "bre",
+      "brea",
+      "break",
+    ],
+    "body": [
+      "break",
+    ],
+  },
+  "continue": {
+    "prefix": [
+      // c, co: const
+      "con",
+      "cont",
+      "conti",
+    ],
+    "body": [
+      "continue",
+    ],
+  },
   "set interval": {
     "prefix": "si",
     "body": [

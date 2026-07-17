@@ -7,12 +7,16 @@ const steps = [
   [96, 16],
 ]
 
-let beg = 0
+function main() {
+  let beg = 0
 
-for (const [end, step] of steps) {
-  for (const value of each(beg + step, end, step)) {
-    log(`${value}: ${value * 0.25}rem`)
+  for (const [end, step] of steps) {
+    for (const value of each(beg + step, end, step)) {
+      log(`${value}: ${value * 0.25}rem`)
+    }
+
+    beg = end
   }
-
-  beg = end
 }
+
+main()

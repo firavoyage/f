@@ -158,7 +158,7 @@ export function maimai(achievement: number,
         // impossible, no so many notes to miss
 
         continue
-      } 
+      }
 
       if (great == 0) {
         derived_solutions.push([hp, lp, 0, 0, 0, good, miss])
@@ -199,9 +199,15 @@ export function maimai(achievement: number,
 
     results.push(...current_results)
 
-    log({n, m, result_count: current_results.length})
+    const result_count = current_results.length
 
-    write(home(`result_${n}_${m}.yaml`), stringify({current_results, derived_solutions}))
+    if (result_count == 0) {
+      continue
+    }
+
+    log({ n, m, result_count })
+
+    write(home(`result_${n}_${m}.yaml`), stringify({ current_results, derived_solutions }))
   }
 
   return results
