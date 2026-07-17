@@ -13111,3 +13111,9 @@ Would you like to see how to log these background errors using an **Express midd
 Show all
 
 # 
+
+# . thinking
+
+i would use foo_number anyway.
+
+
