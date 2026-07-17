@@ -134,7 +134,7 @@ export function maimai(achievement: number,
   // miss tap/good hold, good slide, miss hold, miss slide
   const _b_factors = [2, 4, 5, 6, 10, 15, 20, 30]
   // const _b_factors = [2, 4, 5, 6, 10, 15, 20, 25, 30, 50]
-  
+
   // hp, lp, hg/mg/lg, good, miss
   const _bb_factors = [5, 10, 12, 14, 20]
 
@@ -149,8 +149,8 @@ export function maimai(achievement: number,
       continue
     }
 
-    log({n, m})
-    
+    log({ n, m })
+
     const solutions = solve_change(m, _bb_factors)
 
     log('solutions', solutions.length)
@@ -172,8 +172,14 @@ export function maimai(achievement: number,
       // great -> hg, mg, lg
       const expanded_greats = stars_and_bars(great, 3)
 
-      for (const expanded of expanded_greats) {
-        derived_solutions.push([hp, lp, ...expanded, good, miss])
+      for (const [hg, mg, lg] of expanded_greats) {
+        const remaining_n = n - (hg * 10 + mg * 20 + lg * 25 + good * 30 + miss * 50)
+
+        if (remaining_n < 0) {
+          continue
+        }
+
+        derived_solutions.push([hp, lp, hg, mg, lg, good, miss])
       }
     }
 
@@ -184,11 +190,16 @@ export function maimai(achievement: number,
     for (const [hp, lp, hg, mg, lg, good, miss] of derived_solutions) {
       const remaining_n = n - (hg * 10 + mg * 20 + lg * 25 + good * 30 + miss * 50)
 
-      if (remaining_n < 0) {
-        continue
-      }
+      // if (remaining_n < 0) {
+      //   continue
+      // }
+
+      log('remaining_n', remaining_n)
 
       const solutions_n = solve_change(remaining_n, _b_factors)
+
+      log({ solutions_n: solutions_n.length })
+
       for (const [great_tap, great_hold, good_tap, great_slide, miss_tap_good_hold,
         good_slide, miss_hold, miss_slide] of solutions_n) {
         current_results.push({
