@@ -16,7 +16,7 @@ e.g. large m (e.g. miss break), low n (base loss), obviously impossible yet curr
 
 <!-- i would like to write into a log, but it's async, and i fire and forget. ask if it matters. -->
 
-19 00 optimize maimai furtherer (19 40)
+~~19 00~~ 19 40 optimize maimai furtherer ~~(19 40)~~ (20 00)
 
 seems ive done what i can do on branch cutting.
 

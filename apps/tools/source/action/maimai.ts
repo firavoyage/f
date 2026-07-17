@@ -130,10 +130,21 @@ export function maimai(achievement: number,
 
   // log(findings)
 
-  // great tap, great hold, good tap, great slide, 
-  // miss tap/good hold, good slide, miss hold, miss slide
-  const _b_factors = [2, 4, 5, 6, 10, 15, 20, 30]
-  // const _b_factors = [2, 4, 5, 6, 10, 15, 20, 25, 30, 50]
+  // divide into base 2 and base 5 first, combine some of them later
+  const _b_factors = [2, 5]
+
+  // great tap, great hold, great slide, 
+  const _b_factors_base_2 = [1, 2, 3]
+  // const _b_factors_base_2 = [2, 4, 6]
+
+  // good tap, miss tap/good hold, good slide, miss hold, miss slide
+  const _b_factors_base_5 = [1, 2, 3, 4, 6]
+  // const _b_factors_base_5 = [5, 10, 15, 20, 30]
+
+  // // great tap, great hold, good tap, great slide, 
+  // // miss tap/good hold, good slide, miss hold, miss slide
+  // const _b_factors = [2, 4, 5, 6, 10, 15, 20, 30]
+  // // const _b_factors = [2, 4, 5, 6, 10, 15, 20, 25, 30, 50]
 
   // hp, lp, hg/mg/lg, good, miss
   const _bb_factors = [5, 10, 12, 14, 20]
@@ -200,18 +211,29 @@ export function maimai(achievement: number,
 
       log({ solutions_n: solutions_n.length })
 
-      for (const [great_tap, great_hold, good_tap, great_slide, miss_tap_good_hold,
-        good_slide, miss_hold, miss_slide] of solutions_n) {
+      for (const [base_2, base_5] of solutions_n) {
         current_results.push({
           // tap/touch, hold, slide
           base: {
-            great_tap, great_hold, good_tap, great_slide, miss_tap_good_hold,
-            good_slide, miss_hold, miss_slide
+            base_2, base_5
           },
           // break
           bonus: { hp, lp, hg, mg, lg, good, miss },
         })
       }
+
+      // for (const [great_tap, great_hold, good_tap, great_slide, miss_tap_good_hold,
+      //   good_slide, miss_hold, miss_slide] of solutions_n) {
+      //   current_results.push({
+      //     // tap/touch, hold, slide
+      //     base: {
+      //       great_tap, great_hold, good_tap, great_slide, miss_tap_good_hold,
+      //       good_slide, miss_hold, miss_slide
+      //     },
+      //     // break
+      //     bonus: { hp, lp, hg, mg, lg, good, miss },
+      //   })
+      // }
     }
 
     results.push(...current_results)
@@ -230,13 +252,12 @@ export function maimai(achievement: number,
   return results
 }
 
-// log(maimai(100.9166, 285 + 113, 62, 107, 27))
+const results = maimai(100.9166, 285 + 113, 62, 107, 27)
 
-log(maimai(97.0669, (552 + 78 + 14 + 4) + 0, 20 + 1, 69 + 3 + 2 + 2, 8 + 6))
+// const results = maimai(97.0669, (552 + 78 + 14 + 4) + 0, 20 + 1, 69 + 3 + 2 + 2, 8 + 6)
 
-// log(maimai(100.6802, (279 + 8) + 14, 75, 37, 9 + 3))
+// const results = maimai(100.6802, (279 + 8) + 14, 75, 37, 9 + 3)
 
-// maimai(100.0445, (364 + 18 + 3), 70 + 4, 44, 12 + 3)
+// const results = maimai(100.0445, (364 + 18 + 3), 70 + 4, 44, 12 + 3)
 
-// log(maimai(100.0445, (364 + 18 + 3), 70 + 4, 44, 12 + 3))
-
+log(results)

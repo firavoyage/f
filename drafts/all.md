@@ -775,6 +775,7 @@ grow:
 
 - politics ice criticism
 - politics elon changes
+- politics trump transistors transgender
 
 humility:
 
