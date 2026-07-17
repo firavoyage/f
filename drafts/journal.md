@@ -46992,7 +46992,13 @@ i could watch Oppenheimer for free. no ads (despite a 20s instantly skippable tr
 
 21 20 learn pm.
 
-23 20 solve a math problem.
+23 20 solve a math problem. analyze w gemini.
+
+18
+
+00 20 test <!-- record --> and analyze gemini. 01 00
+
+<!-- competitive ux analysis -->
 
 
 
