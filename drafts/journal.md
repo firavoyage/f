@@ -46992,6 +46992,8 @@ i could watch Oppenheimer for free. no ads (despite a 20s instantly skippable tr
 
 21 20 learn pm.
 
+23 20 solve a math problem.
+
 
 
 <!-- timebox, plan. -->
