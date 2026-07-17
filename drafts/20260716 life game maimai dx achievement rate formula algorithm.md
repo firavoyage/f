@@ -12432,4 +12432,682 @@ Use code with caution.
 
 Would you like to add constraints to **limit the maximum capacity** of any single box, or should we write **unit tests** to verify the output?
 
+# <!-- 17 jul -->
+
+# in js compare when it's sync or it's being awaited
+
+In JavaScript, the execution behavior depends entirely on whether a function is synchronous or an asynchronous function being `await`ed.
+
+Here is the direct comparison of how they behave.
+
+### Code Execution Flow
+
+- **Synchronous:** Blocks the thread. Next line waits until the current line finishes.
+- **Awaited:** Pauses the surrounding `async` function. Yields control back to the main event loop.
+
+### Thread Behavior
+
+- **Synchronous:** Runs immediately on the main execution stack.
+- **Awaited:** Tasks are sent to the Web API/Node.js background thread pool.
+- **Awaited:** Code resumption is queued in the Microtask Queue.
+
+### Error Handling
+
+- **Synchronous:** Caught instantly using standard `try...catch` blocks.
+- **Awaited:** Requires `try...catch` inside the wrapping `async` function.
+- **Awaited:** Uncaught errors result in unhandled promise rejections.
+
+### Visual Comparison
+
+javascript
+
+```
+// 1. SYNCHRONOUS
+console.log("Start");
+const data = getSyncData(); // Blocks everything for 2 seconds
+console.log(data);
+console.log("End");
+// Output Order: Start -> Data -> End
+
+// 2. AWAITED ASYNC
+console.log("Start");
+const data = await getAsyncData(); // Pauses this function, browser stays responsive
+console.log(data);
+console.log("End");
+// Output Order: Start -> Data -> End (But UI doesn't freeze during wait)
+```
+
+Use code with caution.
+
+To look closer at how this affects your specific project, tell me:
+
+- What **performance issue** or **bug** are you currently trying to fix?
+- Are you dealing with **file systems**, **API fetches**, or **heavy loops**?
+
+I can provide a tailored code refactor to optimize your application.
+
+- [link](https://www.cybrosys.com/blog/how-to-handle-asynchronous-javascript)\
+  Asynchronous Methods in Javascript\
+  Nov 3, 2022 — JavaScript is a Synchronous language which means that every function is done in a sequence. Each action must wait for the completi...\
+  \
+  \
+  Cybrosys Technologies
+- [link](https://blog.appsignal.com/2022/11/09/how-to-handle-async-code-in-javascript.html)\
+  How to Handle Async Code in JavaScript\
+  Nov 9, 2022 — The notion of the execution model is essential here because, depending on the programming language, it can work in a sync way or a...\
+  \
+  \
+  AppSignal
+- [link](https://codefinity.com/courses/v2/5e308cd9-7127-406c-ad47-a35ce1d81dd9/ab1d709a-0d1e-4323-a01a-ce8738ea4102/54a7658f-ca94-4c04-89c0-4b36180c1227)\
+  Learn Async Testing Basics | Writing and Running Tests Effectively\
+  In JavaScript, asynchronous behavior is commonly handled using callbacks, promises, or the modern async/await syntax. Unlike synch...\
+  \
+  \
+  Codefinity
+
+Show all
+
+## how much does it matter when there is no ui
+
+Even without a User Interface (UI), <mark>choosing between synchronous and awaited code matters immensely for<span> </span><strong>throughput</strong>,<span> </span><strong>responsiveness</strong>, and<span> </span><strong>resource utilization</strong></mark> in environments like Node.js backends, CLI tools, or cloud functions.
+
+Here is how it impacts non-UI environments.
+
+### Server Throughput and Scaling
+
+- **Synchronous:** Blocks the entire single thread. The server cannot accept new incoming API requests while reading a file or querying a database.
+- **Awaited:** Frees the thread to handle thousands of concurrent incoming requests while waiting for I/O operations to finish.
+
+### Execution Speed (Parallelism)
+
+- **Synchronous:** Forces tasks to run sequentially. Three 2-second file reads will always take 6 seconds total.
+- **Awaited:** Allows tasks to run concurrently. Using `await Promise.all()` lets three 2-second file reads finish in just 2 seconds total.
+
+### Cloud Cost and Resource Waste
+
+- **Synchronous:** Keeps the CPU core 100% occupied or stalled doing nothing during I/O wait times, driving up CPU utilization metrics.
+- **Awaited:** Keeps CPU usage low by efficiently parking idle tasks, preventing unnecessary scaling or higher cloud computing costs.
+
+### CLI Tools and Scripts
+
+- **Synchronous:** Completely acceptable for simple, linear scripts. If a script only has one job (like migrating a local file), blocking the thread does not hurt anyone.
+- **Awaited:** Necessary if the CLI tool needs to show a live progress bar, handle user cancellation inputs, or fetch data from multiple endpoints at once.
+
+To tailor this to your backend or script, let me know:
+
+- What **runtime environment** are you using? (Node.js, AWS Lambda, Bun?)
+- What **volume of data or concurrent requests** does your system handle?
+
+I can show you exactly how much time or money you will save by switching.
+
+- [link](https://hasangalakdinu.medium.com/understanding-asynchronous-i-o-in-net-why-there-is-no-thread-during-the-wait-41fe0f2d2fd5)\
+  Understanding Asynchronous I/O in .NET: Why There is “No Thread” During the Wait\
+  Sep 17, 2024 — In reality, as Stephen Cleary points out in his famous blog post “There Is No Thread”, the true power of asynchronous programming ...\
+  \
+  \
+  Medium
+
+## for example nodejs fs, what if i use sync or async
+
+In Node.js, choosing between `fs.readFileSync` (Synchronous) and `await fs.promises.readFile` (Awaited Async) changes how your application handles system memory, CPU cycles, and simultaneous operations.
+
+Here is the breakdown of what happens under the hood for each approach.
+
+### The Mechanism
+
+- **Synchronous (`fs.readFileSync`):** JavaScript stops executing entirely. The main thread directly asks the Operating System for the file and waits in a frozen state until the data returns.
+- **Awaited (`fs.promises.readFile`):** JavaScript hands the file request over to Node.js's C++ background thread pool (`libuv`). The main thread immediately walks away to do other work until the file is ready.
+
+### When to Use `fs` Sync
+
+Synchronous file methods are acceptable only under specific conditions:
+
+- **Initialization:** Loading `.env` config files or SSL certificates during server startup before the application starts accepting traffic.
+- **One-off CLI Scripts:** A local automation script running sequentially where nobody else is waiting on the process.
+- **Build Tools:** Compilers or bundlers (like Webpack or Vite local builds) where execution is strictly linear.
+
+### When to Use `fs` Awaited Async
+
+Asynchronous file methods are mandatory for production applications and servers:
+
+- **High-Traffic Servers:** If an API endpoint uses `fs.readFileSync`, a single user downloading a large file will cause the server to drop or freeze requests for all other users.
+- **Concurrent Operations:** Reading multiple files simultaneously.
+
+### Performance Comparison
+
+| Metric / Scenario     | `fs.readFileSync` (Sync)            | `await fs.readFile` (Async)                   |
+| --------------------- | ----------------------------------- | --------------------------------------------- |
+| **Server Throughput** | Drops to 1 request at a time        | Handles thousands of concurrent requests      |
+| **Multiple Files**    | Executed one after the other (Slow) | Executed in parallel via `Promise.all` (Fast) |
+| **Event Loop**        | Starved and blocked                 | Free to process timers and network I/O        |
+
+### Code Example: Reading 3 Files
+
+javascript
+
+```
+import fs from 'fs';
+
+// ❌ SYNCHRONOUS: Takes 3x longer. Total block.
+const fileA = fs.readFileSync('largeA.mp4'); // Blocks
+const fileB = fs.readFileSync('largeB.mp4'); // Blocks
+const fileC = fs.readFileSync('largeC.mp4'); // Blocks
+
+//  AWAITED PARALLEL: Fast. Zero blocking.
+const [fileA, fileB, fileC] = await Promise.all([
+  fs.promises.readFile('largeA.mp4'),
+  fs.promises.readFile('largeB.mp4'),
+  fs.promises.readFile('largeC.mp4')
+]);
+```
+
+Use code with caution.
+
+To optimize your exact setup, could you tell me:
+
+- What **type of application** are you building? (e.g., Express API, cron job, CLI tool)
+- How **large** are the files you are reading or writing?
+
+I can help you choose the best file pattern, including stream-based options if your files are highly massive.
+
+- [link](https://advancedweb.hu/do-not-use-fs-sync-methods-in-javascript-use-fs-promises-instead/)\
+  Do not use fs sync methods in Javascript, use fs.promises instead\
+  Jul 27, 2021 — Why sync execution is bad NodeJs's fs module provides a long list of ... Sync functions, such as fs. readFileSync , fs. rmSync , f...\
+  \
+  \
+  advancedweb.hu
+- [link](https://www.memberstack.com/blog/reading-files-in-node-js)\
+  How to Read Files in Node.js: readFile vs readFileSync\
+  Mar 23, 2022 — Naturally, node. js includes two different methods for reading files: fs. readFile() and the fs. readFileSync() method. The first ...\
+  \
+  \
+  Memberstack
+- [link](https://nodejs.org/learn/asynchronous-work/discover-promises-in-nodejs)\
+  Discover Promises in Node.js\
+  In this example, fs. readFile() returns a Promise, which we handle using async/await syntax to read the contents of a file asynchr...\
+  \
+  \
+  Node.js
+
+Show all
+
+## "The main thread immediately walks away to do other work until the file is ready. " what can it do
+
+When the main thread "walks away" during an awaited file read, <mark>it returns to the Node.js<span> </span><strong>Event Loop</strong></mark>. This allows the thread to execute any other tasks queued in the system instead of sitting idle.
+
+Here is exactly what the main thread can do while waiting for that file:
+
+### 1. Handle New Incoming Network Requests
+
+If your application is a web server (like Express or Fastify), the main thread will immediately accept and process new incoming HTTP, HTTPS, or WebSocket requests from other users.
+
+### 2. Process Expired Timers and Intervals
+
+The thread will check if any `setTimeout()` or `setInterval()` callbacks have reached their delay times and execute them.
+
+### 3. Run Microtasks (Promises & `process.nextTick`)
+
+It will clear out the Microtask Queue. This means it executes the `.then()` or `await` continuations of _other_ promises that just finished resolving elsewhere in your app.
+
+### 4. Handle Incoming Database Responses
+
+If your app previously requested data from PostgreSQL, MongoDB, or Redis, the main thread will parse and handle those database responses the moment they arrive over the network.
+
+### 5. Execute CPU-Bound Calculations
+
+It can run normal, synchronous JavaScript logic required by other parts of your application, such as filtering arrays, hashing passwords, or parsing JSON strings.
+
+### 6. Process Inbound Operating System Signals
+
+The thread remains free to listen for OS signals (like `SIGTERM` for graceful shutdowns) or close events on network sockets.
+
+### Summary Visual Flow
+
+text
+
+```
+[Main Thread] ---> Starts async File Read ---> Hands it to background threads (libuv)
+                               |
+                               v (Main thread is now completely free!)
+[Main Thread] ---> Accepts New User Request #2
+[Main Thread] ---> Runs an expired setTimeout()
+[Main Thread] ---> Parses JSON for User Request #3
+                               |
+                               v
+Background thread finishes reading the file ---> Microtask queued ---> [Main Thread] resumes original code
+```
+
+Use code with caution.
+
+To see how this applies directly to your system's architecture, let me know:
+
+- Is this node application an **API/Web Server** or a **Background worker/Script**?
+- Are you running into **delays or timeouts** when certain tasks run?
+
+I can help you pinpoint exactly where your event loop might be getting bottlenecked.
+
+- [link](https://macarthur.me/posts/long-tasks/)\
+  There are a lot of ways to break up long tasks in JavaScript.\
+  Feb 3, 2025 — A promise's . then() method is always executed on the microtask queue, after everything else on the call stack is finished. It's a...\
+  \
+  \
+  macarthur.me
+
+## how much does it matter. examples when async gives benefit or not much
+
+How much it matters depends on one factor: **Concurrency**. If your application only serves one user or runs a single task at a time, asynchronous execution provides almost no benefit.
+
+Here is a breakdown of scenarios where async is a massive game-changer versus where it does not matter at all.
+
+***
+
+### 🚀 When Async Matters Intensely (Huge Benefit)
+
+#### 1. Multi-User Web Servers (e.g., Express API)
+
+- **The Scenario:** 50 users simultaneously click a button to download a 50MB report.
+- **With Sync:** The server blocks completely on the first user. Users 2 through 50 experience a frozen webpage and their requests eventually time out.
+- **With Async:** The server delegates the file reads to background threads. It immediately responds to all 50 users simultaneously, completing the work up to **50x faster** for the group.
+
+#### 2. Scraping or Fetching Multiple APIs
+
+- **The Scenario:** You need to fetch data from 10 different external API endpoints. Each API takes 1 second to respond.
+- **With Sync:** You must wait for API 1, then API 2, sequentially. Total time: **10 seconds**.
+- **With Async (`Promise.all`):** All 10 requests fire at the exact same time. Total time: **1 second**.
+
+#### 3. Real-Time Apps (WebSockets / Chat)
+
+- **The Scenario:** A chat server handling 1,000 active connections needs to log a message history to a file.
+- **With Sync:** The entire chat room freezes. Messages stop delivering to all 1,000 users while the server writes to the hard drive.
+- **With Async:** The server logs the file quietly in the background while users continue chatting in real time without a millisecond of lag.
+
+***
+
+### 🛑 When Async Does NOT Matter Much (No Real Benefit)
+
+#### 1. Linear Automation Scripts & CLI Tools
+
+- **The Scenario:** A local script that reads a single configuration file, alters a string, and outputs a new file.
+- **Why it doesn't matter:** There are no other incoming requests, timers, or users. Making the thread "walk away" is useless because there is no other work to walk away _to_. The script will finish in the exact same timeframe (e.g., 5 milliseconds).
+
+#### 2. App Initialization / Startup Phase
+
+- **The Scenario:** Your backend server is booting up and needs to load environment variables, SSL certificates, or language translation files before opening its port to the public.
+- **Why it doesn't matter:** The server cannot safely accept traffic anyway until these files are loaded. Using `fs.readFileSync` here is safe, readable, and standard practice.
+
+#### 3. Pure CPU-Heavy Calculations
+
+- **The Scenario:** You are sorting an array of 1,000,000 items or calculating Fibonacci numbers.
+- **Why it doesn't matter:** Wrapping CPU tasks in a Promise and `await`ing them **does not** push them to background threads. The main JavaScript thread still has to do the heavy math calculation, completely blocking the event loop either way. _(Note: You need Worker Threads for this, not just async/await)._
+
+***
+
+### Summary Rule of Thumb
+
+- **Use Sync if:** Your code runs step-by-step, has no concurrent tasks, and runs where nobody else is waiting on it (CLI, Cron, Startup).
+- **Use Async if:** Your code touches the disk/network and runs in an environment where multiple things must happen at the same time (Servers, Gateways, UI-less Daemons).
+
+To see which category your current project falls into, let me know:
+
+- What **specific tasks** is your Node.js code performing?
+- Is it triggered by an **incoming request** or run manually as a **command line command**?
+
+I can tell you exactly if refactoring to async is worth your time.
+
+- [link](https://www.reddit.com/r/csharp/comments/1knb1lq/whats%5Fthe%5Fpoint%5Fof%5Fhaving%5Fasync%5Fmethods%5Fif%5Fall%5Fwe/)\
+  What's the point of having async methods if all we do is await them? : r/csharp\
+  May 15, 2025 — Generally, async/await doesn't have a benefit when you're only doing one thing or when all you're doing is CPU-bound (like calcula...\
+  \
+  \
+  Reddit
+- [link](https://builtin.com/articles/async-vs-sync-programming)\
+  Async vs Sync Programming: Understanding the Differences\
+  Feb 26, 2025 — If an API were designed synchronously, each request would block the server until the previous one completes, reducing throughput a...\
+  \
+  \
+  Built In
+- [link](https://stackoverflow.com/questions/27659116/node-js-sync-vs-async)\
+  javascript - Node.js sync vs. async\
+  Dec 26, 2014 — However, in a network service, the first, synchronous version would block the entire process and defeat node's main design princip...\
+  \
+  Stack Overflow
+
+Show all
+
+## does web server need an event loop under the hood that should not be blocked
+
+<mark><span>Yes, every high-concurrency web server needs a mechanism under the hood that behaves exactly like an event loop and must never be blocked</span></mark>.
+
+While JavaScript makes this obvious because it is single-threaded, multi-threaded languages face the exact same architectural challenge.
+
+### 1. How Other Languages Handle This
+
+Before Node.js, servers like Apache (using PHP or Java) handled concurrency differently.
+
+- **The Thread-Per-Request Model:** When a request came in, the server spawned a brand new Operating System thread for that user.
+- **The Problem:** If that user downloaded a large file, that specific thread blocked and sat idle. If 10,000 users connected at once, the server had to spawn 10,000 threads. This destroyed system memory (RAM) and crashed the server, even if the CPU was doing zero actual work.
+
+### 2. The Modern Standard: The Event Loop (I/O Multiplexing)
+
+To solve the thread-limit problem, almost all modern high-performance web servers—regardless of language—switched to an event loop model under the hood. They use OS-level features like **`epoll`** (Linux), **`kqueue`** (macOS), or **`IOCP`** (Windows).
+
+- **Nginx (C):** Uses an event-driven loop. A tiny number of worker threads handle millions of concurrent connections because they never block.
+- **Go (Goroutines):** Has an internal scheduler that acts like an event loop. If a goroutine blocks on a file read, Go instantly parks it and moves the thread to another task.
+- **Java (Netty / Project Loom):** Modern Java uses event loops and virtual threads to prevent heavy OS threads from freezing during network calls.
+- **Python (FastAPI / Asyncio) & Rust (Tokio):** Both use explicit event loops exactly like Node.js to achieve high throughput.
+
+### 3. What Happens If You Block the Loop in Any Language?
+
+If you execute a massive synchronous file read or an infinite `while` loop on an event-driven server, the consequences are identical across all platforms:
+
+- **Connection Drops:** The server stops responding to the OS network socket. New users get "Connection Timed Out" errors.
+- **Health Check Failures:** In cloud environments (like AWS or Kubernetes), load balancers ping your server every few seconds. If the loop is blocked, the server misses the ping. The cloud provider assumes the server is dead and violently restarts the container.
+
+### Summary Architecture Comparison
+
+| Server Model                           | Scaling Limit                                          | What Happens During a File Read?                        |
+| -------------------------------------- | ------------------------------------------------------ | ------------------------------------------------------- |
+| **Traditional (Thread-Per-Request)**   | Limited by **RAM** (Too many threads crash the system) | The thread sleeps and wastes memory.                    |
+| **Modern (Event Loop / Node / Nginx)** | Limited by **CPU** (Highly efficient)                  | The loop passes work to the OS and handles other users. |
+
+To help you optimize your specific infrastructure, let me know:
+
+- What **backend framework or language** (besides Node) are you exploring?
+- Are you designing a system to handle **massive traffic spikes**?
+
+I can provide architecture patterns or benchmarks to help you scale efficiently.
+
+- [link](https://www.linkedin.com/pulse/understanding-javascript-execution-deep-dive-context-call-akash-gupta-3nkof)\
+  Understanding JavaScript Execution: A Deep Dive into Execution Context, Call Stack, Event Loop, and More\
+  Mar 16, 2025 — Although JavaScript is single-threaded, it achieves concurrency using:\
+  \
+  \
+  LinkedIn
+- [link](https://neetesh.hashnode.dev/event-loop)\
+  event loop javascript\
+  Mar 19, 2023 — Event loop do you know javascript is a single-threaded language? but using a few smarter data structures, it gives us the illusion...\
+  \
+  \
+  neetesh.hashnode.dev
+- [link](https://medium.com/@niteshthakur498/the-event-loop-f193f0ad0f10)\
+  The Event Loop. Unlocking Concurrency in… | by Nitesh Thakur\
+  Apr 2, 2026 — When we talk about servers handling many concurrent requests, our minds often jump to a common mental model: the “thread-per-reque...\
+  \
+  \
+  Medium
+
+Show all
+
+## for example when i put a static express server on vps, write a very simple hello world script, and many users want it, what happens
+
+When you host a simple "Hello World" Express server on a VPS and thousands of users attack it simultaneously, the outcome depends entirely on whether your code is **synchronous** or **asynchronous**.
+
+Here is exactly what happens under the hood in both scenarios.
+
+### Scenario A: The Synchronous (Blocked) Server
+
+Imagine you added a synchronous file read (like reading a config or a small file) right inside your request route:
+
+javascript
+
+```
+app.get('/', (req, res) => {
+  fs.readFileSync('small-file.txt'); // ❌ Blocks the thread for 5ms
+  res.send('Hello World');
+});
+```
+
+Use code with caution.
+
+#### What happens under heavy load:
+
+1. **The Traffic Jam:** Node.js can only do _one_ thing at a time. While the server is waiting 5ms for the SSD to read `small-file.txt` for User 1, User 2's request is forced to wait in the operating system's network queue (the listen backlog).
+2. **Exponential Delays:** If 100 users hit the server at the exact same millisecond, User #100 has to wait 100 × 5ms = 500ms just for the server to _start_ looking at their request.
+3. **The Crash / Timeout:** If 2,000 users hit it at once, the wait time climbs to 10 seconds. The operating system's queue fills up completely, and users start seeing **"504 Gateway Timeout"** or **"Connection Refused"** errors. Your CPU usage will look low, but your server will feel completely dead.
+
+***
+
+### Scenario B: The Asynchronous / Static Server
+
+Now imagine you use standard static serving, or an asynchronous/awaited read, or just a pure text response:
+
+javascript
+
+```
+app.get('/', (req, res) => {
+  res.send('Hello World'); //  Non-blocking memory response
+});
+```
+
+Use code with caution.
+
+#### What happens under heavy load:
+
+1. **The Event Loop Flywheel:** Because there is no blocking I/O, the single execution thread acts like a hyper-fast conveyor belt. It receives User 1's request, hands the response to the network socket instantly, and immediately jumps to User 2.
+2. **Massive Throughput:** Since a pure text response takes microseconds, a single-threaded Node.js server on a cheap VPS can easily handle **5,000 to 15,000 requests per second** without dropping a single connection.
+3. **The CPU Ceiling:** If traffic exceeds your server's limits (e.g., 30,000 requests per second), the CPU will finally hit 100% usage. The server won't crash instantly; instead, responses will just uniformly slow down by a few milliseconds for everyone as the Event Loop works through the massive queue as fast as it can.
+
+***
+
+### Summary: What Limits Your VPS?
+
+- If your code is **Synchronous**, your server is limited by **Time and Sequential Blocking**. It will choke under light/moderate load.
+- If your code is **Asynchronous**, your server is limited only by **Hardware** (CPU speed and the VPS network bandwidth).
+
+To test or prepare your VPS for this, let me know:
+
+- What are the **hardware specs** of your VPS (e.g., 1 vCPU, 1GB RAM)?
+- Are you planning to use a reverse proxy like **Nginx** or a load balancer in front of it?
+
+I can give you the exact commands to benchmark your server and find its literal breaking point.
+
+# in js what if i fire and forget an await yet i throw in the async fn
+
+If you execute an `async` function without using the `await` keyword (often called "fire and forget") and that function throws an error, <mark>it results in an<span> </span><strong>unhandled promise rejection</strong></mark>.
+
+Here is exactly what happens and how to handle it.
+
+### The Mechanism
+
+- **Promises capture errors:** `async` functions automatically wrap their return values and thrown errors into a Promise.
+- **Bypassing `try...catch`:** If you do not `await` the function, execution moves past it immediately. A surrounding `try...catch` block will **not** catch the error.
+- **The Rejection:** The function returns a rejected Promise. Because nothing is listening to that rejection, it triggers a runtime event.
+
+javascript
+
+```
+async function riskyBusiness() {
+  throw new Error("Boom!");
+}
+
+function caller() {
+  try {
+    riskyBusiness(); // No await here!
+    console.log("This line still runs.");
+  } catch (error) {
+    console.log("This will NEVER run.");
+  }
+}
+
+caller();
+```
+
+Use code with caution.
+
+### Environment Behavior
+
+How this affects your application depends heavily on your runtime environment:
+
+- **Node.js (v15+):** The process will crash by default with an `UnhandledPromiseRejectionException`.
+- **Modern Browsers:** The script will not crash, but a red error will appear in the DevTools console.
+- **Older Node.js:** The process prints a warning but keeps running (deprecated behavior).
+
+### How to Fix It
+
+If you truly want to fire and forget but still safely handle errors, use one of these three patterns:
+
+#### 1. Global Catch Handler
+
+Attach a `.catch()` block directly to the function call. This is the cleanest way to fire and forget safely.
+
+javascript
+
+```
+riskyBusiness().catch(err => console.error("Caught background error:", err));
+```
+
+Use code with caution.
+
+#### 2. Internal Try/Catch
+
+Handle the error entirely inside the `async` function so it never bubbles up as a rejection.
+
+javascript
+
+```
+async function safeRiskyBusiness() {
+  try {
+    throw new Error("Boom!");
+  } catch (err) {
+    console.error("Handled internally:", err);
+  }
+}
+safeRiskyBusiness(); // Safe to fire and forget
+```
+
+Use code with caution.
+
+#### 3. Process-Level Listeners
+
+As a safety net, you can catch any missed rejections globally.
+
+javascript
+
+```
+// In Node.js
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+});
+
+// In the Browser
+window.addEventListener('unhandledrejection', (event) => {
+  console.error('Unhandled rejection:', event.reason);
+});
+```
+
+Use code with caution.
+
+Would you like help rewriting your specific **background task** to handle errors safely, or would you like to explore how **Node.js worker threads** handle isolated crashes?
+
+- [link](https://medium.com/@thorstensuckow/javascript-promises-return-values-and-errors-handlers-19b6de4320ff)\
+  JavaScript Promises — Return Values and Error Handlers | by Thorsten Suckow-Homberg\
+  Oct 15, 2021 — Rejected Promises Likewise, an async method not called with the await -keyword will always wrap an exception thrown in a Promise, ...\
+  \
+  \
+  Medium
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async%5Ffunction)\
+  async function - JavaScript | MDN\
+  Jul 8, 2025 — Async functions always return a promise. If the return value of an async function is not explicitly a promise, it will be implicit...\
+  \
+  MDN Web Docs
+- [link](https://dev.to/kylejb/a-key-difference-between-then-and-async-await-in-javascript-53e9)\
+  A key difference between .then() and async-await in JavaScript\
+  Sep 10, 2020 — Why is this relevant you ask. When you use promises, the same promise object is tossed around when you return from method calls, e...\
+  \
+  \
+  DEV Community
+
+Show all
+
+## compare when i await or not and it errs
+
+Here is how JavaScript behaves when an `async` function throws an error, depending on whether you use `await` or not.
+
+### Quick Summary
+
+| Feature                | Using `await`                        | Not Using `await` (Fire & Forget)       |
+| ---------------------- | ------------------------------------ | --------------------------------------- |
+| **Execution Control**  | Pauses code execution until settled. | Code execution moves on immediately.    |
+| **Error Handling**     | Caught by standard `try...catch`.    | Ignores standard `try...catch`.         |
+| **Resulting Behavior** | Error propagates up the call stack.  | Creates an Unhandled Promise Rejection. |
+| **App Impact**         | Halts current execution flow.        | Can crash Node.js process entirely.     |
+
+***
+
+### Scenario 1: Using `await`
+
+When you `await` a promise, JavaScript unpacks it. If the promise rejects, JavaScript turns that rejection back into a standard throw.
+
+javascript
+
+```
+async function failingFunc() {
+  throw new Error("Failed!");
+}
+
+async function execution() {
+  try {
+    await failingFunc(); // Code pauses here until settled
+    console.log("This will NOT run");
+  } catch (error) {
+    console.log("Caught here:", error.message); // Success: Error caught
+  }
+}
+```
+
+Use code with caution.
+
+- **Why it works:** `await` forces the engine to look at the result. If it is a failure, it immediately stops the `try` block and jumps to the `catch` block.
+
+***
+
+### Scenario 2: Not Using `await`
+
+When you omit `await`, the function triggers, but the engine immediately executes the next line of code. The error happens in the background later.
+
+javascript
+
+```
+async function failingFunc() {
+  throw new Error("Failed!");
+}
+
+async function execution() {
+  try {
+    failingFunc(); // Code triggers this and instantly moves to the next line
+    console.log("This WILL run");
+  } catch (error) {
+    console.log("This will NOT run"); // The catch block is missed entirely
+  }
+}
+```
+
+Use code with caution.
+
+- **Why it fails:** The `try...catch` block only watches for errors that happen _right now_ on the current execution turn. Because `failingFunc` returns a Promise and completes its initial execution instantly, the `try` block thinks everything went perfectly.
+- **The consequence:** When the error actually throws a millisecond later, the `try...catch` block is already gone. The error has nowhere to go, triggering an unhandled rejection.
+
+Would you like to see how to log these background errors using an **Express middleware error handler**, or should we look at managing multiple background tasks simultaneously using **Promise.allSettled**?
+
+- [link](https://medium.com/jspoint/typescript-promises-and-async-await-b842b55ee3fd)\
+  A quick introduction to “Promises” and “Async/Await” (with new features)\
+  Aug 1, 2020 — The short answer is, errors are bubbled up in the async functions. This means if the promise we are awaiting ( using await keyword...\
+  \
+  \
+  Medium
+- [link](https://www.valentinog.com/blog/throw-async/)\
+  How to Throw Errors From Async Functions in JavaScript?\
+  Apr 12, 2018 — It is possible to throw errors from async functions in JavaScript? The topic has been covered hundred of times but let's see it fr...\
+  \
+  \
+  Valentino Gagliardi
+- [link](https://yjyao.com/2019/04/typescript-async.html)\
+  A quick example of async/await\
+  Apr 20, 2019 — You can mark a function as async which makes the function always return a promise wrapping its last execution statement. It also a...\
+  \
+  \
+  yjyao.com
+
+Show all
+
 # 
