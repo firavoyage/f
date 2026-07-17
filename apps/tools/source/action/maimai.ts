@@ -134,7 +134,7 @@ export function maimai(achievement: number,
   // miss tap/good hold, good slide, miss hold, miss slide
   const _b_factors = [2, 4, 5, 6, 10, 15, 20, 30]
   // const _b_factors = [2, 4, 5, 6, 10, 15, 20, 25, 30, 50]
-
+  
   // hp, lp, hg/mg/lg, good, miss
   const _bb_factors = [5, 10, 12, 14, 20]
 
@@ -149,13 +149,17 @@ export function maimai(achievement: number,
       continue
     }
 
+    log({n, m})
+    
     const solutions = solve_change(m, _bb_factors)
+
+    log('solutions', solutions.length)
 
     // hp, lp, hg, mg, lg, good, miss
     const derived_solutions = []
     for (const [hp, lp, great, good, miss] of solutions) {
       if (hp + lp + great + good + miss > break_number) {
-        // impossible, no so many notes to miss
+        // impossible, no so many notes to lose
 
         continue
       }
@@ -165,13 +169,15 @@ export function maimai(achievement: number,
         continue
       }
 
-      // hg, mg, lg
+      // great -> hg, mg, lg
       const expanded_greats = stars_and_bars(great, 3)
 
       for (const expanded of expanded_greats) {
         derived_solutions.push([hp, lp, ...expanded, good, miss])
       }
     }
+
+    log('derived solutions', derived_solutions.length)
 
     // log({ solutions, derived_solutions })
 
@@ -215,11 +221,11 @@ export function maimai(achievement: number,
 
 // log(maimai(100.9166, 285 + 113, 62, 107, 27))
 
-// log(maimai(97.0669, (552 + 78 + 14 + 4) + 0, 20 + 1, 69 + 3 + 2 + 2, 8 + 6))
+log(maimai(97.0669, (552 + 78 + 14 + 4) + 0, 20 + 1, 69 + 3 + 2 + 2, 8 + 6))
 
 // log(maimai(100.6802, (279 + 8) + 14, 75, 37, 9 + 3))
 
-maimai(100.0445, (364 + 18 + 3), 70 + 4, 44, 12 + 3)
+// maimai(100.0445, (364 + 18 + 3), 70 + 4, 44, 12 + 3)
 
 // log(maimai(100.0445, (364 + 18 + 3), 70 + 4, 44, 12 + 3))
 

@@ -724,3 +724,14 @@ Base 64.
 Adwaita
 
 ---
+
+all: rhetoric fallacies
+
+list. explanation.
+
+memes.
+
+it can be like a simple dict.
+
+---
+
