@@ -105,6 +105,23 @@ function stars_and_bars(n: number, m: number): number[][] {
   return results;
 }
 
+function solutions_number(n: number, weights = [1, 2, 3, 4, 6]): number {
+  const dp: number[] = [];
+  for (let i = 0; i <= n; i++) {
+    dp.push(0);
+  }
+  dp[0] = 1;
+
+  for (let i = 0; i < weights.length; i++) {
+    const w = weights[i];
+    for (let j = w; j <= n; j++) {
+      dp[j] += dp[j - w];
+    }
+  }
+
+  return dp[n];
+}
+
 function base(tap: number, hold: number, slide: number, break_number: number) {
   return 100 / (1 * tap + 2 * hold + 3 * slide + 5 * break_number)
 }
@@ -151,8 +168,12 @@ export function maimai(achievement: number,
 
   const results = []
 
+  let expanded_results_number = 0
+
   for (const { n, m } of findings) {
     const current_results = []
+
+    let expanded_current_results_number = 0
 
     if (break_number * 20 < m) {
       // cut the branch. it could not cause so much damage even if you miss all breaks.
@@ -220,6 +241,10 @@ export function maimai(achievement: number,
           // break
           bonus: { hp, lp, hg, mg, lg, good, miss },
         })
+
+        expanded_current_results_number +=
+          solutions_number(base_2, _b_factors_base_2)
+          * solutions_number(base_5, _b_factors_base_5)
       }
 
       // for (const [great_tap, great_hold, good_tap, great_slide, miss_tap_good_hold,
@@ -238,23 +263,36 @@ export function maimai(achievement: number,
 
     results.push(...current_results)
 
+    expanded_results_number += expanded_current_results_number
+
     if (current_results.length == 0) {
       continue
     }
 
-    log({ n, m, solutions_m: solutions_m.length, derived_solutions_m: derived_solutions_m.length, current_results: current_results.length })
+    log({
+      n, m,
+      solutions_m: solutions_m.length, derived_solutions_m: derived_solutions_m.length,
+      current_results: current_results.length,
+      expanded_current_results_number
+    })
 
     // if (result_count == 0) {
     //   continue
     // }
 
-    write(home(`result_${n}_${m}.yaml`), stringify({ current_results, derived_solutions_m }))
+    // write(home(`result_${n}_${m}.yaml`), stringify({ current_results, derived_solutions_m }))
   }
+
+  log({ expanded_results_number })
 
   return results
 }
 
-// const results = maimai(100.9166, 285 + 113, 62, 107, 27)
+export function expand_maimai(results: ReturnType<typeof maimai>) {
+  log(results)
+}
+
+const results = maimai(100.9166, 285 + 113, 62, 107, 27)
 
 // const results = maimai(97.0669, (552 + 78 + 14 + 4) + 0, 20 + 1, 69 + 3 + 2 + 2, 8 + 6)
 
@@ -262,26 +300,8 @@ export function maimai(achievement: number,
 
 // const results = maimai(100.0445, (364 + 18 + 3), 70 + 4, 44, 12 + 3)
 
-// log({results: results.length})
+log({ results: results.length })
 
 // log(results)
-
-function count_valid_sets(n: number): number {
-    const dp: number[] = [];
-    for (let i = 0; i <= n; i++) {
-        dp.push(0);
-    }
-    dp[0] = 1;
-    
-    const weights = [1, 2, 3, 4, 6];
-    for (let i = 0; i < weights.length; i++) {
-        const w = weights[i];
-        for (let j = w; j <= n; j++) {
-            dp[j] += dp[j - w];
-        }
-    }
-    
-    return dp[n];
-}
 
 
