@@ -27,4 +27,191 @@
       <!-- Empty page with just dark background -->
     </div>
   </body>
+  <script>
+    (() => {
+      // List of all standard HTML5 tags to keep intact
+      const standardTags = new Set([
+        "html",
+        "head",
+        "title",
+        "base",
+        "link",
+        "meta",
+        "style",
+        "script",
+        "noscript",
+        "template",
+        "body",
+        "section",
+        "nav",
+        "article",
+        "aside",
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+        "header",
+        "footer",
+        "address",
+        "main",
+        "p",
+        "hr",
+        "pre",
+        "blockquote",
+        "ol",
+        "ul",
+        "menu",
+        "li",
+        "dl",
+        "dt",
+        "dd",
+        "figure",
+        "figcaption",
+        "div",
+        "a",
+        "em",
+        "strong",
+        "small",
+        "s",
+        "cite",
+        "q",
+        "dfn",
+        "abbr",
+        "ruby",
+        "rt",
+        "rp",
+        "data",
+        "time",
+        "code",
+        "var",
+        "samp",
+        "kbd",
+        "sub",
+        "sup",
+        "i",
+        "b",
+        "u",
+        "mark",
+        "bdi",
+        "bdo",
+        "span",
+        "br",
+        "wbr",
+        "ins",
+        "del",
+        "picture",
+        "source",
+        "img",
+        "iframe",
+        "embed",
+        "object",
+        "param",
+        "video",
+        "audio",
+        "track",
+        "map",
+        "area",
+        "table",
+        "caption",
+        "colgroup",
+        "col",
+        "tbody",
+        "thead",
+        "tfoot",
+        "tr",
+        "td",
+        "th",
+        "form",
+        "label",
+        "input",
+        "button",
+        "select",
+        "datalist",
+        "optgroup",
+        "option",
+        "textarea",
+        "output",
+        "progress",
+        "meter",
+        "fieldset",
+        "legend",
+        "details",
+        "summary",
+        "dialog",
+      ]);
+
+      // Main function to convert a specific element
+      function convertToDiv(el) {
+        const tagName = el.tagName.toLowerCase();
+
+        // Check if the tag is non-standard and still attached to the DOM
+        if (!standardTags.has(tagName) && el.parentNode) {
+          // Disconnect observer temporarily to prevent infinite loops during manipulation
+          observer.disconnect();
+
+          const div = document.createElement("div");
+
+          // Copy all original attributes
+          for (const attr of el.attributes) {
+            div.setAttribute(attr.name, attr.value);
+          }
+
+          // Move all children nodes
+          while (el.firstChild) {
+            div.appendChild(el.firstChild);
+          }
+
+          // Swap the old custom tag with the new div
+          el.parentNode.replaceChild(div, el);
+
+          // Re-engage the observer after the swap is finished
+          startObserving();
+        }
+      }
+
+      // Scan the entire branch of a newly added node
+      function processNodeTree(node) {
+        if (node.nodeType === Node.ELEMENT_NODE) {
+          // Process all custom child tags first (bottom-up processing)
+          const subElements = Array.from(node.querySelectorAll("*"));
+          for (let i = subElements.length - 1; i >= 0; i--) {
+            convertToDiv(subElements[i]);
+          }
+          // Process the top-level added element itself
+          convertToDiv(node);
+        }
+      }
+
+      // Define the observer behavior
+      const observer = new MutationObserver((mutations) => {
+        for (const mutation of mutations) {
+          // Look for newly added elements dropped into the page
+          if (mutation.addedNodes) {
+            mutation.addedNodes.forEach(processNodeTree);
+          }
+        }
+      });
+
+      function startObserving() {
+        observer.observe(document.body || document.documentElement, {
+          childList: true, // Watch for elements being added or removed
+          subtree: true, // Watch all nested descendants, not just top-level
+        });
+      }
+
+      // 1. Run an initial sweep of the existing page structure
+      const currentElements = Array.from(document.querySelectorAll("*"));
+      for (let i = currentElements.length - 1; i >= 0; i--) {
+        convertToDiv(currentElements[i]);
+      }
+
+      // 2. Start monitoring live changes in the background
+      startObserving();
+      console.log(
+        "Live monitoring active. Standing by for non-standard tags..."
+      );
+    })();
+  </script>
 </html>
