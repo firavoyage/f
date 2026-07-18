@@ -735,3 +735,8 @@ it can be like a simple dict.
 
 ---
 
+tool: unicode and emojis.
+
+aliases. synonyms. vector semantic search.
+
+---
