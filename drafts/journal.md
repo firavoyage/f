@@ -47069,6 +47069,30 @@ they thought it too difficult, as the teacher skips as well. i dont quite agree.
 
 i wonder if the gemini approach works, i.e. whether they have the prerequisite knowledge.
 
+19 40 teach the family on mod math basics.
+
+<!-- 
+
+there are 12 props of mod on the book (little blue book: number theory).
+
+first few are trivial. like a === a, if a === b then b === a, if a b b c then a c.
+
+following you will see the most important and foundational ones.
+
+if a === b, c === d, then a +- c === b +- d.
+
+if a === b, c === d, then ac === bd. so if a === b, c === d, then a^k c === b^k c.
+
+note div is generally not true.
+
+everything else are derived and less useful. e.g. a^2%4 = 0 | 1, mod 8 can only be ...
+
+yeah! that's easy to memorize.
+
+everything is true except div.
+
+ -->
+
 
 
 <!-- timebox, plan. -->
