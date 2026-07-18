@@ -420,6 +420,7 @@ ux: <!-- ui/ux design, ia -->
 - cursor hand link button context menu
 - settings progressive disclosure over advanced kde hig vlc chromium firefox samsung one ui vscode
 - ux four pillars design process
+- ux competitive analysis
 
 typography:
 
