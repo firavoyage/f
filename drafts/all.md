@@ -243,6 +243,7 @@ frontend: <!-- web, ts/js -->
 - css centering popup overlay grid flex
 - ts builtin types utility js browser nodejs
 - js truthy falsy
+- undefined errors vscode
 
 backend:
 
