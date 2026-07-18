@@ -47041,6 +47041,10 @@ i do not have to separate thoughts by "...", yeah that's literary and more intro
 
 it doesnt seem too wise to try to beat a song by playing consecutively.
 
+15 20 play astro dx <!-- mani mani -->. increase note speed to 8, and then 9. 16 00
+
+it does play a role. it works. it's not always optimal, but it solves quick consecutive left right notes.
+
 
 
 <!-- timebox, plan. -->
