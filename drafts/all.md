@@ -244,6 +244,7 @@ frontend: <!-- web, ts/js -->
 - ts builtin types utility js browser nodejs
 - js truthy falsy
 - undefined errors vscode
+- react native web
 
 backend:
 
