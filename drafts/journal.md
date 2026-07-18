@@ -47145,7 +47145,7 @@ and i will choose global css, easier for swapping themes, wo the need of passing
 
 <!-- inspired by css in js theme swapping -->
 
-05 40 learn pm. archive chats. ~~(06 00)~~ (06 20)
+05 40 learn pm. archive chats. ~~(06 00)~~ ~~(06 20)~~ (06 40)
 
 
 
