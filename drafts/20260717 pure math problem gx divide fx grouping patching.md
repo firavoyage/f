@@ -55,10 +55,11 @@ i used two a5 papers, both front and back of it, w the final solution as a few w
 attempts
 
 - i thought about some idea in my mind, which seems to be failed, and i did not write it down. if i remember, the idea was fx - x^9990 gx
-- (gx)^1111
-- mod each item of fx w gx
-- fx = x^1111 + 1, gx = x + 1, fx = x^2222 + ... (inductive), then i found counter examples for the second one
-- try fx - x^9990 gx anyway, reduce the 次数
+- (combination, foundation of number theory pow theorem) (gx)^1111
+- (number theory) mod each item of fx w gx
+- (inductive) fx = x^1111 + 1, gx = x + 1, fx = x^2222 + ..., then i found counter examples for the second one
+- (reduce pow) try fx - x^9990 gx anyway, reduce the pow step by step, find patterns to reduce in batch, then i came to the final solution
+- (patching) reduce fx to x^9999 + x^9998 + ... + x + 1, regroup
 
  -->
 

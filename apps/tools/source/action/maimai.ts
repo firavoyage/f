@@ -329,6 +329,9 @@ export function maimai(achievement: number,
 
 // todo
 export function expand_maimai(results: ReturnType<typeof maimai>) {
+  // when expanded, make sure the sum of each note type does not exceed avail
+  // rare though
+
   log(results)
 }
 
