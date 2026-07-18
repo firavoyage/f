@@ -47107,6 +47107,10 @@ prove: x^3+x^2+x+1 divides x^(4a) + x^(4b+1) + x^(4c+2) + x^(4d+3).
 
 a easy one it seems, as the problem implies i could multiply any `x^(4n)` for any item, irrelevant to the result. and i have the prequisite knowledge from the prev problem.
 
+19
+
+02 20 check kill ai slop catalogue. learn pm. (03 00)
+
 
 
 <!-- timebox, plan. -->
