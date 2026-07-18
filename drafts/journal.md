@@ -46790,6 +46790,8 @@ btw, it's always in light mode regardless of browser theme. idk if it's intended
 
 idk github badges are good. checkout some early achievements of acbox.
 
+<!-- upd 18 jul: solved in a commit 2 days ago. it introduces projects and guestbook pages. it installs an ai skill of "kill ai slop" by yetone. -->
+
 19 00 read acbox memories. 19 40
 
 well... at the end of the day i dont quite feel i like kids. precious... but a bit boring <!-- yet another typical mtf swe -->. and kids, i mean, are reckless, easily gravitated by impulses, like candies and new frnds.
