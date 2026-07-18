@@ -47109,7 +47109,7 @@ a easy one it seems, as the problem implies i could multiply any `x^(4n)` for an
 
 19
 
-02 20 check kill ai slop catalogue. learn pm. (03 00)
+02 20 check kill ai slop catalogue. ~~learn pm.~~ (03 00)
 
 "hover, it jumps at you". bbc solves it well. hover changes bg. hover and wait, it would become larger smoothly.
 
@@ -47140,6 +47140,10 @@ and idk if i would like to define/change the styles on the component tsx, compon
 conclusion: stay w yaml and css.
 
 and i will choose global css, easier for swapping themes, wo the need of passing a theme prop to all components however.
+
+03 20 research react state management. (04 00)
+
+<!-- inspired by css in js theme swapping -->
 
 
 

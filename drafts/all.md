@@ -245,7 +245,7 @@ frontend: <!-- web, ts/js -->
 - js truthy falsy
 - undefined errors vscode
 - react native web
-- react usecontext zustand
+- react state management usecontext zustand jotai custom hook
 
 backend:
 
