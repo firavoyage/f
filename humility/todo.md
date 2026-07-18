@@ -1,9 +1,7 @@
-humility
-
-readme · todo · notes
-
-<!-- what do you wanna achieve at the end of the day. -->
+todo
 
 ---
 
-(wip)
+you should be able to delete a msg as well.
+
+
