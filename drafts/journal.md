@@ -47045,6 +47045,30 @@ it doesnt seem too wise to try to beat a song by playing consecutively.
 
 it does play a role. it works. it's not always optimal, but it solves quick consecutive left right notes.
 
+19 20 explain the patching solution of the math problem gx divide fx to the children in the family. 
+
+<!-- 
+
+simple.
+
+they know the "tree planting" problem, for counting numbers in between.
+
+and they know the rem of (a+b)/b is the same as a/b. (i.e. a+b === a mod b, or a%b=(a+b)%b)
+
+they understand it's dividable by ten. 
+
+i gave some examples about patching, and they could give some more examples.
+
+after all patches applied, it's simple. there are ten thousand items. just group by ten. done.
+
+(qed)
+
+ -->
+
+they thought it too difficult, as the teacher skips as well. i dont quite agree.
+
+i wonder if the gemini approach works, i.e. whether they have the prerequisite knowledge.
+
 
 
 <!-- timebox, plan. -->
