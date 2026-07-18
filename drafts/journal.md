@@ -47097,6 +47097,16 @@ everything is true except div.
 
  -->
 
+23 00 solve a math problem.
+
+```precious
+a, b, c, d in N+.
+
+prove: x^3+x^2+x+1 divides x^(4a) + x^(4b+1) + x^(4c+2) + x^(4d+3).
+```
+
+a easy one it seems, as the problem implies i could multiply any `x^(4n)` for any item, irrelevant to the result. and i have the prequisite knowledge from the prev problem.
+
 
 
 <!-- timebox, plan. -->
