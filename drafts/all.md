@@ -245,6 +245,7 @@ frontend: <!-- web, ts/js -->
 - js truthy falsy
 - undefined errors vscode
 - react native web
+- react usecontext zustand
 
 backend:
 
