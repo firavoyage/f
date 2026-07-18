@@ -123,20 +123,20 @@ function count_solutions(n: number, factors = [1, 2, 3, 4, 6]): number {
 }
 
 function find_solutions_base_2(n: number): number[][] {
-    const results: number[][] = [];
-    const max_c = Math.floor(n / 3);
+  const results: number[][] = [];
+  const max_c = Math.floor(n / 3);
 
-    for (let c = 0; c <= max_c; c++) {
-        const remainder = n - (3 * c);
-        const max_b = Math.floor(remainder / 2);
+  for (let c = 0; c <= max_c; c++) {
+    const remainder = n - (3 * c);
+    const max_b = Math.floor(remainder / 2);
 
-        for (let b = 0; b <= max_b; b++) {
-            const a = remainder - (2 * b);
-            results.push([a, b, c]);
-        }
+    for (let b = 0; b <= max_b; b++) {
+      const a = remainder - (2 * b);
+      results.push([a, b, c]);
     }
+  }
 
-    return results;
+  return results;
 }
 
 function find_solutions_base_5(n: number): number[][] {

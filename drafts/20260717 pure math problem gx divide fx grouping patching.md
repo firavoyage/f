@@ -65,7 +65,8 @@ attempts
 
 # fx = x^9999+x^8888+...+x^1111+1, gx = x^9+x^8+...+x+1, prove gx can divide fx, use the simplest method for Junior high school 
 
-<!-- Thinking steps
+```md thinking
+Thinking steps
 
 **Defining the Division**
 
@@ -85,7 +86,8 @@ I've clarified the functions involved and the core goal: to show g(x) divides f(
 
 Done
 
-Used 3.1 Pro Extended -->
+Used 3.1 Pro Extended
+```
 
 The simplest and most elegant way to solve this at a junior high school level is by using basic polynomial subtraction and the standard factoring rule for the difference of powers: $a^k - b^k$.
 
@@ -153,7 +155,8 @@ If $g(x)$ perfectly divides the difference between $f(x)$ and $g(x)$, it mathema
 
 # Use this method. Make fx x^9999+x^9998+x^9997+...+x^2+x+1 first 
 
-<!-- Thinking steps
+```md thinking
+Thinking steps
 
 **Initiating the Approach**
 
@@ -213,7 +216,8 @@ Done
 
 Used 3.5 Flash Extended
 
-Used Analysis -->
+Used Analysis
+```
 
 ```python
 import sympy as sp
