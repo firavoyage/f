@@ -47139,9 +47139,9 @@ and idk if i would like to define/change the styles on the component tsx, compon
 
 conclusion: stay w yaml and css.
 
-and i will choose global css, easier for swapping themes, wo the need of passing a theme prop to all components however.
+and i will choose global css, easier for swapping themes, wo the need of passing a theme prop to all components however. if custom structure (e.g. more wrappers for shadows) or interactions (e.g. md ripple effect) are needed, copy the entire component lib, modify, and reroute the imports on app.
 
-03 20 research react state management. (04 00)
+03 20 research react state management. ~~(04 00)~~ 05 00
 
 <!-- inspired by css in js theme swapping -->
 
