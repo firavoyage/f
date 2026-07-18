@@ -104,6 +104,7 @@ fn store initial {
   result.get_raw
 
   // set does not have to be component related
+  // update whatever. no value comparison. no immutability required. diffing is cheap. do not care whether it's a state or a store.
   result.set
 
   // e.g. sub latest state into localstorage on change
