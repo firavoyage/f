@@ -47097,7 +47097,7 @@ everything is true except div.
 
  -->
 
-23 00 solve a math problem.
+23 00 solve a math problem. (23 20)
 
 ```precious
 a, b, c, d in N+.
