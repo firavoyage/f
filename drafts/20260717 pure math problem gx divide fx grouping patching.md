@@ -1466,4 +1466,372 @@ If you are configuring a custom build, let me know if you want to see how to set
   \
   Intellipaat
 
+# <!-- 18 jul -->
 
+# (d) why === and mod are used in math instead of % =
+
+In mathematics, notation is chosen for precise logic, universal clarity, and to avoid confusion with existing symbols.
+
+Here is why math uses
+
+≡
+
+and
+
+mod
+
+instead of `=` and `%`.
+
+### Why Math Uses
+
+≡
+
+Instead of
+
+\=
+
+- **Different concepts**: The `=` symbol means two things are identical in value (e.g.,\
+  5\
+  \=5\
+  ).
+- **Equivalence, not equality**: The\
+  ≡\
+  symbol means "congruent to." It shows that two numbers share a specific relationship under a certain rule, even if they are not the same number (e.g.,\
+  17\
+  ≡5\
+  (mod12)\
+  ).
+- **Structural harmony**: In advanced math,\
+  ≡\
+  denotes an equivalence relation, which satisfies specific logical properties (reflexive, symmetric, and transitive).
+
+### Why Math Uses
+
+mod
+
+Instead of
+
+%
+
+- **Avoids percentage confusion**: The\
+  %\
+  symbol has meant "per hundred" since the 15th century. Using it for division remainders would cause massive confusion in equations.
+- **Operator vs. Context**: In computer science, `%` is a binary operator that outputs a single remainder (e.g., `17 % 12 = 5`). In math,\
+  mod\
+  establishes a whole structural environment or context for the entire equation, not just a quick calculation.
+- **Latin origin**: The word\
+  mod\
+  is short for _modulo_, which is the Latin ablative form of _modulus_, meaning "a small measure." Mathematician Carl Friedrich Gauss formalized this text-based notation in 1801.
+
+***
+
+If you want to dive deeper, I can show you **how to solve a modular equation** or explain **how computer science adapted these symbols** for programming. Which direction would you like to go?
+
+- [link](https://study.com/academy/lesson/mathematical-notation-definition-examples.html)\
+  Mathematical Notation Definition & Examples | What is Mathematical Notation?\
+  Mathematics is based on math notations, which are specifically formed to create concise, accurate expressions and formulas that ar...\
+  \
+  \
+  Study.com
+- [link](https://quicktakes.io/learn/education-studies/questions/why-is-mathematical-notation-important-in-calculus-and-what-are-some-common-symbols-used)\
+  Student Question : Why is mathematical notation important in calculus, and what are some common symbols used? | Education Studies\
+  Answer Clarity and Precision: Notation provides a clear and concise way to express complex mathematical ideas. Standardization: Ma...\
+  \
+  QuickTakes
+- [link](https://www.reddit.com/r/learnmath/comments/ne2s7s/university%5Fnumber%5Ftheory%5Fuse%5Fof%5Ftriple%5Fbar%5Fvs/)\
+  \[University Number Theory] Use of triple bar vs equals sign : r/learnmath\
+  May 17, 2021 — In practice, = is used about as often as \equiv for congruences, and doesn't have any special meaning. If your course consistently...\
+  \
+  Reddit
+
+Show all
+
+# (d) why a === b mod c instead of a%c = b is used in math
+
+In mathematics,
+
+**𝑎**
+
+**≡𝑏**
+
+**(mod𝑐)**
+
+is used instead of
+
+**𝑎**
+
+**mod𝑐**
+
+**=𝑏**
+
+because it describes a structural relationship between two numbers, rather than just a calculation command.
+
+Here is a breakdown of why mathematicians prefer the equivalence format.
+
+### Equivalence vs. Operation
+
+- **𝑎**
+
+**mod𝑐**
+
+**=𝑏**
+
+**is an operation:** It acts like a button on a calculator. It takes input\
+𝑎\
+, divides it by\
+𝑐\
+, and outputs a single, unique remainder\
+𝑏\
+.
+
+- **𝑎**
+
+**≡𝑏**
+
+**(mod𝑐)**
+
+**is a relation:** It asserts that\
+𝑎\
+and\
+𝑏\
+share the exact same remainder when divided by\
+𝑐\
+. It defines a whole system of arithmetic.
+
+### Mathematical Flexibility
+
+The congruence symbol (
+
+≡
+
+) acts like a standard equal sign, allowing you to manipulate equations easily:
+
+- **Two-sided substitution:** You can change both sides of the sign, like writing\
+  17\
+  ≡2\
+  (mod5)\
+  or\
+  −3\
+  ≡2\
+  (mod5)\
+  .
+- **Negative numbers:** The notation naturally handles negatives.\
+  𝑎\
+  mod𝑐\
+  traditionally only outputs positive remainders.
+- **Algebraic properties:** If\
+  𝑎\
+  ≡𝑏\
+  (mod𝑐)\
+  and\
+  𝑥\
+  ≡𝑦\
+  (mod𝑐)\
+  , you can automatically add them (\
+  𝑎
+
++𝑥\
+≡𝑏
+
++𝑦\
+) or multiply them (\
+𝑎𝑥\
+≡𝑏𝑦\
+). You cannot easily do this using the operational format.
+
+### Infinite Sets vs. Single Values
+
+- The statement\
+  𝑎\
+  ≡𝑏\
+  (mod𝑐)\
+  means that\
+  𝑎\
+  −𝑏\
+  is perfectly divisible by\
+  𝑐\
+  .
+- This allows mathematicians to group infinite sets of numbers together into "congruence classes" (for example, all odd numbers are\
+  ≡1\
+  (mod2)\
+  ), which makes advanced number theory and cryptography possible.
+
+***
+
+To explore this further, let me know if you would like me to show you **how to solve algebraic equations using mod**, or if you want to see **how cryptography uses this notation**.
+
+- [link](https://www.thinka.ai/en-GB/Cambridge-OCR-A-Level/Further-Mathematics-B-MEI-H645/Number-theory)\
+  Number theory | OCR A-Level\
+  The Notation We write this as: a ≡ b ( m o d n ) a \equiv b \pmod n a ≡ b( m o d n). We write this as: a ≡ b ( m o d n ) a \equiv ...\
+  \
+  Thinka.ai
+- [link](https://www.quickanddirtytips.com/qdtarchive/what-is-modular-arithmetic/)\
+  What Is Modular Arithmetic?\
+  Jul 4, 2026 — Instead we say that 9 + 1 modulo 5 is “congruent” to 0． And we write this as (9 + 1) (mod 5) ≡ 0． The word congruent here roughly ...\
+  \
+  \
+  Quick and Dirty Tips
+- [link](https://algo.monster/liteproblems/504)\
+  504\. Base 7 - In-Depth Explanation\
+  The handling of negative numbers is straightforward - we can convert the positive version and just add a negative sign, since the ...\
+  \
+  AlgoMonster
+
+Show all
+
+# why a ≡ b mod c instead of a%c = b is used in math <!-- character: identical to -->
+
+The notation
+
+𝑎
+
+≡𝑏
+
+(mod𝑐)
+
+is used in mathematics because it describes a structural relationship between numbers, whereas
+
+𝑎
+
+%
+
+𝑐
+
+\=𝑏
+
+represents a single computational operation.
+
+Here is a breakdown of why mathematicians prefer the equivalence notation.
+
+### It Represents a Relation, Not an Operation
+
+- **𝑎**
+
+**%**
+
+**𝑐**
+
+**=𝑏**
+
+**is a function**: It takes two inputs (\
+𝑎\
+and\
+𝑐\
+) and outputs a single unique remainder (\
+𝑏\
+).
+
+- **𝑎**
+
+**≡𝑏**
+
+**(mod𝑐)**
+
+**is a relation**: It states that\
+𝑎\
+and\
+𝑏\
+share the same property (the same remainder) when divided by\
+𝑐\
+.
+
+- **It allows negative numbers**: In math,\
+  −1\
+  ≡4\
+  (mod5)\
+  is perfectly valid because both leave the same remainder structure. Programming languages (\
+  𝑎\
+  %\
+  𝑐\
+  ) handle negative numbers inconsistently.
+
+### It Behaves Like an Equation
+
+The congruence symbol (
+
+≡
+
+) looks like an equal sign because it allows you to perform algebra just like a standard equation. If
+
+𝑎
+
+≡𝑏
+
+(mod𝑐)
+
+, you can:
+
+- **Add numbers to both sides**:\
+  𝑎
+
++𝑘\
+≡𝑏
+
++𝑘\
+(mod𝑐)
+
+- **Multiply both sides**:\
+  𝑎\
+  ⋅𝑘\
+  ≡𝑏\
+  ⋅𝑘\
+  (mod𝑐)
+- **Raise both sides to a power**:\
+  𝑎𝑘\
+  ≡𝑏𝑘\
+  (mod𝑐)
+
+You cannot easily perform these algebraic manipulations on the expression
+
+𝑎
+
+%
+
+𝑐
+
+\=𝑏
+
+.
+
+### It Handles Multiple Variables Easily
+
+In advanced math, you often need to solve equations with unknowns. The modular notation allows you to write clean expressions like:
+
+- 𝑥\
+  ≡3\
+  (mod7)
+- 𝑥\
+  ≡5\
+  (mod9)
+
+Writing this using computer science notation (like
+
+𝑥
+
+%
+
+7
+
+\=3
+
+) becomes messy and difficult to manipulate when solving systems of equations, such as the Chinese Remainder Theorem.
+
+To help me tailor further explanations, would you like to see **how to solve a modular equation**, explore **applications in cryptography**, or look at **how different programming languages handle the % operator**?
+
+- [link](https://www.thinka.ai/en-GB/Cambridge-OCR-A-Level/Further-Mathematics-B-MEI-H645/Number-theory)\
+  Number theory | OCR A-Level\
+  The Notation We write this as: a ≡ b ( m o d n ) a \equiv b \pmod n a ≡ b( m o d n). We write this as: a ≡ b ( m o d n ) a \equiv ...\
+  \
+  Thinka.ai
+- [link](https://www.reddit.com/r/computerscience/comments/q10w5o/im%5Fconfused%5Fabout%5Fmod%5Fcalculations/)\
+  I'm confused about mod calculations : r/computerscience\
+  Oct 4, 2021 — Modulo is weird with negative numbers, and inconsistent between different programming languages. Most languages use the "truncated...\
+  \
+  Reddit
+- [link](https://web.york.cuny.edu/~malk/mycourses/hum320/modular-arithmetic.html)\
+  modular-arithmetic\
+  What symbol does the congruence symbol remind you? Almost certainly the equal sign. Does similarity to the equal sign have anythin...\
+  \
+  The City University of New York
+
+Show all
