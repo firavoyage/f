@@ -169,6 +169,24 @@ function break_base(break_number: number) {
   return 1 / break_number
 }
 
+// divide into base 2 and base 5 first, combine some of them later
+const _b_factors = [2, 5]
+
+// great tap, great hold, great slide, 
+const _b_factors_base_2 = [1, 2, 3]
+// const _b_factors_base_2 = [2, 4, 6]
+
+// good tap, miss tap/good hold, good slide, miss hold, miss slide
+const _b_factors_base_5 = [1, 2, 3, 4, 6]
+// const _b_factors_base_5 = [5, 10, 15, 20, 30]
+
+// // great tap, great hold, good tap, great slide, miss tap/good hold, good slide, miss hold, miss slide
+// const _b_factors = [2, 4, 5, 6, 10, 15, 20, 30]
+// // const _b_factors = [2, 4, 5, 6, 10, 15, 20, 25, 30, 50]
+
+// hp, lp, hg/mg/lg, good, miss
+const _bb_factors = [5, 10, 12, 14, 20]
+
 export function maimai(achievement: number,
   tap: number, hold: number, slide: number, break_number: number) {
 
@@ -185,25 +203,6 @@ export function maimai(achievement: number,
   const findings = find_n_m(_b, _bb, loss)
 
   // log(findings)
-
-  // divide into base 2 and base 5 first, combine some of them later
-  const _b_factors = [2, 5]
-
-  // great tap, great hold, great slide, 
-  const _b_factors_base_2 = [1, 2, 3]
-  // const _b_factors_base_2 = [2, 4, 6]
-
-  // good tap, miss tap/good hold, good slide, miss hold, miss slide
-  const _b_factors_base_5 = [1, 2, 3, 4, 6]
-  // const _b_factors_base_5 = [5, 10, 15, 20, 30]
-
-  // // great tap, great hold, good tap, great slide, 
-  // // miss tap/good hold, good slide, miss hold, miss slide
-  // const _b_factors = [2, 4, 5, 6, 10, 15, 20, 30]
-  // // const _b_factors = [2, 4, 5, 6, 10, 15, 20, 25, 30, 50]
-
-  // hp, lp, hg/mg/lg, good, miss
-  const _bb_factors = [5, 10, 12, 14, 20]
 
   const results = []
 
