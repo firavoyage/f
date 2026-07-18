@@ -48,6 +48,20 @@ idk if it was intended
 
 <!-- it could branch. but it does not save prev thread when you edit msgs. (i.e. <1/2>). -->
 
+<!-- upd 18 jul: the background story
+
+i used two a5 papers, both front and back of it, w the final solution as a few words on the fourth page.
+
+attempts
+
+- i thought about some idea in my mind, which seems to be failed, and i did not write it down. if i remember, the idea was fx - x^9990 gx
+- (gx)^1111
+- mod each item of fx w gx
+- fx = x^1111 + 1, gx = x + 1, fx = x^2222 + ... (inductive), then i found counter examples for the second one
+- try fx - x^9990 gx anyway, reduce the 次数
+
+ -->
+
 # fx = x^9999+x^8888+...+x^1111+1, gx = x^9+x^8+...+x+1, prove gx can divide fx, use the simplest method for Junior high school 
 
 <!-- Thinking steps
