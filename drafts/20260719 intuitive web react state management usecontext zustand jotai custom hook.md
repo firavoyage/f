@@ -60,6 +60,7 @@ fn component {
 
 ```ts
 fn store initial {
+  // memory are generally small. no auto gc. no surprises. opt in optimization.
   let state = initial
 
   let subs = set
