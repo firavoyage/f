@@ -47111,6 +47111,9 @@ a easy one it seems, as the problem implies i could multiply any `x^(4n)` for an
 
 02 20 check kill ai slop catalogue. learn pm. (03 00)
 
+"hover, it jumps at you"
+
+
 
 
 <!-- timebox, plan. -->
