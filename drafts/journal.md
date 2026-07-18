@@ -46459,11 +46459,11 @@ just, maimai players, yk. <!-- people of the time, they will converge. -->
 
 she has a phone number of +852 on tg.
 
-she chatted w frnds on tg and qq and browsed some feed on wechat (?) while waiting. sometimes she showed some msgs to mio. she was a bit anonyed as she could not figure out who im among memoh contributors. she guessed, but i did not answer.
+she chatted w frnds on tg and qq and browsed some feed on wechat (?) while waiting. sometimes she showed some msgs to mio. she was a bit annoyed as she could not figure out who im among memoh contributors. she guessed, but i did not answer.
 
 <!-- 
 
-"删掉! 散掉!"
+"删掉! 删掉!"
 
 "你是不是有什么癖好..."
 
@@ -46488,6 +46488,8 @@ akichannnnn?
 fun.
 
 <!-- i was thinking about i could put a changelog on memoh. i might copy and synthesize based on github releases. i did not have time to discuss w her. she, along w three other frnds (wo her boss when i asked), had left before 20. -->
+
+<!-- upd 18 jul: she basically spent all her time on sns, sitting on the game center bench. -->
 
 19 40 rename telegram account to `Adwaita`. ping her.
 
