@@ -47111,8 +47111,35 @@ a easy one it seems, as the problem implies i could multiply any `x^(4n)` for an
 
 02 20 check kill ai slop catalogue. learn pm. (03 00)
 
-"hover, it jumps at you"
+"hover, it jumps at you". bbc solves it well. hover changes bg. hover and wait, it would become larger smoothly.
 
+---
+
+i was thinking about css in js today morning.
+
+```ts
+Card = {
+  text_sm,
+  color: palette.blue
+  variant: {
+    large: {
+      color: palette.red
+    }
+  }
+}
+
+... class=Card
+```
+
+pros: you know js. you can import export deconstruct reference calculate do whatever you want. you can have foo for foo: foo <!-- well, the catch is foo could not be color.white. you still could not mix up array (tailwind classes) and object (prop value pairs). -->. the syntax looks cleaner and more expressive than css variable.
+
+cons: js does not natively know what css props exist. you have to define in ts and copy from a lib. js does not allow the minus symbol, you have to rewrite in camelcase or snakecase or aliases (e.g. tailwind). and there is no concept of selector. you have to define your own rules, and you might not need such customization.
+
+and idk if i would like to define/change the styles on the component tsx, component css, or a global css.
+
+conclusion: stay w yaml and css.
+
+and i will choose global css, easier for swapping themes, wo the need of passing a theme prop to all components however.
 
 
 
