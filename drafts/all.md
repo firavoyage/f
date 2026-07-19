@@ -531,6 +531,7 @@ float: <!-- music -->
 - background battle no one
 - concerto or sonata
 - meaning any color you like
+- interpret manimani r 906
 
 philosophy:
 
