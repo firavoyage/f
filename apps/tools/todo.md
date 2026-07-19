@@ -30,6 +30,8 @@ sidebar. shortcuts. settings. quick panel. scroll area.
 
 learn the layout css props by asking llms specific questions.
 
+sidebar. params: an array of options. a state of selected.
+
 
 
 ---
