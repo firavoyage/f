@@ -47245,6 +47245,8 @@ i dont quite get the lyrics or the theme of the half time show...
 
 <!-- "there is a bbc for each of us. funded by all of us." -->
 
+<!-- it shows spa instead of esp, i noticed. -->
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
