@@ -149,14 +149,6 @@ it can be simple. either network drop or non 200 at the end of the day.
 
 ---
 
-pm
-
-learn some fundamentals. just have some template questions <!-- divide and conquer -->. it builds confidence.
-
-"pm knowledge"
-
----
-
 repo. <!-- start by copying the template -->
 
 purpose.
@@ -169,7 +161,7 @@ that can be. but that's not simple. better to generate, test, and align.
 
 ---
 
-research and analyze linear and github on android.
+analyze linear (?) <!-- needed? already done? --> and github on android.
 
 <!-- acbox uses github mobile. idk. -->
 

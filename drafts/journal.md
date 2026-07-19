@@ -47147,6 +47147,12 @@ and i will choose global css, easier for swapping themes, wo the need of passing
 
 05 40 learn pm. archive chats. ~~(06 00)~~ ~~(06 20)~~ (06 40)
 
+> pm
+> 
+> learn some fundamentals. just have some template questions <!-- divide and conquer -->. it builds confidence.
+> 
+> "pm knowledge"
+
 06 40 learn ux competitive analysis. (07 00)
 
 
