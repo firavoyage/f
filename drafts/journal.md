@@ -47047,7 +47047,7 @@ it doesnt seem too wise to try to beat a song by playing consecutively.
 
 it does play a role. it works. it's not always optimal, but it solves quick consecutive left right notes.
 
-<!-- upd: set at 8 eventually. -->
+<!-- upd: set at 8 eventually. btw, close the middle indicator completely, after using above s for a while. -->
 
 19 20 explain the patching solution of the math problem gx divide fx to the children in the family. 
 
