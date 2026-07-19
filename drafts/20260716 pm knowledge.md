@@ -2493,7 +2493,7 @@ I can help you build a customized outline or code structure.
 
 Show all
 
-# five pm process groups
+# (?) five pm process groups
 
 The **five project management process groups** established by the [Project Management Institute (PMI)](https://www.4pmti.com/learn/guide-pmis-project-management-process-groups/) in the PMBOK Guide are <mark><strong>Initiating, Planning, Executing, Monitoring and Controlling, and Closing</strong></mark>. These groups represent categories of management work that overlap and interact throughout a project, rather than strictly sequential, standalone phases. [link](https://www.youtube.com/watch?v=YeXmFaC7Rvg\&t=9)
 
@@ -2598,7 +2598,7 @@ Here is the exact tactical breakdown of **how to do each group**, including the 
 
 To help you get started on your current initiative, what **tools** are you using? I can adapt these steps specifically for software like **Jira, Asana, Monday.com, or Microsoft Project**.
 
-# ten pm knowledge areas
+# (?) ten pm knowledge areas
 
 The **10 Project Management Knowledge Areas** represent the core technical subject matter fields defined by the Project Management Institute (PMI) in the [Project Management Body of Knowledge (PMBOK Guide)](https://www.projectmanagement.com/wikis/234759/project-management-body-of-knowledge--pmbok--). They outline _what_ you need to manage continuously throughout a project's lifecycle. [link](https://www.projectmanagement.com/wikis/234759/project-management-body-of-knowledge--pmbok--)
 
@@ -2654,7 +2654,7 @@ I can provide tailored templates or deep-dives depending on what you need next.
 
 Show all
 
-# project management exam
+# (d) project management exam
 
 Ready to create a quiz?
 
@@ -3145,7 +3145,7 @@ AI can make mistakes, so double-check responses
 
 Show all
 
-# project management exam <!-- the quiz -->
+# (d) project management exam <!-- the quiz -->
 
 Research is complete. Since the major
 
