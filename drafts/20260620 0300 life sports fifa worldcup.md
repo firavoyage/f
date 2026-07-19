@@ -3342,3 +3342,5 @@ Big Tech platforms ignore the surface-level Geofeed text file because it is easi
 This is why only the nodes using those specific recycled HK IP blocks get exposed, while the nodes using proper, native IPs pass the location check completely—regardless of the physical distance or latency from your machine.
 
 Since you've mapped out how these nodes behave, are you looking for a way to **filter out the broken HK-labeled nodes** automatically in your client config, or are you just analyzing how their infrastructure handles the traffic?
+
+# 

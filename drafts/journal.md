@@ -47155,7 +47155,7 @@ and i will choose global css, easier for swapping themes, wo the need of passing
 
 06 40 learn ux competitive analysis. (07 00)
 
-17 20 watch `FIFA World Cup 2026 Highlights: France v England Highlights` on bbc.
+17 20 watch `FIFA World Cup 2026 Highlights: France v England Highlights` on bbc. research proxies. research public broadcasting funding laws and history.
 
 
 
