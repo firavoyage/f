@@ -47179,6 +47179,24 @@ c
 
 strong. firm. purposeful.
 
+20 40 solve a math problem. 21 00
+
+```precious
+k, a, b, m in N+.
+
+k = nm(m+16), a^2 = n(m+16), b^2 = nm.
+
+i. gcd(a, b) = 1, prove gcd(a^2-b^2, a^2) = 1 and gcd(a^2-b^2, b^2) = 1
+ii. gcd(a, b) = 1, solve for k
+iii. gcd(a, b) = 5, solve for k
+```
+
+yesterday i made a false assumption that n must be int.
+
+now it's solved, after challenge from the family, though they claim my prev answer was identical to the solution on the problem indexer (i dont think they would really miss a solution.).
+
+easy. n must be rational, then p/q. p must be 1 (reduction to absurdity). q must divide 16, which does not have many choices. and when we look at the sequence of a_i = i^2, the possible deltas between two consecutive item are limited.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
