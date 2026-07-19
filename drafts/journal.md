@@ -47161,7 +47161,7 @@ and i will choose global css, easier for swapping themes, wo the need of passing
 
 p
 
-```html markdown
+```markdown
 <!-- timebox, plan. -->
 
 <!-- organize. -->
@@ -47171,7 +47171,7 @@ p
 
 c
 
-```html markdown
+```markdown
 <!-- be explicit and organized. focus and timebox. -->
 
 <!-- solve your own problem. -->
@@ -47196,6 +47196,22 @@ yesterday i made a false assumption that n must be int.
 now it's solved, after challenge from the family, though they claim my prev answer was identical to the solution on the problem indexer (i dont think they would really miss a solution.).
 
 easy. n must be rational, then p/q. p must be 1 (reduction to absurdity). q must divide 16, which does not have many choices. and when we look at the sequence of a_i = i^2, the possible deltas between two consecutive item are limited.
+
+20
+
+00 20 replace <!-- revise --> a quote on readme.
+
+p
+
+```markdown
+> _<!-- 我, 不需要更多 --> 技 ☆ 巧 ☆ 性 <!-- 了 -->_ 
+```
+
+c
+
+```markdown
+> _技 巧 性 ☆_ <!-- _intellectual pleasure ☆_ -->
+```
 
 
 
