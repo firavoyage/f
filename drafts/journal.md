@@ -47223,6 +47223,8 @@ if yk you would have it, just be greedy. no need to plan ahead. actually it can 
 
 purpose is a chronological kanban. todo is backlog. no universal static documents hardcoded in the pm structure.
 
+02 20 learn pm. (02 40)
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
