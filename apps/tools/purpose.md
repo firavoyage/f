@@ -37,3 +37,19 @@ i guess i can remove 4, 10, and 15, for example.
 they are basically a combination.
 
 <!-- i drifted a bit. but i would be fine. -->
+
+20
+
+02 40 plan
+
+i guess it can be simple. i can know everything ahead.
+
+idk the exact choices or designs i would have. but ik what they would be.
+
+i could be wrong. but if it provides invariant foundation for the future, it would be worth investing in.
+
+---
+
+idk how long it would take. but i do not have to timebox everything. ik it matters. so just proceed until complete.
+
+
