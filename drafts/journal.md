@@ -47233,6 +47233,10 @@ the player detects keyboard events. it shows control whenever <!-- e.g. a raw ct
 
 audio desc seems to have no effect. but it does actually work. real time subtitle works as well, but not as i expected when i press c <!-- it's s instead. no visual hint or hover tip. -->. and the subs are on the top <!-- audience --> instead of above the progress bar <!-- field -->. unconventional, but actualy very smart.
 
+---
+
+surprisingly the chance does not change. polymarket. esp 0.6, arg 0.4. maybe it doesnt matter if spain keeps the possession, or it's already reflected.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
