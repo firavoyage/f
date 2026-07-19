@@ -47237,6 +47237,14 @@ audio desc seems to have no effect. but it does actually work. real time subtitl
 
 surprisingly the chance does not change. polymarket. esp 0.6, arg 0.4. maybe it doesnt matter if spain keeps the possession, or it's already reflected.
 
+---
+
+i dont quite get the lyrics or the theme of the half time show...
+
+<!-- for song lyrics, the subs come slightly below the middle of the screen (but not bottom like yt). well done. and there are white, yellow, and cyan. -->
+
+<!-- "there is a bbc for each of us. funded by all of us." -->
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
