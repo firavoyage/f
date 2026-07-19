@@ -47215,6 +47215,14 @@ c
 
 00 40 archive kasugano sora life size pillow.
 
+01 40 think.
+
+workflows serve purpose.
+
+if yk you would have it, just be greedy. no need to plan ahead. actually it can be simple. you know what you are gonna build. that's the scope. and if it works, and it feels right, nothing could be missing. no wbs overhead.
+
+purpose is a chronological kanban. todo is backlog. no universal static documents hardcoded in the pm structure.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
