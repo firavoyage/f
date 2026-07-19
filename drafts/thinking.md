@@ -151,11 +151,15 @@ it can be simple. either network drop or non 200 at the end of the day.
 
 repo. <!-- start by copying the template -->
 
-purpose.
+purpose. <!-- i mean the file i guess. to list. to plan. no need to build a fancy ui for now. -->
 
 ---
 
-tools. sidebar. shortcuts. settings. quick panel.
+tools.
+
+---
+
+sidebar. shortcuts. settings. quick panel.
 
 that can be. but that's not simple. better to generate, test, and align.
 
