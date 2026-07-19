@@ -165,4 +165,6 @@ analyze linear (?) <!-- needed? already done? --> and github on android.
 
 <!-- acbox uses github mobile. idk. -->
 
+> you d build better products j becoz the craft of using linear
+
 
