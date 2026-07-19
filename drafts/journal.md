@@ -47257,6 +47257,8 @@ not a goal? no var? 33% chance now.
 
 <!-- it might be just him! but he gets it wrong. -->
 
+<!-- we are heading, torward a penalty shoot to decide the champion. or are we. -->
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
