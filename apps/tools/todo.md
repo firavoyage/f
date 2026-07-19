@@ -34,7 +34,7 @@ learn the layout css props by asking llms specific questions.
 
 ---
 
-
+design the routing and all app states
 
 ---
 
