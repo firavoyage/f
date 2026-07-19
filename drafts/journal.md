@@ -47253,6 +47253,10 @@ whoa... 25% chance <!-- from 40% --> for arg even after a red card before extra 
 
 <!-- but still! they would not give in. -->
 
+not a goal? no var? 33% chance now.
+
+<!-- it might be just him! but he gets it wrong. -->
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
