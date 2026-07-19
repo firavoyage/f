@@ -47225,6 +47225,12 @@ purpose is a chronological kanban. todo is backlog. no universal static document
 
 02 20 learn pm. (02 40)
 
+03 00 watch `FIFA World Cup 2026 Final: Spain v Argentina` on bbc iplayer.
+
+the player detects keyboard events. it shows control whenever <!-- e.g. a raw ctrl alone -->. reasonable, i guess.
+
+audio desc seems to have no effect. but it does actually work. real time subtitle works as well, but not as i expected when i press c <!-- it's s instead. no visual hint or hover tip. -->. and the subs are on the top <!-- audience --> instead of above the progress bar <!-- field -->. unconventional, but actualy very smart.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
