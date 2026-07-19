@@ -159,12 +159,6 @@ tools.
 
 ---
 
-sidebar. shortcuts. settings. quick panel.
-
-that can be. but that's not simple. better to generate, test, and align.
-
----
-
 analyze linear (?) <!-- needed? already done? --> and github on android.
 
 <!-- acbox uses github mobile. idk. -->
