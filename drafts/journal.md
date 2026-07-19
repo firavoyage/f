@@ -47157,6 +47157,8 @@ and i will choose global css, easier for swapping themes, wo the need of passing
 
 17 20 watch `FIFA World Cup 2026 Highlights: France v England Highlights` on bbc. research proxies. research public broadcasting funding laws and history.
 
+> to inform, to educate, and to entertain.
+
 19 20 revise the comments below journal.
 
 p
@@ -47225,7 +47227,7 @@ purpose is a chronological kanban. todo is backlog. no universal static document
 
 02 20 learn pm. (02 40)
 
-03 00 watch `FIFA World Cup 2026 Final: Spain v Argentina` on bbc iplayer.
+03 00 watch `FIFA World Cup 2026 Final: Spain v Argentina` on bbc iplayer. have a pack of lays classic flavor.
 
 the player detects keyboard events. it shows control whenever <!-- e.g. a raw ctrl alone -->. reasonable, i guess.
 
