@@ -47227,7 +47227,7 @@ purpose is a chronological kanban. todo is backlog. no universal static document
 
 02 20 learn pm. (02 40)
 
-03 00 watch `FIFA World Cup 2026 Final: Spain v Argentina` on bbc iplayer. have a pack of lays classic flavor.
+03 00 watch `FIFA World Cup 2026 Final: Spain v Argentina` on bbc iplayer. have a pack of lays classic flavor. 06 00
 
 the player detects keyboard events. it shows control whenever <!-- e.g. a raw ctrl alone -->. reasonable, i guess.
 
