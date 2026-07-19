@@ -47247,6 +47247,12 @@ i dont quite get the lyrics or the theme of the half time show...
 
 <!-- it shows spa instead of esp, i noticed. -->
 
+whoa... 25% chance <!-- from 40% --> for arg even after a red card before extra time.
+
+<!-- he (arg keeper) does well. -->
+
+<!-- but still! they would not give in. -->
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
