@@ -22,6 +22,8 @@ no idea what it is doing. but since it's by acbox, i think it must be reasonable
 
 > what do ppl feel about kids on github <!-- when they spread their unbound energy everywhere wo professionalism --> <!-- when it's a bit awkward -->
 
-from the name, it might be a bit...
+from the name, it might be about customization (from oh my zsh).
+
+from the readme, maybe it wants github to be faster? i guess fluid animations are nothing special. it's out of box behavior.
 
 
