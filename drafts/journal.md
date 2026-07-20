@@ -46681,7 +46681,9 @@ an observation is, when an idea is not fulfilled, it could repeat in my mind, so
 
 ...
 
-currently im completely unaware of the progress (i would not check git diff of the todo history). it has pros. plain text is simple and predictable. idk if it would be better to enforce structure like todo, desc of todo, comments of a todo, and metadata like time, status, and ppl.
+currently im completely unaware of the progress (i would not check git diff of the todo history). it has pros. plain text is simple and predictable. idk if it would be better to enforce structure like todo, desc of todo, comments of a todo, and metadata like time <!-- created time, time of each edits, ... -->, status, and ppl.
+
+<!-- upd 20 jul: i do not need them. things are defined by logical constraints, and, sometimes (rarely) market competitive time window, rather than weekdays or order of thoughts. i could record them if automated though. -->
 
 ...
 

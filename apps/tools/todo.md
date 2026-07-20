@@ -46,7 +46,21 @@ out of scope.
 
 ---
 
-pwa?
+support pwa
 
+out of scope.
 
+it must be able to run locally. but it does not need pwa to do so.
+
+you could install it. but it does not require pwa either.
+
+and pwa itself is of inconsistent compatibility.
+
+---
+
+research cyberchef
+
+file:///home/fira/Downloads/CyberChef/CyberChef_v11.0.0.html
+
+---
 
