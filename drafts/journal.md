@@ -47261,6 +47261,8 @@ not a goal? no var? 33% chance now.
 
 16 40 receive ielts mock test report. get <!-- overall band --> 7.5 (listening 8, reading 8.5, writing 6, speaking 6.5).
 
+time used: listening 32 min, reading 59 min, writing 55 min (task i 29 min, task ii )
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
