@@ -47289,7 +47289,9 @@ idk if it reflects how it sounds to ppl.
 
 my voice is always far high regardless of the language or the text.
 
-other stats are highly 
+other stats are highly random, and often constrast to my expectation or wish.
+
+i feel more freedom in english though.
 
 
 
