@@ -1,0 +1,21 @@
+# deprecated
+legacy
+
+# temp
+temp
+message.md
+
+# deps
+node_modules
+package.json
+pnpm-lock.yaml
+eslint.config.js
+bunfig.toml
+tsconfig.json
+
+# build
+# build should be hidden in ide but not files
+
+# aliases
+AGENTS.md
+CLAUDE.md

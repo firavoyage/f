@@ -1,0 +1,30 @@
+{
+  "packageManager": "pnpm@10.30.2",
+  "scripts": {
+    "convert": "./script/convert.sh"
+  },
+  "dependencies": {
+    "css.escape": "1.5.1",
+    "mousetrap": "1.6.5",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
+    "react-use": "17.6.1",
+    "the-new-css-reset": "1.11.3"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.17",
+    "@types/react-dom": "19.2.3",
+    "buffer": "6.0.3",
+    "crypto-browserify": "^3.12.1",
+    "events": "^3.3.0",
+    "os-browserify": "^0.3.0",
+    "path-browserify": "^1.0.1",
+    "process": "^0.11.10",
+    "stream-browserify": "^3.0.0",
+    "url": "^0.11.4",
+    "util": "^0.12.5"
+  },
+  "alias": {
+    "backend": "../backend"
+  }
+}
