@@ -1107,4 +1107,73 @@ If you need the command encoded with a **different IP address** or formatted for
   \
   Qodex.ai
 
+# how well are pwa supported on modern phones
+
+Support for Progressive Web Apps (PWAs) on modern phones is <mark><strong>highly capable but deeply fragmented</strong></mark>, creating a starkly different user and developer experience depending on whether you are using Android or iOS. [link](https://www.reddit.com/r/PWA/comments/1j8kfd5/pwa%5Fon%5Fandroid%5Fis%5Fso%5Fmuch%5Fbetter%5Fthan%5Fon%5Fios/)
+
+While both platforms comfortably handle core PWA requirements—like offline functionality, smart caching, and basic hardware access (like GPS and cameras)—Android provides an almost completely native experience, whereas iOS imposes stricter security boundaries and feature limitations. [link](https://www.reddit.com/r/react/comments/1b780bj/can%5Fpwas%5Fever%5Fbe%5Fbecome%5Fas%5Fgood%5Fas%5Fnative%5Fapps/)
+
+### Platform Breakdown: Android vs. iOS
+
+```
++-----------------------------------+-----------------------------------+
+
+| Feature                           | Android (Chrome/Chromium)         | iOS (Safari/WebKit)               |
++-----------------------------------+-----------------------------------+
+
+| App Store Distribution            | Yes (via Google Play Store)       | Limited / Complicated             |
+| Ambient Installation Prompts      | Full support (browser banners)    | Manual ("Add to Home Screen")     |
+| Push Notifications                | Comprehensive, rich alerts        | Restricted (Requires user opt-in) |
+| System Integration                | High (Web Share, Shortcuts)       | Low (No Widgets, isolated)        |
+| Hardware Access                   | Broad (Bluetooth, USB, Sync)      | Minimal (Blocked Bluetooth/Sensors)|
++-----------------------------------+-----------------------------------+
+```
+
+### Android Support: Excellent and Near-Native
+
+Android treats PWAs almost as first-class citizens, particularly when accessed through Google Chrome or other Chromium-based browsers. [link](https://web.dev/learn/pwa/progressive-web-apps)
+
+- **Trusted Web Activities (TWAs):** Developers can package a PWA directly into an `.apk` file and publish it to the Google Play Store. This blurs the line between web and native for the end user.
+- **Seamless Installation:** Chromium browsers actively prompt users to install the app via ambient banners or an obvious address-bar icon.
+- **Deep System Access:** Android PWAs can access advanced capabilities like Web Bluetooth, contact pickers, file system APIs, background sync, and rich push notifications with images. [link](https://www.reddit.com/r/PWA/comments/1m69nmu/anyone%5Felse%5Ffeel%5Flike%5Fpwas%5Fare%5Fon%5Fthe%5Fedge%5Fof/)
+
+### iOS Support: Functional but Highly Restricted
+
+Apple has historically taken a cautious, web-sandbox approach to PWAs. This protects App Store revenue and maintains strict user privacy, but restricts app capabilities. [link](https://www.reddit.com/r/react/comments/1b780bj/can%5Fpwas%5Fever%5Fbe%5Fbecome%5Fas%5Fgood%5Fas%5Fnative%5Fapps/)
+
+- **Installation Friction:** iOS does not allow automatic browser installation prompts. Users must manually open the Safari share sheet and tap **"Add to Home Screen"**.
+- **Push Notification Hurdles:** While Apple does support Web Push Notifications (introduced in iOS 16.4), the user _must_ explicitly install the PWA to their home screen first, launch it, and then approve the notification prompt. Furthermore, iOS notifications lack support for custom images and local-only scheduling.
+- **Strict Regional Rules:** In European Union countries, regulatory changes (like the Digital Markets Act) have complicated PWA behavior. This leaves standalone PWAs opening within standard Safari tabs without full system isolation or background support in certain instances.
+- **Hardware Limitations:** iOS rigorously blocks PWAs from interacting with deep hardware like Bluetooth, serial ports, or system orientation sensors. They also isolate app storage, purging data if the app is left unused for too long. [link](https://www.reddit.com/r/react/comments/1b780bj/can%5Fpwas%5Fever%5Fbe%5Fbecome%5Fas%5Fgood%5Fas%5Fnative%5Fapps/)
+
+### The Performance and UX Frontier
+
+Modern mobile processors ensure that a well-optimized PWA feels incredibly smooth. Technologies like WebAssembly allow PWAs to execute complex code at nearly native speeds. [link](https://www.reddit.com/r/androiddev/comments/1q3hlj7/are%5Fpwa%5Fstill%5Fa%5Fthing/)
+
+However, because PWAs ultimately run inside a browser engine (WebKit on iOS and Blink on Android), they still consume more battery power and fall short when handling intense 3D graphics, complex device gamification, or heavy background processes. [link](https://www.reddit.com/r/react/comments/1b780bj/can%5Fpwas%5Fever%5Fbe%5Fbecome%5Fas%5Fgood%5Fas%5Fnative%5Fapps/)
+
+To see exactly what your current device can handle, you can run a real-time hardware compatibility test directly at [What PWA Can Do Today](https://whatpwacando.today/).
+
+If you are planning a specific project, feel free to share:
+
+- The **core features** your app needs (e.g., Bluetooth, background sync, offline maps).
+- Your target **audience** (mostly Android, mostly iOS, or an even split). [link](https://oneuptime.com/blog/post/2025-08-19-native-apps-had-a-good-run-but-pwa-has-caught-up-and-is-the-future/view)
+
+I can help you evaluate whether a PWA is the right choice or if you should look toward cross-platform native frameworks. [link](https://mediusware.com/blog/progressive-webapp-vs-react-native-app)
+
+- [link](https://www.reddit.com/r/PWA/comments/1m69nmu/anyone%5Felse%5Ffeel%5Flike%5Fpwas%5Fare%5Fon%5Fthe%5Fedge%5Fof/)\
+  Anyone else feel like PWAs are on the edge of replacing native apps ...\
+  Jul 22, 2025 — Anyone else feel like PWAs are on the edge of replacing native apps... but just not quite there. ... One thing that stood out was ...\
+  Reddit·r/PWA
+- [link](https://www.reddit.com/r/react/comments/1b780bj/can%5Fpwas%5Fever%5Fbe%5Fbecome%5Fas%5Fgood%5Fas%5Fnative%5Fapps/)\
+  Can PWAs ever be become as good as native apps? : r/react - Reddit\
+  Mar 5, 2024 — The runaround is maddening. And Apple's entire development environment is overly complicated, requiring an app's digital signing t...\
+  Reddit·r/react
+- [link](https://www.reddit.com/r/PWA/comments/1uaxuj1/anyone%5Fusing%5Fa%5Fpwa%5Finstead%5Fof%5Fbuilding%5Fa%5Fnative/)\
+  Anyone using a PWA instead of building a native app? - Reddit\
+  Jun 20, 2026 — There are a few limitations though. \* The title from each push always has your app name in it, so “… from {your app name here}” 2)\
+  Reddit·r/PWA
+
+Show all
+
 # 
