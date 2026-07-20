@@ -700,6 +700,7 @@ society: <!-- sociology -->
 - jp jirai kei monster energy
 - trans neko association
 - non binary wo med or surgery
+- github kids
 
 rhetoric:
 
