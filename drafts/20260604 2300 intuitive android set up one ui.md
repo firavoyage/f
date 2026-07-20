@@ -5991,3 +5991,399 @@ Are you running into instances where you **accidentally touch the screen** and p
   Blocking scam phone numbers starting with specific prefixes ...\
   Jun 24, 2022 — All that stuff is started with i was being called from huge number of different numbers by scammers, after being called from scamm...\
   Medium·Oguzhan Yigit
+
+# <!-- 20 jul -->
+
+# can you forcefully turn off notification for android apps that gray out in settings app
+
+<mark><span>Yes,<span> </span></span><strong>you can forcefully disable or silence grayed-out notifications</strong><span> </span>on Android</mark>, though the method depends on whether it is a system app or a restricted work profile app. Android intentionally locks these toggles for critical system functions, but you can bypass or minimize them using the workarounds below. [link](https://android.stackexchange.com/questions/120169/show-notifications-is-greyed-out-for-some-apps-whats-causing-it-and-how-do-i)
+
+### Method 1: Enable Notification Categories (Best for Samsung & Modern Android)
+
+Recent Android updates hidden under certain manufacturer skins (like Samsung One UI) gray out the master notification switch. You can unlock granular control by exposing the hidden category menus: [link](https://www.reddit.com/r/AndroidQuestions/comments/1cpseur/how%5Fto%5Fforce%5Fturn%5Foff%5Fsystem%5Fnotifications/)
+
+1. Open your device **Settings**.
+2. Tap **Notifications** and then select **Advanced settings**.
+3. Scroll down and toggle on **Manage notification categories for each app**.
+4. Go back to **Settings** > **Apps** and select the problem application.
+5. Tap **Notifications** > **Notification categories**.
+6. You will now see individual toggles; turn off specific alerts, or change their behavior to **Silent** and turn off **Minimize notifications**. [link](https://www.reddit.com/r/AndroidQuestions/comments/1cpseur/how%5Fto%5Fforce%5Fturn%5Foff%5Fsystem%5Fnotifications/)
+
+### Method 2: Minimize System Alerts via the Notification Shade
+
+If the master toggle is grayed out for a persistent core system alert, you can force it into silence directly when it appears:
+
+1. Swipe down to open your notification shade and **long-press the stubborn notification**.
+2. Tap the **Gear icon** or **Settings** button that appears.
+3. Select **Silent** instead of "Alerting".
+4. Turn on the toggle for **Minimize notifications**. This forces the alert to collapse into a tiny, permanent row at the bottom of your panel without making a sound or popping up. [link](https://www.reddit.com/r/AndroidQuestions/comments/1cpseur/how%5Fto%5Fforce%5Fturn%5Foff%5Fsystem%5Fnotifications/)
+
+### Method 3: Use Third-Party Notification Blockers (No Root Required)
+
+If the operating system completely blocks you from toggling the switches, you can install a utility app to intercept and auto-dismiss them before they reach your screen.
+
+- Download an app like **BuzzKill** or **Notification Blocker & Cleaner** from the Google Play Store.
+- Create a rule targeting the specific app name or phrase.
+- Set the action to **Dismiss** or **Mute**.
+
+### Method 4: Advanced Command Line Block (Using ADB)
+
+For tech-savvy users, you can use **Android Debug Bridge (ADB)** via a computer to force-modify the system's underlying "App Ops" permissions layout, bypassing the grayed-out UI entirely: [link](https://android.stackexchange.com/questions/120169/show-notifications-is-greyed-out-for-some-apps-whats-causing-it-and-how-do-i)
+
+1. Enable **Developer Options** and **USB Debugging** on your phone.
+2. Connect your phone to your PC and open a command terminal.
+3. Run the following command (replace `com.package.name` with the actual app package name, which you can find via apps like Package Name Viewer):\
+   `adb shell cmd appops set com.package.name POST_NOTIFICATION ignore`
+
+If you would like to try the ADB method, let me know the **exact app** you are trying to block or your **phone model**, and I can give you the precise commands to copy and paste.
+
+- [link](https://www.reddit.com/r/AndroidQuestions/comments/1cpseur/how%5Fto%5Fforce%5Fturn%5Foff%5Fsystem%5Fnotifications/)\
+  How to FORCE turn off System Notifications?\
+  May 11, 2024 — To force turn off system notifications on Android, you can try these steps: 1. Go to \*\*Settings\*\* 2. Select \*\*Notifications\*\* 3. S...\
+  Reddit
+- [link](https://www.youtube.com/watch?v=W%5F0-8LRhO6Q)\
+  How to Turn Off App Notifications on your Android Phone ...\
+  May 15, 2026 — so what you want to do is go over to your settings. application once you're here go ahead and scroll down you're going to see a lo...\
+  1:07\
+  YouTube·How to Everything
+- [link](https://www.reddit.com/r/AndroidHelp/comments/1bvoynq/galaxy%5Fstore%5Fwont%5Fdisable%5Fnotifications/)\
+  Galaxy store wont disable notifications : r/AndroidHelp\
+  Apr 4, 2024 — According to a Reddit user, you can try these steps to disable notifications for the Galaxy Store: 1. Go to \*\*Settings\*\* 2. Select...\
+  Reddit
+
+Show all
+
+## are there some apps that cant be forced
+
+<mark><span>Yes,<span> </span></span><strong>certain critical Android system apps cannot be forced to stop or have their notifications disabled</strong></mark>, even using advanced methods like ADB. Android hardcodes these protections directly into the operating system kernel and security frameworks to prevent the phone from crashing, bootlooping, or failing to perform vital hardware functions.
+
+### Apps That Cannot Be Forced
+
+- **Android System (`android`)**: Manages core OS processes, power states, and hardware communication. Killing or fully blocking this will immediately crash or restart your device.
+- **System UI (`com.android.systemui`)**: Controls your status bar, navigation bar, recent apps screen, and notification shade. Disabling its notifications or forcing it to stop blanks the screen and restarts the interface.
+- **Phone / Dialer Core (`com.android.dialer` or carrier equivalents)**: Necessary for regulatory and emergency compliance (like routing 911 calls). The OS strictly guards these packages.
+- **Google Play Services (`com.android.vending` / `com.google.android.gms`)**: Provides the backbone for location services, push notifications across all other apps, and security checks.
+
+### Why You Can't Block Them
+
+If you try to use ADB to ignore notifications (`POST_NOTIFICATION ignore`) on these core packages, you will encounter one of two barriers:
+
+1. **Security Exception Errors**: The system terminal will throw a `SecurityException` stating the package is protected.
+2. **Immediate Auto-Restart**: If you force-stop the app via ADB, the Android `ActivityManager` detects the failure of a critical service and instantly relaunches it within milliseconds.
+
+To help you find a specific workaround, could you tell me:
+
+- What is the **exact name** of the app or notification text you want to get rid of?
+
+- What is your phone's **brand and model**?
+
+- [link](https://www.reddit.com/r/Android/comments/k87dkl/whats%5Fyour%5Fopinion%5Fon%5Fpreinstalled%5Fsoftware/)\
+  What's your opinion on pre-installed software? : r/Android\
+  Dec 7, 2020 — Google needs to make system apps removable and provide a special flag for services that shouldn't be uninstalled. In android one y...\
+  \
+  \
+  Reddit
+
+- [link](https://www.reddit.com/r/Android/comments/1fyfqtf/google%5Fmust%5Fcrack%5Fopen%5Fandroid%5Ffor%5Fthirdparty/)\
+  Google must crack open Android for third-party stores, rules Epic judge : r/Android\
+  Oct 7, 2024 — Nope. You cannot install an app that has system privileges. It has to come packaged with the OS. At least that's how it always was...\
+  \
+  \
+  Reddit
+
+- [link](https://news.ycombinator.com/item?id=38607850)\
+  Third party stores do not have the same functionality as Google's store, this is...\
+  Google Play ( Google Play Store ) is not just app store, but also the only way to efficiently deliver push notifications on Androi...\
+  \
+  Hacker News
+
+## for example, android system has some flexible and some forced on notification categories, can adb get it done
+
+<mark><span>Yes,<span> </span></span><strong>ADB can completely override and silence the forced notification categories</strong><span> </span>of the "Android System" app</mark> (`android`), even if the toggles are completely grayed out in your phone's settings UI.
+
+While you cannot use ADB to block the _entire_ Android System app (doing so would crash your phone), you can use it to pinpoint the exact forced category (channel) causing the annoyance and force its importance level down to zero.
+
+Here is how to get it done using ADB.
+
+### Step 1: Identify the Name of the Forced Category
+
+Android tracks every single notification channel individually. Before you can block it, you need to find its internal ID. [link](https://medium.com/@stevdza-san/notifications-in-android-everything-you-need-to-know-bb7839e1c2ac)
+
+1. Plug your phone into your computer with USB Debugging enabled.
+
+2. Open your terminal/command prompt and run this command to fetch a live log of all system notification channels:\
+   bash
+
+<!---->
+
+```
+adb shell dumpsys notification
+```
+
+Use code with caution.
+3\. Scroll through the text output (or use `Ctrl+F`) to look for `pkg=android` or the text matching your stubborn notification.
+4\. Look for the line that says **`id=`**. For example, the USB debugging notification channel ID is usually `DEVELOPER_STATUS`, and the battery warning is usually `BATTERY_WARNING`. Write this ID down. [link](https://stackoverflow.com/questions/56801213/adb-shell-command-to-manage-notification-channels)
+
+### Step 2: Force the Category to "Ignore" using AppOps
+
+Instead of toggling a physical switch, you can use the AppOps command line utility to forcefully inject a block permission directly into the Android System package. Run the following command: [link](https://android.stackexchange.com/questions/187127/grant-notification-access-via-adb)
+
+bash
+
+```
+adb shell cmd appops set android POST_NOTIFICATION ignore
+```
+
+Use code with caution.
+
+_Note: This acts as a blanket suppression layer. On some Android versions, it will silence the core system notifications entirely._
+
+### Alternative Step 3: Lower the Channel "Importance" (Non-Root Option)
+
+If `appops` throws a Security Exception error, you can systemically strip the notification channel of its power to alert you by reducing its priority level to `0` (which means completely hidden and silent). [link](https://developer.android.com/develop/ui/compose/notifications/channels)
+
+Run this command, replacing `CHANNEL_ID_HERE` with the ID you found in Step 1:
+
+bash
+
+```
+adb shell cmd notification set_importance android CHANNEL_ID_HERE 0
+```
+
+Use code with caution.
+
+Setting the importance to `0` overrides the UI and tells the Android OS kernel that it is forbidden from popping up or making a sound for that specific category. [link](https://developer.android.com/develop/ui/compose/notifications/channels)
+
+### The Nuclear Option: System-wide Heads-Up Disable
+
+If the "Android System" app is constantly dropping annoying pop-ups or banners over your screen and you want to stop them universally, you can tell ADB to disable the pop-up feature entirely across the whole OS:
+
+bash
+
+```
+adb shell settings put global heads_up_notifications_enabled 0
+```
+
+Use code with caution.
+
+If you are having trouble finding the exact category ID in the text dump, tell me **what text is written inside the notification** you are trying to kill, and I can help you find its specific ID code.
+
+- [link](https://www.reddit.com/r/samsung/comments/10xwqw0/possible%5Fto%5Fdisable%5Fnotifications%5Ffor%5Fa%5Fsystem/)\
+  Possible to disable notifications for a system app with adb commands?\
+  Feb 9, 2023 — According to a Reddit user, it's possible to uninstall an app with adb commands to remove its notifications. However, it doesn't s...\
+  Reddit
+- [link](https://android.stackexchange.com/questions/187127/grant-notification-access-via-adb)\
+  Grant notification access via ADB\
+  Nov 30, 2017 — To grant notification access via ADB, you can try these commands: \* \*\*Android 9 or above\*\* \`adb shell cmd notification allow\_liste...\
+  Android Enthusiasts Stack Exchange
+- [link](https://www.youtube.com/watch?v=aQKZmcc9ixM\&t=5)\
+  How to Remotely Control Android Notification Panel Using ...\
+  Jul 25, 2024 — hey everyone today we're going to learn a cool trick to control your Android phone's notification panel directly from your compute...\
+  2m\
+  YouTube·TechyNoob
+
+Show all
+
+## wo root, can adb force it off even when it's grayed out on in settings
+
+<mark><span>Yes,<span> </span></span><strong>ADB can absolutely force them off without root access.</strong></mark> [link](https://medium.com/@cr0nos/controlling-an-android-device-without-root-or-accessibility-services-ea8314822a99)
+
+In the Android operating system architecture, the user interface (the Settings app) runs under "standard user" privileges, which is why a developer can code specific toggles to gray out and block you from clicking them. However, **ADB runs under the "Shell" user privilege level.** Shell privileges sit significantly higher than normal user privileges and give you the backend authority to bypass visual UI locks completely. [link](https://medium.com/@cr0nos/controlling-an-android-device-without-root-or-accessibility-services-ea8314822a99)
+
+Because you do not have root access, you cannot modify the base operating system code, but you **can** issue direct, high-level commands to override how the OS behaves. [link](https://www.xda-developers.com/hide-persistent-notification-android-o/)
+
+### How ADB Overrides the "Grayed Out" UI Locks
+
+When an app category toggle is grayed out, it is usually because the app developer flagged that channel with a high "importance" value inside the code. When you run an ADB command like:
+
+bash
+
+```
+adb shell cmd notification set_importance android CHANNEL_ID 0
+```
+
+Use code with caution.
+
+You are bypassing the grayed-out button on your screen and rewriting the notification channel properties directly inside the system's runtime memory. The OS changes the importance value of that specific channel to `0` (which stands for `IMPORTANCE_NONE`).
+
+Once it is set to zero, the Android notification manager completely drops the alert, ensuring it never hits your status bar or pop-up service—even though the physical button inside your Settings app still technically looks grayed out and switched "On." [link](https://www.xda-developers.com/hide-persistent-notification-android-o/)
+
+### Common "Permission Denied" Fix (No Root)
+
+If you run an ADB command on a non-rooted phone and get a `Permission Denied` or `SecurityException` error, it is usually because of a manufacturer-specific safety lock rather than a lack of root. You can easily bypass it by doing the following on your device: [link](https://stackoverflow.com/questions/52079343/how-can-i-use-adb-to-grant-permission-without-root)
+
+1. Open your device **Settings** > **Developer Options**.
+2. Scroll all the way down to the bottom (usually under the "Apps" or "Security" subheading).
+3. Look for a toggle named **"Disable Permission Monitoring"** or **"USB debugging (Security settings)"** and turn it **ON**.
+4. Restart your phone and run the ADB command again. [link](https://stackoverflow.com/questions/52079343/how-can-i-use-adb-to-grant-permission-without-root)
+
+Would you like help constructing the exact command for a specific application or notification channel you are trying to silence? Let me know the **text of the notification** or the **app name**!
+
+- [link](https://medium.com/@cr0nos/controlling-an-android-device-without-root-or-accessibility-services-ea8314822a99)\
+  Controlling an Android Device Without Root or Accessibility ...\
+  Mar 18, 2026 — The Permission Wall. Android apps live in a sandbox. There are things they simply cannot do: uninstall other apps, set a global pr...\
+  Medium·Pablo Ajo
+- [link](https://www.droidviews.com/disable-heads-notifications-android-without-root/)\
+  Disable Heads-up Notifications on Android without Root - DroidViews\
+  Jan 22, 2018 — As I said, this part is pretty easy. All you have to do is use the command given below. Type it out or copy and paste it into the ...\
+  DroidViews
+- [link](https://www.xda-developers.com/hide-persistent-notification-android-o/)\
+  Hide Persistent Notification for Background Apps & Overlays ...\
+  Jul 21, 2017 — By essentially revoking the Android System's POST\_NOTIFICATION permission, it can no longer show a notification! Sounds pretty sim...\
+  XDA
+
+Show all
+
+## can you turn off notifications for an app completely w adb wo shell when it's forced on in settings
+
+<mark><span>Yes,<span> </span></span><strong>you can completely turn off notifications for an app using ADB without root</strong></mark>**.** However, you cannot strictly execute it "without `shell`" in the command syntax. [link](https://community.e.foundation/t/disabling-sms-notifications/71550)
+
+To clarify how ADB interacts with your phone: `adb` is simply the bridge executable running on your computer, while `shell` is the mandatory instruction that tells ADB to wake up the internal command-line interpreter inside the Android operating system. Without typing the word `shell`, your computer terminal won't understand any deeper system-level commands like `pm` (Package Manager) or `cmd`.
+
+You can forcefully bypass a grayed-out UI toggle and strip an app of its notification powers by executing either of the following one-line commands directly from your computer terminal.
+
+### Option 1: Revoke the OS Notification Permission (Best for Android 13+)
+
+Modern Android versions treat notifications as a standard runtime permission. Even if the app grayed out the toggles in Settings, you can use the Package Manager (`pm`) via ADB to forcefully rip the master notification permission away from the app: [link](https://stackoverflow.com/questions/74866986/can-notification-permissions-be-disabled-via-adb-command)
+
+bash
+
+```
+adb shell pm revoke com.package.name android.permission.POST_NOTIFICATIONS
+```
+
+Use code with caution.
+
+_(Make sure to replace `com.package.name` with the exact system name of the app, such as `com.sec.android.app.sbrowser` for Samsung Internet)._
+
+### Option 2: Kill App Notifications via AppOps (Best for Android 12 and Older)
+
+If your phone runs an older Android operating system where notifications are not categorized under standard permissions, you can use the `appops` utility backend to inject a blanket notification ignore command: [link](https://android.stackexchange.com/questions/187127/grant-notification-access-via-adb)
+
+bash
+
+```
+adb shell cmd appops set com.package.name POST_NOTIFICATION ignore
+```
+
+Use code with caution.
+
+### Option 3: Force Freeze the Entire App (Nuclear Option)
+
+If you are dealing with a deeply integrated system app or carrier bloatware that refuses to stop pushing alerts through alternative channels, you can tell Android to freeze the app entirely. This completely renders the app dormant, graying it out entirely and preventing it from running background processes or sending notifications: [link](https://android.stackexchange.com/questions/56620/enable-and-disable-system-apps-via-adb)
+
+bash
+
+```
+adb shell pm disable-user --user 0 com.package.name
+```
+
+Use code with caution.
+
+_Note: If you ever need to turn the app back on, just run the same command but change `disable-user` to `enable`._
+
+If you don't know the exact package name of the app you want to silence, let me know the **public name of the app** or your **phone model**, and I can help you look up the correct package syntax!
+
+- [link](https://community.e.foundation/t/disabling-sms-notifications/71550)\
+  Disabling SMS notifications - Settings - e/OS community\
+  Jul 3, 2025 — That's Settings → Notifications → App Notifications → (Application) Message. From there you can proceed to Default and turn off vi...\
+  e/OS community
+- [link](https://stackoverflow.com/questions/74866986/can-notification-permissions-be-disabled-via-adb-command)\
+  Can notification permissions be disabled via adb command?\
+  Dec 20, 2022 — You can use the following adb commands to disable notification permissions: \* \*\*Disable showing notifications\*\* \* \`adb shell pm re...\
+  Stack Overflow
+- [link](https://sps-support.honeywell.com/s/article/How-to-disable-the-Android-Setup-Finish-Setting-up-Notification)\
+  How to disable the "Android Setup - Finish Setting up ...\
+  To completely disable the 'Android Setup - Finish Setting up' or 'App updates are available' notifications on a mobility device, o...\
+  Honeywell Support Portal
+
+Show all
+
+## can you get all apps id and forcefully turn off all notifications of all apps via adb
+
+<mark><span>Yes,<span> </span></span><strong>you can fetch all app IDs and forcefully turn off notifications for every single app at once using an ADB command loop.</strong></mark>
+
+Because Android handles apps individually, there isn't a single universal "turn off everything" master switch in ADB. Instead, you can run a quick terminal script that pulls a list of every package installed on your phone and automatically applies the force-disable command to each one sequentially.
+
+Before running these scripts, ensure your phone is connected to your computer and `adb devices` shows your device as authorized.
+
+### For Windows (PowerShell)
+
+Open PowerShell on your computer, paste the following command, and hit **Enter**:
+
+powershell
+
+```
+adb shell pm list packages | ForEach-Object { $_ -replace 'package:', '' } | ForEach-Object { adb shell pm revoke $_ android.permission.POST_NOTIFICATIONS 2>$null; adb shell cmd appops set $_ POST_NOTIFICATION ignore 2>$null }
+```
+
+Use code with caution.
+
+### For Mac and Linux (Terminal) / Git Bash (Windows)
+
+Open your terminal application, paste this script loop, and hit **Enter**:
+
+bash
+
+```
+for pkg in $(adb shell pm list packages | cut -d: -f2); do
+    echo "Disabling notifications for: $pkg"
+    adb shell pm revoke "$pkg" android.permission.POST_NOTIFICATIONS 2>/dev/null
+    adb shell cmd appops set "$pkg" POST_NOTIFICATION ignore 2>/dev/null
+done
+```
+
+Use code with caution.
+
+### ⚠️ Critical Warning Before Proceeding
+
+Running a blanket command across **all** applications will include crucial core system frameworks. While this will successfully bypass any grayed-out "forced on" UI toggles, it will also silence:
+
+- **Incoming call screens** (your phone will ring, but nothing will pop up to let you answer)
+- **Text messages / OTP codes**
+- **Alarms and timers**
+- **System low-battery warnings**
+
+### Safer Alternative: Target Third-Party (User) Apps Only
+
+If you want to silence all downloaded apps and bloatware without breaking essential phone operations, you can modify the script to **only target user-installed apps** (filtering out protected system apps):
+
+- **Windows (PowerShell):**\
+  powershell
+
+<!---->
+
+```
+adb shell pm list packages -3 | ForEach-Object { $_ -replace 'package:', '' } | ForEach-Object { adb shell pm revoke $_ android.permission.POST_NOTIFICATIONS 2>$null; adb shell cmd appops set $_ POST_NOTIFICATION ignore 2>$null }
+```
+
+Use code with caution.
+
+- **Mac / Linux:**\
+  bash
+
+<!---->
+
+```
+for pkg in $(adb shell pm list packages -3 | cut -d: -f2); do
+    adb shell pm revoke "$pkg" android.permission.POST_NOTIFICATIONS 2>/dev/null
+    adb shell cmd appops set "$pkg" POST_NOTIFICATION ignore 2>/dev/null
+done
+```
+
+Use code with caution.
+
+If any specific apps manage to bypass the script or throw errors, let me know your **Android version** so we can refine the command string!
+
+- [link](https://android.gadgethacks.com/how-to/disable-heads-up-notifications-any-android-no-root-needed-0182247/)\
+  How to Disable Heads Up Notifications on Any Android — No Root Needed\
+  Jan 19, 2018 — We've found that the easiest catch-all method involves sending a single ADB command that tweaks a low-level system setting. Instea...\
+  \
+  \
+  Gadget Hacks
+- [link](https://github.com/mehran-mousavi/Adb-AppManager-GUI)\
+  mehran-mousavi/Adb-AppManager-GUI: Android App Manager is a powerful, user-friendly tool that puts you in control of your Android device. With a simple interface, it harnesses the power of ADB to list, enable, disable, uninstall and search apps. Plus, a search feature lets you find any app swiftly. Built with Python and Tkinter, it's your Android's new best friend! · GitHub\
+  Usage Connect your Android device to your computer. Enable USB debugging on your Android device. Run the script.\
+  \
+  \
+  GitHub
