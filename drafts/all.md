@@ -199,7 +199,7 @@ archi:
 - template new repo
 - docstring inline comment feeling
 
-frontend: <!-- web, ts/js -->
+web: <!-- frontend, web, ts/js -->
 
 - explicit implicit
 - js memory leak
@@ -246,6 +246,7 @@ frontend: <!-- web, ts/js -->
 - undefined errors vscode
 - react native web
 - react state management usecontext zustand jotai custom hook
+- pwa poc
 
 backend:
 

@@ -44,4 +44,9 @@ have server side features like ffmpeg converter
 
 out of scope.
 
+---
+
+pwa?
+
+
 
