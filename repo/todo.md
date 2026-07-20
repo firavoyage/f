@@ -26,4 +26,6 @@ from the name, it might be about customization (from oh my zsh).
 
 from the readme, maybe it wants github to be faster? i guess fluid animations are nothing special. it's out of box behavior.
 
-btw, "yet another 3p github app" tells nothing. it should be 
+btw, "yet another 3p github app" tells nothing. it should be a modifier.
+
+
