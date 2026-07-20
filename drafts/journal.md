@@ -47265,6 +47265,18 @@ not a goal? no var? 33% chance now.
 
 time used: listening 32 min, reading 59 min, writing 55 min (task i 29 min, task ii 26 min)
 
+21
+
+01 20 think.
+
+<!-- repo... research relevant tools... oh my github... acbox... i would like to criticize somehow... github kids... sunwuyuan... -->
+
+i think scratch is fundamentally flawed, despite some supports by senior devs on gui based coding, i remember, on v2ex. it's always better when every action is mapped to a keyboard shortcut, which scratch is not designed to be.
+
+for example, when you wanna add a line of code. on scatch every loc is a builtin fn (or a defined fn, i.e. abstraction). you move your mouse, click the category, scroll to find the fn, and drag and drop it. it could be ctrl i (inject, or ctrl p if you like), fuzzy search the category (or just give every category a ctrl shortcut), fuzzy search the command, that's it.
+
+i was thinking about how vscode fuzzy searches. and there are some strategies i could apply.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
