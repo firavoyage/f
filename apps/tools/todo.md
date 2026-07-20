@@ -32,6 +32,10 @@ learn the layout css props by asking llms specific questions.
 
 sidebar. params: an array of options. a state of selected.
 
+quick panel. params: a list of functions w optional metadata (e.g. names, synonyms).
+
+shortcuts. <!-- just let it bind. -->
+
 
 
 ---
