@@ -47279,6 +47279,18 @@ i was thinking about how vscode fuzzy searches. and there are some strategies i 
 
 in js promise and callback can be interchanged. <!-- i mean, i dont quite agree w the imperative chaining syntax of promise, i would rather define in callback where things are structured as params. it's declarative. you only call once. --> and you can absolutely terminate a promise. it's simple. first you have a fuzzy search engine, of query and list as input, matches as output. you have an effect to update the list of matches. <!-- it's expected to be fast. no loading state. just be empty for a few milisecs. --> you terminate in cleanup. you may cache inside the engine, but you dont have to. no throttling.
 
+05 00 play w voice tools by azalea.
+
+seems easily manipulated.
+
+---
+
+idk if it reflects how it sounds to ppl.
+
+my voice is always far high regardless of the language or the text.
+
+other stats are highly 
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
