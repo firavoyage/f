@@ -47259,6 +47259,8 @@ not a goal? no var? 33% chance now.
 
 <!-- we are heading, torward a penalty shoot to decide the champion. or are we. -->
 
+16 40 receive ielts mock test report. get <!-- overall band --> 7.5 (listening 8, reading 8.5, writing 6, speaking 6.5).
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
