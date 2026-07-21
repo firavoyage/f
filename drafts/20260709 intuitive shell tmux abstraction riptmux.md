@@ -10880,8 +10880,7 @@ riptmux(){
 
   ${heading}Commands:${reset}
     ${cmd}ls${reset}                    List all sessions
-    ${cmd}a${reset}                     Back to the last session
-    ${cmd}a${reset} ${arg}<name>${reset}              Back to a named session
+    ${cmd}a${reset} ${arg}[name]${reset}              Back to a named (or the last) session
     ${cmd}clear${reset}                 Clear inactive sessions of last command finished
     ${cmd}kill${reset} ${arg}<name>${reset}           Kill a session
     ${cmd}rename${reset} ${arg}<old>${reset} ${arg}<new>${reset}    Rename a session
@@ -10924,3 +10923,9 @@ riptmux(){
   fi
 }
 ```
+
+i would turn `a` and `a <name>` into one, and leave `tmux` and `tmux <name>` there.
+
+i think it's about mental model.
+
+and, you would not expect a command appearing twice.
