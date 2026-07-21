@@ -2634,5 +2634,25 @@ impressive, impressive!
 
 
 
-# 
+# . thinking
+
+to convert yaml to ~~css~~ stylus...
+
+convert lives on source/web/script. and b, awa those on project root lives on scripts.
+
+from my observation, all projects but opencode, name as scripts, plural.
+
+idk.
+
+maybe i would stick w singular anyway.
+
+---
+
+i feel intuitive/templates/new repo might become obsolete.
+
+i dont really have to merge. maybe just delete, and rp w app/tools.
+
+tools dont modify much i guess. cleanup some tool specific ones. that's it.
+
+
 
