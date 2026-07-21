@@ -47311,6 +47311,10 @@ maimai is a game. it's nice if you get up early tomorrow and play energetically.
 
 21 00 setup spellcheck ci. replace pnpm w bun on contributing (agents).
 
+22
+
+03 40 learn stylus. try to migrate.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
