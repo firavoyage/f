@@ -165,4 +165,8 @@ analyze linear (?) <!-- needed? already done? --> and github on android.
 
 > you d build better products j becoz the craft of using linear
 
+/home/fira/Videos/Screencasts/2026-06-22 20-10-10 linear.mp4
+
+---
+
 
