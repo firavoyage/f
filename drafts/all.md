@@ -199,6 +199,7 @@ archi:
 - template new repo
 - docstring inline comment feeling
 - git commit message type first location first
+- spellcheck ci
 
 web: <!-- frontend, web, ts/js -->
 
