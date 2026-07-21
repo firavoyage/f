@@ -47301,9 +47301,13 @@ from historical data, i guess i should timebox at least 40min for any non trivia
 
 til: compare how it feels to foo or bar <!-- how does foo or bar feel -->, pros and cons, **contextual impact**
 
-~~19 00~~ <!-- snack break --> 19 40 research css dialects. think about styling. ~~(19 40)~~ ~~(20 20)~~ (20 40)
+~~19 00~~ <!-- snack break --> 19 40 research css dialects. think about styling. ~~(19 40)~~ ~~(20 20)~~ ~~(20 40)~~
 
 as supported out of box, it's obviously better to use mixins than ide snippets <!-- which lose information once expanded -->.
+
+no need to timebox for it. explore as i like. i would have some basic styling for the pattern components today. that's it.
+
+maimai is a game. it's nice if you get up early tomorrow and play energetically.
 
 
 
