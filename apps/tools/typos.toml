@@ -1,0 +1,12 @@
+[files]
+# Ignore specific files or directories
+extend-exclude = [
+  "dist/",
+  "build/",
+  "pnpm-lock.yaml"
+]
+
+[default.extend-words]
+# Ignore specific false positives if they come up
+styl = "styl" # stylus
+ba = "ba"

@@ -47309,6 +47309,8 @@ no need to timebox for it. explore as i like. i would have some basic styling fo
 
 maimai is a game. it's nice if you get up early tomorrow and play energetically.
 
+21 00 setup spellcheck ci. replace pnpm w bun on contributing (agents).
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
