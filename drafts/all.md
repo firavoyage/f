@@ -198,6 +198,7 @@ archi:
 - first principles
 - template new repo
 - docstring inline comment feeling
+- git commit message type first location first
 
 web: <!-- frontend, web, ts/js -->
 

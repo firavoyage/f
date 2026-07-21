@@ -26,6 +26,16 @@ https://www.producthunt.com/products/oh-my-github
 
 /home/fira/Projects/ohmygithub/packages/ui
 
+https://github.com/sheepbox8646
+
+https://github.com/ohmygit-hub/ohmygithub/commits?author=sheepbox8646&since=2026-07-14&until=2026-07-15
+
+https://www.producthunt.com/products/oh-my-github
+
+https://oh-my-github.app/
+
+https://github.com/ohmygit-hub/ohmygithub/issues?q=is%3Aissue%20state%3Aclosed
+
 ---
 
 have
