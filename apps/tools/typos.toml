@@ -1,12 +1,12 @@
-[files]
-# Ignore specific files or directories
-extend-exclude = [
-  "dist/",
-  "build/",
-  "pnpm-lock.yaml"
-]
+# ignored by default: gitignore, hidden files, lock files
+
+# [files]
+# # Ignore specific files or directories
+# extend-exclude = [
+#   "pnpm-lock.yaml"
+# ]
 
 [default.extend-words]
-# Ignore specific false positives if they come up
+# Ignore specific false positives
 styl = "styl" # stylus
 ba = "ba"
