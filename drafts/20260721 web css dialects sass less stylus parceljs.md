@@ -2624,7 +2624,7 @@ seems i do need an extension for stylus in vscode. i guess all smart devs would 
 
 # 
 
-# . thinking
+# (d) . thinking
 
 wow. wow...
 
@@ -2632,4 +2632,7 @@ standard notation. alternative notation.
 
 impressive, impressive!
 
+
+
+# 
 
