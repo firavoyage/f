@@ -47295,7 +47295,11 @@ i feel more freedom in english though.
 
 17 20 style riptmux cli. 17 40
 
-17 40 research git commit style. type or location first. icon or word (azalea). (18 00)
+17 40 research git commit style. type or location first. icon or word (azalea). ~~(18 00)~~ (18 20)
+
+from historical data, i guess i should timebox at least 40min for any non trivial <!-- not predictable/repetitive --> task.
+
+til: contextual impact
 
 
 
