@@ -17,8 +17,7 @@ follow these:
 - use:
   - ubuntu
   - typescript
-  - pnpm
-  - bun (command: `br`, not `bun`. do not run it unless asked.)
+  - bun (command: `b`, not `bun`. you must not run it yourself.)
   - parceljs (you must not install or run it yourself)
 - naming:
   - snake case by default

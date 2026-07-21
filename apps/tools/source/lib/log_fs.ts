@@ -13,7 +13,7 @@ declare global {
 /**
  * log into log file
  * 
- * todo: wrap in handle to slience file writing errors? (non critical)
+ * todo: wrap in handle to silence file writing errors? (non critical)
  * 
  * log could not fail
  */
