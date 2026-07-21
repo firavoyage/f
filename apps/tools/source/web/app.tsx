@@ -3,17 +3,18 @@ import { use_bind } from 'web/lib/keyboard.use';
 import { sync_theme } from 'web/lib/sync_theme';
 
 import 'web/design/utilitarian/utilitarian.css'
-import 'web/app.css'
+import 'web/app.styl'
+
 import { call } from "web/lib/call";
 import { useAsync } from "react-use";
 
 export function App() {
-  const { value } = useAsync(async () => await call('mock', {hi:true}))
+  // const { value } = useAsync(async () => await call('mock', {hi:true}))
 
   useEffect(() => {
     log('app mounts')
 
-    log('value', value)
+    // log('value', value)
   })
 
   use_bind('ctrl+p', (e) => {

@@ -12,6 +12,8 @@
     "the-new-css-reset": "1.11.3"
   },
   "devDependencies": {
+    "@parcel/transformer-sass": "2.16.4",
+    "@parcel/transformer-stylus": "2.16.4",
     "@types/react": "19.2.17",
     "@types/react-dom": "19.2.3",
     "buffer": "6.0.3",
