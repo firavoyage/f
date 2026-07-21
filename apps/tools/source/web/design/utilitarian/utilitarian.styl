@@ -1,0 +1,283 @@
+// modes:
+//   theme:
+//     - light
+//     - dark
+//   accent:
+//     - blue
+//     - teal
+//     - green
+//     - yellow
+//     - orange
+//     - red
+//     - pink
+//     - purple
+//     - slate
+//   density:
+//     - comfortable
+//     - compact
+//     - cozy
+
+palette = {
+  accent: {
+    blue: oklch(61.4% 0.164 255)
+    teal: oklch(60.3% 0.098 213)
+    green: oklch(59.4% 0.139 147)
+    yellow: oklch(67.4% 0.142 76)
+    orange: oklch(65.4% 0.196 42)
+    red: oklch(60.3% 0.217 22)
+    pink: oklch(65.1% 0.158 352)
+    purple: oklch(52.5% 0.175 317)
+    slate: oklch(60.1% 0.037 247)
+  }
+
+  // no need to overthink, 1% difference is trivial
+  // prefer standard over adwaita
+  gray: {
+    50: oklch(99.0% 0 0)
+    100: oklch(97.7% 0 0)
+    200: oklch(92.6% 0 0)
+    300: oklch(85.6% 0 0)
+    400: oklch(77.1% 0 0)
+    500: oklch(67.5% 0 0)
+    600: oklch(56.9% 0 0)
+    700: oklch(45.3% 0 0)
+    800: oklch(33.0% 0 0)
+    850: oklch(26.0% 0 0)
+    900: oklch(19.8% 0 0)
+    950: oklch(13.0% 0 0)
+    // 50: oklch(0.984 0 247.858)
+    // 100: oklch(0.968 0 247.896)
+    // 200: oklch(0.929 0 255.508)
+    // 300: oklch(0.869 0 252.894)
+    // 400: oklch(0.704 0 256.788)
+    // 500: oklch(0.556 0 256.162)
+    // 600: oklch(0.446 0 257.281)
+    // 700: oklch(0.372 0 257.287)
+    // 800: oklch(0.279 0 260.031)
+    // 900: oklch(0.208 0 265.755)
+    // 950: oklch(0.129 0 264.695)
+  }
+
+  // todo: think
+  success: "#78e9ab"
+  warning: "#ffc252" // cd9309?
+  error: "#ff938c" // destructive
+
+  // not used anywhere, kept for future proof
+
+  // blue:
+  //   1: "#99c1f1"
+  //   2: "#62a0ea"
+  //   3: "#3584e4"
+  //   4: "#1c71d8"
+  //   5: "#1a5fb4"
+
+  // green:
+  //   1: "#8ff0a4"
+  //   2: "#57e389"
+  //   3: "#33d17a"
+  //   4: "#2ec27e"
+  //   5: "#26a269"
+
+  // yellow:
+  //   1: "#f9f06b"
+  //   2: "#f8e45c"
+  //   3: "#f6d32d"
+  //   4: "#f5c211"
+  //   5: "#e5a50a"
+
+  // orange:
+  //   1: "#ffbe6f"
+  //   2: "#ffa348"
+  //   3: "#ff7800"
+  //   4: "#e66100"
+  //   5: "#c64600"
+
+  // red:
+  //   1: "#f66151"
+  //   2: "#ed333b"
+  //   3: "#e01b24"
+  //   4: "#c01c28"
+  //   5: "#a51d2d"
+
+  // purple:
+  //   1: "#dc8add"
+  //   2: "#c061cb"
+  //   3: "#9141ac"
+  //   4: "#813d9c"
+  //   5: "#613583"
+
+  // brown:
+  //   1: "#cdab8f"
+  //   2: "#b5835a"
+  //   3: "#986a44"
+  //   4: "#865e3c"
+  //   5: "#63452c"
+
+  // deprecated, use gray instead
+
+  // light:
+  //   1: "#ffffff"
+  //   2: "#f6f5f4"
+  //   3: "#deddda"
+  //   4: "#c0bfbc"
+  //   5: "#9a9996"
+
+  // dark:
+  //   1: "#77767b"
+  //   2: "#5e5c64"
+  //   3: "#3d3846"
+  //   4: "#241f31"
+  //   5: "#000000"
+
+  // just use white and black directly in css
+  // it's never meant to be changed, or any contextual
+
+  // white: "#fff"
+  // black: "#000"
+}
+
+color = {
+  bg:
+    primary: // core canvas
+      value: "palette.gray.50"
+      dark: "palette.gray.900"
+    secondary: // panel
+      value: "palette.gray.200"
+      dark: "palette.gray.800"
+    tertiary: // button on panel
+      value: "palette.gray.300"
+      dark: "palette.gray.700"
+    hover:
+      value: "palette.gray.200"
+      dark: "palette.gray.800"
+    pressed:
+      value: "palette.gray.200"
+      dark: "palette.gray.800"
+    accent:
+      value: "palette.accent.blue"
+      teal: "palette.accent.teal"
+      green: "palette.accent.green"
+      yellow: "palette.accent.yellow"
+      orange: "palette.accent.orange"
+      red: "palette.accent.red"
+      pink: "palette.accent.pink"
+      purple: "palette.accent.purple"
+      slate: "palette.accent.slate"
+
+  fg:{
+    primary:
+      value: "palette.gray.800"
+      dark: "white"
+    secondary:
+      value: "palette.gray.800"
+      dark: "white"
+    tertiary:
+      value: "palette.gray.800"
+      dark: "white"
+}
+}
+spacing:
+  0.5: 0.125rem
+  1: 0.25rem
+  1.5: 0.375rem
+  2: 0.5rem
+  2.5: 0.625rem
+  3: 0.75rem
+  3.5: 0.875rem
+  4: 1rem
+  5: 1.25rem
+  6: 1.5rem
+  7: 1.75rem
+  8: 2rem
+  9: 2.25rem
+  10: 2.5rem
+  11: 2.75rem
+  12: 3rem
+  14: 3.5rem
+  16: 4rem
+  20: 5rem
+  24: 6rem
+  28: 7rem
+  32: 8rem
+  36: 9rem
+  40: 10rem
+  44: 11rem
+  48: 12rem
+  52: 13rem
+  56: 14rem
+  60: 15rem
+  64: 16rem
+  72: 18rem
+  80: 20rem
+  96: 24rem
+
+// use weight directly. it's not changeable or contextual. 
+
+font:
+  sans: '"Adwaita Sans", sans-serif'
+  monospace: '"Adwaita Mono", monospace'
+
+text:
+  xs: 
+    size: "0.75rem"
+    height: "1rem"
+  sm: 
+    size: "0.875rem"
+    height: "1.25rem"
+  base: 
+    size: "1rem"
+    height: "1.5rem"
+  lg: 
+    size: "1.125rem"
+    height: "1.75rem"
+  xl: 
+    size: "1.25rem"
+    height: "1.75rem"
+  2xl: 
+    size: "1.5rem"
+    height: "2rem"
+  3xl: 
+    size: "1.875rem"
+    height: "2.25rem"
+  4xl: 
+    size: "2.25rem"
+    height: "2.5rem"
+
+// size: // icon-size
+//   sm: "14px"
+//   md: "16px"
+//   lg: "32px"
+
+radius:
+  xs: "2px"
+  sm: "4px"
+  base: "6px"
+  md: "8px"
+  lg: "12px"
+  xl: "16px"
+  2xl: "24px"
+  3xl: "32px"
+  
+  // just go standard as it's a superset
+
+  // xs: "4px"
+  // sm: "8px"
+  // md: "12px"
+  // lg: "16px"
+  // xl: "24px"
+  // 2xl: "32px"
+  full: "9999px"
+
+// todo
+scrollbar:
+  width: "8px"
+  thumb: "#bbb"
+  thumb-hover: "#999"
+  thumb-active: "#888"
+
+// todo
+focus-ring:
+  color: "rgba(53, 132, 228, 0.5)"
+  width: "2px"
+  offset: "-2px"

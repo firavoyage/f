@@ -1432,3 +1432,511 @@ Or add it in dependencies in your package.json file:
 bun unlink v1.3.14 (0d9b296a)
 success: unlinked package "foo"
 ```
+
+# typos.toml syntax
+
+The configuration file `_typos.toml` or `.typos.toml` uses standard **TOML syntax** to customize the behavior of the [crate-ci/typos](https://github.com/crate-ci/typos) source code spell checker. It allows you to ignore specific words, skip folders, or add custom regex overrides. [link](https://github.com/crate-ci/typos/blob/master/docs/reference.md)
+
+### Core Configuration Blocks
+
+#### 1. Ignoring False Positives (`extend-words`)
+
+Add individual lowercase words to this section to prevent them from being flagged. Set the value to itself to mark it as valid. [link](https://docs.rs/crate/typos/latest/source/README.md)
+
+toml
+
+```
+[default.extend-words]
+# Maps a lowercase typo/word to its valid correction
+teh = "teh"         # Stops correcting the surname "Teh"
+dota = "dota"       # Keeps "DotA" from autocorrecting to "data"
+```
+
+Use code with caution.
+
+#### 2. Skipping Files and Directories (`files`)
+
+Exclude specific files, extensions, or entire directories using standard glob patterns. [link](https://github.com/crate-ci/typos/blob/master/docs/reference.md)
+
+toml
+
+```
+[files]
+# Global ignore patterns
+extend-exclude = [
+    "CHANGELOG.md",
+    "docs/*.svg",
+    "localized/*.po",
+    "vendor/"
+]
+```
+
+Use code with caution.
+
+#### 3. Overriding Identifiers (`extend-identifiers`)
+
+Identifiers treat variable names, function names, or compound phrases as a single unit instead of splitting them into individual words.
+
+toml
+
+```
+[default.extend-identifiers]
+# Explicitly allow a mixed-case variable/symbol
+AttributeIDSupressMenu = "AttributeIDSupressMenu"
+```
+
+Use code with caution.
+
+#### 4. Regex Exceptions (`extend-ignore-re` and `extend-ignore-identifiers-re`)
+
+Use regular expressions to skip lines of code, hashes, or specific patterns like localized text and developer comments. [link](https://gitlab.kitware.com/cmake/cmake/-/blob/master/.typos.toml?ref%5Ftype=heads)
+
+toml
+
+```
+[default]
+# Regex targeting identifiers
+extend-ignore-identifiers-re = [
+    "AttributeID.*Supress.*",
+]
+
+# General text matching regexes
+extend-ignore-re = [
+    "\\bmetalness\\b",
+    "b\"wdth\""
+]
+```
+
+Use code with caution.
+
+### Alternative: Integration inside `pyproject.toml`
+
+If you are working in a Python project, you can embed the syntax directly inside your `pyproject.toml` file under the `[tool.typos]` prefix: [link](https://github.com/crate-ci/typos/blob/master/docs/reference.md)
+
+toml
+
+```
+[tool.typos.default.extend-words]
+teh = "teh"
+
+[tool.tool.typos.files]
+extend-exclude = ["*.json"]
+```
+
+Use code with caution.
+
+For a breakdown of all localized dialect options and complete config keys, visit the official [Typos Reference Manual](https://github.com/crate-ci/typos/blob/master/docs/reference.md).
+
+If you are dealing with a specific problem, let me know:
+
+- Are you getting **false positives** on specific variables?
+
+- Do you need help formatting a **complex regex pattern**?
+
+- Are your configuration rules **failing to apply**?
+
+- [link](https://github.com/crate-ci/typos/blob/master/docs/reference.md)\
+  typos/docs/reference.md at master · crate-ci/typos · GitHub\
+  You can search for typos in toml files using the following: \* \*\*toml\*\* \* \*\*\_typos.toml\*\* \* \*\*.toml\*\* \* \*\*Cargo.toml\*\* \* \*\*pyprojec...\
+  GitHub
+
+- [link](https://github.com/crate-ci/typos)\
+  GitHub - crate-ci/typos: Source code spell checker\
+  To get started with Typos, you can: \* See what typos are available with \`typos\` \* Have them fixed with \`typos --write-changes $ ty...\
+  GitHub
+
+- [link](https://docs.rs/crate/typos/latest/source/README.md)\
+  typos 0.10.43 - Docs.rs\
+  To mark a word or an identifier (grouping of words) as valid, add it to your \[\`\_typos.toml\`]\(docs/reference.md) by declaring itsel...\
+  Docs.rs
+
+Show all
+
+## extend-exclude syntax
+
+In `typos.toml`, the `extend-exclude` key accepts an **array of strings using `.gitignore` glob syntax**. It must always be placed under the `[files]` header block. [link](https://github.com/crate-ci/typos/blob/master/docs/reference.md)
+
+### Basic Syntax Structure
+
+toml
+
+```
+[files]
+extend-exclude = [
+    "vendor/",                  # Excludes an entire directory
+    "*.min.js",                  # Excludes all minified JavaScript files
+    "docs/legacy-doc.md",        # Excludes a specific file path
+]
+```
+
+Use code with caution.
+
+### Common Glob Pattern Use Cases
+
+- **Exclude specific folders**: Append a trailing slash so the engine knows it is a directory.\
+  toml
+
+<!---->
+
+```
+"node_modules/"
+".git/"
+```
+
+Use code with caution.
+
+- **Exclude extensions anywhere**: Use wildcards to skip generated asset files or configurations.\
+  toml
+
+<!---->
+
+```
+"*.svg"
+"*.json"
+```
+
+Use code with caution.
+
+- **Inverse Matching (Include rules)**: Use an exclamation mark `!` to match everything _except_ a specific file.\
+  toml
+
+<!---->
+
+```
+"*",          # Ignore everything...
+"!src/"       # ...except the source directory
+```
+
+Use code with caution.\
+[link](https://github.com/crate-ci/typos/blob/master/docs/reference.md)
+
+***
+
+### ⚠️ Important Execution Rules
+
+#### 1. CLI Arguments Override Exclusions
+
+If you explicitly pass a file path directly into your terminal command (e.g., `typos src/main.rs`), **`extend-exclude` rules are intentionally ignored by default**. [link](https://github.com/crate-ci/typos/blob/master/docs/reference.md)
+
+To force `typos` to honor your `extend-exclude` list even when explicit file arguments are passed, include the `--force-exclude` flag in your terminal script or CI workflow: [link](https://github.com/crate-ci/typos/blob/master/docs/reference.md)
+
+bash
+
+```
+typos --force-exclude src/main.rs
+```
+
+Use code with caution.
+
+#### 2. Root vs. Working Directory Behavior
+
+Exclusions are calculated relative to your **current working directory (CWD)** where you run the command, not necessarily the exact directory where `typos.toml` lives. For example: [link](https://github.com/crate-ci/typos/issues/593)
+
+- If you have `extend-exclude = ["assets/*.json"]`
+- Running `typos` from project root works perfectly.
+- Running `typos` from inside the `assets/` directory will break because it tries to look for a nested folder named `assets/assets/`.
+- **Fix**: Use generic globs like `"*.json"` if you plan on executing the binary from nested subdirectories. [link](https://github.com/crate-ci/typos/issues/593)
+
+#### 3. Integration with Pre-Commit Hooks
+
+If using `pre-commit`, the tool passes individual altered file names straight to the `typos` CLI, causing your `extend-exclude` configuration block to be skipped. You can override this behavior inside your `.pre-commit-config.yaml` using the `pass_filenames: false` option: [link](https://phip1611.de/blog/properly-configure-typos-in-pre-commit-hooks-nix/)
+
+yaml
+
+```
+- repo: https://github.com/crate-ci/typos
+  rev: v1.23.0
+  hooks:
+    - id: typos
+      pass_filenames: false # Forces typos to read your typos.toml rule list
+```
+
+Use code with caution.
+
+Would you like help testing a **specific complex file structure pattern**, or are your settings **failing to apply** inside a CI/CD workflow pipeline?
+
+- [link](https://github.com/crate-ci/typos/issues/593)\
+  excludes are relative to current directory, not \`typos.toml ...\
+  Oct 13, 2022 — \[files] extend-exclude = \["a/\*.txt"] and we run typos in $DIR , the file a/test.txt is correctly excluded. But when typos is run i...\
+  GitHub
+- [link](https://github.com/crate-ci/typos/issues/861)\
+  Guidance on extend-exclude for a directory? · Issue #861 · crate-ci/typos\
+  Oct 23, 2023 — Here's some information about the \`extend-exclude\` option for typos: \* \*\*Extend-exclude\*\* The \`extend-exclude\` option excludes the...\
+  GitHub
+- [link](https://phip1611.de/blog/properly-configure-typos-in-pre-commit-hooks-nix/)\
+  Properly configure \`typos\` in \`pre-commit-hooks.nix\` (now \`git ...\
+  Jan 8, 2024 — The typos utility should be fixed to not explode your PC when it receives that many arguments (I never investigated this, and I do...\
+  phip1611.de
+
+Show all
+
+## does it exclude such folders on subfolders
+
+Something went wrong and the content wasn't generated.
+
+## does it exclude such folders on subfolders
+
+<mark><strong><span>Yes, it excludes everything inside those folders, including all nested subfolders and their files</span></strong></mark>**.** Because `typos` strictly implements standard `.gitignore` glob syntax, targeting a folder inherently applies to its entire recursive tree. [link](https://github.com/crate-ci/typos/blob/master/docs/reference.md)
+
+How the subfolder behavior applies depends on how the pattern is written:
+
+### 1. Match a Folder and ALL Subfolders Anywhere
+
+If you want to exclude a specific folder name (like `vendor` or `dist`) no matter how deep it is nested in your project tree, write it with a trailing slash: [link](https://forums.insynchq.com/t/ignore-list-glob-pattern-for-sub-folders/8398)
+
+toml
+
+```
+[files]
+extend-exclude = [
+    "vendor/",   # Excludes /vendor/, /src/vendor/, /docs/vendor/ etc.
+    "temp/",     # Excludes all files and subfolders inside any 'temp' folder
+]
+```
+
+Use code with caution.
+
+### 2. Match a Folder ONLY at the Project Root
+
+If you only want to exclude a folder at the exact root level of your project directory—without accidentally skipping a folder with the same name hidden deeper inside your code—prefix it with a forward slash `/`:
+
+toml
+
+```
+[files]
+extend-exclude = [
+    "/tests/",   # Excludes the root '/tests' directory and its subfolders
+                 # Will NOT exclude '/src/app/tests/'
+]
+```
+
+Use code with caution.
+
+### 3. Target Specific Deep Subfolders Explicitly
+
+You can also use global match wildcards (`**`) to skip targeted structures deeply nestled in your hierarchy: [link](https://github.com/crate-ci/typos/issues/861)
+
+toml
+
+```
+[files]
+extend-exclude = [
+    "src/**/generated/",  # Excludes any 'generated' folder nested inside 'src'
+]
+```
+
+Use code with caution.
+
+If your configuration is **still scanning files inside an excluded subfolder**, let me know:
+
+- Are you running `typos` via a **pre-commit hook**?
+
+- Are you executing the command from a **different working directory**? [link](https://github.com/crate-ci/typos/issues/347)
+
+- [link](https://docs.astral.sh/ruff/settings/)\
+  Settings | Ruff - Astral Docs\
+  A list of file patterns to exclude from formatting and linting. Exclusions are based on globs, and can be either: Single-path patt...\
+  Astral Docs
+
+- [link](https://github.com/crate-ci/typos/issues/861)\
+  Guidance on extend-exclude for a directory? · Issue #861 · crate-ci/typos\
+  Oct 23, 2023 — Here's some information about the \`extend-exclude\` option for typos: \* \*\*Extend-exclude\*\* The \`extend-exclude\` option excludes the...\
+  GitHub
+
+- [link](https://github.com/crate-ci/typos/issues/901)\
+  File exclude list does not work from different working directory\
+  Jan 8, 2024 — File exclude list does not work from different working directory #901. New issue. Closed as not planned. Closed as not planned. Fi...\
+  GitHub
+
+Show all
+
+## does it take gitignore by default
+
+Something went wrong and the content wasn't generated.
+
+## does it take gitignore by default
+
+<mark><strong><span>Yes,<span> </span></span><code dir="ltr">typos</code><span> </span>respects and processes your<span> </span><code dir="ltr">.gitignore</code><span> </span>files by default</strong></mark>**.** [link](https://github.com/crate-ci/typos/blob/master/docs/reference.md)
+
+You do not need to manually copy your git exclusions into `typos.toml`, because the tool automatically reads and skips files based on standard version control rules. [link](https://github.com/crate-ci/typos/blob/master/docs/reference.md)
+
+### Default Hidden File & VCS Options
+
+By default, the engine runs with the following implicit configurations: [link](https://github.com/crate-ci/typos/blob/master/docs/reference.md)
+
+- **`files.ignore-vcs = true`**: Automatically honors patterns listed inside `.gitignore` and `.git/info/exclude`.
+- **`files.ignore-hidden = true`**: Automatically skips hidden files and directories starting with a dot (e.g., `.github/`, `.env`).
+- **`files.ignore-global = true`**: Respects your machine's global Git ignore configurations. [link](https://github.com/crate-ci/typos/blob/master/docs/reference.md)
+
+***
+
+### Edge Cases to Keep in Mind
+
+#### 1. Manually "Force-Tracked" Files Are Still Ignored
+
+If a pattern in your `.gitignore` matches a file, but you used `git add --force` to track it anyway, `typos` **will still ignore that file**. It parses the text structure of your ignore files directly rather than querying the active Git index. If you want `typos` to scan a tracked file that matches an ignore rule, you must explicitly allow it using a negative pattern (`!`) in your `.gitignore` or `typos.toml`. [link](https://github.com/crate-ci/typos/issues/909)
+
+#### 2. Overriding the Default Behavior
+
+If you explicitly want `typos` to scan files that are hidden or listed in your `.gitignore`, you can turn these settings off in your `typos.toml`:
+
+toml
+
+```
+[files]
+ignore-vcs = false      # Check files even if they are in .gitignore
+ignore-hidden = false   # Check files even if they start with a dot
+```
+
+Use code with caution.
+
+Are you noticing that **certain files in your `.gitignore` are still being scanned**, or do you want to **force `typos` to check a hidden directory**?
+
+- [link](https://github.com/crate-ci/typos/blob/master/docs/reference.md)\
+  typos/docs/reference.md at master · crate-ci/typos - GitHub\
+  For the distinction between "words" and "identifiers", see design. Configuration keys. files. extend-exclude. Type: list of string...\
+  GitHub
+- [link](https://docs.astral.sh/ty/reference/configuration/)\
+  Configuration | ty - Astral Docs\
+  Jul 18, 2026 — To exclude any directory or file named src , use \*\*/src instead. By default, ty excludes commonly ignored directories: \*\*/.bzr/; \*\
+  Astral Docs
+- [link](https://github.com/crate-ci/typos/issues/909)\
+  Typos ignores files in \`.gitignore\`, even when they are force ...\
+  Jan 18, 2024 — Crown0815 commented. Crown0815. on Jan 23, 2024. Author. I found the issue. PNGs are in our . gitignore file. I removed PNGs from ...\
+  GitHub
+
+Show all
+
+## do i have to ignore pnpm-lock.yaml
+
+**No, you do not have to manually ignore `pnpm-lock.yaml`.**
+
+The `typos` tool has built-in configurations that treat package lockfiles (including `pnpm-lock.yaml`, `package-lock.json`, and `yarn.lock`) as a specific `lock` file type. [link](https://github.com/crate-ci/typos/issues/1443)
+
+### How `typos` Handles Lockfiles
+
+By default, the software sets `type.lock.check-file = false` internally. This means `typos` will look at the **filename** itself (to ensure "pnpm-lock" isn't misspelled) but it will **completely skip checking the contents of the file**. [link](https://github.com/crate-ci/typos/issues/1443)
+
+This default behavior is designed to prevent hundreds of false positives caused by dependency hashes, registry URLs, and unique package names. [link](https://github.com/crate-ci/typos/issues/1443)
+
+***
+
+### When You Might Still Need to Ignore It
+
+There are two rare scenarios where you would need to add `pnpm-lock.yaml` to your `extend-exclude` list:
+
+#### 1. You want to hide it from `typos --files` outputs
+
+If you run `typos --files` to audit what files your project recognizes, `pnpm-lock.yaml` will still print in the list even though its contents aren't scanned. If this clutters your terminal logs, you can fully nuke it from the file walk: [link](https://github.com/crate-ci/typos/issues/1443)
+
+toml
+
+```
+[files]
+extend-exclude = ["pnpm-lock.yaml"]
+```
+
+Use code with caution.
+
+#### 2. You are using a pre-commit hook that forces deep checking
+
+If a third-party framework hook overrides default engine behavior and forces spelling alerts inside your lockfile, manually hard-coding the file exclusion stops the scan entirely:
+
+toml
+
+```
+[files]
+extend-exclude = ["**/pnpm-lock.yaml"]
+```
+
+Use code with caution.
+
+If your configuration is **still flagging spelling issues inside the lockfile**, let me know if you are running it through a **CI/CD pipeline tool** or a **pre-commit manager**. [link](https://github.com/crate-ci/typos/issues/360)
+
+- [link](https://github.com/crate-ci/typos/issues/1443)\
+  lock files displayed by \`\`\`typos --files\`\`\` · Issue #1443 - GitHub\
+  Dec 14, 2025 — epage commented. epage. on Dec 15, 2025. Collaborator. Technically, lock file names are still checked. And no, we do not provide a...\
+  GitHub
+- [link](https://pnpm.io/settings)\
+  Settings (pnpm-workspace.yaml)\
+  Settings (pnpm-workspace.yaml). pnpm gets its configuration from the command line, environment variables, and pnpm-workspace.yaml ...\
+  PNPM
+- [link](https://github.com/crate-ci/typos/issues/360)\
+  Pre-commit hook seems to ignore \_typos.toml #360 - GitHub\
+  Oct 14, 2021 — Description. ... This is respected if typos is invoked directly but not when invoked from pre-commit. Passing arguments to the hoo...\
+  GitHub
+
+Show all
+
+## all files ignored by default
+
+Something went wrong and the content wasn't generated.
+
+## all files ignored by default
+
+By default, `typos` does not use a hardcoded list of specific filenames like `node_modules/`, but it <mark><strong>automatically ignores broad categories of files</strong><span> </span>based on version control standards, system states, and its own configuration engine</mark>. [link](https://docs.astral.sh/ty/reference/configuration/)
+
+The files and folders ignored by default include:
+
+### 1. Hidden Files and Folders
+
+Any file or directory starting with a dot `.` is completely skipped.
+
+- **Examples:** `.github/`, `.vscode/`, `.env`, `.git/`, `.circleci/`. [link](https://github.com/crate-ci/typos)
+
+### 2. Standard Git-Ignored Content
+
+The tool natively respects active version control exclusions.
+
+- Files listed in your root or nested `.gitignore` files.
+- Files listed inside your personal system-wide global Git ignore file.
+- Rules defined inside local repo overrides like `.git/info/exclude`. [link](https://github.com/crate-ci/typos)
+
+### 3. Dedicated System-Level `.ignore` Rules
+
+If you have a generic root `.ignore` file (commonly used by tools like `ripgrep` or `fd`), `typos` processes it alongside your `.gitignore`. [link](https://github.com/crate-ci/typos)
+
+### 4. Lockfiles (Content Excluded)
+
+While `typos` scans the _filename_ itself to check for typos, **the internal data/contents of lockfiles are skipped entirely**. [link](https://crates.io/crates/typos)
+
+- **Examples:** `pnpm-lock.yaml`, `package-lock.json`, `yarn.lock`, `Cargo.lock`, `Gemfile.lock`.
+
+### 5. Specialized Config and Meta Files (Content Excluded)
+
+To prevent rules from breaking on syntax configuration blocks, `typos` excludes or partially skips its own settings and similar package files: [link](https://github.com/crate-ci/typos/issues/1124)
+
+- The system config file itself: `.typos.toml` or `_typos.toml`. [link](https://github.com/crate-ci/typos/blob/master/docs/reference.md)
+
+***
+
+### How to Force `typos` to Scan an Ignored File
+
+If you have a file that is hidden or matched by your `.gitignore`, but you still want `typos` to check it anyway, you can disable the default ignore filters inside your configuration file:
+
+toml
+
+```
+[files]
+ignore-vcs = false      # Forces typos to process .gitignore rules anyway
+ignore-hidden = false   # Forces typos to look into hidden (.*) directories
+```
+
+Use code with caution.
+
+Are you finding that **important source files are being accidentally hidden** from the scanner, or do you want to **override a specific ignore rule**?
+
+- [link](https://github.com/crate-ci/typos/blob/master/docs/reference.md)\
+  typos/docs/reference.md at master · crate-ci/typos · GitHub\
+  You can search for typos in toml files using the following: \* \*\*toml\*\* \* \*\*\_typos.toml\*\* \* \*\*.toml\*\* \* \*\*Cargo.toml\*\* \* \*\*pyprojec...\
+  GitHub
+- [link](https://raw.githubusercontent.com/crate-ci/typos/master/docs/reference.md)\
+  Reference - GitHub\
+  Respect global ignore files. ... Respect ignore files in parent directories. ... Check binary files as text. ... Verify spelling i...\
+  GitHub
+- [link](https://github.com/crate-ci/typos)\
+  crate-ci/typos: Source code spell checker - GitHub\
+  Table\_title: crate-ci/typos Table\_content: | Name | Name | | --- | --- | | .gitignore | .gitignore | | .ignore | .ignore | | .pre-\
+  GitHub
+
+Show all
