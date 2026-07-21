@@ -47299,7 +47299,7 @@ i feel more freedom in english though.
 
 from historical data, i guess i should timebox at least 40min for any non trivial <!-- not predictable/repetitive --> task.
 
-til: contextual impact
+til: compare how it feels to foo or bar <!-- how does foo or bar feel -->, pros and cons, **contextual impact**
 
 
 
