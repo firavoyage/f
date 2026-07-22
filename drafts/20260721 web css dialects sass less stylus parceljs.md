@@ -7370,4 +7370,90 @@ how would i use the yaml + native css setup...
 
 wow. i totally missed it. native css provides shorthand props, which could be effectively mixins.
 
+# (d) adoption percentage of css shorthand props
 
+While there is no single, industry-wide metric tracking a global **"adoption percentage"** for CSS shorthands, their usage in modern web production sits at **virtually 100%**. Standard tools, frameworks, and developer workflows utilize or output them globally. [link](https://github.com/modulz/stitches/issues/82)
+
+Instead of an overall percentage, adoption is best measured through browser compatibility, automation tool usage, and community design trends. [link](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Shorthand%5Fproperties)
+
+### Browser Support Adoption
+
+Core directional and theme-based shorthand properties enjoy **100% browser engine support**: [link](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Shorthand%5Fproperties)
+
+- **Directional Shorthands:** `margin`, `padding`, and `border` have been universally adopted since the earliest days of CSS.
+- **Layout Shorthands:** `flex` and `grid` are fully adopted by all modern evergreen browsers.
+- **Logical Shorthands:** Newer logical shorthands (e.g., `margin-inline`, `padding-block`, `inset`) have crossed **95%+ global browser support**, aligning with internationalization needs. [link](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Shorthand%5Fproperties)
+
+### Tooling and Minifier Adoption
+
+In automated environments, shorthand properties see nearly **100% post-processing adoption**. CSS minifiers (like CSSO, Lightning CSS, or Esbuild) automatically combine longhand rules into shorthand equivalents to reduce file transfer sizes. Conversely, popular CSS-in-JS libraries and atomic frameworks (like [Compiled](https://compiledcssinjs.com/docs/shorthand) or Tailwind CSS) programmatically expand shorthands into longhands under the hood to ensure uniform cascade predictability. [link](https://compiledcssinjs.com/docs/shorthand)
+
+### Developer Preferences
+
+According to major industry reviews like the annual State of CSS survey, developers heavily favor shorthand syntax for quick styling. However, production adoption faces intentional pushback in specific areas due to architectural side effects: [link](https://weser.io/blog/the-shorthand-longhand-problem-in-atomic-css)
+
+- **The "Reset" Pitfall:** Omitted properties in a shorthand auto-reset to their initial specification values. For example, `background: red;` implicitly resets `background-image` to `none`, which can accidentally break inherited cascading styles. [link](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Shorthand%5Fproperties)
+- **Explicit Precision Overwrites:** Teams frequently enforce a mix-and-match approach—setting a baseline with a shorthand but using longhand (e.g., `margin-bottom`) for targeted, localized adjustments. [link](https://thoughtbot.com/blog/when-to-use-and-not-use-css-shorthand-properties)
+
+Are you analyzing shorthand adoption for a **linter/style guide** or looking at data for a **specific new CSS feature**? Tell me more so I can provide the exact documentation or trend data you need.
+
+- [link](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Shorthand%5Fproperties)\
+  Shorthand properties - CSS | MDN\
+  May 25, 2026 — Here are some examples of shorthand properties: \* inset: 0 20px 0 20px There are a few edge cases to keep in mind when using short...\
+  MDN Web Docs
+- [link](https://github.com/modulz/stitches/issues/82)\
+  Support for shorthand CSS Properties · Issue #82 - GitHub\
+  Aug 10, 2020 — When Styled System introduced its Array syntax for variants, it was heavily frowned upon, but it gave people a fast way to respons...\
+  GitHub
+- [link](https://compiledcssinjs.com/docs/shorthand)\
+  Shorthand properties - Compiled CSS in JS\
+  How does Compiled handle shorthand and longhand properties? By default, Compiled expands a few common properties, like margin and ...\
+  Compiled CSS in JS
+
+Show all
+
+# (d) industry adoption percentage of css shorthand props
+
+There is no tracked industry adoption percentage for standard CSS shorthand properties because their use is **virtually 100% across the web development industry**. [link](https://stackoverflow.com/questions/9670075/css-transition-shorthand-with-multiple-properties)
+
+Shorthand properties (like `margin`, `padding`, `background`, and `font`) were introduced in CSS1 in 1996 and are universally supported by all browsers. Instead of tracking _if_ they are used, the industry evaluates adoption based on **linting rules** and **utility frameworks**. [link](https://www.reddit.com/r/Frontend/comments/1146c46/old%5Fhead%5Fasks%5Fwtf%5Fis%5Fthe%5Fpoint%5Fof%5Ftailwind/)
+
+### Why Adoption is Omnipresent
+
+- **Universal Browser Support:** Traditional shorthands possess **>99.9% global browser compatibility**. [link](https://stackoverflow.com/questions/9670075/css-transition-shorthand-with-multiple-properties)
+- **Production Bundling:** Modern build tools automatically minify longhand properties into shorthands to compress file sizes before serving code to users.
+- **Framework Standards:** Highly adopted utility-first frameworks like Tailwind CSS inherently rely on a shorthand-first philosophy (e.g., using `p-4` to compile into `padding: 1rem`). [link](https://www.reddit.com/r/reactjs/comments/1hey5ma/why%5Falmost%5Feveryone%5Fi%5Fsee%5Fuses%5Ftailwind%5Fcss%5Fwhats/)
+
+### How the Industry Uses Shorthands vs. Longhands
+
+While adoption is complete, the _preference_ between using shorthand or longhand syntax divides engineering teams based on specific use cases. [link](https://stackoverflow.com/questions/2384316/are-css-shorthands-not-good-in-team-development)
+
+| Property Type | Code Example               | Industry Consensus                                                                                                   |
+| ------------- | -------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| **Shorthand** | `margin: 10px 5px 20px 0;` | Preferred for reset stylesheets, structural layouts, and component initializations to keep files clean and concise.  |
+| **Longhand**  | `margin-left: 5px;`        | Preferred in collaborative team settings to prevent accidental style overrides and to maintain clear Git diff lines. |
+
+### Subtle Pitfalls Restraining Uncapped Use
+
+Many senior developers actively enforce linting rules (via tools like Stylelint) to _restrict_ shorthand use because **shorthands implicitly reset omitted properties**. [link](https://stackoverflow.com/questions/39596217/are-there-downsides-to-shorthand-css)
+
+For example, writing `background: red;` does not just change the color; it implicitly resets `background-image`, `background-repeat`, and `background-position` to their default values `none`, `repeat`, and `0% 0%`. This can cause unintended bugs in large-scale applications where a background image was already safely inherited. [link](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Shorthand%5Fproperties)
+
+Are you looking to **configure automated linting rules** for your engineering team, or are you trying to decide **how to write a custom CSS framework**?
+
+- [link](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Shorthand%5Fproperties)\
+  Shorthand properties - CSS - MDN Web Docs\
+  May 25, 2026 — Shorthand properties are CSS properties that let you set the values of multiple other CSS properties in one declaration. Using a s...\
+  MDN Web Docs
+- [link](https://www.reddit.com/r/reactjs/comments/1hey5ma/why%5Falmost%5Feveryone%5Fi%5Fsee%5Fuses%5Ftailwind%5Fcss%5Fwhats/)\
+  Why almost everyone I see uses Tailwind CSS? What's the ...\
+  Dec 16, 2024 — Tailwind and CSS can definitely mix, but Tailwind has display image and SVG as block by default and if you write CSS for images an...\
+  Reddit·r/reactjs
+- [link](https://en.wikipedia.org/wiki/CSS)\
+  CSS - Wikipedia\
+  Non-zero numeric values representing linear measures must include a length unit, which is either an alphabetic code or abbreviatio...\
+  Wikipedia
+
+Show all
+
+# 
