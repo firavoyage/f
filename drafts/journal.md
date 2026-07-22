@@ -47319,6 +47319,56 @@ maimai is a game. it's nice if you get up early tomorrow and play energetically.
 
 i may sleep more.
 
+23
+
+00 00 think on state management.
+
+<!-- i could not eat or watch the bangumi. i was thinking. so i should finish thinking first. -->
+
+i would persist the sidebar toggle. 
+
+<!-- i was trapped by the "atomic" global state management lib ive prototyped. i dont need it, if i dont share it across components. -->
+
+conclusion:
+
+approach i
+
+```ts
+// it could store as either 'sidebar' or 'app_name.sidebar' under the hood
+co [is_sidebar_expanded, toggle_sidebar] = use_persist('sidebar', useToggle)
+
+// or
+co [value, set_value] = use_persist('myvalue')
+```
+
+approach ii
+
+```ts
+// returns result, result.get, result.set
+co state = atom({
+  is_sidebar_expanded: true
+}, { persist: true })
+
+// or
+co state = atom({
+  is_sidebar_expanded: true
+})
+
+
+
+co [is_sidebar_expanded, toggle_sidebar] = state('is_sidebar_expanded', useToggle)
+
+// or
+co [is_sidebar_expanded, toggle_sidebar] = use_atom(state, 'is_sidebar_expanded', useToggle)
+
+// or
+co [state, set_state] = state()
+dc is_sidebar_expanded = state
+fn toggle_sidebar {
+  set_state(state state.is_sidebar_expanded = !state.is_sidebar_expanded)
+}
+```
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
