@@ -2,9 +2,8 @@ import { useState, useEffect } from "react"
 import { use_bind } from 'web/lib/keyboard.use';
 import { sync_theme } from 'web/lib/sync_theme';
 
-// import 'web/design/utilitarian/utilitarian.css'
-// import 'web/design/utilitarian/utilitarian.styl'
-import 'web/app.styl'
+import 'web/design/utilitarian/utilitarian.css'
+import 'web/app.css'
 
 import { call } from "web/lib/call";
 import { useAsync } from "react-use";
