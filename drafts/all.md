@@ -704,6 +704,7 @@ society: <!-- sociology -->
 - trans neko association
 - non binary wo med or surgery
 - github kids
+- closeted homophobe transphobe
 
 rhetoric:
 
