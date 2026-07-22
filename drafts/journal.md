@@ -47386,6 +47386,12 @@ component {
 
 <!-- inspired by red em on "化 japanese meaning" -->
 
+04 20 try export chyk <!-- public --> group.
+
+it would be too massive. there are 150k msgs over years.
+
+but ive found a trick. i could opt out "files" (e.g. flac songs), and set upperlimit to 50mb (instead of 8mb default). maybe it would work.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->

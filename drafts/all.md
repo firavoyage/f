@@ -309,6 +309,7 @@ desktop:
 - vscode clear search query when esc
 - shell ffmpeg abstraction tput colors
 - obs restream multi platform simultaneous streaming
+- mac mouse fix
 
 android:
 
