@@ -1,23 +1,25 @@
-variant(type, value) {
-  return '[' + type + value + '], [data-' + type + '=' + value + ']'
-}
+variant(type, value)
+  '[' + type + '="' + value + '"], [data-' + type + '="' + value + '"]'
 
 modes = {
-  theme: light, dark
+  theme: 'light' 'dark'
 }
 
-theme = {
-  primary-colors: #3498db #2980b9 #1abc9c,
-  font-sizes: 12px 14px 16px 24px,
-  breakpoints: (sm 576px) (md 768px) (lg 992px)
-}
-
-/* for type, values in modes
+for type, values in modes
   for value in values
-    {value} = variant(type, value) */
+    define(value, variant(type, value))
+
+foo = 'white'
+
+{dark}
+  foo = black
 
 body
-  background-color var(--color-bg-primary)
-  background-color getSelector(foo)
+  background-color foo
+  // background-color dark
+  // background-color var(--color-bg-primary)
   
 // select. outline.
+
+foo
+  bar bar
