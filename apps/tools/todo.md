@@ -36,7 +36,7 @@ quick panel. params: a list of functions w optional metadata (e.g. names, synony
 
 shortcuts. <!-- just let it bind. -->
 
-
+<!-- todo: design the params and return of each fn -->
 
 ---
 
@@ -67,4 +67,13 @@ research cyberchef
 file:///home/fira/Downloads/CyberChef/CyberChef_v11.0.0.html
 
 ---
+
+simplify design tokens yaml, deprecate value based contextual token determination, make it more natural and consistent
+
+adopt a object flattening template <!-- ? -->
+
+revise convert yaml to css cli input syntax
+
+no native globbing i guess. leverage shell wildcard. take all args as files (ignore stdin). convert yaml to colocated css.
+
 

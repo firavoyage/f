@@ -5,4 +5,3 @@ blunt
 vscode
 
 gnome adwaita colored
-
