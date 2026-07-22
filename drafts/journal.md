@@ -47321,7 +47321,7 @@ i may sleep more.
 
 23
 
-00 00 think on state management.
+00 00 think on state management. 00 40
 
 <!-- i could not eat or watch the bangumi. i was thinking. so i should finish thinking first. -->
 
@@ -47344,7 +47344,7 @@ co [value, set_value] = use_persist('myvalue')
 approach ii
 
 ```ts
-// returns result, result.get, result.set
+// returns result, result.get, result.set, result.sub
 co state = atom({
   is_sidebar_expanded: true
 }, { persist: true })
@@ -47353,19 +47353,32 @@ co state = atom({
 co state = atom({
   is_sidebar_expanded: true
 })
+persist(state) // get localchange, set as initial value if existing, sub changes to localstorage
 
+component {
+  co [is_sidebar_expanded, toggle_sidebar] = state('is_sidebar_expanded', useToggle)
 
+  // or
+  // use_toggle(initial) value, set = use_state, use_toggle(value, set) [on, toggle]
+  // use_toggle(value, set) on = value, toggle = set(v v=!v) [on, toggle] 
+  co [is_sidebar_expanded, toggle_sidebar] = use_toggle(state('is_sidebar_expanded'))
+  // no need to care react "use" naming convention
 
-co [is_sidebar_expanded, toggle_sidebar] = state('is_sidebar_expanded', useToggle)
+  // or
+  co [is_sidebar_expanded, toggle_sidebar] = use_atom(state, 'is_sidebar_expanded', useToggle)
 
-// or
-co [is_sidebar_expanded, toggle_sidebar] = use_atom(state, 'is_sidebar_expanded', useToggle)
+  // or
+  co [is_sidebar_expanded, set] = use_atom(state, 'is_sidebar_expanded')
+  fn toggle_sidebar {
+    set(v v=!v)
+  }
 
-// or
-co [state, set_state] = state()
-dc is_sidebar_expanded = state
-fn toggle_sidebar {
-  set_state(state state.is_sidebar_expanded = !state.is_sidebar_expanded)
+  // or
+  co [state, set_state] = state()
+  dc is_sidebar_expanded = state
+  fn toggle_sidebar {
+    set_state(state state.is_sidebar_expanded = !state.is_sidebar_expanded)
+  }
 }
 ```
 
