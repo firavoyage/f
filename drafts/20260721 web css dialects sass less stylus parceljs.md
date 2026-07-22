@@ -2972,16 +2972,14 @@ Show all
 pros
 
 - flexible, clean variable syntax
-- clean contextual override by interpolation
-- mixins
-
-<!--  -->
+- contextual override by interpolation, even simpler than yaml <!-- in yaml you could have whichever of literal, array, *or* object, but not and. you end up having an object of value, and value under predefined modes. -->
+- mixins, rather than unreadable utility classes, boilerplate extends, or brittle snippets
 
 cons
 
 - noticeably slower hmr
 - less ide autocomplete than css (e.g. builtin values for each prop)
-- no ide autocomplete from variables you import
+- no ide autocomplete from variables you import. no extensions for that. solution: to centralize everything.
 
 limitations
 
