@@ -2980,6 +2980,7 @@ cons
 - noticeably slower hmr
 - less ide autocomplete than css (e.g. builtin values for each prop)
 - no ide autocomplete from variables you import. no extensions for that. solution: to centralize everything.
+- non native variables when compiled
 
 limitations
 
