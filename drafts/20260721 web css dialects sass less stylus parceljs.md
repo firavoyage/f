@@ -3801,7 +3801,1341 @@ I can provide the exact code structure you need.
   \
   wiki.koansoftware.com
 
-# 
+# stylus interpolation syntax
+
+In [Stylus](https://stylus-lang.com/docs/), interpolation is achieved by <mark>wrapping an expression or variable in<span> </span><strong>curly braces<span> </span><code dir="ltr">{}</code></strong></mark>, which allows you to dynamically inject values directly into selectors, property names, and certain strings. [link](https://stylus-lang.com/docs/interpolation)
+
+Here is how to use interpolation across different parts of your stylesheet.
+
+### 1. Selector Interpolation
+
+You can dynamically build class names, IDs, or element selectors using loops or variables. [link](https://stackoverflow.com/questions/30280128/stylus-variable-interpolation-not-working-in-the-animation-property)
+
+stylus
+
+```
+// Define variables
+my-class = "button"
+status = "success"
+
+// Single variable interpolation
+.{my-class}
+  padding: 10px
+
+// Combining interpolation for dynamic naming
+.alert-{status}
+  background: green
+```
+
+Use code with caution.
+
+### 2. Property Name Interpolation
+
+You can dynamically generate property names, which is highly useful for managing vendor prefixes inside a mixin. [link](https://stylus-lang.com/docs/interpolation)
+
+stylus
+
+```
+vendor(prop, args)
+  -webkit-{prop}: args
+  -moz-{prop}: args
+  {prop}: args
+
+button
+  vendor('border-radius', 5px)
+```
+
+Use code with caution.
+
+### 3. String & Native CSS Function Interpolation
+
+When handling strings or native CSS functions like `calc()` and `url()`, standard curly brace interpolation can sometimes fail or behave unpredictably. Stylus provides the **`%` string operator** (similar to `sprintf`) or the built-in **`s()` function** to clean up the syntax. [link](https://github.com/stylus/stylus/issues/2105)
+
+stylus
+
+```
+$fraction = 4
+$path = "images/icons"
+
+.box
+  // Using the % operator for calc()
+  width: 'calc(100% / %s)' % $fraction
+
+  // Using s() for background paths
+  background-image: s('url("%s/logo.png")', $path)
+```
+
+Use code with caution.
+
+If you want to explore more complex logic, let me know if you would like to see how to use interpolation inside **loops (`for` iterations)** or within **dynamic hashes**. [link](https://stylus-lang.com/docs/hashes.html)
+
+- [link](https://github.com/stylus/stylus/issues/2105)\
+  Best way to put variables inside of calc? · Issue #2105 - GitHub\
+  Feb 2, 2016 — Description. corysimmons. opened on Feb 2, 2016. Right now I'm doing width: s('calc(100% \* %s)', $fraction) but that gets really h...\
+  GitHub
+- [link](https://stylus-lang.com/docs/interpolation)\
+  Interpolation - Stylus\
+  Nov 9, 2022 — Stylus supports interpolation by using the {} characters to surround an expression, which then becomes part of the identifier. For...\
+  Stylus-lang
+- [link](https://stackoverflow.com/questions/30280128/stylus-variable-interpolation-not-working-in-the-animation-property)\
+  Stylus variable interpolation not working in the animation property?\
+  May 16, 2015 — \* 2 Answers. Sorted by: Currently you cannot use interpolation inside values of properties or strings. But you can use concatenati...\
+  Stack Overflow
+
+Show all
+
+# stylus mixin syntax
+
+In [Stylus](https://stylus-lang.com/docs/mixins), <mark><strong>mixins are defined identically to functions</strong><span> </span>but are invoked as a statement rather than as part of an expression</mark>. Because Stylus relies on indentation, semicolons, colons, and parentheses are completely optional. [link](https://stylus-lang.com/docs/mixins)
+
+***
+
+### Basic Mixin Syntax
+
+To define a mixin, write the identifier name followed by its properties indented on the next lines. You invoke it by referencing its name inside a selector. [link](https://stylus-lang.com/docs/mixins)
+
+stylus
+
+```
+// Definition
+border-radius-custom()
+  -webkit-border-radius: 5px
+  -moz-border-radius: 5px
+  border-radius: 5px
+
+// Invocation
+.box
+  border-radius-custom()
+```
+
+Use code with caution.
+
+***
+
+### Mixins with Arguments & Defaults
+
+You can pass variables into mixins. You can also assign default values to those parameters in case they are omitted during invocation. [link](https://www.youtube.com/watch?v=XcdYmq7whrY)
+
+stylus
+
+```
+// Definition with a default value of 5px
+error-border(color, size = 5px)
+  border: size solid color
+
+// Invocation
+.alert-box
+  error-border(#ff0000)        // Uses default 5px size
+.critical-box
+  error-border(#ff0000, 10px)  // Overrides default size
+```
+
+Use code with caution.
+
+***
+
+### Transparent Mixins (Property Trapping)
+
+Stylus allows **transparent mixin invocation**. If a mixin matches the exact name of a CSS property, you can call it without parentheses. It acts like a native property. [link](https://stylus-lang.com/docs/mixins)
+
+stylus
+
+```
+// Definition matching a real CSS property name
+border-radius(n)
+  -webkit-border-radius: n
+  -moz-border-radius: n
+  border-radius: n
+
+// Invocation looks exactly like regular CSS
+.card
+  border-radius: 10px
+```
+
+Use code with caution.
+
+***
+
+### The `arguments` Object
+
+When a mixin receives an unknown or variable number of expressions, you can use the local `arguments` variable to forward all passed parameters at once. [link](https://stylus-lang.com/docs/mixins)
+
+stylus
+
+```
+// Definition
+box-shadow(args...)
+  -webkit-box-shadow: arguments
+  box-shadow: arguments
+
+// Invocation
+.button
+  box-shadow: 1px 1px 3px #eee, inset 2px 2px 5px #fff
+```
+
+Use code with caution.
+
+***
+
+### Block Mixins
+
+You can pass entire blocks of CSS rules into a mixin by invoking it with a `+` prefix. The passed CSS is then available via the `+block` keyword inside your mixin definition. [link](https://stylus-lang.com/docs/mixins)
+
+stylus
+
+```
+// Definition
+desktop()
+  @media (min-width: 1024px)
+    {block}
+
+// Invocation
+.sidebar
+  width: 100%
+  +desktop()
+    width: 25% // This block is injected inside the media query
+```
+
+Use code with caution.
+
+***
+
+### Parent Reference (`&`)
+
+You can use the `&` character inside a mixin to explicitly reference or modify the parent selector of the scope where the mixin is called. [link](https://stylus-lang.com/docs/mixins)
+
+stylus
+
+```
+// Definition
+hover-link()
+  color: #00f
+  &:hover
+    color: #f00
+    text-decoration: underline
+
+// Invocation
+a.menu-item
+  hover-link()
+```
+
+Use code with caution.
+
+If you are looking to build a robust design system, would you like to see how to combine these mixins with **conditional `if`/`else` statements** or look into **importing third-party mixin libraries** like Nib? [link](https://medium.com/@raaechelb/stylus-beginners-guide-8b981e59d28b)
+
+- [link](https://stylus-lang.com/docs/mixins)\
+  Mixins | Stylus\
+  Nov 9, 2022 — Here are some features of mixins: \* \*\*Omit parentheses\*\* You can omit parentheses to support transparent vendor properties. \* \*\*Au...\
+  Stylus-lang
+- [link](https://www.youtube.com/watch?v=XcdYmq7whrY)\
+  \#4 Mixins In Stylus - Stylus Tutorials\
+  Jan 9, 2015 — hey what's up this is Scott with LevelUp Tutorials. and today we're going to show you how to use mixins in stylus. so easy they're...\
+  9:35\
+  YouTube·Syntax
+- [link](https://kizu.dev/new-stylus-features/)\
+  New Stylus Features - Roman Komarov\
+  Dec 5, 2013 — The thing that was missing from Stylus for so long — the ability to pass blocks of Stylus code into mixins and then use those bloc...\
+  Kizu.Dev
+
+Show all
+
+## are parentheses optional
+
+<mark><strong><span>Yes, parentheses are completely optional</span></strong><span> </span>in Stylus, both when defining and when invoking a mixin</mark>.
+
+Because Stylus relies on indentation for structure, you can omit parentheses entirely unless your mixin accepts arguments and you want to explicitly define them.
+
+***
+
+### Definition Comparison
+
+**Without Parentheses (Omitting Arguments)**
+
+stylus
+
+```
+// Definition
+clear-fix
+  zoom: 1
+  &:after
+    content: ""
+    display: block
+    clear: both
+
+// Invocation
+.container
+  clear-fix
+```
+
+Use code with caution.
+
+**With Parentheses**
+
+stylus
+
+```
+// Definition
+clear-fix()
+  zoom: 1
+  &:after
+    content: ""
+    display: block
+    clear: both
+
+// Invocation
+.container
+  clear-fix()
+```
+
+Use code with caution.
+
+***
+
+### Mixins with Arguments
+
+If your mixin requires arguments, you **must use parentheses during the definition** to declare the variables. However, you can still omit them during invocation if you use a colon (`:`) to separate the mixin name from the values.
+
+stylus
+
+```
+// Definition (Parentheses required here to name the variables)
+box-shadow(x, y, blur, color)
+  -webkit-box-shadow: x y blur color
+  box-shadow: x y blur color
+
+// Invocation (Parentheses are optional if you use a colon)
+.card
+  box-shadow: 2px 2px 5px #ccc
+```
+
+Use code with caution.
+
+***
+
+### The One Exception: Ambiguity
+
+You only **need** parentheses if omitting them creates ambiguity with an existing CSS property or variable.
+
+For example, if you name a mixin `opacity`, invoking it as `opacity` without parentheses or a value might confuse the compiler. Using `opacity()` forces Stylus to evaluate it as a mixin call.
+
+Would you like to explore **how to use variable arguments (`args...`)** without parentheses, or look into **nesting mixins**?
+
+- [link](https://stackoverflow.com/questions/25548585/using-brackets-with-less-mixins)\
+  css - Using brackets () with LESS mixins\
+  Aug 28, 2014 — Using brackets () with LESS mixins 4 When calling the mixin, the braces are optional. When writing a mixin, the braces can be used...\
+  \
+  Stack Overflow
+- [link](https://www.sitepoint.com/sass-mixin-placeholder/)\
+  Sass: Mixin or Placeholder? — SitePoint\
+  Jan 30, 2014 — Note: If you don't pass an argument to a mixin, you can omit the parentheses. In fact, you can even omit them in the @mixin defini...\
+  \
+  \
+  SitePoint
+- [link](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/at-mixin-argumentless-call-parentheses/README.md)\
+  stylelint-scss/src/rules/at-mixin-argumentless-call-parentheses/README.md at master · stylelint-scss/stylelint-scss\
+  There must always be parentheses in mixin calls, even if no arguments are passed.\
+  \
+  GitHub
+
+Show all
+
+## fact check whether parentheses are optional
+
+According to the [official Stylus Documentation](https://stylus-lang.com/docs/mixins), **parentheses are explicitly optional** for both defining and invoking mixins. Stylus relies heavily on indentation-based syntax where punctuation like braces, colons, and parentheses can be omitted entirely. [link](https://stylus-lang.com/docs/mixins)
+
+However, a strict fact check reveals **one nuance** depending on whether your mixin accepts arguments and the location where you invoke it.
+
+***
+
+### 1. Defining a Mixin
+
+- **Without arguments:** Parentheses are **100% optional**. Both `my-mixin` and `my-mixin()` are identical definitions.
+
+- **With arguments:** Parentheses are **required** to explicitly list and map your named parameters.\
+  stylus
+
+<!---->
+
+```
+// Parentheses are required here to accept 'color'
+border-theme(color)
+  border: 1px solid color
+```
+
+Use code with caution.\
+[link](https://www.linkedin.com/pulse/sass-mixin-placeholder-mohamed-fathy)
+
+***
+
+### 2. Invoking a Mixin
+
+When calling a mixin inside a CSS selector block, your usage determines if parentheses are optional:
+
+- **Transparent Invocation (No arguments):** Parentheses are **optional**. Writing `my-mixin` on an indented line will invoke it perfectly.
+
+- **Transparent Invocation (With arguments):** Parentheses are **optional** if you use a colon (`:`) or comma separation to map parameters.\
+  stylus
+
+<!---->
+
+```
+// Both of these invocations are completely valid
+.box
+  border-theme: #fff
+  border-theme(#fff)
+```
+
+Use code with caution.\
+[link](https://gist.github.com/zspecza/7220997)
+
+***
+
+### 3. The Exception: Root vs. Block-Level Scope
+
+According to [Stylus syntax standards](https://gist.github.com/zspecza/7220997), **parentheses are mandatory** if you invoke a mixin at the **root level** (outside of any CSS selector). [link](https://gist.github.com/zspecza/7220997)
+
+Without selector indentation or a property colon, the compiler requires parentheses to distinguish the mixin execution from a global variable statement. [link](https://gist.github.com/zspecza/7220997)
+
+stylus
+
+```
+// At the root level of your document:
+reset-styles() // REQUIRED parentheses. Writing 'reset-styles' alone fails.
+
+body
+  padding: 0
+```
+
+Use code with caution.
+
+Would you like to look at how Stylus handles **keyword arguments** or how **variable arguments (`args...`)** behave without parentheses?
+
+- [link](https://stylus-lang.com/docs/mixins)\
+  Mixins | Stylus\
+  Nov 9, 2022 — Here are some features of mixins: \* \*\*Omit parentheses\*\* You can omit parentheses to support transparent vendor properties. \* \*\*Au...\
+  Stylus-lang
+- [link](https://kizu.dev/new-stylus-features/)\
+  New Stylus Features - Roman Komarov\
+  Dec 5, 2013 — ... @media only screen and (min-width: 200px) { .foo { width: 60px; } .bar { height: 50px; } } @media only screen and (min-width: ...\
+  Kizu.Dev
+- [link](https://www.linkedin.com/pulse/sass-mixin-placeholder-mohamed-fathy)\
+  Sass: Mixin or Placeholder? - LinkedIn\
+  Aug 30, 2016 — Note: If you don't pass an argument to a mixin, you can omit the parentheses. In fact, you can even omit them in the @mixindefinit...\
+  LinkedIn·Mohamed Fathy
+
+Show all
+
+## doesnt work in parceljs. mymixin
+
+background black
+
+body\
+mymixin
+
+**Parcel treats `mymixin` as a raw CSS property** when it is written without parentheses, rendering it as invalid CSS and stripping it out during compilation.
+
+While the core Stylus engine allows you to omit parentheses completely, [Parcel's built-in bundler architecture](https://parceljs.org/) handles stylesheets through post-processing pipelines (like Lightning CSS or PostCSS) that require explicit markers to distinguish between standard CSS rules and custom preprocessor macros.
+
+***
+
+### The Fix
+
+To solve this compilation failure in Parcel, add parentheses to your code snippet in **at least one** of two places:
+
+#### Option 1: Add Parentheses to the Invocation (Recommended)
+
+Keep your definition clean, but explicitly invoke the mixin. This tells Parcel's engine that you are running a function/mixin rather than declaring a broken CSS property like `mymixin: broad;`.
+
+stylus
+
+```
+mymixin
+  background: black
+
+body
+  mymixin() // Parentheses here force the call
+```
+
+Use code with caution.
+
+#### Option 2: Add Parentheses to the Definition
+
+Adding parentheses to the definition explicitly registers `mymixin` as a function macro in the underlying environment.
+
+stylus
+
+```
+mymixin() // Defined as a macro
+  background: black
+
+body
+  mymixin // Can now be called transparently
+```
+
+Use code with caution.
+
+***
+
+### Why Parcel Breaks on the Original Code
+
+1. **Property Trapping Confusion**: When Stylus evaluates `body \n mymixin`, it expects `mymixin` to look like a property. Because there is no colon or value attached, the downstream CSS parser used by Parcel flags it as syntax error.
+2. **Ambiguous Root Parsing**: Without parentheses at the definition level (`mymixin`), the compiler occasionally treats the word as a standard CSS tag selector instead of a callable mixin block.
+
+Are you running into any **other build errors** from Parcel, or would you like to see how to configure a `.stylusrc` file to manage strict compilation settings?
+
+## both are required from my test. how to make it flexible.
+
+You are entirely correct. In a raw Parcel ecosystem, you hit a strict roadblock where **both pairs of parentheses become required** due to how Parcel's CSS toolchain intercepting things before Stylus can fully map the anonymous syntax.
+
+To restore total flexibility so you can write it exactly how you want, choose one of the three strategies below.
+
+***
+
+### Strategy 1: The Colon Shift (Most Stylus-Native)
+
+If you hate parentheses but want zero toolchain configuration, use Stylus's **property assignment syntax**. By adding a colon (`:`) when you call the mixin, Parcel recognizes it as a property block and won't crash.
+
+stylus
+
+```
+// Define completely without parentheses
+mymixin
+  background: black
+
+body
+  mymixin: /* This trailing colon acts as a clean, valid invoke hook */
+```
+
+Use code with caution.
+
+***
+
+### Strategy 2: Use LightningCSS "Lowering" Config
+
+Parcel intercepts stylesheets using its internal compiler, `LightningCSS`. It treats loose variables without colons as invalid draft properties. You can configure Parcel to ignore these checks and let Stylus finish its work unbothered.
+
+Create a [`.stylusrc`](https://parceljs.org/languages/stylus/) file in your root folder to force pure, un-vetted compilation:
+
+json
+
+```
+{
+  "options": {
+    "compress": false
+  }
+}
+```
+
+Use code with caution.
+
+_Note: Ensure your `package.json` specifies `"browserslist"` to map target features safely._
+
+***
+
+### Strategy 3: The Hybrid Proxy Boilerplate (Best for Design Systems)
+
+If you want to create a file where users of your mixin library can call it **any way they choose** (with parentheses, without parentheses, or as a property), map an alias utility like this:
+
+stylus
+
+```
+// 1. Core definition with a unique name
+_mymixin-base()
+  background: black
+
+// 2. Map the actual name with parentheses to trap transparent property calls
+mymixin()
+  _mymixin-base()
+
+// 3. Fallback variable to trap parenthesis-free calls
+mymixin = _mymixin-base
+```
+
+Use code with caution.
+
+#### Why this handles every use case:
+
+This structure allows all four of these variations to compile flawlessly inside Parcel:
+
+stylus
+
+```
+body
+  mymixin()   // Works (Explicit function call)
+  mymixin     // Works (Resolves to the mapped variable pointer)
+  mymixin:    // Works (Transparent property trapping via the function wrapper)
+```
+
+Use code with caution.
+
+Would you like to look at setting up a **global configuration file** for your project, or investigate how to automate **vendor-prefixing via Parcel plugins**?
+
+- [link](https://parceljs.org/languages/stylus/)\
+  Stylus\
+  You can configure Stylus by creating a .stylusrc file. You can also use a JSON based configuration format, such as .stylusrc. Othe...\
+  Parcel.js
+
+- [link](https://kizu.dev/new-stylus-features/)\
+  New Stylus Features - Roman Komarov\
+  Dec 5, 2013 — So, the brackets are more flexible, while the dot is not. You can get the values from the hash in the same way — either by using a...\
+  Kizu.Dev
+
+# stylus require syntax
+
+In Stylus, <mark>the<span> </span><strong><code dir="ltr">@require</code><span> </span>directive uses the exact same syntax as<span> </span><code dir="ltr">@import</code></strong><span> </span>but works like a standard "require" statement in programming</mark>: it will only load a given file **once**, preventing duplicate code if the same file is requested multiple times. [link](https://stylus-lang.com/docs/import)
+
+### Basic File Inclusion
+
+You can omit the `.styl` file extension, as Stylus automatically infers it. [link](https://stylus-lang.com/docs/import)
+
+stylus
+
+```
+// Indented syntax
+@require "mixins/border-radius"
+@require "variables"
+
+// Standard CSS syntax is also allowed
+@require "mixins/border-radius";
+@require "variables";
+```
+
+Use code with caution.
+
+### Directory Globbing
+
+Stylus supports wildcard characters (globbing) to pull in multiple sheets from a directory at the same time. [link](https://www.youtube.com/watch?v=rdbUuq86mc0\&t=389)
+
+stylus
+
+```
+// Requires all .styl files inside the 'components' folder
+@require "components/*"
+```
+
+Use code with caution.
+
+### Key Differences Between `@require` and `@import`
+
+| Directive      | Duplicate Inclusion Behavior                                 | Primary Use Case                                                       |
+| -------------- | ------------------------------------------------------------ | ---------------------------------------------------------------------- |
+| **`@require`** | Evaluates and includes the file **only once**.               | Global configurations, variables, and mixin libraries.                 |
+| **`@import`**  | Evaluates and includes the file **every time** it is called. | Utilities or structural components that need multi-instance rendering. |
+
+_Note: If you use `@require` on a `.css` file (e.g., `@require "reset.css"`), Stylus treats it as a literal CSS import and leaves it as a standard CSS `@import` statement in the compiled output._ [link](https://stylus-lang.com/docs/import)
+
+If you are setting up your project, are you combining this with a specific task runner or module bundler like **Webpack** or **Gulp**? I can provide the precise setup config for those if needed!
+
+- [link](https://stylus-lang.com/docs/import)\
+  @import and @require | Stylus\
+  Nov 9, 2022 — Stylus supports both literal @import for CSS, and dynamic importing or requiring of other Stylus sheets. \*\*Literal CSS\*\* \* Any fil...\
+  Stylus-lang
+- [link](https://www.youtube.com/watch?v=rdbUuq86mc0\&t=389)\
+  \#5 Importing and Globbing Stylus Files - Stylus Tutorials\
+  Jan 9, 2015 — product project management schemes based on how you like to maintain your project and how large of a project it is and Stylus real...\
+  1m\
+  YouTube·Syntax
+- [link](https://www.youtube.com/watch?v=r2Ag2k7iWY8\&t=179)\
+  \#10 Using Stylus Extensions - Stylus Tutorials\
+  Feb 13, 2015 — nothing is really happening any differently besides uh the fact that it's watching this user local nib folder in here uh however n...\
+  \
+  1m\
+  YouTube·Syntax
+
+Show all
+
+## path for parceljs
+
+In Parcel, resolving paths and using shortcuts within your stylesheets (like Stylus, Less, or standard CSS) can be handled using **absolute paths**, **tilde (`~`) paths**, or **custom path aliases**. [link](https://parceljs.org/features/dependency-resolution/)
+
+### 1. Project Root Paths (Absolute Syntax)
+
+Parcel lets you reference paths starting with a forward slash `/`. This forces the bundler to resolve the file relative to your **project root directory** (where your `package.json` lives). [link](https://parceljs.org/features/dependency-resolution/)
+
+stylus
+
+```
+// Resolves to /path/to/project/src/mixins/borders.styl
+@require "/src/mixins/borders"
+```
+
+Use code with caution.
+
+### 2. Tilde Paths (`~`)
+
+If you want to resolve a path relative to the **nearest entry point or module root** rather than the absolute project root, use the tilde (`~`) prefix. [link](https://parcel2-docs.vercel.app/features/module-resolution/)
+
+stylus
+
+```
+// Resolves relative to the current module or package boundary
+@require "~mixins/borders"
+```
+
+Use code with caution.
+
+### 3. Custom Path Aliases (Glob Routing)
+
+To create ultra-clean, short syntax paths (like `@mixins/*`), map them inside your `package.json` under the `alias` field. Parcel fully supports **glob matching template strings** (`$1`, `$2`) to pass dynamic sub-folders. [link](https://stackoverflow.com/questions/54052884/how-to-resolve-alias-in-parceljs)
+
+#### Step 1: Configure `package.json`
+
+json
+
+```
+{
+  "name": "my-project",
+  "alias": {
+    "@mixins/*": "./src/styles/mixins/$1",
+    "@components/*": "./src/components/$1"
+  }
+}
+```
+
+Use code with caution.
+
+#### Step 2: Use it in your Stylus file
+
+stylus
+
+```
+// Parcel maps this directly to "./src/styles/mixins/borders.styl"
+@require "@mixins/borders"
+```
+
+Use code with caution.
+
+### 🛠️ Need a Stylus Config File?
+
+If you need to pass native path settings directly to the underlying Stylus preprocessor instead of letting Parcel handle it, create a **`.stylusrc`** file at your project root using strict JSON: [link](https://parceljs.org/languages/stylus/)
+
+json
+
+```
+{
+  "paths": [
+    "src/styles/variables",
+    "node_modules"
+  ]
+}
+```
+
+Use code with caution.
+
+Would you like to see how to hook these paths up to a **component-driven folder structure** or are you trying to resolve assets like **images and fonts**?
+
+- [link](https://parceljs.org/features/dependency-resolution/)\
+  Dependency resolution - Parcel\
+  import '/src/client. js'; The above example could be placed in any file, at any point in your project's directory structure, and w...\
+  Parcel.js
+- [link](https://parceljs.org/languages/stylus/)\
+  Stylus - Parcel\
+  To configure Stylus, create a . stylusrc file. To see the available options to configure stylus see the official Stylus documentat...\
+  Parcel.js
+- [link](https://parceljs.org/languages/javascript/)\
+  JavaScript - Parcel\
+  import. ... meta object includes information about the module it is referenced in. Parcel currently supports a single property, im...\
+  Parcel.js
+
+Show all
+
+## failed to locate
+
+When a **"Failed to locate"** or **"Cannot resolve dependency"** error occurs while using Stylus inside Parcel, it typically means Parcel's dependency resolver cannot map the path specified in your `@require` or `@import` statement. [link](https://stackoverflow.com/questions/69874084/parcel-outputs-cannot-resolve-dependency-when-building-react-widget)
+
+The quickest ways to resolve this issue depend on how your pathing is structured:
+
+### 1. Fix Missing Relative Dots
+
+Stylus natively allows you to import files without explicit directory indicators (e.g., `@require "variables"` looks inside a native path list). However, **Parcel strictly requires explicit relative notation** for files in the same directory tree. [link](https://parceljs.org/features/dependency-resolution/)
+
+- ❌ **Broken:** `@require "variables"` or `@require "mixins/borders"`
+- ✅ **Fixed:** `@require "./variables"` or `@require "./mixins/borders"`
+
+### 2. Fix Broken Absolute Paths
+
+If you use a leading forward slash (e.g., `@require "/src/styles"`), Parcel measures the path from your **project root** (where your `package.json` lives). [link](https://github.com/parcel-bundler/parcel/issues/2318)
+
+- Ensure you have not omitted the `src` folder or any root folders.
+- ❌ **Broken:** `@require "/styles/main"` (if `styles` is inside `src`)
+- ✅ **Fixed:** `@require "/src/styles/main"`
+
+### 3. Add an Explicit Native Stylus Lookup Path
+
+If you want to use bare names (like `@require "variables"`) without relative dots, you must explicitly tell Stylus where to look by creating a **`.stylusrc`** configuration file in your project root:
+
+json
+
+```
+{
+  "paths": ["src/styles", "node_modules"]
+}
+```
+
+Use code with caution.
+
+### 4. Correct Your Glob Targets
+
+If you are using wildcards (`*`) to include a directory, ensure the path ends precisely where the files live.
+
+- ❌ **Broken:** `@require "./components"` (Parcel expects a file, not a directory)
+- ✅ **Fixed:** `@require "./components/*"`
+
+### 5. Check Package Aliases for Typos
+
+If using custom `package.json` aliases, remember that Parcel requires a matching trailing glob placeholder (`$1`) in the template replacement string. [link](https://stackoverflow.com/questions/69874084/parcel-outputs-cannot-resolve-dependency-when-building-react-widget)
+
+- ❌ **Broken alias:** `"@mixins/*": "./src/styles/mixins"`
+- ✅ **Fixed alias:** `"@mixins/*": "./src/styles/mixins/$1"`
+
+What does the **exact error snippet** look like in your terminal? If you share the path string causing the failure, I can pinpoint the exact syntax error! [link](https://parceljs.org/)
+
+- [link](https://github.com/stylus/stylus/issues/356)\
+  failed to locate @import file in windows · Issue #356 - GitHub\
+  Aug 16, 2011 — matthew-dean commented on Oct 18, 2015. @matthew-dean · matthew-dean · on Oct 18, 2015. More actions. I just ran into this issue. ...\
+  GitHub
+- [link](https://parceljs.org/)\
+  Parcel\
+  Diagnostics. If you make an error in your code or configuration, Parcel displays beautiful diagnostics in your terminal and in the...\
+  Parcel.js
+- [link](https://stackoverflow.com/questions/69874084/parcel-outputs-cannot-resolve-dependency-when-building-react-widget)\
+  Parcel outputs "cannot resolve dependency" when building react widget\
+  Nov 7, 2021 — You might get the error "Cannot resolve dependency" when building a React widget with parcel. This error can occur when you try to...\
+  Stack Overflow
+
+Show all
+
+# stylus function syntax
+
+In the [Stylus CSS preprocessor](https://stylus-lang.com/docs/functions), functions are defined by <mark><strong>omitting the<span> </span><code dir="ltr">function</code><span> </span>keyword</strong><span> </span>entirely and using an identifier followed by parentheses and an assignment or block</mark>. [link](https://stylus-lang.com/docs/functions)
+
+Stylus features a highly flexible syntax where braces `{}`, colons `:`, and semicolons `;` are completely optional. [link](https://learnxinyminutes.com/stylus/)
+
+### 1. Basic Function Syntax
+
+You can write functions using either the standard bracket-based syntax or the clean, indented syntax. [link](https://www.sitepoint.com/getting-to-know-stylus/)
+
+**Indented Syntax (Recommended for Stylus):**
+
+stylus
+
+```
+add(a, b)
+  a + b
+
+// Usage
+body
+  padding: add(10px, 5px) // Compiles to padding: 15px;
+```
+
+Use code with caution.
+
+**CSS-Style Syntax:**
+
+stylus
+
+```
+add(a, b) {
+  return a + b;
+}
+```
+
+Use code with caution.
+
+_Note: In Stylus, the return keyword is optional because the last expression is implicitly returned._ [link](https://docs.arbitrum.io/stylus-by-example/basic%5Fexamples/function)
+
+### 2. Default Argument Values
+
+Arguments can be assigned default values to handle missing parameters when the function is invoked. [link](https://www.youtube.com/watch?v=IW6QIAkRc0U)
+
+stylus
+
+```
+add(a, b = a)
+  a + b
+
+// Usage
+pad = add(10px) // b defaults to 10px, returns 20px
+```
+
+Use code with caution.
+
+### 3. Named & Keyword Arguments
+
+When calling a function, you can pass arguments by their variable names. This allows you to supply arguments in any order. [link](https://stylus-lang.com/docs/kwargs)
+
+stylus
+
+```
+create-box(width, height, color = red)
+  width: width
+  height: height
+  background-color: color
+
+// Usage
+.card
+  create-box(color: blue, height: 100px, width: 200px)
+```
+
+Use code with caution.
+
+### 4. Variable Arguments (Rest Parameters)
+
+You can accept an arbitrary number of arguments using the `...` operator, which converts the extra inputs into an expression list. [link](https://devhints.io/stylus)
+
+stylus
+
+```
+box-shadow(args...)
+  -webkit-box-shadow: args
+  box-shadow: args
+
+// Usage
+.button
+  box-shadow: 1px 1px 3px #eee, 2px 2px 5px #ccc
+```
+
+Use code with caution.
+
+### 5. Returning Multiple Values
+
+Functions can return multiple values separated by spaces, which is ideal for properties like `margin` or `padding`. [link](https://www.youtube.com/watch?v=IW6QIAkRc0U)
+
+stylus
+
+```
+sizes()
+  5px 10px 15px 20px
+
+// Usage
+.container
+  padding: sizes() // Compiles to padding: 5px 10px 15px 20px;
+```
+
+Use code with caution.
+
+If you are looking to build a specific utility, let me know:
+
+- What **CSS property** you want the function to compute
+
+- If you need to handle **conditional logic** (like checking color themes)
+
+- Whether you want to write it as a **mixin** (injecting styles) or a **pure function** (returning values)
+
+- [link](https://kizu.dev/new-stylus-features/)\
+  New Stylus Features - Roman Komarov\
+  Dec 5, 2013 — Resulting code. Not so long ago I became a maintainer for Stylus CSS preprocessor. At the end of the last week, we released a new ...\
+  Kizu.Dev
+
+- [link](https://www.youtube.com/watch?v=IW6QIAkRc0U)\
+  \#7 Writing Custom Functions - Stylus Tutorials\
+  Jan 30, 2015 — hey what's up this is Scott with Level Up Tutorials. and today we're going to show you how to write your own functions using Stylu...\
+  9:55\
+  YouTube·Syntax
+
+- [link](https://devhints.io/stylus)\
+  Stylus cheatsheet\
+  Here's some information about stylus syntax checkers: \* \*\*Indent syntax\*\* \* \`box color: blue\` \* \`button color: red\` \* \*\*Block mixi...\
+  Devhints
+
+Show all
+
+## with interpolation
+
+In Stylus, function syntax changes when you use interpolation (`{}`) to dynamically generate property names, selectors, or variables inside a function or mixin.
+
+### 1. Dynamic Property Names
+
+To use a function argument or variable as a CSS property name, wrap the variable in curly braces `{}`.
+
+stylus
+
+```
+// Definition
+apply-spacing(prop, value)
+  {prop}-top: value
+  {prop}-bottom: value
+
+// Usage
+.card
+  apply-spacing('margin', 20px)
+  apply-spacing('padding', 10px)
+```
+
+Use code with caution.
+
+### 2. Dynamic Class / Selector Generation
+
+You can use interpolation inside a function or mixin to auto-generate classes based on your arguments.
+
+stylus
+
+```
+// Definition
+create-status-box(name, bg-color)
+  .box-{name}
+    background: bg-color
+    border: 1px solid dark + bg-color
+
+// Usage
+create-status-box('success', #d4edda)
+create-status-box('error', #f8d7da)
+```
+
+Use code with caution.
+
+### 3. Loop-Driven Interpolation
+
+Functions can work alongside loops to create batches of dynamic utility classes quickly.
+
+stylus
+
+```
+// Definition
+generate-grid(count)
+  for index in 1..count
+    .col-{index}
+      width: (index / count) * 100%
+
+// Usage
+generate-grid(4)
+```
+
+Use code with caution.
+
+### 4. Dynamic Variable Lookup
+
+If you pass a string to a function and want to look up a variable matching that string name, use `lookup()`.
+
+stylus
+
+```
+// Theme Colors
+theme-primary = #007bff
+theme-secondary = #6c757d
+
+// Function using lookup()
+get-theme-color(name)
+  return lookup('theme-' + name)
+
+// Usage
+.btn-main
+  color: get-theme-color('primary') // Returns #007bff
+```
+
+Use code with caution.
+
+If you are working on a dynamic utility layout, let me know:
+
+- What **classes or properties** you need to loop through
+
+- If you want to dynamically prefix **browser vendor tags**
+
+- Whether you are mapping values from a **structured hash map**
+
+- [link](https://blog.teamtreehouse.com/modular-pseudo-elements-sass)\
+  Modular Pseudo-Elements with Sass\
+  Jul 31, 2014 — Sass lets us create dynamic selectors with variables using the #{} interpolation syntax. So inside the mixin, we'll define the pse...\
+  \
+  \
+  Treehouse Blog
+
+- [link](https://php-dictionary.readthedocs.io/en/latest/dictionary/string-interpolation.ini.html)\
+  String Interpolation — PHP Dictionary 1.0.165 documentation\
+  String Interpolation ¶ String interpolation is a feature where variables inside a string are dynamically replaced by their value a...\
+  \
+  Read the Docs
+
+## as selectors
+
+To interpolate functions or variables directly into **selectors**, wrap the function call or variable name in curly braces `{}`.
+
+### 1. Function Returning a Selector
+
+When a function returns a string, you must wrap the function call in `{}` to use it as a CSS selector.
+
+stylus
+
+```
+// Definition
+get-role(type)
+  return 'user-' + type
+
+// Usage
+.{get-role('admin')}
+  border: 1px solid red
+
+.{get-role('guest')}
+  opacity: 0.5
+```
+
+Use code with caution.
+
+### 2. Multi-Selector Generation
+
+Functions can return an array or list of strings to generate multiple selectors at once.
+
+stylus
+
+```
+// Definition
+get-headers()
+  return h1 h2 h3
+
+// Usage
+{get-headers()}
+  font-family: 'Helvetica', sans-serif
+  font-weight: bold
+```
+
+Use code with caution.
+
+### 3. Mixins for Dynamic Nesting
+
+If you want to inject selectors dynamically based on parent context, combining a mixin with the `&` (parent reference) and interpolation is highly effective.
+
+stylus
+
+```
+// Definition
+on-state(state-name)
+  &.is-{state-name}
+    {block}
+
+// Usage
+.button
+  background: blue
+
+  +on-state('active')
+    background: darkblue
+
+  +on-state('disabled')
+    opacity: 0.5
+```
+
+Use code with caution.
+
+### 4. Advanced BEM Modifier Loop
+
+You can pass a list of modifiers to a function or mixin to auto-generate standard BEM (Block, Element, Modifier) selectors.
+
+stylus
+
+```
+// Definition
+make-modifiers(block-name, modifiers...)
+  for mod in modifiers
+    .{block-name}--{mod}
+      background-color: lookup('color-' + mod)
+
+// Variables needed for lookup
+color-success = #28a745
+color-danger = #dc3545
+
+// Usage
+make-modifiers('alert', 'success', 'danger')
+```
+
+Use code with caution.
+
+If you are setting up a design system, let me know:
+
+- What **naming convention** you use (BEM, utility-first, etc.)
+
+- If you need to scope selectors to specific **media queries**
+
+- Whether you want to generate selectors from a **key-value hash**
+
+- [link](https://sass-lang.com/documentation/style-rules/)\
+  Style Rules\
+  You can combine interpolation with the parent selector & , the @at-root rule, and selector functions to wield some serious power w...\
+  \
+  Sass: Syntactically Awesome Style Sheets
+
+- [link](https://www.toptal.com/developers/front-end/sass-style-guide-a-sass-tutorial-on-how-to-write-better-css-code)\
+  Sass Style Guide: A Sass Tutorial on How to Write Better CSS Code\
+  Jan 16, 2026 — Some naming conventions Naming conventions part of the style book is based on the two existing BEM and SMACSS naming conventions t...\
+  \
+  \
+  Toptal
+
+# (d) vscode stylus preprocessor extensions
+
+The most critical extension you need for handling Stylus in Visual Studio Code is <mark><strong><span><a rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=sysoev.language-stylus">vscode-stylus</a></span></strong></mark>. It is the primary tool that provides syntax highlighting, auto-completion, and code navigation for your `.styl` files. [link](https://marketplace.visualstudio.com/items?itemName=sysoev.language-stylus)
+
+Because the [Stylus CSS preprocessor language](https://stylus-lang.com/) relies heavily on clean syntax (often omitting brackets, colons, and semicolons), a properly configured suite of extensions ensures your environment remains accurate and stable. [link](https://stylus-lang.com/)
+
+### Core Language Support
+
+- **vscode-stylus**: The essential core plugin for Stylus. It provides syntax highlighting, a symbols provider, and smart code completion for selectors, properties, values, variables, and functions. It also integrates a color preview and color picker. [link](https://marketplace.visualstudio.com/items?itemName=sysoev.language-stylus)
+- **[language-stylus-plus](https://marketplace.visualstudio.com/items?itemName=carlosJoo.language-stylus-plus)**: An alternative language support option that provides reliable color previews and autocompletion matching native Stylus behavior. [link](https://marketplace.visualstudio.com/items?itemName=carlosJoo.language-stylus-plus)
+
+### Formatting & Code Style
+
+- **[Manta's Stylus Supremacy](https://marketplace.visualstudio.com/items?itemName=thisismanta.stylus-supremacy)**: The top-tier tool for formatting Stylus files. It handles the flexible indentation syntax of Stylus automatically upon saving, cleaning up brackets and commas according to your project's rules. [link](https://marketplace.visualstudio.com/items?itemName=thisismanta.stylus-supremacy)
+- **[Smart Stylus Linter](https://marketplace.visualstudio.com/items?itemName=thomasdqr.smart-stylus-linter)**: Designed to help organize your code instantly. It features a command palette trigger to auto-sort CSS properties inside your Stylus rules alphabetically with a single action. [link](https://marketplace.visualstudio.com/items?itemName=thomasdqr.smart-stylus-linter)
+
+### Compilation & Quality Control
+
+- **[Live Stylus Compiler](https://marketplace.visualstudio.com/items?itemName=live-stylus-pub.live-stylus-compiler)**: If you are not utilizing a local bundler build tool (like Vite or Webpack), this extension compiles your `.styl` code into vanilla `.css` files on the fly. It includes Autoprefixer support and can link directly with a browser preview tool. [link](https://marketplace.visualstudio.com/items?itemName=live-stylus-pub.live-stylus-compiler)
+- **[STLint for Visual Studio Code](https://github.com/stylus/stlint-vscode-plugin)**: Connects the `stlint` library straight into your editor window, flagging formatting discrepancies or coding standard issues relative to your local `.stlintrc` config file. [link](https://github.com/stylus/stlint-vscode-plugin)
+
+### Enhancing Your Setup
+
+If you find that your Emmet abbreviations are not firing correctly inside `.styl` files, you can manually fix this behavior. Navigate to your global `settings.json` file in VS Code and append the following configuration to explicitly force Emmet to treat Stylus files as standard CSS dialects: [link](https://stackoverflow.com/questions/36543286/emmet-preferences-json-in-visual-studio-code-to-include-stylus-css-preprocessor)
+
+json
+
+```
+"emmet.includeLanguages": {
+    "stylus": "css"
+}
+```
+
+Use code with caution.
+
+If you are using tools like Tailwind CSS, be aware that many broader IntelliSense engines require strict `.css` variants to track utility classes accurately and may not resolve cleanly inside abstract preprocessors. Use **[Colorize](https://marketplace.visualstudio.com/items?itemName=kamikillerto.vscode-colorize)** as an extra visual tool to generate real-time background color previews underneath raw hex, rgb, and variable definitions right inside your preprocessor documents. [link](https://marketplace.visualstudio.com/items?itemName=kamikillerto.vscode-colorize)
+
+Are you hoping to configure **automatic compilation** to vanilla CSS on save, or are you looking to integrate a specific **linter ruleset** for a team project?
+
+- [link](https://marketplace.visualstudio.com/items?itemName=thomasdqr.smart-stylus-linter)\
+  Smart Stylus Linter - Visual Studio Marketplace\
+  The Smart Stylus Linter is a Visual Studio Code extension designed to simplify your Stylus (CSS preprocessor) coding experience. W...\
+  Visual Studio Marketplace
+- [link](https://marketplace.visualstudio.com/items?itemName=sysoev.language-stylus)\
+  vscode-stylus - Visual Studio Marketplace\
+  vscode-stylus. Github Actions VSCode Marketplace Version VSCode Marketplace Installs VSCode Marketplace Stars github-issues PRs We...\
+  Visual Studio Marketplace
+- [link](https://stylus-lang.com/)\
+  Stylus | An expressive, robust, feature-rich CSS language built ...\
+  \* Born for Node. js. TJ created this project for the Node.js Ecosystem in 2010. \* CSS Compatible. Don't like indented syntax? OK, ...\
+  Stylus-lang
+
+Show all
+
+## it does not autocomplete the variables i import
+
+The primary reason your imported variables are not autocompleting is that <mark>the core<span> </span><strong><code dir="ltr">vscode-stylus</code><span> </span>extension does not support cross-file IntelliSense out of the box</strong></mark>. It only scans and suggests variables defined within the _active_ file you are currently editing.
+
+To fix this missing functionality and force VS Code to recognize your imported variables, implement these workarounds:
+
+### 1. Supplement with a Variable Autocomplete Extension
+
+Because the base Stylus extension lacks a cross-file workspace indexer, you can install a dedicated global scanner to bridge the gap.
+
+- Install **[SCSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=mrmlnc.vscode-scss)** or **CSS Variable Autocomplete**.
+- Even though they are labeled for CSS/SCSS, they can be configured to scan all workspace files (including `.styl`) to map variable tokens dynamically. [link](https://marketplace.visualstudio.com/items?itemName=mrmlnc.vscode-scss)
+
+### 2. Update Your Global `settings.json`
+
+You need to force VS Code to track words and triggers across your files, and ensure snippets or automated completions are not suppressed by your editor settings. Paste this snippet into your settings: [link](https://stackoverflow.com/questions/56594768/vscode-doesnt-autocomplete-variables-in-custom-snippets)
+
+json
+
+```
+{
+  "editor.quickSuggestions": {
+    "other": "on",
+    "comments": "off",
+    "strings": "on"
+  },
+  "editor.wordBasedSuggestions": "allDocuments",
+  "editor.suggest.snippetsPreventQuickSuggestions": false
+}
+```
+
+Use code with caution.
+
+- **`"allDocuments"`**: This is the crucial fix. It instructs VS Code to feed autocomplete choices using raw text matching from _every open tab or file in your active workspace_, bypassing the extension's lack of native import parsing. [link](https://github.com/microsoft/vscode/issues/296661)
+
+### 3. Check Your Import Syntax
+
+Stylus is highly permissive with syntax, but language servers rely on strict patterns to map paths. If you are importing via relative paths, ensure you are including file extensions or using standard notation so VS Code can track the file location tree:
+
+stylus
+
+```
+// Try using strict paths if implicit paths are failing to resolve in the editor
+@import 'variables.styl'
+```
+
+Use code with caution.
+
+Are you importing your variables from a **local relative file** (e.g., `../theme/vars.styl`), or are they coming from a centralized **node\_modules package**?
+
+- [link](https://www.reddit.com/r/vscode/comments/17dbjdh/intellisense%5Fautocomplete%5Fnot%5Fworking%5Fin%5Fvs%5Fcode/)\
+  Intellisense (autocomplete) not working in VS Code while at ...\
+  Oct 21, 2023 — I have the official Python extension that I use at home where the autocomplete works as expected. its\_a\_gibibyte. •. 3y ago. Those...\
+  Reddit·r/vscode
+- [link](https://github.com/microsoft/vscode/issues/296661)\
+  Autocomplete not working · Issue #296661 · microsoft/vscode\
+  Feb 20, 2026 — This includes: \* \*\*Language-specific words\*\* Such as \`while\`, \`else\`, \`const\`, \`let\`, and \`there\` \* \*\*Variables declared earlier\*\*\
+  GitHub
+- [link](https://code.visualstudio.com/docs/editing/intellisense)\
+  IntelliSense - Visual Studio Code\
+  IntelliSense features. VS Code IntelliSense features are powered by a language service. A language service provides intelligent co...\
+  Visual Studio Code
+
+Show all
+
+## do these autocomplete extensions work
+
+<mark><strong><span>No, they do not work automatically for Stylus files.</span></strong></mark> You have hit a major technical limitation of the VS Code marketplace when it comes to this specific preprocessor language. [link](https://stackoverflow.com/questions/68447110/vscode-extension-variable-name-autocomplete)
+
+Because Stylus uses a loose, minimalist syntax (no `$` or `@` variable prefixes, and no required colons), generalized CSS/SCSS indexers cannot safely parse it. They completely miss your variables because they are looking for specific punctuation symbols that Stylus omits. [link](https://marketplace.visualstudio.com/items?itemName=sysoev.language-stylus)
+
+To get actual cross-file autocomplete working, you must use one of these reliable workarounds:
+
+### Fix 1: The "Keep the Variables File Open" Trick (Easiest)
+
+VS Code has a built-in feature called text-based suggestions. It can read text across open files, but **only if the target file is actively open in an editor tab**. [link](https://stackoverflow.com/questions/68447110/vscode-extension-variable-name-autocomplete)
+
+1. Open your `variables.styl` file.
+
+2. Keep it open in a split screen or background tab.
+
+3. Add this line to your VS Code global settings:\
+   json
+
+<!---->
+
+```
+"editor.wordBasedSuggestions": "allDocuments"
+```
+
+Use code with caution.\
+[link](https://stackoverflow.com/questions/68347156/variable-name-autocomplete-for-vscode-language-extension-gamemaker-gml-files)
+
+As long as that file remains open, VS Code will index the plain text words inside it and suggest them while you type in your other style files. [link](https://github.com/microsoft/vscode/issues/24668)
+
+### Fix 2: Switch to Native CSS Variables
+
+If your build tool allows it, switch your project variables from traditional Stylus variables (`primary-color = #000`) to native CSS Custom Properties (`--primary-color: #000`).
+
+1. Install **[CSS Variable Autocomplete](https://marketplace.visualstudio.com/items?itemName=vunguyentuan.vscode-css-variables)**.
+2. This extension maps custom properties globally across your entire workspace, regardless of file type.
+3. You will get perfect cross-file autocomplete when typing `--` anywhere in your workspace. [link](https://marketplace.visualstudio.com/items?itemName=vunguyentuan.vscode-css-variables)
+
+### Fix 3: Use an AI Autocomplete Engine
+
+Because standard extensions rely on strict regex formulas, they struggle with Stylus syntax. Free, local AI tools like **[Continue](https://marketplace.visualstudio.com/items?itemName=Continue.continue)** use vector indexing to read your whole project. It will naturally learn your imported variable tokens from other files and suggest them accurately as ghost text as you type. [link](https://docs.continue.dev/ide-extensions/autocomplete/quick-start)
+
+Would you prefer to try setting up **native CSS variables** for better cross-file compatibility, or should we walk through configuring a **local AI auto-complete tool**?
+
+- [link](https://stackoverflow.com/questions/68447110/vscode-extension-variable-name-autocomplete)\
+  VSCode extension variable name autocomplete\
+  Jul 19, 2021 — You can't access information about the document structure or completion items generated outside your extension. You would need to ...\
+  Stack Overflow
+- [link](https://discuss.python.org/t/looking-for-feedback-on-adding-import-autocomplete-to-pyrepl/82281)\
+  Looking for feedback on adding import autocomplete to PyREPL\
+  Feb 26, 2025 — Recently, I opened a PR adding support for import autocomplete to PyREPL. PyREPL already has autocomplete for attributes but this ...\
+  Python.org
+- [link](https://docs.continue.dev/ide-extensions/autocomplete/quick-start)\
+  Quick Start with Continue Autocomplete\
+  Continue's AI autocomplete provides inline code suggestions as you type. To enable it, you can: \* Click the "Continue" button in t...\
+  Continue - Docs
+
+Show all
 
 # . thinking
 
@@ -3814,7 +5148,7 @@ pros
 cons
 
 - noticeably slower hmr
-- less ide autocomplete than css (e.g. builtin values for each prop)
+- less ide autocomplete than css, no builtin values for each prop (e.g. it knows italic exists when you type i on font style. but it doesnt seem to know what the possible styles are. it doesnt show up on font weight though. on css, it's shown on font style, w explanation.)
 - no ide autocomplete from variables you import. no extensions for that. solution: to centralize everything.
 - non native variables when compiled
 

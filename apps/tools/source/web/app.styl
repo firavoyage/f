@@ -1,7 +1,23 @@
-myselector = body
+variant(type, value) {
+  return '[' + type + value + '], [data-' + type + '=' + value + ']'
+}
 
-// select. outline.
+modes = {
+  theme: light, dark
+}
 
-{myselector}
+theme = {
+  primary-colors: #3498db #2980b9 #1abc9c,
+  font-sizes: 12px 14px 16px 24px,
+  breakpoints: (sm 576px) (md 768px) (lg 992px)
+}
+
+/* for type, values in modes
+  for value in values
+    {value} = variant(type, value) */
+
+body
   background-color var(--color-bg-primary)
-
+  background-color getSelector(foo)
+  
+// select. outline.
