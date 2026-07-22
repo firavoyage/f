@@ -47382,7 +47382,7 @@ component {
 }
 ```
 
-02 00 research google ai mode text styling. (03 00)
+02 00 research google ai mode text styling. ~~(03 00)~~ (03 20)
 
 <!-- inspired by red em on "化 japanese meaning" -->
 
