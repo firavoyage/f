@@ -200,6 +200,7 @@ archi:
 - docstring inline comment feeling
 - git commit message type first location first
 - spellcheck ci
+- parentheses brackets braces feeling
 
 web: <!-- frontend, web, ts/js -->
 
