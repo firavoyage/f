@@ -2658,16 +2658,334 @@ tools dont modify much i guess. cleanup some tool specific ones. that's it.
 
 well i should not convert by hand, one by one. i should not llm the way either.
 
+# (?) how to write design tokens in stylus
+
+In Stylus, design tokens are written <mark>using<span> </span><strong>native variables or hash maps (dictionaries)</strong></mark> due to the preprocessor's flexible, punctuation-free syntax.
+
+Below is the structured guide on organizing and writing primitive, semantic, and component-level design tokens in Stylus.
+
+### 1. Simple Variables (Primitive Tokens)
+
+Primitive tokens define your raw, unchanging values. In Stylus, you do not need the `$` sign (like Sass) or `@` sign (like Less). You write them as plain identifiers. [link](https://www.contentful.com/blog/design-token-system/)
+
+stylus
+
+```
+// Brand Palette (Primitives)
+brand-blue-100 = #e6f0ff
+brand-blue-500 = #0066cc
+brand-blue-900 = #002244
+
+neutral-dark   = #1a1a1a
+neutral-light  = #f8f9fa
+
+// Spacing & Radius Scale
+space-sm       = 4px
+space-md       = 8px
+space-lg       = 16px
+
+radius-sm      = 4px
+radius-md      = 8px
+```
+
+Use code with caution.
+
+### 2. Hash Maps / Objects (Structured Tokens)
+
+To group relevant tokens under a single Namespace, use Stylus hashes (dictionaries). This keeps your global scope clean and mimics the structure of standard design token JSON files. [link](https://www.contentful.com/blog/design-token-system/)
+
+stylus
+
+```
+// Nested Token Grouping
+token = {
+  color: {
+    primary: brand-blue-500,
+    background: neutral-light,
+    text: neutral-dark
+  },
+  spacing: {
+    padding-box: space-lg,
+    gap-inline: space-md
+  }
+}
+
+// Accessing values using dot or bracket notation
+body
+  background-color: token.color.background
+  color: token['color']['text']
+  padding: token.spacing.padding-box
+```
+
+Use code with caution.
+
+### 3. Creating Multi-Value Layout Tokens
+
+Stylus supports lists and custom functions, which allows you to group typography or box-shadow composite tokens easily. [link](https://penpot.app/blog/design-tokens-for-designers/)
+
+stylus
+
+```
+// Typography Composite Tokens
+font-heading-h1 = 32px 1.2 "Helvetica Neue", sans-serif // size | line-height | family
+font-body-md    = 16px 1.5 "Arial", sans-serif
+
+h1
+  font: font-heading-h1
+
+p
+  font: font-body-md
+```
+
+Use code with caution.
+
+### 4. Advanced: Automated Token Transmutation
+
+If your design system syncs with toolchains like [Tokens Studio](https://docs.tokens.studio/fundamentals/design-tokens/) or Figma, your architecture likely exports a central `tokens.json` file. Instead of writing them manually, use [Style Dictionary](https://styledictionary.com/info/tokens/) to automatically parse the JSON and output a perfectly formatted `.styl` variables file for your pipeline. [link](https://www.youtube.com/watch?v=rYzstFEY0t8)
+
+If you would like to proceed with setting this up, let me know:
+
+- Do you prefer **flat variable names** (`token-color-primary`) or **nested objects** (`token.color.primary`)?
+
+- Are you looking to integrate **light and dark mode switching**?
+
+- Will you be compiling tokens from an external **JSON export file**?
+
+- [link](https://www.contentful.com/blog/design-token-system/)\
+  Design tokens explained (and how to build a ... - Contentful\
+  May 16, 2024 — TL;DR powered by AI Actions. The article explains what design tokens are, how to build a layered token system, and why they matter...\
+  Contentful
+
+- [link](https://www.youtube.com/watch?v=rYzstFEY0t8)\
+  Build Design Tokens & Figma Variables with AI\
+  Jan 5, 2026 — today we're going to look at how to vibe code your Figma variables in a way that will work for light mode and dark mode. and also ...\
+  52:19\
+  YouTube·UI Collective
+
+- [link](https://samiamdesigns.substack.com/p/a-new-approach-to-naming-design-tokens)\
+  A new approach to naming design tokens\
+  May 4, 2024 — This obsession turned into a research project, and now I'm about to propose a new approach to naming design tokens, which goes aga...\
+  Substack·Confessions from a design team of one
+
+Show all
+
+# (d) stylus object syntax
+
+In the Stylus CSS preprocessor, objects are known as **hashes**. While standard properties in Stylus use an indentation-based, bracket-free format, <mark>defining an object/hash<span> </span><strong>requires explicit curly braces<span> </span><code dir="ltr">{}</code></strong></mark>. Trailing commas between key-value pairs are optional. [link](https://kizu.dev/new-stylus-features/)
+
+### Basic Hash Definition
+
+You can declare a hash object by assigning a curly-brace block to a variable. Keys can be written as identifiers or strings. [link](https://kizu.dev/new-stylus-features/)
+
+stylus
+
+```
+// Defining a hash object
+my-palette = {
+  primary: #32E,
+  secondary: #666,
+  "dark-bg": #111
+}
+```
+
+Use code with caution.
+
+### Accessing Values
+
+You can retrieve data from a hash using either **dot notation** or **square bracket notation**. Dot notation is preferred for clean, readable code, while brackets are useful when your key contains special characters or is evaluated dynamically. [link](https://stylus-lang.com/docs/hashes.html)
+
+stylus
+
+```
+// Dot notation
+main-color = my-palette.primary
+
+// Bracket notation (required for strings with hyphens)
+background-color = my-palette['dark-bg']
+```
+
+Use code with caution.
+
+### Manipulating Hashes
+
+After a hash is defined, you can add new keys or redefine existing ones using the same dot or bracket assignments. [link](https://kizu.dev/new-stylus-features/)
+
+stylus
+
+```
+// Adding/Updating properties
+my-palette.accent = #FFF000
+my-palette['secondary'] = #444
+```
+
+Use code with caution.
+
+### Nested Hashes
+
+Hashes can be deeply nested to handle complex structural definitions, such as design tokens or media query groups. [link](https://kizu.dev/new-stylus-features/)
+
+stylus
+
+```
+breakpoints = {
+  mobile: {
+    max-width: 480px
+  },
+  tablet: {
+    max-width: 768px
+  }
+}
+
+// Accessing nested properties
+@media (max-width: breakpoints.mobile.max-width)
+  body
+    font-size: 14px
+```
+
+Use code with caution.
+
+### Anonymous Hashes
+
+If you are passing objects into lists or functions without assigning them to an intermediate variable, you can write them anonymously in-line. [link](https://stylus-lang.com/docs/hashes.html)
+
+stylus
+
+```
+// A list containing an identifier and two anonymous hashes
+my-list = 'theme-data' { primary: #000 } { secondary: #FFF }
+
+// Accessing index 1 of the list
+brand-color = my-list[1].primary // returns #000
+```
+
+Use code with caution.
+
+Would you like to see how to **iterate through a hash** using a loop, or do you need an example of using hashes inside **Stylus mixins**?
+
+- [link](https://kizu.dev/new-stylus-features/)\
+  New Stylus Features - Roman Komarov\
+  Dec 5, 2013 — As you can see from this example, the syntax is similar to the objects in JavaScript: the key could be either an indent or a strin...\
+  Kizu.Dev
+- [link](https://stylus-lang.com/docs/hashes.html)\
+  Hashes | Stylus\
+  Anonymous hash #. We can create anonymous hash objects for list, a kind object with out variable name. list = foo {int: 1, str: '1...\
+  Stylus-lang
+- [link](https://stylus-lang.com/docs/bifs)\
+  Built-in Functions - Stylus\
+  Nov 9, 2022 — Convert the JSON file at path into Stylus variables or an object. Nested variable object keys are joined with a dash ( - ). For ex...\
+  Stylus-lang
+
+Show all
+
+## why cant curly braces be designed to be optional like yaml
+
+In syntax design, omitting curly braces from objects (like YAML does) requires relying strictly on **indentation (whitespace)** to determine where an object begins, nests, and ends.
+
+While Stylus uses indentation for standard CSS rules, it enforces curly braces for objects (hashes) due to critical differences in how CSS preprocessors and data-serialization languages are parsed.
+
+### 1. The Ambiguity Conflict
+
+Stylus already uses indentation to nest standard CSS selectors and properties. If objects also used indentation without braces, the parser could not distinguish a data object from a CSS rule.
+
+- **The Problem:** Look at this ambiguous indentation:\
+  stylus
+
+<!---->
+
+```
+// Is this a CSS rule or a data object?
+my-variable =
+  primary #32E
+  secondary #666
+```
+
+Use code with caution.
+
+- **CSS Interpretation:** A class or element named `my-variable` containing the properties `primary: #32E` and `secondary: #666`.
+- **Object Interpretation:** A variable named `my-variable` assigned to a hash object.
+
+Without curly braces, the parser cannot determine your intent without complex, error-prone guessing algorithms.
+
+### 2. Multi-line Variable Assignment
+
+Stylus allows you to assign values across multiple lines. Without a clear structural boundary like `{}`, the language cannot differentiate between an indented multi-line list and an object.
+
+stylus
+
+```
+// This is a flat list of values spread over lines
+shorthand-padding =
+  10px
+  20px
+
+// This is an object (braces prevent it from being read as a list)
+box-dimensions = {
+  width: 10px,
+  height: 20px
+}
+```
+
+Use code with caution.
+
+### 3. YAML vs. Stylus Use Cases
+
+YAML is a **declarative data language**. Every single line is strictly a key, a value, or a list item. Because its scope is limited entirely to structured data, it can safely use indentation as its sole structural driver.
+
+Stylus is an **imperative/functional programming language** mixed with a stylesheet layout. It features operations, function calls, mixins, and CSS selectors. Because the same file handles logic, evaluation, and design rules, it requires explicit syntax tokens (`{}`) to isolate data structures from execution blocks.
+
+### 4. Single-line Portability
+
+Forcing indentation means an object _must_ take up multiple lines. Curly braces allow you to write compact, single-line objects when passing data quickly.
+
+stylus
+
+```
+// Braces allow compact, inline configuration
+set-theme({ primary: #000, secondary: #fff })
+```
+
+Use code with caution.
+
+If you want to see how to use these objects cleanly, would you like to explore **passing objects into functions** or **destructuring** them into variables?
+
+- [link](https://news.ycombinator.com/item?id=3792549)\
+  Did anyone find an explanation for why they opted for brackets in favor of white...\
+  As someone who uses both constantly, Whitespace languages and curly braces are the same. For a good programmer, she can take out t...\
+  \
+  Hacker News
+- [link](https://www.examtopics.com/discussions/cisco/view/74503-exam-200-901-topic-1-question-37-discussion/)\
+  Exam 200-901 topic 1 question 37 discussion\
+  Apr 25, 2022 — One of the main differences between YAML ( YAML Ain't Markup Language ) and JSON ( JavaScript Object Notation ) is in their data s...\
+  \
+  ExamTopics
+- [link](https://medium.com/write-a-catalyst/master-yaml-for-devops-the-complete-guide-basic-advanced-a444b4aebe68)\
+  🚀YAML for DevOps & Kubernetes (Beginner → Advanced Guide with Real Examples) | by DevOps voice | Write A Catalyst\
+  Dec 31, 2025 — 1⃣📘 What is YAML? YAML ( YAML Ain't Markup Language ) (YAML Ain't Markup Language) is a human-readable data format used to store ...\
+  \
+  \
+  Medium
+
+Show all
+
 # . thinking
 
 pros
 
 - flexible, clean variable syntax
+- clean contextual override by interpolation
+- mixins
+
+<!--  -->
 
 cons
 
 - noticeably slower hmr
+- less ide autocomplete than css (e.g. builtin values for each prop)
+- no ide autocomplete from variables you import
 
 limitations
+
+- no yaml like indentation based objects, curly braces required, inconsistent symbols (eq on the first layer, then colons) <!-- i might not use hashes anyway then -->
+- parentheses required for mixins in parceljs
 
 
