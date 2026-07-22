@@ -2606,7 +2606,7 @@ Are you setting up a **brand-new project** from scratch, or are you **migrating 
 
 Show all
 
-# . thinking
+# . thinking: evaluate stylus syntax
 
 comments are trivial.
 
@@ -7322,7 +7322,7 @@ I can recommend the exact extension stack to optimize your autocomplete speed.
   \
   GitHub
 
-# . thinking
+# . thinking: evaluate stylus compared w native css
 
 pros
 
@@ -7369,6 +7369,213 @@ experiment
 how would i use the yaml + native css setup...
 
 wow. i totally missed it. native css provides shorthand props, which could be effectively mixins.
+
+---
+
+solution on native css
+
+- boilerplate syntax: autocomplete
+- contextual variable override: generated <!-- im considering rm reliance on "value" to determine it's the end. on modes, the first is the default. and if an object matches perfectly to a mode (and each is a literal), then it is (it wont break. e.g. i should not have both palette-accent-blue and reference on color-accent). i will generate the flatter (it should be generated. it's a template. and, constrast to my assumption, i dont actually have to modify it.). i might not have to hmr the yaml, just `b convert`, it's easy. i would redesign. -->
+- mixins: shorthands
+
+# (?) should font size and line height be coupled
+
+<mark><strong><span>Font size and line height must be code-coupled but visually decoupled.</span></strong></mark>
+
+While they are technically dependent on each other to scale safely without breaking layouts, they should not use a single, static multiplier across your entire design. As text scales up, its proportional spacing needs change, meaning headings require a much tighter layout ratio than dense paragraph body copy. [link](https://notadesigner.io/p/line-height)
+
+The technical execution, design logic, and critical layout variables dictate how to couple them effectively:
+
+### 1. Technical Coupling (Use Unitless CSS Ratios)
+
+You must always couple font size and line height using **unitless values** in your code (e.g., `line-height: 1.5`) rather than hardcoded pixel units. [link](https://www.youtube.com/watch?v=eW2-ghXuYC8\&t=400)
+
+- **The Problem with Pixels:** If you set a `font-size: 16px` and a fixed `line-height: 24px`, inheriting elements or changing font sizes later will cause compressed text overlaps or oversized gaps. [link](https://blog.frankmtaylor.com/2016/02/15/css-tip-use-a-proportional-line-height-to-make-everyone-happier/)
+- **The Unitless Benefit:** A unitless value acts as a direct multiplier of the current element's font size. If a user zooms in or font sizes change dynamically, the line height inherits and scales perfectly. [link](https://www.youtube.com/watch?v=eW2-ghXuYC8\&t=400)
+
+### 2. Visual Decoupling (The Inverse Proportional Rule)
+
+While technically bound, your scaling ratio must change inversely as the font size grows. Larger text needs a smaller line-height multiplier. [link](https://www.youtube.com/watch?v=ponRmWSzpDg\&t=25)
+
+| Text Type                  | Font Size Range | Recommended Unitless Line Height | Why?                                                                                                                                                                |
+| -------------------------- | --------------- | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Small Text / Captions**  | 10px – 12px     | **1.6 – 1.7**                    | Tiny glyphs need more vertical breathing room to prevent the eyes from jumping lines.                                                                               |
+| **Body Copy**              | 14px – 18px     | **1.4 – 1.5**                    | Maximizes horizontal reading rhythm and satisfies standard [WCAG text spacing accessibility rules](https://www.w3.org/WAI/WCAG22/Understanding/text-spacing.html?). |
+| **Subheadings (H3-H4)**    | 20px – 32px     | **1.2 – 1.3**                    | Medium display sizes look messy with wide gaps; tighter spacing pairs context together.                                                                             |
+| **Large Headings (H1-H2)** | 36px+           | **1.05 – 1.15**                  | Giant letters inherently have white space inside them. High multipliers pull them entirely apart.                                                                   |
+
+### 3. Outside Elements to Factor In
+
+Do not build your typographic system based purely on a math formula; look at these two critical layout factors:
+
+- **Line Length (Measure):** The wider your paragraph block text stretches, the higher your line height must be. If a line spans past 80 characters, a tighter line height will cause the reader's eyes to get lost on the return sweep back to the left side. [link](https://ux.stackexchange.com/questions/35270/is-there-an-optimal-font-size-line-height-ratio)
+- **Typeface Anatomy:** Two different fonts set at `16px` can look wildly different in size due to their **x-height** (the height of lowercase letters). Fonts with massive x-heights leave less whitespace between lines and require you to widen the line height manually. [link](https://www.labelvalue.com/blog/font-size-guide-convert-points-to-inches)
+
+If you are currently setting up a **design system or CSS architecture**, let me know:
+
+- Are you building for **web (CSS)** or native app frameworks like **React Native / Flutter**?
+
+- What **specific font family** are you planning to use as your main text typeface?
+
+- Are you aiming to lock everything into a strict layout framework like an **8px grid system**?
+
+- [link](https://www.reddit.com/r/UXDesign/comments/141guh8/if%5Fyou%5Fare%5Fusing%5Fan%5F8px%5Fgrid%5Fstructure%5Fshould/)\
+  If you are using an 8px grid structure, should your text line ...\
+  Jun 5, 2023 — Body might need larger line-height. Heading might need less. Each font has different needs for line-height, too. My answer would b...\
+  Reddit·r/UXDesign
+
+- [link](https://www.youtube.com/watch?v=eW2-ghXuYC8\&t=400)\
+  How to set up your typography sizing and line height for ...\
+  Jan 23, 2023 — is 75.76 that's mad let's just go 76.. so we'd come in here and we'd make this 76. and then the line height we always want to do t...\
+  1m\
+  YouTube·Tonic
+
+- [link](https://stackoverflow.com/questions/8025266/whats-the-ideal-relationship-between-line-height-font-size-and-paragraph-marg)\
+  What's the ideal relationship between line-height, font-size, and paragraph margin?\
+  Nov 6, 2011 — According to Tim Brown's article, "More Meaningful Typography", the ideal relationship between line-height, font-size, and paragra...\
+  Stack Overflow
+
+Show all
+
+# should font size and line height be mixed together into a text-\[size]
+
+Combining font size and line height into a single utility class (like Tailwind CSS does with `text-[size]/[line-height]` or pre-configured defaults) is generally highly recommended.
+
+Here is why you should couple them, along with the rare exceptions where you should keep them separate.
+
+### Why You Should Mix Them
+
+- **Prevents Overlap:** Large font sizes with small, inherited line heights cause text lines to crash into each other.
+- **Maintains Proportion:** Web standards dictate that as font size increases, the relative line height should decrease to maintain readability.
+- **Component Isolation:** Bundling them ensures a text component looks correct regardless of where it is placed on a page.
+- **Cleaner Code:** It reduces utility class clutter in your HTML templates (e.g., `text-xl/7` instead of `text-xl leading-7`).
+
+### When to Keep Them Separate
+
+- **Strict Vertical Grids:** If your design system forces every element onto a rigid baseline grid, line heights must be managed globally.
+- **Multi-line vs. Single-line:** A heading might need a tight line height in a paragraph, but a loose line height if used as a single-line button label.
+- **Dynamic Scaling:** If you are using fluid typography via CSS `clamp()` functions, scaling line height dynamically alongside it can get overly complex.
+
+### Best Practices
+
+- **Use Relative Units:** Always use unitless values (e.g., `1.5`) or percentages for line height so they scale naturally if the font size changes.
+- **Set Framework Defaults:** Define paired size and line-height combinations in your global configuration file (like `tailwind.config.js`) to keep your design consistent.
+
+Would you like to see how to configure these paired text utilities in **Tailwind CSS**, or do you need help calculating the **ideal readability ratios** for your specific font choices?
+
+- [link](https://kombai.com/tailwind/font-size/)\
+  Tailwind CSS Font Size\
+  Combining utilities effectively is a powerful way to create cohesive and polished designs with minimal effort. Font size alone may...\
+  \
+  Kombai
+- [link](https://tympanus.net/codrops/css%5Freference/line-height/)\
+  line-height\
+  Feb 8, 2015 — If the element contains a child element with a font size 24px , the line height inherited by the child will be 19.2px , which is v...\
+  \
+  Codrops
+- [link](https://www.uxtoast.com/design-tips/5-tips-for-perfect-typography)\
+  5 tips for perfect typography\
+  You will find that as your font size gets larger, the line height ratio required will reduce. So your titles will have a lower rat...\
+  \
+  \
+  uxtoast
+
+Show all
+
+## how to do in css wo utility classes
+
+To mix font size and line height together in pure CSS without utility classes, use the **`font` shorthand property**.
+
+This allows you to define both values in a single line using a forward slash (`/`) syntax.
+
+### The CSS Shorthand Syntax
+
+css
+
+```
+selector {
+  font: [style] [variant] [weight] [size]/[line-height] [family];
+}
+```
+
+Use code with caution.
+
+### Examples of How to Use It
+
+When using the shorthand, **`size` and `family` are mandatory**. If you omit the other optional values (like weight or style), they reset to their default values.
+
+#### 1. Basic Pairing (Size and Line Height Only)
+
+This sets a 16px font size with a 24px (1.5) line height.
+
+css
+
+```
+p {
+  font: 1rem/1.5 sans-serif;
+}
+```
+
+Use code with caution.
+
+#### 2. Advanced Pairing (With Font Weight)
+
+This sets a bold, 32px heading with a tight 38.4px (1.2) line height.
+
+css
+
+```
+h1 {
+  font: bold 2rem/1.2 "Helvetica Neue", Arial, sans-serif;
+}
+```
+
+Use code with caution.
+
+### Why Use the Unitless Slash Syntax?
+
+- **Inheritance Safety:** Using a unitless number (like `1.5`) ensures child elements scale the line height proportionally if they change their font size.
+- **Cleaner Sheets:** It condenses two heavily linked typography properties into a single, highly readable line of code.
+
+### The Modern Alternative: CSS Variables
+
+If you do not want to use the shorthand because it resets font weights or styles you defined elsewhere, use **CSS Custom Properties (Variables)** to bundle them logically.
+
+css
+
+```
+:root {
+  --text-body: 1rem;
+  --lh-body: 1.5;
+}
+
+p {
+  font-size: var(--text-body);
+  line-height: var(--lh-body);
+}
+```
+
+Use code with caution.
+
+If you are working on a specific layout, I can show you how to set up a **complete typographic scale** using this syntax, or help you convert specific **pixel mockups** into these exact CSS values. How would you like to proceed?
+
+- [link](https://helpx.adobe.com/au/dreamweaver/using/cascading-style-sheets.html)\
+  Learn how to use CSS in Adobe Dreamweaver | Dreamweaver\
+  May 16, 2021 — Shorthand CSS lets you specify the values of several properties using a single declaration. For example, the font property lets yo...\
+  \
+  \
+  Adobe Help Center
+- [link](https://www.udacity.com/blog/css-font-shorthand-explained-for-beginners/)\
+  CSS Font Shorthand: Explained for Beginners\
+  May 27, 2021 — Important Note: For the CSS Font Shorthand method to work properly, it MUST have values for font-family and font-size set. If they...\
+  \
+  Udacity
+- [link](https://helpx.adobe.com/au/dreamweaver/using/cascading-style-sheets.html)\
+  Learn how to use CSS in Adobe Dreamweaver | Dreamweaver\
+  May 16, 2021 — When written using shorthand notation, omitted values are automatically assigned their default values. Thus, the previous shorthan...\
+  \
+  \
+  Adobe Help Center
 
 # (d) adoption percentage of css shorthand props
 
@@ -7653,6 +7860,94 @@ If you want to implement one of these strategies, let me know:
 - Do you need a **ready-to-copy Stylelint configuration** to enforce these rules?
 
 - Are you trying to optimize your code for **bundle size performance** or **developer velocity**?
+
+# all css shorthand props
+
+**CSS shorthand properties** let you set the values of multiple related longhand CSS properties simultaneously using a single declaration. Unspecified longhand values are automatically reset to their initial defaults, which is a critical behavior to keep in mind. [link](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Shorthand%5Fproperties)
+
+The following comprehensive breakdown lists CSS shorthand properties categorized by their layout and styling themes.
+
+### Box Model & Spacing
+
+- **`margin`**: Controls `margin-top`, `margin-right`, `margin-bottom`, and `margin-left`.
+- **`padding`**: Controls `padding-top`, `padding-right`, `padding-bottom`, and `padding-left`.
+- **`inset`**: Controls the positioning longhands `top`, `right`, `bottom`, and `left`.
+- **`gap`**: Controls grid or flex item spacing via `row-gap` and `column-gap`. [link](https://borderleft.com/toolbox/shorthands/)
+
+### Borders & Outlines
+
+- **`border`**: Sets `border-width`, `border-style`, and `border-color` for all four sides.
+- **`border-top` / `border-right` / `border-bottom` / `border-left`**: Sets the width, style, and color for that specific side.
+- **`border-width`**: Sets `border-top-width`, `border-right-width`, `border-bottom-width`, and `border-left-width`.
+- **`border-style`**: Sets `border-top-style`, `border-right-style`, `border-bottom-style`, and `border-left-style`.
+- **`border-color`**: Sets `border-top-color`, `border-right-color`, `border-bottom-color`, and `border-left-color`.
+- **`border-radius`**: Sets all four corner radii (top-left, top-right, bottom-right, bottom-left).
+- **`border-image`**: Controls `border-image-source`, `border-image-slice`, `border-image-width`, `border-image-outset`, and `border-image-repeat`.
+- **`outline`**: Sets `outline-width`, `outline-style`, and `outline-color`. [link](https://stackoverflow.com/questions/3454638/list-of-shorthand-css-properties)
+
+### Typography & Lists
+
+- **`font`**: Sets `font-style`, `font-variant`, `font-weight`, `font-size`, `line-height`, and `font-family`.
+- **`line-clamp`**: Controls `max-lines` and block truncation formatting behaviors.
+- **`list-style`**: Combines `list-style-type`, `list-style-position`, and `list-style-image`.
+- **`text-decoration`**: Controls `text-decoration-line`, `text-decoration-color`, `text-decoration-style`, and `text-decoration-thickness`.
+- **`text-emphasis`**: Combines `text-emphasis-style` and `text-emphasis-color`. [link](https://www.sitepoint.com/introduction-css-shorthand/)
+
+### Backgrounds & Visuals
+
+- **`background`**: Controls `background-color`, `background-image`, `background-position`, `background-size`, `background-repeat`, `background-origin`, `background-clip`, and `background-attachment`.
+- **`background-position`**: Sets `background-position-x` and `background-position-y`.
+- **`mask`**: Controls `mask-image`, `mask-mode`, `mask-position`, `mask-size`, `mask-repeat`, `mask-origin`, `mask-clip`, and `mask-composite`. [link](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Shorthand%5Fproperties)
+
+### Flexbox & Grid Layouts
+
+- **`flex`**: Combines `flex-grow`, `flex-shrink`, and `flex-basis`.
+- **`flex-flow`**: Combines layout rules for `flex-direction` and `flex-wrap`.
+- **`grid`**: Sets container configurations including `grid-template-rows`, `grid-template-columns`, `grid-template-areas`, `grid-auto-rows`, `grid-auto-columns`, and `grid-auto-flow`.
+- **`grid-template`**: Combines `grid-template-rows`, `grid-template-columns`, and `grid-template-areas`.
+- **`grid-row`**: Combines `grid-row-start` and `grid-row-end`.
+- **`grid-column`**: Combines `grid-column-start` and `grid-column-end`.
+- **`place-content`**: Combines alignment methods for `align-content` and `justify-content`.
+- **`place-items`**: Combines alignment methods for `align-items` and `justify-items`.
+- **`place-self`**: Combines alignment methods for `align-self` and `justify-self`. [link](https://borderleft.com/toolbox/shorthands/)
+
+### Logical Properties (Modern Layout Direction)
+
+- **`margin-inline` / `margin-block`**: Sets layout-direction-aware start and end margins.
+- **`padding-inline` / `padding-block`**: Sets layout-direction-aware start and end paddings.
+- **`inset-inline` / `inset-block`**: Sets layout-direction-aware offsets.
+- **`border-inline` / `border-block`**: Combines width, style, and color for block or inline sides.
+
+### Animations & Transitions
+
+- **`animation`**: Sets `animation-name`, `animation-duration`, `animation-timing-function`, `animation-delay`, `animation-iteration-count`, `animation-direction`, `animation-fill-mode`, and `animation-play-state`.
+- **`animation-range`**: Combines `animation-range-start` and `animation-range-end`.
+- **`transition`**: Sets `transition-property`, `transition-duration`, `transition-timing-function`, and `transition-delay`. [link](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties)
+
+### Miscellaneous
+
+- **`all`**: Resets all applicable CSS properties back to their initial, inherited, or unset states simultaneously.
+- **`columns`**: Controls multi-column layouts via `column-width` and `column-count`.
+- **`scroll-margin` / `scroll-padding`**: Sets all four sides for scroll snapping offsets.
+- **`scroll-timeline`**: Combines `scroll-timeline-name` and `scroll-timeline-axis`. [link](https://www.w3schools.com/cssref/index.php)
+
+If you would like to dive deeper, let me know if you need the **syntax details** for a specific shorthand, examples of **clockwise value parsing**, or help troubleshooting an **unwanted reset bug**.
+
+- [link](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Shorthand%5Fproperties)\
+  Shorthand properties - CSS - MDN Web Docs\
+  May 25, 2026 — Shorthand properties are CSS properties that let you set the values of multiple other CSS properties in one declaration. Using a s...\
+  MDN Web Docs
+- [link](https://stackoverflow.com/questions/3454638/list-of-shorthand-css-properties)\
+  list of shorthand css properties - javascript - Stack Overflow\
+  Aug 11, 2010 — Basically, all I need is a list of the shorthand properties. However, I don't need all shorthand css. I just need the shorthand cs...\
+  Stack Overflow
+- [link](https://www.youtube.com/watch?v=YEiynPh2WGA\&t=193)\
+  CSS Shorthand Properties | CSS Tips and Tricks\
+  Jan 15, 2022 — here is how you write the list property to set various options for a list where i have the type position image and so on the same ...\
+  1m\
+  YouTube·Anagh Technologies Inc.
+
+Show all
 
 # . css font shorthand
 
@@ -8412,9 +8707,278 @@ Are you building this semantic layer for a **multi-brand design system** where f
   \
   www.munnelly.com
 
-# . 
+# how do browsers decide which is which in font shorthand
 
-# . thinking
+Browsers parse the `font` shorthand property by looking for specific keywords, data types, and a mandatory forward slash (`/`) to distinguish values. Because many font properties use different units or specific keyword lists, the browser can identify them regardless of their order, with a few strict exceptions.
+
+### Mandatory Ordering Rules
+
+While some properties are flexible, the browser enforces a strict order for the core structural components:
+
+- **Size and Family**: Font size must always come immediately before font family.
+- **Line Height**: Line height must always follow font size, separated by a forward slash (e.g., `16px/1.5`).
+- **The Final Sequence**: The end of the shorthand must always follow the pattern: `[size] / [line-height] [family]`.
+
+### How Browsers Differentiate Optional Values
+
+For the optional properties (`font-style`, `font-variant`, `font-weight`, and `font-stretch`), the browser identifies them by checking their unique values. These optional properties can appear in any order, but they **must** be placed before the font size.
+
+- **Font Style**: Recognized by unique keywords like `italic` or `oblique`.
+- **Font Variant**: Recognized by keywords like `small-caps`.
+- **Font Weight**: Recognized by numeric values (e.g., `400`, `700`) or weight keywords like `bold` or `lighter`.
+- **Font Stretch**: Recognized by percentage values (e.g., `50%`) or keywords like `condensed` or `expanded`.
+
+### Example Breakdown
+
+css
+
+```
+font: italic bold small-caps 16px/1.2 "Helvetica Neue", sans-serif;
+```
+
+Use code with caution.
+
+The browser processes this string from left to right:
+
+1. `italic`: Matches `font-style` keywords.
+2. `bold`: Matches `font-weight` keywords.
+3. `small-caps`: Matches `font-variant` keywords.
+4. `16px`: Identifies as a length/percentage before a slash, assigning it to `font-size`.
+5. `/1.2`: Identifies the slash, assigning the trailing number to `font-line-height`.
+6. `"Helvetica Neue", sans-serif`: Everything after the size/line-height structure is treated as the `font-family` list.
+
+### Reset Behavior Warning
+
+When you use the `font` shorthand, the browser automatically resets any omitted optional properties to their default values (`normal`). This will overwrite any individual font properties declared earlier in your CSS.
+
+To help debug a specific issue, tell me:
+
+- Are your fonts **not displaying correctly**?
+- Do you want to check if your **syntax is valid**?
+- Are you trying to **override a specific style**?
+
+I can pinpoint exactly why the browser might be misinterpreting your code.
+
+- [link](https://help.fontlab.com/fontlab-vi/Font-Info-Dialog-Box/)\
+  Font Info Dialog Box - FontLab VI Help\
+  The Typographic style name typically describes the typographic properties of the font within the typographic family. Usually, it c...\
+  \
+  \
+  FontLab
+- [link](https://www.contentpowered.com/blog/font-size-unit-seo/)\
+  PT, PX, REM, or EM: Which Font Size Unit is Best for SEO?\
+  Apr 10, 2026 — Font units fall into two categories: absolute (PT, PX) and relative (EM, REM, VW), each behaving differently across devices.\
+  \
+  \
+  Content Powered
+- [link](https://html.com/fonts/)\
+  Learn How Fonts And Web Typography Work In HTML: A Beginner's Guide »\
+  One thing to keep in mind when using the font shorthand property is that the font-size and font-family values are mandatory and sh...\
+  \
+  HTML.com
+
+Show all
+
+## does the order of the first four matter
+
+No, the order of the first four optional properties does not matter to the browser.
+
+You can arrange `font-style`, `font-variant`, `font-weight`, and `font-stretch` in any order you like. The browser identifies them by matching their specific keywords (like `italic`, `bold`, or `small-caps`) rather than their position.
+
+### Valid Examples
+
+Both of these lines are perfectly valid and mean the exact same thing to the browser:
+
+css
+
+```
+/* Style -> Weight -> Variant -> Size/Family */
+font: italic bold small-caps 16px sans-serif;
+
+/* Variant -> Style -> Weight -> Size/Family */
+font: small-caps italic bold 16px sans-serif;
+```
+
+Use code with caution.
+
+### The Strict Requirement
+
+The only rule for these first four properties is **positional**: they must all appear _before_ the font size. If you place any of them after the font size, the browser will consider the entire `font` declaration invalid and ignore it.
+
+If you are currently troubleshooting a bug, let me know:
+
+- Is the browser **ignoring your font rule** entirely?
+- Are you using **variable fonts** or custom numbers?
+- Is a specific property like **weight or style** failing to apply?
+
+I can help you rewrite the syntax so it parses perfectly.
+
+# (d) google design tokens for font
+
+Google's **Material Design 3 (M3)** framework relies on a highly structured architecture of design tokens to manage typography. Instead of hardcoding values like font sizes or typefaces, Google uses three layers of tokens—<mark><strong>Reference, System, and Component</strong></mark>—to define properties like font family, weight, tracking, line height, and size. [link](https://m3.material.io/foundations/design-tokens)
+
+### The Three Token Tiers
+
+Google splits its structural architecture into three distinct token categories to handle font and typographic styling: [link](https://m3.material.io/foundations/design-tokens)
+
+- **Reference Tokens (Global)**: These point directly to literal font values. They define the typefaces or generic weights used across an entire project (e.g., `md.ref.typeface.brand` pointing to **Google Sans** or `md.ref.typeface.plain` pointing to **Roboto**). [link](https://m3.material.io/foundations/design-tokens)
+- **System Tokens (Semantic)**: These define the overarching type scale and typographic hierarchy. They describe the text's purpose rather than its specific location (e.g., `md.sys.typescale.body-large.font` or `md.sys.typescale.headline-medium.size`). [link](https://m3.material.io/foundations/design-tokens)
+- **Component Tokens**: These are tied to specific UI elements and inherit their values directly from the system tier (e.g., `md.comp.button.label-text.font` maps to a specific system type scale token). [link](https://m3.material.io/foundations/design-tokens)
+
+***
+
+### Google's Standard Typography Scale Tokens
+
+[Google Material Design 3](https://m3.material.io/) organizes its type scale into **five roles**, each broken down into **Small, Medium, and Large** variations. This creates a baseline set of styles that can be cleanly assigned via system tokens: [link](https://m3.material.io/styles/typography/type-scale-tokens)
+
+| Type Role    | Token Subtype              | Typical Purpose                                                       |
+| ------------ | -------------------------- | --------------------------------------------------------------------- |
+| **Display**  | `large`, `medium`, `small` | Large, expressive text reserved for short headlines or branding.      |
+| **Headline** | `large`, `medium`, `small` | Structural text to organize content areas or screens.                 |
+| **Title**    | `large`, `medium`, `small` | Medium-emphasis labels, standard screen headers, or card subheadings. |
+| **Body**     | `large`, `medium`, `small` | Main body copy, paragraphs, and long-form readable content.           |
+| **Label**    | `large`, `medium`, `small` | Call-to-actions, buttons, caption markers, and form titles.           |
+
+***
+
+### Individual Font Property Mappings
+
+Within each of the 30 structural type scale combinations (15 baseline scales and 15 emphasized scales), Google isolates individual tokens for greater customization across variable font axes: [link](https://m3.material.io/styles/typography/type-scale-tokens)
+
+- **Font Family**: Handles the specific typeface engine (e.g., `...typescale.body-large.font`).
+- **Font Weight**: Sets the numerical thickness (e.g., `...typescale.body-large.weight` mapping to `400` or `500`).
+- **Font Size**: Translates to scalable viewport units (e.g., `...typescale.body-large.size` evaluating to a value like `16px` or `1rem`).
+- **Line Height**: Sets reading tracking heights (e.g., `...typescale.body-large.line-height` calculating roughly at a 1.5 ratio for smaller body copy).
+- **Tracking**: Manages precise letter-spacing distances (e.g., `...typescale.body-large.tracking`). [link](https://m3.material.io/styles/typography/type-scale-tokens)
+
+To deeply explore implementation or download design kits directly, you can review the official documentation on [Material Design 3 Foundations](https://m3.material.io/foundations/design-tokens) and inspect ready-to-use variable assets on the Google Fonts Typography Platform. [link](https://m3.material.io/foundations/design-tokens)
+
+If you want to move forward, tell me:
+
+- Are you integrating these into **code (CSS/Sass)** or a design platform like **Figma**?
+
+- Do you want an example layout of how Google's typography tokens look inside a **machine-readable JSON format**?
+
+- Are you using traditional static typefaces or Google's newer **variable web fonts** (like Roboto Flex)? [link](https://m3.material.io/styles/typography)
+
+- [link](https://m3.material.io/foundations/design-tokens)\
+  Design tokens – Material Design 3\
+  Deciding if tokens are right for you; Tokens & Material Design; Parts of a token name; Classes of tokens; Contexts. link. Copy lin...\
+  Material Design
+
+- [link](https://www.youtube.com/watch?v=CJyJN0ZdEGA\&t=634)\
+  Design Tokens for Dummies | A Complete Guide\
+  Feb 17, 2025 — so in terms of your fonts. there's a ton of different design tokens that go into them your font. size your uh font. color your um ...\
+  3m\
+  YouTube·UI Collective
+
+- [link](https://m3.material.io/styles/typography/type-scale-tokens)\
+  Typography – Material Design 3\
+  Both sets of styles follow the same scale from Display Large to Label Small. The emphasized styles have a higher weight and other ...\
+  Material Design
+
+Show all
+
+# all google design tokens for font
+
+Google's font and typography design tokens are managed through the [Material Design 3 (M3) Type System](https://m3.material.io/styles/typography/type-scale-tokens). The system uses <mark><strong>30 foundational type scale tokens</strong><span> </span>split across 5 structural roles (Display, Headline, Title, Body, Label), 3 size tiers (Large, Medium, Small), and 2 emphasis types (Baseline and Emphasized)</mark>. [link](https://m3.material.io/styles/typography/type-scale-tokens)
+
+Each font style is configured using individual attribute sub-tokens for **font family, size, weight, tracking (letter spacing), and line height**. [link](https://m3.material.io/styles/typography/type-scale-tokens)
+
+***
+
+### Foundational Reference Typography Tokens
+
+Reference tokens are the global values that feed into the semantic system tokens. [link](https://m3.material.io/foundations/design-tokens)
+
+- `--md-ref-typeface-brand`: The primary brand font family (e.g., Roboto or Google Sans).
+- `--md-ref-typeface-plain`: The primary utilitarian UI font family (typically Roboto).
+- `--md-ref-typeface-weight-regular`: Default font weight (typically `400`).
+- `--md-ref-typeface-weight-medium`: Medium emphasis font weight (typically `500`).
+- `--md-ref-typeface-weight-bold`: High emphasis font weight (typically `700`). [link](https://medium.com/@slava.karablikov/implementing-design-tokens-typography-47091602abf8)
+
+***
+
+### The Complete 30 Material System Tokens
+
+Google categorizes its font tokens under the standard structure `md.sys.typescale.[role]-[size]`. Below are the exact semantic roles and their baseline structural breakdowns: [link](https://m3.material.io/styles/typography/type-scale-tokens)
+
+#### 1. Display (For large, prominent screen text)
+
+- `md.sys.typescale.display-large` (57px, Regular weight, 64px Line height, -0.25px Tracking)
+- `md.sys.typescale.display-medium` (45px, Regular weight, 52px Line height, 0px Tracking)
+- `md.sys.typescale.display-small` (36px, Regular weight, 44px Line height, 0px Tracking) [link](https://medium.com/@vosarat1995/material-3-you-typography-cheatsheet-ffc58c540181)
+
+#### 2. Headline (For identifying primary screen sections)
+
+- `md.sys.typescale.headline-large` (32px, Regular weight, 40px Line height, 0px Tracking)
+- `md.sys.typescale.headline-medium` (28px, Regular weight, 36px Line height, 0px Tracking)
+- `md.sys.typescale.headline-small` (24px, Regular weight, 32px Line height, 0px Tracking) [link](https://medium.com/@vosarat1995/material-3-you-typography-cheatsheet-ffc58c540181)
+
+#### 3. Title (For secondary, medium-emphasis headings)
+
+- `md.sys.typescale.title-large` (22px, Regular weight, 28px Line height, 0px Tracking)
+- `md.sys.typescale.title-medium` (16px, Medium weight, 24px Line height, +0.15px Tracking)
+- `md.sys.typescale.title-small` (14px, Medium weight, 20px Line height, +0.1px Tracking) [link](https://medium.com/@vosarat1995/material-3-you-typography-cheatsheet-ffc58c540181)
+
+#### 4. Body (For long-form copy and description fields)
+
+- `md.sys.typescale.body-large` (16px, Regular weight, 24px Line height, +0.5px Tracking)
+- `md.sys.typescale.body-medium` (14px, Regular weight, 20px Line height, +0.25px Tracking)
+- `md.sys.typescale.body-small` (12px, Regular weight, 16px Line height, +0.4px Tracking) [link](https://medium.com/@vosarat1995/material-3-you-typography-cheatsheet-ffc58c540181)
+
+#### 5. Label (Utilitarian text for components, buttons, and captions)
+
+- `md.sys.typescale.label-large` (14px, Medium weight, 20px Line height, +0.1px Tracking)
+- `md.sys.typescale.label-medium` (12px, Medium weight, 16px Line height, +0.5px Tracking)
+- `md.sys.typescale.label-small` (11px, Medium weight, 16px Line height, +0.5px Tracking) [link](https://medium.com/@vosarat1995/material-3-you-typography-cheatsheet-ffc58c540181)
+
+_Note: For the **Emphasized** variant of each token above, the structure follows the exact same format (e.g., `md.sys.typescale.body-large-emphasized`) but substitutes a heavier value into the `font-weight` attribute sub-token._ [link](https://m3.material.io/styles/typography/type-scale-tokens)
+
+***
+
+### Individual Property Token Sub-Axes
+
+For granular style modifications in web or application components, each of the tokens listed above is broken down into five sub-properties: [link](https://m3.material.io/styles/typography/type-scale-tokens)
+
+- `font`: Controls the target font-family
+- `size`: Controls the font-size metric
+- `weight`: Controls the numerical font-weight
+- `tracking`: Controls the letter-spacing dimension
+- `line-height`: Controls the block line-height layout [link](https://m3.material.io/styles/typography/type-scale-tokens)
+
+**Example breakdown for Web (CSS Custom Properties):**
+
+css
+
+```
+--md-sys-typescale-body-large-font: var(--md-ref-typeface-plain);
+--md-sys-typescale-body-large-size: 16px;
+--md-sys-typescale-body-large-weight: var(--md-ref-typeface-weight-regular);
+--md-sys-typescale-body-large-tracking: 0.5px;
+--md-sys-typescale-body-large-line-height: 24px;
+```
+
+Use code with caution.
+
+If you are developing for a specific framework, let me know if you need the exact syntax implementation for **Material Web Components (CSS)**, **Jetpack Compose (Kotlin)**, or **Flutter**. [link](https://m3.material.io/styles/typography)
+
+- [link](https://m3.material.io/foundations/design-tokens)\
+  Design tokens – Material Design 3\
+  Parts of a token name. Classes of tokens. Contexts. Tokens point to style values like colors, fonts, and measurements. Use design ...\
+  Material Design
+- [link](https://m3.material.io/styles/typography/type-scale-tokens)\
+  Typography – Material Design 3\
+  Both sets of styles follow the same scale from Display Large to Label Small. The emphasized styles have a higher weight and other ...\
+  Material Design
+- [link](https://m3.material.io/styles/typography)\
+  Typography – Material Design 3\
+  Table\_title: Availability & resources Table\_content: | Type | Link | Status | | --- | --- | --- | | Design | Google Fonts | Availa...\
+  Material Design
+
+Show all
+
+# . thinking: font styling approach
 
 i would have some primitive like text-sm and semantic fonts.
 
