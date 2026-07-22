@@ -7322,7 +7322,7 @@ I can recommend the exact extension stack to optimize your autocomplete speed.
   \
   GitHub
 
-# . thinking: evaluate stylus compared w native css
+# . thinking: evaluate stylus compared w native css, solution of native css
 
 pros
 
@@ -7375,7 +7375,7 @@ wow. i totally missed it. native css provides shorthand props, which could be ef
 solution on native css
 
 - boilerplate syntax: autocomplete
-- contextual variable override: generated <!-- im considering rm reliance on "value" to determine it's the end. on modes, the first is the default. and if an object matches perfectly to a mode (and each is a literal), then it is (it wont break. e.g. i should not have both palette-accent-blue and reference on color-accent). i will generate the flatter (it should be generated. it's a template. and, constrast to my assumption, i dont actually have to modify it.). i might not have to hmr the yaml, just `b convert`, it's easy. i would redesign. -->
+- contextual variable override: generated <!-- im considering rm reliance on "value" to determine it's the end. on modes, the first is the default. and if an object matches perfectly to a mode (upd: or a subset, i guess) (and each is a literal), then it is (it wont break. e.g. i should not have both palette-accent-blue and reference on color-accent). i will generate the flatter (it should be generated. it's a template. and, constrast to my assumption, i dont actually have to modify it.). i might not have to hmr the yaml, just `b convert`, it's easy. i would redesign. -->
 - mixins: shorthands
 
 # (?) should font size and line height be coupled
