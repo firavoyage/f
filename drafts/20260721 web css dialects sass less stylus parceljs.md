@@ -2622,9 +2622,7 @@ extend is better done by nesting and data attrs.
 
 seems i do need an extension for stylus in vscode. i guess all smart devs would have it. so i do not need to put the extension recommendation inside the repo (also it's vendor/vscode specific). if theyve worked on web, they might already have it. if not, when they see it's not highlighted, they would go install one.
 
-# 
-
-# (d) . thinking
+---
 
 wow. wow...
 
@@ -2632,9 +2630,7 @@ standard notation. alternative notation.
 
 impressive, impressive!
 
-
-
-# . thinking
+---
 
 to convert yaml to ~~css~~ stylus...
 
@@ -2657,5 +2653,12 @@ i feel intuitive/templates/new repo might become obsolete.
 i dont really have to merge. maybe just delete, and rp w app/tools.
 
 tools dont modify much i guess. cleanup some tool specific ones. that's it.
+
+---
+
+well i should not convert by hand, one by one. i should not llm the way either.
+
+# 
+
 
 
