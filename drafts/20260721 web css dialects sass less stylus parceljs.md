@@ -2658,7 +2658,16 @@ tools dont modify much i guess. cleanup some tool specific ones. that's it.
 
 well i should not convert by hand, one by one. i should not llm the way either.
 
-# 
+# . thinking
 
+pros
+
+- flexible, clean variable syntax
+
+cons
+
+- noticeably slower hmr
+
+limitations
 
 

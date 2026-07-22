@@ -47315,6 +47315,8 @@ maimai is a game. it's nice if you get up early tomorrow and play energetically.
 
 03 40 learn stylus. try to migrate.
 
+12 00 learn and evaluate stylus. imagine a migration.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
