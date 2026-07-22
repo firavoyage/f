@@ -39,4 +39,8 @@ export function App() {
   useEffect(() => {
     sync_theme('system')
   })
+
+  return <>
+    <title>tools</title>
+  </>
 }
