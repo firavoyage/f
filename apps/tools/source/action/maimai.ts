@@ -162,10 +162,16 @@ function find_solutions_base_5(n: number): number[][] {
 // log(find_solutions(6))
 
 function base(tap: number, hold: number, slide: number, break_number: number) {
-  return 100 / (1 * tap + 2 * hold + 3 * slide + 5 * break_number)
+  const total_points = (1 * tap + 2 * hold + 3 * slide + 5 * break_number)
+
+  log({ total_points })
+
+  return 100 / total_points
 }
 
 function break_base(break_number: number) {
+  log({ break_number })
+
   return 1 / break_number
 }
 

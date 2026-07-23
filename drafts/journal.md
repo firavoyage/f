@@ -47414,7 +47414,11 @@ well, im not doing for total anonymity. no need to make it `foo20260723` (though
 
 19 40 create gist. opt in email privacy.
 
-no idea why privacy is opt in. but thankfully they show commit email info below submit button.
+no idea why <!-- email --> privacy is opt in. but thankfully they inform commit email below submit button. 
+
+and it's "create secret gist" <!-- share link based access --> by default.
+
+19 40 challenge nickel angel on maimai achivement rate formula. (20 20)
 
 
 
