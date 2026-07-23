@@ -1,7 +1,7 @@
 {
   "packageManager": "pnpm@10.30.2",
   "scripts": {
-    "convert": "./script/convert.sh"
+    "convert": "'./scripts/convert design tokens.sh'"
   },
   "dependencies": {
     "css.escape": "1.5.1",
