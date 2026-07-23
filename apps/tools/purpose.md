@@ -52,4 +52,17 @@ i could be wrong. but if it provides invariant foundation for the future, it wou
 
 idk how long it would take. but i do not have to timebox everything. ik it matters. so just proceed until complete.
 
+24
+
+05 00 simplify design tokens yaml, deprecate value based contextual token determination, make it more natural and consistent (06 00)
+
+adopt a object flattening template <!-- ? -->
+
+revise convert yaml to css cli input syntax
+
+no native globbing i guess. leverage shell wildcard. take all args as files (ignore stdin). convert yaml to colocated css.
+
+---
+
+
 
