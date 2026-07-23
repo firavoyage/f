@@ -47394,7 +47394,7 @@ but ive found a trick. i could opt out "files" (e.g. flac songs), and set upperl
 
 <!-- upd: well, it can resume after sleep. no idea why it drops sometimes. quirks maybe. -->
 
-<!-- upd 20 17: completed. total files: 23924, total size: 7584.7mb. -->
+<!-- upd 20 17: completed. total files: 23924, total size: 7584.7mb. it's comprehensive and organized. it's not complete though. e.g. some "fwd from" and channel name changes are omitted, but accessible via gui (or tg cli maybe). -->
 
 05 00 append a line to values: elitism.
 
@@ -47420,7 +47420,9 @@ no idea why <!-- email --> privacy is opt in. but thankfully they inform commit 
 
 and it's "create secret gist" <!-- share link based access --> by default.
 
-19 40 challenge nickel angel on maimai achivement rate formula. (20 20)
+19 40 challenge nickel angel on maimai achivement rate formula. ~~(20 20)~~ 20 40
+
+spent an extra twenty min on human reading errors.
 
 
 
