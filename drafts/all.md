@@ -836,6 +836,7 @@ humility:
 - research ai industry financial sustainability
 - research google ai mode text styling
 - research google ai mode
+- research chatgpt sol dgg math
 
 legacy:
 
