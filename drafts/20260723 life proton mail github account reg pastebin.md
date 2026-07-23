@@ -1636,3 +1636,90 @@ I can map out the precise shell scripts or integration commands needed.
 
 Show all
 
+
+# what can be indexed by github search what can not
+
+GitHub Code Search enforces strict conditions on what data enters its global search index to optimize speed and relevance. [link](https://www.reddit.com/r/programming/comments/kfauwk/starting%5Ftoday%5Fgithub%5Fcode%5Fsearch%5Fwill%5Fonly%5Findex/)
+
+### What Can Be Indexed
+
+The indexer automatically ingests text-based source files that meet specific health, size, and activity thresholds. [link](https://devactivity.com/insights/unlocking-visibility-a-guide-to-github-repository-indexing-and-achieving-your-software-development-goals/)
+
+- **Default Branches**: GitHub only indexes the **default branch** (usually `main` or `master`) of any repository. [link](https://devactivity.com/posts/development-integrations/github-code-search-ensuring-your-repository-is-indexed-for-ai-team-productivity/)
+- **Active Repositories**: Public repositories must have had activity (such as a commit, push, or appearing in search results) within the **last calendar year**. [link](https://github.com/github/docs/blob/main/content/search-github/searching-on-github/searching-code.md)
+- **Accessible Private Repositories**: Up to **4,000 of your most recently updated private repositories** can be indexed for your personal search visibility. [link](https://github.com/github/docs/blob/main/content/search-github/searching-on-github/searching-code.md)
+- **Small Text Files**: Code files must be under **384 KB** in size (5 MB for Enterprise environments). [link](https://github.com/github/docs/blob/main/content/search-github/searching-on-github/searching-code.md)
+- **Valid UTF-8 Text**: Only files cleanly encoded in **UTF-8** text are indexed. [link](https://github.com/github/docs/blob/main/content/search-github/github-code-search/about-github-code-search.md)
+- **Popular Forks**: A forked repository is only indexed if it has **more stars** than its parent repository and contains at least one post-fork commit. [link](https://github.com/github/docs/blob/main/content/search-github/searching-on-github/searching-code.md)
+- **Platform Metadata**: Issues, Pull Requests, and repository metadata are indexed dynamically upon creation or modification. [link](https://github.com/github/docs/blob/main/content/search-github/getting-started-with-searching-on-github/about-searching-on-github.md)
+
+### What Cannot Be Indexed
+
+GitHub explicitly blocks or truncates certain files, repositories, and directories to prevent performance lag. [link](https://devactivity.com/insights/unlocking-visibility-a-guide-to-github-repository-indexing-and-achieving-your-software-development-goals/)
+
+- **Non-Default Branches**: No code residing on feature branches, development branches, or historical tags is searchable.
+- **Inactive/Archived Code**: Repositories completely **inactive for over a year** or explicitly marked as **Archived** (read-only) are wiped from the index.
+- **Massive Repositories**: Repositories containing **more than 500,000 total files** or those tracking massive single data assets (typically over 100 GB repos or 100 MB single files) are dropped.
+- **Large Files**: Any file exceeding **384 KB** (or empty files) will be totally ignored by the indexer.
+- **Truncated Code Blocks**: For files that _are_ indexed, only the first **500 KB** of content is searchable, and individual code lines exceeding **1,024 characters** are cut off.
+- **Binary and Formatted Assets**: Non-text documents like **PDFs, ZIPs, images, and compiled binaries** are fully excluded.
+- **Generated & Vendored Code**: Common build artifacts, minified scripts (like `.min.js`), dependency directories (like `node_modules`), and auto-generated boilerplate are intentionally blocked.
+- **Special Spaces**: Content living in **Repository Wikis** or external project tracking tickets (like Jira integrations) is invisible to GitHub's code search engine. [link](https://github.com/orgs/community/discussions/18624)
+
+If you are trying to locate specific code that isn't appearing, let me know:
+
+- Is the code on a **secondary branch**?
+- Is the file **unusually large** or **minified**?
+- Has the repository been **inactive for over a year**?
+
+I can provide the exact advanced query syntax to help narrow down your scope.
+
+- [link](https://github.com/orgs/community/discussions/64775)\
+  Very large repositories may not be indexed. What is ... - GitHub\
+  Aug 29, 2023 — GitHub Code Search Limitations says the following... The current limitations on indexed code are: Vendored and generated code is e...\
+  GitHub
+- [link](https://github.com/orgs/community/discussions/18624)\
+  GitHub Code Search not returning results from some ...\
+  Nov 29, 2024 — Were those repositories recently created? We currently have a bug where some recently-created repositories aren't being indexed, w...\
+  GitHub
+- [link](https://www.reddit.com/r/programming/comments/kfauwk/starting%5Ftoday%5Fgithub%5Fcode%5Fsearch%5Fwill%5Fonly%5Findex/)\
+  Starting today, GitHub Code Search will only index repositories that have had recent activity within the last year. : r/programming\
+  Dec 18, 2020 — According to a post on r/programming, GitHub's code search will only index repositories that have had recent activity within the l...\
+  Reddit
+
+Show all
+
+## can past file states be indexed
+
+**No, past file states cannot be indexed** by GitHub’s global code search engine. [link](https://github.com/orgs/community/discussions/175596)
+
+GitHub Code Search only targets the **absolute latest commit** of your repository's default branch. When you push a new commit, the indexer immediately overwrites the previously indexed data. While the physical data remains permanently tracked in your repository's historical Git logs, GitHub’s web-based code search bar will completely ignore deleted code, old variables, or past states of a file. [link](https://github.com/orgs/community/discussions/61652)
+
+### Alternative Ways to Search Past File States
+
+If you need to find code that existed in the past, you must bypass the global search bar and use specialized Git tools or alternative navigation. [link](https://github.com/orgs/community/discussions/175596)
+
+- **Search Commit Messages (Web UI)**: You can search through past commit _messages_ on GitHub by going to your repository’s **Commits** tab, but this will not scan the actual code changes inside those commits. [link](https://stackoverflow.com/questions/65373797/where-can-i-see-the-commit-history-on-the-github-website)
+- **Browse Past States Manually (Web UI)**: If you know the specific timeframe or commit hash, you can click **Commits**, click the **`<>` (Browse Files)** button on a past commit, and view the entire repository exactly as it existed at that moment. [link](https://stackoverflow.com/questions/65373797/where-can-i-see-the-commit-history-on-the-github-website)
+- **Use Local Git Pickaxe (Recommended)**: To search the actual content of code that was deleted or changed across your entire project history, clone the repository and run local Git commands:
+  - To search for a specific string inside code changes: `git log -S "your_deleted_function_name"`
+  - To search via Regular Expressions across all historical diffs: `git log -G "regex_pattern"` [link](https://github.com/orgs/community/discussions/175596)
+- **Use Third-Party History Viewers**: Tools like [Git History](https://githistory.xyz/) allow you to replace `github.com` with `github.githistory.xyz` in your browser URL to visually scroll through a single file's past code iterations instantly. [link](https://stackoverflow.com/questions/17888643/view-the-change-history-of-a-file-using-github-com)
+
+Are you trying to recover a **deleted snippet of code**, or are you looking for a specific **historical commit message**? Let me know, and I can give you the exact `git log` command to extract it.
+
+- [link](https://github.com/orgs/community/discussions/84737)\
+  It is time to listen to your users and either restore the previous ...\
+  Jan 6, 2024 — GitHub: It is time to listen to your users and either restore the previous searching system or priotize fixing the myriad issues t...\
+  GitHub
+- [link](https://happygitwithr.com/time-travel-see-past)\
+  30 Time travel: See the past - Happy Git and GitHub for the useR\
+  Sometimes you just need to see various files in your project as they were at some significant moment in the past. Examples: “I lik...\
+  Happy Git and GitHub for the useR
+- [link](https://github.com/microsoft/graphrag/discussions/601)\
+  only new documents and avoid indexing entire ... - GitHub\
+  Jul 17, 2024 — TheBugKing on Jul 17, 2024 \* using a custom base\_dir, example: "output/files/artifacts", everytime when indexer runs it ovewrites ...\
+  GitHub
+
+Show all
+

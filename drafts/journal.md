@@ -47394,6 +47394,8 @@ but ive found a trick. i could opt out "files" (e.g. flac songs), and set upperl
 
 <!-- upd: well, it can resume after sleep. no idea why it drops sometimes. quirks maybe. -->
 
+<!-- upd 20 17: completed. total files: 23924, total size: 7584.7mb. -->
+
 05 00 append a line to values: elitism.
 
 > silicon valley is the whole web
