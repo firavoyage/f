@@ -7654,7 +7654,7 @@ current: `[]`
 
 expected: break 5 hp, 2 lp
 
-# . observation: numbers and factors
+# . observation: gcd
 
 ```yaml
 # b = base = 100/total points = 100/(1*tap/touch number+2*hold/touch hold number+3*slide number+5*break number)
@@ -15558,4 +15558,442 @@ To give you a more specific recommendation, could you share **what programming l
   TechTerms.com
 
 Show all
+
+
+# <!-- 23 jul -->
+
+# . thinking: evaluate their assumption
+
+well... they are not wrong. <!-- i were about to say "you are wrong. slide = 3 tap." -->
+
+a "star" = a slide + a tap.
+
+but i think it's very unlikely for "3 lp break = 1 star"
+
+# . message: challenge nickel angel
+
+``````md
+> foo, [7/22/26 9:20 PM]
+> 死活打不上去（感觉有点忘了这个谱了（x
+> 
+> foo, [7/22/26 9:27 PM]
+> 然后就是这首很奇怪的打了鸟（每次那段双押感觉是被牵着走的（
+> 
+> foo, [7/22/26 9:43 PM]
+> 我感觉我在我认为的难点都粉了（甚至不是难点的段落也粉了x
+> 
+> bar, [7/22/26 11:01 PM]
+> 我觉得主要是fast了一个黄星星）
+> 
+> foo, [7/22/26 11:05 PM]
+> 好像小 p 三个绝赞等于粉一个星星？
+> 
+> foo, [7/22/26 11:06 PM]
+> 仔细看了一下分数变化好像看到了x
+> 
+> foo, [7/22/26 11:06 PM]
+> 还有这个星星头 miss（x
+> 
+> baz, [7/22/26 11:12 PM]
+> 双押练习歌 可以多练 13+也有类似的好几首 会了就都能打
+> 
+> foo, [7/22/26 11:16 PM]
+> 好像副歌还有一段 332
+> 
+> bar, [7/22/26 11:18 PM]
+> 反正我记得星星挺贵的，被吃了很难受x
+> 
+> foo, [7/22/26 11:20 PM]
+> 星星是 4 倍 tap，绝赞是 5 倍 tap
+
+`constants.yaml`
+
+```yaml
+# b = base = 100/total points = 100/(1*tap/touch number+2*hold/touch hold number+3*slide number+5*break number)
+# bb = break base = 1/break number
+# loss for each
+tap/touch:
+  great: 0.2 base
+  good: 0.5 base
+  miss: 1 base
+hold:
+  great: 2*0.2*base = 0.4 base
+  good: 2*0.5*base = 1 base
+  miss: 2*1*base = 2 base
+slide:
+  great: 3*0.2*base = 0.6 base
+  good: 3*0.5*base = 1.5 base
+  miss: 3*1*base = 3 base
+break:
+  high perfect: 0.25*break base = 0.25 bb
+  low perfect: 0.5*break base = 0.5 bb
+  high great: 5*0.2*base+0.6*break base = 1 b + 0.6 bb
+  mid great: 5*0.4*base+0.6*break base = 2 b + 0.6 bb
+  low great: 5*0.5*base+0.6*break base = 2.5 b + 0.6 bb
+  good: 5*0.6*base+0.7*break base = 3 b + 0.7 bb
+  miss: 5*1*base+1*break base = 5 b + 1 bb
+```
+
+`maimai.ts`
+
+```ts
+import { home, write } from "lib/file";
+import { stringify } from 'yaml';
+
+function find_n_m(a: number, b: number, c: number, tolerance = 0.0001) {
+  const solutions = [];
+
+  // handle case where both a and b are close to zero
+  if (Math.abs(a) < tolerance && Math.abs(b) < tolerance) {
+    if (Math.abs(c) < tolerance) {
+      return [{ n: 0, m: 0 }];
+    }
+    return [];
+  }
+
+  // handle case where only b is close to zero
+  if (Math.abs(b) < tolerance) {
+    if (a > tolerance) {
+      const n_exact = c / a;
+      const n_round = Math.round(n_exact);
+      if (n_round >= 0 && Math.abs((a * n_round) - c) < tolerance) {
+        return [{ n: n_round, m: 0 }];
+      }
+    }
+    return [];
+  }
+
+  // mathematically limit the search space for n based on the inputs
+  // if a is positive, n cannot exceed (c + tolerance) / a because m must be >= 0
+  const max_n = a > tolerance ? Math.floor((c + tolerance) / a) : 10000;
+
+  for (let n = 0; n <= max_n; n++) {
+    const remaining = c - (a * n);
+
+    // calculate the exact required m for this specific n
+    const m_exact = remaining / b;
+    const m_round = Math.round(m_exact);
+
+    // ensure m is non-negative
+    if (m_round >= 0) {
+      const current_c = (a * n) + (b * m_round);
+
+      // check if the combination satisfies the floating point tolerance
+      if (Math.abs(current_c - c) < tolerance) {
+        solutions.push({ n, m: m_round, result: a * n + b * m_round, result_: 101 - (a * n + b * m_round), delta: a * n + b * m_round - c });
+      }
+    }
+  }
+
+  return solutions;
+}
+
+function solve_change(target: number, factors: number[]): number[][] {
+  const total_factors = factors.length;
+  const solutions_table: number[][][] = [];
+
+  for (let index = 0; index <= target; index++) {
+    solutions_table.push([]);
+  }
+
+  const base_combination = new Array(total_factors).fill(0);
+  solutions_table[0].push(base_combination);
+
+  for (let factor_idx = 0; factor_idx < total_factors; factor_idx++) {
+    const factor_value = factors[factor_idx];
+
+    for (let current_sum = factor_value; current_sum <= target; current_sum++) {
+      const complement = current_sum - factor_value;
+      const existing_combinations = solutions_table[complement];
+      const existing_count = existing_combinations.length;
+
+      for (let combo_idx = 0; combo_idx < existing_count; combo_idx++) {
+        const updated_combination = [...existing_combinations[combo_idx]];
+        updated_combination[factor_idx] += 1;
+        solutions_table[current_sum].push(updated_combination);
+      }
+    }
+  }
+
+  return solutions_table[target];
+}
+
+function stars_and_bars(n: number, m: number): number[][] {
+  const results: number[][] = [];
+  const current_combination: number[] = [];
+
+  function distribute(remaining_stars: number, remaining_boxes: number): void {
+    if (remaining_boxes === 1) {
+      current_combination.push(remaining_stars);
+      results.push([...current_combination]);
+      current_combination.pop();
+      return;
+    }
+
+    for (let i = 0; i <= remaining_stars; i++) {
+      current_combination.push(i);
+      distribute(remaining_stars - i, remaining_boxes - 1);
+      current_combination.pop();
+    }
+  }
+
+  if (m > 0 && n >= 0) {
+    distribute(n, m);
+  }
+
+  return results;
+}
+
+function count_solutions(n: number, factors = [1, 2, 3, 4, 6]): number {
+  const dp: number[] = [];
+  for (let i = 0; i <= n; i++) {
+    dp.push(0);
+  }
+  dp[0] = 1;
+
+  for (let i = 0; i < factors.length; i++) {
+    const w = factors[i];
+    for (let j = w; j <= n; j++) {
+      dp[j] += dp[j - w];
+    }
+  }
+
+  return dp[n];
+}
+
+function find_solutions_base_2(n: number): number[][] {
+  const results: number[][] = [];
+  const max_c = Math.floor(n / 3);
+
+  for (let c = 0; c <= max_c; c++) {
+    const remainder = n - (3 * c);
+    const max_b = Math.floor(remainder / 2);
+
+    for (let b = 0; b <= max_b; b++) {
+      const a = remainder - (2 * b);
+      results.push([a, b, c]);
+    }
+  }
+
+  return results;
+}
+
+function find_solutions_base_5(n: number): number[][] {
+  const results: number[][] = [];
+
+  for (let e = 0; e <= Math.floor(n / 6); e++) {
+    const rem_e = n - 6 * e;
+    for (let d = 0; d <= Math.floor(rem_e / 4); d++) {
+      const rem_d = rem_e - 4 * d;
+      for (let c = 0; c <= Math.floor(rem_d / 3); c++) {
+        const rem_c = rem_d - 3 * c;
+        for (let b = 0; b <= Math.floor(rem_c / 2); b++) {
+          const a = rem_c - 2 * b;
+          results.push([a, b, c, d, e]);
+        }
+      }
+    }
+  }
+
+  return results;
+}
+
+// log(find_solutions(6))
+
+function base(tap: number, hold: number, slide: number, break_number: number) {
+  return 100 / (1 * tap + 2 * hold + 3 * slide + 5 * break_number)
+}
+
+function break_base(break_number: number) {
+  return 1 / break_number
+}
+
+// divide into base 2 and base 5 first, combine some of them later
+const _b_factors = [2, 5]
+
+// great tap, great hold, great slide, 
+const _b_factors_base_2 = [1, 2, 3]
+// const _b_factors_base_2 = [2, 4, 6]
+
+// good tap, miss tap/good hold, good slide, miss hold, miss slide
+const _b_factors_base_5 = [1, 2, 3, 4, 6]
+// const _b_factors_base_5 = [5, 10, 15, 20, 30]
+
+// // great tap, great hold, good tap, great slide, miss tap/good hold, good slide, miss hold, miss slide
+// const _b_factors = [2, 4, 5, 6, 10, 15, 20, 30]
+// // const _b_factors = [2, 4, 5, 6, 10, 15, 20, 25, 30, 50]
+
+// hp, lp, hg/mg/lg, good, miss
+const _bb_factors = [5, 10, 12, 14, 20]
+
+export function maimai(achievement: number,
+  tap: number, hold: number, slide: number, break_number: number) {
+
+  const b = base(tap, hold, slide, break_number)
+  const bb = break_base(break_number)
+
+  log({ achievement, b, bb })
+
+  const _b = 0.1 * b
+  const _bb = 0.05 * bb
+
+  const loss = 101 - achievement
+
+  const findings = find_n_m(_b, _bb, loss)
+
+  // log(findings)
+
+  const results = []
+
+  let expanded_results_number = 0
+
+  for (const { n, m } of findings) {
+    const current_results = []
+
+    let expanded_current_results_number = 0
+
+    if (break_number * 20 < m) {
+      // cut the branch. it could not cause so much damage even if you miss all breaks.
+
+      continue
+    }
+
+    const solutions_m = solve_change(m, _bb_factors)
+
+    // hp, lp, hg, mg, lg, good, miss
+    const derived_solutions_m = []
+    for (const [hp, lp, great, good, miss] of solutions_m) {
+      if (hp + lp + great + good + miss > break_number) {
+        // impossible, no so many notes to lose
+
+        continue
+      }
+
+      if (great == 0) {
+        const [hg, mg, lg] = [0, 0, 0]
+
+        const remaining_n = n - (hg * 10 + mg * 20 + lg * 25 + good * 30 + miss * 50)
+
+        if (remaining_n < 0) {
+          continue
+        }
+
+        derived_solutions_m.push([hp, lp, hg, mg, lg, good, miss])
+        continue
+      }
+
+      // great -> hg, mg, lg
+      const expanded_greats = stars_and_bars(great, 3)
+
+      for (const [hg, mg, lg] of expanded_greats) {
+        const remaining_n = n - (hg * 10 + mg * 20 + lg * 25 + good * 30 + miss * 50)
+
+        if (remaining_n < 0) {
+          continue
+        }
+
+        derived_solutions_m.push([hp, lp, hg, mg, lg, good, miss])
+      }
+    }
+
+    // log({ solutions, derived_solutions })
+
+    for (const [hp, lp, hg, mg, lg, good, miss] of derived_solutions_m) {
+      const remaining_n = n - (hg * 10 + mg * 20 + lg * 25 + good * 30 + miss * 50)
+
+      // if (remaining_n < 0) {
+      //   continue
+      // }
+
+      const solutions_n = solve_change(remaining_n, _b_factors)
+
+      // log({ remaining_n, solutions_n: solutions_n.length })
+
+      for (const [base_2, base_5] of solutions_n) {
+        current_results.push({
+          // tap/touch, hold, slide
+          base: {
+            base_2, base_5
+          },
+          // break
+          bonus: { hp, lp, hg, mg, lg, good, miss },
+        })
+
+        expanded_current_results_number +=
+          count_solutions(base_2, _b_factors_base_2)
+          * count_solutions(base_5, _b_factors_base_5)
+      }
+
+      // for (const [great_tap, great_hold, good_tap, great_slide, miss_tap_good_hold,
+      //   good_slide, miss_hold, miss_slide] of solutions_n) {
+      //   current_results.push({
+      //     // tap/touch, hold, slide
+      //     base: {
+      //       great_tap, great_hold, good_tap, great_slide, miss_tap_good_hold,
+      //       good_slide, miss_hold, miss_slide
+      //     },
+      //     // break
+      //     bonus: { hp, lp, hg, mg, lg, good, miss },
+      //   })
+      // }
+    }
+
+    results.push(...current_results)
+
+    expanded_results_number += expanded_current_results_number
+
+    if (current_results.length == 0) {
+      continue
+    }
+
+    log({
+      n, m,
+      solutions_m: solutions_m.length, derived_solutions_m: derived_solutions_m.length,
+      current_results: current_results.length,
+      expanded_current_results_number
+    })
+
+    // if (result_count == 0) {
+    //   continue
+    // }
+
+    // write(home(`result_${n}_${m}.yaml`), stringify({ current_results, derived_solutions_m }))
+  }
+
+  log({ expanded_results_number })
+
+  return results
+}
+
+// todo
+export function expand_maimai(results: ReturnType<typeof maimai>) {
+  // when expanded, make sure the sum of each note type does not exceed avail
+  // rare though
+
+  log(results)
+}
+```
+
+`test/maimai.ts`
+
+```ts
+import { maimai } from "action/maimai";
+
+const results = maimai(100.9166, 285 + 113, 62, 107, 27)
+
+// const results = maimai(97.0669, (552 + 78 + 14 + 4) + 0, 20 + 1, 69 + 3 + 2 + 2, 8 + 6)
+
+// const results = maimai(100.6802, (279 + 8) + 14, 75, 37, 9 + 3)
+
+// const results = maimai(100.0445, (364 + 18 + 3), 70 + 4, 44, 12 + 3)
+
+// log({ results: results.length })
+
+// log(results)
+
+// log(find_solutions_base_2(5))
+
+// log(find_solutions_base_5(6))
+```
+``````
 
