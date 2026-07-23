@@ -1,7 +1,10 @@
 import { home, write } from "lib/file";
 import { stringify } from 'yaml';
 
-function find_n_m(a: number, b: number, c: number, tolerance = 0.0001) {
+// const max_rounding_loss = 0.0002
+const max_rounding_loss = 0.0001
+
+function find_n_m(a: number, b: number, c: number, tolerance = max_rounding_loss) {
   const solutions = [];
 
   // handle case where both a and b are close to zero

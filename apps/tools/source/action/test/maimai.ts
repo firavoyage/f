@@ -1,8 +1,9 @@
 import { maimai } from "action/maimai";
 
-// const results = maimai(100.9166, 285 + 113, 62, 107, 27)
+// const results = maimai(100.9166, 285 + 113, 62, 107, 20 + 7)
 
-const results = maimai(100.0648, (589 + 27 + 0 + 2) + 36, 26 + 1, 100 + 1, 4 + 5)
+const results = maimai(100.0648, (552 + 27 + 0 + 2) + 36, 63 + 1, 100 + 1, 4 + 5)
+// const results = maimai(100.0648, (589 + 27 + 0 + 2) + 36, 26 + 1, 100 + 1, 4 + 5)
 
 // const results = maimai(97.0669, (552 + 78 + 14 + 4) + 0, 20 + 1, 69 + 3 + 2 + 2, 8 + 6)
 

@@ -15562,6 +15562,70 @@ Show all
 
 # <!-- 23 jul -->
 
+# . constants
+
+```yaml
+# b = base = 100/total points = 100/(1*tap/touch number+2*hold/touch hold number+3*slide number+5*break number)
+# bb = break base = 1/break number
+# loss for each
+tap/touch:
+  great: 0.2 base
+  good: 0.5 base
+  miss: 1 base
+hold:
+  great: 2*0.2*base = 0.4 base
+  good: 2*0.5*base = 1 base
+  miss: 2*1*base = 2 base
+slide:
+  great: 3*0.2*base = 0.6 base
+  good: 3*0.5*base = 1.5 base
+  miss: 3*1*base = 3 base
+break:
+  high perfect: 0.25*break base = 0.25 bb
+  low perfect: 0.5*break base = 0.5 bb
+  high great: 5*0.2*base+0.6*break base = 1 b + 0.6 bb
+  mid great: 5*0.4*base+0.6*break base = 2 b + 0.6 bb
+  low great: 5*0.5*base+0.6*break base = 2.5 b + 0.6 bb
+  good: 5*0.6*base+0.7*break base = 3 b + 0.7 bb
+  miss: 5*1*base+1*break base = 5 b + 1 bb
+```
+
+```yaml
+# b = base = 100/total points = 100/(1*tap/touch number+2*hold/touch hold number+3*slide number+5*break number)
+# bb = break base = 1/break number
+# loss for each
+
+# to calc n, m, make take gcd of b and bb
+# _b = 0.1 b
+# _bb = 0.05 bb
+tap/touch:
+  great: 2 _b
+  good: 5 _b
+  miss: 10 _b
+hold:
+  great: 2*0.2*base = 4 _b
+  good: 2*0.5*base = 10 _b
+  miss: 2*1*base = 20 _b
+slide:
+  great: 3*0.2*base = 6 _b
+  good: 3*0.5*base = 15 _b
+  miss: 3*1*base = 30 _b
+break:
+  high perfect: 0.25*break base = 5 _bb
+  low perfect: 0.5*break base = 10 _bb
+  high great: 5*0.2*base+0.6*break base = 10 _b + 12 _bb
+  mid great: 5*0.4*base+0.6*break base = 20 _b + 12 _bb
+  low great: 5*0.5*base+0.6*break base = 25 _b + 12 _bb
+  good: 5*0.6*base+0.7*break base = 30 _b + 14 _bb
+  miss: 5*1*base+1*break base = 50 _b + 20 bb
+```
+
+```yaml
+_b: [2, 4, 5, 6, 10, 15, 20, 25, 30, 50]
+# _b: [2, 4, 5, 6, 10, 10, 10, 15, 20, 20, 25, 30, 30, 50]
+_bb: [5, 10, 12, 14, 20]
+```
+
 # . thinking: evaluate their assumption
 
 well... they are not wrong. <!-- i were about to say "you are wrong. slide = 3 tap." -->
@@ -16043,7 +16107,7 @@ case ii: by "a little p" you mean a low perfect break
 total points = 40 break count
 1 * (tap count + touch count) + 2 * hold count + 3 * slide count = 35 break count
 
-take your "orifisu lv12" temoto for an example.
+take your "orifisu lv12" temoto as an example.
 
 from what i can see, there are 4 + 5 breaks, 36 touch, 100 + 1 slide, 26 + 1 hold, 589 + 27 + 0 + 2 tap. 
 
@@ -16055,8 +16119,26 @@ it says,
 
 if your theory was right, i must have made some mistakes in calculation.
 
-they could theoretically exist, but idk if there is a real song since i dont wanna parse the maimai track database.
+they could theoretically exist (esp when the numbers of notes are factors of each other), but idk whether there exists a real song that satisfies and i dont wanna parse the maimai track database and loop through it.
+
+upd: wait, the output is weird. maybe my input is wrong.
+
+- i assumed you did not miss any hold
+- i scanned the numbers, and made some silent calculations. (human errors?)
+
+confirmed. i did make mistakes scanning the numbers. (rather than float rounding loss issues)
+
+```precious
+take your "orifisu lv12" temoto as an example.
+
+from what i can see, there are (552 + 27 + 0 + 2) + 36 tap/touch, 63 + 1 hold, 100 + 1 slide, and 4 + 5 break.
+
+it says, 
+
+- total points 1093 != 720 (case i) != 360 (case ii)
+- break count 9
+
+btw, in your 5 breaks, there are 4 high perfects and 1 low perfect.
+```
 
 ref: https://gist.github.com/humilitydev/7b6af70bc7e422fd7a669eadc4be0bd9
-
-
