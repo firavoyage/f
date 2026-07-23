@@ -16217,3 +16217,21 @@ Type "help", "copyright", "credits" or "license" for more information.
 ```
 
 ref: https://gist.github.com/humilitydev/7b6af70bc7e422fd7a669eadc4be0bd9
+
+---
+
+mystery solved!
+
+```
+ ~ % python3
+Python 3.12.3 (main, Mar 23 2026, 19:04:32) [GCC 13.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 1 * ((552 + 27 + 0 + 2) + 36 + 36) + 2 * (63 + 1) + 3 * (100 + 1) + 5 * (4 + 5)
+1129
+>>> 100/1129
+0.08857395925597875
+>>> 0.2*0.08857395925597875
+0.01771479185119575
+```
+
+

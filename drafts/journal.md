@@ -47424,6 +47424,259 @@ and it's "create secret gist" <!-- share link based access --> by default.
 
 spent an extra twenty min on human reading errors.
 
+```md
+f, [7/23/26 8:38 PM]
+> 星星是 4 倍 tap，绝赞是 5 倍 tap
+
+you are right iff by star you mean a tap ("star head") plus a slide and you only count the base score (100%) for break notes.
+
+> 好像小 p 三个绝赞等于粉一个星星？
+
+it's highly unlikely.
+
+a perfect break note can be a crit perfect, a high perfect, or a low perfect.
+
+and by "a pink star" i assume you mean the slide (rather than the head).
+
+ive done the math.
+
+# star = tap (head) + slide (trail)
+# touch hold = hold
+
+b = base = 100 / total points = 100 / (1 * (tap count + touch count) + 2 * hold count + 3 * slide count + 5 * break count)
+bb = break base = 1 / break count
+
+(decrease of) a great slide = 3 * 0.2b = 0.6b
+
+(decrease of) a high perfect break = 0.25bb
+(decrease of) a low perfect break = 0.5bb
+
+case i: by "a little p" you mean a high perfect break
+
+3 * 0.25bb = 3 * 0.2b
+0.25bb =  0.2b
+5bb = 4b
+5 total points = 400 break count
+total points = 80 break count
+1 * (tap count + touch count) + 2 * hold count + 3 * slide count = 75 break count
+
+case ii: by "a little p" you mean a low perfect break
+
+3 * 0.5bb = 3 * 0.2b
+0.5bb =  0.2b
+5bb = 2b
+5 total points = 200 break count
+total points = 40 break count
+1 * (tap count + touch count) + 2 * hold count + 3 * slide count = 35 break count
+
+take your "orifisu lv12" temoto as an example.
+
+from what i can see, there are 4 + 5 breaks, 36 touch, 100 + 1 slide, 26 + 1 hold, 589 + 27 + 0 + 2 tap. 
+
+it says, 
+
+- total points 1056 != 720 (case i) != 360 (case ii)
+- break count 9
+
+if your theory was right, i must have made some mistakes in calculation.
+
+they could theoretically exist (esp when the numbers of notes are factors of each other), but idk whether there exists a real song that satisfies and i dont wanna parse the maimai track database and loop through it.
+
+upd: wait, the output is weird. maybe my input is wrong.
+
+- i assumed you did not miss any hold
+- i scanned the numbers, and made some silent calculations. (human errors?)
+
+confirmed. i did make mistakes scanning the numbers. (rather than float rounding loss issues)
+
+take your "orifisu lv12" temoto as an example.
+
+from what i can see, there are (552 + 27 + 0 + 2) + 36 tap/touch, 63 + 1 hold, 100 + 1 slide, and 4 + 5 break.
+
+it says, 
+
+- total points 1093 != 720 (case i) != 360 (case ii)
+- break count 9
+
+btw, in your 5 breaks, there are 4 high perfects and 1 low perfect.
+
+ref: https://gist.github.com/humilitydev/7b6af70bc7e422fd7a669eadc4be0bd9
+
+Nickel Angel✨, [7/23/26 8:48 PM]
+这个是在说我打的那首歌的分数，如果想算可以算一下
+
+Nickel Angel✨, [7/23/26 8:49 PM]
+我没仔细看，但是印象里玩的时候，看扣的分大概是这个范围
+
+f, [7/23/26 8:52 PM]
+不成立
+
+澪, [7/23/26 8:53 PM]
+合理的
+
+Nickel Angel✨, [7/23/26 9:02 PM]
+我看了一下，你算的是加分是吗，这个按扣分算是多少
+
+f, [7/23/26 9:02 PM]
+calculating...
+
+f, [7/23/26 9:04 PM]
+im always calculating the loss.
+
+a great slide: 0.09149130832570906×0.6 = 0.054894785
+
+three high perfect breaks: 0.1111111111111111×0.25×3 = 0.083333333
+
+three low perfect breaks: 0.1111111111111111×0.5×3 = 0.166666667
+
+f, [7/23/26 9:05 PM]
+btw, the result
+
+{
+  total_points: 1093,
+}
+{
+  break_number: 9,
+}
+{
+  achievement: 100.0648,
+  b: 0.09149130832570906,
+  bb: 0.1111111111111111,
+}
+{
+  n: 50,
+  m: 86,
+  solutions_m: 41,
+  derived_solutions_m: 12,
+  current_results: 20,
+  expanded_current_results_number: 92,
+}
+{
+  n: 67,
+  m: 58,
+  solutions_m: 12,
+  derived_solutions_m: 23,
+  current_results: 34,
+  expanded_current_results_number: 168,
+}
+{
+  n: 84,
+  m: 30,
+  solutions_m: 6,
+  derived_solutions_m: 6,
+  current_results: 44,
+  expanded_current_results_number: 20402,
+}
+{
+  expanded_results_number: 20662,
+}
+
+omikerong, [7/23/26 9:05 PM]
+
+
+Nickel Angel✨, [7/23/26 9:05 PM]
+这是什么 bot，还有这种东西
+
+omikerong, [7/23/26 9:06 PM]
+qq 2854199949
+
+omikerong, [7/23/26 9:07 PM]
+然后绝赞那栏扣分不好算 因为粉的黄的都有几种可能
+
+pupupu|云苔☁️, [7/23/26 9:09 PM]
+
+
+Nickel Angel✨, [7/23/26 9:09 PM]
+感觉得再看看自己绝赞双押那里小 p 几个绝赞了x
+
+Nickel Angel✨, [7/23/26 9:10 PM]
+有时候手挡住确实看不到是不是小 p
+
+f, [7/23/26 9:10 PM]
+incorrect. it's 0.05489478499542544 rather than 0.0531 for a great slide.
+
+f, [7/23/26 9:11 PM]
+it can be either high or low perfect, if it's not crit perfect. you can not determine from the game.
+
+Nickel Angel✨, [7/23/26 9:12 PM]
+
+
+f, [7/23/26 9:13 PM]
+wait. the data is totally inaccurate, i mean. for example, (the loss of) a great tap should be 0.018298261665141813 rather than 0.0177.
+
+f, [7/23/26 9:15 PM]
+ ~ % python3
+Python 3.12.3 (main, Mar 23 2026, 19:04:32) [GCC 13.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 100/1093
+0.09149130832570906
+>>> 100/1093*0.6
+0.05489478499542544
+>>> 0.2*0.09149130832570906
+0.018298261665141813
+>>> 1 * ((552 + 27 + 0 + 2) + 36) + 2 * (63 + 1) + 3 * (100 + 1) + 5 * (4 + 5)
+1093
+
+ref: https://gist.github.com/humilitydev/7b6af70bc7e422fd7a669eadc4be0bd9
+
+f, [7/23/26 9:19 PM]
+wdyt? do you think the qq bot is really accurate?
+
+Nickel Angel✨, [7/23/26 9:24 PM]
+看了一下好像是 touch 在总物量中被算了两遍导致的（？）
+
+omikerong, [7/23/26 9:24 PM]
+我用这个加权计算了下和bot结果是一样的
+
+omikerong, [7/23/26 9:25 PM]
+touch权重等于tap
+
+f, [7/23/26 9:25 PM]
+mystery solved!
+
+ ~ % python3
+Python 3.12.3 (main, Mar 23 2026, 19:04:32) [GCC 13.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 1 * ((552 + 27 + 0 + 2) + 36 + 36) + 2 * (63 + 1) + 3 * (100 + 1) + 5 * (4 + 5)
+1129
+>>> 100/1129
+0.08857395925597875
+>>> 0.2*0.08857395925597875
+0.01771479185119575
+
+Nickel Angel✨, [7/23/26 9:26 PM]
+所以 great 到底是 0.6 还是 0.8，看乘的数字都不一样x
+
+f, [7/23/26 9:27 PM]
+check out the reference on gist
+
+Nickel Angel✨, [7/23/26 9:27 PM]
+
+
+f, [7/23/26 9:27 PM]
+im always calculating the loss, yk
+
+omikerong, [7/23/26 9:28 PM]
+简单来说tap 的great 扣0.2 hold 的扣它的两倍 0.4 slide 扣它的三倍 0.6
+
+omikerong, [7/23/26 9:28 PM]
+然后舞萌似乎是5舍6入
+
+f, [7/23/26 9:29 PM]
+结论: 这个机器人的数据不准确, 因为重复计算 touch.
+
+omikerong, [7/23/26 9:31 PM]
+没重复吧 touch的分直接算tap就行
+
+Nickel Angel✨, [7/23/26 9:36 PM]
+这个图中显示这首歌有 617 个 tap 但是实际其实是 581 个，它好像把 36 个 touch 也算进去了
+
+Nickel Angel✨, [7/23/26 9:36 PM]
+我当时就感觉不可能验算会出错，怎么出的问题，然后看了一下物量发现了这个问题x
+
+Nickel Angel✨, [7/23/26 9:37 PM]
+```
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
