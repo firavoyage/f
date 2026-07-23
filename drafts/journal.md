@@ -47392,6 +47392,8 @@ it would be too massive. there are 150k msgs over years.
 
 but ive found a trick. i could opt out "files" (e.g. flac songs), and set upperlimit to 50mb (instead of 8mb default). maybe it would work.
 
+<!-- upd: well, it can resume after sleep. no idea why it drops sometimes. quirks maybe. -->
+
 05 00 append a line to values: elitism.
 
 > silicon valley is the whole web
