@@ -16030,15 +16030,32 @@ case i: by "a little p" you mean a high perfect break
 3 * 0.25bb = 3 * 0.2b
 0.25bb =  0.2b
 5bb = 4b
+5 total points = 400 break count
+total points = 80 break count
+1 * (tap count + touch count) + 2 * hold count + 3 * slide count = 75 break count
 
 case ii: by "a little p" you mean a low perfect break
 
 3 * 0.5bb = 3 * 0.2b
 0.5bb =  0.2b
 5bb = 2b
+5 total points = 200 break count
+total points = 40 break count
+1 * (tap count + touch count) + 2 * hold count + 3 * slide count = 35 break count
 
+take your "orifisu lv12" temoto for an example.
 
+from what i can see, there are 4 + 5 breaks, 36 touch, 100 + 1 slide, 26 + 1 hold, 589 + 27 + 0 + 2 tap. 
+
+it says, 
+
+- total points 1056 != 720 (case i) != 360 (case ii)
+- break count 9
 ```
+
+if your theory was right, i must have made some mistakes in calculation.
+
+they could theoretically exist, but idk if there is a real song since i dont wanna parse the maimai track database.
 
 ref: https://gist.github.com/humilitydev/7b6af70bc7e422fd7a669eadc4be0bd9
 
