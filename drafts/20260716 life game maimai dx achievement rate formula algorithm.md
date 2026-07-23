@@ -15570,7 +15570,7 @@ a "star" = a slide + a tap.
 
 but i think it's very unlikely for "3 lp break = 1 star"
 
-# . message: challenge nickel angel
+# . gist: challenge nickel angel
 
 ``````md
 > foo, [7/22/26 9:20 PM]
@@ -15996,4 +15996,50 @@ const results = maimai(100.9166, 285 + 113, 62, 107, 27)
 // log(find_solutions_base_5(6))
 ```
 ``````
+
+# . message: challenge nickel angel
+
+> 星星是 4 倍 tap，绝赞是 5 倍 tap
+
+you are right iff by star you mean a tap ("star head") **plus** a slide and you only count the base score (100%) for break notes.
+
+> 好像小 p 三个绝赞等于粉一个星星？
+
+it's highly unlikely.
+
+a perfect break note can be a crit perfect, a high perfect, or a low perfect.
+
+and by "a pink star" i assume you mean the slide (rather than the head).
+
+ive done the math.
+
+```precious
+# star = tap (head) + slide (trail)
+# touch hold = hold
+
+b = base = 100 / total points = 100 / (1 * (tap count + touch count) + 2 * hold count + 3 * slide count + 5 * break count)
+bb = break base = 1 / break count
+
+(decrease of) a great slide = 3 * 0.2b = 0.6b
+
+(decrease of) a high perfect break = 0.25bb
+(decrease of) a low perfect break = 0.5bb
+
+case i: by "a little p" you mean a high perfect break
+
+3 * 0.25bb = 3 * 0.2b
+0.25bb =  0.2b
+5bb = 4b
+
+case ii: by "a little p" you mean a low perfect break
+
+3 * 0.5bb = 3 * 0.2b
+0.5bb =  0.2b
+5bb = 2b
+
+
+```
+
+ref: https://gist.github.com/humilitydev/7b6af70bc7e422fd7a669eadc4be0bd9
+
 
