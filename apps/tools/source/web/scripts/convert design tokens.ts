@@ -76,54 +76,52 @@ function main(
     }
   }
 
-  log(file_set)
+  // 3. Process each unique file path synchronously
+  for (const file_path of file_set) {
+    try {
+      const file_stat = fs.statSync(file_path, { throwIfNoEntry: false });
+      if (!file_stat || !file_stat.isFile()) {
+        continue;
+      }
 
-  // // 3. Process each unique file path synchronously
-  // for (const file_path of file_set) {
-  //   try {
-  //     const file_stat = fs.statSync(file_path, { throwIfNoEntry: false });
-  //     if (!file_stat || !file_stat.isFile()) {
-  //       continue;
-  //     }
+      const raw_content = fs.readFileSync(file_path, 'utf-8');
+      const converted_content = convert(raw_content);
 
-  //     const raw_content = fs.readFileSync(file_path, 'utf-8');
-  //     const converted_content = convert(raw_content);
+      const parsed_path = path.parse(file_path);
+      const yaml_path = path.format({
+        dir: parsed_path.dir,
+        name: parsed_path.name,
+        ext
+      });
 
-  //     const parsed_path = path.parse(file_path);
-  //     const yaml_path = path.format({
-  //       dir: parsed_path.dir,
-  //       name: parsed_path.name,
-  //       ext
-  //     });
-
-  //     fs.writeFileSync(yaml_path, converted_content, 'utf-8');
-  //   } catch (error_obj) {
-  //     console.error(`Failed processing ${file_path}:`, error_obj);
-  //   }
-  // }
+      fs.writeFileSync(yaml_path, converted_content, 'utf-8');
+    } catch (error_obj) {
+      console.error(`Failed processing ${file_path}:`, error_obj);
+    }
+  }
 }
 
 function is_match(obj: Record<string, any>, arr: string[]): boolean {
-    const keys = Object.keys(obj);
-    
-    if (keys.length !== arr.length) {
-        return false;
+  const keys = Object.keys(obj);
+
+  if (keys.length !== arr.length) {
+    return false;
+  }
+
+  const arr_set = new Set(arr);
+
+  for (const key of keys) {
+    if (!arr_set.has(key)) {
+      return false;
     }
 
-    const arr_set = new Set(arr);
-
-    for (const key of keys) {
-        if (!arr_set.has(key)) {
-            return false;
-        }
-
-        const val = obj[key];
-        if (typeof val === 'object' && val !== null) {
-            return false;
-        }
+    const val = obj[key];
+    if (typeof val === 'object' && val !== null) {
+      return false;
     }
+  }
 
-    return true;
+  return true;
 }
 
 function convert(design_yaml: string) {
@@ -131,12 +129,66 @@ function convert(design_yaml: string) {
 
   const { modes, ...tokens_obj } = design
 
-  const tokens = flatten(tokens_obj, {separator: '-', preserve(value, key){
-    for (const mode of Object.values(modes)) {
-      return is_match(value, mode)
+  const contexts: Record<string, {
+    type: string
+    is_default: boolean,
+    tokens: Record<string, string>
+  }> & Record<'root', {
+    type: string
+    is_default: boolean,
+    tokens: Record<string, string>
+  }> = {
+    root: {
+      type: 'root',
+      is_default: true,
+      tokens: {}
     }
-  }})
+  }
 
+  for (const [type, variants] of Object.entries(modes)) {
+    for (const variant of variants) {
+      contexts[variant] = {
+        type,
+        is_default: false,
+        tokens: {}
+      }
+    }
+    contexts[variants[0]].is_default = true
+  }
+
+  // you wont reference a contextual token. no comp layer.
+  const map = flatten(tokens_obj)
+
+  const tokens = flatten(tokens_obj, {
+    separator: '-', preserve(value, key) {
+      for (const mode of Object.values(modes)) {
+        if (is_match(value, mode)) {
+          return true
+        }
+        return false
+      }
+    }
+  })
+
+  for (const [token, value] of Object.entries(tokens)) {
+    const variable = `--${token}`
+
+    if (typeof value == 'object') {
+      for (const [variant, contextual_value] of value) {
+        if (has(map, contextual_value)) {
+          contexts[variant].tokens[variable] = `var(--${contextual_value.replaceAll('.', '-')})`
+        } else {
+          contexts[variant].tokens[variable] = contextual_value
+        }
+      }
+    } else {
+      contexts.root.tokens[variable] = value
+    }
+  }
+
+  log(contexts)
+
+  return 'foo'
   // return design
 }
 
