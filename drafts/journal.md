@@ -47412,6 +47412,10 @@ debian pastebin is not for permanency either.
 
 well, im not doing for total anonymity. no need to make it `foo20260723` (though it's avail).
 
+19 40 create gist. opt in email privacy.
+
+no idea why privacy is opt in. but thankfully they show commit email info below submit button.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
