@@ -47410,7 +47410,7 @@ maybe i should choose ubuntu paste. <!-- sunsetted? -->
 
 debian pastebin is not for permanency either.
 
-well, im not doing for total anonymity. 
+well, im not doing for total anonymity. no need to make it `foo20260723` (though it's avail).
 
 
 
