@@ -361,7 +361,7 @@ AI responses may include mistakes. For financial advice, consult a professional.
 
 Show all
 
-# . thinking
+# . thinking: research consts
 
 you should know
 
@@ -1385,7 +1385,7 @@ Would you like to know how **Perfects are split** on Break notes (Critical vs. H
 
 Show all
 
-# . prompt
+# (d) . prompt
 
 follow these:
 
@@ -1507,7 +1507,7 @@ include
 const test = (...args) => log(solve_achievement_rate_breakdown(...args))
 ```
 
-# . prompt (fixed) <!-- not applied -->
+# . prompt
 
 follow these:
 
@@ -7638,7 +7638,7 @@ print("Target loss:", 101 - 100.9166)
 
 Use code with caution.
 
-# . test case
+# . test case: chyk
 
 ```ts
 test({
@@ -7654,7 +7654,7 @@ current: `[]`
 
 expected: break 5 hp, 2 lp
 
-# . observation
+# . observation: numbers and factors
 
 ```yaml
 # b = base = 100/total points = 100/(1*tap/touch number+2*hold/touch hold number+3*slide number+5*break number)
@@ -15135,7 +15135,7 @@ I can help you ensure your entire codebase reads cleanly and professionally.
   \
   DAILY WRITING TIPS
 
-# . thinking
+# . thinking: variable naming
 
 i would use foo_number anyway.
 
