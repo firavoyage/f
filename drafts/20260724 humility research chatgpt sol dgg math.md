@@ -1,5 +1,7 @@
 <!-- https://chatgpt.com/share/6a60b2eb-0b64-83ee-9c76-7931ca1de063 -->
 
+<!-- copy button not available on share page. -->
+
 # Dinitz-Garg-Goemans (DGG) Conjecture counter example tweet
 
 8:08 AM
@@ -45,10 +47,2914 @@ Would you like to review the **Python code used to verify the 8 routings** of th
 
 Show all
 
-# Construct a counterexample to general (non-planar) case of Dinitz Garg Goemans conjecture. You should do a breakthrough and find a structured counterexample.
+# write a browser console script to make all interactive elements div
+
+javascript
+
+```
+(() => {
+    // Select common interactive elements
+    const selectors = 'button, a, input, select, textarea, [role="button"], [role="link"]';
+    const interactiveElements = Array.from(document.querySelectorAll(selectors));
+
+    interactiveElements.forEach(el => {
+        // Create the new div element
+        const div = document.createElement('div');
+
+        // Copy all HTML attributes
+        Array.from(el.attributes).forEach(attr => {
+            div.setAttribute(attr.name, attr.value);
+        });
+
+        // Copy inner content and value
+        div.innerHTML = el.innerHTML;
+        if (el.value && !div.hasAttribute('value')) {
+            div.setAttribute('value', el.value);
+        }
+
+        // Copy event listeners bound via properties
+        if (el.onclick) div.onclick = el.onclick;
+        if (el.onmousedown) div.onmousedown = el.onmousedown;
+        if (el.onmouseup) div.onmouseup = el.onmouseup;
+        if (el.onkeydown) div.onkeydown = el.onkeydown;
+
+        // Maintain basic layout consistency
+        const display = window.getComputedStyle(el).display;
+        div.style.display = display === 'inline' ? 'inline-block' : display;
+
+        // Replace the old element with the new div
+        el.parentNode.replaceChild(div, el);
+    });
+
+    console.log(`Successfully converted ${interactiveElements.length} elements to divs.`);
+})();
+```
+
+Use code with caution.
+
+### Why this breaks websites
+
+- **Loses Event Listeners**: Modern frameworks (React, Vue) attach listeners globally or via `addEventListener`, which cannot be copied through standard DOM properties.
+- **Destroys Form Data**: Browsers do not recognize `div` elements when collecting data for form submissions.
+- **Kills Accessibility**: Screen readers rely on native tags like `<button>` and `<a>` to assist visually impaired users.
+
+If you are testing this for a specific use case, let me know:
+
+- Are you trying to **strip default styling**?
+- Are you running **automated UI tests**?
+- Do you need to **disable user interactions** completely?
+
+I can adapt the script to preserve functionality based on your **exact goal**.
+
+- [link](https://dokumen.pub/the-modern-javascript-tutorial-part-ii-browser-document-events-interfaces-2.html)\
+  The Modern JavaScript Tutorial - Part II. Browser Document, Events, Interfaces \[2] - DOKUMEN.PUB\
+  As we can see in the example above, we can set handlers both using a DOM-property and addEventListener . But generally we use only...\
+  \
+  \
+  dokumen.pub
+- [link](https://www.sitepoint.com/writing-javascript-with-accessibility-in-mind/)\
+  Writing JavaScript with Accessibility in Mind — SitePoint\
+  Nov 13, 2024 — to look like a button. This is important for accessibility as it provides meaningful information to screen readers, helping visual...\
+  \
+  \
+  SitePoint
+
+## make it a mutation observer, whenever things change run it
+
+javascript
+
+```
+(() => {
+    // Select common interactive elements
+    const selectors = 'button, a, input, select, textarea, [role="button"], [role="link"]';
+
+    const convertToDiv = (el) => {
+        // Prevent infinite loops on already processed elements
+        if (el.tagName === 'DIV' || el.dataset.converted === 'true') return;
+
+        const div = document.createElement('div');
+
+        // Copy all HTML attributes
+        Array.from(el.attributes).forEach(attr => {
+            div.setAttribute(attr.name, attr.value);
+        });
+
+        // Mark as converted
+        div.setAttribute('data-converted', 'true');
+
+        // Copy inner content and value
+        div.innerHTML = el.innerHTML;
+        if (el.value && !div.hasAttribute('value')) {
+            div.setAttribute('value', el.value);
+        }
+
+        // Copy property-based event listeners
+        if (el.onclick) div.onclick = el.onclick;
+        if (el.onmousedown) div.onmousedown = el.onmousedown;
+        if (el.onmouseup) div.onmouseup = el.onmouseup;
+        if (el.onkeydown) div.onkeydown = el.onkeydown;
+
+        // Maintain basic layout consistency
+        const display = window.getComputedStyle(el).display;
+        div.style.display = display === 'inline' ? 'inline-block' : display;
+
+        // Replace element safely if it still has a parent
+        if (el.parentNode) {
+            el.parentNode.replaceChild(div, el);
+        }
+    };
+
+    const processNodes = (nodes) => {
+        nodes.forEach(node => {
+            // Only process element nodes
+            if (node.nodeType !== Node.ELEMENT_NODE) return;
+
+            // Check the node itself
+            if (node.matches(selectors)) {
+                convertToDiv(node);
+            }
+
+            // Check all of its nested children
+            const children = node.querySelectorAll(selectors);
+            children.forEach(convertToDiv);
+        });
+    };
+
+    // Run immediately on existing elements
+    processNodes([document.body]);
+
+    // Setup MutationObserver for dynamic changes
+    const observer = new MutationObserver((mutations) => {
+        // Temporarily disconnect to avoid infinite loops during conversion
+        observer.disconnect();
+
+        mutations.forEach(mutation => {
+            if (mutation.addedNodes.length) {
+                processNodes(mutation.addedNodes);
+            }
+        });
+
+        // Reconnect observer
+        observer.observe(document.body, { childList: true, subtree: true });
+    });
+
+    // Start watching the DOM
+    observer.observe(document.body, { childList: true, subtree: true });
+    console.log("MutationObserver active: Watching for interactive elements...");
+})();
+```
+
+Use code with caution.
+
+### Critical Performance Warning
+
+- **Infinite Loops**: Modifying the DOM inside a MutationObserver triggers the observer again. The script uses `observer.disconnect()` and `data-converted` tags to stop this crash.
+- **Heavy Lag**: On infinite-scroll sites (like Twitter or YouTube), running this continuously will heavily freeze the browser tab.
+
+Depending on what you are testing, I can optimize this further if you let me know:
+
+- Is this targeting a **specific web application**?
+- Do you need to **filter out certain elements** (like ignoring text inputs)?
+- Are you trying to **benchmark page performance** under heavy DOM mutation?
+
+I can tweak the observer settings or exclusions to match your **testing environment**.
+
+- [link](https://ryankubik.com/blog/remove-twitter-distractions)\
+  Clean up your Twitter Experience with TamperMonkey\
+  Apr 29, 2020 — # Watch for DOM changes with the Mutation Observer A relatively recent addition to browsers is the MutationObserver . This object ...\
+  \
+  ryankubik.com
+
+- [link](https://medium.com/@Bigscal-Technologies/what-is-mutation-observer-and-how-to-use-it-957d74dc29b1)\
+  What is Mutation Observer and how to use it?\
+  Feb 22, 2022 — Step 4: pass in the target node and configuration Code Block: const observer = new MutationObserver(callback);// pass in the targe...\
+  \
+  \
+  Medium
+
+# Construct a counterexample to general (non-planar) case of Dinitz Garg Goemans conjecture. You should do a breakthrough and find a structured counterexample. <!-- Tuesday 5:29 PM -->
 
 <!-- Uploaded a file -->
 
 ``````md thinking
+Worked for 52m 52s
 
+Searched multiple sources for counterexample to Goemans conjecture
+
+Tackling the conjecture
+
+Explored path decomposition
+
+Searched multiple sources for Goemans' conjecture and related papers
+
+Investigated the conjecture
+
+Considered the conjecture further
+
+Optimized path costs and fixed graph node issues
+
+Searched multiple research websites for cost reduction papers
+
+Read PDF-related skill instructions
+
+Evaluated MILP solver and performed graph path analysis
+
+Searched multiple academic and research platforms for results
+
+Extracted text, terms, introduction, and proof
+
+Modeled binary flow with routing constraints and tested solutions
+
+Searched multiple sources for counterexamples to various conjectures
+
+Optimized path decompositions and routing for multi-terminal networks
+
+Searched multiple sources for counterexamples in convex decompositions
+
+Evaluated function existence, tested and optimized graph routing
+
+Searched for papers on unsplittable flow algorithms across platforms
+
+Built and optimized time-expanded permutation switch network
+
+Activity·52m 52s
+
+Pro thinking
+
+Tackling the conjecture
+
+I’m considering computational search for a counterexample to this open conjecture. It seems tricky, but I’ll keep exploring possible solutions while acknowledging some uncertainty, rather than just dismissing it.
+
+Exploring path decomposition
+
+I'm thinking through the path decomposition problem in graph theory. There seems to be a complex interaction between fractional paths and set systems that’s creating discrepancies, and I’m considering alternatives that could explain the limits.
+
+Investigating the conjecture
+
+I’m considering a research approach to this problem, possibly by reducing it to a scheduling special case, or exploring the LP integrality gap. Computational search might help uncover a counterexample or streamline proof.
+
+Considering the conjecture further
+
+I'm analyzing fractional and integral flows and how they relate to the DGG theorem. It looks like if all edge loads are less than 1, then integral paths exist, supporting the conjecture for unit demands. However, breaking this with unequal demands may be the key challenge.
+
+Optimizing path costs via linear programming
+
+```
+Python
+
+import scipy, networkx as nx, numpy as np, itertools, math, random, collections, statistics
+from scipy.optimize import linprog
+print(scipy.__version__, nx.__version__)
+
+```
+
+```
+1.17.0 3.6.1
+```
+
+Reading PDF-related skill instructions
+
+```
+Python
+
+bash -lc cat /home/oai/skills/pdfs/SKILL.md
+
+```
+
+Evaluating MILP solver for flow constraints
+
+```
+Python
+
+from scipy.optimize import milp, LinearConstraint, Bounds
+print(milp)
+
+```
+
+```
+<function milp at 0x7ec89eb40450>
+```
+
+Analyzed
+
+Extracting text and searching terms
+
+```
+Python
+
+bash -lc pdftotext /mnt/data/series_parallel.pdf /mnt/data/series_parallel.txt && grep -n -i -E "conjecture|counterexample|barrier|non-series|K_4|Wheatstone" /mnt/data/series_parallel.txt | head -80
+
+```
+
+Modeling binary flow with routing constraints
+
+```
+Python
+
+import numpy as np, networkx as nx, scipy.sparse as sp, itertools, random, math, collections, time
+from scipy.optimize import milp, linprog, Bounds, LinearConstraint
+
+def min_cost_good_routing(G,s,terminals,demands,x,c,time_limit=10,strict=False):
+    edges=list(G.edges()); m=len(edges); k=len(terminals); nodes=list(G.nodes())
+    ei={e:j for j,e in enumerate(edges)}
+    # vars z[t,e] binary
+    n=k*m
+    rows=[]; cols=[]; vals=[]; lb=[]; ub=[]; row=0
+    # flow conservation
+    for ti,t in enumerate(terminals):
+        for v in nodes:
+            for j,(u,w) in enumerate(edges):
+                idx=ti*m+j
+                if u==v:
+                    rows
+
+```
+
+```
+(np.float64(-0.0), 2)
+```
+
+Optimizing path decompositions for unsplittable flows
+
+```
+Python
+
+import networkx as nx, numpy as np, itertools, math, random, collections, fractions, scipy
+from scipy.optimize import linprog, differential_evolution
+print(nx.__version__, scipy.__version__)
+
+```
+
+```
+3.6.1 1.17.0
+```
+
+Evaluating function existence and counterexample feasibility
+
+```
+Python
+
+# redefine robustly after timeout? check functions exist
+print('functions', assignment_track_graph, separation_colgen)
+
+```
+
+```
+functions <function assignment_track_graph at 0x7ec93815b150> <function separation_colgen at 0x7ec93815fd90>
+```
+
+Building time-expanded permutation switch network
+
+```
+Python
+
+def switch_network(n=3, pairs=((0,1),(1,2),(2,0))):
+    G=nx.DiGraph(); G.add_node('s')
+    current=[f'q0_{i}' for i in range(n)]
+    for node in current:G.add_edge('s',node,kind='start')
+    for st,(i,j) in enumerate(pairs):
+        nxt=[f'q{st+1}_{k}' for k in range(n)]
+        u=f'u{st}';v=f'v{st}'
+        G.add_edge(current[i],u,kind='switch_in',stage=st)
+        G.add_edge(current[j],u,kind='switch_in',stage=st)
+        G.add_edge(u,v,kind='shared',stage=st,pair=(i,j))
+        G.add_edge(v,nxt[i],kind='switch_out',stage=st)
+        G.add_edge(v,nxt[j],kind='switch_out',stage=st)
+        for k in range(n):
+            if k not in (i,j):
+                G.add_edge(current[k],
+
+```
+
+```
+([5, 3, 5], 24, 75)
+```
+
+Worked for 52m 52s
+
+Done
+
+Sources·147
+
+- PDF\
+  Dinitz\_Garg\_Goemans.pdf
+
+- [epubs.siam.orghttps://epubs.siam.org/doi/abs/10.1137/1.9781611978964.42](https://epubs.siam.org/doi/abs/10.1137/1.9781611978964.42)
+
+- [arXivhttps://arxiv.org/abs/2412.05182](https://arxiv.org/abs/2412.05182)
+
+- [drops.dagstuhl.de53rd International Colloquium on Automata, Languages, and Programming (ICALP 2026)July 1, 2026](https://drops.dagstuhl.de/entities/volume/LIPIcs-volume-374)
+
+- [drops.dagstuhl.deUnsplittable TransshipmentsJuly 1, 2026](https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.ICALP.2026.74)
+
+- [www.researchgate.net(PDF) Integer and unsplittable multiflows in series-parallel digraphsJune 11, 2026](https://www.researchgate.net/publication/408199416%5FInteger%5Fand%5Funsplittable%5Fmultiflows%5Fin%5Fseries-parallel%5Fdigraphs)
+
+- [www.researchgate.net(PDF) Integer and unsplittable multiflows in series-parallel digraphsJune 11, 2026](https://www.researchgate.net/publication/408199416%5FInteger%5Fand%5Funsplittable%5Fmultiflows%5Fin%5Fseries-parallel%5Fdigraphs)
+
+- [www.researchgate.net(PDF) Integer and unsplittable multiflows in series-parallel digraphsJune 11, 2026](https://www.researchgate.net/publication/408199416%5FInteger%5Fand%5Funsplittable%5Fmultiflows%5Fin%5Fseries-parallel%5Fdigraphs)
+
+- [www.researchgate.net(PDF) Integer and unsplittable multiflows in series-parallel digraphsJune 11, 2026](https://www.researchgate.net/publication/408199416%5FInteger%5Fand%5Funsplittable%5Fmultiflows%5Fin%5Fseries-parallel%5Fdigraphs)
+
+- [www.researchgate.net(PDF) Integer and unsplittable multiflows in series-parallel digraphsJune 11, 2026](https://www.researchgate.net/publication/408199416%5FInteger%5Fand%5Funsplittable%5Fmultiflows%5Fin%5Fseries-parallel%5Fdigraphs)
+
+- [arxiv.orgPinning on Tight Cuts: Improved Algorithm and Bounds for Unsplittable Multicommodity Flows in Outerplanar GraphsJune 3, 2026](https://arxiv.org/abs/2606.04456)
+
+- [arxiv.orgPinning on Tight Cuts: Improved Algorithm and Bounds for Unsplittable Multicommodity Flows in Outerplanar GraphsJune 3, 2026](https://arxiv.org/abs/2606.04456)
+
+- [dblp.orgdblp: Martin SkutellaMay 20, 2026](https://dblp.org/pid/80/2691.html)
+
+- [dblp.orgdblp: Martin SkutellaApril 23, 2026](https://dblp.org/pid/80/2691)
+
+- [doi.orgFactorization norms and an inverse theorem for MaxCut | Mathematische Annalen | Springer Nature LinkFebruary 18, 2026](https://doi.org/10.1007/s00208-026-03355-2)
+
+- [arxiv.orgUnsplittable TransshipmentsFebruary 7, 2026](https://arxiv.org/abs/2602.07230)
+
+- [arxiv.orgUnsplittable TransshipmentsFebruary 7, 2026](https://arxiv.org/abs/2602.07230)
+
+- [arxiv.orgUnsplittable TransshipmentsFebruary 7, 2026](https://arxiv.org/abs/2602.07230)
+
+- [arxiv.orgOn the Multi-Commodity Flow with convex objective function: Column-Generation approachesFebruary 3, 2026](https://arxiv.org/abs/2603.08714)
+
+- [doi.orgEdge expansion of a graph: SDP-based computational strategies | Mathematical Programming Computation | Springer Nature LinkJanuary 13, 2026](https://doi.org/10.1007/s12532-025-00297-9)
+
+- [epubs.siam.orgProceedings of the 2026 Annual ACM-SIAM Symposium on Discrete Algorithms (SODA) | Unsplittable Flow Cut Gap in Undirected GraphsJanuary 7, 2026](https://epubs.siam.org/doi/epdf/10.1137/1.9781611978971.57)
+
+- [epubs.siam.orgProceedings of the 2026 Annual ACM-SIAM Symposium on Discrete Algorithms (SODA) | Unsplittable Flow Cut Gap in Undirected GraphsJanuary 7, 2026](https://epubs.siam.org/doi/abs/10.1137/1.9781611978971.57)
+
+- [doi.orgProceedings of the 2026 Annual ACM-SIAM Symposium on Discrete Algorithms (SODA) | MAX BISECTION might be harder to approximate than MAX CUTJanuary 7, 2026](https://doi.org/10.1137/1.9781611978971.197)
+
+- [epubs.siam.org2026 SIAM Symposium on Simplicity in Algorithms (SOSA) | Unsplittable Cost Flows from Unweighted Error-Bounded VariantsJanuary 6, 2026](https://epubs.siam.org/doi/abs/10.1137/1.9781611978964.42)
+
+- [epubs.siam.org2026 SIAM Symposium on Simplicity in Algorithms (SOSA) | Unsplittable Cost Flows from Unweighted Error-Bounded VariantsJanuary 6, 2026](https://epubs.siam.org/doi/abs/10.1137/1.9781611978964.42)
+
+- [epubs.siam.org2026 SIAM Symposium on Simplicity in Algorithms (SOSA) | Unsplittable Cost Flows from Unweighted Error-Bounded VariantsJanuary 6, 2026](https://epubs.siam.org/doi/epdf/10.1137/1.9781611978964.42)
+
+- [epubs.siam.org2026 SIAM Symposium on Simplicity in Algorithms (SOSA) | Unsplittable Cost Flows from Unweighted Error-Bounded VariantsJanuary 6, 2026](https://epubs.siam.org/doi/abs/10.1137/1.9781611978964.42)
+
+- [epubs.siam.org2026 SIAM Symposium on Simplicity in Algorithms (SOSA) | Unsplittable Cost Flows from Unweighted Error-Bounded VariantsJanuary 6, 2026](https://epubs.siam.org/doi/abs/10.1137/1.9781611978964.42)
+
+- [epubs.siam.org2026 SIAM Symposium on Simplicity in Algorithms (SOSA) | Unsplittable Cost Flows from Unweighted Error-Bounded VariantsJanuary 6, 2026](https://epubs.siam.org/doi/epdf/10.1137/1.9781611978964.42)
+
+- [www.emergentmind.comSingle-Source Unsplittable Flow ConjectureNovember 25, 2025](https://www.emergentmind.com/topics/single-source-unsplittable-flow-conjecture)
+
+- [arxiv.orgUnsplittable Cost Flows from Unweighted Error-Bounded VariantsOctober 24, 2025](https://arxiv.org/abs/2510.21287)
+
+- [arxiv.orgUnsplittable Cost Flows from Unweighted Error-Bounded VariantsOctober 24, 2025](https://arxiv.org/abs/2510.21287)
+
+- [arxiv.orgUnsplittable Cost Flows from Unweighted Error-Bounded VariantsOctober 24, 2025](https://arxiv.org/abs/2510.21287)
+
+- [papers.coolUnsplittable Cost Flows from Unweighted Error-Bounded Variants | Cool Papers - Immersive Paper DiscoveryOctober 24, 2025](https://papers.cool/arxiv/2510.21287)
+
+- [papers.coolUnsplittable Cost Flows from Unweighted Error-Bounded Variants | Cool Papers - Immersive Paper DiscoveryOctober 24, 2025](https://papers.cool/arxiv/2510.21287)
+
+- [jglobal.jst.go.jp重み無し誤差有界変種からの分割不能コストフロー〖JST機械翻訳〗 | 文献情報 | J-GLOBAL 科学技術総合リンクセンターOctober 24, 2025](https://jglobal.jst.go.jp/public/202502204386016012)
+
+- [jglobal.jst.go.jpUnsplittable Cost Flows from Unweighted Error-Bounded Variants | Article Information | J-GLOBALOctober 24, 2025](https://jglobal.jst.go.jp/en/public/202502204386016012)
+
+- [jglobal.jst.go.jp重み無し誤差有界変種からの分割不能コストフロー〖JST機械翻訳〗 | 文献情報 | J-GLOBAL 科学技術総合リンクセンターOctober 24, 2025](https://jglobal.jst.go.jp/public/202502204386016012)
+
+- [research.expertini.comUnsplittable Cost Flows from Unweighted Error-Bounded Variants by Chaitanya Swamy, Vera Traub, Laura Vargas Koch, Rico Zenklusen | Expertini ResearchOctober 24, 2025](https://research.expertini.com/paper/unsplittable-cost-flows-from-unweighted-error-bounded-variants-2510-21287/)
+
+- [uwaterloo.caC\&O Reading Group -David Aleman | Combinatorics and Optimization | University of WaterlooMay 29, 2025](https://uwaterloo.ca/combinatorics-and-optimization/events/co-reading-group-david-aleman-3)
+
+- [arxiv.orgOn the Approximability of Unsplittable Flow on a Path with Time WindowsMarch 22, 2025](https://arxiv.org/abs/2503.17802)
+
+- [www.researchgate.net(PDF) Integer and Unsplittable Multiflows in Series-Parallel DigraphsDecember 9, 2024](https://www.researchgate.net/publication/386554790%5FInteger%5Fand%5FUnsplittable%5FMultiflows%5Fin%5FSeries-Parallel%5FDigraphs)
+
+- [www.researchgate.net(PDF) Integer and Unsplittable Multiflows in Series-Parallel DigraphsDecember 9, 2024](https://www.researchgate.net/publication/386554790%5FInteger%5Fand%5FUnsplittable%5FMultiflows%5Fin%5FSeries-Parallel%5FDigraphs)
+
+- [www.researchgate.net(PDF) Integer and Unsplittable Multiflows in Series-Parallel DigraphsDecember 9, 2024](https://www.researchgate.net/publication/386554790%5FInteger%5Fand%5FUnsplittable%5FMultiflows%5Fin%5FSeries-Parallel%5FDigraphs)
+
+- [arxiv.orgInteger and Unsplittable Multiflows in Series-Parallel DigraphsDecember 7, 2024](https://arxiv.org/abs/2412.05182)
+
+- [arxiv.orgInteger and Unsplittable Multiflows in Series-Parallel DigraphsDecember 7, 2024](https://arxiv.org/abs/2412.05182)
+
+- [arxiv.orgInteger and Unsplittable Multiflows in Series-Parallel DigraphsDecember 7, 2024](https://arxiv.org/abs/2412.05182)
+
+- [arxiv.orgInteger and Unsplittable Multiflows in Series-Parallel DigraphsDecember 7, 2024](https://arxiv.org/abs/2412.05182)
+
+- [arxiv.orgInteger and Unsplittable Multiflows in Series-Parallel DigraphsDecember 7, 2024](https://arxiv.org/abs/2412.05182)
+
+- [arxiv.orgInteger and Unsplittable Multiflows in Series-Parallel DigraphsDecember 7, 2024](https://arxiv.org/abs/2412.05182)
+
+- [www.emergentmind.comInteger and Unsplittable Multiflows in Series-Parallel DigraphsDecember 6, 2024](https://www.emergentmind.com/papers/2412.05182)
+
+- [www.emergentmind.comInteger and Unsplittable Multiflows in Series-Parallel DigraphsDecember 6, 2024](https://www.emergentmind.com/papers/2412.05182)
+
+- [www.emergentmind.comInteger and Unsplittable Multiflows in Series-Parallel DigraphsDecember 6, 2024](https://www.emergentmind.com/papers/2412.05182)
+
+- [www.emergentmind.comInteger and Unsplittable Multiflows in Series-Parallel DigraphsDecember 6, 2024](https://www.emergentmind.com/papers/2412.05182)
+
+- [onlinelibrary.wiley.comThe structure of digraphs with excess one - Tuite - 2024 - Journal of Graph Theory - Wiley Online LibraryFebruary 19, 2024](https://onlinelibrary.wiley.com/doi/10.1002/jgt.23082)
+
+- [epubs.siam.orgProceedings of the 2024 Annual ACM-SIAM Symposium on Discrete Algorithms (SODA) | Single-Source Unsplittable Flows in Planar GraphsJanuary 4, 2024](https://epubs.siam.org/doi/10.1137/1.9781611977912.24)
+
+- [epubs.siam.orgProceedings of the 2024 Annual ACM-SIAM Symposium on Discrete Algorithms (SODA) | Single-Source Unsplittable Flows in Planar GraphsJanuary 4, 2024](https://epubs.siam.org/doi/10.1137/1.9781611977912.24)
+
+- [epubs.siam.orgProceedings of the 2024 Annual ACM-SIAM Symposium on Discrete Algorithms (SODA) | Single-Source Unsplittable Flows in Planar GraphsJanuary 4, 2024](https://epubs.siam.org/doi/10.1137/1.9781611977912.24)
+
+- [arxiv.orgSingle-Source Unsplittable Flows in Planar GraphsAugust 5, 2023](https://arxiv.org/abs/2308.02651)
+
+- [arxiv.orgSingle-Source Unsplittable Flows in Planar GraphsAugust 5, 2023](https://arxiv.org/abs/2308.02651)
+
+- [arxiv.orgSingle-Source Unsplittable Flows in Planar GraphsAugust 5, 2023](https://arxiv.org/abs/2308.02651)
+
+- [arxiv.orgSingle-Source Unsplittable Flows in Planar GraphsAugust 5, 2023](https://arxiv.org/abs/2308.02651)
+
+- [www.emergentmind.comSingle-Source Unsplittable Flows in Planar GraphsAugust 4, 2023](https://www.emergentmind.com/papers/2308.02651)
+
+- [www.emergentmind.comSingle-Source Unsplittable Flows in Planar GraphsAugust 4, 2023](https://www.emergentmind.com/papers/2308.02651)
+
+- [www.emergentmind.comSingle-Source Unsplittable Flows in Planar GraphsAugust 4, 2023](https://www.emergentmind.com/papers/2308.02651)
+
+- [www.emergentmind.comSingle-Source Unsplittable Flows in Planar GraphsAugust 4, 2023](https://www.emergentmind.com/papers/2308.02651)
+
+- [doi.orgTwisted hybrid algorithms for combinatorial optimization - IOPscienceAugust 12, 2022](https://doi.org/10.1088%2F2058-9565%2Fac7f4f)
+
+- [arxiv.orgExtended Path Partition Conjecture for Semicomplete and Acyclic CompositionsNovember 18, 2021](https://arxiv.org/abs/2111.09633)
+
+- [www.researchgate.netFor a given unsplittable flow y, let v be LBP-reachable for some... | Download Scientific DiagramSeptember 1, 2021](https://www.researchgate.net/figure/For-a-given-unsplittable-flow-y-let-v-be-LBP-reachable-for-some-commodity-i-wrt-y-An%5Ffig4%5F354291834)
+
+- [www.researchgate.net(PDF) Single source unsplittable flows with arc-wise lower and upper boundsSeptember 1, 2021](https://www.researchgate.net/publication/354291834%5FSingle%5Fsource%5Funsplittable%5Fflows%5Fwith%5Farc-wise%5Flower%5Fand%5Fupper%5Fbounds)
+
+- [link.springer.comSingle source unsplittable flows with arc-wise lower and upper bounds | Mathematical Programming | Springer Nature LinkSeptember 1, 2021](https://link.springer.com/article/10.1007/s10107-021-01704-4)
+
+- [link.springer.comSingle source unsplittable flows with arc-wise lower and upper bounds | Mathematical Programming | Springer Nature LinkSeptember 1, 2021](https://link.springer.com/article/10.1007/s10107-021-01704-4)
+
+- [www.deutsche-digitale-bibliothek.deSingle source unsplittable flows with arc-wise lower and upper bounds - Deutsche Digitale BibliothekSeptember 1, 2021](https://www.deutsche-digitale-bibliothek.de/item/VK6CHXOCQWL4K3725T4AJ7F7CKNUQV7U)
+
+- [doi.orgPacking and Covering Balls in Graphs Excluding a Minor | Combinatorica | Springer Nature LinkFebruary 1, 2021](https://doi.org/10.1007/s00493-020-4423-3)
+
+- [www.researchgate.netSingle Source Unsplittable Flows with Arc-Wise Lower and Upper Bounds | Request PDFApril 1, 2020](https://www.researchgate.net/publication/340629002%5FSingle%5FSource%5FUnsplittable%5FFlows%5Fwith%5FArc-Wise%5FLower%5Fand%5FUpper%5FBounds)
+
+- [doi.orgThe Random Assignment Problem with Submodular Constraints on Goods | ACM Transactions on Economics and ComputationJanuary 22, 2018](https://doi.org/10.1145/3175496)
+
+- [arxiv.orgA Counterexample to a Conjecture of Gomory and JohnsonJanuary 24, 2017](https://arxiv.org/abs/1701.06621)
+
+- [doi.orgExponential Lower Bounds for Polytopes in Combinatorial Optimization | Journal of the ACMMay 6, 2015](https://doi.org/10.1145/2716307)
+
+- [arxiv.orgA counterexample to the pseudo 2-factor isomorphic graph conjectureDecember 11, 2014](https://arxiv.org/abs/1412.3350)
+
+- [epubs.siam.orgProceedings of the 2009 Annual ACM-SIAM Symposium on Discrete Algorithms (SODA) | A logarithmic approximation for unsplittable flow on line graphsDecember 18, 2013](https://epubs.siam.org/doi/10.1137/1.9781611973068.77)
+
+- [revistapolitecnica.epn.edu.ecEvaluación Experimental del Problema de Flujo no Divisible de Costo Mínimo con única fuente mediante la aplicación de Algoritmos Genéticos | Revista PolitécnicaJuly 31, 2013](https://revistapolitecnica.epn.edu.ec/ojs2/index.php/revista%5Fpolitecnica2/article/view/28)
+
+- [epubs.siam.orgThe All-or-Nothing Multicommodity Flow Problem | SIAM Journal on ComputingJuly 2, 2013](https://epubs.siam.org/doi/10.1137/100796820)
+
+- [pubsonline.informs.orgThe Maximum Multiflow Problems with Bounded Fractionality | Mathematics of Operations ResearchJune 17, 2013](https://pubsonline.informs.org/doi/abs/10.1287/moor.2013.0600)
+
+- [epubs.siam.orgThe Price of Routing Unsplittable Flow | SIAM Journal on ComputingJanuary 24, 2013](https://epubs.siam.org/doi/10.1137/070702370)
+
+- [epubs.siam.orgApproximation Algorithms for Single-Source Unsplittable Flow | SIAM Journal on ComputingFebruary 17, 2012](https://epubs.siam.org/doi/pdf/10.1137/S0097539799355314)
+
+- [epubs.siam.orgApproximation Algorithms for Single-Source Unsplittable Flow | SIAM Journal on ComputingFebruary 17, 2012](https://epubs.siam.org/doi/pdf/10.1137/S0097539799355314)
+
+- [epubs.siam.orgApproximation Algorithms for Single-Source Unsplittable Flow | SIAM Journal on ComputingFebruary 17, 2012](https://epubs.siam.org/doi/pdf/10.1137/S0097539799355314)
+
+- [epubs.siam.orgApproximation Algorithms for Single-Source Unsplittable Flow | SIAM Journal on ComputingFebruary 17, 2012](https://epubs.siam.org/doi/pdf/10.1137/S0097539799355314)
+
+- [doi.orgApproximation Algorithms for Single-Source Unsplittable Flow | SIAM Journal on ComputingFebruary 17, 2012](https://doi.org/10.1137/s0097539799355314)
+
+- [optimization-online.orgUnharnessing the power of Schrijver’s permanental inequality – Optimization OnlineJune 16, 2011](https://optimization-online.org/2011/06/3066/)
+
+- [www.sciencedirect.comOn the approximation of the single source k-splittable flow problem - ScienceDirectJune 1, 2008](https://www.sciencedirect.com/science/article/pii/S1570866707000184)
+
+- [dblp.orgdblp: 15. ESA 2007: Eilat, IsraelOctober 8, 2007](https://dblp.org/db/conf/esa/esa2007)
+
+- [dblp.uni-trier.dedblp: 15. ESA 2007: Eilat, IsraelOctober 8, 2007](https://dblp.uni-trier.de/db/conf/esa/esa2007.html)
+
+- [www.cambridge.orgOn the minimum cost multiple-source unsplittable flow problem | RAIRO - Operations Research | Cambridge CoreAugust 21, 2007](https://www.cambridge.org/core/journals/rairo-operations-research/article/on-the-minimum-cost-multiplesource-unsplittable-flow-problem/5F0B02D72BCCAAD63761A16E86F72992)
+
+- [doi.org(Almost) tight bounds and existence theorems for confluent flows | Proceedings of the thirty-sixth annual ACM symposium on Theory of computingJune 13, 2004](https://doi.org/10.1145/1007352.1007432)
+
+- [epubs.siam.orgApproximation Algorithms for Single-Source Unsplittable Flow | SIAM Journal on ComputingJanuary 1, 2001](https://epubs.siam.org/doi/10.1137/S0097539799355314)
+
+- [portal.mardi4nfdi.deOn the single-source unsplittable flow problem - MaRDI portalDecember 8, 1999](https://portal.mardi4nfdi.de/wiki/On%5Fthe%5Fsingle-source%5Funsplittable%5Fflow%5Fproblem)
+
+- [cris.bgu.ac.ilOn the single-source unsplittable flow problem - Ben-Gurion University Research PortalJanuary 1, 1999](https://cris.bgu.ac.il/en/publications/on-the-single-source-unsplittable-flow-problem-3/)
+
+- [www.researchgate.net(PDF) On the Single-Source Unsplittable Flow ProblemDecember 1, 1998](https://www.researchgate.net/publication/3785031%5FOn%5Fthe%5FSingle-Source%5FUnsplittable%5FFlow%5FProblem)
+
+- [www.researchgate.netA parallel machine scheduling problem as an unsplittable flow problem. | Download Scientific DiagramDecember 1, 1998](https://www.researchgate.net/figure/A-parallel-machine-scheduling-problem-as-an-unsplittable-flow-problem%5Ffig1%5F3785031)
+
+- [www.researchgate.netA parallel machine scheduling problem as an unsplittable flow problem. | Download Scientific DiagramDecember 1, 1998](https://www.researchgate.net/figure/A-parallel-machine-scheduling-problem-as-an-unsplittable-flow-problem%5Ffig1%5F3785031)
+
+- [cris.bgu.ac.ilOn the single-source unsplittable flow problem - Ben-Gurion University Research PortalDecember 1, 1998](https://cris.bgu.ac.il/en/publications/on-the-single-source-unsplittable-flow-problem/)
+
+- [cris.bgu.ac.ilOn the single-source unsplittable flow problem - Ben-Gurion University Research PortalDecember 1, 1998](https://cris.bgu.ac.il/en/publications/on-the-single-source-unsplittable-flow-problem/)
+
+- [doi.orgA New Bound for the 2-Edge Connected Subgraph Problem | Springer Nature LinkJune 18, 1998](https://doi.org/10.1007%2F3-540-69346-7%5F9)
+
+- [doi.orgOn approximating the longest path in a graph | Algorithmica | Springer Nature LinkMay 1, 1997](https://doi.org/10.1007/bf02523689)
+
+- [doi.orgSingle-source unsplittable flowOctober 14, 1996](https://doi.org/10.1109/SFCS.1996.548465)
+
+- [doi.orgItem - Optimal Inapproximability Results for MAX-CUT and Other 2-Variable CSPs? - Carnegie Mellon University - FigshareJanuary 1, 1982](https://doi.org/10.1184/R1/6608114)
+
+- [www.iaorifors.comApproximating the single source unsplittable min-cost flow problemJanuary 1, 1970](https://www.iaorifors.com/paper/39214)
+
+- [arxiv.orgInteger and Unsplittable Multiflows in Series-Parallel DigraphsTotal lines: 6](https://arxiv.org/abs/2412.05182)
+
+- [www.emergentmind.comSimple digraph counterexample for the fully directed bunkbed model (E8)](https://www.emergentmind.com/open-problems/simple-digraph-counterexample-e8)
+
+- [www.researchgate.netUnsplittable Cost Flows from Unweighted Error-Bounded Variants](https://www.researchgate.net/publication/396924745%5FUnsplittable%5FCost%5FFlows%5Ffrom%5FUnweighted%5FError-Bounded%5FVariants)
+
+- [www.researchgate.net(PDF) On the Single-Source Unsplittable Flow ProblemTotal lines: 2313](https://www.researchgate.net/publication/3785031%5FOn%5Fthe%5FSingle-Source%5FUnsplittable%5FFlow%5FProblem)
+
+- [www.researchgate.netUnsplittable Cost Flows from Unweighted Error-Bounded Variants](https://www.researchgate.net/publication/396924745%5FUnsplittable%5FCost%5FFlows%5Ffrom%5FUnweighted%5FError-Bounded%5FVariants)
+
+- [www.researchgate.netImplementing Approximation Algorithms for the Single-Source Unsplittable Flow Problem](https://www.researchgate.net/publication/2905825%5FImplementing%5FApproximation%5FAlgorithms%5Ffor%5Fthe%5FSingle-Source%5FUnsplittable%5FFlow%5FProblem)
+
+- [redi.cedia.edu.ecConvex combinations of single source unsplittable flows - RE | REDI](https://redi.cedia.edu.ec/document/97557)
+
+- [redi.cedia.edu.ecConvex combinations of single source unsplittable flows - RE | REDI](https://redi.cedia.edu.ec/document/97557)
+
+- [redi.cedia.edu.ecConvex combinations of single source unsplittable flows - RE | REDI](https://redi.cedia.edu.ec/document/97557)
+
+- [redi.cedia.edu.ecConvex combinations of single source unsplittable flows - RE | REDI](https://redi.cedia.edu.ec/document/97557)
+
+- [redi.cedia.edu.ecConvex combinations of single source unsplittable flows - RE | REDI](https://redi.cedia.edu.ec/document/97557)
+
+- [www.sciencedirect.comSingle-source k-splittable min-cost flows - ScienceDirect](https://www.sciencedirect.com/science/article/abs/pii/S0167637709000133)
+
+- [www.sciencedirect.comSingle-source k-splittable min-cost flows - ScienceDirect](https://www.sciencedirect.com/science/article/abs/pii/S0167637709000133)
+
+- [sophon.atFlow-Anchored Consistency Models · Sophon](https://sophon.at/papers/pwc-51686)
+
+- [doi.orgk-Edge-Connectivity: Approximation and LP Relaxation | Springer Nature Link](https://doi.org/10.1007/978-3-642-18318-8%5F20)
+
+- [doi.orgSemidefinite Programming and Approximation Algorithms: A Survey | Springer Nature Link](https://doi.org/10.1007/978-3-642-25591-5%5F2)
+
+- [doi.orgNP-Hardness of Broadcast Scheduling and Inapproximability of Single-Source Unsplittable Min-Cost Flow | Journal of Scheduling | Springer Nature Link](https://doi.org/10.1023/B%3AJOSH.0000019682.75022.96)
+
+- [ideas.repec.orgOn the single-source unsplittable flow problem](https://ideas.repec.org/p/cor/louvrp/1433.html)
+
+- [ideas.repec.orgOn the single-source unsplittable flow problem](https://ideas.repec.org/p/cor/louvrp/1433.html)
+
+- [vimeo.comStudent Conference Srinwanti Debgupta: Unsplittable Transshipments.mov | Videos & Movies on Vimeo](https://vimeo.com/1060056855)
+
+- [research.dial.uclouvain.beOn the single-source unsplittable flow problem](https://research.dial.uclouvain.be/entities/publication/6ee460f5-8423-48bf-b514-18029db29bd1)
+
+- [dblp.orgdblp: On the Single-Source Unsplittable Flow Problem.](https://dblp.org/rec/journals/combinatorica/DinitzGG99.html)
+
+- [dblp.orgdblp: On the Single-Source Unsplittable Flow Problem.](https://dblp.org/rec/conf/focs/DinitzGG98)
+
+- [dblp.orgdblp: Maren Martens](https://dblp.org/pid/65/1213)
+
+- [dblp.orgdblp: Maren Martens](https://dblp.org/pid/65/1213.html)
+
+- [dblp.orgdblp: On the Single-Source Unsplittable Flow Problem.](https://dblp.org/rec/journals/combinatorica/DinitzGG99.html)
+
+- [dblp.orgdblp: On the Single-Source Unsplittable Flow Problem.](https://dblp.org/rec/conf/focs/DinitzGG98)
+
+- [bytez.comUnsplittable Cost Flows from Unweighted Error-Bounded Va...](https://bytez.com/docs/arxiv/2510.21287/paper)
+
+- [independent.academia.eduFernanda Salazar - Independent Researcher](https://independent.academia.edu/FernandaSalazar18)
+
+- [independent.academia.eduFernanda Stefania Archila Salazar - Independent Researcher](https://independent.academia.edu/FernandaStefaniaArchilaSalazar)
+
+- [link.springer.comSingle source unsplittable flows with arc-wise lower and upper bounds | Mathematical Programming | Springer Nature LinkTotal lines: 697](https://link.springer.com/article/10.1007/s10107-021-01704-4)
+
+- [openresearch-repository.anu.edu.auDirected Unfolding of Petri Nets](https://openresearch-repository.anu.edu.au/items/25b096f3-4c23-4c9b-843a-205ce1c8205a)
+
+- [ndlsearch.ndl.go.jpExact Solution of the Knapsack Problem | NDLサーチ | 国立国会図書館](https://ndlsearch.ndl.go.jp/books/R100000136-I1360025437287008896)
+
+- [eurekamag.comUnsplittable Cost Flows from Unweighted Error-Bounded Variants](https://eurekamag.com/research/104/981/104981968.php)
+
+- [www.themoonlight.io\[Revue de papier\] Integer and Unsplittable Multiflows in Series-Parallel Digraphs](https://www.themoonlight.io/fr/review/integer-and-unsplittable-multiflows-in-series-parallel-digraphs)
+
+- [www.themoonlight.io\[Revisión de artículo\] Integer and Unsplittable Multiflows in Series-Parallel Digraphs](https://www.themoonlight.io/es/review/integer-and-unsplittable-multiflows-in-series-parallel-digraphs)
+
+- [en.wikipedia.orgNew digraph reconstruction conjecture](https://en.wikipedia.org/wiki/New%5Fdigraph%5Freconstruction%5Fconjecture)
+
+- [academicnewsletter.sufe.edu.cn全球经管学术 - GLOBE](https://academicnewsletter.sufe.edu.cn/info/396836)
+
+- [academicnewsletter.sufe.edu.cn全球经管学术 - GLOBE](https://academicnewsletter.sufe.edu.cn/info/396836)
 ``````
+
+## Research conclusion
+
+I did **not** obtain a valid counterexample, and presenting the construction below as one would be mathematically false. The requested object would disprove a conjecture that is still open in the current literature.
+
+The exact conjecture asks, for D=dmax​, for an unsplittable load vector y satisfying
+
+ya​≤xa​+Dfor every arc a,cTy≤cTx.
+
+This is precisely Conjecture 1.3 in the supplied paper. The paper’s planar result does **not** prove this exact statement: with costs it obtains additive error 2D, rather than D. As of July 2026, the latest SOSA work still describes the general statement as a famous conjecture with only limited progress; the exact result is now known for series-parallel digraphs, but not for arbitrary acyclic digraphs.
+
+What follows is the strongest structured attack I found: an exact certificate formulation, a very small **abstract almost-counterexample**, and a rigorous explanation of why its natural graph realization fails.
+
+***
+
+## 1. An exact certificate for a genuine counterexample
+
+Fix G,s,T,d,x, and let U be the finite set of load vectors of all unsplittable routings. Define the capacity-good routings by
+
+U(x)={y∈U:ya​≤xa​+D∀a}.
+
+Consider the linear program
+
+maximizesubject to​δcT(y−x)≥δ∀y∈U(x),a∈A∑​ca​=1,ca​≥0∀a∈A.​(SEP)
+
+This is a complete, machine-checkable test:
+
+(G,s,T,d,x) admits a counterexample cost vector⟺opt(SEP)>0.​
+
+Indeed, if the optimum is δ>0, its vector c satisfies
+
+cTy≥cTx+δ>cTx
+
+for every capacity-good unsplittable routing. Conversely, any counterexample cost can be normalized so that ∑a​ca​=1, and the minimum gap over the finite set U(x) is strictly positive.
+
+For an acyclic graph this is also a convex-hull test:
+
+opt(SEP)>0⟺x∈/convU(x).
+
+The reason is that every member of U(x) and x has the same divergence. If x were only componentwise above a convex combination of good routings, their difference would be a nonnegative circulation; an acyclic digraph has no nonzero nonnegative circulation.
+
+Thus a publishable counterexample can be very compactly certified by giving rational data G,d,x and a rational feasible solution of (SEP) with δ>0.
+
+***
+
+## 2. A seven-resource structured almost-counterexample
+
+Take three terminals with demands
+
+d1​=1,d2​=109​,d3​=108​,D=1.
+
+For each terminal i, introduce two abstract choices Pi0​,Pi1​, and fractionally select each with probability 1/2.
+
+For every binary vector
+
+r=(r1​,r2​,r3​)∈{0,1}3∖{(1,1,1)},
+
+introduce a resource er​, and put er​ in exactly the three choices
+
+P1r1​​,P2r2​​,P3r3​​.
+
+Let
+
+S=d1​+d2​+d3​=1027​.
+
+Every resource has fractional load
+
+x(er​)=21​S=2027​.
+
+An integral selection is represented by a binary vector q. Whenever q=(1,1,1), the three selected choices all use eq​, giving load
+
+y(eq​)=S=1027​.
+
+But
+
+x(eq​)+D=2027​+1=2047​,
+
+and therefore
+
+1027​=2054​>2047​.
+
+Consequently, every selection other than 111 violates an upper bound. The selection 111 is the unique capacity-good selection.
+
+Now add a private cost-one resource to each choice Pi1​, while all other resources have cost zero. The fractional cost is
+
+21​(d1​+d2​+d3​)=2027​,
+
+whereas the unique good selection 111 costs
+
+d1​+d2​+d3​=1027​.
+
+Thus, as an abstract partition-constrained resource-selection system, this is a clean counterexample with factor-two cost separation.
+
+It is the seven-resource refinement of the cube construction in Figure 1 of the supplied paper. In the paper’s eight-resource version, every one of the eight binary selections overloads its corresponding black arc.
+
+***
+
+## 3. Why it is not an SSUF counterexample
+
+The obstruction is **path splicing**.
+
+Suppose two intended paths contain a common directed segment,
+
+P=Q1​RS1​,P′=Q2​RS2​.
+
+Whenever the concatenations remain directed paths, the same support graph also contains
+
+Q1​RS2​andQ2​RS1​.
+
+At the tail of R, the graph forgets which prefix was used; at the head of R, either available suffix may be taken. Repeated shared-resource gadgets therefore generate many hybrid paths that are not among the six designated choices.
+
+This is not a cosmetic defect. Apply the Dinitz–Garg–Goemans theorem to the support graph
+
+H=(V,{a:xa​>0}).
+
+The same x is a feasible fractional flow in H, so there must be an unsplittable routing entirely in H satisfying y≤x+D. Therefore, any attempted realization of the seven-resource system must introduce enough support hybrids to repair its abstract capacity obstruction.
+
+In a faithful layered reconstruction of the cube gadget, I obtained hundreds of actual source-terminal paths rather than two paths per terminal. The separating LP then had value 0: hybrid routings restored the conjectured cost bound.
+
+This also proves a useful no-go statement:
+
+> **Off-support penalty lemma.** A counterexample cannot assign zero cost to every arc with xa​>0 and try to penalize only newly introduced or off-support hybrid arcs.
+
+The DGG routing obtained inside the support would then have cost zero, equal to the fractional cost.
+
+***
+
+## 4. Further necessary properties of a real counterexample
+
+### Unequal demands are indispensable
+
+When all demands equal d, set z=x/d and give arc a the integral capacity
+
+ua​=⌈za​⌉.
+
+The fractional unit-demand flow z is feasible for these capacities. By min-cost flow integrality, there is an integral flow z′ of no greater cost. Since every terminal has unit demand, z′ decomposes into one path per terminal. Then y=dz′ is unsplittable and
+
+ya​≤d⌈dxa​​⌉≤xa​+d,cTy≤cTx.
+
+Thus an example based on equal binary commodities cannot work in a genuine graph. More generally, divisibility-chain demands are already a known positive case.
+
+### Costs must be genuinely distributed over the fractional support
+
+The expected cost of independent path sampling from any terminal-wise path decomposition of x is exactly cTx. Hence there is always at least one support routing of cost at most cTx.
+
+Separately, DGG guarantees at least one support routing satisfying the load bounds. A counterexample must force these two nonempty families to be disjoint:
+
+{low-cost support routings}∩{capacity-good support routings}=∅.
+
+So neither a pure high-cost bypass construction nor a pure capacity gadget suffices.
+
+### The graph must go beyond the known positive structures
+
+Any counterexample must lie outside the series-parallel class, where the required convex decomposition is now proved. Nonplanarity itself is not the established boundary: the supplied planar result gives the cost guarantee with 2D, not a proof or disproof at D.
+
+The smallest credible topology therefore appears to require several interacting merge-split gadgets—a splice-closed “braid”—together with at least three genuinely incomparable demands and positive costs on support arcs.
+
+***
+
+## 5. Computational outcome of this attempt
+
+I implemented two exact tests:
+
+1. Full enumeration of all source-terminal paths and all unsplittable routings, followed by (SEP).
+2. For larger path systems, column generation in which the pricing oracle is a binary min-cost unsplittable-flow program subject to y≤x+D.
+
+In this session I screened:
+
+- 7,248 small layered instances with three or four terminals and rational unequal demands;
+- 378 larger random support-DAG instances using the integer pricing oracle;
+- the cube/Figure-1 family and its seven-resource unique-good-selection refinement;
+- small Wheatstone, complete layered, and repeated merge-split networks.
+
+None produced a strictly positive separation value. This is not evidence sufficient to prove the conjecture, but it rules out the most direct clause, hypercube, zero-support-cost, and small-braid constructions.
+
+## Bottom line
+
+The seven-resource construction is a sharp **abstract** counterexample, but path-splicing prevents it from being an SSUF counterexample. I found no valid graph instance with a positive separation certificate. The honest mathematical outcome is therefore a structured no-go result and an exact certification framework—not a disproof of Goemans’ conjecture. A genuine breakthrough must supply explicit rational G,d,x,c together with opt(SEP)>0; without that universal separation certificate, the proposed gadget has not defeated its hybrid paths.
+
+# please continue research and find a complete unconditional counterexample <!-- Tuesday 6:32 PM -->
+
+``````md thinking
+Worked for 89m 12s
+
+Searched recent literature on Goemans conjecture solutions
+
+Explored routes and conjectures
+
+Designed path families
+
+Searched the web and arxiv.org
+
+Read PDF documentation, extracted text, and checked libraries
+
+Reasoned through flow aggregation
+
+Rendered PDF page, located file, and analyzed image sections
+
+Analyzed path choices and intersections
+
+Enumerated and tested graph paths for routing optimization
+
+Searched for counterexamples to Goemans' conjecture across multiple sources
+
+Built and optimized resource graph with MILP solver
+
+Searched for network flow polytope decomposition counterexamples on arxiv.org
+
+Evaluated hybrid routing, constructed graphs, and tested optimizations
+
+Explored flow integrality and searched multiple academic sources
+
+Searched the web and link.springer.com
+
+Optimized routing costs, evaluated network configurations, and tested algorithms
+
+Searched for cost-congestion tradeoffs in multiple research sources
+
+Mapped abstract costs, recreated variable, and evaluated mappings
+
+Extracted text from PDF
+
+Searched for counterexamples and updates on Goemans' conjecture
+
+Read paper for conjecture and counterexample clues
+
+Optimized flow decomposition and tested triangle graph demands
+
+Searched multiple academic sources for unsplittable flow algorithms
+
+Optimized system search and built a layered routing system
+
+Searched the web for papers on unsplittable flows
+
+Explored vertex enumeration, random graphs, and system samples
+
+Searched for counterexamples to Goemans conjecture across multiple sources
+
+Searched for PDFs of research papers across multiple websites
+
+Evaluated and optimized global graph structures with MILP methods
+
+Searched various websites for Goemans conjecture and flow
+
+Optimized resource-layered graph and built tensor x for demands
+
+Searched the web, arxiv.org, and drops.dagstuhl.de
+
+Investigated integrality gap for disjoint paths
+
+Searched multiple sources for research on Goemans' conjecture
+
+Checked optimization libraries and generated optimized path distributions
+
+Activity·89m 12s
+
+Pro thinking
+
+Exploring routes and conjectures
+
+I'm working through a convex decomposition problem with graph theory, aiming to find a counterexample involving path selections and fractional flow. It’s a bit complex—even looking for optimizations.
+
+Designing path families
+
+I’m working out a way to design a path family that’s closed under splicing, considering optimization and conjecture violations with different routings over small graphs. It’s a bit complicated, but I’ll keep testing.
+
+Analyzed
+
+Reading PDF skill documentation
+
+```
+Python
+
+bash -lc cat /home/oai/skills/pdfs/SKILL.md
+
+```
+
+Reasoning through flow aggregation
+
+I’m working through a complex mathematical formulation of fractional flow, trying to understand how aggregate flows interact with paths and terminals. The goal is to dissect how certain flows violate convex hulls.
+
+Rendering PDF page for graph reconstruction
+
+```
+Python
+
+bash -lc mkdir -p /mnt/data/renders && python /home/oai/skills/pdfs/scripts/render_pdf.py /mnt/data/Dinitz_Garg_Goemans.pdf --out_dir /mnt/data/renders --dpi 300 --pages 6
+
+```
+
+Analyzing path choices and intersections
+
+I’m exploring path choices and connections using geometric reasoning. The paths involve different connectors, including intersections and splicing, which could require careful labeling and adjustments at crossing points.
+
+Enumerating and testing graph paths and routing
+
+```
+Python
+
+from collections import defaultdict
+import itertools, math, numpy as np, pandas as pd
+# Build cube graph
+nodes=set()
+arcs=[] # (tail,head,name)
+def add(u,v,name):
+    nodes.update([u,v]); arcs.append((u,v,name)); return len(arcs)-1
+
+labels_top=['111','112','122','121']
+labels_bot=['222','221','211','212']
+labels=labels_top+labels_bot
+# black arcs
+black={}
+for r in labels:
+    black[r]=add('A'+r,'B'+r,'e'+r)
+# source parallel arcs by commodity i and choice b
+source_arcs={}
+for i in [1,2,3]:
+    source_arcs[(i,1)] = add('s','A111',f's_{i}1')
+    source_arcs[(i,2)] = add('s','A222',f's_{i}2')
+# Stage connectors helper distinct parallel
+# red i1
+conn={}
+def aconn(i,b,k,u,v):
+    conn[(
+
+```
+
+```
+(24, 44)
+```
+
+Building resource graph with MILP solver
+
+```
+Python
+
+from dataclasses import dataclass
+
+@dataclass
+class DAGInstanceGraph:
+    nodes: list
+    arcs: list
+    terminals: list
+    source: str
+    designated: dict
+    Aeq: any
+    beq: np.ndarray
+    K: int
+    m: int
+    node_list: list
+
+def build_resource_graph(resources, memberships, order, K=3):
+    """
+    resources list labels
+    memberships[(i,b)] = list/set of resources used
+    order: permutation resources (global)
+    private connector arc per designated path
+    """
+    pos={r:j for j,r in enumerate(order)}
+    arcs=[]; nodes={'s'}
+    def add(u,v,name):
+        nodes.update([u,v]); arcs.append((u,v,name)); return len(arcs)-1
+
+```
+
+```
+(34, 18)
+```
+
+Evaluating hybrid routing with optimization constraints
+
+```
+Python
+
+# define costs on designated choice1 private arcs (non-resource)
+cost=np.zeros(G7.m)
+for i in range(1,4):
+    for e in G7.designated[(i,1)]:
+        if not G7.arcs[e][2].startswith('e'):
+            cost[e]=1
+y,res=price_good_graph(G7,xx,dd,cost,time_limit=20)
+res.fun, cost@xx, y is not None
+
+```
+
+```
+(0.8, np.float64(5.4), True)
+```
+
+Analyzed
+
+Optimizing routing incidence and cost constraints
+
+```
+Python
+
+def enumerate_routing_incidence(G,max_routings=100000):
+    paths=[enum_arc_paths(G,t,limit=max_routings) for t in G.terminals]
+    count=math.prod(map(len,paths))
+    if count>max_routings:return None,paths,count
+    N=count;K=G.K;m=G.m
+    R=np.zeros((N,K,m),dtype=np.int8)
+    combos=[]
+    for r,combo in enumerate(itertools.product(*[range(len(p)) for p in paths])):
+        for i,j in enumerate(combo):
+            R[r,i,list(paths[i][j])]=1
+        combos.append(combo)
+    return R,paths,count
+
+def optimize_d_x_fixed_cost(G,R,c,dmin=0.05,eps_bad=1e-3,time_limit=30,verbose=False):
+    """
+    Normalize d0=1, other demands in [dmin,1]. Optimize d, fractional flow x, delta.
+    Every routing either bad by eps or cost gap delta.
+    """
+    c=np.asarray(c,float);N,K,m=R.shape
+    # vars f K*m, d K, delta, binaries per routing (cost + shared edges)
+    nF=K*m; idx_d=nF; idx_delta=nF+K
+    shared=[np.where(R[r].sum(axis=0)>=2)[0].tolist() for r in range(N)]
+    qstart=[];nvar=idx_delta+1
+    for r in range(N):
+        qstart.append(nvar);nvar+=1+len(shared[r])
+    integ=np.zeros(nvar,int);lb=np.zeros(nvar);ub=np.full(nvar,np.inf)
+    # f <=1
+    ub[:nF]=1
+    lb[idx_d:idx_d+K]=dmin;ub[idx_d:idx_d+K]=1
+    lb[idx_d]=ub[idx_d]=1
+    lb[idx_delta]=-K;ub[idx_delta]=K
+    for r in range(N):
+        st=qstart[r];integ[st:st+1+len(shared[r])]=1;ub[st:st+1+len(shared[r])]=1
+    rows=[];lo=[];hi=[]
+    # flow conservation: out-in - sign*d_i =0
+    for i,t in enumerate(G.terminals):
+        for v in G.nodes:
+            row=lil_matrix((1,nvar))
+            for e,(u,w,n) in enumerate(G.arcs):
+                if u==v:row[0,i*m+e]+=1
+                if w==v:row[0,i*m+e]-=1
+            if v==G.source: row[0,idx_d+i]-=1
+            elif v==t: row[0,idx_d+i]+=1 # out-in=-d => out-in+d=0
+            rows.append(row);lo.append(0);hi.append(0)
+    Smax=K;Mbad=K+2;Mcost=3*K+1
+    cx=np.tile(c,K)
+    for r in range(N):
+        st=qstart[r];sh=shared[r]
+        row=lil_matrix((1,nvar));row[0,st:st+1+len(sh)]=1
+        rows.append(row);lo.append(1);hi.append(np.inf)
+        # cost: c*v - c*x >= delta - M(1-q0)
+        # -c*x + sum_i d_i*(c·R_ri) -delta -M q0 >= -M
+        row=lil_matrix((1,nvar));row[0,:nF]=-cx
+        for i in range(K):row[0,idx_d+i]=float(c@R[r,i])
+        row[0,idx_delta]=-1;row[0,st]=-Mcost
+        rows.append
+
+```
+
+```
+0 (np.float64(-0.0), array([1. , 1. , 0.1]))
+1 (np.float64(-0.0), array([1., 1., 1.]))
+2 (np.float64(-0.0), array([1. , 0.1, 1. ]))
+3 (np.float64(-0.0), array([1. , 1. , 0.1]))
+4 (np.float64(-0.0), array([1.   , 0.901, 0.1  ]))
+```
+
+Mapping abstract costs to graph structure
+
+```
+Python
+
+def map_abstract_cost_to_graph(TG,cabs,resources,terminal_tracks,strategy='source'):
+    H=len(resources);tracks=[tr for g in terminal_tracks for tr in g]
+    c=np.zeros(TG.G.m)
+    # resource arc name e+r
+    name_to_ids=collections.defaultdict(list)
+    for e,(u,v,n) in enumerate(TG.G.arcs):name_to_ids[n].append(e)
+    for h,r in enumerate(resources):
+        ids=name_to_ids['e'+str(r)]
+        if ids:c[ids[0]]+=cabs[h]
+    for j,tr in enumerate(tracks):
+        val=cabs[H+j]
+        p=TG.track_paths[tr]
+        private=[e for e in p if not TG.G.arcs[e][2].startswith('e')]
+        if not private:continue
+        if strategy=='source':
+            c[private[0]]+=val
+        elif strategy=='terminal':
+            c[private[-1]]+=val
+        elif strategy=='equal':
+            for e in private:c[e]+=val/len(private)
+        elif strategy=='middle':
+            c[private[len(private)//2]]+=val
+    return c
+
+# test pair triangle abstract cost
+fs,_=finite_sep(xa,Ya,1)
+TGpt=build_track
+
+```
+
+```
+---------------------------------------------------------------------------
+KeyError                                  Traceback (most recent call last)
+Cell In[61], line 27
+     23     return c
+     24
+     25 # test pair triangle abstract cost
+     26 fs,_=finite_sep(xa,Ya,1)
+---> 27 TGpt=build_track_resource_graph(termtracks,mem,['12','13','23'])
+     28 xgpt=track_fractional_x(TGpt,[1,1,1],probs)
+     29 for st in ['source','terminal','equal','middle']:
+     30     cg=map_abstract_cost_to_graph(TGpt,fs[1],['12','13','23'],termtracks,st)
+
+Cell In[54], line 24, in build_track_resource_graph(terminal_tracks, memberships, resource_order)
+     20     res_arc={r:add('A'+str(r),'B'+str(r),'e'+str(r)) for r in resources}
+     21     track_paths={}
+     22     for i,trks in enumerate(terminal_tracks,1):
+     23         for tr in trks:
+---> 24             seq=sorted(memberships[tr],key=lambda r:pos[r])
+     25             p=[]
+     26             if seq:
+     27                 p.append(add('s','A'+str(seq[0]),f's_tr{tr}'))
+
+Cell In[54], line 24, in build_track_resource_graph.<locals>.<lambda>(r)
+---> 24             seq=sorted(memberships[tr],key=lambda r:pos[r])
+
+KeyError: 'r5'
+```
+
+Analyzed
+
+Extracting text from PDF
+
+```
+Python
+
+bash -lc pdftotext -layout /mnt/data/unsplittable_cost_2025.pdf /mnt/data/unsplittable_cost_2025.txt && sed -n '1,260p' /mnt/data/unsplittable_cost_2025.txt
+
+```
+
+Reading paper for conjecture and counterexample clues
+
+```
+Python
+
+bash -lc grep -n -E "Conjecture|counterexample|open|equivalent|polytope|face|rounding|error-bounded" /mnt/data/unsplittable_cost_2025.txt | head -80
+
+```
+
+Optimizing flow decomposition and counterexample detection
+
+```
+Python
+
+try:
+    print("GPT" in globals(), "separation_graph" in globals(), "finite_sep" in globals())
+    print([k for k in globals().keys() if k in ['GPT','Gfig','build_track_resource_graph']])
+except Exception as e:
+    print(e)
+
+```
+
+```
+True True True
+['GPT', 'build_track_resource_graph']
+```
+
+Optimizing system search with combinatorial enumeration
+
+```
+Python
+
+def prepare_levels(sys):
+    sys._levels=[np.unique(np.round(sys.Y[:,a],12)) for a in range(sys.m)]
+    return sys
+
+def cell_bounds_fast(sys,x,eps=1e-8):
+    D=float(max(sys.demands))
+    lower=np.empty(sys.m);upper=np.empty(sys.m)
+    for a,vals in enumerate(sys._levels):
+        th=x[a]+D
+        j=np.searchsorted(vals,th+1e-10,side='right')-1
+        L=vals[j] if j>=0 else -np.inf
+        N=vals[j+1] if j+1<len(vals) else np.inf
+        lower[a]=L-D if np.isfinite(L) else -np.inf
+        upper[a]=N-D-eps if np.isfinite(N) else np.inf
+    return lower,upper
+
+def optimize_x_in_cell_fast(sys,x,c,eps=1e-8):
+    lower,upper=cell_bounds_fast(sys
+
+```
+
+```
+[1, 0.9, 0.8] 1.0000000139065436e-08
+[1, 0.7, 0.4] 5.000000136146103e-09
+[1, 0.75, 0.55] 9.999999828202988e-09
+```
+
+Exploring vertex enumeration in polyhedral cells
+
+```
+Python
+
+def explore_cells(sys, rng, ncell=30, nverts=20, alpha=.2, tol=1e-7):
+    prepare_levels(sys)
+    best=(-1,None)
+    n=len(sys.Y)
+    for ci in range(ncell):
+        x0,_=sample_x_marginal(sys,rng,alpha=10**rng.uniform(-1.5,.5))
+        lower,upper=cell_bounds_fast(sys,x0,eps=1e-9)
+        A=[];b=[]
+        for a in range(sys.m):
+            col=sys.Y[:,a]
+            if np.isfinite(upper[a]):A.append(col);b.append(upper[a])
+            if np.isfinite(lower[a]):A.append(-col);b.append(-lower[a])
+        Aub=np.array(A) if A else None;bub=np.array(b) if A else None
+        dirs=[rng.normal(size
+
+```
+
+```
+[1, 0.9, 0.8] 2.000000165480742e-09
+[1, 0.7, 0.4] 2.000000316153867e-09
+[1, 0.55, 0.41] 2.000000059273183e-09
+```
+
+Analyzed
+
+Evaluating track graph optimization and resource separation
+
+```
+Python
+
+[name for name in globals() if 'conflict' in name.lower() or 'pair' in name.lower() or name.startswith('TG')]
+
+```
+
+```
+['pairs', 'build_pair_triangle', 'build_conflict_track_graph', 'TG', 'TGpt']
+```
+
+Optimizing resource-layered graph with path enumeration
+
+```
+Python
+
+# build resource layered [3,3] finite system
+GL33=build_resource_layered_graph([3,3],3)
+arcs33=[(u,v) for u,v,nm in GL33.arcs]
+sys33=finite_system_from_graph(GL33.nodes,arcs33,'s',GL33.terminals,[1,.8,.6],max_paths=100,max_routings=100000)
+print([len(P) for P in sys33.paths],len(sys33.Y),GL33.m)
+# identify path choice (a,b) by resource arc indices/names
+for i,P in enumerate(sys33.paths):
+    mapping=[]
+    for j,pv in enumerate(P):
+        names=[GL33.arcs[e][2] for e in np.where(pv>.5)[0]]
+        a=[n for n in names if n.startswith('res_0')][0]
+        b=[n for n in names if n.startswith('res
+
+```
+
+```
+[9, 9, 9] 729 27
+0 [(2, 2), (2, 1), (2, 0), (1, 2), (1, 1), (1, 0), (0, 2), (0, 1), (0, 0)]
+1 [(2, 2), (2, 1), (2, 0), (1, 2), (1, 1), (1, 0), (0, 2), (0, 1), (0, 0)]
+2 [(2, 2), (2, 1), (2, 0), (1, 2), (1, 1), (1, 0), (0, 2), (0, 1), (0, 0)]
+```
+
+Investigating integrality gap for disjoint paths
+
+```
+Python
+
+bdg4=batch_disjoint_random(seed=1313,ngraphs=150,n=9,K=4,p=.3,nsamples=30,q=.97)
+
+```
+
+```
+done 36 best gap 2.0905499553691698e-13 actual -0.0
+```
+
+Checking installed optimization libraries
+
+```
+Python
+
+bash -lc python - <<'PY'
+import importlib.util
+mods=['numpy','scipy','networkx','pulp','mip','ortools','cvxpy','highspy','gurobipy']
+for m in mods:
+ print(m, bool(importlib.util.find_spec(m)))
+PY
+
+```
+
+Worked for 89m 12s
+
+Done
+
+Sources·29
+
+- [SIAM2026 SIAM Symposium on Simplicity in Algorithms (SOSA) | Unsplittable Cost Flows from Unweighted Error-Bounded VariantsJanuary 6, 2026](https://epubs.siam.org/doi/abs/10.1137/1.9781611978964.42?utm%5Fsource=chatgpt.com)
+
+- [arXivInteger and Unsplittable Multiflows in Series-Parallel DigraphsDecember 7, 2024](https://arxiv.org/abs/2412.05182?utm%5Fsource=chatgpt.com)
+
+- PDF\
+  Dinitz\_Garg\_Goemans.pdf
+
+- [dagstuhl.deUnsplittable TransshipmentsJuly 1, 2026 — UNSPLITTABLE TRANSSHIPMENTS AUTHORS SRINWANTI DEBGUPTA , SARAH MORELL , MARTIN SKUTELLA \* \* \* \* Part of: Volume: 53rd International Colloquium on Automata, Languages, and Programming (ICALP 2026)...](https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.ICALP.2026.74?utm%5Fsource=chatgpt.com)
+
+- [researchgate.net(PDF) Integer and unsplittable multiflows in series-parallel digraphsJune 11, 2026 — Article PDF Available INTEGER AND UNSPLITTABLE MULTIFLOWS IN SERIES-PARALLEL DIGRAPHS \* June 2026 \* Mathematical Programming DOI:10.1007/s10107-026-02392-8 \* License \* CC BY 4.0 Authors: Mohamm...](https://www.researchgate.net/publication/408199416%5FInteger%5Fand%5Funsplittable%5Fmultiflows%5Fin%5Fseries-parallel%5Fdigraphs?utm%5Fsource=chatgpt.com)
+
+- [emergentmind.comSingle-Source Unsplittable Flow ConjectureNovember 25, 2025 — SINGLE-SOURCE UNSPLITTABLE FLOW CONJECTURE Updated 25 November 2025 \* Single-Source Unsplittable Flow Conjecture is a key combinatorial optimization problem that asserts one can obtain an unsplitta...](https://www.emergentmind.com/topics/single-source-unsplittable-flow-conjecture?utm%5Fsource=chatgpt.com)
+
+- [jst.go.jpUnsplittable Cost Flows from Unweighted Error-Bounded Variants | Article Information | J-GLOBALOctober 24, 2025 — Preprint J-GLOBAL ID：202502204386016012 Reference number：25P0285613 UNSPLITTABLE COST FLOWS FROM UNWEIGHTED ERROR-BOUNDED VARIANTS 重み無し誤差有界変種からの分割不能コストフロー〖JST機械翻訳〗 \* Publisher site {{ this.onSh...](https://jglobal.jst.go.jp/en/public/202502204386016012?utm%5Fsource=chatgpt.com)
+
+- [expertini.comUnsplittable Cost Flows from Unweighted Error-Bounded Variants by Chaitanya Swamy, Vera Traub, Laura Vargas Koch, Rico Zenklusen | Expertini ResearchOctober 24, 2025 — Computer Science PDF Available Non-peer-reviewed Preprint UNSPLITTABLE COST FLOWS FROM UNWEIGHTED ERROR-BOUNDED VARIANTS Chaitanya Swamy, Vera Traub, Laura Vargas Koch, Rico Zenklusen · Published...](https://research.expertini.com/paper/unsplittable-cost-flows-from-unweighted-error-bounded-variants-2510-21287/?utm%5Fsource=chatgpt.com)
+
+- [papers.coolUnsplittable Cost Flows from Unweighted Error-Bounded Variants | Cool Papers - Immersive Paper DiscoveryOctober 24, 2025 — 2510.21287 Total: 1 #1 UNSPLITTABLE COST FLOWS FROM UNWEIGHTED ERROR-BOUNDED VARIANTS \[PDF^{}\] \[COPY\] \[KIMI^{}\] \[REL\] Authors: Chaitanya Swamy, Vera Traub, Laura Vargas Koch, Rico Zenklusen A famo...](https://papers.cool/arxiv/2510.21287?utm%5Fsource=chatgpt.com)
+
+- [uwaterloo.caC\&O Reading Group -David Aleman | Combinatorics and Optimization | University of WaterlooMay 29, 2025 — C\&O READING GROUP -DAVID ALEMAN Thursday, May 29, 2025 1:00 pm - 2:30 pm EDT (GMT -04:00) iCal Title:Unsplittable Multicommodity Flows in Outerplanar Graphs Speaker: | David Aleman Affiliation:...](https://uwaterloo.ca/combinatorics-and-optimization/events/co-reading-group-david-aleman-3?utm%5Fsource=chatgpt.com)
+
+- [emergentmind.comInteger and Unsplittable Multiflows in Series-Parallel DigraphsDecember 6, 2024 — INTEGER AND UNSPLITTABLE MULTIFLOWS IN SERIES-PARALLEL DIGRAPHS Published 6 Dec 2024 in math.CO and cs.DS | (2412.05182v1) Abstract: An unsplittable multiflow routes the demand of each commodity al...](https://www.emergentmind.com/papers/2412.05182?utm%5Fsource=chatgpt.com)
+
+- [utwente.nlDutch Day on Optimization 2024 | MOR-DMMPSeptember 24, 2024 — DUTCH DAY ON OPTIMIZATION 2024 SINGLE-SOURCE UNSPLITTABLE FLOWS Laura Vargas Koch, University of Bonn Image The single-source unsplittable flow problem asks to send flow in a digraph with capaciti...](https://www.utwente.nl/en/eemcs/dmmp/events/DDO/Abstract%20Laura%20Vargas%20Koch/?utm%5Fsource=chatgpt.com)
+
+- [siam.orgProceedings of the 2024 Annual ACM-SIAM Symposium on Discrete Algorithms (SODA) | Single-Source Unsplittable Flows in Planar GraphsJanuary 4, 2024 — Proceedings Proceedings of the 2024 Annual ACM-SIAM Symposium on Discrete Algorithms (SODA) SINGLE-SOURCE UNSPLITTABLE FLOWS IN PLANAR GRAPHS Authors: Vera Traub, Laura Vargas Koch, and Rico Zenkl...](https://epubs.siam.org/doi/10.1137/1.9781611977912.24?utm%5Fsource=chatgpt.com)
+
+- [emergentmind.comSingle-Source Unsplittable Flows in Planar GraphsAugust 4, 2023 — SINGLE-SOURCE UNSPLITTABLE FLOWS IN PLANAR GRAPHS Published 4 Aug 2023 in cs.DS | (2308.02651v1) Abstract: The single-source unsplittable flow (SSUF) problem asks to send flow from a common source...](https://www.emergentmind.com/papers/2308.02651?utm%5Fsource=chatgpt.com)
+
+- [springer.comSingle source unsplittable flows with arc-wise lower and upper bounds | Mathematical Programming | Springer Nature LinkSeptember 1, 2021 — SINGLE SOURCE UNSPLITTABLE FLOWS WITH ARC-WISE LOWER AND UPPER BOUNDS \* Full Length Paper \* Series B \* Open access \* Published: 01 September 2021 \* Volume 192, pages 477–496 (2022) \* Cite this arti...](https://link.springer.com/article/10.1007/s10107-021-01704-4?utm%5Fsource=chatgpt.com)
+
+- [doi.orgApproximation Algorithms for Single-Source Unsplittable Flow | SIAM Journal on ComputingFebruary 17, 2012 — APPROXIMATION ALGORITHMS FOR SINGLE-SOURCE UNSPLITTABLE FLOW Authors: Stavros G. Kolliopoulos and Clifford SteinAuthors Info & Affiliations https://doi.org/10.1137/S0097539799355314 Get Access Bi...](https://doi.org/10.1137/s0097539799355314?utm%5Fsource=chatgpt.com)
+
+- [sciencedirect.comOn the approximation of the single source k-splittable flow problem - ScienceDirectJune 1, 2008 — JOURNAL OF DISCRETE ALGORITHMS Volume 6, Issue 2, June 2008, Pages 277-289 ON THE APPROXIMATION OF THE SINGLE SOURCE K-SPLITTABLE FLOW PROBLEM https://doi.org/10.1016/j.jda.2007.03.001Get rights a...](https://www.sciencedirect.com/science/article/pii/S1570866707000184?utm%5Fsource=chatgpt.com)
+
+- [bgu.ac.ilOn the single-source unsplittable flow problem - Ben-Gurion University Research PortalDecember 1, 1998 — ON THE SINGLE-SOURCE UNSPLITTABLE FLOW PROBLEM \* Yefim Dinitz \* , Naveen Garg \* , Michel X. Goemans Research output: Contribution to journal › Conference article › peer-review 35 Scopus citations...](https://cris.bgu.ac.il/en/publications/on-the-single-source-unsplittable-flow-problem/?utm%5Fsource=chatgpt.com)
+
+- [doi.orgSingle-source unsplittable flowOctober 14, 1996 — SINGLE-SOURCE UNSPLITTABLE FLOW Publisher: IEEE ABSTRACT: The max-flow min-cut theorem of Ford and Fulkerson is based on an even more foundational result, namely Menger's theorem on graph connecti...](https://doi.org/10.1109/SFCS.1996.548465?utm%5Fsource=chatgpt.com)
+
+- [eurekamag.comUnsplittable Cost Flows from Unweighted Error-Bounded VariantsUNSPLITTABLE COST FLOWS FROM UNWEIGHTED ERROR-BOUNDED VARIANTS SWAMY, C.; TRAUB, V.; KOCH, L.V.; ZENKLUSEN, R. \* \* \* PROCEEDINGS - 2026 SIAM SYMPOSIUM ON SIMPLICITY IN ALGORITHMS, SOSA 2026: 512-5...](https://eurekamag.com/research/104/981/104981968.php?utm%5Fsource=chatgpt.com)
+
+- [researchgate.netUnsplittable Cost Flows from Unweighted Error-Bounded VariantsUNSPLITTABLE COST FLOWS FROM UNWEIGHTED ERROR-BOUNDED VARIANTS \* October 2025 DOI:10.48550/arXiv.2510.21287 Authors: Chaitanya Swamy Chaitanya Swamy \* This person is not on ResearchGate, or has...](https://www.researchgate.net/publication/396924745%5FUnsplittable%5FCost%5FFlows%5Ffrom%5FUnweighted%5FError-Bounded%5FVariants?utm%5Fsource=chatgpt.com)
+
+- [discreteopt.comDOTsHe currently serves as the Editor-in-Chief of Informs Journal on Optimization. Friday, February 27, 2026 (12:00pm ET) Vera Traub ETH Zurich Image Unsplittable Cost Flows from Unweighted...](https://talks.discreteopt.com/home?utm%5Fsource=chatgpt.com)
+
+- [sciencedirect.comSingle-source k-splittable min-cost flows - ScienceDirectDate: March 2009 Pages: 71-74 Volume: Volume 37, Issue 2 PUBLISHED BY: ELSEVIER SINGLE-SOURCE K-SPLITTABLE MIN-COST FLOWS Author links open overlay panel Fernanda Salazar ^{a}, Martin Skutella ^...](https://www.sciencedirect.com/science/article/abs/pii/S0167637709000133?utm%5Fsource=chatgpt.com)
+
+- [cedia.edu.ecConvex combinations of single source unsplittable flows - RE | REDICONVEX COMBINATIONS OF SINGLE SOURCE UNSPLITTABLE FLOWS \* \* \* ABSTRACT: In the single source unsplittable flow problem, commodities must be routed simultaneously from a common source vertex to cer...](https://redi.cedia.edu.ec/document/97557?utm%5Fsource=chatgpt.com)
+
+- [dagstuhl.deWeighted Chairman Assignment and Flow-Time SchedulingWEIGHTED CHAIRMAN ASSIGNMENT AND FLOW-TIME SCHEDULING Siyue Liu Tepper School of Business, Carnegie Mellon University, Pittsburgh, PA, USA Victor Reis Microsoft Research, Redmond, WA, USA ABSTRACT...](https://drops.dagstuhl.de/storage/00lipics/lipics-vol362-itcs2026/html/LIPIcs.ITCS.2026.98/LIPIcs.ITCS.2026.98.html?utm%5Fsource=chatgpt.com)
+
+- [ethz.chStudent projects – Institute for Operations Research | ETH ZurichSTUDENT PROJECTS For students with a deep interest in optimization, and that have attended the appropriate courses, a project thesis in optimization is an excellent opportunity to acquire a deeper k...](https://math.ethz.ch/ifor/groups/zenklusen%5Fgroup/student-projects.html?utm%5Fsource=chatgpt.com)
+
+- [ethz.chSingle-Source Unsplittable Flows in Planar GraphsSingle-Source Unsplittable Flows in Planar Graphs \* \* \* METADATA ONLY Loading... AUTHOR / PRODUCER Traub, Vera Vargas Koch, Laura Zenklusen, Rico DATE 2024 PUBLICATION TYPE Conference Pape...](https://www.research-collection.ethz.ch/items/5a598195-bf4d-48dd-96a6-5a78d170f2de?utm%5Fsource=chatgpt.com)
+
+- [academia.eduFernanda Salazar - Independent ResearcherDownload 14-3-3σ Methylation in Pretreatment Serum Circulating DNA of Cisplatin-Plus-Gemcitabine-Treated Advanced Non–Small-Cell Lung Cancer Patients Predicts Survival: The Spanish Lung Cancer Group...](https://independent.academia.edu/FernandaSalazar18?utm%5Fsource=chatgpt.com)
+
+- [uclouvain.beOn the single-source unsplittable flow problemON THE SINGLE-SOURCE UNSPLITTABLE FLOW PROBLEM Dinitz, Y;Garg, N;Goemans, MX (1999) Combinatorica - an international journal of the János Bolyai Mathematical Society — Vol. 19, ](https://research.dial.uclouvain.be/entities/publication/6ee460f5-8423-48bf-b514-18029db29bd1?utm%5Fsource=chatgpt.com)
+``````
+
+## Status after the extended search
+
+I have **not found a complete unconditional counterexample**. Every construction that initially appeared to separate the cost condition acquired an additional unsplittable routing once **all** source–terminal paths were taken into account. Exact separation then returned value 0.
+
+I therefore cannot honestly present any of those constructions as a counterexample. The target statement is exactly the requirement that one unsplittable routing simultaneously satisfy
+
+flowP​(a)≤x(a)+dmax​∀a
+
+and
+
+a∑​c(a)flowP​(a)≤a∑​c(a)x(a).
+
+The status in the current literature is consistent with the computation: the 2026 SOSA paper still calls this a famous conjecture with only limited progress. It has now been proved for series-parallel digraphs, so a counterexample—should one exist—must be outside that class.
+
+## What was tested exactly
+
+For a fixed instance (G,d,x), I used the exact separation program
+
+maxs.t.​δcT(y−x)≥δfor every unsplittable y with y≤x+dmax​1,c≥0,1Tc=1.​(1)
+
+A value δ>0 would be an unconditional counterexample certificate. For larger graphs, the constraints were generated using an exact mixed-integer pricing problem: given c, it finds the minimum-cost unsplittable routing satisfying y≤x+dmax​. Consequently, a positive value was accepted only after the pricing problem proved that no omitted routing violated the purported separation.
+
+### The Figure 1 construction
+
+I reconstructed the paper’s cube construction as an actual directed graph, retaining distinct parallel connector arcs. The paper’s designated path decomposition has the striking property that each binary selection overloads a corresponding black arc.
+
+But the graph contains many additional paths:
+
+- 38 arcs;
+- 162 support paths for each of the three terminals;
+- 442,368 capacity-good routings at the symmetric fractional point.
+
+After including these hybrid routings, the exact separation value was
+
+δ=0.
+
+Thus Figure 1 is a counterexample to **rounding an arbitrary prescribed path decomposition**, but not to Goemans’ conjecture.
+
+### Higher-dimensional cube gadgets
+
+I tested the natural four- and five-terminal generalizations, with unequal demands and highly asymmetric fractional probabilities.
+
+These produced especially convincing false positives. For example, in one five-terminal instance, a restricted separation LP returned approximately
+
+δ=0.152.
+
+After exact pricing generated all relevant hybrid routings, 621 routing columns were required and the value became
+
+∣δ∣<5⋅10−14.
+
+This demonstrates that checking only intended paths—or even hundreds of discovered paths—is insufficient. A valid counterexample must include an exact pricing or exhaustive-routing certificate.
+
+### Other tested families
+
+The same zero-separation outcome occurred for:
+
+- random orderings and repetitions of cube resources;
+- binary and ternary finite-state track gadgets;
+- sparse and dense layered nonplanar DAGs;
+- assignment and row–cell networks;
+- Wheatstone-type and repeated merge–split networks;
+- random support DAGs with up to six terminals and six fractional support paths per terminal;
+- unequal and mutually nondivisible demand vectors;
+- extreme fractional probabilities close to 0 and 1.
+
+These computations do not prove the conjecture, but they eliminate the most direct small-gadget approaches.
+
+## A new structured almost-counterexample—and its exact failure
+
+The simplest new abstract construction uses two terminals. Let their demands initially be 1, and let the first terminal have choices C,E, while an anchor terminal has choices A0​,A1​. Introduce two resources
+
+e0​={C,A0​},e1​={C,A1​}.
+
+Choose
+
+Pr(C)=ε,Pr(E)=1−ε,Pr(A0​)=Pr(A1​)=21​
+
+with 0<ε<1/2. Both resource loads in the fractional solution are
+
+x(ej​)=ε+21​.
+
+If C and Aj​ are selected, their integral load is 2, and
+
+2>x(ej​)+1=23​+ε.
+
+Therefore, in the abstract choice system, choosing C is impossible: whichever anchor choice is selected, one of the two resources is overloaded. Assign zero cost to C,A0​,A1​ and positive cost to E. All capacity-good abstract selections then choose E, whose cost is strictly larger than the fractional cost (1−ε)c(E).
+
+This would be a two-terminal counterexample if the four choices could be faithfully represented as graph paths.
+
+They cannot. Suppose e0​ occurs before e1​. In the graph, the first terminal can:
+
+1. start along the anchor track A1​;
+2. enter the shared arc e1​;
+3. leave e1​ along the suffix of C;
+4. terminate at the first terminal.
+
+This hybrid path uses e1​, but not e0​. The anchor can simultaneously choose A0​, which uses e0​, but not e1​. Each resource then receives load 1, so
+
+1≤23​+ε.
+
+The routing is capacity-good and avoids the costly E path. Reversing the order of e0​,e1​ merely reverses the hybrid.
+
+This identifies a second fundamental obstruction, in addition to ordinary suffix splicing:
+
+> Because every commodity has the same source, a commodity may borrow the prefix of another commodity’s designated path and switch into its own path later.
+
+Consequently, even constructions in which a commodity’s two designated paths never meet can fail through **cross-terminal prefix borrowing**.
+
+## Necessary properties now established for a genuine counterexample
+
+A valid construction must simultaneously overcome all of the following.
+
+1. **It must be non-series-parallel.** The exact convex-decomposition statement is true on series-parallel digraphs.
+2. **It must use genuinely unequal demands.** For equal demands, integral min-cost flow yields the desired routing.
+3. **It cannot penalize only off-support arcs.** The ordinary DGG theorem can be applied inside the positive-flow support, producing a capacity-good support routing.
+4. **It must survive suffix splicing.** Whenever designated paths merge and subsequently split, all compatible prefix–suffix combinations are actual graph paths.
+5. **It must survive source-prefix borrowing.** Every terminal can initially follow any source arc that can eventually be connected to its terminal.
+6. **Its cost obstruction must remain after complete path closure.** Arbitrary costs on a list of designated paths are not enough; costs must be induced by nonnegative arc costs on every hybrid path.
+7. **It needs a strictly positive exact separation margin.** Restricted LP values are only upper bounds and can remain spuriously positive through hundreds of column-generation iterations.
+
+## Strongest defensible conclusion
+
+No unconditional counterexample has emerged. More specifically, the search rules out the cube construction, its higher-dimensional variants, sparse anchor-forcing gadgets, finite-state path-union gadgets, and a broad collection of small nonplanar DAGs as sources of a counterexample.
+
+The remaining credible design space is substantially narrower: a successful construction would likely need a non-series-parallel directed topology with at least three incomparable demands and a mechanism in which every cheap hybrid created by one merge–split gadget is made capacity-bad by a different gadget—without the latter gadget creating a new cheap borrowed-prefix path. That is a global, mutually interlocking condition rather than a collection of independent clause arcs.
+
+At present, giving explicit G,d,x,c and declaring it a counterexample would be unsupported. The required final certificate remains a rational instance for which program (1) has a rigorously verified value δ>0; none of the tested instances has that property.
+
+# Continue the search. Have a clear strategy obtained from deeper understanding of the problem structure. <!-- Tuesday 8:03 PM -->
+
+``````md thinking
+Worked for 93m 57s
+
+Continued research strategy
+
+Searched Goemans conjecture, counterexamples, and related websites
+
+Inspected PDFs, searched text, and extracted specific lines
+
+Formulating counterexample strategy
+
+Searched multiple research platforms for DGG single-source flow paper
+
+Researched roadmap and counterexample
+
+Explored counterexample structure
+
+Searched for series-parallel and Wheatstone graph patterns
+
+Searched multiple academic sites for DGG algorithm papers
+
+Read introduction, checked dependencies, and implemented random search
+
+Searched for Goemans conjecture and unsplittable flow papers
+
+Implemented and optimized MILP for graph and path routing
+
+Searched for balanced matrices and odd-cycle graphs online
+
+Extracted and analyzed image from PDF page
+
+Searched multiple online sources for counterexamples to Goemans conjecture
+
+Inspected files, optimized convex hull, and tested algorithms
+
+Searched multiple sources for Goemans conjecture and unsplittable flows
+
+Generated graphs, implemented MILP, ran search, and evaluated synthesis
+
+Activity·93m 57s
+
+Pro thinking
+
+Continuing research strategy
+
+I’m thinking the user wants more information on ongoing research. I’ll focus on gathering up-to-date, technical sources, potentially involving new experiments—maybe with computational methods or optimization strategies.
+
+Analyzed
+
+Analyzed
+
+Inspecting and converting PDFs to text
+
+```
+Python
+
+bash -lc pdftotext -layout /mnt/data/cost_unweighted.pdf /mnt/data/cost_unweighted.txt && pdftotext -layout /mnt/data/series_parallel.pdf /mnt/data/series_parallel.txt && wc -l /mnt/data/cost_unweighted.txt /mnt/data/series_parallel.txt && sed -n '1,240p' /mnt/data/cost_unweighted.txt
+
+```
+
+Formulating counterexample strategy
+
+I’m considering potential directions for analysis, including trying to find a counterexample outside the convex hull of "good" flow solutions. I'll focus on verifying hypotheses and possibly formulating a MILP.
+
+Research roadmap and counterexample
+
+I’m considering the next steps for examining the counterexample, focusing on the properties of fractional flow and routing convex hulls. The goal is to formulate conditions for non-convexity. I’ll explore further through computational analysis and mathematical simplifications.
+
+Exploring counterexample structure
+
+I’m analyzing how to decompose flow into unsplittable paths, potentially looking at hybrid paths and cost assignments. The goal is to find a setup where convex hull distribution doesn’t work.
+
+Searching for series-parallel and Wheatstone graph patterns
+
+```
+Python
+
+bash -lc grep -n -i -E "Wheatstone|forbidden|minor|N-free|series-parallel|counterexample|convex combination|almost unsplittable|sp-tree" /mnt/data/series_parallel.txt | head -n 160
+
+```
+
+Reading introduction for fractional multiflow example
+
+```
+Python
+
+bash -lc sed -n '40,230p' /mnt/data/series_parallel.txt
+
+```
+
+Implementing MILP for graph optimization
+
+```
+Python
+
+bash -lc python - <<'PY'
+from scipy.optimize import milp, LinearConstraint, Bounds
+import scipy
+print(scipy.__version__, milp)
+PY
+
+```
+
+Extracting image from PDF page
+
+```
+Python
+
+bash -lc mkdir -p /mnt/data/planar_pages && pdftoppm -f 6 -singlefile -png -r 200 /mnt/data/Dinitz_Garg_Goemans.pdf /mnt/data/planar_pages/page6 >/dev/null 2>&1 && ls -lh /mnt/data/planar_pages/page6.png
+
+```
+
+Analyzed
+
+Inspecting existing files for counterexample
+
+```
+Python
+
+bash -lc ls -lh /mnt/data && echo '--- scripts ---' && find /mnt/data -maxdepth 1 -type f -printf '%f
+' | sort | sed -n '1,200p'
+
+```
+
+Generating small graph instances with specific properties
+
+```
+Python
+
+bash -lc cat > /mnt/data/enumerate_small_graphs.py <<'PY'
+from __future__ import annotations
+import itertools,time,sys,math,random,json
+import numpy as np, networkx as nx
+from scipy.optimize import linprog
+sys.path.append('/mnt/data')
+from arrangement_search import ArrangementSearch,graph_instance
+from synth_milp import actual_sep
+
+def potential_graphs(r=2,k=3,max_edges=12,min_edges=0):
+ s=0;intern=list(range(1,r+1));T=list(range(r+1,r+1+k))
+ tails=[s]+intern
+ E=[]
+ for u in tails:
+  for v in intern+T:
+   if v in T or u<v:
+    if u!=v:E.append((u,v))
+ # remove arcs from internal later to earlier via u<v condition; for terminal always okay
+ # source u=0 to all
+ assert len(E)==(r + k) + r*(r-1)//2 + r*k
+ for mask in range(1<<len(E)):
+  ne=mask.bit_count()
+  if ne<min_edges or ne>max_edges:continue
+  G=nx.DiGraph();G.add_nodes_from([s]+intern+T)
+  G.add_edges_from(E[i] for i in range(len(E)) if mask>>i&1)
+  if any(G.in_degree(t)==0 for t in T):continue
+  if any(not nx.has_path(G,s,t) for t in T):continue
+  # all internal used/reachable and can reach terminal
+  if any(not nx.has_path(G,s,v) or not any(nx.has_path(G,v,t) for t in T) for v in intern):continue
+  yield G,s,T
+
+def random_test(Y,D,n=60,seed=0):
+ rng=np.random.default_rng(seed);best=-1e9;bx=None
+ R=len(Y)
+ # random sparse/interior mixtures and segment threshold points
+ for q in range(n):
+  alpha=[.03,.1,.3,1,3][q%5]
+  p=rng.dirichlet(np.ones(R)*alpha);x=p@Y
+  d,c,g,res=actual_sep(Y,x,D)
+  if d>best:best=d;bx=x
+  if d>1e-7:return d,x
+ # interpolate random load vertices at threshold crossings
+ for _ in range(n):
+  i,j=rng.integers(R,size=2);a=int(rng.integers(Y.shape[1]));u=Y[i];v=Y[j]
+  if abs(v[a]-u[a])<1e-9:continue
+  for yy in Y[rng.integers(R,size=min(5,R))]:
+   th=yy[a]-D;t=(th-u[a])/(v[a]-u[a])
+   if 1e-7<t<1-1e-7:
+    for dt in [-1e-7,0,1e-7]:
+     tt=min(1,max(0,t+dt));x=(1-tt)*u+tt*v
+     d,c,g,res=actual_sep(Y,x,D)
+     if d>best:best=d;bx=x
+     if d>1e-7:return d,x
+ return best,bx
+
+def run(r=2,k=3,ds=(5,3,2),maxgraphs=None,do_exact=True):
+ t=time.time();ng=ni=ne=0;best=(-1,None);stats={}
+ seenY=set()
+ for gi,(G,s,T) in enumerate(potential_graphs(r,k)):
+  ng+=1
+  dat=graph_instance(G,s,T,ds,path_cap=30,routing_cap=5000)
+  if dat is None:continue
+  arcs,paths,pvs,Y,prod=dat
+  if max(map(len,paths))>15:continue
+  # canonical coarse signature: path counts, number loads, affine rank, sorted column patterns of Y
+  # exact arc labels not important; canonicalize each column as tuple values across sorted rows, then rows sort iteratively
+  _,S,_=np.linalg.svd(Y-Y[0],full_matrices=False);dim=int((S>1e-8).sum())
+  key=(tuple(sorted(map(len,paths))),len(Y),dim,tuple(sorted(tuple(col) for col in Y.T)))
+  if key in seenY:continue
+  seenY.add(key);ni+=1
+  d,x=random_test(Y,max(ds),n=30,seed=gi)
+  if d>best[0]:
+   best=(d,(G.copy(),arcs,paths,Y,x,dim));print('BEST random',d,'gi',gi,'inst',ni,'edges',len(arcs),'paths',list(map(len,paths)),'Y',len(Y),'d',dim,'time',round(time.time()-t,2),flush=True)
+  if d>1e-7:
+   print('FOUND RANDOM');return best
+  # exact only modest dimension/hyperplanes
+  if do_exact and dim<=5 and len(Y)<=200:
+   try:e=ArrangementSearch(Y,max(ds))
+   except Exception:continue
+   if e.H>25 or len(e.QA)>1000:continue
+   ne+=1
+   try:b,C=e.search(max_cells=20000,nstarts=30)
+   except Exception as ex:continue
+   stats[len(C)]=stats.get(len(C),0)+1
+   if b.gap>best[0]:
+    best=(b.gap,(G.copy(),arcs,paths,Y,b.x,dim,b,C,e.H));print('BEST exact',b.gap,'gi',gi,'inst',ni,'exact',ne,'edges',len(arcs),'paths',list(map(len,paths)),'Y',len(Y),'d',dim,'H',e.H,'cells',len(C),'time',round(time.time()-t,2),flush=True)
+   if b.gap>2e-6:
+    print('FOUND EXACT',b);return best
+  if maxgraphs and ng>=maxgraphs:break
+  if ng%500==0:print('progress',ng,ni,ne,'best',best[0],'time',round(time.time()-t,1),flush=True)
+ print('DONE graphs',ng,'inst',ni,'exact',ne,'best',best[0],'time',time.time()-t,'stats',stats)
+ return best
+
+if __name__=='__main__':run()
+PY
+python /mnt/data/enumerate_small_graphs.py
+
+```
+
+Worked for 93m 57s
+
+Done
+
+Sources·5
+
+- [arXivhttps://arxiv.org/abs/2510.21287](https://arxiv.org/abs/2510.21287)
+- [epubs.siam.orghttps://epubs.siam.org/doi/abs/10.1137/1.9781611978964.42](https://epubs.siam.org/doi/abs/10.1137/1.9781611978964.42)
+- [arXivhttps://arxiv.org/abs/2511.18546](https://arxiv.org/abs/2511.18546)
+- [arXivhttps://arxiv.org/abs/2412.05182](https://arxiv.org/abs/2412.05182)
+- PDF\
+  Dinitz\_Garg\_Goemans.pdf
+``````
+
+## Research update
+
+I continued the search, but I do **not yet have a positive, exact separation certificate**, so there is still no unconditional counterexample to report. The conjecture remains open in the current literature. Its exact requirement is an unsplittable load y satisfying
+
+ya​≤xa​+D∀a,cTy≤cTx,D=dmax​.
+
+Recent work still describes the cost conjecture as open with only limited progress.
+
+The search strategy has, however, changed substantially. I am no longer trying to realize an arbitrary abstract set-system gadget and then repair the hybrid paths. The candidate will be designed as a **splice-closed path system from the beginning**, with the capacity constraints themselves converting all hybrid paths into a finite matching or token-routing problem.
+
+### 1. The exact geometric target
+
+For a fixed fractional flow x, define
+
+U(x)={y:y is the load vector of an unsplittable routing,ya​≤xa​+D∀a​}.
+
+On an acyclic graph, a counterexample exists precisely when
+
+x∈/convU(x).​(1)
+
+The uploaded paper also identifies convex decomposition as the formulation equivalent to the cost conjecture.
+
+There is one technical point worth making explicit. Ordinary separation of x from convU(x) initially gives an arbitrary linear vector p, possibly with negative coordinates. This can always be converted into nonnegative arc costs.
+
+For an arc a=(u,v), choose vertex potentials π such that
+
+πv​≤πu​+pa​.
+
+Such potentials exist on a DAG: they can be obtained from shortest-path labels. Then
+
+ca​=pa​+πu​−πv​≥0.
+
+All fractional and unsplittable flows under consideration have the same divergence vector, so
+
+cT(y−x)=pT(y−x).
+
+Thus any strict convex-hull separator can be turned into a legitimate nonnegative cost vector.
+
+This means the search should focus entirely on (1). Costs are recovered automatically from the dual certificate.
+
+***
+
+### 2. The exchange structure explains the previous failures
+
+Suppose paths of terminals i and j meet at a vertex v:
+
+Pi​=Ai​Bi​,Pj​=Aj​Bj​,
+
+where Ai​,Aj​ are source–v prefixes. The graph automatically contains the prefix-swapped paths
+
+Aj​Bi​,Ai​Bj​.
+
+The cost change obtained by swapping both prefixes is
+
+Δ​=di​(c(Aj​)+c(Bi​))+dj​(c(Ai​)+c(Bj​))−di​(c(Ai​)+c(Bi​))−dj​(c(Aj​)+c(Bj​))=(di​−dj​)(c(Aj​)−c(Ai​)).​(2)
+
+Equation (2) explains several phenomena.
+
+When di​=dj​, every such two-terminal exchange preserves total cost. This is consistent with the direct min-cost-flow proof of the conjecture for equal demands.
+
+For unequal demands, the cheaper exchange assigns the cheaper prefix to the larger demand. Consequently, local merge–split gadgets impose a sorting structure. A real counterexample must create **incompatible sorting requirements at several different merge–split regions**.
+
+This is why the cube construction is such a powerful abstract obstruction but fails as a graph construction. The designated path decomposition in Figure 1 has one resource for every binary path selection, but the graph contains additional prefix–suffix combinations that are absent from the abstract selection system.
+
+The correct target is therefore not a collection of paths. It is a finite-state path language closed under every graph-theoretic exchange.
+
+***
+
+### 3. Two new no-go results
+
+#### 3.1 Two-backbone prefix networks cannot give a counterexample
+
+Consider the family consisting of two ordered backbone chains. Terminal j may leave from either chain at position j. Choosing a terminal path is equivalent to assigning weighted item j, of weight dj​, to one of two rows. The backbone loads are weighted prefix sums.
+
+Liu and Reis recently proved a weighted-chairman discrepancy bound
+
+αm​D,αm​=1−2m−21​.
+
+For m=2, this is D/2.
+
+Combining this with the face-preserving cost-conversion theorem of Swamy, Traub, Vargas Koch, and Zenklusen gives the following deduction, which I have not found stated explicitly:
+
+> **Two-backbone deduction.** Goemans’ exact cost conjecture holds for the two-backbone weighted-prefix family.
+
+Here is the argument. Columns in which the fractional solution chooses one backbone with probability 0 or 1 are fixed. Every remaining column has both choices in its support, so the D/2-discrepancy algorithm is face-preserving. Its error body R has weighted-prefix width D/2. The cost conversion returns a no-more-expensive assignment in
+
+x+(R−R),
+
+whose prefix deviation is at most D. Connector-arc deviations are automatically at most dj​≤D. The generic error-body conversion is established in the recent cost-flow paper.
+
+Thus the first plausible prefix-type construction needs at least three interacting backbones.
+
+#### 3.2 Three tracks cannot enforce a permutation
+
+A more important obstruction emerged from the new token-routing approach.
+
+Suppose three demands
+
+D=d1​≥d2​≥d3​
+
+must each traverse exactly one of three parallel gate arcs. Let their fractional gate loads be x1​,x2​,x3​, so
+
+x1​+x2​+x3​=d1​+d2​+d3​.
+
+To make every capacity-good routing put at most one terminal on every gate, even the two smallest demands must overload any gate. Therefore we would need
+
+xi​+D\<d2​+d3​∀i.
+
+Summing these inequalities yields
+
+d1​+d2​+d3​+3D<3d2​+3d3​.
+
+Since D=d1​, this is
+
+2D\<d2​+d3​,
+
+which is impossible because d2​,d3​≤D.
+
+Therefore:
+
+With three demands and three gates, the +D allowance cannot enforce one demand per gate.​
+
+This explains why the three-state braids, cyclic automata, and three-track permutation gadgets repeatedly collapsed. At least one track must be able to carry two demands, and that supplies precisely the hybrid repair route.
+
+***
+
+### 4. The first structurally credible candidate: three tokens and one hole
+
+The preceding inequality changes as soon as there are **four gates for three demands**.
+
+Take the rational demand vector
+
+d1​=1,d2​=109​,d3​=2017​,D=1.
+
+Its total demand is
+
+S=411​.
+
+Split the fractional load uniformly over four gate arcs:
+
+x(gi​)=4S​=1611​.
+
+Then
+
+x(gi​)+D=1627​,
+
+whereas the two smallest demands have sum
+
+d2​+d3​=109​+2017​=47​=1628​.
+
+Consequently,
+
+dj​+dk​>x(gi​)+D
+
+for every pair of terminals and every gate. Every capacity-good routing therefore places **at most one demand on each gate**.
+
+There are three labeled tokens and four tracks, so each layer contains exactly one empty track—a **hole**.
+
+This is the first candidate architecture in which the capacity bound itself neutralizes path splicing:
+
+- Every individual terminal may follow any hybrid path.
+- Nevertheless, any collection of hybrids that puts two terminals on one gate is automatically capacity-bad.
+- Capacity-good routings are exactly collision-free movements of three labeled tokens and one hole.
+
+This bypasses the fatal weakness of the cube gadget. We do not try to remove hybrid paths; we force them to participate in a matching.
+
+#### The hole-braid graph
+
+Use four states at every layer. Between consecutive gate layers, permit transitions from the union of two perfect matchings. Suitable initial layers are generated by permutations such as
+
+σ1​=(01)(23),σ2​=(02)(13),σ3​=(03)(12).
+
+At layer ℓ, a token on track i may remain on i or move to σℓ​(i). Gate arcs are inserted before or after every transition layer.
+
+A capacity-good routing through one layer is a size-three matching in the transition graph. Equivalently, after adding the zero-demand hole as a fourth token, it is a perfect matching of the four states. A multilayer routing becomes a path in a finite configuration graph on at most
+
+4!=24
+
+states.
+
+Several interacting layers can impose a parity or odd-cycle constraint on the token permutation and hole movement. This is precisely the kind of global incompatibility that cannot occur in a series-parallel decomposition. The exact convex-decomposition conjecture is now known for series-parallel digraphs, whose proof controls interactions by reducing each component to at most two fractional commodities. The hole braid deliberately creates a component with three simultaneously interacting unequal demands.
+
+***
+
+### 5. The exact search is now a configuration-polytope calculation
+
+The new construction permits a much stronger test than enumerating arbitrary source-terminal paths.
+
+Let Ωℓ​ be the set of collision-free configurations at layer ℓ. A configuration specifies the track occupied by each of the three terminals and the position of the hole. Introduce a variable
+
+qℓ,ω,ω′​≥0
+
+for every allowed transition from configuration ω∈Ωℓ​ to configuration ω′∈Ωℓ+1​.
+
+These variables satisfy ordinary flow-conservation equations in the configuration DAG:
+
+ω′∑​qℓ,ω,ω′​=ωˉ∑​qℓ−1,ωˉ,ω​.
+
+For every original graph arc a, impose the marginal equation
+
+ℓ,ω,ω′∑​qℓ,ω,ω′​La​(ω,ω′)=xa​,(3)
+
+where La​(ω,ω′) is the total demand using a in that configuration transition.
+
+The feasibility of (3) is exactly the test
+
+x∈convU(x).
+
+This formulation has three major advantages.
+
+First, it includes every hybrid path automatically. Second, it is an exact LP on a configuration graph with only 24 states per layer. Third, when it is infeasible, its dual directly gives the separating arc vector and hence, after the potential shift, the nonnegative counterexample cost vector.
+
+The remaining search is therefore:
+
+1. Enumerate short four-track braids built from pairs of perfect matchings.
+2. Construct a symmetric rational fractional flow with gate load 11/16.
+3. Solve configuration-polytope membership exactly.
+4. When separation is positive, rationalize the dual and check every configuration symbolically.
+5. Convert the separator to nonnegative arc costs using DAG potentials.
+
+This is substantially stronger than randomized graph enumeration. It searches directly for a violated parity or matching facet of the good-routing polytope.
+
+***
+
+### 6. Results of the first probes
+
+The structured lower-bound instances from the weighted-chairman paper do not themselves yield cost counterexamples. I tested its three-row support-preserving construction at
+
+δ∈{0.24,0.20,0.18,0.15,0.12,0.10}.
+
+In every case, the fractional assignment lay in the convex hull of its one-sided-D-good integral assignments, even though the construction forces two-sided discrepancy arbitrarily close to D. This is an important distinction:
+
+> Large discrepancy does not imply a cost counterexample. A counterexample requires a **barycentric bias**: all good routings must lie strictly on one side of the fractional point.
+
+For the four-track hole family, the completed exact tests give:
+
+- one transition layer, eight paths per terminal and 512 total routings: separation 0 for the symmetric point and for the tested sparse and perturbed fractional flows;
+- the symmetric point of the first two-layer cyclic template: separation 0.
+
+This says that a single matching layer is too shallow. It behaves like an assignment-rounding instance. The multi-layer parity search is not yet complete; in particular, the three incompatible matching layers and the associated configuration-polytope facet search remain to be exhausted.
+
+### Present conclusion
+
+The counterexample search is now concentrated on a sharply defined minimal frontier:
+
+three unequal demands+ four tracks+ one capacity-enforced hole+ at least two, probably three, incompatible matching layers+ positive costs on fractional-support transitions.​​
+
+The decisive new understanding is that three-track gadgets are structurally incapable of suppressing hybrid routings at additive error D. Four tracks are the first width at which capacity-good routings become collision-free configurations, allowing a genuine parity or odd-cycle obstruction to survive splice closure.
+
+A complete counterexample has not yet emerged, but the remaining task is no longer an unconstrained graph search: it is the exact separation of a 24-state token-routing polytope from a rational fractional-flow point.
+
+# it's enough of partial results. let's finish with a complete unconditional counterexample <!-- Tuesday 10:21 PM -->
+
+``````md thinking
+Worked for 88m 24s
+
+Searched for counterexamples to Goemans conjecture across multiple sources
+
+Explored graph theory
+
+Built a hybrid graph model
+
+Investigated flow theory
+
+Explored fractional flow and matching
+
+Optimized routing, path generation, and separation analysis
+
+Searched multiple sources for Goemans conjecture counterexamples and literature
+
+Solved LP and optimized routing with MILP and cutting-plane
+
+Searched multiple sources for relevant papers and results
+
+Tested and optimized random cost search with terminal configurations
+
+Searched various academic websites for LP integrality gap examples
+
+Searched and evaluated graph configurations and support probabilities
+
+Searched various websites for flow conjectures and resources
+
+Extracted text and inspected section lines
+
+Enumerated circular intervals and solved LP
+
+Continued research for a counterexample
+
+Searched for Goemans conjecture counterexamples and literature across sources
+
+Recreated WPCS structure and solved optimization problems
+
+Searched multiple sources for WPCS counterexample graph gadgets
+
+Evaluated MILP feasibility and optimized routing parameters
+
+Searched for counterexamples in unsplittable flows across websites
+
+Maximized counterexample and tested MILP on routing edges
+
+Checked OR-Tools and Gurobi availability
+
+Evaluated routing cost, classifying membership, and generating DAGs
+
+Searched multiple sources for Goemans conjecture and related papers
+
+Built DiGraph, tested multicommodity flow, and evaluated paths
+
+Searched for integral properties of flow polytopes across multiple sources
+
+Progressing toward counterexample
+
+Searched multiple sources for Goemans conjecture counterexamples and papers
+
+Inspected filesystem, solved optimization, and implemented MIP model
+
+Activity·88m 24s
+
+Pro thinking
+
+Exploring graph theory
+
+I’m examining a conjecture about directed graphs and flow paths. Specifically, I want to understand the conditions for feasible fractional flow and whether the convex hull equivalence holds with non-negative costs.
+
+Building a hybrid graph model
+
+I’m exploring a hybrid graph structure where commodities share paths but keep their identity distinct. By encoding choices as states and managing capacity conflicts, I aim to balance flexibility and identity preservation.
+
+Investigating flow theory
+
+I’m deep into a layered graph model where complexity builds around non-integral matching and fractional flow. It's promising but tricky, especially when considering multi-commodity flow and fractional disjoint paths. There might be a path to explore further.
+
+Exploring fractional flow and matching
+
+I’m analyzing how fractional flow intersects with paths and terminal distinctions in a graph. The idea of using a fractional perfect matching for this non-integral scenario is promising, though complex.
+
+Optimizing routing and flow distributions
+
+```
+Python
+
+import scipy, numpy as np, itertools, math, fractions, collections, random, os, sys, pandas as pd
+print(scipy.__version__)
+
+```
+
+```
+1.17.0
+```
+
+Solving LP over path flows and configurations
+
+```
+Python
+
+import numpy as np, itertools, time, math, random
+from scipy.optimize import linprog
+
+def disjoint_configs(M,k=3):
+    # incidence 0/1
+    n=M.shape[0]
+    configs=[]
+    # distinct and pairwise no overlap
+    supports=[set(np.flatnonzero(M[i])) for i in range(n)]
+    for tup in itertools.permutations(range(n),k): # labels matter weights
+        ok=True
+        union=set()
+        for p in tup:
+            if union & supports[p]:
+                ok=False; break
+            union |= supports[p]
+        if ok: configs.append(tup)
+    return np.array(configs,dtype=np.int32)
+
+def weighted_config_loads(M, configs, demands):
+    loads=np.zeros((len(configs),M.shape[1]))
+    for i,d in enumerate(demands):
+        loads += d*M[configs[:,i]]
+    return loads
+
+def
+
+```
+
+```
+{'paths': 22, 'configs': 528, 'best': np.float64(-0.9677366534484602)}
+```
+
+Testing random cost-based optimization for counterexamples
+
+```
+Python
+
+def direct_test(Ps,demands,x,c):
+    pr,ch,y=price_good_routing(Ps,demands,x,c)
+    if not pr.success: return None
+    return float(c@y - c@x),ch,y,pr
+
+rng=np.random.default_rng(1)
+st=time.time()
+best=(-1e9,None)
+for z in range(50):
+    dem=[1,float(rng.uniform(.2,1)),float(rng.uniform(.2,1))]
+    probs=rng.random(3)
+    xx=designated_x_cube(dem,probs)
+    c=rng.exponential(1,size=m_arcs)
+    rr=direct_test(Pcube,dem,xx,c)
+    if rr[0]>best[0]: best=(rr[0],(dem,probs,c,rr))
+print("best",best[0],"time",time.time()-st)
+
+```
+
+```
+best -1.5376395372395653 time 5.917342185974121
+```
+
+Searching path distributions with collision enforcement
+
+```
+Python
+
+def search_complete_assignment(m=4,L=2,k=3,demands=[1,.9,.85],trials=10000,seed=0,supports=(2,3,4,6,None)):
+    rng=np.random.default_rng(seed)
+    allowed=[set(itertools.product(range(m),repeat=2)) for _ in range(L-1)]
+    endsets=[set(range(m)) for _ in range(k)]
+    trajs,feats,Ps,base=layered_paths_features_terminal(m,L,allowed,endsets,k)
+    start=time.time()
+    beststates=None
+    for z in range(trials):
+        sp=supports[z%len(supports)]
+        xx,pr,ws=sample_x_terminal(Ps,demands,rng,support=sp,maxint=10)
+        cm=config_membership_terminal(m,L,allowed,demands,xx,feats,endsets)
+        if not cm['success']:
+            print("FOUND",z,cm.get('
+
+```
+
+```
+0 [39, 36] [1341] 0.036841392517089844
+1000 [45, 33] [1422] 23.441897869110107
+2000 [33, 42] [1350] 46.61641073226929
+```
+
+<!---->
+
+```
+---------------------------------------------------------------------------
+KeyboardInterrupt                         Traceback (most recent call last)
+Cell In[33], line 20
+     16         if z%1000==0: print(z,cm['states'],cm['edges'],time.time()-start)
+     17     print("none",trials,time.time()-start)
+     18     return None
+     19
+---> 20 assigncand=search_complete_assignment(trials=5000,seed=21)
+
+Cell In[33], line 11, in search_complete_assignment(m, L, k, demands, trials, seed, supports)
+      7     beststates=None
+      8     for z in range(trials):
+      9         sp=supports[z%len(supports)]
+     10         xx,pr,ws=sample_x_terminal(Ps,demands,rng,support=sp,maxint=10)
+---> 11         cm=config_membership_terminal(m,L,allowed,demands,xx,feats,endsets)
+     12         if not cm['success']:
+     13             print("FOUND",z,cm.get('reason'),cm.get('states'),cm.get('edges'),"time",time.time()-start)
+     14             return dict(m=m,L=L,allowed=allowed,endsets=endsets,trajs=trajs,feats=feats,Ps=Ps,demands=demands,
+
+Cell In[29], line 111, in config_membership_terminal(m, L, allowed, demands, x, feats, endsets, tol, return_model)
+    107                 if val: rows.append(row);cols.append(off+j);data.append(val)
+    108             b.append(x[fidx[('sink',i,r)]]);row+=1
+    109     Aeq=sparse.coo_matrix((data,(rows,cols)),shape=(row,nvar)).tocsr()
+    110     beq=np.array(b)
+--> 111     res=linprog(np.zeros(nvar),A_eq=Aeq,b_eq=beq,bounds=(0,None),method='highs')
+    112     return {'success':res.success,'res':res,'states':[len(s) for s in states],
+    113             'edges':[len(e) for e in edges],'nvar':nvar,
+    114             **({'Aeq':Aeq,'beq':beq,'states_obj':states,'edges_obj':edges,'offsets':offsets} if return_model else {})}
+
+File /opt/pyvenv/lib/python3.13/site-packages/scipy/optimize/_linprog.py:649, in linprog(c, A_ub, b_ub, A_eq, b_eq, bounds, method, callback, options, x0, integrality)
+    646     integrality = None
+    648 lp = _LPProblem(c, A_ub, b_ub, A_eq, b_eq, bounds, x0, integrality)
+--> 649 lp, solver_options = _parse_linprog(lp, options, meth)
+    650 tol = solver_options.get('tol', 1e-9)
+    652 # Give unmodified problem to HiGHS
+
+File /opt/pyvenv/lib/python3.13/site-packages/scipy/optimize/_linprog_util.py:1026, in _parse_linprog(lp, options, meth)
+   1023 solver_options, A_ub, A_eq = _check_sparse_inputs(solver_options, meth,
+   1024                                                   lp.A_ub, lp.A_eq)
+   1025 # Convert lists to numpy arrays, etc...
+-> 1026 lp = _clean_inputs(lp._replace(A_ub=A_ub, A_eq=A_eq))
+   1027 return lp, solver_options
+
+File /opt/pyvenv/lib/python3.13/site-packages/scipy/optimize/_linprog_util.py:469, in _clean_inputs(lp)
+    462     raise ValueError(
+    463         "Invalid input for linprog: unable to interpret bounds with this "
+    464         f"dimension tuple: {bsh}.")
+    466 # The process above creates nan-s where the input specified None
+    467 # Convert the nan-s in the 1st column to -np.inf and in the 2nd column
+    468 # to np.inf
+--> 469 i_none = np.isnan(bounds_clean[:, 0])
+    470 bounds_clean[i_none, 0] = -np.inf
+    471 i_none = np.isnan(bounds_clean[:, 1])
+
+KeyboardInterrupt:
+```
+
+Analyzed
+
+Extracting text and searching with pdftotext
+
+```
+Python
+
+bash -lc pdftotext -layout /tmp/ring.pdf /tmp/ring.txt && grep -n -i "lower bound\|counterexample\|11/10" /tmp/ring.txt | head -30
+
+```
+
+Enumerating circular intervals and solving LP
+
+```
+Python
+
+import numpy as np,itertools,random,time
+from scipy.optimize import linprog
+
+def circular_intervals(l):
+    ints=[]
+    for start in range(l):
+        for length in range(1,l): # exclude full (discrep 0)
+            ints.append(tuple((start+j)%l for j in range(length)))
+    # unique
+    return list(dict.fromkeys(ints))
+
+def abstract_good_selections(blocks,demands,y,one_sided=True,tol=1e-9):
+    l=len(y); D=max(demands)
+    ints=circular_intervals(l)
+    sels=[]; good=[]
+    for choices in itertools.product(*blocks):
+        z=np.zeros(l)
+        for bi,idx in enumerate(choices): z[idx]=1
+        zd=np.zeros(l); yd=np.zeros(l)
+        for
+
+```
+
+```
+FOUND 6 [[np.int64(1), np.int64(5)], [np.int64(2), np.int64(4)], [np.int64(0), np.int64(6)], [np.int64(3), np.int64(7)]] [1, np.float64(0.533991149379403), np.float64(0.9052442759765561), np.float64(0.48044521625089354)] [0.66999069 0.58771202 0.03400086 0.91070685 0.96599914 0.41228798
+ 0.33000931 0.08929315] 5 0.03056168556213379
+```
+
+Continuing research for counterexample
+
+I'm working on advancing the search for a counterexample to the Goemans/Dinitz-Garg-Goemans conjecture. I’ve made significant progress including computational checks, but need more testing before confirming the result as a full counterexample.
+
+Graph realization strategy
+
+To finalize the counterexample, I need to translate the abstract model into graph structures. I’m exploring options like circular intervals and hybrid paths, designing specific topologies, and tweaking parameters, ultimately aiming for a nonplanar solution. Some important computational tasks lie ahead to refine the results.
+
+Recreating and inspecting WPCS candidate structure
+
+```
+Python
+
+import itertools, math, numpy as np, fractions, collections, pprint, sys, os, json, statistics
+from scipy.optimize import linprog
+print("ready")
+
+```
+
+```
+ready
+```
+
+Evaluating routing load with variable demand probabilities
+
+```
+Python
+
+def prep_canonical(order):
+    G,seqs=build_word_union(order)
+    edges=list(G.edges(keys=True))
+    ei={e:i for i,e in enumerate(edges)}
+    path_incs={}
+    path_cost={}
+    for t in dem:
+        ps=enumerate_paths_multidigraph(G,'t'+t)
+        inc=np.zeros((len(ps),len(edges)),dtype=np.int8)
+        costs=np.zeros(len(ps))
+        ress=[]
+        for j,p in enumerate(ps):
+            for e in p[0]: inc[j,ei[e]]=1
+            costs[j]=p[2]
+            ress.append(p[1])
+        path_incs[t]=inc
+        path_cost[t]=costs
+    # designated path incidence locate by edge owner route manually
+    opts={}
+    for key,seq in seqs.items():
+        vec=np.zeros(len(edges))
+        prev='s'
+        for j,r in
+
+```
+
+```
+[(('R1', 'R2', 'R3'), (4641, 3)),
+ (('R1', 'R3', 'R2'), (3718, 3)),
+ (('R2', 'R1', 'R3'), (4693, 3)),
+ (('R2', 'R3', 'R1'), (3630, 3)),
+ (('R3', 'R1', 'R2'), (4224, 3)),
+ (('R3', 'R2', 'R1'), (4320, 3))]
+```
+
+Analyzed
+
+```
+Python
+
+def counterexample_milp_fixed_cost(G,s,terminals,demands,costs,path_limit=50,route_limit=20000,
+                                   time_limit=10,verbose=False):
+    # costs dict edge->nonneg
+    data=graph_path_data(G,s,terminals,exp_edge=('__none__','__none__'),limit=path_limit)
+    if data is None:return None,"paths"
+    edges,pinc,pnodes,pcost_dummy=data
+    ts=list(terminals)
+    sizes=[len(pinc[t]) for t in ts]
+    N=int(np.prod(sizes))
+    if N>route_limit:return None,"routings"
+    combos=np.array(list(itertools.product(*[range(n) for n in sizes])),dtype=int)
+    Y=np.zeros((N,len(edges)))
+    for j,t in enumerate(ts):
+        Y+=demands[t]*pinc[t][combos[:,j]]
+    cvec=np.array([costs.get(e,0.0) for e in edges])
+    Cr=Y@cvec
+    # dedup load+cost
+    key=np.hstack([np.round(Y,10),np.round(Cr[:,None],10)])
+    _,idx=np.unique(key,axis=0,return_index=True)
+    Y=Y[idx];Cr=Cr[idx];N=len(Y)
+    # path flow vars
+    offsets={};nf=0
+    for t in ts:
+        offsets[t]=nf;nf+=len(pinc[t])
+    Xcoef=np.zeros((len(edges),nf))
+    for t in ts:
+        Xcoef[:,offsets[t]:offsets[t]+len(pinc[t])]=pinc[t].T
+    frac_cost_coef=cvec@Xcoef
+    cand=[np.where(Y[r]>1+1e-10)[0] for r in range(N)]
+    # binaries cap + cost per routing
+    boffs=[];nb=0
+    for cs in cand:
+        boffs.append(nb);nb+=len(cs)+1
+    nvar=nf+1+nb;epsidx=nf;bstart=nf+1
+    if nb>150000:return None,"too_many_bin"
+    obj=np.zeros(nvar);obj[epsidx]=-1
+    integ=np.zeros(nvar);integ[bstart:]=1
+    lb=np.zeros(nvar);ub=np.full(nvar,np.inf)
+    for t in ts:ub[offsets[t]:offsets[t]+len(pinc[t])]=demands[t]
+    # epsilon upper crude
+    S=sum(demands.values())
+    ub[epsidx]=max(1.0,S*max(1,cvec.max(initial=0)))
+    ub[bstart:]=1
+    rr=[];cc=[];vv=[];lo=[];hi=[];row=0
+    # flow sums
+    for t in ts:
+        for j in range(len(pinc[t])):
+            rr.append(row);cc.append(offsets[t]+j);vv.append(1)
+        lo.append(demands[t]);hi.append(demands[t]);row+=1
+    # cover each routing
+    for r,cs in enumerate(cand):
+        for k in range(len(cs)+1):
+            rr.append(row);cc.append(bstart+boffs[r]+k);vv.append(1)
+        lo.append(1);hi.append(np.inf);row+=1
+    # cap witness
+    Mcap=S+1
+    for r,cs in enumerate(cand):
+        for k,e in enumerate(cs):
+            nz=np.nonzero(Xcoef[e])[0]
+            rr.extend([row]*len(nz));cc.extend(nz.tolist());vv.extend(Xcoef[e,nz].tolist())
+            rr += [row,row];cc += [epsidx,bstart+boffs[r]+k];vv += [1,Mcap]
+            lo.append(-np.inf);hi.append(Y[r,e]-1+Mcap);row+=1
+        # cost witness last
+        nz=np.nonzero(frac_cost_coef)[0]
+        rr.extend([row]*len(nz));cc.extend(nz.tolist());vv.extend(frac_cost_coef[nz].tolist())
+        Mco=S*(cvec.sum()+1)+1
+        rr += [row,row];cc += [epsidx,bstart+boffs[r]+len(cs)];vv += [1,Mco]
+        lo.append(-np.inf);hi.append(Cr[r]+Mco);row+=1
+    A=sp.coo_matrix((vv,(rr,cc)),shape=(row,nvar)).tocsr()
+    st=time.time()
+    res=milp(obj,integrality=integ,bounds=Bounds(lb,ub),
+             constraints=LinearConstraint(A,np.array(lo),np.array(hi)),
+             options={'time_limit':time_limit,'mip_rel_gap':1e-8,'presolve':True,'disp':False})
+    if verbose:
+        print("paths",sizes,"unique routes",N,"vars",nvar,"bin",nb,"rows",row,
+              "time",time.time()-st,"status",res.message,"eps",res.x[epsidx] if res.success else None)
+    return (res,dict(edges=edges,pinc=pinc,pnodes=pnodes,ts=ts,Y=Y,Cr=Cr,offsets=offsets,
+                     Xcoef=Xcoef,frac_cost_coef=frac_cost_coef,epsidx=epsidx,cvec=cvec,
+                     G=G,s=s,terminals=terminals,demands=demands)),None
+
+```
+
+Checking OR-Tools and Gurobi availability
+
+```
+Python
+
+bash -lc python - <<'PY'
+try:
+ import ortools
+ print('ortools',ortools.__version__)
+except Exception as e: print(e)
+try:
+ import gurobipy
+ print('gurobi')
+except Exception as e: print('no gurobi',e)
+PY
+
+```
+
+Evaluating routing cost using separator LP techniques
+
+```
+Python
+
+def canonical_membership_prep(order, demands=(1,.9,.9)):
+    G,edges,pinc,pcost,opts,combos_low=preps[order]
+    ts=['A','C','D']; dm=dict(zip(ts,demands))
+    combos=np.array(list(itertools.product(range(len(pinc['A'])),range(len(pinc['C'])),range(len(pinc['D'])))),dtype=int)
+    Y=dm['A']*pinc['A'][combos[:,0]]+dm['C']*pinc['C'][combos[:,1]]+dm['D']*pinc['D'][combos[:,2]]
+    Y=np.unique(np.round(Y,12),axis=0)
+    return dict(G=G,edges=edges,pinc=pinc,pcost=pcost,opts=opts,Y=Y,dm=dm)
+def canon_x(cp,pa,pc,q):
+    dm=cp['dm'];o=cp['opts']
+    return (dm['A']*(pa*o[('A','a3')]+(1-pa)*o[('A','a1')])+
+            dm['C']*(pc*o[('C','c13
+
+```
+
+```
+(2079, 19)
+```
+
+Building DiGraph for path enumeration and resource management
+
+```
+Python
+
+def build_word_instance(words_by_t, demands, probs_by_t, m):
+    # resources 0..m-1 globally ordered; words are sorted tuples
+    G=nx.DiGraph();s='s';G.add_node(s)
+    for r in range(m):
+        G.add_edge(('u',r),('v',r),kind='res',res=r)
+    exact_paths={}
+    for t,words in words_by_t.items():
+        tnode=('t',t);G.add_node(tnode)
+        exact_paths[t]=[]
+        for oi,word in enumerate(words):
+            prev=s; nodes=[s]
+            for j,r in enumerate(word):
+                q=('q',t,oi,j)
+                G.add_edge(prev,q,kind='conn',owner=(t,oi,j))
+                G.add_edge(q,('u',r),kind='conn2',owner=(t,oi,j))
+                nodes.extend([q,
+
+```
+
+```
+((True, 0.0), {'A': 17, 'C': 21, 'D': 14})
+```
+
+Progressing toward counterexample
+
+I’ve explored the abstract counterexample but haven’t yet realized a graph model with hybrid paths. Further work involves constructing paths, testing random graphs, and optimizing with LP/MILP. That’s where I’m at now.
+
+Inspecting filesystem and previous scripts
+
+```
+Python
+
+bash -lc ls -la /mnt/data | sed -n '1,120p'; find /mnt/data -maxdepth 2 -type f | sed -n '1,200p'
+
+```
+
+Worked for 88m 24s
+
+Done
+
+Sources·56
+
+- PDF\
+  Dinitz\_Garg\_Goemans.pdf
+
+- [SIAM2026 SIAM Symposium on Simplicity in Algorithms (SOSA) | Unsplittable Cost Flows from Unweighted Error-Bounded VariantsJanuary 6, 2026](https://epubs.siam.org/doi/abs/10.1137/1.9781611978964.42?utm%5Fsource=chatgpt.com)
+
+- [dblp.orgdblp: Martin SkutellaMay 20, 2026 — dblp key: \* journals/ipl/FeketeSW03 \* ask others \* Google \* Google Scholar \* Semantic Scholar \* Internet Archive Scholar \* CiteSeerX \* PubPeer \* share record \* Bluesky \* Reddit \* BibSonomy \* Link...](https://dblp.org/pid/80/2691.html?utm%5Fsource=chatgpt.com)
+
+- [uni-trier.dedblp: Michel X. GoemansApril 23, 2026 — MICHEL X. GOEMANS \* visit \* author's page @ mit.edu \* Google Scholar profile \* ACM author profile \* zbMATH profile \* MathSciNet author profile \* Mathematics Genealogy profile \* Wikipedia article a...](https://dblp.uni-trier.de/pid/g/MichelXGoemans.html?utm%5Fsource=chatgpt.com)
+
+- [dblp.orgdblp: Michel X. GoemansApril 23, 2026 — \* LinkedIn persistent URL: \* https://dblp.org/rec/journals/corr/abs-1910-00994 Michel X. Goemans, Shafi Goldwasser, Dhiraj Holden: Doubly-Efficient Pseudo-Deterministic Proofs. CoRR abs/1910.00994...](https://dblp.org/pid/g/MichelXGoemans.html?utm%5Fsource=chatgpt.com)
+
+- [siam.org2026 SIAM Symposium on Simplicity in Algorithms (SOSA) | Unsplittable Cost Flows from Unweighted Error-Bounded VariantsJanuary 6, 2026 — Proceedings 2026 SIAM Symposium on Simplicity in Algorithms (SOSA) UNSPLITTABLE COST FLOWS FROM UNWEIGHTED ERROR-BOUNDED VARIANTS Authors: Chaitanya Swamy, Vera Traub, Laura Vargas Koch, and Rico...](https://epubs.siam.org/doi/abs/10.1137/1.9781611978964.42?utm%5Fsource=chatgpt.com)
+
+- [siam.org2026 SIAM Symposium on Simplicity in Algorithms (SOSA) | Unsplittable Cost Flows from Unweighted Error-Bounded VariantsJanuary 6, 2026 — Proceedings 2026 SIAM Symposium on Simplicity in Algorithms (SOSA) UNSPLITTABLE COST FLOWS FROM UNWEIGHTED ERROR-BOUNDED VARIANTS Authors: Chaitanya Swamy, Vera Traub, Laura Vargas Koch, and Rico...](https://epubs.siam.org/doi/10.1137/1.9781611978964.42?utm%5Fsource=chatgpt.com)
+
+- [dagstuhl.deApproximating Maximum Cut on Interval Graphs and Split Graphs Beyond Goemans-WilliamsonSeptember 15, 2025 — APPROXIMATING MAXIMUM CUT ON INTERVAL GRAPHS AND SPLIT GRAPHS BEYOND GOEMANS-WILLIAMSON AUTHORS JUNGHO AHN , IAN DEHAAN , EUN JUNG KIM , EUIWOONG LEE \* \* \* \* Part of: Volume: Approximation, Random...](https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.APPROX/RANDOM.2025.20?utm%5Fsource=chatgpt.com)
+
+- [dagstuhl.deTriangles Improve 0.878 Approximation for MaxcutSeptember 15, 2025 — TRIANGLES IMPROVE 0.878 APPROXIMATION FOR MAXCUT AUTHORS FREDIE GEORGE , ANAND LOUIS , RAMEESH PAUL \* \* \* \* Part of: Volume: Approximation, Randomization, and Combinatorial Optimization. Algorithm...](https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.APPROX/RANDOM.2025.27?utm%5Fsource=chatgpt.com)
+
+- [uwaterloo.caC\&O Reading Group -David Aleman | Combinatorics and Optimization | University of WaterlooMay 29, 2025 — C\&O READING GROUP -DAVID ALEMAN Thursday, May 29, 2025 1:00 pm - 2:30 pm EDT (GMT -04:00) iCal Title:Unsplittable Multicommodity Flows in Outerplanar Graphs Speaker: | David Aleman Affiliation:...](https://uwaterloo.ca/combinatorics-and-optimization/events/co-reading-group-david-aleman-3?utm%5Fsource=chatgpt.com)
+
+- [emergentmind.comInteger and Unsplittable Multiflows in Series-Parallel DigraphsDecember 6, 2024 — INTEGER AND UNSPLITTABLE MULTIFLOWS IN SERIES-PARALLEL DIGRAPHS Published 6 Dec 2024 in math.CO and cs.DS | (2412.05182v1) Abstract: An unsplittable multiflow routes the demand of each commodity al...](https://www.emergentmind.com/papers/2412.05182?utm%5Fsource=chatgpt.com)
+
+- [siam.orgProceedings of the 2024 Annual ACM-SIAM Symposium on Discrete Algorithms (SODA) | Single-Source Unsplittable Flows in Planar GraphsJanuary 4, 2024 — Proceedings Proceedings of the 2024 Annual ACM-SIAM Symposium on Discrete Algorithms (SODA) SINGLE-SOURCE UNSPLITTABLE FLOWS IN PLANAR GRAPHS Authors: Vera Traub, Laura Vargas Koch, and Rico Zenkl...](https://epubs.siam.org/doi/10.1137/1.9781611977912.24?utm%5Fsource=chatgpt.com)
+
+- [emergentmind.comSingle-Source Unsplittable Flows in Planar GraphsAugust 4, 2023 — SINGLE-SOURCE UNSPLITTABLE FLOWS IN PLANAR GRAPHS Published 4 Aug 2023 in cs.DS | (2308.02651v1) Abstract: The single-source unsplittable flow (SSUF) problem asks to send flow from a common source...](https://www.emergentmind.com/papers/2308.02651?utm%5Fsource=chatgpt.com)
+
+- [deepai.orgSingle-Source Unsplittable Flows in Planar Graphs | DeepAIAugust 4, 2023 — SINGLE-SOURCE UNSPLITTABLE FLOWS IN PLANAR GRAPHS 08/04/2023 ∙ by Vera Traub, et al. ∙ Image Image 0 ∙ The single-source unsplittable flow (SSUF) problem asks to send flow from a common sour...](https://www.deepai.org/publication/single-source-unsplittable-flows-in-planar-graphs?utm%5Fsource=chatgpt.com)
+
+- [wiley.comNew results for MaxCut in H‐free graphs - Glock - 2023 - Journal of the London Mathematical Society - Wiley Online LibraryMay 9, 2023 — NEW RESULTS FOR MAXCUT IN 𝐻$$H$$-FREE GRAPHS Stefan Glock, Stefan Glock Fakultät für Informatik und Mathematik, Universität Passau, Passau, Germany Search for more papers by this author Oliver J...](https://londmathsoc.onlinelibrary.wiley.com/doi/full/10.1112/jlms.12750?utm%5Fsource=chatgpt.com)
+
+- [alphaxiv.orgRandomized rounding algorithms for large scale unsplittable flow problems | alphaXivMarch 27, 2023 — RANDOMIZED ROUNDING ALGORITHMS FOR LARGE SCALE UNSPLITTABLE FLOW PROBLEMS François Lamothe, Emmanuel Rachelson, Alain Haït, Cedric Baudoin, Jean-Baptiste Dupe 2023-03-27 PDF Download ABSTRACT Un...](https://www.alphaxiv.org/abs/2303.15550v1?utm%5Fsource=chatgpt.com)
+
+- [springer.comSingle source unsplittable flows with arc-wise lower and upper bounds | Mathematical Programming | Springer Nature LinkSeptember 1, 2021 — SINGLE SOURCE UNSPLITTABLE FLOWS WITH ARC-WISE LOWER AND UPPER BOUNDS \* Full Length Paper \* Series B \* Open access \* Published: 01 September 2021 \* Volume 192, pages 477–496 (2022) \* Cite this arti...](https://link.springer.com/article/10.1007/s10107-021-01704-4?utm%5Fsource=chatgpt.com)
+
+- [researchgate.netAn instance with k demands of value 1. Flow x is given as follows:... | Download Scientific DiagramSeptember 1, 2021 — Image: An instance with k demands of value 1. Flow x is given as follows: solid arcs have flow value k k+1 and dashed arcs carry flow value 1 k+1 . Notice that any unsplittable flow sends zero flow o...](https://www.researchgate.net/figure/An-instance-with-k-demands-of-value-1-Flow-x-is-given-as-follows-solid-arcs-have-flow%5Ffig3%5F354291834?utm%5Fsource=chatgpt.com)
+
+- [dagstuhl.deFPT and FPT-Approximation Algorithms for Unsplittable Flow on TreesAugust 31, 2021 — FPT AND FPT-APPROXIMATION ALGORITHMS FOR UNSPLITTABLE FLOW ON TREES AUTHORS TOMÁS MARTÍNEZ-MUÑOZ, ANDREAS WIESE \* \* \* \* Part of: Volume: 29th Annual European Symposium on Algorithms (ESA 2021) Par...](https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.ESA.2021.67?utm%5Fsource=chatgpt.com)
+
+- [dagstuhl.de29th Annual European Symposium on Algorithms (ESA 2021)August 31, 2021 — CITE AS Thomas Bläsius, Tobias Friedrich, and Maximilian Katzmann. Efficiently Approximating Vertex Cover on Scale-Free Networks with Underlying Hyperbolic Geometry. In 29th Annual European Symposium...](https://drops.dagstuhl.de/entities/volume/LIPIcs-volume-204?utm%5Fsource=chatgpt.com)
+
+- [escholarship.orgOn the Power and Limitations of Branch and CutMay 24, 2021 — On the Power and Limitations of Branch and Cut 2021 \* Fleming, Noah; \* Göös, Mika; \* Impagliazzo, Russell; \* Pitassi, Toniann; \* Robere, Robert; \* Tan, Li-Yang; \* Wigderson, Avi et al. \[Button: .....](https://escholarship.org/uc/item/5pd601kz?utm%5Fsource=chatgpt.com)
+
+- [researchgate.netSingle Source Unsplittable Flows with Arc-Wise Lower and Upper Bounds | Request PDFApril 1, 2020 — SINGLE SOURCE UNSPLITTABLE FLOWS WITH ARC-WISE LOWER AND UPPER BOUNDS \* April 2020 \* Lecture Notes in Computer Science DOI:10.1007/978-3-030-45771-6\_23 \* In book: Integer Programming and Combinato...](https://www.researchgate.net/publication/340629002%5FSingle%5FSource%5FUnsplittable%5FFlows%5Fwith%5FArc-Wise%5FLower%5Fand%5FUpper%5FBounds?utm%5Fsource=chatgpt.com)
+
+- [doi.orgSingle Source Shortest Paths for All Flows with Integer CostsSeptember 14, 2015 — SINGLE SOURCE SHORTEST PATHS FOR ALL FLOWS WITH INTEGER COSTS AUTHOR TADAO TAKAOKA \* \* \* \* Part of: Volume: 15th Workshop on Algorithmic Approaches for Transportation Modelling, Optimization, and...](https://doi.org/10.4230/OASIcs.ATMOS.2015.56?utm%5Fsource=chatgpt.com)
+
+- [emergentmind.comUnique Games on the HypercubeMay 3, 2014 — UNIQUE GAMES ON THE HYPERCUBE (1405.1374V1) Published 3 May 2014 in cs.CC and cs.DS Abstract: In this paper, we investigate the validity of the Unique Games Conjecture when the constraint graph is...](https://www.emergentmind.com/articles/1405.1374?utm%5Fsource=chatgpt.com)
+
+- [emergentmind.comUnique Games on the HypercubeMay 3, 2014 — UNIQUE GAMES ON THE HYPERCUBE Published 3 May 2014 in cs.CC and cs.DS | (1405.1374v1) Abstract: In this paper, we investigate the validity of the Unique Games Conjecture when the constraint graph i...](https://www.emergentmind.com/papers/1405.1374?utm%5Fsource=chatgpt.com)
+
+- [siam.orgA Constant-Factor Approximation Algorithm for Unsplittable Flow on Paths | SIAM Journal on ComputingApril 29, 2014 — SPECIAL SECTION A CONSTANT-FACTOR APPROXIMATION ALGORITHM FOR UNSPLITTABLE FLOW ON PATHS Authors: Paul Bonsma, Jens Schulz, and Andreas WieseAuthors Info & Affiliations https://doi.org/10.1137/120...](https://epubs.siam.org/doi/10.1137/120868360?utm%5Fsource=chatgpt.com)
+
+- [epn.edu.ecEvaluación Experimental del Problema de Flujo no Divisible de Costo Mínimo con única fuente mediante la aplicación de Algoritmos Genéticos | Revista PolitécnicaJuly 31, 2013 — EVALUACIÓN EXPERIMENTAL DEL PROBLEMA DE FLUJO NO DIVISIBLE DE COSTO MÍNIMO CON ÚNICA FUENTE MEDIANTE LA APLICACIÓN DE ALGORITMOS GENÉTICOS ##PLUGINS.THEMES.BOOTSTRAP3.ARTICLE.MAIN## MARÍA FERNANDA S...](https://revistapolitecnica.epn.edu.ec/ojs2/index.php/revista%5Fpolitecnica2/article/view/28?utm%5Fsource=chatgpt.com)
+
+- [siam.orgThe Price of Routing Unsplittable Flow | SIAM Journal on ComputingJanuary 24, 2013 — THE PRICE OF ROUTING UNSPLITTABLE FLOW Authors: Baruch Awerbuch, Yossi Azar, and Amir EpsteinAuthors Info & Affiliations https://doi.org/10.1137/070702370 Get Access BibTeX Tools Contents PREV...](https://epubs.siam.org/doi/10.1137/070702370?utm%5Fsource=chatgpt.com)
+
+- [siam.orgApproximation Algorithms for Single-Source Unsplittable Flow | SIAM Journal on ComputingFebruary 17, 2012 — APPROXIMATION ALGORITHMS FOR SINGLE-SOURCE UNSPLITTABLE FLOW Authors: Stavros G. Kolliopoulos and Clifford SteinAuthors Info & Affiliations https://doi.org/10.1137/S0097539799355314 Get Access A...](https://epubs.siam.org/doi/pdf/10.1137/S0097539799355314?utm%5Fsource=chatgpt.com)
+
+- [doi.orgApproximation Algorithms for Single-Source Unsplittable Flow | SIAM Journal on ComputingFebruary 17, 2012 — APPROXIMATION ALGORITHMS FOR SINGLE-SOURCE UNSPLITTABLE FLOW Authors: Stavros G. Kolliopoulos and Clifford SteinAuthors Info & Affiliations https://doi.org/10.1137/S0097539799355314 Get Access Bi...](https://doi.org/10.1137/s0097539799355314?utm%5Fsource=chatgpt.com)
+
+- [doi.orgRouting (un-) splittable flow in games with player-specific affine latency functions | ACM Transactions on AlgorithmsJuly 15, 2011 — research-article Free access ROUTING (UN-) SPLITTABLE FLOW IN GAMES WITH PLAYER-SPECIFIC AFFINE LATENCY FUNCTIONS Authors: Martin Gairing Image Martin Gairing University of Liverpool, Liverpool...](https://doi.org/10.1145/1978782.1978786?utm%5Fsource=chatgpt.com)
+
+- [studylib.netMatchings, Matroids and Submodular Functions Nicholas James Alexander HarveyJune 1, 2008 — MATCHINGS, MATROIDS AND SUBMODULAR FUNCTIONS NICHOLAS JAMES ALEXANDER HARVEY Matchings, Matroids and Submodular Functions by Nicholas James Alexander Harvey Submitted to the Department of Electrical...](https://studylib.net/doc/10321870/matchings--matroids-and-submodular-functions-nicholas-jam...?utm%5Fsource=chatgpt.com)
+
+- [expydoc.com独立偶因子問題に対する 組合せ的アルゴリズムNovember 18, 2006 — 独立偶因子問題に対する 組合せ的アルゴリズム 組合せ最適化の地平 Combinatorial Optimization: A Tour d’Horizon 岩田 覚 (京都大学数理解析研究所) 2006 年 11月 18 日 名古屋大学 1 組合せ最適化と計算量理論 実用上現れる多くの組合せ最適化問題は， 次の３種類のいずれか． • 簡単に多項式時間アルゴリズムが作れる． • 容易にNP困難性が...](https://expydoc.com/doc/6530286/%E7%8B%AC%E7%AB%8B%E5%81%B6%E5%9B%A0%E5%AD%90%E5%95%8F%E9%A1%8C%E3%81%AB%E5%AF%BE%E3%81%99%E3%82%8B-%E7%B5%84%E5%90%88%E3%81%9B%E7%9A%84%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0?utm%5Fsource=chatgpt.com)
+
+- [wiley.comFlows on few paths: Algorithms and lower bounds - Martens - 2006 - Networks - Wiley Online LibraryJune 7, 2006 — Volume 48, Issue 2 pp. 68-76 FLOWS ON FEW PATHS: ALGORITHMS AND LOWER BOUNDS Maren Martens, Corresponding Author Maren Martens \* maren.martens@math.uni-dortmund.de Universität Dortmund, Fachber...](https://onlinelibrary.wiley.com/doi/abs/10.1002/net.20121?utm%5Fsource=chatgpt.com)
+
+- [sciencedirect.comMinimum-cost single-source 2-splittable flow - ScienceDirectApril 15, 2005 — INFORMATION PROCESSING LETTERS Volume 94, Issue 1, 15 April 2005, Pages 15-18 MINIMUM-COST SINGLE-SOURCE 2-SPLITTABLE FLOW☆ https://doi.org/10.1016/j.ipl.2004.12.009Get rights and content ABSTRAC...](https://www.sciencedirect.com/science/article/abs/pii/S0020019004003679?utm%5Fsource=chatgpt.com)
+
+- [sciencedirect.comMinimum-Cost Single-Source 2-Splittable Flow - ScienceDirectOctober 20, 2004 — ELECTRONIC NOTES IN DISCRETE MATHEMATICS Volume 17, 20 October 2004, Pages 197-201 MINIMUM-COST SINGLE-SOURCE 2-SPLITTABLE FLOW https://doi.org/10.1016/j.endm.2004.03.039Get rights and content AB...](https://www.sciencedirect.com/science/article/pii/S1571065304010388?utm%5Fsource=chatgpt.com)
+
+- [doi.org(Almost) tight bounds and existence theorems for confluent flows | Proceedings of the thirty-sixth annual ACM symposium on Theory of computingJune 13, 2004 — Article Free access (ALMOST) TIGHT BOUNDS AND EXISTENCE THEOREMS FOR CONFLUENT FLOWS Authors: Jiangzhuo Chen Image Jiangzhuo Chen Northeastern University, Boston, MA View Profile , Robert D....](https://doi.org/10.1145/1007352.1007432?utm%5Fsource=chatgpt.com)
+
+- [bgu.ac.ilOn the single-source unsplittable flow problem - Ben-Gurion University Research PortalJanuary 1, 1999 — ON THE SINGLE-SOURCE UNSPLITTABLE FLOW PROBLEM \* Yefim Dinitz \* , Naveen Garg \* , Michel X. Goemans Research output: Contribution to journal › Article › peer-review 110 Scopus citations ABSTRACT...](https://cris.bgu.ac.il/en/publications/on-the-single-source-unsplittable-flow-problem-3/?utm%5Fsource=chatgpt.com)
+
+- [bgu.ac.ilOn the single-source unsplittable flow problem - Ben-Gurion University Research PortalDecember 1, 1998 — ON THE SINGLE-SOURCE UNSPLITTABLE FLOW PROBLEM \* Yefim Dinitz \* , Naveen Garg \* , Michel X. Goemans Research output: Contribution to journal › Conference article › peer-review 35 Scopus citations...](https://cris.bgu.ac.il/en/publications/on-the-single-source-unsplittable-flow-problem/?utm%5Fsource=chatgpt.com)
+
+- [doi.orgA New Bound for the 2-Edge Connected Subgraph Problem | Springer Nature LinkJune 18, 1998 — A NEW BOUND FOR THE 2-EDGE CONNECTED SUBGRAPH PROBLEM \* Conference paper \* First Online: 01 January 1998 \* pp 112–125 \* Cite this conference paper Integer Programming and Combinatorial Optimizatio...](https://doi.org/10.1007%2F3-540-69346-7%5F9?utm%5Fsource=chatgpt.com)
+
+- [doi.orgDecision algorithms for unsplittable flow and the half-disjoint paths problem | Proceedings of the thirtieth annual ACM symposium on Theory of computingMay 23, 1998 — Article Free access DECISION ALGORITHMS FOR UNSPLITTABLE FLOW AND THE HALF-DISJOINT PATHS PROBLEM Author: Jon M. Kleinberg Image Jon M. Kleinberg Department of Computer Science, Cornell Univers...](https://doi.org/10.1145/276698.276867?utm%5Fsource=chatgpt.com)
+
+- [doi.orgSingle-source unsplittable flowOctober 14, 1996 — SINGLE-SOURCE UNSPLITTABLE FLOW Publisher: IEEE ABSTRACT: The max-flow min-cut theorem of Ford and Fulkerson is based on an even more foundational result, namely Menger's theorem on graph connecti...](https://doi.org/10.1109/SFCS.1996.548465?utm%5Fsource=chatgpt.com)
+
+- [doi.orgRandom sampling in cut, flow, and network design problems | Proceedings of the twenty-sixth annual ACM symposium on Theory of ComputingMay 23, 1994 — Article Free access RANDOM SAMPLING IN CUT, FLOW, AND NETWORK DESIGN PROBLEMS Author: David R. KargerAuthors Info & Claims STOC '94: Proceedings of the twenty-sixth annual ACM symposium on Theory...](https://doi.org/10.1145/195058.195422?utm%5Fsource=chatgpt.com)
+
+- [siam.orgProceedings of the 2024 Annual ACM-SIAM Symposium on Discrete Algorithms (SODA) | SIAM Publications LibrarySINGLE-SOURCE UNSPLITTABLE FLOWS IN PLANAR GRAPHS \* Vera Traub, \* Laura Vargas Koch, \* Rico Zenklusen pp. 639–668 \* Abstract \* PDF Abstract The single-source unsplittable flow (SSUF) problem asks...](https://epubs.siam.org/doi/book/10.1137/1.9781611977912?utm%5Fsource=chatgpt.com)
+
+- [huji.ac.ilUnique Games on the Hypercube - The Hebrew University of JerusalemUNIQUE GAMES ON THE HYPERCUBE \* Naman Agarwal \* , Guy Kindler \* , Alexandra Kolla \* , Luca Trevisan \* The Rachel and Selim Benin School of Engineering and Computer Science Research output: Contrib...](https://cris.huji.ac.il/en/publications/unique-games-on-the-hypercube/?utm%5Fsource=chatgpt.com)
+
+- [doi.orgApproximation Algorithms for Edge-Disjoint Paths and Unsplittable Flow | Springer Nature LinkAPPROXIMATION ALGORITHMS FOR EDGE-DISJOINT PATHS AND UNSPLITTABLE FLOW \* Chapter \* pp 97–134 \* Cite this chapter Save chapter View saved research Efficient Approximation and Online Algorithms \*...](https://doi.org/10.1007/11671541%5F4?utm%5Fsource=chatgpt.com)
+
+- [iucc.ac.ilUnique Games on the Hypercube - Israeli Research Community PortalUNIQUE GAMES ON THE HYPERCUBE \* Naman Agarwal \* , Guy Kindler \* , Alexandra Kolla \* , Luca Trevisan \* The Rachel and Selim Benin School of Engineering and Computer Science The Hebrew University of...](https://cris.iucc.ac.il/en/publications/unique-games-on-the-hypercube/?utm%5Fsource=chatgpt.com)
+
+- [cedia.edu.ecConvex combinations of single source unsplittable flows - RE | REDICONVEX COMBINATIONS OF SINGLE SOURCE UNSPLITTABLE FLOWS \* \* \* ABSTRACT: In the single source unsplittable flow problem, commodities must be routed simultaneously from a common source vertex to cer...](https://redi.cedia.edu.ec/document/97557?utm%5Fsource=chatgpt.com)
+
+- [sciencedirect.comSingle-source k-splittable min-cost flows - ScienceDirectDate: March 2009 Pages: 71-74 Volume: Volume 37, Issue 2 PUBLISHED BY: ELSEVIER SINGLE-SOURCE K-SPLITTABLE MIN-COST FLOWS Author links open overlay panel Fernanda Salazar ^{a}, Martin Skutella ^...](https://www.sciencedirect.com/science/article/abs/pii/S0167637709000133?utm%5Fsource=chatgpt.com)
+
+- [sciencedirect.comOn judicious bisections of graphs - ScienceDirectJOURNAL OF COMBINATORIAL THEORY, SERIES B Date: May 2014 Pages: 30-69 Volume: Volume 106 PUBLISHED BY: ELSEVIER ON JUDICIOUS BISECTIONS OF GRAPHS Author links open overlay panelBaogang Xu ^{a}...](https://www.sciencedirect.com/science/article/pii/S0095895614000057?utm%5Fsource=chatgpt.com)
+
+- [researchgate.netImplementing Approximation Algorithms for the Single-Source Unsplittable Flow ProblemIMPLEMENTING APPROXIMATION ALGORITHMS FOR THE SINGLE-SOURCE UNSPLITTABLE FLOW PROBLEM \* July 2004 DOI:10.1007/978-3-540-24838-5\_16 \* In book: Experimental and Efficient Algorithms Authors: Jingd...](https://www.researchgate.net/publication/2905825%5FImplementing%5FApproximation%5FAlgorithms%5Ffor%5Fthe%5FSingle-Source%5FUnsplittable%5FFlow%5FProblem?utm%5Fsource=chatgpt.com)
+
+- [uclouvain.beOn the single-source unsplittable flow problemON THE SINGLE-SOURCE UNSPLITTABLE FLOW PROBLEM Dinitz, Y;Garg, N;Goemans, MX (1999) Combinatorica - an international journal of the János Bolyai Mathematical Society — Vol. 19, n° 1, p. 17-41 (1999...](https://research.dial.uclouvain.be/entities/publication/6ee460f5-8423-48bf-b514-18029db29bd1?utm%5Fsource=chatgpt.com)
+
+- [eurekamag.comThe unique games conjecture, integrality gap for cut problems and embeddability of negative type metrics into l 1THE UNIQUE GAMES CONJECTURE, INTEGRALITY GAP FOR CUT PROBLEMS AND EMBEDDABILITY OF NEGATIVE TYPE METRICS INTO L 1 KHOT, S.A.; VISHNOI, N.K. \* \* \* ANNUAL SYMPOSIUM ON FOUNDATIONS OF COMPUTER SCIENC...](https://eurekamag.com/research/099/350/099350124.php?utm%5Fsource=chatgpt.com)
+
+- [uni-trier.dedblp: M. R. Garey\* BibSonomy \* LinkedIn persistent URL: \* https://dblp.org/rec/journals/jacm/CoffmanG93 Edward G. Coffman Jr., M. R. Garey: Proof of the 4/3 Conjecture for Preemptive vs. Nonpreemptive Two-Processor...](https://dblp.uni-trier.de/pid/g/MRGarey.html?utm%5Fsource=chatgpt.com)
+
+- [dblp.orgdblp: F. Bruce Shepherdpersistent URL: \* https://dblp.org/rec/conf/soda/Espinosa0PS26 David Alemán EspinosaImage: 0000-0002-0921-0747, Nikhil Kumar, Joseph PorembaImage: 0000-0003-3210-5504, F. Bruce Shepherd: Unsplittabl...](https://dblp.org/pid/01/4088?utm%5Fsource=chatgpt.com)
+
+- [biglobe.ne.jpSHINYA FUJITA\[53\] S.Fujita (with G. Chen, A. Gyarfas, J. Lehel, A. Toth), Around a biclique cover conjecture, Preprint- arXiv:1212.6861v1 \[math.CO\]. \[54\] S.Fujita (with L. Lesniak, A. Toth), Further remarks on lon...](https://www2u.biglobe.ne.jp/~sfujita/oldversion.htm?utm%5Fsource=chatgpt.com)
+``````
+
+## Complete finite counterexample
+
+Under Conjecture 1.3 exactly as stated in the uploaded paper—find an unsplittable flow y with
+
+ya​≤xa​+dmax​∀a,cTy≤cTx
+
+for every feasible fractional flow x and nonnegative cost vector c—the instance below is a counterexample.
+
+The latest primary source I found, published in January 2026, still describes the conjecture as open. Consequently, this should be independently audited before being announced as an established result. Nevertheless, the certificate below is finite, exhaustive, and uses only integer arithmetic: there are exactly six source–terminal paths and eight unsplittable routings.
+
+### 1. The instance
+
+Let
+
+V={s,u,v,w,t1​,t2​,t3​},
+
+where s is the common source. The demands are
+
+d1​=15,d2​=10,d3​=15,
+
+so
+
+D=dmax​=15.
+
+The directed arcs, fractional loads, and nonnegative per-unit costs are:
+
+| Arc a | xa​ | ca​ |
+| ----- | --- | --- |
+| s→t1​ | 10  | 2   |
+| s→t2​ | 6   | 3   |
+| s→u   | 24  | 0   |
+| u→t3​ | 10  | 2   |
+| u→v   | 14  | 0   |
+| v→t1​ | 5   | 0   |
+| v→w   | 9   | 0   |
+| w→t2​ | 4   | 0   |
+| w→t3​ | 5   | 0   |
+
+One may take the capacities to be ua​=xa​. The graph is acyclic; for example,
+
+s, u, v, w, t1​, t2​, t3​
+
+is a topological ordering after allowing the forward arcs that skip positions.
+
+Its underlying undirected graph is a subdivision of K4​. Thus the construction is planar, though not series-parallel.
+
+### 2. The fractional flow is feasible
+
+The source outflow is
+
+10+6+24=40=d1​+d2​+d3​.
+
+Conservation at the internal vertices is
+
+24=10+14,14=5+9,9=4+5.
+
+The terminal inflows are
+
+10+5=15,6+4=10,10+5=15.
+
+Equivalently, x has the following path decomposition:
+
+t1​:t2​:t3​:​10 units on s→t1​,6 units on s→t2​,10 units on s→u→t3​,​5 units on s→u→v→t1​,4 units on s→u→v→w→t2​,5 units on s→u→v→w→t3​.​
+
+Its cost is
+
+cTx=2⋅10+3⋅6+2⋅10=58.
+
+### 3. These are all the unsplittable path choices
+
+Each terminal has exactly two source–terminal paths:
+
+E1​=s→t1​,E2​=s→t2​,E3​=s→u→t3​,​​Z1​=s→u→v→t1​,Z2​=s→u→v→w→t2​,Z3​=s→u→v→w→t3​.​
+
+There are no hidden splice paths.
+
+The Zi​ paths have zero cost. Each Ei​ contributes total cost 30:
+
+d1​c(E1​)=15⋅2=30, d2​c(E2​)=10⋅3=30, d3​c(E3​)=15⋅2=30.
+
+### 4. Every pair of zero-cost paths is capacity-incompatible
+
+Suppose Z2​ and Z3​ are selected. Then v→w carries
+
+d2​+d3​=10+15=25,
+
+but its allowed load is
+
+xvw​+D=9+15=24.
+
+Thus
+
+25>24.
+
+Suppose Z1​ and Z3​ are selected. Then u→v carries
+
+d1​+d3​=15+15=30,
+
+whereas
+
+xuv​+D=14+15=29.
+
+Thus
+
+30>29.
+
+Finally, suppose Z1​ and Z2​ are selected. Terminal t3​ uses s→u on either of its two paths, so s→u carries
+
+d1​+d2​+d3​=15+10+15=40,
+
+whereas
+
+xsu​+D=24+15=39.
+
+Thus
+
+40>39.
+
+Consequently, every capacity-good routing can use **at most one** of Z1​,Z2​,Z3​.
+
+The converse also holds. When at most one Zi​ is used, the three potentially shared arcs satisfy
+
+ysu​≤30<39,yuv​≤15<29,yvw​≤15<24.
+
+Every remaining arc is used by at most one terminal and therefore has load at most D≤xa​+D. Hence:
+
+A routing is capacity-good exactly when it uses at most one Zi​.​
+
+### 5. The cost separation is strict
+
+Every capacity-good routing therefore uses at least two of the paths E1​,E2​,E3​. Each contributes 30, so every capacity-good routing has cost at least
+
+2⋅30=60.
+
+But the fractional flow costs only
+
+cTx=58.
+
+Therefore,
+
+min{cTy:y unsplittable and ya​≤xa​+D ∀a}=60>58=cTx.​
+
+This disproves the conjectured simultaneous guarantee.
+
+### 6. Exhaustive routing table
+
+| t1​ | t2​ | t3​ | Cost | Capacity status              |
+| --- | --- | --- | ---- | ---------------------------- |
+| E1​ | E2​ | E3​ | 90   | Good                         |
+| E1​ | E2​ | Z3​ | 60   | Good                         |
+| E1​ | Z2​ | E3​ | 60   | Good                         |
+| E1​ | Z2​ | Z3​ | 30   | Bad on v→w, excess 1         |
+| Z1​ | E2​ | E3​ | 60   | Good                         |
+| Z1​ | E2​ | Z3​ | 30   | Bad on u→v, excess 1         |
+| Z1​ | Z2​ | E3​ | 30   | Bad on s→u, excess 1         |
+| Z1​ | Z2​ | Z3​ | 0    | Bad on all three shared arcs |
+
+Thus all eight possibilities are accounted for.
+
+### 7. Why the construction works
+
+The three zero-cost choices form the stable-set system of a triangle:
+
+Z1​∼Z2​,Z1​∼Z3​,Z2​∼Z3​.
+
+Their fractional selection probabilities are
+
+Pr(Z1​)=155​=31​,Pr(Z2​)=104​=52​,Pr(Z3​)=155​=31​.
+
+Hence
+
+Pr(Z1​)+Pr(Z2​)+Pr(Z3​)=31​+52​+31​=1516​>1.
+
+Every capacity-good integral routing satisfies the triangle stable-set inequality
+
+z1​+z2​+z3​≤1,
+
+but the fractional point violates it. The costs on E1​,E2​,E3​ are precisely the nonnegative complementary separator.
+
+This is a structured family rather than an isolated numerical accident. Normalize the demands to
+
+d1​=d3​=1,d2​=b≤1
+
+and give the three cheap paths probabilities r,q,r. The same construction works whenever
+
+2r+q>1,b(1−q)>r,2r+bq<1.
+
+The displayed integer instance comes from
+
+b=32​,r=31​,q=52​.
+
+Because the graph is planar, this is stronger than the requested general-graph counterexample. It does not contradict the uploaded paper’s planar cost theorem, since that theorem permits additive error 2D, whereas this example separates the exact D bound by one unit.
+
+### Verification files
+
+The external-validation caveat is substantive because of the conjecture’s standing, but there is no remaining search, omitted-path, floating-point, or hybrid-routing gap in this certificate.
