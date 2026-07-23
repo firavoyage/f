@@ -18,17 +18,6 @@ modes:
     - cozy
 
 palette:
-  accent:
-    blue: oklch(61.4% 0.164 255)
-    teal: oklch(60.3% 0.098 213)
-    green: oklch(59.4% 0.139 147)
-    yellow: oklch(67.4% 0.142 76)
-    orange: oklch(65.4% 0.196 42)
-    red: oklch(60.3% 0.217 22)
-    pink: oklch(65.1% 0.158 352)
-    purple: oklch(52.5% 0.175 317)
-    slate: oklch(60.1% 0.037 247)
-
   # no need to overthink, 1% difference is trivial
   # prefer standard over adwaita
   gray:
@@ -152,15 +141,15 @@ color:
       value: "palette.gray.200"
       dark: "palette.gray.800"
     accent:
-      value: "palette.accent.blue"
-      teal: "palette.accent.teal"
-      green: "palette.accent.green"
-      yellow: "palette.accent.yellow"
-      orange: "palette.accent.orange"
-      red: "palette.accent.red"
-      pink: "palette.accent.pink"
-      purple: "palette.accent.purple"
-      slate: "palette.accent.slate"
+      blue: oklch(61.4% 0.164 255)
+      teal: oklch(60.3% 0.098 213)
+      green: oklch(59.4% 0.139 147)
+      yellow: oklch(67.4% 0.142 76)
+      orange: oklch(65.4% 0.196 42)
+      red: oklch(60.3% 0.217 22)
+      pink: oklch(65.1% 0.158 352)
+      purple: oklch(52.5% 0.175 317)
+      slate: oklch(60.1% 0.037 247)
 
   fg:
     primary:

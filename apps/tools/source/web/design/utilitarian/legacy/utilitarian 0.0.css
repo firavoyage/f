@@ -1,0 +1,146 @@
+:root,[data-theme="light"],[data-accent="blue"],[data-density="comfortable"] {
+  --palette-accent-blue: oklch(61.4% 0.164 255);
+  --palette-accent-teal: oklch(60.3% 0.098 213);
+  --palette-accent-green: oklch(59.4% 0.139 147);
+  --palette-accent-yellow: oklch(67.4% 0.142 76);
+  --palette-accent-orange: oklch(65.4% 0.196 42);
+  --palette-accent-red: oklch(60.3% 0.217 22);
+  --palette-accent-pink: oklch(65.1% 0.158 352);
+  --palette-accent-purple: oklch(52.5% 0.175 317);
+  --palette-accent-slate: oklch(60.1% 0.037 247);
+  --palette-gray-50: oklch(99.0% 0 0);
+  --palette-gray-100: oklch(97.7% 0 0);
+  --palette-gray-200: oklch(92.6% 0 0);
+  --palette-gray-300: oklch(85.6% 0 0);
+  --palette-gray-400: oklch(77.1% 0 0);
+  --palette-gray-500: oklch(67.5% 0 0);
+  --palette-gray-600: oklch(56.9% 0 0);
+  --palette-gray-700: oklch(45.3% 0 0);
+  --palette-gray-800: oklch(33.0% 0 0);
+  --palette-gray-850: oklch(26.0% 0 0);
+  --palette-gray-900: oklch(19.8% 0 0);
+  --palette-gray-950: oklch(13.0% 0 0);
+  --palette-success: #78e9ab;
+  --palette-warning: #ffc252;
+  --palette-error: #ff938c;
+  --color-bg-primary: var(--palette-gray-50);
+  --color-bg-secondary: var(--palette-gray-200);
+  --color-bg-tertiary: var(--palette-gray-300);
+  --color-bg-hover: var(--palette-gray-200);
+  --color-bg-pressed: var(--palette-gray-200);
+  --color-bg-accent: var(--palette-accent-blue);
+  --color-fg-primary: var(--palette-gray-800);
+  --color-fg-secondary: var(--palette-gray-800);
+  --color-fg-tertiary: var(--palette-gray-800);
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-7: 1.75rem;
+  --spacing-8: 2rem;
+  --spacing-9: 2.25rem;
+  --spacing-10: 2.5rem;
+  --spacing-11: 2.75rem;
+  --spacing-12: 3rem;
+  --spacing-14: 3.5rem;
+  --spacing-16: 4rem;
+  --spacing-20: 5rem;
+  --spacing-24: 6rem;
+  --spacing-28: 7rem;
+  --spacing-32: 8rem;
+  --spacing-36: 9rem;
+  --spacing-40: 10rem;
+  --spacing-44: 11rem;
+  --spacing-48: 12rem;
+  --spacing-52: 13rem;
+  --spacing-56: 14rem;
+  --spacing-60: 15rem;
+  --spacing-64: 16rem;
+  --spacing-72: 18rem;
+  --spacing-80: 20rem;
+  --spacing-96: 24rem;
+  --spacing-0\.5: 0.125rem;
+  --spacing-1\.5: 0.375rem;
+  --spacing-2\.5: 0.625rem;
+  --spacing-3\.5: 0.875rem;
+  --font-sans: "Adwaita Sans", sans-serif;
+  --font-monospace: "Adwaita Mono", monospace;
+  --text-xs-size: 0.75rem;
+  --text-xs-height: 1rem;
+  --text-sm-size: 0.875rem;
+  --text-sm-height: 1.25rem;
+  --text-base-size: 1rem;
+  --text-base-height: 1.5rem;
+  --text-lg-size: 1.125rem;
+  --text-lg-height: 1.75rem;
+  --text-xl-size: 1.25rem;
+  --text-xl-height: 1.75rem;
+  --text-2xl-size: 1.5rem;
+  --text-2xl-height: 2rem;
+  --text-3xl-size: 1.875rem;
+  --text-3xl-height: 2.25rem;
+  --text-4xl-size: 2.25rem;
+  --text-4xl-height: 2.5rem;
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-base: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+  --radius-3xl: 32px;
+  --radius-full: 9999px;
+  --scrollbar-width: 8px;
+  --scrollbar-thumb: #bbb;
+  --scrollbar-thumb-hover: #999;
+  --scrollbar-thumb-active: #888;
+  --focus-ring-color: rgba(53, 132, 228, 0.5);
+  --focus-ring-width: 2px;
+  --focus-ring-offset: -2px;
+}
+
+[data-theme="dark"] {
+  --color-bg-primary: var(--palette-gray-900);
+  --color-bg-secondary: var(--palette-gray-800);
+  --color-bg-tertiary: var(--palette-gray-700);
+  --color-bg-hover: var(--palette-gray-800);
+  --color-bg-pressed: var(--palette-gray-800);
+  --color-fg-primary: white;
+  --color-fg-secondary: white;
+  --color-fg-tertiary: white;
+}
+
+[data-accent="teal"] {
+  --color-bg-accent: var(--palette-accent-teal);
+}
+
+[data-accent="green"] {
+  --color-bg-accent: var(--palette-accent-green);
+}
+
+[data-accent="yellow"] {
+  --color-bg-accent: var(--palette-accent-yellow);
+}
+
+[data-accent="orange"] {
+  --color-bg-accent: var(--palette-accent-orange);
+}
+
+[data-accent="red"] {
+  --color-bg-accent: var(--palette-accent-red);
+}
+
+[data-accent="pink"] {
+  --color-bg-accent: var(--palette-accent-pink);
+}
+
+[data-accent="purple"] {
+  --color-bg-accent: var(--palette-accent-purple);
+}
+
+[data-accent="slate"] {
+  --color-bg-accent: var(--palette-accent-slate);
+}
+
