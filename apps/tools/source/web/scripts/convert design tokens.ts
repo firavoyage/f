@@ -1,125 +1,39 @@
-// @ts-nocheck
-import { read, write } from "lib/file";
-import { parse } from "yaml";
-import 'css.escape'
+type InputObject = Record<string, any>;
+type FlattenOptions = {
+  separator?: string;
+  preserve?: (value: any, key: string) => boolean;
+};
 
-const non_existing_mode = 'non_existing_mode'
+export function flatten_object(obj: InputObject, options: FlattenOptions = {}): InputObject {
+  const { separator = ".", preserve } = options;
+  const result: InputObject = {};
 
-function convert(design) {
-  // parse modes
-  const modes = {
-    default: ":root"
-  }
+  function recurse(current_item: any, current_prefix: string): void {
+    for (const key in current_item) {
+      if (!Object.prototype.hasOwnProperty.call(current_item, key)) continue;
 
-  if (design.modes) {
-    for (const [mode, variants] of Object.entries(design.modes)) {
-      modes.default += `,[data-${mode}="${variants[0]}"]`
+      const value = current_item[key];
+      const new_key = current_prefix ? `${current_prefix}${separator}${key}` : key;
 
-      for (const variant of variants.slice(1)) {
-        modes[variant] = `[data-${mode}="${variant}"]`
+      if (preserve && preserve(value, key)) {
+        result[new_key] = value;
+        continue;
+      }
+
+      if (typeof value === "object" && value !== null && !Array.isArray(value)) {
+        recurse(value, new_key);
+      } else {
+        result[new_key] = value;
       }
     }
   }
 
-  const styles = {}
-
-  for (const selector of Object.values(modes)) {
-    styles[selector] = {}
-  }
-
-  delete design.modes
-
-  const existing_keys = {}
-
-  // recursive
-  function flatten(design, prefix = []) {
-    if (typeof design != 'object') {
-      existing_keys[prefix.join(".")] = true
-    } else if (has(design, 'value')) {
-      existing_keys[prefix.join(".")] = true
-    } else {
-      for (const [key, value] of Object.entries(design)) {
-        flatten(value, [...prefix, key])
-      }
-    }
-  }
-  flatten(design)
-
-  function css_var(prefix) {
-    return `--${prefix.join('-')}`
-  }
-
-  function set(design, prefix, mode = "default") {
-    if (!has(modes, mode)) {
-      throw err({ type: non_existing_mode, message: `non existing mode: ${mode}` })
-    }
-
-    if (typeof design == 'string') {
-      if (has(existing_keys, design)) {
-        styles[modes[mode]][css_var(prefix)] = `var(--${design.replaceAll('.', '-')})`
-        return
-      } else if (has(existing_keys, design.startsWith('{') && design.endsWith('}') && design.slice(1, -1)
-      )) {
-        design = design.slice(1, -1)
-        styles[modes[mode]][css_var(prefix)] = `var(--${design.replaceAll('.', '-')})`
-        return
-      }
-    }
-
-    styles[modes[mode]][css_var(prefix)] = design
-  }
-
-  function traverse(design, prefix = []) {
-    if (typeof design != 'object') {
-      set(design, prefix)
-    } else if (has(design, 'value')) {
-      for (const [key, value] of Object.entries(design)) {
-        if (key == 'value') {
-          set(value, prefix)
-        } else {
-          set(value, prefix, key)
-        }
-      }
-    } else {
-      for (const [key, value] of Object.entries(design)) {
-        traverse(value, [...prefix, key])
-      }
-    }
-  }
-
-  traverse(design)
-
-  return styles
+  recurse(obj, "");
+  return result;
 }
 
-export async function main(yaml: string) {
-  yaml ??= await read(0)
-  
-  // convert yaml to obj
-  const design = parse(yaml)
-
-  // convert
-  const styles = convert(design)
-
-  let css = ''
-  // convert to css
-  for (const [selector, variables] of Object.entries(styles)) {
-    if (Object.keys(variables).length == 0) {
-      continue
-    }
-    css += `${selector} {\n`
-
-    for (const [prop, value] of Object.entries(variables)) {
-      css += `  ${CSS.escape(prop)}: ${value};\n`
-    }
-
-    css += '}\n\n'
-  }
-
-  // just be explicit (you could log. a newline does not matter.)
-  await write(1, css)
-
-  return css
-}
-
-await main()
+log(flatten_object({ foo: { bar: 'hello world' }, baz: { bar: 'hello world' }, }, {preserve(value, key){
+  if (key == 'foo') {
+    return true
+  } 
+}}))
