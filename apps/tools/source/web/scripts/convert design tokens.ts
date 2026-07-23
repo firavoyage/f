@@ -106,4 +106,3 @@ function convert(design: string) {
 }
 
 main(convert)
-

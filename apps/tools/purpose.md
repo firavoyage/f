@@ -64,5 +64,12 @@ no native globbing i guess. leverage shell wildcard. take all args as files (ign
 
 ---
 
+this wont work. stdin wont propagate.
+
+```
+rg --files -g '*.ts' | cd "/home/fira/Documents/f/apps/tools/source/web/scripts/" && b 'convert design tokens.ts'
+```
+
+it's not about the code.
 
 

@@ -135421,3 +135421,23 @@
 2026-07-24 05:17:47+08:00 code convert hex to oklch.yaml - f (Workspace) - Visual Studio Code
 2026-07-24 05:18:47+08:00 code test.ts - f (Workspace) - Visual Studio Code
 2026-07-24 05:19:47+08:00 code convert design tokens.ts - f (Workspace) - Visual Studio Code
+2026-07-24 05:20:47+08:00 chromium shell globbing syntax - Google Search - Chromium
+2026-07-24 05:21:47+08:00 chromium use snake case. write a ts fn process. params: convert. convert is a fn that takes a string and outputs a string. it will be called inside a nodejs cli. when called, take all args (shell wildcard) and stdin (like rg --files -g), for each file output a colocated yaml of the same filename. - Google Search - Chromium
+2026-07-24 05:22:47+08:00 chromium shell grep syntax - Google Search - Chromium
+2026-07-24 05:23:47+08:00 chromium use snake case. write a ts fn process. params: convert. convert is a fn that takes a string and outputs a string. it will be called inside a nodejs cli. when called, take all args (shell wildcard) and stdin (like rg --files -g), for each file output a colocated yaml of the same filename. - Google Search - Chromium
+2026-07-24 05:24:47+08:00 code convert design tokens.ts - f (Workspace) - Visual Studio Code
+2026-07-24 05:25:47+08:00 code convert design tokens.ts - f (Workspace) - Visual Studio Code
+2026-07-24 05:26:47+08:00 code convert design tokens.ts - f (Workspace) - Visual Studio Code
+2026-07-24 05:27:47+08:00 chromium use snake case. write a ts fn called inside a nodejs cli. parse_stdin. no params. return an array. no stdin then empty. expect an stdin piped from fdfind or ripgrep --files -g, that is a list of files separated by linebreaks. - Google Search - Chromium
+2026-07-24 05:28:47+08:00 chromium use snake case. write a ts fn called inside a nodejs cli. parse_stdin. no params. return an array. no stdin then empty. expect an stdin piped from fdfind or ripgrep --files -g, that is a list of files separated by linebreaks. - Google Search - Chromium
+2026-07-24 05:29:47+08:00 code convert design tokens.ts - f (Workspace) - Visual Studio Code
+2026-07-24 05:30:47+08:00 code ● purpose.md - f (Workspace) - Visual Studio Code
+2026-07-24 05:31:47+08:00 code ● convert design tokens.ts - f (Workspace) - Visual Studio Code
+2026-07-24 05:32:47+08:00 code convert design tokens.ts - f (Workspace) - Visual Studio Code
+2026-07-24 05:33:47+08:00 code convert design tokens.ts - f (Workspace) - Visual Studio Code
+2026-07-24 05:34:47+08:00 code journal.md - f (Workspace) - Visual Studio Code
+2026-07-24 05:35:47+08:00 code 20260724 app tools script convert design tokens.md - f (Workspace) - Visual Studio Code
+2026-07-24 05:36:47+08:00 code convert_to_md.ts - f (Workspace) - Visual Studio Code
+2026-07-24 05:37:47+08:00 code main.ts - f (Workspace) - Visual Studio Code
+2026-07-24 05:38:48+08:00 chromium copy - Chromium
+2026-07-24 05:39:48+08:00 code clipboard.ts - f (Workspace) - Visual Studio Code
