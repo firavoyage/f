@@ -16142,3 +16142,78 @@ btw, in your 5 breaks, there are 4 high perfects and 1 low perfect.
 ```
 
 ref: https://gist.github.com/humilitydev/7b6af70bc7e422fd7a669eadc4be0bd9
+
+# . message: conclusion
+
+im always calculating the loss.
+
+a great slide: 0.09149130832570906×0.6 = 0.054894785
+
+three high perfect breaks: 0.1111111111111111×0.25×3 = 0.083333333
+
+three low perfect breaks: 0.1111111111111111×0.5×3 = 0.166666667
+
+---
+
+btw, the result
+
+```
+{
+  total_points: 1093,
+}
+{
+  break_number: 9,
+}
+{
+  achievement: 100.0648,
+  b: 0.09149130832570906,
+  bb: 0.1111111111111111,
+}
+{
+  n: 50,
+  m: 86,
+  solutions_m: 41,
+  derived_solutions_m: 12,
+  current_results: 20,
+  expanded_current_results_number: 92,
+}
+{
+  n: 67,
+  m: 58,
+  solutions_m: 12,
+  derived_solutions_m: 23,
+  current_results: 34,
+  expanded_current_results_number: 168,
+}
+{
+  n: 84,
+  m: 30,
+  solutions_m: 6,
+  derived_solutions_m: 6,
+  current_results: 44,
+  expanded_current_results_number: 20402,
+}
+{
+  expanded_results_number: 20662,
+}
+```
+
+<!-- tg auto detects the lang as javascript. -->
+
+---
+
+```
+ ~ % python3
+Python 3.12.3 (main, Mar 23 2026, 19:04:32) [GCC 13.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 100/1093
+0.09149130832570906
+>>> 100/1093*0.6
+0.05489478499542544
+>>> 0.2*0.09149130832570906
+0.018298261665141813
+>>> 1 * ((552 + 27 + 0 + 2) + 36) + 2 * (63 + 1) + 3 * (100 + 1) + 5 * (4 + 5)
+1093
+```
+
+ref: https://gist.github.com/humilitydev/7b6af70bc7e422fd7a669eadc4be0bd9
