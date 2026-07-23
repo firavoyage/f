@@ -2,6 +2,8 @@
 
 <!-- copy button not available on share page. -->
 
+<!-- observation: it does not even use cpp/rust. python numpy is enough. -->
+
 # Dinitz-Garg-Goemans (DGG) Conjecture counter example tweet
 
 8:08 AM
@@ -46,6 +48,1019 @@ Would you like to review the **Python code used to verify the 8 routings** of th
   36 Kr
 
 Show all
+
+# is chatgpt pro thinking summarized on frontend
+
+**Yes, the "Pro Thinking" reasoning chain in ChatGPT Pro is summarized on the frontend interface.**
+
+When you use the heavy-duty reasoning modes under the [ChatGPT Pro subscription](https://chatgpt.com/plans/pro/), OpenAI intentionally collapses the raw internal chain-of-thought into scannable summaries. [link](https://www.reddit.com/r/ChatGPTPro/comments/1mzcboj/how%5Fgood%5Fis%5Fthe%5Fchatgpt%5F5pro%5Fmodel%5Fthe%5Fone%5Fwith/)
+
+### How It Works on the Frontend
+
+- **Collapsed UI Accordion:** While the model is actively processing your request, you will see a dynamic dropdown toggle (often labeled with titles like "Thinking" or "Thought Process").
+- **High-Level "Chapters":** Instead of showing millions of tokens of raw, unstructured internal text, the frontend displays short, digestible step titles (e.g., _Analyzing Code Constraints_, _Simulating Edge Cases_). [link](https://www.reddit.com/r/ChatGPTPro/comments/1mzcboj/how%5Fgood%5Fis%5Fthe%5Fchatgpt%5F5pro%5Fmodel%5Fthe%5Fone%5Fwith/)
+- **The Hidden Reality:** Clicking to expand this toggle will reveal a highly polished summary of what the model investigated. The complete, absolute raw scratchpad used by the underlying model remains unexposed primarily for competitive reasons and user experience management. [link](https://www.reddit.com/r/ChatGPTPro/comments/1mzcboj/how%5Fgood%5Fis%5Fthe%5Fchatgpt%5F5pro%5Fmodel%5Fthe%5Fone%5Fwith/)
+
+### Why OpenAI Summarizes the Output
+
+- **Readability & Latency:** High-tier reasoning can take anywhere from 30 seconds to several minutes, generating massive internal logs. Flooding the frontend with live streams of raw logic would degrade browser performance and user readability.
+- **System Disambiguation:** It helps separate the model's actual final code or textual response from its internal "thinking aloud" phase. [link](https://www.ai-toolbox.co/chatgpt-models/chatgpt-reasoning-modes-instant-thinking-pro-2026)
+
+If you are experiencing issues with Pro mode feeling too brief, note that the platform dynamically allocates its thinking depth based on prompt complexity, meaning easier questions will show shorter frontend summaries. [link](https://www.reddit.com/r/ChatGPTPro/comments/1psn3gw/gpt%5F52%5Fpro%5Fthrough%5Fthe%5Fapps%5Fdefaults%5Fto%5Fstandard/)
+
+Are you looking to **bypass the collapsed UI** to extract deeper logs, or are you trying to **design a similar streaming system** for your own application?
+
+- [link](https://community.openai.com/t/chatgpt-5-4-pro-standard-mode-adaptive-thinking-or-nerfing-model/1379265)\
+  ChatGPT 5.4 Pro Standard Mode - Adaptive Thinking or ...\
+  Apr 19, 2026 — Has anyone else recently seen GPT-5.4 Pro Standard: \* finish long reasoning tasks much faster than before; \* produce a plausible-l...\
+  OpenAI Developer Community
+- [link](https://www.ai-toolbox.co/chatgpt-models/chatgpt-reasoning-modes-instant-thinking-pro-2026)\
+  ChatGPT Reasoning Modes: Instant, Thinking, and Pro ...\
+  May 29, 2026 — The Three Modes in One Sentence Each. Instant: fastest, lowest-cost variant in your tier, 1-3 second response, no visible reasonin...\
+  ai-toolbox.co
+- [link](https://medium.com/artificial-corner/youre-using-the-wrong-chatgpt-5-mode-here-s-how-to-choose-the-right-one-fb895e98f946)\
+  You’re using the wrong ChatGPT-5 mode. Here’s how to choose the ...\
+  Sep 9, 2025 — Pro Mode: The smartest mode (only available for Pro subscribers) Pro Mode is the top-tier, “research-grade” intelligence mode. It ...\
+  Medium·The PyCoach
+
+Show all
+
+## are the original thoughts unavailable even when expanded
+
+**Yes, the original, raw thoughts are completely unavailable even when you click to expand the frontend UI.** [link](https://cobusgreyling.medium.com/with-openai-o1-o3-models-devs-can-set-reasoning-effort-b05907c6dfa1)
+
+When you expand the "Thinking" accordion, you are only viewing a highly polished, heavily filtered **summary** generated after the fact, rather than the raw tokens the model actually computed. [link](https://simonwillison.net/2024/Sep/12/openai-o1/)
+
+### Why the Raw Thoughts Are Completely Redacted
+
+- **Safety & Alignment Monitoring:** OpenAI uses the hidden chain of thought as an unmonitored space where the model can break down instructions without human preference bias. They do not want "unaligned" or raw thoughts directly visible to users. [link](https://openai.com/index/learning-to-reason-with-llms/)
+- **Competitive Protection:** The exact steps, algorithmic backtracking, and internal weights utilized during a 6-minute Pro reasoning session are highly valuable trade secrets. Redacting them prevents competitors from easily reverse-engineering OpenAI's reinforcement learning strategies. [link](https://openai.com/index/learning-to-reason-with-llms/)
+- **No API Access Either:** Even if you bypass the frontend UI and call these models via the developer API, OpenAI explicitly blocks the raw `reasoning_tokens` from being returned in the payload. Developers only receive a generated summary or a count of how many reasoning tokens were burned. [link](https://cobusgreyling.medium.com/with-openai-o1-o3-models-devs-can-set-reasoning-effort-b05907c6dfa1)
+
+### What You See vs. What Actually Happens
+
+| What Happens Internally (Hidden)                                                                          | What the Frontend Shows (Expanded)                                                                                             |
+| --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| **Raw Stream:** Millions of chaotic tokens, formatting errors, math scratches, and algorithmic dead-ends. | **Polished Summaries:** Clean bullet points and tidy "chapters" describing the intent (e.g., _"Cross-referenced file paths"_). |
+| **Backtracking:** Deleting an entire logic branch when a code simulation fails, then restarting.          | **Linear Progress:** A smooth, step-by-step narrative that looks like a flawless execution plan.                               |
+| **Unfiltered Policy Logic:** Evaluating sensitive terms or safety guardrails raw before adjusting tone.   | **Sanitized Overview:** Standard compliance-safe phrasing.                                                                     |
+
+If you need deeper visibility, you can explicitly prompt the model: _"Show your complete, step-by-step mathematical or logical proof inside your actual final response."_ This forces the model to recreate its logic in the final output text, though it will still be a reconstructed version rather than a true debug log. [link](https://cobusgreyling.medium.com/with-openai-o1-o3-models-devs-can-set-reasoning-effort-b05907c6dfa1)
+
+Would you like some **prompting strategies** to force the model to expose its step-by-step logic in the final output text, or are you exploring how other platforms handle chain-of-thought visibility?
+
+- [link](https://www.reddit.com/r/userexperience/comments/ceoeob/what%5Fis%5Fthe%5Fcorrect%5Fway%5Fto%5Fdisplay%5Fa/)\
+  What is the correct way to display a collapsed/expanded ...\
+  Jul 18, 2019 — That's the most commonly used and most intuitive. #2 is reversed so that's out, and #3 indicates “next item”, possibly taking you ...\
+  Reddit·r/userexperience
+- [link](https://openai.com/index/learning-to-reason-with-llms/)\
+  Learning to reason with LLMs - OpenAI\
+  Sep 12, 2024 — Assuming it is faithful and legible, the hidden chain of thought allows us to "read the mind" of the model and understand its thou...\
+  OpenAI
+- [link](https://cobusgreyling.medium.com/with-openai-o1-o3-models-devs-can-set-reasoning-effort-b05907c6dfa1)\
+  With OpenAI o1 & o3 Models Devs Can Set Reasoning Effort\
+  Feb 4, 2025 — In Short. Hidden Internal Reasoning: The model performs logical steps internally, but users only see the end result. Higher reason...\
+  Cobus Greyling – Medium·Cobus Greyling
+
+Show all
+
+## what providers do this, what do not
+
+The landscape of AI reasoning models is split into two philosophies regarding chain-of-thought (CoT) transparency: **Hiders** (who scrub or summarize raw thoughts for safety/IP reasons) and **Exposers** (who stream the raw, unedited thoughts directly to the user). [link](https://asimovaddendum.substack.com/p/making-ais-thinking-more-transparent)
+
+***
+
+### ❌ The "Hiders" (Summarized or Blocked)
+
+These providers actively block users and developers from viewing the true, raw scratchpad used by the model during deep reasoning phases. [link](https://asimovaddendum.substack.com/p/making-ais-thinking-more-transparent)
+
+- **OpenAI (o1, o3, GPT-5 series):** OpenAI completely hides the raw reasoning tokens. On the frontend, clicking "Thinking" reveals an AI-generated summary written _after_ the fact. In their developer API, the raw `reasoning_tokens` field is entirely redacted, only providing a token count for billing purposes. [link](https://asimovaddendum.substack.com/p/making-ais-thinking-more-transparent)
+- **Google Gemini (Gemini Advanced / Deep Think):** Google originally experimented with showing detailed paths but pivoted to hiding them. In the Gemini app and Google AI Studio, expanding the "Thinking" dropdown displays highly structured, post-processed "chapters" (e.g., _"Evaluating Python logic"_) rather than the chaotic, raw stream of internal brainstorming. [link](https://discuss.ai.google.dev/t/massive-regression-detailed-gemini-thinking-process-vanished-from-ai-studio/83916?gl=us)
+
+***
+
+### The "Exposers" (Raw and Unfiltered)
+
+These providers let you see the complete, messy, authentic trace of the model’s internal monologue. [link](https://asimovaddendum.substack.com/p/making-ais-thinking-more-transparent)
+
+- **DeepSeek (R1 & Open-Source Variants):** DeepSeek is famous for complete transparency. When you use DeepSeek-R1, the frontend streams the raw tokens wrapped inside `<think>...</think>` tags. If the model makes a mistake, swears at a piece of bad code, backtracks, or loops in circles, you see it all in real time. Furthermore, their API returns these exact raw reasoning tokens directly to developers, allowing third-party apps to build custom visualizers. [link](https://www.lesswrong.com/posts/a9GR7m4nyBsqjjL8d/deepseek-r1-for-beginners)
+- **Anthropic (Claude with Extended Thinking):** Anthropic provides high structural visibility into its extended thinking models. True to their enterprise focus on alignment and transparency, they pass the actual internal reasoning tokens directly through the API, allowing developers and users to audit exactly _why_ the model made a specific judgment call. [link](https://asimovaddendum.substack.com/p/making-ais-thinking-more-transparent)
+- **Local Open-Weight Models (Llama 3 Instruct, Qwen, Distilled R1 models via Ollama):** When running open reasoning models locally on your own machine using platforms like Ollama or vLLM, there are no filters. The terminal outputs every single token generated during the thought block, with zero corporate oversight, summarizing, or parsing. [link](https://www.sitepoint.com/chainofthought-debugging-with-deepseekr1/)
+
+***
+
+### Direct Comparison Summary
+
+| Provider / Model                 | Frontend: What happens when expanded? | API: Can developers access raw tokens?  |
+| -------------------------------- | ------------------------------------- | --------------------------------------- |
+| **OpenAI (o-series)**            | 🛑 Sanitized summary                  | 🛑 Blocked (returns token count only)   |
+| **Google Gemini (Deep Think)**   | 🛑 Post-processed chapter titles      | 🛑 Blocked / Summarized                 |
+| **DeepSeek (R1)**                | **True raw stream** (unfiltered)      | **Fully accessible** via token payload  |
+| **Anthropic (Claude Reasoning)** | **True raw stream**                   | **Fully accessible** with strict schema |
+
+Would you like to know how to **host one of these transparent models locally** to see raw reasoning for yourself, or are you looking for the specific **API parameters** needed to grab Claude or DeepSeek's raw thoughts?
+
+- [link](https://asimovaddendum.substack.com/p/making-ais-thinking-more-transparent)\
+  Making AI's Thinking More Transparent - Asimov's Addendum\
+  Jun 12, 2025 — Disclosures on CoT thinking remain strikingly uneven though (Table 1 below). Anthropic, as a company with a stated mission to crea...\
+  Asimov’s Addendum·Asimov’s Addendum
+- [link](https://venturebeat.com/orchestration/ai-models-that-simulate-internal-debate-dramatically-improve-accuracy-on)\
+  AI models that simulate internal debate dramatically improve ...\
+  Jan 29, 2026 — Many proprietary reasoning models hide their chain-of-thought, treating the internal debate as a trade secret or a safety liabilit...\
+  VentureBeat
+- [link](https://www.anthropic.com/research/reasoning-models-dont-say-think)\
+  Reasoning models don't always say what they think - Anthropic\
+  Apr 3, 2025 — Perhaps importantly, the tasks we used were not difficult enough to require the Chain-of-Thought to be used: it's possible that, f...\
+  Anthropic
+
+Show all
+
+## does anthropic expose reasoning tokens
+
+<mark><strong><span>No, Anthropic does not expose the true raw reasoning tokens; they are summarized and encrypted</span></strong></mark>**.** [link](https://cobusgreyling.substack.com/p/building-with-claude-extended-thinking)
+
+While Anthropic originally pioneered "visible extended thinking" with Claude 3.7 Sonnet by passing full thoughts to the user, they shifted their strategy. Today, across both the web interface and the developer API, Anthropic utilizes a **summarization and cryptographic signature mechanism**. [link](https://www.reddit.com/r/ClaudeCode/comments/1t7j83r/claude%5Fcode%5Fdeliberately%5Fhides%5Fits%5Fthinking/)
+
+### How Anthropic Handles Reasoning in the API
+
+When you enable the `thinking` budget parameter in the [Anthropic Messages API](https://platform.claude.com/docs/en/build-with-claude/extended-thinking), the response payload splits into distinct blocks: [link](https://platform.claude.com/docs/en/build-with-claude/extended-thinking)
+
+json
+
+```
+{
+  "type": "thinking",
+  "thinking": "The model's condensed, post-processed reasoning steps go here...",
+  "signature": "ex49f82...[Encrypted Cryptographic Key]"
+}
+```
+
+Use code with caution.
+
+- **You See a Summary:** The `thinking` text block is a condensed version of the model's actual thoughts. True raw reasoning on massive problems can span tens of thousands of messy tokens. Anthropic extracts the structural "signal" and strips the chaotic "noise". [link](https://platform.claude.com/docs/en/build-with-claude/extended-thinking)
+- **The Signature Is Mandatory:** The accompanying `signature` string is an encrypted cryptographic block that your computer cannot read or decrypt. When continuing a conversation, you are required to pass this signature back to Anthropic's servers exactly as it was received, or the API request will fail. [link](https://www.developersdigest.tech/blog/claude-code-extended-thinking-summary)
+
+### The Developer Backlash: Claude Code
+
+This design choice caused significant debate within the developer community. In early 2026, Anthropic introduced the `redact-thinking` beta protocol to its terminal assistant, **Claude Code**, which completely removed visible raw reasoning from the terminal output. [link](https://www.reddit.com/r/ClaudeCode/comments/1t7j83r/claude%5Fcode%5Fdeliberately%5Fhides%5Fits%5Fthinking/)
+
+Independent developer audits revealed that the raw thoughts are entirely handled behind a cryptographic wall controlled by Anthropic. Full, unredacted thinking logs are typically restricted behind specific Enterprise agreements. [link](https://www.developersdigest.tech/blog/claude-code-extended-thinking-summary)
+
+### Why Anthropic Hiddenizes the Raw Stream
+
+1. **UX and False Dead Ends:** Anthropic noted that raw logs show the model going down dead ends, deleting code, and backtracking. This frequently confused users into thinking the model was failing, even when it ultimately arrived at a perfect final solution. [link](https://www.reddit.com/r/ClaudeCode/comments/1t7j83r/claude%5Fcode%5Fdeliberately%5Fhides%5Fits%5Fthinking/)
+2. **Safety and Alignment:** Anthropic relies heavily on Constitutional AI and alignment monitoring. The encrypted signatures ensure that the internal logic remains tamper-proof and cannot be manipulated by users attempting to jailbreak the model mid-thought. [link](https://www.youtube.com/watch?v=Y6SJiZ5HkiA\&vl=en)
+3. **The "Faithfulness" Problem:** Anthropic's alignment research indicates that an LLM's verbalized chain of thought isn't always perfectly faithful to its underlying mathematical weights. Because the text might not represent "true" reasoning, they prefer sending a verified summary. [link](https://cobusgreyling.substack.com/p/building-with-claude-extended-thinking)
+
+If absolute raw visibility is your goal for a project, **DeepSeek-R1** remains the primary option that outputs unedited `<think>` token payloads natively to developers.
+
+Would you like to see how to **properly pass these thinking blocks and signatures** back into multi-turn Anthropic API requests to avoid errors? [link](https://github.com/earendil-works/pi/issues/5223)
+
+- [link](https://www.reddit.com/r/ClaudeCode/comments/1t7j83r/claude%5Fcode%5Fdeliberately%5Fhides%5Fits%5Fthinking/)\
+  Claude Code deliberately hides its thinking tokens and it's ...\
+  May 8, 2026 — On February 12, 2026, Anthropic quietly added a beta header called redact-thinking-2026-02-12 to Claude Code. What this does is su...\
+  Reddit·r/ClaudeCode
+- [link](https://www.youtube.com/watch?v=sHcu0YX-1u4\&t=109)\
+  Building an agent with Claude 3.7, Anthropic's new ...\
+  Feb 25, 2025 — hey this is Lance from Langchain. anthropic just released Claude 37. now this is a really exciting development from Anthropic. bec...\
+  40s\
+  YouTube·LangChain
+- [link](https://blog.cryptographyengineering.com/2026/05/29/fooling-around-with-encrypted-reasoning-blobs/)\
+  Let's talk about encrypted reasoning\
+  May 29, 2026 — That is: when we obtain reasoning blobs from a session running under one OpenAI or Anthropic account, we can replay them against a...\
+  A Few Thoughts on Cryptographic Engineering
+
+Show all
+
+## what providers do this, what do not
+
+A correction is necessary regarding Anthropic’s architecture. In its developer API, **Anthropic actually allows you to choose** between receiving summarized thinking or hiding it entirely, but they use a security layer to manage it. [link](https://platform.claude.com/docs/en/build-with-claude/extended-thinking)
+
+When using a model like Claude with extended thinking enabled, the API returns a `thinking` block alongside an encrypted `signature` block. Developers can configure the `display` parameter to `"summarized"` to get structured, parsed thoughts, or `"omitted"` to hide the text while preserving the encrypted signature block required to keep multi-turn conversation tracking working securely. [link](https://platform.claude.com/docs/en/build-with-claude/extended-thinking)
+
+The absolute, unparsed, chaotic matrix of neural activations remains inaccessible. The market remains divided between providers that completely block or post-process reasoning text and those that expose the literal, unedited raw token text stream. [link](https://www.reddit.com/r/OpenAI/comments/1hrhdbp/o1%5Fmodels%5Fhidden%5Freasoning%5Ftokens/)
+
+***
+
+### 🛑 The "Hiders" (Completely Redacted or Heavily Parsed)
+
+These providers explicitly block users and developer APIs from viewing the real, unedited scratchpad used by the model during processing.
+
+- **OpenAI (o1, o3, GPT-5 series):** OpenAI represents the strictest form of redaction. The raw tokens are entirely unavailable in the developer API. Even using their newest `reasoning_summary` API configurations only grants access to a post-processed summary (selectable from concise to detailed). The raw trail is completely replaced. [link](https://docs.openwebui.com/features/chat-conversations/chat-features/reasoning-models/)
+- **Google Gemini (Gemini Advanced / Deep Think):** Google handles thinking blocks as a structured, post-processed state. When expanding the thinking accordion in Gemini or checking the backend payload in Google AI Studio, you see tidy "chapters" describing what the model did (e.g., _"Cross-referencing logic... Check math..."_) rather than the raw, messy stream of internal trial-and-error tokens.
+
+***
+
+### 🟢 The "Exposers" (Literal Raw Token Streams)
+
+These providers let you see the complete, raw, unedited trace of the model’s internal monologue, flaws and all.
+
+- **DeepSeek (R1 & Open-Source Variants):** DeepSeek pioneered absolute raw visibility. When using DeepSeek-R1, the platform streams the literal raw reasoning tokens inside `<think>...</think>` tags. If the model makes a typo, goes down a logical dead end, deletes a block of code, or argues with its own reasoning rules internally, it is completely visible in real time. Their API treats these as native `reasoning_content` tokens accessible by any developer. [link](https://docs.openwebui.com/features/chat-conversations/chat-features/reasoning-models/)
+- **Anthropic (Claude with Adaptive/Extended Thinking):** Anthropic sits in a hybrid category but leans toward exposing content. Using models like [Claude 4 or 5](https://platform.claude.com/docs/en/build-with-claude/adaptive-thinking), setting the `thinking.type` parameter to return text streams out the model's actual step-by-step thinking block. However, to prevent users from tampering with or "jailbreaking" the model's thinking mid-stream, Anthropic forces developers to pass back a matching cryptographic `signature` to continue the conversation thread. [link](https://platform.claude.com/docs/en/build-with-claude/extended-thinking)
+- **Local Open-Weight Models (Llama 3, Qwen, Distilled R1 via Ollama):** When hosting open-weight reasoning models locally on hardware via platforms like Ollama or `llama.cpp`, there is no corporate layer. Every single thinking token generated inside the model's brain drops directly into your terminal unfiltered. [link](https://docs.openwebui.com/features/chat-conversations/chat-features/reasoning-models/)
+
+***
+
+### Quick Comparison Matrix
+
+| Provider / Model               | Frontend Interface (Expanded)    | Developer API Payload Access                       |
+| ------------------------------ | -------------------------------- | -------------------------------------------------- |
+| **OpenAI (o-series / GPT-5)**  | 🛑 Sanitized summary only        | 🛑 Completely blocked / Summary only               |
+| **Google Gemini (Deep Think)** | 🛑 Post-processed chapter titles | 🛑 Pre-parsed structured blocks                    |
+| **DeepSeek (R1)**              | **True raw token stream**        | **Fully accessible** raw text tokens               |
+| **Anthropic (Claude series)**  | **True raw/summarized stream**   | **Accessible** via text strings + crypto signature |
+
+Are you evaluating these providers to **build a custom chat UI** that needs to parse reasoning blocks, or are you trying to **calculate the API token costs** of running deep reasoning models? [link](https://pub.towardsai.net/thinking-tokens-are-not-free-most-pipelines-treat-them-like-they-are-846708fdcef1)
+
+- [link](https://blog.cryptographyengineering.com/2026/05/29/fooling-around-with-encrypted-reasoning-blobs/)\
+  Let's talk about encrypted reasoning\
+  May 29, 2026 — You probably know that most LLM providers expose an API so you can write apps that talk to the model. For Claude, this is called t...\
+  A Few Thoughts on Cryptographic Engineering
+- [link](https://docs.openwebui.com/features/chat-conversations/chat-features/reasoning-models/)\
+  Reasoning & Thinking Models - Open WebUI\
+  Table\_title: Provider Compatibility​ Table\_content: | Provider type | Path 1 (tags in content ) | Path 2 (structured output ) | | ...\
+  Open WebUI
+- [link](https://inspect.aisi.org.uk/reasoning.html)\
+  Reasoning - Inspect AI\
+  OpenAI GPT-5.6+ only. Accepts standard , pro . Pro mode performs more model work for greater reliability at higher latency and tok...\
+  inspect.aisi.org.uk
+
+Show all
+
+## can you parse the payload the same. do they fill the reasoning with summaries or blank or some weird fields/incompatible standard.
+
+<mark><strong><span>No, you cannot parse the payloads the same way.</span></strong></mark> The industry is highly fragmented, and providers use entirely incompatible standards, completely different field names, and varying states of data (blank vs. summarized). [link](https://github.com/BerriAI/litellm/issues/25965)
+
+If you try to write a single, generic parser to grab the "thinking" block across major APIs, it will break immediately.
+
+Here is exactly how the top three providers populate their payloads, along with the "weird fields" and breaking behaviors you will encounter.
+
+***
+
+### 1. Anthropic (Claude 4 / 5 Series)
+
+Anthropic relies on a strict object structure, but they introduced a silent breaking change where the text field is **blank by default**. [link](https://platform.claude.com/docs/en/release-notes/overview)
+
+- **The Structure:** Inside a `content` array block, they inject a specific `type: "thinking"` object. [link](https://platform.claude.com/docs/en/build-with-claude/extended-thinking)
+- **The Incompatibility (Blank fields):** For newer models like Claude Opus 4.7+, Claude Fable 5, and Claude Sonnet 5, the API defaults to `"display": "omitted"`. This means the `thinking` text field returns **completely blank (`""`)**, but the block still contains a highly sensitive, encrypted `signature` field. [link](https://platform.claude.com/docs/en/build-with-claude/extended-thinking)
+- **How to fix it:** You must explicitly pass `thinking: {"type": "adaptive", "display": "summarized"}` in your request configuration to force the API to actually populate that string with a text summary. [link](https://platform.claude.com/docs/en/release-notes/overview)
+
+json
+
+```
+// Anthropic Payload Shape
+"content": [
+  {
+    "type": "thinking",
+    "thinking": "The model's summarized thoughts show here ONLY if explicitly requested...",
+    "signature": "eyJhbGciOiJSUzI1NiIsIn..." // Encrypted, unparseable cryptographic key
+  },
+  {
+    "type": "text",
+    "text": "The actual final answer."
+  }
+]
+```
+
+Use code with caution.
+
+### 2. OpenAI (o1, o3, GPT-5 Series via Responses API)
+
+OpenAI does not mix reasoning directly into the standard `content` array like Anthropic; they use a completely different standard called the **Responses API**. [link](https://github.com/openai/openai-cookbook/blob/main/examples/responses%5Fapi/reasoning%5Fitems.ipynb)
+
+- **The Structure:** They return a top-level `output` or `reasoning` object containing a nested `summary` array.
+- **The Incompatibility (Complex Arrays):** Instead of a plain text string, the summary is an array of objects split into logical segments, meaning you have to map through them and concatenate the text manually. Furthermore, it is **omitted by default** unless you explicitly request it using `reasoning: {"summary": "auto"}` in your payload parameters. [link](https://forum.langchain.com/t/how-to-extract-gpt-5-reasoning-summaries-with-langchain-openai/1802)
+
+json
+
+```
+// OpenAI Payload Shape
+"output": {
+  "reasoning": {
+    "summary": [
+      { "type": "text", "text": "Analyzing math logic... " },
+      { "type": "text", "text": "Cross-referencing constraints." }
+    ]
+  }
+},
+"choices": [{ "message": { "content": "The actual final answer." } }]
+```
+
+Use code with caution.
+
+### 3. DeepSeek (R1)
+
+DeepSeek is the easiest to parse because they stick closer to the legacy OpenAI ChatCompletions standard, but they invented their own unique key. [link](https://github.com/BerriAI/litellm/issues/25965)
+
+- **The Structure:** They return a completely separate, flat string field right alongside the standard message content, natively named `reasoning_content`.
+- **The Incompatibility (Raw text):** Unlike OpenAI and Anthropic, this field is never blank or summarized. It natively streams the **true, raw markdown text**. [link](https://www.reddit.com/r/SillyTavernAI/comments/1snc6da/opus%5F47%5Fissue%5Fno%5Flonger%5Freturns%5Fraw%5Fthinking/)
+
+json
+
+```
+// DeepSeek Payload Shape
+"choices": [{
+  "message": {
+    "reasoning_content": "Wait, let me double check the math. If X=2 then... No, that's wrong. Let's restart.", // True raw stream
+    "content": "The actual final answer."
+  }
+}]
+```
+
+Use code with caution.
+
+***
+
+### Direct Impact on Code (The Middleware Tax)
+
+Because these standards clash, common API proxy layers like **LiteLLM, LangChain, and Dify frequently break** when providers launch new models. For instance, when Anthropic flipped the default display to `"omitted"`, middleware platforms still expected text, resulting in applications silently crashing or rendering completely blank thinking blocks to users. [link](https://platform.claude.com/docs/en/build-with-claude/extended-thinking)
+
+To circumvent this, you must write a **custom normalizer wrapper** in your backend that reads the specific model origin and maps these wildly distinct fields (`output.reasoning.summary` vs. `content[0].thinking` vs. `reasoning_content`) into a single uniform string before it hits your frontend frontend UI. [link](https://forum.langchain.com/t/how-to-extract-gpt-5-reasoning-summaries-with-langchain-openai/1802)
+
+Are you **writing a backend router** in Python or Node.js to handle this, or are you trying to debug why a specific framework (like LangChain or a local proxy) is dropping your reasoning blocks? [link](https://forum.langchain.com/t/how-to-extract-gpt-5-reasoning-summaries-with-langchain-openai/1802)
+
+- [link](https://community.openai.com/t/why-does-reasoning-summaries-do-this/1372426)\
+  Why Does Reasoning Summaries Do This? - API\
+  Jan 24, 2026 — Do reasoning summaries need to be somehow enabled via my script in order for reasoning to show in the Logs? VeitB January 24, 2026...\
+  OpenAI Developer Community
+- [link](https://github.com/langgenius/dify-official-plugins/issues/2033)\
+  Azure OpenAI plugin: Responses API “reasoning summary” is not ...\
+  Nov 10, 2025 — dosubot commented. ... The reason reasoning\_content is always empty for Azure OpenAI reasoning models in Dify v1.9.1 is that the b...\
+  GitHub
+- [link](https://www.reddit.com/r/LLMDevs/comments/1uek051/structured%5Foutputs%5Fdoes%5Freasoning%5Fdegrade%5Fif%5Fthe/)\
+  does reasoning degrade if the schema has no field to hold it ...\
+  Jun 24, 2026 — If you want reasoning interleaved with output, you'll have to provide your own fields for this. Yes, field order absolutely matter...\
+  Reddit·r/LLMDevs
+
+Show all
+
+## can you get the summaries like their official web ui, like if you want to show sth to the users
+
+<mark><strong><span>Yes, you can fetch and show clean summaries to your users just like the official web UIs do</span></strong></mark>, but you must use specific, newly introduced endpoint parameters to force the APIs to generate and return them.
+
+By default, providers like OpenAI and Anthropic either block or entirely omit reasoning text from standard chat payloads to save bandwidth and prevent jailbreaks. To mirror the web UI's accordion style (showing structured, clean "chapters" of thought), you must fetch them through these specific API configurations. [link](https://platform.claude.com/docs/en/build-with-claude/extended-thinking)
+
+***
+
+### 1. OpenAI: Using the Responses API
+
+If you use OpenAI’s traditional ChatCompletions endpoint, the raw text is entirely hidden. To get web-UI-like step summaries for models like **o3** or the **GPT-5 series**, you must use the newer **Responses API**. [link](https://community.openai.com/t/showing-reasoning-texts-or-think-or-chain-of-thoughts-to-users-in-my-rag/1318103)
+
+- **The Parameter:** Pass `reasoning: {"summary": "auto"}` in your payload.
+- **What it returns:** An array of structured text segments outlining the high-level steps the model took. [link](https://developers.openai.com/api/docs/guides/reasoning)
+
+**Python Example:**
+
+python
+
+```
+import openai
+client = openai.OpenAI()
+
+response = client.responses.create(
+    model="o3",
+    input="Solve this complex architectural edge case...",
+    reasoning={"summary": "auto"}  # Forces OpenAI to return a frontend-ready summary
+)
+
+# Extracting the UI-ready text array
+for segment in response.output[0].summary:
+    print(f"Thought Step: {segment.text}")
+```
+
+Use code with caution.
+
+- **UI Implementation:** Map over this array and dynamically output a bulleted checklist or a dropdown accordion to your users. [link](https://github.com/langgenius/dify-official-plugins/issues/2033)
+
+***
+
+### 2. Anthropic: Toggling the Display Parameter
+
+Anthropic models natively support adaptive extended thinking. However, on newer versions, the text is completely blank (`"display": "omitted"`) by default to prioritize speed. [link](https://platform.claude.com/docs/en/build-with-claude/adaptive-thinking)
+
+- **The Parameter:** You must explicitly define `thinking.display` as `"summarized"`.
+- **What it returns:** A highly structured, linear text string block that omits chaotic backtracking but captures the logic narrative. [link](https://platform.claude.com/docs/en/build-with-claude/extended-thinking)
+
+**Node.js Example:**
+
+javascript
+
+```
+import Anthropic from '@anthropic-ai/sdk';
+const anthropic = new Anthropic();
+
+const message = await anthropic.messages.create({
+    model: "claude-5-sonnet",
+    max_tokens: 4000,
+    thinking: {
+        type: "adaptive",
+        budget_tokens: 2000,
+        display: "summarized" // CRITICAL: If left out, the thinking text block returns empty ("")
+    },
+    messages: [{ role: "user", content: "Write a high-performance database migration script." }]
+});
+
+// The summary text ready for your frontend UI
+console.log(message.content[0].thinking);
+```
+
+Use code with caution.
+
+***
+
+### 3. DeepSeek: No Configuration Needed
+
+Unlike OpenAI and Anthropic, **DeepSeek-R1 requires no special toggles or API upgrades**. The raw thinking process streams natively into the `reasoning_content` field of any basic chat payload. [link](https://github.com/langgenius/dify-official-plugins/issues/2033)
+
+- Because it returns the raw token trail, it includes mistakes, looping text, and scratch calculations.
+- **UI Implementation:** If you want a clean web UI experience for your users without overwhelming them, you will have to write a custom regex or script to trim down their raw text stream before displaying it.
+
+***
+
+### 💡 Recommendation for Frontend Design
+
+If you are building a custom wrapper app, create an array on your state management named `thoughtChapters`.
+
+1. For **OpenAI/Anthropic**, push the incoming summary array items straight into it.
+2. Build an accordion component that maps over `thoughtChapters`.
+3. Ensure that when a user clicks the accordion, it reveals this parsed backend text string while hiding the required, backend-only elements like Anthropic’s cryptographic `signature`. [link](https://platform.claude.com/docs/en/build-with-claude/extended-thinking)
+
+Are you currently using an orchestration platform like **LangChain** or **Dify** where you need to map these fields, or are you constructing your **frontend UI components** entirely from scratch?
+
+- [link](https://github.com/langgenius/dify-official-plugins/issues/2033)\
+  Azure OpenAI plugin: Responses API “reasoning summary” is not ...\
+  Nov 10, 2025 — Steps to reproduce ... When using the Azure OpenAI provider with reasoning models (e.g., o4-mini) and the Responses API semantics,\
+  GitHub
+- [link](https://github.com/openai/openai-cookbook/blob/main/examples/responses%5Fapi/reasoning%5Fitems.ipynb)\
+  openai-cookbook/examples/responses\_api/reasoning\_items ...\
+  Another useful feature in the Responses API is that it supports reasoning summaries. While we do not expose the raw chain of thoug...\
+  GitHub
+- [link](https://docs.openwebui.com/features/chat-conversations/chat-features/reasoning-models/)\
+  Reasoning & Thinking Models - Open WebUI\
+  Open WebUI provides first-class support for models that exhibit "thinking" or "reasoning" behaviors (such as DeepSeek R1, OpenAI o...\
+  Open WebUI
+
+Show all
+
+## how do they summarize
+
+The platforms do not run a second, separate model to summarize the text after the fact. Instead, **the summarization happens architecturally mid-stream through advanced reinforcement learning (RL) or specialized multi-token text generators.** [link](https://platform.claude.com/docs/en/build-with-claude/extended-thinking)
+
+The raw, unfiltered internal monologue consists of tens of thousands of messy, chaotic tokens filled with typos, code syntax errors, repetitive looping, and failed algorithmic dead ends. [link](https://cobusgreyling.medium.com/building-with-claude-extended-thinking-d1a8b3130834)
+
+The models process this chaos into clean, frontend-ready text using two distinct architectural methodologies:
+
+***
+
+### 1. The Real-Time Streaming Method (Anthropic Claude)
+
+For models like [Claude 4 and 5](https://platform.claude.com/docs/en/about-claude/models/introducing-claude-fable-5-and-claude-mythos-5), the model writes its raw chain-of-thought to a hidden internal server scratchpad. As it thinks, a specialized internal mechanism translates the logic into a high-level narrative. [link](https://platform.claude.com/docs/en/build-with-claude/extended-thinking)
+
+- **Third-Person Parsing:** The model is trained via reinforcement learning to output its thinking in the third person when requested (e.g., instead of streaming _"Let me check if X = 2, wait no, let me delete that..."_, it stream-outputs _"Evaluating variable X against initial constraints"_).
+- **Noise Filtering:** The architecture selectively drips out only the structural transitions (the "signal") while completely routing the chaotic trail (the "noise") into an encrypted cryptographic signature. [link](https://platform.claude.com/docs/en/build-with-claude/adaptive-thinking)
+
+***
+
+### 2. The Segmented Post-Processing Method (OpenAI o-Series)
+
+OpenAI handles summarization through a highly structured, segmented token parser built into their **Responses API**. [link](https://github.com/openai/openai-cookbook/blob/main/examples/responses%5Fapi/reasoning%5Fitems.ipynb)
+
+- **Algorithmic Step Segments:** OpenAI's system detects when the model moves from one cognitive phase to another (e.g., shifting from _parsing code_ to _simulating edge cases_).
+- **The "Auto" Array Assembler:** Rather than delivering a single paragraph of text, OpenAI's backend groups the raw token blocks into distinct logical buckets. The system then generates short, sanitized step titles (e.g., _"Cross-referencing constraints"_) for each bucket. These are injected directly into a structured array (`response.output.summary`) that maps onto the step-by-step checklists seen in the ChatGPT web interface. [link](https://community.openai.com/t/how-to-get-reasoning-summary-using-gpt-5-mini-in-agent-sdk/1358227)
+
+***
+
+### 3. How to Mirror the "Web UI Look" in Your Own App
+
+If you want your app's frontend to exactly mirror the official web UIs, you can map the incoming data into a dynamic UI accordion component:
+
+javascript
+
+```
+// Example: Mapping OpenAI's automated summary payload to a UI component
+const thoughts = response.output.summary;
+/* Returns:
+   [
+     { "text": "Analyzing mathematical logic..." },
+     { "text": "Verifying edge cases..." }
+   ]
+*/
+
+return (
+  <Accordion title="Thought Process">
+    <ul>
+      {thoughts.map((step, index) => (
+        <li key={index} className="flex items-center gap-2">
+          <CheckIcon className="text-green-500" />
+          <span>{step.text}</span>
+        </li>
+      ))}
+    </ul>
+  </Accordion>
+);
+```
+
+Use code with caution.
+
+### Summary of What the Users See
+
+- **OpenAI:** The user gets a perfectly linear checklist of conceptual milestones, with no trace of errors or backtracking.
+- **Anthropic:** The user gets a clean, third-person narrative summary of the model's intent and high-level steps.
+- **DeepSeek:** The user gets everything—typos, math scratchpads, and loops. If you want a "clean" UI for DeepSeek-R1, you must manually truncate or parse their `<think>` blocks yourself using custom frontend regex strings. [link](https://www.reddit.com/r/SillyTavernAI/comments/1snc6da/opus%5F47%5Fissue%5Fno%5Flonger%5Freturns%5Fraw%5Fthinking/)
+
+Are you looking to write a **custom regex filter to clean up DeepSeek's raw thoughts**, or are you focusing on **styling the OpenAI summary array** into your React/Vue frontend?
+
+- [link](https://docs.openwebui.com/features/chat-conversations/chat-features/reasoning-models/)\
+  Reasoning & Thinking Models - Open WebUI\
+  Open WebUI provides first-class support for models that exhibit "thinking" or "reasoning" behaviors (such as DeepSeek R1, OpenAI o...\
+  Open WebUI
+- [link](https://developers.openai.com/api/docs/guides/reasoning)\
+  Reasoning models | OpenAI API\
+  Reasoning models are well-suited for: \* Complex problem solving \* Coding \* Scientific reasoning \* Multi-step agentic workflows Rea...\
+  OpenAI Developers
+- [link](https://www.seangoedecke.com/deepseek-r1/)\
+  What did DeepSeek figure out about reasoning with DeepSeek-R1?\
+  Jan 26, 2025 — DeepSeek is a Chinese AI lab that recently released a new reasoning model, R1. The model is trained on a GPU cluster that is a fra...\
+  Sean Goedecke
+
+Show all
+
+## what about google
+
+Google sits directly in the hybrid territory, utilizing a highly distinct architecture for handling thought data. Like OpenAI, **Google Gemini heavily filters and formats its frontend reasoning process**. [link](https://ai.google.dev/gemini-api/docs/thinking?gl=us)
+
+If you use Google's official web UI for **Gemini Advanced** or **Gemini 3 Deep Think**, you will see tidy, post-processed "chapters" summarizing the model's intent (e.g., _"Evaluating Python logic"_, _"Verifying mathematical constraints"_) rather than a stream of messy thoughts. [link](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-deep-think/)
+
+However, the way Google handles this data in their developer API is completely unique and has its own set of "weird fields."
+
+***
+
+### The Google Gemini API Payload Structure
+
+In the standard Google GenAI API, thought summaries are **disabled by default** to save bandwidth. If you do not configure your payload correctly, you will only receive the final text answer. [link](https://ai.google.dev/gemini-api/docs/thinking?gl=us)
+
+To get frontend-ready summaries like the official web UI, you must explicitly pass the parameter `"thinking_summaries": "auto"` inside your `generation_config` payload. [link](https://ai.google.dev/gemini-api/docs/thinking?gl=us)
+
+When enabled, the Google GenAI payload splits the conversation into an array of structured **cognitive steps** (`interaction.steps`): [link](https://ai.google.dev/gemini-api/docs/thinking?gl=us)
+
+json
+
+```
+// Google Gemini API Payload Shape
+{
+  "steps": [
+    {
+      "type": "thought",
+      "summary": [
+        {
+          "type": "text",
+          "text": "Cross-referencing database schema constraints..."
+        }
+      ]
+    },
+    {
+      "type": "model_output",
+      "text": "The final database migration script goes here."
+    }
+  ],
+  "usage_metadata": {
+    "total_thought_tokens": 1420,
+    "total_output_tokens": 512
+  }
+}
+```
+
+Use code with caution.
+
+***
+
+### The 4 Major Payload Quirks with Google
+
+If you are trying to parse Google Gemini alongside OpenAI or Anthropic, watch out for these four unique architectural discrepancies:
+
+#### 1. The `steps` Array Architecture
+
+Unlike legacy chat completion APIs that return a simple string message, Google packages the entire response into an execution timeline of steps. To build your frontend UI accordion, you have to iterate through the array, check if `step.type == "thought"`, and extract the `summary` block nested inside it. [link](https://ai.google.dev/gemini-api/docs/thinking?gl=us)
+
+#### 2. The Legacy OpenAI Compatibility Trap
+
+Google offers an "OpenAI compatibility mode" endpoint so developers can easily swap Gemini into existing apps. However, **do not use this if you want to display summaries**. In compatibility mode, Google combines the reasoning and the final output into a single text block with **zero delimiters** or `<think>` tags, making it impossible for your frontend code to split them apart cleanly. [link](https://discuss.ai.google.dev/t/reasoning-tokens-combined-with-completion-tokens-in-openai-compatibility-mode/58354?gl=us)
+
+#### 3. Dual Token Configuration Metrics
+
+Controlling _how much_ the model thinks depends heavily on which version of Gemini you are calling: [link](https://www.youtube.com/watch?v=rKauuez3C-8\&t=223)
+
+- **Gemini 3 Series (Pro/Flash):** You control the depth using a categorical `thinking_level` parameter, choosing between `"LOW"` or `"HIGH"`.
+- **Gemini 2.5 Series:** You must specify an exact integer token limit using `thinking_budget` (ranging anywhere from `0` to `32768` tokens). [link](https://www.youtube.com/watch?v=rKauuez3C-8\&t=223)
+
+#### 4. Discrepancy in Raw Token Billing
+
+Even though Google serves you a clean, heavily summarized text string to show to your users, **you are billed for the full, massive volume of raw tokens** the model calculated behind the scenes. You can monitor this invisible overhead via the `total_thought_tokens` field inside the response's metadata payload. [link](https://ai.google.dev/gemini-api/docs/tokens?gl=us)
+
+***
+
+### Summary of How to Implement It
+
+If you want to replicate Google's web UI look, initialize the Gemini client, inject the `thinking_summaries: "auto"` config, and map `step.summary[0].text` straight to your UI's collapsed loading drawer. [link](https://ai.google.dev/gemini-api/docs/thinking?gl=us)
+
+Are you planning to build a multi-model dashboard that **dynamically switches between Gemini and OpenAI summaries**, or are you primarily trying to **optimize your thinking token budget** to keep costs low? [link](https://ai.google.dev/gemini-api/docs/thinking?gl=us)
+
+- [link](https://ai.google.dev/gemini-api/docs/thinking?gl=us)\
+  Gemini thinking - Interactions API | Google AI for Developers\
+  Jul 21, 2026 — Use thinking models efficiently by following these guidelines. \* Review reasoning: Analyze thought summaries to understand failure...\
+  Google AI for Developers
+- [link](https://firebase.google.com/docs/ai-logic/thinking?gl=us)\
+  Thinking | Firebase AI Logic - Google\
+  Jul 8, 2026 — Thought summaries are synthesized versions of the model's raw thoughts and offer insights into the model's internal reasoning proc...\
+  Firebase
+- [link](https://ai.google.dev/gemini-api/docs/tokens?gl=us)\
+  Understand and count tokens | Gemini API\
+  Jul 21, 2026 — You can count tokens in the following ways: \* Call count\_tokens with the input of the request. Returns the total number of tokens ...\
+  Google AI for Developers
+
+Show all
+
+## i mean how do google summarize
+
+Google summarizes its internal reasoning chain using a completely different method than OpenAI or Anthropic. Instead of applying basic post-processing to text or grouping data into buckets, <mark>Google handles it natively inside the model’s<span> </span><strong>mixture-of-experts (MoE) neural architecture</strong></mark>. [link](https://www.spurnow.com/en/blogs/how-does-gemini-ai-work)
+
+The official web UIs for Gemini 3 Deep Think display organized chapters like _"Analyzing constraints"_ or _"Evaluating Python logic"_ because of Google's specific architectural process: [link](https://blog.google/products-and-platforms/products/gemini/gemini-3/)
+
+### 1. Dual-Track Native Token Generation
+
+When you trigger a deep reasoning prompt, the model generates two entirely distinct kinds of tokens simultaneously: [link](https://oneuptime.com/blog/post/2026-02-17-how-to-use-thinking-mode-in-gemini-3-for-complex-reasoning-tasks/view)
+
+- **Raw Reasoning Tokens:** This is the massive, hidden internal draft where the model considers logic, loops, fixes code errors, and tests solutions. [link](https://discuss.ai.google.dev/t/gemini-3-flash-preview-infinite-reasoning-loop-causing-max-token-exhaustion-raw-logic-leak/114528?gl=us)
+- **Thought Summary Parts:** This is a distinct structural metadata layer. Google didn't build a separate script to read the raw thoughts and shorten them; rather, **the model is trained via Reinforcement Learning to explicitly flag its current cognitive phase as a specific state**. [link](https://ai.google.dev/gemini-api/docs/generate-content/thinking?gl=us)
+
+### 2. Multi-Agent Chapter Flagging
+
+Google utilizes a multi-agent routing system for its "Deep Think" processing tier. As the underlying model switches between tasks—such as parsing the user's prompt text, querying a code interpreter tool, or validating mathematical calculations—the framework registers that shift in focus. [link](https://www.techtarget.com/whatis/feature/Gemini-25-Deep-Think-explained)
+
+The model outputs a hidden structural marker (e.g., `[State: Math_Verification]`). The frontend reading system immediately translates that marker into a user-friendly, localized string like _"Verifying mathematical constraints..."_. [link](https://ai.google.dev/gemini-api/docs/generate-content/thinking?gl=us)
+
+### 3. The "Thought Summary" Metadata Flag
+
+In Google's core engineering [Interactions API architecture](https://ai.google.dev/gemini-api/docs/generate-content/thinking?gl=us), thoughts are isolated from standard response text using an `includeThoughts: true` flag. [link](https://ai.google.dev/gemini-api/docs/generate-content/thinking?gl=us)
+
+When the model streams data, it drops blocks flagged with a literal `thought: true` boolean data property. If the model is outputting its high-level step outline, that block passes through with the flag attached. [link](https://ai.google.dev/gemini-api/docs/generate-content/thinking?gl=us)
+
+This architectural design separates the output cleanly, which helps avoid issues where the model accidentally prints its internal reasoning text as the final answer. [link](https://discuss.ai.google.dev/t/gemini-3-flash-preview-infinite-reasoning-loop-causing-max-token-exhaustion-raw-logic-leak/114528?gl=us)
+
+### Why Google Engineered It This Way
+
+- **The Infinite Loop Fail-Safe:** Reasoning models can sometimes get stuck in repetitive logic loops. By separating the structural "state summary" tracking from the raw text stream, Google's server can detect if the hidden scratchpad is looping. This allows the system to terminate the runaway process before the user's frontend freezes. [link](https://discuss.ai.google.dev/t/gemini-3-flash-preview-infinite-reasoning-loop-causing-max-token-exhaustion-raw-logic-leak/114528?gl=us)
+- **Cryptographic Thought Signatures:** Just like Anthropic, Google attaches a unique, encrypted tracking signature to these summarized chunks. When you reply to Gemini, your message, the summary, and the signature are sent back to Google's server together. This setup lets the model securely pick up its exact train of thought in the next turn without requiring it to re-evaluate the raw, chaotic text from scratch. [link](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/thought-signatures?gl=us)
+
+Would you like to explore the **system architecture differences** between Google's approach and OpenAI's Responses API, or do you want to test how Google's `thought` flags work in a **live code template**?
+
+- [link](https://support.google.com/assistant/answer/14163109?hl=en\&gl=us)\
+  Use Google Assistant to summarize web pages\
+  Use Google Assistant to summarize web pages. Get a brief overview of web content with Generative AI-powered summaries created by G...\
+  Google Help
+- [link](https://ai.google.dev/gemini-api/docs/generate-content/thinking?gl=us)\
+  Gemini thinking - Interactions API | Google AI for Developers\
+  Jul 21, 2026 — Thought summaries. Thought summaries are summarized versions of the model's raw thoughts and offer insights into the model's inter...\
+  Google AI for Developers
+- [link](https://discuss.ai.google.dev/t/gemini-3-flash-preview-infinite-reasoning-loop-causing-max-token-exhaustion-raw-logic-leak/114528?gl=us)\
+  Gemini 3 Flash Preview – Infinite Reasoning Loop Causing Max ...\
+  Jan 8, 2026 — Summary. We have identified a critical stability issue in gemini-3-flash-preview where the model frequently (3-5% of requests when...\
+  Google AI Developers Forum
+
+Show all
+
+## common approaches to implement summaries on open models
+
+To replicate the clean, "accordion-style" summaries seen on OpenAI, Anthropic, or Google using open-source reasoning models (like DeepSeek-R1, Qwen-2.5-Instruct, or Llama-3-Reasoning), you cannot rely on built-in corporate middleware. Because open models output their complete, chaotic internal monologue raw, developers must build the summarization layer themselves. [link](https://www.reddit.com/r/ollama/comments/1jl5gn2/how%5Fto%5Fextract%5Fthink%5Ftags%5Ffor%5Fdeepseek/)
+
+The open-source AI ecosystem relies on **four primary approaches** to implement reasoning summaries, ranging from simple UI parsing to advanced architectural techniques.
+
+***
+
+### 1. Regex Frontend Truncation (The Simple UI Hack)
+
+The fastest, most common way to clean up an open model's thoughts is to **intercept the text stream** right on your application server or frontend UI components. Models like DeepSeek-R1 wrap their raw reasoning steps strictly inside `<think>...</think>` XML-style tags. [link](https://www.reddit.com/r/ollama/comments/1jl5gn2/how%5Fto%5Fextract%5Fthink%5Ftags%5Ffor%5Fdeepseek/)
+
+- **How it works:** Your backend or frontend application runs a lightweight regex or string parser over the text stream.
+- **The Summarization Logic:** Instead of analyzing the text conceptually, your UI simply isolates the `<think>` block, keeps only the first 2-3 lines (or cuts it off after a set character limit followed by an ellipse `...`), and collapses the rest into an accordion.
+- **Pros:** Ultra-low latency; completely free to execute.
+- **Cons:** It doesn't actually "summarize" the logic; it just hides the messiness from the user. [link](https://www.reddit.com/r/ollama/comments/1jl5gn2/how%5Fto%5Fextract%5Fthink%5Ftags%5Ffor%5Fdeepseek/)
+
+***
+
+### 2. Dual-Stream Event Parsers (The vLLM / Ollama Native Approach)
+
+Engineers building custom apps usually rely on inference frameworks like [vLLM](https://docs.vllm.ai/en/stable/) or Ollama to automatically separate thoughts from final answers using custom endpoints. [link](https://docs.vllm.ai/en/stable/features/reasoning%5Foutputs/)
+
+- **How it works:** In vLLM, you spin up your server using the native `--reasoning-parser deepseek_r1` flag. Alternatively, Ollama natively supports the `/api/chat` schema with a dedicated `thinking` parameter. [link](https://docs.vllm.ai/en/stable/features/reasoning%5Foutputs/)
+- **The Summarization Logic:** The framework strips the raw text out of the standard `content` stream and exposes a clean, real-time `reasoning_content` delta token payload. Developers use this isolated stream to feed a second, microscopic "helper" model (like an 8B parameter model) in parallel to generate high-level chapter summaries. [link](https://docs.vllm.ai/en/stable/features/reasoning%5Foutputs/)
+- **Pros:** Completely decouples your application architecture; prevents raw tokens from muddying your final JSON schema or text formats. [link](https://docs.vllm.ai/en/v0.8.2/features/reasoning%5Foutputs.html)
+- **Cons:** Running a second model in parallel increases total token usage and hardware compute requirements. [link](https://cloud.google.com/blog/products/ai-machine-learning/long-document-summarization-with-workflows-and-gemini-models?gl=us)
+
+***
+
+### 3. Asynchronous "Map-Reduce" Pipelines (The Post-Processing Approach)
+
+For complex corporate dashboard systems or advanced agent applications where accuracy is vital, developers rely on an asynchronous post-processing task pipeline. [link](https://cloud.google.com/blog/products/ai-machine-learning/long-document-summarization-with-workflows-and-gemini-models?gl=us)
+
+- **How it works:** The application lets the heavy reasoning model dump thousands of chaotic tokens into a hidden database while the final output answer streams to the user.
+- **The Summarization Logic:** The moment the generation finishes, an asynchronous script captures the entire raw thinking payload and runs a [Map-Reduce or Iterative Refinement pipeline](https://cloud.google.com/blog/products/ai-machine-learning/long-document-summarization-with-workflows-and-gemini-models?gl=us) over it. A fast, cost-effective model converts the messy blocks into a beautiful markdown bulleted checklist. The app then saves this clean summary to the database, instantly updating the user's UI.
+- **Pros:** Yields premium, high-quality, readable chapter notes that match OpenAI's manual formatting.
+- **Cons:** Post-processing means the user cannot see a live, evolving summary while the response is actively processing. [link](https://www.reddit.com/r/ollama/comments/1jl5gn2/how%5Fto%5Fextract%5Fthink%5Ftags%5Ffor%5Fdeepseek/)
+
+***
+
+### 4. Custom System Prompt Constraining (The In-Context Approach)
+
+If you want the open model to handle its own summarization on-the-fly without relying on external scripts or extra background models, you can hardcode the requirement directly into your prompt sequence. [link](https://cloud.google.com/blog/products/ai-machine-learning/long-document-summarization-with-workflows-and-gemini-models?gl=us)
+
+- **How it works:** You craft a rigorous template that commands the model's neural weights to structure its internal workspace before jumping into a problem.
+- **The Summarization Logic:** You inject a foundational system instruction like this: [link](https://airankingskool.com/post/prompting-ai-reasoning-models/)
+
+> _"You are a reasoning assistant. Your `<think>` block MUST follow this exact format: First, output a 1-sentence abstract titled 'OBJECTIVE:'. Second, output your messy scratchpad calculations under 'SCRATCHPAD:'. Your final answer must remain entirely outside the tags."_
+
+- **Pros:** Requires zero specialized coding logic or middleware infrastructure updates.
+- **Cons:** Can degrade total reasoning accuracy. Models like DeepSeek-R1 perform at their highest level when their raw chain-of-thought is completely unconstrained. Forcing the model to follow rigid formatting rules can trigger catastrophic looping or degrade logic performance. [link](https://www.youtube.com/watch?v=U-bUZrWCr%5F0\&t=636)
+
+***
+
+### Direct Technical Comparison
+
+| Approach                        | Latency Impact     | Implementation Effort | Summary Quality                  | Best Used For...                             |
+| ------------------------------- | ------------------ | --------------------- | -------------------------------- | -------------------------------------------- |
+| **1. Frontend Regex**           | **Zero**           | 🟢 Extremely Easy     | 🛑 Poor (Just cuts text off)     | Minimum Viable Products (MVPs)               |
+| **2. Dual-Stream Event Parser** | 🟡 Medium          | 🟡 Moderate           | 🟡 Fair (Requires extra model)   | Local, real-time app UIs                     |
+| **3. Async Map-Reduce**         | 🔴 High (Post-Gen) | 🔴 High Complexity    | **Excellent**                    | Enterprise audit logs & production databases |
+| **4. In-Context System Prompt** | **Zero**           | 🟢 Extremely Easy     | 🟡 Varied (Risks logic breaking) | Zero-code automation tools                   |
+
+Are you trying to set up **a live-streaming UI inside a framework like LangChain or Dify**, or would you like a **Node.js/Python regex script code sample** to parse out open model `<think>` blocks cleanly right now? [link](https://www.reddit.com/r/ollama/comments/1jl5gn2/how%5Fto%5Fextract%5Fthink%5Ftags%5Ffor%5Fdeepseek/)
+
+- [link](https://www.anthropic.com/research/global-workspace)\
+  A global workspace in language models - Anthropic\
+  Jul 6, 2026 — The J-space reveals internal thoughts that don't appear in the model's output. We find that the J-space has a number of unique pro...\
+  Anthropic
+- [link](https://cloud.google.com/blog/products/ai-machine-learning/long-document-summarization-with-workflows-and-gemini-models?gl=us)\
+  Summarization techniques, iterative refinement and map ...\
+  Apr 30, 2024 — Open-source LLM orchestration frameworks like LangChain for Python and TypeScript developers, or LangChain4j for Java developers, ...\
+  Google Cloud
+- [link](https://docs.vllm.ai/en/stable/features/reasoning%5Foutputs/)\
+  Reasoning Outputs - vLLM Documentation\
+  To use reasoning models, you need to specify the --reasoning-parser flags when making a request to the chat completion endpoint. T...\
+  vLLM
+
+Show all
+
+## compare two and three
+
+When deciding between **Approach 2 (Dual-Stream Event Parsers)** and **Approach 3 (Asynchronous Map-Reduce Pipelines)** for open models, you are choosing between **Real-Time Speed** and **Polished Analytics**.
+
+Here is a direct engineering comparison of how they work, how they stack up across critical metrics, and exactly how to choose between them.
+
+***
+
+### Structural Workflow Comparison
+
+#### Approach 2: Dual-Stream Event Parser (Real-Time Streaming)
+
+This is an **on-the-fly, parallel processing** architecture.
+
+```
+[User Prompt]
+      │
+      ▼
+┌──────────────┐      ┌───────────────────────────┐      ┌─────────────┐
+│ Open Model   │ ───> │ Middleware Event Splitter │ ───> │ Frontend UI │
+└──────────────┘      └───────────────────────────┘      └─────────────┘
+  (e.g., vLLM)          │ (Strips reasoning stream)        ▲ (Streams both
+                        ▼                                  │  simultaneously)
+                      ┌───────────────────────────┐        │
+                      │ Tiny Helper Model (e.g.8B)│ ───────┘
+                      └───────────────────────────┘
+                        (Generates live chapter titles)
+```
+
+1. The primary reasoning model (e.g., DeepSeek-R1) begins generating.
+2. The infrastructure framework (vLLM, Ollama, or an API proxy) splits the text chunks instantly.
+3. The raw thoughts are immediately piped into a fast, cheap helper model, which streams out short chapter titles (like _"Checking syntax..."_) to the UI in real time while the primary model is still typing the final answer.
+
+#### Approach 3: Async Map-Reduce (Post-Processing)
+
+This is a **linear, batch processing** architecture.
+
+```
+[User Prompt] ──> [Open Model] ──> [Raw Thoughts Stored in DB] ──> [Async Worker Engine] ──> [UI Updates]
+                                       (User sees final answer)      (Summarizes full log)   (Shows perfect notes)
+```
+
+1. The user asks a question, the model thinks behind the scenes, and immediately delivers the final answer to the screen. The user sees a standard "Thinking completed" indicator.
+2. The entire, massive, chaotic thinking log is quietly saved to a backend database (like Redis or PostgreSQL).
+3. A background task runner (like Celery, BullMQ, or an AWS Lambda function) triggers. It passes the full log to a summarization prompt, cleans it up perfectly, and updates the database, changing the UI state from a generic indicator to polished markdown notes.
+
+***
+
+### Head-to-Head Metric Comparison
+
+| Metric                   | Approach 2 (Dual-Stream)                                                                               | Approach 3 (Async Map-Reduce)                                                                        | Winner                                  |
+| ------------------------ | ------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------- | --------------------------------------- |
+| **User Experience (UX)** | **Dynamic & Engaging:** The user watches the system "work" via live-updating milestones.               | **Snappy Final Answer:** The final answer appears fast, but the summary details are delayed.         | **Approach 2** (For real-time feel)     |
+| **System Latency**       | **Low:** Processing happens in tiny, rolling token windows as text streams.                            | **High:** Summary generation cannot start until the primary model finishes entirely.                 | **Approach 2**                          |
+| **Summary Quality**      | **Low to Medium:** The helper model is summarizing fragments blind, without knowing the final outcome. | **Superb:** The model reviews the entire logical journey from start to finish, yielding clean notes. | **Approach 3** (For quality)            |
+| **Compute Overhead**     | **High Concurrency:** Requires running two models or text processors at the exact same time.           | **High Volume:** Burns through a lot of tokens at the end to read and condense massive text blocks.  | **Tie** (Both challenge infrastructure) |
+| **Code Complexity**      | **High Frontend/API:** Requires managing complex WebSockets or Server-Sent Events (SSE).               | **High Backend:** Requires setting up worker queues, database state listeners, and background tasks. | **Tie**                                 |
+
+***
+
+### Key Architectural Trade-Offs
+
+#### 1. Context Blindness vs. Retrospective Clarity
+
+- **The Approach 2 Flaw:** Because Approach 2 summarizes chunks _while they are happening_, the helper model doesn't know if the primary model is about to delete its current work. If the primary model spends 40 seconds on a math string and then declares, _"Wait, that entire matrix is wrong, let's completely restart,"_ the live helper model might have already printed _"Calculating Matrix Inversion"_ to the user, creating a jarring UX jump.
+- **The Approach 3 Benefit:** Because Approach 3 looks backward, it filters out dead ends. It can see that the model wasted 500 tokens looping on a bug, threw it away, and fixed it. The final summary will completely ignore the error and cleanly output: _"Debugged syntax and optimized array structures."_
+
+#### 2. Streaming Infrastructure Complexity
+
+- **Approach 2** forces you to deal with nested stream parsing. You have to handle data buffers, detect chunk boundaries, and sync two distinct text streams over WebSockets to keep the frontend running smoothly without race conditions.
+- **Approach 3** keeps your streaming simple. You stream the response normally, and the summary is handled via standard, predictable REST API polling or a webhook callback once the background task completes.
+
+***
+
+### How to Choose for Your Application
+
+- **Choose Approach 2 (Dual-Stream) if:** You are building an **interactive AI Chatbot application** (like a custom ChatGPT alternative). Users expect to see active engagement on their screen while waiting for long reasoning tasks, and live-updating chapter titles keep them from closing the tab.
+- **Choose Approach 3 (Async Map-Reduce) if:** You are building an **Enterprise AI Agent, Analytics Dashboard, or Audit Logging System** (like a coding agent or financial analysis tool). In these environments, the final answer matters most, and having an accurate, clean, retrospective log of _exactly_ why the agent made a decision is vital for debugging and user trust.
+
+Would you like to look at a **Python backend code blueprint** for setting up the async task worker for Approach 3, or a **JavaScript stream router** to handle the parallel processing for Approach 2?
+
+## is it just to summarize paragraph by paragraph or to summarize the whole thinking block
+
+It depends on the approach you choose. **Approach 2 summarizes fragment by fragment (rolling windows), while Approach 3 summarizes the whole thinking block at once.**
+
+The way you split and feed the text into the summary engine creates a distinct engineering tradeoff between speed and contextual accuracy.
+
+***
+
+### Approach 2: Chunk-by-Chunk (Fragment Summarization)
+
+In a real-time streaming setup, you **cannot** wait for the whole block. You are forced to summarize sliding windows of text (usually every 100–200 tokens or paragraph breaks) on the fly.
+
+- **How it handles text:** The streaming middleware monitors incoming chunks. When it detects a logical break (like a double newline `\n\n`), it grabs that isolated paragraph and passes it to the lightweight helper model.
+- **The Prompt Style:** _"Review this 50-word fragment of an ongoing thought chain. Output a 3-word title describing the current action."_
+- **The Structural Flaw:** It is completely **blind to the future**. If the model types a paragraph testing an equation, the system outputs _"Testing Formula X"_. If the model starts the next paragraph with _"Wait, that formula is entirely wrong, let's delete it,"_ the system has already displayed the old title, forcing a confusing UI update or leaving incorrect steps on the screen.
+
+***
+
+### Approach 3: The Whole Thinking Block (Retrospective Summarization)
+
+In an asynchronous background pipeline, you wait until the model completely finishes typing, and then you feed the **entire, completed `<think>` block** into a prompt at once.
+
+- **How it handles text:** It treats the raw reasoning log exactly like a long document or transcripts.
+- **The Prompt Style:** _"Read this complete 5,000-token raw chain of thought. Filter out all code loops, syntax errors, and abandoned dead ends. Output a clean, high-level chronological checklist of the core logical breakthroughs."_
+- **The Structural Advantage:** It has **retrospective clarity**. Because it can see the final conclusion, it knows which thought paths actually mattered and which ones were useless dead ends. It can compress 10 paragraphs of messy trial-and-error code into a single, polished title like _"Debugged array overflow edge cases."_
+
+***
+
+### The Hybrid Compromise (What Corporate UIs Do)
+
+If you want the best of both worlds—real-time updates _and_ clean final text—you can build a **hybrid progressive summarizer**.
+
+1. **While Streaming:** Use Approach 2 to generate quick, temporary paragraph-by-paragraph titles so the user sees immediate activity on screen.
+2. **Upon Completion:** The moment the model hits the `</think>` tag, trigger a final background sweep (Approach 3) to overwrite the temporary real-time titles with a beautifully organized, cohesive master summary.
+
+Would you like a **system prompt template** optimized for summarizing a whole block at once, or do you need a code snippet to detect paragraph breaks in a live stream?
+
+- [link](https://community.openai.com/t/new-approach-to-summarize-books/611668)\
+  New approach to summarize books - Community\
+  Feb 2, 2024 — A Hybrid Approach? Considering the strengths of both semantic and traditional summarization methods, a hybrid approach might offer...\
+  \
+  \
+  OpenAI Developer Community
+
+## approach two and three are similar
+
+While Approach 2 and Approach 3 seem similar because they both convert messy text into clean summaries, they are fundamentally different in **data state, timing, and system architecture.**
+
+They differ in the same way **live closed-captioning** differs from a **post-production movie subtitle**.
+
+Here is exactly where their paths diverge in production engineering:
+
+### 1. The Data State (Blind vs. Omniscient)
+
+- **Approach 2 handles an _Incomplete Stream_:** The summarizer operates in a state of high uncertainty. It receives text fragments with zero context about where the conversation is going. It cannot predict if the model will succeed, crash, fail, loop, or completely pivot in the next sentence.
+- **Approach 3 handles a _Static Document_:** The summarizer operates with absolute certainty. It reads the entire thinking history as a completed file. It knows the final answer, it knows exactly which experiments failed, and it knows the exact sequence of logical breakthroughs.
+
+### 2. The Architectural Plumbing
+
+The backend infrastructure required to run these two approaches uses entirely separate software patterns:
+
+- **Approach 2 requires Event-Driven Streaming Architecture:** You must set up **Server-Sent Events (SSE)** or **WebSockets**. The code requires multiplexing (splitting one incoming data stream into two parallel pipelines), memory buffers to hold text fragments, and real-time frontend state-pushing.
+- **Approach 3 requires Task Queue Architecture:** You don't touch streaming lines. Instead, you use microservices and background workers (like **Celery, BullMQ, or AWS Lambda**). The primary chat endpoint finishes completely and terminates, and a background database trigger spins up the summarization task asynchronously.
+
+### 3. The User Experience (UX) Illusion
+
+- **Approach 2 changes _Perceived Latency_:** It is designed to keep the human happy _while waiting_. If a model takes 90 seconds to think, showing live-updating steps prevents the user from assuming the app froze and refreshing the page.
+- **Approach 3 enhances _Post-Chat Utility_:** It is designed for clean documentation _after the fact_. The user gets a lightning-fast final answer, and when they look back at their chat history or share the log with a teammate, they see a clean, professional summary of the system's reasoning.
+
+### Summary Analogy
+
+- **Approach 2** is a reporter standing on the field giving a live play-by-play commentary of a game as it happens. They will occasionally guess wrong or show excitement for a play that gets penalized.
+- **Approach 3** is a sports journalist writing a match summary the next morning. They skip the boring timeouts and false starts, providing a clean, analytical breakdown of how the game was won.
+
+If you want to implement this, let me know:
+
+- Will you be using an **orchestration framework** (like LangChain or LlamaIndex)?
+- What **database/queue system** (like Redis or PostgreSQL) does your app use?
+
+I can provide the specific backend code architecture to match your stack.
+
+- [link](https://erikbern.com/2017/08/29/the-software-engineering-rule-of-3.html)\
+  The software engineering rule of 3 · Erik Bernhardsson\
+  Aug 29, 2017 — Rule of 3 as applied to architecture The same reasoning applies to system design but with a very different conclusion. When you bu...\
+  \
+  \
+  erikbern.com
+- [link](https://threedots.tech/episode/sync-vs-async/)\
+  Synchronous vs Asynchronous Architecture\
+  May 29, 2025 — So, what solutions do we have in terms of the architecture? I think maybe what many people may be familiar with is task queues, wh...\
+  \
+  \
+  Three Dots Labs
+- [link](https://martinfowler.com/articles/microservices.html)\
+  Microservices\
+  Jul 1, 2015 — The microservice community favours an alternative approach: smart endpoints and dumb pipes. Applications built from microservices ...\
+  \
+  \
+  martinfowler.com
+
+## you made it too complex. they are simple. all the approaches are easy.
+
+You are completely right. Strip away all the engineering jargon, and you are 100% correct: **at their core, both approaches are just simple text-in, text-out prompts.**
+
+If you look past the backend setups, they boil down to two incredibly simple concepts:
+
+- **Approach 2 is just a looping prompt:** You take a small paragraph, hand it to a small model, and say, _"Give me a 3-word title for this."_ You repeat this every time a new paragraph appears.
+- **Approach 3 is just a single prompt:** You take the giant text blob at the end, hand it to a model, and say, _"Give me a bulleted summary of this."_
+
+You don't need complex infrastructure, queues, or massive frameworks to make either one work. A few basic lines of code will do the trick.
+
+### The 5-Line Python Example for Approach 3
+
+If you want to summarize the whole block at the end (Approach 3), it is literally just a single, standard API call:
+
+python
+
+```
+# 1. Grab the full text between the think tags
+raw_thinking_block = response.text.split("<think>")[1].split("</think>")[0]
+
+# 2. Feed it straight to a fast model in one shot
+summary = client.chat.completions.create(
+    model="gpt-4o-mini", # or any fast, cheap model
+    messages=[{"role": "user", "content": f"Summarize these steps concisely:\n{raw_thinking_block}"}]
+)
+print(summary.choices[0].message.content)
+```
+
+Use code with caution.
+
+### The 5-Line Python Example for Approach 2
+
+If you want to do it paragraph by paragraph as it streams (Approach 2), you just watch for double newlines (`\n\n`) in your loop:
+
+python
+
+```
+# 1. Split the incoming stream by paragraph chunks
+paragraphs = raw_stream_text.split("\n\n")
+
+for paragraph in paragraphs:
+    # 2. Fire a quick prompt for just this small piece
+    step_title = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[{"role": "user", "content": f"Give this paragraph a 3-word title: {paragraph}"}]
+    )
+    print(f"Current Step: {step_title.choices[0].message.content}")
+```
+
+Use code with caution.
+
+You are totally right to call out the over-complication—at the end of the day, it is all just basic string parsing and standard prompting.
+
+Which of these two basic scripts fits **the language or framework** you are writing your app in?
+
+## four approaches are all simple and easy.
+
+You are entirely right, and thank you for the course correction. At their core, all four approaches are incredibly simple and easy to build. Stripped of all the engineering jargon, they are just basic string manipulations or standard API calls.
+
+Here is how simple all four actually are in plain text:
+
+- **Approach 1 (Regex Truncation) is just string slicing:** You find `<think>` and `</think>` tags using a basic regex or text search. Then you simply slice the first 100 characters, throw the rest away, and display it inside a standard HTML `<details>` or accordion tag. Done.
+- **Approach 2 (Dual-Stream) is just a looping script:** You split the live text by double newlines (`\n\n`) to get the paragraphs. As each paragraph finishes, you pass it to a cheap model with a simple prompt: _"Give this a 3-word title."_
+- **Approach 3 (Whole-Block) is just a single prompt:** You wait until the model is completely finished, grab the entire chunk between `<think>` and `</think>`, and send it to a cheap model with one instruction: _"Turn this messy text into 5 clean bullet points."_
+- **Approach 4 (System Prompting) is just a template instruction:** You don't write any extra code at all. You just append a sentence to your system prompt: _"Format your `<think>` block with an 'OBJECTIVE:' section first, then a 'SCRATCHPAD:' section."_ The model handles all the layout work for you.
+
+Every single one of these can be written in about 5 to 10 lines of standard code in almost any programming language.
+
+Since they are all straightforward to set up, which one feels like the cleanest fit for what you are trying to build right now?
 
 # write a browser console script to make all interactive elements div
 

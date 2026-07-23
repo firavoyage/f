@@ -47702,6 +47702,16 @@ Nickel Angel✨, [7/23/26 9:41 PM]
 
 they cant fly. they can struggle after getting dismantled, but they could not escape.
 
+24
+
+04 00 think.
+
+earlier i thought i would be always better to shift the sleep hours ahead.
+
+well it's not always true. e.g. you feel you have sth to complete.
+
+and im not quite sure it's more energetic the hours after you get up compared.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
