@@ -25,8 +25,10 @@ sudo systemctl restart localhost
 debug
 
 ```sh
-journalctl -u caddy -n 10 --no-pager
-journalctl -u localhost -n 10 --no-pager
+journalctl -u caddy -r
+journalctl -u localhost -r
+# journalctl -u caddy -n 10 --no-pager
+# journalctl -u localhost -n 10 --no-pager
 ```
 
 note

@@ -63,4 +63,8 @@ harden "remove you said". both preprocess and postprocess, as the pattern is hig
 
 24
 
-add two linebreaks after all outputs
+add two linebreaks after all outputs, applied on `clipboard.ts`
+
+build and serve directly to reduce ram.
+
+<!-- a bit weird. the build works (pnpm build, not bun build). but you can only serve it via a live server. parcel dev server on builded file will fail. open html directly will fail for cors. -->
