@@ -47400,7 +47400,7 @@ but ive found a trick. i could opt out "files" (e.g. flac songs), and set upperl
 
 17 20 have some black tea.
 
-18 00 reg a new github account for gist. name it `humilitydev`.
+18 00 reg a new github account for gist. name it `humilitydev`. 19 00
 
 <!-- i want to share some code to challenge nickel angel. -->
 
