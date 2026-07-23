@@ -72,4 +72,8 @@ rg --files -g '*.ts' | cd "/home/fira/Documents/f/apps/tools/source/web/scripts/
 
 it's not about the code.
 
+---
+
+improve app copy meanwhile.
+
 

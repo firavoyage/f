@@ -4,7 +4,8 @@ function can_write_text(): boolean {
 
 export async function copy_html_to_clipboard({ html }: { html: string }): Promise<void> {
   if (can_write_text()) {
-    await navigator.clipboard.writeText(html);
+    await navigator.clipboard.writeText(html + '\n\n');
+    // await navigator.clipboard.writeText(html);
 
     console.log({
       action: 'copy_html_to_clipboard',

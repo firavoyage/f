@@ -1,6 +1,7 @@
 apps:
   copy:
-    command: zsh -lc "cd '/home/fira/Documents/f/apps/copy/' && /home/fira/.local/bin/parcel serve 'app.html' --dist-dir .build --cache-dir .build/.parcel-cache --port $port"
+    command: zsh -lc "cd '/home/fira/Documents/f/apps/copy/build' && /home/fira/.local/bin/node-srv -l -i app.html -p $port"
+    # command: zsh -lc "cd '/home/fira/Documents/f/apps/copy/' && /home/fira/.local/bin/parcel serve 'app.html' --dist-dir .build --cache-dir .build/.parcel-cache --port $port"
   token:
     command: zsh -lc "cd '/home/fira/Documents/f/apps/token/' && /home/fira/.local/bin/node-srv -l -i token.html -p $port"
   # bar:
