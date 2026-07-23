@@ -47398,6 +47398,8 @@ but ive found a trick. i could opt out "files" (e.g. flac songs), and set upperl
 
 > silicon valley is the whole web
 
+17 20 have some black tea.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
