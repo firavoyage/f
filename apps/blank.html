@@ -214,4 +214,87 @@
       );
     })();
   </script>
+  <script>
+    (() => {
+      // Select common interactive elements
+      const selectors =
+        'button, a, input, select, textarea, [role="button"], [role="link"]';
+
+      const convertToDiv = (el) => {
+        // Prevent infinite loops on already processed elements
+        if (el.tagName === "DIV" || el.dataset.converted === "true") return;
+
+        const div = document.createElement("div");
+
+        // Copy all HTML attributes
+        Array.from(el.attributes).forEach((attr) => {
+          div.setAttribute(attr.name, attr.value);
+        });
+
+        // Mark as converted
+        div.setAttribute("data-converted", "true");
+
+        // Copy inner content and value
+        div.innerHTML = el.innerHTML;
+        if (el.value && !div.hasAttribute("value")) {
+          div.setAttribute("value", el.value);
+        }
+
+        // Copy property-based event listeners
+        if (el.onclick) div.onclick = el.onclick;
+        if (el.onmousedown) div.onmousedown = el.onmousedown;
+        if (el.onmouseup) div.onmouseup = el.onmouseup;
+        if (el.onkeydown) div.onkeydown = el.onkeydown;
+
+        // Maintain basic layout consistency
+        const display = window.getComputedStyle(el).display;
+        div.style.display = display === "inline" ? "inline-block" : display;
+
+        // Replace element safely if it still has a parent
+        if (el.parentNode) {
+          el.parentNode.replaceChild(div, el);
+        }
+      };
+
+      const processNodes = (nodes) => {
+        nodes.forEach((node) => {
+          // Only process element nodes
+          if (node.nodeType !== Node.ELEMENT_NODE) return;
+
+          // Check the node itself
+          if (node.matches(selectors)) {
+            convertToDiv(node);
+          }
+
+          // Check all of its nested children
+          const children = node.querySelectorAll(selectors);
+          children.forEach(convertToDiv);
+        });
+      };
+
+      // Run immediately on existing elements
+      processNodes([document.body]);
+
+      // Setup MutationObserver for dynamic changes
+      const observer = new MutationObserver((mutations) => {
+        // Temporarily disconnect to avoid infinite loops during conversion
+        observer.disconnect();
+
+        mutations.forEach((mutation) => {
+          if (mutation.addedNodes.length) {
+            processNodes(mutation.addedNodes);
+          }
+        });
+
+        // Reconnect observer
+        observer.observe(document.body, { childList: true, subtree: true });
+      });
+
+      // Start watching the DOM
+      observer.observe(document.body, { childList: true, subtree: true });
+      console.log(
+        "MutationObserver active: Watching for interactive elements..."
+      );
+    })();
+  </script>
 </html>
