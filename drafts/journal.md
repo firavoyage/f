@@ -47683,6 +47683,10 @@ Nickel Angel✨, [7/23/26 9:41 PM]
 感觉如果有人联系得上维护者可以提一下这个 bug（x
 ```
 
+23 00 kill a cockroach.
+
+they cant fly. they can struggle after getting dismantled, but they could not escape.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
