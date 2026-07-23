@@ -40,6 +40,10 @@ shortcuts. <!-- just let it bind. -->
 
 ---
 
+design the params and return of component
+
+---
+
 design the routing and all app states
 
 ---
@@ -64,7 +68,7 @@ and pwa itself is of inconsistent compatibility.
 
 research cyberchef
 
-file:///home/fira/Downloads/CyberChef/CyberChef_v11.0.0.html
+/home/fira/Downloads/CyberChef/CyberChef_v11.0.0.html
 
 ---
 
