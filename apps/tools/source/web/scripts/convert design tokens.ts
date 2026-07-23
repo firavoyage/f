@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { parse } from 'yaml';
+import 'css.escape'
 
 type InputObject = Record<string, any>;
 type FlattenOptions = {
@@ -36,10 +37,7 @@ function flatten(obj: InputObject, options: FlattenOptions = {}): InputObject {
   return result;
 }
 
-function main(
-  convert: (input_str: string) => string,
-  ext = '.foo'
-): void {
+function main(convert: (input_str: string) => string, ext = '.css'): void {
   const file_set = new Set<string>();
 
   // 1. Gather files from shell arguments
@@ -129,14 +127,16 @@ function convert(design_yaml: string) {
 
   const { modes, ...tokens_obj } = design
 
+  type tokens = Record<string, string>
+
   const contexts: Record<string, {
     type: string
     is_default: boolean,
-    tokens: Record<string, string>
+    tokens: tokens
   }> & Record<'root', {
     type: string
     is_default: boolean,
-    tokens: Record<string, string>
+    tokens: tokens
   }> = {
     root: {
       type: 'root',
@@ -165,32 +165,61 @@ function convert(design_yaml: string) {
         if (is_match(value, mode)) {
           return true
         }
-        return false
       }
+      return false
     }
   })
+
+  function set(variant: string, variable: string, value: string) {
+    if (has(map, value)) {
+      contexts[variant].tokens[variable] = `var(--${value.replaceAll('.', '-')})`
+    } else {
+      contexts[variant].tokens[variable] = value
+    }
+  }
 
   for (const [token, value] of Object.entries(tokens)) {
     const variable = `--${token}`
 
     if (typeof value == 'object') {
-      for (const [variant, contextual_value] of value) {
-        if (has(map, contextual_value)) {
-          contexts[variant].tokens[variable] = `var(--${contextual_value.replaceAll('.', '-')})`
-        } else {
-          contexts[variant].tokens[variable] = contextual_value
-        }
+      for (const [variant, contextual_value] of Object.entries(value)) {
+        set(variant, variable, contextual_value)
       }
     } else {
-      contexts.root.tokens[variable] = value
+      set('root', variable, value)
     }
   }
 
-  log(contexts)
+  function convert_tokens_to_css(tokens: tokens) {
+    let css = ''
 
-  return 'foo'
-  // return design
+    for (const [prop, value] of Object.entries(tokens)) {
+      css += `  ${CSS.escape(prop)}: ${value};\n`
+    }
+
+    return css
+  }
+
+  let css = ''
+
+  for (const [variant, { type, is_default, tokens }] of Object.entries(contexts)) {
+    if (Object.keys(tokens).length == 0) {
+      continue
+    }
+
+    if (variant == 'root') {
+      css += `:root {\n${convert_tokens_to_css(tokens)}}\n`
+
+      continue
+    }
+
+    // be flexible, no data- prefix required
+    const selector = `${is_default ? ':root, ' : ''}[data-${type}="${variant}"], [${type}="${variant}"]`
+
+    css += `${selector} {\n${convert_tokens_to_css(tokens)}}\n`
+  }
+
+  return css
 }
 
 main(convert)
-
