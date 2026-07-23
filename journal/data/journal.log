@@ -135460,3 +135460,23 @@
 2026-07-24 05:57:48+08:00 chromium constraints of packagejson scripts - Google Search - Chromium
 2026-07-24 05:58:48+08:00 chromium constraints of packagejson scripts - Google Search - Chromium
 2026-07-24 05:59:48+08:00 chromium shell globbing syntax - Google Search - Chromium
+2026-07-24 06:00:48+08:00 chromium use snake case. write a ts fn called inside a nodejs cli. parse_stdin. no params. return an array. no stdin then empty. expect an stdin piped from fdfind or ripgrep --files -g, that is a list of files separated by linebreaks. - Google Search - Chromium
+2026-07-24 06:01:48+08:00 code 20260724 copy build.md - f (Workspace) - Visual Studio Code
+2026-07-24 06:02:49+08:00 code ● 20260724 tools script convert design tokens.md - f (Workspace) - Visual Studio Code
+2026-07-24 06:03:49+08:00 code ● convert design tokens.ts - f (Workspace) - Visual Studio Code
+2026-07-24 06:04:49+08:00 code ● convert design tokens.ts - f (Workspace) - Visual Studio Code
+2026-07-24 06:05:49+08:00 code convert design tokens.ts - f (Workspace) - Visual Studio Code
+2026-07-24 06:06:49+08:00 code ● convert design tokens.ts - f (Workspace) - Visual Studio Code
+2026-07-24 06:07:49+08:00 code ● convert design tokens.ts - f (Workspace) - Visual Studio Code
+2026-07-24 06:08:49+08:00 chromium Intention - Chromium
+2026-07-24 06:09:49+08:00 chromium use snake case. write a ts fn. is_match. params: obj, arr. return true if each value in the obj is a literal and the set of all keys in the obj is exactly arr. - Google Search - Chromium
+2026-07-24 06:10:49+08:00 code ● convert design tokens.ts - f (Workspace) - Visual Studio Code
+2026-07-24 06:11:49+08:00 code ● convert design tokens.sh - f (Workspace) - Visual Studio Code
+2026-07-24 06:12:49+08:00 code ● convert design tokens.sh - f (Workspace) - Visual Studio Code
+2026-07-24 06:13:49+08:00 code convert design tokens.ts - f (Workspace) - Visual Studio Code
+2026-07-24 06:14:49+08:00 code convert design tokens.sh - f (Workspace) - Visual Studio Code
+2026-07-24 06:15:49+08:00 code ● convert design tokens.ts - f (Workspace) - Visual Studio Code
+2026-07-24 06:16:49+08:00 code ● convert design tokens.ts - f (Workspace) - Visual Studio Code
+2026-07-24 06:17:49+08:00 code ● convert design tokens.ts - f (Workspace) - Visual Studio Code
+2026-07-24 06:18:49+08:00 code ● convert design tokens.ts - f (Workspace) - Visual Studio Code
+2026-07-24 06:19:49+08:00 code ● convert design tokens.ts - f (Workspace) - Visual Studio Code
