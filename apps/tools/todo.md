@@ -72,6 +72,12 @@ research cyberchef
 
 ---
 
+adopt vscode icon pack
 
+https://github.com/microsoft/vscode-codicons
+
+https://microsoft.github.io/vscode-codicons/dist/codicon.html
+
+---
 
 
