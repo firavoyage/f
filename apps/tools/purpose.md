@@ -96,3 +96,43 @@ c
 rg --files -g 'design/**/*.yaml' -g '!**/legacy/**'
 ```
 
+23 20 refine design tokens. leverage font shorthand. (23 40)
+
+```yaml
+font: font-style font-variant font-weight font-stretch font-size/line-height font-family;
+```
+
+it's a bit hard to reference tokens like this
+
+```yaml
+font: 
+  heading: bold text.lg typeface.serif
+```
+
+i dont wanna invent like `{text.lg}`
+
+```yaml
+font: 
+  heading: bold var(--text-lg) var(--typeface-serif)
+```
+
+seems it ruins.
+
+```yaml
+font: bold var(--text-lg) var(--typeface-serif)
+# font: var(--font-heading)
+```
+
+maybe i would just define font in css.
+
+you would not reuse `var(--font-heading)` a lot.
+
+wait why do i have to make assumptions.
+
+well, i guess i can make the converter smarter.
+
+ok. easy. the logic is, separate value by spaces. for each, if it's a valid token, convert to css var and replace all.
+
+fix typing in converter.
+
+
