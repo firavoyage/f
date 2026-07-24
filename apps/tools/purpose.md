@@ -145,7 +145,26 @@ try to make some progress.
 
 main page.
 
-states <!-- props and states are logically the same -->:
+states <!-- props and states are logically the same -->: tools, focused tool, pref
+
+by pref, i mean when possible, it can show as structured/raw input, and rendered/raw output.
+
+a tools have
+
+- name
+- fn
+- structure? an object in setting options <!-- i would design it later -->
+- render? string -> component
+
+---
+
+sidebar
+
+states: list, focused item
+
+---
+
+i will not impl the draggable separater for now.
 
 
 
