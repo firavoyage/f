@@ -47714,6 +47714,8 @@ and im not quite sure it's more energetic the hours after you get up compared.
 
 17 40 add fen, fkey, and fval to ts snippets. deprecate fin. make it for ts, tsx, and js, rather than global.
 
+23 00 watch `When 1800's Fight Back!! | Chess Rating Climb 1820 Rapid ELO`. (23 20)
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
