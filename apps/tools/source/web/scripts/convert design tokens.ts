@@ -202,21 +202,24 @@ function convert(design_yaml: string) {
 
   let css = ''
 
+  function append(selector, tokens) {
+      css += `${selector} {\n${convert_tokens_to_css(tokens)}}\n\n`
+  }
+
   for (const [variant, { type, is_default, tokens }] of Object.entries(contexts)) {
     if (Object.keys(tokens).length == 0) {
       continue
     }
 
     if (variant == 'root') {
-      css += `:root {\n${convert_tokens_to_css(tokens)}}\n`
-
+      append(':root', tokens)
       continue
     }
 
     // be flexible, no data- prefix required
     const selector = `${is_default ? ':root, ' : ''}[data-${type}="${variant}"], [${type}="${variant}"]`
 
-    css += `${selector} {\n${convert_tokens_to_css(tokens)}}\n`
+    append(selector, tokens)
   }
 
   return css

@@ -1,4 +1,4 @@
-:root,[data-theme="light"],[data-accent="blue"],[data-density="comfortable"] {
+:root {
   --ref-palette-white: #fff;
   --ref-palette-black: #000;
   --ref-palette-gray-25: oklch(25% 0 286);
@@ -8,15 +8,6 @@
   --ref-palette-gray-88: oklch(88% 0 286);
   --ref-palette-gray-93: oklch(93% 0 286);
   --ref-palette-gray-99: oklch(99% 0 286);
-  --ref-palette-accent-blue: #3584e4;
-  --ref-palette-accent-teal: #2190a4;
-  --ref-palette-accent-green: #3a944a;
-  --ref-palette-accent-yellow: #c88800;
-  --ref-palette-accent-orange: #ed5b00;
-  --ref-palette-accent-red: #e62d42;
-  --ref-palette-accent-pink: #d56199;
-  --ref-palette-accent-purple: #9141ac;
-  --ref-palette-accent-slate: #6f8396;
   --ref-palette-success: #78e9ab;
   --ref-palette-warning: #ffc252;
   --ref-palette-error: #ff938c;
@@ -82,70 +73,79 @@
   --ref-opacity-dim: 55%;
   --ref-opacity-disabled: 50%;
   --ref-window-radius: 15px;
-  --sys-radius-sm: var(--ref-radius-sm);
-  --sys-radius-md: var(--ref-radius-md);
-  --sys-radius-lg: var(--ref-radius-lg);
-  --sys-radius-xl: var(--ref-radius-xl);
-  --sys-color-bg-primary: var(--ref-palette-gray-99);
-  --sys-color-bg-secondary: var(--ref-palette-gray-93);
-  --sys-color-bg-tertiary: var(--ref-palette-gray-88);
-  --sys-color-bg-hover: var(--ref-palette-gray-93);
-  --sys-color-bg-pressed: var(--ref-palette-gray-93);
-  --sys-color-bg-accent: var(--ref-palette-accent-blue);
-  --sys-color-bg-destructive: {ref.palette.red.3};
-  --sys-color-bg-success: var(--ref-palette-success);
-  --sys-color-bg-warning: var(--ref-palette-warning);
-  --sys-color-bg-error: var(--ref-palette-error);
-  --sys-color-fg-primary: var(--ref-palette-gray-30);
-  --sys-color-fg-secondary: var(--ref-palette-gray-30);
-  --sys-color-fg-tertiary: var(--ref-palette-gray-30);
-  --sys-color-border-subtle: rgb(0 0 6 / 7%);
-  --sys-color-border-default: color-mix(in srgb, currentColor {ref.opacity.border}, transparent);
+  --sys-radius-sm: {ref.radius.sm};
+  --sys-radius-md: {ref.radius.md};
+  --sys-radius-lg: {ref.radius.lg};
+  --sys-radius-xl: {ref.radius.xl};
+  --sys-color-bg-primary-value: {ref.palette.gray.99};
+  --sys-color-bg-primary-dark: {ref.palette.gray.25};
+  --sys-color-bg-secondary-value: {ref.palette.gray.93};
+  --sys-color-bg-secondary-dark: {ref.palette.gray.30};
+  --sys-color-bg-tertiary-value: {ref.palette.gray.88};
+  --sys-color-bg-tertiary-dark: {ref.palette.gray.38};
+  --sys-color-bg-hover-value: {ref.palette.gray.93};
+  --sys-color-bg-hover-dark: {ref.palette.gray.30};
+  --sys-color-bg-pressed-value: {ref.palette.gray.93};
+  --sys-color-bg-pressed-dark: {ref.palette.gray.30};
+  --sys-color-bg-accent-value: {ref.palette.accent.blue};
+  --sys-color-bg-accent-teal: {ref.palette.accent.teal};
+  --sys-color-bg-accent-green: {ref.palette.accent.green};
+  --sys-color-bg-accent-yellow: {ref.palette.accent.yellow};
+  --sys-color-bg-accent-orange: {ref.palette.accent.orange};
+  --sys-color-bg-accent-red: {ref.palette.accent.red};
+  --sys-color-bg-accent-pink: {ref.palette.accent-pink};
+  --sys-color-bg-accent-purple: {ref.palette.accent-purple};
+  --sys-color-bg-accent-slate: {ref.palette.accent-slate};
+  --sys-color-bg-destructive-value: {ref.palette.red.3};
+  --sys-color-bg-destructive-dark: {ref.palette.red.4};
+  --sys-color-bg-success: {ref.palette.success};
+  --sys-color-bg-warning: {ref.palette.warning};
+  --sys-color-bg-error: {ref.palette.error};
+  --sys-color-fg-primary-value: {ref.palette.gray.30};
+  --sys-color-fg-primary-dark: {ref.palette.white};
+  --sys-color-fg-secondary-value: {ref.palette.gray.30};
+  --sys-color-fg-secondary-dark: {ref.palette.white};
+  --sys-color-fg-tertiary-value: {ref.palette.gray.30};
+  --sys-color-fg-tertiary-dark: {ref.palette.white};
+  --sys-color-border-subtle-value: rgb(0 0 6 / 7%);
+  --sys-color-border-subtle-dark: rgb(0 0 6 / 25%);
+  --sys-color-border-default-value: color-mix(in srgb, currentColor {ref.opacity.border}, transparent);
+  --sys-color-border-default-dark: color-mix(in srgb, currentColor 50%, transparent);
 }
 
-[data-theme="dark"] {
-  --sys-color-bg-primary: var(--ref-palette-gray-25);
-  --sys-color-bg-secondary: var(--ref-palette-gray-30);
-  --sys-color-bg-tertiary: var(--ref-palette-gray-38);
-  --sys-color-bg-hover: var(--ref-palette-gray-30);
-  --sys-color-bg-pressed: var(--ref-palette-gray-30);
-  --sys-color-bg-destructive: {ref.palette.red.4};
-  --sys-color-fg-primary: var(--ref-palette-white);
-  --sys-color-fg-secondary: var(--ref-palette-white);
-  --sys-color-fg-tertiary: var(--ref-palette-white);
-  --sys-color-border-subtle: rgb(0 0 6 / 25%);
-  --sys-color-border-default: color-mix(in srgb, currentColor 50%, transparent);
+:root, [data-accent="blue"], [accent="blue"] {
+  --ref-palette-accent: #3584e4;
 }
 
-[data-accent="teal"] {
-  --sys-color-bg-accent: var(--ref-palette-accent-teal);
+[data-accent="teal"], [accent="teal"] {
+  --ref-palette-accent: #2190a4;
 }
 
-[data-accent="green"] {
-  --sys-color-bg-accent: var(--ref-palette-accent-green);
+[data-accent="green"], [accent="green"] {
+  --ref-palette-accent: #3a944a;
 }
 
-[data-accent="yellow"] {
-  --sys-color-bg-accent: var(--ref-palette-accent-yellow);
+[data-accent="yellow"], [accent="yellow"] {
+  --ref-palette-accent: #c88800;
 }
 
-[data-accent="orange"] {
-  --sys-color-bg-accent: var(--ref-palette-accent-orange);
+[data-accent="orange"], [accent="orange"] {
+  --ref-palette-accent: #ed5b00;
 }
 
-[data-accent="red"] {
-  --sys-color-bg-accent: var(--ref-palette-accent-red);
+[data-accent="red"], [accent="red"] {
+  --ref-palette-accent: #e62d42;
 }
 
-[data-accent="pink"] {
-  --sys-color-bg-accent: {ref.palette.accent-pink};
+[data-accent="pink"], [accent="pink"] {
+  --ref-palette-accent: #d56199;
 }
 
-[data-accent="purple"] {
-  --sys-color-bg-accent: {ref.palette.accent-purple};
+[data-accent="purple"], [accent="purple"] {
+  --ref-palette-accent: #9141ac;
 }
 
-[data-accent="slate"] {
-  --sys-color-bg-accent: {ref.palette.accent-slate};
+[data-accent="slate"], [accent="slate"] {
+  --ref-palette-accent: #6f8396;
 }
 
