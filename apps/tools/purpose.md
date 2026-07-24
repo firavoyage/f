@@ -162,9 +162,26 @@ sidebar
 
 states: list, focused item
 
+<!-- llm doesnt name as list. it names as items. wise. -->
+
 ---
 
 i will not impl the draggable separater for now.
+
+---
+
+<!-- use ts. use type no interface. only type on params, not return. -->
+
+use ts. use type no interface. use snake case. no aria labels.
+
+class name rules...
+
+well, i guess i should break the rules. 
+
+rules are designed for react, for big corps.
+
+seems ts wants me to use data attrs for non standard attrs. ok. let's have a css snippet for it.
+
 
 
 
