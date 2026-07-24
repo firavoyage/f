@@ -182,6 +182,18 @@ rules are designed for react, for big corps.
 
 seems ts wants me to use data attrs for non standard attrs. ok. let's have a css snippet for it.
 
+---
 
+use ts. use type no interface. no return type. use snake case. no aria labels. use fn statement. write a react textarea component. params value set_value.
+
+---
+
+use state snippet. use effect snippet. css sel snippet.
+
+---
+
+convertion can be two way i realize.
+
+03 20 write web/lib/sync theme.use
 
 

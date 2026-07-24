@@ -1,4 +1,4 @@
-type theme = "system" | "light" | "dark";
+export type theme = "system" | "light" | "dark";
 
 export function sync_theme(theme: theme) {
   if (theme == "light" || theme == "dark") {
