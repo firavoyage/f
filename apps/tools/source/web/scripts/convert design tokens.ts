@@ -48,30 +48,48 @@ function main(convert: (input_str: string) => string, ext = '.css'): void {
 
   // 2. Gather files from stdin using sync buffer reading
   if (!process.stdin.isTTY) {
-    try {
-      const buffer_size = 65536;
-      const chunk_buffer = Buffer.alloc(buffer_size);
-      let total_input = '';
-      let bytes_read = 0;
+    const buffer_size = 65536;
+    const chunk_buffer = Buffer.alloc(buffer_size);
+    let total_input = '';
+    let bytes_read;
 
-      // Loop synchronously through stdin descriptor 0
-      while ((bytes_read = fs.readSync(0, chunk_buffer, 0, buffer_size, null)) > 0) {
-        total_input += chunk_buffer.toString('utf-8', 0, bytes_read);
-      }
+    // Loop synchronously through stdin descriptor 0
+    while ((bytes_read = fs.readSync(0, chunk_buffer, 0, buffer_size, null)) > 0) {
+      total_input += chunk_buffer.toString('utf-8', 0, bytes_read);
+    }
 
-      const input_lines = total_input.split(/\r?\n/);
-      for (const line of input_lines) {
-        const trimmed_line = line.trim();
-        if (trimmed_line) {
-          file_set.add(path.resolve(trimmed_line));
-        }
-      }
-    } catch (error_obj) {
-      // Handle cases where stdin is closed or unavailable
-      if ((error_obj as any).code !== 'EAGAIN' && (error_obj as any).code !== 'EOF') {
-        throw error_obj;
+    const input_lines = total_input.split(/\r?\n/);
+    for (const line of input_lines) {
+      const trimmed_line = line.trim();
+      if (trimmed_line) {
+        file_set.add(path.resolve(trimmed_line));
       }
     }
+
+    // try {
+    //   const buffer_size = 65536;
+    //   const chunk_buffer = Buffer.alloc(buffer_size);
+    //   let total_input = '';
+    //   let bytes_read = 0;
+
+    //   // Loop synchronously through stdin descriptor 0
+    //   while ((bytes_read = fs.readSync(0, chunk_buffer, 0, buffer_size, null)) > 0) {
+    //     total_input += chunk_buffer.toString('utf-8', 0, bytes_read);
+    //   }
+
+    //   const input_lines = total_input.split(/\r?\n/);
+    //   for (const line of input_lines) {
+    //     const trimmed_line = line.trim();
+    //     if (trimmed_line) {
+    //       file_set.add(path.resolve(trimmed_line));
+    //     }
+    //   }
+    // } catch (error_obj) {
+    //   // Handle cases where stdin is closed or unavailable
+    //   if ((error_obj as any).code !== 'EAGAIN' && (error_obj as any).code !== 'EOF') {
+    //     throw err(error_obj as any)
+    //   }
+    // }
   }
 
   // 3. Process each unique file path synchronously
@@ -123,7 +141,7 @@ function is_match(obj: Record<string, any>, arr: string[]): boolean {
 }
 
 function convert(design_yaml: string) {
-  const design = parse(design_yaml)
+  const design: Record<string, Record<string, string[]>> = parse(design_yaml)
 
   const { modes, ...tokens_obj } = design
 
@@ -160,7 +178,7 @@ function convert(design_yaml: string) {
   const map = flatten(tokens_obj)
 
   const tokens = flatten(tokens_obj, {
-    separator: '-', preserve(value, key) {
+    separator: '-', preserve(value) {
       for (const mode of Object.values(modes)) {
         if (is_match(value, mode)) {
           return true
@@ -171,6 +189,8 @@ function convert(design_yaml: string) {
   })
 
   function set(variant: string, variable: string, value: string) {
+    // 
+    
     if (has(map, value)) {
       contexts[variant].tokens[variable] = `var(--${value.replaceAll('.', '-')})`
     } else {
@@ -183,7 +203,7 @@ function convert(design_yaml: string) {
 
     if (typeof value == 'object') {
       for (const [variant, contextual_value] of Object.entries(value)) {
-        set(variant, variable, contextual_value)
+        set(variant, variable, contextual_value as string)
       }
     } else {
       set('root', variable, value)
@@ -202,8 +222,8 @@ function convert(design_yaml: string) {
 
   let css = ''
 
-  function append(selector, tokens) {
-      css += `${selector} {\n${convert_tokens_to_css(tokens)}}\n\n`
+  function append(selector: string, tokens: tokens) {
+    css += `${selector} {\n${convert_tokens_to_css(tokens)}}\n\n`
   }
 
   for (const [variant, { type, is_default, tokens }] of Object.entries(contexts)) {

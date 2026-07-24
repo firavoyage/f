@@ -25,6 +25,7 @@ const throw_err = {
     };
   },
 };
+
 export default defineConfig(
   // Config
   {

@@ -199,14 +199,12 @@ spacing:
 
 # use weight directly. it's not changeable or contextual. 
 
-font:
+typeface:
   sans: '"Adwaita Sans", sans-serif'
   monospace: '"Adwaita Mono", monospace'
 
 text:
-  xs: 
-    size: "0.75rem"
-    height: "1rem"
+  xs: "0.75rem/1rem"
   sm: 
     size: "0.875rem"
     height: "1.25rem"
