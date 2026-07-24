@@ -189,13 +189,20 @@ function convert(design_yaml: string) {
   })
 
   function set(variant: string, variable: string, value: string) {
-    // 
-    
-    if (has(map, value)) {
-      contexts[variant].tokens[variable] = `var(--${value.replaceAll('.', '-')})`
-    } else {
-      contexts[variant].tokens[variable] = value
+    // handle "bold text.lg typeface.serif"
+    for (const part of value.split(' ')) {
+      if (has(map, part)) {
+        value = value.replaceAll(part, `var(--${part.replaceAll('.', '-')})`)
+      }
     }
+
+    contexts[variant].tokens[variable] = value
+
+    // if (has(map, value)) {
+    //   contexts[variant].tokens[variable] = `var(--${value.replaceAll('.', '-')})`
+    // } else {
+    //   contexts[variant].tokens[variable] = value
+    // }
   }
 
   for (const [token, value] of Object.entries(tokens)) {
