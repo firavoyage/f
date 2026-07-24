@@ -54,7 +54,7 @@ idk how long it would take. but i do not have to timebox everything. ik it matte
 
 24
 
-05 00 simplify design tokens yaml, deprecate value based contextual token determination, make it more natural and consistent (06 00)
+05 00 simplify design tokens yaml, deprecate value based contextual token determination, make it more natural and consistent ~~(06 00)~~ 07 00
 
 adopt a object flattening template <!-- ? -->
 
@@ -76,4 +76,23 @@ it's not about the code.
 
 improve app copy meanwhile.
 
+---
+
+it seems ive modified legacy folder by mis ordering rg flags
+
+surprisingly vscode timeline doesnt track them. 
+
+i could, but i would not fix them through git history.
+
+p
+
+```sh
+rg --files -g '!**/legacy/**' -g 'design/**/*.yaml' 
+```
+
+c
+
+```sh
+rg --files -g 'design/**/*.yaml' -g '!**/legacy/**'
+```
 

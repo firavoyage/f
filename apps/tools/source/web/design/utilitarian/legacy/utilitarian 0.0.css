@@ -1,13 +1,4 @@
-:root,[data-theme="light"],[data-accent="blue"],[data-density="comfortable"] {
-  --palette-accent-blue: oklch(61.4% 0.164 255);
-  --palette-accent-teal: oklch(60.3% 0.098 213);
-  --palette-accent-green: oklch(59.4% 0.139 147);
-  --palette-accent-yellow: oklch(67.4% 0.142 76);
-  --palette-accent-orange: oklch(65.4% 0.196 42);
-  --palette-accent-red: oklch(60.3% 0.217 22);
-  --palette-accent-pink: oklch(65.1% 0.158 352);
-  --palette-accent-purple: oklch(52.5% 0.175 317);
-  --palette-accent-slate: oklch(60.1% 0.037 247);
+:root {
   --palette-gray-50: oklch(99.0% 0 0);
   --palette-gray-100: oklch(97.7% 0 0);
   --palette-gray-200: oklch(92.6% 0 0);
@@ -23,15 +14,31 @@
   --palette-success: #78e9ab;
   --palette-warning: #ffc252;
   --palette-error: #ff938c;
-  --color-bg-primary: var(--palette-gray-50);
-  --color-bg-secondary: var(--palette-gray-200);
-  --color-bg-tertiary: var(--palette-gray-300);
-  --color-bg-hover: var(--palette-gray-200);
-  --color-bg-pressed: var(--palette-gray-200);
-  --color-bg-accent: var(--palette-accent-blue);
-  --color-fg-primary: var(--palette-gray-800);
-  --color-fg-secondary: var(--palette-gray-800);
-  --color-fg-tertiary: var(--palette-gray-800);
+  --color-bg-primary-value: var(--palette-gray-50);
+  --color-bg-primary-dark: var(--palette-gray-900);
+  --color-bg-secondary-value: var(--palette-gray-200);
+  --color-bg-secondary-dark: var(--palette-gray-800);
+  --color-bg-tertiary-value: var(--palette-gray-300);
+  --color-bg-tertiary-dark: var(--palette-gray-700);
+  --color-bg-hover-value: var(--palette-gray-200);
+  --color-bg-hover-dark: var(--palette-gray-800);
+  --color-bg-pressed-value: var(--palette-gray-200);
+  --color-bg-pressed-dark: var(--palette-gray-800);
+  --color-bg-accent-value: var(--palette-accent-blue);
+  --color-bg-accent-teal: var(--palette-accent-teal);
+  --color-bg-accent-green: var(--palette-accent-green);
+  --color-bg-accent-yellow: var(--palette-accent-yellow);
+  --color-bg-accent-orange: var(--palette-accent-orange);
+  --color-bg-accent-red: var(--palette-accent-red);
+  --color-bg-accent-pink: var(--palette-accent-pink);
+  --color-bg-accent-purple: var(--palette-accent-purple);
+  --color-bg-accent-slate: var(--palette-accent-slate);
+  --color-fg-primary-value: var(--palette-gray-800);
+  --color-fg-primary-dark: white;
+  --color-fg-secondary-value: var(--palette-gray-800);
+  --color-fg-secondary-dark: white;
+  --color-fg-tertiary-value: var(--palette-gray-800);
+  --color-fg-tertiary-dark: white;
   --spacing-1: 0.25rem;
   --spacing-2: 0.5rem;
   --spacing-3: 0.75rem;
@@ -101,46 +108,39 @@
   --focus-ring-offset: -2px;
 }
 
-[data-theme="dark"] {
-  --color-bg-primary: var(--palette-gray-900);
-  --color-bg-secondary: var(--palette-gray-800);
-  --color-bg-tertiary: var(--palette-gray-700);
-  --color-bg-hover: var(--palette-gray-800);
-  --color-bg-pressed: var(--palette-gray-800);
-  --color-fg-primary: white;
-  --color-fg-secondary: white;
-  --color-fg-tertiary: white;
+:root, [data-accent="blue"], [accent="blue"] {
+  --palette-accent: oklch(61.4% 0.164 255);
 }
 
-[data-accent="teal"] {
-  --color-bg-accent: var(--palette-accent-teal);
+[data-accent="teal"], [accent="teal"] {
+  --palette-accent: oklch(60.3% 0.098 213);
 }
 
-[data-accent="green"] {
-  --color-bg-accent: var(--palette-accent-green);
+[data-accent="green"], [accent="green"] {
+  --palette-accent: oklch(59.4% 0.139 147);
 }
 
-[data-accent="yellow"] {
-  --color-bg-accent: var(--palette-accent-yellow);
+[data-accent="yellow"], [accent="yellow"] {
+  --palette-accent: oklch(67.4% 0.142 76);
 }
 
-[data-accent="orange"] {
-  --color-bg-accent: var(--palette-accent-orange);
+[data-accent="orange"], [accent="orange"] {
+  --palette-accent: oklch(65.4% 0.196 42);
 }
 
-[data-accent="red"] {
-  --color-bg-accent: var(--palette-accent-red);
+[data-accent="red"], [accent="red"] {
+  --palette-accent: oklch(60.3% 0.217 22);
 }
 
-[data-accent="pink"] {
-  --color-bg-accent: var(--palette-accent-pink);
+[data-accent="pink"], [accent="pink"] {
+  --palette-accent: oklch(65.1% 0.158 352);
 }
 
-[data-accent="purple"] {
-  --color-bg-accent: var(--palette-accent-purple);
+[data-accent="purple"], [accent="purple"] {
+  --palette-accent: oklch(52.5% 0.175 317);
 }
 
-[data-accent="slate"] {
-  --color-bg-accent: var(--palette-accent-slate);
+[data-accent="slate"], [accent="slate"] {
+  --palette-accent: oklch(60.1% 0.037 247);
 }
 

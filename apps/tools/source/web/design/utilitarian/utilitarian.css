@@ -14,22 +14,6 @@
   --palette-success: #78e9ab;
   --palette-warning: #ffc252;
   --palette-error: #ff938c;
-  --color-bg-primary-value: var(--palette-gray-50);
-  --color-bg-primary-dark: var(--palette-gray-900);
-  --color-bg-secondary-value: var(--palette-gray-200);
-  --color-bg-secondary-dark: var(--palette-gray-800);
-  --color-bg-tertiary-value: var(--palette-gray-300);
-  --color-bg-tertiary-dark: var(--palette-gray-700);
-  --color-bg-hover-value: var(--palette-gray-200);
-  --color-bg-hover-dark: var(--palette-gray-800);
-  --color-bg-pressed-value: var(--palette-gray-200);
-  --color-bg-pressed-dark: var(--palette-gray-800);
-  --color-fg-primary-value: var(--palette-gray-800);
-  --color-fg-primary-dark: white;
-  --color-fg-secondary-value: var(--palette-gray-800);
-  --color-fg-secondary-dark: white;
-  --color-fg-tertiary-value: var(--palette-gray-800);
-  --color-fg-tertiary-dark: white;
   --spacing-1: 0.25rem;
   --spacing-2: 0.5rem;
   --spacing-3: 0.75rem;
@@ -98,30 +82,62 @@
   --focus-ring-width: 2px;
   --focus-ring-offset: -2px;
 }
+
+:root, [data-theme="light"], [theme="light"] {
+  --color-bg-primary: var(--palette-gray-50);
+  --color-bg-secondary: var(--palette-gray-200);
+  --color-bg-tertiary: var(--palette-gray-300);
+  --color-bg-hover: var(--palette-gray-200);
+  --color-bg-pressed: var(--palette-gray-200);
+  --color-fg-primary: var(--palette-gray-800);
+  --color-fg-secondary: var(--palette-gray-800);
+  --color-fg-tertiary: var(--palette-gray-800);
+}
+
+[data-theme="dark"], [theme="dark"] {
+  --color-bg-primary: var(--palette-gray-900);
+  --color-bg-secondary: var(--palette-gray-800);
+  --color-bg-tertiary: var(--palette-gray-700);
+  --color-bg-hover: var(--palette-gray-800);
+  --color-bg-pressed: var(--palette-gray-800);
+  --color-fg-primary: white;
+  --color-fg-secondary: white;
+  --color-fg-tertiary: white;
+}
+
 :root, [data-accent="blue"], [accent="blue"] {
   --color-bg-accent: oklch(61.4% 0.164 255);
 }
+
 [data-accent="teal"], [accent="teal"] {
   --color-bg-accent: oklch(60.3% 0.098 213);
 }
+
 [data-accent="green"], [accent="green"] {
   --color-bg-accent: oklch(59.4% 0.139 147);
 }
+
 [data-accent="yellow"], [accent="yellow"] {
   --color-bg-accent: oklch(67.4% 0.142 76);
 }
+
 [data-accent="orange"], [accent="orange"] {
   --color-bg-accent: oklch(65.4% 0.196 42);
 }
+
 [data-accent="red"], [accent="red"] {
   --color-bg-accent: oklch(60.3% 0.217 22);
 }
+
 [data-accent="pink"], [accent="pink"] {
   --color-bg-accent: oklch(65.1% 0.158 352);
 }
+
 [data-accent="purple"], [accent="purple"] {
   --color-bg-accent: oklch(52.5% 0.175 317);
 }
+
 [data-accent="slate"], [accent="slate"] {
   --color-bg-accent: oklch(60.1% 0.037 247);
 }
+

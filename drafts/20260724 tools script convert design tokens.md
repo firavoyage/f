@@ -2352,3 +2352,486 @@ I can write out the exact script file you need.
   Ask Ubuntu
 
 
+
+# use snake case. write a ts fn. is\_match. params: obj, arr. return true if each value in the obj is a literal and the set of all keys in the obj is exactly arr.
+
+typescript
+
+```
+function is_match(obj: Record<string, any>, arr: string[]): boolean {
+    const keys = Object.keys(obj);
+
+    if (keys.length !== arr.length) {
+        return false;
+    }
+
+    const arr_set = new Set(arr);
+
+    for (const key of keys) {
+        if (!arr_set.has(key)) {
+            return false;
+        }
+
+        const val = obj[key];
+        if (typeof val === 'object' && val !== null) {
+            return false;
+        }
+    }
+
+    return true;
+}
+```
+
+Use code with caution.
+
+### Key Logic
+
+- **Size check**: Returns `false` immediately if key counts differ.
+- **Set matching**: Ensures the exact set of keys matches `arr`.
+- **Literal check**: Filters out objects, arrays, and functions using `typeof`.
+
+Would you like to extend this to **support specific primitive types** or add **strict null checking**?
+
+# (?) can i write for const foo of foo in js
+
+No. You cannot write `for (const foo of foo)` because it will throw a **ReferenceError**.
+
+### Why It Fails
+
+JavaScript evaluates the right-hand side of `of` first. At that exact moment, the variable `foo` is already blocked by the `const` declaration on the left, but it has not been initialized yet. This triggers the Temporal Dead Zone (TDZ).
+
+### The Correct Way
+
+You must use two different names. One name represents the collection, and the other represents the current item.
+
+javascript
+
+```
+const items = ['apple', 'banana', 'cherry'];
+
+for (const item of items) {
+  console.log(item);
+}
+```
+
+Use code with caution.
+
+### Key Rules
+
+- Use **plural** nouns for arrays (e.g., `fruits`, `users`).
+- Use **singular** nouns for the loop variable (e.g., `fruit`, `user`).
+
+If you want to explore more loop types, I can break down the differences between **`for...of`** and **`for...in`** or show you how to get the **index** inside a `for...of` loop. Which would you prefer?
+
+- [link](https://www.qsstechnosoft.com/blog/web-app-development-147/understanding-es-2015-es6-scope-block-scope-let-and-const-161)\
+  Understanding the Scope of ES-2015/ES - QSS\
+  Nov 4, 2019 — The Temporal Dead zone:- Remember, because of hoisting, the code looks like this: var x = undefined; That's why Reference Error is...\
+  \
+  \
+  QSS Technosoft
+- [link](https://medium.com/geekculture/for-in-vs-for-of-in-javascript-8563bd3e0672)\
+  for…in vs for…of in JavaScript. For quite a while, I have been… | by Megan Lo | Geek Culture\
+  Aug 24, 2021 — For quite a while, I have been struggling to fully understand the differences between for…in and for…of . If you found this via Go...\
+  \
+  \
+  Medium
+
+# how to exclude any content under folders named legacy on shell globbing
+
+To exclude folders named `legacy` during shell globbing, you need to use advanced globbing features. The exact syntax depends on the shell you are using.
+
+### Bash (version 4.0+)
+
+You must enable `globstar` for recursive matching and `extglob` for extended pattern matching.
+
+bash
+
+```
+shopt -s globstar extglob
+ls **/!(legacy)/*
+```
+
+Use code with caution.
+
+- `shopt -s`: Enables specific shell options.
+- `**/`: Matches all subdirectories recursively.
+- `!(legacy)`: Excludes any directory exactly named "legacy".
+
+### Zsh
+
+Zsh supports advanced globbing natively without changing shell options.
+
+zsh
+
+```
+ls **/*~*/legacy/*
+```
+
+Use code with caution.
+
+- `~`: Acts as the exclusion operator in Zsh.
+- `*/legacy/*`: Filters out any path containing the legacy folder.
+
+### Alternative using `find`
+
+If shell globbing becomes too complex, the `find` command is more robust for excluding directories.
+
+bash
+
+```
+find . -type d -name legacy -prune -o -type f -print
+```
+
+Use code with caution.
+
+- `-prune`: Stops the command from searching inside the `legacy` folders.
+- `-o`: Acts as an "OR" operator to process non-legacy files.
+
+To help narrow this down, please tell me:
+
+- Which **shell** you are using (Bash, Zsh, or Fish)?
+- What **command** (like `ls`, `cp`, or `grep`) you are running with the glob?
+
+I can then provide the exact, copy-pasteable command for your setup.
+
+- [link](https://www.linkedin.com/learning/bash-patterns-and-regular-expressions/shell-globbing-options)\
+  Shell globbing options - Bash Video Tutorial\
+  Jun 6, 2019 — Shell globbing options - Depending on your version of Bash, there may be other shell options that can make globbing more powerful.\
+  \
+  \
+  LinkedIn
+- [link](https://gitgist.com/posts/shell-exclusion-globbing/)\
+  Zsh Globbing Exclusion Patterns: Mastering the ~ and ^ Operators\
+  Apr 30, 2025 — Fortunately, Zsh ( Z shell ) (the Z shell) offers powerful “globbing” (filename generation) features that make excluding files ele...\
+  \
+  gitgist.com
+- [link](https://victorlillo.dev/blog/remove-all-node-modules-shell)\
+  Remove all node modules with a Shell script\
+  Jan 25, 2024 — -prune : Stops the search in the matching directories, meaning it will not descend further into those directories.\
+  \
+  \
+  victorlillo.dev
+
+## rg --files -g
+
+To exclude folders named `legacy` when using `ripgrep` (`rg`), use the standard `-g` (glob) flag with an exclamation mark `!` to negate the pattern.
+
+### The Solution
+
+bash
+
+```
+rg --files -g '!**/legacy/**'
+```
+
+Use code with caution.
+
+### Why This Works
+
+- `--files`: Lists files that `ripgrep` would search without actually searching their contents.
+- `-g '!...'`: The exclamation mark `!` tells `ripgrep` to exclude matching paths.
+- `**/legacy/**`: Matches the `legacy` folder and everything inside it, at any depth in the directory tree.
+- Single quotes `' '`: Prevents your shell from misinterpreting the `!` character.
+
+### Alternative (Permanent Fix)
+
+If you always want to ignore `legacy` folders in this project, create a `.ignore` or `.rgignore` file in your root directory and add this line:
+
+text
+
+```
+**/legacy/**
+```
+
+Use code with caution.
+
+`ripgrep` automatically reads these files and respects the exclusion rules.
+
+To help fine-tune this, please let me know:
+
+- Do you want to exclude `legacy` **permanently** across all searches?
+
+- Are there **other specific folders** or file types you also need to skip?
+
+- [link](https://github.com/BurntSushi/ripgrep/issues/91)\
+  Searching filenames (\`-g\` option in \`ag\`) · Issue #91 · BurntSushi/ripgrep\
+  Sep 25, 2016 — Valloric commented on Sep 25, 2016 Ah, I get it now. It's a combination of two flags: --files lists all the files that would have ...\
+  \
+  \
+  GitHub
+
+- [link](https://manpages.ubuntu.com/manpages/focal/man1/rg.1.html)\
+  Ubuntu Manpage: rg - recursively search current directory for lines matching a pattern\
+  Never print the file path with the matched lines. This is the default when ripgrep is explicitly instructed to search one file or ...\
+  \
+  Ubuntu Manpages
+
+- [link](https://github.com/burntsushi/ripgrep)\
+  GitHub - BurntSushi/ripgrep: ripgrep recursively searches directories for a regex pattern while respecting your gitignore\
+  By default, ripgrep will respect gitignore rules and automatically skip hidden files/directories and binary files. (To disable all...\
+  \
+  \
+  GitHub
+
+## can i have multiple -g in rg
+
+Yes, you can use multiple `-g` flags in a single `rg` command.
+
+### The Solution
+
+bash
+
+```
+rg --files -g '!**/legacy/**' -g '!**/tmp/**' -g '*.js'
+```
+
+Use code with caution.
+
+### Key Rules For Multiple Flags
+
+- **Independent Evaluation**: `ripgrep` evaluates every `-g` flag you provide.
+- **Order Matters**: Rules are applied in the order they appear.
+- **Include vs Exclude**: Flags starting with `!` exclude files, while flags without `!` include them.
+
+### Real-World Example
+
+If you want to search only inside Python files, but skip `legacy` and `tests` folders, run:
+
+bash
+
+```
+rg "search_term" -g '*.py' -g '!**/legacy/**' -g '!**/tests/**'
+```
+
+Use code with caution.
+
+To help you build the exact command, please let me know:
+
+- What **specific file types** do you want to target?
+
+- What **other folders** do you need to exclude?
+
+- [link](https://medium.com/@josephinechika94/regular-expressions-4f163b2e4215)\
+  REGULAR EXPRESSIONS. Introduction | by JOSEPHINE CHIKA\
+  May 20, 2018 — Flags Regular expressions have five optional flags that allow for global and case insensitive searching. These flags can be used s...\
+  \
+  \
+  Medium
+
+## does it make any sense to put excluding flags ahead
+
+Yes, putting excluding flags ahead makes sense and is actually a safer best practice in `ripgrep`.
+
+### Why Order Matters
+
+`ripgrep` processes glob flags sequentially from **left to right**. Later flags can override earlier flags if they overlap.
+
+- **Exclusions first (Recommended)**: Setting your blocks first cleanly defines what is strictly off-limits before you select what you want.
+- **Inclusions first (Risky)**: If you include a broad group first, a poorly written exclusion later might not catch everything, or vice versa.
+
+### How Ripgrep Resolves Overlaps
+
+If an inclusion and an exclusion conflict, **the last match wins**.
+
+bash
+
+```
+# Example A: Excludes legacy, then searches all JavaScript files.
+rg --files -g '!**/legacy/**' -g '*.js'
+
+# Example B: Searches JavaScript files, then explicitly strips out legacy.
+rg --files -g '*.js' -g '!**/legacy/**'
+```
+
+Use code with caution.
+
+Both examples above achieve the same result because the patterns do not critically conflict. However, putting exclusions first acts as a mental "shield," ensuring you filter out junk data before narrowing down your target.
+
+To help you optimize your specific workflow, tell me:
+
+- Are you getting **unexpected files** in your current search results?
+
+- What **exact command** are you trying to run right now?
+
+- [link](https://www.reddit.com/r/cprogramming/comments/1qzilil/what%5Fis%5Fthe%5Fsyntax%5Ffor%5Fadding%5Fmultiple%5Fitems%5Fto/)\
+  What is the syntax for adding multiple items to the LDFLAGS and LDLIBS environment variables when compiling a project? : r/cprogramming\
+  Feb 8, 2026 — These flags are normally simply passed to your compiler as command-line arguments. So it depends on your compiler. Normally that w...\
+  \
+  \
+  Reddit
+
+## no. example a doesnt work at all.
+
+You are entirely correct. Example A does not work, and I apologize for the mistake.
+
+### Why Example A Fails
+
+In `ripgrep`, if you provide a positive glob (like `*.js`), it acts as an **exclusive filter**. It tells `ripgrep` to _only_ look at files matching that pattern, completely resetting the scope.
+
+Because `ripgrep` processes left-to-right:
+
+1. `-g '!**/legacy/**'` says "exclude legacy".
+2. `-g '*.js'` overrides the previous rule and says "ignore everything _except_ `.js` files in the **current directory**". It does not look into subdirectories because it lacks a globstar (`**/`).
+
+### The Correct Way to Use Multiple Globs
+
+To make Example A work correctly while specifying a file extension, you must include the recursive wildcard (`**/`) in your inclusion glob:
+
+bash
+
+```
+rg --files -g '!**/legacy/**' -g '**/*.js'
+```
+
+Use code with caution.
+
+### Why the Order Still Matters
+
+Even with the correct syntax, **the last match wins**. If you reverse them, a later exclusion will successfully knock out files from your inclusion:
+
+bash
+
+```
+# This works perfectly: Includes all JS, then removes legacy JS
+rg --files -g '**/*.js' -g '!**/legacy/**'
+```
+
+Use code with caution.
+
+If you prefer to completely avoid managing multiple `-g` flags for file types, you can use `ripgrep`'s built-in type system instead:
+
+bash
+
+```
+rg --files -t js -g '!**/legacy/**'
+```
+
+Use code with caution.
+
+Would you like help setting up a **permanent configuration file** so you do not have to type these exclusions manually every time?
+
+## search
+
+The behavior of `ripgrep`'s globbing mechanism is highly literal, meaning **the order of inclusion versus exclusion flags determines the outcome**. The rule `ripgrep` follows is simple: **the last matching glob flag wins**. [link](https://github.com/BurntSushi/ripgrep/issues/1478)
+
+To control your search scope exactly, apply these structuring strategies:
+
+### 1. Inclusions First, Exclusions Last (The Whitelist Method)
+
+If you want to isolate a specific file type while throwing out a junk folder, put the inclusion first and the exclusion last. [link](https://github.com/BurntSushi/ripgrep/issues/689)
+
+bash
+
+```
+rg --files -g '**/*.js' -g '!**/legacy/**'
+```
+
+Use code with caution.
+
+- **Step 1:** `-g '**/*.js'` restricts the entire search space strictly to JavaScript files.
+- **Step 2:** `-g '!**/legacy/**'` intercepts those files and drops anything inside a `legacy` folder.
+- **Result:** You get only the JavaScript files you want, completely free of the legacy directory.
+
+### 2. Multi-Exclusion Stack (The Blacklist Method)
+
+If you want to search all default file types but skip several specific folders, the ordering of those exclusions relative to each other does not matter. You can safely stack them at the front or the back: [link](https://github.com/BurntSushi/ripgrep/issues/1808)
+
+bash
+
+```
+rg --files -g '!**/legacy/**' -g '!**/tmp/**' -g '!**/node_modules/**'
+```
+
+Use code with caution.
+
+- Because they are all negative (`!`), they layer together cleanly to filter out matching directories.
+
+### Why Put Exclusions First?
+
+Placing exclusions at the beginning is a best practice for **global configurations** or aliases. For instance, if you create a shell alias like `alias rg="rg -g '!**/legacy/**'"`, it injects the exclusion first.
+
+When you later run your alias with a positive flag (`rg -g '**/*.js'`), `ripgrep` evaluates the exclusion first, then overrides the neutral space with your target file type. [link](https://github.com/BurntSushi/ripgrep/issues/1478)
+
+Are there any other **specific patterns** or directory structures you are trying to match? Tell me what you need to target, and I will write the precise flag order for you.
+
+- [link](https://github.com/BurntSushi/ripgrep/discussions/1669)\
+  Easy way to search all files · BurntSushi ripgrep - GitHub\
+  Apr 26, 2025 — Thanks for the brilliant software, really useful - and fast! I would love it if there was an easy way to simply include all files.\
+  GitHub
+- [link](https://github.com/BurntSushi/ripgrep/issues/1478)\
+  Clarify multiple glob flag behavior in help message #1478\
+  Feb 5, 2020 — Description. casey. opened on Feb 5, 2020. Contributor. I was unsure of how conflicting globs are handled and was unable to figure...\
+  GitHub
+- [link](https://github.com/BurntSushi/ripgrep/issues/689)\
+  glob + respect ~/.ignore? #689 - BurntSushi/ripgrep - GitHub\
+  Nov 21, 2017 — okdana commented on Nov 21, 2017. @okdana · okdana · on Nov 21, 2017. Contributor. More actions. Per the man page: -g, --glob GLOB...\
+  GitHub
+
+Show all
+
+## if you put exclusion first and globbing later, it doesnt make any sense. it ignores the exclusion.
+
+**You are 100% correct.** If you put the exclusion first and a positive file glob second, `ripgrep` completely ignores the exclusion. [link](https://github.com/BurntSushi/ripgrep/issues/1478)
+
+My previous statement was wrong. To understand why it fails, it helps to look at exactly how `ripgrep` evaluates patterns.
+
+### Why Exclusion First and Glob Later Breaks
+
+`ripgrep` relies on a strict **"last match wins"** rule. If a file path matches more than one glob flag, only the very last flag in your command is respected. [link](https://github.com/BurntSushi/ripgrep/issues/1478)
+
+When you run:
+
+bash
+
+```
+rg --files -g '!**/legacy/**' -g '**/*.js'
+```
+
+Use code with caution.
+
+A file located at `legacy/app.js` triggers both rules:
+
+1. It matches the first pattern (`!**/legacy/**`), so `ripgrep` flags it to be **excluded**.
+2. Then, it matches the second pattern (`**/*.js`). Because this positive glob comes _later_, it overrides the previous decision. `ripgrep` flags it to be **included**. [link](https://github.com/BurntSushi/ripgrep/issues/1478)
+
+Because the positive glob is evaluated last, it completely undoes your exclusion. [link](https://github.com/BurntSushi/ripgrep/issues/1478)
+
+### The Only Way It Works (Exclusion Last)
+
+To ensure the exclusion is never overridden, the exclusion flag **must** be placed at the very end of your command: [link](https://github.com/BurntSushi/ripgrep/issues/1478)
+
+bash
+
+```
+rg --files -g '**/*.js' -g '!**/legacy/**'
+```
+
+Use code with caution.
+
+By placing `-g '!**/legacy/**'` last, you ensure that the exclusion acts as the final decision. It intercepts any JavaScript files found in the previous step and drops them if they sit inside a legacy directory. [link](https://github.com/BurntSushi/ripgrep/issues/1478)
+
+### Summary Rule
+
+- **If you use mixed flags (Inclusions + Exclusions)**: Always put your positive globs first and your negative `!` exclusions last.
+
+- **If you use only exclusions**: The order does not matter, as multiple exclusions do not conflict with each other. [link](https://github.com/BurntSushi/ripgrep/issues/1478)
+
+- [link](https://github.com/BurntSushi/ripgrep/issues/1478)\
+  Clarify multiple glob flag behavior in help message #1478\
+  Feb 5, 2020 — Description. casey. opened on Feb 5, 2020. Contributor. I was unsure of how conflicting globs are handled and was unable to figure...\
+  GitHub
+
+- [link](https://manpages.debian.org/unstable/ripgrep/rg.1.en.html)\
+  rg(1) — ripgrep — Debian unstable\
+  Apr 16, 2026 — Multiple glob flags may be used. Globbing rules match .gitignore globs. Precede a glob with a ! to exclude it. If multiple globs m...\
+  Debian Manpages
+
+- [link](https://github.com/BurntSushi/ripgrep/issues/689)\
+  glob + respect ~/.ignore? #689 - BurntSushi/ripgrep - GitHub\
+  Nov 21, 2017 — okdana commented on Nov 21, 2017. @okdana · okdana · on Nov 21, 2017. Contributor. More actions. Per the man page: -g, --glob GLOB...\
+  GitHub
+
+Show all
+
+
+

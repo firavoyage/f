@@ -126,19 +126,19 @@ palette:
 color:
   bg:
     primary: # core canvas
-      value: "palette.gray.50"
+      light: "palette.gray.50"
       dark: "palette.gray.900"
     secondary: # panel
-      value: "palette.gray.200"
+      light: "palette.gray.200"
       dark: "palette.gray.800"
     tertiary: # button on panel
-      value: "palette.gray.300"
+      light: "palette.gray.300"
       dark: "palette.gray.700"
     hover:
-      value: "palette.gray.200"
+      light: "palette.gray.200"
       dark: "palette.gray.800"
     pressed:
-      value: "palette.gray.200"
+      light: "palette.gray.200"
       dark: "palette.gray.800"
     accent:
       blue: oklch(61.4% 0.164 255)
@@ -153,13 +153,13 @@ color:
 
   fg:
     primary:
-      value: "palette.gray.800"
+      light: "palette.gray.800"
       dark: "white"
     secondary:
-      value: "palette.gray.800"
+      light: "palette.gray.800"
       dark: "white"
     tertiary:
-      value: "palette.gray.800"
+      light: "palette.gray.800"
       dark: "white"
 
 spacing:

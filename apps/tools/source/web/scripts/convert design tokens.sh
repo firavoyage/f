@@ -1,3 +1,3 @@
-rg --files -g '!**/legacy/**' -g 'design/**/*.yaml' | b 'scripts/convert design tokens.ts'
+rg --files -g 'design/**/*.yaml' -g '!**/legacy/**' | b 'scripts/convert design tokens.ts'
 # rg --files -g 'design/**/utilitarian.yaml' | b 'scripts/convert design tokens.ts'
 # rg --files -g 'design/**/*.yaml' | b 'scripts/convert design tokens.ts'
