@@ -147,6 +147,12 @@ ref:
       "const { ${2:name} } = await import('${1:module}');$0"
     ],
   },
+  "import type": {
+    "prefix": "it",
+    "body": [
+      "import type { ${2:type} } from '${1:module}';$0"
+    ],
+  },
   "declare global type": {
     "prefix": [
       "dg",
