@@ -47712,6 +47712,8 @@ well it's not always true. e.g. you feel you have sth to complete.
 
 and im not quite sure it's more energetic the hours after you get up compared.
 
+17 40 add fen, fkey, and fval to ts snippets. deprecate fin. make it for ts, tsx, and js, rather than global.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
