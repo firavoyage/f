@@ -135,4 +135,17 @@ ok. easy. the logic is, separate value by spaces. for each, if it's a valid toke
 
 fix typing in converter.
 
+25
+
+02 20 design main page. create sidebar. create a basic converter. (03 00)
+
+try to make some progress.
+
+---
+
+main page.
+
+states <!-- props and states are logically the same -->:
+
+
 
