@@ -572,6 +572,7 @@ entertainment:
 pure:
 
 - research writing style first person narrative internal thoughts author conversation textbook
+- methodology eli five
 
 <!-- 
 
@@ -710,6 +711,8 @@ society: <!-- sociology -->
 - non binary wo med or surgery
 - github kids
 - closeted homophobe transphobe
+- demography chess go
+- demography fps csgo valorant
 
 rhetoric:
 
