@@ -64,3 +64,69 @@ expect only class selector and attr selector (native nesting) usage in css.
   }
 }
 ```
+
+# 0.1
+
+every element must have exact one class. use snake case. name as itself. do not mention its parent.
+
+use attr for variant, size, style, state, etc. no `data-` prefix.
+
+no aria attr.
+
+example:
+
+```html
+<div class="product_card" status="featured">
+  <img class="image" src="product.jpg" alt="" />
+
+  <div class="content">
+    <h3 class="main_title">Wireless Mouse</h3>
+    <p class="sub_title">Ergonomic design</p>
+
+    <button class="buy_button" variant="primary">
+      Add to Cart
+    </button>
+  </div>
+</div>
+```
+
+expect only class selector and attr selector (native nesting) usage in css.
+
+```scss
+.product_card {
+  display: grid;
+  gap: var();
+
+  &[status="featured"] {
+    border: var();
+  }
+
+  .image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+
+    .main_title {
+      font: var(--...);
+    }
+
+    .sub_title {
+      font: var();
+      color: var();
+    }
+
+    .buy_button {
+      padding: var();
+
+      &[variant="primary"] {
+        background: var();
+        color: var();
+      }
+    }
+  }
+}
+```

@@ -196,4 +196,14 @@ til: ~~**think a bit about the implementation (e.g. params/states, types, abstra
 
 03 20 write web/lib/sync theme.use. add import type snippet. link some snippets.
 
+12 20 simplify knowledge: name component classname (12 40)
+
+just be nested. if overwhelming, consider separation/abstraction.
+
+<!-- btw, by default, descendant selector already selects children on all levels. flexible. -->
+
+make humility/.knowledge the single source of truth. rm everywhere else.
+
+folders like humility/source/web/knowledge are just quick workarounds as i dont wanna deal w agent skills.
+
 
