@@ -4,7 +4,7 @@ import 'web/app.css'
 import { useState, useEffect } from "react"
 import { use_bind } from 'web/lib/keyboard.use';
 import { use_sync_theme } from "web/lib/sync_theme.use";
-import { Main } from "web/component/Main";
+import { Main } from "web/component/main";
 
 export function App() {
   useEffect(() => {

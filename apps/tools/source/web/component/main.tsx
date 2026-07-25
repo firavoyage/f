@@ -19,7 +19,7 @@ const tools = {
 }
 
 export function Main() {
-  const [focused, set_focused] = useState()
+  const [focused, set_focused] = useState(0)
   const [input, set_input] = useState('')
   const [output, set_output] = useState('')
 
