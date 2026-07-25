@@ -502,4 +502,13 @@ ref:
   //     "} $0"
   //   ],
   // },
+   "use state": {
+    "prefix": [
+      "er",
+      "err"
+    ],
+    "body": [
+      "throw err($1)$0",
+    ],
+  }, 
 }

@@ -287,11 +287,22 @@ i made padding inside "focus-visible", but it's quickly found and fixed.
 
 26
 
-03 00 complete sidebar. (03 20)
+03 00 complete sidebar. write some snippets. (03 20)
 
 both push and overlay variants i guess.
 
 snippets and react utils later.
 
-i would separate the it
+i would separate the taxonomy of sidebar items from the tools definition. it could be free.
+
+it doesnt have to be fancy. just an array of strings for now. i could add hierarchy later. <!-- well, maybe i need both name and id, ordered. i will think about it later. the current focus is styling. -->
+
+---
+
+use state snippet. use effect snippet. css sel snippet. <!-- ? -->
+
+make use state and use effect global.
+
+---
+
 
