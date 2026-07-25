@@ -28,7 +28,8 @@ export function Main() {
   })
 
   return <div className="main">
-    <Sidebar items={['foo', 'bar']} focused={focused} set_focused={set_focused}></Sidebar>
+    <Sidebar items={['foo', 'bar']} focused={focused} set_focused={set_focused}>
+    </Sidebar>
     <Textarea value={input} set_value={set_input}></Textarea>
     <Textarea value={output} set_value={set_output}></Textarea>
   </div>
