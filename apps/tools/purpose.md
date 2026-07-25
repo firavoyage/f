@@ -277,4 +277,9 @@ why not. i would have it if it allows. i should ignore browser compatibility con
 
 ---
 
+20 00 style focus ring
+
+animation is cool. but i would not adopt it. vscode and linear dont have animation yk. 
+
+
 
