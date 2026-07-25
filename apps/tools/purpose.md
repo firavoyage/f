@@ -230,4 +230,21 @@ drop the timebox. i do not actually have a time constraint. and i would absolute
 
 wait. maybe my assumption is wrong. for inactive selection, it might not be 30 opacity.
 
+maybe they just use different bg, like contextual bg primary. 
+
+though, my bg primary secondary teritary has discrepency w them anyway.
+
+the decision is to use a unified bg teritary at 50 opacity.
+
+well, let me see.
+
+i assume they will have a same opacity for both light and dark. i couldnt believe if it's not true.
+
+i have another theory. they used my gray 500 at 0.2 opacity. i guess it's better. i dont think teritary bg has sth to do. if there is a dedicated inactive sel bg, it would not be contextual i guess.
+
+```
+0.2 oklch(66.7% 0.001 286) oklch(64.8% 0.006 286)
+0.5 oklch(86.1% 0.001 286) oklch(42.2% 0.007 286)
+```
+
 

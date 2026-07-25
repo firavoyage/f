@@ -7,7 +7,7 @@
  * @param text - The input string containing hex codes.
  * @returns The transformed string with oklch values.
  */
-export function convertHexToOklchPure(text: string): string {
+export function convert_hex_to_oklch(text: string): string {
   // Matches exact # followed by 6 hex characters
   const hexRegex = /#([a-fA-F0-9]{6})\b/g;
 
