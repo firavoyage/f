@@ -100,7 +100,4 @@ it would be incompatible w llms wo heavy prompting. but it would be fine.
 
 ---
 
-style selection and focus ring
-
-
 
