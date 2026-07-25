@@ -3320,4 +3320,451 @@ I can provide the exact color-mix percentages to ensure your text doesn't clash 
 
 Show all
 
+# how to style selection and inactive selection in css
+
+To style text selections in CSS, use the **`::selection`** pseudo-element for active highlighting, and pair it with the **`:window-inactive`** pseudo-class to alter the color scheme when the user clicks away from the browser window. [link](https://css-tricks.com/window-inactive-styling/)
+
+Here is how to implement both states.
+
+### Standard Active Selection
+
+The `::selection` pseudo-element targets text that is actively highlighted by the user. Browsers restrict this selector to a few styling properties, mainly `color`, `background-color`, `text-shadow`, and `text-decoration`. [link](https://css-tricks.com/almanac/pseudo-selectors/s/selection/)
+
+css
+
+```
+/* Styles text highlighted anywhere on the page */
+::selection {
+  background-color: #2563eb; /* Vibrant blue */
+  color: #ffffff;            /* White text */
+}
+
+/* Styles text highlighted only inside specific elements */
+p::selection {
+  background-color: #10b981; /* Emerald green for paragraphs */
+  color: #ffffff;
+}
+```
+
+Use code with caution.
+
+### Inactive Selection (Unfocused Window)
+
+When a user selects text but clicks onto another application or window, the selection becomes "inactive." You can style this specific state by chaining the `:window-inactive` pseudo-class to the selection pseudo-element. [link](https://css-tricks.com/window-inactive-styling/)
+
+It is best practice to use a desaturated or lighter version of your primary highlight color so the user visually understands the window has lost focus. [link](https://css-tricks.com/window-inactive-styling/)
+
+css
+
+```
+/* Styles the selection when the browser window loses focus */
+::selection:window-inactive {
+  background-color: #93c5fd; /* Soft, faded blue */
+  color: #1e3a8a;            /* Darker text for readability */
+}
+
+/* Specific element inactive override */
+p::selection:window-inactive {
+  background-color: #a7f3d0; /* Faded emerald green */
+  color: #064e3b;
+}
+```
+
+Use code with caution.
+
+### Complete Implementation Example
+
+css
+
+```
+/* 1. Global active selection */
+::selection {
+  background-color: hsl(220, 90%, 56%);
+  color: #ffffff;
+}
+
+/* 2. Global inactive selection */
+::selection:window-inactive {
+  background-color: hsl(220, 30%, 80%); /* Lower saturation & higher lightness */
+  color: hsl(220, 90%, 20%);
+}
+```
+
+Use code with caution.
+
+Would you like help choosing an **accessible color palette** that maintains proper text contrast, or are you looking to style **custom dropdown select menus** instead? [link](https://moderncss.dev/custom-select-styles-with-pure-css/)
+
+- [link](https://css-tricks.com/window-inactive-styling/)\
+  Window Inactive Styling | CSS-Tricks\
+  May 6, 2011 — You can use a pseudo selector to apply styling when a window is inactive. The :window-inactive pseudo selector can be used with ::\
+  CSS-Tricks
+- [link](https://utilitybend.com/blog/the-customizable-select-part-one-history-trickery-and-styling-the-select-with-css)\
+  Part one: history, trickery, and styling the select with CSS\
+  Mar 13, 2025 — Styling the select picker and options. Now is the time to finally style what we came here for: styling the picker and options. Wit...\
+  utilitybend
+- [link](https://css-tricks.com/almanac/pseudo-selectors/s/selection/)\
+  ::selection | CSS-Tricks\
+  Aug 29, 2014 — ::selection. ... Use your cursor select this sentence. Notice how as you select the text a background color fills the space? You c...\
+  CSS-Tricks
+
+Show all
+
+## how is it supported
+
+Browser support for these two features behaves very differently: active text selection (`::selection`) has **universal support across all modern browsers**, while inactive selection (`:window-inactive`) has **poor support and has largely been abandoned**. [link](https://caniuse.com/css-selection)
+
+### 1. Active Selection (`::selection`)
+
+This selector is standard and incredibly reliable. [link](https://caniuse.com/css-selection)
+
+- **Chrome, Edge, Safari, Opera:** Fully supported for desktop and mobile.
+- **Firefox:** Fully supported natively. _(Note: Very old versions required a `-moz-selection` prefix, but that is no longer necessary)._
+- **Properties Allowed:** Browsers strictly limit what you can change inside `::selection` for performance and rendering reasons. You can only use `color`, `background-color`, `text-shadow`, `text-decoration`, and `caret-color`. [link](https://stackoverflow.com/questions/826782/how-to-disable-text-selection-highlighting)
+
+### 2. Inactive Selection (`:window-inactive`)
+
+This pseudo-class is **non-standard** and highly inconsistent. [link](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:-moz-window-inactive)
+
+- **Chromium (Chrome, Edge) & Safari:** WebKit and Blink engines support combining `::selection:window-inactive` natively, though it is undocumented.
+- **Firefox:** Completely **unsupported** when paired with text selection. While Firefox recognizes `:-moz-window-inactive` for general elements (like changing a `div` color when clicking away), it intentionally blocks it from chaining onto `::selection` due to unresolved rendering bugs. [link](https://css-tricks.com/window-inactive-styling/)
+
+### How to Handle Cross-Browser Support Safe Code
+
+Because Firefox ignores combined inactive selection selectors, writing them incorrectly can cause browsers to discard your entire style rule. Keep your active and inactive blocks **completely separated** in your stylesheet to prevent browsers from breaking your code: [link](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/Pseudo-elements)
+
+css
+
+```
+/* SAFE: Supported by all browsers */
+::selection {
+  background-color: #2563eb;
+  color: #ffffff;
+}
+
+/* CAUTION: Will only work in Chromium/WebKit (Chrome, Safari, Edge) */
+/* Firefox will safely ignore this rule without breaking the rule above */
+::selection:window-inactive {
+  background-color: #93c5fd;
+  color: #1e3a8a;
+}
+```
+
+Use code with caution.
+
+Would you like to explore a **JavaScript fallback** using `window.onblur` to handle inactive states cleanly in Firefox, or do you want to stick strictly to CSS solutions? [link](https://stackoverflow.com/questions/56514591/change-inactive-selection-color-in-firefox)
+
+- [link](https://stackoverflow.com/questions/826782/how-to-disable-text-selection-highlighting)\
+  How to disable text selection highlighting - css - Stack Overflow\
+  May 5, 2009 — These are all of the available correct CSS variations: .noselect { -webkit-touch-callout: none; /\* iOS Safari \*/ -webkit-user-sele...\
+  Stack Overflow
+- [link](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/Pseudo-elements)\
+  Pseudo-elements - CSS - MDN Web Docs\
+  Jun 8, 2026 — Pseudo-elements. A CSS pseudo-element is a keyword added to a selector that lets you style a specific part of the selected element...\
+  MDN Web Docs
+- [link](https://caniuse.com/css-selection)\
+  ::selection CSS pseudo-element | Can I use... Support tables ...\
+  Chrome. 4 - 149 Supported. 150 Supported. 151 - 153 Supported. Edge \* 12 - 149 Supported. 150 Supported. Safari. 3.1 - 26.3 Suppor...\
+  CanIUse
+
+Show all
+
+## @parcel/transformer-css: Invalid pseudo class after pseudo element, only user action pseudo classes (e.g. :hover, :active) are allowed
+
+<mark><span>This error occurs because modern CSS bundlers and compilers—like<span> </span></span><strong>Parcel's lightningcss compiler</strong>—strictly enforce the modern W3C CSS specifications</mark>.
+
+According to official CSS specifications, pseudo-classes (like `:window-inactive`) cannot be chained _after_ a pseudo-element (like `::selection`). The compiler flags this as a syntax error and halts your build.
+
+To fix this error, you can use one of the two solutions below.
+
+### Solution 1: Reverse the Selector Order (Recommended)
+
+The correct, specification-compliant way to chain these selectors is to place the pseudo-class **before** the pseudo-element. This tells the browser: _"Find the inactive window first, then target the text selection inside it."_
+
+Change your CSS to this order:
+
+css
+
+```
+/* BEFORE (Causes Parcel Error) */
+::selection:window-inactive {
+  background-color: #93c5fd;
+}
+
+/* AFTER (Fixed & Spec-Compliant) */
+:window-inactive::selection {
+  background-color: #93c5fd;
+  color: #1e3a8a;
+}
+```
+
+Use code with caution.
+
+### Solution 2: Use a JavaScript + CSS Class Fallback
+
+If you want 100% reliable cross-browser support (including Firefox, which ignores `:window-inactive`), remove the pseudo-class completely. Instead, use a tiny JavaScript snippet to toggle a class on the `<body>` when the window loses focus.
+
+**1. Update your CSS:**
+
+css
+
+```
+/* Active selection when window is focused */
+::selection {
+  background-color: #2563eb;
+  color: #ffffff;
+}
+
+/* Inactive selection using a standard class */
+.is-inactive ::selection {
+  background-color: #93c5fd;
+  color: #1e3a8a;
+}
+```
+
+Use code with caution.
+
+**2. Add this JavaScript to your project:**
+
+javascript
+
+```
+window.addEventListener('blur', () => {
+  document.body.classList.add('is-inactive');
+});
+
+window.addEventListener('focus', () => {
+  document.body.classList.remove('is-inactive');
+});
+```
+
+Use code with caution.
+
+Would you like help setting up a **global configuration rule** in Parcel to ignore specific legacy CSS warnings, or are you ready to test the **reversed selector fix**?
+
+## @parcel/transformer-css: Pseudo class must be prefixed by a ::-webkit-scrollbar pseudo element
+
+\> 12 | :window-inactive::selection {
+
+The error happens because **Parcel’s internal CSS compiler (LightningCSS) interprets `:window-inactive` strictly as a proprietary WebKit scrollbar pseudo-class**. [link](https://gitlab.tic.gov.tl/rjguterres/embassy%5Ftlid/-/blob/701c6624e325a0bca31fbb3363e2aa9b7ecb4a86/node%5Fmodules/lightningcss/node/ast.js.flow)
+
+Because `:window-inactive` is non-standard, the compiler enforces the WebKit rule that it can _only_ be chained to scrollbars (e.g., `::-webkit-scrollbar:window-inactive`). When it sees you chaining it to `::selection`, the compiler flags it as invalid CSS and breaks your build. [link](https://github.com/parcel-bundler/lightningcss/issues/305)
+
+To solve this, choose one of the following approaches to bypass or fix the compiler restriction:
+
+### Fix 1: Use a JavaScript Class Fallback (Recommended)
+
+This is the cleanest and safest workaround for modern tooling. It completely avoids non-standard pseudo-classes, keeps your build working, and adds cross-browser support for Firefox (which natively ignores `:window-inactive`).
+
+**1. Update your CSS to use a standard class:**
+
+css
+
+```
+/* Active text selection */
+::selection {
+  background-color: #2563eb;
+  color: #ffffff;
+}
+
+/* Inactive text selection */
+.window-is-inactive ::selection {
+  background-color: #93c5fd;
+  color: #1e3a8a;
+}
+```
+
+Use code with caution.
+
+**2. Add a global script to toggle the class:**
+
+javascript
+
+```
+window.addEventListener('blur', () => {
+  document.body.classList.add('window-is-inactive');
+});
+
+window.addEventListener('focus', () => {
+  document.body.classList.remove('window-is-inactive');
+});
+```
+
+Use code with caution.
+
+### Fix 2: Wrap it in an `@supports` Block
+
+If you want to stick strictly to CSS without writing JavaScript, you can hide the rule from Parcel's parser by wrapping it inside an `@supports` block. Parcel will bypass strict validation on the selector rules inside it.
+
+css
+
+```
+::selection {
+  background-color: #2563eb;
+  color: #ffffff;
+}
+
+/* Hides the non-standard combination from Parcel's compiler */
+@supports (selector(:window-inactive::selection)) {
+  :window-inactive::selection {
+    background-color: #93c5fd;
+    color: #1e3a8a;
+  }
+}
+```
+
+Use code with caution.
+
+### Fix 3: Lower Parcel's Browser Targets
+
+Parcel throws hard syntax errors when compiling for ultra-modern browsers because it tries to adhere strictly to strict W3C standards. If you configure your project to target slightly older browsers, Parcel changes its compilation behavior to be more forgiving. [link](https://github.com/parcel-bundler/lightningcss/issues/305)
+
+You can adjust your targets in your **`package.json`**:
+
+json
+
+```
+{
+  "browserslist": [
+    "> 0.5%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
+```
+
+Use code with caution.
+
+Would you like help verifying if the **JavaScript class fallback** works correctly with your existing layout, or do you need assistance configuring your **`package.json` targets**?
+
+- [link](https://github.com/parcel-bundler/lightningcss/issues/305)\
+  @parcel/transformer-css: Invalid pseudo class after ... - GitHub\
+  Sep 25, 2022 — devongovett commented. devongovett. on Sep 27, 2022. Member. yup, that's invalid. pseudo classes other than user actions (e.g. :ac...\
+  GitHub
+- [link](https://github.com/parcel-bundler/parcel/issues/7885)
+
+2.4.1 -- Invalid pseudo class after ::-webkit-scrollbar ... - GitHub\
+Apr 1, 2022 — devongovett commented on Apr 7, 2022. @devongovett · devongovett · on Apr 7, 2022. Member. More actions. Fixed in @parcel/css v1.8...\
+GitHub
+
+- [link](https://gitlab.tic.gov.tl/rjguterres/embassy%5Ftlid/-/blob/701c6624e325a0bca31fbb3363e2aa9b7ecb4a86/node%5Fmodules/lightningcss/node/ast.js.flow)\
+  embassy\_tlid - node\_modules - lightningcss - node - ast.js.flow\
+  Mar 7, 2025 — ... scrollbar]\(https://webkit.org/blog/363/styling-scrollbars/) pseudo class. \*/. export type WebKitScrollbarPseudoClass = | "hori...\
+  TIC TIMOR
+
+Show all
+
+## fix: when the page loads, neither event listener fires
+
+The reason neither event fires on page load is because the page loads in a **focused** state by default, but the browser does not trigger the `focus` event listener for a window that is already active. As a result, your CSS class `.window-is-inactive` is never removed or managed correctly during that initial render.
+
+To fix this, you need to explicitly initialize the state by checking the document's current focus status as soon as the script executes.
+
+### The Fix
+
+Modify your JavaScript file to check `document.hasFocus()` immediately on load:
+
+javascript
+
+```
+const handleBlur = () => document.body.classList.add('window-is-inactive');
+const handleFocus = () => document.body.classList.remove('window-is-inactive');
+
+// 1. Listen for subsequent focus changes
+window.addEventListener('blur', handleBlur);
+window.addEventListener('focus', handleFocus);
+
+// 2. Initialize state immediately on script load
+if (!document.hasFocus()) {
+  handleBlur();
+} else {
+  handleFocus();
+}
+```
+
+Use code with caution.
+
+### Why this works:
+
+- **`document.hasFocus()`**: This built-in browser method returns a boolean indicating whether the window is currently active.
+- **Immediate sync**: If a user opens the page in a background tab (unfocused), it correctly applies the inactive style immediately. If they load it normally, it forces the active style clean state.
+
+Would you like help testing this initialization fix alongside **iframes** on your page, or do you have other **Parcel build errors** you need to clear up?
+
+- [link](https://github.com/hotwired/stimulus/issues/328)\
+  \`connect\` not picking up initial values of input elements (browser 'back' button) · Issue #328 · hotwired/stimulus\
+  Sep 7, 2020 — Generally speaking, you should not be using the window:load event in modern JS, and definitely not with Turbolinks. The reason for...\
+  \
+  \
+  GitHub
+- [link](https://www.geeksforgeeks.org/javascript/how-to-fix-toggle-javascript-works-on-second-click-not-first/)\
+  How to Fix "Toggle JavaScript Works on Second Click, Not First "?\
+  Nov 14, 2024 — 1. Initial State Not Set Properly Ensure that the initial state of the element you want to toggle is set correctly before the firs...\
+  \
+  \
+  GeeksforGeeks
+
+## can it know if it's opened in bg or not
+
+<mark><span>Yes, JavaScript can reliably detect if a page is opened in a background tab or an inactive window right at load time</span></mark>. [link](https://developer.mozilla.org/en-US/docs/Web/API/Page%5FVisibility%5FAPI)
+
+To do this perfectly, you must combine **`document.visibilityState`** (which checks if the tab is hidden in the background) with **`document.hasFocus()`** (which checks if the browser window itself is the active window on the operating system). [link](https://stackoverflow.com/questions/29331979/difference-between-document-hidden-vs-document-hasfocus)
+
+### The Complete Background-Aware Script
+
+Replace your previous JavaScript initialization block with this logic. It tracks changes dynamically while setting the exact correct class the millisecond the page loads: [link](https://tech.trivago.com/post/2020-11-17-exploringthepagevisibilityapifordetectin)
+
+javascript
+
+```
+const handleBlur = () => document.body.classList.add('window-is-inactive');
+const handleFocus = () => document.body.classList.remove('window-is-inactive');
+
+// Function to calculate the exact state at any given second
+const checkInitialState = () => {
+  const isTabHidden = document.visibilityState === 'hidden'; // Opened in a background tab
+  const isWindowUnfocused = !document.hasFocus();             // Browser window isn't focused in OS
+
+  if (isTabHidden || isWindowUnfocused) {
+    handleBlur();
+  } else {
+    handleFocus();
+  }
+};
+
+// 1. Listen for standard window focus/blur changes
+window.addEventListener('blur', handleBlur);
+window.addEventListener('focus', handleFocus);
+
+// 2. Listen for tab switches (Foreground <-> Background Tab)
+document.addEventListener('visibilitychange', checkInitialState);
+
+// 3. Force check immediately when the script runs on page load
+checkInitialState();
+```
+
+Use code with caution.
+
+### How JavaScript handles the load scenarios:
+
+1. **User middle-clicks your link (Background Tab):** `document.visibilityState` will equal `'hidden'`. The script instantly flags it as `.window-is-inactive` before the user ever looks at it.
+2. **User clicks a link normally (Foreground Tab):** `document.visibilityState` is `'visible'` and `document.hasFocus()` is `true`. The script ensures it stays active.
+3. **The page loads, but the user clicked onto another app (Unfocused Window):** `document.hasFocus()` evaluates to `false`. The script treats it as inactive. [link](https://stackoverflow.com/questions/29331979/difference-between-document-hidden-vs-document-hasfocus)
+
+Would you like to test how this script handles **text selections made prior to switching tabs**, or are you ready to implement it?
+
+- [link](https://discourse.mozilla.org/t/detect-that-code-is-running-in-background-script/40624)\
+  Detect that code is running in background script - Development\
+  May 21, 2019 — I'm now sharing modules between different contexts and right now I need to detect whether the module is running in background scri...\
+  Mozilla Discourse
+- [link](https://developer.mozilla.org/en-US/docs/Web/API/Page%5FVisibility%5FAPI)\
+  Page Visibility API - MDN Web Docs\
+  Dec 30, 2025 — Use cases. Let's consider a few use cases for the Page Visibility API. ... Developers have historically used imperfect proxies to ...\
+  MDN Web Docs
+- [link](https://stackoverflow.com/questions/29331979/difference-between-document-hidden-vs-document-hasfocus)\
+  Difference between document.hidden vs document.hasFocus()\
+  Mar 29, 2015 — Comments. Add a comment. 7. TLDR: document.hidden : returns true if tab is open and is not at all visible. Opening another chrome ...\
+  Stack Overflow
+
+Show all
+
 # 
