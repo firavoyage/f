@@ -4,3 +4,13 @@ body {
 }
 
 /* select. outline. */
+
+::selection{
+  background-color: var(--color-bg-selection);
+}
+
+/* :window-inactive::selection {
+  background-color: var(--color-bg-selection-inactive)
+} */
+
+

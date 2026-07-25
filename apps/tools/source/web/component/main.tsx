@@ -32,5 +32,6 @@ export function Main() {
     </Sidebar>
     <Textarea value={input} set_value={set_input}></Textarea>
     <Textarea value={output} set_value={set_output}></Textarea>
+    lorem ipsum
   </div>
 }

@@ -135,8 +135,8 @@ color:
     tertiary: # button on panel
       light: "palette.gray.300"
       dark: "palette.gray.700"
-    selection: color-mix(in srgb, var(--accent) 30%, transparent)
-    selection-inactive: oklch(42% 0.06 254.31)
+    selection: color-mix(in srgb, color.bg.accent 30%, transparent)
+    selection-inactive: color-mix(in srgb, palette.gray.500 20%, transparent)
     # hover:
     #   light: "palette.gray.200"
     #   dark: "palette.gray.800"

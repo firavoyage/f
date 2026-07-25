@@ -247,4 +247,30 @@ i have another theory. they used my gray 500 at 0.2 opacity. i guess it's better
 0.5 oklch(86.1% 0.001 286) oklch(42.2% 0.007 286)
 ```
 
+---
+
+wow surprising
+
+```
+    selection: color-mix(in srgb, color.bg.accent 30%, transparent)
+```
+
+when i type co, bg, acc, it can autocomplete. maybe yaml has some reference syntax?
+
+it couldnt work on numbers though. (pa works, gr works, 500 doesnt)
+
+---
+
+after conversion it sits on global root. expected. but interesting.
+
+it's not contextual itself. but it reference one.
+
+---
+
+i could create a js listener. it's easy. to monitor whether window is active.
+
+but currently it looks fine. why does it have to react to window blur.
+
+decision: out of scope.
+
 
