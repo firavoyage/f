@@ -1,0 +1,3 @@
+# 0.0
+
+use snake case. use type no interface. use fn statement. write a ts fn to ... params ...
