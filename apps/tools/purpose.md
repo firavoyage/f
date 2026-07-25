@@ -269,8 +269,12 @@ it's not contextual itself. but it reference one.
 
 i could create a js listener. it's easy. to monitor whether window is active.
 
-but currently it looks fine. why does it have to react to window blur.
+but currently it looks fine. why does it have to react to window blur. just make it selected. no need to grab attention.
 
-decision: out of scope.
+~~decision: out of scope. (could have)~~
+
+why not. i would have it if it allows. i should ignore browser compatibility constraints.
+
+---
 
 

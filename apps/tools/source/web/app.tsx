@@ -5,6 +5,7 @@ import { useState, useEffect } from "react"
 import { use_bind } from 'web/lib/keyboard.use';
 import { use_sync_theme } from "web/lib/sync_theme.use";
 import { Main } from "web/component/main";
+import { use_window_active } from './lib/window.use';
 
 export function App() {
   useEffect(() => {
@@ -33,6 +34,8 @@ export function App() {
   })
 
   use_sync_theme('system')
+
+  use_window_active()
 
   return <>
     <title>tools</title>
