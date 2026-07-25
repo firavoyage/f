@@ -6,7 +6,7 @@ import { App } from "./component/app"
 
 import 'the-new-css-reset/css/reset.css';
 
-import 'web/global';
+import 'web/lib/global';
 
 createRoot(document.getElementById("root")!).render(
   env.dev ?

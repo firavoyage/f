@@ -84,12 +84,6 @@ design and support two way convertion
 
 ---
 
-write some snippets.
-
-use state snippet. use effect snippet. css sel snippet.
-
----
-
 decide to create a middleware for props.
 
 yes. class > classname. theme > data-theme (both, under the hood). attr: false then do not make a presence at all.

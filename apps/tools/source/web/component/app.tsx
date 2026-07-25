@@ -6,8 +6,29 @@ import { use_bind } from 'web/lib/keyboard.use';
 import { use_sync_theme } from "web/lib/sync_theme.use";
 import { Main } from "web/component/main";
 import { use_window_active } from 'web/lib/window.use';
+import Sidebar from './sidebar';
+
+import { parse, stringify } from "yaml"
+
+export const tools = {
+  json_to_yaml: {
+    fn(json: string) {
+      const result = handle(() => JSON.parse(json))
+
+      if(is_error(result)){
+        return ''
+      }
+
+      return stringify(result)
+    }
+  }
+}
+
+const list = ["yaml", "json", "toml"]
 
 export function App() {
+  const [focused, set_focused] = useState(0)
+
   useEffect(() => {
     log('app mounts')
 
@@ -39,7 +60,10 @@ export function App() {
 
   return <>
     <title>tools</title>
+
     <div className="app">
+      <Sidebar items={list} focused={focused} set_focused={set_focused}>
+      </Sidebar>
       <Main></Main>
     </div>
   </>
