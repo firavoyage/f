@@ -277,9 +277,14 @@ why not. i would have it if it allows. i should ignore browser compatibility con
 
 ---
 
-20 00 style focus ring
+20 00 style focus ring 20 40
 
 animation is cool. but i would not adopt it. vscode and linear dont have animation yk. 
+
+---
+
+i made padding inside "focus-visible", but it's quickly found and fixed.
+
 
 
 
