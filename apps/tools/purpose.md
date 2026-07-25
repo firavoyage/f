@@ -188,12 +188,12 @@ use ts. use type no interface. no return type. use snake case. no aria labels. u
 
 ---
 
-use state snippet. use effect snippet. css sel snippet.
+convertion can be two way i realize.
 
 ---
 
-convertion can be two way i realize.
+til: ~~**think a bit about the implementation (e.g. params/states, types, abstraction structure) even if they are logically identical.**~~ **write when you are clear. sleep or rest when not.**
 
-03 20 write web/lib/sync theme.use
+03 20 write web/lib/sync theme.use. add import type snippet. link some snippets.
 
 

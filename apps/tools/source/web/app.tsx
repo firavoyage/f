@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react"
-import { use_bind } from 'web/lib/keyboard.use';
-import { sync_theme } from 'web/lib/sync_theme';
-
 import 'web/design/utilitarian/utilitarian.css'
 import 'web/app.css'
-import { Main } from "./component/Main";
+
+import { useState, useEffect } from "react"
+import { use_bind } from 'web/lib/keyboard.use';
+import { use_sync_theme } from "web/lib/sync_theme.use";
+import { Main } from "web/component/Main";
 
 export function App() {
   useEffect(() => {
@@ -32,9 +32,7 @@ export function App() {
     log('open settings')
   })
 
-  useEffect(() => {
-    sync_theme('system')
-  })
+  use_sync_theme('system')
 
   return <>
     <title>tools</title>
