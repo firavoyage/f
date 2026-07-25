@@ -285,6 +285,13 @@ animation is cool. but i would not adopt it. vscode and linear dont have animati
 
 i made padding inside "focus-visible", but it's quickly found and fixed.
 
+26
 
+03 00 complete sidebar. (03 20)
 
+both push and overlay variants i guess.
+
+snippets and react utils later.
+
+i would separate the it
 
