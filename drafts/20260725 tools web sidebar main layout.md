@@ -630,4 +630,895 @@ Would you like to see a **code example** or discuss which style is better for yo
 
 Show all
 
+# write a react sidebar fn component. params: list string\[], focused, set\_focused
+
+jsx
+
+```
+import React from 'react';
+
+export default function Sidebar({ items, focused, set_focused }) {
+  return (
+    <div style={styles.sidebar}>
+      <nav style={styles.nav}>
+        {items.map((item, index) => {
+          const isFocused = focused === index;
+          return (
+            <button
+              key={index}
+              onClick={() => set_focused(index)}
+              style={{
+                ...styles.item,
+                ...(isFocused ? styles.focusedItem : {}),
+              }}
+              aria-current={isFocused ? 'page' : undefined}
+            >
+              {item}
+            </button>
+          );
+        })}
+      </nav>
+    </div>
+  );
+}
+
+const styles = {
+  sidebar: {
+    width: '250px',
+    height: '100vh',
+    backgroundColor: '#f8f9fa',
+    borderRight: '1px solid #dee2e6',
+    padding: '1rem',
+    boxSizing: 'border-box',
+  },
+  nav: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.5rem',
+  },
+  item: {
+    width: '100%',
+    padding: '0.75rem 1rem',
+    textAlign: 'left',
+    background: 'none',
+    border: 'none',
+    borderRadius: '4px',
+    cursor: 'pointer',
+    fontSize: '1rem',
+    color: '#495057',
+    transition: 'background-color 0.2s, color 0.2s',
+  },
+  focusedItem: {
+    backgroundColor: '#0d6efd',
+    color: '#fff',
+    fontWeight: 'bold',
+  },
+};
+```
+
+Use code with caution.
+
+To help me tailor this component, would you like me to add **icons next to the text**, implement **hover effects using Tailwind CSS**, or add **keyboard navigation (up/down arrows)**?
+
+## use classname no styles
+
+jsx
+
+```
+import React from 'react';
+
+export default function Sidebar({ items, focused, set_focused }) {
+  return (
+    <aside className="sidebar">
+      <nav className="sidebar-nav">
+        {items.map((item, index) => {
+          const isFocused = focused === index;
+          return (
+            <button
+              key={index}
+              onClick={() => set_focused(index)}
+              className={`sidebar-item ${isFocused ? 'sidebar-item-focused' : ''}`}
+              aria-current={isFocused ? 'page' : undefined}
+            >
+              {item}
+            </button>
+          );
+        })}
+      </nav>
+    </aside>
+  );
+}
+```
+
+Use code with caution.
+
+Would you like me to adjust the class naming to follow a specific utility framework like **Tailwind CSS**, a naming convention like **BEM**, or add **TypeScript types** for the props?
+
+## be typed
+
+tsx
+
+```
+import React from 'react';
+
+interface SidebarProps {
+  items: string[];
+  focused: number;
+  set_focused: (index: number) => void;
+}
+
+export default function Sidebar({ items, focused, set_focused }: SidebarProps): React.JSX.Element {
+  return (
+    <aside className="sidebar">
+      <nav className="sidebar-nav">
+        {items.map((item, index) => {
+          const isFocused = focused === index;
+          return (
+            <button
+              key={index}
+              onClick={() => set_focused(index)}
+              className={`sidebar-item ${isFocused ? 'sidebar-item-focused' : ''}`}
+              aria-current={isFocused ? 'page' : undefined}
+            >
+              {item}
+            </button>
+          );
+        })}
+      </nav>
+    </aside>
+  );
+}
+```
+
+Use code with caution.
+
+Would you like me to update the `focused` state logic to accept **string IDs** instead of array indices, or should we create a **parent wrapper component** to show how to manage this state?
+
+AI responses may include mistakes. For legal advice, consult a professional. [Learn more](https://support.google.com/websearch?p=aimode\&gl=us)
+
+# how to add a attr dynamically in react
+
+To add attributes dynamically to an element in React, the most effective method is <mark>using the<span> </span><strong>JavaScript spread operator (<code dir="ltr">...</code>)</strong><span> </span>inside your JSX</mark>. This allows you to unpack an object containing your dynamic keys and values directly into the element. [link](https://stackoverflow.com/questions/31163693/how-do-i-conditionally-add-attributes-to-react-components)
+
+Here are the three best ways to do this, ranging from handling conditional attributes to fully dynamic key-value pairs.
+
+### 1. Spreading a Dynamic Object (Recommended)
+
+If your attribute names or values depend on variables or API data, construct a standard JavaScript object first, then spread it into your component or HTML element. [link](https://stackoverflow.com/questions/31163693/how-do-i-conditionally-add-attributes-to-react-components)
+
+jsx
+
+```
+import React from 'react';
+
+export default function DynamicInput({ isRequired, customAttr, attrValue }) {
+  // 1. Build the object dynamically
+  const dynamicAttributes = {
+    className: "form-control",
+    [customAttr]: attrValue // Dynamic key using bracket notation
+  };
+
+  // 2. Conditionally append properties
+  if (isRequired) {
+    dynamicAttributes.required = true;
+  }
+
+  // 3. Spread the object into JSX
+  return <input type="text" {...dynamicAttributes} />;
+}
+```
+
+Use code with caution.
+
+### 2. Inline Conditional Logic
+
+If you only need to add an attribute when a specific condition is met, you can use an inline short-circuit evaluation (`&&`) wrapped inside the spread operator. [link](https://medium.com/@taraparakj75/how-to-conditionally-add-attributes-to-react-components-23b14c1f04f0)
+
+jsx
+
+```
+import React from 'react';
+
+export default function Button({ isDisabled, isSecret }) {
+  return (
+    <button
+      type="button"
+      // Spreads the object only if the condition evaluates to true
+      {...(isDisabled && { disabled: true })}
+      {...(isSecret && { "data-secret": "classified-info" })}
+    >
+      Click Me
+    </button>
+  );
+}
+```
+
+Use code with caution.
+
+_Note: If the condition is false, React safely spreads an empty expression without adding any extra attribute to the DOM._ [link](https://www.youtube.com/watch?v=95x1xLelT8U\&t=313)
+
+### 3. Direct HTML5 Data Attributes
+
+If you are strictly attempting to add custom HTML5 `data-*` attributes dynamically, you can use JavaScript expression curly braces directly on the attribute name if the name is static: [link](https://stackoverflow.com/questions/27285856/how-do-i-dynamically-set-html5-data-attributes-using-react)
+
+jsx
+
+```
+const itemId = "user-123";
+
+// Directly injecting a dynamic value
+return <div data-id={itemId}>User Profile</div>;
+```
+
+Use code with caution.
+
+If the key itself must be completely dynamic from a variable, revert to the object notation from Step 1: [link](https://levelup.gitconnected.com/programmatically-set-data-attribute-in-react-with-typescript-d256a2df712a)
+
+jsx
+
+```
+const keyName = "data-user-status";
+const statusAttr = { [keyName]: "active" };
+
+return <div {...statusAttr}>User Profile</div>;
+```
+
+Use code with caution.
+
+### Summary Comparison
+
+| Method                                            | Best Used For                                     | Example                                      |
+| ------------------------------------------------- | ------------------------------------------------- | -------------------------------------------- |
+| **Object Spread (`{...obj}`)**                    | Multiple properties, variables, or dynamic keys   | `<div {...attrs} />`                         |
+| **Inline Short-Circuit (`{...(cond && {...})}`)** | Toggling an attribute based on a single condition | `<button {...(isAdmin && {id: "admin"})} />` |
+| **Direct JSX (`attr={value}`)**                   | Fixed attribute names with changing values        | `<img src={dynamicUrl} />`                   |
+
+If you'd like, let me know:
+
+- What **specific attribute** you are trying to add
+- Whether the **attribute name** or just the **value** is changing
+- The **condition** that decides when it should be added
+
+I can provide a tailored code snippet for your exact use case!
+
+- [link](https://stackoverflow.com/questions/29103096/dynamic-attribute-in-reactjs)\
+  Dynamic attribute in ReactJS - Stack Overflow\
+  Mar 17, 2015 — The cleanest way to add optional attributes (including disabled and others you might want to use) is currently to use JSX spread a...\
+  Stack Overflow
+- [link](https://stackoverflow.com/questions/31163693/how-do-i-conditionally-add-attributes-to-react-components)\
+  How do I conditionally add attributes to React components?\
+  Jul 1, 2015 — Comments. ... One way to do this is to use the spread operator (...) to pass a dynamic object of props to your component. ... In t...\
+  Stack Overflow
+- [link](https://stackoverflow.com/questions/27285856/how-do-i-dynamically-set-html5-data-attributes-using-react)\
+  How do I dynamically set HTML5 data- attributes using react?\
+  Dec 4, 2014 — \* 2 Answers. Sorted by: 126. You should not wrap JavaScript expressions in quotes. {this. props. title} Take a look at the JavaScr...\
+  Stack Overflow
+
+Show all
+
+## props middleware libs
+
+To achieve middleware-like behavior for props in React—such as automatically modifying, intercepting, validating, or injecting props before they reach your components—you can use functional composition patterns. React does not have a native "middleware" pipeline for component props, but the ecosystem solves this beautifully.
+
+Here are the best libraries and patterns to implement props middleware.
+
+### 1. HOCs (Higher-Order Components)
+
+Higher-Order Components are the classic "middleware" pattern for React props. An HOC intercepts the incoming props, modifies or adds to them, and passes them down.
+
+- **Best Library:** **`recompose`** (Legacy but highly influential) / Custom Functional Composition.
+- **How it works:** You wrap your base component in a function that acts as a gatekeeper.
+
+jsx
+
+```
+// A custom middleware HOC that logs props and forces text to uppercase
+const withUppercaseLabel = (WrappedComponent) => {
+  return (props) => {
+    // Middleware logic: Intercept and modify props
+    const modifiedProps = {
+      ...props,
+      label: props.label ? props.label.toUpperCase() : 'DEFAULT'
+    };
+
+    return <WrappedComponent {...modifiedProps} />;
+  };
+};
+
+// Usage
+const Button = ({ label }) => <button>{label}</button>;
+const UpperButton = withUppercaseLabel(Button);
+```
+
+Use code with caution.
+
+### 2. Runtime Prop Validation & Transformation
+
+If your goal is to validate, sanitize, or transform props at runtime (throwing errors or setting fallbacks if they don't match criteria), schema validation libraries act as excellent middleware layers.
+
+- **Best Libraries:** **`Zod`**, **`Prop-Types`**, or **`ArkType`**.
+- **How it works:** Validate the `props` object before executing the component logic.
+
+jsx
+
+```
+import { z } from 'zod';
+
+// 1. Define the strict prop schema
+const UserPropsSchema = z.object({
+  username: z.string().min(3),
+  age: z.number().positive(),
+  role: z.enum(['admin', 'user']).default('user'), // Injects default if missing
+});
+
+// 2. Component acts as middleware using the schema
+export function UserProfile(rawProps) {
+  // Throws or safely parses incoming props
+  const result = UserPropsSchema.safeParse(rawProps);
+
+  if (!result.success) {
+    return <div>Invalid Props Supplied</div>;
+  }
+
+  const { username, age, role } = result.data; // Fully typed and sanitized
+  return <div>{username} ({age}) - {role}</div>;
+}
+```
+
+Use code with caution.
+
+### 3. Component Wrappers / Slots (Modern React Approach)
+
+For layout, security, or feature-flagging middleware, wrapping components via a parent "Layout" or "Guard" component is the modern standard.
+
+- **Best Pattern:** **Compound Components** or **Render Props**.
+- **How it works:** The parent clone elements inject extra props dynamically.
+
+jsx
+
+```
+import React, { Children, cloneElement } from 'react';
+
+// Middleware component that injects theme and disabled state to all children
+export function FormMiddleware({ isDisabled, children }) {
+  return (
+    <>
+      {Children.map(children, child => {
+        if (React.isValidElement(child)) {
+          // Injecting props dynamically to children on the fly
+          return cloneElement(child, {
+            disabled: isDisabled,
+            className: `${child.props.className || ''} themed-input`
+          });
+        }
+        return child;
+      })}
+    </>
+  );
+}
+```
+
+Use code with caution.
+
+### Summary of Ecosystem Options
+
+| Library / Tool           | Middleware Type         | Primary Use Case                                   |
+| ------------------------ | ----------------------- | -------------------------------------------------- |
+| **`Zod` / `ArkType`**    | Validation & Parsing    | Sanitizing API data passed directly to props       |
+| **Custom HOCs**          | Interception & Mutation | Loggers, auth-guards, and prop reformatting        |
+| **`React.cloneElement`** | Dynamic Injection       | Passing structural states down to unknown children |
+
+If you'd like, let me know:
+
+- What **problem** you are trying to solve with props middleware (e.g., logging, authentication, standardizing API data)?
+- Are you using **TypeScript** or **JavaScript**?
+- Do you prefer a **library-based solution** or a **pure vanilla React pattern**?
+
+I can provide a step-by-step implementation for your exact framework configuration!
+
+- [link](https://blog.openreplay.com/beginners-guide-middleware-react-router/)\
+  A Beginner's Guide to Middleware in React Router\
+  Oct 23, 2025 — A Beginner's Guide to Middleware in React Router If you've ever needed to check authentication before every protected route, log r...\
+  \
+  \
+  OpenReplay Blog
+- [link](https://www.smashingmagazine.com/2020/08/mastering-props-proptypes-react/)\
+  Mastering Props And PropTypes In React — Smashing Magazine\
+  Aug 17, 2020 — Building React applications involves breaking down the UI into several components, which implies that we will need to pass data fr...\
+  \
+  \
+  Smashing Magazine
+- [link](https://lestard.eu/2019/implement-your-own-redux-in-java3/)\
+  Manuel Mauky's Blog\
+  Jan 10, 2019 — Middlewares in Redux are an extension mechanism that let's you intercept and manipulate actions before they reach the reducer. Whi...\
+  \
+  lestard.eu
+
+Show all
+
+# react nested component example
+
+In React, nesting components means **rendering one custom component inside another** to build a parent-child relationship. This allows you to break your UI down into small, reusable, and manageable pieces. [link](https://www.geeksforgeeks.org/reactjs/react-js-component-composition-and-nested-components/)
+
+There are two primary ways to create nested components in React: **Direct Nesting** (hardcoding the child) and **Composition** (using the `children` prop). [link](https://www.youtube.com/watch?v=VcLXh9EdVs0)
+
+***
+
+### Method 1: Direct Nesting (Standard Parent-Child)
+
+This is the most common pattern. The parent component explicitly imports and renders the child component. [link](https://dev.to/sanjampreetsingh/nested-components-a-bad-practice-reactjs-1hbf)
+
+jsx
+
+```
+// 1. The Child Component
+function UserAvatar({ username }) {
+  return (
+    <div className="avatar">
+      <img src={`https://dicebear.com{username}`} alt={username} />
+      <span>{username}</span>
+    </div>
+  );
+}
+
+// 2. The Parent Component (Nesting the child)
+function ProfileCard({ name, bio }) {
+  return (
+    <div className="profile-card">
+      {/* Nested component with data passed via props */}
+      <UserAvatar username={name} />
+      <p>{bio}</p>
+    </div>
+  );
+}
+
+// 3. Main Application Component
+export default function App() {
+  return (
+    <div className="app">
+      <ProfileCard
+        name="Alex"
+        bio="Frontend Engineer love to build interactive UIs."
+      />
+    </div>
+  );
+}
+```
+
+Use code with caution.
+
+***
+
+### Method 2: Component Composition (Using `children`)
+
+If you want the parent component to act as a flexible wrapper layout, use React’s built-in **`children` prop**. This allows you to dynamically place any component inside the layout at the rendering site. [link](https://www.youtube.com/watch?v=VcLXh9EdVs0)
+
+jsx
+
+```
+// 1. The Layout/Wrapper Component
+function CardWrapper({ children, title }) {
+  return (
+    <div className="card-container">
+      <h2>{title}</h2>
+      {/* This renders whatever is placed inside the tags */}
+      <div className="card-content">{children}</div>
+    </div>
+  );
+}
+
+// 2. Main Application Component
+export default function App() {
+  return (
+    <div className="app">
+      {/* Nested components passed dynamically */}
+      <CardWrapper title="Account Settings">
+        <p>Manage your account preferences here.</p>
+        <button onClick={() => alert('Saved!')}>Save Changes</button>
+      </CardWrapper>
+    </div>
+  );
+}
+```
+
+Use code with caution.
+
+***
+
+### ⚠️ Critical Rule: Never Declare Components Inside Components
+
+A common beginner mistake is defining the function block of a child component inside the function block of a parent component. [link](https://dev.to/sanjampreetsingh/nested-components-a-bad-practice-reactjs-1hbf)
+
+- **🔴 Bad Practice (Do Not Do This):**\
+  jsx
+
+<!---->
+
+```
+function ParentComponent() {
+  // Declaring a component inside will cause it to recreate on EVERY render,
+  // destroying its internal state and causing major lag!
+  function ChildComponent() {
+    return <div>Child</div>;
+  }
+
+  return <ChildComponent />;
+}
+```
+
+Use code with caution.
+
+- **🟢 Good Practice:** Always declare your components separately at the top level of your file (or in separate files) and simply render them inside each other. [link](https://react.dev/learn/your-first-component)
+
+To see a deeper visual explanation of how the flexible layout composition works, watch this breakdown:
+
+5:16
+
+[React - Nested Components Tutorial (Childen props)21K views · 2 years agoYouTube · Austin Davis](https://www.youtube.com/watch?v=VcLXh9EdVs0)
+
+If you want to customize this further, let me know:
+
+- Are you trying to pass **state** up from the child to the parent?
+
+- Do you need to loop through an **array of data** to render multiple nested items?
+
+- Are you running into deep **prop drilling** issues?
+
+- [link](https://www.youtube.com/watch?v=VcLXh9EdVs0)\
+  React - Nested Components Tutorial (Childen props)\
+  Oct 18, 2023 — in many React projects you may see components that are nested. inside other components what's this all about this is what I like t...\
+  5:16\
+  YouTube·Austin Davis
+
+- [link](https://stackoverflow.com/questions/64939938/how-to-create-nested-components)\
+  How to create nested components? - reactjs - Stack Overflow\
+  Nov 21, 2020 — This question does not show any research effort; it is unclear or not useful. Save this question. Show activity on this post. I'm ...\
+  Stack Overflow
+
+- [link](https://www.geeksforgeeks.org/reactjs/react-js-component-composition-and-nested-components/)\
+  React JS Component Composition and Nested Components\
+  Mar 18, 2024 — Nested Component. Nesting of Components creates the parent-child relationship between the nested components. In this approach, chi...\
+  GeeksforGeeks
+
+Show all
+
+## questions to answer to decide whether to separate
+
+Deciding whether to separate from a partner is a profound choice. To gain clarity, it helps to reflect deeply on your relationship's current state, your personal boundaries, and your vision for the future.
+
+Here are the essential questions to ask yourself, categorized to help you process your thoughts systematically.
+
+### 📊 Evaluating the Current State
+
+- **Is there safety?** Is there any form of physical, emotional, or financial abuse occurring? (If safety is compromised, separation or exit planning is a matter of urgent well-being, not just a relationship choice).
+- **What is the core issue?** Can the primary problems be clearly named, or is it a general sense of growing apart?
+- **Are we stuck in a loop?** Have the same arguments been repeated for months or years without resolution?
+- **Is there still repair?** After a fight, do both partners still try to reconnect, or is there only cold silence?
+
+### 💔 Emotional Connection & Effort
+
+- **Is there active resentment?** Has disappointment turned into deep bitterness or contempt that feels impossible to lift?
+- **Is the effort mutual?** Are both individuals actively trying to fix the relationship, or is one person doing all the emotional heavy lifting?
+- **What does the future look like?** When imagining life five years from now, does a future with this partner bring peace or anxiety?
+- **Does love remain?** Is there still genuine affection and care, or has the relationship shifted entirely into a roommate or business dynamic?
+
+### 🛑 Boundaries & Dealbreakers
+
+- **Has a hard boundary been broken?** Has there been infidelity, addiction, or deceit that cannot be forgiven?
+- **Are core values aligned?** Do both partners still agree on major life decisions like finances, children, lifestyle, and morals?
+- **Is the desire to stay based on fear?** Is the choice to stay driven by love, or by the fear of loneliness, financial strain, or judgment from others?
+
+### 🚶‍♂️ Considering the Separation Itself
+
+- **What is the goal of separating?** Is the separation meant to be a structured break to gain perspective and try to heal, or is it the first step toward a permanent divorce?
+- **Are the logistics manageable?** Have the immediate impacts on living arrangements, finances, and children been considered?
+- **Will space bring clarity?** Will being apart help lower the emotional intensity so both people can think clearly?
+
+***
+
+If you are trying to navigate the next steps, it can help to look at how to structure this transition safely and constructively. Let me know:
+
+- Are you looking to use separation as a **trial break to repair** the relationship, or as a **step toward legal divorce**?
+
+- Are there **children involved** where co-parenting logistics need to be considered?
+
+- Would you like advice on how to **start this conversation** with your partner?
+
+- [link](https://powerofchange.com.au/knowing-when-to-end-your-marriage/)\
+  Knowing when to end your marriage | Power of Change\
+  Oct 6, 2022 — Questions to ask yourself Do you feel as if you have nothing left to give your marriage? All the forgiveness, hope and patience in...\
+  \
+  \
+  powerofchange.com.au
+
+# questions to answer to decide whether to abstract react child component
+
+To decide whether to abstract a piece of JSX into a separate React child component, ask yourself these guiding questions.
+
+### Performance & Re-renders
+
+- **Does this section change state independently from the parent?** Isolation prevents the entire parent from re-rendering.
+- **Is this a heavy UI element like a large table or chart?** Moving it allows you to wrap it in `React.memo`.
+
+### Reusability & Duplication
+
+- **Will this UI or logic be used in multiple places?** Abstracting it prevents code duplication.
+- **Is it a generic UI pattern?** Elements like buttons, modals, and inputs should be standalone primitive components.
+
+### Maintainability & Complexity
+
+- **Is the parent component file over 200–300 lines of code?** Breaking it down improves readability and file navigation.
+- **Can you easily describe what this specific section does in one sentence?** If yes, it has a single responsibility and qualifies as a component.
+- **Does this section require extensive, dedicated helper functions?** Co-locating that logic inside a child component cleans up the parent file.
+
+### Data & Props Complexity
+
+- **Will abstracting this require passing more than 5–6 props?** If it creates "prop drilling" or complex prop plumbing, it might be better off staying in the parent.
+- **Does the child need tight access to the parent’s local state?** If you have to pass countless state setters downward, abstraction might introduce unnecessary friction.
+
+### Testing
+
+- **Do you need to write specific unit tests for this isolated behavior?** Independent components are significantly easier to test in isolation with tools like React Testing Library.
+
+***
+
+To help you make the right structural choice, tell me a bit more about the **size of your current file**, the **type of UI element** you are considering moving, and **how much state it shares** with the parent. I can help you weigh the pros and cons for your specific case.
+
+- [link](https://www.developerway.com/posts/react-elements-children-parents)\
+  The mystery of React Element, children, parents and re-renders\
+  Jul 4, 2022 — That flow also means, that if we want to prevent ChildComponent from re-renders here, we have two ways to do that. We either need ...\
+  \
+  \
+  Developer Way
+- [link](https://namastedev.com/blog/interview-questions-on-react-hooks-3/)\
+  Interview Questions on React Hooks\
+  Apr 26, 2025 — Split code into smaller components: If a component is doing too much, consider breaking it apart to improve readability.\
+  \
+  \
+  NamasteDev
+- [link](https://medium.com/@ignatovich.dm/applying-solid-principles-in-react-applications-44eda5e4b664)\
+  Applying SOLID Principles in React Applications | by Frontend Highlights\
+  Sep 24, 2024 — Applying SOLID Principles in React Applications : A class or component should have one, and only one, reason to change. : Each com...\
+  \
+  Medium
+
+## when to abstract when not
+
+### When to Abstract
+
+Abstract a section into a child component if it meets these criteria:
+
+- **State isolation:** The UI section has its own state changes that do not affect the parent.
+- **High reusability:** You need the exact same UI or functionality in multiple areas.
+- **Component bloat:** The parent file exceeds 200–300 lines of code and is hard to scan.
+- **Single responsibility:** The section handles one distinct job, like a navigation bar or form input.
+- **Heavy computation:** The element is performance-heavy and needs isolation via `React.memo` to block parent re-renders.
+- **Isolated testing:** The logic is complex enough to require dedicated unit tests without parent dependencies.
+
+### When NOT to Abstract
+
+Keep the code inside the parent component if you encounter these scenarios:
+
+- **Prop plumbing:** You have to pass down more than 5–6 props just to make it work.
+- **Premature optimization:** You are splitting the code before you know if it will ever be reused.
+- **Tight state binding:** The child constantly reads and updates multiple states owned by the parent.
+- **Fragmented readability:** Splitting forces you to jump constantly between 3 or 4 files just to understand one simple view.
+- **Purely static markup:** The HTML is static, lightweight, and holds no unique behavioral logic.
+
+***
+
+If you want to apply this to your current task, let me know:
+
+- What **specific feature** are you currently building?
+- How many **lines of code** is the file right now?
+- Is it a **generic layout piece** or a **data-heavy dashboard**?
+
+I can give you a definitive "yes" or "no" recommendation on whether to split it.
+
+- [link](https://javadhd.com/docs/solid-principles/)\
+  SOLID Principles\
+  Oct 17, 2023 — 1. Single Responsibility Principle (SRP) Meaning: A class should have only one reason to change, meaning it should have only one j...\
+  \
+  javadhd.com
+
+# (d) react textarea component
+
+In React, a `<textarea>` component allows users to input multi-line text and is primarily managed as a **controlled component** using React state. Unlike standard HTML where text goes inside the tags, React uses a `value` attribute to track user input. [link](https://react.dev/reference/react-dom/components/textarea)
+
+### The Standard Controlled Component
+
+Managing the text via a state variable ensures your React code always tracks the current input: [link](https://react.dev/reference/react-dom/components/textarea)
+
+jsx
+
+```
+import { useState } from 'react';
+
+export default function CommentBox() {
+  const [text, setText] = useState('');
+
+  const handleChange = (event) => {
+    setText(event.target.value);
+  };
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+      <label htmlFor="comments">Your Feedback:</label>
+      <textarea
+        id="comments"
+        value={text}
+        onChange={handleChange}
+        placeholder="Type your message here..."
+        rows={5}
+        cols={40}
+      />
+      <p>Character Count: {text.length}</p>
+    </div>
+  );
+}
+```
+
+Use code with caution.
+
+### Key Differences from Native HTML
+
+- **Value Insertion**: HTML places text between opening and closing tags (`<textarea>Text</textarea>`). React passes text strictly via the `value` or `defaultValue` attribute.
+- **Uncontrolled Initial States**: If you do not want to manage the state live, use `defaultValue` instead of `value` so the user can type without a state binder. [link](https://react.dev/reference/react-dom/components/textarea)
+
+***
+
+### Building a Reusable Custom Component
+
+If you want to support clean code across your application, wrap the native element into a reusable component: [link](https://www.youtube.com/watch?v=cyNV3XKX2Bk)
+
+jsx
+
+```
+import React from 'react';
+
+const CustomTextArea = ({ label, id, error, ...props }) => {
+  return (
+    <div className="textarea-container" style={{ marginBottom: '16px' }}>
+      {label && <label htmlFor={id} style={{ display: 'block', fontWeight: 'bold' }}>{label}</label>}
+      <textarea
+        id={id}
+        {...props}
+        style={{ width: '100%', padding: '8px', border: error ? '1px solid red' : '1px solid #ccc' }}
+      />
+      {error && <span style={{ color: 'red', fontSize: '12px' }}>{error}</span>}
+    </div>
+  );
+};
+
+export default CustomTextArea;
+```
+
+Use code with caution.
+
+***
+
+### Popular Library Component Alternatives
+
+If you require complex behavior (like auto-expanding height or styled design systems), standard implementations are available in major packages:
+
+- **[Material UI / Joy UI](https://mui.com/joy-ui/react-textarea/)**: Offers `<TextareaAutosize>` which alters height contextually as text is populated.
+- **[Shadcn UI](https://ui.shadcn.com/docs/components/base/textarea)**: Clean, unstyled accessible structures powered by Tailwind CSS primitives.
+- **[react-textarea-autosize](https://www.npmjs.com/package/react-textarea-autosize)**: A popular, lightweight 1.3KB package focused purely on expanding input heights. [link](https://mui.com/joy-ui/react-textarea/)
+
+If you would like to expand your implementation, let me know if you want to see how to implement **form validation (e.g., Formik or React Hook Form)**, add **Tailwind CSS styling**, or create an **auto-resizing mechanism using hooks**.
+
+- [link](https://react.dev/reference/react-dom/components/textarea)\
+  – React\
+  The built-in browser component lets you render a multiline text input. You can use it to: \* \*\*Display a text area\*\* \* \*\*Provide a ...\
+  React
+- [link](https://stackoverflow.com/questions/33245017/react-modifying-textarea-values)\
+  React Modifying Textarea Values\
+  Oct 20, 2015 — Here's some information about modifying the value of a textarea in React: \* \*\*Controlled vs uncontrolled elements\*\* \* Uncontrolled...\
+  Stack Overflow
+- [link](https://mui.com/joy-ui/react-textarea/)\
+  React Textarea component - Joy UI - MUI\
+  Textarea component gives you a textarea HTML element that automatically adjusts its height to match the length of the content with...\
+  MUI
+
+Show all
+
+# (d) use ts. use type no interface. no return type. use snake case. no aria labels. write a react textarea component. params value set\_value.
+
+tsx
+
+```
+import React from 'react';
+
+type TextareaProps = {
+  value: string;
+  set_value: (value: string) => void;
+};
+
+export const CustomTextarea = ({ value, set_value }: TextareaProps) => {
+  return (
+    <textarea
+      value={value}
+      onChange={(e) => set_value(e.target.value)}
+    />
+  );
+};
+```
+
+Use code with caution.
+
+To help finish this component, let me know if you want to add **tailwind classes**, a **placeholder string**, or a **character counter**.
+
+# use ts. use type no interface. no return type. use snake case. no aria labels. use fn statement. write a react textarea component. params value set\_value.
+
+tsx
+
+```
+type TextareaProps = {
+  value: string;
+  set_value: (value: string) => void;
+};
+
+export default function CustomTextarea({ value, set_value }: TextareaProps) {
+  function handle_change(event: React.ChangeEvent<HTMLTextAreaElement>) {
+    set_value(event.target.value);
+  }
+
+  return (
+    <textarea
+      value={value}
+      onChange={handle_change}
+      className="custom-textarea"
+    />
+  );
+}
+```
+
+Use code with caution.
+
+To help customize this component, tell me:
+
+- What **CSS styling framework** are you using (Tailwind, CSS Modules)?
+- Should it include an **auto-resize** feature?
+- Do you need a **maximum character limit** indicator?
+
+## pass down all rest props
+
+tsx
+
+```
+type TextareaProps = React.ComponentPropsWithoutRef<"textarea"> & {
+  value: string;
+  set_value: (value: string) => void;
+};
+
+export default function CustomTextarea({
+  value,
+  set_value,
+  ...rest_props
+}: TextareaProps) {
+  function handle_change(event: React.ChangeEvent<HTMLTextAreaElement>) {
+    set_value(event.target.value);
+  }
+
+  return (
+    <textarea
+      value={value}
+      onChange={handle_change}
+      {...rest_props}
+      className={`custom-textarea ${rest_props.className ?? ""}`.trim()}
+    />
+  );
+}
+```
+
+Use code with caution.
+
+To perfect this setup, let me know:
+
+- Do you need to forward a **DOM reference (`ref`)** to the textarea?
+- Should we add built-in **validation handling** for rest props like `required` or `disabled`?
+
+I can update the code based on your project needs.
+
 # 
+
