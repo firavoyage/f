@@ -94,4 +94,15 @@ it would be incompatible w llms wo heavy prompting. but it would be fine.
 
 ---
 
+implement global persistent state.
+
+sidebar collapse. settings. theme. sidebar taxonomy pref. tool view pref.
+
+---
+
+fix sidebar
+
+when collapsed, the outline still can be visible.
+
+enlarge neg margin l, or take a more ele
 

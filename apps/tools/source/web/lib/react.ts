@@ -6,7 +6,3 @@ declare global {
   var useState: useState
   var useEffect: useEffect
 }
-
-export {
-  useState, useEffect
-}

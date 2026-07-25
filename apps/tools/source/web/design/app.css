@@ -32,9 +32,17 @@ textarea {
 .sidebar {
   width: 250px;
   flex-shrink: 0;
+
+  .item {
+    width: 100%;
+    display: block;
+  }
+
+  &[data-visible="false"] {
+    margin-left: -250px;
+  }
 }
 
 .main {
   flex-grow: 1;
 }
-

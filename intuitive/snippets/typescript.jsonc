@@ -502,13 +502,22 @@ ref:
   //     "} $0"
   //   ],
   // },
-   "use state": {
+  "use state": {
     "prefix": [
-      "er",
-      "err"
+      "us",
     ],
     "body": [
-      "throw err($1)$0",
+      "const [${1:name}, set_${1:name}] = useState($0)",
     ],
-  }, 
+  },
+  "use effect": {
+    "prefix": [
+      "ue",
+    ],
+    "body": [
+      "useEffect(() => {",
+      "  $0",
+      "})"
+    ],
+  },
 }

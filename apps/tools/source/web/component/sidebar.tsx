@@ -1,3 +1,6 @@
+import { useToggle } from "react-use"
+import { use_bind } from "web/lib/keyboard.use"
+
 type SidebarProps = {
   items: string[]
   focused: number
@@ -6,12 +9,14 @@ type SidebarProps = {
 }
 
 export default function Sidebar({ items, focused, set_focused, children }: SidebarProps) {
-  // const [name, set_name] = useState()
+  const [on, toggle] = useToggle(true)
+
+  use_bind('ctrl+b', toggle)
 
   return (
     <>
       <div className="backdrop"></div>
-      <aside className="sidebar">
+      <aside className="sidebar" data-visible={on}>
         {children}
         <nav className="nav">
           {items.map((item, index) => {

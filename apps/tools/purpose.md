@@ -305,4 +305,6 @@ make use state and use effect global.
 
 ---
 
+the tradeoff of linking snippets is... vscode couldnt detect file changes to reload. you have to restart.
+
 
