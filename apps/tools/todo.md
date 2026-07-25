@@ -98,4 +98,9 @@ it would be incompatible w llms wo heavy prompting. but it would be fine.
 
 <!-- i guess there would be no libs for that. -->
 
+---
+
+style selection and focus ring
+
+
 

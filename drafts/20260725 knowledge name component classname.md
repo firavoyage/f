@@ -291,4 +291,141 @@ Would you like to see how to rewrite a specific **Sass structure into native CSS
 
 Show all
 
-# 
+# css attr selector syntax
+
+CSS attribute selectors allow you to target HTML elements based on the **presence, absence, or partial match of their attributes**. <mark>All attribute selectors use<span> </span><strong>square brackets (<code dir="ltr">\[]</code>)</strong><span> </span>and can be attached directly to an element tag name</mark>. [link](https://stackoverflow.com/questions/5324415/select-elements-by-attribute-in-css)
+
+### Core Attribute Selectors
+
+| Selector Type          | Syntax            | Description                                                                                | Example                                                                                                               |
+| ---------------------- | ----------------- | ------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------- | ---------- | ------- |
+| **Presence**           | `[attr]`          | Targets any element that has the specified attribute, regardless of its value.             | `a[target]`                                                                                                           |
+| **Exact Match**        | `[attr="value"]`  | Targets elements with the exact specified attribute value.                                 | `input[type="checkbox"]`                                                                                              |
+| **Contains Word**      | `[attr~="value"]` | Targets elements where the value is a whitespace-separated list containing the exact word. | `p[class~="special"]`                                                                                                 |
+| **Starts With**        | `[attr^="value"]` | Targets elements whose attribute value begins exactly with the specified string.           | `a[href^="https://"]`                                                                                                 |
+| **Ends With**          | `[attr$="value"]` | Targets elements whose attribute value ends exactly with the specified string.             | `a[href$=".pdf"]`                                                                                                     |
+| **Contains Substring** | `[attr*="value"]` | Targets elements whose attribute value contains the string anywhere within it.             | `img[src*="logo"]`                                                                                                    |
+| **Hyphen-Match**       | `[attr            | ="value"]`                                                                                 | Targets elements whose value is exactly the string, or starts with the string followed immediately by a hyphen (`-`). | `html[lang | ="en"]` |
+
+### Case-Sensitivity Modifiers
+
+You can control case sensitivity by adding a specific flag right before the closing square bracket: [link](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/Attribute%5Fselectors)
+
+- **Case-Insensitive (`i`)**: Adding `i` or `I` forces the browser to ignore capitalization during string matching.\
+  css
+
+<!---->
+
+```
+/* Matches "file.PDF", "file.pdf", or "file.Pdf" */
+a[href$=".pdf" i] {
+  color: red;
+}
+```
+
+Use code with caution.
+
+- **Case-Sensitive (`s`)**: Adding `s` or `S` forces the browser to match capitalization exactly (this is typically the default behavior in HTML documents).\
+  css
+
+<!---->
+
+```
+/* Strictly matches "SecureOnly", won't match "secureonly" */
+[data-status="SecureOnly" s] {
+  border-color: green;
+}
+```
+
+Use code with caution.\
+[link](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/Attribute%5Fselectors)
+
+For more deep dives into advanced styling techniques, explore the official MDN Web Docs on Attribute Selectors. [link](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/Attribute%5Fselectors)
+
+Would you like help writing a **specific selector** for your HTML structure, or do you want to see how to **combine multiple attributes** together?
+
+- [link](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/Attribute%5Fselectors)\
+  Attribute selectors - CSS - MDN Web Docs\
+  Nov 27, 2025 — Syntax. ... Represents elements with an attribute name of attr. ... Represents elements with an attribute name of attr whose value...\
+  MDN Web Docs
+- [link](https://www.w3schools.com/css/css%5Fattribute%5Fselectors.asp)\
+  CSS Attribute Selectors - W3Schools\
+  CSS \[attribute|="value"] Selector. The \[attribute|="value"] selector is used to select elements with the specific attribute, whose...\
+  W3Schools
+- [link](https://stackoverflow.com/questions/5324415/select-elements-by-attribute-in-css)\
+  Select elements by attribute in CSS - Stack Overflow\
+  Mar 16, 2011 — Attribute selectors are case-sensitive by default, and are written inside brackets \[]. \[data-value] { /\* Attribute exists \*/ } \[da...\
+  Stack Overflow
+
+Show all
+
+## what if you omit quotes
+
+In CSS, omitting quotes around the attribute value is <mark><strong>syntactically valid</strong>, but only if the value is a<span> </span><strong>valid CSS identifier</strong></mark>.
+
+### The Golden Rule
+
+You can omit quotes if the value consists **only** of letters, numbers, hyphens (`-`), and underscores (`_`), and does **not** start with a digit or a hyphen followed by a digit.
+
+### When You Can Omit Quotes
+
+For simple, single-word alphanumeric values, quotes are completely optional.
+
+css
+
+```
+/* Perfectly Valid */
+input[type=checkbox] { ... }
+div[data-status=active] { ... }
+span[class^=nav-item] { ... }
+```
+
+Use code with caution.
+
+### When Quotes Are Strictly Required
+
+You **must** use quotes if the value contains spaces, special characters, symbols, or starts with a number.
+
+css
+
+```
+/* Invalid (will break the CSS) */
+a[href*=/blog/] { ... }         /* Contains forward slashes */
+div[class~=nav item] { ... }    /* Contains a space */
+p[data-version=1.0] { ... }     /* Contains a dot */
+div[id=2b] { ... }              /* Starts with a number */
+
+/* Valid (with quotes) */
+a[href*="/blog/"] { ... }
+div[class~="nav item"] { ... }
+p[data-version="1.0"] { ... }
+div[id="2b"] { ... }
+```
+
+Use code with caution.
+
+### Best Practice Recommendation
+
+Always use **double quotes (`""`)**.
+
+It prevents unexpected syntax breaking when values change, ensures consistent code styling across your team, and avoids parsing bugs with older browsers or complex CSS minifiers.
+
+If you are debugging a specific selector that isn't working, feel free to **share your HTML snippet** or **the exact value** you are trying to match so we can verify if it needs quotes!
+
+- [link](https://www.reddit.com/r/SQL/comments/1449e1z/when%5Fto%5Fuse%5Fvs%5Fvs%5Fwhen%5Fnot%5Fto%5Fuse/)\
+  when to use " " vs ' ' vs when not to use " " & ' ' : r/SQL\
+  Jun 8, 2023 — The SQL ( SQL Query ) standard says that object/column names can't start with a numbers unless they're quoted (using whatever quot...\
+  \
+  Reddit
+- [link](https://www.geeksforgeeks.org/javascript/what-is-the-difference-between-object-keys-with-quotes-and-without-quotes/)\
+  What is the Difference Between Object Keys with Quotes and Without Quotes?\
+  Nov 11, 2024 — Summary: Use quotes when your keys contain spaces, special characters, or start with numbers. Omit quotes when your keys are valid...\
+  \
+  GeeksforGeeks
+- [link](https://medium.com/codex/html-attribute-value-quotes-are-optional-again-9c619c52e991)\
+  HTML Attribute Value Quotes Are Optional Again? | by Jason Knight | CodeX\
+  Jan 17, 2023 — So I can't say that attribute quotes being back to optional as if it's the mid '90's again is a surprise. It's not like browsers a...\
+  \
+  \
+  Medium
+
