@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { parse, stringify } from "yaml"
-import Sidebar from "./Sidebar"
+import Sidebar from "./sidebar"
 import Textarea from "./textarea"
 
 

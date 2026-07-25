@@ -429,6 +429,7 @@ ux: <!-- ui/ux design, ia -->
 - settings progressive disclosure over advanced kde hig vlc chromium firefox samsung one ui vscode
 - ux four pillars design process
 - ux competitive analysis
+- text selection focus ring outline style
 
 typography:
 
