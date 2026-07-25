@@ -1,3 +1,3 @@
 # 0.0
 
-use ts. use type no interface. no return type. use snake case. no aria labels. use fn statement. write a react textarea component. params value set_value.
+use snake case. use type no interface. no return type. use fn statement. no aria labels. write a react ... component. params ...
