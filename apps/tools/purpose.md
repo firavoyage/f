@@ -210,6 +210,10 @@ folders like humility/source/web/knowledge are just quick workarounds as i dont 
 
 choose adwaita anyway.
 
+til: i would always tend to ask general broader questions. fewer assumptions -> larger value range -> better result. but it would be more efficient to trust my intuition (observations, assumptions) more and ask the binary comparison questions directly.
+
+> It's important to do things fast
+
 ---
 
 assumption: i guess it's the same 30% opacity across light or dark.
@@ -224,6 +228,6 @@ drop the timebox. i do not actually have a time constraint. and i would absolute
 
 ---
 
-oklch(22% 0.01 285.73)
+wait. maybe my assumption is wrong. for inactive selection, it might not be 30 opacity.
 
 
