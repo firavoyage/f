@@ -206,6 +206,8 @@ make humility/.knowledge the single source of truth. rm everywhere else.
 
 folders like humility/source/web/knowledge are just quick workarounds as i dont wanna deal w agent skills.
 
-17 20 style selection and focus ring (17 40)
+17 20 style selection ~~and focus ring~~ ~~(17 40)~~ (18 00)
+
+choose adwaita anyway.
 
 
