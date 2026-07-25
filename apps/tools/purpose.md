@@ -206,8 +206,20 @@ make humility/.knowledge the single source of truth. rm everywhere else.
 
 folders like humility/source/web/knowledge are just quick workarounds as i dont wanna deal w agent skills.
 
-17 20 style selection ~~and focus ring~~ ~~(17 40)~~ (18 00)
+17 20 style selection ~~and focus ring~~ ~~(17 40)~~ ~~(18 00)~~
 
 choose adwaita anyway.
+
+---
+
+assumption: i guess it's the same 30% opacity across light or dark.
+
+---
+
+fix converter. rm assumption: you would only ref non contextual tokens. you can reference whatever exists now.
+
+---
+
+drop the timebox. i do not actually have a time constraint. and i would absolutely explore when i feel like that, even with the identical outcome.
 
 

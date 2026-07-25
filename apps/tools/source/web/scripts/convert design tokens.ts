@@ -174,18 +174,19 @@ function convert(design_yaml: string) {
     contexts[variants[0]].is_default = true
   }
 
-  // you wont reference a contextual token. no comp layer.
-  const map = flatten(tokens_obj)
+  function preserve(value: any) {
+    for (const mode of Object.values(modes)) {
+      if (is_match(value, mode)) {
+        return true
+      }
+    }
+    return false
+  }
+
+  const map = flatten(tokens_obj, { preserve })
 
   const tokens = flatten(tokens_obj, {
-    separator: '-', preserve(value) {
-      for (const mode of Object.values(modes)) {
-        if (is_match(value, mode)) {
-          return true
-        }
-      }
-      return false
-    }
+    separator: '-', preserve
   })
 
   function set(variant: string, variable: string, value: string) {
