@@ -1,38 +1,43 @@
-type HexColor = string;
+type hex_color = string;
 
 export function reveal(
-  bg: HexColor,
-  new_bg: HexColor,
+  bg: hex_color,
+  new_bg: hex_color,
   opacity: number
-): HexColor {
-  const clean_hex = (hex: string) => {
-    return hex.startsWith("#") ? hex.slice(1) : hex;
-  };
+): hex_color | null {
+  function parse_hex(hex: hex_color): { r: number; g: number; b: number } {
+    const clean_hex = hex.replace("#", "");
+    const num = parseInt(clean_hex, 16);
+    return {
+      r: (num >> 16) & 255,
+      g: (num >> 8) & 255,
+      b: num & 255,
+    };
+  }
 
-  const clean_bg = clean_hex(bg);
-  const clean_new = clean_hex(new_bg);
+  const background = parse_hex(bg);
+  const target = parse_hex(new_bg);
 
-  const r_mix = parseInt(clean_bg.slice(0, 2), 16);
-  const g_mix = parseInt(clean_bg.slice(2, 4), 16);
-  const b_mix = parseInt(clean_bg.slice(4, 6), 16);
+  for (let r = 0; r <= 255; r++) {
+    const r_match = Math.round(r * opacity + background.r * (1 - opacity)) === target.r;
+    if (!r_match) continue;
 
-  const r_new = parseInt(clean_new.slice(0, 2), 16);
-  const g_new = parseInt(clean_new.slice(2, 4), 16);
-  const b_new = parseInt(clean_new.slice(4, 6), 16);
+    for (let g = 0; g <= 255; g++) {
+      const g_match = Math.round(g * opacity + background.g * (1 - opacity)) === target.g;
+      if (!g_match) continue;
 
-  const calc_orig = (mix: number, new_val: number) => {
-    const orig = (mix - new_val * (1 - opacity)) / opacity;
-    return Math.min(255, Math.max(0, Math.round(orig)));
-  };
+      for (let b = 0; b <= 255; b++) {
+        const b_match = Math.round(b * opacity + background.b * (1 - opacity)) === target.b;
+        
+        if (b_match) {
+          const hex_str = ((1 << 24) + (r << 16) + (g << 8) + b)
+            .toString(16)
+            .slice(1);
+          return `#${hex_str}`;
+        }
+      }
+    }
+  }
 
-  const r_orig = calc_orig(r_mix, r_new);
-  const g_orig = calc_orig(g_mix, g_new);
-  const b_orig = calc_orig(b_mix, b_new);
-
-  const to_hex = (val: number) => val.toString(16).padStart(2, "0");
-
-  const has_hash = bg.startsWith("#") || new_bg.startsWith("#");
-  const prefix = has_hash ? "#" : "";
-
-  return `${prefix}${to_hex(r_orig)}${to_hex(g_orig)}${to_hex(b_orig)}`;
+  return null;
 }

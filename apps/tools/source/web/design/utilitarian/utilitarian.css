@@ -99,6 +99,7 @@
 }
 
 :root, [data-accent="blue"], [accent="blue"] {
+  --color-bg-accent: oklch(61.121% 0.16579 255.577 / 0.30);
   --color-bg-accent: oklch(61.4% 0.164 255);
 }
 
