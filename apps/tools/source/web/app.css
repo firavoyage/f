@@ -3,8 +3,6 @@ body {
   color: var(--color-fg-primary);
 }
 
-/* select. outline. */
-
 ::selection {
   background-color: var(--color-bg-selection);
 }
