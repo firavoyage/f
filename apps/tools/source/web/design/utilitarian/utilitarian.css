@@ -14,8 +14,6 @@
   --palette-success: #78e9ab;
   --palette-warning: #ffc252;
   --palette-error: #ff938c;
-  --color-bg-selection: color-mix(in srgb, var(--color-bg-accent) 30%, transparent);
-  --color-bg-selection-inactive: color-mix(in srgb, var(--palette-gray-500) 20%, transparent);
   --spacing-1: 0.25rem;
   --spacing-2: 0.5rem;
   --spacing-3: 0.75rem;
@@ -134,5 +132,13 @@
 
 [data-accent="slate"], [accent="slate"] {
   --color-bg-accent: oklch(60.1% 0.037 247);
+}
+
+:root, [data-window="active"], [window="active"] {
+  --color-bg-selection: color-mix(in srgb, var(--color-bg-accent) 30%, transparent);
+}
+
+[data-window="inactive"], [window="inactive"] {
+  --color-bg-selection: color-mix(in srgb, var(--palette-gray-500) 20%, transparent);
 }
 
