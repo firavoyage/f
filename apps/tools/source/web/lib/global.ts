@@ -6,7 +6,8 @@ import * as log from 'lib/log';
 import * as result from 'lib/result';
 import * as each from 'lib/each';
 import * as handle from 'lib/handle';
-import * as react from 'web/lib/react';
+import 'web/lib/react';
+import * as react from 'react';
 
 type use = typeof use
 declare global {
@@ -27,5 +28,3 @@ use(std)
 use(each)
 use(handle)
 use(react)
-
-console.log(react, each)
