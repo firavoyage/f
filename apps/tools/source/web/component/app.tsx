@@ -1,11 +1,11 @@
 import 'web/design/utilitarian/utilitarian.css'
-import 'web/app.css'
+import 'web/design/app.css'
 
 import { useState, useEffect } from "react"
 import { use_bind } from 'web/lib/keyboard.use';
 import { use_sync_theme } from "web/lib/sync_theme.use";
 import { Main } from "web/component/main";
-import { use_window_active } from './lib/window.use';
+import { use_window_active } from 'web/lib/window.use';
 
 export function App() {
   useEffect(() => {
@@ -39,6 +39,8 @@ export function App() {
 
   return <>
     <title>tools</title>
-    <Main></Main>
+    <div className="app">
+      <Main></Main>
+    </div>
   </>
 }
