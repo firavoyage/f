@@ -134,18 +134,22 @@ color:
     tertiary: # button on panel
       light: "palette.gray.300"
       dark: "palette.gray.700"
-    hover:
-      light: "palette.gray.200"
-      dark: "palette.gray.800"
-    pressed:
-      light: "palette.gray.200"
-      dark: "palette.gray.800"
+    selection:
+      light: 
+      dark: oklch(42% 0.06 254.31)
+    # hover:
+    #   light: "palette.gray.200"
+    #   dark: "palette.gray.800"
+    # pressed:
+    #   light: "palette.gray.200"
+    #   dark: "palette.gray.800"
     accent:
       blue: oklch(61.4% 0.164 255)
       teal: oklch(60.3% 0.098 213)
       green: oklch(59.4% 0.139 147)
       yellow: oklch(67.4% 0.142 76)
       orange: oklch(65.4% 0.196 42)
+      orange-ubuntu: oklch(64.049% 0.19406 37.743)
       red: oklch(60.3% 0.217 22)
       pink: oklch(65.1% 0.158 352)
       purple: oklch(52.5% 0.175 317)
