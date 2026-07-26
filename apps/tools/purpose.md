@@ -289,7 +289,11 @@ i made padding inside "focus-visible", but it's quickly found and fixed.
 
 03 00 complete sidebar. write some snippets. (03 20)
 
-both push and overlay variants i guess.
+~~both push and overlay variants i guess.~~
+
+only push for now. (vscode)
+
+could have: overlay variant.
 
 snippets and react utils later.
 
@@ -301,7 +305,7 @@ it doesnt have to be fancy. just an array of strings for now. i could add hierar
 
 use state snippet. use effect snippet. css sel snippet. <!-- ? -->
 
-make use state and use effect global.
+make use state and use effect global. also support react-use.
 
 ---
 

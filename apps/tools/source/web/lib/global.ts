@@ -8,6 +8,7 @@ import * as each from 'lib/each';
 import * as handle from 'lib/handle';
 import 'web/lib/react';
 import * as react from 'react';
+import * as react_use from 'react-use';
 
 type use = typeof use
 declare global {
@@ -28,3 +29,5 @@ use(std)
 use(each)
 use(handle)
 use(react)
+use(react_use)
+

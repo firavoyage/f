@@ -54,8 +54,8 @@ fira:
 - information architecture
 - foss failure patterns
 - settings progressive disclosure over advanced kde hig vlc chromium firefox samsung one ui vscode
-- qa or qc five pm process groups ten pm knowledge areas
 - pm methodology
+- pm knowledge
 
 life:
 
