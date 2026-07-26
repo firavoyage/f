@@ -47728,6 +47728,8 @@ it's a bit wet i feel. maybe it's affected by the water bottle in the backpack. 
 
 it's not quite compatible w touchpad either. put it away for a while.
 
+19 00 work on app tools.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->

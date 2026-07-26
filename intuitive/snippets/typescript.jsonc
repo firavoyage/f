@@ -86,6 +86,12 @@ ref:
       "const { ${1:name} } = ${0}"
     ],
   },
+  "deconstruct array const": {
+    "prefix": "da",
+    "body": [
+      "const [${1:name}, ${2:set_}${1:name}] = ${0}"
+    ],
+  },
   "export const": {
     "prefix": "ec",
     "body": [
@@ -518,6 +524,14 @@ ref:
       "useEffect(() => {",
       "  $0",
       "})"
+    ],
+  },
+  "use toggle": {
+    "prefix": [
+      "ut",
+    ],
+    "body": [
+      "const [${1:name}, toggle_${1:name}] = useToggle({$0: false})",
     ],
   },
 }

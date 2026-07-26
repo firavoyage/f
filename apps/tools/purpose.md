@@ -311,4 +311,18 @@ make use state and use effect global. also support react-use.
 
 the tradeoff of linking snippets is... vscode couldnt detect file changes to reload. you have to restart.
 
+18 40 create snippet use toggle, deconstruct array. (19 00)
+
+19 00 decide to create a middleware for props.
+
+yes. class > classname. theme > data-theme (both, under the hood). attr: false then do not make a presence at all.
+
+it would be incompatible w llms wo heavy prompting. but it would be fine.
+
+<!-- i guess there would be no libs for that. -->
+
+---
+
+how to use class instead of classname in react
+
 
