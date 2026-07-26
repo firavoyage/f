@@ -345,4 +345,9 @@ if not started w data or aria, normalize kebab case. (snake case doesnt err)
 
 for boolean, omit false, make true "true".
 
+---
+
+create a snippet for it.
+
+
 
