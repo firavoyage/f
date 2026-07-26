@@ -114,6 +114,7 @@ life:
 - twitter access permanency
 - game maimai dx achievement rate formula algorithm
 - proton mail
+- game maimai dx gloves
 
 create something:
 

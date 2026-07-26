@@ -84,16 +84,6 @@ design and support two way convertion
 
 ---
 
-decide to create a middleware for props.
-
-yes. class > classname. theme > data-theme (both, under the hood). attr: false then do not make a presence at all.
-
-it would be incompatible w llms wo heavy prompting. but it would be fine.
-
-<!-- i guess there would be no libs for that. -->
-
----
-
 implement global persistent state.
 
 sidebar collapse. settings. theme. sidebar taxonomy pref. tool view pref.
@@ -110,4 +100,21 @@ enlarge neg margin l, or take a more elegant approach.
 
 decide to make text selectability opt in.
 
+---
+
+create snippet use toggle, deconstruct array. 
+
+---
+
+decide to create a middleware for props.
+
+yes. class > classname. theme > data-theme (both, under the hood). attr: false then do not make a presence at all.
+
+it would be incompatible w llms wo heavy prompting. but it would be fine.
+
+<!-- i guess there would be no libs for that. -->
+
+how to use class instead of classname in react
+
+---
 
