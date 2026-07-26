@@ -3305,3 +3305,1482 @@ To make sure your setup is fully optimized, let me know:
 
 Show all
 
+
+# (d) js object map
+
+In JavaScript, the phrase "object map" typically refers to either <mark>the built-in<span> </span><strong><code dir="ltr">Map</code><span> </span>object</strong><span> </span>data structure or the concept of<span> </span><strong>mapping over a plain object's keys/values</strong></mark>. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Map)
+
+***
+
+### 1. The Built-in `Map` Object
+
+The [MDN Map documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Map) defines `Map` as a built-in collection of key-value pairs where **any value** (both objects and primitive values) can be used as either a key or a value. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Map)
+
+#### Basic Usage
+
+javascript
+
+```
+// 1. Initialize a Map
+const userMap = new Map();
+
+// 2. Set values
+userMap.set('id_101', { name: 'Alice', role: 'Admin' });
+userMap.set(42, 'Answer'); // Keys can be numbers
+const objKey = {};
+userMap.set(objKey, 'Metadata'); // Keys can be objects
+
+// 3. Get values
+console.log(userMap.get('id_101')); // { name: 'Alice', role: 'Admin' }
+
+// 4. Check existence and size
+console.log(userMap.has(42)); // true
+console.log(userMap.size);    // 3
+
+// 5. Delete an entry
+userMap.delete(42);
+```
+
+Use code with caution.
+
+#### Key Differences: `Map` vs. Plain `Object`
+
+| Feature         | `Map`                                      | Plain `Object` `{}`                |
+| --------------- | ------------------------------------------ | ---------------------------------- |
+| **Key Types**   | Any value (Objects, Functions, Primitives) | String or Symbol only              |
+| **Order**       | Preserves insertion order strictly         | Not reliably ordered               |
+| **Size**        | Easily read via `.size` property           | Requires `Object.keys(obj).length` |
+| **Performance** | Optimized for frequent additions/removals  | Optimized for static structures    |
+
+***
+
+### 2. How to "Map" Over a Plain Object
+
+If you have a traditional JavaScript object `{}` and want to transform its properties (similarly to how `Array.prototype.map()` works), you must convert it into an array first. [link](https://stackoverflow.com/questions/36644438/how-to-convert-a-plain-object-into-an-es6-map)
+
+#### Method A: Transform into a New Object using `Object.entries()`
+
+Use `Object.entries()` to get an array of `[key, value]` pairs, modify them, and rebuild the object with `Object.fromEntries()`. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/entries)
+
+javascript
+
+```
+const originalPrices = { apples: 2, bananas: 3, oranges: 4 };
+
+// Double all values
+const doubledPrices = Object.fromEntries(
+  Object.entries(originalPrices).map(([key, value]) => [key, value * 2])
+);
+
+console.log(doubledPrices);
+// Output: { apples: 4, bananas: 6, oranges: 8 }
+```
+
+Use code with caution.
+
+#### Method B: Transform an Object into an Array
+
+If you just want to pull data out of an object and format it into a clean list, map over its entries directly. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/entries)
+
+javascript
+
+```
+const users = { id1: 'Alice', id2: 'Bob' };
+
+const userList = Object.entries(users).map(([id, name]) => {
+  return { userId: id, userName: name };
+});
+
+console.log(userList);
+// Output: [ { userId: 'id1', userName: 'Alice' }, { userId: 'id2', userName: 'Bob' } ]
+```
+
+Use code with caution.
+
+***
+
+### 3. Converting Between `Object` and `Map`
+
+You can switch seamlessly between the two data structures using utility methods. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/entries)
+
+javascript
+
+```
+const plainObj = { x: 10, y: 20 };
+
+// Object to Map
+const secondaryMap = new Map(Object.entries(plainObj));
+
+// Map to Object
+const backToObj = Object.fromEntries(secondaryMap);
+```
+
+Use code with caution.
+
+Would you like to know more about the **performance benchmarks** between these options, or do you need a specific code snippet tailored to **transforming your dataset**?
+
+- [link](https://stackoverflow.com/questions/14810506/map-function-for-objects-instead-of-arrays)\
+  'map' function for objects (instead of arrays) - Stack Overflow\
+  Feb 11, 2013 — The purpose of the function is to take an object and modify the original contents of the object using a method available to all ob...\
+  Stack Overflow
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Map)\
+  Map - JavaScript - MDN Web Docs - Mozilla\
+  Feb 16, 2026 — Description. Map objects are collections of key-value pairs. A key in the Map may only occur once; it is unique in the Map 's coll...\
+  MDN Web Docs
+- [link](https://www.reddit.com/r/javascript/comments/1fkt608/askjs%5Fwhy%5Fis%5Fmap%5Ffaster%5Fthan%5Fthe%5Fjavascritp%5Fobject/)\
+  \[AskJS] Why is Map faster than the javascritp object? - Reddit\
+  Sep 19, 2024 — From my understanding plain objects are optimized for storing limited number of properties provided that properties are not change...\
+  Reddit·r/javascript
+
+Show all
+
+# js object map method
+
+Plain JavaScript objects (`{}`) **do not have a built-in `.map()` method**. The `.map()` method belongs exclusively to the `Array` prototype. [link](https://stackoverflow.com/questions/71163702/map-usage-in-an-object)
+
+To map over an object, you must convert the object into an array first, use `.map()`, and then optional convert it back into an object. [link](https://stackoverflow.com/questions/63695126/object-map-in-js)
+
+***
+
+### 1. Transform an Object into a New Object
+
+If you want to modify an object's values but keep the same keys, convert the data using `Object.entries()` and rebuild it with `Object.fromEntries()`. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/entries)
+
+javascript
+
+```
+const userScores = { alice: 10, bob: 15, charlie: 20 };
+
+// Double all the scores
+const updatedScores = Object.fromEntries(
+  Object.entries(userScores).map(([key, value]) => [key, value * 2])
+);
+
+console.log(updatedScores);
+// Output: { alice: 20, bob: 30, charlie: 40 }
+```
+
+Use code with caution.
+
+### 2. Transform an Object into an Array
+
+If you want to extract data from an object to populate a list (e.g., rendering components in React), use `Object.keys()`, `Object.values()`, or `Object.entries()` depending on what data you need. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Object/entries)
+
+javascript
+
+```
+const inventory = { apples: 5, bananas: 12, oranges: 8 };
+
+// Create a list of text strings
+const listItems = Object.entries(inventory).map(([fruit, count]) => {
+  return `${fruit} remaining: ${count}`;
+});
+
+console.log(listItems);
+// Output: ['apples remaining: 5', 'bananas remaining: 12', 'oranges remaining: 8']
+```
+
+Use code with caution.
+
+***
+
+### Alternative: Use the Native `Map` Object
+
+If you are doing frequent insertions, deletions, or data mapping transformations, consider using the native JavaScript `Map` data structure instead of a plain object. `Map` preserves key insertion order and allows any data type as a key. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Map)
+
+javascript
+
+```
+// Initializing a Map
+const myMap = new Map([
+  ['apples', 5],
+  ['bananas', 12]
+]);
+
+// Map objects don't have a direct .map(), but they loop cleanly with .forEach()
+myMap.forEach((value, key) => {
+  console.log(`${key} has ${value}`);
+});
+```
+
+Use code with caution.
+
+To easily verify these concepts, you can dive deeper into the documentation for [MDN Web Docs Array.prototype.map()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Array/map) or explore the features of MDN Web Docs Map Object. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Array/map)
+
+Turn this answer into exactly what you need. Let me know:
+
+- Do you want to modify **keys**, **values**, or **both**?
+
+- Are you trying to output a **new object** or an **array**?
+
+- Do you need this pattern for a framework like **React**?
+
+- [link](https://stackoverflow.com/questions/14810506/map-function-for-objects-instead-of-arrays)\
+  'map' function for objects (instead of arrays) - Stack Overflow\
+  Feb 11, 2013 — The purpose of the function is to take an object and modify the original contents of the object using a method available to all ob...\
+  Stack Overflow
+
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Array/map)\
+  Array.prototype.map() - JavaScript - MDN Web Docs\
+  Jul 12, 2026 — Array. prototype. map() ... This feature is well established and works across many devices and browser versions. It's been availab...\
+  MDN Web Docs
+
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Map)\
+  Map - JavaScript - MDN Web Docs - Mozilla\
+  Feb 16, 2026 — Description. Map objects are collections of key-value pairs. A key in the Map may only occur once; it is unique in the Map 's coll...\
+  MDN Web Docs
+
+Show all
+
+# compare map and fof in js
+
+The core difference between **`.map()`** and a **`for...of`** loop in JavaScript is their intended purpose and return value: **`.map()` transforms an array into a new array of the same length**, while **`for...of` is a general-purpose loop used to execute sequential logic or side effects over any iterable object**. [link](https://stackoverflow.com/questions/60786111/for-loops-vs-map-to-iterate-arrays)
+
+### Summary Comparison
+
+| Feature               | `.map()`                          | `for...of`                                  |
+| --------------------- | --------------------------------- | ------------------------------------------- |
+| **Primary Purpose**   | Transform data.                   | Execute side effects or sequential logic.   |
+| **Return Value**      | A brand new array.                | `undefined`.                                |
+| **Control Flow**      | Cannot use `break` or `continue`. | Supports `break`, `continue`, and `return`. |
+| **Asynchronous Code** | Does not natively await promises. | Supports `async/await` sequentially.        |
+| **Target Data Types** | Arrays only.                      | Any iterable (Arrays, Strings, Maps, Sets). |
+
+***
+
+### `.map()` Method
+
+The `.map()` method is a functional programming utility. It executes a callback function on every item of an array and collects the results into a completely new array without changing the original one. [link](https://medium.com/@ExplosionPills/map-vs-for-loop-2b4ce659fb03)
+
+javascript
+
+```
+const numbers = [1, 2, 3];
+
+// Transforms data and returns a new array
+const doubled = numbers.map(num => num * 2);
+
+console.log(doubled); // [2, 4, 6]
+```
+
+Use code with caution.
+
+- **Best used for:** Pure data transformation (e.g., pulling specific properties out of an API response array).
+- **Limitation:** It will always loop through every item; you cannot exit early or skip iterations using `break` or `continue`. [link](https://dev.to/manumagalhaes/comparing-js-iteration-methods-map-filter-foreach-reduce-loops-le)
+
+***
+
+### `for...of` Loop
+
+The `for...of` statement creates a loop that iterates over iterable objects. It does not automatically generate a result array; instead, it executes whatever statements you provide inside its block. [link](https://www.reddit.com/r/learnjavascript/comments/e2nn19/whats%5Fthe%5Fdifference%5Fbetween%5Fmap%5Fand%5Ffor%5Floop/)
+
+javascript
+
+```
+const numbers = [1, 2, 3];
+
+// Performs an action on each item
+for (const num of numbers) {
+  if (num === 2) continue; // Skips 2
+  console.log(num); // Logs: 1, then 3
+}
+```
+
+Use code with caution.
+
+- **Best used for:** Performing side effects (like logging, saving to a database, or updating external states) or operations requiring specific control flows. [link](https://javascript.plainenglish.io/when-i-use-map-vs-for-of-vs-foreach-and-why-it-matters-43b2c959063b)
+- **Async handling:** If you need to hit an asynchronous API endpoint for each item one after the other, `for...of` cleanly accommodates `await` inside the loop body. [link](https://javascript.plainenglish.io/when-i-use-map-vs-for-of-vs-foreach-and-why-it-matters-43b2c959063b)
+
+***
+
+### Performance Note
+
+A `for...of` loop is generally **faster** than `.map()` because it avoids the overhead of invoking a callback function for every single element and doesn't require memory allocation for a new array. However, this performance gain is usually only noticeable when processing massive datasets (e.g., millions of elements). For standard everyday tasks, readability and matching your code to your functional intent should be prioritized. [link](https://dev.to/henryjw/array-map-much-slower-than-for-loop-57if)
+
+If you are trying to rewrite a specific block of code, would you like me to **convert a loop into a map expression** or help you **optimize a performance-heavy dataset loop**?
+
+- [link](https://medium.com/@ExplosionPills/map-vs-for-loop-2b4ce659fb03)\
+  map vs. for loop. I almost never use for loops in… | by Andrew Crites | Medium\
+  Jul 22, 2018 — Here's some more information about map and for loops: \* \*\*For loops\*\* For loops are basic and are often taught to developers early...\
+  Medium
+- [link](https://stackoverflow.com/questions/60786111/for-loops-vs-map-to-iterate-arrays)\
+  \`for\` loops vs \`.map\` to iterate arrays\
+  Mar 21, 2020 — In JavaScript, \`for\` loops and \`.map()\` can both iterate over arrays. The main difference is that \`for\` loops allow you to specify...\
+  Stack Overflow
+- [link](https://www.reddit.com/r/learnjavascript/comments/e2nn19/whats%5Fthe%5Fdifference%5Fbetween%5Fmap%5Fand%5Ffor%5Floop/)\
+  What's the difference between map and for loop? - Reddit\
+  Nov 27, 2019 — Comments Section. ForScale. • 7y ago. • Edited 7y ago. for loops are made to do things a set number of times, they are independent...\
+  Reddit·r/learnjavascript
+
+Show all
+
+## is it wise to stick to fof if my team hate oop cult
+
+**Yes**, sticking to `for...of` aligns perfectly with a team that dislikes Object-Oriented Programming (OOP) cults, as it is a core feature of procedural and functional-adjacent JavaScript.
+
+However, your team's anti-OOP stance actually means they likely prefer **Functional Programming (FP)**. In the JavaScript world, `.map()` is a fundamental FP tool, while `for...of` is procedural.
+
+### Why `for...of` is safe from the "OOP Cult"
+
+- **Not an OOP feature:** `for...of` belongs to procedural programming. It simply steps through data sequentially.
+- **No classes or state:** It does not require objects, methods, inheritance, or complex design patterns.
+- **Separates data from logic:** It treats your array as pure data, which satisfies a core anti-OOP philosophy.
+
+### Why your team might actually prefer `.map()`
+
+If your team hates OOP, they likely favor **Functional Programming**. Functional programmers love `.map()`, `.filter()`, and `.reduce()` because they avoid "shared mutable state."
+
+- **Immutability:** `.map()` creates a brand new array instead of modifying existing data.
+- **No side effects:** FP favors "pure functions" that take an input and return an output without changing the outside world.
+- **Declarative style:** `.map()` tells the code _what_ to do (transform this data), whereas `for...of` tells the code _how_ to do it step-by-step (procedural).
+
+### How to choose to keep your team happy
+
+- **Use `.map()`** if you are taking an array and converting it into a new array. Your team will love this because it is clean, functional, and avoids mutating variables.
+- **Use `for...of`** if you are loops to cause outside actions (like logging, sending API requests, or writing to a database). Functional programming purists hate using `.map()` for side effects.
+
+If you want to see how to write your specific project code cleanly, I can show you how to **refactor a complex loop into a functional pipeline** or look at a piece of code to **see if it fits your team's style**. Which would help most?
+
+- [link](https://www.reddit.com/r/AskComputerScience/comments/aarn1e/why%5Fdo%5Falot%5Fof%5Fpeople%5Fhate%5Foop/)\
+  Why do alot of people hate OOP ? : r/AskComputerScience\
+  Dec 30, 2018 — People who favor functional programming over OOP tend to care about:\
+  \
+  \
+  Reddit
+
+## is it wise to only use fof if my team hate oop like chaining
+
+**No**, it is not wise to use _only_ `for...of` in this scenario.
+
+If your team hates OOP but **also hates chaining**, they are likely reacting to the messy readability of long, nested method chains—often called "dot notation hell." However, completely abandoning functional tools for `for...of` will result in highly procedural, verbose code that requires manual state tracking.
+
+You can write clean, unchained functional code that satisfies your team's constraints by using **pipelining** and **intermediate variables**.
+
+***
+
+### The Problem With Both Extremes
+
+#### 1. The OOP-Style Chain (What your team hates)
+
+This style is hard to debug, difficult to place breakpoints in, and hides the data shapes between steps.
+
+javascript
+
+```
+// Hard to read, hard to debug
+const activeUserEmails = users
+  .filter(u => u.isActive)
+  .map(u => u.email)
+  .filter(email => email.endsWith('.com'));
+```
+
+Use code with caution.
+
+#### 2. The Pure `for...of` Alternative (Verbose & Mutable)
+
+While this avoids chaining, it forces you to create empty arrays and manually push data into them, creating mutable "garbage" variables.
+
+javascript
+
+```
+const activeUserEmails = [];
+for (const u of users) {
+  if (u.isActive) {
+    if (u.email.endsWith('.com')) {
+      activeUserEmails.push(u.email);
+    }
+  }
+}
+```
+
+Use code with caution.
+
+***
+
+### The Middle Ground: "Deconstructed" Functional Programming
+
+To keep code functional (anti-OOP) but flat (anti-chaining), break your transformations into clear, named, single-purpose steps using `const`.
+
+javascript
+
+```
+// Clean, flat, explicit, and highly readable
+const activeUsers = users.filter(u => u.isActive);
+const userEmails  = activeUsers.map(u => u.email);
+
+const activeDotComEmails = userEmails.filter(email => email.endsWith('.com'));
+```
+
+Use code with caution.
+
+### Why This Satisfies Your Team
+
+- **No Chaining:** Every line does exactly one thing.
+- **Easy Debugging:** You can log or place a breakpoint on `activeUsers` or `userEmails` instantly.
+- **Immutability:** No variables are being reassigned or manually pushed to like in a `for...of` loop.
+- **Self-Documenting:** The variable names explain the data transition steps perfectly.
+
+***
+
+### When to Stick to `for...of` Anyway
+
+Even without chaining, you should still prefer `for...of` over functional arrays in two specific situations:
+
+- **Asynchronous Operations:** If you need to fetch data from an API sequentially using `await` inside the loop.
+- **Early Exit Condition:** If you need to stop processing entirely using `break` or skip an item using `continue`.
+
+If you have a messy piece of code you are working on right now, I can help you **refactor it into flat intermediate steps** or **rewrite it as a clean `for...of` loop** so you can compare how they look. Which approach would you like to see?
+
+- [link](https://www.reddit.com/r/AskProgramming/comments/140nbm0/whats%5Fup%5Fwith%5Fthe%5Fdislike%5Ftoward%5Foop/)\
+  What’s up with the dislike toward OOP? : r/AskProgramming\
+  Jun 4, 2023 — Im just a hobbyist, so i dont have experience working with others mostly. I am fine with oop for the most part, but it does someti...\
+  \
+  \
+  Reddit
+- [link](https://medium.com/@modelfak/best-practices-in-javascript-for-of-vs-foreach-0fe4dc9c34d1)\
+  Best practices in JavaScript, for..of vs forEach()\
+  Aug 16, 2025 — Be careful when using “await” directly inside a for…of loop, as it allows you to process asynchronous operations sequentially. Wit...\
+  \
+  \
+  Medium
+
+## can it be wise to only use fof
+
+Yes, it **can be wise** to only use `for...of` across a codebase, but only under specific architectural constraints.
+
+Limiting your team strictly to `for...of` is a valid architectural choice if you deliberately prioritize **procedural simplicity, debugging speed, and uniform performance** over functional abstractions.
+
+***
+
+### 4 Scenarios Where Only Using `for...of` Is Wise
+
+#### 1. High-Performance or Memory-Constrained Systems
+
+Methods like `.map()` and `.filter()` allocate entirely new arrays in memory for every step. If you are processing large datasets (e.g., thousands of items) on low-end client devices or serverless functions, `for...of` keeps memory consumption flat.
+
+- **Why it's wise:** You mutate a single array or structure instead of triggering frequent garbage collection cycles.
+
+#### 2. Heavily Asynchronous Architectures
+
+If your backend or automation scripts constantly interact with databases, file systems, or network APIs inside loops, array methods break down. `.map()` executing an `async` function creates an array of unresolved Promises that execute concurrently, which can easily overwhelm an API or database.
+
+- **Why it's wise:** `for...of` natively pauses for `await` on every single iteration, giving you predictable, sequential execution control.
+
+#### 3. Teams with High Junior-to-Senior Ratios
+
+Functional programming pipelines (even unchained ones) require developers to master closures, scope, array methods, and declarative thinking.
+
+- **Why it's wise:** A `for...of` loop looks identical to loops in Python, C#, Java, and C++. It lowers the cognitive barrier to entry, making it virtually impossible for a junior developer to misinterpret how the loop executes.
+
+#### 4. Absolute Debugging Simplicity
+
+Debugging a complex array pipeline requires stepping into anonymous callback functions, which makes using a browser debugger or IDE breakpoint runner tedious.
+
+- **Why it's wise:** A `for...of` loop executes strictly line-by-line. You can place a single breakpoint inside the block and watch your local state variables change clearly on every step.
+
+***
+
+### The Hidden Tax of the "Only `for...of`" Rule
+
+If you enforce this constraint, your team must accept a few systemic downsides:
+
+- **Boilerplate Noise:** Simple tasks like extracting IDs from a user array—which takes one line in a map (`users.map(u => u.id)`)—will always require 4–5 lines of setup, an empty array declaration, and manual pushing.
+- **Accidental State Corruption:** Because `for...of` loops rely on creating variables outside the loop and modifying them inside, developers are much more likely to accidentally mutate data they shouldn't.
+
+If you are considering proposing this rule to your team, I can help you **draft a micro-style-guide** comparing how standard operations look in both styles, or we can **benchmark a specific data task** to see if the performance difference justifies the choice. How would you like to proceed?
+
+AI responses may include mistakes. For financial advice, consult a professional. [Learn more](https://support.google.com/websearch?p=aimode\&gl=us)
+
+# all methods of inline-style-parser
+
+The npm package `inline-style-parser` is a minimalist library designed to parse CSS inline style declarations into an Abstract Syntax Tree (AST). [link](https://www.npmjs.com/package/inline-style-parser)
+
+The package is intentionally hyper-focused and **exposes exactly one functional method: the default function export**. [link](https://www.npmjs.com/package/inline-style-parser)
+
+### The Core Parse Function
+
+Because the library handles a singular task, it does not contain a complex object API filled with instance methods. Instead, it exposes a single parser function: [link](https://www.npmjs.com/package/inline-style-parser)
+
+javascript
+
+```
+const parse = require('inline-style-parser');
+// Or using ES modules:
+// import parse from 'inline-style-parser';
+```
+
+Use code with caution.
+
+#### Syntax
+
+javascript
+
+```
+parse(styleString)
+```
+
+Use code with caution.
+
+- **`styleString`** _(String)_: A required string containing inline CSS declaration blocks (the exact text you would normally put inside an HTML `style=""` attribute). [link](https://www.npmjs.com/package/inline-style-parser)
+
+#### Output Format
+
+The function returns an **Array of Declaration Objects** representing the Abstract Syntax Tree (AST). Each object contains: [link](https://www.npmjs.com/package/inline-style-parser)
+
+- **`type`**: Always returns `'declaration'`.
+- **`property`**: The CSS property name (e.g., `'color'`, `'margin-top'`).
+- **`value`**: The corresponding style value (e.g., `'#BADA55'`, `'20px'`).
+- **`position`**: An object mapping the `start` and `end` lines/columns of that declaration within the parsed string. [link](https://www.npmjs.com/package/inline-style-parser)
+
+***
+
+### Basic Usage Example
+
+javascript
+
+```
+const parse = require('inline-style-parser');
+
+const inlineCSS = 'color: #BADA55; font-size: 16px;';
+const ast = parse(inlineCSS);
+
+console.log(ast);
+```
+
+Use code with caution.
+
+**Output:**
+
+json
+
+```
+[
+  {
+    "type": "declaration",
+    "property": "color",
+    "value": "#BADA55",
+    "position": {
+      "start": { "line": 1, "column": 1 },
+      "end": { "line": 1, "column": 16 },
+      "source": undefined
+    }
+  },
+  {
+    "type": "declaration",
+    "property": "font-size",
+    "value": "16px",
+    "position": {
+      "start": { "line": 1, "column": 18 },
+      "end": { "line": 1, "column": 33 },
+      "source": undefined
+    }
+  }
+]
+```
+
+Use code with caution.
+
+***
+
+### Alternative Native Web Approaches
+
+If your environment cannot run node dependencies or you need alternative parsing logic, the web platform offers native approaches: [link](https://stackoverflow.com/questions/76118744/how-to-get-all-inline-styles-from-html-string-js)
+
+- **The DOM Element Method**: Assigning a string to a temporary element's `style.cssText` and reading its properties.
+- **The DOMParser Method**: Utilizing `DOMParser().parseFromString()` to extract inline markup cleanly. [link](https://stackoverflow.com/questions/76118744/how-to-get-all-inline-styles-from-html-string-js)
+
+If you are trying to solve a specific issue or need to convert this output into a specific format, let me know:
+
+- Are you converting these styles into a **React/JSON object style**?
+
+- Do you need to **sanitize, filter, or re-serialize** the styles back into a string?
+
+- Are you writing a custom compiler or building a **web-scraping engine**?
+
+- [link](https://www.npmjs.com/package/inline-style-parser)\
+  inline-style-parser - NPM\
+  Jul 6, 2026 — Inline style parser copied from css/lib/parse/index.js: InlineStyleParser(string) Example: const parse = require('inline-style-par...\
+  NPM
+
+- [link](https://github.com/arikchakma/stylecast)\
+  GitHub - arikchakma/stylecast: A fast and lightweight inline CSS style ...\
+  What Does It Do? StyleCast parses inline CSS strings into AST or JavaScript objects with optional React style camelCase conversion...\
+  GitHub
+
+- [link](https://stackoverflow.com/questions/76118744/how-to-get-all-inline-styles-from-html-string-js)\
+  How to get all inline styles from html string (JS) - Stack Overflow\
+  Apr 27, 2023 — If you want something safe then use the DOMParser:parseFromString() method, as Quentin mentioned. const HTML = \` \`; // Pattern exp...\
+  Stack Overflow
+
+Show all
+
+# pros cons of fof and arr.map
+
+In JavaScript, **`for...of`** (often abbreviated as fof) and **`Array.prototype.map()`** (arr.map) are both used to iterate over arrays, but they serve completely different structural purposes. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Array/map)
+
+The primary difference is that **`for...of` is a general-purpose control-flow loop**, while **`arr.map()` is a functional programming method explicitly designed to transform data into a new array**. [link](https://javascript.plainenglish.io/stop-using-map-when-you-should-use-for-of-heres-why-0e9862f49526)
+
+***
+
+### `for...of` (The Control-Flow Loop)
+
+This statement loops through the values of an iterable object (like an array or string). It gives you full control over the execution flow. [link](https://javascript.plainenglish.io/when-i-use-map-vs-for-of-vs-foreach-and-why-it-matters-43b2c959063b)
+
+#### Pros
+
+- **Control Flow Flexibility:** You can exit early using `break`, skip an iteration using `continue`, or exit the surrounding function entirely with `return`.
+- **Asynchronous Friendly:** It works beautifully with `async/await`, executing promises sequentially one after the other.
+- **Memory Efficient:** It iterates in place without automatically allocating or returning a brand-new array in memory.
+- **Highly Versatile:** It isn't limited to arrays; it natively loops over strings, NodeLists, `Map`, `Set`, and arguments objects. [link](https://www.reddit.com/r/learnjavascript/comments/wpdx47/when%5Fshould%5Fyou%5Fuse%5Fforeach%5Finstead%5Fof%5Fmap%5Freduce/)
+
+#### Cons
+
+- **More Verbose:** Requires setting up more boilerplate syntax compared to declarative methods.
+- **Side-Effect Prone:** Encourages modifying external state or mutating data inside the block, which can introduce bugs.
+- **Non-Chainable:** Because it returns `undefined`, you cannot chain it directly with other array operations like `.filter()` or `.reduce()`. [link](https://medium.com/@ExplosionPills/map-vs-for-loop-2b4ce659fb03)
+
+***
+
+### `arr.map()` (The Functional Transformer)
+
+This built-in method executes a callback function on every element of the array and returns a brand-new array populated with the results. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Array/map)
+
+#### Pros
+
+- **Immutability Guarantee:** It creates a brand-new array, leaving your original source data untouched and preventing unintended side-effects. [link](https://medium.com/@ExplosionPills/map-vs-for-loop-2b4ce659fb03)
+- **Declarative and Readable:** The intent is immediately obvious to other developers—any reader instantly knows you are transforming one array into another. [link](https://javascript.plainenglish.io/stop-using-map-when-you-should-use-for-of-heres-why-0e9862f49526)
+- **Method Chaining:** Since it outputs a new array, you can fluidly chain it right into other operations (e.g., `arr.map().filter().reduce()`). [link](https://stackoverflow.com/questions/54372784/are-there-times-when-array-foreach-is-better-than-array-map)
+- **Scope Isolation:** Variables inside the transformation callback remain cleanly contained within their own scope. [link](https://medium.com/@ExplosionPills/map-vs-for-loop-2b4ce659fb03)
+
+#### Cons
+
+- **No Early Exits:** You cannot use `break`, `continue`, or `return` to stop the loop midway; it will always run through every single item. [link](https://medium.com/@lsecchi/map-vs-foreach-approach-choose-wisely-e3dbab3e9ab7)
+- **Asynchronous Limitations:** It does not play well with `async/await`. Passing an `async` callback into `.map()` will instantly return an array of unresolved promises. [link](https://javascript.plainenglish.io/when-i-use-map-vs-for-of-vs-foreach-and-why-it-matters-43b2c959063b)
+- **Memory Cost:** It forces the creation of a brand-new array in memory. If you misuse it just to "do something" to elements without saving the returned array, you waste performance and allocation space. [link](https://www.reddit.com/r/webdev/comments/ajmn8h/why%5Fshould%5Fi%5Fuse%5Farraymap%5Fin%5Fjavascript/)
+
+***
+
+### Summary: When to Use Which?
+
+| Feature / Goal          | `for...of`                 | `arr.map()`                     |
+| ----------------------- | -------------------------- | ------------------------------- |
+| **Primary Intent**      | Run actions / side-effects | Transform data                  |
+| **Return Value**        | `undefined`                | A brand-new array               |
+| **Can Break/Continue?** | Yes ✅                     | No ❌                           |
+| **Async/Await Support** | Pauses loop correctly ✅   | Returns an array of Promises ❌ |
+
+- Use **`arr.map()`** when you want to take an array of data and convert it into a new format (e.g., transforming an array of user objects into an array of user names). [link](https://stackoverflow.com/questions/52982366/difference-between-map-filter-vs-for-and-foreach-and-what-would-be-the-advantag)
+- Use **`for...of`** when you need to trigger network requests sequentially, need to exit the loop early based on a condition, or simply want to perform an action (like logging or updating a database) without creating a new data structure. [link](https://javascript.plainenglish.io/stop-using-map-when-you-should-use-for-of-heres-why-0e9862f49526)
+
+To tailor this further, could you share **what specific task you are trying to accomplish** or what **type of data structure** you are processing?
+
+- [link](https://javascript.plainenglish.io/when-i-use-map-vs-for-of-vs-foreach-and-why-it-matters-43b2c959063b)\
+  When I Use map vs for...of vs forEach — And Why It Matters | JavaScript in Plain English\
+  Jul 6, 2025 — Here's some more information about for...of and forEach: \* \*\*for...of\*\*: \* Flexible \* Works well with async/await \* More verbose \*\
+  JavaScript in Plain English
+- [link](https://javascript.plainenglish.io/stop-using-map-when-you-should-use-for-of-heres-why-0e9862f49526)\
+  Stop Using .map() When You Should Use for...of (Here’s Why)\
+  Jul 29, 2025 — The Hidden Purpose Behind . ... . map() is intended to transform an array. That's it. It takes every element in an array, passes i...\
+  JavaScript in Plain English
+- [link](https://medium.com/@ExplosionPills/map-vs-for-loop-2b4ce659fb03)\
+  map vs. for loop - Medium\
+  Jul 22, 2018 — Immutability — if written properly, your original array will be unaffected. This has potential benefits in cases where the origina...\
+  Medium·Andrew Crites
+
+Show all
+
+## esti adoption percentage and demography of each
+
+Because `for...of` and `Array.prototype.map()` are baseline features built directly into the core JavaScript language, **both enjoy a near 100% adoption percentage** across modern codebases. Since they are standard features of ECMAScript (ES6), they are automatically available to [roughly 66% of all developers worldwide who use JavaScript](https://www.secondtalent.com/resources/top-programming-usage-statistics/).
+
+However, their "adoption" manifests differently in production code. The split in actual usage frequency and developer demographics comes down to **programming paradigms** (Functional vs. Procedural) and **tech stacks**.
+
+***
+
+### 1. `Array.prototype.map()`
+
+While both features are universally available, `.map()` is generally invoked much more frequently in modern UI-driven web environments.
+
+- **Estimated Codebase Presence:** **~90% to 95%** of modern web application repositories utilize `.map()`.
+- **Target Demographics:**
+  - **Frontend & UI Engineers:** Extremely dominant among developers working with declarative, component-based frontend libraries like React, Svelte 5, and Vue. For instance, in React, `.map()` is the industry-standard way to transform arrays of data into visual UI components (e.g., rendering lists of HTML elements).
+  - **Functional Programming Advocates:** Highly favored by mid-to-senior engineers who prioritize pure functions, immutability, and declarative code patterns.
+  - **TypeScript Developers:** Highly adopted by the [40% of developers who now write exclusively in TypeScript](https://www.infoq.com/news/2026/03/state-of-js-survey-2025/), because `.map()` seamlessly passes strict type definitions from the input array straight through to the output array. [link](https://www.infoq.com/news/2026/03/state-of-js-survey-2025/)
+
+***
+
+### 2. `for...of`
+
+`for...of` is widely known, but it is applied more selectively for structural logic rather than data rendering.
+
+- **Estimated Codebase Presence:** **~75% to 85%** of professional repositories. It is often bypassed in frontend rendering layers but heavily relied upon in logic layers.
+- **Target Demographics:**
+  - **Backend & Node.js Engineers:** Heavily favored by backend developers writing asynchronous server-side logic. Since backend processes constantly deal with sequential database requests, file I/O operations, or external API hits, `for...of` is the go-to loop for managing step-by-step `async/await` execution.
+  - **Data & Scripting Engineers:** Used by developers handling heavy computations, scripts, or non-array collections (like `Map` or `Set` objects).
+  - **Performance-Critical Specialists:** Preferred by engineers working on low-level libraries or high-throughput systems where allocating a brand-new array in memory (which `.map()` forces you to do) would trigger heavy garbage collection or slow down execution. [link](https://www.cmarix.com/blog/node-js-statistics/)
+
+***
+
+### Summary of the Demography Split
+
+- If a developer's day job involves **building user interfaces, mapping API data to a screen, and writing functional code**, they will use **`.map()`** nearly every single day.
+- If a developer's day job focuses on **heavy backend logic, orchestrating asynchronous tasks sequentially, or optimizing code performance**, they will lean on **`for...of`** as an essential control structure.
+
+Are you trying to set up **styling rules for a team** (like an ESLint configuration), or are you trying to figure out **which pattern fits best into your current tech stack**?
+
+- [link](https://adoptioncouncil.org/article/demographics-of-adoptive-parents/)\
+  Demographics of Adoptive Parents\
+  Jan 3, 2023 — Discover the demographics and what is consistent of adoptive parents who chose foster care, domestic, and intercountry adoption.\
+  National Council For Adoption
+- [link](https://www.infoq.com/news/2026/03/state-of-js-survey-2025/)\
+  State of JavaScript 2025: Survey Reveals a Maturing ... - InfoQ\
+  Mar 20, 2026 — The State of JavaScript 2025 survey, conducted in November 2025 and published in February 2026, collected responses from developer...\
+  infoq.com
+- [link](https://www.youtube.com/watch?v=jIMglmr8soA)\
+  State of JavaScript 2025 🔥 Latest Developer Trends & ...\
+  Mar 1, 2026 — if you are a JavaScript developer and you want to know in which direction the the JavaScript is going like what all popular librar...\
+  7:17\
+  YouTube·Code with tkssharma
+
+Show all
+
+## esti adoption (i mean more preferred) percentage and demography of each
+
+When evaluating developer **preference** rather than just availability, JavaScript code patterns divide clearly by programming philosophy. Based on industry-wide trends from ecosystem metrics like the State of JS survey, the "preference split" for routine array traversal leans roughly **65% to 70% in favor of `arr.map()`** (and related declarative methods), leaving **30% to 35% preferring `for...of`** as their default.
+
+***
+
+### `Array.prototype.map()` (The 65% – 70% Preference Majority)
+
+In modern web development, `.map()` is usually a developer's default choice whenever they see an array.
+
+javascript
+
+```
+// Preferred declarative syntax
+const userIds = users.map(user => user.id);
+```
+
+Use code with caution.
+
+#### Demographic Profile
+
+- **The Component-Driven Developer:** This includes developers working with [React (which captures ~65% of the JS ecosystem)](https://www.quanta.co.uk/courses/advanced-javascript-using-react-with-es6/), Vue, and Svelte. Because these frameworks render UI elements by transforming data arrays directly inside HTML-like code (JSX), `.map()` is the required idiom.
+- **Mid-to-Senior Engineers & Tech Leads:** Developers who dictate team coding guidelines heavily favor `.map()`. They enforce it through ESLint configurations to discourage code mutation and side-effects.
+- **Bootcamp & Modern Self-Taught Grads:** Most modern educational curriculums fast-track students into React and functional array methods early, making `.map()` their primary instinct.
+
+#### Why it dominates preference
+
+Modern JavaScript favors **immutability** (leaving original data untouched). It is widely agreed that clean, chainable, single-line data transformations are much easier to read and maintain than multi-line imperative loops.
+
+***
+
+### `for...of` (The 30% – 35% Preference Core)
+
+`for...of` is rarely a developer's first choice for basic data transformation, but it is heavily preferred for operational logic and execution control.
+
+javascript
+
+```
+// Preferred imperative syntax
+for (const file of batchFiles) {
+  await uploadToFileServer(file); // Sequential async processing
+}
+```
+
+Use code with caution.
+
+#### Demographic Profile
+
+- **Backend, Devops, & Node.js Engineers:** Developers writing server-side code, CLI tools, automation scripts, and database interactions. They lean heavily on `for...of` because server logic is heavily dependent on step-by-step, asynchronous execution flow control.
+- **Systems & Library Authors:** Engineers building low-level npm packages or high-performance algorithms. They prefer `for...of` because it does not allocate a new array in memory, making it faster and lighter on the engine's garbage collector.
+- **Engineers from Classical Object-Oriented Backgrounds:** Developers who transitioned to JavaScript from languages like Java, C#, or Python natively prefer the readability of traditional loop structures.
+
+#### Why it retains its strong preference share
+
+It handles the critical gaps that functional methods cannot touch: natively managing complex control flow (`break`, `continue`) and flawlessly handling sequential `async/await` tasks [without firing off all callbacks concurrently](https://33jsconcepts.com/concepts/map-reduce-filter).
+
+***
+
+### Summary of Preference Distribution
+
+| Metric               | `Array.prototype.map()`                     | `for...of`                                    |
+| -------------------- | ------------------------------------------- | --------------------------------------------- |
+| **Preference Share** | **~65% - 70%** (Primary choice for data)    | **~30% - 35%** (Primary choice for actions)   |
+| **Stack Domain**     | Heavy Frontend / UI Component layer         | Heavy Backend / Service / Logic layer         |
+| **Code Style Guide** | Enforced for data formatting & immutability | Encouraged for async operations & early exits |
+
+Are you evaluating these choices to **establish code review guidelines / ESLint rules** for a team, or are you trying to **refactor a specific loop** in your code?
+
+- [link](https://www.davethomasfoundation.org/wp-content/uploads/2024/09/2022-US-Adoption-and-Foster-Care-Attitudes-Report-WEB-Final.pdf)\
+  2022 US Adoption Attitudes Survey\
+  Feb 15, 2022 — Harris Insights & Analytics LLC, A Stagwell Company © 2021. ADOPTION CONSIDERATION & PREFERENCES. There are distinct demographic g...\
+  Dave Thomas Foundation for Adoption
+
+## demography of each
+
+### `Array.prototype.map()` Demographics
+
+The demographic profile for developers who prefer **`arr.map()`** leans heavily toward frontend application development, modern tech stacks, and team-oriented software environments.
+
+- **Primary Job Roles:** Frontend Engineers, Full-Stack Developers, UI/UX Engineers, and Mobile Developers (React Native).
+- **Industry Segments:** SaaS companies, tech startups, digital agencies, and e-commerce platforms where user experience and fast UI rendering are critical.
+- **Framework Alignment:** Deeply embedded in the ecosystems of [React](https://react.dev/), Vue, Svelte, and SolidJS, where transforming data collections straight into UI components is a foundational pattern.
+- **Experience Level:** Dominant among Junior to Mid-level developers who learned JavaScript post-2015 via modern bootcamps or web-centric computer science curriculums. It is also strongly enforced by Senior Tech Leads who write team style guides.
+- **Coding Philosophy:** Functional Programming (FP) advocates. These developers prioritize immutability, pure functions, declarative code syntax, and predictable state management.
+
+***
+
+### `for...of` Demographics
+
+The demographic profile for developers who prefer **`for...of`** leans toward server-side architectures, systems engineering, automation, and foundational scripting.
+
+- **Primary Job Roles:** Backend Engineers, DevOps Engineers, Cloud Architects, Systems Developers, and Security Scriptwriters.
+- **Industry Segments:** FinTech, enterprise software, cloud infrastructure providers, data processing pipelines, and companies managing high-throughput Node.js microservices.
+- **Framework Alignment:** Heavily used in Node.js runtime environments, Express, NestJS, Fastify, AWS Lambda serverless functions, and database ORMs/ODMs (like Prisma or Mongoose).
+- **Experience Level:** Highly favored by seasoned Senior Engineers, Systems Architects, and developers who originally transitioned into JavaScript from classical object-oriented or imperative backgrounds like Python, Java, C#, or C++.
+- **Coding Philosophy:** Imperative and Procedural Programming advocates. These developers value absolute control over the step-by-step execution flow, explicit state management, raw runtime performance, and sequential execution.
+
+***
+
+### Demographics Comparison At A Glance
+
+| Demographic Metric         | `Array.prototype.map()` Core User   | `for...of` Core User                     |
+| -------------------------- | ----------------------------------- | ---------------------------------------- |
+| **Main Layer of Stack**    | Client-Side / Browser Layer         | Server-Side / Runtime Layer              |
+| **Dominant Ecosystem**     | UI Frameworks (React, Vue, Svelte)  | Backend Runtimes (Node.js, Deno)         |
+| **Educational Background** | Web Bootcamps & Modern Web CS       | Classical CS, Engineering, & Systems     |
+| **Primary Task Focus**     | UI Component & State Transformation | I/O, Async Batching, & API Orchastration |
+| **Core Value**             | Code Predictability & Readability   | Flow Control & Hardware Efficiency       |
+
+Would you like to explore **how to configure ESLint rules** to enforce these preferences automatically across a shared codebase, or are you looking to see how **TypeScript types behave differently** between them?
+
+- [link](https://javascript.plainenglish.io/stop-using-map-when-you-should-use-for-of-heres-why-0e9862f49526)\
+  Stop Using .map() When You Should Use for...of (Here's Why)\
+  Jul 29, 2025 — Your Mental Model Matters. One of the most underrated parts of writing code is clarity. When someone reads your code — whether it'\
+  JavaScript in Plain English
+
+# pros cons of default export or named export when there is only one method
+
+When a module contains only one method, choosing between a default export and a named export comes down to a choice between flexibility and strictness.
+
+Here is the breakdown of the pros and cons for each approach.
+
+### Named Export
+
+javascript
+
+```
+export const myMethod = () => {};
+// Import
+import { myMethod } from './myModule';
+```
+
+Use code with caution.
+
+- **Pro**: **Automated refactoring.** Renaming the method updates all import statements across your codebase automatically.
+- **Pro**: **Better autocomplete.** IDEs suggest the exact method name immediately when typing the import brackets.
+- **Pro**: **Future-proof.** Adding more exports to the file later does not require changing the existing import syntax.
+- **Con**: **Rigid naming.** Consumers must use the exact method name unless they explicitly alias it using the `as` keyword.
+
+### Default Export
+
+javascript
+
+```
+const myMethod = () => {};
+export default myMethod;
+// Import
+import myMethod from './myModule';
+```
+
+Use code with caution.
+
+- **Pro**: **Naming flexibility.** The importing file can name the method anything without using extra alias syntax.
+- **Pro**: **Cleaner syntax.** Imports look cleaner because they do not require curly braces `{}`.
+- **Pro**: **Standard convention.** Many frameworks (like React for page components) expect default exports for code-splitting.
+- **Con**: **Refactoring risk.** Renaming the original method will not automatically update the names used in importing files.
+- **Con**: **Import typos.** Developers can accidentally type `import miMethod from ...` and the compiler will not catch the typo.
+
+### The Verdict
+
+Use **named exports** by default, even for single methods. They provide better tooling support, prevent accidental naming typos, and make codebase refactoring much easier. Use **default exports** only when required by a specific framework or routing system.
+
+To help narrow this down, let me know:
+
+- What **framework** or runtime are you using?
+
+- How large is the **development team** working on this codebase?
+
+- Will this method be published as a **public library**?
+
+- [link](https://www.linkedin.com/pulse/javascript-module-exports-default-vs-named-ayman-anaam)\
+  JavaScript Module Exports: Default vs. Named Exports\
+  Aug 16, 2023 — A default export is the value that is considered the "main" thing that a module exports. There can only be one default export per ...\
+  \
+  LinkedIn
+
+- [link](https://kiro.dev/blog/refactoring-made-right/)\
+  Refactoring made right: how program analysis makes AI agents safe and reliable\
+  Feb 5, 2026 — The IDE would automatically perform the renaming along with updating all eight references and three imports across the codebase. T...\
+  \
+  \
+  Kiro
+
+- [link](https://medium.com/@stayyabmazhar19991/why-default-exports-are-bad-in-javascript-a-comprehensive-guide-7c77abc7061d)\
+  Why Default Exports are Bad in JavaScript: A Comprehensive Guide\
+  Sep 23, 2024 — 3. Auto-Completion in IDEs Most modern text editors and IDEs, such as VSCode or WebStorm, have excellent support for auto-completi...\
+  \
+  \
+  Medium
+
+Show all
+
+# js lib to convert kebab case string to camel case
+
+The fastest way to convert a kebab-case string to camelCase in JavaScript is by using standard string methods. However, if you prefer an external library, popular utility packages can handle this automatically.
+
+### Native JavaScript (No Library Needed)
+
+You can use the native `replace()` method with a regular expression. This avoids adding extra weight to your project.
+
+javascript
+
+```
+const kebabToCamel = str => str.replace(/-./g, match => match[1].toUpperCase());
+
+console.log(kebabToCamel('hello-world-style')); // "helloWorldStyle"
+```
+
+Use code with caution.
+
+### Top JavaScript Libraries
+
+- **Lodash**: The most popular utility library. It features a built-in `_.camelCase()` function.\
+  javascript
+
+<!---->
+
+```
+import camelCase from 'lodash/camelCase';
+camelCase('hello-world'); // "helloWorld"
+```
+
+Use code with caution.
+
+- **Camelcase**: A lightweight, dedicated npm package built exactly for this purpose.\
+  javascript
+
+<!---->
+
+```
+import camelCase from 'camelcase';
+camelCase('hello-world'); // "helloWorld"
+```
+
+Use code with caution.
+
+- **Change-case**: A comprehensive string transformation library that converts between many casings.\
+  javascript
+
+<!---->
+
+```
+import { camelCase } from 'change-case';
+camelCase('hello-world'); // "helloWorld"
+```
+
+Use code with caution.
+
+***
+
+To help find the best approach, let me know:
+
+- Are you converting **single strings** or deeply nested **object keys**?
+
+- Are you working in a **Node.js** environment or the **browser**?
+
+- Is minimizing **bundle size** a priority for this project?
+
+- [link](https://davidwalsh.name/javascript-replace)\
+  Replace All Occurrences of a String in JavaScript\
+  Sep 15, 2009 — The above code will only replace the first occurrence of "MooTools" -- not every occurrence like PHP's str\_replace() would. To rep...\
+  \
+  \
+  David Walsh Blog
+
+- [link](https://npmjs.com/package/camel-kit)\
+  camel-kit - npm\
+  Apr 21, 2025 — A lightweight and feature-rich utility library for bidirectional conversion between \*\*camelCase\*\* and \*\*snake\_case\*\*.. Latest vers...\
+  \
+  \
+  NPM
+
+- [link](https://github.com/StefanTerdell/change-case-ts)\
+  StefanTerdell/change-case-ts: Fully type-safe case changing of object keys and string literals in TypeScript · GitHub\
+  Change Case TS This library contains functions and types to convert strings, tuple members and property names from one case to ano...\
+  \
+  GitHub
+
+# vscode jsx emmet abbrv
+
+To use **Emmet abbreviations in JSX** inside [Visual Studio Code](https://code.visualstudio.com/docs/languages/emmet), you must map regular JavaScript files to recognize React JSX markup. When enabled, typing standard abbreviations will automatically generate the correct JSX syntax (such as converting `class` to `className`). [link](https://www.youtube.com/watch?v=Zg5NX8mDJdg)
+
+### Step 1: Enable Emmet for JSX
+
+1. Open your VS Code settings using `Ctrl + ,` (Windows) or `Cmd + ,` (Mac).
+2. Click the **Open Settings (JSON)** icon in the top right corner of the editor window.
+3. Add the `emmet.includeLanguages` configuration snippet inside the main object curly braces: [link](https://www.youtube.com/watch?v=Zg5NX8mDJdg)
+
+json
+
+```
+{
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "typescript": "typescriptreact"
+  },
+  "emmet.triggerExpansionOnTab": true
+}
+```
+
+Use code with caution.
+
+### Essential JSX Emmet Cheatsheet
+
+Once configured, typing an abbreviation and pressing `Tab` or `Enter` generates clean React components: [link](https://www.youtube.com/watch?v=ph65TPiNmKo)
+
+- **Classes and IDs**: `div.container#main` becomes `<div className="container" id="main"></div>`
+- **Nesting Elements**: `ul>li*3` becomes a list with three list items
+- **Sibling Elements**: `h1+p` outputs a heading immediately followed by a paragraph
+- **Text Insertion**: `a{Click Me}` outputs `<a href="">Click Me</a>` [link](https://stackoverflow.com/questions/50750263/trying-to-use-emmet-with-a-react-app-in-vs-code)
+
+### Pro-Tip: Wrapping Existing Code
+
+If you already have text or JSX written and want to wrap it in a parent container, you do not need to rewrite it. Highlight your block of code, open the Command Palette (`Ctrl + Shift + P` or `Cmd + Shift + P`), and choose **Emmet: Wrap with Abbreviation**. Type your wrapper layout (e.g., `div.wrapper-class`) and press `Enter`. [link](https://github.com/microsoft/vscode/issues/42085)
+
+Are you experiencing any **specific errors** when expanding snippets, or would you like to see examples of **advanced complex layouts**?
+
+- [link](https://dev.to/adiatiayu/emmet-for-jsx-in-vdcode-is-unstable-1o88)\
+  Emmet Abbreviation for JSX in VSCode is unstable\
+  Nov 25, 2021 — Emmet Abbreviation for JSX in VSCode is unstable. #discuss #vscode #productivity. Hello DEV Community ,. I have a problem that emm...\
+  DEV Community
+- [link](https://www.youtube.com/watch?v=Zg5NX8mDJdg)\
+  Code Faster in React JSX Using Emmet in VS Code\
+  Feb 8, 2023 — hi guys welcome back in this video I'm going to help you write React code faster you might have used tools like EMTT to write your...\
+  5:26\
+  YouTube·Rajesh Bhattarai
+- [link](https://www.youtube.com/watch?v=ph65TPiNmKo)\
+  Write Code Faster in React by Enabling Emmet for JSX in ...\
+  Sep 13, 2020 — yo what is up everyone. so today I'm going to show you how to enable emit in React and if you're not familiar with what EMTT is es...\
+  3:21\
+  YouTube·Brian Design
+
+Show all
+
+## can i change its behavior
+
+Yes, you can completely customize how Emmet behaves in VS Code. You can change how it triggers, how it formats the generated code, or even create your own custom abbreviations.
+
+Here are the most useful settings you can modify inside your `settings.json` file.
+
+### 1. Change How Emmet Triggers
+
+You can control what keys or actions expand your shortcuts.
+
+- **`"emmet.triggerExpansionOnTab": true`**: Allows you to press `Tab` to expand a shortcut.
+- **`"emmet.showExpandedAbbreviation": "never"`**: Prevents the preview popup from appearing while you type. (Options: `"always"`, `"never"`, `"inMarkupAndStylesheetFiles"`).
+- **`"emmet.showSuggestionsAsSnippets": true`**: Forces Emmet suggestions to show up at the top of your autocomplete list.
+
+### 2. Change Code Formatting (Attributes & Tags)
+
+You can force Emmet to format JSX tags exactly how your team prefers.
+
+json
+
+```
+{
+  "emmet.syntaxProfiles": {
+    "javascriptreact": {
+      "attr_quotes": "single",
+      "self_closing_tag": "xhtml"
+    }
+  }
+}
+```
+
+Use code with caution.
+
+- **`"attr_quotes": "single"`**: Changes output to use single quotes (`className='box'`) instead of double quotes.
+- **`"self_closing_tag": "xhtml"`**: Forces self-closing tags to include a space and a slash (like `<br />` instead of `<br>`).
+
+### 3. Create Custom Shortcuts (Snippets)
+
+If you want to type a short keyword and get a massive block of boilerplate code, you can define your own shortcuts.
+
+1. Create a file named `snippets.json` anywhere on your computer.
+
+2. Tell VS Code where to find it by adding this to your main settings:\
+   json
+
+<!---->
+
+```
+"emmet.extensionsPath": ["/path/to/your/folder"]
+```
+
+Use code with caution.
+3\. Inside your `snippets.json` file, define your custom JSX behavior:\
+json
+
+```
+{
+  "javascriptreact": {
+    "snippets": {
+      "rfc": "import React from 'react';\n\nexport const ${1:Component} = () => {\n\treturn (\n\t\t<div>${2}</div>\n\t);\n};"
+    }
+  }
+}
+```
+
+Use code with caution.
+
+Which specific behavior are you trying to adjust? I can give you the **exact configuration block** for your **indentation preferences**, **tag matching**, or **custom snippets**.
+
+## i mean to change its output for any given abbr
+
+To change the exact output of any built-in Emmet abbreviation (or create a completely new one), you must use a custom `snippets.json` file. This lets you override default HTML/JSX outputs so that typing a standard abbreviation generates your preferred code structure.
+
+### Step 1: Create Your Custom Snippets File
+
+Create a file named `snippets.json` in a permanent folder on your computer (for example, inside your main user directory or your project root).
+
+Paste the following structure into it. The `snippets` object defines shorthand overrides, while the `filters` string ensures it outputs clean JSX/React attributes like `className`:
+
+json
+
+```
+{
+  "javascriptreact": {
+    "filters": "jsx",
+    "snippets": {
+      "div": "div.my-default-class",
+      "btn": "button.btn.btn-primary[type='button']{Click}",
+      "img": "img[src='/placeholder.png' alt='']"
+    }
+  }
+}
+```
+
+Use code with caution.
+
+### Step 2: Link the File in VS Code Settings
+
+You must tell VS Code where to look for this file. Note that you provide the **path to the folder** containing the file, not the file itself.
+
+1. Open your global VS Code settings (`Ctrl + ,` or `Cmd + ,`).
+2. Search for **Emmet: Extensions Path**.
+3. Click **Add Item** and paste the absolute path to the **folder** where your `snippets.json` resides.
+
+_Alternatively, add it directly to your `settings.json`:_
+
+json
+
+```
+"emmet.extensionsPath": [
+  "/Users/yourusername/developer/emmet-custom"
+]
+```
+
+Use code with caution.
+
+### Step 3: Reload VS Code
+
+For Emmet to parse the new rules, restart VS Code or open the Command Palette (`Ctrl + Shift + P` or `Cmd + Shift + P`) and run:\
+👉 **Developer: Reload Window**
+
+### How it Works
+
+- **Overriding a tag**: In the example above, typing `div` and hitting `Tab` will automatically output `<div className="my-default-class"></div>` instead of a blank tag.
+- **Creating a new alias**: Typing `btn` will expand into a fully classed bootstrap button with default text.
+- **Adding variables**: You can use `${1}` or `${2}` inside your snippet strings to define where your typing cursor should land after you press tab.
+
+Would you like help writing a **specific abbreviation override**, or are you trying to map a **complex multi-line React layout** to a short key?
+
+## can i change its behavior. i mean, not foo, than a snippet, then make it specific. but foo.bar, foo#bar, foo + p, foo\[attr...], then tab
+
+No, **you cannot change Emmet's engine behavior for dynamic CSS combinations** (like `foo.bar`, `foo+p`, or `foo[attr]`) by using traditional snippets. [link](https://www.smashingmagazine.com/2021/06/custom-emmet-snippets-vscode/)
+
+Emmet works using a **lexer/parser engine**. Snippets can only map a single static word string (like `foo`) to an expansion. They cannot evaluate operators dynamically (like `.` or `+`) because the parser intercepts them first. [link](https://www.smashingmagazine.com/2021/06/custom-emmet-snippets-vscode/)
+
+However, depending on what exactly you are trying to accomplish with `foo`, there are two structural workarounds:
+
+### Workaround 1: Use an Element Alias (If `foo` maps to an actual HTML tag)
+
+If you want `foo` to always evaluate as a specific underlying HTML/JSX element (e.g., you want typing `foo.bar` to generate `<CustomComponent className="bar" />`), you can alias it in your `snippets.json`. [link](https://stackoverflow.com/questions/60247129/change-default-emmet-settings-in-vs-code)
+
+Because it maps to a tag name, Emmet's structural parser will still process `.`, `#`, `+`, and `[]` correctly: [link](https://www.smashingmagazine.com/2013/03/goodbye-zen-coding-hello-emmet/)
+
+json
+
+```
+{
+  "javascriptreact": {
+    "snippets": {
+      "foo": "CustomComponent"
+    }
+  }
+}
+```
+
+Use code with caution.
+
+**The result:**
+
+- Typing `foo.bar` ➡️ `<CustomComponent className="bar" />`
+- Typing `foo + p` ➡️ `<CustomComponent /> \n <p></p>`
+- Typing `foo[data-id='1']` ➡️ `<CustomComponent data-id='1' />` [link](https://www.youtube.com/watch?v=V8vizNQKtx0)
+
+### Workaround 2: Use Predefined Combinations
+
+If `foo` is not an HTML tag and you want an entirely custom CSS-like expansion structure, you have to hardcode the common operators manually into your `snippets.json`. Emmet allows you to use its own syntax language _inside_ the value of a snippet: [link](https://www.smashingmagazine.com/2021/06/custom-emmet-snippets-vscode/)
+
+json
+
+```
+{
+  "javascriptreact": {
+    "snippets": {
+      "foo": "div.default-foo",
+      "foo-bar": "div.foo.bar",
+      "foo-p": "div.foo + p",
+      "foo-attr": "div.foo[data-custom='value']"
+    }
+  }
+}
+```
+
+Use code with caution.
+
+**The result:**
+
+- Typing `foo-p` + `Tab` ➡️ `<div className="foo"></div>\n<p></p>` [link](https://www.smashingmagazine.com/2021/06/custom-emmet-snippets-vscode/)
+
+What is the exact target code you want `foo.bar` or `foo + p` to turn into? I can help you write the **exact syntax** or **alias mapping** required to match it. [link](https://stackoverflow.com/questions/60247129/change-default-emmet-settings-in-vs-code)
+
+- [link](https://www.smashingmagazine.com/2021/06/custom-emmet-snippets-vscode/)\
+  Creating Custom Emmet Snippets In VS Code — Smashing Magazine\
+  Jun 28, 2021 — You can customize Emmet to your preferences, automate repetitive tasks, and save time. To create a snippet, you need to: 1. Create...\
+  Smashing Magazine
+- [link](https://www.smashingmagazine.com/2013/03/goodbye-zen-coding-hello-emmet/)\
+  Goodbye, Zen Coding. Hello, Emmet! - Smashing Magazine\
+  Mar 26, 2013 — Easily Add Classes, IDs, Text And Attributes # Because Emmet's syntax for describing elements is similar to CSS selectors, getting...\
+  Smashing Magazine
+- [link](https://packagecontrol.io/packages/Emmet)\
+  Emmet - Sublime Package Control\
+  JSX support; CSS support; Disable abbreviation capturing. Tag preview; Adding custom Emmet snippets; More actions; FAQ about migra...\
+  Sublime Text Package Control
+
+Show all
+
+## does emmet abbr work as a builtin extension
+
+<mark><span>Yes, Emmet works<span> </span></span><strong>completely as a built-in core feature</strong><span> </span>inside Visual Studio Code</mark>. You do not need to download or install anything from the extension marketplace to use it. [link](https://code.visualstudio.com/docs/languages/emmet)
+
+Technically, VS Code treats it as a **"System Extension"**. Because it is bundled directly into the core code of the editor, its lifecycle behaves slightly differently than third-party extensions: [link](https://code.visualstudio.com/blogs/2017/08/07/emmet)
+
+### 🧱 Core Architecture Behavior
+
+- **Cannot Be Uninstalled:** You will never find a button to delete Emmet from your editor. It is hard-baked into the source.
+- **Can Be Disabled:** If you ever want it completely gone, you have to explicitly search your preferences for `Emmet: Disable` or turn off suggestion completions.
+- **Zero-Configuration Startup:** It is turned on by default for major web languages like HTML, CSS, SCSS, Less, JSX, and TypeScript. [link](https://code.visualstudio.com/docs/languages/emmet)
+
+### 🛠️ How to see it in your Extensions List
+
+If you want to view its version, settings, or temporarily disable it, you won't find it under your normal marketplace tab. Instead:
+
+1. Open your **Extensions** view (`Ctrl + Shift + X` or `Cmd + Shift + X`).
+2. Click the **Filter icon** (three horizontal lines) at the top right of the search box.
+3. Select **Built-in** from the dropdown menu.
+4. Expand the **Features** subheading, and you will see **Emmet** listed there as an internal system tool. [link](https://navanathjadhav.medium.com/10-vs-code-extensions-that-actually-save-you-hours-every-week-eedb968f5c8b)
+
+Are you running into an issue where **Emmet isn't showing up** in a specific file type, or are you trying to troubleshoot a conflict with another auto-complete extension?
+
+- [link](https://code.visualstudio.com/docs/languages/emmet)\
+  Emmet in Visual Studio Code\
+  Support for Emmet snippets and expansion is built right into Visual Studio Code, no extension required. Emmet 2.0 has support for ...\
+  Visual Studio Code
+- [link](https://code.visualstudio.com/blogs/2017/08/07/emmet)\
+  Emmet 2.0 in Visual Studio Code\
+  Aug 7, 2017 — To wrap individual lines in a single selection in separate tags, use the command Emmet: Wrap Individual Lines with Abbreviation in...\
+  Visual Studio Code
+- [link](https://www.youtube.com/watch?v=eLGDQVMbQlA)\
+  Code Faster in VSCode Using Emmet Abbreviations\
+  Sep 15, 2022 — today we're going to see how to increase your productivity with emit abbreviations. so here I'm inside Visual Studio Code. and EMT...\
+  9:09\
+  YouTube·Fabio Musanni - Programming Channel
+
+Show all
+
+## can i create an extension and turn the official one off, to change its behavior as said, how easy is it
+
+**Yes, you can do this**, but creating a full extension is much harder than you might think. Building it from scratch requires an intermediate understanding of [VS Code Extension API architecture](https://code.visualstudio.com/api).
+
+Because Emmet is an open-source engine (`@emmetio/abbreviation`), you can completely bypass it to write your own custom parser.
+
+***
+
+### Step 1: Turn off the official Emmet behavior (Easy)
+
+Instead of completely disabling the system extension—which might remove core commands you still want—you can safely block Emmet from intercepting abbreviations in your target languages.
+
+Add these entries to your global `settings.json` file: [link](https://stackoverflow.com/questions/61119052/how-do-you-turn-off-emmet-abbreviations-entirely)
+
+json
+
+```
+{
+  "emmet.showExpandedAbbreviation": "never",
+  "emmet.excludeLanguages": [
+    "javascriptreact",
+    "typescriptreact"
+  ]
+}
+```
+
+Use code with caution.
+
+This isolates the workspace, ensuring the built-in engine never triggers for React/JSX. [link](https://stackoverflow.com/questions/61119052/how-do-you-turn-off-emmet-abbreviations-entirely)
+
+***
+
+### Step 2: How hard is it to build the custom replacement? (Moderate to Hard)
+
+Creating a custom extension requires generating a basic extension scaffold, mapping a completion provider, and using a RegEx lexer to parse strings like `foo.bar` dynamically.
+
+#### 1. Setup the project
+
+You must install Node.js and run the [official Yeoman extension generator](https://code.visualstudio.com/api/get-started/your-first-extension) via your terminal:
+
+bash
+
+```
+npm install -g yo generator-code
+yo code
+```
+
+Use code with caution.
+
+_(Select a JavaScript or TypeScript extension project)_
+
+#### 2. Declare the extension trigger
+
+In your new project's `package.json` file, tell VS Code to activate your extension only when a user edits JavaScript React files:
+
+json
+
+```
+"activationEvents": [],
+"contributes": {
+  "completionItemProviders": [
+    {
+      "language": "javascriptreact",
+      "triggerCharacters": [".", "#", "+", "["]
+    }
+  ]
+}
+```
+
+Use code with caution.
+
+#### 3. Write the Custom Parser Logic
+
+Inside your extension's `extension.js` (or `src/extension.ts`), register a `CompletionItemProvider`. This interceptor analyzes the typed text dynamically right before the cursor, evaluating operations like `foo.bar` or `foo+p`:
+
+javascript
+
+```
+const vscode = require('vscode');
+
+function activate(context) {
+    let provider = vscode.languages.registerCompletionItemProvider('javascriptreact', {
+        provideCompletionItems(document, position) {
+            // Get the current line text up to the cursor position
+            const linePrefix = document.lineAt(position).text.substr(0, position.character);
+
+            // RegEx matching "foo" followed by a dot, hash, plus, or bracket
+            const match = linePrefix.match(/foo([.#+\[][\w\d=-='"]*)+$/);
+            if (!match) return undefined;
+
+            const fullMatchString = match[0]; // e.g., "foo.bar"
+
+            // Your custom engine logic splits and parses the tokens manually
+            let resolvedJSX = customLexerEngine(fullMatchString);
+
+            // Create the auto-complete suggestion box item
+            const completionItem = new vscode.CompletionItem(fullMatchString, vscode.CompletionItemKind.Snippet);
+            completionItem.insertText = new vscode.SnippetString(resolvedJSX);
+            completionItem.documentation = new vscode.MarkdownString("Custom dynamically evaluated JSX layout.");
+
+            // Set range to completely overwrite the typed "foo.bar" prefix text
+            const startPosition = position.translate(0, -fullMatchString.length);
+            completionItem.range = new vscode.Range(startPosition, position);
+
+            return [completionItem];
+        }
+    }, '.', '#', '+', '['); // Listen natively to those exact character inputs
+
+    context.subscriptions.push(provider);
+}
+
+// Example representation of your specialized tokenizer
+function customLexerEngine(rawString) {
+    if (rawString.includes('.bar')) {
+        return '<CustomComponent className="bar">${1}</CustomComponent>';
+    }
+    if (rawString.includes('+ p')) {
+        return '<CustomComponent>${1}</CustomComponent>\n<p>${2}</p>';
+    }
+    return '<CustomComponent />';
+}
+
+function deactivate() {}
+
+module.exports = { activate, deactivate };
+```
+
+Use code with caution.
+
+#### 4. Run and Test
+
+Press `F5` inside your extension project window. A separate, temporary **Extension Development Host** instance of VS Code will launch with your custom provider running safely. Open a `.jsx` file, type `foo.bar`, and your personalized layout option will instantly appear over standard autocompletes.
+
+***
+
+### Is it worth it?
+
+- **Build Time**: Roughly **1 to 3 hours** to code a clean, robust JavaScript snippet engine using standard String and RegEx manipulation.
+- **Maintenance**: High. You have to maintain your own edge-case rules for nested trees, cursor focus positions (`${1}` tokens), and brace closures.
+
+If you are trying to write a specific **React Framework framework or design token layer** across an entire company codebase, building this extension is highly beneficial. If it is only for personal use, hardcoding combinations inside a `snippets.json` config is much faster. [link](https://stackoverflow.com/questions/60247129/change-default-emmet-settings-in-vs-code)
+
+Would you like help setting up the **exact RegEx loop** needed to handle nested syntax chains like `foo.bar[attr]+p`, or do you want to explore publishing it to the marketplace?
+
+- [link](https://github.com/sveltejs/language-tools/issues/2125)\
+  A one line change to add Emmet support in VSCode #2125\
+  Aug 11, 2023 — Description In VSCode, type something like div.foo in an html file, then press tab, it should expand to . This is because Emmet is...\
+  GitHub
+- [link](https://stackoverflow.com/questions/60247129/change-default-emmet-settings-in-vs-code)\
+  Change default Emmet settings in VS Code - Stack Overflow\
+  Feb 16, 2020 — 2 Answers. Sorted by: 1. According to official documentation you can add or overwrite the contents of default Emmet snippets in VS...\
+  Stack Overflow
+- [link](https://stackoverflow.com/questions/61119052/how-do-you-turn-off-emmet-abbreviations-entirely)\
+  How do you turn off Emmet abbreviations entirely?\
+  Apr 9, 2020 — \* 1 Answer. Sorted by: 21. You can turn emmet off in suggestions completely with: { "emmet.showExpandedAbbreviation": "never" } Yo...\
+  Stack Overflow
+
+Show all
+
+# . thinking
+
+use snippet.

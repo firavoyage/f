@@ -65,7 +65,6 @@ export function App() {
       <Sidebar items={list} focused={focused} set_focused={set_focused}>
       </Sidebar>
       <Main></Main>
-      <div {...p({ foo: true, 'stroke-width': "2", class: 'foo' })}></div>
     </div>
   </>
 }

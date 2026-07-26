@@ -508,6 +508,18 @@ ref:
   //     "} $0"
   //   ],
   // },
+  "props": {
+    "prefix": [
+      "p",
+      "pr",
+      "pro",
+      "prop",
+      "props",
+    ],
+    "body": [
+      "{...p({ $0 })}",
+    ],
+  },
   "use state": {
     "prefix": [
       "us",
