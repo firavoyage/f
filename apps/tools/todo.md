@@ -104,5 +104,10 @@ fix sidebar
 
 when collapsed, the outline still can be visible.
 
-enlarge neg margin l, or take a more ele
+enlarge neg margin l, or take a more elegant approach.
+
+---
+
+decide to make text selectability opt in.
+
 
