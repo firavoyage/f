@@ -329,5 +329,9 @@ how to use class instead of classname in react
 
 it could be less than 20min in code, but it takes time to research react arbitary rules.
 
+20 00 research google ai mode content filter.
+
+
+
 
 
