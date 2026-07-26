@@ -254,6 +254,7 @@ web: <!-- frontend, web, ts/js -->
 - pwa poc
 - css dialects sass less stylus
 - icon library
+- react props lib
 
 backend:
 
