@@ -349,5 +349,10 @@ for boolean, omit false, make true "true".
 
 create a snippet for it.
 
+---
+
+i think whether or not i could, i will not let it autocomplete all possible attrs. first i dont have autocomplete when i type `{...{}}` (until i type the first letter), unlike css prop values. so i wont know what's there. and it's too massive and noisy. i would not need most generally.
+
+solution: leverage llms (mdn backed) to know the attrs. stay above raw elements most time.
 
 
