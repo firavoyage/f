@@ -331,15 +331,18 @@ it could be less than 20min in code, but it takes time to research react arbitar
 
 20 00 research google ai mode content filter and actual system prompt. 
 
+no idea how meaningful it was.
+
+curiosity. **gravitated and spellbound.**
+
 20 20 design props middle ware.
 
 support string, array, and object for both class and classname.
 
-support string and object style.
+support string and object style. lib: `inline-style-parser`
 
 if not started w data or aria, normalize kebab case. (snake case doesnt err)
 
 for boolean, omit false, make true "true".
-
 
 

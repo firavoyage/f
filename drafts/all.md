@@ -844,8 +844,9 @@ humility:
 - research gpt sol ultra
 - research ai industry financial sustainability
 - research google ai mode text styling
-- research google ai mode
+- research google ai mode context stripping
 - research chatgpt sol dgg math
+- research google ai mode content filter and actual system prompt
 
 legacy:
 
