@@ -313,7 +313,7 @@ the tradeoff of linking snippets is... vscode couldnt detect file changes to rel
 
 18 40 create snippet use toggle, deconstruct array. (19 00)
 
-19 00 decide to create a middleware for props.
+19 00 decide to create a middleware for props. (20 00)
 
 yes. class > classname. theme > data-theme (both, under the hood). attr: false then do not make a presence at all.
 
@@ -324,5 +324,10 @@ it would be incompatible w llms wo heavy prompting. but it would be fine.
 ---
 
 how to use class instead of classname in react
+
+---
+
+it could be less than 20min in code, but it takes time to research react arbitary rules.
+
 
 
