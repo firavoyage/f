@@ -62,8 +62,7 @@ export function App() {
     <title>tools</title>
 
     <div className="app">
-      <Sidebar items={list} focused={focused} set_focused={set_focused}>
-      </Sidebar>
+      <Sidebar items={list} focused={focused} set_focused={set_focused}></Sidebar>
       <Main></Main>
     </div>
   </>
