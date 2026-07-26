@@ -5793,4 +5793,20 @@ component {
 
 # . thinking
 
-it definitely
+yeah, sync use_persist are conceptually global by default.
+
+but it will definitely sit in js.
+
+use persist: deserialize get, serialize set, <!-- virtually --> must sync (to avoid race cond)
+
+persistent global state: direct get, direct set (best effort localstorage/idb sync), effective async (set timeout, localstorage) or true async (idb).
+
+though, within one cpu core, it's thread based async. but you dont have to care these. it's responsive anyway.
+
+---
+
+i will absolutely have a persist flag. why not. it's not boolean. it's a string of the localstorage key. e.g. tools.
+
+it works modularly under the hood, just like approach ii.
+
+
