@@ -5821,5 +5821,25 @@ could have: support array first arg
 
 wo useToggle, get: call get. set: call set.
 
-w useToggle, pass get as the initial value of 
+w useToggle, pass get as the initial value of useToggle. get: on. set: toggle. well, how can i set, if both get and set are blackboxes? ok, to make it work, i must assume on is exactly what's stored. and set(exact value) will work as expected. i will subscribe global state change to toggle(value). and use effect on on, set state as on. 
+
+by doing so, it would almost make it use toggle specific. anyway, you should do it explicitly if not.
+
+you can use state is_visible and use toggle, and use effect. but then you couldnt update glboal state elsewhere.
+
+---
+
+let's review the prototype pseudo code.
+
+done. it's clear. 
+
+i need these from react:
+
+- an update only use state
+- mount, unmount lifecycle callbacks
+- check whether it's inside a react component
+
+easy.
+
+---
 

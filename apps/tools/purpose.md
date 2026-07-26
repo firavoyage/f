@@ -359,4 +359,16 @@ solution: leverage llms (mdn backed) to know the attrs. stay above raw elements 
 
 see 20260719 intuitive web react state management usecontext zustand jotai custom hook.md
 
+05 00 make styling opt in.
+
+using a button tag doesnt mean it's a button. it should have no border radius by default.
+
+sidebar item shouldnt have a regular outline. it doesnt have to be consistent. (see chromium devtools)
+
+ideal: all focusable items have focus style. none uses default browser style. each uses what fits.
+
+i could not achieve the ideal. i could not make all focusable items properly styled before knowing what they are to decide what fits.
+
+what i can do, is, to reset the ugly browser fallback, and remove the blue ring baseline.
+
 
