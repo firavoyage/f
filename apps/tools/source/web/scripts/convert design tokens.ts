@@ -147,15 +147,13 @@ function convert(design_yaml: string) {
 
   type tokens = Record<string, string>
 
-  const contexts: Record<string, {
+  type context = {
     type: string
     is_default: boolean,
     tokens: tokens
-  }> & Record<'root', {
-    type: string
-    is_default: boolean,
-    tokens: tokens
-  }> = {
+  }
+
+  const contexts: Record<string, context> & Record<'root', context> = {
     root: {
       type: 'root',
       is_default: true,

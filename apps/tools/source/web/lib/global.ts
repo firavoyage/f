@@ -9,6 +9,7 @@ import * as handle from 'lib/handle';
 import 'web/lib/react';
 import * as react from 'react';
 import * as react_use from 'react-use';
+import * as p from 'web/lib/props';
 
 type use = typeof use
 declare global {
@@ -30,4 +31,4 @@ use(each)
 use(handle)
 use(react)
 use(react_use)
-
+use(p)
