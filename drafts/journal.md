@@ -47730,6 +47730,18 @@ it's not quite compatible w touchpad either. put it away for a while.
 
 19 00 work on app tools.
 
+02 40 try to understand double elim tournament rules.
+
+well, it's simple. (there seems to be some rendering categorization mistakes on supercell crl site, where one upper semis fall into the lower bracket, while the other one of equivalent state does not.)
+
+at fisrt you have some players. for each round, let them compete. then half will have two lives rem. the other half will have one. compete again for the lower. then half two, a quarter one, a quater done.
+
+let the upper compete. then, a quarter two. half one. compete again for the lower. a quarter two, a quarter one. that's exactly the initial state after round one (half two, half one). wait, should they (the lower) compete again? yes. now, a quarter two, one eighth one. let's say a quarter is four. and one eighth is two.
+
+the upper compete. then, two two, four one. lower compete. then, two two, two one. so they should compete again. two two, one one.
+
+continue. upper. one two, two one. lower. one two, one one. 
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
