@@ -355,7 +355,7 @@ i think whether or not i could, i will not let it autocomplete all possible attr
 
 solution: leverage llms (mdn backed) to know the attrs. stay above raw elements most time.
 
-03 20 research, design, and write global persistent state management lib.
+03 20 research and design ~~, and write~~ global persistent state management lib.
 
 see 20260719 intuitive web react state management usecontext zustand jotai custom hook.md
 
