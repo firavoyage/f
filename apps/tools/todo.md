@@ -40,7 +40,7 @@ shortcuts. <!-- just let it bind. -->
 
 ---
 
-design the params and return of component
+design params and return of each component
 
 ---
 

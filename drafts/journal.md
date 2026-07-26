@@ -47753,6 +47753,8 @@ generally, upper lower lower. it seems the bracket reset can fit. it doesnt have
 
 molight loves playing. four in a row.
 
+03 20 work on state management lib.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->

@@ -5791,3 +5791,6 @@ component {
 
 # 
 
+# . thinking
+
+it definitely
