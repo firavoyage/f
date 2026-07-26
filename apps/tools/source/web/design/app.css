@@ -18,7 +18,6 @@ textarea {
   padding: var(--spacing-1);
 
   &:focus-visible {
-    border-radius: var(--radius-xs);
     outline: var(--radius-xs) solid var(--color-bg-selection);
   }
 }
