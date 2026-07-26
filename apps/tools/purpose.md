@@ -337,7 +337,7 @@ curiosity. **gravitated and spellbound.**
 
 20 20 design props middle ware.
 
-support string, array, and object for both class and classname.
+support string, array, and object for both class and classname. lib: `clsx`. for array, pass as `clsx(...arr)` (maybe array of classes, maybe args i.e. a mix of types).
 
 support string and object style. lib: `inline-style-parser`
 

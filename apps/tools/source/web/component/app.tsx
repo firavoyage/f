@@ -15,7 +15,7 @@ export const tools = {
     fn(json: string) {
       const result = handle(() => JSON.parse(json))
 
-      if(is_error(result)){
+      if (is_error(result)) {
         return ''
       }
 
@@ -65,7 +65,7 @@ export function App() {
       <Sidebar items={list} focused={focused} set_focused={set_focused}>
       </Sidebar>
       <Main></Main>
-      <div {...p({'data-foo': true, 'strokeWidth':"2"})}></div>
+      <div {...p({ foo: true, 'stroke-width': "2", class: 'foo' })}></div>
     </div>
   </>
 }
