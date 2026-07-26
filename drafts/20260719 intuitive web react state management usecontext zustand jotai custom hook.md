@@ -5809,4 +5809,17 @@ i will absolutely have a persist flag. why not. it's not boolean. it's a string 
 
 it works modularly under the hood, just like approach ii.
 
+---
+
+use atom is completely nonsensical. you can say use foo for use atom foo. use bar for use atom bar.
+
+well, useToggle hook doesnt seem quite willing to receive state set state. so as most hooks i guess.
+
+for simplicity i assume you have one level native js nesting. one level is everything, yk.
+
+could have: support array first arg
+
+wo useToggle, get: call get. set: call set.
+
+w useToggle, pass get as the initial value of 
 

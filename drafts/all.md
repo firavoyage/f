@@ -747,6 +747,7 @@ rhetoric:
 - texting acronyms wdyt wdym wyd tbh imo lmk idk iykyk
 - catch twenty two
 - kids are dangerous
+- interesting facts
 
 laws:
 
