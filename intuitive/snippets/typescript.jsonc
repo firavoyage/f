@@ -89,7 +89,7 @@ ref:
   "deconstruct array const": {
     "prefix": "da",
     "body": [
-      "const [${1:name}, ${2:set_}${1:name}] = ${0}"
+      "const [${1:name}, ${2:set_}${1:name}] = ${0:use_}"
     ],
   },
   "export const": {
