@@ -329,9 +329,17 @@ how to use class instead of classname in react
 
 it could be less than 20min in code, but it takes time to research react arbitary rules.
 
-20 00 research google ai mode content filter.
+20 00 research google ai mode content filter and actual system prompt. 
 
+20 20 design props middle ware.
 
+support string, array, and object for both class and classname.
+
+support string and object style.
+
+if not started w data or aria, normalize kebab case. (snake case doesnt err)
+
+for boolean, omit false, make true "true".
 
 
 
