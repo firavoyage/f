@@ -47720,7 +47720,7 @@ copying is easy. fighting is hard.
 
 26
 
-18 00 try on thick gloves.
+18 00 try on thick <!-- not really, it's nylon based, categorized as thin --> gloves.
 
 the gloves are worn out.
 
