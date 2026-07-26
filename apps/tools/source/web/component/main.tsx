@@ -8,7 +8,7 @@ export function Main() {
 
   useEffect(() => {
     set_output(tools.json_to_yaml.fn(input))
-  })
+  }, [input])
 
   return <div className="main">
     <Textarea value={input} set_value={set_input}></Textarea>
