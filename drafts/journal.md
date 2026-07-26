@@ -47718,6 +47718,16 @@ copying is easy. fighting is hard.
 
 23 00 watch `When 1800's Fight Back!! | Chess Rating Climb 1820 Rapid ELO`. (23 20)
 
+26
+
+18 00 try on thick gloves.
+
+the gloves are worn out.
+
+it's a bit wet i feel. maybe it's affected by the water bottle in the backpack. well it is, i can see the trail clearly on laptop keyboard.
+
+it's not quite compatible w touchpad either. put it away for a while.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
