@@ -47740,7 +47740,18 @@ let the upper compete. then, a quarter two. half one. compete again for the lowe
 
 the upper compete. then, two two, four one. lower compete. then, two two, two one. so they should compete again. two two, one one.
 
-continue. upper. one two, two one. lower. one two, one one. 
+continue. upper. one two, two one. lower. one two, one one. if the upper win, one two, zero one, game. other wise, zero two, two one. bracket reset.
+
+- first, compete, make it (all two) half two, half one.
+- if half two, half one, then lower compete, make it half two, a quarter one.
+- if half two, a quarter one, then upper compete, make it a quarter two, half one
+- if a quarter two, half one, then lower compete, make it a quarter one, a quarter one.
+- see a quarter one, a quarter one as half half.
+- when one two, one one, the upper meets the lower. special rule.
+
+generally, upper lower lower. it seems the bracket reset can fit. it doesnt have to be special. if the lower is a fake upper, one. otherwise, two.
+
+molight loves playing. four in a row.
 
 
 
