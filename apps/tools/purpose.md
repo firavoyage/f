@@ -401,7 +401,7 @@ today:
 - sidebar overlay variant. fix toggle.
 - research cyberchef, online converters. think about features & ui prototype.
 
-~~19 00~~ 19 40 write state management lib. ~~(19 40)~~ ~~(20 20)~~
+~~19 00~~ 19 40 write state management lib. ~~(19 40)~~ ~~(20 20)~~ 22 40
 
 i just wanna hand code it.
 
@@ -418,5 +418,7 @@ seems i was motivated by aggressive phrasing of risks, leading to over engineeri
 ---
 
 ts resets type narrowing, even if you define the fn right inside an if.
+
+just ignore rather than "foo as sth". it's ts's problem, rather than sth to be declared explicitly.
 
 
