@@ -13,6 +13,11 @@ type RelaxedProps<T> = {
   [key: string]: any;
 };
 
+/**
+ * flexible react props/attrs
+ * 
+ * idempotent
+ */
 export function p<Tag extends keyof React.JSX.IntrinsicElements>(
   props: RelaxedProps<React.JSX.IntrinsicElements[Tag]>
 ): any {
@@ -32,7 +37,10 @@ export function p<Tag extends keyof React.JSX.IntrinsicElements>(
     } else {
       if (key.startsWith('data-') || key.startsWith('aria-')) {
         converted_props[key] = value
-      } else {
+      } else if (key.startsWith('on')) {
+        const normalized_key = key.slice(0, 2) + key[2].toUpperCase() + key.slice(3)
+        converted_props[normalized_key] = value
+      }  else {
         const normalized_key = camel_case(key)
 
         if (typeof value == 'boolean') {

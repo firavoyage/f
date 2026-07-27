@@ -10,9 +10,7 @@ export default function Textarea({ value, set_value, ...props }: TextareaProps) 
 
   return (
     <textarea
-      value={value}
-      onChange={handle_change}
-      {...props}
+      {...p({ class: 'textarea', value, onchange: handle_change, ...props })}
     />
   );
 }
