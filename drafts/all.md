@@ -718,6 +718,7 @@ society: <!-- sociology -->
 - closeted homophobe transphobe
 - demography chess go
 - demography fps csgo valorant
+- tv more criticism than filmography
 
 rhetoric:
 

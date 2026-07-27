@@ -1,13 +1,16 @@
 import { bind, unbind } from 'web/lib/keyboard';
 import { useEffect } from 'react';
 
-export function use_bind(shortcut: string, action: (event: KeyboardEvent) => void, { prevent_default } = { prevent_default: true }) {
+export function use_bind(shortcut: string, action: (event: KeyboardEvent) => void, options = { prevent_default: true, stop_propagation: true, global: true }) {
+  const { prevent_default, stop_propagation, global } = options
+
   useEffect(() => {
-    const shortcutid = prevent_default ? bind(shortcut, (e) => {
-      log(1)
-      e.preventDefault()
+    const shortcutid = bind(shortcut, (e) => {
+      prevent_default && e.preventDefault?.()
+      stop_propagation && e.stopPropagation?.()
+
       action(e)
-    }) : bind(shortcut, action)
+    }, global)
 
     return () => unbind(shortcutid)
   })
