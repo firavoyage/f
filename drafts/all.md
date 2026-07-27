@@ -315,6 +315,7 @@ desktop:
 - shell ffmpeg abstraction tput colors
 - obs restream multi platform simultaneous streaming
 - mac mouse fix
+- vscode fix css variable autocomplete langs
 
 android:
 
