@@ -9202,5 +9202,23 @@ it doesnt diff? it proxies?
 
 how many loc does immer (react lib) have
 
+<!-- it's not any lightweight -->
 
+how many loc does immer (react lib) have, what does each do
+
+how many loc does immer (react lib) have for each feature
+
+<!-- ok. 300 to 400 loc is reasonable, considering the jsdoc, i guess, and professional boilerplates -->
+
+ok, it's just to bypass rerender + vdom diffing. it's cheap. do not over engineer.
+
+---
+
+i will definitely choose the react internal apis. react should have exposed them. and i can absolutely lock its version and alter *it*, instead of me.
+
+it's always true that things should adapt to humans, not vice versa.
+
+---
+
+ 
 

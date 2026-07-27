@@ -401,7 +401,7 @@ today:
 - sidebar overlay variant. fix toggle.
 - research cyberchef, online converters. think about features & ui prototype.
 
-~~19 00~~ 19 40 write state management lib. ~~(19 40)~~ (20 20)
+~~19 00~~ 19 40 write state management lib. ~~(19 40)~~ ~~(20 20)~~
 
 i just wanna hand code it.
 
