@@ -9232,4 +9232,30 @@ but if they close the page immediately before serialization, it will definitely 
 
 ---
 
+it shouldnt halt current run if state updates again. 
+
+what if there is a milisec timer, and the user toggles theme?
+
+(btw you shouldnt persist the milisec timer. better to have a separate global storage, like use_time)
+
+it should run to the end. and if needed, it runs again for the latest state.
+
+when set, if is_syncing, set should_sync_again true, otherwise sync.
+
+when sync, set is_syncing true. at the end, if should sync again, then toggle it off and sync again, otherwise is syncing false.
+
+there wouldnt be race cond. you cant toggle it off wo scheduling a sync. max one concurrent sync, as only set can trigger sync and the flag is on immediately before the next event listener (i.e. another set). should sync again cant be true when is syncing is false, as only set can turn it on and it's immediately after is syncing true check. sync complete from anywhere else couldnt interfere. sync callstack has the highest priority.
+
+---
+
+wait. what if the data isnt an object at all.
+
+im definitely over engineering. serialization is fast enough most time.
+
+just store them in one.
+
+---
+
+now it's easy. i will keep both of the flags though.
+
 

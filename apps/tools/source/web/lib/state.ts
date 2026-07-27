@@ -27,38 +27,34 @@ function is_inside_react() {
  * path can not exceed one nesting level
  * 
  * local storage sync is best effort. 
+ * it performs a complete sync, w nested set time out for each key, before the next one
  */
 export function state<T extends NonFunction>(initial: T, { persist }: { persist?: string } = {}) {
   let data = initial
+  const subs: Set<Function> = new Set()
+  let is_syncing = false
+  let should_sync_again = false
 
-  function init() {
-    // @ts-expect-error 
-    const keys_string = localStorage.getItem(persist)
+  if (is_given(persist) && has(globalThis, 'localStorage')) {
+    const key = localStorage.getItem(persist)
 
-    if (!is_given(keys_string)) {
+    if (!is_given(key)) {
       return
     }
 
-    const keys: string[] = parse(keys_string)
-
-    for (const key of keys) {
-      const item = localStorage.getItem(`${persist}.${key}`)
-
-      if (!is_given(item)) {
-        continue
-      }
-
-      // even though things will be converted to strings, json will normalize it
-      // e.g. JSON.parse(JSON.stringify(1)), JSON.parse(JSON.stringify("1"))
-      data[key] = parse(item)
-    }
+    data = parse(key)
   }
 
-  if (is_given(persist) && has(globalThis, 'localStorage')) {
-    init()
-  }
+  function sync() {
+    is_syncing = true
 
-  const subs: Set<Function> = new Set()
+    setTimeout(function () {
+      // @ts-expect-error 
+      localStorage.setItem(persist, stringify(data))
+
+      
+    }, 0)
+  }
 
   function set(new_value: T | ((old_value: T) => T), path?: string) {
     if (is_given(path)) {
@@ -85,6 +81,16 @@ export function state<T extends NonFunction>(initial: T, { persist }: { persist?
 
     for (const sub of subs) {
       sub()
+    }
+
+    if (is_given(persist)) {
+      if (is_syncing) {
+        should_sync_again = true
+      } else {
+        setTimeout(function () {
+          sync()
+        }, 0)
+      }
     }
   }
 

@@ -415,5 +415,8 @@ well maybe not. i think the best prac is to await network, fs, etc. and make all
 
 seems i was motivated by aggressive phrasing of risks, leading to over engineering concerns.
 
+---
+
+ts resets type narrowing, even if you define the fn right inside an if.
 
 
