@@ -47763,6 +47763,14 @@ molight loves playing. four in a row.
 
 look forward. <!-- ~~never look back.~~ -->
 
+22 20 dream.
+
+it suddenly comes to my mind.
+
+**aops**
+
+the narrative voice of the book, is demanding, but encouraging. it believes you.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->

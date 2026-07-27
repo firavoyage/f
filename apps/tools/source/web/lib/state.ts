@@ -52,7 +52,12 @@ export function state<T extends NonFunction>(initial: T, { persist }: { persist?
       // @ts-expect-error 
       localStorage.setItem(persist, stringify(data))
 
-      
+      if (should_sync_again) {
+        should_sync_again = false
+        sync()
+      } else {
+        is_syncing = false
+      }
     }, 0)
   }
 
@@ -87,9 +92,7 @@ export function state<T extends NonFunction>(initial: T, { persist }: { persist?
       if (is_syncing) {
         should_sync_again = true
       } else {
-        setTimeout(function () {
-          sync()
-        }, 0)
+        sync()
       }
     }
   }
@@ -128,6 +131,3 @@ export function state<T extends NonFunction>(initial: T, { persist }: { persist?
 
   return result
 }
-
-
-
