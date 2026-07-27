@@ -80,7 +80,9 @@ export default defineConfig(
 
       // do not show errors halfway writing
       "no-empty": "off",
+      'no-useless-assignment': 'off',
 
+      // avoid hidden timing issues
       "@typescript-eslint/no-floating-promises": "error",
       
       // throw 'foo' has no stack trace

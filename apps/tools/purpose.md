@@ -429,8 +429,10 @@ when inside textarea, ctrl b doesnt work.
 
 maybe it's to prevent default. decide to opt in or opt out.
 
-04 40 adopt state lib. test and fix.
+04 40 adopt state lib. test and fix. 05 00
 
 move global prelude to the absolute beginning.
+
+05 00 create sidebar overlay variant. (05 20)
 
 
