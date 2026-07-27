@@ -47773,7 +47773,7 @@ the narrative voice of the book, is demanding, but encouraging. it believes you.
 
 28
 
-02 40 dl identity v. pass through on quick <!-- temp --> gaming w fake (but real) id, through scrcpy.
+02 40 dl identity v. pass through on quick <!-- temp --> gaming w fake (but real) id, through scrcpy. name as `yanineko`. setup the account.
 
 i just feel i want a boring game. <!-- not that boring. i mean. not sth like df or gok. -->
 
@@ -47785,7 +47785,11 @@ just play it for a while.
 
 i also like anime games. but they are not games at all. they are essentially visual novels.
 
-<!-- the one of xuegao cheese doesnt work.  -->
+<!-- the one of xuegao cheese doesnt work. a random adult works. -->
+
+<!-- to my surprise i can claim this id. -->
+
+things have changed these years. not much. but everywhere.
 
 
 
