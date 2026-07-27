@@ -411,4 +411,9 @@ i did some research out of curiosity. it would pay off i guess. like, what if i 
 
 well maybe not. i think the best prac is to await network, fs, etc. and make all others sync.
 
+---
+
+seems i was motivated by aggressive phrasing of risks, leading to over engineering concerns.
+
+
 

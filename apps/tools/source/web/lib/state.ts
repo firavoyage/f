@@ -1,7 +1,16 @@
-type NonFunction = object & { [K in any]: any } & { (): never; new (): never };
+type NonFunction = all & { [K in any]: any } & { (): never; new(): never };
+// type NonFunction<T> = T extends Function ? never : T;
 
 function use_update() {
-  const [name, toggle_name] = useToggle({: false})
+  const [, update] = useState(false)
+
+  return () => update(v => !v)
+}
+
+function is_inside_react() {
+  // @ts-expect-error things should adapt to humans
+  const internals = React.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE || React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+  return !!internals?.ReactCurrentDispatcher?.current;
 }
 
 /**
@@ -12,9 +21,15 @@ function use_update() {
  * do not accept fn value
  * 
  * a setter fn must not return undefined
+ * 
+ * path can not exceed one nesting level
  */
-export function state<T extends NonFunction>(initial: T, options: {persist?: string} = {}) {
+export function state<T extends NonFunction>(initial: T, { persist }: { persist?: string } = {}) {
   let data = initial
+
+  if () {
+    
+  } 
 
   const subs: Set<Function> = new Set()
 
@@ -24,22 +39,46 @@ export function state<T extends NonFunction>(initial: T, options: {persist?: str
 
       if (typeof result != 'undefined') {
         data = result
-      } 
+      }
     } else {
       data = new_value
-    } 
+    }
 
     for (const sub of subs) {
-      sub()      
+      sub()
     }
   }
 
-  function subscribe(listener) {
+  function subscribe(listener: Function) {
     subs.add(listener)
   }
 
   function result(path?: string) {
-    
+    const update = use_update()
+
+    useEffect(() => {
+      subs.add(update)
+
+      return () => { subs.delete(update) }
+    })
+
+    return [is_given(path) ? data[path] : data, set]
   }
+
+  result.get = function (path?: string) {
+    if (is_inside_react()) {
+      return result(path)[0]
+    } else {
+      return is_given(path) ? data[path] : data
+    }
+  }
+
+  result.set = set
+
+  result.sub = subscribe
+
+  return result
 }
+
+
 
