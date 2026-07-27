@@ -26,6 +26,10 @@ export const tools = {
 
 const list = ["yaml", "json", "toml"]
 
+export const use_global = state({
+  is_sidebar_on: true
+}, { persist: 'tools' })
+
 export function App() {
   const [focused, set_focused] = useState(0)
 
