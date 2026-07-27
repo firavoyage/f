@@ -136797,3 +136797,23 @@
 2026-07-27 20:57:02+08:00 code ● state.ts - f (Workspace) - Visual Studio Code
 2026-07-27 20:58:02+08:00 code typescript.jsonc - f (Workspace) - Visual Studio Code
 2026-07-27 20:59:02+08:00 code ● state.ts - f (Workspace) - Visual Studio Code
+2026-07-27 21:00:02+08:00 code ● state.ts - f (Workspace) - Visual Studio Code
+2026-07-27 21:01:02+08:00 code ● state.ts - f (Workspace) - Visual Studio Code
+2026-07-27 21:02:02+08:00 chromium react useeffect Argument of type '() => () => boolean' is not assignable to parameter of type 'EffectCallback'. Type '() => boolean' is not assignable to type 'void | Destructor'. Type '() => boolean' is not assignable to type 'Destructor'. Type 'boolean' is not assignable to type 'void | { [UNDEFINED_VOID_ONLY]: never; }'. - Google Search - Chromium
+2026-07-27 21:03:02+08:00 chromium react useeffect Argument of type '() => () => boolean' is not assignable to parameter of type 'EffectCallback'. Type '() => boolean' is not assignable to type 'void | Destructor'. Type '() => boolean' is not assignable to type 'Destructor'. Type 'boolean' is not assignable to type 'void | { [UNDEFINED_VOID_ONLY]: never; }'. - Google Search - Chromium
+2026-07-27 21:04:02+08:00 code ● state.ts - f (Workspace) - Visual Studio Code
+2026-07-27 21:05:02+08:00 code ● state.ts - f (Workspace) - Visual Studio Code
+2026-07-27 21:06:02+08:00 chromium what does it do type NonFunction = object & { [K in any]: any } & { (): never; new(): never }; - Google Search - Chromium
+2026-07-27 21:07:02+08:00 code ● result.ts - f (Workspace) - Visual Studio Code
+2026-07-27 21:08:02+08:00 code state.ts - f (Workspace) - Visual Studio Code
+2026-07-27 21:09:02+08:00 chromium what does it do type NonFunction = object & { [K in any]: any } & { (): never; new(): never }; - Google Search - Chromium
+2026-07-27 21:10:02+08:00 chromium what does it do type NonFunction = object & { [K in any]: any } & { (): never; new(): never }; - Google Search - Chromium
+2026-07-27 21:11:02+08:00 code ● state.ts - f (Workspace) - Visual Studio Code
+2026-07-27 21:12:02+08:00 chromium copy - Chromium
+2026-07-27 21:13:02+08:00 code ● state.ts - f (Workspace) - Visual Studio Code
+2026-07-27 21:14:02+08:00 code ● state.ts - f (Workspace) - Visual Studio Code
+2026-07-27 21:15:03+08:00 code ● state.ts - f (Workspace) - Visual Studio Code
+2026-07-27 21:16:03+08:00 code state.ts - f (Workspace) - Visual Studio Code
+2026-07-27 21:17:03+08:00 code state.ts - f (Workspace) - Visual Studio Code
+2026-07-27 21:18:03+08:00 code state.ts - f (Workspace) - Visual Studio Code
+2026-07-27 21:19:03+08:00 code 20260719 intuitive web react state management usecontext zustand jotai custom hook.md - f (Workspace) - Visual Studio Code
