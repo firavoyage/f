@@ -144,7 +144,7 @@ color:
     selection: 
       active: color-mix(in srgb, color.bg.accent 30%, transparent)
       inactive: color-mix(in srgb, palette.gray.500 20%, transparent)
-    backdrop: color-mix(in srgb, palette.gray.950 50%, transparent)
+    backdrop: color-mix(in srgb, palette.gray.950 30%, transparent)
     # hover:
     #   light: "palette.gray.200"
     #   dark: "palette.gray.800"
@@ -212,8 +212,9 @@ spacing:
 # use weight directly. it's not changeable or contextual. 
 
 typeface:
-  sans: '"Adwaita Sans", sans-serif'
-  monospace: '"Adwaita Mono", monospace'
+  # sans: '"roboto", sans-serif'
+  sans: '"Adwaita Sans", "Ubuntu Sans", sans-serif'
+  monospace: '"Adwaita Mono", "Ubuntu Mono", monospace'
 
 text:
   xs: "0.75rem/1rem"
@@ -227,7 +228,7 @@ text:
 
 font:
   heading: bold text.lg typeface.sans
-  text: text.md typeface.sans
+  text: text.base typeface.sans
 
 # size: # icon-size
 #   sm: "14px"
