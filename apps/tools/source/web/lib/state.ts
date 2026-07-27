@@ -1,6 +1,8 @@
 const { parse, stringify } = JSON
 
-type NonFunction = all & { [K in any]: any } & { (): never; new(): never };
+type NonFunction = any
+// type NonFunction = all & { (): never; new(): never } | void | string | number | boolean | bigint | symbol | null | undefined;
+// type NonFunction = all & { [K in any]: any } & { (): never; new(): never };
 // type NonFunction<T> = T extends Function ? never : T;
 
 function use_update() {
@@ -37,12 +39,10 @@ export function state<T extends NonFunction>(initial: T, { persist }: { persist?
 
   if (is_given(persist) && has(globalThis, 'localStorage')) {
     const key = localStorage.getItem(persist)
-
-    if (!is_given(key)) {
-      return
+    
+    if (is_given(key)) {
+      data = parse(key)
     }
-
-    data = parse(key)
   }
 
   function sync() {
@@ -132,7 +132,21 @@ export function state<T extends NonFunction>(initial: T, { persist }: { persist?
   return result
 }
 
+export function to_toggle([on, set]: [boolean, any]) {
+  function toggle(new_value?: boolean | ((old_value: boolean) => boolean)) {
+    if (!is_given(new_value)) {
+      set((v: boolean) => !v)
+    }
+
+    set(new_value)
+  }
+
+  return [on, toggle]
+}
+
 type state = typeof state
+type to_toggle = typeof to_toggle
 declare global {
   var state: state
+  var to_toggle: to_toggle
 }

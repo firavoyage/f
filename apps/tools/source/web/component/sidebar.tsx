@@ -1,7 +1,6 @@
 import { useToggle } from "react-use"
 import { use_bind } from "web/lib/keyboard.use"
-
-const d = state()
+import { use_global } from "./app"
 
 type SidebarProps = {
   items: string[]
@@ -11,6 +10,9 @@ type SidebarProps = {
 }
 
 export default function Sidebar({ items, focused, set_focused, children }: SidebarProps) {
+  const [is_sidebar_on, toggle_is_sidebar_on] = to_toggle(use_global('is_sidebar_on'))
+  log(is_sidebar_on, toggle_is_sidebar_on)
+
   const [on, toggle] = useToggle(true)
 
   use_bind('ctrl+b', toggle)

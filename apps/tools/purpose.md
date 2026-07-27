@@ -429,5 +429,8 @@ when inside textarea, ctrl b doesnt work.
 
 maybe it's to prevent default. decide to opt in or opt out.
 
+04 40 adopt state lib. test and fix.
+
+move global prelude to the absolute beginning.
 
 

@@ -557,7 +557,7 @@ ref:
       "ugs",
     ],
     "body": [
-      "const use_${1} = state(${0})",
+      "export const use_${1} = state(${0})",
     ],
   },
 }
