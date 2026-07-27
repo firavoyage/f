@@ -383,5 +383,26 @@ no idea what `[tabindex="0"]` does.
 
 i dont have to know. it does nothing if i do not adopt it at all.
 
+---
+
+upd: make an issue irrelevant btw
+
+fix sidebar
+
+when collapsed, the outline still can be visible.
+
+enlarge neg margin l, or take a more elegant approach.
+
+18 40 plan.
+
+today:
+
+- state lib
+- sidebar overlay variant. fix toggle.
+- research cyberchef, online converters. think about features & ui prototype.
+
+19 00 write state management lib. (19 40)
+
+i just wanna hand code it.
 
 

@@ -47755,6 +47755,14 @@ molight loves playing. four in a row.
 
 03 20 work on state management lib.
 
+18 40 work on tools.
+
+19 00 deprecate a note on the desk.
+
+> 六月是你的高考
+
+look forward.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
