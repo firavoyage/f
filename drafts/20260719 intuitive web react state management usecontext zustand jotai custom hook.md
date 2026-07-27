@@ -7772,6 +7772,1362 @@ To finalize your architecture, let me know:
 
 Show all
 
+# all browser localstorage methods
+
+The **`window.localStorage`** object implements the standard [MDN Web Storage API Storage Interface](https://developer.mozilla.org/en-US/docs/Web/API/Storage), which contains exactly **five native methods** and **one property**. [link](https://developer.mozilla.org/en-US/docs/Web/API/Storage)
+
+All methods operate synchronously on a per-origin basis (protocol + domain + port). [link](https://developer.mozilla.org/en-US/docs/Web/API/Web%5FStorage%5FAPI)
+
+### 1. `setItem(key, value)`
+
+Adds a key-value pair to the storage. If the specified key already exists, its corresponding value is overwritten. [link](https://www.tiny.cloud/blog/javascript-localstorage/)
+
+- **Argument 1**: `key` (String)
+- **Argument 2**: `value` (String) [link](https://www.boldare.com/blog/everything-you-need-to-know-about-local-storage/)
+
+javascript
+
+```
+localStorage.setItem('theme', 'dark');
+```
+
+Use code with caution.
+
+### 2. `getItem(key)`
+
+Retrieves the stored value associated with the specified key. [link](https://www.geeksforgeeks.org/javascript/localstorage-and-sessionstorage-web-storage-apis/)
+
+- **Argument**: `key` (String)
+- **Returns**: The string value, or `null` if the key does not exist. [link](https://medium.com/@theroberthinckley/the-beginners-guide-to-using-browser-local-storage-40a255cd9581)
+
+javascript
+
+```
+const userTheme = localStorage.getItem('theme'); // Returns 'dark'
+```
+
+Use code with caution.
+
+### 3. `removeItem(key)`
+
+Deletes the specific key-value pair from the storage object. [link](https://www.tiny.cloud/blog/javascript-localstorage/)
+
+- **Argument**: `key` (String)
+- **Returns**: `undefined` [link](https://developer.mozilla.org/en-US/docs/Learn%5Fweb%5Fdevelopment/Extensions/Client-side%5FAPIs/Client-side%5Fstorage)
+
+javascript
+
+```
+localStorage.removeItem('theme');
+```
+
+Use code with caution.
+
+### 4. `clear()`
+
+Wipes out all stored keys and values for that entire origin, emptying the local storage completely. [link](https://www.tiny.cloud/blog/javascript-localstorage/)
+
+- **Argument**: None
+- **Returns**: `undefined` [link](https://www.youtube.com/watch?v=KsQJvRW2jvk\&t=350)
+
+javascript
+
+```
+localStorage.clear();
+```
+
+Use code with caution.
+
+### 5. `key(index)`
+
+Retrieves the name of a key by its numerical index in the storage list. This is primarily used for looping through all entries. [link](https://blog.logrocket.com/localstorage-javascript-complete-guide/)
+
+- **Argument**: `index` (Integer)
+- **Returns**: A string containing the key name, or `null` if the index is greater than or equal to the total number of items.
+- _Note: The exact ordering of keys across different browsers is not standardized._ [link](https://javascript.info/localstorage)
+
+javascript
+
+```
+const firstKeyName = localStorage.key(0);
+```
+
+Use code with caution.
+
+***
+
+### Associated Property
+
+#### `length`
+
+A read-only integer property that returns the total number of items currently stored in the origin's `localStorage`. [link](https://developer.mozilla.org/en-US/docs/Web/API/Web%5FStorage%5FAPI/Using%5Fthe%5FWeb%5FStorage%5FAPI)
+
+javascript
+
+```
+const totalItems = localStorage.length;
+```
+
+Use code with caution.
+
+***
+
+### Important Developer Tips
+
+- **String Only Constraint**: LocalStorage can **only store strings**. If you pass objects or arrays directly, the browser automatically forces them into strings (resulting in `"[object Object]"`). You must use `JSON.stringify()` to save them and `JSON.parse()` to retrieve them.\
+  javascript
+
+<!---->
+
+```
+// Storing an object
+const user = { name: 'Alex', age: 30 };
+localStorage.setItem('user', JSON.stringify(user));
+
+// Retrieving the object
+const retrievedUser = JSON.parse(localStorage.getItem('user'));
+```
+
+Use code with caution.\
+[link](https://rxdb.info/articles/localstorage.html)
+
+- **Quota Management**: Most browsers restrict `localStorage` to **~5MB of data** per origin. Exceeding this limit throws a `QuotaExceededError` DOMException. It is safest to wrap your write operations in a `try...catch` block. [link](https://css-tricks.com/a-primer-on-the-different-types-of-browser-storage/)
+- **Direct Property Access Pitfall**: While JavaScript allows you to write `localStorage.keyName = "value"`, the [MDN Using the Web Storage API Guide](https://developer.mozilla.org/en-US/docs/Web/API/Web%5FStorage%5FAPI/Using%5Fthe%5FWeb%5FStorage%5FAPI) strongly discourages it. Direct property access runs the risk of colliding with built-in prototype methods (like `.clear`) and bypasses native data handling protections. Always use `setItem()` and `getItem()`. [link](https://developer.mozilla.org/en-US/docs/Web/API/Web%5FStorage%5FAPI/Using%5Fthe%5FWeb%5FStorage%5FAPI)
+
+Would you like an example of how to **loop through all items** using the `.key()` method, or do you need help setting up a **safe wrapper with error handling**?
+
+- [link](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)\
+  Window: localStorage property - Web APIs | MDN\
+  Nov 30, 2025 — Baseline Widely available. This feature is well established and works across many devices and browser versions. It's been availabl...\
+  MDN Web Docs
+- [link](https://developer.mozilla.org/en-US/docs/Web/API/Web%5FStorage%5FAPI)\
+  Web Storage API - MDN Web Docs - Mozilla\
+  Feb 22, 2025 — sessionStorage is partitioned by browser tabs and by origin. The main document, and all embedded browsing contexts (iframes), are ...\
+  MDN Web Docs
+- [link](https://www.tiny.cloud/blog/javascript-localstorage/)\
+  JavaScript and localStorage in a nutshell with examples\
+  Apr 9, 2024 — Here are some basic JavaScript localStorage methods: \* \*\*setItem()\*\* Takes a key-value pair and adds it to localStorage \* \*\*getIte...\
+  TinyMCE
+
+Show all
+
+# how fast is it to get and set a value in a js object or localstorage
+
+**JavaScript objects are several thousand times faster** than `localStorage` for getting and setting values. While an object operation executes in mere nanoseconds, `localStorage` operations require microseconds to milliseconds because they are synchronous and write directly to disk. [link](https://stackoverflow.com/questions/8074218/speed-cost-of-localstorage)
+
+***
+
+### Performance Comparison
+
+| Metric / Feature      | JavaScript Object (`{}`)               | `localStorage` API                                   |
+| --------------------- | -------------------------------------- | ---------------------------------------------------- |
+| **Get Speed (Read)**  | **~1 to 5 nanoseconds**                | **~0.01 to 0.1 milliseconds** (~10,000–100,000 ns)   |
+| **Set Speed (Write)** | **~1 to 5 nanoseconds**                | **~0.1 to 1.0 milliseconds** (~100,000–1,000,000 ns) |
+| **Time Complexity**   | O(1) constant time                     | Dependent on string size and disk I/O                |
+| **Thread Impact**     | Non-blocking, instant                  | **Synchronous & blocking** (blocks main thread)      |
+| **Data Types**        | Any JS type (Functions, Objects, etc.) | **Strings only** (requires slow serialization)       |
+| **Persistence**       | Cleared on page refresh/closed tab     | Persistent across sessions and restarts              |
+
+***
+
+### JavaScript Object Performance
+
+When you run `obj.key = 'value'` or `let x = obj.key`, you are executing raw memory modifications within the JavaScript virtual machine (like V8). [link](https://stackoverflow.com/questions/7700987/performance-of-key-lookup-in-javascript-object)
+
+- **Optimizations:** Modern JS engines use **Hidden Classes** and inline caches. If your object maintains a predictable shape, the engine compiles the lookup into a single, lightning-fast memory offset instruction rather than a dictionary search. [link](https://medium.com/@mehedipy/why-map-lookups-are-slower-than-object-lookups-in-javascript-94ed41b73f4c)
+- **Scale:** You can comfortably read or write to an object millions of times per second in tight loops without dropping a single animation frame. [link](https://developer.mozilla.org/en-US/docs/Web/API/Performance%5FAPI/High%5Fprecision%5Ftiming)
+
+### LocalStorage Performance
+
+When you run `localStorage.setItem('key', 'value')`, the browser must pass data through its internal web storage bindings and synchronously commit that data to physical disk storage (usually an SQLite file). [link](https://stackoverflow.com/questions/34760673/localstorage-performance)
+
+- **Main Thread Blocking:** Because the API is synchronous, your entire app's JavaScript execution pauses and **blocks the main thread** until the operating system confirms the read/write operation is complete. [link](https://rxdb.info/articles/localstorage.html)
+- **The "JSON Tax":** `localStorage` only stores strings. If you want to store a complex object, you have to run `JSON.stringify()` on write and `JSON.parse()` on read. For medium-to-large objects, the serialization overhead can degrade your performance up to 10x worse than a raw string operation. [link](https://www.youtube.com/watch?v=j-BsQhDsx24\&vl=en\&t=404)
+- **Hardware Variance:** On a modern desktop with an NVMe SSD, `localStorage` feels fast. On a mid-range mobile phone with slower flash storage, a handful of sequential `localStorage` reads can trigger noticeable UI stutter and delay page rendering. [link](https://medium.com/@TusharKanjariya/i-used-localstorage-wrong-for-years-77e759d18d60)
+
+***
+
+### Architectural Best Practice: The Hybrid Cache
+
+Never use `localStorage` as a primary, high-frequency state tracker or read from it inside rendering loops. Instead, read from `localStorage` **exactly once** during your application's startup phase, save that data to an in-memory JavaScript Object or `Map`, and interact with that object going forward. [link](https://www.reddit.com/r/learnjavascript/comments/180l5md/localstorage%5Fperformance%5Fquestion/)
+
+You can then update `localStorage` asynchronously or debounce the write operations so they only trigger when your user finishes an activity. [link](https://www.reddit.com/r/learnjavascript/comments/180l5md/localstorage%5Fperformance%5Fquestion/)
+
+If you would like, let me know:
+
+- **What kind of data** you are looking to store (e.g., configurations, user auth tokens, large arrays)
+- **How frequently** your application needs to read or write this data
+
+I can suggest the most optimized storage architecture or point you toward asynchronous alternatives like **IndexedDB**. [link](https://javascript.plainenglish.io/mastering-localstorage-in-javascript-simplified-data-persistence-f5659963e4bc)
+
+- [link](https://stackoverflow.com/questions/8074218/speed-cost-of-localstorage)\
+  Speed/cost of localStorage\
+  Nov 10, 2011 — According to one benchmark, localStorage is two orders of magnitude faster than document.cookie. However, a micro-benchmark on FF7...\
+  Stack Overflow
+- [link](https://rxdb.info/articles/localstorage.html)\
+  Using localStorage in Modern Applications - RxDB\
+  Jul 21, 2026 — Despite its convenience, localStorage does come with a set of limitations that developers should be aware of: Non-Async Blocking A...\
+  RxDB
+- [link](https://coreui.io/answers/how-to-set-an-item-in-localstorage-in-javascript/)\
+  How to set an item in localStorage in JavaScript - CoreUI\
+  Oct 20, 2025 — setItem() method is the standard way to store key-value pairs that persist across browser sessions. This approach provides reliabl...\
+  CoreUI
+
+Show all
+
+## how fast is it to get and set a value in a js object or localstorage when you have to (de)serialize
+
+<mark><strong><span>JavaScript objects remain over 1,000 times faster</span></strong></mark> than `localStorage`, even when factoring in the cost of serialization and deserialization.
+
+While serialization slows down both workflows, `localStorage` suffers a double penalty: it must pay the exact same CPU cost to parse or stringify the data, _plus_ the heavy time penalty of blocking the main thread to read or write to physical disk storage.
+
+***
+
+### Performance Comparison (With JSON parsing/stringify)
+
+_Assumes a typical 50KB to 100KB nested object._
+
+| Metric / Operation       | JavaScript Object + JSON        | `localStorage` + JSON             |
+| ------------------------ | ------------------------------- | --------------------------------- |
+| **Get Value (Read)**     | **~0.01 to 0.05 milliseconds**  | **~0.1 to 0.5 milliseconds**      |
+| **Set Value (Write)**    | **~0.01 to 0.05 milliseconds**  | **~0.2 to 1.5+ milliseconds**     |
+| **Primary Bottleneck**   | CPU processing (JSON parsing)   | Disk I/O + CPU processing         |
+| **Main Thread Blocking** | Only during `parse`/`stringify` | Prolonged block (CPU + Disk wait) |
+
+***
+
+### Breaking Down the Time Spent
+
+#### 1. The Get Operation (Reading Data)
+
+- **JS Object:** To get a fresh copy of a nested object from an existing master object clone, you use `JSON.parse(JSON.stringify(obj))`. The engine spends 100% of its time in CPU memory converting strings to structural memory.
+- **LocalStorage:** To read via `localStorage.getItem('key')`, the browser must first pause the thread, look up the file system, read the raw string from disk, load it into RAM, and _then_ run the exact same `JSON.parse()` operation. You pay for both disk latency and CPU processing.
+
+#### 2. The Set Operation (Writing Data)
+
+- **JS Object:** Updating a deep copy requires stringifying the incoming data. This is purely a CPU-bound memory operations running at native machine speeds.
+- **LocalStorage:** Calling `localStorage.setItem()` requires running `JSON.stringify()`, converting that string into an OS-level file write stream, and waiting for the physical hard drive hardware to confirm the bits are written. On mobile devices, this step can spike past **5 to 10 milliseconds** if the disk is busy with other tasks.
+
+***
+
+### The Scaling Trap: Why Size Matters
+
+As your data grows, serialization performance degrades exponentially:
+
+- **Small Data (< 5KB):** The performance difference is negligible to a human. Both will happen under 0.1 milliseconds.
+- **Medium Data (50KB - 500KB):** `localStorage` will begin dropping frames (stuttering UI animations) because blocking the main thread for over 1 millisecond causes noticeable lag.
+- **Large Data (> 1MB):** Stringifying and writing 1MB+ to `localStorage` can freeze a webpage for 10 to 50+ milliseconds. Modern JS engines will handle the object manipulation with a much lower, smoother footprint.
+
+***
+
+### Optimization Blueprint
+
+If you must persist data but want to bypass these performance bottlenecks, utilize a **Write-Through In-Memory Cache**:
+
+javascript
+
+```
+// 1. Maintain a blazing-fast memory reference
+let memoryCache = JSON.parse(localStorage.getItem('user_data') || '{}');
+
+function updateData(newData) {
+    // 2. Immediate, fast write to memory object
+    memoryCache = { ...memoryCache, ...newData };
+
+    // 3. Defer the heavy disk/serialization work so it doesn't block the UI
+    setTimeout(() => {
+        localStorage.setItem('user_data', JSON.stringify(memoryCache));
+    }, 0);
+}
+```
+
+Use code with caution.
+
+If you are dealing with large amounts of data, tell me:
+
+- What is the **estimated size** of the object in kilobytes or megabytes?
+- Is this for a **mobile web app** or a **desktop environment**?
+
+I can help you determine if you should migrate to an asynchronous API like **IndexedDB** to keep serialization completely off the main thread.
+
+- [link](https://nikhilbelide.hashnode.dev/shallow-vs-deep-copy)\
+  In depth of shallow and deep copy in objects in javascript\
+  May 22, 2022 — So, JSON. parse(JSON. stringify(object)) actually produces a fully deep copy i.e. even the nested values create their own referenc...\
+  \
+  \
+  nikhilbelide.hashnode.dev
+- [link](https://staticmania.com/blog/how-to-use-local-storage-in-javascript)\
+  How to Boost User Preferences with Local Storage in JavaScript —StaticMania\
+  Feb 23, 2025 — To store data, use localStorage. setItem("key", "value"). To retrieve data, use localStorage. getItem("key"). If storing objects, ...\
+  \
+  \
+  StaticMania
+- [link](https://utkarshbansal01.medium.com/harnessing-frontend-storage-a-comprehensive-guide-to-browser-based-data-management-eaa7cf29d69f)\
+  Harnessing Frontend Storage: A Comprehensive Guide to Browser-Based Data Management\
+  Feb 7, 2025 — Asynchronous Operations: IndexedDB uses asynchronous APIs, which means that it won't block the main UI thread during read/write op...\
+  \
+  \
+  Medium
+
+## i mean how fast is it to get and set a value in a js object or localstorage when you have to (de)serialize for localstorage but not js object
+
+**JavaScript objects are roughly 10,000 to 100,000 times faster** than `localStorage` when you only have to serialize and deserialize for `localStorage`.
+
+In this scenario, the JavaScript object retains its pure, nanosecond-level performance because it avoids the serialization tax entirely. Meanwhile, `localStorage` must pay for two heavy penalties at once: CPU-heavy JSON conversions _and_ blocking synchronous disk I/O.
+
+***
+
+### Performance Comparison
+
+| Operation       | JavaScript Object (No JSON) | `localStorage` (With JSON)                  | Speed Difference     |
+| --------------- | --------------------------- | ------------------------------------------- | -------------------- |
+| **Get (Read)**  | **~1 to 5 nanoseconds**     | **~100,000 to 500,000 ns** (0.1–0.5 ms)     | **~100,000x faster** |
+| **Set (Write)** | **~1 to 5 nanoseconds**     | **~200,000 to 1,500,000+ ns** (0.2–1.5+ ms) | **~300,000x faster** |
+
+_Note: Assumes a typical, medium-sized application state object (around 50KB to 100KB)._
+
+***
+
+### Why the Gap Widens Dramatically
+
+#### The Read Path (Get)
+
+- **JS Object:** `let user = AppState.user;`
+  - **What happens:** The JS engine looks up a memory address and returns a reference. It takes a fraction of a single CPU cycle.
+- **LocalStorage:** `let user = JSON.parse(localStorage.getItem('user'));`
+  - **What happens:** The thread stops. The browser reads a massive raw string from the physical disk, copies it into RAM, and hands it to the JSON parser. The parser steps through every character of the string, allocates new memory blocks, and builds a brand-new object tree.
+
+#### The Write Path (Set)
+
+- **JS Object:** `AppState.user = { id: 1 };`
+  - **What happens:** A pointer in memory is reassigned instantly. It requires virtually zero effort from the computer.
+- **LocalStorage:** `localStorage.setItem('user', JSON.stringify(user));`
+  - **What happens:** The thread stops. The JS engine traverses the entire object tree to construct a flat text string. Then, the browser opens an OS file stream and forces the physical hard drive hardware to write those characters to disk before it allows your webpage to continue running.
+
+***
+
+### Real-World UI Impact
+
+Because of this staggering speed difference, treating `localStorage` like an object in your application code will break things quickly:
+
+- **Inside a Render Loop or Event Handler:** If you read from a JS object during a scroll event or inside a React/Vue component render, your app will maintain a buttery-smooth **60 to 120 FPS**. If you put `JSON.parse(localStorage.getItem())` inside that same loop, your application frame rate will tank, causing visible stuttering and lag.
+- **The "Jank" Threshold:** A human can perceive UI delays starting around 10 to 16 milliseconds. A single large `JSON.stringify` + `localStorage.setItem` call on a slower mobile device can easily exceed 10 milliseconds, instantly freezing the screen.
+
+If you are trying to optimize your current app, let me know:
+
+- **How often** you need to update this state (e.g., on every keystroke, on page navigation, or periodically)?
+- **What framework** you are using (like React, Vue, or Vanilla JS)?
+
+I can show you exactly how to hook up an in-memory object to act as a shield for your `localStorage` calls.
+
+- [link](https://phppot.com/javascript/javascript-localstorage/)\
+  JavaScript localStorage – Simple Guide with Example\
+  Aug 22, 2022 — How to set and get items in JavaScript localStorage? set an item as a key-value pair. get the value of an item by key. remove an i...\
+  \
+  \
+  PHPpot
+- [link](https://dev.to/maafaishal/serialization-and-deserialization-in-javascript-3kdd)\
+  Cover image for Serialization and Deserialization in JavaScript\
+  Aug 2, 2023 — const data = { name: " John", age: 30 }; // save the item to localStorage localStorage. setItem(" user", JSON. stringify( data)) /\
+  \
+  \
+  DEV Community
+- [link](https://dev.to/notdennis/a-beginner-guide-to-local-storage-session-storage-and-cookies-in-javascript-37i1)\
+  A beginner guide to local storage, session storage and cookies in Javascript.\
+  Aug 10, 2023 — parse method. Specifically, we can call JSON. parse(localStorage. getItem(user)), where "user" is the key of the item we want to r...\
+  \
+  \
+  DEV Community
+
+Show all
+
+## can stringify plus localstorage set be async
+
+**No, the `localStorage` API and `JSON.stringify()` cannot be truly asynchronous because they are natively synchronous operations that run on JavaScript’s single thread.**
+
+While you can wrap them in promises or `setTimeout` to **defer** them (which stops them from blocking the immediate UI code), they will still lock up the main thread the exact moment they execute. If your data payload is large, a deferred stringify and write operation will still cause the user's screen to visibly freeze or stutter. [link](https://medium.com/codex/making-local-storage-async-in-javascript-f7b55336c2f5)
+
+***
+
+### The Two Ways to Solve This Problem
+
+Depending on your goal, you can either fake it by scheduling the workload during a quiet period or solve it natively using the browser's actual asynchronous database.
+
+### Approach 1: The Fake Async (Macro-Task Deferral)
+
+Wrapping your write operation in `setTimeout(() => {...}, 0)` or a `Promise.resolve().then(...)` moves the execution to the end of the event loop queue. [link](https://medium.com/codex/making-local-storage-async-in-javascript-f7b55336c2f5)
+
+- **The Benefit:** It prevents the user's click handler from feeling laggy. The browser processes the UI update first, then runs your heavy storage code right after. [link](https://medium.com/codex/making-local-storage-async-in-javascript-f7b55336c2f5)
+- **The Catch:** It still blocks the main thread. If it takes 20ms to stringify and save your object, the screen cannot animate or respond to touches during those 20ms. [link](https://medium.com/codex/making-local-storage-async-in-javascript-f7b55336c2f5)
+
+javascript
+
+```
+// This defers the block, but does not eliminate it
+function setItemAsync(key, obj) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const dataStr = JSON.stringify(obj);
+      localStorage.setItem(key, dataStr);
+      resolve();
+    }, 0);
+  });
+}
+```
+
+Use code with caution.
+
+### Approach 2: Truly Asynchronous Alternative (`IndexedDB`)
+
+If your data is large enough that serialization is causing performance issues, you should drop `localStorage` entirely and use **IndexedDB**. [link](https://rxdb.info/articles/localstorage.html)
+
+IndexedDB is a database built directly into the browser that is **100% asynchronous**. Better yet, it handles structured data cloning natively, meaning **you do not need to call `JSON.stringify()`** at all. The browser manages the storage engine completely off the main thread. [link](https://rxdb.info/articles/localstorage.html)
+
+Instead of wrestling with the raw, complex IndexedDB API, developers typically use tiny wrapper libraries like `idb-keyval` to treat it just like an async version of `localStorage`:
+
+javascript
+
+```
+import { get, set } from 'idb-keyval';
+
+// TRULY ASYNC: No JSON.stringify needed, never blocks the UI!
+await set('user_data', myComplexObject);
+
+// Reading is also fully async
+const userData = await get('user_data');
+```
+
+Use code with caution.
+
+***
+
+### Comparison: Deferred LocalStorage vs IndexedDB
+
+| Metric                        | `localStorage` + `setTimeout`      | `IndexedDB` (via idb-keyval)                  |
+| ----------------------------- | ---------------------------------- | --------------------------------------------- |
+| **Main Thread Impact**        | **Blocks** (just delays the block) | **Zero Blocking** (runs on background thread) |
+| **Serialization Requirement** | Manual `JSON.stringify()`          | **None** (Handles native JS objects)          |
+| **Storage Limits**            | Harsh limit (~5MB total)           | Generous limit (Up to hundreds of MBs)        |
+| **API Pattern**               | Simulates Promises                 | Native Promises / `async/await`               |
+
+If you want to migrate your setup, let me know:
+
+- If you are open to installing a **lightweight utility** like `idb-keyval`
+- If this storage handles **frequent quick saves** (like draft autosaving) or just **occasional bulk saves**
+
+I can write out a fully tailored storage helper class for your specific project.
+
+- [link](https://rxdb.info/articles/localstorage.html)\
+  Using localStorage in Modern Applications - RxDB\
+  Jul 21, 2026 — AsyncStorage for React Native​ For React Native developers, the AsyncStorage API is the go-to solution, mirroring the behavior of ...\
+  RxDB
+- [link](https://stackoverflow.com/questions/42921220/is-any-solution-to-do-localstorage-setitem-in-asynchronous-way-in-javascript)\
+  Is any solution to do localstorage setItem in asynchronous way in javascript\
+  Mar 21, 2017 — localStorage is a synchronous API. However, you can defer the execution of the setItem method with the Promise object to give it a...\
+  Stack Overflow
+- [link](https://v8.dev/blog/json-stringify)\
+  How we made JSON.stringify more than twice as fast · V8\
+  Aug 4, 2025 — This post explains our recent effort to improve JSON.stringify performance.\
+  V8 JavaScript engine
+
+Show all
+
+## compare localstorage and indexed db. pros cons. ignore tech complexity.
+
+### Core Comparison
+
+**`localStorage` is a simple, synchronous note-pad** meant for tiny pieces of temporary data. **`IndexedDB` is a full-scale, asynchronous database** built to handle heavy data storage without breaking your application's user experience.
+
+***
+
+### LocalStorage
+
+#### Pros
+
+- **Bulletproof Persistence:** Data stays on the device until code clears it or the user manually wipes browser history.
+- **Instant Setup:** Ready out of the box with zero third-party tools or configurations needed.
+- **Global Access:** Data is instantly available across tabs on the exact same domain.
+
+#### Cons
+
+- **Freezes the App:** Because it is synchronous, writing to it blocks your user interface, causing visible screen lag and stuttering.
+- **Severe Size Limit:** Restricted to a tiny limit of around **5MB** total across your entire website.
+- **String-Only Jail:** Cannot handle real JavaScript data structures; you must waste CPU performance manually wrapping everything in `JSON.stringify` and `JSON.parse`.
+
+***
+
+### IndexedDB
+
+#### Pros
+
+- **Flawless UI Performance:** It operates completely in the background on a separate hardware thread. It will never drop animation frames or cause your app to lag.
+- **Massive Storage Space:** Gives you access to hundreds of megabytes or gigabytes of space, usually restricted only by the user's available hard drive room.
+- **Stores Native Objects:** Bypasses serialization entirely. You can drop raw JavaScript objects, arrays, and files straight into it without running them through JSON formatting.
+
+#### Cons
+
+- **Promise-Driven Architecture:** You cannot read or write data instantly in a single line of code; you must always wait for a Promise to resolve (`async`/`await`).
+- **Storage Eviction Risk:** Unlike `localStorage`, browsers can occasionally wipe IndexedDB cache if the user’s device running out of hard drive space.
+
+***
+
+### The Verdict: When to Use Which?
+
+- **Use LocalStorage if:** You are storing simple text snippets under 1MB that rarely change, like an **Auth Token**, a **Dark Mode Toggle**, or a **User's Language Preference**.
+- **Use IndexedDB if:** You are saving **App State Cache**, **Large Offline Data**, **User Uploads / Images**, or frequently updated logs.
+
+If you are leaning toward migrating your project, let me know:
+
+- What **specific data** you need to save (e.g., shopping cart, game save, offline drafts)?
+- Whether you need your app to function **completely offline**?
+
+I can provide the minimal wrapper setup to get you moved over cleanly.
+
+- [link](https://blog.logrocket.com/offline-first-frontend-apps-2025-indexeddb-sqlite/)\
+  Offline-first frontend apps in 2025: IndexedDB and SQLite in the browser and beyond\
+  Nov 18, 2025 — LocalStorage Simple but extremely limited. It: It is acceptable for small configuration values or flags, but not for user content ...\
+  \
+  \
+  LogRocket Blog
+- [link](https://www.linkedin.com/pulse/mastering-browser-storage-comprehensive-guide-cookies-mukul-medatwal-ehilc)\
+  Mastering Browser Storage: A Comprehensive Guide to LocalStorage, SessionStorage, IndexedDB, and Cookies\
+  Jul 12, 2024 — 1. LocalStorage: LocalStorage is a simple key-value storage mechanism that allows you to store data with no expiration time. It is...\
+  \
+  \
+  LinkedIn
+- [link](https://blog.openreplay.com/indexeddb-localstorage-sessionstorage/)\
+  How IndexedDB Compares to LocalStorage and SessionStorage\
+  Oct 22, 2025 — IndexedDB: Asynchronous, non-blocking operations\
+  \
+  \
+  OpenReplay Blog
+
+Show all
+
+# how is localstorage separated
+
+`localStorage` is separated based on the **Same-Origin Policy**, meaning it is <mark>strictly isolated by<span> </span><strong>protocol, domain, and port</strong></mark>. Every unique combination of these three elements receives its own completely isolated storage bucket. [link](https://developer.mozilla.org/en-US/docs/Web/API/Web%5FStorage%5FAPI)
+
+### The Three Boundaries of Separation
+
+A website can only access its own `localStorage` data if the following three elements match the origin that created the data: [link](https://medium.com/dev-simplified/mastering-localstorage-in-javascript-74c65b93fecf)
+
+- **Protocol**: `http://` and `https://` are treated as separate environments. A script running on `http://example.com` cannot see data stored by `https://example.com`.
+- **Domain**: Subdomains are completely isolated from each other. For instance, `app.example.com`, `blog.example.com`, and `example.com` all have separate, unshared `localStorage` instances.
+- **Port**: If you run web services on different ports, they remain separated. For example, `localhost:3000` and `localhost:8080` do not share `localStorage`. [link](https://stackoverflow.com/questions/4201239/in-html5-is-the-localstorage-object-isolated-per-page-domain)
+
+### Environmental Boundaries
+
+- **Browser Profiles**: `localStorage` is separated by browser user profiles. If two people use different profiles on the same browser, their data will not collide. [link](https://stackoverflow.com/questions/31871227/does-html5-local-storage-separate-data-per-user)
+- **Browsers**: Data saved in Google Chrome is not accessible in Mozilla Firefox or Safari. [link](https://stackoverflow.com/questions/20643377/does-html5-localstorage-persist-across-browser-instances)
+- **Incognito / Private Mode**: Private browsing tabs usually run in an isolated, temporary memory silo. This data is entirely wiped as soon as the last private tab is closed. [link](https://stackoverflow.com/questions/20643377/does-html5-localstorage-persist-across-browser-instances)
+
+### What is NOT Separated?
+
+- **Tabs and Windows**: Unlike `sessionStorage`, `localStorage` is **shared across all tabs and windows** as long as they belong to the exact same origin. If you modify a value in Tab A, Tab B will immediately have access to that updated value.
+- **Directories and Pages**: Data is not separated by URL paths. Scripts running on `://example.com` and `://example.com` share the exact same `localStorage` pool. [link](https://stackoverflow.com/questions/4201239/in-html5-is-the-localstorage-object-isolated-per-page-domain)
+
+If you are developing a project and need to simulate separation on the same domain or path, you must either use **different local ports** or manually **prefix your keys** (e.g., `localStorage.setItem('app1_theme', 'dark')`) to keep data organized. [link](https://stackoverflow.com/questions/4201239/in-html5-is-the-localstorage-object-isolated-per-page-domain)
+
+Are you experiencing an issue where data is **unexpectedly leaking** between apps, or are you trying to **share data intentionally** across different subdomains?
+
+- [link](https://stackoverflow.com/questions/4201239/in-html5-is-the-localstorage-object-isolated-per-page-domain)\
+  In HTML5, is the localStorage object isolated per page/domain?\
+  Nov 17, 2010 — In HTML5, the localStorage object is isolated per domain and port. To make it per-page, you can use a key based on the location. F...\
+  Stack Overflow
+- [link](https://stackoverflow.com/questions/18709523/why-do-two-web-pages-have-different-localstorage-how-can-i-fix-this)\
+  Why do two web pages have different localStorage? How can I fix this?\
+  Sep 10, 2013 — \* 1 Answer. Sorted by: The localStorage isin't per page, it's by domain. However like @bfavaretto mentionned, www.demandbaselabs.c...\
+  Stack Overflow
+- [link](https://stackoverflow.com/questions/31871227/does-html5-local-storage-separate-data-per-user)\
+  Does HTML5 local storage separate data per user? - Stack Overflow\
+  Aug 7, 2015 — \* 2 Answers. Sorted by: To clarify: the OP is asking what happens with localStorage when two user profiles access the same site. T...\
+  Stack Overflow
+
+Show all
+
+## how is cookies separated
+
+Cookies are separated <mark>primarily by<span> </span><strong>Domain</strong><span> </span>and<span> </span><strong>Path</strong></mark>, but they use a much more flexible separation model than `localStorage`. Unlike `localStorage`, cookies can be intentionally shared across subdomains and do not strictly require a port match.
+
+### The Four Boundaries of Separation
+
+Browsers separate and restrict cookie access using four specific attributes:
+
+- **Domain**: By default, cookies are isolated to the exact domain that created them. However, a server can explicitly set a cookie's domain attribute to a parent domain (e.g., `.example.com`), which allows the cookie to be shared with all subdomains (e.g., `://example.com` and `://example.com`).
+- **Path**: Cookies can be isolated to specific URL paths. A cookie set with a path of `/admin` will not be sent to or accessible by scripts on `/public`. If no path is specified, it defaults to the current directory level.
+- **Protocol (Secure Attribute)**: If a cookie is marked with the `Secure` attribute, it is separated by protocol. The browser will only send it over encrypted `https://` connections, hiding it from `http://` traffic.
+- **Port**: **Cookies ignore ports.** If you run a service on `localhost:3000` and another on `localhost:8080`, they share the exact same cookie jar. One port can read, write, or overwrite cookies set by the other.
+
+### Browser and Tab Boundaries
+
+- **Tabs and Windows**: Cookies are shared globally across all tabs and windows within the same browser profile.
+- **Incognito / Private Mode**: Private browsing sessions use an isolated cookie jar. These cookies are completely deleted when you close all private windows.
+- **First-Party vs. Third-Party**: Browsers separate cookies by the context of the website you are visiting. Third-party cookies (set by an external domain embedded in an iframe or script) are heavily restricted or entirely blocked by modern browsers to prevent cross-site tracking.
+
+### Key Differences from LocalStorage
+
+| Feature           | `localStorage` Separation      | Cookies Separation                    |
+| ----------------- | ------------------------------ | ------------------------------------- |
+| **Subdomains**    | Strictly isolated              | Can be shared via domain wildcard     |
+| **Ports**         | Strictly isolated              | Completely ignored and shared         |
+| **URL Paths**     | Ignored (shared across domain) | Can be isolated to specific paths     |
+| **Server Access** | Hidden from server             | Automatically sent with HTTP requests |
+
+Are you trying to **prevent session interference** between local projects running on different ports, or are you looking for a way to **share login states** across your subdomains?
+
+- [link](https://www.valentinog.com/blog/cookies/)\
+  A practical, Complete Tutorial on HTTP cookies\
+  Jun 1, 2020 — What that means? Cookies are scoped by path. A cookie with a given Path attribute cannot be sent to another, unrelated path, even ...\
+  \
+  \
+  Valentino Gagliardi
+- [link](https://zellwk.com/blog/fetch-credentials/)\
+  Handling cookies with Fetch's credentials\
+  Mar 27, 2024 — We have to be careful about the difference between sites and origins when we work with cookies. Cookies are set across sites — whi...\
+  \
+  \
+  Zell Liew
+- [link](https://abp.io/community/articles/when-to-use-cookies-when-to-use-local-storage-uexsjunf)\
+  When to Use Cookies, When to Use Local Storage? | ABP.IO\
+  Oct 16, 2024 — Cross-Domain Communication: Cookies can be shared across subdomains, which is useful when working with multiple subdomains under t...\
+  \
+  \
+  ABP.IO
+
+Show all
+
+# compare cookies and localstorage
+
+The primary difference between **cookies** and **localStorage** is how they communicate with the server and how much data they can hold. <mark><strong>Cookies</strong><span> </span>are automatically attached to every HTTP request, making them ideal for server-side authentication, while<span> </span><strong>localStorage</strong><span> </span>exists purely on the client side with a much larger storage capacity</mark>.
+
+### Feature Comparison
+
+| Feature                 | Cookies                                    | LocalStorage                         |
+| ----------------------- | ------------------------------------------ | ------------------------------------ |
+| **Primary Audience**    | Server-side and Client-side                | Client-side only (JavaScript)        |
+| **Capacity**            | ≈ 4 KB per cookie                          | ≈ 5 MB – 10 MB per domain            |
+| **Network Overhead**    | High (sent with every HTTP request)        | None (stays entirely in the browser) |
+| **Data Lifespan**       | Configurable expiry date / manual deletion | Indefinite (until manually cleared)  |
+| **Security Settings**   | Supports `HttpOnly` and `Secure` flags     | No native security flags             |
+| **Accessibility Scope** | Configurable via domains and subdomains    | Strict same-origin policy            |
+
+### Key Differences Explained
+
+#### 1. Server Communication & Network Bandwidth
+
+- **Cookies**: Automatically travel back and forth between the client and server on every single HTTP request. Storing large amounts of data here needlessly wastes network bandwidth. [link](https://stackoverflow.com/questions/3220660/local-storage-vs-cookies)
+- **LocalStorage**: Stays isolated inside the user's browser. The server has no knowledge of this data unless it is explicitly sent via an API call or AJAX request. [link](https://stackoverflow.com/questions/3220660/local-storage-vs-cookies)
+
+#### 2. Storage Limitations
+
+- **Cookies**: Heavily restricted to roughly 4,096 bytes. This limit includes the cookie's key, value, and structural attributes.
+- **LocalStorage**: Offers a much larger capacity—usually around 5 MB per domain depending on the browser. [link](https://stackoverflow.com/questions/3220660/local-storage-vs-cookies)
+
+#### 3. Lifespan and Persistence
+
+- **Cookies**: Developers can set precise expiration dates or choose to let them expire when the user closes their browser session.
+- **LocalStorage**: Data does not have an expiration date. It persists across page reloads, tab closures, and browser restarts until cleared via JavaScript code or manual clearing of browser data. [link](https://stackoverflow.com/questions/3220660/local-storage-vs-cookies)
+
+#### 4. Security Risks
+
+- **Cookies**: Vulnerable to Cross-Site Request Forgery (CSRF) attacks. However, cookies can be shielded from Cross-Site Scripting (XSS) data theft by turning on the `HttpOnly` flag, which completely blocks JavaScript from reading them. [link](https://www.pivotpointsecurity.com/local-storage-versus-cookies-which-to-use-to-securely-store-session-tokens/)
+- **LocalStorage**: Vulnerable to XSS attacks. Any third-party JavaScript script running on your webpage has unrestricted read/write privileges to your `localStorage` database. [link](https://www.pivotpointsecurity.com/local-storage-versus-cookies-which-to-use-to-securely-store-session-tokens/)
+
+### When to Use Which?
+
+- **Use Cookies for**: Managing session authentication tokens, tracking user identification keys, or saving lightweight server-reliant configurations. [link](https://www.geeksforgeeks.org/javascript/local-storage-vs-cookies/)
+- **Use LocalStorage for**: Preserving client-side application state, saving user UI theme preferences (light/dark mode), caching non-sensitive offline data, or storing an active shopping cart. [link](https://www.reddit.com/r/reactjs/comments/o8sq2g/cookies%5Fvs%5Flocalstorage/)
+
+If you are currently deciding how to architect your application data, tell me:
+
+- What **specific type of data** are you looking to store?
+- Does your **backend server** need immediate access to this data?
+- How **sensitive** is this information from a security perspective?
+
+I can help you select the safest and most efficient storage mechanism for your architecture.
+
+- [link](https://stackoverflow.com/questions/3220660/local-storage-vs-cookies)\
+  Local Storage vs Cookies - Stack Overflow\
+  Jul 10, 2010 — 9 Answers. Sorted by: 1863. Cookies and local storage serve different purposes. Cookies are primarily for reading server-side, loc...\
+  Stack Overflow
+- [link](https://www.geeksforgeeks.org/javascript/local-storage-vs-cookies/)\
+  Local Storage vs Cookies - GeeksforGeeks\
+  Aug 22, 2024 — Last Updated : 22 Aug, 2024. In JavaScript, there are three primary mechanisms for client-side data storage: cookies, local storag...\
+  GeeksforGeeks
+- [link](https://www.reddit.com/r/reactjs/comments/o8sq2g/cookies%5Fvs%5Flocalstorage/)\
+  Cookies vs localStorage : r/reactjs - Reddit\
+  Jun 27, 2021 — \* BobClanRoberts. • 5y ago. You can face subdomain access issues as well. Localstorage will only work in the current FQDN. A cooki...\
+  Reddit·r/reactjs
+
+Show all
+
+## how much capacity does each look like, examples
+
+To help you visualize the storage differences, **4 KB (Cookies)** is roughly equivalent to **one page of plain text**, whereas **5 MB (LocalStorage)** is equivalent to a **thick novel** or a **medium-sized MP3 audio file**.
+
+Because `localStorage` holds roughly **1,250 times more data** than a single cookie, they handle entirely different types of real-world application data.
+
+### Cookie Capacity (≈ 4 KB)
+
+A 4 KB limit means you can store roughly 4,000 characters. This space is ideal for lightweight, encoded string tokens.
+
+- **Session Token**: `session_id=s%3A6A8f91b...` (An encrypted 64-character string used to keep you logged into a website).
+- **Tracking ID**: `user_analytics_id=749201475.1700000000` (Used by tools like Google Analytics to identify returning visitors).
+- **Language Preference**: `lang=en-US` (A tiny string the server reads instantly to deliver the website in the correct language on the very first load).
+
+### LocalStorage Capacity (≈ 5 MB)
+
+A 5 MB limit allows for roughly 5,000,000 characters. This abundance of space lets you store complex, structured data.
+
+- **Offline Shopping Cart**: A massive array of products, containing item IDs, titles, quantities, image URLs, and pricing details for dozens of items.
+- **Draft Auto-Saves**: The entire rich-text content of a long blog post, email, or forum response saved every few seconds so you do not lose your work if the browser crashes.
+- **App State Caching**: A complex JSON object containing a user's entire customized dashboard layout, column order, filter history, and preferred dark mode settings.
+
+If you are planning your application's data structure, let me know:
+
+- What **exact fields or objects** do you need to save?
+- Do you need to store **large files, images, or media**?
+
+I can show you how to structure the data or suggest alternatives like **IndexedDB** if 5 MB is still too small.
+
+## what does 4kb per cookie mean, can you store a lot of cookies
+
+**4 KB per cookie** means that <mark>the total text length of a single cookie—including its name, actual data value, and optional settings (like expiry dates or security flags)—cannot exceed<span> </span><strong>4,096 bytes</strong></mark>. In plain text, one byte equals roughly one English character, so a single cookie gives you room for about 4,000 characters total. [link](https://datatracker.ietf.org/doc/html/rfc6265)
+
+You **cannot store an unlimited number of cookies**. Web browsers enforce strict limits on both individual cookie sizes and the total number of cookies allowed per website. [link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Cookies)
+
+### Standard Cookie Limits Per Domain
+
+While specifications like [RFC 6265](https://datatracker.ietf.org/doc/html/rfc6265) establish minimum requirements, different modern browsers set their own absolute limits: [link](https://medium.com/@tslnreddy2001/cookies-explained-simply-ea6212c6fde4)
+
+- **Google Chrome**: Maximum of **180 cookies** per domain.
+- **Mozilla Firefox**: Maximum of **150 cookies** per domain.
+- **Safari & Microsoft Edge**: Maximum of **50 cookies** per domain. [link](https://medium.com/@tslnreddy2001/cookies-explained-simply-ea6212c6fde4)
+
+If a website attempts to create a new cookie after hitting these limits, the browser will automatically delete the oldest cookie to make room.
+
+### What is Included in the 4 KB Limit?
+
+When a browser calculates the 4 KB limit, it does not just count the data you want to save. It calculates the length of the entire configuration string. [link](https://stackoverflow.com/questions/5381526/what-are-the-current-cookie-limits-in-modern-browsers)
+
+For example, if you set a cookie, the browser evaluates the length of this entire string:
+
+text
+
+```
+session_id=xyz123456789; Expires=Wed, 09 Jun 2027 10:18:14 GMT; Secure; HttpOnly; SameSite=Strict
+```
+
+Use code with caution.
+
+The key name (`session_id`), the data (`xyz123456789`), and all metadata attributes (`Expires`, `Secure`, etc.) collectively count against your 4,096-byte limit. [link](https://datatracker.ietf.org/doc/html/rfc6265)
+
+### The Hidden Trap: Total Total Domain Size Limits
+
+Some browsers enforce a **total size limit for all cookies** combined on a single domain—frequently capping it at around **4 KB to 8 KB total** across the entire website. Even if a browser allows 150 individual cookies, you cannot have 150 cookies that are _each_ 4 KB in size. [link](https://support.convert.com/hc/en-us/articles/4511582623117-cookie-size-limits-and-the-impact-on-the-use-of-convert-goals)
+
+Furthermore, because every single cookie assigned to a domain is automatically attached to the header of every HTTP request, having too many cookies can drastically slow down web performance. In extreme cases, massive cookie loads can cause web servers to reject the browser network requests entirely with an HTTP 431 error (Request Header Fields Too Large). [link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Cookies)
+
+Are you managing a project where you need to track **multiple separate pieces of data** simultaneously? Tell me about the metrics or variables you need to save, and I can show you how to bundle them together or map them to the proper storage space.
+
+- [link](https://www.reddit.com/r/webdev/comments/1g2wfrh/can%5Fwe%5Fstore%5F60mbs%5Fof%5Fdata%5Fin%5Fcookies/)\
+  Can we store 60MB's of data in cookies. : r/webdev - Reddit\
+  Oct 13, 2024 — It's probably session store or local store and not cookies. So 29.6 mb + 4 cookies. Maximum cookie size seems to be 4k on most bro...\
+  Reddit·r/webdev
+- [link](https://stackoverflow.com/questions/640938/what-is-the-maximum-size-of-a-web-browsers-cookies-key)\
+  What is the maximum size of a web browser's cookie's key?\
+  Mar 12, 2009 — The 4K limit you read about is for all cookies under a domain, including associated properties like name, value, expiry date, etc.\
+  Stack Overflow
+- [link](https://support.convert.com/hc/en-us/articles/4511582623117-cookie-size-limits-and-the-impact-on-the-use-of-convert-goals)\
+  Cookie size limits and the impact on the use of Convert goals\
+  A browser should be able to accept at least 300 cookies with a maximum size of 4096 bytes, as stipulated by RFC 2109 (#6.3), RFC 2...\
+  Convert.com
+
+Show all
+
+## for example, you wanna persist dark mode pref across subdomains
+
+To persist a dark mode preference across subdomains (e.g., sharing the preference between `://mysite.com`, `://mysite.com`, and `mysite.com`), a **cookie is the superior choice**.
+
+`LocalStorage` cannot handle this out of the box because it is strictly isolated by the browser's **Same-Origin Policy**. `://mysite.com` cannot read the `localStorage` of `://mysite.com`.
+
+### The Cookie Solution (Recommended)
+
+Cookies can bypass subdomain barriers using the `Domain` attribute. You only need a single, tiny cookie to make this work across your entire network of sites.
+
+#### How to set it via JavaScript:
+
+javascript
+
+```
+// Run this on any subdomain when the user toggles dark mode
+document.cookie = "theme=dark; max-age=31536000; domain=.mysite.com; path=/; Secure; SameSite=Lax";
+```
+
+Use code with caution.
+
+#### Why this works perfectly:
+
+- **The Dot Prefix (`domain=.mysite.com`)**: Telling the browser to use the root domain with a leading dot makes the cookie readable by `mysite.com` and **any subdomains** you create.
+- **Instant Server Awareness**: Because cookies travel with HTTP requests, your server knows the user's theme preference _before_ rendering the HTML page. This completely eliminates the annoying **"flash of white light"** that happens when a dark mode user loads a new page.
+- **Tiny Payload**: The entire string takes up less than 100 bytes, well under the 4 KB limit.
+
+***
+
+### The LocalStorage Alternative (Complex)
+
+If you absolutely insist on using `localStorage`, you cannot share the data directly. Instead, you have to build a complex workaround using a hidden `<iframe>` to bridge the gap.
+
+#### How it works:
+
+1. You host a central, invisible gateway page at your root domain: `://mysite.com`.
+2. Both `://mysite.com` and `://mysite.com` must embed this hidden `<iframe>` on their pages.
+3. The subdomains must use JavaScript `window.postMessage()` to securely send messages to the iframe.
+4. The iframe receives the message and reads or writes the theme preference to the root domain's `localStorage`.
+
+#### Why it is generally avoided:
+
+- **Code Overhead**: Requires writing and maintaining asynchronous event listeners across multiple sites.
+- **Visual Glitches**: Because JavaScript must load, wait for the iframe, pass a message, and read `localStorage` before updating the CSS, users will almost always experience a **bright white screen flicker** during page loads.
+
+If you are setting this up right now, let me know:
+
+- What **tech stack** are you using? (e.g., Next.js, React, Node.js, plain HTML/JS)
+- Are you rendering your pages on the **server side (SSR)** or entirely on the **client side**?
+
+I can provide the exact code implementation for your specific setup to prevent page flickering.
+
+- [link](https://medium.com/@rgndunes/mastering-cross-window-communication-2c8f65d6ad93)\
+  Mastering Cross-Window Communication | by Divyansh Singh\
+  Aug 15, 2024 — localStorage is strictly limited to the same origin, meaning it cannot be used to communicate across different domains, even if th...\
+  \
+  \
+  Medium
+- [link](https://onlyoneaman.medium.com/session-management-across-subdomains-localstorage-vs-cookies-369d8d45adf8)\
+  Session Management across Subdomains: Localstorage vs Cookies | by Aman Kumar | Medium\
+  Nov 1, 2020 — In the above use case, we got blocked with localstorage. So, we have been using localstorage to set the user login token and to ke...\
+  \
+  \
+  Medium
+- [link](https://better-auth.com/docs/concepts/cookies)\
+  Cookies\
+  The domain attribute controls which domains can access the cookie. Setting it to your root domain (e.g. example.com ) makes the co...\
+  \
+  \
+  Better Auth
+
+Show all
+
+## can you avoid sending cookies via js
+
+Yes, you can absolutely prevent JavaScript from reading, modifying, or creating specific cookies by using the **`HttpOnly`** flag.
+
+However, you must configure this setting from your **backend server**, as JavaScript running in the browser cannot apply this restriction to itself.
+
+### How `HttpOnly` Works
+
+When your backend server sends a response to the browser, it includes a `Set-Cookie` header. By appending the `HttpOnly` directive to that header, you tell the browser: _"Store this cookie, send it back to the server with every request, but do not let client-side JavaScript access it."_
+
+#### Example Server Response Header:
+
+http
+
+```
+Set-Cookie: session_id=xyz123; Secure; HttpOnly; SameSite=Strict
+```
+
+Use code with caution.
+
+Once this is set:
+
+- **`document.cookie` returns nothing**: If a developer (or a malicious script) types `console.log(document.cookie)` in the browser console, the `session_id` cookie will not appear in the results.
+- **Network requests still work**: The browser will still automatically attach the cookie to every fetch, AJAX, or standard page request sent to your server.
+
+### Why Use `HttpOnly`?
+
+The primary reason to restrict JavaScript cookie access is **Security**.
+
+If your website suffers a Cross-Site Scripting (XSS) vulnerability—where an attacker successfully injects a malicious script into your page—that script will attempt to steal active user sessions. If your session tokens are stored in standard cookies or `localStorage`, the attacker's script can read them instantly and send them to a rogue server.
+
+Marking your sensitive cookies as `HttpOnly` completely neutralizes this specific data-theft vector.
+
+### What About Client-Side Only Cookies?
+
+If you are creating cookies purely within your client-side JavaScript file (using `document.cookie = "..."`), you **cannot** hide them from JavaScript. JavaScript cannot lock doors against itself.
+
+For non-sensitive preferences like your dark mode choice, you _want_ JavaScript to read it, so leaving it accessible to `document.cookie` is perfectly fine and expected.
+
+Are you trying to protect **sensitive data like authentication tokens**, or are you just looking to optimize **network performance** by reducing cookie payload sizes? Let me know, and I can give you the exact server configuration steps or alternative data tracking methods.
+
+- [link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Cookies)\
+  Using HTTP cookies - HTTP\
+  Oct 8, 2025 — There are good reasons why you shouldn't allow JavaScript to modify cookies at all. You can prevent JavaScript from accessing a co...\
+  \
+  \
+  MDN Web Docs
+- [link](https://jscrambler.com/blog/securing-http-cookies)\
+  Secure your HTTP Cookies: Web Security\
+  Aug 7, 2017 — One level of security with cookies is to enable HTTP Only. In my previous example, note the HttpOnly flag as part of the header. T...\
+  \
+  \
+  Jscrambler
+- [link](https://medium.com/@adarshtz313/how-to-fix-cookie-related-issues-in-local-development-for-beginners-365223cde666)\
+  How to Fix Cookie related issues in Local Development — For Beginners\
+  May 1, 2025 — 1. The HttpOnly Flag: Hiding the Cookie Value The HttpOnly flag is used for security purposes. It tells the browser that the cooki...\
+  \
+  Medium
+
+Show all
+
+## i mean since the backend has nothing to do w theme pref, do not send it at all. can you do that in js.
+
+No, you **cannot** use JavaScript to selectively stop a browser from sending a specific cookie to your backend server.
+
+By default, if a cookie matches the domain and path of a network request, the browser's native architecture **forces** it to accompany that request. JavaScript has no control over this automated browser behavior.
+
+If your backend does not need this theme data, you have three clean ways to handle it using JavaScript without wasting server bandwidth.
+
+### 1. Shift to LocalStorage + Subdomain Syncing
+
+The most direct way to keep theme data away from your server is to drop cookies entirely and use `localStorage`. Since `localStorage` data never leaves the browser, your server stays clean.
+
+To bypass the subdomain restriction mentioned earlier, you can use a tiny piece of JavaScript to dynamically share the preference via a shared top-level domain if your applications are running under a single-page app or client-side routing layout. Alternatively, use the `iframe` postMessage bridge method to keep it entirely client-side.
+
+### 2. The Part-Time Cookie Trick (Write-and-Delete)
+
+If you want to use cookies for easy subdomain sharing but hate the idea of sending it on _every_ single API call, asset download, or page load, you can use JavaScript to treat the cookie as a temporary transport vehicle:
+
+1. **Write**: When the user switches to dark mode on `://mysite.com`, use JavaScript to save the choice to a shared cookie (`domain=.mysite.com`).
+
+2. **Sync**: On page load, `://mysite.com` reads that cookie via JavaScript `document.cookie` and instantly saves it into its own local `localStorage`.
+
+3. **Delete**: Immediately clear the cookie via JavaScript by setting its expiration date to the past:\
+   javascript
+
+<!---->
+
+```
+document.cookie = "theme=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=.mysite.com; path=/;";
+```
+
+Use code with caution.
+
+By wiping the cookie immediately after syncing it to local storage, you ensure it won't be sent along with any future server requests.
+
+### 3. Route Your Assets to a "Cookie-Free" Domain
+
+If your main concern is network performance—specifically, cookies bloating the headers of tiny static asset requests like images, CSS, or JS files—the industry standard is to host those files on an entirely separate domain.
+
+For example, if your site is `mysite.com`, you serve your static media assets from `mysite-cdn.com`. Because cookies set on `.mysite.com` are scoped strictly to that specific text string, the browser will never attach your theme cookies to requests going out to your asset domain.
+
+Are you experiencing a **specific bottleneck** or server log overhead right now from these headers? Let me know **how your subdomains are hosted** or what your deployment architecture looks like, and we can find a clean solution.
+
+## can you make it expired, and still access in js, but not sent to backend. can you apply some tricks before and after sending requests.
+
+No, you cannot access an expired cookie in JavaScript. Once a cookie expires, the browser immediately deletes it from storage.
+
+However, you **can** use JavaScript tricks to manipulate cookies right before and after sending network requests. This technique allows you to hide cookies from specific backend API calls.
+
+### The Interceptor Trick (For AJAX/Fetch Requests)
+
+If your app uses `fetch()` or `axios` to talk to the backend, you can manipulate cookies globally using **Service Workers** or a **Fetch Wrapper**.
+
+Because JavaScript cannot stop standard document page loads from sending cookies, this trick works strictly for background API data requests.
+
+#### Method: Temporarily Stripping Cookies with a Wrapper
+
+You can intercept every outbound network request, temporarily back up the cookie, delete it so the request goes out clean, and then instantly restore it for your JavaScript code to use.
+
+javascript
+
+```
+async function cleanFetch(url, options = {}) {
+  // 1. Back up the theme preference from the cookie
+  const currentTheme = getCookie('theme');
+
+  // 2. Temporarily erase the cookie from browser memory
+  document.cookie = "theme=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=.mysite.com; path=/;";
+
+  try {
+    // 3. Fire off the network request (sent without the theme header)
+    return await fetch(url, options);
+  } finally {
+    // 4. Instantly restore the cookie so your JS can still read it
+    if (currentTheme) {
+      document.cookie = `theme=${currentTheme}; max-age=31536000; domain=.mysite.com; path=/; Secure; SameSite=Lax`;
+    }
+  }
+}
+
+// Helper to extract cookie values
+function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+}
+```
+
+Use code with caution.
+
+### The `credentials: 'omit'` Flag (Easiest Method)
+
+If you want to prevent **all** cookies from being sent with a specific background API request, you do not need to delete anything. You can tell the browser to drop the cookie jar completely for that specific network call using native fetch settings.
+
+javascript
+
+```
+fetch('https://mysite.com', {
+  credentials: 'omit' // This explicitly forces the browser to strip ALL cookies from this request
+});
+```
+
+Use code with caution.
+
+- **The Catch**: This removes _all_ cookies for that request. If your backend needs a `session_id` cookie to verify who you are, this will log you out for that specific API call.
+
+### The Verdict
+
+Modifying cookies back and forth in real-time is prone to timing glitches (race conditions). If your application triggers multiple network requests simultaneously, one request might accidentally catch the cookie while it is temporarily deleted.
+
+If you want to try this out, let me know:
+
+- Are you using **`fetch`**, **`axios`**, or a framework like **GraphQL** for your requests?
+- Does your backend require **other cookies** (like auth tokens) on these same requests?
+
+I can write a custom network interceptor tailored exactly to your API client layout.
+
+- [link](https://www.geeksforgeeks.org/javascript/how-to-set-up-a-cookie-that-never-expires-in-javascript/)\
+  How to set up a cookie that never expires in JavaScript ?\
+  Aug 1, 2024 — Disclaimer: All the cookies expire as per the cookie specification. So, there is no block of code you can write in JavaScript to s...\
+  \
+  \
+  GeeksforGeeks
+- [link](https://learn.microsoft.com/en-us/answers/questions/967191/isauthenticated-remains-true-after-the-cookie-is-e)\
+  IsAuthenticated Remains True after the Cookie is expired in ASP.NET Core Identity with .NET 6 Blazor Project - Microsoft Q\&A\
+  Aug 15, 2022 — After that the result as below: after the cookie is expired, it will auto remove from the browser and the account is immediately l...\
+  \
+  \
+  Microsoft Learn
+- [link](https://dev.to/cezar-plescan/demystifying-session-based-authentication-your-angular-roadmap-1b9n)\
+  Demystifying Session-Based Authentication: Your Angular Roadmap\
+  May 16, 2024 — For this we usually make a request to a logout endpoint, similar to the login. The server needs to invalidate the session ID on it...\
+  \
+  \
+  DEV Community
+
+## so since the backend has nothing to do w theme pref, do not send it at all. can you do that in js.
+
+No, you **cannot stop a browser from sending a valid cookie to your backend server via JavaScript.**. [link](https://stackoverflow.com/questions/39149482/is-it-possible-to-prevent-cookies-to-be-sent-in-every-http-request)
+
+If a piece of data is stored as a cookie, the browser's internal engine handles the network delivery automatically. JavaScript is completely bypassed during that step, meaning you cannot filter out specific cookies on normal page loads. [link](https://stackoverflow.com/questions/39149482/is-it-possible-to-prevent-cookies-to-be-sent-in-every-http-request)
+
+However, if you want your subdomains to share a dark mode preference seamlessly **without ever sending that preference data to your backend**, you can drop cookies completely and use modern JavaScript features.
+
+### The Solution: Shared Workers (The "No-Server" Subdomain Bridge)
+
+Instead of forcing a cookie to act against its nature, you can use a browser feature called a **`SharedWorker`**.
+
+A Shared Worker is a background script that runs inside the browser. Unlike `localStorage` (which is walled off per subdomain), a Shared Worker can be accessed by **multiple tabs, windows, and subdomains simultaneously**, as long as they belong to the same top-level domain.
+
+#### How to set it up:
+
+**1. Create a worker file (`worker.js`) and host it at your root domain (`://mysite.com`):**
+
+javascript
+
+```
+// This script runs in the background of the browser, shared by all subdomains
+let themePreference = 'light'; // Default state
+const ports = [];
+
+onconnect = function(e) {
+  const port = e.ports[0];
+  ports.push(port);
+
+  // Send the current theme to any new tab/subdomain that connects
+  port.postMessage({ type: 'GET_THEME', theme: themePreference });
+
+  // Listen for changes from any subdomain
+  port.onmessage = function(event) {
+    if (event.data.type === 'SET_THEME') {
+      themePreference = event.data.theme;
+      // Broadcast the new theme to ALL open tabs on ALL subdomains instantly
+      ports.forEach(p => p.postMessage({ type: 'THEME_CHANGED', theme: themePreference }));
+    }
+  };
+};
+```
+
+Use code with caution.
+
+**2. Connect to it from your subdomains (`://mysite.com` or `://mysite.com`):**
+
+javascript
+
+```
+// Initialize the shared bridge
+const themeWorker = new SharedWorker('https://mysite.com');
+
+themeWorker.port.onmessage = function(event) {
+  if (event.data.type === 'GET_THEME' || event.data.type === 'THEME_CHANGED') {
+    // Apply the theme to the UI instantly without hitting a server
+    document.documentElement.className = event.data.theme;
+  }
+};
+
+// When a user toggles the theme button:
+function toggleTheme(newTheme) {
+  themeWorker.port.postMessage({ type: 'SET_THEME', theme: newTheme });
+}
+```
+
+Use code with caution.
+
+### Why this fixes your problem perfectly:
+
+- **Zero Server Overhead**: The data travels purely through browser memory. Your backend server never sees a single byte of theme configuration data.
+- **Instant Subdomain Sync**: If a user switches to dark mode on `://mysite.com`, an open tab on `://mysite.com` will instantly flip to dark mode in real-time without refreshing.
+- **No Cache Busting Needed**: Because no cookies are sent, your server-side caching (like Cloudflare or Varnish) will not get confused by changing cookie headers. [link](https://forum.getkirby.com/t/best-way-to-deal-with-color-scheme-cookies/25300)
+
+Would you like help adapting this setup to a specific frontend framework like **React**, **Vue**, or **Next.js**, or are you working with **vanilla JavaScript** files?
+
+- [link](https://chrismorgan.info/blog/dark-theme-implementation/)\
+  My dark theme implementation - an article by Chris Morgan\
+  Aug 19, 2019 — ... to be used on subsequent page loads. For a content site like this, I think this is an excellent solution. The main thing I'm n...\
+  chrismorgan.info
+- [link](https://forum.getkirby.com/t/best-way-to-deal-with-color-scheme-cookies/25300)\
+  Best way to deal with color scheme cookies? - Kirby Forum\
+  Apr 20, 2022 — The CMS Questions. manuelmoreale April 20, 2022, 1:11pm 1. As you know dark mode is pretty much taken for granted these days and a...\
+  Kirby Forum
+- [link](https://stackoverflow.com/questions/39149482/is-it-possible-to-prevent-cookies-to-be-sent-in-every-http-request)\
+  Is it possible to prevent cookies to be sent in every HTTP request?\
+  Aug 25, 2016 — 5 Answers. ... Is not possible to prevent browser to send cookies. This is why is generally it is recommended (Yahoo developer Bes...\
+  Stack Overflow
+
+## i mean you have the trick ive mentioned. since the backend has nothing to do w theme pref, do not send it at all. can you do that in js.
+
+Yes, **you can absolutely execute that specific "trick" using JavaScript**, but it comes with a strict architectural limitation. [link](https://stackoverflow.com/questions/4970250/is-there-a-way-to-prevent-browser-from-sending-a-specific-cookie)
+
+Your trick—having JavaScript temporarily delete the cookie right before an API request fires and then immediately rewriting it right after—works **only for background API requests** (`fetch`, `axios`, `XMLHttpRequest`). It will completely fail for standard HTML page transitions, because JavaScript cannot stop the browser from sending cookies during a hard page reload. [link](https://stackoverflow.com/questions/2829201/prevent-cookies-from-being-sent-on-ajax-request)
+
+### How to Implement Your Trick (Before & After Interceptors)
+
+If your app operates largely as a Single Page Application (SPA), your subdomains communicate via background API calls rather than hard page reloads. In this scenario, you can automate your exact strategy using a global request interceptor.
+
+#### The Code Implementation:
+
+javascript
+
+```
+// A wrapper function to execute your exact strategy
+async function requestWithoutThemeCookie(apiCallFunction) {
+  // 1. BEFORE THE REQUEST: Read and backup the theme preference
+  const savedTheme = getCookie('theme');
+
+  // 2. DELETE IT: Wipe the cookie so the browser cannot attach it to the header
+  document.cookie = "theme=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=.mysite.com; path=/;";
+
+  try {
+    // 3. SEND IT: Execute your backend API request completely cookie-free
+    return await apiCallFunction();
+  } finally {
+    // 4. AFTER THE REQUEST: Instantly restore the cookie so JS can still use it
+    if (savedTheme) {
+      document.cookie = `theme=${savedTheme}; max-age=31536000; domain=.mysite.com; path=/; Secure; SameSite=Lax`;
+    }
+  }
+}
+
+// Helper to read the cookie
+function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+}
+```
+
+Use code with caution.
+
+#### How you would use it in your code:
+
+javascript
+
+```
+// Wrap any background network request with your interceptor trick
+const userData = await requestWithoutThemeCookie(() =>
+  fetch('https://mysite.com').then(res => res.json())
+);
+```
+
+Use code with caution.
+
+***
+
+### The Three Critical Risks of This Trick
+
+While this successfully matches your logic, manipulating cookies back and forth in real-time introduces significant edge cases in a modern browser environment:
+
+1. **The Race Condition Vulnerability**: JavaScript is asynchronous. If a user clicks two different buttons at the exact same moment, Request A might delete the cookie, and Request B might fire _one millisecond later_ before Request A completes its `finally` block. Request B will then fail to read the cookie if it needed it.
+2. **Hard Page Loads Bypass It**: If a user clicks a standard HTML link `<a href="https://mysite.com">`, the browser handles the navigation natively. Because there is no JavaScript interceptor hook for a hard browser redirect, the browser will seamlessly grab the cookie and send it directly to your backend. [link](https://developer.mozilla.org/en-US/docs/Web/Security/Defenses/Same-origin%5Fpolicy)
+3. **Main Thread Performance Blocker**: Reading and writing `document.cookie` is a synchronous, blocking operation in browsers. Rapidly deleting and recreating cookies right before and after every network request can cause noticeable UI stuttering or micro-lag for your users.
+
+### The Clean Alternative: Double-Storage
+
+If you want the reliability of this trick without the risks, developers use a **Double-Storage pattern**:
+
+1. When a user changes the theme, save it to `localStorage` (for instant JS access) **and** to a cookie (strictly to broadcast it across subdomains).
+2. The moment a subdomain opens, it immediately copies the cookie value into its own `localStorage`.
+3. Once copied, JavaScript permanently deletes the cookie. [link](https://stackoverflow.com/questions/39149482/is-it-possible-to-prevent-cookies-to-be-sent-in-every-http-request)
+
+This ensures the cookie only exists for a brief flash during a cross-site transition, keeping 99% of your routine backend API requests completely clean and free of theme data. [link](https://stackoverflow.com/questions/39149482/is-it-possible-to-prevent-cookies-to-be-sent-in-every-http-request)
+
+Are you managing this layout using a specific frontend request tool like **Axios interceptors** or **Next.js middleware**? I can help you implement the exact logic block into your current networking files.
+
+- [link](https://stackoverflow.com/questions/39149482/is-it-possible-to-prevent-cookies-to-be-sent-in-every-http-request)\
+  Is it possible to prevent cookies to be sent in every HTTP request?\
+  Aug 25, 2016 — 5 Answers. ... Is not possible to prevent browser to send cookies. This is why is generally it is recommended (Yahoo developer Bes...\
+  Stack Overflow
+- [link](https://stackoverflow.com/questions/4970250/is-there-a-way-to-prevent-browser-from-sending-a-specific-cookie)\
+  Is there a way to prevent browser from sending a specific cookie?\
+  Feb 11, 2011 — \* 3 Answers. Sorted by: You can set cookies to be HTTP Only (so supporting browsers won't let JS access them), but not the other w...\
+  Stack Overflow
+- [link](https://www.reddit.com/r/webdev/comments/1lgmcj6/if%5Fcookies%5Fare%5Fsent%5Fto%5Fthe%5Fserver%5Fwith%5Feach/)\
+  If cookies are sent to the server with each request, how do you ...\
+  Jun 21, 2025 — If your goal is to prevent manipulation of the cookie, but not stealing the cookie wholesale: a signature is all you need. If your...\
+  Reddit·r/webdev
+
+Show all
+
+# react-use usetoggle
+
+Quick results from the web:
+
+[link](https://github.com/streamich/react-use/blob/master/docs/useToggle.md)
+
+**react**-**use**/docs/**useToggle**.md at master - GitHub
+
+React Hooks — . Contribute to streamich/react-use development by creating an account on GitHub.
+
+GitHub·https://github.com
+
+[link](https://usehooks.com/usetoggle)
+
+**useToggle React** Hook - useHooks
+
+Basically, what this hook does is that, it takes a parameter with value true or false and toggles that value to opposite. It's useful when we want to take some action into its opposite action, for example: show and hide modal, show more/show less text, open/close side menu. React.gg. Want to learn how to build useToggle yourself? Check out react.gg – the interactive way to master modern React.
+
+useHooks·https://usehooks.com
+
+The **`useToggle`** hook from the popular [`react-use`](https://github.com/streamich/react-use) library is a state hook tracking a binary boolean value. It simplifies managing UI elements that switch between two states—like opening/closing modals, showing/hiding dropdowns, or switching dark mode. [link](https://github.com/streamich/react-use/blob/master/docs/useToggle.md)
+
+### 🛠️ Basic Syntax
+
+The hook returns a tuple containing the **current boolean value** and a **toggle function**: [link](https://reactuse.com/state/usetoggle/)
+
+javascript
+
+```
+const [value, toggle] = useToggle(initialValue);
+```
+
+Use code with caution.
+
+### 💻 Code Example
+
+You can implement `useToggle` in your component like this: [link](https://github.com/streamich/react-use/blob/master/docs/useToggle.md)
+
+jsx
+
+```
+import React from 'react';
+import { useToggle } from 'react-use';
+
+const ToggleDemo = () => {
+  // Initialize with a default value (true or false)
+  const [isOn, toggleIsOn] = useToggle(false);
+
+  return (
+    <div>
+      <p>The switch is: <strong>{isOn ? 'ON' : 'OFF'}</strong></p>
+
+      {/* 1. Flips the current value (true -> false, false -> true) */}
+      <button onClick={toggleIsOn}>Toggle</button>
+
+      {/* 2. Explicitly forces the value to true */}
+      <button onClick={() => toggleIsOn(true)}>Set ON</button>
+
+      {/* 3. Explicitly forces the value to false */}
+      <button onClick={() => toggleIsOn(false)}>Set OFF</button>
+    </div>
+  );
+};
+
+export default ToggleDemo;
+```
+
+Use code with caution.
+
+### ⚡ Key Features
+
+- **Flexible Arguments**: Calling `toggle()` with no arguments flips the boolean value. Alternatively, passing an explicit boolean argument like `toggle(true)` forces that specific state. [link](https://reactuse.com/state/usetoggle/)
+- **Alternative Alias**: The library provides `useBoolean` as an exact alias for `useToggle`. [link](https://github.com/streamich/react-use/blob/master/docs/useToggle.md)
+- **SSR Safe**: It safely executes identically on both server-side rendered (SSR) environments and clients because it relies purely on baseline React state mechanics. [link](https://reactuse.com/state/usetoggle/)
+
+Would you like to see how to **manually build this custom hook** from scratch, or do you need help **integrating it into a specific UI element** like a modal or sidebar?
+
+- [link](https://github.com/streamich/react-use/blob/master/docs/useToggle.md)\
+  react-use/docs/useToggle.md at master\
+  React's \`useToggle\` is a state hook that tracks the value of a boolean. It has 24 lines, 18 loc, and 473 bytes. \`useBoolean\` is an...\
+  GitHub
+- [link](https://reactuse.com/state/usetoggle/)\
+  useToggle – State Hook Usage & Examples - ReactUse\
+  React state hook that tracks value of a boolean. useToggle manages a boolean state value with a convenient toggle function. It ret...\
+  ReactUse
+- [link](https://usehooks-ts.com/react-hook/use-toggle)\
+  useToggle - usehooks-ts\
+  Returns. \[ boolean , () => void , Dispatch < SetStateAction < boolean >>] A tuple containing the current state, a function to togg...\
+  \
+  usehooks-ts
+
+## params
+
+The `useToggle` hook accepts exactly **one optional parameter**:
+
+### 📥 Input Parameter
+
+- **`initialValue`** _(boolean)_: The starting state of the toggle.
+- **Default:** `false` (if you do not pass any value).
+
+### 📤 Return Values (Tuple)
+
+The hook returns an array containing exactly **two elements**:
+
+1. **`value`** _(boolean)_: The current state (`true` or `false`).
+2. **`toggle`** _(function)_: The updater function.
+
+### ⚙️ How the `toggle` function handles arguments
+
+The `toggle` function itself can take an optional argument:
+
+- **No argument (`toggle()`)**: Inverts the current state.
+- **Boolean argument (`toggle(nextValue)`)**: Forces the state to match `nextValue`.
+
+***
+
+If you'd like, let me know if you want to see:
+
+- How to **type these parameters** using TypeScript.
+
+- How the parameters behave differently in **`useBoolean`**.
+
+- [link](https://docs.metaflow.org/api/flowspec)\
+  FlowSpec - Constructing flows\
+  Require that the user specifies a value for the parameter. Note that if a default is provide, the required flag is ignored. A valu...\
+  \
+  \
+  Metaflow Docs
+
 # 
 
 # . thinking
