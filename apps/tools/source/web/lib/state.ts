@@ -1,3 +1,5 @@
+const { parse, stringify } = JSON
+
 type NonFunction = all & { [K in any]: any } & { (): never; new(): never };
 // type NonFunction<T> = T extends Function ? never : T;
 
@@ -27,9 +29,32 @@ function is_inside_react() {
 export function state<T extends NonFunction>(initial: T, { persist }: { persist?: string } = {}) {
   let data = initial
 
-  if () {
-    
-  } 
+  function init() {
+    // @ts-expect-error 
+    const keys_string = localStorage.getItem(persist)
+
+    if (!is_given(keys_string)) {
+      return
+    }
+
+    const keys: string[] = parse(keys_string)
+
+    for (const key of keys) {
+      const item = localStorage.getItem(`${persist}.${key}`)
+
+      if (!is_given(item)) {
+        continue 
+      } 
+
+      // even though things will be converted to strings, json will normalize it
+      // e.g. JSON.parse(JSON.stringify(1)), JSON.parse(JSON.stringify("1"))
+      data[key] = parse(item)
+    }
+  }
+
+  if (is_given(persist) && has(globalThis, 'localStorage')) {
+    init()
+  }
 
   const subs: Set<Function> = new Set()
 

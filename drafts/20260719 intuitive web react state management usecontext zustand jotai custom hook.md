@@ -9220,5 +9220,16 @@ it's always true that things should adapt to humans, not vice versa.
 
 ---
 
- 
+i assume localstorage write couldnt be half complete for each key. 
+
+---
+
+localstorage sync is best effort.
+
+i mean, if the user toggles a setting, it would be global. no perf cost. no app state desync.
+
+but if they close the page immediately before serialization, it will definitely not work well. it's expected.
+
+---
+
 
