@@ -355,6 +355,12 @@ i think whether or not i could, i will not let it autocomplete all possible attr
 
 solution: leverage llms (mdn backed) to know the attrs. stay above raw elements most time.
 
+---
+
+upd 27 jul dawn: normalize onfoo to onFoo.
+
+27
+
 03 20 research and design ~~, and write~~ global persistent state management lib.
 
 see 20260719 intuitive web react state management usecontext zustand jotai custom hook.md
@@ -370,5 +376,12 @@ ideal: all focusable items have focus style. none uses default browser style. ea
 i could not achieve the ideal. i could not make all focusable items properly styled before knowing what they are to decide what fits.
 
 what i can do, is, to reset the ugly browser fallback, and remove the blue ring baseline.
+
+---
+
+no idea what `[tabindex="0"]` does. 
+
+i dont have to know. it does nothing if i do not adopt it at all.
+
 
 

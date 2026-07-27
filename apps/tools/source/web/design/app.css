@@ -7,7 +7,16 @@ body {
   background-color: var(--color-bg-selection);
 }
 
-a,
+.a, .link, .button, .summary, .input, .textarea, .select, .contenteditable {
+  border-radius: var(--radius-xs);
+  padding: var(--spacing-1);
+
+  &:focus-visible {
+    outline: var(--radius-xs) solid var(--color-bg-selection);
+  }
+}
+
+/* a,
 button,
 summary,
 [contenteditable="true"],
@@ -15,12 +24,7 @@ summary,
 input,
 select,
 textarea {
-  padding: var(--spacing-1);
-
-  &:focus-visible {
-    outline: var(--radius-xs) solid var(--color-bg-selection);
-  }
-}
+} */
 
 .app {
   display: flex;
@@ -35,6 +39,10 @@ textarea {
   .item {
     width: 100%;
     display: block;
+
+    &:hover, &:focus-visible {
+      background-color: var(--color-bg-secondary);
+    }
   }
 
   &[data-visible="false"] {
