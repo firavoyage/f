@@ -4,7 +4,6 @@
     "convert": "'./scripts/convert design tokens.sh'"
   },
   "dependencies": {
-    "camelcase": "9.0.0",
     "clsx": "2.1.1",
     "css.escape": "1.5.1",
     "inline-style-parser": "0.2.9",
