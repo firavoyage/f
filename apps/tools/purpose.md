@@ -401,8 +401,14 @@ today:
 - sidebar overlay variant. fix toggle.
 - research cyberchef, online converters. think about features & ui prototype.
 
-19 00 write state management lib. (19 40)
+~~19 00~~ 19 40 write state management lib. ~~(19 40)~~ (20 20)
 
 i just wanna hand code it.
+
+---
+
+i did some research out of curiosity. it would pay off i guess. like, what if i add a rule, do not async if you do not await?
+
+well maybe not. i think the best prac is to await network, fs, etc. and make all others sync.
 
 

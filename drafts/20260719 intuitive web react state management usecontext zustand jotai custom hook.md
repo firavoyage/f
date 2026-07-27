@@ -5789,6 +5789,1989 @@ component {
 
 # <!-- 27 jul -->
 
+# what will happen if i update two states in one event listener in react
+
+When you update two states in a single event listener, <mark>React<span> </span><strong>batches</strong><span> </span>the updates together</mark>.
+
+### What to Expect
+
+- **Single Re-render**: React groups both state updates into a single update cycle. Your component will re-render only once, not twice.
+- **Asynchronous Updates**: State updates are not immediate. Reading the state variables right after setting them will still show the old values.
+- **Consistent Behavior**: Automatic batching happens by default in all React 18+ environments, including inside promises, timeouts, and native event listeners.
+
+### Code Example
+
+javascript
+
+```
+function handleClick() {
+  setCount(c => c + 1);
+  setIsLogged(true);
+  // React batches these: only 1 re-render happens here
+
+  console.log(count); // Prints the OLD value, not the updated one
+}
+```
+
+Use code with caution.
+
+### Exceptional Cases
+
+- **Updater Functions**: If the second state depends on the first, use the functional updater form `setCount(prev => prev + 1)` to ensure accuracy.
+- **Immediate DOM Reading**: If you absolutely need the DOM to update immediately after the first state change, wrap the first update in `flushSync()`. This is rare and usually hurts performance.
+
+To help tailor this, let me know:
+
+- Are you experiencing a **specific bug** with your state values?
+- Which **React version** is your project running?
+- Do you need to **calculate the second state** based on the first?
+
+AI can make mistakes, so double-check responses
+
+- [link](https://dev.to/a1guy/mastering-usestate-react-state-deep-dive-basics-gotchas-patterns-2cli)\
+  Mastering useState — React State Deep Dive: Basics, Gotchas & Patterns\
+  Aug 14, 2025 — React batches multiple state updates that happen in the same event or async callback to improve performance. This means updates do...\
+  \
+  \
+  DEV Community
+- [link](https://www.tothenew.com/blog/understanding-state-batching-in-react/)\
+  Understanding State Batching in React | TO THE NEW Blog\
+  Sep 23, 2024 — Instead of processing each state update immediately, React groups multiple state updates and processes them in a single render. Th...\
+  \
+  \
+  TO THE NEW
+- [link](https://mashuktamim.medium.com/mastering-reacts-usestate-a-deep-dive-into-stale-closures-batching-and-functional-updates-4160c456fd71)\
+  Mastering React’s useState: A Deep Dive into Stale Closures, Batching, and Functional Updates\
+  Jul 2, 2025 — 1. React's Batching Mechanism Purpose: React groups multiple state updates that occur within the same event loop cycle (e.g., with...\
+  \
+  \
+  Medium
+
+Show all
+
+## how does it work
+
+React batches state updates using an internal mechanism called the **Fiber Architecture** and its scheduling loop.
+
+Here is exactly how it works behind the scenes:
+
+### 1. The Queue Mechanism
+
+When you call a state setter (like `setCount`), React does not instantly change the variable or trigger a re-render. Instead, it creates an **Update Object** containing the new value or updater function. React pushes this object onto a queue linked to that specific component.
+
+### 2. Event Loop Interception
+
+React wraps your event listeners (like `onClick`) in an internal execution context.
+
+- React flags the context as **"Batching Mode"** before your code runs.
+- Your code executes line by line, adding updates to the queue.
+- The component's state variables remain unchanged during this execution phase.
+
+### 3. The Microtask Schedule
+
+Once your event listener finishes executing, React exits the batching context and schedules a single "perform work" sync task. It uses browser **microtasks** (similar to `queueMicrotask` or `Promise.then`) to process the queue. This ensures the update happens immediately after your JavaScript code finishes, but before the browser repaints the screen.
+
+### 4. Consolidated Re-render
+
+During the microtask phase, React processes the accumulated queue of updates all at once. It calculates the final new state, executes the component function **exactly once** with the brand-new values, updates the Virtual DOM, and updates the real DOM.
+
+***
+
+If you want to dive deeper, let me know:
+
+- Do you want to see how **React 18 automatic batching** differs from older versions?
+
+- Would you like to know how **Asynchronous code** (like `fetch` or `setTimeout`) affects this process?
+
+- [link](https://web-dance-development.hr/en/how-react-works/)\
+  How React works?\
+  Apr 22, 2025 — React also introduced the Fiber architecture, which breaks rendering work into smaller chunks so that updates can be processed wit...\
+  \
+  \
+  Web Dance Development
+
+- [link](https://javascript.plainenglish.io/how-react-works-part-6-how-state-actually-works-usestate-from-the-inside-51e2d785a420)\
+  How React Works (Part 6)? How State Actually Works: useState from the Inside\
+  May 5, 2026 — React creates a small update object and adds it to a queue. Then it schedules a re-render for later. The component function does n...\
+  \
+  \
+  JavaScript in Plain English
+
+- [link](https://nareshit.com/blogs/how-react-works-behind-the-scenes-technical-breakdown)\
+  How React Works Behind the Scenes: A Technical | Naresh IT\
+  React pushes an update into the state queue\
+  \
+  \
+  Naresh IT
+
+## what method does it use
+
+React uses **Automatic Batching** as its primary method, which relies internally on an orchestration framework called the **Lane Priority System**. [link](https://www.tothenew.com/blog/understanding-state-batching-in-react/)
+
+The underlying mechanics consist of three key components:
+
+### 1. The Lane System (Priority Bitmasks)
+
+Instead of processing state updates chronually in the order they arrive, React 18+ assigns every state update to a specific "Lane". Lanes are represented internally as a 32-bit bitmask that dictates execution priority. [link](https://dev.to/yorgie7/react-scheduler-lanes-the-ultimate-guide-to-smooth-ui-1gmk)
+
+- **Sync Lane:** Clicks, keypresses, and discrete user inputs.
+- **Default Lane:** Data fetching, timer completions, and background tasks.
+- **Transition Lane:** Lower priority visual changes (e.g., filtering a huge list). [link](https://javascript.plainenglish.io/how-react-lanes-work-react-internal-deep-dive-2025-e4ac04d0534b)
+
+When you call two state changes in one event listener, React flags both updates with the **exact same Lane ID**. [link](https://dev.to/yorgie7/react-scheduler-lanes-the-ultimate-guide-to-smooth-ui-1gmk)
+
+### 2. The Microtask Queue (The Consolidation Phase)
+
+Once updates are tagged, React delegates the timing to the browser's native **Microtask Queue**. [link](https://javascript.plainenglish.io/how-react-lanes-work-react-internal-deep-dive-2025-e4ac04d0534b)
+
+- Instead of running a macro-task (like a `setTimeout`), React registers a single microtask callback (`queueMicrotask`).
+- This microtask acts as a gatekeeper. It waits until your current synchronous function block (the event handler) completely finishes executing. [link](https://react.dev/learn/queueing-a-series-of-state-updates)
+
+### 3. The Work Loop
+
+When the microtask finally runs, React fires up its internal **Work Loop**. [link](https://javascript.plainenglish.io/how-react-scheduler-works-internally-deep-dive-2025-edition-850fdd38bc10)
+
+- The loop scans all pending Fiber nodes looking for updates that match the current highest-priority active Lane.
+- Because your two state updates share the exact same Lane, the Work Loop processes their data sequentially in a single pass.
+- It calculates the net outcome, constructs the new Virtual DOM tree, and performs a single visual layout paint to the actual browser DOM. [link](https://www.tothenew.com/blog/understanding-state-batching-in-react/)
+
+***
+
+If you want to explore further, let me know:
+
+- Would you like to see how to use **`startTransition`** to manually push an update into a lower-priority lane?
+
+- Do you want to see how the older **React 17 batching method** differed from this modern Lane system? [link](https://www.tothenew.com/blog/understanding-state-batching-in-react/)
+
+- [link](https://react.dev/learn/queueing-a-series-of-state-updates)\
+  Queueing a Series of State Updates – React\
+  To update the same state variable multiple times before the next render, you can use an updater function: \* \*\*Updater function\*\* \*\
+  React
+
+- [link](https://www.tothenew.com/blog/understanding-state-batching-in-react/)\
+  Understanding State Batching in React | TO THE NEW Blog\
+  Sep 23, 2024 — Introduction. In the world of React, efficient rendering and performance optimization are the keys to success. One of the most imp...\
+  TO THE NEW
+
+- [link](https://dev.to/yorgie7/react-scheduler-lanes-the-ultimate-guide-to-smooth-ui-1gmk)\
+  Fiber Architecture, Scheduler & Priority Lanes Explained\
+  Oct 9, 2025 — ✅ Key Takeaways. Fiber architecture → Breaks work into small, interruptible units. Scheduler → Manages updates based on priority. ...\
+  DEV Community
+
+Show all
+
+## the exact js method react uses to know if your event listener is done
+
+<mark><span>React does not use a specific JavaScript method to detect when your listener is finished</span></mark>. Instead, it relies on the **natural behavior of the JavaScript Call Stack** and the **Microtask Queue**.
+
+Here is exactly how React knows your code has completed.
+
+### The Mechanism: Synchronization and Microtasks
+
+React leverages the core mechanism of the JavaScript event loop. The execution follows this strict sequence:
+
+1. **The Event Triggers:** A user clicks a button. The browser adds the event to its execution queue.
+2. **React Opens the Gate:** React's internal wrapper function runs first. It sets an internal flag indicating that a batching window is now active.
+3. **Your Listener Runs:** JavaScript executes your entire event handler function. This happens synchronously on the **Call Stack**.
+4. **The Stack Clears:** When your code reaches its closing curly brace `}`, your function is popped off the JavaScript Call Stack. The stack is now empty.
+5. **The Microtask Fires:** Because your function finished, the browser immediately processes the **Microtask Queue** before it updates the screen or handles other events.
+
+### The Specific API: `queueMicrotask`
+
+While React historically managed this via internal tracking flags (like `isBatchingUpdates`), modern React (React 18+) schedules the re-render using the browser's native window method:
+
+javascript
+
+```
+queueMicrotask(() => {
+  // React's internal re-render and reconciliation loop runs here
+});
+```
+
+Use code with caution.
+
+Because microtasks cannot run until the current executing script completely finishes and leaves the Call Stack, React guarantees that **every line of code inside your event listener executes first** before the microtask callback wakes up to process the state changes.
+
+***
+
+To help you map this to your code, let me know:
+
+- Are you trying to write custom **asynchronous logic** inside your listener?
+
+- Do you need to run a callback **immediately after** the React state finishes updating?
+
+- [link](https://gitnation.com/contents/understanding-the-new-event-loop-in-react-native)\
+  Understanding the New Event Loop in React Native by Mo Khazali\
+  But yes, you could... The whole goal is that React Native under the hood when it's executing within the JavaScript engine does han...\
+  \
+  \
+  GitNation
+
+- [link](https://medium.com/@a1guy/understanding-the-javascript-event-loop-a-comprehensive-guide-f8d41e783e3c)\
+  Understanding the JavaScript Event Loop: A Comprehensive Guide\
+  Mar 23, 2025 — js), which handle these in another threads/processes. The result of execution, however, is provided to you in form of a callback i...\
+  \
+  \
+  Medium
+
+- [link](https://getsdeready.com/how-javascript-event-loop-works/?srsltid=AfmBOoo3iHVgSNPZBlP0g2-xBd153FkWK1Xh52H0Lvk%5FolDT3Gj-gIAC)\
+  How JavaScript Event Loop Works: The Interviewer’s Favorite Questions\
+  Jun 24, 2025 — The execution follows this sequence:\
+  \
+  \
+  Get SDE Ready
+
+Show all
+
+## what are the ways to async in a browser
+
+In a web browser, there are two primary categories of asynchronous execution: <mark><strong>Web APIs</strong><span> </span>(which offload work from the main thread) and<span> </span><strong>Task Scheduling Systems</strong><span> </span>(which control how code is prioritized on the main thread)</mark>.
+
+Here are the specific ways to run asynchronous code in a browser:
+
+### 1. The Microtask Queue (Immediate Execution)
+
+Microtasks run immediately after the current synchronous JavaScript execution stack finishes, but before the browser repaints the screen or handles user inputs.
+
+- **`Promise.prototype.then()` / `catch()` / `finally()`**: Schedules callbacks following the resolution of a promise.
+- **`queueMicrotask()`**: A native browser method to explicitly queue a low-overhead callback at the microtask level.
+- **`MutationObserver`**: Automatically queues a microtask when specific changes happen to the DOM tree.
+
+### 2. The Task Queue / Macrotasks (Deferred Execution)
+
+Macrotasks are placed at the back of the browser's main event loop queue. They yield execution back to the browser between tasks.
+
+- **`setTimeout()`**: Schedules a callback to run after a minimum delay of milliseconds.
+- **`setInterval()`**: Repeatedly schedules a callback at a fixed time interval.
+- **`MessageChannel`**: Allows two-way communication between contexts. Passing a message via `postMessage` triggers a macrotask.
+
+### 3. Rendering-Aligned Timers
+
+These APIs synchronize your asynchronous code with the browser's visual update system.
+
+- **`requestAnimationFrame()`**: Schedules code to execute right before the browser performs its next layout paint (typically 60-120 times per second).
+- **`requestIdleCallback()`**: Schedules low-priority work to run only when the browser's main thread is completely idle.
+
+### 4. Background Threading (True Parallelism)
+
+These web APIs move execution completely off the main thread to prevent the browser UI from freezing.
+
+- **`Web Workers`**: Runs heavy computational JavaScript tasks on a separate background operating system thread.
+- **`Service Workers`**: Background scripts that intercept network requests, manage caching, and handle push notifications even when the web page is closed.
+
+***
+
+To narrow this down, let me know:
+
+- Do you want to see how React behaves differently when using a **microtask** vs. a **macrotask**?
+
+- Are you looking for the best way to handle **heavy data processing** without freezing your page?
+
+- [link](https://www.guvi.in/blog/asynchronous-operations-in-javascript/)\
+  Asynchronous Operations in JavaScript\
+  Oct 2, 2025 — The Event Loop and Web APIs are the main means by which asynchronous operations are managed in a browser. The following is a summa...\
+  \
+  \
+  GUVI
+
+- [link](https://www.digitalocean.com/community/tutorials/how-to-handle-cpu-bound-tasks-with-web-workers)\
+  How To Handle CPU-Bound Tasks with Web Workers\
+  Oct 27, 2022 — With Web Workers, you can offload a CPU-intensive task to another thread, which frees the main thread. The main thread executes Ja...\
+  \
+  \
+  DigitalOcean
+
+- [link](https://dev.to/bymarsel/unraveling-macrotasks-and-microtasks-in-javascript-what-every-developer-should-know-53mc)\
+  🧠 Unraveling Macrotasks and Microtasks in JavaScript: What Every Web Developer Should Know 💯\
+  Apr 24, 2024 — Asynchronicity in the Web Browser Let's look at the two types of asynchronous behavior available in a web browser:\
+  \
+  \
+  DEV Community
+
+Show all
+
+## priority of them
+
+The browser processes these asynchronous mechanisms based on a strict hierarchy controlled by the **Event Loop**.
+
+Here is the exact order of execution, ranked from the absolute highest priority to the lowest:
+
+```
+[ Synchronous Code ]  --> Run immediately on the Call Stack
+         │
+         ▼
+[ 1. Microtasks ]     --> Runs immediately after the stack clears (Promises, queueMicrotask)
+         │
+         ▼
+[ 2. Animation Tasks ]--> Runs right before the screen repaints (requestAnimationFrame)
+         │
+         ▼
+[ 3. Macrotasks ]     --> Runs one at a time from the event queue (setTimeout, events)
+         │
+         ▼
+[ 4. Idle Tasks ]     --> Runs only if the browser has free time (requestIdleCallback)
+```
+
+### 1. Synchronous JavaScript (Highest Priority)
+
+- **What:** The main code block or event listener currently running on the **Call Stack**.
+- **Rule:** Nothing else can run until this code completely finishes executing and leaves the stack.
+
+### 2. Microtask Queue
+
+- **What:** `Promise.then/catch/finally`, `queueMicrotask`, `MutationObserver`.
+- **Priority Rule:** Runs **immediately** after the Call Stack becomes empty.
+- **Catch:** The browser will **drain the entire microtask queue** before moving on. If a microtask adds _another_ microtask, it will also run in this exact same cycle. This can freeze the page if overused.
+
+### 3. Render/Animation Queue (`requestAnimationFrame`)
+
+- **What:** Visual calculations managed by `requestAnimationFrame`.
+- **Priority Rule:** Runs after the microtask queue clears, but _only_ when the browser is actively preparing to repaint the screen (usually matching the monitor's refresh rate, e.g., every 16.6ms for 60Hz).
+
+### 4. Macrotask Queue (Task Queue)
+
+- **What:** `setTimeout`, `setInterval`, `MessageChannel`, user events (clicks, scrolling, network responses).
+- **Priority Rule:** Runs after microtasks clear and rendering tasks finish.
+- **Catch:** The event loop executes **only one macrotask** per cycle. After that single task finishes, the browser pauses to see if any new microtasks were created, processes them, handles rendering if needed, and _then_ returns for the next macrotask.
+
+### 5. Idle Tasks (`requestIdleCallback`) (Lowest Priority)
+
+- **What:** Low-priority background tasks scheduled with `requestIdleCallback`.
+- **Priority Rule:** Runs _only_ at the very end of an event loop cycle if the browser has spare time before the next frame deadline. If the browser is busy rendering at 60fps, these can be delayed for a long time.
+
+***
+
+### Summary Checklist for React Developers
+
+- If you want code to execute **before** React's 18+ automatic batching re-render: Write it **synchronously** in the handler.
+- If you want code to execute **with** React's re-render schedule: Use **`queueMicrotask`**.
+- If you want code to execute **after** React finishes rendering and the DOM is updated: Use **`setTimeout(fn, 0)`** or **`requestAnimationFrame`**.
+
+Let me know if you want to see a **code example** demonstrating how these priorities clash, or if you're trying to resolve a specific **timing issue**!
+
+- [link](https://medium.com/@Abidak/priority-queues-explained-the-hidden-power-behind-efficient-scheduling-and-algorithms-89d815418cba)\
+  Priority Queues Explained: The Hidden Power Behind Efficient Scheduling and Algorithms\
+  Sep 14, 2025 — 🌍 Real-World Applications of Priority Queues Multiple users share a computer. Each job has a priority. The OS always picks the hi...\
+  \
+  \
+  Medium
+
+## how does js do other things within one cpu core when you await
+
+When you use `await` inside an `async` function, JavaScript does **not** freeze the CPU core. Instead, it pauses your specific function, yields control back to the browser's event loop, and uses the operating system to handle the waiting in the background.
+
+Here is exactly how a single CPU core handles other tasks during an `await`:
+
+### 1. The Function is Split and Paused
+
+The moment the JavaScript engine encounters the `await` keyword, it immediately cuts your function in half.
+
+- Everything _before_ the `await` runs synchronously.
+- Everything _after_ the `await` is wrapped inside a callback function (essentially a `.then()` block).
+- The engine pauses the execution state of your function (saving its variables) and jumps completely out of it.
+
+### 2. The Browser's Native Web APIs Take Over
+
+Most things you `await` (like a `fetch` request, a timer, or file reading) are not actually handled by JavaScript itself. They are handled by the browser's **C++ Web APIs**.
+
+- While JavaScript waits for a `fetch` network response, the browser shifts that network polling work to a separate browser network thread or directly to the operating system's kernel via low-level async I/O.
+- The main JavaScript CPU core is now completely free and idle.
+
+### 3. The Event Loop Processes Other Tasks
+
+Because the main thread is free, the Event Loop takes over. It looks at the **Macrotask Queue** and **Microtask Queue** to keep the app responsive. On that single CPU core, it can now:
+
+- Execute a completely separate `onClick` event listener.
+- Run a CSS layout recalculation and repaint the screen.
+- Process a different asynchronous function that just finished.
+
+### 4. Re-entry via the Microtask Queue
+
+When the background Web API finishes its work (e.g., the network packets arrive), it pushes the remaining half of your paused function into the **Microtask Queue**.
+
+The Event Loop will wait until the single CPU core finishes whatever task it is currently working on. As soon as the Call Stack is empty, it pulls your remaining code out of the Microtask Queue and resumes your function right where it left off.
+
+***
+
+### A Simple Analogy
+
+Think of the single CPU core as a single waiter in a restaurant:
+
+1. The waiter takes your order (`await fetch('/pizza')`).
+2. The waiter doesn't stand at your table waiting for the pizza to cook. They hand the ticket to the kitchen (the Web API).
+3. While the kitchen cooks, the waiter serves other tables (handles clicks, renders UI, runs other code).
+4. When the pizza is ready, the kitchen rings a bell (pushes to the Microtask Queue), and the waiter brings it to your table when they finish their current task.
+
+If you'd like, let me know:
+
+- Do you want to see what happens to the CPU if you `await` a heavy mathematical loop instead of a network request?
+
+- Would you like a code snippet showing how multiple `await` lines execute sequentially versus concurrently using `Promise.all`?
+
+- [link](https://sangwin.medium.com/delays-in-javascript-how-to-make-your-code-wait-the-right-way-0d97522cf8f5)\
+  Delays in JavaScript: How to Make Your Code Wait the Right Way\
+  Nov 12, 2025 — The await keyword tells JavaScript to pause inside that async function until the delay finishes — without freezing the whole progr...\
+  \
+  \
+  Medium
+
+- [link](https://www.sitepoint.com/javascript-async-await/)\
+  A Beginner's Guide to JavaScript async/await, with Examples — SitePoint\
+  Nov 15, 2024 — When we use the await keyword to wait for an asynchronous operation to complete, the JavaScript interpreter will accordingly pause...\
+  \
+  \
+  SitePoint
+
+- [link](https://web.mit.edu/6.102/www/sp23/classes/15-promises/)\
+  You are not logged in. Reading 15: Promises\
+  The eventual fulfillment of the promise is an event handled by the JavaScript event loop, which will then call the callback to ret...\
+  \
+  Massachusetts Institute of Technology
+
+Show all
+
+## what if you await a js heavy math fn instead
+
+If you `await` a heavy mathematical function that runs entirely in JavaScript, **the single CPU core will freeze completely**, blocking all user interactions and rendering.
+
+Using `await` does not magically make synchronous JavaScript code asynchronous.
+
+### Why it Freezes: The "Await" Misconception
+
+The `await` keyword only releases control of the CPU core if it is waiting for an asynchronous operation managed outside of the JavaScript engine (like a network request or a timer).
+
+If you pass a synchronous, CPU-intensive loop into a Promise and `await` it, the JavaScript engine must still execute that loop line-by-line on the main thread.
+
+javascript
+
+```
+// ⚠️ THIS WILL FREEZE THE BROWSER
+async function handleCalculation() {
+  console.log("Starting...");
+
+  // Awaiting this does NOT make it background-friendly
+  await heavyMathFunction();
+
+  console.log("Done!"); // This waits, but so does the entire UI
+}
+
+function heavyMathFunction() {
+  let result = 0;
+  for (let i = 0; i < 5000000000; i++) { // Takes several seconds
+    result += Math.sqrt(i);
+  }
+  return result;
+}
+```
+
+Use code with caution.
+
+### What Happens to the Browser?
+
+While that `for` loop is running on your single CPU core:
+
+- **The Call Stack stays full:** The Event Loop cannot check the Microtask or Macrotask queues.
+- **UI Freezes:** Clicks, scrolls, and text inputs are ignored.
+- **Animations Stop:** The browser cannot trigger layout or repaint phases.
+- **"Page Unresponsive" Warning:** If the loop takes longer than a few seconds, the browser will ask the user if they want to kill the tab.
+
+***
+
+### How to Actually Solve This
+
+If you must run heavy math in the browser without freezing the CPU core, you have two choices:
+
+#### Solution 1: Use a Web Worker (True Parallelism)
+
+This moves the math entirely off the main thread onto a **separate OS thread** (utilizing another CPU core).
+
+javascript
+
+```
+// main.js
+const worker = new Worker('worker.js');
+worker.postMessage('start');
+
+worker.onmessage = (event) => {
+  console.log("Result received without freezing UI:", event.data);
+};
+
+// worker.js (Runs in the background)
+self.onmessage = () => {
+  let result = 0;
+  for (let i = 0; i < 5000000000; i++) { result += Math.sqrt(i); }
+  self.postMessage(result);
+};
+```
+
+Use code with caution.
+
+#### Solution 2: Chunking with `setTimeout` (Yielding Control)
+
+If you cannot use Web Workers, you must manually break the big loop into tiny pieces and yield control back to the Event Loop between chunks using a macrotask.
+
+javascript
+
+```
+function chunkedCalc(start, end, currentResult) {
+  let result = currentResult;
+  let chunkEnd = Math.min(start + 1000000, end); // Process 1 million items at a time
+
+  for (let i = start; i < chunkEnd; i++) {
+    result += Math.sqrt(i);
+  }
+
+  if (chunkEnd < end) {
+    // Yield the CPU so the browser can breathe/render, then continue
+    setTimeout(() => chunkedCalc(chunkEnd, end, result), 0);
+  } else {
+    console.log("Final Result:", result);
+  }
+}
+```
+
+Use code with caution.
+
+***
+
+Let me know if you want to explore:
+
+- How to **pass data back and forth** cleanly using a Web Worker.
+
+- How the modern **`scheduler.yield()` API** makes chunking much cleaner than `setTimeout`.
+
+- [link](https://www.reddit.com/r/learnjavascript/comments/ygknf5/using%5Fasyncawait%5Fbut%5Fpage%5Ffreezes%5Funtil%5Fall%5Ftasks/)\
+  Using async/await, but page freezes until all tasks are finished : r/learnjavascript\
+  Oct 29, 2022 — await itself will not turn a synchronous function to an async one. If your image processing is synchronous, you'll have to change ...\
+  \
+  Reddit
+
+- [link](https://www.linkedin.com/pulse/mastering-async-javascript-from-callback-hell-kalu-u-ogbureke-62y1e)\
+  Mastering Async JavaScript: From Callback Hell to Async/Await\
+  May 18, 2025 — However, asynchronous operations such as file read/write, database access, and network requests are not handled by JavaScript dire...\
+  \
+  \
+  LinkedIn
+
+- [link](https://softwareengineering.stackexchange.com/questions/433640/in-javascript-how-is-awaiting-the-result-of-an-async-different-than-sync-calls)\
+  In JavaScript, how is awaiting the result of an async different than sync calls?\
+  Nov 18, 2021 — Note that because JavaScript is single-threaded it is not possible to have JavaScript code execute in the background 1. Asynchrono...\
+  \
+  \
+  Software Engineering Stack Exchange
+
+Show all
+
+## what if you promise all some math fn, does it make them parallel even if the perf decreases
+
+No, using `Promise.all` on JavaScript math functions **will not make them run in parallel**. Performance does not decrease due to overlapping competition; rather, the functions simply execute one after another in a straight line. [link](https://julesblom.com/writing/running-promises-in-parallel)
+
+### Why it Does Not Work
+
+`Promise.all` does not execute code; it merely acts as a waiting room for promises that have already been created. [link](https://stackoverflow.com/questions/67696657/does-promise-all-run-the-promises-in-parallel)
+
+When you pass an array of math functions into `Promise.all`, JavaScript evaluates the array items from left to right **synchronously** before `Promise.all` even starts. Because JavaScript operates on a single thread, the first math function must complete entirely, freezing the CPU, before the second math function can even begin. [link](https://stackoverflow.com/questions/67696657/does-promise-all-run-the-promises-in-parallel)
+
+javascript
+
+```
+// This does NOT run in parallel or even concurrently
+await Promise.all([
+  heavyMath(1), // Runs 100% to completion first, freezing the UI
+  heavyMath(2), // Then runs 100% to completion second, freezing the UI
+  heavyMath(3)  // Then runs 100% to completion third, freezing the UI
+]);
+```
+
+Use code with caution.
+
+### The Code Execution Order
+
+When you run the code above, the underlying engine executes it exactly like this:
+
+1. **Step 1:** Call `heavyMath(1)`. The single CPU core enters the function and loops until it completes. The browser UI freezes.
+2. **Step 2:** `heavyMath(1)` finishes and returns a resolved Promise.
+3. **Step 3:** Call `heavyMath(2)`. The CPU enters this function. The browser UI remains frozen.
+4. **Step 4:** `heavyMath(2)` finishes and returns a resolved Promise.
+5. **Step 5:** Call `heavyMath(3)`. The CPU enters this function. The browser UI stays frozen.
+6. **Step 6:** `heavyMath(3)` finishes and returns a resolved Promise.
+7. **Step 7:** The engine hands the three already-resolved promises to `Promise.all`. Since they are all finished, `Promise.all` resolves immediately.
+
+The total execution time matches the sum of all three functions exactly, identical to running them sequentially on separate lines.
+
+### The Misconception
+
+Developers often see `Promise.all` achieve parallelism with network operations like `fetch`. [link](https://medium.com/codex/running-concurrent-requests-with-async-await-and-promise-all-daaca1b5da4d)
+
+This occurs because a network request instantly offloads its waiting period to the browser's C++ background systems, freeing the single JavaScript thread. Math functions written in JavaScript cannot be offloaded; they must remain on the main thread and consume active CPU cycles. [link](https://medium.com/codex/running-concurrent-requests-with-async-await-and-promise-all-daaca1b5da4d)
+
+***
+
+If you want to make these calculations run in true parallel across multiple CPU cores, I can show you how to spin up a **pool of multiple Web Workers** and coordinate their results. Would you like a code example for that?
+
+- [link](https://dev.to/dperrymorrow/speed-up-your-code-with-promiseall-3d4i)\
+  Speed up your code with Promise.all - DEV Community\
+  Nov 23, 2022 — #javascript #webdev #performance. So one of the things I see commented on all the time in Javascript code reviews. Say you have so...\
+  DEV Community
+- [link](https://medium.com/codex/running-concurrent-requests-with-async-await-and-promise-all-daaca1b5da4d)\
+  Running Concurrent Requests with async/await and Promise.all\
+  May 17, 2021 — The easiest way to make this algorithm faster is to remove the await keyword before the fetch command. This will tell JavaScript t...\
+  Medium·Brennon Loveless
+- [link](https://www.reddit.com/r/node/comments/1daak6s/how%5Fcocurrent%5Fpromiseall%5Factually%5Fis/)\
+  How cocurrent Promise.all() actually is? : r/node\
+  Jun 7, 2024 — According to a Reddit user, Promise.all() doesn't handle concurrency. It simply waits for promises to resolve. Once the requests a...\
+  Reddit
+
+Show all
+
+## does js have a native way to, like, within one cpu core, do many sync fn simultaneuosly, make a little progress for one, and then another
+
+Yes, JavaScript has a built-in way to do this called **Generators** (using `function*` and `yield`).
+
+Within a single CPU core, it cannot run them at the exact same millisecond, but it can **interleave** them. It runs a few lines of Function A, pauses it, runs a few lines of Function B, pauses it, and cycles back and forth. This is called **cooperative multitasking**.
+
+Here is how you can use generators to make incremental progress on multiple heavy sync tasks simultaneously.
+
+### The Mechanism: Generators and `yield`
+
+When a generator function encounters the `yield` keyword, it freezes its execution, saves its local variables, and hands control back to whoever called it.
+
+javascript
+
+```
+// 1. Define the math tasks as Generators
+function* incrementalMath(id, target) {
+  let result = 0;
+  for (let i = 0; i < target; i++) {
+    result += Math.sqrt(i);
+
+    // Every 1 million loops, pause and yield control
+    if (i % 1000000 === 0) {
+      yield `Task ${id} is at ${i}`;
+    }
+  }
+  return result;
+}
+
+// 2. Create the tasks (This does NOT start them yet)
+const task1 = incrementalMath(1, 5000000);
+const task2 = incrementalMath(2, 5000000);
+
+// 3. The Interleaving Scheduler Loop
+const tasks = [task1, task2];
+
+while (tasks.length > 0) {
+  const currentTask = tasks.shift(); // Get the first task in line
+  const status = currentTask.next(); // Run it until the next 'yield'
+
+  if (!status.done) {
+    console.log(status.value);     // Prints the progress message
+    tasks.push(currentTask);       // Put it at the back of the line to continue later
+  } else {
+    console.log(`Task finished with result: ${status.value}`);
+  }
+}
+```
+
+Use code with caution.
+
+### How the Output Looks
+
+If you run the scheduler above, the console will log out interleaved progress, showing that both functions are advancing at the same time:
+
+text
+
+```
+Task 1 is at 0
+Task 2 is at 0
+Task 1 is at 1000000
+Task 2 is at 1000000
+Task 1 is at 2000000
+...
+```
+
+Use code with caution.
+
+### The Catch: You Still Block the UI
+
+While generators let your functions share the CPU core with _each other_, the `while` loop itself is completely synchronous. The browser window will still freeze until all tasks finish.
+
+### The Ultimate Fix: The Modern `scheduler.yield()` API
+
+To let these interleaved functions share the CPU core with **the browser UI** (so clicks and animations still work), you combine chunking with the browser's native scheduler.
+
+Modern browsers support `scheduler.yield()`, which tells the single CPU core: _"Pause my JavaScript execution for a split second, let the browser handle any user clicks or screen repaints, and then bring me right back to where I was."_ \[1]
+
+javascript
+
+```
+async function heavyMathWithUIBreathe(id, target) {
+  let result = 0;
+  for (let i = 0; i < target; i++) {
+    result += Math.sqrt(i);
+
+    // Every 1 million loops, let the browser UI breathe
+    if (i % 1000000 === 0) {
+      await scheduler.yield(); // The engine breaks here, handles clicks, then resumes [1]
+    }
+  }
+  return result;
+}
+
+// If you call these concurrently, they will interleave AND the UI won't freeze!
+Promise.all([
+  heavyMathWithUIBreathe(1, 5000000),
+  heavyMathWithUIBreathe(2, 5000000)
+]);
+```
+
+Use code with caution.
+
+***
+
+To wrap this up, let me know:
+
+- Do you want to see how to implement a fallback for `scheduler.yield()` using `setTimeout` for older browsers?
+
+- Are you designing a complex game loop or simulation that requires this exact kind of interleaving?
+
+- [link](https://gwangjinkim.medium.com/emulating-python-generators-in-javascript-a-step-by-step-guide-06c381dad5c9)\
+  Emulating Python Generators in JavaScript: A Step-by-Step Guide\
+  Nov 6, 2023 — A generator in JavaScript is defined with an asterisk ( function\* ) and uses the yield keyword to return values.\
+  \
+  \
+  Medium
+
+- [link](https://yoric.github.io/post/quite-a-few-words-about-async/)\
+  (Quite) A Few Words About Async\
+  Jul 8, 2025 — There are also concurrency primitives that will interleave the execution of two concurrent tasks, attempting to ensure that each o...\
+  \
+  \
+  GitHub
+
+- [link](https://x.com/Franc0Fernand0/status/2075863993827184833)\
+  Multitasking is something every program on your computer relies on, but few developers understand how a single CPU core runs everything at once. The trick comes down to two ideas people mix up: parallelism is when things literally run at the same instant on different cores, while concurrency is when many tasks make progress over the same stretch of time, even if only one is ever running. Even if you write async code every day, do you actually know what's happening underneath? Do you know why throwing more threads at a problem doesn't always make it faster? A few pieces work together to pull it off: - CPU-bound vs I/O-bound tasks determines if adding more cores helps at all. Work that is CPU-bound moves faster when it is split between cores. I/O-bound work, on the other hand, just waits no matter how many cores you have. - Preemptive multitasking gives each task a small time slice, then a timer interrupt forces it to hand the core over. Switch fast enough and a single core feels like it's running everything at the same time. - Context switching saves one task's state and loads another's so each can resume exactly where it left off. It makes multitasking possible, but every switch is\
+  Jul 11, 2026 — - Cooperative multitasking is how event loops in JavaScript and Go's runtime do their own juggling on top of the OS. Tasks give up...\
+  \
+  \
+  X
+
+Show all
+
+## you can literally do the same wo the generator yield syntax sugars. i mean does js have a native way to cooperative multitask wo explicit yield.
+
+No, JavaScript does **not** have a native runtime mechanism to automatically handle cooperative multitasking without explicit yield markers (`yield`, `await`, or callbacks).
+
+The JavaScript engine cannot inspect a standard synchronous loop and decide to pause it mid-execution on its own.
+
+### Why JavaScript Requires Explicit Yields
+
+JavaScript functions are structurally **run-to-completion**.
+
+Once a regular function pushes onto the Call Stack, it retains absolute ownership of the single CPU core until it hits a `return` statement or reaches its final line of code. The engine has no internal timer or scheduler to interrupt a running function.
+
+To achieve interleaving without explicit code modifications, an engine requires a feature called **preemptive multitasking**. Preemptive engines use low-level operating system timers to forcibly pause a thread at any given instruction. JavaScript lacks this completely on the main thread.
+
+### The Alternatives (How frameworks do it)
+
+Because the language requires explicit boundaries, tools and frameworks that implement multitasking without code keywords rely on two specific strategies:
+
+#### 1. Manual State Routing (The Pre-Generator Pattern)
+
+Before `yield` was added to JavaScript, developers mimicked multitasking by converting loops into state machines. You break your logic into small steps, save your loop indices to an external object, and execute one iteration step at a time inside a wrapper scheduler.
+
+javascript
+
+```
+// A standard function mimicking interleaving using an explicit state object
+function createMathTask(target) {
+  return {
+    i: 0,
+    result: 0,
+    step() {
+      // Process a tiny batch manually
+      let batchEnd = Math.min(this.i + 1000, target);
+      for (; this.i < batchEnd; this.i++) {
+        this.result += Math.sqrt(this.i);
+      }
+      return this.i >= target; // Returns true when done
+    }
+  };
+}
+```
+
+Use code with caution.
+
+#### 2. Build-Time Compilation (Fiber / Schedulers)
+
+This is exactly how React's Concurrent Mode works. React wanted to break up heavy component rendering work without forcing developers to put `await` or `yield` on every single JSX element.
+
+Instead of the browser handling it natively, compiler frameworks (like Babel or specialized build tools) rewrite standard synchronous code into chunked, step-based structures behind the scenes. The code you write looks synchronous, but the generated output code contains explicit checkpoint checks that evaluate whether the main thread is running out of time.
+
+***
+
+If you are trying to handle a performance bottleneck, let me know:
+
+- Is your goal to avoid writing noisy `yield`/`await` markers throughout a **large math codebase**?
+
+- Are you looking for a **build-time compiler tool** that can automate code splitting for you?
+
+- [link](https://www.tarantool.io/en/doc/latest/platform/app/coop%5Fmultitasking/)\
+  Fibers, yields, and cooperative multitasking\
+  Explicit yields are clearly visible from the invoking code. There are only two explicit yields: fiber. yield() and fiber. sleep(t)\
+  \
+  Tarantool
+
+- [link](https://users.rust-lang.org/t/trying-to-understand-how-control-is-yielded-and-resumed-in-async-code/93419)\
+  Trying to understand how control is yielded and resumed in async code\
+  May 2, 2023 — await is a yield point, which is terminology from cooperative multitasking. You're probably familiar with preemptive multitasking ...\
+  \
+  The Rust Programming Language Forum
+
+- [link](https://jmhero05.medium.com/async-javascript-the-single-thread-bda39b40a348)\
+  Async JavaScript: The Single Thread | by Jake Mills | Medium\
+  Apr 21, 2021 — JavaScript is a single-threaded programming language, which means that JS can only run one process, or instruction (thread), at a ...\
+  \
+  \
+  Medium
+
+Show all
+
+## can you pause a js fn natively, for example, you wanna parallel some sync fn, and give each 1ms before another
+
+No, you cannot natively pause a standard JavaScript function from the outside to enforce a strict time limit like a 1ms rotation.
+
+Because JavaScript is strictly **run-to-completion**, a standard function cannot be interrupted mid-execution unless it explicitly chooses to pause itself using `yield` or `await`.
+
+However, you can achieve this exact 1ms rotation behavior by utilizing two native Web APIs designed to work _around_ this limitation: **Web Workers** and **`SharedArrayBuffer`**.
+
+### The Only Native Solution: Multi-Threaded Time Slicing
+
+To pause synchronous functions after exactly 1ms without rewriting them, you must move them out of the main thread. You run the math functions inside separate Web Workers (which gives them their own CPU threads) and use an atomic lock on the main thread to control their execution.
+
+Here is how you can natively build a 1ms time-slice scheduler using `SharedArrayBuffer` and `Atomics.wait()`:
+
+#### 1. The Math Worker (`worker.js`)
+
+This worker runs a standard, blocking synchronous loop. It doesn't use generators or yields, but it checks a shared memory flag at rapid intervals. If the main thread revokes its permission, it blocks natively using `Atomics`.
+
+javascript
+
+```
+// worker.js
+self.onmessage = (e) => {
+  const { sharedBuffer, workerId } = e.data;
+  const statusArray = new Int32Array(sharedBuffer);
+
+  let result = 0;
+  for (let i = 0; i < 5000000000; i++) {
+    result += Math.sqrt(i);
+
+    // Every 10,000 iterations, check if the scheduler paused us
+    if (i % 10000 === 0) {
+      // If statusArray[workerId] becomes 0 (PAUSED), sleep until it becomes 1 (RUNNING)
+      while (statusArray[workerId] === 0) {
+        // Atomics.wait puts this thread to sleep natively without consuming CPU
+        Atomics.wait(statusArray, workerId, 0);
+      }
+    }
+  }
+  self.postMessage({ workerId, result });
+};
+```
+
+Use code with caution.
+
+#### 2. The Main Thread 1ms Scheduler (`main.js`)
+
+The main thread coordinates the workers. It uses a standard synchronous `setInterval` or loop to change the shared memory array every 1ms, waking up one worker and forcing the other to freeze.
+
+javascript
+
+```
+// main.js
+const sharedBuffer = new SharedArrayBuffer(8); // Memory shared across threads
+const statusArray = new Int32Array(sharedBuffer);
+
+// Initially pause both workers (0 = pause, 1 = run)
+statusArray[0] = 0;
+statusArray[1] = 0;
+
+const worker1 = new Worker('worker.js');
+const worker2 = new Worker('worker.js');
+
+worker1.postMessage({ sharedBuffer, workerId: 0 });
+worker2.postMessage({ sharedBuffer, workerId: 1 });
+
+let activeWorker = 0;
+
+// Every 1ms, swap which function is allowed to run
+setInterval(() => {
+  // 1. Freeze the currently active worker
+  statusArray[activeWorker] = 0;
+
+  // 2. Switch the active pointer
+  activeWorker = activeWorker === 0 ? 1 : 0;
+
+  // 3. Unfreeze the next worker and notify its thread to wake up
+  statusArray[activeWorker] = 1;
+  Atomics.notify(statusArray, activeWorker, 1);
+}, 1);
+```
+
+Use code with caution.
+
+### Why this is the only way
+
+This approach works because `Atomics.wait()` is a blocking, low-level browser API that pauses a thread at the operating system level.
+
+- It does not require `async/await` syntax inside your math loops.
+- It achieves true cooperative interleaving on a precise millisecond clock.
+- _Note:_ `SharedArrayBuffer` requires your server to send specific security headers (`Cross-Origin-Opener-Policy` and `Cross-Origin-Embedder-Policy`) to run in modern browsers.
+
+***
+
+To finalize this setup, let me know:
+
+- Do you need help configuring the **security headers** required to make `SharedArrayBuffer` work?
+
+- Is this for a **production application**, or are you exploring the limits of the browser runtime?
+
+- [link](https://medium.com/@snehaa.hari/leetcode-problem-2621-sleep-78cab6513c1f)\
+  LeetCode Problem 2621: Sleep. Solving the 30 days of Javascript… | by Snehaa Shri Hari\
+  Oct 31, 2025 — In JavaScript, we can't pause execution like we can in synchronous languages. Instead, we use Promises and setTimeout to schedule ...\
+  \
+  \
+  Medium
+
+- [link](https://medium.com/@amesimmons/you-dont-know-js-my-learnings-from-async-performance-8593ddb418a6)\
+  You Don’t Know JS: My learnings from Async & Performance\
+  May 5, 2018 — But what happens inside each of those callbacks is predictable and cannot be interrupted. This is called run to completion. Once a...\
+  \
+  \
+  Medium
+
+- [link](https://forums.tumult.com/t/pause-and-resume-js-function/15551)\
+  Pause and resume JS function - Using JavaScript with Hype\
+  Apr 1, 2019 — What is the javascript function doing? Javascript is single-threaded and generally takes over execution on the webpage, so you can...\
+  \
+  \
+  Tumult Forums
+
+Show all
+
+## how do others do outside js
+
+Outside of JavaScript, other programming environments handle heavy calculations and multitasking using two main strategies: **Preemptive OS Multi-threading** (forcing loops to pause) and **Managed Virtual Runtimes** (injecting pauses automatically). [link](https://en.wikipedia.org/wiki/Green%5Fthread)
+
+Here is exactly how other systems achieve what JavaScript cannot do natively on a single CPU core.
+
+***
+
+### 1. Preemptive Scheduling (OS Level)
+
+Languages like **C, C++, Rust, and Java** natively use **OS Threads** (Platform Threads). [link](https://www.reddit.com/r/java/comments/13yoe1u/introduction%5Fand%5Fpitfalls%5Fof%5Fjavas%5Fnew%5Fconcurrency/)
+
+When you write a heavy mathematical loop in these languages, you don't need `yield` or `await`. The Operating System kernel manages the scheduling via a hardware timer interrupt.
+
+- **The 1ms Slice:** The OS kernel lets Thread A run on a CPU core. After a precise interval (e.g., 1ms to 10ms), a hardware timer triggers a CPU interrupt.
+- **Forced Interruption:** The OS kernel forcibly freezes Thread A mid-instruction, saves its CPU registers, loads Thread B's memory, and lets Thread B run for the next millisecond.
+- **Why JS can't do this:** The browser's main JavaScript thread runs entirely in user-space inside a single-threaded event loop; it does not allow the OS to slice up its execution context without crashing the web page. [link](https://medium.com/@sweetondonie/how-different-programming-languages-handle-threads-async-and-concurrency-a1bc0d0eee61)
+
+***
+
+### 2. Runtime Preemption (The Go / Erlang Model)
+
+Languages like **Go** (with Goroutines) and **Erlang** use **Green Threads / Virtual Threads**. They multiplex thousands of logical threads onto just a few real CPU cores using an internal runtime scheduler. [link](https://en.wikipedia.org/wiki/Green%5Fthread)
+
+To rotate heavy math functions every 1ms _without_ explicit developer keywords, they use two unique techniques:
+
+#### Compiler-Injected Checkpoints (Cooperative Preemption)
+
+When you compile a Go program, the Go compiler automatically injects an implicit instruction at the prologue of every single function call and loop boundary. [link](https://www.reddit.com/r/ProgrammingLanguages/comments/pwmhip/my%5Ftakeaways%5Fwrt%5Frecent%5Fgreen%5Fthreads%5Fvs/)
+
+- You write a standard `for` loop.
+- The compiler silently adds a check: `if (runtime.needsPreempt) { yield() }`.
+- Every few microseconds, the loop hits this hidden checkpoint. If the Go scheduler notices the thread has been hogging the core for more than 10ms, the checkpoint forces the function to pause and switch to another task. [link](https://www.reddit.com/r/ProgrammingLanguages/comments/pwmhip/my%5Ftakeaways%5Fwrt%5Frecent%5Fgreen%5Fthreads%5Fvs/)
+
+#### OS Signal Interruption (True Preemption)
+
+If a function contains a tight mathematical loop that doesn't make any function calls (preventing the compiler checkpoints from firing), Go uses **Asynchronous Preemption**.
+
+- A background thread in the Go runtime monitors the worker threads.
+- If it sees a math loop hogging a single core for too long, it sends a low-level OS signal (`SIGURG`) directly to that thread.
+- The thread handles the signal, which safely pauses the execution stack of the math loop and boots it off the CPU core so another goroutine can make progress. [link](https://medium.com/@priyankaguha.2012/the-go-scheduler-explained-deep-dive-into-the-g-m-p-concurrency-model-dfaf40a7508c)
+
+***
+
+### 3. Reduction Counting (The Erlang / Elixir Model)
+
+Erlang allocates a strict budget called **Reductions** to every single function process.
+
+- 1 Reduction roughly equals 1 function call or basic loop operation.
+- Every process gets a budget of **2,000 reductions** per turn.
+- As your heavy math executes, the runtime decrements the counter. The exact moment the counter hits `0`, the engine pauses the function, saves the instruction pointer, and swaps to the next function.
+
+***
+
+### Summary Comparison
+
+| Runtime / OS             | How it pauses a heavy loop                                             | Developer Overhead                       |
+| ------------------------ | ---------------------------------------------------------------------- | ---------------------------------------- |
+| **Browser JavaScript**   | Cannot pause natively from outside (must use explicit `yield`/`await`) | High (requires structural rewrites)      |
+| **OS (C / Rust / Java)** | Hardware clock interrupts and kernel-level thread swapping             | Zero (handled by the Operating System)   |
+| **Go Runtime**           | Injected function checkpoints and background OS signals (`SIGURG`)     | Zero (handled by the compiler & runtime) |
+| **Erlang VM**            | Counting reduction operations down to zero                             | Zero (handled by the virtual machine)    |
+
+***
+
+If you'd like to explore this further, let me know:
+
+- Would you like to see how to use **WebAssembly (WASM)** to run these multi-threaded, preemptive languages directly inside your browser?
+
+- Are you interested in looking at how **Node.js** handles this differently than the browser via `worker_threads`?
+
+- [link](https://www.linkedin.com/posts/andrewyng%5Feven-though-im-a-much-better-python-than-activity-7321186874595663874-WqTv)\
+  AI-assisted coding makes languages less important - LinkedIn\
+  Apr 24, 2025 — why Java is consistently faster than Python, JavaScript, and TypeScript comes down to how each language is executed by its runtime...\
+  LinkedIn·Andrew Ng
+
+- [link](https://www.reddit.com/r/java/comments/13yoe1u/introduction%5Fand%5Fpitfalls%5Fof%5Fjavas%5Fnew%5Fconcurrency/)\
+  Introduction and pitfalls of Java's new concurrency\
+  Jun 2, 2023 — welcome everyone welcome to my talk or I will give you an introduction. and tell you all about well the pitfalls of Java's new con...\
+  [38:12](https://www.reddit.com/r/java/comments/13yoe1u/introduction%5Fand%5Fpitfalls%5Fof%5Fjavas%5Fnew%5Fconcurrency/)\
+  Reddit·Devoxx
+
+- [link](https://en.wikipedia.org/wiki/Green%5Fthread)\
+  Green thread - Wikipedia\
+  Green thread. Article · Talk. Language; Loading… Download PDF; Watch · Edit. Not to be confused with virtual thread. In computer p...\
+  Wikipedia
+
+Show all
+
+## compare run-to-completion w alternatives
+
+The trade-offs between execution models come down to a fundamental choice: **Do you trust the developer to share the CPU, or do you let the computer force them to share?**
+
+Here is how **Run-to-Completion** compares directly with **Preemptive** and **Reduction-Based** alternatives.
+
+***
+
+### 1. The Core Comparison
+
+| Feature            | Run-to-Completion (JavaScript)                             | Preemptive Scheduling (OS / Go)                                   | Reduction Counting (Erlang)                                               |
+| ------------------ | ---------------------------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| **How It Pauses**  | Function decides when to pause itself (`yield` / `await`). | System interrupts the code at a random time interval (e.g., 1ms). | System counts operations and pauses when a budget (e.g., 2000) hits zero. |
+| **Thread Context** | Cooperative Multitasking.                                  | Preemptive Multitasking.                                          | Preemptive / Managed Virtual Multitasking.                                |
+| **Predictability** | High (Code cannot be interrupted mid-line).                | Low (Code can be paused between any two machine instructions).    | Medium (Paused at strict instruction boundaries).                         |
+| **Risk**           | One bad loop freezes the entire runtime thread.            | Race conditions and data corruption across threads.               | Slight runtime performance overhead from counting.                        |
+
+***
+
+### 2. Run-to-Completion vs. Preemptive (OS / Go)
+
+#### Predictability vs. Concurrency
+
+In **Run-to-Completion**, you have absolute certainty. If you modify a variable across three lines of code, no other function can execute mid-way through and change that variable out from under you. This eliminates an entire class of software bugs called **Race Conditions**.
+
+In **Preemptive** systems, the OS can pause your code right in the middle of an operation. If Task A is modifying an array and gets abruptly paused, Task B might read that array in a broken, half-modified state.
+
+- **The Trade-off:** Run-to-Completion gives you **simpler, thread-safe code** but risks total freezing. Preemption gives you **un-freezable, responsive apps** but forces you to use complex locks (`Mutex`) and synchronization to protect data.
+
+***
+
+### 3. Run-to-Completion vs. Reduction Counting (Erlang / BEAM)
+
+#### Manual Yielding vs. Automated Budgets
+
+In **Run-to-Completion**, if you have a massive dataset to process, you must manually chunk it up using timers or generator syntax. You are forced to pollute your business logic with scheduling code.
+
+In **Reduction Counting**, the virtual machine handles the chunking for you invisibly. You write a standard, infinite loop. The runtime tracks the execution budget and handles the pausing and resuming behind the scenes without changing the look of your code.
+
+- **The Trade-off:** Run-to-Completion keeps the runtime engine **lightweight and blazing fast** for single-focused operations. Reduction counting introduces a slight **performance tax** because the engine is constantly running a counter in the background, but it guarantees absolute fairness across tasks.
+
+***
+
+### 4. Summary of Use Cases
+
+- **Choose Run-to-Completion (JavaScript):** Ideal for UI-heavy applications and event-driven I/O. It guarantees that rendering and state changes remain synchronized and deterministic without complex multi-threaded bugs.
+- **Choose Preemptive (C / Rust / Go):** Ideal for raw computational performance, gaming engines, and heavy backend web servers where maximizing every core of the CPU is mandatory.
+- **Choose Reduction Counting (Erlang / Elixir):** Ideal for systems requiring high availability and low latency (like chat applications or telecommunications), where no single user's request should ever slow down another user's request.
+
+***
+
+To wrap up this architectural deep dive, let me know:
+
+- Are you evaluating these models to pick a language for a **new backend service**?
+
+- Do you want to see how **Node.js avoids the pitfalls** of run-to-completion using its background thread pool (`libuv`)?
+
+- [link](https://backup.education/showthread.php?tid=8678)\
+  Compare preemptive and non-preemptive scheduling\
+  Jul 25, 2024 — If you have a system with multiple applications in play - think about it, like when you're gaming while downloading something - pr...\
+  \
+  \
+  Backup Education
+
+- [link](https://thenewstack.io/go-power-microsofts-bold-bet-on-faster-typescript-tools/)\
+  Go Power: Microsoft's Bold Bet on Faster TypeScript Tools\
+  Mar 12, 2025 — In a video, Hejlsberg ( Anders Hejlsberg ) noted that JavaScript (which TypeScript is based) is mainly used “for UI and browser us...\
+  \
+  \
+  The New Stack
+
+- [link](https://ellow.io/php-alternatives/)\
+  8 Best Turing Alternatives for Hiring Remote Developers in 2023 - Building Tech Teams with AI and Top Talent\
+  Aug 18, 2023 — Elixir's Erlang heritage empowers it with distributed system capabilities, making it a better choice for applications that demand ...\
+  \
+  \
+  Ellow
+
+## compare to make a fn sync or async if no await inside
+
+If you define a function as `async` but do **not** use the `await` keyword inside it, <mark>the function remains completely<span> </span><strong>synchronous</strong><span> </span>in terms of its execution on the CPU</mark>. It will still block the single thread just like a standard function.
+
+However, the JavaScript engine wraps the function differently, changing its return behavior and performance characteristics.
+
+### The Direct Comparison
+
+| Feature             | Standard Function (`function foo()`)                   | Async Function without Await (`async function foo()`)            |
+| ------------------- | ------------------------------------------------------ | ---------------------------------------------------------------- |
+| **Execution Flow**  | Synchronous (Blocks the thread) \[1]                   | Synchronous (Blocks the thread) \[1]                             |
+| **Return Value**    | Whatever value you explicitly return.                  | Always wraps the return value in a **Promise**.                  |
+| **Error Handling**  | Throws a traditional exception (requires `try/catch`). | Converts errors into a **rejected Promise** automatically.       |
+| **Engine Overhead** | Zero (Fastest execution).                              | Low-to-Medium (Allocates Promise memory and microtask tracking). |
+
+***
+
+### Detailed Behavioral Differences
+
+#### 1. Return Value Modification
+
+A standard function returns a value immediately. An `async` function automatically intercepts the return statement and wraps it inside a resolved Promise.
+
+javascript
+
+```
+function syncFn() { return "hello"; }
+async function asyncFn() { return "hello"; }
+
+console.log(syncFn());  // Output: "hello"
+console.log(asyncFn()); // Output: Promise { <resolved>: "hello" }
+```
+
+Use code with caution.
+
+#### 2. Thread-Blocking Behavior
+
+Because there is no `await` to yield control, both functions hold onto the single CPU core until they finish completely.
+
+javascript
+
+```
+async function heavyMathNoAwait() {
+  for (let i = 0; i < 1000000000; i++) {} // ⚠️ This STILL freezes the browser UI!
+  return "done";
+}
+```
+
+Use code with caution.
+
+#### 3. Error Trapping
+
+If an error occurs inside a standard function, it crashes the current execution stack unless caught. Inside an empty `async` function, the runtime catches the error and converts it into a promise rejection, changing how the calling code must handle it.
+
+javascript
+
+```
+function standardCrash() { throw new Error("Oops"); }
+async function asyncCrash() { throw new Error("Oops"); }
+
+// standardCrash(); // Immediately crashes the application
+
+asyncCrash().catch(err => console.log("Safely caught:", err.message));
+```
+
+Use code with caution.
+
+***
+
+### Why this matters (The Performance Tax)
+
+Writing `async` on a function without an `await` introduces unnecessary overhead:
+
+- **Memory Allocation:** Every time the function is called, the JavaScript engine must allocate a new `Promise` object in memory, even though the data is available immediately.
+- **Microtask Chaining:** When the calling code uses the result, it is forced to resolve it via the **Microtask Queue** (e.g., using `.then()` or `await` outside). This moves execution to a later tick of the event loop instead of running it instantly.
+
+**Rule of Thumb:** Never mark a function as `async` unless you intend to use the `await` keyword inside its body.
+
+***
+
+Now that we have covered browser concurrency, run-to-completion, and async internals, let me know if you want to look into **how build tools (like Babel or SWC)** compile these async functions down to standard ES5 code!
+
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async%5Ffunction)\
+  async function - JavaScript | MDN\
+  Jul 8, 2025 — Top-level code, up to and including the first await expression (if there is one), is run synchronously. In this way, an async func...\
+  \
+  MDN Web Docs
+- [link](https://codetrenches.com/understanding-async-and-await-in-net/)\
+  Understanding Async and Await in .NET – Code Trenches\
+  Jul 4, 2024 — In the asynchronous version, tasks are defined with the async keyword and awaited using the await keyword, but the order of execut...\
+  \
+  \
+  codetrenches.com
+- [link](https://docs.litestar.dev/2/topics/sync-vs-async.html)\
+  Sync vs. Async — Litestar Framework\
+  This is a very important aspect to note, since an async function that never calls await and, for example, performs a computational...\
+  \
+  Litestar
+
+Show all
+
+## when does an async fn return
+
+An `async` function returns **synchronously** the moment it executes a `return` statement or encounters its very first `await` keyword.
+
+Here is exactly how the return timing works in both scenarios:
+
+### Scenario 1: No `await` inside the function
+
+If there is no `await` keyword in the function, the function runs from top to bottom on the Call Stack and returns a resolved Promise **immediately and synchronously**.
+
+javascript
+
+```
+async function instantReturn() {
+  console.log("1. Inside function");
+  return "Hello";
+}
+
+console.log("2. Before calling");
+const result = instantReturn(); // Returns a resolved Promise instantly
+console.log("3. Result received:", result);
+
+// CONSOLE OUTPUT:
+// 2. Before calling
+// 1. Inside function
+// 3. Result received: Promise { <fulfilled>: "Hello" }
+```
+
+Use code with caution.
+
+### Scenario 2: With an `await` inside the function
+
+The exact moment the JavaScript engine hits the very first `await` keyword, **the function immediately stops executing and returns an unresolved Promise to the caller**.
+
+The rest of the function is sliced off, suspended, and scheduled to run later in the **Microtask Queue**.
+
+javascript
+
+```
+async function delayedReturn() {
+  console.log("2. Inside function - before await");
+
+  await fetch('/data'); // <-- THE FUNCTION RETURNS AN UNRESOLVED PROMISE RIGHT HERE
+
+  console.log("5. Inside function - after await"); // Runs later
+  return "Done";
+}
+
+console.log("1. Before calling");
+const resultPromise = delayedReturn(); // Synchronously gets the Promise here
+console.log("3. Caller gets Promise:", resultPromise);
+console.log("4. Caller finishes synchronous execution block");
+
+// CONSOLE OUTPUT:
+// 1. Before calling
+// 2. Inside function - before await
+// 3. Caller gets Promise: Promise { <pending> }
+// 4. Caller finishes synchronous execution block
+// 5. Inside function - after await (Runs on a later event loop tick)
+```
+
+Use code with caution.
+
+### Summary of the Return Value Life Cycle
+
+1. **To the Caller:** It returns a **pending Promise** synchronously the instant it hits an `await` (or a **fulfilled Promise** if it hits no `await`).
+2. **To the Event Loop:** The code _after_ the `await` waits for the background task to finish. Once finished, that remaining code executes in the **Microtask Queue**.
+3. **To the Promise:** When the function finally hits its actual `return "value"` statement, the pending Promise that was handed out in Step 1 settles and resolves to `"value"`.
+
+***
+
+If you'd like, let me know:
+
+- Do you want to see how **nested async functions** pass these promises up the call stack?
+
+- Are you trying to figure out why a variable is logged as **`Promise { <pending> }`** in your code?
+
+- [link](https://learn.microsoft.com/en-us/dotnet/standard/asynchronous-programming-patterns/consuming-the-task-based-asynchronous-pattern)\
+  Consuming the Task-based Asynchronous Pattern - .NET\
+  Apr 30, 2026 — When you call an asynchronous method, it synchronously executes the body of the function up until the first await expression on an...\
+  \
+  \
+  Microsoft Learn
+
+- [link](https://devblogs.microsoft.com/oldnewthing/20170720-00/?p=96655)\
+  Crash course in async and await - The Old New Thing\
+  Jul 20, 2017 — The code executes synchronously up until the first await , at which point the rest of the code is scheduled for resumption when th...\
+  \
+  Microsoft Dev Blogs
+
+- [link](https://www.reddit.com/r/learnjavascript/comments/nobl7g/when%5Fdoes%5Fasync%5Ffunction%5Factually%5Freturn%5Fa/)\
+  When does async function actually return a pending promise? : r/learnjavascript\
+  May 30, 2021 — And this might be obvious but if there's no await keyword used inside an async function (which in practical world probably wont be...\
+  \
+  Reddit
+
+Show all
+
+## if you dont await, do you have to then many times if there are many awaits inside
+
+No, you **never** have to chain `.then()` multiple times, no matter how many `await` keywords are hidden inside the function.
+
+An `async` function always returns **one single Promise** to the caller.
+
+### Why You Only Need One `.then()`
+
+The JavaScript engine handles all the internal `await` points automatically. Think of the `async` function as a factory: it hands you a single "receipt" (the Promise) right when it encounters the first `await`.
+
+The function will continue to pause, resume, and step through all its internal `await` lines completely in the background. The single Promise you hold will remain in a `pending` state during this entire process.
+
+The exact moment the function hits its final `return` statement (or reaches the end of the code block), your single Promise changes from `pending` to `fulfilled`.
+
+### Code Example
+
+javascript
+
+```
+async function complexPipeline() {
+  const res1 = await fetch('/api/user');     // Step 1 (Pauses internally)
+  const res2 = await fetch('/api/orders');   // Step 2 (Pauses internally)
+  const res3 = await fetch('/api/shipping'); // Step 3 (Pauses internally)
+
+  return "All steps finished!"; // Triggers the final resolution
+}
+
+// YOU ONLY DO THIS ONCE:
+complexPipeline().then((message) => {
+  console.log(message); // Prints: "All steps finished!"
+});
+```
+
+Use code with caution.
+
+### What Happens Behind the Scenes
+
+If you looked at how a compiler (like Babel) translates those three `await` keywords into old-fashioned JavaScript, it doesn't make you chain `.then()` from the outside.
+
+Instead, it nests the `.then()` blocks **inside** each other internally:
+
+javascript
+
+```
+// This is structurally what JavaScript does under the hood for you:
+function complexPipelineCompiled() {
+  return fetch('/api/user').then((res1) => {
+    return fetch('/api/orders').then((res2) => {
+      return fetch('/api/shipping').then((res3) => {
+        return "All steps finished!"; // This finally resolves the topmost promise
+      });
+    });
+  });
+}
+```
+
+Use code with caution.
+
+Because of this internal nesting, the caller at the very top level only ever sees, tracks, and hooks into the **outermost Promise**.
+
+***
+
+If you'd like, let me know:
+
+- Do you want to see how **error handling (`.catch()`)** bubbles up through multiple internal awaits?
+
+- Are you trying to optimize your code so those fetches run **at the same time** instead of waiting for each other?
+
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await)\
+  await - JavaScript | MDN\
+  Jul 8, 2025 — Even when the used promise is already fulfilled, the async function's execution still pauses until the next tick. In the meantime,\
+  \
+  MDN Web Docs
+
+## does .then then again if it's another promise. can you get each promise one by one.
+
+### 1. Does `.then` run again if it returns another promise?
+
+Yes, but it returns a **new, flattened promise** rather than forcing you to chain `.then` blocks within the same call.
+
+If a callback function inside a `.then()` block returns a promise, JavaScript **collapses** the chain. The outer promise will wait until that new, inner promise settles, then passes the inner promise's resolution directly to the next `.then()` down the line.
+
+javascript
+
+```
+fetch('/api/user')
+  .then(response => response.json()) // 1. Returns a Promise for JSON data
+  .then(data => {                    // 2. Receives the actual JSON data, NOT a Promise
+    console.log(data);
+  });
+```
+
+Use code with caution.
+
+***
+
+### 2. Can you get each internal promise one by one?
+
+**No, not from the outside** if they are wrapped inside an `async` function.
+
+An `async` function acts as a black box. Once called, it exposes exactly **one** single promise to the outside world. You cannot peek inside to intercept or handle the intermediate promises individually as they occur.
+
+#### The Solution: The Generator Pattern
+
+If you explicitly need a mechanism to execute a step, halt, inspect the individual promise, and manually trigger the next step from the outside, you must use a **Generator Function (`function*`)** instead of an `async` function.
+
+Generators allow you to extract each promise one by one using `.next()`:
+
+javascript
+
+```
+// A Generator Function yields individual promises
+function* stepByStepPipeline() {
+  yield fetch('/api/step1'); // Yields Promise #1
+  yield fetch('/api/step2'); // Yields Promise #2
+  yield fetch('/api/step3'); // Yields Promise #3
+  return "All Done!";
+}
+
+const iterator = stepByStepPipeline();
+
+// 1. Get the first promise out manually
+const promise1 = iterator.next().value;
+promise1.then(res => console.log("Handled Step 1 externally"));
+
+// 2. Whenever you are ready, get the second promise out manually
+const promise2 = iterator.next().value;
+promise2.then(res => console.log("Handled Step 2 externally"));
+```
+
+Use code with caution.
+
+***
+
+To finalize this implementation, let me know:
+
+- Are you trying to build a **stepper/wizard UI** where the user controls when the next async action fires?
+
+- Do you want to see how to implement a **custom middleware runner** using this generator pattern?
+
+- [link](https://dev.to/satyasootar/promises-in-javascript-258b)\
+  Promises in JavaScript\
+  Apr 29, 2026 — The biggest advantage of promises over raw callbacks is chaining. Every call to . then() returns a new promise, which allows us to...\
+  \
+  \
+  DEV Community
+
+- [link](https://devforum.roblox.com/t/promises-and-why-you-should-use-them/350825)\
+  Promises and Why You Should Use Them - Community Resources\
+  Sep 16, 2019 — This is akin to the await keyword in languages like JavaScript. Sometimes it might be easier to just directly resolve with a Promi...\
+  \
+  \
+  Developer Forum | Roblox
+
+- [link](https://itnext.io/promises-the-definitive-guide-6a49e0dbf3b7)\
+  Promises: The Definitive Guide. Not as Powerful as You Think | by Kevin Ghadyani\
+  Mar 5, 2019 — To avoid callback-hell, it's important to note that then can handle returning both a value and another promise. When returning a v...\
+  \
+  \
+  itnext.io
+
+Show all
+
+## what does generater pattern look like wo the syntax sugar
+
+To see what a Generator looks like without the syntax sugar, we have to strip away the `function*` and `yield` keywords.
+
+Under the hood, a generator compiles into a standard synchronous function that returns a stateful **Iterator Object**. This object uses an internal closure variable to keep track of its position (a **State Machine**) and features a manual `.next()` method.
+
+Here is what the compiler generates to make this happen:
+
+### 1. The Code Comparison
+
+#### With Syntax Sugar (`function*`)
+
+javascript
+
+```
+function* stepPipeline() {
+  const data1 = yield "Promise 1";
+  console.log("Processed:", data1);
+
+  const data2 = yield "Promise 2";
+  return "All Done!";
+}
+```
+
+Use code with caution.
+
+#### Without Syntax Sugar (Pure JavaScript)
+
+This is exactly how compilers like Babel translate a generator into clean, production-ready ES5 JavaScript using an internal state machine:
+
+javascript
+
+```
+function stepPipelineRaw() {
+  // 1. Keep track of the current execution state inside a closure
+  let state = 0;
+  let data1, data2;
+
+  // 2. Return the standard Iterator Object
+  return {
+    next: function(valueFromOutside) {
+      switch (state) {
+        case 0:
+          state = 1; // Move the state needle forward
+          return { value: "Promise 1", done: false };
+
+        case 1:
+          // The value passed into .next() acts as the return of the 'yield'
+          data1 = valueFromOutside;
+          console.log("Processed:", data1);
+
+          state = 2; // Move the state needle forward
+          return { value: "Promise 2", done: false };
+
+        case 2:
+          data2 = valueFromOutside;
+          state = 3; // The generator is completely finished
+          return { value: "All Done!", done: true };
+
+        default:
+          return { value: undefined, done: true };
+      }
+    }
+  };
+}
+```
+
+Use code with caution.
+
+***
+
+### 2. How You Execute It (Both look exactly the same)
+
+Because the desugared code explicitly implements the Iterator Protocol (`{ value, done }`), running both functions requires the exact same manual `.next()` calls:
+
+javascript
+
+```
+const runner = stepPipelineRaw();
+
+// Step 1: Fire it up. It runs until it hits the first state pause point.
+const firstYield = runner.next();
+console.log(firstYield.value); // Prints: "Promise 1"
+
+// Step 2: Pass data back in. The state machine resumes right where it froze.
+const secondYield = runner.next("Result A"); // Prints: "Processed: Result A"
+console.log(secondYield.value); // Prints: "Promise 2"
+
+// Step 3: Finish the execution.
+const finalReturn = runner.next("Result B");
+console.log(finalReturn); // Prints: { value: "All Done!", done: true }
+```
+
+Use code with caution.
+
+### Why this is brilliant
+
+This structural rewrite is why JavaScript doesn't freeze or require multi-threading to achieve code pausing.
+
+A `yield` isn't actually halting a running thread; it is just a `return` statement wrapping a clever `switch(state)` statement. The function fully exits and leaves the call stack every time you get a value back, preserving its local environment variables (`data1`, `data2`) safely inside the closure scope.
+
+***
+
+Now that we have stripped away the syntax sugar of both async/await and generators, let me know:
+
+- Do you want to see how early async libraries (like `co`) used this exact state machine to **automate promises** before `async/await` was added to JavaScript?
+
+- Are you working on a project where you need to build a **custom state machine**?
+
+- [link](https://medium.com/learning-better-ways-of-interpretting-and-using/python-generators-memory-efficient-programming-tool-41f09077353c)\
+  Python Generators: Memory-efficient programming tool | by Ramya Balasubramaniam | Learning better ways of interpretting and using data\
+  Oct 7, 2018 — The most important method/statement available with generators is next. This statement is used to manually iterate as opposed to us...\
+  \
+  \
+  Medium
+
+- [link](https://medium.com/@artemkhrenov/the-iterator-pattern-in-javascript-bfbd7431f100)\
+  The Iterator Pattern in JavaScript | by Artem Khrienov\
+  May 27, 2025 — Implementing the Iterator Pattern Using a Functional Approach This functional approach uses closures to maintain state within the ...\
+  \
+  \
+  Medium
+
+- [link](https://www.geeksforgeeks.org/system-design/iterator-pattern/)\
+  Iterator Design Pattern\
+  May 13, 2026 — This pattern works by providing a separate object to traverse elements of a collection sequentially. The collection provides an it...\
+  \
+  \
+  GeeksforGeeks
+
+Show all
+
+## is native generator syntax sugar unpopular
+
+Yes, native generator syntax (`function*` and `yield`) is highly **unpopular for everyday application development**, but it remains **immensely popular and critical for framework/library authors**.
+
+The State of JS surveys routinely show that generators sit in a unique category: they have high _awareness_ but very low _day-to-day usage_.
+
+The bifurcation of their popularity reveals distinct reasons for their reception.
+
+***
+
+### Why Everyday Developers Avoid Generators
+
+#### 1. Killed by `async/await`
+
+When generators were introduced in ES6 (2015), developers were excited because they were the _only_ way to write asynchronous code that looked synchronous (using libraries like `co`). However, when `async/await` arrived in ES17, it solved 95% of asynchronous use cases with a much cleaner syntax. Most developers never looked back.
+
+#### 2. The Clunky "Iterator Protocol"
+
+Generators do not return values directly; they return an iterator object. Forcing an application developer to constantly write `.next().value` or manage state variables manually feels verbose, clunky, and anti-pattern to modern declarative JavaScript. [link](https://www.youtube.com/watch?v=STA2Pr5l%5Fz0\&t=55)
+
+#### 3. Poisonous to TypeScript Type Inference
+
+Typing generators in TypeScript is famously painful. Because `yield` can both _send_ a value out and _receive_ a value back from the outside, you have to define three separate types: the yield type, the return type, and the next-input type.
+
+typescript
+
+```
+// Infuriating to read and type-check
+const generator: Generator<YieldType, ReturnType, NextType> = myFunc();
+```
+
+Use code with caution.
+
+***
+
+### Why Framework and Tool Authors Love Generators
+
+While you rarely see a `yield` inside a standard React component or Express route, generators form the bedrock of the infrastructure you use every single day.
+
+#### 1. Infinite Streams and Lazy Evaluation
+
+If you need to process a 10-gigabyte file line-by-line, loading it into an Array will crash the browser. Framework authors use generators to build **streams**, processing data lazily one item at a time. [link](https://www.youtube.com/watch?v=STA2Pr5l%5Fz0\&t=55)
+
+- **2025/2026 Update:** The JavaScript language ecosystem recognized this gap by introducing **New Global Iterator Methods** (like `.map()`, `.filter()`, and `.take()` directly on native iterators and generators). This allows fluent, lazy chain computations over massive datasets without allocating intermediary array memory. [link](https://github.com/Devographics/surveys/issues/307)
+
+#### 2. State Machine Workhorses
+
+Redux-Saga (a popular React side-effect manager) uses generators explicitly because they allow the library to pause your logic, intercept a triggered action, test it deterministically, and resume it whenever it wants. It acts as an orchestrator.
+
+#### 3. Breaking Call-Stack Recursion Limits
+
+If a function calls itself too deeply, the browser crashes with a `Maximum call stack size exceeded` error. Advanced algorithms use generators as "trampolines". By yielding the next recursive execution block instead of calling it directly, the state is maintained safely in heap memory rather than crashing the thread's call stack. [link](https://www.reddit.com/r/Python/comments/vobnd6/unpopular%5Fopinion%5Fasync%5Fis%5Fsyntactic%5Fdiabetes/)
+
+***
+
+### Summary Checklist
+
+- **Are you writing a standard web app UI?** Avoid generators. Stick to `async/await` and arrays.
+- **Are you building a custom compiler, a heavy data pipeline, or a custom game engine controller?** Master generators; they are the only native way to build non-blocking cooperative multitasking in a single-threaded runtime.
+
+We have traversed from React state updates, through the event loop architecture, to low-level compilation behaviors. If there is a **specific problem** or **architectural design** you are trying to map out for your current project, tell me about it and we can design the ideal execution model together!
+
+- [link](https://www.youtube.com/watch?v=STA2Pr5l%5Fz0\&t=55)\
+  JS 2025 just dropped with amazing features...\
+  Jul 28, 2025 — it's that time of the year again javascript just got a new spec. and this one is actually full of surprisingly useful. stuff one o...\
+  40s\
+  YouTube·Awesome
+- [link](https://github.com/Devographics/surveys/issues/307)\
+  State of JS 2025 Preview · Issue #307 · Devographics/surveys\
+  Sep 16, 2025 — Features. Added. Iterator Methods. Scheduler API. URLPattern. RegExp.escape. structuredClone()? (old but has never been in the sur...\
+  GitHub
+- [link](https://scriptnex.com/blog/javascript-generators-explained-the-complete-guide-for-2025)\
+  JavaScript Generators Explained: The Complete Guide for 2025\
+  Sep 29, 2025 — Google Search uses variations of generators to index billions of web pages. Netflix employs lazy value production techniques in it...\
+  ScriptNex
+
+Show all
+
+## why does react use queueMicrotask to batch state updates if it could already know whether your sync callback is done via the wrapper
+
+You have spotted exactly how React used to operate. Prior to React 18, React _did_ use its internal wrapper functions (like `dispatchEvent`) to open and close a "batching window" strictly for synchronous event callbacks. [link](https://stackoverflow.com/questions/57721530/since-setstate-is-asynchronous-is-it-executed-via-callback-queue)
+
+However, React shifted to using `queueMicrotask` to solve three massive architectural limitations of that wrapper approach: [link](https://medium.com/jspoint/introduction-to-react-v18-automatic-batch-updates-and-flushsync-9ab9e6c76f0d)
+
+### 1. Batching Beyond the Wrapper (Asynchronous Code)
+
+The old wrapper strategy only worked if your state updates happened **synchronously** inside the wrapper. If your event listener looked like this, the wrapper failed: [link](https://www.robinwieruch.de/react-batching/)
+
+javascript
+
+```
+// In React 17, the wrapper was completely done by the time the data arrived
+async function handleClick() {
+  const data = await fetch('/api');
+
+  setCount(c => c + 1);    // Triggered Render #1
+  setIsLoading(false);     // Triggered Render #2
+}
+```
+
+Use code with caution.
+
+Because the `await` breaks the synchronous call stack, the wrapper finishes executing immediately and closes its batching window. When the network promise finally resolves, the two state setters would execute independently, causing two separate renders. [link](https://dev.to/luciano0322/async-transactions-for-signals-batching-updates-across-await-32hj)
+
+By switching to `queueMicrotask`, React doesn't care _where_ or _when_ your code runs. Whenever a state setter is invoked—even inside an async callback or a `setTimeout`—React schedules a microtask to process the update loop. If another state setter is called in the same microtask tick, it gets swept into that exact same update cycle seamlessly. [link](https://dev.to/luciano0322/async-transactions-for-signals-batching-updates-across-await-32hj)
+
+### 2. Multi-Source Interleaving (Promises & Multiple Frameworks)
+
+State updates don't just originate from native React buttons. They can be triggered by: [link](https://stackoverflow.com/questions/57721530/since-setstate-is-asynchronous-is-it-executed-via-callback-queue)
+
+- Custom event emitters or WebSockets.
+- Third-party libraries like [Tiptap Editor](https://tiptap.dev/docs/guides/performance) or [Lexical](https://github.com/facebook/lexical/discussions/3536) firing independent, asynchronous listeners.
+- Interleaved `Promise.then` resolution chains. [link](https://github.com/facebook/lexical/discussions/3536)
+
+If three completely unrelated async libraries trigger React state updates in the exact same tick of the event loop, React's event wrapper won't know they are related. `queueMicrotask` acts as a **universal native magnet** at the browser level. It aggregates all updates entering the queue from _any_ source and collapses them into a single update right before the browser paints. [link](https://developer.mozilla.org/en-US/docs/Web/API/HTML%5FDOM%5FAPI/Microtask%5Fguide)
+
+### 3. Decoupling the Renderer from the DOM Engine
+
+React is designed to be multi-platform (React Native, React Three Fiber, React DOM). [link](https://www.reddit.com/r/reactnative/comments/1ugtif6/i%5Fhave%5Fcreated%5Fa%5Fsimple%5Fstate%5Fmanagement%5Ffor/)
+
+Relying on a specific synthetic DOM event wrapper to handle batching meant that React's core reconciliation engine was dangerously tangled up with browser DOM event lifecycles. Utilizing the JavaScript engine's native `queueMicrotask` gives React a **platform-agnostic timing loop**. Whether running on an iOS device via React Native or in Chrome, the engine relies on the native JavaScript engine to dictate when a task is finished. [link](https://dev.to/gajananpp/javascripts-queuemicrotask-running-code-asap-but-not-right-now-3c6c)
+
+***
+
+If you'd like, we can explore:
+
+- How the **`flushSync`** API manually breaks out of this microtask scheduling when you need immediate DOM reads.
+
+- How React's **Concurrent Rendering** modifies microtask behavior for low-priority transitions. [link](https://react.dev/reference/react-dom/flushSync)
+
+- [link](https://www.robinwieruch.de/react-batching/)\
+  React Batching - Robin Wieruch\
+  Apr 25, 2022 — Before React 18, not all state updates were batched. For example, state updates using: \* Asynchronous code (e.g. Promise) \* Third-\
+  Robin Wieruch
+
+- [link](https://www.reddit.com/r/reactjs/comments/1rrmo4n/is%5Fit%5Fa%5Fthing%5Fcalling%5Fqueuemicrotask%5Fin%5Fuseeffect/)\
+  Is it a thing calling queueMicrotask in useEffect to ... - Reddit\
+  Mar 12, 2026 — Composer 1.5 has suggested to use queueMicrotask which takes a callback function and does the handling async without messing with ...\
+  Reddit·r/reactjs
+
+- [link](https://stackoverflow.com/questions/57721530/since-setstate-is-asynchronous-is-it-executed-via-callback-queue)\
+  Since setState is asynchronous, is it executed via callback queue?\
+  Aug 30, 2019 — Yes, setState is always asynchronous. However, React setState is not always asynchronous. It depends on how the state change was t...\
+  Stack Overflow
+
+Show all
+
+## what's the priority. why is queue microtask later than async function handleClick() {
+
+const data = await fetch('/api');
+
+setCount(c => c + 1); // Triggered Render #1\
+setIsLoading(false); // Triggered Render #2\
+}
+
+To see why `queueMicrotask` batches these correctly, we have to look at how the JavaScript Event Loop orders microtasks.
+
+The short answer is: **`queueMicrotask` is not later than the whole `handleClick` function; it runs _immediately_ after the current synchronous block of code finishes.**
+
+Here is the step-by-step priority breakdown of exactly what happens when that `await fetch` resolves:
+
+### 1. The Priority Rule of the Microtask Queue
+
+The browser treats the Microtask Queue as a "First-In, First-Out" (FIFO) line, but with one critical rule: **The current running script on the Call Stack must finish completely before the next item in the microtask queue can step up.**
+
+### 2. The Execution Timeline (Step-by-Step)
+
+When the `fetch('/api')` promise resolves, the browser pushes the **rest of your `handleClick` function** onto the Microtask Queue. Let's trace it:
+
+#### **Step A: The function resumes on the Call Stack**
+
+The event loop pulls the remaining block of `handleClick` out of the queue and pushes it onto the active Call Stack. The CPU begins executing it line-by-line:
+
+javascript
+
+```
+setCount(c => c + 1);
+```
+
+Use code with caution.
+
+#### **Step B: React schedules its Microtask**
+
+Inside `setCount`, React realizes it needs to schedule a re-render. It calls `queueMicrotask(() => performWork())`.
+
+- **The Magic Moment:** Because your `handleClick` script is currently running on the Call Stack, React’s render-microtask is placed **at the back of the Microtask Queue**.
+- React does _not_ interrupt your code. It goes to the back of the line and waits.
+
+#### **Step C: The next line executes immediately**
+
+Because your function is still occupying the Call Stack, the very next line of your code runs instantly:
+
+javascript
+
+```
+setIsLoading(false);
+```
+
+Use code with caution.
+
+Inside `setIsLoading`, React sees that a render-microtask is _already_ waiting in the queue. Instead of adding a second one, it simply appends this new state update to the existing update queue.
+
+#### **Step D: Your function finishes (The Stack Clears)**
+
+Your `handleClick` function reaches its closing curly brace `}` and exits the Call Stack. The stack is now empty.
+
+#### **Step E: React's Microtask steps up**
+
+Now that the current script is done, the Event Loop looks at the Microtask Queue. React's `performWork()` callback is sitting right at the front of the line. It steps onto the Call Stack, sees both the `count` and `isLoading` updates waiting in its internal queue, and executes **one single consolidated re-render**.
+
+***
+
+### A Visual Look at the Line
+
+Think of the Microtask Queue like a single-file line at a grocery checkout counter:
+
+1. **`handleClick` (Part 2)** is currently at the register checking out.
+2. While checking out, it scans an item (`setCount`). This actions sends a helper (**React Render Task**) to go stand at the very back of the line.
+3. `handleClick` scans its next item (`setIsLoading`). The helper at the back of the line just updates their note.
+4. `handleClick` finishes paying and leaves the register (Call Stack clears).
+5. The **React Render Task** steps up to the register next and processes both updates at once.
+
+This is why `queueMicrotask` is the ultimate batching tool. It guarantees that no matter how many state changes you group together sequentially, they will always wait until your local code block finishes running before firing the re-render.
+
+***
+
+If you want to push your understanding further, let me know:
+
+- What happens if you put a **`setTimeout`** inside that async function instead?
+- How to use **`flushSync`** if you ever need to deliberately break this line and force React to render between those two lines.
+
+## what if you fetch and set and fetch and set
+
+If you chain multiple `fetch` and `set` operations sequentially using `await`, React **cannot batch them into a single re-render**. Instead, your component will re-render after each individual `fetch` completes.
+
+Here is the exact step-by-step timeline of how the Event Loop and React handle this scenario.
+
+### The Code Example
+
+javascript
+
+```
+async function handleSequence() {
+  // --- CHUNK 1 ---
+  const res1 = await fetch('/api/1');
+  setCount(1); // 🔴 Triggers Render #1
+
+  // --- CHUNK 2 ---
+  const res2 = await fetch('/api/2');
+  setCount(2); // 🔴 Triggers Render #2
+}
+```
+
+Use code with caution.
+
+### Why It Triggers Multiple Renders
+
+Every single `await` keyword cuts your function into independent, isolated pieces. The moment you `await` the second fetch, you break the synchronous execution block.
+
+Here is how the browser's Event Loop processes this code behind the scenes:
+
+#### Phase 1: The First Fetch Resolves
+
+1. `/api/1` finishes loading. The browser pushes the remaining code (Chunk 1) onto the **Microtask Queue**.
+2. The Event Loop pushes Chunk 1 onto the **Call Stack** to execute.
+3. `setCount(1)` runs. React pushes the update to its internal queue and schedules a re-render task via `queueMicrotask`.
+4. **The Breakpoint:** Immediately after, your code hits `await fetch('/api/2')`. Your function instantly pauses, exits the Call Stack, and hands control back to the browser.
+5. The Call Stack is now empty. The Event Loop looks at the Microtask Queue and sees React's scheduled re-render task.
+6. React executes **Render #1**.
+
+#### Phase 2: The Second Fetch Resolves
+
+1. Minutes or milliseconds later, `/api/2` finishes loading. The browser pushes the remainder of your function (Chunk 2) onto the Microtask Queue.
+2. The Event Loop executes Chunk 2 on the Call Stack.
+3. `setCount(2)` runs. React schedules _another_ re-render via `queueMicrotask`.
+4. Chunk 2 finishes and leaves the Call Stack.
+5. The Event Loop pulls React's new task from the queue and executes **Render #2**.
+
+***
+
+### The Contrast: What _Will_ Get Batched?
+
+If you group multiple state updates together _after_ a fetch without an `await` separating them, those updates will still be batched perfectly.
+
+javascript
+
+```
+async function handleMixed() {
+  const res1 = await fetch('/api/1');
+
+  // Both of these run in the exact same synchronous microtask block.
+  // React WILL batch these into 1 single re-render.
+  setCount(1);
+  setIsLoading(false);
+
+  const res2 = await fetch('/api/2');
+  setCount(2); // This happens after a network delay, causing a 2nd re-render.
+}
+```
+
+Use code with caution.
+
+### How to Fix It if You Hate the Double Render
+
+If Render #1 causes an ugly layout shift or intermediate "broken" UI state, you can prevent it using one of two strategies:
+
+1. **Parallelize with `Promise.all`**: If the second fetch doesn't depend on the first, run them concurrently. This reduces the number of `await` breakpoints to one, allowing both state updates to run in the same final block.\
+   javascript
+
+<!---->
+
+```
+const [r1, r2] = await Promise.all([fetch('/api/1'), fetch('/api/2')]);
+setCount(1);
+setCount(2); // Batched into 1 re-render!
+```
+
+Use code with caution.
+2\. **Consolidate State**: Combine your individual state variables into a single object (`useState({ count: 0, loading: false })`) so that even if you have to update things sequentially, you are only changing a single piece of tracking data.
+
+***
+
+To finalize your architecture, let me know:
+
+- Does the second fetch **depend on data** returned by the first fetch?
+
+- Are you trying to show a **loading spinner** specifically between the first and second fetch?
+
+- [link](https://dev.to/jessalejo/different-ways-of-setting-state-in-react-18nn)\
+  Different ways of setting State in React\
+  Feb 18, 2025 — React will batch these updates together, ensuring that the component re-renders only once.\
+  \
+  \
+  DEV Community
+
+- [link](https://www.linkedin.com/pulse/understanding-javascripts-single-threaded-nature-what-aijaz-ahmad-oe9xc)\
+  Understanding JavaScript’s Single-Threaded Nature: What It Means and How It Works\
+  Aug 14, 2024 — Event Loop: The event loop continuously checks if the call stack is empty. If it is, the event loop pushes the first callback from...\
+  \
+  \
+  LinkedIn
+
+- [link](https://javascript.plainenglish.io/react-confusion-series-part-1-why-react-state-updates-feel-asynchronous-the-real-reason-29a50fa6bc1f)\
+  🚀 Why React State Updates Feel Asynchronous (The Real Reason Explained)-React JS Confusion #1\
+  Mar 3, 2026 — 2⃣ Updates Go to a Queue When you call: setCount(count + 1); React does NOT immediately change count .\
+  \
+  \
+  JavaScript in Plain English
+
+Show all
+
 # 
 
 # . thinking
