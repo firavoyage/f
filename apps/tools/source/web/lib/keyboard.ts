@@ -1,4 +1,5 @@
 import mousetrap from 'mousetrap';
+import 'mousetrap-global-bind';
 
 const shift_keys = {
   "!": "shift+1",
@@ -58,6 +59,8 @@ export function bind(shortcut: string, action: action): number {
   mousetrap.bind(shortcut, (event: KeyboardEvent) => {
     call(shortcut, event)
   })
+
+  mousetrap.bindGlobal
 
   return shortcutid++
 }
