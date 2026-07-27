@@ -75,6 +75,7 @@ export default defineConfig(
       // do not over engineer
       "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/ban-ts-comment": "off",
+      "@typescript-eslint/no-unsafe-function-type": "off",
       "@typescript-eslint/no-floating-promises": "error",
 
       // throw 'foo' has no stack trace
