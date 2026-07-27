@@ -144,6 +144,7 @@ color:
     selection: 
       active: color-mix(in srgb, color.bg.accent 30%, transparent)
       inactive: color-mix(in srgb, palette.gray.500 20%, transparent)
+    backdrop: color-mix(in srgb, palette.gray.950 50%, transparent)
     # hover:
     #   light: "palette.gray.200"
     #   dark: "palette.gray.800"
@@ -226,6 +227,7 @@ text:
 
 font:
   heading: bold text.lg typeface.sans
+  text: text.md typeface.sans
 
 # size: # icon-size
 #   sm: "14px"

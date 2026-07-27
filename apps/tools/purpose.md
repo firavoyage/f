@@ -435,4 +435,6 @@ move global prelude to the absolute beginning.
 
 05 00 create sidebar overlay variant. (05 20)
 
+fix props lib.
+
 
