@@ -94,10 +94,5 @@ decide to make text selectability opt in.
 
 ---
 
-fix sidebar toggle shortcut consistency
-
-when inside textarea, ctrl b doesnt work.
-
-maybe it's to prevent default. decide to opt in or opt out.
 
 

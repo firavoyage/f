@@ -423,4 +423,11 @@ just ignore rather than "foo as sth". it's ts's problem, rather than sth to be d
 
 28
 
-03 00 
+03 20 fix sidebar toggle shortcut consistency
+
+when inside textarea, ctrl b doesnt work.
+
+maybe it's to prevent default. decide to opt in or opt out.
+
+
+

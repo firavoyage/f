@@ -9,6 +9,7 @@
     "css.escape": "1.5.1",
     "inline-style-parser": "0.2.9",
     "mousetrap": "1.6.5",
+    "mousetrap-global-bind": "1.1.0",
     "react": "19.2.7",
     "react-dom": "19.2.7",
     "react-use": "17.6.1",
