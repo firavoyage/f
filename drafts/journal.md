@@ -47771,6 +47771,22 @@ it suddenly comes to my mind.
 
 the narrative voice of the book, is demanding, but encouraging. it believes you.
 
+28
+
+02 40 dl identity v. pass through on quick <!-- temp --> gaming w fake (but real) id, through scrcpy.
+
+i just feel i want a boring game. <!-- not that boring. i mean. not sth like df or gok. -->
+
+<!-- cr can be noskill but it's not boring at all. -->
+
+it can be quirky. i dont really appreciate the cluttered ui, despite sophisticated icons and fonts. it could have been cleaner.
+
+just play it for a while.
+
+i also like anime games. but they are not games at all. they are essentially visual novels.
+
+<!-- the one of xuegao cheese doesnt work.  -->
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
