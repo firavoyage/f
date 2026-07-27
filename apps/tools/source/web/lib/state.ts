@@ -131,3 +131,8 @@ export function state<T extends NonFunction>(initial: T, { persist }: { persist?
 
   return result
 }
+
+type state = typeof state
+declare global {
+  var state: state
+}

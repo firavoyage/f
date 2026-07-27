@@ -549,4 +549,15 @@ ref:
       "const [${1:name}, toggle_${1:name}] = useToggle(${0: false})",
     ],
   },
+  "export const use global state": {
+    "prefix": [
+      "es",
+      "ecs",
+      "ug",
+      "ugs",
+    ],
+    "body": [
+      "const use_${1} = state(${0})",
+    ],
+  },
 }

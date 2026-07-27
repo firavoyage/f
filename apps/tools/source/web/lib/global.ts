@@ -10,6 +10,7 @@ import 'web/lib/react';
 import * as react from 'react';
 import * as react_use from 'react-use';
 import * as p from 'web/lib/props';
+import * as state from 'web/lib/state';
 
 type use = typeof use
 declare global {
@@ -32,3 +33,4 @@ use(handle)
 use(react)
 use(react_use)
 use(p)
+use(state)

@@ -8,7 +8,7 @@ import { useEffect } from 'react';
  * 
  * global: fire the shortcut even inside an input/textarea/select
  * 
- * all flags are on by default
+ * all flags default to on
  */
 export function use_bind(shortcut: string, action: (event: KeyboardEvent) => void, options = { prevent_default: true, stop_propagation: true, global: true }) {
   const { prevent_default, stop_propagation, global } = options
