@@ -45,7 +45,9 @@ textarea {
     }
   }
 
-  &[data-visible="false"] {
+
+
+  &:not([visible]) {
     margin-left: -250px;
   }
 }

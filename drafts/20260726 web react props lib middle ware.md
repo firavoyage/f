@@ -4929,3 +4929,18 @@ Would you like to see how **idempotence** is implemented in a specific **program
 
 Show all
 
+# <!-- 28 jul -->
+
+# . thinking
+
+camelcase also converts harmless snakecase, which isnt expected.
+
+btw, "A props object containing a "key" prop is being spread into JSX:".
+
+rather remove key completely. no perf engineering.
+
+what? "Each child in a list should have a unique "key" prop."
+
+# use snake case. use type no interface. use fn statement. write a ts fn to convert kebab case to camel case. do not use regex. when you see hyphen, omit and make the next letter uppercase.
+
+

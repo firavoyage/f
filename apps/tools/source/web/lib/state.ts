@@ -39,7 +39,7 @@ export function state<T extends NonFunction>(initial: T, { persist }: { persist?
 
   if (is_given(persist) && has(globalThis, 'localStorage')) {
     const key = localStorage.getItem(persist)
-    
+
     if (is_given(key)) {
       data = parse(key)
     }
@@ -132,13 +132,14 @@ export function state<T extends NonFunction>(initial: T, { persist }: { persist?
   return result
 }
 
-export function to_toggle([on, set]: [boolean, any]) {
-  function toggle(new_value?: boolean | ((old_value: boolean) => boolean)) {
-    if (!is_given(new_value)) {
+export function to_toggle([on, set]: any) {
+  function toggle(new_value?: any): any {
+    // function toggle(new_value?: boolean | ((old_value: boolean) => boolean)) {
+    if (!is_given(new_value) || typeof new_value != 'boolean' && typeof new_value != 'function') {
       set((v: boolean) => !v)
+    } else {
+      set(new_value)
     }
-
-    set(new_value)
   }
 
   return [on, toggle]
