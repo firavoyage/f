@@ -22,9 +22,11 @@ function is_inside_react() {
  * 
  * do not accept fn value
  * 
- * a setter fn must not return undefined
+ * value can be undefined, a setter fn must not return undefined
  * 
  * path can not exceed one nesting level
+ * 
+ * local storage sync is best effort. 
  */
 export function state<T extends NonFunction>(initial: T, { persist }: { persist?: string } = {}) {
   let data = initial
@@ -43,8 +45,8 @@ export function state<T extends NonFunction>(initial: T, { persist }: { persist?
       const item = localStorage.getItem(`${persist}.${key}`)
 
       if (!is_given(item)) {
-        continue 
-      } 
+        continue
+      }
 
       // even though things will be converted to strings, json will normalize it
       // e.g. JSON.parse(JSON.stringify(1)), JSON.parse(JSON.stringify("1"))
@@ -58,15 +60,27 @@ export function state<T extends NonFunction>(initial: T, { persist }: { persist?
 
   const subs: Set<Function> = new Set()
 
-  function set(new_value: T | ((old_value: T) => T)) {
-    if (typeof new_value == 'function') {
-      const result = new_value(data)
+  function set(new_value: T | ((old_value: T) => T), path?: string) {
+    if (is_given(path)) {
+      if (typeof new_value == 'function') {
+        const result = new_value(data[path])
 
-      if (typeof result != 'undefined') {
-        data = result
+        if (typeof result != 'undefined') {
+          data[path] = result
+        }
+      } else {
+        data[path] = new_value
       }
     } else {
-      data = new_value
+      if (typeof new_value == 'function') {
+        const result = new_value(data)
+
+        if (typeof result != 'undefined') {
+          data = result
+        }
+      } else {
+        data = new_value
+      }
     }
 
     for (const sub of subs) {
@@ -87,7 +101,11 @@ export function state<T extends NonFunction>(initial: T, { persist }: { persist?
       return () => { subs.delete(update) }
     })
 
-    return [is_given(path) ? data[path] : data, set]
+    if (is_given(path)) {
+      return [data[path], (new_value: Parameters<typeof set>[0]) => set(new_value, path)]
+    } else {
+      return [data, set]
+    }
   }
 
   result.get = function (path?: string) {
