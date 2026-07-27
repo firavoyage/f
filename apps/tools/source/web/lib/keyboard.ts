@@ -46,7 +46,7 @@ function normalize(shortcut: string) {
   return normalized_shortcut
 }
 
-export function bind(shortcut: string, action: action): number {
+export function bind(shortcut: string, action: action, global = true): number {
   shortcut = normalize(shortcut)
 
   if (!shortcuts.has(shortcut)) {
@@ -56,11 +56,15 @@ export function bind(shortcut: string, action: action): number {
   bindings.set(shortcutid, { shortcut, action })
 
   // it will work whether it overrides or not
-  mousetrap.bind(shortcut, (event: KeyboardEvent) => {
-    call(shortcut, event)
-  })
-
-  mousetrap.bindGlobal
+  if (global) {
+    mousetrap.bindGlobal(shortcut, (event: KeyboardEvent) => {
+      call(shortcut, event)
+    })
+  } else {
+    mousetrap.bind(shortcut, (event: KeyboardEvent) => {
+      call(shortcut, event)
+    })
+  }
 
   return shortcutid++
 }

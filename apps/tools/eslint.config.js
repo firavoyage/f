@@ -76,7 +76,8 @@ export default defineConfig(
       "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/ban-ts-comment": "off",
       "@typescript-eslint/no-unsafe-function-type": "off",
-      
+      "@typescript-eslint/no-unused-expressions": "off",
+
       // do not show errors halfway writing
       "no-empty": "off",
 
