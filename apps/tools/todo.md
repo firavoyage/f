@@ -90,14 +90,14 @@ sidebar collapse. settings. theme. sidebar taxonomy pref. tool view pref.
 
 ---
 
-fix sidebar
-
-when collapsed, the outline still can be visible.
-
-enlarge neg margin l, or take a more elegant approach.
-
----
-
 decide to make text selectability opt in.
 
 ---
+
+fix sidebar toggle shortcut consistency
+
+when inside textarea, ctrl b doesnt work.
+
+maybe it's to prevent default. decide to opt in or opt out.
+
+
