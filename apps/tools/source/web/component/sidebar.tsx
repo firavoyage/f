@@ -1,6 +1,8 @@
 import { useToggle } from "react-use"
 import { use_bind } from "web/lib/keyboard.use"
 
+const d = state()
+
 type SidebarProps = {
   items: string[]
   focused: number

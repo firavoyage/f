@@ -203,6 +203,7 @@ archi:
 - git commit message type first location first
 - spellcheck ci
 - parentheses brackets braces feeling
+- naming flags options
 
 web: <!-- frontend, web, ts/js -->
 
@@ -255,6 +256,7 @@ web: <!-- frontend, web, ts/js -->
 - css dialects sass less stylus
 - icon library
 - react props lib
+- css selectors nesting
 
 backend:
 

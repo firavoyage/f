@@ -901,4 +901,659 @@ Show all
 
 # <!-- 28 jul -->
 
+# why doesnt mousetrap shortcuts fire when focusing a textarea
+
+By default, [Mousetrap](https://craig.is/killing/mice) disables all keyboard shortcuts when focus is inside a `textarea`, `input`, or `select` element. This intentional design safety feature prevents normal typing from accidentally triggering application-wide shortcuts—like a user typing the letter "s" and unintentionally deleting or saving a file. [link](https://stackoverflow.com/questions/21013866/mousetrap-bind-is-not-working-when-field-is-in-focus)
+
+You can bypass this default behavior using three different methods depending on your needs.
+
+### Solution 1: Add the `mousetrap` class (Recommended for specific fields)
+
+If you want **all** of your standard shortcuts to fire while a user is typing in a specific `textarea`, add the class name `"mousetrap"` directly to that element. [link](https://stackoverflow.com/questions/21013866/mousetrap-bind-is-not-working-when-field-is-in-focus)
+
+html
+
+```
+<textarea name="message" class="mousetrap"></textarea>
+```
+
+Use code with caution.
+
+### Solution 2: Use the Global Bind Plugin (Recommended for specific keys)
+
+If you want a specific shortcut (e.g., `ctrl+s`) to work everywhere without modifying your HTML classes, include the official Mousetrap Global Bind extension. This introduces a `.bindGlobal` method. [link](https://github.com/ccampbell/mousetrap/issues/242)
+
+javascript
+
+```
+// This shortcut will fire even inside inputs and textareas
+Mousetrap.bindGlobal('ctrl+s', function(e) {
+    // Handle save logic
+    return false;
+});
+```
+
+Use code with caution.
+
+### Solution 3: Overwrite `stopCallback` (Recommended for global changes)
+
+Mousetrap filters form elements using an internal method called `stopCallback`. You can customize or completely disable this logic globally by overwriting it in your JavaScript. [link](https://craig.is/killing/mice)
+
+javascript
+
+```
+Mousetrap.prototype.stopCallback = function(e, element, combo) {
+    // Return true to STOP the shortcut from firing, false to ALLOW it
+
+    // Example: Allow shortcuts inside textareas, but block them in inputs
+    if (element.tagName === 'INPUT') {
+        return true;
+    }
+
+    // Allow everything else
+    return false;
+};
+```
+
+Use code with caution.
+
+How would you like to handle this in your project? I can help you **write the custom logic** for a specific shortcut key, or show you how to **integrate the global bind extension** into your current setup.
+
+AI can make mistakes, so double-check responses
+
+- [link](https://craig.is/killing/mice)\
+  Mousetrap - Keyboard shortcuts in Javascript - Craig Campbell\
+  By default all keyboard events will not fire if you are inside of a textarea , input , or select to prevent undesirable things fro...\
+  craig.is
+- [link](https://meta.discourse.org/t/fullscreen-composer-keyboard-shortcut-works-only-once/101920)\
+  Fullscreen composer keyboard shortcut works only once - Bug\
+  Nov 13, 2018 — So when you use the shortcut, you're using it while the input is focused and that's why it doesn't work. You'd need to click somew...\
+  Discourse Meta
+- [link](https://github.com/ccampbell/mousetrap/issues/242)\
+  Executing function when focusing on input form #242 - GitHub\
+  Jan 7, 2015 — Activity \* Nilpo commented. Nilpo. on Jan 7, 2015. If a form element is focused, the browser is capturing keypresses because that ...\
+  GitHub
+
+Show all
+
+## does bindGlobal exist in mousetrap npm pkg
+
+No, the **`bindGlobal` method is not included by default** in the standard [mousetrap npm package](https://www.npmjs.com/package/mousetrap). If you attempt to use `Mousetrap.bindGlobal()` right after installing the base package, your code will crash with a `TypeError: Mousetrap.bindGlobal is not a function` error. [link](https://stackoverflow.com/questions/56123367/mousetrap-bindglobal-is-not-a-function)
+
+Because `bindGlobal` is a separate extension, you must add it using one of two methods:
+
+### Method 1: Install the plugin via npm (Recommended)
+
+You can install the community-maintained plugin wrapper alongside the core library. [link](https://stackoverflow.com/questions/56123367/mousetrap-bindglobal-is-not-a-function)
+
+1. **Install the package:**\
+   bash
+
+<!---->
+
+```
+npm i mousetrap-global-bind
+```
+
+Use code with caution.
+2\. **Import them together in your JavaScript/TypeScript file:**\
+javascript
+
+```
+import Mousetrap from 'mousetrap';
+import 'mousetrap-global-bind'; // This mutates the Mousetrap prototype globally
+
+// Now you can safely use it
+Mousetrap.bindGlobal('ctrl+s', (e) => {
+    console.log('Saved globally!');
+});
+```
+
+Use code with caution.
+
+### Method 2: Manually include the plugin code
+
+If you want to avoid adding another npm dependency, you can require the plugin file directly from the node\_modules folder of the core `mousetrap` package, which houses the raw extension files.
+
+javascript
+
+```
+import Mousetrap from 'mousetrap';
+// Import the raw file directly from the main package plugins directory
+import 'mousetrap/plugins/global-bind/mousetrap-global-bind.js';
+
+Mousetrap.bindGlobal('ctrl+s', (e) => {
+    console.log('Saved globally!');
+});
+```
+
+Use code with caution.
+
+Would you like help **setting up the TypeScript definitions** for this extension, or should we look closer at **overriding `stopCallback`** so you do not need an extension at all? [link](https://github.com/DefinitelyTyped/DefinitelyTyped/issues/52437)
+
+- [link](https://github.com/DefinitelyTyped/DefinitelyTyped/issues/52437)\
+  \[@types/mousetrap] Property 'bindGlobal' does not exist on ...\
+  Apr 17, 2021 — 7 #52437. New issue. #52450. \[@types/mousetrap] Property 'bindGlobal' does not exist on type 'MousetrapStatic' after update to 1.6...\
+  GitHub
+- [link](https://stackoverflow.com/questions/tagged/mousetrap?tab=Newest)\
+  Newest 'mousetrap' Questions - Stack Overflow\
+  Dec 7, 2023 — Mousetrap. bindGlobal is not a function \* npm. \* mousetrap.\
+  Stack Overflow
+- [link](https://stackoverflow.com/questions/56123367/mousetrap-bindglobal-is-not-a-function)\
+  Mousetrap.bindGlobal is not a function - Stack Overflow\
+  May 14, 2019 — 1 Answer. Sorted by: 4. bindGlobal is in the TypeScript definition, but not in the NPM package. It's an extension. You can see the...\
+  Stack Overflow
+
+Show all
+
+## when does prevent default help
+
+`preventDefault()` helps <mark>when you need to<span> </span><strong>stop a browser's built-in action</strong><span> </span>from happening so your custom JavaScript code can run instead</mark>.
+
+In the context of Mousetrap, keyboard shortcuts, and textareas, using `e.preventDefault()` solves specific bugs and unexpected behaviors.
+
+### 1. Stopping Browser Shortcuts
+
+If your custom shortcut uses a combination the browser already claims, the browser will win unless you stop it.
+
+- **Example:** Binding `ctrl+s` to save a draft in your web app.
+- **Without `preventDefault()`:** The browser will still open its native "Save Page As..." dialog box.
+- **With `preventDefault()`:** The browser dialog is blocked, and only your custom save function runs.
+
+### 2. Preventing Double Actions or Form Submission
+
+Pressing keys inside forms often triggers automatic HTML behaviors.
+
+- **Example:** Binding the `enter` key to submit a message chat inside a `textarea`.
+- **Without `preventDefault()`:** The form will physically submit (reloading the page), or a messy new line break will still be added inside the box.
+- **With `preventDefault()`:** The text is sent via JavaScript, and the typing cursor stays exactly where it belongs without adding junk formatting.
+
+### 3. Blocking Page Scrolling
+
+Using arrow keys or spacebars for application controls can ruin user experience if the page moves.
+
+- **Example:** Using `spacebar` or `arrow keys` for a hotkey or browser game.
+- **Without `preventDefault()`:** The entire web page will abruptly jump downward or sideways.
+- **With `preventDefault()`:** The page stays completely still while your code executes.
+
+### How to use it in Mousetrap
+
+You can apply it directly to the event object passed into your callback function:
+
+javascript
+
+```
+Mousetrap.bindGlobal('ctrl+s', function(e) {
+    if (e.preventDefault) {
+        e.preventDefault();
+    } else {
+        // IE fallback
+        e.returnValue = false;
+    }
+
+    // Your custom logic goes here
+    console.log('Saved custom draft!');
+});
+```
+
+Use code with caution.
+
+_(Note: In Mousetrap, you can also simply `return false;` at the end of your callback function. Mousetrap will automatically call both `preventDefault()` and `stopPropagation()` for you behind the scenes.)_
+
+If you are currently experiencing a bug, what **specific key combination** are you trying to bind? I can tell you exactly **what default browser behavior** you need to block for it.
+
+- [link](https://www.greatfrontend.com/questions/quiz/how-do-you-prevent-the-default-behavior-of-an-event)\
+  How do you prevent the default behavior of an event?\
+  Using preventDefault method The preventDefault method is used to stop the default action of an event from occurring. This is usefu...\
+  \
+  \
+  GreatFrontEnd
+- [link](https://www.youtube.com/watch?v=he6od7yQmzM)\
+  How to Use preventDefault() in JavaScript | Stop Default Browser Actions Easily\
+  Jun 9, 2025 — 🛑 Learn How to Use preventDefault() in JavaScript | Control Browser Behavior with Ease Want to stop default browser actions like ...\
+  \
+  \
+  YouTube
+- [link](https://medium.com/@python-javascript-php-html-css/comparing-event-preventdefault-and-return-false-in-javascript-09bbb9b4943b)\
+  JavaScript compares event.preventDefault() and returns false | by Denis Bélanger 💎⚡✨\
+  Jul 9, 2024 — When the anchor tag is clicked, the event. preventDefault() method stops the browser's default action, such as navigating to a new...\
+  \
+  \
+  Medium
+
+Show all
+
+## when does stop propagation help
+
+`stopPropagation()` helps <mark>when you need to<span> </span><strong>prevent an event from traveling up the DOM tree</strong></mark>, stopping parent elements from hearing and reacting to the same event.
+
+While `preventDefault()` stops _what the browser does_, `stopPropagation()` stops _where the event goes_ inside your own code.
+
+### 1. Preventing "Double Action" Bugs in Nested UI
+
+If you have a shortcut bound globally, and a different action bound to a specific wrapper container, pressing the key can trigger both at once.
+
+- **The Scenario:** You have a popup modal. Pressing `esc` is supposed to close the modal. However, your main app page also listens for `esc` to log the user out.
+- **Without `stopPropagation()`:** Pressing `esc` will close your modal **and** immediately log the user out because the keypress "bubbles" all the way up to the window.
+- **With `stopPropagation()`:** The modal catches the `esc` key, runs its close animation, and kills the event so the main app never hears it.
+
+### 2. Shielding Parent Click/Key Listeners
+
+When building interactive elements inside list items, tables, or cards, events automatically leak upward.
+
+- **The Scenario:** You click a "Delete" button inside a table row. The table row itself has a click listener that opens a detailed profile view.
+- **Without `stopPropagation()`:** Clicking "Delete" will delete the item **and** instantly open the profile view for a split second before it disappears.
+- **With `stopPropagation()`:** The event stops at the button. The row never triggers.
+
+### 3. Fixing Mousetrap Isolation Issues
+
+If you are combining Mousetrap with vanilla JavaScript event listeners, events can leak and cause conflicts.
+
+- **The Scenario:** You use standard `document.addEventListener('keydown')` for game controls, but Mousetrap for specialized menu shortcuts.
+- **Without `stopPropagation()`:** A key pressed inside a Mousetrap-enabled input will still leak up to the `document` level and accidentally trigger your game controls.
+- **With `stopPropagation()`:** Stopping the event ensures the keypress is consumed solely by the intended input handler.
+
+### The Code Example
+
+javascript
+
+```
+// A parent container wrapping your UI
+document.getElementById('modal-wrapper').addEventListener('keydown', function(e) {
+    console.log("Parent wrapper caught the key!");
+});
+
+// A Mousetrap binding inside that container
+Mousetrap.bind('esc', function(e) {
+    console.log("Mousetrap handled Escape.");
+
+    // Stop the event from bubbling up to 'modal-wrapper'
+    if (e.stopPropagation) {
+        e.stopPropagation();
+    } else {
+        e.cancelBubble = true; // IE fallback
+    }
+});
+```
+
+Use code with caution.
+
+_(Note: Just like `preventDefault()`, returning `false` from a Mousetrap callback automatically runs **both** `preventDefault()` and `stopPropagation()` for you.)_
+
+Are you dealing with an event **firing multiple times**, or an unexpected **parent element reacting** to your hotkey? Tell me your UI layout and I can show you exactly where to place the stop.
+
+- [link](https://medium.com/@rajan23024/use-of-event-stoppropagation-event-stopimmediatepropagation-event-preventdefault-5624441bda42)\
+  Use of Event.stopPropagation && Event.stopImmediatePropagation && Event.preventDefault | by Rajeshwar Singh\
+  May 8, 2023 — Event. stopPropagation() is a method that prevents an event from propagating up the DOM tree.\
+  \
+  \
+  Medium
+- [link](https://www.linkedin.com/pulse/eventpreventdefault-eventstoppropagation-koushik-maity-jcqnf)\
+  event.preventDefault() and event.stopPropagation()\
+  Dec 29, 2023 — event. stopPropagation() is used to stop the event from propagating further in the DOM hierarchy. Once this method is called, the ...\
+  \
+  \
+  LinkedIn
+- [link](https://johnkavanagh.co.uk/articles/stopping-propagation-vs-prevent-default-in-javascript/)\
+  Stopping Propagation vs. Preventing Default in JS\
+  Feb 13, 2024 — In Brief preventDefault() stops the browser's built‑in action, such as following a link or submitting a form. stopPropagation() st...\
+  \
+  \
+  johnkavanagh.co.uk
+
+Show all
+
+## wo prevent default, does it do both or only the browser one
+
+`preventDefault()` <mark><strong>only stops the browser's built-in action</strong></mark>. It does not stop the event from bubbling up to parent elements in your code.
+
+Here is exactly how they divide the work:
+
+- **`preventDefault()` Only:** Stops the browser action (e.g., stops a link from opening, stops `ctrl+s` from opening the browser save menu). The event **will still bubble up** to your HTML parent containers.
+- **`stopPropagation()` Only:** Stops the event from bubbling up to parent containers. The browser's built-in action **will still happen**.
+- **Both:** You must call both explicitly (or `return false` in Mousetrap) to kill both behaviors completely.
+
+### The Catch with Mousetrap
+
+If you are using Mousetrap, returning `false` handles both automatically:
+
+javascript
+
+```
+Mousetrap.bind('ctrl+s', function(e) {
+    // This executes BOTH e.preventDefault() and e.stopPropagation()
+    return false;
+});
+```
+
+Use code with caution.
+
+Are you seeing a browser menu pop up, or is a parent element in your JavaScript reacting when it shouldn't? I can help you write the exact return statement you need.
+
+- [link](https://dev.to/dangote/how-to-stop-page-reloads-in-javascript-with-eventpreventdefault-39l5)\
+  How to Stop Page Reloads in JavaScript with event.preventDefault()\
+  Jun 28, 2025 — preventDefault() only stops the browser's default behavior.\
+  \
+  \
+  DEV Community
+- [link](https://intellipaat.com/blog/preventdefault-vs-return-false-in-javascript/)\
+  event.preventDefault() vs return false in JavaScript\
+  Feb 3, 2026 — The event. preventDefault in JavaScript is a method in JavaScript event handling that explicitly prevents the default behavior of ...\
+  \
+  \
+  Intellipaat
+- [link](https://johnkavanagh.co.uk/articles/stopping-propagation-vs-prevent-default-in-javascript/)\
+  Stopping Propagation vs. Preventing Default in JS\
+  Feb 13, 2024 — Using preventDefault to Stop Default Behaviour preventDefault() stops the browser's default action for an event without affecting ...\
+  \
+  \
+  johnkavanagh.co.uk
+
+Show all
+
+## wo prevent default, does both browser action and my fn fire or only the browser one
+
+**Both your function and the browser action will fire.**
+
+Without `preventDefault()`, the browser does not choose between your code and its own default behavior—it executes **both**.
+
+### The Order of Execution
+
+1. Your custom Mousetrap function fires **first**.
+2. The browser's built-in action fires **second**.
+
+### Real-World Example: Binding `ctrl+s`
+
+If you bind `ctrl+s` to save an article in your app, but you **forget** to use `preventDefault()`:
+
+1. Your JavaScript function runs, and your app successfully saves the article to the database.
+2. The event keeps going, and the browser immediately pops open its native **"Save Page As..."** file dialog window on top of your app.
+
+To prevent this messy double-triggering, you must explicitly tell the browser to skip its own action:
+
+javascript
+
+```
+Mousetrap.bind('ctrl+s', function(e) {
+    // 1. Your code runs
+    console.log("Saving to database...");
+
+    // 2. This blocks the browser's "Save Page As" menu from opening
+    e.preventDefault();
+});
+```
+
+Use code with caution.
+
+Are you seeing a specific browser side-effect (like a page refresh or cursor jump) happening right after your function runs? Tell me **the key combo** you are using, and I can tell you exactly what browser behavior is leaking through.
+
+- [link](https://www.geeksforgeeks.org/javascript/how-to-prevent-the-default-action-of-an-event-in-javascript/)\
+  Prevent the default action of an event in JavaScript\
+  Jun 17, 2026 — The preventDefault() method is used to stop the browser from performing its default action when an event occurs. It allows develop...\
+  \
+  \
+  GeeksforGeeks
+- [link](https://www.test-king.com/blog/preventing-default-behavior-in-javascript-a-comparison-of-two-methods/)\
+  Preventing Default Behavior in JavaScript: A Comparison of Two Methods\
+  Event. preventDefault() does not interfere with this flow. It stops the browser's default response but allows the event to continu...\
+  \
+  Test-king.com
+
+## all browser default actions
+
+**There are dozens of browser default actions**, categorizable by the specific UI element or hardware event that triggers them. Calling `preventDefault()` stops these native browser interactions from processing. [link](https://tr.javascript.info/default-browser-action)
+
+The most common browser default behaviors are grouped below by category.
+
+### 1. Keyboard Events (`keydown`, `keypress`)
+
+- **System Hotkeys**: Pressing shortcuts like `Ctrl + S` (Save Page), `Ctrl + P` (Print), `Ctrl + F` (Find), or `Ctrl + R` (Reload) natively triggers browser utilities.
+- **Character Input**: Typing letters, numbers, or symbols naturally inserts characters into standard form fields.
+- **Spacebar & Arrow Keys**: Pressing these controls defaults to scrolling the web page vertically or horizontally.
+- **Tab Key**: Shifts active user focus sequentially forward or backward (`Shift + Tab`) through interactive elements.
+- **Backspace / Alt + Arrow**: Frequently used across desktop setups as a shortcut to navigate backward or forward in browser tab history. [link](https://help.opera.com/en/latest/shortcuts/)
+
+### 2. Form & Input Elements (`submit`, `click`)
+
+- **Form Submission**: Pressing an `<input type="submit">` button or hitting `Enter` inside a form field reloads the page to send payload data to the `action` attribute URL.
+- **Hyperlinks (`<a>`)**: Clicking an anchor tag automatically navigates the browser to the URL defined within its `href` parameter.
+- **Checkboxes / Radio Buttons**: Clicking a standard toggle field natively alters its visual selection state. [link](https://tr.javascript.info/default-browser-action)
+
+### 3. Mouse & Touch Interactions (`mousedown`, `wheel`, `pointer`)
+
+- **Text Selection**: Holding down the mouse button and dragging (`mousedown`) prompts the browser to highlight and select text.
+- **Scroll Wheel**: Rolling a physical mouse wheel or sliding touch gestures defaults to scrolling the viewport layout.
+- **Double-Click**: Clicking text elements repeatedly selects an entire target word or block. [link](https://tr.javascript.info/default-browser-action)
+
+### 4. Window & Contextual Events
+
+- **Right-Click (`contextmenu`)**: Pressing the secondary mouse button opens the native browser context options menu (e.g., Inspect, Copy, Paste).
+- **Drag & Drop (`dragover`, `drop`)**: Dropping a file onto the open window canvas forces the browser to attempt to open or download that specific file asset natively. [link](https://stackoverflow.com/questions/42825163/what-are-some-example-of-browser-default-behavior-that-will-be-prevented-by-e)
+
+***
+
+### Important Catch: Non-Cancelable Actions
+
+Not all events can be stopped by `preventDefault()`. You can check if an action is blockable via the `event.cancelable` boolean property. [link](https://dev.to/mkday/javascript-preventdefault-does-it-work-as-its-name-suggests-gen)
+
+- **Cannot Be Blocked**: Scrolling performance updates (`passive` listeners), window resizing, and the final page destruction process (`unload`/`beforeunload`) cannot be overridden using `preventDefault()`.
+
+Are you trying to block a specific **mouse interaction** or a **hardware utility key**? Let me know which one, and I can give you the target event listener syntax to shut it down.
+
+- [link](https://tr.javascript.info/default-browser-action)\
+  Browser default actions\
+  There are many default browser actions, including: \* \*\*Mousedown\*\* Starts selection \* \*\*Click on \*\* Checks or unchecks the input \*\
+  The Modern JavaScript Tutorial
+- [link](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault)\
+  Event: preventDefault() method - Web APIs - MDN Web Docs\
+  Sep 18, 2025 — Calling preventDefault() during any stage of event flow cancels the event, meaning that any default action normally taken by the i...\
+  MDN Web Docs
+- [link](https://stackoverflow.com/questions/42825163/what-are-some-example-of-browser-default-behavior-that-will-be-prevented-by-e)\
+  What are some example of \`browser default behavior\` that will ...\
+  Mar 16, 2017 — There are many default browser actions: \* mousedown – starts the selection (move the mouse to select). \* click on - open the page.\
+  Stack Overflow
+
+Show all
+
+# should prevent default or my action fire first
+
+You should place `event.preventDefault()` at the **very beginning** of your event handler function. [link](https://stackoverflow.com/questions/4476973/does-location-of-e-preventdefault-matter)
+
+### Why You Should Prevent Default First
+
+- **Error Protection:** If your custom JavaScript code encounters an error or throws an exception midway through execution, any code _after_ the error will not run. If `preventDefault()` is at the bottom, the browser will fall back to its default behavior (like reloading the page on a form submit), which destroys your state and makes debugging incredibly difficult. [link](https://stackoverflow.com/questions/4476973/does-location-of-e-preventdefault-matter)
+- **Code Readability:** Placing it at the top immediately signals to other developers (or your future self) that you are entirely hijacking the browser's default behavior for that element. [link](https://stackoverflow.com/questions/14142357/advantages-and-disadvantages-of-preventing-default-event-action-at-start-or-end)
+
+### Execution Example
+
+javascript
+
+```
+const form = document.querySelector('form');
+
+form.addEventListener('submit', (event) => {
+  // 1. Fire this FIRST to stop the browser from reloading the page
+  event.preventDefault();
+
+  // 2. Fire your custom action SECOND
+  console.log("Handling form submission via AJAX instead...");
+  executeMyCustomAction();
+});
+```
+
+Use code with caution.
+
+### Visual Summary of Event Flow
+
+text
+
+```
+[ User triggers event (e.g., Click Submit) ]
+                   │
+                   ▼
+┌──────────────────────────────────────────┐
+│   Your Event Listener Callback Fires     │
+├──────────────────────────────────────────┤
+│ 1. event.preventDefault() [Blocks native]│
+│ 2. Your custom application logic runs    │
+└──────────────────────────────────────────┘
+                   │
+                   ▼
+[ Browser default action is skipped ]
+```
+
+Use code with caution.
+
+If you are dealing with a complex user interface or async operations, let me know:
+
+- What **HTML element** (link, form, button) are you targeting?
+- Are you using any specific **framework** like React, Vue, or vanilla JavaScript?
+
+I can give you the exact code pattern needed for your project.
+
+- [link](https://dev.to/scottstern06/when-should-you-use-event-preventdefault-d2i)\
+  When should you use event.preventDefault() - DEV Community\
+  Apr 25, 2020 — preventDefault() sprinkled through applications where it doesn't make a whole lot of sense. You should be using this method to pre...\
+  DEV Community
+- [link](https://stackoverflow.com/questions/4476973/does-location-of-e-preventdefault-matter)\
+  Does location of \`e.preventDefault()\` matter? - Stack Overflow\
+  Dec 18, 2010 — December 2023 update: It depends on the nature of the default action implemented by browser vendors. It some cases a failure of pr...\
+  Stack Overflow
+- [link](https://stackoverflow.com/questions/14142357/advantages-and-disadvantages-of-preventing-default-event-action-at-start-or-end)\
+  Advantages and disadvantages of preventing default event ...\
+  Jan 3, 2013 — 3 Answers. Sorted by: 12. I put my preventing code at the beginning for the reason you stated. If there is an error earlier in the...\
+  Stack Overflow
+
+Show all
+
+# will it work if i dont put it into an if block e.preventDefault && e.preventDefault()
+
+Yes, it will work perfectly.
+
+### Why It Works
+
+- **Short-circuit evaluation**: JavaScript reads left to right.
+- **Safety check**: It first checks if `e.preventDefault` exists.
+- **Execution**: If true, it runs `e.preventDefault()`.
+- **Protection**: If `e` or the method is missing, it stops. This prevents your code from crashing.
+
+### Modern Alternative
+
+You can use **optional chaining** for cleaner code:
+
+javascript
+
+```
+e?.preventDefault?.();
+```
+
+Use code with caution.
+
+To help you implement this safely, what **framework or library** (like React, Vue, or vanilla JS) are you using, and what **type of event** (like a form submit or link click) are you handling?
+
+- [link](https://weblog.west-wind.com/posts/2023/Feb/16/Async-Event-Methods-and-preventDefault-in-JavaScript)\
+  Async Event Methods and preventDefault() in JavaScript - Rick Strahl's Weblog\
+  Feb 16, 2023 — The code is supposed to not navigate because of the conditional e. preventDefault() block and return false . That code is executed...\
+  \
+  \
+  West Wind Technologies
+- [link](https://www.linkedin.com/pulse/jquery-events-stop-misusing-return-false-nick-galatis)\
+  JQUERY EVENTS: STOP (MIS)USING RETURN FALSE\
+  Nov 10, 2018 — In most situations where you would use return false what you really want is e. preventDefault(). Using preventDefault requires you...\
+  \
+  \
+  LinkedIn
+- [link](https://www.freecodecamp.org/news/javascript-optional-chaining/)\
+  How to Use Optional Chaining in JavaScript\
+  Feb 7, 2022 — Optional chaining is a useful feature that can help you write cleaner code. Now let's learn how we can use it.\
+  \
+  \
+  freeCodeCamp
+
+## does it matter eslint@typescript-eslint/no-unused-expressions
+
+<mark><span>Yes, it matters</span></mark>. By default, that ESLint rule **will throw an error or warning** because you are evaluating an expression without assigning or using its result.
+
+### How ESLint Sees It
+
+ESLint views `e.preventDefault && e.preventDefault()` as an incomplete statement. It flags it because you wrote a logical comparison (`&&`) but did not use the final output for anything.
+
+### Two Ways to Fix It
+
+**Option 1: Use Optional Chaining (Recommended)**\
+Replace the logical AND with optional chaining. ESLint accepts this because it is viewed as a direct function call, not a dangling expression.
+
+typescript
+
+```
+e?.preventDefault?.();
+```
+
+Use code with caution.
+
+**Option 2: Use a Standard `if` Statement**\
+If you prefer not to use optional chaining, use a standard block. This is completely safe from ESLint flags.
+
+typescript
+
+```
+if (e.preventDefault) {
+  e.preventDefault();
+}
+```
+
+Use code with caution.
+
+### How to Ignore the Rule (If you must)
+
+If you want to keep your original syntax without triggering ESLint, you can modify your `.eslintrc` configuration file to allow short-circuiting:
+
+json
+
+```
+{
+  "rules": {
+    "@typescript-eslint/no-unused-expressions": [
+      "error",
+      { "allowShortCircuit": true }
+    ]
+  }
+}
+```
+
+Use code with caution.
+
+Would you like help **updating your ESLint config file**, or do you want to see how to apply the **optional chaining fix** across your specific file?
+
+- [link](https://medium.com/javascript-in-plain-english/eslint-a-proofreader-for-your-code-cd7e56ae391f)\
+  ESLint — A Proofreader for your Code | by Michael Chang | JavaScript in Plain English\
+  Sep 29, 2020 — ESLint provides hundreds of these rules that help maintain code quality. These rules can either be set to off , warn or error . of...\
+  \
+  \
+  Medium
+- [link](https://dev.to/trivedivatsal/the-cleanest-way-to-handle-unused-variables-in-typescript-345)\
+  The Cleanest Way to Handle Unused Variables in TypeScript\
+  Sep 29, 2025 — The One-Time Setup: Configure ESLint To make this convention seamless, you need to tell ESLint about it. It's a simple, one-time c...\
+  \
+  \
+  DEV Community
+
+## i mean does it matter if i just want it to work
+
+No, it does not matter at all.
+
+### The Bottom Line
+
+- **The browser doesn't care**: JavaScript will execute the code and block the default behavior flawlessly.
+- **ESLint is just a critic**: It only flags a style issue. It will not break or change how your code actually runs in production.
+
+### When It _Might_ Matter
+
+- **Build steps**: If your project is set up to block builds on ESLint errors, the build will fail.
+- **Local dev**: If your terminal or editor screen is filled with red warning lines, it can be distracting.
+
+If your code builds and runs right now, you can completely ignore the warning.
+
+Are you currently seeing a **build error** that is stopping your app from running, or are you just seeing **yellow/red squiggly lines** in your code editor?
+
 
