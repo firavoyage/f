@@ -10,7 +10,7 @@ type SidebarProps = {
 }
 
 export default function Sidebar({ items, focused, set_focused, variant, children }: SidebarProps) {
-  variant ??= 'push'
+  variant ??= 'overlay'
 
   const [on, toggle] = to_toggle(use_global('is_sidebar_on'))
 
@@ -18,7 +18,6 @@ export default function Sidebar({ items, focused, set_focused, variant, children
 
   return (
     <>
-      <div className="backdrop"></div>
       <aside {...p({ class: 'sidebar', visible: on, variant })}>
         {children}
         <nav className="nav">
@@ -38,6 +37,7 @@ export default function Sidebar({ items, focused, set_focused, variant, children
           })}
         </nav>
       </aside>
+      <div {...p({ class: "backdrop", onclick: toggle })}></div>
     </>
   );
 }

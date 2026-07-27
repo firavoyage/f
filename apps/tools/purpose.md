@@ -433,8 +433,16 @@ maybe it's to prevent default. decide to opt in or opt out.
 
 move global prelude to the absolute beginning.
 
-05 00 create sidebar overlay variant. (05 20)
+05 00 create sidebar overlay variant. ~~(05 20)~~ 06 00
 
 fix props lib.
+
+---
+
+the local roboto font does have font weight issues. it maps incorrectly.
+
+---
+
+false assumption: sibling means either backward or forward.
 
 
