@@ -9182,5 +9182,25 @@ easy.
 
 ---
 
+let's think about the implementation of the persistence prototype.
+
+i will not store into one key. it's slow to (de)serialize.
+
+i will name like `tools.foo`. it wont conflict. you have the name before the first dot. 
+
+it's guaranteed only tools can start w `tools.`. and you couldnt have the same key if you already have mismatches in the first few chars. even if you name like `to`, and name a prop like `ols.`, it would be `to.ols.`.
+
+i dont think there would be a fast way to get all keys that starts w `tools`. i would just name it `tools`. an array of all keys.
+
+wait. if you dont even know what's updated, do you have to update each anyway. i think it still wins, as you can serialize each in sto.
+
+will you diff?
+
+how does immer (react lib) work
+
+it doesnt diff? it proxies?
+
+how many loc does immer (react lib) have
+
 
 

@@ -322,7 +322,10 @@ ref:
     ],
   },
   "set timeout": {
-    "prefix": "st",
+    "prefix": [
+      "st",
+      "sto",
+    ],
     "body": [
       "setTimeout(function() {",
       "  $0",
