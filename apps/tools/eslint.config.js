@@ -72,12 +72,16 @@ export default defineConfig(
   // Custom rules
   {
     rules: {
-      // do not over engineer
+      // do not over engineer, do not care big corp best prac
       "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/ban-ts-comment": "off",
       "@typescript-eslint/no-unsafe-function-type": "off",
-      "@typescript-eslint/no-floating-promises": "error",
+      
+      // do not show errors halfway writing
+      "no-empty": "off",
 
+      "@typescript-eslint/no-floating-promises": "error",
+      
       // throw 'foo' has no stack trace
       "local/throw-err": "warn",
     },
