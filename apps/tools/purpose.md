@@ -421,4 +421,6 @@ ts resets type narrowing, even if you define the fn right inside an if.
 
 just ignore rather than "foo as sth". it's ts's problem, rather than sth to be declared explicitly.
 
+28
 
+03 00 
