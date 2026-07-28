@@ -47805,6 +47805,8 @@ azuma seren plays some "arg" on miyeji.cn. everything, incl. the nav page and ga
 
 04 00 learn pm.
 
+"hard/soft timebox" is better than "whether to timebox", i feel. anyway both matter.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
