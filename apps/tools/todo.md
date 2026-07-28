@@ -83,3 +83,7 @@ sidebar collapse. settings. theme. sidebar taxonomy pref. tool view pref.
 decide to make text selectability opt in.
 
 ---
+
+research encryption methods. pick and include what matters.
+
+

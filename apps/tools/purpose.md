@@ -29,7 +29,7 @@ e.g. `solve_change(285, _b_factors)`
 as you can see
 
 ```ts
-  const _b_factors = [2, 4, 5, 6, 10, 15, 20, 30]
+const _b_factors = [2, 4, 5, 6, 10, 15, 20, 30];
 ```
 
 i guess i can remove 4, 10, and 15, for example.
@@ -80,14 +80,14 @@ improve app copy meanwhile.
 
 it seems ive modified legacy folder by mis ordering rg flags
 
-surprisingly vscode timeline doesnt track them. 
+surprisingly vscode timeline doesnt track them.
 
 i could, but i would not fix them through git history.
 
 p
 
 ```sh
-rg --files -g '!**/legacy/**' -g 'design/**/*.yaml' 
+rg --files -g '!**/legacy/**' -g 'design/**/*.yaml'
 ```
 
 c
@@ -105,14 +105,14 @@ font: font-style font-variant font-weight font-stretch font-size/line-height fon
 it's a bit hard to reference tokens like this
 
 ```yaml
-font: 
+font:
   heading: bold text.lg typeface.serif
 ```
 
 i dont wanna invent like `{text.lg}`
 
 ```yaml
-font: 
+font:
   heading: bold var(--text-lg) var(--typeface-serif)
 ```
 
@@ -176,7 +176,7 @@ use ts. use type no interface. use snake case. no aria labels.
 
 class name rules...
 
-well, i guess i should break the rules. 
+well, i guess i should break the rules.
 
 rules are designed for react, for big corps.
 
@@ -230,7 +230,7 @@ drop the timebox. i do not actually have a time constraint. and i would absolute
 
 wait. maybe my assumption is wrong. for inactive selection, it might not be 30 opacity.
 
-maybe they just use different bg, like contextual bg primary. 
+maybe they just use different bg, like contextual bg primary.
 
 though, my bg primary secondary teritary has discrepency w them anyway.
 
@@ -279,7 +279,7 @@ why not. i would have it if it allows. i should ignore browser compatibility con
 
 20 00 style focus ring 20 40
 
-animation is cool. but i would not adopt it. vscode and linear dont have animation yk. 
+animation is cool. but i would not adopt it. vscode and linear dont have animation yk.
 
 ---
 
@@ -329,7 +329,7 @@ how to use class instead of classname in react
 
 it could be less than 20min in code, but it takes time to research react arbitary rules.
 
-20 00 research google ai mode content filter and actual system prompt. 
+20 00 research google ai mode content filter and actual system prompt.
 
 no idea how meaningful it was.
 
@@ -379,7 +379,7 @@ what i can do, is, to reset the ugly browser fallback, and remove the blue ring 
 
 ---
 
-no idea what `[tabindex="0"]` does. 
+no idea what `[tabindex="0"]` does.
 
 i dont have to know. it does nothing if i do not adopt it at all.
 
@@ -449,7 +449,7 @@ false assumption: sibling means either backward or forward.
 
 well, css syntax highlighting is quirky.
 
-20 20 research cyberchef. think about features. design the routing and all app states
+20 20 research cyberchef. think about features. design the routing and all app states. 21 20
 
 **i should write down my thoughts. otherwise i would be repeating the same decisions, trying to memorize.**
 
@@ -508,8 +508,20 @@ you have favorites. a global state.
 
 let's be focused on the purpose, the list of tools, rather than their ux flaws.
 
-- url decode <!-- e.g. %3d becomes = -->
-- regex (the args are defined separately from inputs, on the recipe)
+- data format
+  - url decode <!-- e.g. %3d becomes = -->
+- language
+  - language decode <!-- yes, it's vscode builtin, but why not -->
+  - leet speak
+- date/time
+  - timestamp, utc, timezone, (any template string)
+- encryption, public key, hash
+  - (popular methods)
+- misc
+  - regex (the args are defined separately from inputs, on the recipe)
+  - grep
+  - glob
+  - lorem ipsum
 
 shannon entropy is impressive. it's an example of rendered output. though i might not include this. why do i have to know how random sth is. i can document the extension methods, and let llms generate everything though.
 
@@ -521,4 +533,23 @@ one thing i just noticed, is, it shows a desc of each sidebar item on the right,
 
 it does have both json to yaml and yaml to json. it's not quite intuitive yk. it can be json toml yaml csv. but you have to chain yaml to json to csv, otherwise it wouldnt be supported.
 
-when you add 
+when you use json to yaml it errs immediately, as empty isnt valid json. <!-- Error translating from ArrayBuffer to JSON: SyntaxError: Unexpected end of JSON input --> for me, i would choose to be do nothing when it errs. i mean by default. i could take empty/invalid pasted input differently.
+
+_i would like to have some encryption methods._ <!-- there are too many --> i would research.
+
+seems encryption/encoding and public key are different categories.
+
+it holds the power of a math calculator. but it's awkward to fit inside a recipe.
+
+prettier (code tidy) should be an ide feature.
+
+image processing is out of scope. 
+
+**scope: text to text at its core.**
+
+better to use a pl yk for flow control. (magic, fork, subsection, ...)
+
+---
+
+
+
