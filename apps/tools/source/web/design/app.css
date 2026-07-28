@@ -42,20 +42,22 @@ textarea {
 }
 
 .sidebar {
-  width: var(--spacing-64);
   background-color: var(--color-bg-secondary);
 
-  flex-shrink: 0;
+  &[variant="push"] {
+    width: var(--spacing-64);
+    flex-shrink: 0;
 
-  .item {
-    width: 100%;
-    display: block;
-
-    &:hover,
-    &:focus-visible {
-      background-color: var(--color-bg-tertiary);
+    &:not([visible]) {
+      margin-left: calc(var(--spacing-64) * -1);
     }
   }
+  /* width: var(--spacing-64);
+  flex-shrink: 0;
+
+  &:not([visible]) {
+    margin-left: calc(var(--spacing-64) * -1);
+  } */
 
   &[variant="overlay"] {
     position: fixed;
@@ -88,8 +90,14 @@ textarea {
     }
   }
 
-  &:not([visible]) {
-    margin-left: calc(var(--spacing-64) * -1);
+  .item {
+    width: 100%;
+    display: block;
+
+    &:hover,
+    &:focus-visible {
+      background-color: var(--color-bg-tertiary);
+    }
   }
 }
 
