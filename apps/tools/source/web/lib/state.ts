@@ -45,6 +45,8 @@ export function state<T extends NonFunction>(initial: T, { persist }: { persist?
     }
   }
 
+  type path = string & keyof T
+
   function sync() {
     is_syncing = true
 
@@ -61,7 +63,7 @@ export function state<T extends NonFunction>(initial: T, { persist }: { persist?
     }, 0)
   }
 
-  function set(new_value: T | ((old_value: T) => T), path?: string) {
+  function set(new_value: T | ((old_value: T) => T), path?: path) {
     if (is_given(path)) {
       if (typeof new_value == 'function') {
         const result = new_value(data[path])
@@ -101,7 +103,7 @@ export function state<T extends NonFunction>(initial: T, { persist }: { persist?
     subs.add(listener)
   }
 
-  function result(path?: string & keyof T) {
+  function result(path?: path) {
     const update = use_update()
 
     useEffect(() => {
@@ -117,7 +119,7 @@ export function state<T extends NonFunction>(initial: T, { persist }: { persist?
     }
   }
 
-  result.get = function (path?: string) {
+  result.get = function (path?: path) {
     if (is_inside_react()) {
       return result(path)[0]
     } else {
