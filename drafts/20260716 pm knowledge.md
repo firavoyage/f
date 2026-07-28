@@ -4885,7 +4885,7 @@ If you are currently writing one, I can help you **draft it** or **write the acc
 
 Show all
 
-# all questions to answer in software pm wbs
+# (?) all questions to answer in software pm wbs
 
 When building a **Work Breakdown Structure (WBS)** for Software Project Management (PM), you must ask targeted questions at every phase to ensure the scope is fully decomposed, manageable, and clear. [link](https://www.scribd.com/document/987408411/Software-Project-Management-Answers-Complete)
 
