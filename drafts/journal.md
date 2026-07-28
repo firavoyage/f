@@ -47791,6 +47791,8 @@ i also like anime games. but they are not games at all. they are essentially vis
 
 things have changed these years. not much. but everywhere.
 
+17 20 watch `When 1800's Fight Back!! | Chess Rating Climb 1820 Rapid ELO`. (18 00)
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
