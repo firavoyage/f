@@ -543,7 +543,7 @@ it holds the power of a math calculator. but it's awkward to fit inside a recipe
 
 prettier (code tidy) should be an ide feature.
 
-image processing is out of scope. 
+image processing is out of scope.
 
 **scope: text to text at its core.**
 
@@ -562,6 +562,23 @@ for settings. it would be structured. it can be
 - number input (text inc dec or slide)
 - text input
 
-i would have a quick action panel, like vscode ctrl (shift) p.
+i would have a quick action panel, like vscode ctrl (shift) p. any variant of ctrl p would trigger. i would make use bind flexible. (array first param)
+
+i guess ctrl f is the same as ctrl p, as the sidebar is searchable. but they dont carry the same intention. ctrl p is better. ctrl f is ambiguous. search sidebar, input, or output? maybe ctrl h replace?
+
+ctrl p can not only search sidebar items, but also "open settings", "open settings json".
+
+---
+
+about recipe.
+
+_could have: recipe._
+
+there are not so many tools here. write extension in js instead.
+
+---
+
+i can also research cyberchef alternatives.
+
 
 
