@@ -96,6 +96,17 @@ it should be simple. maybe it would not be even worth the time. take a look. and
 
 decide whether, or how to resize layout.
 
+there are many ways. the browser default is already reset, and shouldnt be an option.
+
+patterns are
+
+- scroll (resize, push others downward)
+- resize, shrink others
+
+it's obvious i feel.
+
+and, take a look at vscode ctrl b. you only see the dragger when hovering there.
+
 ---
 
 organize todos.
@@ -115,5 +126,13 @@ the original order reflects the time they are added, a nice to have implicit met
 think how to make todos comprehensive.
 
 wbs is too formal and inefficient. i guess it's just a problem of taxonomy. just categorize. by role, maybe.
+
+also, **it's better to plan first.**
+
+it's obvious. but, actually, there are two ways, top down and bottom up. sometimes yk you will need this so you make it anyway. it's reasonable. but, the problem is, you have to figure out what to do next, or how to adapt to the invisible constraints. it's different when you are busy or relaxed. both have benefits. but, i mean,
+
+it's better to plan ahead, to write down what you know in one go. as long as you know. it's not wrong to plan everything ahead i mean.
+
+---
 
 

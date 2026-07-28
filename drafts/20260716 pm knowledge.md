@@ -1,6 +1,6 @@
 <!-- it would definitely be specific. it would be futile try to just learn from examples. but it might be simple to solve. just think, decide, make the tradeoffs. -->
 
-# pm scope management
+# (?) pm scope management
 
 **Project Scope Management** is <mark>the practice of defining, documenting, and controlling exactly what is included in a project—and critically, what is<span> </span><strong>excluded</strong></mark>. Its primary goal is to ensure the project team completes all the required work necessary to finish the project successfully without wasting resources on unnecessary tasks (a risk known as "scope creep"). [link](https://www.youtube.com/watch?v=lBRFP9Dy8JU)
 
@@ -952,7 +952,7 @@ If you want to build a WBS for your software project using this style, let me kn
   \
   GitHub
 
-# why is linear created
+# (?) why is linear created
 
 July 17, 2026
 
@@ -1289,7 +1289,7 @@ If you want to map out a board for your current iteration, let me know:
 
 I can structure a copy-pasteable text layout to help you organize your upcoming sprint.
 
-# how to write wbs in pm
+# (?) how to write wbs in pm
 
 To write a Work Breakdown Structure (WBS) in project management, you must <mark><strong>decompose your entire project scope into smaller, deliverable-oriented components</strong></mark>. A true WBS focuses on tangible outputs or deliverables, using nouns and adjectives rather than action verbs. [link](https://www.pmi.org/learning/library/work-breakdown-structure-practice-standard-4591)
 
@@ -3490,7 +3490,7 @@ If you are looking for a local, hands-on training option, you can find intensive
 [Rich media excluded from paste]
 ```
 
-# (d) . thinking
+# (d) . thinking: google ai mode quiz feature
 
 it starts a new page. it's not a new tab. idk where the original thread is, maybe in the history.
 
