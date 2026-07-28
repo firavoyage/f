@@ -47795,6 +47795,8 @@ things have changed these years. not much. but everywhere.
 
 18 00 play idv. turn on match replay.
 
+21 20 play idv. disable afterparty invisible spectation.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->

@@ -551,5 +551,17 @@ better to use a pl yk for flow control. (magic, fork, subsection, ...)
 
 ---
 
+about routes, i will support /shortcuts. why not.
+
+but it doesnt have to be a page. (btw, you couldnt share a link, which is both shortcuts manpage and a tool.)
+
+for settings. it would be structured. it can be
+
+- flag (checkbox/toggle)
+- select
+- number input (text inc dec or slide)
+- text input
+
+i would have a quick action panel, like vscode ctrl (shift) p.
 
 
