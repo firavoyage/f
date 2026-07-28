@@ -47797,6 +47797,12 @@ things have changed these years. not much. but everywhere.
 
 21 20 play idv. disable afterparty invisible spectation.
 
+29
+
+00 20 watch funshiki stream, on sr fate stay night event.
+
+azuma seren plays some "arg" on miyeji.cn. everything, incl. the nav page and games, are typically vibed, on... her birthday?
+
 
 
 <!-- be explicit and organized. focus and timebox. -->

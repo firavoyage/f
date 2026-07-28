@@ -580,5 +580,12 @@ there are not so many tools here. write extension in js instead.
 
 i can also research cyberchef alternatives.
 
+29
+
+00 40 polish global state lib.
+
+narrow path from all strings to keyof state.
+
+revise snippets.
 
 

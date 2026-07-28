@@ -89,7 +89,8 @@ ref:
   "deconstruct array const": {
     "prefix": "da",
     "body": [
-      "const [${1:name}, ${2:set_}${1:name}] = ${0:use_}"
+      "const [${1:name}, set_${1:name}] = use_${0:global}"
+      // "const [${1:name}, ${2:set_}${1:name}] = use_${0:global}"
     ],
   },
   "export const": {
@@ -557,7 +558,7 @@ ref:
       "ugs",
     ],
     "body": [
-      "export const use_${1} = state(${0})",
+      "export const use_${1:global} = state(${0})",
     ],
   },
 }
