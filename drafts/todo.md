@@ -715,16 +715,6 @@ You have your design. You should hold the definitive power in your hands.
 
 ---
 
-app: tools
-
-Color contrast.
-
-Base 64.
-
-Adwaita
-
----
-
 all: rhetoric fallacies
 
 list. explanation.
@@ -732,11 +722,5 @@ list. explanation.
 memes.
 
 it can be like a simple dict.
-
----
-
-tool: unicode and emojis.
-
-aliases. synonyms. vector semantic search.
 
 ---
