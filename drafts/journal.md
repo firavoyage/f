@@ -47793,7 +47793,7 @@ things have changed these years. not much. but everywhere.
 
 17 20 watch `When 1800's Fight Back!! | Chess Rating Climb 1820 Rapid ELO`. (18 00)
 
-18 00 play idv.
+18 00 play idv. turn on match replay.
 
 
 
