@@ -101,7 +101,7 @@ export function state<T extends NonFunction>(initial: T, { persist }: { persist?
     subs.add(listener)
   }
 
-  function result(path?: string) {
+  function result(path?: string & keyof T) {
     const update = use_update()
 
     useEffect(() => {
