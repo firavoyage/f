@@ -498,4 +498,27 @@ ok now let's try to gain some inspirations.
 
 ixd: search. you can search through the sidebar items. it would be a prop.
 
+<!-- the tab navigation doesnt work so well. you can easy be trapped into nowhere. -->
 
+you have favorites. a global state.
+
+<!-- well the ix doesnt work. you can double click a sidebar item, or drag it into the recipe. but not single click it. -->
+
+<!-- well, it's just legacy. no native system dark mode. fake md. cluttered irrelevant status bar items. the window scrolls, rather than the settings popup. it's known. -->
+
+let's be focused on the purpose, the list of tools, rather than their ux flaws.
+
+- url decode <!-- e.g. %3d becomes = -->
+- regex (the args are defined separately from inputs, on the recipe)
+
+shannon entropy is impressive. it's an example of rendered output. though i might not include this. why do i have to know how random sth is. i can document the extension methods, and let llms generate everything though.
+
+fork is weird. it's literally a loop. input must be string. so you fork them by a separator like newline. then you decode base64 for each, and it would be joined. it's not quite a tool i mean. i think you would be able to write logics. like, input split newline map base64 decode join newline, instead. you should not invent a new lang.
+
+magic is fun. dont know if it would be really practically used.
+
+one thing i just noticed, is, it shows a desc of each sidebar item on the right, no delay. <!-- well, it's linguistically inconsistent. "Converts the data from an ordinal integer array back into its raw form." "Convert from IEEE754 Floating Point Numbers". --> there can be an example and/or a reference (e.g. wikipedia).
+
+it does have both json to yaml and yaml to json. it's not quite intuitive yk. it can be json toml yaml csv. but you have to chain yaml to json to csv, otherwise it wouldnt be supported.
+
+when you add 
