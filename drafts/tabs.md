@@ -100,7 +100,7 @@ hn https://news.ycombinator.com/
 
 chessvibes rating climb
 
-https://www.youtube.com/watch?v=CBFNui8jPVQ&list=PLp7SLTJhX1u6zKT5IfRVmcVs1U1C3eHb5&index=39
+https://www.youtube.com/watch?v=CBFNui8jPVQ&list=PLp7SLTJhX1u6zKT5IfRVmcVs1U1C3eHb5&index=40
 
 https://www.youtube.com/playlist?list=PLp7SLTJhX1u6zKT5IfRVmcVs1U1C3eHb5&index=38
 
