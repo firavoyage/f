@@ -449,4 +449,53 @@ false assumption: sibling means either backward or forward.
 
 well, css syntax highlighting is quirky.
 
+20 20 research cyberchef. think about features. design the routing and all app states
+
+**i should write down my thoughts. otherwise i would be repeating the same decisions, trying to memorize.**
+
+**in serenity <!-- or day dreams -->, i might dive deep and gain insights, but i might not think broad enough.**
+
+<!-- no need to timebox this btw. but i would generally try to do it fast. at least to make time meaningfully spent. -->
+
+---
+
+think about features.
+
+- what tools would be available
+- what routes would be available
+- what would ia look like
+- how to design the ixd, or taxonomy, for the related ones (e.g. json yaml toml xml)
+
+it's easy. it's known that many devs start their first projects as todo list, tool box, nav page, or personal blog.
+
+i do have some ideas. let's aggregate them. <!-- now i have a new one. typo fixer. not necessarily typos. just when you mispell some words. i guess it's trivial to have a wordnet in browser memory. or maybe i can make it self hosted. -->
+
+where are they. todo? notes? maybe.
+
+well it doesnt seem to be inside tools/todo. not inside humility aw.
+
+ok i see. drafts/todo.
+
+---
+
+tools
+
+- planned
+  - maimai
+  - color contrast
+  - json yaml toml
+  - base64
+  - unicode and emojis. aliases. synonyms. vector semantic search. <!-- it doesnt have to be a converter. if you feel it would be a tool, then it is a tool. -->
+  - dict (auto correct, string distance)
+  - typo check
+  - word counter
+
+---
+
+/home/fira/Downloads/CyberChef/CyberChef_v11.0.0.html
+
+ok now let's try to gain some inspirations.
+
+ixd: search. you can search through the sidebar items. it would be a prop.
+
 

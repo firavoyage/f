@@ -44,10 +44,6 @@ design params and return of each component
 
 ---
 
-design the routing and all app states
-
----
-
 have server side features like ffmpeg converter
 
 out of scope.
@@ -63,12 +59,6 @@ it must be able to run locally. but it does not need pwa to do so.
 you could install it. but it does not require pwa either.
 
 and pwa itself is of inconsistent compatibility.
-
----
-
-research cyberchef
-
-/home/fira/Downloads/CyberChef/CyberChef_v11.0.0.html
 
 ---
 
@@ -93,6 +83,3 @@ sidebar collapse. settings. theme. sidebar taxonomy pref. tool view pref.
 decide to make text selectability opt in.
 
 ---
-
-
-
