@@ -86,4 +86,34 @@ decide to make text selectability opt in.
 
 research encryption methods. pick and include what matters.
 
+---
+
+research cyberchef alternatives
+
+it should be simple. maybe it would not be even worth the time. take a look. and leave.
+
+---
+
+decide whether, or how to resize layout.
+
+---
+
+organize todos.
+
+it should be more comprehensive. it should be ordered.
+
+even if they all fall into the backlog category on kanban, they are not the same.
+
+**they have priority and dependency.**
+
+<!-- i didnt include importance. i have moscow labels for them. and roles (e.g. plan, research, visual design, archi design, implement), i think, are already reflected by the priority. -->
+
+the original order reflects the time they are added, a nice to have implicit metadata, which doesnt mean anything.
+
+---
+
+think how to make todos comprehensive.
+
+wbs is too formal and inefficient. i guess it's just a problem of taxonomy. just categorize. by role, maybe.
+
 
