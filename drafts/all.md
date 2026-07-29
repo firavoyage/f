@@ -855,6 +855,7 @@ humility:
 - research chatgpt sol dgg math
 - research google ai mode content filter and actual system prompt
 - research sillytavern characterai
+- research google ai mode data visualization matplotlib
 
 legacy:
 
