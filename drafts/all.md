@@ -854,7 +854,7 @@ humility:
 - research google ai mode context stripping
 - research chatgpt sol dgg math
 - research google ai mode content filter and actual system prompt
-- research sillytavern
+- research sillytavern characterai
 
 legacy:
 

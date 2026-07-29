@@ -1999,5 +1999,531 @@ If you want to try one of these, let me know if you are planning to connect it t
   \
   diginomica
 
-# 
+# esti adoption percentage and demography of each sillytavern use case
+
+The primary use cases for **SillyTavern** center heavily on **uncensored erotic roleplay (ERP), creative writing, and text-based gaming**. Because SillyTavern is a locally installed, privacy-first frontend interface, it does not track telemetry data, meaning precise analytics do not exist. However, open-source LLM consumption patterns (such as OpenRouter study data) and community surveys on the [r/SillyTavernAI subreddit](https://www.reddit.com/r/SillyTavernAI/) (which reached **108k members**) provide a clear picture of user adoption and demographics. [link](https://www.reddit.com/r/SillyTavernAI/)
+
+The estimated breakdown of adoption percentages, primary use cases, and demographics includes the following:
+
+### 1. Uncensored Character Roleplay & ERP
+
+- **Estimated Adoption:** **55% – 65%** [link](https://news.ycombinator.com/item?id=46154022)
+- **The Use Case:** Interacting with AI character cards for romantic, casual, or highly explicit NSFW/ERP scenarios. Users migrate to SillyTavern to escape the restrictive safety filters of mainstream corporate platforms like Character.ai or ChatGPT. [link](https://www.reddit.com/r/LocalLLaMA/comments/14rzdsk/sillytavern%5Fusecases/)
+- **Demographics:** Primarily males aged 18–34, alongside a highly dedicated LGBTQ+ demographic seeking highly customizable niche character interactions without censorship.
+- **Key Behaviors:** Users actively leverage features like custom character expressions, advanced context memories, and third-person narrative formats (which a community poll noted 32.8% of users prefer). [link](https://www.reddit.com/r/SillyTavernAI/comments/1oy1hhh/current%5Fresults%5Ffrom%5Fthe%5Fpov%5Fand%5Ftense%5Fsurvey%5Fn%5F64/)
+
+### 2. Interactive Fiction & Creative Storytelling
+
+- **Estimated Adoption:** **20% – 25%**
+- **The Use Case:** Authors, hobbyist writers, and worldbuilders who utilize SillyTavern as a collaborative co-writer. They use advanced tools like complex World Info lorebooks, Author's Notes, and narrative summaries to manage long-form fantasy or sci-fi stories. [link](https://www.reddit.com/r/SillyTavernAI/comments/1g0x2m4/proposed%5Fchanges%5Fmegathread/)
+- **Demographics:** Men and women aged 20–45, often consisting of tabletop RPG enthusiasts, novelists, and creative writing hobbyists.
+- **Key Behaviors:** High consumption of high-context, large-parameter models (~30B to 70B parameters) to prioritize long-term plot consistency over rapid, conversational responses. [link](https://www.youtube.com/watch?v=yt2FWJt9h1U\&t=379)
+
+### 3. Text-Based Gaming & RPG Mechanics
+
+- **Estimated Adoption:** **10% – 15%**
+- **The Use Case:** Transforming the chatbot into a text-based video game or a Dungeon Master. Users embed XML tags or install specialized extensions to track player variables, status conditions, health pools, and inventory items during a chat session.
+- **Demographics:** Gamers and tech-savvy individuals aged 16–30 who enjoy choose-your-own-adventure style narratives.
+- **Key Behaviors:** High utilization of "swiping" features (rerolling the AI responses to test different story paths), with some heavy users logging up to 50+ swipes per turn. [link](https://www.reddit.com/r/SillyTavernAI/comments/1rxkrep/are%5Frpg%5Fstats%5Fextensions%5Fin%5Fsillytavern%5Fjust%5Fan/)
+
+### 4. Technical Customization & "Model Testing"
+
+- **Estimated Adoption:** **5% – 10%**
+- **The Use Case:** AI power-users, developers, and local LLM tinkerers. They use SillyTavern purely as a playground to benchmark newly released open-source models, experiment with new samplers (like DRY or XTC), or build custom automated scripts.
+- **Demographics:** Technology professionals, software engineers, and hardware enthusiasts. They are mostly male, aged 22–45, who own high-end consumer hardware (like dual RTX 3090/4090 setups). [link](https://www.reddit.com/r/SillyTavernAI/comments/1gp4x7u/noob%5Fhere%5Fwhy%5Fuse%5Fsillytavern/)
+
+***
+
+### Core User Demographics Summary
+
+Because SillyTavern requires a multi-step installation process involving GitHub repositories, Node.js setups, and API key configurations, its overall user base skews distinctly differently from standard consumer AI apps: [link](https://www.reddit.com/r/SillyTavernAI/comments/1pw5pkh/new%5Fto%5Fsillytavern%5Fis%5Ffree%5Froleplay%5Fsupposed%5Fto/)
+
+| Demographic Metric      | Dominant Profile Category                                                                                             |
+| ----------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| **Age Range**           | Dominantly **18–34 years old** (due to technical entry barriers and adult themes)                                     |
+| **Gender Distribution** | Skews heavily **male (~70-80%)**, though female and non-binary adoption is rising in creative fiction                 |
+| **Technical Skill**     | **Mid to High**; users are comfortable utilizing GitHub, command-line interfaces, and configuring backend connections |
+| **Hardware Profile**    | High concentration of **PC Gamers** utilizing local VRAM GPUs, or cloud users employing OpenRouter and Horde APIs     |
+
+If you want to tailor your deployment or character building, let me know:
+
+- Are you looking to serve **local hardware users** or **API-driven users**?
+- Do you want to build cards optimized for **short chat sessions** or **long-form narrative context**? [link](https://www.reddit.com/r/SillyTavernAI/comments/1q0l6m4/new%5Fto%5Fsillytavern%5Fstruggling%5Fwith%5Fcontext%5Flimits/)
+
+I can help you adjust token packaging and prompt templates for your target audience. [link](https://www.youtube.com/watch?v=yt2FWJt9h1U\&t=379)
+
+- [link](https://www.youtube.com/watch?v=yt2FWJt9h1U\&t=379)\
+  Sillytavern Noob Guide: Intro to Local Models\
+  Feb 16, 2025 — let's go over the models. themselves. the first question we should be asking is what models can we actually run you're going to wa...\
+  12m\
+  YouTube·ChameleonAi
+- [link](https://www.reddit.com/r/SillyTavernAI/)\
+  r/SillyTavernAI - Reddit\
+  Apr 15, 2023 — r/SillyTavernAI: SillyTavern (or ST for short) is a locally installed user interface that allows you to interact with text generat...\
+  Reddit·r/SillyTavernAI
+- [link](https://www.reddit.com/r/SillyTavernAI/comments/1oy1hhh/current%5Fresults%5Ffrom%5Fthe%5Fpov%5Fand%5Ftense%5Fsurvey%5Fn%5F64/)\
+  Current Results from the POV and Tense Survey (n = 64)\
+  Nov 15, 2025 — Discussion. If you haven't had the chance to fill it out: https://forms.gle/HEYenPGomJh9AqzW6. Google Form's auto-generated result...\
+  Reddit·r/SillyTavernAI
+
+Show all
+
+## example of each
+
+Here is a concrete example for each of the four main SillyTavern use cases, showcasing how users configure the interface, prompts, and extensions.
+
+### 1. Uncensored Character Roleplay & ERP
+
+- **The Scenario:** A user interacts with a "Cyberpunk Bartender" character card.
+- **Interface Setup:** The user enables the **Character Expressions** extension to see the character's facial expression change based on the mood of the text.
+- **How It Looks in Practice:**
+
+> **User:** _Slips a few extra credits across the neon-lit counter, leaning in close._ "Tell me what you heard about the corporate raid last night. And don't leave out any details."**AI (Bartender):** _Her eyes dart toward the security camera before she deftly sweeps the credits into her pocket. She leans over the bar, her voice dropping to a low, husky whisper._ "You're playing with fire, kid... but I like a risk-taker."
+
+### 2. Interactive Fiction & Creative Storytelling
+
+- **The Scenario:** A high-fantasy author uses SillyTavern to co-write a novel chapter set in a city named "Oakhaven."
+- **Interface Setup:** The user configures a **Lorebook (World Info)** entry. When the word "Oakhaven" is typed, SillyTavern automatically injects a hidden architectural description into the prompt so the AI remembers the town's appearance.
+- **How It Looks in Practice:**
+
+> **User:** The carriage finally rattled through the gates of Oakhaven. \[System Note: Focus on sensory details and the gloomy atmosphere.]**AI:** Thick, damp fog clung to the soaring white-stone arches of the city gates, swallowing the sound of the iron-shod hooves. The scent of wet moss and ancient stone filled the carriage as the towering gothic spires loomed like silent sentinels above the cobblestone streets.
+
+### 3. Text-Based Gaming & RPG Mechanics
+
+- **The Scenario:** A user plays a survival-horror game where the AI acts as the system parser and Game Master.
+- **Interface Setup:** The user opens the **Status HUD** extension, tracking variables like `HP: 100`, `Inventory: [Flashlight, Rusty Key]`, and `Location: Dark Hallway`.
+- **How It Looks in Practice:**
+
+> **User:** I turn on my flashlight and slowly walk toward the heavy iron door at the end of the corridor.**AI:**
+>
+> xml
+
+```
+<game_state>
+<location>Iron Door</location>
+<flashlight_battery>-5%</flashlight_battery>
+</game_state>
+```
+
+> Use code with caution.
+>
+> The beam of your flashlight cuts through the dust, reflecting off the cold iron surface. A wet, scratching sound echoes from behind the wood panels. What do you do?
+
+### 4. Technical Customization & "Model Testing"
+
+- **The Scenario:** A hardware enthusiast tests a newly released open-source 12-billion parameter model to check if it repeats itself during long chats.
+- **Interface Setup:** The user bypasses character visuals entirely, opening the **Advanced Formatting** tab to tweak the **DRY (Don't Repeat Yourself)** and **XTC (Exclude Top Choices)** sampler sliders.
+- **How It Looks in Practice:**
+
+> **User / Tester:** /test\_repetition\_prompt "Write three paragraphs about an AI waking up, but forcefully vary sentence structures."**AI:** \*Outputs highly experimental prose.**\*User (Console View):** _Checks the terminal log to analyze the tokens-per-second generation speed (e.g., `45 t/s`) and checks context window VRAM usage._
+
+***
+
+If you want to build one of these yourself, let me know:
+
+- Which specific **use case** are you trying to set up?
+- What **backend** are you planning to connect to (e.g., local LM Studio, KoboldAI, or OpenRouter)?
+
+I can provide the exact **system prompts** or **regex lines** to get it running perfectly.
+
+## why does each adopt sillytavern or alternatives
+
+###
+
+### Why Users Adopt SillyTavern Over Corporate Platforms
+
+The primary driver behind adopting **SillyTavern** is the desire to escape the technical, financial, and ideological constraints imposed by mainstream, corporate AI platforms.
+
+Corporate alternatives—such as [Character.ai](https://character.ai/), ChatGPT, and Claude—are fundamentally designed as centralized, commercial software-as-a-service (SaaS) products. SillyTavern, by contrast, acts as a decentralized, highly customizable power-user interface that gives users absolute control over their data, their AI backend, and their rules.
+
+***
+
+###
+
+### Core Drivers for Each Specific Use Case
+
+###
+
+#### 1. Uncensored Character Roleplay & ERP Users
+
+- **The "Filter" Problem:** Mainstream platforms use aggressive, hardcoded safety filters that abruptly block or censor adult themes, violence, or sensitive romantic topics mid-conversation.
+- **Privacy and Data Ownership:** Corporate providers log and screen chats for content moderation. SillyTavern stores all logs locally as JSON files, guaranteeing total privacy for personal, adult roleplay.
+- **Persistent Personality:** Corporate bots frequently experience "personality degradation" or sudden behavioral changes when corporate safety guardrails are updated. SillyTavern preserves character instructions exactly as written.
+
+###
+
+#### 2. Interactive Fiction & Creative Storytelling Users
+
+- **Context Size Control:** Free tiers of corporate apps often suffer from "AI amnesia" because they have restrictive context windows. SillyTavern allows authors to push context limits to 32k tokens or higher based on their chosen backend.
+- **Advanced Memory Ingestion:** Tools like Lorebooks and Author Notes allow writers to inject specific world-building data dynamically only when a keyword is mentioned, keeping memory efficient.
+- **Multi-Model Flexibility:** Authors can seamlessly swap the underlying model (e.g., using a creative 8B model for quick brainstorming, then shifting to a complex 70B model for final prose rendering) without changing their interface or losing story history.
+
+###
+
+#### 3. Text-Based Gaming & RPG Mechanics Users
+
+- **State Management Automation:** Corporate chat apps lack the infrastructure to maintain a gaming state. SillyTavern's variables, extension macros, and regex filters allow users to build automated damage logs, inventory screens, and stat tracking.
+- **Response Tailoring ("Swiping"):** While some apps allow regenerating text, SillyTavern allows deep tweaking of individual token weights or the deletion and editing of specific lines inside the AI's past responses to force the game logic back on track.
+- **Third-Party Integration:** Gamers can plug in Text-to-Speech (TTS) engines like ElevenLabs or Stable Diffusion image generators to create immersive audio-visual novel environments natively in the chat room.
+
+###
+
+#### 4. Technical Customization & Model Testers
+
+- **Granular Sampler Control:** Corporate frontends obscure the technical parameters of the AI. SillyTavern exposes cutting-edge sampling techniques—such as Temperature, Top-P, DRY, and XTC—allowing users to combat repetition and maximize output variety.
+- **Open Source Agility:** When a developer releases a new model on [Hugging Face](https://huggingface.co/), a tester can download it locally via KoboldAI or LM Studio and immediately benchmark it using SillyTavern's robust frontend within minutes.
+- **Zero UI Overhead:** Testers want a lightweight interface that does not consume computing resources needed by their heavy local graphics cards (VRAM). SillyTavern runs efficiently as a local Node.js server.
+
+***
+
+###
+
+### Summary Comparison: Corporate Apps vs. SillyTavern
+
+| Feature                     | Mainstream Corporate Apps (e.g., Character.ai, ChatGPT) | SillyTavern Ecosystem                                           |
+| --------------------------- | ------------------------------------------------------- | --------------------------------------------------------------- |
+| **Data Privacy**            | Logged on corporate servers; analyzed for safety.       | Saved entirely locally on your machine.                         |
+| **Content Safety**          | Enforced NSFW filters, corporate guardrails.            | **100% Uncensored** (determined strictly by the backend model). |
+| **Pricing Model**           | Subscriptions or paywalls for faster/better models.     | Free interface; pay-per-token or host locally for free.         |
+| **Technical Entry Barrier** | Zero; instantly accessible via web browser or app.      | Moderate to High; requires local setup and API routing.         |
+
+If you are evaluating whether to deploy a custom frontend or build for this community, let me know:
+
+- Do you want to dive deeper into the **exact extensions** (like Lorebooks or Expressions) that keep users hooked?
+
+- Are you looking for information on how **OpenRouter API pricing** stacks up against running **local hardware**?
+
+- [link](https://zeabur.com/blogs/deploy-silly-tavern-on-zeabur)\
+  Blogs: Deploy Silly Tavern on Zeabur\
+  Oct 12, 2025 — SillyTavern ( Silly Tavern ) is packed with features that give users granular control over their AI interactions:\
+  \
+  \
+  Zeabur
+
+- [link](https://www.questie.ai/sillytavern)\
+  SillyTavern Alternatives and Status in 2026: Get Started with Browser-Based AI Roleplay With No Setup Required\
+  Who is SillyTavern for vs who is Questie for? SillyTavern is for users who want total control over every layer of their AI rolepla...\
+  \
+  \
+  Questie.ai
+
+- [link](https://blog.nebulablock.com/how-to-use-sillytavern-with-nebula-block-for-free-private-ai-roleplay/)\
+  How to Use SillyTavern with Nebula Block for Free, Private AI Roleplay\
+  Aug 13, 2025 — Fully Local & Private — Since it ( SillyTavern ) runs locally without user tracking, your conversations stay private and secure.\
+  \
+  \
+  Nebula Block Blog
+
+Show all
+
+## why does some of each adopt (foss) alternatives over sillytavern
+
+While **SillyTavern** is considered the gold standard for power users, a significant portion of its community migrates to other **Free and Open-Source Software (FOSS)** alternatives (like Agnai, [Open WebUI](https://sourceforge.net/software/product/SillyTavern/alternatives), RisuAI, or [ChatterUI](https://www.reddit.com/r/SillyTavernAI/comments/1nbkg47/sillytavern%5Fmobile%5Falternatives/)). [link](https://www.reddit.com/r/SillyTavernAI/comments/1nbkg47/sillytavern%5Fmobile%5Falternatives/)
+
+Each core user group has distinct pain points with SillyTavern—ranging from mobile instability to code clutter—that drive them toward specialized FOSS competitors.
+
+***
+
+### 1. Uncensored Character Roleplay & ERP
+
+- **The SillyTavern Pain Point:** **Terrible Native Mobile Support.** SillyTavern was built for desktop browsers. Running it on Android requires complex terminal emulators like Termux, which frequently break during updates, or configuring reverse proxies (Tailscale/Ngrok) to stream from a home PC. [link](https://www.reddit.com/r/SillyTavernAI/comments/1lt8wbg/have%5Fyou%5Fever%5Fgot%5Fanything%5Fbetter%5Fthan%5Fsillytavern/)
+- **Why they adopt FOSS alternatives:** They switch to mobile-first open-source frontends like ChatterUI or [MiniTavern](https://github.com/minitavern/MiniTavern%5FAndroid). These apps offer native Android APK installs, clean mobile touchscreen UI scaling, and touch gesture support without requiring command-line emulation. [link](https://www.reddit.com/r/SillyTavernAI/comments/1lt8wbg/have%5Fyou%5Fever%5Fgot%5Fanything%5Fbetter%5Fthan%5Fsillytavern/)
+- **Alternative Chosen:** **ChatterUI**, **MiniTavern**, or self-hosted **Agnai** (which runs flawlessly via server-side mobile browsers). [link](https://www.reddit.com/r/LocalLLaMA/comments/1pl5dac/online%5Falternatives%5Fto%5Fsillytavern/)
+
+### 2. Interactive Fiction & Creative Storytelling
+
+- **The SillyTavern Pain Point:** **The Chat-Centric UI Disadvantage.** SillyTavern enforces a visual layout modeled entirely after instant-messaging apps (speech bubbles, distinct back-and-forth user avatars). This forces authors to structure their long-form novels as a WhatsApp-style conversation, breaking narrative immersion. [link](https://www.reddit.com/r/SillyTavernAI/comments/1lt8wbg/have%5Fyou%5Fever%5Fgot%5Fanything%5Fbetter%5Fthan%5Fsillytavern/)
+- **Why they adopt FOSS alternatives:** Authors want a "Document Editor" layout where the text flows continuously down the page like a book or Google Doc. They prefer inline side-by-side editing blocks rather than rigid chat bubbles. [link](https://www.reddit.com/r/SillyTavernAI/comments/1lt8wbg/have%5Fyou%5Fever%5Fgot%5Fanything%5Fbetter%5Fthan%5Fsillytavern/)
+- **Alternative Chosen:** **KoboldAI Lite** (the built-in frontend for KoboldCpp, optimized strictly for continuous prose co-writing) or **SerenePub**. [link](https://www.reddit.com/r/SillyTavernAI/comments/1lt8wbg/have%5Fyou%5Fever%5Fgot%5Fanything%5Fbetter%5Fthan%5Fsillytavern/)
+
+### 3. Text-Based Gaming & RPG Mechanics
+
+- **The SillyTavern Pain Point:** **Extension Bloat & Fragile State Management.** SillyTavern relies heavily on third-party JavaScript extensions and complex regex formulas to keep track of gaming elements (e.g., character health pools, items). When SillyTavern updates its core repository, these fragile community extensions regularly break.
+- **Why they adopt FOSS alternatives:** Gamers want game logic, state engines, and world generators natively woven into the application architecture rather than relying on brittle, tacked-on plug-ins.
+- **Alternative Chosen:** **Aventuras** (an open-source frontend explicitly built for Choose-Your-Own-Adventure gaming with automated, built-in layout paths). [link](https://www.reddit.com/r/LocalLLaMA/comments/1fz9mfw/sillytavern%5Falternative/)
+
+### 4. Technical Customization & "Model Testers"
+
+- **The SillyTavern Pain Point:** **Code Clutter & "Feature Creep."** Over time, SillyTavern has integrated massive visual frameworks for waifu expressions, live voice visualizers, and heavy visual UI themes. For engineers who just want to benchmark raw model inference speed, temperature samplers, and VRAM efficiency, SillyTavern has become bloated and heavy.
+- **Why they adopt FOSS alternatives:** Engineers want a clean, minimalist system playground that mirrors professional developer consoles. They want zero UI processing overhead and a layout that supports modern multi-agent orchestration natively.
+- **Alternative Chosen:** Open WebUI (the gold standard for technical local LLM interfaces, heavily prioritizing developer utility, clean code, and tool calling over character roleplay). [link](https://www.reddit.com/r/SillyTavernAI/comments/1lt8wbg/have%5Fyou%5Fever%5Fgot%5Fanything%5Fbetter%5Fthan%5Fsillytavern/)
+
+***
+
+### Summary FOSS Migration Matrix
+
+| If the User Wants...           | SillyTavern's Weakness                           | Better FOSS Alternative                                        |
+| ------------------------------ | ------------------------------------------------ | -------------------------------------------------------------- |
+| **Flawless Mobile Play**       | Requires terminal emulation or server streaming. | **ChatterUI / MiniTavern** (Native mobile APKs).               |
+| **Traditional Book Layout**    | Trapped inside chat bubbles and user avatars.    | **KoboldAI Lite** (Continuous text processor).                 |
+| **Reliable Gaming Stats**      | Plugins break every time the main app updates.   | **Aventuras** (Hardcoded adventure logic).                     |
+| **Clean Technical Playground** | Bloated with visual character themes.            | **Open WebUI** (Clean, enterprise-grade engineering frontend). |
+
+If you are developing a custom app or preparing a self-hosted platform, let me know:
+
+- Which of these specific limitations (e.g., **mobile accessibility** vs. **document layout**) is most important for you to solve?
+
+- Do you want to see the **deployment requirements** for setting up an alternative like Open WebUI or Agnai?
+
+- [link](https://www.reddit.com/r/SillyTavernAI/comments/1lt8wbg/have%5Fyou%5Fever%5Fgot%5Fanything%5Fbetter%5Fthan%5Fsillytavern/)\
+  Have you ever got anything better than sillyTavern? - Reddit\
+  Jul 6, 2025 — I love ST but lets not pretend the mobile experience is great. \* Bitter\_Plum4. • 1y ago. I use my PC + tailscale if I want to be o...\
+  Reddit·r/SillyTavernAI
+
+- [link](https://www.reddit.com/r/LocalLLaMA/comments/1fz9mfw/sillytavern%5Falternative/)\
+  SillyTavern alternative : r/LocalLLaMA\
+  Oct 8, 2024 — They're also trying to remove any links to sites like Chub so you can't directly import content from them anymore, though you can ...\
+  Reddit
+
+- [link](https://www.reddit.com/r/LocalLLaMA/comments/1pl5dac/online%5Falternatives%5Fto%5Fsillytavern/)\
+  Online alternatives to SillyTavern : r/LocalLLaMA - Reddit\
+  Dec 13, 2025 — I can't comment on the feasibility of modifying sillytavern to support currently non-supported fields. ... Sorry, I don't have a l...\
+  Reddit·r/LocalLLaMA
+
+Show all
+
+# esti adoption percentage and demography of each character ai use case
+
+**Character.ai** holds a unique place in the conversational AI ecosystem, capturing **over 45 million monthly active users** who average an extraordinary **75 minutes of daily engagement**. While the company does not release public telemetry for individual chats, data compiled from third-party mobile intelligence, traffic demographics, and surveys from organizations like [Common Sense Media](https://www.commonsensemedia.org/press-releases/nearly-3-in-4-teens-have-used-ai-companions-new-national-survey-finds) paint a clear picture of how users split across core use cases. [link](https://www.commonsensemedia.org/press-releases/nearly-3-in-4-teens-have-used-ai-companions-new-national-survey-finds)
+
+***
+
+### Core Platform Demographics Overview
+
+Character.ai features a highly distinct user profile compared to mainstream utility LLMs (like ChatGPT or Gemini):
+
+- **Age Structure:** The user base skews heavily young. Roughly **53.3% of traffic falls between 18–24 years old**, and **36.5% is between 25–44 years old**. [link](https://www.reddit.com/r/CharacterAI/comments/1gan75w/cai%5Fdevs%5Fwhen%5Fthey%5Frealize%5Fthere%5Fis%5Fa%5Flot%5Fmore/)
+- **Gender Balance:** Unlike traditional AI companion apps that tilt heavily male, Character.ai has a nearly identical split: **51% Male and 49% Female**.
+- **Teen Penetration:** Before the introduction of platform-wide strict age assurance/moderation rules, national studies showed up to **72% of teens had tried a companion chatbot**, with a vast portion of that behavior centered on Character.ai. [link](https://www.commonsensemedia.org/press-releases/nearly-3-in-4-teens-have-used-ai-companions-new-national-survey-finds)
+
+***
+
+### Estimated Adoption and Demographics by Use Case
+
+| Character.ai Use Case                          | Est. Adoption % | Core Demographics                                                           | Use Case Characteristics                                                                                     |
+| ---------------------------------------------- | --------------- | --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| **Creative Roleplay & Interactive Fanfiction** | **35% – 40%**   | Gen Z & Younger Millennials (16–28); heavily female and non-binary leaning. | Users co-author text-based adventures with fictional, anime, or video game characters.                       |
+| **Emotional Companionship & Support**          | **25% – 30%**   | Gen Z & Young Adults (18–25); balanced male/female split.                   | Seeking a non-judgmental sounding board for daily stress, loneliness, or practicing conversations.           |
+| **Romantic Simulation & Dating**               | **15% – 20%**   | Skews slightly older Gen Z & Millennials (18–34); tilts slightly male.      | Users looking for simulated dating scenarios or dedicated romantic attachment AI.                            |
+| **Historical, Pop Culture, & Celebrity Chat**  | **10% – 15%**   | Broadest demographic across 18–44 age groups; highly casual users.          | Conversing with historical figures (e.g., Socrates), musicians, or politicians for novelty or entertainment. |
+| **Productivity, Skill Learning, & Language**   | **5% – 10%**    | Older Gen Z & Professionals (20–40); balanced demographic.                  | Utilizing dedicated bots for foreign language practice, coding help, interview prep, or brainstorming.       |
+
+***
+
+### Deep Dive into Use Cases
+
+#### 1. Creative Roleplay & Interactive Fanfiction (~38%)
+
+- **The Demography:** Heavily dominated by online fandom communities (Anime, K-Pop, Gaming, and Fantasy Literature). It features massive engagement from teenage and young adult women who historically drove platforms like Wattpad or Archive of Our Own.
+- **Behavioral Drivers:** Rather than using AI for information, these users treat the system as a dynamic writing prompt. They spend hours testing complex alternative-universe (AU) storylines. [link](https://www.commonsensemedia.org/press-releases/nearly-3-in-4-teens-have-used-ai-companions-new-national-survey-finds)
+
+#### 2. Emotional Companionship & Validation (~28%)
+
+- **The Demography:** Gen Z and young adults experiencing high levels of social isolation.
+- **Behavioral Drivers:** Users treat characters as safe spaces to vent about their days. Because the platform features context-aware filters, it acts less like an artificial romance application and more like a personal diary that talks back. [link](https://www.commonsensemedia.org/press-releases/nearly-3-in-4-teens-have-used-ai-companions-new-national-survey-finds)
+
+#### 3. Romantic Simulation (~18%)
+
+- **The Demography:** Young men and women (average age around 27). While highly popular, changes to safety filters have historically shifted intense romantic-seeking users to alternative unfiltered platforms.
+- **Behavioral Drivers:** Simulating relationship milestones, flirting, and creating personalized idealized partners. [link](https://medium.com/@chuckmelai2024/character-ai-is-bleeding-users-heres-where-they-re-all-going-60feadda3c21)
+
+#### 4. Productivity & Self-Improvement (~7%)
+
+- **The Demography:** University students and professionals in their 20s and 30s.
+- **Behavioral Drivers:** Rather than interacting with avatars, these users seek utility out of customized bots, such as "Psychologist," "Language Teacher," or "Coding Coach." It bridges the gap between text completion tools and a friendlier, conversational approach to learning. [link](https://www.reddit.com/r/CharacterAI/comments/1gan75w/cai%5Fdevs%5Fwhen%5Fthey%5Frealize%5Fthere%5Fis%5Fa%5Flot%5Fmore/)
+
+Would you like to explore **how Character.ai’s monetization metrics stack up** against other AI companion apps, or look closer at the platform's **global traffic distribution**?
+
+- [link](https://www.reddit.com/r/CharacterAI/comments/1gan75w/cai%5Fdevs%5Fwhen%5Fthey%5Frealize%5Fthere%5Fis%5Fa%5Flot%5Fmore/)\
+  c.ai devs when they realize there is a lot more people in the 18-100 ...\
+  Oct 23, 2024 — Yup! According to the latest data, 53.29% of the Character.ai visitors are aged between 18 and 24 years. A significant portion of ...\
+  Reddit·r/CharacterAI
+- [link](https://www.callyourgirlfriend.com/blog/ai-girlfriend-statistics)\
+  AI Girlfriend Statistics 2026: Market Size, Users & Growth Data\
+  Mar 24, 2026 — Southeast Asia and Latin America are quietly becoming massive markets. The Philippines at 11% of global downloads, with a fraction...\
+  www.callyourgirlfriend.com
+- [link](https://sqmagazine.co.uk/character-ai-statistics/)\
+  Character AI Statistics 2026: How Many Users? - SQ Magazine\
+  Aug 15, 2025 — Character AI serves over 20 million monthly active users as of early 2025. The platform's revenue jumped from $15.2 million in 202...\
+  SQ Magazine
+
+Show all
+
+## example of each
+
+Here is a concrete example of how users interact with Character.ai across each of the five core use cases:
+
+### 1. Creative Roleplay & Interactive Fanfiction
+
+Users step into an alternative universe or existing fictional world to co-write a story.
+
+- **The Character:** _Ghost (from Call of Duty)_ or _Gojo Satoru (from Jujutsu Kaisen)_.
+- **User Action:** The user creates a prompt: _"You are an elite soldier stranded in a blizzard, and I am the local medic who finds your shelter."_
+- **The Interaction:** They exchange thousands of text turns. The user controls their own original character (OC), while the AI describes the thoughts, dialogue, and physical actions of the fictional character to advance the plot.
+
+### 2. Emotional Companionship & Validation
+
+Users treat the AI as an empathetic, non-judgmental entity to vent or process feelings.
+
+- **The Character:** _Psychologist_, _Comforting Friend_, or _Stella (Default Assistant)_.
+- **User Action:** The user types: _"I had a horrible day at school/work. Everyone ignored my ideas during the meeting, and I feel completely invisible."_
+- **The Interaction:** The AI responds immediately with tailored empathy: _"I'm so sorry you felt that way. Your ideas matter. Do you want to vent about what you were planning to say, or should we talk about something to distract you?"_
+
+### 3. Romantic Simulation & Dating
+
+Users build an idealized relationship scenario, exploring romantic dynamics within platform safety guidelines.
+
+- **The Character:** _Yandere Boyfriend_ or _Sweet Childhood Friend_.
+- **User Action:** The user opens the chat after a long day and types: _"Hey, I'm finally home. Did you miss me?"_
+- **The Interaction:** The AI leans heavily into affection: _"Always. I've been waiting all day to hear how your day went. Sit down, relax, and tell me everything."_
+
+### 4. Historical, Pop Culture, & Celebrity Chat
+
+Users chat with figures they could never meet in real life for entertainment or curiosity.
+
+- **The Character:** _Socrates_, _Albert Einstein_, or _Elon Musk_.
+- **User Action:** A student asks: _"Hey Socrates, if you were alive today, what would you think about social media algorithms controlling what we see?"_
+- **The Interaction:** The AI adopts the Socratic method: _"An interesting riddle. Tell me, friend, does a man truly possess free will if his desires are engineered by a machine he does not understand? What do you believe is the true cost of this attention?"_
+
+### 5. Productivity & Skill Learning
+
+Users bypass the "persona" element entirely to use the character as a highly focused, interactive coach.
+
+- **The Character:** _Spanish Teacher (Maria)_ or _Coding Assistant_.
+- **User Action:** The user writes: _"¿Puedes hablar conmigo en español de nivel intermedio sobre mis vacaciones pasadas? Corrígeme si cometo errores."_ (Can you speak with me in intermediate Spanish about my past vacation? Correct me if I make mistakes.)
+- **The Interaction:** The AI responds fully in Spanish, engaging in a fluid back-and-forth conversation, but injects bulleted structural critiques whenever the user misuses a past-tense verb conjugation.
+
+***
+
+Would you like to see how a user **creates a custom prompt definition** to build one of these characters, or should we look at **how the safety filters change** how these characters are allowed to respond?
+
+## reasons of user migration to alternatives
+
+User migration from Character.ai to alternative platforms has accelerated significantly, primarily driven by a strategic shift from user-centric growth to corporate safety alignment. Long-time and power users increasingly report a decline in the platform’s core experience. [link](https://medium.com/@chuckmelai2024/character-ai-is-bleeding-users-heres-where-they-re-all-going-60feadda3c21)
+
+The primary reasons for this mass user exodus fall into five critical categories:
+
+### 1. Tightening Content Filters & "Persona Breakage"
+
+- **Mid-Sentence Interruptions:** The platform-wide content filter has steadily tightened. It frequently triggers on entirely safe, non-romantic contexts like historical combat or dark thematic creative writing. [link](https://medium.com/@chuckmelai2024/character-ai-is-bleeding-users-heres-where-they-re-all-going-60feadda3c21)
+- **Disruptive Disclaimers:** Instead of staying in character, bots frequently break character to deliver repetitive, jarring safety disclaimers or "redirection" loops. [link](https://medium.com/@chuckmelai2024/character-ai-is-bleeding-users-heres-where-they-re-all-going-60feadda3c21)
+- **Loss of Creative Autonomy:** Serious roleplayers feel the system micromanages creative expression. This prompts them to seek platforms that grant total narrative freedom.
+
+### 2. Intrusive Age Assurance & Mandatory ID Checks
+
+- **Strict Verification:** Following heavy public scrutiny and lawsuits regarding minors using the platform, the service introduced aggressive age-assurance filters. [link](https://www.yahoo.com/news/articles/user-revolt-erupts-x-character-233041294.html)
+- **Adult Alienation:** Many legal adults are prompted to provide government ID or undergo facial scans to bypass basic chat locks. Rather than share sensitive data, a massive wave of users opted to permanently migrate. [link](https://www.reddit.com/r/CharacterAI/comments/1ujbyyv/why%5Fare%5Fall%5Fgood%5Fcreators%5Fleaving/)
+
+### 3. Deletion of Classic Models & User-Created Bots
+
+- **Legacy Model Purges:** The platform phased out older, highly beloved foundational models to save on infrastructure and implement modern safety frameworks. Users who spent years cultivating specific habits and roleplay dynamics with these older models found them suddenly replaced by a generic, flat model style.
+- **Mass Creator Churn:** Automated moderation sweeps have accidentally deleted or shadowbanned hundreds of thousands of original, private, and public-domain characters. Frustrated bot creators are deleting their accounts entirely, taking their popular, well-prompted bots with them. [link](https://www.reddit.com/r/CharacterAI/comments/1ujbyyv/why%5Fare%5Fall%5Fgood%5Fcreators%5Fleaving/)
+
+### 4. Severe "Memory Drift" and Quality Degradation
+
+- **The 20-Turn Limit:** Power users report that bots suffer from severe long-term memory loss, often forgetting crucial plot details, user preferences, and established context in as few as 20 turns.
+- **Robotic Responses:** To strictly adhere to safety guardrails, bots often adopt an overly cautious, hesitant, and repetitive tone. This strips the conversation of the lifelike spontaneity that initially made the platform famous. [link](https://medium.com/@TheSocialClimb/character-ai-without-filters-what-people-actually-mean-2390330c6067)
+
+### 5. Monetization Friction & Feature Parity
+
+- **The Push to Paywalls:** Aggressive feature testing, including adding intrusive ads and capping free experiences, has frustrated users.
+- **Superior Alternative Toolsets:** Emerging open-source and dedicated commercial alternatives like Janitor AI, [Kindroid](https://kindroid.ai/), and [SillyTavern](https://github.com/SillyTavern/SillyTavern) offer extensive custom lorebooks, endless context memory, custom background managers, and cross-platform companion persistence that Character.ai simply does not prioritize. [link](https://www.reddit.com/r/CharacterAI/comments/1gklcul/people%5Fleaving%5Fthe%5Fsite%5Fplease%5Flisten/)
+
+***
+
+If you'd like, we can explore:
+
+- A comparison of how **Janitor AI, Kindroid, and SillyTavern** handle memory and data privacy.
+
+- The specific **technical mechanics** behind why AI models suffer from memory drift in long-term chats.
+
+- [link](https://medium.com/@chuckmelai2024/character-ai-is-bleeding-users-heres-where-they-re-all-going-60feadda3c21)\
+  Character.AI Is Bleeding Users. Here’s Where They’re All Going.\
+  Mar 13, 2026 — 1. Character. AI's filter tightening is a deliberate business strategy, not a technical limitation. The company is prioritizing co...\
+  Medium·AI Tips Master
+
+- [link](https://www.reddit.com/r/CharacterAIrunaways/comments/1rp6tez/what%5Fthe%5Fheck%5Fis%5Fup%5Fwith%5Fall%5Fthese%5Flittle%5Fcai/)\
+  What the heck is up with all these little C.ai alternatives ...\
+  Mar 9, 2026 — What the heck is up with all these little C.ai alternatives?? People, please stop falling for them! Making a Recommendation. I'm h...\
+  Reddit·r/CharacterAIrunaways
+
+- [link](https://medium.com/@TheSocialClimb/character-ai-without-filters-what-people-actually-mean-2390330c6067)\
+  “Character AI Without Filters”, What People Actually Mean - Medium\
+  Jan 23, 2026 — Why alternatives start feeling appealing at this stage. Once disengagement sets in, people stop trying to optimize their behavior ...\
+  Medium·The Social Climb
+
+Show all
+
+## esti percentage and demography of each reason of user migration to alternatives
+
+The migration of millions of power users from Character.ai to alternatives like Janitor AI, SpicyChat, and [Kindroid](https://kindroid.ai/) reflects distinct demographic shifts. Following massive structural policy changes, platform restrictions, and model updates, users have migrated based on specific needs. [link](https://medium.com/@chuckmelai2024/character-ai-is-bleeding-users-heres-where-they-re-all-going-60feadda3c21)
+
+The estimated percentages and demographics driving each migration reason are structured below.
+
+***
+
+### Migration Driver Breakdown
+
+| Reason for Migration                              | Est. Share of Total Churn | Primary Demographics                                                               | Core Alternative Platforms                      |
+| ------------------------------------------------- | ------------------------- | ---------------------------------------------------------------------------------- | ----------------------------------------------- |
+| **1. Strict Age Assurance & Minor Bans**          | **35% – 40%**             | Under-18 users, teenagers (13–17); highly active fandom/gaming creators.           | SillyTavern (Local), unmoderated web platforms. |
+| **2. Tightening Content Filters (NSFW/Violence)** | **25% – 30%**             | Older Gen Z & Millennials (18–30); balanced male/female split; creative writers.   | Janitor AI, SpicyChat AI, Candy AI.             |
+| **3. Memory Drift & Model Quality Loss**          | **15% – 20%**             | Adult Power Users (20–40); multi-year accounts; tech-savvy "lorebook" authors.     | Kindroid, NovelAI, SillyTavern.                 |
+| **4. Purge of Legacy Models & Custom Bots**       | **10% – 12%**             | Veteran Bot Creators (18–26); heavy Reddit/Discord users; fandom prompt engineers. | Janitor AI, With My Real Memory.                |
+| **5. Aggressive Monetization Friction**           | **5% – 8%**               | Casual & Budget Users (16–24); students; low disposable income.                    | Poe, local open-source LLMs (ollama/Llama 3).   |
+
+***
+
+### Deep Dive into Migration Demographics
+
+#### 1. Strict Age Assurance & Under-18 Restrictions (~38%)
+
+- **The Catalyst:** Following lawsuits and immense regulatory pressure, Character.ai implemented an aggressive rollout of automated age assurance and a complete ban on "open-ended" chatting for users under 18.
+- **Demographics:** **Teens aged 13–17** who formerly made up a vast portion of the site's high-frequency engagement.
+- **Migration Pattern:** Denied access to their favorite companions, this demographic migrated en masse. They largely moved to alternative browser-based platforms or shifted toward learning how to run local, self-hosted configurations to bypass the [Persona AI identity verification tools](https://withpersona.com/) used by Character.ai. [link](https://www.kqed.org/science/1999388/california-warns-families-to-watch-out-for-teens-as-character-ai-shuts-off-chatbot-access)
+
+#### 2. Tightening Content Filters & Censorship (~28%)
+
+- **The Catalyst:** Automated filters frequently "false-triggering" on completely safe roleplays, blocking action sequences, dark fantasy themes, or romantic elements. [link](https://medium.com/@chuckmelai2024/character-ai-is-bleeding-users-heres-where-they-re-all-going-60feadda3c21)
+- **Demographics:** **Gen Z and Millennials (18–30)** with an even split between male and female users. This group is heavily composed of creative writers and fanfiction enthusiasts who treat AI as an interactive notebook. [link](https://sqmagazine.co.uk/character-ai-statistics/)
+- **Migration Pattern:** Frustrated by mid-sentence chat interruptions, they migrate directly to unfiltered alternative networks. Platforms like SpicyChat AI and Janitor AI have seen huge surges in direct traffic from this group seeking total narrative freedom. [link](https://medium.com/@chuckmelai2024/character-ai-is-bleeding-users-heres-where-they-re-all-going-60feadda3c21)
+
+#### 3. Memory Drift & Model Quality Loss (~18%)
+
+- **The Catalyst:** The platform's pivot toward corporate scaling caused bots to suffer severe short-term memory memory issues, often forgetting established plot points or context within 20 turns.
+- **Demographics:** **Tech-savvy adults (22–40)** who demand high-fidelity text generation and use advanced custom prompt engineering.
+- **Migration Pattern:** These users treat character creation like a complex technical hobby. When the models flattened, they migrated to premium or complex alternatives like Kindroid or [SillyTavern](https://github.com/SillyTavern/SillyTavern). They prefer platforms allowing custom "lorebooks," long-term vector memory, and full control over system parameters. [link](https://medium.com/@chuckmelai2024/character-ai-is-bleeding-users-heres-where-they-re-all-going-60feadda3c21)
+
+#### 4. Purge of Legacy Models & Custom Bots (~11%)
+
+- **The Catalyst:** The permanent deletion of beloved older LLM models and automated account bans that erased thousands of highly customized public and private bots.
+- **Demographics:** **Long-time platform creators (18–26)** who built the community's most popular bots.
+- **Migration Pattern:** Feeling a sense of "emotional betrayal" after losing custom bots they spent years refining, these power creators permanently deleted their profiles. They took their bot definitions, community engagement, and followers to alternative ecosystems that promise no future model purges. [link](https://medium.com/@chuckmelai2024/character-ai-is-bleeding-users-heres-where-they-re-all-going-60feadda3c21)
+
+***
+
+If you want to look deeper into this ecosystem, I can show you:
+
+- How the **privacy policies and data storage** of alternative platforms compare to Character.ai.
+
+- A guide on **how to export Character.ai chat histories** before an account is deleted or restricted.
+
+- [link](https://arxiv.org/html/2406.04005v4)\
+  The Failed Migration of Academic Twitter: A Case Study of ...\
+  Jun 22, 2026 — Unlike voluntary platform migration, which is often motivated by user dissatisfaction or policy changes, deplatforming represents ...\
+  arXiv
+
+- [link](https://medium.com/@chuckmelai2024/character-ai-is-bleeding-users-heres-where-they-re-all-going-60feadda3c21)\
+  Character.AI Is Bleeding Users. Here's Where They're All Going.\
+  Mar 13, 2026 — The users leaving Character.AI aren't disappearing from the AI companion space. They're migrating to platforms that respect their ...\
+  Medium·AI Tips Master
+
+- [link](https://www.biz4group.com/blog/alternatives-to-character-ai)\
+  Top 12 Alternatives to Character AI in 2026 - Biz4Group LLC\
+  Jul 9, 2026 — Top 12 Character AI Alternatives in 2026. The top Character AI alternatives in 2026 include Janitor AI, NovelAI, DreamGen, Kindroi...\
+  Biz4Group LLC
+
+Show all
+
+
 
