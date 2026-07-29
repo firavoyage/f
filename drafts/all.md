@@ -319,6 +319,7 @@ desktop:
 - obs restream multi platform simultaneous streaming
 - mac mouse fix
 - vscode fix css variable autocomplete langs
+- docker help
 
 android:
 
@@ -853,6 +854,7 @@ humility:
 - research google ai mode context stripping
 - research chatgpt sol dgg math
 - research google ai mode content filter and actual system prompt
+- research sillytavern
 
 legacy:
 

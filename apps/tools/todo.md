@@ -92,6 +92,8 @@ research cyberchef alternatives
 
 it should be simple. maybe it would not be even worth the time. take a look. and leave.
 
+https://devtoys.app/
+
 ---
 
 decide whether, or how to resize layout.
@@ -142,5 +144,17 @@ it's obvious. but, actually, there are two ways, top down and bottom up. sometim
 it's better to plan ahead, to write down what you know in one go. as long as you know. it's not wrong to plan everything ahead i mean.
 
 ---
+
+research bootstrap and expand component patterns
+
+https://www.google.com/search?udm=50&atvm=2&mstk=AUtExfCOM-P8TYzsBz0Gg-H51sgbOX2y1eZQ4ux4X4qGPhwYYs63uKtsK5quXPvsxQ70CotRjSNINb-IY3wXKv8WA_OX7y9JCu1Sp6mHu0XCnwAZ5l8t7sHOuSyN4ybKOwZfKrjTMXNBZUjfT42ifQhvvaI2ETW4s6TMH06iQeXs2Mx6Qbxvhu12ktOejJr580w_b_G0OUFaKG1ugolcSEfts5hqplvmlWxxCnz_HdKvFTmW9ZD3QENyCPWxv3bRxuDQlXA_7AQcZtUjDA&mtid=Rx9marOhIYerur8Pwpfw-A8&csuir=1&aep=26&q=All+Bootstrap+Components&ved=0CAAQ2_wOahcKEwjYtcD32PCVAxUAAAAAHQAAAAAQGg
+
+https://getbootstrap.com/2.3.2/getting-started.html#examples
+
+https://getbootstrap.com/docs/3.4/components/
+
+https://getbootstrap.com/docs/4.0/examples/
+
+https://getbootstrap.com/docs/5.3/examples/
 
 
