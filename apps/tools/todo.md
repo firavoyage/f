@@ -123,4 +123,13 @@ https://getbootstrap.com/docs/4.0/examples/
 
 https://getbootstrap.com/docs/5.3/examples/
 
+---
+
+make it comprehensive
+
+---
+
+design a dsl.
+
+
 

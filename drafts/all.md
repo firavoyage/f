@@ -397,6 +397,7 @@ pm:
 - pm methodology
 - pm knowledge
 - research or analysis
+- sdlc phases
 
 gamedev:
 
