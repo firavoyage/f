@@ -47854,6 +47854,8 @@ f, [7/29/26 5:59 PM]
 
 f, [7/29/26 6:13 PM]
 小时候玩电脑. 有朋友送了一些不要的书. 各种各样的. python. html. 这样. android 还在用 java. 看起来比较愚笨, 或者说繁冗. scratch 虽然很有表现力, 但不能用文本编程, 也比较受限. 那时候好像还没有 scratch 3. 总之, bytedance 作了一些营销活动. 大概就是写一些代码, 一些文章, 或者有主题的项目 (都是一些愚蠢的主题), 这样. 无论如何那个时代已经过去了. 现在没有人在意什么 "纯 css 实现" "hacks & polyfills" "es6 新功能" 了. 也没有一堆 "python 爬虫, 数据分析, 传统 nlp" 了. 也没有 "大专, 报培训班, 进入大厂" 的故事了. 那时候 typescript 还没有绝对统治力.
+<!-- sent 18:13:27 -->
+<!-- chyk 18:13:37: heart reaction -->
 
 斬風千雪 ❄️, [7/29/26 6:13 PM]
 蹭蹭
@@ -47882,6 +47884,8 @@ f, [7/29/26 5:52 PM]
 斬風千雪 ❄️, [7/29/26 5:54 PM]
 蹭蹭。
 ```
+
+<!-- anyway. humans are not to be judged. chyk would be friendly regardless. -->
 
 
 
