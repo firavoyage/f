@@ -123,6 +123,10 @@ the original order reflects the time they are added, a nice to have implicit met
 
 <!-- btw, priority isnt inherently inside their nature. it comes from dependency, then importance. -->
 
+...
+
+
+
 ---
 
 think how to make todos comprehensive.
