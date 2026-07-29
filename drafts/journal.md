@@ -47807,7 +47807,81 @@ azuma seren plays some "arg" on miyeji.cn. everything, incl. the nav page and ga
 
 "hard/soft timebox" is better than "whether to timebox", i feel. anyway both matter.
 
-16 40 unpack university admission letter.
+16 40 unpack university admission letter. share on chyk group.
+
+```md
+f, [7/29/26 5:49 PM]
+<!-- photo: admission letter -->
+我菜。
+
+斬風千雪 ❄️, [7/29/26 5:49 PM]
+怎么还有 always day 1 水杯
+
+斬風千雪 ❄️, [7/29/26 5:50 PM]
+<!-- sticker: nacho neko surprise -->
+
+斬風千雪 ❄️, [7/29/26 5:51 PM]
+太神秘了
+
+斬風千雪 ❄️, [7/29/26 5:57 PM]
+<!-- screenshot: to doubao, "这个杯子是你们公司的产品吗" -->
+
+斬風千雪 ❄️, [7/29/26 5:57 PM]
+<!-- sticker: nacho neko surprise -->
+
+f, [7/29/26 5:59 PM]
+很多年前了。
+
+水杯的样式一直没有改变吗。
+
+斬風千雪 ❄️, [7/29/26 6:02 PM]
+草 所以你家里有在字节工作的吗
+
+斬風千雪 ❄️, [7/29/26 6:02 PM]
+还是您...
+
+斬風千雪 ❄️, [7/29/26 6:03 PM]
+好厉害
+
+斬風千雪 ❄️, [7/29/26 6:04 PM]
+不管怎么说都好厉害啊
+
+斬風千雪 ❄️, [7/29/26 6:04 PM]
+我也想去上海
+
+斬風千雪 ❄️, [7/29/26 6:04 PM]
+<!-- sticker: fat cat lying -->
+
+f, [7/29/26 6:13 PM]
+小时候玩电脑. 有朋友送了一些不要的书. 各种各样的. python. html. 这样. android 还在用 java. 看起来比较愚笨, 或者说繁冗. scratch 虽然很有表现力, 但不能用文本编程, 也比较受限. 那时候好像还没有 scratch 3. 总之, bytedance 作了一些营销活动. 大概就是写一些代码, 一些文章, 或者有主题的项目 (都是一些愚蠢的主题), 这样. 无论如何那个时代已经过去了. 现在没有人在意什么 "纯 css 实现" "hacks & polyfills" "es6 新功能" 了. 也没有一堆 "python 爬虫, 数据分析, 传统 nlp" 了. 也没有 "大专, 报培训班, 进入大厂" 的故事了. 那时候 typescript 还没有绝对统治力.
+
+斬風千雪 ❄️, [7/29/26 6:13 PM]
+蹭蹭
+```
+
+```md
+斬風千雪 ❄️, [7/29/26 5:51 PM]
+你怎么也叫某某宁
+
+斬風千雪 ❄️, [7/29/26 5:51 PM]
+<!-- sticker: nacho neko surprise -->
+
+斬風千雪 ❄️, [7/29/26 5:51 PM]
+（吗）
+
+f, [7/29/26 5:52 PM]
+我很菜的。
+
+不会做题。
+
+是废物。
+
+斬風千雪 ❄️, [7/29/26 5:53 PM]
+<!-- sticker: cat, gomenne -->
+
+斬風千雪 ❄️, [7/29/26 5:54 PM]
+蹭蹭。
+```
 
 
 
