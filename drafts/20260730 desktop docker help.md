@@ -791,6 +791,94 @@ To advance your Docker workflow, would you like to know about **filtering flags*
 
 Show all
 
+# all docker compose commands
+
+9:37 AM
+
+Docker Compose commands are managed using the modern **`docker compose <command>`** syntax (Compose V2), which replaces the older, hyphenated `docker-compose` tool. [link](https://oneuptime.com/blog/post/2026-02-08-how-to-use-docker-compose-commands-v2-cli/view)
+
+The complete list of standard Docker Compose subcommands is categorized below by their functional use case. [link](https://docs.docker.com/reference/cli/docker/compose/)
+
+### 🚀 Lifecycle & Environment Management
+
+These commands control the creation, starting, stopping, and destruction of your multi-container environments. [link](https://docs.docker.com/compose/)
+
+- **`up`**: Builds, creates, starts, and attaches containers for all or specified services. Use `-d` to run in detached background mode.
+- **`down`**: Stops and removes containers, networks, and images defined in the file. Use `-v` to also destroy volumes.
+- **`start`**: Starts existing, stopped containers for a service without altering configurations.
+- **`stop`**: Stops running service containers without removing them.
+- **`restart`**: Restarts running or stopped service containers.
+- **`create`**: Pre-creates containers for your services without starting them.
+- **`rm`**: Removes stopped service containers permanently.
+- **`kill`**: Forces running containers to stop by sending a SIGKILL signal.
+- **`pause`**: Suspends all processes within the running containers of a service.
+- **`unpause`**: Resumes processes within the paused containers of a service. [link](https://docs.docker.com/reference/cli/docker/compose/)
+
+### 🛠️ Building & Images
+
+Manage the build context and image registries associated with your services. [link](https://docs.docker.com/reference/cli/docker/compose/pull/)
+
+- **`build`**: Builds or rebuilds Docker images defined under the `build:` key in your YAML file.
+- **`pull`**: Downloads the specific image tags mapped to your services from an image registry.
+- **`push`**: Uploads locally built images for your services to their designated registries.
+- **`images`**: Lists all the container images used by the current project's services. [link](https://docs.docker.com/reference/compose-file/services/)
+
+### 🔍 Monitoring & Observability
+
+Inspect the state, performance, and outputs of your active environments. [link](https://docs.docker.com/compose/)
+
+- **`ps`**: Lists containers for the project, showing their runtime status and mapped ports.
+- **`logs`**: Streams or prints stdout/stderr log outputs from your services.
+- **`top`**: Displays the active running processes inside your service containers.
+- **`stats`**: Provides a real-time stream of hardware resource consumption (CPU, Memory, Network) per container.
+- **`events`**: Streams real-time engine events occurring within the project containers. [link](https://docs.docker.com/reference/cli/docker/compose/)
+
+### 💻 Command Execution
+
+Interact with individual active or one-off containers directly from the CLI. [link](https://docs.docker.com/compose/)
+
+- **`exec`**: Runs an interactive command inside an already running service container.
+- **`run`**: Spawns a brand new, one-off container to run a specific command and exits.
+- **`cp`**: Copies files or directories between the local host filesystem and a service container. [link](https://docs.docker.com/reference/cli/docker/compose/)
+
+### ⚙️ Utilities & Configuration
+
+Validate project definitions, scale services, and map infrastructure. [link](https://docs.docker.com/reference/)
+
+- **`config`**: Validates the syntax of your Compose file and displays the actual merged configuration.
+- **`ls`**: Lists all active or stopped Compose projects running on the host engine.
+- **`port`**: Prints the public host port bound to a specific container's internal port.
+- **`scale`**: Manually adjusts the number of container instances running for a designated service.
+- **`version`**: Shows the installed Docker Compose software version details.
+- **`wait`**: Blocks the terminal until service containers reach a stable status or exit.
+- **`watch`**: Monitors the host directory for changes and updates code inside the container automatically.
+- **`convert`**: Translates the Compose file layout into a native platform format or outputs the definitive configuration. [link](https://docs.docker.com/reference/)
+
+You can append `--help` to any command (e.g., `docker compose up --help`) to view a breakdown of its specific options and flags. Complete details on all CLI subcommands can be reviewed directly via the [Official Docker Compose Reference CLI Docs](https://docs.docker.com/reference/cli/docker/compose/).
+
+If you are working on a specific task, let me know:
+
+- Are you trying to **fix an environment error**?
+- Do you need assistance **writing a `compose.yaml` configuration file**?
+- Are you attempting to **optimize production scaling or local volume mounts**?
+
+I can give you the exact command variants, flags, and workflow structures you need!
+
+- [link](https://docs.docker.com/reference/cli/docker/compose/)\
+  docker compose - Docker Docs\
+  Subcommands ; docker compose cp, Copy files/folders between a service container and the local filesystem. docker compose create, C...\
+  Docker Docs
+- [link](https://docs.docker.com/reference/cli/docker/compose/up/)\
+  docker compose up\
+  Description. Builds, (re)creates, starts, and attaches to containers for a service. Unless they are already running, this command ...\
+  Docker Docs
+- [link](https://docs.docker.com/compose/)\
+  Docker Compose\
+  Compose has commands for managing the lifecycle of your application, including: \* Starting, stopping, and rebuilding services \* Vi...\
+  Docker Docs
+
+Show all
+
 # all docker container commands
 
 The primary way to manage Docker containers is through the **`docker container`** subcommand group, though many developers use older, direct shorthand aliases (like `docker ps` or `docker run`). [link](https://docs.docker.com/reference/cli/docker/container/)
@@ -918,5 +1006,3 @@ I can help you build the exact command structure for your specific environment. 
   Medium
 
 Show all
-
-# 
