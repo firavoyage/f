@@ -620,4 +620,8 @@ it's obvious. but, actually, there are two ways, top down and bottom up. sometim
 
 it's better to plan ahead, to write down what you know in one go. as long as you know. it's not wrong to plan everything ahead i mean.
 
+---
+
+it doesnt mean i will have them now. i will proceed tomorrow.
+
 
