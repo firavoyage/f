@@ -1,5 +1,116 @@
-it should run to the end. and if needed, it runs again for the latest state.
+```sh
+ ~ % sudo docker run -d --name sillytavern -p 8000:8000 ghcr.io/sillytavern/sillytavern:latest
 
-when set, if is_syncing, set should_sync_again true, otherwise sync.
+Unable to find image 'ghcr.io/sillytavern/sillytavern:latest' locally
+latest: Pulling from sillytavern/sillytavern
+e6f31ffc071e: Pull complete
+09ddda476dba: Pull complete
+16733d1099a5: Pull complete
+144a1d394670: Pull complete
+65739491cef5: Pull complete
+0d8aa8e026f1: Pull complete
+00a000b4d0c1: Pull complete
+8e6ab5b2b909: Pull complete
+bf6cecf1c218: Pull complete
+992656f29ee4: Pull complete
+770592b5ce0e: Pull complete
+9f8f0cb834fc: Pull complete
+59ba6a734ca2: Pull complete
+4c7ab54dbcaa: Download complete
+Digest: sha256:5bb7ef334602ad72b29351acae4d9744ce16c99a1fab840acbd42a7d49d27d9b
+Status: Downloaded newer image for ghcr.io/sillytavern/sillytavern:latest
+cffbc41e6911469177dd9e5d99ade93285463e0521cbb13b1a593a6e5cdad6e8
+ ~ % docker ls
+docker: unknown command: docker ls
 
-when sync, set is_syncing true. at the end, if should sync again, then toggle it off and sync again, otherwise is syncing false.
+Run 'docker --help' for more information
+ ~ % docker list
+docker: unknown command: docker list
+
+Run 'docker --help' for more information
+ ~ % docker -h
+Flag shorthand -h has been deprecated, use --help
+Usage:  docker [OPTIONS] COMMAND
+
+A self-sufficient runtime for containers
+
+Common Commands:
+  run         Create and run a new container from an image
+  exec        Execute a command in a running container
+  ps          List containers
+  build       Build an image from a Dockerfile
+  bake        Build from a file
+  pull        Download an image from a registry
+  push        Upload an image to a registry
+  images      List images
+  login       Authenticate to a registry
+  logout      Log out from a registry
+  search      Search Docker Hub for images
+  version     Show the Docker version information
+  info        Display system-wide information
+
+Management Commands:
+  builder     Manage builds
+  buildx*     Docker Buildx
+  compose*    Docker Compose
+  container   Manage containers
+  context     Manage contexts
+  image       Manage images
+  manifest    Manage Docker image manifests and manifest lists
+  model*      Docker Model Runner
+  network     Manage networks
+  plugin      Manage plugins
+  system      Manage Docker
+  volume      Manage volumes
+
+Swarm Commands:
+  swarm       Manage Swarm
+
+Commands:
+  attach      Attach local standard input, output, and error streams to a running container
+  commit      Create a new image from a container's changes
+  cp          Copy files/folders between a container and the local filesystem
+  create      Create a new container
+  diff        Inspect changes to files or directories on a container's filesystem
+  events      Get real time events from the server
+  export      Export a container's filesystem as a tar archive
+  history     Show the history of an image
+  import      Import the contents from a tarball to create a filesystem image
+  inspect     Return low-level information on Docker objects
+  kill        Kill one or more running containers
+  load        Load an image from a tar archive or STDIN
+  logs        Fetch the logs of a container
+  pause       Pause all processes within one or more containers
+  port        List port mappings or a specific mapping for the container
+  rename      Rename a container
+  restart     Restart one or more containers
+  rm          Remove one or more containers
+  rmi         Remove one or more images
+  save        Save one or more images to a tar archive (streamed to STDOUT by default)
+  start       Start one or more stopped containers
+  stats       Display a live stream of container(s) resource usage statistics
+  stop        Stop one or more running containers
+  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+  top         Display the running processes of a container
+  unpause     Unpause all processes within one or more containers
+  update      Update configuration of one or more containers
+  wait        Block until one or more containers stop, then print their exit codes
+
+Global Options:
+      --config string      Location of client config files (default "/root/.docker")
+  -c, --context string     Name of the context to use to connect to the daemon (overrides DOCKER_HOST env var and default
+                           context set with "docker context use")
+  -D, --debug              Enable debug mode
+  -H, --host string        Daemon socket to connect to
+  -l, --log-level string   Set the logging level ("debug", "info", "warn", "error", "fatal") (default "info")
+      --tls                Use TLS; implied by --tlsverify
+      --tlscacert string   Trust certs signed only by this CA (default "/root/.docker/ca.pem")
+      --tlscert string     Path to TLS certificate file (default "/root/.docker/cert.pem")
+      --tlskey string      Path to TLS key file (default "/root/.docker/key.pem")
+      --tlsverify          Use TLS and verify the remote
+  -v, --version            Print version information and quit
+
+Run 'docker COMMAND --help' for more information on a command.
+
+For more help on how to use Docker, head to https://docs.docker.com/go/guides/
+```
