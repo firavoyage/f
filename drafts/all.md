@@ -258,6 +258,7 @@ web: <!-- frontend, web, ts/js -->
 - icon library
 - react props lib
 - css selectors nesting
+- css inherited props implicitly inherited props global keywords css layer
 
 backend:
 
