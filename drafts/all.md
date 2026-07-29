@@ -788,7 +788,7 @@ leisure:
 
 - jp books jlpt levels
 - jp traditional self study
-- fsi lang ranking
+- fsi lang ranking cefr
 - research duolingo
 
 egg:
