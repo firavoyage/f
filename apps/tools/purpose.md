@@ -588,4 +588,36 @@ narrow path from all strings to keyof state.
 
 revise snippets.
 
+30
+
+04 20 organize todos.
+
+it should be more comprehensive. it should be ordered.
+
+even if they all fall into the backlog category on kanban, they are not the same.
+
+**they have priority and dependency.**
+
+<!-- i didnt include importance. i have moscow labels for them. and roles (e.g. plan, research, visual design, archi design, implement), i think, are already reflected by the priority. -->
+
+the original order reflects the time they are added, a nice to have implicit metadata, which doesnt mean anything.
+
+<!-- btw, priority isnt inherently inside their nature. it comes from dependency, then importance. -->
+
+...
+
+if you feel you wanna build sth even if useless, for a personal project, that's almost always a psychological trap. or not.
+
+<!-- i thought i wanna create a dsl for "recipe". it would be flexible and contextual and embrace the ambiguity of human languages. it's definitely challenging and exciting. -->
+
+04 40 think how to make todos comprehensive.
+
+wbs is too formal and inefficient. i guess it's just a problem of taxonomy. just categorize. by role, maybe.
+
+also, **it's better to plan first.**
+
+it's obvious. but, actually, there are two ways, top down and bottom up. sometimes yk you will need this so you make it anyway. it's reasonable. but, the problem is, you have to figure out what to do next, or how to adapt to the invisible constraints <!-- e.g. it should launch one day. you should expect that. -->. it's different when you are busy or relaxed. both have benefits. but, i mean,
+
+it's better to plan ahead, to write down what you know in one go. as long as you know. it's not wrong to plan everything ahead i mean.
+
 
