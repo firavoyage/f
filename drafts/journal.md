@@ -47886,7 +47886,7 @@ f, [7/29/26 5:52 PM]
 蹭蹭。
 ```
 
-<!-- anyway. humans are not to be judged. chyk would be friendly to everyone. maybe she had a carefree childhood. -->
+<!-- anyway. humans are not to be judged. chyk would be friendly to everyone. maybe she had a carefree childhood. and she didnt hrt. -->
 
 
 
