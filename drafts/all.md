@@ -56,6 +56,7 @@ fira:
 - settings progressive disclosure over advanced kde hig vlc chromium firefox samsung one ui vscode
 - pm methodology
 - pm knowledge
+- ux four pillars design process
 
 life:
 
