@@ -47888,6 +47888,16 @@ f, [7/29/26 5:52 PM]
 
 <!-- anyway. humans are not to be judged. chyk would be friendly to everyone. maybe she had a carefree childhood. and she didnt hrt. -->
 
+21 20 solve a math problem.
+
+```precious
+simplify x^4 + y^4 + (x+y)^4
+```
+
+the ref answer is based on some special observations, as expected. i just realize their power and symmetry, divide into case 1 3 and case 2 2, and solve directly for each.
+
+<!-- i didnt realize case 2 can be `x^2 + axy + y^2` at first (assuming a = 0), thus wasted some time.  -->
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
