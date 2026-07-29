@@ -628,4 +628,8 @@ it doesnt mean i will have them now. i will proceed tomorrow.
 
 a quick win i guess.
 
+---
+
+research css inheritance.
+
 
