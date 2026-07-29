@@ -2,9 +2,19 @@ todo
 
 ---
 
-maimai: expand the results (base2, base5) if the number is small
+document everything known. elaborate the plan.
 
-low priority. it's just a derivation.
+---
+
+research cyberchef alternatives
+
+it should be simple. maybe it would not be even worth the time. take a look. and leave.
+
+https://devtoys.app/
+
+---
+
+research encryption methods. pick and include what matters.
 
 ---
 
@@ -22,7 +32,15 @@ learn from vscode. no borders or shadows. no radius. no paddings. only have soli
 
 ---
 
-create general pattern components
+adopt vscode icon pack
+
+https://github.com/microsoft/vscode-codicons
+
+https://microsoft.github.io/vscode-codicons/dist/codicon.html
+
+---
+
+create general pattern components, design params and return of each
 
 sidebar. shortcuts. settings. quick panel. scroll area.
 
@@ -35,79 +53,6 @@ sidebar. params: an array of options. a state of selected.
 quick panel. params: a list of functions w optional metadata (e.g. names, synonyms).
 
 shortcuts. <!-- just let it bind. -->
-
-<!-- todo: design the params and return of each fn -->
-
----
-
-design params and return of each component
-
----
-
-have server side features like ffmpeg converter
-
-out of scope.
-
----
-
-support pwa
-
-out of scope.
-
-it must be able to run locally. but it does not need pwa to do so.
-
-you could install it. but it does not require pwa either.
-
-and pwa itself is of inconsistent compatibility.
-
----
-
-adopt vscode icon pack
-
-https://github.com/microsoft/vscode-codicons
-
-https://microsoft.github.io/vscode-codicons/dist/codicon.html
-
----
-
-design and support two way convertion
-
----
-
-implement global persistent state.
-
-sidebar collapse. settings. theme. sidebar taxonomy pref. tool view pref.
-
----
-
-decide to make text selectability opt in.
-
----
-
-research encryption methods. pick and include what matters.
-
----
-
-research cyberchef alternatives
-
-it should be simple. maybe it would not be even worth the time. take a look. and leave.
-
-https://devtoys.app/
-
----
-
-decide whether, or how to resize layout.
-
-there are many ways. the browser default is already reset, and shouldnt be an option.
-
-patterns are
-
-- scroll (resize, push others downward)
-- resize, shrink others
-
-it's obvious i feel.
-
-and, take a look at vscode ctrl b. you only see the dragger when hovering there.
 
 ---
 
@@ -125,11 +70,61 @@ https://getbootstrap.com/docs/5.3/examples/
 
 ---
 
-make it comprehensive
+design a dsl for recipe.
 
 ---
 
-design a dsl.
+design ix, e.g. two way convertion
+
+decide whether, or how to resize layout.
+
+there are many ways. the browser default is already reset, and shouldnt be an option.
+
+patterns are
+
+- scroll (resize, push others downward)
+- resize, shrink others
+
+it's obvious i feel.
+
+and, take a look at vscode ctrl b. you only see the dragger when hovering there.
+
+---
+
+implement global persistent state.
+
+sidebar collapse. settings. theme. sidebar taxonomy pref. tool view pref.
+
+---
+
+adapt maimai, show loss of each
+
+sometimes it can be simple. actually, that might be the most use cases.
+
+---
+
+polish maimai, expand the results (base2, base5) if the number is small
+
+low priority. it's just a derivation.
+
+---
+
+add server side features like ffmpeg converter
+
+out of scope.
+
+---
+
+support pwa
+
+out of scope.
+
+it must be able to run locally. but it does not need pwa to do so.
+
+you could install it. but it does not require pwa either.
+
+and pwa itself is of inconsistent compatibility.
+
 
 
 
