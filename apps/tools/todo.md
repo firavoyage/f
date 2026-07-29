@@ -125,7 +125,9 @@ the original order reflects the time they are added, a nice to have implicit met
 
 ...
 
+if you feel you wanna build sth even if useless, for a personal project, that's almost always a psychological trap. or not.
 
+<!-- i thought i wanna create a dsl for "recipe". it would be flexible and contextual and embrace the ambiguity of human languages. it's definitely challenging and exciting. -->
 
 ---
 
