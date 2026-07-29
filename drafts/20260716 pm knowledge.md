@@ -5670,6 +5670,8 @@ I can tell you exactly which box type fits best.
 
 # . hard/soft timebox, whether to timebox
 
+## hard/soft timebox
+
 To choose between a **hard** or **soft** timebox, ask yourself these six diagnostic questions about the task, the stakeholders, and your own work style:
 
 ### 1. Consequences of Overrunning
@@ -5708,7 +5710,7 @@ To choose between a **hard** or **soft** timebox, ask yourself these six diagnos
 - **Hard Box if:** It is a routine administrative task. You know exactly what it takes, so you can confidently cap it to prevent Parkinson's Law (work expanding to fill time).
 - **Soft Box if:** It is a brand-new R\&D initiative or a spike task with unknown variables. You need the flexibility to pivot as you learn.
 
----
+## when (not) to timebox
 
 Timeboxing allocates a fixed, maximum unit of time to an activity. You should timebox a task <mark>when the constraints of time, focus, or budget outweigh the need for a perfect, open-ended output</mark>.
 
@@ -5737,7 +5739,7 @@ Ask your team three questions to make a quick decision:
 2. **Will the task naturally expand forever?** If yes, timebox.
 3. **Is the deadline or budget fixed?** If yes, timebox.
 
----
+## whether to timebox
 
 To decide whether to timebox a task, ask yourself and your team these targeted questions across four critical dimensions:
 
@@ -6116,4 +6118,123 @@ I can help you decide whether to rest, push ahead, or tackle minor admin work.
 
 Show all
 
-# 
+# questions to answer to decide task order in pm
+
+To decide the exact task order in project or product management (PM), you must filter every task through five distinct categories of questions: **strategic alignment, task dependencies, business/user value, resource constraints, and overall risk**.
+
+Answering these structured questions prevents project delays and ensures your team tackles high-impact work first. [link](https://www.youtube.com/watch?v=AgGmv59meS8\&t=23)
+
+### Strategic Alignment & Deadlines
+
+- **What is the hard deadline?** Identify which tasks have immovable regulatory, market, or launch dates versus dates that are flexible.
+- **Which task directly supports our current North Star metric?** Prioritize work that satisfies the immediate strategic goals of the company.
+- **What happens if we delay this task?** Evaluate the immediate consequences or cost of delay for each item. [link](https://pm.stackexchange.com/questions/6635/what-factors-should-determine-a-tasks-priority)
+
+### Dependencies & Sequencing (Critical Path)
+
+- **Is this task blocking anyone else?** Find the downstream tasks that cannot start until this specific item is finished.
+- **What needs to be finished before this task can start?** Map out the upstream technical or operational requirements.
+- **Can this task be completed in parallel with others?** Separate independent tasks from the sequential critical path to optimize resource usage. [link](https://pm.stackexchange.com/questions/6635/what-factors-should-determine-a-tasks-priority)
+
+### Value vs. Effort
+
+- **Which task delivers the highest immediate value to the user or business?** Rank items based on their potential to drive revenue, retention, or customer satisfaction. [link](https://www.youtube.com/watch?v=AgGmv59meS8\&t=23)
+
+- **What is the engineering or operational effort required?** Estimate the complexity, time, and development team capacity needed for execution. [link](https://www.youtube.com/watch?v=AgGmv59meS8\&t=23)
+
+- **Are there any "quick wins" available?** Identify low-effort, high-impact tasks that can provide immediate momentum. [link](https://www.reddit.com/r/ProductManagement/comments/905m8h/how%5Fdo%5Fyou%5Fprioritize%5Finterview%5Fquestion/)
+
+<!---->
+
+```
+       High │  ⚡ Quick Wins        │  🚀 Major Projects
+            │  (Do Second)          │  (Do First)
+   VALUE    ├───────────────────────┼───────────────────────
+            │  Fill-ins             │  Thankless Tasks
+        Low │  (Do Later)           │  (Delegate/Eliminate)
+            └───────────────────────┴───────────────────────
+                       Low                 High
+                                EFFORT
+```
+
+### Risk & Assumptions
+
+- **What is the riskiest assumption we need to test?** Order tasks so you validate unproven concepts through early experimentation or MVPs.
+- **Which task mitigates the biggest project threat?** Tackle highly uncertain or legally risky items early to avoid massive rework later. [link](https://pm.stackexchange.com/questions/6635/what-factors-should-determine-a-tasks-priority)
+
+### Resources & Capabilities
+
+- **Who has the specialized skillset required for this task?** Match the work to available team members, and check if the expert is currently overallocated.
+- **Are the necessary tools, budgets, or third-party APIs ready?** Delay tasks whose external dependencies are not yet active or approved. [link](https://www.franklincovey-benelux.com/resources/5-fundamental-questions-to-answer-before-starting-any-project/)
+
+To help you organize these answers into an actionable roadmap, let me know:
+
+- Are you prioritizing **product features** or **internal operational tasks**?
+
+- Which framework do you lean toward? (e.g., **RICE scoring**, **Eisenhower Matrix**, or **Critical Path Method**)
+
+- What is the **size and setup** of the team executing the work? [link](https://asana.com/resources/eisenhower-matrix)
+
+- [link](https://www.youtube.com/watch?v=AgGmv59meS8\&t=23)\
+  Prioritizing Tasks as a Product Manager\
+  Jul 7, 2022 — on the job you'll have ideas of your own your manager will have ideas leadership will have ideas. and all of your crossunctional. ...\
+  2m\
+  YouTube·Exponent
+
+- [link](https://www.reddit.com/r/ProductManagement/comments/905m8h/how%5Fdo%5Fyou%5Fprioritize%5Finterview%5Fquestion/)\
+  How Do You Prioritize? (Interview Question) - Reddit\
+  Jul 19, 2018 — Impact. Effort. Customer Desire (feedback) You need to understand what your 'quick wins' and 'time sinks' are, and how those relat...\
+  Reddit·r/ProductManagement
+
+- [link](https://www.youtube.com/watch?v=KuwH%5Fy4ngt0)\
+  3 Prioritization Execution Questions and Answers (Product ...\
+  Apr 28, 2024 — prioritization is an important skill for product managers. and thus you'll encounter questions about it across many types of PM in...\
+  8:37\
+  YouTube·LiftoffPM
+
+Show all
+
+# . task order
+
+To decide the exact task order in project or product management (PM), you must filter every task through five distinct categories of questions: **strategic alignment, task dependencies, business/user value, resource constraints, and overall risk**.
+
+<!-- project order
+
+### Strategic Alignment & Deadlines
+
+- **What is the hard deadline?** Identify which tasks have immovable regulatory, market, or launch dates versus dates that are flexible.
+- **Which task directly supports our current North Star metric?** Prioritize work that satisfies the immediate strategic goals of the company.
+- **What happens if we delay this task?** Evaluate the immediate consequences or cost of delay for each item. [link](https://pm.stackexchange.com/questions/6635/what-factors-should-determine-a-tasks-priority)
+
+ -->
+
+### Dependencies & Sequencing (Critical Path)
+
+- **Is this task blocking anyone else?** Find the downstream tasks that cannot start until this specific item is finished.
+- **What needs to be finished before this task can start?** Map out the upstream technical or operational requirements.
+- **Can this task be completed in parallel with others?** Separate independent tasks from the sequential critical path to optimize resource usage. [link](https://pm.stackexchange.com/questions/6635/what-factors-should-determine-a-tasks-priority)
+
+### Value vs. Effort
+
+- **Which task delivers the highest immediate value to the user or business?** Rank items based on their potential to drive revenue, retention, or customer satisfaction. [link](https://www.youtube.com/watch?v=AgGmv59meS8\&t=23)
+
+- **What is the engineering or operational effort required?** Estimate the complexity, time, and development team capacity needed for execution. [link](https://www.youtube.com/watch?v=AgGmv59meS8\&t=23)
+
+- **Are there any "quick wins" available?** Identify low-effort, high-impact tasks that can provide immediate momentum. [link](https://www.reddit.com/r/ProductManagement/comments/905m8h/how%5Fdo%5Fyou%5Fprioritize%5Finterview%5Fquestion/)
+
+```
+       High │  ⚡ Quick Wins         │  🚀 Major Projects
+            │  (Do Second)          │  (Do First)
+   VALUE    ├───────────────────────┼───────────────────────
+            │  Fill-ins             │  Thankless Tasks
+        Low │  (Do Later)           │  (Delegate/Eliminate)
+            └───────────────────────┴───────────────────────
+                       Low                 High
+                                EFFORT
+```
+
+### Risk & Assumptions
+
+- **What is the riskiest assumption we need to test?** Order tasks so you validate unproven concepts through early experimentation or MVPs.
+- **Which task mitigates the biggest project threat?** Tackle highly uncertain or legally risky items early to avoid massive rework later. [link](https://pm.stackexchange.com/questions/6635/what-factors-should-determine-a-tasks-priority)
+
