@@ -2,6 +2,16 @@ todo
 
 ---
 
+research forgejo.
+
+its purpose is clear. but isnt it already accomplished by forgejo?
+
+what are the limitations.
+
+the competitors are not even refray or oh my github.
+
+---
+
 research relevant tools
 
 refray.
