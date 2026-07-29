@@ -47807,6 +47807,8 @@ azuma seren plays some "arg" on miyeji.cn. everything, incl. the nav page and ga
 
 "hard/soft timebox" is better than "whether to timebox", i feel. anyway both matter.
 
+16 40 unpack university admission letter.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
