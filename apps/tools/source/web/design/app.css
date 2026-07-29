@@ -1,6 +1,8 @@
 body {
   background-color: var(--color-bg-primary);
   color: var(--color-fg-primary);
+
+  user-select: none;
 }
 
 ::selection {
@@ -104,3 +106,5 @@ textarea {
 .main {
   flex-grow: 1;
 }
+
+

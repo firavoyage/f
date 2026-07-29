@@ -624,4 +624,8 @@ it's better to plan ahead, to write down what you know in one go. as long as you
 
 it doesnt mean i will have them now. i will proceed tomorrow.
 
+05 20 decide to make text selectability opt in.
+
+a quick win i guess.
+
 
