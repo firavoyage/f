@@ -2020,14 +2020,72 @@ Would you like to explore **other behaviors** that strict mode changes, or see h
 
 Show all
 
+# . thinking: move on
+
+enough research. doesnt seem quite meaningful.
+
 # . thinking: recipe dsl spec
 
 ## fundamentals
 
 - case sensitive
-- linebreak iff semicolons
+- linebreak (when complete) iff semicolons <!-- complete is both decided by the current loc and the following -->
 - indentation iff curly braces
 - comments: `#`, `//`
-- multiline comments: `/* ... */` `""" ... """`
+- multiline comments: `/* ... */` <!-- `""" ... """` `""" eof ... eof` -->
+- expression based, everything is an expression
+
+## variable
+
+```f
+foo 123 # 
+
+foo = 123
+
+# var
+
+let foo = 123 # local, shadow any prev foo (if exists) until block end
+
+# const
+
+const pi = 3.14
+
+# let mut
+
+# let imut
+```
+
+<!-- you should either make it global or local by default. you have to either have global/nonlocal or let. -->
+
+scope: read/modify if exists in scope, declare if not.
+
+order doesnt matter. call order matters.
+
+if you have no global var, everything is local by default. if you do, no global needed.
+
+```js
+let foo
+if ...
+  foo 1
+el
+  foo 2
+```
+
+```py
+if t
+  x 1
+
+pr x # works
+```
+
+```f
+foo = if ...
+  do sth
+  1
+el
+  2
+```
+
+all curly braces are scoped. 
 
 
