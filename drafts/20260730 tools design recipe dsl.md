@@ -2300,15 +2300,93 @@ arr a = 1 2 3 # syntax sugar. the left side couldnt be an expression. so it's of
 array counts from zero. you may override it. <!-- globally, through a symbol op for foo[123], like array.getprop -->
 
 ```
+obj {
+  foo: 123
+  bar: 456
+}
+```
+
+in obj, linebreak iff , (actually ; works aw)
+
+why it isnt an expression:
+
+- it contains colon <!-- it doesnt make any sense as a statement -->
+
+## functions
+
+call
 
 ```
+fn # call it. get its value and discard on the next line doesnt make any sense.
+
+add 1 2 3
+
+add add(1 2) 3
+
+add (add 1 2) 3
+
+add {add 1 2} 3
+
+# it will not work, despite the identical output. add is a fn. then the rest are args. add is another fn. it takes the rest, eval to 9. add 9 is 9.
+# i mean if you want to say: add 1 2 first, then add 3 to the ans
+add add 1 2 3
+```
+
+call or get value
+
+```
+f(some fn, another fn) # pass it
+
+f(some fn(), another fn()) # pass the result
+```
+
+prefer explicit fn().
+
+you may use fn when it's standalone. like a shell command.
+
+<!-- wait. i guess i can design it to make fn as param less common. so i can make "call" default, wo parentheses. maybe i could declare type on fn. e.g. it wants fn, then it doesnt eval. like lisp. -->
 
 ## operators
 
+call
+
+```
+a + b
+```
 
 override
 
 ```
-# op get is special.
-arr op get 
+arr[get] arr index
+  Object.get arr index-1 # the original ones wont be overriden, no possible inf recursion. they wouldnt usually be used directly aw.
+
+# complex should be defined first, no need to be flexible here
+complex[+] a b
+  [a[0] + b[0], a[1] + b[1]]
 ```
+
+syntax sugar
+
+```
+# eq
+if a = b
+
+if a == b # the same
+
+# no ===
+```
+
+ik you dont mean set.
+
+```
+if { data = read }
+```
+
+## macro
+
+```f
+macro read foo
+  foo = read
+```
+
+
