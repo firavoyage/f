@@ -2700,6 +2700,1304 @@ Are you looking to see syntax structures applied to a **specific use case** (lik
 
 Show all
 
+# all python syntax
+
+<mark><strong><span>Python syntax relies on strict indentation (four spaces) rather than curly braces<span> </span></span><code dir="ltr">{}</code><span> </span>to define code blocks</strong></mark>**.** Statements end with a new line instead of a semicolon. [link](https://www.codecademy.com/article/learn-python-python-syntax)
+
+This complete reference guide maps out the core syntax elements of the Python language.
+
+***
+
+### Core Structural Syntax
+
+#### Comments
+
+python
+
+```
+# This is a single-line comment
+
+"""
+This is a multi-line comment
+or a docstring.
+"""
+```
+
+Use code with caution.
+
+#### Variables & Assignments
+
+python
+
+```
+x = 5  # Dynamic typing
+name = "Alice"  # Snake_case variable names are standard
+a, b, c = 1, 2, 3  # Multiple assignment
+```
+
+Use code with caution.
+
+***
+
+### Basic Data Types & Literals
+
+python
+
+```
+is_active = True  # Boolean (True or False)
+age = 25  # Integer
+pi = 3.14  # Float
+complex_num = 3 + 4j  # Complex number
+nothing = None  # Represents missing value
+```
+
+Use code with caution.
+
+***
+
+### Built-in Collections
+
+#### Lists (Mutable, Ordered)
+
+python
+
+```
+items = [1, 2, 3, "apple"]  # List literal
+items.append(4)  # Add item
+first = items[0]  # Indexing
+subset = items[1:3]  # Slicing
+```
+
+Use code with caution.
+
+#### Tuples (Immutable, Ordered)
+
+python
+
+```
+point = (10, 20)  # Cannot be changed after creation
+```
+
+Use code with caution.
+
+#### Dictionaries (Key-Value Pairs)
+
+python
+
+```
+user = {"name": "Bob", "age": 30}  # Dict literal
+user["email"] = "bob@example.com"  # Assigning new key
+```
+
+Use code with caution.
+
+#### Sets (Unordered, Unique Items)
+
+python
+
+```
+unique_numbers = {1, 2, 3, 3}  # Evaluates to {1, 2, 3}
+```
+
+Use code with caution.
+
+***
+
+### Operators
+
+| Category                  | Operators                           | Syntax Example                                |
+| ------------------------- | ----------------------------------- | --------------------------------------------- |
+| **Arithmetic**            | `+`, `-`, `*`, `/`, `//`, `%`, `**` | `5 ** 2` (Power: 25), `7 // 2` (Floor div: 3) |
+| **Comparison**            | `==`, `!=`, `>`, `<`, `>=`, `<=`    | `x == 5`, `y != 10`                           |
+| **Logical**               | `and`, `or`, `not`                  | `if x > 0 and not is_active:`                 |
+| **Assignment**            | `=`, `+=`, `-=`, `*=`, `/=`         | `x += 1` (Equivalent to `x = x + 1`)          |
+| **Identity & Membership** | `is`, `is not`, `in`, `not in`      | `if "a" in "apple":`, `if x is None:`         |
+
+***
+
+### Control Flow & Loops
+
+#### Conditional Statements
+
+python
+
+```
+if x > 10:
+    print("Greater than 10")
+elif x == 10:
+    print("Exactly 10")
+else:
+    print("Less than 10")
+```
+
+Use code with caution.
+
+#### For Loops
+
+python
+
+```
+for i in range(5):  # Iterates 0 to 4
+    print(i)
+
+for item in items:  # Iterates over collection items
+    print(item)
+```
+
+Use code with caution.
+
+#### While Loops
+
+python
+
+```
+count = 0
+while count < 3:  # Runs while condition is true
+    print(count)
+    count += 1
+```
+
+Use code with caution.
+
+#### Match-Case (Pattern Matching)
+
+python
+
+```
+match command:
+    case "start":
+        print("Starting...")
+    case "stop":
+        print("Stopping...")
+    case _:
+        print("Unknown command")
+```
+
+Use code with caution.
+
+***
+
+### Functions & Lambdas
+
+#### Defining Functions
+
+python
+
+```
+def greet(name, greeting="Hello"):  # Supports default arguments
+    return f"{greeting}, {name}!"  # F-string formatting
+
+message = greet("Alice")  # Function call
+```
+
+Use code with caution.
+
+#### Keyword & Arbitrary Arguments
+
+python
+
+```
+def complex_func(*args, **kwargs):
+    # *args collects extra positional arguments as a tuple
+    # **kwargs collects extra keyword arguments as a dict
+    pass
+```
+
+Use code with caution.
+
+#### Lambda Expressions (Anonymous Functions)
+
+python
+
+```
+square = lambda x: x ** 2  # Inline single-expression function
+```
+
+Use code with caution.
+
+***
+
+### Object-Oriented Programming (OOP)
+
+python
+
+```
+class Dog:  # Classes are blueprints
+    def __init__(self, name):  # Constructor method
+        self.name = name  # Instance variable
+
+    def bark(self):  # Instance method
+        return "Woof!"
+
+my_dog = Dog("Buddy")  # Creating an instance
+print(my_dog.bark())  # Accessing method
+```
+
+Use code with caution.
+
+***
+
+### Error & Exception Handling
+
+python
+
+```
+try:
+    result = 10 / 0
+except ZeroDivisionError as e:  # Catches specific error
+    print(f"Error occurred: {e}")
+finally:
+    print("This always runs")  # Clean-up block
+```
+
+Use code with caution.
+
+***
+
+### Comprehensions & Advanced Syntax
+
+#### List Comprehension
+
+python
+
+```
+squares = [x**2 for x in range(5)]  # Condensed syntax for loops
+```
+
+Use code with caution.
+
+#### Generator Expressions
+
+python
+
+```
+square_gen = (x**2 for x in range(5))  # Lazy evaluation using parentheses
+```
+
+Use code with caution.
+
+#### Context Managers (`with` statement)
+
+python
+
+```
+with open("file.txt", "w") as f:  # Automatically closes the file
+    f.write("Hello World")
+```
+
+Use code with caution.
+
+#### Imports
+
+python
+
+```
+import math  # Module import
+from datetime import datetime  # Specific component import
+import pandas as pd  # Alias import
+```
+
+Use code with caution.
+
+***
+
+If you are building a specific project, let me know if you need to deep-dive into **advanced syntax concepts** like decorators, asynchronous code (`async`/`await`), or custom context managers.
+
+- [link](https://www.w3schools.com/python/python%5Fsyntax.asp)\
+  Python Syntax - W3Schools\
+  Execute Python Syntax. As we learned in the previous page, Python syntax can be executed by writing directly in the Command Line: ...\
+  W3Schools
+- [link](https://www.codecademy.com/article/learn-python-python-syntax)\
+  Python Syntax Guide for Beginners | Codecademy\
+  What is Python syntax? When learning to code in Python, understanding its syntax is the first step. In programming, syntax refers ...\
+  Codecademy
+- [link](https://docs.python.org/3/library/index.html)\
+  The Python Standard Library\
+  Jul 30, 2026 — The Python Standard Library \* Truth Value Testing. \* Boolean Operations — and , or , not. \* Comparisons. \* Numeric Types — int , f...\
+  Python documentation
+
+Show all
+
+# all rust syntax <!-- sometimes innovating, not designed to be simple though -->
+
+This comprehensive reference guide covers **all essential Rust syntax elements**, organized from basic variables to advanced traits and macros, based on specifications found in [The Rust Reference](https://doc.rust-lang.org/reference/) and official learning materials. [link](https://rust-lang.org/learn/)
+
+***
+
+### Basic Variable Declarations
+
+rust
+
+```
+let x = 5;                  // Immutable variable (default)
+let mut y = 10;             // Mutable variable
+y = 15;                     // Allowed because y is mut
+let z: i32 = 20;            // Variable with explicit type annotation
+let (a, b) = (1, 2);        // Pattern matching / destructuring variable bind
+let _unused = 100;          // Prefix underscore suppresses unused variable warning
+```
+
+Use code with caution.
+
+### Primitive & Collection Types
+
+rust
+
+```
+// Scalar Types
+let is_true: bool = true;   // Boolean
+let ch: char = 'A';         // Unicode scalar value (4 bytes, single quotes)
+let i: i32 = -42;           // Signed integer (default)
+let u: u64 = 100;           // Unsigned integer
+let f: f64 = 3.14;          // Floating-point (default f64)
+
+// Compound Types
+let tuple: (i32, f64, char) = (500, 6.4, 'z');
+let first = tuple.0;        // Element access via dot syntax
+let array: [i32; 5] = [1, 2, 3, 4, 5]; // Fixed-size array [type; size]
+let repeat = [0; 10];       // Array initialization shorthand (ten 0s)
+
+// Standard Sequences
+let slice: &[i32] = &array[1..3];      // Dynamically-sized view into a contiguous sequence
+let mut vec: Vec<i32> = vec![1, 2, 3]; // Heap-allocated growable array (vector)
+let s: &str = "Hello";                 // String slice (immutable reference)
+let mut string: String = String::from("Hi"); // Heap-allocated, growable UTF-8 string
+```
+
+Use code with caution.
+
+### Functions & Closures
+
+rust
+
+```
+// Standard Function
+fn add_numbers(x: i32, y: i32) -> i32 {
+    x + y                   // Implicit return: no semicolon on final expression
+}
+
+// Function with Early Return
+fn early_return(x: i32) -> i32 {
+    if x < 0 { return 0; }  // Explicit return keyword requires semicolon
+    x * 2
+}
+
+// Closures (Anonymous Functions)
+let add_one = |x: i32| x + 1;
+let complex_closure = |a: i32, b: i32| -> i32 {
+    let sum = a + b;
+    sum * 2
+};
+```
+
+Use code with caution.
+
+### Control Flow & Expressions
+
+rust
+
+```
+// Conditionals (if is an expression)
+let condition = true;
+let number = if condition { 5 } else { 6 }; // Branches must return identical types
+
+// Infinite Loop
+loop {
+    break;                  // Terminates loop execution
+}
+
+// Conditional Loop
+let mut counter = 0;
+while counter < 5 {
+    counter += 1;
+}
+
+// Iterator Loop
+for element in [10, 20, 30].iter() {
+    println!("{}", element);
+}
+
+// Range Loop
+for number in 0..5 {        // 0 to 4 inclusive-exclusive
+    println!("{}", number);
+}
+```
+
+Use code with caution.
+
+### Data Structures & Custom Types
+
+rust
+
+```
+// Structs (3 Variants)
+struct ClassicStruct {      // Named fields
+    field: i32,
+    active: bool,
+}
+
+struct TupleStruct(i32, bool); // Unnamed positional fields
+
+struct UnitStruct;          // Fieldless, zero-sized type
+
+// Instantiation & Access
+let obj = ClassicStruct { field: 5, active: true };
+let val = obj.field;
+
+// Enums
+enum WebEvent {
+    PageLoad,               // Variant with no data
+    KeyPress(char),         // Tuple variant
+    Click { x: i32, y: i32 }, // Struct variant
+}
+```
+
+Use code with caution.
+
+### Pattern Matching & Destructuring
+
+rust
+
+```
+let event = WebEvent::KeyPress('q');
+
+// Match Statement (Must be exhaustive)
+match event {
+    WebEvent::PageLoad => println!("Loaded"),
+    WebEvent::KeyPress('c') => println!("Pressed constant c"),
+    WebEvent::KeyPress(c) => println!("Pressed generic: {}", c),
+    WebEvent::Click { x, y } => println!("Clicked at {}, {}", x, y),
+    _ => println!("Default fallback"), // Wildcard match
+}
+
+// Pattern Ranges & Or-patterns
+match number {
+    1 | 2 => println!("One or two"),
+    3..=10 => println!("Between three and ten inclusive"),
+    _ => println!("Anything else"),
+}
+
+// Destructuring Let Controls
+if let WebEvent::KeyPress(c) = event {
+    println!("Extracted: {}", c);
+}
+```
+
+Use code with caution.
+
+### Object-Oriented Syntax: Methods & Traits
+
+rust
+
+```
+struct Circle { radius: f64 }
+
+// Method Implementation Block
+impl Circle {
+    // Associated function (Constructor syntax, no self)
+    fn new(r: f64) -> Self { Circle { radius: r } }
+
+    // Method instance (borrows self)
+    fn area(&self) -> f64 { 3.14159 * self.radius * self.radius }
+
+    // Mutable method instance (can alter data)
+    fn scale(&mut mut self, factor: f64) { self.radius *= factor; }
+}
+
+// Trait Definition (Interface syntax)
+trait HasArea {
+    fn calculate_area(&self) -> f64;
+}
+
+// Trait Implementation
+impl HasArea for Circle {
+    fn calculate_area(&self) -> f64 { self.area() }
+}
+```
+
+Use code with caution.
+
+### Memory Management: Pointers & Lifetimes
+
+rust
+
+```
+// References & Dereferencing
+let mut value = 5;
+let r1: &i32 = &value;      // Immutable reference (shared read access)
+let r2: &mut i32 = &mut value; // Mutable reference (exclusive write access)
+*r2 += 1;                   // Dereference operator to update underlying data
+
+// Smart Pointers (Heap management)
+let boxed: Box<i32> = Box::new(10); // Managed heap allocation
+
+// Explicit Lifetimes
+fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
+    if x.len() > y.len() { x } else { y }
+}
+```
+
+Use code with caution.
+
+### Generics
+
+rust
+
+```
+// Generic Functions
+fn display_item<T: std::fmt::Debug>(item: T) {
+    println!("{:?}", item);
+}
+
+// Generic Struct with Trait Bounds (where clause syntax)
+struct Container<T>
+where T: Clone + Default
+{
+    stored_item: T,
+}
+```
+
+Use code with caution.
+
+### Error Handling
+
+rust
+
+```
+// Option Enum (For potential absence of data)
+let maybe_value: Option<i32> = Some(5);
+let no_value: Option<i32> = None;
+
+// Result Enum (For operations that can fail)
+let operation_success: Result<i32, String> = Ok(200);
+let operation_failure: Result<i32, String> = Err(String::from("404"));
+
+// Question Mark Operator (Propagates errors up the stack)
+fn get_data() -> Result<String, std::io::Error> {
+    let mut file = std::fs::File::open("info.txt")?; // Returns Err early if file missing
+    let mut contents = String::new();
+    std::io::Read::read_to_string(&mut file, &mut contents)?;
+    Ok(contents)
+}
+```
+
+Use code with caution.
+
+### Modules & Visibilities
+
+rust
+
+```
+mod garden {
+    pub mod vegetables {     // pub keyword exposes module content outside
+        pub struct Asparagus {}
+    }
+}
+
+// Path Navigation Syntax
+use garden::vegetables::Asparagus; // Brings path into local scope
+```
+
+Use code with caution.
+
+### Metaprogramming: Macros & Attributes
+
+rust
+
+```
+// Macro Invocation (Notice the '!' symbol)
+println!("Standard macro formatting: {}", 42);
+let vector_macro = vec![1, 2, 3];
+
+// Macro Definition (Declarative rule syntax)
+macro_rules! say_hello {
+    () => { println!("Hello!"); };
+}
+
+// Attributes (Outer / Inner metadata)
+#[derive(Debug, Clone)]    // Outer attribute: automatically generates traits
+struct Point { x: i32, y: i32 }
+
+#[allow(dead_code)]        // Suppresses specific compiler warnings
+fn ghost_code() {}
+```
+
+Use code with caution.
+
+### Concurrency & Unsafe Escape Hatches
+
+rust
+
+```
+// Spawning Threads
+std::thread::spawn(move || {
+    println!("Running code on an isolated execution thread");
+});
+
+// Unsafe Blocks (Bypasses borrow checker verification checks)
+let raw_pointer: *const i32 = &10 as *const i32;
+unsafe {
+    println!("Value from raw pointer execution: {}", *raw_pointer);
+}
+```
+
+Use code with caution.
+
+***
+
+If you need help building out a specific component or want me to **expand upon any particular rule pattern** listed above, just ask! Would you like to explore **complex trait bounds** or **advanced pattern matching** rules next?
+
+- [link](https://www.w3schools.com/rust/rust%5Fsyntax.php)\
+  Rust Syntax - W3Schools\
+  of every Rust program. main() is called a function, and any code inside its curly brackets {} will be executed. Line 2: println!()\
+  W3Schools
+- [link](https://rust-lang.org/learn/)\
+  Learn Rust - Rust Programming Language\
+  Get started with Rust \* Affectionately nicknamed “the book,” The Rust Programming Language will give you an overview of the langua...\
+  Rust Programming Language
+- [link](https://doc.rust-lang.org/reference/)\
+  Introduction - The Rust Reference\
+  Rust releases Rust has a new language release every six weeks. The first stable release of the language was Rust 1.0. 0, followed ...\
+  Rust Documentation
+
+Show all
+
+# all lisp syntax <!-- extremely flexible, but doesnt define anything -->
+
+1:43 PM
+
+The absolute core of Lisp syntax is that <mark><strong>it has almost no syntax at all</strong></mark>. Instead of complex grammatical rules found in languages like C++ or Python, Lisp code is written entirely using a single, unified data structure called an **S-expression (Symbolic Expression)**. [link](https://stopa.io/post/265)
+
+Because Lisp code is structurally identical to Lisp data (a property known as _homoiconicity_), the entire language syntax can be summarized by how these S-expressions are constructed. [link](https://en.wikipedia.org/wiki/Lisp%5F%28programming%5Flanguage%29)
+
+***
+
+### 1. Atoms (The Basic Units)
+
+An atom is anything that cannot be broken down into smaller structural components. [link](https://www.cs.unm.edu/~luger/ai-final2/LISP/CH%2011%5FS-expressions,%20The%20Syntax%20of%20Lisp.pdf)
+
+- **Numbers**: Integers (`42`), floating-point numbers (`3.14`), or ratios/fractions (`2/3`).
+- **Strings**: Wrapped in double quotes, such as `"Hello, World!"`.
+- **Symbols**: Identifiers used as names for variables or functions. They can include alphanumeric and special characters (e.g., `my-variable`, `valid?`, `+`, `*print-base*`).
+- **Booleans**: Logical true is represented by `t`, and logical false is represented by `nil` (which also represents an empty list).
+- **Keywords**: Symbols prefixed with a colon, like `:name` or `:type`. They always evaluate to themselves and act like constants or enums. [link](https://stackoverflow.com/questions/31596080/understanding-the-syntax-of-lisp)
+
+***
+
+### 2. Lists (The Compound Units)
+
+A list is a sequence of items (atoms or other lists) separated by spaces and enclosed completely in parentheses. [link](https://www.cs.unm.edu/~luger/ai-final2/LISP/CH%2011%5FS-expressions,%20The%20Syntax%20of%20Lisp.pdf)
+
+lisp
+
+```
+(1 2 3 4)                        ; A list of numbers
+(print "Hello")                  ; A list containing a symbol and a string
+(a (b c) (d (e f)))              ; Nested lists
+```
+
+Use code with caution.
+
+***
+
+### 3. Forms (How Lisp Evaluates Expressions)
+
+When the Lisp evaluator reads an S-expression, it determines how to run it based on three distinct **Forms**. By default, Lisp treats every non-empty list as a **prefix notation** operation, where the very first element determines what happens. [link](https://gigamonkeys.com/book/syntax-and-semantics)
+
+#### Function Calls
+
+The first element is the function name, and all remaining elements are arguments. Lisp evaluates all arguments _before_ executing the function. [link](https://www2.cs.sfu.ca/CourseCentral/310/pwfong/Lisp/1/tutorial1.html)
+
+lisp
+
+```
+(+ 2 3)                          ; Evaluates to 5
+(* 2 (+ 3 4))                    ; Nested evaluation: 2 * (3 + 4) = 14
+```
+
+Use code with caution.
+
+#### Special Operators
+
+Built-in compiler operations that do not follow standard function evaluation rules. They control execution flow or variable definitions without evaluating every argument first. [link](https://gigamonkeys.com/book/syntax-and-semantics)
+
+lisp
+
+```
+(if condition true-expr false-expr)   ; Conditional evaluation
+(let ((x 10)) (print x))               ; Establishes local variable bindings
+```
+
+Use code with caution.
+
+#### Macros
+
+User-defined or system functions that manipulate the source code structure before it compiles. Macros accept un-evaluated code snippets, transform them, and return a new Lisp form to execute. This allows programmers to invent entirely new language syntax. [link](https://en.wikipedia.org/wiki/Lisp%5F%28programming%5Flanguage%29)
+
+***
+
+### 4. Syntactic Sugar and Reader Macros
+
+Lisp provides a handful of literal shorthand abbreviations (handled by the "Reader") to make writing complex expressions easier: [link](https://www.lix.polytechnique.fr/~liberti/public/computing/prog/lisp/cltl/clm/node14.html)
+
+| Syntax           | Equivalent Lisp Form            | Purpose                                                         |
+| ---------------- | ------------------------------- | --------------------------------------------------------------- | --------------------- | ------------------------ |
+| `'expression`    | `(quote expression)`            | Stops evaluation; treats code literally as data                 |
+| \`\`expression\` | `(backquote expression)`        | Quasiquote; treats code as data but allows selective evaluation |
+| `,expression`    | `(unquote expression)`          | Evaluates a specific variable inside a quasiquote               |
+| `,@expression`   | `(unquote-splicing expression)` | Evaluates and flattens a list inside a quasiquote               |
+| `; comment`      | _Ignored by compiler_           | Single-line comment marker                                      |
+| `#               | comment                         | #`                                                              | _Ignored by compiler_ | Multi-line comment block |
+| `#'function`     | `(function function)`           | References a function object directly as a value                |
+
+***
+
+### 5. Summary Cheat Sheet
+
+Because everything maps to the nested list architecture `(operator arg1 arg2 ... argN)`, standard operations adhere strictly to this format: [link](https://en.wikipedia.org/wiki/Lisp%5F%28programming%5Flanguage%29)
+
+lisp
+
+```
+;; Variable Assignment
+(defparameter *global-var* 100)  ; Defines a global variable
+(setq *global-var* 200)          ; Updates an existing variable's value
+
+;; Function Definition
+(defun square (x)                ; Function name and parameter list
+  (* x x))                       ; Function body
+
+;; Conditionals
+(cond (test1 action1)            ; Multi-way branch statement
+      (test2 action2)
+      (t default-action))
+```
+
+Use code with caution.
+
+If you are working with a specific dialect like **Common Lisp**, **Scheme**, or **Clojure**, would you like to explore the unique data types or macro capabilities of that exact environment?
+
+- [link](https://www.tutorialspoint.com/lisp/lisp%5Fbasic%5Fsyntax.htm)\
+  Lisp - Basic Syntax - TutorialsPoint\
+  LISP represents a function call f(x) as (f x), for example cos(45) is written as cos 45. LISP expressions are case-insensitive, co...\
+  TutorialsPoint
+- [link](https://stackoverflow.com/questions/31596080/understanding-the-syntax-of-lisp)\
+  Understanding the syntax of LISP - Stack Overflow\
+  3 Answers. Sorted by: 7. I second the recommendations for LispBook and Practical Common Lisp. Both great books. Once you have unde...\
+  Stack Overflow
+- [link](https://www.youtube.com/watch?v=M-BFgErib4k\&t=115)\
+  An Brief Introduction to LISP - Pt 1, Syntax\
+  and I wanted a good one because our eventual project is we're going to build a very simple web web server using lisp. but for the ...\
+  3m\
+  YouTube·O'Reilly
+
+Show all
+
+## examples
+
+examples
+
+2:35 PM
+
+Here are concrete examples of Lisp syntax in action, ranging from basic math to advanced macros. These examples use standard **Common Lisp** syntax.
+
+### 1. Basic Operations & Variables
+
+Lisp uses **prefix notation**, meaning the operator always comes first.
+
+- **Math Equation** (5 × 3) + (10 / 2):\
+  lisp
+
+<!---->
+
+```
+(+ (* 5 3) (/ 10 2))  ; Evaluates to 20
+```
+
+Use code with caution.
+
+- **Global Variable**:\
+  lisp
+
+<!---->
+
+```
+(defparameter *score* 0)
+```
+
+Use code with caution.
+
+- **Local Variables**:\
+  lisp
+
+<!---->
+
+```
+(let ((width 10)
+      (height 5))
+  (* width height))   ; Evaluates to 50
+```
+
+Use code with caution.
+
+***
+
+### 2. Control Flow & Conditionals
+
+Notice how conditions are nested inside parenthesized blocks.
+
+- **If / Else Statement**:\
+  lisp
+
+<!---->
+
+```
+(if (> *score* 50)
+    (print "You win!")
+    (print "Keep trying!"))
+```
+
+Use code with caution.
+
+- **Cond (Switch / Match Case)**:\
+  lisp
+
+<!---->
+
+```
+(cond ((< *score* 50)  (print "Low"))
+      ((<= *score* 85) (print "Medium"))
+      (t               (print "High")))  ; 't' acts as 'else'
+```
+
+Use code with caution.
+
+***
+
+### 3. Defining Functions
+
+Functions use `defun`, followed by the name, arguments list, and body.
+
+- **Simple Calculation**:\
+  lisp
+
+<!---->
+
+```
+(defun average (a b)
+  (/ (+ a b) 2.0))
+
+(average 10 20)       ; Returns 15.0
+```
+
+Use code with caution.
+
+- **Recursive Function (Factorial)**:\
+  lisp
+
+<!---->
+
+```
+(defun factorial (n)
+  (if (<= n 1)
+      1
+      (* n (factorial (- n 1)))))
+
+(factorial 5)         ; Returns 120
+```
+
+Use code with caution.
+
+***
+
+### 4. Working with Lists (Data vs Code)
+
+The single quote `'` is crucial. It tells Lisp, "Treat this next part as a literal list of data, don't execute it."
+
+- **Creating Data Lists**:\
+  lisp
+
+<!---->
+
+```
+(defparameter *fruits* '(apple banana cherry))
+```
+
+Use code with caution.
+
+- **List Manipulation**:\
+  lisp
+
+<!---->
+
+```
+(first *fruits*)      ; Returns APPLE
+(rest *fruits*)       ; Returns (BANANA CHERRY)
+(cons 'orange *fruits*) ; Returns (ORANGE APPLE BANANA CHERRY)
+```
+
+Use code with caution.
+
+- **Mapping over a list**:\
+  lisp
+
+<!---->
+
+```
+(mapcar #'1+ '(10 20 30)) ; Returns (11 21 31)
+```
+
+Use code with caution.
+
+***
+
+### 5. Macros (Code That Writes Code)
+
+Macros allow you to create completely new language syntax. They accept un-evaluated code, reorganize it, and return a new Lisp form.
+
+- **Creating a "When-Not" loop**:\
+  lisp
+
+<!---->
+
+```
+;; Define a macro that acts like an inverse 'when' statement
+(defmacro unless (condition &body body)
+  `(if (not ,condition)
+       (progn ,@body)))
+
+;; Usage of the macro:
+(unless (is-game-over)
+  (update-player)
+  (render-screen))
+```
+
+Use code with caution.
+
+If you are writing code for a specific environment, let me know if you want to look at **Clojure**, **Scheme/Racket**, or if you want to test these out in a **Common Lisp REPL** environment!
+
+- [link](https://wiki.c2.com/?SweetExpressions)\
+  Sweet Expressions\
+  Ironically, Lisp already has a little bit of "function" syntax and "infix" syntax, adopted over the years: If I wanted to quote a ...\
+  \
+  C2 Wiki
+- [link](https://notes.jordanscales.com/when-code-is-data)\
+  When code is data\
+  The Lisp family of programming languages uses a syntax that is full of parentheses and looks quite foreign to those familiar with ...\
+  \
+  \
+  notes.jordanscales.com
+
+## all lisp builtin operators
+
+all lisp builtin operators
+
+2:36 PM
+
+In Lisp, standard functions (like `+` or `car`) are just ordinary library code. The absolute core, primitive language builders are called **Special Operators**. [link](https://gigamonkeys.com/book/the-special-operators)
+
+The **ANSI Common Lisp standard** explicitly defines **exactly 25 special operators**. Every other operation, loop, or language framework is structurally built on top of these 24–25 immutable building blocks. [link](https://gigamonkeys.com/book/the-special-operators)
+
+***
+
+### The 25 Core Special Operators
+
+#### 1. Scope and Local Bindings
+
+- `LET`: Binds variables in a parallel lexical environment.
+- `LET*`: Binds variables sequentially, letting later variables access earlier ones.
+- `FLET`: Defines local functions in parallel.
+- `LABELS`: Defines local, mutually recursive functions.
+- `MACROLET`: Defines local, temporary macros.
+- `SYMBOL-MACROLET`: Binds a local macro to a single symbol.
+- `PROGV`: Binds global dynamic variables dynamically at runtime. [link](https://gigamonkeys.com/book/the-special-operators)
+
+#### 2. Flow Control and Conditionals
+
+- `IF`: The primitive branching evaluation instruction.
+- `BLOCK`: Establishes a named lexical point out of which you can jump.
+- `RETURN-FROM`: Immediately leaves a declared `BLOCK` with a specific value.
+- `TAGBODY`: Establishes a scope where labels can be used with a low-level `GO` jump.
+- `GO`: Jumps directly to a tag defined inside a parent `TAGBODY` loop. [link](https://gigamonkeys.com/book/the-special-operators)
+
+#### 3. Evaluation Manipulation
+
+- `QUOTE`: Bypasses the evaluation loop completely to treat code blocks as raw data structures (`'`).
+- `FUNCTION`: Explicitly captures a namespace reference to a function instance (`#'`).
+- `SETQ`: Directly assigns or overrides a lexically bound variable value.
+- `EVAL-WHEN`: Instructs the compiler whether to run code during compiling, loading, or executing phases. [link](https://www.lispworks.com/documentation/HyperSpec/Body/s%5Ffn.htm)
+
+#### 4. Handling Return Values
+
+- `MULTIPLE-VALUE-CALL`: Applies a function object directly using values compiled from multiple return arguments.
+- `MULTIPLE-VALUE-PROG1`: Evaluates multiple forms but locks and passes only the first expression's value down the thread.
+- `PROGN`: Sequentially executes multiple lines of expressions, returning the value of the final line. [link](https://stackoverflow.com/questions/37869336/what-do-common-lisp-function-special-form-macro-etc-names-mean-and-where-can-i)
+
+#### 5. Non-Local Jumps and Safety
+
+- `CATCH`: Establishes a dynamic tag block point to safely receive data jumps.
+- `THROW`: Immediately unwinds stack calls out to match a specific `CATCH` tag.
+- `UNWIND-PROTECT`: Ensures cleanup execution forms run no matter what, protecting structures even if unhandled code crashes the process. [link](https://stackoverflow.com/questions/68868958/as-of-2021-what-are-all-common-lisp-special-functions)
+
+#### 6. Optimization and Compilation
+
+- `THE`: Explicitly declares expected data types to help compilers heavily optimize CPU assembly code.
+- `DECLARE`: Embeds optimization flags, safety checks, or inline compilation declarations.
+- `LOAD-TIME-VALUE`: Pre-evaluates an expression at link/load time, caching it as a read-only runtime constant. [link](https://stackoverflow.com/questions/68868958/as-of-2021-what-are-all-common-lisp-special-functions)
+
+***
+
+### Built-in Core Functions
+
+While the special operators handle how code evaluates, these core mathematical and list-handling operations are bundled into virtually all interpreters and compilers:
+
+| Category           | Primitives                       | Examples       |
+| ------------------ | -------------------------------- | -------------- |
+| **Arithmetic**     | `+`, `-`, `*`, `/`, `mod`, `rem` | `(+ 2 3)`      |
+| **Comparison**     | `=`, `/=`, `<`, `>`, `<=`, `>=`  | `(< x 10)`     |
+| **List Mechanics** | `car`, `cdr`, `cons`, `list`     | `(car '(a b))` |
+| **Identity Tests** | `eq`, `eql`, `equal`, `equalp`   | `(eq 'x 'x)`   |
+| **Boolean**        | `and`, `or`, `not`               | `(not nil)`    |
+
+Would you like to examine how a specific operator—like **`UNWIND-PROTECT`** or **`MULTIPLE-VALUE-CALL`**—behaves with an execution tracing example?
+
+- [link](https://stackoverflow.com/questions/68868958/as-of-2021-what-are-all-common-lisp-special-functions)\
+  As of 2021, what are all common lisp special functions?\
+  Special functions receive this name because they are different from macros and ordinary functions. Just like macros, special funct...\
+  Stack Overflow
+- [link](https://gigamonkeys.com/book/the-special-operators)\
+  20\. The Special Operators\
+  Common Lisp has 25 special operators, which provide access to the underlying machinery of the language. Some of the most frequentl...\
+  gigamonkeys
+- [link](https://stackoverflow.com/questions/37869336/what-do-common-lisp-function-special-form-macro-etc-names-mean-and-where-can-i)\
+  What do common lisp function/special form/macro/etc. names ...\
+  let : LET variable-name be bound to a certain value. flet : LET Function-name be bound to a certain function. progn : execute a PR...\
+  Stack Overflow
+
+Show all
+
+## macro examples
+
+Here are concrete examples of Lisp macros, ordered from basic syntax shortcuts to advanced code-generation tools.
+
+All examples use standard **Common Lisp** syntax and leverage the backquote (\`\`\`\`\`) to template the code, the comma (`,`) to inject variables, and the comma-at (`,@`) to splice lists.
+
+***
+
+### 1. The Basic Wrap: `when-not`
+
+Lisp has a built-in `when`, but if you want a `when-not` (execute multiple lines only if a condition is **false**), you can build it using `if` and `progn`.
+
+lisp
+
+```
+(defmacro when-not (condition &body body)
+  `(if (not ,condition)
+       (progn ,@body)))
+```
+
+Use code with caution.
+
+**How it expands:**
+
+lisp
+
+```
+;; You write:
+(when-not (user-logged-in-p)
+  (show-login-screen)
+  (log-attempt))
+
+;; Lisp expands it into:
+(if (not (user-logged-in-p))
+    (progn
+      (show-login-screen)
+      (log-attempt)))
+```
+
+Use code with caution.
+
+***
+
+### 2. Variable Manipulation: `inverf`
+
+This macro toggles a boolean variable in place, turning `t` to `nil` and `nil` to `t`.
+
+lisp
+
+```
+(defmacro inverf (variable)
+  `(setf ,variable (not ,variable)))
+```
+
+Use code with caution.
+
+**How it expands:**
+
+lisp
+
+```
+;; You write:
+(inverf *is-running*)
+
+;; Lisp expands it into:
+(setf *is-running* (not *is-running*))
+```
+
+Use code with caution.
+
+***
+
+### 3. Iteration: `repeat`
+
+Lisp has powerful loop constructs, but sometimes you just want to run a block of code N times without worrying about loop counters.
+
+lisp
+
+```
+(defmacro repeat (n &body body)
+  `(dotimes (i ,n)
+     ,@body))
+```
+
+Use code with caution.
+
+**How it expands:**
+
+lisp
+
+```
+;; You write:
+(repeat 3
+  (print "Hello!"))
+
+;; Lisp expands it into:
+(dotimes (i 3)
+  (print "Hello!"))
+```
+
+Use code with caution.
+
+***
+
+### 4. Avoiding Variable Capture: `with-time-count`
+
+When a macro needs to create its own internal variables, you must use `gensym` (generate symbol). This prevents the macro's internal variables from accidentally overwriting variables in the user's surrounding code (a bug known as variable capture).
+
+This macro measures and prints how long a block of code takes to execute.
+
+lisp
+
+```
+(defmacro with-time-count (&body body)
+  (let ((start-time (gensym))
+        (end-time (gensym)))
+    `(let ((,start-time (get-internal-real-time)))
+       (progn ,@body)
+       (let ((,end-time (get-internal-real-time)))
+         (format t "Elapsed time: ~F seconds.~%"
+                 (/ (- ,end-time ,start-time)
+                    internal-time-units-per-second))))))
+```
+
+Use code with caution.
+
+**How it expands:**
+
+lisp
+
+```
+;; You write:
+(with-time-count
+  (heavy-matrix-calculation)
+  (save-results))
+
+;; Lisp expands it into safely obfuscated variables:
+(let ((#:G1043 (get-internal-real-time)))
+  (progn
+    (heavy-matrix-calculation)
+    (save-results))
+  (let ((#:G1044 (get-internal-real-time)))
+    (format t "Elapsed time: ~F seconds.~%" (/ (- #:G1044 #:G1043) internal-time-units-per-second))))
+```
+
+Use code with caution.
+
+***
+
+### 5. Domain-Specific Language (DSL): `define-html`
+
+Macros can completely alter Lisp's behavior to make it look like a different language. This macro converts standard Lisp lists into formatted HTML strings at compile time.
+
+lisp
+
+```
+(defmacro with-html-tag (tag &body body)
+  `(progn
+     (format t "<~A>" (string-downcase ',tag))
+     ,@body
+     (format t "</~A>~%" (string-downcase ',tag))))
+```
+
+Use code with caution.
+
+**How it expands:**
+
+lisp
+
+```
+;; You write:
+(with-html-tag html
+  (with-html-tag body
+    (print "Welcome to my website!")))
+
+;; Lisp expands it into:
+(progn
+  (format t "<~A>" (string-downcase 'html))
+  (progn
+    (format t "<~A>" (string-downcase 'body))
+    (print "Welcome to my website!")
+    (format t "</~A>~%" (string-downcase 'body))))
+  (format t "</~A>~%" (string-downcase 'html)))
+```
+
+Use code with caution.
+
+***
+
+### How to inspect macros yourself
+
+If you want to see exactly how Lisp translates any macro on your machine, wrap your code inside the built-in function `macroexpand-1`:
+
+lisp
+
+```
+(macroexpand-1 '(when-not (ready-p) (wait)))
+```
+
+Use code with caution.
+
+Would you like to build a macro that solves a **specific programming problem** you are facing, or explore how macros work in a different dialect like **Clojure** or **Scheme**?
+
+- [link](https://www.reddit.com/r/lisp/comments/eihpyf/a%5Fcanonical%5Fexample%5Fof%5Flisp%5Fmacro/)\
+  A canonical example of Lisp macro : r/lisp\
+  Jan 1, 2020 — 34 votes, 34 comments. I have recently started using Emacs and generally interested in programming languages and models. I have he...\
+  \
+  Reddit
+- [link](https://news.ycombinator.com/item?id=9508108)\
+  Could someone please explain the difference between Lisp macros and, say, langua...\
+  Your question doesn't make sense. High order functions and macros are orthogonal concepts. Lisp supports first-class, high order f...\
+  \
+  Hacker News
+- [link](https://trailblazer.to/2.1/docs/macro/)\
+  Macro\
+  General notes Variable mapping Most macros internally use variable mapping to allow injection of configuration variables or to lim...\
+  \
+  \
+  trailblazer.to
+
+Show all
+
 # 
 
 # . thinking: recipe dsl spec
@@ -2965,6 +4263,47 @@ async
 
 automatic
 
+---
+
+"oop"
+
+```f
+dog name
+  name
+
+dog.bark
+  pr 'woof'
+```
+
+```f
+dog name
+  { name }
+
+dog.bark dog
+  pr `{dog.name} woofs` # {} instead of ${} i guess. simplicity outweights. use \ in rare scenarios.
+
+dog.bark {name}
+  pr `{name} woofs`
+```
+
+```f
+dog name
+# class dog name
+  bark
+    prn `{name} woofs` # pr prints, prn prints and linebreaks, print = prn
+
+  name
+```
+
+it's automatically a class, when it defines unused fn.
+
+```f
+complex a b
+  [a, b]
+
+complex.is
+```
+
 ## operators
 
 call
@@ -3114,5 +4453,23 @@ how does it work:
 
 - if there are some unhandled errors, panic
 - otherwise preserve error
+
+
+
+## syntax sugar
+
+definition inside if cond
+
+---
+
+decorator
+
+```f
+fn @= log
+fn @= perf
+
+fof fn of values global
+  fn @= log perf
+```
 
 
