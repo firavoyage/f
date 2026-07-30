@@ -2,16 +2,6 @@ todo
 
 ---
 
-design a dsl for recipe.
-
-could have. maybe irrelevant.
-
-but it would be exciting and meaningful.
-
-research and summarize firascript and glaze
-
----
-
 document everything known. elaborate the plan.
 
 ---

@@ -654,6 +654,15 @@ i think i do want an ast. but maybe a simpler one.
 
 well, i guess "js syntax" is way more conceptually simple than "js ast".
 
-ast is designed to be rigid for parsers.
+ast is designed to be rigid for parsers. many words are highly coupled, yet not merged into an alias or sth.
+
+20 00 design a dsl for recipe. research and summarize firascript and glaze.
+
+could have. maybe irrelevant.
+
+but it would be exciting and meaningful.
+
+---
+
 
 
