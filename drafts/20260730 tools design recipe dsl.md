@@ -2024,6 +2024,96 @@ Show all
 
 enough research. doesnt seem quite meaningful.
 
+# python scope
+
+In Python, **scope determines the visibility and accessibility of variables** across different regions of your code. Python resolves variable names using the **LEGB rule**, which defines the strict order (`Local` → `Enclosing` → `Global` → `Built-in`) the interpreter uses to search for a name. [link](https://realpython.com/python-scope-legb-rule/)
+
+### The LEGB Rules of Scope
+
+- **Local (L)**: Variables defined inside the body of the current function or lambda expression. They are completely inaccessible outside that function.
+- **Enclosing (E)**: Variables inside an outer function when dealing with nested (inner) functions.
+- **Global (G)**: Variables defined at the top level of a script, module, or file. They can be read from anywhere within that module.
+- **Built-in (B)**: Special, predefined keywords, exceptions, and functions (like `print()`, `len()`, or `ValueError`) loaded automatically by Python. [link](https://realpython.com/python-scope-legb-rule/)
+
+***
+
+### Crucial Python Quirks
+
+#### 1. No Block Scope
+
+Unlike languages like C++ or Java, code blocks like `if` statements, `for` loops, and `while` loops **do not** create their own scope. A variable assigned inside a loop remains accessible outside it. [link](https://www.reddit.com/r/learnpython/comments/kzvex5/how%5Fdoes%5Fscope%5Fin%5Fpython%5Fwork/)
+
+python
+
+```
+if True:
+    x = "I do not have block scope!"
+
+print(x)  # Prints: I do not have block scope!
+```
+
+Use code with caution.
+
+#### 2. Modifying Higher Scopes (`global` and `nonlocal`)
+
+By default, you can read variables from higher scopes but you cannot modify them. Trying to change them creates a new local variable instead. To modify them, you must explicitly use keywords: [link](https://docs.python.org/3/tutorial/classes.html)
+
+- Use **`global`** to modify variables at the script/module level.
+- Use **`nonlocal`** to modify variables inside a nested outer function. [link](https://www.w3schools.com/python/python%5Fscope.asp)
+
+python
+
+```
+count = 0  # Global variable
+
+def increment():
+    global count
+    count += 1  # Modifies the global variable directly
+
+def outer_func():
+    msg = "Hello"  # Enclosing variable
+    def inner_func():
+        nonlocal msg
+        msg = "Hi"  # Modifies the enclosing variable directly
+```
+
+Use code with caution.
+
+#### 3. The UnboundLocalError
+
+If you assign a value to a variable anywhere inside a function, Python marks it as local to that entire function from the very start. Accessing it _before_ that assignment line will crash your code. [link](https://www.youtube.com/watch?v=KyCw1uA1-M8)
+
+python
+
+```
+y = 10
+
+def test():
+    print(y)  # Throws UnboundLocalError!
+    y = 5     # Because this assignment flags 'y' as local to the whole function
+```
+
+Use code with caution.
+
+Would you like to look at a **specific code bug** you are trying to solve, or do you want to explore how scope behaves inside **Python classes and methods**?
+
+AI can make mistakes, so double-check responses
+
+- [link](https://www.w3schools.com/python/python%5Fscope.asp)\
+  Python Scope - W3Schools\
+  Scope. A variable is only available from inside the region it is created. This is called scope. Local Scope. A variable created in...\
+  W3Schools
+- [link](https://www.reddit.com/r/learnpython/comments/kzvex5/how%5Fdoes%5Fscope%5Fin%5Fpython%5Fwork/)\
+  How Does Scope in Python Work? : r/learnpython - Reddit\
+  Jan 18, 2021 — Comments Section \* K900\_ • 6y ago. Only functions and classes introduce new scopes in Python. Control flow blocks share their "out...\
+  Reddit·r/learnpython
+- [link](https://stackoverflow.com/questions/2829528/whats-the-scope-of-a-variable-initialized-in-an-if-statement)\
+  What's the scope of a variable initialized in an if statement?\
+  May 13, 2010 — Yes, they're in the same "local scope", and actually code like this is common in Python: if condition: x = 'something' else: x = '\
+  Stack Overflow
+
+Show all
+
 # . thinking: recipe dsl spec
 
 ## fundamentals
@@ -2042,7 +2132,7 @@ enough research. doesnt seem quite meaningful.
 - no operator
 - not a keyword
 - ~~can contain spaces <!-- space is not an op -->~~ no spaces <!-- space is op. it can behave as comma. -->
-- can start w a number <!-- 3x doesnt make any sense. i will read as a whole as long as it doesnt contain spaces. btw omitting * is not supported. better to use string via some math lib if needed. -->
+- can start w a number <!-- 3x doesnt make any sense. i will read as a whole as long as it doesnt contain spaces. btw omitting * is not supported. better to use string via some math lib if needed. --> (but not just a number)
 - can contain all unicode char <!-- it's no difference than english, despite some typing difficulties and possible ambiguities -->
 
 ```f
@@ -2150,6 +2240,40 @@ read ltr, evaluate rtl (after it identifies the = op).
 
 ---
 
+typing
+
+```
+a = 1 # implict
+
+int a = 1 # explict
+
+float a = 1 # optimized
+
+vector a b
+  [a, b]
+
+vector a = 1 2
+```
+
+when typed, you can use prototype methods.
+
+```
+vector op + = (a, b){
+  [a[0]+b[0], a[1]+b[1]]
+}
+
+vector.add = (a, b){
+  [a[0]+b[0], a[1]+b[1]]
+}
+
+# no ambiguity. they left hand side cant be an expression
+vector.add (a, b){
+  [a[0]+b[0], a[1]+b[1]]
+}
+```
+
+---
+
 data structure
 
 ```f
@@ -2170,7 +2294,21 @@ arr(...args){
 
 a = arr 1 2 3
 
-# you may even override
+arr a = 1 2 3 # syntax sugar. the left side couldnt be an expression. so it's of no ambiguity.
 ```
 
+array counts from zero. you may override it. <!-- globally, through a symbol op for foo[123], like array.getprop -->
 
+```
+
+```
+
+## operators
+
+
+override
+
+```
+# op get is special.
+arr op get 
+```
