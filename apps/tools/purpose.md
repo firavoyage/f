@@ -632,4 +632,21 @@ a quick win i guess.
 
 research css inheritance.
 
+19 00 check the feasibility of recipe dsl.
+
+how to run a dynamic js string in browsers
+
+---
+
+there are many ways. but i think it's not about to choose one.
+
+the conclusion is it's highly feasible and easy.
+
+---
+
+how to construct a js string somehow? via ast?
+
+would i construct a js string via ast?
+
+
 
