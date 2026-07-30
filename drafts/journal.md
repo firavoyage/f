@@ -47912,6 +47912,10 @@ lawyer, w shock immunity, is good for reviving. and it's esp common for hunters 
 
 <!-- well it defaults to the last character it seems. better to set explicitly. -->
 
+31
+
+01 00 export ayanami and huige group on tg.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
