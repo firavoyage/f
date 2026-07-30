@@ -731,4 +731,26 @@ Show all
 
 # . thinking: firascript, glaze
 
+the origin of firascript, is 
 
+> give me some code snippets to show the difference of syntax between programming languages
+
+i revise the examples. making them asap.
+
+the origin of glaze, is
+
+> design a new language, inspired by rust, making it simpler and sweeter
+
+neither works.
+
+it's better to design each syntax, like tokenizer, control flow, rather than revising what's already hallucinated (at least not meticulously thought)
+
+---
+
+glaze is useless. "let mut" was never for humans.
+
+you would rather, simply, say "x 10" or "x = 10".
+
+you can prepend let to make it (block) scoped.
+
+you can prepend const to make it immutable.
