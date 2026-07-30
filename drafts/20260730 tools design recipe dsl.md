@@ -2088,4 +2088,23 @@ el
 
 all curly braces are scoped. 
 
+```js
+use(lib)
+  fof method of lib
+    global_this.method = method
+```
+
+```f
+g global
+
+use lib
+  merge g lib
+  # fof name method of lib g[name] = method
+  # lib each name method g[name] = method
+```
+
+the only scenario you would care about scopes is, you wanna define sth globally in a fn.
+
+global iff js globalthis
+
 
