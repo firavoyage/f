@@ -650,5 +650,10 @@ would i construct a js string via ast?
 
 i think i do want an ast. but maybe a simpler one.
 
+---
+
+well, i guess "js syntax" is way more conceptually simple than "js ast".
+
+ast is designed to be rigid for parsers.
 
 
