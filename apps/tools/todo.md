@@ -103,6 +103,10 @@ sidebar collapse. settings. theme. sidebar taxonomy pref. tool view pref.
 
 ---
 
+write a custom tool, tg to journal
+
+---
+
 adapt maimai, show loss of each
 
 sometimes it can be simple. actually, that might be the most use cases.
