@@ -2,6 +2,14 @@ todo
 
 ---
 
+check the feasibility of dsl.
+
+how to run a dynamic js string in browsers
+
+
+
+---
+
 design a dsl for recipe.
 
 could have. maybe irrelevant.
