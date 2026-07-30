@@ -896,4 +896,1138 @@ it looks fine. but it would help much. it's partial.
 
 despite extensive examples, it's quite limited in syntactic range.
 
+# js switch syntax
+
+The **[JavaScript switch statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch)** evaluates an expression and executes code matching a specific value case. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch)
+
+### Basic Syntax
+
+javascript
+
+```
+switch (expression) {
+  case value1:
+    // Code to run if expression === value1
+    break;
+  case value2:
+    // Code to run if expression === value2
+    break;
+  default:
+    // Code to run if no cases match
+}
+```
+
+Use code with caution.
+
+### Key Components
+
+- **`switch (expression)`**: The core value or variable you want to evaluate.
+- **`case value:`**: A potential match. JavaScript uses **strict equality (`===`)** for comparison.
+- **`break;`**: Stops execution and jumps out of the block. If omitted, the script executes the next case regardless of whether it matches (known as **fall-through**).
+- **`default:`**: The optional fallback block that runs if no case matches the expression. [link](https://mimo.org/glossary/javascript/switch-statement)
+
+### Practical Examples
+
+#### 1. Standard Usage
+
+javascript
+
+```
+const pet = "dog";
+
+switch (pet) {
+  case "cat":
+    console.log("Meow!");
+    break;
+  case "dog":
+    console.log("Woof!"); // This block executes
+    break;
+  default:
+    console.log("Unknown animal sound.");
+}
+```
+
+Use code with caution.
+
+#### 2. Multi-Case Grouping (Shared Code)
+
+You can omit the `break` statement intentionally to handle multiple values with the same logic: [link](https://www.reddit.com/r/learnjavascript/comments/v1jj0c/switch%5Fstatement%5Fexplained%5Ffor%5Fbeginners/)
+
+javascript
+
+```
+const fruit = "lime";
+
+switch (fruit) {
+  case "lemon":
+  case "lime":
+  case "orange":
+    console.log("This is a citrus fruit."); // Executes for lemon, lime, or orange
+    break;
+  default:
+    console.log("Not a citrus fruit.");
+}
+```
+
+Use code with caution.
+
+#### 3. Range-Based Conditions (`switch (true)`)
+
+To evaluate dynamic ranges or complex logic instead of exact values, pass `true` into the switch expression: [link](https://www.reddit.com/r/AskProgramming/comments/1nrzzey/i%5Frecently%5Flearned%5Fhow%5Fto%5Fuse%5Fswitch%5Fstatements/)
+
+javascript
+
+```
+const score = 85;
+
+switch (true) {
+  case (score >= 90):
+    console.log("Grade: A");
+    break;
+  case (score >= 80):
+    console.log("Grade: B"); // This block executes
+    break;
+  default:
+    console.log("Grade: C or below");
+}
+```
+
+Use code with caution.
+
+Would you like to see how to convert a specific **if-else chain** into a switch statement, or do you want to learn how to fix **block-scope variables issues** inside switch cases? [link](https://dev.to/haastrupea/javascript-code-block-with-switch-statements-1m2i)
+
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch)\
+  switch - JavaScript - MDN Web Docs - Mozilla\
+  Jul 8, 2025 — Syntax. js Copy. switch (expression) { case caseExpression1: statements case caseExpression2: statements // … case caseExpressionN...\
+  MDN Web Docs
+- [link](https://www.reddit.com/r/AskProgramming/comments/1nrzzey/i%5Frecently%5Flearned%5Fhow%5Fto%5Fuse%5Fswitch%5Fstatements/)\
+  I recently learned how to use switch statements in JS but cannot ...\
+  Sep 27, 2025 — \* hibbelig. • 10mo ago. So the switch statement says to do things depending on the value of carSpeed. The first case uses the valu...\
+  Reddit·r/AskProgramming
+- [link](https://www.reddit.com/r/learnjavascript/comments/v1jj0c/switch%5Fstatement%5Fexplained%5Ffor%5Fbeginners/)\
+  Switch statement explained for beginners : r/learnjavascript\
+  May 31, 2022 — Yeah this is a huge miss for fall through conditions understanding. • 4y ago. Comment deleted by user. Barnezhilton. • 4y ago. • E...\
+  Reddit·r/learnjavascript
+
+Show all
+
+## what do ppl say about its design
+
+Developers and computer scientists frequently criticize the design of the JavaScript `switch` statement, often calling it **verbose, fragile, and an outdated procedural relic** borrowed from Java and C. While it remains popular for its performance optimizations in JavaScript engines, its structural design receives significant criticism. [link](https://news.ycombinator.com/item?id=19226262)
+
+Here are the main criticisms of its design, along with what developers prefer instead.
+
+### Major Design Criticisms
+
+- **The Mandatory `break` (Fragility)**: Having to explicitly type `break` to stop execution is widely considered a major design flaw. Forgetting a `break` causes silent "fall-through" bugs that are notoriously difficult to track down during manual debugging. [link](https://gist.github.com/jonkemp/2c6e1e0f530b2af034a50374532f406f)
+- **Lack of Block Scope**: By default, a `switch` block shares a single block scope across all cases. If you define `let x = 1` in `case 'A'`, you cannot redefine `let x = 2` in `case 'B'` without wrapping the entire case inside arbitrary curly braces `{}`. [link](https://stackoverflow.com/questions/61787379/why-is-switch-case-syntax-so-different-from-the-rest-of-javascript)
+- **Statements instead of Expressions**: A `switch` block cannot resolve directly to a value. You cannot assign its output directly to a variable (e.g., `const result = switch(val) {...}` is invalid). This forces developers to use external mutable variables or wrap the structure inside helper functions. [link](https://medium.com/tandemly/whats-wrong-with-the-switch-statement-in-javascript-c560e8ea3c0b)
+- **Violation of SOLID Principles**: Clean code advocates (like Robert C. Martin / Uncle Bob) argue that large switch blocks violate the **Single Responsibility Principle (SRP)** and the **Open/Closed Principle (OCP)**. Adding a new software feature forces you to modify existing switch structures, making systems brittle and prone to regression bugs. [link](https://olaf-thielke.medium.com/3-reasons-why-the-switch-statement-is-killing-our-software-ca027eaafe29)
+
+***
+
+### Popular Design Alternatives
+
+Because of these flaws, modern JavaScript development patterns often replace `switch` entirely.
+
+#### 1. Object / Map Lookup Tables (The Most Popular Fix)
+
+Instead of a rigid block, developers use standard JavaScript objects or `Map` structures to map keys directly to values or handler functions. [link](https://www.reddit.com/r/learnjavascript/comments/1hl60nm/why%5Fyou%5Fhave%5Fto%5Fuse%5Fswitch%5Fcase%5Finstead%5Fof%5Fifelse/)
+
+javascript
+
+```
+// Clean, declarative, and handles dynamic extensions easily
+const actionMap = {
+  create: () => "Creating item...",
+  update: () => "Updating item...",
+  delete: () => "Deleting item..."
+};
+
+const executeAction = (action) => {
+  return actionMap[action] ? actionMap[action]() : "Unknown action";
+};
+```
+
+Use code with caution.
+
+#### 2. Native Pattern Matching (The Upcoming Standard)
+
+The **[TC39 Pattern Matching Proposal](https://github.com/tc39/proposal-pattern-matching)** introduces a brand new `match` expression to the language. It is structurally exhaustive by design, prevents fall-through bugs, and evaluates directly to expressions. [link](https://medium.com/write-a-catalyst/javascript-pattern-matching-is-powerful-but-comes-with-hidden-risks-59b3a4762eda)
+
+javascript
+
+```
+// Future ES standard syntax replacing switch entirely
+const status = match (response) {
+  when { status: 200 } => "Success",
+  when { status: 404 } => "Not Found",
+  clear => "Unknown"
+};
+```
+
+Use code with caution.
+
+Would you like to see how to refactor an existing, complex **switch statement into an Object Lookup Table**, or explore how **block-scoping variables** works when you absolutely must use a switch?
+
+- [link](https://medium.com/tandemly/whats-wrong-with-the-switch-statement-in-javascript-c560e8ea3c0b)\
+  What's wrong with the switch statement in JavaScript? - Medium\
+  Sep 7, 2017 — To a certain degree, the switch/case mechanism is a potentially hazardous syntax to represent states of modern applications. Each ...\
+  Medium·Orlando La
+- [link](https://news.ycombinator.com/item?id=19226262)\
+  Why I prefer objects over switch statements - Hacker News\
+  Feb 22, 2019 — Firstly, switches are arguably way, way (waaaay!) more readable than the code proposed. It's a matter of taste for sure, but argua...\
+  Hacker News
+- [link](https://stackoverflow.com/questions/61787379/why-is-switch-case-syntax-so-different-from-the-rest-of-javascript)\
+  Why is Switch/Case syntax so different from the rest of ...\
+  May 14, 2020 — 2 Answers. Sorted by: 1. You can actually use curly braces in JavaScript/TypeScript switch case statements, which is similar to wh...\
+  Stack Overflow
+
+Show all
+
+## switch design in other pl
+
+While JavaScript is still catching up, other programming languages have completely overhauled or replaced the classic C-style `switch` statement. Modern language design shifts away from simple value checks toward **expressions, structural pattern matching, and safety guarantees**. [link](https://www.reddit.com/r/ProgrammingLanguages/comments/10vomwh/languages%5Fwith%5Fswitch%5Fstatements%5Fthat%5Fcan%5Fexecute/)
+
+The design landscape of `switch` across other major languages falls into distinct categories:
+
+### 1. The Modern Expressions (Rust, Scala, Swift)
+
+These languages do not use "switch statements"; they use **match expressions**. They evaluate directly to a value, eliminate the `break` keyword entirely, and require absolute safety. [link](https://www.reddit.com/r/functionalprogramming/comments/15z9oe1/switch%5Fstatement%5Fdiscouraged%5Fmatch%5Fexpression/)
+
+- **[Rust](https://doc.rust-lang.org/book/ch06-02-match.html)**: Widely considered the gold standard of branch design.
+  - **Exhaustiveness**: The code will not compile if you miss a single possible case.
+
+  - **Destructuring**: It extracts variables directly out of complex data objects or nested JSON-like structures. [link](https://dev.to/mortoray/why-switch-is-better-than-if-else-9cj)\
+    rust
+
+<!---->
+
+```
+// Rust match is an expression that yields a value directly
+let message = match current_status {
+    Status::Active => "User is active",
+    Status::Timeout(seconds) => "Timed out!", // Binds 'seconds' variable
+    _ => "Unknown status", // Enforced fallback catch-all
+};
+```
+
+Use code with caution.
+
+- **Swift**: Eliminates implicit fall-through bugs. It executes only one matched case block and stops automatically without a `break` keyword. If you intentionally want a fall-through, you must type the explicit keyword `fallthrough`. [link](https://www.reddit.com/r/ProgrammingLanguages/comments/10vomwh/languages%5Fwith%5Fswitch%5Fstatements%5Fthat%5Fcan%5Fexecute/)
+
+***
+
+### 2. The Hybrid Evolutions (C#, Java)
+
+Both languages began with the exact same flawed, procedural C-style `switch` as JavaScript. Instead of dumping it, they added an entirely separate, modern **switch expression** syntax alongside the old one. [link](https://blog.frankel.ch/pattern-matching-different-languages/)
+
+- **[C#](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/patterns)**: Introduced the highly popular lambda-based `_` switch syntax. It supports relational operators (`>=`, `<`) directly in the cases.\
+  csharp
+
+<!---->
+
+```
+string grade = score switch {
+    >= 90 => "A",
+    >= 80 => "B",
+    _ => "F" // The underscore replaces the old 'default' keyword
+};
+```
+
+Use code with caution.
+
+- **[Java](https://docs.oracle.com/en/java/javase/17/language/pattern-matching-switch-expressions-and-statements.html)**: Upgraded its syntax to use arrow labels (`case ->`). This eliminates implicit fall-through and allows switching directly on class types, primitives, and even handling `case null` directly. [link](https://belief-driven-design.com/looking-at-java-21-switch-pattern-matching-14648/)
+
+***
+
+### 3. The Structural Late-Adopters (Python)
+
+Python went without a switch statement for nearly 30 years, instructing developers to use dictionary lookups or `if/elif/else` blocks.
+
+- **Python**: Introduced the `match/case` statement. Instead of basic value matching, it uses **Structural Pattern Matching**. It analyzes the literal shapes of data sequences, dictionaries, and classes.\
+  python
+
+<!---->
+
+```
+match command.split():
+    case ["make", item]:
+        create_item(item)
+    case ["delete", item, "force"]:
+        force_delete(item)
+    case _:
+        print("Command not recognized")
+```
+
+Use code with caution.\
+[link](https://medium.com/h7w/10-python-features-i-started-using-in-2026-that-completely-changed-how-i-write-code-63615dc64ec6)
+
+***
+
+### Summary of Language Architecture Designs
+
+| Language         | Category   | Returns Value?          | Safe from Fall-through?         | Structural Matching? |
+| ---------------- | ---------- | ----------------------- | ------------------------------- | -------------------- |
+| **Go**           | Statement  | ❌ No                   | Yes (automatic break)           | ❌ No                |
+| **C / C++**      | Statement  | ❌ No                   | ❌ No (requires `break`)        | ❌ No                |
+| **Python**       | Statement  | ❌ No                   | Yes (only matches one)          | Yes                  |
+| **Java / C#**    | Hybrid     | Yes (as an expression)  | Yes (using `->` or expressions) | Yes                  |
+| **Rust / Swift** | Expression | Yes (native expression) | Yes (no `break` needed)         | Yes                  |
+
+Would you like to zoom in on how a specific language like **Rust handles compiler-enforced safety**, or see how **Python's structural matching unpacks objects**?
+
+- [link](https://www.reddit.com/r/ProgrammingLanguages/comments/10vomwh/languages%5Fwith%5Fswitch%5Fstatements%5Fthat%5Fcan%5Fexecute/)\
+  Languages with switch statements that can execute multiple ...\
+  Feb 7, 2023 — A match / switch statement can be more easily translated into a jump table in assembly. But yeah, the whole point of a switch stat...\
+  Reddit·r/ProgrammingLanguages
+- [link](https://dev.to/mortoray/why-switch-is-better-than-if-else-9cj)\
+  Why switch is better than if-else - DEV Community\
+  Jun 29, 2019 — Rust has a much better match statement. It retains the high-level semantics of a switch statement, but adds a lot better pattern m...\
+  DEV Community
+- [link](https://www.youtube.com/watch?v=SkpQHfWDtSE\&vl=en)\
+  11\. Switch Statements: Cleaner Code Logic\
+  Dec 20, 2025 — switch statements make your code cleaner by replacing. long if else chains. they are perfect when you want to check one variable. ...\
+  [1:00](https://www.youtube.com/watch?v=SkpQHfWDtSE\&vl=en)\
+  YouTube·Ervis Trupja
+
+Show all
+
+# rust match syntax
+
+Quick results from the web:
+
+[link](https://doc.rust-lang.org/rust-by-example/flow%5Fcontrol/match.html)
+
+**match** - **Rust** By Example
+
+Rust provides pattern matching via the match keyword, which can be used like a C switch . The first matching arm is evaluated and all possible values must be covered. 1. 2. 3. 4. 5. 6. 7. 8. 9. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 20. 21. 22. 23. 24. 25. 26. 27. 28. 29. fn main() {. let number = 13;. // TODO ^ Try different values for \`number\`. println!("Tell me about {}", number);. match number {. // Match a single value. 1 => println!("One!"),. // Match several values. 2 | 3 | 5 | 7 | 11 => println!("This is a prime"),. // TODO ^ Try adding 13 to the list of prime values. // Match an inclusive range. 13..=19 => println!("A teen"),. // Handle the rest of cases. \_ => println!("Ain't special"),.
+
+Rust Documentation·https://doc.rust-lang.org
+
+[link](https://doc.rust-lang.org/book/ch06-02-match.html)
+
+The **match** Control Flow Construct - The **Rust** Programming Language
+
+Rust has an extremely powerful control flow construct called match that allows you to compare a value against a series of patterns and then execute code based on which pattern matches. Patterns can be made up of literal values, variable names, wildcards, and many other things; Chapter 19 covers all the different kinds of patterns and what they do. The power of match comes from the expressiveness of the patterns and the fact that the compiler confirms that all possible cases are handled. Think of a match expression as being like a coin-sorting machine: Coins slide down a track with variously sized holes along it, and each coin falls through the first hole it encounters that it fits into. In the same way, ...
+
+Rust Documentation·https://doc.rust-lang.org
+
+In Rust, the **`match` expression** allows you to compare a value against a series of patterns and execute code based on which pattern matches. [link](https://doc.rust-lang.org/book/ch06-02-match.html)
+
+### Basic Syntax
+
+The `match` block is composed of **arms**. Each arm consists of a pattern, a "fat arrow" (`=>`), and the expression to execute: [link](https://www.youtube.com/watch?v=pf8eQwWkTaY\&t=45)
+
+rust
+
+```
+let number = 3;
+
+match number {
+    1 => println!("One"),
+    2 => println!("Two"),
+    3 => println!("Three"),
+    _ => println!("Something else"), // The "catch-all" wildcard
+}
+```
+
+Use code with caution.
+
+### Core Rules
+
+- **Exhaustiveness**: You must handle every single possible value of the type being matched. The compiler will reject your code if a case is missing.
+- **It is an Expression**: Because `match` is an expression, it returns a value. Every branch must return the exact same data type.
+- **Sequential Evaluation**: Match arms are evaluated from top to bottom. The first pattern that matches wins.
+- **No Fall-Through**: Unlike `switch` in languages like C/C++, execution does not bleed into the next arm. `break` keywords are not used. [link](https://doc.rust-lang.org/rust-by-example/flow%5Fcontrol/match.html)
+
+***
+
+### Advanced Pattern Syntax
+
+#### 1. Multiple Patterns (OR)
+
+You can match multiple conditions in a single arm using the vertical bar (`|`). [link](https://www.youtube.com/watch?v=fAENE%5FduAbk)
+
+rust
+
+```
+match number {
+    1 | 2 => println!("One or Two"),
+    3 | 4 => println!("Three or Four"),
+    _ => println!("Other"),
+}
+```
+
+Use code with caution.
+
+#### 2. Inclusive Ranges
+
+You can match a range of values using `..=` (only valid for numeric types and chars). [link](https://rust-book.cs.brown.edu/ch19-03-pattern-syntax.html)
+
+rust
+
+```
+match number {
+    1..=5 => println!("Between one and five"),
+    _ => println!("Something else"),
+}
+```
+
+Use code with caution.
+
+#### 3. Destructuring Enums, Structs, and Tuples
+
+`match` can break apart structures to extract their inner values. [link](https://oneuptime.com/blog/post/2026-01-25-rust-match-expressions/view)
+
+rust
+
+```
+// Destructuring an Option enum
+let x: Option<i32> = Some(5);
+match x {
+    Some(valid_value) => println!("Got: {}", valid_value),
+    None => println!("Got nothing"),
+}
+
+// Destructuring a Tuple
+let coordinates = (0, 10);
+match coordinates {
+    (0, y) => println!("On the Y axis at {}", y),
+    (x, 0) => println!("On the X axis at {}", x),
+    (x, y) => println!("At coordinates ({}, {})", x, y),
+}
+```
+
+Use code with caution.
+
+#### 4. Match Guards
+
+You can add an extra `if` condition (a guard) to a match arm for finer filtering. [link](https://www.youtube.com/watch?v=pf8eQwWkTaY\&t=45)
+
+rust
+
+```
+let pair = (2, -2);
+match pair {
+    (x, y) if x == y => println!("They match!"),
+    (x, y) if x + y == 0 => println!("They cancel out!"),
+    _ => println!("No special relationship"),
+}
+```
+
+Use code with caution.
+
+#### 5. `@` Bindings
+
+The `@` operator lets you test a value against a pattern while simultaneously binding it to a variable name. [link](https://www.youtube.com/watch?v=xZUimOlCPdg)
+
+rust
+
+```
+let age = 15;
+match age {
+    age_variable @ 13..=19 => println!("Teenager of age: {}", age_variable),
+    _ => println!("Not a teen"),
+}
+```
+
+Use code with caution.
+
+#### 6. Multi-line Blocks
+
+If you need to execute multiple lines of code in an arm, wrap the expression in curly braces `{}`. When using braces, the trailing comma for that arm becomes optional. [link](https://users.rust-lang.org/t/rust-match-statement/57228)
+
+rust
+
+```
+match number {
+    1 => {
+        println!("Starting logic...");
+        println!("One");
+    } // No comma strictly required here
+    _ => println!("Default"),
+}
+```
+
+Use code with caution.
+
+Would you like to see how to use `match` for a **specific use case** (like handling custom Enums or Error Results), or would you like to explore how **`if let`** works as a shorter alternative? [link](https://doc.rust-lang.org/book/ch06-03-if-let.html)
+
+- [link](https://doc.rust-lang.org/rust-by-example/flow%5Fcontrol/match.html)\
+  match - Rust By Example\
+  Rust uses the \`match\` keyword to provide pattern matching. The \`match\` keyword can be used like a C switch. The first matching arm...\
+  Rust Documentation
+- [link](https://doc.rust-lang.org/book/ch06-02-match.html)\
+  The match Control Flow Construct - The Rust Programming Language\
+  Rust has a powerful control flow construct called match. Match allows you to compare a value against a series of patterns and then...\
+  Rust Documentation
+- [link](https://www.youtube.com/watch?v=pf8eQwWkTaY\&t=45)\
+  Rust Match Expressions and Patterns 🦀\
+  Aug 22, 2023 — but what we're going to do in this particular video is actually go back a little bit if you recall a couple videos ago in our rust...\
+  34m\
+  YouTube·Trevor Sullivan
+
+Show all
+
+# rust statement expression
+
+In Rust, the fundamental distinction between a statement and an expression is that <mark><strong>expressions evaluate to a value, while statements perform an action and do not return a value</strong></mark>. Rust is primarily an **expression-based language**, meaning almost everything (including control flow blocks like `if` and `match`) can return a value. [link](https://www.reddit.com/r/learnrust/comments/12o09rh/expression%5Fvs%5Fstatement%5Fin%5Frust/)
+
+Here is a breakdown of how they work, how they interact, and how to use them.
+
+***
+
+### 🏛️ The Main Differences
+
+| Feature                    | Expressions            | Statements                                |
+| -------------------------- | ---------------------- | ----------------------------------------- |
+| **Evaluates to a value?**  | Yes                    | No (Returns the unit type `()`)           |
+| **Ends with a semicolon?** | No                     | Yes (Usually)                             |
+| **Primary purpose**        | Compute and yield data | Declare variables or trigger side effects |
+
+***
+
+### 1. Expressions
+
+An expression computes a value. It does **not** end with a semicolon. If you add a semicolon to an expression, you turn it into a statement. [link](https://nickymeuleman.netlify.app/blog/rust-expression-statement/)
+
+#### Common Examples of Expressions:
+
+- **Math operations**: `5 + 5`
+- **Literals**: `42`, `"hello"`
+- **Function/Macro calls**: `add(1, 2)`, `println!("Hi")`
+- **Variable access**: `x` [link](https://nickymeuleman.netlify.app/blog/rust-expression-statement/)
+
+Because Rust is expression-oriented, blocks and control flows are also expressions: [link](https://stackoverflow.com/questions/68794302/difference-between-statement-and-expressions)
+
+rust
+
+```
+// An 'if' block used as an expression to assign a value
+let condition = true;
+let number = if condition { 5 } else { 6 };
+```
+
+Use code with caution.
+
+***
+
+### 2. Statements
+
+Statements are instructions that do something but do not return a value. Rust has two main types of statements: [link](https://web.mit.edu/rust-lang%5Fv1.25/arch/amd64%5Fubuntu1404/share/doc/rust/html/book/first-edition/functions.html)
+
+#### Declaration Statements (`let`)
+
+These introduce a new variable or item into the scope. [link](https://doc.rust-lang.org/reference/statements.html)
+
+rust
+
+```
+let x = 5; // A statement. You cannot do `let y = (let x = 5);`
+```
+
+Use code with caution.
+
+#### Expression Statements
+
+An expression statement takes an expression, appends a semicolon, evaluates it, and **discards the resulting value**. It forces the expression to return the empty unit type `()`. [link](https://stackoverflow.com/questions/68794302/difference-between-statement-and-expressions)
+
+rust
+
+```
+x + 1; // Evaluates x + 1, drops the result, and returns ()
+```
+
+Use code with caution.
+
+***
+
+### 3. Code Blocks as Expressions
+
+In Rust, code blocks `{ }` are also expressions. The entire block evaluates to the value of its **last expression** (the line without a semicolon). [link](https://doc.rust-lang.org/rust-by-example/expression.html)
+
+rust
+
+```
+let y = {
+    let x = 3;
+    x + 1  // No semicolon! This expression's value (4) is returned from the block
+};
+
+// y is now 4
+```
+
+Use code with caution.
+
+⚠️ **The Semicolon Pitfall:** If you accidentally put a semicolon on the last line of a block or function, it becomes an expression statement and returns `()`. This is a common compilation error when writing functions expected to return a specific type. [link](https://nickymeuleman.netlify.app/blog/rust-expression-statement/)
+
+rust
+
+```
+fn add_one(x: i32) -> i32 {
+    x + 1; // ERROR: Semicolon turns this into a statement returning ().
+           // The compiler expects an i32.
+}
+```
+
+Use code with caution.
+
+If you are debugging a compilation issue or want to dive deeper, let me know:
+
+- Are you getting a specific **compiler error**?
+
+- Do you want to see how this applies to **implicit function returns**?
+
+- Are you confused about how control flows like **`match` or loops** return values?
+
+- [link](https://www.reddit.com/r/learnrust/comments/12o09rh/expression%5Fvs%5Fstatement%5Fin%5Frust/)\
+  Expression vs Statement in Rust\
+  Apr 16, 2023 — In Rust, an expression evaluates to a value. A statement doesn't store a value anywhere and ends with a semicolon. For example, in...\
+  Reddit
+
+- [link](https://doc.rust-lang.org/reference/statements-and-expressions.html)\
+  Statements and expressions - The Rust Reference\
+  In Rust, expressions are the primary language. Expressions are directed by a uniform syntax category that controls most value-prod...\
+  Rust Documentation
+
+- [link](https://stackoverflow.com/questions/68794302/difference-between-statement-and-expressions)\
+  Difference between statement and expressions - rust\
+  Aug 15, 2021 — Rust is an expression-oriented language. This means that most constructs including control-flow constructs are expressions. An exp...\
+  Stack Overflow
+
+Show all
+
+# rust semicolon
+
+In Rust, <mark>the presence or absence of a<span> </span><strong>semicolon (<code dir="ltr">;</code>) determines whether a line of code is an expression that returns a value or a statement that suppresses it</strong></mark>. Because Rust is an expression-based language, almost every block of code (including functions, `if` branches, and `match` arms) can return a value. [link](https://www.reddit.com/r/rust/comments/yrd8b2/on%5Fchapter%5F5%5Fof%5Frustbook%5Fdont%5Fquite%5Funderstand/)
+
+### Core Semicolon Rules
+
+- **Omitted Semicolon (Expression)**: The last line of a block _without_ a semicolon evaluates to a value and implicitly returns it.
+- **Included Semicolon (Statement)**: Adding a semicolon turns an expression into a statement. This suppresses its value and evaluates to `()`, which is Rust's empty "unit" type (similar to `void`). [link](https://stackoverflow.com/questions/26665471/are-semicolons-optional-in-rust)
+
+### Examples in Code
+
+#### 1. Function Returns
+
+Instead of using an explicit `return` keyword, Rust developers omit the semicolon on the final line to return data. [link](https://www.reddit.com/r/rust/comments/11c0pd3/why%5Fthe%5Fweird%5Foptional%5Freturn%5Fwith%5Fno%5Fsemicolon/)
+
+rust
+
+```
+fn add_one(x: i32) -> i32 {
+    x + 1 // No semicolon means this value is returned
+}
+```
+
+Use code with caution.
+
+If you accidentally add a semicolon here, the compiler will look for a return type of `()` and throw a type mismatch error. [link](https://stackoverflow.com/questions/67785232/rust-is-semicolon-necessary-here)
+
+#### 2. Local Scopes & Assignments
+
+You can use scoped blocks or control flow statements to dynamically bind values to variables. [link](https://www.reddit.com/r/learnrust/comments/1ge51v8/semicolon%5Fafter%5Fifstatement%5Fbraces/)
+
+rust
+
+```
+let message = if success {
+    "Operation succeeded" // Evaluates to this string literal
+} else {
+    "Operation failed"    // Evaluates to this string literal
+}; // This semicolon terminates the 'let' statement
+```
+
+Use code with caution.
+
+#### 3. Forcing a Unit Return
+
+Sometimes, you want an expression to perform an action but explicitly discard its output. [link](https://stackoverflow.com/questions/67785232/rust-is-semicolon-necessary-here)
+
+rust
+
+```
+fn do_something() {
+    calculate_value(); // Semicolon discards the calculation result, returning ()
+}
+```
+
+Use code with caution.
+
+### Quick Reference
+
+| Code Pattern | Meaning                                   | Example Result Type            |
+| ------------ | ----------------------------------------- | ------------------------------ |
+| `x + 1`      | Implicitly returns the value              | `i32`                          |
+| `x + 1;`     | Converts to a statement, discards value   | `()`                           |
+| `let x = 5;` | Variable binding statement (requires `;`) | N/A                            |
+| `return 5;`  | Explicit early return statement           | Never type (`!`) / Exits scope |
+
+Are you trying to debug a **specific compiler error** related to a missing or extra semicolon, or would you like to see how semicolons work inside **`match` expressions**? [link](https://www.reddit.com/r/learnrust/comments/18n68vf/soo%5Fwhy%5Fdo%5Fwe%5Fuse%5Fsemi%5Fcolon%5Fafter%5Fthe%5Fwhen%5Fwe/)
+
+- [link](https://stackoverflow.com/questions/26665471/are-semicolons-optional-in-rust)\
+  Are semicolons optional in Rust? - Stack Overflow\
+  Oct 30, 2014 — 2024-01-07T10:00:12.32Z+00:00. 0. Mingwei Samuel. Mingwei Samuel Over a year ago. @minseong In other langs statements do not need ...\
+  Stack Overflow
+- [link](https://www.reddit.com/r/rust/comments/yrd8b2/on%5Fchapter%5F5%5Fof%5Frustbook%5Fdont%5Fquite%5Funderstand/)\
+  On Chapter 5 of Rustbook, dont quite understand semicolon thing\
+  Nov 10, 2022 — In Rust, semicolons are used to separate statements. However, Rust is a language based on expressions more than statements. For ex...\
+  Reddit
+- [link](https://www.reddit.com/r/rust/comments/11c0pd3/why%5Fthe%5Fweird%5Foptional%5Freturn%5Fwith%5Fno%5Fsemicolon/)\
+  Why the weird optional return with no semi-colon?\
+  Feb 26, 2023 — In Rust, the fact that functions return the value of the last line if it has no semicolon is an extension of the concept that ever...\
+  Reddit
+
+Show all
+
+## can i omit all semicolons
+
+<mark><span>No, you cannot omit all semicolons in Rust</span></mark>. Unlike JavaScript, Python, or Go, Rust does not have automatic semicolon insertion (ASI). Semicolons are mandatory structural elements used to separate statements.
+
+### Where Semicolons Are Mandatory
+
+You must use semicolons in the following scenarios:
+
+- **Variable Bindings:** Every `let` statement requires a semicolon.\
+  rust
+
+<!---->
+
+```
+let x = 5;
+let y = 10;
+```
+
+Use code with caution.
+
+- **Sequential Statements:** If you want to run multiple operations in a row, they must be separated by semicolons.\
+  rust
+
+<!---->
+
+```
+println!("Hello");
+println!("World");
+```
+
+Use code with caution.
+
+- **Side-Effect Expressions:** If a line does something (like mutating a variable) but shouldn't return a value to the surrounding block, it needs a semicolon.\
+  rust
+
+<!---->
+
+```
+counter += 1;
+```
+
+Use code with caution.
+
+- **Item Declarations in Certain Contexts:** Struct fields, enum variants with values, and module imports use semicolons or commas depending on the syntax.
+
+### The Only Exception: Single-Expression Blocks
+
+The only time you can completely omit a semicolon on a line of executable code is when it is the **very last expression** in a block, and you explicitly want to return that value.
+
+rust
+
+```
+fn get_number() -> i32 {
+    let mut x = 5;
+    x += 1; // Mandatory semicolon
+    x       // Omitted semicolon: returns the value of x
+}
+```
+
+Use code with caution.
+
+If you try to omit all semicolons, the Rust compiler will fail to parse your code and throw immediate syntax errors.
+
+Are you looking to write **cleaner, more concise Rust**, or are you hitting a **specific compiler error** because of a missing semicolon?
+
+- [link](https://www.reddit.com/r/rust/comments/d6oyrn/would%5Fyou%5Fstill%5Fuse%5Fsemicolons%5Fif%5Fthey%5Fwere/)\
+  Would you still use semicolons if they were optional? : r/rust\
+  Sep 20, 2019 — This isn't an answer, but: Semicolons are important to Rust's grammar. Parsing without semicolons is hard. There are really hard g...\
+  \
+  Reddit
+- [link](https://users.rust-lang.org/t/guidelines-for-using-semicolons-commas/36847)\
+  Guidelines For Using Semicolons & commas - help - The Rust Programming Language Forum\
+  Jan 13, 2020 — CAD97: Rust actually has a semicolon omission rule: if the expression ends with a {} block (e.g. if , match ) and is typed at () (\
+  \
+  The Rust Programming Language Forum
+- [link](https://www.geeksforgeeks.org/dsa/role-of-semicolon-in-various-programming-languages/)\
+  Role of SemiColon in various Programming Languages\
+  Jul 12, 2025 — Role of Semicolon in JavaScript: Semicolons in JavaScript are optional. In JavaScript, there is a process called Automatic Semicol...\
+  \
+  \
+  GeeksforGeeks
+
+Show all
+
+## what if i omit some semicolons before the last expression in a block
+
+If you omit a semicolon before the last expression in a block, <mark>the Rust compiler will usually fail to compile your code</mark>. Because Rust is a strongly typed, expression-based language, it will try to interpret the consecutive lines as a single, combined expression.
+
+This leads to two common types of compilation failures:
+
+### 1. Typo / Parsing Errors (Most Common)
+
+If you omit a semicolon between two unrelated lines, the compiler will get confused trying to parse them together.
+
+rust
+
+```
+fn main() {
+    let mut x = 5
+    x += 1 // Error!
+}
+```
+
+Use code with caution.
+
+**The result:** The compiler will immediately stop and give you a helpful `help: expected `;\`\` error message.
+
+### 2. Type Mismatch Errors (The Tricky Case)
+
+Sometimes, omitting a semicolon changes the _meaning_ of the code instead of breaking the syntax. The compiler thinks you are trying to use the first line to call, index, or modify the second line.
+
+#### Example A: Macro followed by a Variable
+
+rust
+
+```
+fn get_name() -> String {
+    println!("Fetching name...") // Omitted semicolon!
+    String::from("Alice")
+}
+```
+
+Use code with caution.
+
+- **What you wanted:** Print a message, then return `"Alice"`.
+- **What Rust sees:** It thinks you are passing the string `String::from("Alice")` as an argument into the `println!` macro.
+- **The Error:** `mismatched types`. The block expects to return a `String`, but because `println!` evaluates to `()`, the compiler thinks the block returns `()`.
+
+#### Example B: The "Function Call" Illusion
+
+rust
+
+```
+fn calculate() -> i32 {
+    let shared_multiplier = || 2;
+
+    shared_multiplier() // Omitted semicolon!
+    (5 + 5)
+}
+```
+
+Use code with caution.
+
+- **What Rust sees:** It thinks you are trying to call the result of `shared_multiplier()` as a function, passing `(5 + 5)` as the argument: `shared_multiplier()(10)`.
+- **The Error:** `expected function, found i32`.
+
+### The True Exceptions: Control Flow Blocks
+
+You **can** omit semicolons before the last expression if the preceding lines are control flow expressions that evaluate to `()` (unit). Blocks ending in curly braces `{}` often do not require a trailing semicolon to separate them from the next line.
+
+rust
+
+```
+fn process(flag: bool) -> i32 {
+    if flag {
+        println!("True!");
+    } else {
+        println!("False!");
+    } // No semicolon needed here!
+
+    100 // Last expression
+}
+```
+
+Use code with caution.
+
+Are you wrestling with a **specific error message** from the compiler right now, or would you like to see how to fix a **macro-related semicolon issue**?
+
+- [link](https://users.rust-lang.org/t/guidelines-for-using-semicolons-commas/36847)\
+  Guidelines For Using Semicolons & commas - help - The Rust Programming Language Forum\
+  Jan 13, 2020 — Statements and Expressions: Rust is primarily an expression language ... In contrast, statements in Rust serve mostly to contain a...\
+  \
+  The Rust Programming Language Forum
+- [link](http://www.bradoncode.com/blog/2015/08/26/javascript-semi-colon-insertion/)\
+  Understanding Automatic Semicolon Insertion in JavaScript\
+  Aug 26, 2015 — What's the Point of Automatic Semicolon Insertion? The principle of the feature is to provide a little leniency when evaluating th...\
+  \
+  \
+  www.bradoncode.com
+- [link](https://www.reddit.com/r/rust/comments/11c0pd3/why%5Fthe%5Fweird%5Foptional%5Freturn%5Fwith%5Fno%5Fsemicolon/)\
+  Why the weird optional return with no semi-colon? : r/rust\
+  Feb 26, 2023 — The basic idea is that every block of code in Rust can be an expression. If the line at the bottom of a block doesn't have a semic...\
+  \
+  Reddit
+
+Show all
+
+## why doesnt rust consider linebreaks
+
+Rust ignores line breaks because <mark>it relies on a<span> </span><strong>token-based grammar</strong><span> </span>rather than a<span> </span><strong>whitespace-sensitive grammar</strong></mark>.
+
+Instead of treating a new line as the end of a command, the Rust compiler splits your code into a stream of punctuation, words, and symbols (tokens). It uses explicit markers like semicolons (`;`) and curly braces (`{}`) to know exactly where statements begin and end.
+
+Designers chose this approach for several key reasons:
+
+### 1. Code Formatting Flexibility
+
+Because line breaks carry no semantic meaning, you can format your code however you like to maximize readability.
+
+rust
+
+```
+// Both blocks are identical to the compiler:
+
+let list = vec!["apple", "banana", "cherry"];
+
+let list = vec![
+    "apple",
+    "banana",
+    "cherry"
+];
+```
+
+Use code with caution.
+
+This flexibility allows tools like `rustfmt` (the standard Rust code formatter) to automatically wrap long lines, align arguments, and format nested closures consistently across the entire ecosystem without changing how the program runs.
+
+### 2. Multi-Line Expressions
+
+In Rust, almost everything is an expression that yields a value. Expressions often span multiple lines, such as iterator chains or complex mathematical formulas.
+
+rust
+
+```
+// The compiler knows this is one single statement because there is no semicolon until the end
+let sum: i32 = numbers
+    .iter()
+    .filter(|&&x| x > 0)
+    .map(|&x| x * 2)
+    .sum();
+```
+
+Use code with caution.
+
+If Rust used line breaks to terminate lines (like Python or Go), it would need complex, implicit "line continuation" rules to guess whether you were finished writing your equation or just continuing it on the next line.
+
+### 3. Avoiding the Ambiguity of "ASI"
+
+Languages like JavaScript try to bridge the gap using Automatic Semicolon Insertion (ASI). If you forget a semicolon in JS, the interpreter guesses where it should go based on line breaks.
+
+However, ASI is notorious for creating subtle, silent bugs. For example:
+
+javascript
+
+```
+// JavaScript thinks this returns 'undefined' because it inserts a semicolon after return!
+return
+{
+    status: "ok"
+};
+```
+
+Use code with caution.
+
+Rust's compiler is built around **strict predictability** and safety. By forcing explicit semicolons, Rust eliminates any guessing games, ensuring that the code you wrote is exactly the code the compiler executes.
+
+### Summary: Explicit vs. Implicit
+
+Rust values **explicitness over implicitness**. Sacrificing line-break termination means you have to type a few extra semicolons, but you gain completely predictable parsing, rock-solid macro stability, and error-free multi-line formatting.
+
+Are you running into a scenario where **formatting your code across lines** is causing a problem, or are you curious about how **Rust macros** handle these punctuation rules?
+
+- [link](https://blog.m-ou.se/writing-python-inside-rust-1a/)\
+  Writing Python inside your Rust code — Part 1A\
+  Apr 18, 2020 — Other tokens I'll not bore you to death by going over every other difference in tokens between the languages. But if you were to l...\
+  \
+  \
+  blog.m-ou.se
+- [link](https://internals.rust-lang.org/t/understanding-decisions-behind-semicolons/15181)\
+  Understanding decisions behind semicolons - language design\
+  Aug 15, 2021 — The semicolon basically has three advantages. First, it allows for clear syntactical rules about where a statement ends without ne...\
+  \
+  Rust Internals
+- [link](https://sembr.org/)\
+  Semantic Line Breaks\
+  Semantic Line Breaks Specification (SemBr) Text written as plain text or a compatible markup language MAY use semantic line breaks...\
+  \
+  \
+  Semantic Line Breaks
+
+Show all
+
+# js asi
+
+In JavaScript, <mark><strong>Automatic Semicolon Insertion (ASI)</strong></mark> is a built-in parser mechanism that implicitly adds semicolons to your code during compilation so you do not always have to write them explicitly. [link](https://en.wikibooks.org/wiki/JavaScript/Automatic%5Fsemicolon%5Finsertion)
+
+While ASI allows for cleaner, semicolon-free code styles, relying on it blindly can introduce subtle, hard-to-find bugs. [link](https://en.wikibooks.org/wiki/JavaScript/Automatic%5Fsemicolon%5Finsertion)
+
+### How ASI Works (The 3 Core Rules)
+
+The JavaScript engine automatically inserts a semicolon behind the scenes in three main scenarios: [link](https://stackoverflow.com/questions/2846283/what-are-the-rules-for-javascripts-automatic-semicolon-insertion-asi)
+
+1. **The Invalid Token Rule**: When a line break or closing curly brace (`}`) is encountered, and the next chunk of code breaks the grammatical rules, JavaScript inserts a semicolon to make the previous statement valid. [link](https://stackoverflow.com/questions/2846283/what-are-the-rules-for-javascripts-automatic-semicolon-insertion-asi)
+2. **The File End Rule**: JavaScript automatically appends a semicolon at the very end of your script file if it is missing one. [link](https://stackoverflow.com/questions/2846283/what-are-the-rules-for-javascripts-automatic-semicolon-insertion-asi)
+3. **The Restricted Production Rule**: If a line break occurs immediately after certain keywords like `return`, `throw`, `break`, `continue`, or `yield`, JavaScript will unconditionally inject a semicolon right after that keyword. [link](https://stackoverflow.com/questions/2846283/what-are-the-rules-for-javascripts-automatic-semicolon-insertion-asi)
+
+***
+
+### Common ASI Pitfalls
+
+#### 1. The `return` Statement Trap
+
+If you break a line immediately after a `return` keyword, ASI will insert a semicolon right there. This cuts off the rest of your statement, causing the function to return `undefined`. [link](https://www.youtube.com/watch?v=XkqyDM28y4A\&t=1)
+
+javascript
+
+```
+// ❌ Intent: Return the object literal
+function getUser() {
+  return
+  {
+    name: "Alex"
+  }
+}
+// How JS reads it due to ASI:
+function getUser() {
+  return; // <-- Semicolon inserted here!
+  { name: "Alex" }; // This becomes unreachable code
+}
+```
+
+Use code with caution.
+
+- **Fix**: Always keep your opening bracket or returned expression on the same line as the `return` keyword. [link](https://en.wikibooks.org/wiki/JavaScript/Automatic%5Fsemicolon%5Finsertion)
+
+#### 2. Lines Starting with `(` or `[`
+
+If you omit a semicolon and your next line begins with an open parenthesis `(` or an open bracket `[`, JavaScript will not insert a semicolon. Instead, it assumes you are trying to call a function or look up an object property from the previous line. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical%5Fgrammar)
+
+javascript
+
+```
+// ❌ Intent: Run two independent statements
+const user = "Alex"
+(function() {
+  console.log("Hello!")
+})()
+
+// How JS reads it:
+const user = "Alex"(function() { console.log("Hello!") })()
+// 💥 TypeError: "Alex" is not a function
+```
+
+Use code with caution.
+
+- **Fix**: Use a defensive semicolon directly before lines starting with `(` or `[` if you are writing in a semicolon-less style. [link](https://en.wikibooks.org/wiki/JavaScript/Automatic%5Fsemicolon%5Finsertion)
+
+***
+
+### Best Practices
+
+- **Use a Code Formatter**: Tools like Prettier or linters like ESLint automatically manage semicolons for you based on your preference, eliminating ASI human errors entirely.
+- **Be Consistent**: Whether you choose to write semicolons explicitly or omit them entirely, stick to one style across your entire codebase. [link](https://www.youtube.com/watch?v=XkqyDM28y4A\&t=1)
+
+Would you like to see how to configure **ESLint** or **Prettier** to enforce your preferred semicolon style automatically?
+
+- [link](https://stackoverflow.com/questions/2846283/what-are-the-rules-for-javascripts-automatic-semicolon-insertion-asi)\
+  What are the rules for JavaScript's automatic semicolon insertion (ASI)?\
+  May 17, 2010 — JavaScript's automatic semicolon insertion (ASI) rules are: \* \*\*When a token is encountered that is not allowed by the grammar\*\* \*\
+  Stack Overflow
+- [link](https://dev.to/rfornal/an-opinionated-article-on-semicolons-in-javascript-5738)\
+  An Opinionated Article on SemiColons in JavaScript - DEV Community\
+  Oct 19, 2020 — Automatic semicolon insertion (ASI) is a set of rules that determines whether a semicolon is interpreted in certain spots in JavaS...\
+  DEV Community
+- [link](https://en.wikibooks.org/wiki/JavaScript/Automatic%5Fsemicolon%5Finsertion)\
+  JavaScript/Automatic semicolon insertion - Wikibooks\
+  Jun 27, 2025 — Automatic Semicolon Insertion (ASI) In languages of the C-family, the semicolon denotes the end of a statement. Unlike other C-lik...\
+  Wikibooks
+
+Show all
+
+## what if use strict
+
+Enabling `"use strict"` **does not disable or change** how Automatic Semicolon Insertion (ASI) works.
+
+Even in strict mode, JavaScript will still automatically insert semicolons using the exact same rules. However, strict mode makes ASI bugs much easier to catch because it converts quiet, accidental errors into loud, explicit crashes.
+
+### How Strict Mode Changes ASI Behavior
+
+#### 1. Silent Failures Become Loud Crashes
+
+Without strict mode, an ASI mistake might silently fail, create a global variable, or execute unexpected code without warning. Strict mode stops execution immediately by throwing an error.
+
+javascript
+
+```
+// ❌ WITHOUT "use strict"
+const a = 1
+const b = 2
+[a, b].forEach(x => console.log(x))
+
+// ASI treats this as: const a = 1; const b = 2[a, b].forEach(...)
+// Result: Silently fails or throws a confusing Type Error later.
+
+// 🛑 WITH "use strict"
+"use strict";
+const a = 1
+const b = 2
+[a, b].forEach(x => console.log(x))
+
+// Result: Immediately throws a clear "TypeError: Cannot read properties of undefined"
+// because it tries to look up property '2' on the number 2.
+```
+
+Use code with caution.
+
+#### 2. Octal Literal Conflicts
+
+Strict mode bans octal literals (numbers starting with a leading zero, like `012`). If an ASI omission accidentally glues two separate numbers together across lines, strict mode will immediately catch it as a syntax violation.
+
+***
+
+### Strict Mode and ASI Summary
+
+- **ASI Mechanics**: Do not change.
+- **Semicolon Necessity**: Semicolons are **not** mandatory in strict mode.
+- **Safety**: Strict mode makes semicolon-less code safer by failing fast instead of failing silently.
+
+Would you like to explore **other behaviors** that strict mode changes, or see how to enable it **globally** across your project modules?
+
+- [link](https://medium.com/the-fullstack-interface/a-beginners-guide-to-javascript-use-strict-mode-2fa8171ee402)\
+  A Beginner’s Guide to JavaScript \`use strict\` Mode\
+  Apr 10, 2025 — 5.2 Makes Debugging Easier Since strict mode throws errors for common problems, it helps you catch bugs earlier. For example, when...\
+  \
+  \
+  Medium
+- [link](https://nickhayden.com/blog/wtf-is-strict-mode/)\
+  WTF is strict mode?\
+  Feb 27, 2017 — Changes in Strict Mode# Strict mode changes both syntax and runtime behaviour. Strict mode makes it impossible to accidentally dec...\
+  \
+  nickhayden.com
+- [link](https://www.reddit.com/r/learnprogramming/comments/139n5sb/is%5Fit%5Fconsidered%5Fto%5Fbe%5Fbad%5Fpractice%5Fto%5Fuse/)\
+  Is it considered to be bad practice to use try\except blocks instead of making sure you don't cause an exception in the first place? : r/learnprogramming\
+  May 6, 2023 — If you do catch the exception at the point you were planning to, what can you do about it? Can you recover from it and continue no...\
+  \
+  Reddit
+
+Show all
+
+# . thinking: recipe dsl spec
+
+## fundamentals
+
+- case sensitive
+- linebreak iff semicolons
+- indentation iff curly braces
+- comments: `#`, `//`
+- multiline comments: `/* ... */` `""" ... """`
+
 

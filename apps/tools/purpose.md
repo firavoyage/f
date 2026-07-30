@@ -662,7 +662,12 @@ could have. maybe irrelevant.
 
 but it would be exciting and meaningful.
 
----
+22 40 write dsl spec. 
 
+enough research.
+
+it wouldnt be pragmatic if it doesnt change the output.
+
+i could absolutely simplify just based on the syntax ref.
 
 
