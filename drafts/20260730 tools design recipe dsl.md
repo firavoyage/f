@@ -892,4 +892,8 @@ for objects. i guess i would just define them. i may prepend let. i would make c
 
 let's take a look at firascript instead.
 
+it looks fine. but it would help much. it's partial.
+
+despite extensive examples, it's quite limited in syntactic range.
+
 
