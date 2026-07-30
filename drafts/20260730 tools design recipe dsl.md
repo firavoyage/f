@@ -2037,9 +2037,15 @@ enough research. doesnt seem quite meaningful.
 
 ## variable
 
-```f
-foo 123 # 
+btw, var naming rules
 
+- no operator
+- not a keyword
+- ~~can contain spaces <!-- space is not an op -->~~ no spaces <!-- space is op. it can behave as comma. -->
+- can start w a number <!-- 3x doesnt make any sense. i will read as a whole as long as it doesnt contain spaces. btw omitting * is not supported. better to use string via some math lib if needed. -->
+- can contain all unicode char <!-- it's no difference than english, despite some typing difficulties and possible ambiguities -->
+
+```f
 foo = 123
 
 # var
@@ -2106,5 +2112,17 @@ use lib
 the only scenario you would care about scopes is, you wanna define sth globally in a fn.
 
 global iff js globalthis
+
+```f
+foo 123
+```
+
+flexible.
+
+how it works:
+
+- if foo is defined as a fn <!-- in scope -->, call `foo(123)`
+- if foo is nonexisting, `let foo = 123`
+- otherwise, set foo as 123
 
 
