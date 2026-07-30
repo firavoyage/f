@@ -47920,7 +47920,7 @@ continually i receive reactions from my post on chyk group. they didnt judge or 
 
 on ayugram android, reactions are indicated by a white heart w red (or orange, the muji red pen color) circular bg, while on desktop it's gray.
 
-02 20 watch ``.
+02 20 watch `This Trap FOOLS EVERYONE Under 1900 | Chess Rating Climb 1845 Rapid ELO`.
 
 
 
