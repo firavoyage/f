@@ -648,5 +648,7 @@ how to construct a js string somehow? via ast?
 
 would i construct a js string via ast?
 
+i think i do want an ast. but maybe a simpler one.
+
 
 
