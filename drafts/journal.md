@@ -47898,6 +47898,10 @@ the ref answer is based on some special observations, as expected. i just realiz
 
 <!-- i didnt realize case 2 can be `x^2 + axy + y^2` at first (assuming a = 0), thus wasted some time.  -->
 
+30
+
+18 00 watch some ielts speaking vids.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
