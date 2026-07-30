@@ -47916,6 +47916,10 @@ lawyer, w shock immunity, is good for reviving. and it's esp common for hunters 
 
 01 00 export ayanami and huige group on tg.
 
+continually i receive reactions from my post on chyk group. they didnt judge or compare the university. instead, they find the bytedance cup interesting. one <!-- likely byte (intern) swe --> shares the new on bottle artwork of ies group.
+
+on ayugram android, reactions are indicated by a white heart w red (or orange, the muji red pen color) circular bg, while on desktop it's gray.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
