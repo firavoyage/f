@@ -2037,7 +2037,7 @@ enough research. doesnt seem quite meaningful.
 
 ## variable
 
-btw, var naming rules
+<!-- btw, --> naming
 
 - no operator
 - not a keyword
@@ -2060,6 +2060,10 @@ const pi = 3.14
 
 # let imut
 ```
+
+---
+
+scope
 
 <!-- you should either make it global or local by default. you have to either have global/nonlocal or let. -->
 
@@ -2113,6 +2117,19 @@ the only scenario you would care about scopes is, you wanna define sth globally 
 
 global iff js globalthis
 
+spec:
+
+- program itself is global scope
+- all curly braces are scoped
+- foo: value if exists, ~~false~~ ~~nil~~ err if not
+- foo = value: declare if non existing, set otherwise
+- let foo = value: always a declare, shadow whether it exists outside or above <!-- effectively gc the prev var of identical name if inside the same block -->
+- global foo = value, global.foo = value: as if declare globally
+
+---
+
+syntax sugar
+
 ```f
 foo 123
 ```
@@ -2124,5 +2141,36 @@ how it works:
 - if foo is defined as a fn <!-- in scope -->, call `foo(123)`
 - if foo is nonexisting, `let foo = 123`
 - otherwise, set foo as 123
+
+```f
+foo = bar = 1
+```
+
+read ltr, evaluate rtl (after it identifies the = op).
+
+---
+
+data structure
+
+```f
+arr = [1, 2, 3] # [] is required. you can create abstraction if you dont like that
+
+arr = [1 2 3]
+
+arr = [fn1 fn2 fn3] # wont be eval like fn1
+```
+
+```f
+arr ...args
+  [...args]
+
+arr(...args){
+  return [...args]
+}
+
+a = arr 1 2 3
+
+# you may even override
+```
 
 
