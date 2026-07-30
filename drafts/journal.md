@@ -47900,7 +47900,9 @@ the ref answer is based on some special observations, as expected. i just realiz
 
 30
 
-18 00 watch some ielts speaking vids.
+18 00 watch some ielts speaking vids. 19 00
+
+19 00 play idv. research and design tools recipe dsl.
 
 
 
