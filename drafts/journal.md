@@ -47904,6 +47904,12 @@ the ref answer is based on some special observations, as expected. i just realiz
 
 19 00 play idv. research and design tools recipe dsl.
 
+<!-- 20 40 --> change the traits from recovering and speed boost to recovering and extra life.
+
+lawyer, w shock immunity, is good for reviving. and it's esp common for hunters to be focused. the speed boost might work exceptionally well, and be critical sometimes. but its impact depends on the hunter's skill level. and the observation is when it works out, <!-- whether or not you take it, --> you can win anyway. <!-- another thing is it might be already unfortunate if you, instead of a fighter, are the one being chased. --> it doesnt make sense to turn a win into a huge win, while the extra life can be a game changer, in close scenarios.
+
+<!-- 21 00 --> bp unlocked. dk what the default choice would be. ok lawyer.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
