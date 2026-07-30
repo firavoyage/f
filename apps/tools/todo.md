@@ -2,6 +2,16 @@ todo
 
 ---
 
+design a dsl for recipe.
+
+could have. maybe irrelevant.
+
+but it would be exciting and meaningful.
+
+research and summarize firascript and glaze
+
+---
+
 document everything known. elaborate the plan.
 
 ---
@@ -70,10 +80,6 @@ https://getbootstrap.com/docs/5.3/examples/
 
 ---
 
-design a dsl for recipe.
-
----
-
 design ix, e.g. two way convertion
 
 decide whether, or how to resize layout.
@@ -124,7 +130,3 @@ it must be able to run locally. but it does not need pwa to do so.
 you could install it. but it does not require pwa either.
 
 and pwa itself is of inconsistent compatibility.
-
-
-
-

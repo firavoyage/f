@@ -1,12 +1,18 @@
-body {
-  background-color: var(--color-bg-primary);
-  color: var(--color-fg-primary);
+/* Base */
 
+body {
   user-select: none;
 }
 
 ::selection {
   background-color: var(--color-bg-selection);
+}
+
+/* Components */
+
+body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-fg-primary);
 }
 
 .a,
@@ -24,7 +30,6 @@ body {
     outline: var(--radius-xs) solid var(--color-bg-selection);
   }
 }
-
 /* a,
 button,
 summary,
@@ -106,5 +111,3 @@ textarea {
 .main {
   flex-grow: 1;
 }
-
-
