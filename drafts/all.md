@@ -439,6 +439,7 @@ ux: <!-- ui/ux design, ia -->
 - ux four pillars design process <!-- what does ux include -->
 - ux competitive analysis
 - text selection focus ring outline style
+- youtube playlist next vid inflexible url confusing error screen
 
 typography:
 

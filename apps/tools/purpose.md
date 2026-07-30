@@ -670,4 +670,8 @@ it wouldnt be pragmatic if it doesnt change the output.
 
 i could absolutely simplify just based on the syntax ref.
 
+31
+
+03 20 <!-- continue to --> write dsl spec.
+
 
