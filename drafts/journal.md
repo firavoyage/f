@@ -47910,6 +47910,8 @@ lawyer, w shock immunity, is good for reviving. and it's esp common for hunters 
 
 <!-- 21 00 --> bp unlocked. dk what the default choice would be. ok lawyer.
 
+<!-- well it defaults to the last character it seems. better to set explicitly. -->
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
