@@ -674,4 +674,6 @@ i could absolutely simplify just based on the syntax ref.
 
 03 20 <!-- continue to --> write dsl spec. 05 40
 
+18 40 apply title case window title.
+
 
