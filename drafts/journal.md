@@ -47985,15 +47985,14 @@ read two userscripts and the html structure.
 
 write zhihu.js. no types. it would be pasted and run directly inside the browser console and give identical file output.
 
-write code normally. no iife. consts on top in snake case. be simple. copy everything from the original userscripts except the messy code structure. and just add a bit logic on parsing and pagninate
+write code normally. no iife. consts on top in snake case. be simple. copy everything from the original userscripts except the messy code structure. and just add a bit logic on parsing and paginating.
 
 it should 
 
 - run immediately, not render buttons
 - get what's needed for the following list
-- get all collection id on dom, parse from a element href, click "next page", wait a bit, loop until no "next page" shown.
-- fetch api
-- download
+- parse all collection id from dom href, click "next page", and loop until the end.
+- fetch api and download the same as userscripts
 
 
 
