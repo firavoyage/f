@@ -276,6 +276,7 @@ sec: <!-- security -->
 - selinux data extraction hardware google app dev
 - cryptography https ca domain registration
 - script kiddies
+- android data privacy phone number ip geolocation ip government structure isp ip faking scraping mass registeration
 - wifi phishing
 
 desktop:
