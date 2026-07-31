@@ -88,7 +88,7 @@
 }
 
 [data-theme="dark"], [theme="dark"] {
-  --color-bg-primary: var(--palette-gray-900);
+  --color-bg-primary: var(--palette-gray-850);
   --color-bg-secondary: var(--palette-gray-800);
   --color-bg-tertiary: var(--palette-gray-700);
   --color-fg-primary: white;
