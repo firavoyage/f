@@ -2338,7 +2338,7 @@ Are you auditing a codebase for **error-handling compliance**, or deciding wheth
 
 Show all
 
-# all js syntax
+# all js syntax <!-- powerful, evolving, fp, loved by silicon valley -->
 
 <mark><strong><span>JavaScript syntax is a collection of grammar rules that govern how programs are written and interpreted by engines</span></strong></mark>. It uses a C-like structure, is strictly **case-sensitive**, and utilizes **semicolons** to terminate execution statements. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar%5Fand%5Ftypes)
 
@@ -2700,7 +2700,7 @@ Are you looking to see syntax structures applied to a **specific use case** (lik
 
 Show all
 
-# all python syntax
+# all python syntax <!-- classic, natural, yet a bit opinionated -->
 
 <mark><strong><span>Python syntax relies on strict indentation (four spaces) rather than curly braces<span> </span></span><code dir="ltr">{}</code><span> </span>to define code blocks</strong></mark>**.** Statements end with a new line instead of a semicolon. [link](https://www.codecademy.com/article/learn-python-python-syntax)
 
@@ -3362,7 +3362,7 @@ If you need help building out a specific component or want me to **expand upon a
 
 Show all
 
-# all lisp syntax <!-- extremely flexible, but doesnt define anything -->
+# all lisp syntax <!-- extremely flexible, but doesnt define anything, the only fixed constraint is poor use of keyboard -->
 
 1:43 PM
 
@@ -3998,7 +3998,1247 @@ Would you like to build a macro that solves a **specific programming problem** y
 
 Show all
 
-# 
+# lisp dialects
+
+The Lisp programming language family is famous for its **parenthetical S-expression syntax, macro systems, and treating code as data**. While the original Lisp was created by John McCarthy in 1958, it has evolved into several distinct, powerful dialects. [link](https://en.wikipedia.org/wiki/List%5Fof%5FLisp-family%5Fprogramming%5Flanguages)
+
+### Major Active Dialects
+
+- **Common Lisp**: A large, industrial-strength, standardized multi-paradigm dialect. It is a **Lisp-2** (meaning variables and functions occupy separate namespaces). It features an advanced object system (CLOS) and highly optimized native compilers like Steel Bank Common Lisp (SBCL). [link](https://www.reddit.com/r/lisp/comments/1k79dl/how%5Fdifferent%5Fare%5Flisp%5Fdialects/)
+- **Scheme**: A minimalist, elegant, academically minded dialect designed by Guy L. Steele and Gerald Jay Sussman. It is a **Lisp-1** (single namespace for variables and functions) and mandates lexical scoping and proper tail-call optimization. [link](https://www.reddit.com/r/lisp/comments/qlcza4/best%5Flisp%5Fdialect/)
+- **Clojure**: A modern, functional-first dialect that runs on the **Java Virtual Machine (JVM)**, CLR, and compiles to JavaScript. It replaces traditional Lisp linked lists with highly optimized immutable, persistent data structures and integrates seamlessly with host language ecosystems. [link](https://www.reddit.com/r/lisp/comments/qlcza4/best%5Flisp%5Fdialect/)
+- **Racket**: Originally spawned from Scheme, Racket has grown into a full-scale platform focused on **language-oriented programming**. It allows developers to quickly build entirely new domain-specific languages using its powerful macro system. [link](https://www.reddit.com/r/lisp/comments/z3umql/are%5Fthere%5Fany%5Flisp%5Fdialect%5Fdetailed%5Flists/)
+
+### Application-Specific & Scripting Dialects
+
+- **Emacs Lisp (Elisp)**: The extension language used to configure and program the popular GNU Emacs editor. [link](https://en.wikipedia.org/wiki/Lisp%5F%28programming%5Flanguage%29)
+- **AutoLISP**: A dedicated scripting dialect embedded inside Autodesk's **AutoCAD** application for computer-aided design scripting. [link](https://en.wikipedia.org/wiki/Lisp%5F%28programming%5Flanguage%29)
+- **Fennel**: A lightweight dialect that compiles directly down to clean **Lua** code, frequently used for game development and configuring applications. [link](https://github.com/aygp-dr/lisp-dialect-showcase)
+- **Hy**: A dialect that compiles into **Python** abstract syntax trees, allowing you to write Lisp syntax while importing any Python library smoothly. [link](https://github.com/aygp-dr/lisp-dialect-showcase)
+
+***
+
+### Conceptual Differences
+
+| Feature / Concept    | Lisp-1                                            | Lisp-2                                                |
+| -------------------- | ------------------------------------------------- | ----------------------------------------------------- |
+| **Namespace Design** | Functions and variables share a single namespace. | Separate namespaces for functions and variables.      |
+| **Example Dialects** | Scheme, Clojure, Racket.                          | Common Lisp, Emacs Lisp.                              |
+| **Syntax Quirk**     | Call functions directly when passed as arguments. | Requires sharp-quoting `#'` to pass function objects. |
+
+Are you researching Lisp to **learn functional concepts**, or do you have a specific project environment in mind like the **JVM, Python, or embedded systems**?
+
+- [link](https://www.reddit.com/r/lisp/comments/qlcza4/best%5Flisp%5Fdialect/)\
+  Best Lisp dialect? - Reddit\
+  Nov 3, 2021 — No support for continuations (Scheme supports this, it's useful for adding very advanced control flow constructs like co-routines ...\
+  Reddit·r/lisp
+- [link](https://en.wikipedia.org/wiki/List%5Fof%5FLisp-family%5Fprogramming%5Flanguages)\
+  List of Lisp-family programming languages - Wikipedia\
+  List of Lisp-family programming languages. Article · Talk. Language; Loading… Download PDF; Watch · Edit. The programming language...\
+  Wikipedia
+- [link](https://www.reddit.com/r/lisp/comments/1k79dl/how%5Fdifferent%5Fare%5Flisp%5Fdialects/)\
+  How different are Lisp dialects? - Reddit\
+  Aug 12, 2013 — I looked into the Cliki page. Looks interesting. There seems to be some decent amount of tools available with CLisp too for web de...\
+  Reddit·r/lisp
+
+Show all
+
+## syntax of each
+
+Here is a direct syntax comparison of the four major Lisp dialects. Each snippet shows how to define a variable, create a function, use conditional logic, and work with lists.
+
+### 1. Common Lisp
+
+Common Lisp is a **Lisp-2**. You must use `defun` for functions, `defparameter` for variables, and explicit operators like `funcall` or `#'` when passing functions as arguments.
+
+lisp
+
+```
+;; Define a global variable
+(defparameter *multiplier* 2)
+
+;; Define a function
+(defun scale-number (n)
+  (if (> n 0)
+      (* n *multiplier*)
+      0))
+
+;; Create a list and apply a function
+(mapcar #'scale-number '(1 -2 3))
+;; Output: (2 0 6)
+```
+
+Use code with caution.
+
+### 2. Scheme
+
+Scheme is a **Lisp-1**. It uses a single namespace, meaning variables and functions are treated exactly the same. It uses `define` for both.
+
+scheme
+
+```
+;; Define a variable
+(define multiplier 2)
+
+;; Define a function
+(define (scale-number n)
+  (if (> n 0)
+      (* n multiplier)
+      0))
+
+;; Create a list and apply a function (no #' or funcall needed)
+(map scale-number '(1 -2 3))
+;; Output: (2 0 6)
+```
+
+Use code with caution.
+
+### 3. Clojure
+
+Clojure modernizes Lisp syntax by replacing some parentheses with **square brackets `[]`** for vectors/parameters and using comma-free literal maps and sets.
+
+clojure
+
+```
+;; Define a variable (def)
+(def multiplier 2)
+
+;; Define a function (defn)
+(defn scale-number [n]
+  (if (> n 0)
+    (* n multiplier)
+    0))
+
+;; Create a literal vector instead of a linked list
+(map scale-number [1 -2 3])
+;; Output: (2 0 6)
+```
+
+Use code with caution.
+
+### 4. Racket
+
+Racket builds on Scheme but adds modular extensions. It allows the use of square brackets `[]` interchangeably with parentheses `()` to make conditional branches easier to read.
+
+racket
+
+```
+#lang racket ; Every Racket file specifies its language
+
+;; Define a variable
+(define multiplier 2)
+
+;; Define a function
+(define (scale-number n)
+  (if (> n 0)
+      (* n multiplier)
+      0))
+
+;; Using brackets for readability in conditionals (cond)
+(define (describe n)
+  (cond [(> n 0) "positive"]
+        [(= n 0) "zero"]
+        [else "negative"]))
+
+(map scale-number '(1 -2 3))
+;; Output: (2 0 6)
+```
+
+Use code with caution.
+
+***
+
+### Key Syntax Differences at a Glance
+
+- **Function Call Invocation**: Common Lisp uses `#'` to reference a function name as data; Scheme and Clojure pass it directly.
+- **Data Structures**: Clojure uses `[1 2 3]` for vectors and `{:key "value"}` for maps. The others rely heavily on quoted lists `'(1 2 3)`.
+- **Booleans**: Clojure uses standard `true` and `false`. Scheme and Racket use `#t` and `#f`. Common Lisp uses `t` and `nil`.
+
+Would you like to see how to write a specific program—like **file I/O, a REST API, or a macro**—in one of these languages?
+
+- [link](https://www.codetips.co.uk/what-is-syntax/)\
+  What is syntax?\
+  Mar 18, 2019 — If you've followed these articles, you should already know what a variable is. Each language specifies the Syntax of how to write ...\
+  \
+  \
+  www.codetips.co.uk
+- [link](https://gigamonkeys.com/book/variables)\
+  6\. Variables\
+  Common Lisp provides two ways to create global variables: DEFVAR and DEFPARAMETER . Both forms take a variable name, an initial va...\
+  \
+  gigamonkeys
+- [link](https://en.wikipedia.org/wiki/Scheme%5F%28programming%5Flanguage%29)\
+  Scheme (programming language)\
+  Shared namespace for procedures and variables In contrast to Common Lisp, all data and procedures in Scheme share a common namespa...\
+  \
+  \
+  Wikipedia
+
+Show all
+
+# all haskell syntax <!-- mathematically uniform and pure, but neither simple, robust, or optimized for reality -->
+
+This comprehensive guide maps out the standard syntax rules, keywords, and patterns of the **Haskell programming language**, based on the core [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch10.html).
+
+***
+
+### 1. Comments and Layout Rule
+
+### Comments
+
+- **Single-line:** Starts with `--` and continues to the end of the line.
+- **Multi-line:** Enclosed between `{-` and `-}`. These can be nested. [link](https://hackage-content.haskell.org/package/CheatSheet-1.11/src/CheatSheet.pdf)
+
+haskell
+
+```
+-- This is a single-line comment
+
+{- This is a
+   multi-line comment -}
+```
+
+Use code with caution.
+
+### The Layout Rule (Indentation)
+
+Haskell determines code scope using indentation rather than braces `{}` and semicolons `;`. [link](https://www.cs.bu.edu/fac/snyder/cs320/CheatSheet.pdf)
+
+- Code blocks inside keywords like `let`, `where`, `do`, and `of` must align vertically.
+- If you break an expression across lines, subsequent lines must be indented further than the first line. [link](https://www.cs.bu.edu/fac/snyder/cs320/CheatSheet.pdf)
+
+***
+
+### 2. Functions and Declarations
+
+### Type Signatures
+
+Declared using the double colon `::` operator. The arrow `->` separates inputs and outputs. [link](https://www.youtube.com/watch?v=g8S4LAvEhqE\&t=2)
+
+haskell
+
+```
+addOne :: Int -> Int
+```
+
+Use code with caution.
+
+### Function Definitions
+
+Defined by writing the function name followed by parameter names separated by spaces, an equals sign `=`, and the body. No parentheses or commas are used for parameters. [link](https://www.youtube.com/watch?v=gK0hMxJhqwM\&t=1)
+
+haskell
+
+```
+addOne x = x + 1
+
+-- Multi-parameter function
+multiply x y = x * y
+```
+
+Use code with caution.
+
+### Function Application
+
+Functions are applied simply via **juxtaposition** (putting spaces between names). [link](https://fsr.github.io/haskell-lessons/script/syntax.html)
+
+- **Prefix (Standard):** `func arg1 arg2`.
+- **Infix Conversion:** Enclosing any standard function in backticks \`\`\`\`\` allows it to be used as an operator.
+- **Prefix Conversion:** Enclosing an operator symbol in parentheses `()` allows it to be used like a normal function. [link](https://www.youtube.com/watch?v=gK0hMxJhqwM\&t=1)
+
+haskell
+
+```
+-- Standard prefix call
+result = multiply 3 4
+
+-- Infix conversion using backticks
+result = 3 `multiply` 4
+
+-- Operator used as a prefix function
+summed = (+) 5 10
+```
+
+Use code with caution.
+
+***
+
+### 3. Control Flow Expressions
+
+Every control structure in Haskell is an **expression**, meaning it must always return a value. [link](https://fsr.github.io/haskell-lessons/script/syntax.html)
+
+### If-Then-Else
+
+Because it is an expression, the `else` branch is strictly mandatory, and both branches must return the exact same data type. [link](https://fsr.github.io/haskell-lessons/script/syntax.html)
+
+haskell
+
+```
+checkAge :: Int -> String
+checkAge age = if age >= 18 then "Adult" else "Minor"
+```
+
+Use code with caution.
+
+### Case Expressions
+
+Used to match patterns directly against a specific value. [link](https://learnxinyminutes.com/haskell/)
+
+haskell
+
+```
+describeColor :: String -> String
+describeColor color = case color of
+    "red"   -> "Stop"
+    "green" -> "Go"
+    "blue"  -> "Relax"
+    _       -> "Unknown color"  -- '_' acts as a wildcard fallback
+```
+
+Use code with caution.
+
+***
+
+### 4. Syntax in Functions (Branching Tools)
+
+Haskell uses special syntactic structures inside function definitions to manage complex conditional checks cleanly without looping mechanics. [link](https://learnxinyminutes.com/haskell/)
+
+### Pattern Matching
+
+You can specify distinct function bodies depending on the precise format or structural value of your arguments. [link](https://mmhaskell.com/liftoff/syntax)
+
+haskell
+
+```
+factorial :: Int -> Int
+factorial 0 = 1
+factorial n = n * factorial (n - 1)
+```
+
+Use code with caution.
+
+### Guards
+
+Guards use the pipe symbol `|` to check boolean conditions sequentially down a list. `otherwise` serves as the catch-all fallback variable. [link](https://www.cse.chalmers.se/edu/year/2013/course/TDA452/haskell-syntax.html)
+
+haskell
+
+```
+analyzeScore :: Int -> String
+analyzeScore score
+    | score >= 90 = "A"
+    | score >= 80 = "B"
+    | otherwise   = "F"
+```
+
+Use code with caution.
+
+### As-Patterns
+
+Represented by an `@` symbol. It allows you to bind a sub-pattern while still keeping a handy variable reference to the whole original structure. [link](https://learnyouahaskell.github.io/syntax-in-functions.html)
+
+haskell
+
+```
+-- 'allStr' retains the full string value, while 'x' grabs just the first character
+firstLetter :: String -> String
+firstLetter "" = "Empty string!"
+firstLetter allStr@(x:xs) = "The first letter of " ++ allStr ++ " is " ++ [x]
+```
+
+Use code with caution.
+
+***
+
+### 5. Built-in Data Structures
+
+### Lists
+
+Lists are homogeneous (all elements must be the same type) and are written inside square brackets separated by commas. [link](https://andrew.gibiansky.com/blog/haskell/haskell-syntax/)
+
+- `[]` represents an empty list.
+- `:` is the "cons" operator used to prepend an item to the start of a list.
+- `[x..y]` generates a clean sequential numeric range. [link](https://andrew.gibiansky.com/blog/haskell/haskell-syntax/)
+
+haskell
+
+```
+numbers = [1, 2, 3]
+alternative = 1 : 2 : 3 : []  -- Evaluates to [1, 2, 3]
+range = [1..5]                -- Evaluates to [1, 2, 3, 4, 5]
+evens = [2, 4..10]            -- Step range evaluates to [2, 4, 6, 8, 10]
+```
+
+Use code with caution.
+
+### List Comprehensions
+
+A powerful syntax mirroring mathematical set builder notation to build, filter, or manipulate lists cleanly. [link](https://jutge.org/doc/haskell-cheat-sheet.pdf)
+
+haskell
+
+```
+-- [ target | generator, guard/filter ]
+squaresOfEvens = [x * x | x <- [1..10], even x]
+```
+
+Use code with caution.
+
+### Tuples
+
+Tuples are fixed-size, heterogeneous structures (can hold different types together) written inside parentheses. [link](https://www.cs.bu.edu/fac/snyder/cs320/CheatSheet.pdf)
+
+haskell
+
+```
+userProfile :: (String, Int, Bool)
+userProfile = ("Alice", 28, True)
+```
+
+Use code with caution.
+
+***
+
+### 6. Variables and Local Bindings
+
+All variables/bindings in Haskell are strictly **immutable**. [link](https://fsr.github.io/haskell-lessons/script/syntax.html)
+
+### Let ... In Expressions
+
+Used to define local variables wherever an expression is valid. [link](https://prajitr.github.io/quick-haskell-syntax/)
+
+haskell
+
+```
+area = let base = 5
+           height = 10
+       in (base * height) / 2
+```
+
+Use code with caution.
+
+### Where Clauses
+
+Bound at the very end of a function block to clean up the code by storing inner sub-computations. [link](https://www.cs.bu.edu/fac/snyder/cs320/CheatSheet.pdf)
+
+haskell
+
+```
+isAdult age = check
+  where check = age >= 18
+```
+
+Use code with caution.
+
+***
+
+### 7. Custom Data Types
+
+### Algebraic Data Types (ADT)
+
+Declared using the `data` keyword. Multiple alternate value constructors are separated by pipes `|`. [link](https://www.haskell.org/haskellwiki/type)
+
+haskell
+
+```
+-- Enumeration type
+data Shape = Circle Float | Rectangle Float Float
+
+-- Declaring custom values
+myCircle = Circle 5.0
+```
+
+Use code with caution.
+
+### Record Syntax
+
+Allows you to explicitly name the individual data fields inside your custom types, which automatically generates corresponding getter functions. [link](https://hackage-content.haskell.org/package/CheatSheet-1.8/src/CheatSheet.pdf)
+
+haskell
+
+```
+data Person = Person
+  { name :: String
+  , age  :: Int
+  }
+
+-- Usage
+instructor = Person {name = "Bob", age = 32}
+instructorName = name instructor  -- Returns "Bob"
+```
+
+Use code with caution.
+
+### Type Classes
+
+Haskell's tool for defining interface schemas that require specific types to implement given functions. [link](https://stackoverflow.com/questions/5987731/difference-between-and-in-haskell)
+
+haskell
+
+```
+-- Creating a Type Class
+class Describable a where
+    describe :: a -> String
+
+-- Creating an instance of that Type Class
+instance Describable Person where
+    describe p = name p ++ " is " ++ show (age p) ++ " years old."
+```
+
+Use code with caution.
+
+***
+
+### 8. Monadic and Operator Syntax
+
+### Do Notation
+
+Syntactic sugar that replaces chained uses of monad bind operations (`>>=`) with an intuitive sequential line-by-line imperative layout style. [link](https://downloads.haskell.org/ghc/7.10.1/docs/html/users%5Fguide/syntax-extns.html)
+
+- `<-` binds the unwrapped inner evaluation value of a monadic action to a local variable name.
+
+haskell
+
+```
+greetUser :: IO ()
+greetUser = do
+    putStrLn "What is your name?"
+    inputName <- getLine
+    putStrLn ("Hello, " ++ inputName)
+```
+
+Use code with caution.
+
+### Common Syntactic Operators
+
+- **`$` (Function Application):** Replaces parentheses. Everything to the right of `$` is evaluated first.
+- **`.` (Function Composition):** Pipelines two functions mathematically together (\
+  𝑓\
+  ∘𝑔\
+  ). [link](https://prajitr.github.io/quick-haskell-syntax/)
+
+haskell
+
+```
+-- Without $:
+print (show (addOne 5))
+
+-- With $:
+print $ show $ addOne 5
+
+-- Using composition (.):
+printAndShow = print . show
+```
+
+Use code with caution.
+
+***
+
+If you are writing a specific piece of code, would you like me to show you how to **convert it from an imperative language** into correct Haskell syntax, or explain how a specific **language extension** works?
+
+- [link](https://andrew.gibiansky.com/blog/haskell/haskell-syntax/)\
+  Intro to Haskell Syntax - Andrew Gibiansky\
+  Jun 8, 2014 — Getting Started with Haskell. Time to get started! In this section, we'll go over what Haskell is, what the audience of this guide...\
+  andrew.gibiansky.com
+- [link](https://hackage-content.haskell.org/package/CheatSheet-1.11/src/CheatSheet.pdf)\
+  Haskell Cheat Sheet - Hackage\
+  Haskell Cheat Sheet. This cheat sheet lays out the fundamental ele- ments of the Haskell language: syntax, keywords and other elem...\
+  Haskell Language
+- [link](https://www.youtube.com/watch?v=gK0hMxJhqwM\&t=1)\
+  How to read Haskell code (in 7 minutes)\
+  May 7, 2023 — haskell being a functional language. and also just being Haskell is syntactically very different from most languages. so in order ...\
+  1m\
+  YouTube·peppidesu
+
+Show all
+
+# all ruby syntax <!-- visually aesthetic, but not really ergonomically concise -->
+
+**Ruby is a highly expressive, dynamically-typed language** where everything is an object. Semicolons and parenthesized method arguments are largely optional, and blocks of code can be written using either keywords (`do...end`) or curly braces (`{...}`). [link](https://www.youtube.com/watch?v=8wZ2ZD--VTk\&t=245)
+
+This comprehensive reference guide covers all core syntactic structures of the [Ruby Programming Language](https://www.ruby-lang.org/en/).
+
+***
+
+### Basic Rules & Comments
+
+- **Line endings**: Newlines or semicolons act as statement terminators.
+- **Indentation**: Two spaces are standard, though indentation is not syntactically enforced.
+- **Single-line comments**: Begin with `#`.
+- **Multi-line comments**: Enclosed between `=begin` and `=end` starting at the margin. [link](https://ruby-doc.org/docs/ruby-doc-bundle/Manual/man-1.4/syntax.html)
+
+ruby
+
+```
+# This is a single-line comment
+
+=begin
+This is a
+multi-line comment
+=end
+```
+
+Use code with caution.
+
+***
+
+### Variables & Scope
+
+Ruby uses naming prefixes (sigils) to explicitly determine a variable's scope: [link](https://en.wikipedia.org/wiki/Ruby%5Fsyntax)
+
+| Syntax Prefix     | Scope Type            | Example / Rule                              |
+| ----------------- | --------------------- | ------------------------------------------- |
+| `lowercase` / `_` | **Local Variable**    | Scoped to the current method or block.      |
+| `@`               | **Instance Variable** | Belonging to a specific object instance.    |
+| `@@`              | **Class Variable**    | Shared across all instances of a class.     |
+| `$`               | **Global Variable**   | Accessible anywhere throughout the runtime. |
+| `UPPERCASE`       | **Constant**          | Cannot be easily changed without a warning. |
+
+***
+
+### Data Types & Literals
+
+#### Numbers & Strings
+
+ruby
+
+```
+num = 42          # Integer
+pi  = 3.14        # Float
+
+# Double quotes allow string interpolation and escape characters
+name = "World"
+puts "Hello, #{name}!" # => Hello, World!
+
+# Single quotes represent literal strings
+puts 'Hello, #{name}!' # => Hello, #{name}!
+```
+
+Use code with caution.
+
+#### Symbols
+
+Immutable, reusable strings typically used as hash keys. [link](https://xolotlp.github.io/notes/ruby)
+
+ruby
+
+```
+:status
+:my_symbol
+```
+
+Use code with caution.
+
+#### Collections (Arrays & Hashes)
+
+ruby
+
+```
+# Arrays are ordered, zero-indexed collections
+items = ["apple", "banana", 123]
+
+# Hashes store key-value pairs (Modern symbol syntax)
+user = { name: "Alice", age: 30 }
+
+# Legacy rocket syntax (required if keys are not symbols)
+user_old = { :name => "Alice", "string_key" => 30 }
+
+# Shorthand Hash Syntax (Ruby 3.1+)
+age = 25
+user = { age: }  # Equivalent to { age: age }
+```
+
+Use code with caution.
+
+#### Percent Strings (`%` Notation)
+
+Shorthand literal creators to avoid escaping internal quotes. [link](https://docs.ruby-lang.org/en/2.0.0/syntax/literals%5Frdoc.html)
+
+ruby
+
+```
+%q(Literal single-quoted string)
+%Q(Interpolated double-quoted string)
+%w(apple banana orange)   # Array of strings: ["apple", "banana", "orange"]
+%i(low medium high)       # Array of symbols: [:low, :medium, :high]
+%r([\d+])                 # Regular expression
+```
+
+Use code with caution.
+
+***
+
+### Control Flow & Conditionals
+
+#### If, Else, and Unless
+
+ruby
+
+```
+# Standard If/Else (Note: 'elsif')
+if score > 90
+  puts "A"
+elsif score > 80
+  puts "B"
+else
+  puts "C"
+end
+
+# Unless (Opposite of if)
+unless heavy_rain?
+  puts "Go for a walk"
+end
+
+# Inline modifiers
+puts "Success!" if logged_in
+puts "Keep playing" unless game_over
+```
+
+Use code with caution.
+
+#### Case Statements
+
+ruby
+
+```
+case status
+when "active"
+  puts "Online"
+when "inactive", "pending"
+  puts "Offline"
+else
+  puts "Unknown"
+end
+```
+
+Use code with caution.
+
+#### Ternary Operator
+
+ruby
+
+```
+allowed = age >= 18 ? "Yes" : "No"
+```
+
+Use code with caution.
+
+***
+
+### Loops & Iterators
+
+While traditional loops exist, Ruby strongly favors object-oriented iterators. [link](https://rubylearning.com/guides/ruby-syntax.html)
+
+ruby
+
+```
+# While loop
+while inventory > 0
+  inventory -= 1
+end
+
+# Until loop
+until pipeline.empty?
+  pipeline.pop
+end
+
+# Each Iterator (Preferred style)
+[1, 2, 3].each do |number|
+  puts number
+end
+
+# Times loop
+5.times { puts "Hello" }
+
+# Map Iterator (Transforms a collection)
+doubled = [1, 2, 3].map { |n| n * 2 }
+```
+
+Use code with caution.
+
+***
+
+### Methods
+
+Methods return the value of their last evaluated expression automatically; an explicit `return` is optional. [link](https://rubylearning.com/guides/ruby-syntax.html)
+
+ruby
+
+```
+# Standard method
+def greet(name)
+  "Hello, #{name}"
+end
+
+# Default arguments
+def calculate_tax(amount, rate = 0.05)
+  amount * rate
+end
+
+# Splat operator (Accepts variable number of arguments into an array)
+def sum_all(*numbers)
+  numbers.sum
+end
+
+# Keyword arguments
+def create_profile(name:, status: "active")
+  { name: name, status: status }
+end
+```
+
+Use code with caution.
+
+***
+
+### Blocks, Procs, and Lambdas
+
+#### Code Blocks
+
+Blocks are chunks of anonymous code passed to methods. [link](https://en.wikipedia.org/wiki/Ruby%5Fsyntax)
+
+ruby
+
+```
+# Single line block with curly braces
+[1, 2].each { |x| puts x }
+
+# Multi-line block with do/end
+[1, 2].each do |x|
+  puts x
+end
+
+# Yielding to a block in custom methods
+def run_twice
+  yield
+  yield
+end
+run_twice { puts "Running!" }
+```
+
+Use code with caution.
+
+#### Procs & Lambdas
+
+Objects that store executable blocks of code to be reused or passed around. [link](https://rubylearning.com/guides/ruby-syntax.html)
+
+ruby
+
+```
+# Proc (Lenient argument checking)
+my_proc = Proc.new { |x| puts x }
+my_proc.call(5)
+
+# Lambda (Strict argument checking, returns back to caller)
+my_lambda = ->(x) { puts x }
+my_lambda.call(10)
+
+# Shorthand Symbol-to-Proc syntax
+["apple", "banana"].map(&:upcase) # Equivalent to: .map { |str| str.upcase }
+```
+
+Use code with caution.
+
+***
+
+### Classes & Modules
+
+#### Object-Oriented Class Structures
+
+ruby
+
+```
+class Person
+  # Shorthand macros for getters and setters
+  attr_accessor :name
+  attr_reader :age
+
+  # Constructor method
+  def initialize(name, age)
+    @name = name
+    @age = age
+  end
+
+  # Instance method
+  def introduce
+    "Hi, I'm #{@name}"
+  end
+end
+
+# Instantiating an object
+user = Person.new("Bob", 25)
+```
+
+Use code with caution.
+
+#### Modules
+
+Used for namespacing and mixing reusable components into multiple classes (Mixins). [link](https://rubylearning.com/guides/ruby-syntax.html)
+
+ruby
+
+```
+module Flyable
+  def fly
+    "I'm flying!"
+  end
+end
+
+class Bird
+  include Flyable # Mixin: adds module methods as instance methods
+end
+```
+
+Use code with caution.
+
+***
+
+### Exception Handling
+
+ruby
+
+```
+begin
+  # Code that might raise an error
+  result = 10 / 0
+rescue ZeroDivisionError => e
+  puts "Caught error: #{e.message}"
+ensure
+  puts "This always runs, regardless of errors."
+end
+```
+
+Use code with caution.
+
+***
+
+### Advanced & Idiomatic Syntax
+
+#### Safe Navigation Operator (`&.`)
+
+Prevents crashing on a `nil` object. If the object is `nil`, it skips the method call and returns `nil`.
+
+ruby
+
+```
+user&.profile&.avatar_url
+```
+
+Use code with caution.
+
+#### Memoization / Conditional Assignment (`||=`)
+
+Assigns a value to a variable _only_ if that variable is currently `nil` or `false`.
+
+ruby
+
+```
+@current_user ||= User.find(session[:user_id])
+```
+
+Use code with caution.
+
+#### Pattern Matching (Ruby 2.7+)
+
+ruby
+
+```
+case [1, 2, 3]
+in [1, a, b]
+  puts "Matches! a = #{a}, b = #{b}"
+else
+  puts "No match"
+end
+```
+
+Use code with caution.
+
+#### Numbered Block Parameters (Ruby 2.7+)
+
+Allows working with block variables without explicitly naming them.
+
+ruby
+
+```
+[10, 20, 30].map { _1 * 2 } # _1 represents the first positional argument
+```
+
+Use code with caution.
+
+***
+
+If you are looking to dig into a specific part of the syntax, let me know. I can detail **metaprogramming tricks** (like `method_missing`), dive into **regular expression engine** details, or provide a guide on writing idiomatic code according to the official [Ruby Style Guide](https://rubystyle.guide/)!
+
+- [link](https://ruby-doc.org/docs/ruby-doc-bundle/Manual/man-1.4/syntax.html)\
+  Ruby Syntax - Ruby-Doc.org\
+  Lexical structure. The character set used in the Ruby source files for the current implementation is based on ASCII. The case of c...\
+  Ruby-Doc
+- [link](https://www.youtube.com/watch?v=8wZ2ZD--VTk\&t=245)\
+  Ruby Programming | In One Video\
+  Dec 5, 2017 — and print is going to do the same thing except prints not going to print a new line after it so when we print world it won't also ...\
+  1m\
+  YouTube·Giraffe Academy
+- [link](https://www.ruby-lang.org/en/)\
+  Ruby Programming Language\
+  Ruby has a vast collection of libraries called gems, supporting everything from web development to data processing. With mature fr...\
+  Ruby Programming Language
+
+Show all
+
+# all ocaml syntax <!-- no idea what's for, a mix of some fp lang -->
+
+This cheat sheet covers the complete core syntax of **OCaml 5**, ranging from variable bindings and functions to its powerful module system. [link](https://ocaml.org/manual/5.5/coreexamples.html)
+
+***
+
+### Basic Expressions & Types
+
+OCaml is an eager, strongly-typed functional language with strict separation between integers and floating-point math. [link](https://dev.realworldocaml.org/guided-tour.html)
+
+| Feature            | Syntax Example  | Notes                                                                |
+| ------------------ | --------------- | -------------------------------------------------------------------- | --- | ------ |
+| **Integers**       | `42`, `-5`      | Type `int`. Standard math: `+`, `-`, `*`, `/`, `mod`                 |
+| **Floats**         | `3.14`, `2.`    | Type `float`. Infix math ends with a dot: `+.`, `-.`, `*.`, `/.`     |
+| **Booleans**       | `true`, `false` | Type `bool`. Logic operators: `&&` (AND), `                         |     |` (OR) |
+| **Characters**     | `'a'`, `'\n'`   | Type `char`. Surrounded by single quotes                             |
+| **Strings**        | `"Hello"`       | Type `string`. Concatenation operator is `^`                         |
+| **Quoted Strings** | \`{             | no \ escape                                                          |
+| **Unit**           | `()`            | Type `unit`. Used for expressions that return nothing (side effects) |
+
+***
+
+### Variables & Functions
+
+Variables in OCaml are immutable names bound to values via the `let` keyword. [link](https://ocaml.org/docs/tour-of-ocaml)
+
+ocaml
+
+```
+(* Variables *)
+let x = 10                       (* Global/Module-level binding *)
+let y = let z = 5 in z + z       (* Local binding: z is only visible in 'z + z' *)
+
+(* Functions *)
+let add a b = a + b              (* Implicitly typed function *)
+let add_types (a : int) : int = a + 1 (* Explicit type annotations *)
+
+(* Recursive Functions *)
+let rec fib n =                  (* 'rec' keyword is mandatory for recursion *)
+  if n <= 1 then n else fib (n - 1) + fib (n - 2)
+
+(* Anonymous Functions *)
+fun x y -> x * y                 (* Standard syntax *)
+(fun x y -> x * y) 3 4           (* Immediately applied lambda expression *)
+
+(* Labeled & Optional Arguments *)
+let greet ~name ~age = ()         (* Named arguments; called as: greet ~name:"AI" ~age:26 *)
+let bump ?(step=1) x = x + step   (* Optional argument defaulting to 1 *)
+```
+
+Use code with caution.
+
+***
+
+### Data Structures
+
+ocaml
+
+```
+(* Tuples (Fixed size, mixed types) *)
+let my_tuple = (1, "apple", true)
+
+(* Lists (Dynamic size, single type, singly-linked) *)
+let empty_list = []
+let my_list = [1; 2; 3]          (* Semicolons separate elements *)
+let cons_list = 0 :: my_list     (* '::' prepends an element (cons) *)
+let joined = [1] @ [2; 3]        (* '@' concatenates two lists *)
+
+(* Arrays (Mutable, fixed size, fast indexing) *)
+let my_array = [| 1; 2; 3 |]     (* Array literal syntax *)
+let element = my_array.(0)       (* Access index *)
+my_array.(0) <- 4                (* In-place mutation using '<-' assignment *)
+
+(* Records (Named fields, immutable by default) *)
+type person = { name: string; mutable age: int }
+let bob = { name = "Bob"; age = 30 }
+let older_bob = { bob with age = 31 } (* Functional record update copy *)
+bob.age <- 32                    (* Imperative in-place update if field is mutable *)
+
+(* Variants (Algebraic Data Types / Enums) *)
+type shape =
+  | Circle of float              (* Constructor carrying data *)
+  | Square of float
+  | Point                        (* Plain enum constructor *)
+```
+
+Use code with caution.
+
+***
+
+### Control Flow & Pattern Matching
+
+In OCaml, conditionals and switch cases are **expressions** that evaluate to a value. [link](https://ocaml.org/docs/tour-of-ocaml)
+
+ocaml
+
+```
+(* Conditionals *)
+let result = if x > 5 then "big" else "small"
+
+(* Structural Pattern Matching *)
+match my_list with
+| [] -> "Empty"
+| [single] -> "One element"
+| first :: rest -> "Starts with something"
+
+(* Advanced Pattern Matching with Guards & Named Subpatterns *)
+match shape_instance with
+| Circle r when r > 10.0 -> "Big circle"
+| Circle _ -> "Small circle"
+
+| (Square _ | Point) -> "Square or Point compound match"
+| _ as unknown -> "Catch-all giving a variable name to the whole pattern"
+```
+
+Use code with caution.
+
+***
+
+### Imperative Features & Side Effects
+
+Though built with functional design in mind, OCaml fully supports imperative loops and references. [link](https://www.reddit.com/r/ocaml/comments/1l6jddy/why%5Focaml%5Finstead%5Fof%5Fscala/)
+
+ocaml
+
+```
+(* References (Mutable pointers) *)
+let counter = ref 0              (* Create a reference cell *)
+let current_val = !counter       (* '!' dereferences and reads the value *)
+counter := !counter + 1          (* ':=' updates the value stored in the reference *)
+
+(* Loops *)
+for i = 1 to 5 do                (* Inclusive for-loop *)
+  print_int i
+done
+
+while !counter < 10 do           (* While loop condition *)
+  counter := !counter + 1
+done
+
+(* Sequencing side-effects *)
+print_string "Hello"; print_newline () (* ';' sequences expressions discarding unit *)
+```
+
+Use code with caution.
+
+***
+
+### Exceptions & Laziness
+
+ocaml
+
+```
+(* Exception Handling *)
+exception My_error of string     (* Declaring an exception variant *)
+
+let dangerous_func x =
+  if x < 0 then raise (My_error "Negative number") else x + 1
+
+let safe_call x =
+  try dangerous_func x with
+  | My_error msg -> print_endline msg; 0
+  | Failure _ -> 0               (* Built-in runtime failure catch *)
+
+(* Lazy Evaluation *)
+let lazy_val = lazy (2 + 2)      (* Computation is deferred *)
+let forced_val = Lazy.force lazy_val (* Computes right now and caches the output *)
+```
+
+Use code with caution.
+
+***
+
+### The Module System
+
+Modules organize definitions into cohesive namespaces. A `.ml` file defines a structure, while a `.mli` defines its signature interface.
+
+ocaml
+
+```
+(* Module Signatures (Interfaces) *)
+module type STACK = sig
+  type 'a t                      (* Abstract type parameter *)
+  val empty : 'a t
+  val push : 'a -> 'a t -> 'a t
+end
+
+(* Module Implementation *)
+module Stack : STACK = struct
+  type 'a t = 'a list
+  let empty = []
+  let push x s = x :: s
+end
+
+(* Accessing and Opening Modules *)
+let s = Stack.push 5 Stack.empty
+open Stack                       (* Opens the namespace globally below this line *)
+let s2 = push 5 empty
+
+let dynamic_val = Stack.(push 1 empty) (* Locally open module workspace *)
+```
+
+Use code with caution.
+
+***
+
+### Advanced Syntax Features
+
+ocaml
+
+```
+(* Type Parameters / Generics *)
+type 'a binary_tree =            (* Prefixed with a quote point: 'a *)
+  | Leaf
+  | Node of 'a * 'a binary_tree * 'a binary_tree
+
+(* Pipe Operators (Infix Application) *)
+let pipeline = 5 |> succ |> string_of_int (* Equivalent to string_of_int (succ 5) *)
+
+(* Polymorphic Variants *)
+let color = `Red                 (* No pre-declaration type required *)
+```
+
+Use code with caution.
+
+***
+
+Would you like me to expand on any specific feature here, write a complete working program example, or help you configure an [OCaml dune build environment](https://ocaml.org/docs)?
+
+Sponsored
+
+To help you write and debug OCaml code, you might consider an AI-powered development tool.
+
+[link](https://www.google.com/aclk?sa=L\&ai=DChsSEwjVv-n%5FqfuVAxW20xYFHY55Ni8YACICCAIQABoCdGw\&co=1\&ase=2\&gclid=CjwKCAjw7KvTBhA6EiwAWnutYRSZ0qTHYm13oGh7Ulry2WTTBX2ZQwEFmUM5PDAZkjlAtvksGvX9qxoCQqIQAvD%5FBwE\&cid=CAASugHkaP9fC0mGVguUHZfXxhH7qpCULdNxnzCbQClZlenQ9vjafVNOWBkZoIFwi6oMi3572i5ggYJlox1tXEVd-otlEzZtBCpNjm2Yu5iVDbu%5FlYD8QfSVnPBNX8Mj-FbCaqM5FQKX0PZ6gKGgSPWuBu3mn5815PcyRTiyAuFQTjZ-0b5BL0V0ZtpuV3jDWrFbzs%5FLBlJn1ql4Fjzn8ogeIc-tPYHyeYUc3Nk2Nf4eoyM7tgq5RbLc1IkF2kU\&cce=2\&category=acrcp%5Fv1%5F32\&sig=AOD64%5F0uF8M6bMU7vcwnZvKoeMohIqHJiQ\&adurl=\&ved=2ahUKEwiU7%5Fb7qfuVAxWzklYBHREaHOYQwdQPeggIAggBCEAQAg\&gl=us)
+
+Cursor
+
+Cursor - コードをより速くリリース
+
+エージェントがエラーの説明や修正を提案し、コードをリアルタイムでデバッグ。
+
+- [link](https://ocaml.org/manual/5.5/coreexamples.html)\
+  Chapter 1 The core language - OCaml\
+  The core language; 1 Basics · 2 Data types · 3 Functions as values · 4 Records and variants · 5 Imperative features · 6 Exceptions...\
+  OCaml
+- [link](https://ocaml.org/docs/tour-of-ocaml)\
+  A Tour of OCaml\
+  \# 9 :: u;; - : int list = \[9; 1; 2; 3; 4] In OCaml, if … then … else … is not a statement; it is an expression. # 2 \* if "hello" =\
+  OCaml
+- [link](https://ocaml.org/docs/basic-data-types)\
+  Basic Data Types and Pattern Matching · OCaml Documentation\
+  OCaml has several types: \* \*\*Predefined compound types\*\* Strings, lists, and arrays \* \*\*User-defined types\*\* Variants and records ...\
+  OCaml
+
+Show all
 
 # . thinking: recipe dsl spec
 
