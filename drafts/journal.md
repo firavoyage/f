@@ -47994,6 +47994,10 @@ it should
 - parse all collection id from dom href, click "next page", and loop until the end.
 - fetch api and download the same as userscripts
 
+05 00 prac mani mani fast swapping on astro dx.
+
+insufficient energy.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->

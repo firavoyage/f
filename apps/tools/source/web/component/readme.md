@@ -12,4 +12,5 @@ pattern
 
 page
 
+- app
 - main
