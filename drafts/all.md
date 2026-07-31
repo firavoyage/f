@@ -860,6 +860,7 @@ humility:
 - research google ai mode content filter and actual system prompt
 - research sillytavern characterai
 - research google ai mode data visualization matplotlib
+- analyze claude ux
 
 legacy:
 
