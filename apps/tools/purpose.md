@@ -680,7 +680,7 @@ everything you <!-- would possibly --> type should be in lowercase, whether url,
 
 visually, it should show whatever fits.
 
-20 00 document everything known. elaborate the plan. make decisions.
+20 00 ~~document everything known. elaborate the plan.~~ make decisions. think and research sidebar ux.
 
 how would i style the bars.
 
@@ -774,4 +774,11 @@ the thing is, i dont wanna have a meaningless title bar on web.
 actually i thought about it. but i gave too heavy constraints. <!-- i dont want the toggle to float (idk what it would hide. it's also unnatural to see it before "input"). and i dont wanna let it take screen real estate. -->
 
 false assumptions: sidebar toggle should be on sidebar. no title bar.
+
+aug 2026
+
+01
+
+05 00 document everything known. elaborate the plan.
+
 
