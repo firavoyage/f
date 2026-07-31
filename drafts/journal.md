@@ -47957,6 +47957,44 @@ i guess i would just create a folder zhihu on projects. yeah, it's not synced on
 
 actually, it's just necessary setup overhead to be agentic. if i could i would like to just start a chat, upload files, and copy the result. currently i dont have an ideal llm interface w local access. codex gui or claude cowork bloats. harness might be lots easier than building a clean ui.
 
+---
+
+c: click every page and export everything.
+
+e: get all links, export automatically as before
+
+read two userscripts and the html structure. write zhihu.js. no types. it would be pasted and run directly inside the browser console and give identical file output. write code normally. no iife. consts on top in snake case. be simple. the original code is messy. you should learn the api endpoints and nothing else.
+
+it should 
+
+- run immediately, not render buttons
+- get what's needed for the following list
+- get all collection id on dom, parse from a element href, click "next page", wait a bit, loop until no "next page" shown.
+- fetch api
+- download
+
+<!-- i guess it's not wise use of tokens. it waits and waits and waits. -->
+
+---
+
+c: click every page and export everything.
+
+e: get all links, export automatically as before
+
+read two userscripts and the html structure. 
+
+write zhihu.js. no types. it would be pasted and run directly inside the browser console and give identical file output.
+
+write code normally. no iife. consts on top in snake case. be simple. copy everything from the original userscripts except the messy code structure. and just add a bit logic on parsing and pagninate
+
+it should 
+
+- run immediately, not render buttons
+- get what's needed for the following list
+- get all collection id on dom, parse from a element href, click "next page", wait a bit, loop until no "next page" shown.
+- fetch api
+- download
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
