@@ -967,7 +967,9 @@ So to directly answer your earlier question: yes, it needs calendar/email/chat c
 
 Want me to check what you have connected, or just run it now and see what comes back?
 
-# 
+# . thinking: account ban... identify...
+
+see `android data privacy phone number ip geolocation ip faking`
 
 # . thinking: wifi...
 
