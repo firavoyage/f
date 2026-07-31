@@ -63,7 +63,7 @@ export function App() {
   use_window_active()
 
   return <>
-    <title>tools</title>
+    <title>Tools</title>
 
     <div className="app">
       <Sidebar items={list} focused={focused} set_focused={set_focused}></Sidebar>
