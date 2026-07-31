@@ -699,5 +699,24 @@ foliate shows title bar when hover, and offers a dedicated pin button to switch 
 
 feels im stuck. i have to make a decision.
 
-well, after researching google ai mode (browser)
+well, after researching google ai mode (devtools device toggle), i guess i have an answer.
+
+first, it must be able to toggle on when off. so it shouldnt just appear on the sidebar. there would be an icon. i would choose the hamburger menu, like all mobile apps. the adwaita design is actually quite weird i feel, though consistent. it behaves as three dots. letme think about it.
+
+i think the design choice of adwaita is... there is no need for a hambergur menu. when resized, it shows a sidebar icon. the sidebar icon is not bad. it's clear. but it's not single colored (or opacity). it requires significant more cog load.
+
+the decision is
+
+- off: hamburger menu (you can toggle it off, and use keyboard/gesture)
+- on: push for desktop, overlay for mobile
+- push:
+
+---
+
+another thing is, i guess sidebar should not handle the list and the focus. i could render anything inside. it doesnt have to be coupled.
+
+soc.
+
+i guess i would have a list pattern to abstract the map. i mean there are many types of list. nested. hr. headings... this one is opinionated aw.
+
 
