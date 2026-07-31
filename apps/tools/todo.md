@@ -2,10 +2,6 @@ todo
 
 ---
 
-document everything known. elaborate the plan.
-
----
-
 research cyberchef alternatives
 
 it should be simple. maybe it would not be even worth the time. take a look. and leave.
