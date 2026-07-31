@@ -269,9 +269,14 @@ backend:
 - jslinux linux kernel
 - ts node cli template
 - cli standard
-- security cryptography https ca domain registration
-- security script kiddies
 - nodejs childprocess spawn stateful stateless cli declarative imperative explicit implicit
+
+sec: <!-- security -->
+
+- selinux data extraction hardware google app dev
+- cryptography https ca domain registration
+- script kiddies
+- wifi phishing
 
 desktop:
 
@@ -328,7 +333,6 @@ android:
 - test declarative predictable hello world compilation
 - export apk aab
 - set up one ui
-- security selinux data extraction hardware google app dev
 
 ops: <!-- devops, ci, vcs, ... -->
 
