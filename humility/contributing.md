@@ -6,15 +6,17 @@ never read legacy, dependencies, or build folders.
 
 never write code inside drafts folder.
 
-p: previous, c: current, e: expected, i: example input, o: example output
+you may see some aliases. p: previous, c: current, e: expected, i: example input, o: example output
+
+you must not run bun, parcel, test, lint, or typecheck yourself.
 
 ## write
 
 - use:
   - typescript
   - pnpm
-  - bun (you must not run bun)
-  - parceljs (you must not run parcel)
+  - bun
+  - parceljs
 - naming:
   - snake case by default
   - verb noun for actions, predicate for bools, noun for factory functions

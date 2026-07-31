@@ -158,4 +158,4 @@ never write code inside drafts folder.
 
 you may see some aliases. p: previous, c: current, e: expected, i: example input, o: example output
 
-you must not run any tests, linting, or typecheck.
+you must not run bun, parcel, test, lint, or typecheck yourself.
