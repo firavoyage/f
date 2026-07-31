@@ -780,6 +780,8 @@ Let me know if you want more detail on any specific one, or want to see one in a
 
 # what skills do you have
 
+## what skills do you have
+
 I can help with a wide range of things! Here's a quick overview:
 
 **Conversation & knowledge**
@@ -810,4 +812,157 @@ I can help with a wide range of things! Here's a quick overview:
 
 Is there something specific you're trying to do? I can give more detail on whatever's relevant.
 
-# 
+## what ai agent skills do you have
+
+Here's what I can actually do in an agentic way — meaning tasks where I take multiple steps, use tools, and produce real outputs rather than just chatting:
+
+**File & document creation (via a sandboxed computer environment)**
+- Word docs, PowerPoint decks, Excel spreadsheets, PDFs — I can create, edit, and fill these out
+- Reading/parsing uploaded files of almost any type (docs, spreadsheets, PDFs, images, CSVs, archives)
+- Writing and running code (Python, JS, bash, etc.) in a Linux sandbox
+- Building small web apps or components (React, HTML/CSS/JS)
+
+**Research & information gathering**
+- Web search and fetching specific pages
+- Sports data, weather lookups
+- Deeper multi-step research when a question needs it
+
+**Connected services (if you've linked them)**
+- Calendar, email, task trackers, Google Drive, Slack, etc. — I can search registered connectors and use them if you've set them up
+
+**Interactive/visual output**
+- Inline diagrams, charts, interactive widgets, maps with recommended places, recipe walkthroughs
+- Drafting messages/emails with multiple tone/strategy options
+
+**Persistent memory**
+- I can remember context across sessions (preferences, ongoing projects) if that's useful to you
+
+**What I *can't* do**: write or debug malicious code/exploits, browse live and click around the web autonomously (I fetch/search, I don't navigate a live browser myself unless a specific connector like Claude for Chrome is set up), or take irreversible actions (sending emails, deleting files) without confirming with you first.
+
+Is there a specific task you're trying to accomplish? Happy to point to the right tool for it.
+
+## can you see morning and skill creator
+
+Yes — I have two example skills available beyond the core document ones:
+
+1. **morning** — renders a styled "morning brief" (schedule, tasks, etc.) as an HTML artifact, or can be set up as a recurring weekday task. It only triggers if you explicitly ask to run/see your morning brief or invoke `/morning`.
+
+2. **skill-creator** — lets me create new skills from scratch, or edit/improve/optimize existing ones, including running evals to test how well a skill performs.
+
+Want me to try either of these out for you?
+
+## can you see anything other than these two right now
+
+Yes, quite a bit more. Here's the full picture of what's currently available to me:
+
+**Public skills** (in `/mnt/skills/public/`):
+- **docx** — Word documents
+- **pdf** — creating/filling/manipulating PDFs
+- **pptx** — PowerPoint decks
+- **xlsx** — Excel spreadsheets
+- **frontend-design** — visual/UI design guidance
+- **file-reading** — routing logic for reading uploaded files
+- **pdf-reading** — extracting content from PDFs
+- **product-self-knowledge** — accurate info on Anthropic's own products (Claude Code, API, claude.ai)
+
+**Example skills** (in `/mnt/skills/examples/`):
+- **morning** — morning brief artifact
+- **skill-creator** — build/edit/test skills
+
+I don't currently see any custom **user skills** (there's a `/mnt/skills/user/` location mentioned in my instructions, but nothing shows up there for you right now — that's usually where personally uploaded/custom skills would live if you'd added any).
+
+Want me to peek at the contents of any specific one?
+
+## how did you know, did you run shell code
+
+No — I didn't run any shell commands for that. The list of available skills (docx, pdf, pptx, xlsx, frontend-design, file-reading, pdf-reading, product-self-knowledge, morning, skill-creator) is just given to me directly as part of my instructions at the start of this conversation — I don't have to go looking for it.
+
+The mention of `/mnt/skills/user/` was me referencing what my instructions *say* about where custom user skills would show up if you had any — not something I actually checked by running a command. To be fully accurate, I should say: I didn't verify that folder is empty, I just noticed none were listed for me. If you want me to actually check the filesystem directly (via `view` or `bash`), I can do that rather than relying on the list — want me to?
+
+## are you instructed to know where each would be, or did you launch some computers and run scripts
+
+Instructed — no scripts run. The exact filesystem paths (like `/mnt/skills/public/docx/SKILL.md` or `/mnt/skills/user/`) are spelled out for me directly in my system instructions, along with a one-line description of what each skill covers and when to use it. That's how I knew the paths and descriptions without opening anything.
+
+I only actually *use* the computer (running bash, viewing files, etc.) when I'm doing a task that needs it — like when I'm about to create a document and need to go read the full contents of a SKILL.md file first. For just listing what's available, no tool calls were needed at all.
+
+## have you read them, or do you only know the list with brief desc on each and read when needed
+
+Just the list with brief descriptions — that's what's sitting in my context right now for each one.
+
+I haven't actually opened and read the full content of any of these SKILL.md files yet in this conversation. I only read a skill's full contents when I'm about to do a task that triggers it — e.g., if you asked me to make a PowerPoint, I'd `view` the pptx SKILL.md first to get the actual detailed guidance (formatting rules, library quirks, etc.) before writing any code. Right now I just have the short "when to use this" summaries, not the full instructions inside each one.
+
+# /morning what is the morning skill for
+
+## /morning what is the morning skill for
+
+The `/morning` skill renders a personalized "morning brief" as a styled HTML artifact — basically a snapshot of your day (calendar, tasks, whatever's relevant) presented visually rather than as plain text. It can also be set up as a recurring weekday task so it runs automatically each morning.
+
+If you want, I can actually run it now to show you what it looks like, or set it up to run automatically on weekdays — just let me know which.
+
+## when do ppl use it, what do they want to see
+
+People typically reach for it right when they start their day — first thing after opening their laptop, before diving into email — as a quick way to get oriented without having to piece it together from five different apps.
+
+What they usually want to see in it:
+
+- **Calendar** – today's meetings, especially back-to-backs or anything that needs prep
+- **Tasks/to-dos** – what's due or overdue, pulled from wherever they track it
+- **Priorities** – a "here's what actually matters today" framing rather than just a raw list
+- **Email/messages** – anything urgent that came in overnight
+- **Context** – weather, maybe news or a quick briefing, so it feels like a full snapshot rather than just a task list
+
+The idea is to compress "catching up on my day" into one glance instead of tab-switching through calendar, inbox, and task manager separately.
+
+Want me to run it now so you can see what it actually pulls together for you, or set it up as a recurring weekday thing?
+
+## do they have to config things first to give you the data sources
+
+Yes — the brief is only as good as what it can actually access, so it depends on which connectors you've got hooked up (calendar, email, task manager, etc.). Without any connected, it'd just fall back to generic stuff like weather.
+
+Want me to check what you currently have connected?
+
+## have you read this, or do you only know the brief desc of it
+
+```md copied
+Good catch — so far I've only seen the one-line description from the skill listing, not the actual file. Let me pull it up.Good question — before this I'd only seen the one-line description from the skill listing, not the actual file. Now I have.
+
+Here's what it actually does, more precisely than my earlier answer:
+
+- It's a single, hand-drawn-style HTML page: top half is a visual "terrain" of your day's meeting load, bottom half is two lists — **Needs attention** (things that'll cost you something if ignored today) and **Resolved** (things that closed recently and are worth a glance).
+- Sources: it checks your connected calendar, email, and chat tools and pulls from whichever are actually connected — nothing gets faked or padded if a source is missing.
+- It's picky about what counts as "needs attention" — e.g., a Slack thread only counts if you haven't already replied or reacted to it; group @-mentions where anyone could answer don't count as blocking you specifically.
+- If nothing's connected beyond calendar (or nothing at all), it says so plainly rather than presenting an empty brief as if it found nothing.
+
+So to directly answer your earlier question: yes, it needs calendar/email/chat connectors to have anything real to show — without them, you basically just get a shape-of-the-day page with no substance underneath.
+
+Want me to check what you have connected, or just run it now and see what comes back?
+```
+
+Good catch — so far I've only seen the one-line description from the skill listing, not the actual file. Let me pull it up.
+
+```md thinking
+Reading the full morning skill file to answer accurately
+
+Loaded morning skill <!-- unlike similar elements, it's clickable when hovered -->
+
+Done
+
+<!-- Good question — before this I'd only seen the one-line description from the skill listing, not the actual file. Now I have. -->
+
+<!-- idk. it should be copied i guess. (but it doesnt.) it renders as normal resp. maybe a glitch. -->
+
+<!-- upd: well it does. but it doesnt render cleanly like on the web. -->
+```
+
+Good question — before this I'd only seen the one-line description from the skill listing, not the actual file. Now I have.
+
+Here's what it actually does, more precisely than my earlier answer:
+
+- It's a single, hand-drawn-style HTML page: top half is a visual "terrain" of your day's meeting load, bottom half is two lists — **Needs attention** (things that'll cost you something if ignored today) and **Resolved** (things that closed recently and are worth a glance).
+- Sources: it checks your connected calendar, email, and chat tools and pulls from whichever are actually connected — nothing gets faked or padded if a source is missing.
+- It's picky about what counts as "needs attention" — e.g., a Slack thread only counts if you haven't already replied or reacted to it; group @-mentions where anyone could answer don't count as blocking you specifically.
+- If nothing's connected beyond calendar (or nothing at all), it says so plainly rather than presenting an empty brief as if it found nothing.
+
+So to directly answer your earlier question: yes, it needs calendar/email/chat connectors to have anything real to show — without them, you basically just get a shape-of-the-day page with no substance underneath.
+
+Want me to check what you have connected, or just run it now and see what comes back?
