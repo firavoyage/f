@@ -966,3 +966,9 @@ Here's what it actually does, more precisely than my earlier answer:
 So to directly answer your earlier question: yes, it needs calendar/email/chat connectors to have anything real to show — without them, you basically just get a shape-of-the-day page with no substance underneath.
 
 Want me to check what you have connected, or just run it now and see what comes back?
+
+# 
+
+# . thinking: wifi...
+
+see `wifi phishing`
