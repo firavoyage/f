@@ -134,7 +134,7 @@ color:
   bg:
     primary: # core canvas
       light: "palette.gray.50"
-      dark: "palette.gray.900"
+      dark: "palette.gray.850"
     secondary: # panel
       light: "palette.gray.200"
       dark: "palette.gray.800"

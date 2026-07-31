@@ -693,4 +693,11 @@ and, there would be settings, keyboard shortcuts, and about <!-- version -->. wh
 
 btw, idk if i would show the window title *again*, if it's already inside a browser. maybe not.
 
+cyberchef doesnt design. it basically pins things on screen.
+
+foliate shows title bar when hover, and offers a dedicated pin button to switch between overlay (default) and push.
+
+feels im stuck. i have to make a decision.
+
+well, after researching google ai mode (browser)
 
