@@ -36,6 +36,14 @@ https://microsoft.github.io/vscode-codicons/dist/codicon.html
 
 ---
 
+create pattern scroll area
+
+props: direction (default vertical), children
+
+vscode style. overlay. fade out when outside. opacity grows: inside, hover, active.
+
+---
+
 create pattern popup.
 
 - title bar
@@ -87,11 +95,12 @@ tab view:
 
 ---
 
-create pattern scroll area
+create pattern settings. research adwaita and vscode.
 
-props: direction (default vertical), children
-
-vscode style. overlay. fade out when outside. opacity grows: inside, hover, active.
+- flag (checkbox/toggle)
+- select
+- number input (text inc dec or slide)
+- text input
 
 ---
 
