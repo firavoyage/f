@@ -680,4 +680,17 @@ everything you <!-- would possibly --> type should be in lowercase, whether url,
 
 visually, it should show whatever fits.
 
+20 00 document everything known. elaborate the plan. make decisions.
+
+how would i style the bars.
+
+i feel flush <!-- rect --> items would fit the philosophy. but even vscode doesnt apply flush everywhere. for example, the quick action panel items are inset <!-- rounded -->.
+
+and, there would be settings, keyboard shortcuts, and about <!-- version -->. where would they be. i may say i would toggle it off personally and adopt hotkeys, but on mobile there should be somehow visible. and if it's visible on mobile, it should be consistent on desktop, even if i offer the option to turn off.
+
+- vscode alt bar
+- gnome adwaita sidebar hamburger
+
+btw, idk if i would show the window title *again*, if it's already inside a browser. maybe not.
+
 
