@@ -47930,6 +47930,12 @@ no phone num needed it seems.
 
 for some reasons, it uses completely different email style for mobile or web.
 
+aug 2026
+
+00 40 begin aug.
+
+update headings. sync zhihu. export telegram.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
