@@ -756,5 +756,22 @@ tools couldnt be aliased easily to letters. and they dont necessarily have icons
 
 the decision is, 
 
-- on desktop, 
-- on mobile,
+- on desktop, no sidebar toggle shown. it's on by default. search. title. hamburger. list. power users can opt to hide the title bar. you can use shortcuts or hover the left border. alt, i guess, will ctrl b first and then open main menu.
+- on mobile, there would be a toggle on top. toggle (hamburger or sidebar). Current tool. you can hide it and use gesture.
+
+no secondary sidebar or dock.
+
+for icons, i can change my mind later, make it contextual, or customizable.
+
+. 22 40 analyze adwaita demo.
+
+adwaita demo doesnt allow you to toggle the sidebar. but when you switch to adaptive preview, you can. it's exactly the mobile pattern. btw, it pushes.
+
+toggle. current title. actions (camera/screenshot icon, exit icon, exit text) or three dots. window actions.
+
+the thing is, i dont wanna have a meaningless title bar on web.
+
+actually i thought about it. but i gave too heavy constraints. <!-- i dont want the toggle to float (idk what it would hide. it's also unnatural to see it before "input"). and i dont wanna let it take screen real estate. -->
+
+false assumptions: sidebar toggle should be on sidebar. no title bar.
+
