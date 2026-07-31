@@ -120,3 +120,42 @@ note: all file/folders paths start from cwd. never put meaningful code inside dr
 all file/folder paths start from cwd. never put meaningful code inside drafts folder. never read legacy folder. never look into deps or build.
 
 <!-- p: previous, c: current, e: expected, i: example input, o: example output -->
+
+# 0.9 thinking
+
+omit (assume already default):
+
+- surgical... do not overwork <!-- agents are not proactive -->
+- complete
+
+omit (irrelevant):
+
+- fdfind <!-- glob and grep works -->
+
+merge and simplify some instructions.
+
+---
+
+merge test and complete
+
+```md
+## test
+
+you must not run any tests, linting, or typecheck.
+
+## complete
+
+when complete, tell what you have done
+```
+
+# 0.9 2026.08.01
+
+all paths start from cwd. do not touch anything outside current working dir.
+
+never read legacy, dependencies, or build folders.
+
+never write code inside drafts folder.
+
+you may see some aliases. p: previous, c: current, e: expected, i: example input, o: example output
+
+you must not run any tests, linting, or typecheck.

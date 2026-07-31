@@ -1,7 +1,7 @@
 ## work
 
-- stick to cwd. do not touch anything outside.
-- prefer simplicity over best practices. do not overengineer.
+- be simple stupid. do not overengineer.
+- do not touch anything outside the current working dir.
 
 p: previous, c: current, e: expected, i: example input, o: example output
 
@@ -9,15 +9,9 @@ p: previous, c: current, e: expected, i: example input, o: example output
 
 follow these:
 
-- use:
-  - ubuntu
-  - typescript
-  - bun (command: `b`, not `bun`. you must not run it yourself.)
-  - parceljs (you must not install or run it yourself)
 - naming:
   - snake case by default
   - verb noun for actions, predicate for bools, noun for factory functions (`date`, not `create_date`)
-  - for react components, you must use pascal case (`ScrollArea.tsx`, not `scroll_area`)
 - style:
   - functional programming
   - modular and cohesive

@@ -327,3 +327,56 @@ follow these:
   - never fancy, never uppercase anywhere, no styling like `===== some pretentious comments =====`
 - notes:
   - prefer modern proven libraries when needed
+
+# 0.8 thinking
+
+omit (assume it's generally default behavior):
+
+- pascal case for react
+- always async
+- only define types on functions params and return.
+
+omit (cant force it):
+
+- how to write params <!-- there are many ways. positional. object. arg and options. better to design yourself if you have personal pref. -->
+- comment rules
+
+omit (assume it can understand):
+
+- noun for factory functions (`date`, not `create_date`)
+
+omit (irrelevant):
+
+- os, bun, parceljs <!-- upd: kept. it must not choose to use vite instead. -->
+
+omit (verbose and meaningless):
+
+- follow these:
+
+move: <!-- to work -->
+
+- (you must not run bun)
+
+revise (agents couldnt understand):
+
+- avoid typescriptism
+
+# 0.8 2026.08.01
+
+- use:
+  - typescript
+  - pnpm
+  - bun
+  - parceljs
+- naming:
+  - snake case by default
+  - verb noun for actions, predicate for bools, noun for factory functions
+- style:
+  - functional programming
+  - modular and cohesive
+  - es module
+  - always function statement, only arrow function for props
+  - always type, never interface
+  - self explanatory, no comments
+- notes:
+  - prefer modern proven libraries when needed
