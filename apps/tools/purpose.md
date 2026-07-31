@@ -779,6 +779,24 @@ aug 2026
 
 01
 
-05 00 document everything known. elaborate the plan.
+05 00 ~~document everything known.~~ elaborate the plan. design page anatomy. design params and return of some components. 06 00
+
+create general pattern components.
+
+sidebar. shortcuts. settings. quick panel. scroll area.
+
+<!-- that can be. but that's not simple. better to generate, test, and align. -->
+
+learn the layout css props by asking llms specific questions.
+
+sidebar. params: an array of options. a state of selected.
+
+quick panel. params: a list of functions w optional metadata (e.g. names, synonyms).
+
+shortcuts. <!-- just let it bind. -->
+
+---
+
+that's too brief. create a todo for each component instead.
 
 
