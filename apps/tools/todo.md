@@ -36,19 +36,62 @@ https://microsoft.github.io/vscode-codicons/dist/codicon.html
 
 ---
 
-create general pattern components, design params and return of each
+create pattern popup.
 
-sidebar. shortcuts. settings. quick panel. scroll area.
+- title bar
+  - search (default input, button if has some dock items)
+  - dock items?
+  - close
 
-<!-- that can be. but that's not simple. better to generate, test, and align. -->
+bind esc ~~and ctrl q (best effort)~~.
 
-learn the layout css props by asking llms specific questions.
+---
 
-sidebar. params: an array of options. a state of selected.
+create pattern quick panel.
 
-quick panel. params: a list of functions w optional metadata (e.g. names, synonyms).
+- quick panel
+  - search
+  - scroll area
+    - list
 
-shortcuts. <!-- just let it bind. -->
+```yaml
+- name: ...
+  fn: ...
+```
+
+recently used. other commands.
+
+---
+
+create pattern shortcuts.
+
+props: shortcuts
+
+```yaml
+general:
+  - name: open menu 
+    key: f10
+    fn: ...
+  - name: pref
+    key: ctrl+,
+tab view:
+  - - name: new tab
+      key: ctrl t
+    - name: new window
+      key: ctrl n
+  - - name: prev tab
+      key: ...
+    - name: ...
+      key: ...
+```
+
+---
+
+create pattern scroll area
+
+props: direction (default vertical), children
+
+vscode style. overlay. fade out when outside. opacity grows: inside, hover, active.
 
 ---
 
@@ -56,12 +99,23 @@ create page layout
 
 - app
   - sidebar
+    - sidebar title
+      - search
+      - app name
+      - hamburger
+    - list
+      - category
+      - item
+      - item
+      - item
   - main
-    - title
+    - main title
       - sidebar toggle
       - current tool name
-
-
+      - (window actions)
+    - convert
+      - input
+      - output
 
 ---
 
@@ -119,3 +173,19 @@ it must be able to run locally. but it does not need pwa to do so.
 you could install it. but it does not require pwa either.
 
 and pwa itself is of inconsistent compatibility.
+
+---
+
+research bootstrap and expand component patterns
+
+https://www.google.com/search?udm=50&atvm=2&mstk=AUtExfCOM-P8TYzsBz0Gg-H51sgbOX2y1eZQ4ux4X4qGPhwYYs63uKtsK5quXPvsxQ70CotRjSNINb-IY3wXKv8WA_OX7y9JCu1Sp6mHu0XCnwAZ5l8t7sHOuSyN4ybKOwZfKrjTMXNBZUjfT42ifQhvvaI2ETW4s6TMH06iQeXs2Mx6Qbxvhu12ktOejJr580w_b_G0OUFaKG1ugolcSEfts5hqplvmlWxxCnz_HdKvFTmW9ZD3QENyCPWxv3bRxuDQlXA_7AQcZtUjDA&mtid=Rx9marOhIYerur8Pwpfw-A8&csuir=1&aep=26&q=All+Bootstrap+Components&ved=0CAAQ2_wOahcKEwjYtcD32PCVAxUAAAAAHQAAAAAQGg
+
+https://getbootstrap.com/2.3.2/getting-started.html#examples
+
+https://getbootstrap.com/docs/3.4/components/
+
+https://getbootstrap.com/docs/4.0/examples/
+
+https://getbootstrap.com/docs/5.3/examples/
+
+out of scope ~~could have~~: it's not wise to build for the future. better to think what you need instead.
