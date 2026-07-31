@@ -47932,7 +47932,7 @@ for some reasons, it uses completely different email style for mobile or web.
 
 aug 2026
 
-00 40 begin aug. 01 00 archive chats on privacy, sec, and hacks. 03 40 automate to export zhihu. write a simple contributing guide. revise agent write.
+00 40 begin aug. 01 00 archive chats on privacy, sec, and hacks. 03 40 automate to export zhihu. write a simple contributing guide. revise agent write. <!-- i realize i dont really need a simple variant. it should be simple by default. -->
 
 update headings. sync zhihu. export telegram.
 
@@ -47950,6 +47950,12 @@ about scope.
 the best approach would be as an extension of have, which would be a bit complex.
 
 i guess i would revise the script w an agent for now.
+
+---
+
+i guess i would just create a folder zhihu on projects. yeah, it's not synced on git. i would put the agent thread and the final work here.
+
+actually, it's just necessary setup overhead to be agentic. if i could i would like to just start a chat, upload files, and copy the result. currently i dont have an ideal llm interface w local access. codex gui or claude cowork bloats. harness might be lots easier than building a clean ui.
 
 
 

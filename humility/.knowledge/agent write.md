@@ -339,7 +339,7 @@ omit (assume it's generally default behavior):
 omit (cant force it):
 
 - how to write params <!-- there are many ways. positional. object. arg and options. better to design yourself if you have personal pref. -->
-- comment rules
+- comment rules <!-- it's important to write good comments. yet, no comment is better than noisy comments. -->
 
 omit (assume it can understand):
 
