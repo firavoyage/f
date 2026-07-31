@@ -47922,6 +47922,14 @@ on ayugram android, reactions are indicated by a white heart w red (or orange, t
 
 02 20 watch `This Trap FOOLS EVERYONE Under 1900 | Chess Rating Climb 1845 Rapid ELO`.
 
+21 00 reg claude.
+
+fun. it says it sent a code. on email it's a "secure link". and the link shows a code, given it's for android.
+
+no phone num needed it seems.
+
+for some reasons, it uses completely different email style for mobile or web.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
