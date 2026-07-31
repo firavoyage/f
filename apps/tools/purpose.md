@@ -721,5 +721,40 @@ i guess i would have a list pattern to abstract the map. i mean there are many t
 
 . 21 00 analyze claude ux. record. 22 00
 
+claude takes another approach. sidebar icon (single colored) on desktop. hamburger on mobile.
 
+btw, i think i could make input and output horizontally splitted on desktop. it doesnt have to be like cyberchef, if we dont rely on recipe.
 
+the final decision.
+
+i will not show a "sidebar of sidebar" like vscode or claude. i have no such dock items.
+
+- google ai mode
+  - home
+  - list
+  - new
+- vscode
+  - files
+  - search
+  - extensions
+  - ...
+- claude
+  - sidebar toggle
+  - (whitespace)
+  - new
+  - chats
+  - projects
+  - artifacts
+  - code
+  - "business"
+  - (whitespace)
+  - design
+  - (whitespace to the bottom)
+  - avatar
+
+tools couldnt be aliased easily to letters. and they dont necessarily have icons.
+
+the decision is, 
+
+- on desktop, 
+- on mobile,
