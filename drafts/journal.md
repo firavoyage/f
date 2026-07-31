@@ -47936,6 +47936,13 @@ aug 2026
 
 update headings. sync zhihu. export telegram.
 
+- ref
+- sns
+- memoh
+- arkloop
+- chyk
+- nickel angel
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
