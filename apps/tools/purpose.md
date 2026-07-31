@@ -674,6 +674,10 @@ i could absolutely simplify just based on the syntax ref.
 
 03 20 <!-- continue to --> write dsl spec. 05 40
 
-18 40 apply title case window title.
+18 40 apply title case on window title.
+
+everything you <!-- would possibly --> type should be in lowercase, whether url, filenames, or foldernames (e.g. git clone repo name).
+
+visually, it should show whatever fits.
 
 
