@@ -47932,7 +47932,7 @@ for some reasons, it uses completely different email style for mobile or web.
 
 aug 2026
 
-00 40 begin aug. 01 00 archive chats on privacy, sec, and hacks. 03 40 automate to export zhihu. write a simple contributing guide.
+00 40 begin aug. 01 00 archive chats on privacy, sec, and hacks. 03 40 automate to export zhihu. write a simple contributing guide. revise agent write.
 
 update headings. sync zhihu. export telegram.
 
