@@ -48002,7 +48002,21 @@ insufficient energy.
 
 17 40 watch `This Trap FOOLS EVERYONE Under 1900 | Chess Rating Climb 1845 Rapid ELO`.
 
-23 40
+23 40 end the attempt on mani mani on astro dx.
+
+im done. in portrait it would trigger back. in landscape it would trigger "pin".
+
+maybe i should solve it by switching to three keys temporarily. but the song is not gonna be solved. fast swaps. "great early". android os blocks. that's too much.
+
+<!-- some songs could be solved. some could not. -->
+
+yes. that's it. 
+
+false assumption: it must be full screen nav. <!-- w that constrainst, every option, pin, accessibility, automation, whatever, is not an option. no solution exists, effectively. -->
+
+> when starting astro dx, switch to three keys nav and pin the app.
+
+**think out of the box.**
 
 
 
