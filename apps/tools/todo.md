@@ -97,10 +97,12 @@ tab view:
 
 create pattern settings. research adwaita and vscode.
 
-- flag (checkbox/toggle)
+- flag (checkbox/switch)
 - select
 - number input (text inc dec or slide)
 - text input
+
+research ptyxis and claude, make choices, like checkbox or switch.
 
 ---
 
