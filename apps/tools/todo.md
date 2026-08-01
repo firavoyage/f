@@ -110,9 +110,10 @@ create pattern editor
 
 - editor type select? readonly?
   - title
-    - title
-    - 
+    - type
+    - select?
   - textarea
+    - readonly?
 
 ---
 
