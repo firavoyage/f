@@ -109,5 +109,16 @@ textarea {
 }
 
 .main {
+  display: flex;
   flex-grow: 1;
+
+  .editor {
+    flex: 1;
+
+    .textarea {
+      padding: var(--spacing-2);
+
+      flex-grow: 1;
+    }
+  }
 }

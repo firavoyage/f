@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import Textarea from "./textarea"
 import { tools } from "./app"
+import { Editor } from "./editor"
 
 export function Main() {
   const [input, set_input] = useState('')
@@ -11,7 +11,7 @@ export function Main() {
   }, [input])
 
   return <div className="main">
-    <Textarea value={input} set_value={set_input}></Textarea>
-    <Textarea value={output} set_value={set_output}></Textarea>
+    <Editor type='input' value={input} set_value={set_input}></Editor>
+    <Editor type='output' value={output} set_value={set_output}></Editor>
   </div>
 }

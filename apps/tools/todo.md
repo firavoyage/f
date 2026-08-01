@@ -125,8 +125,8 @@ create page layout
       - current tool name
       - (window actions)
     - convert
-      - input
-      - output
+      - editor input
+      - editor output
 
 ---
 
