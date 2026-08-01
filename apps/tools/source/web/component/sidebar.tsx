@@ -9,7 +9,7 @@ type SidebarProps = {
   children?: any
 }
 
-export default function Sidebar({ items, focused, set_focused, variant, children }: SidebarProps) {
+export function Sidebar({ items, focused, set_focused, variant, children }: SidebarProps) {
   variant ??= 'push'
 
   const [on, toggle] = to_toggle(use_global('is_sidebar_on'))

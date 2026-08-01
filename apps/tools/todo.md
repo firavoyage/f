@@ -106,17 +106,6 @@ research ptyxis and claude, make choices, like checkbox or switch.
 
 ---
 
-create pattern editor
-
-- editor type select? readonly?
-  - title
-    - type
-    - select?
-  - textarea
-    - readonly?
-
----
-
 create page layout
 
 - app
