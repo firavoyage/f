@@ -106,6 +106,16 @@ research ptyxis and claude, make choices, like checkbox or switch.
 
 ---
 
+create pattern editor
+
+- editor type select? readonly?
+  - title
+    - title
+    - 
+  - textarea
+
+---
+
 create page layout
 
 - app
@@ -127,6 +137,14 @@ create page layout
     - convert
       - input
       - output
+
+---
+
+design ix for multi input/output.
+
+e.g. mix yaml json toml into one, instead of 6 (3 pairs, two ways each)
+
+
 
 ---
 
