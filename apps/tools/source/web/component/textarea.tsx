@@ -3,7 +3,7 @@ type TextareaProps = {
   set_value: (value: string) => void;
 };
 
-export default function Textarea({ value, set_value, ...props }: TextareaProps) {
+export function Textarea({ value, set_value, ...props }: TextareaProps) {
   function handle_change(event: React.ChangeEvent<HTMLTextAreaElement>) {
     set_value(event.target.value);
   }

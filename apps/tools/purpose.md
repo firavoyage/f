@@ -807,6 +807,12 @@ enough prep. time to move on.
 
 ---
 
+default export found in sidebar and textarea. <!-- not given enough constrants to chatbot llms -->
+
+standardize as named.
+
+---
+
 - editor type select? readonly?
   - title
     - type
@@ -814,4 +820,8 @@ enough prep. time to move on.
   - textarea
     - readonly?
 
+---
 
+<!-- i guess it can be done later, to drag to resize. -->
+
+minimum css to split a div to left and right
