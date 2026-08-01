@@ -9,6 +9,7 @@ atom
 pattern
 
 - sidebar
+- editor
 
 page
 

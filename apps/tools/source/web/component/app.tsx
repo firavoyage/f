@@ -6,7 +6,7 @@ import { use_bind } from 'web/lib/keyboard.use';
 import { use_sync_theme } from "web/lib/sync_theme.use";
 import { Main } from "web/component/main";
 import { use_window_active } from 'web/lib/window.use';
-import Sidebar from './sidebar';
+import { Sidebar } from './sidebar';
 
 import { parse, stringify } from "yaml"
 

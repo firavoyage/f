@@ -799,4 +799,19 @@ shortcuts. <!-- just let it bind. -->
 
 that's too brief. create a todo for each component instead.
 
+02
+
+02 40 create pattern editor (03 00)
+
+enough prep. time to move on.
+
+---
+
+- editor type select? readonly?
+  - title
+    - type
+    - select?
+  - textarea
+    - readonly?
+
 
