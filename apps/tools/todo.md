@@ -106,7 +106,17 @@ research ptyxis and claude, make choices, like checkbox or switch.
 
 ---
 
-create page layout
+create page main
+
+logics when update: 
+
+- readonly? no effect
+- error? no effect, or set value of the other side to error msg, or show an "incomplete" or "invalid" icon hint
+- update itself and the other side <!-- no use effect. no possible inf loop or state eq check (prone to convertor inconsistency). -->
+
+---
+
+create page app
 
 - app
   - sidebar
