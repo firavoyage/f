@@ -48030,6 +48030,8 @@ an <!-- middle --> aged woman of blonde hair from peking center.
 
 13 30 take ielts. 16 00
 
+<!-- go upstairs, there is ielts computer testing room. -->
+
 encouraging visual design. <!-- text, "ielts testing room" "ielts waiting room" "ielts from british council". icons, "cctv" "no food/drinks". consistent brand red. -->
 
 > take the right way
