@@ -48024,11 +48024,35 @@ false assumption: it must be full screen nav. <!-- w that constrainst, every opt
 
 01 20 achive s on hai yorokonde re master on astro dx.
 
+11 20 take ielts speaking. 11 40
+
+an <!-- middle --> aged woman of blonde hair from peking center.
+
+13 30 take ielts. 16 00
+
+encouraging visual design.
+
+professional and helpful ui. <!-- "integrity browser", win11, "ielts microsoft account", intel i5. everything is designed and polished. caret color is generally blue (contextual), smooth blinking when not typing (not browser default). selection color is lightblue. -->
+
+<!-- if it would be better, i could  -->
+
+local healthy ppl as staff.
+
 03
 
-00 20 read some mtf.wiki and voice training material.
+00 20 read some mtf.wiki and voice training material. view some nsfw photos.
 
-view some nsfw photos.
+less like a wiki, more like some oi diaries, in second person narrative.
+
+<!-- i would remember acbox and leohearts. -->
+
+im a bit weak. letme sleep in the ever lasting dream...
+
+<!-- be wise. be graceful. serene and peaceful. -->
+
+simple. natural <!-- flow -->. at low energy.
+
+<!-- gentle belief -->
 
 
 

@@ -36,6 +36,12 @@ https://microsoft.github.io/vscode-codicons/dist/codicon.html
 
 ---
 
+design sidebar taxonomy and data structure. style sidebar normally.
+
+
+
+---
+
 create pattern scroll area
 
 props: direction (default vertical), children
