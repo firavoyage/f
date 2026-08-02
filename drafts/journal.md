@@ -48072,6 +48072,21 @@ simple. natural <!-- flow -->. at low energy.
 
 the story of this <!-- our --> generation
 
+02 20 check twitter.
+
+```
+New post notifications for Menci 💖 · 2h
+
+特菈 Dustella followed you · 6h
+
+📦Acbox @AcboxLiu · 9h
+Replying to @firahq
+
+你还是算了 我怕你哪天又在街机烈火炫耀你的社交平台备份社工库了😅😅😅
+```
+
+well, seems ppl dont really understand the law of the internet. maybe i could try some different social approaches. <!-- i dont have to. -->
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
