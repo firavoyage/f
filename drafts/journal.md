@@ -48054,7 +48054,7 @@ local healthy ppl as staff. <!-- a kind and sociable old man speaking shanghaine
 
 03
 
-00 20 read some mtf.wiki and voice training material. view some nsfw photos.
+00 20 read some mtf.wiki and voice training material <!-- mtf-voice-training.vercel.app, from a berryberry vid (search "伪音") -->. view some nsfw photos.
 
 less like a wiki, more like some oi diaries, in second person narrative.
 
