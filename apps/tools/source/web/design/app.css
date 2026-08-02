@@ -2,6 +2,11 @@
 
 body {
   user-select: none;
+
+  * {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 ::selection {
@@ -42,6 +47,8 @@ textarea {
 
 .app {
   display: flex;
+  flex-direction: row;
+
   min-height: 100vh;
   overflow: hidden;
 
@@ -110,12 +117,17 @@ textarea {
 
 .main {
   display: flex;
+  flex-direction: row;
   flex-grow: 1;
 
   .editor {
+    display: flex;
+    flex-direction: column;
+
     flex: 1;
 
     .textarea {
+      margin: var(--spacing-1);
       padding: var(--spacing-2);
 
       flex-grow: 1;

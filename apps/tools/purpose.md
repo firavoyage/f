@@ -825,3 +825,9 @@ standardize as named.
 <!-- i guess it can be done later, to drag to resize. -->
 
 minimum css to split a div to left and right
+
+---
+
+make everything default to flex.
+
+
