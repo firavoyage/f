@@ -48030,13 +48030,25 @@ an <!-- middle --> aged woman of blonde hair from peking center.
 
 13 30 take ielts. 16 00
 
-encouraging visual design.
+encouraging visual design. <!-- text, "ielts testing room" "ielts waiting room" "ielts from british council". icons, "cctv" "no food/drinks". consistent brand red. -->
 
-professional and helpful ui. <!-- "integrity browser", win11, "ielts microsoft account", intel i5. everything is designed and polished. caret color is generally blue (contextual), smooth blinking when not typing (not browser default). selection color is lightblue. -->
+> take the right way
 
-<!-- if it would be better, i could  -->
+> we ensure your safety
 
-local healthy ppl as staff.
+<!-- it's not necessary. it's psychologically satisfying and relaxing. -->
+
+professional and helpful ui. <!-- "integrity browser", win11, "ielts microsoft account", intel i5. everything is designed and polished. caret color is generally blue (contextual), smooth blinking when not typing (not browser default). selection color is lightblue. input field outline is also contextual, blue or black. system status and what to do next are clear. -->
+
+<!-- if it would be better, i could have a way to answer pairing problems on keyboard. and maybe i would not have to tab twice between problems, if i barely uses the "mark this problem" feature. the s -->
+
+local healthy ppl as staff. <!-- a kind and sociable old man speaking shanghainese and a young lady of blonde hair -->
+
+> 玻璃工业，猴子寿命，儿童文学。
+
+16 40 Appreciate `【2026】Vue & Vite 生态最新进展 / 尤雨溪` like a podcast.
+
+18 00 Have dinner w the family at yong chao.
 
 03
 
@@ -48052,7 +48064,7 @@ im a bit weak. letme sleep in the ever lasting dream...
 
 simple. natural <!-- flow -->. at low energy.
 
-<!-- gentle belief -->
+<!-- gentle relief. gentle belief. -->
 
 
 
