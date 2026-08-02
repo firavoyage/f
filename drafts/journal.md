@@ -48068,6 +48068,10 @@ simple. natural <!-- flow -->. at low energy.
 
 <!-- gentle relief. gentle belief. -->
 
+---
+
+the story of this <!-- our --> generation
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
