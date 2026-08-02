@@ -175,6 +175,26 @@ write a custom tool, tg to journal
 
 ---
 
+implement tools
+
+- data format
+  - url decode <!-- e.g. %3d becomes = -->
+- language
+  - language decode <!-- yes, it's vscode builtin, but why not -->
+  - leet speak
+- date/time
+  - timestamp, utc, timezone, (any template string)
+- encryption, public key, hash
+  - (popular methods)
+- misc
+  - regex (the args are defined separately from inputs, on the recipe)
+  - grep
+  - glob
+  - lorem ipsum
+  - bmi <!-- take acbox for example. also, have::global search: acbox height weight. -->
+
+---
+
 adapt maimai, show loss of each
 
 sometimes it can be simple. actually, that might be the most use cases.
