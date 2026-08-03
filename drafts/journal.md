@@ -48131,6 +48131,29 @@ get from google fonts.
 
 yes. idk where they are from. but it's absolutely fewer than google fonts currently. 
 
+04
+
+01 30 reflect.
+
+> It's important to do things fast
+
+til: **how could you possibly go fast when you intentionally limit energy input?**
+
+impossible.
+
+if you were able, that would violate the law of physics (i.e. power, wattage).
+
+you dont have to be angry, upset, or impatient, like when i were solving easy repetitive math problems in batch when i were a pupil. but,
+
+you have to be highly responsive and constantly thinking.
+
+- what am i doing
+- what are the choices, what are the constraints, what assumptions could i make to simplify
+- would, or how would the outcome change if i spend time on it
+- could i change my mind later, could i skip it for now
+
+it's common human behavior to . you have to overcome that.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
