@@ -991,4 +991,37 @@ where would i put this file.
 
 maybe just state.yaml on web root.
 
+---
+
+now i see.
+
+alt bar is inside xdg desktop. (data, settings in config)
+
+wait. i feel it might be probably massive to store the full input string in localstorage.
+
+i guess in code i would have `use_global` and `use_global_data`.
+
+i could store data somehow. but it should be decoupled. like,
+
+- when sharing, input could live in url if it allows
+- when restart, input might be stored inside idb. (for sec, default off)
+
+that's conceptually identical. but impl differs.
+
+let's separate them.
+
+---
+
+since it's yaml i would write freely. in flatten i would convert spaces in keys to underscores.
+
+---
+
+let's research ptyxis a bit.
+
+---
+
+vscode autocompletes yaml well. wow.
+
+<!-- i did not remember ive installed some extensions. -->
+
 
