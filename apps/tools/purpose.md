@@ -884,7 +884,7 @@ and thus everything stores in localstorage, under origin "files://".
 
 keys are "options" and "favourites" (yeah en uk). i guess it would absolutely conflict.
 
-22 20 <!-- 22 40? --> design routing params and ia. 23 40
+22 20 <!-- 22 40? --> design routing params and ia. ~~23 40~~ 24 20
 
 <!-- i closed my eyes. i thought. i leaned myself on walls. i wandered. i feel it would pay off. i feel i would be wasting time. idk what im doing. i know what im doing. -->
 
@@ -913,11 +913,30 @@ maybe adwaita assume we would not nest it too deep.
 
 i will not make any assumptions like "nesting level must be consistent under one heading, no mix of folders and files". 
 
-decision.
+~~decision.~~
 
 - top level headings like "convert" "misc" will be rendered like adwaita instead of a vscode folder. they can be collapsed when you hover them. if collapsed the indicator will be always visible. if expanded, it will only show on hover.
 - folders and files will be styled the same. folders will have an always visible indicator.
 - files inside folders will have indentation depending on the nesting level.
 - the indicator will go after an item, not before, unlike vscode. 
+
+<!-- research wikipedia: philosophy -->
+
+wait. i think they absolutely hae the screen real estate to display both md to html and html to md confortably. it's easier. scan. and then one click.
+
+the main reason behind "json yaml toml xml" dropdown is... aesthetics. it's not a really thing. i shouldnt make them collapsed by default.
+
+decision.
+
+- everything will be indented the same
+- all leaves will be styled the same
+- folders are headings
+- heading style depends on their level
+- 
+
+the assumption:
+
+- it can nest anyway, but it will not really nest very deep to look the same.
+- it doesnt matter much if you misidentify which folder it belongs to.
 
 
