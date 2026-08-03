@@ -406,6 +406,7 @@ pm:
 - pm knowledge
 - research or analysis
 - sdlc phases
+- pomodoro
 
 gamedev:
 
