@@ -2,14 +2,6 @@ todo
 
 ---
 
-research cyberchef alternatives
-
-it should be simple. maybe it would not be even worth the time. take a look. and leave.
-
-https://devtoys.app/
-
----
-
 research encryption methods. pick and include what matters.
 
 ---
@@ -244,3 +236,13 @@ https://getbootstrap.com/docs/4.0/examples/
 https://getbootstrap.com/docs/5.3/examples/
 
 out of scope ~~could have~~: it's not wise to build for the future. better to think what you need instead.
+
+---
+
+state lib: think whether to avoid react internal apis.
+
+i would make get polymorphic, as it can.
+
+i might not test an useless "use state" to try catch. but i can try catch the exact use state i need.
+
+

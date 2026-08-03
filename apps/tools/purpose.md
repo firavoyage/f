@@ -842,4 +842,22 @@ i guess it's to overlay. it would be a bit complex. it might encounter edge case
 
 let's keep it simple for now.
 
+---
+
+it doesnt matter, i guess, on when i finish each task.
+
+i would record when i decide to start, or consciously make timeboxes, whether a hard one or a soft one.
+
+i have breaks between tasks. <!-- pomodoro? -->
+
+i may have some rest sometimes. <!-- i would not need to know, i guess, in the future. also, it could be implied. -->
+
+18 00 research cyberchef alternatives. (18 20)
+
+it should be simple. maybe it would not be even worth the time. take a look. and leave.
+
+https://devtoys.app/
+
+---
+
 
