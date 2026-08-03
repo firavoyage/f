@@ -48147,12 +48147,14 @@ you dont have to be angry, upset, or impatient, like when i were solving easy re
 
 you have to be highly responsive and constantly thinking.
 
-- what am i doing
+- what am i doing, is it a priority, what's the progress, is there perfectionism? procrastination? over engineering or premature optimaztion? 
 - what are the choices, what are the constraints, what assumptions could i make to simplify
 - would, or how would the outcome change if i spend time on it
 - could i change my mind later, could i skip it for now
 
-it's common human behavior to . you have to overcome that.
+it's common human behavior to hesitate, to repeat visited routes in mind, and to look into the void wo an idea coming up. you have to overcome that. you can reach dead ends, nevertheless you keep having your thoughts <!-- thinking tokens --> written down.
+
+**in intricate problems you desire reduction.**
 
 
 
