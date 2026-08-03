@@ -245,4 +245,12 @@ i would make get polymorphic, as it can.
 
 i might not test an useless "use state" to try catch. but i can try catch the exact use state i need.
 
+---
 
+support undo redo for all user actions, beyond text editing.
+
+memorize state history of input output tools recipes.
+
+out of scope.
+
+---

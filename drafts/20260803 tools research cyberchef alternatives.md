@@ -280,4 +280,60 @@ fancy narrative. like sport shoes.
 
 yes. california.
 
+<!-- it's his flagship project (first in "public works") aw. -->
+
+---
+
+inspiring. actually ive thought about ux like this.
+
+slightly different.
+
+that is you select a tool. you paste. it converts. it shows and auto copies the converted. that's not as ideal as them.
+
+---
+
+but the tradeoff is, you wouldnt just paste another input and let it auto convert.
+
+it has no state or memory.
+
+---
+
+how would you have multi step transformation, easily?
+
+---
+
+i could split ctrl p and ctrl shift p, where the latter pipes.
+
+(as if you press = in a calculator before the next step, that is making output as answer and placing answer on input, i.e. swap)
+
+it increases cognitive load significantly.
+
+i will not.
+
+---
+
+i will not offer a swap button either.
+
+(it means nothing. it's more efficient than copy pasting manually. but whenever you need it, there would be a better approach. i should, ideally, go the optimal way initially.)
+
+---
+
+i think it's for completely different workflows.
+
+---
+
+if you wanna use recipe, you should use dsl (or visual dsl).
+
+---
+
+i think the decision is i will add an option. "pipe". default off.
+
+when on, when you switch tools (via sidebar, or maybe limit to ctrl p), it will pipe output as the next input.
+
+- off
+- pipe when using a command
+- pipe when switching tools (both sidebar and command)
+
+---
+
 
