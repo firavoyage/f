@@ -57,6 +57,8 @@ fira:
 - pm methodology
 - pm knowledge
 - ux four pillars design process
+- pm sdlc phases
+- pm pomodoro
 
 life:
 
@@ -824,6 +826,7 @@ grow:
 tools:
 
 - recipe dsl
+- research cyberchef alternatives
 
 humility:
 
