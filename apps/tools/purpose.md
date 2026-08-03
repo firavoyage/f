@@ -856,12 +856,36 @@ i may have some rest sometimes. <!-- i would not need to know, i guess, in the f
 
 <!-- compare variant and variation -->
 
-~~18 00~~ research cyberchef alternatives. ~~(18 20)~~
+<!-- i didnt record the time in the md either. languages just sit there, waiting for my exploration. it doesnt matter when i learnt things. -->
+
+i guess, from now on i would divide time to every ten minutes, instead of twenty. <!-- i guess, still, i would not use five. relax, i mean. -->
+
+~~18 00~~ 18 30 research cyberchef alternatives. ~~(18 20)~~ (19 00)
 
 it should be simple. maybe it would not be even worth the time. take a look. and leave.
 
 https://devtoys.app/
 
 ---
+
+i have some tabs left. clear them.
+
+also, it seems to be on the top of the todos.
+
+---
+
+it does remember my dark mode choice.
+
+one thing i notice is, cyberchef typically instructs you to dl, as a zip, which is an html.
+
+it doesnt, like, pnpm add g and then run a localhost daemon.
+
+and thus everything stores in localstorage, under origin "files://".
+
+keys are "options" and "favourites" (yeah en uk). i guess it would absolutely conflict.
+
+---
+
+
 
 
