@@ -38,5 +38,20 @@ from the readme, maybe it wants github to be faster? i guess fluid animations ar
 
 btw, "yet another 3p github app" <!-- An unofficial GitHub Desktop powering your work. --> tells nothing. it should be a modifier.
 
+---
 
+support repo cleanup.
 
+it's not bad to have massive binaries in git history. it's fast and trivial nowadays.
+
+it's just... mediocre. binaries consume the most space, with the least information.
+
+better to limit history to text. i guess it couldnt take much space.
+
+well, the old logo might matter. you could have a dedicated legacy folder, or prev releases.
+
+(the latest state is always preserved.)
+
+could have.
+
+---
