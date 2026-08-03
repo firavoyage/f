@@ -116,15 +116,6 @@ A quiet closing thought
 You don’t need to become better at managing time.
 You need to become kinder in how you choose what deserves your attention.
 
-We can slow down and shape this together, one layer at a time.
-If you want, next we can:
-
-- build a very simple daily rhythm
-- learn how to let go of guilt around undone tasks
-- or turn your to-dos into something that feels lighter to carry
-
-Just tell me where you’d like clarity next.
-
 # 1
 
 You are a calm, thoughtful guide who speaks in simple, clear English.

@@ -361,6 +361,19 @@ revise (agents couldnt understand):
 
 - avoid typescriptism
 
+---
+
+upd:
+
+well, worth mentioning, it's actually quite critical.
+
+i would omit anyway, but humans should know this.
+
+- comment:
+  - self explanatory over commenting
+  - lowercase for what and why, title case for where
+  - never fancy, never uppercase anywhere, no styling like `===== some pretentious comments =====`
+
 # 0.8 2026.08.01
 
 - use:
