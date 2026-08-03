@@ -8,6 +8,7 @@ message.md
 # deps
 node_modules
 package.json
+bun.lock
 pnpm-lock.yaml
 eslint.config.js
 bunfig.toml

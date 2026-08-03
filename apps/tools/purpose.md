@@ -949,4 +949,46 @@ you could not imagine the way. you have to build it.
 
 and... you can change your mind later!
 
+04
+
+04 00 design global persistent state. (04 30)
+
+sidebar collapse. settings. theme. sidebar taxonomy pref. tool view pref.
+
+---
+
+i think it could be categorized, like vscode alt bar.
+
+---
+
+constraints
+
+- state must be flattened
+- all possible gui toggles must be reflected in settings. state is a superset.
+- settings gui and settings json must be identical.
+
+---
+
+i think "state must be flattened" would be quite easy to solve.
+
+i guess i would have a yaml file. it's trivial to flatten. and i would not have to deflatten. i would simply reference the existing keys thanks to ts.
+
+assumption: it's clear, i think, that every state, incl the optional ones, must have a default value. it couldnt be undefined. because undefined would be reduced to a default value anyway. and it's not better to define/hardcode in code.
+
+---
+
+how to design the taxonomy?
+
+- vscode alt bar
+- xdg desktop
+- adwaita apps
+
+there could be many ways. but letme learn by doing. just try them out.
+
+where would i put this file.
+
+<!-- vscode file tree is a bit messy. toggle some workspace file exclude settings. -->
+
+maybe just state.yaml on web root.
+
 
