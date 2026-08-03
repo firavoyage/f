@@ -48090,46 +48090,32 @@ well, seems ppl dont really understand the law of the internet. maybe i could tr
 ---
 
 ```
-芋头 Leohearts🔮
-@TaroLeohearts
+芋头 Leohearts🔮 @TaroLeohearts
 我在想，如果我在一个对所有人都非常宽容、一个任何人都可以很温柔、很可爱，能用爱与世界交互的环境下，我是否还会 HRT，是否还会去变成女性，而非当一个快乐的长发男，或者像现在这样的 Non-Binary
 或许社会的规训和社交上的性别身份，一定程度上让我们变得更加极端了，或许我们本应没有性别。
-4:31 AM · Feb 25, 2026
-·Twitter Web App
 
 这就是为什么我做完手术会回头思考这是否是一个对的决定 - 虽然，即使它不一定是最好的选择，即使我有其他的选择，我也会觉得这很有趣，我是一个从来不会后悔的人。
 但是，我想，或许阴差阳错，我就不会踏上这条路，享受另一段有趣的人生。
 #后悔文学
-4:31 AM · Feb 25, 2026
-·Twitter Web App
+4:31 AM · Feb 25, 2026 · Twitter Web App
 
 想多写点 #一百个非二元故事 了
-4:57 AM · Feb 25, 2026
-·Twitter Web App
+4:57 AM · Feb 25, 2026 · Twitter Web App
 
-暮萍 星霞✨
-@Nickel_Angel
+暮萍 星霞✨ @Nickel_Angel
 感觉我术的唯一动力就是政策和环境……其实感觉一些极端的想法还是因为环境中偏向于极端，就导致不得不这样做……
 我是感觉有些外界环境不是那么容易改变，所以我一直都是在自己精力范围内进行对抗和改变，并且不断增进对世界的理解……
-4:24 PM · Feb 25, 2026
-·Twitter for Android
+4:24 PM · Feb 25, 2026 · Twitter for Android
 
-Catherina（赛博咬人黑猫）
-@CatherinaMeow
+Catherina（赛博咬人黑猫） @CatherinaMeow
 如果真的没有那么多条条框框和恶意的话 
 我大概是不会术的 毕竟我本质上只是一个非二元qwq
-2:34 PM · Feb 25, 2026
-·Twitter for iPhone
+2:34 PM · Feb 25, 2026 · Twitter for iPhone
 
-芋头 Leohearts🔮
-@TaroLeohearts
-·
-Feb 25
+芋头 Leohearts🔮 @TaroLeohearts · Feb 25
 是的在我写这段话 (以及没有发出来的更长的一段话) 的时候完全有想到我和你在 411 的对话
-Catherina（赛博咬人黑猫）
-@CatherinaMeow
-·
-Feb 25
+
+Catherina（赛博咬人黑猫） @CatherinaMeow · Feb 25
 +1
 ```
 
