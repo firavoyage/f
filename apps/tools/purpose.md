@@ -852,7 +852,11 @@ i have breaks between tasks. <!-- pomodoro? -->
 
 i may have some rest sometimes. <!-- i would not need to know, i guess, in the future. also, it could be implied. -->
 
-18 00 research cyberchef alternatives. (18 20)
+18 00 learn pomodoro method. (18 20)
+
+<!-- compare variant and variation -->
+
+~~18 00~~ research cyberchef alternatives. ~~(18 20)~~
 
 it should be simple. maybe it would not be even worth the time. take a look. and leave.
 
