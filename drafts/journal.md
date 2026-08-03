@@ -48137,7 +48137,7 @@ yes. idk where they are from. but it's absolutely fewer than google fonts curren
 
 > It's important to do things fast
 
-til: **how could you possibly go fast when you intentionally limit energy input?**
+til: **how could you possibly go fast when you intentionally limit energy input?** <!-- e.g. to feel graceful or energy efficient -->
 
 impossible.
 
