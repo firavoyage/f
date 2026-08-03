@@ -830,4 +830,16 @@ minimum css to split a div to left and right
 
 make everything default to flex.
 
+03
+
+17 20 research css caret props. (17 40)
+
+i can complete it.
+
+---
+
+i guess it's to overlay. it would be a bit complex. it might encounter edge cases.
+
+let's keep it simple for now.
+
 
