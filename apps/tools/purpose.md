@@ -884,6 +884,8 @@ and thus everything stores in localstorage, under origin "files://".
 
 keys are "options" and "favourites" (yeah en uk). i guess it would absolutely conflict.
 
----
+22 20 design routing params and ia.
+
+i closed my eyes. i thought. i leaned myself on walls. i wandered.
 
 
