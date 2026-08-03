@@ -267,3 +267,9 @@ could have.
 
 ---
 
+support internationalization.
+
+could have.
+
+---
+
