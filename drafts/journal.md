@@ -48123,6 +48123,12 @@ Catherina（赛博咬人黑猫） @CatherinaMeow · Feb 25
 
 i was searching for it. i did browse some new posts.
 
+23 20 try to fix roboto on ubuntu.
+
+the prev variant mapping was incorrect.
+
+get from google fonts.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->

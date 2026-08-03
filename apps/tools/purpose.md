@@ -886,6 +886,23 @@ keys are "options" and "favourites" (yeah en uk). i guess it would absolutely co
 
 22 20 design routing params and ia.
 
-i closed my eyes. i thought. i leaned myself on walls. i wandered.
+<!-- i closed my eyes. i thought. i leaned myself on walls. i wandered. -->
+
+conclusions
+
+- routing params: tool, args, input <!-- instead of input: json, output: yaml. tools are basically fn, imperative. you couldnt just declare in general. e.g. maimai analysis tool. args are optional (e.g. recipe tool). input auto sync is opt in. -->
+- sidebar ia: under convert heading, there are "json, yaml, toml, xml" and "markdown, html". convert heading couldnt be collapsed. items are dropdowns. collapsed by default. clicking will select the first tool and expand. <!-- initially i thought i would have select on editor title. that's inconsistent and inefficient. -->
+
+rationale
+
+scannable. consistent. efficient. progressive.
+
+<!-- it might be easier to click "json to yaml", than two selects, though selecting is more elegant. you will use ctrl p json yaml anyway. -->
+
+impl
+
+i guess it will be easy. maybe react-use. make routing params a state. set initial when load. sync when change. one way, no more params to js after loading.
+
+visual design
 
 
