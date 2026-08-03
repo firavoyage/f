@@ -931,12 +931,22 @@ decision.
 - everything will be indented the same
 - all leaves will be styled the same
 - folders are headings
-- heading style depends on their level
-- 
+- heading style depends on their level. h1 has underline.
+- indicator will only show on hover or when collapsed.
 
 the assumption:
 
 - it can nest anyway, but it will not really nest very deep to look the same.
 - it doesnt matter much if you misidentify which folder it belongs to.
+
+---
+
+anyway.
+
+i think it will turn out to be fine.
+
+you could not imagine the way. you have to build it.
+
+and... you can change your mind later!
 
 
