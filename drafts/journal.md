@@ -48147,7 +48147,7 @@ you dont have to be angry, upset, or impatient, like when i were solving easy re
 
 you have to be highly responsive and constantly thinking.
 
-- what am i doing, is it a priority, what's the progress, is there perfectionism? procrastination? over engineering or premature optimaztion? 
+- what am i doing, is it a priority, what's the progress, is there perfectionism? procrastination? over engineering or premature optimization? 
 - what are the choices, what are the constraints, what assumptions could i make to simplify
 - would, or how would the outcome change if i spend time on it
 - could i change my mind later, could i skip it for now
@@ -48156,7 +48156,7 @@ it's common human behavior to hesitate, to repeat visited routes in mind, and to
 
 **in intricate problems you desire reduction.**
 
-
+            
 
 <!-- be explicit and organized. focus and timebox. -->
 
