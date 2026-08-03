@@ -1,0 +1,14 @@
+appearance: # view
+  theme: system # system | light | dark
+  layout:
+    sidebar: 
+      is visible: true
+behavior:
+  will sync input to url: false
+  will persist input: false
+shortcuts:
+  toggle sidebar: ctrl+b
+  open command palette: ctrl+shift+p ctrl+p ctrl+f ctrl+k
+  open settings: ctrl+,
+  open shortcuts: ctrl+?
+
