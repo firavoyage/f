@@ -884,9 +884,9 @@ and thus everything stores in localstorage, under origin "files://".
 
 keys are "options" and "favourites" (yeah en uk). i guess it would absolutely conflict.
 
-22 20 design routing params and ia.
+22 20 <!-- 22 40? --> design routing params and ia. 23 40
 
-<!-- i closed my eyes. i thought. i leaned myself on walls. i wandered. -->
+<!-- i closed my eyes. i thought. i leaned myself on walls. i wandered. i feel it would pay off. i feel i would be wasting time. idk what im doing. i know what im doing. -->
 
 conclusions
 
@@ -904,5 +904,7 @@ impl
 i guess it will be easy. maybe react-use. make routing params a state. set initial when load. sync when change. one way, no more params to js after loading.
 
 visual design
+
+i didnt find a pattern of nested sidebar. vscode works. but it's just too boring.
 
 

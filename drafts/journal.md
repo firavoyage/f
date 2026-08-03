@@ -48129,6 +48129,8 @@ the prev variant mapping was incorrect.
 
 get from google fonts.
 
+yes. idk where they are from. but it's absolutely fewer than google fonts currently. 
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
