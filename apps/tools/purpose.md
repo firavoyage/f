@@ -905,6 +905,19 @@ i guess it will be easy. maybe react-use. make routing params a state. set initi
 
 visual design
 
-i didnt find a pattern of nested sidebar. vscode works. but it's just too boring.
+i didnt find a pattern of nested sidebar. vscode works. but it's just too boring. and it doesnt give me any aesthetic pleasure. some blogs or docs might have this pattern. but it's generally vscode like.
+
+maybe adwaita assume we would not nest it too deep.
+
+~~i would make a deliberate choice.~~
+
+i will not make any assumptions like "nesting level must be consistent under one heading, no mix of folders and files". 
+
+decision.
+
+- top level headings like "convert" "misc" will be rendered like adwaita instead of a vscode folder. they can be collapsed when you hover them. if collapsed the indicator will be always visible. if expanded, it will only show on hover.
+- folders and files will be styled the same. folders will have an always visible indicator.
+- files inside folders will have indentation depending on the nesting level.
+- the indicator will go after an item, not before, unlike vscode. 
 
 
