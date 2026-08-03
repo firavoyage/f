@@ -860,7 +860,7 @@ i may have some rest sometimes. <!-- i would not need to know, i guess, in the f
 
 i guess, from now on i would divide time to every ten minutes, instead of twenty. <!-- i guess, still, i would not use five. relax, i mean. -->
 
-~~18 00~~ 18 30 research cyberchef alternatives. ~~(18 20)~~ (19 00)
+~~18 00~~ 18 30 research cyberchef alternatives. ~~(18 20)~~ (19 00) 20 00
 
 it should be simple. maybe it would not be even worth the time. take a look. and leave.
 
