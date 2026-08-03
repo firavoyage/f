@@ -48042,7 +48042,7 @@ encouraging visual design. <!-- text, "ielts testing room" "ielts waiting room" 
 
 professional and helpful ui. <!-- "integrity browser", win11, "ielts microsoft account", intel i5. everything is designed and polished. caret color is generally blue (contextual), smooth blinking when not typing (not browser default). selection color is lightblue. input field outline is also contextual, blue or black. system status and what to do next are clear. -->
 
-<!-- if it would be better, i could have a way to answer pairing problems on keyboard. and maybe i would not have to tab twice between problems, if i barely uses the "mark this problem" feature. the s -->
+<!-- if it would be better, i could have a way to answer pairing problems on keyboard. and maybe i would not have to tab twice between problems, if i barely uses the "mark this problem" feature. the scrollbar thumb indicates it's not finished. it matters. but it could have been lighter if they knew i were a power user. i generally wanted the reading article to stretch fully (to max line characters), but it might jump back to the middle when i made some choices. -->
 
 local healthy ppl as staff. <!-- a kind and sociable old man speaking shanghainese and a young lady of blonde hair -->
 
