@@ -844,7 +844,7 @@ let's keep it simple for now.
 
 ---
 
-it doesnt matter, i guess, on when i finish each task.
+it doesnt matter, i guess, on when i finish each task. <!-- on recording, well, i mean i could. -->
 
 i would record when i decide to start, or consciously make timeboxes, whether a hard one or a soft one.
 
@@ -885,7 +885,5 @@ and thus everything stores in localstorage, under origin "files://".
 keys are "options" and "favourites" (yeah en uk). i guess it would absolutely conflict.
 
 ---
-
-
 
 

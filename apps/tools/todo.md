@@ -254,3 +254,16 @@ memorize state history of input output tools recipes.
 out of scope.
 
 ---
+
+support cli.
+
+could have.
+
+---
+
+package as node lib.
+
+could have.
+
+---
+
