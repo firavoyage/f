@@ -48028,6 +48028,8 @@ false assumption: it must be full screen nav. <!-- w that constrainst, every opt
 
 an <!-- middle --> aged woman of blonde hair from peking center.
 
+> (im ielts examiner number ... from beijing test center.) your name. can you hear me. fav subject. why. headphone. why. comfortable or not. shopping or not. why. online or offline. why. (instructions). a place youve travelled to you would recommend. do ppl travel inside or outside your country. where do young or old ppl travel. thank you. enjoy the rest of your day. have a nice sunday.
+
 13 30 take ielts. 16 00
 
 <!-- go upstairs, there is ielts computer testing room. -->
