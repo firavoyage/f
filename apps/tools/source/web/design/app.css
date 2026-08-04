@@ -28,7 +28,7 @@ body {
 .textarea,
 .select,
 .contenteditable {
-  border-radius: var(--radius-xs);
+  /* border-radius: var(--radius-xs); */
   padding: var(--spacing-1);
 
   &:focus-visible {
