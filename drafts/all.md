@@ -353,6 +353,8 @@ sre:
 
 - vps self hosting
 - ctf port scanning connection drop stealth server uptime hash wildcard subdomain udp quic
+- self hosting serverless cross device file syncing through github
+- self hosting spa ios web app limitations success app store monopoly bypass
 
 agent: <!-- ai/ml -->
 
