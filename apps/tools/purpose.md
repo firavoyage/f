@@ -1097,4 +1097,20 @@ what url can be set wo a reload in js
 
 20 00 implement routing as an extension of state lib. 20 30
 
+letme think what args i would actually pass first. i may not impl "custom mapping" for now.
+
+```yaml
+should sync url: true
+should apply whatever given: true
+should cleanup omitted params after init: false
+should sync after init: true
+keys to sync?:
+keys to omit?:
+param mapping:
+  theme: appearance.theme
+path mapping?: path to key <!-- since main exists, i would make it an array of matcher. i would make it flexible and human (rather than page=main/tool, tool?=some tool). -->
+  - `main`: page
+  - `*`: tool
+```
+
 
