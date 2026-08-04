@@ -452,7 +452,7 @@ ux: <!-- ui/ux design, ia -->
 - ux competitive analysis
 - text selection focus ring outline style
 - youtube playlist next vid inflexible url confusing error screen
-- content design ux writing kde hig text and labels
+- content design ux writing kde hig text and labels apple hig typography
 
 typography:
 
