@@ -1131,7 +1131,7 @@ notes on mapping
 
 js objects have order. it would be preserved when converting yaml aw.
 
-20 40 implement routing as an extension of state lib. (21 00)
+20 40 implement routing as an extension of state lib. ~~(21 00)~~ (21 20)
 
 how to get and parse url in js
 
@@ -1140,5 +1140,21 @@ how to set url in js
 what url can be set wo a reload in js
 
 how to match asterisk
+
+---
+
+well i guess it's a bit too optimistic. but i would try my best.
+
+---
+
+if i run sync url after persist it would be automatically merged w priority.
+
+---
+
+i think i will not use regex.
+
+constraint: only support one asterisk at most for now. (reflected on the type.)
+
+let's generate.
 
 

@@ -37,10 +37,18 @@ path mapping: # i guess it could be smart enough to derive the other way
 
  */
 
-type StateOptions = {
+type StateOptions<T> = {
   persist?: string
   should_sync_url?: boolean
-  should_apply_whatever_given?: boolean
+  sync_url_options?: {
+    should_apply_all_given_params?: boolean
+    should_cleanup_omitted_params_after_init?: boolean
+    should_sync_after_init?: boolean
+    keys_to_sync?: (keyof T)[]
+    keys_to_omit?: (keyof T)[]
+    param_mapping?: Record<string, keyof T>
+    path_mapping?: Record<string, keyof T>
+  }
 }
 
 /**
@@ -57,7 +65,7 @@ type StateOptions = {
  * local storage sync is best effort. 
  * it performs a complete sync, w nested set time out for each key, before the next one
  */
-export function state<T extends NonFunction>(initial: T, options: StateOptions = {}) {
+export function state<T extends NonFunction>(initial: T, options: StateOptions<T> = {}) {
   const { persist } = options
 
   let data = initial

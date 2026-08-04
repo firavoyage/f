@@ -364,7 +364,7 @@ ref:
       "Prom",
     ],
     "body": [
-      "Promise<$1> $0",
+      "Promise<$1>$0",
     ],
   },
   "Set": {
@@ -374,7 +374,7 @@ ref:
       "Set",
     ],
     "body": [
-      "Set<$1> $0",
+      "Set<$1>$0",
     ],
   },
   "Map": {
@@ -384,7 +384,7 @@ ref:
       "Map",
     ],
     "body": [
-      "Map<$1, $2> $0",
+      "Map<$1, $2>$0",
     ],
   },
   "Record": {
@@ -395,7 +395,7 @@ ref:
       "Record",
     ],
     "body": [
-      "Record<$1, $2> $0",
+      "Record<$1, $2>$0",
     ],
   },
   "Result": {
@@ -405,7 +405,7 @@ ref:
       "Res",
     ],
     "body": [
-      "Result<$1> $0",
+      "Result<$1>$0",
     ],
   },
   // "result": {
