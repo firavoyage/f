@@ -155,10 +155,6 @@ purpose. <!-- i mean the file i guess. to list. to plan. no need to build a fanc
 
 ---
 
-tools.
-
----
-
 analyze linear (?) <!-- needed? already done? --> and github on android.
 
 <!-- acbox uses github mobile. idk. -->
@@ -166,5 +162,20 @@ analyze linear (?) <!-- needed? already done? --> and github on android.
 > you d build better products j becoz the craft of using linear
 
 /home/fira/Videos/Screencasts/2026-06-22 20-10-10 linear.mp4
+
+---
+
+have
+
+---
+
+i would include these ppl in the first archive
+
+- acbox
+- ame akari
+- matrix67
+- ruanyf
+- steven lynn
+- umr
 
 ---

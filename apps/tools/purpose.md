@@ -1024,7 +1024,7 @@ vscode autocompletes yaml well. wow.
 
 <!-- i did not remember ive installed some extensions. -->
 
-18 40 design and implement routing as an extension of state lib. (19 40)
+18 40 design ~~and implement~~ routing as an extension of state lib. (19 40)
 
 location.
 
@@ -1094,5 +1094,7 @@ how to get and parse url in js
 how to set url in js
 
 what url can be set wo a reload in js
+
+20 00 implement routing as an extension of state lib. 20 30
 
 
