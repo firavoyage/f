@@ -1024,13 +1024,15 @@ vscode autocompletes yaml well. wow.
 
 <!-- i did not remember ive installed some extensions. -->
 
-18 40 implement routing as an extension of state lib. (19 40)
+18 40 design and implement routing as an extension of state lib. (19 40)
 
 location.
 
 - keep (omit others)
 - omit
 - always sync
+
+---
 
 url params are global. it's inherently coupled w global state.
 
@@ -1051,4 +1053,26 @@ well suddenly i thought, if i have both use_global and use_global_data, and both
 solution: every global state would occupy some keys. it simply updates what it has. it wouldnt cleanup irrelevant params (e.g. utm from).
 
 ---
+
+design
+
+- should sync url params (if false, everything else is irrelevant)
+- should apply whatever given: true <!-- if they explicitly define like "theme=dark", i think it must apply. whether i would cleanup (so if they share simply by copying url their own pref wouldnt be shared), that's another problem. -->
+- ~~should cleanup irrelevant params after init: false~~
+  - false: do nothing
+  - 'omitted': cleanup if existing as a key of the state and omitted
+  - true: omit everything else (dangerous, may conflict w other global states) <!-- i will not analyze your code. -->
+- 
+- should sync after init: true <!-- if they go to the main page, and there is a tool memorized in localstorage, apply to url. (for new users, i may choose whether to show a main page. maybe just the site itself, not an explicit index.html or main.html, or guide them to the first tool.) you may explicitly go to /path -->
+- ~~parser: url path to params obj (default: ignore path, )~~
+- ~~applier:~~
+- param mapping: url param to key
+- path mapping: path to key (e.g. `tool`, `page/tool`)
+- custom mapping: url (param, path, whatever) to key value pairs. both way. ignore mapping if set.
+
+note
+
+- localstorage and url params merge. url params have high priority.
+- url hash `#somewhere` is equivalent to `?#=foo` by default
+
 
