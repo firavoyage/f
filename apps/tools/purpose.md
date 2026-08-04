@@ -1056,23 +1056,43 @@ solution: every global state would occupy some keys. it simply updates what it h
 
 design
 
-- should sync url params (if false, everything else is irrelevant)
+- should sync url ~~params~~: false <!-- if false, everything else is irrelevant) -->
 - should apply whatever given: true <!-- if they explicitly define like "theme=dark", i think it must apply. whether i would cleanup (so if they share simply by copying url their own pref wouldnt be shared), that's another problem. -->
 - ~~should cleanup irrelevant params after init: false~~
   - false: do nothing
   - 'omitted': cleanup if existing as a key of the state and omitted
   - true: omit everything else (dangerous, may conflict w other global states) <!-- i will not analyze your code. -->
-- 
-- should sync after init: true <!-- if they go to the main page, and there is a tool memorized in localstorage, apply to url. (for new users, i may choose whether to show a main page. maybe just the site itself, not an explicit index.html or main.html, or guide them to the first tool.) you may explicitly go to /path -->
+- should cleanup omitted params after init: false
+- should sync after init: true <!-- if they go to the main page, and there is a tool memorized in localstorage, apply to url. (for new users, i may choose whether to show a main page. maybe just the site itself, not an explicit index.html or main.html, or guide them to the first tool.) you may explicitly go to /home (e.g. if you click the main title). it would show a brief desc of all tools. -->
+- ~~keys to sync?~~
+  - keep?: omit all others
+  - omit?: omit some keys
+- keys to sync? <!-- i guess i would wrap everything inside sync url options (it can be confusing otherwise, like sync w what. sync w persist? btw i dont have constraints on js fn params.) -->
+- keys to omit?
 - ~~parser: url path to params obj (default: ignore path, )~~
 - ~~applier:~~
-- param mapping: url param to key
-- path mapping: path to key (e.g. `tool`, `page/tool`)
-- custom mapping: url (param, path, whatever) to key value pairs. both way. ignore mapping if set.
+- param mapping?: url param to key
+- ~~path mapping: path to key (e.g. `tool`, `page/tool`)~~
+- path mapping?: path to key <!-- since main exists, i would make it an array of matcher. i would make it flexible and human (rather than page=main/tool, tool?=some tool). -->
+  - `main`: page
+  - `*`: tool
+- custom mapping?: url (param, path, whatever) to key value pairs. both way. ignore mapping if set.
 
 note
 
 - localstorage and url params merge. url params have high priority.
 - url hash `#somewhere` is equivalent to `?#=foo` by default
+
+---
+
+i guess react use would not provide such method. everything is a hook in its perspective.
+
+letme search... what methods would i need
+
+how to get and parse url in js
+
+how to set url in js
+
+what url can be set wo a reload in js
 
 
