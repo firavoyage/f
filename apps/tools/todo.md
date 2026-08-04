@@ -34,6 +34,14 @@ design sidebar taxonomy and data structure. style sidebar normally.
 
 ---
 
+design args ux
+
+(e.g. use json parse, json5, or dirty json)
+
+
+
+---
+
 create pattern scroll area
 
 props: direction (default vertical), children

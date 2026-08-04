@@ -1010,6 +1010,8 @@ that's conceptually identical. but impl differs.
 
 let's separate them.
 
+<!-- i dont think there would be cache. app state (e.g. current page) would not be cache either. it might be a config. -->
+
 ---
 
 since it's yaml i would write freely. in flatten i would convert spaces in keys to underscores.
@@ -1078,7 +1080,7 @@ design
   - `*`: tool
 - custom mapping?: url (param, path, whatever) to key value pairs. both way. ignore mapping if set.
 
-note
+notes
 
 - localstorage and url params merge. url params have high priority.
 - url hash `#somewhere` is equivalent to `?#=foo` by default
@@ -1095,22 +1097,48 @@ how to set url in js
 
 what url can be set wo a reload in js
 
-20 00 implement routing as an extension of state lib. 20 30
+20 00 design archi of implementation of state lib routing. 20 30
 
 letme think what args i would actually pass first. i may not impl "custom mapping" for now.
 
 ```yaml
 should sync url: true
 should apply whatever given: true
-should cleanup omitted params after init: false
+should cleanup omitted params after init: true
+# most time it doesnt matter at all to cleanup irrelevant url params. the "conceptual cleaniness" doesnt outweigh the cons.
 should sync after init: true
-keys to sync?:
-keys to omit?:
+keys to sync:
+  - tool
+  - page
 param mapping:
   theme: appearance.theme
-path mapping?: path to key <!-- since main exists, i would make it an array of matcher. i would make it flexible and human (rather than page=main/tool, tool?=some tool). -->
-  - `main`: page
-  - `*`: tool
+path mapping: # i guess it could be smart enough to derive the other way
+  home: page
+  '*': tool
 ```
+
+notes on mapping
+
+- cache all keys mentioned
+- for each key to sync
+  - if inside path mapping
+    - check one by one if it would match
+    - it fits apply, otherwise continue
+  - if inside param mapping (e.g. `#: location`)
+    - mutate in place as if it's mapped
+  - otherwise
+    - apply as param. (or hash if it's `#`)
+
+js objects have order. it would be preserved when converting yaml aw.
+
+20 40 implement routing as an extension of state lib. (21 00)
+
+how to get and parse url in js
+
+how to set url in js
+
+what url can be set wo a reload in js
+
+how to match asterisk
 
 
