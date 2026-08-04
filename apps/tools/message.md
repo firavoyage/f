@@ -8,4 +8,12 @@ location.
 - omit
 - always sync
 
+---
+
+git repo cleanup
+
+see every non text changes in the history
+
+remove in batch
+
 

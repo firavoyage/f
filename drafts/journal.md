@@ -7581,7 +7581,6 @@ qwp そんなことしないでください, [4/25/26 3:02 AM]
 猫
 
 kMBRjund/0 🧊, [4/25/26 7:57 AM]
-
 <!-- photo: school desk (blue, plastic), pencil box (top left), coca cola from mc donalds (top right), confirmation letter (ask parents to ensure the safety of their children on various ordinary aspects, from tianjin no 41 middle skl, middle), badges (nixos, estrogen, maimai dx, bottom right) -->
 
 幽默 #校
@@ -15411,7 +15410,7 @@ wtf? Honkai: Star Rail?
 
 07 00 (Re) Browse tfboys maimai `TF家族打舞萌`. Surf. Get inspired. Buy a non slip mat.
 
-I just have to much imagination on these. Could not sleep. Let's say I'm in kirisame shop, sitting among maimai arcades... (Vibe) Coding w my ubuntu... Friends n followers...
+I just have too much imagination on these. Could not sleep. Let's say I'm in kirisame shop, sitting among maimai arcades... (Vibe) Coding w my ubuntu... Friends n followers...
 
 I'm one w my time.
 
@@ -15601,7 +15600,6 @@ What an engineering.
 英语 150
 
 （或者也可以问中考）
-
 ```
 
 ```
