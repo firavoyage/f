@@ -724,3 +724,15 @@ memes.
 it can be like a simple dict.
 
 ---
+
+research apple hig
+
+https://developer.apple.com/design/
+
+also check out legacy versions
+
+---
+
+
+
+

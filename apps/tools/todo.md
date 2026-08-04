@@ -2,6 +2,12 @@ todo
 
 ---
 
+implement string distance based url correction
+
+<!-- i guess you could do that easily. since asterisk is parsed as tools, you could use the most relevant tool. -->
+
+---
+
 research encryption methods. pick and include what matters.
 
 ---
