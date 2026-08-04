@@ -18,6 +18,32 @@ function is_inside_react() {
 }
 
 /**
+
+```yaml
+should sync url: true
+should apply whatever given: true
+should cleanup omitted params after init: true
+# most time it doesnt matter at all to cleanup irrelevant url params. the "conceptual cleaniness" doesnt outweigh the cons.
+should sync after init: true
+keys to sync:
+  - tool
+  - page
+param mapping:
+  theme: appearance.theme
+path mapping: # i guess it could be smart enough to derive the other way
+  home: page
+  '*': tool
+```
+
+ */
+
+type StateOptions = {
+  persist?: string
+  should_sync_url?: boolean
+  should_apply_whatever_given?: boolean
+}
+
+/**
  * store a global state, return a hook
  * 
  * to persist, data must be serializable
@@ -31,7 +57,9 @@ function is_inside_react() {
  * local storage sync is best effort. 
  * it performs a complete sync, w nested set time out for each key, before the next one
  */
-export function state<T extends NonFunction>(initial: T, { persist }: { persist?: string } = {}) {
+export function state<T extends NonFunction>(initial: T, options: StateOptions = {}) {
+  const { persist } = options
+
   let data = initial
   const subs: Set<Function> = new Set()
   let is_syncing = false

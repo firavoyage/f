@@ -42,6 +42,16 @@ design args ux
 
 ---
 
+design recipe ix
+
+i would have a tool to formalize yaml.
+
+i may flatten the object and/or make spaces underscores.
+
+i guess it's simple. i would open recipe, click or double click ~~or drag~~ certain tools, or type them (autocomplete via vscode editor). just two loc. <!-- fn may take stdin and args in recipe -->
+
+---
+
 create pattern scroll area
 
 props: direction (default vertical), children

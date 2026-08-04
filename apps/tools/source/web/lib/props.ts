@@ -1,6 +1,5 @@
 import clsx from 'clsx';
 import parse from 'inline-style-parser';
-import React from 'react';
 
 function kebab_to_camel(str: string): string {
   let result = "";
