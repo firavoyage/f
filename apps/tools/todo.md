@@ -207,6 +207,7 @@ implement tools
   - grep
   - glob
   - lorem ipsum
+  - emoji search
   - bmi <!-- take acbox for example. also, have::global search: acbox height weight. -->
 
 ---
