@@ -154,6 +154,16 @@ ref:
       "const { ${2:name} } = await import('${1:module}');$0"
     ],
   },
+  "type": {
+    "prefix": [
+      "ty",
+      "typ",
+      "type",
+    ],
+    "body": [
+      "type $1 = $0"
+    ],
+  },
   "import type": {
     "prefix": "it",
     "body": [
