@@ -48158,6 +48158,24 @@ it's common human behavior to hesitate, to repeat visited routes in mind, and to
 
 both maimais are idle.
 
+05
+
+06 30 add a line to readme.
+
+p
+
+```md
+<!-- perfertionism, procrastination, over engineering, premature optimization. -->
+```
+
+c
+
+```md
+<!-- perfertionism and procrastination -->
+```
+
+
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
