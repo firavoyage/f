@@ -1024,4 +1024,31 @@ vscode autocompletes yaml well. wow.
 
 <!-- i did not remember ive installed some extensions. -->
 
+18 40 implement routing as an extension of state lib. (19 40)
+
+location.
+
+- keep (omit others)
+- omit
+- always sync
+
+url params are global. it's inherently coupled w global state.
+
+i already have some thoughts.
+
+design
+
+- ~~sync <!-- should sync url params -->~~
+
+well let's be explicit. i guess persist is clear. you would have an item on localstorage w such key. (i may support idb later.)
+
+sync is not. where would you sync w?
+
+---
+
+well suddenly i thought, if i have both use_global and use_global_data, and both occupies url, and i have no idea what's updated, how could i sync?
+
+solution: every global state would occupy some keys. it simply updates what it has. it wouldnt cleanup irrelevant params (e.g. utm from).
+
+---
 
