@@ -1145,6 +1145,8 @@ how to match asterisk
 
 well i guess it's a bit too optimistic. but i would try my best.
 
+<!-- yes it is. i will not overwork anyway. good news is things are clear now. -->
+
 ---
 
 if i run sync url after persist it would be automatically merged w priority.
@@ -1156,5 +1158,11 @@ i think i will not use regex.
 constraint: only support one asterisk at most for now. (reflected on the type.)
 
 let's generate.
+
+use snake case. use type no interface. use fn statement. write a ts fn match. params pattern, text. pattern contains exactly one asterisk. return false if not matched. return the matched string. no regex, test start with and ends with and slice.
+
+<!-- use snake case. use type no interface. use fn statement. write a ts fn match. params pattern, test. -->
+
+---
 
 
