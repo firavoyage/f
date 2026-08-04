@@ -3,9 +3,12 @@ appearance: # view
   layout:
     sidebar: 
       is visible: true
+    title bar: 
+      is visible: true
 behavior:
   will sync input to url: false
   will persist input: false
+  will pipe output to new command: false
 shortcuts:
   toggle sidebar: ctrl+b
   open command palette: ctrl+shift+p ctrl+p ctrl+f ctrl+k
