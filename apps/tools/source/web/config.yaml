@@ -28,5 +28,6 @@ navigation:
   tool:
     - ''
     - ...Object.keys(tools) # it could not work. i could make the converter smarter though.
-
+extensions:
+  tools: {}
 
