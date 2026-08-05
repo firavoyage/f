@@ -776,6 +776,10 @@ rhetoric:
 - kids are dangerous
 - interesting facts
 
+poetry:
+
+- stopping by woods on a snowy evening
+
 laws:
 
 - lichess chessdotcom icons
