@@ -1298,4 +1298,25 @@ yes. that works.
 
 05 10 research url params. learn the methods of state lib routing. (05 30)
 
+url normalization is ugly. it's still cleaner and more readable than base64. i may render it better, like, sometimes it doesnt have to be converted. it could show unicode chars. but it's better not bother it for now.
+
+---
+
+let's think about the logics.
+
+- (persist)
+- if should sync url
+  - calculate keys to sync, that is keep ?? all keys excluding the omitted ?? empty
+  - init
+- init
+  - map url to keys, path mapping, params mapping, hash
+  - loop through given params, apply if it's valid key of the state, and then delete if it's omitted
+  - sync
+- sync
+  - map keys to path (it works for now. i may need a more general one soon.)
+  - apply params mapping
+  - merge to the url (append, update if existing, ignore if irrelevant)
+- when state change
+  - sync
+
 
