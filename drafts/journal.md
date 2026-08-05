@@ -48182,7 +48182,7 @@ i applied it. <!-- as if i omitted "deterministic > probablistic" in favor of "e
 
 overall 8. listening 8.5, reading 9, writing 7, speaking 6.5.
 
-<!-- in waiting room, i was constantly saying "我是顶级做题区! 我是顶级做题区." to others, sitting on the rightmost seat. i was. -->
+<!-- in waiting room, i was constantly saying "我是顶级做题区! 我是顶级做题区." to others, sitting on the rightmost seat. i was. i thought i might get a full mark on objective problems after exam. i did. only a full mark fits me. -->
 
 
 
