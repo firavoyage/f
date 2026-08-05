@@ -2,6 +2,10 @@ support editor features
 
 copy input or output.
 
+you can turn if off.
+
+should have.
+
 ---
 
 i guess there would be a tool for minify or prettier.
