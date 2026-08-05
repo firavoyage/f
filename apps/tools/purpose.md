@@ -1165,7 +1165,7 @@ use snake case. use type no interface. use fn statement. write a ts fn match. pa
 
 05
 
-21 40 design navigation state.
+21 40 design navigation state. research undefined in json (de)serialization.
 
 it's not cached data. obviously.
 
@@ -1176,7 +1176,66 @@ put inside config.
 in vscode, the ia is designed as
 
 - view
+  - open command palette/view
   - appearance
-    - element/mode toggles
-    - 
+    - panel/element/mode toggles
+    - panel position
+    - zoom
+  - <!-- editor --> layout
+    - multi column/row
+  - primary sidebar items, e.g. files, extensions
+  - panels, e.g. terminal, problems
+  - word wrap toggle
+
+wise enough. i think. could be sub optimal.
+
+---
+
+i think it's about different contexts.
+
+it's alt bar in vscode. it's not alt bar here.
+
+---
+
+i think it's clear to separate navigation in state.
+
+i will show theme, layout, position, element toggles, whatever in appearance in settings.
+
+i may not put navigation in settings. it's awkward.
+
+it might conflict w the decision to make settings an exact mapping of states. it's expected.
+
+well, i would say it's not. you still edit the same config anyway in json.
+
+and the settings gui is a taxonomy on top. after a mapping, designed for humans.
+
+---
+
+about undefined. i guess i would just leave it there.
+
+it's simpler to write `?`. i can simply omit. undefined is a valid default value.
+
+yeah, again, it conflicts w my assumption.
+
+let's think whether it can work.
+
+serialize:
+
+- when defined, ok
+- when undefined, omit
+
+deserialize:
+
+- when defined, ok
+- when undefined, do nothing as you couldnt see it (omit effectively)
+
+it's the same when you have an undefined key or a non existing key.
+
+wait. my url param behavior seems to rely on the list of keys.
+
+---
+
+solution:
+
+- all keys must be defeind
 
