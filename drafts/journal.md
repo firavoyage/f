@@ -48160,7 +48160,7 @@ both maimais are idle.
 
 05
 
-06 30 add a line to readme.
+06 30 add a line to readme. 07 10
 
 p
 
@@ -48174,7 +48174,9 @@ c
 <!-- perfertionism and procrastination -->
 ```
 
+i applied it. <!-- as if i omitted "deterministic > probablistic" in favor of "explicit > implicit" -->
 
+<!-- about the rhythm... alliterative doesnt work it feels. maybe i would re consider if it were rubaiyat stanza. -->
 
 
 
