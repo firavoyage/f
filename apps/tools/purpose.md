@@ -1292,4 +1292,6 @@ i made mistakes. web/lib/global is ignored by b. b takes the nearest bunfig (whi
 
 maybe i could normalize it. i could copy bunfig on web.
 
+yes. that works.
+
 
