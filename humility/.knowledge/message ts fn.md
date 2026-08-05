@@ -5,3 +5,8 @@ use snake case. use type no interface. use fn statement. write a ts fn to ... pa
 # 0.0-js
 
 use snake case. use fn statement. write a js fn to ... params ...
+
+# 0.1
+
+use snake case. use type no interface. use fn statement. write a ts fn ... params ... returns ...
+
