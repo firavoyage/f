@@ -1165,7 +1165,7 @@ use snake case. use type no interface. use fn statement. write a ts fn match. pa
 
 05
 
-21 40 design navigation state. research undefined in json (de)serialization. 22 30
+21 40 design navigation state. research undefined in json (de)serialization. ~~22 30~~ 22 40
 
 it's not cached data. obviously.
 
@@ -1260,5 +1260,25 @@ i think it's better to convert yaml before writing jsx. it leverages auto comple
 
 btw, ts infers type well.
 
+---
 
+i guess there isnt an ideally simple way to type a key.
+
+default true is widened as boolean, as expected. (let widens. const defines as is. for fn params, i.e. state, it's considered let. well done ts.)
+
+for arbitary string, it's just widened as string. no workaround needed.
+
+the most common and maybe the single case, is where it's flexible, but it's not anything of its type. typically union. maybe i could solve it in place.
+
+22 50 check feasibility and implement union helper lib (23 10)
+
+use snake case. use type no interface. use fn statement. write a ts fn union. params all args. returns the first arg. return an union of the args array.
+
+---
+
+assumption: all values in config must not be an array
+
+then i could easily define an array and get the first value.
+
+in the converter, i will map it to 
 
