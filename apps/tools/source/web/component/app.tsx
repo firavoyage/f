@@ -27,8 +27,24 @@ export const tools = {
 const list = ["yaml", "json", "toml"]
 
 export const use_global = state({
-  is_sidebar_on: true
-}, { persist: 'tools' })
+  is_sidebar_on: true,
+}, {
+  persist: 'tools',
+  should_sync_url: true,
+  sync_url_options: {
+    should_apply_all_given_params: true,
+    should_cleanup_omitted_params_after_init: true,
+    should_sync_after_init: true,
+    keys_to_sync: ['tool', 'page'],
+    param_mapping: {
+      theme: 'appearance.theme'
+    },
+    path_mapping: {
+      home: 'page',
+      '*': 'tool'
+    }
+  }
+})
 
 export function App() {
   const [focused, set_focused] = useState(0)

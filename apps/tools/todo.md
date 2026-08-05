@@ -45,6 +45,15 @@ design args ux
 (e.g. use json parse, json5, or dirty json)
 
 
+---
+
+make state reliable for the long term 
+
+should have
+
+add version. it will migrate when structural change happens (instead of json parse).
+
+e.g. discard, re init (merge at best effort), or mapping.
 
 ---
 
@@ -295,10 +304,6 @@ could have.
 support internationalization.
 
 could have.
-
----
-
-think how to handle args.
 
 ---
 

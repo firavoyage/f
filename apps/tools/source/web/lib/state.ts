@@ -17,26 +17,6 @@ function is_inside_react() {
   return !!internals?.ReactCurrentDispatcher?.current;
 }
 
-/**
-
-```yaml
-should sync url: true
-should apply whatever given: true
-should cleanup omitted params after init: true
-# most time it doesnt matter at all to cleanup irrelevant url params. the "conceptual cleaniness" doesnt outweigh the cons.
-should sync after init: true
-keys to sync:
-  - tool
-  - page
-param mapping:
-  theme: appearance.theme
-path mapping: # i guess it could be smart enough to derive the other way
-  home: page
-  '*': tool
-```
-
- */
-
 type StateOptions<T> = {
   persist?: string
   should_sync_url?: boolean
@@ -66,7 +46,10 @@ type StateOptions<T> = {
  * it performs a complete sync, w nested set time out for each key, before the next one
  */
 export function state<T extends NonFunction>(initial: T, options: StateOptions<T> = {}) {
-  const { persist } = options
+  const {
+    persist,
+    should_sync_url = false
+  } = options
 
   let data = initial
   const subs: Set<Function> = new Set()
@@ -169,8 +152,6 @@ export function state<T extends NonFunction>(initial: T, options: StateOptions<T
 
   return result
 }
-
-
 
 export function to_toggle([on, set]: any) {
   function toggle(new_value?: any): any {

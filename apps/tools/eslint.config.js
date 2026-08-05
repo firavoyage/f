@@ -78,15 +78,21 @@ export default defineConfig(
       "@typescript-eslint/no-unsafe-function-type": "off",
       "@typescript-eslint/no-unused-expressions": "off",
 
-      // do not show errors halfway writing
-      "no-empty": "off",
-      'no-useless-assignment': 'off',
-
       // avoid hidden timing issues
       "@typescript-eslint/no-floating-promises": "error",
       
       // throw 'foo' has no stack trace
       "local/throw-err": "warn",
     },
-  }
+  },
+
+  // Custom dev rules
+  {
+    rules: {
+      // do not show errors halfway writing
+      "no-empty": "off",
+      'no-useless-assignment': 'off',
+      '@typescript-eslint/no-unused-vars': 'off', // low opacity highlighting is enough
+    },
+  },
 );
