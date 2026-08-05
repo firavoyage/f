@@ -1280,5 +1280,16 @@ assumption: all values in config must not be an array
 
 then i could easily define an array and get the first value.
 
-in the converter, i will map it to 
+in the converter, i will map it to the union.
+
+the benifit is i leverage yaml flexible typing. numbers are numbers. strings do not need quotes.
+
+---
+
+i outperformed the llm by applying common sense on self explanable api design. ts is absolutely self explanable. you wouldnt define true and get false, or define a union and get only one.
+
+i made mistakes. web/lib/global is ignored by b. b takes the nearest bunfig (which is lib/global on root). browser takes web/lib/global
+
+maybe i could normalize it. i could copy bunfig on web.
+
 

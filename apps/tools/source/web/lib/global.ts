@@ -11,6 +11,7 @@ import * as react from 'react';
 import * as react_use from 'react-use';
 import * as p from 'web/lib/props';
 import * as state from 'web/lib/state';
+import * as union from 'lib/union';
 
 type use = typeof use
 declare global {
@@ -34,3 +35,4 @@ use(react)
 use(react_use)
 use(p)
 use(state)
+use(union)

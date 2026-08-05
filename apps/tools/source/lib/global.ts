@@ -5,6 +5,7 @@ import * as result from 'lib/result';
 import * as each from 'lib/each';
 import * as handle from 'lib/handle';
 import { merge } from 'lib/std';
+import * as union from 'lib/union';
 
 type use = typeof use
 declare global {
@@ -24,4 +25,4 @@ use(log_fs)
 use(std)
 use(each)
 use(handle)
-
+use(union)

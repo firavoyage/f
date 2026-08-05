@@ -1,5 +1,8 @@
 appearance: # view
-  theme: system # system | light | dark
+  theme: 
+    - system
+    - light
+    - dark
   layout:
     sidebar: 
       is visible: true
@@ -19,5 +22,11 @@ shortcuts:
   open settings: ctrl+,
   open shortcuts: ctrl+?
 navigation:
-  page: home # home | tool
-  tool: '' # '' | a tool
+  page: 
+    - home
+    - tool
+  tool:
+    - ''
+    - ...Object.keys(tools) # it could not work. i could make the converter smarter though.
+
+
