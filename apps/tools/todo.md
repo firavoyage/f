@@ -55,6 +55,8 @@ add version. it will migrate when structural change happens (instead of json par
 
 e.g. discard, re init (merge at best effort), or mapping.
 
+it's common in dev. i may rename theme to appearance.theme.
+
 ---
 
 design recipe ix
