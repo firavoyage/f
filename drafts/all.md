@@ -59,6 +59,7 @@ fira:
 - ux four pillars design process
 - pm sdlc phases
 - pm pomodoro
+- perfectionism procrastination over engineering premature optimization
 
 life:
 
@@ -207,6 +208,7 @@ archi:
 - spellcheck ci
 - parentheses brackets braces feeling
 - naming flags options
+- perfectionism procrastination over engineering premature optimization
 
 web: <!-- frontend, web, ts/js -->
 
