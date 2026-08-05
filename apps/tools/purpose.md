@@ -1163,6 +1163,20 @@ use snake case. use type no interface. use fn statement. write a ts fn match. pa
 
 <!-- use snake case. use type no interface. use fn statement. write a ts fn match. params pattern, test. -->
 
----
+05
 
+21 40 design navigation state.
+
+it's not cached data. obviously.
+
+it's not generated <!-- input/output --> data.
+
+put inside config.
+
+in vscode, the ia is designed as
+
+- view
+  - appearance
+    - element/mode toggles
+    - 
 

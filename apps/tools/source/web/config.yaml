@@ -14,4 +14,6 @@ shortcuts:
   open command palette: ctrl+shift+p ctrl+p ctrl+f ctrl+k
   open settings: ctrl+,
   open shortcuts: ctrl+?
-
+navigation:
+  page: home # home | tool
+  tool: '' # '' | a tool # '' serializes better than ? i guess
