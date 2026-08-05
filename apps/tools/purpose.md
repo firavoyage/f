@@ -1165,7 +1165,7 @@ use snake case. use type no interface. use fn statement. write a ts fn match. pa
 
 05
 
-21 40 design navigation state. research undefined in json (de)serialization.
+21 40 design navigation state. research undefined in json (de)serialization. 22 30
 
 it's not cached data. obviously.
 
@@ -1231,11 +1231,34 @@ deserialize:
 
 it's the same when you have an undefined key or a non existing key.
 
-wait. my url param behavior seems to rely on the list of keys.
+wait. my url param behavior seems to rely on the list of keys. <!-- ts keyof would work. js runtime would not. -->
 
 ---
 
 solution:
 
-- all keys must be defeind
+- all keys must not be optional
+- use false over undefined. you may use an empty string aw.
+
+assumption:
+
+- booleans couldnt be undefined. it must effectively evaluate to t or f by default.
+
+what about string keys? maybe i could make it an empty string.
+
+~~no. it doesnt make any sense.~~ it does make typing easier. i dont need it when it's undefined, so it can have any value. if i always need it, it must have a default value, as a factor of the default app state.
+
+also, it benefits yaml. you couldnt both define a key and leave it undefined, unless you wanna bother null (the ten b dollar mistake).
+
+---
+
+i think it's better to convert yaml before writing jsx. it leverages auto complete.
+
+*be aware! avoid tsism.*
+
+---
+
+btw, ts infers type well.
+
+
 

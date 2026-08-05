@@ -35,13 +35,13 @@ export const use_global = state({
     should_apply_all_given_params: true,
     should_cleanup_omitted_params_after_init: true,
     should_sync_after_init: true,
-    keys_to_sync: ['tool', 'page'],
+    keys_to_sync: ['navigation.page', 'navigation.tool'],
     param_mapping: {
       theme: 'appearance.theme'
     },
     path_mapping: {
-      home: 'page',
-      '*': 'tool'
+      home: 'navigation.page',
+      '*': 'navigation.tool'
     }
   }
 })
