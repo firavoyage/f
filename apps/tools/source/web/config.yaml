@@ -11,9 +11,13 @@ behavior:
   will pipe output to new command: false
 shortcuts:
   toggle sidebar: ctrl+b
+  # toggle arguments: ctrl+shift+a
+  # toggle recipe/program/logics/flow: ctrl+shift+r ctrl+shift+p ctrl+shift+l ctrl+shift+f
+  # toggle input: ctrl+shift+i
+  # toggle output: ctrl+shift+o
   open command palette: ctrl+shift+p ctrl+p ctrl+f ctrl+k
   open settings: ctrl+,
   open shortcuts: ctrl+?
 navigation:
   page: home # home | tool
-  tool: '' # '' | a tool # '' serializes better than ? i guess
+  tool: '' # '' | a tool
