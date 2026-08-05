@@ -48178,6 +48178,12 @@ i applied it. <!-- as if i omitted "deterministic > probablistic" in favor of "e
 
 <!-- about the rhythm... alliterative doesnt work it feels. maybe i would re consider if it were rubaiyat stanza. -->
 
+19 00 receive ielts result.
+
+overall 8. listening 8.5, reading 9, writing 7, speaking 6.5.
+
+<!-- in waiting room, i was constantly saying "我是顶级做题区! 我是顶级做题区." to others, sitting on the rightmost seat. i was. -->
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
