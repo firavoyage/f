@@ -1294,4 +1294,8 @@ maybe i could normalize it. i could copy bunfig on web.
 
 yes. that works.
 
+06
+
+05 10 research url params. learn the methods of state lib routing. (05 30)
+
 
