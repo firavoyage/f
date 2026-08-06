@@ -733,6 +733,8 @@ also check out legacy versions
 
 ---
 
+research github markdown editor ux
 
+https://github.com/chiyuki0325/Edelweiss/issues/new
 
-
+---

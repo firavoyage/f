@@ -48186,6 +48186,26 @@ overall 8. listening 8.5, reading 9, writing 7, speaking 6.5.
 
 <!-- in waiting room, i was constantly saying "我是顶级做题区! 我是顶级做题区." to others, sitting on the rightmost seat. i was. i thought i might get a full mark on objective problems after exam. i did. only a full mark fits me. -->
 
+06
+
+17 30 think.
+
+thinking and message seem to serve the same purpose. i do need thinking in case i have multiple unsent messages at the same time.
+
+structure reflects human mind.
+
+17 30 draft an issue on chyk's group chatbot.
+
+```md
+try to make llm messages meaningful
+
+<!-- i did not sent it as tg dm or group msg. i want it to be public w permalink. though, you may not find it. -->
+
+problem: llm 
+
+
+```
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
