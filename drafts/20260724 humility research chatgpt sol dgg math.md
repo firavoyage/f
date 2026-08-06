@@ -3976,4 +3976,6 @@ The external-validation caveat is substantive because of the conjecture’s stan
 
 # <!-- 06 aug -->
 
-how non trivial is this counter example proof. what does it mean for the future of llm based math research. some argue it simply implies humans did not make full use of brute force searches and llms excel at competitive programming i.e. writing an optimized searching algorithm, as the conclusion is mainly resulted from code execution rather than llm reasoning.
+how known are the optimization strategies for top cp players. some argue llms simply applied tricks from massive training data of cp problems, as llms do not far outplay top players in terms of capability (not speed) and human heuristic still works well. how difficult and complex is the problem really in terms of intellectual or loc. could some top players write it, like, in a weekend or less (not weeks or months), as if they were solving some more open cp problems, if they tried to search counter examples.
+
+
