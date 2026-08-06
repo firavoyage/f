@@ -22,6 +22,7 @@ shortcuts:
   open settings: ctrl+,
   open shortcuts: ctrl+?
 navigation:
+  path: ''
   page: 
     - home
     - tool

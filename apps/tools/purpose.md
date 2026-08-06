@@ -1349,7 +1349,7 @@ app might also use it to correct the path. (that is page, which must be inside a
 
 there's nothing wrong to just leave these three options in case abstraction leaks.
 
-23 00 implement routing for state lib.
+23 00 implement routing for state lib. (00 30)
 
 currently the routing (path mapping) is very specific.
 
@@ -1398,6 +1398,27 @@ sync is a subscriber yk. and it's clear when state change it should sync.
 
 it doesnt have to render the component. but it should be always in sync.
 
+you dont have to learn the rigid (leaking) structure of routing. just use js.
+
+i think i will apply it now.
+
+- path mapping: key (not object)
+- init
+- change
+- ~~correct path~~
+  - (it's mutated directly)
+  - lift a flag to make the next sync replace
+- correct path path
+  - update the path
+  - ~~lift a flag to make the next sync replace~~
+  - (sync as replace)
+
+i will make correct path always available to avoid tsism. <!-- yes. it will work. if no path mapping, it simply do not update the path in global state. -->
+
+well, i will not have the direct method. it's awkward having a method like this.
+
+no leak. you only want to correct path when you actually altered the path somewhere. and since global state is always available, you can simply rp the raw mutation w it.
+
+and it should sync! it doesnt matter to sync again if you placed it inside change. since path is already synced and no new path mutation, neither push nor replace will occur. the benefit is you can correct path anywhere.
+
 ---
-
-

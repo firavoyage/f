@@ -28,6 +28,9 @@ const list = ["yaml", "json", "toml"]
 
 export const use_global = state({
   is_sidebar_on: true,
+  'navigation.path': '',
+  'navigation.page': '',
+  'navigation.tool': ''
 }, {
   persist: 'tools',
   should_sync_url: true,
@@ -42,6 +45,14 @@ export const use_global = state({
     path_mapping: {
       home: 'navigation.page',
       '*': 'navigation.tool'
+    }
+  },
+  init(state){
+    if (state['navigation.path'] == 'main') {
+      state['navigation.page'] = 'main'
+    } else {
+      // todo: correct tool
+      
     }
   }
 })
