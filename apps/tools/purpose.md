@@ -1335,4 +1335,18 @@ component app:
 - if page is login (from path mapping), show login
 - if page is protected and it lacks auth, show login
 
+i may allow push, replace, or auto.
+
+an explicit replace is needed, e.g. path auto correction (esp common, e.g. typos, outdated routes).
+
+no idea when explicit push is needed. i guess i would engineer the other way.
+
+just toggle a flag. i guess it would be a void fn.
+
+in the main component tool auto corrects itself if non existing, and toggles the replace flag.
+
+app might also use it to correct the path. (that is page, which must be inside a union at the end of the day)
+
+there's nothing wrong to just leave these three options in case abstraction leaks.
+
 
