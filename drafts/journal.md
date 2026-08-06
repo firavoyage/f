@@ -49987,9 +49987,11 @@ how to reproduce:
 - btw, the icon colors are weird on dark mode
 ```
 
-04 00 sync w phone.
+04 00 sync w phone. 05 00
 
 screen recordings and screenshots are omitted. <!-- somehow i feel they are completely meaningless. they are large, in both size and quantity. i might keep them inside a legacy folder only on the phone. well, i might ref some. let's do a filter. -->
+
+<!-- 05 00?! well... it does take time to review and evaluate one by one. now i can easily export dcim, download, pics, and recordings. -->
 
 
 
