@@ -744,6 +744,7 @@ society: <!-- sociology -->
 - demography chess go
 - demography fps csgo valorant
 - tv more criticism than filmography
+- us ssn zhcn id design
 
 rhetoric:
 
