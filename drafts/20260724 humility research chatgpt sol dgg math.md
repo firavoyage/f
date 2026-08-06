@@ -3976,6 +3976,6 @@ The external-validation caveat is substantive because of the conjecture’s stan
 
 # <!-- 06 aug -->
 
-how known are the optimization strategies for top cp players. some argue llms simply applied tricks from massive training data of cp problems, as llms do not far outplay top players in terms of capability (not speed) and human heuristic still works well. how difficult and complex is the problem really in terms of intellectual or loc. could some top players write it, like, in a weekend or less (not weeks or months), as if they were solving some more open cp problems, if they tried to search counter examples.
+will the safe problems be solved by humans faster than llms
 
-
+are the problems hard for llms even harder for humans
