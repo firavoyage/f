@@ -48363,9 +48363,25 @@ observation:
 
 there are patterns in the positive or negative examples, derived from llm's nature, i.e. no rle <!-- personal experience background -->, no real world information wo explicit search <!-- no common experience of popular online content or news -->, completely neutral (or a consistent unyielding "casual" tone when prompted), assistant like by default, etc. 
 
+common patterns are
+
+- replying to technical problems. rationale: the neko is merely an emotional companion. an affirmation from llms doesnt make any sense. most time it's just repeating what was said. sometimes it's misleading (if it affirms some false hypotheses or incomprehensive/non strict ideas).
+- replying to memes. rationale: memes are not meant to be explained.
+- replying to irrelevant questions. rationale: humans did not expect the llm to answer.
+- replying to someone's opinion. rationale: you can say "yes" if you think alike and it's perfectly fine to be silent, unless you wanna challenge them or share another perspective. it's not only meaningless to repeat/paraphrase their opinion, but also a common anti pattern in socializing when bad listeners with strong ego barely care what others say and only come up w a similar idea later.
+
+one thing i would like to mention is, it's common that llms would not provide new information regardless, as it's not designed to do research or call tools. it would fail (it would barely reply), imo, if you added a post processor that dictates "if you did not give your own opinion or make any contribution to the chat, skip this reply".
+
 proposed solution:
 
+- export the chat msgs, let coding agent figure out the patterns to make the categorizer mece (though i could already feel what the patterns would be. topics in the group usually fall into one of a finite set.)
+- add a categorizer in preprocess, only possibly reply in a whitelisted (or not blacklisted) category
+- you may implement through
+  - system prompt (easiest, cost inefficient)
+  - a separate llm call (a little bit harder, but clean in terms of context pollution/llm attention)
+  - vector based classifier (challenging but meaningful, used by google to show "ai could make mistakes, for ... consult a pro" for law/med/fin related stuff)
 
+another idea is whitelisting some groupmates who do not wanna wake the neko up.
 ```
 
 
