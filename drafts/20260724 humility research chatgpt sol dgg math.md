@@ -3973,3 +3973,7 @@ Because the graph is planar, this is stronger than the requested general-graph c
 ### Verification files
 
 The external-validation caveat is substantive because of the conjecture’s standing, but there is no remaining search, omitted-path, floating-point, or hybrid-routing gap in this certificate.
+
+# <!-- 06 aug -->
+
+how non trivial is this counter example proof. what does it mean for the future of llm based math research. some argue it simply implies humans did not make full use of brute force searches and llms excel at competitive programming i.e. writing an optimized searching algorithm, as the conclusion is mainly resulted from code execution rather than llm reasoning.
