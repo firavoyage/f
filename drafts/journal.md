@@ -49987,6 +49987,10 @@ how to reproduce:
 - btw, the icon colors are weird on dark mode
 ```
 
+04 00 sync w phone.
+
+screen recordings and screenshots are omitted. <!-- somehow i feel they are completely meaningless. they are large, in both size and quantity. i might keep them inside a legacy folder only on the phone. well, i might ref some. let's do a filter. -->
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
