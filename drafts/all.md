@@ -268,6 +268,8 @@ web: <!-- frontend, web, ts/js -->
 - css layout props box model position width height flex grid
 - css caret props values
 - json data types undefined stringify parse omit union helper lib
+- mdn baseline status
+- regex
 
 backend:
 
