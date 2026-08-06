@@ -30,7 +30,8 @@ export const use_global = state({
   is_sidebar_on: true,
   'navigation.path': '',
   'navigation.page': '',
-  'navigation.tool': ''
+  'navigation.tool': '',
+  'appearance.theme': '',
 }, {
   persist: 'tools',
   should_sync_url: true,
@@ -38,22 +39,25 @@ export const use_global = state({
     should_apply_all_given_params: true,
     should_cleanup_omitted_params_after_init: true,
     should_sync_after_init: true,
-    keys_to_sync: ['navigation.page', 'navigation.tool'],
     param_mapping: {
       theme: 'appearance.theme'
     },
-    path_mapping: {
-      home: 'navigation.page',
-      '*': 'navigation.tool'
+    path_mapping: 'navigation.path'
+  },
+  init(state) {
+    const path = state['navigation.path']
+    if (path == 'main') {
+      state['navigation.page'] = path
+    } else {
+      state['navigation.page'] = 'tool'
+
+      // todo: correct tool
+      state['navigation.tool'] = path
     }
   },
-  init(state){
-    if (state['navigation.path'] == 'main') {
-      state['navigation.page'] = 'main'
-    } else {
-      // todo: correct tool
-      
-    }
+  change(state) {
+    state['navigation.path'] = state['navigation.page'] == 'main' ?
+      'main' : state['navigation.tool']
   }
 })
 
