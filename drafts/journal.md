@@ -49972,6 +49972,21 @@ proposed solution:
 another idea is whitelisting some groupmates who do not wanna wake the neko up.
 ```
 
+07
+
+01 10 comment on chyk blog.
+
+```md
+ive noticed a minor frontend glitch on your blog.
+
+how to reproduce:
+
+- open this [page](https://blog.chyk.ink/2026/08/05/thinking-about-data-and-judgments/) on a laptop
+- on the bottom left side you will see a row of sns links and a theme toggle
+- hover your mouse over each, and you will see a minor but awkward height shift on the theme toggle
+- btw, the icon colors are weird on dark mode
+```
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
