@@ -258,7 +258,7 @@ web: <!-- frontend, web, ts/js -->
 - js truthy falsy
 - undefined errors vscode
 - react native web
-- react state management usecontext zustand jotai custom hook <!-- react state lib -->
+- react state management usecontext zustand jotai custom hook routing <!-- react state lib -->
 - pwa poc
 - css dialects sass less stylus
 - icon library

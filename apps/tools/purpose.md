@@ -1328,5 +1328,11 @@ solution: the more general routing
 
 21 30 think about the implementation on routing.
 
+about login. it's irrelevant for app tools. but it could be handled easily.
+
+component app:
+
+- if page is login (from path mapping), show login
+- if page is protected and it lacks auth, show login
 
 
