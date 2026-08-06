@@ -14497,4 +14497,313 @@ Would you like an example showing how to **add or update query parameters** usin
 
 Show all
 
+# (?) what is it called for either param in the regex fn
+
+Depending on which regex function context you are referring to, the parameters have specific names:
+
+### 1. Creating a Regular Expression
+
+If you are passing parameters into a regex constructor function (like JavaScript's `new RegExp(pattern, flags)` or Python's `re.compile(pattern, flags)`), the two parameters are: [link](https://javascript.info/regexp-introduction)
+
+- **Pattern**: The core regular expression text string or literal defining what you want to find.
+- **Flags** (or Modifiers): Optional settings that change how the engine searches, such as `i` for case-insensitivity or `g` for global matching. [link](https://javascript.info/regexp-introduction)
+
+### 2. Searching or Replacing Text
+
+If you are using a string function to execute a regex, the two parameters depend on the action:
+
+- **String Matching** (`str.match(pattern)`): The parameter is the **pattern** (the regex object).
+- **String Replacement** (`str.replace(pattern, replacement)`): The first parameter is the **pattern** (or search target), and the second parameter is the **replacement** (which can be a new string or a replacer function). [link](https://javascript.info/regexp-introduction)
+
+### 3. Inside the Regex Pattern Itself (Either/Or Syntax)
+
+If you are talking about the internal elements separated by the "either/or" vertical bar (`|`) operator within the regex text itself, those individual choices are called **alternations** or **alternatives**. [link](https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference)
+
+Which specific programming language or regex function are you working with? I can give you the exact documentation naming for it!
+
+- [link](https://docs.python.org/3/library/re.html)\
+  re — Regular expression operations — Python 3.14.6 ...\
+  Aug 4, 2026 — This module provides regular expression matching operations similar to those found in Perl. Both patterns and strings to be search...\
+  Python documentation
+- [link](https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference)\
+  Regular Expression Language - Quick Reference - .NET\
+  Jun 18, 2022 — Alternation constructs modify a regular expression to enable either/or matching. These constructs include the language elements li...\
+  Microsoft Learn
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular%5Fexpressions)\
+  Regular expressions - JavaScript - MDN Web Docs\
+  Oct 30, 2025 — Description. Regular expressions are an important concept in formal language theory. They are a way to describe a possibly infinit...\
+  MDN Web Docs
+
+Show all
+
+# (?) what is it called for either param in regex(string, regex string)
+
+In programming and regular expressions, the terminology depends on whether you are talking about the **general concept** or the **specific code syntax**.
+
+Here is what each term is called:
+
+### In General Programming Syntax
+
+When looking at the function signature `regex(string, regex string)`:
+
+- **Arguments**: The actual values you pass into the function when calling it.
+- **Parameters**: The placeholders defined in the function signature that accept those values.
+
+### By Specific Role in Regex
+
+Each position has a distinct name based on its function:
+
+- **The First Parameter (`string`)**:
+  - **Input string**
+  - **Subject string**
+  - **Target string**
+  - **Haystack** (from the idiom "needle in a haystack")
+- **The Second Parameter (`regex string`)**:
+  - **Regex pattern**
+  - **Search pattern**
+  - **Expression**
+  - **Needle**
+
+### Summary Example
+
+In the statement `preg_match("/abc/", "abcdef")`:
+
+- `"abcdef"` is the **subject** (or argument 1).
+- `"/abc/"` is the **pattern** (or argument 2).
+
+To help tailor this, what **programming language** are you currently using, or what **regex operation** (like matching, replacing, or splitting) are you trying to perform?
+
+# (?) what is it called for each param in regex(string, regex string)
+
+In a regular expression function like `regex(string, regex string)`, the two parameters have specific, standard names based on their roles.
+
+### Parameter Names
+
+- **First Parameter (`string`)**: This is called the **input string**, **source string**, or **subject**. It is the text you want to search through.
+- **Second Parameter (`regex string`)**: This is called the **pattern** or **regular expression**. It is the search criteria or template you use to find matches.
+
+### Common Programming Examples
+
+Different programming languages use slight variations of these terms in their official documentation:
+
+- **JavaScript** (`pattern.test(text)`): Uses **pattern** and **text**.
+- **Python** (`re.search(pattern, string)`): Uses **pattern** and **string**.
+- **PHP** (`preg_match(pattern, subject)`): Uses **pattern** and **subject**.
+- **Java** (`Pattern.compile(regex).matcher(input)`): Uses **regex** and **input**.
+
+Would you like to see how to **write a specific pattern** for your code, or do you need help **extracting data** using these parameters?
+
+- [link](https://questdb.com/docs/query/functions/pattern-matching/)\
+  Pattern matching operators\
+  Arguments: string1 is a source string value to be manipulated. regex is a regular expression pattern. string2 is any string value ...\
+  \
+  \
+  QuestDB
+- [link](https://developers.google.com/earth-engine/apidocs/ee-string-match?gl=us)\
+  ee.String.match | Google Earth Engine\
+  Jul 13, 2024 — Page Summary Argument Type Details this: input String The string in which to search. regex String The regular expression to match.\
+  \
+  \
+  Google for Developers
+- [link](https://golayer.io/blog/google-sheets/regexmatch-google-sheets/)\
+  REGEXMATCH in Google Sheets: How-To & Examples\
+  You can use REGEXMATCH to check whether a text contains a specific string or string pattern expressed as a regular expression. Pas...\
+  \
+  \
+  golayer.io
+
+Show all
+
+## what can the input string be called
+
+The input string can go by several different names depending on the programming language, documentation, or context.
+
+### Common Technical Names
+
+- **Subject**: Used widely in PHP (`preg_match`) and formal text-processing theory.
+- **Haystack**: Used in general programming contexts (derived from the idiom "finding a needle in a haystack").
+- **Source String**: Common in database systems (like SQL) and data transformation tools.
+- **Target**: Used when describing the object that the regex pattern is actively targeting.
+- **Text**: A simplified term used in user-friendly libraries and text editors.
+
+### Quick Reference Matrix
+
+| Language/Context              | Term Used               |
+| ----------------------------- | ----------------------- |
+| **Python / .NET**             | `string`                |
+| **PHP**                       | `subject`               |
+| **Java**                      | `input`                 |
+| **C++ (`std::regex_search`)** | `s` (sequence) or `str` |
+| **General Computer Science**  | `haystack`              |
+
+Are you trying to **name a variable** in your code, or are you looking at a **specific language's error message**?
+
+- [link](https://cburch.com/books/php/ch12-regex/)\
+  Programming via PHP: Input validation
+
+12.2. 4. Summary Finally, you'll occasionally want a regular expression to mention one of the characters that have a special meani...\
+\
+Dr. Carl Burch
+
+- [link](https://en.wikipedia.org/wiki/Data%5Fsource%5Fname)\
+  Data source name\
+  In computing, a data source name ( DSN, sometimes known as a database source name, though " data sources" can comprise other repos...\
+  \
+  Wikipedia
+
+# use snake case. use type no interface. use fn statement. write a ts fn match. params pattern, text. pattern contains exactly one asterisk. return false if not matched. return the matched string. no regex, test start with and ends with and slice.
+
+10 sites
+
+Here are top web results for exploring this topic:
+
+[link](https://stackoverflow.com/questions/51445767/how-to-define-a-regex-matched-string-type-in-typescript)
+
+Stack Overflow·https://stackoverflow.com
+
+How to define a **regex**-**matched string type** in Typescript?
+
+Highest score (default), Trending (recent votes count more), Date modified (newest first), Date created (oldest first). This answer is useful. 228. This answer is not useful. Save this answer. Loading when this answer was accepted… Show activity on this post. There is no way to define such a type. There is a proposal on GitHub to support this, but it currently does not appear to be a priority. Vote on it and maybe the team might include it in a future release. Edit. Starting in 4.1 you can define a template literal type that would validate the string without actually defining all the options: type MarkerTime =\`${number| ''}${number}:${number}${number}\` let a: MarkerTime = "0-00" // error let b: MarkerTime ...
+
+[link](https://github.com/gvergnaud/ts-pattern/issues/47)
+
+GitHub·https://github.com
+
+**Matching** a Narrowed Generic · Issue #47 · gvergnaud/**ts**-**pattern**
+
+Describe the bug Matching a function parameter which has been narrowed to a specific string fails to type-check. If I predefine a type with exactly one value, it can be matched. Perhaps I'm misunderstanding how narrowing works? // Pre-de...
+
+[link](https://medium.com/@fullstack-shepherd/typescript-transforming-types-with-snake-case-keys-to-camelcase-keys-or-how-to-keep-busy-in-9d5f074d9bfa)
+
+Medium·https://medium.com
+
+Typescript: transforming **types** with **snake\_case** keys to camelCase ...
+
+The difference between TypeScript code that runs once it is compiled to JavaScript and TypeScript code that helps me while writing (“work” TS and “friend” TS) is sometimes fuzzy to me. I've been known to be surprised by a “'Foo' only refers to a type, but is being used as a value here.” error. So keep your wits about you, for the syntax we use to create these types looks an awful lot like JavaScript. But this is “friend” TS. You are not transforming your data; you are transforming a way of describing data — you'll see. For this article, we are going to work through writing a type that will take the type for an object with snake\_case keys and turn it into a type for the same object with camelCase keys.
+
+[link](https://forum.freecodecamp.org/t/stuck-using-string-match-for-regex/401370)
+
+The freeCodeCamp Forum·https://forum.freecodecamp.org
+
+Stuck **using String**.**match**() **for regex** - The freeCodeCamp Forum
+
+freeCodeCamp.org. Learn to code. Build projects. Earn certifications.Since 2015, 40,000 graduates have gotten jobs at tech companies including Google, Apple, Amazon, and Microsoft. kevinSmith June 10, 2020, 2:24am 2. The regex you have is looking for a string at the beginning that contains no vowels. For “algorithm”, it looks and sees an immediate vowel so it says that it found nothing. If you had the string “strong”, it would match for “str”. I would recommend playing around with something like regex101.com, to test out difference patterns. Regex is weird and confusing, but it also amazingly powerful.
+
+[link](https://dev.to/gvergnaud/bringing-pattern-matching-to-typescript-introducing-ts-pattern-v3-0-o1k)
+
+DEV Community·https://dev.to
+
+Bringing **Pattern Matching** to TypeScript Introducing **TS**-**Pattern**
+
+In the past few years, frontend development has become increasingly declarative. React shifted our... Tagged with typescript, functional, declarative, react.
+
+[link](https://www.convex.dev/typescript/core-concepts/functions-methods/typescript-regex)
+
+Convex·https://www.convex.dev
+
+**Regex** in TypeScript | TypeScript Guide by Convex
+
+Or maybe you're trying to parse log files and your pattern matches everything except what you actually need. Regular expressions are powerful, but one misplaced character can turn them into a debugging nightmare. This guide cuts through the complexity. You'll learn how to write regex patterns that actually work, understand the difference between test() and match() , and build validation logic that catches errors before they hit production. No fluff, just practical patterns you can use immediately. Pattern Matching with TypeScript Regex​. TypeScript works with JavaScript's RegExp object, giving you two ways to create patterns. Choose literal syntax for static patterns and the constructor for dynamic ones:.
+
+[link](https://www.geeksforgeeks.org/typescript/typescript-string-match-method/)
+
+GeeksforGeeks·https://www.geeksforgeeks.org
+
+TypeScript **String match**() method - GeeksforGeeks
+
+It searches a string for a pattern you specify. The pattern is typically a regular expression ( a special sequence of characters that helps define a search pattern). This method is great when you need more control and want to search strings using patterns, not just simple text. Syntax. string.match(regexp: string | RegExp): RegExpMatchArray | null ... string | RegExp: This is a pattern you want to search for in the string. string | RegExp: This means you can pass the pattern as a simple string or a regular expression. Return Type: RegExpMatchArray | Null: If matches are found, it returns an array containing the matches and if no matches are found, it returns null. Example 1: Matching a Simple Pattern.
+
+[link](https://blog.logrocket.com/pattern-matching-type-safety-typescript/)
+
+LogRocket Blog·https://blog.logrocket.com
+
+**Pattern matching** and **type** safety in TypeScript - LogRocket Blog
+
+With that said, I'm more interested in understanding type safety as the extent of program correctness rather than just making sure that what I expect to be a string is a string and not a number. In this article, we'll present several techniques that you can apply when working on day-to-day tasks to increase your confidence that your code is correct. Let's get started! Jump ahead: Algebraic data types: Either left or right; Pattern ... In the code snippet above, we use the TS-Pattern library to create a union type, which is also called a sum type, and a function to calculate the area of different shapes using pattern matching. match is a function from the TS-Pattern library that allows you to perform pattern ...
+
+[link](https://upmostly.com/typescript/string-handling-made-easy-a-guide-to-regex-in-typescript)
+
+Upmostly·https://upmostly.com
+
+**String** Handling Made Easy: A Guide to **Regex** in TypeScript
+
+I'm a full-stack developer from the UK. I'm currently looking for graduate and freelance software engineering roles, so if you liked this article, reach out on Twitter at @marile0n. Published: 21 April 2023. If you're working with Typescript and dealing with text processing, you might have heard of a powerful tool called “regex.” Regex, or regular expressions, is a pattern-matching language that allows you to search for specific patterns in text strings. It's a versatile tool that can be used for a wide range of text processing tasks, from validating user input to extracting data from large text files. In Typescript, you can use the built-in RegExp class to work with regular expressions. What is this?
+
+[link](https://www.educba.com/typescript-regex/)
+
+EDUCBA·https://www.educba.com
+
+Learn the Examples of TypeScript **RegEx** - EDUCBA
+
+TypeScript RegEx is a Regular Expression object for matching text with some pattern. As TypeScript is also a part of JavaScript, similarly regular expressions are also the objects. TypeScript RegEx is the pattern matching standard for replacement and string parsing. These RegEx are used on various platforms and other programming environments. Since RegEx are language-independent, here, we will be discussing TypeScript RegEx. However, these Regular Expressions are now available for most of the Visual Basic and Visual Basic for Applications versions. Regular Expressions are used to find strings and replace them in a defined format. TypeScript Regular Expressions are also used to parse dates, email addresses, ...
+
+## write
+
+typescript
+
+```
+type MatchResult = string | false;
+
+function match(pattern: string, text: string): MatchResult {
+  const asterisk_index = pattern.indexOf("*");
+
+  const prefix = pattern.slice(0, asterisk_index);
+  const suffix = pattern.slice(asterisk_index + 1);
+
+  if (!text.startsWith(prefix)) {
+    return false;
+  }
+
+  if (!text.endsWith(suffix)) {
+    return false;
+  }
+
+  if (text.length < prefix.length + suffix.length) {
+    return false;
+  }
+
+  return text;
+}
+```
+
+Use code with caution.
+
+Would you like to see how this function handles **edge cases** like empty strings, or should we write **unit tests** to verify its behavior?
+
+## return the matched text by the asterisk
+
+typescript
+
+```
+type MatchResult = string | false;
+
+function match(pattern: string, text: string): MatchResult {
+  const asterisk_index = pattern.indexOf("*");
+
+  const prefix = pattern.slice(0, asterisk_index);
+  const suffix = pattern.slice(asterisk_index + 1);
+
+  if (!text.startsWith(prefix)) {
+    return false;
+  }
+
+  if (!text.endsWith(suffix)) {
+    return false;
+  }
+
+  if (text.length < prefix.length + suffix.length) {
+    return false;
+  }
+
+  const match_start = prefix.length;
+  const match_end = text.length - suffix.length;
+
+  return text.slice(match_start, match_end);
+}
+```
+
+Use code with caution.
+
+Would you like to add validation for **multiple asterisks**, or should we look at **performance optimizations** for long strings?
+
 # 
