@@ -3976,6 +3976,4 @@ The external-validation caveat is substantive because of the conjecture’s stan
 
 # <!-- 06 aug -->
 
-how much do these human methodologies matter within the main research if they collab w llms by providing explicit problem specific guidance in the middle for problems llms unable to solve alone.
-
 
