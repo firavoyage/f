@@ -11,6 +11,8 @@ archive everything
     - ...
   - ruanyf, ruanyf books
   - matrix67
+  - f/web
+  - bfs (e.g. chyk, clantty, menci)
 - zhihu
   - "following"
 - telegram
