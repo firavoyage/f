@@ -13276,4 +13276,1225 @@ const afn plus fn type solves neither problem.
 
 <!-- chess vibes: oh, then he solved neither threat. it's a checkmate. -->
 
+# <!-- 06 aug -->
 
+# how to get and parse url in js
+
+August 4, 2026
+
+To get and parse a URL in JavaScript, <mark>use<span> </span><strong><code dir="ltr">window.location.href</code><span> </span>to retrieve the current URL</strong><span> </span>and the<span> </span><strong>built-in<span> </span><code dir="ltr">new URL()</code><span> </span>constructor to parse it</strong></mark>. This modern approach splits a web address into clean, readable properties like the hostname, path, and query parameters. [link](https://masteringjs.io/tutorials/fundamentals/parse-url)
+
+### 1. Getting the Current URL
+
+In a web browser, use the `window.location` object: [link](https://stackoverflow.com/questions/9870512/how-to-obtain-the-query-string-from-the-current-url-with-javascript)
+
+- **`window.location.href`**: Returns the full URL string.
+- **`window.location.search`**: Returns only the query parameters string (starting with `?`). [link](https://stackoverflow.com/questions/9870512/how-to-obtain-the-query-string-from-the-current-url-with-javascript)
+
+### 2. Parsing a URL String
+
+Pass any absolute URL string into the global `URL` constructor: [link](https://dmitripavlutin.com/parse-url-javascript/)
+
+javascript
+
+```
+const urlString = "https://example.com";
+
+// Create the parsed URL object
+const parsedUrl = new URL(urlString);
+
+// Extract individual components
+console.log(parsedUrl.protocol); // "https:"
+console.log(parsedUrl.host);     // "example.com:8080" (includes port)
+console.log(parsedUrl.hostname); // "example.com" (domain only)
+console.log(parsedUrl.port);     // "8080"
+console.log(parsedUrl.pathname); // "/shop/search"
+console.log(parsedUrl.search);   // "?item=shoes&size=10"
+console.log(parsedUrl.hash);     // "#details"
+```
+
+Use code with caution.
+
+### 3. Parsing Query Parameters
+
+To read specific values out of the query string, use the `searchParams` property, which provides a built-in `URLSearchParams` object: [link](https://stackoverflow.com/questions/736513/how-do-i-parse-a-url-into-hostname-and-path-in-javascript)
+
+javascript
+
+```
+// Get specific parameters
+const itemType = parsedUrl.searchParams.get("item"); // "shoes"
+const itemSize = parsedUrl.searchParams.get("size"); // "10"
+
+// Check if a parameter exists
+const hasColor = parsedUrl.searchParams.has("color"); // false
+```
+
+Use code with caution.
+
+### 4. Parsing Relative URLs
+
+If you only have a relative path, you must supply a base URL as the second argument, or the constructor will throw an error: [link](https://stackoverflow.com/questions/736513/how-do-i-parse-a-url-into-hostname-and-path-in-javascript)
+
+javascript
+
+```
+// Parsing a relative path using the current website as the base
+const relativeUrl = new URL("/profile/settings", window.location.href);
+console.log(relativeUrl.href);
+```
+
+Use code with caution.
+
+### 5. Safe Parsing (Validation)
+
+If you are unsure if a URL string is valid, use `URL.canParse()` to verify it before running the constructor. This prevents your code from crashing: [link](https://developer.mozilla.org/en-US/docs/Web/API/URL/canParse%5Fstatic)
+
+javascript
+
+```
+const badUrl = "not-a-valid-url";
+
+if (URL.canParse(badUrl)) {
+    const valid = new URL(badUrl);
+} else {
+    console.log("Invalid URL format.");
+}
+```
+
+Use code with caution.
+
+If you are working on a specific implementation, let me know:
+
+- Are you running this in the **browser** or a server environment like **Node.js**?
+
+- Do you need to **modify/reconstruct** the URL, or just **extract data** from it?
+
+- [link](https://developer.mozilla.org/en-US/docs/Web/API/URL/parse%5Fstatic)\
+  URL: parse() static method - Web APIs | MDN\
+  The URL.parse() static method of the URL interface returns a newly created URL object representing the URL defined by the paramete...\
+  MDN Web Docs
+
+- [link](https://stackoverflow.com/questions/736513/how-do-i-parse-a-url-into-hostname-and-path-in-javascript)\
+  How do I parse a URL into hostname and path in javascript?\
+  The modern way: new URL("http://example.com/aa/bb/"). Returns an object with properties hostname and pathname , along with a few o...\
+  Stack Overflow
+
+- [link](https://dmitripavlutin.com/parse-url-javascript/)\
+  How to Parse URL in JavaScript: hostname, pathname, query ...\
+  9\. Summary. The URL() constructor is handy for parsing (and validating) URLs in JavaScript. new URL(relativeOrAbsolute \[, absolute...\
+  dmitripavlutin.com
+
+Show all
+
+## how to iterate params
+
+To iterate over URL parameters in JavaScript, <mark>use the<span> </span><strong><code dir="ltr">URL.searchParams</code><span> </span>property</strong>, which provides an iterator loop or helper methods</mark>.
+
+Here are the best ways to loop through parameters using a parsed `URL` object:
+
+### 1. Loop Key and Value Pairs (`forEach`)
+
+The cleanest way to get both the parameter name and its value simultaneously:
+
+javascript
+
+```
+const myUrl = new URL("https://example.com");
+
+myUrl.searchParams.forEach((value, key) => {
+  console.log(`${key}: ${value}`);
+});
+// Output:
+// item: shoes
+// size: 10
+// color: blue
+```
+
+Use code with caution.
+
+### 2. Standard `for...of` Loop
+
+You can loop directly over `searchParams` to get an array of `[key, value]` pairs:
+
+javascript
+
+```
+for (const [key, value] of myUrl.searchParams) {
+  console.log(`${key} equals ${value}`);
+}
+```
+
+Use code with caution.
+
+### 3. Loop Keys Only
+
+If you only need the names of the parameters:
+
+javascript
+
+```
+for (const key of myUrl.searchParams.keys()) {
+  console.log(key); // "item", "size", "color"
+}
+```
+
+Use code with caution.
+
+### 4. Loop Values Only
+
+If you only need the data values:
+
+javascript
+
+```
+for (const value of myUrl.searchParams.values()) {
+  console.log(value); // "shoes", "10", "blue"
+}
+```
+
+Use code with caution.
+
+### 5. Convert to a Standard Object
+
+If you prefer working with a traditional JavaScript object instead of loops, convert it in one line:
+
+javascript
+
+```
+const paramsObject = Object.fromEntries(myUrl.searchParams);
+
+console.log(paramsObject);
+// Output: { item: "shoes", size: "10", color: "blue" }
+```
+
+Use code with caution.
+
+### ⚠️ Handling Duplicate Keys
+
+If your URL has duplicate keys (e.g., `?tag=js&tag=css`), `Object.fromEntries()` will **overwrite** the first tag and only keep the last one.
+
+To safely capture multi-value parameters, use `searchParams.getAll()` during a loop:
+
+javascript
+
+```
+const duplicateUrl = new URL("https://example.com");
+
+for (const key of new Set(duplicateUrl.searchParams.keys())) {
+  const values = duplicateUrl.searchParams.getAll(key);
+  console.log(`${key}:`, values);
+  // Output: tag: ["js", "css"]
+}
+```
+
+Use code with caution.
+
+To tailor this snippet to your project, tell me:
+
+- Do you have **duplicate parameter keys** to manage?
+
+- Do you need to **filter or delete** specific parameters during iteration?
+
+- [link](https://www.valentinog.com/blog/url/)\
+  How to build an URL and its search parameters with JavaScript\
+  Dec 26, 2019 — How to build an URL and its search parameters Suppose you want to build an URL like https://www.example.dev/?city=Rome\&price=200. ...\
+  \
+  Valentino Gagliardi
+
+- [link](https://clubmate.fi/url-parameters)\
+  Dealing with URL parameters in JavaScript – clubmate.fi\
+  Get params from URL The myUrl. searchParams. entries() returns an iterator, but you can turn it into an array by spreading it, or ...\
+  \
+  \
+  clubmate.fi
+
+- [link](https://www.geeksforgeeks.org/javascript/how-to-add-a-parameter-to-the-url-in-javascript/)\
+  How to add a parameter to the URL in JavaScript ?\
+  Jan 15, 2024 — How to add a parameter to the URL in JavaScript ? Given a URL the task is to add parameter (name & value) to the URL using JavaScr...\
+  \
+  \
+  GeeksforGeeks
+
+Show all
+
+## url params syntax
+
+URL query parameters follow a strict **`?key=value&key2=value2`** syntax ruleset specified by the URI standard.
+
+### 1. The Core Anatomy
+
+A URL query string consists of three major structural elements:
+
+- **The Separator (`?`)**: A single question mark marks the exact end of the URL path and the beginning of the parameters.
+- **The Assignment (`=`)**: Connects a specific key (name) to its designated value.
+- **The Delimiter (`&`)**: An ampersand separates multiple key-value pairs from one another.
+
+text
+
+```
+https://example.com
+                        │ └───┬───┘ │ └───┬───┘
+                        │     │     │     └─ Second pair
+                        │     │     └─ Pair separator
+                        │     └─ First pair
+                        └─ Parameter start flag
+```
+
+Use code with caution.
+
+### 2. Syntax Rules & Allowed Characters
+
+Query strings are restrictive about what characters can safely appear inside them:
+
+- **Allowed Characters**: Letters (`a-z`, `A-Z`), numbers (`0-9`), and a few safe symbols (`-`, `.`, `_`, `~`).
+- **Reserved Characters**: Spaces, slashes (`/`), question marks (`?`), colons (`:`), and emojis **cannot** be written directly as values.
+- **Percent-Encoding**: Any reserved character must be converted into a `%` followed by a two-digit hexadecimal code. For example, a space becomes `%20` and `@` becomes `%40`.
+
+javascript
+
+```
+// Manual syntax error:
+const bad = "https://example.com Doe&email=john@me.com";
+
+// Correct encoded syntax:
+const good = "https://example.com%20Doe&email=john%40me.com";
+```
+
+Use code with caution.
+
+### 3. Special Structural Variations
+
+Depending on how a web server or backend is configured, parameter syntax can change to support complex data data types:
+
+- **Empty Values / Flags**: A key can exist without a value. This is often treated as a boolean flag.\
+  text
+
+<!---->
+
+```
+?is_active&debug=true
+```
+
+Use code with caution.
+
+- **Duplicate Keys (Arrays)**: Repeating the exact same key multiple times sends an array of values to the server.\
+  text
+
+<!---->
+
+```
+?color=red&color=blue&color=green
+```
+
+Use code with caution.
+
+- **Bracket Notation (Arrays/Objects)**: Some server frameworks (like PHP or Node.js Express) explicitly require square brackets to parse arrays or nested objects.\
+  text
+
+<!---->
+
+```
+?tags[]=js&tags[]=css             (Array syntax)
+?user[name]=John&user[age]=30     (Object syntax)
+```
+
+Use code with caution.
+
+### 🛠️ Pro-Tip: Never Write Syntax Manually
+
+Instead of manually typing strings and guessing percent-encoding hex values, let JavaScript handle the syntax automatically via `URLSearchParams`:
+
+javascript
+
+```
+const params = new URLSearchParams();
+
+// JavaScript automatically adds '=', '&', and handles percent-encoding
+params.append("search query", "shoes & boots");
+params.append("tags", "js");
+params.append("tags", "css");
+
+console.log(params.toString());
+// Output: search+query=shoes+%26+boots&tags=js&tags=css
+```
+
+Use code with caution.
+
+If you are currently debugging a URL issue, tell me:
+
+- Are you trying to **read** a strange format coming from a server?
+
+- Are you trying to **build** a complex nested object into a query string?
+
+- [link](https://medium.com/@pangolinfo/amazon-url-parameters-the-complete-guide-to-data-scraping-efficiency-56e42ec478ca)\
+  Amazon URL Parameters: The Complete Guide to Data Scraping Efficiency\
+  Dec 14, 2025 — A standard Amazon URL consists of three core components: base domain (e.g., https://www.amazon.com), page path (e.g., /s for searc...\
+  \
+  \
+  Medium
+
+- [link](https://distributedigital.co.uk/understanding-url-parameters/)\
+  Understanding URL Parameters in SEO\
+  Dec 10, 2024 — What Are URL Parameters? category=shoes and color=black are URL query string parameters. The question mark (?) signifies the start...\
+  \
+  \
+  Distribute Digital
+
+- [link](https://world.optimizely.com/csclasslibraries/cms/EPiServer.Url?version=9)\
+  SDK\
+  Remarks The Query property contains any query information included in the URI. Query information is separated from the path inform...\
+  \
+  Optimizely World
+
+Show all
+
+# how to set url in js
+
+August 4, 2026
+
+How you set a URL in JavaScript depends entirely on what you are trying to accomplish.
+
+### 1. Redirect to a New Page (Reloads Page)
+
+To completely change the browser's address and **navigate to a new page**, modify the `window.location` object. [link](https://www.tabnine.com/academy/javascript/how-to-redirect-url-javascript/)
+
+- **Standard redirect (adds to history):**\
+  javascript
+
+<!---->
+
+```
+window.location.href = "https://example.com";
+```
+
+Use code with caution.
+
+- **Replace redirect (removes current page from history back-button):**\
+  javascript
+
+<!---->
+
+```
+window.location.replace("https://example.com");
+```
+
+Use code with caution.
+
+### 2. Change the URL Without Reloading
+
+To change the path or query parameters in the address bar **without refreshing the page** (common in Single Page Apps), use the [History API](https://stackoverflow.com/questions/824349/how-do-i-modify-the-url-without-reloading-the-page).
+
+- **Add a new state to browser history:**\
+  javascript
+
+<!---->
+
+```
+window.history.pushState({}, "", "/new-path");
+```
+
+Use code with caution.
+
+- **Update the current URL state:**\
+  javascript
+
+<!---->
+
+```
+window.history.replaceState({}, "", "/updated-path");
+```
+
+Use code with caution.
+
+### 3. Build or Modify a URL Object
+
+To safely build or construct a URL string dynamically with query parameters, use the native `URL()` constructor. This method **automatically encodes special characters**. [link](https://dev.to/builderio/safer-url-reading-and-writing-in-modern-javascript-4m02)
+
+javascript
+
+```
+// Define base URL
+const url = new URL("https://example.com");
+
+// Set or change query parameters (?q=javascript&page=2)
+url.searchParams.set("q", "javascript");
+url.searchParams.set("page", "2");
+
+// Get final string
+console.log(url.toString());
+// Output: https://example.com?q=javascript&page=2
+```
+
+Use code with caution.
+
+### 4. Open a URL in a New Tab
+
+To open a link separately while **keeping the current page open**, use `window.open()`. [link](https://phppot.com/javascript/javascript-how-to-open-url-in-new-tab/)
+
+javascript
+
+```
+window.open("https://example.com", "_blank");
+```
+
+Use code with caution.
+
+***
+
+What specific task are you trying to build? If you tell me **your ultimate goal** (e.g., building a search filter, handling a login redirect), I can provide the **exact snippet you need**.
+
+- [link](https://stackoverflow.com/questions/824349/how-do-i-modify-the-url-without-reloading-the-page)\
+  How do I modify the URL without reloading the page?\
+  You can also use the following methods to change the URL: \* \*\*changeurl(url, title)\*\* This function edits the URL and title. For e...\
+  Stack Overflow
+- [link](https://www.tabnine.com/academy/javascript/how-to-redirect-url-javascript/)\
+  How to Change The Page URL with JavaScript - Tabnine\
+  JavaScript offers multiple ways to change a URL: \* \*\*Using the Location Interface\*\* \* \*\*Syntax\*\* \`window.location = URL\` \* \*\*Metho...\
+  Tabnine
+- [link](https://dev.to/builderio/safer-url-reading-and-writing-in-modern-javascript-4m02)\
+  Safer URL reading and writing in modern JavaScript\
+  The URL constructor to the rescue. A cleaner and safer solution to the above challenge is to use the URL constructor. const url = ...\
+  DEV Community
+
+Show all
+
+## history api
+
+The **HTML5 History API** <mark>allows you to manipulate the browser's session history and change the URL in the address bar<span> </span><strong>without triggering a full page reload</strong></mark>.
+
+This mechanism is the core technology behind modern **Single Page Applications (SPAs)** built with frameworks like React, Vue, or Angular.
+
+### `history.pushState()` vs `history.replaceState()`
+
+The API relies on two primary methods to change the URL. Both accept three arguments: a custom state object, an empty string title (unused by browsers), and the target URL path.
+
+- **`pushState()`**: Creates a **new entry** in the history stack. The user can click the browser's "Back" button to return to the previous URL.\
+  javascript
+
+<!---->
+
+```
+// URL changes from /home to /profile, adding to history
+window.history.pushState({ userId: 42 }, "", "/profile");
+```
+
+Use code with caution.
+
+- **`replaceState()`**: Overwrites the **current entry** in the history stack. Clicking the "Back" button will skip the previous URL and go one step further back.\
+  javascript
+
+<!---->
+
+```
+// URL changes from /search?q=old to /search?q=new, overwriting history
+window.history.replaceState({ query: "new" }, "", "/search?q=new");
+```
+
+Use code with caution.
+
+### Handling the "Back" and "Forward" Buttons
+
+Changing the URL via `pushState` does not automatically fire a page change. To detect when a user clicks the browser's **Back or Forward buttons**, you must listen to the `popstate` event.
+
+javascript
+
+```
+window.addEventListener("popstate", (event) => {
+  // Read the state object you passed into pushState/replaceState
+  console.log("State data:", event.state);
+
+  // Update your UI dynamically based on the current URL path
+  console.log("Current path:", window.location.pathname);
+});
+```
+
+Use code with caution.
+
+### Important Warning: Server Configuration
+
+While the History API successfully fakes routing on the client side, **refreshing the page** will send a request to your server for that specific URL.
+
+If a user navigates to `/profile` via `pushState` and hits **F5 (Refresh)**, the server will throw a `404 Not Found` error unless it is configured to route all requests back to your main `index.html` file (fallback routing).
+
+***
+
+Are you building a custom **router from scratch**, or are you trying to **sync search filters** with the URL query parameters? Tell me what you're working on so I can provide a targeted example.
+
+- [link](https://apidog.com/articles/history-api/)\
+  What is History API\
+  Sep 22, 2023 — The History API is a feature in HTML5 that allows web developers to manipulate the browser history using JavaScript. It provides m...\
+  \
+  \
+  Apidog
+- [link](https://medium.com/@ArcxtheChosen/routing-in-vanilla-javascript-hash-vs-history-api-a65382121871)\
+  Routing in Vanilla JavaScript: Hash vs History API\
+  Aug 21, 2025 — How It Works Introduced with HTML5, the History API lets you manipulate the browser's history stack. That means you can change the...\
+  \
+  \
+  Medium
+- [link](https://developer.mozilla.org/en-US/docs/Web/API/History%5FAPI/Working%5Fwith%5Fthe%5FHistory%5FAPI)\
+  Working with the History API - Web APIs | MDN\
+  Aug 1, 2025 — Methods to modify the session history: History. pushState() History. replaceState() In this guide, we'll cover only the second set...\
+  \
+  MDN Web Docs
+
+Show all
+
+## pushstate replacestate params
+
+Both `history.pushState()` and `history.replaceState()` accept the exact same **three parameters** in the identical order.
+
+javascript
+
+```
+history.pushState(state, title, url);
+history.replaceState(state, title, url);
+```
+
+Use code with caution.
+
+### 1. `state` (The Data Object)
+
+- **What it is:** A plain JavaScript object serialized to JSON (up to ~640KiB depending on the browser).
+- **Purpose:** It stores custom data tied directly to that specific history entry.
+- **How to use it:** When the user clicks the "Back" or "Forward" buttons, this object is retrieved via `event.state` or `history.state`.
+- **Example:** `{ pageId: 4, scrollPosition: 250 }` (Pass `null` or `{}` if you do not need to store data).
+
+### 2. `title` (The Unused Parameter)
+
+- **What it is:** A string meant to represent the title of the new history entry.
+- **Purpose:** Historically intended for browser history menus or `<title>` updates.
+- **How to use it:** **Browsers completely ignore this parameter today** for security and compatibility reasons.
+- **Example:** Always pass an empty string `""` or `null` to safe-proof your code.
+
+### 3. `url` (The New Address)
+
+- **What it is:** A string representing the new URL path, relative path, or query parameters.
+- **Purpose:** It changes what the user sees in the browser's address bar without reloading the page.
+- **Security restriction:** The new URL **must have the same origin** (same protocol, domain, and port). You cannot change the URL to `https://google.com` if your user is on `https://your-site.com`.
+- **Example:** `"/dashboard"`, `"profile.html"`, or `"?search=shoes"`.
+
+***
+
+### Complete Code Implementation
+
+javascript
+
+```
+// 1. Define your parameters
+const stateData = { filter: "shoes", page: 2 };
+const unusedTitle = "";
+const newUrl = "/products?search=shoes";
+
+// 2. Execute the change
+window.history.pushState(stateData, unusedTitle, newUrl);
+
+// 3. How to read that data back later (e.g., on browser Back button click)
+window.addEventListener("popstate", (event) => {
+  if (event.state) {
+    console.log("Restored filter:", event.state.filter); // Outputs: shoes
+  }
+});
+```
+
+Use code with caution.
+
+Are you looking to use these parameters to **persist UI states** (like active tabs or modal views) or to **track dynamic search sorting**? Let me know, and I can draft the logic for you!
+
+- [link](https://thatware.co/pushstate-vs-replacestate/)\
+  Pushstate and Replacestate: What You Need to Know\
+  Jun 21, 2026 — Browser history records the pages a user has visited during a session, enabling back and forward navigation, bookmarking, and shar...\
+  \
+  \
+  ThatWare
+- [link](https://javascript.plainenglish.io/two-tips-of-history-to-improve-page-experience-947223666f71)\
+  2 History Tips to Improve Page Experience\
+  Jun 29, 2022 — There are many ways to solve the problem, such as using localStorage, or JavaScript global variable. Of course, there is a more co...\
+  \
+  \
+  JavaScript in Plain English
+- [link](https://developer.mozilla.org/en-US/docs/Web/API/History/pushState)\
+  History: pushState() method - Web APIs | MDN\
+  Jun 23, 2025 — Parameters The state object is a JavaScript object which is associated with the new history entry created by pushState() . Wheneve...\
+  \
+  MDN Web Docs
+
+Show all
+
+## is there a modern history api
+
+<mark><span>Yes, there is a modern successor called the<span> </span></span><strong><span><a rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Navigation_API">Navigation API</a></span></strong></mark>.
+
+The old History API was designed decades ago for multi-page websites. It forced Single Page Apps (SPAs) into clumsy workarounds—like interception of every `<a>` click manually and fighting a `popstate` event that didn't catch programmatic updates. [link](https://web.dev/blog/baseline-navigation-api)
+
+The **Navigation API** completely overhauls client-side routing into a centralized, event-driven workflow. [link](https://developer.mozilla.org/en-US/docs/Web/API/Navigation%5FAPI)
+
+***
+
+### Why the Navigation API is Better
+
+- **One event for everything**: A single `navigation.onnavigate` listener catches links, forms, and browser back/forward buttons.
+- **Native async support**: It manages loading states gracefully via promises.
+- **Readable history**: You can actually inspect the user's history list within your app via `navigation.entries()`. [link](https://developer.mozilla.org/en-US/docs/Web/API/Navigation%5FAPI)
+
+***
+
+### Key Comparisons
+
+| Feature                   | Old History API                     | New Navigation API                                 |
+| ------------------------- | ----------------------------------- | -------------------------------------------------- |
+| **Add history entry**     | `history.pushState()`               | `navigation.navigate(url)`                         |
+| **Modify current entry**  | `history.replaceState()`            | `navigation.navigate(url, { history: 'replace' })` |
+| **Intercepting clicks**   | Manual click handlers on `<a>` tags | Automatic via `event.intercept()`                  |
+| **Tracking history list** | Impossible to safely read           | Easily accessible via `navigation.entries()`       |
+
+***
+
+### Basic Implementation Code
+
+Instead of listening for random link clicks and `popstate`, you handle routing natively from one spot:
+
+javascript
+
+```
+// Centralized listener for ALL navigation attempts
+navigation.addEventListener("navigate", (event) => {
+  // Ignore cross-origin URLs (e.g. external links)
+  if (!event.canIntercept) return;
+
+  const url = new URL(event.destination.url);
+
+  // Intercept the navigation and execute your SPA loading logic
+  event.intercept({
+    async handler() {
+      // The browser address bar updates automatically!
+      console.log(`Loading content for: ${url.pathname}`);
+      await fetchNewContentSomehow(url.pathname);
+    }
+  });
+});
+
+// To trigger a route programmatically:
+navigation.navigate("/dashboard");
+```
+
+Use code with caution.
+
+### Browser Support Warning
+
+The Navigation API is **Baseline Newly Available**. If your application must support older browser versions, you will still need to rely on the traditional `history.pushState()` or use an open-source fallback polyfill. [link](https://github.com/remix-run/history/blob/dev/docs/api-reference.md)
+
+Would you like to see how to implement **state management/data passing** using this new Navigation API, or are you checking compatibility for an existing framework router? [link](https://developer.mozilla.org/en-US/docs/Web/API/Navigation%5FAPI)
+
+- [link](https://www.reddit.com/r/webdev/comments/e9gj20/has%5Fanyone%5Ftaken%5Fcontrol%5Fof%5Fhistory%5Faway%5Ffrom%5Fthe/)\
+  Has anyone taken control of history away from the browser?\
+  Dec 12, 2019 — As the front-end devs among us are painfully aware, the browser history API has limitations that prevent us from reliably: blockin...\
+  Reddit·r/webdev
+- [link](https://developer.mozilla.org/en-US/docs/Web/API/History%5FAPI)\
+  History API - MDN Web Docs - Mozilla\
+  Jul 26, 2024 — History API. Baseline Widely available. This feature is well established and works across many devices and browser versions. It's ...\
+  MDN Web Docs
+- [link](https://web.dev/blog/baseline-navigation-api)\
+  Navigation API - a better way to navigate, is now Baseline ...\
+  Feb 17, 2026 — To provide a seamless experience, SPAs must mimic standard multi-page navigation by manually tapping into the browser's history to...\
+  web.dev
+
+Show all
+
+# what url can be set wo a reload in js
+
+In JavaScript, you can change the URL without triggering a page reload by <mark>using the<span> </span><strong>History API</strong><span> </span>or the<span> </span><strong>Navigation API</strong></mark>.
+
+Here is how to use them:
+
+### 1. `history.pushState()`
+
+This method adds a new entry to the browser's session history stack. It changes the URL in the address bar immediately.
+
+javascript
+
+```
+// Syntax: history.pushState(state, title, url)
+history.pushState({ page: 1 }, "", "/new-path");
+```
+
+Use code with caution.
+
+### 2. `history.replaceState()`
+
+This method modifies the current history entry instead of creating a new one. Use this if you do not want the user to go back to the old URL when clicking the browser's back button.
+
+javascript
+
+```
+// Syntax: history.replaceState(state, title, url)
+history.replaceState({ page: 1 }, "", "/updated-path");
+```
+
+Use code with caution.
+
+### 3. `location.hash`
+
+Modifying the hash (the part of the URL after the `#` symbol) changes the URL without a reload. This automatically triggers a `hashchange` event.
+
+javascript
+
+```
+window.location.hash = "section-2"; // URL becomes ://site.com
+```
+
+Use code with caution.
+
+### 4. `navigation.navigate()` (Modern Browsers)
+
+The newer Navigation API allows you to intercept navigation. You can perform a non-reloading URL change by preventing the default behavior.
+
+javascript
+
+```
+navigation.addEventListener("navigate", (event) => {
+  event.intercept(); // Prevents the reload and handles it via JS
+});
+```
+
+Use code with caution.
+
+### Key Restrictions
+
+- **Same-Origin Policy**: The new URL must have the same protocol, host, and port as the current URL. You cannot change `example.com` to `google.com` without a reload.
+- **Relative Paths**: You can use relative paths (e.g., `../profile`) or absolute paths (e.g., `/dashboard`).
+
+To help me give you the best code snippet, tell me:
+
+- Are you building a **Single Page Application (SPA)**?
+
+- Do you need the user to be able to click the **back button** to see the previous URL?
+
+- Do you need to pass **state data** along with the URL change?
+
+- [link](https://intellipaat.com/blog/how-to-modify-url-without-reloading-the-page-using-javascript/)\
+  How to modify URL without reloading the page using JavaScript?\
+  Feb 3, 2026 — Conclusion You can use JavaScript to modify the URL without reloading the page. Methods like pushstate(), replacestate(), popstate...\
+  \
+  \
+  Intellipaat
+
+- [link](https://www.tabnine.com/academy/javascript/how-to-redirect-url-javascript/)\
+  How to Change The Page URL with JavaScript\
+  2\. Using the History API The second approach to changing the URL is using the History API. The browser's session history is access...\
+  \
+  \
+  Tabnine
+
+- [link](https://www.30secondsofcode.org/js/s/modify-url-without-reload/)\
+  How do I use JavaScript to modify the URL without reloading the page?\
+  Aug 6, 2024 — Update the URL Using the History API, you can create a function that updates the URL of the current page without reloading it. Thi...\
+  \
+  \
+  30 seconds of code
+
+Show all
+
+## can new subdomain be set wo reload
+
+**No**, you cannot change to a new subdomain without a page reload in JavaScript.
+
+The **Same-Origin Policy** strictly prevents scripts from modifying the origin (protocol, domain/subdomain, and port) of the current page through the History API or Navigation API.
+
+### Why It Fails
+
+- Attempting to use `history.pushState(null, "", "https://example.com")` on `https://example.com` will throw a `DOMException` security error.
+- Changing `window.location.hostname` or `window.location.href` to the new subdomain will always force the browser to reload and fetch the new page from the server.
+
+### Workarounds for Subdomain-like Behavior
+
+If you need to change the user's view without a reload, consider these two alternatives:
+
+- **Use URL Paths**: Use `history.pushState(null, "", "/subdomain-name")` instead. Single Page Applications (SPAs) use path-based routing to change views instantly.
+- **Use Subdomain Wildcards**: If you absolutely must use subdomains, you have to load the new subdomain in a hidden `<iframe>` and communicate with it silently using `window.postMessage()`. However, the main address bar URL will not change.
+
+To help you find the best architectural solution, tell me:
+
+- What is the **main goal** of using a new subdomain here? (e.g., multi-tenancy, user profiles, language localization)
+- Are you able to switch to **path-based routing** (like `://example.com`) instead of subdomains?
+- Do you need to share **authentication or session data** between these domains?
+
+## what is same origin what is not
+
+Two URLs have the **same origin** if they share the exact same **protocol**, **host (domain)**, and **port**. If any of these three pieces do not match, they are <mark><strong>cross-origin</strong></mark> (not the same origin).
+
+### The Three Components
+
+To check if two URLs are the same origin, compare these three items:
+
+- **Protocol**: `http` vs `https`
+- **Host**: `example.com` vs `://example.com` vs `google.com`
+- **Port**: `:80` vs `:443` vs `:8080` (implicit ports count too)
+
+***
+
+### Examples of Same Origin
+
+These URLs are tested against the base URL: **`https://example.com`**
+
+| URL                   | Same Origin? | Reason                                                         |
+| --------------------- | ------------ | -------------------------------------------------------------- |
+| `https://example.com` | **Yes**      | Protocol, host, and port are identical. Only the path changed. |
+| `https://example.com` | **Yes**      | HTTPS defaults to port 443, so they match perfectly.           |
+
+***
+
+### Examples of Cross-Origin (Not Same Origin)
+
+These URLs are tested against the same base URL: **`https://example.com`**
+
+| URL                         | Same Origin? | Reason                                                         |
+| --------------------------- | ------------ | -------------------------------------------------------------- |
+| `http://example.com`        | **No**       | **Protocol mismatch** (`http` vs `https`).                     |
+| `https://example.com`       | **No**       | **Host mismatch** (subdomains are treated as different hosts). |
+| `https://example.com`       | **No**       | **Port mismatch** (`8080` vs default `443`).                   |
+| `https://anotherdomain.com` | **No**       | **Host mismatch** (completely different domain).               |
+
+***
+
+### Why This Matters for Security
+
+Browsers enforce the **Same-Origin Policy (SOP)** to protect user data.
+
+Without it, if you logged into your bank at `https://mybank.com`, a malicious website open in another tab at `https://evil-site.com` could run JavaScript to read your bank account details or steal your login session. SOP blocks `evil-site.com` from inspecting or modifying data on `mybank.com`.
+
+If you are running into security blocks, let me know:
+
+- What **error message** are you seeing in the browser console?
+
+- Are you trying to make an **API request (fetch/Axios)** to a different server?
+
+- Are you trying to share data between a **main domain and a subdomain**?
+
+- [link](https://web.dev/articles/same-origin-policy)\
+  Same-origin policy | Articles\
+  Nov 4, 2018 — What's considered same-origin? An origin is defined by the scheme (also known as the protocol, for example HTTP or HTTPS), port (i...\
+  \
+  \
+  web.dev
+
+- [link](https://developer.mozilla.org/en-US/docs/Web/Security/Defenses/Same-origin%5Fpolicy)\
+  Same-origin policy - Security | MDN\
+  Nov 29, 2025 — Definition of an origin Two URLs have the same origin if the protocol, port (if specified), and host are the same for both. You ma...\
+  \
+  MDN Web Docs
+
+- [link](https://andrewlock.net/understanding-security-headers-part-2-cross-origin-resource-policy-preventing-hotlinking/)\
+  Cross-Origin-Resource-Policy: preventing hotlinking and XSSI attacks\
+  Nov 26, 2024 — Understanding the difference between same-origin and same-site The CORP header can be set to either same-site or same-origin . Sit...\
+  \
+  \
+  Andrew Lock
+
+Show all
+
+## does host include subdomain
+
+<mark><strong><span>Yes</span></strong>, the host includes the subdomain</mark>.
+
+In networking and web URLs, the "host" (or hostname) is the full name used to identify a specific device or server on the internet. It includes every part of the domain name combined.
+
+### How a Host is Broken Down
+
+Take the host **`://example.com`** as an example. It consists of:
+
+- **`com`**: Top-Level Domain (TLD)
+- **`example`**: Second-Level Domain (SLD)
+- **`dev`**: Subdomain
+- **`blog`**: Subdomain (nested)
+
+Every single part of that chain—including both subdomains—makes up the final **host**.
+
+### How JavaScript Sees It
+
+You can check how the browser defines these parts by looking at the `window.location` object:
+
+- **`window.location.hostname`**: Returns the host _without_ the port (e.g., `"://example.com"`).
+- **`window.location.host`**: Returns the host _with_ the port if one is specified (e.g., `"://example.com"`).
+
+Because subdomains change the host string, `://example.com` and `://example.com` are viewed by the browser as two completely different hosts.
+
+If you are trying to configure your system, tell me:
+
+- Are you setting up **CORS headers** on your server?
+
+- Are you configuring **cookie sharing** across your subdomains?
+
+- Are you writing code to **parse URLs** in JavaScript?
+
+- [link](https://www.bluleadz.com/blog/subdomain-vs-subfolder-seo)\
+  Subdomain or Subfolder: What Best Fits Your SEO Needs?\
+  Aug 17, 2020 — Added hosting fees. Subdomains are hosted on separate hosting accounts, which can cause your domain host to charge hosting fees fo...\
+  \
+  \
+  Bluleadz
+
+- [link](https://xneelo.co.za/help-centre/control-panel/how-to-order-a-subdomain/)\
+  How to order a subdomain via the xneelo Control Panel\
+  Nov 8, 2022 — Add a subdomain in one of the following ways: Record type: A-record Host: the 'sub' part of the subdomain e.g. store Points to: IP...\
+  \
+  \
+  xneelo
+
+- [link](https://www.bluehost.com/blog/hostname-vs-domain-name/)\
+  Hostname vs Domain Name Explained\
+  Mar 25, 2026 — Final thoughts A domain name is the primary, human-readable identity of your website or organization on the internet, the address ...\
+  \
+  \
+  Bluehost
+
+Show all
+
+# when should i push or replace url in spa
+
+In a Single Page Application (SPA), the choice between **pushing** (`history.pushState`) or **replacing** (`history.replaceState`) a URL <mark>depends entirely on whether you want the action to create a new entry in the browser's back-button history</mark>. [link](https://www.bennadel.com/blog/3614-using-replaceurl-to-persist-search-filters-in-the-url-without-messing-up-the-browser-history-in-angular-7-2-14.htm)
+
+### Use **Push** When Navigating to a New Logical Page
+
+You should **push** a new URL when a user moves to a distinct view that they would naturally expect to return from by clicking the browser's "Back" button. [link](https://ux.stackexchange.com/questions/127710/recommended-browser-back-button-behaviour-for-spas)
+
+- **Explicit Page Navigation:** Moving from a product dashboard to a settings panel, or clicking a product card to see its details. [link](https://www.reddit.com/r/webdev/comments/1pngu4q/name%5Fof%5Fthe%5Fweb%5Fdev%5Fconcept%5Fwhere%5Fcontent%5Fis/)
+- **Opening Persistent Modals:** Activating a multi-step modal or full-screen overlay that contains its own workflows or shares a linkable state. [link](https://www.reddit.com/r/webdev/comments/1pngu4q/name%5Fof%5Fthe%5Fweb%5Fdev%5Fconcept%5Fwhere%5Fcontent%5Fis/)
+- **Significant State Changes:** Entering a brand new checkout or onboarding step where going "Back" should logically bring the user to the previous step.
+
+### Use **Replace** to Sync State Without Altering History
+
+You should **replace** the URL when you need to update the address bar for deep-linking or refreshing purposes, but creating a new history step would ruin the "Back" button experience. [link](https://www.bennadel.com/blog/3614-using-replaceurl-to-persist-search-filters-in-the-url-without-messing-up-the-browser-history-in-angular-7-2-14.htm)
+
+- **Real-Time Filtering and Sorting:** Modifying query parameters while typing in a search bar or clicking sidebar filters. Pushing here forces a user to click "Back" dozens of times just to clear their search terms. [link](https://www.bennadel.com/blog/3614-using-replaceurl-to-persist-search-filters-in-the-url-without-messing-up-the-browser-history-in-angular-7-2-14.htm)
+- **Redirects and Route Guards:** Directing an unauthenticated user away from a protected dashboard to a `/login` page. Replacing the route ensures that when they log in or click back, they don't get trapped in a loop bouncing right back to the login screen.
+- **Setting Default States:** Landing on an index page like `/dashboard` and immediately appending missing tracking query parameters or default tab states (e.g., rewriting to `/dashboard?tab=overview`).
+- **Correcting Form Mistakes:** Transitioning through intermediate or error states during a multi-step process where returning to the broken intermediate step serves no purpose.
+
+### Quick Decision Matrix
+
+| User Action                            | Desired Back-Button Behavior                               | Recommended Method |
+| -------------------------------------- | ---------------------------------------------------------- | ------------------ |
+| Clicks a navigation link               | Goes back to the previous page                             | **Push**           |
+| Applies a sidebar search filter        | Goes back to the _entirely separate page_ looked at before | **Replace**        |
+| Gets redirected due to expired session | Avoids getting trapped in an infinite redirect loop        | **Replace**        |
+| Switches major application tabs        | Goes back to the previous tab view                         | **Push**           |
+
+To enhance your routing strategy, would you like to know how to handle **scroll restoration** during these transitions, or are you looking for code examples using a specific framework router like **React Router, Next.js, or Vue Router**? [link](https://github.com/vercel/next.js/discussions/38400)
+
+- [link](https://www.bennadel.com/blog/3614-using-replaceurl-to-persist-search-filters-in-the-url-without-messing-up-the-browser-history-in-angular-7-2-14.htm)\
+  Using replaceUrl To Persist Search Filters In The URL Without ...\
+  May 5, 2019 — Using replaceUrl To Persist Search Filters In The URL Without Messing Up The Browser History In Angular 7.2. 14. ... I am a strong...\
+  Ben Nadel
+- [link](https://www.reddit.com/r/webdev/comments/1pngu4q/name%5Fof%5Fthe%5Fweb%5Fdev%5Fconcept%5Fwhere%5Fcontent%5Fis/)\
+  Name of the web dev concept where content is server but URL ...\
+  Dec 15, 2025 — pushState to allow linking to specific content, and then restore context on load. It's not that hard. ... Not only preventing your...\
+  Reddit·r/webdev
+- [link](https://github.com/vercel/next.js/discussions/38400)\
+  'window.location.replace' vs 'router.replace' #38400 - GitHub\
+  Jul 7, 2022 — on Jul 7, 2022. What is the difference between window. location. replace vs router. replace in next. js ? If I want to visit anoth...\
+  GitHub
+
+Show all
+
+## when path and params are designed properly and login on protected pages are not treated as pages can i apply push whenever path change and replace otherwise. can i not apply login on route.
+
+Yes, you are **exactly right**. Your mental model perfectly captures the core architectural boundary of SPA routing.
+
+If your paths are designed cleanly and authentication is handled as a global state rather than a separate webpage, you can follow this exact rule: **`push` when the path changes, `replace` when only parameters or queries change.**
+
+Here is a breakdown of why this approach works so well, along with the single edge case you still need to look out for.
+
+### 1. Pushing on Path Changes Only
+
+When your paths represent major logical views (e.g., `/dashboard` to `/profile`), using `push` ensures that the user's history mirrors their conceptual journey through your app. Clicking "Back" will always take them to the previous visual layout they occupied.
+
+### 2. Replacing on Parameter/Query Changes
+
+When a user stays on the same layout but tweaks the content via query params (e.g., `/products?color=blue` to `/products?color=red`), using `replace` is ideal. It updates the URL for easy bookmarking and sharing, but prevents the browser history from getting cluttered with dozens of microscopic changes.
+
+### 3. Handling Login Without Routes
+
+Treating login as a **global overlay, drawer, or modal** instead of a dedicated route (`/login`) is an excellent architectural choice.
+
+- **How it works:** When a route guard detects an unauthenticated user, it leaves the current URL exactly as it is, blocks the page content, and mounts the login modal over the top.
+- **The "Back" Button benefit:** Because the URL never changed, the browser history remains completely clean. The user cannot get trapped in an infinite redirect loop because no redirect ever happened.
+- **The Login experience:** Once the user inputs their credentials successfully, you simply unmount the modal. The user is instantly looking at the page they originally requested, with zero URL manipulation required.
+
+### The One Exception to Watch Out For
+
+Even with this clean setup, there is one scenario where path changes should still use `replace` instead of `push`: **Automatic Canonical Redirection.**
+
+If a user types in a sloppy or outdated URL path (like `/user/settings`) and your app automatically corrects it to a canonical path (like `/settings`), you must use **`replace`**. If you use `push` here, clicking the "Back" button will send the user back to the sloppy URL, which will instantly auto-correct and push them forward again, trapping them forever.
+
+***
+
+Would you like to see how to implement this global **authentication overlay pattern** in code, or should we look at how to cleanly separate **path and query state** in your current framework router?
+
+- [link](https://www.daggala.com/truly-protected-react-routes/)\
+  Truly Protected React Routes\
+  How are protected routes nicer for the user ? Imagine, the user has already visited our page. Next time he visits, he'll tap the u...\
+  \
+  \
+  www.daggala.com
+- [link](https://angular.love/routerlink-routerlinkactive-the-basics-in-angular)\
+  RouterLink, RouterLinkActive - the basics in Angular\
+  Mar 4, 2026 — The second option in our toolkit is skipLocationChange, which accepts a boolean value. When set to true it will perform navigation...\
+  \
+  \
+  Angular.love
+- [link](https://abp.io/support/questions/6127/Prevent-concurrent-login-in-different-browsers)\
+  Prevent concurrent login in different browsers #6127 | Support\
+  Jul 10, 2026 — I tried this but it is stuck in infinite loop, it is redirecting to login and somehow it is coming again on this condition, condit...\
+  \
+  \
+  ABP.IO
+
+# (d) all js url instance methods
+
+The JavaScript `URL` interface has exactly **two instance methods**. [link](https://developer.mozilla.org/en-US/docs/Web/API/URL/URL)
+
+### `toString()`
+
+Returns a string containing the whole URL. It is functionally equivalent to reading the `href` property. [link](https://developer.mozilla.org/en-US/docs/Web/API/URL)
+
+javascript
+
+```
+const myUrl = new URL('https://example.com');
+console.log(myUrl.toString());
+// Output: "https://example.com"
+```
+
+Use code with caution.
+
+### `toJSON()`
+
+Returns a string containing the whole URL. This method is automatically called when a `URL` object is passed into `JSON.stringify()`. [link](https://dev.to/codingsimba/mastering-javascripts-url-and-urlsearchparams-a-complete-guide-15l5)
+
+javascript
+
+```
+const myUrl = new URL('https://example.com');
+console.log(myUrl.toJSON());
+// Output: "https://example.com/"
+
+console.log(JSON.stringify({ links: myUrl }));
+// Output: '{"links":"https://example.com/"}'
+```
+
+Use code with caution.
+
+***
+
+### Pro-Tip: Managing Query Parameters
+
+While the `URL` object only has two instance methods, it features a special [searchParams](https://developer.mozilla.org/en-US/docs/Web/API/URL/searchParams) property. This property returns a `URLSearchParams` object which provides its own extensive set of instance methods to modify query strings: [link](https://developer.mozilla.org/en-US/docs/Web/API/URL/URL)
+
+- **`append(name, value)`**: Adds a new parameter.
+- **`delete(name)`**: Deletes a parameter.
+- **`set(name, value)`**: Updates or creates a parameter.
+- **`get(name)`**: Retrieves the first value matching the name.
+- **`getAll(name)`**: Retrieves all values matching the name as an array.
+- **`has(name)`**: Checks if a parameter exists.
+- **`sort()`**: Sorts all key/value pairs alphabetically. [link](https://javascript.info/url)
+
+javascript
+
+```
+const url = new URL('https://example.com');
+// Using URLSearchParams instance methods via the URL instance
+url.searchParams.append('user', 'alice');
+url.searchParams.set('role', 'admin');
+
+console.log(url.toString());
+// Output: "https://example.com"
+```
+
+Use code with caution.
+
+If you are working on a specific task, let me know if you need help **parsing query strings**, **validating paths**, or **building dynamic links**.
+
+- [link](https://developer.mozilla.org/en-US/docs/Web/API/URL)\
+  URL - Web APIs - MDN Web Docs\
+  Jun 2, 2026 — In this article. Constructor; Instance properties; Static methods; Instance methods; Usage notes; Specifications · Constructor. UR...\
+  MDN Web Docs
+- [link](https://developer.mozilla.org/en-US/docs/Web/API/URL/URL)\
+  URL: URL() constructor - Web APIs - MDN Web Docs\
+  Nov 9, 2025 — Learn how to contribute. This page was last modified on Nov 9, 2025 by MDN contributors. View this page on GitHub • Report a probl...\
+  MDN Web Docs
+- [link](https://dev.to/codingsimba/mastering-javascripts-url-and-urlsearchparams-a-complete-guide-15l5)\
+  Mastering JavaScript's URL() and URLSearchParams: A Complete ...\
+  Oct 27, 2025 — Key Properties Explained \* href - The complete URL string. ... \* protocol - The scheme of the URL (always includes the colon): ...\
+  DEV Community
+
+Show all
+
+# (d) all js url instance props and methods
+
+The **`URL` interface** in JavaScript features **12 instance properties** and **2 instance methods** used to parse and manipulate web addresses. [link](https://developer.mozilla.org/en-US/docs/Web/API/URL/pathname)
+
+### Instance Properties
+
+All instance properties are read-write strings, except where noted. [link](https://dev.to/builderio/safer-url-reading-and-writing-in-modern-javascript-4m02)
+
+- `hash`: The fragment identifier containing a leading `#` character.
+- `host`: The domain name followed by a `:` and the port number if specified.
+- `hostname`: The clean domain name excluding any associated port numbers.
+- `href`: The complete serialized URL string.
+- `origin` _(Read-only)_: The base domain consisting of the protocol, hostname, and port.
+- `password`: The password authentication parameter embedded before the domain name.
+- `pathname`: The path portion of the address beginning with a `/` character.
+- `port`: The port number specified inside the address.
+- `protocol`: The scheme identifier including its trailing `:` character.
+- `search`: The standard query parameters block starting with a `?` character.
+- `searchParams` _(Read-only)_: A specialized [URLSearchParams](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams) object mapped directly to the query string.
+- `username`: The username authentication parameter embedded before the domain name. [link](https://developer.mozilla.org/en-US/docs/Web/API/URL)
+
+### Instance Methods
+
+- `toJSON()`: Returns the exact same complete serialized URL string as the `href` property.
+- `toString()`: Returns the fully constructed address string representing the current state of the object. [link](https://developer.mozilla.org/en-US/docs/Web/API/URL)
+
+***
+
+### Reference Map of a URL Object
+
+Given a mock URL instance constructed as `const myUrl = new URL("https://example.com")`:
+
+| Property / Method    | Return Value                            |
+| -------------------- | --------------------------------------- |
+| `myUrl.protocol`     | `"https:"`                              |
+| `myUrl.username`     | `"user"`                                |
+| `myUrl.password`     | `"pass"`                                |
+| `myUrl.host`         | `"example.com:8080"`                    |
+| `myUrl.hostname`     | `"example.com"`                         |
+| `myUrl.port`         | `"8080"`                                |
+| `myUrl.origin`       | `"https://example.com:8080"`            |
+| `myUrl.pathname`     | `"/directory/file.html"`                |
+| `myUrl.search`       | `"?query=test"`                         |
+| `myUrl.searchParams` | `URLSearchParams { 'query' => 'test' }` |
+| `myUrl.hash`         | `"#hash"`                               |
+| `myUrl.href`         | `"https://example.com"`                 |
+| `myUrl.toString()`   | `"https://example.com"`                 |
+| `myUrl.toJSON()`     | `"https://example.com"`                 |
+
+Would you like an example showing how to **add or update query parameters** using the `searchParams` property? [link](https://javascript.info/url)
+
+- [link](https://developer.mozilla.org/en-US/docs/Web/API/URL)\
+  URL - Web APIs - MDN Web Docs\
+  Jun 2, 2026 — In this article. Constructor; Instance properties; Static methods; Instance methods; Usage notes; Specifications · Constructor. UR...\
+  MDN Web Docs
+- [link](https://developer.mozilla.org/en-US/docs/Web/API/URL/URL)\
+  URL: URL() constructor - Web APIs - MDN Web Docs\
+  Nov 9, 2025 — See also. URL.parse() , a non-throwing alternative to this constructor; Polyfill of URL in core-js; The interface it belongs to: U...\
+  MDN Web Docs
+- [link](https://developer.mozilla.org/en-US/docs/Web/API/URL/searchParams)\
+  URL: searchParams property - Web APIs | MDN\
+  May 23, 2025 — This feature is well established and works across many devices and browser versions. It's been available across browsers since Apr...\
+  MDN Web Docs
+
+Show all
+
+# 
