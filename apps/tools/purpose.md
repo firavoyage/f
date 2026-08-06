@@ -1361,4 +1361,43 @@ app on mount, it will parse path to init other states.
 
 since then, path will reflect all other states. dep array doesnt matter (basically perf engineering).
 
+~~*critical:* app doesnt depend on path. on mount, it will get raw...~~
+
+you couldnt just get raw for the derived, intricated, coupled path. path is global state. and it shares subscribers w other props. all keys inside one global state share the subscribers.
+
+well i couldnt use effect either. it would still inf loop. letme find a more direct approach against react.
+
+i could work against react. i dont have to.
+
+i think i will still have init fn and change fn. what's different is it's no longer bound w routing.
+
+- init
+  - run after persist and routing
+  - get raw state
+  - get your path prop
+  - mutate state directly to init the derived states
+  - it runs before the app component
+- change
+  - basically a subscriber. syntax sugar.
+  - get raw state
+  - mutate path directly to reflect all props.
+  - sync
+
+**rule: no setstate inside any subscriber. (set call subs. if subs called set then inf loop.)**
+
+i may alter the design of change. just solve the specific problem. so i no longer have to expose sync.
+
+well, i will still call it change.
+
+- change
+  - get raw state
+  - mutate path directly to reflect all props.
+  - (implicitly sync)
+
+sync is a subscriber yk. and it's clear when state change it should sync.
+
+it doesnt have to render the component. but it should be always in sync.
+
+---
+
 
