@@ -60,6 +60,7 @@ fira:
 - pm sdlc phases
 - pm pomodoro
 - perfectionism procrastination over engineering premature optimization
+- llm math research future
 
 life:
 
@@ -883,7 +884,7 @@ humility:
 - research ai industry financial sustainability
 - research google ai mode text styling
 - research google ai mode context stripping
-- research chatgpt sol dgg math
+- research chatgpt sol dgg math llm math research future
 - research google ai mode content filter and actual system prompt
 - research sillytavern characterai
 - research google ai mode data visualization matplotlib
