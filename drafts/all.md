@@ -120,6 +120,7 @@ life:
 - game maimai dx achievement rate formula algorithm
 - proton mail
 - game maimai dx gloves
+- walk in the park
 
 create something:
 
@@ -201,7 +202,7 @@ archi:
 - piracy hosting crypto vps maimai charts awmc astrodx
 - naming markdown multiple heading one no title
 - naming prefer singular <!-- action, actions --> 
-- react vs vue hypes decision fatigue <!-- grow? rhetoric? politics/philosophy? -->
+- react vs vue hypes decision fatigue <!-- politics essentially -->
 - first principles
 - template new repo
 - docstring inline comment feeling
@@ -889,6 +890,7 @@ humility:
 - research sillytavern characterai
 - research google ai mode data visualization matplotlib
 - analyze claude ux
+- research google ai mode
 
 legacy:
 
