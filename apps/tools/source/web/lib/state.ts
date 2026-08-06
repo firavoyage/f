@@ -17,6 +17,32 @@ function is_inside_react() {
   return !!internals?.ReactCurrentDispatcher?.current;
 }
 
+type MatchResult = string | false;
+
+function match(pattern: string, text: string): MatchResult {
+  const asterisk_index = pattern.indexOf("*");
+
+  const prefix = pattern.slice(0, asterisk_index);
+  const suffix = pattern.slice(asterisk_index + 1);
+
+  if (!text.startsWith(prefix)) {
+    return false;
+  }
+
+  if (!text.endsWith(suffix)) {
+    return false;
+  }
+
+  if (text.length < prefix.length + suffix.length) {
+    return false;
+  }
+
+  const match_start = prefix.length;
+  const match_end = text.length - suffix.length;
+
+  return text.slice(match_start, match_end);
+}
+
 type StateOptions<T> = {
   persist?: string
   should_sync_url?: boolean

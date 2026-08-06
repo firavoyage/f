@@ -1351,4 +1351,14 @@ there's nothing wrong to just leave these three options in case abstraction leak
 
 23 00 implement routing for state lib.
 
+currently the routing (path mapping) is very specific.
+
+i think if needed, i will not create a two way converter anyway.
+
+instead, i will make the full path as path. a global state.
+
+app on mount, it will parse path to init other states.
+
+since then, path will reflect all other states. dep array doesnt matter (basically perf engineering).
+
 
