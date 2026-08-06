@@ -1435,6 +1435,8 @@ let's say inside init, you somehow correct path first. and then mutate a few pro
 
 yes. it *is* more boilerplate. but look at the simpler approach, it isnt even complete. what would page be when tool is matched?
 
+**you can absolutely abstract w some hof if you like. maybe both at once, w obj flattening.**
+
 ---
 
 also, global state is expected to be complex and rarely you wanna sync all keys. 
