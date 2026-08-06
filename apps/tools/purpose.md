@@ -1349,7 +1349,7 @@ app might also use it to correct the path. (that is page, which must be inside a
 
 there's nothing wrong to just leave these three options in case abstraction leaks.
 
-23 00 implement routing for state lib. (00 30)
+23 00 design ~~implement~~ routing for state lib. (00 30)
 
 currently the routing (path mapping) is very specific.
 
@@ -1422,3 +1422,27 @@ no leak. you only want to correct path when you actually altered the path somewh
 and it should sync! it doesnt matter to sync again if you placed it inside change. since path is already synced and no new path mutation, neither push nor replace will occur. the benefit is you can correct path anywhere.
 
 ---
+
+one thing is "sync" itself will always be sto zero.
+
+order is guranteed so no race cond. and it will fire after all sync op.
+
+it's not about async. it's to let sync state mutation fire first.
+
+let's say inside init, you somehow correct path first. and then mutate a few props. it might break if not async.
+
+---
+
+yes. it *is* more boilerplate. but look at the simpler approach, it isnt even complete. what would page be when tool is matched?
+
+---
+
+also, global state is expected to be complex and rarely you wanna sync all keys. 
+
+~~keep will default to empty.~~
+
+and i think you dont have to keep "page" and "tool" anymore. you dont have to keep "path" either.
+
+keep will default to all mapped props (param or path).
+
+
