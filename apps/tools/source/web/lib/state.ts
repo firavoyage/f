@@ -142,10 +142,28 @@ export function state<T extends NonFunction>(initial: T, options: StateOptions<T
         data[key] = value
       }
     }
+
+    if (should_cleanup_omitted_params_after_init) {
+      for (const [key] of url.searchParams) {
+        if (!keys_to_sync.has(mapped(key))) {
+          url.searchParams.delete(key)
+        } 
+      }
+
+      correct_url(url)
+    } 
+
+    if (should_sync_after_init) {
+      sync_url()
+    } 
   }
 
   function sync_url() {
+    
+  }
 
+  function correct_url(url: URL) {
+    
   }
 
   function set(new_value: T | ((old_value: T) => T), path?: path) {
@@ -174,8 +192,6 @@ export function state<T extends NonFunction>(initial: T, options: StateOptions<T
     for (const sub of subs) {
       sub()
     }
-
-    sync_localstorage()
   }
 
   const subs: Set<Function> = new Set()
@@ -229,7 +245,14 @@ export function state<T extends NonFunction>(initial: T, options: StateOptions<T
   result.keys_to_sync = { keep, omit, replace }
 
   init_from_localstorage()
+  if (is_given(persist)) {
+    subscribe(sync_localstorage)
+  } 
+
   init_from_url()
+  if (should_sync_url) {
+    subscribe(sync_url)
+  } 
 
   return result
 }
