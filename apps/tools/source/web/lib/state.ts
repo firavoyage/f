@@ -25,7 +25,6 @@ type StateOptions<T> = {
     should_cleanup_omitted_params_after_init?: boolean
     should_sync_after_init?: boolean
     keys_to_sync?: (keyof T)[]
-    keys_to_omit?: (keyof T)[]
     param_mapping?: Record<string, keyof T>
     path_mapping?: keyof T
   },
@@ -68,7 +67,7 @@ export function state<T extends NonFunction>(initial: T, options: StateOptions<T
 
   type path = string & keyof T
 
-  function sync() {
+  function sync_localstorage() {
     is_syncing = true
 
     setTimeout(function () {
@@ -77,7 +76,7 @@ export function state<T extends NonFunction>(initial: T, options: StateOptions<T
 
       if (should_sync_again) {
         should_sync_again = false
-        sync()
+        sync_localstorage()
       } else {
         is_syncing = false
       }
@@ -115,7 +114,7 @@ export function state<T extends NonFunction>(initial: T, options: StateOptions<T
       if (is_syncing) {
         should_sync_again = true
       } else {
-        sync()
+        sync_localstorage()
       }
     }
   }
@@ -139,8 +138,8 @@ export function state<T extends NonFunction>(initial: T, options: StateOptions<T
       return [data, set]
     }
   }
-
-  result.get = function (path?: path) {
+  
+  function get (path?: path) {
     if (is_inside_react()) {
       return result(path)[0]
     } else {
@@ -148,9 +147,26 @@ export function state<T extends NonFunction>(initial: T, options: StateOptions<T
     }
   }
 
+  result.get = get
+
   result.set = set
 
   result.sub = subscribe
+
+  function keep() {
+
+  }
+
+  function omit() {
+
+  }
+
+  function replace() {
+
+  }
+
+  // expose these apis regardless, in case ts is not intelligent enough
+  result.keys_to_sync = { keep, omit, replace }
 
   return result
 }
