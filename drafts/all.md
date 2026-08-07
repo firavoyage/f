@@ -822,7 +822,7 @@ leisure:
 
 - jp books jlpt levels
 - jp traditional self study
-- fsi lang ranking cefr
+- fsi lang ranking cefr ielts jlpt
 - research duolingo
 
 egg:
