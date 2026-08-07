@@ -1,7 +1,7 @@
 const { parse, stringify } = JSON
 
-// type NonFunction = any
-type NonFunction = all & { (): never; new(): never } | void | string | number | boolean | bigint | symbol | null | undefined;
+type NonFunction = any
+// type NonFunction = all & { (): never; new(): never } | void | string | number | boolean | bigint | symbol | null | undefined;
 // type NonFunction = all & { [K in any]: any } & { (): never; new(): never };
 // type NonFunction<T> = T extends Function ? never : T;
 
@@ -52,7 +52,9 @@ export function state<T extends NonFunction>(initial: T, options: StateOptions<T
   const {
     persist,
     should_sync_url = false,
-    sync_url_options = {}
+    sync_url_options = {},
+    init,
+    change,
   } = options
 
   const {
@@ -147,28 +149,29 @@ export function state<T extends NonFunction>(initial: T, options: StateOptions<T
       for (const [key] of url.searchParams) {
         if (!keys_to_sync.has(mapped(key))) {
           url.searchParams.delete(key)
-        } 
+        }
       }
 
       correct_url(url)
-    } 
+    }
 
     if (should_sync_after_init) {
       sync_url()
-    } 
+    }
   }
 
   function sync_url() {
-    
+
   }
 
   function correct_url(url: URL) {
-    
+    history.replaceState({}, '', url)
   }
 
   function set(new_value: T | ((old_value: T) => T), path?: path) {
     if (is_given(path)) {
       if (typeof new_value == 'function') {
+        // @ts-expect-error 
         const result = new_value(data[path])
 
         if (typeof result != 'undefined') {
@@ -179,6 +182,7 @@ export function state<T extends NonFunction>(initial: T, options: StateOptions<T
       }
     } else {
       if (typeof new_value == 'function') {
+        // @ts-expect-error 
         const result = new_value(data)
 
         if (typeof result != 'undefined') {
@@ -190,7 +194,7 @@ export function state<T extends NonFunction>(initial: T, options: StateOptions<T
     }
 
     for (const sub of subs) {
-      sub()
+      sub(data)
     }
   }
 
@@ -244,15 +248,23 @@ export function state<T extends NonFunction>(initial: T, options: StateOptions<T
   // expose these apis regardless, in case ts is not intelligent enough
   result.keys_to_sync = { keep, omit, replace }
 
+  // set maintains insertion order, change should fire first
+  // e.g. derive path from other props, then sync
+  if (is_given(change)) {
+    subscribe(change)
+  }
+
   init_from_localstorage()
   if (is_given(persist)) {
     subscribe(sync_localstorage)
-  } 
+  }
 
   init_from_url()
   if (should_sync_url) {
     subscribe(sync_url)
-  } 
+  }
+
+  init?.(data)
 
   return result
 }
