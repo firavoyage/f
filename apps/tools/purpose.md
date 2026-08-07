@@ -1527,6 +1527,16 @@ if data source exists
 
 anyway. no idea if that constraint matters.
 
+06 20 <!-- continue to --> implement routing for state lib. (07 00)
+
+<!-- i was thinking about "acbox: i feel depressed when i screen hundreds of resumes while we only need three, and im afraid i would be one of them". i checked where it was and read the context. and then i surfed a bit. well actually i wasnt even wasting time on anything typical, i simply was dreaming and feel some kinds of ecstasy or zeal. damn. -->
+
+sync. correct url.
+
 ---
+
+now subscribers will always receive data.
+
+you can always pass more in ts.
 
 
