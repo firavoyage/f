@@ -224,6 +224,7 @@ implement tools
   - timestamp, utc, timezone, (any template string)
 - encryption, public key, hash
   - (popular methods)
+  - base64
 - misc
   - regex (the args are defined separately from inputs, on the recipe)
   - grep
