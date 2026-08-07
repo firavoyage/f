@@ -30,4 +30,10 @@ i mean, for tools itself, it would use a yaml dsl. yeah that's dsl, as i need co
 
 and it might be a custom tool. i would apply minifier if they paste, or import a new tool here.
 
+---
+
+cd abstraction.
+
+auto join spaces.
+
 
