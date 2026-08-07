@@ -33,7 +33,7 @@ export const use_global = state({
   'navigation.tool': '',
   'appearance.theme': '',
 }, {
-  persist: 'tools',
+  persist: 'tools_v2',
   should_sync_url: true,
   sync_url_options: {
     should_apply_all_given_params: true,
@@ -56,6 +56,7 @@ export const use_global = state({
     }
   },
   change(state) {
+    log(state)
     state['navigation.path'] = state['navigation.page'] == 'main' ?
       'main' : state['navigation.tool']
   }
