@@ -44,6 +44,11 @@ design args ux
 
 (e.g. use json parse, json5, or dirty json)
 
+i guess i could have an option on output. rigid/flexible/forgiving.
+
+for advanced features, you would have a process panel, like, when you wanna chain w prettier.
+
+you would need to define the process at the end of the day. it's not just a tool, an input, and an output, if tools are generic.
 
 ---
 
