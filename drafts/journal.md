@@ -49997,6 +49997,8 @@ screen recordings and screenshots are omitted. <!-- somehow i feel they are comp
 
 18 00 set chunithm player name as Humility.
 
+19 20 create shell cd abstraction. (19 40)
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
