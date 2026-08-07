@@ -49993,6 +49993,8 @@ screen recordings and screenshots are omitted. <!-- somehow i feel they are comp
 
 <!-- 05 00?! well... it does take time to review and evaluate one by one. now i can easily export dcim, download, pics, and recordings. -->
 
+05 10 archive photos. 05 30
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
