@@ -1484,4 +1484,10 @@ conclusion:
     - set -> undefined: (modify original) do nothing
   - item: toggle
 
+08
+
+03 20 implement routing for state lib. (04 10)
+
+play hayato sumino.
+
 
