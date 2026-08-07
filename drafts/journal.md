@@ -50001,7 +50001,26 @@ screen recordings and screenshots are omitted. <!-- somehow i feel they are comp
 
 learn some shell syntax along the way.
 
-21 30 unpack ielts report and take a photo.
+21 30 unpack ielts report and take a photo. post on chyk group.
+
+```md
+f, [8/7/26 11:23 PM]
+<!-- photo: ielts report -->
+在等待室里，自己坐在最右侧。转头说 “我是顶级做题区！我是顶级做题区。”，一直说。自言自语。
+
+无聊的大人们没有回应自己，不知道最后考得如何。
+```
+
+<!-- upd: replace the text to show humility.
+
+```md
+f, [8/7/26 11:26 PM]
+我弱。
+```
+
+-->
+
+also cc on some other groups wo the text.
 
 
 

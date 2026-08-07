@@ -1,0 +1,1 @@
+calc the gem distribution by game progression for f2p fresh accounts before and after by card level. do not count the time to complete tiers.
