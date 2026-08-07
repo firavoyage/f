@@ -1,1 +1,1 @@
-calc the gem distribution by game progression for f2p fresh accounts before and after by card level. do not count the time to complete tiers.
+search the hidden factors. avg gem by card before (incl the ones that do not give). compare the gem distribution by game progression for f2p fresh accounts before and after overall and on one avg card. do not count the time to complete tiers. make the math sound by explicitly ignoring some factors.
