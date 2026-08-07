@@ -49997,7 +49997,9 @@ screen recordings and screenshots are omitted. <!-- somehow i feel they are comp
 
 18 00 set chunithm player name as Humility.
 
-19 20 create shell cd abstraction. (19 40)
+19 20 create shell cd abstraction. ~~(19 40)~~ 20 00
+
+learn some shell syntax along the way.
 
 
 
