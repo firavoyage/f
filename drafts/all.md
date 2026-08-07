@@ -339,7 +339,7 @@ desktop:
 - vscode fix css variable autocomplete langs
 - docker help
 - shell cd abstraction
-- shell fn syntax args variables input output return
+- shell fn syntax args variables input output return heredoc here string
 
 android:
 

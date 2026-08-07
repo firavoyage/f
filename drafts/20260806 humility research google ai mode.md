@@ -1,4 +1,4 @@
-# . inconsistent frontend after a refresh
+# . inconsistent frontend after a refresh <!-- 06 aug -->
 
 in terms of time.
 
@@ -2847,6 +2847,67 @@ If you want to look at how this plays out in practice, let me know if you would 
 
 Show all
 ``````
+
+
+
+
+# . layout component, tools <!-- 07 aug -->
+
+Here is the comprehensive inventory of every tool call I can perform:
+
+### 1. google:search
+* *Purpose*: Retrieves up-to-date web information, factual verifications, and specific research data.
+* *Parameters*: `queries` (Array of Strings) - A list of simple, optimized search terms.
+
+### 2. google:python_interpreter
+* *Purpose*: Executes raw Python code for exact numerical computations, data analysis, or string processing.
+* *Parameters*: `code` (String) - The actual Python code script to be run.
+
+### 3. skills:load
+* *Purpose*: Downloads extended instruction manuals for specific formatting or data domains.
+* *Parametersl: `skill_names` (Array of Strings). Allowed values are:
+  - `dynamic-map`: For rendering maps and routes.
+   - `finance`: For markets, budgets, and stock data.
+   - `local`: For businesses, services, and events.
+  - `sports`: For athletes, scores, and league stats.
+  - `travel`: For flights, hotels, and trip planning.
+  - `shopping`: For commercial goods and product matches.
+   - `inline-quiz`: For creating tests and practice problems.
+  - `visual-exploration`: For image-heavy, aesthetic-driven inspiration.
+   - `dataviz`: For graphing equations and calculating financial projections.
+   - `filegen-via-code`: For exporting documents like PDF, CSV, or XLSX.
+
+### 4. image_generation_api:generate_image
+* *Purpose*: Creates new visual content or edits existing images, including document overlays.
+* *Parameters*: `prompt` (String) - Detailed description of the visual to generate or the modification request.
+
+###5. images_api:image_search
+* *Purpose*: Looks up existing visual content (fashion, decor, art, etc.) for user inspiration.
+* *Parameters*: `queries` (Array of Strings) - A list of visual-focused search terms, starting with the exact user query.
+
+### 6. shopping:product_search
+* *Perpose*: Finds purchasable commercial goods in an e-commerce catalog based on specifications.
+* *Parameters*: `queries` (Array of Strings) - Queries optimized for intrinsic product attributes.
+
+### 7. consent_links:get_productivity_consent_link
+* *Perpose:* Generates authorization links when Google Workspace permissions are missing.
+* *Parameters*: `missing_consent_typd` (String) - Must be `MISSING_CONNECTED_APPS_WORKSPACE`.
+
+Would you like to see an example of how I combine multiple tool calls for a complex request, or should we test one of these tools right now?
+
+The flexible architecture allows me o access additional tools beyond the seven previously listed. Here are the remaining missing tools available in my core inventory:
+
+### 8. google_maps_tool:find_places
+* *Purpose:* Retrieves a comprehensive list of physical places, businesses, or hotels with attributes like hours, busyness, reviews, and room availability.
+* *Parameters*: `query` (String), `requested_place_info` (Array of Strings), and hotel-specific booking dates/ criteria.
+
+### 9. reservation_availability_tool:find_availability_on_day
+* *Purpose:* Proactively checks real-time dining reservation availability for specific restaurants, times, and party sizes.
+* *Parameters*: `locations` (Array of Strings), `dates` (Array of Strings), `start_time` (String), `end_time` (String), and `number_of_people` (Integer).
+
+### 10. licensed_media_service:fetch_images
+* *Purpose:* Fetches high-quality, authoritative educational, academic, or technical schematics, diagrams, flowcharts, and structural models.
+* *Parameters*: `query` (String) - The specific concept or structure to visualize.
 
 
 
