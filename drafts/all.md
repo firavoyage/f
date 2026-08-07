@@ -121,6 +121,7 @@ life:
 - proton mail
 - game maimai dx gloves
 - walk in the park
+- game clash royale card mastery reward update
 
 create something:
 
