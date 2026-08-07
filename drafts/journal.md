@@ -50001,6 +50001,8 @@ screen recordings and screenshots are omitted. <!-- somehow i feel they are comp
 
 learn some shell syntax along the way.
 
+21 30 unpack ielts report and take a photo.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
