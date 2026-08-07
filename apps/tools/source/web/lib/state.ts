@@ -1,7 +1,7 @@
 const { parse, stringify } = JSON
 
-type NonFunction = any
-// type NonFunction = all & { (): never; new(): never } | void | string | number | boolean | bigint | symbol | null | undefined;
+// type NonFunction = any
+type NonFunction = all & { (): never; new(): never } | void | string | number | boolean | bigint | symbol | null | undefined;
 // type NonFunction = all & { [K in any]: any } & { (): never; new(): never };
 // type NonFunction<T> = T extends Function ? never : T;
 
@@ -24,7 +24,7 @@ type StateOptions<T> = {
     should_apply_all_given_params?: boolean
     should_cleanup_omitted_params_after_init?: boolean
     should_sync_after_init?: boolean
-    keys_to_sync?: (keyof T)[]
+    keys_to_sync?: (keyof T)[] | Set<keyof T>
     param_mapping?: Record<string, keyof T>
     path_mapping?: keyof T
   },
@@ -47,17 +47,33 @@ type StateOptions<T> = {
  * it performs a complete sync, w nested set time out for each key, before the next one
  */
 export function state<T extends NonFunction>(initial: T, options: StateOptions<T> = {}) {
+  type path = string & keyof T
+
   const {
     persist,
-    should_sync_url = false
+    should_sync_url = false,
+    sync_url_options = {}
   } = options
 
-  let data = initial
-  const subs: Set<Function> = new Set()
-  let is_syncing = false
-  let should_sync_again = false
+  const {
+    should_apply_all_given_params = true,
+    should_cleanup_omitted_params_after_init = false,
+    should_sync_after_init = true,
+    keys_to_sync: flexible_keys_to_sync = new Set(),
+    param_mapping = {},
+    path_mapping
+  } = sync_url_options
 
-  if (is_given(persist) && has(globalThis, 'localStorage')) {
+  const keys_to_sync = Array.isArray(flexible_keys_to_sync) ?
+    new Set(flexible_keys_to_sync) : flexible_keys_to_sync
+
+  let data: any = initial
+
+  function init_from_localstorage() {
+    if (!is_given(persist) || !has(globalThis, 'localStorage')) {
+      return
+    }
+
     const key = localStorage.getItem(persist)
 
     if (is_given(key)) {
@@ -65,20 +81,28 @@ export function state<T extends NonFunction>(initial: T, options: StateOptions<T
     }
   }
 
-  type path = string & keyof T
-
+  let is_syncing_localstorage = false
+  let should_sync_localstorage_again = false
   function sync_localstorage() {
-    is_syncing = true
+    if (!is_given(persist)) {
+      return
+    }
+
+    if (is_syncing_localstorage) {
+      should_sync_localstorage_again = true
+      return
+    }
+
+    is_syncing_localstorage = true
 
     setTimeout(function () {
-      // @ts-expect-error 
       localStorage.setItem(persist, stringify(data))
 
-      if (should_sync_again) {
-        should_sync_again = false
+      if (should_sync_localstorage_again) {
+        should_sync_localstorage_again = false
         sync_localstorage()
       } else {
-        is_syncing = false
+        is_syncing_localstorage = false
       }
     }, 0)
   }
@@ -110,15 +134,10 @@ export function state<T extends NonFunction>(initial: T, options: StateOptions<T
       sub()
     }
 
-    if (is_given(persist)) {
-      if (is_syncing) {
-        should_sync_again = true
-      } else {
-        sync_localstorage()
-      }
-    }
+    sync_localstorage()
   }
 
+  const subs: Set<Function> = new Set()
   function subscribe(listener: Function) {
     subs.add(listener)
   }
@@ -138,8 +157,8 @@ export function state<T extends NonFunction>(initial: T, options: StateOptions<T
       return [data, set]
     }
   }
-  
-  function get (path?: path) {
+
+  function get(path?: path) {
     if (is_inside_react()) {
       return result(path)[0]
     } else {
@@ -167,6 +186,8 @@ export function state<T extends NonFunction>(initial: T, options: StateOptions<T
 
   // expose these apis regardless, in case ts is not intelligent enough
   result.keys_to_sync = { keep, omit, replace }
+
+  init_from_localstorage()
 
   return result
 }

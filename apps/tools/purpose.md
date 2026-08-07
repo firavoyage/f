@@ -1490,4 +1490,43 @@ conclusion:
 
 play hayato sumino.
 
+---
+
+wait. ive not thought enough.
+
+currently, if you have param mapping, let's say it's theme to appearance.theme, it would be included.
+
+what if you do not wanna actually sync it?
+
+explicit > implicit.
+
+instead of introducing "omit" back again, let's be explicit. mapping != including.
+
+---
+
+ts wants me to write like
+
+```ts
+init {
+  if data source exists
+    do init
+}
+```
+
+instead of
+
+```ts
+init {
+  // tsc err: data source might be undefined
+  do init
+}
+
+if data source exists
+  init
+```
+
+anyway. no idea if that constraint matters.
+
+---
+
 
