@@ -107,6 +107,47 @@ export function state<T extends NonFunction>(initial: T, options: StateOptions<T
     }, 0)
   }
 
+  function init_from_url() {
+    if (!should_sync_url) {
+      return
+    }
+
+    const url = new URL(window.location.href)
+
+    if (is_given(path_mapping)) {
+      // remove the nonsensical forward slash
+      // when sth is always existing, it's just boilerplate and means nothing
+      data[path_mapping] = url.pathname.slice(1)
+    }
+
+    // all params mapped, incl. href as `#`
+    const query: any = {}
+
+    function mapped(key: string) {
+      return param_mapping[key] ?? key
+    }
+
+    for (const [key, value] of url.searchParams) {
+      query[mapped(key)] = value
+    }
+
+    query[mapped('#')] = url.hash
+
+    for (const [key, value] of query) {
+      if (!has(data, key)) {
+        continue
+      }
+
+      if (keys_to_sync.has(key) || should_apply_all_given_params) {
+        data[key] = value
+      }
+    }
+  }
+
+  function sync_url() {
+
+  }
+
   function set(new_value: T | ((old_value: T) => T), path?: path) {
     if (is_given(path)) {
       if (typeof new_value == 'function') {
@@ -188,6 +229,7 @@ export function state<T extends NonFunction>(initial: T, options: StateOptions<T
   result.keys_to_sync = { keep, omit, replace }
 
   init_from_localstorage()
+  init_from_url()
 
   return result
 }

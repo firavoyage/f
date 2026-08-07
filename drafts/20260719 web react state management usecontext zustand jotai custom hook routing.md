@@ -14904,4 +14904,493 @@ Show all
 
 # <!-- 08 aug -->
 
+# (?) js get current url
+
+To get the full current URL in client-side JavaScript, use **`window.location.href`**. [link](https://stackoverflow.com/questions/1034621/get-the-current-url-with-javascript)
+
+javascript
+
+```
+const currentUrl = window.location.href;
+console.log(currentUrl);
+// Output: "https://example.com"
+```
+
+Use code with caution.
+
+### Specific URL Components
+
+If you only need a specific portion of the URL, the [`window.location`](https://www.w3schools.com/js/js%5Fwindow%5Flocation.asp) object provides several native properties:
+
+- **`window.location.origin`** – The protocol and domain name (`https://example.com`)
+- **`window.location.hostname`** – The domain name without the protocol (`example.com`)
+- **`window.location.pathname`** – The path relative to the host (`/path/page.html`)
+- **`window.location.search`** – The query string (`?query=1`)
+- **`window.location.hash`** – The anchor/fragment identifier (`#hash`)
+- **`window.location.protocol`** – The web protocol used (`https:`) [link](https://stackoverflow.com/questions/3955959/whats-an-easy-way-to-get-the-url-in-the-current-window-minus-the-domain-name)
+
+### Parsing URL Parameters
+
+If your goal is to extract specific parameters from the current query string, combine `window.location.search` with the modern [`URLSearchParams`](https://developer.mozilla.org/en-US/docs/Web/API/URL) interface:
+
+javascript
+
+```
+// URL: https://example.com
+const urlParams = new URLSearchParams(window.location.search);
+
+const user = urlParams.get('user'); // "john"
+const id = urlParams.get('id');     // "123"
+```
+
+Use code with caution.
+
+If you are working with an older environment, alternative legacy methods like `document.URL` can also return the full path string, though `window.location.href` remains the industry standard. [link](https://stackoverflow.com/questions/1034621/get-the-current-url-with-javascript)
+
+Are you planning to **parse the parameters** out of the URL, or do you need to **redirect the user** to a new page?
+
+- [link](https://stackoverflow.com/questions/1034621/get-the-current-url-with-javascript)\
+  Get the current URL with JavaScript?\
+  Jun 23, 2009 — JavaScript provides many methods to retrieve and change the current URL. The current URL is displayed in the browser's address bar...\
+  Stack Overflow
+- [link](https://www.w3schools.com/howto/howto%5Fjs%5Fget%5Furl.asp)\
+  How To Get The Current URL With JavaScript - W3Schools\
+  Learn how to get the current URL with JavaScript. Current URL. Use window.location.href to get the current URL address: Example. d...\
+  W3Schools
+- [link](https://stackoverflow.com/questions/3955959/whats-an-easy-way-to-get-the-url-in-the-current-window-minus-the-domain-name)\
+  What's an easy way to get the url in the current window minus the ...\
+  Oct 18, 2010 — \* 3 Answers. Sorted by: 107. alert(window. location. pathname); Here's some documentation for you for window. location . Copy link...\
+  Stack Overflow
+
+Show all
+
+# all js window props and methods in browser
+
+The **`window` object** represents the browser window containing the DOM document and serves as the global execution context for client-side JavaScript. [link](https://developer.mozilla.org/en-US/docs/Web/API/Window)
+
+Because the `window` object contains **hundreds of built-in web APIs, constructors, and environmental properties**, listing all of them inline is impossible. Instead, you can find the complete list by programmatically logging them in your browser or reviewing the core properties and methods categorized below.
+
+### 💻 How to Get the Full Dynamic List
+
+To see the absolute complete, unedited list of properties and methods live in your exact browser version, copy and paste this code into your browser's **Developer Tools Console**:
+
+javascript
+
+```
+// Gets all properties and methods (enumerable and non-enumerable)
+console.log(Object.getOwnPropertyNames(window));
+
+// Gets everything including properties inherited up the prototype chain
+let keys = [];
+let obj = window;
+while (obj) {
+    keys.push(...Reflect.ownKeys(obj));
+    obj = Object.getPrototypeOf(obj);
+}
+console.log([...new Set(keys)].sort());
+```
+
+Use code with caution.
+
+***
+
+### 🗂️ Core Window Properties
+
+These properties provide information about the current document, the browser state, and the viewport dimensions. [link](https://www.sitepoint.com/javascript-window-object/)
+
+#### 1. Major Sub-Objects (BOM/DOM References)
+
+- **`window.document`**: References the [DOM Document Object](https://developer.mozilla.org/en-US/docs/Web/API/Window/open) loaded in the window.
+- **`window.location`**: Contains the [Location Object](https://developer.mozilla.org/en-US/docs/Web/API/Window) with the current URL state and navigation controls.
+- **`window.navigator`**: References the [Navigator Object](https://developer.mozilla.org/en-US/docs/Web/API/Window/navigator) containing browser details, permissions, and network status.
+- **`window.history`**: Accesses the session history of the current tab.
+- **`window.screen`**: References the physical device monitor's screen dimensions and color depth. [link](https://developer.mozilla.org/en-US/docs/Web/API/Window)
+
+#### 2. Size and Positioning
+
+- **`window.innerWidth` / `window.innerHeight`**: The interior width/height of the viewport (excluding toolbars/scrollbars).
+- **`window.outerWidth` / `window.outerHeight`**: The entire width/height of the browser window.
+- **`window.scrollX` / `window.scrollY`**: The number of pixels the document has been scrolled horizontally or vertically.
+- **`window.screenX` / `window.screenY`**: Coordinates tracking where the browser window sits relative to the full screen. [link](https://www.youtube.com/watch?v=KMi%5FHphqQ1o)
+
+#### 3. Relationship and State Properties
+
+- **`window.window` / `window.self`**: Simply returns a reference back to the global `window` object itself.
+- **`window.parent`**: References the immediate parent window (useful inside an `<iframe>`).
+- **`window.top`**: References the topmost window object in the window hierarchy.
+- **`window.frames`**: Returns an array-like object containing all active iframe elements on the page.
+- **`window.opener`**: References the window that opened the current popup via `window.open()`.
+- **`window.closed`**: A boolean stating whether the window/popup has been closed. [link](https://bluepnume.medium.com/every-known-way-to-get-references-to-windows-in-javascript-223778bede2d)
+
+#### 4. Storage and Utilities
+
+- **`window.localStorage`**: Persistent key-value web storage that remains after the browser is closed.
+- **`window.sessionStorage`**: Temporary key-value web storage tied to the tab's session lifetime.
+- **`window.console`**: References the browser's developer console logging mechanism. [link](https://medium.com/better-programming/introducing-the-javascript-window-object-web-components-and-console-ac9ef42d454e)
+
+***
+
+### ⚙️ Core Window Methods
+
+These methods allow your scripts to manipulate the browser window behavior directly.
+
+#### 1. Interactive Dialogs
+
+- **`window.alert(msg)`**: Displays a blocking modal alert box with an "OK" button.
+- **`window.confirm(msg)`**: Displays a blocking modal dialog with "OK" and "Cancel" options; returns a boolean.
+- **`window.prompt(msg, default)`**: Displays an input dialog box; returns a string or `null`. [link](https://www.youtube.com/watch?v=1-LMiCnUrdw\&t=29)
+
+#### 2. Window Control and Navigation
+
+- **`window.open(url, target, features)`**: Opens a new browser tab or popup window.
+- **`window.close()`**: Closes the current browser window (typically limited to popups opened via script).
+- **`window.focus()` / `window.blur()`**: Shifts focus toward or away from the targeted window object.
+- **`window.print()`**: Opens the system printer dialogue to print the webpage.
+- **`window.moveTo(x, y)` / `window.moveBy(x, y)`**: Moves the window to absolute or relative coordinates.
+- **`window.resizeTo(w, h)` / `window.resizeBy(w, h)`**: Resizes the window to absolute or relative viewport boundaries \[0.6.1']. [link](https://developer.mozilla.org/en-US/docs/Web/API/Window/open)
+
+#### 3. Timers and Animation Hooks
+
+- **`window.setTimeout(func, delay)` / `window.clearTimeout(id)`**: Executes a function once after a set delay period.
+- **`window.setInterval(func, delay)` / `window.clearInterval(id)`**: Repeatedly executes a function at standard time intervals.
+- **`window.requestAnimationFrame(callback)`**: Schedules a function to fire right before the next screen repaint (vital for animations). [link](https://www.w3schools.com/jsref/obj%5Fwindow.asp)
+
+#### 4. Global Event Handlers
+
+- **`window.addEventListener(type, listener)` / `window.removeEventListener()`**: Attaches or removes tracking hooks for events like `'resize'`, `'scroll'`, or `'keydown'`. [link](https://www.w3schools.com/jsref/obj%5Fwindow.asp)
+
+***
+
+### 🌐 Global Web APIs Accessible via `window`
+
+Because `window` acts as the global host space, major foundational JavaScript components and constructors live as its direct properties: [link](https://developer.mozilla.org/en-US/docs/Web/API/Window)
+
+- **Fetch API**: `window.fetch()` handles network requests natively.
+- **Crypto API**: `window.crypto` handles cryptographic tasks.
+- **Global Constructors**: `window.Object`, `window.Array`, `window.JSON`, `window.Promise`, `window.Map`, and `window.Set` are available everywhere without namespace declarations. [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects)
+
+For the complete living standard specification detailing every niche entry, you can read the official MDN Web Docs Window Reference Page. [link](https://developer.mozilla.org/en-US/docs/Web/API/Window)
+
+Would you like to look closer into a **specific window API** (like `fetch` or `localStorage`), or see how to hook into a specific window **event** like resizing?
+
+- [link](https://stackoverflow.com/questions/10374462/list-all-properties-of-window-object)\
+  List all properties of window object? - javascript - Stack Overflow\
+  Apr 29, 2012 — I'm looking to (dynamically) obtain a list of HTML elements the browser is currently aware of, such as HTMLPreElement , HTMLSpanEl...\
+  Stack Overflow
+- [link](https://developer.mozilla.org/en-US/docs/Web/API/Window)\
+  Window - Web APIs - MDN Web Docs - Mozilla\
+  Jul 18, 2026 — The Window interface represents a window containing a DOM document; the document property points to the DOM document loaded in tha...\
+  MDN Web Docs
+- [link](https://www.sitepoint.com/javascript-window-object/)\
+  Understanding the JavaScript Window Object - SitePoint\
+  Nov 13, 2024 — Key Takeaways \* The JavaScript Window Object represents the browser window that contains a webpage and serves as the global object...\
+  SitePoint
+
+Show all
+
+# (?) all js window location props and methods
+
+The **`window.location`** object (or simply `location`) represents the current URL of the document and provides built-in tools to manipulate browser navigation. [link](https://www.tutorialrepublic.com/javascript-tutorial/javascript-window-location.php)
+
+Here is the complete reference of all properties and methods available on the [MDN Location Interface](https://developer.mozilla.org/en-US/docs/Web/API/Location).
+
+### Instance Properties
+
+All properties are read-write strings unless specified as read-only. Modifying a writable property triggers page navigation. [link](https://levelup.gitconnected.com/browser-navigation-a-guide-to-window-location-and-window-history-in-javascript-45284c32dabd)
+
+- **`href`**: The entire URL string. Setting this redirects the browser to a new page.
+- **`origin`** _(Read-only)_: The protocol, hostname, and port of the URL combined.
+- **`protocol`**: The web protocol used, including the final colon (e.g., `https:`).
+- **`host`**: The domain name and port number together (e.g., `example.com:8080`).
+- **`hostname`**: The domain name of the web host without the port.
+- **`port`**: The port number of the URL (returns an empty string if the default port is used).
+- **`pathname`**: The path and filename relative to the host, starting with a slash.
+- **`search`**: The query string parameters, including the leading question mark (e.g., `?id=123`).
+- **`hash`**: The anchor fragment identifier, including the leading hash sign (e.g., `#section-1`).
+- **`ancestorOrigins`** _(Read-only)_: A static `DOMStringList` containing the origins of all ancestor browsing contexts (like parent `iFrames`) ordered from bottom to top. [link](https://www.w3schools.com/js/js%5Fwindow%5Flocation.asp)
+
+### Instance Methods
+
+- **`assign(url)`**: Loads and displays the document at the specified URL. This keeps the current page in the browser history, allowing users to click the "Back" button. [link](https://developer.mozilla.org/en-US/docs/Web/API/Location/assign)
+- **`replace(url)`**: Loads the specified URL while replacing the current document in the browser history. The user cannot use the "Back" button to return to the previous page. [link](https://sararellano.medium.com/window-location-34a84e0109b4)
+- **`reload()`**: Reloads the current page. [link](https://codeworks.me/blog/how-to-reload-a-page-in-javascript/)
+- **`toString()`**: Returns the string representation of the full URL (identical to reading `window.location.href`). [link](https://developer.mozilla.org/en-US/docs/Web/API/Location)
+
+### Example URL Breakdown
+
+If the current page is `https://example.com`: [link](https://levelup.gitconnected.com/browser-navigation-a-guide-to-window-location-and-window-history-in-javascript-45284c32dabd)
+
+| Property                   | Value                   |
+| -------------------------- | ----------------------- |
+| `window.location.href`     | `"https://example.com"` |
+| `window.location.origin`   | `"https://example.com"` |
+| `window.location.protocol` | `"https:"`              |
+| `window.location.host`     | `"://example.com"`      |
+| `window.location.hostname` | `"www.example.com"`     |
+| `window.location.port`     | `"8080"`                |
+| `window.location.pathname` | `"/shop/search.html"`   |
+| `window.location.search`   | `"?item=shoes"`         |
+| `window.location.hash`     | `"#size-10"`            |
+
+Are you trying to parse parameters out of a URL, or are you handling a specific redirection logic? I can provide you with targeted code patterns like using `URLSearchParams`. [link](https://developer.mozilla.org/en-US/docs/Web/API/Location)
+
+- [link](https://developer.mozilla.org/en-US/docs/Web/API/Location)\
+  Location - Web APIs - MDN Web Docs - Mozilla\
+  Oct 13, 2025 — Two Location properties: Window.location and Document.location . URL manipulation interfaces: URL and URLSearchParams . Help impro...\
+  MDN Web Docs
+- [link](https://www.w3schools.com/js/js%5Fwindow%5Flocation.asp)\
+  JavaScript Window Location - W3Schools\
+  The window. location object can be written without the window prefix. Some examples: window. location. href returns the href (URL)\
+  W3Schools
+- [link](https://developer.mozilla.org/en-US/docs/Web/API/Location/search)\
+  Location: search property - Web APIs | MDN\
+  May 23, 2025 — This feature is well established and works across many devices and browser versions. It's been available across browsers since Jul...\
+  MDN Web Docs
+
+Show all
+
+# (?) is js window location object a url instance
+
+<mark><strong><span>No, the JavaScript<span> </span></span><code dir="ltr">window.location</code><span> </span>object is not an instance of the<span> </span><code dir="ltr">URL</code><span> </span>class.</strong></mark> It is an instance of the **`Location`** interface. [link](https://developer.mozilla.org/en-US/docs/Web/API/Location)
+
+While both objects share similar string properties like `.href`, `.hostname`, and `.pathname`, they are entirely different types with different behaviors. [link](https://developer.mozilla.org/en-US/docs/Web/API/URL)
+
+### Key Differences
+
+| Feature          | `window.location` (`Location` instance)                        | `new URL()` (`URL` instance)                       |
+| ---------------- | -------------------------------------------------------------- | -------------------------------------------------- |
+| **Type Check**   | `window.location instanceof Location === true`                 | `myUrl instanceof URL === true`                    |
+| **Purpose**      | Controls and represents the live browser state.                | Pure data structure for parsing/building text.     |
+| **Side Effects** | Modifying properties triggers page navigation.                 | Modifying properties only changes the data object. |
+| **Methods**      | Includes navigation methods like `.reload()` and `.replace()`. | Includes utility properties like `.searchParams`.  |
+
+### How to use them together
+
+Because `window.location` is a specialized browser object, it lacks modern utility features like `searchParams` for easily manipulating query strings. If you want to use `URL` methods on the current page address, you must explicitly pass the current URL string into a new `URL` instance: [link](https://stackoverflow.com/questions/12680790/is-possible-to-create-instance-of-location)
+
+javascript
+
+```
+// window.location does NOT have searchParams
+// window.location.searchParams -> undefined
+
+// Pass the href string to create a true URL instance
+const currentUrl = new URL(window.location.href);
+
+// Now you can use URL-specific tools
+const userId = currentUrl.searchParams.get('user');
+```
+
+Use code with caution.
+
+If you are working on a specific script, would you like help **parsing query parameters** or **handling browser redirects**?
+
+- [link](https://developer.mozilla.org/en-US/docs/Web/API/Location)\
+  Location - Web APIs - MDN Web Docs - Mozilla\
+  Oct 13, 2025 — Location. Baseline Widely available \*. This feature is well established and works across many devices and browser versions. It's b...\
+  MDN Web Docs
+- [link](https://stackoverflow.com/questions/12680790/is-possible-to-create-instance-of-location)\
+  Is possible to create instance of Location? - javascript\
+  Oct 1, 2012 — 6 Answers. ... Attempting to use Location to manipulate arbitrary URIs will not work as desired. The Location object/type is not a...\
+  Stack Overflow
+- [link](https://developer.mozilla.org/en-US/docs/Web/API/URL)\
+  URL - Web APIs | MDN\
+  Jun 2, 2026 — This feature is well established and works across many devices and browser versions. It's been available across browsers since Jul...\
+  MDN Web Docs
+
+Show all
+
+# compare js location and url instance
+
+The primary difference is that **`window.location` is a live browser API tied strictly to the current document's state and navigation**, while a **`URL` instance is an independent, utility object used to create, parse, and manipulate any URL string**. [link](https://developer.mozilla.org/en-US/docs/Web/API/Location)
+
+### Core Comparison
+
+| Feature              | `window.location` (Location Object)                                  | `new URL()` (URL Instance)                                      |
+| -------------------- | -------------------------------------------------------------------- | --------------------------------------------------------------- |
+| **Primary Purpose**  | Controls and reads the active browser window's URL.                  | Parses, formats, and validates arbitrary URL strings.           |
+| **Availability**     | Client-side only (Browser DOM).                                      | Universal (Browser DOM, Node.js, Web Workers).                  |
+| **Creation**         | Provided by the ecosystem; you cannot manually instantiate it.       | Created via a constructor: `new URL(urlString)`.                |
+| **Side Effects**     | Modifying properties like `href` instantly redirects the page.       | Modifying properties only mutates the isolated memory instance. |
+| **History Control**  | Includes browser navigation methods like `replace()` and `reload()`. | None; it is purely an in-memory data structure.                 |
+| **Query Parameters** | Returns a raw query string via `.search`.                            | Returns a handy, chainable `.searchParams` object.              |
+
+***
+
+### Detailed Breakdowns
+
+#### The `Location` Object (`window.location`)
+
+The `Location` interface represents the actual address of the object it is linked to. [link](https://www.geeksforgeeks.org/javascript/difference-between-window-location-href-window-location-replace-and-window-location-assign-in-javascript/)
+
+- **Live Binding:** It behaves as a getter and setter for the active viewport. For example, running `window.location.href = 'https://example.com'` causes the browser to instantly drop everything and load a new webpage. [link](https://sagrawal003.medium.com/locations-href-vs-replace-vs-assign-in-javascript-technolize-your-future-33edf759151b)
+- **Built-in Methods:** It handles session navigation natively via methods like `location.reload()` (refreshing the page) and `location.replace(url)` (navigating to a new page without saving the previous one in the session history). [link](https://developer.mozilla.org/en-US/docs/Web/API/Location)
+- **No `searchParams`:** It provides a `.search` string (e.g., `"?id=1&user=true"`) but lacks a native, direct object to map over those values cleanly. [link](https://developer.mozilla.org/en-US/docs/Web/API/Location/search)
+
+#### The `URL` Instance
+
+The `URL` global constructor acts as a processing engine for string data. [link](https://dmitripavlutin.com/parse-url-javascript/)
+
+- **Safe Manipulation:** You can construct a `URL` object out of any random string, make adjustments to its port, pathname, or hostname, and read the results out safely without altering what your user sees on their screen. [link](https://dmitripavlutin.com/parse-url-javascript/)
+
+- **Relative URL Support:** The constructor accepts an optional secondary `base` parameter. This lets you cleanly resolve a relative path against an absolute domain:\
+  javascript
+
+<!---->
+
+```
+const relativeUrl = new URL('/dashboard/profile', 'https://mywebsite.com');
+console.log(relativeUrl.href); // Outputs: "https://mywebsite.com"
+```
+
+Use code with caution.\
+[link](https://developer.mozilla.org/en-US/docs/Web/API/URL)
+
+- **Robust Search Utility:** Every `URL` instance contains a `.searchParams` property. This is an iterable instance of `URLSearchParams` that lets you use clean methods like `.get()`, `.set()`, `.append()`, and `.has()` directly. [link](https://developer.mozilla.org/en-US/docs/Web/API/URL)
+
+***
+
+### Best Practices
+
+- **Use `window.location`** exclusively when you want to read information about the reader's current page or actively navigate them somewhere else. [link](https://www.geeksforgeeks.org/javascript/difference-between-window-location-href-window-location-replace-and-window-location-assign-in-javascript/)
+
+- **Use `new URL()`** when you need to safely break apart, validate, build up, or alter a URL string before parsing it to an API or a standard hyper-link. [link](https://dmitripavlutin.com/parse-url-javascript/)
+
+- **Combining both:** If you want to use modern parsing features on the active browser page, pass the browser's current location string directly into a new instance:\
+  javascript
+
+<!---->
+
+```
+const currentParsedUrl = new URL(window.location.href);
+const userId = currentParsedUrl.searchParams.get('id');
+```
+
+Use code with caution.\
+[link](https://developer.mozilla.org/en-US/docs/Web/API/Location/search)
+
+If you are trying to solve a specific problem, tell me:
+
+- Are you looking to **redirect the user** or just **extract query parameters**?
+- What **environment** is your code running in (Browser, Node.js, Next.js, etc.)?
+
+I can provide the exact code snippets you need for your use case.
+
+- [link](https://dmitripavlutin.com/parse-url-javascript/)\
+  How to Parse URL in JavaScript: hostname, pathname, query, hash\
+  Jan 28, 2023 — 9. Summary. The URL() constructor is handy for parsing (and validating) URLs in JavaScript. new URL(relativeOrAbsolute \[, absolute...\
+  dmitripavlutin.com
+- [link](https://developer.mozilla.org/en-US/docs/Web/API/URL)\
+  URL - Web APIs | MDN\
+  Jun 2, 2026 — Usage notes. The constructor takes a url parameter, and an optional base parameter to use as a base if the url parameter is a rela...\
+  MDN Web Docs
+- [link](https://developer.mozilla.org/en-US/docs/Web/API/Location)\
+  Location - Web APIs - MDN Web Docs - Mozilla\
+  Oct 13, 2025 — Instance methods ... Loads the resource at the URL provided in parameter. ... Reloads the current URL, like the Refresh button. ..\
+  MDN Web Docs
+
+Show all
+
+## compare all props and methods and methods of props
+
+### Property Comparison Matrix
+
+While both objects share standard URL components (like `href`, `protocol`, and `host`), their capabilities diverge sharply. `window.location` contains unique navigation methods, whereas `URL` instances contain unique utility sub-properties.
+
+| Property               | `window.location`           | `URL` Instance          | Data Type / Value Description                               |
+| ---------------------- | --------------------------- | ----------------------- | ----------------------------------------------------------- |
+| **`.href`**            | ✅ Read/Write (Redirects)   | ✅ Read/Write           | Full URL string                                             |
+| **`.protocol`**        | ✅ Read/Write (Redirects)   | ✅ Read/Write           | Protocol scheme (e.g., `'https:'`)                          |
+| **`.host`**            | ✅ Read/Write (Redirects)   | ✅ Read/Write           | Hostname and port combined (e.g., `'example.com:8080'`)     |
+| **`.hostname`**        | ✅ Read/Write (Redirects)   | ✅ Read/Write           | Domain name or IP address (e.g., `'example.com'`)           |
+| **`.port`**            | ✅ Read/Write (Redirects)   | ✅ Read/Write           | Port number as a string (e.g., `'8080'`)                    |
+| **`.pathname`**        | ✅ Read/Write (Redirects)   | ✅ Read/Write           | Path relative to host (e.g., `'/index.html'`)               |
+| **`.search`**          | ✅ Read/Write (Redirects)   | ✅ Read/Write           | Query string including the leading `?`                      |
+| **`.hash`**            | ✅ Read/Write (Jumps to ID) | ✅ Read/Write           | Fragment identifier including the leading `#`               |
+| **`.origin`**          | 🛑 Read-Only                | 🛑 Read-Only            | Read-only protocol + domain (e.g., `'https://example.com'`) |
+| **`.searchParams`**    | ❌ _Missing_                | 🛑 Read-Only _Instance_ | Returns a mutable `URLSearchParams` object                  |
+| **`.username`**        | ❌ _Missing_                | ✅ Read/Write           | Username specified before domain                            |
+| **`.password`**        | ❌ _Missing_                | ✅ Read/Write           | Password specified before domain                            |
+| **`.ancestorOrigins`** | 🛑 Read-Only _List_         | ❌ _Missing_            | Live list of origins of parent browsing contexts (iFrames)  |
+
+***
+
+### Method Comparison Matrix
+
+`window.location` uses methods to control browser tabs, while `URL` uses methods to serialize its data.
+
+| Method              | `window.location` | `URL` Instance | Functionality                                                           |
+| ------------------- | ----------------- | -------------- | ----------------------------------------------------------------------- |
+| **`.assign(url)`**  | ✅ Available      | ❌ _Missing_   | Loads the new document at the provided URL (creates history entry).     |
+| **`.replace(url)`** | ✅ Available      | ❌ _Missing_   | Loads the new document, replacing the current item in history.          |
+| **`.reload()`**     | ✅ Available      | ❌ _Missing_   | Reloads the current page.                                               |
+| **`.toString()`**   | ✅ Available      | ✅ Available   | Returns the full URL string (alias of `.href`).                         |
+| **`.toJSON()`**     | ❌ _Missing_      | ✅ Available   | Returns the full URL string (used automatically by `JSON.stringify()`). |
+
+***
+
+### Deep Dive: Methods of Properties (`URLSearchParams`)
+
+The biggest functional gap is that **`URL` instances have a powerful sub-property called `.searchParams`**, which is an instance of the `URLSearchParams` interface. `window.location` has no native methods on its `.search` property because it is a primitive string.
+
+Here are the methods available exclusively on a URL instance's `searchParams` property (e.g., `myUrl.searchParams.get()`):
+
+#### Mutation Methods
+
+- **`.set(name, value)`**: Sets the value of a parameter. If it exists, it overwrites it. If not, it creates it.
+- **`.append(name, value)`**: Appends a new key-value pair. Allows you to have duplicate keys (e.g., `?tag=js&tag=web`).
+- **`.delete(name, [value])`**: Deletes parameters. You can optionally target a specific value to delete if keys are duplicated.
+
+#### Retrieval & Inspection Methods
+
+- **`.get(name)`**: Returns the first value associated with the given search parameter.
+- **`.getAll(name)`**: Returns an array of all values associated with a parameter (useful for multi-select arrays).
+- **`.has(name, [value])`**: Returns a boolean checking if the parameter exists. Optionally checks for a specific value.
+
+#### Iteration Methods
+
+- **`.keys()`**: Returns an iterator allowing you to loop through all key names.
+- **`.values()`**: Returns an iterator allowing you to loop through all property values.
+- **`.entries()`**: Returns an iterator of `[key, value]` pairs.
+- **`.forEach(callback)`**: Standard iteration loop directly through all parameters.
+- **`.size`**: _(Property)_ A read-only integer returning the total number of query parameters.
+
+#### Formatting Methods
+
+- **`.sort()`**: Sorts all key-value pairs in-place by their keys.
+
+***
+
+### Summary of Differences
+
+- **`window.location` properties** are bound to live actions. Changing `window.location.search = '?page=2'` instantly forces the browser window to navigate.
+- **`URL` properties** are safely isolated. Changing `myUrl.search = '?page=2'` updates the object structure in your application's RAM without affecting the viewport.
+- **`URL.searchParams`** is a nested object toolbox. `window.location` forces you to write custom RegEx or use string manipulation just to find a single query variable.
+
+If you are writing a script, let me know:
+
+- Are you trying to **parse query parameters from the active address bar**?
+- Do you need to **safely modify a string before sending an API call**?
+
+I can provide a clean code pattern combining the best parts of both structures.
+
+- [link](https://www.munnelly.com/webdesign/javascript/2-properties-objects.html)\
+  2: Objects and Properties | JavaScript Lesson | 2N2L\
+  The location object of the web page The history object is part of the window object and is accessed through the window. history pr...\
+  \
+  \
+  www.munnelly.com
+- [link](https://education.launchcode.org/intro-to-web-dev-curriculum/dom-and-events/reading/more-dom-methods/index.html)\
+  More DOM Methods and Properties :: Introduction to Web Dev\
+  Window Method or Property Syntax Description location window. location Object that represents and alters the web address of the wi...\
+  \
+  LaunchCode Education
+- [link](https://www.geeksforgeeks.org/python/accessor-and-mutator-methods-in-python/)\
+  Accessor and Mutator methods in Python\
+  Jul 12, 2025 — Mutator Method: This method is used to mutate/modify the state of an object i.e, it alters the hidden value of the data variable. ...\
+  \
+  GeeksforGeeks
+
+Show all
+
 # 
