@@ -1533,10 +1533,20 @@ anyway. no idea if that constraint matters.
 
 sync. correct url.
 
+keep, omit, replace.
+
 ---
 
 now subscribers will always receive data.
 
 you can always pass more in ts.
+
+---
+
+correct path. i will life a flag instead. it's more flexible.
+
+yk, sometimes you dont wanna derive the path where you correct a critical prop.
+
+i will call it correct next.
 
 

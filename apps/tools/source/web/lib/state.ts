@@ -69,6 +69,11 @@ export function state<T extends NonFunction>(initial: T, options: StateOptions<T
   const keys_to_sync = Array.isArray(flexible_keys_to_sync) ?
     new Set(flexible_keys_to_sync) : flexible_keys_to_sync
 
+  const key_to_param_mapping: any = {}
+  for (const [key, value] of Object.entries(param_mapping)) {
+    key_to_param_mapping[value] = key
+  }
+
   let data: any = initial
 
   function init_from_localstorage() {
@@ -122,20 +127,22 @@ export function state<T extends NonFunction>(initial: T, options: StateOptions<T
       data[path_mapping] = url.pathname.slice(1)
     }
 
-    // all params mapped, incl. href as `#`
-    const query: any = {}
+    /**
+     * all params mapped incl. href as `#`
+     */
+    const params: any = {}
 
     function mapped(key: string) {
       return param_mapping[key] ?? key
     }
 
     for (const [key, value] of url.searchParams) {
-      query[mapped(key)] = value
+      params[mapped(key)] = value
     }
 
-    query[mapped('#')] = url.hash
+    params[mapped('#')] = url.hash
 
-    for (const [key, value] of query) {
+    for (const [key, value] of params) {
       if (!has(data, key)) {
         continue
       }
@@ -160,8 +167,37 @@ export function state<T extends NonFunction>(initial: T, options: StateOptions<T
     }
   }
 
+  let should_correct_url = false
+  /**
+   * sync url from the latest state
+   * 
+   * push to navigation history only if path changes
+   */
   function sync_url() {
+    const url = new URL(window.location.href)
+    const old_path = url.pathname.slice(1)
+    const new_path = is_given(path_mapping)? data[path_mapping]: old_path
 
+    url.pathname = new_path
+
+    for (const key of keys_to_sync) {
+      const param = key_to_param_mapping[key] ?? key
+
+      url.searchParams.set(param, data[key])
+    }
+    
+    if (old_path == new_path) {
+      correct_url(url)
+    } else if (should_correct_url) {
+      should_correct_url = false
+      correct_url(url)
+    }  else {
+      push_url(url)
+    } 
+  }
+
+  function push_url(url: URL) {
+    history.pushState({}, '', url)
   }
 
   function correct_url(url: URL) {
@@ -234,7 +270,7 @@ export function state<T extends NonFunction>(initial: T, options: StateOptions<T
   result.sub = subscribe
 
   function keep() {
-
+    
   }
 
   function omit() {
@@ -247,6 +283,12 @@ export function state<T extends NonFunction>(initial: T, options: StateOptions<T
 
   // expose these apis regardless, in case ts is not intelligent enough
   result.keys_to_sync = { keep, omit, replace }
+
+  function correct_next() {
+    should_correct_url = true
+  }
+
+  result.correct_next = correct_next
 
   // set maintains insertion order, change should fire first
   // e.g. derive path from other props, then sync
