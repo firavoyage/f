@@ -1527,7 +1527,7 @@ if data source exists
 
 anyway. no idea if that constraint matters.
 
-06 20 <!-- continue to --> implement routing for state lib. (07 00)
+06 20 <!-- continue to --> implement routing for state lib. ~~(07 00)~~ 07 20
 
 <!-- i was thinking about "acbox: i feel depressed when i screen hundreds of resumes while we only need three, and im afraid i would be one of them". i checked where it was and read the context. and then i surfed a bit. well actually i wasnt even wasting time on anything typical, i simply was dreaming and feel some kinds of ecstasy or zeal. damn. -->
 
@@ -1548,5 +1548,22 @@ correct path. i will life a flag instead. it's more flexible.
 yk, sometimes you dont wanna derive the path where you correct a critical prop.
 
 i will call it correct next.
+
+---
+
+i feel i want to call it key instead of path.
+
+i may change my mind later.
+
+---
+
+well, it feels like over enigneering.
+
+it's not wise to accept fn, esp considering it's so flexible, dep on whether it's void, on runtime.
+
+i guess i would only accept array/set and item.
+
+hard to say if you never need that. but it's highly unlikely you would pass a fn. see, keep omit rp void fn does the same thing. to mutate the set directly. it's definitely an anti pattern anyway.
+
 
 

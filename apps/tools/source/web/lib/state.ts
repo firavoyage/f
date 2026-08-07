@@ -47,7 +47,7 @@ type StateOptions<T> = {
  * it performs a complete sync, w nested set time out for each key, before the next one
  */
 export function state<T extends NonFunction>(initial: T, options: StateOptions<T> = {}) {
-  type path = string & keyof T
+  type key = string & keyof T
 
   const {
     persist,
@@ -142,11 +142,12 @@ export function state<T extends NonFunction>(initial: T, options: StateOptions<T
 
     params[mapped('#')] = url.hash
 
-    for (const [key, value] of params) {
+    for (const [key, value] of Object.entries(params)) {
       if (!has(data, key)) {
         continue
       }
 
+      // @ts-expect-error 
       if (keys_to_sync.has(key) || should_apply_all_given_params) {
         data[key] = value
       }
@@ -176,7 +177,7 @@ export function state<T extends NonFunction>(initial: T, options: StateOptions<T
   function sync_url() {
     const url = new URL(window.location.href)
     const old_path = url.pathname.slice(1)
-    const new_path = is_given(path_mapping)? data[path_mapping]: old_path
+    const new_path = is_given(path_mapping) ? data[path_mapping] : old_path
 
     url.pathname = new_path
 
@@ -185,15 +186,15 @@ export function state<T extends NonFunction>(initial: T, options: StateOptions<T
 
       url.searchParams.set(param, data[key])
     }
-    
+
     if (old_path == new_path) {
       correct_url(url)
     } else if (should_correct_url) {
       should_correct_url = false
       correct_url(url)
-    }  else {
+    } else {
       push_url(url)
-    } 
+    }
   }
 
   function push_url(url: URL) {
@@ -204,7 +205,7 @@ export function state<T extends NonFunction>(initial: T, options: StateOptions<T
     history.replaceState({}, '', url)
   }
 
-  function set(new_value: T | ((old_value: T) => T), path?: path) {
+  function set(new_value: T | ((old_value: T) => T), path?: key) {
     if (is_given(path)) {
       if (typeof new_value == 'function') {
         // @ts-expect-error 
@@ -239,7 +240,7 @@ export function state<T extends NonFunction>(initial: T, options: StateOptions<T
     subs.add(listener)
   }
 
-  function result(path?: path) {
+  function result(path?: key) {
     const update = use_update()
 
     useEffect(() => {
@@ -255,7 +256,7 @@ export function state<T extends NonFunction>(initial: T, options: StateOptions<T
     }
   }
 
-  function get(path?: path) {
+  function get(path?: key) {
     if (is_inside_react()) {
       return result(path)[0]
     } else {
@@ -269,16 +270,46 @@ export function state<T extends NonFunction>(initial: T, options: StateOptions<T
 
   result.sub = subscribe
 
-  function keep() {
-    
+  function keep(item: key): void
+  function keep(addition: key[] | Set<key>): void
+  function keep(item: any) {
+    if (typeof item == 'object') {
+      for (const key of item) {
+        keys_to_sync.add(key)
+      }
+    } else {
+      keys_to_sync.add(item)
+    } 
   }
 
-  function omit() {
-
+  function omit(item: key): void
+  function omit(deduction: key[] | Set<key>): void
+  function omit(item: any) {
+    if (typeof item == 'object') {
+      for (const key of item) {
+        keys_to_sync.delete(key)
+      }
+    } else {
+      keys_to_sync.delete(item)
+    } 
   }
 
-  function replace() {
+  function replace(item: key): void
+  function replace(new_keys: key[] | Set<key>): void
+  function replace(item: any) {
+    if (typeof item == 'object') {
+      keys_to_sync.clear()
 
+      for (const key of item) {
+        keys_to_sync.add(key)
+      }
+    } else {
+      if (keys_to_sync.has(item)) {
+        keys_to_sync.delete(item)
+      } else {
+        keys_to_sync.add(item)
+      } 
+    } 
   }
 
   // expose these apis regardless, in case ts is not intelligent enough

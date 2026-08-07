@@ -271,6 +271,7 @@ web: <!-- frontend, web, ts/js -->
 - json data types undefined stringify parse omit union helper lib
 - mdn baseline status
 - regex
+- js set map methods
 
 backend:
 
