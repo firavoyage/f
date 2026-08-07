@@ -1447,4 +1447,41 @@ and i think you dont have to keep "page" and "tool" anymore. you dont have to ke
 
 keep will default to all mapped props (param or path).
 
+21 20 redesign routing keys keep and omit.
+
+if you can change whether to keep "input" on url on the fly, i may rethink how to design "keep".
+
+first, both keep and omit will become set whatever you pass.
+
+you can pass a fn to modify keep or omit.
+
+you can pass a set to replace. you can pass a string to add. you may delete.
+
+if keep is not everything by default, i may redesign keep and omit.
+
+if i dont care what keys you have, a single omit means nothing.
+
+conclusion:
+
+- only items to sync (array or set) in sync options, no omit
+- keep and omit are returned
+- keep
+  - array/set: add
+  - fn:
+    - set -> new set: add
+    - set -> undefined: (modify original) do nothing
+  - item: add
+- omit
+  - array/set: deduct
+  - fn:
+    - set -> new set: deduct
+    - set -> undefined: (modify original) do nothing
+  - item: deduct
+- rp
+  - array/set: rp
+  - fn:
+    - set -> new set: rp
+    - set -> undefined: (modify original) do nothing
+  - item: toggle
+
 
