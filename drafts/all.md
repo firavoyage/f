@@ -328,16 +328,17 @@ desktop:
 - earlyoom
 - trash
 - chromium firefox legacy versions build archive snap flatpak
-- shell tmux abstraction
+- shell tmux abstraction riptmux
 - power bank quirks bios low wattage screen
-- shell symlink abstraction
-- shell chmod x abstraction
+- shell symlink abstraction link
+- shell chmod x abstraction normalize
 - vscode clear search query when esc
 - shell ffmpeg abstraction tput colors
 - obs restream multi platform simultaneous streaming
 - mac mouse fix
 - vscode fix css variable autocomplete langs
 - docker help
+- shell cd abstraction
 
 android:
 
