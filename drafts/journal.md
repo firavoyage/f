@@ -49995,6 +49995,8 @@ screen recordings and screenshots are omitted. <!-- somehow i feel they are comp
 
 05 10 archive photos. 05 30
 
+18 00 set chunithm player name as Humility.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
