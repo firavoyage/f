@@ -272,6 +272,7 @@ web: <!-- frontend, web, ts/js -->
 - mdn baseline status
 - regex
 - js set map methods
+- js object prototype iterator
 
 backend:
 
