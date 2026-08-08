@@ -1618,4 +1618,26 @@ it's worth the time i guess.
 
 i still have some time left. let's write a knowledge for readme.
 
+05 20 record verbal thoughts. map ia on yaml. (05 40)
+
+let's have an yaml of sidebar, or ia, in general.
+
+there can be alt bar yk. and more.
+
+i would define the constraints and record the decisions in <!-- derived from --> monologues.
+
+then i could apply that structure.
+
+you could have some styling. you could be obsessed in names <!-- text and labels -->. ik it's incredibly intimidating or logically captivating <!-- entangling ~~entrapping~~ --> when you could not map the whole picture precisely. dont be afraid. invariants matter <!-- anyway -->.
+
+---
+
+ideas on additional tools
+
+- lookup
+  - chinese id (or prefix) to geolocation
+  - university ranking
+
+---
+
 
