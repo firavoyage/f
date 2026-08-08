@@ -50022,6 +50022,10 @@ f, [8/7/26 11:26 PM]
 
 also cc on some other groups wo the text.
 
+09
+
+01 40 understnad 02 40
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
