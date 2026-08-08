@@ -12,7 +12,7 @@ readme structure
   - changes
   - releases
 - features <!-- how -->
-  - compliments
+  - complements
 - docs
   - build/deploy/run <!-- how to use, "quick start" -->
   - opinionated choices, mindset, rationales
@@ -29,3 +29,9 @@ no "quick start" <!-- curl bash --> unless you are marketing, ref docs instead
 no internationalization. en only dev. translations are for users, on docs.
 
 repo is on higher level. they might be already viewing this project w that. if not it's fine.
+
+<!-- below are common sense. just in case. -->
+
+desc should be noun phrase. not "(name) is ..."
+
+
