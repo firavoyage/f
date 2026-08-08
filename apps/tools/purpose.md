@@ -1573,5 +1573,30 @@ it seems to be working.
 - i do need to add state versioning for example or it would get stuck in a desync localstorage
 - currently it doesnt show path, as tools and sidebars are not finished. it can work if i explicitly set the factor states.
 
+09
 
+00 40 write readme for tools. (01 10)
 
+i should have done it earlier. ux, ia... these all depend on what it is and what it's designed for.
+
+false assumption: it would be simple and clear. no many choices. <!-- thus no explicit constraints required -->
+
+example: would you make it default to process or args? would you expand it consistently even for json to yaml (that doesnt necessarily take args)?
+
+---
+
+well, i dont really wanna write readme like others.
+
+<!-- that is, name (icon), desc badges socials links, features (explanation, comparison), build/deploy, contributing (contributors, community, team), misc (sponsors, star history) -->
+
+if im making decisions, rather make decisions directly.
+
+---
+
+let's take a look at linux readme. i remember it. it was inspiring.
+
+- it uses `====` and `----` for headings, instead of markdown `#`
+- it uses rst instead of markdown sometimes <!-- ?, no idea if that makes sense -->
+- the structure
+  - name, desc, links
+  - 
