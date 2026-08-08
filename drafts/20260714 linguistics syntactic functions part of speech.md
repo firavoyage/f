@@ -3313,3 +3313,10 @@ Would you like to analyze a **specific sentence layout**, or are you comparing t
 
 Show all
 
+
+# . thinking: complements or modifiers
+
+"定" -> limit scope
+
+"状" -> append info
+
