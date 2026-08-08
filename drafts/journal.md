@@ -50030,7 +50030,7 @@ inspired by lobehub readme <!-- which is incredibly unhuman (generated), time wa
 
 hypes. politics. incentives.
 
-03 00 revise values. put egoism below elitism, instead of as an alias of 
+03 00 revise values. put egoism below elitism, instead of as an appositive of cynicism.
 
 
 
