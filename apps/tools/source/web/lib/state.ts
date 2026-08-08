@@ -256,6 +256,13 @@ export function state<T extends NonFunction>(initial: T, options: StateOptions<T
     }
   }
 
+  result.data = data
+
+  Object.defineProperty(result, 'data', {
+    writable: false,
+    configurable: false
+  })
+
   function get(path?: key) {
     if (is_inside_react()) {
       return result(path)[0]
