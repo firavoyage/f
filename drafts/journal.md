@@ -50032,6 +50032,18 @@ hypes. politics. incentives.
 
 03 00 revise values. put egoism below elitism, instead of as an appositive of cynicism.
 
+04 20 research git repo cleanup.
+
+see every non text changes in the history
+
+remove in batch
+
+sync <!-- f push --> to remote (feasible wo del repo? how easy?)
+
+---
+
+i dont have to apply that right now. though non text changes are generally meaningless. they should be ideally append only and readonly for references, and gitignored if not.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
