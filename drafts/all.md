@@ -709,6 +709,7 @@ history:
 - onp4
 - v2ex
 - aaron swartz
+- posix
 
 politics:
 
@@ -851,6 +852,7 @@ tools:
 
 - recipe dsl
 - research cyberchef alternatives
+- research awk lang
 
 humility:
 
