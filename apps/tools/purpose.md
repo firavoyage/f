@@ -1618,7 +1618,7 @@ it's worth the time i guess.
 
 i still have some time left. let's write a knowledge for readme.
 
-05 20 record verbal thoughts. map ia on yaml. (05 40)
+05 20 record verbal thoughts. map ia on yaml. ~~(05 40)~~ 06 00
 
 let's have an yaml of sidebar, or ia, in general.
 
@@ -1629,6 +1629,15 @@ i would define the constraints and record the decisions in <!-- derived from -->
 then i could apply that structure.
 
 you could have some styling. you could be obsessed in names <!-- text and labels -->. ik it's incredibly intimidating or logically captivating <!-- entangling ~~entrapping~~ --> when you could not map the whole picture precisely. dont be afraid. invariants matter <!-- anyway -->.
+
+---
+
+idea on state
+
+- i may expose data to result.data
+  - i can make itself readonly
+
+upd: applied.
 
 ---
 

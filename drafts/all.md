@@ -273,6 +273,7 @@ web: <!-- frontend, web, ts/js -->
 - regex
 - js set map methods
 - js object prototype iterator
+- js readonly prop writable subprop
 
 backend:
 
