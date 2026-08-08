@@ -2277,3 +2277,19 @@ Are you trying to fix an **existing script** that is throwing this error, or are
   Reddit
 
 Show all
+
+# <!-- 09 aug -->
+
+# . test
+
+```sh
+ ~/Documents/blogging % cd ../self
+cd:cd:52: no such file or directory: ../self
+ ~/Documents/blogging % command cd ../self
+cd: no such file or directory: ../self
+ ~/Documents/blogging % foo(){ command cd ../self }
+ ~/Documents/blogging % foo
+foo:cd: no such file or directory: ../self
+```
+
+maybe i would normalize it
