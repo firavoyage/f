@@ -56,7 +56,6 @@ export const use_global = state({
     }
   },
   change(state) {
-    log(state)
     state['navigation.path'] = state['navigation.page'] == 'main' ?
       'main' : state['navigation.tool']
   }

@@ -1565,5 +1565,13 @@ i guess i would only accept array/set and item.
 
 hard to say if you never need that. but it's highly unlikely you would pass a fn. see, keep omit rp void fn does the same thing. to mutate the set directly. it's definitely an anti pattern anyway.
 
+---
+
+it seems to be working.
+
+- fof object doesnt work. i have to use fen. i did not always remember. <!-- btw, no way to escape. you couldnt override js native for loop (wo a pre compiler, which is massive work). you have to get entries to map. you may silently make object iterable? -->
+- i do need to add state versioning for example or it would get stuck in a desync localstorage
+- currently it doesnt show path, as tools and sidebars are not finished. it can work if i explicitly set the factor states.
+
 
 

@@ -38,3 +38,12 @@ file:///home/fira/Downloads/CyberChef/CyberChef_v11.0.0.html#recipe=From_Base64(
 
 ---
 
+yes. i can alter obj prototype.
+
+llms are often too conservative and cautious, biased to big tech corp best prac.
+
+i may apply it if it would not break under my constraints.
+
+that is, if it doesnt alter the behavior of standard methods if all third party code assume obj are non iterable.
+
+
