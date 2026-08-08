@@ -180,3 +180,12 @@ i would include these ppl in the first archive
 - also, https://nyac.at/
 
 ---
+
+for app copy, i might offer "duplicate the first heading as h1".
+
+nice to have.
+
+---
+
+
+
