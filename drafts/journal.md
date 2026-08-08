@@ -50024,7 +50024,13 @@ also cc on some other groups wo the text.
 
 09
 
-01 40 understnad 02 40
+01 40 explore eacc and ea. 02 40
+
+inspired by lobehub readme <!-- which is incredibly unhuman (generated), time wasting (unstructured, overly detailed, and verbose), and bloating (attractiveness > non trivialness) -->.
+
+hypes. politics. incentives.
+
+03 00 revise values. put egoism below elitism, instead of as an alias of 
 
 
 
