@@ -1599,4 +1599,23 @@ let's take a look at linux readme. i remember it. it was inspiring.
 - it uses rst instead of markdown sometimes <!-- ?, no idea if that makes sense -->
 - the structure
   - name, desc, links
-  - 
+  - readlist for "all users"
+  - who are you
+  - welcome and readlist (links to certain docs) for each specific users
+  - community links
+
+ok, well, linux is confident enough. "i dont have to introduce myself or explain my worth"
+
+---
+
+well, im not writing readme or making decisions. actually the next step would be sidebar impl, and scrollarea i guess. (btw idk textareas would be scrollable that way)
+
+<!-- i might design the sidebar ia, that is an yaml. i would write down some of my prev thoughts on the road. -->
+
+it's worth the time i guess.
+
+---
+
+i still have some time left. let's write a knowledge for readme.
+
+
