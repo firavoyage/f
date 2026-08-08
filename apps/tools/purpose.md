@@ -1632,6 +1632,30 @@ you could have some styling. you could be obsessed in names <!-- text and labels
 
 ---
 
+decisions on sidebar ia
+
+- there should be hierarchy coz they are logically grouped
+- if i could not mimic adwaita completely, i would not care about it at all
+  - adwaita would not expect there to be hundreds of tools, nested deeply
+- they could be collapsed. the toggle would only show on hover or when collapsed to reduce visual noise
+  - rationale: if you click the heading you would not expect nothing to happen, so it's strictly better to have some extra behavior for the one who needs
+- sidebar will use the id instead of the array index, which tells nothing and has to be mapped anyway, for the state of the selected item
+  - you might intercept click behavior or make it draggable in the future
+- all items will be expanded by default
+  - sidebar should be designed for the ones who need them. power users who collapse and use command palette are irrelevant.
+  - scrolling is easier than clicking
+  - it doesnt make sense to make "json yaml toml xml" collapsed by default just to make them feel a bit more elegant when onboarding
+  - if i choose to hide some
+    - i have to choose whether to hide for each, esp cases like "md html or html md" (not worth a click, but could be grouped to avoid the messy complete graph path listing)
+    - there would be too much to expand, adding one more step to virtually all actions
+- nesting levels should be consistent
+  - consistency matters immensely
+  - you should accept the tradeoff, e.g. misc/misc/item
+  - for visual design, i may style the higest nesting level italic, dimmed, and underlined. they are akin to title code code comments indicating where.
+  - i would like to count from the leaf upward. but it's ok to be naturally h1 h2 h3 since it's consistent within one app
+
+---
+
 ideas on additional tools
 
 - lookup
