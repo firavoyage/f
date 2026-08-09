@@ -1952,4 +1952,31 @@ which is highly unrealistic
 
 ---
 
+```ts
+type Set_fn = typeof Set
+declare global {
+  var Set: Set_fn
+}
+
+export function Set(...args: any) {
+  return new globalThis.Set(...args)
+}
+
+log(Set())
+```
+
+it doesnt seem i can make `Set` `new Set` and `Map` `new Map`
+
+just call it `S` and `M` anyway. have lib/collection.
+
+i dont feel i have to make them capitalized.
+
+---
+
+doesnt seem i should persist is collapsed. it should reset after refresh. and i do not have to provide an option.
+
+---
+
+fine to name as flatten. fn statement takes priority than global this util.
+
 
