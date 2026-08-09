@@ -1,28 +1,66 @@
 sidebar:
-  convert
+  convert:
+    - json yaml toml xml: ...
+    - markdown html: ...
+    - timestamp utc: # arg: timezone (when to utc)
+  encode/decode:
+    - base64
+    - url
+    - text
+  encrypt/decrypt:
+    - gpg
+  hash:
+    - sha
+    - md5
+  style:
+    - leet speak
+  lookup:
+    - unicode emojis
+    - en dict
+    - zhcn society id geolocation
+    - university ranking
+  calculate:
+    - color contrast:
+      - (modern)
+      - (legacy)
+    - maimai:
+      - loss of each note
+      - achivement rate to perf
+    # - article:
+    #   - word count
+    #   - typos
+  generate:
+    - lorem ipsum
+  # misc:
+  #   - regex
+  #   - grep
+  #   - glob
 
-- data format
-  - url decode <!-- e.g. %3d becomes = -->
-- language
-  - language decode <!-- yes, it's vscode builtin, but why not -->
-  - leet speak
-- date/time
-  - timestamp, utc, timezone, (any template string)
-- encryption, public key, hash
-  - (popular methods)
-- misc
-  - regex (the args are defined separately from inputs, on the recipe)
-  - grep
-  - glob
-  - lorem ipsum
+# - data format
+#   - url decode <!-- e.g. %3d becomes = -->
+# - language
+#   - language decode <!-- yes, it's vscode builtin, but why not -->
+#   - leet speak
+# - date/time
+#   - timestamp, utc, timezone, (any template string)
+# - encryption, public key, hash
+#   - (popular methods)
+# - misc
+#   - regex (the args are defined separately from inputs, on the recipe)
+#   - grep
+#   - glob
+#   - lorem ipsum
 
-- planned
-  - maimai
-  - color contrast
-  - json yaml toml
-  - base64
-  - unicode and emojis. aliases. synonyms. vector semantic search. <!-- it doesnt have to be a converter. if you feel it would be a tool, then it is a tool. -->
-  - dict (auto correct, string distance)
-  - typo check
-  - word counter
+# - planned
+#   - maimai
+#   - color contrast
+#   - json yaml toml
+#   - base64
+#   - unicode and emojis. aliases. synonyms. vector semantic search. <!-- it doesnt have to be a converter. if you feel it would be a tool, then it is a tool. -->
+#   - dict (auto correct, string distance)
+#   - typo check
+#   - word counter
 
+# - lookup
+#   - chinese id (or prefix) to geolocation
+#   - university ranking
