@@ -50044,6 +50044,16 @@ sync <!-- f push --> to remote (feasible wo del repo? how easy?)
 
 i dont have to apply that right now. though non text changes are generally meaningless. they should be ideally append only and readonly for references, and gitignored if not.
 
+10
+
+02 00 research snacks terminology.
+
+02 20 setup forgejo.
+
+i just feel i want a git gui.
+
+seems ive already had it installed.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
