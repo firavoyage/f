@@ -39,7 +39,7 @@ sidebar:
   style:
     - leet speak
   lookup:
-    - unicode emojis
+    - unicode characters # symbols and emojis
     - en dict
     - zhcn society id geolocation
     - university ranking
