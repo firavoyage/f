@@ -1,3 +1,2 @@
-export const app_name = 'humilitydev'
-// export const app_name = 'humility_test'
+export const app_name = 'tools'
 export const xdg = false

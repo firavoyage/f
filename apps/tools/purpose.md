@@ -1877,4 +1877,13 @@ map items item ->
 
 look, map it's not any syntactic more boilerplate.
 
+---
+
+and, i would say react itself is over engineering.
+
+it solves a general problem: it should be safe and robust for all arrays
+
+instead of my specific one: it's always static, whether on sidebar or on toc or on alt bar
+
+
 
