@@ -276,7 +276,7 @@ web: <!-- frontend, web, ts/js -->
 - js object prototype iterator
 - js readonly prop writable subprop
 - ts type dict circular reference lazy evaluation
-- js map abstraction
+- js array methods map abstraction
 
 backend:
 

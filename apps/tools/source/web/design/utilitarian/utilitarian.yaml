@@ -135,9 +135,11 @@ color:
     primary: # core canvas
       light: "palette.gray.50"
       dark: "palette.gray.850"
+      # dark: "palette.gray.900"
     secondary: # panel
       light: "palette.gray.200"
       dark: "palette.gray.800"
+      # dark: "palette.gray.850"
     tertiary: # button on panel
       light: "palette.gray.300"
       dark: "palette.gray.700"

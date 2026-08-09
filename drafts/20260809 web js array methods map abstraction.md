@@ -99,7 +99,7 @@ The callback function automatically receives three arguments from `map()`: [link
 
 #### 1. Transforming Numbers (Arrow Function)
 
-A clean, single-line expression implicitly returns the new value. [link](https://www.youtube.com/watch?v=8CWAEfp9-Mc\&vl=en\&t=67)
+A clean, single-line expression implicitly returns the new value. [link](https://www.youtube.com/watch?v=8CWAEfp9-Mc&vl=en&t=67)
 
 javascript
 
@@ -162,7 +162,7 @@ Would you like to see how to **chain `map()` with `filter()`**, or do you need h
   Please expand the explanation for: Use the map Method to Extract ...\
   May 4, 2021 — freeCodeCamp.org. ... runningchild: Maybe a pro understands what that means, but from my knowledge as a beginner, that sounds as i...\
   The freeCodeCamp Forum
-- [link](https://www.youtube.com/watch?v=8CWAEfp9-Mc\&vl=en\&t=67)\
+- [link](https://www.youtube.com/watch?v=8CWAEfp9-Mc&vl=en&t=67)\
   How to Use map() in JavaScript | Transform Arrays Easily ...\
   Jun 23, 2025 — right and then it transforms and modify all the items in the array. very easily. that's why we use map. so let's understand that w...\
   7m\
@@ -195,7 +195,7 @@ console.log(evens); // [undefined, 2, undefined, 4] -> Length is still 4!
 
 Use code with caution.
 
-***
+---
 
 ### The Solutions
 
@@ -315,7 +315,7 @@ console.log(evens); // [4, 8] (Length is exactly 2)
 
 Use code with caution.
 
-***
+---
 
 ### Method 2: Overriding the Global `map` (Experimental)
 
@@ -352,7 +352,7 @@ console.log(result); // [30, 40] (The 1 and 2 are fully omitted!)
 
 Use code with caution.
 
-***
+---
 
 ### Why Overriding `map` is Risky
 
@@ -726,7 +726,7 @@ To render a list in React JSX, <mark>use the<span> </span><strong>JavaScript<sp
 
 ### 1. Basic Example (Array of Strings)
 
-You can map directly inside your JSX expression by wrapping the JavaScript code in curly braces `{}`. [link](https://www.youtube.com/watch?v=i2xgYnZ4Uas\&vl=en)
+You can map directly inside your JSX expression by wrapping the JavaScript code in curly braces `{}`. [link](https://www.youtube.com/watch?v=i2xgYnZ4Uas&vl=en)
 
 jsx
 
@@ -845,7 +845,7 @@ Would you like to know how to **filter items** before mapping them, or do you ne
   Rendering Lists - React\
   In these situations, you can store that data in JavaScript objects and arrays and use methods like map() and filter() to render li...\
   React
-- [link](https://www.youtube.com/watch?v=i2xgYnZ4Uas\&vl=en)\
+- [link](https://www.youtube.com/watch?v=i2xgYnZ4Uas&vl=en)\
   How to Render a List of Elements in JSX\
   Aug 2, 2025 — hello friends myself Muhammad Fahim Hassan and in today's video we are going to talk about how we can render a list of elements in...\
   13:57\
@@ -1022,7 +1022,7 @@ Here is the direct comparison of using `array.map()` versus a `for...of` loop fo
 - **Harder to Break:** You cannot use statements like `break` or `continue` to exit the loop early.
 - **Memory Footprint:** Generates a complete secondary array in memory before passing it to the virtual DOM.
 
-***
+---
 
 ### `for...of` Loop
 
@@ -1124,7 +1124,7 @@ While a `for...of` loop handles this naturally using those exact keywords, you c
 
 Here is how to handle both scenarios using both styles.
 
-***
+---
 
 ### 1. Replacing `continue` (Skipping Items)
 
@@ -1163,7 +1163,7 @@ jsx
 
 Use code with caution.
 
-***
+---
 
 ### 2. Replacing `break` (Stopping Early)
 
@@ -1225,7 +1225,7 @@ jsx
 
 Use code with caution.
 
-***
+---
 
 ### Summary: Which should you choose?
 
@@ -1731,7 +1731,7 @@ If you are writing this utility, let me know:
 
 Using the array **index** or a **unique random number** as a key are both considered anti-patterns in React, but they fail for entirely different reasons.
 
-***
+---
 
 ### 1. Passing Key by Index
 
@@ -1759,7 +1759,7 @@ Imagine a list of 3 items (`A`, `B`, `C`) with input fields where a user types t
 3. React looks at key `0`. It sees key `0` existed before, so it **reuses the old DOM node** (along with the text the user typed into `A`).
 4. **Result:** The user sees item `A` disappear, but the text they typed into `A` is now sitting inside item `B`'s input box.
 
-***
+---
 
 ### 2. Passing Key by Unique Random Number
 
@@ -1786,7 +1786,7 @@ A new random number is generated **on every single render pass**.
 4. React compares the old key (`0.123`) to the new key (`0.789`). Because they don't match, React assumes the old component died and a brand new one was born.
 5. **Result:** React completely destroys the old DOM node and recreates a new one. The input instantly **loses focus**, keyboard typing breaks, and performance tanks because the DOM is redrawing on every keystroke.
 
-***
+---
 
 ### Summary Comparison
 
@@ -1796,7 +1796,7 @@ A new random number is generated **on every single render pass**.
 | **Index** (Acceptable for static) | ❌ No            | ⚠️ Broken state shifts   | ⚠️ Slow redraws        | ⚠️ Wrong inputs kept     |
 | **Random** (Never use)            | ❌ No            | ❌ Broken completely     | ❌ Horrible (unusable) | ❌ Instantly loses focus |
 
-***
+---
 
 To fix your list keys permanently, let me know:
 
@@ -1835,7 +1835,7 @@ Instead of moving the physical DOM elements to match your data, React keeps the 
 
 Here is the exact step-by-step mechanism of how React executes this.
 
-***
+---
 
 ### The Scenario
 
@@ -1856,7 +1856,7 @@ Key 1 (Old): "Banana" --->  Key 1 (New): "Apple"    (Mismatch!)
 
 Use code with caution.
 
-***
+---
 
 ### How React Updates the DOM (The "In-Place Patch")
 
@@ -1882,7 +1882,7 @@ React loops through the elements by key and compares the old VDOM node to the ne
 1. React sees a brand new key (`2`) in the VDOM that didn't exist before.
 2. It calls `document.createElement('li')`, sets its text to `"Banana"`, and appends it to the end of the list.
 
-***
+---
 
 ### Why Content Looks Correct but State Breaks
 
@@ -1906,7 +1906,7 @@ If Key 0 was an `<input>` and the user typed _"I love apples"_ into it:
 - The browser's internal value (_"I love apples"_) stays stuck inside that first input box.
 - **Result:** The user inserted "NEW" at the top, but their typed text _"I love apples"_ stays trapped in the top box, making it look like their typing jumped to the wrong item.
 
-***
+---
 
 To explore how React avoids this with unique keys, let me know:
 
@@ -2260,7 +2260,7 @@ Use code with caution.
 
 Because `key` and `ref` are never copied into the `props` object, trying to destructure them like `const { key, ref, name } = props` will result in `key` and `ref` being `undefined`.
 
-***
+---
 
 ### 2. Why React Protects `key`
 
@@ -2269,7 +2269,7 @@ The `key` prop is exclusive to React’s **reconciliation (diffing) engine**.
 - React uses it to identify elements across renders to see if they moved, were added, or were deleted.
 - If components could read and dynamically alter their own `key` via `props`, it would break the rendering engine's ability to track that component's lifecycle and state accurately.
 
-***
+---
 
 ### 3. Why React Protects `ref`
 
@@ -2278,7 +2278,7 @@ The `ref` prop handles direct DOM access and component instances.
 - React needs to control exactly _when_ a ref is attached or detached during the commit phase of rendering.
 - If you need a parent component to access a child's DOM node or internal methods, React forces you to use the `forwardRef` API (or standard props in newer React 19 versions) to make the handoff explicit and predictable.
 
-***
+---
 
 ### The Clean Workarounds
 
@@ -2373,7 +2373,7 @@ Use code with caution.
 
 Because React stripped `key` and `ref` before `props` ever reached `MyComponent`, your shorthand object literal creates properties with `undefined` values, passing nothing to the `<div>`.
 
-***
+---
 
 ### 2. In Raw JSX / Parent Level (Works Perfectly)
 
@@ -2398,7 +2398,7 @@ The JavaScript engine evaluates the shorthand notation `{ key, ref, id }` into a
 
 When React's JSX parser processes the spread operator (`...`), it sees the explicit keys `key` and `ref` inside that plain object. It extracts them properly and assigns them to the resulting DOM element just as if you had typed `key={key} ref={ref}` manually.
 
-***
+---
 
 ### React 19 Note (The `ref` Exception)
 
@@ -2592,7 +2592,7 @@ DEV Community·https://dev.to
 
 **React** native tab view error :A **props object containing** a "**key**" **prop is** ...
 
-React native tab view error :A props object containing a "key" prop is being spread into JSX. #reactnative #javascript. Hi i have got this error when i tried react native lates version with react naitve tab view. this patch fixed this issue. diff --git a/node\_modules/react-native-tab-view/src/TabBar.tsx b/node\_modules/react-native-tab-view/src/TabBar.tsx index e8d0b4c..1c3c09f 100644 --- a/node\_modules/react-native-tab-view/src/TabBar.tsx +++ b/node\_modules/react-native-tab-view/src/TabBar.tsx @@ -364,8 +364,7 @@ export function TabBar({ const renderItem = React.useCallback( ({ item: route, index }: ListRenderItemInfo) => { - const props: TabBarItemProps & { key: string } = { - key: ...
+React native tab view error :A props object containing a "key" prop is being spread into JSX. #reactnative #javascript. Hi i have got this error when i tried react native lates version with react naitve tab view. this patch fixed this issue. diff --git a/node_modules/react-native-tab-view/src/TabBar.tsx b/node_modules/react-native-tab-view/src/TabBar.tsx index e8d0b4c..1c3c09f 100644 --- a/node_modules/react-native-tab-view/src/TabBar.tsx +++ b/node_modules/react-native-tab-view/src/TabBar.tsx @@ -364,8 +364,7 @@ export function TabBar({ const renderItem = React.useCallback( ({ item: route, index }: ListRenderItemInfo) => { - const props: TabBarItemProps & { key: string } = { - key: ...
 
 ## answer
 
@@ -2653,7 +2653,7 @@ The previous explanation regarding how **raw JSX** compiles a spread object cont
 
 While writing `<div {...{key, ref, prop}} />` is valid JavaScript syntax, **React's JSX compiler intentionally flags this with a console warning at runtime.**
 
-***
+---
 
 ### The Reality: It Triggers a Runtime Warning
 
@@ -2668,7 +2668,7 @@ React requires the `key` to be a fixed, static extraction during the build phase
 1. **Dynamic Overrides**: If you spread an object containing a key _after_ you explicitly declare a key (like `<div key="fixed" {...props} />`), the spread property could silently overwrite your intended key, leading to broken lists and state synchronization bugs. [link](https://stackoverflow.com/questions/79227015/react-key-prop-being-spread-into-jsx-using-getinputprops-from-conform-to-rea)
 2. **Compiler Optimizations**: Modern bundlers and tools (like the React Compiler) optimize components by statically mapping props. Spreading an object is a dynamic runtime operation that forces React to inspect the object's keys on every single render pass. [link](https://www.sitepoint.com/why-react-19-s-compiler-changes-everything-for-senior-devs/)
 
-***
+---
 
 ### The Correct Way to Write It
 
@@ -2687,7 +2687,7 @@ return <div key={key} {...{ ref, prop }} />;
 
 Use code with caution.
 
-_(Note: As noted earlier, `ref` works fine via spreading or standard props in **React 19+**, but `key` must always be explicitly declared on the element)._ [link](https://www.youtube.com/watch?v=hiiGUjEkzbM\&t=224)
+_(Note: As noted earlier, `ref` works fine via spreading or standard props in **React 19+**, but `key` must always be explicitly declared on the element)._ [link](https://www.youtube.com/watch?v=hiiGUjEkzbM&t=224)
 
 - [link](https://www.reddit.com/r/reactjs/comments/14kdg1l/the%5Fkey%5Fprop%5Fexplained/)\
   Reddit·r/reactjs\
@@ -2725,7 +2725,7 @@ React elements can be wrapped in Fragments (`<></>`) or deeply nested arrays. To
 
 Modern compilation tools (like the React Compiler) optimize components by statically tracking dependencies and caching component outputs. Spreading a key makes static analysis impossible. The compiler cannot tell if a list item's identity is stable or shifting, preventing it from applying high-performance render caching to that subtree.
 
-***
+---
 
 ### How to Bypass This Constraint
 
@@ -2925,7 +2925,7 @@ If you are trying to rewrite a specific piece of code, let me know the **program
   \
   \
   DigitalOcean
-- [link](https://www.mathworks.com/search/user-center?s%5Ftid=ai%5Frelated%5Fsrch%5F3\&q=What+MATLAB+patterns+stop+multiple+loop+levels+and+exit+function%3F\&page=1)\
+- [link](https://www.mathworks.com/search/user-center?s%5Ftid=ai%5Frelated%5Fsrch%5F3&q=What+MATLAB+patterns+stop+multiple+loop+levels+and+exit+function%3F&page=1)\
   User Center Search\
   Aug 4, 2011 — AI generated response Single-loop exit ( break ): Use break to terminate the current for or while loop immediately. Exit function ...\
   \
@@ -2996,7 +2996,7 @@ When you read them directly via dot notation (e.g., `obj.prop`), **both return `
 | **`Object.keys()`**            | Includes the key                           | Excludes the key              |
 | **`JSON.stringify()`**         | Omits the key entirely                     | Omits the key entirely        |
 
-***
+---
 
 ### Code Examples
 
@@ -3087,6 +3087,3 @@ Would you like to see how to handle these differences dynamically using **object
   GitHub
 
 Show all
-
-# 
-

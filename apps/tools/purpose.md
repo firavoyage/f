@@ -1895,5 +1895,26 @@ decision: i would make types pascal case iff they are util types (e.g. Record).
 
 if all components have props, it doesnt make any sense to suffix "Props" like "ListProps" or "list_props"
 
+05 40 write list component. (06 40)
+
+filtering would be trivial. just loop through, make itself and all its parents visible if matches. that's how adwaita demo works.
+
+but i guess for tools it can behave exactly like ctrl shift p. see nautilus or vscode.
+
+---
+
+just code it myself. i could try to be more efficient. i dont have to.
+
+---
+
+i dont have to have a separate `onclick` or `onselect` i feel.
+
+if i want to make click "append to recipe". i can simply omit focused (or fix it to a non existent key, like an empty string), and pass `set focused` normally.
+
+---
+
+i dont have to be focused. i could simply fix anything just to make it feel right.
+
+i think i would accept index? and array? for map. why not.
 
 

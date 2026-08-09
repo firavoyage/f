@@ -1,1 +1,0 @@
-flatpak remove -y io.github.swordpuffin.rewaita
