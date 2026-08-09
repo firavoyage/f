@@ -1923,4 +1923,33 @@ i feel i can make halt a fn. you can either return a value and halt, or just sto
 
 06 10 write list component. (07 00)
 
+i would like to have a method flatten.
+
+---
+
+well, i can oop if i like. i dont have to.
+
+if flatten feels awkward, i could just create a result array and spread.
+
+---
+
+ive made some decisions before. 
+
+- id of headings will be their parents and them join dot
+- id of leaves will be their id or their name in snake case
+
+the only thing to watch out is
+
+```yaml
+foo.bar:
+  sth
+foo:
+  bar:
+    sth
+```
+
+which is highly unrealistic
+
+---
+
 
