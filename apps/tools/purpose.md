@@ -1618,7 +1618,7 @@ it's worth the time i guess.
 
 i still have some time left. let's write a knowledge for readme.
 
-05 20 record verbal thoughts. map ia on yaml. ~~(05 40)~~ 06 00
+05 20 record verbal thoughts. map ia on yaml. ~~(05 40)~~ ~~06 00~~ 06 20
 
 let's have an yaml of sidebar, or ia, in general.
 
@@ -1672,5 +1672,12 @@ ideas on additional tools
   - university ranking
 
 ---
+
+conclusion
+
+- i will make it consistent as possible, esp for the same category
+- i will actually make the second nesting layer (json yaml toml xml) less noticeable
+
+thanks to yaml, it's much easier figuring out the visual design.
 
 
