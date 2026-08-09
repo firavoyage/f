@@ -2384,4 +2384,54 @@ maybe i should reboot.
 
 fix nautilus first. be progressive.
 
+---
+
+ok. fortunately it fixes.
+
+# . thinking
+
+well, it's complex. it's overwhelming.
+
+it's designed to be git backend like github.
+
+not local git gui.
+
+---
+
+it wants things to be centralized there.
+
+you may symlink or hardlink, but it wants it to be bare git repo.
+
+no checkout. it serves. it doesnt expect you to modify directly.
+
+it's too much to like proxy to overlay to disguise for it.
+
+---
+
+you may copy, and convert to compliant format.
+
+you may serve and let it sync w you.
+
+you couldnt just let it work w you easily.
+
+# . thinking
+
+wow! damn! what a ux.
+
+http://localhost:3000/admin/repos/unadopted
+
+on this page it shows "Enter username to search for unadopted repositories… (leave blank to find all)"
+
+currently it's blank.
+
+yet, you have to click search button explicitly.
+
+http://localhost:3000/admin/repos/unadopted?search=true&q=
+
+it's not a modern spa. what a surprise.
+
+---
+
+and it asks for confirmation one by one!
+
 
