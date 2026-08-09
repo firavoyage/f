@@ -3,7 +3,25 @@
 p
 
 ```md
-
+  - coffee
+  - green/black tea
+  - dark chocolate
+  - truffles
+  - wafer milk chocolate
+  - butter cookies
+  - whole wheat bread
+  - butter croissant
+  - potato chips
+  - fried chicken
+  - instant noodles
+  - boiled water
+  - coca cola
+  - takoyaki
+  - sushi
+  - sliced pork
+  - tea egg
+  - chenpi
+  - huamei
 ```
 
 c
@@ -12,6 +30,34 @@ c
 - flavors
   - coffee
   - green/black tea
+  - dark chocolate bar
+  - truffles
+  - butter cookies
+  - wafer slice
+  - hazelnut sandwich cookies
+  - chocolate chip cookie
+  - wafer milk chocolate
+  - whole wheat bread
+  - butter croissant
+  - potato chips
+  - fried chicken
+  - instant noodles
+  - boiled water
+  - coca cola
+  - takoyaki
+  - sushi
+  - tea egg
+  - sliced pork
+  - chenpi
+  - huamei
+```
+
+c
+
+```md
+- flavors
+  - coffee
+  - green/black/jasmine tea
   - dark chocolate bar
   - truffles
   - butter cookies
