@@ -1,4 +1,6 @@
-type items = string[] | { [key: string]: items }
+type item = string | { name: string, id: string }
+
+type items = item[] | { [key: string]: items }
 
 type List = {
   items: items

@@ -1765,5 +1765,83 @@ if i wanna do so, i guess i can simply omit focused and setfocused, and pass ons
 
 19 40 create component list. (20 20)
 
+ts gets in my way.
+
+p (ideally)
+
+```ts
+type items = string[] | Record<string, items>
+// type items = string[] | Dict<string, items>
+```
+
+c (compliant)
+
+```ts
+type items = string[] | { [key: string]: items }
+```
+
+---
+
+let's think about how i would like to flatten items, and map them to html.
+
+```ts
+{
+  foo: {
+    bar: one, two, three
+  }
+}
+
+{
+  foo: one, two, three
+  bar: one, two, three
+}
+
+one two three
+```
+
+```html
+foo
+children of foo
+  bar
+  children of bar
+    one
+    two
+    three
+
+foo
+children of foo
+  one
+  two
+  three
+bar
+children of bar
+  one
+  two
+  three
+
+one
+two
+three
+```
+
+so the state would be...
+
+```
+is collapsed map id bool
+
+flat item
+
+- name
+- id
+- type: h1 to h6 or p (leaf/item)
+- parent id?
+
+flat items flat item[]
+
+render
+  each item
+    apply type on both tag and class # it's feasible (though you couldnt eval js in jsx tag)
+    
+```
 
 
