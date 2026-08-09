@@ -8,9 +8,16 @@ type list = {
   set_focused?: (focused: string) => void
 }
 
-
+type row = {
+  type: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p'
+  name: string
+  id: Key
+  parents: Key[]
+}
 
 export function List({ items, focused, set_focused }: list) {
+  
+
   return (
     <nav className="nav">
       {/* {items.map((item, index) => {

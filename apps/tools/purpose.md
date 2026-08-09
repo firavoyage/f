@@ -1895,7 +1895,9 @@ decision: i would make types pascal case iff they are util types (e.g. Record).
 
 if all components have props, it doesnt make any sense to suffix "Props" like "ListProps" or "list_props"
 
-05 40 write list component. (06 40)
+~~05 40 write list component. (06 40)~~
+
+05 40 polish map lib. 06 10
 
 filtering would be trivial. just loop through, make itself and all its parents visible if matches. that's how adwaita demo works.
 
@@ -1916,5 +1918,9 @@ if i want to make click "append to recipe". i can simply omit focused (or fix it
 i dont have to be focused. i could simply fix anything just to make it feel right.
 
 i think i would accept index? and array? for map. why not.
+
+i feel i can make halt a fn. you can either return a value and halt, or just stop.
+
+06 10 write list component. (07 00)
 
 
