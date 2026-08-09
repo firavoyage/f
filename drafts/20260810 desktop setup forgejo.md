@@ -97,4 +97,46 @@ GLOBAL OPTIONS:
 
 well, the help text of forgejo is wild.
 
+# . config
 
+```yaml
+db: sqlite
+# repo root: /var/lib/forgejo/data/forgejo-repositories # default
+admin:
+  user: f
+  email: f@fira.local # it's required. i dont have to have an email. f is for fira. im fira. that's it. it doesnt make any sense if it would be unused. but if it's used, i guess it would be fine to appear like that. (instead of a@a.a or foo@bar.baz or anonymous@example.com). i guess i may use {gpg}@gpg.local. but i dont have to have a public key. im myself. im the definitive source. yet i have to format like an email. but if i could i d like to write as "f". (yeah, my email is f. or undefined. or any.)
+  pw: f
+```
+
+the email should be
+
+- definitive and simple (no one could compete w me. f is for fira.)
+- non anonymous (it should be me, if you could not know it's me from the email, then im everyone in the world or im the one of all emails.)
+- non crypto (i do not prove myself. im not to be judged.)
+
+maybe `f@fira.local`. 
+
+i would consider `f@f.local` a good choice. but i feel fira is more easily pronounced.
+
+since i do not want to use `a@a.a` (shortest, simplest, first), i will not just blindly reduce the number of letters for `fira` either.
+
+---
+
+wait. password length must > 8?!
+
+you should tell me before submission. well anyway forgejo is a geek tool.
+
+```yaml
+db: sqlite
+# repo root: /var/lib/forgejo/data/forgejo-repositories # default
+admin:
+  user: f
+  email: f@fira.local
+  pw: firafira
+```
+
+# . setup
+
+```sh
+
+```
