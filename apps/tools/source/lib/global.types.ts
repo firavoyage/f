@@ -4,4 +4,8 @@
 //   type Dict<K extends keyof any, T> = { [P in K]: T };
 // }
 
-// export {};
+declare global {
+  type Key = PropertyKey
+}
+
+export {};
