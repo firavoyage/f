@@ -1854,5 +1854,27 @@ let's define the types first and then i could generate.
 
 ---
 
+i would absolutely go for fof rather than map.
+
+it's my personal project. 
+
+feeling > efficiency >> big tech <!-- corp --> best prac
+
+it just looks too weird, when you loop through it one time to filter, and loop again to map.
+
+i may not create a fp "map arr fn" either. well actually i may want to auto add keys to suppress react warnings (ideal of big corps, the conservative guys).
+
+```ts
+fof item items
+  if should stop break
+  if irrelevant continue
+  push process item
+
+map items item ->
+  if should stop return break symbol # break signal
+  if non trivial return process item
+```
+
+look, map it's not any syntactic more boilerplate.
 
 
