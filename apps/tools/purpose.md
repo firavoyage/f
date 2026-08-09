@@ -1763,7 +1763,7 @@ will have.
 
 if i wanna do so, i guess i can simply omit focused and setfocused, and pass onselect.
 
-19 40 create component list. (20 20)
+19 40 design archi of ~~create~~ component list. (20 20)
 
 ts gets in my way.
 
@@ -1808,7 +1808,7 @@ children of foo
     two
     three
 
-foo
+foo collapsed?
 children of foo
   one
   two
@@ -1834,14 +1834,25 @@ flat item
 - name
 - id
 - type: h1 to h6 or p (leaf/item)
-- parent id?
+- parent: id[]
+# - parent id?
 
 flat items flat item[]
 
 render
   each item
     apply type on both tag and class # it's feasible (though you couldnt eval js in jsx tag)
-    
+    if one of its parent is collapsed
+      continue
+    if it's a heading
+      show toggle (css: on hover or on collapsed parent)    
 ```
+
+20 40 write list component. (21 20)
+
+let's define the types first and then i could generate.
+
+---
+
 
 

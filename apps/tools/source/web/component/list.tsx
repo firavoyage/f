@@ -11,7 +11,7 @@ type List = {
 export function List({ items, focused, set_focused }: List) {
   return (
     <nav className="nav">
-      {items.map((item, index) => {
+      {/* {items.map((item, index) => {
         const is_focused = focused == index;
         return (
           <button
@@ -24,7 +24,7 @@ export function List({ items, focused, set_focused }: List) {
             {item}
           </button>
         );
-      })}
+      })} */}
     </nav>
   );
 }
