@@ -398,15 +398,15 @@ ref:
       "Record<$1, $2>$0",
     ],
   },
-  "Dict": {
-    "prefix": [
-      "Dic",
-      "Dict",
-    ],
-    "body": [
-      "Dict<$1, $2>$0",
-    ],
-  },
+  // "Dict": {
+  //   "prefix": [
+  //     "Dic",
+  //     "Dict",
+  //   ],
+  //   "body": [
+  //     "Dict<$1, $2>$0",
+  //   ],
+  // },
   "Result": {
     "prefix": [
       // "R", // quirky for single letter, r matches both r and R while R only matches R
