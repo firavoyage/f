@@ -1680,4 +1680,17 @@ conclusion
 
 thanks to yaml, it's much easier figuring out the visual design.
 
+19 00 elaborate design and implement sidebar. (19 40)
+
+i may integrate w scrollarea later, and support versioning for persistent state.
+
+though sidebar would technically dep on scrollarea. (i guess it would be easy)
+
+let's record verbal thoughts first.
+
+---
+
+decision:
+
+- within
 
