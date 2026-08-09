@@ -274,6 +274,7 @@ web: <!-- frontend, web, ts/js -->
 - js set map methods
 - js object prototype iterator
 - js readonly prop writable subprop
+- ts type dict circular reference lazy evaluation
 
 backend:
 

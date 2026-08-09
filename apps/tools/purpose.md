@@ -1680,7 +1680,7 @@ conclusion
 
 thanks to yaml, it's much easier figuring out the visual design.
 
-19 00 elaborate design and implement sidebar. (19 40)
+19 00 elaborate and design ~~and implement~~ sidebar. (19 40)
 
 i may integrate w scrollarea later, and support versioning for persistent state.
 
@@ -1752,5 +1752,18 @@ well, i realize i did not want to pass children to sidebar.
 i will decouple the logics of the collapsible list. 
 
 let's just call it list for now. not "toc" or "collapsible nav". 
+
+i will not just make list like "v for".
+
+---
+
+will lists be draggable?
+
+will have.
+
+if i wanna do so, i guess i can simply omit focused and setfocused, and pass onselect.
+
+19 40 create component list. (20 20)
+
 
 
