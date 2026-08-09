@@ -1848,7 +1848,7 @@ render
       show toggle (css: on hover or on collapsed parent)    
 ```
 
-20 40 write list component. (21 20)
+20 40 ~~write list component.~~ create map util fn for global lib. ~~(21 20)~~ 21 40
 
 let's define the types first and then i could generate.
 
@@ -1879,11 +1879,19 @@ look, map it's not any syntactic more boilerplate.
 
 ---
 
-and, i would say react itself is over engineering.
+btw, i would say react itself is over engineering.
 
 it solves a general problem: it should be safe and robust for all arrays
 
 instead of my specific one: it's always static, whether on sidebar or on toc or on alt bar
+
+and! react prevents you to spread key on props.
+
+---
+
+btw, pascal cased types tell nothing.
+
+decision: i would make types pascal case iff they are util types (e.g. Record). 
 
 
 

@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const halt = Symbol('halt')
 // export const halt = Symbol('break')
 
@@ -17,17 +15,19 @@ export function map(items: any[], fn: Function) {
       break
     } 
 
-    // value.key is always defined (existing) by react
-    if (!React.isValidElement(value) || value.key !== null) {
-      result.push(value);
-    } else {
-      result.push(
-        React.cloneElement(value, {
-          key: `${index}`
-          // key: `fallback-key-${index}`
-        })
-      );
-    }
+    // react has nothing to do w non browser runtime
+    result.push(value);
+    // // value.key is always defined (existing) by react
+    // if (!React.isValidElement(value) || value.key !== null) {
+    //   result.push(value);
+    // } else {
+    //   result.push(
+    //     React.cloneElement(value, {
+    //       key: `${index}`
+    //       // key: `fallback-key-${index}`
+    //     })
+    //   );
+    // }
   }
 
   return result

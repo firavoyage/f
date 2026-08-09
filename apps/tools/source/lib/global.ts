@@ -6,17 +6,11 @@ import * as each from 'lib/each';
 import * as handle from 'lib/handle';
 import { merge } from 'lib/std';
 import * as union from 'lib/union';
-
-type use = typeof use
-declare global {
-  var use: use
-}
+import * as map from 'lib/map';
 
 export function use(lib: object) {
   merge(globalThis, lib)
 }
-
-use({ use })
 
 // Prelude
 use(result)
@@ -26,3 +20,11 @@ use(std)
 use(each)
 use(handle)
 use(union)
+use(map)
+
+// use({ use })
+// 
+// type use = typeof use
+// declare global {
+//   var use: use
+// }

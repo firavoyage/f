@@ -12,17 +12,11 @@ import * as react_use from 'react-use';
 import * as p from 'web/lib/props';
 import * as state from 'web/lib/state';
 import * as union from 'lib/union';
-
-type use = typeof use
-declare global {
-  var use: use
-}
+import * as map from 'web/lib/map';
 
 export function use(lib: object) {
   merge(globalThis, lib)
 }
-
-use({ use })
 
 // Prelude for Web
 use(result)
@@ -36,3 +30,11 @@ use(react_use)
 use(p)
 use(state)
 use(union)
+use(map)
+
+// use({ use })
+// 
+// type use = typeof use
+// declare global {
+//   var use: use
+// }
