@@ -1979,4 +1979,9 @@ doesnt seem i should persist is collapsed. it should reset after refresh. and i 
 
 fine to name as flatten. fn statement takes priority than global this util.
 
+---
+
+i will support array and set on has.
+
+
 

@@ -4,8 +4,8 @@ type items = item[] | { [key: string]: items }
 
 type list = {
   items: items
-  focused?: string
-  set_focused?: (focused: string) => void
+  focused?: Key
+  set_focused?: (focused: Key) => void
 }
 
 type row = {
@@ -30,15 +30,17 @@ function flatten(items: items, parents: Key[] = []): row[] {
 
   const rows: row[] = []
   for (const [key, value] of Object.entries(items)) {
-    rows.push({
-      // @ts-expect-error 
+    const heading = {
       type: `h${parents.length+1}`,
       name: key,
       id: [...parents, key].join('.'),
       parents
-    })
+    }
 
-    rows.push(...flatten(items, [...parents, key]))
+    const children = flatten(items, [...parents, heading.id])
+
+    // @ts-expect-error 
+    rows.push(heading, ...children)
   }
 
   return rows
@@ -52,7 +54,25 @@ export function List({ items, focused, set_focused }: list) {
   return (
     <nav className="nav">
       {
-        map()
+        map(rows, (row) => {
+          const { type, name, id, parents } = row
+
+          for (const parent of parents) {
+            if (has(is_collapsed, parent)) {
+              return 
+            } 
+          }
+
+          const Tag = type
+
+          return <Tag {...p({ class: type, onclick(){
+            if (type == 'p') {
+              set_focused?.(id)
+            } else {
+              
+            } 
+          } })}>{name}</Tag>
+        })
       }
       {/* {items.map((item, index) => {
         const is_focused = focused == index;
