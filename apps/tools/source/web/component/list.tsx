@@ -2,13 +2,13 @@ type item = string | { name: string, id: string }
 
 type items = item[] | { [key: string]: items }
 
-type List = {
+type list = {
   items: items
   focused?: number
   set_focused?: (index: number) => void
 }
 
-export function List({ items, focused, set_focused }: List) {
+export function List({ items, focused, set_focused }: list) {
   return (
     <nav className="nav">
       {/* {items.map((item, index) => {
