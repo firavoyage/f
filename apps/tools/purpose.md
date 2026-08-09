@@ -1729,4 +1729,28 @@ simple. <!-- self explanatory -->
 
 no need to say "design ia write web component sidebar"
 
+---
+
+figure out the names of the color constrast standards. get confused by llms and evil law makers.
+
+---
+
+for the props, i guess i can pass ia directly into it.
+
+no need to separate name and id as they will generally not collide. 
+
+then i can make leaves strings instead of objects `{name, id}`
+
+---
+
+let's have a small mock experiment.
+
+---
+
+well, i realize i did not want to pass children to sidebar.
+
+i will decouple the logics of the collapsible list. 
+
+let's just call it list for now. not "toc" or "collapsible nav". 
+
 

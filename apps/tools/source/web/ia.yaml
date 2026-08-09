@@ -19,6 +19,14 @@ sidebar:
     timestamp utc: # i may rethink the label "utc" to match the broader term
       - timestamp to utc # arg: timezone (when to utc), fmt
       - utc to timestamp
+    color:
+      - auto # from anything to all
+      - hex
+      - rgb
+      - hsl
+      - hsv
+      - cmyk
+      - oklch
   encode/decode:
     - base64
     - url
@@ -37,8 +45,9 @@ sidebar:
     - university ranking
   calculate:
     - color contrast:
-      - (modern)
-      - (legacy)
+      - apca # Advanced Perceptual Contrast Algorithm
+      - wcag # wcag 2, Relative Luminance Contrast Ratio
+      - yiq # Luma (Y) Channel Extraction
     - maimai:
       - loss of each note
       - achivement rate to perf
