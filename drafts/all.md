@@ -122,6 +122,7 @@ life:
 - game maimai dx gloves
 - walk in the park
 - game clash royale card mastery reward update
+- snacks terminology
 
 create something:
 

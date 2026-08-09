@@ -64,11 +64,11 @@ export const use_global = state({
 export function App() {
   const [focused, set_focused] = useState(0)
 
-  useEffect(() => {
-    log('app mounts')
+  // useEffect(() => {
+  //   log('app mounts')
 
-    // log('value', value)
-  })
+  //   // log('value', value)
+  // })
 
   use_bind('ctrl+p', (e) => {
     e.preventDefault() // print
