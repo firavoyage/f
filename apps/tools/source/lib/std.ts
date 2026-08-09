@@ -24,8 +24,24 @@ export function merge(target: object, ...sources: object[]) {
   return target
 }
 
-export function has<K extends PropertyKey>(obj: any, key: K): obj is Record<K, any> {
-  // export function has<K extends PropertyKey>(obj: any, key: K): obj is Record<K, unknown> {
+/**
+ * check if an object has a key
+ * 
+ * for obj, check has own
+ * 
+ * for array, check array.includes
+ * 
+ * for set, check set.has
+ */
+export function has<K extends PropertyKey>(obj: any, key: K): obj is Record<K, any> | Set<any> {
+  if (Array.isArray(obj)) {
+    return obj.includes(key)
+  }
+
+  if (obj instanceof Set) {
+    return obj.has(key)
+  }
+
   return (typeof key == 'string' || typeof key == 'number' || typeof key == 'symbol') &&
     obj && typeof obj == 'object' && Object.hasOwn(obj, key);
 }
