@@ -347,6 +347,7 @@ desktop:
 - docker help
 - shell cd abstraction
 - shell fn syntax args variables input output return heredoc here string
+- setup forgejo
 
 android:
 
