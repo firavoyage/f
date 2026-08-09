@@ -50054,6 +50054,8 @@ i just feel i want a git gui.
 
 seems ive already had it installed.
 
+<!-- well it's a bit weird to run on 3000. it's not occupied though. -->
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
