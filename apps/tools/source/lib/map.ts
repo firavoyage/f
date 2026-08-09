@@ -40,9 +40,15 @@ export function map<T>(items: T[], fn: (item: T, index?: number, array?: T[]) =>
   return result
 }
 
+export function flatten(items: any[]) {
+  return items.flat()
+}
+
 type halt = typeof halt
 type map = typeof map
+type flatten = typeof flatten
 declare global {
   var halt: halt
   var map: map
+  var flatten: flatten
 }

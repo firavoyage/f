@@ -15,8 +15,37 @@ type row = {
   parents: Key[]
 }
 
+function normalize_item(item: item) {
+  if (typeof item == 'string') {
+    return { name: item, id: item.toLowerCase().replaceAll(' ', '_') }
+  } else {
+    return item
+  }
+}
+
+function traverse(items: items, parents: Key[] = []): row[] {
+  if (Array.isArray(items)) {
+    return map(items, (item) => ({type: 'p', parents, ...normalize_item(item)}))
+  }
+
+  const rows: row[] = []
+  for (const [key, value] of Object.entries(items)) {
+    rows.push({
+      // @ts-expect-error 
+      type: `h${parents.length+1}`,
+      name: key,
+      id: [...parents, key].join('.'),
+      parents
+    })
+
+    rows.push(...traverse(items, [...parents, key]))
+  }
+
+  return rows
+}
+
 export function List({ items, focused, set_focused }: list) {
-  
+  const [is_collapsed, set_is_collapsed] = useState(new Set())
 
   return (
     <nav className="nav">
