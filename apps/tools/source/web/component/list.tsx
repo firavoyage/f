@@ -23,7 +23,7 @@ function normalize_item(item: item) {
   }
 }
 
-function traverse(items: items, parents: Key[] = []): row[] {
+function flatten(items: items, parents: Key[] = []): row[] {
   if (Array.isArray(items)) {
     return map(items, (item) => ({type: 'p', parents, ...normalize_item(item)}))
   }
@@ -38,17 +38,22 @@ function traverse(items: items, parents: Key[] = []): row[] {
       parents
     })
 
-    rows.push(...traverse(items, [...parents, key]))
+    rows.push(...flatten(items, [...parents, key]))
   }
 
   return rows
 }
 
 export function List({ items, focused, set_focused }: list) {
-  const [is_collapsed, set_is_collapsed] = useState(new Set())
+  const [is_collapsed] = useState(s())
+
+  const rows = flatten(items)
 
   return (
     <nav className="nav">
+      {
+        map()
+      }
       {/* {items.map((item, index) => {
         const is_focused = focused == index;
         return (
