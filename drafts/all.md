@@ -856,7 +856,7 @@ tools:
 - recipe dsl
 - research cyberchef alternatives
 - research awk lang
-- web sidebar ia
+- web sidebar ia list
 
 humility:
 
