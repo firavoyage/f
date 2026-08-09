@@ -1,4 +1,4 @@
-<!-- see also: 20260725 layout -->
+<!-- see also: 20260725 tools layout -->
 
 # all css layout props
 

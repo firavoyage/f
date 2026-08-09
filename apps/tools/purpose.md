@@ -1688,9 +1688,45 @@ though sidebar would technically dep on scrollarea. (i guess it would be easy)
 
 let's record verbal thoughts first.
 
+<!-- i forget to bring the watch today. would be fine. -->
+
 ---
 
 decision:
 
-- within
+- leaves are leaves regardless of their nesting level. headings should be counted normally, rather than bottom up
+- within the same category, the number of layers should be consistent
+- i may ref the visual design from aosc os portal sidebar
+  - no idea if it's better to style as "up" instead of "right" when collapsed 
+
+---
+
+i may have objects of arrays. i will not have an array of objects.
+
+let's elaborate this.
+
+c
+
+```yaml
+  convert:
+    - json yaml toml xml: ...
+    - markdown html: ...
+    - timestamp utc: # arg: timezone (when to utc)
+```
+
+btw, for gui, maybe i could make args about "how input should be parsed" next to the input.
+
+e.g.
+
+- json parser, flexible or not?
+- maimai, tap and hold already merged?
+
+---
+
+for the draft name, i guess it would be "web sidebar ia". 
+
+simple. <!-- self explanatory -->
+
+no need to say "design ia write web component sidebar"
+
 
