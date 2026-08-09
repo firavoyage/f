@@ -4,9 +4,11 @@ type items = item[] | { [key: string]: items }
 
 type list = {
   items: items
-  focused?: number
-  set_focused?: (index: number) => void
+  focused?: string
+  set_focused?: (focused: string) => void
 }
+
+
 
 export function List({ items, focused, set_focused }: list) {
   return (

@@ -1,11 +1,11 @@
 export const halt = Symbol('halt')
 // export const halt = Symbol('break')
 
-export function map(items: any[], fn: Function) {
+export function map(items: any[], fn: (item: T, index?: number, array?: T[]) => any) {
   const result = []
 
   for (const [index, item] of Object.entries(items)) {
-    const value = fn(item)
+    const value = fn(item, 0, items)
 
     if (!is_given(value)) {
       continue

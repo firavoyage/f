@@ -3,11 +3,11 @@ import React from 'react';
 export const halt = Symbol('halt')
 // export const halt = Symbol('break')
 
-export function map(items: any[], fn: Function) {
+export function map<T>(items: T[], fn: (item: T, index?: number, array?: T[]) => any) {
   const result = []
 
   for (const [index, item] of Object.entries(items)) {
-    const value = fn(item)
+    const value = fn(item, +index, items)
 
     if (!is_given(value)) {
       continue
