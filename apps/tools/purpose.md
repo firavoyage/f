@@ -1893,5 +1893,7 @@ btw, pascal cased types tell nothing.
 
 decision: i would make types pascal case iff they are util types (e.g. Record). 
 
+if all components have props, it doesnt make any sense to suffix "Props" like "ListProps" or "list_props"
+
 
 
