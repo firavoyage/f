@@ -466,6 +466,7 @@ ux: <!-- ui/ux design, ia -->
 - text selection focus ring outline style
 - youtube playlist next vid inflexible url confusing error screen
 - content design ux writing kde hig text and labels apple hig typography
+- checkbox switch feeling
 
 typography:
 
@@ -854,6 +855,7 @@ tools:
 - recipe dsl
 - research cyberchef alternatives
 - research awk lang
+- web sidebar ia
 
 humility:
 

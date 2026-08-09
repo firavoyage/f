@@ -1,8 +1,24 @@
 sidebar:
   convert:
-    - json yaml toml xml: ...
-    - markdown html: ...
-    - timestamp utc: # arg: timezone (when to utc)
+    json yaml toml xml:
+      - json to yaml
+      - json to toml
+      - json to xml
+      - yaml to json
+      - yaml to toml
+      - yaml to xml
+      - toml to json
+      - toml to yaml
+      - toml to xml
+      - xml to json
+      - xml to yaml
+      - xml to toml
+    markdown html:
+      - markdown to html
+      - html to markdown
+    timestamp utc: # i may rethink the label "utc" to match the broader term
+      - timestamp to utc # arg: timezone (when to utc), fmt
+      - utc to timestamp
   encode/decode:
     - base64
     - url
