@@ -50056,6 +50056,8 @@ seems ive already had it installed.
 
 <!-- well it's a bit weird to run on 3000. it's not occupied though. -->
 
+17 40 join ogs.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
