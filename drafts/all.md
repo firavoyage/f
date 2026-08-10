@@ -124,6 +124,7 @@ life:
 - game clash royale card mastery reward update
 - snacks terminology
 - go ogs sgf playtime movetime
+- coke pepsi coke coke zero
 
 create something:
 
@@ -533,6 +534,8 @@ cinema: <!-- film, movie -->
 - fight club
 - the shining
 - test fps to humans
+- coming of age
+- romantic and fantasy
 
 float: <!-- music -->
 
