@@ -50147,12 +50147,24 @@ foo:
 
 # example:
 foo:
-  - 
+  - json yaml toml:
+    - json to yaml
+    - json to toml
+    - toml to yaml
+  - markdown to html
+# foo
+#   json yaml toml
+#     json to yaml
+#     json to toml
+#     toml to yaml
+#   markdown to html
 
-# example:
+# example where it's less useful
 foo:
-  - bar: 123
-    baz: 456
+  - name: Alice
+    id: alice
+  - name: Bob
+    id: bob
 ```
 
 ```yaml
@@ -50166,11 +50178,9 @@ article: .public id=123
   p: lorem ipsum
 ```
 
-20 20 pick and buy fullpinhouse, beige.
+20 20 pick and buy a simple wooden chair w beige chusion of cotton linen.
 
-a simple wooden chair w cotton linen cushion
-
-https://www.smzdm.com/p/159050850/
+from fullpinhouse, https://www.smzdm.com/p/159050850/
 
 
 
