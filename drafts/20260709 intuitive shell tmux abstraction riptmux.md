@@ -11148,10 +11148,65 @@ duplicate session: tools
 ```
 
 ```
+ ~ % tmux tools
+[detached (from session tools)]
+ ~ % tmux ls
+tools: 1 windows (created Mon Aug 10 03:19:55 2026)
+ ~ % tmux -h
+Run and manage background daemons
 
+Usage:
+  tmux                  Start a new terminal
+  tmux <name>           Start a new named terminal or attach if existing
+  tmux <command>        Perform an action
+  tmux [flag]           Check version or help
+
+Commands:
+  ls                    List all sessions
+  a [name]              Back to a named (or the last) session
+  clear                 Clear inactive sessions of last command finished
+  kill <name>           Kill a session
+  rename <old> <new>    Rename a session
+
+Options:
+  -v, --version         Print version
+  -h, --help            Print help
+
+Use ctrl+b d to detach inside terminals
+```
+
+```
+ ~ % tmux -h
+Run and manage background daemons
+
+Usage:
+  tmux                  Start a new terminal
+  tmux <name>           Start a new named terminal or attach if existing
+  tmux <command>        Perform an action
+  tmux [flag]           Check version or help
+
+Commands:
+  l, ls                 List all sessions
+  a [name]              Back to a named (or the last) session
+  clear                 Clear inactive sessions of last command finished
+  kill <name>           Kill a session
+  rename <old> <new>    Rename a session
+
+Options:
+  -v, --version         Print version
+  -h, --help            Print help
+
+Use ctrl+b d to detach inside terminals
+ ~ % tmux l
+[exited]
+```
+
+```
+ ~ % tmux l
+tools: 1 windows (created Mon Aug 10 03:19:55 2026)
 ```
 
 # . changes 0.4
 
-- merge `tmux a <name>` into `tmux <name>`, which now attachs if existing instead of errs
-- alias `tmux l` for `tmux ls`
+- merge `tmux a <name>` into `tmux <name>`, which now attachs if existing instead of errs, smart and flexible, polymorphic
+- alias `tmux l` for `tmux ls`, concise
