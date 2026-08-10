@@ -50184,6 +50184,28 @@ from fullpinhouse, https://www.smzdm.com/p/159050850/
 
 23 50 make tmux smarter. release tmux 0.4.
 
+11
+
+06 20 alter some wording on readme.
+
+p
+
+```md
+<!-- animated coming-of-age romantic fantasy adventure film -->
+```
+
+p
+
+```md
+<!-- a coming-of-age adventure/fantasy film -->
+```
+
+c
+
+```md
+<!-- coming-of-age adventure/fantasy -->
+```
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
