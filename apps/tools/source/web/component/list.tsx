@@ -63,31 +63,18 @@ export function List({ items, focused, set_focused }: list) {
             } 
           }
 
+          const is_focused = focused == id
+          
           const Tag = type
-
-          return <Tag {...p({ class: type, onclick(){
+          return <Tag {...p({ class: type, focused: is_focused, onclick(){
             if (type == 'p') {
               set_focused?.(id)
             } else {
-              
+              toggle(is_collapsed, id)
             } 
           } })}>{name}</Tag>
         })
       }
-      {/* {items.map((item, index) => {
-        const is_focused = focused == index;
-        return (
-          <button
-            key={index}
-            {...p({
-              class: 'item',
-              onclick: () => set_focused(index), focused: is_focused
-            })}
-          >
-            {item}
-          </button>
-        );
-      })} */}
     </nav>
   );
 }
