@@ -16,7 +16,9 @@ export function m(entries?: ReturnType<typeof Object.entries>) {
 
 type s = typeof s
 type m = typeof m
+type toggle = typeof toggle
 declare global {
   var s: s
   var m: m
+  var toggle: toggle
 }

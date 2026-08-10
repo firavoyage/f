@@ -1921,7 +1921,7 @@ i think i would accept index? and array? for map. why not.
 
 i feel i can make halt a fn. you can either return a value and halt, or just stop.
 
-06 10 write list component. (07 00)
+06 10 write list component. ~~(07 00)~~ 07 30
 
 i would like to have a method flatten.
 
@@ -1983,5 +1983,48 @@ fine to name as flatten. fn statement takes priority than global this util.
 
 i will support array and set on has.
 
+```ts
+export function toggle(set: Set<any>, key: Key) {
+  if (has(set, key)) {
+    set.delete(key)
+  } else {
+    set.add(key)
+  } 
+}
+```
+
+set.add would err. and it thinks has set key is always true (by the type guard), thus else is never.
+
+---
+
+```ts
+export function has<K extends PropertyKey>(obj: any[], key: K): boolean
+export function has<K extends PropertyKey>(obj: Set<any>, key: K): boolean
+export function has<K extends PropertyKey>(obj: any, key: K): obj is Record<K, any>
+
+/**
+ * check if an object has a key
+ * 
+ * for obj, check has own
+ * 
+ * for array, check array.includes
+ * 
+ * for set, check set.has
+ */
+export function has<K extends PropertyKey>(obj: any, key: K): obj is Record<K, any> {
+  if (Array.isArray(obj)) {
+    return obj.includes(key)
+  }
+
+  if (obj instanceof Set) {
+    return obj.has(key)
+  }
+
+  return (typeof key == 'string' || typeof key == 'number' || typeof key == 'symbol') &&
+    obj && typeof obj == 'object' && Object.hasOwn(obj, key);
+}
+```
+
+interesting.
 
 

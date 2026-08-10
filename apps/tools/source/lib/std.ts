@@ -24,6 +24,10 @@ export function merge(target: object, ...sources: object[]) {
   return target
 }
 
+export function has<K extends PropertyKey>(obj: any[], key: K): boolean
+export function has<K extends PropertyKey>(obj: Set<any>, key: K): boolean
+export function has<K extends PropertyKey>(obj: any, key: K): obj is Record<K, any>
+
 /**
  * check if an object has a key
  * 
@@ -33,7 +37,7 @@ export function merge(target: object, ...sources: object[]) {
  * 
  * for set, check set.has
  */
-export function has<K extends PropertyKey>(obj: any, key: K): obj is Record<K, any> | Set<any> {
+export function has<K extends PropertyKey>(obj: any, key: K): obj is Record<K, any> {
   if (Array.isArray(obj)) {
     return obj.includes(key)
   }
