@@ -123,6 +123,7 @@ life:
 - walk in the park
 - game clash royale card mastery reward update
 - snacks terminology
+- go ogs sgf playtime movetime
 
 create something:
 
