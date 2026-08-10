@@ -28,9 +28,6 @@ body {
 .textarea,
 .select,
 .contenteditable {
-  /* border-radius: var(--radius-xs); */
-  padding: var(--spacing-1);
-
   &:focus-visible {
     outline: var(--radius-xs) solid var(--color-bg-selection);
   }
@@ -126,8 +123,12 @@ textarea {
 
     flex: 1;
 
+    .title {
+      margin: var(--spacing-0\.5);
+    }
+
     .textarea {
-      margin: var(--spacing-1);
+      margin: var(--spacing-0\.5);
       padding: var(--spacing-2);
 
       flex-grow: 1;
