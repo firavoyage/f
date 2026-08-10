@@ -2029,6 +2029,10 @@ interesting.
 
 11
 
-07 00 polish styling. make spacing consistent and expected.
+07 00 polish styling. make spacing consistent and expected. add more design tokens for length units (e.g. border). ~~(07 30)~~ 07 40
+
+adopt tailwind scale for border radius. 
+
+rationale: no need to overthink. the values are identical. just have a standard naming (base 4px).
 
 
