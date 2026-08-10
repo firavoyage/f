@@ -50182,6 +50182,8 @@ article: .public id=123
 
 from fullpinhouse, https://www.smzdm.com/p/159050850/
 
+23 50 make tmux smarter. release tmux 0.4.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
