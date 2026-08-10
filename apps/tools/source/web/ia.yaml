@@ -46,8 +46,8 @@ sidebar:
   calculate:
     - color contrast:
       - perceptual # apca, Advanced Perceptual Contrast Algorithm
-      -  # wcag, wcag 2, Relative Luminance Contrast Ratio
-      - yiq # Luma (Y) Channel Extraction
+      - relative # wcag, wcag 2, Relative Luminance Contrast Ratio, inaccurate, approximate
+      - binary # yiq,Luma (Y) Channel Extraction
     - maimai:
       - loss of each note
       - achivement rate to perf

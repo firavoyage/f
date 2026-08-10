@@ -50176,6 +50176,14 @@ foo: default color
 article: .public id=123
   h1: great news
   p: lorem ipsum
+
+# example
+border: 1px
+  0: 0px
+  1: 1px
+  2: 2px
+  4: 4px
+  8: 8px
 ```
 
 20 20 pick and buy a simple wooden chair w beige chusion of cotton linen.

@@ -238,16 +238,17 @@ font:
 #   lg: "32px"
 
 radius:
-  xs: "2px"
-  sm: "4px"
-  base: "6px"
-  md: "8px"
-  lg: "12px"
-  xl: "16px"
-  2xl: "24px"
-  3xl: "32px"
-  
-  # just go standard as it's a superset
+  none: 0px
+  xs: 2px
+  sm: 2px
+  base: 4px
+  md: 6px
+  lg: 8px
+  xl: 12px
+  2xl: 16px
+  3xl: 24px
+  4xl: 32px
+  full: 9999px
 
   # xs: "4px"
   # sm: "8px"
@@ -255,17 +256,23 @@ radius:
   # lg: "16px"
   # xl: "24px"
   # 2xl: "32px"
-  full: "9999px"
 
-# todo
-scrollbar:
-  width: "8px"
-  thumb: "#bbb"
-  thumb-hover: "#999"
-  thumb-active: "#888"
+border:
+  0: 0px
+  1: 1px
+  2: 2px
+  4: 4px
+  8: 8px
 
-# todo
-focus-ring:
-  color: "rgba(53, 132, 228, 0.5)"
-  width: "2px"
-  offset: "-2px"
+# # todo
+# scrollbar:
+#   width: "8px"
+#   thumb: "#bbb"
+#   thumb-hover: "#999"
+#   thumb-active: "#888"
+
+# # todo
+# focus-ring:
+#   color: "rgba(53, 132, 228, 0.5)"
+#   width: "2px"
+#   offset: "-2px"
