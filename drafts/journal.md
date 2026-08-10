@@ -50062,6 +50062,14 @@ seems ive already had it installed.
 
 18 20 play go on ogs w a 4k.
 
+it can export sgf well.
+
+and, maybe due to its correspondence mindset, only date is recorded on sgf. no start utc or playtime (e.g. chess blitz).
+
+it auto analyzes for free after game. likely a sponsor based site.
+
+<!-- August 10, 2026 6:15 PM - August 10, 2026 6:36 PM -->
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
