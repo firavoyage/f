@@ -50070,7 +50070,7 @@ it auto analyzes for free after game. likely a sponsor based site.
 
 <!-- August 10, 2026 6:15 PM - August 10, 2026 6:36 PM -->
 
-19 40 design a more flexible yaml.
+19 40 design a more flexible yaml. 20 00
 
 i were thinking about this on the bed after wake up.
 
@@ -50134,12 +50134,25 @@ asdf: 3
 # arrays and objects can be mixed (insertion order)
 foo:
   bar: 123
-  - foo
   baz: 456
+  - asdf
 # foo
 #   bar 123
-#   foo
 #   baz 456
+#   asdf
+
+# you can choose to merge as index: primitive | object or index/key: value
+# former: for v, index of yaml, dc if v is object, do sth
+# latter: for k,v of yaml
+
+# example:
+foo:
+  - 
+
+# example:
+foo:
+  - bar: 123
+    baz: 456
 ```
 
 ```yaml
