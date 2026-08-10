@@ -45,8 +45,8 @@ sidebar:
     - university ranking
   calculate:
     - color contrast:
-      - apca # Advanced Perceptual Contrast Algorithm
-      - wcag # wcag 2, Relative Luminance Contrast Ratio
+      - perceptual # apca, Advanced Perceptual Contrast Algorithm
+      -  # wcag, wcag 2, Relative Luminance Contrast Ratio
       - yiq # Luma (Y) Channel Extraction
     - maimai:
       - loss of each note
