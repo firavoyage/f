@@ -50058,6 +50058,10 @@ seems ive already had it installed.
 
 17 40 join ogs.
 
+18 00 replace all "lived by" to "streamed by" on readme.
+
+18 20 play go on ogs w a 4k.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
