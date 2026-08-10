@@ -50060,7 +50060,7 @@ seems ive already had it installed.
 
 18 00 replace all "lived by" to "streamed by" on readme.
 
-18 20 play go on ogs w a 4k.
+18 20 play go on ogs w a 4k. hide board coordinates.
 
 it can export sgf well.
 
