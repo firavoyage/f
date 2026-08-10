@@ -744,7 +744,7 @@ Show all
 
 
 
-# . ai seisei
+# . ai sensei
 
 ```js
 // ==UserScript==
