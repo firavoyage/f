@@ -50070,6 +50070,89 @@ it auto analyzes for free after game. likely a sponsor based site.
 
 <!-- August 10, 2026 6:15 PM - August 10, 2026 6:36 PM -->
 
+19 40 design a more flexible yaml.
+
+i were thinking about this on the bed after wake up.
+
+```yaml
+# colon can be omitted if last arg is the value
+
+foo: bar
+# foo bar
+foo bar: baz
+# foo bar baz
+foo: bar baz
+# foo: bar baz
+user id: 1
+# user id 1
+
+# colon can be omitted for objects (when indented)
+
+foo:
+  - bar
+  - baz
+# foo
+#   - bar
+#   - baz
+foo:
+  bar: 1
+  baz: 2
+  asdf: 3
+# foo
+#   bar 1
+#   baz 2
+#   asd: 3
+
+# btw, it's valid in yaml (though highly discouraged)
+foo:
+- bar
+- baz
+foo:
+bar: 1
+baz: 2
+asdf: 3
+```
+
+```yaml
+# array doesnt have to be prefixed
+
+- foo
+- bar
+- baz
+# foo
+# bar
+# baz
+- foo: bar
+- bar
+- baz
+# foo
+# bar
+# baz
+```
+
+```yaml
+# arrays and objects can be mixed (insertion order)
+foo:
+  bar: 123
+  - foo
+  baz: 456
+# foo
+#   bar 123
+#   foo
+#   baz 456
+```
+
+```yaml
+# objects may have both value (or props/args) and children
+# which would be stored under a special unique key (e.g. props, args, or a symbol)
+foo: default color
+  dark: dark mode color
+  high contrast: high contrast color
+article: .public id=123
+  h1: great news
+  p: lorem ipsum
+```
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
