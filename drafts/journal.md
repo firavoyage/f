@@ -50166,6 +50166,12 @@ article: .public id=123
   p: lorem ipsum
 ```
 
+20 20 pick and buy fullpinhouse, beige.
+
+a simple wooden chair w cotton linen cushion
+
+https://www.smzdm.com/p/159050850/
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
