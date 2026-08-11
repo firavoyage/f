@@ -50245,7 +50245,11 @@ muji ones would be ideal, though none fits my constraints.
 
 19 20 adjust desk height. 19 40
 
-20 00
+19 40 check the schedule and the map of the japan trip. 20 00
+
+from 14 aug to 23 aug.
+
+4 days in osaka, 2 days around mt fuji, and 4 days in tokyo.
 
 
 
