@@ -50228,11 +50228,11 @@ i thought it might be, when it's not listed on their official site, a tw brand.
 
 well, the craft isnt any polished. woods are rough when perforated. the surface is incomprehensively covered by a very thin layer of wax. -->
 
-it's merely functional.
+it looks plain and it's merely functional.
 
 when i was choosing, the constraints are
 
-- it's likely to be wooden
+- it's likely to be wooden, as
   - it should not have wheels as i dont need them
   - it should look simple and elegant rather than sophisticatedly engineered for messy human ergonomics
 - its back must be complete wo blank
@@ -50240,6 +50240,8 @@ when i was choosing, the constraints are
 - it would be placed next to the desk, not inside the living/dining room
 
 i would like to have sth that looks utilitarian but crafted w care.
+
+muji ones would be ideal, though none fits my constraints.
 
 
 
