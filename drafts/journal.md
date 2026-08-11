@@ -50243,6 +50243,10 @@ i would like to have sth that looks utilitarian but crafted w care.
 
 muji ones would be ideal, though none fits my constraints.
 
+19 20 adjust desk height. 19 40
+
+20 00
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
