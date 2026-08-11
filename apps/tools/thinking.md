@@ -40,4 +40,12 @@ moscow is effective. it's factual. it feels objective. it doesnt fit my instinct
 
 <!-- i would not say it's a problem to be solved. but sometimes if you wanna see some results, it's perfectly valid to be progressive on ux (instead of code completeness). -->
 
+---
+
+i feel i should have the tool "tg to journal".
+
+i would 
+
+i would make it builtin. it's trivial to extend later. just, have a persistent state of extensions. for each, create a new function. inject to tool map. then inject to the tools hierarchy, which would determine
+
 
