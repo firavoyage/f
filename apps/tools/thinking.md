@@ -30,6 +30,14 @@ file:///home/fira/Downloads/CyberChef/CyberChef_v11.0.0.html#recipe=From_Base64(
 
 i have to rescope tools.
 
-well, 
+well, if i would not feel right wo it, then it _is_ in scope.
+
+i would categorize them into a few priority groups i guess.
+
+moscow is effective. it's factual. it feels objective. it doesnt fit my instinct.
+
+<!-- well, i would say, moscow is ideal. the flaw isnt about moscow. it's me myself that didnt make the plan comprehensive. for example, i didnt say "provide basic functionality. i can switch tools on sidebar. and editors should work as expected.". instead, i said "create sidebar component" (as if it's decoupled from the logics, well it is, but sidebar itself only provides the state of the selected item). i said "create editor component". to make it ideal, i thought there would be "args on input/output heading" "two way convertion". -->
+
+<!-- i would not say it's a problem to be solved. but sometimes if you wanna see some results, it's perfectly valid to be progressive on ux (instead of code completeness). -->
 
 
