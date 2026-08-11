@@ -29,7 +29,7 @@ body {
 .select,
 .contenteditable {
   &:focus-visible {
-    outline: var(--radius-xs) solid var(--color-bg-selection);
+    outline: var(--border-2) solid var(--color-bg-selection);
   }
 }
 /* a,

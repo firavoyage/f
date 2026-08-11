@@ -279,6 +279,7 @@ web: <!-- frontend, web, ts/js -->
 - js readonly prop writable subprop
 - ts type dict circular reference lazy evaluation
 - js array methods map abstraction
+- css design tokens length units
 
 backend:
 
