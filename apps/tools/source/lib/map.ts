@@ -12,7 +12,7 @@ export function halt(value: any) {
  * 
  * return halt to break
  * 
- * return halt(value) to break w the last value
+ * return halt(value) to break after the last value
  */
 export function map<T>(items: T[], fn: (item: T, index?: number, array?: T[]) => any) {
   const result = []
