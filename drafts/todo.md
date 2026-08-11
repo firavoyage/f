@@ -745,4 +745,12 @@ by tg "last seen"
 
 ---
 
+create an ai go board.
 
+go engines can run on my laptop and phone. it might be slow. but it's absolutely capable.
+
+i may integrate things.
+
+currently only sabaki is elegant. but it's not well engineered in my standard.
+
+---
