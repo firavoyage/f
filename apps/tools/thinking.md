@@ -54,6 +54,6 @@ and, i will have the maimai tools. if there is only one tool in tools, it might 
 
 <!-- yaml is a superset of json -->
 
-there are a bunch of tools i can have. like code formatter/prettier. json to csv (?!). it's not a priority. <!-- you can even convert json to ts/py (auto typing). or to markdown (to csv first). it's quite weird actually. json must be object. and only the first key in the object, which must be an array of objects, will be used. -->
+there are a bunch of tools i can have. like code formatter/prettier. json to csv (?!). it's not a priority. <!-- you can even convert json to ts/py (auto typing). or to markdown (to csv first). it's quite weird actually. json must be object. and only the first key in the object, which must be an array of objects, will be used. keys in the first object dictates the table headings. inconsistent keys in following objects will be appended. anything non literal will be simply stringified (csv could not nest), and escaped if needed. -->
 
 ---
