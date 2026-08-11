@@ -125,6 +125,7 @@ life:
 - snacks terminology
 - go ogs sgf playtime movetime
 - coke pepsi coke coke zero
+- tea lipton yellow label green jasmine oolong amazingly grey
 
 create something:
 
