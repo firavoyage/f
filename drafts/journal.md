@@ -50188,7 +50188,7 @@ border: 1px
 
 20 20 pick and buy a simple wooden chair w beige chusion of cotton linen.
 
-from fullpinhouse, https://www.smzdm.com/p/159050850/
+~~from fullpinhouse~~, https://www.smzdm.com/p/159050850/
 
 23 50 make tmux smarter. release tmux 0.4.
 
@@ -50219,6 +50219,27 @@ c
 ```md
 <!-- perfertionism/procrastination -->
 ```
+
+18 20 build the chair. 19 00
+
+<!-- it _was_ a scam. 
+
+i thought it might be, when it's not listed on their official site, a tw brand.
+
+well, the craft isnt any polished. woods are rough when perforated. the surface is incomprehensively covered by a very thin layer of wax. -->
+
+it's merely functional.
+
+when i was choosing, the constraints are
+
+- it's likely to be wooden
+  - it should not have wheels as i dont need them
+  - it should look simple and elegant rather than sophisticatedly engineered for messy human ergonomics
+- its back must be complete wo blank
+- it should have arms
+- it would be placed next to the desk, not inside the living/dining room
+
+i would like to have sth that looks utilitarian but crafted w care.
 
 
 
