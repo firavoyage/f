@@ -19,14 +19,14 @@ sidebar:
     timestamp utc: # i may rethink the label "utc" to match the broader term
       - timestamp to utc # arg: timezone (when to utc), fmt
       - utc to timestamp
-    color:
-      - auto # from anything to all
-      - hex
-      - rgb
-      - hsl
-      - hsv
-      - cmyk
-      - oklch
+    # color:
+    #   - auto # from anything to all
+    #   - hex
+    #   - rgb
+    #   - hsl
+    #   - hsv
+    #   - cmyk
+    #   - oklch
   encode/decode:
     - base64
     - url

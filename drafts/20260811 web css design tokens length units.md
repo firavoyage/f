@@ -1814,6 +1814,8 @@ Would you like to see how to use these layout constraints alongside **flexbox or
 
 google ai mode does adopt it. it's an explicit 652px on css.
 
+upd: even on google search main page there is a clear `--center-width: 652px`.
+
 # how to omit some folders for vscode css intellisense
 
 To omit folders from VS Code CSS IntelliSense, you can configure your **`settings.json`** file using either built-in file watcher exclusions or extension-specific settings. [link](https://stackoverflow.com/questions/71141265/setting-up-vscode-to-include-exclude-folders-for-c-intellisense)

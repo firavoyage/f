@@ -44,8 +44,16 @@ moscow is effective. it's factual. it feels objective. it doesnt fit my instinct
 
 i feel i should have the tool "tg to journal".
 
-i would 
+it would parse and make it an array, then convert based on the predefined time precision.
 
-i would make it builtin. it's trivial to extend later. just, have a persistent state of extensions. for each, create a new function. inject to tool map. then inject to the tools hierarchy, which would determine
+i would make it builtin. it's trivial to extend later. just, have a persistent state of extensions. for each, create a new function. inject to tool map. then inject to the tools hierarchy, which would determine the sidebar and the command palette.
 
+in the future i would integrate it w have. like, "tg to have", or "import from tg desktop via clipboard/data export".
 
+and, i will have the maimai tools. if there is only one tool in tools, it might be maimai. most tools are basically wrappers of ubiquitous libs, like, you can convert json to yaml anywhere.
+
+<!-- yaml is a superset of json -->
+
+there are a bunch of tools i can have. like code formatter/prettier. json to csv (?!). it's not a priority. <!-- you can even convert json to ts/py (auto typing). or to markdown (to csv first). it's quite weird actually. json must be object. and only the first key in the object, which must be an array of objects, will be used. -->
+
+---
