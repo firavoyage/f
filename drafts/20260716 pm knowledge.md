@@ -7578,4 +7578,799 @@ If you are currently organizing a product backlog, let me know:
 
 Show all
 
+# . decision: separate todo and backlog
 
+**be explicit.**
+
+if yk what you are doing, just write it down.
+
+wip has to be achieveable.
+
+todo can be larger. it can be clear to have a set of related tasks.
+
+# compare scrum and kanban
+
+The primary difference between Scrum and Kanban is that <mark><strong>Scrum relies on highly structured, time-boxed iterations called Sprints, while Kanban focuses on a flexible, continuous workflow with no fixed timelines</strong></mark>. Both are popular Agile frameworks designed to improve team collaboration, transparency, and adaptability, but they organize and execute work entirely differently. [link](https://www.atlassian.com/agile/kanban/kanban-vs-scrum)
+
+### Core Differences Breakdown
+
+| Feature            | Scrum                                                                                             | Kanban                                                                                                          |
+| ------------------ | ------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| **Cadence**        | Fixed-length [Sprints (1 to 4 weeks)](https://www.coursera.org/articles/kanban-vs-scrum).         | Continuous flow [with no fixed iterations](https://www.mendix.com/blog/kanban-vs-scrum/).                       |
+| **Roles**          | Strict roles ([Product Owner, Scrum Master, Developers](https://agilemania.com/scrum-vs-kanban)). | No predefined roles built into the framework.                                                                   |
+| **Change Policy**  | Scope is locked during a Sprint to maintain focus.                                                | Items can be [added or reprioritized at any time](https://asana.com/resources/waterfall-agile-kanban-scrum).    |
+| **Focus Metric**   | [Velocity (story points delivered per Sprint)](https://www.bmc.com/blogs/scrum-vs-kanban/).       | Cycle time, lead time, and throughput.                                                                          |
+| **Work Limits**    | Limited by what the team commits to per Sprint.                                                   | Explicit [Work-in-Progress (WIP) limits per column](https://www.wrike.com/kanban-guide/kanban-vs-scrum/).       |
+| **Board Lifespan** | The [board resets after every Sprint](https://www.zoho.com/sprints/kanban-vs-scrum.html) cycle.   | Persistent board [tracking ongoing workflow stages](https://business.adobe.com/au/blog/basics/kanban-vs-scrum). |
+
+### How Scrum Works
+
+Scrum is highly prescriptive. Teams commit to a batch of backlog items for a set timeframe (the Sprint). To keep the process moving, Scrum mandates specific ceremonies: [link](https://www.planview.com/resources/guide/introduction-to-kanban/kanban-vs-scrum/)
+
+- **Sprint Planning**: Selecting and estimating work for the next iteration.
+- **Daily Scrum**: A quick huddle to sync progress and discuss roadblocks.
+- **Sprint Review & Retrospective**: Occurring at the end of the sprint to demo completed work to stakeholders and optimize internal processes. [link](https://resources.scrumalliance.org/Article/scrum-vs-kanban)
+
+### How Kanban Works
+
+Kanban is lean and focused on visual work management. Tasks are mapped onto a board with custom columns (e.g., "To Do", "In Review", "Done"). It operates on a "pull" system—when a developer finishes a task, they pull the next highest priority item from the backlog. Teams enforce WIP limits to cap the number of active tasks allowed in a column simultaneously, which forces the team to resolve existing bottlenecks before taking on new work. [link](https://www.reddit.com/r/projectmanagement/comments/1d6qihe/can%5Fsomeone%5Fplease%5Fexplain%5Fkanban%5Fscrum%5Fjira%5Fand/)
+
+### When to Use Which?
+
+- **Choose Scrum if**: You are developing a complex product from scratch, have stable priorities, want strong structured collaboration, and require regular release milestones for customer feedback. [link](https://resources.scrumalliance.org/Article/scrum-vs-kanban)
+- **Choose Kanban if**: Your workflow is operational, ticket-driven, or unpredictable (like IT support, bug fixing, or content creation), where priorities change daily and work must be deployed immediately. [link](https://instituteprojectmanagement.com/blog/kanban-vs-scrum/)
+
+_Note: Many teams combine these methods into a hybrid model called **Scrumban**, pulling the continuous flow and WIP limits of Kanban into Scrum's sprint structure._ [link](https://www.atlassian.com/agile/kanban/kanban-vs-scrum)
+
+If you are looking to choose a framework for a specific team, please share **the type of project** you are running and **how frequently your priorities shift** so we can determine the best approach.
+
+- [link](https://www.reddit.com/r/projectmanagement/comments/q8mp8m/kanban%5Fvs%5Fscrum/)\
+  Kanban vs Scrum : r/projectmanagement - Reddit\
+  Oct 15, 2021 — The key difference, for me, is that Scrum uses Sprints, whereas Kanban doesn't. Sprints commit a team to an agreed set of outcomes...\
+  Reddit·r/projectmanagement
+- [link](https://www.atlassian.com/agile/kanban/kanban-vs-scrum)\
+  Kanban vs scrum - Agile - Atlassian\
+  Kanban vs Scrum compares two Agile frameworks: kanban focuses on continuous flow and WIP limits, while Scrum uses fixed-length spr...\
+  Atlassian
+- [link](https://www.geeksforgeeks.org/blogs/difference-between-scrum-and-kanban/)\
+  Kanban vs. Scrum : Top Differences You Should Know\
+  Oct 18, 2025 — Kanban vs. Scrum : Top Differences You Should Know \* In Agile Project Management, Kanban and Scrum are two of the most widely used...\
+  GeeksforGeeks
+
+Show all
+
+## is scrumban more common
+
+<mark><span>No,<span> </span></span><strong>Scrumban is not more common than pure Scrum or pure Kanban</strong></mark>. Industry data, including the annual State of Agile reports, consistently shows that **Scrum remains the most dominant Agile framework** used worldwide, with Kanban following as the second most popular. [link](https://www.coursera.org/articles/kanban-vs-scrum)
+
+Scrumban is a specialized hybrid framework that teams typically adopt later as they mature or transition between methodologies. [link](https://instituteprojectmanagement.com/blog/kanban-vs-scrum/)
+
+### Methodology Adoption Rates
+
+While specific survey numbers vary by year, general industry adoption across engineering teams breaks down roughly as follows:
+
+- **Scrum (Most Common)**: Roughly 50% to 60% of Agile teams use pure Scrum or Scrum-based hybrids.
+- **Kanban**: Roughly 30% to 56% of organizations use Kanban boards.
+- **Scrumban (Least Common)**: Only about 27% of surveyed organizations report using Scrumban. [link](https://www.coursera.org/articles/kanban-vs-scrum)
+
+### Why Scrumban is Less Common
+
+- **Lacks Official Standardization**: Scrum has the official _Scrum Guide_ and global certifying bodies (like Scrum.org). Scrumban lacks a single, globally recognized authority, making it harder for companies to train or hire for.
+- **Prone to Implementation Failure**: Many teams accidentally create a chaotic version of "Scrumban" simply because they want to ignore Scrum's strict deadlines and Kanban's WIP limits. Doing it correctly requires a high level of process discipline. [link](https://www.applause.com/blog/kanban-vs-scrum-vs-scrumban-agile-teams/)
+- **Used Largely as a Transition Tool**: Many teams do not stay on Scrumban permanently. They use it temporarily to ease the friction when moving a team from rigid Scrum sprint structures over to a continuous Kanban model. [link](https://instituteprojectmanagement.com/blog/kanban-vs-scrum/)
+
+### How They Compare Structurally
+
+Scrumban essentially acts as a compromise, pulling distinct mechanics from both parental frameworks:
+
+| Metric / Feature       | Scrum                   | Kanban                 | Scrumban                          |
+| ---------------------- | ----------------------- | ---------------------- | --------------------------------- |
+| **Workflow**           | Iterative (Sprints)     | Continuous Flow        | Continuous Flow                   |
+| **Planning Cadence**   | Every Sprint            | Continuous / On-demand | On-demand (when backlog runs low) |
+| **Core Constraints**   | Timebox (Sprint Length) | WIP Limits             | WIP Limits                        |
+| **Roles & Ceremonies** | Strict and mandatory    | None prescribed        | Optional / As needed              |
+
+If you are trying to roll out a framework, let me know **your team's current level of Agile experience** or **what project management tools you use (like Jira or Trello)** so I can suggest which setup will be easiest to implement.
+
+- [link](https://www.reddit.com/r/agile/comments/wjrhh1/scrumban%5Fhow%5Fis%5Fit%5Fdifferent%5Ffrom%5Fkanban/)\
+  Reddit·r/agile\
+  Scrumban - How is it different from Kanban? : r/agile - Reddit\
+  Aug 9, 2022 — Absolutely nothing wrong with it, in my opinion. If it works for your team and it produces results - do it! I'm just saying that t...
+- [link](https://miro.com/kanban/scrum-vs-kanban-vs-scrumban/)\
+  Miro\
+  Scrum vs Kanban vs Scrumban: Which Agile Method Wins?\
+  Oct 2, 2025 — Summary. In this guide, you will learn: Core differences: Scrum, Kanban, Scrumban (planning, roles, workflow). Scrum: Structured, ...
+- [link](https://www.coursera.org/articles/kanban-vs-scrum)\
+  Coursera\
+  Kanban vs. Scrum: What's the Difference? - Coursera\
+  Jan 24, 2026 — Kanban uses principles from both Agile and Lean. Kanban can be used easily with other methodologies and is often used in tandem wi...
+
+Show all
+
+# compare scrum kanban and scrumban
+
+<mark><strong><span>Scrum</span></strong><span> </span>is a highly structured framework centered on fixed-time iterations,<span> </span><strong>Kanban</strong><span> </span>is a flexible method focused on continuous workflow visualization, and<span> </span><strong>Scrumban</strong><span> </span>is a hybrid approach that applies Kanban's flow principles to Scrum's structured foundation</mark>. [link](https://miro.com/kanban/scrum-vs-kanban-vs-scrumban/)
+
+### Framework Comparison at a Glance
+
+| Feature          | Scrum                                   | Kanban                                       | Scrumban                                     |
+| ---------------- | --------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| **Cadence**      | Regular, time-boxed Sprints (1–4 weeks) | Continuous delivery without fixed intervals  | Continuous workflow with optional milestones |
+| **Core Metrics** | Team Velocity                           | Lead Time and Cycle Time                     | Lead Time and Cycle Time                     |
+| **Task Limits**  | Limited by Sprint Backlog capacity      | Strictly controlled by WIP limits per column | Strictly controlled by WIP limits per column |
+| **Roles**        | Product Owner, Scrum Master, Developers | No specialized roles required                | Optional (often keeps the Product Owner)     |
+| **Estimation**   | Mandatory (Story Points or hours)       | Optional / Not required                      | Generally skipped (treated as waste)         |
+| **Planning**     | Fixed Sprint Planning sessions          | Continuous, capacity-based planning          | On-demand (triggered by low inventory)       |
+
+### Scrum: Structure and Predictability
+
+Scrum operates like a heartbeat, organizing team progress into rigid, repeatable cycles. [link](https://www.youtube.com/watch?v=%5FrhGaMSkeO4\&t=293)
+
+- **Commitment**: The team locks in a specific batch of work during Sprint Planning and protects it from mid-sprint changes.
+- **Ceremonies**: Relies on mandatory events, including the Daily Scrum, Sprint Review, and Sprint Retrospective.
+- **Best Used For**: Complex, product-driven initiatives requiring high predictability and synchronized team delivery. [link](https://www.youtube.com/watch?v=Z8gY91Ld3AQ\&t=39)
+
+### Kanban: Flexibility and Continuous Flow
+
+Kanban views project-based work as a continuous pipeline, relying heavily on real-time visualization. [link](https://www.wrike.com/project-management-guide/faq/kanban-vs-scrum-vs-scrumban-what-are-the-differences/)
+
+- **The Pull System**: Team members pull new tasks from the backlog only when current tasks are completed.
+- **WIP Limits**: Work-in-Progress (WIP) caps prevent multitasking bottlenecks by limiting active items in each status column.
+- **Best Used For**: Operational, support, or maintenance environments where priorities shift rapidly due to incoming production tickets. [link](https://www.wrike.com/project-management-guide/faq/kanban-vs-scrum-vs-scrumban-what-are-the-differences/)
+
+### Scrumban: The Balanced Hybrid
+
+Scrumban extracts the systemization of Scrum and drops it into the highly visual, low-overhead environment of Kanban. [link](https://medium.com/agileinsider/comparison-of-scrum-vs-scrumban-vs-kanban-1d1d2b9a9fd5)
+
+- **On-Demand Planning**: Instead of weekly planning sessions, teams trigger planning only when the "To Do" column runs low on tasks.
+- **Reduced Overhead**: It removes rigid time-boxes and estimation requirements, yet keeps a prioritized product backlog.
+- **Best Used For**: Teams transitioning from Scrum to Kanban, fast-paced startups, or projects mixing long-term development with unexpected support issues. [link](https://www.wrike.com/project-management-guide/faq/kanban-vs-scrum-vs-scrumban-what-are-the-differences/)
+
+To help tailor this, let me know:
+
+- What **type of product** or service is your team building?
+
+- How frequently do your **priorities change** mid-week?
+
+- Does your team prefer **rigid deadlines** or a fluid schedule?
+
+- [link](https://www.reddit.com/r/agile/comments/wjrhh1/scrumban%5Fhow%5Fis%5Fit%5Fdifferent%5Ffrom%5Fkanban/)\
+  Scrumban - How is it different from Kanban? : r/agile - Reddit\
+  Aug 9, 2022 — Scrum is a framework, Kanban is a method. Both have specific rules, definitions, etc. Scrumban has been created because people cou...\
+  Reddit·r/agile
+
+- [link](https://www.reddit.com/r/agile/comments/la2eee/difference%5Fbetween%5Fkanban%5Fscrumban%5Fin%5Fsoftware/)\
+  Difference between Kanban & Scrumban in software development\
+  Feb 2, 2021 — might help you understand what Scrumban might be. \* V3r1ty. • 6y ago. The most practical part of scrum IMO is limiting work in pro...\
+  Reddit·r/agile
+
+- [link](https://miro.com/kanban/scrum-vs-kanban-vs-scrumban/)\
+  Scrum vs Kanban vs Scrumban: Which Agile Method Wins?\
+  Oct 2, 2025 — At the core, Scrum is a structured framework, while Kanban is a flow-based system. \* Structure vs. flow. In Scrum, work is organiz...\
+  Miro
+
+Show all
+
+## pros cons
+
+### Scrum: Pros and Cons
+
+#### Pros
+
+- **High Predictability**: Fixed timeboxes help leadership forecast release dates based on velocity.
+- **Clear Ownership**: Defined roles ensure everyone knows who prioritizes features and who removes obstacles.
+- **Continuous Improvement**: Mandatory retrospectives force the team to optimize processes every single sprint.
+- **Team Alignment**: Cross-functional members stay synchronized through daily coordination meetings.
+
+#### Cons
+
+- **Scope Rigidly**: Rejecting mid-sprint changes can frustrate stakeholders in fast-moving environments.
+- **Meeting Fatigue**: Heavy overhead from planning, grooming, reviews, and retrospectives drains development time.
+- **Estimation Overhead**: Estimating story points can become an inaccurate, time-consuming exercise.
+- **Burnout Risk**: The constant rush to finish a sprint backlog can lead to technical debt and stress.
+
+***
+
+### Kanban: Pros and Cons
+
+#### Pros
+
+- **Ultimate Flexibility**: Teams can change priorities instantly without breaking sprint commitments.
+- **Maximized Efficiency**: Work-in-Progress (WIP) limits expose bottlenecks and prevent multitasking.
+- **Reduced Overhead**: Zero mandatory ceremonies keep developers focused strictly on building features.
+- **Faster Delivery**: Optimizing cycle times helps individual tasks reach production much quicker.
+
+#### Cons
+
+- **Less Predictability**: Without fixed iterations, long-term release dates are harder to guarantee.
+- **Role Confusion**: Lack of defined roles can lead to a lack of clear accountability or direction.
+- **Board Maintenance**: If teams ignore WIP limits, the board quickly becomes cluttered and useless.
+- **Scope Creep**: Continuous ingestion of tasks makes it easy to lose sight of the overarching product vision.
+
+***
+
+### Scrumban: Pros and Cons
+
+#### Pros
+
+- **Best of Both**: Combines the structural backlog of Scrum with the fluid workflow of Kanban.
+- **Just-In-Time Planning**: Eliminates hours of sprint planning by only planning when inventory runs low.
+- **Smooth Transition**: Allows strict Scrum teams to safely migrate toward agile maturity at their own pace.
+- **High Adaptability**: Accommodates sudden production emergencies without derailing long-term milestones.
+
+#### Cons
+
+- **Lack of Definition**: No official, universally accepted blueprint exists, making it easy to implement poorly.
+- **Metric Complexity**: Tracking metrics is difficult because teams must monitor both velocity and cycle time.
+- **Tracking Slacking**: Without the hard deadline of a sprint review, tasks can suffer from timeline drift.
+- **Low Tool Support**: Many project management tools lack native, out-of-the-box configurations for this hybrid style.
+
+If you are trying to select a framework, let me know:
+
+- What **project management tool** (like Jira, Asana, or Monday.com) do you currently use?
+
+- What is the **biggest bottleneck or frustration** your team faces right now?
+
+- [link](https://www.quickstart.com/blog/business-productivity/pros-and-cons-of-scrum-methodology/)\
+  Scrum Master Jobs: Positions & Cert Guide QuickStart\
+  Jul 9, 2024 — Pressure on team members: Scrum can increase pressure and time commitment for team members, potentially leading to burnout.\
+  \
+  \
+  QuickStart
+
+- [link](https://www.quickstart.com/blog/business-productivity/pros-and-cons-of-scrum-methodology/)\
+  Scrum Master Jobs: Positions & Cert Guide QuickStart\
+  Jul 9, 2024 — Despite the challenges associated with the Scrum methodology, the benefits offset the drawbacks in most scrum master jobs. Scrum's...\
+  \
+  \
+  QuickStart
+
+- [link](https://www.forbes.com/advisor/business/software/best-scrum-software/)\
+  Best Scrum Software – Forbes Advisor - Business\
+  Feb 27, 2024 — In the battle between Kanban vs scrum, Kanban is considered simpler and less rigid. It's good for ongoing work and you can change ...\
+  \
+  \
+  Forbes
+
+## examples
+
+### Scrum Example: Building a Mobile Banking App
+
+A financial tech team is building a new mobile app from scratch. They need strict predictability because marketing has already scheduled the launch date.
+
+- **The Team**: 1 Product Owner, 1 Scrum Master, 4 Developers, and 2 QA Engineers.
+- **The Workflow**: They work in **2-week Sprints**. During Sprint Planning, they commit to building the "User Profile" and "Check Deposit" features.
+- **The Reality**: On day 5, the CEO requests an emergency feature: "Crypto Wallets." The Product Owner says, _"No, that goes into the Backlog for the next Sprint."_ The team remains focused, finishes their committed features, and demos them to stakeholders on day 10 during the Sprint Review.
+
+### Kanban Example: IT Support and Server Maintenance
+
+A cloud infrastructure team manages server uptime and handles incoming internal technical issues. They cannot predict what problems will happen today.
+
+- **The Team**: 5 Systems Engineers. No specialized roles.
+- **The Workflow**: Their board has columns for _To Do_, _In Progress_, _Testing_, and _Done_. They set a **WIP Limit of 3** on the _In Progress_ column.
+- **The Reality**: The morning starts quietly, but at 10:00 AM, a critical server crashes. A "High Priority" ticket instantly lands on the board. Because they have a strict WIP limit, an engineer immediately finishes their current minor task and pulls the server crash ticket into progress. No meetings are required to shift priorities.
+
+### Scrumban Example: Growing Startup Launching a SaaS Platform
+
+A fast-growing software startup is scaling up its existing product. They need to build long-term roadmap features while simultaneously fixing random bugs reported by early users.
+
+- **The Team**: 1 Product Manager (acting as Product Owner) and 6 Full-Stack Developers.
+- **The Workflow**: They do not use fixed 2-week sprints. Instead, they use a Kanban board with an **Order Point of 5**. When the _To Do_ column drops down to only 5 tasks, it automatically triggers a short, 15-minute planning meeting to pull fresh items from the product backlog.
+- **The Reality**: The developers work through the roadmap smoothly. Suddenly, three major bug reports come in from live users. The Product Manager drops these bugs straight into the _To Do_ column. Because the team isn't locked into a rigid sprint commitment, they handle the bugs immediately without breaking any "rules," then smoothly transition back to roadmap tasks.
+
+To see how this applies to your situation, let me know:
+
+- Which of these three scenarios **sounds most like your team's daily reality**?
+
+- Are you managing a **single product** or handling **reactive service requests**?
+
+# scrum pm
+
+11:50 AM
+
+In the official Scrum framework, <mark><strong>the specific title of "Project Manager" (PM) does not exist</strong></mark>. Instead, the traditional responsibilities of a PM are split across the three core Scrum roles: the **Product Owner** (manages scope and direction), the **Scrum Master** (manages process and roadblocks), and the **Developers** (manage day-to-day execution). [link](https://www.reddit.com/r/agile/comments/1o0f3gt/super%5Fconfused%5Fabout%5Fpm%5Fpo%5Fand%5Fscrum%5Fmaster%5Farent/)
+
+### How Traditional PM Responsibilities Split in Scrum
+
+Because Scrum relies on self-managing, cross-functional teams, the centralized command-and-control authority of a traditional PM is distributed to optimize execution speed and adaptability: [link](https://www.youtube.com/watch?v=M12HSYZkrgQ\&t=4)
+
+- **The Product Owner (Scope & Value):** Takes over the "What" and "Why" of a project. They own the product vision, define requirements via user stories, and maintain the prioritized **Product Backlog**. [link](https://www.youtube.com/watch?v=SWDhGSZNF9M)
+- **The Scrum Master (Process & Facilitation):** Takes over execution health as a servant-leader. Instead of assigning tasks, they protect the team from external distractions, remove blockers, and facilitate core ceremonies. [link](https://www.wrike.com/scrum-guide/what-is-scrum/)
+- **The Developers (Execution & Estimation):** Take over the "How" and "How Much". The development team self-organizes to decide how to build the required features and collectively estimates what they can deliver during a fixed-length **Sprint**. [link](https://sps.wfu.edu/articles/what-is-scrum-project-management/)
+
+### Traditional Project Manager vs. Scrum Master
+
+When organizations transition from traditional Waterfall management to Agile, Project Managers frequently transition into Scrum Masters. However, their core focus shifts fundamentally: [link](https://www.coursera.org/gb/articles/scrum-master-vs-project-manager)
+
+| Feature             | Traditional Project Manager (PM)           | Scrum Master (SM)                          |
+| ------------------- | ------------------------------------------ | ------------------------------------------ |
+| **Core Philosophy** | Command and control; managing plans.       | Servant leadership; coaching teams.        |
+| **Task Assignment** | Directs who does what and when.            | Empowers the team to self-organize.        |
+| **Primary Metric**  | Adherence to budget, scope, and timeline.  | Team velocity, health, and value delivery. |
+| **Problem Solving** | Manages risks and adjusts the master plan. | Removes immediate workflow blockers.       |
+
+### Hybrid "Agile Project Manager" Roles
+
+In large enterprises, a hybrid **Agile Project Manager** role often exists outside the formal Scrum Guide boundaries. They bridge the gap between agile execution teams and corporate leadership by managing high-level budgets, cross-team cross-dependencies, legal procurement, and organizational stakeholder reporting. [link](https://www.reddit.com/r/agile/comments/1o0f3gt/super%5Fconfused%5Fabout%5Fpm%5Fpo%5Fand%5Fscrum%5Fmaster%5Farent/)
+
+If you are evaluating your career direction or organizing a team, let me know:
+
+- Are you looking to **transition from a PM to an Agile role**?
+
+- Do you need help **setting up a Scrum team framework**?
+
+- Are you looking for the best **Scrum software tools**?
+
+- [link](https://www.reddit.com/r/agile/comments/1o0f3gt/super%5Fconfused%5Fabout%5Fpm%5Fpo%5Fand%5Fscrum%5Fmaster%5Farent/)\
+  super confused about PM, PO, and Scrum Master aren't they ...\
+  Does nobody read the Scrum Guide anymore? Are we all just making up Scrum as we go? We don't need "opinions" on this topic. It's l...\
+  Reddit
+
+- [link](https://www.wrike.com/scrum-guide/what-is-scrum/)\
+  What is Scrum? A beginner's guide to the Scrum framework\
+  What is Scrum? A beginner's guide to the Scrum framework \* Scrum is an Agile project management methodology that allows for rapid ...\
+  Wrike
+
+- [link](https://www.youtube.com/watch?v=M12HSYZkrgQ\&t=4)\
+  What Is Scrum in Project Management?\
+  scrum is a project management methodology involving a specific set of meetings tools and roles that help teams manage and accompli...\
+  2m\
+  YouTube·Wrike
+
+Show all
+
+# scrum roles
+
+A Scrum team consists of exactly **three core accountabilities (traditionally called roles)**: <mark>the<span> </span><strong>Product Owner</strong>, the<span> </span><strong>Scrum Master</strong>, and the<span> </span><strong>Developers</strong></mark>. Together, they form a cohesive, self-managing, and cross-functional unit designed to deliver valuable product increments in short cycles called Sprints. [link](https://resources.scrumalliance.org/Article/scrum-team)
+
+### 1. The Product Owner (PO)
+
+The Product Owner is focused on **maximizing the value of the product** resulting from the team's work. They serve as the visionary who bridges the gap between stakeholders, customers, and the production team. [link](https://www.wrike.com/scrum-guide/scrum-team-roles/)
+
+- **Backlog Management:** Owns, prioritizes, and clearly defines the Product Backlog items.
+- **Strategy:** Aligns the team's daily tasks with the overarching product roadmap and vision.
+- **Value Optimization:** Decides _what_ needs to be built and in what order to deliver maximum customer value.
+- **Boundary:** They do not assign tasks or dictate how the technical work is executed. [link](https://www.wrike.com/scrum-guide/scrum-team-roles/)
+
+### 2. The Scrum Master (SM)
+
+The Scrum Master is a servant-leader accountable for **establishing and upholding Scrum** as defined in the Scrum Guide. They focus on optimization, health, and team dynamics. [link](https://resources.scrumalliance.org/Article/scrum-team)
+
+- **Facilitation:** Guides Scrum events like Sprint Planning, Daily Scrums, Reviews, and Retrospectives.
+- **Impediment Removal:** Proactively clears blockers and organizational hurdles that slow the team down.
+- **Coaching:** Mentors the team on self-management, cross-functionality, and continuous process improvement.
+- **Boundary:** They are not traditional project managers; they manage the _process_, not the people or deadlines. [link](https://www.6sigmacertificationonline.com/what-is-scrum/)
+
+### 3. Developers
+
+The Developers are the team members explicitly **accountable for creating the usable product increment** during each Sprint. Despite the name "developer," this group comprises any specialist needed to finish the work. [link](https://resources.scrumalliance.org/Article/scrum-team)
+
+- **Execution:** Turn selected backlog items into a "Done" functional increment.
+- **Sprint Backlog Ownership:** Create and adapt the tactical plan for the current Sprint on a daily basis.
+- **Autonomy:** Collectively decide _how_ to accomplish the workload without outside managerial direction.
+- **Composition:** Includes programmers, testers, UX designers, architects, and writers—all operating without internal hierarchies. [link](https://resources.scrumalliance.org/Article/scrum-team)
+
+### Scrum Accountabilities Overview
+
+| Feature / Responsibility | Product Owner             | Scrum Master                     | Developers                    |
+| ------------------------ | ------------------------- | -------------------------------- | ----------------------------- |
+| **Primary Focus**        | Product Value & Strategy  | Process Effectiveness & Coaching | Product Increment Execution   |
+| **Key Artifact Owned**   | Product Backlog           | None (Facilitates adoption)      | Sprint Backlog                |
+| **Answers the Question** | _What_ to build and _Why_ | _How_ to optimize the framework  | _How_ to design and implement |
+| **Typical Team Size**    | Exactly 1                 | Exactly 1                        | Typically 3 to 8 members      |
+
+If you are setting up or restructuring a team, tell me:
+
+- What **industry or type of product** are you building?
+- Do you have **existing job titles** (like Project Managers or Tech Leads) you are trying to map to these roles?
+- What is your **ideal team size**?
+
+I can provide a tailored blueprint on how to distribute these accountabilities effectively within your organization.
+
+- [link](https://www.atlassian.com/agile/scrum/roles)\
+  Agile scrum roles and responsibilities - Atlassian\
+  The main roles in a Scrum team are the Product Owner, Scrum Master, and Development Team. The Product Owner defines and prioritize...\
+  Atlassian
+- [link](https://resources.scrumalliance.org/Article/scrum-team)\
+  The Scrum Team Roles and Accountabilities\
+  Scrum defines three roles that make up a scrum team: \* \*\*Developers\*\* Decide how to accomplish the work set forth by the product o...\
+  Scrum Alliance
+- [link](https://www.wrike.com/scrum-guide/scrum-team-roles/)\
+  Introduction to Scrum Team and Roles | Wrike Scrum Guide\
+  Apr 6, 2026 — \* What is Scrum methodology? \* When was Scrum methodology introduced? \* When to use Scrum methodology. \* Agile vs. Scrum. \* Why Sc...\
+  Wrike
+
+Show all
+
+## what does sm do
+
+The **Scrum Master (SM)** is <mark>accountable for the team's effectiveness and for establishing Scrum</mark> according to the Scrum Guide. They serve as a coach, facilitator, and roadblock clearer for the team and the wider organization.
+
+### Core Responsibilities
+
+- **Clears Obstacles**: Removes blockers that slow down or stop the team's progress.
+- **Facilitates Events**: Guides Sprint Planning, Daily Scrums, Sprint Reviews, and Retrospectives.
+- **Coaches the Team**: Mentors members in self-management, focus, and cross-functional collaboration.
+- **Protects the Team**: Shields developers from outside distractions, interruptions, and scope creep.
+- **Helps the Product Owner**: Teaches techniques for effective backlog management and clear goal-setting.
+- **Guides the Organization**: Leads Scrum adoption, trains stakeholders, and removes institutional hurdles.
+
+### What a Scrum Master is NOT
+
+- **Not a Project Manager**: They do not assign tasks, track timesheets, or manage budgets.
+- **Not a Secretary**: They do not just book meetings and take notes; the team shares administrative work.
+- **Not the Boss**: They hold no disciplinary authority and do not conduct performance reviews.
+
+If you are dealing with a specific team challenge, tell me:
+
+- What **specific issue** is the team facing right now?
+- Is there friction between **specific roles**?
+- Are you looking for **metrics** to track their impact?
+
+I can give you a practical action plan or templates to handle the situation.
+
+- [link](https://www.scrum.org/resources/what-scrum-master)\
+  What is a Scrum Master?\
+  A Scrum Master is the member of the Scrum Team that is accountable for the Scrum Team's effectiveness and for establishing Scrum a...\
+  \
+  Scrum.org
+- [link](https://www.sprintconsulting.com/blog-sprint/who-is-the-scrum-master/)\
+  Who is the Scrum Master? – The meaning of the Scrum Master role\
+  Mar 31, 2023 — Although the Scrum Guide states that the introduction of Scrum is also the duty of the Scrum Master („The Scrum Master is accounta...\
+  \
+  \
+  www.sprintconsulting.com
+- [link](https://www.stxnext.com/blog/introduction-scrum-development)\
+  What Is Scrum, Anyway? An Introduction to Scrum Development\
+  Apr 8, 2025 — Who is a Scrum Master? What Does a Scrum Master Do? The Scrum Master (SM) The Scrum Master is accountable for the Scrum Team's eff...\
+  \
+  \
+  STX Next
+
+Show all
+
+## how much does sm matter
+
+The **Scrum Master matters immensely** to a team's success; study data consistently shows that high-performing agile teams almost always have strong Scrum Masters. Without one, teams routinely slide back into old "waterfall" habits, struggle with endless external interruptions, and fail to fix recurring process bottlenecks.
+
+### Why a Scrum Master Matters
+
+- **Drives Continuous Improvement**: Teams without an SM rarely fix process issues during Retrospectives.
+- **Protects Profitability**: They shield developers from distractions, increasing focus, speed, and delivery predictability.
+- **Accelerates Delivery**: By systematically removing operational roadblocks, they keep production lines moving fast.
+- **Prevents Team Burnout**: They act as a buffer against unrealistic stakeholder demands and scope creep.
+- **Breaks Organizational Silos**: They educate business leaders to align company culture with agile delivery.
+
+### Quantifiable Impact
+
+Data from agile benchmark studies (such as the Annual State of Agile reports and Scrum Alliance research) highlights a stark difference between teams with and without dedicated Scrum Master support:
+
+| Metric                      | With an Effective Scrum Master        | Without a Scrum Master / "Part-Time"      |
+| --------------------------- | ------------------------------------- | ----------------------------------------- |
+| **Delivery Predictability** | High (80%+ of Sprint goals met)       | Low (Constant missed deadlines)           |
+| **Cycle Time (Speed)**      | Declines steadily over time           | Stagnates due to unresolved blockers      |
+| **Team Morale**             | High (Clear boundaries, low friction) | Low (High burnout, constant distractions) |
+| **Product Quality**         | High (Focus on "Definition of Done")  | Low (Technical debt builds up fast)       |
+
+### The "Invisible" Value Dilemma
+
+A common corporate trap is assuming a Scrum Master does nothing because **their ultimate goal is to become invisible**. When an SM is highly successful, the team runs so smoothly, self-organizes so well, and clears blockers so fast that outsiders mistakenly think the role is redundant. However, removing the Scrum Master at that peak usually triggers a slow decline back into chaos.
+
+If you are evaluating this role for your organization, tell me:
+
+- Are you considering **eliminating** the role or making it **part-time**?
+- What **frustrations or symptoms** make you question their value?
+- Do you need help defining **KPIs to measure** their performance?
+
+I can help you build a case for the role or design a lean agile structure.
+
+- [link](https://www.dice.com/career-advice/scrum-master-career-path-your-burning-questions-answered)\
+  Scrum Master Career Path: Your Burning Questions Answered\
+  Jul 31, 2024 — The Scrum Master's influence is crucial for the team's success. Their effectiveness often depends on their ability to build trust,\
+  \
+  \
+  Dice
+- [link](https://geniusee.com/single-blog/scrum-masters-guide)\
+  A Complete Scrum Master Guide\
+  Dec 17, 2021 — Serving the Organization Now, let's take a look at how the scrum master serves the organization: As it turns out, the roles of a s...\
+  \
+  \
+  Geniusee
+- [link](https://www.reddit.com/r/explainlikeimfive/comments/zkq4k2/eli5%5Fin%5Fsoftware%5Fengineering%5Fwhat%5Fis%5Fa%5Fscrum%5Fand/)\
+  ELI5: In software engineering, what is a Scrum, and what useful purpose does it serve? : r/explainlikeimfive\
+  Dec 13, 2022 — Usually it's down to a bad Scrum Master . They should be stepping on those conversations and telling people to pick it up outside ...\
+  \
+  \
+  Reddit
+
+Show all
+
+## what if wo
+
+If a team attempts to run Scrum without a Scrum Master (SM), **the Scrum framework technically breaks, and the team usually shifts into "Zombie Scrum"—following the meetings but losing all actual agility**. Because Scrum defines the SM as a mandatory accountability rather than a job title, if a dedicated person is missing, those tasks must be absorbed by others, or the team's efficiency will sharply decline. [link](https://www.reddit.com/r/scrum/comments/1s72d35/how%5Fdo%5Fyou%5Frun%5Fsprints%5Fwithout%5Fa%5Fscrum%5Fmaster/)
+
+### Immediate Consequences of Having No SM
+
+- **Meetings Degenerate**: Without a facilitator, Daily Scrums become status reports to managers, Planning runs long, and Retrospectives turn into unconstructive complaining sessions rather than finding real solutions. [link](https://echometerapp.com/en/scrum-without-scrum-master/)
+- **Developers Become Firefighters**: Lacking a shield to protect them, developers get constantly interrupted by stakeholders, sales teams, and sudden requests, destroying their focus and throughput. [link](https://medium.com/serious-scrum/lets-do-scrum-but-without-a-scrum-master-why-does-it-happen-41f31b3c1596)
+- **Unresolved Roadblocks**: Small technical or bureaucratic obstacles linger for days because no single person is focused on navigating organizational politics to clear them. [link](https://www.reddit.com/r/agile/comments/13t4fsm/why%5Fdo%5Fi%5Fneed%5Fa%5Fscrum%5Fmaster/)
+- **Quality Drops**: The "Definition of Done" is frequently compromised to hit deadlines, causing technical debt and software bugs to skyrocket. [link](https://medium.com/serious-scrum/lets-do-scrum-but-without-a-scrum-master-why-does-it-happen-41f31b3c1596)
+- **Process Stagnation**: Without an objective coach pushing for improvement, the team repeats the exact same operational mistakes sprint after sprint. [link](https://www.reddit.com/r/agile/comments/13t4fsm/why%5Fdo%5Fi%5Fneed%5Fa%5Fscrum%5Fmaster/)
+
+### Alternative Scenarios (If you don't hire a dedicated SM)
+
+If an organization chooses not to hire a full-time, dedicated Scrum Master, they typically resort to one of three setups, each with distinct trade-offs:
+
+| Approach              | How it Works                                                | The Risk / Trade-off                                                                                     |
+| --------------------- | ----------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| **The Rotational SM** | Developers take turns acting as the SM every Sprint.        | The team loses coaching depth, and engineers lose focus on technical delivery.                           |
+| **The Dual-Role SM**  | A Team Lead or Developer acts as the SM permanently.        | A clear conflict of interest; when deadlines Loom, process improvements are ignored.                     |
+| **Shared SM**         | One Scrum Master is stretched across 3 to 4 distinct teams. | The SM becomes a shallow meeting coordinator who lacks the time to deep-dive into complex team blockers. |
+
+If you are deciding how to handle this gap on your team, tell me:
+
+- Are you considering **rotating the role** among developers, or **having a manager handle it**?
+- What is the **maturity level** of your current development team?
+- Is your organization suffering from **heavy bureaucracy or frequent external disruptions**?
+
+I can map out the exact structural risks for your scenario and offer a compromised model that protects your team's velocity.
+
+- [link](https://medium.com/serious-scrum/we-dont-need-a-scrum-master-e30bf2f77d26)\
+  Medium·Willem-Jan Ageling\
+  We don't need a Scrum Master - Medium\
+  Jun 19, 2018 — 5 points that I summarize as “Finding effective techniques and increase Scrum understanding”. I can see that an experienced team c...
+- [link](https://medium.com/serious-scrum/lets-do-scrum-but-without-a-scrum-master-why-does-it-happen-41f31b3c1596)\
+  Medium\
+  Let’s do Scrum! But without a Scrum Master. Why does it happen? | by David Pereira\
+  Sep 20, 2020 — Some consequences of not having a Scrum Master include: \* More bugs appear \* Developers become firefighters \* The Sprint Goal is o...
+- [link](https://www.reddit.com/r/scrum/comments/1s72d35/how%5Fdo%5Fyou%5Frun%5Fsprints%5Fwithout%5Fa%5Fscrum%5Fmaster/)\
+  Reddit·r/scrum\
+  How do you run sprints without a Scrum Master? Doing some ...\
+  Mar 30, 2026 — That translates to "what happens if we don't have an SM" - so no-one is accountable for how effective the team is. That is very, v...
+
+Show all
+
+## when does it not matter
+
+A Scrum Master is **not always necessary**. In certain team structures, product types, and organizational cultures, the role adds little value or can even introduce unneeded bureaucracy.
+
+### When a Scrum Master Does Not Matter
+
+- **The Team is "Hyper-Mature"**: When senior developers have worked together for years, seamlessly self-organize, resolve their own conflicts, and relentlessly optimize their own processes, a dedicated Scrum Master is redundant.
+- **Pure Maintenance or Support Work**: For teams handling random incoming tickets, bugs, or customer support (where work cannot be planned in Sprints), Kanban is a better fit than Scrum, eliminating the need for an SM.
+- **The Organization Thrives on Top-Down Control**: If executive leadership demands strict command-and-control, micromanages timelines, and refuses to allow team autonomy, a Scrum Master will be powerless and ineffective.
+- **Agency or Fixed-Scope Contract Work**: When a team must execute a strict, legally binding feature list by a hard deadline with no room for discovery or agility, standard project management works better than a Scrum Master.
+- **Simple, Predictable Projects**: If the work is highly repetitive, assembly-line style, or uses well-understood technology with zero unknowns, there are no complex roadblocks for an SM to solve.
+- **A Solo Developer or Tiny Team (2-3 People)**: Small groups can communicate instantly without formal framework guardrails or facilitation.
+
+### Structural Signs You Don't Need One
+
+| Scenario                     | Framework Choice           | Alternative Setup                                |
+| ---------------------------- | -------------------------- | ------------------------------------------------ |
+| **Linear, predictable work** | Waterfall / Traditional    | Project Manager tracks tasks and timelines.      |
+| **Continuous ticket queue**  | Kanban / Flow              | Delivery Lead focuses entirely on queue metrics. |
+| **Elite, autonomous team**   | Proto-Agile / No Framework | The team self-facilitates and self-corrects.     |
+
+If you are trying to decide whether to cut or keep the role, tell me:
+
+- What **framework** (Scrum, Kanban, Waterfall) matches your current delivery style?
+- How **experienced** are your team members with agile practices?
+- What **type of product** (e.g., highly experimental R\&D vs. predictable agency work) are you building?
+
+I can help you audit your workflow to see if you can safely eliminate the role.
+
+## what if po as sm
+
+Combining the <mark><strong>Product Owner (PO) and Scrum Master (SM) roles into one person is highly discouraged</strong><span> </span>and considered an agile anti-pattern</mark>. While it seems cost-effective on paper, it creates an immediate, fundamental conflict of interest that almost always hurts the team's health and delivery quality.
+
+### The Fundamental Conflict of Interest
+
+The PO and SM roles are intentionally designed to create a healthy, balancing tension within a Scrum team. Combining them destroys this balance:
+
+- **The Product Owner pushes for _Quantity & Speed_:** "How much value can we deliver, and how fast can we get it to market?"
+- **The Scrum Master pushes for _Quality & Sustainability_:** "How can we protect the team from burnout and ensure we write clean, sustainable code?"
+
+When one person holds both roles, the pressure to deliver features (the PO side) almost always wins. The person will naturally compromise on technical debt, skip process improvements, and over-commit the team to satisfy stakeholders.
+
+### Immediate Risks and Consequences
+
+- **The Team Stops Self-Organizing:** Developers will view this person as a traditional "Project Manager" or boss, leading them to quietly wait for instructions rather than taking ownership of the work.
+- **Retrospectives Fail:** Developers will not speak openly about process flaws or mistakes if the person facilitating the meeting is also the one judging their delivery velocity and managing stakeholder expectations.
+- **Burnout Escalates:** Without an independent SM to shield the team, the PO-SM hybrid will continuously pressure the developers to squeeze "just one more feature" into the Sprint.
+- **Role Overload:** Both roles are full-time jobs. One person attempting both will inevitably neglect backlog refinement or fail to remove operational blockers, creating a bottleneck for the entire team.
+
+### How the Dynamics Shift
+
+| Dynamic               | Separated Roles (Healthy)                                | Combined PO/SM (Unhealthy)                                        |
+| --------------------- | -------------------------------------------------------- | ----------------------------------------------------------------- |
+| **Sprint Planning**   | PO presents goals; SM ensures realistic capacity.        | Hybrid pushes team to accept more work than safe.                 |
+| **Daily Scrum**       | SM ensures team collaborates; PO is optional.            | Hybrid turns the meeting into a strict status report.             |
+| **Problem Solving**   | SM navigates company politics to clear technical blocks. | Hybrid focuses strictly on feature priorities, ignoring blockers. |
+| **Team Relationship** | SM serves as a trusted, neutral coach.                   | Hybrid is viewed as a manager demanding output.                   |
+
+If your organization is forced into this setup due to budget constraints, tell me:
+
+- What is the **budget or headcount limit** forcing this decision?
+- Are your developers **senior enough** to push back against unrealistic deadlines?
+- Can you use a **temporary backup option** (like a tech lead stepping in)?
+
+I can help you design safety guardrails to minimize the damage of a combined role.
+
+- [link](https://www.scrum.org/resources/blog/product-owner-and-scrum-master-combined-one-individual)\
+  Product Owner and Scrum Master Combined in One Individual?\
+  May 27, 2024 — Ten Reasons Why Combining Product Owner and Scrum Master Roles is Not a Good Idea Conflict of Interest: Combining the roles of Pro...\
+  \
+  \
+  Scrum.org
+- [link](https://www.signifyd.com/blog/avoiding-anti-patterns/)\
+  Product Owner Anti Patterns: How to Avoid Them\
+  Jan 21, 2020 — Anti-pattern No. 5: Role confusion The Scrum Guide specifies just three roles — read it! Avoid doubling up roles, especially PO an...\
+  \
+  \
+  Signifyd
+- [link](https://www.scrum.org/resources/blog/product-owner-and-scrum-master-combined-one-individual)\
+  Product Owner and Scrum Master Combined in One Individual?\
+  May 27, 2024 — Conflict of Interest: Combining the roles of Product Owner (PO) and Scrum Master (SM) creates a conflict of interest. The PO maxim...\
+  \
+  \
+  Scrum.org
+
+Show all
+
+## when is it fine to let pm be both
+
+Combining the Product Owner (PO) and Scrum Master (SM) roles is generally risky, but it can be acceptable under specific, narrow conditions where market pressures, team maturity, or project constraints naturally neutralize the inherent conflict of interest.
+
+### 5 Scenarios When the Combined Role Works
+
+- **The Team is highly mature and disciplined**: If the developers are senior, assertive, and fully capable of defending their own capacity and code quality, they do not need an independent SM to shield them from the PO's delivery demands.
+- **Early-Stage, Low-Budget Startups**: When a company is in survival mode trying to build a Minimum Viable Product (MVP), cash constraints make a single "Product Lead" necessary, and speed-to-market legally overrides long-term process perfection.
+- **Internal, Low-Stakes Tooling**: If a team builds non-critical internal software with friendly, flexible stakeholders, the lack of intense external commercial pressure removes the stress that typically causes a combined PO/SM to burn out the team.
+- **Short-Term R\&D or Proof of Concept (PoC)**: For experimental projects lasting only a few weeks to prove a technical concept, long-term sustainability and technical debt do not matter, rendering a dedicated process coach unnecessary.
+- **The "Accidental" Expert**: In rare cases where a highly experienced Agile Coach also happens to be the primary subject matter expert on the product domain, their personal mastery allows them to balance both perspectives without bias.
+
+### Necessary Guardrails if You Combine Roles
+
+If you must use a single person for both roles, you should establish specific boundaries to prevent the setup from failing:
+
+| Guardrail                    | Implementation                                                                               | Purpose                                                                            |
+| ---------------------------- | -------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| **Separate the Calendar**    | Dedicate specific days or meeting slots to _only_ talk about process (SM) vs. features (PO). | Prevents backlog management from completely swallowing up process improvement.     |
+| **Empower a Tech Lead**      | Formally authorize a senior developer to veto unrealistic delivery timelines or scope creep. | Rebalances the power dynamic so the team isn't forced to compromise code quality.  |
+| **Outsource Retrospectives** | Have an objective Scrum Master from a neighboring team facilitate the Sprint Retrospective.  | Ensures developers can speak honestly about team bottlenecks without fear of bias. |
+
+If you are planning to roll out this combined setup, tell me:
+
+- What is the **timeline or lifecycle stage** of this specific project?
+- How **comfortable are the developers** with pushing back against unrealistic deadlines?
+- Is this a **temporary fix** due to hiring constraints, or a permanent structural decision?
+
+I can provide a custom checklist to help you monitor this combined role and catch warning signs before team velocity drops.
+
+AI can make mistakes, so double-check responses
+
+- [link](https://www.solutioneers.co.uk/can-the-product-owner-and-scrum-master-be-the-same-person/)\
+  Can The Product Owner And Scrum Master Be The Same Person?\
+  In small to medium sized projects, the Product Owner can hold the Scrum Master role as well. As things scale, and more coordinatio...\
+  \
+  \
+  www.solutioneers.co.uk
+
+## are mature teams common
+
+<mark><strong><span>No, truly mature Scrum teams are highly uncommon.</span></strong></mark> Industry data consistently reveals a massive gap between organizations that claim to be "doing Agile" and those that actually possess mature, self-managing teams. [link](https://www.linkedin.com/pulse/state-agile-report-2025-three-patterns-five-takeaways-ian-merwin-s5wfc)
+
+According to global benchmarks like the **[Digital.ai State of Agile Report](https://digital.ai/resource-center/analyst-reports/state-of-agile-report/)**, while upwards of 70% of technology teams use Scrum, **only about 13% of organizations report that Agile is truly embedded** into their culture and DNA. The vast majority of teams remain at lower maturity levels, heavily restricted by company bureaucracy. [link](https://www.agile247.pl/wp-content/uploads/2017/04/versionone-11th-annual-state-of-agile-report.pdf)
+
+### Why True Team Maturity is Rare
+
+- **High Personnel Turnover**: True team maturity requires stability. When companies constantly rotate developers across projects or experience high turnover, the team is forced back into early psychological stages of team forming.
+- **The "Feature Factory" Mindset**: Most organizations claim to be Agile but still judge success by output (velocity and meeting rigid deadlines) rather than actual outcome and product value. [link](https://www.youtube.com/watch?v=aHP8lZV0LT4\&t=320)
+- **Lack of Trust**: True maturity requires management to step back and let the team self-manage. Most corporate structures default to top-down command-and-control, which prevents teams from developing autonomy. [link](https://www.youtube.com/watch?v=aHP8lZV0LT4\&t=320)
+- **Distributed Team Friction**: Over 90% of Agile teams operate in fully remote or distributed environments. Building deep, self-correcting team maturity is significantly harder over chat apps and video calls than it is in person. [link](https://www.breeze.pm/articles/agile-statistics)
+
+### Real Maturity vs. "Zombie Scrum"
+
+The illusion of maturity often masks a team that has simply memorized a routine, a phenomenon known as "Zombie Scrum":
+
+| The Illusion (Common)                                       | True Maturity (Rare)                                                                      |
+| ----------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| The team attends all Scrum meetings on time.                | The team actively shifts or cancels meetings because they are communicating continuously. |
+| The team hits their velocity targets every Sprint.          | The team stops a Sprint early to fix a fundamental quality flaw.                          |
+| The team waits for a manager to resolve external friction.  | Individual developers directly negotiate with stakeholders to protect their workflow.     |
+| The team relies on standard ticketing tools to manage work. | The team dynamically swarms on roadblocks without waiting for ticket updates.             |
+
+### The Executive Trap
+
+Organizations frequently misjudge their team's maturity level. Executives often look at a highly functional team and think, _"They are so mature they don't need a Scrum Master anymore,"_ missing the reality that the team is only running smoothly _because_ an effective Scrum Master is quietly absorbing external corporate politics, managing dependencies, and protecting their focus. [link](https://www.linkedin.com/posts/belovethchild%5Fif-a-scrum-team-is-fully-mature-do-they-activity-7457413809134137344-hN9b)
+
+If you are trying to assess your own organization's state, tell me:
+
+- Are your teams **meeting their goals** but suffering from high stress or friction?
+- How long has your current team been **working together without member changes**?
+- Do your teams have the authority to **change their own processes** without managerial approval?
+
+I can provide a lean Agile maturity assessment template to help you accurately diagnose your team's real operational level.
+
+- [link](https://www.reddit.com/r/projectmanagement/comments/1hu9ou5/does%5Fevery%5Fteam%5Freally%5Fneed%5Fa%5Fscrum%5Fmaster/)\
+  Reddit·r/projectmanagement\
+  Does Every Team Really Need a Scrum Master? - Reddit\
+  Jan 5, 2025 — It rather like a cardiologist, you don't need one until you need one. Then you better have a good one. Yes, not dedicated but not ...
+- [link](https://www.linkedin.com/posts/belovethchild%5Fif-a-scrum-team-is-fully-mature-do-they-activity-7457413809134137344-hN9b)\
+  LinkedIn·Stanley Ashibuo, SPC\
+  Do High-Performing Scrum Teams Still Need a Scrum Master\
+  May 5, 2026 — Marketing Scrum Master | Agile, it's not just for IT! ... A common misconception is that a “self-managing” team no longer needs su...
+- [link](https://www.ugilic.dk/do-we-really-need-full-time-scrum-masters/)\
+  Ugilic\
+  Do We Really Need Full-time Scrum Masters? - Ugilic\
+  The Scrum Master is the team's tactical coach and that is not the same as working with agile at the organizational level. However,
+
+Show all
+
+## are mature teams common in some communities
+
+**Yes, highly mature teams are common within specific professional communities** and industry ecosystems. While rare across the broader corporate landscape, certain environments naturally cultivate and sustain high-maturity Agile behaviors. [link](https://staragile.com/blog/state-of-agile)
+
+### 1. The Open-Source Software Community
+
+Open-source projects (like Linux, Kubernetes, or Python) are the ultimate examples of self-managing, mature teams. [link](https://www.forbes.com/sites/niritcohen/2025/07/09/when-teams-no-longer-work-organize-around-community-instead/)
+
+- **High Autonomy**: There are no traditional project managers forcing deadlines; developers choose what to build based on merit and community value. [link](https://www.forbes.com/sites/niritcohen/2025/07/09/when-teams-no-longer-work-organize-around-community-instead/)
+- **Extreme Peer Review**: Code quality and adherence to strict standards are rigorously enforced by peers rather than a top-down manager.
+- **Asynchronous Discipline**: Because contributors span global time zones, they naturally master continuous, data-driven documentation and asynchronous communication. [link](https://apmic.org/blogs/state-of-agile-project-management-original-2026-27-industry-trends-amp-insights)
+
+### 2. Product-Led Tech Startups (Post-Series A)
+
+Early to mid-stage tech companies whose survival depends entirely on a digital product often have very high team maturity.
+
+- **Shared Purpose**: Small teams are deeply connected to the customer's pain points, bypassing artificial corporate milestones. [link](https://medium.com/@davidshrimptonds/how-mature-is-your-team-20f37bd642a6)
+- **Cross-Functional Monogamy**: Engineers, UX designers, and product managers work exclusively on one product line for years, bypassing the "turnover trap" that kills maturity in larger firms.
+- **Automated Safety Nets**: These engineering communities rely heavily on advanced CI/CD (Continuous Integration/Continuous Deployment) pipelines and automated testing. This high technical maturity allows them to self-correct flaws instantly without managerial intervention. [link](https://www.unosquare.com/blog/agile-development-101/)
+
+### 3. "Elite" Dev Shops and Agile Consultancies
+
+Boutique software agencies that charge premium rates for rapid product development thrive on elite-level maturity.
+
+- **T-Shaped Specialists**: Team members have deep mastery in one area but possess enough broad knowledge to step in and fill gaps dynamically.
+- **Continuous Pair Programming**: Code review happens in real-time as a core cultural standard, creating an organic feedback loop that renders external monitoring useless. [link](https://www.scrum.org/resources/blog/community-practice-multi-scrum-team-scenarios)
+
+### 4. Advanced Internal "Communities of Practice" (CoPs)
+
+Within larger progressive organizations (famously pioneered by companies like Spotify), mature sub-communities exist across teams. [link](https://www.scrum.org/resources/blog/community-practice-multi-scrum-team-scenarios)
+
+- **Knowledge Swarming**: A "Community of Practice" consists of specialists (e.g., all security engineers or all QA testers) who meet to set high quality standards.
+- **Organic Upskilling**: Because these communities prioritize shared learning, junior members mature rapidly through mentorship rather than mandatory corporate training. [link](https://www.scrum.org/resources/blog/community-practice-multi-scrum-team-scenarios)
+
+### Summary of Community Trait Density
+
+| Community Type              | Core Driver of Maturity                          | Why an SM Matters Less Here                                         |
+| --------------------------- | ------------------------------------------------ | ------------------------------------------------------------------- |
+| **Open Source**             | Shared passion & rigorous peer code review       | The workflow is pull-based; people self-assign work.                |
+| **Product Tech Startups**   | Extreme survival pressure & customer closeness   | Handoffs are instant; the team sits (or chats) together.            |
+| **Agile Consultancies**     | Commercial need for speed and elite code quality | Practices are standardized; continuous feedback loops are built-in. |
+| **Communities of Practice** | Shared technical craft and collective mentorship | Focus is on deep mastery, not sprint meeting coordination.          |
+
+If you are looking to cultivate this environment within your own circle, tell me:
+
+- Are you trying to **build an internal community** (like a CoP) to boost skills?
+- What **industry or technical stack** does your community focus on?
+- Do you want examples of **how to run a self-managing community session** without a formal leader?
+
+I can share structural guidelines to help you bootstrap a highly mature group.
+
+- [link](https://www.scrum.org/resources/blog/community-practice-multi-scrum-team-scenarios)\
+  Scrum.org\
+  Community of Practice in Multi-Scrum Team Scenarios\
+  Aug 14, 2014 — Employees only know themselves what they feel drawn to most. \* Implementing Communities of Practice. To form a community of practi...
+- [link](https://www.forbes.com/sites/niritcohen/2025/07/09/when-teams-no-longer-work-organize-around-community-instead/)\
+  Forbes\
+  When Teams No Longer Work, Organize Around Community ...\
+  Jul 9, 2025 — Work Communities Reflect How Work Actually Happens. Unlike teams, which are formed by assignment, communities often form by purpos...
+- [link](https://medium.com/@davidshrimptonds/how-mature-is-your-team-20f37bd642a6)\
+  Medium\
+  How mature is your team? - by David Shrimpton\
+  Aug 14, 2019 — According to David Shrimpton, there are four stages of team maturity: \* \*\*I'm Alright Jack\*\* The team is siloed, selfish, and inte...
+
+Show all
+
+# 
