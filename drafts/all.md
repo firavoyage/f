@@ -216,6 +216,7 @@ archi:
 - parentheses brackets braces feeling
 - naming flags options
 - perfectionism procrastination over engineering premature optimization
+- compare type and kind
 
 web: <!-- frontend, web, ts/js -->
 
