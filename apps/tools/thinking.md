@@ -87,6 +87,15 @@ visual design
   - yeah i used future tense.
 - origin
   - i saw "ripgrep". fun. i absolutely want a name like that.
-  - rip? lowercase. to rip the ideas, and clear the vibes.
+  - rip? lowercase. to rip the ideas and clear the vibes.
+  - see also
+    - acboxliu (she has another id on github, named initially when she wasnt a girl yet)
+    - ripacbox
+    - rapeacbox
+- limitations
+  - i would ref it somewhere, like on the path or org name maybe
+  - not the core product name though
+  - yeah, and it's a constraint of public foss platforms
+    - for me, i would name everything like `f/repo_name`
 
 ---
