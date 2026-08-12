@@ -50486,6 +50486,12 @@ there seems to be more players on longer time control on ogs, indicated by the g
 
 23 00 finalize more flexible yaml spec. ~~24 00~~ 24 30
 
+13
+
+03 20 separate todo and backlog.
+
+it matters. i will ref on both journal and tools/purpose.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
