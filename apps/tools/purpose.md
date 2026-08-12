@@ -2200,4 +2200,15 @@ that is, i may have a bunch of todos and one wip.
 
 typically, the todo list might be like "api endpoints" "component lib" or "ux competitive research/analysis", a set of related tasks
 
+...
+
+i want sth like scrum. 
+
+but i dont think i could get predictability when even deep work time is flexible and volatle.
+
+well, is predictability a thing? what for? if it matters, who for? and accountability. who for?
+
+---
+
+
 
