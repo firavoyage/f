@@ -7461,4 +7461,121 @@ Show all
 
 # <!-- 13 aug -->
 
-# 
+# compare backlog and todo in pm
+
+In project management (PM), a **backlog** and a **to-do list** (or "To Do" status) serve entirely different roles in the workflow. The short answer is: <mark><strong>the backlog is a long-term strategic storage of possibilities, while the to-do list is an immediate commitment to execute</strong></mark>**.** [link](https://agilesparks.com/backlog-vs-to-do/)
+
+Here is how they break down across project management frameworks like Scrum and Kanban: [link](https://agilesparks.com/backlog-vs-to-do/)
+
+### The Core Differences
+
+| Feature             | Backlog                                                    | To-Do List                                            |
+| ------------------- | ---------------------------------------------------------- | ----------------------------------------------------- |
+| **Purpose**         | Long-term planning, storage of ideas and requests          | Immediate execution, near-term daily work             |
+| **Ownership**       | Product Manager or Product Owner                           | Development or Project Team                           |
+| **Level of Detail** | High-level ideas at the bottom; highly detailed at the top | Extremely detailed and immediately actionable         |
+| **Commitment**      | Low. Items may be removed, merged, or ignored              | High. The team has committed to finishing these items |
+| **Lifespan**        | Continuous and ongoing for the lifecycle of the product    | Short-term, resetting every iteration or sprint       |
+
+***
+
+### Understanding the Backlog
+
+The backlog is a **central repository** for all potential work. It is inherently dynamic, meaning it constantly shifts as new data, user requests, and customer feedback emerge. [link](https://www.youtube.com/watch?v=H3BufuGypg0\&vl=en)
+
+- **What goes here:** Feature requests, bug reports, technical debt, and blue-sky user stories.
+- **State of work:** Highly unrefined. The items at the bottom are vague, while the items at the top are systematically groomed to become "ready" for development.
+- **Management style:** Requires constant "backlog grooming" or refinement to ensure the most valuable items sit at the top. [link](https://agilesparks.com/backlog-vs-to-do/)
+
+### Understanding the To-Do List
+
+In tools like Jira, Asana, or Monday.com, "To Do" usually represents the very first column of an active workflow board. It acts as a **pull queue** for active development. [link](https://community.atlassian.com/forums/Jira-questions/Customise-Jira-Kanban-backlog-view-with-more-status/qaq-p/716580)
+
+- **What goes here:** Only the exact subset of items pulled from the backlog during a Sprint Planning session.
+- **State of work:** Completely defined, estimated, and unblocked. A developer should be able to click on a "To Do" item and start working immediately without needing clarification.
+- **Management style:** Handled entirely by the builders. Team members move items independently from "To Do" into "In Progress" and "Done". [link](https://www.youtube.com/watch?v=cyQBA56AYQQ\&t=1)
+
+***
+
+### The Workflow Relationship
+
+Think of the backlog as the **grocery store** and the to-do list as your **dinner recipe for tonight**.
+
+1. The PM continually restocks and organizes the store (the Backlog).
+2. During planning, the team grabs exactly what they have the capacity to cook right now.
+3. Those selected ingredients land on the kitchen counter (the To-Do List), ready to be prepped immediately. [link](https://agilesparks.com/backlog-vs-to-do/)
+
+If you would like to go deeper, let me know:
+
+- What **project management software** (like Jira or Trello) are you currently using?
+
+- Are you running a specific **framework** like Scrum or Kanban?
+
+- Are you struggling with a **cluttered, unmanageable list** of tasks right now? [link](https://www.reddit.com/r/projectmanagement/comments/1d6qihe/can%5Fsomeone%5Fplease%5Fexplain%5Fkanban%5Fscrum%5Fjira%5Fand/)
+
+- [link](https://agilesparks.com/backlog-vs-to-do/)\
+  The Critical Difference Between Backlog and To Do (Kanban, Scrum) - AgileSparks\
+  Dec 20, 2016 — In kanban boards, the backlog is usually the first column and the To Do list is the second column. The backlog is a list of things...\
+  AgileSparks
+
+- [link](https://stackoverflow.com/questions/32670940/agile-process-difference-about-backlog-and-todo)\
+  Agile process: Difference about backlog and todo\
+  Sep 19, 2015 — The sprint backlog is the list of work the development team must address during the next sprint. In Scrum (for example) you develo...\
+  Stack Overflow
+
+- [link](https://medium.com/@sharifsbeat/your-backlog-is-not-a-to-do-list-95470198b41)\
+  Your Backlog Is Not A To-do List - Medium\
+  Jul 2, 2016 — Get A. ... Join Medium for free to get updates from this writer. Identify which features and stories should be removed from the ba...\
+  Medium·A. Sharif
+
+Show all
+
+# blue-sky user stories meaning
+
+In Agile development, **"blue-sky user stories"** refer to hypothetical, idealized requirements written during creative brainstorming sessions where technical, financial, or timeline constraints are intentionally ignored. They capture features or user experiences in a perfect world—"practicality be damned"—to explore the absolute ceiling of what a product could become. [link](https://drawn.agency/our-thoughts/blue-sky-thinking-what-it-and-why-do-we-use-it/)
+
+### Key Characteristics of Blue-Sky User Stories
+
+- **Constraint-Free Ideation**: They assume unlimited budget, infinite development time, and zero technical debt.
+- **High Innovation Focus**: They aim to disrupt standard thinking and uncover outside-the-box user experiences.
+- **Unrealistic Objectives**: Because they ignore current reality, they are rarely ready to be put directly into a development sprint without heavy editing. [link](https://drawn.agency/our-thoughts/blue-sky-thinking-what-it-and-why-do-we-use-it/)
+
+### Why Teams Write Them
+
+Product teams frequently use "blue-sky thinking" during early discovery or [user story mapping workshops](https://plan.io/blog/user-story-mapping/). In these sessions, team members are encouraged to ask _"Wouldn't it be cool if...?"_. [link](https://plan.io/blog/user-story-mapping/)
+
+By removing boundaries, teams can map out an ultimate vision for the product. Once these grand ideas are on the board, the product owner and engineers work backward to scale them down, finding practical, realistic increments that can actually be built into a [Minimum Viable Product (MVP)](https://labspractices.com/practices/story-mapping/).
+
+### Examples
+
+| Standard User Story                                                                 | Blue-Sky User Story                                                                                                                                  |
+| ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| As a traveler, I want to filter flights by price so I can find the cheapest ticket. | As a traveler, I want the app to automatically detect when I am stressed and instantly book a surprise vacation tailored exactly to my current mood. |
+| As a shoppers, I want a search bar so I can find clothing items quickly.            | As a shopper, I want an interactive, holographic fitting room that instantly renders how clothes look on my body shape.                              |
+
+If you are currently organizing a product backlog, let me know:
+
+- Are you looking to **run a creative brainstorming session**?
+
+- Do you need help **refining wild ideas** into realistic sprint tasks?
+
+- Are you trying to define a [Definition of Ready (DoR)](https://www.linkedin.com/pulse/documenting-your-user-story-right-ryan-wijesuriya) for your current user stories? [link](https://www.linkedin.com/pulse/documenting-your-user-story-right-ryan-wijesuriya)
+
+- [link](https://medium.com/@nabiawada/user-story-mapping-for-startups-1532b28d9adc)\
+  User Story Mapping For Startups - Medium\
+  Sep 12, 2019 — Press enter or click to view image in full size. It should be expected that you will probably end up rewriting tasks and activitie...\
+  Medium·Nabi Awada
+
+- [link](https://drawn.agency/our-thoughts/blue-sky-thinking-what-it-and-why-do-we-use-it/)\
+  Blue Sky Thinking — What is it and Why Do We Use it?\
+  Jun 24, 2021 — Casey Butler Harwood. Blue Sky Thinking — What is it and Why Do We Use it? What is blue sky thinking? Imagine cooking with zero co...\
+  Drawn Agency
+
+- [link](https://plan.io/blog/user-story-mapping/)\
+  A Guide to User Story Mapping: Templates and Examples (How to ...\
+  Jan 14, 2019 — Here are a couple suggestions of how to keep your group moving forward from the father of user story mapping, Jeff Patton: \* Play ...\
+  Planio
+
+Show all
+
+
