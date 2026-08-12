@@ -2172,6 +2172,8 @@ that's how the world is really structured.
 
 about wbs <!-- "organized" -->, you absolutely have to break down the work. but basically it's yet another taxonomy. and <!-- ideally --> it tells nothing if it just mirrors like ia, ixd, archi, etc.
 
+<!-- upd: wbs answers "what needs to be delivered to complete this product?", which is exactly what ux (typically ixd) implies. -->
+
 you dont always have to have a kanban <!-- "explicit" --> or a todo list. they all serve for efficiency/productivity. it's fine if yk what you are doing <!-- and what to do _next_ --> and why it matters, esp when alone.
 
 you have to write down your thoughts and ideas though. you couldnt memorize.
@@ -2208,7 +2210,8 @@ but i dont think i could get predictability when even deep work time is flexible
 
 well, is predictability a thing? what for? if it matters, who for? and accountability. who for?
 
----
+13
 
+03 20 separate todo and backlog.
 
 
