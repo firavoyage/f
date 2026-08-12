@@ -2079,4 +2079,41 @@ ixd
 
 visual design
 
+---
+
+**yeah yaml is structured, but you can write comments anywhere.**
+
+e.g.
+
+```yaml
+feature: # must have
+  - get data
+  - map reduce data
+  - render output
+```
+
+since i dont parse yaml, i can write as i like.
+
+decision: that would be the way to structure ixd.
+
+---
+
+about the scope of ixd.
+
+ixd and ia wouldnt overlap at all.
+
+```yaml
+user research: # no need to overthink
+  - solve my own problem
+  - maimai user story # no foss portal on open web, inaccurate sometimes, inextensible
+  - tools are scattered across clearnet, npm libs, and apps
+ia: 
+  - what features i will have
+  - what actions can be made
+  - how they will be organized
+  - how they will be mapped for each navigation component
+  - how they will be named, what text or label will be applied on each
+ixd:
+  - what will be shown on screen at fisrt
+```
 
