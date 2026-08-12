@@ -50206,8 +50206,10 @@ all objects are arrays, as you can convert to entries. but, ironically <!-- to j
 
 now let's say you have an array <!-- anyway -->. there are a few ways to reduce them for parsing, as listed below.
 
+you may have duplicate keys.
+
 ```yaml
-# i. item has no children `[key = value, nil] | [key, value]`
+# i. it may have children, it may not `[key = value, nil] | [key, value]`
 item: nil
 key: value
 
@@ -50233,11 +50235,11 @@ headings:
 #     step 4
 #   summary
 
-# ii. `value | [key, value]`
+# ii. it's a node or a sub tree `value | [key, value]`
 - item
 - key: value
 
-# iii. `[nil, value] | [key, value]`
+# iii. ? `[nil, value] | [key, value]`
 nil: item
 key: value
 
@@ -50288,6 +50290,65 @@ you can use array directly if yk all items would be identically structured.
   content: how are you
 - type: response
   content: fine
+```
+
+you may have props. you can decide how you want it mapped.
+
+```yaml
+button:
+  text: sign up
+  variant: primary
+  onclick: redirect to login page
+
+# button: sign up
+#   variant: primary
+#   onclick: redirect to login page
+
+article:
+  type: original
+  author: joe
+  likes: 10
+  boosts: 5
+  comments: 20
+# article: original
+#   author: joe
+#   likes: 10
+#   boosts: 5
+#   comments: 20
+
+
+
+feature
+
+conf:
+  schedule: 5 to 10
+  content: # events
+    - speech:
+        schedule: 5 to 7
+        content:
+          - observation
+          - idea
+          - rationale
+          - expectation
+    - speech:
+        schedule: 7 to 9
+        content:
+          - problem
+          - solution
+          - proof
+    - afterparty:
+        schedule: 9 to 10
+# conf: 5 to 10
+#   speech: 5 to 7
+#     observation
+#     idea
+#     rationale
+#     expectation
+#   speech: 7 to 9
+#     problem
+#     solution
+#     proof
+#   afterparty: 9 to 10
 ```
 
 20 20 pick and buy a simple wooden chair w beige chusion of cotton linen.
