@@ -14,10 +14,10 @@ export function halt(value: any) {
  * 
  * return halt to break
  * 
- * return halt(value) to break w the last value
+ * return halt(value) to break after the last value
  * 
- * for react elements, it will silence key non existing warning
- * by providing an explicit fallback of index
+ * for react elements, it will use index as a explicit key if key does not exist
+ * to silence warning (irrelevant wo hidden states or perf issues)
  */
 export function map<T>(items: T[], fn: (item: T, index?: number, array?: T[]) => any) {
   const result = []
