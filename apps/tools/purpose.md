@@ -2176,4 +2176,20 @@ you dont always have to have a kanban <!-- "explicit" --> or a todo list. they a
 
 you have to write down your thoughts and ideas though. you couldnt memorize.
 
+...
+
+well actually you do have a kanban. since the constraint is the number of wip is always one (or zero), you organize like this
+
+```yaml
+todo:
+  - foo
+  - bar
+  - baz
+  - ...
+purpose:
+  - ...done
+  - wip
+  # - backlog/todo
+```
+
 
