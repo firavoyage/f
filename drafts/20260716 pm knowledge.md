@@ -2292,7 +2292,9 @@ If you want to build a WBS for your software project using this style, let me kn
   \
   GitHub
 
-# (?) why is linear created
+# (?) why is linear created <!-- scope statement, wbs, kanban -->
+
+## why is linear created
 
 July 17, 2026
 
@@ -2630,6 +2632,8 @@ If you want to map out a board for your current iteration, let me know:
 I can structure a copy-pasteable text layout to help you organize your upcoming sprint.
 
 # (?) how to write wbs in pm
+
+## how to write wbs in pm
 
 To write a Work Breakdown Structure (WBS) in project management, you must <mark><strong>decompose your entire project scope into smaller, deliverable-oriented components</strong></mark>. A true WBS focuses on tangible outputs or deliverables, using nouns and adjectives rather than action verbs. [link](https://www.pmi.org/learning/library/work-breakdown-structure-practice-standard-4591)
 

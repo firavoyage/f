@@ -2156,11 +2156,16 @@ bar: could have
 
 it's perfectly clear in ide.
 
-decision: i will use comments only for commenting. i will write directly whenever it feels right and i may break the parsing structure. _and,_ i will
+decision: i will use comments only for commenting. i will write directly whenever it feels right and i may break the parsing structure. and, i will leverage "implicit null" for elements wo children. (it's perfectly fine to write arrays when yk it's a flat plain list)
 
 <!-- rationale above -->
 
----
+and,
 
+conclusion: the flexible yaml is about _trees_ and lists, instead of _maps_ and lists.
+
+that's how the world is really structured.
+
+---
 
 
