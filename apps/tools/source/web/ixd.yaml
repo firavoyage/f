@@ -1,0 +1,6 @@
+app:
+  - sidebar
+  - main
+main:
+  - args/recipe # should have
+  - 
