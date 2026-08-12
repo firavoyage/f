@@ -2168,4 +2168,12 @@ that's how the world is really structured.
 
 ---
 
+> **be explicit and organized. focus and timebox.**
+
+about wbs <!-- "organized" -->, you absolutely have to break down the work. but basically it's yet another taxonomy. and <!-- ideally --> it tells nothing if it just mirrors like ia, ixd, archi, etc.
+
+you dont always have to have a kanban <!-- "explicit" --> or a todo list. they all serve for efficiency/productivity. it's fine if yk what you are doing <!-- and what to do _next_ --> and why it matters, esp when alone.
+
+you have to write down your thoughts and ideas though. you couldnt memorize.
+
 
