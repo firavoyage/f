@@ -2039,7 +2039,7 @@ rationale: no need to overthink. the values are identical. just have a standard 
 
 06 20 alter wording on comments of lib map.
 
-20 40 break down ixd.
+20 40 break down ixd. organize and conclude ux and pm knowledge.
 
 i have to rescope tools.
 
@@ -2143,6 +2143,5 @@ decision: one constraint i would apply is, i would never write general categorie
 "wh" could imply both `wont have (this time)` and `will have`. interesting. clever.
 
 ---
-
 
 
