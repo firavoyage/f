@@ -5272,6 +5272,8 @@ To help you put this framework into immediate action, I can **walk through a rea
 
 # how to use moscow method in pm
 
+## how to use moscow method in pm
+
 The **MoSCoW method** is a popular prioritization framework used in project management (PM) to establish a clear hierarchy of project requirements, tasks, or features. Invented by software expert Dai Clegg, it helps agile and traditional project teams align stakeholder expectations, manage resources efficiently, and prevent scope creep. [link](https://www.productplan.com/glossary/moscow-prioritization)
 
 The acronym stands for four distinct priority categories: [link](https://www.projectmanagement.com/wikis/483402/moscow-method)

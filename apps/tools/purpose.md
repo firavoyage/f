@@ -2114,6 +2114,35 @@ ia:
   - how they will be mapped for each navigation component
   - how they will be named, what text or label will be applied on each
 ixd:
-  - what will be shown on screen at fisrt
+  - what will be shown on screen given each state # wireframes
+  - how will state be changed given each user action # since it's declarative, i would say "how state will be changed" instead of "what will happen on screen or what will be triggered"
+  - what are the components
+  - what features/actions will each component have, which priority will each feature have
+  - how each goal will be accomplished # implied or derived
+visual design:
+  philosophy: brutalism # simple by default, powerful when needed
+  design system: utilitarian # opinionated from a subset of tailwind
+  component library: created when needed
+  assets: icon lib will be adopted when needed, no avatars/banners/backgrounds
 ```
+
+---
+
+letme think about the structure of ixd yaml, not the questions it would answer
+
+it would be an object, obviously, instead of an array.
+
+i think i will have an object of components. for each, i would use array if i just wanna list its children, or an object if i wanna describe each child
+
+i will use comments whenever it feels right. like priority labels.
+
+decision: one constraint i would apply is, i would never write general categories like `features` `actions`. i will write directly wo adding a layer.
+
+---
+
+"wh" could imply both `wont have (this time)` and `will have`. interesting. clever.
+
+---
+
+
 
