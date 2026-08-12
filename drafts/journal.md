@@ -50200,19 +50200,78 @@ feature:
 
 <!-- upd 12 aug -->
 
-conclusion: <!-- (it's awkward and impractical to make "foo bar baz" "foo bar: baz") --> basically it's about mixing arrays and objects, a feature typically praised for xml (that is args/props), and implicit colon when there's already indentation.
+conclusion: <!-- (it's awkward and impractical to make "foo bar baz" "foo bar: baz") --> basically it's about mixing arrays and objects, a feature typically praised for xml (that is args/props), and implicit colon when unambiguous <!-- it matters. and it's what all the magics is about. yaml does provide "implicit null". but you have to add a colon anyway. -->.
 
-all objects are arrays, as you can convert to entries. but, ironically <!-- to js -->, not all arrays are objects as you apply an additional constraint of "number only key". <!-- and if you create an array of objects you are not doing real work. it's literally a prefix that carries no semantic weight. -->
+all objects are arrays, as you can convert to entries. but, ironically <!-- to js -->, not all arrays are objects as you apply an additional constraint of "number only key". <!-- and if you create an array of objects you are not doing real work. it's literally a prefix that carries no semantic weight. i.e. it doesnt make any sense to say i want `[index, value] | [index, [key, value]]` instead of `value | [key, value]` when index is irrelevant. -->
 
 now let's say you have an array <!-- anyway -->. there are a few ways to reduce them for parsing, as listed below.
 
 ```yaml
-# 
+# i. item has no children `[key = value, nil] | [key, value]`
 item: nil
 key: value
+
+# example:
+article: |
+  lorem ipsum
+like button: nil
+# article |
+#   lorem ipsum
+# like button
+headings: 
+  steps:
+    - step 1
+    - step 2
+    - step 3
+    - step 4
+  summary: nil
+# headings
+#   steps
+#     step 1
+#     step 2
+#     step 3
+#     step 4
+#   summary
+
+# ii. `value | [key, value]`
+- item
+- key: value
+
+# iii. `[nil, value] | [key, value]`
+nil: item
+key: value
+
+# all these examples are written the same, you can choose what you want when converted
+
+# item
+# key: value
 ```
 
-you can use array directly if yk all items are identically structured.
+btw, "make the last item as value" is deprecated
+
+```yaml
+sm: 2px
+md: 4px
+lg: 6px
+# sm 2px
+# md 4px
+# lg 6px
+
+# it's satisfying... but then you have no way to tell if it's an item or a kv pair
+
+# table of content
+#   problem statement
+#   observation 1
+#   observation 2
+#   conclusion
+
+# sizes
+#   sm 2px
+#   md 4px
+#   lg 6px
+```
+
+you can use array directly if yk all items would be identically structured.
 
 ```yaml
 - apple
@@ -50303,6 +50362,8 @@ from 14 aug to 23 aug.
 5+7 is completely different from 5+5x30. you could never make it flexible that way.
 
 there seems to be more players on longer time control on ogs, indicated by the green dot. <!-- well, they dont move... -->
+
+23 00 finalize more flexible yaml spec. 24 00
 
 
 
