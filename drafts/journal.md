@@ -50304,21 +50304,81 @@ button:
 #   variant: primary
 #   onclick: redirect to login page
 
-article:
-  type: original
+Rethink best practice:
+  type: article .original .pinned
   author: joe
   likes: 10
   boosts: 5
   comments: 20
-# article: original
+# Rethink best practice: article .original .pinned
 #   author: joe
 #   likes: 10
 #   boosts: 5
 #   comments: 20
 
+sidebar: 
+  props: variant=overlay is_collapsed=false
+  children:
+    - icon
+    - app name
+    - list:
+      - home
+      - new file
+      - recents
+      - help
+    - my account
+# sidebar: variant=overlay is_collapsed=false
+#   icon
+#   app name
+#   list
+#     home
+#     new file
+#     recents
+#     help
+#   my account
 
+feature a:
+  priority: must have
+  sub features:
+    feature b:
+      priority: could have
+    feature c:
+      priority: should have
+      sub features:
+        - feature d
+        - feature e
+# feature a: must have
+#   feature b: could have
+#   feature c: should have
+#     feature d
+#     feature e
 
-feature
+ast:
+  - type: variable statement
+    location: 0 to 1
+    content: 'foo = bar'
+    children:
+      - type: ...
+        location: ...
+        content: ...
+        children:
+          - type: ...
+            children: ...
+ast:
+  foo = bar:
+    type: variable statement, 0 to 8
+    children:
+      - foo: 
+          type: variable
+      - =: 
+          type: symbol
+      - bar: 
+          type: value
+# ast:
+#   foo = bar: variable statement, 0 to 8
+#     foo: variable
+#     =: symbol
+#     bar: value
 
 conf:
   schedule: 5 to 10
@@ -50424,7 +50484,7 @@ from 14 aug to 23 aug.
 
 there seems to be more players on longer time control on ogs, indicated by the green dot. <!-- well, they dont move... -->
 
-23 00 finalize more flexible yaml spec. 24 00
+23 00 finalize more flexible yaml spec. ~~24 00~~ 24 30
 
 
 

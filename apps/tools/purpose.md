@@ -2144,4 +2144,23 @@ decision: one constraint i would apply is, i would never write general categorie
 
 ---
 
+basically i just want it to be syntax highlighted and somewhat structured.
+
+```yaml
+foo: must have
+  click: set an arg
+bar: could have
+  baz:
+  asdf:
+```
+
+it's perfectly clear in ide.
+
+decision: i will use comments only for commenting. i will write directly whenever it feels right and i may break the parsing structure. _and,_ i will
+
+<!-- rationale above -->
+
+---
+
+
 
