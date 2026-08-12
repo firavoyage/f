@@ -2039,4 +2039,44 @@ rationale: no need to overthink. the values are identical. just have a standard 
 
 06 20 alter wording on comments of lib map.
 
+20 40 break down ixd.
+
+i have to rescope tools.
+
+well, if i would not feel right wo it, then it _is_ in scope.
+
+i would categorize them into a few priority groups i guess.
+
+moscow is effective. it's factual. it feels objective. it doesnt fit my instinct.
+
+<!-- well, i would say, moscow is ideal. the flaw isnt about moscow. it's me myself that didnt make the plan comprehensive. for example, i didnt say "provide basic functionality. i can switch tools on sidebar. and editors should work as expected.". instead, i said "create sidebar component" (as if it's decoupled from the logics, well it is, but sidebar itself only provides the state of the selected item). i said "create editor component". to make it ideal, i thought there would be "args on input/output heading" "two way convertion". -->
+
+<!-- i would not say it's a problem to be solved. but sometimes if you wanna see some results, it's perfectly valid to be progressive on ux (instead of code completeness). -->
+
+---
+
+i feel i should have the tool "tg to journal".
+
+it would parse and make it an array, then convert based on the predefined time precision.
+
+i would make it builtin. it's trivial to extend later. just, have a persistent state of extensions. for each, create a new function. inject to tool map. then inject to the tools hierarchy, which would determine the sidebar and the command palette.
+
+in the future i would integrate it w have. like, "tg to have", or "import from tg desktop via clipboard/data export".
+
+and, i will have the maimai tools. if there is only one tool in tools, it might be maimai. most tools are basically wrappers of ubiquitous libs, like, you can convert json to yaml anywhere.
+
+<!-- yaml is a superset of json -->
+
+there are a bunch of tools i can have. like code formatter/prettier. json to csv (?!). it's not a priority. <!-- you can even convert json to ts/py (auto typing). or to markdown (to csv first). it's quite weird actually. json must be object. and only the first key in the object, which must be an array of objects, will be used. keys in the first object dictates the table headings. inconsistent keys in following objects will be appended. anything non literal will be simply stringified (csv could not nest), and escaped if needed. -->
+
+---
+
+user research
+
+ia
+
+ixd
+
+visual design
+
 

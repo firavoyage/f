@@ -50263,7 +50263,9 @@ from 14 aug to 23 aug.
 
 4 days in osaka, 2 days around mt fuji, and 4 days in tokyo.
 
-19 00 play go on ogs. set game clock to exact.
+12
+
+19 00 play go on ogs. set game clock to exact. 20 20
 
 5+7 is completely different from 5+5x30. you could never make it flexible that way.
 
