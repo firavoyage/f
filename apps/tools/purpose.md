@@ -2178,18 +2178,26 @@ you have to write down your thoughts and ideas though. you couldnt memorize.
 
 ...
 
-well actually you do have a kanban. since the constraint is the number of wip is always one (or zero), you organize like this
+well actually you do have a kanban. since the constraint is the number of wip <!-- or todo --> is always one (or zero), you organize like this
 
 ```yaml
-todo:
+todo: # serves as backlog
   - foo
   - bar
   - baz
   - ...
 purpose:
   - ...done
-  - wip
-  # - backlog/todo
+  - wip # or todo effectively, or the task of highest priority in backlog
+  # - backlog
 ```
+
+...
+
+it might be useful to separate todo from backlog.
+
+that is, i may have a bunch of todos and one wip.
+
+typically, the todo list might be like "api endpoints" "component lib" or "ux competitive research/analysis", a set of related tasks
 
 
