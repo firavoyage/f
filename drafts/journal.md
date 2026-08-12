@@ -50184,6 +50184,18 @@ border: 1px
   2: 2px
   4: 4px
   8: 8px
+
+feature:
+  type: must have
+  rationale: ...
+  progress: wip
+  sub feature a: should have
+  sub feature b: could have
+# feature: must have
+#   rationale: ...
+#   progress: wip
+# sub feature a: should have
+# sub feature b: could have
 ```
 
 20 20 pick and buy a simple wooden chair w beige chusion of cotton linen.
