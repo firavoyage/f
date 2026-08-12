@@ -1340,7 +1340,9 @@ To decide the exact task order in project or product management (PM), you must f
 - **What is the riskiest assumption we need to test?** Order tasks so you validate unproven concepts through early experimentation or MVPs.
 - **Which task mitigates the biggest project threat?** Tackle highly uncertain or legally risky items early to avoid massive rework later. [link](https://pm.stackexchange.com/questions/6635/what-factors-should-determine-a-tasks-priority)
 
-# (?) pm scope management
+# (?) pm scope management <!-- examples -->
+
+## pm scope management
 
 **Project Scope Management** is <mark>the practice of defining, documenting, and controlling exactly what is included in a project—and critically, what is<span> </span><strong>excluded</strong></mark>. Its primary goal is to ensure the project team completes all the required work necessary to finish the project successfully without wasting resources on unnecessary tasks (a risk known as "scope creep"). [link](https://www.youtube.com/watch?v=lBRFP9Dy8JU)
 
