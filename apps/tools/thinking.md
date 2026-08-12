@@ -57,3 +57,36 @@ and, i will have the maimai tools. if there is only one tool in tools, it might 
 there are a bunch of tools i can have. like code formatter/prettier. json to csv (?!). it's not a priority. <!-- you can even convert json to ts/py (auto typing). or to markdown (to csv first). it's quite weird actually. json must be object. and only the first key in the object, which must be an array of objects, will be used. keys in the first object dictates the table headings. inconsistent keys in following objects will be appended. anything non literal will be simply stringified (csv could not nest), and escaped if needed. -->
 
 ---
+
+user research
+
+ia
+
+ixd
+
+visual design
+
+---
+
+"ripacbox"
+
+- suicide
+  - ~~prob~~
+  - she's non trivial esp cmp w peers of similar background
+  - i love to compete w ppl
+- instable nature of kids
+  - unwise to build on sand
+  - hyphothetical examples
+    - dev and launch in a day
+    - post today, del tomorrow (e.g. zhcn irl)
+    - changes like name and pfp
+    - pivot and relocate, making all criticism irrelevant (and creating some new)
+- nonetheless
+  - where they would build is where i would build
+  - there are not so many needs in the world
+  - yeah i used future tense.
+- origin
+  - i saw "ripgrep". fun. i absolutely want a name like that.
+  - rip? lowercase. to rip the ideas, and clear the vibes.
+
+---
