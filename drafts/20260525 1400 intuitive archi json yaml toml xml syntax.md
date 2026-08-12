@@ -2136,4 +2136,1182 @@ AI can make mistakes, so double-check responses
 
 Show all
 
-# 
+# all yaml data types
+
+YAML supports <mark><strong>three core categories of data types: scalars, sequences, and mappings</strong></mark>. These structural primitives allow YAML to native-encode data structures used across dynamic programming languages. [link](https://yaml.org/spec/1.2.2/)
+
+Here is the complete breakdown of all YAML data types and primitives.
+
+### 1. Scalars (Single Values)
+
+Scalars represent atomic, individual values. YAML automatically determines their specific subtype based on formatting. [link](https://yaml.org/spec/1.2.2/)
+
+- **Strings**: Plain text blocks. They can be unquoted, single-quoted, or double-quoted. YAML also uses pipe symbols (`|`) to keep line breaks and greater-than symbols (`>`) to squash them into single paragraphs. [link](https://www.cloudbees.com/blog/yaml-tutorial-everything-you-need-get-started)
+- **Integers**: Whole numeric values. This category natively accepts standard base-10 numbers, binary (`0b101`), octal (`0o27`), and hexadecimal configurations (`0x1A`). [link](https://en.wikipedia.org/wiki/YAML)
+- **Floating-Point**: Numbers containing decimal points or exponential notations. It includes distinct placeholders for positive infinity (`.inf`), negative infinity (`-.inf`), and undefined operations (`.nan`). [link](https://harshitawrites.hashnode.dev/yaml-datatypes)
+- **Booleans**: Logical states. Parsers read `true` or `false`. [link](https://www.kerno.io/blog/yaml-file-format-complete-guide)
+- **Null**: Empty fields or non-existent values. Handled by entering the literal `null` word or a tilde symbol (`~`). [link](https://learn.getgrav.org/20/advanced/yaml)
+- **Timestamps**: Absolute points in time. Recognized when using formatted patterns like date-only strings (`YYYY-MM-DD`) or complete ISO 8601 strings featuring local time zone adjustments. [link](https://www.lenovo.com/ca/en/glossary/yaml/)
+
+### 2. Sequences (Lists / Arrays)
+
+Sequences are ordered collections of index-accessible values. [link](https://yaml.org/spec/1.2.2/)
+
+- **Block Sequences**: Indented series where each new entry begins with a dash followed by a single blank space.
+- **Flow Sequences**: A compact, inline structure written within square brackets `[]` where individual elements are separated by commas. [link](https://docs.ansible.com/projects/ansible/latest/reference%5Fappendices/YAMLSyntax.html)
+
+### 3. Mappings (Hashes / Dictionaries / Objects)
+
+Mappings represent unordered collections of unique key-value pairs. [link](https://yaml.org/spec/1.2.2/)
+
+- **Block Mappings**: Standard structural layers utilizing colon-centered notation (`key: value`) separated across line changes and grouped via indentation levels.
+- **Flow Mappings**: An inline configuration wrapped within standard curly braces `{}` with comma-delimited pairings. [link](https://en.wikipedia.org/wiki/YAML)
+
+### 4. Advanced & Custom Types
+
+YAML permits structural overrides or framework-specific extensions through custom tagging. [link](https://en.wikipedia.org/wiki/YAML)
+
+- **Explicit Tags**: Forcing specific interpretations by appending structural prefixes. For example, writing `!!str 123` forces the parser to process a number sequence strictly as text. [link](https://harshitawrites.hashnode.dev/yaml-datatypes)
+- **Binary Data**: Storing base64 encoded cryptographic elements or system file assets directly inside text fields, usually flagged explicitly via the `!!binary` prefix tag. [link](https://wikipedia.org/wiki/YAML)
+
+Would you like me to **provide syntax examples** for any of these data types, or help you **convert a JSON payload** into a valid YAML structure? [link](https://www.cloudbees.com/blog/yaml-tutorial-everything-you-need-get-started)
+
+- [link](https://yaml.org/spec/1.2.2/)\
+  YAML Ain't Markup Language (YAML™) revision 1.2.2\
+  Oct 1, 2021 — YAML represents any native data structure using three node kinds: sequence - an ordered series of entries; mapping - an unordered ...\
+  YAML.org
+- [link](https://www.cloudbees.com/blog/yaml-tutorial-everything-you-need-get-started)\
+  YAML Tutorial: Everything You Need to Get Started in Minutes\
+  Mar 8, 2023 — The “doe” is a key that points to a string value: “a deer, a female deer”. YAML supports more than just string values. The file st...\
+  CloudBees
+- [link](https://en.wikipedia.org/wiki/YAML)\
+  YAML - Wikipedia\
+  YAML. Article · Talk. Language; Loading… Download PDF; Watch · Edit. For the CSS framework, see YAML (framework). YAML (/ˈjæməl/ Y...\
+  Wikipedia
+
+Show all
+
+## examples of each
+
+Here are practical examples for every YAML data type, organized by their core categories.
+
+### 1. Scalars (Single Values)
+
+yaml
+
+```
+# Strings
+plain_string: Hello World
+single_quoted: 'Preserves literal \ characters'
+double_quoted: "Allows escape sequences like \n newlines"
+literal_block: |
+  This keeps line breaks
+  exactly as written.
+folded_block: >
+  This removes line breaks
+  and creates one paragraph.
+
+# Integers
+canonical_int: 12345
+binary_int: 0b1010
+octal_int: 0o27
+hex_int: 0x1A
+
+# Floating-Point
+canonical_float: 1230.15
+exponential_float: 1.23e+3
+fixed_infinity: .inf
+not_a_number: .nan
+
+# Booleans
+boolean_true: true
+boolean_false: false
+
+# Nulls
+null_word: null
+null_tilde: ~
+
+# Timestamps
+date_only: 2026-08-12
+iso_8601: 2026-08-12T08:13:00-07:00
+```
+
+Use code with caution.
+
+### 2. Sequences (Lists)
+
+yaml
+
+```
+# Block Sequence (Standard)
+shopping_list:
+  - Apples
+  - Bananas
+  - Oranges
+
+# Flow Sequence (Inline)
+inline_list: [Apples, Bananas, Oranges]
+```
+
+Use code with caution.
+
+### 3. Mappings (Key-Value)
+
+yaml
+
+```
+# Block Mapping (Standard)
+user_profile:
+  username: johndoe
+  role: admin
+
+# Flow Mapping (Inline)
+inline_profile: { username: johndoe, role: admin }
+```
+
+Use code with caution.
+
+### 4. Advanced & Custom Types
+
+yaml
+
+```
+# Explicit Tags (Forcing a data type)
+forced_string: !!str 12345
+forced_float: !!float 42
+
+# Binary Data (Base64 encoded)
+gif_file: !!binary |
+  R0lGODlhDAAMAIQAAP//wP///wJCcmstcwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+  AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5
+  BAEAAAAALAAAAAAMAAwAAAVKIC6Oz/ieaCqQCgADwRxLcKbLOa9TH2bA78DBU0hQ
+  jEDgYwYgAhBTscAsEBgNoIEIkIDFiLHWUvEI9g6GgHBgE658SbdKAAA7
+```
+
+Use code with caution.
+
+Would you like to see how to **nest these types** inside a complex configuration file, or do you want to **validate a specific YAML snippet** you are currently writing?
+
+# yaml spec on indentation
+
+The official [YAML Specification](https://yaml.org/spec/1.2.2/) dictates that <mark><strong>structure and hierarchy are defined by line indentation</strong></mark>, meaning leading whitespace is syntactically significant. [link](https://yaml.org/spec/1.2.2/)
+
+### The Core Rules
+
+- **Tabs are forbidden**: You must **never use tabs** for indentation. This ensures portability, as different systems and text editors render tab characters with varying widths. [link](https://github.com/yaml/yaml/issues/61)
+- **Spaces only**: Indentation consists strictly of **one or more space characters** at the beginning of a line. [link](https://www.cloudbees.com/blog/yaml-tutorial-everything-you-need-get-started)
+- **No fixed number of spaces**: The specification **does not require a specific number of spaces** (like 2 or 4) per level. You can freely choose your indentation width. [link](https://stackoverflow.com/questions/42247535/yaml-how-many-spaces-per-indent)
+- **Consistency is required**: Elements at the **exact same nesting level must share the exact same indentation** width. You can change the indent spacing for different nesting levels, but doing so is highly discouraged.
+- **Relative indentation**: An indented block or child node must be indented with **more spaces than its parent node**. [link](https://stackoverflow.com/questions/68455579/how-to-preserve-all-leading-indents-in-yaml)
+
+### 💡 The De Facto Convention
+
+While the specification allows flexibility, the community and industry best practice is to **always use exactly 2 spaces per indentation level**. [link](https://www.rudderstack.com/docs/profiles/dev-docs/yaml-refresher/)
+
+### Block Sequences (Lists) and Indentation
+
+The dash character (`-`) used for list items **counts as part of the indentation**. Because of this, the specification allows two different visual styles for list formatting: [link](https://cloudslang-docs.readthedocs.io/en/v1.0/yaml%5Foverview.html)
+
+**1. Indented Sequence (Recommended for clarity)**\
+The sequence entry is indented relative to its parent key.
+
+yaml
+
+```
+fruits:
+  - apple
+  - banana
+```
+
+Use code with caution.
+
+**2. Zero-Indented Sequence (Valid specification syntax)**\
+The dash aligns directly underneath the parent key. This is structurally valid because the dash acts as the indentation marker itself. [link](https://www.youtube.com/watch?v=ImHSpwUlNVc\&t=227)
+
+yaml
+
+```
+fruits:
+- apple
+- banana
+```
+
+Use code with caution.
+
+If you are writing a schema or setting up your project, would you like help configuring a tool like **yamllint** or **Prettier** to automatically enforce these spacing rules? [link](https://docs.ansible.com/projects/lint/rules/yaml/)
+
+- [link](https://yaml.org/spec/1.2.2/)\
+  YAML Ain't Markup Language (YAML™) revision 1.2.2\
+  Oct 1, 2021 — 2.1. Collections. YAML's block collections use indentation for scope and begin each entry on its own line. Block sequences indicat...\
+  YAML.org
+- [link](https://stackoverflow.com/questions/42247535/yaml-how-many-spaces-per-indent)\
+  YAML How many spaces per indent?\
+  Feb 15, 2017 — YAML doesn't require a specific number of spaces for indentation. Indentation is defined as zero or more spaces at the start of a ...\
+  Stack Overflow
+- [link](https://stackoverflow.com/questions/68455579/how-to-preserve-all-leading-indents-in-yaml)\
+  How to preserve all leading indents in yaml? - Stack Overflow\
+  Jul 20, 2021 — 1 Answer. ... SomeText: |1 This is some text that I would like for The leading indents to be preserved. It would be really nice fo...\
+  Stack Overflow
+
+Show all
+
+## examples
+
+### Basic Key-Value Nesting (2-Space Standard)
+
+Each child key must be indented further than its parent.
+
+yaml
+
+```
+# Correct: Consistent 2-space indentation
+company:
+  department:
+    team: Engineering
+    size: 15
+```
+
+Use code with caution.
+
+yaml
+
+```
+# Incorrect: "size" is nested under nothing
+company:
+  department:
+    team: Engineering
+  size: 15
+```
+
+Use code with caution.
+
+### Lists inside Maps
+
+The hyphen (`-`) marks a list item. It requires at least one space after it.
+
+yaml
+
+```
+# Correct: Standard indented list
+servers:
+  - web01
+  - web02
+```
+
+Use code with caution.
+
+yaml
+
+```
+# Correct: Zero-indented list (Valid, but less common)
+servers:
+- web01
+- web02
+```
+
+Use code with caution.
+
+yaml
+
+```
+# Incorrect: Tab character used instead of spaces
+servers:
+	- web01
+```
+
+Use code with caution.
+
+### Maps inside Lists
+
+When list items contain key-value pairs, the keys align with the hyphen or indent further.
+
+yaml
+
+```
+# Correct: Nested maps inside a list
+users:
+  - name: Alice
+    role: Admin
+  - name: Bob
+    role: User
+```
+
+Use code with caution.
+
+### Multi-line Strings
+
+Literal block scalars (`|`) and folded scalars (`>`) preserve structure based on the indentation of the string content.
+
+yaml
+
+```
+# Correct: Content is indented past the parent key
+description: |
+  This is line one.
+  This is line two.
+```
+
+Use code with caution.
+
+Would you like me to validate a **specific YAML snippet** you are working on, or should we look at how **Kubernetes** or **GitHub Actions** uses these rules?
+
+## yaml spec on omitting indentation for top level map
+
+The YAML Specification explicitly allows you to **omit indentation for a top-level map** (also called a block mapping) because it sits at the "root" or document level.
+
+### The Core Rule
+
+- **Implicit Root Level:** The top-level mapping forms the outermost structure of the document, so it has a baseline indentation of **zero spaces**.
+- **Subsequent Nesting Required:** While the top-level keys start at the very margin of the file, any maps or lists nested _inside_ them must be indented normally.
+
+### Correct Example
+
+The top-level keys (`apiVersion`, `kind`, `metadata`, `spec`) have zero indentation. Only their child elements are indented.
+
+yaml
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web-server
+spec:
+  containers:
+    - name: nginx
+      image: nginx:1.14.2
+```
+
+Use code with caution.
+
+### Incorrect Example
+
+You cannot add arbitrary indentation to top-level keys unless they are nested inside a document marker (`---`). Without a marker, this will cause a parsing error.
+
+yaml
+
+```
+# ERROR: Arbitrary top-level indentation
+  apiVersion: v1
+  kind: Pod
+```
+
+Use code with caution.
+
+### Multiple Top-Level Maps (Document Dividers)
+
+If you want to include multiple top-level maps in a single file, you must separate them using the **three dashes (`---`) directive**. The maps still require zero indentation relative to the margin.
+
+yaml
+
+```
+---
+# Document 1
+id: 1
+name: Alice
+---
+# Document 2
+id: 2
+name: Bob
+```
+
+Use code with caution.
+
+Are you troubleshooting a specific **parser error**, or would you like to see how this rule applies to **JSON-to-YAML conversion**?
+
+- [link](https://github.com/yaml/pyyaml/issues/234)\
+  Incorrect indentation with lists · Issue #234 · yaml/pyyaml\
+  Nov 20, 2018 — The top level mapping has an indentation of zero ( 0 \* spaces ). The value for list\_of\_dict\_attr , the sequence, also has an inden...\
+  \
+  \
+  GitHub
+- [link](https://dev.to/msfaizi/how-to-write-a-yaml-configuration-file-a-step-by-step-guide-for-beginners-jf0)\
+  How to write a YAML configuration file? | A Step-by-Step Guide for Beginners\
+  Oct 9, 2023 — Use Indentation for Nested Data: If you have nested data structures like dictionaries or lists, use proper indentation to represen...\
+  \
+  \
+  DEV Community
+- [link](https://github.com/yaml/pyyaml/issues/234)\
+  Incorrect indentation with lists · Issue #234 · yaml/pyyaml\
+  Nov 20, 2018 — The top level mapping has an indentation of zero ( 0 \* spaces ). The value for list\_of\_dict\_attr , the sequence, also has an inden...\
+  \
+  \
+  GitHub
+
+Show all
+
+## yaml spec on omitting indentation for second level map
+
+According to the [YAML Specification](https://yaml.org/spec/1.2.2/), you **cannot omit indentation for a pure second-level map** if it sits directly underneath another map. YAML relies completely on indentation to establish child hierarchy. [link](https://stackoverflow.com/questions/66188060/dashes-and-indentations-in-yaml)
+
+However, there is **one major exception** where a second-level map can look like its indentation was omitted: when it is nested inside a list. [link](https://stackoverflow.com/questions/66188060/dashes-and-indentations-in-yaml)
+
+### The Exception: Compact Block Mapping (Maps inside Lists)
+
+If your first-level element is a **sequence (list)**, the specification allows a **compact notation**. The hyphen (`-`) and its trailing space act as the structural indentation for that level. [link](https://stackoverflow.com/questions/66188060/dashes-and-indentations-in-yaml)
+
+Because the hyphen handles the indentation context, the first key of your second-level map can sit on the exact same line, right after the hyphen. The subsequent keys of that same map then align directly underneath that first key, requiring **zero extra indentation relative to the hyphen**. [link](https://stackoverflow.com/questions/66188060/dashes-and-indentations-in-yaml)
+
+#### Valid Compact Syntax
+
+yaml
+
+```
+# Level 1: A list (sequence)
+users:
+  - name: Alice    # Level 2 map starts on the same line as the hyphen
+    role: Admin    # These keys align exactly under the first key
+    id: 101
+```
+
+Use code with caution.
+
+#### Structurally Identical Expanded Syntax
+
+Without using the compact notation exception, the exact same data structure requires an explicit indent for the second-level map:
+
+yaml
+
+```
+users:
+  -
+    name: Alice
+    role: Admin
+    id: 101
+```
+
+Use code with caution.
+
+### Where it is Forbidden (Map under a Map)
+
+If your first-level element is a standard map, you **never** omit indentation for the second-level map. Doing so breaks the structure and causes a parsing error because the parser cannot distinguish a second-level key from a top-level key.
+
+yaml
+
+```
+# INVALID SYNTAX (Will throw a parsing error)
+user_profile:
+name: Alice
+role: Admin
+```
+
+Use code with caution.
+
+yaml
+
+```
+# VALID SYNTAX (Must be indented)
+user_profile:
+  name: Alice
+  role: Admin
+```
+
+Use code with caution.
+
+### Alternative: Flow Style (Inline JSON-like Maps)
+
+If you want a second-level map but absolutely hate adding vertical line indentation, you can bypass the block indentation rules entirely by using **Flow Style**. Flow style uses curly braces (`{}`) and commas, allowing you to compress the second-level map onto a single line without indentation. [link](https://yaml.org/spec/1.1/)
+
+yaml
+
+```
+user_profile: { name: Alice, role: Admin }
+```
+
+Use code with caution.
+
+Are you looking to use the **compact sequence notation** for readability, or are you trying to bypass deep indentation for highly nested configurations?
+
+- [link](https://github.com/yaml/yaml-spec/issues/290)\
+  GitHub\
+  Not explicitly stated that content indentation level of 0 ... - GitHub\
+  Jul 9, 2022 — The following YAML document is invalid because the content line of the block scalar does not have any indentation: | scalar I beli...
+- [link](https://stackoverflow.com/questions/66188060/dashes-and-indentations-in-yaml)\
+  Stack Overflow\
+  dashes and indentations in yaml - Stack Overflow\
+  Feb 13, 2021 — Show activity on this post. YAML documents consist of three types of nodes: Scalars, sequences and mappings. When using block synt...
+- [link](https://yaml.org/spec/1.1/)\
+  YAML.org\
+  YAML Ain't Markup Language (YAML™) Version 1.1 - YAML.org\
+  Jan 18, 2005 — 2.1. Collections. YAML's block collections use indentation for scope and begin each entry on its own line. Block sequences indicat...
+
+Show all
+
+## why indentation of list inside map can be omitted while map in map cant
+
+The difference comes down to a core design choice in the YAML syntax: **a list item possesses a physical block indicator (`-`), while a map entry does not.** [link](https://yaml.org/spec/1.2.2/)
+
+According to Section 8.2.1 of the [YAML Specification](https://yaml.org/spec/1.2.2/), the hyphen character plus its trailing space (`- `) are explicitly recognized by the parser as an indicator of structural depth. [link](https://stackoverflow.com/questions/17014460/yaml-indentation-for-array-in-hash)
+
+### 1. Why a List inside a Map can omit indentation
+
+When you place a list directly inside a map, the hyphen (`-`) acts as a structural anchor. The parser doesn't need extra spaces to know a new scope has started because **the hyphen itself acts as the visual and logical indentation marker.** [link](https://stackoverflow.com/questions/17014460/yaml-indentation-for-array-in-hash)
+
+yaml
+
+```
+# The hyphen aligns with 'fruits', but the parser knows it's a child level
+fruits:
+- apple
+- banana
+```
+
+Use code with caution.
+
+- **How the parser sees it:** The key `fruits:` expects a value. It hits a line starting with `- `, which is an unambiguous sequence indicator. Because it is a completely different data type token, the parser knows the sequence belongs to the `fruits` key. [link](https://yaml.org/spec/1.2.2/)
+
+### 2. Why a Map inside a Map CANNOT omit indentation
+
+Map entries are written as `key: value` pairs. They do not possess a unique leading structural symbol like a hyphen. [link](https://yaml.org/spec/1.1/)
+
+yaml
+
+```
+# INVALID: The parser cannot separate levels
+user:
+name: Alice
+age: 30
+```
+
+Use code with caution.
+
+- **How the parser sees it:** A colon (`:`) just denotes a regular key-value pair. Because `name` and `age` have zero indentation, they look identical to `user`. The parser evaluates them all as **sibling keys at the exact same root level**. It has no syntactic trigger to realize `name` should be a child of `user`. [link](https://www.geeksforgeeks.org/devops/fix-block-mapping-expected-error-yaml/)
+
+### The Ultimate Comparison
+
+| Context         | Example                  | Is it valid? | Why?                                                                            |
+| --------------- | ------------------------ | ------------ | ------------------------------------------------------------------------------- |
+| **List in Map** | `fruits:``- apple`       | **Yes**      | The `-` serves as a built-in structural boundary.                               |
+| **Map in Map**  | `user:``name: Alice`     | **No**       | `name:` looks exactly like a top-level key.                                     |
+| **Map in List** | `- name: Alice``age: 30` | **Yes**      | The `-` establishes the outer list item, allowing the map to inline next to it. |
+
+Are you trying to optimize a file to **reduce its overall line indentations**, or are you currently debugging a **"block mapping expected"** parsing error?
+
+- [link](https://stackoverflow.com/questions/17014460/yaml-indentation-for-array-in-hash)\
+  Stack Overflow\
+  YAML indentation for array in hash - Stack Overflow\
+  Jun 9, 2013 — I think indentation is important in YAML. ... Why isn't there indentation for the array? I found this at http://www.yaml.org/YAML\_
+- [link](https://www.geeksforgeeks.org/devops/fix-block-mapping-expected-error-yaml/)\
+  GeeksforGeeks\
+  How to Fix the "Block Mapping Expected" Error in YAML\
+  Jul 23, 2025 — Common Causes and How to Fix Them \* Incorrect Indentation. YAML relies on indentation to represent the hierarchy of data. Incorrec...
+- [link](https://yaml.org/spec/1.2.2/)\
+  YAML.org\
+  YAML Ain't Markup Language (YAML™) revision 1.2.2\
+  Oct 1, 2021 — 2.1. ... YAML's block collections use indentation for scope and begin each entry on its own line. Block sequences indicate each en...
+
+Show all
+
+## what if you write nothing after a colon
+
+If you write nothing after a colon, YAML interprets the value as **null**. This is explicitly defined in the YAML Specification as a **"Plain Null"** or an **Implicit Null**.
+
+### How the Parser Sees It
+
+When a parser reads a key with a blank value, it assigns it a `null` data type (which translates to `None` in Python, `null` in JavaScript/Java, or `nil` in Ruby).
+
+yaml
+
+```
+# Both of these entries evaluate to exactly the same 'null' value
+database_password:
+api_key: null
+```
+
+Use code with caution.
+
+***
+
+### The Crucial Exception: Indentation Rules Change Everything
+
+Writing nothing _directly_ after a colon behaves completely differently depending on what you put on the **very next line**.
+
+#### 1. It acts as an Implicit Null (If followed by a sibling key)
+
+If the next line stays at the same indentation level, the empty key remains `null`.
+
+yaml
+
+```
+username: admin
+password:          # Evaluates to null
+email: admin@test.com
+```
+
+Use code with caution.
+
+#### 2. It acts as a Parent Container (If followed by an indented child)
+
+If you write nothing after the colon, but the next line is **indented further**, the colon acts as a container opener. The value of that key becomes the entire nested map or list underneath it.
+
+yaml
+
+```
+# 'user_profile' has no value on its line, but its value is the map below it
+user_profile:
+  first_name: John
+  last_name: Doe
+```
+
+Use code with caution.
+
+#### 3. It acts as an Empty String (Only if explicitly quoted)
+
+If you want the value to be an empty string `""` rather than `null`, you cannot leave it blank. You must use quotes.
+
+yaml
+
+```
+middle_name: ""    # Evaluates to an empty string, NOT null
+```
+
+Use code with caution.
+
+***
+
+### Comparison of Parser Outputs
+
+If you parsed these different blank scenarios into a programming language (like Python), here is how they would output:
+
+yaml
+
+```
+case_1:
+case_2:
+  child: true
+case_3: ""
+```
+
+Use code with caution.
+
+python
+
+```
+# Python representation:
+{
+    "case_1": None,
+    "case_2": {"child": True},
+    "case_3": ""
+}
+```
+
+Use code with caution.
+
+Are you configuring an environment file where you want to leave an **optional setting blank**, or are you seeing an unexpected **empty value error** in your application?
+
+## what if you linebreak indent and write some scalar after a colon
+
+If you insert a line break, indent, and then write a single scalar (like a string, number, or boolean) after a colon, <mark>it is evaluated as a<span> </span><strong>Block Scalar</strong><span> </span>or an<span> </span><strong>Indented Block Value</strong></mark>.
+
+The exact behavior depends entirely on whether you use a **Block Indicator** (`|` or `>`) or if you just write a **Plain Scalar**.
+
+***
+
+### Scenario 1: Writing a Plain Scalar (No Indicator)
+
+If you simply line break, indent, and write a standard single-line scalar, YAML treats it as a **standard value assignment**. The line break is completely ignored by the parser.
+
+yaml
+
+```
+# Input YAML
+database_url:
+  localhost:5432
+```
+
+Use code with caution.
+
+- **How the parser reads it:** It acts exactly the same as `database_url: localhost:5432`.
+- **The Indentation Rule:** You must indent it. If you do not indent it, the parser will treat `localhost:5432` as a syntax error or a new top-level map key.
+
+***
+
+### Scenario 2: Multi-line Plain Scalar (Implicit Folding)
+
+If you continue writing on multiple lines, and every line is indented, YAML will automatically join the lines together with **spaces**.
+
+yaml
+
+```
+# Input YAML
+commit_message:
+  This is a very long commit message
+  that spans across multiple lines
+  in the YAML file.
+```
+
+Use code with caution.
+
+- **How it parses:** `"This is a very long commit message that spans across multiple lines in the YAML file."`
+- **The Rule:** Newlines are converted to spaces. A blank line will be interpreted as a literal newline character (`\n`).
+
+***
+
+### Scenario 3: Using a Block Style Indicator (`|` or `>`)
+
+To explicitly control how the line breaks and indentation are handled inside that scalar, you use a block indicator immediately after the colon.
+
+#### 1. The Literal Block Indicator (`|`)
+
+This preserves all newlines and indentation exactly as you typed them.
+
+yaml
+
+```
+# Input YAML
+code_snippet: |
+  line_one = 1
+  line_two = 2
+```
+
+Use code with caution.
+
+- **How it parses:** `"line_one = 1\nline_two = 2\n"`
+
+#### 2. The Folded Block Indicator (`>`)
+
+This replaces single newlines with spaces but preserves blank lines. It is ideal for writing long paragraphs of text.
+
+yaml
+
+```
+# Input YAML
+paragraph: >
+  This is line one.
+  This is line two.
+```
+
+Use code with caution.
+
+- **How it parses:** `"This is line one. This is line two.\n"`
+
+***
+
+### Common Trap: Unintended Nesting Errors
+
+If your scalar contains a colon itself (like a URL or a MAC address), writing it on a new line without a block indicator can easily confuse the parser into thinking you are trying to create a nested map.
+
+yaml
+
+```
+# ❌ PARSING ERROR: The parser thinks 'https' is a map key
+website_link:
+  https://example.com
+```
+
+Use code with caution.
+
+yaml
+
+```
+#  VALID: Using quotes or an indicator fixes it
+website_link:
+  "https://example.com"
+```
+
+Use code with caution.
+
+Are you trying to wrap a **long configuration string** (like an RSA key or SQL query) across multiple lines to make your file cleaner?
+
+- [link](https://michaelcurrin.github.io/dev-cheatsheets/cheatsheets/data/yaml/strings.html)\
+  Strings | Dev Cheatsheets\
+  A scalar could by another type but only string is covered here.\
+  \
+  GitHub
+- [link](https://blogs.perl.org/users/tinita/2018/03/strings-in-yaml---to-quote-or-not-to-quote.html)\
+  Strings in YAML - To Quote or not to Quote | tinita \[blogs.perl.org]\
+  Mar 3, 2018 — All continuation lines in a block scalar have to be indented at least as much as the first line.\
+  \
+  Perl Blogs
+- [link](https://redocly.com/learn/yaml/blocks-and-flows)\
+  Lesson 5: Block and flow scalars\
+  May 28, 2025 — Lesson 5: Block and flow scalars Write a string across more than one line using literal blocks, folded blocks, or flows. This is a...\
+  \
+  Redocly
+
+Show all
+
+## what if you linebreak and write a plain scalar wo indentation after a colon
+
+If you add a line break and write a plain scalar with **zero indentation** (pushing it all the way to the left margin), <mark>it breaks the structural relationship with the colon above it</mark>.
+
+The parser will process this in one of two ways, depending on whether the parent key was already at the top level or nested.
+
+***
+
+### Case 1: The parent key is at the top level (Causes a Syntax/Parsing Error)
+
+If the key before the colon has zero indentation, writing an unindented text block on the next line is invalid YAML syntax. The parser expects a value context but hits a completely unindented line, causing an immediate crash. [link](https://dev.to/kalkwst/a-gentle-introduction-to-the-yaml-format-bi6)
+
+yaml
+
+```
+# ❌ PARSING ERROR (Block mapping expected / Bad indentation)
+database_url:
+localhost:5432
+```
+
+Use code with caution.
+
+- **Why it fails:** The parser interprets `database_url:` as an implicit null because it has no value on its own line. Then, it evaluates `localhost:5432` as a brand new, independent top-level key-value pair. Because `database_url` was left null and has no content, many stricter parsers will instantly flag it as a formatting error. [link](https://blogs.perl.org/users/tinita/2018/03/strings-in-yaml---to-quote-or-not-to-quote.html)
+
+***
+
+### Case 2: The parent key is nested (Changes the Data Structure entirely)
+
+If the parent key is already indented, writing a plain scalar without indentation on the next line means you have moved that text all the way back to the **root margin**.
+
+Instead of being a value for the parent key, it becomes a **brand new top-level element**, completely detached from the structure above it.
+
+yaml
+
+```
+# 📄 Valid YAML, but structurally broken
+environment:
+  database_url:
+localhost:5432
+```
+
+Use code with caution.
+
+#### How the Parser Sees Case 2
+
+Because `localhost:5432` contains a colon, the parser reads it as a standalone key-value pair at the root level. Your intended `database_url` is left completely empty (`null`). [link](https://blogs.perl.org/users/tinita/2018/03/strings-in-yaml---to-quote-or-not-to-quote.html)
+
+If you translated that YAML snippet into Python, the resulting dictionary structure shows how the child-parent relationship is completely destroyed:
+
+python
+
+```
+# Python representation of the broken structure:
+{
+    "environment": {
+        "database_url": None  # Left blank!
+    },
+    "localhost": 5432         # Separated completely!
+}
+```
+
+Use code with caution.
+
+### The Unbreakable Rule
+
+For a multi-line plain scalar to successfully register as the text value of a key, **every single subsequent line must be indented further than the key itself.** The moment a line drops back to the left margin, it closes out the current block scope entirely. [link](https://dev.to/kalkwst/a-gentle-introduction-to-the-yaml-format-bi6)
+
+Are you attempting to format a **long text block** and finding that your editor keeps auto-formatting it to the left margin, or are you running into a specific parser stack-trace?
+
+- [link](https://stackoverflow.com/questions/3790454/how-do-i-break-a-string-in-yaml-over-multiple-lines)\
+  Stack Overflow\
+  How do I break a string in YAML over multiple lines?\
+  Sep 24, 2010 — Use > if you want to break a string up for readability but for it to still be treated as a single-line string: interior line break...
+- [link](https://blogs.perl.org/users/tinita/2018/03/strings-in-yaml---to-quote-or-not-to-quote.html)\
+  Perl Blogs\
+  Strings in YAML - To Quote or not to Quote | tinita \[blogs.perl.org]\
+  Mar 3, 2018 — Because a plain scalar without quotes can conflict with YAML syntax elements, there are some exceptions where you can not use it. ...
+- [link](https://dev.to/kalkwst/a-gentle-introduction-to-the-yaml-format-bi6)\
+  DEV Community\
+  A Gentle Introduction to the YAML format - DEV Community\
+  Sep 9, 2023 — Basic Rules. First of all lets discuss some basic rules about working with YAML files: Whitespace and indentation matters and play...
+
+## what if you add a linebreak after a colon before writing what you should write
+
+Adding a line break after a colon <mark><strong>is perfectly valid and built into the YAML specification</strong></mark>, provided that whatever you write next follows the strict indentation rules.
+
+The line break simply tells the parser: _"The value for this key starts on the next line."_
+
+Here is exactly how the parser handles different data types when you insert that line break:
+
+### 1. Writing a Nested Map (Dictionary)
+
+This is the most common use of a line break. The child keys must be indented.
+
+yaml
+
+```
+# Completely Valid
+user_profile:
+  name: Alice
+  role: Admin
+```
+
+Use code with caution.
+
+### 2. Writing a List (Sequence)
+
+The line break is the standard way to begin a list of items.
+
+yaml
+
+```
+# Completely Valid
+shopping_list:
+  - milk
+  - bread
+```
+
+Use code with caution.
+
+### 3. Writing a Plain Scalar (Single Line of Text/Number)
+
+You can put a single text value on its own line after a line break, but **it must be indented**. The line break itself is discarded by the parser, and the text is read as a normal value.
+
+yaml
+
+```
+# Completely Valid
+database_host:
+  localhost
+```
+
+Use code with caution.
+
+- **Parser Result:** `{"database_host": "localhost"}`
+
+### 4. Writing a Multi-line String (Block Scalars)
+
+When using text indicators like `|` (literal) or `>` (folded), the indicator sits next to the colon, and the line break separates it from the actual content block.
+
+yaml
+
+```
+# Completely Valid
+motd: |
+  Welcome to the server!
+  Please be respectful.
+```
+
+Use code with caution.
+
+***
+
+### ⚠️ The Two Dangerous Traps
+
+While the line break is valid, it becomes a **syntax error** if you forget to indent what comes next, or if you leave the file completely empty after the line break.
+
+#### Trap A: The "Zero Indentation" Error
+
+If you break the line and start writing text at the left margin, you break the relationship. The parser assumes the first key is empty (`null`) and treats the next line as a brand new root-level key.
+
+yaml
+
+```
+# ❌ PARSING ERROR (or structural breakdown)
+api_endpoint:
+https://example.com
+```
+
+Use code with caution.
+
+#### Trap B: The "Trailing Key" Error
+
+If you insert a line break after a colon at the very end of a file and write absolutely nothing else, some strict parsers will throw an `unacceptable key` or `end of stream` error because they are expecting a value structure that never arrives.
+
+Are you trying to make a **highly nested configuration file** look cleaner by breaking lines early, or are you designing a automation script that generates YAML layout dynamically?
+
+- [link](https://softwareengineering.stackexchange.com/questions/341035/is-colon-in-python-blocks-technically-necesary)\
+  syntax - Is colon in python blocks technically necesary?\
+  Jan 27, 2017 — 4 Answers 4 Wait, you can have a statement after the colon on the same line? I was pretty sure it's not allowed. It is permitted, ...\
+  \
+  \
+  Software Engineering Stack Exchange
+- [link](https://community.atlassian.com/forums/Confluence-questions/How-do-I-add-a-newline-or-linebreak-in-a-Confiform-textarea-type/qaq-p/1743227)\
+  How do I add a newline or linebreak in a Confiform textarea type field?\
+  Jul 7, 2021 — The bolded part appears on one line, and then the value should appear in the next line.\
+  \
+  \
+  Atlassian Community
+- [link](https://www.reddit.com/r/css/comments/1qw4z5z/code%5Fto%5Fuse%5Fto%5Fwrap%5Ftext%5Fas%5Fyou%5Ftype%5Fwhitespace/)\
+  Code to use to wrap text as you type - white-space: pre-line; : r/css\
+  Feb 5, 2026 — The Simple Line Break ( ) The most common way to force text onto a new line without starting a new paragraph is the tag. It is a ...\
+  \
+  \
+  Reddit
+
+Show all
+
+## what if you line break and write lorem ipsum wo indentation after a colon
+
+If you add a line break and write "lorem ipsum" with **zero indentation** right after a colon, it will cause an immediate **syntax and parsing error**.
+
+yaml
+
+```
+# ❌ CRASHES: Strictest Parsing Error
+sample_text:
+lorem ipsum
+```
+
+Use code with caution.
+
+### Why the Parser Crashes
+
+1. **The Colon Expects a Structure:** When the parser reads `sample_text:`, it registers a key. The line break tells it that the value is coming up next.
+2. **Missing Indentation Token:** Because `lorem ipsum` has zero indentation, the parser treats it as a brand-new element at the root level of the document.
+3. **No Key Identifier:** A plain text string like `lorem ipsum` at the root level is completely invalid because the root level requires either a map key (which must end with a colon) or a list marker (which must start with a hyphen). Because it has neither, the parser panics and throws an error like **"block mapping expected"**, **"bad indentation"**, or **"expected , but found "**.
+
+### The Only Time It Won't Crash (But Will Still Be Broken)
+
+If your string happens to contain a colon (e.g., `lorem: ipsum`), the parser won't crash, but it will **destroy your intended data structure**.
+
+yaml
+
+```
+# 📄 Valid YAML syntax, but logically broken
+sample_text:
+lorem: ipsum
+```
+
+Use code with caution.
+
+The parser will read this as two completely separate, independent top-level keys:
+
+- `sample_text` is assigned a value of `null`.
+- `lorem` becomes a new top-level key with the value `"ipsum"`.
+
+### The Fix
+
+To make `lorem ipsum` the actual value of your key on a new line, you must add at least **one space of indentation** (though two spaces is the industry standard).
+
+yaml
+
+```
+#  CORRECT
+sample_text:
+  lorem ipsum
+```
+
+Use code with caution.
+
+Are you working with a text editor that is accidentally stripping out your leading spaces when you hit enter, or are you pasting in a **large block of placeholder text**?
+
+## yaml spec what if you line break and write lorem ipsum wo indentation after a colon
+
+According to the [official YAML Specification](https://yaml.org/spec/1.2.2/), writing "lorem ipsum" on a new line with zero indentation directly after a colon <mark>results in a<span> </span><strong>fatal parsing crash</strong></mark>.
+
+This scenario fails due to three specific mechanics defined in the spec:
+
+### 1. The Block End Rule (Implicit Null)
+
+When the parser reads `sample_text:`, it detects a map key. Because the line break occurs immediately and the next line features _lesser or equal_ indentation (dropping from 0 spaces to 0 spaces), the specification mandates that the value for `sample_text` is terminated immediately. [link](https://yaml.org/spec/1.2.2/)
+
+- **The result:** `sample_text` is parsed as an **implicit null**. [link](https://developers.home-assistant.io/docs/documenting/yaml-style-guide/)
+
+### 2. Forbidden Bare Scalars at Root
+
+Once `sample_text` is closed out, the parser evaluates `lorem ipsum` as a completely new, top-level root element. [link](https://www.rudderstack.com/docs/profiles/dev-docs/yaml-refresher/)
+
+- **The specification rule:** A document root consisting of a block mapping can _only_ accept valid map keys (which must end with a colon) or block sequence indicators (which must start with a hyphen).
+- **The result:** A plain string (bare scalar) cannot sit nakedly at the root margin alongside a map key. [link](https://yaml.org/spec/1.2.2/)
+
+### 3. The Specific Error Message
+
+Because the parser encounters an unindented string where it explicitly expects either another map key or a document separator, the parser will fail. Depending on the engine you use, it will throw one of the following compliance errors: [link](https://github.com/eemeli/yaml/issues/176)
+
+- `block mapping expected`
+- `expected <block end>, but found <scalar>`
+- `bad indentation`
+
+### The Only Exception: The "Hidden Colon" Trap
+
+The only way this structure will avoid a crash is if your text happens to contain a colon with a trailing space (e.g., `lorem: ipsum`). [link](https://hsf-training.github.io/hsf-training-cicd-github/04-understanding-yaml/index.html)
+
+yaml
+
+```
+# Valid YAML, but structurally broken data
+sample_text:
+lorem: ipsum
+```
+
+Use code with caution.
+
+If it contains a colon, the specification interprets it as a totally valid, independent top-level key. The hierarchy is still ruined, as the parser yields a flat dictionary: `{"sample_text": null, "lorem": "ipsum"}`. [link](https://www.rudderstack.com/docs/profiles/dev-docs/yaml-refresher/)
+
+If you are generating these files dynamically and want to avoid structural drops like this, would you like to see how to structure your strings using **Flow Style (JSON-like braces)** or **Literal Blocks (`|`)** to safely pass multi-line text? [link](https://stackoverflow.com/questions/42124227/why-does-the-yaml-spec-mandate-a-space-after-the-colon)
+
+- [link](https://github.com/eemeli/yaml/issues/176)\
+  GitHub\
+  Can't handle single-quoted multiline strings without indents #176\
+  May 29, 2020 — Description. ... The following YAML throws a "Multi-line single-quoted string needs to be sufficiently indented" error. descriptio...
+- [link](https://www.rudderstack.com/docs/profiles/dev-docs/yaml-refresher/)\
+  RudderStack\
+  YAML Best Practices | RudderStack Docs\
+  A YAML file uses indentation, specific characters, and line breaks for representing various data structures. Sample YAML file. Bel...
+- [link](https://stackoverflow.com/questions/11301650/how-to-escape-indicator-characters-colon-and-hyphen-in-yaml)\
+  Stack Overflow\
+  How to escape indicator characters (colon and hyphen) in YAML\
+  Jul 2, 2012 — Basically, I used a list item with a pipe, like this: - | and then on a new line I indented the list item text so that the first c...
+
+Show all
+
+## yaml spec what if you write a colon at the end of the document
+
+According to the [YAML Specification](https://yaml.org/spec/1.2.2/), writing a lone colon (`:`) at the very end of a document <mark>will result in either a<span> </span><strong>fatal parsing error</strong><span> </span>or an<span> </span><strong>empty key map entry</strong></mark>, depending on its indentation and whether it is prefixed by a string.
+
+Here are the two exact scenarios defined by the specification:
+
+### Scenario 1: A Naked Colon (`:`) at the End of the File
+
+If you simply write a standalone colon on a new line with nothing else before it, the file will completely crash.
+
+yaml
+
+```
+# ❌ FATAL ERROR: End of Stream / Mapping Expected
+key1: value1
+:
+```
+
+Use code with caution.
+
+- **The Specification Mechanic:** A colon on its own is an **indicator token**. In a block mapping, a naked colon indicates an _explicit key-value pair_ where the key itself is missing. The parser expects a valid key to follow or precede it. Because the file ends immediately, the parser encounters an unexpected `End of Stream (EOS)` token while still trapped inside an incomplete structural block.
+- **The Error:** Strictest parsers (like PyYAML or the Go `yaml` v3 package) will throw an error similar to `while scanning a simple key, could not find expected ':'` or `expected <block end>, but found <stream end>`.
+
+***
+
+### Scenario 2: A Key Followed by a Colon (`key:`) at the End of the File
+
+If the colon is attached to a word (forming a map key) and sits at the very end of your document, the YAML specification treats it as **completely valid syntax**.
+
+yaml
+
+```
+# 📄 VALID SYNTAX: Plain Null Mapping
+key1: value1
+last_key:
+```
+
+Use code with caution.
+
+- **The Specification Mechanic:** According to the spec, a key followed by a colon and a newline opens a value context. If the file ends right there, the parser assigns an **Implicit Plain Null** to that key.
+
+- **The Parser Output:** If you load this into a programming language, it parses into a clean, valid dictionary structure:\
+  json
+
+<!---->
+
+```
+{
+  "key1": "value1",
+  "last_key": null
+}
+```
+
+Use code with caution.
+
+### Structural Summary
+
+| What is at the end? | Example     | YAML Spec Status | Result                                                |
+| ------------------- | ----------- | ---------------- | ----------------------------------------------------- |
+| **Naked Colon**     | `...``:`    | **Invalid**      | Syntax Error (`End of Stream` or `Missing Block End`) |
+| **Key + Colon**     | `...``key:` | **Valid**        | Evaluates smoothly as an implicit `null` value        |
+
+Are you writing a script that dynamically appends properties to a YAML file, or are you troubleshooting a **truncated file error** from an API payload?
+
+- [link](https://redocly.com/blog/get-started-yaml)\
+  YAML basics for Technical Writers\
+  Jun 19, 2024 — This pattern of nested elements is what allows us to represent even quite complex data structures in YAML. You'll see a key, in th...\
+  \
+  \
+  Redocly
+
+
