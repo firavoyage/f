@@ -50125,7 +50125,7 @@ asdf: 3
 - foo: bar
 - bar
 - baz
-# foo
+# foo: bar
 # bar
 # baz
 ```
@@ -50196,6 +50196,39 @@ feature:
 #   progress: wip
 # sub feature a: should have
 # sub feature b: could have
+```
+
+<!-- upd 12 aug -->
+
+conclusion: <!-- (it's awkward and impractical to make "foo bar baz" "foo bar: baz") --> basically it's about mixing arrays and objects, a feature typically praised for xml (that is args/props), and implicit colon when there's already indentation.
+
+all objects are arrays, as you can convert to entries. but, ironically <!-- to js -->, not all arrays are objects as you apply an additional constraint of "number only key". <!-- and if you create an array of objects you are not doing real work. it's literally a prefix that carries no semantic weight. -->
+
+now let's say you have an array <!-- anyway -->. there are a few ways to reduce them for parsing, as listed below.
+
+```yaml
+# 
+item: nil
+key: value
+```
+
+you can use array directly if yk all items are identically structured.
+
+```yaml
+- apple
+- banana
+- mango
+```
+
+```yaml
+- type: prompt
+  content: hello
+- type: response
+  content: hi
+- type: prompt
+  content: how are you
+- type: response
+  content: fine
 ```
 
 20 20 pick and buy a simple wooden chair w beige chusion of cotton linen.
