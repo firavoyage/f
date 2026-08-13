@@ -2249,6 +2249,8 @@ it's effectively the same when you dont write it down or you havent imagined a f
 
 i dont have to call it "_will_ have" just because i _might_ have it in the future ("wont have, for now").
 
+<!-- will have is could have. -->
+
 - could have: ux improvements, minor perf engineering, etc. (i will write them if i have spare time or i feel like that)
 - ~~will/~~ wont have: not planned (e.g. contrast to the opinionated design or decisions), out of scope, negative roi
 - unlisted: irrelevant or awkward or yet to be discovered
@@ -2264,6 +2266,10 @@ i dont have to call it "_will_ have" just because i _might_ have it in the futur
 - could have: barebone or unpolished or unsophisticated wo (unmatched expectation or dissatisfaction)
 - wont have: mediocre/unopinionated or bloating w (it should be done by extensions or forks)
 - (unlisted): irrelevant or yet to be discovered
+
+07 20 write ixd.
+
+i guess i have the idea <!-- in my mind -->.
 
 ---
 
