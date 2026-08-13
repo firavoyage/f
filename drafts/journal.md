@@ -50416,7 +50416,24 @@ implement backend: todo
   rationale: separte concerns
   assignee: steve
 
+foo: frequently used
+  example a: foo is good for our health
+  example b: i like foo
+bar: rarely used
+  example a: bar lorem ipsum
+  example b: bar might be fine
+  example c: foo = bar
 
+the content of line 1: curiosity, tempatation
+  translation: ...
+  interpretation: ...
+the content of line 2: decision
+  translation: ...
+  metaphor: ...
+the content of line 3: hopes and regrets
+  translation: ...
+  deeper interpretation: ...
+  visual imagery: ...
 ```
 
 20 20 pick and buy a simple wooden chair w beige chusion of cotton linen.

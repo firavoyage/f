@@ -2216,7 +2216,7 @@ well, is predictability a thing? what for? if it matters, who for? and accountab
 
 14
 
-05 30 write ixd.
+05 30 write ixd. define the rule of priority.
 
 i will rarely use arrays. i will use array only if it's a list of items, not some distinct children. i will leverage implicit null and comments.
 
@@ -2236,7 +2236,7 @@ some vars are unused. it's incorrect. the value instead of the key value pair sh
 
 should have and could have differ in "value". it's messy and ambiguous.
 
-**letme establish a clear rule**
+letme establish a clear rule
 
 - must have: completely usuable wo (i.e. no tasks can be completed)
 - should have: inefficient or incomplete wo (e.g. missing features, no native route for some use cases)
@@ -2251,6 +2251,18 @@ i dont have to call it "_will_ have" just because i _might_ have it in the futur
 
 - could have: ux improvements, minor perf engineering, etc. (i will write them if i have spare time or i feel like that)
 - ~~will/~~ wont have: not planned (e.g. contrast to the opinionated design or decisions), out of scope, negative roi
-- unlisted: 
+- unlisted: irrelevant or awkward or yet to be discovered
+
+<!-- it would be vicious i guess to think things in roi. what you invest is merely your time. you should write if you feel right. it's "wont have" if it's not good even if you can have it instantly. -->
+
+<!-- awkward is inherently subjective. you may explicitly declare "wont have" if you dont feel right about that. -->
+
+**conclusion on moscow priority classification:**
+
+- must have: completely usuable wo (no tasks can be completed)
+- should have: inefficient or incomplete wo (no native route for some common use cases)
+- could have: barebone or unpolished or unsophisticated wo (unmatched expectation or dissatisfaction)
+- wont have: mediocre/unopinionated or bloating w (it should be done by extensions or forks)
+- (unlisted): irrelevant or yet to be discovered
 
 
