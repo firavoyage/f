@@ -2216,7 +2216,7 @@ well, is predictability a thing? what for? if it matters, who for? and accountab
 
 14
 
-05 30 write ixd. define the rule of priority.
+05 30 ~~write ixd.~~ define the rule of priority. 06 20
 
 i will rarely use arrays. i will use array only if it's a list of items, not some distinct children. i will leverage implicit null and comments.
 
@@ -2255,7 +2255,7 @@ i dont have to call it "_will_ have" just because i _might_ have it in the futur
 
 <!-- it would be vicious i guess to think things in roi. what you invest is merely your time. you should write if you feel right. it's "wont have" if it's not good even if you can have it instantly. -->
 
-<!-- awkward is inherently subjective. you may explicitly declare "wont have" if you dont feel right about that. -->
+<!-- awkward is inherently subjective. you may explicitly declare "wont have" if you really feel that's a thing and yet you dont like that. -->
 
 **conclusion on moscow priority classification:**
 
@@ -2264,5 +2264,7 @@ i dont have to call it "_will_ have" just because i _might_ have it in the futur
 - could have: barebone or unpolished or unsophisticated wo (unmatched expectation or dissatisfaction)
 - wont have: mediocre/unopinionated or bloating w (it should be done by extensions or forks)
 - (unlisted): irrelevant or yet to be discovered
+
+---
 
 
