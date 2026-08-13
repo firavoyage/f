@@ -50496,6 +50496,16 @@ it matters. i will ref on both journal and tools/purpose.
 
 ~30mb/s avg.
 
+14
+
+05 00
+
+p
+
+```md
+green/black/jasmine tea
+```
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
