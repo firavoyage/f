@@ -526,6 +526,7 @@ psychology:
 - hexaco model
 - learned helplessness generalized emh very lossy heuristic
 - ptsd meaning
+- perfectionism procrastination
 
 shelf: <!-- book -->
 
