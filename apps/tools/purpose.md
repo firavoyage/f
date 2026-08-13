@@ -2236,7 +2236,21 @@ some vars are unused. it's incorrect. the value instead of the key value pair sh
 
 should have and could have differ in "value". it's messy and ambiguous.
 
-letme establish a clear rule
+**letme establish a clear rule**
 
 - must have: completely usuable wo (i.e. no tasks can be completed)
-- should have: 
+- should have: inefficient or incomplete wo (e.g. missing features, no native route for some use cases)
+
+well, what about could/will?
+
+the decision is i will just name it as "wont have".
+
+it's effectively the same when you dont write it down or you havent imagined a feature. in that case, it doesnt matter if the feature matters or not in the real world. it might matter. or it matters. but it doesnt matter (it's the same) to you.
+
+i dont have to call it "_will_ have" just because i _might_ have it in the future ("wont have, for now").
+
+- could have: ux improvements, minor perf engineering, etc. (i will write them if i have spare time or i feel like that)
+- ~~will/~~ wont have: not planned (e.g. contrast to the opinionated design or decisions), out of scope, negative roi
+- unlisted: 
+
+

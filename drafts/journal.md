@@ -50299,7 +50299,6 @@ button:
   text: sign up
   variant: primary
   onclick: redirect to login page
-
 # button: sign up
 #   variant: primary
 #   onclick: redirect to login page
@@ -50409,6 +50408,15 @@ conf:
 #     solution
 #     proof
 #   afterparty: 9 to 10
+
+write spec: wip
+  rationale: leverage thinking, be explicit and prepared
+  assignee: joe
+implement backend: todo
+  rationale: separte concerns
+  assignee: steve
+
+
 ```
 
 20 20 pick and buy a simple wooden chair w beige chusion of cotton linen.
