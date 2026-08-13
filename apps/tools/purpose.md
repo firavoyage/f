@@ -2214,4 +2214,29 @@ well, is predictability a thing? what for? if it matters, who for? and accountab
 
 03 20 separate todo and backlog.
 
+14
 
+05 30 write ixd.
+
+i will rarely use arrays. i will use array only if it's a list of items, not some distinct children. i will leverage implicit null and comments.
+
+i may break yaml syntax.
+
+<!-- sometimes i feel labels or metadata like "moscow" would better fit as comments. -->
+
+---
+
+fix list component.
+
+some vars are unused. it's incorrect. the value instead of the key value pair should be passed.
+
+**generally, all components must begin as an element w classname of itself.**
+
+---
+
+should have and could have differ in "value". it's messy and ambiguous.
+
+letme establish a clear rule
+
+- must have: completely usuable wo (i.e. no tasks can be completed)
+- should have: 

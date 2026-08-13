@@ -50514,6 +50514,10 @@ c
   - oolong/jasmine/earl grey tea
 ```
 
+<!-- it makes sense to put the one words first, which looks cleaner. though, i would like to put earl grey before jasmine as it offers more than sweetness. it's more interesting. oolong is the baseline where you feel order and calmness. -->
+
+<!-- i often drink plainly. black or green tea alone isnt really flavored tbh. it's quite sophisticated compared w water, but it can feel watery. -->
+
 
 
 <!-- be explicit and organized. focus and timebox. -->

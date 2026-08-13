@@ -37,9 +37,9 @@ function flatten(items: items, parents: Key[] = []): row[] {
       parents
     }
 
-    const children = flatten(items, [...parents, heading.id])
+    const children = flatten(value, [...parents, heading.id])
 
-    // @ts-expect-error 
+    // @ts-expect-error it's fine if i accidentally set row.type as 'h7'
     rows.push(heading, ...children)
   }
 
@@ -52,7 +52,7 @@ export function List({ items, focused, set_focused }: list) {
   const rows = flatten(items)
 
   return (
-    <nav className="nav">
+    <nav {...p({ class: 'list' })}>
       {
         map(rows, (row) => {
           const { type, name, id, parents } = row

@@ -1,3 +1,7 @@
+# .
+
+The order matters less when **the high-impact task is completely safe from being crowded out.** If your schedule or habits guarantee that the important work _will_ receive its dedicated focus today, you can choose whichever task order matches your current energy flow.
+
 # perfectionism
 
 **Perfectionism** is <mark>a multi-dimensional personality trait characterized by an relentless striving for flawlessness, setting impossibly high performance standards, and engaging in overly critical self-evaluations</mark>. While healthy ambition drives people to grow, unhealthy perfectionism functions as a defense mechanism against the fear of failure and rejection. [link](https://www.psychologytoday.com/us/basics/perfectionism)
