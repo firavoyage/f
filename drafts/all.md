@@ -128,6 +128,7 @@ life:
 - tea lipton yellow label green jasmine oolong amazingly grey
 - anime monogatari series watch order
 - anime compare anime and bangumi
+- coffee types
 
 create something:
 
