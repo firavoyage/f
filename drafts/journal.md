@@ -50492,6 +50492,10 @@ there seems to be more players on longer time control on ogs, indicated by the g
 
 it matters. i will ref on both journal and tools/purpose.
 
+18 20 download `Kizumonogatari (2016)` and `Nisemonogatari (2012)`
+
+~30mb/s avg.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->

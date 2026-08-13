@@ -126,6 +126,8 @@ life:
 - go ogs sgf playtime movetime
 - coke pepsi coke coke zero
 - tea lipton yellow label green jasmine oolong amazingly grey
+- anime monogatari series watch order
+- anime compare anime and bangumi
 
 create something:
 
