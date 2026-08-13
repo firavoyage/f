@@ -1,7 +1,10 @@
 app:
-  - sidebar
-  - main
+  sidebar:
+  main:
+sidebar:
+  title bar: # could have
+    
 main:
-  - args/recipe # should have
-  - input
-  - output
+  args/recipe: # should have
+  input:
+  output:
