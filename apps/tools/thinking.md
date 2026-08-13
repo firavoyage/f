@@ -1,6 +1,6 @@
-css flex centering
+css flex centering <!-- title in title bar? -->
 
-css flex shorthand
+css flex shorthand <!-- ? will be simple and fast i guess. -->
 
 ---
 
