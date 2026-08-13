@@ -50498,12 +50498,20 @@ it matters. i will ref on both journal and tools/purpose.
 
 14
 
-05 00
+05 00 update tea <!-- and coffee --> flavor pref on readme.
 
 p
 
 ```md
-green/black/jasmine tea
+  - coffee
+  - green/black/jasmine tea
+```
+
+c
+
+```md
+  - americano coffee
+  - oolong/jasmine/earl grey tea
 ```
 
 
