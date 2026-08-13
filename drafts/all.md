@@ -59,7 +59,7 @@ fira:
 - ux four pillars design process
 - pm sdlc phases
 - pm pomodoro
-- perfectionism procrastination over engineering premature optimization
+- perfectionism procrastination
 - llm math research future
 
 life:
