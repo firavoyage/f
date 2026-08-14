@@ -2277,6 +2277,10 @@ i guess i have the idea <!-- in my mind -->.
 
 i would aggregate all tools on action/tools.
 
+11 30 create basic functionality. refactor sidebar, decouple list from it.
 
+fix parcel cache.
+
+fix web prelude. import the web variant for map instead.
 
 

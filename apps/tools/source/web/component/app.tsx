@@ -9,6 +9,7 @@ import { use_window_active } from 'web/lib/window.use';
 import { Sidebar } from './sidebar';
 
 import { parse, stringify } from "yaml"
+import { List } from './list';
 
 export const tools = {
   json_to_yaml: {
@@ -62,7 +63,7 @@ export const use_global = state({
 })
 
 export function App() {
-  const [focused, set_focused] = useState(0)
+  const [focused, set_focused] = useState()
 
   // useEffect(() => {
   //   log('app mounts')
@@ -97,7 +98,9 @@ export function App() {
     <title>Tools</title>
 
     <div className="app">
-      <Sidebar items={list} focused={focused} set_focused={set_focused}></Sidebar>
+      <Sidebar>
+        <List {...p({ items: list, focused, set_focused })}></List>
+      </Sidebar>
       <Main></Main>
     </div>
   </>

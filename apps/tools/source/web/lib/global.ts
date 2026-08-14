@@ -21,7 +21,7 @@ import * as handle from 'lib/handle';
 use(handle)
 
 import * as union from 'lib/union';
-import * as map from 'lib/map';
+import * as map from 'web/lib/map';
 import * as collection from 'lib/collection';
 use(union)
 use(map)
