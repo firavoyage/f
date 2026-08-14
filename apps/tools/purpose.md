@@ -2318,6 +2318,52 @@ telegram msg looks like
 content
 ```
 
-i can loop through the 
+i can loop through the lines, and test regex.
+
+i will convert it into journal data structure, an array of time (y m d), content, and metadata.
+
+ii. merge new memories into existing journal.
+
+i could "insertion sort". to be simple, i will parse both, sort, and serialize instead. it might be much more unpredictable. it would not.
+
+a. parse
+
+the purpose is to separate the document into blocks.
+
+i will maintain ymd, nil initially. i will place the first separator at the start of the document.
+
+whenever it reads a keyword line. that is `mon yyyy` or `d | dd`, it will cut before it. it will lift a flag of "keyword", which would be added to metadata later. from the prev separator to its before will be appended as the content, w current time state. then the new date will be applied.
+
+e.g.
+
+```
+mar 2026
+
+foo bar asdf # this will be ignored as keyword
+
+01
+
+baz asdf # this will also be ignored as keyword
+
+07 00 get up
+```
+
+when it sees a line starting w "hh mm", it will cut before it, and add time to its metadata (but it's not a keyword). eof will also be cut.
+
+btw, it would ideally only look at acutal paragraphs, and standarzie time if needed.
+
+sort: trivial
+
+serialize:
+
+maintain ymd (initial ?).
+
+for each item: 
+
+- is keyword? skip
+- is different from current ymd? add a separate line of mon yyyy and then dd if needed.
+- paste content
+
+it's clever because nil = nil.
 
 
