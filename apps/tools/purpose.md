@@ -2277,7 +2277,7 @@ i guess i have the idea <!-- in my mind -->.
 
 i would aggregate all tools on action/tools.
 
-11 30 create basic functionality. refactor sidebar, decouple list from it.
+11 30 create basic functionality. refactor sidebar, decouple list from it. 12 10
 
 fix parcel cache.
 
@@ -2285,5 +2285,16 @@ fix web prelude. import the web variant for map instead.
 
 make list items button so they can be focused naturally.
 
+---
+
+parceljs doesnt monitor files outside cwd. that's the problem.
+
+if it doesnt track, it's basically outdated and ignorant to changes.
+
+**create dev script on package json, use `b dev` instead.**
+
+---
+
+use effect should have dep array. if you update a state inside, that state mustnt be tracked.
 
 

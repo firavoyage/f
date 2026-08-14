@@ -5,12 +5,12 @@ declare global {
   var handle_best_effort: handle_best_effort
 }
 
-export function handle<F extends (...args: any[]) => Promise<any>>(
-  fn: F
-): Promise<Result<Awaited<ReturnType<F>>>>;
 export function handle<F extends (...args: any[]) => any>(
   fn: F
 ): Result<ReturnType<F>>;
+export function handle<F extends (...args: any[]) => Promise<any>>(
+  fn: F
+): Promise<Result<Awaited<ReturnType<F>>>>;
 
 export function handle<F extends (...args: any[]) => any>(fn: F) {
   try {
