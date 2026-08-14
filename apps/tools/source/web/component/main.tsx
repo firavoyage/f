@@ -9,11 +9,19 @@ export function Main() {
   const tool = use_global.get('navigation.tool')
 
   useEffect(() => {
-    log(tools)
     if (has(tools, tool)) {
+      // @ts-expect-error tools must have tool
+      const result = handle(() => tools[tool](input))
+      if(is_error(result)){
+        // handle error
+
+        // do nothing
+        return 
+      }
+
+      set_output(result)
     } 
-    // set_output(tools.json_to_yaml.fn(input))
-  })
+  }, [tool, input])
 
   return <div className="main">
     <Editor type='input' value={input} set_value={set_input}></Editor>
