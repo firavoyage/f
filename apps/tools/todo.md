@@ -1,14 +1,6 @@
 # todo
 
-elaborate ixd. create every component and the must haves.
-
-rationale: some tools are needed <!-- solve your own problem -->. the app must be usable and functional.
-
----
-
-create component ...
-
-
+create telegram to journal tool.
 
 # backlog
 

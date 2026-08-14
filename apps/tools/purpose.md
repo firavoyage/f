@@ -2297,4 +2297,27 @@ if it doesnt track, it's basically outdated and ignorant to changes.
 
 use effect should have dep array. if you update a state inside, that state mustnt be tracked.
 
+22 30 complete todo: elaborate ixd. create every component and the must haves.
+
+rationale: some tools are needed <!-- solve your own problem -->. the app must be usable and functional.
+
+<!-- it's already functional if i can navigate a list of tools. -->
+
+22 40 pivot: create telegram to journal tool. design its mechanics.
+
+<!-- from voice recording. -->
+
+two parts. telegram to journal. and merge new memories into existing journal.
+
+i. telegram to journal.
+
+telegram msg looks like
+
+```
+[name, date & 12h time]
+content
+```
+
+i can loop through the 
+
 
