@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 const { parse, stringify } = JSON
 
 type NonFunction = any

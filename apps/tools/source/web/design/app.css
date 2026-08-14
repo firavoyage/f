@@ -101,12 +101,13 @@ textarea {
     }
   }
 
-  .item {
+  .list * {
     width: 100%;
     display: block;
 
     &:hover,
-    &:focus-visible {
+    &:focus-visible,
+    &[focused] {
       background-color: var(--color-bg-tertiary);
     }
   }

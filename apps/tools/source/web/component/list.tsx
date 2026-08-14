@@ -65,7 +65,8 @@ export function List({ items, focused, set_focused }: list) {
 
           const is_focused = focused == id
           
-          const Tag = type
+          const Tag = 'button'
+          // const Tag = type
           return <Tag {...p({ class: type, focused: is_focused, onclick(){
             if (type == 'p') {
               set_focused?.(id)

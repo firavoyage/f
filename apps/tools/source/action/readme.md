@@ -2,5 +2,5 @@ action
 
 ---
 
-- tools
-- (each tool)
+- `tools` aggregate all tools on named exports
+- (see `ia`)
