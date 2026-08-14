@@ -27,6 +27,7 @@ editor:
   tab bar:
     title:
     copy: # could have
+      to turn it off: # should have
     args: # could have
   textarea:
     code editor: # could have
