@@ -2271,6 +2271,8 @@ i dont have to call it "_will_ have" just because i _might_ have it in the futur
 
 i guess i have the idea <!-- in my mind -->.
 
----
+10 00 elaborate ixd for basic functionality.
+
+
 
 
