@@ -1,10 +1,32 @@
 app:
   sidebar:
   main:
+  command palette: # should have
 sidebar:
-  title bar: # could have
-    
+  alt bar: # could have
+    search: 
+      search input: # wont have, call command palette instead
+    app name: Tools # title case
+    breadcrumb:
+  list: headings and items
+  to resize: # could have, when hovered
 main:
-  args/recipe: # should have
-  input:
-  output:
+  title bar: # could have
+    sidebar toggle:
+    title: # title case
+    window actions: # wont have (in browser)
+      minify:
+      maximize:
+      close:
+  panels:
+    args/recipe: # should have
+    editor.input:
+    editor.output:
+    to resize: # could have
+editor: 
+  tab bar:
+    title:
+    copy: # could have
+    args: # could have
+  textarea:
+
