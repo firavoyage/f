@@ -8,24 +8,9 @@ import { Main } from "web/component/main";
 import { use_window_active } from 'web/lib/window.use';
 import { Sidebar } from './sidebar';
 
-import { parse, stringify } from "yaml"
 import { List } from './list';
 
-export const tools = {
-  json_to_yaml: {
-    fn(json: string) {
-      const result = handle(() => JSON.parse(json))
-
-      if (is_error(result)) {
-        return ''
-      }
-
-      return stringify(result)
-    }
-  }
-}
-
-const list = ["yaml", "json", "toml"]
+const list = ["json to yaml", "yaml to json", "yaml", "json", "toml"]
 
 export const use_global = state({
   is_sidebar_on: true,
@@ -63,7 +48,7 @@ export const use_global = state({
 })
 
 export function App() {
-  const [focused, set_focused] = useState()
+  const [focused, set_focused] = use_global('navigation.tool')
 
   // useEffect(() => {
   //   log('app mounts')
