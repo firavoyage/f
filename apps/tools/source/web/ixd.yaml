@@ -20,8 +20,8 @@ main:
       close:
   panels:
     args/recipe: # should have
-    editor.input:
-    editor.output:
+    editor.input: tool input
+    editor.output: tool input # output doesnt have to be a global state
     to resize: # could have
 editor: 
   tab bar:
