@@ -157,6 +157,16 @@ ref:
       "const { ${2:name} } = await import('${1:module}');$0"
     ],
   },
+  "re export": {
+    "prefix": [
+      "re",
+      "ex",
+      "exf",
+    ],
+    "body": [
+      "export * from '${1:module}'$0"
+    ],
+  },
   "type": {
     "prefix": [
       "ty",
