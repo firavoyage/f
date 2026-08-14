@@ -285,6 +285,7 @@ web: <!-- frontend, web, ts/js -->
 - ts type dict circular reference lazy evaluation
 - js array methods map abstraction
 - css design tokens length units
+- js esm import export
 
 backend:
 

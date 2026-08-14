@@ -2273,6 +2273,10 @@ i guess i have the idea <!-- in my mind -->.
 
 10 00 elaborate ixd for basic functionality.
 
+11 20 write some snippets for import export.
+
+i would aggregate all tools on action/tools.
+
 
 
 
