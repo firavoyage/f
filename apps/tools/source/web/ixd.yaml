@@ -2,6 +2,9 @@ app:
   sidebar:
   main:
   command palette: # should have
+  shortcuts:
+  settings:
+  about:
 sidebar:
   alt bar: # could have
     search: 

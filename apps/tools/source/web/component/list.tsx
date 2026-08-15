@@ -4,8 +4,8 @@ type items = item[] | { [key: string]: items }
 
 type list = {
   items: items
-  focused?: Key
-  set_focused?: (focused: Key) => void
+  focus?: Key
+  set_focus?: (focus: Key) => void
 }
 
 type row = {
@@ -46,7 +46,7 @@ function flatten(items: items, parents: Key[] = []): row[] {
   return rows
 }
 
-export function List({ items, focused, set_focused }: list) {
+export function List({ items, focus, set_focus }: list) {
   const [is_collapsed] = useState(s())
 
   const rows = flatten(items)
@@ -63,13 +63,13 @@ export function List({ items, focused, set_focused }: list) {
             } 
           }
 
-          const is_focused = focused == id
+          const is_focus = focus == id
           
           const Tag = 'button'
           // const Tag = type
-          return <Tag {...p({ class: type, focused: is_focused, onclick(){
+          return <Tag {...p({ class: type, focus: is_focus, onclick(){
             if (type == 'p') {
-              set_focused?.(id)
+              set_focus?.(id)
             } else {
               toggle(is_collapsed, id)
             } 

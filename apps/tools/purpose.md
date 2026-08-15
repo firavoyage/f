@@ -2366,4 +2366,10 @@ for each item:
 
 it's clever because nil = nil.
 
+15
+
+07 40 rename "focused" as "focus" on `list`.
+
+nouns are nouns.
+
 
