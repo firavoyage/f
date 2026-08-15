@@ -20,11 +20,14 @@ console.log("Standard log:", testObject);
 log("Custom log:", testObject);
 // Output: Custom log: { visibleProp: 'I am visible', nested: { visibleChild: 123 } }
 
-class bar {
-  foo = 'bar'
+function main() {
+  class bar {
+    foo = 'bar'
+  }
+  
+  const foo = new bar()
+  log(temp instanceof bar, clean_non_enum(temp) instanceof bar)
 }
-
-const foo = new bar()
 
 /**
  * remove all non enumerable keys in an object awa any nested object inside
@@ -64,4 +67,3 @@ function clean_non_enum(obj: any, seen = new WeakSet()): any {
   return cleanObj;
 }
 
-log(temp instanceof bar, clean_non_enum(temp) instanceof bar)
