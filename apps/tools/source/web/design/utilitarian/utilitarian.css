@@ -70,8 +70,8 @@
   --max-width-screen-lg: 1024px;
   --max-width-screen-xl: 1280px;
   --max-width-screen-2xl: 1536px;
-  --typeface-sans: "Adwaita Sans", "Ubuntu Sans", sans-serif;
-  --typeface-monospace: "Adwaita Mono", "Ubuntu Mono", monospace;
+  --typeface-sans: roboto, Adwaita Sans, Ubuntu Sans, sans-serif;
+  --typeface-monospace: Fira Code, Adwaita Mono, Ubuntu Mono, monospace;
   --text-xs: 0.75rem/1rem;
   --text-sm: 0.875rem/1.25rem;
   --text-base: 1rem/1.5rem;

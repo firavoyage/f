@@ -244,8 +244,8 @@ max-width:
 
 typeface:
   # sans: '"roboto", sans-serif'
-  sans: '"Adwaita Sans", "Ubuntu Sans", sans-serif'
-  monospace: '"Adwaita Mono", "Ubuntu Mono", monospace'
+  sans: 'roboto, Adwaita Sans, Ubuntu Sans, sans-serif'
+  monospace: 'Fira Code, Adwaita Mono, Ubuntu Mono, monospace'
 
 text:
   xs: "0.75rem/1rem"

@@ -48,7 +48,7 @@ export const use_global = state({
 })
 
 export function App() {
-  const [focused, set_focused] = use_global('navigation.tool')
+  const [focus, set_focus] = use_global('navigation.tool')
 
   // useEffect(() => {
   //   log('app mounts')
@@ -84,7 +84,7 @@ export function App() {
 
     <div className="app">
       <Sidebar>
-        <List {...p({ items: list, focused, set_focused })}></List>
+        <List {...p({ items: list, focus, set_focus })}></List>
       </Sidebar>
       <Main></Main>
     </div>
