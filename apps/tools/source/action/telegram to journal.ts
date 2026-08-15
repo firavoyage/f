@@ -20,4 +20,6 @@ function parse_year_month(line: string) {
 
 log(Array.from(parse_year_month('jun 2026')))
 
+log(Array.from(parse_year_month(' jun 2026')))
+
 log(Array.from(parse_year_month('foo 2026')))
