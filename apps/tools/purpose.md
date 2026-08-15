@@ -2372,4 +2372,6 @@ it's clever because nil = nil.
 
 nouns are nouns.
 
+20 20 research js regex lib. create poc and some util for tg to journal.
+
 
