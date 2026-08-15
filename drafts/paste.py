@@ -1,124 +1,80 @@
-# Let's run a lighter script without extra packages just in case, standard print layout
-import json
-import gzip
+import time
+import sys
 
-# Basic tree structure
-tree_data = {
-    "val": "CompanyRoot",
-    "children": [
-        {
-            "val": "EngineeringDept",
-            "children": [
-                {"val": "FrontendTeam", "children": [{"val": "ReactDevs", "children": []}]},
-                {"val": "BackendTeam", "children": [{"val": "PythonDevs", "children": []}]}
-            ]
-        },
-        {
-            "val": "MarketingDept",
-            "children": [
-                {"val": "DesignTeam", "children": [{"val": "UIUXDesigners", "children": []}]},
-                {"val": "GrowthTeam", "children": [{"val": "SEOExperts", "children": []}]}
-            ]
-        },
-        {
-            "val": "SalesDept",
-            "children": [
-                {"val": "EnterpriseSales", "children": [{"val": "AccountExecs", "children": []}]},
-                {"val": "InboundSales", "children": [{"val": "SDRRepresentatives", "children": []}]}
-            ]
-        }
-    ]
-}
+# Increase the maximum string conversion limit to support 100M+ digits
+sys.set_int_max_str_digits(105_000_000)
 
-json_str = json.dumps(tree_data)
+def compute_inverse_sqrt2(target_digits):
+    """
+    Computes 1/sqrt(2) to target_digits using Newton-Raphson:
+    x_{n+1} = x_n * (3 - 2 * x_n^2) / 2
+    """
+    # Add a guard band of 10 digits to prevent rounding errors at the tail end
+    extra_precision = target_digits + 10
+    
+    print("[1/3] Initializing seed values...")
+    # Seed with a high-precision float approximation
+    current_digits = 16
+    x = int((1 / (2**0.5)) * (10**current_digits))
+    
+    # Track iterations
+    step = 1
+    
+    while current_digits < extra_precision:
+        # Newton's method doubles the number of correct digits each iteration
+        next_digits = min(current_digits * 2, extra_precision)
+        print(f"      Iteration {step}: Scaling precision to {next_digits:,} digits...")
+        
+        # Shift x to align with the new target precision size
+        shift = next_digits - current_digits
+        x <<= shift
+        
+        # Precompute constants scaled to the current precision block size
+        # three = 3 * 10^(2 * next_digits)
+        three = 3 << (2 * next_digits)
+        
+        # Perform the Newton update rule: x = (x * (three - 2 * x^2)) >> (2 * next_digits + 1)
+        x_squared = x * x
+        scaled_diff = three - (x_squared << 1)
+        x = (x * scaled_diff) >> ((2 * next_digits) + 1)
+        
+        current_digits = next_digits
+        step += 1
+        
+    return x, extra_precision
 
-# DFS Count
-def dfs_count(node):
-    res = [node["val"], str(len(node["children"]))]
-    for c in node["children"]: res.extend(dfs_count(c))
-    return res
-dfs_count_str = " ".join(dfs_count(tree_data))
+def main():
+    TARGET_DIGITS = 100_000_000
+    
+    print(f"--- Starting 100,000,000 Digit Calculation of Sqrt(2) ---")
+    start_time = time.time()
+    
+    # Step 1: Compute 1/sqrt(2)
+    inv_sqrt2, total_bits = compute_inverse_sqrt2(TARGET_DIGITS)
+    
+    # Step 2: Convert 1/sqrt(2) to sqrt(2) by multiplying by 2
+    # Since we are working with shifted integers, multiplying by 2 gives us sqrt(2)
+    print("[2/3] Finalizing sqrt(2) identity transformation...")
+    sqrt2_large_int = inv_sqrt2 << 1
+    
+    # Trim the guard band digits by integer division
+    sqrt2_large_int //= 10**10
+    
+    # Step 3: Convert to string and write to file
+    print("[3/3] Converting massive integer to string format (this takes time)...")
+    raw_string = str(sqrt2_large_int)
+    
+    # Format string as "1.414213..."
+    formatted_output = raw_string[0] + "." + raw_string[1:]
+    
+    print("Writing results to output.txt...")
+    with open("output.txt", "w") as f:
+        f.write(formatted_output + "\n")
+        
+    end_time = time.time()
+    total_duration = end_time - start_time
+    print(f"Success! 100M digits written to output.txt")
+    print(f"Total processing time: {total_duration / 60:.2f} minutes.")
 
-# DFS Marker
-def dfs_marker(node):
-    res = [node["val"]]
-    for c in node["children"]: res.extend(dfs_marker(c))
-    res.append("E")
-    return res
-dfs_marker_str = " ".join(dfs_marker(tree_data))
-
-xml_str = '<node val="CompanyRoot"><children><node val="EngineeringDept"><children><node val="FrontendTeam"><children><node val="ReactDevs"><children></children></node></children></node><node val="BackendTeam"><children><node val="PythonDevs"><children></children></node></children></node></children></node><node val="MarketingDept"><children><node val="DesignTeam"><children><node val="UIUXDesigners"><children></children></node></children></node><node val="GrowthTeam"><children><node val="SEOExperts"><children></children></node></children></node></children></node><node val="SalesDept"><children><node val="EnterpriseSales"><children><node val="AccountExecs"><children></children></node></children></node><node val="InboundSales"><children><node val="SDRRepresentatives"><children></children></node></children></node></children></node></children></node>'
-
-yaml_str = """
-val: CompanyRoot
-children:
-  - val: EngineeringDept
-    children:
-      - val: FrontendTeam
-        children:
-          - val: ReactDevs
-            children: []
-      - val: BackendTeam
-        children:
-          - val: PythonDevs
-            children: []
-  - val: MarketingDept
-    children:
-      - val: DesignTeam
-        children:
-          - val: UIUXDesigners
-            children: []
-      - val: GrowthTeam
-        children:
-          - val: SEOExperts
-            children: []
-  - val: SalesDept
-    children:
-      - val: EnterpriseSales
-        children:
-          - val: AccountExecs
-            children: []
-      - val: InboundSales
-        children:
-          - val: SDRRepresentatives
-            children: []
-"""
-
-toml_str = """
-val = "CompanyRoot"
-[[children]]
-val = "EngineeringDept"
-[[children.children]]
-val = "FrontendTeam"
-[[children.children.children]]
-val = "ReactDevs"
-[[children.children]]
-val = "BackendTeam"
-[[children.children.children]]
-val = "PythonDevs"
-[[children]]
-val = "MarketingDept"
-[[children.children]]
-val = "DesignTeam"
-[[children.children.children]]
-val = "UIUXDesigners"
-[[children.children]]
-val = "GrowthTeam"
-[[children.children.children]]
-val = "SEOExperts"
-[[children]]
-val = "SalesDept"
-[[children.children]]
-val = "EnterpriseSales"
-[[children.children.children]]
-val = "AccountExecs"
-[[children.children]]
-val = "InboundSales"
-[[children.children.children]]
-val = "SDRRepresentatives"
-"""
-
-for name, s in [("DFS Count", dfs_count_str), ("DFS Marker", dfs_marker_str), ("JSON", json_str), ("XML", xml_str), ("YAML", yaml_str), ("TOML", toml_str)]:
-    b = s.encode('utf-8')
-    gz = gzip.compress(b)
-    print(f"{name} -> Raw: {len(b)} bytes | Gzip: {len(gz)} bytes")
+if __name__ == "__main__":
+    main()
