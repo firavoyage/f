@@ -2324,7 +2324,7 @@ i will convert it into journal data structure, an array of time (y m d), content
 
 ii. merge new memories into existing journal.
 
-i could "insertion sort". to be simple, i will parse both, sort, and serialize instead. it might be much more unpredictable. it would not.
+i could "insertion sort". to be simple, i will parse both, sort, and serialize instead. it might be much more unpredictable (breaking original structure, or even being non idempotent). it would not.
 
 a. parse
 
@@ -2352,9 +2352,9 @@ when it sees a line starting w "hh mm", it will cut before it, and add time to i
 
 btw, it would ideally only look at acutal paragraphs, and standarzie time if needed.
 
-sort: trivial
+b. sort: trivial
 
-serialize:
+c. serialize:
 
 maintain ymd (initial ?).
 
@@ -2373,5 +2373,14 @@ it's clever because nil = nil.
 nouns are nouns.
 
 20 20 research js regex lib. create poc and some util for tg to journal.
+
+17
+
+00 30 write `parse` for tg to journal.
+
+no idea how long it would take. feel i could achive sth today.
+
+---
+
 
 
