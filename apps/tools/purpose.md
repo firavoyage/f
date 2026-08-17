@@ -2376,11 +2376,20 @@ nouns are nouns.
 
 17
 
-00 30 write `parse` for tg to journal.
+00 30 abstract to improve regex dx ~~write `parse`~~ for tg to journal. 00 50
 
 no idea how long it would take. feel i could achive sth today.
 
 ---
 
+feel i could make regex match std lib. maybe not now.
+
+well, i have a pl design now. i guess it would be better to invest in the new pl, `code`, than to 
+
+i would have the file ext `.code` and the compiler cli `compile`. it would output a js (or ts) named the same by default.
+
+---
+
+<!-- rather --> sleep.
 
 
