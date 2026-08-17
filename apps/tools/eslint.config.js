@@ -93,6 +93,7 @@ export default defineConfig(
       "no-empty": "off",
       'no-useless-assignment': 'off',
       '@typescript-eslint/no-unused-vars': 'off', // low opacity highlighting is enough
+      '@typescript-eslint/no-empty-object-type': 'off'
     },
   },
 );

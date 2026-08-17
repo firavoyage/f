@@ -32,20 +32,48 @@ function parse_date(line: string) {
     false
 }
 
-log(parse_year_month('jun 2026'))
+// log(parse_year_month('jun 2026'))
 
-log(parse_year_month('Jun 2026'))
+// log(parse_year_month('Jun 2026'))
 
-log(parse_year_month(' jun 2026'))
+// log(parse_year_month(' jun 2026'))
 
-log(parse_year_month('foo 2026'))
+// log(parse_year_month('foo 2026'))
 
-log(parse_date('12'))
+// log(parse_date('12'))
 
-log(parse_date('123'))
+// log(parse_date('123'))
 
-log(parse_date('23'))
+// log(parse_date('23'))
 
-log(parse_date('32'))
+// log(parse_date('32'))
 
+type item = {
+  content: string[]
+  year?: number
+  month?: number
+  date?: number
+  is_keyword: boolean
+}
 
+type journal = item[]
+
+function parse_journal(journal_text: string) {
+  let year, month, date
+
+  const journal = []
+  let content = []
+  let is_keyword = false
+
+  for (const line of journal_text.split('\n')) {
+    if (!parse_date(line) && !parse_year_month(line)) {
+      content.push(line)
+    } else if (parse_date(line)) {
+      
+    } 
+  }
+
+  journal.push({
+    content, year, month, date, is_keyword
+  })
+}

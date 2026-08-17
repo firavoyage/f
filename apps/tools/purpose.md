@@ -2392,4 +2392,6 @@ i would have the file ext `.code` and the compiler cli `compile`. it would outpu
 
 <!-- rather --> sleep.
 
+23 20 define data structure for journal.
+
 
