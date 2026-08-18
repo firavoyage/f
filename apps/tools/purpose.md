@@ -2394,4 +2394,10 @@ i would have the file ext `.code` and the compiler cli `compile`. it would outpu
 
 23 20 define data structure for journal.
 
+18
+
+10 40 tg to journal: parse time.
+
+10 50 tg to journal: sort.
+
 
