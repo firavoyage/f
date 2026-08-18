@@ -122,16 +122,25 @@ function parse_journal(journal_text: string) {
 
 function sort(journal: journal) {
   function compare(a: item, b: item) {
-    const difference = a.year < b.year ||
-      a.year == b.year && a.month < b.month
+    /**
+     * false -> a before b (quirk of sort cmp)
+     */
+    const is_a_before_b = false
 
-    return !difference
+    for (const key of ['year', 'month', 'date', 'hour', 'minute']) {
+      if (a[key] < b[key]) {
+        return is_a_before_b
+      } else if (a[key] > b[key]) {
+        return !is_a_before_b
+      } 
+    }
+    
+    return true
   }
 
+  return journal.sort(compare)
 }
 
-/**
- * false -> a before b
- */
 log([0,1,3,2].sort((a, b) => a > b))
+
 
