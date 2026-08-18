@@ -2400,4 +2400,10 @@ i would have the file ext `.code` and the compiler cli `compile`. it would outpu
 
 10 50 tg to journal: sort.
 
+add order metadata: index. preserve the original order.
+
+i guess i would have it. it would not be the default, like, think how sort works.
+
+12 20 tg to journal: serialize.
+
 

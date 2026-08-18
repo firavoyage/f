@@ -71,6 +71,7 @@ type item = {
   date?: number
   hour?: number // 24h
   minute?: number
+  index?: number
   is_keyword: boolean
 }
 
@@ -127,7 +128,7 @@ function sort(journal: journal) {
      */
     const is_a_before_b = false
 
-    for (const key of ['year', 'month', 'date', 'hour', 'minute']) {
+    for (const key of ['year', 'month', 'date', 'hour', 'minute', 'index']) {
       if (a[key] < b[key]) {
         return is_a_before_b
       } else if (a[key] > b[key]) {
@@ -140,7 +141,5 @@ function sort(journal: journal) {
 
   return journal.sort(compare)
 }
-
-log([0,1,3,2].sort((a, b) => a > b))
 
 
