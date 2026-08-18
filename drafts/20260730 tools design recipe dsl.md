@@ -5713,3 +5713,21 @@ fof fn of values global
 ```
 
 
+
+# <!-- 18 aug -->
+
+# . thinking: clarity before flexibility
+
+the language is named as `code`.
+
+file ext: `code`.
+
+cli: `compile`
+
+---
+
+it's good enough to make it simpliest wo ambiguity.
+
+then i could create syntax sugars at the cost of compile time (even runtime) complexity.
+
+

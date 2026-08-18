@@ -16,7 +16,9 @@ const mon_to_month = {
   sep: 9, oct: 10, nov: 11, dec: 12
 };
 
-const month_to_mon = map(Object.entries(mon_to_month), ([key, value]) => [value, key])
+const month_to_mon = Object.fromEntries(map(Object.entries(mon_to_month), ([key, value]) => [value, key]))
+
+log(month_to_mon)
 
 function parse_year_month(line: string) {
   const pattern = regex('^(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\\s+(\\d{4})$', "i")
@@ -79,7 +81,7 @@ type item = {
 
 type journal = item[]
 
-function parse_journal(journal_text: string) {
+function parse(journal_text: string) {
   let year, month, date, hour, minute
 
   const journal = []
@@ -173,7 +175,38 @@ function serialize(journal: journal) {
 
       lines.push(`${month_to_mon[month]} ${year}`, '')
     } 
+
+    if (item.date != date) {
+      ({date} = item)
+
+      lines.push(`${date}`, '')
+    } 
+
+    lines.push(...item.content)
   }
 
   return lines.join('\n')
 }
+
+log(serialize(parse(`
+journal
+
+---
+
+mar 2025
+
+01
+
+20 20 do somthing
+
+02
+
+10 20 do things
+
+apr 2026
+
+10
+
+21 20 do sth
+
+`)))
