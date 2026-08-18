@@ -2267,6 +2267,8 @@ i dont have to call it "_will_ have" just because i _might_ have it in the futur
 - wont have: mediocre/unopinionated or bloating w (it should be done by extensions or forks)
 - (unlisted): irrelevant or yet to be discovered
 
+upd 18 aug: not always black or white. sometimes you might discuss "how often" or "how much". e.g. more efficient for who? more reliable to solve what edge cases, how common? most time it's clear when it comes to the decision though.
+
 07 20 write ixd.
 
 i guess i have the idea <!-- in my mind -->.
