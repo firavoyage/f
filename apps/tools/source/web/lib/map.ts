@@ -1,4 +1,5 @@
 import React from 'react';
+import { map as map_util } from 'lib/map';
 
 const halt_symbol = Symbol('halt')
 export function halt(value: any) {
@@ -6,6 +7,10 @@ export function halt(value: any) {
 }
 // export const halt = Symbol('halt')
 // export const halt = Symbol('break')
+
+export function map(items: object, fn: (item: ReturnType<typeof Object.entries>[0], index?: number, array?: ReturnType<typeof Object.entries>) => any): object
+// export function map<T>(items: object & T, fn: (item: ObjectENt T, index?: number, array?: T[]) => any): any[]
+export function map<T>(items: T[], fn: (item: T, index?: number, array?: T[]) => any): any[]
 
 /**
  * map an array to a fn
@@ -19,51 +24,20 @@ export function halt(value: any) {
  * for react elements, it will use index as a explicit key if key does not exist
  * to silence warning (irrelevant wo hidden states or perf issues)
  */
-export function map<T>(items: T[], fn: (item: T, index?: number, array?: T[]) => any) {
-  const result = []
-
-  for (const [index, item] of Object.entries(items)) {
-    const value = fn(item, +index, items)
-
-    if (!is_given(value)) {
-      continue
-    }
-
-    if (value == halt) {
-      break
-    }
-
-    if (has(value, halt_symbol)) {
-      // @ts-expect-error 
-      result.push(value.value)
-      break
-    } 
-
-    // value.key is always defined (existing) by react
-    if (!React.isValidElement(value) || value.key !== null) {
-      result.push(value);
-    } else {
-      result.push(
-        React.cloneElement(value, {
-          key: `${index}`
-          // key: `fallback-key-${index}`
-        })
-      );
-    }
-  }
-
-  return result
-}
-
-export function flatten(items: any[]) {
-  return items.flat()
+export function map(...args: any) {
+  // @ts-expect-error 
+  return map_util(map_util(...args), (value, index) =>
+    !React.isValidElement(value) || value.key !== null ?
+      value :
+      React.cloneElement(value, {
+        key: `${index}`
+        // key: `fallback-key-${index}`
+      }))
 }
 
 type halt = typeof halt
 type map = typeof map
-type flatten = typeof flatten
 declare global {
   var halt: halt
   var map: map
-  var flatten: flatten
 }
