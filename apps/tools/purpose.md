@@ -2424,4 +2424,8 @@ web/lib/map now modifies the result if array & react children.
 
 remove `flatten` on `lib/map`. (unused)
 
+19
+
+00 20 tg to journal: write `parse_telegram`.
+
 
