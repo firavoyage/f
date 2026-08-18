@@ -2404,6 +2404,8 @@ add order metadata: index. preserve the original order.
 
 i guess i would have it. it would not be the default, like, think how sort works.
 
-12 20 tg to journal: serialize.
+12 20 tg to journal: serialize. test. 12 50
+
+pass.
 
 
