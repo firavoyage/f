@@ -36,7 +36,10 @@ function parse_date(line: string) {
 }
 
 function parse_time(line: string) {
+  const pattern = regex('^(\\d{2}) (\\d{2}) .*')
+  const result = match(line, pattern)
 
+  return result.length == 0 ? false : { hour: +result[0][1], minute: +result[0][2] }
 }
 
 // log(parse_year_month('jun 2026'))
@@ -55,6 +58,12 @@ function parse_time(line: string) {
 
 // log(parse_date('32'))
 
+// log((parse_time('10 10')))
+
+// log((parse_time('10 10 ')))
+
+// log((parse_time('01 20 create sth')))
+
 type item = {
   content: string[]
   year?: number
@@ -68,7 +77,7 @@ type item = {
 type journal = item[]
 
 function parse_journal(journal_text: string) {
-  let year, month, date
+  let year, month, date, hour, minute
 
   const journal = []
   let content = []
@@ -76,7 +85,7 @@ function parse_journal(journal_text: string) {
 
   function commit() {
     journal.push({
-      content, year, month, date, is_keyword
+      content, year, month, date, hour, minute, is_keyword
     })
 
     is_keyword = false
@@ -97,7 +106,9 @@ function parse_journal(journal_text: string) {
       is_keyword = true
     } else if (parse_time(line)) {
       commit()
-      // set hour and minute
+
+      hour = parse_time(line).hour
+      minute = parse_time(line).minute
     }
 
     // push anyway for consistency
@@ -108,3 +119,19 @@ function parse_journal(journal_text: string) {
 
   return journal
 }
+
+function sort(journal: journal) {
+  function compare(a: item, b: item) {
+    const difference = a.year < b.year ||
+      a.year == b.year && a.month < b.month
+
+    return !difference
+  }
+
+}
+
+/**
+ * false -> a before b
+ */
+log([0,1,3,2].sort((a, b) => a > b))
+
