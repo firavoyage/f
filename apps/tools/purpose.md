@@ -2408,4 +2408,9 @@ i guess i would have it. it would not be the default, like, think how sort works
 
 pass.
 
+13 30 lib/map: support object, polymorphic. reuse lib/map on web/lib/map (instead of copying).
+
+web/lib/map now modifies the result if array & react children.
+
+
 
