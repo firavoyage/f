@@ -4,7 +4,7 @@ create telegram to journal tool.
 
 ---
 
-skip the non paragraph lines, by markdown ast, even if they fit the regex
+skip the non paragraph lines, by markdown ast, even if they fit the regex <!-- could have -->
 
 # backlog
 

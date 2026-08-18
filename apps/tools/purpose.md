@@ -2404,6 +2404,14 @@ add order metadata: index. preserve the original order.
 
 i guess i would have it. it would not be the default, like, think how sort works.
 
+upd 23 00: it's not quirky at all, i mean the design of return value or cmp.
+
+it sorts ascending by default, and cmp should be like "a - b", that is true if a > b, false if not.
+
+i thought it would feel natural (in math, we always write like "assume a < b", which follows the direction of the real number axis) to say "if a < b then true".
+
+anyway, it's quite awkward to have `const is_a_before_b`, i guess i would have a named after variant instead of `!is_a_before_b`.
+
 12 20 tg to journal: serialize. test. 12 50
 
 pass.

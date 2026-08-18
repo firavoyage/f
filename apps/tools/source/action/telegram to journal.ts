@@ -103,16 +103,13 @@ function parse(journal_text: string) {
     }
 
     if (parse_year_month(line)) {
-      // js dc is inflexible
-      year = parse_year_month(line).year
-      month = parse_year_month(line).month
+      ({ year, month } = parse_year_month(line))
       is_keyword = true
     } else if (parse_date(line)) {
       date = parse_date(line)
       is_keyword = true
     } else if (parse_time(line)) {
-      hour = parse_time(line).hour
-      minute = parse_time(line).minute
+      ({ hour, minute } = parse_time(line))
     }
 
     // push anyway for consistency
@@ -130,16 +127,14 @@ function sort(journal: journal) {
   }
 
   function compare(a: item, b: item) {
-    /**
-     * false -> a before b (quirk of sort cmp)
-     */
     const is_a_before_b = false
+    const is_a_after_b = true
 
     for (const key of ['year', 'month', 'date', 'hour', 'minute', 'index']) {
       if (a[key] < b[key]) {
         return is_a_before_b
       } else if (a[key] > b[key]) {
-        return !is_a_before_b
+        return is_a_after_b
       }
     }
 
@@ -166,21 +161,21 @@ function serialize(journal: journal) {
     if (item.is_keyword) {
       continue
     }
-    
+
     if (item.year != year || item.month != month) {
-      ({year, month} = item)
+      ({ year, month } = item)
 
       // reset date, 01 jan != 01 feb
       date = undefined
 
       lines.push(`${month_to_mon[month]} ${year}`, '')
-    } 
+    }
 
     if (item.date != date) {
-      ({date} = item)
+      ({ date } = item)
 
       lines.push(`${date}`, '')
-    } 
+    }
 
     lines.push(...item.content)
   }
