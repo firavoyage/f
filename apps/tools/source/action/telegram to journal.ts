@@ -1,3 +1,6 @@
+// @ts-nocheck
+/* eslint-disable */
+
 function regex(...args: ConstructorParameters<typeof RegExp>) {
   return new RegExp(...args)
 }
@@ -32,6 +35,10 @@ function parse_date(line: string) {
     false
 }
 
+function parse_time(line: string) {
+
+}
+
 // log(parse_year_month('jun 2026'))
 
 // log(parse_year_month('Jun 2026'))
@@ -53,6 +60,8 @@ type item = {
   year?: number
   month?: number
   date?: number
+  hour?: number // 24h
+  minute?: number
   is_keyword: boolean
 }
 
@@ -65,15 +74,37 @@ function parse_journal(journal_text: string) {
   let content = []
   let is_keyword = false
 
-  for (const line of journal_text.split('\n')) {
-    if (!parse_date(line) && !parse_year_month(line)) {
-      content.push(line)
-    } else if (parse_date(line)) {
-      
-    } 
+  function commit() {
+    journal.push({
+      content, year, month, date, is_keyword
+    })
+
+    is_keyword = false
+    content = []
   }
 
-  journal.push({
-    content, year, month, date, is_keyword
-  })
+  for (const line of journal_text.split('\n')) {
+    if (parse_date(line)) {
+      commit()
+      date = parse_date(line)
+      is_keyword = true
+    } else if (parse_year_month(line)) {
+      commit()
+
+      // js dc is inflexible
+      year = parse_year_month(line).year
+      month = parse_year_month(line).month
+      is_keyword = true
+    } else if (parse_time(line)) {
+      commit()
+      // set hour and minute
+    }
+
+    // push anyway for consistency
+    content.push(line)
+  }
+
+  commit()
+
+  return journal
 }
