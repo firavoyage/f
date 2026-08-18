@@ -83,7 +83,7 @@ ref:
   "deconstruct const": {
     "prefix": "dc",
     "body": [
-      "const { ${1:name} } = ${0}"
+      "const { ${0} } = ${1}"
     ],
   },
   "deconstruct array const": {
