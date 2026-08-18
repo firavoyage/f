@@ -6,3 +6,7 @@ log(map([1, 2, 3, 4, 5, 6], (item) => {
     return item
   } 
 }))
+
+log(map([1,2,3], v => v)) 
+
+log(map({a:1}, ([k,v]) => ([v,k])))

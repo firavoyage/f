@@ -2,6 +2,10 @@
 
 create telegram to journal tool.
 
+---
+
+skip the non paragraph lines, by markdown ast, even if they fit the regex
+
 # backlog
 
 implement string distance based url correction

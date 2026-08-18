@@ -8,9 +8,9 @@ export function halt(value: any) {
 // export const halt = Symbol('halt')
 // export const halt = Symbol('break')
 
+export function map<T>(items: T[], fn: (item: T, index?: number, array?: T[]) => any): any[]
 export function map(items: object, fn: (item: ReturnType<typeof Object.entries>[0], index?: number, array?: ReturnType<typeof Object.entries>) => any): object
 // export function map<T>(items: object & T, fn: (item: ObjectENt T, index?: number, array?: T[]) => any): any[]
-export function map<T>(items: T[], fn: (item: T, index?: number, array?: T[]) => any): any[]
 
 /**
  * map an array to a fn
