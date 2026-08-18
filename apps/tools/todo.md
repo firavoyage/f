@@ -6,6 +6,10 @@ create telegram to journal tool.
 
 skip the non paragraph lines, by markdown ast, even if they fit the regex <!-- could have -->
 
+---
+
+format single digit and prefix zero on serialize.
+
 # backlog
 
 implement string distance based url correction
