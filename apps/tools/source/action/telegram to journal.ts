@@ -10,19 +10,21 @@ function match(text: string, pattern: RegExp) {
   return Array.from(text.matchAll(pattern))
 }
 
+const mon_to_month = {
+  jan: 1, feb: 2, mar: 3, apr: 4,
+  may: 5, jun: 6, jul: 7, aug: 8,
+  sep: 9, oct: 10, nov: 11, dec: 12
+};
+
+const month_to_mon = map(Object.entries(mon_to_month), ([key, value]) => [value, key])
+
 function parse_year_month(line: string) {
   const pattern = regex('^(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\\s+(\\d{4})$', "i")
-
-  const map = {
-    jan: 1, feb: 2, mar: 3, apr: 4,
-    may: 5, jun: 6, jul: 7, aug: 8,
-    sep: 9, oct: 10, nov: 11, dec: 12
-  };
 
   const result = match(line, pattern)
 
   // @ts-expect-error regex must fit the type if it matches
-  return result.length == 0 ? false : { month: map[result[0][1].toLowerCase()], year: +result[0][2] }
+  return result.length == 0 ? false : { month: mon_to_month[result[0][1].toLowerCase()], year: +result[0][2] }
 }
 
 function parse_date(line: string) {
@@ -94,20 +96,19 @@ function parse_journal(journal_text: string) {
   }
 
   for (const line of journal_text.split('\n')) {
-    if (parse_date(line)) {
+    if (parse_year_month(line) || parse_date(line) || parse_time(line)) {
       commit()
-      date = parse_date(line)
-      is_keyword = true
-    } else if (parse_year_month(line)) {
-      commit()
+    }
 
+    if (parse_year_month(line)) {
       // js dc is inflexible
       year = parse_year_month(line).year
       month = parse_year_month(line).month
       is_keyword = true
+    } else if (parse_date(line)) {
+      date = parse_date(line)
+      is_keyword = true
     } else if (parse_time(line)) {
-      commit()
-
       hour = parse_time(line).hour
       minute = parse_time(line).minute
     }
@@ -122,6 +123,10 @@ function parse_journal(journal_text: string) {
 }
 
 function sort(journal: journal) {
+  for (const [index, value] of Object.entries(journal)) {
+    merge(value, { index })
+  }
+
   function compare(a: item, b: item) {
     /**
      * false -> a before b (quirk of sort cmp)
@@ -133,13 +138,42 @@ function sort(journal: journal) {
         return is_a_before_b
       } else if (a[key] > b[key]) {
         return !is_a_before_b
-      } 
+      }
     }
-    
-    return true
+
+    /**
+     * impossible w index
+     */
+    throw err('unable to determine the order while sorting')
   }
 
   return journal.sort(compare)
 }
 
+// log(undefined > undefined)
+// log(undefined < undefined)
+// log(null > null)
+// log(null < null)
 
+function serialize(journal: journal) {
+  const lines = []
+
+  let year, month, date
+
+  for (const item of journal) {
+    if (item.is_keyword) {
+      continue
+    }
+    
+    if (item.year != year || item.month != month) {
+      ({year, month} = item)
+
+      // reset date, 01 jan != 01 feb
+      date = undefined
+
+      lines.push(`${month_to_mon[month]} ${year}`, '')
+    } 
+  }
+
+  return lines.join('\n')
+}
