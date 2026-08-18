@@ -68,7 +68,7 @@ function parse_time(line: string) {
 
 // log((parse_time('01 20 create sth')))
 
-type item = {
+type journal_item = {
   content: string[]
   year?: number
   month?: number
@@ -79,7 +79,7 @@ type item = {
   is_keyword: boolean
 }
 
-type journal = item[]
+type journal = journal_item[]
 
 function parse(journal_text: string) {
   let year, month, date, hour, minute
@@ -126,7 +126,7 @@ function sort(journal: journal) {
     merge(value, { index })
   }
 
-  function compare(a: item, b: item) {
+  function compare(a: journal_item, b: journal_item) {
     const is_a_before_b = false
     const is_a_after_b = true
 
@@ -208,14 +208,69 @@ function serialize(journal: journal) {
 /**
  * telegram desktop select & copy
  */
-type telegram = {
-
+type telegram_item = {
+  content: string[]
+  year?: number
+  month?: number
+  date?: number
+  hour?: number // 24h
+  minute?: number
+  index?: number
 }
 
+type telegram = telegram_item[]
+
+/**
+ * it uses a thin space on like "12:16 AM"
+ */
 function parse_telegram(telegram_text: string) {
-  // name, month, date, 
-  const pattern = regex('(.*), [(\\d{1,2})]')
+  // name, month, date, year, hour, minute, am/pm
+  const pattern = regex('^(.*), \\[(\\d{1,2})/(\\d{1,2})/(\\d{1,2}) (\\d{1,2}):(\\d{1,2}) (AM|PM)\\]')
+
+  match(telegram_text, pattern)
+
+  let year, month, date, hour, minute, name
+
+  const telegram = []
+  let content = []
+
+  function commit() {
+    telegram.push({
+      content, year, month, date, hour, minute
+    })
+
+    content = []
+  }
+
+  for (const line of telegram_text.split('\n')) {
+    if (match(line, pattern)) {
+      commit()
+
+      // slice: [start, end)
+      const info = match(line, pattern).slice(1, 8)
+      log(info)
+
+      // name, month, date, year (yy), hour, minute, am/pm
+      name = info[0]
+      month = +info[1]
+      date = +info[2]
+      year = +info[3] + 2000
+      hour = info[6] == 'AM' ? +info[4] : +info[4] + 12
+      minute = +info[5]
+    }
+
+    content.push(line)
+  }
+
+  commit()
+
+  return telegram
 }
+
+// log('12' + 4)
+// log(4 + '12')
+// log(+'12' + 4)
+// log(4 + +'12')
 
 const test_telegram = `
 Romandu, [5/23/26 12:16 AM]
@@ -988,6 +1043,4 @@ Romandu, [5/23/26 1:39 AM]
 奥派入门必读书籍
 `
 
-`Romandu, [5/23/26 12:16 AM]`
-
-
+log(parse_telegram(test_telegram))
