@@ -408,11 +408,11 @@ function round_minute(minute: number, targets: number[]) {
     abs(target + 60 - minute),
   ))
 
-  log(differences, differences.indexOf(min(differences)))
-
-  return targets[differences.indexOf(min(differences))]
+  return targets[differences.indexOf(min(...differences))]
 }
 
 // log([0,1,2,3].indexOf(2))
 
-log(round_minute(5, [0, 10, 20, 30, 40, 50]))
+// log(round_minute(5, [0, 10, 20, 30, 40, 50]))
+
+

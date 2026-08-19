@@ -10,6 +10,12 @@ skip the non paragraph lines, by markdown ast, even if they fit the regex <!-- c
 
 format single digit and prefix zero on serialize.
 
+---
+
+support rounding method on round minute
+
+
+
 # backlog
 
 implement string distance based url correction
