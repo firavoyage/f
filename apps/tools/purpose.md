@@ -2428,8 +2428,10 @@ remove `flatten` on `lib/map`. (unused)
 
 00 20 tg to journal: write `parse_telegram`. 01 00
 
-01 10 tg to journal: write `round_minute`.
+01 10 tg to journal: write `round_minute`. 01 20
 
 revise dc snippet. declare from first, then you will get auto complete for the vars inside.
+
+Math.min isnt flexible about params. it should have been polymorphic and accept array arg wo spreading. (no ts check or debugging needed). i wouldnt patch it. i would fix it in my lang.
 
 
