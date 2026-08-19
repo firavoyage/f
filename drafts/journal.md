@@ -50543,6 +50543,10 @@ c
 
 <!-- i often drink plainly. black or green tea alone isnt really flavored tbh. it's quite sophisticated compared w water, but it can feel watery. -->
 
+19
+
+14 50 watch `suzume (2022)`.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
