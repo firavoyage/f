@@ -50565,7 +50565,7 @@ the news was the web playground could be rev proxied to llm api.
 
 22
 
-19 20 alias `dl` to ytdlp, `d` to `tmux detach`. support detach on tmux abstraction.
+19 20 alias `dl` to ytdlp, ~~`d` to `tmux detach`. support detach on tmux abstraction~~. alias `e` to exit.
 
 
 
