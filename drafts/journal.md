@@ -50567,6 +50567,8 @@ the news was the web playground could be rev proxied to llm api.
 
 19 20 alias `dl` to ytdlp, ~~`d` to `tmux detach`. support detach on tmux abstraction~~. alias `e` to exit.
 
+19 40 dl `Believe! Sea of Dreams - Tokyo DisneySea - Full Show - 4K [sJbMBlhX240]`.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
