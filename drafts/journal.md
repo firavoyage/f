@@ -50563,6 +50563,10 @@ well it... it works. it's in zig, compiled to wasm. it runs on firefox but not m
 
 the news was the web playground could be rev proxied to llm api.
 
+22
+
+19 20 alias `dl` to ytdlp, `d` to `tmux detach`. support detach on tmux abstraction.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->

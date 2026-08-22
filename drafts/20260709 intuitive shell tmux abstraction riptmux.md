@@ -11210,3 +11210,24 @@ tools: 1 windows (created Mon Aug 10 03:19:55 2026)
 
 - merge `tmux a <name>` into `tmux <name>`, which now attachs if existing instead of errs, smart and flexible, polymorphic
 - alias `tmux l` for `tmux ls`, concise
+
+# . test
+
+```
+ ~ % tmux detach
+sessions should be nested with care, unset $TMUX to force
+ ~ % command tmux detach
+```
+
+```
+ ~ % tmux
+[detached (from session 1)]
+ ~ % tmux l
+1: 1 windows (created Sat Aug 22 19:16:18 2026)
+tools: 1 windows (created Tue Aug 18 22:01:29 2026)
+ ~ % tmux clear
+ ~ % tmux l
+tools: 1 windows (created Tue Aug 18 22:01:29 2026)
+```
+
+
