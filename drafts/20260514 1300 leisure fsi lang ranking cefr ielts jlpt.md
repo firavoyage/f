@@ -2514,3 +2514,50 @@ While it feels awkward, that 5.5 to 6.5 band is actually a vital evolutionary ph
 Are you worried about encountering this **awkward gap** yourself in a future job or academic setting, or are you looking for strategies to **push your skills past the paper-test level**?
 
 
+
+# <!-- 20 aug -->
+
+# does jlpt n1 cert show the exact score
+
+August 20, 2026
+
+<mark><strong>Yes, your JLPT N1 documentation will show your exact score.</strong></mark>
+
+When you pass the exam, you receive two separate pieces of information: the formal **Certificate of Proficiency** (which only declares that you passed) and the official **Certificate of Result and Scores** (the score report).
+
+The layout and breakdowns visible on your results documents include the following details:
+
+### 📊 Score Breakdowns Shown on the Report
+
+The official score report displays your performance out of a **total of 180 points**. It breaks your exact scaled score down into three specific sections (each worth 0–60 points):
+
+- **Language Knowledge:** Covers your exact points for Vocabulary and Grammar.
+- **Reading:** Shows your exact comprehension score.
+- **Listening:** Shows your exact listening score.
+
+### 📑 What Each Document Contains
+
+- **Certificate of Proficiency:** This is the large, ornamental certificate suitable for framing. It features your name, birth date, the text certifying you passed N1, and the official seal. **It does not list your scores.**
+- **Certificate of Result and Scores (Score Report):** This is the functional, official document you submit to employers or universities. **It lists your exact total score**, your sub-section scores, and your percentile rank. [link](https://info.jees-jlpt.jp/certificate/?lang=english)
+- **CEFR Reference Indicator:** Score reports feature an official [CEFR reference level](https://www.jlpt.jp/e/cefrlevel/index.html) (e.g., mapping a score of 100–141 to B2, or 142–180 to C1) to help international organizations gauge your fluency. [link](https://www.jlpt.jp/e/about/cefr%5Freference.html)
+
+Most employers and immigration officials only care that you have a "Pass" status for N1. However, some highly competitive academic scholarships or elite university programs may request your exact score report to use your numerical score as a tie-breaker against other applicants. [link](https://www.quora.com/Do-the-scores-and-grades-on-a-JLPT-certificate-matter-if-one-has-passed)
+
+Are you **planning to submit** your N1 results for a **job application** or a **university admission**? I can give you more details on how institutions evaluate these scores.
+
+- [link](https://www.jlpt.jp/e/about/cefr%5Freference.html)\
+  日本語能力試験 JLPT\
+  Indication of the CEFR Level for Reference - 日本語能力試験 JLPT\
+  For N2, a total score of 90 to 111 is indicated as B1level, and 112 or higher is indicated as B2 level. For N1, a total score of 1...
+- [link](https://info.jees-jlpt.jp/certificate/?lang=english)\
+  JEES 日本語能力試験\
+  Certificate Issuance | JEES Japanese Language Proficiency Test Home\
+  成績証明書 （ せいせきしょうめいしょ ） の 発行 （ はっこう ） 「 日本語 （ にほんご ） 能力 （ のうりょく ） 試験 （ しけん ） 認定 （ にんてい ） 結果 （ けっか ） 及 （ およ ） び 成績 （ せいせき ） に 関 （ かん ...
+- [link](https://www.japaneselanguageinstitutes.com/blog/jlpt-score-calculator/)\
+  www.japaneselanguageinstitutes.com\
+  JLPT Score Calculator: Predict Your N5 to N1 Exam Results Instantly\
+  Key Official JLPT Details According to the official JLPT guideline on scoring and results: For levels N1, N2, N3, there are three ...
+
+Show all
+
+

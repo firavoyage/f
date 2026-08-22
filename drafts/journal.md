@@ -50549,6 +50549,20 @@ c
 
 on the train <!-- to ... to shinjiku --> to tokyo.
 
+21
+
+22 10 explore and analyze fx.sh by vercel.
+
+interesting.
+
+i could use ctrl j/k out of the box after /help.
+
+...
+
+well it... it works. it's in zig, compiled to wasm. it runs on firefox but not my legacy chromium.
+
+the news was the web playground could be rev proxied to llm api.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
