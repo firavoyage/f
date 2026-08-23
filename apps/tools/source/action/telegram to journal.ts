@@ -156,6 +156,31 @@ function sort(journal: journal) {
 // log(null > null)
 // log(null < null)
 
+/**
+ * prefix 0 to a fixed length
+ * 
+ * seems the length of everything defaults to 2.
+ * 
+ * date 01 09 10 31
+ * 
+ * hour 01 09 10 24
+ * 
+ * minute 01 09 10 60
+ * 
+ * (year and month do not need to be formatted)
+ */
+function format_number(n: number, length = 2) {
+  let formatted_number = n.toString()
+
+  if (formatted_number.length < length) {
+    for (const _ of each(1, length - formatted_number.length)) {
+      formatted_number = '0' + formatted_number
+    }
+  } 
+
+  return formatted_number
+}
+
 function serialize_journal(journal: journal) {
   const lines = []
 
@@ -178,7 +203,7 @@ function serialize_journal(journal: journal) {
     if (is_given(item.date) && item.date != date) {
       ({ date } = item)
 
-      lines.push(`${date}`, '')
+      lines.push(`${format_number(date)}`, '')
     }
 
     lines.push(...item.content)
@@ -441,9 +466,7 @@ function round_minute(minute: number, targets: number[]) {
 // log(round_minute(55, [0, 10, 20, 30, 40, 50]))
 // log(round_minute(59, [0, 10, 20, 30, 40, 50]))
 
-export function round_journal(journal_text: string, targets: number[]) {
-  const journal = parse_journal(journal_text)
-
+function round_journal(journal: journal, targets: number[]) {
   for (const item of journal) {
     if (!is_given(item.hour) || !is_given(item.minute)) {
       continue
@@ -453,8 +476,8 @@ export function round_journal(journal_text: string, targets: number[]) {
     item.hour += hour_delta
     item.minute = minute
   }
-  
-  return serialize_journal(journal)
+
+  return journal
 }
 
 export function merge_journal(original_text: string, addition_text: string) {
@@ -487,8 +510,29 @@ export function merge_journal(original_text: string, addition_text: string) {
 
 // log(merge_journal(test, test))
 
-export function telegram_to_journal(telegram_text: string) {
-  const telegram = parse_telegram(telegram_text)
+type telegram_to_journal = {
+  rounding: true
+  targets: number[]
+} | Partial<{
+  rounding: false
+  targets: number[]
+}>
+
+export function telegram_to_journal(telegram_text: string, options: telegram_to_journal = {}) {
+  const { rounding, targets } = options
+
+  let telegram = parse_telegram(telegram_text)
+
+  if (rounding) {
+    telegram = round_journal(telegram, targets)
+  } 
+
+  telegram = map(telegram, item => {
+    item.content = item.content.slice(1)
+    if (is_given(item.content[0]) && is_given(item.hour) && is_given(item.minute)) {
+      item.content[0] = `${format_number(item.hour)} ${format_number(item.minute)} ${item.content[0]}`
+    } 
+  })
 
   const journal_text = serialize_journal(telegram)
 
@@ -617,5 +661,5 @@ Romandu, [5/23/26 12:24 AM]
 红衫 绿洲投老司机
 `
 
-log(telegram_to_journal(test_telegram))
+// log(telegram_to_journal(test_telegram))
 
