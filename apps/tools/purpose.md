@@ -2446,6 +2446,6 @@ i would like to have 24:00.
 
 09 50 tg to journal: `round_journal`, `merge_journal`.
 
-18 40 tg to journal: write `telegram_to_journal`. standardize string to string type and scalable naming. export.
+18 40 tg to journal: write `telegram_to_journal`. standardize string to string type and scalable naming. export. format single digit and prefix zero on serialize.
 
 
