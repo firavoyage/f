@@ -72,6 +72,9 @@ export default defineConfig(
   // Custom rules
   {
     rules: {
+      // do not care arbitary rules
+      "no-irregular-whitespace": "off",
+
       // do not over engineer, do not care big corp best prac
       "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/ban-ts-comment": "off",
