@@ -2450,4 +2450,12 @@ i would like to have 24:00.
 
 on lib/map, as i see "return void" as continue, i couldnt see it as "direct mutation" (i.e. return original) instead. guess would be right, explicit > implicit. "void" and "omit" sounds the same, esp when you say you dont wanna see any undefined in your code.
 
+19 20 refactor lib/each.
+
+- i want `each(n)` behave as `repeat(n)`, so it now begins from 1 by default
+  - it's a breaking change. but guess would be fine. it's actually very weird if you rely on it. how would you use "from 0 to n"? for array index, it's "from 0 to n-1".
+  - i wouldnt go the python way. `each(a, b)` should be `[a, b]`, not `[a, b)`
+- return an array instead of an iterator
+  - perf is trivial, composibility matters more
+
 
