@@ -176,7 +176,7 @@ function format_number(n: number, length = 2) {
     for (const _ of each(1, length - formatted_number.length)) {
       formatted_number = '0' + formatted_number
     }
-  } 
+  }
 
   return formatted_number
 }
@@ -525,13 +525,15 @@ export function telegram_to_journal(telegram_text: string, options: telegram_to_
 
   if (rounding) {
     telegram = round_journal(telegram, targets)
-  } 
+  }
 
   telegram = map(telegram, item => {
     item.content = item.content.slice(1)
     if (is_given(item.content[0]) && is_given(item.hour) && is_given(item.minute)) {
       item.content[0] = `${format_number(item.hour)} ${format_number(item.minute)} ${item.content[0]}`
-    } 
+    }
+
+    return item
   })
 
   const journal_text = serialize_journal(telegram)
@@ -661,5 +663,6 @@ Romandu, [5/23/26 12:24 AM]
 红衫 绿洲投老司机
 `
 
-// log(telegram_to_journal(test_telegram))
+log(telegram_to_journal(test_telegram, { rounding: true, targets: [0, 10, 20, 30, 40, 50] }))
+
 

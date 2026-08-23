@@ -6,6 +6,10 @@ create telegram to journal tool. <!-- sync memories -->
 
 skip the non paragraph lines, by markdown ast, even if they fit the regex <!-- could have -->
 
+no idea if needed. wouldnt cause problems seems.
+
+could have.
+
 # backlog
 
 implement string distance based url correction
