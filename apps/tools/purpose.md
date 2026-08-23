@@ -2448,4 +2448,6 @@ i would like to have 24:00.
 
 18 40 tg to journal: write `telegram_to_journal`. standardize string to string type and scalable naming. export. format single digit and prefix zero on serialize.
 
+on lib/map, as i see "return void" as continue, i couldnt see it as "direct mutation" (i.e. return original) instead. guess would be right, explicit > implicit. "void" and "omit" sounds the same, esp when you say you dont wanna see any undefined in your code.
+
 
