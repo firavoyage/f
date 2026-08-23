@@ -399,20 +399,44 @@ function parse_telegram(telegram_text: string) {
 
 // log(parse_telegram(test_telegram))
 
+/**
+ * resolve to the smaller when exactly at the middle
+ */
 function round_minute(minute: number, targets: number[]) {
+  targets = targets.sort()
+
   const { min, abs } = Math
 
-  const differences = map(targets, target => min(
-    abs(target - 60 - minute),
-    abs(target - minute),
-    abs(target + 60 - minute),
-  ))
+  const differences = map(targets, target => abs(target - minute))
+  const minimum_difference = min(...differences)
 
-  return targets[differences.indexOf(min(...differences))]
+  let hour_delta = 0
+  let rounded_minute = targets[differences.indexOf(minimum_difference)]
+
+  if (abs(targets[0] + 60 - minute) < minimum_difference) {
+    hour_delta = 1
+    rounded_minute = targets[0]
+  } 
+
+  return {hour_delta, minute: rounded_minute}
 }
+
+// function round_minute(minute: number, targets: number[]) {
+//   const { min, abs } = Math
+
+//   const differences = map(targets, target => min(
+//     abs(target - 60 - minute),
+//     abs(target - minute),
+//     abs(target + 60 - minute),
+//   ))
+
+//   return targets[differences.indexOf(min(...differences))]
+// }
 
 // log([0,1,2,3].indexOf(2))
 
 // log(round_minute(5, [0, 10, 20, 30, 40, 50]))
+// log(round_minute(55, [0, 10, 20, 30, 40, 50]))
+// log(round_minute(59, [0, 10, 20, 30, 40, 50]))
 
 

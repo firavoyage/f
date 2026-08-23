@@ -2434,4 +2434,12 @@ revise dc snippet. declare from first, then you will get auto complete for the v
 
 Math.min isnt flexible about params. it should have been polymorphic and accept array arg wo spreading. (no ts check or debugging needed). i wouldnt patch it. i would fix it in my lang.
 
+22
+
+23 00 tg to journal: fix `round_minute`. round 14:59 to 15:00 instead of 14:00. test. 23 10
+
+i may solve a specific problem <!-- (just) for me myself --> instead of a general one. ~~support rounding method on round minute~~
+
+i would like to have 24:00.
+
 
