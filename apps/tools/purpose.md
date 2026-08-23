@@ -2442,4 +2442,8 @@ i may solve a specific problem <!-- (just) for me myself --> instead of a genera
 
 i would like to have 24:00.
 
+23
+
+09 50 tg to journal: `round_journal`, `merge_journal`.
+
 

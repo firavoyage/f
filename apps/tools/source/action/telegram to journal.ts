@@ -416,9 +416,9 @@ function round_minute(minute: number, targets: number[]) {
   if (abs(targets[0] + 60 - minute) < minimum_difference) {
     hour_delta = 1
     rounded_minute = targets[0]
-  } 
+  }
 
-  return {hour_delta, minute: rounded_minute}
+  return { hour_delta, minute: rounded_minute }
 }
 
 // function round_minute(minute: number, targets: number[]) {
@@ -439,4 +439,43 @@ function round_minute(minute: number, targets: number[]) {
 // log(round_minute(55, [0, 10, 20, 30, 40, 50]))
 // log(round_minute(59, [0, 10, 20, 30, 40, 50]))
 
+function round_journal(journal: journal, targets: number[]) {
+  for (const item of journal) {
+    if (!is_given(item.hour) || !is_given(item.minute)) {
+      continue
+    }
+    const { minute, hour_delta } = round_minute(item.minute, targets)
 
+    item.hour += hour_delta
+    item.minute = minute
+  }
+  
+  return journal
+}
+
+function merge_journal(original: journal, addition: journal) {
+  const merged = sort([...original, ...addition])
+  return merged
+}
+
+const test = `journal
+
+---
+
+mar 2025
+
+01
+
+20 20 do somthing
+
+02
+
+10 20 do things
+
+apr 2026
+
+10
+
+21 20 do sth`
+
+log(merge_journal(test, test))

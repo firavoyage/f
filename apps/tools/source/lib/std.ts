@@ -1,3 +1,5 @@
+import { handle } from 'lib/handle';
+
 type merge = typeof merge
 type has = typeof has
 type is_given = typeof is_given
@@ -18,7 +20,7 @@ export function merge(target: object, ...sources: object[]) {
   for (const source of sources) {
     for (const key of Object.keys(source)) {
       // @ts-expect-error 
-      target[key] = source[key]
+      handle(() => target[key] = source[key])
     }
   }
   return target
