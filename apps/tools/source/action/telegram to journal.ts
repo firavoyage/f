@@ -1,5 +1,5 @@
-// @ts-nocheck
-/* eslint-disable */
+// // @ts-nocheck
+// /* eslint-disable */
 
 function regex(...args: ConstructorParameters<typeof RegExp>) {
   return new RegExp(...args)
@@ -166,7 +166,7 @@ function serialize(journal: journal) {
       continue
     }
 
-    if (item.year != year || item.month != month) {
+    if (is_given(item.year) && is_given(item.month) && (item.year != year || item.month != month)) {
       ({ year, month } = item)
 
       // reset date, 01 jan != 01 feb
@@ -175,7 +175,7 @@ function serialize(journal: journal) {
       lines.push(`${month_to_mon[month]} ${year}`, '')
     }
 
-    if (item.date != date) {
+    if (is_given(item.date) && item.date != date) {
       ({ date } = item)
 
       lines.push(`${date}`, '')
@@ -233,10 +233,11 @@ function parse_telegram(telegram_text: string) {
 
   match(telegram_text, pattern)
 
-  let year, month, date, hour, minute, name
+  let year: number, month: number, date: number, hour: number, minute: number, name: string
 
+  // @ts-expect-error 
   const telegram = []
-  let content = []
+  let content: string[] = []
 
   function commit() {
     telegram.push({
@@ -267,6 +268,7 @@ function parse_telegram(telegram_text: string) {
 
   commit()
 
+  // @ts-expect-error 
   return telegram
 }
 
@@ -478,4 +480,4 @@ apr 2026
 
 21 20 do sth`
 
-log(merge_journal(test, test))
+log(serialize(merge_journal(parse(test), parse(test))))
