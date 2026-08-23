@@ -19,8 +19,7 @@ declare global {
 export function merge(target: object, ...sources: object[]) {
   for (const source of sources) {
     for (const key of Object.keys(source)) {
-      // @ts-expect-error 
-      handle(() => target[key] = source[key])
+      target[key] = source[key]
     }
   }
   return target
