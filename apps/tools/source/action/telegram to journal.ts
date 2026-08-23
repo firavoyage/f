@@ -80,12 +80,12 @@ type journal_item = {
   hour?: number // 24h
   minute?: number
   index?: number
-  is_keyword: boolean
+  is_keyword?: boolean // default to false
 }
 
 type journal = journal_item[]
 
-function parse(journal_text: string) {
+function parse_journal(journal_text: string): journal {
   let year, month, date, hour, minute
 
   const journal = []
@@ -156,7 +156,7 @@ function sort(journal: journal) {
 // log(null > null)
 // log(null < null)
 
-function serialize(journal: journal) {
+function serialize_journal(journal: journal) {
   const lines = []
 
   let year, month, date
@@ -209,9 +209,6 @@ function serialize(journal: journal) {
 
 // log(serialize(sort(parse(test))))
 
-/**
- * telegram desktop select & copy
- */
 type telegram_item = {
   content: string[]
   year?: number
@@ -225,9 +222,12 @@ type telegram_item = {
 type telegram = telegram_item[]
 
 /**
+ * parse messages copied from telegram desktop 
+ * (on mobile you might not see the time)
+ * 
  * it uses a thin space on like "12:16 AM"
  */
-function parse_telegram(telegram_text: string) {
+function parse_telegram(telegram_text: string): telegram {
   // name, month, date, year, hour, minute, am/pm
   const pattern = regex('^(.*), \\[(\\d{1,2})/(\\d{1,2})/(\\d{1,2}) (\\d{1,2}):(\\d{1,2}) (AM|PM)\\]')
 
@@ -441,7 +441,9 @@ function round_minute(minute: number, targets: number[]) {
 // log(round_minute(55, [0, 10, 20, 30, 40, 50]))
 // log(round_minute(59, [0, 10, 20, 30, 40, 50]))
 
-function round_journal(journal: journal, targets: number[]) {
+export function round_journal(journal_text: string, targets: number[]) {
+  const journal = parse_journal(journal_text)
+
   for (const item of journal) {
     if (!is_given(item.hour) || !is_given(item.minute)) {
       continue
@@ -452,32 +454,168 @@ function round_journal(journal: journal, targets: number[]) {
     item.minute = minute
   }
   
-  return journal
+  return serialize_journal(journal)
 }
 
-function merge_journal(original: journal, addition: journal) {
+export function merge_journal(original_text: string, addition_text: string) {
+  const original = parse_journal(original_text)
+  const addition = parse_journal(addition_text)
+
   const merged = sort([...original, ...addition])
-  return merged
+  return serialize_journal(merged)
 }
 
-const test = `journal
+// const test = `journal
 
----
+// ---
 
-mar 2025
+// mar 2025
 
-01
+// 01
 
-20 20 do somthing
+// 20 20 do somthing
 
-02
+// 02
 
-10 20 do things
+// 10 20 do things
 
-apr 2026
+// apr 2026
 
-10
+// 10
 
-21 20 do sth`
+// 21 20 do sth`
 
-log(serialize(merge_journal(parse(test), parse(test))))
+// log(merge_journal(test, test))
+
+export function telegram_to_journal(telegram_text: string) {
+  const telegram = parse_telegram(telegram_text)
+
+  const journal_text = serialize_journal(telegram)
+
+  return journal_text
+}
+
+const test_telegram = `
+Fodesu, [5/23/26 12:18 AM]
+好复杂
+
+Fodesu, [5/23/26 12:18 AM]
+memoh 平均年龄有 20 岁吗？
+
+Romandu, [5/23/26 12:19 AM]
+徐小平在北美也投了不少高校 dropout
+
+溏 🍬, [5/23/26 12:19 AM]
+陆奇老师有他自己的品味
+
+清凤, [5/23/26 12:19 AM]
+小猫不清楚不要插嘴
+
+Acbox Neko, [5/23/26 12:19 AM]
+都是些小天才
+
+盼兮, [5/23/26 12:19 AM]
+群里都是成功人士
+
+盼兮, [5/23/26 12:19 AM]
+看死了
+
+Acbox Neko, [5/23/26 12:19 AM]
+我跟小天才说话总有种自卑感
+
+溏 🍬, [5/23/26 12:19 AM]
+我跟小盒子说话总有种自卑感
+
+Fodesu, [5/23/26 12:19 AM]
+你们都是小天才，除了我
+
+Acbox Neko, [5/23/26 12:19 AM]
+所以我会避免找那些高中青训营的人说话
+
+Acbox Neko, [5/23/26 12:20 AM]
+他们都是那种 十岁英语无障碍沟通 十五岁保送国内外各大名校
+
+Acbox Neko, [5/23/26 12:20 AM]
+简历都能发着光的那种
+
+Acbox Neko, [5/23/26 12:20 AM]
+我比不上
+
+Acbox Neko, [5/23/26 12:21 AM]
+我甚至有点害怕他们
+
+Romandu, [5/23/26 12:21 AM]
+现在国内风投已经不卡学历了
+
+Romandu, [5/23/26 12:21 AM]
+其他资本会卡，yc china 和 zhenfund 不卡
+
+路上看见, [5/23/26 12:21 AM]
+奇绩为什么对 dropout 未成年情有独钟
+
+Acbox Neko, [5/23/26 12:22 AM]
+我初中学历诶
+
+Acbox Neko, [5/23/26 12:22 AM]
+并非
+
+Zhiqiang Yang, [5/23/26 12:22 AM]
+细说？
+
+Acbox Neko, [5/23/26 12:22 AM]
+他们投的 dropout 的未成年也没多少
+
+Acbox Neko, [5/23/26 12:22 AM]
+大多都是大学辍学的
+
+Romandu, [5/23/26 12:22 AM]
+恋童癖
+
+Acbox Neko, [5/23/26 12:23 AM]
+有名校背书之后 再突然 drop
+
+溏 🍬, [5/23/26 12:23 AM]
+奇绩投了哪个未成年
+
+Romandu, [5/23/26 12:23 AM]
+奇绩喜欢劝人 drop
+
+溏 🍬, [5/23/26 12:23 AM]
+我比较好奇
+
+盼兮, [5/23/26 12:23 AM]
+只要非传统了感觉文盲也无所谓
+
+Acbox Neko, [5/23/26 12:23 AM]
+让 vc 觉得他很行 觉得他能 all in
+
+盼兮, [5/23/26 12:23 AM]
+反正都不是传统路径
+
+Zhiqiang Yang, [5/23/26 12:23 AM]
+能不能进大厂之后光速辞职？算 drop 吗？
+
+路上看见, [5/23/26 12:23 AM]
+有没有清华 drop
+
+Romandu, [5/23/26 12:24 AM]
+全是
+
+Acbox Neko, [5/23/26 12:24 AM]
+我高中 drop 的
+
+Acbox Neko, [5/23/26 12:24 AM]
+我今年 17
+
+路上看见, [5/23/26 12:24 AM]
+我小学文化
+
+Romandu, [5/23/26 12:24 AM]
+年龄越小要求越低
+
+Romandu, [5/23/26 12:24 AM]
+红衫 绿洲投老司机
+`
+
+log(telegram_to_journal(test_telegram))
+
