@@ -173,7 +173,7 @@ function format_number(n: number, length = 2) {
   let formatted_number = n.toString()
 
   if (formatted_number.length < length) {
-    for (const _ of each(1, length - formatted_number.length)) {
+    for (const _ of each(length - formatted_number.length)) {
       formatted_number = '0' + formatted_number
     }
   }
@@ -663,6 +663,6 @@ Romandu, [5/23/26 12:24 AM]
 红衫 绿洲投老司机
 `
 
-log(telegram_to_journal(test_telegram, { rounding: true, targets: [0, 10, 20, 30, 40, 50] }))
+log(telegram_to_journal(test_telegram, { rounding: true, targets: each(0, 50, 10) }))
 
 
