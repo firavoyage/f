@@ -290,6 +290,7 @@ web: <!-- frontend, web, ts/js -->
 - js esm import export
 - parceljs cache whole repo tracking reload
 - css scrollbar styling
+- js array sort compare requirements
 
 backend:
 
