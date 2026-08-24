@@ -1632,71 +1632,6 @@ Nickel Angel✨, [7/22/26 12:14 PM]
 
 Nickel Angel✨, [7/22/26 12:16 PM]
 目前 ai 相关的工具还是覆盖不了相关需求的
-
-f, [8/11/26 2:45 AM]
-我讨厌她。
-
-Mio 总是在各种各样的群里争论，说一些令人迷惑的话。她从来不承认自己是错的。
-
-大量使用行话，使得主题本身不清晰，无法自解释。问题是什么。条件。假设。设想是什么。为什么。比较与取舍。结论的限定是什么。
-
-也不必说 Mio 了。我不熟悉她，也很少读到她（她很少在公开 sns 上发言，或者写个人网志。）。btw 她的公司也是一家狂热的公司。还可以列举很多人或事物，也不一定必要了。yetone。stvlynn。yc。长篇的语言简洁但思路繁冗的文章。以技术而不是目的出发的创业风险投资。
-
-发这条消息的目的是说，
-
-> 我讨厌大家。我不同情大家。
-
-狂热。
-
-以下参考。
-
-f, [8/11/26 2:46 AM]
-
-
-f, [8/11/26 2:46 AM]
-神 tm 滴蜡熊
-
-f, [8/11/26 2:46 AM]
-我不允许你说这个东西好 vibe（）
-
-f, [8/11/26 2:46 AM]
-一般来说你觉得有点怪的东西很可能不是真的怪而是设计感
-
-f, [8/11/26 2:53 AM]
-评论：大写字母。等宽字体。刻板印象的色彩渐变与阴影。多余的图标与状态标识。
-
-没有什么不清晰的。如果可以，她应该提供 rationale，而不是自我防御。
-
-可以想象画面没有任何 css。布局可以不作解释，如果不想标新立异的话。此后每一个选择都要做出解释。没有多少选择的。字体，颜色，阴影，图标库，... （参见 figma 面板，或者对所有 css/tailwind 分类。）
-
-愿意的话，可以做设计系统和组件库。
-
-f, [8/11/26 2:53 AM]
-
-
-f, [8/11/26 3:04 AM]
-评论：“特别”的，狂热的行文风格。
-
-这固然有其读者对象。比如很多面向孩子的科普书就有各种各样的风格。
-
-但我认为这是极其不理想的。
-
-- 文胜质而不清晰的，小标题与冒号。考虑用疑问词代替。每一个小标题提问（我需要预期内容，或决定是否 skim/skip）。或者使用 noun phrase。
-- 考虑使用表格或列表而不是散文。“各赔上一件东西，各换来一件东西”
-- 考虑完全使用英文，减少理解负担和潜在的行话翻译
-- 考虑举例，这是必须的
-- 如果适当，可以考虑比喻 （参见 eli5）
-
-有一些人会喜欢这样的似乎亲切的风格。
-
-f, [8/11/26 3:17 AM]
-不满。
-
-f, [8/11/26 3:18 AM]
-（在想要不要 fwd 到一些公开的地方。）
-
-Nickel Angel✨, [8/11/26 8:09 AM]
-我感觉这个属于争议性话题（转到某些公开的地方难免有争论，这个是需要考虑的
 ```
 
 I saw she typing sth around midnight, but she sent nothing but a sticker at the end of the day
@@ -2438,7 +2373,7 @@ Wow. A bot is typing.
 
 02 30 Challenge chyk on nickel angel group
 
-```
+```md
 Nickel Angel✨, [7/22/26 12:56 AM]
 对了，我这几天在 linux 上运行 obelisk 好像应用会 crash（
 
@@ -2464,7 +2399,7 @@ Nickel Angel✨, [7/22/26 12:57 AM]
 明天看看
 
 斬風千雪 ❄️, [7/22/26 12:57 AM]
-明天其实是今天
+明天其实是今天 <!-- edited. original: 今天其实是明天 -->
 
 Nickel Angel✨, [7/22/26 1:00 AM]
 不行了，这句话让我 dna 动了（
@@ -2799,17 +2734,57 @@ f, [7/22/26 12:38 PM]
 相当于频道置顶的一个链接表？
 ```
 
-02 50 https://t.me/c/2459993571/51981
-
-Edited. Original: 今天其实是明天
-
 03 10 Inquire nickel angel on obelisk
 
-@Nickel_Angel
+```
+f, [7/22/26 3:13 AM]
+On obelisk landing page
+
+> Everyone noticed agents forget.
+> Almost no one noticed the history was the answer.
+
+Really? Idk. My intuition tells me it's not true. 
+
+Basically, it indexes the history format of a few specific coding agent vendors to a unified array (let's say we have it sorted by time, whatever data structure it is), provides a method to search through plain text (though some proven methods I guess, like ripgrep, fuzzy search, or semantic search based on preprocessed vectors), and gives you a vibed (not quite polished tbh) ui to view directly.
+
+I don't want to share it in groups and I don't wanna argue w ppl. As creators and early adopters they must know it better than me. 
+
+Just. I think it's a bit trivial. 
+
+Look at what it does: converting formats, gluing some plaintext searching methods, and packing w a generated dashboard for humans.
+
+Wdyt?
+
+Nickel Angel✨, [7/22/26 12:14 PM]
+但问题确实没人做这种东西
+
+Nickel Angel✨, [7/22/26 12:16 PM]
+目前 ai 相关的工具还是覆盖不了相关需求的
+```
 
 16 50 Telegram search is not rg.
 
 18 00 Inquire @FlowingSnow
+
+```
+f, [7/22/26 6:05 PM]
+> 小猫要睡小猫觉
+
+是什么意思。
+
+小猫是睡觉的定语吗。或者是徒增可爱的表达。
+
+斬風千雪 ❄️, [7/22/26 6:07 PM]
+cat-ish sleep
+
+斬風千雪 ❄️, [7/22/26 6:07 PM]
+
+
+f, [7/22/26 6:10 PM]
+catnap
+
+短暂地睡。
+```
 
 23
 
@@ -2817,7 +2792,10 @@ Edited. Original: 今天其实是明天
 
 Rename as a single dot. (simpler than adwaita)
 
-17 50 Menci 207988066
+17 50 curate a list of qq contacts.
+
+```
+Menci 207988066
 
 若隐铃 wata4me 1541519346
 
@@ -2868,6 +2846,7 @@ teafrogsf 861940148
 Acbox 850625057
 
 戚风小蛋糕 1684773595
+```
 
 24
 
@@ -2889,7 +2868,28 @@ Other frameworks generally have their own html attributes, even file formats. Yo
 
 12 20 All: puzzle games
 
-https://t.me/fira_ref/2015
+```
+ref, [7/25/26 12:13 AM]
+最近在和聊聊玩 hank green 做的那个 4x3 的文字游戏 (https://www.hankgreen.com/fourbythree/)（聊聊好厉害）
+
+规则大概是，总共 9 个词里有 4 组相关的 3 个词，其中一个词会在四个组里以不同的意思出现
+
+心血来潮我也做了一个谜题，在这里玩 (https://www.hankgreen.com/fourbythree/index.html#c=5wtulq114fg7y)（不要剧透哦）✨
+
+ref, [7/25/26 12:13 AM]
+好妙的题，好好用的脑子
+
+85 points • 1 mistake
+🟨🟨🌟
+🟦🟩🟨
+🟪🟪🌟
+🟩🌟🟩
+🟦🌟🟦
+https://4x3.fun
+
+ref, [7/25/26 12:13 AM]
+好有趣，出题难度会比做题高很多的样子
+```
 
 16 40 JSLA (dths grade 10, oier, 16.003k) comes. I were about to share my maimai achievement rate to notes projects. He's busy shadowing a track.
 
@@ -2961,15 +2961,11 @@ For humility, it's a bit complicated. It can do anything. But what will I do. I 
 
 30
 
-06 00 @alampy
-
 06 10 For some reasons, seems I was banned from @HaruHyac1nth
 
 As bot/spam? 
 
 At least, it shows invite link expired only on this account
-
-06 10 @luoingly
 
 06 40 Acbox opens a Twitter sub account for nsfw irl and emotional stuff. 
 
@@ -2998,8 +2994,6 @@ Acbox is incredibly easily influenced motivated and irritated.
 15 30 Some vids on vue/vite conf are uploaded. The hypers. The youth. The modern internet.
 
 I may take a look.
-
-16 30 @Astrioia
 
 16 30 I do see ppl sending gifts to each other on tg.
 
@@ -3147,6 +3141,148 @@ Trivialness
 
 Humans need little love moments, not large language models.
 
+```
+斬風千雪 ❄️, [7/29/26 5:51 PM]
+你怎么也叫某某宁
+
+斬風千雪 ❄️, [7/29/26 5:51 PM]
+
+
+斬風千雪 ❄️, [7/29/26 5:51 PM]
+（吗）
+
+f, [7/29/26 5:52 PM]
+我很菜的。
+
+不会做题。
+
+是废物。
+
+斬風千雪 ❄️, [7/29/26 5:53 PM]
+
+
+斬風千雪 ❄️, [7/29/26 5:54 PM]
+蹭蹭。
+
+f, [8/5/26 7:01 PM]
+Wdyt
+
+f, [8/5/26 7:01 PM]
+思考。
+
+如果每一条消息下，都有一个固定的，没有相关体验的，参与者，用固定的语调，发表仅由消息字面含义推断的评论。是什么感觉呢。
+
+想要限定参与度，或者增加“意义”，是很复杂的问题呢。
+
+一个简单的设想是，让小猫判断，并只与其同类互动。或者增加 reactions 和 stickers 的使用，减少文本。
+
+此外，小猫永远在线，无限耐心。于是也可以容易地交流许多 off topic，如小猫本身实现，对随机一条新闻的看法，一些泛搜索或科普的问题。
+
+斬風千雪 ❄️, [8/5/26 7:02 PM]
+这个群太冷了
+
+斬風千雪 ❄️, [8/5/26 7:02 PM]
+需要小猫活跃气氛
+
+f, [8/5/26 9:12 PM]
+也许喵喵好。
+
+但主流 tg client 也没有办法因人而异地前端屏蔽个别用户。
+
+对于自己而言，小猫有时可爱，偶尔令人发笑或尴尬。但从来没有自己的想法或者体验，只是回声。
+
+稀释了群一半的信息。
+
+至少自己是很想屏蔽无意义的信息的。人类生成的娱乐内容也要好的多。
+
+或许完全静音也会有些失落。思考有没有什么巧妙的策略。
+
+（自己倒是一点不觉得群冷。或许每个人对信息有不同的感受。）
+
+f, [8/6/26 4:26 PM]
+我打算开一个非匿名投票。
+
+如果不能前端屏蔽，可以考虑后端路由。
+
+对于选择的群友，白名单其名字或 id 或数字 id。忽略这个事件，或自动选择沉默工具。
+
+话说几个月前雪在 memoh 群里大力推广 “沉默工具 > 指令” 的实现，现在感觉 irony。像群友发一个贴纸，小猫把贴纸翻译一下，实在没有意思。
+
+斬風千雪 ❄️, [8/6/26 4:26 PM]
+沉默的效果取决于历史上文
+
+斬風千雪 ❄️, [8/6/26 4:26 PM]
+模型的惯性会导致一步错步步错
+
+斬風千雪 ❄️, [8/6/26 4:27 PM]
+另外它会回应频道消息这一点，是写死的
+
+斬風千雪 ❄️, [8/6/26 4:27 PM]
+是我的偏好
+
+斬風千雪 ❄️, [8/6/26 4:27 PM]
+如果你们觉得它烦，可以摁一下 /compact
+
+f, [8/6/26 4:27 PM]
+能理解原因。
+
+我是说白名单投票的想法。
+
+斬風千雪 ❄️, [8/6/26 4:27 PM]
+代码里有这功能
+
+斬風千雪 ❄️, [8/6/26 4:27 PM]
+你需要让它忽略你的消息吗
+
+f, [8/6/26 4:28 PM]
+> 像群友发一个贴纸，小猫把贴纸翻译一下，实在没有意思。
+
+你觉得这个表现理想吗
+
+f, [8/6/26 4:29 PM]
+我想让所有选择的群友被忽略。
+
+那我开始投票吧。
+
+斬風千雪 ❄️, [8/6/26 4:29 PM]
+正常来说是不会这个样子的
+
+斬風千雪 ❄️, [8/6/26 4:29 PM]
+）
+
+f, [8/6/26 4:30 PM]
+好好笑
+
+f, [8/6/26 4:30 PM]
+虽然我不是很懂这贴纸的出处…但「100% OFFICIAL ROUTER」配上一张掀开的贴纸，那种一本正经的官方感有点好笑。
+
+f, [8/6/26 4:30 PM]
+晚饭吃的豆包怎么办
+
+f, [8/6/26 4:30 PM]
+晚饭的豆包应该没事…它只会让你吃饱，不会把路由器拆了。
+
+斬風千雪 ❄️, [8/6/26 4:30 PM]
+这是频道消息
+
+斬風千雪 ❄️, [8/6/26 4:31 PM]
+它会 100% 回应
+
+f, [8/6/26 4:31 PM]
+人类很显然知道，这样的提问是不预期答案的。
+
+这样的话很常见。
+
+f, [8/6/26 4:31 PM]
+流浪猫自然会想要回复一个迫切的“怎么办”
+
+斬風千雪 ❄️, [8/6/26 4:31 PM]
+对
+
+f, [8/6/26 4:32 PM]
+总觉得这不理想吧，即使是预期行为
+```
+
 07
 
 02 10 Daylily's 21st birthday. 
@@ -3161,14 +3297,6 @@ Card mastery has changed. No idea if it's better, esp when you have bot farming 
 
 08
 
-02 10 @VZstless
-
-02 30 @HaruAmamiya
-
-06 10 https://t.me/seele_2345
-
-https://t.me/channel_amberjellyfish
-
 22 50 Check Jupiter, inspired by zhihu. 
 
 I want to swap all big tech into index funds after they come back. Actually this strategy is quite weird. I guess it would be generally true that big tech would rise in the long term. But if I believe index funds would grow faster, I should accept the loss and swap right now. Never count loss into decision. 
@@ -3177,23 +3305,9 @@ Yet I guess it can be wise. Big tech are just more volatile. I can hold anything
 
 09
 
-16 50 https://t.me/neko205ch
-
-https://t.me/old_dudu_channel
-
-https://t.me/aosc_jokes
-
-https://t.me/aosc_os
-
 17 20 Have dinner at wok man, lu one shopping center.
 
 17 20 I guess I could carry a durable water bottle w me.
-
-17 30 @Catba11
-
-17 40 @purolle?
-
-18 10 @Mars_no_Musk
 
 18 20 Buy a bottle of jasmine tea at seven eleven
 
@@ -3225,11 +3339,76 @@ Chess is a good intellectual game.
 
 Telegram and zhihu may provide something interesting to consume.
 
-21 30 https://t.me/MtFAllahuakbar
-
 11
 
 02 30 Share my dissent against Mio w @Nickel_Angel.
+
+```
+f, [8/11/26 2:45 AM]
+我讨厌她。
+
+Mio 总是在各种各样的群里争论，说一些令人迷惑的话。她从来不承认自己是错的。
+
+大量使用行话，使得主题本身不清晰，无法自解释。问题是什么。条件。假设。设想是什么。为什么。比较与取舍。结论的限定是什么。
+
+也不必说 Mio 了。我不熟悉她，也很少读到她（她很少在公开 sns 上发言，或者写个人网志。）。btw 她的公司也是一家狂热的公司。还可以列举很多人或事物，也不一定必要了。yetone。stvlynn。yc。长篇的语言简洁但思路繁冗的文章。以技术而不是目的出发的创业风险投资。
+
+发这条消息的目的是说，
+
+> 我讨厌大家。我不同情大家。
+
+狂热。
+
+以下参考。
+
+f, [8/11/26 2:46 AM]
+
+
+f, [8/11/26 2:46 AM]
+神 tm 滴蜡熊
+
+f, [8/11/26 2:46 AM]
+我不允许你说这个东西好 vibe（）
+
+f, [8/11/26 2:46 AM]
+一般来说你觉得有点怪的东西很可能不是真的怪而是设计感
+
+f, [8/11/26 2:53 AM]
+评论：大写字母。等宽字体。刻板印象的色彩渐变与阴影。多余的图标与状态标识。
+
+没有什么不清晰的。如果可以，她应该提供 rationale，而不是自我防御。
+
+可以想象画面没有任何 css。布局可以不作解释，如果不想标新立异的话。此后每一个选择都要做出解释。没有多少选择的。字体，颜色，阴影，图标库，... （参见 figma 面板，或者对所有 css/tailwind 分类。）
+
+愿意的话，可以做设计系统和组件库。
+
+f, [8/11/26 2:53 AM]
+
+
+f, [8/11/26 3:04 AM]
+评论：“特别”的，狂热的行文风格。
+
+这固然有其读者对象。比如很多面向孩子的科普书就有各种各样的风格。
+
+但我认为这是极其不理想的。
+
+- 文胜质而不清晰的，小标题与冒号。考虑用疑问词代替。每一个小标题提问（我需要预期内容，或决定是否 skim/skip）。或者使用 noun phrase。
+- 考虑使用表格或列表而不是散文。“各赔上一件东西，各换来一件东西”
+- 考虑完全使用英文，减少理解负担和潜在的行话翻译
+- 考虑举例，这是必须的
+- 如果适当，可以考虑比喻 （参见 eli5）
+
+有一些人会喜欢这样的似乎亲切的风格。
+
+f, [8/11/26 3:17 AM]
+不满。
+
+f, [8/11/26 3:18 AM]
+（在想要不要 fwd 到一些公开的地方。）
+
+Nickel Angel✨, [8/11/26 8:09 AM]
+我感觉这个属于争议性话题（转到某些公开的地方难免有争论，这个是需要考虑的
+```
 
 21 40 Buy a Muji backpack, smoke pink 6s and a Muji flat pouch, s size.
 
@@ -3279,8 +3458,6 @@ A girl, w 海底谭 少女レイ badges and pjsk cards on the bag, visits for Mi
 
 A western girl speaking fluent English serves us.
 
-14 50 @YetAnotherAvailableUsername
-
 22 00 Get aime card. 
 
 Play chunithm and maimai.
@@ -3298,8 +3475,6 @@ Some wear shirts w anime characters on top.
 Google ai mode shows the game center closes at 12, which is device timezone.
 
 16
-
-12 40 @oldherl
 
 01 20 Eat azalea group, ~300 msgs.
 
@@ -3372,8 +3547,6 @@ Typical?
 21 40 Couldn't really play adx here. 
 
 Play pjsk. It wants me to update. Google play region blocks. Yet, aurora store somehow updates successfully despite shown failure, wo a installation screen (required for 3p app stores).
-
-22 10 @qinlili
 
 17
 
@@ -3459,10 +3632,6 @@ Come up w an idea. I could adopt Google reader theming, the classic Google desig
 
 Better to curate an explicit list of contacts and blacklist all of them before sending a msg.
 
-20 40 @hsiu_hideko
-
-@Ganyu_Genshin
-
 23 40 Bottle 152 streams weather irl commentary.
 
 19
@@ -3514,8 +3683,6 @@ On mobile, in md you have an image on top of the sidebar. Guess it would grow fo
 14 00 Walkthrough GitHub
 
 14 00 Walkthrough GitHub as competitive ux analysis for project repo
-
-14 30 @Azhuww
 
 15 40 The family, being conservative, refuse to charge even 5k yen to transportation card, and rather recharge a small amount many times to minimize "waste".
 
@@ -3636,10 +3803,6 @@ It's where all wishes come true.
 Even if material, or visual design app existed, it wouldn't match the feel of physical paper. 
 
 You can draw anything. You can write anywhere.
-
-22 40 @saurica417
-
-@Catba11
 
 22 50 It would feel like being judged or demanded if they called my given name
 
@@ -3776,8 +3939,6 @@ We have umbrellas though.
 It would be fun. It would be exciting.
 
 "nf"
-
-16 10 @TechCiel
 
 16 10 Have lunch/dinner at sushi premium kaio.
 
