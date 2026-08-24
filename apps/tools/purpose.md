@@ -2474,6 +2474,16 @@ process can be visual and code. even when it's visual, it has to be serialized o
 
 i could serialize in object, e.g. yaml.
 
-- if i serialize in yaml, it's inflexible, and also a bit boilerplate, which isnt ideal. i could be able to just list (and autocomplete) the name a few tools
+- if i serialize in yaml, it's inflexible, and also a bit boilerplate, which isnt ideal. i could be able to just list (w autocomplete) the name of a few tools, separated by linebreaks.
+- actually i have a proposal of the `code` lang. it's quite complex. no idea if all its syntax would be meaningfully visualized (not "tool: code, content: program string").
+
+the decision is i would compromise nothing. just like apple (iphone) shortcuts or samsung modes and routines. or scratch. i could absolutely go down the hard way. i would need that in the future.
+
+btw, the data structure is obviously ast. not everything could be preserved. like, whether you place a space before a comment, it would be formatted.
+
+---
+
+i would create a tool in js to sync memories first.
+
 
 
