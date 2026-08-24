@@ -12,13 +12,14 @@ import { List } from 'web/component/list';
 import { items } from 'action/tools';
 
 export const use_global = state({
-  is_sidebar_on: true,
+  'appearance.theme': '',
+  'appearance.layout.sidebar.is_visible': true,
   'navigation.path': '',
   'navigation.page': '',
   'navigation.tool': '',
-  'appearance.theme': '',
 }, {
-  persist: 'tools_v2',
+  persist: 'tools',
+  version: '0.0',
   should_sync_url: true,
   sync_url_options: {
     should_apply_all_given_params: true,

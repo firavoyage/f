@@ -10,6 +10,7 @@ pattern
 
 - sidebar
 - editor
+- process
 
 page
 

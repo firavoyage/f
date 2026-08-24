@@ -19,9 +19,10 @@ function is_inside_react() {
   return !!internals?.ReactCurrentDispatcher?.current;
 }
 
-type StateOptions<T> = {
+type state<T> = {
   persist?: string
   should_sync_url?: boolean
+  version?: string
   sync_url_options?: {
     should_apply_all_given_params?: boolean
     should_cleanup_omitted_params_after_init?: boolean
@@ -48,11 +49,12 @@ type StateOptions<T> = {
  * local storage sync is best effort. 
  * it performs a complete sync, w nested set time out for each key, before the next one
  */
-export function state<T extends NonFunction>(initial: T, options: StateOptions<T> = {}) {
+export function state<T extends NonFunction>(initial: T, options: state<T> = {}) {
   type key = string & keyof T
 
   const {
     persist,
+    version,
     should_sync_url = false,
     sync_url_options = {},
     init,
@@ -83,10 +85,20 @@ export function state<T extends NonFunction>(initial: T, options: StateOptions<T
       return
     }
 
-    const key = localStorage.getItem(persist)
+    const old_data_text = localStorage.getItem(persist)
 
-    if (is_given(key)) {
-      data = parse(key)
+    if (is_given(old_data_text)) {
+      const old_data = parse(old_data_text)
+
+      if (is_given(version) && localStorage.getItem(`${persist}.version`) != version) {
+        for (const [key, ] of Object.entries(data)) {
+          if (has(old_data, key)) {
+            data[key] = old_data[key]
+          } 
+        }
+      } else {
+        data = old_data
+      } 
     }
   }
 
@@ -96,6 +108,10 @@ export function state<T extends NonFunction>(initial: T, options: StateOptions<T
     if (!is_given(persist)) {
       return
     }
+
+    if (is_given(version)) {
+      localStorage.setItem(`${persist}.version`, version)
+    } 
 
     if (is_syncing_localstorage) {
       should_sync_localstorage_again = true
@@ -364,9 +380,9 @@ export function to_toggle([on, set]: any) {
   return [on, toggle]
 }
 
-type state = typeof state
+type state_fn = typeof state
 type to_toggle = typeof to_toggle
 declare global {
-  var state: state
+  var state: state_fn
   var to_toggle: to_toggle
 }
