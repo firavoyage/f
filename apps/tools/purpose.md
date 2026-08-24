@@ -2636,4 +2636,12 @@ could have: custom migration
 
 `object` and `{}` are different in ts. always prefer the latter.
 
+19 30 web/lib/state: fix race cond.
+
+flag finished immediately after syncing.
+
+19 40 lib/map, web/lib/map: fix args.
+
+in ts you can always receive less args on a callback fn.
+
 

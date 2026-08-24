@@ -13,7 +13,7 @@ export function telegram_to_journal(telegram_text: string) {
 import type { items } from 'web/component/list';
 // @ts-expect-error 
 export const items: items = ["json to yaml", "yaml to json", "yaml", "json", "toml", 
-  "telegram to journal"]
+  "telegram to journal", "merge journal"]
 
 export const tool_to_args: Record<string, arg[]> = map({
   "merge journal": [
