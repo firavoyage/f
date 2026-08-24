@@ -14,6 +14,7 @@ import { items } from 'action/tools';
 export const use_global = state({
   'input': '',
   'output': '',
+  'process': [],
   'appearance.theme': '',
   'appearance.layout.sidebar.is_visible': true,
   'navigation.path': '',
@@ -21,7 +22,7 @@ export const use_global = state({
   'navigation.tool': '',
 }, {
   persist: 'tools',
-  version: '0.0',
+  version: '0.1',
   should_sync_url: true,
   sync_url_options: {
     should_apply_all_given_params: true,

@@ -588,16 +588,15 @@ ref:
   },
   "export const use global state": {
     "prefix": [
-      "es",
-      "ecs",
-      "ug",
-      "ugs",
+      "sta",
+      "stat",
+      "state",
     ],
     "body": [
       "export const use_${1:global} = state(${0})",
     ],
   },
-  "export const use global state": {
+  "use global": {
     "prefix": [
       "es",
       "ecs",
@@ -605,7 +604,21 @@ ref:
       "ugs",
     ],
     "body": [
-      "const [${1:name}, set_${1:name}] = use_${0:global}"
+      "const [${1:name}, set_${1:name}] = use_global(${0})"
+      // "const [${1:name}, set_${1:name}] = use_global('${0}')"
+      // "const [${1:name}, set_${1:name}] = use_${0:global}"
+    ],
+  }, 
+  // in jsx it's <strong> by default, which i never use
+  "string": {
+    "prefix": [
+      "str",
+      "stri",
+      "strin",
+      "string",
+    ],
+    "body": [
+      "string"
     ],
   },
 }
