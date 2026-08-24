@@ -1,3 +1,4 @@
+# m = must have, s = should have, c = could have, w = wont have
 app:
   sidebar:
   main:
@@ -22,7 +23,15 @@ main:
       maximize:
       close:
   panels:
-    args/recipe: # should have
+    # args/recipe: # should have
+    editor.process: # should have
+      item: # should have
+        to delete: # s
+        to delete: # should have
+        to reorder # could have
+      to clear: # should have
+      to copy/export: # could have
+      to import: # could have
     editor.input: tool, input
     editor.output: tool, input # output doesnt have to be a global state
     to resize: # could have
