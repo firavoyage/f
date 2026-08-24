@@ -3,9 +3,21 @@ import * as tools from 'action/tools';
 import { use_global } from "web/component/app";
 
 import { Editor } from "web/component/editor"
-import { Process } from "web/component/process";
+import { arg, Process } from "web/component/process";
 
 import { useMount } from "react-use";
+import { normalize_id } from 'lib/normalize_id';
+
+function args_to_options(args: arg[]) {
+  const options: any = {}
+  for (const arg of args) {
+    const key = arg.id ?? normalize_id(arg.name)
+    const value = arg.type == 'number'? +arg.value: arg.value
+
+    options[key] = value
+  }
+  return options
+}
 
 export function Main() {
   const [process, set_process] = use_global('process')
@@ -16,20 +28,21 @@ export function Main() {
     log(tools)
   })
 
-  // useEffect(() => {
-  //   if (has(tools, tool)) {
-  //     // @ts-expect-error tools must have tool
-  //     const result = handle(() => tools[tool](input))
-  //     if(is_error(result)){
-  //       // handle error
+  useEffect(() => {
+    let stdin = input
+    for (const item of process) {
+      if (has(tools, item.tool)) {
+        // @ts-expect-error 
+        const result = handle(() => tools[item.tool](stdin, args_to_options(item.args)))
+        if(is_error(result)){
+          continue
+        }
+        stdin = result
+      } 
+    }
 
-  //       // do nothing
-  //       return 
-  //     }
-
-  //     set_output(result)
-  //   } 
-  // }, [tool, input])
+    set_output(stdin)
+  }, [JSON.stringify(process), input])
 
   return <div className="main">
     <Editor type='process' value={process} set_value={set_process} should_show_textarea={false}>
