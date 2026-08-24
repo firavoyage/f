@@ -34,7 +34,7 @@ export function Main() {
 
   return <div className="main">
     <Editor type='process' value={process} set_value={set_process} should_show_textarea={false}>
-      <Process></Process>
+      <Process {...p({ process, set_process })}></Process>
     </Editor>
     <Editor type='input' value={input} set_value={set_input}></Editor>
     <Editor type='output' value={output} set_value={set_output}></Editor>

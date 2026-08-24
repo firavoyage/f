@@ -23,11 +23,13 @@ shortcuts:
   open shortcuts: ctrl+?
 navigation:
   path: ''
-  page: 
-    - home
-    - tool
-  tool:
-    - ''
-    - ...Object.keys(tools) # it could not work. i could make the converter smarter though.
+
+  # page: 
+  #   - home
+  #   - tool
+  # tool:
+  #   - ''
+  #   - keyof tools # it could not work. i could make the converter smarter though.
+  #   # - ...Object.keys(tools) # it could not work. i could make the converter smarter though.
 extensions:
   tools: {}
