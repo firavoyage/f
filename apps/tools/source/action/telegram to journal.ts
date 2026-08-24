@@ -290,7 +290,7 @@ function parse_telegram(telegram_text: string): telegram {
        */
       if (hour == 12 || hour == 24) {
         hour -= 12
-      } 
+      }
       minute = +info[5]
     }
 
@@ -486,7 +486,11 @@ function round_journal(journal: journal, targets: number[]) {
   return journal
 }
 
-export function merge_journal(original_text: string, addition_text: string) {
+type merge_journal = {
+  original_text: string
+}
+
+export function merge_journal(addition_text: string, { original_text }: merge_journal) {
   const original = parse_journal(original_text)
   const addition = parse_journal(addition_text)
 
@@ -679,7 +683,7 @@ function fix_telegram(journal_text: string) {
       item.hour -= 12
 
       item.content[0] = `${item.hour}` + item.content[0].slice(2)
-    } 
+    }
   }
 
   return serialize_journal(journal)

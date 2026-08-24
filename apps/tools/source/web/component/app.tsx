@@ -22,7 +22,7 @@ export const use_global = state({
   'navigation.tool': '',
 }, {
   persist: 'tools',
-  version: '0.1',
+  version: '0.2',
   should_sync_url: true,
   sync_url_options: {
     should_apply_all_given_params: true,
