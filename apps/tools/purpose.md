@@ -2458,4 +2458,22 @@ on lib/map, as i see "return void" as continue, i couldnt see it as "direct muta
 - return an array instead of an iterator
   - perf is trivial, composibility matters more
 
+24
+
+12 10 complete todo: create telegram to journal tool. <!-- sync memories -->
+
+skip the non paragraph lines, by markdown ast, even if they fit the regex <!-- could have -->
+
+no idea if needed. wouldnt cause problems seems.
+
+could have.
+
+12 10 pivot: create process panel to compose multiple tools
+
+process can be visual and code. even when it's visual, it has to be serialized on url param, and thus to be parsed later.
+
+i could serialize in object, e.g. yaml.
+
+- if i serialize in yaml, it's inflexible, and also a bit boilerplate, which isnt ideal. i could be able to just list (and autocomplete) the name a few tools
+
 
