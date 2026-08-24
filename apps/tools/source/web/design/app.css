@@ -1,5 +1,9 @@
 /* Base */
 
+:root, [date-theme="dark"]{
+  color-scheme: dark;
+}
+
 body {
   user-select: none;
 
