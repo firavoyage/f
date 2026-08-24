@@ -1,10 +1,14 @@
-import { useEffect, useState } from "react"
-import { Editor } from "./editor"
 import * as tools from 'action/tools';
-import { use_global } from "./app";
+
+import { use_global } from "web/component/app";
+
+import { Editor } from "web/component/editor"
+import { Process } from "web/component/process";
+
 import { useMount } from "react-use";
 
 export function Main() {
+  const [process, set_process] = use_global('process')
   const [input, set_input] = use_global('input')
   const [output, set_output] = use_global('output')
   const tool = use_global.get('navigation.tool')
@@ -29,6 +33,9 @@ export function Main() {
   }, [tool, input])
 
   return <div className="main">
+    <Editor type='process' value={process} set_value={set_process} should_show_textarea={false}>
+      <Process></Process>
+    </Editor>
     <Editor type='input' value={input} set_value={set_input}></Editor>
     <Editor type='output' value={output} set_value={set_output}></Editor>
   </div>

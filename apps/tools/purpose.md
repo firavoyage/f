@@ -2610,6 +2610,22 @@ set arg.value is wrapped inside set('process', ...). process, binded to url, is 
 
 btw, it sees "undefined" as void return. when you omit return or return directly, it must be undefined, not nil.
 
+---
+
+i would map tool id to tool args. (no args if omitted)
+
+list onclick, i would add tool to process instead of change the path
+
+---
+
+on url i would just serialize process directly. i may not sync it for now.
+
+---
+
+could have:
+
+- sync process to url in an elegant way (e.g. code)
+
 17 50 web/lib/state: support versioning. 18 00
 
 when mismatch, it will merge the cap of old and new into new.
@@ -2617,7 +2633,5 @@ when mismatch, it will merge the cap of old and new into new.
 could have: custom migration
 
 18 00 write component/process.
-
-
 
 
