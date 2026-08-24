@@ -2553,6 +2553,7 @@ add 12 for pm.
 
 if the result is 12 or 24, subtract 12.
 
+
 16 50 design process panel. elaborate ixd.
 
 it would be process. not tool/args/recipe.
@@ -2577,4 +2578,11 @@ moscow are familiar labels. use (text) icongraphy instead.
 # m = must have, s = should have, c = could have, w = wont have
 ```
 
+i may simply remove such comment when "done".
 
+---
+
+on code,
+
+- all tools must be `f(stdin, options?)`
+- 
