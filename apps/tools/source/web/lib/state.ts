@@ -96,7 +96,7 @@ export function state<T extends NonFunction>(initial: T, options: state<T> = {})
             data[key] = old_data[key]
           }
         }
-        
+
         sync_localstorage()
       } else {
         data = old_data
@@ -123,12 +123,11 @@ export function state<T extends NonFunction>(initial: T, options: state<T> = {})
       if (is_given(version)) {
         localStorage.setItem(`${persist}.version`, version)
       }
+      is_syncing_localstorage = false
 
       if (should_sync_localstorage_again) {
         should_sync_localstorage_again = false
         sync_localstorage()
-      } else {
-        is_syncing_localstorage = false
       }
     }, 0)
   }
@@ -225,7 +224,7 @@ export function state<T extends NonFunction>(initial: T, options: state<T> = {})
   }
 
   function set(new_value: any, path?: key) {
-  // function set(new_value: T | ((old_value: T) => T), path?: key) {
+    // function set(new_value: T | ((old_value: T) => T), path?: key) {
     if (is_given(path)) {
       if (typeof new_value == 'function') {
         // @ts-expect-error 
