@@ -89,7 +89,8 @@ ref:
   "deconstruct array const": {
     "prefix": "da",
     "body": [
-      "const [${1:name}, set_${1:name}] = use_${0:global}"
+      "const [${0}] = ${1}"
+      // "const [${1:name}, set_${1:name}] = use_${0:global}"
       // "const [${1:name}, ${2:set_}${1:name}] = use_${0:global}"
     ],
   },
@@ -594,6 +595,17 @@ ref:
     ],
     "body": [
       "export const use_${1:global} = state(${0})",
+    ],
+  },
+  "export const use global state": {
+    "prefix": [
+      "es",
+      "ecs",
+      "ug",
+      "ugs",
+    ],
+    "body": [
+      "const [${1:name}, set_${1:name}] = use_${0:global}"
     ],
   },
 }

@@ -5,8 +5,8 @@ import { use_global } from "./app";
 import { useMount } from "react-use";
 
 export function Main() {
-  const [input, set_input] = useState('')
-  const [output, set_output] = useState('')
+  const [input, set_input] = use_global('input')
+  const [output, set_output] = use_global('output')
   const tool = use_global.get('navigation.tool')
 
   useMount(()=>{

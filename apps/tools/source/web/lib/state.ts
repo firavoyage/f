@@ -91,14 +91,16 @@ export function state<T extends NonFunction>(initial: T, options: state<T> = {})
       const old_data = parse(old_data_text)
 
       if (is_given(version) && localStorage.getItem(`${persist}.version`) != version) {
-        for (const [key, ] of Object.entries(data)) {
+        for (const [key,] of Object.entries(data)) {
           if (has(old_data, key)) {
             data[key] = old_data[key]
-          } 
+          }
         }
+        
+        sync_localstorage()
       } else {
         data = old_data
-      } 
+      }
     }
   }
 
@@ -109,10 +111,6 @@ export function state<T extends NonFunction>(initial: T, options: state<T> = {})
       return
     }
 
-    if (is_given(version)) {
-      localStorage.setItem(`${persist}.version`, version)
-    } 
-
     if (is_syncing_localstorage) {
       should_sync_localstorage_again = true
       return
@@ -122,6 +120,9 @@ export function state<T extends NonFunction>(initial: T, options: state<T> = {})
 
     setTimeout(function () {
       localStorage.setItem(persist, stringify(data))
+      if (is_given(version)) {
+        localStorage.setItem(`${persist}.version`, version)
+      }
 
       if (should_sync_localstorage_again) {
         should_sync_localstorage_again = false
@@ -304,7 +305,7 @@ export function state<T extends NonFunction>(initial: T, options: state<T> = {})
       }
     } else {
       keys_to_sync.add(item)
-    } 
+    }
   }
 
   function omit(item: key): void
@@ -316,7 +317,7 @@ export function state<T extends NonFunction>(initial: T, options: state<T> = {})
       }
     } else {
       keys_to_sync.delete(item)
-    } 
+    }
   }
 
   function replace(item: key): void
@@ -333,8 +334,8 @@ export function state<T extends NonFunction>(initial: T, options: state<T> = {})
         keys_to_sync.delete(item)
       } else {
         keys_to_sync.add(item)
-      } 
-    } 
+      }
+    }
   }
 
   // expose these apis regardless, in case ts is not intelligent enough
