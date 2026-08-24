@@ -1,17 +1,16 @@
 import 'web/design/utilitarian/utilitarian.css'
 import 'web/design/app.css'
 
-import { useState, useEffect } from "react"
 import { use_bind } from 'web/lib/keyboard.use';
 import { use_sync_theme } from "web/lib/sync_theme.use";
 import { Main } from "web/component/main";
 import { use_window_active } from 'web/lib/window.use';
-import { Sidebar } from './sidebar';
+import { Sidebar } from 'web/component/sidebar';
 
-import { List } from './list';
+import { List } from 'web/component/list';
 import type { items } from 'web/component/list';
 
-const list: items = ["json to yaml", "yaml to json", "yaml", "json", "toml", "telegram to journal"]
+const items: items = ["json to yaml", "yaml to json", "yaml", "json", "toml", "telegram to journal"]
 
 export const use_global = state({
   is_sidebar_on: true,
@@ -85,7 +84,7 @@ export function App() {
 
     <div className="app">
       <Sidebar>
-        <List {...p({ items: list, focus, set_focus })}></List>
+        <List {...p({ items, focus, set_focus })}></List>
       </Sidebar>
       <Main></Main>
     </div>
