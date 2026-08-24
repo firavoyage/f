@@ -3061,7 +3061,7 @@ Tighten calls and notifications control.
 
 Personal bedtime reflections and thoughts. 
 
-First time doing so really. To speak to myself.
+First time doing so really. Speak to myself.
 
 17 20 Buy some tasogare coffee.
 
@@ -3672,8 +3672,6 @@ Hypes > utility?
 
 Use cases? Direction?
 
-24 50 To inquire and sync azhu to with?
-
 24 50 To curate animenz fav songs
 
 13 20 Visual design, responsive
@@ -3782,7 +3780,7 @@ Kids and family members laugh a lot.
 
 17 10 To fix journal minute rounding. 
 
-14 59 should round to 15 00 instead of 14 00.
+"14 59" should round to "15 00" instead of "14 00".
 
 If they opt to round 23 59 to 00 00 instead of 24 00, I could check. It would be a bit complex but generally easy to check if it's the 24 if it's the last day that month and if it's Dec.
 
