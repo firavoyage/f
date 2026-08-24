@@ -9,7 +9,7 @@ type SidebarProps = {
 export function Sidebar({ variant, children }: SidebarProps) {
   variant ??= 'push'
 
-  const [on, toggle] = to_toggle(use_global('is_sidebar_on'))
+  const [on, toggle] = to_toggle(use_global('appearance.layout.sidebar.is_visible'))
 
   use_bind('ctrl+b', toggle)
 

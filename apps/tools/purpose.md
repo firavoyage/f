@@ -2610,5 +2610,12 @@ set arg.value is wrapped inside set('process', ...). process, binded to url, is 
 
 btw, it sees "undefined" as void return. when you omit return or return directly, it must be undefined, not nil.
 
+17 50 web/lib/state: support versioning. 18 00
+
+when mismatch, it will merge the cap of old and new into new.
+
+could have: custom migration
+
+18 00 write component/process.
 
 
