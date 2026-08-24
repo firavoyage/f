@@ -2,45 +2,46 @@
 app:
   sidebar:
   main:
-  command palette: # should have
+  command palette: # s
   shortcuts:
   settings:
   about:
 sidebar:
-  alt bar: # could have
+  alt bar: # c
     search: 
-      search input: # wont have, call command palette instead
+      search input: # w, call command palette instead
     app name: Tools # title case
     breadcrumb:
   list: items (headings and items), tool
-  to resize: # could have, when hovered
+  to resize: # c, when hovered
 main:
-  title bar: # could have
+  title bar: # c
     sidebar toggle:
     title: # title case
-    window actions: # wont have (in browser)
+    window actions: # w (in browser)
       minify:
       maximize:
       close:
   panels:
-    # args/recipe: # should have
-    editor.process: # should have
-      item: # should have
+    # args/recipe: # s
+    editor.process: # m
+      item:
+        args:
         to delete: # s
-        to delete: # should have
-        to reorder # could have
-      to clear: # should have
-      to copy/export: # could have
-      to import: # could have
+        to reorder # c
+      to clear: # s
+      to edit code: # c
+      to copy/export: # c
+      to import: # c
     editor.input: tool, input
     editor.output: tool, input # output doesnt have to be a global state
-    to resize: # could have
+    to resize: # c
 editor: 
   tab bar:
     title:
-    copy: # could have
-      to turn it off: # should have
-    args: # could have
+    copy: # c
+      to turn it off: # s
+    args: # c
   textarea:
-    code editor: # could have
+    code editor: # c
 
