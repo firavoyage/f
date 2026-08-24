@@ -43,5 +43,3 @@ export function calculate_gcd(numbers: number[]): number {
   //   scale_factor: multiplier
   // };
 }
-
-log(1)

@@ -1,4 +1,6 @@
-# all typescript builtin types
+# (d) all typescript builtin types
+
+<!-- google ai mode seems to have some issues on copying. it tries to preprocess (w flaws) the copied content. -->
 
 TypeScript provides several categories of built-in types, ranging from standard JavaScript primitives to unique types used exclusively for type-checking and code structure. \[[1](https://medium.com/nerdjacking/mastering-typescript-data-types-the-complete-guide-with-performance-hacks-30097eb3367a)]
 
@@ -263,6 +265,283 @@ If you are seeing an implicit typing issue, tell me **which JavaScript API** (li
 
 Show all
 
+
+# all typescript builtin types <!-- 24 aug -->
+
+## all typescript builtin types
+
+**TypeScript built-in types** fall into several core categories: <mark><strong>primitives</strong><span> </span>(inherited from JavaScript),<span> </span><strong>special types</strong><span> </span>specific to TypeScript's type system,<span> </span><strong>structural types</strong><span> </span>for data collections, and<span> </span><strong>built-in utility types</strong><span> </span>used to manipulate existing types</mark>. [link](https://www.typescriptlang.org/docs/handbook/utility-types.html)
+
+***
+
+### Primitives
+
+These are the foundational building blocks for data, always declared in lowercase format. [link](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html)
+
+- `string`: Textual data like `"Hello World"`.
+- `number`: All numeric values, including integers and floating-point numbers.
+- `boolean`: Logicals containing only `true` or `false`.
+- `bigint`: Whole numbers larger than 2⁵³ - 1.
+- `symbol`: Unique identifiers created via the `Symbol()` function.
+- `null`: Intentional absence of any object value.
+- `undefined`: Uninitialized variables or missing values. [link](https://mimo.org/glossary/typescript/data-types)
+
+***
+
+### Special Type System Keywords
+
+TypeScript introduces unique keywords to handle unknown variables, edge cases, and type safety constraints. [link](https://www.w3schools.com/typescript/typescript%5Fspecial%5Ftypes.php)
+
+- `any`: Disables type-checking completely, allowing any mutations.
+- `unknown`: A type-safe counterpart to `any`; you must check its type before performing operations on it.
+- `void`: Used mostly as a function return type to signify it returns nothing.
+- `never`: Represents values that should never occur (e.g., a function that throws errors or loops infinitely).
+- `object`: Represents any non-primitive type (anything that isn't a string, number, etc.). [link](https://www.typescriptlang.org/docs/handbook/basic-types.html)
+
+***
+
+### Structural & Advanced Types
+
+These types group primitive data into collections or specific formations. [link](https://mimo.org/glossary/typescript/data-types)
+
+- `Array` (or `T[]`): A list of elements all sharing the same type.
+- Tuple: A fixed-length array where elements have predefined types at specific indexes.
+- `enum`: A collection of named numeric or string constants. [link](https://mimo.org/glossary/typescript/data-types)
+
+***
+
+### Global Object & Platform Types
+
+Because TypeScript bundles JavaScript global declarations (`lib.d.ts`), all native JavaScript constructors double as built-in types: [link](https://www.typescriptlang.org/docs/handbook/2/type-declarations.html)
+
+- **Standard Global Objects**: `Date`, `RegExp`, `Error`, `Map`, `Set`, `Promise`.
+- **DOM Elements** (if browser environment is enabled): `Document`, `Window`, `HTMLElement`, `Event`. [link](https://mimo.org/glossary/typescript/data-types)
+
+***
+
+### Core Utility Types
+
+TypeScript ships with built-in global generic types to transform existing shapes: [link](https://www.typescriptlang.org/docs/handbook/utility-types.html)
+
+| Utility Type     | Action                                               |
+| ---------------- | ---------------------------------------------------- |
+| `Partial<T>`     | Makes all properties in `T` optional.                |
+| `Required<T>`    | Makes all properties in `T` mandatory.               |
+| `Readonly<T>`    | Marks all properties in `T` as immutable.            |
+| `Record<K, T>`   | Creates an object type with keys `K` and values `T`. |
+| `Pick<T, K>`     | Extracts specified keys `K` from type `T`.           |
+| `Omit<T, K>`     | Removes specified keys `K` from type `T`.            |
+| `Exclude<T, U>`  | Excludes types from `T` that are assignable to `U`.  |
+| `Extract<T, U>`  | Extracts types from `T` that are assignable to `U`.  |
+| `NonNullable<T>` | Drops `null` and `undefined` from type `T`.          |
+| `Parameters<F>`  | Extracts parameter types of function `F` as a tuple. |
+| `ReturnType<F>`  | Extracts the return type of function `F`.            |
+| `Awaited<T>`     | Unwraps a `Promise` type to get its resolved value.  |
+
+***
+
+If you are writing a specific piece of code, let me know:
+
+- What **task** or **functionality** you are building
+- If you need a **custom interface shape**
+- Whether you are dealing with **asynchronous data** or **API responses**
+
+I can write out the exact structural setup or utility type you need.
+
+23 sites
+
+- [link](https://www.typescriptlang.org/docs/handbook/utility-types.html)\
+  Documentation - Utility Types - TypeScript\
+  Jul 7, 2026 — Utility Types. TypeScript provides several utility types to facilitate common · Awaited. Released: 4.5. This type is meant to mode...\
+  TypeScript
+- [link](https://www.typescriptlang.org/docs/handbook/basic-types.html)\
+  Handbook - Basic Types - TypeScript\
+  Aug 13, 2026 — About Number , String , Boolean , Symbol and Object. It can be tempting to think that the types Number , String , Boolean , Symbol...\
+  TypeScript
+- [link](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html)\
+  TypeScript: Documentation - Everyday Types\
+  Aug 14, 2026 — The type names String , Number , and Boolean (starting with capital letters) are legal, but refer to some special built-in types t...\
+  TypeScript
+
+Show all
+
+## all typescript builtin utility types
+
+**TypeScript built-in utility types** are global generic tools used to manipulate and transform existing types without rewriting them from scratch. [link](https://www.typescriptlang.org/docs/handbook/utility-types.html)
+
+Here is the complete catalog of all built-in utility types officially provided by [TypeScript's Utility Types Documentation](https://www.typescriptlang.org/docs/handbook/utility-types.html):
+
+### Object Modification Utilities
+
+These types modify the modifiers (`readonly` or `?`) of properties inside an object shape. [link](https://www.w3schools.com/typescript/typescript%5Futility%5Ftypes.php)
+
+- `Partial<T>`: Makes all properties of object `T` optional.
+- `Required<T>`: Makes all properties of object `T` mandatory (reverses `Partial`).
+- `Readonly<T>`: Marks all properties of object `T` as immutable; they cannot be reassigned at compile-time. [link](https://www.typescriptlang.org/docs/handbook/utility-types.html)
+
+***
+
+### Object Reshaping Utilities
+
+These types filter, pick, map, or remove fields from an existing object type. [link](https://www.syncfusion.com/blogs/post/master-typescript-utility-types)
+
+- `Pick<T, K>`: Constructs a type by extracting only the specified property keys `K` from object `T`.
+- `Omit<T, K>`: Constructs a type by removing the specified property keys `K` from object `T`.
+- `Record<K, T>`: Constructs an object type mapping property keys `K` to a value type `T`. [link](https://www.typescriptlang.org/docs/handbook/utility-types.html)
+
+***
+
+### Union Manipulation Utilities
+
+These types iterate over, exclude, or extract values from a set of union types (e.g., `string | number`). [link](https://blog.webdevsimplified.com/2025-10/typescript-utility-types/)
+
+- `Exclude<T, U>`: Excludes all union members from `T` that are assignable to `U`.
+- `Extract<T, U>`: Extracts all union members from `T` that are assignable to `U`.
+- `NonNullable<T>`: Excludes `null` and `undefined` from the union type `T`. [link](https://www.typescriptlang.org/docs/handbook/utility-types.html)
+
+***
+
+### Function Metadata Utilities
+
+These types unpack, read, or inspect structural signatures of functions. [link](https://blog.logrocket.com/using-built-in-utility-types-typescript/)
+
+- `Parameters<F>`: Extracts the parameter types of a function `F` into a tuple type.
+- `ReturnType<F>`: Extracts the return type of a function `F`.
+- `ThisParameterType<F>`: Extracts the type of the `this` parameter from a function, or `unknown` if it doesn't exist.
+- `OmitThisParameter<F>`: Removes the `this` parameter from a function type. [link](https://www.typescriptlang.org/docs/handbook/utility-types.html)
+
+***
+
+### Class & OOP Utilities
+
+These types operate on class constructor functions and instances. [link](https://blog.webdevsimplified.com/2025-10/typescript-utility-types/)
+
+- `ConstructorParameters<C>`: Extracts the parameter types of a class constructor function into a tuple.
+- `InstanceType<C>`: Extracts the instance type returned by a class constructor function.
+- `ThisType<T>`: A marker utility that doesn't return a type. Instead, it injects a specific type for the `this` context inside an object literal (`noImplicitThis` flag required). [link](https://blog.logrocket.com/using-built-in-utility-types-typescript/)
+
+***
+
+### Asynchronous & Promise Utilities
+
+These handle unpacking dynamic network operations or delayed code blocks. [link](https://dev.to/rajatkaush1k/12-must-have-typescript-utility-types-with-uses-and-examples-213j)
+
+- `Awaited<T>`: Recursively unwraps `Promise` chains to return the actual resolved value type (mimicking `await`). [link](https://www.typescriptlang.org/docs/handbook/utility-types.html)
+
+***
+
+### Intrinsic String Manipulation Types
+
+These are special performance-optimized utilities handled directly by the compiler to transform string literal values. [link](https://www.typescriptlang.org/docs/handbook/2/template-literal-types.html)
+
+- `Uppercase<S>`: Converts a string literal type to uppercase (`"get"` becomes `"GET"`).
+- `Lowercase<S>`: Converts a string literal type to lowercase (`"GET"` becomes `"get"`).
+- `Capitalize<S>`: Capitalizes the very first character of a string literal (`"id"` becomes `"Id"`).
+- `Uncapitalize<S>`: Converts the very first character of a string literal to lowercase (`"User"` becomes `"user"`). [link](https://dev.to/43081j/string-manipulation-types-in-typescript-4-x-556e)
+
+***
+
+If you are looking to clean up redundant types, share:
+
+- A code snippet of the **original type** or **interface**
+- The **desired outcome** (e.g., "I want to remove two properties" or "I want to make everything read-only")
+
+I can demonstrate exactly how to chain or apply these utilities to your code.
+
+- [link](https://www.w3schools.com/typescript/typescript%5Futility%5Ftypes.php)\
+  W3Schools\
+  TypeScript Utility Types - W3Schools\
+  This chapter covers the most popular utility types. \* Partial. Partial changes all the properties in an object to be optional. Exa...
+- [link](https://blog.logrocket.com/using-built-in-utility-types-typescript/)\
+  LogRocket Blog\
+  Using built-in utility types in TypeScript - LogRocket Blog\
+  May 29, 2023 — Using built-in utility types in TypeScript \* What is a type function? Why should you use built-in utility types? When should you a...
+- [link](https://www.typescriptlang.org/docs/handbook/2/template-literal-types.html)\
+  TypeScript\
+  Documentation - Template Literal Types - TypeScript\
+  Aug 16, 2026 — Intrinsic String Manipulation Types. To help with string manipulation, TypeScript includes a set of types which can be used in str...
+
+Show all
+
+## all typescript builtin js types
+
+**TypeScript's built-in JavaScript types** are the types provided by the compiler out-of-the-box (`lib.d.ts`) to match **native JavaScript primitives, standard global objects, and runtime constructs**. [link](https://www.typescriptlang.org/docs/handbook/2/type-declarations.html)
+
+***
+
+### Native JavaScript Primitives
+
+These represent raw values at the lowest level of JavaScript. In TypeScript, you must use **lowercase names** for these types (using uppercase names like `String` refers to the JavaScript wrapper object constructor, which is considered a bad practice for type annotation). [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Data%5Fstructures)
+
+- `string`: Textual data (e.g., `"hello"`).
+- `number`: All numeric values, both integers and floating-point floats (e.g., `42`, `3.14`).
+- `boolean`: Logical values (`true` and `false`).
+- `bigint`: Arbitrarily large integers (e.g., `100n`).
+- `symbol`: Unique identifiers generated via `Symbol()`.
+- `null`: The intentional absence of any value.
+- `undefined`: Uninitialized variables or missing properties. [link](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html)
+
+***
+
+### Core Structural & Data Types
+
+These are built-in collections and structures native to JavaScript's standard runtime:
+
+- `Array<T>` (or `T[]`): Indexed lists of values.
+- `Object`: Represents any JavaScript object value (though the lowercase `object` type keyword is usually preferred in TypeScript to mean "any non-primitive").
+- `Function`: Denotes any standard JavaScript function structure.
+- `arguments`: The built-in local array-like variable found inside non-arrow functions.
+
+***
+
+### Standard JavaScript Global Objects
+
+TypeScript bundles full type definitions for every globally accessible constructor object in the standard [ECMAScript specification](https://tc39.es/ecma262/):
+
+- **Dates & Patterns**: `Date`, `RegExp`.
+- **Collections**: `Map<K, V>`, `Set<T>`, `WeakMap<K, V>`, `WeakSet<T>`.
+- **Errors**: `Error`, `TypeError`, `ReferenceError`, `SyntaxError`, `RangeError`.
+- **Asynchronous**: `Promise<T>`.
+- **Metaprogramming**: `Proxy`, `Reflect`.
+- **Structured Data**: `JSON`, `Math`.
+- **Binary Data Buffers**: `ArrayBuffer`, `SharedArrayBuffer`, `DataView`.
+- **TypedArrays**: `Int8Array`, `Uint8Array`, `Uint8ClampedArray`, `Int16Array`, `Uint16Array`, `Int32Array`, `Uint32Array`, `Float32Array`, `Float64Array`, `BigInt64Array`, `BigUint64Array`. [link](https://www.typescriptlang.org/docs/handbook/2/type-declarations.html)
+
+***
+
+### Browser DOM & Web API Types
+
+If your project includes the `"DOM"` library in your `tsconfig.json`, TypeScript provides thousands of global types mapping directly to the browser environment: [link](https://oida.dev/typescript-augmenting-global-lib-dom/)
+
+- **Global Context**: `Window`, `Document`, `Navigator`, `Location`, `History`.
+- **Nodes & Elements**: `Node`, `Element`, `HTMLElement`, `HTMLDivElement`, `HTMLInputElement`, `SVGElement`.
+- **Events & Interaction**: `Event`, `MouseEvent`, `KeyboardEvent`, `TouchEvent`, `CustomEvent`.
+- **Networking**: `Fetch`, `Request`, `Response`, `Headers`, `XMLHttpRequest`, `WebSocket`.
+- **Storage**: `Storage` (for `localStorage` / `sessionStorage`), `IDBDatabase` (IndexedDB). [link](https://basarat.gitbook.io/typescript/type-system/lib.d.ts)
+
+***
+
+If you are debugging a runtime type error, let me know:
+
+- What **JavaScript object or Web API** you are trying to use
+- The exact **error message** you are getting from the compiler
+
+I can show you how to properly cast or configure your environment settings to fix it!
+
+- [link](https://www.typescriptlang.org/docs/handbook/basic-types.html)\
+  TypeScript\
+  Handbook - Basic Types - TypeScript\
+  Aug 13, 2026 — Boolean. The most basic datatype is the simple true/false value, which JavaScript and TypeScript call a boolean value. ts. let isD...
+- [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Data%5Fstructures)\
+  MDN Web Docs\
+  JavaScript data types and data structures - MDN Web Docs\
+  Jul 8, 2025 — Primitive values. All types except Object define immutable values represented directly at the lowest level of the language. · Null...
+- [link](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html)\
+  TypeScript\
+  Documentation - Everyday Types - TypeScript\
+  Aug 14, 2026 — The primitives: string , number , and boolean. JavaScript has three very commonly used primitives: string , number , and boolean .
+
+Show all
 
 # all browser types in ts
 
