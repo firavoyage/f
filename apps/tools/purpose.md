@@ -2553,4 +2553,28 @@ add 12 for pm.
 
 if the result is 12 or 24, subtract 12.
 
+16 50 design process panel. elaborate ixd.
+
+it would be process. not tool/args/recipe.
+
+i may (though unlikely) build abstraction on top, like, arg for single tool, hide for single tool wo args, or render some args on input or output title bar. process, nevertheless, would be the ssot.
+
+---
+
+~~it would be a process component. no need to reuse~~
+
+it would be editor.process. i would accept "should show textarea" param.
+
+---
+
+on url, i would deprecate path. no page. no home. no tool. just one process param. you may omit when nil.
+
+---
+
+moscow are familiar labels. use (text) icongraphy instead.
+
+```yaml
+# m = must have, s = should have, c = could have, w = wont have
+```
+
 
