@@ -2644,6 +2644,15 @@ flag finished immediately after syncing.
 
 in ts you can always receive less args on a callback fn.
 
-20 40 tg to journal: fix `sort`.
+20 40 tg to journal: fix `sort`. 21 10
+
+js sort requires
+
+- identity
+- symmetry
+- transitivity
+
+---
+
 
 
