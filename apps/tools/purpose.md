@@ -2507,4 +2507,6 @@ everything would be in sync.
 
 in the future i may fight the tools, so it would rebuild whenever anything changes. the current page would refresh.
 
+13 40 
+
 
