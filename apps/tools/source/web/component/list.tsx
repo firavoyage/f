@@ -2,7 +2,7 @@ type item = string | { name: string, id: string }
 
 export type items = item[] | { [key: string]: items }
 
-function normalize_item(item: item) {
+export function normalize_item(item: item) {
   if (typeof item == 'string') {
     return { name: item, id: item.toLowerCase().replaceAll(' ', '_') }
   } else {

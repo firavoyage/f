@@ -5,7 +5,7 @@ type process = {
   set_process: any
 }
 
-type item = {
+export type item = {
   tool: string
   args: arg[] // = []
   // args?: arg[]

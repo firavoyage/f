@@ -2634,4 +2634,6 @@ could have: custom migration
 
 18 00 write component/process.
 
+`object` and `{}` are different in ts. always prefer the latter.
+
 

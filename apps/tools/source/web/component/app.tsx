@@ -9,7 +9,9 @@ import { Sidebar } from 'web/component/sidebar';
 
 import { List } from 'web/component/list';
 
-import { items } from 'action/tools';
+import { items, tool_to_args } from 'action/tools';
+
+import type { item } from 'web/component/process'
 
 export const use_global = state({
   'input': '',
@@ -18,8 +20,8 @@ export const use_global = state({
   'appearance.theme': '',
   'appearance.layout.sidebar.is_visible': true,
   'navigation.path': '',
-  'navigation.page': '',
-  'navigation.tool': '',
+  // 'navigation.page': '',
+  // 'navigation.tool': '',
 }, {
   persist: 'tools',
   version: '0.2',
@@ -33,25 +35,25 @@ export const use_global = state({
     },
     path_mapping: 'navigation.path'
   },
-  init(state) {
-    const path = state['navigation.path']
-    if (path == 'main') {
-      state['navigation.page'] = path
-    } else {
-      state['navigation.page'] = 'tool'
+  // init(state) {
+  //   const path = state['navigation.path']
+  //   if (path == 'main') {
+  //     state['navigation.page'] = path
+  //   } else {
+  //     state['navigation.page'] = 'tool'
 
-      // todo: correct tool
-      state['navigation.tool'] = path
-    }
-  },
-  change(state) {
-    state['navigation.path'] = state['navigation.page'] == 'main' ?
-      'main' : state['navigation.tool']
-  }
+  //     // todo: correct tool
+  //     state['navigation.tool'] = path
+  //   }
+  // },
+  // change(state) {
+  //   state['navigation.path'] = state['navigation.page'] == 'main' ?
+  //     'main' : state['navigation.tool']
+  // }
 })
 
 export function App() {
-  const [focus, set_focus] = use_global('navigation.tool')
+  // const [focus, set_focus] = use_global('navigation.tool')
 
   // useEffect(() => {
   //   log('app mounts')
@@ -87,7 +89,16 @@ export function App() {
 
     <div className="app">
       <Sidebar>
-        <List {...p({ items, focus, set_focus })}></List>
+        <List {...p({
+          items, set_focus(tool: string) {
+            use_global.set((process: item[]) => {
+              process.push({
+                tool,
+                args: tool_to_args[tool] ?? []
+              })
+            }, 'process')
+          }
+        })}></List>
       </Sidebar>
       <Main></Main>
     </div>
