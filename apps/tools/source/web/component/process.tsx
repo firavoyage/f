@@ -25,10 +25,6 @@ type type = 'number' | 'string'
 export function Process(props: process) {
   const { process, set_process } = props
 
-  useEffect(() => {
-    log(process)
-  })
-
   return <div className="process">
     {
       map(process, (item, index) => (
