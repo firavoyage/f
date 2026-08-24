@@ -12,6 +12,8 @@ import { List } from 'web/component/list';
 import { items } from 'action/tools';
 
 export const use_global = state({
+  'input': '',
+  'output': '',
   'appearance.theme': '',
   'appearance.layout.sidebar.is_visible': true,
   'navigation.path': '',
