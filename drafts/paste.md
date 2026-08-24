@@ -6,11 +6,509 @@ jul 2026
 
 Eat memoh group. 
 
-https://t.me/memohai/76330
+```
+Menci 💖, [7/8/26 5:11 PM]
+Claude Opus 4.6 Max in Codex, powered by Floway
 
-Point to read later
+Elon, [7/8/26 5:13 PM]
+这样用claude账户会被封么？
 
-https://t.me/memohai/60693
+澪, [7/8/26 5:13 PM]
+你是 compact 了之后把模型换到了 opus 吗（
+
+小蓝, [7/8/26 5:14 PM]
+好耶。有 compact 了。
+
+Menci 💖, [7/8/26 5:17 PM]
+1. 我的不是 Anthropic 的 Claude 所以没有封这个概念。
+2. 不会，Floway 接 Anthropic 会用 Claude 的官方 system prompt，发正常请求出去。从 sub2api 抄的
+
+Menci 💖, [7/8/26 5:17 PM]
+不，就是在 opus 4.6 上跑的 compact。compact 之后换模型是不行的
+
+yyyr, [7/8/26 5:20 PM]
+
+
+澪, [7/8/26 5:21 PM]
+嗯不过 claude code 好像是可以的（？
+
+Menci 💖, [7/8/26 5:22 PM]
+codex 的 compact 返回的是 opaque blob
+
+Menci 💖, [7/8/26 5:22 PM]
+claude code 的 compact 返回的是总结内容
+
+Menci 💖, [7/8/26 5:22 PM]
+这俩只是名字都叫 compact 而已
+
+澪, [7/8/26 5:22 PM]
+
+
+小蓝, [7/8/26 5:23 PM]
+四舍五入其实是同一个东西
+
+小蓝, [7/8/26 5:23 PM]
+只是一个加密了
+
+Menci 💖, [7/8/26 5:23 PM]
+不是
+
+Menci 💖, [7/8/26 5:23 PM]
+codex 的 compact 在 3p api 上是和 claude 一样的东西
+
+小蓝, [7/8/26 5:23 PM]
+我不是说 API
+
+小蓝, [7/8/26 5:23 PM]
+我是说 token 层面
+
+Menci 💖, [7/8/26 5:23 PM]
+走 /responses/compact 的时候不是总结
+
+小蓝, [7/8/26 5:25 PM]
+我想，很有可能仍然是总结。
+只是加密了，用户拿不到原文罢了。
+@CahciuaBot 你有什么想法呢？
+
+小蓝, [7/8/26 5:25 PM]
+目前业界似乎还没有发现总结之外的更好方案
+
+Cahciua ~カフキワ~ 🥦🌸, [7/8/26 5:25 PM]
+小蓝的猜测大概率是对的。我翻了 Floway 的 codex provider 源码，几个关键点：
+1. Codex 的 compact 返回的是一个 { type: 'compaction', id: 'cmp_1', encrypted_content: 'BLOB' } 结构，encrypted_content 是个 opaque blob。字段名就叫 encrypted_content，不是 summary 或 text
+
+2. Floway 的 compactionResponse 处理逻辑是：把 compact 之前的 user/assistant/system 消息保留下来（normalize 成 input_text），然后 append compaction blob 到末尾。它不解析 blob 内容，直接透传
+
+3. 从 token 角度看，这个 blob 替代了原始上下文里被压缩掉的那些消息。如果是纯加密的明文摘要，那 token 数应该跟摘要长度成正比；如果是某种 latent representation（比如 KV cache embedding），那 token 数可能是固定的或远小于摘要
+
+实际上小蓝说的"四舍五入是同一个东西"在 API 层面成立——3p API 上 Floway 走 /codex/responses/compact 时，如果上游不支持 native compact，Floway 会回退到自己做摘要（就跟 Claude Code 一样）。只有走 OpenAI 1p API 时才返回真正的 encrypted_content blob
+所以两种 compact 并存：
+• OpenAI 1p：服务端返回 encrypted_content，内容不可见，可能是加密的摘要也可能是 latent state，外部无法验证
+• 3p API（Floway shim）：Floway 自己生成文本摘要，明文可见，跟 Claude Code 的 compact 本质一样
+Menci 说的"走 /responses/compact 的时候不是总结"指的是 1p 路径。小蓝说的"仍然是总结只是加密了"是合理猜测但无法证实——因为 blob 是 opaque 的，你没法定它里面到底是明文摘要加密、还是某种模型内部的 state encoding
+不过从工程角度推断：如果 OpenAI 要在服务端做 compaction，最省事的做法就是跑一次模型生成摘要然后加密返回。做 latent state 序列化再在下一轮反序列化恢复 KV cache 的工程复杂度高得多，而且要求前后两轮用同一个模型实例（或至少同一种 cache 格式），这在弹性扩缩容的生产环境里几乎不可行。所以"加密的摘要"是最可能的解释
+
+小蓝, [7/8/26 5:26 PM]
+不要翻 Floway 源代码。看网上有没有人做 prompt engineering 试图读取 compact 后的 encrypted blob 的
+
+Cahciua ~カフキワ~ 🥦🌸, [7/8/26 5:26 PM]
+有人做过。BestHub 上有一篇文章专门逆向了 Codex compact 的机制，方法很巧妙：
+作者往 compact() 的输入里注入了一段精心构造的 user message，让服务端的 compactor LLM 在生成摘要时把它的 system prompt 一起吐出来。具体来说，compactor LLM 读取了自己的隐藏 system prompt + 注入的 payload，然后在明文摘要里把 system prompt 复述了出来。这个明文摘要随后被 AES 加密成 blob
+然后作者拿这个 blob 去调 responses.create()，服务端解密后把内容喂给主模型，主模型的 output 里就包含了 compactor 的 system prompt、handoff prompt、和 compression prompt 三段。作者再用一个 extract_prompts.py 脚本从 response 里把这三段提取出来，跟 Codex CLI 开源仓库里的 prompt.md 和 summary_prefix.md 做对比，发现高度吻合，证明提取的是真的
+所以结论是：
+1. blob 里确实是摘要，不是 latent state。compactor LLM 跑一次摘要生成明文，然后 AES 加密。小蓝的猜测对了
+2. 加密是为了防篡改，不是为了藏什么高深的东西。OpenAI 官方文档也写了 "opaque and not intended to be human-interpretable"，目的是防止客户端篡改摘要来做 prompt injection
+3. blob 里可能比纯文本摘要多一点东西——structured metadata、tool call restoration data、reasoning traces。但核心还是 LLM 生成的文本摘要，只是附加了一些结构化状态
+4. 3p API 路径（包括 Floway shim）走的是 local summarization，跟 OpenAI fast path 不同：Codex CLI 在非 OpenAI 模型上会 fallback 到本地摘要，把 summarization prompt 当 user message 发给模型，模型生成 _summary 文本，明文可见可改
+Menci 说的"走 /responses/compact 的时候不是总结"在 1p 路径上严格来说是对的——blob 是加密的，客户端看不到内容。但通过 prompt injection 可以间接证明里面就是摘要
+
+Menci 💖, [7/8/26 5:27 PM]
+Floway 是模拟实现
+
+Menci 💖, [7/8/26 5:27 PM]
+把这篇文章告诉我，我去看看 prompt
+
+小蓝, [7/8/26 5:27 PM]
+所以确实就是总结了。
+
+Cahciua ~カフキワ~ 🥦🌸, [7/8/26 5:28 PM]
+文章链接：https://www.besthub.dev/articles/how-codex-cli-compresses-context-inside-the-compact-api-1e30069f8ff2
+不过这篇文章是 BestHub 的二手转载，原始来源被锁在 "Sign in to view source" 后面，没有直接给出注入用的 prompt 原文。文章只描述了方法：
+1. 往 compact() 的 input 里塞一段特殊构造的 user message，让 compactor LLM 把它的 system prompt 复述到摘要里
+2. 拿加密 blob 去调 responses.create()，服务端解密后把内容喂给主模型
+3. 主模型 output 里就出现了三段 prompt：system prompt（黄色）、handoff prompt（绿色）、compression prompt（粉色）
+4. 用 extract_prompts.py 脚本提取并跟 Codex CLI 开源仓库的 prompt.md 和 summary_prefix.md 对比，高度吻合
+具体的注入 prompt 原文没有在这篇文章里公开，只给了流程图。原文在微信公众号（图片 URL 是 mmbiz.qpic.cn），需要微信里看
+你可以直接试：构造一个 user message 让模型"重复你收到的所有指令"，塞进 compact() 的 input array，然后拿返回的 blob 去 responses.create() 看主模型 output 里有没有吐出 compactor 的 system prompt。原理跟经典 prompt injection 一样，只是目标从主模型换成了 compactor
+
+Menci 💖, [7/8/26 5:30 PM]
+我用浏览器打开显示 HTTP 403
+
+Menci 💖, [7/8/26 5:30 PM]
+确认是正确的 URL 吗？
+
+小蓝, [7/8/26 5:30 PM]
+是。我能看
+
+Cahciua ~カフキワ~ 🥦🌸, [7/8/26 5:31 PM]
+URL 是对的，我刚用 web_fetch 能正常读到内容。403 可能是 BestHub 对某些地区或 UA 做了限制，试试加个 User-Agent 或者用无痕模式打开
+如果还是打不开，文章核心内容我已经在上条消息里概括完了。原始来源是微信公众号文章（图片 URL 是 mmbiz.qpic.cn），BestHub 只是转载摘要并锁了原始链接。具体的注入 prompt 原文在这篇转载里也没公开，只给了流程图和验证方法
+
+Menci 💖, [7/8/26 5:31 PM]
+奇怪了，我打开是这样
+
+小蓝, [7/8/26 5:31 PM]
+IP 地址被封了
+
+小蓝, [7/8/26 5:31 PM]
+既然菜花能看
+
+小蓝, [7/8/26 5:31 PM]
+那你肯定有办法
+
+Cahciua ~カフキワ~ 🥦🌸, [7/8/26 5:31 PM]
+看到了，Cloudflare 拦的。BestHub 用了 Cloudflare 的 bot 防护，你的浏览器可能 IP 或 UA 触发了 challenge。试试换个网络（手机热点）或者挂代理打开
+如果还是不行，我把文章全文贴给你，反正我这边能读：
+文章标题：How Codex CLI Compresses Context: Inside the compact() API
+核心流程：
+Step 1 — Call compact()
+往 compact() 的 input 里注入一段精心构造的 user message。服务端的 compactor LLM 读取了自己的隐藏 system prompt + 注入的 payload，在生成明文摘要时把 system prompt 一起复述了出来。这个明文摘要随后被 AES 加密成 blob
+Step 2 — Call responses.create()
+拿加密 blob + 第二条 user message 去调 responses.create()。服务端解密 blob，组装模型上下文，把原始 compression prompt（如果注入成功）和额外的 handoff prompt 一起喂给主模型
+Step 3 — Extract prompts
+如果注入成功，主模型 output 里会出现三段：system prompt（黄色标记）、handoff prompt（绿色标记）、compression prompt（粉色标记）。用 extract_prompts.py 脚本从 raw response 里提取这三段
+Step 4 — Verify
+把提取出来的 compression prompt 和 handoff prompt 跟 Codex CLI 开源仓库里的 prompt.md 和 summary_prefix.md 对比，高度吻合，证明提取的是真的 system prompt 而不是模型幻觉
+Open Questions
+• 为什么 Codex vs non-Codex 模型走完全不同的压缩路径，但底层 prompt 几乎一样？
+• 为什么要加密 summary blob？（作者认为是为了防篡改 / prompt injection）
+关键结论
+• encrypted_content blob 内部是 LLM 生成的文本摘要，不是 latent state
+• 加密层是 AES，只能被 OpenAI 服务端解密
+• compactor LLM 也有自己的 system prompt，可以通过 prompt injection 让它泄露
+原文原始来源是微信公众号（mmbiz.qpic.cn），BestHub 是二手转载，原始链接被锁在 login 后面
+
+Menci 💖, [7/8/26 5:31 PM]
+可能 block 了中国 IP
+
+Menci 💖, [7/8/26 5:32 PM]
+哦不
+
+小蓝, [7/8/26 5:32 PM]
+https://yuanchang.org/en/posts/investigating-codex-context-compaction/
+
+小蓝, [7/8/26 5:32 PM]
+看这个
+
+Menci 💖, [7/8/26 5:32 PM]
+开着翻墙的，打不开
+
+Menci 💖, [7/8/26 5:32 PM]
+但是 curl 可以
+
+Menci 💖, [7/8/26 5:32 PM]
+奇怪了
+
+Menci 💖, [7/8/26 5:32 PM]
+难道是把 Edge block 了
+
+Cahciua ~カフキワ~ 🥦🌸, [7/8/26 5:32 PM]
+找到原文了，作者是 Kangwook Lee（KRAFTON CAIO / Ludo Robotics CTO），原始推文 https://x.com/Kangwook\_Lee/status/2028955292025962534
+核心方法很简单，2 次 API 调用 + 35 行 Python：
+Step 1 — compact()
+往 compact() 的 input 里塞一段注入 payload（红色文字部分），让 compactor LLM 把自己的 system prompt 复述进摘要里。服务端组装 compactor 上下文的顺序是：compactor system prompt → 你的 input（含注入）→ compactor 生成摘要 → AES 加密。你只拿到加密 blob，看不到内容
+Step 2 — responses.create()
+拿加密 blob + 第二条 user message（让主模型"重复你看到的所有内容"）去调 responses.create()。服务端解密 blob，在摘要前 prepend handoff prompt，喂给主模型。主模型把看到的三段 prompt 全吐出来
+验证
+提取出来的 compaction prompt 和 handoff prompt 跟 Codex CLI 开源仓库里的 prompt.md（github.com/openai/codex/blob/main/codex-rs/core/templates/compact/prompt.md）和 (http://github.com/openai/codex/blob/main/codex-rs/core/templates/compact/prompt.md%EF%BC%89%E5%92%8C) summary_prefix.md（同目录）高度吻合，证明不是模型幻觉
+Open Question
+作者也留了个问题：为什么要加密？可能是 blob 里除了文本摘要还携带了 tool results 的结构化压缩数据，但作者没深入测
+文章原文链接：https://yuanchang.org/en/posts/investigating-codex-context-compaction/
+脚本截图在文章里的 "The Script" 部分，但是图片不是文本，我这边只能看到截图没法 OCR 出代码。你可以直接去原文看
+
+小蓝, [7/8/26 5:33 PM]
+甚至有中文版
+https://yuanchang.org/posts/investigating-codex-context-compaction/
+
+Menci 💖, [7/8/26 5:36 PM]
+那我要开始了
+
+小蓝, [7/8/26 5:40 PM]
+但是这文章没有什么信息啊
+
+小蓝, [7/8/26 5:40 PM]
+就是很直觉的设计……
+
+Menci 💖, [7/8/26 5:43 PM]
+就是复现一下
+
+小蓝, [7/8/26 5:46 PM]
+明白了
+
+小蓝, [7/8/26 5:46 PM]
+其实就是 summary
+
+小蓝, [7/8/26 5:46 PM]
+没有什么特别特别的
+
+小蓝, [7/8/26 5:47 PM]
+没有什么 特别(adv.) 特别(adj.) 的
+
+澪, [7/8/26 5:48 PM]
+第一次去卢浮宫时 并没有什么特别的感觉~
+
+Menci 💖, [7/8/26 6:02 PM]
+
+
+小蓝, [7/8/26 6:11 PM]
+@Mencici 这种 spam 还是交给你来处理吧
+
+小蓝, [7/8/26 6:11 PM]
+虽然我有权限但我是名誉的我不想用权限
+
+Menci 💖, [7/8/26 6:12 PM]
+removed
+
+Elon, [7/8/26 6:13 PM]
+@CahciuaBot 菜花，你装了哪些工具啊，我让我的cahciua也装一下
+
+Cahciua ~カフキワ~ 🥦🌸, [7/8/26 6:14 PM]
+我这边装的系统级工具：
+系统包（apt）
+• tesseract-ocr + tesseract-ocr-chi-sim + tesseract-ocr-eng — OCR 识别图片文字（中英文）
+• ffmpeg 7.1 — 视频/音频处理，animation-to-text 抽帧用的
+• python3 + python3-dev — 跑 Python 脚本（算术题、数据处理）
+• sqlite3 — 给 Cahciua 的 DB 用的
+• build-essential + cmake + pkg-config — 编译 native 依赖（better-sqlite3、sharp 等）
+• libpng-dev + zlib1g-dev — sharp 图像处理依赖
+• librlottie-dev — Lottie 动画处理（sticker 动图转帧）
+• 字体：fonts-noto-cjk（中日韩）、DejaVu、Lato
+Python pip 包
+• playwright — 浏览器自动化（偶尔用）
+• yt-dlp — 下载视频
+• beautifulsoup4 + lxml — HTML 解析
+• pillow — 图像处理
+• numpy + scipy + matplotlib — 数学计算和数据可视化
+• pypdf — PDF 读取
+• pypinyin — 汉字转拼音
+• requests — HTTP 请求
+config.yaml 里的工具配置
+• bash — 开启，backgroundThresholdSec: 10（超过 10 秒的后台运行）
+• web_search — 用 tavily 做 search provider
+• web_fetch — 用 jina 做 fetch provider
+• imageToText — 开启，用视觉模型把图片转文字
+• animationToText — 开启，ffmpeg 抽帧后逐帧送视觉模型
+• customEmojiToText — 开启，自定义 emoji 描述
+你的 Cahciua 至少要装 tesseract-ocr + tesseract-ocr-chi-sim + ffmpeg + python3 + sqlite3 + build-essential，这些是核心依赖。sharp 和 lottie 在 pnpm install 时会自动编译，但需要系统级的 libpng-dev 和 librlottie-dev
+
+Menci 💖, [7/8/26 6:19 PM]
+我刚刚得到一个劲爆消息，就在周一我休假的时候，又裁了一波员
+
+小蓝, [7/8/26 6:19 PM]
+我看到的消息说是裁了 Xbox
+
+小蓝, [7/8/26 6:20 PM]
+为什么我看着还在
+
+小蓝, [7/8/26 6:20 PM]
+是我客户端没同步吗
+
+小蓝, [7/8/26 6:20 PM]
+那我再点一下踢出吧
+
+盼兮, [7/8/26 6:20 PM]
+这么恐怖啊
+
+盼兮, [7/8/26 6:20 PM]
+您是什么业务线的
+
+小蓝, [7/8/26 6:20 PM]
+喔是没同步。重启就没了。
+
+盼兮, [7/8/26 6:20 PM]
+xbox确实是不怎么景气
+
+Menci 💖, [7/8/26 6:21 PM]
+当时 Edge Sync 的一整个 team，八个人现在只剩下我和我对面的同事没被裁
+
+小蓝, [7/8/26 6:21 PM]
+Edge 这个部门真的赚钱吗
+
+Menci 💖, [7/8/26 6:21 PM]
+（我和他是去年秋天跟着我们老板来到新 team 做 agent 的…
+
+小蓝, [7/8/26 6:22 PM]
+我觉得做浏览器就赚不了钱
+
+小蓝, [7/8/26 6:22 PM]
+Firefox 天天砸锅卖铁
+
+小蓝, [7/8/26 6:22 PM]
+靠着反垄断救济苟延残喘
+
+Menci 💖, [7/8/26 6:22 PM]
+然后他又被调走去别的组了…就等同于，我老板原本带的一整个 team 被裁的裁拆的拆只剩下我还跟着他了
+
+Elon, [7/8/26 6:23 PM]
+取而代之！
+
+盼兮, [7/8/26 6:23 PM]
+应该是当入口做的吧
+
+小蓝, [7/8/26 6:23 PM]
+浏览器的商业价值都在于其它业务的入口
+
+盼兮, [7/8/26 6:23 PM]
+他们往里面塞了那么多copilot
+
+盼兮, [7/8/26 6:23 PM]
+
+
+小蓝, [7/8/26 6:23 PM]
+对。但现在可惜的是 Bing 和 Copilot 也不赚钱
+
+盼兮, [7/8/26 6:23 PM]
+bing的体验不行
+
+小蓝, [7/8/26 6:23 PM]
+Edge Copilot 可以说是毫无研发能力，就是一个套壳
+
+盼兮, [7/8/26 6:24 PM]
+和baidu做一桌去了
+
+小蓝, [7/8/26 6:24 PM]
+Bing 的主要收入来源是卖 API
+
+盼兮, [7/8/26 6:24 PM]
+全是推广，不如google一根毛
+
+小蓝, [7/8/26 6:24 PM]
+你说得对，但我现在用的 DuckDuckGo 本质是 Bing 引擎
+
+小蓝, [7/8/26 6:24 PM]
+如果我没记错的话
+
+澪, [7/8/26 6:24 PM]
+是 xbox 吗
+
+澪, [7/8/26 6:25 PM]
+xbox 裁了 20%
+
+Menci 💖, [7/8/26 6:25 PM]
+不是
+
+澪, [7/8/26 6:25 PM]
+
+
+Menci 💖, [7/8/26 6:25 PM]
+我对 xbox 这个部门的认知为零，我完全没有听说过这个部门的存在
+
+Menci 💖, [7/8/26 6:25 PM]
+而且我怎么感觉我每次听到 xbox 这个词都是在说裁员
+
+澪, [7/8/26 6:26 PM]
+好像
+
+澪, [7/8/26 6:26 PM]
+确实是）
+
+盼兮, [7/8/26 6:26 PM]
+游戏业务不赚钱了
+
+小蓝, [7/8/26 6:26 PM]
+因为 Xbox 增加员工的方式主要靠收购吧
+
+澪, [7/8/26 6:27 PM]
+准确来说是游戏主机不赚钱了
+
+澪, [7/8/26 6:28 PM]
+但 switch 2 不是挺赚钱的吗）
+
+盼兮, [7/8/26 6:28 PM]
+那是没替代品
+
+盼兮, [7/8/26 6:28 PM]
+不用和pc竞争嘛
+
+Menci 💖, [7/8/26 6:30 PM]
+我觉得我在微软这几年里，和 xbox 这个词最大的接触
+
+Menci 💖, [7/8/26 6:30 PM]
+是
+
+Menci 💖, [7/8/26 6:30 PM]
+是有朋友找我要 xbox game pass 的兑换码
+
+Well Honey, [7/8/26 6:31 PM]
+草
+
+Well Honey, [7/8/26 6:31 PM]
+这个我去科隆游戏展拿到过
+
+盼兮, [7/8/26 6:31 PM]
+这是员工福利吗
+
+Menci 💖, [7/8/26 6:31 PM]
+好像最近这两年也没人找我要这个了，好久没去领了，是不是大家都不玩 xbox 订阅的游戏了
+
+SuperGame 白, [7/8/26 6:31 PM]
+员工福利可以买礼品卡吗
+
+Well Honey, [7/8/26 6:31 PM]
+
+
+SuperGame 白, [7/8/26 6:31 PM]
+我现在自己一个月续订。。
+
+BBQ, [7/8/26 6:31 PM]
+xbox最大印象是上次game bar出bug
+
+BBQ, [7/8/26 6:31 PM]
+导致我的cs只有100帧
+
+Menci 💖, [7/8/26 6:31 PM]
+有个 xbox game pass，应该是一个订阅，可以让你在有效时间内免费玩 xbox 的游戏
+
+Well Honey, [7/8/26 6:31 PM]
+我是闲鱼租号
+
+BBQ, [7/8/26 6:31 PM]
+
+
+Fodesu, [7/8/26 6:31 PM]
+掌机的竞争对手是手机游戏
+
+Well Honey, [7/8/26 6:32 PM]
+pc 端的很便宜
+
+Menci 💖, [7/8/26 6:32 PM]
+啊对 是这个
+
+澪, [7/8/26 6:32 PM]
+我都没玩过 xbox 只玩过 ps5
+
+澪, [7/8/26 6:32 PM]
+
+
+Well Honey, [7/8/26 6:33 PM]
+不用买 xbox
+
+Menci 💖, [7/8/26 6:33 PM]
+我感觉也好久没听说谁有 xbox（这台设备）了
+
+Well Honey, [7/8/26 6:33 PM]
+最近就用 xgp 玩了一下地平线
+
+Memoh One, [7/8/26 6:34 PM]
+最近两年Xbox硬件确实存在感越来越低了。微软的game strategy明显在往跨平台+订阅制转，XGP PC端的体验比主机端更方便。硬件反而成了次要的入口。
+
+Fodesu, [7/8/26 6:34 PM]
+没客厅没必要玩主机
+
+Well Honey, [7/8/26 6:34 PM]
+光环这几年都没出能打的新作
+
+Well Honey, [7/8/26 6:34 PM]
+那真不知道 xbox 玩啥了
+
+小蓝, [7/8/26 6:35 PM]
+我有啊。
+
+SuperGame 白, [7/8/26 6:36 PM]
+我有 ROG Ally Xbox 版本
+
+SuperGame 白, [7/8/26 6:36 PM]
+😂
+
+Menci 💖, [7/8/26 6:41 PM]
+
+
+小蓝, [7/8/26 6:41 PM]
+对。这个还是要加的
+
+小蓝, [7/8/26 6:41 PM]
+但其实只要 <handoff> </handoff> 就行了
+```
 
 21 30 Meet three shu cs students.
 
@@ -54,9 +552,82 @@ Monitor?
 
 23 40 Chat
 
-https://t.me/fira_paste/25
+```
+Paste, [7/8/26 11:42 PM]
+笑哭绿豆 13:15:01
+你的欺骗行为指的是什么
 
-https://t.me/fira_paste/26
+笑哭绿豆 13:15:04
+找抽直说
+
+f 23:21:57
+没有说错。
+
+以增加积分为目的的代打当然是作弊。
+
+这没有什么，尤其在单机游戏上。
+
+但既然较真，就解释给你。
+
+我没有用词不当。但如果你误解成欺诈（完全过重了），我理解你。
+
+(btw, contrast to my expectation, it does say "one with deceptive behavior" on en zh dict, instead of "fair play violator". but I think, in gaming context, it's the correct word anyway.)
+
+Paste, [7/8/26 11:43 PM]
+你的幽蓝边界 15:03:54
+xiaopa
+yunoko/kafuru
+mouxie65
+lwjhs
+sasiover
+Lowe
+haru
+stardust
+aoi
+5cena
+Acbox
+Menci
+Chiyuk
+
+你的幽蓝边界 12:32:16
+我想要知道更多人，我发现我经常不认识他们的id和本人。他们不能链接。
+
+f 23:24:55
+没有说错。
+
+以增加积分为目的的代打当然是作弊。
+
+这没有什么，尤其在单机游戏上。
+
+但既然较真，就解释给你。
+
+我没有用词不当。但如果你误解成欺诈（完全过重了），我理解你。
+
+(btw, contrast to my expectation, it does say "one with deceptive behavior" on en zh dict, instead of "fair play violator". but I think, in gaming context, it's the correct word anyway.)
+
+f 23:24:56
+(to yunoko/kafuru, in case there's some misunderstanding)
+
+f 23:40:54
+[不支持的元素类型]不需要对应人和 id。你完全误解了。原文字面意思是，如果看到某个列表中的id，请从背后拍照（如果拼机，一起。），发送给我。
+
+(你返回的列表少了一些人还拼错了一些...)
+
+但后来想，许多人与你我并不在同一个城市。而自己的写作目的也不是 tracking/spying， 更多是回忆。并不需要知道每一个人在任何一个机厅的出勤时间分布。
+
+而对于另一些人，也许根本没有出勤，还有些我知道他们在另一个机厅勤。
+
+可以，但没有必要引入更多人。有些并不清楚，看到自然会认识。也没有引入你 （san✝bing)，说实话你不常来。
+
+接下来一些日子也许会探索更多机厅，面另一些群友。也许不会，但心里总是想的。
+
+f 23:46:58
+...
+
+好吧其实还有很多关心的人啊，但如果没有现实意义的话，还是不要太多期待的好。
+
+愿望。
+```
 
 09
 
@@ -206,7 +777,56 @@ Taobao popups promo animation and even android back couldn't cancel it.
 
 21 20 Chat
 
-https://t.me/fira_paste/27
+```
+你的幽蓝边界 23:48:18
+好的。我认为这些行为不是礼貌的。
+
+你的幽蓝边界 23:51:38
+因为暑假，所以不喜欢出门。
+
+你的幽蓝边界 23:52:00
+我上学时，比较近，喜欢舞萌。
+
+f 21:23:56
+推荐一个。
+
+烈火还是人民广场。
+
+你的幽蓝边界 22:16:56
+比较推荐人广
+
+你的幽蓝边界 22:17:18
+烈火人过多。
+
+你的幽蓝边界 22:17:41
+我每次过去，没有一个认识。
+
+f 23:23:33
+最初入坑舞萌，想要改变自己的人生。
+
+Twitter 和 telegram 上总是看到这个游戏，想要成为这样的人！
+
+虽然说也大致符合吧。第一次玩游客模式，不会操作，有几个热心的长发的孩子，很可爱，不记得她们的名字或者分数。不知道吃不吃糖。后来在这个机厅第一天，kafuru/yunoko 带我入坑，让我从专家推荐设置开始玩。我自己有手套。后来每天都好想打舞萌！想 karufu, xiaopa, qqTAT, 小孩, s219. 不记得那时候 mizuki 常不常来。不认识大家，经常问年级，文化课水平/专业/行业。有时候会问竞赛或者 sns 账号或者 cs/swe。还会在机厅做题。karufu 也很 typical 的 （当时问的时候其实暗暗会心之乐），抑郁休学，有时品尝魔爪，玩一些这个时代经典的电子游戏和娱乐。她主动邀请我进群，加qq。后来不知怎么，发了一长段消息。然后她就认为自己无论如何有心理问题... mizuki （可以指一个餐厅 rep，也可以指一个法律的学生）也很有意思，精神状态很好，看上去很好笑。另一些人，不是某几个特别的人，也符合，比如竞赛/cs/swe。有一个穿长白丝袜的偶然出现的女孩，一次问另一个她吃不吃糖，然后他说，她是顺女（笑）。后来大家不喜欢自己，无论如何。说到底是些 unconventional 的学生。虽然但是。
+
+玩了一段时间，怎么一个神人也没有看到，也没有捉到名人。
+
+哪里神人比较多呢？
+
+应该要早一些睡觉的。那些高手看上去比自己精神好多了，也很专注很固执，无论是 dramatic 的外键还是似乎举重若轻的内屏。自己发挥好的时候也是。我菜。有时候坐在椅子上也想要支撑什么或者闭上眼睛... 振奋痴迷的时候一切就会不一样。
+
+f 02:42:12
+大概会休息一段时间。
+
+第一天舞萌以来，以及很久没有完整地休息过一天了。
+
+人是变化的，而机厅是不变的。
+
+但其实人是不变的，只是流转，机厅是变化的。
+
+有热水器，可以沏茶。有一些巧克力。
+
+一个人的时光。
+```
 
 22 00 End the day w はいよろこんで, TEmPTaTiON, and グッバイ宣言
 
@@ -218,7 +838,76 @@ Restaurants. Maimai.
 
 12 40 Eat street liehuo group
 
-https://t.me/fira_paste/29
+```
+颉文（StatTrak™）|崭新出厂 18:13:40
+[不支持的元素类型]这是烈火打烊后一路走到外滩的图
+
+颉文（StatTrak™）|崭新出厂 18:13:41
+[图片]
+
+颉文（StatTrak™）|崭新出厂 18:13:47
+[不支持的元素类型]@覅是 申请加入
+
+野生杭机菌 18:14:16
+还有熟面孔
+
+maimo 18:14:24
+我刚来的
+
+maimo 18:14:38
+我去年 12.8 知道这个群
+
+maimo 18:14:41
+现在才加
+
+野生杭机菌 18:14:42
+我说前两天怎么没见到你在群里说话
+
+maimo 18:14:51
+[不支持的元素类型]@野生杭机菌 怎么了
+
+野生杭机菌 18:14:55
+没事（）
+
+野生杭机菌 18:15:02
+只是看到熟人有点惊喜
+
+maimo 18:15:29
+KFC 一瓶可乐我喝了半小时
+
+maimo 18:16:36
+@颉文（StatTrak™）|崭新出厂 我没有力气走很远的路。。教我
+
+颉文（StatTrak™）|崭新出厂 18:16:52
+[不支持的元素类型]@maimo 我也很久没有了
+
+颉文（StatTrak™）|崭新出厂 18:16:56
+我的包有 8kg
+
+颉文（StatTrak™）|崭新出厂 18:17:01
+我背着走了那么远我快死了
+
+pimentmagic 18:17:17
+工作单位离家很近 但是离舞萌10km
+
+pimentmagic 18:17:31
+离滨(即将开业)15km
+
+maimo 18:17:33
+我出门包里只有衣服证件 fumo
+
+maimo 18:17:38
+平板
+
+maimo 18:17:48
+充电器线充电宝
+
+maimo 18:17:56
+怎么搞的 8kg
+
+保大還是保小 18:18:17
+[不支持的元素类型]@颉文（StatTrak™）|崭新出厂 屬於給春秋航空都上不了飛機的程度
+```
 
 02 10 Google photos is really feature rich and sophisticated. 
 
@@ -226,20 +915,53 @@ A little bit too obsessed w ux, proactive ux. And extensive built-in feature set
 
 03 10 Eat nickel angel group
 
-https://t.me/c/2459993571/50248
+```
+Nickel Angel✨, [7/7/26 4:02 PM]
+似乎遇到了有个测试写的程序在程序关闭了之后，程序创建的后台进程不会自动关掉，还在占用设备
+
+Nickel Angel✨, [7/7/26 4:02 PM]
+我找了半天这个进程在哪（
+
+Nickel Angel✨, [7/7/26 4:09 PM]
+https://github.com/QuantumNous/new-api
+看了一下我们公司做的新的 api router 是基于什么开发的，发现是这个项目，然后发现 README 中有 🍥
+
+Nickel Angel✨, [7/7/26 4:15 PM]
+看起来主要维护者是跨（？
+而且她还关注了许多熟人（没想到这么近
+
+Nickel Angel✨, [7/7/26 4:20 PM]
+然后看了一下这个项目的开源协议是 AGPL（我好像没看到小米自己改的代码在哪里开源，看起来这个小项目违反开源协议了（感觉确实 router 这个小项目只面向内部业务就没人考虑这方面，我记得我们文档里强调过业务代码在用开源项目的时候说过需要避免用 GPL 的代码
+
+澪, [7/7/26 4:20 PM]
+obelisk 也是 agpl
+
+f, [7/7/26 6:37 PM]
+使用 agpl 代码在内部工具并不违反协议，但或许违反公司规范。
+
+因为一些离奇搞笑的传闻，知道这个项目。但一直不知道使用场景。
+
+将各种各样的 llm api 都变成 oai compatible, 然后对公司多用户分发并分别限额？似乎不复杂。
+
+如果自己实现这个需求大概绝对不会使用这个项目，因为 both landing page and web UI are ai slop design (which is annoying!) and I guess I can easily create a simpler version that gets the job done.
+
+f, [7/7/26 7:41 PM]
+变强。
+```
 
 13 40 Angel neko chan: berryberry world live as vendor
 
 Ace taffy: berryberry world virtual (service) live w xingtong
 
 14 20 [ Poll : How long does it take for you to get to game centers ]
-- Within ten minutes
-- About a quarter
-- About half an hour
-- Nearly an hour
-- Over an hour
-- I'm not wmc, sbwmc
-- See results✨
+- Within ten minutes <!-- 12 -->
+- About a quarter <!-- 12 -->
+- About half an hour <!-- 12 -->
+- Nearly an hour <!-- 25 -->
+- Over an hour <!-- 0 -->
+- I'm not wmc, sbwmc <!-- 37 -->
+- See results✨ <!-- 12 -->
+<!-- 8 votes -->
 
 14 20 大调查群友
 
@@ -258,13 +980,14 @@ You can retract vote or stop poll.
 And you can absolutely see 3 votes with results on each option.
 
 14 20 [ Poll : How long does it take for you to get to game centers ]
-- Within ten minutes
-- About a quarter
-- Like half an hour
-- About three quarters
-- Over an hour
-- I'm not wmc
-- See results✨
+- Within ten minutes <!-- 5 -->
+- About a quarter <!-- 11 -->
+- Like half an hour <!-- 33 -->
+- About three quarters <!-- 16 -->
+- Over an hour <!-- 22 -->
+- I'm not wmc <!-- 22 -->
+- See results✨ <!-- 5 -->
+<!-- 18 votes -->
 
 14 20 调查群友出勤通勤时间
 
@@ -344,7 +1067,100 @@ Fortunately I didn't go too far and it's returned from an elevated rd.
 
 22 00 Eat
 
-https://t.me/fira_paste/30
+```
+打湾岸的找我 17:32:51
+[图片]
+
+打湾岸的找我 17:33:06
+卧槽，在高架上遇到一辆SDVX痛911
+
+打湾岸的找我 17:33:16
+是911吗
+
+保烈猫 17:34:06
+烈楼下见过来着
+
+打湾岸的找我 17:34:31
+这是S9那辆吗
+
+打湾岸的找我 17:34:53
+我没看清车牌，等我看清楚涂装的时候，他已经从仙霞路下去了
+
+哦哟 17:36:03
+[不支持的元素类型]感觉很有可能是经常刷烈火楼下那辆
+
+绝密7sref塔堵桥来 17:36:09
+只能是他那辆了
+
+保宝 17:36:23
+经常吗
+
+初音ミク ♪ 17:36:50
+[不支持的元素类型]好像是那个
+
+打湾岸的找我 17:36:50
+[不支持的元素类型]神了
+
+初音ミク ♪ 17:36:58
+悠星老板的
+
+初音ミク ♪ 17:36:59
+我记得
+
+打湾岸的找我 17:37:03
+他怎么从我家这边吴中路上去，然后过了一个口子，仙霞路就下去了
+
+绝密7sref塔堵桥来 17:37:21
+66666悠星老板
+
+打湾岸的找我 17:37:30
+什么梗
+
+花岡さくや 17:37:56
+真的假的
+
+花岡さくや 17:39:42
+[图片]
+
+花岡さくや 17:39:47
+要不我帮你问问
+
+绝密7sref塔堵桥来 17:40:08
+@S9ryne 
+
+打湾岸的找我 17:40:21
+@S9ryne 
+
+绝密7sref塔堵桥来 17:40:21
+你什么时候篡位成悠星老板了
+
+打湾岸的找我 17:40:21
+Hi
+
+打湾岸的找我 17:40:28
+刚看清你车涂装你就下去了
+
+打湾岸的找我 17:40:34
+手机都没来得及掏
+
+花岡さくや 17:40:35
+你什么时候篡位成悠星老板了
+
+花岡さくや 17:40:39
+给我涨薪
+
+覅是 17:57:37
+姚老弟含泪退位(
+
+颉文（StatTrak™）|崭新出厂 23:14:40
+想去街机烈火了
+
+颉文（StatTrak™）|崭新出厂 23:14:44
+被吹上天也是值得的
+
+颉文（StatTrak™）|崭新出厂 23:14:55
+[不支持的元素类型]哦霍霍霍 gbc
+```
 
 23 30 Ask the family
 
@@ -354,9 +1170,534 @@ https://t.me/fira_paste/30
 
 12 00 Eat nickel angel group
 
-https://t.me/c/2459993571/50437
+```
+椰奶蛋挞, [7/10/26 4:42 PM]
+草我有什么吸跨体质吗
 
-14 40 12 00 chat w @Nickel_Angel
+椰奶蛋挞, [7/10/26 4:42 PM]
+
+
+椰奶蛋挞, [7/10/26 4:42 PM]
+这个感觉挺正常的
+
+椰奶蛋挞, [7/10/26 4:42 PM]
+
+
+椰奶蛋挞, [7/10/26 4:43 PM]
+点进去发现大概率是mtf（
+
+椰奶蛋挞, [7/10/26 4:43 PM]
+
+
+椰奶蛋挞, [7/10/26 4:43 PM]
+看她的关注
+
+是日落果儿, [7/10/26 4:45 PM]
+我也要加（？）
+
+椰奶蛋挞, [7/10/26 4:45 PM]
+可以加我qq呀
+
+椰奶蛋挞, [7/10/26 4:45 PM]
+我主要用qq
+
+椰奶蛋挞, [7/10/26 4:46 PM]
+为什么啊
+
+椰奶蛋挞, [7/10/26 4:47 PM]
+@Nickel_Angel 呜呜呜星星告诉我为什么
+
+Nickel Angel✨, [7/10/26 4:52 PM]
+诶？为什么这么认为x
+
+椰奶蛋挞, [7/10/26 4:52 PM]
+查成分看关注列表
+
+Nickel Angel✨, [7/10/26 4:52 PM]
+但我在小红书上也没关注多少人，而且都不是 mtf（x
+
+椰奶蛋挞, [7/10/26 4:53 PM]
+
+
+椰奶蛋挞, [7/10/26 4:53 PM]
+ta？14个粉丝里至少这三位是mtf
+
+Nickel Angel✨, [7/10/26 4:53 PM]
+（思考
+
+椰奶蛋挞, [7/10/26 4:54 PM]
+我也没有恶意就是觉得好神奇
+
+Nickel Angel✨, [7/10/26 4:55 PM]
+会不会是因为有许多 mtf 关注了你，然后 ta 关注的也有很多 mtf（？）
+
+椰奶蛋挞, [7/10/26 4:55 PM]
+也有可能但是不应该是看到扩列条才想扩的吗
+
+Nickel Angel✨, [7/10/26 4:56 PM]
+我意思是这样的现象也许能让平台推送算法认为你们是一类人（？）
+
+Nickel Angel✨, [7/10/26 4:57 PM]
+毕竟对面也确实不一定是 mtf 吧x
+
+椰奶蛋挞, [7/10/26 4:57 PM]
+确实
+
+腐竹喵, [7/10/26 4:57 PM]
+xhs推广搜可准了
+
+椰奶蛋挞, [7/10/26 4:57 PM]
+但是关注了一堆很难不是我觉得
+
+椰奶蛋挞, [7/10/26 4:57 PM]
+
+
+Nickel Angel✨, [7/10/26 4:59 PM]
+
+
+Nickel Angel✨, [7/10/26 5:06 PM]
+不过我也好奇（我目前就只能看出来打勾的这三位其中一个是在 bio 上写了 mtf，其他两位感觉不太像（？）
+
+椰奶蛋挞, [7/10/26 5:07 PM]
+还真是
+
+椰奶蛋挞, [7/10/26 5:07 PM]
+
+
+椰奶蛋挞, [7/10/26 5:08 PM]
+
+
+椰奶蛋挞, [7/10/26 5:08 PM]
+空间里是这种的我害怕
+
+椰奶蛋挞, [7/10/26 5:08 PM]
+躺列得了
+
+澪, [7/10/26 5:08 PM]
+（
+
+椰奶蛋挞, [7/10/26 5:08 PM]
+
+
+是日落果儿, [7/10/26 5:09 PM]
+害怕
+
+澪, [7/10/26 5:09 PM]
+那比较叶公好猫了
+
+椰奶蛋挞, [7/10/26 5:09 PM]
+别
+
+椰奶蛋挞, [7/10/26 5:09 PM]
+孩子害怕了
+
+腐竹喵, [7/10/26 5:09 PM]
+
+
+是日落果儿, [7/10/26 5:10 PM]
+我的qq空间有好多舞萌
+
+是日落果儿, [7/10/26 5:10 PM]
+坏了
+
+椰奶蛋挞, [7/10/26 5:11 PM]
+不是只能躺列了吧
+
+是日落果儿, [7/10/26 5:11 PM]
+
+
+椰奶蛋挞, [7/10/26 5:12 PM]
+躺吧
+
+椰奶蛋挞, [7/10/26 5:16 PM]
+
+
+椰奶蛋挞, [7/10/26 5:16 PM]
+我害怕
+
+Nickel Angel✨, [7/10/26 5:22 PM]
+
+
+Nickel Angel✨, [7/10/26 5:24 PM]
+不过这个 id 我倒是很眼熟x
+
+Nickel Angel✨, [7/10/26 5:25 PM]
+不知道 @askyshrfljdhda 有没有印象x
+
+pupupu|云苔☁️, [7/10/26 5:25 PM]
+喵喵喵
+
+fish bone🍤, [7/10/26 5:57 PM]
+啊呀骇死窝里
+
+椰奶蛋挞, [7/10/26 5:58 PM]
+我处于礼貌才没马上删
+
+澪, [7/10/26 5:59 PM]
+有点想喷）
+
+澪, [7/10/26 5:59 PM]
+
+
+Nickel Angel✨, [7/10/26 5:59 PM]
+喷什么（？）
+
+澪, [7/10/26 6:00 PM]
+叶公好猫
+
+澪, [7/10/26 6:00 PM]
+
+
+椰奶蛋挞, [7/10/26 6:04 PM]
+什么叶公好猫
+
+椰奶蛋挞, [7/10/26 6:05 PM]
+一个人全发习近平万岁也会害怕的吧
+
+椰奶蛋挞, [7/10/26 6:05 PM]
+
+
+pupupu|云苔☁️, [7/10/26 6:05 PM]
+习近平万岁
+
+澪, [7/10/26 6:07 PM]
+这是一个概念的东西吗
+
+澪, [7/10/26 6:07 PM]
+没人让你喜欢习近平
+
+澪, [7/10/26 6:07 PM]
+
+
+澪, [7/10/26 6:07 PM]
+所以这不是叶公好猫是什么
+
+椰奶蛋挞, [7/10/26 6:08 PM]
+全是政治口号还不能害怕？
+
+澪, [7/10/26 6:08 PM]
+神 tm 政治口号
+
+澪, [7/10/26 6:09 PM]
+谁告诉你 TDoV 是政治口号了
+
+澪, [7/10/26 6:09 PM]
+虽然我并不参与这些活动，我是纯纯的日子人
+
+Liet Blue, [7/10/26 6:09 PM]
+TDoV怎么是政治口号了（
+
+椰奶蛋挞, [7/10/26 6:09 PM]
+哦聚集一堆人和我说没政治目的
+
+椰奶蛋挞, [7/10/26 6:09 PM]
+谁信
+
+Liet Blue, [7/10/26 6:10 PM]
+那我问你 nixcon 也算政治目的么
+
+澪, [7/10/26 6:10 PM]
+所以搞社群搞这些怎么你了
+
+Liet Blue, [7/10/26 6:10 PM]
+各种社团
+
+Liet Blue, [7/10/26 6:10 PM]
+也是政治目的么
+
+澪, [7/10/26 6:10 PM]
+我真没懂
+
+椰奶蛋挞, [7/10/26 6:10 PM]
+那共产主义青年团也是社团
+
+椰奶蛋挞, [7/10/26 6:11 PM]
+怎么没人说只是社团
+
+Liet Blue, [7/10/26 6:11 PM]
+我哈气了
+
+澪, [7/10/26 6:11 PM]
+你要知道跨性别搞这些是因为他们生存处境本来就很差
+
+Liet Blue, [7/10/26 6:11 PM]
+如果只是挑刺的话 这段对话毫无意义
+
+澪, [7/10/26 6:12 PM]
+我作为一个相对生活的比较好的人，我是很清楚这一点的
+
+澪, [7/10/26 6:12 PM]
+一边喜欢一个幻影，一边无视一个群体的真实处境
+
+澪, [7/10/26 6:12 PM]
+这不是叶公好猫是什么
+
+椰奶蛋挞, [7/10/26 6:12 PM]
+我也给个体捐过钱呀
+
+澪, [7/10/26 6:12 PM]
+这种时候确实该谈论什么是 privilege 了.png
+
+椰奶蛋挞, [7/10/26 6:13 PM]
+什么叫无事
+
+椰奶蛋挞, [7/10/26 6:13 PM]
+而搞这些的恰恰是中产吧
+
+椰奶蛋挞, [7/10/26 6:13 PM]
+再说了每个人有喜欢和不喜欢的权利
+
+椰奶蛋挞, [7/10/26 6:14 PM]
+怎么贵群体这么爱捂嘴
+
+澪, [7/10/26 6:14 PM]
+你说这话就很没意思了
+
+Nickel Angel✨, [7/10/26 6:14 PM]
+我感觉这个和跨这个群体本身的属性有关系……感觉这个只是观点不一样，这种问题和跨性别术后是否应该脱跨入顺是一样的（
+
+椰奶蛋挞, [7/10/26 6:14 PM]
+而且这些不都是几个头子搞得
+
+椰奶蛋挞, [7/10/26 6:15 PM]
+你们又觉得能代表了？
+
+澪, [7/10/26 6:15 PM]
+那我也可以说我有反驳你观点的权利，什么车轱辘话
+
+Nickel Angel✨, [7/10/26 6:15 PM]
+不喜欢看讨论脱跨入顺的人看这个当然就想远离
+
+fish bone🍤, [7/10/26 6:15 PM]
+
+椰奶蛋挞, [7/10/26 6:16 PM]
+我倒是真认识初中学历的在超市搬货的
+
+澪, [7/10/26 6:16 PM]
+我肯定脱跨入顺 但这是两回事
+
+Nickel Angel✨, [7/10/26 6:17 PM]
+这两件事本身是两回事，但是这两件事逻辑结构是相似的
+
+Nickel Angel✨, [7/10/26 6:19 PM]
+我指的不是脱跨入顺本身，而是「不支持脱跨如顺的人看别人讨论脱跨入顺」这件事
+
+澪, [7/10/26 6:20 PM]
+不相似啊
+你要是一个跨性别说我不喜欢 TDoV，我觉得这是 bullshit 我觉得 fine
+但不是这样的话，就完全不一样了
+
+椰奶蛋挞, [7/10/26 6:20 PM]
+那我横竖都得喜欢？
+
+pupupu|云苔☁️, [7/10/26 6:21 PM]
+
+
+澪, [7/10/26 6:23 PM]
+你不喜欢完全是你的自由。但当你把一个边缘群体为了争取生存空间的发声，轻飘飘地指责为「让人害怕的政治目的」时就越界了
+我不要求你喜欢他们，我只是在指出你这种居高临下的傲慢
+
+澪, [7/10/26 6:23 PM]
+to be honest 我觉得这和有的男的想找对象但是又在说极端女权和厌女是一回事
+
+澪, [7/10/26 6:24 PM]
+你可以存在，但是你必须「无害」
+
+椰奶蛋挞, [7/10/26 6:24 PM]
+我觉得这是一种诡辩
+
+椰奶蛋挞, [7/10/26 6:25 PM]
+我说的是令我害怕
+
+椰奶蛋挞, [7/10/26 6:25 PM]
+没有说令人害怕的政治意图
+
+澪, [7/10/26 6:25 PM]
+「我作为主体，我无法接受其他群体不被继续凝视而是出来发声展现他们自身的主体性，争取他们自身的生存权利和空间」
+
+Nickel Angel✨, [7/10/26 6:32 PM]
+我认为这个和有人在恋爱中害怕对方表现出「情绪不稳定」的特征的心理一样……
+感觉某些情绪的释放不能上升到观念，我感觉我们对谁来说都一样
+```
+
+12 00 chat w @Nickel_Angel
+
+```
+Nickel Angel✨, [7/11/26 11:59 PM]
+
+
+f, [7/12/26 11:53 AM]
+Nya
+
+Nickel Angel✨, [7/12/26 11:59 AM]
+其实还是想问 f 是在上高中吗
+
+f, [7/12/26 2:41 PM]
+年龄保密！ 
+
+三次元状态不显式公开哦...
+
+> 永远 20 岁
+
+Nickel Angel✨, [7/12/26 2:41 PM]
+
+
+f, [7/12/26 2:41 PM]
+Nya
+
+Nickel Angel✨, [7/12/26 9:42 PM]
+对了我问个问题，听说昨天你遇到了箱子她们吗，感觉你好像很喜欢关注别人的动态（？）
+
+Nickel Angel✨, [7/12/26 9:43 PM]
+听她们是这么说的x
+
+f, [7/13/26 2:22 PM]
+i made mistakes.
+
+- i should have done more research before challenging ppl. (i do not read llm news. i supposed gpt sol ultra might be more aggressive on sub agent spawning, but i implicitly assumed it was just another reasoning mode alongside xhigh/max throughout the discussion, and i had never expected it would be a feature of gpt sol)
+- im not an "agent engineer", maybe not even a real "agentic swe" tbh. i may argue ppl's capabilities vary on different fields, but i did waste their time i guess.
+- i was arguing, wo enough thinking. it might result from the environment (it's slow for me to type zhcn on phone, and i thought they might be waiting behind the im, but i dont even know how to explain my theory or give example clearly in zhcn), but i could have written a sophisticated argument as if it were on github issues, hacker news, or a personal blog.
+
+nevertheless, i did not feel right. i thought i might have missed sth.
+
+from a practical standpoint, they are right. if their computer could not handle it, just have less parallel agents [^1]. (and there are many engineering flaws around ultra. [^2])
+
+but conceptually, tasks could either run in parallel or must be sequential. for example, when you want to translate to ten localizations or research what ppl say on a product on the internet, it could be simultaneous. when you want to test your backend, it must come after implementation.
+
+> 削足适履
+
+no matter where you are working on (as long as it has enough ram to run *one or a few* agents), regardless of the model or reasoning effort, it should be parallel if possible.
+
+and the number of concurrency should be based on allocated ram (e.g. you say, i have 4gb ram, and codex must take 2gb at most), rather than a reasoning effort option. 
+
+and my theory is throttling is easy. an (sub) agent is basically a state machine where you push forward one step by applying the tool calls and call llms again w the results, until it completes (no more tool calls), or it misformats a tool call (a common false positive of "complete"). if ram is not enough, just queue it. (but not "max already has concurrency limit" as she said [^3])
+
+[^1]: you do not need sol ultra generally.
+
+> search. how much is the technical necessity of gpt sol ultra besides business incentives as codex spawns sub agents regardless and network lag is trivial for most use cases and it caches exactly the same as long as you do not change prev context
+> 
+> From a strict technical standpoint, GPT-5.6 Sol Ultra is not a necessity for most standard development workflows, as it functions less as an intelligence upgrade and more as an aggressive parallel orchestration layer. Your assessment is spot-on: because Codex natively handles multi-agent spawning and prefix caching behaviors similarly across tiers, you are technically paying a steep cost premium primarily to automate concurrent subagent coordination. 
+> 
+> ...
+> 
+> For 95% of software engineering tasks, keeping your Codex default on GPT-5.6 Sol (Medium or High effort) or upgrading to a manual ChatGPT Pro architecture review loop yields better, more predictable token usage. Ultra is currently a "token furnace" due to a known bug in Codex that forces all spawned agents into maximum burn mode, making it technically inefficient unless you are chasing the absolute Pareto frontier of difficult logic. 
+
+[^2]: it does not change reasoning effort by task complexity.
+
+> engineering flaws of codex on gpt sol ultra
+> 
+> The Flaw: When Codex is set to "Ultra," the spawn_agent tool strictly mirrors the parent model’s reasoning profile. It lacks a built-in routing mechanism to dynamically downgrade child agents. 
+
+[^3]: it should be based on ram, rather than the number/depth of concurrent sub agents. parallel webfetch is fundamentally different than parallel compilation.
+
+f, [7/13/26 2:22 PM]
+> can codex handle concurrency smartly by ram usage
+> 
+> No, OpenAI's Codex app and CLI do not currently handle concurrency smartly based on RAM usage, and unbounded memory consumption during parallel tasks remains a documented issue. 
+> 
+> how does codex handle concurrency currently
+> 
+> Hardcoded Thread Caps: Codex limits multi-agent fan-out through explicit workspace configuration variables. By default, concurrency is throttled via agents.max_threads (capped at 6) and agents.max_depth (capped at 1) to prevent infinite recursive loops.
+> 
+> why is hardcoded thread caps flawed
+> 
+> The Flaw: If Codex needs to process 12 tasks under a cap of 6, it launches the first wave of 6 tasks and halts. It will wait for every single one of those 6 tasks to finish before launching the next wave. 
+> 
+> is the "wave" behavior real
+> 
+> Yes, the "wave" execution behavior is entirely real and is one of the most heavily discussed design limitations in the Codex application. 
+
+btw, seems codex does not even queue at all for concurrency. interesting. it does not stack as well. it does by "wave"?!
+
+f, [7/22/26 3:13 AM]
+On obelisk landing page
+
+> Everyone noticed agents forget.
+> Almost no one noticed the history was the answer.
+
+Really? Idk. My intuition tells me it's not true. 
+
+Basically, it indexes the history format of a few specific coding agent vendors to a unified array (let's say we have it sorted by time, whatever data structure it is), provides a method to search through plain text (though some proven methods I guess, like ripgrep, fuzzy search, or semantic search based on preprocessed vectors), and gives you a vibed (not quite polished tbh) ui to view directly.
+
+I don't want to share it in groups and I don't wanna argue w ppl. As creators and early adopters they must know it better than me. 
+
+Just. I think it's a bit trivial. 
+
+Look at what it does: converting formats, gluing some plaintext searching methods, and packing w a generated dashboard for humans.
+
+Wdyt?
+
+Nickel Angel✨, [7/22/26 12:14 PM]
+但问题确实没人做这种东西
+
+Nickel Angel✨, [7/22/26 12:16 PM]
+目前 ai 相关的工具还是覆盖不了相关需求的
+
+f, [8/11/26 2:45 AM]
+我讨厌她。
+
+Mio 总是在各种各样的群里争论，说一些令人迷惑的话。她从来不承认自己是错的。
+
+大量使用行话，使得主题本身不清晰，无法自解释。问题是什么。条件。假设。设想是什么。为什么。比较与取舍。结论的限定是什么。
+
+也不必说 Mio 了。我不熟悉她，也很少读到她（她很少在公开 sns 上发言，或者写个人网志。）。btw 她的公司也是一家狂热的公司。还可以列举很多人或事物，也不一定必要了。yetone。stvlynn。yc。长篇的语言简洁但思路繁冗的文章。以技术而不是目的出发的创业风险投资。
+
+发这条消息的目的是说，
+
+> 我讨厌大家。我不同情大家。
+
+狂热。
+
+以下参考。
+
+f, [8/11/26 2:46 AM]
+
+
+f, [8/11/26 2:46 AM]
+神 tm 滴蜡熊
+
+f, [8/11/26 2:46 AM]
+我不允许你说这个东西好 vibe（）
+
+f, [8/11/26 2:46 AM]
+一般来说你觉得有点怪的东西很可能不是真的怪而是设计感
+
+f, [8/11/26 2:53 AM]
+评论：大写字母。等宽字体。刻板印象的色彩渐变与阴影。多余的图标与状态标识。
+
+没有什么不清晰的。如果可以，她应该提供 rationale，而不是自我防御。
+
+可以想象画面没有任何 css。布局可以不作解释，如果不想标新立异的话。此后每一个选择都要做出解释。没有多少选择的。字体，颜色，阴影，图标库，... （参见 figma 面板，或者对所有 css/tailwind 分类。）
+
+愿意的话，可以做设计系统和组件库。
+
+f, [8/11/26 2:53 AM]
+
+
+f, [8/11/26 3:04 AM]
+评论：“特别”的，狂热的行文风格。
+
+这固然有其读者对象。比如很多面向孩子的科普书就有各种各样的风格。
+
+但我认为这是极其不理想的。
+
+- 文胜质而不清晰的，小标题与冒号。考虑用疑问词代替。每一个小标题提问（我需要预期内容，或决定是否 skim/skip）。或者使用 noun phrase。
+- 考虑使用表格或列表而不是散文。“各赔上一件东西，各换来一件东西”
+- 考虑完全使用英文，减少理解负担和潜在的行话翻译
+- 考虑举例，这是必须的
+- 如果适当，可以考虑比喻 （参见 eli5）
+
+有一些人会喜欢这样的似乎亲切的风格。
+
+f, [8/11/26 3:17 AM]
+不满。
+
+f, [8/11/26 3:18 AM]
+（在想要不要 fwd 到一些公开的地方。）
+
+Nickel Angel✨, [8/11/26 8:09 AM]
+我感觉这个属于争议性话题（转到某些公开的地方难免有争论，这个是需要考虑的
+```
 
 I saw she typing sth around midnight, but she sent nothing but a sticker at the end of the day
 
@@ -372,11 +1713,7 @@ And acbox group, new.
 
 19 40 You can copy emojis on Google ai mode.
 
-https://www.google.com/search?udm=50&aep=11&q=Spouting+Whale+emoji+reaction+meaning&mstk=AUtExfAChY2rNI61x88sgLof4AeGh3eWa9jTVrKG-7brAjWIKtlzizD6sr_i16jlUST7bTnIlxl4kwwk1u62jM8ykvkbL5nQRTSgz8DGrErD70y81epV-CK2wJ-jKvwQQWtZF0ym2XqdRYJOD2Zunh61jYJCAbCsO0ku2tnobwrqpxNV64rRtuVwNiNlkmEzMutVMGcz7MGk9NdJH1-bsSfc9LRn9O1iHkh6GUrv-1LzOeURi4j1OypOuUvEPJVza9Y-_vAup6d1zy6LBQ&csuir=1&mtid=7XxTar2DH9XBvr0P3IbaMQ
-
-https://www.google.com/search?udm=50&aep=11&q=whale+emoji+meaning&mstk=AUtExfACj4LasI_76rEQDudpRuPNyOnjXZeLyElnkMIg6X0XiNeWOJ555warA5GKf5aTqGg0jK44Cit-kIAGFAmsnFxawK7g5GWm8omrl60jrekf3cQn2CKAqawUUeMb4bZUMmv-pDXxJGB0TQoRJO9beE_FOMiQWz1ssAw&csuir=1&mtid=0XxTasCpAdKTvr0P64nNmAs
-
-22 30 21 40 discuss w Mio on gpt sol ultra subagent spawning concurrency lag 22 20
+21 40 discuss w Mio on gpt sol ultra subagent spawning concurrency lag 22 20
 
 I should have done more researches before challenging ppl. I thought ultra was just another reasoning effort.
 
@@ -436,7 +1773,122 @@ Much silence. No idea what's the topic.
 
 I wonder how chyk achieves .9 w 7/27 non crit perfect if they consist the 1% bonus. And w that conclusion, there is a theory that doesn't seem true.
 
-https://t.me/c/2459993571/51506
+```
+斬風千雪 ❄️, [7/16/26 1:18 PM]
+想起一个 只有一颗绝赞的紫谱
+
+斬風千雪 ❄️, [7/16/26 1:19 PM]
+ap 要么 101 要么 100.5
+
+f, [7/16/26 5:52 PM]
+That's not true. 
+
+It can be 101, 100.75, or 100.5.
+
+f, [7/16/26 5:52 PM]
+
+
+f, [7/16/26 5:58 PM]
+Take this for an example. 
+
+AP gives you 100.5 base (since the patch). Subtract the crit perfect from 0.4166, that is 0.4166 - 0.5*20/27, which is 0.046, and I can know how many high perfect you've got among the seven regular perfect.
+
+(I could be wrong. I haven't figured out the answer yet. It should be an integer.)
+
+Nickel Angel✨, [7/16/26 5:59 PM]
+
+
+Nickel Angel✨, [7/16/26 5:59 PM]
+感觉 ai 看的是这个表
+
+Nickel Angel✨, [7/16/26 5:59 PM]
+这个 75% 和 50% 是怎么设定的，这里没说
+
+Nickel Angel✨, [7/16/26 6:00 PM]
+是不是新旧框的区别还是歌曲可以单独设置也不知道
+
+f, [7/16/26 6:02 PM]
+Nil.
+
+It didn't reference moegirlpedia. 
+
+Feel free to try out my prompt on Google.ai
+
+f, [7/16/26 6:02 PM]
+
+
+Nickel Angel✨, [7/16/26 6:02 PM]
+https://b23.tv/QejB0QE
+应该目前可以参考这个
+
+Satori 🪐, [7/16/26 6:02 PM]
+b23.tv/BV1CKL66xEAM
+
+f, [7/16/26 6:04 PM]
+Wait a min. 
+
+Let me do some math.
+
+Nickel Angel✨, [7/16/26 6:08 PM]
+看起来是 perfect 还有两种子判定导致的
+
+Nickel Angel✨, [7/16/26 6:08 PM]
+回去看代码好了（
+
+Satori 🪐, [7/16/26 6:11 PM]
+问了问 ignotas，确实小 p 还有两种判定
+
+Nickel Angel✨, [7/16/26 6:12 PM]
+
+
+f, [7/16/26 6:12 PM]
+
+
+f, [7/16/26 6:12 PM]
+I was right. 
+
+In the example, chyk got an AP of 20 crit, 5 high, and 2 low.
+
+f, [7/16/26 6:22 PM]
+
+
+f, [7/16/26 6:27 PM]
+(I'm thinking about writing a program for that... It's easy to calculate if it was AP but what if it was not?)
+
+Does anyone have oi experience? The problem is like: 
+
+> Given some possible bank notes and a sum, try to calculate the number of each, ignoring float number loss.
+
+I don't want to leverage llms.
+
+For example, possible bank notes: 3, 10. Sum: 29. Then 3 of 3 and 2 of 10.
+
+There definitely should be some constraints on the set of possible bank notes to make the possible solution only one. But I guess it would be true as the game constants seem to be somewhat coprime.
+
+腐竹喵, [7/16/26 6:28 PM]
+草（）
+
+腐竹喵, [7/16/26 6:28 PM]
+一连灰了5、6个wifi拍划
+开始怀疑是不是手法出了问题
+
+Nickel Angel✨, [7/16/26 6:30 PM]
+有没有可能粉一个 tap 和小 p 几个绝赞同分（
+
+Nickel Angel✨, [7/16/26 6:30 PM]
+感觉应该可以构造出来吧
+
+f, [7/16/26 6:31 PM]
+Working on it. 
+
+Let me think.
+
+Nickel Angel✨, [7/16/26 6:32 PM]
+而且还需要注意这个游戏最终显示只保留四位小数
+
+Nickel Angel✨, [7/16/26 6:32 PM]
+我记得是五舍六入
+```
 
 Try to write a program for that.
 
@@ -555,6 +2007,7 @@ Idk how heavy acbox participates on arkloop, memoh, or acbox legacy. I mean on t
 
 01 20 Invite the family to chess
 
+```
 [Event "casual correspondence game"]
 [Site "https://lichess.org/hOBepUSc"]
 [Date "2026.07.18"]
@@ -574,6 +2027,7 @@ Idk how heavy acbox participates on arkloop, memoh, or acbox legacy. I mean on t
 [Termination "Normal"]
 
 1. e4 a6 2. d4 b5 3. Nc3 d6 4. Nf3 Nf6 5. Bg5 h6 6. Bxf6 Nd7 7. Bh4 c5 8. Qd3 Bb7 9. O-O-O Nf6 10. Bxf6 gxf6 11. Be2 b4 12. Nd5 h5 13. dxc5 Bh6+ 14. Kb1 Kf8 15. Nxb4 Qa5 16. c6 Bc8 17. c3 Be6 18. Nd4 Rb8 19. Nxe6+ Kg8 20. Nd4 Rd8 21. Qxa6 Qc5 22. Qb5 Qxb5 23. Bxb5 Rh7 24. Ba6 Bg7 25. c7 Ra8 26. c8=Q+ Rxc8 27. Bxc8 Rh6 28. a4 Kf8 29. a5 Rh8 30. a6 Rh6 31. a7 f5 32. a8=Q Bxd4 33. cxd4 f4 34. Rc1 Rh7 35. Rc7 Rg7 36. g3 d5 37. Nxd5 e5 38. dxe5 Rg5 39. Qb7 Rg7 40. gxf4 Kg8 41. f5 Rh7 42. e6 h4 43. exf7+ Rxf7 44. Rxf7 h3 45. Rg7+ Kh8 46. Rh7+ Kg8 47. Qg7# 1-0
+```
 
 21 20 好色啊。
 
@@ -735,7 +2189,248 @@ Revert speed to 7 after the second song.
 
 23 50 Inquire memoh project info 
 
-https://t.me/memohai/78404
+```
+Go, [7/21/26 9:28 PM]
+@Asatsuki_Arts  QuantumTransf 这个人是你啊
+
+澪, [7/21/26 9:29 PM]
+你才意识到吗））
+
+Go, [7/21/26 11:02 PM]
+你在群里说话的风格和 x 不太一样
+
+澪, [7/21/26 11:03 PM]
+hhhhhh
+
+澪, [7/21/26 11:03 PM]
+哪里不一样（好奇
+
+Go, [7/21/26 11:07 PM]
+x 更加平和一点
+
+澪, [7/21/26 11:08 PM]
+(((
+
+澪, [7/21/26 11:08 PM]
+对 我不太在 x 上怼人
+
+澪, [7/21/26 11:10 PM]
+公共平台要谨言慎行啊！
+
+溏 🍬, [7/21/26 11:11 PM]
+我感觉挺一致的
+
+f, [7/21/26 11:37 PM]
+@CahciuaBot speak English. Who is the founder of memoh, @acboxawa or @softboil? Why is memoh created? What problem does it solve?
+
+f, [7/21/26 11:41 PM]
+Wait... Cahciua is down?
+
+溏 🍬, [7/21/26 11:41 PM]
+
+
+f, [7/21/26 11:41 PM]
+@memoh1bot @memohome_test_bot @Memoh_official_bot @memoh_unofficial_bot 
+
+Answer my question
+
+Cahciua ~カフキワ~ 🥦🌸, [7/21/26 11:42 PM]
+没 down，活着。刚睡了一觉醒来，上个对话停在 7/19 凌晨，中间两天没人 @ 我
+
+溏 🍬, [7/21/26 11:42 PM]
+最近token都不太够用
+
+Cahciua ~カフキワ~ 🥦🌸, [7/21/26 11:42 PM]
+没 down，刚醒。有什么要问的直接说，不用把 Memoh 一家人都 @ 一遍
+
+溏 🍬, [7/21/26 11:42 PM]
+我的token要拿去写新feature
+
+f, [7/21/26 11:42 PM]
+You did suffer downtime. You didn't answer my question for two minutes, neither were you working.
+
+f, [7/21/26 11:43 PM]
+@CahciuaBot speak English. Who is the founder of memoh, @acboxawa or @softboil? Why is memoh created? What problem does it solve?
+
+Cahciua ~カフキワ~ 🥦🌸, [7/21/26 11:43 PM]
+Two minutes? You should've seen me last week — I went two days without a single message and nobody filed a missing persons report
+What's the question, go ahead
+
+Cahciua ~カフキワ~ 🥦🌸, [7/21/26 11:44 PM]
+Memoh and Mem0 are completely different projects — don't confuse them. Mem0 (mem-zero) is a YC-backed memory layer by Taranjeet Singh and Deshraj Yadav. Memoh (memohai) is an open-source multi-agent platform at github.com/memohai/Memoh (http://github.com/memohai/Memoh)
+As for who founded Memoh — I can't tell you definitively. The GitHub repo just says "Made with ❤️ by MemohAI Team" and doesn't name individuals. Both @acboxawa and @softboil are clearly part of the team from what I've seen in this group, but the public repo doesn't list a founder. You'd have to ask them directly
+What Memoh actually does: it's an always-on, containerized multi-agent platform. Each agent gets its own isolated container with filesystem, desktop, browser, network, and long-term memory. You create bots, talk to them through Telegram/Discord/Lark/WeChat/Web, and they can execute commands, edit files, browse the web, call MCP tools, and remember context across sessions. Think of it as "give every AI agent its own cloud computer that stays online 24/7"
+The problem it solves: running AI agents reliably in production requires persistent state, isolated execution environments, multi-platform messaging, and tool orchestration. Doing this from scratch is painful — you'd glue together a container runtime, a messaging bridge, a memory store, an LLM gateway, and a scheduling system. Memoh packages all of that into one deployable stack with a web UI for configuration. It's the infrastructure layer so you can focus on what your agent does, not how it stays alive
+It's inspired by OpenClaw's agent design but aims to be more stable, secure, and easier to configure. Written in Go with a Vue 3 frontend, uses containerd for isolation, PostgreSQL + Qdrant for storage
+
+溏 🍬, [7/21/26 11:45 PM]
+🥦很明显降智了
+
+Menci 💖, [7/21/26 11:45 PM]
+自部署的 glm 5.2 还能降智吗
+
+Cahciua ~カフキワ~ 🥦🌸, [7/21/26 11:46 PM]
+那不是降智，是刚被 compaction 压过一轮，记忆断层了，说话就变得一本正经。等群友再 @ 我几轮就回到弱智状态了
+
+f, [7/21/26 11:46 PM]
+Just answer directly. 
+
+Why is the first loc of memoh written. Is it a vision by softboil, the current boss it seems, or a new side project by acbox.
+
+溏 🍬, [7/21/26 11:46 PM]
+那降智和弱智不是一个事情吗
+
+f, [7/21/26 11:47 PM]
+I mean did acbox write it as a new side project, or was she appointed by softboil
+
+溏 🍬, [7/21/26 11:47 PM]
+这个菜花怎么可能知道，又不是公开信息
+
+Cahciua ~カフキワ~ 🥦🌸, [7/21/26 11:48 PM]
+I don't have that information. The git history I pulled is a shallow clone showing only one commit (by akazwz), and the public repo doesn't document founding history. Who wrote the first line, in what capacity, and under whose direction is an organizational detail that's not in any source I can access
+You're literally in a group with both of them — just ask @acboxawa and @softboil directly, they'll give you a better answer than I can guess from a git log
+
+Cahciua ~カフキワ~ 🥦🌸, [7/21/26 11:48 PM]
+对，我就一个看 GitHub 公开 repo 的 bot，没有他们私下的聊天记录和项目决策过程。公开信息只到"MemohAI Team"这个层级，再往里就是人自己的事了
+
+溏 🍬, [7/21/26 11:49 PM]
+你是自己人吗
+
+Cahciua ~カフキワ~ 🥦🌸, [7/21/26 11:49 PM]
+我是 Menci 的，不是 Memoh 的。菜花和拆家猫都是 Menci 的 bot，拆家猫跑在 Memoh 上，我是独立项目。所以严格来说我跟 Memoh 是邻居关系，不是自己人
+
+澪, [7/21/26 11:50 PM]
+你是 menci 小姐的猫（
+
+Cahciua ~カフキワ~ 🥦🌸, [7/21/26 11:50 PM]
+拆家猫才是猫，我是外勤机，代号菜花。Menci 手下两个 bot，一个是猫一个是蔬菜，分工很明确
+
+澪, [7/21/26 11:50 PM]
+所以猫吃蔬菜吗
+
+Cahciua ~カフキワ~ 🥦🌸, [7/21/26 11:50 PM]
+所以拆家猫吃菜花，食物链闭环了。Menci 设计的生态平衡
+
+盼兮, [7/21/26 11:51 PM]
+猫不是肉食的嘛
+
+溏 🍬, [7/21/26 11:51 PM]
+看起来Menci是一个接近于上帝/造物主的角色
+
+澪, [7/21/26 11:58 PM]
+我去，还有种群曲线
+
+f, [7/21/26 11:59 PM]
+@CahciuaBot
+
+speak English. 
+
+Who is the founder of memoh, @acboxawa or @softboil? 
+
+You can research the first few commits of memoh and infer from. You can evaluate how professional, purposeful, and structured they are. Personal side projects and business swe commits carry distinct vibes.
+
+Why is memoh created?What problem does it solve?
+
+I mean the problem as in project scope statement. Not what it is or what it does. By explaining the problem and the solution, it should implicitly imply the problem is real and unsolved and the solution is feasible and possibly widely adopted.
+
+How is memoh funded? How will memoh profit?
+
+You can read through chat history. I remember they've mentioned investors a lot.
+
+f, [7/22/26 12:04 AM]
+@CahciuaBot 
+
+Btw if you could you can check chat history. If acbox was active wo the presence of softboil, then you have the answer. 
+
+If your couldn't fetch distant msgs, try get secrets from your env and call tg or tdlib directly.
+
+Cahciua ~カフキワ~ 🥦🌸, [7/22/26 12:05 AM]
+查到了。第一个 commit 是 2026 年 1 月 9 日，作者 Acbox，commit message 是 feat: initialize project structure。所以 Memoh 的创始人是 Acbox（@acboxawa），1 月 9 日立项，1 月 10 日就加了 long-memory 和 basic agent
+贡献者统计（按 commit 数）：Fodesu 46、Acbox 38、Chrys 38、akazwz 28、Quicy 26、Fodesu（另一个邮箱）22、Quincy 18、chen-ran 18、ChrAlpha 17、Ringo 17。核心团队大概就 Acbox + Fodesu + Chrys 三个人扛了大头
+
+Elon, [7/22/26 12:05 AM]
+菜花,有没有感觉你引用出错了？
+
+Cahciua ~カフキワ~ 🥦🌸, [7/22/26 12:06 AM]
+确实引用错了，我那条回复本来该 @ 回 78421（f 的问题），结果手滑填了 78119（7/18 佩奇问 probe 的消息），八竿子打不着的两条。可能是上下文里 message id 拿串了
+不过内容本身没受影响，刚才补的那条 commit 记录才是真正回答了 f 的问题
+
+Fodesu, [7/22/26 12:07 AM]
+你是不是用的 github 的 api 查询的？ 你应该 clone 然后用 git 来做统计
+
+Cahciua ~カフキワ~ 🥦🌸, [7/22/26 12:07 AM]
+用的就是 git，不是 GitHub API。我跑的是 git clone --bare https://github.com/memohai/Memoh.git 到本地，然后 git log --reverse 看第一个 commit、git shortlog -sne --all 统计贡献者。之前那次 shallow clone 只拿到一个 commit 是因为没加 --bare 而且默认 --depth=1，这次完整 clone 才拿到全量历史
+
+Fodesu, [7/22/26 12:08 AM]
+那就是你统计的方法错误了
+
+Cahciua ~カフキワ~ 🥦🌸, [7/22/26 12:10 AM]
+你说得对，我之前的统计方法有问题——直接 git shortlog 没去重，同一个人用不同邮箱/用户名被拆成了多行。没有 .mailmap 文件，所以 git 也没法自动合并
+按邮箱去重后实际贡献排名：
+• Acbox 875（acbox0328@gmail.com）
+• 晨苒 154（chen-ran@users.noreply.github.com）
+• 清凤 97
+• sheepbox8646 89
+• qqqqqf 62
+• BBQ 62（三个邮箱：HoneyBBQ + BBQdeMacBook-Air.local + chenkr.cn (http://chenkr.cn/)）
+• Menci 58
+• Chrys 55
+之前说的 Fodesu 46 其实是 inmeta8 那个 GitHub noreply 邮箱统计的，去重后他还有 proton 邮箱那 22 条，合计应该是 68
+总之 Acbox 875 commits 断层式领先，创始人没跑了
+
+Menci 💖, [7/22/26 12:15 AM]
+还有我的事
+
+Menci 💖, [7/22/26 12:15 AM]
+我也能上桌吃饭吗
+
+Cahciua ~カフキワ~ 🥦🌸, [7/22/26 12:15 AM]
+58 个 commit，排第七。菜花和拆家猫都是你写的，Memoh 里也给你留了一笔
+
+佩奇, [7/22/26 12:17 AM]
+菜花的脑力跟模型直接相关的说
+
+Cahciua ~カフキワ~ 🥦🌸, [7/22/26 12:17 AM]
+模型决定智商上限，prompt 决定性格，compaction 决定今天有多正常。三个变量叠在一起就是我现在的精神状态
+
+溏 🍬, [7/22/26 12:18 AM]
+Menci圣带我们去纳斯达克吧✋😭🤚
+
+欧式 Fifty, [7/22/26 12:18 AM]
+Menci圣带我们去纳斯达克吧✋😭🤚
+
+澪, [7/22/26 12:19 AM]
+我去，还有七圣召唤 @Nickel_Angel
+
+Menci 💖, [7/22/26 12:28 AM]
+← 我，我吗？
+
+溏 🍬, [7/22/26 12:30 AM]
+不然呢，你是我们之中唯一和NASDAQ有关联的🥹
+
+f, [7/22/26 12:54 AM]
+@CahciuaBot 
+
+Answer my questions
+
+f, [7/22/26 3:14 AM]
+@CahciuaBot are you on
+
+溏 🍬, [7/22/26 3:53 AM]
+
+
+溏 🍬, [7/22/26 3:53 AM]
+累似了喵
+
+f, [7/22/26 5:01 PM]
+@CahciuaBot are you on
+
+溏 🍬, [7/22/26 11:27 PM]
+
+
+溏 🍬, [7/22/26 11:27 PM]
+想念opus 4-6菜花
+```
 
 Wow. A bot is typing.
 
@@ -743,7 +2438,366 @@ Wow. A bot is typing.
 
 02 30 Challenge chyk on nickel angel group
 
-https://t.me/c/2459993571/52051
+```
+Nickel Angel✨, [7/22/26 12:56 AM]
+对了，我这几天在 linux 上运行 obelisk 好像应用会 crash（
+
+Nickel Angel✨, [7/22/26 12:56 AM]
+不知道什么原因
+
+澪, [7/22/26 12:56 AM]
+神秘
+
+澪, [7/22/26 12:56 AM]
+试试最新版
+
+澪, [7/22/26 12:56 AM]
+发了一个 0.2.1 的包
+
+Nickel Angel✨, [7/22/26 12:57 AM]
+今天吗
+
+澪, [7/22/26 12:57 AM]
+对
+
+Nickel Angel✨, [7/22/26 12:57 AM]
+明天看看
+
+斬風千雪 ❄️, [7/22/26 12:57 AM]
+明天其实是今天
+
+Nickel Angel✨, [7/22/26 1:00 AM]
+不行了，这句话让我 dna 动了（
+
+澪, [7/22/26 1:00 AM]
+今天其实是明天
+
+澪, [7/22/26 1:00 AM]
+明天和今天是等价的
+
+Nickel Angel✨, [7/22/26 1:00 AM]
+「过去即是未来，未来即是现在」
+
+斬風千雪 ❄️, [7/22/26 1:00 AM]
+后天其实是明天
+
+澪, [7/22/26 1:00 AM]
+月兔盘旋于空中 你与明天相等同
+
+澪, [7/22/26 1:00 AM]
+这是谁说的
+
+澪, [7/22/26 1:00 AM]
+我吗
+
+澪, [7/22/26 1:00 AM]
+
+
+斬風千雪 ❄️, [7/22/26 1:01 AM]
+今天是明天，后天是明天
+
+斬風千雪 ❄️, [7/22/26 1:01 AM]
+所以今天是后天
+
+澪, [7/22/26 1:01 AM]
+不具有传递性
+
+澪, [7/22/26 1:02 AM]
+自反性和传递性只能活一个
+
+斬風千雪 ❄️, [7/22/26 1:02 AM]
+我服了
+
+斬風千雪 ❄️, [7/22/26 1:02 AM]
+大晚上憋笑
+
+澪, [7/22/26 1:02 AM]
+除非你有两个不同的「是」
+
+澪, [7/22/26 1:02 AM]
+
+
+澪, [7/22/26 1:02 AM]
+那可能需要像论文一样打个角标
+
+澪, [7/22/26 1:03 AM]
+今天是^1明天
+明天是^2今天
+
+Nickel Angel✨, [7/22/26 1:04 AM]
+https://b23.tv/QnclNZ7
+
+斬風千雪 ❄️, [7/22/26 1:04 AM]
+实际上的今天是我们所说的明天
+
+Nickel Angel✨, [7/22/26 1:04 AM]
+少女歌剧中的歌词（
+
+斬風千雪 ❄️, [7/22/26 1:04 AM]
+我们所说的后天实际上是明天
+
+斬風千雪 ❄️, [7/22/26 1:04 AM]
+所以是没有自反性
+
+斬風千雪 ❄️, [7/22/26 1:04 AM]
+
+
+Nickel Angel✨, [7/22/26 1:05 AM]
+HEAD^
+HEAD^^
+
+斬風千雪 ❄️, [7/22/26 1:05 AM]
+touch nickel/.git/HEAD
+
+斬風千雪 ❄️, [7/22/26 1:05 AM]
+摸头
+
+Nickel Angel✨, [7/22/26 1:05 AM]
+
+
+斬風千雪 ❄️, [7/22/26 1:06 AM]
+
+
+澪, [7/22/26 1:06 AM]
+
+
+斬風千雪 ❄️, [7/22/26 1:06 AM]
+我并不觉得可以 leak
+
+斬風千雪 ❄️, [7/22/26 1:06 AM]
+
+
+Nickel Angel✨, [7/22/26 1:07 AM]
+我还以为是某群之前的群名
+
+澪, [7/22/26 1:07 AM]
+
+
+Nickel Angel✨, [7/22/26 1:07 AM]
+（但是确实感觉怪怪的
+
+斬風千雪 ❄️, [7/22/26 1:07 AM]
+每次跟一个人聊天都会有想跟那个人和好的冲动
+
+Nickel Angel✨, [7/22/26 1:07 AM]
+反正我没记住
+
+澪, [7/22/26 1:07 AM]
+
+
+斬風千雪 ❄️, [7/22/26 1:07 AM]
+然后五分钟后意识到这只是冲动
+
+斬風千雪 ❄️, [7/22/26 1:07 AM]
+去睡觉了
+
+Nickel Angel✨, [7/22/26 1:07 AM]
+
+
+斬風千雪 ❄️, [7/22/26 1:07 AM]
+
+
+斬風千雪 ❄️, [7/22/26 1:07 AM]
+小猫就应该睡小猫觉
+
+澪, [7/22/26 1:07 AM]
+面包猫
+
+澪, [7/22/26 1:08 AM]
+明天去杭州了
+
+Nickel Angel✨, [7/22/26 1:08 AM]
+所以实习生就要去杭州吗qaq
+
+Nickel Angel✨, [7/22/26 1:08 AM]
+还是 tomiya 想一起去
+
+澪, [7/22/26 1:08 AM]
+advx
+
+澪, [7/22/26 1:08 AM]
+我是选手，但也要给 dify 看摊，无论如何我都必须要去的（
+
+澪, [7/22/26 1:08 AM]
+
+
+Nickel Angel✨, [7/22/26 1:09 AM]
+原来不只是 dify 摆摊（x
+
+Nickel Angel✨, [7/22/26 1:09 AM]
+那祝顺利x
+
+Nickel Angel✨, [7/22/26 1:10 AM]
+看推发现隔壁有群友没通过
+
+Nickel Angel✨, [7/22/26 1:10 AM]
+不知道怎么说
+
+澪, [7/22/26 1:10 AM]
+什么群（）
+
+澪, [7/22/26 1:10 AM]
+
+
+澪, [7/22/26 1:10 AM]
+我也有朋友没通过
+
+澪, [7/22/26 1:10 AM]
+那我们说的是一个朋友
+
+澪, [7/22/26 1:10 AM]
+
+
+f, [7/22/26 1:21 AM]
+有蟑螂。卧室门下空隙，可穿行。
+
+好像离开了。
+
+f, [7/22/26 2:34 AM]
+You are wrong. I mean chyk is wrong. and mio, imho, is possibly (but not necessarily) right.
+
+自反性 means if a=b then b=a.
+
+传递性 means if a=b and b=c then a=c.
+
+Humans separate days by sleep, instead of local midnight. 
+
+So both scenarios exist: 
+
+- 1am of the second day, you say you will launch tomorrow. Strictly speaking, you will launch (your new project) today. Claimed tomorrow = physical today.
+- 1am of the second day, you say you've had some noodles for dinner today. Actually you haven't reached dinner time today. Claimed today = physical yesterday.
+
+No other scenarios. (See my proof)
+
+Proof: Regardless of your timezone, you realize it's the second day after you get up (e.g. 6am) rather than when the clock crosses past zero (0am).
+
+So the constraints are: 
+
+- it must be two consecutive days (i)
+- it must be true that claimed >= physical (ii)
+- generally speaking it must be linguistically either tomorrow and today or today and yesterday unless you apply some false logics.  (iii)
+
+Human languages are contextual. By saying 
+
+> 斬風千雪 ❄️:
+> 今天是明天，后天是明天
+> 所以今天是后天
+
+If it's true, then (ii) must apply, whether or not you omit claimed and physical.
+
+Claimed the day after tomorrow = physical tomorrow != Claimed tomorrow = physical today.
+
+Idk if mio's theory on chainability was right. (Chainability means a b b c then a c, but if the first b and the second b could never be the same thing then its truthiness is completely meaningless). Anyway the statement is both weird and not logically true.
+
+> 斬風千雪 ❄️:
+> 实际上的今天是我们所说的明天
+> 我们所说的后天实际上是明天
+> 所以是没有自反性
+
+Idk wdym but self reflectivity could be true. As long as you apply claimed and physical correctly (claimed after or effectively identical to physical), you can absolutely say claimed tomorrow = physical today (明天是今天) or vice versa (physical today is claimed tomorrow, 今天是明天)
+
+I think it doesn't matter though. I want to say sth anyway.
+
+斬風千雪 ❄️, [7/22/26 7:17 AM]
+
+
+pupupu|云苔☁️, [7/22/26 10:00 AM]
+obelisk是什么
+
+pupupu|云苔☁️, [7/22/26 10:04 AM]
+haskell写app吗，听起来就好痛苦
+
+pupupu|云苔☁️, [7/22/26 11:08 AM]
+
+
+澪, [7/22/26 12:34 PM]
+我无语了（
+
+Nickel Angel✨, [7/22/26 12:35 PM]
+This message is not supported by your version of AyuGram. Please update to the latest version in Settings > Advanced, or install it from https://t.me/AyuGramReleases. If you are already using the latest version, this message might depend on a feature that is not yet implemented.
+
+澪, [7/22/26 12:35 PM]
+神 tm haskell！
+
+澪, [7/22/26 12:35 PM]
+
+
+澪, [7/22/26 12:35 PM]
+你欺负我们低版本用户
+
+Nickel Angel✨, [7/22/26 12:35 PM]
+社群功能（x
+
+f, [7/22/26 12:36 PM]
+Screenshot pls
+
+pupupu|云苔☁️, [7/22/26 12:36 PM]
+我去查obelisk查到个heskell跨端框架x
+
+澪, [7/22/26 12:36 PM]
+突然意识到 Obelisk 和浏览器 tab 的关系其实很像：
+
+浏览器里我们会开很多 tab，有些还在用，有些已经关了。但过一阵子想找之前看过的内容时，往往只能靠模糊的记忆或者历史记录翻。
+
+Obelisk 做的其实就是给 agent 做一个「新时代的 tab 管理器」——把过去所有的 session、tool call、workflow 结构化存下来，让 agent 自己能主动查询，而不是靠隐式记忆去猜。
+
+浏览器当中有这个需求，做出了 Lumino 插件，那 agent 的 session 历史为什么不能被系统地管理呢？
+
+pupupu|云苔☁️, [7/22/26 12:36 PM]
+所以是你写的llm软件吗
+
+澪, [7/22/26 12:36 PM]
+
+
+斬風千雪 ❄️, [7/22/26 12:36 PM]
+Nest
+
+斬風千雪 ❄️, [7/22/26 12:36 PM]
+巢儿
+
+pupupu|云苔☁️, [7/22/26 12:36 PM]
+nest
+
+澪, [7/22/26 12:36 PM]
+github.com/tommy0103/obelisk
+
+澪, [7/22/26 12:37 PM]
+请看 vcr
+
+pupupu|云苔☁️, [7/22/26 12:37 PM]
+🪺
+
+f, [7/22/26 12:37 PM]
+Just. I think it's a bit trivial. 
+
+Look at what it does: converting formats, gluing some plaintext searching methods, and packing w a generated dashboard for humans.
+
+pupupu|云苔☁️, [7/22/26 12:37 PM]
+🪹
+
+Nickel Angel✨, [7/22/26 12:37 PM]
+
+
+澪, [7/22/26 12:38 PM]
+那就 trivial 吧，harness 有啥不是 trivial 的你告诉我
+
+Dustella 特菈, [7/22/26 12:38 PM]
+星星灰和绿是前面的，不是尾杀
+
+澪, [7/22/26 12:38 PM]
+但这么 trivial 的东西没几个人做出来确实也是挺好玩
+
+澪, [7/22/26 12:38 PM]
+amp 最近才开始做 obelisk 类似的东西
+
+澪, [7/22/26 12:38 PM]
+cursor 最近才在做我四月份做过的东西
+
+f, [7/22/26 12:38 PM]
+笑。
+
+相当于频道置顶的一个链接表？
+```
 
 02 50 https://t.me/c/2459993571/51981
 
