@@ -12,6 +12,7 @@ import { List } from 'web/component/list';
 import { items, tool_to_args } from 'action/tools';
 
 import type { item } from 'web/component/process'
+import { useMount } from 'react-use';
 
 export const use_global = state({
   'input': '',
@@ -83,6 +84,10 @@ export function App() {
   use_sync_theme('system')
 
   use_window_active()
+
+  useMount(() => {
+    log(tool_to_args)
+  })
 
   return <>
     <title>Tools</title>

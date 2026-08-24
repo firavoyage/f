@@ -11,26 +11,25 @@ export function Main() {
   const [process, set_process] = use_global('process')
   const [input, set_input] = use_global('input')
   const [output, set_output] = use_global('output')
-  const tool = use_global.get('navigation.tool')
 
   useMount(()=>{
     log(tools)
   })
 
-  useEffect(() => {
-    if (has(tools, tool)) {
-      // @ts-expect-error tools must have tool
-      const result = handle(() => tools[tool](input))
-      if(is_error(result)){
-        // handle error
+  // useEffect(() => {
+  //   if (has(tools, tool)) {
+  //     // @ts-expect-error tools must have tool
+  //     const result = handle(() => tools[tool](input))
+  //     if(is_error(result)){
+  //       // handle error
 
-        // do nothing
-        return 
-      }
+  //       // do nothing
+  //       return 
+  //     }
 
-      set_output(result)
-    } 
-  }, [tool, input])
+  //     set_output(result)
+  //   } 
+  // }, [tool, input])
 
   return <div className="main">
     <Editor type='process' value={process} set_value={set_process} should_show_textarea={false}>

@@ -1,5 +1,5 @@
 import type { arg } from 'web/component/process'
-import { normalize_item } from 'web/component/list'
+import { normalize_id } from 'lib/normalize_id';
 
 export * from 'action/maimai'
 export * from 'action/json yaml toml xml'
@@ -23,4 +23,4 @@ export const tool_to_args: Record<string, arg[]> = map({
       value: ''
     }
   ]
-}, ([key, value]) => ([normalize_item(key), value]))
+}, ([key, value]) => ([normalize_id(key), value]))
