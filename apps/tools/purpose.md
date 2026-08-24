@@ -2537,6 +2537,20 @@ create scrollarea component.
 
 could have
 
----
+16 20 tg to journal: fix `parse_telegram`. create a temp tool `fix_telegram`. 16 40
+
+on telegram, there is no `0:mm` or `24:mm`.
+
+12 am means 0 am that day. 12 pm means 12 am that day.
+
+p
+
+add 12 for pm.
+
+c
+
+add 12 for pm.
+
+if the result is 12 or 24, subtract 12.
 
 

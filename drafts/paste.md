@@ -643,7 +643,7 @@ Maybe I ~ 've got enough sleep ~ would not sleep any more. I guess I could be cl
 
 Headache? ...
 
-24 30 Chocolates melt. 
+12 30 Chocolates melt. 
 
 Have some biscuits?
 
@@ -832,11 +832,11 @@ f 02:42:12
 
 10
 
-12 10 All: libre map?
+0 10 All: libre map?
 
 Restaurants. Maimai.
 
-12 40 Eat street liehuo group
+0 40 Eat street liehuo group
 
 ```
 颉文（StatTrak™）|崭新出厂 18:13:40
@@ -1168,7 +1168,7 @@ Hi
 
 12
 
-12 00 Eat nickel angel group
+0 00 Eat nickel angel group
 
 ```
 椰奶蛋挞, [7/10/26 4:42 PM]
@@ -1520,7 +1520,7 @@ Nickel Angel✨, [7/10/26 6:32 PM]
 感觉某些情绪的释放不能上升到观念，我感觉我们对谁来说都一样
 ```
 
-12 00 chat w @Nickel_Angel
+0 00 chat w @Nickel_Angel
 
 ```
 Nickel Angel✨, [7/11/26 11:59 PM]
@@ -1660,17 +1660,17 @@ You can have knowledge or entity cards. You can have event panels like stock. Yo
 
 14
 
-24 20 Renew visa.
+12 20 Renew visa.
 
 Seems I've been to onikawa in 2018 and Hong Kong (through Shenzhen) and Thailand in 2017.
 
 Though I don't remember if I've been to hk ocean theme park or hk Disney.
 
-24 20 Restrict network for anki so eggroll deck couldn't show the distracting update available congrats emoji.
+12 20 Restrict network for anki so eggroll deck couldn't show the distracting update available congrats emoji.
 
 Upd: reverted. The deck needs network to play example sentences.
 
-24 30 Acbox created a new personal homepage, a few days after I noticed her.
+12 30 Acbox created a new personal homepage, a few days after I noticed her.
 
 She reduced it from a blog wo content to a sns homepage.
 
@@ -1990,7 +1990,7 @@ You can only use one per order. They are not auto selected, but it would popup i
 
 21
 
-12 10 Setup new qq account. 
+0 10 Setup new qq account. 
 
 Enable all privacy.
 
@@ -2000,9 +2000,9 @@ Set name as f. Set avatar as that of @StackmentOverfault (coincidentally she gav
 
 Allow everyone make friends w me.
 
-12 20 Weirdly qq says I might be interested to make friends w an llm bot, which has a label behind a name of "(Chinese name)-closed beta testing", operated by tencent on metadata.
+0 20 Weirdly qq says I might be interested to make friends w an llm bot, which has a label behind a name of "(Chinese name)-closed beta testing", operated by tencent on metadata.
 
-12 30 For q zone, it was not "default mode" (everything is public like a forum), but "frnds in common" mode (only likes and comments from ppl yk show up), out of box.
+0 30 For q zone, it was not "default mode" (everything is public like a forum), but "frnds in common" mode (only likes and comments from ppl yk show up), out of box.
 
 Likely a change. 
 
@@ -2012,7 +2012,7 @@ The default settings are weird and some text are confusing. "Only frnds are allo
 
 But the default visibility period is indefinite. So those who hide some older posts must be sophisticated.
 
-12 30 In a nutshell, remove all philistine styling/customization and notifications (ads), enable privacy of all irrelevant information (often backed by business incentives), and provide universal accessibility and permanent visibility.
+0 30 In a nutshell, remove all philistine styling/customization and notifications (ads), enable privacy of all irrelevant information (often backed by business incentives), and provide universal accessibility and permanent visibility.
 
 15 10 I guess I would have some biscuits as chocolates melt.
 
@@ -2866,7 +2866,7 @@ Other frameworks generally have their own html attributes, even file formats. Yo
 
 25
 
-12 20 All: puzzle games
+0 20 All: puzzle games
 
 ```
 ref, [7/25/26 12:13 AM]
@@ -2941,7 +2941,7 @@ When not, it doesn't have to change at all. Negative z index backdrop wouldn't c
 
 28
 
-12 30 To archive tv filmography chat. 
+0 30 To archive tv filmography chat. 
 
 Fuckacbox?
 
@@ -3041,13 +3041,13 @@ Can I dc w default value on params easily.
 
 Maybe, type, props, dc from props.
 
-24 00 Turn off dnd. 
+12 00 Turn off dnd. 
 
 The dnd indicator visibility toggle isn't available on good lock and the adb trick is reset upon restart. Since I already blocked all calls, I guess it's no longer a necessity. 
 
 Tighten calls and notifications control.
 
-24 10 Some might popup now I guess. Like low battery (you couldn't turn it off wo adb). But I see that on Ubuntu either.
+12 10 Some might popup now I guess. Like low battery (you couldn't turn it off wo adb). But I see that on Ubuntu either.
 
 19 30 玻璃工业，猴子寿命，儿童文学。
 
@@ -3452,7 +3452,7 @@ A girl, w 海底谭 少女レイ badges and pjsk cards on the bag, visits for Mi
 
 09 20 Play Poppin party
 
-24 30 Baskets are generally offered for putting backpacks.
+12 30 Baskets are generally offered for putting backpacks.
 
 14 50 Have all you can eat: yakiniku.
 
@@ -3550,7 +3550,7 @@ Play pjsk. It wants me to update. Google play region blocks. Yet, aurora store s
 
 17
 
-12 20 I were about to install and walkthrough notion and discord, for competitive ux analysis maybe. I did not.
+0 20 I were about to install and walkthrough notion and discord, for competitive ux analysis maybe. I did not.
 
 07 10 Visual design, typing, compiler, agent loop
 
@@ -3650,29 +3650,29 @@ Better to curate an explicit list of contacts and blacklist all of them before s
 
 I could just have persistent supply of bottle water
 
-12 00 Have some noodle hotpot near mt fuji.
+0 00 Have some noodle hotpot near mt fuji.
 
 They use a dedicated cup, which is just another plastic water cup, to kill fire. You can see the stain on the side of the cup.
 
-24 40 Observe. 
+12 40 Observe. 
 
 Telegram: broadcast, or silent broadcast?
 
 (Eat)
 
-24 40 To walkthrough GitHub app
+12 40 To walkthrough GitHub app
 
 And linear maybe. 
 
 Repo. Purpose.
 
-24 50 To ask for the conclusion. 
+12 50 To ask for the conclusion. 
 
 Hypes > utility? 
 
 Use cases? Direction?
 
-24 50 To curate animenz fav songs
+12 50 To curate animenz fav songs
 
 13 20 Visual design, responsive
 
@@ -3760,9 +3760,9 @@ Mai, the cashier, shows a fyi of all languages on apple translate on ipad.
 
 10 00 Draw icon pack for repo
 
-24 30 Prototype tools sidebar
+12 30 Prototype tools sidebar
 
-24 40 Ai community benchmark w examples?
+12 40 Ai community benchmark w examples?
 
 13 30 Two Indian bros take single player fast track. 
 
@@ -3986,17 +3986,17 @@ Some in the family say it looks like a girl, which is ideal.
 
 11 50 It feels more than half here are mandarin speaking...
 
-24 30 Language is confusing. 
+12 30 Language is confusing. 
 
 I'm shortsighted, and I need glasses to see objects afar clearly.
 
-24 30 The eye sight checker is Vietnamese.
+12 30 The eye sight checker is Vietnamese.
 
-24 30 The degree has increased about 100, though the old one works fine.
+12 30 The degree has increased about 100, though the old one works fine.
 
-24 40 To find and fix a missing folder zipper.
+12 40 To find and fix a missing folder zipper.
 
-24 50 The Vietnamese says "strong" to refer to high degree. Though I could understand I thought they must have meant physical strength (tsuyoi).
+12 50 The Vietnamese says "strong" to refer to high degree. Though I could understand I thought they must have meant physical strength (tsuyoi).
 
 13 20 Btw, the eye checking process was quite automated. You have joystick and a square button for the same or couldn't tell and you can select among twelve languages, maybe, before start.
 
