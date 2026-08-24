@@ -2553,6 +2553,9 @@ add 12 for pm.
 
 if the result is 12 or 24, subtract 12.
 
+---
+
+upd: and! consecutive msgs are merged into one, both on ui and when copied. they do show as separate msgs. but the name is only shown once. and the time is of the first msg in the sequence.
 
 16 50 design process panel. elaborate ixd.
 
@@ -2585,4 +2588,27 @@ i may simply remove such comment when "done".
 on code,
 
 - all tools must be `f(stdin, options?)`
-- 
+- for the editor.process, (currently code edit isnt supported), it will receive "should show textarea: false" and get children of what's rendered.
+  - i need the title bar, copy as if it's an editor, and at its heart, it's serializable
+- process item:
+  - tool
+  - args
+    - arg
+    - type
+    - default value
+    - value
+- process data structure: item[]
+- render process: take process data, mutate directly
+- main
+  - pass step by step get output
+
+how would i "mutate directly"?
+
+loop through tools, loop through args, render, onchange: set arg.value
+
+set arg.value is wrapped inside set('process', ...). process, binded to url, is absolutely global state. void return are ignored and subs are fired.
+
+btw, it sees "undefined" as void return. when you omit return or return directly, it must be undefined, not nil.
+
+
+
