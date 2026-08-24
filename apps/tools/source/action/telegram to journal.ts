@@ -285,6 +285,12 @@ function parse_telegram(telegram_text: string): telegram {
       date = +info[2]
       year = +info[3] + 2000
       hour = info[6] == 'AM' ? +info[4] : +info[4] + 12
+      /**
+       * on tg, 12 am means 0 am that day. 12 pm means 12 am that day.
+       */
+      if (hour == 12 || hour == 24) {
+        hour -= 12
+      } 
       minute = +info[5]
     }
 
@@ -664,5 +670,19 @@ export function telegram_to_journal(telegram_text: string, options: telegram_to_
 // `
 
 // log(telegram_to_journal(test_telegram, { rounding: true, targets: each(0, 50, 10) }))
+
+function fix_telegram(journal_text: string) {
+  const journal = parse_journal(journal_text)
+
+  for (const item of journal) {
+    if (item.hour == 12 || item.hour == 24) {
+      item.hour -= 12
+
+      item.content[0] = `${item.hour}` + item.content[0].slice(2)
+    } 
+  }
+
+  return serialize_journal(journal)
+}
 
 

@@ -111,7 +111,7 @@ textarea {
 
     &:hover,
     &:focus-visible,
-    &[focused] {
+    &[focus] {
       background-color: var(--color-bg-tertiary);
     }
   }

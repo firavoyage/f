@@ -10,7 +10,8 @@ import { Sidebar } from 'web/component/sidebar';
 import { List } from 'web/component/list';
 import type { items } from 'web/component/list';
 
-const items: items = ["json to yaml", "yaml to json", "yaml", "json", "toml", "telegram to journal"]
+const items: items = ["json to yaml", "yaml to json", "yaml", "json", "toml", 
+  "telegram to journal"]
 
 export const use_global = state({
   is_sidebar_on: true,
