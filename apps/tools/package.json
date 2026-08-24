@@ -2,7 +2,7 @@
   "type": "module",
   "scripts": {
     "spellcheck": "typos",
-    "dev": "parcel serve 'source/web/index.html' --open --dist-dir .build --cache-dir .build/.parcel-cache"
+    "dev": "trash .build && parcel serve 'source/web/index.html' --open --dist-dir .build --cache-dir .build/.parcel-cache"
   },
   "dependencies": {
     "@folder/xdg": "4.0.1",

@@ -3,6 +3,7 @@ import { Editor } from "./editor"
 import * as tools from 'action/tools';
 import { use_global } from "./app";
 import { useMount } from "react-use";
+import { calculate_gcd } from 'action/gcd';
 
 export function Main() {
   const [input, set_input] = useState('')

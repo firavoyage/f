@@ -2485,5 +2485,12 @@ btw, the data structure is obviously ast. not everything could be preserved. lik
 
 i would create a tool in js to sync memories first.
 
+---
+
+well... a problem. vite is showy (port number, cli, crash screens) and requires plugins (vendor lockin).
+
+and parceljs wouldnt just track everything.
+
+i guess i would rather clear cache. the simplest way. but why doesnt it track?
 
 
