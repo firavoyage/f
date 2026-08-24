@@ -1,4 +1,5 @@
 import type { arg } from 'web/component/process'
+import { normalize_item } from 'web/component/list'
 
 export * from 'action/maimai'
 export * from 'action/json yaml toml xml'
@@ -14,7 +15,7 @@ import type { items } from 'web/component/list';
 export const items: items = ["json to yaml", "yaml to json", "yaml", "json", "toml", 
   "telegram to journal"]
 
-export const args_map: Record<string, arg[]> = {
+export const tool_to_args: Record<string, arg[]> = map({
   "merge journal": [
     {
       name: 'original text',
@@ -22,4 +23,4 @@ export const args_map: Record<string, arg[]> = {
       value: ''
     }
   ]
-}
+}, ([key, value]) => ([normalize_item(key), value]))

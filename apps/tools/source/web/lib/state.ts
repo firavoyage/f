@@ -224,7 +224,8 @@ export function state<T extends NonFunction>(initial: T, options: state<T> = {})
     history.replaceState({}, '', url)
   }
 
-  function set(new_value: T | ((old_value: T) => T), path?: key) {
+  function set(new_value: any, path?: key) {
+  // function set(new_value: T | ((old_value: T) => T), path?: key) {
     if (is_given(path)) {
       if (typeof new_value == 'function') {
         // @ts-expect-error 
