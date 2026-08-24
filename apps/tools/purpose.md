@@ -2493,4 +2493,18 @@ and parceljs wouldnt just track everything.
 
 i guess i would rather clear cache. the simplest way. but why doesnt it track?
 
+---
+
+i think it wont be fixed.
+
+at the end of the day you must use react. and it logs twice (i.e. some weird object object). hmr doesnt reload the full app. effect doesnt rerun and you would have to reload anyway.
+
+vite isnt just optimal. tlide or relative path would be even more prone.
+
+the current solution is i would just rerun b dev, which would trash stale cache first.
+
+everything would be in sync.
+
+in the future i may fight the tools, so it would rebuild whenever anything changes. the current page would refresh.
+
 
