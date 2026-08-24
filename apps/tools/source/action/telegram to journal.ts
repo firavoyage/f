@@ -131,13 +131,28 @@ function sort(journal: journal) {
   }
 
   function compare(a: journal_item, b: journal_item) {
-    const is_a_before_b = false
-    const is_a_after_b = true
+    const is_a_before_b = -1
+    const is_a_after_b = 1
+
+    // order is irrelevant, would be ignored anyway
+    if (a.is_keyword || b.is_keyword) {
+      return is_a_before_b
+    } 
 
     for (const key of ['year', 'month', 'date', 'hour', 'minute', 'index']) {
+      if (!is_given(a[key]) || !is_given(b[key])) {
+        continue
+      } 
+
+      log({key, akey: a[key], bkey: b[key]})
+
+      // @ts-expect-error 
       if (a[key] < b[key]) {
+        // log(key)
         return is_a_before_b
+        // @ts-expect-error 
       } else if (a[key] > b[key]) {
+        // log(key)
         return is_a_after_b
       }
     }
@@ -147,6 +162,8 @@ function sort(journal: journal) {
      */
     throw err('unable to determine the order while sorting')
   }
+
+  log(journal.sort(compare))
 
   return journal.sort(compare)
 }
@@ -693,4 +710,22 @@ function fix_telegram(journal_text: string) {
   return serialize_journal(journal)
 }
 
+const test1 = `
+aug 2026
 
+01
+
+00 40 begin aug. 01 00 archive chats on privacy, sec, and hacks. 03 40 automate to export zhihu. write a simple contributing guide. revise agent write. <!-- i realize i dont really need a simple variant. it should be simple by default. -->
+`
+
+const test2 = `
+jul 2026
+
+08
+
+18 20 See a msg from menci in the list...
+
+Eat memoh group. 
+`
+
+log(merge_journal(test2, {original_text: test1}))
