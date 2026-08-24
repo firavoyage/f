@@ -14,6 +14,8 @@ import { items, tool_to_args } from 'action/tools';
 import type { item } from 'web/component/process'
 import { useMount } from 'react-use';
 
+import { cloneDeep } from 'lodash-es'
+
 export const use_global = state({
   'input': '',
   'output': '',
@@ -97,10 +99,10 @@ export function App() {
         <List {...p({
           items, set_focus(tool: string) {
             use_global.set((process: item[]) => {
-              process.push({
+              process.push(cloneDeep({
                 tool,
                 args: tool_to_args[tool] ?? []
-              })
+              }))
             }, 'process')
           }
         })}></List>

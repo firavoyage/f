@@ -7,6 +7,7 @@
     "clsx": "2.1.1",
     "css.escape": "1.5.1",
     "inline-style-parser": "0.2.9",
+    "lodash-es": "4.18.1",
     "mousetrap": "1.6.5",
     "mousetrap-global-bind": "1.1.0",
     "react": "19.2.7",
