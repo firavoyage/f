@@ -50573,6 +50573,10 @@ the news was the web playground could be rev proxied to llm api.
 
 19 30 watch `The Disappearance of Haruhi Suzumiya (2010)` on the plane back home.
 
+14 10 sync memories of summer vacation.
+
+from 8 jul to 24 aug.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
