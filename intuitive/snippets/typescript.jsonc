@@ -127,7 +127,7 @@ ref:
   "import": {
     "prefix": "im",
     "body": [
-      "import ${2:name} from '${1:module}';$0"
+      "import ${2:name} from '${1:module}'$0"
     ],
   },
   "import everything": {
@@ -136,25 +136,25 @@ ref:
       "ia",
     ],
     "body": [
-      "import * as ${2:name} from '${1:module}';$0"
+      "import * as ${2:name} from '${1:module}'$0"
     ],
   },
   "deconstruct import": {
     "prefix": "di",
     "body": [
-      "import { ${2:name} } from '${1:module}';$0"
+      "import { ${2:name} } from '${1:module}'$0"
     ],
   },
   "await import": {
     "prefix": "ai",
     "body": [
-      "const ${2:name} = await import('${1:module}');$0"
+      "const ${2:name} = await import('${1:module}')$0"
     ],
   },
   "deconstruct await import": {
     "prefix": "dai",
     "body": [
-      "const { ${2:name} } = await import('${1:module}');$0"
+      "const { ${2:name} } = await import('${1:module}')$0"
     ],
   },
   "re export": {
@@ -178,9 +178,12 @@ ref:
     ],
   },
   "import type": {
-    "prefix": "it",
+    "prefix": [
+      "it",
+      "dit",
+    ],
     "body": [
-      "import type { ${2:type} } from '${1:module}';$0"
+      "import type { ${2:type} } from '${1:module}'$0"
     ],
   },
   "declare global type": {

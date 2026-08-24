@@ -9,8 +9,9 @@ import { use_window_active } from 'web/lib/window.use';
 import { Sidebar } from './sidebar';
 
 import { List } from './list';
+import type { items } from 'web/component/list';
 
-const list = ["json to yaml", "yaml to json", "yaml", "json", "toml", "telegram_to_journal"]
+const list: items = ["json to yaml", "yaml to json", "yaml", "json", "toml", "telegram to journal"]
 
 export const use_global = state({
   is_sidebar_on: true,

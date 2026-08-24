@@ -2507,6 +2507,36 @@ everything would be in sync.
 
 in the future i may fight the tools, so it would rebuild whenever anything changes. the current page would refresh.
 
-13 40 
+13 40 style scrollbar. apply dark mode. web/lib/sync theme: rename `data-theme` to `theme`.
+
+p
+
+```css
+[date-theme="dark"] {
+  color-scheme: dark;
+}
+```
+
+c
+
+```css
+[theme="dark"] {
+  color-scheme: dark;
+}
+```
+
+well... data-theme works. i made a typo though. lol.
+
+---
+
+i couldnt just disable the dir arrows while using native scrollbar.
+
+maybe i dont have it. it would be likely quirky or incompatible.
+
+create scrollarea component.
+
+could have
+
+---
 
 

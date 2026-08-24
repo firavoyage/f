@@ -288,6 +288,7 @@ web: <!-- frontend, web, ts/js -->
 - css design tokens length units
 - js esm import export
 - parceljs cache whole repo tracking reload
+- css scrollbar styling
 
 backend:
 

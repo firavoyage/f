@@ -2,12 +2,12 @@ export type theme = "system" | "light" | "dark";
 
 export function sync_theme(theme: theme) {
   if (theme == "light" || theme == "dark") {
-    document.documentElement.setAttribute("data-theme", theme);
+    document.documentElement.setAttribute("theme", theme);
   } else if (theme == 'system') {
     const query = window.matchMedia("(prefers-color-scheme: dark)");
 
     function sync_system() {
-      document.documentElement.setAttribute("data-theme", query.matches ? "dark" : "light");
+      document.documentElement.setAttribute("theme", query.matches ? "dark" : "light");
     }
 
     sync_system();
