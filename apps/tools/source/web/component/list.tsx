@@ -1,19 +1,6 @@
 type item = string | { name: string, id: string }
 
-type items = item[] | { [key: string]: items }
-
-type list = {
-  items: items
-  focus?: Key
-  set_focus?: (focus: Key) => void
-}
-
-type row = {
-  type: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p'
-  name: string
-  id: Key
-  parents: Key[]
-}
+export type items = item[] | { [key: string]: items }
 
 function normalize_item(item: item) {
   if (typeof item == 'string') {
@@ -44,6 +31,19 @@ function flatten(items: items, parents: Key[] = []): row[] {
   }
 
   return rows
+}
+
+type row = {
+  type: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p'
+  name: string
+  id: Key
+  parents: Key[]
+}
+
+type list = {
+  items: items
+  focus?: Key
+  set_focus?: (focus: Key) => void
 }
 
 export function List({ items, focus, set_focus }: list) {
