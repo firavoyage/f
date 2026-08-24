@@ -528,7 +528,7 @@ type telegram_to_journal = {
   targets: number[]
 }>
 
-export function telegram_to_journal(telegram_text: string, options: telegram_to_journal = {}) {
+function telegram_to_journal_util(telegram_text: string, options: telegram_to_journal = {}) {
   const { rounding, targets } = options
 
   let telegram = parse_telegram(telegram_text)
@@ -674,6 +674,10 @@ export function telegram_to_journal(telegram_text: string, options: telegram_to_
 // `
 
 // log(telegram_to_journal(test_telegram, { rounding: true, targets: each(0, 50, 10) }))
+
+export function telegram_to_journal(telegram_text: string) {
+  return telegram_to_journal_util(telegram_text, { rounding: true, targets: each(0, 50, 10) })
+}
 
 function fix_telegram(journal_text: string) {
   const journal = parse_journal(journal_text)
