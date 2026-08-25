@@ -54331,6 +54331,20 @@ functional. but even more vendor lockin.
 
 21 10 play cr kondon mode.
 
+26
+
+01 10 read some guides on css tricks.
+
+https://css-tricks.com/centering-css-complete-guide/
+
+https://css-tricks.com/float-center/
+
+memories memories...
+
+https://css-tricks.com/a-guide-to-console-commands/
+
+wow insane.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
