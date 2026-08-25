@@ -53947,15 +53947,33 @@ from 8 jul to 24 aug.
 
 18 40 open an issue on memoh about typos.
 
-``````md
 Fix typos
 
 how to reproduce
 
 ```
-
+ ~ % cd Projects
+ ~/Projects % git clone https://github.com/memohai/Memoh memoh
+Cloning into 'memoh'...
+remote: Enumerating objects: 60421, done.
+remote: Counting objects: 100% (7470/7470), done.
+remote: Compressing objects: 100% (1964/1964), done.
+remote: Total 60421 (delta 6224), reused 5517 (delta 5506), pack-reused 52951 (from 2)
+Receiving objects: 100% (60421/60421), 76.20 MiB | 25.62 MiB/s, done.
+Resolving deltas: 100% (40371/40371), done.
+ ~/Projects % cd memoh
+ ~/Projects/memoh % tee .typos.toml > /dev/null <<EOF
+[default]
+# Ignore Short (1~4 chars long) False Positives
+extend-ignore-words-re = [
+    '^[a-zA-Z]{1,4}$'
+]
+EOF
+[default.extend-words]
+# Whitelist Specific Valid Words
+dota = "dota"
+pyo3 = "pyo3"
 ```
-``````
 
 
 
