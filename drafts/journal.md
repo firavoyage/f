@@ -54113,6 +54113,8 @@ how does github projects feel?
 
 functional. but even more vendor lockin.
 
+20 00 watch lciop cr kondon mode stream.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->

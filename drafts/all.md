@@ -367,6 +367,7 @@ desktop:
 - shell fn syntax args variables input output return heredoc here string
 - setup forgejo
 - shell typos cli config
+- shell typos abstraction
 
 android:
 
