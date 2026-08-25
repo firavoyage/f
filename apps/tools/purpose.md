@@ -2676,12 +2676,21 @@ i would like to fix parceljs. i may put index html on source instead of source/w
 
 i would like to read css tricks flex (grid) guide. that builds confidence.
 
-17 10 fix parcel tracking by coping index html to a higher folder.
+17 10 fix parcel tracking by coping index html to a higher folder. 17 30
 
 that works!!!!!
 
 ---
 
 so simple. configless.
+
+---
+
+deprecate web/env.json.
+
+17 30 write knowledge/agent comment.
+
+it should ideally know how to write comments. though, i would rather let it write no comment by default.
+
 
 
