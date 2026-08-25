@@ -2652,7 +2652,36 @@ js sort requires
 - symmetry
 - transitivity
 
+25
+
+17 00 pivot.
+
+the process panel is almost done. basically, everything can be a textarea.
+
+i may convert to bools, numbers, or objects.
+
+it's incomplete though.
+
 ---
 
+feel im stuck.
+
+i dont have a purpose. i may need base64 convert. i may like to check color contrast. i may not.
+
+i dont like to use cyberchef or random sites when i need them.
+
+yet, i have sth to do. i have some ideas.
+
+i would like to fix parceljs. i may put index html on source instead of source/web. dk if it would work.
+
+i would like to read css tricks flex (grid) guide. that builds confidence.
+
+17 10 fix parcel tracking by coping index html to a higher folder.
+
+that works!!!!!
+
+---
+
+so simple. configless.
 
 

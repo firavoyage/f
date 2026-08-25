@@ -14,3 +14,9 @@ createRoot(document.getElementById("root")!).render(
       <App />
     </StrictMode> : <App />
 )
+
+if (process.env.NODE_ENV === 'development') {
+  window.addEventListener('online', () => {
+    window.location.reload();
+  });
+}
