@@ -604,6 +604,8 @@ If you are setting up layout grids or styling text, let me know if you want to e
 
 # what is 1px on web
 
+## what is 1px on web
+
 On the web, **1px (one CSS pixel)** is <mark>a software-defined unit of measurement used in<span> </span><span><a rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/length">HTML and CSS</a></span></mark>, and it is **not the same as one physical hardware pixel** on your screen. [link](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/length)
 
 Historically, 1px did map directly to a single tiny light bulb (dot) on old desktop monitors. However, modern high-resolution displays (like Apple's Retina or 4K displays) pack so many microscopic physical pixels into an inch that if a web browser used a 1:1 match, a standard website would look tiny and unreadable. [link](https://dev.to/lebbe/a-px-is-not-a-pixel-long-live-the-px-26l7)
@@ -793,4 +795,63 @@ Would you like to explore **how modern smartphone browsers recalculate this math
 
 Show all
 
-# 
+# how does base 10 or base 12 feel
+
+The conceptual "feel" of a number base comes down to how we slice and dice quantities, and it heavily dictates how "clean" or "messy" everyday arithmetic feels. [link](https://www.reddit.com/r/math/comments/wx4rvu/why%5Farent%5Fwe%5Fcounting%5Fby%5F12s%5Fbase%5F12%5Fnumberphile/)
+
+**Base 10 feels natural for counting but clumsy for sharing, whereas Base 12 feels rigid to learn initially but incredibly smooth and elegant for fractions and divisions.** Because we have ten fingers, Base 10 has been culturally ingrained into us to the point that it feels like an absolute truth, even though it is essentially an anatomical accident. [link](https://www.youtube.com/watch?v=y%5FQBDrBlbds)
+
+### The Vibe of Base 10 (Decimal)
+
+Base 10 feels very **linear and rigid**. It thrives on pairs and deep structural leaps, but stalls out quickly when you try to break it into groups. [link](https://www.quora.com/Is-base-10-the-most-comprehensible-number-system-or-are-we-all-just-used-to-it)
+
+- **The Look:** 10, 100, 1000. It feels satisfyingly orderly because each placeholder is exactly "one hand-count" larger than the last. [link](https://www.quora.com/What-are-the-advantages-and-disadvantages-of-using-base-12-instead-of-base-10-for-counting)
+- **The Friction:** 10 is only divisible by 2 and 5. Because of this, trying to divide things into thirds or quarters—which are incredibly common human desires—creates immediate cognitive friction. [link](https://www.quora.com/Is-base-10-the-most-comprehensible-number-system-or-are-we-all-just-used-to-it)
+- **The Emotional Reaction:** Buying a pizza and cutting it into 3 parts in Base 10 means everyone gets exactly `0.3333...` of the pie. That infinite repeating string feels "broken" and incomplete to our brains. Base 10 makes everyday sharing feel intrinsically messy. [link](https://www.youtube.com/watch?v=y%5FQBDrBlbds)
+
+### The Vibe of Base 12 (Duodecimal / Dozenal)
+
+Base 12 feels **modular, highly geometric, and harmonically clean**. It is the math of the marketplace, baking, and music. [link](https://www.reddit.com/r/math/comments/554f94/is%5Fbase12%5Factually%5Fthe%5Fbest%5Fnumber%5Fsystem/)
+
+- **The Look:** It requires two new single-digit symbols to represent "ten" and "eleven" (often written as ↊ and ↋, or A and B) before rolling over to "10" to represent the quantity twelve. [link](https://www.reddit.com/r/math/comments/wx4rvu/why%5Farent%5Fwe%5Fcounting%5Fby%5F12s%5Fbase%5F12%5Fnumberphile/)
+- **The Ease of Division:** Because 12 can be split perfectly by 2, 3, 4, and 6, numbers feel highly cooperative. [link](https://www.youtube.com/watch?v=bUABkgugr0w\&t=16)
+- **The Emotional Reaction:** In Base 12, a third is written as a clean `0.4`. A quarter is a perfect `0.3`. Splitting a bill among 3 or 4 friends involves no rounding or loose pennies. It feels highly satisfying because fractions seamlessly transform into clean, finite "decimals". [link](https://www.reddit.com/r/askmath/comments/18jpkfs/what%5Fwould%5Fbe%5Fthe%5Fchanges%5Fand/)
+
+### Direct Comparison of Mathematical "Feel"
+
+| Mathematical Task         | Base 10 (Decimal)                            | Base 12 (Duodecimal)                                                         |
+| ------------------------- | -------------------------------------------- | ---------------------------------------------------------------------------- |
+| **Counting on one hand**  | Feels normal (5 fingers)                     | Feels normal if you count the 12 finger joints using your thumb as a pointer |
+| **Halving (1/2)**         | Clean (`0.5`)                                | Clean (`0.6`, because 6 is half of twelve)                                   |
+| **Thirding (1/3)**        | Ugly and infinite (`0.333...`)               | Perfectly whole (`0.4`)                                                      |
+| **Quartering (1/4)**      | Decent (`0.25`)                              | Shorter and cleaner (`0.3`)                                                  |
+| **Dividing by 5 (1/5)**   | Clean (`0.2`)                                | Messy and infinite (`0.2497...`)                                             |
+| **Multiplication Tables** | Only the 2s and 5s have easy visual patterns | The 2s, 3s, 4s, and 6s all have beautiful, predictable repeating patterns    |
+
+### Why We Internalize Both
+
+We actually use the "feel" of Base 12 every single day without realizing it because human history couldn't completely abandon it. [link](https://www.youtube.com/shorts/lSMPJ1ZJk%5FU)
+
+Our **clocks** are split into 12 hours because dividing a day into halves, thirds, and quarters is much easier when managing time. A **circle** has 360 degrees (a multiple of 12) because it allows navigate-able, clean geometry. When you buy eggs, you buy a **dozen** because a box of 12 can be packaged as 2×6 or 3×4, whereas a box of 10 eggs can only sit in a rigid, awkward 2×5 grid. [link](https://www.youtube.com/shorts/lSMPJ1ZJk%5FU)
+
+If you are interested in exploring how different number systems alter our worldview, would you like to see how **prime numbers** behave differently in Base 12, or explore how the **multiplication tables** would look? [link](https://www.youtube.com/watch?v=y%5FQBDrBlbds)
+
+24 sites
+
+- [link](https://www.reddit.com/r/askmath/comments/1mzya43/what%5Fare%5Fsome%5Fsmall%5Fbenefits%5Fof%5Fusing%5Fbase10/)\
+  What are some small benefits of using base-10 compared to ...\
+  Aug 25, 2025 — In the system i linked the limit is 144, at some point you have to stop counting with your fingers and do it in your head. The bas...\
+  Reddit·r/askmath
+- [link](https://www.tiktok.com/@dougweaverart/video/7574792574859365662)\
+  Exploring Base Twelve in Mathematics Concepts\
+  Nov 20, 2025 — i have no idea why we do math in base 10 other than the fact that we have 10 fingers why is it that when we get to 10. 12 is a bet...\
+  [2:17](https://www.tiktok.com/@dougweaverart/video/7574792574859365662)\
+  TikTok·dougweaverart
+- [link](https://www.reddit.com/r/math/comments/wx4rvu/why%5Farent%5Fwe%5Fcounting%5Fby%5F12s%5Fbase%5F12%5Fnumberphile/)\
+  Why aren't we counting by 12s? Base 12 - Numberphile\
+  Aug 25, 2022 — There are people who advocate for changing our counting system from base 10 (decimal) to base 12 (duodecimal or dozenal), arguing ...\
+  [9:12](https://www.reddit.com/r/math/comments/wx4rvu/why%5Farent%5Fwe%5Fcounting%5Fby%5F12s%5Fbase%5F12%5Fnumberphile/)\
+  Reddit·Numberphile
+
+Show all
+

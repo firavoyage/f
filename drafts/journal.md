@@ -54349,6 +54349,12 @@ wow insane.
 
 "vimeo: not available"
 
+---
+
+i may introduce comfortable compact cozy <!-- dense --> to utilitarian design system.
+
+comfortable and cozy are linguistically synonyms. and i would keep the <!-- co- --> rhythm anyway.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
