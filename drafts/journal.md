@@ -54109,6 +54109,10 @@ btw, the protocol (https) doesnt have to carry visual weight. you may omit it.
 rationale: in ux, if they dont need to know, it should not grab their attention. progressive disclosure may be adopted iff some of them are serious.
 ```
 
+how does github projects feel?
+
+functional. but even more vendor lockin.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
