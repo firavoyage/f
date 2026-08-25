@@ -2692,5 +2692,10 @@ deprecate web/env.json.
 
 it should ideally know how to write comments. though, i would rather let it write no comment by default.
 
+23 30 centralize and name z-index as design tokens. script/convert design tokens: fix `value.split(' ')` isnt a function when value isnt string (incorrect type assertion `value as string`)
+
+no idea scripts are plural. rather make it consistently singular, against all conventions.
+
+css intellisense experiences some quirks. not working.
 
 

@@ -80,7 +80,7 @@ textarea {
     left: 0;
     bottom: 0;
     width: var(--spacing-64);
-    z-index: 900;
+    z-index: var(--hierarchy-sidebar);
     transform: translateX(-100%);
     /* transition: transform 0.3s ease; */
 
@@ -88,7 +88,7 @@ textarea {
       position: fixed;
       inset: 0;
       background: var(--color-bg-backdrop);
-      z-index: -1;
+      z-index: var(--hierarchy-invisible-backdrop);
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.3s ease;
@@ -98,7 +98,7 @@ textarea {
       transform: translateX(0);
 
       ~ .backdrop {
-        z-index: 800;
+        z-index: var(--hierarchy-backdrop);
         opacity: 1;
         pointer-events: auto;
       }

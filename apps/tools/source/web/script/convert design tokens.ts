@@ -145,7 +145,7 @@ function convert(design_yaml: string) {
 
   const { modes, ...tokens_obj } = design
 
-  type tokens = Record<string, string>
+  type tokens = Record<string, string | number>
 
   type context = {
     type: string
@@ -187,13 +187,15 @@ function convert(design_yaml: string) {
     separator: '-', preserve
   })
 
-  function set(variant: string, variable: string, value: string) {
-    // handle "bold text.lg typeface.serif"
-    for (const part of value.split(' ')) {
-      if (has(map, part)) {
-        value = value.replaceAll(part, `var(--${part.replaceAll('.', '-')})`)
+  function set(variant: string, variable: string, value: string | number) {
+    if (typeof value == 'string') {      
+      // handle "bold text.lg typeface.serif"
+      for (const part of value.split(' ')) {
+        if (has(map, part)) {
+          value = value.replaceAll(part, `var(--${part.replaceAll('.', '-')})`)
+        }
       }
-    }
+    } 
 
     contexts[variant].tokens[variable] = value
 
@@ -209,7 +211,7 @@ function convert(design_yaml: string) {
 
     if (typeof value == 'object') {
       for (const [variant, contextual_value] of Object.entries(value)) {
-        set(variant, variable, contextual_value as string)
+        set(variant, variable, contextual_value)
       }
     } else {
       set('root', variable, value)
