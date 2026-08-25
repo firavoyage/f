@@ -54091,6 +54091,24 @@ yet another example of ai slop, i ended up finding.
 
 no low hanging fruits.
 
+---
+
+i feel i could rename firavoyage to, like, firahq. somewhat i like the name voyage though. no special meaning. just a word that made me gravitated, when i were learning english.
+
+19 50 open an issue on arkloop.
+
+```
+Make branding consistent
+
+on the repo metadata (on the right panel of the github repo home page), it shows arkloop.io, while on the readme, currently the poster image hardcodes arkloop.cn.
+
+could be ideally fixed w ease, if the poster were produced cleanly (i.e. reusable template besides the rasterized produce).
+
+btw, the protocol (https) doesnt have to carry visual weight. you may omit it.
+
+rationale: in ux, if they dont need to know, it should not grab their attention. progressive disclosure may be adopted iff some of them are serious.
+```
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
