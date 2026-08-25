@@ -54329,7 +54329,9 @@ functional. but even more vendor lockin.
 
 20 00 watch lciop cr kondon mode stream.
 
+21 10 play cr kondon mode.
 
+z
 
 <!-- be explicit and organized. focus and timebox. -->
 
