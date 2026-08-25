@@ -1,20 +1,20 @@
 import 'web/design/utilitarian/utilitarian.css'
 import 'web/design/app.css'
 
+import { useMount } from 'react-use';
+import { cloneDeep } from 'lodash-es'
+
 import { use_bind } from 'web/lib/keyboard.use';
 import { use_sync_theme } from "web/lib/sync_theme.use";
-import { Main } from "web/component/main";
 import { use_window_active } from 'web/lib/window.use';
-import { Sidebar } from 'web/component/sidebar';
-
-import { List } from 'web/component/list';
 
 import { items, tool_to_args } from 'action/tools';
 
+import { Main } from "web/component/main";
+import { Sidebar } from 'web/component/sidebar';
+import { List } from 'web/component/list';
 import type { item } from 'web/component/process'
-import { useMount } from 'react-use';
-
-import { cloneDeep } from 'lodash-es'
+import { Menu } from 'web/component/menu';
 
 export const use_global = state({
   'input': '',
@@ -96,6 +96,7 @@ export function App() {
 
     <div className="app">
       <Sidebar>
+        <Menu {...p({ app: 'Tools' })}></Menu>
         <List {...p({
           items, set_focus(tool: string) {
             use_global.set((process: item[]) => {
