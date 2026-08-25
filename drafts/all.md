@@ -224,6 +224,7 @@ archi:
 - perfectionism procrastination over engineering premature optimization
 - compare type and kind
 - code style comment title case
+- ts import import type
 
 web: <!-- frontend, web, ts/js -->
 

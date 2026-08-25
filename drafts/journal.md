@@ -53939,6 +53939,10 @@ Doesn't seem I could talk w them.
 
 from 8 jul to 24 aug.
 
+25
+
+17 50 read <!-- reread --> css tricks flexbox guide.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
