@@ -2696,6 +2696,6 @@ it should ideally know how to write comments. though, i would rather let it writ
 
 no idea scripts are plural. rather make it consistently singular, against all conventions.
 
-css intellisense experiences some quirks. not working.
+css intellisense experiences some quirks. it doesnt detect file change when generated. i have to, like, enter and then remove a space on the generated css.
 
 
