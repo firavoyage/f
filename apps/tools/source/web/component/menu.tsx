@@ -8,7 +8,7 @@ export function Menu(props: menu) {
   return (
     <div className="menu">
       <div className="search">search</div>
-      <div className="app">{app}</div>
+      <div className="name">{app}</div>
       <div className="hamburger">hamburger</div>
     </div>
   )

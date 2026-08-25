@@ -10,6 +10,7 @@ body {
   * {
     display: flex;
     flex-direction: column;
+    overflow: hidden;
   }
 }
 
@@ -51,8 +52,6 @@ textarea {
   flex-direction: row;
 
   min-height: 100vh;
-  overflow: hidden;
-
   font: var(--font-text);
 }
 
@@ -67,12 +66,6 @@ textarea {
       margin-left: calc(var(--spacing-64) * -1);
     }
   }
-  /* width: var(--spacing-64);
-  flex-shrink: 0;
-
-  &:not([visible]) {
-    margin-left: calc(var(--spacing-64) * -1);
-  } */
 
   &[variant="overlay"] {
     position: fixed;
@@ -106,13 +99,32 @@ textarea {
   }
 
   .menu {
-    flex-basis: var(--spacing-10);    
+    padding: var(--spacing-0\.5);
+
+    height: var(--spacing-8);
+
     flex-direction: row;
+
+    .search, .hamburger {
+      width: var(--spacing-8);
+      height: var(--spacing-8);
+
+      overflow: hidden;
+    }
+
+    .name {
+      flex-grow: 1;
+      align-items: center;      
+
+      font: var(--font-heading);
+    }
   }
 
   .list * {
     width: 100%;
     display: block;
+
+    padding-inline: var(--spacing-0\.5);
 
     &:hover,
     &:focus-visible,
