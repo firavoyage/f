@@ -244,8 +244,8 @@ max-width:
 
 typeface:
   # sans: '"roboto", sans-serif'
-  sans: 'roboto, Adwaita Sans, Ubuntu Sans, sans-serif'
-  monospace: 'Fira Code, Adwaita Mono, Ubuntu Mono, monospace'
+  sans: "roboto, Adwaita Sans, Ubuntu Sans, sans-serif"
+  monospace: "Fira Code, Adwaita Mono, Ubuntu Mono, monospace"
 
 text:
   xs: "0.75rem/1rem"
@@ -298,6 +298,7 @@ border:
   2: 2px
   4: 4px
   8: 8px
+
 # # todo
 # scrollbar:
 #   width: "8px"
@@ -310,3 +311,10 @@ border:
 #   color: "rgba(53, 132, 228, 0.5)"
 #   width: "2px"
 #   offset: "-2px"
+
+hierarchy:
+  invisible-backdrop: -100
+  backdrop: 800
+  sidebar: 900
+
+

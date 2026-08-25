@@ -1,7 +1,7 @@
 {
   "packageManager": "pnpm@10.30.2",
   "scripts": {
-    "convert": "'./scripts/convert design tokens.sh'"
+    "convert": "'./script/convert design tokens.sh'"
   },
   "dependencies": {
     "clsx": "2.1.1",
