@@ -2698,4 +2698,8 @@ no idea scripts are plural. rather make it consistently singular, against all co
 
 css intellisense experiences some quirks. it doesnt detect file change when generated. i have to, like, enter and then remove a space on the generated css.
 
+26
+
+03 10 create component menu.
+
 

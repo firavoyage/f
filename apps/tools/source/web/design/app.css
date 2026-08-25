@@ -105,6 +105,11 @@ textarea {
     }
   }
 
+  .menu {
+    flex-basis: var(--spacing-10);    
+    flex-direction: row;
+  }
+
   .list * {
     width: 100%;
     display: block;

@@ -8,6 +8,7 @@ atom
 
 pattern
 
+- menu
 - sidebar
 - editor
 - process
