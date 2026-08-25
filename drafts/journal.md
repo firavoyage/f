@@ -53943,6 +53943,20 @@ from 8 jul to 24 aug.
 
 17 50 read <!-- reread --> css tricks flexbox guide.
 
+18 20 change username to `precioushq` on codepen. silence avatar.
+
+18 40 open an issue on memoh about typos.
+
+``````md
+Fix typos
+
+how to reproduce
+
+```
+
+```
+``````
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
