@@ -54345,6 +54345,10 @@ https://css-tricks.com/a-guide-to-console-commands/
 
 wow insane.
 
+"learn jquery, 2015, watch screencast"
+
+"vimeo: not available"
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
