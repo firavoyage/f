@@ -53945,10 +53945,10 @@ from 8 jul to 24 aug.
 
 18 20 change username to `precioushq` on codepen. silence avatar.
 
-18 40 open an issue on memoh about typos.
+18 40 open an issue on memoh about typos. 19 30
 
 ``````
-Fix typos
+Clean redundant testing <!-- Fix typos -->
 
 # summary
 
@@ -54030,7 +54030,7 @@ sql related ones are false positives.
 
 "pendings" as noun is acceptable.
 
-on "scaned", look at the code
+for "scaned", look at the code
 
 `client_test.go`
 
@@ -54064,12 +54064,33 @@ func TestPollQRStatusNormalizesLegacyScannedStatus(t *testing.T) {
 }
 ```
 
+`client.go`
 
+```go
+	if status.Status == "scaned" {
+		status.Status = "scanned"
+	}
+```
 
-# thoughts
+it's a "write" on test, thus unlikely an issue on the tencent side.
 
+likely redundant testing, a common vibe coding anti pattern, i.e. introducing and then patching issues, rather than writing clean code in the first place
 
+# proposal
+
+doesnt seem it matters ~~so i would rather not mess up w tedious git ops, i.e. fork, clone, fix, commit, pr, test...~~
+
+remove dead code if you like.
+
+# background
+
+i felt boring these days, somewhat. i thought there would be some low hanging fruits in repos like memoh (typical fast paced startups). there were not.
+
+yet another example of ai slop, i ended up finding.
 ``````
+
+no low hanging fruits.
+
 
 
 <!-- be explicit and organized. focus and timebox. -->
