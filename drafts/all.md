@@ -295,6 +295,7 @@ web: <!-- frontend, web, ts/js -->
 - css scrollbar styling
 - js array sort compare requirements
 - parceljs fix whole repo file tracking tsconfig baseurl auto reload after sleep
+- design length unit px rem
 
 backend:
 
