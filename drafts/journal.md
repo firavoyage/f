@@ -54095,6 +54095,63 @@ no low hanging fruits.
 
 i feel i could rename firavoyage to, like, firahq. somewhat i like the name voyage though. no special meaning. just a word that made me gravitated, when i were learning english.
 
+---
+
+btw...
+
+```
+ ...Documents/f/humility % typos
+error: `prinicples` should be `principles`
+   ╭▸ ./notes.md:83:87
+   │
+83 │ if you dont tell, it simply wont know. if you tell, but in a generic style, like some prinicples, it might know, but sometimes i…
+   ╰╴                                                                                      ━━━━━━━━━━
+error: `capure` should be `capture`
+   ╭▸ ./source/lib/log.ts:52:10
+   │
+52 │  * todo: capure state of an object?
+   ╰╴         ━━━━━━
+error: `infomation` should be `information`
+   ╭▸ ./copying.md:31:25
+   │
+31 │ it's a game of complete infomation whatever. everything just eventually reduces to roi.
+   ╰╴                        ━━━━━━━━━━
+error: `fondamental` should be `fundamental`
+  ╭▸ ./source/lib/test/temp.md:3:1
+  │
+3 │ fondamental
+  ╰╴━━━━━━━━━━━
+error: `flase` should be `false`, `flake`, `flame`, `flare`, `flash`, `flask`
+  ╭▸ ./source/lib/test/temp.md:7:4
+  │
+7 │ do flase negatives outweight false positives?
+  ╰╴   ━━━━━
+error: `outweight` should be `outweigh`
+  ╭▸ ./source/lib/test/temp.md:7:20
+  │
+7 │ do flase negatives outweight false positives?
+  ╰╴                   ━━━━━━━━━
+error: `possiblities` should be `possibilities`
+    ╭▸ ./notes.md:192:78
+    │
+192 │ they are use cases. not how it works. i kind of love exploring the ideas and possiblities, though.
+    ╰╴                                                                             ━━━━━━━━━━━━
+error: `slience` should be `silence`
+   ╭▸ ./source/lib/log_fs.ts:16:28
+   │
+16 │  * todo: wrap in handle to slience file writing errors? (non critical)
+   ╰╴                           ━━━━━━━
+error: `continously` should be `continuously`
+    ╭▸ ./notes.md:403:22
+    │
+403 │ with 30 messages, it continously fetching (nodes?) on the frontend
+    ╰╴                     ━━━━━━━━━━━
+```
+
+```
+
+```
+
 19 50 open an issue on arkloop.
 
 ```
