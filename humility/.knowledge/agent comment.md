@@ -12,7 +12,8 @@
 # 0.2 (2026.08.25)
 
 - self explanatory over commenting
-- lowercase for what and why, title case for where
+- title case for what and where
+- lowercase for why, sentence case when multi line
 - never uppercase
 - no styling
 

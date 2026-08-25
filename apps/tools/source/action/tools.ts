@@ -8,10 +8,10 @@ export * from 'action/telegram to journal'
 // @ts-expect-error 
 import type { items } from 'web/component/list';
 // @ts-expect-error 
-export const items: items = ["json to yaml", "yaml to json", "yaml", "json", "toml", 
+export const items: items = ["json to yaml", "yaml to json", "yaml", "json", "toml",
   "telegram to journal", "merge journal"]
 
-export const tool_to_args: Record<string, arg[]> = map({
+const flexible_tool_to_args: Record<string, arg[]> = {
   "merge journal": [
     {
       name: 'original text',
@@ -19,4 +19,8 @@ export const tool_to_args: Record<string, arg[]> = map({
       value: ''
     }
   ]
-}, ([key, value]) => ([normalize_id(key), value]))
+}
+
+export const tool_to_args = map(flexible_tool_to_args,
+  ([key, value]) => ([normalize_id(key), value]))
+
