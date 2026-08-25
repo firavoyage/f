@@ -20,11 +20,6 @@ body {
 
 /* Components */
 
-body {
-  background-color: var(--color-bg-primary);
-  color: var(--color-fg-primary);
-}
-
 .a,
 .link,
 .button,
@@ -52,10 +47,16 @@ textarea {
   flex-direction: row;
 
   min-height: 100vh;
+
+  background-color: var(--color-bg-primary);
+
   font: var(--font-text);
+  color: var(--color-fg-primary);
 }
 
 .sidebar {
+  overflow-y: auto;
+
   background-color: var(--color-bg-secondary);
 
   &[variant="push"] {
@@ -99,11 +100,10 @@ textarea {
   }
 
   .menu {
-    padding: var(--spacing-0\.5);
-
-    height: var(--spacing-8);
-
     flex-direction: row;
+
+    padding: var(--spacing-0\.5);
+    height: var(--spacing-8);
 
     .search, .hamburger {
       width: var(--spacing-8);
@@ -154,6 +154,8 @@ textarea {
       padding: var(--spacing-2);
 
       flex-grow: 1;
+
+      overflow: auto;
     }
   }
 }

@@ -296,6 +296,8 @@ web: <!-- frontend, web, ts/js -->
 - js array sort compare requirements
 - parceljs fix whole repo file tracking tsconfig baseurl auto reload after sleep
 - design length unit px rem
+- css props order
+- css overflow prop
 
 backend:
 
