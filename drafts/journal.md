@@ -54149,8 +54149,165 @@ error: `continously` should be `continuously`
 ```
 
 ```
-
+ ...f/apps/tools % typos
+error: `arbitary` should be `arbitrary`
+   ╭▸ ./eslint.config.js:75:22
+   │
+75 │       // do not care arbitary rules
+   ╰╴                     ━━━━━━━━
+error: `mis` should be `miss`, `mist`
+   ╭▸ ./purpose.md:81:40
+   │
+81 │ it seems ive modified legacy folder by mis ordering rg flags
+   ╰╴                                       ━━━
+error: `separater` should be `separator`, `separated`, `separates`, `separate`
+    ╭▸ ./purpose.md:169:31
+    │
+169 │ i will not impl the draggable separater for now.
+    ╰╴                              ━━━━━━━━━
+error: `convertion` should be `conversion`
+    ╭▸ ./todo.md:195:25
+    │
+195 │ design ix, e.g. two way convertion
+    ╰╴                        ━━━━━━━━━━
+error: `convertion` should be `conversion`
+    ╭▸ ./purpose.md:191:1
+    │
+191 │ convertion can be two way i realize.
+    ╰╴━━━━━━━━━━
+error: `teritary` should be `tertiary`
+    ╭▸ ./purpose.md:235:33
+    │
+235 │ though, my bg primary secondary teritary has discrepency w them anyway.
+    ╰╴                                ━━━━━━━━
+error: `discrepency` should be `discrepancy`
+    ╭▸ ./purpose.md:235:46
+    │
+235 │ though, my bg primary secondary teritary has discrepency w them anyway.
+    ╰╴                                             ━━━━━━━━━━━
+error: `teritary` should be `tertiary`
+    ╭▸ ./purpose.md:237:37
+    │
+237 │ the decision is to use a unified bg teritary at 50 opacity.
+    ╰╴                                    ━━━━━━━━
+error: `teritary` should be `tertiary`
+    ╭▸ ./purpose.md:243:96
+    │
+243 │ i have another theory. they used my gray 500 at 0.2 opacity. i guess it's better. i dont think teritary bg has sth to do. if th…
+    ╰╴                                                                                               ━━━━━━━━
+error: `achivement` should be `achievement`
+   ╭▸ ./source/web/ia.yaml:53:9
+   │
+53 │       - achivement rate to perf
+   ╰╴        ━━━━━━━━━━
+error: `somthing` should be `something`
+    ╭▸ ./source/action/telegram to journal.ts:228:13
+    │
+228 │ // 20 20 do somthing
+    ╰╴            ━━━━━━━━
+error: `arbitary` should be `arbitrary`
+    ╭▸ ./purpose.md:330:74
+    │
+330 │ it could be less than 20min in code, but it takes time to research react arbitary rules.
+    ╰╴                                                                         ━━━━━━━━
+error: `mispell` should be `misspell`
+    ╭▸ ./purpose.md:471:121
+    │
+471 │ … new one. typo fixer. not necessarily typos. just when you mispell some words. i guess it's trivial to have a wordnet in brows…
+    ╰╴                                                            ━━━━━━━
+error: `somthing` should be `something`
+    ╭▸ ./source/action/telegram to journal.ts:514:13
+    │
+514 │ // 20 20 do somthing
+    ╰╴            ━━━━━━━━
+error: `splitted` should be `split`
+    ╭▸ ./purpose.md:726:57
+    │
+726 │ btw, i think i could make input and output horizontally splitted on desktop. it doesnt have to be like cyberchef, if we dont re…
+    ╰╴                                                        ━━━━━━━━
+error: `constrants` should be `constraints`
+    ╭▸ ./purpose.md:810:69
+    │
+810 │ default export found in sidebar and textarea. <!-- not given enough constrants to chatbot llms -->
+    ╰╴                                                                    ━━━━━━━━━━
+error: `hae` should be `have`
+    ╭▸ ./purpose.md:925:31
+    │
+925 │ wait. i think they absolutely hae the screen real estate to display both md to html and html to md confortably. it's easier. sc…
+    ╰╴                              ━━━
+error: `arbitary` should be `arbitrary`
+     ╭▸ ./purpose.md:1269:5
+     │
+1269 │ for arbitary string, it's just widened as string. no workaround needed.
+     ╰╴    ━━━━━━━━
+error: `benifit` should be `benefit`
+     ╭▸ ./purpose.md:1285:5
+     │
+1285 │ the benifit is i leverage yaml flexible typing. numbers are numbers. strings do not need quotes.
+     ╰╴    ━━━━━━━
+error: `guranteed` should be `guaranteed`
+     ╭▸ ./purpose.md:1428:10
+     │
+1428 │ order is guranteed so no race cond. and it will fire after all sync op.
+     ╰╴         ━━━━━━━━━
+error: `fof` should be `for`
+     ╭▸ ./purpose.md:1572:3
+     │
+1572 │ - fof object doesnt work. i have to use fen. i did not always remember. <!-- btw, no way to escape. you couldnt override js na…
+     ╰╴  ━━━
+error: `higest` should be `highest`
+     ╭▸ ./purpose.md:1663:40
+     │
+1663 │   - for visual design, i may style the higest nesting level italic, dimmed, and underlined. they are akin to title code code c…
+     ╰╴                                       ━━━━━━
+error: `constrast` should be `contrast`
+     ╭▸ ./purpose.md:1734:35
+     │
+1734 │ figure out the names of the color constrast standards. get confused by llms and evil law makers.
+     ╰╴                                  ━━━━━━━━━
+error: `fof` should be `for`
+     ╭▸ ./purpose.md:1857:27
+     │
+1857 │ i would absolutely go for fof rather than map.
+     ╰╴                          ━━━
+error: `fof` should be `for`
+     ╭▸ ./purpose.md:1868:1
+     │
+1868 │ fof item items
+     ╰╴━━━
+error: `convertion` should be `conversion`
+     ╭▸ ./purpose.md:2052:527
+     │
+2052 │ …t there would be "args on input/output heading" "two way convertion". -->
+     ╰╴                                                          ━━━━━━━━━━
+error: `usuable` should be `usable`
+     ╭▸ ./purpose.md:2241:25
+     │
+2241 │ - must have: completely usuable wo (i.e. no tasks can be completed)
+     ╰╴                        ━━━━━━━
+error: `usuable` should be `usable`
+     ╭▸ ./purpose.md:2264:25
+     │
+2264 │ - must have: completely usuable wo (no tasks can be completed)
+     ╰╴                        ━━━━━━━
+error: `acutal` should be `actual`
+     ╭▸ ./purpose.md:2355:36
+     │
+2355 │ btw, it would ideally only look at acutal paragraphs, and standarzie time if needed.
+     ╰╴                                   ━━━━━━
+error: `achive` should be `achieve`, `archive`
+     ╭▸ ./purpose.md:2383:46
+     │
+2383 │ no idea how long it would take. feel i could achive sth today.
+     ╰╴                                             ━━━━━━
+error: `composibility` should be `composability`
+     ╭▸ ./purpose.md:2459:22
+     │
+2459 │   - perf is trivial, composibility matters more
+     ╰╴                     ━━━━━━━━━━━━━
 ```
+
+(there are a million typos in drafts)
 
 19 50 open an issue on arkloop.
 
