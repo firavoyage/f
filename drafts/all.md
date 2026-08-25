@@ -223,7 +223,7 @@ archi:
 - naming flags options
 - perfectionism procrastination over engineering premature optimization
 - compare type and kind
-- code style comment title case
+- code style comment title case sentence case
 - ts import import type
 
 web: <!-- frontend, web, ts/js -->

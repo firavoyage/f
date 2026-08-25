@@ -53947,9 +53947,16 @@ from 8 jul to 24 aug.
 
 18 40 open an issue on memoh about typos.
 
+``````
 Fix typos
 
-how to reproduce
+# summary
+
+trivial.
+
+most are false positives. one thing worth notice is "scaned".
+
+# experiment
 
 ```
  ~ % cd Projects
@@ -53968,13 +53975,101 @@ Resolving deltas: 100% (40371/40371), done.
 extend-ignore-words-re = [
     '^[a-zA-Z]{1,4}$'
 ]
-EOF
 [default.extend-words]
-# Whitelist Specific Valid Words
-dota = "dota"
-pyo3 = "pyo3"
+# Whitelist Specific Valid Words (case insensitive)
+connectit = "connectit" # idk, seems intended
+relace = "relace" # model provider name
+unparseable = "unparseable" # widely used in tech industry
+EOF
+ ~/Projects/memoh % typos
+error: `COALESC` should be `COALESCE`
+    ╭▸ ./internal/command/usage.go:155:17
+    │
+155 │                     // The SQL COALESCEs missing model/provider joins to "Unknown".
+    ╰╴                               ━━━━━━━
+error: `INSER` should be `INSERT`
+   ╭▸ ./db/postgres/migrations/0112_team_core.up.sql:84:58
+   │
+84 │ -- given a DEFAULT of public.memoh_current_team_id() (so INSERTs auto-fill the current
+   ╰╴                                                         ━━━━━
+error: `INSER` should be `INSERT`
+     ╭▸ ./db/postgres/migrations/0001_init.up.sql:1307:58
+     │
+1307 │ -- given a DEFAULT of public.memoh_current_team_id() (so INSERTs auto-fill the current
+     ╰╴                                                         ━━━━━
+error: `UPDAT` should be `UPDATE`
+    ╭▸ ./internal/registry/registry_test.go:193:73
+    │
+193 │ // mutateProvider applies direct row edits, standing in for the raw SQL UPDATEs
+    ╰╴                                                                        ━━━━━
+error: `scaned` should be `scanned`
+   ╭▸ ./internal/channel/adapters/weixin/client_test.go:22:37
+   │
+22 │         _, _ = w.Write([]byte(`{"status":"scaned","bot_token":"bot-token"}`))
+   ╰╴                                          ━━━━━━
+error: `scaned` should be `scanned`
+    ╭▸ ./internal/channel/adapters/weixin/client.go:266:23
+    │
+266 │     if status.Status == "scaned" {
+    ╰╴                         ━━━━━━
+error: `pendings` should be `pending`
+   ╭▸ ./apps/web/src/pages/home/composables/usePendingApprovals.test.ts:60:23
+   │
+60 │   it('queues multiple pendings FIFO — the oldest unresolved one leads', () => {
+   ╰╴                      ━━━━━━━━
+error: `pendings` should be `pending`
+   ╭▸ ./apps/web/src/pages/home/composables/usePendingApprovals.ts:38:13
+   │
+38 │ // "Zombie" pendings (status pending but can_approve === false — the ACP
+   ╰╴            ━━━━━━━━
 ```
 
+# analysis
+
+sql related ones are false positives.
+
+"pendings" as noun is acceptable.
+
+on "scaned", look at the code
+
+`client_test.go`
+
+```go
+func TestPollQRStatusNormalizesLegacyScannedStatus(t *testing.T) {
+	t.Parallel()
+
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if got := r.URL.Path; got != "/ilink/bot/get_qrcode_status" {
+			t.Fatalf("path = %q, want %q", got, "/ilink/bot/get_qrcode_status")
+		}
+		if got := r.URL.Query().Get("qrcode"); got != "legacy-code" {
+			t.Fatalf("qrcode = %q, want %q", got, "legacy-code")
+		}
+		w.Header().Set("Content-Type", "application/json")
+		_, _ = w.Write([]byte(`{"status":"scaned","bot_token":"bot-token"}`))
+	}))
+	defer server.Close()
+
+	client := NewClient(slog.Default())
+	status, err := client.PollQRStatus(context.Background(), server.URL, "legacy-code")
+	if err != nil {
+		t.Fatalf("PollQRStatus() error = %v", err)
+	}
+	if status.Status != "scanned" {
+		t.Fatalf("status = %q, want %q", status.Status, "scanned")
+	}
+	if status.BotToken != "bot-token" {
+		t.Fatalf("botToken = %q, want %q", status.BotToken, "bot-token")
+	}
+}
+```
+
+
+
+# thoughts
+
+
+``````
 
 
 <!-- be explicit and organized. focus and timebox. -->
