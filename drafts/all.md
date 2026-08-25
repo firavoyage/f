@@ -292,6 +292,7 @@ web: <!-- frontend, web, ts/js -->
 - parceljs cache whole repo tracking reload
 - css scrollbar styling
 - js array sort compare requirements
+- parceljs fix whole repo file tracking tsconfig baseurl auto reload after sleep
 
 backend:
 
