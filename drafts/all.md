@@ -738,6 +738,7 @@ history:
 - v2ex
 - aaron swartz
 - posix
+- chris coyier
 
 politics:
 
