@@ -2702,4 +2702,37 @@ css intellisense experiences some quirks. it doesnt detect file change when gene
 
 03 10 create component menu.
 
+12 20 fix parceljs auto reconnect.
+
+console warn is hooked by react devtools before my script.
+
+---
+
+oh, that's not the case. "if dev" doesnt even trigger.
+
+---
+
+p
+
+```ts
+const dev = process?.env?.NODE_ENV == 'development'
+```
+
+c
+
+```ts
+const dev = process.env.NODE_ENV == 'development'
+```
+
+no need to change, since i primarily use parceljs. could be better.
+
+12 30 lib/handle: support fallback value. deprecate `handle_best_effort`.
+
+c
+
+```ts
+// @ts-expect-error best effort
+const dev = handle(() => process.env.NODE_ENV == 'development' || import.meta.env?.DEV, false)
+```
+
 

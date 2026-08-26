@@ -7,7 +7,8 @@ import { StrictMode } from 'react';
 
 import { App } from "./component/app"
 
-const dev = process?.env?.NODE_ENV == 'development'
+// @ts-expect-error best effort
+const dev = handle(() => process.env.NODE_ENV == 'development' || import.meta.env?.DEV, false)
 
 // Use StrictMode in Dev
 if (dev) {
