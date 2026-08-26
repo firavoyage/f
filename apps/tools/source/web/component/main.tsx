@@ -24,10 +24,6 @@ export function Main() {
   const [input, set_input] = use_global('input')
   const [output, set_output] = use_global('output')
 
-  useMount(() => {
-    log(tools)
-  })
-
   useEffect(() => {
     let stdin = input
     for (const item of process) {
@@ -46,17 +42,25 @@ export function Main() {
 
   return (
     <div className="main">
-      <div className="panel">
-        <div className="title">Process</div>
-        <Process {...p({ process, set_process })}></Process>
+      <div className="title_bar">
+        <button className="sidebar">
+          toggle sidebar
+        </button>
+
       </div>
-      <div className="panel">
-        <div className="title">Input</div>
-        <Textarea {...p({ value: input, set_value: set_input })}></Textarea>
-      </div>
-      <div className="panel">
-        <div className="title">Output</div>
-        <Textarea {...p({ value: output, set_value: set_output })}></Textarea>
+      <div className="workspace">
+        <div className="panel">
+          <div className="title">Process</div>
+          <Process {...p({ process, set_process })}></Process>
+        </div>
+        <div className="panel">
+          <div className="title">Input</div>
+          <Textarea {...p({ value: input, set_value: set_input })}></Textarea>
+        </div>
+        <div className="panel">
+          <div className="title">Output</div>
+          <Textarea {...p({ value: output, set_value: set_output })}></Textarea>
+        </div>
       </div>
     </div>
   )
