@@ -46,7 +46,19 @@ export function Main() {
         <button className="sidebar">
           toggle sidebar
         </button>
-
+        <div className="title"></div>
+        <button className="view">
+          view
+        </button>
+        <button className="minimize">
+          minimize
+        </button>
+        <button className="maximize">
+          maximize
+        </button>
+        <button className="close">
+          close
+        </button>
       </div>
       <div className="workspace">
         <div className="panel">
